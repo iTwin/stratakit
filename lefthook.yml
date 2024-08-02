@@ -1,0 +1,7 @@
+pre-commit:
+  parallel: true
+  commands:
+    copyright:
+      glob: "*.{js,ts,jsx,tsx}"
+      run: node scripts/copyrightLinter.js {staged_files} --fix
+      stage_fixed: true

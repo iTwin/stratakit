@@ -6,7 +6,8 @@
 	"scripts": {
 		"build": "pnpm --filter=@itwin/test-app build",
 		"dev": "pnpm --filter=@itwin/test-app dev",
-		"lint": "pnpm --recursive --no-bail lint"
+		"lint": "pnpm --recursive --no-bail lint",
+		"lint:copyright": "node scripts/copyrightLinter.js"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "1.8.3",

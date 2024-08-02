@@ -71,4 +71,6 @@ jobs:
           cache: "pnpm"
 
       - run: pnpm install
+      - run: pnpm lint
+      - run: pnpm lint:copyright
       - run: pnpm run build

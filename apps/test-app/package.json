@@ -7,8 +7,8 @@
 		"build": "remix vite:build",
 		"dev": "remix vite:dev",
 		"start": "remix-serve ./build/server/index.js",
-		"typecheck": "tsc",
-		"lint": "biome lint ./app"
+		"lint": "biome lint ./app",
+		"typecheck": "tsc"
 	},
 	"dependencies": {
 		"@itwin/kiwi-react": "*",

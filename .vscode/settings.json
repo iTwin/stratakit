@@ -1,37 +1,37 @@
 {
-	"editor.formatOnSave": true,
-	"editor.tabSize": 2,
-	"editor.insertSpaces": true,
-	"files.eol": "\n",
-	"files.insertFinalNewline": true,
-	"npm.packageManager": "pnpm",
-	"explorer.fileNesting.enabled": true,
-	"explorer.fileNesting.patterns": {
-		"package.json": "package-lock.json, pnpm-lock.yaml, pnpm-workspace.yaml, .npmrc",
-		"tsconfig.json": "tsconfig.*.json",
-		"README.md": "*.md",
-		"*.tsx": "${capture}.ts, ${capture}.css",
-		"*.ts": "${capture}.js, ${capture}.css",
-		"*.jsx": "${capture}.js, ${capture}.css",
-		"*.js": "${capture}.js.map, ${capture}.min.js, ${capture}.d.ts, ${capture}.css",
-		".gitignore": ".gitattributes, .prettierignore"
-	},
-	"javascript.preferences.importModuleSpecifierEnding": "js",
-	"typescript.preferences.importModuleSpecifierEnding": "js",
-	"editor.defaultFormatter": "esbenp.prettier-vscode",
-	"prettier.singleQuote": false,
-	"prettier.jsxSingleQuote": false,
-	"prettier.useTabs": true,
-	"[javascript]": {
-		"editor.defaultFormatter": "biomejs.biome"
-	},
-	"[typescript]": {
-		"editor.defaultFormatter": "biomejs.biome"
-	},
-	"[javascriptreact]": {
-		"editor.defaultFormatter": "biomejs.biome"
-	},
-	"[typescriptreact]": {
-		"editor.defaultFormatter": "biomejs.biome"
-	}
+  "editor.formatOnSave": true,
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true,
+  "files.eol": "\n",
+  "files.insertFinalNewline": true,
+  "npm.packageManager": "pnpm",
+  "explorer.fileNesting.enabled": true,
+  "explorer.fileNesting.patterns": {
+    "package.json": "package-lock.json, pnpm-lock.yaml, pnpm-workspace.yaml, .npmrc",
+    "tsconfig.json": "tsconfig.*.json",
+    "README.md": "*.md",
+    "*.tsx": "${capture}.ts, ${capture}.css",
+    "*.ts": "${capture}.js, ${capture}.css",
+    "*.jsx": "${capture}.js, ${capture}.css",
+    "*.js": "${capture}.js.map, ${capture}.min.js, ${capture}.d.ts, ${capture}.css",
+    ".gitignore": ".gitattributes"
+  },
+  "javascript.preferences.importModuleSpecifierEnding": "js",
+  "typescript.preferences.importModuleSpecifierEnding": "js",
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "prettier.singleQuote": false,
+  "prettier.jsxSingleQuote": false,
+  "prettier.useTabs": true,
+  "[javascript]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  }
 }

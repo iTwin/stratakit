@@ -49,6 +49,34 @@ jobs:
       - run: pnpm install
       - run: pnpm audit
 
+  check:
+    name: Check code quality
+    needs: install
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v3
+        with:
+          version: 9
+
+      - name: Use Node 20.x
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.x
+          cache: "pnpm"
+
+      - run: pnpm install
+      - run: pnpm lint
+        if: !cancelled()
+      - run: pnpm format
+        if: !cancelled()
+      - run: pnpm lint:copyright
+        if: !cancelled()
+      - run: pnpm prettier . --check
+        if: !cancelled()
+
   build:
     name: Build test app
     needs: install
@@ -71,6 +99,4 @@ jobs:
           cache: "pnpm"
 
       - run: pnpm install
-      - run: pnpm lint
-      - run: pnpm lint:copyright
       - run: pnpm run build

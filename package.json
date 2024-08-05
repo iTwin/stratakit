@@ -1,22 +1,23 @@
 {
-	"name": "kiwi",
-	"private": true,
-	"version": "0.0.0",
-	"description": "Monorepo for the kiwi design system",
-	"scripts": {
-		"build": "pnpm --filter=@itwin/test-app build",
-		"dev": "pnpm --filter=@itwin/test-app dev",
-		"lint": "pnpm --recursive --no-bail lint",
-		"lint:copyright": "node scripts/copyrightLinter.js"
-	},
-	"devDependencies": {
-		"@biomejs/biome": "1.8.3",
-		"fast-glob": "^3.3.2",
-		"lefthook": "^1.7.11",
-		"prettier": "3.3.3"
-	},
-	"engines": {
-		"node": ">=20.16.0"
-	},
-	"packageManager": "pnpm@9.6.0"
+  "name": "kiwi",
+  "private": true,
+  "version": "0.0.0",
+  "description": "Monorepo for the kiwi design system",
+  "scripts": {
+    "build": "pnpm --filter=@itwin/test-app build",
+    "dev": "pnpm --filter=@itwin/test-app dev",
+    "lint": "pnpm --recursive --no-bail lint",
+    "format": "pnpm --recursive --no-bail format",
+    "lint:copyright": "node scripts/copyrightLinter.js"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "1.8.3",
+    "fast-glob": "^3.3.2",
+    "lefthook": "^1.7.11",
+    "prettier": "3.3.3"
+  },
+  "engines": {
+    "node": ">=20.16.0"
+  },
+  "packageManager": "pnpm@9.6.0"
 }

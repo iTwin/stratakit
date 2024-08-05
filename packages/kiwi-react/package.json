@@ -1,54 +1,55 @@
 {
-	"name": "@itwin/kiwi-react",
-	"private": true,
-	"type": "module",
-	"version": "0.1.0",
-	"license": "MIT",
-	"sideEffects": false,
-	"exports": {
-		"./bricks": "./src/bricks/index.ts",
-		"./package.json": "./package.json"
-	},
-	"files": [
-		"dist",
-		"CHANGELOG.md",
-		"LICENSE.md"
-	],
-	"description": "A React component library for the Kiwi design system",
-	"author": "Bentley Systems",
-	"homepage": "https://github.com/iTwin/kiwi",
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/iTwin/kiwi.git",
-		"directory": "packages/kiwi-react"
-	},
-	"keywords": [
-		"component",
-		"components",
-		"design-system",
-		"design",
-		"frontend",
-		"itwin",
-		"itwinui",
-		"react",
-		"ui"
-	],
-	"scripts": {
-		"lint": "biome lint ./src"
-	},
-	"dependencies": {
-		"classnames": "^2.5.1"
-	},
-	"devDependencies": {
-		"@types/node": "*",
-		"@types/react": "*",
-		"@types/react-dom": "*",
-		"react": "18",
-		"react-dom": "18",
-		"typescript": "5"
-	},
-	"peerDependencies": {
-		"react": ">=17.0.0",
-		"react-dom": ">=17.0.0"
-	}
+  "name": "@itwin/kiwi-react",
+  "private": true,
+  "type": "module",
+  "version": "0.1.0",
+  "license": "MIT",
+  "sideEffects": false,
+  "exports": {
+    "./bricks": "./src/bricks/index.ts",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "CHANGELOG.md",
+    "LICENSE.md"
+  ],
+  "description": "A React component library for the Kiwi design system",
+  "author": "Bentley Systems",
+  "homepage": "https://github.com/iTwin/kiwi",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/iTwin/kiwi.git",
+    "directory": "packages/kiwi-react"
+  },
+  "keywords": [
+    "component",
+    "components",
+    "design-system",
+    "design",
+    "frontend",
+    "itwin",
+    "itwinui",
+    "react",
+    "ui"
+  ],
+  "scripts": {
+    "format": "biome format ./src",
+    "lint": "biome lint ./src"
+  },
+  "dependencies": {
+    "classnames": "^2.5.1"
+  },
+  "devDependencies": {
+    "@types/node": "*",
+    "@types/react": "*",
+    "@types/react-dom": "*",
+    "react": "18",
+    "react-dom": "18",
+    "typescript": "5"
+  },
+  "peerDependencies": {
+    "react": ">=17.0.0",
+    "react-dom": ">=17.0.0"
+  }
 }

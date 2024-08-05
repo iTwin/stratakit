@@ -69,13 +69,13 @@ jobs:
 
       - run: pnpm install
       - run: pnpm lint
-        if: !cancelled()
+        if: ${{ !cancelled() }}
       - run: pnpm format
-        if: !cancelled()
+        if: ${{ !cancelled() }}
       - run: pnpm lint:copyright
-        if: !cancelled()
+        if: ${{ !cancelled() }}
       - run: pnpm prettier
-        if: !cancelled()
+        if: ${{ !cancelled() }}
 
   build:
     name: Build test app

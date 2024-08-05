@@ -21,7 +21,6 @@
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "prettier.singleQuote": false,
   "prettier.jsxSingleQuote": false,
-  "prettier.useTabs": true,
   "[javascript]": {
     "editor.defaultFormatter": "biomejs.biome"
   },

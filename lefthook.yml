@@ -5,3 +5,18 @@ pre-commit:
       glob: "*.{js,ts,jsx,tsx}"
       run: node scripts/copyrightLinter.js {staged_files} --fix
       stage_fixed: true
+
+    format:
+      glob: "*.{js,ts,jsx,tsx}"
+      run: pnpm biome format --write {staged_files}
+      stage_fixed: true
+
+    lint:
+      glob: "*.{js,ts,jsx,tsx}"
+      run: pnpm biome lint --write {staged_files}
+      stage_fixed: true
+
+    prettier:
+      exclude: "*.{js,ts,jsx,tsx}"
+      run: pnpm prettier {staged_files} --write
+      stage_fixed: true

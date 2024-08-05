@@ -19,8 +19,6 @@
   "javascript.preferences.importModuleSpecifierEnding": "js",
   "typescript.preferences.importModuleSpecifierEnding": "js",
   "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "prettier.singleQuote": false,
-  "prettier.jsxSingleQuote": false,
   "[javascript]": {
     "editor.defaultFormatter": "biomejs.biome"
   },

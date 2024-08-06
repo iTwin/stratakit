@@ -7,7 +7,7 @@ import { sync } from "fast-glob";
 
 let pattern: string | string[] = process.argv
 	.slice(2)
-	.flatMap<string>((x) => (x !== "--fix" ? x.replaceAll("\\", "/") : []));
+	.flatMap((x) => (x !== "--fix" ? x.replaceAll("\\", "/") : []));
 
 // if no pattern is specified, then lint everything
 if (pattern.length === 0) {

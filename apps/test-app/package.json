@@ -1,31 +1,31 @@
 {
-  "name": "@itwin/test-app",
-  "private": true,
-  "sideEffects": false,
-  "type": "module",
-  "scripts": {
-    "build": "remix vite:build",
-    "dev": "remix vite:dev",
-    "format": "biome format ./app",
-    "start": "remix-serve ./build/server/index.js",
-    "lint": "biome lint ./app",
-    "typecheck": "tsc"
-  },
-  "dependencies": {
-    "@itwin/kiwi-react": "*",
-    "@remix-run/node": "^2.11.0",
-    "@remix-run/react": "^2.11.0",
-    "@remix-run/serve": "^2.11.0",
-    "isbot": "^4.1.0",
-    "react": "18",
-    "react-dom": "18"
-  },
-  "devDependencies": {
-    "@remix-run/dev": "^2.11.0",
-    "@types/react": "*",
-    "@types/react-dom": "*",
-    "typescript": "5",
-    "vite": "^5.3.5",
-    "vite-tsconfig-paths": "^4.2.1"
-  }
+	"name": "@itwin/test-app",
+	"private": true,
+	"sideEffects": false,
+	"type": "module",
+	"scripts": {
+		"build": "remix vite:build",
+		"dev": "remix vite:dev",
+		"format": "biome format ./app",
+		"start": "remix-serve ./build/server/index.js",
+		"lint": "biome lint ./app",
+		"typecheck": "tsc"
+	},
+	"dependencies": {
+		"@itwin/kiwi-react": "*",
+		"@remix-run/node": "^2.11.0",
+		"@remix-run/react": "^2.11.0",
+		"@remix-run/serve": "^2.11.0",
+		"isbot": "^4.1.0",
+		"react": "18",
+		"react-dom": "18"
+	},
+	"devDependencies": {
+		"@remix-run/dev": "^2.11.0",
+		"@types/react": "*",
+		"@types/react-dom": "*",
+		"typescript": "5",
+		"vite": "^5.3.5",
+		"vite-tsconfig-paths": "^4.2.1"
+	}
 }

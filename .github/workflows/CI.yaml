@@ -116,7 +116,7 @@ jobs:
 
       - run: pnpm install
       - run: pnpm dlx playwright install --with-deps
-      - run: pnpm run test
+      - run: pnpm --filter=@itwin/test-app playwright test
 
       - uses: actions/upload-artifact@v4
         if: always()

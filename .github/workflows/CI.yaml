@@ -118,6 +118,8 @@ jobs:
       - run: pnpm dlx playwright install --with-deps
       - run: pnpm run build
       - run: pnpm --filter=@itwin/test-app exec playwright test
+        env:
+          HOME: /root
 
       - uses: actions/upload-artifact@v4
         if: always()

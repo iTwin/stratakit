@@ -17,6 +17,8 @@ pre-commit:
       stage_fixed: true
 
     prettier:
-      exclude: "*.{js,ts,jsx,tsx}"
-      run: pnpm prettier {staged_files} --write
+      exclude:
+        - "*.{js,ts,jsx,tsx}"
+        - .gitignore
+      run: pnpm exec prettier {staged_files} --write
       stage_fixed: true

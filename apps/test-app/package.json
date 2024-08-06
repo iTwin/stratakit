@@ -10,8 +10,7 @@
 		"lint": "biome lint ./app",
 		"start": "remix-serve ./build/server/index.js",
 		"start:docker": "tsx ../../scripts/run-with-docker.ts",
-		"playwright": "playwright",
-		"test": "pnpm start:docker pnpm run --filter=@itwin/test-app playwright test",
+		"test": "pnpm start:docker pnpm --filter=@itwin/test-app exec playwright test",
 		"typecheck": "tsc"
 	},
 	"dependencies": {

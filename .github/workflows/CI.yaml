@@ -103,6 +103,7 @@ jobs:
 
   test:
     name: Run visual tests
+    needs: install
     runs-on: ubuntu-latest
     container:
       image: mcr.microsoft.com/playwright:v1.46.0-jammy

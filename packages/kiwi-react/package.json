@@ -33,6 +33,10 @@
 		"react",
 		"ui"
 	],
+	"scripts": {
+		"format": "biome format ./src",
+		"lint": "biome lint ./src"
+	},
 	"dependencies": {
 		"classnames": "^2.5.1"
 	},

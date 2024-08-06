@@ -6,10 +6,11 @@
 	"scripts": {
 		"build": "pnpm --filter=@itwin/test-app build",
 		"dev": "pnpm --filter=@itwin/test-app dev",
-		"lint": "pnpm --recursive --no-bail lint",
 		"format": "pnpm --recursive --no-bail format",
+		"lint": "pnpm --recursive --no-bail lint",
 		"lint:copyright": "node scripts/copyrightLinter.js",
-		"prettier": "prettier . '!**/*.{js,jsx,ts,tsx}' --check"
+		"prettier": "prettier . '!**/*.{js,jsx,ts,tsx}' --check",
+		"test": "pnpm --filter=@itwin/test-app test"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "1.8.3",

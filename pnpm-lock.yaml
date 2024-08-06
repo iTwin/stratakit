@@ -44,9 +44,15 @@ importers:
         specifier: "18"
         version: 18.3.1(react@18.3.1)
     devDependencies:
+      "@playwright/test":
+        specifier: ^1.46.0
+        version: 1.46.0
       "@remix-run/dev":
         specifier: ^2.11.0
         version: 2.11.0(@remix-run/react@2.11.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.5.4))(@remix-run/serve@2.11.0(typescript@5.5.4))(@types/node@22.0.2)(typescript@5.5.4)(vite@5.3.5(@types/node@22.0.2))
+      "@types/node":
+        specifier: "*"
+        version: 22.0.2
       "@types/react":
         specifier: "*"
         version: 18.3.3
@@ -930,6 +936,14 @@ packages:
         integrity: sha512-+1VkjdD0QBLPodGrJUeqarH8VAIvQODIbwh9XpP5Syisf7YoQgsJKPNFoqqLQlu+VQ/tVSshMR6loPMn8U+dPg==,
       }
     engines: { node: ">=14" }
+
+  "@playwright/test@1.46.0":
+    resolution:
+      {
+        integrity: sha512-/QYft5VArOrGRP5pgkrfKksqsKA6CEFyGQ/gjNe6q0y4tZ1aaPfq4gIjudr1s3D+pXyrPRdsy4opKDrjBabE5w==,
+      }
+    engines: { node: ">=18" }
+    hasBin: true
 
   "@remix-run/dev@2.11.0":
     resolution:
@@ -2183,6 +2197,14 @@ packages:
         integrity: sha512-XUBA9XClHbnJWSfBzjkm6RvPsyg3sryZt06BEQoXcF7EK/xpGaQYJgQKDJSUH5SGZ76Y7pFx1QBnXz09rU5Fbw==,
       }
     engines: { node: ^14.17.0 || ^16.13.0 || >=18.0.0 }
+
+  fsevents@2.3.2:
+    resolution:
+      {
+        integrity: sha512-xiqMQR4xAeHTuB9uWm+fFRcIOgKBMiOBP+eXiyT7jsgVCq1bkVygt00oASowB7EdtpOHaaPgKt812P9ab+DDKA==,
+      }
+    engines: { node: ^8.16.0 || ^10.6.0 || >=11.0.0 }
+    os: [darwin]
 
   fsevents@2.3.3:
     resolution:
@@ -3517,6 +3539,22 @@ packages:
       {
         integrity: sha512-+JrgthZG6m3ckicaOB74TwQ+tBWsFl3qVQg7mN8ulwSOElJ7gBhKzj2VkCPnZ4NlF6kEquYU+RIYNVAvzd54UA==,
       }
+
+  playwright-core@1.46.0:
+    resolution:
+      {
+        integrity: sha512-9Y/d5UIwuJk8t3+lhmMSAJyNP1BUC/DqP3cQJDQQL/oWqAiuPTLgy7Q5dzglmTLwcBRdetzgNM/gni7ckfTr6A==,
+      }
+    engines: { node: ">=18" }
+    hasBin: true
+
+  playwright@1.46.0:
+    resolution:
+      {
+        integrity: sha512-XYJ5WvfefWONh1uPAUAi0H2xXV5S3vrtcnXe6uAOgdGi3aSpqOSXX08IAjXW34xitfuOJsvXU5anXZxPSEQiJw==,
+      }
+    engines: { node: ">=18" }
+    hasBin: true
 
   possible-typed-array-names@1.0.0:
     resolution:
@@ -5079,6 +5117,10 @@ snapshots:
   "@pkgjs/parseargs@0.11.0":
     optional: true
 
+  "@playwright/test@1.46.0":
+    dependencies:
+      playwright: 1.46.0
+
   "@remix-run/dev@2.11.0(@remix-run/react@2.11.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.5.4))(@remix-run/serve@2.11.0(typescript@5.5.4))(@types/node@22.0.2)(typescript@5.5.4)(vite@5.3.5(@types/node@22.0.2))":
     dependencies:
       "@babel/core": 7.25.2
@@ -5939,6 +5981,9 @@ snapshots:
   fs-minipass@3.0.3:
     dependencies:
       minipass: 7.1.2
+
+  fsevents@2.3.2:
+    optional: true
 
   fsevents@2.3.3:
     optional: true
@@ -6801,6 +6846,14 @@ snapshots:
       confbox: 0.1.7
       mlly: 1.7.1
       pathe: 1.1.2
+
+  playwright-core@1.46.0: {}
+
+  playwright@1.46.0:
+    dependencies:
+      playwright-core: 1.46.0
+    optionalDependencies:
+      fsevents: 2.3.2
 
   possible-typed-array-names@1.0.0: {}
 

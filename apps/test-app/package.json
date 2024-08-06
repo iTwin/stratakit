@@ -7,8 +7,9 @@
 		"build": "remix vite:build",
 		"dev": "remix vite:dev",
 		"format": "biome format ./app",
-		"start": "remix-serve ./build/server/index.js",
 		"lint": "biome lint ./app",
+		"start": "remix-serve ./build/server/index.js",
+		"test": "playwright test",
 		"typecheck": "tsc"
 	},
 	"dependencies": {
@@ -21,7 +22,9 @@
 		"react-dom": "18"
 	},
 	"devDependencies": {
+		"@playwright/test": "^1.46.0",
 		"@remix-run/dev": "^2.11.0",
+		"@types/node": "*",
 		"@types/react": "*",
 		"@types/react-dom": "*",
 		"typescript": "5",

@@ -24,6 +24,9 @@ export default defineConfig({
 		/* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
 		trace: "on-first-retry",
 	},
+	/* Keep snapshots in the same folder as the test file to nest the files. */
+	snapshotPathTemplate:
+		"{snapshotDir}/{testFileDir}/{testFileName}-snapshot.{arg}{-projectName}{-snapshotSuffix}{ext}",
 
 	/* Configure projects for major browsers */
 	projects: [

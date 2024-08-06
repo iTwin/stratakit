@@ -10,6 +10,9 @@ importers:
       "@biomejs/biome":
         specifier: 1.8.3
         version: 1.8.3
+      "@types/node":
+        specifier: "*"
+        version: 22.0.2
       fast-glob:
         specifier: ^3.3.2
         version: 3.3.2
@@ -59,6 +62,9 @@ importers:
       "@types/react-dom":
         specifier: "*"
         version: 18.3.0
+      tsx:
+        specifier: ^4.16.5
+        version: 4.16.5
       typescript:
         specifier: "5"
         version: 5.5.4
@@ -2254,6 +2260,12 @@ packages:
       }
     engines: { node: ">=10" }
 
+  get-tsconfig@4.7.6:
+    resolution:
+      {
+        integrity: sha512-ZAqrLlu18NbDdRaHq+AKXzAmqIUPswPWKUchfytdAjiRFnCe5ojG2bstg6mRiZabkKfCoL/e98pbBELIV/YCeA==,
+      }
+
   glob-parent@5.1.2:
     resolution:
       {
@@ -3867,6 +3879,12 @@ packages:
         integrity: sha512-oyrU88skkMtDdauHDuKVrgR+zuItqr6/c//FXzvmxRGMexSDc6hNvJInGW3LL46n+8b50RykrvwSUIIQH2LQ5A==,
       }
 
+  resolve-pkg-maps@1.0.0:
+    resolution:
+      {
+        integrity: sha512-seS2Tj26TBVOC2NIc2rOe2y2ZO7efxITtLZcGSOnHHNOQ7CkiUBfw0Iw2ck6xkIhPwLhKNLS8BO+hEpngQlqzw==,
+      }
+
   resolve.exports@2.0.2:
     resolution:
       {
@@ -4275,6 +4293,14 @@ packages:
         integrity: sha512-NoZ4roiN7LnbKn9QqE1amc9DJfzvZXxF4xDavcOWt1BPkdx+m+0gJuPM+S0vCe7zTJMYUP0R8pO2XMr+Y8oLIg==,
       }
     engines: { node: ">=6" }
+
+  tsx@4.16.5:
+    resolution:
+      {
+        integrity: sha512-ArsiAQHEW2iGaqZ8fTA1nX0a+lN5mNTyuGRRO6OW3H/Yno1y9/t1f9YOI1Cfoqz63VAthn++ZYcbDP7jPflc+A==,
+      }
+    engines: { node: ">=18.0.0" }
+    hasBin: true
 
   turbo-stream@2.2.0:
     resolution:
@@ -6008,6 +6034,10 @@ snapshots:
 
   get-stream@6.0.1: {}
 
+  get-tsconfig@4.7.6:
+    dependencies:
+      resolve-pkg-maps: 1.0.0
+
   glob-parent@5.1.2:
     dependencies:
       is-glob: 4.0.3
@@ -7055,6 +7085,8 @@ snapshots:
 
   require-like@0.1.2: {}
 
+  resolve-pkg-maps@1.0.0: {}
+
   resolve.exports@2.0.2: {}
 
   restore-cursor@3.1.0:
@@ -7307,6 +7339,13 @@ snapshots:
       json5: 2.2.3
       minimist: 1.2.8
       strip-bom: 3.0.0
+
+  tsx@4.16.5:
+    dependencies:
+      esbuild: 0.21.5
+      get-tsconfig: 4.7.6
+    optionalDependencies:
+      fsevents: 2.3.3
 
   turbo-stream@2.2.0: {}
 

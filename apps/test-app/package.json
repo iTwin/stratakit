@@ -9,7 +9,9 @@
 		"format": "biome format ./app",
 		"lint": "biome lint ./app",
 		"start": "remix-serve ./build/server/index.js",
-		"test": "playwright test",
+		"start:docker": "tsx ../../scripts/run-with-docker.ts",
+		"playwright": "playwright",
+		"test": "pnpm start:docker pnpm run --filter=@itwin/test-app playwright test",
 		"typecheck": "tsc"
 	},
 	"dependencies": {
@@ -27,6 +29,7 @@
 		"@types/node": "*",
 		"@types/react": "*",
 		"@types/react-dom": "*",
+		"tsx": "^4.16.5",
 		"typescript": "5",
 		"vite": "^5.3.5",
 		"vite-tsconfig-paths": "^4.2.1"

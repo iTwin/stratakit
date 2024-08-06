@@ -2,19 +2,19 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-const fs = require("node:fs");
-const fg = require("fast-glob");
+import { readFileSync, writeFileSync } from "node:fs";
+import { sync } from "fast-glob";
 
-let pattern = process.argv
+let pattern: string | string[] = process.argv
 	.slice(2)
-	.flatMap((x) => (x !== "--fix" ? x.replaceAll("\\", "/") : []));
+	.flatMap<string>((x) => (x !== "--fix" ? x.replaceAll("\\", "/") : []));
 
 // if no pattern is specified, then lint everything
 if (pattern.length === 0) {
 	pattern = "**/*.{ts,tsx,js,scss}";
 }
 
-const filePaths = fg.sync(pattern, {
+const filePaths = sync(pattern, {
 	dot: true,
 	ignore: ["**/node_modules/**/*", "**/build/**/*"],
 });
@@ -32,7 +32,7 @@ const copyrightBannerJs = `/*---------------------------------------------------
  *--------------------------------------------------------------------------------------------*/`;
 
 for (const filePath of filePaths) {
-	const fileContent = fs.readFileSync(filePath, { encoding: "utf8" });
+	const fileContent = readFileSync(filePath, { encoding: "utf8" });
 	if (
 		!fileContent.includes(copyrightLine1) &&
 		!fileContent.includes(copyrightLine2)
@@ -45,7 +45,7 @@ for (const filePath of filePaths) {
 				case ".css":
 					if (fileContent.startsWith("@charset")) {
 						// @charset must be the first line in the file so insert the copyright banner after it
-						fs.writeFileSync(
+						writeFileSync(
 							filePath,
 							fileContent.replace(
 								'@charset "UTF-8";',
@@ -53,19 +53,19 @@ for (const filePath of filePaths) {
 							),
 						);
 					} else {
-						fs.writeFileSync(filePath, `${copyrightBannerJs}\n${fileContent}`);
+						writeFileSync(filePath, `${copyrightBannerJs}\n${fileContent}`);
 					}
 					break;
 				case ".html":
-					fs.writeFileSync(filePath, `${copyrightBannerHtml}\n${fileContent}`);
+					writeFileSync(filePath, `${copyrightBannerHtml}\n${fileContent}`);
 					break;
 				case ".scss":
-					fs.writeFileSync(filePath, `${copyrightBannerScss}\n${fileContent}`);
+					writeFileSync(filePath, `${copyrightBannerScss}\n${fileContent}`);
 					break;
 			}
 		} else {
 			process.exitCode = 1;
-			console.log(`copyrightLinter.js failed at ${filePath}`);
+			console.log(`copyright-linter.ts failed at ${filePath}`);
 		}
 	}
 }

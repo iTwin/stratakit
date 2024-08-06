@@ -8,7 +8,7 @@
 		"dev": "pnpm --filter=@itwin/test-app dev",
 		"format": "pnpm --recursive --no-bail format",
 		"lint": "pnpm --recursive --no-bail lint",
-		"lint:copyright": "node scripts/copyrightLinter.js",
+		"lint:copyright": "tsx scripts/copyright-linter.ts",
 		"prettier": "prettier . '!**/*.{js,jsx,ts,tsx}' --check",
 		"test": "pnpm --filter=@itwin/test-app test"
 	},
@@ -17,7 +17,8 @@
 		"@types/node": "*",
 		"fast-glob": "^3.3.2",
 		"lefthook": "^1.7.11",
-		"prettier": "3.3.3"
+		"prettier": "3.3.3",
+		"tsx": "^4.16.5"
 	},
 	"engines": {
 		"node": ">=20.16.0"

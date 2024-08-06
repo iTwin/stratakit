@@ -3,9 +3,9 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 import { spawn } from "node:child_process";
-import path from "node:path";
+import { join } from "node:path";
 
-const dockerFilePath = path.join(__dirname, "..");
+const dockerFilePath = join(__dirname, "..");
 const imageName = "kiwi";
 const containerName = `${imageName}-container`;
 const [_node, _fileName, ...args] = process.argv;
@@ -37,7 +37,7 @@ async function run() {
 		]);
 	} finally {
 		const pckDir = `${containerName}:/kiwi/apps/test-app`;
-		const hostPckDir = path.join(__dirname, "..", "apps", "test-app");
+		const hostPckDir = join(__dirname, "..", "apps", "test-app");
 		// Copy snapshots from docker container to the local repo
 		await execute("docker", ["cp", `${pckDir}/app`, hostPckDir]);
 		// Copy the `test-results`

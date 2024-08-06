@@ -28,7 +28,6 @@
 		"@types/node": "*",
 		"@types/react": "*",
 		"@types/react-dom": "*",
-		"tsx": "^4.16.5",
 		"typescript": "5",
 		"vite": "^5.3.5",
 		"vite-tsconfig-paths": "^4.2.1"

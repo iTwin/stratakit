@@ -9,8 +9,7 @@
 		"format": "biome format ./app",
 		"lint": "biome lint ./app",
 		"start": "remix-serve ./build/server/index.js",
-		"start:docker": "tsx ../../scripts/run-with-docker.ts",
-		"test": "pnpm start:docker pnpm --filter=@itwin/test-app exec playwright test",
+		"test": "tsx ./scripts/run-tests.cts pnpm exec playwright test",
 		"typecheck": "tsc"
 	},
 	"dependencies": {

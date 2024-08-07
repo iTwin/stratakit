@@ -5,9 +5,13 @@
 import { spawn } from "node:child_process";
 import { join } from "node:path";
 
-const dockerFilePath = join(__dirname, "..");
+const repoDir = join(__dirname, "..", "..", "..");
+const appDir = join(repoDir, "apps", "test-app");
+
 const imageName = "kiwi";
-const containerName = `${imageName}-container`;
+const containerRepoDir = "/kiwi";
+const containerAppDir = join(containerRepoDir, "apps", "test-app");
+
 const [_node, _fileName, ...args] = process.argv;
 
 async function execute(command: string, args: string[] = []) {
@@ -25,37 +29,21 @@ async function execute(command: string, args: string[] = []) {
 	});
 }
 
-async function run() {
-	try {
-		// Run container
-		await execute("docker", [
-			"run",
-			"--name",
-			containerName,
-			imageName,
-			...args,
-		]);
-	} finally {
-		const pckDir = `${containerName}:/kiwi/apps/test-app`;
-		const hostPckDir = join(__dirname, "..", "apps", "test-app");
-		// Copy snapshots from docker container to the local repo
-		await execute("docker", ["cp", `${pckDir}/app`, hostPckDir]);
-		// Copy the `test-results`
-		await execute("docker", ["cp", `${pckDir}/test-results`, hostPckDir]);
-		// Copy `playwright-report`
-		await execute("docker", ["cp", `${pckDir}/playwright-report`, hostPckDir]);
-	}
-}
-
 void (async () => {
-	try {
-		// Build image
-		await execute("docker", ["build", "-t", imageName, dockerFilePath]);
+	await execute("docker", ["build", "-t", imageName, repoDir]);
 
-		// Run the container
-		await run();
-	} finally {
-		// Remove the container
-		await execute("docker", ["rm", "-f", containerName]);
-	}
+	await execute("docker", [
+		"run",
+		"--rm", // Remove the container after run
+		"-v", // Mount snapshot directory from host to container
+		`${appDir}/app:${containerAppDir}/app`,
+		"-v", // Mount test-results directory from host to container
+		`${appDir}/test-results:${containerAppDir}/test-results`,
+		"-v", // Mount playwright-report directory from host to container
+		`${appDir}/playwright-report:${containerAppDir}/playwright-report`,
+		"-w", // Set working directory
+		containerAppDir,
+		imageName,
+		...args,
+	]);
 })();

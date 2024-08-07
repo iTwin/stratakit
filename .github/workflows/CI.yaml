@@ -102,7 +102,7 @@ jobs:
       - run: pnpm run build
 
   test:
-    name: Run visual tests
+    name: Run e2e tests
     needs: install
     runs-on: ubuntu-latest
     container:

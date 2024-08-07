@@ -24,4 +24,5 @@ To see the generated report on a host:
 pnpm exec playwright show-report
 ```
 
-> _Note:_ This requires [Docker](https://www.docker.com/) to be running on your machine.
+> [!NOTE]
+> This requires [Docker](https://www.docker.com/) to be running on your machine.

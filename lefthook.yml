@@ -3,7 +3,7 @@ pre-commit:
   commands:
     copyright:
       glob: "*.{js,ts,jsx,tsx}"
-      run: node scripts/copyrightLinter.js {staged_files} --fix
+      run: pnpm lint:copyright {staged_files} --fix
       stage_fixed: true
 
     format:
@@ -17,6 +17,7 @@ pre-commit:
       stage_fixed: true
 
     prettier:
-      exclude: "*.{js,ts,jsx,tsx}"
-      run: pnpm prettier {staged_files} --write
+      exclude:
+        - "*.{js,ts,jsx,tsx}"
+      run: pnpm exec prettier {staged_files} --ignore-unknown --write
       stage_fixed: true

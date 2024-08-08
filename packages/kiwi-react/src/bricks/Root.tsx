@@ -29,9 +29,8 @@ function Styles() {
 			return;
 		}
 
-		loadStyles(rootNode).then((loaded) => {
-			if (loaded) templateRef.current?.remove();
-		});
+		const { loaded } = loadStyles(rootNode, { css: rawStyles });
+		if (loaded) templateRef.current?.remove();
 	}, []);
 
 	return <template ref={templateRef} />;
@@ -42,44 +41,44 @@ function Styles() {
 /** Maintains a single stylesheet object per window to enable reuse. */
 const styleSheets = new WeakMap<Window, CSSStyleSheet>();
 
-/** Adds an adopted stylesheet to the root node, and falls back to <style> element on older browsers. */
-function loadStyles(rootNode: Document | ShadowRoot) {
-	return new Promise((resolve) =>
-		resolve(
-			(() => {
-				if (!isBrowser) return false;
+/**
+ * Adds css to the root node using `adoptedStyleSheets` in modern browsers
+ * and falls back to using a `<style>` element in older browsers.
+ */
+function loadStyles(rootNode: Document | ShadowRoot, { css }: { css: string }) {
+	const loaded = (() => {
+		if (!isBrowser) return false;
 
-				const ownerDocument = getOwnerDocument(rootNode);
-				const _window = getWindow(rootNode);
+		const ownerDocument = getOwnerDocument(rootNode);
+		const _window = getWindow(rootNode);
 
-				if (!ownerDocument || !_window) return false;
+		if (!ownerDocument || !_window) return false;
 
-				// Inject <style> elements if `adoptedStyleSheets` is not supported.
-				if (
-					!supportsAdoptedStylesheets &&
-					!rootNode.querySelector("style[data-kiwi]")
-				) {
-					const styleElement = ownerDocument.createElement("style");
-					styleElement.dataset.kiwi = "true";
-					styleElement.textContent = rawStyles;
-					((rootNode as Document).head || rootNode).appendChild(styleElement);
-					return true;
-				}
+		// Inject <style> elements if `adoptedStyleSheets` is not supported.
+		if (
+			!supportsAdoptedStylesheets &&
+			!rootNode.querySelector("style[data-kiwi]")
+		) {
+			const styleElement = ownerDocument.createElement("style");
+			styleElement.dataset.kiwi = "true";
+			styleElement.textContent = css;
+			((rootNode as Document).head || rootNode).appendChild(styleElement);
+			return true;
+		}
 
-				const styleSheet =
-					styleSheets.get(_window) || new _window.CSSStyleSheet();
-				if (!styleSheets.has(_window)) {
-					styleSheets.set(_window, styleSheet);
-				}
-				styleSheet.replaceSync(rawStyles);
+		const styleSheet = styleSheets.get(_window) || new _window.CSSStyleSheet();
+		if (!styleSheets.has(_window)) {
+			styleSheets.set(_window, styleSheet);
+		}
+		styleSheet.replaceSync(css);
 
-				if (!rootNode.adoptedStyleSheets.includes(styleSheet)) {
-					rootNode.adoptedStyleSheets.push(styleSheet);
-				}
-				return true;
-			})(),
-		),
-	);
+		if (!rootNode.adoptedStyleSheets.includes(styleSheet)) {
+			rootNode.adoptedStyleSheets.push(styleSheet);
+		}
+		return true;
+	})();
+
+	return { loaded };
 }
 
 // ----------------------------------------------------------------------------

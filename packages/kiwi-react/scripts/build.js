@@ -23,6 +23,28 @@ await esbuild.build({
 	plugins: [inlineCssPlugin()],
 });
 
+/**
+ * This plugin inlines the contents of a CSS file as a JavaScript string when the
+ * CSS file is imported with the `?inline` query param (similar to [Vite](https://vitejs.dev/guide/features.html#disabling-css-injection-into-the-page)).
+ * It also bundles, minifies, and does syntax-lowering on the CSS file using esbuild.
+ *
+ * Input:
+ * ```css
+ * button {
+ *   span {
+ *     user-select: none;
+ *   }
+ * }
+ * ```
+ * ```js
+ * import css from "./styles.css?inline";
+ * ```
+ *
+ * Output:
+ * ```js
+ * const css = "button span{-webkit-user-select:none;user-select:none}";
+ * ```
+ */
 function inlineCssPlugin() {
 	return /** @type {esbuild.Plugin} */ ({
 		name: "inline-css",
@@ -43,12 +65,13 @@ function inlineCssPlugin() {
 			});
 
 			onLoad({ filter: /.*/, namespace: "inline-css" }, async (args) => {
-				// Feed the CSS file back into esbuild to bundle and minify it
+				// Feed the CSS file back into esbuild to bundle, minify and vendor-prefix it
 				const result = await esbuild.build({
 					entryPoints: [args.path],
 					bundle: true,
 					write: false,
 					minify: true,
+					target: ["chrome110", "firefox110", "safari16"],
 				});
 
 				const css = result.outputFiles[0].text;

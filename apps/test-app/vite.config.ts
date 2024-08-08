@@ -43,6 +43,7 @@ function esbuildBundleCss() {
 				bundle: true,
 				entryPoints: [id.replace(/\?inline$/, "")],
 				minify: true,
+				target: ["chrome110", "firefox110", "safari16"],
 			});
 			return { code: result.outputFiles[0].text };
 		},

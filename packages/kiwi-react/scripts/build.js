@@ -42,7 +42,7 @@ await esbuild.build({
  *
  * Output:
  * ```js
- * const css = "button span{-webkit-user-select:none;user-select:none}";
+ * const css = String.raw`button span{-webkit-user-select:none;user-select:none}`;
  * ```
  */
 function inlineCssPlugin() {

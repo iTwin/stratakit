@@ -10,7 +10,7 @@ const entryPoints = await fg("src/**/*.{ts,tsx}", {
 	ignore: ["**/*.d.ts"],
 });
 
-esbuild.build({
+await esbuild.build({
 	entryPoints,
 	entryNames: "[dir]/[name]",
 	outbase: "src",

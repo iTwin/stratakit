@@ -2,10 +2,7 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-export default /*css*/ `
-@layer components.kiwi {
-  .\🥝-button {
-    font: inherit;
-  }
+declare module "*.css?inline" {
+	const content: string;
+	export default content;
 }
-`;

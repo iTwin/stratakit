@@ -65,6 +65,9 @@ importers:
       "@types/react-dom":
         specifier: "*"
         version: 18.3.0
+      esbuild:
+        specifier: ^0.23.0
+        version: 0.23.0
       typescript:
         specifier: "5"
         version: 5.5.4

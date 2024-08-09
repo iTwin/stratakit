@@ -6,7 +6,10 @@
 	"license": "MIT",
 	"sideEffects": false,
 	"exports": {
-		"./bricks": "./src/bricks/index.ts",
+		"./bricks": {
+			"development": "./src/bricks/index.ts",
+			"default": "./dist/bricks/index.js"
+		},
 		"./package.json": "./package.json"
 	},
 	"files": [
@@ -34,6 +37,7 @@
 		"ui"
 	],
 	"scripts": {
+		"build": "rm -rf dist && node scripts/build.js && tsc --outDir dist",
 		"format": "biome format ./src",
 		"lint": "biome lint ./src"
 	},
@@ -44,6 +48,7 @@
 		"@types/node": "*",
 		"@types/react": "*",
 		"@types/react-dom": "*",
+		"esbuild": "^0.23.0",
 		"react": "18",
 		"react-dom": "18",
 		"typescript": "5"

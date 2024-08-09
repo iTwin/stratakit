@@ -4,7 +4,7 @@
 	"version": "0.0.0",
 	"description": "Monorepo for the kiwi design system",
 	"scripts": {
-		"build": "pnpm --filter=@itwin/test-app build",
+		"build": "pnpm --filter=\"./packages/**\" --filter=\"./apps/**\" build",
 		"dev": "pnpm --filter=@itwin/test-app dev",
 		"format": "pnpm --recursive --no-bail format",
 		"lint": "pnpm --recursive --no-bail lint",

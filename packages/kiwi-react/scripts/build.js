@@ -16,6 +16,18 @@ await esbuild.build({
 	entryNames: "[dir]/[name]",
 	outbase: "src",
 	outdir: "dist",
+	bundle: false,
+	format: "esm",
+	jsx: "automatic",
+	target: "es2021",
+});
+
+// Run esbuild again, only to inline bundled CSS inside `.css.ts` files
+await esbuild.build({
+	entryPoints: await fg("src/**/*.css.ts", { onlyFiles: true }),
+	entryNames: "[dir]/[name]",
+	outbase: "src",
+	outdir: "dist",
 	bundle: true,
 	format: "esm",
 	jsx: "automatic",

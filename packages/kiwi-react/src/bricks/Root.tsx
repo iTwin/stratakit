@@ -3,7 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 import * as React from "react";
-import rawStyles from "./styles.css?inline";
+import rawStyles from "./styles.css.js";
 
 /**
  * Component to be used at the root of your application. It ensures that kiwi styles are loaded

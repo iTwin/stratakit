@@ -14,6 +14,7 @@
 		"*.ts": "${capture}.js, ${capture}.css,",
 		"*.jsx": "${capture}.js, ${capture}.css",
 		"*.js": "${capture}.js.map, ${capture}.min.js, ${capture}.d.ts, ${capture}.css",
+		"*.css": "${capture}.css.ts",
 		".gitignore": ".gitattributes",
 		"Dockerfile": ".dockerignore"
 	},

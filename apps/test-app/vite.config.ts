@@ -35,16 +35,16 @@ function esbuildBundleCss() {
 
 		async transform(_, id) {
 			if (!isDev) return;
-			if (!/\.css\?inline$/.test(id)) {
-				return;
-			}
-			const result = esbuild.buildSync({
-				write: false,
-				bundle: true,
+			if (!id.endsWith(".css?inline")) return;
+
+			const result = await esbuild.build({
 				entryPoints: [id.replace(/\?inline$/, "")],
+				bundle: true,
+				write: false,
 				minify: true,
 				target: ["chrome110", "firefox110", "safari16"],
 			});
+
 			return { code: result.outputFiles[0].text };
 		},
 

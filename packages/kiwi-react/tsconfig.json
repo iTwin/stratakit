@@ -23,8 +23,9 @@
 		"isolatedModules": true,
 		"verbatimModuleSyntax": true,
 		"baseUrl": ".",
-		"emitDeclarationOnly": true
+		"emitDeclarationOnly": true,
+		"types": ["./types.d.ts"]
 	},
-	"include": ["src"],
+	"include": ["src", "types.d.ts"],
 	"exclude": ["node_modules", "dist/**/*"]
 }

@@ -25,7 +25,7 @@ function Styles() {
 
 	useLayoutEffect(() => {
 		const rootNode = templateRef.current?.getRootNode();
-		if (!(rootNode instanceof Document) && !(rootNode instanceof ShadowRoot)) {
+		if (!isDocument(rootNode) && !(rootNode instanceof ShadowRoot)) {
 			return;
 		}
 
@@ -88,8 +88,12 @@ const isBrowser = typeof document !== "undefined";
 const supportsAdoptedStylesheets =
 	isBrowser && "adoptedStyleSheets" in Document.prototype;
 
+function isDocument(node?: Node): node is Document {
+	return node instanceof Document || !!(node as Document)?.documentElement;
+}
+
 function getOwnerDocument(node: Node) {
-	return (node instanceof Document ? node : node.ownerDocument) || null;
+	return (isDocument(node) ? node : node.ownerDocument) || null;
 }
 
 function getWindow(node: Node) {

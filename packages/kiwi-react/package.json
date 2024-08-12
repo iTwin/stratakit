@@ -42,6 +42,7 @@
 		"lint": "biome lint ./src"
 	},
 	"dependencies": {
+		"@ariakit/react": "^0.4.8",
 		"classnames": "^2.5.1"
 	},
 	"devDependencies": {

@@ -12,6 +12,8 @@ export default function Page() {
 
 	return (
 		<>
+			<h1>Textarea</h1>
+
 			<Label htmlFor={id}>Fruit</Label>
 			<Textarea id={id} rows={3} disabled={disabled} />
 		</>

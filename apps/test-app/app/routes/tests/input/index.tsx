@@ -12,6 +12,8 @@ export default function Page() {
 
 	return (
 		<>
+			<h1>Input</h1>
+
 			<Label htmlFor={id}>Fruit</Label>
 			<Input id={id} disabled={disabled} />
 		</>

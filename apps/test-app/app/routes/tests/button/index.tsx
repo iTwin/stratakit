@@ -10,7 +10,8 @@ export default function Page() {
 
 	return (
 		<>
-			<h1>Hello</h1>
+			<h1>Button</h1>
+
 			<Button
 				disabled={disabled}
 				onClick={(e) => {

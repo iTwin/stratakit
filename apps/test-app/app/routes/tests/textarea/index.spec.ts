@@ -16,7 +16,7 @@ test("default", async ({ page }) => {
 	await expect(textarea).toBeFocused();
 
 	await page.keyboard.type("apple");
-	await expect(textarea).toHaveValue("");
+	await expect(textarea).toHaveValue("apple");
 });
 
 test("disabled", async ({ page }) => {

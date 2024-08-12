@@ -20,7 +20,7 @@ test("default", async ({ page }) => {
 });
 
 test("disabled", async ({ page }) => {
-	await page.goto("/tests/input");
+	await page.goto("/tests/input?disabled=true");
 
 	const input = page.locator("input");
 	await expect(input).toHaveAccessibleName("Fruit");

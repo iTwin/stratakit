@@ -20,7 +20,7 @@ test("default", async ({ page }) => {
 });
 
 test("disabled", async ({ page }) => {
-	await page.goto("/tests/input");
+	await page.goto("/tests/textarea?disabled=true");
 
 	const textarea = page.locator("textarea");
 	await expect(textarea).toHaveAccessibleName("Fruit");

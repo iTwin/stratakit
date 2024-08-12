@@ -28,9 +28,10 @@ test("disabled", async ({ page }) => {
 	await page.keyboard.press("Tab");
 	await expect(button).toBeFocused();
 
-	await page.keyboard.press("Enter");
+	// text should not change when a disabled button is clicked
+	await button.click({ force: true });
 	await expect(button).toHaveAccessibleName("Hello");
 
-	await button.click();
+	await page.keyboard.press("Enter");
 	await expect(button).toHaveAccessibleName("Hello");
 });

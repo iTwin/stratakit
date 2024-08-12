@@ -56,6 +56,9 @@ importers:
       "@remix-run/dev":
         specifier: ^2.11.0
         version: 2.11.0(@remix-run/react@2.11.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.5.4))(@remix-run/serve@2.11.0(typescript@5.5.4))(@types/node@22.0.2)(typescript@5.5.4)(vite@5.3.5(@types/node@22.0.2))
+      "@remix-run/v1-route-convention":
+        specifier: ^0.1.4
+        version: 0.1.4(@remix-run/dev@2.11.0(@remix-run/react@2.11.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.5.4))(@remix-run/serve@2.11.0(typescript@5.5.4))(@types/node@22.0.2)(typescript@5.5.4)(vite@5.3.5(@types/node@22.0.2)))
       "@types/node":
         specifier: "*"
         version: 22.0.2
@@ -1306,6 +1309,14 @@ packages:
     peerDependenciesMeta:
       typescript:
         optional: true
+
+  "@remix-run/v1-route-convention@0.1.4":
+    resolution:
+      {
+        integrity: sha512-fVTr9YlNLWfaiM/6Y56sOtcY8x1bBJQHY0sDWO5+Z/vjJ2Ni7fe2fwrzs1jUFciMPXqBQdFGePnkuiYLz3cuUA==,
+      }
+    peerDependencies:
+      "@remix-run/dev": ^1.15.0 || ^2.0.0
 
   "@remix-run/web-blob@3.1.0":
     resolution:
@@ -3450,6 +3461,13 @@ packages:
         integrity: sha512-OqbOk5oEQeAZ8WXWydlu9HJjz9WVdEIvamMCcXmuqUYjTknH/sqsWvhQ3vgwKFRR1HpjvNBKQ37nbJgYzGqGcg==,
       }
     engines: { node: ">=6" }
+
+  minimatch@7.4.6:
+    resolution:
+      {
+        integrity: sha512-sBz8G/YjVniEz6lKPNpKxXwazJe4c19fEfV2GDMX6AjFz+MX9uDWIZW8XreVhkFW3fkIdTv/gxWr/Kks5FFAVw==,
+      }
+    engines: { node: ">=10" }
 
   minimatch@9.0.5:
     resolution:
@@ -5663,6 +5681,11 @@ snapshots:
     optionalDependencies:
       typescript: 5.5.4
 
+  "@remix-run/v1-route-convention@0.1.4(@remix-run/dev@2.11.0(@remix-run/react@2.11.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.5.4))(@remix-run/serve@2.11.0(typescript@5.5.4))(@types/node@22.0.2)(typescript@5.5.4)(vite@5.3.5(@types/node@22.0.2)))":
+    dependencies:
+      "@remix-run/dev": 2.11.0(@remix-run/react@2.11.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.5.4))(@remix-run/serve@2.11.0(typescript@5.5.4))(@types/node@22.0.2)(typescript@5.5.4)(vite@5.3.5(@types/node@22.0.2))
+      minimatch: 7.4.6
+
   "@remix-run/web-blob@3.1.0":
     dependencies:
       "@remix-run/web-stream": 1.1.0
@@ -7080,6 +7103,10 @@ snapshots:
   mime@1.6.0: {}
 
   mimic-fn@2.1.0: {}
+
+  minimatch@7.4.6:
+    dependencies:
+      brace-expansion: 2.0.1
 
   minimatch@9.0.5:
     dependencies:

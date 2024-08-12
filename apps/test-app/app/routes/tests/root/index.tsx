@@ -2,7 +2,7 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-import { Button, Root } from "@itwin/kiwi-react/bricks";
+import { Button, Root, VisuallyHidden } from "@itwin/kiwi-react/bricks";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { createPortal } from "react-dom";
 
@@ -12,7 +12,9 @@ export default function Page() {
 
 	return (
 		<>
-			<h1>Root</h1>
+			<VisuallyHidden render={(props) => <h1 {...props} />}>
+				Root
+			</VisuallyHidden>
 
 			{shadow &&
 				createPortal(

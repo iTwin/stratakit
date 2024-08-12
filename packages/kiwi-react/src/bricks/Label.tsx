@@ -7,8 +7,9 @@ import * as Ariakit from "@ariakit/react";
 
 interface LabelProps extends Ariakit.RoleProps<"label"> {}
 
-export const Label = React.forwardRef<HTMLLabelElement, LabelProps>(
-	(props, forwardedRef) => {
-		return <Ariakit.Role.label {...props} ref={forwardedRef} />;
-	},
-);
+export const Label = React.forwardRef<
+	React.ElementRef<typeof Ariakit.Role.label>,
+	LabelProps
+>((props, forwardedRef) => {
+	return <Ariakit.Role.label {...props} ref={forwardedRef} />;
+});

@@ -6,13 +6,13 @@ import { Button, Root } from "@itwin/kiwi-react/bricks";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { createPortal } from "react-dom";
 
-export default function Index() {
+export default function Page() {
 	const shadow = useShadow(useCallback(() => document.body, []));
 	const popout = usePopout();
 
 	return (
 		<>
-			<h1>Hello</h1>
+			<h1>Root</h1>
 
 			{shadow &&
 				createPortal(

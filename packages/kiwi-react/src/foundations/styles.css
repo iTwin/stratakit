@@ -2,7 +2,5 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-import foundations from "../foundations/styles.css.js";
-import bricks from "./styles.css?inline";
-
-export default foundations + bricks;
+@import "./theme.css" layer(kiwi.foundations);
+@import "./typography.css" layer(kiwi.foundations);

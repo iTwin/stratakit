@@ -1,0 +1,25 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+
+:root,
+:host {
+	--kiwi-font-family-sans: "Inter", "Noto Sans", "Open Sans", sans-serif;
+	--kiwi-font-family-mono: "Roboto Mono", "Noto Sans Mono", ui-monospace,
+		"Segoe UI Mono", Consolas, monospace;
+
+	--kiwi-font-size-s: 0.75rem; /* 12px */
+	--kiwi-font-size-m: 0.875rem; /* 14px */
+	--kiwi-font-size-l: 1rem; /* 16px */
+
+	--kiwi-font-weight-thin: 100;
+	--kiwi-font-weight-extralight: 200;
+	--kiwi-font-weight-light: 300;
+	--kiwi-font-weight-regular: 400;
+	--kiwi-font-weight-medium: 500;
+	--kiwi-font-weight-semibold: 600;
+	--kiwi-font-weight-bold: 700;
+	--kiwi-font-weight-extrabold: 800;
+	--kiwi-font-weight-black: 900;
+}

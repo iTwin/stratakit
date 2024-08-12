@@ -1,0 +1,144 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+:root,
+:host {
+	color-scheme: dark; /* only dark theme (for now) */
+
+	/* #region color.background */
+	--kiwi-color-bg-neutral: oklch(59.69% 0.156 49.77 / 0.5); /* gray-500 */
+	--kiwi-color-bg-neutralFaded: oklch(34.4% 0.011 264.42); /* gray-800 */
+
+	--kiwi-color-bg-primary: oklch(54% 0.1 170.26); /* aurora-500 */
+	--kiwi-color-bg-primaryFaded: oklch(67.95% 0.077 175.72); /* aurora-300 */
+
+	--kiwi-color-bg-info: oklch(55.68% 0.187 255.82); /* blue-500 */
+	--kiwi-color-bg-infoFaded: oklch(34.71% 0.108 254.29); /* blue-800 */
+
+	--kiwi-color-bg-positive: oklch(53.64% 0.173 140.57); /* green-500 */
+	--kiwi-color-bg-positiveFaded: oklch(33.63% 0.106 139.87); /* green-800 */
+
+	--kiwi-color-bg-attention: oklch(55.63% 0.116 75.58); /* yellow-500 */
+	--kiwi-color-bg-attentionFaded: oklch(34.69% 0.071 77.24); /* yellow-800 */
+
+	--kiwi-color-bg-severe: oklch(56.98% 0.174 41.22); /* orange-500 */
+	--kiwi-color-bg-severeFaded: oklch(35.66% 0.103 43.82); /* orange-800 */
+
+	--kiwi-color-bg-critical: oklch(58.02% 0.221 19.39); /* red-500 */
+	--kiwi-color-bg-criticalFaded: oklch(36.08% 0.133 17.52); /* red-800 */
+
+	--kiwi-color-bg-highlight: oklch(57.89% 0.211 6.71); /* pink-500 */
+	--kiwi-color-bg-highlightFaded: oklch(36.11% 0.127 5.3); /* pink-800 */
+
+	--kiwi-color-bg-special: oklch(56.59% 0.149 299.52); /* purple-500 */
+	--kiwi-color-bg-specialFaded: oklch(35.32% 0.092 299.61); /* purple-800 */
+
+	--kiwi-color-bg-disabled: oklch(1 0 0); /* white-100 */
+	--kiwi-color-bg-disabledFaded: oklch(1 0 0); /* white-100 */
+
+	--kiwi-color-bg-page: oklch(22.52% 0.005 248.05); /* gray-950 */
+	--kiwi-color-bg-pageFaded: oklch(41.45% 0.013 256.75); /* gray-700 */
+
+	--kiwi-color-bg-elevationBase: oklch(34.4% 0.011 264.42); /* gray-800 */
+	--kiwi-color-bg-elevationRaised: oklch(41.45% 0.013 256.75); /* gray-700 */
+	--kiwi-color-bg-elevationOverlay: oklch(48.26% 0.017 254.7); /* gray-600 */
+
+	--kiwi-color-bg-emphasis: oklch(14.4% 0.003 247.09); /* gray-1000 */
+	/* #endregion */
+
+	/* #region color.border */
+	--kiwi-color-border-neutral: oklch(1 0 0); /* white-100 */
+	--kiwi-color-border-neutralFaded: oklch(69.04% 0.014 255.53); /* gray-300 */
+	--kiwi-color-border-neutralDimmed: oklch(41.45% 0.013 256.75); /* gray-700 */
+
+	--kiwi-color-border-primary: oklch(54% 0.1 170.26); /* aurora-500 */
+	--kiwi-color-border-primaryFaded: oklch(67.95% 0.077 175.72); /* aurora-300 */
+
+	--kiwi-color-border-info: oklch(68.84% 0.131 251.14); /* blue-300 */
+	--kiwi-color-border-infoFaded: oklch(41.55% 0.136 255.23); /* blue-700 */
+
+	--kiwi-color-border-positive: oklch(67.58% 0.14 138.68); /* green-300 */
+	--kiwi-color-border-positiveFaded: oklch(40.36% 0.129 140.08); /* green-700 */
+
+	--kiwi-color-border-attention: oklch(69.31% 0.129 79.75); /* yellow-300 */
+	--kiwi-color-border-attentionFaded: oklch(41.7% 0.086 77.28); /* yellow-700 */
+
+	--kiwi-color-border-severe: oklch(70.02% 0.122 48.82); /* orange-300 */
+	--kiwi-color-border-severeFaded: oklch(42.72% 0.127 42.5); /* orange-700 */
+
+	--kiwi-color-border-critical: oklch(70.76% 0.147 9.28); /* red-300 */
+	--kiwi-color-border-criticalFaded: oklch(43.46% 0.163 18.38); /* red-700 */
+
+	--kiwi-color-border-highlight: oklch(70.86% 0.151 358.93); /* pink-300 */
+	--kiwi-color-border-highlightFaded: oklch(43.31% 0.155 5.67); /* pink-700 */
+
+	--kiwi-color-border-special: oklch(69.87% 0.101 301.39); /* purple-300 */
+	--kiwi-color-border-specialFaded: oklch(42.53% 0.116 298.97); /* purple-700 */
+
+	--kiwi-color-border-disabled: oklch(1 0 0); /* white-100 */
+
+	--kiwi-color-border-glow: oklch(1 0 0 / 8%); /* white-8 */
+	--kiwi-color-border-glowFaded: oklch(1 0 0 / 4%); /* white-4 */
+	/* #endregion */
+
+	/* #region color.text */
+	--kiwi-color-text-neutral: oklch(1 0 0 / 96%); /* white-96 */
+	--kiwi-color-text-neutralFaded: oklch(82.77% 0.007 247.91); /* gray-75 */
+
+	--kiwi-color-text-primary: oklch(75.2% 0.062 176.03); /* aurora-200 */
+
+	--kiwi-color-text-info: oklch(1 0 0 / 96%); /* white-96 */
+	--kiwi-color-text-infoFaded: oklch(82.51% 0.071 249.98); /* blue-100 */
+
+	--kiwi-color-text-positive: oklch(1 0 0 / 96%); /* white-96 */
+	--kiwi-color-text-positiveFaded: oklch(82.11% 0.078 138.1); /* green-100 */
+
+	--kiwi-color-text-attention: oklch(1 0 0 / 96%); /* white-96 */
+	--kiwi-color-text-attentionFaded: oklch(82.78% 0.08 84.58); /* yellow-100 */
+
+	--kiwi-color-text-severe: oklch(1 0 0 / 96%); /* white-96 */
+	--kiwi-color-text-severeFaded: oklch(83.25% 0.064 50.99); /* orange-100 */
+
+	--kiwi-color-text-critical: oklch(1 0 0 / 96%); /* white-96 */
+	--kiwi-color-text-criticalFaded: oklch(83.74% 0.075 6.15); /* red-100 */
+
+	--kiwi-color-text-highlight: oklch(1 0 0 / 96%); /* white-96 */
+	--kiwi-color-text-highlightFaded: oklch(83.72% 0.078 356.17); /* pink-100 */
+
+	--kiwi-color-text-special: oklch(1 0 0 / 96%); /* white-96 */
+	--kiwi-color-text-specialFaded: oklch(83.23% 0.055 303.17); /* purple-100 */
+
+	--kiwi-color-text-emphasis: oklch(1 0 0 / 96%); /* white-96 */
+	/* #endregion */
+
+	/* #region color.icon */
+	--kiwi-color-icon-neutral: oklch(1 0 0); /* white-100 */
+	--kiwi-color-icon-neutralFaded: oklch(62.09% 0.017 257.22); /* gray-400 */
+	--kiwi-color-icon-neutralDimmed: oklch(55.22% 0.018 253.99); /* gray-500 */
+
+	--kiwi-color-icon-primary: oklch(89.34% 0.027 178.99); /* aurora-50 */
+
+	--kiwi-color-icon-info: oklch(68.84% 0.131 251.14); /* blue-300 */
+
+	--kiwi-color-icon-positive: oklch(67.58% 0.14 138.68); /* green-300 */
+
+	--kiwi-color-icon-attention: oklch(69.31% 0.129 79.75); /* yellow-300 */
+
+	--kiwi-color-icon-severe: oklch(70.02% 0.122 48.82); /* orange-300 */
+
+	--kiwi-color-icon-critical: oklch(70.76% 0.147 9.28); /* red-300 */
+
+	--kiwi-color-icon-highlight: oklch(70.86% 0.151 358.93); /* pink-300 */
+
+	--kiwi-color-icon-special: oklch(69.87% 0.101 301.39); /* purple-300 */
+
+	--kiwi-color-icon-disabled: oklch(1 0 0); /* white-100 */
+	/* #endregion */
+
+	/* #region color.static */
+	--kiwi-color-static-black: oklch(0 0 0); /* black-100 */
+	--kiwi-color-static-white: oklch(1 0 0); /* white-100 */
+	--kiwi-color-static-brand: oklch(54% 0.1 170.26); /* aurora-500 */
+	/* #endregion */
+}

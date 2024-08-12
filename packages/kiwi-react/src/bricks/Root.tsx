@@ -89,7 +89,7 @@ const supportsAdoptedStylesheets =
 	isBrowser && "adoptedStyleSheets" in Document.prototype;
 
 function isDocument(node?: Node): node is Document {
-	return node instanceof Document || !!(node as Document)?.documentElement;
+	return node?.nodeType === Node.DOCUMENT_NODE;
 }
 
 function getOwnerDocument(node: Node) {

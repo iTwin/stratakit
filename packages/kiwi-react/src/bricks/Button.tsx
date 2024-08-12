@@ -8,15 +8,16 @@ import * as Ariakit from "@ariakit/react";
 
 interface ButtonProps extends Ariakit.ButtonProps {}
 
-export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-	(props, forwardedRef) => {
-		return (
-			<Ariakit.Button
-				accessibleWhenDisabled
-				{...props}
-				className={cx("🥝-button", props.className)}
-				ref={forwardedRef}
-			/>
-		);
-	},
-);
+export const Button = React.forwardRef<
+	React.ElementRef<typeof Ariakit.Button>,
+	ButtonProps
+>((props, forwardedRef) => {
+	return (
+		<Ariakit.Button
+			accessibleWhenDisabled
+			{...props}
+			className={cx("🥝-button", props.className)}
+			ref={forwardedRef}
+		/>
+	);
+});

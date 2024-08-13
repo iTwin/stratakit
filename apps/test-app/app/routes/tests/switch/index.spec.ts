@@ -16,7 +16,7 @@ test("default", async ({ page }) => {
 	await page.keyboard.press("Tab");
 	await expect(toggleSwitch).toBeFocused();
 
-	await page.keyboard.press(" ");
+	await page.keyboard.press("Space");
 	await expect(toggleSwitch).toBeChecked();
 
 	await label.click();
@@ -36,8 +36,7 @@ test("checked", async ({ page }) => {
 test("disabled", async ({ page }) => {
 	await page.goto("/tests/switch?disabled=true");
 
-	const toggleSwitch = page.getByRole("switch");
-	await expect(toggleSwitch).toHaveAccessibleName("Toggle me");
+	const toggleSwitch = page.getByRole("switch", { name: "Toggle me" });
 	await expect(toggleSwitch).toBeDisabled();
 	await expect(toggleSwitch).not.toBeChecked();
 
@@ -45,6 +44,6 @@ test("disabled", async ({ page }) => {
 	await expect(toggleSwitch).toBeFocused();
 
 	// should not be able to toggle the disabled switch
-	await page.keyboard.press(" ");
+	await page.keyboard.press("Space");
 	await expect(toggleSwitch).not.toBeChecked();
 });

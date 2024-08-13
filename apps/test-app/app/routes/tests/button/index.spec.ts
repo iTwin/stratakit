@@ -5,7 +5,7 @@
 import { test, expect } from "@playwright/test";
 
 test("default", async ({ page }) => {
-	await page.goto("/test/button");
+	await page.goto("/tests/button");
 
 	const button = page.getByRole("button");
 	await expect(button).toHaveAccessibleName("Hello");
@@ -19,7 +19,7 @@ test("default", async ({ page }) => {
 });
 
 test("disabled", async ({ page }) => {
-	await page.goto("/test/button?disabled=true");
+	await page.goto("/tests/button?disabled=true");
 
 	const button = page.getByRole("button");
 	await expect(button).toHaveAccessibleName("Hello");

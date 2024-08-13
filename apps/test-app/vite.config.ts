@@ -6,6 +6,7 @@ import { vitePlugin as remix } from "@remix-run/dev";
 import { defineConfig, type Plugin } from "vite";
 import tsconfigPaths from "vite-tsconfig-paths";
 import * as esbuild from "esbuild";
+import { createRoutesFromFolders } from "@remix-run/v1-route-convention";
 
 export default defineConfig({
 	plugins: [
@@ -15,7 +16,14 @@ export default defineConfig({
 				v3_relativeSplatPath: true,
 				v3_throwAbortReason: true,
 			},
-			ignoredRouteFiles: ["**/*.spec.*"],
+			ignoredRouteFiles: ["**/*"], // Ignore default Remix v2 file conventions.
+			routes: (defineRoutes) => {
+				// `createRoutesFromFolders` will follow the Remix v1 route convention.
+				// See https://remix.run/docs/en/v1/file-conventions/routes-files
+				return createRoutesFromFolders(defineRoutes, {
+					ignoredFilePatterns: ["**/*.spec.*", "**/.DS_Store"],
+				});
+			},
 		}),
 		tsconfigPaths(),
 		esbuildBundleCss(),

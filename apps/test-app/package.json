@@ -24,6 +24,7 @@
 	"devDependencies": {
 		"@playwright/test": "^1.46.0",
 		"@remix-run/dev": "^2.11.0",
+		"@remix-run/v1-route-convention": "^0.1.4",
 		"@types/node": "*",
 		"@types/react": "*",
 		"@types/react-dom": "*",

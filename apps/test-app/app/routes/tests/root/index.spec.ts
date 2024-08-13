@@ -5,8 +5,8 @@
 import { test, expect } from "@playwright/test";
 
 test("default", async ({ page }) => {
-	await page.goto("/test/root", { waitUntil: "domcontentloaded" });
-	await expect(page.locator("h1")).toHaveText("Hello");
+	await page.goto("/tests/root", { waitUntil: "domcontentloaded" });
+	await expect(page.locator("h1")).toHaveText("Root");
 	await expect(page.locator("body")).toHaveScreenshot("shadow.png");
 
 	const popoutPromise = page.waitForEvent("popup");

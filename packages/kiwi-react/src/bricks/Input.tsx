@@ -3,20 +3,19 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 import * as React from "react";
-import cx from "classnames";
 import * as Ariakit from "@ariakit/react";
 
-interface ButtonProps extends Ariakit.ButtonProps {}
+interface InputProps extends Ariakit.FocusableProps<"input"> {}
 
-export const Button = React.forwardRef<
-	React.ElementRef<typeof Ariakit.Button>,
-	ButtonProps
+export const Input = React.forwardRef<
+	React.ElementRef<typeof Ariakit.Focusable>,
+	InputProps
 >((props, forwardedRef) => {
 	return (
-		<Ariakit.Button
+		<Ariakit.Focusable
+			render={<input />}
 			accessibleWhenDisabled
 			{...props}
-			className={cx("🥝-button", props.className)}
 			ref={forwardedRef}
 		/>
 	);

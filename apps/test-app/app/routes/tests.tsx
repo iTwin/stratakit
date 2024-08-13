@@ -2,9 +2,16 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-export { Root } from "./Root.js";
-export { Button } from "./Button.js";
-export { Input } from "./Input.js";
-export { Label } from "./Label.js";
-export { Textarea } from "./Textarea.js";
-export { VisuallyHidden } from "./VisuallyHidden.js";
+import type { MetaFunction } from "@remix-run/node";
+import { Outlet } from "@remix-run/react";
+
+export const meta: MetaFunction = () => {
+	return [
+		{ title: "Kiwi tests" },
+		{ name: "color-scheme", content: "dark light" },
+	];
+};
+
+export default function Page() {
+	return <Outlet />;
+}

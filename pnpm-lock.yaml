@@ -56,6 +56,9 @@ importers:
       "@remix-run/dev":
         specifier: ^2.11.0
         version: 2.11.0(@remix-run/react@2.11.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.5.4))(@remix-run/serve@2.11.0(typescript@5.5.4))(@types/node@22.0.2)(typescript@5.5.4)(vite@5.3.5(@types/node@22.0.2))
+      "@remix-run/v1-route-convention":
+        specifier: ^0.1.4
+        version: 0.1.4(@remix-run/dev@2.11.0(@remix-run/react@2.11.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.5.4))(@remix-run/serve@2.11.0(typescript@5.5.4))(@types/node@22.0.2)(typescript@5.5.4)(vite@5.3.5(@types/node@22.0.2)))
       "@types/node":
         specifier: "*"
         version: 22.0.2
@@ -80,6 +83,9 @@ importers:
 
   packages/kiwi-react:
     dependencies:
+      "@ariakit/react":
+        specifier: ^0.4.8
+        version: 0.4.8(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       classnames:
         specifier: ^2.5.1
         version: 2.5.1
@@ -113,6 +119,30 @@ packages:
         integrity: sha512-30iZtAPgz+LTIYoeivqYo853f02jBYSd5uGnGpkFV0M3xOt9aN73erkgYAmZU43x4VfqcnLxW9Kpg3R5LC4YYw==,
       }
     engines: { node: ">=6.0.0" }
+
+  "@ariakit/core@0.4.8":
+    resolution:
+      {
+        integrity: sha512-HQS+9CI7pMqqVlAt5bPGenT0/e65UxXY+PKtgU7Y+0UToBDBRolO5S9+UUSDm8OmJHSnq24owEGm1Mv28l5XCQ==,
+      }
+
+  "@ariakit/react-core@0.4.8":
+    resolution:
+      {
+        integrity: sha512-TzsddUWQwWYhrEVWHA/Gf7KCGx8rwFohAHfuljjqidKeZi2kUmuRAImCTG9oga34FWHFf4AdXQbBKclMNt0nrQ==,
+      }
+    peerDependencies:
+      react: ^17.0.0 || ^18.0.0 || ^19.0.0
+      react-dom: ^17.0.0 || ^18.0.0 || ^19.0.0
+
+  "@ariakit/react@0.4.8":
+    resolution:
+      {
+        integrity: sha512-Bb1vOrp0X52hxi1wE9TEHjjZ/Y08tVq2ZH+RFDwRQB3g04uVwrrhnTccHepC6rsObrDpAOV3/YlJCi4k/lSUaQ==,
+      }
+    peerDependencies:
+      react: ^17.0.0 || ^18.0.0 || ^19.0.0
+      react-dom: ^17.0.0 || ^18.0.0 || ^19.0.0
 
   "@babel/code-frame@7.24.7":
     resolution:
@@ -1057,6 +1087,24 @@ packages:
     cpu: [x64]
     os: [win32]
 
+  "@floating-ui/core@1.6.7":
+    resolution:
+      {
+        integrity: sha512-yDzVT/Lm101nQ5TCVeK65LtdN7Tj4Qpr9RTXJ2vPFLqtLxwOrpoxAHAJI8J3yYWUc40J0BDBheaitK5SJmno2g==,
+      }
+
+  "@floating-ui/dom@1.6.10":
+    resolution:
+      {
+        integrity: sha512-fskgCFv8J8OamCmyun8MfjB1Olfn+uZKjOKZ0vhYF3gRmEUXcGOjxWL8bBr7i4kIuPZ2KD2S3EUIOxnjC8kl2A==,
+      }
+
+  "@floating-ui/utils@0.2.7":
+    resolution:
+      {
+        integrity: sha512-X8R8Oj771YRl/w+c1HqAC1szL8zWQRwFvgDwT129k9ACdBoud/+/rX9V0qiMl6LWUdP9voC2nDVZYPMQQsb6eA==,
+      }
+
   "@isaacs/cliui@8.0.2":
     resolution:
       {
@@ -1261,6 +1309,14 @@ packages:
     peerDependenciesMeta:
       typescript:
         optional: true
+
+  "@remix-run/v1-route-convention@0.1.4":
+    resolution:
+      {
+        integrity: sha512-fVTr9YlNLWfaiM/6Y56sOtcY8x1bBJQHY0sDWO5+Z/vjJ2Ni7fe2fwrzs1jUFciMPXqBQdFGePnkuiYLz3cuUA==,
+      }
+    peerDependencies:
+      "@remix-run/dev": ^1.15.0 || ^2.0.0
 
   "@remix-run/web-blob@3.1.0":
     resolution:
@@ -3406,6 +3462,13 @@ packages:
       }
     engines: { node: ">=6" }
 
+  minimatch@7.4.6:
+    resolution:
+      {
+        integrity: sha512-sBz8G/YjVniEz6lKPNpKxXwazJe4c19fEfV2GDMX6AjFz+MX9uDWIZW8XreVhkFW3fkIdTv/gxWr/Kks5FFAVw==,
+      }
+    engines: { node: ">=10" }
+
   minimatch@9.0.5:
     resolution:
       {
@@ -4663,6 +4726,14 @@ packages:
     peerDependencies:
       browserslist: ">= 4.21.0"
 
+  use-sync-external-store@1.2.2:
+    resolution:
+      {
+        integrity: sha512-PElTlVMwpblvbNqQ82d2n6RjStvdSoNe9FG28kNfz3WiXilJm4DdNkEzRhCZuIDwY8U08WVihhGR5iRqAwfDiw==,
+      }
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+
   util-deprecate@1.0.2:
     resolution:
       {
@@ -4894,6 +4965,22 @@ snapshots:
     dependencies:
       "@jridgewell/gen-mapping": 0.3.5
       "@jridgewell/trace-mapping": 0.3.25
+
+  "@ariakit/core@0.4.8": {}
+
+  "@ariakit/react-core@0.4.8(react-dom@18.3.1(react@18.3.1))(react@18.3.1)":
+    dependencies:
+      "@ariakit/core": 0.4.8
+      "@floating-ui/dom": 1.6.10
+      react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
+      use-sync-external-store: 1.2.2(react@18.3.1)
+
+  "@ariakit/react@0.4.8(react-dom@18.3.1(react@18.3.1))(react@18.3.1)":
+    dependencies:
+      "@ariakit/react-core": 0.4.8(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
 
   "@babel/code-frame@7.24.7":
     dependencies:
@@ -5347,6 +5434,17 @@ snapshots:
   "@esbuild/win32-x64@0.23.0":
     optional: true
 
+  "@floating-ui/core@1.6.7":
+    dependencies:
+      "@floating-ui/utils": 0.2.7
+
+  "@floating-ui/dom@1.6.10":
+    dependencies:
+      "@floating-ui/core": 1.6.7
+      "@floating-ui/utils": 0.2.7
+
+  "@floating-ui/utils@0.2.7": {}
+
   "@isaacs/cliui@8.0.2":
     dependencies:
       string-width: 5.1.2
@@ -5582,6 +5680,11 @@ snapshots:
       turbo-stream: 2.2.0
     optionalDependencies:
       typescript: 5.5.4
+
+  "@remix-run/v1-route-convention@0.1.4(@remix-run/dev@2.11.0(@remix-run/react@2.11.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.5.4))(@remix-run/serve@2.11.0(typescript@5.5.4))(@types/node@22.0.2)(typescript@5.5.4)(vite@5.3.5(@types/node@22.0.2)))":
+    dependencies:
+      "@remix-run/dev": 2.11.0(@remix-run/react@2.11.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.5.4))(@remix-run/serve@2.11.0(typescript@5.5.4))(@types/node@22.0.2)(typescript@5.5.4)(vite@5.3.5(@types/node@22.0.2))
+      minimatch: 7.4.6
 
   "@remix-run/web-blob@3.1.0":
     dependencies:
@@ -7001,6 +7104,10 @@ snapshots:
 
   mimic-fn@2.1.0: {}
 
+  minimatch@7.4.6:
+    dependencies:
+      brace-expansion: 2.0.1
+
   minimatch@9.0.5:
     dependencies:
       brace-expansion: 2.0.1
@@ -7752,6 +7859,10 @@ snapshots:
       browserslist: 4.23.3
       escalade: 3.1.2
       picocolors: 1.0.1
+
+  use-sync-external-store@1.2.2(react@18.3.1):
+    dependencies:
+      react: 18.3.1
 
   util-deprecate@1.0.2: {}
 

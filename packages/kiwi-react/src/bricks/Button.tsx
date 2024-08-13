@@ -4,18 +4,20 @@
  *--------------------------------------------------------------------------------------------*/
 import * as React from "react";
 import cx from "classnames";
+import * as Ariakit from "@ariakit/react";
 
-export const Button = React.forwardRef(function Button(
-	props: React.ComponentPropsWithoutRef<"button">,
-	forwardedRef: React.Ref<HTMLButtonElement>,
-) {
+interface ButtonProps extends Ariakit.ButtonProps {}
+
+export const Button = React.forwardRef<
+	React.ElementRef<typeof Ariakit.Button>,
+	ButtonProps
+>((props, forwardedRef) => {
 	return (
-		<button
+		<Ariakit.Button
+			accessibleWhenDisabled
 			{...props}
 			className={cx("🥝-button", props.className)}
 			ref={forwardedRef}
-		>
-			{props.children}
-		</button>
+		/>
 	);
 });

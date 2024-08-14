@@ -7,7 +7,7 @@ pre-commit:
       stage_fixed: true
 
     format:
-      glob: "*.{js,ts,jsx,tsx}"
+      glob: "*.{js,ts,jsx,tsx,json,jsonc}"
       run: pnpm biome format --write {staged_files}
       stage_fixed: true
 
@@ -18,6 +18,6 @@ pre-commit:
 
     prettier:
       exclude:
-        - "*.{js,ts,jsx,tsx}"
+        - "*.{js,ts,jsx,tsx,json,jsonc}"
       run: pnpm exec prettier {staged_files} --ignore-unknown --write
       stage_fixed: true

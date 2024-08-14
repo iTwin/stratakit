@@ -1,8 +1,13 @@
 {
 	"$schema": "https://biomejs.dev/schemas/1.8.3/schema.json",
 	"files": {
-		"ignore": ["**/node_modules/**/*", "**/build/**/*", "**/dist/**/*"],
+		"ignore": ["package.json"],
 		"ignoreUnknown": true
+	},
+	"vcs": {
+		"enabled": true,
+		"clientKind": "git",
+		"useIgnoreFile": true
 	},
 	"overrides": [
 		{

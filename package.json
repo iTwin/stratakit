@@ -6,8 +6,8 @@
 	"scripts": {
 		"build": "pnpm --filter=\"./packages/**\" --filter=\"./apps/**\" build",
 		"dev": "pnpm --filter=@itwin/test-app dev",
-		"format": "pnpm --recursive --no-bail format",
-		"lint": "pnpm --recursive --no-bail lint",
+		"format": "biome format .",
+		"lint": "biome lint .",
 		"lint:copyright": "tsx scripts/copyright-linter.ts",
 		"prettier": "prettier . '!**/*.{js,jsx,ts,tsx}' --check",
 		"test": "pnpm --filter=@itwin/test-app test"

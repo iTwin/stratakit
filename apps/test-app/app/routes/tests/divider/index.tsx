@@ -12,7 +12,7 @@ export default function Page() {
 		<>
 			<h1>Divider</h1>
 
-			<Divider orientation={orientation} />
+			<Divider orientation={orientation as "horizontal" | "vertical"} />
 		</>
 	);
 }

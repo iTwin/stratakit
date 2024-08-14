@@ -12,11 +12,7 @@
 		},
 		"./package.json": "./package.json"
 	},
-	"files": [
-		"dist",
-		"CHANGELOG.md",
-		"LICENSE.md"
-	],
+	"files": ["dist", "CHANGELOG.md", "LICENSE.md"],
 	"description": "A React component library for the Kiwi design system",
 	"author": "Bentley Systems",
 	"homepage": "https://github.com/iTwin/kiwi",

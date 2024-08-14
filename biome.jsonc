@@ -1,7 +1,6 @@
 {
 	"$schema": "https://biomejs.dev/schemas/1.8.3/schema.json",
 	"files": {
-		"ignore": ["package.json"],
 		"ignoreUnknown": true
 	},
 	"vcs": {
@@ -14,6 +13,7 @@
 			"include": ["packages/kiwi-react/**"],
 			"linter": {
 				"rules": {
+					// a11y rules raise false alarms in packages
 					"a11y": { "all": false }
 				}
 			}

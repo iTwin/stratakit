@@ -6,13 +6,16 @@ import { Divider } from "@itwin/kiwi-react/bricks";
 import { useSearchParams } from "@remix-run/react";
 
 export default function Page() {
-	const orientation = useSearchParams()[0].get("orientation") || "horizontal";
+	const orientation = useSearchParams()[0].get("orientation") as
+		| "horizontal"
+		| "vertical"
+		| undefined;
 
 	return (
 		<>
 			<h1>Divider</h1>
 
-			<Divider orientation={orientation as "horizontal" | "vertical"} />
+			<Divider orientation={orientation} />
 		</>
 	);
 }

@@ -9,7 +9,7 @@
 		"format": "biome format .",
 		"lint": "biome lint .",
 		"lint:copyright": "tsx scripts/copyright-linter.ts",
-		"prettier": "prettier . '!**/*.{js,jsx,ts,tsx}' --check",
+		"prettier": "prettier . '!**/*.{js,jsx,ts,tsx,json,jsonc}' --check",
 		"test": "pnpm --filter=@itwin/test-app test"
 	},
 	"devDependencies": {

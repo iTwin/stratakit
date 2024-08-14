@@ -2,7 +2,7 @@ pre-commit:
   parallel: true
   commands:
     copyright:
-      glob: "*.{js,ts,jsx,tsx}"
+      glob: "*.{js,ts,jsx,tsx,css,html}"
       run: pnpm lint:copyright {staged_files} --fix
       stage_fixed: true
 

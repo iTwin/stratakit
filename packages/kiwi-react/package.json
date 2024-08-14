@@ -37,9 +37,7 @@
 		"ui"
 	],
 	"scripts": {
-		"build": "rm -rf dist && node scripts/build.js && tsc --outDir dist",
-		"format": "biome format ./src",
-		"lint": "biome lint ./src"
+		"build": "rm -rf dist && node scripts/build.js && tsc --outDir dist"
 	},
 	"dependencies": {
 		"@ariakit/react": "^0.4.8",

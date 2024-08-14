@@ -16,7 +16,8 @@
 		"*.js": "${capture}.js.map, ${capture}.min.js, ${capture}.d.ts, ${capture}.css",
 		"*.css": "${capture}.css.ts",
 		".gitignore": ".gitattributes",
-		"Dockerfile": ".dockerignore"
+		"Dockerfile": ".dockerignore",
+		"lefthook.yml": "biome.json, .prettierrc"
 	},
 	"javascript.preferences.importModuleSpecifierEnding": "js",
 	"typescript.preferences.importModuleSpecifierEnding": "js",

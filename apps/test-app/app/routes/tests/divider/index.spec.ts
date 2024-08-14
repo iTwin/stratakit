@@ -7,6 +7,12 @@ import { test, expect } from "@playwright/test";
 test("default", async ({ page }) => {
 	await page.goto("/tests/divider");
 	const divider = page.getByRole("separator");
+	await expect(divider).not.toHaveAttribute("aria-orientation");
+});
+
+test("horizontal", async ({ page }) => {
+	await page.goto("/tests/divider?orientation=horizontal");
+	const divider = page.getByRole("separator");
 	await expect(divider).toHaveAttribute("aria-orientation", "horizontal");
 });
 

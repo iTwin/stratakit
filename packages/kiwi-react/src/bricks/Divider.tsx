@@ -2,10 +2,13 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-export { Root } from "./Root.js";
-export { Button } from "./Button.js";
-export { Divider } from "./Divider.js";
-export { Input } from "./Input.js";
-export { Label } from "./Label.js";
-export { Textarea } from "./Textarea.js";
-export { VisuallyHidden } from "./VisuallyHidden.js";
+import * as React from "react";
+import * as Ariakit from "@ariakit/react";
+
+interface DividerProps extends Ariakit.SeparatorProps<"hr"> {}
+
+export const Divider = React.forwardRef<React.ElementRef<"hr">, DividerProps>(
+	(props, forwardedRef) => {
+		return <Ariakit.Separator {...props} ref={forwardedRef} />;
+	},
+);

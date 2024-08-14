@@ -4,8 +4,8 @@
  *--------------------------------------------------------------------------------------------*/
 export { Root } from "./Root.js";
 export { Button } from "./Button.js";
-export { Divider } from "./Divider.js";
 export { Checkbox } from "./Checkbox.js";
+export { Divider } from "./Divider.js";
 export { Input } from "./Input.js";
 export { Label } from "./Label.js";
 export { Radio } from "./Radio.js";

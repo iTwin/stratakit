@@ -5,17 +5,17 @@
 import * as React from "react";
 import * as Ariakit from "@ariakit/react";
 
-interface InputProps extends Ariakit.FocusableProps<"input"> {}
+interface AnchorProps extends Ariakit.FocusableProps<"a"> {}
 
-export const Input = React.forwardRef<React.ElementRef<"input">, InputProps>(
+export const Anchor = React.forwardRef<React.ElementRef<"a">, AnchorProps>(
 	(props, forwardedRef) => {
 		return (
-			<Ariakit.Role.input
+			<Ariakit.Role.a
 				{...props}
 				render={
 					<Ariakit.Focusable
 						accessibleWhenDisabled
-						render={props.render || <input />}
+						render={props.render || <a />}
 					/>
 				}
 				ref={forwardedRef}

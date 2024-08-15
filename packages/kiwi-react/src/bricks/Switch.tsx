@@ -5,7 +5,7 @@
 import * as React from "react";
 import * as Ariakit from "@ariakit/react";
 
-interface SwitchProps extends Ariakit.CheckboxProps {
+interface SwitchProps extends Omit<Ariakit.CheckboxProps, "store"> {
 	/** The default checked state of the toggle switch. */
 	defaultChecked?: boolean;
 	/** The checked state of the toggle switch. */

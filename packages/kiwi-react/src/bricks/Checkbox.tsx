@@ -5,7 +5,7 @@
 import * as React from "react";
 import * as Ariakit from "@ariakit/react";
 
-interface CheckboxProps extends Ariakit.CheckboxProps {}
+interface CheckboxProps extends Omit<Ariakit.CheckboxProps, "store"> {}
 
 export const Checkbox = React.forwardRef<
 	React.ElementRef<typeof Ariakit.Checkbox>,

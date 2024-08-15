@@ -38,6 +38,7 @@
 	],
 	"scripts": {
 		"build": "rm -rf dist && node scripts/build.js && tsc --outDir dist",
+		"dev": "tsc --watch --outDir dist",
 		"format": "biome format ./src",
 		"lint": "biome lint ./src"
 	},

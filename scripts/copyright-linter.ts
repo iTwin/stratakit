@@ -11,12 +11,12 @@ let pattern: string | string[] = process.argv
 
 // if no pattern is specified, then lint everything
 if (pattern.length === 0) {
-	pattern = "**/*.{ts,tsx,js,scss}";
+	pattern = "**/*.{ts,tsx,js,jsx,css,html}";
 }
 
 const filePaths = sync(pattern, {
 	dot: true,
-	ignore: ["**/node_modules/**/*", "**/build/**/*"],
+	ignore: ["**/node_modules/**/*", "**/build/**/*", "**/dist/**/*"],
 });
 
 const copyrightLine1 =

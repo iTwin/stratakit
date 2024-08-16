@@ -5,21 +5,11 @@
 import * as React from "react";
 import * as Ariakit from "@ariakit/react";
 
-interface InputProps extends Ariakit.FocusableProps<"input"> {}
+interface DividerProps extends Ariakit.SeparatorProps<"hr"> {}
 
-export const Input = React.forwardRef<React.ElementRef<"input">, InputProps>(
-	(props, forwardedRef) => {
-		return (
-			<Ariakit.Role.input
-				{...props}
-				render={
-					<Ariakit.Focusable
-						accessibleWhenDisabled
-						render={props.render || <input />}
-					/>
-				}
-				ref={forwardedRef}
-			/>
-		);
-	},
-);
+export const Divider = React.forwardRef<
+	React.ElementRef<typeof Ariakit.Separator>,
+	DividerProps
+>((props, forwardedRef) => {
+	return <Ariakit.Separator {...props} ref={forwardedRef} />;
+});

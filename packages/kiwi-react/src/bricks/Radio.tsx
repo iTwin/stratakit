@@ -5,7 +5,7 @@
 import * as React from "react";
 import * as Ariakit from "@ariakit/react";
 
-interface RadioProps extends Ariakit.RadioProps {}
+interface RadioProps extends Omit<Ariakit.RadioProps, "store"> {}
 
 export const Radio = React.forwardRef<
 	React.ElementRef<typeof Ariakit.Radio>,

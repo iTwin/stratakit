@@ -3,6 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 export { Root } from "./Root.js";
+export { Anchor } from "./Anchor.js";
 export { Button } from "./Button.js";
 export { Checkbox } from "./Checkbox.js";
 export { Divider } from "./Divider.js";

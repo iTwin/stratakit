@@ -24,7 +24,8 @@
 		"verbatimModuleSyntax": true,
 		"baseUrl": ".",
 		"emitDeclarationOnly": true,
-		"types": ["./types.d.ts"]
+		"types": ["./types.d.ts"],
+		"preserveWatchOutput": true
 	},
 	"include": ["src", "types.d.ts"],
 	"exclude": ["node_modules", "dist/**/*"]

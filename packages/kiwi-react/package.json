@@ -33,7 +33,8 @@
 		"ui"
 	],
 	"scripts": {
-		"build": "rm -rf dist && node scripts/build.js && tsc --outDir dist"
+		"build": "rm -rf dist && node scripts/build.js && tsc --outDir dist",
+		"dev": "tsc --watch --outDir dist",
 	},
 	"dependencies": {
 		"@ariakit/react": "^0.4.8",

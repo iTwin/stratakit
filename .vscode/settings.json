@@ -16,7 +16,8 @@
 		"*.js": "${capture}.js.map, ${capture}.min.js, ${capture}.d.ts, ${capture}.css",
 		"*.css": "${capture}.css.ts",
 		".gitignore": ".gitattributes",
-		"Dockerfile": ".dockerignore"
+		"Dockerfile": ".dockerignore",
+		"lefthook.yml": "biome.jsonc, .prettierrc"
 	},
 	"javascript.preferences.importModuleSpecifierEnding": "js",
 	"typescript.preferences.importModuleSpecifierEnding": "js",
@@ -31,6 +32,12 @@
 		"editor.defaultFormatter": "biomejs.biome"
 	},
 	"[typescriptreact]": {
+		"editor.defaultFormatter": "biomejs.biome"
+	},
+	"[json]": {
+		"editor.defaultFormatter": "biomejs.biome"
+	},
+	"[jsonc]": {
 		"editor.defaultFormatter": "biomejs.biome"
 	}
 }

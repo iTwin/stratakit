@@ -12,11 +12,7 @@
 		},
 		"./package.json": "./package.json"
 	},
-	"files": [
-		"dist",
-		"CHANGELOG.md",
-		"LICENSE.md"
-	],
+	"files": ["dist", "CHANGELOG.md", "LICENSE.md"],
 	"description": "A React component library for the Kiwi design system",
 	"author": "Bentley Systems",
 	"homepage": "https://github.com/iTwin/kiwi",
@@ -38,9 +34,7 @@
 	],
 	"scripts": {
 		"build": "rm -rf dist && node scripts/build.js && tsc --outDir dist",
-		"dev": "tsc --watch --outDir dist",
-		"format": "biome format ./src",
-		"lint": "biome lint ./src"
+		"dev": "tsc --watch --outDir dist"
 	},
 	"dependencies": {
 		"@ariakit/react": "^0.4.8",

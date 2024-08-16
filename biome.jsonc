@@ -1,0 +1,22 @@
+{
+	"$schema": "https://biomejs.dev/schemas/1.8.3/schema.json",
+	"files": {
+		"ignoreUnknown": true
+	},
+	"vcs": {
+		"enabled": true,
+		"clientKind": "git",
+		"useIgnoreFile": true
+	},
+	"overrides": [
+		{
+			"include": ["packages/kiwi-react/**"],
+			"linter": {
+				"rules": {
+					// a11y rules raise false alarms in packages
+					"a11y": { "all": false }
+				}
+			}
+		}
+	]
+}

@@ -8,10 +8,10 @@
 		"dev": "npm run dev:app & npm run dev:ts &",
 		"dev:app": "pnpm --filter=@itwin/test-app dev",
 		"dev:ts": "pnpm --filter=@itwin/kiwi-react dev",
-		"format": "pnpm --recursive --no-bail format",
-		"lint": "pnpm --recursive --no-bail lint",
+		"format": "biome format .",
+		"lint": "biome lint .",
 		"lint:copyright": "tsx scripts/copyright-linter.ts",
-		"prettier": "prettier . '!**/*.{js,jsx,ts,tsx}' --check",
+		"prettier": "prettier . '!**/*.{js,jsx,ts,tsx,json,jsonc}' --check",
 		"test": "pnpm --filter=@itwin/test-app test"
 	},
 	"devDependencies": {

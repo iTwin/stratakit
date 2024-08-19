@@ -3,7 +3,10 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 import * as React from "react";
-import rawStyles from "./styles.css.js";
+import foundationsCss from "../foundations/styles.css.js";
+import bricksCss from "./styles.css.js";
+
+const css = foundationsCss + bricksCss;
 
 /**
  * Component to be used at the root of your application. It ensures that kiwi styles are loaded
@@ -29,7 +32,7 @@ function Styles() {
 			return;
 		}
 
-		const { loaded } = loadStyles(rootNode, { css: rawStyles });
+		const { loaded } = loadStyles(rootNode, { css: css });
 		if (loaded) templateRef.current?.remove();
 	}, []);
 

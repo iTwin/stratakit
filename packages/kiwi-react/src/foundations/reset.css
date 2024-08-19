@@ -1,0 +1,52 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+:where([hidden]:not([hidden="until-found"])) {
+	display: none !important;
+}
+
+:where(html) {
+	-webkit-text-size-adjust: auto;
+	scrollbar-gutter: stable;
+}
+
+:where(html:has(dialog:modal[open])) {
+	overflow: clip;
+}
+
+:where(input, button, textarea, select) {
+	font: inherit;
+	color: inherit;
+}
+
+:where(img, picture, svg, video) {
+	display: block;
+	max-inline-size: 100%;
+	block-size: auto;
+}
+
+:where(p, h1, h2, h3, h4, h5, h6) {
+	overflow-wrap: break-word;
+}
+
+:where(dialog, [popover]) {
+	border: none;
+	background: none;
+	color: inherit;
+	inset: unset;
+	max-width: unset;
+	max-height: unset;
+}
+
+:where(dialog:not([open], [popover]), [popover]:not(:popover-open)) {
+	display: none !important;
+}

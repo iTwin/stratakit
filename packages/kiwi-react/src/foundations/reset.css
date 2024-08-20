@@ -16,7 +16,6 @@
 
 :where(html) {
 	-webkit-text-size-adjust: auto;
-	scrollbar-gutter: stable;
 }
 
 :where(html:has(dialog:modal[open])) {

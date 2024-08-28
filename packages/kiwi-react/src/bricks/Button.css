@@ -3,5 +3,80 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 .\🥝-button {
+	/* Cyclic toggles for default/hover/active/disabled states. See https://kizu.dev/cyclic-toggles/ */
+	--_🥝-button-state: var(--_🥝-button-state--default);
+	--_🥝-button-state--default: var(--_🥝-button-state,);
+	--_🥝-button-state--hover: var(--_🥝-button-state,);
+	--_🥝-button-state--active: var(--_🥝-button-state,);
+	--_🥝-button-state--disabled: var(--_🥝-button-state,);
+
+	/* Button variables */
+	--_🥝-button-color-background: #43494e;
+	--_🥝-button-color-background-active: #697177;
+	--_🥝-button-color-background-disabled: #43494e;
+	--_🥝-button-color-background-hover: #5a6369;
+	--_🥝-button-color-shadow-inner: #ffffff1a;
+	--_🥝-button-color-shadow-outer: #181a1b;
+	--_🥝-button-color-text: #edeff0;
+	/* --_🥝-button-gap: 24px; */
+	--_🥝-button-height: 24px;
+	--_🥝-button-padding-inline: 12px;
+
+	align-items: center;
+	background-color: var(
+			--_🥝-button-state--default,
+			var(--_🥝-button-color-background)
+		)
+		var(--_🥝-button-state--hover, var(--_🥝-button-color-background-hover))
+		var(--_🥝-button-state--active, var(--_🥝-button-color-background-active))
+		var(
+			--_🥝-button-state--disabled,
+			var(--_🥝-button-color-background-disabled)
+		);
+	background-image: linear-gradient(hsla(0, 0%, 0%, 0), hsla(0, 0%, 0%, 0.1));
+	border: none;
+	border-radius: 4px;
+	box-shadow:
+		0px 0px 0px 1px var(--_🥝-button-color-shadow-inner) inset,
+		0px 0px 0px 1px var(--_🥝-button-color-shadow-outer);
+	color: var(--_🥝-button-color-text);
+	cursor: pointer;
+	display: inline-flex;
+	flex-shrink: 0;
 	font: inherit;
+	font-weight: 500;
+	/* gap: var(--_🥝-button-gap); */
+	height: var(--_🥝-button-height);
+	justify-content: center;
+	padding-inline: var(--_🥝-button-padding-inline);
+	text-decoration: none;
+	transition-duration: 150ms;
+	transition-property: background-color;
+	transition-timing-function: ease-out;
+	user-select: none;
+	vertical-align: middle;
+	white-space: nowrap;
+	-webkit-tap-highlight-color: var(--_🥝-button-color-background-active);
+
+	@media (forced-colors: active) {
+		border: 1px solid CanvasText;
+	}
+
+	&:where(:hover) {
+		--_🥝-button-state: var(--_🥝-button-state--hover);
+	}
+
+	&:where(:active) {
+		--_🥝-button-state: var(--_🥝-button-state--active);
+	}
+
+	&:where([disabled], :disabled, [aria-disabled="true"]) {
+		--_🥝-button-state: var(--_🥝-button-state--disabled);
+		cursor: not-allowed;
+		opacity: 0.5;
+	}
+
+	&:where(:focus-visible) {
+		outline: 2px solid red;
+	}
 }

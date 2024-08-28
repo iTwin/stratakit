@@ -129,7 +129,7 @@ jobs:
           path: apps/test-app/playwright-report/
 
   deploy-gh-pages:
-    name: Deploy test-app to github pages
+    name: Deploy test app to github pages
     needs: install
     runs-on: ubuntu-latest
     if: ${{ github.event_name == 'pull_request' }}

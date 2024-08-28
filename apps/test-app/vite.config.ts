@@ -8,9 +8,13 @@ import tsconfigPaths from "vite-tsconfig-paths";
 import * as esbuild from "esbuild";
 import { createRoutesFromFolders } from "@remix-run/v1-route-convention";
 
+const basename = process.env.BASE_FOLDER || "/";
+
 export default defineConfig({
+	base: basename,
 	plugins: [
 		remix({
+			basename,
 			future: {
 				v3_fetcherPersist: true,
 				v3_relativeSplatPath: true,
@@ -29,7 +33,6 @@ export default defineConfig({
 		tsconfigPaths(),
 		esbuildBundleCss(),
 	],
-	base: "./",
 });
 
 /** Bundles "*.css?inline" files using esbuild. Only used during dev. */

@@ -136,7 +136,7 @@ jobs:
     concurrency:
       group: ${{ github.workflow }}-${{ github.ref }}
     env:
-      base_folder: ${{ github.event.number || github.ref_name != 'main' && github.ref_name || '' }}
+      BASE_FOLDER: ${{ github.event.number || github.ref_name != 'main' && github.ref_name || '' }}
 
     steps:
       - uses: actions/checkout@v4
@@ -174,6 +174,6 @@ jobs:
         with:
           branch: gh-pages
           folder: ${{ github.workspace }}/apps/test-app/build/client
-          target-folder: ${{ env.base_folder }}
+          target-folder: ${{ env.BASE_FOLDER }}
           git-config-name: github-actions[bot]
           git-config-email: github-actions[bot]@users.noreply.github.com

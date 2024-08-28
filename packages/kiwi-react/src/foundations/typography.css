@@ -2,7 +2,14 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-@import "./reset.css" layer(reset);
+:root,
+:host {
+	--kiwi-font-family-sans: "InterVariable", "Inter", "Noto Sans", "Open Sans",
+		sans-serif;
+	--kiwi-font-family-mono: "Roboto Mono", "Noto Sans Mono", ui-monospace,
+		"Segoe UI Mono", Consolas, monospace;
 
-@import "./typography.css" layer(kiwi.foundations);
-@import "./global.css" layer(kiwi.foundations);
+	--kiwi-font-size-s: 0.75rem; /* 12px */
+	--kiwi-font-size-m: 0.875rem; /* 14px */
+	--kiwi-font-size-l: 1rem; /* 16px */
+}

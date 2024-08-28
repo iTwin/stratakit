@@ -190,5 +190,5 @@ jobs:
               state: 'success',
               context: 'Deploy preview',
               description: 'Live preview of the current branch',
-              target_url: '${{ env.GH_PAGES_URL }}/${{ github.event.number }}/',
+              target_url: '${{ vars.GH_PAGES_URL }}/${{ github.event.number }}/',
             })

@@ -8,9 +8,15 @@ import tsconfigPaths from "vite-tsconfig-paths";
 import * as esbuild from "esbuild";
 import { createRoutesFromFolders } from "@remix-run/v1-route-convention";
 
+const basename = process.env.BASE_FOLDER
+	? `/${process.env.BASE_FOLDER}/`
+	: undefined;
+
 export default defineConfig({
+	...(basename && { base: basename }),
 	plugins: [
 		remix({
+			...(basename && { basename }),
 			future: {
 				v3_fetcherPersist: true,
 				v3_relativeSplatPath: true,
@@ -24,6 +30,7 @@ export default defineConfig({
 					ignoredFilePatterns: ["**/*.spec.*", "**/.DS_Store"],
 				});
 			},
+			ssr: false, // SPA mode for github-pages
 		}),
 		tsconfigPaths(),
 		esbuildBundleCss(),

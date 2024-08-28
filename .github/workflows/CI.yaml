@@ -158,11 +158,11 @@ jobs:
 
       - name: List folders to preserve (open PRs)
         id: clean_exclude_folders
-        uses: actions/github-script@v4
+        uses: actions/github-script@v7
         with:
           result-encoding: string
           script: |
-            return [...((await github.pulls.list({
+            return [...((await github.rest.pulls.list({
               owner: context.repo.owner,
               repo: context.repo.repo,
               state: 'open'

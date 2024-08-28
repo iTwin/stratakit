@@ -15,6 +15,8 @@ import { Root } from "@itwin/kiwi-react/bricks";
 export const links: LinksFunction = () => {
 	return [
 		{ rel: "icon", href: "/favicon.svg", sizes: "any", type: "image/svg+xml" },
+		{ rel: "preconnect", href: "https://rsms.me/" },
+		{ rel: "stylesheet", href: "https://rsms.me/inter/inter.css" },
 	];
 };
 

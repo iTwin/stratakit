@@ -2,7 +2,7 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-@import "./reset.css" layer(reset);
-
-@import "./typography.css" layer(kiwi.foundations);
-@import "./global.css" layer(kiwi.foundations);
+body {
+	font-family: var(--kiwi-font-family-sans);
+	font-size: var(--kiwi-font-size-m);
+}

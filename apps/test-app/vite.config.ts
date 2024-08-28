@@ -24,10 +24,12 @@ export default defineConfig({
 					ignoredFilePatterns: ["**/*.spec.*", "**/.DS_Store"],
 				});
 			},
+			ssr: false, // SPA mode for github-pages
 		}),
 		tsconfigPaths(),
 		esbuildBundleCss(),
 	],
+	base: "./",
 });
 
 /** Bundles "*.css?inline" files using esbuild. Only used during dev. */

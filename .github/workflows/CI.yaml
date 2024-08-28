@@ -127,3 +127,53 @@ jobs:
         with:
           name: playwright-report
           path: apps/test-app/playwright-report/
+
+  deploy-gh-pages:
+    name: Host deploy-preview on github pages
+    needs: install
+    runs-on: ubuntu-latest
+    if: ${{ github.event_name == 'pull_request' || github.event_name == 'push' }}
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.ref }}
+    env:
+      base_folder: ${{ github.event.number || github.ref_name != 'main' && github.ref_name || '' }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v3
+        with:
+          version: 9
+
+      - name: Use Node 20.x
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.x
+          cache: "pnpm"
+
+      - run: pnpm install
+
+      - name: Build test-app
+        run: pnpm run build
+
+      - name: List folders to preserve (open PRs)
+        id: clean_exclude_folders
+        uses: actions/github-script@v4
+        with:
+          result-encoding: string
+          script: |
+            return [...((await github.pulls.list({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open'
+            })).data.map(pr => pr.number))].join('\n')
+
+      - name: Deploy build output to gh-pages branch
+        if: github.ref != 'refs/heads/main'
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages
+          folder: ${{ github.workspace }}/apps/test-app/build/client
+          target-folder: ${{ env.base_folder }}
+          git-config-name: github-actions[bot]
+          git-config-email: github-actions[bot]@users.noreply.github.com

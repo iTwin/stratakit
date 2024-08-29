@@ -37,6 +37,7 @@
 			var(--_kiwi-button-color-background-disabled)
 		);
 	background-image: linear-gradient(hsla(0, 0%, 0%, 0), hsla(0, 0%, 0%, 0.1));
+	block-size: var(--_kiwi-button-height);
 	border: none;
 	border-radius: 4px;
 	box-shadow:
@@ -49,7 +50,6 @@
 	font: inherit;
 	font-weight: 500;
 	gap: var(--_kiwi-button-gap);
-	height: var(--_kiwi-button-height);
 	justify-content: center;
 	line-height: 16px;
 	padding-inline: var(--_kiwi-button-padding-inline);

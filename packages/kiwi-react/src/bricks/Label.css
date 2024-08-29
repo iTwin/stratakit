@@ -2,5 +2,20 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-@import "./Button.css" layer(kiwi.components);
-@import "./Label.css" layer(kiwi.components);
+.\🥝-label {
+	color: #afb5ba;
+	font-weight: 400;
+	cursor: default;
+
+	&:is(label) {
+		cursor: pointer;
+
+		&:where([data-disabled="true"]) {
+			cursor: not-allowed;
+		}
+	}
+
+	&:where([data-disabled="true"]) {
+		opacity: 0.5;
+	}
+}

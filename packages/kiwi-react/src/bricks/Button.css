@@ -57,10 +57,10 @@
 		&:where(:hover) {
 			--_kiwi-button-state: var(--_kiwi-button-state--hover);
 		}
-	}
 
-	&:where(:active) {
-		--_kiwi-button-state: var(--_kiwi-button-state--active);
+		&:where(:active) {
+			--_kiwi-button-state: var(--_kiwi-button-state--active);
+		}
 	}
 
 	&:where([disabled], :disabled, [aria-disabled="true"]) {

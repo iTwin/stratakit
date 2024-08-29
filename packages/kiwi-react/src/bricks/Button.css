@@ -18,9 +18,9 @@
 	--_kiwi-button-color-border: #181a1b;
 	--_kiwi-button-color-shadow-inner: #ffffff1a;
 	--_kiwi-button-color-text: #edeff0;
-	--_kiwi-button-gap: 4px;
-	--_kiwi-button-height: 24px;
-	--_kiwi-button-padding-inline: 12px;
+	--_kiwi-button-gap: 0.25rem;
+	--_kiwi-button-height: 1.5rem;
+	--_kiwi-button-padding-inline: 0.75rem;
 
 	align-items: center;
 	background-color: var(
@@ -39,7 +39,7 @@
 	background-image: linear-gradient(hsla(0, 0%, 0%, 0), hsla(0, 0%, 0%, 0.1));
 	block-size: var(--_kiwi-button-height);
 	border: 1px solid var(--_kiwi-button-color-border);
-	border-radius: 4px;
+	border-radius: 0.25rem;
 	box-shadow: 0px 0px 0px 1px var(--_kiwi-button-color-shadow-inner) inset;
 	color: var(--_kiwi-button-color-text);
 	cursor: pointer;

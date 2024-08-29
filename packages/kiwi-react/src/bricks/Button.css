@@ -61,7 +61,7 @@
 	-webkit-tap-highlight-color: var(--_kiwi-button-color-background-active);
 
 	&:where(:focus-visible) {
-		outline: 2px solid red;
+		outline: 2px solid #0dffc5;
 	}
 
 	&:where(:hover) {

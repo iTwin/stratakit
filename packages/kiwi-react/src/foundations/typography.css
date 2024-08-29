@@ -4,10 +4,9 @@
  *--------------------------------------------------------------------------------------------*/
 :root,
 :host {
-	--kiwi-font-family-sans: "InterVariable", "Inter", "Noto Sans", "Open Sans",
-		sans-serif;
-	--kiwi-font-family-mono: "Roboto Mono", "Noto Sans Mono", ui-monospace,
-		"Segoe UI Mono", Consolas, monospace;
+	--kiwi-font-family-sans: "InterVariable", "Inter", "Noto Sans", "Open Sans", sans-serif;
+	--kiwi-font-family-mono: "Roboto Mono", "Noto Sans Mono", ui-monospace, "Segoe UI Mono", Consolas,
+		monospace;
 
 	--kiwi-font-size-s: 0.75rem; /* 12px */
 	--kiwi-font-size-m: 0.875rem; /* 14px */

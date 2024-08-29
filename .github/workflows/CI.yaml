@@ -132,7 +132,7 @@ jobs:
     name: Deploy test app to github pages
     needs: install
     runs-on: ubuntu-latest
-    if: ${{ github.event_name == 'pull_request' }}
+    if: ${{ github.event_name == 'pull_request' || github.event_name == 'push' }}
     concurrency:
       group: ${{ github.workflow }}-${{ github.ref }}
     env:
@@ -169,7 +169,6 @@ jobs:
             })).data.map(pr => pr.number))].join('\n')
 
       - name: Deploy build output to gh-pages branch
-        if: github.ref != 'refs/heads/main'
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages

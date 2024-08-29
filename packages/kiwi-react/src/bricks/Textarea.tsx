@@ -4,6 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 import * as React from "react";
 import * as Ariakit from "@ariakit/react";
+import cx from "classnames";
 
 interface TextareaProps extends Ariakit.FocusableProps<"textarea"> {}
 
@@ -14,6 +15,7 @@ export const Textarea = React.forwardRef<
 	return (
 		<Ariakit.Role.textarea
 			{...props}
+			className={cx("🥝-input", props.className)}
 			render={
 				<Ariakit.Focusable
 					accessibleWhenDisabled

@@ -4,6 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 import * as React from "react";
 import * as Ariakit from "@ariakit/react";
+import cx from "classnames";
 
 interface InputProps extends Ariakit.FocusableProps<"input"> {}
 
@@ -12,6 +13,7 @@ export const Input = React.forwardRef<React.ElementRef<"input">, InputProps>(
 		return (
 			<Ariakit.Role.input
 				{...props}
+				className={cx("🥝-input", props.className)}
 				render={
 					<Ariakit.Focusable
 						accessibleWhenDisabled

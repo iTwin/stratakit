@@ -49,7 +49,7 @@
 	font-weight: 500;
 	gap: var(--_kiwi-button-gap);
 	justify-content: center;
-	line-height: 16px;
+	line-height: 1;
 	padding-inline: var(--_kiwi-button-padding-inline);
 	text-decoration: none;
 	transition-duration: 150ms;

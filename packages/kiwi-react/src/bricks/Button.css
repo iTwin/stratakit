@@ -4,52 +4,55 @@
  *--------------------------------------------------------------------------------------------*/
 .\🥝-button {
 	/* Cyclic toggles for default/hover/active/disabled states. See https://kizu.dev/cyclic-toggles/ */
-	--_🥝-button-state: var(--_🥝-button-state--default);
-	--_🥝-button-state--default: var(--_🥝-button-state,);
-	--_🥝-button-state--hover: var(--_🥝-button-state,);
-	--_🥝-button-state--active: var(--_🥝-button-state,);
-	--_🥝-button-state--disabled: var(--_🥝-button-state,);
+	--_kiwi-button-state: var(--_kiwi-button-state--default);
+	--_kiwi-button-state--default: var(--_kiwi-button-state,);
+	--_kiwi-button-state--hover: var(--_kiwi-button-state,);
+	--_kiwi-button-state--active: var(--_kiwi-button-state,);
+	--_kiwi-button-state--disabled: var(--_kiwi-button-state,);
 
 	/* Button variables */
-	--_🥝-button-color-background: #43494e;
-	--_🥝-button-color-background-active: #697177;
-	--_🥝-button-color-background-disabled: #43494e;
-	--_🥝-button-color-background-hover: #5a6369;
-	--_🥝-button-color-shadow-inner: #ffffff1a;
-	--_🥝-button-color-shadow-outer: #181a1b;
-	--_🥝-button-color-text: #edeff0;
-	/* --_🥝-button-gap: 24px; */
-	--_🥝-button-height: 24px;
-	--_🥝-button-padding-inline: 12px;
+	--_kiwi-button-color-background: #43494e;
+	--_kiwi-button-color-background-active: #697177;
+	--_kiwi-button-color-background-disabled: #43494e;
+	--_kiwi-button-color-background-hover: #5a6369;
+	--_kiwi-button-color-shadow-inner: #ffffff1a;
+	--_kiwi-button-color-shadow-outer: #181a1b;
+	--_kiwi-button-color-text: #edeff0;
+	/* --_kiwi-button-gap: 24px; */
+	--_kiwi-button-height: 24px;
+	--_kiwi-button-padding-inline: 12px;
 
 	align-items: center;
 	background-color: var(
-			--_🥝-button-state--default,
-			var(--_🥝-button-color-background)
+			--_kiwi-button-state--default,
+			var(--_kiwi-button-color-background)
 		)
-		var(--_🥝-button-state--hover, var(--_🥝-button-color-background-hover))
-		var(--_🥝-button-state--active, var(--_🥝-button-color-background-active))
+		var(--_kiwi-button-state--hover, var(--_kiwi-button-color-background-hover))
 		var(
-			--_🥝-button-state--disabled,
-			var(--_🥝-button-color-background-disabled)
+			--_kiwi-button-state--active,
+			var(--_kiwi-button-color-background-active)
+		)
+		var(
+			--_kiwi-button-state--disabled,
+			var(--_kiwi-button-color-background-disabled)
 		);
 	background-image: linear-gradient(hsla(0, 0%, 0%, 0), hsla(0, 0%, 0%, 0.1));
 	border: none;
 	border-radius: 4px;
 	box-shadow:
-		0px 0px 0px 1px var(--_🥝-button-color-shadow-inner) inset,
-		0px 0px 0px 1px var(--_🥝-button-color-shadow-outer);
-	color: var(--_🥝-button-color-text);
+		0px 0px 0px 1px var(--_kiwi-button-color-shadow-inner) inset,
+		0px 0px 0px 1px var(--_kiwi-button-color-shadow-outer);
+	color: var(--_kiwi-button-color-text);
 	cursor: pointer;
 	display: inline-flex;
 	flex-shrink: 0;
 	font: inherit;
 	font-weight: 500;
-	/* gap: var(--_🥝-button-gap); */
-	height: var(--_🥝-button-height);
+	/* gap: var(--_kiwi-button-gap); */
+	height: var(--_kiwi-button-height);
 	justify-content: center;
 	line-height: 16px;
-	padding-inline: var(--_🥝-button-padding-inline);
+	padding-inline: var(--_kiwi-button-padding-inline);
 	text-decoration: none;
 	transition-duration: 150ms;
 	transition-property: background-color;
@@ -57,7 +60,7 @@
 	user-select: none;
 	vertical-align: middle;
 	white-space: nowrap;
-	-webkit-tap-highlight-color: var(--_🥝-button-color-background-active);
+	-webkit-tap-highlight-color: var(--_kiwi-button-color-background-active);
 
 	&:where(:focus-visible) {
 		outline: 2px solid red;
@@ -68,15 +71,15 @@
 	}
 
 	&:where(:hover) {
-		--_🥝-button-state: var(--_🥝-button-state--hover);
+		--_kiwi-button-state: var(--_kiwi-button-state--hover);
 	}
 
 	&:where(:active) {
-		--_🥝-button-state: var(--_🥝-button-state--active);
+		--_kiwi-button-state: var(--_kiwi-button-state--active);
 	}
 
 	&:where([disabled], :disabled, [aria-disabled="true"]) {
-		--_🥝-button-state: var(--_🥝-button-state--disabled);
+		--_kiwi-button-state: var(--_kiwi-button-state--disabled);
 		cursor: not-allowed;
 		opacity: 0.5;
 	}

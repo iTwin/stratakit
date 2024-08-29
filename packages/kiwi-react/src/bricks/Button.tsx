@@ -18,8 +18,6 @@ export const Button = React.forwardRef<
 			{...props}
 			className={cx("🥝-button", props.className)}
 			ref={forwardedRef}
-		>
-			<span className={cx("🥝-button-label", props.className)}>Medium</span>
-		</Ariakit.Button>
+		/>
 	);
 });

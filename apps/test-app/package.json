@@ -6,7 +6,7 @@
 	"scripts": {
 		"build": "remix vite:build",
 		"dev": "remix vite:dev",
-		"start": "remix-serve ./build/server/index.js",
+		"preview": "vite preview",
 		"test": "tsx ./scripts/run-tests.cts pnpm exec playwright test",
 		"typecheck": "tsc"
 	},

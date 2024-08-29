@@ -45,3 +45,7 @@ export default function App() {
 		</Root>
 	);
 }
+
+export function HydrateFallback() {
+	return <p>Loading…</p>;
+}

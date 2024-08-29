@@ -23,19 +23,10 @@
 	--_kiwi-button-padding-inline: 0.75rem;
 
 	align-items: center;
-	background-color: var(
-			--_kiwi-button-state--default,
-			var(--_kiwi-button-color-background)
-		)
+	background-color: var(--_kiwi-button-state--default, var(--_kiwi-button-color-background))
 		var(--_kiwi-button-state--hover, var(--_kiwi-button-color-background-hover))
-		var(
-			--_kiwi-button-state--active,
-			var(--_kiwi-button-color-background-active)
-		)
-		var(
-			--_kiwi-button-state--disabled,
-			var(--_kiwi-button-color-background-disabled)
-		);
+		var(--_kiwi-button-state--active, var(--_kiwi-button-color-background-active))
+		var(--_kiwi-button-state--disabled, var(--_kiwi-button-color-background-disabled));
 	background-image: linear-gradient(hsla(0, 0%, 0%, 0), hsla(0, 0%, 0%, 0.1));
 	block-size: var(--_kiwi-button-height);
 	border: 1px solid var(--_kiwi-button-color-border);

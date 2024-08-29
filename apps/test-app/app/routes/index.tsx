@@ -8,7 +8,7 @@ import { Button } from "@itwin/kiwi-react/bricks";
 export const meta: MetaFunction = () => {
 	return [
 		{ title: "Kiwi test app" },
-		{ name: "color-scheme", content: "dark light" },
+		{ name: "color-scheme", content: "dark" },
 	];
 };
 

@@ -10,17 +10,18 @@
 	--_kiwi-button-state--active: var(--_kiwi-button-state,);
 	--_kiwi-button-state--disabled: var(--_kiwi-button-state,);
 
-	/* Button variables */
-	--_kiwi-button-color-background: #43494e;
-	--_kiwi-button-color-background-active: #697177;
-	--_kiwi-button-color-background-disabled: #43494e;
-	--_kiwi-button-color-background-hover: #5a6369;
-	--_kiwi-button-color-border: #181a1b;
-	--_kiwi-button-color-shadow-inner: #ffffff1a;
-	--_kiwi-button-color-text: #edeff0;
-	--_kiwi-button-gap: 0.25rem;
-	--_kiwi-button-height: 1.5rem;
-	--_kiwi-button-padding-inline: 0.75rem;
+	@layer settings {
+		--_kiwi-button-color-background: #43494e;
+		--_kiwi-button-color-background-active: #697177;
+		--_kiwi-button-color-background-disabled: #43494e;
+		--_kiwi-button-color-background-hover: #5a6369;
+		--_kiwi-button-color-border: #181a1b;
+		--_kiwi-button-color-shadow-inner: #ffffff1a;
+		--_kiwi-button-color-text: #edeff0;
+		--_kiwi-button-gap: 0.25rem;
+		--_kiwi-button-height: 1.5rem;
+		--_kiwi-button-padding-inline: 0.75rem;
+	}
 
 	align-items: center;
 	background-color: var(--_kiwi-button-state--default, var(--_kiwi-button-color-background))

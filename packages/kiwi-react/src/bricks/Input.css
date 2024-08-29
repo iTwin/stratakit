@@ -30,7 +30,6 @@
 	display: inline-flex;
 	align-items: center;
 	justify-content: flex-start;
-	gap: var(--_kiwi-input-gap);
 
 	min-block-size: var(--_kiwi-input-height);
 	padding-inline: var(--_kiwi-input-padding-inline);

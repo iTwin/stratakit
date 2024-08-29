@@ -6,3 +6,8 @@ body {
 	font-family: var(--kiwi-font-family-sans);
 	font-size: var(--kiwi-font-size-m);
 }
+
+*:focus-visible {
+	outline: 2px solid var(--_kiwi-focus-color, #0dffc5);
+	outline-offset: 1px;
+}

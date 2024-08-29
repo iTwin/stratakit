@@ -29,7 +29,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
 				<Meta />
 				<Links />
 			</head>
-			<body>
+			<body style={{ padding: "1rem" }}>
 				{children}
 				<ScrollRestoration />
 				<Scripts />

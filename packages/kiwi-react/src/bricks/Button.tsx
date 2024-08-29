@@ -20,7 +20,23 @@ export const Button = React.forwardRef<
 			ref={forwardedRef}
 			style={{ margin: "10px" }}
 		>
+			<span
+				style={{
+					width: "16px",
+					height: "16px",
+					padding: "2px",
+					backgroundColor: "#00ff00",
+				}}
+			/>
 			<span className={cx("🥝-button-label", props.className)}>Medium</span>
+			<span
+				style={{
+					width: "16px",
+					height: "16px",
+					padding: "2px",
+					backgroundColor: "#00ff00",
+				}}
+			/>
 		</Ariakit.Button>
 	);
 });

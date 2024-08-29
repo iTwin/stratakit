@@ -18,7 +18,6 @@ export const Button = React.forwardRef<
 			{...props}
 			className={cx("🥝-button", props.className)}
 			ref={forwardedRef}
-			style={{ margin: "10px" }}
 		>
 			<span
 				style={{

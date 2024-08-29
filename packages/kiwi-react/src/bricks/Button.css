@@ -23,33 +23,34 @@
 		--_kiwi-button-padding-inline: 0.75rem;
 	}
 
+	font: inherit;
+	text-decoration: none;
+	line-height: 1;
+	white-space: nowrap;
+	user-select: none;
+	cursor: pointer;
+	font-weight: 500;
+
+	display: inline-flex;
 	align-items: center;
+	justify-content: center;
+	vertical-align: middle;
+	flex-shrink: 0;
+	gap: var(--_kiwi-button-gap);
+
+	block-size: var(--_kiwi-button-height);
+	border-radius: 0.25rem;
+	padding-inline: var(--_kiwi-button-padding-inline);
+
 	background-color: var(--_kiwi-button-state--default, var(--_kiwi-button-color-background))
 		var(--_kiwi-button-state--hover, var(--_kiwi-button-color-background-hover))
 		var(--_kiwi-button-state--active, var(--_kiwi-button-color-background-active))
 		var(--_kiwi-button-state--disabled, var(--_kiwi-button-color-background-disabled));
-	background-image: linear-gradient(hsla(0, 0%, 0%, 0), hsla(0, 0%, 0%, 0.1));
-	block-size: var(--_kiwi-button-height);
+	background-image: linear-gradient(hsl(0 0% 0% / 0), hsl(0 0% 0% / 0.1));
 	border: 1px solid var(--_kiwi-button-color-border);
-	border-radius: 0.25rem;
 	box-shadow: 0px 0px 0px 1px var(--_kiwi-button-color-shadow-inner) inset;
 	color: var(--_kiwi-button-color-text);
-	cursor: pointer;
-	display: inline-flex;
-	flex-shrink: 0;
-	font: inherit;
-	font-weight: 500;
-	gap: var(--_kiwi-button-gap);
-	justify-content: center;
-	line-height: 1;
-	padding-inline: var(--_kiwi-button-padding-inline);
-	text-decoration: none;
-	transition-duration: 150ms;
-	transition-property: background-color;
-	transition-timing-function: ease-out;
-	user-select: none;
-	vertical-align: middle;
-	white-space: nowrap;
+	transition: background-color 150ms ease-out;
 	-webkit-tap-highlight-color: var(--_kiwi-button-color-background-active);
 
 	&:where(:hover) {

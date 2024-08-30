@@ -5,13 +5,13 @@
 import { Button } from "@itwin/kiwi-react/bricks";
 import { useSearchParams } from "@remix-run/react";
 
+export const handle = { title: "Button" };
+
 export default function Page() {
 	const disabled = useSearchParams()[0].get("disabled") === "true";
 
 	return (
 		<>
-			<h1>Button</h1>
-
 			<Button
 				disabled={disabled}
 				onClick={(e) => {

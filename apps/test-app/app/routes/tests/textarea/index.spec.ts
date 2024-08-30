@@ -33,3 +33,8 @@ test("disabled", async ({ page }) => {
 	await page.keyboard.type("apple");
 	await expect(textarea).toHaveValue("");
 });
+
+test("visual", async ({ page }) => {
+	await page.goto("/tests/textarea");
+	await expect(page.locator("body")).toHaveScreenshot();
+});

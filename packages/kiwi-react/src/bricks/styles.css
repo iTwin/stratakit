@@ -3,4 +3,5 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 @import "./Button.css" layer(kiwi.components);
+@import "./Input.css" layer(kiwi.components);
 @import "./Label.css" layer(kiwi.components);

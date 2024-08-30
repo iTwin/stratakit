@@ -2,7 +2,8 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-@import "./Button.css" layer(kiwi.components);
-@import "./Divider.css" layer(kiwi.components);
-@import "./Input.css" layer(kiwi.components);
-@import "./Label.css" layer(kiwi.components);
+.\🥝-divider {
+	background-color: #43494e;
+	border: 0;
+	height: 1px;
+}

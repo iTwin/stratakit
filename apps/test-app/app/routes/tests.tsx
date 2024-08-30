@@ -3,8 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 import { VisuallyHidden } from "@itwin/kiwi-react/bricks";
-import type { MetaFunction } from "@remix-run/node";
-import { Outlet, useMatches } from "@remix-run/react";
+import { Outlet, useMatches, type MetaFunction } from "@remix-run/react";
 
 export const meta: MetaFunction = () => {
 	return [{ title: "Kiwi tests" }, { name: "color-scheme", content: "dark" }];

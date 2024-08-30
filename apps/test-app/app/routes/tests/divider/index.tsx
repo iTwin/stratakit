@@ -5,6 +5,8 @@
 import { Divider } from "@itwin/kiwi-react/bricks";
 import { useSearchParams } from "@remix-run/react";
 
+export const handle = { title: "Divider" };
+
 export default function Page() {
 	const orientation = useSearchParams()[0].get("orientation") as
 		| "horizontal"
@@ -13,8 +15,6 @@ export default function Page() {
 
 	return (
 		<>
-			<h1>Divider</h1>
-
 			<Divider orientation={orientation} />
 		</>
 	);

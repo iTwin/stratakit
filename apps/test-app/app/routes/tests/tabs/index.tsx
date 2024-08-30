@@ -5,6 +5,8 @@
 import { Tabs } from "@itwin/kiwi-react/bricks";
 import { useSearchParams } from "@remix-run/react";
 
+export const handle = { title: "Tabs" };
+
 export default function Page() {
 	const [searchParams] = useSearchParams();
 	const defaultSelectedId = searchParams.get("defaultSelectedId") || undefined;
@@ -12,8 +14,6 @@ export default function Page() {
 
 	return (
 		<>
-			<h1>Tabs</h1>
-
 			<Tabs.Root defaultSelectedId={defaultSelectedId}>
 				<Tabs.TabList>
 					<Tabs.Tab id="tab1">Tab 1</Tabs.Tab>

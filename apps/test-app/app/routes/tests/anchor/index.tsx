@@ -5,18 +5,20 @@
 import { Anchor } from "@itwin/kiwi-react/bricks";
 import { useSearchParams } from "@remix-run/react";
 
+export const handle = { title: "Anchor" };
+
 export default function Page() {
 	const disabled = useSearchParams()[0].get("disabled") === "true";
 
 	return (
 		<>
-			<h1 id="heading" tabIndex={-1}>
-				Anchor
-			</h1>
-
-			<Anchor href="#heading" disabled={disabled}>
+			<Anchor href="#main" disabled={disabled}>
 				Hello
 			</Anchor>
+
+			<main id="main" tabIndex={-1}>
+				Main content
+			</main>
 		</>
 	);
 }

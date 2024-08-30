@@ -9,18 +9,12 @@
 	&:is(label) {
 		cursor: pointer;
 
-		&:has(
-				+ input:where(:disabled, [disabled], [aria-disabled="true"]),
-				+ textarea:where(:disabled, [disabled], [aria-disabled="true"])
-			) {
+		&:has(+ :where(:disabled, [disabled], [aria-disabled="true"])) {
 			cursor: not-allowed;
 		}
 	}
 
-	&:has(
-			+ input:where(:disabled, [disabled], [aria-disabled="true"]),
-			+ textarea:where(:disabled, [disabled], [aria-disabled="true"])
-		) {
+	&:has(+ :where(:disabled, [disabled], [aria-disabled="true"])) {
 		opacity: 0.5;
 	}
 }

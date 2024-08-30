@@ -60,3 +60,8 @@ test("disabled", async ({ page }) => {
 	await page.keyboard.press("Space");
 	await expect(checkbox).not.toBeChecked();
 });
+
+test("visual", async ({ page }) => {
+	await page.goto("/tests/checkbox");
+	await expect(page.locator("body")).toHaveScreenshot();
+});

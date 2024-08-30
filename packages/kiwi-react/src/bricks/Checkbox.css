@@ -1,0 +1,110 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+.\🥝-checkbox {
+	/* Cyclic toggles for default/hover/disabled states. See https://kizu.dev/cyclic-toggles/ */
+	--__kiwi-checkbox-state: var(--__kiwi-checkbox-state--default);
+	--__kiwi-checkbox-state--default: var(--__kiwi-checkbox-state,);
+	--__kiwi-checkbox-state--hover: var(--__kiwi-checkbox-state,);
+	--__kiwi-checkbox-state--checked: var(--__kiwi-checkbox-state,);
+	--__kiwi-checkbox-state--disabled: var(--__kiwi-checkbox-state,);
+
+	@layer settings {
+		--_kiwi-checkbox-color-background: #181a1b;
+		--_kiwi-checkbox-color-background-hover: #212325;
+		--_kiwi-checkbox-color-border: #43494e;
+		--_kiwi-checkbox-color-border-hover: #5a6369;
+		--_kiwi-checkbox-color-border-checked: #0dffc5;
+		--_kiwi-checkbox-color-border-disabled: #43494e;
+		--_kiwi-checkbox-color-svg: #0dffc5;
+
+		--_kiwi-checkbox-mask-image: initial;
+		--_kiwi-checkbox-checkmark-svg: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14"><path d="M5.8 9.95a.748.748 0 0 1-.53-.22l-2-2a.75.75 0 1 1 1.06-1.06L5.8 8.14l3.87-3.87a.75.75 0 1 1 1.06 1.06l-4.4 4.4a.748.748 0 0 1-.53.22Z" /></svg>');
+		--_kiwi-checkbox-indeterminate-svg: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="m2.75 6.875h10.5v2.25h-10.5z" /></svg>');
+		--_kiwi-checkbox-unchecked-svg: url('data:image/svg+xml;utf8,<svg viewBox="0 0 16 16"></svg>');
+
+		--_kiwi-checkbox-size: 1rem;
+	}
+
+	appearance: none;
+	inline-size: var(--_kiwi-checkbox-size);
+	block-size: var(--_kiwi-checkbox-size);
+	background-color: var(--__kiwi-checkbox-state--default, var(--_kiwi-checkbox-color-background))
+		var(--__kiwi-checkbox-state--hover, var(--_kiwi-checkbox-color-background-hover));
+	border: 1px solid transparent;
+	border-color: var(--__kiwi-checkbox-state--default, var(--_kiwi-checkbox-color-border))
+		var(--__kiwi-checkbox-state--hover, var(--_kiwi-checkbox-color-border-hover))
+		var(--__kiwi-checkbox-state--checked, var(--_kiwi-checkbox-color-border-checked))
+		var(--__kiwi-checkbox-state--disabled, var(--_kiwi-checkbox-color-border-disabled));
+	border-radius: var(--_kiwi-checkbox-border-radius);
+	cursor: pointer;
+	transition: all 150ms ease-out;
+	transition-property: background-color, border-color;
+	position: relative;
+
+	/* increase tap target size to 24x24 by default and allow adjusting through CSS var */
+	&::before {
+		content: "";
+		position: absolute;
+		inset: calc((var(--kiwi-checkbox-target-size, 24px) - 16px) / -2);
+	}
+
+	&::after {
+		content: "";
+		position: absolute;
+		inset: 0;
+		background-color: var(--_kiwi-checkbox-color-svg);
+		mask: var(--_kiwi-checkbox-mask-image) no-repeat center;
+	}
+
+	@media (forced-colors: active) {
+		--_kiwi-checkbox-color-svg: CanvasText;
+	}
+
+	@media (any-hover: hover) {
+		&:where(:hover) {
+			--__kiwi-checkbox-state: var(--__kiwi-checkbox-state--hover);
+		}
+	}
+
+	&:not(:checked) {
+		--_kiwi-checkbox-mask-image: var(--_kiwi-checkbox-unchecked-svg);
+	}
+
+	&:where(:checked),
+	&:is(input[type="checkbox"]:indeterminate) {
+		--__kiwi-checkbox-state: var(--__kiwi-checkbox-state--checked);
+		background-image: linear-gradient(#0dffc51a, #0dffc51a);
+
+		&:hover {
+			background-image: linear-gradient(#0dffc533, #0dffc533);
+		}
+	}
+
+	&:where([disabled], :disabled, [aria-disabled="true"]) {
+		--__kiwi-checkbox-state: var(--__kiwi-checkbox-state--disabled);
+		cursor: not-allowed;
+		opacity: 0.5;
+	}
+
+	&:is(input[type="checkbox"]) {
+		--_kiwi-checkbox-border-radius: 4px;
+
+		&:checked {
+			--_kiwi-checkbox-mask-image: var(--_kiwi-checkbox-checkmark-svg);
+		}
+
+		&:indeterminate {
+			--_kiwi-checkbox-mask-image: var(--_kiwi-checkbox-indeterminate-svg);
+		}
+	}
+
+	&:is(input[type="radio"]) {
+		--_kiwi-checkbox-border-radius: 999px;
+
+		&:checked {
+			--_kiwi-checkbox-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" ><circle cx="8" cy="8" r="4" /></svg>');
+		}
+	}
+}

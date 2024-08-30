@@ -60,3 +60,8 @@ test("disabled", async ({ page }) => {
 	await radioA.click({ force: true });
 	await expect(radioA).not.toBeChecked();
 });
+
+test("visual", async ({ page }) => {
+	await page.goto("/tests/radio");
+	await expect(page.locator("body")).toHaveScreenshot();
+});

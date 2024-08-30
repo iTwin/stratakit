@@ -35,3 +35,8 @@ test("disabled", async ({ page }) => {
 	await page.keyboard.press("Enter");
 	await expect(button).toHaveAccessibleName("Hello");
 });
+
+test("visual", async ({ page }) => {
+	await page.goto("/tests/button");
+	await expect(page.locator("body")).toHaveScreenshot();
+});

@@ -3,7 +3,25 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 .\🥝-divider {
+	flex: 0 0 auto;
+	align-self: stretch;
 	background-color: #43494e;
-	border: 0;
-	height: 1px;
+
+	@media (forced-colors: active) {
+		background-color: CanvasText;
+	}
+
+	&:is(hr) {
+		border: none;
+		margin: 0;
+	}
+
+	&:not([aria-orientation="vertical"]) {
+		block-size: 1px;
+	}
+
+	&[aria-orientation="vertical"] {
+		inline-size: 1px;
+		min-block-size: 100%;
+	}
 }

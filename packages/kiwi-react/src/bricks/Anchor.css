@@ -1,0 +1,40 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+.\🥝-anchor {
+	@layer settings {
+		--_kiwi-anchor-color-text: #edeff0;
+	}
+
+	cursor: pointer;
+	font-weight: 500;
+	text-underline-offset: 2px;
+
+	border-radius: 4px;
+
+	color: var(--_kiwi-anchor-color-text);
+	-webkit-tap-highlight-color: var(--_kiwi-anchor-color-text);
+
+	&:where(button) {
+		font: inherit;
+		border: none;
+		background: transparent;
+		padding: 0;
+	}
+
+	@media (any-hover: hover) {
+		&:where(:hover) {
+			text-decoration: none;
+		}
+	}
+
+	&:where(:active) {
+		text-decoration: none;
+	}
+
+	&:where([disabled], :disabled, [aria-disabled="true"]) {
+		cursor: not-allowed;
+		opacity: 0.5;
+	}
+}

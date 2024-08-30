@@ -6,15 +6,13 @@ import { Button, Root, VisuallyHidden } from "@itwin/kiwi-react/bricks";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { createPortal } from "react-dom";
 
+export const handle = { title: "Root" };
+
 export default function Page() {
 	const popout = usePopout();
 
 	return (
 		<>
-			<VisuallyHidden render={(props) => <h1 {...props} />}>
-				Root
-			</VisuallyHidden>
-
 			<LightAndShadowButtons />
 
 			<Button onClick={() => popout.open()}>Open popout</Button>

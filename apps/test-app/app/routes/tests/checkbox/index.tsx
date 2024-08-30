@@ -6,6 +6,8 @@ import { Checkbox, Label } from "@itwin/kiwi-react/bricks";
 import { useSearchParams } from "@remix-run/react";
 import { useId } from "react";
 
+export const handle = { title: "Checkbox" };
+
 export default function Page() {
 	const [searchParams] = useSearchParams();
 	const checked = searchParams.get("checked") === "true";
@@ -16,8 +18,6 @@ export default function Page() {
 
 	return (
 		<>
-			<h1>Checkbox</h1>
-
 			<Checkbox
 				id={id}
 				defaultChecked={indeterminate ? "mixed" : checked}

@@ -6,6 +6,8 @@ import { Radio, Label } from "@itwin/kiwi-react/bricks";
 import { useSearchParams } from "@remix-run/react";
 import { useId } from "react";
 
+export const handle = { title: "Radio" };
+
 export default function Page() {
 	const [searchParams] = useSearchParams();
 	const defaultValue = searchParams.get("defaultValue");
@@ -16,8 +18,6 @@ export default function Page() {
 
 	return (
 		<>
-			<h1>Radio</h1>
-
 			<Radio
 				name="test"
 				value="A"

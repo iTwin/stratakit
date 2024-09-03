@@ -17,10 +17,8 @@
 	-webkit-tap-highlight-color: var(--_kiwi-anchor-color-text);
 
 	&:where(button) {
-		font: inherit;
 		border: none;
 		background: transparent;
-		padding: 0;
 	}
 
 	@media (any-hover: hover) {

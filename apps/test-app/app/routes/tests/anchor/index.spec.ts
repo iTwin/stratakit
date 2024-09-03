@@ -41,6 +41,6 @@ test("disabled", async ({ page }) => {
 });
 
 test("visual", async ({ page }) => {
-	await page.goto("/tests/anchor");
+	await page.goto("/tests/anchor?visual=true");
 	await expect(page.locator("body")).toHaveScreenshot();
 });

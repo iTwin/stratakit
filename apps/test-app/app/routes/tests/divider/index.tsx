@@ -15,7 +15,18 @@ export default function Page() {
 
 	return (
 		<>
-			<Divider orientation={orientation} />
+			<div
+				style={{
+					display: "grid",
+					gridTemplateColumns: "repeat(2, 50%)",
+					gap: "1rem",
+					blockSize: "10rem",
+					padding: "1rem",
+				}}
+			>
+				<Divider orientation="horizontal" />
+				<Divider orientation="vertical" />
+			</div>
 		</>
 	);
 }

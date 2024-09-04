@@ -6,16 +6,22 @@ import * as React from "react";
 import cx from "classnames";
 import * as Ariakit from "@ariakit/react";
 
-interface ButtonProps extends Ariakit.ButtonProps {}
+interface ButtonProps extends Ariakit.ButtonProps {
+	/** @default "solid" */
+	variant?: "solid" | "ghost";
+}
 
 export const Button = React.forwardRef<
 	React.ElementRef<typeof Ariakit.Button>,
 	ButtonProps
 >((props, forwardedRef) => {
+	const { variant = "solid", ...rest } = props;
+
 	return (
 		<Ariakit.Button
 			accessibleWhenDisabled
-			{...props}
+			data-kiwi-variant={variant}
+			{...rest}
 			className={cx("🥝-button", props.className)}
 			ref={forwardedRef}
 		/>

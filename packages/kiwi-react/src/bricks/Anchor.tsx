@@ -3,6 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 import * as React from "react";
+import cx from "classnames";
 import * as Ariakit from "@ariakit/react";
 
 interface AnchorProps extends Ariakit.FocusableProps<"a"> {}
@@ -12,6 +13,7 @@ export const Anchor = React.forwardRef<React.ElementRef<"a">, AnchorProps>(
 		return (
 			<Ariakit.Role.a
 				{...props}
+				className={cx("🥝-anchor", props.className)}
 				render={
 					<Ariakit.Focusable
 						accessibleWhenDisabled

@@ -8,7 +8,12 @@ import { useSearchParams } from "@remix-run/react";
 export const handle = { title: "Anchor" };
 
 export default function Page() {
+	const visual = useSearchParams()[0].get("visual") === "true";
 	const disabled = useSearchParams()[0].get("disabled") === "true";
+
+	if (visual) {
+		return <VisualTest />;
+	}
 
 	return (
 		<>
@@ -19,6 +24,14 @@ export default function Page() {
 			<main id="main" tabIndex={-1}>
 				Main content
 			</main>
+		</>
+	);
+}
+
+function VisualTest() {
+	return (
+		<>
+			<Anchor href="https://bentley.com">Example</Anchor>
 		</>
 	);
 }

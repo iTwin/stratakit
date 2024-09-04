@@ -14,7 +14,6 @@
 	border-radius: 4px;
 
 	color: var(--_kiwi-anchor-color-text);
-	-webkit-tap-highlight-color: var(--_kiwi-anchor-color-text);
 
 	&:where(button) {
 		border: none;

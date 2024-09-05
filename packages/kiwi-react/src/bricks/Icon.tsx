@@ -29,7 +29,6 @@ export const Icon = React.forwardRef<React.ElementRef<"svg">, IconProps>(
 			<Ariakit.Role.svg
 				width="1rem"
 				height="1rem"
-				fill="currentColor"
 				{...other}
 				className={cx("🥝-icon", props.className)}
 				ref={forwardedRef}

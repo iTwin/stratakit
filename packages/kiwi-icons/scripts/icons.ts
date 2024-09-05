@@ -34,14 +34,16 @@ function toSymbol(svg: string, id: string) {
 	const svgContent = readSvg(svg);
 
 	const $ = load(svgContent, { xml: true });
-	const viewBox = $("svg").attr("viewBox");
+	const attributes = $("svg").attr() ?? {};
 	const contents = $("svg").contents();
 	$("svg").replaceWith(contents);
-	$.root().wrapInner("<symbol></symbol>");
+	$.root().wrapInner("<symbol />");
 
 	$("symbol").attr("id", id);
-	if (viewBox) {
-		$("symbol").attr("viewBox", viewBox);
+
+	for (const [name, value] of Object.entries(attributes)) {
+		if (!["viewBox", "fill"].includes(name)) continue;
+		$("symbol").attr(name, value);
 	}
 	return $.xml();
 }

@@ -16,15 +16,23 @@ export default function Page() {
 				id="2d-large"
 				href={icon2d}
 				resolution="large"
-				style={{ fill: "white" }}
+				style={
+					{
+						fill: "white",
+						"--_kiwi-color-icon-2d-box": "yellow",
+					} as React.CSSProperties
+				}
 			/>
 			<Icon href={arrowIcon} style={{ color: "red" }} />
 			<Icon
 				href={arrowIcon}
 				resolution="large"
-				style={{
-					color: "red",
-				}}
+				style={
+					{
+						color: "red",
+						"--_kiwi-color-icon": "green",
+					} as React.CSSProperties
+				}
 			/>
 		</>
 	);

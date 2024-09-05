@@ -3,68 +3,73 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 .\🥝-button {
-	/* Cyclic toggles for default/hover/active/disabled states. See https://kizu.dev/cyclic-toggles/ */
-	--__kiwi-button-state: var(--__kiwi-button-state--default);
-	--__kiwi-button-state--default: var(--__kiwi-button-state,);
-	--__kiwi-button-state--hover: var(--__kiwi-button-state,);
-	--__kiwi-button-state--active: var(--__kiwi-button-state,);
-	--__kiwi-button-state--disabled: var(--__kiwi-button-state,);
-
-	@layer settings {
+	@layer base {
 		--_kiwi-button-color-background: #43494e;
 		--_kiwi-button-color-background-active: #697177;
 		--_kiwi-button-color-background-disabled: #43494e;
 		--_kiwi-button-color-background-hover: #5a6369;
 		--_kiwi-button-color-border: #181a1b;
 		--_kiwi-button-color-shadow-inner: #ffffff1a;
+
 		--_kiwi-button-color-text: #edeff0;
 		--_kiwi-button-gap: 4px;
 		--_kiwi-button-height: 1.5rem;
 		--_kiwi-button-padding-inline: 12px;
+
+		text-decoration: none;
+		line-height: 1;
+		white-space: nowrap;
+		user-select: none;
+		cursor: pointer;
+		font-weight: 500;
+		border: 1px solid transparent;
+
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		flex-shrink: 0;
+		gap: var(--_kiwi-button-gap);
+
+		block-size: var(--_kiwi-button-height);
+		border-radius: 4px;
+		padding-inline: var(--_kiwi-button-padding-inline);
+
+		background-image: linear-gradient(hsl(0 0% 0% / 0), hsl(0 0% 0% / 0.1));
+		border-color: var(--_kiwi-button-color-border);
+		box-shadow: 0px 0px 0px 1px var(--_kiwi-button-color-shadow-inner) inset;
+
+		color: var(--_kiwi-button-color-text);
+		transition: background-color 150ms ease-out;
+		-webkit-tap-highlight-color: var(--_kiwi-button-color-background-active);
 	}
 
-	text-decoration: none;
-	line-height: 1;
-	white-space: nowrap;
-	user-select: none;
-	cursor: pointer;
-	font-weight: 500;
-	border: 1px solid transparent;
+	@layer states {
+		/* Cyclic toggles for default/hover/active/disabled states. See https://kizu.dev/cyclic-toggles/ */
+		--__kiwi-button-state: var(--__kiwi-button-state--default);
+		--__kiwi-button-state--default: var(--__kiwi-button-state,);
+		--__kiwi-button-state--hover: var(--__kiwi-button-state,);
+		--__kiwi-button-state--active: var(--__kiwi-button-state,);
+		--__kiwi-button-state--disabled: var(--__kiwi-button-state,);
 
-	display: inline-flex;
-	align-items: center;
-	justify-content: center;
-	flex-shrink: 0;
-	gap: var(--_kiwi-button-gap);
+		background-color: var(--__kiwi-button-state--default, var(--_kiwi-button-color-background))
+			var(--__kiwi-button-state--hover, var(--_kiwi-button-color-background-hover))
+			var(--__kiwi-button-state--active, var(--_kiwi-button-color-background-active))
+			var(--__kiwi-button-state--disabled, var(--_kiwi-button-color-background-disabled));
 
-	block-size: var(--_kiwi-button-height);
-	border-radius: 4px;
-	padding-inline: var(--_kiwi-button-padding-inline);
-
-	background-color: var(--__kiwi-button-state--default, var(--_kiwi-button-color-background))
-		var(--__kiwi-button-state--hover, var(--_kiwi-button-color-background-hover))
-		var(--__kiwi-button-state--active, var(--_kiwi-button-color-background-active))
-		var(--__kiwi-button-state--disabled, var(--_kiwi-button-color-background-disabled));
-	background-image: linear-gradient(hsl(0 0% 0% / 0), hsl(0 0% 0% / 0.1));
-	border-color: var(--_kiwi-button-color-border);
-	box-shadow: 0px 0px 0px 1px var(--_kiwi-button-color-shadow-inner) inset;
-	color: var(--_kiwi-button-color-text);
-	transition: background-color 150ms ease-out;
-	-webkit-tap-highlight-color: var(--_kiwi-button-color-background-active);
-
-	@media (any-hover: hover) {
-		&:where(:hover) {
-			--__kiwi-button-state: var(--__kiwi-button-state--hover);
+		@media (any-hover: hover) {
+			&:where(:hover) {
+				--__kiwi-button-state: var(--__kiwi-button-state--hover);
+			}
 		}
-	}
 
-	&:where(:active) {
-		--__kiwi-button-state: var(--__kiwi-button-state--active);
-	}
+		&:where(:active) {
+			--__kiwi-button-state: var(--__kiwi-button-state--active);
+		}
 
-	&:where([disabled], :disabled, [aria-disabled="true"]) {
-		--__kiwi-button-state: var(--__kiwi-button-state--disabled);
-		cursor: not-allowed;
-		opacity: 0.5;
+		&:where([disabled], :disabled, [aria-disabled="true"]) {
+			--__kiwi-button-state: var(--__kiwi-button-state--disabled);
+			cursor: not-allowed;
+			opacity: 0.5;
+		}
 	}
 }

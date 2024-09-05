@@ -28,6 +28,9 @@ importers:
 
   apps/test-app:
     dependencies:
+      "@itwin/kiwi-icons":
+        specifier: "*"
+        version: link:../../packages/kiwi-icons
       "@itwin/kiwi-react":
         specifier: "*"
         version: link:../../packages/kiwi-react

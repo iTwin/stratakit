@@ -3,18 +3,22 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 .\🥝-label {
-	color: #afb5ba;
-	cursor: default;
+	@layer base {
+		color: #afb5ba;
+		cursor: default;
 
-	&:is(label) {
-		cursor: pointer;
-
-		&:has(+ :where(:disabled, [disabled], [aria-disabled="true"])) {
-			cursor: not-allowed;
+		&:is(label) {
+			cursor: pointer;
 		}
 	}
 
-	&:has(+ :where(:disabled, [disabled], [aria-disabled="true"])) {
-		opacity: 0.5;
+	@layer states {
+		&:has(+ :where(:disabled, [disabled], [aria-disabled="true"])) {
+			opacity: 0.5;
+
+			&:is(label) {
+				cursor: not-allowed;
+			}
+		}
 	}
 }

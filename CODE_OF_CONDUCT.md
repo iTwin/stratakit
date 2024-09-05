@@ -2,9 +2,15 @@
 
 ## Our Pledge
 
-We as members, contributors, and leaders pledge to make participation in our community a harassment-free experience for everyone. This includes respect for age, body size, visible or invisible disabilities,neurodiversity, ethnicity, sex characteristics, gender identity and expression, level of experience, education, socio-economic status, nationality, personal appearance, race, religion, or sexual identity and orientation.
+We as members, contributors, and leaders pledge to make participation in our
+community a harassment-free experience for everyone, regardless of age, body
+size, visible or invisible disability, ethnicity, sex characteristics, gender
+identity and expression, level of experience, education, socio-economic status,
+nationality, personal appearance, race, religion, or sexual identity
+and orientation.
 
-We pledge to act and interact in ways that contribute to an open, welcoming, diverse, inclusive, healthy, and collaborative community.
+We pledge to act and interact in ways that contribute to an open, welcoming,
+diverse, inclusive, and healthy community.
 
 ## Our Standards
 
@@ -19,7 +25,7 @@ community include:
 - Focusing on what is best not just for us as individuals, but for the
   overall community
 
-The following behaviors are unacceptable and will not be tolerated in our community:
+Examples of unacceptable behavior include:
 
 - The use of sexualized language or imagery, and sexual attention or
   advances of any kind
@@ -35,9 +41,7 @@ The following behaviors are unacceptable and will not be tolerated in our commun
 Community leaders are responsible for clarifying and enforcing our standards of
 acceptable behavior and will take appropriate and fair corrective action in
 response to any behavior that they deem inappropriate, threatening, offensive,
-or harmful. All complaints will be reviewed, and the reporter will be informed of
-the resolution where appropriate. We will ensure the privacy and security of all
-parties involved.
+or harmful.
 
 Community leaders have the right and responsibility to remove, edit, or reject
 comments, commits, code, wiki edits, issues, and other contributions that are
@@ -107,17 +111,6 @@ individual, or aggression toward or disparagement of classes of individuals.
 
 **Consequence**: A permanent ban from any sort of public interaction within
 the community.
-
-### 4. Appeals
-
-**Community Impact**: Members who have been subject to enforcement actions may
-submit an appeal to the community leaders for reconsideration.
-
-**Consequence**: Appeals will be reviewed on a case-by-case basis with transparency
-and fairness.
-
-Please expect a response within 5-7 days. Urgent matters will be addressed as promptly
-as possible.
 
 ## Attribution
 

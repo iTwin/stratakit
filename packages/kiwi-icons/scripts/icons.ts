@@ -2,7 +2,13 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-import { readdirSync, writeFile, readFileSync } from "node:fs";
+import {
+	readdirSync,
+	writeFile,
+	readFileSync,
+	existsSync,
+	mkdirSync,
+} from "node:fs";
 import { join, basename } from "node:path";
 import { load } from "cheerio";
 
@@ -12,6 +18,10 @@ const ICONS_DIR = join(ROOT_DIR, "icons");
 
 const allSvgFiles = readdirSync(SVG_ICONS_DIR);
 const svgFiles = allSvgFiles.filter((f) => !f.endsWith("-large.svg"));
+
+if (!existsSync(ICONS_DIR)) {
+	mkdirSync(ICONS_DIR, { recursive: true });
+}
 
 for (const svg of svgFiles) {
 	const sprite = toSymbolSprite(svg);

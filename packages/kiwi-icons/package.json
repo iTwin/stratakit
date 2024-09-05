@@ -13,5 +13,9 @@
 		"url": "https://github.com/iTwin/kiwi.git",
 		"directory": "packages/kiwi-react"
 	},
-	"keywords": ["itwinui", "svg", "icons"]
+	"keywords": ["itwinui", "svg", "icons"],
+	"scripts": {
+		"build": "npm run build:icons-list",
+		"build:icons-list": "tsx scripts/icons-list.ts"
+	}
 }

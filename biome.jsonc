@@ -8,6 +8,12 @@
 		"clientKind": "git",
 		"useIgnoreFile": true
 	},
+	"css": {
+		"formatter": {
+			"enabled": true,
+			"lineWidth": 100
+		}
+	},
 	"overrides": [
 		{
 			"include": ["packages/kiwi-react/**"],

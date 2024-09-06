@@ -29,9 +29,7 @@
 		padding-block: var(--_kiwi-input-padding-block);
 		border-radius: 4px;
 
-		box-shadow:
-			0px 2px 0px 0px hsl(0 0% 0% / 0.4) inset,
-			0px 2px 4px 0px hsl(0 0% 0% / 0.2) inset;
+		box-shadow: 0px 2px 0px 0px hsl(0 0% 0% / 0.4) inset, 0px 2px 4px 0px hsl(0 0% 0% / 0.2) inset;
 		color: var(--_kiwi-input-color-text);
 		transition: all 150ms ease-out;
 		transition-property: background-color, border-color;

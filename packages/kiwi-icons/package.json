@@ -1,9 +1,13 @@
 {
 	"name": "@itwin/kiwi-icons",
 	"private": true,
+	"type": "module",
 	"version": "0.1.0",
 	"license": "CC-BY-3.0",
-	"main": "icons-list.json",
+	"exports": {
+		"./*.svg": "./icons/*.svg",
+		"./icons-list.json": "./icons-list.json"
+	},
 	"files": ["icons/*.svg", "icons-list.json"],
 	"description": "Generic SVG icons for iTwinUI projects",
 	"author": "Bentley Systems",
@@ -16,8 +20,8 @@
 	"keywords": ["itwinui", "svg", "icons"],
 	"scripts": {
 		"build": "npm run build:icons-list && npm run build:icons",
-		"build:icons-list": "tsx scripts/icons-list.ts",
-		"build:icons": "tsx scripts/icons.ts"
+		"build:icons-list": "tsx scripts/icons-list.cts",
+		"build:icons": "tsx scripts/icons.cts"
 	},
 	"devDependencies": {
 		"cheerio": "^1.0.0"

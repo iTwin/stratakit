@@ -3,8 +3,8 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 import { Icon } from "@itwin/kiwi-react/bricks";
-import icon2d from "@itwin/kiwi-icons/icons/2d.svg";
-import arrowIcon from "@itwin/kiwi-icons/icons/arrow.svg";
+import icon2d from "@itwin/kiwi-icons/2d.svg";
+import arrowIcon from "@itwin/kiwi-icons/arrow.svg";
 
 export const handle = { title: "Icon" };
 

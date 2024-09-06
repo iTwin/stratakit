@@ -6,7 +6,7 @@ import { Icon } from "@itwin/kiwi-react/bricks";
 import icon2d from "@itwin/kiwi-icons/icons/2d.svg";
 import arrowIcon from "@itwin/kiwi-icons/icons/arrow.svg";
 
-export const handle = { title: "Anchor" };
+export const handle = { title: "Icon" };
 
 export default function Page() {
 	return (

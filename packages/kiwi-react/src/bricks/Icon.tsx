@@ -40,9 +40,7 @@ export const Icon = React.forwardRef<React.ElementRef<"svg">, IconProps>(
 	},
 );
 
-type IconId = "icon" | "icon-large";
-
-function toIconId(resolution: IconProps["resolution"]): IconId {
+function toIconId(resolution: IconProps["resolution"]) {
 	if (resolution === "large") return "icon-large";
 	return "icon";
 }

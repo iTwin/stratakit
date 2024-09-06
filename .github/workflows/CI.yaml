@@ -116,7 +116,6 @@ jobs:
           version: 9
 
       - run: pnpm install
-      - run: pnpm dlx playwright install --with-deps
       - run: pnpm run build
       - run: pnpm --filter=@itwin/test-app exec playwright test
         env:

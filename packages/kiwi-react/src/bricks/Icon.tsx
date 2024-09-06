@@ -21,13 +21,13 @@ interface IconProps extends Ariakit.RoleProps<"svg"> {
  */
 export const Icon = React.forwardRef<React.ElementRef<"svg">, IconProps>(
 	(props, forwardedRef) => {
-		const { href, ...other } = props;
+		const { href, ...rest } = props;
 		const iconId = toIconId(props.resolution);
 		return (
 			<Ariakit.Role.svg
 				width="1rem"
 				height="1rem"
-				{...other}
+				{...rest}
 				className={cx("🥝-icon", props.className)}
 				ref={forwardedRef}
 			>

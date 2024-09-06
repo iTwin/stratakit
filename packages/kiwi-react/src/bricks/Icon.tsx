@@ -9,8 +9,6 @@ import * as Ariakit from "@ariakit/react";
 interface IconProps extends Ariakit.RoleProps<"svg"> {
 	/** URL of the symbol sprite. */
 	href?: string;
-	/** Title of the icon. */
-	title?: string;
 	/** Resolution of the icon. Defaults to `regular`. */
 	resolution?: "regular" | "large";
 }
@@ -23,7 +21,7 @@ interface IconProps extends Ariakit.RoleProps<"svg"> {
  */
 export const Icon = React.forwardRef<React.ElementRef<"svg">, IconProps>(
 	(props, forwardedRef) => {
-		const { href, title, ...other } = props;
+		const { href, ...other } = props;
 		const iconId = toIconId(props.resolution);
 		return (
 			<Ariakit.Role.svg
@@ -33,7 +31,6 @@ export const Icon = React.forwardRef<React.ElementRef<"svg">, IconProps>(
 				className={cx("🥝-icon", props.className)}
 				ref={forwardedRef}
 			>
-				{props.title && <title>{props.title}</title>}
 				<use href={`${props.href}#${iconId}`} />
 			</Ariakit.Role.svg>
 		);

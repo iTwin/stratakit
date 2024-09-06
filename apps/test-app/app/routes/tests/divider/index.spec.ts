@@ -23,6 +23,6 @@ test("vertical", async ({ page }) => {
 });
 
 test("visual", async ({ page }) => {
-	await page.goto("/tests/divider");
-	await expect(page.locator("div")).toHaveScreenshot();
+	await page.goto("/tests/divider?visual=true");
+	await expect(page.locator("body")).toHaveScreenshot();
 });

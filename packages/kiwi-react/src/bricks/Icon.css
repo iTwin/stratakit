@@ -10,11 +10,11 @@
 
 	@layer modifiers {
 		&[data-kiwi-size="regular"] {
-			--_kiwi-icon-size: 24px;
+			--_kiwi-icon-size: 1rem;
 		}
 
 		&[data-kiwi-size="large"] {
-			--_kiwi-icon-size: 48px;
+			--_kiwi-icon-size: 1.5rem;
 		}
 	}
 }

@@ -36,7 +36,7 @@ export default defineConfig({
 		esbuildBundleCss(),
 	],
 	build: {
-		assetsInlineLimit: (filePath: string) => {
+		assetsInlineLimit: (filePath) => {
 			if (filePath.includes("kiwi-icons/icons")) return false;
 			return undefined;
 		},

@@ -3,14 +3,14 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 import { Icon } from "@itwin/kiwi-react/bricks";
-import icon2d from "@itwin/kiwi-icons/2d.svg";
+import placeholder from "@itwin/kiwi-icons/placeholder.svg";
 import { useSearchParams } from "@remix-run/react";
 
 export const handle = { title: "Icon" };
 
 export default function Page() {
 	const size = useSizeParam();
-	return <Icon size={size} href={icon2d} style={{ fill: "white" }} />;
+	return <Icon size={size} href={placeholder} style={{ fill: "white" }} />;
 }
 
 function useSizeParam() {

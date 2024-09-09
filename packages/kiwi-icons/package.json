@@ -19,9 +19,7 @@
 	},
 	"keywords": ["itwinui", "svg", "icons"],
 	"scripts": {
-		"build": "npm run build:icons-list && npm run build:icons",
-		"build:icons-list": "tsx scripts/icons-list.cts",
-		"build:icons": "tsx scripts/icons.cts"
+		"build": "tsx scripts/icons-list.cts"
 	},
 	"devDependencies": {
 		"cheerio": "^1.0.0"

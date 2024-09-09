@@ -6,7 +6,7 @@ import { readdirSync, writeFile } from "node:fs";
 import { join } from "node:path";
 
 const ROOT_DIR = join(__dirname, "..");
-const SVG_ICONS_DIR = join(ROOT_DIR, "svg-icons");
+const SVG_ICONS_DIR = join(ROOT_DIR, "icons");
 const ICONS_LIST_PATH = join(ROOT_DIR, "icons-list.json");
 
 const svgFiles = readdirSync(SVG_ICONS_DIR).filter(

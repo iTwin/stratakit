@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg">
-<symbol id="icon" viewBox="0 0 16 16" fill="var(--_kiwi-color-icon, currentColor)"><path d="M12 5v.5a6.48 6.48 0 01-.18 1.5H14v7H7v-2.18a6.48 6.48 0 01-1.5.18H5v4h11V5z"/><path d="M5.5 2A3.5 3.5 0 112 5.5 3.5 3.5 0 015.5 2m0-2A5.5 5.5 0 1011 5.5 5.5 5.5 0 005.5 0"/></symbol>
-<symbol id="icon-large" viewBox="0 0 16 16" fill="var(--_kiwi-color-icon, currentColor)"><path fill="var(--_kiwi-color-icon-2d-box, currentColor)" d="M16 7v6l-5 3V8.84M5 7v6l5 3V8.84M10.31 5L5.65 6.11l5 1.89 4.84-1.89"/><path d="M4 6.5a1.2 1.2 0 01.92-1.16l3.8-1.64a1.33 1.33 0 01.28 0V3a11.07 11.07 0 01-4.5 1A11.11 11.11 0 010 3v8.85c0 .54 2.14 1 4 1.14zM4.5 0C7 0 9 .67 9 1.5S7 3 4.5 3 0 2.33 0 1.5 2 0 4.5 0z"/></symbol>
-<use href="#icon"/>
+  <symbol id="icon" fill="currentColor"><path fill-rule="evenodd" d="M3.5 2A1.5 1.5 0 0 0 2 3.5v9A1.5 1.5 0 0 0 3.5 14h9a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 12.5 2h-9ZM3 3.707v8.586L7.293 8 3 3.707ZM3.707 13h8.586L8 8.707 3.707 13ZM13 12.293V3.707L8.707 8 13 12.293ZM12.293 3H3.707L8 7.293 12.293 3Z" clip-rule="evenodd"/></symbol>
+  <symbol id="icon-large" fill="currentColor" viewBox="0 0 22 22"><path fill-rule="evenodd" d="M3.5 2A1.5 1.5 0 0 0 2 3.5v15A1.5 1.5 0 0 0 3.5 20h15a1.5 1.5 0 0 0 1.5-1.5v-15A1.5 1.5 0 0 0 18.5 2h-15ZM3 3.707v14.586L10.293 11 3 3.707ZM3.707 19h14.586L11 11.707 3.707 19ZM19 18.293V3.707L11.707 11 19 18.293ZM18.293 3H3.707L11 10.293 18.293 3Z" clip-rule="evenodd"/></symbol>
+  <use href="#icon"/>
 </svg>

@@ -10,7 +10,7 @@ export const handle = { title: "Icon" };
 
 export default function Page() {
 	const size = useSizeParam();
-	return <Icon size={size} href={placeholder} style={{ fill: "white" }} />;
+	return <Icon size={size} href={placeholder} />;
 }
 
 function useSizeParam() {

@@ -20,8 +20,5 @@
 	"keywords": ["itwinui", "svg", "icons"],
 	"scripts": {
 		"build": "tsx scripts/icons-list.cts"
-	},
-	"devDependencies": {
-		"cheerio": "^1.0.0"
 	}
 }

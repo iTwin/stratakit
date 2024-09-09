@@ -35,6 +35,12 @@ export default defineConfig({
 		tsconfigPaths(),
 		esbuildBundleCss(),
 	],
+	build: {
+		assetsInlineLimit: (filePath) => {
+			if (filePath.includes("kiwi-icons/icons")) return false;
+			return undefined;
+		},
+	},
 });
 
 /** Bundles "*.css?inline" files using esbuild. Only used during dev. */

@@ -2,7 +2,7 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-import type { MetaFunction } from "@remix-run/node";
+import { Link, type MetaFunction } from "@remix-run/react";
 import { Anchor, Divider } from "@itwin/kiwi-react/bricks";
 import styles from "./index.module.css";
 
@@ -36,7 +36,7 @@ export default function Index() {
 			<ul className={styles.list}>
 				{components.map((component) => (
 					<li key={component}>
-						<Anchor href={`/tests/${component.toLowerCase()}`}>
+						<Anchor render={<Link to={`/tests/${component.toLowerCase()}`} />}>
 							{component}
 						</Anchor>
 					</li>

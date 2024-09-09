@@ -25,6 +25,7 @@ export const Root = ({ children }: { children: React.ReactNode }) => {
 
 function Styles() {
 	const templateRef = React.useRef<HTMLTemplateElement | null>(null);
+	const [loaded, setLoaded] = React.useState(false);
 
 	useLayoutEffect(() => {
 		const rootNode = templateRef.current?.getRootNode();
@@ -33,10 +34,10 @@ function Styles() {
 		}
 
 		const { loaded } = loadStyles(rootNode, { css: css });
-		if (loaded) templateRef.current?.remove();
+		setLoaded(loaded);
 	}, []);
 
-	return <template ref={templateRef} />;
+	return !loaded ? <template ref={templateRef} /> : null;
 }
 
 // ----------------------------------------------------------------------------

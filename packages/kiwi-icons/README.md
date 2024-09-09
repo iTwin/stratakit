@@ -6,16 +6,25 @@ Icons for the Kiwi design system. Each icon is available as an SVG symbol sprite
 
 Preferred usage is with the `Icon` component from `@itwin/kiwi-react`:
 
-1. Import the SVG icon and the `Icon` component.
+1. Import the icon you want to use.
+
+Using the [`import.meta`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/import.meta) feature to get the URL of the icon (does not work with SSR):
+
+```tsx
+const placeholderIcon = new URL("@itwin/kiwi-icons/placeholder.svg", import.meta.url).href;
+```
+
+Or a static import:
 
 ```tsx
 import placeholderIcon from "@itwin/kiwi-icons/placeholder.svg";
-import { Icon } from "@itwin/kiwi-react";
 ```
 
 2. Render the `Icon` component.
 
 ```tsx
+import { Icon } from "@itwin/kiwi-react";
+
 <Icon href={placeholderIcon} />
 
 // Specify `size` prop to render the large icon:

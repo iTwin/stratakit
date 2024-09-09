@@ -3,7 +3,22 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 import type { MetaFunction } from "@remix-run/node";
-import { Button } from "@itwin/kiwi-react/bricks";
+import { Anchor, Divider } from "@itwin/kiwi-react/bricks";
+import styles from "./index.module.css";
+
+const components = [
+	"Root",
+	"Anchor",
+	"Button",
+	"Checkbox",
+	"Divider",
+	"Icon",
+	"Input",
+	"Radio",
+	"Switch",
+	"Tabs",
+	"Textarea",
+];
 
 export const meta: MetaFunction = () => {
 	return [
@@ -14,9 +29,19 @@ export const meta: MetaFunction = () => {
 
 export default function Index() {
 	return (
-		<>
-			<h1>Welcome</h1>
-			<Button>Hello</Button>
-		</>
+		<main className={styles.main}>
+			<h1>Kiwi</h1>
+			<Divider />
+
+			<ul className={styles.list}>
+				{components.map((component) => (
+					<li key={component}>
+						<Anchor href={`/tests/${component.toLowerCase()}`}>
+							{component}
+						</Anchor>
+					</li>
+				))}
+			</ul>
+		</main>
 	);
 }

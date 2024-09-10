@@ -2,23 +2,19 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-.\🥝-label {
+.\🥝-icon {
 	@layer base {
-		color: #afb5ba;
-		cursor: default;
-
-		&:is(label) {
-			cursor: pointer;
-		}
+		width: var(--_kiwi-icon-size);
+		height: var(--_kiwi-icon-size);
 	}
 
-	@layer states {
-		&:has(+ :where(:disabled, [disabled], [aria-disabled="true"])) {
-			opacity: 0.5;
+	@layer modifiers {
+		&[data-kiwi-size="regular"] {
+			--_kiwi-icon-size: 1rem;
+		}
 
-			&:is(label) {
-				cursor: not-allowed;
-			}
+		&[data-kiwi-size="large"] {
+			--_kiwi-icon-size: 1.5rem;
 		}
 	}
 }

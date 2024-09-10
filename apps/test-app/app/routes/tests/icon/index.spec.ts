@@ -2,23 +2,14 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-.\🥝-label {
-	@layer base {
-		color: #afb5ba;
-		cursor: default;
+import { test, expect } from "@playwright/test";
 
-		&:is(label) {
-			cursor: pointer;
-		}
-	}
+test("default", async ({ page }) => {
+	await page.goto("/tests/icon");
+	await expect(page.locator("body")).toHaveScreenshot();
+});
 
-	@layer states {
-		&:has(+ :where(:disabled, [disabled], [aria-disabled="true"])) {
-			opacity: 0.5;
-
-			&:is(label) {
-				cursor: not-allowed;
-			}
-		}
-	}
-}
+test("large", async ({ page }) => {
+	await page.goto("/tests/icon?size=large");
+	await expect(page.locator("body")).toHaveScreenshot();
+});

@@ -3,108 +3,138 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 .\🥝-checkbox {
-	/* Cyclic toggles for default/hover/disabled states. See https://kizu.dev/cyclic-toggles/ */
-	--__kiwi-checkbox-state: var(--__kiwi-checkbox-state--default);
-	--__kiwi-checkbox-state--default: var(--__kiwi-checkbox-state,);
-	--__kiwi-checkbox-state--hover: var(--__kiwi-checkbox-state,);
-	--__kiwi-checkbox-state--checked: var(--__kiwi-checkbox-state,);
-	--__kiwi-checkbox-state--disabled: var(--__kiwi-checkbox-state,);
+	@layer base {
+		--_kiwi-checkbox-color-background: #36393f; /* bg/neutral/base */
+		--_kiwi-checkbox-color-background-hover: color-mix(
+			in oklch,
+			var(--_kiwi-checkbox-color-background),
+			#fff 4%
+		);
+		--_kiwi-checkbox-color-background-checked: #198166; /* bg/accent/base */
+		--_kiwi-checkbox-color-background-checked-hover: color-mix(
+			in oklch,
+			var(--_kiwi-checkbox-color-background-checked),
+			#fff 8%
+		);
+		--_kiwi-checkbox-color-background-disabled: #ffffff0a; /* bg/glow/on-surface/disabled */
 
-	@layer settings {
-		--_kiwi-checkbox-color-background: #181a1b;
-		--_kiwi-checkbox-color-background-hover: #212325;
-		--_kiwi-checkbox-color-border: #43494e;
-		--_kiwi-checkbox-color-border-hover: #5a6369;
-		--_kiwi-checkbox-color-border-checked: #0dffc5;
-		--_kiwi-checkbox-color-border-disabled: #43494e;
-		--_kiwi-checkbox-color-svg: #0dffc5;
+		--_kiwi-checkbox-color-border: #ffffff14; /* bg/button/base/border/color */
+		--_kiwi-checkbox-color-border-hover: #ffffff14; /* bg/button/base/border/color */
+		--_kiwi-checkbox-color-border-checked: #ffffff29; /* bg/button/strong/border/color */
+		--_kiwi-checkbox-color-border-checked-hover: #ffffff29; /* bg/button/strong/border/color */
+		--_kiwi-checkbox-color-border-disabled: transparent;
 
+		--_kiwi-checkbox-color-svg: #ffffff; /* icon/neutral/emphasis */
 		--_kiwi-checkbox-mask-image: initial;
-		--_kiwi-checkbox-checkmark-svg: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14"><path d="M5.8 9.95a.748.748 0 0 1-.53-.22l-2-2a.75.75 0 1 1 1.06-1.06L5.8 8.14l3.87-3.87a.75.75 0 1 1 1.06 1.06l-4.4 4.4a.748.748 0 0 1-.53.22Z" /></svg>');
-		--_kiwi-checkbox-indeterminate-svg: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="m2.75 6.875h10.5v2.25h-10.5z" /></svg>');
+		--_kiwi-checkbox-size: 1rem;
+
+		appearance: none;
+		inline-size: var(--_kiwi-checkbox-size);
+		block-size: var(--_kiwi-checkbox-size);
+		border: 1px solid transparent;
+		cursor: pointer;
+		transition: all 150ms ease-out;
+		transition-property: background-color, border-color, box-shadow;
+		position: relative;
+
+		box-shadow:
+			0px 3px 3px -1.5px #00000029,
+			0px 1px 1px -0.5px #00000029;
+
+		/* increase tap target size to 24x24 by default and allow adjusting through CSS var */
+		&::before {
+			content: "";
+			position: absolute;
+			inset: calc((var(--kiwi-checkbox-target-size, 24px) - 16px) / -2);
+		}
+
+		&::after {
+			content: "";
+			position: absolute;
+			inset: 0;
+			background-color: var(--_kiwi-checkbox-color-svg);
+			mask: var(--_kiwi-checkbox-mask-image) no-repeat center;
+		}
+
+		@media (forced-colors: active) {
+			--_kiwi-checkbox-color-svg: CanvasText;
+		}
+	}
+
+	@layer modifiers {
 		--_kiwi-checkbox-unchecked-svg: url('data:image/svg+xml;utf8,<svg viewBox="0 0 16 16"></svg>');
 
-		--_kiwi-checkbox-size: 1rem;
-	}
+		&:is(input[type="checkbox"]) {
+			--_kiwi-checkbox-border-radius: 4px;
+			--_kiwi-checkbox-checkmark-svg: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14"><path d="M5.8 9.95a.748.748 0 0 1-.53-.22l-2-2a.75.75 0 1 1 1.06-1.06L5.8 8.14l3.87-3.87a.75.75 0 1 1 1.06 1.06l-4.4 4.4a.748.748 0 0 1-.53.22Z" /></svg>');
+			--_kiwi-checkbox-indeterminate-svg: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="m2.75 6.875h10.5v2.25h-10.5z" /></svg>');
 
-	appearance: none;
-	inline-size: var(--_kiwi-checkbox-size);
-	block-size: var(--_kiwi-checkbox-size);
-	background-color: var(--__kiwi-checkbox-state--default, var(--_kiwi-checkbox-color-background))
-		var(--__kiwi-checkbox-state--hover, var(--_kiwi-checkbox-color-background-hover));
-	border: 1px solid transparent;
-	border-color: var(--__kiwi-checkbox-state--default, var(--_kiwi-checkbox-color-border))
-		var(--__kiwi-checkbox-state--hover, var(--_kiwi-checkbox-color-border-hover))
-		var(--__kiwi-checkbox-state--checked, var(--_kiwi-checkbox-color-border-checked))
-		var(--__kiwi-checkbox-state--disabled, var(--_kiwi-checkbox-color-border-disabled));
-	border-radius: var(--_kiwi-checkbox-border-radius);
-	cursor: pointer;
-	transition: all 150ms ease-out;
-	transition-property: background-color, border-color;
-	position: relative;
+			&:checked {
+				--_kiwi-checkbox-mask-image: var(--_kiwi-checkbox-checkmark-svg);
+			}
 
-	/* increase tap target size to 24x24 by default and allow adjusting through CSS var */
-	&::before {
-		content: "";
-		position: absolute;
-		inset: calc((var(--kiwi-checkbox-target-size, 24px) - 16px) / -2);
-	}
+			&:indeterminate {
+				--_kiwi-checkbox-mask-image: var(--_kiwi-checkbox-indeterminate-svg);
+			}
+		}
 
-	&::after {
-		content: "";
-		position: absolute;
-		inset: 0;
-		background-color: var(--_kiwi-checkbox-color-svg);
-		mask: var(--_kiwi-checkbox-mask-image) no-repeat center;
-	}
+		&:is(input[type="radio"]) {
+			--_kiwi-checkbox-border-radius: 999px;
 
-	@media (forced-colors: active) {
-		--_kiwi-checkbox-color-svg: CanvasText;
-	}
+			&:checked {
+				--_kiwi-checkbox-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" ><circle cx="8" cy="8" r="4" /></svg>');
+			}
+		}
 
-	@media (any-hover: hover) {
-		&:where(:hover) {
-			--__kiwi-checkbox-state: var(--__kiwi-checkbox-state--hover);
+		&:not(:checked) {
+			--_kiwi-checkbox-mask-image: var(--_kiwi-checkbox-unchecked-svg);
 		}
 	}
 
-	&:not(:checked) {
-		--_kiwi-checkbox-mask-image: var(--_kiwi-checkbox-unchecked-svg);
-	}
+	@layer states {
+		/* Cyclic toggles for default/hover/disabled states. See https://kizu.dev/cyclic-toggles/ */
+		--__kiwi-checkbox-state: var(--__kiwi-checkbox-state--default);
+		--__kiwi-checkbox-state--default: var(--__kiwi-checkbox-state,);
+		--__kiwi-checkbox-state--hover: var(--__kiwi-checkbox-state,);
+		--__kiwi-checkbox-state--checked: var(--__kiwi-checkbox-state,);
+		--__kiwi-checkbox-state--checked-hover: var(--__kiwi-checkbox-state,);
+		--__kiwi-checkbox-state--disabled: var(--__kiwi-checkbox-state,);
 
-	&:where(:checked),
-	&:is(input[type="checkbox"]:indeterminate) {
-		--__kiwi-checkbox-state: var(--__kiwi-checkbox-state--checked);
-		background-image: linear-gradient(#0dffc51a, #0dffc51a);
+		background-color: var(--__kiwi-checkbox-state--default, var(--_kiwi-checkbox-color-background))
+			var(--__kiwi-checkbox-state--hover, var(--_kiwi-checkbox-color-background-hover))
+			var(--__kiwi-checkbox-state--checked, var(--_kiwi-checkbox-color-background-checked))
+			var(
+				--__kiwi-checkbox-state--checked-hover,
+				var(--_kiwi-checkbox-color-background-checked-hover)
+			)
+			var(--__kiwi-checkbox-state--disabled, var(--_kiwi-checkbox-color-background-disabled));
+		border: 1px solid transparent;
+		border-color: var(--__kiwi-checkbox-state--default, var(--_kiwi-checkbox-color-border))
+			var(--__kiwi-checkbox-state--hover, var(--_kiwi-checkbox-color-border-hover))
+			var(--__kiwi-checkbox-state--checked, var(--_kiwi-checkbox-color-border-checked))
+			var(--__kiwi-checkbox-state--checked-hover, var(--_kiwi-checkbox-color-border-checked-hover))
+			var(--__kiwi-checkbox-state--disabled, var(--_kiwi-checkbox-color-border-disabled));
+		border-radius: var(--_kiwi-checkbox-border-radius);
 
-		&:hover {
-			background-image: linear-gradient(#0dffc533, #0dffc533);
+		@media (any-hover: hover) {
+			&:where(:hover) {
+				--__kiwi-checkbox-state: var(--__kiwi-checkbox-state--hover);
+			}
 		}
-	}
 
-	&:where([disabled], :disabled, [aria-disabled="true"]) {
-		--__kiwi-checkbox-state: var(--__kiwi-checkbox-state--disabled);
-		cursor: not-allowed;
-		opacity: 0.5;
-	}
+		&:where(:checked),
+		&:is(input[type="checkbox"]:indeterminate) {
+			--__kiwi-checkbox-state: var(--__kiwi-checkbox-state--checked);
 
-	&:is(input[type="checkbox"]) {
-		--_kiwi-checkbox-border-radius: 4px;
-
-		&:checked {
-			--_kiwi-checkbox-mask-image: var(--_kiwi-checkbox-checkmark-svg);
+			&:where(:hover) {
+				--__kiwi-checkbox-state: var(--__kiwi-checkbox-state--checked-hover);
+			}
 		}
 
-		&:indeterminate {
-			--_kiwi-checkbox-mask-image: var(--_kiwi-checkbox-indeterminate-svg);
-		}
-	}
-
-	&:is(input[type="radio"]) {
-		--_kiwi-checkbox-border-radius: 999px;
-
-		&:checked {
-			--_kiwi-checkbox-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" ><circle cx="8" cy="8" r="4" /></svg>');
+		&:where([disabled], :disabled, [aria-disabled="true"]) {
+			--__kiwi-checkbox-state: var(--__kiwi-checkbox-state--disabled);
+			cursor: not-allowed;
+			box-shadow: none;
 		}
 	}
 }

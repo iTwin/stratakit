@@ -1,0 +1,24 @@
+{
+	"name": "@itwin/kiwi-icons",
+	"private": true,
+	"type": "module",
+	"version": "0.1.0",
+	"license": "CC-BY-3.0",
+	"exports": {
+		"./*.svg": "./icons/*.svg",
+		"./icons-list.json": "./icons-list.json"
+	},
+	"files": ["icons/*.svg", "icons-list.json"],
+	"description": "Generic SVG icons for iTwinUI projects",
+	"author": "Bentley Systems",
+	"homepage": "https://github.com/iTwin/kiwi",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/iTwin/kiwi.git",
+		"directory": "packages/kiwi-icons"
+	},
+	"keywords": ["itwinui", "svg", "icons"],
+	"scripts": {
+		"build": "tsx scripts/icons-list.cts"
+	}
+}

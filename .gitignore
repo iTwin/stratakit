@@ -9,6 +9,8 @@ node_modules
 dist
 build
 
+packages/kiwi-icons/icons-list.json
+
 # Caches
 .cache
 

@@ -21,3 +21,8 @@ test("vertical", async ({ page }) => {
 	const divider = page.getByRole("separator");
 	await expect(divider).toHaveAttribute("aria-orientation", "vertical");
 });
+
+test("visual", async ({ page }) => {
+	await page.goto("/tests/divider?visual=true");
+	await expect(page.locator("body")).toHaveScreenshot();
+});

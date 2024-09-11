@@ -3,35 +3,37 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 .\🥝-anchor {
-	@layer settings {
-		--_kiwi-anchor-color-text: #edeff0;
-	}
+	@layer base {
+		--_kiwi-anchor-color-text: #fbfcfd; /* text/neutral/primary */
 
-	cursor: pointer;
-	font-weight: 500;
-	text-underline-offset: 0.25ex;
+		cursor: pointer;
+		font-weight: 500;
+		text-underline-offset: 0.25ex;
 
-	border-radius: 4px;
+		border-radius: 4px;
 
-	color: var(--_kiwi-anchor-color-text);
+		color: var(--_kiwi-anchor-color-text);
 
-	&:where(button) {
-		border: none;
-		background: transparent;
-	}
-
-	@media (any-hover: hover) {
-		&:where(:hover) {
-			text-decoration: none;
+		&:where(button) {
+			border: none;
+			background: transparent;
 		}
 	}
 
-	&:where(:active) {
-		text-decoration: none;
-	}
+	@layer states {
+		@media (any-hover: hover) {
+			&:where(:hover) {
+				text-decoration: none;
+			}
+		}
 
-	&:where([disabled], :disabled, [aria-disabled="true"]) {
-		cursor: not-allowed;
-		opacity: 0.5;
+		&:where(:active) {
+			text-decoration: none;
+		}
+
+		&:where([disabled], :disabled, [aria-disabled="true"]) {
+			cursor: not-allowed;
+			opacity: 0.5;
+		}
 	}
 }

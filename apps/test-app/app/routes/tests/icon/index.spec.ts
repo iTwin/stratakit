@@ -2,11 +2,14 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-@import "./sublayers.css" layer(kiwi.components);
+import { test, expect } from "@playwright/test";
 
-@import "./Anchor.css" layer(kiwi.components);
-@import "./Button.css" layer(kiwi.components);
-@import "./Divider.css" layer(kiwi.components);
-@import "./Icon.css" layer(kiwi.components);
-@import "./Input.css" layer(kiwi.components);
-@import "./Label.css" layer(kiwi.components);
+test("default", async ({ page }) => {
+	await page.goto("/tests/icon");
+	await expect(page.locator("body")).toHaveScreenshot();
+});
+
+test("large", async ({ page }) => {
+	await page.goto("/tests/icon?size=large");
+	await expect(page.locator("body")).toHaveScreenshot();
+});

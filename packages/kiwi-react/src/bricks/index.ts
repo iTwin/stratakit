@@ -7,6 +7,7 @@ export { Anchor } from "./Anchor.js";
 export { Button } from "./Button.js";
 export { Checkbox } from "./Checkbox.js";
 export { Divider } from "./Divider.js";
+export { Icon } from "./Icon.js";
 export { Input } from "./Input.js";
 export { Label } from "./Label.js";
 export { Radio } from "./Radio.js";

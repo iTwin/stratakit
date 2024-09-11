@@ -37,6 +37,6 @@ test("disabled", async ({ page }) => {
 });
 
 test("visual", async ({ page }) => {
-	await page.goto("/tests/button");
+	await page.goto("/tests/button?visual=true");
 	await expect(page.locator("body")).toHaveScreenshot();
 });

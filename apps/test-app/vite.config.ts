@@ -27,7 +27,7 @@ export default defineConfig({
 				// `createRoutesFromFolders` will follow the Remix v1 route convention.
 				// See https://remix.run/docs/en/v1/file-conventions/routes-files
 				return createRoutesFromFolders(defineRoutes, {
-					ignoredFilePatterns: ["**/*.spec.*", "**/.DS_Store"],
+					ignoredFilePatterns: ["**/*.spec.*", "**/*.css", "**/.DS_Store"],
 				});
 			},
 			ssr: false, // SPA mode for github-pages
@@ -35,6 +35,12 @@ export default defineConfig({
 		tsconfigPaths(),
 		esbuildBundleCss(),
 	],
+	build: {
+		assetsInlineLimit: (filePath) => {
+			if (filePath.includes("kiwi-icons/icons")) return false;
+			return undefined;
+		},
+	},
 });
 
 /** Bundles "*.css?inline" files using esbuild. Only used during dev. */

@@ -3,70 +3,78 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 .\🥝-input {
-	/* Cyclic toggles for default/hover/active/disabled states. See https://kizu.dev/cyclic-toggles/ */
-	--__kiwi-input-state: var(--__kiwi-input-state--default);
-	--__kiwi-input-state--default: var(--__kiwi-input-state,);
-	--__kiwi-input-state--hover: var(--__kiwi-input-state,);
-	--__kiwi-input-state--disabled: var(--__kiwi-input-state,);
-
-	@layer settings {
-		--_kiwi-input-color-background: #181a1b;
-		--_kiwi-input-color-background-hover: #212325;
+	@layer base {
+		--_kiwi-input-color-background: #25282c; /* bg/surface/primary */
+		--_kiwi-input-color-background-hover: color-mix(
+			in oklch,
+			var(--_kiwi-input-color-background),
+			#fff 4%
+		);
 		--_kiwi-input-color-background-disabled: #181a1b;
-		--_kiwi-input-color-border: #43494e;
-		--_kiwi-input-color-border-hover: #5a6369;
-		--_kiwi-input-color-border-disabled: #43494e;
-		--_kiwi-input-color-text: #edeff0;
-		--_kiwi-input-color-placeholder: #777e84;
+		--_kiwi-input-color-border: #474c53; /* border/neutral/default */
+		--_kiwi-input-color-border-hover: #585f68; /* border/neutral/hover */
+		--_kiwi-input-color-border-disabled: var(--_kiwi-input-color-border);
+
+		--_kiwi-input-color-text: #fbfcfd; /* text/neutral/primary */
+		--_kiwi-input-color-placeholder: #808791; /* text/neutral/tertiary */
 		--_kiwi-input-height: 1.5rem;
 		--_kiwi-input-padding-inline: 8px;
 		--_kiwi-input-padding-block: 4px;
-	}
 
-	appearance: none;
-	border: 1px solid transparent;
+		appearance: none;
+		border: 1px solid transparent;
 
-	display: inline-flex;
-	align-items: center;
-	justify-content: flex-start;
+		display: inline-flex;
+		align-items: center;
+		justify-content: flex-start;
 
-	min-block-size: var(--_kiwi-input-height);
-	padding-inline: var(--_kiwi-input-padding-inline);
-	padding-block: var(--_kiwi-input-padding-block);
-	border-radius: 4px;
+		min-block-size: var(--_kiwi-input-height);
+		padding-inline: var(--_kiwi-input-padding-inline);
+		padding-block: var(--_kiwi-input-padding-block);
+		border-radius: 4px;
 
-	background-color: var(--__kiwi-input-state--default, var(--_kiwi-input-color-background))
-		var(--__kiwi-input-state--hover, var(--_kiwi-input-color-background-hover))
-		var(--__kiwi-input-state--disabled, var(--_kiwi-input-color-background-disabled));
-	border-color: var(--__kiwi-input-state--default, var(--_kiwi-input-color-border))
-		var(--__kiwi-input-state--hover, var(--_kiwi-input-color-border-hover))
-		var(--__kiwi-input-state--disabled, var(--_kiwi-input-color-border-disabled));
-	box-shadow:
-		0px 2px 0px 0px hsl(0 0% 0% / 0.4) inset,
-		0px 2px 4px 0px hsl(0 0% 0% / 0.2) inset;
-	color: var(--_kiwi-input-color-text);
-	transition: all 150ms ease-out;
-	transition-property: background-color, border-color;
+		box-shadow:
+			0px 1px 2px 0px #00000029 inset,
+			0px 2px 4px 0px #00000029 inset;
+		color: var(--_kiwi-input-color-text);
+		transition: all 150ms ease-out;
+		transition-property: background-color, border-color;
 
-	&::placeholder {
-		color: var(--_kiwi-input-color-placeholder);
-		opacity: 1;
-	}
+		&::placeholder {
+			color: var(--_kiwi-input-color-placeholder);
+			opacity: 1;
+		}
 
-	&:where(textarea) {
-		resize: vertical;
-		resize: block;
-	}
-
-	@media (any-hover: hover) {
-		&:where(:hover) {
-			--__kiwi-input-state: var(--__kiwi-input-state--hover);
+		&:where(textarea) {
+			resize: vertical;
+			resize: block;
 		}
 	}
 
-	&:where(:disabled) {
-		--__kiwi-input-state: var(--__kiwi-input-state--disabled);
-		cursor: pointer;
-		opacity: 0.5;
+	@layer states {
+		/* Cyclic toggles for default/hover/active/disabled states. See https://kizu.dev/cyclic-toggles/ */
+		--__kiwi-input-state: var(--__kiwi-input-state--default);
+		--__kiwi-input-state--default: var(--__kiwi-input-state,);
+		--__kiwi-input-state--hover: var(--__kiwi-input-state,);
+		--__kiwi-input-state--disabled: var(--__kiwi-input-state,);
+
+		background-color: var(--__kiwi-input-state--default, var(--_kiwi-input-color-background))
+			var(--__kiwi-input-state--hover, var(--_kiwi-input-color-background-hover))
+			var(--__kiwi-input-state--disabled, var(--_kiwi-input-color-background-disabled));
+		border-color: var(--__kiwi-input-state--default, var(--_kiwi-input-color-border))
+			var(--__kiwi-input-state--hover, var(--_kiwi-input-color-border-hover))
+			var(--__kiwi-input-state--disabled, var(--_kiwi-input-color-border-disabled));
+
+		@media (any-hover: hover) {
+			&:where(:hover) {
+				--__kiwi-input-state: var(--__kiwi-input-state--hover);
+			}
+		}
+
+		&:where(:disabled) {
+			--__kiwi-input-state: var(--__kiwi-input-state--disabled);
+			cursor: not-allowed;
+			opacity: 0.5;
+		}
 	}
 }

@@ -2,17 +2,35 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-
 import * as React from "react";
+import cx from "classnames";
 import * as Ariakit from "@ariakit/react";
 
-interface TooltipProps extends Omit<Ariakit.TooltipProps, "store"> {}
+interface TooltipProps extends Omit<Ariakit.TooltipProps, "store"> {
+	content: string;
+	children: React.ReactNode;
+}
 
 export const Tooltip = React.forwardRef<
 	React.ElementRef<typeof Ariakit.Tooltip>,
 	TooltipProps
->((props, forwardedRef) => {
+>(({ content, children, className, ...props }, forwardedRef) => {
+	const tooltipStore = Ariakit.useTooltipStore();
+
 	return (
-		<Ariakit.Tooltip accessibleWhenDisabled {...props} ref={forwardedRef} />
+		<>
+			<Ariakit.TooltipAnchor store={tooltipStore} className={cx(className)}>
+				{children}
+			</Ariakit.TooltipAnchor>
+
+			<Ariakit.Tooltip
+				store={tooltipStore}
+				className={cx("custom-tooltip", className)}
+				{...props}
+				ref={forwardedRef}
+			>
+				{content}
+			</Ariakit.Tooltip>
+		</>
 	);
 });

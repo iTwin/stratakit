@@ -26,33 +26,6 @@
 		position: absolute;
 	}
 
-	@layer positioning {
-		/* Default tooltip position is above */
-		&[data-kiwi-position="top"] {
-			left: 50%;
-			transform: translate(-50%);
-		}
-
-		/* Tooltip positioned to the bottom */
-		&[data-kiwi-position="bottom"] {
-			top: 0%;
-			left: 0%;
-			transform: translate(-10%, 4rem);
-		}
-
-		/* Tooltip positioned to the right */
-		&[data-kiwi-position="right"] {
-			right: -150%;
-			transform: translateY(150%);
-		}
-
-		/* Tooltip positioned to the left */
-		&[data-kiwi-position="left"] {
-			left: -200%;
-			transform: translateY(150%);
-		}
-	}
-
 	@layer modifiers {
 		/* Tooltip visibility modifier */
 		&[data-kiwi-visible="true"] {

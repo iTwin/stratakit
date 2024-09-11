@@ -4,7 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 .\🥝-label {
 	@layer base {
-		color: #afb5ba;
+		color: #b8bdc1; /* text/neutral/secondary */
 		cursor: default;
 
 		&:is(label) {

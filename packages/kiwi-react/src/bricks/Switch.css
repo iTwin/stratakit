@@ -1,0 +1,120 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+.\🥝-switch {
+	@layer base {
+		--_kiwi-switch-width: 2rem;
+		--_kiwi-switch-toggle-size: 1rem;
+
+		--_kiwi-switch-color-border: #474c53 /* border/neutral/base */;
+		--_kiwi-switch-color-border-hover: color-mix(
+			in oklch,
+			var(--_kiwi-switch-color-border) 100%,
+			#fff 8%
+		);
+		--_kiwi-switch-color-border-active: color-mix(
+			in oklch,
+			var(--_kiwi-switch-color-border) 100%,
+			#fff 12%
+		);
+		--_kiwi-switch-color-border-checked: color-mix(
+			in oklch,
+			var(--_kiwi-switch-color-background-checked) 100%,
+			#fff 16%
+		);
+		--_kiwi-switch-color-background: #36393f /* bg/neutral/default */;
+		--_kiwi-switch-color-background-hover: color-mix(
+			in oklch,
+			var(--_kiwi-switch-color-background) 100%,
+			#fff 4%
+		);
+		--_kiwi-switch-color-background-checked: #198166 /* bg/accent/base */;
+		--_kiwi-switch-color-background-checked-hover: color-mix(
+			in oklch,
+			var(--_kiwi-switch-color-background-checked) 100%,
+			#fff 8%
+		);
+
+		appearance: none;
+		inline-size: var(--_kiwi-switch-width);
+		border: 1px solid transparent;
+		border-radius: 1.5rem;
+		cursor: pointer;
+		display: inline-grid;
+		align-items: center;
+		padding: 2px /* spacing-2 */;
+		transition: all 150ms ease-out;
+		transition-property: background-color, border-color;
+
+		/* This pseudo-element creates the "thumb" */
+		&::after {
+			content: "";
+			display: block;
+			aspect-ratio: 1 / 1;
+			grid-area: 1 / 1 / -1 / -1;
+			block-size: var(--_kiwi-switch-toggle-size);
+			border-radius: 9999px;
+			background-color: #fbfcfd /* bg/neutral/inverse */;
+			transition: transform 150ms ease-out;
+			box-shadow:
+				0px -1px 0px 0px #00000014 inset,
+				0px 0px 0px 1px #ffffff14 inset,
+				0px 1px 1px -0.5px #00000029,
+				0px 3px 3px -1.5px #00000029;
+			justify-self: var(--_kiwi-switch-toggle-placement);
+		}
+	}
+
+	@layer states {
+		/* Cyclic toggles for default/hover/active/checked/checked+hover states. See https://kizu.dev/cyclic-toggles/ */
+		--__kiwi-switch-state: var(--__kiwi-switch-state--default);
+		--__kiwi-switch-state--default: var(--__kiwi-switch-state,);
+		--__kiwi-switch-state--hover: var(--__kiwi-switch-state,);
+		--__kiwi-switch-state--active: var(--__kiwi-switch-state,);
+		--__kiwi-switch-state--checked: var(--__kiwi-switch-state,);
+		--__kiwi-switch-state--checked-hover: var(--__kiwi-switch-state,);
+		--__kiwi-switch-state--disabled: var(--__kiwi-switch-state,);
+
+		background-color: var(--__kiwi-switch-state--default, var(--_kiwi-switch-color-background))
+			var(--__kiwi-switch-state--hover, var(--_kiwi-switch-color-background-hover))
+			var(--__kiwi-switch-state--active, var(--_kiwi-switch-color-background-hover))
+			var(--__kiwi-switch-state--checked, var(--_kiwi-switch-color-background-checked))
+			var(--__kiwi-switch-state--checked-hover, var(--_kiwi-switch-color-background-checked-hover))
+			var(--__kiwi-switch-state--disabled, var(--_kiwi-switch-color-background));
+		border-color: var(--__kiwi-switch-state--default, var(--_kiwi-switch-color-border))
+			var(--__kiwi-switch-state--hover, var(--_kiwi-switch-color-border-hover))
+			var(--__kiwi-switch-state--active, var(--_kiwi-switch-color-border-active))
+			var(--__kiwi-switch-state--checked, var(--_kiwi-switch-color-border-checked))
+			var(--__kiwi-switch-state--checked-hover, var(--_kiwi-switch-color-border-checked))
+			var(--__kiwi-switch-state--disabled, var(--_kiwi-switch-color-border));
+		--_kiwi-switch-toggle-placement: start;
+
+		@media (any-hover: hover) {
+			&:where(:hover) {
+				--__kiwi-switch-state: var(--__kiwi-switch-state--hover);
+			}
+		}
+
+		&:where(:active) {
+			--__kiwi-switch-state: var(--__kiwi-switch-state--active);
+		}
+
+		&:where(:checked, [aria-checked="true"]) {
+			--_kiwi-switch-toggle-placement: end;
+			--__kiwi-switch-state: var(--__kiwi-switch-state--checked);
+
+			@media (any-hover: hover) {
+				&:where(:hover) {
+					--__kiwi-switch-state: var(--__kiwi-switch-state--checked-hover);
+				}
+			}
+		}
+
+		&:where([disabled], :disabled, [aria-disabled="true"]) {
+			--__kiwi-switch-state: var(--__kiwi-switch-state--disabled);
+			cursor: not-allowed;
+			opacity: 0.5;
+		}
+	}
+}

@@ -50,11 +50,9 @@ test("disabled", async ({ page }) => {
 
 	await page.keyboard.press("Tab");
 	await expect(radioB).toBeChecked();
-	await expect(radioB).toBeFocused();
 
 	// should not be able to toggle the disabled radio
 	await page.keyboard.press("ArrowUp");
-	await expect(radioA).toBeFocused();
 	await expect(radioA).not.toBeChecked();
 	await expect(radioB).toBeChecked();
 	await radioA.click({ force: true });

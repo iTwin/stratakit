@@ -101,7 +101,6 @@ interface ButtonProps extends Ariakit.ButtonProps {
 }
 ```
 
-Another example
 
 ```tsx
 /**

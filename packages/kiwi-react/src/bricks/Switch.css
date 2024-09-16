@@ -38,12 +38,16 @@
 		);
 
 		appearance: none;
-		inline-size: var(--_kiwi-switch-width);
 		border: 1px solid transparent;
-		border-radius: 1.5rem;
 		cursor: pointer;
+
 		display: inline-grid;
 		align-items: center;
+
+		position: relative;
+		border-radius: 1.5rem;
+		inline-size: var(--_kiwi-switch-width);
+
 		transition: all 150ms ease-out;
 		transition-property: background-color, border-color;
 

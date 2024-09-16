@@ -82,6 +82,7 @@
 
 			@media (prefers-reduced-motion: no-preference) {
 				transition: aspect-ratio 150ms ease-out;
+				will-change: aspect-ratio;
 			}
 		}
 	}

@@ -47,6 +47,16 @@ _Before running this command, make sure [Docker](https://www.docker.com/) is run
 
 ## Developing
 
+### Directory structure
+
+This repo uses [Pnpm workspaces](https://pnpm.io/workspaces) to allow multiple packages to exist within the same codebase.
+
+Packages:
+- [`kiwi-icons`](./packages/kiwi-icons): A standalone SVG icon library.
+- [`kiwi-react`](./packages/kiwi-react): React component library.
+
+Apps:
+- [`test-app`](./apps/test-app): [Remix](https://remix.run/) app for automated and manual testing.
 ### Development environment
 
 To start the development server, run the following command from the root.

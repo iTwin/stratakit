@@ -117,7 +117,6 @@ interface ButtonProps extends Ariakit.ButtonProps {
 }
 ```
 
-
 ```tsx
 /**
  * A customizable button component supporting multiple variants.

@@ -2,7 +2,7 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-.\🥝-icon {
+.🥝-icon {
 	@layer base {
 		width: var(--_kiwi-icon-size);
 		height: var(--_kiwi-icon-size);

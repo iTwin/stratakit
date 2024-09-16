@@ -52,6 +52,7 @@ _Before running this command, make sure [Docker](https://www.docker.com/) is run
 This repo uses [Pnpm workspaces](https://pnpm.io/workspaces) to allow multiple packages to exist within the same codebase.
 
 Packages:
+
 - [`kiwi-icons`](./packages/kiwi-icons): A standalone SVG icon library.
 - [`kiwi-react`](./packages/kiwi-react): React component library.
 

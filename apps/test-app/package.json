@@ -11,6 +11,7 @@
 		"typecheck": "tsc"
 	},
 	"dependencies": {
+		"@itwin/kiwi-icons": "*",
 		"@itwin/kiwi-react": "*",
 		"@remix-run/node": "^2.11.0",
 		"@remix-run/react": "^2.11.0",

@@ -4,7 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 .\🥝-anchor {
 	@layer base {
-		--_kiwi-anchor-color-text: #edeff0;
+		--_kiwi-anchor-color-text: #fbfcfd; /* text/neutral/primary */
 
 		cursor: pointer;
 		font-weight: 500;

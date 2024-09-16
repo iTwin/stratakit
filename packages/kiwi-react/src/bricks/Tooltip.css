@@ -29,11 +29,13 @@
 	@layer modifiers {
 		/* Tooltip visibility modifier */
 		&[data-kiwi-visible="true"] {
+			visibility: visible;
 			opacity: 1;
 			transition: opacity 0.25s ease-in;
 		}
 
 		&[data-kiwi-visible="false"] {
+			visibility: hidden;
 			opacity: 0;
 			transition: opacity 0.25s ease-out;
 			pointer-events: none;

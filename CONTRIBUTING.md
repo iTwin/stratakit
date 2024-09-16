@@ -122,10 +122,7 @@ interface ButtonProps extends Ariakit.ButtonProps {
 /**
  * A customizable button component supporting multiple variants.
  *
- * @param {ButtonProps} props - The properties object.
- * @param {"solid" | "ghost"} props.variant - The visual variant of the button.
  */
-
 export const Button = React.forwardRef<
 	React.ElementRef<typeof Ariakit.Button>,
 	ButtonProps> ((props, forwardedRef) => { }

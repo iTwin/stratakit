@@ -43,18 +43,30 @@
 		cursor: pointer;
 		display: inline-grid;
 		align-items: center;
-		padding: 2px /* spacing-2 */;
 		transition: all 150ms ease-out;
 		transition-property: background-color, border-color;
 
-		/* This pseudo-element creates the "thumb" */
+		&::before,
 		&::after {
 			content: "";
 			display: block;
-			aspect-ratio: var(--_kiwi-switch-aspect-ratio);
 			grid-area: 1 / 1 / -1 / -1;
+		}
+
+		/* This pseudo-element increases the tap target size so it's >=24px tall  */
+		&::before {
+			position: absolute;
+			inline-size: var(--_kiwi-switch-width);
+			block-size: 24px;
+			margin: -1px; /* account for border */
+		}
+
+		/* This pseudo-element creates the "thumb" */
+		&::after {
+			aspect-ratio: var(--_kiwi-switch-aspect-ratio);
 			block-size: var(--_kiwi-switch-toggle-size);
 			border-radius: 9999px;
+			margin: 2px /* spacing-2 */;
 			background-color: #fbfcfd /* bg/neutral/inverse */;
 			box-shadow:
 				0px -1px 0px 0px #00000014 inset,

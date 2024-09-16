@@ -10,7 +10,6 @@
 	},
 	"css": {
 		"formatter": {
-			"enabled": true,
 			"lineWidth": 100
 		}
 	},

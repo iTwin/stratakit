@@ -32,11 +32,12 @@ function VisualTest() {
 	const [searchParams] = useSearchParams();
 	const checked = searchParams.get("checked") === "true";
 	const disabled = searchParams.get("disabled") === "true";
+	const id = useId();
 
 	return (
-		<label>
-			<Switch defaultChecked={checked} disabled={disabled} />
-			<VisuallyHidden>Toggle me</VisuallyHidden>
-		</label>
+		<>
+			<Switch defaultChecked={checked} disabled={disabled} id={id} />
+			<VisuallyHidden render={<Label htmlFor={id} />}>Toggle me</VisuallyHidden>
+		</>
 	);
 }

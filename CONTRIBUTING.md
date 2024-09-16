@@ -121,13 +121,11 @@ interface ButtonProps extends Ariakit.ButtonProps {
 ```tsx
 /**
  * A customizable button component supporting multiple variants.
- *
  */
 export const Button = React.forwardRef<
 	React.ElementRef<typeof Ariakit.Button>,
-	ButtonProps> ((props, forwardedRef) => { }
-
-```
+	ButtonProps
+>((props, forwardedRef) => { }
 
 ## Pull Requests
 

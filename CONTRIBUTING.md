@@ -87,9 +87,7 @@ pnpm run test button
 
 ### Documentation
 
-All components, props, and public APIs must have inline documentation written as [JSDoc](https://jsdoc.app/) comments. This documentation can be used by IDEs for hover hints and auto-completion to assist developers in understanding the code.
-
-For markdown-based documentation, you can include detailed descriptions of components in the docs folder, and use Markdown to create more elaborate documentation.
+All components, props, and public APIs must have inline documentation written as [JSDoc](https://jsdoc.app/) comments. This documentation can be used by IDEs for hover hints and auto-completion to assist developers in understanding the code. JSDoc comments support markdown syntax, which can be useful when you want to display inline code or hyperlinks.
 
 ```tsx
 interface ButtonProps extends Ariakit.ButtonProps {

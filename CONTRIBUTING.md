@@ -6,7 +6,6 @@ Welcome to the contribution guide for the Kiwi Project! In here you will find al
 
 ## How to setup
 
-### Local setup
 
 To clone and build Kiwi, you'll need [Git](https://git-scm.com), [Node 20+](https://nodejs.org/en/download/), and [Pnpm 9](https://pnpm.io/installation) installed on your computer.
 

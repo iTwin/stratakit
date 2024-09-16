@@ -43,13 +43,12 @@ test("default value", async ({ page }) => {
 
 test("disabled", async ({ page }) => {
 	await page.goto("/tests/radio?disabled=true&defaultValue=B");
-	await page.waitForTimeout(100);
 
 	const radioA = page.getByRole("radio", { name: "A" });
 	const radioB = page.getByRole("radio", { name: "B" });
 
-	await page.keyboard.press("Tab");
 	await expect(radioB).toBeChecked();
+	await page.keyboard.press("Tab");
 
 	// should not be able to toggle the disabled radio
 	await page.keyboard.press("ArrowUp");

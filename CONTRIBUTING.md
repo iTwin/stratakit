@@ -113,7 +113,7 @@ interface ButtonProps extends Ariakit.ButtonProps {
 	/**
 	 * The variant style of the button.
 	 * Use "solid" for primary actions and "ghost" for less prominent actions.
-	 **/
+	 */
 	variant?: "solid" | "ghost";
 }
 ```

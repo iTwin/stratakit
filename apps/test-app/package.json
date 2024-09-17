@@ -28,6 +28,7 @@
 		"@types/react": "*",
 		"@types/react-dom": "*",
 		"esbuild": "^0.23.0",
+		"lightningcss": "^1.27.0",
 		"typescript": "5",
 		"vite": "^5.3.5",
 		"vite-tsconfig-paths": "^4.2.1"

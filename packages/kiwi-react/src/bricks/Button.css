@@ -49,9 +49,7 @@
 			--_kiwi-button-color-border: #ffffff14; /* border/glow/default */
 
 			border-color: var(--_kiwi-button-color-border);
-			box-shadow:
-				0px 1px 1px -0.5px #00000029,
-				0px 3px 3px -1.5px #00000029;
+			box-shadow: 0px 1px 1px -0.5px #00000029, 0px 3px 3px -1.5px #00000029;
 		}
 
 		&[data-kiwi-variant="ghost"] {

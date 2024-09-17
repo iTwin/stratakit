@@ -70,8 +70,4 @@ for (const filePath of filePaths) {
 	}
 }
 
-module.exports = {
-	copyrightBannerScss,
-	copyrightBannerHtml,
-	copyrightBannerJs,
-};
+export { copyrightBannerScss, copyrightBannerHtml, copyrightBannerJs };

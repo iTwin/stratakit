@@ -1,5 +1,5 @@
 {
-	"$schema": "https://biomejs.dev/schemas/1.8.3/schema.json",
+	"$schema": "https://biomejs.dev/schemas/1.9.1/schema.json",
 	"files": {
 		"ignoreUnknown": true
 	},
@@ -7,6 +7,14 @@
 		"enabled": true,
 		"clientKind": "git",
 		"useIgnoreFile": true
+	},
+	"css": {
+		"formatter": {
+			"lineWidth": 100
+		},
+		"linter": {
+			"enabled": true
+		}
 	},
 	"overrides": [
 		{

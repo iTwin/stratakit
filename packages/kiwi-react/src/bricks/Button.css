@@ -2,7 +2,7 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-.\🥝-button {
+.🥝-button {
 	@layer base {
 		--_kiwi-button-color-text: #fbfcfd; /* text/neutral/primary */
 		--_kiwi-button-gap: 4px;
@@ -49,9 +49,7 @@
 			--_kiwi-button-color-border: #ffffff14; /* border/glow/default */
 
 			border-color: var(--_kiwi-button-color-border);
-			box-shadow:
-				0px 1px 1px -0.5px #00000029,
-				0px 3px 3px -1.5px #00000029;
+			box-shadow: 0px 1px 1px -0.5px #00000029, 0px 3px 3px -1.5px #00000029;
 		}
 
 		&[data-kiwi-variant="ghost"] {

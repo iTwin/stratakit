@@ -19,22 +19,24 @@ export const Tooltip = React.forwardRef<
 
 	return (
 		<>
-			<Ariakit.TooltipAnchor
-				store={tooltipStore}
-				className={cx("🥝-tooltip", className)}
-				ref={forwardedRef}
-			>
-				{children}
-			</Ariakit.TooltipAnchor>
+			<Ariakit.TooltipProvider>
+				<Ariakit.TooltipAnchor
+					store={tooltipStore}
+					className={cx("", className)}
+					ref={forwardedRef}
+				>
+					{children}
+				</Ariakit.TooltipAnchor>
 
-			<Ariakit.Tooltip
-				store={tooltipStore}
-				className={cx("custom-tooltip", className)}
-				{...props}
-				ref={forwardedRef}
-			>
-				{content}
-			</Ariakit.Tooltip>
+				<Ariakit.Tooltip
+					store={tooltipStore}
+					className={cx("custom-tooltip", className)}
+					{...props}
+					ref={forwardedRef}
+				>
+					{content}
+				</Ariakit.Tooltip>
+			</Ariakit.TooltipProvider>
 		</>
 	);
 });

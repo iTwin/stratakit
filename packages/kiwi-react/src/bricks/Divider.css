@@ -2,7 +2,7 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-.\🥝-divider {
+.🥝-divider {
 	flex: 0 0 auto;
 	align-self: stretch;
 	background-color: #36393f; /* border/neutral/muted */

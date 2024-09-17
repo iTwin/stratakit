@@ -4,6 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 import * as path from "node:path";
 import * as esbuild from "esbuild";
+import * as lightningcss from "lightningcss";
 import fg from "fast-glob";
 
 const entryPoints = await fg("src/**/*.{ts,tsx}", {
@@ -61,7 +62,7 @@ function inlineCssPlugin() {
 	return /** @type {esbuild.Plugin} */ ({
 		name: "inline-css",
 
-		setup({ onResolve, onLoad, esbuild }) {
+		setup({ onResolve, onLoad }) {
 			onResolve({ filter: /.*/ }, (args) => {
 				if (args.kind !== "import-statement") return;
 
@@ -77,19 +78,20 @@ function inlineCssPlugin() {
 			});
 
 			onLoad({ filter: /.*/, namespace: "inline-css" }, async (args) => {
-				// Feed the CSS file back into esbuild to bundle, minify and vendor-prefix it
-				const result = await esbuild.build({
-					entryPoints: [args.path],
-					bundle: true,
-					write: false,
+				// Feed the CSS file through lightningcss bundling, minification and other transformations.
+				const { code } = await lightningcss.bundleAsync({
+					filename: args.path,
 					minify: true,
-					target: ["chrome110", "firefox110", "safari16"],
+					targets: {
+						chrome: (110 << 16) | (0 << 8), // chrome 110.0
+						firefox: (110 << 16) | (0 << 8), // firefox 110.0
+						safari: (16 << 16) | (4 << 8), // safari 16.4
+					},
 				});
-
-				const css = result.outputFiles[0].text;
+				const css = code.toString().trim();
 
 				return {
-					contents: `export default String.raw\`${css.trim()}\`;`,
+					contents: `export default String.raw\`${css}\`;`,
 					loader: "js",
 				};
 			});

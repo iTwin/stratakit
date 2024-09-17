@@ -11,6 +11,9 @@
 	"css": {
 		"formatter": {
 			"lineWidth": 100
+		},
+		"linter": {
+			"enabled": true
 		}
 	},
 	"overrides": [

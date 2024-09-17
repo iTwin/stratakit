@@ -11,11 +11,11 @@
 		"format": "biome format .",
 		"lint": "biome lint .",
 		"lint:copyright": "tsx scripts/copyright-linter.ts",
-		"prettier": "prettier . '!**/*.{js,jsx,ts,tsx,cjs,cts,mjs,mts,json,jsonc}' --check",
+		"prettier": "prettier . '!**/*.{js,jsx,ts,tsx,cjs,cts,mjs,mts,css,json,jsonc}' --check",
 		"test": "pnpm --filter=@itwin/test-app test"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "1.8.3",
+		"@biomejs/biome": "1.9.1",
 		"@types/node": "*",
 		"fast-glob": "^3.3.2",
 		"lefthook": "^1.7.11",

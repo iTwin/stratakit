@@ -127,6 +127,7 @@ export const Button = React.forwardRef<
 	React.ElementRef<typeof Ariakit.Button>,
 	ButtonProps
 >((props, forwardedRef) => { }
+```
 
 ## Pull Requests
 

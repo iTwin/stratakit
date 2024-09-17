@@ -5,7 +5,7 @@
 import { vitePlugin as remix } from "@remix-run/dev";
 import { defineConfig, type Plugin } from "vite";
 import tsconfigPaths from "vite-tsconfig-paths";
-import * as esbuild from "esbuild";
+import * as lightningcss from "lightningcss";
 import { createRoutesFromFolders } from "@remix-run/v1-route-convention";
 
 const basename = process.env.BASE_FOLDER
@@ -58,15 +58,17 @@ function esbuildBundleCss() {
 			if (!isDev) return;
 			if (!id.endsWith(".css?inline")) return;
 
-			const result = await esbuild.build({
-				entryPoints: [id.replace(/\?inline$/, "")],
-				bundle: true,
-				write: false,
+			const { code } = await lightningcss.bundleAsync({
+				filename: id.replace(/\?inline$/, ""),
 				minify: true,
-				target: ["chrome110", "firefox110", "safari16"],
+				targets: {
+					chrome: (110 << 16) | (0 << 8), // chrome 110.0
+					firefox: (110 << 16) | (0 << 8), // firefox 110.0
+					safari: (16 << 16) | (4 << 8), // safari 16.4
+				},
 			});
 
-			return { code: result.outputFiles[0].text };
+			return { code: code.toString().trim() };
 		},
 
 		handleHotUpdate({ server, modules }) {

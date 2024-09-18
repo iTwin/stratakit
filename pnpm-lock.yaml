@@ -57,11 +57,11 @@ importers:
         specifier: ^1.46.0
         version: 1.46.0
       "@remix-run/dev":
-        specifier: ^2.12.0
-        version: 2.12.0(@remix-run/react@2.12.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.5.4))(@remix-run/serve@2.12.0(typescript@5.5.4))(@types/node@22.0.2)(lightningcss@1.27.0)(typescript@5.5.4)(vite@5.4.6(@types/node@22.0.2)(lightningcss@1.27.0))
+        specifier: ^2.12.1-pre.0
+        version: 2.12.1-pre.0(@remix-run/react@2.12.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.5.4))(@remix-run/serve@2.12.0(typescript@5.5.4))(@types/node@22.0.2)(lightningcss@1.27.0)(typescript@5.5.4)(vite@5.4.6(@types/node@22.0.2)(lightningcss@1.27.0))
       "@remix-run/v1-route-convention":
         specifier: ^0.1.4
-        version: 0.1.4(@remix-run/dev@2.12.0(@remix-run/react@2.12.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.5.4))(@remix-run/serve@2.12.0(typescript@5.5.4))(@types/node@22.0.2)(lightningcss@1.27.0)(typescript@5.5.4)(vite@5.4.6(@types/node@22.0.2)(lightningcss@1.27.0)))
+        version: 0.1.4(@remix-run/dev@2.12.1-pre.0(@remix-run/react@2.12.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.5.4))(@remix-run/serve@2.12.0(typescript@5.5.4))(@types/node@22.0.2)(lightningcss@1.27.0)(typescript@5.5.4)(vite@5.4.6(@types/node@22.0.2)(lightningcss@1.27.0)))
       "@types/node":
         specifier: "*"
         version: 22.0.2
@@ -1232,16 +1232,16 @@ packages:
     engines: { node: ">=18" }
     hasBin: true
 
-  "@remix-run/dev@2.12.0":
+  "@remix-run/dev@2.12.1-pre.0":
     resolution:
       {
-        integrity: sha512-/87YQORdlJg5YChd7nVBM/hRXHZA4GfUjhKbZyNrh03bazCQBF+6EsXbzpJ6cCFOpZgecsN0Xv648Qw0VuJjwg==,
+        integrity: sha512-DuWDrAss5hRdQs1q34irFT/Way5aNN1g7jkYkYzvKD2gVt08BAkp0BZOi62+UnjpZPvUpWPD5r2pdf+T97BPlA==,
       }
     engines: { node: ">=18.0.0" }
     hasBin: true
     peerDependencies:
-      "@remix-run/react": ^2.12.0
-      "@remix-run/serve": ^2.12.0
+      "@remix-run/react": ^2.12.1-pre.0
+      "@remix-run/serve": ^2.12.1-pre.0
       typescript: ^5.1.0
       vite: ^5.1.0
       wrangler: ^3.28.2
@@ -1272,6 +1272,18 @@ packages:
     resolution:
       {
         integrity: sha512-83Jaoc6gpSuD4e6rCk7N5ZHAXNmDw4fJC+kPeDCsd6+wLtTLSi7u9Zo9/Q7moLZ3oyH+aR+LGdkxLULYv+Q6Og==,
+      }
+    engines: { node: ">=18.0.0" }
+    peerDependencies:
+      typescript: ^5.1.0
+    peerDependenciesMeta:
+      typescript:
+        optional: true
+
+  "@remix-run/node@2.12.1-pre.0":
+    resolution:
+      {
+        integrity: sha512-rvqjI0n8pgBnLc5Kh+V2KEob8b+M/DVewSbE4V+x+K67LOewJbABjZAPfF3eV911rjqDNyBoiWmCi3kQnuPJLA==,
       }
     engines: { node: ">=18.0.0" }
     peerDependencies:
@@ -1313,6 +1325,18 @@ packages:
     resolution:
       {
         integrity: sha512-o9ukOr3XKmyY8UufTrDdkgD3fiy+z+f4qEzvCQnvC0+EasCyN9hb1Vbui6Koo/5HKvahC4Ga8RcWyvhykKrG3g==,
+      }
+    engines: { node: ">=18.0.0" }
+    peerDependencies:
+      typescript: ^5.1.0
+    peerDependenciesMeta:
+      typescript:
+        optional: true
+
+  "@remix-run/server-runtime@2.12.1-pre.0":
+    resolution:
+      {
+        integrity: sha512-2pNS53J6d5MSQ50qypWpU5JCmPyEEuE6FYYHvTYU/YEyTjupCpZae+JCSSzvLcQIoSUBuSm56M1RtLdQ3AS8Ug==,
       }
     engines: { node: ">=18.0.0" }
     peerDependencies:
@@ -3941,12 +3965,6 @@ packages:
         integrity: sha512-vKiQ8RRtkl9P+r/+oefh25C3fhybptkHKCZSPlcXiJux2tJF55GnEj3BVn4A5gKfq9NWWXXrxkHBwVPUfH0opw==,
       }
 
-  picocolors@1.0.1:
-    resolution:
-      {
-        integrity: sha512-anP1Z8qwhkbmu7MFP5iTt+wQKXgwzf7zTyGlcdzabySa9vd0Xt392U0rVmz9poOaBj0uHJKyyo9/upk0HrEQew==,
-      }
-
   picocolors@1.1.0:
     resolution:
       {
@@ -4077,13 +4095,6 @@ packages:
       {
         integrity: sha512-1NNCs6uurfkVbeXG4S8JFT9t19m45ICnif8zWLd5oPSZ50QnwMfK+H3jv408d4jw/7Bttv5axS5IiHoLaVNHeQ==,
       }
-
-  postcss@8.4.40:
-    resolution:
-      {
-        integrity: sha512-YF2kKIUzAofPMpfH6hOi2cGnv/HrUlfucspc7pDyvv7kGdqXrfj8SCl/t8owkEgKEuu8ZcRjSOxFxVLqwChZ2Q==,
-      }
-    engines: { node: ^10 || ^12 || >=14 }
 
   postcss@8.4.47:
     resolution:
@@ -4468,13 +4479,6 @@ packages:
         integrity: sha512-bzyZ1e88w9O1iNJbKnOlvYTrWPDl46O1bG0D3XInv+9tkPrxrN8jUUTiFlDkkmKWgn1M6CfIA13SuGqOa9Korw==,
       }
     engines: { node: ">=14" }
-
-  source-map-js@1.2.0:
-    resolution:
-      {
-        integrity: sha512-itJW8lvSA0TXEphiRoawsCksnlf8SyvmFzIhltqAHluXd88pkCd+cXJVHTDwdCr0IzwptSm035IHQktUu1QUMg==,
-      }
-    engines: { node: ">=0.10.0" }
 
   source-map-js@1.2.1:
     resolution:
@@ -5131,7 +5135,7 @@ snapshots:
   "@babel/code-frame@7.24.7":
     dependencies:
       "@babel/highlight": 7.24.7
-      picocolors: 1.0.1
+      picocolors: 1.1.0
 
   "@babel/compat-data@7.25.2": {}
 
@@ -5256,7 +5260,7 @@ snapshots:
       "@babel/helper-validator-identifier": 7.24.7
       chalk: 2.4.2
       js-tokens: 4.0.0
-      picocolors: 1.0.1
+      picocolors: 1.1.0
 
   "@babel/parser@7.25.3":
     dependencies:
@@ -5693,7 +5697,7 @@ snapshots:
     dependencies:
       playwright: 1.46.0
 
-  "@remix-run/dev@2.12.0(@remix-run/react@2.12.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.5.4))(@remix-run/serve@2.12.0(typescript@5.5.4))(@types/node@22.0.2)(lightningcss@1.27.0)(typescript@5.5.4)(vite@5.4.6(@types/node@22.0.2)(lightningcss@1.27.0))":
+  "@remix-run/dev@2.12.1-pre.0(@remix-run/react@2.12.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.5.4))(@remix-run/serve@2.12.0(typescript@5.5.4))(@types/node@22.0.2)(lightningcss@1.27.0)(typescript@5.5.4)(vite@5.4.6(@types/node@22.0.2)(lightningcss@1.27.0))":
     dependencies:
       "@babel/core": 7.25.2
       "@babel/generator": 7.25.0
@@ -5705,10 +5709,10 @@ snapshots:
       "@babel/types": 7.25.2
       "@mdx-js/mdx": 2.3.0
       "@npmcli/package-json": 4.0.1
-      "@remix-run/node": 2.12.0(typescript@5.5.4)
+      "@remix-run/node": 2.12.1-pre.0(typescript@5.5.4)
       "@remix-run/react": 2.12.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.5.4)
       "@remix-run/router": 1.19.2
-      "@remix-run/server-runtime": 2.12.0(typescript@5.5.4)
+      "@remix-run/server-runtime": 2.12.1-pre.0(typescript@5.5.4)
       "@types/mdx": 2.0.13
       "@vanilla-extract/integration": 6.5.0(@types/node@22.0.2)(lightningcss@1.27.0)
       arg: 5.0.2
@@ -5732,13 +5736,13 @@ snapshots:
       lodash.debounce: 4.0.8
       minimatch: 9.0.5
       ora: 5.4.1
-      picocolors: 1.0.1
+      picocolors: 1.1.0
       picomatch: 2.3.1
       pidtree: 0.6.0
-      postcss: 8.4.40
-      postcss-discard-duplicates: 5.1.0(postcss@8.4.40)
-      postcss-load-config: 4.0.2(postcss@8.4.40)
-      postcss-modules: 6.0.0(postcss@8.4.40)
+      postcss: 8.4.47
+      postcss-discard-duplicates: 5.1.0(postcss@8.4.47)
+      postcss-load-config: 4.0.2(postcss@8.4.47)
+      postcss-modules: 6.0.0(postcss@8.4.47)
       prettier: 2.8.8
       pretty-ms: 7.0.1
       react-refresh: 0.14.2
@@ -5788,6 +5792,18 @@ snapshots:
     optionalDependencies:
       typescript: 5.5.4
 
+  "@remix-run/node@2.12.1-pre.0(typescript@5.5.4)":
+    dependencies:
+      "@remix-run/server-runtime": 2.12.1-pre.0(typescript@5.5.4)
+      "@remix-run/web-fetch": 4.4.2
+      "@web3-storage/multipart-parser": 1.0.0
+      cookie-signature: 1.2.1
+      source-map-support: 0.5.21
+      stream-slice: 0.1.2
+      undici: 6.19.5
+    optionalDependencies:
+      typescript: 5.5.4
+
   "@remix-run/react@2.12.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.5.4)":
     dependencies:
       "@remix-run/router": 1.19.2
@@ -5828,9 +5844,21 @@ snapshots:
     optionalDependencies:
       typescript: 5.5.4
 
-  "@remix-run/v1-route-convention@0.1.4(@remix-run/dev@2.12.0(@remix-run/react@2.12.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.5.4))(@remix-run/serve@2.12.0(typescript@5.5.4))(@types/node@22.0.2)(lightningcss@1.27.0)(typescript@5.5.4)(vite@5.4.6(@types/node@22.0.2)(lightningcss@1.27.0)))":
+  "@remix-run/server-runtime@2.12.1-pre.0(typescript@5.5.4)":
     dependencies:
-      "@remix-run/dev": 2.12.0(@remix-run/react@2.12.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.5.4))(@remix-run/serve@2.12.0(typescript@5.5.4))(@types/node@22.0.2)(lightningcss@1.27.0)(typescript@5.5.4)(vite@5.4.6(@types/node@22.0.2)(lightningcss@1.27.0))
+      "@remix-run/router": 1.19.2
+      "@types/cookie": 0.6.0
+      "@web3-storage/multipart-parser": 1.0.0
+      cookie: 0.6.0
+      set-cookie-parser: 2.7.0
+      source-map: 0.7.4
+      turbo-stream: 2.4.0
+    optionalDependencies:
+      typescript: 5.5.4
+
+  "@remix-run/v1-route-convention@0.1.4(@remix-run/dev@2.12.1-pre.0(@remix-run/react@2.12.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.5.4))(@remix-run/serve@2.12.0(typescript@5.5.4))(@types/node@22.0.2)(lightningcss@1.27.0)(typescript@5.5.4)(vite@5.4.6(@types/node@22.0.2)(lightningcss@1.27.0)))":
+    dependencies:
+      "@remix-run/dev": 2.12.1-pre.0(@remix-run/react@2.12.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.5.4))(@remix-run/serve@2.12.0(typescript@5.5.4))(@types/node@22.0.2)(lightningcss@1.27.0)(typescript@5.5.4)(vite@5.4.6(@types/node@22.0.2)(lightningcss@1.27.0))
       minimatch: 7.4.6
 
   "@remix-run/web-blob@3.1.0":
@@ -5972,7 +6000,7 @@ snapshots:
       deepmerge: 4.3.1
       media-query-parser: 2.0.2
       modern-ahocorasick: 1.0.1
-      picocolors: 1.0.1
+      picocolors: 1.1.0
     transitivePeerDependencies:
       - babel-plugin-macros
 
@@ -6714,9 +6742,9 @@ snapshots:
     dependencies:
       safer-buffer: 2.1.2
 
-  icss-utils@5.1.0(postcss@8.4.40):
+  icss-utils@5.1.0(postcss@8.4.47):
     dependencies:
-      postcss: 8.4.40
+      postcss: 8.4.47
 
   ieee754@1.2.1: {}
 
@@ -7498,8 +7526,6 @@ snapshots:
       estree-walker: 3.0.3
       is-reference: 3.0.2
 
-  picocolors@1.0.1: {}
-
   picocolors@1.1.0: {}
 
   picomatch@2.3.1: {}
@@ -7522,48 +7548,48 @@ snapshots:
 
   possible-typed-array-names@1.0.0: {}
 
-  postcss-discard-duplicates@5.1.0(postcss@8.4.40):
+  postcss-discard-duplicates@5.1.0(postcss@8.4.47):
     dependencies:
-      postcss: 8.4.40
+      postcss: 8.4.47
 
-  postcss-load-config@4.0.2(postcss@8.4.40):
+  postcss-load-config@4.0.2(postcss@8.4.47):
     dependencies:
       lilconfig: 3.1.2
       yaml: 2.5.0
     optionalDependencies:
-      postcss: 8.4.40
+      postcss: 8.4.47
 
-  postcss-modules-extract-imports@3.1.0(postcss@8.4.40):
+  postcss-modules-extract-imports@3.1.0(postcss@8.4.47):
     dependencies:
-      postcss: 8.4.40
+      postcss: 8.4.47
 
-  postcss-modules-local-by-default@4.0.5(postcss@8.4.40):
+  postcss-modules-local-by-default@4.0.5(postcss@8.4.47):
     dependencies:
-      icss-utils: 5.1.0(postcss@8.4.40)
-      postcss: 8.4.40
+      icss-utils: 5.1.0(postcss@8.4.47)
+      postcss: 8.4.47
       postcss-selector-parser: 6.1.1
       postcss-value-parser: 4.2.0
 
-  postcss-modules-scope@3.2.0(postcss@8.4.40):
+  postcss-modules-scope@3.2.0(postcss@8.4.47):
     dependencies:
-      postcss: 8.4.40
+      postcss: 8.4.47
       postcss-selector-parser: 6.1.1
 
-  postcss-modules-values@4.0.0(postcss@8.4.40):
+  postcss-modules-values@4.0.0(postcss@8.4.47):
     dependencies:
-      icss-utils: 5.1.0(postcss@8.4.40)
-      postcss: 8.4.40
+      icss-utils: 5.1.0(postcss@8.4.47)
+      postcss: 8.4.47
 
-  postcss-modules@6.0.0(postcss@8.4.40):
+  postcss-modules@6.0.0(postcss@8.4.47):
     dependencies:
       generic-names: 4.0.0
-      icss-utils: 5.1.0(postcss@8.4.40)
+      icss-utils: 5.1.0(postcss@8.4.47)
       lodash.camelcase: 4.3.0
-      postcss: 8.4.40
-      postcss-modules-extract-imports: 3.1.0(postcss@8.4.40)
-      postcss-modules-local-by-default: 4.0.5(postcss@8.4.40)
-      postcss-modules-scope: 3.2.0(postcss@8.4.40)
-      postcss-modules-values: 4.0.0(postcss@8.4.40)
+      postcss: 8.4.47
+      postcss-modules-extract-imports: 3.1.0(postcss@8.4.47)
+      postcss-modules-local-by-default: 4.0.5(postcss@8.4.47)
+      postcss-modules-scope: 3.2.0(postcss@8.4.47)
+      postcss-modules-values: 4.0.0(postcss@8.4.47)
       string-hash: 1.1.3
 
   postcss-selector-parser@6.1.1:
@@ -7572,12 +7598,6 @@ snapshots:
       util-deprecate: 1.0.2
 
   postcss-value-parser@4.2.0: {}
-
-  postcss@8.4.40:
-    dependencies:
-      nanoid: 3.3.7
-      picocolors: 1.0.1
-      source-map-js: 1.2.0
 
   postcss@8.4.47:
     dependencies:
@@ -7840,8 +7860,6 @@ snapshots:
 
   signal-exit@4.1.0: {}
 
-  source-map-js@1.2.0: {}
-
   source-map-js@1.2.1: {}
 
   source-map-support@0.5.21:
@@ -8065,7 +8083,7 @@ snapshots:
     dependencies:
       browserslist: 4.23.3
       escalade: 3.1.2
-      picocolors: 1.0.1
+      picocolors: 1.1.0
 
   use-sync-external-store@1.2.2(react@18.3.1):
     dependencies:
@@ -8116,7 +8134,7 @@ snapshots:
       cac: 6.7.14
       debug: 4.3.6
       pathe: 1.1.2
-      picocolors: 1.0.1
+      picocolors: 1.1.0
       vite: 5.4.6(@types/node@22.0.2)(lightningcss@1.27.0)
     transitivePeerDependencies:
       - "@types/node"

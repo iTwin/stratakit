@@ -11,3 +11,4 @@
 @import "./Icon.css" layer(kiwi.components);
 @import "./Input.css" layer(kiwi.components);
 @import "./Label.css" layer(kiwi.components);
+@import "./Radio.css" layer(kiwi.components);

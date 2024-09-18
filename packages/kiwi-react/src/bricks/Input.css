@@ -22,6 +22,7 @@
 		--_kiwi-input-padding-block: 4px;
 
 		appearance: none;
+		font-size: 0.75rem;
 		border: 1px solid transparent;
 
 		display: inline-flex;

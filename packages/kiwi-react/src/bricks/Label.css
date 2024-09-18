@@ -6,6 +6,7 @@
 	@layer base {
 		color: #b8bdc1; /* text/neutral/secondary */
 		cursor: default;
+		font-size: 0.75rem;
 
 		&:is(label) {
 			cursor: pointer;

@@ -2,10 +2,11 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-.\🥝-label {
+.🥝-label {
 	@layer base {
 		color: #b8bdc1; /* text/neutral/secondary */
 		cursor: default;
+		font-size: 0.75rem;
 
 		&:is(label) {
 			cursor: pointer;

@@ -2,7 +2,7 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-.\🥝-input {
+.🥝-input {
 	@layer base {
 		--_kiwi-input-color-background: #25282c; /* bg/surface/primary */
 		--_kiwi-input-color-background-hover: color-mix(
@@ -22,6 +22,7 @@
 		--_kiwi-input-padding-block: 4px;
 
 		appearance: none;
+		font-size: 0.75rem;
 		border: 1px solid transparent;
 
 		display: inline-flex;

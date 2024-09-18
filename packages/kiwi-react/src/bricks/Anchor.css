@@ -2,11 +2,12 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-.\🥝-anchor {
+.🥝-anchor {
 	@layer base {
 		--_kiwi-anchor-color-text: #fbfcfd; /* text/neutral/primary */
 
 		cursor: pointer;
+		font-size: 0.75rem;
 		font-weight: 500;
 		text-underline-offset: 0.25ex;
 

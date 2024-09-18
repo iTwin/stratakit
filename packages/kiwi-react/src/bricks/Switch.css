@@ -9,30 +9,30 @@
 
 		--_kiwi-switch-color-border: #474c53 /* border/neutral/base */;
 		--_kiwi-switch-color-border-hover: color-mix(
-			in oklch,
+			in srgb,
 			var(--_kiwi-switch-color-border) 100%,
 			#fff 8%
 		);
 		--_kiwi-switch-color-border-active: color-mix(
-			in oklch,
+			in srgb,
 			var(--_kiwi-switch-color-border) 100%,
 			#fff 12%
 		);
 		--_kiwi-switch-color-border-checked: color-mix(
-			in oklch,
+			in srgb,
 			var(--_kiwi-switch-color-background-checked) 100%,
 			#fff 16%
 		);
 		--_kiwi-switch-color-border-disabled: #ffffff14 /* border/glow/on-surface/disabled */;
 		--_kiwi-switch-color-background: #25282c; /* bg/surface/primary */
 		--_kiwi-switch-color-background-hover: color-mix(
-			in oklch,
+			in srgb,
 			var(--_kiwi-switch-color-background) 100%,
 			#fff 4%
 		);
 		--_kiwi-switch-color-background-checked: #198166 /* bg/accent/base */;
 		--_kiwi-switch-color-background-checked-hover: color-mix(
-			in oklch,
+			in srgb,
 			var(--_kiwi-switch-color-background-checked) 100%,
 			#fff 8%
 		);
@@ -72,9 +72,7 @@
 			block-size: var(--_kiwi-switch-thumb-size);
 			border-radius: 9999px;
 			margin: calc(0.125rem - 1px) /* spacing-2 - 1px to account for border */;
-			border: 1px solid;
-			background-color: currentColor;
-			color: var(--_kiwi-switch-thumb-color);
+			background-color: var(--_kiwi-switch-thumb-color);
 			box-shadow:
 				0px -1px 0px 0px #00000014 inset,
 				0px 0px 0px 1px #ffffff14 inset,
@@ -85,6 +83,10 @@
 			@media (prefers-reduced-motion: no-preference) {
 				transition: aspect-ratio 150ms ease-out;
 				will-change: aspect-ratio;
+			}
+
+			@media (forced-colors: active) {
+				background-color: CanvasText;
 			}
 		}
 	}

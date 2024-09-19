@@ -60,7 +60,24 @@ test("disabled", async ({ page }) => {
 	await expect(radioA).not.toBeChecked();
 });
 
-test("visual", async ({ page }) => {
-	await page.goto("/tests/radio");
-	await expect(page.locator("body")).toHaveScreenshot();
+test.describe("visual", () => {
+	test("unchecked", async ({ page }) => {
+		await page.goto("/tests/radio?visual=true");
+		await expect(page.locator("body")).toHaveScreenshot();
+	});
+
+	test("checked", async ({ page }) => {
+		await page.goto("/tests/radio?visual=true&checked=true");
+		await expect(page.locator("body")).toHaveScreenshot();
+	});
+
+	test("disabled", async ({ page }) => {
+		await page.goto("/tests/radio?visual=true&disabled=true");
+		await expect(page.locator("body")).toHaveScreenshot();
+	});
+
+	test("disabled & checked", async ({ page }) => {
+		await page.goto("/tests/radio?visual=true&disabled=true&checked=true");
+		await expect(page.locator("body")).toHaveScreenshot();
+	});
 });

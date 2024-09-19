@@ -4,7 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 import { test, expect } from "@playwright/test";
 
-test("On initial load Tooltip should be hidden", async ({ page }) => {
+test("default", async ({ page }) => {
 	// Navigate to the page containing the tooltip
 	await page.goto("/tests/tooltip");
 

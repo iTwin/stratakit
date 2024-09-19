@@ -5,7 +5,6 @@
 import { test, expect } from "@playwright/test";
 
 test("default", async ({ page }) => {
-	// Navigate to the page containing the tooltip
 	await page.goto("/tests/tooltip");
 
 	// Locate the target element that triggers the tooltip

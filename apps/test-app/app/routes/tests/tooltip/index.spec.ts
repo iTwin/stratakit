@@ -7,10 +7,9 @@ import { test, expect } from "@playwright/test";
 test("default", async ({ page }) => {
 	await page.goto("/tests/tooltip");
 
-	// Locate the target element that triggers the tooltip
 	const trigger = page.getByText("Hello World");
-
-	// Ensure the tooltip is hidden initially
-	const tooltip = page.locator("text=Click Me!");
+        const tooltip = page.locator("text=Click Me!");
+        
+	// tooltip is hidden initially
 	await expect(tooltip).toBeHidden();
 });

@@ -1,0 +1,22 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+.🥝-list-item {
+	@layer base {
+		--_kiwi-list-item-gap: 0.25rem;
+		--_kiwi-list-item-height: 1.5rem;
+		--_kiwi-list-item-padding-inline: 12px 8px;
+		--_kiwi-list-item-padding-block: 4px;
+
+		line-height: 1;
+
+		display: flex;
+		align-items: center;
+		gap: var(--_kiwi-list-item-gap);
+
+		min-block-size: var(--_kiwi-list-item-height);
+		padding-inline: var(--_kiwi-list-item-padding-inline);
+		padding-block: var(--_kiwi-list-item-padding-block);
+	}
+}

@@ -14,7 +14,8 @@ interface TooltipProps extends Omit<Ariakit.TooltipProps, "store"> {
 export const Tooltip = React.forwardRef<
 	React.ElementRef<typeof Ariakit.Tooltip>,
 	TooltipProps
->(({ content, children, className, ...props }, forwardedRef) => {
+>((props, forwardedRef) => {
+        const { content, children, className, ...rest } = props;
 	const tooltipStore = Ariakit.useTooltipStore();
 
 	return (

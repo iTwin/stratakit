@@ -8,10 +8,10 @@ export const handle = { title: "List" };
 
 export default function Page() {
 	return (
-		<ul>
+		<div role="list">
 			<ListItem>Apple</ListItem>
 			<ListItem>Cherry</ListItem>
 			<ListItem>Kiwi</ListItem>
-		</ul>
+		</div>
 	);
 }

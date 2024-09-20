@@ -8,7 +8,7 @@ import * as Ariakit from "@ariakit/react";
 
 interface TooltipProps extends Omit<Ariakit.TooltipProps, "store"> {
 	content: string;
-	children: React.ReactNode;
+	children: React.ReactElement;
 }
 
 export const Tooltip = React.forwardRef<

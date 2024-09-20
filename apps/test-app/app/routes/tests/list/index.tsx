@@ -7,5 +7,11 @@ import { ListItem } from "@itwin/kiwi-react-internal/src/bricks/ListItem";
 export const handle = { title: "List" };
 
 export default function Page() {
-	return <ListItem>Hello</ListItem>;
+	return (
+		<ul>
+			<ListItem render={<li />}>Apple</ListItem>
+			<ListItem render={<li />}>Cherry</ListItem>
+			<ListItem render={<li />}>Kiwi</ListItem>
+		</ul>
+	);
 }

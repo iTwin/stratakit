@@ -14,6 +14,7 @@ const components = [
 	"Divider",
 	"Icon",
 	"Input",
+	"List",
 	"Radio",
 	"Switch",
 	"Tabs",

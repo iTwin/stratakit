@@ -10,7 +10,7 @@ export const handle = { title: "Tooltip" };
 export default function Page() {
 	return (
 		<>
-			<Tooltip data-testid="infoTooltip" content="Click me">
+			<Tooltip content="Click me">
 				<Button>Hello World</Button>
 			</Tooltip>
 		</>

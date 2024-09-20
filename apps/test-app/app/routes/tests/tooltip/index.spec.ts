@@ -4,12 +4,10 @@
  *--------------------------------------------------------------------------------------------*/
 import { test, expect } from "@playwright/test";
 
-test("On initial load Tooltip should be hidden", async ({ page }) => {
+test("default", async ({ page }) => {
 	await page.goto("/tests/tooltip");
 
 	const trigger = page.getByText("Hello World");
-
 	const tooltip = page.getByRole("button", { name: "Click Me!" });
-
 	await expect(tooltip).toBeHidden();
 });

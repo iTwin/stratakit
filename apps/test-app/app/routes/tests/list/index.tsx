@@ -1,0 +1,18 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+import { ListItem } from "@itwin/kiwi-react-internal/src/bricks/ListItem";
+
+export const handle = { title: "List" };
+
+export default function Page() {
+	return (
+		// biome-ignore lint/a11y/useSemanticElements: `div` is used as underlying element for `ListItem`
+		<div role="list">
+			<ListItem>Apple</ListItem>
+			<ListItem>Cherry</ListItem>
+			<ListItem>Kiwi</ListItem>
+		</div>
+	);
+}

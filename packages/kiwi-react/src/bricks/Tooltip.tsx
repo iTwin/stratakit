@@ -25,7 +25,7 @@ export const Tooltip = React.forwardRef<
 				</Ariakit.TooltipAnchor>
 
 				<Ariakit.Tooltip
-					className={cx("custom-tooltip", className)}
+					className={cx("🥝-tooltip", className)}
 					{...props}
 					ref={forwardedRef}
 				>

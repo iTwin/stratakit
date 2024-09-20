@@ -7,15 +7,11 @@ import { ListItem } from "@itwin/kiwi-react-internal/src/bricks/ListItem";
 export const handle = { title: "List" };
 
 export default function Page() {
-	const fruits = ["Apple", "Cherry", "Kiwi"];
 	return (
 		<ul>
-			{fruits.map((fruit) => (
-				// biome-ignore lint/a11y/useValidAriaRole: explicit role attribute is not needed, when using `li` element
-				<ListItem role={undefined} render={<li />} key={fruit}>
-					{fruit}
-				</ListItem>
-			))}
+			<ListItem>Apple</ListItem>
+			<ListItem>Cherry</ListItem>
+			<ListItem>Kiwi</ListItem>
 		</ul>
 	);
 }

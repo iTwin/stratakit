@@ -7,7 +7,7 @@ import cx from "classnames";
 import * as Ariakit from "@ariakit/react";
 
 interface TooltipProps extends Omit<Ariakit.TooltipProps, "store"> {
-	content: string;
+	content: React.ReactNode;
 	children: React.ReactElement;
 }
 

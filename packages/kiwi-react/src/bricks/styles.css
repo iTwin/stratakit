@@ -12,3 +12,4 @@
 @import "./Input.css" layer(kiwi.components);
 @import "./Label.css" layer(kiwi.components);
 @import "./Radio.css" layer(kiwi.components);
+@import "./ListItem.css" layer(kiwi.components);

@@ -135,6 +135,7 @@
 
 		&:where([disabled], :disabled, [aria-disabled="true"]) {
 			--__kiwi-checkbox-visual-state: var(--__kiwi-checkbox-visual-state--disabled);
+			--_kiwi-checkbox-color-svg: #585F68; /* icon/neutral/disabled */
 			cursor: not-allowed;
 			box-shadow: none;
 		}

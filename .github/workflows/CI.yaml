@@ -53,6 +53,8 @@ jobs:
     name: Check code quality
     needs: install
     runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
 
     steps:
       - uses: actions/checkout@v4

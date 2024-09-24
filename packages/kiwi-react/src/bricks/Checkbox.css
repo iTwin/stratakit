@@ -64,6 +64,10 @@
 			mask-image: var(--_kiwi-checkbox-mask-image, initial);
 			mask-repeat: no-repeat;
 			mask-position: center;
+
+			@media (forced-colors: active) {
+				background-color: CanvasText;
+			}
 		}
 	}
 

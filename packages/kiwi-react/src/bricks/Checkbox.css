@@ -42,9 +42,7 @@
 		transition-property: background-color, border-color, box-shadow;
 		position: relative;
 
-		box-shadow:
-			0px 3px 3px -1.5px #00000029,
-			0px 1px 1px -0.5px #00000029;
+		box-shadow: 0px 3px 3px -1.5px #00000029, 0px 1px 1px -0.5px #00000029;
 
 		&::before,
 		&::after {
@@ -70,7 +68,6 @@
 			}
 		}
 	}
-
 
 	@layer states {
 		/* Cyclic toggles for default/hover/disabled states. See https://kizu.dev/cyclic-toggles/ */
@@ -139,7 +136,7 @@
 
 		&:where([disabled], :disabled, [aria-disabled="true"]) {
 			--__kiwi-checkbox-visual-state: var(--__kiwi-checkbox-visual-state--disabled);
-			--_kiwi-checkbox-color-svg: #585F68; /* icon/neutral/disabled */
+			--_kiwi-checkbox-color-svg: #585f68; /* icon/neutral/disabled */
 			cursor: not-allowed;
 			box-shadow: none;
 		}

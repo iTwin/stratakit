@@ -94,4 +94,3 @@ test.describe("visual", () => {
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
 });
-

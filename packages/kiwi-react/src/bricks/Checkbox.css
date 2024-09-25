@@ -2,7 +2,7 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-.\🥝-checkbox {
+.🥝-checkbox {
 	@layer base {
 		--_kiwi-checkbox-color-background: #36393f; /* bg/neutral/base */
 		--_kiwi-checkbox-color-background-hover: color-mix(

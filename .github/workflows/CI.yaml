@@ -61,6 +61,8 @@ jobs:
         with:
           version: 9
 
+      - uses: biomejs/setup-biome@v2
+
       - name: Use Node 20.x
         uses: actions/setup-node@v4
         with:
@@ -68,12 +70,13 @@ jobs:
           cache: "pnpm"
 
       - run: pnpm install
-      - run: pnpm lint
+
+      - run: biome ci . --reporter=github
         if: ${{ !cancelled() }}
-      - run: pnpm format
-        if: ${{ !cancelled() }}
+
       - run: pnpm lint:copyright
         if: ${{ !cancelled() }}
+
       - run: pnpm prettier
         if: ${{ !cancelled() }}
 

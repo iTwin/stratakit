@@ -27,7 +27,7 @@ export const Tooltip = React.forwardRef<
 					{...rest}
 					className={cx("🥝-tooltip", className)}
 					ref={forwardedRef}
-					id={tooltipId} // Assign the generated or provided id to Tooltip
+					id={tooltipId}
 				>
 					<div id={tooltipId}>{content}</div>
 				</Ariakit.Tooltip>

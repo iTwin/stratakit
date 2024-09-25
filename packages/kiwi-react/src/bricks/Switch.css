@@ -45,7 +45,7 @@
 		align-items: center;
 
 		position: relative;
-		border-radius: 1.5rem;
+		border-radius: 9999px;
 		inline-size: var(--_kiwi-switch-width);
 
 		transition: all 150ms ease-out;

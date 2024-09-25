@@ -17,7 +17,7 @@ export const Tooltip = React.forwardRef<
 >((props, forwardedRef) => {
 	const { content, children, className, ...rest } = props;
 
-	const tooltipId = `${React.useId()}-hint`;
+	const tooltipId = React.useId();
 
 	return (
 		<>

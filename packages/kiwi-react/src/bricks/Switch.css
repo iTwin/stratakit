@@ -1,0 +1,152 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+.🥝-switch {
+	@layer base {
+		--_kiwi-switch-width: 2rem;
+		--_kiwi-switch-thumb-size: 1rem;
+
+		--_kiwi-switch-color-border: #474c53 /* border/neutral/base */;
+		--_kiwi-switch-color-border-hover: color-mix(
+			in srgb,
+			var(--_kiwi-switch-color-border) 100%,
+			#fff 8%
+		);
+		--_kiwi-switch-color-border-active: color-mix(
+			in srgb,
+			var(--_kiwi-switch-color-border) 100%,
+			#fff 12%
+		);
+		--_kiwi-switch-color-border-checked: color-mix(
+			in srgb,
+			var(--_kiwi-switch-color-background-checked) 100%,
+			#fff 16%
+		);
+		--_kiwi-switch-color-border-disabled: #ffffff14 /* border/glow/on-surface/disabled */;
+		--_kiwi-switch-color-background: #25282c; /* bg/surface/primary */
+		--_kiwi-switch-color-background-hover: color-mix(
+			in srgb,
+			var(--_kiwi-switch-color-background) 100%,
+			#fff 4%
+		);
+		--_kiwi-switch-color-background-checked: #198166 /* bg/accent/base */;
+		--_kiwi-switch-color-background-checked-hover: color-mix(
+			in srgb,
+			var(--_kiwi-switch-color-background-checked) 100%,
+			#fff 8%
+		);
+
+		appearance: none;
+		border: 1px solid transparent;
+		cursor: pointer;
+
+		display: inline-grid;
+		align-items: center;
+
+		position: relative;
+		border-radius: 9999px;
+		inline-size: var(--_kiwi-switch-width);
+
+		transition: all 150ms ease-out;
+		transition-property: background-color, border-color;
+
+		&::before,
+		&::after {
+			content: "";
+			display: block;
+			grid-area: 1 / 1 / -1 / -1;
+		}
+
+		/* This pseudo-element increases the tap target size so it's >=24px tall  */
+		&::before {
+			position: absolute;
+			inline-size: var(--_kiwi-switch-width);
+			block-size: 24px;
+			margin: -1px; /* account for border */
+		}
+
+		/* This pseudo-element creates the "thumb" */
+		&::after {
+			aspect-ratio: var(--_kiwi-switch-thumb-aspect-ratio);
+			block-size: var(--_kiwi-switch-thumb-size);
+			border-radius: 9999px;
+			margin: calc(0.125rem - 1px) /* spacing-2 - 1px to account for border */;
+			background-color: var(--_kiwi-switch-thumb-color);
+			box-shadow:
+				0px -1px 0px 0px #00000014 inset,
+				0px 0px 0px 1px #ffffff14 inset,
+				0px 1px 1px -0.5px #00000029,
+				0px 3px 3px -1.5px #00000029;
+			justify-self: var(--_kiwi-switch-thumb-placement);
+
+			@media (prefers-reduced-motion: no-preference) {
+				transition: aspect-ratio 150ms ease-out;
+				will-change: aspect-ratio;
+			}
+
+			@media (forced-colors: active) {
+				background-color: CanvasText;
+			}
+		}
+	}
+
+	@layer states {
+		/* Cyclic toggles for default/hover/active/checked/checked+hover states. See https://kizu.dev/cyclic-toggles/ */
+		--__kiwi-switch-state: var(--__kiwi-switch-state--default);
+		--__kiwi-switch-state--default: var(--__kiwi-switch-state,);
+		--__kiwi-switch-state--hover: var(--__kiwi-switch-state,);
+		--__kiwi-switch-state--active: var(--__kiwi-switch-state,);
+		--__kiwi-switch-state--checked: var(--__kiwi-switch-state,);
+		--__kiwi-switch-state--checked-hover: var(--__kiwi-switch-state,);
+		--__kiwi-switch-state--disabled: var(--__kiwi-switch-state,);
+
+		background-color: var(--__kiwi-switch-state--default, var(--_kiwi-switch-color-background))
+			var(--__kiwi-switch-state--hover, var(--_kiwi-switch-color-background-hover))
+			var(--__kiwi-switch-state--active, var(--_kiwi-switch-color-background-hover))
+			var(--__kiwi-switch-state--checked, var(--_kiwi-switch-color-background-checked))
+			var(--__kiwi-switch-state--checked-hover, var(--_kiwi-switch-color-background-checked-hover))
+			var(--__kiwi-switch-state--disabled, var(--_kiwi-switch-color-background));
+		border-color: var(--__kiwi-switch-state--default, var(--_kiwi-switch-color-border))
+			var(--__kiwi-switch-state--hover, var(--_kiwi-switch-color-border-hover))
+			var(--__kiwi-switch-state--active, var(--_kiwi-switch-color-border-active))
+			var(--__kiwi-switch-state--checked, var(--_kiwi-switch-color-border-checked))
+			var(--__kiwi-switch-state--checked-hover, var(--_kiwi-switch-color-border-checked))
+			var(--__kiwi-switch-state--disabled, var(--_kiwi-switch-color-border-disabled));
+		--_kiwi-switch-thumb-color: #fbfcfd /* bg/neutral/inverse */;
+		--_kiwi-switch-thumb-placement: start;
+		--_kiwi-switch-thumb-aspect-ratio: 1 / 1;
+
+		@media (any-hover: hover) {
+			&:where(:hover) {
+				--__kiwi-switch-state: var(--__kiwi-switch-state--hover);
+			}
+		}
+
+		&:where(:checked, [aria-checked="true"]) {
+			--__kiwi-switch-state: var(--__kiwi-switch-state--checked);
+			--_kiwi-switch-thumb-placement: end;
+
+			@media (any-hover: hover) {
+				&:where(:hover) {
+					--__kiwi-switch-state: var(--__kiwi-switch-state--checked-hover);
+				}
+			}
+		}
+
+		&:where(:active) {
+			--__kiwi-switch-state: var(--__kiwi-switch-state--active);
+			--_kiwi-switch-thumb-aspect-ratio: 1.75;
+		}
+
+		&:where([disabled], :disabled, [aria-disabled="true"]) {
+			--__kiwi-switch-state: var(--__kiwi-switch-state--disabled);
+			--_kiwi-switch-thumb-color: #585f68 /* border/glow/on-surface/disabled */;
+			cursor: not-allowed;
+
+			&::after {
+				box-shadow: none;
+			}
+		}
+	}
+}

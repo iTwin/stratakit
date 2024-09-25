@@ -41,6 +41,12 @@ export default defineConfig({
 			return undefined;
 		},
 	},
+	server: {
+		port: 1800, // dev server port
+	},
+	preview: {
+		port: 1800, // prod server port
+	},
 });
 
 /** Bundles "*.css?inline" files using esbuild. Only used during dev. */

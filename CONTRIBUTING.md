@@ -67,7 +67,7 @@ To start the development server, run the following command from the root.
 pnpm run dev
 ```
 
-This will spin up a development server at `http://localhost:5173`. Any changes made to any source files will be instantly reflected.
+This will spin up a development server at `http://localhost:1800`. Any changes made to any source files will be instantly reflected.
 
 To create a production build, run the following command.
 

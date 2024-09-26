@@ -11,10 +11,10 @@ export default function Page() {
 		<DropdownMenu
 			items={
 				<>
-					<div>Add</div>
-					<div>Edit</div>
-					<div>Delete</div>
-					<div>Disable</div>
+					<DropdownMenu.Item>Add</DropdownMenu.Item>
+					<DropdownMenu.Item>Edit</DropdownMenu.Item>
+					<DropdownMenu.Item>Delete</DropdownMenu.Item>
+					<DropdownMenu.Item>Disable</DropdownMenu.Item>
 				</>
 			}
 		>

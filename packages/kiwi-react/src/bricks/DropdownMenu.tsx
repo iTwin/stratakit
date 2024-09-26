@@ -13,7 +13,7 @@ interface DropdownMenuProps extends Ariakit.MenuProps {
 	items: React.ReactElement;
 }
 
-export const DropdownMenu = React.forwardRef<
+const DropdownMenuComponent = React.forwardRef<
 	React.ElementRef<typeof Ariakit.Menu>,
 	DropdownMenuProps
 >((props, forwardedRef) => {
@@ -30,4 +30,8 @@ export const DropdownMenu = React.forwardRef<
 			</Ariakit.Menu>
 		</Ariakit.MenuProvider>
 	);
+});
+
+export const DropdownMenu = Object.assign(DropdownMenuComponent, {
+	Item: Ariakit.MenuItem,
 });

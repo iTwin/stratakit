@@ -15,3 +15,18 @@ test("visual", async ({ page }) => {
 	await page.goto("/tests/list");
 	await expect(page.locator("body")).toHaveScreenshot();
 });
+
+test("visual (hover)", async ({ page }) => {
+	await page.goto("/tests/list");
+	const item = page.getByText("Cherry");
+	await item.hover();
+	await expect(page.locator("body")).toHaveScreenshot();
+});
+
+test("visual (active)", async ({ page }) => {
+	await page.goto("/tests/list");
+	const item = page.getByText("Cherry");
+	await item.hover();
+	await page.mouse.down();
+	await expect(page.locator("body")).toHaveScreenshot();
+});

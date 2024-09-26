@@ -13,10 +13,12 @@ export const DropdownMenu = React.forwardRef<
 	DropdownMenuProps
 >((props, forwardedRef) => {
 	return (
-		<Ariakit.Menu
-			{...props}
-			className={cx("🥝-dropdown-menu", props.className)}
-			ref={forwardedRef}
-		/>
+		<Ariakit.MenuProvider>
+			<Ariakit.Menu
+				{...props}
+				className={cx("🥝-dropdown-menu", props.className)}
+				ref={forwardedRef}
+			/>
+		</Ariakit.MenuProvider>
 	);
 });

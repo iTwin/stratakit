@@ -42,7 +42,7 @@ const MenuButton = React.forwardRef<
 	return (
 		<Ariakit.MenuButton
 			accessibleWhenDisabled={accessibleWhenDisabled}
-			render={<Button />}
+			render={<Button accessibleWhenDisabled={accessibleWhenDisabled} />}
 			{...rest}
 			ref={forwardedRef as Ariakit.MenuButtonProps["ref"]}
 		/>

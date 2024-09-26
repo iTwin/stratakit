@@ -22,9 +22,7 @@ export default function Page() {
 				}
 				open={visual ? true : undefined}
 			>
-				<DropdownMenu.Button disabled accessibleWhenDisabled>
-					Actions
-				</DropdownMenu.Button>
+				<DropdownMenu.Button>Actions</DropdownMenu.Button>
 			</DropdownMenu>
 		</div>
 	);

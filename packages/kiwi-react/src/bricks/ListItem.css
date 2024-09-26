@@ -19,4 +19,45 @@
 		padding-inline: var(--_kiwi-list-item-padding-inline);
 		padding-block: var(--_kiwi-list-item-padding-block);
 	}
+
+	@layer modifiers {
+		--_kiwi-list-item-color-background-hover: #ffffff14; /* bg/glow/on-surface/neutral-hover */
+		--_kiwi-list-item-color-background-active: #1981661f; /* bg/glow/on-surface/accent-hover */
+		--_kiwi-list-item-color-background-destructive: #df1b411f; /* bg/glow/on-surface/critical-hover */
+	}
+
+	@layer states {
+		/* See https://kizu.dev/cyclic-toggles/ */
+		--__kiwi-list-item-state: var(--__kiwi-list-item-state--default);
+		--__kiwi-list-item-state--default: var(--__kiwi-list-item-state,);
+		--__kiwi-list-item-state--hover: var(--__kiwi-list-item-state,);
+		--__kiwi-list-item-state--active: var(--__kiwi-list-item-state,);
+		--__kiwi-list-item-state--disabled: var(--__kiwi-list-item-state,);
+		--__kiwi-list-item-state--destructive: var(--__kiwi-list-item-state,);
+
+		background-color: var(
+				--__kiwi-list-item-state--default,
+				var(--_kiwi-list-item-color-background)
+			)
+			var(--__kiwi-list-item-state--hover, var(--_kiwi-list-item-color-background-hover))
+			var(--__kiwi-list-item-state--active, var(--_kiwi-list-item-color-background-active))
+			var(
+				--__kiwi-list-item-state--destructive,
+				var(--_kiwi-list-item-color-background-destructive)
+			);
+
+		@media (any-hover: hover) {
+			&:where(:hover) {
+				--__kiwi-list-item-state: var(--__kiwi-list-item-state--hover);
+			}
+		}
+
+		&:where(:active) {
+			--__kiwi-list-item-state: var(--__kiwi-list-item-state--active);
+		}
+
+		&:where([disabled], :disabled, [aria-disabled="true"]) {
+			--__kiwi-list-item-state: var(--__kiwi-list-item-state--disabled);
+		}
+	}
 }

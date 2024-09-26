@@ -20,7 +20,7 @@ export const DropdownMenu = React.forwardRef<
 	const { children, items, ...rest } = props;
 	return (
 		<Ariakit.MenuProvider>
-			<Ariakit.MenuButton>{children}</Ariakit.MenuButton>
+			<Ariakit.MenuButton render={children} />
 			<Ariakit.Menu
 				{...rest}
 				className={cx("🥝-dropdown-menu", props.className)}

@@ -11,3 +11,4 @@
 @import "./Input.css" layer(kiwi.components);
 @import "./Label.css" layer(kiwi.components);
 @import "./ListItem.css" layer(kiwi.components);
+@import "./Switch.css" layer(kiwi.components);

@@ -16,6 +16,9 @@
 			"enabled": true
 		}
 	},
+	"organizeImports": {
+		"enabled": false
+	},
 	"overrides": [
 		{
 			"include": ["packages/kiwi-react/**"],

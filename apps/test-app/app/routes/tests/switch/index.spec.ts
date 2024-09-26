@@ -47,3 +47,22 @@ test("disabled", async ({ page }) => {
 	await page.keyboard.press("Space");
 	await expect(toggleSwitch).not.toBeChecked();
 });
+
+test.describe("visual", () => {
+	test("unchecked", async ({ page }) => {
+		await page.goto("/tests/switch?visual=true");
+		await expect(page.locator("body")).toHaveScreenshot();
+	});
+	test("checked", async ({ page }) => {
+		await page.goto("/tests/switch?visual=true&checked=true");
+		await expect(page.locator("body")).toHaveScreenshot();
+	});
+	test("disabled", async ({ page }) => {
+		await page.goto("/tests/switch?visual=true&disabled=true");
+		await expect(page.locator("body")).toHaveScreenshot();
+	});
+	test("disabled & checked", async ({ page }) => {
+		await page.goto("/tests/switch?visual=true&disabled=true&checked=true");
+		await expect(page.locator("body")).toHaveScreenshot();
+	});
+});

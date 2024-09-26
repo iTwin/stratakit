@@ -6,6 +6,7 @@ export { Root } from "./Root.js";
 export { Anchor } from "./Anchor.js";
 export { Button } from "./Button.js";
 export { Checkbox } from "./Checkbox.js";
+export { DropdownMenu } from "./DropdownMenu.js";
 export { Divider } from "./Divider.js";
 export { Icon } from "./Icon.js";
 export { Input } from "./Input.js";

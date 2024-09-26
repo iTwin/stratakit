@@ -8,7 +8,16 @@ export const handle = { title: "DropdownMenu" };
 
 export default function Page() {
 	return (
-		<DropdownMenu>
+		<DropdownMenu
+			items={
+				<>
+					<div>Add</div>
+					<div>Edit</div>
+					<div>Delete</div>
+					<div>Disable</div>
+				</>
+			}
+		>
 			<Button>Actions</Button>
 		</DropdownMenu>
 	);

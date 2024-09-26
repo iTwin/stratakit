@@ -9,13 +9,15 @@ import * as Ariakit from "@ariakit/react";
 interface DropdownMenuProps extends Ariakit.MenuProps {
 	/** Element that opens a dropdown menu. */
 	children: React.ReactElement;
+	/** Menu items rendered in this dropdown menu. */
+	items: React.ReactElement;
 }
 
 export const DropdownMenu = React.forwardRef<
 	React.ElementRef<typeof Ariakit.Menu>,
 	DropdownMenuProps
 >((props, forwardedRef) => {
-	const { children, ...rest } = props;
+	const { children, items, ...rest } = props;
 	return (
 		<Ariakit.MenuProvider>
 			<Ariakit.MenuButton>{children}</Ariakit.MenuButton>
@@ -23,7 +25,9 @@ export const DropdownMenu = React.forwardRef<
 				{...rest}
 				className={cx("🥝-dropdown-menu", props.className)}
 				ref={forwardedRef}
-			/>
+			>
+				{items}
+			</Ariakit.Menu>
 		</Ariakit.MenuProvider>
 	);
 });

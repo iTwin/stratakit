@@ -3,22 +3,27 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 import { Button, DropdownMenu } from "@itwin/kiwi-react/bricks";
+import { useSearchParams } from "@remix-run/react";
 
 export const handle = { title: "DropdownMenu" };
 
 export default function Page() {
+	const visual = useSearchParams()[0].get("visual") === "true";
 	return (
-		<DropdownMenu
-			items={
-				<>
-					<DropdownMenu.Item>Add</DropdownMenu.Item>
-					<DropdownMenu.Item>Edit</DropdownMenu.Item>
-					<DropdownMenu.Item disabled>Delete</DropdownMenu.Item>
-					<DropdownMenu.Item>Disable</DropdownMenu.Item>
-				</>
-			}
-		>
-			<Button>Actions</Button>
-		</DropdownMenu>
+		<div style={{ minHeight: 150 }}>
+			<DropdownMenu
+				items={
+					<>
+						<DropdownMenu.Item>Add</DropdownMenu.Item>
+						<DropdownMenu.Item>Edit</DropdownMenu.Item>
+						<DropdownMenu.Item disabled>Delete</DropdownMenu.Item>
+						<DropdownMenu.Item>Disable</DropdownMenu.Item>
+					</>
+				}
+				open={visual ? true : undefined}
+			>
+				<Button>Actions</Button>
+			</DropdownMenu>
+		</div>
 	);
 }

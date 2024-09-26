@@ -56,3 +56,8 @@ test("default (keyboard)", async ({ page }) => {
 	await expect(add).not.toBeVisible();
 	await expect(button).toBeFocused();
 });
+
+test("visual", async ({ page }) => {
+	await page.goto("/tests/dropdown-menu?visual=true");
+	await expect(page.locator("body")).toHaveScreenshot();
+});

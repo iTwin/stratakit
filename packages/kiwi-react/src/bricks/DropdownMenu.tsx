@@ -10,7 +10,7 @@ import { ListItem } from "./ListItem.js";
 interface DropdownMenuProps extends Ariakit.MenuProps {
 	/** Element that opens a dropdown menu. */
 	children: React.ReactElement;
-	/** Menu items rendered in this dropdown menu. */
+	/** Menu items rendered in this dropdown. Prefer using {@link DropdownMenu.Item} component. */
 	items: React.ReactElement;
 }
 

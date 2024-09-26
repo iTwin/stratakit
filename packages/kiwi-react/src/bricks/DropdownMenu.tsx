@@ -5,6 +5,7 @@
 import * as React from "react";
 import cx from "classnames";
 import * as Ariakit from "@ariakit/react";
+import { ListItem } from "./ListItem.js";
 
 interface DropdownMenuProps extends Ariakit.MenuProps {
 	/** Element that opens a dropdown menu. */
@@ -32,6 +33,19 @@ const DropdownMenuComponent = React.forwardRef<
 	);
 });
 
+const DropdownMenuItem = React.forwardRef<
+	React.ElementRef<typeof Ariakit.MenuItem>,
+	Ariakit.MenuItemProps
+>((props, forwardedRef) => {
+	return (
+		<Ariakit.MenuItem
+			{...props}
+			render={<ListItem render={props.render} />}
+			ref={forwardedRef}
+		/>
+	);
+});
+
 export const DropdownMenu = Object.assign(DropdownMenuComponent, {
-	Item: Ariakit.MenuItem,
+	Item: DropdownMenuItem,
 });

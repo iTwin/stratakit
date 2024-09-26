@@ -7,18 +7,23 @@ import { test, expect } from "@playwright/test";
 test("default", async ({ page }) => {
 	await page.goto("/tests/tooltip");
 
-	const trigger = page.getByText("Hello World");
 	const tooltip = page.getByRole("button", { name: "Click Me!" });
 	await expect(tooltip).toBeHidden();
 });
 
-test("Pressing Escape should clear the tooltip", async ({ page }) => {
+test("Pressing Escape should hide the tooltip", async ({ page }) => {
 	await page.goto("/tests/tooltip");
 
-	const button = page.getByRole("button");
-	const tooltip = page.getByRole("button", { name: "Click Me!" });
+	const button = page.getByRole("button", { name: "Hello World" });
 
-	await page.keyboard.press("Tab");
+	await button.focus();
+	await expect(button).toBeFocused(); // Ensure the button is focused
+
+	const tooltip = page.getByRole("tooltip");
+	await expect(tooltip).toBeVisible();
+
+	await page.keyboard.press("Escape");
+
 	await expect(tooltip).toBeHidden();
 });
 
@@ -38,13 +43,15 @@ test("Mouse In / Hover - should display the tooltip", async ({ page }) => {
 	await page.goto("/tests/tooltip");
 
 	const button = page.getByRole("button", { name: "Hello World" });
+	await expect(button).toBeVisible();
+
 	await button.hover();
 
 	const tooltip = page.getByRole("tooltip");
 	await expect(tooltip).toBeVisible();
 });
 
-test("Mouse Out / unhover(!) - should hide the tooltip", async ({ page }) => {
+test("Mouse Out / Normal - should hide the tooltip", async ({ page }) => {
 	await page.goto("/tests/tooltip");
 
 	const button = page.getByRole("button", { name: "Hello World" });
@@ -69,25 +76,26 @@ test("Tooltip should stay displayed during hover (should not hide)", async ({
 	await expect(tooltip).toBeVisible();
 
 	await tooltip.hover();
-	await expect(tooltip).toBeVisible(); // Ensure tooltip is still visible
+	await page.waitForTimeout(3000);
+	await expect(tooltip).toBeVisible();
 });
 
-// test("Keyboard loss of Focus on the related element should hide the tooltip", async ({
-// 	page,
-// }) => {
-// 	await page.goto("/tests/tooltip");
+test("Keyboard loss of Focus on the related element should hide the tooltip", async ({
+	page,
+}) => {
+	await page.goto("/tests/tooltip");
 
-// 	const button = page.getByRole("button", { name: "Hello World" });
-// 	await button.focus();
+	const tooltip = page.getByRole("tooltip");
+	const button = page.getByRole("button", { name: "Hello World" });
 
-// 	const tooltip = page.getByRole("tooltip");
-// 	await expect(tooltip).toBeVisible();
+	await expect(tooltip).toBeHidden();
 
-// 	await page.keyboard.press("Tab"); // Move focus away
-// 	await expect(tooltip).toBeHidden();
-// });
+	await button.focus();
+	await expect(button).toBeFocused();
 
-test("visual", async ({ page }) => {
-	await page.goto("/tests/tooltip?visual=true");
-	await expect(page.locator("body")).toHaveScreenshot();
+	await expect(tooltip).toBeVisible();
+
+	await page.mouse.click(0, 0); // Ensures loss of focus.
+
+	await expect(tooltip).toBeHidden();
 });

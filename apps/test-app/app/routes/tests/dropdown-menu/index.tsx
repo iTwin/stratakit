@@ -13,7 +13,7 @@ export default function Page() {
 				<>
 					<DropdownMenu.Item>Add</DropdownMenu.Item>
 					<DropdownMenu.Item>Edit</DropdownMenu.Item>
-					<DropdownMenu.Item>Delete</DropdownMenu.Item>
+					<DropdownMenu.Item disabled>Delete</DropdownMenu.Item>
 					<DropdownMenu.Item>Disable</DropdownMenu.Item>
 				</>
 			}

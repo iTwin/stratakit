@@ -24,6 +24,10 @@
 		--_kiwi-list-item-color-background-hover: #ffffff14; /* bg/glow/on-surface/neutral-hover */
 		--_kiwi-list-item-color-background-active: #1981661f; /* bg/glow/on-surface/accent-hover */
 		--_kiwi-list-item-color-background-destructive: #df1b411f; /* bg/glow/on-surface/critical-hover */
+
+		--_kiwi-list-item-color-active: #0bfac2; /* text/accent/strong */
+		--_kiwi-list-item-color-disabled: #585f68; /* text/neutral/disabled */
+		--_kiwi-list-item-color-destructive: #ec768d; /* text/critical/base */
 	}
 
 	@layer states {
@@ -45,6 +49,10 @@
 				--__kiwi-list-item-state--destructive,
 				var(--_kiwi-list-item-color-background-destructive)
 			);
+		color: var(--__kiwi-list-item-state--default, unset)
+			var(--__kiwi-list-item-state--active, var(--_kiwi-list-item-color-active))
+			var(--__kiwi-list-item-state--disabled, var(--_kiwi-list-item-color-disabled))
+			var(--__kiwi-list-item-state--destructive, var(--_kiwi-list-item-color-destructive));
 
 		@media (any-hover: hover) {
 			&:where(:hover) {

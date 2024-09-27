@@ -7,10 +7,11 @@ import { test, expect } from "@playwright/test";
 test("Pressing Escape should hide the tooltip", async ({ page }) => {
 	await page.goto("/tests/tooltip");
 
-	const button = page.getByRole("button", { name: "Hello World" });
+	const button = page.getByRole("button");
 
 	await button.focus();
-	await expect(button).toBeFocused(); // Ensure the button is focused
+
+	await expect(button).toBeFocused();
 
 	const tooltip = page.getByRole("tooltip");
 	await expect(tooltip).toBeVisible();
@@ -25,7 +26,7 @@ test("Keyboard Focus on related element should display the tooltip", async ({
 }) => {
 	await page.goto("/tests/tooltip");
 
-	const button = page.getByRole("button", { name: "Hello World" });
+	const button = page.getByRole("button");
 	await button.focus();
 
 	const tooltip = page.getByRole("tooltip");
@@ -35,7 +36,7 @@ test("Keyboard Focus on related element should display the tooltip", async ({
 test("Mouse In / Hover - should display the tooltip", async ({ page }) => {
 	await page.goto("/tests/tooltip");
 
-	const button = page.getByRole("button", { name: "Hello World" });
+	const button = page.getByRole("button");
 	await expect(button).toBeVisible();
 
 	await button.hover();
@@ -47,7 +48,7 @@ test("Mouse In / Hover - should display the tooltip", async ({ page }) => {
 test("Mouse Out / Normal - should hide the tooltip", async ({ page }) => {
 	await page.goto("/tests/tooltip");
 
-	const button = page.getByRole("button", { name: "Hello World" });
+	const button = page.getByRole("button");
 	await button.hover();
 
 	const tooltip = page.getByRole("tooltip");
@@ -62,7 +63,7 @@ test("Tooltip should stay displayed during hover (should not hide)", async ({
 }) => {
 	await page.goto("/tests/tooltip");
 
-	const button = page.getByRole("button", { name: "Hello World" });
+	const button = page.getByRole("button");
 	await button.hover();
 
 	const tooltip = page.getByRole("tooltip");
@@ -79,7 +80,7 @@ test("Keyboard loss of Focus on the related element should hide the tooltip", as
 	await page.goto("/tests/tooltip");
 
 	const tooltip = page.getByRole("tooltip");
-	const button = page.getByRole("button", { name: "Hello World" });
+	const button = page.getByRole("button");
 
 	await expect(tooltip).toBeHidden();
 

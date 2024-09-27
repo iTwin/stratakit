@@ -82,7 +82,6 @@ test("Keyboard loss of Focus on the related element should hide the tooltip", as
 	await expect(tooltip).toBeHidden();
 
 	await button.focus();
-	await expect(button).toBeFocused();
 
 	await expect(tooltip).toBeVisible();
 

@@ -92,3 +92,12 @@ test("Keyboard loss of Focus on the related element should hide the tooltip", as
 
 	await expect(tooltip).toBeHidden();
 });
+
+test("Is aria-describedby is set correctly ?", async ({ page }) => {
+	await page.goto("/tests/tooltip");
+
+	const button = await page.getByRole("button");
+	const ariaDescribedBy = await button.getAttribute("aria-describedby");
+
+	expect(ariaDescribedBy).toBeTruthy();
+});

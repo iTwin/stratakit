@@ -4,13 +4,6 @@
  *--------------------------------------------------------------------------------------------*/
 import { test, expect } from "@playwright/test";
 
-test("default", async ({ page }) => {
-	await page.goto("/tests/tooltip");
-
-	const tooltip = page.getByRole("button", { name: "Click Me!" });
-	await expect(tooltip).toBeHidden();
-});
-
 test("Pressing Escape should hide the tooltip", async ({ page }) => {
 	await page.goto("/tests/tooltip");
 

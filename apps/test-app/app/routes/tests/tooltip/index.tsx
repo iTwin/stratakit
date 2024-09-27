@@ -10,7 +10,7 @@ export default function Page() {
 	return (
 		<>
 			<Tooltip content="This is the tooltip">
-				<Button>Hover focus me</Button>
+				<Button>Hover/focus me</Button>
 			</Tooltip>
 		</>
 	);

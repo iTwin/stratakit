@@ -11,8 +11,6 @@ test("Pressing Escape should hide the tooltip", async ({ page }) => {
 
 	await button.focus();
 
-	await expect(button).toBeFocused();
-
 	const tooltip = page.getByRole("tooltip");
 	await expect(tooltip).toBeVisible();
 

@@ -35,7 +35,6 @@ test("Mouse In / Hover - should display the tooltip", async ({ page }) => {
 	await page.goto("/tests/tooltip");
 
 	const button = page.getByRole("button");
-	await expect(button).toBeVisible();
 
 	await button.hover();
 

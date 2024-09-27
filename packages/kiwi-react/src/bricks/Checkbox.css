@@ -6,13 +6,13 @@
 	@layer base {
 		--_kiwi-checkbox-color-background: #36393f; /* bg/neutral/base */
 		--_kiwi-checkbox-color-background-hover: color-mix(
-			in oklch,
+			in srgb,
 			var(--_kiwi-checkbox-color-background),
 			#fff 4%
 		);
 		--_kiwi-checkbox-color-background-checked: #198166; /* bg/accent/base */
 		--_kiwi-checkbox-color-background-checked-hover: color-mix(
-			in oklch,
+			in srgb,
 			var(--_kiwi-checkbox-color-background-checked),
 			#fff 8%
 		);

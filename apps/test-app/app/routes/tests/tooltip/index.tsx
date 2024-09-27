@@ -10,8 +10,8 @@ export const handle = { title: "Tooltip" };
 export default function Page() {
 	return (
 		<>
-			<Tooltip content="Click me">
-				<Button>Hello World</Button>
+			<Tooltip content="This is the tooltip">
+				<Button>Hover focus me</Button>
 			</Tooltip>
 		</>
 	);

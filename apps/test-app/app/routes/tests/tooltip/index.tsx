@@ -3,7 +3,6 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 import { Tooltip, Button } from "@itwin/kiwi-react/bricks";
-import { useId } from "react";
 
 export const handle = { title: "Tooltip" };
 

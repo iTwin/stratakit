@@ -1,6 +1,7 @@
 {
 	"name": "kiwi",
 	"private": true,
+	"type": "module",
 	"version": "0.0.0",
 	"description": "Monorepo for the kiwi design system",
 	"scripts": {
@@ -10,7 +11,7 @@
 		"dev:ts": "pnpm --filter=@itwin/kiwi-react dev",
 		"format": "biome format .",
 		"lint": "biome lint .",
-		"lint:copyright": "tsx scripts/copyright-linter.ts",
+		"lint:copyright": "tsx internal/scripts/copyright-linter.ts",
 		"prettier": "prettier . '!**/*.{js,jsx,ts,tsx,cjs,cts,mjs,mts,css,json,jsonc}' --check",
 		"test": "pnpm --filter=@itwin/test-app test"
 	},
@@ -20,6 +21,7 @@
 		"fast-glob": "^3.3.2",
 		"lefthook": "^1.7.11",
 		"prettier": "3.3.3",
+		"internal": "workspace:*",
 		"tsx": "^4.16.5"
 	},
 	"engines": {

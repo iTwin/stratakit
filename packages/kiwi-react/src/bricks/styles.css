@@ -7,7 +7,7 @@
 @import "./Anchor.css" layer(kiwi.components);
 @import "./Button.css" layer(kiwi.components);
 @import "./Divider.css" layer(kiwi.components);
-@import "./dropdown-menu/DropdownMenu.css" layer(kiwi.components);
+@import "./DropdownMenu.css" layer(kiwi.components);
 @import "./Icon.css" layer(kiwi.components);
 @import "./Input.css" layer(kiwi.components);
 @import "./Label.css" layer(kiwi.components);

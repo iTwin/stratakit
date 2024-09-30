@@ -5,8 +5,8 @@
 import * as React from "react";
 import cx from "classnames";
 import * as Ariakit from "@ariakit/react";
-import { DropdownMenuButton } from "./DropdownMenuButton.js";
-import { DropdownMenuItem } from "./DropdownMenuItem.js";
+import { ListItem } from "./ListItem.js";
+import { Button } from "./Button.js";
 
 interface DropdownMenuProps extends Ariakit.MenuProps {
 	/** Element that opens a dropdown menu. Prefer using {@link DropdownMenu.Button} component. */
@@ -34,7 +34,35 @@ const DropdownMenuComponent = React.forwardRef<
 	);
 });
 
+const MenuButton = React.forwardRef<
+	React.ElementRef<typeof Button>,
+	React.ComponentProps<typeof Button>
+>((props, forwardedRef) => {
+	const { accessibleWhenDisabled = true, ...rest } = props;
+	return (
+		<Ariakit.MenuButton
+			accessibleWhenDisabled={accessibleWhenDisabled}
+			render={<Button accessibleWhenDisabled={accessibleWhenDisabled} />}
+			{...rest}
+			ref={forwardedRef as Ariakit.MenuButtonProps["ref"]}
+		/>
+	);
+});
+
+const MenuItem = React.forwardRef<
+	React.ElementRef<typeof Ariakit.MenuItem>,
+	Ariakit.MenuItemProps
+>((props, forwardedRef) => {
+	return (
+		<Ariakit.MenuItem
+			{...props}
+			render={<ListItem render={props.render} />}
+			ref={forwardedRef}
+		/>
+	);
+});
+
 export const DropdownMenu = Object.assign(DropdownMenuComponent, {
-	Button: DropdownMenuButton,
-	Item: DropdownMenuItem,
+	Button: MenuButton,
+	Item: MenuItem,
 });

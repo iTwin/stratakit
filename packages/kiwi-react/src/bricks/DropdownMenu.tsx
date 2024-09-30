@@ -39,8 +39,8 @@ const DropdownMenuComponent = React.forwardRef<
 // ----------------------------------------------------------------------------
 
 const MenuButton = React.forwardRef<
-	React.ElementRef<typeof Button>,
-	React.ComponentProps<typeof Button>
+	React.ElementRef<typeof Ariakit.MenuButton>,
+	Ariakit.MenuButtonProps
 >((props, forwardedRef) => {
 	const { accessibleWhenDisabled = true, ...rest } = props;
 	return (

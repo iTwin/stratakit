@@ -97,7 +97,6 @@ test("Is aria-describedby is set correctly ?", async ({ page }) => {
 	await page.goto("/tests/tooltip");
 
 	const button = await page.getByRole("button");
-	const ariaDescribedBy = await button.getAttribute("aria-describedby");
 
-	expect(ariaDescribedBy).toBeTruthy();
+	await expect(button).toHaveAccessibleDescription("This is the tooltip");
 });

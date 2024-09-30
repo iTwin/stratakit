@@ -8,6 +8,8 @@ import * as Ariakit from "@ariakit/react";
 import { ListItem } from "./ListItem.js";
 import { Button } from "./Button.js";
 
+// ----------------------------------------------------------------------------
+
 interface DropdownMenuProps extends Ariakit.MenuProps {
 	/** Element that opens a dropdown menu. Prefer using {@link DropdownMenu.Button} component. */
 	children: React.ReactElement;
@@ -34,6 +36,8 @@ const DropdownMenuComponent = React.forwardRef<
 	);
 });
 
+// ----------------------------------------------------------------------------
+
 const MenuButton = React.forwardRef<
 	React.ElementRef<typeof Button>,
 	React.ComponentProps<typeof Button>
@@ -49,6 +53,8 @@ const MenuButton = React.forwardRef<
 	);
 });
 
+// ----------------------------------------------------------------------------
+
 const MenuItem = React.forwardRef<
 	React.ElementRef<typeof Ariakit.MenuItem>,
 	Ariakit.MenuItemProps
@@ -61,6 +67,8 @@ const MenuItem = React.forwardRef<
 		/>
 	);
 });
+
+// ----------------------------------------------------------------------------
 
 export const DropdownMenu = Object.assign(DropdownMenuComponent, {
 	Button: MenuButton,

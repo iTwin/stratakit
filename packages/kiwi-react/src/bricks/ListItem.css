@@ -9,6 +9,11 @@
 		--_kiwi-list-item-padding-inline: 0.75rem 0.5rem;
 		--_kiwi-list-item-padding-block: 0.25rem;
 
+		--_kiwi-list-item-color-background-hover: #ffffff14; /* bg/glow/on-surface/neutral-hover */
+		--_kiwi-list-item-color-background-active: #1981661f; /* bg/glow/on-surface/accent-hover */
+		--_kiwi-list-item-color-active: #0bfac2; /* text/accent/strong */
+		--_kiwi-list-item-color-disabled: #585f68; /* text/neutral/disabled */
+
 		line-height: 1;
 
 		display: flex;
@@ -18,14 +23,6 @@
 		min-block-size: var(--_kiwi-list-item-height);
 		padding-inline: var(--_kiwi-list-item-padding-inline);
 		padding-block: var(--_kiwi-list-item-padding-block);
-	}
-
-	@layer modifiers {
-		--_kiwi-list-item-color-background-hover: #ffffff14; /* bg/glow/on-surface/neutral-hover */
-		--_kiwi-list-item-color-background-active: #1981661f; /* bg/glow/on-surface/accent-hover */
-
-		--_kiwi-list-item-color-active: #0bfac2; /* text/accent/strong */
-		--_kiwi-list-item-color-disabled: #585f68; /* text/neutral/disabled */
 	}
 
 	@layer states {

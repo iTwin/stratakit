@@ -6,7 +6,7 @@ import * as React from "react";
 import cx from "classnames";
 import * as Ariakit from "@ariakit/react";
 import { ListItem } from "./ListItem.js";
-import { Button } from "./Button.js";
+import { Button as BaseButton } from "./Button.js";
 
 // ----------------------------------------------------------------------------
 
@@ -17,7 +17,7 @@ interface DropdownMenuProps extends Ariakit.MenuProps {
 	items: React.ReactElement;
 }
 
-const DropdownMenuComponent = React.forwardRef<
+const DropdownMenu = React.forwardRef<
 	React.ElementRef<typeof Ariakit.Menu>,
 	DropdownMenuProps
 >((props, forwardedRef) => {
@@ -38,7 +38,7 @@ const DropdownMenuComponent = React.forwardRef<
 
 // ----------------------------------------------------------------------------
 
-const MenuButton = React.forwardRef<
+const DropdownMenuButton = React.forwardRef<
 	React.ElementRef<typeof Ariakit.MenuButton>,
 	Ariakit.MenuButtonProps
 >((props, forwardedRef) => {
@@ -46,7 +46,7 @@ const MenuButton = React.forwardRef<
 	return (
 		<Ariakit.MenuButton
 			accessibleWhenDisabled={accessibleWhenDisabled}
-			render={<Button accessibleWhenDisabled={accessibleWhenDisabled} />}
+			render={<BaseButton accessibleWhenDisabled={accessibleWhenDisabled} />}
 			{...rest}
 			ref={forwardedRef as Ariakit.MenuButtonProps["ref"]}
 		/>
@@ -55,7 +55,7 @@ const MenuButton = React.forwardRef<
 
 // ----------------------------------------------------------------------------
 
-const MenuItem = React.forwardRef<
+const DropdownMenuItem = React.forwardRef<
 	React.ElementRef<typeof Ariakit.MenuItem>,
 	Ariakit.MenuItemProps
 >((props, forwardedRef) => {
@@ -70,7 +70,8 @@ const MenuItem = React.forwardRef<
 
 // ----------------------------------------------------------------------------
 
-export const DropdownMenu = Object.assign(DropdownMenuComponent, {
-	Button: MenuButton,
-	Item: MenuItem,
-});
+export {
+	DropdownMenu as Root,
+	DropdownMenuButton as Button,
+	DropdownMenuItem as Item,
+};

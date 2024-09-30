@@ -11,7 +11,7 @@
 		"dev:ts": "pnpm --filter=@itwin/kiwi-react dev",
 		"format": "biome format .",
 		"lint": "biome lint .",
-		"lint:copyright": "tsx internal/scripts/copyright-linter.ts",
+		"lint:copyright": "tsx internal/copyright-linter.ts",
 		"prettier": "prettier . '!**/*.{js,jsx,ts,tsx,cjs,cts,mjs,mts,css,json,jsonc}' --check",
 		"test": "pnpm --filter=@itwin/test-app test"
 	},

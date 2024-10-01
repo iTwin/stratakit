@@ -2,32 +2,25 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-import { Button, Root, VisuallyHidden } from "@itwin/kiwi-react/bricks";
+import { Button, Root } from "@itwin/kiwi-react/bricks";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { createPortal } from "react-dom";
 
+export const handle = { title: "Root" };
+
 export default function Page() {
-	const shadow = useShadow(useCallback(() => document.body, []));
 	const popout = usePopout();
 
 	return (
 		<>
-			<VisuallyHidden render={(props) => <h1 {...props} />}>
-				Root
-			</VisuallyHidden>
+			<LightAndShadowButtons />
 
-			{shadow &&
-				createPortal(
-					<Root>
-						<Button onClick={() => popout.open()}>Open popout</Button>
-					</Root>,
-					shadow,
-				)}
+			<Button onClick={() => popout.open()}>Open popout</Button>
 
 			{popout.popout &&
 				createPortal(
 					<Root>
-						<Button>Hello</Button>
+						<LightAndShadowButtons />
 					</Root>,
 					popout.popout.document.body,
 				)}
@@ -35,21 +28,46 @@ export default function Page() {
 	);
 }
 
-function useShadow(getHost = () => document.body) {
+// ----------------------------------------------------------------------------
+
+function LightAndShadowButtons() {
+	const [host, setHost] = useState<HTMLElement | null>(null);
+	const shadow = useShadow(useCallback(() => host, [host]));
+
+	return (
+		<div style={{ display: "flex", gap: 4 }} ref={setHost}>
+			<Button>Button (light)</Button>
+			{shadow &&
+				createPortal(
+					<Root>
+						<Button>Button (shadow)</Button>
+					</Root>,
+					shadow,
+				)}
+		</div>
+	);
+}
+
+// ----------------------------------------------------------------------------
+
+function useShadow(getHost: () => HTMLElement | null) {
 	const [shadow, setShadow] = useState<ShadowRoot | null>(null);
+	const host = getHost();
 
 	useEffect(() => {
-		const host = getHost();
+		if (!host) return;
 		if (!host.shadowRoot) {
 			host
 				.attachShadow({ mode: "open" })
 				.appendChild(document.createElement("slot"));
 		}
 		setShadow(host.shadowRoot);
-	}, [getHost]);
+	}, [host]);
 
 	return shadow;
 }
+
+// ----------------------------------------------------------------------------
 
 function usePopout() {
 	const [popout, setPopout] = useState<Window | null>(null);

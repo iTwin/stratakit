@@ -23,7 +23,8 @@
 		"forceConsistentCasingInFileNames": true,
 		"baseUrl": ".",
 		"paths": {
-			"~/*": ["./app/*"]
+			"~/*": ["./app/*"],
+			"@itwin/kiwi-react-internal/*": ["./node_modules/@itwin/kiwi-react/*"]
 		},
 
 		// Vite takes care of building everything, not tsc.

@@ -1,0 +1,18 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+html {
+	background-color: --primitive("gray.900") /* bg/surface/primary */;
+}
+
+body {
+	font-family: var(--kiwi-font-family-sans);
+	font-size: var(--kiwi-font-size-m);
+	color: #fbfcfd; /* text/neutral/primary */
+}
+
+*:focus-visible {
+	outline: 2px solid var(--_kiwi-focus-color, #0bfac2 /* border/accent/strong */);
+	outline-offset: 1px;
+}

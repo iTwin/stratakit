@@ -3,7 +3,10 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 import * as React from "react";
-import rawStyles from "./styles.css.js";
+import foundationsCss from "../foundations/styles.css.js";
+import bricksCss from "./styles.css.js";
+
+const css = foundationsCss + bricksCss;
 
 /**
  * Component to be used at the root of your application. It ensures that kiwi styles are loaded
@@ -22,18 +25,19 @@ export const Root = ({ children }: { children: React.ReactNode }) => {
 
 function Styles() {
 	const templateRef = React.useRef<HTMLTemplateElement | null>(null);
+	const [loaded, setLoaded] = React.useState(false);
 
 	useLayoutEffect(() => {
 		const rootNode = templateRef.current?.getRootNode();
-		if (!isDocument(rootNode) && !(rootNode instanceof ShadowRoot)) {
+		if (!isDocument(rootNode) && !isShadow(rootNode)) {
 			return;
 		}
 
-		const { loaded } = loadStyles(rootNode, { css: rawStyles });
-		if (loaded) templateRef.current?.remove();
+		const { loaded } = loadStyles(rootNode, { css: css });
+		setLoaded(loaded);
 	}, []);
 
-	return <template ref={templateRef} />;
+	return !loaded ? <template ref={templateRef} /> : null;
 }
 
 // ----------------------------------------------------------------------------
@@ -87,6 +91,14 @@ const isBrowser = typeof document !== "undefined";
 
 const supportsAdoptedStylesheets =
 	isBrowser && "adoptedStyleSheets" in Document.prototype;
+
+function isShadow(node?: Node): node is ShadowRoot {
+	return (
+		node instanceof ShadowRoot ||
+		(node?.nodeType === Node.DOCUMENT_FRAGMENT_NODE &&
+			!!(node as ShadowRoot)?.host)
+	);
+}
 
 function isDocument(node?: Node): node is Document {
 	return node?.nodeType === Node.DOCUMENT_NODE;

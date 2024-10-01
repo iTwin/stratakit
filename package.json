@@ -1,23 +1,27 @@
 {
 	"name": "kiwi",
 	"private": true,
+	"type": "module",
 	"version": "0.0.0",
 	"description": "Monorepo for the kiwi design system",
 	"scripts": {
 		"build": "pnpm --filter=\"./packages/**\" --filter=\"./apps/**\" build",
-		"dev": "pnpm --filter=@itwin/test-app dev",
-		"format": "pnpm --recursive --no-bail format",
-		"lint": "pnpm --recursive --no-bail lint",
-		"lint:copyright": "tsx scripts/copyright-linter.ts",
-		"prettier": "prettier . '!**/*.{js,jsx,ts,tsx}' --check",
+		"dev": "npm run dev:app & npm run dev:ts &",
+		"dev:app": "pnpm --filter=@itwin/test-app dev",
+		"dev:ts": "pnpm --filter=@itwin/kiwi-react dev",
+		"format": "biome format .",
+		"lint": "biome lint .",
+		"lint:copyright": "tsx internal/copyright-linter.ts",
+		"prettier": "prettier . '!**/*.{js,jsx,ts,tsx,cjs,cts,mjs,mts,css,json,jsonc}' --check",
 		"test": "pnpm --filter=@itwin/test-app test"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "1.8.3",
+		"@biomejs/biome": "1.9.1",
 		"@types/node": "*",
 		"fast-glob": "^3.3.2",
 		"lefthook": "^1.7.11",
 		"prettier": "3.3.3",
+		"internal": "workspace:*",
 		"tsx": "^4.16.5"
 	},
 	"engines": {

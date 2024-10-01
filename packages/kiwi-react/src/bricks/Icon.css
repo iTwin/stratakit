@@ -1,0 +1,20 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+.🥝-icon {
+	@layer base {
+		width: var(--_kiwi-icon-size);
+		height: var(--_kiwi-icon-size);
+	}
+
+	@layer modifiers {
+		&[data-kiwi-size="regular"] {
+			--_kiwi-icon-size: 1rem;
+		}
+
+		&[data-kiwi-size="large"] {
+			--_kiwi-icon-size: 1.5rem;
+		}
+	}
+}

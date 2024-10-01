@@ -2,6 +2,100 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-.\🥝-button {
-	font: inherit;
+.🥝-button {
+	@layer base {
+		--_kiwi-button-color-text: #fbfcfd; /* text/neutral/primary */
+		--_kiwi-button-gap: 4px;
+		--_kiwi-button-height: 1.5rem;
+		--_kiwi-button-padding-inline: 12px;
+
+		text-decoration: none;
+		line-height: 1;
+		white-space: nowrap;
+		user-select: none;
+		cursor: pointer;
+		font-size: 0.75rem;
+		font-weight: 500;
+		border: 1px solid transparent;
+
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		flex-shrink: 0;
+		gap: var(--_kiwi-button-gap);
+
+		block-size: var(--_kiwi-button-height);
+		border-radius: 4px;
+		padding-inline: var(--_kiwi-button-padding-inline);
+
+		color: var(--_kiwi-button-color-text);
+		transition: background-color 150ms ease-out;
+		-webkit-tap-highlight-color: var(--_kiwi-button-color-background-active);
+	}
+
+	@layer modifiers {
+		&[data-kiwi-variant="solid"] {
+			--_kiwi-button-color-background: #36393f; /* bg/neutral/default */
+			--_kiwi-button-color-background-hover: color-mix(
+				in oklch,
+				var(--_kiwi-button-color-background) 100%,
+				#fff 4%
+			);
+			--_kiwi-button-color-background-active: color-mix(
+				in oklch,
+				var(--_kiwi-button-color-background),
+				#fff 8%
+			);
+			--_kiwi-button-color-background-disabled: var(--_kiwi-button-color-background);
+			--_kiwi-button-color-border: #ffffff14; /* border/glow/default */
+
+			border-color: var(--_kiwi-button-color-border);
+			box-shadow: 0px 1px 1px -0.5px #00000029, 0px 3px 3px -1.5px #00000029;
+		}
+
+		&[data-kiwi-variant="ghost"] {
+			--_kiwi-button-color-background: transparent;
+			--_kiwi-button-color-background-hover: color-mix(
+				in oklch,
+				var(--_kiwi-button-color-background) 100%,
+				#fff 4%
+			);
+			--_kiwi-button-color-background-active: color-mix(
+				in oklch,
+				var(--_kiwi-button-color-background) 100%,
+				#fff 8%
+			);
+			--_kiwi-button-color-background-disabled: var(--_kiwi-button-color-background);
+		}
+	}
+
+	@layer states {
+		/* Cyclic toggles for default/hover/active/disabled states. See https://kizu.dev/cyclic-toggles/ */
+		--__kiwi-button-state: var(--__kiwi-button-state--default);
+		--__kiwi-button-state--default: var(--__kiwi-button-state,);
+		--__kiwi-button-state--hover: var(--__kiwi-button-state,);
+		--__kiwi-button-state--active: var(--__kiwi-button-state,);
+		--__kiwi-button-state--disabled: var(--__kiwi-button-state,);
+
+		background-color: var(--__kiwi-button-state--default, var(--_kiwi-button-color-background))
+			var(--__kiwi-button-state--hover, var(--_kiwi-button-color-background-hover))
+			var(--__kiwi-button-state--active, var(--_kiwi-button-color-background-active))
+			var(--__kiwi-button-state--disabled, var(--_kiwi-button-color-background-disabled));
+
+		@media (any-hover: hover) {
+			&:where(:hover) {
+				--__kiwi-button-state: var(--__kiwi-button-state--hover);
+			}
+		}
+
+		&:where(:active) {
+			--__kiwi-button-state: var(--__kiwi-button-state--active);
+		}
+
+		&:where([disabled], :disabled, [aria-disabled="true"]) {
+			--__kiwi-button-state: var(--__kiwi-button-state--disabled);
+			cursor: not-allowed;
+			opacity: 0.5;
+		}
+	}
 }

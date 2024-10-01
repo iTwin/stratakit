@@ -15,6 +15,8 @@ import { Root } from "@itwin/kiwi-react/bricks";
 export const links: LinksFunction = () => {
 	return [
 		{ rel: "icon", href: "/favicon.svg", sizes: "any", type: "image/svg+xml" },
+		{ rel: "preconnect", href: "https://rsms.me/" },
+		{ rel: "stylesheet", href: "https://rsms.me/inter/inter.css" },
 	];
 };
 
@@ -27,7 +29,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
 				<Meta />
 				<Links />
 			</head>
-			<body>
+			<body style={{ padding: "1rem" }}>
 				{children}
 				<ScrollRestoration />
 				<Scripts />
@@ -42,4 +44,8 @@ export default function App() {
 			<Outlet />
 		</Root>
 	);
+}
+
+export function HydrateFallback() {
+	return <p>Loading…</p>;
 }

@@ -4,19 +4,24 @@
  *--------------------------------------------------------------------------------------------*/
 import * as React from "react";
 import * as Ariakit from "@ariakit/react";
+import cx from "classnames";
 
 interface TextareaProps extends Ariakit.FocusableProps<"textarea"> {}
 
 export const Textarea = React.forwardRef<
-	React.ElementRef<typeof Ariakit.Focusable>,
+	React.ElementRef<"textarea">,
 	TextareaProps
 >((props, forwardedRef) => {
 	return (
-		// @ts-expect-error -- Ariakit.Focusable has some TS issues with textarea
-		<Ariakit.Focusable
-			render={<textarea />}
-			accessibleWhenDisabled
+		<Ariakit.Role.textarea
 			{...props}
+			className={cx("🥝-input", props.className)}
+			render={
+				<Ariakit.Focusable
+					accessibleWhenDisabled
+					render={props.render || <textarea />}
+				/>
+			}
 			ref={forwardedRef}
 		/>
 	);

@@ -9,7 +9,7 @@
 		--_kiwi-dropdown-menu-gap: 0.25rem; /* space(in progress)/x1 */
 		--_kiwi-dropdown-menu-height: 40px;
 
-		background: var(--_kiwi-dropdown-menu-color-background);
+		background-color: var(--_kiwi-dropdown-menu-color-background);
 		min-block-size: var(--_kiwi-dropdown-menu-height);
 
 		display: flex;

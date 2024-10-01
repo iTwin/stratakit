@@ -6,7 +6,7 @@ import * as React from "react";
 import cx from "classnames";
 import * as Ariakit from "@ariakit/react";
 
-export interface ButtonProps extends Ariakit.ButtonProps {
+interface ButtonProps extends Ariakit.ButtonProps {
 	/** @default "solid" */
 	variant?: "solid" | "ghost";
 }

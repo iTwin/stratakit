@@ -10,29 +10,20 @@ import { Button } from "./Button.js";
 
 // ----------------------------------------------------------------------------
 
-interface DropdownMenuProps extends Ariakit.MenuProps {
-	/** Element that opens a dropdown menu. Prefer using {@link DropdownMenu.Button} component. */
-	children: React.ReactElement;
-	/** Menu items rendered in this dropdown. Prefer using {@link DropdownMenu.Item} component. */
-	items: React.ReactElement;
-}
+const DropdownMenu = Ariakit.MenuProvider;
 
-const DropdownMenu = React.forwardRef<
+// ----------------------------------------------------------------------------
+
+const DropdownMenuContent = React.forwardRef<
 	React.ElementRef<typeof Ariakit.Menu>,
-	DropdownMenuProps
+	Ariakit.MenuProps
 >((props, forwardedRef) => {
-	const { children, items, ...rest } = props;
 	return (
-		<Ariakit.MenuProvider>
-			{children}
-			<Ariakit.Menu
-				{...rest}
-				className={cx("🥝-dropdown-menu", props.className)}
-				ref={forwardedRef}
-			>
-				{items}
-			</Ariakit.Menu>
-		</Ariakit.MenuProvider>
+		<Ariakit.Menu
+			{...props}
+			className={cx("🥝-dropdown-menu", props.className)}
+			ref={forwardedRef}
+		/>
 	);
 });
 
@@ -78,5 +69,6 @@ const DropdownMenuItem = React.forwardRef<
 export {
 	DropdownMenu as Root,
 	DropdownMenuButton as Button,
+	DropdownMenuContent as Content,
 	DropdownMenuItem as Item,
 };

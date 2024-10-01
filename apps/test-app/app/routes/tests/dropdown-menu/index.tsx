@@ -11,18 +11,15 @@ export default function Page() {
 	const visual = useSearchParams()[0].get("visual") === "true";
 	return (
 		<div style={{ minHeight: 150 }}>
-			<DropdownMenu.Root
-				items={
-					<>
-						<DropdownMenu.Item>Add</DropdownMenu.Item>
-						<DropdownMenu.Item>Edit</DropdownMenu.Item>
-						<DropdownMenu.Item disabled>Delete</DropdownMenu.Item>
-						<DropdownMenu.Item>Disable</DropdownMenu.Item>
-					</>
-				}
-				open={visual ? true : undefined}
-			>
+			<DropdownMenu.Root open={visual ? true : undefined}>
 				<DropdownMenu.Button>Actions</DropdownMenu.Button>
+
+				<DropdownMenu.Content>
+					<DropdownMenu.Item>Add</DropdownMenu.Item>
+					<DropdownMenu.Item>Edit</DropdownMenu.Item>
+					<DropdownMenu.Item disabled>Delete</DropdownMenu.Item>
+					<DropdownMenu.Item>Disable</DropdownMenu.Item>
+				</DropdownMenu.Content>
 			</DropdownMenu.Root>
 		</div>
 	);

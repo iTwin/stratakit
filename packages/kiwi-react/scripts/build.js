@@ -6,6 +6,7 @@ import * as path from "node:path";
 import * as esbuild from "esbuild";
 import * as lightningcss from "lightningcss";
 import fg from "fast-glob";
+import { primitivesTransform } from "internal/visitors.js";
 
 const entryPoints = await fg("src/**/*.{ts,tsx}", {
 	onlyFiles: true,
@@ -87,6 +88,7 @@ function inlineCssPlugin() {
 						firefox: (110 << 16) | (0 << 8), // firefox 110.0
 						safari: (16 << 16) | (4 << 8), // safari 16.4
 					},
+					visitor: lightningcss.composeVisitors([primitivesTransform()]),
 				});
 				const css = code.toString().trim();
 

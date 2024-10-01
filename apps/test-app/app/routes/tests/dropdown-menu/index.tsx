@@ -9,10 +9,11 @@ export const handle = { title: "DropdownMenu" };
 
 export default function Page() {
 	const visual = useSearchParams()[0].get("visual") === "true";
+	const disabled = useSearchParams()[0].get("disabled") === "true";
 	return (
 		<div style={{ minHeight: 150 }}>
 			<DropdownMenu.Root open={visual ? true : undefined}>
-				<DropdownMenu.Button>Actions</DropdownMenu.Button>
+				<DropdownMenu.Button disabled={disabled}>Actions</DropdownMenu.Button>
 
 				<DropdownMenu.Content>
 					<DropdownMenu.Item>Add</DropdownMenu.Item>

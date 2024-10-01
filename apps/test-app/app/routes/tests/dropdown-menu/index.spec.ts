@@ -59,6 +59,27 @@ test("default (keyboard)", async ({ page }) => {
 	await expect(button).toBeFocused();
 });
 
+test("disabled", async ({ page }) => {
+	await page.goto("/tests/dropdown-menu?disabled=true");
+
+	const button = page.getByRole("button", { name: "Actions" });
+	const add = page.getByRole("menuitem", { name: "Add" });
+
+	await expect(button).toBeDisabled();
+
+	await page.keyboard.press("Tab");
+	await expect(button).toBeFocused();
+
+	await page.keyboard.press("Enter");
+	await expect(add).not.toBeVisible();
+
+	await page.keyboard.press("ArrowDown");
+	await expect(add).not.toBeVisible();
+
+	await button.click({ force: true });
+	await expect(add).not.toBeVisible();
+});
+
 test("visual", async ({ page }) => {
 	await page.goto("/tests/dropdown-menu?visual=true");
 	await expect(page.locator("body")).toHaveScreenshot();

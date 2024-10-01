@@ -7,8 +7,8 @@ import { test, expect } from "@playwright/test";
 test("default", async ({ page }) => {
 	await page.goto("/tests/dropdown-menu");
 
-	const button = page.getByText("Actions");
-	const add = page.getByText("Add");
+	const button = page.getByRole("button", { name: "Actions" });
+	const add = page.getByRole("menuitem", { name: "Add" });
 
 	await button.click();
 	await expect(add).toBeVisible();
@@ -26,11 +26,11 @@ test("default", async ({ page }) => {
 test("default (keyboard)", async ({ page }) => {
 	await page.goto("/tests/dropdown-menu");
 
-	const button = page.getByText("Actions");
-	const add = page.getByText("Add");
-	const edit = page.getByText("Edit");
-	const del = page.getByText("Delete");
-	const disable = page.getByText("Disable");
+	const button = page.getByRole("button", { name: "Actions" });
+	const add = page.getByRole("menuitem", { name: "Add" });
+	const edit = page.getByRole("menuitem", { name: "Edit" });
+	const del = page.getByRole("menuitem", { name: "Delete" });
+	const disable = page.getByRole("menuitem", { name: "Disable" });
 
 	await expect(button).toBeVisible();
 

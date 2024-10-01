@@ -35,6 +35,8 @@ test("default (keyboard)", async ({ page }) => {
 	await expect(button).toBeVisible();
 
 	await page.keyboard.press("Tab");
+	await expect(button).toBeFocused();
+
 	await page.keyboard.press("Enter");
 	await expect(add).toBeFocused();
 

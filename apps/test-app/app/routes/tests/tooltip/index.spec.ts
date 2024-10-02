@@ -4,29 +4,46 @@
  *--------------------------------------------------------------------------------------------*/
 import { test, expect } from "@playwright/test";
 
-test("Keyboard Focus on related element should display the tooltip", async ({
-	page,
-}) => {
-	await page.goto("/tests/tooltip");
+test.describe("default", () => {
+	test("Mouse in / Hover should display the tooltip", async ({
+		page,
+		browserName,
+	}) => {
+		test.skip(
+			browserName === "webkit",
+			"Tooltip does not appear on hover in Webkit inside Docker :(",
+		);
 
-	const button = page.getByRole("button");
-	const tooltip = page.getByRole("tooltip");
+		await page.goto("/tests/tooltip");
 
-	await expect(button).toBeVisible();
+		const button = page.getByRole("button");
+		const tooltip = page.getByRole("tooltip");
+		await expect(button).toBeVisible();
 
-	await page.keyboard.press("Tab");
-	await expect(button).toBeFocused();
+		await button.hover();
+		await expect(tooltip).toBeVisible();
+	});
 
-	await expect(tooltip).toBeVisible();
+	test("Keyboard focus should display the tooltip", async ({ page }) => {
+		await page.goto("/tests/tooltip");
+
+		const button = page.getByRole("button");
+		const tooltip = page.getByRole("tooltip");
+		await expect(button).toBeVisible();
+
+		await page.keyboard.press("Tab");
+		await expect(button).toBeFocused();
+		await expect(tooltip).toBeVisible();
+	});
 });
 
-test.describe("Tooltip hover behaviour", () => {
+test.describe("hover", () => {
 	test.skip(
 		({ browserName }) => browserName === "webkit",
 		"Tooltip does not appear on hover in Webkit inside Docker :(",
 	);
 
-	test("Mouse In / Hover - should display the tooltip", async ({ page }) => {
+	test.beforeEach(async ({ page }) => {
 		await page.goto("/tests/tooltip");
 
 		const button = page.getByRole("button");
@@ -36,15 +53,8 @@ test.describe("Tooltip hover behaviour", () => {
 		await expect(tooltip).toBeVisible();
 	});
 
-	test("Mouse Out / Normal - should hide the tooltip", async ({ page }) => {
-		await page.goto("/tests/tooltip");
-
-		const button = page.getByRole("button");
+	test("Mouse Out / Unhover - should hide the tooltip", async ({ page }) => {
 		const tooltip = page.getByRole("tooltip");
-
-		await button.hover();
-		await expect(tooltip).toBeVisible();
-
 		await page.mouse.move(0, 0);
 		await expect(tooltip).toBeHidden();
 	});
@@ -52,16 +62,7 @@ test.describe("Tooltip hover behaviour", () => {
 	test("Tooltip should stay displayed during hover (should not hide)", async ({
 		page,
 	}) => {
-		await page.goto("/tests/tooltip");
-
-		const button = page.getByRole("button");
 		const tooltip = page.getByRole("tooltip");
-
-		await button.hover();
-
-		await expect(tooltip).toBeVisible();
-		await tooltip.hover();
-
 		await page.waitForTimeout(3000);
 		await expect(tooltip).toBeVisible();
 	});
@@ -73,10 +74,9 @@ test.describe("dismissal", () => {
 
 		const button = page.getByRole("button");
 		const tooltip = page.getByRole("tooltip");
-
 		await expect(button).toBeVisible();
-		await button.focus();
 
+		await button.focus();
 		await expect(tooltip).toBeVisible();
 	});
 
@@ -86,9 +86,7 @@ test.describe("dismissal", () => {
 		await expect(tooltip).toBeHidden();
 	});
 
-	test("Keyboard loss of Focus on the related element should hide the tooltip", async ({
-		page,
-	}) => {
+	test("Keyboard loss of focus should hide the tooltip", async ({ page }) => {
 		const tooltip = page.getByRole("tooltip");
 		await page.keyboard.press("Tab");
 		await expect(tooltip).toBeHidden();
@@ -101,10 +99,8 @@ test.describe("dismissal", () => {
 	});
 });
 
-test("Is aria-describedby is set correctly ?", async ({ page }) => {
+test("Trigger element should be described by the tooltip", async ({ page }) => {
 	await page.goto("/tests/tooltip");
-
-	const button = await page.getByRole("button");
-
+	const button = page.getByRole("button");
 	await expect(button).toHaveAccessibleDescription("This is the tooltip");
 });

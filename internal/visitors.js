@@ -51,14 +51,14 @@ export function primitivesTransform() {
  * Input:
  * ```css
  * :root {
- *   ​​\@​apply --theme-dark;
+ *   ​​\@​apply --theme("dark");
  * }
  * ```
  *
  * Output:
  * ```css
  * :root {
- *   --kiwi-color-bg-neutral-base: --primitive("gray.900");
+ *   --kiwi-color-bg-neutral-base: --primitive("gray.800");
  *   --kiwi-color-text-neutral-primary: --primitive("gray.5");
  *   …
  * }
@@ -70,42 +70,51 @@ export function themeTransform() {
 	return {
 		Rule: {
 			unknown({ name, prelude, loc }) {
-				if (name !== "apply") return;
+				if (
+					name !== "apply" ||
+					prelude[0]?.type !== "function" ||
+					prelude[0].value.name !== "--theme"
+				) {
+					return;
+				}
 
-				if (prelude[0]?.value === "--theme-dark") {
-					const tokens = parseTokens(darkTheme);
-					const declarations = [];
+				const theme = prelude[0].value.arguments?.[0]?.value?.value;
+				if (theme !== "dark") {
+					throw new Error(`Unknown theme: ${theme}`);
+				}
 
-					for (let [name, { $value }] of tokens.entries()) {
-						if (typeof $value === "string" && $value.startsWith("{color")) {
-							// Convert {color.gray.200} into --primitive("gray.200") for further processing.
-							$value = cssFunction(
-								"--primitive",
-								$value.replace("{color.", "").replace("}", ""),
-							);
-						} else if (typeof $value === "string") {
-							// Pass unknown values through the `_raw` function for inlining.
-							$value = cssFunction("_raw", $value);
-						}
+				const tokens = parseTokens(darkTheme);
+				const declarations = [];
 
-						declarations.push(
-							cssCustomProperty(name, $value, { prefix: "kiwi-color" }),
+				for (let [name, { $value }] of tokens.entries()) {
+					if (typeof $value === "string" && $value.startsWith("{color")) {
+						// Convert {color.gray.200} into --primitive("gray.200") for further processing.
+						$value = cssFunction(
+							"--primitive",
+							$value.replace("{color.", "").replace("}", ""),
 						);
+					} else if (typeof $value === "string") {
+						// Pass unknown values through the `_raw` function for inlining.
+						$value = cssFunction("_raw", $value);
 					}
 
-					// Style rule that can be nested under any selector.
-					return [
-						{
-							type: "style",
-							value: {
-								declarations: { declarations },
-								selectors: [[{ type: "nesting" }]],
-								rules: [],
-								loc,
-							},
-						},
-					];
+					declarations.push(
+						cssCustomProperty(name, $value, { prefix: "kiwi-color" }),
+					);
 				}
+
+				// Style rule that can be nested under any selector.
+				return [
+					{
+						type: "style",
+						value: {
+							declarations: { declarations },
+							selectors: [[{ type: "nesting" }]],
+							rules: [],
+							loc,
+						},
+					},
+				];
 			},
 		},
 		Function: {

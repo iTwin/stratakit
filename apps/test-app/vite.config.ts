@@ -34,7 +34,7 @@ export default defineConfig({
 			ssr: false, // SPA mode for github-pages
 		}),
 		tsconfigPaths(),
-		esbuildBundleCss(),
+		bundleCssPlugin(),
 	],
 	build: {
 		assetsInlineLimit: (filePath) => {
@@ -50,12 +50,12 @@ export default defineConfig({
 	},
 });
 
-/** Bundles "*.css?inline" files using lightningcss. Only used during dev. */
-function esbuildBundleCss() {
+/** Vite plugin that bundles "*.css?inline" files using lightningcss. Only used during dev. */
+function bundleCssPlugin() {
 	let isDev = false;
 
 	return <Plugin>{
-		name: "esbuild-bundle-css",
+		name: "bundle-css",
 
 		configResolved({ command }) {
 			isDev = command === "serve";

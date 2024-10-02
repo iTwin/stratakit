@@ -51,8 +51,17 @@ test("Keyboard loss of Focus on the related element should hide the tooltip", as
 
 	await expect(tooltip).toBeVisible();
 
-	await page.mouse.click(0, 0); // Ensures loss of focus.
+	// Tab away
+	await page.keyboard.press("Tab");
+	await expect(tooltip).toBeHidden();
 
+	// Tab back
+	await page.keyboard.press("Shift+Tab");
+	await expect(button).toBeFocused();
+	await expect(tooltip).toBeVisible();
+
+	// Outside click
+	await page.locator("body").click();
 	await expect(tooltip).toBeHidden();
 });
 

@@ -68,11 +68,6 @@ test.describe("Tooltip hover behaviour", () => {
 	});
 
 	test("Mouse Out / Normal - should hide the tooltip", async ({ page }) => {
-		test.skip(
-			({ browserName }) => browserName === "webkit",
-			"Tooltip does not appear on hover in Webkit inside Docker :(",
-		);
-
 		await page.goto("/tests/tooltip");
 
 		const button = page.getByRole("button");

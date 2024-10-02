@@ -27,7 +27,10 @@ test("Keyboard Focus on related element should display the tooltip", async ({
 	const button = page.getByRole("button");
 	const tooltip = page.getByRole("tooltip");
 
-	await button.focus();
+	await expect(button).toBeVisible();
+
+	await page.keyboard.press("Tab");
+	await expect(button).toBeFocused();
 
 	await expect(tooltip).toBeVisible();
 });
@@ -41,8 +44,10 @@ test("Keyboard loss of Focus on the related element should hide the tooltip", as
 	const tooltip = page.getByRole("tooltip");
 
 	await expect(tooltip).toBeHidden();
+	await expect(button).toBeVisible();
 
-	await button.focus();
+	await page.keyboard.press("Tab");
+	await expect(button).toBeFocused();
 
 	await expect(tooltip).toBeVisible();
 

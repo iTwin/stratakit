@@ -50,14 +50,16 @@ export function primitivesTransform() {
  *
  * Input:
  * ```css
- * :root { \@apply --theme-dark; }
+ * :root {
+ *   ​​\@​apply --theme-dark;
+ * }
  * ```
  *
  * Output:
  * ```css
  * :root {
- *   --color-background: #1a1a1a;
- *   --color-text: #f0f0f0;
+ *   --kiwi-color-bg-neutral-base: --primitive("gray.900");
+ *   --kiwi-color-text-neutral-primary: --primitive("gray.5");
  *   …
  * }
  * ```
@@ -67,57 +69,56 @@ export function primitivesTransform() {
 export function themeTransform() {
 	return {
 		Rule: {
-			custom: {
-				apply({ prelude, loc }) {
-					if (prelude.value === "--theme-dark") {
-						const tokens = parseTokens(darkTheme);
-						const declarations = [];
+			unknown({ name, prelude, loc }) {
+				if (name !== "apply") return;
 
-						for (let [name, { $value: value }] of tokens.entries()) {
-							if (typeof value === "string" && value.startsWith("{color")) {
-								// Convert {color.gray.200} into --primitive("gray.200") for further processing.
-								value = cssFunction(
-									"--primitive",
-									value.replace("{color.", "").replace("}", ""),
-								);
-							} else if (typeof value === "string") {
-								// Pass unknown values through the `_raw` function for inlining.
-								value = cssFunction("_raw", value);
-							}
+				if (prelude[0]?.value === "--theme-dark") {
+					const tokens = parseTokens(darkTheme);
+					const declarations = [];
 
-							declarations.push(
-								cssCustomProperty(name, value, { prefix: "kiwi-color" }),
+					for (let [name, { $value }] of tokens.entries()) {
+						if (typeof $value === "string" && $value.startsWith("{color")) {
+							// Convert {color.gray.200} into --primitive("gray.200") for further processing.
+							$value = cssFunction(
+								"--primitive",
+								$value.replace("{color.", "").replace("}", ""),
 							);
+						} else if (typeof $value === "string") {
+							// Pass unknown values through the `_raw` function for inlining.
+							$value = cssFunction("_raw", $value);
 						}
 
-						// Style rule that can be nested under any selector.
-						return [
-							{
-								type: "style",
-								value: {
-									declarations: { declarations },
-									selectors: [[{ type: "nesting" }]],
-									rules: [],
-									loc,
-								},
-							},
-						];
+						declarations.push(
+							cssCustomProperty(name, $value, { prefix: "kiwi-color" }),
+						);
 					}
-				},
+
+					// Style rule that can be nested under any selector.
+					return [
+						{
+							type: "style",
+							value: {
+								declarations: { declarations },
+								selectors: [[{ type: "nesting" }]],
+								rules: [],
+								loc,
+							},
+						},
+					];
+				}
 			},
 		},
 		Function: {
 			_raw(fn) {
 				if (fn.arguments.length === 1 && fn.arguments[0].type === "token") {
+					// Helper function that just returns the raw value of a token.
+					// This is needed because LightningCSS does not otherwise support raw values.
 					return { raw: fn.arguments[0].value.value };
 				}
 			},
 		},
 	};
 }
-themeTransform.customAtRules = {
-	apply: { prelude: "<custom-ident>" },
-};
 
 /**
  * Parses a deeply-nested JS object into a flattened Map of tokens with dash-separated names.

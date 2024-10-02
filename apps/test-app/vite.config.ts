@@ -50,7 +50,7 @@ export default defineConfig({
 	},
 });
 
-/** Bundles "*.css?inline" files using esbuild. Only used during dev. */
+/** Bundles "*.css?inline" files using lightningcss. Only used during dev. */
 function esbuildBundleCss() {
 	let isDev = false;
 
@@ -77,9 +77,6 @@ function esbuildBundleCss() {
 					primitivesTransform(),
 					themeTransform(),
 				]),
-				customAtRules: {
-					...themeTransform.customAtRules,
-				},
 			});
 
 			return { code: code.toString().trim() };

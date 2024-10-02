@@ -92,9 +92,6 @@ function inlineCssPlugin() {
 						primitivesTransform(),
 						themeTransform(),
 					]),
-					customAtRules: {
-						...themeTransform.customAtRules,
-					},
 				});
 				const css = code.toString().trim();
 

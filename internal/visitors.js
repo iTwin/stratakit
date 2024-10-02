@@ -69,6 +69,7 @@ export function primitivesTransform() {
 export function themeTransform() {
 	return {
 		Rule: {
+			/** Processes `@apply` rules that match `--theme()`. */
 			unknown({ name, prelude, loc }) {
 				if (
 					name !== "apply" ||
@@ -118,10 +119,12 @@ export function themeTransform() {
 			},
 		},
 		Function: {
+			/**
+			 * "Private" helper function that just returns the unmodified (passthrough) value of the argument.
+			 * This is needed because LightningCSS does not otherwise support raw values.
+			 */
 			_raw(fn) {
 				if (fn.arguments.length === 1 && fn.arguments[0].type === "token") {
-					// Helper function that just returns the raw value of a token.
-					// This is needed because LightningCSS does not otherwise support raw values.
 					return { raw: fn.arguments[0].value.value };
 				}
 			},

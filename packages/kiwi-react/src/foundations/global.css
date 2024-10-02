@@ -3,7 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 html {
-	background-color: #25282c; /* bg/surface/primary */
+	background-color: --primitive("gray.900") /* bg/surface/primary */;
 }
 
 body {

@@ -3,7 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 import { readFileSync, writeFileSync } from "node:fs";
-import { sync } from "fast-glob";
+import fg from "fast-glob";
 
 let pattern: string | string[] = process.argv
 	.slice(2)
@@ -14,7 +14,7 @@ if (pattern.length === 0) {
 	pattern = "**/*.{ts,tsx,js,jsx,css,html}";
 }
 
-const filePaths = sync(pattern, {
+const filePaths = fg.sync(pattern, {
 	dot: true,
 	ignore: ["**/node_modules/**/*", "**/build/**/*", "**/dist/**/*"],
 });

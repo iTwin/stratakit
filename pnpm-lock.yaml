@@ -90,7 +90,11 @@ importers:
         specifier: ^5.0.1
         version: 5.0.1(typescript@5.5.4)(vite@5.4.7(@types/node@22.0.2)(lightningcss@1.27.0))
 
-  internal: {}
+  internal:
+    devDependencies:
+      lightningcss:
+        specifier: "*"
+        version: 1.27.0
 
   packages/kiwi-icons: {}
 

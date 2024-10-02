@@ -9,7 +9,7 @@ The end-to-end tests are written in [Playwright](https://playwright.dev/) and ru
 Use the following command to to run tests:
 
 ```sh
-pnpm run test
+pnpm test
 ```
 
 Pass additional arguments to playwright to run specific tests or update the snapshots:

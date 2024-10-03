@@ -65,7 +65,12 @@ test.describe("hover", () => {
 		page,
 	}) => {
 		const tooltip = page.getByRole("tooltip");
-		await page.waitForTimeout(3000);
+
+		await page.waitForTimeout(2000);
+		await expect(tooltip).toBeVisible();
+		
+		await tooltip.hover();
+		await page.waitForTimeout(2000);
 		await expect(tooltip).toBeVisible();
 	});
 });

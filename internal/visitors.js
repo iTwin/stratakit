@@ -38,3 +38,53 @@ export function primitivesTransform() {
 		},
 	};
 }
+
+/**
+ * LightningCSS visitor that substitutes certain variables with their values.
+ * To indicate a static variable, it must be prefixed with 💥.
+ *
+ * Input:
+ * ```css
+ * .foo {
+ *   --💥color: hotpink;
+ *   color: var(--💥color);
+ * }
+ * ```
+ *
+ * Output:
+ * ```css
+ * .foo {
+ *   color: hotpink;
+ * }
+ * ```
+ *
+ * @returns {import("lightningcss").Visitor}
+ */
+export function staticVariablesTransform() {
+	const savedValues = new WeakMap();
+	let lastNonNestedSelector;
+
+	return {
+		Rule(rule) {
+			if (rule.type !== "style") return;
+			if (rule.value.selectors.some((s) => s?.[0]?.type === "nesting")) return;
+			lastNonNestedSelector = rule.value.selectors;
+		},
+		Declaration({ property, value: { name, value } }) {
+			if (property !== "custom") return;
+			if (!name.startsWith("--💥")) return;
+
+			if (!savedValues.has(lastNonNestedSelector)) {
+				savedValues.set(lastNonNestedSelector, {});
+			}
+			savedValues.get(lastNonNestedSelector)[name] = value;
+
+			return []; // Remove the declaration
+		},
+		VariableExit({ name }) {
+			if (name.ident.startsWith("--💥")) {
+				return savedValues.get(lastNonNestedSelector)?.[name.ident];
+			}
+		},
+	};
+}

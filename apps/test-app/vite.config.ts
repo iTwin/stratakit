@@ -7,7 +7,10 @@ import { defineConfig, type Plugin } from "vite";
 import tsconfigPaths from "vite-tsconfig-paths";
 import * as lightningcss from "lightningcss";
 import { createRoutesFromFolders } from "@remix-run/v1-route-convention";
-import { primitivesTransform } from "internal/visitors.js";
+import {
+	primitivesTransform,
+	staticVariablesTransform,
+} from "internal/visitors.js";
 
 const basename = process.env.BASE_FOLDER
 	? `/${process.env.BASE_FOLDER}/`
@@ -73,7 +76,10 @@ function esbuildBundleCss() {
 					firefox: (110 << 16) | (0 << 8), // firefox 110.0
 					safari: (16 << 16) | (4 << 8), // safari 16.4
 				},
-				visitor: lightningcss.composeVisitors([primitivesTransform()]),
+				visitor: lightningcss.composeVisitors([
+					primitivesTransform(),
+					staticVariablesTransform(),
+				]),
 			});
 
 			return { code: code.toString().trim() };

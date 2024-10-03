@@ -5,6 +5,16 @@
 import { test, expect } from "@playwright/test";
 
 test.describe("default", () => {
+	test.beforeEach(async ({ page }) => {
+		await page.goto("/tests/tooltip");
+
+		const button = page.getByRole("button");
+		const tooltip = page.getByRole("tooltip");
+		
+		await expect(button).toBeVisible();
+		await expect(tooltip).toBeHidden();
+	});
+
 	test("Mouse in / Hover should display the tooltip", async ({
 		page,
 		browserName,
@@ -14,22 +24,14 @@ test.describe("default", () => {
 			"Tooltip does not appear on hover in Webkit inside Docker :(",
 		);
 
-		await page.goto("/tests/tooltip");
-
 		const button = page.getByRole("button");
-		const tooltip = page.getByRole("tooltip");
-		await expect(button).toBeVisible();
 
 		await button.hover();
 		await expect(tooltip).toBeVisible();
 	});
 
 	test("Keyboard focus should display the tooltip", async ({ page }) => {
-		await page.goto("/tests/tooltip");
-
 		const button = page.getByRole("button");
-		const tooltip = page.getByRole("tooltip");
-		await expect(button).toBeVisible();
 
 		await page.keyboard.press("Tab");
 		await expect(button).toBeFocused();

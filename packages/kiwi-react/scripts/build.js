@@ -8,6 +8,7 @@ import * as lightningcss from "lightningcss";
 import fg from "fast-glob";
 import {
 	primitivesTransform,
+	themeTransform,
 	staticVariablesTransform,
 } from "internal/visitors.js";
 
@@ -93,6 +94,7 @@ function inlineCssPlugin() {
 					},
 					visitor: lightningcss.composeVisitors([
 						primitivesTransform(),
+						themeTransform(),
 						staticVariablesTransform(),
 					]),
 				});

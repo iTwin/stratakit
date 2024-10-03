@@ -13,7 +13,7 @@ import darkTheme from "./theme-dark.json" with { type: "json" };
  *
  * Input:
  * ```css
- * :root { --color: --primitive("gray.800"); }
+ * :root { --color: --primitive("color.gray.800"); }
  * ```
  *
  * Output:
@@ -32,7 +32,7 @@ export function primitivesTransform() {
 					fn.arguments[0].type === "token" &&
 					fn.arguments[0].value.type === "string"
 				) {
-					const [group, token] = fn.arguments[0].value.value.split(".");
+					const [, group, token] = fn.arguments[0].value.value.split(".");
 					return {
 						raw: primitives[group][token],
 					};
@@ -58,8 +58,8 @@ export function primitivesTransform() {
  * Output:
  * ```css
  * :root {
- *   --kiwi-color-bg-neutral-base: --primitive("gray.800");
- *   --kiwi-color-text-neutral-primary: --primitive("gray.5");
+ *   --kiwi-color-bg-neutral-base: --primitive("color.gray.800");
+ *   --kiwi-color-text-neutral-primary: --primitive("color.gray.5");
  *   …
  * }
  * ```
@@ -88,14 +88,27 @@ export function themeTransform() {
 				const declarations = [];
 
 				for (let [name, { $value }] of tokens.entries()) {
-					if (typeof $value === "string" && $value.startsWith("{color")) {
-						// Convert {color.gray.200} into --primitive("gray.200") for further processing.
+					// Tokens that should be skipped are marked using "🫥" (by convention).
+					if (name.includes("🫥")) continue;
+
+					// Values wrapped in {…} are references to other tokens.
+					// The "p-" prefix indicates a primitive token (by convention).
+					if (typeof $value === "string" && $value.startsWith("{p-")) {
+						// Convert {p.color.gray.200} into --primitive("color.gray.200") for further processing.
 						$value = cssFunction(
 							"--primitive",
-							$value.replace("{color.", "").replace("}", ""),
+							$value.replace("{p-", "").replace("}", ""),
 						);
-					} else if (typeof $value === "string") {
-						// Pass unknown values through the `_raw` function for inlining.
+					}
+					// Token names ending with "%" indicate percentage values (by convention).
+					else if (name.endsWith("%")) {
+						$value = {
+							type: "token",
+							value: { type: "percentage", value: $value / 100 },
+						};
+					}
+					// Pass unknown values through the `_raw` function for inlining.
+					else if (typeof $value === "string") {
 						$value = cssFunction("_raw", $value);
 					}
 

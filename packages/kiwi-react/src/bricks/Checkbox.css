@@ -127,7 +127,7 @@
 			var(--__kiwi-checkbox-aria-state--indeterminate, var(--_kiwi-checkbox-indeterminate-svg));
 
 		@media (forced-colors: active) {
-			border: 1px solid currentColor;
+			border: 1px solid CanvasText;
 		}
 
 		@media (any-hover: hover) {

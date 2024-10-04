@@ -19,6 +19,7 @@ const components = [
 	"Switch",
 	"Tabs",
 	"Textarea",
+	"Tooltip",
 ];
 
 export const meta: MetaFunction = () => {

@@ -45,6 +45,9 @@ test("default (keyboard)", async ({ page }) => {
 
 	await expect(del).toBeDisabled();
 	await page.keyboard.press("ArrowDown");
+	await expect(del).toBeFocused();
+
+	await page.keyboard.press("ArrowDown");
 	await expect(disable).toBeFocused();
 
 	await page.keyboard.press("Enter");

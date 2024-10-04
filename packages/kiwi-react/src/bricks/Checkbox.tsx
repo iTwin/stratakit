@@ -3,6 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 import * as React from "react";
+import cx from "classnames";
 import * as Ariakit from "@ariakit/react";
 
 interface CheckboxProps extends Omit<Ariakit.CheckboxProps, "store"> {}
@@ -12,6 +13,11 @@ export const Checkbox = React.forwardRef<
 	CheckboxProps
 >((props, forwardedRef) => {
 	return (
-		<Ariakit.Checkbox accessibleWhenDisabled {...props} ref={forwardedRef} />
+		<Ariakit.Checkbox
+			accessibleWhenDisabled
+			{...props}
+			className={cx("🥝-checkbox", props.className)}
+			ref={forwardedRef}
+		/>
 	);
 });

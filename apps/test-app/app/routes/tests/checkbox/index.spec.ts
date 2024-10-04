@@ -60,3 +60,37 @@ test("disabled", async ({ page }) => {
 	await page.keyboard.press("Space");
 	await expect(checkbox).not.toBeChecked();
 });
+
+test.describe("visual", () => {
+	test("unchecked", async ({ page }) => {
+		await page.goto("/tests/checkbox?visual=true");
+		await expect(page.locator("body")).toHaveScreenshot();
+	});
+
+	test("checked", async ({ page }) => {
+		await page.goto("/tests/checkbox?visual=true&checked=true");
+		await expect(page.locator("body")).toHaveScreenshot();
+	});
+
+	test("indeterminate/mixed", async ({ page }) => {
+		await page.goto("/tests/checkbox?visual=true&indeterminate=true");
+		await expect(page.locator("body")).toHaveScreenshot();
+	});
+
+	test("disabled", async ({ page }) => {
+		await page.goto("/tests/checkbox?visual=true&disabled=true");
+		await expect(page.locator("body")).toHaveScreenshot();
+	});
+
+	test("disabled & checked", async ({ page }) => {
+		await page.goto("/tests/checkbox?visual=true&disabled=true&checked=true");
+		await expect(page.locator("body")).toHaveScreenshot();
+	});
+
+	test("disabled & indeterminate/mixed", async ({ page }) => {
+		await page.goto(
+			"/tests/checkbox?visual=true&disabled=true&indeterminate=true",
+		);
+		await expect(page.locator("body")).toHaveScreenshot();
+	});
+});

@@ -32,6 +32,7 @@ const DropdownMenuContent = React.forwardRef<
 >((props, forwardedRef) => {
 	return (
 		<Ariakit.Menu
+		 portal
 			{...props}
 			className={cx("🥝-dropdown-menu", props.className)}
 			ref={forwardedRef}

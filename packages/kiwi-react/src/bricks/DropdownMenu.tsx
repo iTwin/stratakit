@@ -13,14 +13,14 @@ import { Button } from "./Button.js";
 /** Dropdown menu component displays a list of actions or commands.
  * @example
  * <DropdownMenu.Root>
- *			<DropdownMenu.Button>Actions</DropdownMenu.Button>
+ *		<DropdownMenu.Button>Actions</DropdownMenu.Button>
  *
- *			<DropdownMenu.Content>
- *				<DropdownMenu.Item>Add</DropdownMenu.Item>
- *				<DropdownMenu.Item>Edit</DropdownMenu.Item>
- *				<DropdownMenu.Item>Delete</DropdownMenu.Item>
+ *		<DropdownMenu.Content>
+ *			<DropdownMenu.Item>Add</DropdownMenu.Item>
+ *			<DropdownMenu.Item>Edit</DropdownMenu.Item>
+ *			<DropdownMenu.Item>Delete</DropdownMenu.Item>
  *		</DropdownMenu.Content>
- *	</DropdownMenu.Root>
+ * </DropdownMenu.Root>
  */
 const DropdownMenu = Ariakit.MenuProvider;
 

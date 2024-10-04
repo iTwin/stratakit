@@ -16,7 +16,6 @@ export const Button = React.forwardRef<
 	ButtonProps
 >((props, forwardedRef) => {
 	const { variant = "solid", ...rest } = props;
-
 	return (
 		<Ariakit.Button
 			accessibleWhenDisabled

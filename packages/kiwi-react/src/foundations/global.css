@@ -13,6 +13,7 @@ body {
 }
 
 *:focus-visible {
-	outline: 2px solid var(--_kiwi-focus-color, #0bfac2 /* border/accent/strong */);
+	--💥focus-color: #0bfac2 /* border/accent/strong */;
+	outline: 2px solid var(--💥focus-color);
 	outline-offset: 1px;
 }

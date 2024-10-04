@@ -7,7 +7,11 @@ import { defineConfig, type Plugin } from "vite";
 import tsconfigPaths from "vite-tsconfig-paths";
 import * as lightningcss from "lightningcss";
 import { createRoutesFromFolders } from "@remix-run/v1-route-convention";
-import { primitivesTransform, themeTransform } from "internal/visitors.js";
+import {
+	primitivesTransform,
+	themeTransform,
+	staticVariablesTransform,
+} from "internal/visitors.js";
 
 const basename = process.env.BASE_FOLDER
 	? `/${process.env.BASE_FOLDER}/`
@@ -76,6 +80,7 @@ function bundleCssPlugin() {
 				visitor: lightningcss.composeVisitors([
 					primitivesTransform(),
 					themeTransform(),
+					staticVariablesTransform(),
 				]),
 			});
 

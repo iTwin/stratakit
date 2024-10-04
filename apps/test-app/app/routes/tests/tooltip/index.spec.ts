@@ -2,7 +2,7 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-import { type Locator, test, expect } from "@playwright/test";
+import { test, expect } from "@playwright/test";
 
 test.describe("default", () => {
 	test.beforeEach(async ({ page }) => {

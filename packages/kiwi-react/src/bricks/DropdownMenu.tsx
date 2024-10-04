@@ -49,12 +49,7 @@ const DropdownMenuButton = React.forwardRef<
 	return (
 		<Ariakit.MenuButton
 			accessibleWhenDisabled={accessibleWhenDisabled}
-			render={
-				<Button
-					accessibleWhenDisabled={accessibleWhenDisabled}
-					disabled={props.disabled}
-				/>
-			}
+			render={<Button accessibleWhenDisabled={accessibleWhenDisabled} />}
 			{...rest}
 			ref={forwardedRef as Ariakit.MenuButtonProps["ref"]}
 		/>

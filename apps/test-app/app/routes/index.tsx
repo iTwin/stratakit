@@ -12,6 +12,7 @@ const components = [
 	"Button",
 	"Checkbox",
 	"Divider",
+	"DropdownMenu",
 	"Icon",
 	"Input",
 	"List",
@@ -38,7 +39,7 @@ export default function Index() {
 			<ul className={styles.list}>
 				{components.map((component) => (
 					<li key={component}>
-						<Anchor render={<Link to={`/tests/${component.toLowerCase()}`} />}>
+						<Anchor render={<Link to={`/tests/${toKebabCase(component)}`} />}>
 							{component}
 						</Anchor>
 					</li>
@@ -46,4 +47,8 @@ export default function Index() {
 			</ul>
 		</main>
 	);
+}
+
+function toKebabCase(str: string) {
+	return str.replace(/([a-z])([A-Z])/g, "$1-$2").toLowerCase();
 }

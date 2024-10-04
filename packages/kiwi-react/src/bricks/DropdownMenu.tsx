@@ -64,6 +64,7 @@ const DropdownMenuItem = React.forwardRef<
 >((props, forwardedRef) => {
 	return (
 		<Ariakit.MenuItem
+			accessibleWhenDisabled
 			{...props}
 			render={<ListItem render={props.render} />}
 			ref={forwardedRef}

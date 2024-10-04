@@ -55,6 +55,7 @@
 
 		&:where([disabled], :disabled, [aria-disabled="true"]) {
 			--__kiwi-list-item-state: var(--__kiwi-list-item-state--disabled);
+			cursor: not-allowed;
 		}
 	}
 }

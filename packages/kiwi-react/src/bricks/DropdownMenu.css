@@ -14,7 +14,7 @@
 		flex-direction: column;
 		gap: var(--_kiwi-dropdown-menu-gap);
 
-		border-radius: 5px;
+		border-radius: 8px /* radius(in progress)/medium */;
 		padding-block: var(--_kiwi-dropdown-menu-padding);
 		box-shadow:
 			0px 24px 24px -12px #00000029,

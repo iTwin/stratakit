@@ -10,6 +10,12 @@ import { Button } from "./Button.js";
 
 // ----------------------------------------------------------------------------
 
+interface DropdownMenuProps
+	extends Pick<
+		Ariakit.MenuProviderProps,
+		"children" | "placement" | "open" | "setOpen" | "defaultOpen"
+	> {}
+
 /** Dropdown menu component displays a list of actions or commands.
  * @example
  * <DropdownMenu.Root>
@@ -22,7 +28,19 @@ import { Button } from "./Button.js";
  *		</DropdownMenu.Content>
  * </DropdownMenu.Root>
  */
-const DropdownMenu = Ariakit.MenuProvider;
+function DropdownMenu(props: DropdownMenuProps) {
+	const { children, placement, open, setOpen, defaultOpen } = props;
+	return (
+		<Ariakit.MenuProvider
+			placement={placement}
+			open={open}
+			setOpen={setOpen}
+			defaultOpen={defaultOpen}
+		>
+			{children}
+		</Ariakit.MenuProvider>
+	);
+}
 
 // ----------------------------------------------------------------------------
 
@@ -32,7 +50,7 @@ const DropdownMenuContent = React.forwardRef<
 >((props, forwardedRef) => {
 	return (
 		<Ariakit.Menu
-		 portal
+			portal
 			{...props}
 			className={cx("🥝-dropdown-menu", props.className)}
 			ref={forwardedRef}

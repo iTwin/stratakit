@@ -14,6 +14,7 @@
 		--_kiwi-list-item-color-pressed: #0bfac2; /* text/accent/strong */
 		--_kiwi-list-item-color-disabled: #585f68; /* text/neutral/disabled */
 
+		cursor: pointer;
 		line-height: 1;
 
 		display: flex;

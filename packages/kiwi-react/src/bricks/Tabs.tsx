@@ -2,8 +2,9 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-import * as Ariakit from "@ariakit/react";
 import * as React from "react";
+import cx from "classnames";
+import * as Ariakit from "@ariakit/react";
 
 // ----------------------------------------------------------------------------
 
@@ -45,7 +46,13 @@ const TabList = React.forwardRef<
 	React.ElementRef<typeof Ariakit.TabList>,
 	TabListProps
 >((props, forwardedRef) => {
-	return <Ariakit.TabList {...props} ref={forwardedRef} />;
+	return (
+		<Ariakit.TabList
+			className={cx("🥝-tab-list", props.className)}
+			{...props}
+			ref={forwardedRef}
+		/>
+	);
 });
 
 // ----------------------------------------------------------------------------
@@ -56,7 +63,14 @@ interface TabProps
 
 const Tab = React.forwardRef<React.ElementRef<typeof Ariakit.Tab>, TabProps>(
 	(props, forwardedRef) => {
-		return <Ariakit.Tab accessibleWhenDisabled {...props} ref={forwardedRef} />;
+		return (
+			<Ariakit.Tab
+				accessibleWhenDisabled
+				className={cx("🥝-tab", props.className)}
+				{...props}
+				ref={forwardedRef}
+			/>
+		);
 	},
 );
 
@@ -70,7 +84,13 @@ const TabPanel = React.forwardRef<
 	React.ElementRef<typeof Ariakit.TabPanel>,
 	TabPanelProps
 >((props, forwardedRef) => {
-	return <Ariakit.TabPanel {...props} ref={forwardedRef} />;
+	return (
+		<Ariakit.TabPanel
+			className={cx("🥝-tab-panel", props.className)}
+			{...props}
+			ref={forwardedRef}
+		/>
+	);
 });
 
 // ----------------------------------------------------------------------------

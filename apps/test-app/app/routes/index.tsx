@@ -15,6 +15,7 @@ const components = [
 	"DropdownMenu",
 	"Icon",
 	"Input",
+	"LeftPanel",
 	"List",
 	"Radio",
 	"Switch",

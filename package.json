@@ -19,13 +19,18 @@
 		"@biomejs/biome": "1.9.1",
 		"@types/node": "*",
 		"fast-glob": "^3.3.2",
+		"internal": "workspace:*",
 		"lefthook": "^1.7.11",
 		"prettier": "3.3.3",
-		"internal": "workspace:*",
 		"tsx": "^4.16.5"
 	},
 	"engines": {
 		"node": ">=20.16.0"
 	},
-	"packageManager": "pnpm@9.6.0"
+	"packageManager": "pnpm@9.6.0",
+	"pnpm": {
+		"overrides": {
+			"cookie@<0.7.0": ">=0.7.0"
+		}
+	}
 }

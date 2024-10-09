@@ -11,7 +11,7 @@ test("default", async ({ page }) => {
 	await expect(items).toHaveCount(3);
 });
 
-test.describe("visual", () => {
+test.describe("@visual", () => {
 	test("default", async ({ page }) => {
 		await page.goto("/tests/list");
 		await expect(page.locator("body")).toHaveScreenshot();

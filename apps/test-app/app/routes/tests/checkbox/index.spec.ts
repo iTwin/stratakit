@@ -61,7 +61,7 @@ test("disabled", async ({ page }) => {
 	await expect(checkbox).not.toBeChecked();
 });
 
-test.describe("visual", () => {
+test.describe("@visual", () => {
 	test("unchecked", async ({ page }) => {
 		await page.goto("/tests/checkbox?visual=true");
 		await expect(page.locator("body")).toHaveScreenshot();

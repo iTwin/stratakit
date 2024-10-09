@@ -48,7 +48,7 @@ test("disabled", async ({ page }) => {
 	await expect(toggleSwitch).not.toBeChecked();
 });
 
-test.describe("visual", () => {
+test.describe("@visual", () => {
 	test("unchecked", async ({ page }) => {
 		await page.goto("/tests/switch?visual=true");
 		await expect(page.locator("body")).toHaveScreenshot();

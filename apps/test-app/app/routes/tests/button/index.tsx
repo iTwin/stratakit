@@ -2,8 +2,13 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-import { Button } from "@itwin/kiwi-react/bricks";
+import { Button, Icon } from "@itwin/kiwi-react/bricks";
 import { useSearchParams } from "@remix-run/react";
+
+const placeholderIconHref = new URL(
+	"@itwin/kiwi-icons/placeholder.svg",
+	import.meta.url,
+).href;
 
 export const handle = { title: "Button" };
 
@@ -32,8 +37,16 @@ export default function Page() {
 function VisualTest() {
 	return (
 		<div style={{ display: "flex", gap: 4 }}>
-			<Button>Solid</Button>
-			<Button variant="ghost">Ghost</Button>
+			<Button>
+				<Icon href={placeholderIconHref} />
+				Solid
+				<Icon href={placeholderIconHref} />
+			</Button>
+			<Button variant="ghost">
+				<Icon href={placeholderIconHref} />
+				Ghost
+				<Icon href={placeholderIconHref} />
+			</Button>
 		</div>
 	);
 }

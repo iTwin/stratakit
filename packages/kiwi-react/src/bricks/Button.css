@@ -31,6 +31,11 @@
 		color: var(--_kiwi-button-color-text);
 		transition: background-color 150ms ease-out;
 		-webkit-tap-highlight-color: var(--_kiwi-button-color-background-pressed);
+
+		svg {
+			color: var(--_kiwi-button-color-icon);
+			transition: color 150ms ease-out;
+		}
 	}
 
 	@layer modifiers {
@@ -81,6 +86,14 @@
 			var(--__kiwi-button-state--hover, var(--_kiwi-button-color-background-hover))
 			var(--__kiwi-button-state--pressed, var(--_kiwi-button-color-background-pressed))
 			var(--__kiwi-button-state--disabled, var(--_kiwi-button-color-background-disabled));
+
+		--_kiwi-button-color-icon: var(
+				--__kiwi-button-state--default,
+				var(--kiwi-color-icon-neutral-base)
+			)
+			var(--__kiwi-button-state--hover, var(--kiwi-color-icon-neutral-hover))
+			var(--__kiwi-button-state--pressed, var(--kiwi-color-icon-neutral-hover))
+			var(--__kiwi-button-state--disabled, var(--kiwi-color-icon-neutral-disabled));
 
 		@media (any-hover: hover) {
 			&:where(:hover) {

@@ -3,6 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 .app {
+	/* Escape root layout padding. */
 	margin: -1rem;
 	height: 100vh;
 
@@ -12,14 +13,14 @@
 
 .platformBar {
 	background-color: var(--kiwi-color-bg-surface-secondary);
-	border-right: 1px solid #363b3f;
+	border-right: 1px solid var(--kiwi-color-border-neutral-base);
 
 	writing-mode: vertical-lr;
 }
 
 .leftPanel {
 	padding-block: 12px;
-	background-color: #272a2d;
+	background-color: var(--kiwi-color-bg-surface-primary);
 	min-height: 0;
 
 	display: flex;

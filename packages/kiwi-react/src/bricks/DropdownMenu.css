@@ -4,7 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 .🥝-dropdown-menu {
 	@layer base {
-		--_kiwi-dropdown-menu-color-background: #1a1c1e; /* bg/surface/tertiary */
+		--_kiwi-dropdown-menu-color-background: var(--kiwi-color-bg-surface-tertiary);
 		--_kiwi-dropdown-menu-padding: 0.5rem; /* space(in progress)/x2 */
 		--_kiwi-dropdown-menu-gap: 0.25rem; /* space(in progress)/x1 */
 

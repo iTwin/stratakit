@@ -9,10 +9,15 @@
 		--_kiwi-list-item-padding-inline: 0.75rem 0.5rem;
 		--_kiwi-list-item-padding-block: 0.25rem;
 
-		--_kiwi-list-item-color-background-hover: #ffffff14; /* bg/glow/on-surface/neutral-hover */
-		--_kiwi-list-item-color-background-pressed: #1981661f; /* bg/glow/on-surface/accent-hover */
-		--_kiwi-list-item-color-pressed: #0bfac2; /* text/accent/strong */
-		--_kiwi-list-item-color-disabled: #585f68; /* text/neutral/disabled */
+		--_kiwi-list-item-color-background: transparent;
+		--_kiwi-list-item-color-background-hover: color-mix(
+			in srgb,
+			var(--_kiwi-list-item-color-background) 100%,
+			var(--kiwi-color-glow-hue) var(--kiwi-color-bg-glow-on-surface-neutral-hover-\%)
+		);
+		--_kiwi-list-item-color-background-pressed: var(--kiwi-color-bg-glow-on-surface-accent-hover);
+		--_kiwi-list-item-color-pressed: var(--kiwi-color-text-accent-strong);
+		--_kiwi-list-item-color-disabled: var(--kiwi-color-text-neutral-disabled);
 
 		cursor: pointer;
 		line-height: 1;

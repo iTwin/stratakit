@@ -20,6 +20,7 @@
 .leftPanel {
 	padding-block: 12px;
 	background-color: #272a2d;
+	min-height: 0;
 
 	display: flex;
 	flex-direction: column;
@@ -52,6 +53,8 @@
 }
 
 .tree {
+	overflow: auto;
+
 	display: flex;
 	flex-direction: column;
 	gap: 4px;

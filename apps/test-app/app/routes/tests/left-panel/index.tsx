@@ -3,7 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 import styles from "./index.module.css";
-import { Icon, Input } from "@itwin/kiwi-react/bricks";
+import { Checkbox, DropdownMenu, Icon, Input } from "@itwin/kiwi-react/bricks";
 import { ListItem } from "@itwin/kiwi-react-internal/src/bricks/ListItem.js";
 import { useSearchParams } from "@remix-run/react";
 
@@ -47,7 +47,7 @@ export default function Page() {
 						<Input placeholder="Search" />
 						<div className={styles.actions}>
 							<Icon href={placeholderIcon} />
-							<Icon href={placeholderIcon} />
+							<SortingModes />
 						</div>
 					</div>
 				)}
@@ -108,5 +108,59 @@ function Row({ level = 0, children }: RowProps) {
 			<Icon href={placeholderIcon} style={{ display: "inline" }} />
 			{children}
 		</ListItem>
+	);
+}
+
+function SortingModes() {
+	return (
+		<DropdownMenu.Root>
+			<DropdownMenu.Button render={<Icon href={placeholderIcon} />} />
+			<DropdownMenu.Content style={{ minInlineSize: 164 }}>
+				<DropdownMenu.Item>
+					<Checkbox />
+					Show all
+				</DropdownMenu.Item>
+				<DropdownMenu.Item>
+					<Checkbox />
+					Guides
+				</DropdownMenu.Item>
+				<DropdownMenu.Item>
+					<Checkbox />
+					Other
+				</DropdownMenu.Item>
+				<DropdownMenu.Item>
+					<Checkbox />
+					Roadway
+				</DropdownMenu.Item>
+				<DropdownMenu.Item>
+					<Checkbox />
+					Parking
+				</DropdownMenu.Item>
+				<DropdownMenu.Item>
+					<Checkbox />
+					Building
+				</DropdownMenu.Item>
+				<DropdownMenu.Item>
+					<Checkbox />
+					Dry utility
+				</DropdownMenu.Item>
+				<DropdownMenu.Item>
+					<Checkbox />
+					Stormwater
+				</DropdownMenu.Item>
+				<DropdownMenu.Item>
+					<Checkbox />
+					Sewer
+				</DropdownMenu.Item>
+				<DropdownMenu.Item>
+					<Checkbox />
+					Boundary
+				</DropdownMenu.Item>
+				<DropdownMenu.Item>
+					<Checkbox />
+					Map
+				</DropdownMenu.Item>
+			</DropdownMenu.Content>
+		</DropdownMenu.Root>
 	);
 }

@@ -5,14 +5,18 @@
 import * as React from "react";
 import * as Ariakit from "@ariakit/react";
 import cx from "classnames";
+import { useFieldId } from "./Field.js";
 
 interface InputProps extends Ariakit.FocusableProps<"input"> {}
 
 export const Input = React.forwardRef<React.ElementRef<"input">, InputProps>(
 	(props, forwardedRef) => {
+		const fieldId = useFieldId();
+
 		return (
 			<Ariakit.Role.input
 				{...props}
+				id={props.id ?? fieldId}
 				className={cx("🥝-input", props.className)}
 				render={
 					<Ariakit.Focusable

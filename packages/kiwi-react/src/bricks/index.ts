@@ -10,6 +10,7 @@ export * as DropdownMenu from "./DropdownMenu.js";
 export { Divider } from "./Divider.js";
 export { Icon } from "./Icon.js";
 export { Input } from "./Input.js";
+export { Field } from "./Field.js";
 export { Label } from "./Label.js";
 export { Radio } from "./Radio.js";
 export { Switch } from "./Switch.js";

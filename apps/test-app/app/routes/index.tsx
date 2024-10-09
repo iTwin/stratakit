@@ -13,6 +13,7 @@ const components = [
 	"Checkbox",
 	"Divider",
 	"DropdownMenu",
+	"Field",
 	"Icon",
 	"Input",
 	"List",

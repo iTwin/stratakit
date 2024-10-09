@@ -2,6 +2,7 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
+import type * as React from "react";
 import styles from "./index.module.css";
 import { Checkbox, DropdownMenu, Icon, Input } from "@itwin/kiwi-react/bricks";
 import { ListItem } from "@itwin/kiwi-react-internal/src/bricks/ListItem.js";
@@ -51,41 +52,7 @@ export default function Page() {
 						</div>
 					</div>
 				)}
-				{/* biome-ignore lint/a11y/useSemanticElements: temporary until Tree is implemented */}
-				<div role="tree" className={styles.tree}>
-					<Row level={0}>Guides</Row>
-					<Row level={1}>Tree</Row>
-					<Row level={2}>Guide 4</Row>
-					<Row level={2}>Guide 3</Row>
-					<Row level={2}>Guide 2</Row>
-					<Row level={1}>Run off pipe</Row>
-					<Row level={2}>Guide 1</Row>
-					<Row level={0}>Other</Row>
-					<Row level={1}>Object 2</Row>
-					<Row level={2}>Path 3</Row>
-					<Row level={1}>Object 1</Row>
-					<Row level={0}>Road</Row>
-					<Row level={1}>Parking lot access</Row>
-					<Row level={1}>Site access</Row>
-					<Row level={0}>Parking lot</Row>
-					<Row level={1}>Parking area</Row>
-					<Row level={2}>Bay point 2</Row>
-					<Row level={2}>Bay point 1</Row>
-					<Row level={2}>Space point 1</Row>
-					<Row level={2}>Path 6</Row>
-					<Row level={0}>Building</Row>
-					<Row level={1}>Building area</Row>
-					<Row level={2}>Path 5</Row>
-					<Row level={0}>Sewer</Row>
-					<Row level={1}>Run off pipe</Row>
-					<Row level={2}>Path 4</Row>
-					<Row level={0}>Project boundary</Row>
-					<Row level={1}>Property area</Row>
-					<Row level={2}>Path 1</Row>
-					<Row level={0}>Map</Row>
-					<Row level={1}>Location</Row>
-					<Row level={2}>Terrain</Row>
-				</div>
+				<Tree />
 			</div>
 			<div className={styles.canvasWrapper}>
 				<div className={styles.canvas} />
@@ -94,12 +61,51 @@ export default function Page() {
 	);
 }
 
-interface RowProps {
-	level: number;
-	children?: React.ReactNode;
+function Tree() {
+	return (
+		/* biome-ignore lint/a11y/useSemanticElements: temporary until Tree component is implemented */
+		<div role="tree" className={styles.tree}>
+			<TreeRow level={0}>Guides</TreeRow>
+			<TreeRow level={1}>Tree</TreeRow>
+			<TreeRow level={2}>Guide 4</TreeRow>
+			<TreeRow level={2}>Guide 3</TreeRow>
+			<TreeRow level={2}>Guide 2</TreeRow>
+			<TreeRow level={1}>Run off pipe</TreeRow>
+			<TreeRow level={2}>Guide 1</TreeRow>
+			<TreeRow level={0}>Other</TreeRow>
+			<TreeRow level={1}>Object 2</TreeRow>
+			<TreeRow level={2}>Path 3</TreeRow>
+			<TreeRow level={1}>Object 1</TreeRow>
+			<TreeRow level={0}>Road</TreeRow>
+			<TreeRow level={1}>Parking lot access</TreeRow>
+			<TreeRow level={1}>Site access</TreeRow>
+			<TreeRow level={0}>Parking lot</TreeRow>
+			<TreeRow level={1}>Parking area</TreeRow>
+			<TreeRow level={2}>Bay point 2</TreeRow>
+			<TreeRow level={2}>Bay point 1</TreeRow>
+			<TreeRow level={2}>Space point 1</TreeRow>
+			<TreeRow level={2}>Path 6</TreeRow>
+			<TreeRow level={0}>Building</TreeRow>
+			<TreeRow level={1}>Building area</TreeRow>
+			<TreeRow level={2}>Path 5</TreeRow>
+			<TreeRow level={0}>Sewer</TreeRow>
+			<TreeRow level={1}>Run off pipe</TreeRow>
+			<TreeRow level={2}>Path 4</TreeRow>
+			<TreeRow level={0}>Project boundary</TreeRow>
+			<TreeRow level={1}>Property area</TreeRow>
+			<TreeRow level={2}>Path 1</TreeRow>
+			<TreeRow level={0}>Map</TreeRow>
+			<TreeRow level={1}>Location</TreeRow>
+			<TreeRow level={2}>Terrain</TreeRow>
+		</div>
+	);
 }
 
-function Row({ level = 0, children }: RowProps) {
+type TreeRowProps = React.PropsWithChildren<{
+	level: number;
+}>;
+
+function TreeRow({ level = 0, children }: TreeRowProps) {
 	return (
 		<ListItem
 			role="treeitem"

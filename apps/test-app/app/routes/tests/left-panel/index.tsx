@@ -16,8 +16,7 @@ const placeholderIcon = new URL(
 ).href;
 
 export default function Page() {
-	const [searchParams, setSearchParams] = useSearchParams();
-	const search = searchParams.get("search") !== "false";
+	const search = useSearchEnabled();
 	return (
 		<div className={styles.appLayout}>
 			<div className={styles.platformBar}>Platform bar</div>
@@ -25,21 +24,7 @@ export default function Page() {
 				<div className={styles.header}>
 					<h2>Layers</h2>
 					<div className={styles.actions}>
-						<Icon
-							style={{
-								color: search
-									? "var(--kiwi-color-text-accent-strong)"
-									: undefined,
-							}}
-							className={styles.iconButton}
-							href={placeholderIcon}
-							onClick={() =>
-								setSearchParams((prev) => {
-									prev.set("search", !search ? "true" : "false");
-									return prev;
-								})
-							}
-						/>
+						<SearchButton />
 						<Icon href={placeholderIcon} />
 					</div>
 				</div>
@@ -58,6 +43,31 @@ export default function Page() {
 				<div className={styles.canvas} />
 			</div>
 		</div>
+	);
+}
+
+function useSearchEnabled() {
+	const [searchParams] = useSearchParams();
+	return searchParams.get("search") !== "false";
+}
+
+function SearchButton() {
+	const [, setSearchParams] = useSearchParams();
+	const search = useSearchEnabled();
+	return (
+		<Icon
+			style={{
+				color: search ? "var(--kiwi-color-text-accent-strong)" : undefined,
+			}}
+			className={styles.iconButton}
+			href={placeholderIcon}
+			onClick={() =>
+				setSearchParams((prev) => {
+					prev.set("search", !search ? "true" : "false");
+					return prev;
+				})
+			}
+		/>
 	);
 }
 

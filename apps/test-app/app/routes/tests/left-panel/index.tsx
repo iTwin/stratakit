@@ -51,7 +51,8 @@ export default function Page() {
 						</div>
 					</div>
 				)}
-				<div className={styles.tree}>
+				{/* biome-ignore lint/a11y/useSemanticElements: <explanation> */}
+				<div role="tree" className={styles.tree}>
 					<Row level={0}>Guides</Row>
 					<Row level={1}>Tree</Row>
 					<Row level={2}>Guide 4</Row>
@@ -100,7 +101,10 @@ interface RowProps {
 
 function Row({ level = 0, children }: RowProps) {
 	return (
-		<ListItem style={{ ...(level > 0 ? { paddingLeft: level * 20 } : {}) }}>
+		<ListItem
+			role="treeitem"
+			style={{ ...(level > 0 ? { paddingLeft: level * 20 } : {}) }}
+		>
 			<Icon href={placeholderIcon} style={{ display: "inline" }} />
 			{children}
 		</ListItem>

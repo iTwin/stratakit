@@ -2,9 +2,10 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-import { Icon, Input } from "@itwin/kiwi-react/bricks";
 import styles from "./index.module.css";
+import { Icon, Input } from "@itwin/kiwi-react/bricks";
 import { ListItem } from "@itwin/kiwi-react-internal/src/bricks/ListItem.js";
+import { useSearchParams } from "@remix-run/react";
 
 export const handle = { title: "LeftPanel" };
 
@@ -14,6 +15,8 @@ const placeholderIcon = new URL(
 ).href;
 
 export default function Page() {
+	const [searchParams, setSearchParams] = useSearchParams();
+	const search = searchParams.get("search") !== "false";
 	return (
 		<div className={styles.app}>
 			<div className={styles.platformBar}>Platform bar</div>
@@ -21,17 +24,33 @@ export default function Page() {
 				<div className={styles.header}>
 					<h2>Layers</h2>
 					<div className={styles.actions}>
-						<Icon href={placeholderIcon} />
+						<Icon
+							style={{
+								color: search
+									? "var(--kiwi-color-text-accent-strong)"
+									: undefined,
+							}}
+							className={styles.iconButton}
+							href={placeholderIcon}
+							onClick={() =>
+								setSearchParams((prev) => {
+									prev.set("search", !search ? "true" : "false");
+									return prev;
+								})
+							}
+						/>
 						<Icon href={placeholderIcon} />
 					</div>
 				</div>
-				<div className={styles.searchWrapper}>
-					<Input placeholder="Search" />
-					<div className={styles.actions}>
-						<Icon href={placeholderIcon} />
-						<Icon href={placeholderIcon} />
+				{search && (
+					<div className={styles.searchWrapper}>
+						<Input placeholder="Search" />
+						<div className={styles.actions}>
+							<Icon href={placeholderIcon} />
+							<Icon href={placeholderIcon} />
+						</div>
 					</div>
-				</div>
+				)}
 				<div className={styles.tree}>
 					<Row level={0}>Guides</Row>
 					<Row level={1}>Tree</Row>

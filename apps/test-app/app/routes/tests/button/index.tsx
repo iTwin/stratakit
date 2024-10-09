@@ -35,18 +35,37 @@ export default function Page() {
 }
 
 function VisualTest() {
+	const variants = ["solid", "ghost"] as const;
+
 	return (
-		<div style={{ display: "flex", gap: 4 }}>
-			<Button>
-				<Icon href={placeholderIconHref} />
-				Solid
-				<Icon href={placeholderIconHref} />
-			</Button>
-			<Button variant="ghost">
-				<Icon href={placeholderIconHref} />
-				Ghost
-				<Icon href={placeholderIconHref} />
-			</Button>
+		<div style={{ display: "grid", gap: 4 }}>
+			{variants.map((variant) => (
+				<div key={variant} style={{ display: "flex", gap: 4 }}>
+					<Button variant={variant}>Click me</Button>
+
+					<Button variant={variant}>
+						<Icon href={placeholderIconHref} />
+						Click me
+					</Button>
+
+					<Button variant={variant}>
+						Click me
+						<Icon href={placeholderIconHref} />
+					</Button>
+
+					<Button variant={variant}>
+						<Icon href={placeholderIconHref} />
+						Click me
+						<Icon href={placeholderIconHref} />
+					</Button>
+
+					<Button variant={variant} disabled>
+						<Icon href={placeholderIconHref} />
+						Click me
+						<Icon href={placeholderIconHref} />
+					</Button>
+				</div>
+			))}
 		</div>
 	);
 }

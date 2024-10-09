@@ -51,7 +51,7 @@ export default function Page() {
 						</div>
 					</div>
 				)}
-				{/* biome-ignore lint/a11y/useSemanticElements: <explanation> */}
+				{/* biome-ignore lint/a11y/useSemanticElements: temporary until Tree is implemented */}
 				<div role="tree" className={styles.tree}>
 					<Row level={0}>Guides</Row>
 					<Row level={1}>Tree</Row>

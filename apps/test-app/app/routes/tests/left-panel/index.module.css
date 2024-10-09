@@ -22,6 +22,7 @@
 	padding-block: 12px;
 	background-color: var(--kiwi-color-bg-surface-primary);
 	min-height: 0;
+	min-width: 256px;
 
 	display: flex;
 	flex-direction: column;

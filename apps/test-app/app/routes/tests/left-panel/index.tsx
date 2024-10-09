@@ -21,7 +21,7 @@ export default function Page() {
 	return (
 		<div className={styles.appLayout}>
 			<div className={styles.platformBar}>Platform bar</div>
-			<div className={styles.leftPanel} style={{ minWidth: 256 }}>
+			<div className={styles.leftPanel}>
 				<div className={styles.header}>
 					<h2>Layers</h2>
 					<div className={styles.actions}>

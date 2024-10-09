@@ -19,7 +19,7 @@ export default function Page() {
 	const [searchParams, setSearchParams] = useSearchParams();
 	const search = searchParams.get("search") !== "false";
 	return (
-		<div className={styles.app}>
+		<div className={styles.appLayout}>
 			<div className={styles.platformBar}>Platform bar</div>
 			<div className={styles.leftPanel} style={{ minWidth: 256 }}>
 				<div className={styles.header}>

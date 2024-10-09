@@ -52,8 +52,6 @@
 }
 
 .tree {
-	padding-inline: 12px;
-
 	display: flex;
 	flex-direction: column;
 	gap: 4px;

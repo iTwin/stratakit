@@ -6,7 +6,7 @@
 	--_kiwi-tab-list-border-width: 1px;
 	--_kiwi-tab-list-gap-between-border: 5px;
 
-	border-color: #36393f; /* color/border/neutral/muted */
+	border-color: var(--kiwi-color-border-neutral-muted);
 	border-style: solid;
 	display: flex;
 	gap: 16px;
@@ -22,14 +22,14 @@
 		--_kiwi-tab-color-background: transparent;
 		--_kiwi-tab-color-background-hover: #ffffff0a; /* color/bg/glow/on-surface/🫥neutral-hover */
 		--_kiwi-tab-color-background-selected: transparent;
-		--_kiwi-tab-color-background-selected-hover: #1981661f; /* color/bg/glow/on-surface/accent-hover */
+		--_kiwi-tab-color-background-selected-hover: var(--kiwi-color-bg-glow-on-surface-accent-hover);
 		--_kiwi-tab-color-background-disabled: transparent;
 
-		--_kiwi-tab-color-text: #808791; /* color/text/neutral/tertiary */
-		--_kiwi-tab-color-text-hover: #fbfcfd; /* color/text/neutral/primary */
-		--_kiwi-tab-color-text-selected: #0bfac2; /* color/text/accent/strong */
-		--_kiwi-tab-color-text-selected-hover: #0bfac2; /* color/text/accent/strong */
-		--_kiwi-tab-color-text-disabled: #585f68; /* color/text/neutral/disabled */
+		--_kiwi-tab-color-text: var(--kiwi-color-text-neutral-tertiary);
+		--_kiwi-tab-color-text-hover: var(--kiwi-color-text-neutral-primary);
+		--_kiwi-tab-color-text-selected: var(--kiwi-color-text-accent-strong);
+		--_kiwi-tab-color-text-selected-hover: var(--kiwi-color-text-accent-strong);
+		--_kiwi-tab-color-text-disabled: var(--kiwi-color-text-neutral-disabled);
 
 		--_kiwi-tab-border-radius: 4px;
 		--_kiwi-tab-height: 1.25rem;
@@ -40,7 +40,7 @@
 		block-size: var(--_kiwi-tab-height);
 		padding-inline: var(--_kiwi-tab-padding-inline);
 		position: relative;
-		font-size: 0.75rem;
+		font-size: var(--kiwi-font-size-s);
 		transition: background-color 150ms ease-out, color 150ms ease-out;
 		user-select: none;
 		-webkit-tap-highlight-color: currentColor;
@@ -128,5 +128,5 @@
 .🥝-tab-panel {
 	/* TODO: Would be nice if this would sync with the tabs */
 	padding: 4px;
-	font-size: 0.75rem;
+	font-size: var(--kiwi-font-size-s);
 }

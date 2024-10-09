@@ -57,12 +57,12 @@
 	gap: 4px;
 }
 
-.content {
+.canvasWrapper {
 	padding-block: 8px;
 	padding-inline-end: 8px;
 }
 
-.contentSkeleton {
+.canvas {
 	height: 100%;
 	border-radius: 16px;
 	box-shadow:
@@ -71,19 +71,10 @@
 		0px 1px 0px 0px #00000066,
 		0px 0px 0px 1px #ffffff33 inset,
 		0px 1px 0px 0px #ffffff33 inset;
-	overflow: hidden;
 
-	&::after {
-		content: "";
-		display: block;
-		position: relative;
-		height: 200%;
-		width: 200%;
-		top: -50%;
-		left: -50%;
-		transform: rotate(-45deg);
-
-		background: radial-gradient(ellipse, var(--kiwi-color-text-mono-faded) 30%, transparent 35%);
-		background-size: 30px 14px;
-	}
+	background-image: repeating-conic-gradient(
+		var(--kiwi-color-text-mono-faded) 0%,
+		transparent 15%,
+		var(--kiwi-color-text-mono-faded) 33%
+	);
 }

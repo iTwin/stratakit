@@ -87,8 +87,8 @@ export default function Page() {
 					<Row level={2}>Terrain</Row>
 				</div>
 			</div>
-			<div className={styles.content}>
-				<div className={styles.contentSkeleton} />
+			<div className={styles.canvasWrapper}>
+				<div className={styles.canvas} />
 			</div>
 		</div>
 	);

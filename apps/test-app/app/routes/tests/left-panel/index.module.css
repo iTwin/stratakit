@@ -17,6 +17,55 @@
 	writing-mode: vertical-lr;
 }
 
+.leftPanel {
+	padding-block: 12px;
+	background-color: #272a2d;
+
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+}
+
+.header {
+	display: flex;
+	padding-inline: 12px;
+	justify-content: space-between;
+}
+
+.actions {
+	display: flex;
+	gap: 8px;
+	align-items: center;
+}
+
+.searchWrapper {
+	padding: 12px;
+	background: var(--kiwi-color-bg-surface-secondary);
+	border-width: 1px 0 1px 0;
+	border-style: solid;
+	border-color: var(--kiwi-color-border-neutral-base);
+
+	display: flex;
+	gap: 8px;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.tree {
+	padding-inline: 12px;
+
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+}
+
+.row {
+	height: 16px;
+
+	display: flex;
+	gap: 4px;
+}
+
 .content {
 	padding-block: 8px;
 	padding-inline-end: 8px;

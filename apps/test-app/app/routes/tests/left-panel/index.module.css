@@ -56,13 +56,6 @@
 
 	display: flex;
 	flex-direction: column;
-	gap: 12px;
-}
-
-.row {
-	height: 16px;
-
-	display: flex;
 	gap: 4px;
 }
 

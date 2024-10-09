@@ -4,6 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 import { Icon, Input } from "@itwin/kiwi-react/bricks";
 import styles from "./index.module.css";
+import { ListItem } from "@itwin/kiwi-react-internal/src/bricks/ListItem.js";
 
 export const handle = { title: "LeftPanel" };
 
@@ -80,9 +81,9 @@ interface RowProps {
 
 function Row({ level = 0, children }: RowProps) {
 	return (
-		<div className={styles.row} style={{ paddingLeft: level * 20 }}>
+		<ListItem style={{ ...(level > 0 ? { paddingLeft: level * 20 } : {}) }}>
 			<Icon href={placeholderIcon} style={{ display: "inline" }} />
 			{children}
-		</div>
+		</ListItem>
 	);
 }

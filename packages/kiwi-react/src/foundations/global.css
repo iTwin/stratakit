@@ -3,7 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 html {
-	background-color: --primitive("gray.900") /* bg/surface/primary */;
+	background-color: var(--kiwi-color-bg-surface-primary);
 }
 
 body {
@@ -13,6 +13,7 @@ body {
 }
 
 *:focus-visible {
-	outline: 2px solid var(--_kiwi-focus-color, #0bfac2 /* border/accent/strong */);
+	--💥focus-color: #0bfac2 /* border/accent/strong */;
+	outline: 2px solid var(--💥focus-color);
 	outline-offset: 1px;
 }

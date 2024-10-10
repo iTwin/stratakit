@@ -11,7 +11,24 @@ test("default", async ({ page }) => {
 	await expect(items).toHaveCount(3);
 });
 
-test("visual", async ({ page }) => {
-	await page.goto("/tests/list");
-	await expect(page.locator("body")).toHaveScreenshot();
+test.describe("@visual", () => {
+	test("default", async ({ page }) => {
+		await page.goto("/tests/list");
+		await expect(page.locator("body")).toHaveScreenshot();
+	});
+
+	test("hovered", async ({ page }) => {
+		await page.goto("/tests/list");
+		const item = page.getByText("Cherry");
+		await item.hover();
+		await expect(page.locator("body")).toHaveScreenshot();
+	});
+
+	test("pressed", async ({ page }) => {
+		await page.goto("/tests/list");
+		const item = page.getByText("Cherry");
+		await item.hover();
+		await page.mouse.down();
+		await expect(page.locator("body")).toHaveScreenshot();
+	});
 });

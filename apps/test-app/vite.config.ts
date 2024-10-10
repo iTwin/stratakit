@@ -7,7 +7,11 @@ import { defineConfig, type Plugin } from "vite";
 import tsconfigPaths from "vite-tsconfig-paths";
 import * as lightningcss from "lightningcss";
 import { createRoutesFromFolders } from "@remix-run/v1-route-convention";
-import { primitivesTransform } from "internal/visitors.js";
+import {
+	primitivesTransform,
+	themeTransform,
+	staticVariablesTransform,
+} from "internal/visitors.js";
 
 const basename = process.env.BASE_FOLDER
 	? `/${process.env.BASE_FOLDER}/`
@@ -34,7 +38,7 @@ export default defineConfig({
 			ssr: false, // SPA mode for github-pages
 		}),
 		tsconfigPaths(),
-		esbuildBundleCss(),
+		bundleCssPlugin(),
 	],
 	build: {
 		assetsInlineLimit: (filePath) => {
@@ -50,12 +54,12 @@ export default defineConfig({
 	},
 });
 
-/** Bundles "*.css?inline" files using esbuild. Only used during dev. */
-function esbuildBundleCss() {
+/** Vite plugin that bundles "*.css?inline" files using lightningcss. Only used during dev. */
+function bundleCssPlugin() {
 	let isDev = false;
 
 	return <Plugin>{
-		name: "esbuild-bundle-css",
+		name: "bundle-css",
 
 		configResolved({ command }) {
 			isDev = command === "serve";
@@ -73,7 +77,11 @@ function esbuildBundleCss() {
 					firefox: (110 << 16) | (0 << 8), // firefox 110.0
 					safari: (16 << 16) | (4 << 8), // safari 16.4
 				},
-				visitor: lightningcss.composeVisitors([primitivesTransform()]),
+				visitor: lightningcss.composeVisitors([
+					primitivesTransform(),
+					themeTransform(),
+					staticVariablesTransform(),
+				]),
 			});
 
 			return { code: code.toString().trim() };

@@ -4,7 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 .🥝-label {
 	@layer base {
-		color: #b8bdc1; /* text/neutral/secondary */
+		color: var(--kiwi-color-text-neutral-secondary);
 		cursor: default;
 		font-size: 0.75rem;
 

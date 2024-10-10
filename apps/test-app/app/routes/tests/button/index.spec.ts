@@ -36,7 +36,7 @@ test("disabled", async ({ page }) => {
 	await expect(button).toHaveAccessibleName("Hello");
 });
 
-test("visual", async ({ page }) => {
+test("@visual", async ({ page }) => {
 	await page.goto("/tests/button?visual=true");
 	await expect(page.locator("body")).toHaveScreenshot();
 });

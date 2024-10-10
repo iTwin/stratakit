@@ -7,34 +7,34 @@
 		--_kiwi-switch-width: 2rem;
 		--_kiwi-switch-thumb-size: 1rem;
 
-		--_kiwi-switch-color-border: #474c53 /* border/neutral/base */;
+		--_kiwi-switch-color-border: var(--kiwi-color-border-neutral-base);
 		--_kiwi-switch-color-border-hover: color-mix(
 			in srgb,
 			var(--_kiwi-switch-color-border) 100%,
-			#fff 8%
+			var(--kiwi-color-glow-hue) var(--kiwi-color-border-glow-base-hover-\%)
 		);
-		--_kiwi-switch-color-border-active: color-mix(
+		--_kiwi-switch-color-border-pressed: color-mix(
 			in srgb,
 			var(--_kiwi-switch-color-border) 100%,
-			#fff 12%
+			var(--kiwi-color-glow-hue) var(--kiwi-color-border-glow-base-press-\%)
 		);
 		--_kiwi-switch-color-border-checked: color-mix(
 			in srgb,
 			var(--_kiwi-switch-color-background-checked) 100%,
-			#fff 16%
+			var(--kiwi-color-glow-hue) var(--kiwi-color-border-glow-strong-hover-\%)
 		);
-		--_kiwi-switch-color-border-disabled: #ffffff14 /* border/glow/on-surface/disabled */;
-		--_kiwi-switch-color-background: #25282c; /* bg/surface/primary */
+		--_kiwi-switch-color-border-disabled: var(--kiwi-color-border-glow-on-surface-disabled);
+		--_kiwi-switch-color-background: var(--kiwi-color-bg-surface-primary);
 		--_kiwi-switch-color-background-hover: color-mix(
 			in srgb,
 			var(--_kiwi-switch-color-background) 100%,
-			#fff 4%
+			var(--kiwi-color-glow-hue) var(--kiwi-color-bg-glow-base-hover-\%)
 		);
-		--_kiwi-switch-color-background-checked: #198166 /* bg/accent/base */;
+		--_kiwi-switch-color-background-checked: var(--kiwi-color-bg-accent-base);
 		--_kiwi-switch-color-background-checked-hover: color-mix(
 			in srgb,
 			var(--_kiwi-switch-color-background-checked) 100%,
-			#fff 8%
+			var(--kiwi-color-glow-hue) var(--kiwi-color-bg-glow-strong-hover-\%)
 		);
 
 		appearance: none;
@@ -92,28 +92,28 @@
 	}
 
 	@layer states {
-		/* Cyclic toggles for default/hover/active/checked/checked+hover states. See https://kizu.dev/cyclic-toggles/ */
+		/* Cyclic toggles for default/hover/pressed/checked/checked+hover states. See https://kizu.dev/cyclic-toggles/ */
 		--__kiwi-switch-state: var(--__kiwi-switch-state--default);
 		--__kiwi-switch-state--default: var(--__kiwi-switch-state,);
 		--__kiwi-switch-state--hover: var(--__kiwi-switch-state,);
-		--__kiwi-switch-state--active: var(--__kiwi-switch-state,);
+		--__kiwi-switch-state--pressed: var(--__kiwi-switch-state,);
 		--__kiwi-switch-state--checked: var(--__kiwi-switch-state,);
 		--__kiwi-switch-state--checked-hover: var(--__kiwi-switch-state,);
 		--__kiwi-switch-state--disabled: var(--__kiwi-switch-state,);
 
 		background-color: var(--__kiwi-switch-state--default, var(--_kiwi-switch-color-background))
 			var(--__kiwi-switch-state--hover, var(--_kiwi-switch-color-background-hover))
-			var(--__kiwi-switch-state--active, var(--_kiwi-switch-color-background-hover))
+			var(--__kiwi-switch-state--pressed, var(--_kiwi-switch-color-background-hover))
 			var(--__kiwi-switch-state--checked, var(--_kiwi-switch-color-background-checked))
 			var(--__kiwi-switch-state--checked-hover, var(--_kiwi-switch-color-background-checked-hover))
 			var(--__kiwi-switch-state--disabled, var(--_kiwi-switch-color-background));
 		border-color: var(--__kiwi-switch-state--default, var(--_kiwi-switch-color-border))
 			var(--__kiwi-switch-state--hover, var(--_kiwi-switch-color-border-hover))
-			var(--__kiwi-switch-state--active, var(--_kiwi-switch-color-border-active))
+			var(--__kiwi-switch-state--pressed, var(--_kiwi-switch-color-border-pressed))
 			var(--__kiwi-switch-state--checked, var(--_kiwi-switch-color-border-checked))
 			var(--__kiwi-switch-state--checked-hover, var(--_kiwi-switch-color-border-checked))
 			var(--__kiwi-switch-state--disabled, var(--_kiwi-switch-color-border-disabled));
-		--_kiwi-switch-thumb-color: #fbfcfd /* bg/neutral/inverse */;
+		--_kiwi-switch-thumb-color: var(--kiwi-color-bg-neutral-inverse);
 		--_kiwi-switch-thumb-placement: start;
 		--_kiwi-switch-thumb-aspect-ratio: 1 / 1;
 
@@ -135,13 +135,13 @@
 		}
 
 		&:where(:active) {
-			--__kiwi-switch-state: var(--__kiwi-switch-state--active);
+			--__kiwi-switch-state: var(--__kiwi-switch-state--pressed);
 			--_kiwi-switch-thumb-aspect-ratio: 1.75;
 		}
 
 		&:where([disabled], :disabled, [aria-disabled="true"]) {
 			--__kiwi-switch-state: var(--__kiwi-switch-state--disabled);
-			--_kiwi-switch-thumb-color: #585f68 /* border/glow/on-surface/disabled */;
+			--_kiwi-switch-thumb-color: var(--kiwi-color-icon-neutral-disabled);
 			cursor: not-allowed;
 
 			&::after {

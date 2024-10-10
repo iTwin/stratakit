@@ -4,19 +4,23 @@
  *--------------------------------------------------------------------------------------------*/
 .🥝-input {
 	@layer base {
-		--_kiwi-input-color-background: #25282c; /* bg/surface/primary */
+		--_kiwi-input-color-background: var(--kiwi-color-bg-surface-primary);
 		--_kiwi-input-color-background-hover: color-mix(
-			in oklch,
-			var(--_kiwi-input-color-background),
-			#fff 4%
+			in srgb,
+			var(--_kiwi-input-color-background) 100%,
+			var(--kiwi-color-glow-hue) var(--kiwi-color-bg-glow-base-hover-\%)
 		);
-		--_kiwi-input-color-background-disabled: #181a1b;
-		--_kiwi-input-color-border: #474c53; /* border/neutral/default */
-		--_kiwi-input-color-border-hover: #585f68; /* border/neutral/hover */
-		--_kiwi-input-color-border-disabled: var(--_kiwi-input-color-border);
-
-		--_kiwi-input-color-text: #fbfcfd; /* text/neutral/primary */
-		--_kiwi-input-color-placeholder: #808791; /* text/neutral/tertiary */
+		--_kiwi-input-color-background-disabled: var(--kiwi-color-bg-surface-base);
+		--_kiwi-input-color-border: var(--kiwi-color-border-neutral-base);
+		--_kiwi-input-color-border-hover: color-mix(
+			in srgb,
+			var(--_kiwi-input-color-border) 100%,
+			var(--kiwi-color-glow-hue) var(--kiwi-color-border-glow-base-hover-\%)
+		);
+		--_kiwi-input-color-border-disabled: var(--kiwi-color-border-glow-on-surface-disabled);
+		--_kiwi-input-color-text: var(--kiwi-color-text-neutral-primary);
+		--_kiwi-input-color-placeholder: var(--kiwi-color-text-neutral-secondary);
+		--_kiwi-input-color-disabled: var(--kiwi-color-text-neutral-disabled);
 		--_kiwi-input-height: 1.5rem;
 		--_kiwi-input-padding-inline: 8px;
 		--_kiwi-input-padding-block: 4px;
@@ -72,8 +76,8 @@
 
 		&:where(:disabled) {
 			--__kiwi-input-state: var(--__kiwi-input-state--disabled);
+			color: var(--_kiwi-input-color-disabled);
 			cursor: not-allowed;
-			opacity: 0.5;
 		}
 	}
 }

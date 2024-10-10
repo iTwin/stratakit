@@ -34,6 +34,9 @@ importers:
 
   apps/test-app:
     dependencies:
+      "@ariakit/react":
+        specifier: "*"
+        version: 0.4.8(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       "@itwin/kiwi-icons":
         specifier: "*"
         version: link:../../packages/kiwi-icons

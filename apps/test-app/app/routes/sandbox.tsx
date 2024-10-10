@@ -6,8 +6,11 @@ import type * as React from "react";
 import styles from "./sandbox.module.css";
 import { DropdownMenu, Icon, Input } from "@itwin/kiwi-react/bricks";
 import { ListItem } from "@itwin/kiwi-react-internal/src/bricks/ListItem.js";
+import type { MetaFunction } from "@remix-run/react";
 
-export const handle = { title: "LeftPanel" };
+export const meta: MetaFunction = () => {
+	return [{ title: "Kiwi sandbox" }, { name: "color-scheme", content: "dark" }];
+};
 
 const placeholderIcon = new URL(
 	"@itwin/kiwi-icons/placeholder.svg",

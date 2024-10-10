@@ -14,8 +14,26 @@
 .platformBar {
 	background-color: var(--kiwi-color-bg-surface-secondary);
 	border-right: 1px solid var(--kiwi-color-border-neutral-base);
+}
 
-	writing-mode: vertical-lr;
+.logo {
+	border-bottom: 1px solid var(--kiwi-color-border-neutral-base);
+	height: 2.5rem;
+	box-sizing: content-box;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.tools {
+	padding-block: 12px;
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 12px;
 }
 
 .leftPanel {
@@ -33,6 +51,9 @@
 	display: flex;
 	padding-inline: 12px;
 	justify-content: space-between;
+
+	font-size: var(--kiwi-font-size-s);
+	line-height: 1rem;
 }
 
 .actions {

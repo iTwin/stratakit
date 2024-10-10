@@ -17,7 +17,16 @@ const placeholderIcon = new URL(
 export default function Page() {
 	return (
 		<div className={styles.appLayout}>
-			<div className={styles.platformBar}>Platform bar</div>
+			<div className={styles.platformBar}>
+				<div className={styles.logo}>
+					<Icon href={placeholderIcon} size="large" />
+				</div>
+				<div className={styles.tools}>
+					<Icon href={placeholderIcon} size="large" />
+					<Icon href={placeholderIcon} size="large" />
+					<Icon href={placeholderIcon} size="large" />
+				</div>
+			</div>
 			<div className={styles.leftPanel}>
 				<div className={styles.header}>
 					<h2>Layers</h2>

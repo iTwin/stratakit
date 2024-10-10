@@ -6,7 +6,6 @@ import type * as React from "react";
 import styles from "./sandbox.module.css";
 import { DropdownMenu, Icon, Input } from "@itwin/kiwi-react/bricks";
 import { ListItem } from "@itwin/kiwi-react-internal/src/bricks/ListItem.js";
-import { useSearchParams } from "@remix-run/react";
 
 export const handle = { title: "LeftPanel" };
 
@@ -16,7 +15,6 @@ const placeholderIcon = new URL(
 ).href;
 
 export default function Page() {
-	const search = useSearchEnabled();
 	return (
 		<div className={styles.appLayout}>
 			<div className={styles.platformBar}>Platform bar</div>
@@ -24,50 +22,28 @@ export default function Page() {
 				<div className={styles.header}>
 					<h2>Layers</h2>
 					<div className={styles.actions}>
-						<SearchButton />
+						<Icon
+							style={{
+								color: "var(--kiwi-color-text-accent-strong)",
+							}}
+							href={placeholderIcon}
+						/>
 						<Icon href={placeholderIcon} />
 					</div>
 				</div>
-				{search && (
-					<div className={styles.searchWrapper}>
-						<Input placeholder="Search" />
-						<div className={styles.actions}>
-							<Icon href={placeholderIcon} />
-							<SortingModes />
-						</div>
+				<div className={styles.searchWrapper}>
+					<Input placeholder="Search" />
+					<div className={styles.actions}>
+						<Icon href={placeholderIcon} />
+						<SortingModes />
 					</div>
-				)}
+				</div>
 				<Tree />
 			</div>
 			<div className={styles.canvasWrapper}>
 				<div className={styles.canvas} />
 			</div>
 		</div>
-	);
-}
-
-function useSearchEnabled() {
-	const [searchParams] = useSearchParams();
-	return searchParams.get("search") !== "false";
-}
-
-function SearchButton() {
-	const [, setSearchParams] = useSearchParams();
-	const search = useSearchEnabled();
-	return (
-		<Icon
-			style={{
-				color: search ? "var(--kiwi-color-text-accent-strong)" : undefined,
-			}}
-			className={styles.iconButton}
-			href={placeholderIcon}
-			onClick={() =>
-				setSearchParams((prev) => {
-					prev.set("search", !search ? "true" : "false");
-					return prev;
-				})
-			}
-		/>
 	);
 }
 

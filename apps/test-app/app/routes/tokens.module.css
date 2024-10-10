@@ -16,7 +16,6 @@
 
 	thead {
 		text-align: left;
-		user-select: none;
 	}
 
 	tbody tr:hover {
@@ -30,7 +29,6 @@
 	}
 
 	code {
-		user-select: all;
 		color: var(--kiwi-color-text-neutral-secondary);
 	}
 }

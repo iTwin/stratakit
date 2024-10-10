@@ -4,7 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 import type * as React from "react";
 import styles from "./sandbox.module.css";
-import { Checkbox, DropdownMenu, Icon, Input } from "@itwin/kiwi-react/bricks";
+import { DropdownMenu, Icon, Input } from "@itwin/kiwi-react/bricks";
 import { ListItem } from "@itwin/kiwi-react-internal/src/bricks/ListItem.js";
 import { useSearchParams } from "@remix-run/react";
 
@@ -132,50 +132,17 @@ function SortingModes() {
 		<DropdownMenu.Root>
 			<DropdownMenu.Button render={<Icon href={placeholderIcon} />} />
 			<DropdownMenu.Content style={{ minInlineSize: 164 }}>
-				<DropdownMenu.Item>
-					<Checkbox />
-					Show all
-				</DropdownMenu.Item>
-				<DropdownMenu.Item>
-					<Checkbox />
-					Guides
-				</DropdownMenu.Item>
-				<DropdownMenu.Item>
-					<Checkbox />
-					Other
-				</DropdownMenu.Item>
-				<DropdownMenu.Item>
-					<Checkbox />
-					Roadway
-				</DropdownMenu.Item>
-				<DropdownMenu.Item>
-					<Checkbox />
-					Parking
-				</DropdownMenu.Item>
-				<DropdownMenu.Item>
-					<Checkbox />
-					Building
-				</DropdownMenu.Item>
-				<DropdownMenu.Item>
-					<Checkbox />
-					Dry utility
-				</DropdownMenu.Item>
-				<DropdownMenu.Item>
-					<Checkbox />
-					Stormwater
-				</DropdownMenu.Item>
-				<DropdownMenu.Item>
-					<Checkbox />
-					Sewer
-				</DropdownMenu.Item>
-				<DropdownMenu.Item>
-					<Checkbox />
-					Boundary
-				</DropdownMenu.Item>
-				<DropdownMenu.Item>
-					<Checkbox />
-					Map
-				</DropdownMenu.Item>
+				<DropdownMenu.Item>Show all</DropdownMenu.Item>
+				<DropdownMenu.Item>Guides</DropdownMenu.Item>
+				<DropdownMenu.Item>Other</DropdownMenu.Item>
+				<DropdownMenu.Item>Roadway</DropdownMenu.Item>
+				<DropdownMenu.Item>Parking</DropdownMenu.Item>
+				<DropdownMenu.Item>Building</DropdownMenu.Item>
+				<DropdownMenu.Item>Dry utility</DropdownMenu.Item>
+				<DropdownMenu.Item>Stormwater</DropdownMenu.Item>
+				<DropdownMenu.Item>Sewer</DropdownMenu.Item>
+				<DropdownMenu.Item>Boundary</DropdownMenu.Item>
+				<DropdownMenu.Item>Map</DropdownMenu.Item>
 			</DropdownMenu.Content>
 		</DropdownMenu.Root>
 	);

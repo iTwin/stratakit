@@ -40,7 +40,7 @@ test("disabled", async ({ page }) => {
 	await expect(anchor).toBeFocused();
 });
 
-test("visual", async ({ page }) => {
+test("@visual", async ({ page }) => {
 	await page.goto("/tests/anchor?visual=true");
 	await expect(page.locator("body")).toHaveScreenshot();
 });

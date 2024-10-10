@@ -4,35 +4,35 @@
  *--------------------------------------------------------------------------------------------*/
 .🥝-checkbox {
 	@layer base {
-		--_kiwi-checkbox-color-background: #36393f; /* bg/neutral/base */
+		--_kiwi-checkbox-color-background: var(--kiwi-color-bg-neutral-base);
 		--_kiwi-checkbox-color-background-hover: color-mix(
 			in srgb,
-			var(--_kiwi-checkbox-color-background),
-			#fff 4%
+			var(--_kiwi-checkbox-color-background) 100%,
+			var(--kiwi-color-glow-hue) var(--kiwi-color-bg-glow-base-hover-\%)
 		);
-		--_kiwi-checkbox-color-background-checked: #198166; /* bg/accent/base */
+		--_kiwi-checkbox-color-background-checked: var(--kiwi-color-bg-accent-base);
 		--_kiwi-checkbox-color-background-checked-hover: color-mix(
 			in srgb,
-			var(--_kiwi-checkbox-color-background-checked),
-			#fff 8%
+			var(--_kiwi-checkbox-color-background-checked) 100%,
+			var(--kiwi-color-glow-hue) var(--kiwi-color-bg-glow-base-press-\%)
 		);
-		--_kiwi-checkbox-color-background-disabled: #ffffff0a; /* bg/glow/on-surface/disabled */
+		--_kiwi-checkbox-color-background-disabled: var(--kiwi-color-bg-glow-on-surface-disabled);
 
 		--_kiwi-checkbox-color-border: #ffffff14; /* bg/button/base/border/color */
 		--_kiwi-checkbox-color-border-hover: color-mix(
 			in srgb,
 			#ffffff14 /* bg/button/base/border/color */ 100%,
-			white 8%
+			var(--kiwi-color-glow-hue) var(--kiwi-color-border-glow-base-hover-\%)
 		);
 		--_kiwi-checkbox-color-border-checked: #ffffff29; /* bg/button/strong/border/color */
 		--_kiwi-checkbox-color-border-checked-hover: color-mix(
 			in srgb,
 			#ffffff29 /* bg/button/strong/border/color */ 100%,
-			white 16%
+			var(--kiwi-color-glow-hue) var(--kiwi-color-border-glow-base-press-\%)
 		);
 		--_kiwi-checkbox-color-border-disabled: transparent;
 
-		--_kiwi-checkbox-color-svg: #ffffff; /* icon/neutral/emphasis */
+		--_kiwi-checkbox-color-svg: var(--kiwi-color-icon-neutral-emphasis);
 		--_kiwi-checkbox-size: 1rem;
 		--_kiwi-checkbox-border-radius: 4px;
 
@@ -153,7 +153,7 @@
 
 		&:where([disabled], :disabled, [aria-disabled="true"]) {
 			--__kiwi-checkbox-visual-state: var(--__kiwi-checkbox-visual-state--disabled);
-			--_kiwi-checkbox-color-svg: #585f68; /* icon/neutral/disabled */
+			--_kiwi-checkbox-color-svg: var(--kiwi-color-icon-neutral-disabled);
 			cursor: not-allowed;
 			box-shadow: none;
 

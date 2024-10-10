@@ -34,7 +34,7 @@ test("disabled", async ({ page }) => {
 	await expect(input).toHaveValue("");
 });
 
-test("visual", async ({ page }) => {
+test("@visual", async ({ page }) => {
 	await page.goto("/tests/input");
 	await expect(page.locator("body")).toHaveScreenshot();
 });

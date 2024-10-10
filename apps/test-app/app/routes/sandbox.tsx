@@ -32,9 +32,7 @@ export default function Page() {
 					<h2>Layers</h2>
 					<div className={styles.actions}>
 						<Icon
-							style={{
-								color: "var(--kiwi-color-text-accent-strong)",
-							}}
+							style={{ color: "var(--kiwi-color-text-accent-strong)" }}
 							href={placeholderIcon}
 						/>
 						<Icon href={placeholderIcon} />

@@ -4,12 +4,18 @@
  *--------------------------------------------------------------------------------------------*/
 import type * as React from "react";
 import styles from "./sandbox.module.css";
-import { DropdownMenu, Icon, Input } from "@itwin/kiwi-react/bricks";
+import {
+	DropdownMenu,
+	Icon,
+	Input,
+	VisuallyHidden,
+} from "@itwin/kiwi-react/bricks";
 import { ListItem } from "@itwin/kiwi-react-internal/src/bricks/ListItem.js";
 import type { MetaFunction } from "@remix-run/react";
 
+const title = "Kiwi sandbox";
 export const meta: MetaFunction = () => {
-	return [{ title: "Kiwi sandbox" }, { name: "color-scheme", content: "dark" }];
+	return [{ title }, { name: "color-scheme", content: "dark" }];
 };
 
 const placeholderIcon = new URL(
@@ -19,41 +25,46 @@ const placeholderIcon = new URL(
 
 export default function Page() {
 	return (
-		<div className={styles.appLayout}>
-			<div className={styles.platformBar}>
-				<div className={styles.logo}>
-					<Icon href={placeholderIcon} size="large" />
-				</div>
-				<div className={styles.tools}>
-					<Icon href={placeholderIcon} size="large" />
-					<Icon href={placeholderIcon} size="large" />
-					<Icon href={placeholderIcon} size="large" />
-				</div>
-			</div>
-			<div className={styles.leftPanel}>
-				<div className={styles.header}>
-					<h2>Layers</h2>
-					<div className={styles.actions}>
-						<Icon
-							style={{ color: "var(--kiwi-color-text-accent-strong)" }}
-							href={placeholderIcon}
-						/>
-						<Icon href={placeholderIcon} />
+		<>
+			<VisuallyHidden render={(props) => <h1 {...props} />}>
+				{title}
+			</VisuallyHidden>
+			<div className={styles.appLayout}>
+				<div className={styles.platformBar}>
+					<div className={styles.logo}>
+						<Icon href={placeholderIcon} size="large" />
+					</div>
+					<div className={styles.tools}>
+						<Icon href={placeholderIcon} size="large" />
+						<Icon href={placeholderIcon} size="large" />
+						<Icon href={placeholderIcon} size="large" />
 					</div>
 				</div>
-				<div className={styles.searchWrapper}>
-					<Input placeholder="Search" />
-					<div className={styles.actions}>
-						<Icon href={placeholderIcon} />
-						<SortingModes />
+				<div className={styles.leftPanel}>
+					<div className={styles.header}>
+						<h2>Layers</h2>
+						<div className={styles.actions}>
+							<Icon
+								style={{ color: "var(--kiwi-color-text-accent-strong)" }}
+								href={placeholderIcon}
+							/>
+							<Icon href={placeholderIcon} />
+						</div>
 					</div>
+					<div className={styles.searchWrapper}>
+						<Input placeholder="Search" />
+						<div className={styles.actions}>
+							<Icon href={placeholderIcon} />
+							<SortingModes />
+						</div>
+					</div>
+					<Tree />
 				</div>
-				<Tree />
+				<div className={styles.canvasWrapper}>
+					<div className={styles.canvas} />
+				</div>
 			</div>
-			<div className={styles.canvasWrapper}>
-				<div className={styles.canvas} />
-			</div>
-		</div>
+		</>
 	);
 }
 

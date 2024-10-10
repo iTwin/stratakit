@@ -5,6 +5,7 @@
 import * as React from "react";
 import cx from "classnames";
 import * as Ariakit from "@ariakit/react";
+import { useFieldId } from "./Field.js";
 
 interface SwitchProps extends Omit<Ariakit.CheckboxProps, "store"> {
 	/** The default checked state of the toggle switch. */
@@ -17,9 +18,12 @@ export const Switch = React.forwardRef<
 	React.ElementRef<typeof Ariakit.Checkbox>,
 	SwitchProps
 >((props, forwardedRef) => {
+	const fieldId = useFieldId();
+
 	return (
 		<Ariakit.Checkbox
 			accessibleWhenDisabled
+			id={fieldId}
 			{...props}
 			className={cx("🥝-switch", props.className)}
 			role="switch"

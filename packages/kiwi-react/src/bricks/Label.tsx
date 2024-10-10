@@ -17,8 +17,8 @@ export const Label = React.forwardRef<
 
 	return (
 		<Ariakit.Role.label
+			htmlFor={fieldId}
 			{...props}
-			htmlFor={props.htmlFor ?? fieldId}
 			className={cx("🥝-label", props.className)}
 			ref={forwardedRef}
 		/>

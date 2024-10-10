@@ -21,13 +21,23 @@ test.describe("default", () => {
 		);
 	});
 
+	test("wrapping radio and label", async ({ page }) => {
+		await expect(page.getByRole("radio")).toHaveAccessibleName("Radio example");
+	});
+
 	test("wrapping checkbox and label", async ({ page }) => {
 		await expect(page.getByRole("checkbox")).toHaveAccessibleName(
 			"Checkbox example",
 		);
 	});
 
-	test("wrapping radio and label", async ({ page }) => {
-		await expect(page.getByRole("radio")).toHaveAccessibleName("Radio example");
+	test("wrapping switch and label", async ({ page }) => {
+		await expect(page.getByRole("switch")).toHaveAccessibleName(
+			"Switch example",
+		);
+	});
+
+	test("rendering as a label", async ({ page }) => {
+		await expect(page.locator(".🥝-label.🥝-field")).toBeVisible();
 	});
 });

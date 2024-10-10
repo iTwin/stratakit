@@ -14,10 +14,11 @@ export const Textarea = React.forwardRef<
 	TextareaProps
 >((props, forwardedRef) => {
 	const fieldId = useFieldId();
+
 	return (
 		<Ariakit.Role.textarea
+			id={fieldId}
 			{...props}
-			id={props.id ?? fieldId}
 			className={cx("🥝-input", props.className)}
 			render={
 				<Ariakit.Focusable

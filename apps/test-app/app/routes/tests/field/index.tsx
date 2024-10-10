@@ -8,6 +8,7 @@ import {
 	Input,
 	Label,
 	Radio,
+	Switch,
 	Textarea,
 } from "@itwin/kiwi-react/bricks";
 
@@ -22,12 +23,15 @@ export default function Page() {
 			</Field>
 			<Field>
 				<Label>
-					<Checkbox /> Checkbox example
+					<Radio name="radio" value="radio" /> Radio example
 				</Label>
+			</Field>
+			<Field render={<Label />}>
+				<Checkbox /> Checkbox example
 			</Field>
 			<Field>
 				<Label>
-					<Radio name="radio" value="radio" /> Radio example
+					<Switch /> Switch example
 				</Label>
 			</Field>
 		</form>

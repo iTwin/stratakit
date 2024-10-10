@@ -15,8 +15,8 @@ export const Input = React.forwardRef<React.ElementRef<"input">, InputProps>(
 
 		return (
 			<Ariakit.Role.input
+				id={fieldId}
 				{...props}
-				id={props.id ?? fieldId}
 				className={cx("🥝-input", props.className)}
 				render={
 					<Ariakit.Focusable

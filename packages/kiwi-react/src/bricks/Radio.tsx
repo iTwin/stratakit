@@ -18,8 +18,8 @@ export const Radio = React.forwardRef<
 	return (
 		<Ariakit.Radio
 			accessibleWhenDisabled
+			id={fieldId}
 			{...props}
-			id={props.id ?? fieldId}
 			className={cx("🥝-checkbox", "🥝-radio", props.className)}
 			ref={forwardedRef}
 		/>

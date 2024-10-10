@@ -18,8 +18,8 @@ export const Checkbox = React.forwardRef<
 	return (
 		<Ariakit.Checkbox
 			accessibleWhenDisabled
+			id={fieldId}
 			{...props}
-			id={props.id ?? fieldId}
 			className={cx("🥝-checkbox", props.className)}
 			ref={forwardedRef}
 		/>

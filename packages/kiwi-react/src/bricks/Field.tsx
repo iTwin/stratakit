@@ -3,10 +3,10 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 import * as React from "react";
-import type * as Ariakit from "@ariakit/react";
+import * as Ariakit from "@ariakit/react";
 import cx from "classnames";
 
-interface FieldProps extends Ariakit.RoleProps<"div"> {}
+interface FieldProps extends Ariakit.RoleProps {}
 
 const FieldIdContext = React.createContext<string | undefined>(undefined);
 
@@ -20,7 +20,7 @@ export const Field = React.forwardRef<React.ElementRef<"div">, FieldProps>(
 
 		return (
 			<FieldIdContext.Provider value={fieldId}>
-				<div
+				<Ariakit.Role
 					{...props}
 					className={cx("🥝-field", props.className)}
 					ref={forwardedRef}

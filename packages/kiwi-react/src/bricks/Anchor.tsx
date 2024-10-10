@@ -6,10 +6,14 @@ import * as React from "react";
 import cx from "classnames";
 import * as Ariakit from "@ariakit/react";
 
-interface AnchorProps extends Ariakit.FocusableProps<"a"> {}
+interface AnchorProps extends Ariakit.FocusableProps<"a"> {
+	/** @default "primary" */
+	variant?: "primary" | "strong" | "destructive";
+}
 
 export const Anchor = React.forwardRef<React.ElementRef<"a">, AnchorProps>(
 	(props, forwardedRef) => {
+		const { variant = "primary", ...rest } = props;
 		return (
 			<Ariakit.Role.a
 				{...props}
@@ -17,6 +21,7 @@ export const Anchor = React.forwardRef<React.ElementRef<"a">, AnchorProps>(
 				render={
 					<Ariakit.Focusable
 						accessibleWhenDisabled
+						data-kiwi-variant={variant}
 						render={props.render || <a />}
 					/>
 				}

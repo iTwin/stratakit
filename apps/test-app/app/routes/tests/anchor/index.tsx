@@ -29,9 +29,15 @@ export default function Page() {
 }
 
 function VisualTest() {
+	const variants = ["primary", "strong", "destructive"] as const;
+
 	return (
 		<>
-			<Anchor href="https://bentley.com">Example</Anchor>
+			{variants.map((variant) => (
+				<Anchor key={variant} variant={variant} href="https://bentley.com">
+					Example
+				</Anchor>
+			))}
 		</>
 	);
 }

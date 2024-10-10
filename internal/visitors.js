@@ -209,7 +209,7 @@ export function staticVariablesTransform() {
  * // Map { "color-background" → {…}, "color-text" → {…} }
  * ```
  */
-function parseTokens(obj, prefix = "") {
+export function parseTokens(obj, prefix = "") {
 	const tokens = new Map();
 	for (const [key, value] of Object.entries(obj)) {
 		if (typeof value === "object" && value !== null && !("$value" in value)) {

@@ -3,7 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 import type * as React from "react";
-import styles from "./index.module.css";
+import styles from "./sandbox.module.css";
 import { Checkbox, DropdownMenu, Icon, Input } from "@itwin/kiwi-react/bricks";
 import { ListItem } from "@itwin/kiwi-react-internal/src/bricks/ListItem.js";
 import { useSearchParams } from "@remix-run/react";

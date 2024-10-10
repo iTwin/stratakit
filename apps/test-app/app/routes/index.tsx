@@ -15,7 +15,6 @@ const components = [
 	"DropdownMenu",
 	"Icon",
 	"Input",
-	"LeftPanel",
 	"List",
 	"Radio",
 	"Switch",
@@ -36,6 +35,12 @@ export default function Index() {
 		<main className={styles.main}>
 			<h1>Kiwi</h1>
 			<Divider />
+
+			<ul className={styles.list}>
+				<li>
+					<Anchor render={<Link to="/sandbox" />}>Sandbox</Anchor>
+				</li>
+			</ul>
 
 			<ul className={styles.list}>
 				{components.map((component) => (

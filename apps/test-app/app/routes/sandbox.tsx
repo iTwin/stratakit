@@ -58,8 +58,7 @@ export default function Page() {
 
 function Tree() {
 	return (
-		/* biome-ignore lint/a11y/useSemanticElements: temporary until Tree component is implemented */
-		<div role="tree" className={styles.tree}>
+		<div className={styles.tree}>
 			<TreeRow level={0}>Guides</TreeRow>
 			<TreeRow level={1}>Tree</TreeRow>
 			<TreeRow level={2}>Guide 4</TreeRow>
@@ -102,10 +101,7 @@ type TreeRowProps = React.PropsWithChildren<{
 
 function TreeRow({ level = 0, children }: TreeRowProps) {
 	return (
-		<ListItem
-			role="treeitem"
-			style={{ ...(level > 0 ? { paddingLeft: level * 20 } : {}) }}
-		>
+		<ListItem style={{ ...(level > 0 ? { paddingLeft: level * 20 } : {}) }}>
 			<Icon href={placeholderIcon} style={{ display: "inline" }} />
 			{children}
 		</ListItem>

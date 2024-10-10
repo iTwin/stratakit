@@ -56,7 +56,8 @@ export default function Page() {
 
 function Tree() {
 	return (
-		<div className={styles.tree}>
+		// biome-ignore lint/a11y/useSemanticElements: `div` is used as underlying element for `ListItem`
+		<div role="list" className={styles.tree}>
 			<TreeRow level={0}>Guides</TreeRow>
 			<TreeRow level={1}>Tree</TreeRow>
 			<TreeRow level={2}>Guide 4</TreeRow>

@@ -16,12 +16,12 @@ export const Anchor = React.forwardRef<React.ElementRef<"a">, AnchorProps>(
 		const { variant = "primary", ...rest } = props;
 		return (
 			<Ariakit.Role.a
-				{...props}
+				data-kiwi-variant={variant}
+				{...rest}
 				className={cx("🥝-anchor", props.className)}
 				render={
 					<Ariakit.Focusable
 						accessibleWhenDisabled
-						data-kiwi-variant={variant}
 						render={props.render || <a />}
 					/>
 				}

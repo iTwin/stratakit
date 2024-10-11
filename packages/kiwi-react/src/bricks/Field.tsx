@@ -5,27 +5,27 @@
 import * as React from "react";
 import * as Ariakit from "@ariakit/react";
 import cx from "classnames";
-import { useFieldId } from "./Field.js";
 
-interface InputProps extends Ariakit.FocusableProps<"input"> {}
+interface FieldProps extends Ariakit.RoleProps {}
 
-export const Input = React.forwardRef<React.ElementRef<"input">, InputProps>(
+const FieldIdContext = React.createContext<string | undefined>(undefined);
+
+export function useFieldId() {
+	return React.useContext(FieldIdContext);
+}
+
+export const Field = React.forwardRef<React.ElementRef<"div">, FieldProps>(
 	(props, forwardedRef) => {
-		const fieldId = useFieldId();
+		const fieldId = React.useId();
 
 		return (
-			<Ariakit.Role.input
-				id={fieldId}
-				{...props}
-				className={cx("🥝-input", props.className)}
-				render={
-					<Ariakit.Focusable
-						accessibleWhenDisabled
-						render={props.render || <input />}
-					/>
-				}
-				ref={forwardedRef}
-			/>
+			<FieldIdContext.Provider value={fieldId}>
+				<Ariakit.Role
+					{...props}
+					className={cx("🥝-field", props.className)}
+					ref={forwardedRef}
+				/>
+			</FieldIdContext.Provider>
 		);
 	},
 );

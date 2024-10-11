@@ -4,18 +4,17 @@
  *--------------------------------------------------------------------------------------------*/
 .🥝-tooltip {
 	@layer base {
-		--_kiwi-tooltip-color-background: #090a0b;
-		--_kiwi-tooltip-color-border: #000000a3;
+		--_kiwi-tooltip-color-background: var(--kiwi-color-bg-surface-emphasis);
+		--_kiwi-tooltip-color-border: var(--kiwi-color-border-surface-primary);
 		--_kiwi-tooltip-color-box-shadow: #00000029;
-		--_kiwi-tooltip-color-text: #ffffff;
 
 		--_kiwi-tooltip-padding-horizontal: 0.25rem;
 		--_kiwi-tooltip-border-radius: 0.25rem;
 		--_kiwi-tooltip-content-gap: 0.125rem;
 
-		background: var(--_kiwi-tooltip-color-background);
+		background-color: var(--_kiwi-tooltip-color-background);
 
-		border: var(--_kiwi-tooltip-border-radius) solid var(--_kiwi-tooltip-color-border);
+		border: 1px solid var(--_kiwi-tooltip-color-border);
 		border-radius: var(--_kiwi-tooltip-border-radius);
 
 		box-shadow:
@@ -29,8 +28,16 @@
 		gap: var(--_kiwi-tooltip-content-gap);
 		line-height: 1;
 		min-height: 16px;
-		padding: 0 var(--_kiwi-tooltip-padding-horizontal);
+		padding: var(--_kiwi-tooltip-padding-horizontal);
 
 		justify-content: center;
+		font-size: 0.75rem;
 	}
 }
+
+border-radius: var(--radius-4, 4px);
+border: var(--border-1, 1px) solid var(--color-border-surface-primary, rgba(0, 0, 0, 0.64));
+background: var(--color-bg-surface-emphasis, #090A0B);
+
+/* tooltip/base */
+box-shadow: var(--shadow-surface-layer1-x, 0px) var(--shadow-surface-layer1-y, 1px) var(--shadow-surface-layer1-blur, 1px) var(--shadow-surface-layer1-spread, -0.5px) var(--shadow-surface-layer1-color, rgba(0, 0, 0, 0.16)), var(--shadow-surface-layer2-x, 0px) var(--shadow-surface-layer2-y, 3px) var(--shadow-surface-layer2-blur, 3px) var(--shadow-surface-layer2-spread, -1.5px) var(--shadow-surface-layer2-color, rgba(0, 0, 0, 0.16)), var(--shadow-surface-layer3-x, 0px) var(--shadow-surface-layer3-y, 6px) var(--shadow-surface-layer3-blur, 6px) var(--shadow-surface-layer3-spread, -3px) var(--shadow-surface-layer3-color, rgba(0, 0, 0, 0.16)), var(--shadow-surface-layer4-x, 0px) var(--shadow-surface-layer4-y, 12px) var(--shadow-surface-layer4-blur, 12px) var(--shadow-surface-layer4-spread, -6px) var(--shadow-surface-layer4-color, rgba(0, 0, 0, 0.16));

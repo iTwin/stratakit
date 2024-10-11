@@ -46,6 +46,9 @@ export default function Index() {
 				<li>
 					<Anchor render={<Link to="/sandbox" />}>Sandbox</Anchor>
 				</li>
+				<li>
+					<Anchor render={<Link to="/tokens" />}>Tokens</Anchor>
+				</li>
 			</ul>
 
 			<ul className={styles.list}>

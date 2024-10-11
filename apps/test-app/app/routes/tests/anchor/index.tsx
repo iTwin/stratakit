@@ -32,12 +32,12 @@ function VisualTest() {
 	const variants = ["primary", "strong", "destructive"] as const;
 
 	return (
-		<>
+		<div style={{ display: "grid", gap: 4 }}>
 			{variants.map((variant) => (
 				<Anchor key={variant} variant={variant} href="https://bentley.com">
 					Example
 				</Anchor>
 			))}
-		</>
+		</div>
 	);
 }

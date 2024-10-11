@@ -9,30 +9,30 @@
 
 		--_kiwi-switch-color-border: var(--kiwi-color-border-neutral-base);
 		--_kiwi-switch-color-border-hover: color-mix(
-			in srgb,
+			in oklch,
 			var(--_kiwi-switch-color-border) 100%,
 			var(--kiwi-color-glow-hue) var(--kiwi-color-border-glow-base-hover-\%)
 		);
 		--_kiwi-switch-color-border-pressed: color-mix(
-			in srgb,
+			in oklch,
 			var(--_kiwi-switch-color-border) 100%,
 			var(--kiwi-color-glow-hue) var(--kiwi-color-border-glow-base-press-\%)
 		);
 		--_kiwi-switch-color-border-checked: color-mix(
-			in srgb,
+			in oklch,
 			var(--_kiwi-switch-color-background-checked) 100%,
 			var(--kiwi-color-glow-hue) var(--kiwi-color-border-glow-strong-hover-\%)
 		);
 		--_kiwi-switch-color-border-disabled: var(--kiwi-color-border-glow-on-surface-disabled);
 		--_kiwi-switch-color-background: var(--kiwi-color-bg-surface-primary);
 		--_kiwi-switch-color-background-hover: color-mix(
-			in srgb,
+			in oklch,
 			var(--_kiwi-switch-color-background) 100%,
 			var(--kiwi-color-glow-hue) var(--kiwi-color-bg-glow-base-hover-\%)
 		);
 		--_kiwi-switch-color-background-checked: var(--kiwi-color-bg-accent-base);
 		--_kiwi-switch-color-background-checked-hover: color-mix(
-			in srgb,
+			in oklch,
 			var(--_kiwi-switch-color-background-checked) 100%,
 			var(--kiwi-color-glow-hue) var(--kiwi-color-bg-glow-strong-hover-\%)
 		);

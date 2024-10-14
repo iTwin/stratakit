@@ -7,7 +7,7 @@ import type { MetaFunction } from "@remix-run/react";
 import rawTokens from "internal/theme-dark.json";
 import { parseTokens } from "internal/visitors.js";
 import styles from "./tokens.module.css";
-import { Button } from "@itwin/kiwi-react/bricks";
+import { Button, Divider } from "@itwin/kiwi-react/bricks";
 
 const tokens = parseTokens(rawTokens);
 
@@ -27,6 +27,8 @@ export default function Page() {
 	return (
 		<>
 			<h1>Tokens</h1>
+
+			<Divider />
 
 			<h2>Colors</h2>
 

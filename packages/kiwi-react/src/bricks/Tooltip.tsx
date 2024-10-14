@@ -9,13 +9,21 @@ import * as Ariakit from "@ariakit/react";
 interface TooltipProps extends Omit<Ariakit.TooltipProps, "store" | "content"> {
 	content: React.ReactNode;
 	children: React.ReactElement;
+	ariaStrategy?: "description" | "label" | "none";
 }
 
 export const Tooltip = React.forwardRef<
 	React.ElementRef<typeof Ariakit.Tooltip>,
 	TooltipProps
 >((props, forwardedRef) => {
-	const { content, children, className, id = React.useId(), ...rest } = props;
+	const {
+		content,
+		children,
+		className,
+		ariaStrategy = "none",
+		id = React.useId(),
+		...rest
+	} = props;
 
 	return (
 		<>

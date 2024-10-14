@@ -47,6 +47,10 @@ body {
 	td {
 		border: 1px solid var(--kiwi-color-border-neutral-muted);
 		padding: 1rem;
+
+		&:first-child {
+			min-inline-size: 23rem;
+		}
 	}
 
 	code {

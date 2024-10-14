@@ -12,6 +12,23 @@ body {
 	align-items: flex-start;
 	gap: 0.25rem;
 	padding-block: 0.5rem;
+
+	button {
+		svg {
+			@media (prefers-reduced-motion: no-preference) {
+				transition: transform 150ms ease-out;
+			}
+			@media (forced-colors: active) {
+				color: CanvasText;
+			}
+		}
+
+		&[aria-expanded="false"] {
+			svg {
+				transform: rotate(-90deg);
+			}
+		}
+	}
 }
 
 .table {

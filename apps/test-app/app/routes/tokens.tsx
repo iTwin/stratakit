@@ -45,7 +45,15 @@ export default function Page() {
 					<Ariakit.DisclosureProvider key={key} defaultOpen={true}>
 						<div className={styles.disclosureWrapper}>
 							<Ariakit.Disclosure render={<Button variant="ghost" />}>
-								{value} <span aria-hidden>▼</span>
+								<svg width="16" height="16" fill="none" aria-hidden="true">
+									<path
+										fill="currentColor"
+										fill-rule="evenodd"
+										d="M4.646 6.646a.5.5 0 0 1 .708 0L8 9.293l2.646-2.647a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 0 1 0-.708Z"
+										clip-rule="evenodd"
+									/>
+								</svg>
+								{value}
 							</Ariakit.Disclosure>
 							<Ariakit.DisclosureContent>
 								<table className={styles.table}>

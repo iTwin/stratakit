@@ -34,10 +34,3 @@
 		font-size: 0.75rem;
 	}
 }
-
-border-radius: var(--radius-4, 4px);
-border: var(--border-1, 1px) solid var(--color-border-surface-primary, rgba(0, 0, 0, 0.64));
-background: var(--color-bg-surface-emphasis, #090A0B);
-
-/* tooltip/base */
-box-shadow: var(--shadow-surface-layer1-x, 0px) var(--shadow-surface-layer1-y, 1px) var(--shadow-surface-layer1-blur, 1px) var(--shadow-surface-layer1-spread, -0.5px) var(--shadow-surface-layer1-color, rgba(0, 0, 0, 0.16)), var(--shadow-surface-layer2-x, 0px) var(--shadow-surface-layer2-y, 3px) var(--shadow-surface-layer2-blur, 3px) var(--shadow-surface-layer2-spread, -1.5px) var(--shadow-surface-layer2-color, rgba(0, 0, 0, 0.16)), var(--shadow-surface-layer3-x, 0px) var(--shadow-surface-layer3-y, 6px) var(--shadow-surface-layer3-blur, 6px) var(--shadow-surface-layer3-spread, -3px) var(--shadow-surface-layer3-color, rgba(0, 0, 0, 0.16)), var(--shadow-surface-layer4-x, 0px) var(--shadow-surface-layer4-y, 12px) var(--shadow-surface-layer4-blur, 12px) var(--shadow-surface-layer4-spread, -6px) var(--shadow-surface-layer4-color, rgba(0, 0, 0, 0.16));

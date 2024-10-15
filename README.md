@@ -13,13 +13,9 @@ These are the packages of the Kiwi design system:
 - [`@itwin/kiwi-react`](./packages/kiwi-react/): A React component library for the Kiwi design system.
 - [`@itwin/kiwi-icons`](./packages/kiwi-icons/): Generic SVG icons for iTwinUI projects.
 
-### Internal ([`./internal`](./internal/))
-
-This package contains configuration and common variables shared between packages and the workspace at large.
-
 ### Apps ([`./apps/*`](./apps/))
 
-These are example apps which might be used for testing or as a demonstration of the Kiwi design system in action. Currently, we only have [one app](./apps/test-app/) which is used for testing purposes.
+These are example apps which might be used for testing or as a demonstration of the Kiwi design system in action. Currently, this repo only has one [test app](./apps/test-app/) which is used for testing purposes.
 
 ## Contributing
 

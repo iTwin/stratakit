@@ -63,3 +63,9 @@ defineConfig({
 	},
 });
 ```
+
+## Contributing
+
+Are you interested in helping kiwi grow and expand? You can submit feature requests or bugs by creating [issues](https://github.com/iTwin/kiwi/issues).
+
+If you're interesting in contributing code, please read [`CONTRIBUTING.md`](https://github.com/iTwin/kiwi/blob/main/CONTRIBUTING.md) for more information.

@@ -1,0 +1,10 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+.🥝-icon-button:is(.🥝-button) {
+	@layer base {
+		aspect-ratio: 1;
+		--_kiwi-button-padding-inline: 4px;
+	}
+}

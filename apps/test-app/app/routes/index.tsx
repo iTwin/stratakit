@@ -17,6 +17,7 @@ const components = [
 	"DropdownMenu",
 	"Field",
 	"Icon",
+	"IconButton",
 	"Input",
 	"List",
 	"Radio",

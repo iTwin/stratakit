@@ -4,7 +4,7 @@ Monorepo for the kiwi design system.
 
 ## Monorepo structure
 
-We’re using a [pnpm workspace](https://pnpm.io/workspaces) which can be configured in the [`./pnpm-workspace.yaml`](./pnpm-workspace.yaml) file.
+This monorepo is a [pnpm workspace](https://pnpm.io/workspaces) which can be configured in the [`./pnpm-workspace.yaml`](./pnpm-workspace.yaml) file.
 
 ### Packages ([`./packages/*`](./packages/))
 

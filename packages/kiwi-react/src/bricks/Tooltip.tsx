@@ -6,10 +6,12 @@ import * as React from "react";
 import cx from "classnames";
 import * as Ariakit from "@ariakit/react";
 
+export type AriaStrategy = "description" | "label" | "none";
+
 interface TooltipProps extends Omit<Ariakit.TooltipProps, "store" | "content"> {
 	content: React.ReactNode;
 	children: React.ReactElement;
-	ariaStrategy?: "description" | "label" | "none";
+	ariaStrategy?: AriaStrategy;
 }
 
 export const Tooltip = React.forwardRef<
@@ -20,24 +22,34 @@ export const Tooltip = React.forwardRef<
 		content,
 		children,
 		className,
-		ariaStrategy = "none",
+		ariaStrategy = "description",
 		id = React.useId(),
 		...rest
 	} = props;
 
+	// Determine the correct aria attribute dynamically
+	const ariaProps =
+		ariaStrategy === "description"
+			? { "aria-describedby": id }
+			: ariaStrategy === "label"
+				? { "aria-labelledby": id }
+				: {};
+
 	return (
 		<>
-			<Ariakit.TooltipProvider>
-				<Ariakit.TooltipAnchor render={children} aria-describedby={id} />
-				<Ariakit.Tooltip
-					{...rest}
-					className={cx("🥝-tooltip", className)}
-					ref={forwardedRef}
-					id={id}
-				>
-					{content}
-				</Ariakit.Tooltip>
-			</Ariakit.TooltipProvider>
+			{ariaStrategy !== "none" ? (
+				<Ariakit.TooltipProvider>
+					<Ariakit.TooltipAnchor render={children} {...ariaProps} />
+					<Ariakit.Tooltip
+						{...rest}
+						className={cx("🥝-tooltip", className)}
+						ref={forwardedRef}
+						id={id}
+					>
+						{content}
+					</Ariakit.Tooltip>
+				</Ariakit.TooltipProvider>
+			) : null}
 		</>
 	);
 });

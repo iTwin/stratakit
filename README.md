@@ -10,8 +10,8 @@ This monorepo is a [pnpm workspace](https://pnpm.io/workspaces) which can be con
 
 These are the packages of the Kiwi design system:
 
-- [`@itwin/kiwi-react`](./packages/kiwi-react/): A React component library for the Kiwi design system.
-- [`@itwin/kiwi-icons`](./packages/kiwi-icons/): Generic SVG icons for iTwinUI projects.
+- [`@itwin/kiwi-react`](./packages/kiwi-react/): React component library.
+- [`@itwin/kiwi-icons`](./packages/kiwi-icons/): A standalone SVG icon library.
 
 ### Apps ([`./apps/*`](./apps/))
 

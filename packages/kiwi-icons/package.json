@@ -9,7 +9,7 @@
 		"./icons-list.json": "./icons-list.json"
 	},
 	"files": ["icons/*.svg", "icons-list.json"],
-	"description": "Generic SVG icons for iTwinUI projects",
+	"description": "A standalone SVG icon library.",
 	"author": "Bentley Systems",
 	"homepage": "https://github.com/iTwin/kiwi",
 	"repository": {

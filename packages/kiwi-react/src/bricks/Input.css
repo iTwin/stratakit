@@ -6,14 +6,14 @@
 	@layer base {
 		--_kiwi-input-color-background: var(--kiwi-color-bg-surface-primary);
 		--_kiwi-input-color-background-hover: color-mix(
-			in srgb,
+			in oklch,
 			var(--_kiwi-input-color-background) 100%,
 			var(--kiwi-color-glow-hue) var(--kiwi-color-bg-glow-base-hover-\%)
 		);
 		--_kiwi-input-color-background-disabled: var(--kiwi-color-bg-surface-base);
 		--_kiwi-input-color-border: var(--kiwi-color-border-neutral-base);
 		--_kiwi-input-color-border-hover: color-mix(
-			in srgb,
+			in oklch,
 			var(--_kiwi-input-color-border) 100%,
 			var(--kiwi-color-glow-hue) var(--kiwi-color-border-glow-base-hover-\%)
 		);

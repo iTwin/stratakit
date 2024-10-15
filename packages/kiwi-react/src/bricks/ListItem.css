@@ -11,7 +11,7 @@
 
 		--_kiwi-list-item-color-background: transparent;
 		--_kiwi-list-item-color-background-hover: color-mix(
-			in srgb,
+			in oklch,
 			var(--_kiwi-list-item-color-background) 100%,
 			var(--kiwi-color-glow-hue) var(--kiwi-color-bg-glow-on-surface-neutral-hover-\%)
 		);

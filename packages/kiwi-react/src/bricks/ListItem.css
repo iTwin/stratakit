@@ -15,12 +15,16 @@
 			var(--_kiwi-list-item-color-background) 100%,
 			var(--kiwi-color-glow-hue) var(--kiwi-color-bg-glow-on-surface-neutral-hover-\%)
 		);
-		--_kiwi-list-item-color-background-pressed: var(--kiwi-color-bg-glow-on-surface-accent-hover);
-		--_kiwi-list-item-color-pressed: var(--kiwi-color-text-accent-strong);
+		--_kiwi-list-item-color-background-pressed: color-mix(
+			in oklch,
+			var(--_kiwi-list-item-color-background) 100%,
+			var(--kiwi-color-glow-hue) var(--kiwi-color-bg-glow-on-surface-neutral-press-\%)
+		);
 		--_kiwi-list-item-color-disabled: var(--kiwi-color-text-neutral-disabled);
 
 		cursor: pointer;
 		line-height: 1;
+		font-size: 0.75rem;
 
 		display: flex;
 		align-items: center;
@@ -45,9 +49,6 @@
 			)
 			var(--__kiwi-list-item-state--hover, var(--_kiwi-list-item-color-background-hover))
 			var(--__kiwi-list-item-state--pressed, var(--_kiwi-list-item-color-background-pressed));
-		color: var(--__kiwi-list-item-state--default, unset)
-			var(--__kiwi-list-item-state--pressed, var(--_kiwi-list-item-color-pressed))
-			var(--__kiwi-list-item-state--disabled, var(--_kiwi-list-item-color-disabled));
 
 		@media (any-hover: hover) {
 			&:where(:hover) {
@@ -62,6 +63,7 @@
 		&:where([disabled], :disabled, [aria-disabled="true"]) {
 			--__kiwi-list-item-state: var(--__kiwi-list-item-state--disabled);
 			cursor: not-allowed;
+			color: var(--_kiwi-list-item-color-disabled);
 		}
 	}
 }

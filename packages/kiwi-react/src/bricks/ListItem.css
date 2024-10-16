@@ -6,7 +6,7 @@
 	@layer base {
 		--_kiwi-list-item-gap: 0.25rem;
 		--_kiwi-list-item-height: 1.5rem;
-		--_kiwi-list-item-padding-inline: 0.75rem 0.5rem;
+		--_kiwi-list-item-padding-inline: 0.75rem;
 		--_kiwi-list-item-padding-block: 0.25rem;
 
 		--_kiwi-list-item-color-background: transparent;

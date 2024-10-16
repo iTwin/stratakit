@@ -6,22 +6,25 @@ Test app built using [Remix](https://remix.run/).
 
 The end-to-end tests are written in [Playwright](https://playwright.dev/) and run inside a [Docker](https://www.docker.com/) container to avoid platform specific inconsistencies.
 
-Use the following command to to run tests:
+> [!NOTE]
+> The following commands should be run from the root of the monorepo.
+
+To run all the tests:
 
 ```sh
-pnpm test
+pnpm run test
 ```
 
 Pass additional arguments to playwright to run specific tests or update the snapshots:
 
 ```sh
-pnpm run test _index --update-snapshots
+pnpm run test button -- --update-snapshots
 ```
 
 To see the generated report on a host:
 
 ```sh
-pnpm exec playwright show-report
+pnpm --filter=@itwin/test-app exec playwright show-report
 ```
 
 > [!NOTE]

@@ -56,7 +56,7 @@ export const IconButton = React.forwardRef<
 			ref={forwardedRef}
 		>
 			<VisuallyHidden>{label}</VisuallyHidden>
-			{typeof icon === "string" ? <Icon href={icon} aria-hidden /> : icon}
+			{typeof icon === "string" ? <Icon href={icon} /> : icon}
 		</Button>
 	);
 });

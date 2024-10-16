@@ -5,7 +5,7 @@
 import { IconButton } from "@itwin/kiwi-react/bricks";
 import { useSearchParams } from "@remix-run/react";
 
-const placeholderIconHref = new URL(
+const placeholderIcon = new URL(
 	"@itwin/kiwi-icons/placeholder.svg",
 	import.meta.url,
 ).href;
@@ -17,14 +17,14 @@ export default function Page() {
 
 	if (visual) return <VisualTest />;
 
-	return <IconButton label="Click me" icon={placeholderIconHref} />;
+	return <IconButton label="Click me" icon={placeholderIcon} />;
 }
 
 function VisualTest() {
 	return (
 		<div style={{ display: "flex", gap: 4 }}>
-			<IconButton label="Click me" icon={placeholderIconHref} />
-			<IconButton variant="ghost" label="Click me" icon={placeholderIconHref} />
+			<IconButton label="Click me" icon={placeholderIcon} />
+			<IconButton variant="ghost" label="Click me" icon={placeholderIcon} />
 		</div>
 	);
 }

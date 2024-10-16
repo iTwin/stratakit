@@ -6,6 +6,8 @@
 	@layer base {
 		width: var(--_kiwi-icon-size);
 		height: var(--_kiwi-icon-size);
+		color: var(--_kiwi-icon-color);
+		transition: color 150ms ease-out;
 	}
 
 	@layer modifiers {

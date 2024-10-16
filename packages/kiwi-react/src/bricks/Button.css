@@ -16,7 +16,7 @@
 		cursor: pointer;
 		font-size: 0.75rem;
 		font-weight: 500;
-		border: 1px solid transparent;
+		border: none;
 
 		display: inline-flex;
 		align-items: center;
@@ -32,6 +32,10 @@
 		transition: background-color 150ms ease-out;
 		-webkit-tap-highlight-color: var(--_kiwi-button-color-background-pressed);
 		--_kiwi-icon-color: var(--_kiwi-button-color-icon);
+
+		@media (forced-colors: active) {
+			border: 1px solid;
+		}
 	}
 
 	@layer modifiers {
@@ -50,8 +54,11 @@
 			--_kiwi-button-color-background-disabled: var(--kiwi-color-bg-glow-on-surface-disabled);
 			--_kiwi-button-color-border: #ffffff14; /* border/glow/default */
 
-			border-color: var(--_kiwi-button-color-border);
-			box-shadow: 0px 1px 1px -0.5px #00000029, 0px 3px 3px -1.5px #00000029;
+			box-shadow:
+				0px 3px 3px -1.5px #00000029,
+				0px 1px 1px -0.5px #00000029,
+				0px 0px 0px 1px var(--_kiwi-button-color-border) inset,
+				0px -1px 0px 0px #00000014 inset;
 		}
 
 		&[data-kiwi-variant="ghost"] {

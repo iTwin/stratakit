@@ -44,8 +44,8 @@ Preferred usage is with the `Icon` component from `@itwin/kiwi-react`:
    </svg>
    ```
 
-   > [!IMPORTANT]
-   > Icons of `@itwin/kiwi-icons` should always be used as external resources. Do not inline the SVG content directly in your HTML or React components.
+> [!IMPORTANT]
+> Icons of `@itwin/kiwi-icons` should always be used as external resources. Do not inline the SVG content directly in your HTML or React components.
 
 ## Bundler configuration
 

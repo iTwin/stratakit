@@ -48,7 +48,11 @@
 				var(--_kiwi-list-item-color-background)
 			)
 			var(--__kiwi-list-item-state--hover, var(--_kiwi-list-item-color-background-hover))
-			var(--__kiwi-list-item-state--pressed, var(--_kiwi-list-item-color-background-pressed));
+			var(--__kiwi-list-item-state--pressed, var(--_kiwi-list-item-color-background-pressed))
+			var(--__kiwi-list-item-state--disabled, var(--_kiwi-list-item-color-background));
+		color: var(--__kiwi-list-item-state--default, unset) var(--__kiwi-list-item-state--hover, unset)
+			var(--__kiwi-list-item-state--pressed, unset)
+			var(--__kiwi-list-item-state--disabled, var(--_kiwi-list-item-color-disabled));
 
 		@media (any-hover: hover) {
 			&:where(:hover) {
@@ -63,7 +67,6 @@
 		&:where([disabled], :disabled, [aria-disabled="true"]) {
 			--__kiwi-list-item-state: var(--__kiwi-list-item-state--disabled);
 			cursor: not-allowed;
-			color: var(--_kiwi-list-item-color-disabled);
 		}
 	}
 }

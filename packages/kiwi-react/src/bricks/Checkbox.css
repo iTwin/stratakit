@@ -6,13 +6,13 @@
 	@layer base {
 		--_kiwi-checkbox-color-background: var(--kiwi-color-bg-neutral-base);
 		--_kiwi-checkbox-color-background-hover: color-mix(
-			in srgb,
+			in oklch,
 			var(--_kiwi-checkbox-color-background) 100%,
 			var(--kiwi-color-glow-hue) var(--kiwi-color-bg-glow-base-hover-\%)
 		);
 		--_kiwi-checkbox-color-background-checked: var(--kiwi-color-bg-accent-base);
 		--_kiwi-checkbox-color-background-checked-hover: color-mix(
-			in srgb,
+			in oklch,
 			var(--_kiwi-checkbox-color-background-checked) 100%,
 			var(--kiwi-color-glow-hue) var(--kiwi-color-bg-glow-base-press-\%)
 		);
@@ -20,13 +20,13 @@
 
 		--_kiwi-checkbox-color-border: #ffffff14; /* bg/button/base/border/color */
 		--_kiwi-checkbox-color-border-hover: color-mix(
-			in srgb,
+			in oklch,
 			#ffffff14 /* bg/button/base/border/color */ 100%,
 			var(--kiwi-color-glow-hue) var(--kiwi-color-border-glow-base-hover-\%)
 		);
 		--_kiwi-checkbox-color-border-checked: #ffffff29; /* bg/button/strong/border/color */
 		--_kiwi-checkbox-color-border-checked-hover: color-mix(
-			in srgb,
+			in oklch,
 			#ffffff29 /* bg/button/strong/border/color */ 100%,
 			var(--kiwi-color-glow-hue) var(--kiwi-color-border-glow-base-press-\%)
 		);

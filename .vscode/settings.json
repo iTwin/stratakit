@@ -42,5 +42,6 @@
 	},
 	"[jsonc]": {
 		"editor.defaultFormatter": "biomejs.biome"
-	}
+	},
+	"explorer.sortOrderLexicographicOptions": "lower"
 }

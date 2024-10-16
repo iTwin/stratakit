@@ -42,12 +42,12 @@
 		&[data-kiwi-variant="solid"] {
 			--_kiwi-button-color-background: var(--kiwi-color-bg-neutral-base);
 			--_kiwi-button-color-background-hover: color-mix(
-				in srgb,
+				in oklch,
 				var(--_kiwi-button-color-background) 100%,
 				var(--kiwi-color-glow-hue) var(--kiwi-color-bg-glow-base-hover-\%)
 			);
 			--_kiwi-button-color-background-pressed: color-mix(
-				in srgb,
+				in oklch,
 				var(--_kiwi-button-color-background) 100%,
 				var(--kiwi-color-glow-hue) var(--kiwi-color-bg-glow-base-press-\%)
 			);
@@ -61,12 +61,12 @@
 		&[data-kiwi-variant="ghost"] {
 			--_kiwi-button-color-background: transparent;
 			--_kiwi-button-color-background-hover: color-mix(
-				in srgb,
+				in oklch,
 				var(--_kiwi-button-color-background) 100%,
 				var(--kiwi-color-glow-hue) var(--kiwi-color-bg-glow-base-hover-\%)
 			);
 			--_kiwi-button-color-background-pressed: color-mix(
-				in srgb,
+				in oklch,
 				var(--_kiwi-button-color-background) 100%,
 				var(--kiwi-color-glow-hue) var(--kiwi-color-bg-glow-base-press-\%)
 			);

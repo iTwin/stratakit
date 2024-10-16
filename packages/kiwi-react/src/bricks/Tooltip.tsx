@@ -37,9 +37,9 @@ export const Tooltip = React.forwardRef<
 
 	return (
 		<>
-			{ariaStrategy !== "none" ? (
-				<Ariakit.TooltipProvider>
-					<Ariakit.TooltipAnchor render={children} {...ariaProps} />
+			<Ariakit.TooltipProvider>
+				<Ariakit.TooltipAnchor render={children} {...ariaProps} />
+				{ariaStrategy !== "none" ? (
 					<Ariakit.Tooltip
 						{...rest}
 						className={cx("🥝-tooltip", className)}
@@ -48,8 +48,8 @@ export const Tooltip = React.forwardRef<
 					>
 						{content}
 					</Ariakit.Tooltip>
-				</Ariakit.TooltipProvider>
-			) : null}
+				) : null}
+			</Ariakit.TooltipProvider>
 		</>
 	);
 });

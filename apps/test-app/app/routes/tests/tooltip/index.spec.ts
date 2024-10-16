@@ -114,7 +114,7 @@ test.describe("dismissal", () => {
 });
 
 test("Trigger element should be described by the tooltip", async ({ page }) => {
-	await page.goto("/tests/tooltip");
+	await page.goto("/tests/tooltip?ariaStrategy=description");
 	const button = page.getByRole("button");
 	await expect(button).toHaveAccessibleDescription("This is the tooltip");
 });
@@ -124,7 +124,7 @@ test("Tooltip with 'description' strategy uses aria-describedby", async ({
 }) => {
 	await page.goto("/tests/tooltip?ariaStrategy=description");
 
-	const button = page.getByRole("button", { name: /hover\/focus me/i });
+	const button = page.getByRole("button");
 
 	await expect(button).toHaveAttribute("aria-describedby");
 });
@@ -132,7 +132,7 @@ test("Tooltip with 'description' strategy uses aria-describedby", async ({
 test("Tooltip with 'label' strategy uses aria-labelledby", async ({ page }) => {
 	await page.goto("/tests/tooltip?ariaStrategy=label");
 
-	const button = page.getByRole("button", { name: /hover\/focus me/i });
+	const button = page.getByRole("button");
 
 	await expect(button).toHaveAttribute("aria-labelledby");
 });
@@ -142,7 +142,7 @@ test("Tooltip with 'none' strategy renders no ARIA attributes", async ({
 }) => {
 	await page.goto("/tests/tooltip?ariaStrategy=none");
 
-	const button = page.getByRole("button", { name: /hover\/focus me/i });
+	const button = page.getByRole("button");
 
 	// Verify no ARIA attributes are applied
 	await expect(button).not.toHaveAttribute("aria-describedby");

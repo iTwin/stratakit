@@ -13,11 +13,13 @@ export default function Page() {
 	const ariaStrategyParam = searchParams.get("ariaStrategy");
 
 	// Validate and cast the aria strategy from query parameters
-	const ariaStrategy: AriaStrategy = ["description", "label", "none"].includes(
-		ariaStrategyParam as AriaStrategy,
-	)
+	const ariaStrategy: AriaStrategy | undefined = [
+		"description",
+		"label",
+		"none",
+	].includes(ariaStrategyParam as AriaStrategy)
 		? (ariaStrategyParam as AriaStrategy)
-		: "none";
+		: undefined;
 
 	return (
 		<>

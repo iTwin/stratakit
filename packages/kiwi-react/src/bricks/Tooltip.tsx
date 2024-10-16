@@ -39,7 +39,7 @@ export const Tooltip = React.forwardRef<
 		<>
 			<Ariakit.TooltipProvider>
 				<Ariakit.TooltipAnchor render={children} {...ariaProps} />
-				{ariaStrategy !== "none" ? (
+				{ariaStrategy && ariaStrategy !== "none" ? (
 					<Ariakit.Tooltip
 						{...rest}
 						className={cx("🥝-tooltip", className)}

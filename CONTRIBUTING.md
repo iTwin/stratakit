@@ -59,7 +59,7 @@ Apps:
 
 - [`test-app`](./apps/test-app): [Remix](https://remix.run/) app for automated and manual testing.
 
-Finally, there’s [an internal package](./internal) which is used for configuration files and common variables for the workspace at large.
+Also, there’s [an internal package](./internal) which is used for configuration files and common variables for the workspace at large.
 
 ### Development environment
 

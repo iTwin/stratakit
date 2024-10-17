@@ -5,16 +5,12 @@
 import * as Ariakit from "@ariakit/react";
 import type * as React from "react";
 import type { MetaFunction } from "@remix-run/react";
-import rawTokens from "internal/theme-dark.json";
-import { parseTokens } from "internal/visitors.js";
-import styles from "./tokens.module.css";
 import { Button, Divider, Icon } from "@itwin/kiwi-react/bricks";
+import { parseTokens } from "internal/visitors.js";
+import rawTokens from "internal/theme-dark.json";
+import styles from "./tokens.module.css";
 
 const tokens = parseTokens(rawTokens);
-
-export const meta: MetaFunction = () => {
-	return [{ title: "Kiwi tokens" }, { name: "color-scheme", content: "dark" }];
-};
 
 const categories = {
 	bg: "Background",
@@ -23,6 +19,10 @@ const categories = {
 	icon: "Icon",
 	misc: "Miscellaneous",
 } as const;
+
+export const meta: MetaFunction = () => {
+	return [{ title: "Kiwi tokens" }, { name: "color-scheme", content: "dark" }];
+};
 
 export default function Page() {
 	return (

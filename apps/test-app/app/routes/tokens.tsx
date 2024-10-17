@@ -47,10 +47,17 @@ export default function Page() {
 				return (
 					<Ariakit.DisclosureProvider key={key} defaultOpen={true}>
 						<div className={styles.disclosureWrapper}>
-							<Ariakit.Disclosure render={<Button variant="ghost" />}>
-								<Icon render={<ArrowIcon />} />
+							<Ariakit.Disclosure
+								render={<Button variant="ghost" />}
+								className={styles.disclosureButton}
+							>
+								<Icon
+									render={<ArrowIcon />}
+									className={styles.disclosureIcon}
+								/>
 								{value}
 							</Ariakit.Disclosure>
+
 							<Ariakit.DisclosureContent>
 								<table className={styles.table}>
 									<thead>

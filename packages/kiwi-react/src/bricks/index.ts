@@ -9,6 +9,7 @@ export { Checkbox } from "./Checkbox.js";
 export * as DropdownMenu from "./DropdownMenu.js";
 export { Divider } from "./Divider.js";
 export { Icon } from "./Icon.js";
+export { IconButton } from "./IconButton.js";
 export { Input } from "./Input.js";
 export { Field } from "./Field.js";
 export { Label } from "./Label.js";

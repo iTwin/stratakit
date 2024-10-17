@@ -20,6 +20,10 @@ body {
 	}
 }
 
+.disclosureButton {
+	font-size: var(--kiwi-font-size-l);
+}
+
 .disclosureButton[aria-expanded="false"] .disclosureIcon {
 	transform: rotate(-90deg);
 }
@@ -29,7 +33,7 @@ body {
 	font-size: var(--kiwi-font-size-s);
 
 	thead {
-		text-align: left;
+		text-align: start;
 	}
 
 	tbody tr:hover {

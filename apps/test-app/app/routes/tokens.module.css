@@ -46,7 +46,7 @@ body {
 		padding: 1rem;
 
 		&:first-child {
-			min-inline-size: min(400px, 100%);
+			inline-size: 400px;
 		}
 	}
 

@@ -3,11 +3,12 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 import * as Ariakit from "@ariakit/react";
+import type * as React from "react";
 import type { MetaFunction } from "@remix-run/react";
 import rawTokens from "internal/theme-dark.json";
 import { parseTokens } from "internal/visitors.js";
 import styles from "./tokens.module.css";
-import { Button, Divider } from "@itwin/kiwi-react/bricks";
+import { Button, Divider, Icon } from "@itwin/kiwi-react/bricks";
 
 const tokens = parseTokens(rawTokens);
 
@@ -47,14 +48,7 @@ export default function Page() {
 					<Ariakit.DisclosureProvider key={key} defaultOpen={true}>
 						<div className={styles.disclosureWrapper}>
 							<Ariakit.Disclosure render={<Button variant="ghost" />}>
-								<svg width="16" height="16" fill="none" aria-hidden="true">
-									<path
-										fill="currentColor"
-										fill-rule="evenodd"
-										d="M4.646 6.646a.5.5 0 0 1 .708 0L8 9.293l2.646-2.647a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 0 1 0-.708Z"
-										clip-rule="evenodd"
-									/>
-								</svg>
+								<Icon render={<ArrowIcon />} />
 								{value}
 							</Ariakit.Disclosure>
 							<Ariakit.DisclosureContent>
@@ -97,5 +91,18 @@ function ColorSwatch({ variable }: { variable: string }) {
 			className={styles.swatch}
 			style={{ "--_swatch-color": `var(${variable})` } as React.CSSProperties}
 		/>
+	);
+}
+
+function ArrowIcon(props: React.ComponentProps<"svg">) {
+	return (
+		<svg width="16" height="16" fill="none" aria-hidden="true" {...props}>
+			<path
+				fill="currentColor"
+				fillRule="evenodd"
+				d="M4.646 6.646a.5.5 0 0 1 .708 0L8 9.293l2.646-2.647a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 0 1 0-.708Z"
+				clipRule="evenodd"
+			/>
+		</svg>
 	);
 }

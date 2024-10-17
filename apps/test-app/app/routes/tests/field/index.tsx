@@ -11,8 +11,15 @@ import {
 	Switch,
 	Textarea,
 } from "@itwin/kiwi-react/bricks";
+import { useSearchParams } from "@remix-run/react";
 
 export default function Page() {
+	const visual = useSearchParams()[0].get("visual") === "true";
+
+	if (visual) {
+		return <VisualTest />;
+	}
+
 	return (
 		<form>
 			<Field>
@@ -23,17 +30,103 @@ export default function Page() {
 			</Field>
 			<Field>
 				<Label>
-					<Radio name="radio" value="radio" /> Radio example
+					<Radio name="radio" value="radio" /> <span>Radio example</span>
 				</Label>
 			</Field>
 			<Field render={<Label />}>
-				<Checkbox /> Checkbox example
+				<Checkbox /> <span>Checkbox example</span>
 			</Field>
 			<Field>
 				<Label>
-					<Switch /> Switch example
+					<Switch /> <span>Switch example</span>
 				</Label>
 			</Field>
 		</form>
+	);
+}
+
+function VisualTest() {
+	return (
+		<div style={{ display: "grid", gap: 4 }}>
+			{/* Labels before */}
+			<Field>
+				<Label>Text control</Label> <Input />
+			</Field>
+			<Field>
+				<Label>Textarea control</Label> <Textarea />
+			</Field>
+			<Field>
+				<Label>Checkbox control</Label> <Checkbox />
+			</Field>
+			<Field>
+				<Label>Radio control</Label> <Radio value="radio" />
+			</Field>
+			<Field>
+				<Label>Switch control</Label> <Switch />
+			</Field>
+			{/* Labels after */}
+			<Field>
+				<Checkbox /> <Label>Checkbox control</Label>
+			</Field>
+			<Field>
+				<Radio value="radio" /> <Label>Radio control</Label>
+			</Field>
+			<Field>
+				<Switch /> <Label>Switch control</Label>
+			</Field>
+			{/* Labels wrapping label before */}
+			<Field>
+				<Label>
+					<span>Text control</span> <Input />
+				</Label>
+			</Field>
+			<Field>
+				<Label>
+					<span>Textarea control</span> <Textarea />
+				</Label>
+			</Field>
+			{/* Labels wrapping label after */}
+			<Field>
+				<Label>
+					<Checkbox /> <span>Checkbox control</span>
+				</Label>
+			</Field>
+			<Field>
+				<Label>
+					<Radio value="radio" /> <span>Radio control</span>
+				</Label>
+			</Field>
+			<Field>
+				<Label>
+					<Switch /> <span>Switch control</span>
+				</Label>
+			</Field>
+			{/* Field rendering as label, text before */}
+			<Field render={<Label />}>
+				<span>Text control</span> <Input />
+			</Field>
+			<Field render={<Label />}>
+				<span>Textarea control</span> <Textarea />
+			</Field>
+			<Field render={<Label />}>
+				<span>Checkbox control</span> <Checkbox />
+			</Field>
+			<Field render={<Label />}>
+				<span>Radio control</span> <Radio value="radio" />
+			</Field>
+			<Field render={<Label />}>
+				<span>Switch control</span> <Switch />
+			</Field>
+			{/* Field rendering as label, text after */}
+			<Field render={<Label />}>
+				<Checkbox /> <span>Checkbox control</span>
+			</Field>
+			<Field render={<Label />}>
+				<Radio value="radio" /> <span>Radio control</span>
+			</Field>
+			<Field render={<Label />}>
+				<Switch /> <span>Switch control</span>
+			</Field>
+		</div>
 	);
 }

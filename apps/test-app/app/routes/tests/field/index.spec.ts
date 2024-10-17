@@ -41,3 +41,8 @@ test.describe("default", () => {
 		await expect(page.locator(".🥝-label.🥝-field")).toBeVisible();
 	});
 });
+
+test("@visual", async ({ page }) => {
+	await page.goto("/tests/field?visual=true");
+	await expect(page.locator("body")).toHaveScreenshot();
+});

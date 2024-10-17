@@ -4,16 +4,25 @@
  *--------------------------------------------------------------------------------------------*/
 .🥝-field {
 	@layer base {
-		display: grid;
-		gap: 0.5rem;
-		align-items: center;
+		/* The field is the label */
+		&:is(.🥝-label),
+		/* The label is a child and is wrapping the control */
+		&:has(> .🥝-label:only-child) .🥝-label,
+		/* The label is a child and isn’t wrapping the control */
+		&:has(> .🥝-label:not(:only-child)) {
+			display: grid;
+			gap: 0.5rem;
+			align-items: center;
 
-		&:has(:is(.🥝-checkbox, .🥝-switch):first-child) {
-			grid-template-columns: max-content auto;
-		}
+			/* The control should align to the start of the inline axis */
+			&:has(:is(.🥝-checkbox, .🥝-switch):first-child) {
+				grid-template-columns: max-content auto;
+			}
 
-		&:has(:is(.🥝-checkbox, .🥝-switch):last-child) {
-			grid-template-columns: auto max-content;
+			/* The control should align to the end of the inline axis */
+			&:has(:is(.🥝-checkbox, .🥝-switch):last-child) {
+				grid-template-columns: auto max-content;
+			}
 		}
 	}
 }

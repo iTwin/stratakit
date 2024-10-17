@@ -4,12 +4,14 @@
  *--------------------------------------------------------------------------------------------*/
 .🥝-field {
 	@layer base {
-		/* The field is the label */
-		&:is(.🥝-label),
-		/* The label is a child and is wrapping the control */
-		&:has(> .🥝-label:only-child) .🥝-label,
-		/* The label is a child and isn’t wrapping the control */
-		&:has(> .🥝-label:not(:only-child)) {
+		/**
+		 * 1. The field is the label
+		 * 2. The label is a child and is wrapping the control
+		 * 3. The label is a child and isn’t wrapping the control
+		 */
+		&:is(.🥝-label) /* 1 */,
+		&:has(> .🥝-label:only-child) .🥝-label /* 2 */,
+		&:has(> .🥝-label:not(:only-child)) /* 3 */ {
 			display: grid;
 			gap: 0.5rem;
 			align-items: center;

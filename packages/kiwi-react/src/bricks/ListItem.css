@@ -6,21 +6,25 @@
 	@layer base {
 		--_kiwi-list-item-gap: 0.25rem;
 		--_kiwi-list-item-height: 1.5rem;
-		--_kiwi-list-item-padding-inline: 0.75rem 0.5rem;
+		--_kiwi-list-item-padding-inline: 0.75rem;
 		--_kiwi-list-item-padding-block: 0.25rem;
 
 		--_kiwi-list-item-color-background: transparent;
 		--_kiwi-list-item-color-background-hover: color-mix(
-			in srgb,
+			in oklch,
 			var(--_kiwi-list-item-color-background) 100%,
 			var(--kiwi-color-glow-hue) var(--kiwi-color-bg-glow-on-surface-neutral-hover-\%)
 		);
-		--_kiwi-list-item-color-background-pressed: var(--kiwi-color-bg-glow-on-surface-accent-hover);
-		--_kiwi-list-item-color-pressed: var(--kiwi-color-text-accent-strong);
+		--_kiwi-list-item-color-background-pressed: color-mix(
+			in oklch,
+			var(--_kiwi-list-item-color-background) 100%,
+			var(--kiwi-color-glow-hue) var(--kiwi-color-bg-glow-on-surface-neutral-press-\%)
+		);
 		--_kiwi-list-item-color-disabled: var(--kiwi-color-text-neutral-disabled);
 
 		cursor: pointer;
 		line-height: 1;
+		font-size: 0.75rem;
 
 		display: flex;
 		align-items: center;
@@ -44,9 +48,10 @@
 				var(--_kiwi-list-item-color-background)
 			)
 			var(--__kiwi-list-item-state--hover, var(--_kiwi-list-item-color-background-hover))
-			var(--__kiwi-list-item-state--pressed, var(--_kiwi-list-item-color-background-pressed));
-		color: var(--__kiwi-list-item-state--default, unset)
-			var(--__kiwi-list-item-state--pressed, var(--_kiwi-list-item-color-pressed))
+			var(--__kiwi-list-item-state--pressed, var(--_kiwi-list-item-color-background-pressed))
+			var(--__kiwi-list-item-state--disabled, var(--_kiwi-list-item-color-background));
+		color: var(--__kiwi-list-item-state--default, unset) var(--__kiwi-list-item-state--hover, unset)
+			var(--__kiwi-list-item-state--pressed, unset)
 			var(--__kiwi-list-item-state--disabled, var(--_kiwi-list-item-color-disabled));
 
 		@media (any-hover: hover) {

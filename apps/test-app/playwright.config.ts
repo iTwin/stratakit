@@ -50,4 +50,10 @@ export default defineConfig({
 		url: "http://localhost:1800",
 		reuseExistingServer: !process.env.CI,
 	},
+
+	expect: {
+		toHaveScreenshot: {
+			threshold: 0.1,
+		},
+	},
 });

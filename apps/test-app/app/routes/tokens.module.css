@@ -45,7 +45,7 @@ body {
 
 	th,
 	td {
-		border: 1px solid var(--kiwi-color-border-neutral-muted);
+		border: 1px solid var(--kiwi-color-border-neutral-base);
 		padding: 1rem;
 
 		&:first-child {

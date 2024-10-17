@@ -49,7 +49,7 @@ body {
 		padding: 1rem;
 
 		&:first-child {
-			min-inline-size: 23rem;
+			min-inline-size: min(400px, 100%);
 		}
 	}
 

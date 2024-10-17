@@ -114,41 +114,45 @@ test.describe("dismissal", () => {
 });
 
 test("Trigger element should be described by the tooltip", async ({ page }) => {
-	await page.goto("/tests/tooltip?ariaStrategy=description");
+	await page.goto("/tests/tooltip");
 	const button = page.getByRole("button");
 	await expect(button).toHaveAccessibleDescription("This is the tooltip");
 });
 
-test("Tooltip with 'description' strategy uses aria-describedby", async ({
-	page,
-}) => {
-	await page.goto("/tests/tooltip?ariaStrategy=description");
+test.describe("aria strategy", () => {
+	test("Tooltip with 'description' aria strategy uses aria-describedby", async ({
+		page,
+	}) => {
+		await page.goto("/tests/tooltip?ariaStrategy=description");
 
-	const button = page.getByRole("button");
+		const button = page.getByRole("button");
 
-	await expect(button).toHaveAttribute("aria-describedby");
-});
+		await expect(button).toHaveAttribute("aria-describedby");
+	});
 
-test("Tooltip with 'label' strategy uses aria-labelledby", async ({ page }) => {
-	await page.goto("/tests/tooltip?ariaStrategy=label");
+	test("Tooltip with 'label' aria strategy uses aria-labelledby", async ({
+		page,
+	}) => {
+		await page.goto("/tests/tooltip?ariaStrategy=label");
 
-	const button = page.getByRole("button");
+		const button = page.getByRole("button");
 
-	await expect(button).toHaveAttribute("aria-labelledby");
-});
+		await expect(button).toHaveAttribute("aria-labelledby");
+	});
 
-test("Tooltip with 'none' strategy renders no ARIA attributes", async ({
-	page,
-}) => {
-	await page.goto("/tests/tooltip?ariaStrategy=none");
+	test("Tooltip with 'none' aria strategy renders no ARIA attributes", async ({
+		page,
+	}) => {
+		await page.goto("/tests/tooltip?ariaStrategy=none");
 
-	const button = page.getByRole("button");
+		const button = page.getByRole("button");
 
-	// Verify no ARIA attributes are applied
-	await expect(button).not.toHaveAttribute("aria-describedby");
-	await expect(button).not.toHaveAttribute("aria-labelledby");
+		// Verify no ARIA attributes are applied
+		await expect(button).not.toHaveAttribute("aria-describedby");
+		await expect(button).not.toHaveAttribute("aria-labelledby");
 
-	// Ensure no tooltip is rendered
-	const tooltips = await page.locator('[role="tooltip"]').count();
-	expect(tooltips).toBe(0);
+		// Ensure no tooltip is rendered
+		const tooltips = await page.locator('[role="tooltip"]').count();
+		expect(tooltips).toBe(0);
+	});
 });

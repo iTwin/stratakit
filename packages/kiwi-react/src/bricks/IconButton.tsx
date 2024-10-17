@@ -21,6 +21,19 @@ interface IconButtonProps
 	 * or a custom JSX icon.
 	 */
 	icon: string | React.JSX.Element;
+	/**
+	 * Whether the button is in a toggled state and currently "active" (toggled on).
+	 *
+	 * Setting this prop to `true` or `false` will turn this button into a toggle button.
+	 * The button will have an `aria-pressed` attribute and extra styling for the "active" state.
+	 *
+	 * When this prop is `undefined`, the button will be a regular button (no `aria-pressed` attribute).
+	 *
+	 * @default undefined
+	 *
+	 * @see https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-pressed
+	 */
+	isActive?: boolean;
 }
 
 /**
@@ -42,15 +55,27 @@ interface IconButtonProps
  *   variant="ghost"
  * />
  * ```
+ *
+ * The `isActive` prop can be used to turn this button into a toggle button.
+ * ```tsx
+ * const [isActive, setIsActive] = React.useState(false);
+ *
+ * <IconButton
+ *   label={…}
+ *   icon={…}
+ *   isActive={isActive}
+ *   onClick={() => setIsActive(!isActive)}
+ * />
  */
 export const IconButton = React.forwardRef<
 	React.ElementRef<typeof Button>,
 	IconButtonProps
 >((props, forwardedRef) => {
-	const { label, icon, ...rest } = props;
+	const { label, icon, isActive, ...rest } = props;
 
 	return (
 		<Button
+			aria-pressed={isActive}
 			{...rest}
 			className={cx("🥝-icon-button", props.className)}
 			ref={forwardedRef}

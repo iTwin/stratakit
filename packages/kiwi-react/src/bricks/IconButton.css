@@ -2,21 +2,9 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-.🥝-icon {
+.🥝-icon-button:is(.🥝-button) {
 	@layer base {
-		width: var(--_kiwi-icon-size);
-		height: var(--_kiwi-icon-size);
-		color: var(--_kiwi-icon-color);
-		transition: color 150ms ease-out;
-	}
-
-	@layer modifiers {
-		&[data-kiwi-size="regular"] {
-			--_kiwi-icon-size: 1rem;
-		}
-
-		&[data-kiwi-size="large"] {
-			--_kiwi-icon-size: 1.5rem;
-		}
+		aspect-ratio: 1;
+		--_kiwi-button-padding-inline: 4px;
 	}
 }

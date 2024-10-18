@@ -19,6 +19,13 @@
 	"organizeImports": {
 		"enabled": false
 	},
+	"linter": {
+		"rules": {
+			"correctness": {
+				"noUnusedImports": "info"
+			}
+		}
+	},
 	"overrides": [
 		{
 			"include": ["packages/kiwi-react/**"],

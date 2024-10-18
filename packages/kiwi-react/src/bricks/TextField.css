@@ -34,16 +34,14 @@
 		&:has(input:last-child) {
 			padding-inline-end: 0;
 		}
-	}
 
-	@layer states {
 		input {
-			border-width: 0;
 			flex: 1;
+
+			min-inline-size: 0;
+			border-width: 0;
 			box-shadow: unset;
 			outline: unset;
-			background: transparent;
-			min-inline-size: 0;
 
 			&:where(:not(:first-child)) {
 				padding-inline-start: 0;
@@ -52,6 +50,12 @@
 			&:where(:not(:last-child)) {
 				padding-inline-end: 0;
 			}
+		}
+	}
+
+	@layer states {
+		input {
+			background-color: transparent;
 		}
 	}
 }

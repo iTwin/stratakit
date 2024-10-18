@@ -6,9 +6,10 @@
 	"description": "Monorepo for the kiwi design system",
 	"scripts": {
 		"build": "pnpm --filter=\"./packages/**\" --filter=\"./apps/**\" build",
-		"dev": "npm run dev:app & npm run dev:ts &",
+		"dev": "npm run dev:app & npm run dev:ts & npm run dev:icons &",
 		"dev:app": "pnpm --filter=@itwin/test-app dev",
-		"dev:ts": "pnpm --filter=@itwin/kiwi-react --filter=@itwin/kiwi-icons build",
+		"dev:ts": "pnpm --filter=@itwin/kiwi-react dev",
+		"dev:icons": "pnpm --filter=@itwin/kiwi-icons build",
 		"format": "biome format .",
 		"lint": "biome lint .",
 		"lint:copyright": "tsx internal/copyright-linter.ts",

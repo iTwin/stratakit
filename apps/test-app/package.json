@@ -14,16 +14,16 @@
 		"@ariakit/react": "*",
 		"@itwin/kiwi-icons": "*",
 		"@itwin/kiwi-react": "*",
-		"@remix-run/node": "^2.12.1",
-		"@remix-run/react": "^2.12.1",
-		"@remix-run/serve": "^2.12.1",
+		"@remix-run/node": "^2.13.1",
+		"@remix-run/react": "^2.13.1",
+		"@remix-run/serve": "^2.13.1",
 		"isbot": "^5.1.17",
 		"react": "18",
 		"react-dom": "18"
 	},
 	"devDependencies": {
-		"@playwright/test": "^1.46.0",
-		"@remix-run/dev": "^2.12.1",
+		"@playwright/test": "^1.48.1",
+		"@remix-run/dev": "^2.13.1",
 		"@remix-run/v1-route-convention": "^0.1.4",
 		"@types/node": "*",
 		"@types/react": "*",
@@ -31,7 +31,7 @@
 		"esbuild": "^0.24.0",
 		"lightningcss": "^1.27.0",
 		"typescript": "5",
-		"vite": "^5.4.7",
+		"vite": "^5.4.9",
 		"vite-tsconfig-paths": "^5.0.1"
 	}
 }

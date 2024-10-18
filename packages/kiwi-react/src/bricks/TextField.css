@@ -4,7 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 .🥝-text-field:is(.🥝-input) {
 	@layer base {
-		display: flex;
+		display: inline-flex;
 		gap: 4px;
 		padding-block: 0;
 		box-sizing: border-box;

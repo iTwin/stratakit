@@ -13,6 +13,14 @@
 			outline: 2px solid var(--kiwi-color-border-accent-strong);
 			outline-offset: 1px;
 		}
+
+		&:has(input:first-child) {
+			padding-inline-start: 0;
+		}
+
+		&:has(input:last-child) {
+			padding-inline-end: 0;
+		}
 	}
 
 	@layer states {
@@ -22,6 +30,7 @@
 			box-shadow: unset;
 			outline: unset;
 			background: transparent;
+			min-inline-size: 0;
 
 			&:where(:not(:first-child)) {
 				padding-inline-start: 0;

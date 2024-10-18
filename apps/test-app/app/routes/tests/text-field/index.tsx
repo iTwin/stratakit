@@ -15,6 +15,9 @@ export default function Page() {
 	return (
 		<div style={{ display: "flex", gap: 12, flexDirection: "column" }}>
 			<TextField>
+				<Input />
+			</TextField>
+			<TextField>
 				<Icon href={placeholderIcon} />
 				<Input />
 			</TextField>

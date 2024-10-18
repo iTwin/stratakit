@@ -8,7 +8,6 @@
 		--_kiwi-tooltip-color-border: var(--kiwi-color-border-surface-primary);
 		--_kiwi-tooltip-color-box-shadow: #00000029;
 
-		--_kiwi-tooltip-padding-horizontal: 0.25rem;
 		--_kiwi-tooltip-border-radius: 0.25rem;
 		--_kiwi-tooltip-content-gap: 0.125rem;
 
@@ -28,7 +27,7 @@
 		gap: var(--_kiwi-tooltip-content-gap);
 		line-height: 1;
 		min-height: 1rem;
-		padding-inline-start: var(--_kiwi-tooltip-padding-horizontal);
+		padding: 0.125rem 0.25rem;
 
 		justify-content: center;
 		font-size: 0.75rem;

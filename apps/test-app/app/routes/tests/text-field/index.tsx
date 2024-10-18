@@ -22,6 +22,7 @@ function TextAffix({ children }: React.PropsWithChildren) {
 
 export default function Page() {
 	const visual = useSearchParams()[0].get("visual") === "true";
+	const value = useSearchParams()[0].get("value") ?? undefined;
 
 	if (visual) {
 		return <VisualTest />;
@@ -29,7 +30,8 @@ export default function Page() {
 
 	return (
 		<TextField>
-			<Input />
+			<Icon href={placeholderIcon} />
+			<Input value={value} />
 		</TextField>
 	);
 }

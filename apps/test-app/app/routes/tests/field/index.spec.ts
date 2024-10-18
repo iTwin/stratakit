@@ -10,8 +10,14 @@ test.describe("default", () => {
 	});
 
 	test("wrapping input and label", async ({ page }) => {
-		await expect(page.locator("input:not([type])")).toHaveAccessibleName(
-			"Text example",
+		await expect(
+			page.locator("input:not([type])").first(),
+		).toHaveAccessibleName("Text example");
+	});
+
+	test("wrapping TextField and label", async ({ page }) => {
+		await expect(page.locator("input:not([type])").nth(1)).toHaveAccessibleName(
+			"TextField example",
 		);
 	});
 

@@ -2,7 +2,8 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-import { Button, Icon, Input, TextField } from "@itwin/kiwi-react/bricks";
+import { Icon, Input, TextField } from "@itwin/kiwi-react/bricks";
+import { useSearchParams } from "@remix-run/react";
 
 export const handle = { title: "DropdownMenu" };
 
@@ -20,28 +21,42 @@ function TextAffix({ children }: React.PropsWithChildren) {
 }
 
 export default function Page() {
+	const visual = useSearchParams()[0].get("visual") === "true";
+
+	if (visual) {
+		return <VisualTest />;
+	}
+
+	return (
+		<TextField>
+			<Input />
+		</TextField>
+	);
+}
+
+function VisualTest() {
 	return (
 		<div style={{ display: "flex", gap: 4, flexDirection: "column" }}>
 			<TextField>
-				<Input />
+				<Input value="Value" />
 			</TextField>
 			<TextField>
 				<Icon href={placeholderIcon} />
-				<Input />
+				<Input value="Value" />
 			</TextField>
 			<TextField>
-				<Input />
+				<Input value="Value" />
 				<Icon href={placeholderIcon} />
 			</TextField>
 			<TextField>
 				<Icon href={placeholderIcon} />
-				<Input />
+				<Input value="Value" />
 				<Icon href={placeholderIcon} />
 			</TextField>
 			<TextField>
 				<Icon href={placeholderIcon} />
 				<TextAffix>%</TextAffix>
-				<Input />
+				<Input value="Value" />
 				<TextAffix>%</TextAffix>
 				<Icon href={placeholderIcon} />
 			</TextField>

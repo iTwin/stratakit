@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/playwright:v1.46.0-jammy as base
+FROM mcr.microsoft.com/playwright:v1.48.1-jammy as base
 RUN --mount=type=cache,target=/root/.npm \
     npm install -g pnpm@9.6.0
 

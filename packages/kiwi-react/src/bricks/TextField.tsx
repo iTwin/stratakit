@@ -16,6 +16,7 @@ export const TextField = React.forwardRef<
 	return (
 		<Input
 			focusable={false}
+			id={undefined}
 			render={<div ref={ref} />}
 			{...rest}
 			className={cx("🥝-text-field", className)}

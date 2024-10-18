@@ -118,3 +118,15 @@ test("Trigger element should be described by the tooltip", async ({ page }) => {
 	const button = page.getByRole("button");
 	await expect(button).toHaveAccessibleDescription("This is the tooltip");
 });
+
+test.describe("@visual", () => {
+	test("tooltip content with a single line", async ({ page }) => {
+		await page.goto("/tests/tooltip");
+		await expect(page.locator("body")).toHaveScreenshot();
+	});
+
+	test("tooltip content with multiple lines", async ({ page }) => {
+		await page.goto("/tests/tooltip?multi-line=true");
+		await expect(page.locator("body")).toHaveScreenshot();
+	});
+});

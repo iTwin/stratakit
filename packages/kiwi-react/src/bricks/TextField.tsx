@@ -23,7 +23,7 @@ interface TextFieldProps extends Ariakit.RoleProps<"div"> {}
  * To add `Icon` decoration before an input:
  * ```tsx
  * <TextField>
- *  <Icon href={…} />
+ * 	<Icon href={…} />
  * 	<Input />
  * </TextField>
  * ```

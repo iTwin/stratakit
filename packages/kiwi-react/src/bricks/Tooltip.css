@@ -20,6 +20,7 @@
 		gap: 0.125rem;
 		line-height: 1;
 		min-height: 1rem;
+		max-inline-size: 12.25rem;
 		padding: 0.125rem 0.25rem;
 
 		justify-content: center;

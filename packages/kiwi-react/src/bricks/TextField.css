@@ -22,6 +22,14 @@
 			box-shadow: unset;
 			outline: unset;
 			background: transparent;
+
+			&:where(:not(:first-child)) {
+				padding-inline-start: 0;
+			}
+
+			&:where(:not(:last-child)) {
+				padding-inline-end: 0;
+			}
 		}
 	}
 }

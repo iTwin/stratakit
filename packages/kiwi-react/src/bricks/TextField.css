@@ -8,6 +8,19 @@
 		gap: 4px;
 		padding-block: 0;
 		box-sizing: border-box;
+		border-width: 0;
+		position: relative;
+
+		&::before {
+			content: "";
+			position: absolute;
+			pointer-events: none;
+			inset: 0;
+			border-color: inherit;
+			border-style: inherit;
+			border-radius: inherit;
+			border-width: 1px;
+		}
 
 		&:has(input:focus) {
 			outline: 2px solid var(--kiwi-color-border-accent-strong);

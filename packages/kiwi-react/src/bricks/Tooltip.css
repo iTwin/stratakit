@@ -27,7 +27,7 @@
 
 		gap: var(--_kiwi-tooltip-content-gap);
 		line-height: 1;
-		min-height: 16px;
+		min-height: 1rem;
 		padding-inline-start: var(--_kiwi-tooltip-padding-horizontal);
 
 		justify-content: center;

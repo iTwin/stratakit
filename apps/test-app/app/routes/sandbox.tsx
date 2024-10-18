@@ -8,6 +8,7 @@ import {
 	DropdownMenu,
 	Icon,
 	Input,
+	TextField,
 	VisuallyHidden,
 } from "@itwin/kiwi-react/bricks";
 import { ListItem } from "@itwin/kiwi-react-internal/src/bricks/ListItem.js";
@@ -52,7 +53,10 @@ export default function Page() {
 						</div>
 					</div>
 					<div className={styles.searchWrapper}>
-						<Input placeholder="Search" />
+						<TextField>
+							<Icon href={placeholderIcon} />
+							<Input placeholder="Search" />
+						</TextField>
 						<div className={styles.actions}>
 							<Icon href={placeholderIcon} />
 							<SortingModes />

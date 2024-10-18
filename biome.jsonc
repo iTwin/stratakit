@@ -22,10 +22,7 @@
 	"linter": {
 		"rules": {
 			"correctness": {
-				"noUnusedImports": {
-					"level": "error",
-					"fix": "safe"
-				}
+				"noUnusedImports": "info"
 			}
 		}
 	},

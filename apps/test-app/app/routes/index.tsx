@@ -24,6 +24,7 @@ const components = [
 	"Switch",
 	"Tabs",
 	"Textarea",
+	"TextField",
 	"Tooltip",
 ];
 

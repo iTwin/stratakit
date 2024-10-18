@@ -31,15 +31,16 @@ interface TextFieldProps extends Ariakit.RoleProps<"div"> {}
 export const TextField = React.forwardRef<
 	React.ElementRef<"div">,
 	TextFieldProps
->(({ children, className, ref: _, ...rest }, ref) => {
+>((props, forwardedRef) => {
+	const { children, className, ref, ...rest } = props;
 	return (
 		<Input
 			focusable={false}
 			id={undefined}
 			render={<div />}
 			{...rest}
-			ref={ref as React.RefObject<HTMLInputElement>}
 			className={cx("🥝-text-field", className)}
+			ref={forwardedRef as React.RefObject<HTMLInputElement>}
 		>
 			{children}
 		</Input>

@@ -18,7 +18,7 @@
 		display: flex;
 
 		gap: 0.125rem;
-		line-height: 1;
+		line-height: 1rem;
 		min-height: 1rem;
 		max-inline-size: 12.25rem;
 		padding: 0.125rem 0.25rem;

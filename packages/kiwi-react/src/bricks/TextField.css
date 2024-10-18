@@ -1,0 +1,27 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+.🥝-text-field:is(.🥝-input) {
+	@layer base {
+		display: flex;
+		gap: 4px;
+		padding-block: 0;
+		box-sizing: border-box;
+
+		&:has(input:focus) {
+			outline: 2px solid var(--kiwi-color-border-accent-strong);
+			outline-offset: 1px;
+		}
+	}
+
+	@layer states {
+		input {
+			border-width: 0;
+			flex: 1;
+			box-shadow: unset;
+			outline: unset;
+			background: transparent;
+		}
+	}
+}

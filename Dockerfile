@@ -1,8 +1,8 @@
-FROM mcr.microsoft.com/playwright:v1.48.1-jammy as base
+FROM mcr.microsoft.com/playwright:v1.48.1-jammy AS base
 RUN --mount=type=cache,target=/root/.npm \
-    npm install -g pnpm@9.6.0
+    npm install -g pnpm@9.12.2
 
-FROM base as deps
+FROM base AS deps
 WORKDIR /kiwi
 RUN --mount=type=bind,source=package.json,target=package.json \
     --mount=type=bind,source=apps/test-app/package.json,target=apps/test-app/package.json \
@@ -12,6 +12,6 @@ RUN --mount=type=bind,source=package.json,target=package.json \
     --mount=type=cache,target=/pnpm/store \
     pnpm install --frozen-lockfile
 
-FROM deps as build
+FROM deps AS build
 COPY . .
 RUN pnpm run build

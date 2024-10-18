@@ -123,7 +123,7 @@ test.describe("aria strategy", () => {
 	test("Tooltip with 'description' aria strategy uses aria-describedby", async ({
 		page,
 	}) => {
-		await page.goto("/tests/tooltip?ariaStrategy=description");
+		await page.goto("/tests/tooltip?type=description");
 
 		const button = page.getByRole("button");
 
@@ -133,7 +133,7 @@ test.describe("aria strategy", () => {
 	test("Tooltip with 'label' aria strategy uses aria-labelledby", async ({
 		page,
 	}) => {
-		await page.goto("/tests/tooltip?ariaStrategy=label");
+		await page.goto("/tests/tooltip?type=label");
 
 		const button = page.getByRole("button");
 
@@ -143,7 +143,7 @@ test.describe("aria strategy", () => {
 	test("Tooltip with 'none' aria strategy renders no ARIA attributes", async ({
 		page,
 	}) => {
-		await page.goto("/tests/tooltip?ariaStrategy=none");
+		await page.goto("/tests/tooltip?type=none");
 
 		const button = page.getByRole("button");
 

@@ -4,26 +4,25 @@
  *--------------------------------------------------------------------------------------------*/
 import { Tooltip, Button, VisuallyHidden } from "@itwin/kiwi-react/bricks";
 import { useSearchParams } from "@remix-run/react";
-import type { AriaStrategy } from "@itwin/kiwi-react-internal/dist/bricks/Tooltip.js";
 
 export const handle = { title: "Tooltip" };
 
 export default function Page() {
 	const [searchParams] = useSearchParams();
-	const ariaStrategyParam = searchParams.get("ariaStrategy");
+	const typeParam = searchParams.get("type");
 
-	// Validate and cast the aria strategy from query parameters
-	const ariaStrategy: AriaStrategy | undefined = [
+	// Validate and cast the type from query parameters
+	const type: "description" | "label" | "none" | undefined = [
 		"description",
 		"label",
 		"none",
-	].includes(ariaStrategyParam as AriaStrategy)
-		? (ariaStrategyParam as AriaStrategy)
+	].includes(typeParam as "description" | "label" | "none")
+		? (typeParam as "description" | "label" | "none")
 		: undefined;
 
 	return (
 		<>
-			<Tooltip content="This is the tooltip" ariaStrategy={ariaStrategy}>
+			<Tooltip content="This is the tooltip" type={type}>
 				<Button>Hover/focus me</Button>
 			</Tooltip>
 

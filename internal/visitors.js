@@ -176,7 +176,7 @@ export function staticVariablesTransform() {
 			if (rule.value.selectors.some((s) => s?.[0]?.type === "nesting")) return;
 			lastNonNestedSelector = rule.value.selectors;
 		},
-		Declaration({ property, value: { name, value } }) {
+		DeclarationExit({ property, value: { name, value } }) {
 			if (property !== "custom") return;
 			if (!name.startsWith("--✨")) return;
 
@@ -187,9 +187,12 @@ export function staticVariablesTransform() {
 
 			return []; // Remove the declaration
 		},
-		VariableExit({ name }) {
+		Variable({ name }) {
 			if (name.ident.startsWith("--✨")) {
-				return savedValues.get(lastNonNestedSelector)?.[name.ident];
+				return [
+					...(savedValues.get(lastNonNestedSelector)?.[name.ident] ?? []),
+					{ type: "token", value: { type: "white-space", value: " " } },
+				];
 			}
 		},
 	};

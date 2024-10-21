@@ -1,0 +1,94 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+body {
+	padding: 1rem;
+}
+
+.disclosureWrapper {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 0.25rem;
+	padding-block: 0.5rem;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	.disclosureIcon {
+		transition-property: transform, color;
+	}
+}
+
+.disclosureButton {
+	font-size: var(--kiwi-font-size-l);
+}
+
+.disclosureButton[aria-expanded="false"] .disclosureIcon {
+	transform: rotate(-90deg);
+}
+
+.table {
+	border-collapse: collapse;
+	font-size: var(--kiwi-font-size-s);
+
+	thead {
+		text-align: start;
+	}
+
+	tbody tr:hover {
+		background-color: var(--kiwi-color-bg-neutral-base);
+	}
+
+	th,
+	td {
+		border: 1px solid var(--kiwi-color-border-neutral-base);
+		padding: 1rem;
+
+		&:first-child {
+			inline-size: 400px;
+		}
+	}
+
+	code {
+		color: var(--kiwi-color-text-neutral-secondary);
+	}
+}
+
+.swatch {
+	--_swatch-size: 4rem;
+
+	inline-size: var(--_swatch-size);
+	block-size: var(--_swatch-size);
+	border-radius: 4px;
+	position: relative;
+	background-position: 0 0, calc(var(--_swatch-size) * 0.25) calc(var(--_swatch-size) * 0.25);
+	background-size: calc(var(--_swatch-size) * 0.5) calc(var(--_swatch-size) * 0.5);
+	background-image: repeating-linear-gradient(
+			45deg,
+			var(--kiwi-color-bg-neutral-base) 25%,
+			transparent 25%,
+			transparent 75%,
+			var(--kiwi-color-bg-neutral-base) 75%,
+			var(--kiwi-color-bg-neutral-base)
+		),
+		repeating-linear-gradient(
+			45deg,
+			var(--kiwi-color-bg-neutral-base) 25%,
+			var(--kiwi-color-bg-neutral-muted) 25%,
+			var(--kiwi-color-bg-neutral-muted) 75%,
+			var(--kiwi-color-bg-neutral-base) 75%,
+			var(--kiwi-color-bg-neutral-base)
+		);
+	forced-color-adjust: none;
+
+	&::before {
+		content: "";
+		position: absolute;
+		inset: 0;
+		border-radius: inherit;
+		background-color: var(--_swatch-color);
+		border: 1px solid #ffffff14;
+		box-shadow: 0px 1px 1px -0.5px #00000029, 0px 3px 3px -1.5px #00000029;
+	}
+}

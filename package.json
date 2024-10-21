@@ -16,18 +16,18 @@
 		"test": "pnpm --filter=@itwin/test-app test"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "1.9.1",
-		"@types/node": "*",
+		"@biomejs/biome": "1.9.4",
+		"@types/node": "^22.7.6",
 		"fast-glob": "^3.3.2",
 		"internal": "workspace:*",
-		"lefthook": "^1.7.11",
+		"lefthook": "^1.7.22",
 		"prettier": "3.3.3",
-		"tsx": "^4.16.5"
+		"tsx": "^4.19.1"
 	},
 	"engines": {
 		"node": ">=20.16.0"
 	},
-	"packageManager": "pnpm@9.6.0",
+	"packageManager": "pnpm@9.12.2",
 	"pnpm": {
 		"overrides": {
 			"cookie@<0.7.0": ">=0.7.0"

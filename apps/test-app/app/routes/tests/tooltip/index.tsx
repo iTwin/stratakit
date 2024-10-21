@@ -17,11 +17,13 @@ export default function Page() {
 
 	return (
 		<>
-			<Tooltip content={testContent}>
-				<Button>Hover/focus me</Button>
-			</Tooltip>
+			<div style={{ minHeight: 75 }}>
+				<Tooltip content={testContent}>
+					<Button>Hover/focus me</Button>
+				</Tooltip>
 
-			<VisuallyHidden tabIndex={0}>Tab stop for focus</VisuallyHidden>
+				<VisuallyHidden tabIndex={0}>Tab stop for focus</VisuallyHidden>
+			</div>
 		</>
 	);
 }

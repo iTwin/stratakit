@@ -47,7 +47,7 @@
 			}
 		}
 
-		&:where(:active, :focus) {
+		&:where(:active) {
 			text-decoration-color: transparent;
 		}
 

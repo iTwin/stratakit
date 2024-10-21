@@ -138,7 +138,7 @@ test.describe("@visual", () => {
 		const tooltip = page.getByRole("tooltip");
 
 		await expect(button).toBeVisible();
-		await button.hover();
+		await button.focus();
 
 		await expect(tooltip).toBeVisible();
 
@@ -152,7 +152,7 @@ test.describe("@visual", () => {
 		const tooltip = page.getByRole("tooltip");
 
 		await expect(button).toBeVisible();
-		await button.hover();
+		await button.focus();
 
 		await expect(tooltip).toBeVisible();
 

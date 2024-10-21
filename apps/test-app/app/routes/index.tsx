@@ -17,6 +17,7 @@ const components = [
 	"DropdownMenu",
 	"Field",
 	"Icon",
+	"IconButton",
 	"Input",
 	"List",
 	"Radio",
@@ -46,6 +47,9 @@ export default function Index() {
 			<ul className={styles.list}>
 				<li>
 					<Anchor render={<Link to="/sandbox" />}>Sandbox</Anchor>
+				</li>
+				<li>
+					<Anchor render={<Link to="/tokens" />}>Tokens</Anchor>
 				</li>
 			</ul>
 

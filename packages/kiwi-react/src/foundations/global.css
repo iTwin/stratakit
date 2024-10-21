@@ -9,11 +9,11 @@ html {
 body {
 	font-family: var(--kiwi-font-family-sans);
 	font-size: var(--kiwi-font-size-m);
-	color: #fbfcfd; /* text/neutral/primary */
+	color: var(--kiwi-color-text-neutral-primary);
 }
 
 *:focus-visible {
-	--💥focus-color: #0bfac2 /* border/accent/strong */;
-	outline: 2px solid var(--💥focus-color);
+	--✨focus-color: var(--kiwi-color-border-accent-strong);
+	outline: 2px solid var(--✨focus-color);
 	outline-offset: 1px;
 }

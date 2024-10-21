@@ -147,13 +147,13 @@ export function themeTransform() {
 
 /**
  * LightningCSS visitor that substitutes certain variables with their values.
- * To indicate a static variable, it must be prefixed with 💥.
+ * To indicate a static variable, it must be prefixed with ✨.
  *
  * Input:
  * ```css
  * .foo {
- *   --💥color: hotpink;
- *   color: var(--💥color);
+ *   --✨color: hotpink;
+ *   color: var(--✨color);
  * }
  * ```
  *
@@ -178,7 +178,7 @@ export function staticVariablesTransform() {
 		},
 		Declaration({ property, value: { name, value } }) {
 			if (property !== "custom") return;
-			if (!name.startsWith("--💥")) return;
+			if (!name.startsWith("--✨")) return;
 
 			if (!savedValues.has(lastNonNestedSelector)) {
 				savedValues.set(lastNonNestedSelector, {});
@@ -188,7 +188,7 @@ export function staticVariablesTransform() {
 			return []; // Remove the declaration
 		},
 		VariableExit({ name }) {
-			if (name.ident.startsWith("--💥")) {
+			if (name.ident.startsWith("--✨")) {
 				return savedValues.get(lastNonNestedSelector)?.[name.ident];
 			}
 		},
@@ -209,7 +209,7 @@ export function staticVariablesTransform() {
  * // Map { "color-background" → {…}, "color-text" → {…} }
  * ```
  */
-function parseTokens(obj, prefix = "") {
+export function parseTokens(obj, prefix = "") {
 	const tokens = new Map();
 	for (const [key, value] of Object.entries(obj)) {
 		if (typeof value === "object" && value !== null && !("$value" in value)) {

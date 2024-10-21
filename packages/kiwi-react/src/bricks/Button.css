@@ -74,16 +74,18 @@
 				var(--_kiwi-button-color-background-default) 100%,
 				var(--kiwi-color-glow-hue) var(--kiwi-color-bg-glow-base-press-\%)
 			);
+			--_kiwi-button-color-background-active: var(--kiwi-color-bg-glow-on-surface-accent-press);
 			--_kiwi-button-color-background-disabled: transparent;
 		}
 	}
 
 	@layer states {
-		/* Cyclic toggles for default/hover/pressed/disabled states. See https://kizu.dev/cyclic-toggles/ */
+		/* Cyclic toggles for default/hover/pressed/active/disabled states. See https://kizu.dev/cyclic-toggles/ */
 		--__kiwi-button-state: var(--__kiwi-button-state--default);
 		--__kiwi-button-state--default: var(--__kiwi-button-state,);
 		--__kiwi-button-state--hover: var(--__kiwi-button-state,);
 		--__kiwi-button-state--pressed: var(--__kiwi-button-state,);
+		--__kiwi-button-state--active: var(--__kiwi-button-state,);
 		--__kiwi-button-state--disabled: var(--__kiwi-button-state,);
 
 		--_kiwi-button-background-color: var(
@@ -92,6 +94,7 @@
 			)
 			var(--__kiwi-button-state--hover, var(--_kiwi-button-color-background-hover))
 			var(--__kiwi-button-state--pressed, var(--_kiwi-button-color-background-pressed))
+			var(--__kiwi-button-state--active, var(--_kiwi-button-color-background-active))
 			var(--__kiwi-button-state--disabled, var(--_kiwi-button-color-background-disabled));
 
 		--_kiwi-button-color-icon: var(
@@ -100,6 +103,7 @@
 			)
 			var(--__kiwi-button-state--hover, var(--kiwi-color-icon-neutral-hover))
 			var(--__kiwi-button-state--pressed, var(--kiwi-color-icon-neutral-hover))
+			var(--__kiwi-button-state--active, var(--kiwi-color-icon-accent-strong))
 			var(--__kiwi-button-state--disabled, var(--kiwi-color-icon-neutral-disabled));
 
 		@media (any-hover: hover) {
@@ -110,6 +114,10 @@
 
 		&:where(:active) {
 			--__kiwi-button-state: var(--__kiwi-button-state--pressed);
+		}
+
+		&:where([data-kiwi-variant="ghost"][aria-pressed="true"]) {
+			--__kiwi-button-state: var(--__kiwi-button-state--active);
 		}
 
 		&:where([disabled], :disabled, [aria-disabled="true"]) {

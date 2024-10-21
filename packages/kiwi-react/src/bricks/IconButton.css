@@ -7,11 +7,4 @@
 		aspect-ratio: 1;
 		--_kiwi-button-padding-inline: 4px;
 	}
-
-	@layer modifiers {
-		&[aria-pressed="true"] {
-			background-color: var(--kiwi-color-bg-glow-on-surface-accent-press);
-			--_kiwi-icon-color: var(--kiwi-color-icon-accent-strong);
-		}
-	}
 }

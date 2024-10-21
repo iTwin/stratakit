@@ -7,13 +7,13 @@ import cx from "classnames";
 import * as Ariakit from "@ariakit/react";
 
 interface AnchorProps extends Ariakit.FocusableProps<"a"> {
-	/** @default "primary" */
-	variant?: "primary" | "strong" | "destructive";
+	/** @default "neutral" */
+	variant?: "neutral" | "accent" | "critical";
 }
 
 export const Anchor = React.forwardRef<React.ElementRef<"a">, AnchorProps>(
 	(props, forwardedRef) => {
-		const { variant = "primary", ...rest } = props;
+		const { variant = "neutral", ...rest } = props;
 		return (
 			<Ariakit.Role.a
 				data-kiwi-variant={variant}

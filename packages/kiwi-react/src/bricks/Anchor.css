@@ -23,15 +23,15 @@
 	}
 
 	@layer modifiers {
-		&[data-kiwi-variant="primary"] {
+		&[data-kiwi-variant="neutral"] {
 			--_kiwi-anchor-color-text: var(--kiwi-color-text-neutral-primary);
 		}
 
-		&[data-kiwi-variant="strong"] {
+		&[data-kiwi-variant="accent"] {
 			--_kiwi-anchor-color-text: var(--kiwi-color-text-accent-strong);
 		}
 
-		&[data-kiwi-variant="destructive"] {
+		&[data-kiwi-variant="critical"] {
 			--_kiwi-anchor-color-text: var(--kiwi-color-text-critical-base);
 
 			&:focus-visible {

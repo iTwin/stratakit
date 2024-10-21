@@ -29,7 +29,7 @@ export default function Page() {
 }
 
 function VisualTest() {
-	const variants = ["primary", "strong", "destructive"] as const;
+	const variants = ["neutral", "accent", "critical"] as const;
 
 	return (
 		<div style={{ display: "grid", gap: 4 }}>

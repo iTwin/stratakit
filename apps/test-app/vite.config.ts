@@ -20,7 +20,6 @@ export default defineConfig({
 	...(basename && { base: basename }),
 	plugins: [
 		reactRouter({
-			...(basename && { basename }),
 			ssr: false, // SPA mode for github-pages
 			prerender: true, // prerendering for github-pages
 		}),

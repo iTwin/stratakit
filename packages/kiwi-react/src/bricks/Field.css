@@ -19,11 +19,6 @@
 		/* This is only an override for the default label placement for textboxes */
 		&:where([data-kiwi-label-placement="inline"]) {
 			grid-template-columns: auto auto;
-			align-items: start;
-
-			> .🥝-label {
-				padding-block-start: 0.3125rem;
-			}
 		}
 	}
 }

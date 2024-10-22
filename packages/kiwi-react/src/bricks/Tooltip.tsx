@@ -7,10 +7,50 @@ import cx from "classnames";
 import * as Ariakit from "@ariakit/react";
 
 interface TooltipProps extends Omit<Ariakit.TooltipProps, "store" | "content"> {
+	/**
+	 * The content to be displayed inside the tooltip.
+	 * This can be text, elements, or React components.
+	 */
 	content: React.ReactNode;
+
+	/**
+	 * The element that will trigger the tooltip when hovered or focused.
+	 * Common examples include buttons, links, or form controls.
+	 */
 	children: React.ReactElement;
+
+	/**
+	 * Determines how ARIA attributes are applied to the tooltip for accessibility:
+	 *
+	 * - `"description"`: The tooltip provides additional information via `aria-describedby`.
+	 * - `"label"`: The tooltip acts as a label for the trigger element via `aria-labelledby`.
+	 * - `"none"`: No ARIA attributes are applied; the tooltip is only for visual assistance.
+	 */
 	type?: "description" | "label" | "none";
 }
+
+/**
+ * Tooltip component that provides additional information or context for a trigger element.
+ * It uses `Ariakit.Tooltip` and is designed to be accessible using ARIA attributes.
+ *
+ * Example usage:
+ *
+ * ```tsx
+ * <Tooltip content="This is a tooltip" type="description">
+ *   <button>Hover over me</button>
+ * </Tooltip>
+ * ```
+ *
+ * The `content` prop accepts any valid React node (text, elements, or components):
+ *
+ * ```tsx
+ * <Tooltip content={<span>Custom content</span>} type="label">
+ *   <input />
+ * </Tooltip>
+ * ```
+ *
+ * **Note**: If `type` is set to `"none"`, the tooltip will not use ARIA attributes and will unmount when hidden.
+ */
 
 export const Tooltip = React.forwardRef<
 	React.ElementRef<typeof Ariakit.Tooltip>,

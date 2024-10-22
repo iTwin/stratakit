@@ -8,8 +8,8 @@ import {
 	Outlet,
 	Scripts,
 	ScrollRestoration,
-} from "@remix-run/react";
-import type { LinksFunction } from "@remix-run/node";
+	type LinksFunction,
+} from "react-router";
 import { Root } from "@itwin/kiwi-react/bricks";
 
 export const links: LinksFunction = () => {

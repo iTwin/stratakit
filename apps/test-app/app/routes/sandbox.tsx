@@ -11,7 +11,7 @@ import {
 	VisuallyHidden,
 } from "@itwin/kiwi-react/bricks";
 import { ListItem } from "@itwin/kiwi-react-internal/src/bricks/ListItem.js";
-import type { MetaFunction } from "@remix-run/react";
+import type { MetaFunction } from "react-router";
 
 const title = "Kiwi sandbox";
 export const meta: MetaFunction = () => {

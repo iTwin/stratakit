@@ -4,7 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 import * as Ariakit from "@ariakit/react";
 import type * as React from "react";
-import type { MetaFunction } from "@remix-run/react";
+import type { MetaFunction } from "react-router";
 import { Button, Divider, Icon } from "@itwin/kiwi-react/bricks";
 import { parseTokens } from "internal/visitors.js";
 import rawTokens from "internal/theme-dark.json";

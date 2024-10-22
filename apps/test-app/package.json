@@ -4,26 +4,27 @@
 	"sideEffects": false,
 	"type": "module",
 	"scripts": {
-		"build": "remix vite:build",
-		"dev": "remix vite:dev",
+		"build": "react-router typegen && react-router build",
+		"dev": "react-router dev",
 		"preview": "vite preview",
 		"test": "tsx ./scripts/run-tests.cts pnpm exec playwright test",
-		"typecheck": "tsc"
+		"typecheck": "react-router typegen && tsc"
 	},
 	"dependencies": {
 		"@ariakit/react": "*",
 		"@itwin/kiwi-icons": "*",
 		"@itwin/kiwi-react": "*",
-		"@remix-run/node": "^2.13.1",
-		"@remix-run/react": "^2.13.1",
-		"@remix-run/serve": "^2.13.1",
+		"@react-router/node": "^7.0.0-pre.1",
+		"@react-router/serve": "^7.0.0-pre.1",
 		"isbot": "^5.1.17",
 		"react": "18",
-		"react-dom": "18"
+		"react-dom": "18",
+		"react-router": "^7.0.0-pre.1"
 	},
 	"devDependencies": {
 		"@playwright/test": "^1.48.1",
-		"@remix-run/dev": "^2.13.1",
+		"@react-router/dev": "^7.0.0-pre.1",
+		"@react-router/remix-config-routes-adapter": "^7.0.0-pre.1",
 		"@remix-run/v1-route-convention": "^0.1.4",
 		"@types/node": "*",
 		"@types/react": "*",

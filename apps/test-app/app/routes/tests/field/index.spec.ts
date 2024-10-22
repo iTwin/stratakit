@@ -17,7 +17,7 @@ test.describe("default", () => {
 
 	test("wrapping textarea and label", async ({ page }) => {
 		await expect(page.locator("textarea")).toHaveAccessibleName(
-			"Textarea example",
+			"Textarea example (label inline)",
 		);
 	});
 
@@ -38,7 +38,9 @@ test.describe("default", () => {
 	});
 
 	test("rendering as a label", async ({ page }) => {
-		await expect(page.locator(".🥝-label.🥝-field")).toBeVisible();
+		await expect(
+			page.locator(".🥝-label.🥝-field:first-of-type"),
+		).toBeVisible();
 	});
 });
 

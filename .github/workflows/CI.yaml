@@ -175,7 +175,7 @@ jobs:
         with:
           branch: gh-pages
           folder: ${{ github.workspace }}/apps/test-app/build/client
-          target-folder: ${{ env.BASE_FOLDER }}
+          clean-exclude: ${{ steps.clean_exclude_folders.outputs.result }}
           git-config-name: github-actions[bot]
           git-config-email: github-actions[bot]@users.noreply.github.com
 

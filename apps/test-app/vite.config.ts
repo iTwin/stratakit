@@ -17,7 +17,7 @@ const basename = process.env.BASE_FOLDER
 	: undefined;
 
 export default defineConfig({
-	...(basename && { base: basename }),
+	// ...(basename && { base: basename }),
 	plugins: [
 		reactRouter({
 			...(basename && { basename }),

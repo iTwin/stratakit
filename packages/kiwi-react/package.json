@@ -37,7 +37,7 @@
 		"dev": "tsc --watch --outDir dist"
 	},
 	"dependencies": {
-		"@ariakit/react": "^0.4.8",
+		"@ariakit/react": "^0.4.13",
 		"classnames": "^2.5.1"
 	},
 	"devDependencies": {

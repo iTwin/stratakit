@@ -2,6 +2,7 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
+
 .🥝-tooltip {
 	@layer base {
 		--_kiwi-tooltip-color-background: var(--kiwi-color-bg-surface-emphasis);
@@ -23,5 +24,18 @@
 		padding-inline: 0.25rem;
 		min-height: 1rem;
 		max-inline-size: 12.25rem;
+	}
+}
+
+.🥝-tooltip-container {
+	container-type: inline-size; /* Enable container queries based on width */
+}
+
+/* Container query to adjust padding when the tooltip exceeds 12.25rem */
+@container (min-width: 12.25rem) {
+	.🥝-tooltip {
+		background-color: red;
+		padding-block: 0.25rem; /* Increase the padding when the tooltip is wider */
+		padding-inline: 0.5rem;
 	}
 }

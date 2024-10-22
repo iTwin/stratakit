@@ -21,14 +21,17 @@ export const Tooltip = React.forwardRef<
 		<>
 			<Ariakit.TooltipProvider>
 				<Ariakit.TooltipAnchor render={children} aria-describedby={id} />
-				<Ariakit.Tooltip
-					{...rest}
-					className={cx("🥝-tooltip", className)}
-					ref={forwardedRef}
-					id={id}
-				>
-					{content}
-				</Ariakit.Tooltip>
+				<div className="🥝-tooltip-container">
+					<Ariakit.Tooltip
+						{...rest}
+						className={cx("🥝-tooltip", className)}
+						ref={forwardedRef}
+						id={id}
+						portal={false}
+					>
+						{content}
+					</Ariakit.Tooltip>
+				</div>
 			</Ariakit.TooltipProvider>
 		</>
 	);

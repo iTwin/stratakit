@@ -9,9 +9,9 @@ export const handle = { title: "Tooltip" };
 
 export default function Page() {
 	const [searchParams] = useSearchParams();
-	const checked = searchParams.get("multi-line") === "true";
+	const lineStyle = searchParams.get("multi-line") === "true";
 
-	const testContent = checked
+	const testContent = lineStyle
 		? "This is the tooltip content that is to display across multiple lines"
 		: "This is the tooltip";
 

@@ -174,8 +174,8 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages
-          folder: ${{ github.workspace }}/apps/test-app/build/client
-          clean-exclude: ${{ steps.clean_exclude_folders.outputs.result }}
+          folder: ${{ github.workspace }}/apps/test-app/build/client/
+          clean: false
           git-config-name: github-actions[bot]
           git-config-email: github-actions[bot]@users.noreply.github.com
 

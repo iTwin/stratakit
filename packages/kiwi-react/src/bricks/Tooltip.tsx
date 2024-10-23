@@ -9,7 +9,6 @@ import * as Ariakit from "@ariakit/react";
 interface TooltipProps extends Omit<Ariakit.TooltipProps, "store" | "content"> {
 	/**
 	 * The content to be displayed inside the tooltip.
-	 * This can be text, elements, or React components.
 	 */
 	content: React.ReactNode;
 

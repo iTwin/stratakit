@@ -9,16 +9,7 @@ export const handle = { title: "Tooltip" };
 
 export default function Page() {
 	const [searchParams] = useSearchParams();
-	const typeParam = searchParams.get("type");
-
-	// Validate and cast the type from query parameters
-	const type: "description" | "label" | "none" | undefined = [
-		"description",
-		"label",
-		"none",
-	].includes(typeParam as "description" | "label" | "none")
-		? (typeParam as "description" | "label" | "none")
-		: undefined;
+	const type = searchParams.get("type") as "description" | "label" | "none";
 
 	return (
 		<>

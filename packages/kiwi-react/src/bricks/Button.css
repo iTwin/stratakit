@@ -20,7 +20,7 @@
 	--✨bg--ghost-default: transparent;
 	--✨bg--ghost-hover: color-mix(in oklch, var(--✨bg--ghost-default) 100%, var(--✨hover-glow));
 	--✨bg--ghost-pressed: color-mix(in oklch, var(--✨bg--ghost-default) 100%, var(--✨press-glow));
-	--✨bg--ghost-aria-pressed: var(--kiwi-color-bg-glow-on-surface-accent-press);
+	--✨bg--ghost-active: var(--kiwi-color-bg-glow-on-surface-accent-press);
 
 	@layer base {
 		text-decoration: none;
@@ -49,7 +49,7 @@
 		--_kiwi-icon-color: var(--🌀button-state--default, var(--kiwi-color-icon-neutral-base))
 			var(--🌀button-state--hover, var(--kiwi-color-icon-neutral-hover))
 			var(--🌀button-state--pressed, var(--kiwi-color-icon-neutral-hover))
-			var(--🌀button-state--aria-pressed, var(--kiwi-color-icon-accent-strong))
+			var(--🌀button-state--active, var(--kiwi-color-icon-accent-strong))
 			var(--🌀button-state--disabled, var(--kiwi-color-icon-neutral-disabled));
 
 		@media (forced-colors: active) {
@@ -70,7 +70,7 @@
 			--🥝button-background-color: var(--🌀button-state--default, var(--✨bg--ghost-default))
 				var(--🌀button-state--hover, var(--✨bg--ghost-hover))
 				var(--🌀button-state--pressed, var(--✨bg--ghost-pressed))
-				var(--🌀button-state--aria-pressed, var(--✨bg--ghost-aria-pressed))
+				var(--🌀button-state--active, var(--✨bg--ghost-active))
 				var(--🌀button-state--disabled, var(--✨bg--ghost-default));
 		}
 	}
@@ -87,7 +87,7 @@
 		}
 
 		&:where([data-kiwi-variant="ghost"][aria-pressed="true"]) {
-			--🌀button-state: var(--🌀button-state--aria-pressed);
+			--🌀button-state: var(--🌀button-state--active);
 		}
 
 		&:where([disabled], :disabled, [aria-disabled="true"]) {
@@ -103,7 +103,7 @@
 		--🌀button-state--default: var(--🌀button-state,);
 		--🌀button-state--hover: var(--🌀button-state,);
 		--🌀button-state--pressed: var(--🌀button-state,);
-		--🌀button-state--aria-pressed: var(--🌀button-state,); /* aria-pressed is only supported in ghost variant */
+		--🌀button-state--active: var(--🌀button-state,); /* "active" state is only supported in ghost variant */
 		--🌀button-state--disabled: var(--🌀button-state,);
 	}
 }

@@ -35,7 +35,7 @@
 			--_kiwi-anchor-color-text: var(--kiwi-color-text-critical-base);
 
 			&:focus-visible {
-				outline-color: var(--kiwi-color-text-critical-base);
+				outline-color: var(--_kiwi-anchor-color-text);
 			}
 		}
 	}

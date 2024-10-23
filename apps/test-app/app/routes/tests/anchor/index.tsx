@@ -29,12 +29,12 @@ export default function Page() {
 }
 
 function VisualTest() {
-	const variants = ["neutral", "accent", "critical"] as const;
+	const tones = ["neutral", "accent", "critical"] as const;
 
 	return (
 		<div style={{ display: "grid", gap: 4 }}>
-			{variants.map((variant) => (
-				<Anchor key={variant} variant={variant} href="https://bentley.com">
+			{tones.map((tone) => (
+				<Anchor key={tone} tone={tone} href="https://bentley.com">
 					Example
 				</Anchor>
 			))}

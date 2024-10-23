@@ -8,15 +8,15 @@ import * as Ariakit from "@ariakit/react";
 
 interface AnchorProps extends Ariakit.FocusableProps<"a"> {
 	/** @default "neutral" */
-	variant?: "neutral" | "accent" | "critical";
+	tone?: "neutral" | "accent" | "critical";
 }
 
 export const Anchor = React.forwardRef<React.ElementRef<"a">, AnchorProps>(
 	(props, forwardedRef) => {
-		const { variant = "neutral", ...rest } = props;
+		const { tone = "neutral", ...rest } = props;
 		return (
 			<Ariakit.Role.a
-				data-kiwi-variant={variant}
+				data-kiwi-tone={tone}
 				{...rest}
 				className={cx("🥝-anchor", props.className)}
 				render={

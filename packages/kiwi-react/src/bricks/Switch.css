@@ -7,15 +7,15 @@
 		--_kiwi-switch-width: 2rem;
 		--_kiwi-switch-thumb-size: 1rem;
 
-		--_kiwi-switch-color-border: var(--kiwi-color-border-neutral-base);
+		--_kiwi-switch-color-border-default: var(--kiwi-color-border-neutral-base);
 		--_kiwi-switch-color-border-hover: color-mix(
 			in oklch,
-			var(--_kiwi-switch-color-border) 100%,
+			var(--_kiwi-switch-color-border-default) 100%,
 			var(--kiwi-color-glow-hue) var(--kiwi-color-border-glow-base-hover-\%)
 		);
 		--_kiwi-switch-color-border-pressed: color-mix(
 			in oklch,
-			var(--_kiwi-switch-color-border) 100%,
+			var(--_kiwi-switch-color-border-default) 100%,
 			var(--kiwi-color-glow-hue) var(--kiwi-color-border-glow-base-press-\%)
 		);
 		--_kiwi-switch-color-border-checked: color-mix(
@@ -24,10 +24,10 @@
 			var(--kiwi-color-glow-hue) var(--kiwi-color-border-glow-strong-hover-\%)
 		);
 		--_kiwi-switch-color-border-disabled: var(--kiwi-color-border-glow-on-surface-disabled);
-		--_kiwi-switch-color-background: var(--kiwi-color-bg-surface-primary);
+		--_kiwi-switch-color-background-default: var(--kiwi-color-bg-surface-primary);
 		--_kiwi-switch-color-background-hover: color-mix(
 			in oklch,
-			var(--_kiwi-switch-color-background) 100%,
+			var(--_kiwi-switch-color-background-default) 100%,
 			var(--kiwi-color-glow-hue) var(--kiwi-color-bg-glow-base-hover-\%)
 		);
 		--_kiwi-switch-color-background-checked: var(--kiwi-color-bg-accent-base);
@@ -48,6 +48,8 @@
 		border-radius: 9999px;
 		inline-size: var(--_kiwi-switch-width);
 
+		background-color: var(--_kiwi-switch-background-color);
+		border-color: var(--_kiwi-switch-border-color);
 		transition: all 150ms ease-out;
 		transition-property: background-color, border-color;
 
@@ -101,13 +103,19 @@
 		--__kiwi-switch-state--checked-hover: var(--__kiwi-switch-state,);
 		--__kiwi-switch-state--disabled: var(--__kiwi-switch-state,);
 
-		background-color: var(--__kiwi-switch-state--default, var(--_kiwi-switch-color-background))
+		--_kiwi-switch-background-color: var(
+				--__kiwi-switch-state--default,
+				var(--_kiwi-switch-color-background-default)
+			)
 			var(--__kiwi-switch-state--hover, var(--_kiwi-switch-color-background-hover))
 			var(--__kiwi-switch-state--pressed, var(--_kiwi-switch-color-background-hover))
 			var(--__kiwi-switch-state--checked, var(--_kiwi-switch-color-background-checked))
 			var(--__kiwi-switch-state--checked-hover, var(--_kiwi-switch-color-background-checked-hover))
-			var(--__kiwi-switch-state--disabled, var(--_kiwi-switch-color-background));
-		border-color: var(--__kiwi-switch-state--default, var(--_kiwi-switch-color-border))
+			var(--__kiwi-switch-state--disabled, var(--_kiwi-switch-color-background-default));
+		--_kiwi-switch-border-color: var(
+				--__kiwi-switch-state--default,
+				var(--_kiwi-switch-color-border-default)
+			)
 			var(--__kiwi-switch-state--hover, var(--_kiwi-switch-color-border-hover))
 			var(--__kiwi-switch-state--pressed, var(--_kiwi-switch-color-border-pressed))
 			var(--__kiwi-switch-state--checked, var(--_kiwi-switch-color-border-checked))

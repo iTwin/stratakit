@@ -28,6 +28,7 @@
 		border-radius: 4px;
 		padding-inline: var(--_kiwi-button-padding-inline);
 
+		background-color: var(--_kiwi-button-background-color);
 		color: var(--_kiwi-button-color-text);
 		transition: background-color 150ms ease-out;
 		-webkit-tap-highlight-color: var(--_kiwi-button-color-background-pressed);
@@ -40,15 +41,15 @@
 
 	@layer modifiers {
 		&[data-kiwi-variant="solid"] {
-			--_kiwi-button-color-background: var(--kiwi-color-bg-neutral-base);
+			--_kiwi-button-color-background-default: var(--kiwi-color-bg-neutral-base);
 			--_kiwi-button-color-background-hover: color-mix(
 				in oklch,
-				var(--_kiwi-button-color-background) 100%,
+				var(--_kiwi-button-color-background-default) 100%,
 				var(--kiwi-color-glow-hue) var(--kiwi-color-bg-glow-base-hover-\%)
 			);
 			--_kiwi-button-color-background-pressed: color-mix(
 				in oklch,
-				var(--_kiwi-button-color-background) 100%,
+				var(--_kiwi-button-color-background-default) 100%,
 				var(--kiwi-color-glow-hue) var(--kiwi-color-bg-glow-base-press-\%)
 			);
 			--_kiwi-button-color-background-disabled: var(--kiwi-color-bg-glow-on-surface-disabled);
@@ -62,15 +63,15 @@
 		}
 
 		&[data-kiwi-variant="ghost"] {
-			--_kiwi-button-color-background: transparent;
+			--_kiwi-button-color-background-default: transparent;
 			--_kiwi-button-color-background-hover: color-mix(
 				in oklch,
-				var(--_kiwi-button-color-background) 100%,
+				var(--_kiwi-button-color-background-default) 100%,
 				var(--kiwi-color-glow-hue) var(--kiwi-color-bg-glow-base-hover-\%)
 			);
 			--_kiwi-button-color-background-pressed: color-mix(
 				in oklch,
-				var(--_kiwi-button-color-background) 100%,
+				var(--_kiwi-button-color-background-default) 100%,
 				var(--kiwi-color-glow-hue) var(--kiwi-color-bg-glow-base-press-\%)
 			);
 			--_kiwi-button-color-background-disabled: transparent;
@@ -85,7 +86,10 @@
 		--__kiwi-button-state--pressed: var(--__kiwi-button-state,);
 		--__kiwi-button-state--disabled: var(--__kiwi-button-state,);
 
-		background-color: var(--__kiwi-button-state--default, var(--_kiwi-button-color-background))
+		--_kiwi-button-background-color: var(
+				--__kiwi-button-state--default,
+				var(--_kiwi-button-color-background-default)
+			)
 			var(--__kiwi-button-state--hover, var(--_kiwi-button-color-background-hover))
 			var(--__kiwi-button-state--pressed, var(--_kiwi-button-color-background-pressed))
 			var(--__kiwi-button-state--disabled, var(--_kiwi-button-color-background-disabled));

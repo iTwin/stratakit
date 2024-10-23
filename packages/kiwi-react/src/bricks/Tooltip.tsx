@@ -51,7 +51,6 @@ interface TooltipProps extends Omit<Ariakit.TooltipProps, "store" | "content"> {
  *
  * **Note**: If `type` is set to `"none"`, the tooltip will not use ARIA attributes and will unmount when hidden.
  */
-
 export const Tooltip = React.forwardRef<
 	React.ElementRef<typeof Ariakit.Tooltip>,
 	TooltipProps

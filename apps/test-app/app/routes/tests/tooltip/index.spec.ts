@@ -113,13 +113,15 @@ test.describe("dismissal", () => {
 	});
 });
 
-test("Trigger element should be described by the tooltip", async ({ page }) => {
-	await page.goto("/tests/tooltip");
-	const button = page.getByRole("button");
-	await expect(button).toHaveAccessibleDescription("This is the tooltip");
-});
+test.describe("@a11y", () => {
+	test("Trigger element should be described by the tooltip", async ({
+		page,
+	}) => {
+		await page.goto("/tests/tooltip");
+		const button = page.getByRole("button");
+		await expect(button).toHaveAccessibleDescription("This is the tooltip");
+	});
 
-test.describe("aria strategy", () => {
 	test("Tooltip with 'description' aria strategy uses aria-describedby", async ({
 		page,
 	}) => {

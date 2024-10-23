@@ -31,7 +31,6 @@ interface TooltipProps extends Omit<Ariakit.TooltipProps, "store" | "content"> {
 
 /**
  * Tooltip component that provides additional information or context for a trigger element.
- * It uses `Ariakit.Tooltip` and is designed to be accessible using ARIA attributes.
  *
  * Example usage:
  *

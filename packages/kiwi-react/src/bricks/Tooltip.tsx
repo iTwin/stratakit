@@ -40,14 +40,6 @@ interface TooltipProps extends Omit<Ariakit.TooltipProps, "store" | "content"> {
  * </Tooltip>
  * ```
  *
- * The `content` prop accepts any valid React node (text, elements, or components):
- *
- * ```tsx
- * <Tooltip content={<span>Custom content</span>} type="label">
- *   <input />
- * </Tooltip>
- * ```
- *
  * **Note**: If `type` is set to `"none"`, the tooltip will not use ARIA attributes and will unmount when hidden.
  */
 export const Tooltip = React.forwardRef<

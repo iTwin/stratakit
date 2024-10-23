@@ -29,9 +29,15 @@ export default function Page() {
 }
 
 function VisualTest() {
+	const tones = ["neutral", "accent", "critical"] as const;
+
 	return (
-		<>
-			<Anchor href="https://bentley.com">Example</Anchor>
-		</>
+		<div style={{ display: "grid", gap: 4 }}>
+			{tones.map((tone) => (
+				<Anchor key={tone} tone={tone} href="https://bentley.com">
+					Example
+				</Anchor>
+			))}
+		</div>
 	);
 }

@@ -122,7 +122,7 @@ test.describe("@a11y", () => {
 		await expect(button).toHaveAccessibleDescription("This is the tooltip");
 	});
 
-	test("Tooltip with 'description' aria strategy uses aria-describedby", async ({
+	test("Tooltip with 'description' type uses aria-describedby", async ({
 		page,
 	}) => {
 		await page.goto("/tests/tooltip?type=description");
@@ -132,9 +132,7 @@ test.describe("@a11y", () => {
 		await expect(button).toHaveAttribute("aria-describedby");
 	});
 
-	test("Tooltip with 'label' aria strategy uses aria-labelledby", async ({
-		page,
-	}) => {
+	test("Tooltip with 'label' type uses aria-labelledby", async ({ page }) => {
 		await page.goto("/tests/tooltip?type=label");
 
 		const button = page.getByRole("button");
@@ -142,7 +140,7 @@ test.describe("@a11y", () => {
 		await expect(button).toHaveAttribute("aria-labelledby");
 	});
 
-	test("Tooltip with 'none' aria strategy renders no ARIA attributes", async ({
+	test("Tooltip with 'none' type renders no ARIA attributes", async ({
 		page,
 	}) => {
 		await page.goto("/tests/tooltip?type=none");

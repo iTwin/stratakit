@@ -117,7 +117,7 @@ test.describe("@a11y", () => {
 	test("Trigger element should be described by the tooltip", async ({
 		page,
 	}) => {
-		await page.goto("/tests/tooltip");
+		await page.goto("/tests/tooltip?type=description");
 		const button = page.getByRole("button");
 		await expect(button).toHaveAccessibleDescription("This is the tooltip");
 	});
@@ -129,7 +129,7 @@ test.describe("@a11y", () => {
 
 		const button = page.getByRole("button");
 
-		await expect(button).toHaveAttribute("aria-describedby");
+		await expect(button).toHaveAccessibleDescription("This is the tooltip");
 	});
 
 	test("Tooltip with 'label' type uses aria-labelledby", async ({ page }) => {
@@ -137,7 +137,7 @@ test.describe("@a11y", () => {
 
 		const button = page.getByRole("button");
 
-		await expect(button).toHaveAttribute("aria-labelledby");
+		await expect(button).toHaveAccessibleName("This is the tooltip");
 	});
 
 	test("Tooltip with 'none' type renders no ARIA attributes", async ({

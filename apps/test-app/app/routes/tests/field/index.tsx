@@ -27,11 +27,12 @@ export default function Page() {
 	const [searchParams] = useSearchParams();
 	const visual = searchParams.has("visual", "");
 	const controlName = searchParams.get("control") ?? "input";
-	const Control = controls[controlName];
 	const asLabel = searchParams.has("asLabel", "");
-	const ControlLabel = asLabel ? "span" : Label;
 	const layout = searchParams.has("layout", "inline") ? "inline" : undefined;
 	const labelPlacement = searchParams.get("labelPlacement") ?? "before";
+	
+	const Control = controls[controlName];
+	const ControlLabel = asLabel ? "span" : Label;
 
 	if (visual) return <VisualTest />;
 

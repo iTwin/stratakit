@@ -98,7 +98,7 @@
 	}
 
 	@layer base.🌀 {
-		/* Cyclic toggles for default/hover/pressed/disabled states. See https://kizu.dev/cyclic-toggles/ */
+		/* Cyclic toggles for default/hover/pressed/active/disabled states. See https://kizu.dev/cyclic-toggles/ */
 		--🌀button-state: var(--🌀button-state--default);
 		--🌀button-state--default: var(--🌀button-state,);
 		--🌀button-state--hover: var(--🌀button-state,);

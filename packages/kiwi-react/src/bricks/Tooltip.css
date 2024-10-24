@@ -20,22 +20,9 @@
 
 		border: 1px solid var(--_kiwi-tooltip-color-border);
 		border-radius: 0.25rem;
-		padding-block: 0.125rem;
-		padding-inline: 0.25rem;
+		padding-block: 0.25rem;
+		padding-inline: 0.5rem;
 		min-height: 1rem;
 		max-inline-size: 12.25rem;
-	}
-}
-
-.🥝-tooltip-container {
-	container-type: inline-size; /* Enable container queries based on width */
-}
-
-/* Container query to adjust padding when the tooltip exceeds 12.25rem */
-@container (min-width: 12.25rem) {
-	.🥝-tooltip {
-		background-color: red;
-		padding-block: 0.25rem; /* Increase the padding when the tooltip is wider */
-		padding-inline: 0.5rem;
 	}
 }

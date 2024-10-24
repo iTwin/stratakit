@@ -120,7 +120,7 @@ test("Trigger element should be described by the tooltip", async ({ page }) => {
 });
 
 test.describe("@visual", () => {
-	test("Tooltip content with a single line", async ({ page }) => {
+	test("tooltip content with a single line", async ({ page }) => {
 		await page.goto("/tests/tooltip");
 
 		const button = page.getByRole("button");
@@ -134,7 +134,7 @@ test.describe("@visual", () => {
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
 
-	test("Tooltip content with multiple lines", async ({ page }) => {
+	test("tooltip content with multiple lines", async ({ page }) => {
 		await page.goto("/tests/tooltip?multi-line=true");
 
 		const button = page.getByRole("button");

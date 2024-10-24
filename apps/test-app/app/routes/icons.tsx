@@ -6,8 +6,6 @@ import { Icon, VisuallyHidden } from "@itwin/kiwi-react/bricks";
 import type { MetaFunction } from "@remix-run/react";
 import iconsListJson from "@itwin/kiwi-icons/icons-list.json";
 
-import.meta.glob("../../node_modules/@itwin/kiwi-icons/icons/*");
-
 const title = "Kiwi icons";
 export const meta: MetaFunction = () => {
 	return [{ title }, { name: "color-scheme", content: "dark" }];

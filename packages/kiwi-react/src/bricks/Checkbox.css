@@ -5,13 +5,14 @@
 .🥝-checkbox {
 	--✨size: 1rem;
 
+	--✨glow--bg-hover: var(--kiwi-color-glow-hue) var(--kiwi-color-bg-glow-base-hover-\%);
+	--✨glow--bg-press: var(--kiwi-color-glow-hue) var(--kiwi-color-bg-glow-base-press-\%);
+
 	--✨bg--default: var(--kiwi-color-bg-neutral-base);
 	--✨bg--hover: color-mix(in oklch, var(--✨bg--default) 100%, var(--✨glow--bg-hover));
 	--✨bg--checked: var(--kiwi-color-bg-accent-base);
 	--✨bg--checked-hover: color-mix(in oklch, var(--✨bg--checked) 100%, var(--✨glow--bg-press));
 	--✨bg--disabled: var(--kiwi-color-bg-glow-on-surface-disabled);
-	--✨glow--bg-hover: var(--kiwi-color-glow-hue) var(--kiwi-color-bg-glow-base-hover-\%);
-	--✨glow--bg-press: var(--kiwi-color-glow-hue) var(--kiwi-color-bg-glow-base-press-\%);
 
 	--✨border--default: #ffffff14; /* bg/button/base/border/color */
 	--✨border--hover: color-mix(

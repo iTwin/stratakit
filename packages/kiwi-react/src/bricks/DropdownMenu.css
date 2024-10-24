@@ -8,7 +8,7 @@
 	--✨gap: 0.25rem; /* space(in progress)/x1 */
 
 	@layer base {
-		background-color: var(--bg);
+		background-color: var(--✨bg);
 
 		display: flex;
 		flex-direction: column;

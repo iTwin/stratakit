@@ -6,36 +6,30 @@
 	--✨width: 2rem;
 	--✨thumb-size: 1rem;
 
-	--✨border--default: var(--kiwi-border--neutral-base);
-	--✨border--hover: color-mix(
-		in oklch,
-		var(--✨border--default) 100%,
-		var(--kiwi-color-glow-hue) var(--kiwi-color-border-glow-base-hover-\%)
-	);
-	--✨border--pressed: color-mix(
-		in oklch,
-		var(--✨border--default) 100%,
-		var(--kiwi-color-glow-hue) var(--kiwi-color-border-glow-base-press-\%)
-	);
-	--✨border--checked: color-mix(
-		in oklch,
-		var(--✨bg--checked) 100%,
-		var(--kiwi-color-glow-hue) var(--kiwi-color-border-glow-strong-hover-\%)
-	);
-	--✨border--disabled: var(--kiwi-color-border-glow-on-surface-disabled);
+	--✨glow--border-hover: var(--kiwi-color-glow-hue) var(--kiwi-color-border-glow-base-hover-\%);
+	--✨glow--border-press: var(--kiwi-color-glow-hue) var(--kiwi-color-border-glow-base-press-\%);
+	--✨glow--border-checked: var(--kiwi-color-glow-hue) var(--kiwi-color-border-glow-strong-hover-\%);
+	--✨glow--bg-hover: var(--kiwi-color-glow-hue) var(--kiwi-color-bg-glow-base-hover-\%);
+	--✨glow--bg-checked-hover: var(--kiwi-color-glow-hue) var(--kiwi-color-bg-glow-strong-hover-\%);
 
 	--✨bg--default: var(--kiwi-color-bg-surface-primary);
-	--✨bg--hover: color-mix(
-		in oklch,
-		var(--✨bg--default) 100%,
-		var(--kiwi-color-glow-hue) var(--kiwi-color-bg-glow-base-hover-\%)
-	);
+	--✨bg--hover: color-mix(in oklch, var(--✨bg--default) 100%, var(--✨glow--bg-hover));
 	--✨bg--checked: var(--kiwi-color-bg-accent-base);
 	--✨bg--checked-hover: color-mix(
 		in oklch,
 		var(--✨bg--checked) 100%,
-		var(--kiwi-color-glow-hue) var(--kiwi-color-bg-glow-strong-hover-\%)
+		var(--✨glow--bg-checked-hover)
 	);
+
+	--✨border--default: var(--kiwi-color-border-neutral-base);
+	--✨border--hover: color-mix(in oklch, var(--✨border--default) 100%, var(--✨glow--border-hover));
+	--✨border--pressed: color-mix(
+		in oklch,
+		var(--✨border--default) 100%,
+		var(--✨glow--border-press)
+	);
+	--✨border--checked: color-mix(in oklch, var(--✨bg--checked) 100%, var(--✨glow--border-checked));
+	--✨border--disabled: var(--kiwi-color-border-glow-on-surface-disabled);
 
 	@layer base {
 		appearance: none;

@@ -10,16 +10,16 @@
 	--✨shadow:
 		0px 3px 3px -1.5px #00000029, 0px 1px 1px -0.5px #00000029, 0px 0px 0px 1px #ffffff14 inset, 0px -1px 0px 0px #00000014 inset;
 
-	--✨hover-glow: var(--kiwi-color-glow-hue) var(--kiwi-color-bg-glow-base-hover-\%);
-	--✨press-glow: var(--kiwi-color-glow-hue) var(--kiwi-color-bg-glow-base-press-\%);
+	--✨glow--hover: var(--kiwi-color-glow-hue) var(--kiwi-color-bg-glow-base-hover-\%);
+	--✨glow--press: var(--kiwi-color-glow-hue) var(--kiwi-color-bg-glow-base-press-\%);
 
 	--✨bg--solid-default: var(--kiwi-color-bg-neutral-base);
-	--✨bg--solid-hover: color-mix(in oklch, var(--✨bg--solid-default) 100%, var(--✨hover-glow));
-	--✨bg--solid-pressed: color-mix(in oklch, var(--✨bg--solid-default) 100%, var(--✨press-glow));
+	--✨bg--solid-hover: color-mix(in oklch, var(--✨bg--solid-default) 100%, var(--✨glow--hover));
+	--✨bg--solid-pressed: color-mix(in oklch, var(--✨bg--solid-default) 100%, var(--✨glow--press));
 
 	--✨bg--ghost-default: transparent;
-	--✨bg--ghost-hover: color-mix(in oklch, var(--✨bg--ghost-default) 100%, var(--✨hover-glow));
-	--✨bg--ghost-pressed: color-mix(in oklch, var(--✨bg--ghost-default) 100%, var(--✨press-glow));
+	--✨bg--ghost-hover: color-mix(in oklch, var(--✨bg--ghost-default) 100%, var(--✨glow--hover));
+	--✨bg--ghost-pressed: color-mix(in oklch, var(--✨bg--ghost-default) 100%, var(--✨glow--press));
 	--✨bg--ghost-active: var(--kiwi-color-bg-glow-on-surface-accent-press);
 
 	@layer base {

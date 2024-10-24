@@ -10,16 +10,13 @@ export const handle = { title: "Tooltip" };
 export default function Page() {
 	const [searchParams] = useSearchParams();
 	const lineStyle = searchParams.get("multi-line") === "true";
-  const type = (searchParams.get("type") as "description" | "label" | "none" | null) ??
+	const type =
+		(searchParams.get("type") as "description" | "label" | "none" | null) ??
 		undefined;
 
 	const testContent = lineStyle
 		? "This is the tooltip content that is to display across multiple lines"
 		: "This is the tooltip";
-                        
-  const type =
-		(searchParams.get("type") as "description" | "label" | "none" | null) ??
-		undefined;
 
 	return (
 		<>
@@ -27,7 +24,7 @@ export default function Page() {
 				<Tooltip content={testContent} type={type}>
 					<Button>Hover/focus me</Button>
 				</Tooltip>
-        
+
 				<VisuallyHidden tabIndex={0}>Tab stop for focus</VisuallyHidden>
 			</div>
 		</>

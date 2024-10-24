@@ -24,6 +24,8 @@ interface TooltipProps extends Omit<Ariakit.TooltipProps, "store" | "content"> {
 	 * - `"description"`: The tooltip provides additional information via `aria-describedby`.
 	 * - `"label"`: The tooltip acts as a label for the trigger element via `aria-labelledby`.
 	 * - `"none"`: No ARIA attributes are applied; the tooltip is only for visual assistance.
+	 *
+	 * @default "description"
 	 */
 	type?: "description" | "label" | "none";
 }

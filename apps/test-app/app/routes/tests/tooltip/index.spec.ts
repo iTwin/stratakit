@@ -117,7 +117,7 @@ test.describe("@a11y", () => {
 	test("Trigger element should be described by the tooltip", async ({
 		page,
 	}) => {
-		await page.goto("/tests/tooltip");
+		await page.goto("/tests/tooltip?type=description");
 		const button = page.getByRole("button");
 		await expect(button).toHaveAccessibleDescription("This is the tooltip");
 	});

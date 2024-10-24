@@ -4,17 +4,17 @@
  *--------------------------------------------------------------------------------------------*/
 .🥝-input {
 	@layer base {
-		--_kiwi-input-color-background: var(--kiwi-color-bg-surface-primary);
+		--_kiwi-input-color-background-default: var(--kiwi-color-bg-surface-primary);
 		--_kiwi-input-color-background-hover: color-mix(
-			in srgb,
-			var(--_kiwi-input-color-background) 100%,
+			in oklch,
+			var(--_kiwi-input-color-background-default) 100%,
 			var(--kiwi-color-glow-hue) var(--kiwi-color-bg-glow-base-hover-\%)
 		);
 		--_kiwi-input-color-background-disabled: var(--kiwi-color-bg-surface-base);
-		--_kiwi-input-color-border: var(--kiwi-color-border-neutral-base);
+		--_kiwi-input-color-border-default: var(--kiwi-color-border-neutral-base);
 		--_kiwi-input-color-border-hover: color-mix(
-			in srgb,
-			var(--_kiwi-input-color-border) 100%,
+			in oklch,
+			var(--_kiwi-input-color-border-default) 100%,
 			var(--kiwi-color-glow-hue) var(--kiwi-color-border-glow-base-hover-\%)
 		);
 		--_kiwi-input-color-border-disabled: var(--kiwi-color-border-glow-on-surface-disabled);
@@ -38,6 +38,8 @@
 		padding-block: var(--_kiwi-input-padding-block);
 		border-radius: 4px;
 
+		background-color: var(--_kiwi-input-background-color);
+		border-color: var(--_kiwi-input-border-color);
 		box-shadow: 0px 1px 2px 0px #00000029 inset, 0px 2px 4px 0px #00000029 inset;
 		color: var(--_kiwi-input-color-text);
 		transition: all 150ms ease-out;
@@ -61,10 +63,16 @@
 		--__kiwi-input-state--hover: var(--__kiwi-input-state,);
 		--__kiwi-input-state--disabled: var(--__kiwi-input-state,);
 
-		background-color: var(--__kiwi-input-state--default, var(--_kiwi-input-color-background))
+		--_kiwi-input-background-color: var(
+				--__kiwi-input-state--default,
+				var(--_kiwi-input-color-background-default)
+			)
 			var(--__kiwi-input-state--hover, var(--_kiwi-input-color-background-hover))
 			var(--__kiwi-input-state--disabled, var(--_kiwi-input-color-background-disabled));
-		border-color: var(--__kiwi-input-state--default, var(--_kiwi-input-color-border))
+		--_kiwi-input-border-color: var(
+				--__kiwi-input-state--default,
+				var(--_kiwi-input-color-border-default)
+			)
 			var(--__kiwi-input-state--hover, var(--_kiwi-input-color-border-hover))
 			var(--__kiwi-input-state--disabled, var(--_kiwi-input-color-border-disabled));
 

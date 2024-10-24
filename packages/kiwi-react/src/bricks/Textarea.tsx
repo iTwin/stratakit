@@ -5,6 +5,7 @@
 import * as React from "react";
 import * as Ariakit from "@ariakit/react";
 import cx from "classnames";
+import { useFieldId } from "./Field.js";
 
 interface TextareaProps extends Ariakit.FocusableProps<"textarea"> {}
 
@@ -12,8 +13,11 @@ export const Textarea = React.forwardRef<
 	React.ElementRef<"textarea">,
 	TextareaProps
 >((props, forwardedRef) => {
+	const fieldId = useFieldId();
+
 	return (
 		<Ariakit.Role.textarea
+			id={fieldId}
 			{...props}
 			className={cx("🥝-input", props.className)}
 			render={

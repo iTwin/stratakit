@@ -1,0 +1,105 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+.appLayout {
+	block-size: 100vh;
+
+	display: grid;
+	grid-template: auto / 40px auto 1fr;
+}
+
+.platformBar {
+	background-color: var(--kiwi-color-bg-surface-secondary);
+	border-inline-end: 1px solid var(--kiwi-color-border-neutral-base);
+}
+
+.logo {
+	border-block-end: 1px solid var(--kiwi-color-border-neutral-base);
+	block-size: 2.5rem;
+	box-sizing: content-box;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.tools {
+	padding-block: 12px;
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 12px;
+}
+
+.leftPanel {
+	padding-block: 12px;
+	background-color: var(--kiwi-color-bg-surface-primary);
+	min-block-size: 0;
+	min-inline-size: 256px;
+
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+}
+
+.header {
+	display: flex;
+	padding-inline: 12px;
+	justify-content: space-between;
+
+	font-size: var(--kiwi-font-size-s);
+	line-height: 1rem;
+}
+
+.actions {
+	display: flex;
+	gap: 8px;
+	align-items: center;
+}
+
+.searchWrapper {
+	padding: 12px;
+	background: var(--kiwi-color-bg-surface-secondary);
+	border-block-width: 1px;
+	border-inline-width: 0;
+	border-style: solid;
+	border-color: var(--kiwi-color-border-neutral-base);
+
+	display: flex;
+	gap: 8px;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.tree {
+	overflow: auto;
+
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+}
+
+.canvasWrapper {
+	padding-block: 8px;
+	padding-inline-end: 8px;
+}
+
+.canvas {
+	block-size: 100%;
+	border-radius: 16px;
+	box-shadow:
+		0px 0px 0px 1px #000000cc,
+		0px 1px 2px 0px #00000099,
+		0px 1px 0px 0px #00000066,
+		0px 0px 0px 1px #ffffff33 inset,
+		0px 1px 0px 0px #ffffff33 inset;
+
+	background-image: repeating-conic-gradient(
+		var(--kiwi-color-text-mono-faded) 0%,
+		transparent 15%,
+		var(--kiwi-color-text-mono-faded) 33%
+	);
+}

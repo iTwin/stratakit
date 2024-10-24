@@ -113,8 +113,76 @@ test.describe("dismissal", () => {
 	});
 });
 
-test("Trigger element should be described by the tooltip", async ({ page }) => {
-	await page.goto("/tests/tooltip");
-	const button = page.getByRole("button");
-	await expect(button).toHaveAccessibleDescription("This is the tooltip");
+test.describe("@a11y", () => {
+	test("Trigger element should be described by the tooltip", async ({
+		page,
+	}) => {
+		await page.goto("/tests/tooltip");
+		const button = page.getByRole("button");
+		await expect(button).toHaveAccessibleDescription("This is the tooltip");
+	});
+
+	test("Tooltip with 'description' type uses aria-describedby", async ({
+		page,
+	}) => {
+		await page.goto("/tests/tooltip?type=description");
+
+		const button = page.getByRole("button");
+
+		await expect(button).toHaveAccessibleDescription("This is the tooltip");
+	});
+
+	test("Tooltip with 'label' type uses aria-labelledby", async ({ page }) => {
+		await page.goto("/tests/tooltip?type=label");
+
+		const button = page.getByRole("button");
+
+		await expect(button).toHaveAccessibleName("This is the tooltip");
+	});
+
+	test("Tooltip with 'none' type renders no ARIA attributes", async ({
+		page,
+	}) => {
+		await page.goto("/tests/tooltip?type=none");
+
+		const button = page.getByRole("button");
+
+		// Verify no ARIA attributes are applied
+		await expect(button).not.toHaveAttribute("aria-describedby");
+		await expect(button).not.toHaveAttribute("aria-labelledby");
+
+		// Ensure no tooltip is rendered
+		const tooltips = await page.locator('[role="tooltip"]').count();
+		expect(tooltips).toBe(0);
+	});
+});
+
+test.describe("@visual", () => {
+	test("tooltip content with a single line", async ({ page }) => {
+		await page.goto("/tests/tooltip");
+
+		const button = page.getByRole("button");
+		const tooltip = page.getByRole("tooltip");
+
+		await expect(button).toBeVisible();
+		await button.focus();
+
+		await expect(tooltip).toBeVisible();
+
+		await expect(page.locator("body")).toHaveScreenshot();
+	});
+
+	test("tooltip content with multiple lines", async ({ page }) => {
+		await page.goto("/tests/tooltip?multi-line=true");
+
+		const button = page.getByRole("button");
+		const tooltip = page.getByRole("tooltip");
+
+		await expect(button).toBeVisible();
+		await button.focus();
+
+		await expect(tooltip).toBeVisible();
+
+		await expect(page.locator("body")).toHaveScreenshot();
+	});
 });

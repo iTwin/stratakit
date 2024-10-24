@@ -3,40 +3,41 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 .🥝-switch {
+	--✨width: 2rem;
+	--✨thumb-size: 1rem;
+
+	--✨border--default: var(--kiwi-border--neutral-base);
+	--✨border--hover: color-mix(
+		in oklch,
+		var(--✨border--default) 100%,
+		var(--kiwi-color-glow-hue) var(--kiwi-color-border-glow-base-hover-\%)
+	);
+	--✨border--pressed: color-mix(
+		in oklch,
+		var(--✨border--default) 100%,
+		var(--kiwi-color-glow-hue) var(--kiwi-color-border-glow-base-press-\%)
+	);
+	--✨border--checked: color-mix(
+		in oklch,
+		var(--✨bg--checked) 100%,
+		var(--kiwi-color-glow-hue) var(--kiwi-color-border-glow-strong-hover-\%)
+	);
+	--✨border--disabled: var(--kiwi-color-border-glow-on-surface-disabled);
+
+	--✨bg--default: var(--kiwi-color-bg-surface-primary);
+	--✨bg--hover: color-mix(
+		in oklch,
+		var(--✨bg--default) 100%,
+		var(--kiwi-color-glow-hue) var(--kiwi-color-bg-glow-base-hover-\%)
+	);
+	--✨bg--checked: var(--kiwi-color-bg-accent-base);
+	--✨bg--checked-hover: color-mix(
+		in oklch,
+		var(--✨bg--checked) 100%,
+		var(--kiwi-color-glow-hue) var(--kiwi-color-bg-glow-strong-hover-\%)
+	);
+
 	@layer base {
-		--_kiwi-switch-width: 2rem;
-		--_kiwi-switch-thumb-size: 1rem;
-
-		--_kiwi-switch-color-border-default: var(--kiwi-color-border-neutral-base);
-		--_kiwi-switch-color-border-hover: color-mix(
-			in oklch,
-			var(--_kiwi-switch-color-border-default) 100%,
-			var(--kiwi-color-glow-hue) var(--kiwi-color-border-glow-base-hover-\%)
-		);
-		--_kiwi-switch-color-border-pressed: color-mix(
-			in oklch,
-			var(--_kiwi-switch-color-border-default) 100%,
-			var(--kiwi-color-glow-hue) var(--kiwi-color-border-glow-base-press-\%)
-		);
-		--_kiwi-switch-color-border-checked: color-mix(
-			in oklch,
-			var(--_kiwi-switch-color-background-checked) 100%,
-			var(--kiwi-color-glow-hue) var(--kiwi-color-border-glow-strong-hover-\%)
-		);
-		--_kiwi-switch-color-border-disabled: var(--kiwi-color-border-glow-on-surface-disabled);
-		--_kiwi-switch-color-background-default: var(--kiwi-color-bg-surface-primary);
-		--_kiwi-switch-color-background-hover: color-mix(
-			in oklch,
-			var(--_kiwi-switch-color-background-default) 100%,
-			var(--kiwi-color-glow-hue) var(--kiwi-color-bg-glow-base-hover-\%)
-		);
-		--_kiwi-switch-color-background-checked: var(--kiwi-color-bg-accent-base);
-		--_kiwi-switch-color-background-checked-hover: color-mix(
-			in oklch,
-			var(--_kiwi-switch-color-background-checked) 100%,
-			var(--kiwi-color-glow-hue) var(--kiwi-color-bg-glow-strong-hover-\%)
-		);
-
 		appearance: none;
 		border: 1px solid transparent;
 		cursor: pointer;
@@ -46,10 +47,20 @@
 
 		position: relative;
 		border-radius: 9999px;
-		inline-size: var(--_kiwi-switch-width);
+		inline-size: var(--✨width);
 
-		background-color: var(--_kiwi-switch-background-color);
-		border-color: var(--_kiwi-switch-border-color);
+		background-color: var(--🌀switch-state--default, var(--✨bg--default))
+			var(--🌀switch-state--hover, var(--✨bg--hover))
+			var(--🌀switch-state--pressed, var(--✨bg--hover))
+			var(--🌀switch-state--checked, var(--✨bg--checked))
+			var(--🌀switch-state--checked-hover, var(--✨bg--checked-hover))
+			var(--🌀switch-state--disabled, var(--✨bg--default));
+		border-color: var(--🌀switch-state--default, var(--✨border--default))
+			var(--🌀switch-state--hover, var(--✨border--hover))
+			var(--🌀switch-state--pressed, var(--✨border--pressed))
+			var(--🌀switch-state--checked, var(--✨border--checked))
+			var(--🌀switch-state--checked-hover, var(--✨border--checked))
+			var(--🌀switch-state--disabled, var(--✨border--disabled));
 		transition: all 150ms ease-out;
 		transition-property: background-color, border-color;
 
@@ -63,24 +74,24 @@
 		/* This pseudo-element increases the tap target size so it's >=24px tall  */
 		&::before {
 			position: absolute;
-			inline-size: var(--_kiwi-switch-width);
+			inline-size: var(--✨width);
 			block-size: 24px;
 			margin: -1px; /* account for border */
 		}
 
 		/* This pseudo-element creates the "thumb" */
 		&::after {
-			aspect-ratio: var(--_kiwi-switch-thumb-aspect-ratio);
-			block-size: var(--_kiwi-switch-thumb-size);
+			aspect-ratio: var(--🥝switch-thumb-aspect-ratio);
+			block-size: var(--✨thumb-size);
 			border-radius: 9999px;
 			margin: calc(0.125rem - 1px) /* spacing-2 - 1px to account for border */;
-			background-color: var(--_kiwi-switch-thumb-color);
+			background-color: var(--🥝switch-thumb-color);
 			box-shadow:
 				0px -1px 0px 0px #00000014 inset,
 				0px 0px 0px 1px #ffffff14 inset,
 				0px 1px 1px -0.5px #00000029,
 				0px 3px 3px -1.5px #00000029;
-			justify-self: var(--_kiwi-switch-thumb-placement);
+			justify-self: var(--🥝switch-thumb-placement);
 
 			@media (prefers-reduced-motion: no-preference) {
 				transition: aspect-ratio 150ms ease-out;
@@ -94,67 +105,51 @@
 	}
 
 	@layer states {
-		/* Cyclic toggles for default/hover/pressed/checked/checked+hover states. See https://kizu.dev/cyclic-toggles/ */
-		--__kiwi-switch-state: var(--__kiwi-switch-state--default);
-		--__kiwi-switch-state--default: var(--__kiwi-switch-state,);
-		--__kiwi-switch-state--hover: var(--__kiwi-switch-state,);
-		--__kiwi-switch-state--pressed: var(--__kiwi-switch-state,);
-		--__kiwi-switch-state--checked: var(--__kiwi-switch-state,);
-		--__kiwi-switch-state--checked-hover: var(--__kiwi-switch-state,);
-		--__kiwi-switch-state--disabled: var(--__kiwi-switch-state,);
-
-		--_kiwi-switch-background-color: var(
-				--__kiwi-switch-state--default,
-				var(--_kiwi-switch-color-background-default)
-			)
-			var(--__kiwi-switch-state--hover, var(--_kiwi-switch-color-background-hover))
-			var(--__kiwi-switch-state--pressed, var(--_kiwi-switch-color-background-hover))
-			var(--__kiwi-switch-state--checked, var(--_kiwi-switch-color-background-checked))
-			var(--__kiwi-switch-state--checked-hover, var(--_kiwi-switch-color-background-checked-hover))
-			var(--__kiwi-switch-state--disabled, var(--_kiwi-switch-color-background-default));
-		--_kiwi-switch-border-color: var(
-				--__kiwi-switch-state--default,
-				var(--_kiwi-switch-color-border-default)
-			)
-			var(--__kiwi-switch-state--hover, var(--_kiwi-switch-color-border-hover))
-			var(--__kiwi-switch-state--pressed, var(--_kiwi-switch-color-border-pressed))
-			var(--__kiwi-switch-state--checked, var(--_kiwi-switch-color-border-checked))
-			var(--__kiwi-switch-state--checked-hover, var(--_kiwi-switch-color-border-checked))
-			var(--__kiwi-switch-state--disabled, var(--_kiwi-switch-color-border-disabled));
-		--_kiwi-switch-thumb-color: var(--kiwi-color-bg-neutral-inverse);
-		--_kiwi-switch-thumb-placement: start;
-		--_kiwi-switch-thumb-aspect-ratio: 1 / 1;
+		--🥝switch-thumb-color: var(--kiwi-color-bg-neutral-inverse);
+		--🥝switch-thumb-placement: start;
+		--🥝switch-thumb-aspect-ratio: 1 / 1;
 
 		@media (any-hover: hover) {
 			&:where(:hover) {
-				--__kiwi-switch-state: var(--__kiwi-switch-state--hover);
+				--🌀switch-state: var(--🌀switch-state--hover);
 			}
 		}
 
 		&:where(:checked, [aria-checked="true"]) {
-			--__kiwi-switch-state: var(--__kiwi-switch-state--checked);
-			--_kiwi-switch-thumb-placement: end;
+			--🌀switch-state: var(--🌀switch-state--checked);
+			--🥝switch-thumb-placement: end;
 
 			@media (any-hover: hover) {
 				&:where(:hover) {
-					--__kiwi-switch-state: var(--__kiwi-switch-state--checked-hover);
+					--🌀switch-state: var(--🌀switch-state--checked-hover);
 				}
 			}
 		}
 
 		&:where(:active) {
-			--__kiwi-switch-state: var(--__kiwi-switch-state--pressed);
-			--_kiwi-switch-thumb-aspect-ratio: 1.75;
+			--🌀switch-state: var(--🌀switch-state--pressed);
+			--🥝switch-thumb-aspect-ratio: 1.75;
 		}
 
 		&:where([disabled], :disabled, [aria-disabled="true"]) {
-			--__kiwi-switch-state: var(--__kiwi-switch-state--disabled);
-			--_kiwi-switch-thumb-color: var(--kiwi-color-icon-neutral-disabled);
+			--🌀switch-state: var(--🌀switch-state--disabled);
+			--🥝switch-thumb-color: var(--kiwi-color-icon-neutral-disabled);
 			cursor: not-allowed;
 
 			&::after {
 				box-shadow: none;
 			}
 		}
+	}
+
+	@layer base.🌀 {
+		/* Cyclic toggles for default/hover/pressed/checked/checked+hover states. See https://kizu.dev/cyclic-toggles/ */
+		--🌀switch-state: var(--🌀switch-state--default);
+		--🌀switch-state--default: var(--🌀switch-state,);
+		--🌀switch-state--hover: var(--🌀switch-state,);
+		--🌀switch-state--pressed: var(--🌀switch-state,);
+		--🌀switch-state--checked: var(--🌀switch-state,);
+		--🌀switch-state--checked-hover: var(--🌀switch-state,);
+		--🌀switch-state--disabled: var(--🌀switch-state,);
 	}
 }

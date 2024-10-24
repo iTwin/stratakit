@@ -13,95 +13,117 @@ import {
 } from "@itwin/kiwi-react/bricks";
 import { useSearchParams } from "@remix-run/react";
 
-export default function Page() {
-	const visual = useSearchParams()[0].get("visual") === "true";
+export const handle = { title: "Field" };
 
-	if (visual) {
-		return <VisualTest />;
-	}
+const controls: Record<string, React.ElementType> = {
+	checkbox: Checkbox,
+	input: Input,
+	radio: Radio,
+	switch: Switch,
+	textarea: Textarea,
+};
+
+export default function Page() {
+	const [searchParams] = useSearchParams();
+	const visual = searchParams.has("visual", "");
+	const controlName = searchParams.get("control") ?? "input";
+	const Control = controls[controlName];
+	const asLabel = searchParams.has("asLabel", "");
+	const ControlLabel = asLabel ? "span" : Label;
+	const layout = searchParams.has("layout", "inline") ? "inline" : undefined;
+	const labelPlacement = searchParams.get("labelPlacement") ?? "before";
+
+	if (visual) return <VisualTest />;
 
 	return (
-		<form style={{ display: "grid", gap: 4, justifyContent: "start" }}>
-			<Field>
-				<Label>Text example</Label>
-				<Input />
-			</Field>
-			<Field labelPlacement="inline">
-				<Label>Textarea example (label inline)</Label>
-				<Textarea />
-			</Field>
-			<Field render={<Label />}>
-				<Radio name="radio" value="radio" />
-				<span>Radio example</span>
-			</Field>
-			<Field render={<Label />}>
-				<Checkbox />
-				<span>Checkbox example</span>
-			</Field>
-			<Field render={<Label />}>
-				<Switch />
-				<span>Switch example</span>
+		<form style={{ display: "grid", gap: 32, justifyContent: "start" }}>
+			<Field layout={layout} render={asLabel ? <Label /> : undefined}>
+				{labelPlacement === "before" ? (
+					<ControlLabel>{controlName} example</ControlLabel>
+				) : null}
+				<Control name="example" value="example" />
+				{labelPlacement === "after" ? (
+					<ControlLabel>{controlName} example</ControlLabel>
+				) : null}
 			</Field>
 		</form>
 	);
 }
 
 function VisualTest() {
+	const [searchParams] = useSearchParams();
+
+	if (searchParams.has("controlType", "text")) {
+		return <VisualTestForTextControls />;
+	}
+
+	if (searchParams.has("controlType", "checkable")) {
+		return <VisualTestForCheckableControls />;
+	}
+}
+
+function VisualTestForTextControls() {
 	return (
-		<div style={{ display: "grid", gap: 4 }}>
-			{/* Labels before */}
+		<div style={{ display: "grid", gap: 16 }}>
+			{/* Default layout for text controls (block) */}
 			<Field>
 				<Label>Text control</Label>
 				<Input />
 			</Field>
-			<Field>
-				<Label>Textarea control</Label>
-				<Textarea />
-			</Field>
-			<Field labelPlacement="inline">
-				<Label>Text control</Label>
-				<Input />
-			</Field>
-			<Field labelPlacement="inline">
-				<Label>Textarea control</Label>
-				<Textarea />
-			</Field>
-			<Field>
-				<Label>Checkbox control</Label>
-				<Checkbox />
-			</Field>
-			<Field>
-				<Label>Radio control</Label>
-				<Radio value="radio" />
-			</Field>
-			<Field>
-				<Label>Switch control</Label>
-				<Switch />
-			</Field>
 
-			{/* Labels after */}
-			<Field>
-				<Checkbox />
-				<Label>Checkbox control</Label>
-			</Field>
-			<Field>
-				<Radio value="radio" />
-				<Label>Radio control</Label>
-			</Field>
-			<Field>
-				<Switch />
-				<Label>Switch control</Label>
-			</Field>
-
-			{/* Field rendering as label, text before */}
-			<Field render={<Label />}>
-				<span>Text control</span>
-				<Input />
-			</Field>
+			{/* Default layout for text controls (block) with wrapper rendered as a `<Label>` */}
 			<Field render={<Label />}>
 				<span>Textarea control</span>
 				<Textarea />
 			</Field>
+
+			{/* Inline layout for text controls */}
+			<Field layout="inline">
+				<Label>Text control</Label>
+				<Input />
+			</Field>
+
+			{/* Inline layout for text controls with wrapper rendered as a `<Label>` */}
+			<Field render={<Label />} layout="inline">
+				<span>Textarea control</span>
+				<Textarea />
+			</Field>
+		</div>
+	);
+}
+
+function VisualTestForCheckableControls() {
+	return (
+		<div style={{ display: "grid", gap: 16 }}>
+			{/* Label before control */}
+			<Field>
+				<Label>Checkbox control</Label>
+				<Checkbox />
+			</Field>
+			<Field>
+				<Label>Radio control</Label>
+				<Radio value="radio" />
+			</Field>
+			<Field>
+				<Label>Switch control</Label>
+				<Switch />
+			</Field>
+
+			{/* Label after control */}
+			<Field>
+				<Checkbox />
+				<Label>Checkbox control</Label>
+			</Field>
+			<Field>
+				<Radio value="radio" />
+				<Label>Radio control</Label>
+			</Field>
+			<Field>
+				<Switch />
+				<Label>Switch control</Label>
+			</Field>
+
+			{/* Field rendering as label, text before control */}
 			<Field render={<Label />}>
 				<span>Checkbox control</span>
 				<Checkbox />
@@ -115,7 +137,7 @@ function VisualTest() {
 				<Switch />
 			</Field>
 
-			{/* Field rendering as label, text after */}
+			{/* Field rendering as label, text after control */}
 			<Field render={<Label />}>
 				<Checkbox />
 				<span>Checkbox control</span>

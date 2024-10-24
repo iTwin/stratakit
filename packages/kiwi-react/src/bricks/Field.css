@@ -16,8 +16,7 @@
 	}
 
 	@layer modifiers {
-		/* This is only an override for the default label placement for textboxes */
-		&:where([data-kiwi-label-placement="inline"]) {
+		&:where([data-kiwi-layout="inline"]) {
 			grid-template-columns: auto auto;
 		}
 	}

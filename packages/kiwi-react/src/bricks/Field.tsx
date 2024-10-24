@@ -8,10 +8,9 @@ import cx from "classnames";
 
 interface FieldProps extends Ariakit.RoleProps {
 	/**
-	 * An override for the placement of the label (implicit default for textboxes is block and
-	 * checkables is inline).
+	 * Allows overriding the default block layout for text controls.
 	 */
-	labelPlacement?: "inline" | "block";
+	layout?: "inline";
 }
 
 const FieldIdContext = React.createContext<string | undefined>(undefined);
@@ -23,13 +22,14 @@ export function useFieldId() {
 export const Field = React.forwardRef<React.ElementRef<"div">, FieldProps>(
 	(props, forwardedRef) => {
 		const fieldId = React.useId();
+		const { className, layout } = props;
 
 		return (
 			<FieldIdContext.Provider value={fieldId}>
 				<Ariakit.Role
 					{...props}
-					className={cx("🥝-field", props.className)}
-					data-kiwi-label-placement={props.labelPlacement}
+					className={cx("🥝-field", className)}
+					data-kiwi-layout={layout}
 					ref={forwardedRef}
 				/>
 			</FieldIdContext.Provider>

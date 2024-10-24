@@ -24,12 +24,18 @@ export default function Page() {
 			<VisuallyHidden render={(props) => <h1 {...props} />}>
 				{title}
 			</VisuallyHidden>
-			<table style={{ textAlign: "left", minInlineSize: 600, padding: "1rem" }}>
+			<table style={{ textAlign: "left", padding: "1rem" }}>
 				<thead>
 					<tr>
-						<th scope="col">Name</th>
-						<th scope="col">Default</th>
-						<th scope="col">Large</th>
+						<th scope="col" style={{ inlineSize: 300 }}>
+							Name
+						</th>
+						<th scope="col" style={{ inlineSize: 100 }}>
+							Default
+						</th>
+						<th scope="col" style={{ inlineSize: 100 }}>
+							Large
+						</th>
 					</tr>
 				</thead>
 				<tbody>

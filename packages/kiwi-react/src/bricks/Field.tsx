@@ -22,12 +22,12 @@ export function useFieldId() {
 export const Field = React.forwardRef<React.ElementRef<"div">, FieldProps>(
 	(props, forwardedRef) => {
 		const fieldId = React.useId();
-		const { className, layout } = props;
+		const { className, layout, ...rest } = props;
 
 		return (
 			<FieldIdContext.Provider value={fieldId}>
 				<Ariakit.Role
-					{...props}
+					{...rest}
 					className={cx("🥝-field", className)}
 					data-kiwi-layout={layout}
 					ref={forwardedRef}

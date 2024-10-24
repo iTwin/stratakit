@@ -9,7 +9,9 @@ export const handle = { title: "Tooltip" };
 
 export default function Page() {
 	const [searchParams] = useSearchParams();
-	const type = searchParams.get("type") as "description" | "label" | "none";
+	const type =
+		(searchParams.get("type") as "description" | "label" | "none" | null) ??
+		undefined;
 
 	return (
 		<>

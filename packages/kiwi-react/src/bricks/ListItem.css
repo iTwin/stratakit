@@ -9,15 +9,15 @@
 		--_kiwi-list-item-padding-inline: 0.75rem;
 		--_kiwi-list-item-padding-block: 0.25rem;
 
-		--_kiwi-list-item-color-background: transparent;
+		--_kiwi-list-item-color-background-default: transparent;
 		--_kiwi-list-item-color-background-hover: color-mix(
 			in oklch,
-			var(--_kiwi-list-item-color-background) 100%,
+			var(--_kiwi-list-item-color-background-default) 100%,
 			var(--kiwi-color-glow-hue) var(--kiwi-color-bg-glow-on-surface-neutral-hover-\%)
 		);
 		--_kiwi-list-item-color-background-pressed: color-mix(
 			in oklch,
-			var(--_kiwi-list-item-color-background) 100%,
+			var(--_kiwi-list-item-color-background-default) 100%,
 			var(--kiwi-color-glow-hue) var(--kiwi-color-bg-glow-on-surface-neutral-press-\%)
 		);
 		--_kiwi-list-item-color-disabled: var(--kiwi-color-text-neutral-disabled);
@@ -33,6 +33,9 @@
 		min-block-size: var(--_kiwi-list-item-height);
 		padding-inline: var(--_kiwi-list-item-padding-inline);
 		padding-block: var(--_kiwi-list-item-padding-block);
+
+		background-color: var(--_kiwi-list-item-background-color);
+		color: var(--_kiwi-list-item-color);
 	}
 
 	@layer states {
@@ -43,15 +46,15 @@
 		--__kiwi-list-item-state--pressed: var(--__kiwi-list-item-state,);
 		--__kiwi-list-item-state--disabled: var(--__kiwi-list-item-state,);
 
-		background-color: var(
+		--_kiwi-list-item-background-color: var(
 				--__kiwi-list-item-state--default,
-				var(--_kiwi-list-item-color-background)
+				var(--_kiwi-list-item-color-background-default)
 			)
 			var(--__kiwi-list-item-state--hover, var(--_kiwi-list-item-color-background-hover))
 			var(--__kiwi-list-item-state--pressed, var(--_kiwi-list-item-color-background-pressed))
-			var(--__kiwi-list-item-state--disabled, var(--_kiwi-list-item-color-background));
-		color: var(--__kiwi-list-item-state--default, unset) var(--__kiwi-list-item-state--hover, unset)
-			var(--__kiwi-list-item-state--pressed, unset)
+			var(--__kiwi-list-item-state--disabled, var(--_kiwi-list-item-color-background-default));
+		--_kiwi-list-item-color: var(--__kiwi-list-item-state--default, unset)
+			var(--__kiwi-list-item-state--hover, unset) var(--__kiwi-list-item-state--pressed, unset)
 			var(--__kiwi-list-item-state--disabled, var(--_kiwi-list-item-color-disabled));
 
 		@media (any-hover: hover) {

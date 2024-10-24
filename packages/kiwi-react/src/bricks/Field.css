@@ -1,0 +1,23 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+.🥝-field {
+	@layer base {
+		display: grid;
+		gap: 0.5rem;
+		align-items: center;
+		justify-content: start;
+		grid-template-columns: auto auto;
+
+		&:has(.🥝-input) {
+			grid-template-columns: auto;
+		}
+	}
+
+	@layer modifiers {
+		&:where([data-kiwi-layout="inline"]) {
+			grid-template-columns: auto auto;
+		}
+	}
+}

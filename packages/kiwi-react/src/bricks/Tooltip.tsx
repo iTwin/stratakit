@@ -34,7 +34,7 @@ interface TooltipProps extends Omit<Ariakit.TooltipProps, "store" | "content"> {
  * Example usage:
  *
  * ```tsx
- * <Tooltip content="This is a tooltip" type="description">
+ * <Tooltip content="This is a tooltip">
  *   <button>Hover over me</button>
  * </Tooltip>
  * ```

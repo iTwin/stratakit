@@ -45,7 +45,7 @@
 			var(--🌀checkbox-visual-state--checked, var(--✨bg--checked))
 			var(--🌀checkbox-visual-state--checked-hover, var(--✨bg--checked-hover))
 			var(--🌀checkbox-visual-state--disabled, var(--✨bg--disabled));
-		border-radius: var(--✨radius);
+		border-radius: var(--🥝checkbox-border-radius);
 		color: var(--🌀checkbox-aria-state--unchecked, transparent)
 			var(--🌀checkbox-aria-state--checked, var(--🥝checkbox-color-svg))
 			var(--🌀checkbox-aria-state--indeterminate, var(--🥝checkbox-color-svg));

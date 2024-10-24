@@ -46,7 +46,7 @@
 		color: var(--✨color);
 		transition: background-color 150ms ease-out;
 		-webkit-tap-highlight-color: var(--✨bg--solid-pressed);
-		--_kiwi-icon-color: var(--🌀button-state--default, var(--kiwi-color-icon-neutral-base))
+		--🥝icon-color: var(--🌀button-state--default, var(--kiwi-color-icon-neutral-base))
 			var(--🌀button-state--hover, var(--kiwi-color-icon-neutral-hover))
 			var(--🌀button-state--pressed, var(--kiwi-color-icon-neutral-hover))
 			var(--🌀button-state--active, var(--kiwi-color-icon-accent-strong))

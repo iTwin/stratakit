@@ -156,3 +156,33 @@ test.describe("@a11y", () => {
 		expect(tooltips).toBe(0);
 	});
 });
+
+test.describe("@visual", () => {
+	test("tooltip content with a single line", async ({ page }) => {
+		await page.goto("/tests/tooltip");
+
+		const button = page.getByRole("button");
+		const tooltip = page.getByRole("tooltip");
+
+		await expect(button).toBeVisible();
+		await button.focus();
+
+		await expect(tooltip).toBeVisible();
+
+		await expect(page.locator("body")).toHaveScreenshot();
+	});
+
+	test("tooltip content with multiple lines", async ({ page }) => {
+		await page.goto("/tests/tooltip?multi-line=true");
+
+		const button = page.getByRole("button");
+		const tooltip = page.getByRole("tooltip");
+
+		await expect(button).toBeVisible();
+		await button.focus();
+
+		await expect(tooltip).toBeVisible();
+
+		await expect(page.locator("body")).toHaveScreenshot();
+	});
+});

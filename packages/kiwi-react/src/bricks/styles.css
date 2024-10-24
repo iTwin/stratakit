@@ -17,3 +17,4 @@
 @import "./Radio.css" layer(kiwi.components);
 @import "./ListItem.css" layer(kiwi.components);
 @import "./Switch.css" layer(kiwi.components);
+@import "./Tooltip.css" layer(kiwi.components);

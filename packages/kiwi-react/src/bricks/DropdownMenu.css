@@ -6,7 +6,7 @@
 	--✨bg: var(--kiwi-color-bg-surface-tertiary);
 	--✨padding: 0.5rem; /* space(in progress)/x2 */
 	--✨gap: 0.25rem; /* space(in progress)/x1 */
-	
+
 	@layer base {
 		background-color: var(--bg);
 

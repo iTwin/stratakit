@@ -18,8 +18,6 @@ function getIconHref(icon: string) {
 	).href;
 }
 
-const iconsList = iconsListJson as string[];
-
 export default function Page() {
 	return (
 		<>
@@ -35,7 +33,7 @@ export default function Page() {
 					</tr>
 				</thead>
 				<tbody>
-					{iconsList.map((icon) => {
+					{iconsListJson.map((icon) => {
 						const iconHref = getIconHref(icon);
 						return (
 							<tr key={icon}>

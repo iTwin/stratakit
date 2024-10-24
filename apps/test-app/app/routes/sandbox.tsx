@@ -24,6 +24,10 @@ const placeholderIcon = new URL(
 ).href;
 const searchIcon = new URL("@itwin/kiwi-icons/search.svg", import.meta.url)
 	.href;
+const panelLeftIcon = new URL(
+	"@itwin/kiwi-icons/panel-left.svg",
+	import.meta.url,
+).href;
 const filterIcon = new URL("@itwin/kiwi-icons/filter.svg", import.meta.url)
 	.href;
 
@@ -52,7 +56,7 @@ export default function Page() {
 								style={{ color: "var(--kiwi-color-text-accent-strong)" }}
 								href={searchIcon}
 							/>
-							<Icon href={placeholderIcon} />
+							<Icon href={panelLeftIcon} />
 						</div>
 					</div>
 					<div className={styles.searchWrapper}>

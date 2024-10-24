@@ -2,7 +2,9 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-.🥝-checkbox {
+ .🥝-checkbox {
+	--✨size: 1rem;
+
 	--✨bg--default: var(--kiwi-color-bg-neutral-base);
 	--✨bg--hover: color-mix(in oklch, var(--✨bg--default) 100%, var(--✨glow--bg-hover));
 	--✨bg--checked: var(--kiwi-color-bg-accent-base);
@@ -25,11 +27,9 @@
 	);
 	--✨border--disabled: transparent;
 
-	--✨size: 1rem;
-	--✨radius: 4px;
-
 	@layer base {
 		--🥝checkbox-color-svg: var(--kiwi-color-icon-neutral-emphasis);
+		--🥝checkbox-border-radius: 4px;
 
 		--🥝checkbox-unchecked-svg: url('data:image/svg+xml;utf8,<svg viewBox="0 0 16 16"></svg>');
 		--🥝checkbox-checkmark-svg: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 16"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M11.2 5.6 6.8 10l-2-2"/></svg>');

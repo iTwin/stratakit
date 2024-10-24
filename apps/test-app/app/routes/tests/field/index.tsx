@@ -30,7 +30,7 @@ export default function Page() {
 	const asLabel = searchParams.has("asLabel", "");
 	const layout = searchParams.has("layout", "inline") ? "inline" : undefined;
 	const labelPlacement = searchParams.get("labelPlacement") ?? "before";
-	
+
 	const Control = controls[controlName];
 	const ControlLabel = asLabel ? "span" : Label;
 
@@ -42,7 +42,7 @@ export default function Page() {
 				{labelPlacement === "before" ? (
 					<ControlLabel>{controlName} example</ControlLabel>
 				) : null}
-				<Control name="example" value="example" />
+				<Control />
 				{labelPlacement === "after" ? (
 					<ControlLabel>{controlName} example</ControlLabel>
 				) : null}
@@ -103,7 +103,7 @@ function VisualTestForCheckableControls() {
 			</Field>
 			<Field>
 				<Label>Radio control</Label>
-				<Radio value="radio" />
+				<Radio />
 			</Field>
 			<Field>
 				<Label>Switch control</Label>
@@ -116,7 +116,7 @@ function VisualTestForCheckableControls() {
 				<Label>Checkbox control</Label>
 			</Field>
 			<Field>
-				<Radio value="radio" />
+				<Radio />
 				<Label>Radio control</Label>
 			</Field>
 			<Field>
@@ -131,7 +131,7 @@ function VisualTestForCheckableControls() {
 			</Field>
 			<Field render={<Label />}>
 				<span>Radio control</span>
-				<Radio value="radio" />
+				<Radio />
 			</Field>
 			<Field render={<Label />}>
 				<span>Switch control</span>
@@ -144,7 +144,7 @@ function VisualTestForCheckableControls() {
 				<span>Checkbox control</span>
 			</Field>
 			<Field render={<Label />}>
-				<Radio value="radio" />
+				<Radio />
 				<span>Radio control</span>
 			</Field>
 			<Field render={<Label />}>

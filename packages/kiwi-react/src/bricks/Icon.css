@@ -4,19 +4,19 @@
  *--------------------------------------------------------------------------------------------*/
 .🥝-icon {
 	@layer base {
-		width: var(--_kiwi-icon-size);
-		height: var(--_kiwi-icon-size);
-		color: var(--_kiwi-icon-color);
+		width: var(--🥝icon-size);
+		height: var(--🥝icon-size);
+		color: var(--🥝icon-color);
 		transition: color 150ms ease-out;
 	}
 
 	@layer modifiers {
 		&[data-kiwi-size="regular"] {
-			--_kiwi-icon-size: 1rem;
+			--🥝icon-size: 1rem;
 		}
 
 		&[data-kiwi-size="large"] {
-			--_kiwi-icon-size: 1.5rem;
+			--🥝icon-size: 1.5rem;
 		}
 	}
 }

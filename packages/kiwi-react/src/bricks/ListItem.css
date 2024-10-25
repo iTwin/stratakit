@@ -3,73 +3,63 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 .🥝-list-item {
+	--✨gap: 0.25rem;
+	--✨height: 1.5rem;
+	--✨padding-inline: 0.75rem;
+	--✨padding-block: 0.25rem;
+
+	--✨glow--hover: var(--kiwi-color-glow-hue) var(--kiwi-color-bg-glow-on-surface-neutral-hover-\%);
+	--✨glow--press: var(--kiwi-color-glow-hue) var(--kiwi-color-bg-glow-on-surface-neutral-press-\%);
+
+	--✨bg--default: transparent;
+	--✨bg--hover: color-mix(in oklch, var(--✨bg--default) 100%, var(--✨glow--hover));
+	--✨bg--pressed: color-mix(in oklch, var(--✨bg--default) 100%, var(--✨glow--press));
+	--✨bg--disabled: var(--kiwi-color-text-neutral-disabled);
+
 	@layer base {
-		--_kiwi-list-item-gap: 0.25rem;
-		--_kiwi-list-item-height: 1.5rem;
-		--_kiwi-list-item-padding-inline: 0.75rem;
-		--_kiwi-list-item-padding-block: 0.25rem;
-
-		--_kiwi-list-item-color-background-default: transparent;
-		--_kiwi-list-item-color-background-hover: color-mix(
-			in oklch,
-			var(--_kiwi-list-item-color-background-default) 100%,
-			var(--kiwi-color-glow-hue) var(--kiwi-color-bg-glow-on-surface-neutral-hover-\%)
-		);
-		--_kiwi-list-item-color-background-pressed: color-mix(
-			in oklch,
-			var(--_kiwi-list-item-color-background-default) 100%,
-			var(--kiwi-color-glow-hue) var(--kiwi-color-bg-glow-on-surface-neutral-press-\%)
-		);
-		--_kiwi-list-item-color-disabled: var(--kiwi-color-text-neutral-disabled);
-
 		cursor: pointer;
 		line-height: 1;
 		font-size: 0.75rem;
 
 		display: flex;
 		align-items: center;
-		gap: var(--_kiwi-list-item-gap);
+		gap: var(--✨gap);
 
-		min-block-size: var(--_kiwi-list-item-height);
-		padding-inline: var(--_kiwi-list-item-padding-inline);
-		padding-block: var(--_kiwi-list-item-padding-block);
+		min-block-size: var(--✨height);
+		padding-inline: var(--✨padding-inline);
+		padding-block: var(--✨padding-block);
 
-		background-color: var(--_kiwi-list-item-background-color);
-		color: var(--_kiwi-list-item-color);
+		background-color: var(--🌀list-item-state--default, var(--✨bg--default))
+			var(--🌀list-item-state--hover, var(--✨bg--hover))
+			var(--🌀list-item-state--pressed, var(--✨bg--pressed))
+			var(--🌀list-item-state--disabled, var(--✨bg--default));
+		color: var(--🌀list-item-state--default, unset) var(--🌀list-item-state--hover, unset)
+			var(--🌀list-item-state--pressed, unset)
+			var(--🌀list-item-state--disabled, var(--✨bg--disabled));
 	}
 
 	@layer states {
-		/* See https://kizu.dev/cyclic-toggles/ */
-		--__kiwi-list-item-state: var(--__kiwi-list-item-state--default);
-		--__kiwi-list-item-state--default: var(--__kiwi-list-item-state,);
-		--__kiwi-list-item-state--hover: var(--__kiwi-list-item-state,);
-		--__kiwi-list-item-state--pressed: var(--__kiwi-list-item-state,);
-		--__kiwi-list-item-state--disabled: var(--__kiwi-list-item-state,);
-
-		--_kiwi-list-item-background-color: var(
-				--__kiwi-list-item-state--default,
-				var(--_kiwi-list-item-color-background-default)
-			)
-			var(--__kiwi-list-item-state--hover, var(--_kiwi-list-item-color-background-hover))
-			var(--__kiwi-list-item-state--pressed, var(--_kiwi-list-item-color-background-pressed))
-			var(--__kiwi-list-item-state--disabled, var(--_kiwi-list-item-color-background-default));
-		--_kiwi-list-item-color: var(--__kiwi-list-item-state--default, unset)
-			var(--__kiwi-list-item-state--hover, unset) var(--__kiwi-list-item-state--pressed, unset)
-			var(--__kiwi-list-item-state--disabled, var(--_kiwi-list-item-color-disabled));
-
 		@media (any-hover: hover) {
 			&:where(:hover) {
-				--__kiwi-list-item-state: var(--__kiwi-list-item-state--hover);
+				--🌀list-item-state: var(--🌀list-item-state--hover);
 			}
 		}
 
 		&:where(:active) {
-			--__kiwi-list-item-state: var(--__kiwi-list-item-state--pressed);
+			--🌀list-item-state: var(--🌀list-item-state--pressed);
 		}
 
 		&:where([disabled], :disabled, [aria-disabled="true"]) {
-			--__kiwi-list-item-state: var(--__kiwi-list-item-state--disabled);
+			--🌀list-item-state: var(--🌀list-item-state--disabled);
 			cursor: not-allowed;
 		}
+	}
+	@layer base.🌀 {
+		/* See https://kizu.dev/cyclic-toggles/ */
+		--🌀list-item-state: var(--🌀list-item-state--default);
+		--🌀list-item-state--default: var(--🌀list-item-state,);
+		--🌀list-item-state--hover: var(--🌀list-item-state,);
+		--🌀list-item-state--pressed: var(--🌀list-item-state,);
+		--🌀list-item-state--disabled: var(--🌀list-item-state,);
 	}
 }

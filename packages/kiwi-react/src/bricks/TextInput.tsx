@@ -14,12 +14,12 @@ interface TextInputProps extends Ariakit.FocusableProps<"input"> {}
 const TextInput = React.forwardRef<React.ElementRef<"input">, TextInputProps>(
 	(props, forwardedRef) => {
 		const fieldId = useFieldId();
-
+		const inRoot = React.useContext(TextInputRootContext);
 		return (
 			<Ariakit.Role.input
 				id={fieldId}
 				{...props}
-				className={cx("🥝-text-input", props.className)}
+				className={cx("🥝-text-input", inRoot && "🥝-in-root", props.className)}
 				render={
 					<Ariakit.Focusable
 						accessibleWhenDisabled
@@ -41,13 +41,19 @@ const TextInputRoot = React.forwardRef<
 	TextInputRootProps
 >((props, forwardedRef) => {
 	return (
-		<Ariakit.Role.div
-			{...props}
-			className={cx("🥝-text-input", "🥝-text-input-root", props.className)}
-			ref={forwardedRef}
-		/>
+		<TextInputRootContext.Provider value={true}>
+			<Ariakit.Role.div
+				{...props}
+				className={cx("🥝-text-input", "🥝-text-input-root", props.className)}
+				ref={forwardedRef}
+			/>
+		</TextInputRootContext.Provider>
 	);
 });
+
+// ----------------------------------------------------------------------------
+
+const TextInputRootContext = React.createContext(false);
 
 // ----------------------------------------------------------------------------
 

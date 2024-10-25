@@ -89,3 +89,58 @@
 		}
 	}
 }
+
+.🥝-text-input:is(.🥝-in-root) {
+	@layer base {
+		flex: 1;
+
+		background-color: transparent;
+		min-inline-size: 0;
+		border-width: 0;
+		box-shadow: unset;
+		outline: unset;
+
+		&:where(:not(:first-child)) {
+			padding-inline-start: 0;
+		}
+
+		&:where(:not(:last-child)) {
+			padding-inline-end: 0;
+		}
+	}
+}
+
+.🥝-text-input-root {
+	@layer base {
+		display: inline-flex;
+		gap: 4px;
+		padding-block: 0;
+		box-sizing: border-box;
+		border-width: 0;
+		position: relative;
+
+		&::before {
+			content: "";
+			position: absolute;
+			pointer-events: none;
+			inset: 0;
+			border-color: inherit;
+			border-style: inherit;
+			border-radius: inherit;
+			border-width: 1px;
+		}
+
+		&:has(.🥝-text-input:focus) {
+			outline: 2px solid var(--kiwi-color-border-accent-strong);
+			outline-offset: 1px;
+		}
+
+		&:has(.🥝-text-input:first-child) {
+			padding-inline-start: 0;
+		}
+
+		&:has(.🥝-text-input:last-child) {
+			padding-inline-end: 0;
+		}
+	}
+}

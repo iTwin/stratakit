@@ -32,7 +32,7 @@ export const TextField = React.forwardRef<
 	React.ElementRef<"div">,
 	TextFieldProps
 >((props, forwardedRef) => {
-	const { children, className, ref, ...rest } = props;
+	const { children, className, ...rest } = props;
 	return (
 		<Input
 			focusable={false}

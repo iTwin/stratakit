@@ -57,6 +57,22 @@ const TextInputRootContext = React.createContext(false);
 
 // ----------------------------------------------------------------------------
 
+/**
+ * Text input component that allows users to enter text based values.
+ *
+ * Example usage:
+ * ```tsx
+ * <TextInput defaultValue="Hello" />
+ * ```
+ *
+ * To add additional decorations, use a compositional approach. For example, to add an end icon:
+ * ```tsx
+ * <TextInput.Root>
+ * 	<TextInput.Input defaultValue="Hello" />
+ * 	<Icon href={...} />
+ * </TextInput.Root>
+ * ```
+ */
 const TextInputCompound = TextInput as typeof TextInput & {
 	Root: typeof TextInputRoot;
 	Input: typeof TextInput;

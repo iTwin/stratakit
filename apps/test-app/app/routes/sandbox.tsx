@@ -22,6 +22,14 @@ const placeholderIcon = new URL(
 	"@itwin/kiwi-icons/placeholder.svg",
 	import.meta.url,
 ).href;
+const searchIcon = new URL("@itwin/kiwi-icons/search.svg", import.meta.url)
+	.href;
+const panelLeftIcon = new URL(
+	"@itwin/kiwi-icons/panel-left.svg",
+	import.meta.url,
+).href;
+const filterIcon = new URL("@itwin/kiwi-icons/filter.svg", import.meta.url)
+	.href;
 
 export default function Page() {
 	return (
@@ -46,9 +54,9 @@ export default function Page() {
 						<div className={styles.actions}>
 							<Icon
 								style={{ color: "var(--kiwi-color-text-accent-strong)" }}
-								href={placeholderIcon}
+								href={searchIcon}
 							/>
-							<Icon href={placeholderIcon} />
+							<Icon href={panelLeftIcon} />
 						</div>
 					</div>
 					<div className={styles.searchWrapper}>
@@ -77,7 +85,6 @@ function Tree() {
 			<TreeRow level={2}>Guide 4</TreeRow>
 			<TreeRow level={2}>Guide 3</TreeRow>
 			<TreeRow level={2}>Guide 2</TreeRow>
-			<TreeRow level={1}>Run off pipe</TreeRow>
 			<TreeRow level={2}>Guide 1</TreeRow>
 			<TreeRow level={0}>Other</TreeRow>
 			<TreeRow level={1}>Object 2</TreeRow>
@@ -124,7 +131,7 @@ function TreeRow({ level = 0, children }: TreeRowProps) {
 function SortingModes() {
 	return (
 		<DropdownMenu.Root>
-			<DropdownMenu.Button render={<Icon href={placeholderIcon} />} />
+			<DropdownMenu.Button render={<Icon href={filterIcon} />} />
 			<DropdownMenu.Content style={{ minInlineSize: 164 }}>
 				<DropdownMenu.Item>Show all</DropdownMenu.Item>
 				<DropdownMenu.Item>Guides</DropdownMenu.Item>

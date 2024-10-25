@@ -5,6 +5,6 @@
 .🥝-icon-button:is(.🥝-button) {
 	@layer base {
 		aspect-ratio: 1;
-		--_kiwi-button-padding-inline: 4px;
+		--🥝button-padding-inline: 4px;
 	}
 }

@@ -5,19 +5,32 @@
 .🥝-tab-list-wrapper {
 	--_kiwi-tab-list-wrapper-border-width: 1px;
 	
-	background-color: rgba(255, 0, 0, 0.25);
+	display: grid;
 	position: relative;
 
 	/* TODO: This also masks the overflow scrolling, probably not ideal */
-	/* --kiwi-tab-list-wrapper-padding-inline: 10px; */
-	/* padding-inline: var(--kiwi-tab-list-wrapper-padding-inline); */
+	/* --kiwi-tab-list-wrapper-padding-inline: 10px;
+	padding-inline: var(--kiwi-tab-list-wrapper-padding-inline); */
 
+	/* This pseudo-element adds the divider between the tabs & content area */
 	&::before {
 		content: "";
 		position: absolute;
-		inset: auto 0 0;
-		block-size: var(--_kiwi-tab-list-wrapper-border-width);
 		background-color: var(--kiwi-color-border-neutral-muted);
+
+		@media (forced-colors: active) {
+			background-color: CanvasText;
+		}
+	}
+
+	&:has(.🥝-tab-list[aria-orientation="horizontal"]) {
+		grid-template-columns: 1fr min-content;
+		align-items: center;
+
+		&::before {
+			inset: auto 0 0;
+			block-size: var(--_kiwi-tab-list-wrapper-border-width);
+		}
 	}
 }
 
@@ -25,37 +38,22 @@
 	--_kiwi-tab-list-gap-between-border: 6px;
 
 	display: flex;
-	gap: 16px;
+	gap: 8px;
 
 	&[aria-orientation="horizontal"] {
-		padding-bottom: var(--_kiwi-tab-list-gap-between-border);
-		overflow-x: auto;
-		/* background-color: red; */
+		padding-block-end: var(--_kiwi-tab-list-gap-between-border);
+		overflow: auto hidden;
 	}
 }
 
 .🥝-tab {
+	--✨padding-inline: 4px;
+
 	@layer base {
-		--_kiwi-tab-color-background: transparent;
-		--_kiwi-tab-color-background-hover: #ffffff0a; /* color/bg/glow/on-surface/🫥neutral-hover */
-		--_kiwi-tab-color-background-selected: transparent;
-		--_kiwi-tab-color-background-selected-hover: var(--kiwi-color-bg-glow-on-surface-accent-hover);
-		--_kiwi-tab-color-background-disabled: transparent;
-
-		--_kiwi-tab-color-text: var(--kiwi-color-text-neutral-tertiary);
-		--_kiwi-tab-color-text-hover: var(--kiwi-color-text-neutral-primary);
-		--_kiwi-tab-color-text-selected: var(--kiwi-color-text-accent-strong);
-		--_kiwi-tab-color-text-selected-hover: var(--kiwi-color-text-accent-strong);
-		--_kiwi-tab-color-text-disabled: var(--kiwi-color-text-neutral-disabled);
-
-		--_kiwi-tab-border-radius: 4px;
-		--_kiwi-tab-height: 1.25rem;
-		--_kiwi-tab-padding-inline: 4px;
-
 		border: none;
-		border-radius: var(--_kiwi-tab-border-radius);
-		block-size: var(--_kiwi-tab-height);
-		padding-inline: var(--_kiwi-tab-padding-inline);
+		border-radius: 4px;
+		block-size: 1.25rem;
+		padding-inline: var(--✨padding-inline);
 		position: relative;
 		font-size: var(--kiwi-font-size-s);
 		transition: background-color 150ms ease-out, color 150ms ease-out;
@@ -82,7 +80,7 @@
 		&::after {
 			background-color: currentColor;
 			block-size: calc(var(--_kiwi-tab-list-wrapper-border-width) * 2);
-			inset: auto var(--_kiwi-tab-padding-inline) calc(var(--_kiwi-tab-list-gap-between-border) * -1);
+			inset: auto var(--✨padding-inline) calc(var(--_kiwi-tab-list-gap-between-border) * -1);
 
 			@media (forced-colors: active) {
 				background-color: CanvasText;
@@ -92,49 +90,48 @@
 
 	@layer states {
 		/* Cyclic toggles for default/hover/disabled states. See https://kizu.dev/cyclic-toggles/ */
-		--__kiwi-tab-state: var(--__kiwi-tab-state--default);
-		--__kiwi-tab-state--default: var(--__kiwi-tab-state,);
-		--__kiwi-tab-state--hover: var(--__kiwi-tab-state,);
-		--__kiwi-tab-state--selected: var(--__kiwi-tab-state,);
-		--__kiwi-tab-state--selected-hover: var(--__kiwi-tab-state,);
-		--__kiwi-tab-state--disabled: var(--__kiwi-tab-state,);
+		--🌀tab-state: var(--🌀tab-state--default);
+		--🌀tab-state--default: var(--🌀tab-state,);
+		--🌀tab-state--hover: var(--🌀tab-state,);
+		--🌀tab-state--selected: var(--🌀tab-state,);
+		--🌀tab-state--selected-hover: var(--🌀tab-state,);
+		--🌀tab-state--disabled: var(--🌀tab-state,);
 
-		background-color: var(--__kiwi-tab-state--default, var(--_kiwi-tab-color-background))
-			var(--__kiwi-tab-state--hover, var(--_kiwi-tab-color-background-hover))
-			var(--__kiwi-tab-state--selected, var(--_kiwi-tab-color-background-selected))
-			var(--__kiwi-tab-state--selected-hover, var(--_kiwi-tab-color-background-selected-hover))
-			var(--__kiwi-tab-state--disabled, var(--_kiwi-tab-color-background-disabled));
+		background-color: var(--🌀tab-state--default, transparent)
+			var(--🌀tab-state--hover, #ffffff0a)
+			var(--🌀tab-state--selected, transparent)
+			var(--🌀tab-state--selected-hover, var(--kiwi-color-bg-glow-on-surface-accent-hover))
+			var(--🌀tab-state--disabled, transparent);
 
-		color: var(--__kiwi-tab-state--default, var(--_kiwi-tab-color-text))
-			var(--__kiwi-tab-state--hover, var(--_kiwi-tab-color-text-hover))
-			var(--__kiwi-tab-state--selected, var(--_kiwi-tab-color-text-selected))
-			var(--__kiwi-tab-state--selected-hover, var(--_kiwi-tab-color-text-selected-hover))
-			var(--__kiwi-tab-state--disabled, var(--_kiwi-tab-color-text-disabled));
+		color: var(--🌀tab-state--default, var(--kiwi-color-text-neutral-tertiary))
+			var(--🌀tab-state--hover, var(--kiwi-color-text-neutral-primary))
+			var(--🌀tab-state--selected, var(--kiwi-color-text-accent-strong))
+			var(--🌀tab-state--selected-hover, var(--kiwi-color-text-accent-strong))
+			var(--🌀tab-state--disabled, var(--kiwi-color-text-neutral-disabled));
 
 		@media (any-hover: hover) {
 			&:where(:hover) {
-				--__kiwi-tab-state: var(--__kiwi-tab-state--hover);
+				--🌀tab-state: var(--🌀tab-state--hover);
 			}
 		}
 
 		&:where([aria-selected="true"]) {
-			--__kiwi-tab-state: var(--__kiwi-tab-state--selected);
+			--🌀tab-state: var(--🌀tab-state--selected);
 
 			@media (any-hover: hover) {
 				&:where(:hover) {
-					--__kiwi-tab-state: var(--__kiwi-tab-state--selected-hover);
+					--🌀tab-state: var(--🌀tab-state--selected-hover);
 				}
 			}
 
 			/* This pseudo-element adds the active stripe */
 			&::after {
 				view-transition-name: active-tab;
-				clip-path: inset(0 0 0 0);
 			}
 		}
 
 		&:where([disabled], :disabled, [aria-disabled="true"]) {
-			--__kiwi-tab-state: var(--__kiwi-tab-state--disabled);
+			--🌀tab-state: var(--🌀tab-state--disabled);
 			cursor: not-allowed;
 			opacity: 0.5;
 		}
@@ -145,4 +142,6 @@
 	/* TODO: Would be nice if this would sync with the tabs */
 	padding: 4px;
 	font-size: var(--kiwi-font-size-s);
+	/* TODO: This is because it conflicts with the active stripe of the tab */
+	outline-offset: -2px;
 }

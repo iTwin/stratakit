@@ -2,6 +2,7 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
+import globalStyles from "./tokens.css?url";
 import * as Ariakit from "@ariakit/react";
 import type * as React from "react";
 import type { MetaFunction } from "@remix-run/react";
@@ -9,6 +10,7 @@ import { Button, Divider, Icon } from "@itwin/kiwi-react/bricks";
 import { parseTokens } from "internal/visitors.js";
 import rawTokens from "internal/theme-dark.json";
 import styles from "./tokens.module.css";
+import type { LinksFunction } from "@remix-run/node";
 
 const tokens = parseTokens(rawTokens);
 
@@ -23,6 +25,10 @@ const categories = {
 export const meta: MetaFunction = () => {
 	return [{ title: "Kiwi tokens" }, { name: "color-scheme", content: "dark" }];
 };
+
+export const links: LinksFunction = () => [
+	{ rel: "stylesheet", href: globalStyles },
+];
 
 export default function Page() {
 	return (

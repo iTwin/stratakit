@@ -21,20 +21,47 @@ function TextAffix({ children }: React.PropsWithChildren) {
 	);
 }
 
+function useInputParams() {
+	const [searchParams] = useSearchParams();
+	const disabled = searchParams.get("disabled") === "true";
+	return { disabled };
+}
+
 export default function Page() {
-	const disabled = useSearchParams()[0].get("disabled") === "true";
-	const visual = useSearchParams()[0].get("visual") === "true";
+	const [searchParams] = useSearchParams();
+	const visual = searchParams.get("visual") === "true";
+	const composition = searchParams.get("composition") === "true";
 	const id = useId();
+	const inputParams = useInputParams();
 
 	if (visual) {
 		return <VisualTest />;
 	}
 
+	if (composition) {
+		return <CompositionTest />;
+	}
+
 	return (
 		<>
 			<Label htmlFor={id}>Fruit</Label>
-			<TextInput id={id} disabled={disabled} />
+			<TextInput id={id} {...inputParams} />
 		</>
+	);
+}
+
+function CompositionTest() {
+	const inputParams = useInputParams();
+	const id = useId();
+
+	return (
+		<div style={{ display: "flex", gap: 4, alignItems: "center" }}>
+			<Label htmlFor={id}>Fruit</Label>
+			<TextInput.Root>
+				<TextInput.Input id={id} {...inputParams} />
+				<Icon href={placeholderIcon} />
+			</TextInput.Root>
+		</div>
 	);
 }
 

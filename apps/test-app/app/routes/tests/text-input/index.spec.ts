@@ -4,37 +4,57 @@
  *--------------------------------------------------------------------------------------------*/
 import { test, expect } from "@playwright/test";
 
-test("default", async ({ page }) => {
-	await page.goto("/tests/text-input");
+for (const type of ["input", "composition"]) {
+	function toUrl(urlStr: string) {
+		const [url, urlParams] = urlStr.split("?");
+		const params = new URLSearchParams(urlParams);
+		if (type === "composition") params.set("composition", "true");
 
-	const input = page.getByRole("textbox");
-	const label = page.getByText("Fruit");
+		const paramsStr = params.toString();
+		return `${url}?${paramsStr}`;
+	}
 
-	await expect(input).toHaveAccessibleName("Fruit");
+	test(`default ${type}`, async ({ page }) => {
+		await page.goto(toUrl("/tests/text-input"));
 
-	await label.click();
-	await expect(input).toBeFocused();
+		const input = page.getByRole("textbox");
+		const label = page.getByText("Fruit");
 
-	await page.keyboard.type("apple");
-	await expect(input).toHaveValue("apple");
-});
+		await expect(input).toHaveAccessibleName("Fruit");
 
-test("disabled", async ({ page }) => {
-	await page.goto("/tests/text-input?disabled=true");
+		await label.click();
+		await expect(input).toBeFocused();
 
-	const input = page.locator("input");
-	await expect(input).toHaveAccessibleName("Fruit");
-	await expect(input).toBeDisabled();
+		await page.keyboard.type("apple");
+		await expect(input).toHaveValue("apple");
+	});
 
-	await page.keyboard.press("Tab");
-	await expect(input).toBeFocused();
+	test(`disabled ${type}`, async ({ page }) => {
+		await page.goto(toUrl("/tests/text-input?disabled=true"));
 
-	// should not be able to type in a disabled input
-	await page.keyboard.type("apple");
-	await expect(input).toHaveValue("");
-});
+		const input = page.locator("input");
+		await expect(input).toHaveAccessibleName("Fruit");
+		await expect(input).toBeDisabled();
 
-test("@visual", async ({ page }) => {
-	await page.goto("/tests/text-input");
-	await expect(page.locator("body")).toHaveScreenshot();
+		await page.keyboard.press("Tab");
+		await expect(input).toBeFocused();
+
+		// should not be able to type in a disabled input
+		await page.keyboard.type("apple");
+		await expect(input).toHaveValue("");
+	});
+}
+
+test.describe("@visual", () => {
+	test("default", async ({ page }) => {
+		await page.goto("/tests/text-input?visual=true");
+		await expect(page.locator("body")).toHaveScreenshot();
+	});
+
+	test("composition outline", async ({ page }) => {
+		await page.goto("/tests/text-input?composition=true");
+		const input = page.getByRole("textbox");
+		await input.click();
+		await expect(page.locator("body")).toHaveScreenshot();
+	});
 });

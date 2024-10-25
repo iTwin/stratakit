@@ -5,45 +5,53 @@
 import { test, expect } from "@playwright/test";
 
 test.describe("default", () => {
-	test.beforeEach(async ({ page }) => {
-		await page.goto("/tests/field");
-	});
-
 	test("wrapping input and label", async ({ page }) => {
-		await expect(
-			page.locator("input:not([type])").first(),
-		).toHaveAccessibleName("Text example");
-	});
-
-	test("wrapping TextField and label", async ({ page }) => {
-		await expect(page.locator("input:not([type])").nth(1)).toHaveAccessibleName(
-			"TextField example",
+		await page.goto("/tests/field?control=input");
+		await expect(page.getByRole("textbox")).toHaveAccessibleName(
+			"input example",
 		);
 	});
 
 	test("wrapping textarea and label", async ({ page }) => {
-		await expect(page.locator("textarea")).toHaveAccessibleName(
-			"Textarea example",
+		await page.goto("/tests/field?control=textarea");
+		await expect(page.getByRole("textbox")).toHaveAccessibleName(
+			"textarea example",
 		);
 	});
 
 	test("wrapping radio and label", async ({ page }) => {
-		await expect(page.getByRole("radio")).toHaveAccessibleName("Radio example");
+		await page.goto("/tests/field?control=radio");
+		await expect(page.getByRole("radio")).toHaveAccessibleName("radio example");
 	});
 
 	test("wrapping checkbox and label", async ({ page }) => {
+		await page.goto("/tests/field?control=checkbox");
 		await expect(page.getByRole("checkbox")).toHaveAccessibleName(
-			"Checkbox example",
+			"checkbox example",
 		);
 	});
 
 	test("wrapping switch and label", async ({ page }) => {
+		await page.goto("/tests/field?control=switch");
 		await expect(page.getByRole("switch")).toHaveAccessibleName(
-			"Switch example",
+			"switch example",
 		);
 	});
 
 	test("rendering as a label", async ({ page }) => {
+		await page.goto("/tests/field?control=checkbox&asLabel");
 		await expect(page.locator(".🥝-label.🥝-field")).toBeVisible();
+	});
+});
+
+test.describe("@visual", () => {
+	test("text controls", async ({ page }) => {
+		await page.goto("/tests/field?visual&controlType=text");
+		await expect(page.locator("body")).toHaveScreenshot();
+	});
+
+	test("checkable controls", async ({ page }) => {
+		await page.goto("/tests/field?visual&controlType=checkable");
+		await expect(page.locator("body")).toHaveScreenshot();
 	});
 });

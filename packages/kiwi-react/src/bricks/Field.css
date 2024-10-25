@@ -2,18 +2,22 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-html {
-	background-color: var(--kiwi-color-bg-surface-primary);
-}
+.🥝-field {
+	@layer base {
+		display: grid;
+		gap: 0.5rem;
+		align-items: center;
+		justify-content: start;
+		grid-template-columns: auto auto;
 
-body {
-	font-family: var(--kiwi-font-family-sans);
-	font-size: var(--kiwi-font-size-m);
-	color: var(--kiwi-color-text-neutral-primary);
-}
+		&:has(.🥝-input) {
+			grid-template-columns: auto;
+		}
+	}
 
-*:focus-visible {
-	--✨focus-color: var(--kiwi-color-border-accent-strong);
-	outline: 2px solid var(--✨focus-color);
-	outline-offset: 1px;
+	@layer modifiers {
+		&:where([data-kiwi-layout="inline"]) {
+			grid-template-columns: auto auto;
+		}
+	}
 }

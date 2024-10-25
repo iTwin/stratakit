@@ -67,7 +67,7 @@ function CompositionTest() {
 
 function VisualTest() {
 	return (
-		<div style={{ display: "grid", gap: 8 }}>
+		<div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
 			<TextInput defaultValue="Value" />
 			<TextInput.Root>
 				<TextInput.Input defaultValue="Value" />

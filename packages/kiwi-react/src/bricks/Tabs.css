@@ -2,18 +2,35 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-.🥝-tab-list {
-	--_kiwi-tab-list-border-width: 1px;
-	--_kiwi-tab-list-gap-between-border: 5px;
+.🥝-tab-list-wrapper {
+	--_kiwi-tab-list-wrapper-border-width: 1px;
+	
+	background-color: rgba(255, 0, 0, 0.25);
+	position: relative;
 
-	border-color: var(--kiwi-color-border-neutral-muted);
-	border-style: solid;
+	/* TODO: This also masks the overflow scrolling, probably not ideal */
+	/* --kiwi-tab-list-wrapper-padding-inline: 10px; */
+	/* padding-inline: var(--kiwi-tab-list-wrapper-padding-inline); */
+
+	&::before {
+		content: "";
+		position: absolute;
+		inset: auto 0 0;
+		block-size: var(--_kiwi-tab-list-wrapper-border-width);
+		background-color: var(--kiwi-color-border-neutral-muted);
+	}
+}
+
+.🥝-tab-list {
+	--_kiwi-tab-list-gap-between-border: 6px;
+
 	display: flex;
 	gap: 16px;
 
 	&[aria-orientation="horizontal"] {
-		border-width: 0 0 var(--_kiwi-tab-list-border-width);
 		padding-bottom: var(--_kiwi-tab-list-gap-between-border);
+		overflow-x: auto;
+		/* background-color: red; */
 	}
 }
 
@@ -43,7 +60,11 @@
 		font-size: var(--kiwi-font-size-s);
 		transition: background-color 150ms ease-out, color 150ms ease-out;
 		user-select: none;
+		white-space: nowrap;
 		-webkit-tap-highlight-color: currentColor;
+
+		/* TODO: This is because of the overflow, should use a CSS var instead */
+		outline-offset: -2px;
 
 		&::before,
 		&::after {
@@ -54,20 +75,14 @@
 		/* This pseudo-element increases tap target size */
 		&::before {
 			inset: 0 0
-				calc((var(--_kiwi-tab-list-border-width) + var(--_kiwi-tab-list-gap-between-border)) * -1);
+				calc((var(--_kiwi-tab-list-wrapper-border-width) + var(--_kiwi-tab-list-gap-between-border)) * -1);
 		}
 
 		/* This pseudo-element adds the active stripe */
 		&::after {
 			background-color: currentColor;
-			block-size: calc(var(--_kiwi-tab-list-border-width) * 2);
-			inset: auto var(--_kiwi-tab-padding-inline)
-				calc((var(--_kiwi-tab-list-border-width) + var(--_kiwi-tab-list-gap-between-border)) * -1);
-			clip-path: inset(0 50% 0 50%);
-
-			@media (prefers-reduced-motion: no-preference) {
-				transition: clip-path 150ms ease-out;
-			}
+			block-size: calc(var(--_kiwi-tab-list-wrapper-border-width) * 2);
+			inset: auto var(--_kiwi-tab-padding-inline) calc(var(--_kiwi-tab-list-gap-between-border) * -1);
 
 			@media (forced-colors: active) {
 				background-color: CanvasText;
@@ -113,6 +128,7 @@
 
 			/* This pseudo-element adds the active stripe */
 			&::after {
+				view-transition-name: active-tab;
 				clip-path: inset(0 0 0 0);
 			}
 		}

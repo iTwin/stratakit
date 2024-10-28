@@ -2,113 +2,54 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-.🥝-tab-list-wrapper {
-	--_kiwi-tab-list-wrapper-border-width: 1px;
-	
-	display: grid;
-	position: relative;
-
-	/* TODO: This also masks the overflow scrolling, probably not ideal */
-	/* --kiwi-tab-list-wrapper-padding-inline: 10px;
-	padding-inline: var(--kiwi-tab-list-wrapper-padding-inline); */
-
-	/* This pseudo-element adds the divider between the tabs & content area */
-	&::before {
-		content: "";
-		position: absolute;
-		background-color: var(--kiwi-color-border-neutral-muted);
-
-		@media (forced-colors: active) {
-			background-color: CanvasText;
-		}
-	}
-
-	&:has(.🥝-tab-list[aria-orientation="horizontal"]) {
-		grid-template-columns: 1fr min-content;
-		align-items: center;
-
-		&::before {
-			inset: auto 0 0;
-			block-size: var(--_kiwi-tab-list-wrapper-border-width);
-		}
-	}
-}
 
 .🥝-tab-list {
-	--_kiwi-tab-list-gap-between-border: 6px;
+	--🥝-tab-active-stripe-gap: 6px;
 
 	display: flex;
 	gap: 8px;
 
 	&[aria-orientation="horizontal"] {
-		padding-block-end: var(--_kiwi-tab-list-gap-between-border);
+		padding-block-end: var(--🥝-tab-active-stripe-gap);
 		overflow: auto hidden;
 	}
 }
 
 .🥝-tab {
+	--✨height: 1.25rem;
 	--✨padding-inline: 4px;
 
 	@layer base {
-		border: none;
-		border-radius: 4px;
-		block-size: 1.25rem;
-		padding-inline: var(--✨padding-inline);
-		position: relative;
 		font-size: var(--kiwi-font-size-s);
-		transition: background-color 150ms ease-out, color 150ms ease-out;
-		user-select: none;
-		white-space: nowrap;
-		-webkit-tap-highlight-color: currentColor;
-
-		/* TODO: This is because of the overflow, should use a CSS var instead */
-		outline-offset: -2px;
-
-		&::before,
-		&::after {
-			content: "";
-			position: absolute;
-		}
-
-		/* This pseudo-element increases tap target size */
-		&::before {
-			inset: 0 0
-				calc((var(--_kiwi-tab-list-wrapper-border-width) + var(--_kiwi-tab-list-gap-between-border)) * -1);
-		}
-
-		/* This pseudo-element adds the active stripe */
-		&::after {
-			background-color: currentColor;
-			block-size: calc(var(--_kiwi-tab-list-wrapper-border-width) * 2);
-			inset: auto var(--✨padding-inline) calc(var(--_kiwi-tab-list-gap-between-border) * -1);
-
-			@media (forced-colors: active) {
-				background-color: CanvasText;
-			}
-		}
-	}
-
-	@layer states {
-		/* Cyclic toggles for default/hover/disabled states. See https://kizu.dev/cyclic-toggles/ */
-		--🌀tab-state: var(--🌀tab-state--default);
-		--🌀tab-state--default: var(--🌀tab-state,);
-		--🌀tab-state--hover: var(--🌀tab-state,);
-		--🌀tab-state--selected: var(--🌀tab-state,);
-		--🌀tab-state--selected-hover: var(--🌀tab-state,);
-		--🌀tab-state--disabled: var(--🌀tab-state,);
-
-		background-color: var(--🌀tab-state--default, transparent)
-			var(--🌀tab-state--hover, #ffffff0a)
-			var(--🌀tab-state--selected, transparent)
-			var(--🌀tab-state--selected-hover, var(--kiwi-color-bg-glow-on-surface-accent-hover))
-			var(--🌀tab-state--disabled, transparent);
-
 		color: var(--🌀tab-state--default, var(--kiwi-color-text-neutral-tertiary))
 			var(--🌀tab-state--hover, var(--kiwi-color-text-neutral-primary))
 			var(--🌀tab-state--selected, var(--kiwi-color-text-accent-strong))
 			var(--🌀tab-state--selected-hover, var(--kiwi-color-text-accent-strong))
 			var(--🌀tab-state--disabled, var(--kiwi-color-text-neutral-disabled));
+		background-color: var(--🌀tab-state--default, transparent) var(--🌀tab-state--hover, #ffffff0a)
+			var(--🌀tab-state--selected, transparent)
+			var(--🌀tab-state--selected-hover, var(--kiwi-color-bg-glow-on-surface-accent-hover))
+			var(--🌀tab-state--disabled, transparent);
+		border: none;
+		border-radius: 4px;
+		block-size: var(--✨height);
+		padding-inline: var(--✨padding-inline);
+		position: relative;
+		outline-offset: -2px;
+		user-select: none;
+		white-space: nowrap;
+		-webkit-tap-highlight-color: currentColor;
+		transition: background-color 150ms ease-out, color 150ms ease-out;
 
+		/* This pseudo-element increases tap target size */
+		&::before {
+			content: "";
+			position: absolute;
+			inset: 0 0 calc(var(--🥝-tab-active-stripe-gap) * -1);
+		}
+	}
+
+	@layer states {
 		@media (any-hover: hover) {
 			&:where(:hover) {
 				--🌀tab-state: var(--🌀tab-state--hover);
@@ -118,15 +59,23 @@
 		&:where([aria-selected="true"]) {
 			--🌀tab-state: var(--🌀tab-state--selected);
 
+			/* This pseudo-element adds the active stripe */
+			&::after {
+				content: "";
+				position: absolute;
+				background-color: currentColor;
+				block-size: 2px;
+				inset: auto var(--✨padding-inline) calc(var(--🥝-tab-active-stripe-gap) * -1);
+
+				@media (forced-colors: active) {
+					background-color: CanvasText;
+				}
+			}
+
 			@media (any-hover: hover) {
 				&:where(:hover) {
 					--🌀tab-state: var(--🌀tab-state--selected-hover);
 				}
-			}
-
-			/* This pseudo-element adds the active stripe */
-			&::after {
-				view-transition-name: active-tab;
 			}
 		}
 
@@ -136,12 +85,18 @@
 			opacity: 0.5;
 		}
 	}
+
+	@layer base.🌀 {
+		/* Cyclic toggles for default/hover/disabled states. See https://kizu.dev/cyclic-toggles/ */
+		--🌀tab-state: var(--🌀tab-state--default);
+		--🌀tab-state--default: var(--🌀tab-state,);
+		--🌀tab-state--hover: var(--🌀tab-state,);
+		--🌀tab-state--selected: var(--🌀tab-state,);
+		--🌀tab-state--selected-hover: var(--🌀tab-state,);
+		--🌀tab-state--disabled: var(--🌀tab-state,);
+	}
 }
 
 .🥝-tab-panel {
-	/* TODO: Would be nice if this would sync with the tabs */
-	padding: 4px;
-	font-size: var(--kiwi-font-size-s);
-	/* TODO: This is because it conflicts with the active stripe of the tab */
 	outline-offset: -2px;
 }

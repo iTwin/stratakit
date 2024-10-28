@@ -47,13 +47,11 @@ const TabList = React.forwardRef<
 	TabListProps
 >((props, forwardedRef) => {
 	return (
-		<div className="🥝-tab-list-wrapper">
-			<Ariakit.TabList
-				className={cx("🥝-tab-list", props.className)}
-				{...props}
-				ref={forwardedRef}
-			/>
-		</div>
+		<Ariakit.TabList
+			className={cx("🥝-tab-list", props.className)}
+			{...props}
+			ref={forwardedRef}
+		/>
 	);
 });
 

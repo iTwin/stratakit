@@ -3,28 +3,28 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 .🥝-text-input {
-	@layer base {
-		--_kiwi-text-input-color-background-default: var(--kiwi-color-bg-surface-primary);
-		--_kiwi-text-input-color-background-hover: color-mix(
-			in oklch,
-			var(--_kiwi-text-input-color-background-default) 100%,
-			var(--kiwi-color-glow-hue) var(--kiwi-color-bg-glow-base-hover-\%)
-		);
-		--_kiwi-text-input-color-background-disabled: var(--kiwi-color-bg-surface-base);
-		--_kiwi-text-input-color-border-default: var(--kiwi-color-border-neutral-base);
-		--_kiwi-text-input-color-border-hover: color-mix(
-			in oklch,
-			var(--_kiwi-text-input-color-border-default) 100%,
-			var(--kiwi-color-glow-hue) var(--kiwi-color-border-glow-base-hover-\%)
-		);
-		--_kiwi-text-input-color-border-disabled: var(--kiwi-color-border-glow-on-surface-disabled);
-		--_kiwi-text-input-color-text: var(--kiwi-color-text-neutral-primary);
-		--_kiwi-text-input-color-placeholder: var(--kiwi-color-text-neutral-secondary);
-		--_kiwi-text-input-color-disabled: var(--kiwi-color-text-neutral-disabled);
-		--_kiwi-text-input-height: 1.5rem;
-		--_kiwi-text-input-padding-inline: 8px;
-		--_kiwi-text-input-padding-block: 4px;
+	--✨bg--default: var(--kiwi-color-bg-surface-primary);
+	--✨bg--hover: color-mix(
+		in oklch,
+		var(--✨bg--default) 100%,
+		var(--kiwi-color-glow-hue) var(--kiwi-color-bg-glow-base-hover-\%)
+	);
+	--✨bg--disabled: var(--kiwi-color-bg-surface-base);
+	--✨border--default: var(--kiwi-color-border-neutral-base);
+	--✨border--hover: color-mix(
+		in oklch,
+		var(--✨border--default) 100%,
+		var(--kiwi-color-glow-hue) var(--kiwi-color-border-glow-base-hover-\%)
+	);
+	--✨border--disabled: var(--kiwi-color-border-glow-on-surface-disabled);
+	--✨color--default: var(--kiwi-color-text-neutral-primary);
+	--✨color--placeholder: var(--kiwi-color-text-neutral-secondary);
+	--✨color--disabled: var(--kiwi-color-text-neutral-disabled);
+	--✨height: 1.5rem;
+	--✨padding-inline: 8px;
+	--✨padding-block: 4px;
 
+	@layer base {
 		appearance: none;
 		font-size: 0.75rem;
 		border: 1px solid transparent;
@@ -33,20 +33,20 @@
 		align-items: center;
 		justify-content: flex-start;
 
-		min-block-size: var(--_kiwi-text-input-height);
-		padding-inline: var(--_kiwi-text-input-padding-inline);
-		padding-block: var(--_kiwi-text-input-padding-block);
+		min-block-size: var(--✨height);
+		padding-inline: var(--✨padding-inline);
+		padding-block: var(--✨padding-block);
 		border-radius: 4px;
 
-		background-color: var(--_kiwi-text-input-background-color);
-		border-color: var(--_kiwi-text-input-border-color);
+		background-color: var(--🥝text-input-background-color);
+		border-color: var(--🥝text-input-border-color);
 		box-shadow: 0px 1px 2px 0px #00000029 inset, 0px 2px 4px 0px #00000029 inset;
-		color: var(--_kiwi-text-input-color-text);
+		color: var(--✨color--default);
 		transition: all 150ms ease-out;
 		transition-property: background-color, border-color;
 
 		&::placeholder {
-			color: var(--_kiwi-text-input-color-placeholder);
+			color: var(--✨color--placeholder);
 			opacity: 1;
 		}
 
@@ -58,33 +58,27 @@
 
 	@layer states {
 		/* Cyclic toggles for default/hover/active/disabled states. See https://kizu.dev/cyclic-toggles/ */
-		--__kiwi-input-state: var(--__kiwi-input-state--default);
-		--__kiwi-input-state--default: var(--__kiwi-input-state,);
-		--__kiwi-input-state--hover: var(--__kiwi-input-state,);
-		--__kiwi-input-state--disabled: var(--__kiwi-input-state,);
+		--🌀text-input-state: var(--🌀text-input-state--default);
+		--🌀text-input-state--default: var(--🌀text-input-state,);
+		--🌀text-input-state--hover: var(--🌀text-input-state,);
+		--🌀text-input-state--disabled: var(--🌀text-input-state,);
 
-		--_kiwi-text-input-background-color: var(
-				--__kiwi-input-state--default,
-				var(--_kiwi-text-input-color-background-default)
-			)
-			var(--__kiwi-input-state--hover, var(--_kiwi-text-input-color-background-hover))
-			var(--__kiwi-input-state--disabled, var(--_kiwi-text-input-color-background-disabled));
-		--_kiwi-text-input-border-color: var(
-				--__kiwi-input-state--default,
-				var(--_kiwi-text-input-color-border-default)
-			)
-			var(--__kiwi-input-state--hover, var(--_kiwi-text-input-color-border-hover))
-			var(--__kiwi-input-state--disabled, var(--_kiwi-text-input-color-border-disabled));
+		--🥝text-input-background-color: var(--🌀text-input-state--default, var(--✨bg--default))
+			var(--🌀text-input-state--hover, var(--✨bg--hover))
+			var(--🌀text-input-state--disabled, var(--✨bg--disabled));
+		--🥝text-input-border-color: var(--🌀text-input-state--default, var(--✨border--default))
+			var(--🌀text-input-state--hover, var(--✨border--hover))
+			var(--🌀text-input-state--disabled, var(--✨border--disabled));
 
 		@media (any-hover: hover) {
 			&:where(:hover) {
-				--__kiwi-input-state: var(--__kiwi-input-state--hover);
+				--🌀text-input-state: var(--🌀text-input-state--hover);
 			}
 		}
 
 		&:where(:disabled) {
-			--__kiwi-input-state: var(--__kiwi-input-state--disabled);
-			color: var(--_kiwi-text-input-color-disabled);
+			--🌀text-input-state: var(--🌀text-input-state--disabled);
+			color: var(--✨color--disabled);
 			cursor: not-allowed;
 		}
 	}

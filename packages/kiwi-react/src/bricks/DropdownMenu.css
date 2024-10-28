@@ -3,19 +3,19 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 .🥝-dropdown-menu {
-	@layer base {
-		--_kiwi-dropdown-menu-color-background: var(--kiwi-color-bg-surface-tertiary);
-		--_kiwi-dropdown-menu-padding: 0.5rem; /* space(in progress)/x2 */
-		--_kiwi-dropdown-menu-gap: 0.25rem; /* space(in progress)/x1 */
+	--✨bg: var(--kiwi-color-bg-surface-tertiary);
+	--✨padding: 0.5rem; /* space(in progress)/x2 */
+	--✨gap: 0.25rem; /* space(in progress)/x1 */
 
-		background-color: var(--_kiwi-dropdown-menu-color-background);
+	@layer base {
+		background-color: var(--✨bg);
 
 		display: flex;
 		flex-direction: column;
-		gap: var(--_kiwi-dropdown-menu-gap);
+		gap: var(--✨gap);
 
 		border-radius: 8px /* radius(in progress)/medium */;
-		padding-block: var(--_kiwi-dropdown-menu-padding);
+		padding-block: var(--✨padding);
 		box-shadow:
 			0px 24px 24px -12px #00000029,
 			0px 12px 12px -6px #00000029,

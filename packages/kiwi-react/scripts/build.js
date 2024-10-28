@@ -44,7 +44,7 @@ await esbuild.build({
 /**
  * This plugin inlines the contents of a CSS file as a JavaScript string when the
  * CSS file is imported with the `?inline` query param (similar to [Vite](https://vitejs.dev/guide/features.html#disabling-css-injection-into-the-page)).
- * It also bundles, minifies, and does syntax-lowering on the CSS file using esbuild.
+ * It also bundles, minifies, and does syntax-lowering on the CSS file using lightningcss.
  *
  * Input:
  * ```css
@@ -83,22 +83,31 @@ function inlineCssPlugin() {
 			});
 
 			onLoad({ filter: /.*/, namespace: "inline-css" }, async (args) => {
-				// Feed the CSS file through lightningcss bundling, minification and other transformations.
-				const { code } = await lightningcss.bundleAsync({
+				const visitor = lightningcss.composeVisitors([
+					primitivesTransform(),
+					themeTransform(),
+					staticVariablesTransform(),
+				]);
+
+				// Process the CSS file using lightningcss for bundling and other transformations.
+				const { code: intermediateCode } = await lightningcss.bundleAsync({
 					filename: args.path,
+					visitor,
+				});
+
+				// Process the bundled CSS again, for minification and any leftover transformations.
+				const { code: finalCode } = lightningcss.transform({
+					filename: args.path,
+					code: intermediateCode,
 					minify: true,
 					targets: {
 						chrome: (110 << 16) | (0 << 8), // chrome 110.0
 						firefox: (110 << 16) | (0 << 8), // firefox 110.0
 						safari: (16 << 16) | (4 << 8), // safari 16.4
 					},
-					visitor: lightningcss.composeVisitors([
-						primitivesTransform(),
-						themeTransform(),
-						staticVariablesTransform(),
-					]),
+					visitor,
 				});
-				const css = code.toString().trim();
+				const css = finalCode.toString().trim();
 
 				return {
 					contents: `export default String.raw\`${css}\`;`,

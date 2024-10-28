@@ -3,59 +3,73 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 .🥝-checkbox {
+	--✨size: 1rem;
+
+	--✨glow--bg-hover: var(--kiwi-color-glow-hue) var(--kiwi-color-bg-glow-base-hover-\%);
+	--✨glow--bg-press: var(--kiwi-color-glow-hue) var(--kiwi-color-bg-glow-base-press-\%);
+
+	--✨bg--default: var(--kiwi-color-bg-neutral-base);
+	--✨bg--hover: color-mix(in oklch, var(--✨bg--default) 100%, var(--✨glow--bg-hover));
+	--✨bg--checked: var(--kiwi-color-bg-accent-base);
+	--✨bg--checked-hover: color-mix(in oklch, var(--✨bg--checked) 100%, var(--✨glow--bg-press));
+	--✨bg--disabled: var(--kiwi-color-bg-glow-on-surface-disabled);
+
+	--✨border--default: #ffffff14; /* bg/button/base/border/color */
+	--✨border--hover: color-mix(
+		in oklch,
+		#ffffff14 /* bg/button/base/border/color */ 100%,
+		var(--kiwi-color-glow-hue) var(--kiwi-color-border-glow-base-hover-\%)
+	);
+	--✨border--checked: #ffffff29; /* bg/button/strong/border/color */
+	--✨border--checked-hover: color-mix(
+		in oklch,
+		#ffffff29 /* bg/button/strong/border/color */ 100%,
+		var(--kiwi-color-glow-hue) var(--kiwi-color-border-glow-base-press-\%)
+	);
+	--✨border--disabled: transparent;
+
 	@layer base {
-		--_kiwi-checkbox-color-background-default: var(--kiwi-color-bg-neutral-base);
-		--_kiwi-checkbox-color-background-hover: color-mix(
-			in oklch,
-			var(--_kiwi-checkbox-color-background-default) 100%,
-			var(--kiwi-color-glow-hue) var(--kiwi-color-bg-glow-base-hover-\%)
-		);
-		--_kiwi-checkbox-color-background-checked: var(--kiwi-color-bg-accent-base);
-		--_kiwi-checkbox-color-background-checked-hover: color-mix(
-			in oklch,
-			var(--_kiwi-checkbox-color-background-checked) 100%,
-			var(--kiwi-color-glow-hue) var(--kiwi-color-bg-glow-base-press-\%)
-		);
-		--_kiwi-checkbox-color-background-disabled: var(--kiwi-color-bg-glow-on-surface-disabled);
+		--🥝checkbox-color-svg: var(--kiwi-color-icon-neutral-emphasis);
+		--🥝checkbox-border-radius: 4px;
 
-		--_kiwi-checkbox-color-border-default: #ffffff14; /* bg/button/base/border/color */
-		--_kiwi-checkbox-color-border-hover: color-mix(
-			in oklch,
-			#ffffff14 /* bg/button/base/border/color */ 100%,
-			var(--kiwi-color-glow-hue) var(--kiwi-color-border-glow-base-hover-\%)
-		);
-		--_kiwi-checkbox-color-border-checked: #ffffff29; /* bg/button/strong/border/color */
-		--_kiwi-checkbox-color-border-checked-hover: color-mix(
-			in oklch,
-			#ffffff29 /* bg/button/strong/border/color */ 100%,
-			var(--kiwi-color-glow-hue) var(--kiwi-color-border-glow-base-press-\%)
-		);
-		--_kiwi-checkbox-color-border-disabled: transparent;
-
-		--_kiwi-checkbox-color-svg: var(--kiwi-color-icon-neutral-emphasis);
-		--_kiwi-checkbox-size: 1rem;
-		--_kiwi-checkbox-border-radius: 4px;
-
-		--_kiwi-checkbox-unchecked-svg: url('data:image/svg+xml;utf8,<svg viewBox="0 0 16 16"></svg>');
-		--_kiwi-checkbox-checkmark-svg: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 16"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M11.2 5.6 6.8 10l-2-2"/></svg>');
-		--_kiwi-checkbox-indeterminate-svg: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 16"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 8h6.5"/></svg>');
+		--🥝checkbox-unchecked-svg: url('data:image/svg+xml;utf8,<svg viewBox="0 0 16 16"></svg>');
+		--🥝checkbox-checkmark-svg: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 16"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M11.2 5.6 6.8 10l-2-2"/></svg>');
+		--🥝checkbox-indeterminate-svg: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 16"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 8h6.5"/></svg>');
 
 		appearance: none;
-		inline-size: var(--_kiwi-checkbox-size);
-		block-size: var(--_kiwi-checkbox-size);
+		inline-size: var(--✨size);
+		block-size: var(--✨size);
 		cursor: pointer;
 
-		background-color: var(--_kiwi-checkbox-background-color);
-		border-radius: var(--_kiwi-checkbox-border-radius);
-		color: var(--_kiwi-checkbox-color);
+		background-color: var(--🌀checkbox-visual-state--default, var(--✨bg--default))
+			var(--🌀checkbox-visual-state--hover, var(--✨bg--hover))
+			var(--🌀checkbox-visual-state--checked, var(--✨bg--checked))
+			var(--🌀checkbox-visual-state--checked-hover, var(--✨bg--checked-hover))
+			var(--🌀checkbox-visual-state--disabled, var(--✨bg--disabled));
+		border-radius: var(--🥝checkbox-border-radius);
+		color: var(--🌀checkbox-aria-state--unchecked, transparent)
+			var(--🌀checkbox-aria-state--checked, var(--🥝checkbox-color-svg))
+			var(--🌀checkbox-aria-state--indeterminate, var(--🥝checkbox-color-svg));
 		transition: all 150ms ease-out;
-		transition-property: background-color, border-color, box-shadow, --_kiwi-checkbox-border-color;
+		transition-property: background-color, border-color, box-shadow, --🥝checkbox-border-color;
 		position: relative;
 		box-shadow:
 			0px 3px 3px -1.5px #00000029,
 			0px 1px 1px -0.5px #00000029,
-			0px 0px 0px 1px var(--_kiwi-checkbox-border-color) inset,
+			0px 0px 0px 1px var(--🥝checkbox-border-color) inset,
 			0px -1px 0px 0px #00000014 inset;
+
+		--🥝checkbox-border-color: var(--🌀checkbox-visual-state--default, var(--✨border--default))
+			var(--🌀checkbox-visual-state--hover, var(--✨border--hover))
+			var(--🌀checkbox-visual-state--checked, var(--✨border--checked))
+			var(--🌀checkbox-visual-state--checked-hover, var(--✨border--checked-hover))
+			var(--🌀checkbox-visual-state--disabled, var(--✨border--disabled));
+		--🥝checkbox-mask-image: var(
+				--🌀checkbox-aria-state--unchecked,
+				var(--🥝checkbox-unchecked-svg)
+			)
+			var(--🌀checkbox-aria-state--checked, var(--🥝checkbox-checkmark-svg))
+			var(--🌀checkbox-aria-state--indeterminate, var(--🥝checkbox-indeterminate-svg));
 
 		&::before,
 		&::after {
@@ -66,13 +80,13 @@
 
 		/* This pseudo-element increases tap target size to 24x24 */
 		&::before {
-			inset: calc((var(--_kiwi-checkbox-size) - 24px) / 2);
+			inset: calc((var(--✨size) - 24px) / 2);
 		}
 
-		/* This pseudo-element adds the actual checkmark SVG via --_kiwi-checkbox-mask-image */
+		/* This pseudo-element adds the actual checkmark SVG via --🥝checkbox-mask-image */
 		&::after {
 			background-color: currentColor;
-			mask-image: var(--_kiwi-checkbox-mask-image, initial);
+			mask-image: var(--🥝checkbox-mask-image, initial);
 			mask-repeat: no-repeat;
 			mask-position: center;
 
@@ -83,80 +97,34 @@
 	}
 
 	@layer states {
-		/* Cyclic toggles for default/hover/disabled states. See https://kizu.dev/cyclic-toggles/ */
-		--__kiwi-checkbox-visual-state: var(--__kiwi-checkbox-visual-state--default);
-		--__kiwi-checkbox-visual-state--default: var(--__kiwi-checkbox-visual-state,);
-		--__kiwi-checkbox-visual-state--hover: var(--__kiwi-checkbox-visual-state,);
-		--__kiwi-checkbox-visual-state--checked: var(--__kiwi-checkbox-visual-state,);
-		--__kiwi-checkbox-visual-state--checked-hover: var(--__kiwi-checkbox-visual-state,);
-		--__kiwi-checkbox-visual-state--disabled: var(--__kiwi-checkbox-visual-state,);
-
-		/* Cyclic toggles for unchecked/checked/indeterminate states. */
-		--__kiwi-checkbox-aria-state: var(--__kiwi-checkbox-aria-state--unchecked);
-		--__kiwi-checkbox-aria-state--unchecked: var(--__kiwi-checkbox-aria-state,);
-		--__kiwi-checkbox-aria-state--checked: var(--__kiwi-checkbox-aria-state,);
-		--__kiwi-checkbox-aria-state--indeterminate: var(--__kiwi-checkbox-aria-state,);
-
-		--_kiwi-checkbox-background-color: var(
-				--__kiwi-checkbox-visual-state--default,
-				var(--_kiwi-checkbox-color-background-default)
-			)
-			var(--__kiwi-checkbox-visual-state--hover, var(--_kiwi-checkbox-color-background-hover))
-			var(--__kiwi-checkbox-visual-state--checked, var(--_kiwi-checkbox-color-background-checked))
-			var(
-				--__kiwi-checkbox-visual-state--checked-hover,
-				var(--_kiwi-checkbox-color-background-checked-hover)
-			)
-			var(--__kiwi-checkbox-visual-state--disabled, var(--_kiwi-checkbox-color-background-disabled));
-		--_kiwi-checkbox-border-color: var(
-				--__kiwi-checkbox-visual-state--default,
-				var(--_kiwi-checkbox-color-border-default)
-			)
-			var(--__kiwi-checkbox-visual-state--hover, var(--_kiwi-checkbox-color-border-hover))
-			var(--__kiwi-checkbox-visual-state--checked, var(--_kiwi-checkbox-color-border-checked))
-			var(
-				--__kiwi-checkbox-visual-state--checked-hover,
-				var(--_kiwi-checkbox-color-border-checked-hover)
-			)
-			var(--__kiwi-checkbox-visual-state--disabled, var(--_kiwi-checkbox-color-border-disabled));
-		--_kiwi-checkbox-color: var(--__kiwi-checkbox-aria-state--unchecked, transparent)
-			var(--__kiwi-checkbox-aria-state--checked, var(--_kiwi-checkbox-color-svg))
-			var(--__kiwi-checkbox-aria-state--indeterminate, var(--_kiwi-checkbox-color-svg));
-		--_kiwi-checkbox-mask-image: var(
-				--__kiwi-checkbox-aria-state--unchecked,
-				var(--_kiwi-checkbox-unchecked-svg)
-			)
-			var(--__kiwi-checkbox-aria-state--checked, var(--_kiwi-checkbox-checkmark-svg))
-			var(--__kiwi-checkbox-aria-state--indeterminate, var(--_kiwi-checkbox-indeterminate-svg));
-
 		@media (forced-colors: active) {
 			border: 1px solid CanvasText;
 		}
 
 		@media (any-hover: hover) {
 			&:where(:hover) {
-				--__kiwi-checkbox-visual-state: var(--__kiwi-checkbox-visual-state--hover);
+				--🌀checkbox-visual-state: var(--🌀checkbox-visual-state--hover);
 			}
 		}
 
 		&:where(:checked, [aria-checked="true"]) {
-			--__kiwi-checkbox-visual-state: var(--__kiwi-checkbox-visual-state--checked);
-			--__kiwi-checkbox-aria-state: var(--__kiwi-checkbox-aria-state--checked);
+			--🌀checkbox-visual-state: var(--🌀checkbox-visual-state--checked);
+			--🌀checkbox-aria-state: var(--🌀checkbox-aria-state--checked);
 
 			@media (any-hover: hover) {
 				&:where(:hover) {
-					--__kiwi-checkbox-visual-state: var(--__kiwi-checkbox-visual-state--checked-hover);
+					--🌀checkbox-visual-state: var(--🌀checkbox-visual-state--checked-hover);
 				}
 			}
 		}
 
 		&:where(:indeterminate, [aria-checked="mixed"]) {
-			--__kiwi-checkbox-aria-state: var(--__kiwi-checkbox-aria-state--indeterminate);
+			--🌀checkbox-aria-state: var(--🌀checkbox-aria-state--indeterminate);
 		}
 
 		&:where([disabled], :disabled, [aria-disabled="true"]) {
-			--__kiwi-checkbox-visual-state: var(--__kiwi-checkbox-visual-state--disabled);
-			--_kiwi-checkbox-color-svg: var(--kiwi-color-icon-neutral-disabled);
+			--🌀checkbox-visual-state: var(--🌀checkbox-visual-state--disabled);
+			--🥝checkbox-color-svg: var(--kiwi-color-icon-neutral-disabled);
 			cursor: not-allowed;
 			box-shadow: none;
 
@@ -168,5 +136,21 @@
 				}
 			}
 		}
+	}
+
+	@layer base.🌀 {
+		/* Cyclic toggles for default/hover/checked/checked+hover/disabled states. See https://kizu.dev/cyclic-toggles/ */
+		--🌀checkbox-visual-state: var(--🌀checkbox-visual-state--default);
+		--🌀checkbox-visual-state--default: var(--🌀checkbox-visual-state,);
+		--🌀checkbox-visual-state--hover: var(--🌀checkbox-visual-state,);
+		--🌀checkbox-visual-state--checked: var(--🌀checkbox-visual-state,);
+		--🌀checkbox-visual-state--checked-hover: var(--🌀checkbox-visual-state,);
+		--🌀checkbox-visual-state--disabled: var(--🌀checkbox-visual-state,);
+
+		/* Cyclic toggles for unchecked/checked/indeterminate states. */
+		--🌀checkbox-aria-state: var(--🌀checkbox-aria-state--unchecked);
+		--🌀checkbox-aria-state--unchecked: var(--🌀checkbox-aria-state,);
+		--🌀checkbox-aria-state--checked: var(--🌀checkbox-aria-state,);
+		--🌀checkbox-aria-state--indeterminate: var(--🌀checkbox-aria-state,);
 	}
 }

@@ -180,13 +180,29 @@ function useSplitter<TSplitter extends Element, TPanel extends Element>(
 		const panelRect = panel.getBoundingClientRect();
 		setPreferredSize(panelRect.width + moveBy);
 	}, []);
+	const onKeyMove = React.useCallback((direction: 1 | -1) => {
+		const panel = panelRef.current;
+		if (!panel) return;
+		const container = panel.parentElement;
+		if (!container) return;
+
+		const containerRect = container.getBoundingClientRect();
+		const panelRect = panel.getBoundingClientRect();
+
+		const moveBy = direction * (containerRect.width * 0.005);
+		setPreferredSize(panelRect.width + moveBy);
+	}, []);
 	const onMoveEnd = React.useCallback(() => {
 		const panel = panelRef.current;
 		if (!panel) return;
 
 		setPreferredSize(undefined);
 	}, []);
-	const { moveableProps } = useMoveable<TSplitter>({ onMove, onMoveEnd });
+	const { moveableProps } = useMoveable<TSplitter>({
+		onMove,
+		onMoveEnd,
+		onKeyMove,
+	});
 	const splitterProps = React.useMemo<
 		Partial<React.HTMLAttributes<TSplitter>>
 	>(() => {
@@ -228,10 +244,11 @@ function useSplitter<TSplitter extends Element, TPanel extends Element>(
 interface UseMoveableArgs {
 	onMove?: (moveBy: number) => void;
 	onMoveEnd?: () => void;
+	onKeyMove?: (direction: 1 | -1) => void;
 }
 
 function useMoveable<T extends Element>(args?: UseMoveableArgs) {
-	const { onMove, onMoveEnd } = args ?? {};
+	const { onMove, onMoveEnd, onKeyMove } = args ?? {};
 	const ref = React.useRef<T>(null);
 	const relativePosition = React.useRef<number | undefined>(undefined);
 	React.useEffect(() => {
@@ -270,9 +287,27 @@ function useMoveable<T extends Element>(args?: UseMoveableArgs) {
 				const relativeX = e.clientX - rect.left;
 				relativePosition.current = relativeX;
 			},
+			onKeyDown: (e) => {
+				switch (e.key) {
+					case "ArrowLeft":
+						onKeyMove?.(-1);
+						break;
+					case "ArrowRight":
+						onKeyMove?.(1);
+						break;
+				}
+			},
+			onKeyUp: (e) => {
+				switch (e.key) {
+					case "ArrowLeft":
+					case "ArrowRight":
+						onMoveEnd?.();
+						break;
+				}
+			},
 			ref,
 		};
-	}, []);
+	}, [onKeyMove, onMoveEnd]);
 	return { moveableProps };
 }
 

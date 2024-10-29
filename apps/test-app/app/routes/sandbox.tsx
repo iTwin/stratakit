@@ -33,6 +33,7 @@ const filterIcon = new URL("@itwin/kiwi-icons/filter.svg", import.meta.url)
 	.href;
 
 export default function Page() {
+	const leftPanelLabelId = "layers";
 	const minSize = { px: 256 };
 	const maxSize = { pct: 30 };
 	const { splitterProps, panelProps, preferredSize } = useSplitter<
@@ -41,6 +42,7 @@ export default function Page() {
 	>({
 		minSize,
 		maxSize,
+		labelledby: leftPanelLabelId,
 	});
 	const panelMinSize = `${minSize.px}px`;
 	const panelMaxSize =
@@ -77,7 +79,7 @@ export default function Page() {
 					style={{ position: "relative" }}
 				>
 					<div className={styles.header}>
-						<h2>Layers</h2>
+						<h2 id={leftPanelLabelId}>Layers</h2>
 						<div className={styles.actions}>
 							<Icon
 								style={{ color: "var(--kiwi-color-text-accent-strong)" }}
@@ -107,6 +109,7 @@ export default function Page() {
 interface UseSplitterArgs {
 	minSize?: { px: number };
 	maxSize?: { pct: number };
+	labelledby?: string;
 }
 
 function clamp(value: number, min: number, max: number) {
@@ -116,8 +119,8 @@ function clamp(value: number, min: number, max: number) {
 function useSplitter<TSplitter extends Element, TPanel extends Element>(
 	args?: UseSplitterArgs,
 ) {
+	const { minSize, maxSize, labelledby } = args ?? {};
 	const id = React.useId();
-	const { minSize, maxSize } = args ?? {};
 	const panelRef = React.useRef<TPanel>(null);
 	const [panelSize, setPanelSize] = React.useState<number | undefined>(
 		undefined,
@@ -183,8 +186,10 @@ function useSplitter<TSplitter extends Element, TPanel extends Element>(
 			"aria-valuemin": minValue,
 			"aria-valuemax": maxValue,
 			"aria-controls": id,
+			"aria-labelledby": labelledby,
+			"aria-label": labelledby === undefined ? "Resize panel" : undefined,
 		};
-	}, [moveableProps, value, minValue, maxValue, id]);
+	}, [moveableProps, value, minValue, maxValue, id, labelledby]);
 	const panelProps = React.useMemo<
 		Partial<React.HTMLAttributes<TPanel>>
 	>(() => {

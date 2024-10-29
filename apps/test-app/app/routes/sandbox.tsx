@@ -228,6 +228,7 @@ function useSplitter<TSplitter extends Element, TPanel extends Element>(
 					case "End":
 						setPaneSize("largest");
 						break;
+					// case "F6": // TODO: cycle through window panes
 				}
 			},
 			"aria-orientation": "vertical",

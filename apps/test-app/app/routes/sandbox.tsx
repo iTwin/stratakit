@@ -71,7 +71,7 @@ export default function Page() {
 				<div
 					{...panelProps}
 					className={styles.leftPanel}
-					style={{ position: "relative" }}
+					style={{ position: "relative", ...panelProps.style }}
 				>
 					<div className={styles.header}>
 						<h2 id={leftPanelLabelId}>Layers</h2>
@@ -200,11 +200,13 @@ function useSplitter<TSplitter extends Element, TPanel extends Element>(
 		Partial<React.HTMLAttributes<TPanel>>
 	>(() => {
 		return {
-			style: undefined,
+			style: {
+				"-webkit-user-select": preferredSize === undefined ? undefined : "none",
+			} as React.CSSProperties,
 			id,
 			ref: panelRef,
 		};
-	}, [id]);
+	}, [id, preferredSize]);
 
 	const panelMinSize = minSize === undefined ? undefined : `${minSize.px}px`;
 	const panelMaxSize = React.useMemo(() => {

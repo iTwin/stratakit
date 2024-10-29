@@ -48,8 +48,8 @@ const TabList = React.forwardRef<
 >((props, forwardedRef) => {
 	return (
 		<Ariakit.TabList
-			className={cx("🥝-tab-list", props.className)}
 			{...props}
+			className={cx("🥝-tab-list", props.className)}
 			ref={forwardedRef}
 		/>
 	);
@@ -66,8 +66,8 @@ const Tab = React.forwardRef<React.ElementRef<typeof Ariakit.Tab>, TabProps>(
 		return (
 			<Ariakit.Tab
 				accessibleWhenDisabled
-				className={cx("🥝-tab", props.className)}
 				{...props}
+				className={cx("🥝-tab", props.className)}
 				ref={forwardedRef}
 			/>
 		);
@@ -86,8 +86,8 @@ const TabPanel = React.forwardRef<
 >((props, forwardedRef) => {
 	return (
 		<Ariakit.TabPanel
-			className={cx("🥝-tab-panel", props.className)}
 			{...props}
+			className={cx("🥝-tab-panel", props.className)}
 			ref={forwardedRef}
 		/>
 	);

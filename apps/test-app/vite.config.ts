@@ -69,22 +69,27 @@ function bundleCssPlugin() {
 			if (!isDev) return;
 			if (!id.endsWith(".css?inline")) return;
 
-			const { code } = await lightningcss.bundleAsync({
-				filename: id.replace(/\?inline$/, ""),
+			const filename = id.replace(/\?inline$/, "");
+
+			const visitor = lightningcss.composeVisitors([
+				primitivesTransform(),
+				themeTransform(),
+				staticVariablesTransform(),
+			]);
+
+			const { code: finalCode } = lightningcss.transform({
+				filename,
+				code: (await lightningcss.bundleAsync({ filename, visitor })).code,
 				minify: true,
 				targets: {
 					chrome: (110 << 16) | (0 << 8), // chrome 110.0
 					firefox: (110 << 16) | (0 << 8), // firefox 110.0
 					safari: (16 << 16) | (4 << 8), // safari 16.4
 				},
-				visitor: lightningcss.composeVisitors([
-					primitivesTransform(),
-					themeTransform(),
-					staticVariablesTransform(),
-				]),
+				visitor,
 			});
 
-			return { code: code.toString().trim() };
+			return { code: finalCode.toString().trim() };
 		},
 
 		handleHotUpdate({ server, modules }) {

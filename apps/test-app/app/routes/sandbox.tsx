@@ -33,12 +33,20 @@ const filterIcon = new URL("@itwin/kiwi-icons/filter.svg", import.meta.url)
 	.href;
 
 export default function Page() {
-	const { splitterProps, panelProps, panelSize } = useSplitter<
+	const minSize = { px: 256 };
+	const maxSize = { pct: 30 };
+	const { splitterProps, panelProps, preferredSize } = useSplitter<
 		HTMLDivElement,
 		HTMLDivElement
-	>();
-	const maxSize =
-		panelSize === undefined ? undefined : `min(${panelSize}px, 30%)`;
+	>({
+		minSize,
+		maxSize,
+	});
+	const panelMinSize = `${minSize.px}px`;
+	const panelMaxSize =
+		preferredSize === undefined
+			? undefined
+			: `min(${preferredSize}px, ${maxSize.pct}%)`;
 	return (
 		<>
 			<VisuallyHidden render={(props) => <h1 {...props} />}>
@@ -48,7 +56,8 @@ export default function Page() {
 				className={styles.appLayout}
 				style={
 					{
-						"--_left-panel-max-size": maxSize,
+						"--_left-panel-min-size": panelMinSize,
+						"--_left-panel-max-size": panelMaxSize,
 					} as React.CSSProperties
 				}
 			>
@@ -95,29 +104,72 @@ export default function Page() {
 	);
 }
 
-function useSplitter<TSplitter extends Element, TPanel extends Element>() {
+interface UseSplitterArgs {
+	minSize?: { px: number };
+	maxSize?: { pct: number };
+}
+
+function clamp(value: number, min: number, max: number) {
+	return Math.min(Math.max(value, min), max);
+}
+
+function useSplitter<TSplitter extends Element, TPanel extends Element>(
+	args?: UseSplitterArgs,
+) {
+	const { minSize, maxSize } = args ?? {};
 	const panelRef = React.useRef<TPanel>(null);
-	const [value, setValue] = React.useState<number | undefined>(undefined);
 	const [panelSize, setPanelSize] = React.useState<number | undefined>(
 		undefined,
 	);
+	const [containerSize, setContainerSize] = React.useState<number | undefined>(
+		undefined,
+	);
+
+	const [preferredSize, setPreferredSize] = React.useState<number | undefined>(
+		undefined,
+	);
+
+	const value = React.useMemo(() => {
+		if (!panelSize) return undefined;
+		if (!containerSize) return undefined;
+		return (panelSize / containerSize) * 100;
+	}, [panelSize, containerSize]);
+	const minValue = React.useMemo(() => {
+		if (!minSize) return undefined;
+		if (!containerSize) return undefined;
+		return clamp((minSize.px / containerSize) * 100, 0, 100);
+	}, [minSize, containerSize]);
+	const maxValue = React.useMemo(() => {
+		if (!maxSize) return undefined;
+		if (!containerSize) return undefined;
+		return clamp(maxSize.pct, 0, 100);
+	}, [maxSize, containerSize]);
+
 	React.useEffect(() => {
 		const panel = panelRef.current;
 		if (!panel) return;
-		const parent = panel.parentElement;
-		if (!parent) return;
+		const container = panel.parentElement;
+		if (!container) return;
 
-		const parentSize = parent.getBoundingClientRect().width;
-		const size = panel.getBoundingClientRect().width;
-		setValue((size / parentSize) * 100);
+		const ro = new ResizeObserver(() => {
+			const containerRect = container.getBoundingClientRect();
+			const panelRect = panel.getBoundingClientRect();
+
+			setContainerSize(containerRect.width);
+			setPanelSize(panelRect.width);
+		});
+		ro.observe(container);
+		ro.observe(panel);
+		return () => {
+			ro.disconnect();
+		};
 	}, []);
 	const onMove = React.useCallback((moveBy: number) => {
 		const panel = panelRef.current;
 		if (!panel) return;
 
 		const panelRect = panel.getBoundingClientRect();
-		const newPanelSize = panelRect.width + moveBy;
-		setPanelSize(newPanelSize);
+		setPreferredSize(panelRect.width + moveBy);
 	}, []);
 	const { moveableProps } = useMoveable<TSplitter>({ onMove });
 	const splitterProps = React.useMemo<
@@ -127,8 +179,10 @@ function useSplitter<TSplitter extends Element, TPanel extends Element>() {
 			...moveableProps,
 			"aria-orientation": "vertical",
 			"aria-valuenow": value,
+			"aria-valuemin": minValue,
+			"aria-valuemax": maxValue,
 		};
-	}, [moveableProps, value]);
+	}, [moveableProps, value, minValue, maxValue]);
 	const panelProps = React.useMemo<
 		Partial<React.HTMLAttributes<TPanel>>
 	>(() => {
@@ -137,14 +191,15 @@ function useSplitter<TSplitter extends Element, TPanel extends Element>() {
 			ref: panelRef,
 		};
 	}, []);
-	return { splitterProps, panelProps, panelSize };
+	return { splitterProps, panelProps, preferredSize };
 }
 
 interface UseMoveableArgs {
 	onMove?: (moveBy: number) => void;
 }
 
-function useMoveable<T extends Element>({ onMove }: UseMoveableArgs) {
+function useMoveable<T extends Element>(args?: UseMoveableArgs) {
+	const { onMove } = args ?? {};
 	const ref = React.useRef<T>(null);
 	const relativePosition = React.useRef<number | undefined>(undefined);
 	React.useEffect(() => {

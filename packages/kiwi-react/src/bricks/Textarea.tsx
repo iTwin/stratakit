@@ -19,7 +19,7 @@ export const Textarea = React.forwardRef<
 		<Ariakit.Role.textarea
 			id={fieldId}
 			{...props}
-			className={cx("🥝-input", props.className)}
+			className={cx("🥝-text-input", props.className)}
 			render={
 				<Ariakit.Focusable
 					accessibleWhenDisabled

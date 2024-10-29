@@ -5,7 +5,7 @@
 import { test, expect } from "@playwright/test";
 
 test("default", async ({ page }) => {
-	await page.goto("/tests/input");
+	await page.goto("/tests/text-input");
 
 	const input = page.getByRole("textbox");
 	const label = page.getByText("Fruit");
@@ -20,7 +20,7 @@ test("default", async ({ page }) => {
 });
 
 test("disabled", async ({ page }) => {
-	await page.goto("/tests/input?disabled=true");
+	await page.goto("/tests/text-input?disabled=true");
 
 	const input = page.locator("input");
 	await expect(input).toHaveAccessibleName("Fruit");
@@ -35,6 +35,6 @@ test("disabled", async ({ page }) => {
 });
 
 test("@visual", async ({ page }) => {
-	await page.goto("/tests/input");
+	await page.goto("/tests/text-input");
 	await expect(page.locator("body")).toHaveScreenshot();
 });

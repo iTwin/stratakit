@@ -3,6 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 import * as React from "react";
+import * as Ariakit from "@ariakit/react";
 import styles from "./sandbox.module.css";
 import {
 	Divider,
@@ -91,7 +92,11 @@ export default function Page() {
 						</div>
 					</div>
 					<Tree />
-					<Divider className={styles.splitter} {...splitterProps} />
+					<Divider
+						className={styles.splitter}
+						render={<Ariakit.Focusable />}
+						{...splitterProps}
+					/>
 				</div>
 				<div className={styles.canvasWrapper}>
 					<div className={styles.canvas} />

@@ -4,9 +4,12 @@
  *--------------------------------------------------------------------------------------------*/
 .appLayout {
 	block-size: 100vh;
+	--_left-panel-min-size: 256px;
+	--_left-panel-max-size: 30%;
+	--_left-panel-size: minmax(var(--_left-panel-min-size), var(--_left-panel-max-size));
 
 	display: grid;
-	grid-template: auto / 40px auto 1fr;
+	grid-template: auto / 40px var(--_left-panel-size) 1fr;
 }
 
 .platformBar {
@@ -102,4 +105,15 @@
 		transparent 15%,
 		var(--kiwi-color-text-mono-faded) 33%
 	);
+}
+
+.splitter {
+	position: absolute;
+	right: -5px;
+	top: 0;
+	width: 10px;
+
+	&[aria-orientation="vertical"] {
+		cursor: ew-resize;
+	}
 }

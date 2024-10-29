@@ -2,9 +2,10 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-import type * as React from "react";
+import * as React from "react";
 import styles from "./sandbox.module.css";
 import {
+	Divider,
 	DropdownMenu,
 	Icon,
 	Input,
@@ -32,12 +33,25 @@ const filterIcon = new URL("@itwin/kiwi-icons/filter.svg", import.meta.url)
 	.href;
 
 export default function Page() {
+	const { splitterProps, panelProps, panelSize } = useSplitter<
+		HTMLDivElement,
+		HTMLDivElement
+	>();
+	const maxSize =
+		panelSize === undefined ? undefined : `min(${panelSize}px, 30%)`;
 	return (
 		<>
 			<VisuallyHidden render={(props) => <h1 {...props} />}>
 				{title}
 			</VisuallyHidden>
-			<div className={styles.appLayout}>
+			<div
+				className={styles.appLayout}
+				style={
+					{
+						"--_left-panel-max-size": maxSize,
+					} as React.CSSProperties
+				}
+			>
 				<div className={styles.platformBar}>
 					<div className={styles.logo}>
 						<Icon href={placeholderIcon} size="large" />
@@ -48,7 +62,11 @@ export default function Page() {
 						<Icon href={placeholderIcon} size="large" />
 					</div>
 				</div>
-				<div className={styles.leftPanel}>
+				<div
+					{...panelProps}
+					className={styles.leftPanel}
+					style={{ position: "relative" }}
+				>
 					<div className={styles.header}>
 						<h2>Layers</h2>
 						<div className={styles.actions}>
@@ -67,6 +85,7 @@ export default function Page() {
 						</div>
 					</div>
 					<Tree />
+					<Divider className={styles.splitter} {...splitterProps} />
 				</div>
 				<div className={styles.canvasWrapper}>
 					<div className={styles.canvas} />
@@ -74,6 +93,99 @@ export default function Page() {
 			</div>
 		</>
 	);
+}
+
+function useSplitter<TSplitter extends Element, TPanel extends Element>() {
+	const panelRef = React.useRef<TPanel>(null);
+	const [value, setValue] = React.useState<number | undefined>(undefined);
+	const [panelSize, setPanelSize] = React.useState<number | undefined>(
+		undefined,
+	);
+	React.useEffect(() => {
+		const panel = panelRef.current;
+		if (!panel) return;
+		const parent = panel.parentElement;
+		if (!parent) return;
+
+		const parentSize = parent.getBoundingClientRect().width;
+		const size = panel.getBoundingClientRect().width;
+		setValue((size / parentSize) * 100);
+	}, []);
+	const onMove = React.useCallback((moveBy: number) => {
+		const panel = panelRef.current;
+		if (!panel) return;
+
+		const panelRect = panel.getBoundingClientRect();
+		const newPanelSize = panelRect.width + moveBy;
+		setPanelSize(newPanelSize);
+	}, []);
+	const { moveableProps } = useMoveable<TSplitter>({ onMove });
+	const splitterProps = React.useMemo<
+		Partial<React.HTMLAttributes<TSplitter>>
+	>(() => {
+		return {
+			...moveableProps,
+			"aria-orientation": "vertical",
+			"aria-valuenow": value,
+		};
+	}, [moveableProps, value]);
+	const panelProps = React.useMemo<
+		Partial<React.HTMLAttributes<TPanel>>
+	>(() => {
+		return {
+			style: undefined,
+			ref: panelRef,
+		};
+	}, []);
+	return { splitterProps, panelProps, panelSize };
+}
+
+interface UseMoveableArgs {
+	onMove?: (moveBy: number) => void;
+}
+
+function useMoveable<T extends Element>({ onMove }: UseMoveableArgs) {
+	const ref = React.useRef<T>(null);
+	const relativePosition = React.useRef<number | undefined>(undefined);
+	React.useEffect(() => {
+		const onPointerUp = () => {
+			if (!relativePosition.current) return;
+			relativePosition.current = undefined;
+		};
+		document.addEventListener("pointerup", onPointerUp);
+		return () => {
+			document.removeEventListener("pointerup", onPointerUp);
+		};
+	}, []);
+	React.useEffect(() => {
+		const onPointerMove = (e: PointerEvent) => {
+			if (!relativePosition.current) return;
+			const el = ref.current;
+			if (!el) return;
+
+			const rect = el.getBoundingClientRect();
+			const moveBy = e.clientX - rect.left;
+			onMove?.(moveBy);
+		};
+		document.addEventListener("pointermove", onPointerMove);
+		return () => {
+			document.removeEventListener("pointermove", onPointerMove);
+		};
+	}, [onMove]);
+	const moveableProps = React.useMemo<Partial<React.HTMLAttributes<T>>>(() => {
+		return {
+			onPointerDown: (e) => {
+				const el = ref.current;
+				if (!el) return;
+
+				const rect = el.getBoundingClientRect();
+				const relativeX = e.clientX - rect.left;
+				relativePosition.current = relativeX;
+			},
+			ref,
+		};
+	}, []);
+	return { moveableProps };
 }
 
 function Tree() {

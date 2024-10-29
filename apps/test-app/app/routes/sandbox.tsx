@@ -116,6 +116,7 @@ function clamp(value: number, min: number, max: number) {
 function useSplitter<TSplitter extends Element, TPanel extends Element>(
 	args?: UseSplitterArgs,
 ) {
+	const id = React.useId();
 	const { minSize, maxSize } = args ?? {};
 	const panelRef = React.useRef<TPanel>(null);
 	const [panelSize, setPanelSize] = React.useState<number | undefined>(
@@ -181,16 +182,18 @@ function useSplitter<TSplitter extends Element, TPanel extends Element>(
 			"aria-valuenow": value,
 			"aria-valuemin": minValue,
 			"aria-valuemax": maxValue,
+			"aria-controls": id,
 		};
-	}, [moveableProps, value, minValue, maxValue]);
+	}, [moveableProps, value, minValue, maxValue, id]);
 	const panelProps = React.useMemo<
 		Partial<React.HTMLAttributes<TPanel>>
 	>(() => {
 		return {
 			style: undefined,
+			id,
 			ref: panelRef,
 		};
-	}, []);
+	}, [id]);
 	return { splitterProps, panelProps, preferredSize };
 }
 

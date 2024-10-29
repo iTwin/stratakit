@@ -130,6 +130,9 @@ function useSplitter<TSplitter extends Element, TPanel extends Element>(
 	const [containerSize, setContainerSize] = React.useState<number | undefined>(
 		undefined,
 	);
+	const [paneSize, setPaneSize] = React.useState<
+		"smallest" | "largest" | undefined
+	>(undefined);
 
 	const [preferredSize, setPreferredSize] = React.useState<number | undefined>(
 		undefined,
@@ -146,6 +149,8 @@ function useSplitter<TSplitter extends Element, TPanel extends Element>(
 		return clamp(maxSize.pct, 0, 100);
 	}, [maxSize, containerSize]);
 	const value = React.useMemo(() => {
+		if (paneSize === "smallest") return minValue ?? 0;
+		if (paneSize === "largest") return maxValue ?? 0;
 		if (!panelSize) return undefined;
 		if (!containerSize) return undefined;
 		return clamp(
@@ -153,7 +158,7 @@ function useSplitter<TSplitter extends Element, TPanel extends Element>(
 			minValue ?? 0,
 			maxValue ?? 0,
 		);
-	}, [panelSize, containerSize, minValue, maxValue]);
+	}, [panelSize, containerSize, minValue, maxValue, paneSize]);
 
 	React.useEffect(() => {
 		const panel = panelRef.current;
@@ -180,19 +185,21 @@ function useSplitter<TSplitter extends Element, TPanel extends Element>(
 
 		const panelRect = panel.getBoundingClientRect();
 		setPreferredSize(panelRect.width + moveBy);
+		setPaneSize(undefined);
 	}, []);
-	const onKeyMove = React.useCallback((direction: 1 | -1) => {
-		const panel = panelRef.current;
-		if (!panel) return;
-		const container = panel.parentElement;
-		if (!container) return;
+	const onKeyMove = React.useCallback(
+		(direction: 1 | -1) => {
+			const panel = panelRef.current;
+			if (!panel) return;
+			const container = panel.parentElement;
+			if (!container) return;
 
-		const containerRect = container.getBoundingClientRect();
-		const panelRect = panel.getBoundingClientRect();
-
-		const moveBy = direction * (containerRect.width * 0.005);
-		setPreferredSize(panelRect.width + moveBy);
-	}, []);
+			const containerRect = container.getBoundingClientRect();
+			const moveBy = direction * (containerRect.width * 0.005);
+			onMove(moveBy);
+		},
+		[onMove],
+	);
 	const onMoveEnd = React.useCallback(() => {
 		const panel = panelRef.current;
 		if (!panel) return;
@@ -214,6 +221,12 @@ function useSplitter<TSplitter extends Element, TPanel extends Element>(
 				switch (e.key) {
 					case "Enter":
 						onCollapse?.();
+						break;
+					case "Home":
+						setPaneSize("smallest");
+						break;
+					case "End":
+						setPaneSize("largest");
 						break;
 				}
 			},

@@ -107,6 +107,7 @@ export default function Page() {
 }
 
 interface UseSplitterArgs {
+	onCollapse?: () => void;
 	minSize?: { px: number };
 	maxSize?: { pct: number };
 	labelledby?: string;
@@ -120,7 +121,7 @@ function clamp(value: number, min: number, max: number) {
 function useSplitter<TSplitter extends Element, TPanel extends Element>(
 	args?: UseSplitterArgs,
 ) {
-	const { minSize, maxSize, labelledby } = args ?? {};
+	const { minSize, maxSize, labelledby, onCollapse } = args ?? {};
 	const id = React.useId();
 	const panelRef = React.useRef<TPanel>(null);
 	const [panelSize, setPanelSize] = React.useState<number | undefined>(
@@ -208,6 +209,14 @@ function useSplitter<TSplitter extends Element, TPanel extends Element>(
 	>(() => {
 		return {
 			...moveableProps,
+			onKeyDown: (e) => {
+				moveableProps.onKeyDown?.(e);
+				switch (e.key) {
+					case "Enter":
+						onCollapse?.();
+						break;
+				}
+			},
 			"aria-orientation": "vertical",
 			"aria-valuenow": value,
 			"aria-valuemin": minValue,
@@ -216,7 +225,7 @@ function useSplitter<TSplitter extends Element, TPanel extends Element>(
 			"aria-labelledby": labelledby,
 			"aria-label": labelledby === undefined ? "Resize panel" : undefined,
 		};
-	}, [moveableProps, value, minValue, maxValue, id, labelledby]);
+	}, [moveableProps, value, minValue, maxValue, id, labelledby, onCollapse]);
 	const panelProps = React.useMemo<
 		Partial<React.HTMLAttributes<TPanel>>
 	>(() => {

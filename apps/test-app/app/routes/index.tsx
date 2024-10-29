@@ -18,12 +18,12 @@ const components = [
 	"Field",
 	"Icon",
 	"IconButton",
-	"Input",
 	"List",
 	"Radio",
 	"Switch",
 	"Tabs",
 	"Textarea",
+	"TextInput",
 	"Tooltip",
 ];
 
@@ -50,6 +50,9 @@ export default function Index() {
 				</li>
 				<li>
 					<Anchor render={<Link to="/tokens" />}>Tokens</Anchor>
+				</li>
+				<li>
+					<Anchor render={<Link to="/icons" />}>Icons</Anchor>
 				</li>
 			</ul>
 

@@ -2,10 +2,6 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-body {
-	padding: 1rem;
-}
-
 .disclosureWrapper {
 	display: flex;
 	flex-direction: column;
@@ -87,8 +83,7 @@ body {
 		position: absolute;
 		inset: 0;
 		border-radius: inherit;
-		background-color: var(--_swatch-color);
-		border: 1px solid #ffffff14;
-		box-shadow: 0px 1px 1px -0.5px #00000029, 0px 3px 3px -1.5px #00000029;
+		background-color: var(--_swatch-color, var(--kiwi-color-bg-neutral-base));
+		box-shadow: var(--_swatch-shadow, var(--kiwi-shadow-surface-xs));
 	}
 }

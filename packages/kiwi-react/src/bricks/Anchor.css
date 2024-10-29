@@ -12,7 +12,7 @@
 
 		border-radius: 4px;
 
-		color: var(--_kiwi-anchor-color-text);
+		color: var(--🥝anchor-color);
 
 		transition: color 150ms ease-out, text-decoration-color 150ms ease-out;
 
@@ -24,18 +24,18 @@
 
 	@layer modifiers {
 		&[data-kiwi-tone="neutral"] {
-			--_kiwi-anchor-color-text: var(--kiwi-color-text-neutral-primary);
+			--🥝anchor-color: var(--kiwi-color-text-neutral-primary);
 		}
 
 		&[data-kiwi-tone="accent"] {
-			--_kiwi-anchor-color-text: var(--kiwi-color-text-accent-strong);
+			--🥝anchor-color: var(--kiwi-color-text-accent-strong);
 		}
 
 		&[data-kiwi-tone="critical"] {
-			--_kiwi-anchor-color-text: var(--kiwi-color-text-critical-base);
+			--🥝anchor-color: var(--kiwi-color-text-critical-base);
 
 			&:focus-visible {
-				outline-color: var(--_kiwi-anchor-color-text);
+				outline-color: var(--🥝anchor-color);
 			}
 		}
 	}
@@ -52,7 +52,7 @@
 		}
 
 		&:where([disabled], :disabled, [aria-disabled="true"]) {
-			--_kiwi-anchor-color-text: var(--kiwi-color-text-neutral-disabled);
+			--🥝anchor-color-text: var(--kiwi-color-text-neutral-disabled);
 
 			cursor: not-allowed;
 			text-decoration-color: transparent;

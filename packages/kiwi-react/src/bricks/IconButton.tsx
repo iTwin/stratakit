@@ -7,11 +7,15 @@ import cx from "classnames";
 import { Button } from "./Button.js";
 import { VisuallyHidden } from "./VisuallyHidden.js";
 import { Icon } from "./Icon.js";
+import { Tooltip } from "./Tooltip.js";
 
 interface IconButtonBaseProps
 	extends Omit<React.ComponentProps<typeof Button>, "children"> {
 	/**
 	 * Accessible name for the button.
+	 *
+	 * This label gets used by assistive technology to identify the button,
+	 * and also gets shown in a tooltip when hovering/focusing the button.
 	 */
 	label: string;
 	/**
@@ -86,14 +90,16 @@ export const IconButton = React.forwardRef<
 	const { label, icon, isActive, ...rest } = props;
 
 	return (
-		<Button
-			aria-pressed={isActive}
-			{...rest}
-			className={cx("🥝-icon-button", props.className)}
-			ref={forwardedRef}
-		>
-			<VisuallyHidden>{label}</VisuallyHidden>
-			{typeof icon === "string" ? <Icon href={icon} /> : icon}
-		</Button>
+		<Tooltip content={label} type="none">
+			<Button
+				aria-pressed={isActive}
+				{...rest}
+				className={cx("🥝-icon-button", props.className)}
+				ref={forwardedRef}
+			>
+				<VisuallyHidden>{label}</VisuallyHidden>
+				{typeof icon === "string" ? <Icon href={icon} /> : icon}
+			</Button>
+		</Tooltip>
 	);
 });

@@ -44,7 +44,6 @@
 		block-size: var(--✨height);
 		padding-inline: var(--✨padding-inline);
 		position: relative;
-		outline-offset: -2px;
 		user-select: none;
 		white-space: nowrap;
 		-webkit-tap-highlight-color: currentColor;

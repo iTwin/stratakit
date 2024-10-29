@@ -20,7 +20,15 @@ test("custom icon", async ({ page }) => {
 	await expect(icon).toBeVisible();
 });
 
-test("@visual", async ({ page }) => {
-	await page.goto("/tests/icon-button?visual=true");
-	await expect(page.locator("body")).toHaveScreenshot();
+test.describe("@visual", () => {
+	test("default", async ({ page }) => {
+		await page.goto("/tests/icon-button?visual=true");
+		await expect(page.locator("body")).toHaveScreenshot();
+	});
+
+	test("tooltip", async ({ page }) => {
+		await page.goto("/tests/icon-button?visual=true&tooltip=true");
+		await page.getByRole("button").focus();
+		await expect(page.locator("body")).toHaveScreenshot();
+	});
 });

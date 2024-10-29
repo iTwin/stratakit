@@ -83,7 +83,6 @@
 		&:where([disabled], :disabled, [aria-disabled="true"]) {
 			--🌀tab-state: var(--🌀tab-state--disabled);
 			cursor: not-allowed;
-			opacity: 0.5;
 		}
 	}
 

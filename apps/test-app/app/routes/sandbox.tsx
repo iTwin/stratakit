@@ -111,6 +111,7 @@ function clamp(value: number, min: number, max: number) {
 	return Math.min(Math.max(value, min), max);
 }
 
+// https://www.w3.org/WAI/ARIA/apg/patterns/windowsplitter/
 function useSplitter<TSplitter extends Element, TPanel extends Element>(
 	args?: UseSplitterArgs,
 ) {

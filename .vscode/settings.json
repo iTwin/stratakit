@@ -43,5 +43,5 @@
 	"[jsonc]": {
 		"editor.defaultFormatter": "biomejs.biome"
 	},
-	"explorer.sortOrderLexicographicOptions": "lower"
+	"explorer.sortOrderLexicographicOptions": "unicode"
 }

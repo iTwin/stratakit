@@ -36,7 +36,7 @@ export default function Page() {
 	const leftPanelLabelId = "layers";
 	const minSize = { px: 256 };
 	const maxSize = { pct: 30 };
-	const { splitterProps, panelProps, preferredSize } = useSplitter<
+	const { splitterProps, panelProps, panelMinSize, panelMaxSize } = useSplitter<
 		HTMLDivElement,
 		HTMLDivElement
 	>({
@@ -44,11 +44,6 @@ export default function Page() {
 		maxSize,
 		labelledby: leftPanelLabelId,
 	});
-	const panelMinSize = `${minSize.px}px`;
-	const panelMaxSize =
-		preferredSize === undefined
-			? undefined
-			: `min(${preferredSize}px, ${maxSize.pct}%)`;
 	return (
 		<>
 			<VisuallyHidden render={(props) => <h1 {...props} />}>
@@ -58,8 +53,8 @@ export default function Page() {
 				className={styles.appLayout}
 				style={
 					{
-						"--_left-panel-min-size": panelMinSize,
-						"--_left-panel-max-size": panelMaxSize,
+						"--_panel-min-size": panelMinSize,
+						"--_panel-max-size": panelMaxSize,
 					} as React.CSSProperties
 				}
 			>
@@ -133,11 +128,6 @@ function useSplitter<TSplitter extends Element, TPanel extends Element>(
 		undefined,
 	);
 
-	const value = React.useMemo(() => {
-		if (!panelSize) return undefined;
-		if (!containerSize) return undefined;
-		return (panelSize / containerSize) * 100;
-	}, [panelSize, containerSize]);
 	const minValue = React.useMemo(() => {
 		if (!minSize) return undefined;
 		if (!containerSize) return undefined;
@@ -148,6 +138,15 @@ function useSplitter<TSplitter extends Element, TPanel extends Element>(
 		if (!containerSize) return undefined;
 		return clamp(maxSize.pct, 0, 100);
 	}, [maxSize, containerSize]);
+	const value = React.useMemo(() => {
+		if (!panelSize) return undefined;
+		if (!containerSize) return undefined;
+		return clamp(
+			(panelSize / containerSize) * 100,
+			minValue ?? 0,
+			maxValue ?? 0,
+		);
+	}, [panelSize, containerSize, minValue, maxValue]);
 
 	React.useEffect(() => {
 		const panel = panelRef.current;
@@ -175,7 +174,13 @@ function useSplitter<TSplitter extends Element, TPanel extends Element>(
 		const panelRect = panel.getBoundingClientRect();
 		setPreferredSize(panelRect.width + moveBy);
 	}, []);
-	const { moveableProps } = useMoveable<TSplitter>({ onMove });
+	const onMoveEnd = React.useCallback(() => {
+		const panel = panelRef.current;
+		if (!panel) return;
+
+		setPreferredSize(undefined);
+	}, []);
+	const { moveableProps } = useMoveable<TSplitter>({ onMove, onMoveEnd });
 	const splitterProps = React.useMemo<
 		Partial<React.HTMLAttributes<TSplitter>>
 	>(() => {
@@ -199,27 +204,39 @@ function useSplitter<TSplitter extends Element, TPanel extends Element>(
 			ref: panelRef,
 		};
 	}, [id]);
-	return { splitterProps, panelProps, preferredSize };
+
+	const panelMinSize = minSize === undefined ? undefined : `${minSize.px}px`;
+	const panelMaxSize = React.useMemo(() => {
+		if (preferredSize !== undefined && maxSize !== undefined) {
+			return `min(${preferredSize}px, ${maxSize.pct}%)`;
+		}
+
+		return value === undefined ? undefined : `${value}%`;
+	}, [maxSize, preferredSize, value]);
+
+	return { splitterProps, panelProps, panelMinSize, panelMaxSize };
 }
 
 interface UseMoveableArgs {
 	onMove?: (moveBy: number) => void;
+	onMoveEnd?: () => void;
 }
 
 function useMoveable<T extends Element>(args?: UseMoveableArgs) {
-	const { onMove } = args ?? {};
+	const { onMove, onMoveEnd } = args ?? {};
 	const ref = React.useRef<T>(null);
 	const relativePosition = React.useRef<number | undefined>(undefined);
 	React.useEffect(() => {
 		const onPointerUp = () => {
 			if (!relativePosition.current) return;
 			relativePosition.current = undefined;
+			onMoveEnd?.();
 		};
 		document.addEventListener("pointerup", onPointerUp);
 		return () => {
 			document.removeEventListener("pointerup", onPointerUp);
 		};
-	}, []);
+	}, [onMoveEnd]);
 	React.useEffect(() => {
 		const onPointerMove = (e: PointerEvent) => {
 			if (!relativePosition.current) return;

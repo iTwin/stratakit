@@ -44,7 +44,8 @@
 		&::before {
 			content: "";
 			position: absolute;
-			inset: 0 0 calc(var(--🥝-tab-active-stripe-gap) * -1);
+			inset-inline: 0;
+			inset-block: 0 calc(var(--🥝-tab-active-stripe-gap) * -1);
 		}
 	}
 
@@ -64,7 +65,8 @@
 				position: absolute;
 				background-color: currentColor;
 				block-size: 2px;
-				inset: auto var(--✨padding-inline) calc(var(--🥝-tab-active-stripe-gap) * -1);
+				inset-inline: var(--✨padding-inline);
+				inset-block: auto calc(var(--🥝-tab-active-stripe-gap) * -1);
 
 				@media (forced-colors: active) {
 					background-color: CanvasText;

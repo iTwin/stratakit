@@ -7,7 +7,7 @@ import styles from "./sandbox.module.css";
 import {
 	DropdownMenu,
 	Icon,
-	Input,
+	TextInput,
 	VisuallyHidden,
 } from "@itwin/kiwi-react/bricks";
 import { ListItem } from "@itwin/kiwi-react-internal/src/bricks/ListItem.js";
@@ -60,7 +60,7 @@ export default function Page() {
 						</div>
 					</div>
 					<div className={styles.searchWrapper}>
-						<Input placeholder="Search" />
+						<TextInput placeholder="Search" />
 						<div className={styles.actions}>
 							<Icon href={placeholderIcon} />
 							<SortingModes />

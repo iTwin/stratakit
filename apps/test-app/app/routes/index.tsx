@@ -18,12 +18,12 @@ const components = [
 	"Field",
 	"Icon",
 	"IconButton",
-	"Input",
 	"List",
 	"Radio",
 	"Switch",
 	"Tabs",
 	"Textarea",
+	"TextInput",
 	"Tooltip",
 ];
 

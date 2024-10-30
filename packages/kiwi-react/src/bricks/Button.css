@@ -17,6 +17,17 @@
 	--✨shadow--solid:
 		0px 3px 3px -1.5px #00000029, 0px 1px 1px -0.5px #00000029, 0px 0px 0px 1px #ffffff14 inset, 0px -1px 0px 0px #00000014 inset;
 
+	--✨bg--outline-default: transparent;
+	--✨bg--outline-hover: color-mix(
+		in oklch,
+		var(--✨bg--outline-default) 100%,
+		var(--✨glow--hover)
+	);
+	--✨bg--outline-pressed: color-mix(
+		in oklch,
+		var(--✨bg--outline-default) 100%,
+		var(--✨glow--press)
+	);
 	--✨shadow--outline: 0px 0px 0px 1px var(--kiwi-color-border-neutral-base) inset;
 
 	--✨bg--ghost-default: transparent;
@@ -69,11 +80,10 @@
 		}
 
 		&[data-kiwi-variant="outline"] {
-			--🥝button-background-color: var(--🌀button-state--default, var(--✨bg--ghost-default))
-				var(--🌀button-state--hover, var(--✨bg--ghost-hover))
-				var(--🌀button-state--pressed, var(--✨bg--ghost-pressed))
-				var(--🌀button-state--active, var(--✨bg--ghost-active))
-				var(--🌀button-state--disabled, var(--✨bg--ghost-default));
+			--🥝button-background-color: var(--🌀button-state--default, var(--✨bg--outline-default))
+				var(--🌀button-state--hover, var(--✨bg--outline-hover))
+				var(--🌀button-state--pressed, var(--✨bg--outline-pressed))
+				var(--🌀button-state--disabled, var(--✨bg--outline-default));
 			box-shadow: var(--✨shadow--outline);
 		}
 

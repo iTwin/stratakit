@@ -4,13 +4,13 @@
  *--------------------------------------------------------------------------------------------*/
 
 .🥝-tab-list {
-	--🥝-tab-active-stripe-gap: 6px;
+	--🥝tab-active-stripe-gap: 6px;
 
 	display: flex;
 	gap: 8px;
 
 	&[aria-orientation="horizontal"] {
-		padding-block-end: var(--🥝-tab-active-stripe-gap);
+		padding-block-end: var(--🥝tab-active-stripe-gap);
 	}
 }
 
@@ -26,6 +26,8 @@
 	--✨bg--selected: transparent;
 	--✨bg--selected-hover: var(--kiwi-color-bg-glow-on-surface-accent-hover);
 	--✨bg--disabled: transparent;
+
+	--🥝tab-active-stripe-color: var(--kiwi-color-border-accent-strong);
 
 	@layer base {
 		font-size: var(--kiwi-font-size-s);
@@ -54,7 +56,7 @@
 			content: "";
 			position: absolute;
 			inset-inline: 0;
-			inset-block: 0 calc(var(--🥝-tab-active-stripe-gap) * -1);
+			inset-block: 0 calc(var(--🥝tab-active-stripe-gap) * -1);
 		}
 	}
 
@@ -72,10 +74,10 @@
 			&::after {
 				content: "";
 				position: absolute;
-				background-color: currentColor;
+				background-color: var(--🥝tab-active-stripe-color);
 				block-size: 2px;
 				inset-inline: var(--✨padding-inline);
-				inset-block: auto calc(var(--🥝-tab-active-stripe-gap) * -1);
+				inset-block: auto calc(var(--🥝tab-active-stripe-gap) * -1);
 
 				@media (forced-colors: active) {
 					background-color: CanvasText;
@@ -91,6 +93,8 @@
 
 		&:where([disabled], :disabled, [aria-disabled="true"]) {
 			--🌀tab-state: var(--🌀tab-state--disabled);
+			/* --🥝tab-active-stripe-color: var(--kiwi-color-border-neutral-disabled); */
+			--🥝tab-active-stripe-color: #585f68;
 			cursor: not-allowed;
 		}
 	}

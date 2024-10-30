@@ -15,7 +15,7 @@
 
 	@layer states {
 		&:has(+ :where(:disabled, [disabled], [aria-disabled="true"])) {
-			opacity: 0.5;
+			color: var(--kiwi-color-text-neutral-disabled);
 
 			&:is(label) {
 				cursor: not-allowed;

@@ -3,7 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 .🥝-radio {
-	--_kiwi-checkbox-border-radius: 9999px;
-	--_kiwi-checkbox-checkmark-svg: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" ><circle cx="8" cy="8" r="4" /></svg>');
-	--_kiwi-checkbox-indeterminate-svg: var(--_kiwi-checkbox-unchecked-svg);
+	--🥝checkbox-border-radius: 9999px;
+	--🥝checkbox-checkmark-svg: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" ><circle cx="8" cy="8" r="4" /></svg>');
+	--🥝checkbox-indeterminate-svg: var(--🥝checkbox-unchecked-svg);
 }

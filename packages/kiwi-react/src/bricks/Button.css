@@ -3,12 +3,26 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 .🥝-button {
-	@layer base {
-		--_kiwi-button-color-text: var(--kiwi-color-text-neutral-primary);
-		--_kiwi-button-gap: 4px;
-		--_kiwi-button-height: 1.5rem;
-		--_kiwi-button-padding-inline: 12px;
+	--✨color: var(--kiwi-color-text-neutral-primary);
+	--✨gap: 4px;
+	--✨height: 1.5rem;
+	--✨padding-inline: 12px;
+	--✨shadow:
+		0px 3px 3px -1.5px #00000029, 0px 1px 1px -0.5px #00000029, 0px 0px 0px 1px #ffffff14 inset, 0px -1px 0px 0px #00000014 inset;
 
+	--✨glow--hover: var(--kiwi-color-glow-hue) var(--kiwi-color-bg-glow-base-hover-\%);
+	--✨glow--press: var(--kiwi-color-glow-hue) var(--kiwi-color-bg-glow-base-press-\%);
+
+	--✨bg--solid-default: var(--kiwi-color-bg-neutral-base);
+	--✨bg--solid-hover: color-mix(in oklch, var(--✨bg--solid-default) 100%, var(--✨glow--hover));
+	--✨bg--solid-pressed: color-mix(in oklch, var(--✨bg--solid-default) 100%, var(--✨glow--press));
+
+	--✨bg--ghost-default: transparent;
+	--✨bg--ghost-hover: color-mix(in oklch, var(--✨bg--ghost-default) 100%, var(--✨glow--hover));
+	--✨bg--ghost-pressed: color-mix(in oklch, var(--✨bg--ghost-default) 100%, var(--✨glow--press));
+	--✨bg--ghost-active: var(--kiwi-color-bg-glow-on-surface-accent-press);
+
+	@layer base {
 		text-decoration: none;
 		line-height: 1;
 		white-space: nowrap;
@@ -22,17 +36,21 @@
 		align-items: center;
 		justify-content: center;
 		flex-shrink: 0;
-		gap: var(--_kiwi-button-gap);
+		gap: var(--✨gap);
 
-		block-size: var(--_kiwi-button-height);
+		block-size: var(--✨height);
 		border-radius: 4px;
-		padding-inline: var(--_kiwi-button-padding-inline);
+		padding-inline: var(--🥝button-padding-inline, var(--✨padding-inline));
 
-		background-color: var(--_kiwi-button-background-color);
-		color: var(--_kiwi-button-color-text);
+		background-color: var(--🥝button-background-color);
+		color: var(--✨color);
 		transition: background-color 150ms ease-out;
-		-webkit-tap-highlight-color: var(--_kiwi-button-color-background-pressed);
-		--_kiwi-icon-color: var(--_kiwi-button-color-icon);
+		-webkit-tap-highlight-color: var(--✨bg--solid-pressed);
+		--🥝icon-color: var(--🌀button-state--default, var(--kiwi-color-icon-neutral-base))
+			var(--🌀button-state--hover, var(--kiwi-color-icon-neutral-hover))
+			var(--🌀button-state--pressed, var(--kiwi-color-icon-neutral-hover))
+			var(--🌀button-state--active, var(--kiwi-color-icon-accent-strong))
+			var(--🌀button-state--disabled, var(--kiwi-color-icon-neutral-disabled));
 
 		@media (forced-colors: active) {
 			border: 1px solid;
@@ -41,89 +59,51 @@
 
 	@layer modifiers {
 		&[data-kiwi-variant="solid"] {
-			--_kiwi-button-color-background-default: var(--kiwi-color-bg-neutral-base);
-			--_kiwi-button-color-background-hover: color-mix(
-				in oklch,
-				var(--_kiwi-button-color-background-default) 100%,
-				var(--kiwi-color-glow-hue) var(--kiwi-color-bg-glow-base-hover-\%)
-			);
-			--_kiwi-button-color-background-pressed: color-mix(
-				in oklch,
-				var(--_kiwi-button-color-background-default) 100%,
-				var(--kiwi-color-glow-hue) var(--kiwi-color-bg-glow-base-press-\%)
-			);
-			--_kiwi-button-color-background-disabled: var(--kiwi-color-bg-glow-on-surface-disabled);
-			--_kiwi-button-color-border: #ffffff14; /* border/glow/default */
-
-			box-shadow:
-				0px 3px 3px -1.5px #00000029,
-				0px 1px 1px -0.5px #00000029,
-				0px 0px 0px 1px var(--_kiwi-button-color-border) inset,
-				0px -1px 0px 0px #00000014 inset;
+			--🥝button-background-color: var(--🌀button-state--default, var(--✨bg--solid-default))
+				var(--🌀button-state--hover, var(--✨bg--solid-hover))
+				var(--🌀button-state--pressed, var(--✨bg--solid-pressed))
+				var(--🌀button-state--disabled, var(--✨bg--solid-default));
+			box-shadow: var(--✨shadow);
 		}
 
 		&[data-kiwi-variant="ghost"] {
-			--_kiwi-button-color-background-default: transparent;
-			--_kiwi-button-color-background-hover: color-mix(
-				in oklch,
-				var(--_kiwi-button-color-background-default) 100%,
-				var(--kiwi-color-glow-hue) var(--kiwi-color-bg-glow-base-hover-\%)
-			);
-			--_kiwi-button-color-background-pressed: color-mix(
-				in oklch,
-				var(--_kiwi-button-color-background-default) 100%,
-				var(--kiwi-color-glow-hue) var(--kiwi-color-bg-glow-base-press-\%)
-			);
-			--_kiwi-button-color-background-active: var(--kiwi-color-bg-glow-on-surface-accent-press);
-			--_kiwi-button-color-background-disabled: transparent;
+			--🥝button-background-color: var(--🌀button-state--default, var(--✨bg--ghost-default))
+				var(--🌀button-state--hover, var(--✨bg--ghost-hover))
+				var(--🌀button-state--pressed, var(--✨bg--ghost-pressed))
+				var(--🌀button-state--active, var(--✨bg--ghost-active))
+				var(--🌀button-state--disabled, var(--✨bg--ghost-default));
 		}
 	}
 
 	@layer states {
-		/* Cyclic toggles for default/hover/pressed/active/disabled states. See https://kizu.dev/cyclic-toggles/ */
-		--__kiwi-button-state: var(--__kiwi-button-state--default);
-		--__kiwi-button-state--default: var(--__kiwi-button-state,);
-		--__kiwi-button-state--hover: var(--__kiwi-button-state,);
-		--__kiwi-button-state--pressed: var(--__kiwi-button-state,);
-		--__kiwi-button-state--active: var(--__kiwi-button-state,);
-		--__kiwi-button-state--disabled: var(--__kiwi-button-state,);
-
-		--_kiwi-button-background-color: var(
-				--__kiwi-button-state--default,
-				var(--_kiwi-button-color-background-default)
-			)
-			var(--__kiwi-button-state--hover, var(--_kiwi-button-color-background-hover))
-			var(--__kiwi-button-state--pressed, var(--_kiwi-button-color-background-pressed))
-			var(--__kiwi-button-state--active, var(--_kiwi-button-color-background-active))
-			var(--__kiwi-button-state--disabled, var(--_kiwi-button-color-background-disabled));
-
-		--_kiwi-button-color-icon: var(
-				--__kiwi-button-state--default,
-				var(--kiwi-color-icon-neutral-base)
-			)
-			var(--__kiwi-button-state--hover, var(--kiwi-color-icon-neutral-hover))
-			var(--__kiwi-button-state--pressed, var(--kiwi-color-icon-neutral-hover))
-			var(--__kiwi-button-state--active, var(--kiwi-color-icon-accent-strong))
-			var(--__kiwi-button-state--disabled, var(--kiwi-color-icon-neutral-disabled));
-
 		@media (any-hover: hover) {
 			&:where(:hover) {
-				--__kiwi-button-state: var(--__kiwi-button-state--hover);
+				--🌀button-state: var(--🌀button-state--hover);
 			}
 		}
 
 		&:where(:active) {
-			--__kiwi-button-state: var(--__kiwi-button-state--pressed);
+			--🌀button-state: var(--🌀button-state--pressed);
 		}
 
 		&:where([data-kiwi-variant="ghost"][aria-pressed="true"]) {
-			--__kiwi-button-state: var(--__kiwi-button-state--active);
+			--🌀button-state: var(--🌀button-state--active);
 		}
 
 		&:where([disabled], :disabled, [aria-disabled="true"]) {
-			--__kiwi-button-state: var(--__kiwi-button-state--disabled);
+			--🌀button-state: var(--🌀button-state--disabled);
 			color: var(--kiwi-color-text-neutral-disabled);
 			cursor: not-allowed;
 		}
+	}
+
+	@layer base.🌀 {
+		/* Cyclic toggles for default/hover/pressed/active/disabled states. See https://kizu.dev/cyclic-toggles/ */
+		--🌀button-state: var(--🌀button-state--default);
+		--🌀button-state--default: var(--🌀button-state,);
+		--🌀button-state--hover: var(--🌀button-state,);
+		--🌀button-state--pressed: var(--🌀button-state,);
+		--🌀button-state--active: var(--🌀button-state,); /* "active" state is only supported in ghost variant */
+		--🌀button-state--disabled: var(--🌀button-state,);
 	}
 }

@@ -2,6 +2,7 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
+import globalStyles from "./tokens.css?url";
 import * as Ariakit from "@ariakit/react";
 import type * as React from "react";
 import type { MetaFunction } from "@remix-run/react";
@@ -9,8 +10,10 @@ import { Button, Divider, Icon } from "@itwin/kiwi-react/bricks";
 import { parseTokens } from "internal/visitors.js";
 import rawTokens from "internal/theme-dark.json";
 import styles from "./tokens.module.css";
+import type { LinksFunction } from "@remix-run/node";
 
-const tokens = parseTokens(rawTokens);
+const colorTokens = parseTokens(rawTokens.color);
+const shadowTokens = parseTokens(rawTokens.shadow);
 
 const categories = {
 	bg: "Background",
@@ -24,6 +27,10 @@ export const meta: MetaFunction = () => {
 	return [{ title: "Kiwi tokens" }, { name: "color-scheme", content: "dark" }];
 };
 
+export const links: LinksFunction = () => [
+	{ rel: "stylesheet", href: globalStyles },
+];
+
 export default function Page() {
 	return (
 		<>
@@ -34,7 +41,7 @@ export default function Page() {
 			<h2>Colors</h2>
 
 			{Object.entries(categories).map(([key, value]) => {
-				const relevantTokens = [...tokens.keys()].filter((token) => {
+				const relevantTokens = [...colorTokens.keys()].filter((token) => {
 					const shouldExclude = token.includes("🫥") || token.includes("%");
 					if (shouldExclude) return false;
 
@@ -59,46 +66,84 @@ export default function Page() {
 							</Ariakit.Disclosure>
 
 							<Ariakit.DisclosureContent>
-								<table className={styles.table}>
-									<thead>
-										<tr>
-											<th>Variable</th>
-											<th>Preview</th>
-										</tr>
-									</thead>
-
-									<tbody>
-										{relevantTokens.map((token) => {
-											const variableName = `--kiwi-color-${token}`;
-											return (
-												<tr key={token}>
-													<td>
-														<code>{variableName}</code>
-													</td>
-													<td>
-														<ColorSwatch variable={variableName} />
-													</td>
-												</tr>
-											);
-										})}
-									</tbody>
-								</table>
+								<Tokens tokens={relevantTokens} kind="color" />
 							</Ariakit.DisclosureContent>
 						</div>
 					</Ariakit.DisclosureProvider>
 				);
 			})}
+
+			<Divider />
+
+			<h2>Shadows</h2>
+
+			<Ariakit.DisclosureProvider defaultOpen={true}>
+				<div className={styles.disclosureWrapper}>
+					<Ariakit.Disclosure
+						render={<Button variant="ghost" />}
+						className={styles.disclosureButton}
+					>
+						<Icon render={<ArrowIcon />} className={styles.disclosureIcon} />
+						All shadows
+					</Ariakit.Disclosure>
+
+					<Ariakit.DisclosureContent>
+						<Tokens tokens={[...shadowTokens.keys()]} kind="shadow" />
+					</Ariakit.DisclosureContent>
+				</div>
+			</Ariakit.DisclosureProvider>
 		</>
 	);
 }
 
-function ColorSwatch({ variable }: { variable: string }) {
+function Tokens({
+	tokens,
+	kind,
+}: {
+	tokens: string[];
+	kind: "color" | "shadow";
+}) {
 	return (
-		<div
-			className={styles.swatch}
-			style={{ "--_swatch-color": `var(${variable})` } as React.CSSProperties}
-		/>
+		<table className={styles.table}>
+			<thead>
+				<tr>
+					<th>Variable</th>
+					<th>Preview</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				{tokens.map((token) => {
+					const variableName = `--kiwi-${kind}-${token}`;
+					return (
+						<tr key={token}>
+							<td>
+								<code>{variableName}</code>
+							</td>
+							<td>
+								<Swatch variable={variableName} kind={kind} />
+							</td>
+						</tr>
+					);
+				})}
+			</tbody>
+		</table>
 	);
+}
+
+function Swatch({
+	variable,
+	kind = "color",
+}: {
+	variable: string;
+	kind: "color" | "shadow";
+}) {
+	const style = {
+		...(kind === "color" && { "--_swatch-color": `var(${variable})` }),
+		...(kind === "shadow" && { "--_swatch-shadow": `var(${variable})` }),
+	};
+
+	return <div className={styles.swatch} style={style as React.CSSProperties} />;
 }
 
 function ArrowIcon(props: React.ComponentProps<"svg">) {

@@ -38,8 +38,12 @@
 		padding-block: var(--✨padding-block);
 		border-radius: 4px;
 
-		background-color: var(--🥝text-input-background-color);
-		border-color: var(--🥝text-input-border-color);
+		background-color: var(--🌀text-input-state--default, var(--✨bg--default))
+			var(--🌀text-input-state--hover, var(--✨bg--hover))
+			var(--🌀text-input-state--disabled, var(--✨bg--disabled));
+		border-color: var(--🌀text-input-state--default, var(--✨border--default))
+			var(--🌀text-input-state--hover, var(--✨border--hover))
+			var(--🌀text-input-state--disabled, var(--✨border--disabled));
 		box-shadow: 0px 1px 2px 0px #00000029 inset, 0px 2px 4px 0px #00000029 inset;
 		color: var(--✨color--default);
 		transition: all 150ms ease-out;
@@ -57,19 +61,6 @@
 	}
 
 	@layer states {
-		/* Cyclic toggles for default/hover/active/disabled states. See https://kizu.dev/cyclic-toggles/ */
-		--🌀text-input-state: var(--🌀text-input-state--default);
-		--🌀text-input-state--default: var(--🌀text-input-state,);
-		--🌀text-input-state--hover: var(--🌀text-input-state,);
-		--🌀text-input-state--disabled: var(--🌀text-input-state,);
-
-		--🥝text-input-background-color: var(--🌀text-input-state--default, var(--✨bg--default))
-			var(--🌀text-input-state--hover, var(--✨bg--hover))
-			var(--🌀text-input-state--disabled, var(--✨bg--disabled));
-		--🥝text-input-border-color: var(--🌀text-input-state--default, var(--✨border--default))
-			var(--🌀text-input-state--hover, var(--✨border--hover))
-			var(--🌀text-input-state--disabled, var(--✨border--disabled));
-
 		@media (any-hover: hover) {
 			&:where(:hover) {
 				--🌀text-input-state: var(--🌀text-input-state--hover);
@@ -81,6 +72,14 @@
 			color: var(--✨color--disabled);
 			cursor: not-allowed;
 		}
+	}
+
+	@layer base.🌀 {
+		/* Cyclic toggles for default/hover/active/disabled states. See https://kizu.dev/cyclic-toggles/ */
+		--🌀text-input-state: var(--🌀text-input-state--default);
+		--🌀text-input-state--default: var(--🌀text-input-state,);
+		--🌀text-input-state--hover: var(--🌀text-input-state,);
+		--🌀text-input-state--disabled: var(--🌀text-input-state,);
 	}
 }
 

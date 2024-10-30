@@ -23,14 +23,14 @@ function TextAffix({ children }: React.PropsWithChildren) {
 
 function useInputParams() {
 	const [searchParams] = useSearchParams();
-	const disabled = searchParams.get("disabled") === "true";
+	const disabled = searchParams.has("disabled");
 	return { disabled };
 }
 
 export default function Page() {
 	const [searchParams] = useSearchParams();
-	const visual = searchParams.get("visual") === "true";
-	const composition = searchParams.get("composition") === "true";
+	const visual = searchParams.has("visual");
+	const composition = searchParams.has("composition");
 	const id = useId();
 	const inputParams = useInputParams();
 

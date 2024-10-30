@@ -30,7 +30,7 @@ for (const type of ["input", "composition"]) {
 	});
 
 	test(`disabled ${type}`, async ({ page }) => {
-		await page.goto(toUrl("/tests/text-input?disabled=true"));
+		await page.goto(toUrl("/tests/text-input?disabled"));
 
 		const input = page.locator("input");
 		await expect(input).toHaveAccessibleName("Fruit");
@@ -47,12 +47,12 @@ for (const type of ["input", "composition"]) {
 
 test.describe("@visual", () => {
 	test("default", async ({ page }) => {
-		await page.goto("/tests/text-input?visual=true");
+		await page.goto("/tests/text-input?visual");
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
 
 	test("composition outline", async ({ page }) => {
-		await page.goto("/tests/text-input?composition=true");
+		await page.goto("/tests/text-input?composition");
 		const input = page.getByRole("textbox");
 		await input.click();
 		await expect(page.locator("body")).toHaveScreenshot();

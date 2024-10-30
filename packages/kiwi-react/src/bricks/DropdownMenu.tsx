@@ -16,8 +16,10 @@ interface DropdownMenuProps
 		"children" | "placement" | "open" | "setOpen" | "defaultOpen"
 	> {}
 
-/** Dropdown menu component displays a list of actions or commands.
- * @example
+/**
+ * Dropdown menu component displays a list of actions or commands.
+ *
+ * ```tsx
  * <DropdownMenu.Root>
  *		<DropdownMenu.Button>Actions</DropdownMenu.Button>
  *
@@ -27,6 +29,7 @@ interface DropdownMenuProps
  *			<DropdownMenu.Item>Delete</DropdownMenu.Item>
  *		</DropdownMenu.Content>
  * </DropdownMenu.Root>
+ * ```
  */
 function DropdownMenu(props: DropdownMenuProps) {
 	const { children, placement, open, setOpen, defaultOpen } = props;

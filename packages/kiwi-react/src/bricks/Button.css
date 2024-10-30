@@ -7,8 +7,6 @@
 	--✨gap: 4px;
 	--✨height: 1.5rem;
 	--✨padding-inline: 12px;
-	--✨shadow:
-		0px 3px 3px -1.5px #00000029, 0px 1px 1px -0.5px #00000029, 0px 0px 0px 1px #ffffff14 inset, 0px -1px 0px 0px #00000014 inset;
 
 	--✨glow--hover: var(--kiwi-color-glow-hue) var(--kiwi-color-bg-glow-base-hover-\%);
 	--✨glow--press: var(--kiwi-color-glow-hue) var(--kiwi-color-bg-glow-base-press-\%);
@@ -16,6 +14,10 @@
 	--✨bg--solid-default: var(--kiwi-color-bg-neutral-base);
 	--✨bg--solid-hover: color-mix(in oklch, var(--✨bg--solid-default) 100%, var(--✨glow--hover));
 	--✨bg--solid-pressed: color-mix(in oklch, var(--✨bg--solid-default) 100%, var(--✨glow--press));
+	--✨shadow--solid:
+		0px 3px 3px -1.5px #00000029, 0px 1px 1px -0.5px #00000029, 0px 0px 0px 1px #ffffff14 inset, 0px -1px 0px 0px #00000014 inset;
+
+	--✨shadow--outline: 0px 0px 0px 1px var(--kiwi-color-border-neutral-base) inset;
 
 	--✨bg--ghost-default: transparent;
 	--✨bg--ghost-hover: color-mix(in oklch, var(--✨bg--ghost-default) 100%, var(--✨glow--hover));
@@ -63,7 +65,16 @@
 				var(--🌀button-state--hover, var(--✨bg--solid-hover))
 				var(--🌀button-state--pressed, var(--✨bg--solid-pressed))
 				var(--🌀button-state--disabled, var(--✨bg--solid-default));
-			box-shadow: var(--✨shadow);
+			box-shadow: var(--✨shadow--solid);
+		}
+
+		&[data-kiwi-variant="outline"] {
+			--🥝button-background-color: var(--🌀button-state--default, var(--✨bg--ghost-default))
+				var(--🌀button-state--hover, var(--✨bg--ghost-hover))
+				var(--🌀button-state--pressed, var(--✨bg--ghost-pressed))
+				var(--🌀button-state--active, var(--✨bg--ghost-active))
+				var(--🌀button-state--disabled, var(--✨bg--ghost-default));
+			box-shadow: var(--✨shadow--outline);
 		}
 
 		&[data-kiwi-variant="ghost"] {

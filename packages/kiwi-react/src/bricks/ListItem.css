@@ -18,6 +18,8 @@
 	--✨bg--disabled: var(--kiwi-color-text-neutral-disabled);
 
 	@layer base {
+		--🥝list-item-active-bg: var(--kiwi-color-bg-glow-on-surface-accent-hover);
+
 		cursor: pointer;
 		line-height: 1;
 		font-size: 0.75rem;
@@ -33,13 +35,16 @@
 		background-color: var(--🌀list-item-state--default, var(--✨bg--default))
 			var(--🌀list-item-state--hover, var(--✨bg--hover))
 			var(--🌀list-item-state--pressed, var(--✨bg--pressed))
+			var(--🌀list-item-state--active, var(--🥝list-item-active-bg))
 			var(--🌀list-item-state--disabled, var(--✨bg--default));
 		color: var(--🌀list-item-state--default, unset) var(--🌀list-item-state--hover, unset)
 			var(--🌀list-item-state--pressed, unset)
+			var(--🌀list-item-state--active, var(--kiwi-color-text-accent-strong))
 			var(--🌀list-item-state--disabled, var(--✨bg--disabled));
 		--🥝icon-color: var(--🌀list-item-state--default, var(--kiwi-color-icon-neutral-base))
 			var(--🌀list-item-state--hover, var(--kiwi-color-icon-neutral-hover))
 			var(--🌀list-item-state--pressed, var(--kiwi-color-icon-neutral-hover))
+			var(--🌀list-item-state--active, var(--kiwi-color-icon-accent-strong))
 			var(--🌀list-item-state--disabled, var(--kiwi-color-icon-neutral-disabled));
 	}
 
@@ -65,6 +70,7 @@
 		--🌀list-item-state--default: var(--🌀list-item-state,);
 		--🌀list-item-state--hover: var(--🌀list-item-state,);
 		--🌀list-item-state--pressed: var(--🌀list-item-state,);
+		--🌀list-item-state--active: var(--🌀list-item-state,);
 		--🌀list-item-state--disabled: var(--🌀list-item-state,);
 	}
 }

@@ -26,7 +26,6 @@ test("disabled", async ({ page }) => {
 	const anchor = page.getByRole("link");
 	const main = page.getByRole("main");
 
-	await expect(anchor).toHaveAccessibleName("Hello");
 	await expect(anchor).toBeDisabled();
 
 	await page.keyboard.press("Tab");
@@ -43,4 +42,28 @@ test("disabled", async ({ page }) => {
 test("@visual", async ({ page }) => {
 	await page.goto("/tests/anchor?visual=true");
 	await expect(page.locator("body")).toHaveScreenshot();
+});
+
+test.describe("@a11y", () => {
+	test("Ensure accessible name", async ({ page }) => {
+		await page.goto("/tests/anchor");
+
+		const anchor = page.getByRole("link");
+
+		await expect(anchor).toHaveAccessibleName("Hello");
+	});
+
+	test("anchor with aria-disabled", async ({ page }) => {
+		await page.goto("/tests/anchor?disabled=true");
+
+		const anchor = page.getByRole("link");
+		await expect(anchor).toHaveAttribute("aria-disabled", "true");
+	});
+
+	test("anchor without aria-disabled", async ({ page }) => {
+		await page.goto("/tests/anchor");
+
+		const anchor = page.getByRole("link");
+		await expect(anchor).not.toHaveAttribute("aria-disabled");
+	});
 });

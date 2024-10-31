@@ -17,29 +17,28 @@
 .🥝-tab {
 	--✨height: 1.25rem;
 	--✨padding-inline: 4px;
+
 	--✨bg--default: transparent;
-	--✨bg--hover: color-mix(
-		in oklch,
-		var(--✨bg--default) 100%,
-		var(--kiwi-color-glow-hue) var(--kiwi-color-bg-glow-on-surface-neutral-hover-\%)
-	);
+	--✨bg--hover: var(--kiwi-color-bg-glow-on-surface-accent-hover);
 	--✨bg--selected: transparent;
-	--✨bg--selected-hover: var(--kiwi-color-bg-glow-on-surface-accent-hover);
 	--✨bg--disabled: transparent;
+
+	--✨color--default: var(--kiwi-color-text-neutral-tertiary);
+	--✨color--hover: var(--kiwi-color-text-accent-strong);
+	--✨color--selected: var(--kiwi-color-text-accent-strong);
+	--✨color--disabled: var(--kiwi-color-text-neutral-disabled);
 
 	@layer base {
 		--🥝tab-active-stripe-color: var(--kiwi-color-border-accent-strong);
 
 		font-size: var(--kiwi-font-size-s);
-		color: var(--🌀tab-state--default, var(--kiwi-color-text-neutral-tertiary))
-			var(--🌀tab-state--hover, var(--kiwi-color-text-neutral-primary))
-			var(--🌀tab-state--selected, var(--kiwi-color-text-accent-strong))
-			var(--🌀tab-state--selected-hover, var(--kiwi-color-text-accent-strong))
-			var(--🌀tab-state--disabled, var(--kiwi-color-text-neutral-disabled));
+		color: var(--🌀tab-state--default, var(--✨color--default))
+			var(--🌀tab-state--hover, var(--✨color--hover))
+			var(--🌀tab-state--selected, var(--✨color--selected))
+			var(--🌀tab-state--disabled, var(--✨color--disabled));
 		background-color: var(--🌀tab-state--default, var(--✨bg--default))
 			var(--🌀tab-state--hover, var(--✨bg--hover))
 			var(--🌀tab-state--selected, var(--✨bg--selected))
-			var(--🌀tab-state--selected-hover, var(--✨bg--selected-hover))
 			var(--🌀tab-state--disabled, var(--✨bg--disabled));
 		border: none;
 		border-radius: 4px;
@@ -66,12 +65,6 @@
 	}
 
 	@layer states {
-		@media (any-hover: hover) {
-			&:where(:hover) {
-				--🌀tab-state: var(--🌀tab-state--hover);
-			}
-		}
-
 		&:where([aria-selected="true"]) {
 			--🌀tab-state: var(--🌀tab-state--selected);
 
@@ -88,11 +81,11 @@
 					background-color: SelectedItem;
 				}
 			}
+		}
 
-			@media (any-hover: hover) {
-				&:where(:hover) {
-					--🌀tab-state: var(--🌀tab-state--selected-hover);
-				}
+		@media (any-hover: hover) {
+			&:where(:hover) {
+				--🌀tab-state: var(--🌀tab-state--hover);
 			}
 		}
 
@@ -117,7 +110,6 @@
 		--🌀tab-state--default: var(--🌀tab-state,);
 		--🌀tab-state--hover: var(--🌀tab-state,);
 		--🌀tab-state--selected: var(--🌀tab-state,);
-		--🌀tab-state--selected-hover: var(--🌀tab-state,);
 		--🌀tab-state--disabled: var(--🌀tab-state,);
 	}
 }

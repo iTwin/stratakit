@@ -7,7 +7,7 @@
 	--✨thumb-size: 1rem;
 
 	--✨glow--border-hover: var(--kiwi-color-glow-hue) var(--kiwi-color-border-glow-base-hover-\%);
-	--✨glow--border-press: var(--kiwi-color-glow-hue) var(--kiwi-color-border-glow-base-press-\%);
+	--✨glow--border-press: var(--kiwi-color-glow-hue) var(--kiwi-color-border-glow-base-pressed-\%);
 	--✨glow--border-checked: var(--kiwi-color-glow-hue) var(--kiwi-color-border-glow-strong-hover-\%);
 	--✨glow--bg-hover: var(--kiwi-color-glow-hue) var(--kiwi-color-bg-glow-base-hover-\%);
 	--✨glow--bg-checked-hover: var(--kiwi-color-glow-hue) var(--kiwi-color-bg-glow-strong-hover-\%);

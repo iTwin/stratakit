@@ -97,8 +97,7 @@
 
 		&:where([disabled], :disabled, [aria-disabled="true"]) {
 			--🌀tab-state: var(--🌀tab-state--disabled);
-			/* --🥝tab-active-stripe-color: var(--kiwi-color-border-neutral-disabled); */
-			--🥝tab-active-stripe-color: #585f68;
+			--🥝tab-active-stripe-color: var(--kiwi-color-border-neutral-disabled);
 			cursor: not-allowed;
 
 			@media (forced-colors: active) {

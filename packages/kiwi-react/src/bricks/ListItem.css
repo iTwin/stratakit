@@ -36,6 +36,10 @@
 		color: var(--🌀list-item-state--default, unset) var(--🌀list-item-state--hover, unset)
 			var(--🌀list-item-state--pressed, unset)
 			var(--🌀list-item-state--disabled, var(--✨bg--disabled));
+
+		> .🥝-icon:last-child {
+			margin-inline-start: auto;
+		}
 	}
 
 	@layer states {

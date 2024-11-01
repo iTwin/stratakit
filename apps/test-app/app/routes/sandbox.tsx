@@ -7,6 +7,7 @@ import styles from "./sandbox.module.css";
 import {
 	DropdownMenu,
 	Icon,
+	IconButton,
 	TextInput,
 	VisuallyHidden,
 } from "@itwin/kiwi-react/bricks";
@@ -131,7 +132,9 @@ function TreeRow({ level = 0, children }: TreeRowProps) {
 function SortingModes() {
 	return (
 		<DropdownMenu.Root>
-			<DropdownMenu.Button render={<Icon href={filterIcon} />} />
+			<DropdownMenu.Button
+				render={<IconButton icon={filterIcon} label="Filter" variant="ghost" />}
+			/>
 			<DropdownMenu.Content style={{ minInlineSize: 164 }}>
 				<DropdownMenu.Item>Show all</DropdownMenu.Item>
 				<DropdownMenu.Item>Guides</DropdownMenu.Item>

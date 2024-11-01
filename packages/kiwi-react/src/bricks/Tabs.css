@@ -17,6 +17,7 @@
 .🥝-tab {
 	--✨height: 1.25rem;
 	--✨padding-inline: 4px;
+	--✨active-tab-stripe-size: 2px;
 
 	--✨bg--default: transparent;
 	--✨bg--hover: var(--kiwi-color-bg-glow-on-surface-accent-hover);
@@ -73,7 +74,7 @@
 				content: "";
 				position: absolute;
 				background-color: var(--🥝tab-active-stripe-color);
-				block-size: 2px;
+				block-size: var(--✨active-tab-stripe-size);
 				inset-inline: var(--✨padding-inline);
 				inset-block: auto calc(var(--🥝tab-active-stripe-gap) * -1);
 

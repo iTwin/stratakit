@@ -57,7 +57,12 @@ export default function Page() {
 								style={{ color: "var(--kiwi-color-text-accent-strong)" }}
 								href={searchIcon}
 							/>
-							<Icon href={panelLeftIcon} />
+							<IconButton
+								icon={panelLeftIcon}
+								label="Dock panel"
+								variant="ghost"
+								disabled
+							/>
 						</div>
 					</div>
 					<div className={styles.searchWrapper}>

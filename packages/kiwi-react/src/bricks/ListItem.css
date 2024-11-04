@@ -9,7 +9,8 @@
 	--✨padding-block: 0.25rem;
 
 	--✨glow--hover: var(--kiwi-color-glow-hue) var(--kiwi-color-bg-glow-on-surface-neutral-hover-\%);
-	--✨glow--press: var(--kiwi-color-glow-hue) var(--kiwi-color-bg-glow-on-surface-neutral-press-\%);
+	--✨glow--press: var(--kiwi-color-glow-hue)
+		var(--kiwi-color-bg-glow-on-surface-neutral-pressed-\%);
 
 	--✨bg--default: transparent;
 	--✨bg--hover: color-mix(in oklch, var(--✨bg--default) 100%, var(--✨glow--hover));

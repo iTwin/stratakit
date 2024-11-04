@@ -2,11 +2,14 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-import type * as React from "react";
+import * as React from "react";
+import * as ReactDOM from "react-dom";
+import * as Ariakit from "@ariakit/react";
 import styles from "./sandbox.module.css";
 import {
 	DropdownMenu,
 	Icon,
+	IconButton,
 	TextInput,
 	VisuallyHidden,
 } from "@itwin/kiwi-react/bricks";
@@ -30,6 +33,8 @@ const panelLeftIcon = new URL(
 ).href;
 const filterIcon = new URL("@itwin/kiwi-icons/filter.svg", import.meta.url)
 	.href;
+const dismissIcon = new URL("@itwin/kiwi-icons/dismiss.svg", import.meta.url)
+	.href;
 
 export default function Page() {
 	return (
@@ -50,22 +55,22 @@ export default function Page() {
 				</div>
 				<div className={styles.leftPanel}>
 					<div className={styles.header}>
-						<h2>Layers</h2>
+						{/* biome-ignore lint/a11y: hgroup needs an explicit role for better support */}
+						<hgroup role="group">
+							<h2 className={styles.panelTitle}>Epoch System iModel</h2>
+							<p className={styles.panelCaption}>2024 Refresh</p>
+						</hgroup>
 						<div className={styles.actions}>
-							<Icon
-								style={{ color: "var(--kiwi-color-text-accent-strong)" }}
-								href={searchIcon}
+							<IconButton
+								className={styles.shiftIconRight}
+								icon={panelLeftIcon}
+								label="Dock panel"
+								variant="ghost"
+								disabled
 							/>
-							<Icon href={panelLeftIcon} />
 						</div>
 					</div>
-					<div className={styles.searchWrapper}>
-						<TextInput placeholder="Search" />
-						<div className={styles.actions}>
-							<Icon href={placeholderIcon} />
-							<SortingModes />
-						</div>
-					</div>
+					<Subheader />
 					<Tree />
 				</div>
 				<div className={styles.canvasWrapper}>
@@ -130,10 +135,71 @@ function TreeRow({ level = 0, children }: TreeRowProps) {
 	);
 }
 
+function Subheader() {
+	const [isSearching, setIsSearching] = React.useState(false);
+	const searchInputRef = React.useRef<HTMLInputElement>(null);
+	const subheaderRef = React.useRef<HTMLHeadingElement>(null);
+
+	const actions = isSearching ? (
+		<>
+			<SortingModes />
+			<IconButton
+				className={styles.shiftIconRight}
+				icon={dismissIcon}
+				label="Close"
+				variant="ghost"
+				onClick={() => {
+					ReactDOM.flushSync(() => setIsSearching(false));
+					subheaderRef.current?.focus();
+				}}
+			/>
+		</>
+	) : (
+		<IconButton
+			className={styles.shiftIconRight}
+			icon={searchIcon}
+			label="Search"
+			variant="ghost"
+			onClick={() => {
+				ReactDOM.flushSync(() => setIsSearching(true));
+				searchInputRef.current?.focus();
+			}}
+		/>
+	);
+
+	return (
+		<div className={styles.subheader}>
+			<Ariakit.Role.h3
+				className={styles.subheaderTitle}
+				tabIndex={-1}
+				ref={subheaderRef}
+				// When searching, we don't want to show the heading content visually, but we still want it
+				// in the DOM for screen readers. The heading structure of the page should remain the same.
+				// biome-ignore lint/a11y/useHeadingContent: This is fine. The heading content is set by children.
+				render={isSearching ? <VisuallyHidden render={<h3 />} /> : undefined}
+			>
+				Layers
+			</Ariakit.Role.h3>
+
+			{isSearching ? (
+				<TextInput
+					className={styles.searchInput}
+					placeholder="Search"
+					ref={searchInputRef}
+				/>
+			) : null}
+
+			<div className={styles.subheaderActions}>{actions}</div>
+		</div>
+	);
+}
+
 function SortingModes() {
 	return (
 		<DropdownMenu.Root>
-			<DropdownMenu.Button render={<Icon href={filterIcon} />} />
+			<DropdownMenu.Button
+				render={<IconButton icon={filterIcon} label="Filter" variant="ghost" />}
+			/>
 			<DropdownMenu.Content style={{ minInlineSize: 164 }}>
 				<DropdownMenu.Item>Show all</DropdownMenu.Item>
 				<DropdownMenu.Item>Guides</DropdownMenu.Item>

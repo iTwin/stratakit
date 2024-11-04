@@ -6,7 +6,7 @@
 	--✨size: 1rem;
 
 	--✨glow--bg-hover: var(--kiwi-color-glow-hue) var(--kiwi-color-bg-glow-base-hover-\%);
-	--✨glow--bg-press: var(--kiwi-color-glow-hue) var(--kiwi-color-bg-glow-base-press-\%);
+	--✨glow--bg-press: var(--kiwi-color-glow-hue) var(--kiwi-color-bg-glow-base-pressed-\%);
 
 	--✨bg--default: var(--kiwi-color-bg-neutral-base);
 	--✨bg--hover: color-mix(in oklch, var(--✨bg--default) 100%, var(--✨glow--bg-hover));
@@ -24,7 +24,7 @@
 	--✨border--checked-hover: color-mix(
 		in oklch,
 		#ffffff29 /* bg/button/strong/border/color */ 100%,
-		var(--kiwi-color-glow-hue) var(--kiwi-color-border-glow-base-press-\%)
+		var(--kiwi-color-glow-hue) var(--kiwi-color-border-glow-base-pressed-\%)
 	);
 	--✨border--disabled: transparent;
 

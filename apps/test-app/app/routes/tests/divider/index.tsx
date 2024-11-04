@@ -13,6 +13,7 @@ export default function Page() {
 		| "horizontal"
 		| "vertical"
 		| undefined;
+	const presentational = useSearchParams()[0].get("presentational") === "true";
 
 	if (visual) {
 		return <VisualTest />;
@@ -20,7 +21,11 @@ export default function Page() {
 
 	return (
 		<>
-			<Divider orientation={orientation} />
+			<Divider
+				orientation={orientation}
+				presentational={presentational}
+				data-testid="divider"
+			/>
 		</>
 	);
 }

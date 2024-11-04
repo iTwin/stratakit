@@ -10,7 +10,7 @@ import {
 	TextInput,
 	VisuallyHidden,
 } from "@itwin/kiwi-react/bricks";
-import { ListItem } from "@itwin/kiwi-react-internal/src/bricks/ListItem.js";
+import * as ListItem from "@itwin/kiwi-react-internal/src/bricks/ListItem.js";
 import type { MetaFunction } from "@remix-run/react";
 
 const title = "Kiwi sandbox";
@@ -121,10 +121,12 @@ type TreeRowProps = React.PropsWithChildren<{
 
 function TreeRow({ level = 0, children }: TreeRowProps) {
 	return (
-		<ListItem style={{ ...(level > 0 ? { paddingLeft: level * 20 } : {}) }}>
+		<ListItem.Root
+			style={{ ...(level > 0 ? { paddingLeft: level * 20 } : {}) }}
+		>
 			<Icon href={placeholderIcon} style={{ display: "inline" }} />
-			{children}
-		</ListItem>
+			<ListItem.Content>{children}</ListItem.Content>
+		</ListItem.Root>
 	);
 }
 

@@ -23,6 +23,14 @@ test("vertical", async ({ page }) => {
 	await expect(divider).toHaveAttribute("aria-orientation", "vertical");
 });
 
+test("presentational", async ({ page }) => {
+	await page.goto("/tests/divider?presentational=true");
+	const divider = page.getByTestId("divider");
+	expect(await divider.evaluate((e) => e.localName)).toBe("div");
+	await expect(divider).not.toHaveAttribute("role");
+	await expect(divider).not.toHaveAttribute("aria-orientation");
+});
+
 test("@visual", async ({ page }) => {
 	await page.goto("/tests/divider?visual=true");
 	await expect(page.locator("body")).toHaveScreenshot();

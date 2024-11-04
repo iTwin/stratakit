@@ -27,7 +27,12 @@ export default function Page() {
 					</ListItem.Root>
 					<ListItem.Root>
 						<Icon href={placeholderIcon} />
+						<ListItem.Content>Papaya</ListItem.Content>
+					</ListItem.Root>
+					<ListItem.Root>
+						<Icon href={placeholderIcon} />
 						<ListItem.Content>Tomato</ListItem.Content>
+						<Icon href={placeholderIcon} />
 					</ListItem.Root>
 				</>
 			) : (

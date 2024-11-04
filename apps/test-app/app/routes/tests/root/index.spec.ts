@@ -3,6 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 import { test, expect } from "@playwright/test";
+import AxeBuilder from "@axe-core/playwright";
 
 test("default", async ({ page }) => {
 	await page.goto("/tests/root", { waitUntil: "domcontentloaded" });
@@ -14,4 +15,14 @@ test("default", async ({ page }) => {
 	const popout = await popoutPromise;
 	await popout.waitForLoadState("domcontentloaded");
 	await expect(popout.locator("body")).toHaveScreenshot("popout.png");
+});
+
+test.describe("@a11y", () => {
+	test("Axe Page Scan", async ({ page }) => {
+		await page.goto("/tests/root");
+
+		const axe = await new AxeBuilder({ page });
+		const accessibilityScan = axe.analyze();
+		expect((await accessibilityScan).violations).toEqual([]);
+	});
 });

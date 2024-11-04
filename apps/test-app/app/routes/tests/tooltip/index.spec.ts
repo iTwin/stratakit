@@ -158,15 +158,10 @@ test.describe("@a11y", () => {
 	});
 
 	test("Axe Page Scan", async ({ page }) => {
-		await page.goto("/tests/anchor?visual=true");
+		await page.goto("/tests/tooltip");
 
-		const axe = await new AxeBuilder({ page }).disableRules([
-			"landmark-one-main",
-			"region",
-		]);
-
+		const axe = await new AxeBuilder({ page });
 		const accessibilityScan = axe.analyze();
-
 		expect((await accessibilityScan).violations).toEqual([]);
 	});
 });

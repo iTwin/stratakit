@@ -3,6 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 import { test, expect } from "@playwright/test";
+import AxeBuilder from "@axe-core/playwright";
 
 test("default", async ({ page }) => {
 	await page.goto("/tests/checkbox");
@@ -92,5 +93,15 @@ test.describe("@visual", () => {
 			"/tests/checkbox?visual=true&disabled=true&indeterminate=true",
 		);
 		await expect(page.locator("body")).toHaveScreenshot();
+	});
+});
+
+test.describe("@a11y", () => {
+	test("Axe Page Scan", async ({ page }) => {
+		await page.goto("/tests/checkbox");
+
+		const axe = await new AxeBuilder({ page });
+		const accessibilityScan = axe.analyze();
+		expect((await accessibilityScan).violations).toEqual([]);
 	});
 });

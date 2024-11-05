@@ -65,7 +65,7 @@ const TextInputRoot = React.forwardRef<
 		<TextInputRootContext.Provider value={true}>
 			<Ariakit.Role.div
 				{...props}
-				className={cx("🥝-text-input", "🥝-text-input-root", props.className)}
+				className={cx("🥝-text-input", props.className)}
 				ref={forwardedRef}
 			/>
 		</TextInputRootContext.Provider>

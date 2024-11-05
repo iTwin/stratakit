@@ -34,8 +34,6 @@
 		justify-content: flex-start;
 
 		min-block-size: var(--✨height);
-		padding-inline: var(--✨padding-inline);
-		padding-block: var(--✨padding-block);
 		border-radius: 4px;
 
 		background-color: var(--🌀text-input-state--default, var(--✨bg--default))
@@ -57,6 +55,52 @@
 		&:where(textarea) {
 			resize: vertical;
 			resize: block;
+		}
+
+		&:where(input) {
+			padding-block: var(--✨padding-block);
+			padding-inline: var(--✨padding-inline);
+		}
+
+		&:where(:not(input)) {
+			gap: 4px;
+			overflow: hidden;
+
+			&:has(input:not(:first-child)) {
+				padding-inline-start: var(--✨padding-inline);
+			}
+
+			&:has(input:not(:last-child)) {
+				padding-inline-end: var(--✨padding-inline);
+			}
+
+			&:has(input:focus) {
+				outline: 2px solid var(--kiwi-color-border-accent-strong);
+				outline-offset: 1px;
+			}
+
+			input {
+				flex-grow: 1;
+				min-inline-size: 1rem;
+				align-self: stretch;
+				border-width: 0;
+				background-color: transparent;
+				outline: unset;
+				padding-block: var(--✨padding-block);
+
+				&:where(:first-child) {
+					padding-inline-start: var(--✨padding-inline);
+				}
+
+				&:where(:last-child) {
+					padding-inline-end: var(--✨padding-inline);
+				}
+			}
+
+			svg {
+				flex-shrink: 0;
+				max-inline-size: initial;
+			}
 		}
 	}
 
@@ -80,52 +124,5 @@
 		--🌀text-input-state--default: var(--🌀text-input-state,);
 		--🌀text-input-state--hover: var(--🌀text-input-state,);
 		--🌀text-input-state--disabled: var(--🌀text-input-state,);
-	}
-}
-
-.🥝-text-input-root {
-	@layer base {
-		gap: 4px;
-		padding-block: 0;
-		overflow: hidden;
-
-		&:has(input:first-child) {
-			padding-inline-start: 0;
-		}
-
-		&:has(input:last-child) {
-			padding-inline-end: 0;
-		}
-
-		&:has(input:focus) {
-			outline: 2px solid var(--kiwi-color-border-accent-strong);
-			outline-offset: 1px;
-		}
-
-		input {
-			--✨padding-inline: 8px;
-			--✨padding-block: 4px;
-
-			flex-grow: 1;
-			min-inline-size: 1rem;
-			align-self: stretch;
-			border-width: 0;
-			background-color: transparent;
-			outline: unset;
-			padding-block: var(--✨padding-block);
-
-			&:where(:first-child) {
-				padding-inline-start: var(--✨padding-inline);
-			}
-
-			&:where(:last-child) {
-				padding-inline-end: var(--✨padding-inline);
-			}
-		}
-
-		svg {
-			flex-shrink: 0;
-			max-inline-size: initial;
-		}
 	}
 }

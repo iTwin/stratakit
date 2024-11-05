@@ -11,7 +11,7 @@ import { useFieldId } from "./Field.js";
 
 type BaseInputProps = Ariakit.FocusableProps<"input">;
 
-interface TextInputProps extends Omit<BaseInputProps, "children" | "type"> {
+interface TextBoxInputProps extends Omit<BaseInputProps, "children" | "type"> {
 	/** Input is a [void element](https://developer.mozilla.org/en-US/docs/Glossary/Void_element) and no content is permitted. */
 	children?: never;
 	/**
@@ -31,66 +31,66 @@ interface TextInputProps extends Omit<BaseInputProps, "children" | "type"> {
  *
  * Example usage:
  * ```tsx
- * <TextInput.Input defaultValue="Hello" />
+ * <TextBox.Input defaultValue="Hello" />
  * ```
  *
- * To add additional decorations, see `TextInput.Root` component.
+ * To add additional decorations, see `TextBox.Root` component.
  */
-const TextInput = React.forwardRef<React.ElementRef<"input">, TextInputProps>(
-	(props, forwardedRef) => {
-		const fieldId = useFieldId();
-		const isInRootContext = React.useContext(TextInputRootContext);
-		return (
-			<Ariakit.Role.input
-				id={fieldId}
-				{...props}
-				className={cx(!isInRootContext && "🥝-text-input", props.className)}
-				render={
-					<Ariakit.Focusable
-						accessibleWhenDisabled
-						render={props.render || <input />}
-					/>
-				}
-				ref={forwardedRef}
-			/>
-		);
-	},
-);
+const TextBoxInput = React.forwardRef<
+	React.ElementRef<"input">,
+	TextBoxInputProps
+>((props, forwardedRef) => {
+	const fieldId = useFieldId();
+	const isInRootContext = React.useContext(TextBoxRootContext);
+	return (
+		<Ariakit.Role.input
+			id={fieldId}
+			{...props}
+			className={cx(!isInRootContext && "🥝-text-input", props.className)}
+			render={
+				<Ariakit.Focusable
+					accessibleWhenDisabled
+					render={props.render || <input />}
+				/>
+			}
+			ref={forwardedRef}
+		/>
+	);
+});
 
 // ----------------------------------------------------------------------------
 
-interface TextInputRootProps extends Ariakit.RoleProps<"div"> {}
+interface TextBoxRootProps extends Ariakit.RoleProps<"div"> {}
 
 /**
  * Root component allows adding additional decorations to text based inputs.
  *
  * Example usage to add an end icon:
  * ```tsx
- * <TextInput.Root>
- * 	<TextInput.Input defaultValue="Hello" />
+ * <TextBox.Root>
+ * 	<TextBox.Input defaultValue="Hello" />
  * 	<Icon href={...} />
- * </TextInput.Root>
+ * </TextBox.Root>
  * ```
  */
-const TextInputRoot = React.forwardRef<
-	React.ElementRef<"div">,
-	TextInputRootProps
->((props, forwardedRef) => {
-	return (
-		<TextInputRootContext.Provider value={true}>
-			<Ariakit.Role.div
-				{...props}
-				className={cx("🥝-text-input", props.className)}
-				ref={forwardedRef}
-			/>
-		</TextInputRootContext.Provider>
-	);
-});
+const TextBoxRoot = React.forwardRef<React.ElementRef<"div">, TextBoxRootProps>(
+	(props, forwardedRef) => {
+		return (
+			<TextBoxRootContext.Provider value={true}>
+				<Ariakit.Role.div
+					{...props}
+					className={cx("🥝-text-input", props.className)}
+					ref={forwardedRef}
+				/>
+			</TextBoxRootContext.Provider>
+		);
+	},
+);
 
 // ----------------------------------------------------------------------------
 
-const TextInputRootContext = React.createContext(false);
+const TextBoxRootContext = React.createContext(false);
 
 // ----------------------------------------------------------------------------
 
-export { TextInput as Input, TextInputRoot as Root };
+export { TextBoxInput as Input, TextBoxRoot as Root };

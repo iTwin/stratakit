@@ -87,7 +87,7 @@ export const Tooltip = React.forwardRef<
 				setOpen={React.useCallback(
 					(open: boolean) => {
 						setOpen(open);
-						wrapper?.togglePopover(open);
+						wrapper?.togglePopover?.(open);
 					},
 					[setOpen, wrapper],
 				)}
@@ -101,12 +101,13 @@ export const Tooltip = React.forwardRef<
 						setWrapper(el?.parentElement);
 					}}
 					id={id}
+					style={{ zIndex: supportsPopover ? undefined : 9999, ...props.style }}
 					wrapperProps={
 						{
 							popover: "manual",
 						} as React.ComponentProps<"div">
 					}
-					portal={false}
+					portal={!supportsPopover}
 				>
 					{content}
 				</Ariakit.Tooltip>
@@ -114,3 +115,7 @@ export const Tooltip = React.forwardRef<
 		</>
 	);
 });
+
+const isBrowser = typeof document !== "undefined";
+
+const supportsPopover = isBrowser && "popover" in HTMLElement.prototype;

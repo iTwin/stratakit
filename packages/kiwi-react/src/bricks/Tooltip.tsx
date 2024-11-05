@@ -5,8 +5,11 @@
 import * as React from "react";
 import cx from "classnames";
 import * as Ariakit from "@ariakit/react";
+import { useControlledState } from "./~hooks.js";
 
-interface TooltipProps extends Omit<Ariakit.TooltipProps, "store" | "content"> {
+interface TooltipProps
+	extends Omit<Ariakit.TooltipProps, "store" | "content">,
+		Pick<Ariakit.TooltipProviderProps, "defaultOpen" | "setOpen"> {
 	/**
 	 * The content to be displayed inside the tooltip.
 	 */
@@ -46,15 +49,28 @@ interface TooltipProps extends Omit<Ariakit.TooltipProps, "store" | "content"> {
 export const Tooltip = React.forwardRef<
 	React.ElementRef<typeof Ariakit.Tooltip>,
 	TooltipProps
->((props, forwardedRef) => {
+>((props /* forwardedRef */) => {
 	const {
 		content,
 		children,
 		className,
 		type = "description",
 		id = React.useId(),
+		defaultOpen: defaultOpenProp,
+		open: openProp,
+		setOpen: setOpenProp,
 		...rest
 	} = props;
+
+	const [wrapper, setWrapper] = React.useState<HTMLElement | undefined | null>(
+		undefined,
+	);
+
+	const [open, setOpen] = useControlledState(
+		defaultOpenProp,
+		openProp,
+		setOpenProp,
+	);
 
 	// Determine the correct aria attribute dynamically
 	const ariaProps =
@@ -66,14 +82,31 @@ export const Tooltip = React.forwardRef<
 
 	return (
 		<>
-			<Ariakit.TooltipProvider>
+			<Ariakit.TooltipProvider
+				open={open}
+				setOpen={React.useCallback(
+					(open: boolean) => {
+						setOpen(open);
+						wrapper?.togglePopover(open);
+					},
+					[setOpen, wrapper],
+				)}
+			>
 				<Ariakit.TooltipAnchor render={children} {...ariaProps} />
 				<Ariakit.Tooltip
 					unmountOnHide={type === "none"}
 					{...rest}
 					className={cx("🥝-tooltip", className)}
-					ref={forwardedRef}
+					ref={(el) => {
+						setWrapper(el?.parentElement);
+					}}
 					id={id}
+					wrapperProps={
+						{
+							popover: "manual",
+						} as React.ComponentProps<"div">
+					}
+					portal={false}
 				>
 					{content}
 				</Ariakit.Tooltip>

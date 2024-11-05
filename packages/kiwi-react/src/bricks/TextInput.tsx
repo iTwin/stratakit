@@ -19,7 +19,7 @@ interface TextInputProps extends Omit<BaseInputProps, "children" | "type"> {
 	 * @default "text"
 	 */
 	type?: Extract<
-		React.HTMLInputTypeAttribute,
+		BaseInputProps["type"],
 		"text" | "email" | "password" | "search" | "tel" | "url" | "number"
 	>;
 }

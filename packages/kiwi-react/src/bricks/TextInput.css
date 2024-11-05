@@ -83,57 +83,49 @@
 	}
 }
 
-.🥝-text-input:is(.🥝-in-root) {
+.🥝-text-input-root {
 	@layer base {
-		flex: 1;
+		gap: 4px;
+		padding-block: 0;
+		overflow: hidden;
 
-		background-color: transparent;
-		min-inline-size: 0;
-		border-width: 0;
-		box-shadow: unset;
-		outline: unset;
-
-		&:where(:not(:first-child)) {
+		&:has(input:first-child) {
 			padding-inline-start: 0;
 		}
 
-		&:where(:not(:last-child)) {
+		&:has(input:last-child) {
 			padding-inline-end: 0;
 		}
-	}
-}
 
-.🥝-text-input-root {
-	@layer base {
-		display: inline-flex;
-		gap: 4px;
-		padding-block: 0;
-		box-sizing: border-box;
-		border-width: 0;
-		position: relative;
-
-		&::before {
-			content: "";
-			position: absolute;
-			pointer-events: none;
-			inset: 0;
-			border-color: inherit;
-			border-style: inherit;
-			border-radius: inherit;
-			border-width: 1px;
-		}
-
-		&:has(.🥝-text-input:focus) {
+		&:has(input:focus) {
 			outline: 2px solid var(--kiwi-color-border-accent-strong);
 			outline-offset: 1px;
 		}
 
-		&:has(.🥝-text-input:first-child) {
-			padding-inline-start: 0;
+		input {
+			--✨padding-inline: 8px;
+			--✨padding-block: 4px;
+
+			flex-grow: 1;
+			min-inline-size: 1rem;
+			align-self: stretch;
+			border-width: 0;
+			background-color: transparent;
+			outline: unset;
+			padding-block: var(--✨padding-block);
+
+			&:where(:first-child) {
+				padding-inline-start: var(--✨padding-inline);
+			}
+
+			&:where(:last-child) {
+				padding-inline-end: var(--✨padding-inline);
+			}
 		}
 
-		&:has(.🥝-text-input:last-child) {
-			padding-inline-end: 0;
+		svg {
+			flex-shrink: 0;
+			max-inline-size: initial;
 		}
 	}
 }

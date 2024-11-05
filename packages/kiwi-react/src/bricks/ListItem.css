@@ -37,6 +37,10 @@
 		color: var(--🌀list-item-state--default, unset) var(--🌀list-item-state--hover, unset)
 			var(--🌀list-item-state--pressed, unset)
 			var(--🌀list-item-state--disabled, var(--✨bg--disabled));
+		--🥝icon-color: var(--🌀list-item-state--default, var(--kiwi-color-icon-neutral-base))
+			var(--🌀list-item-state--hover, var(--kiwi-color-icon-neutral-hover))
+			var(--🌀list-item-state--pressed, var(--kiwi-color-icon-neutral-hover))
+			var(--🌀list-item-state--disabled, var(--kiwi-color-icon-neutral-disabled));
 	}
 
 	@layer states {
@@ -63,4 +67,8 @@
 		--🌀list-item-state--pressed: var(--🌀list-item-state,);
 		--🌀list-item-state--disabled: var(--🌀list-item-state,);
 	}
+}
+
+.🥝-list-item-content {
+	flex-grow: 1;
 }

@@ -61,7 +61,7 @@
 		position: relative;
 		user-select: none;
 		white-space: nowrap;
-		-webkit-tap-highlight-color: var(--🥝color--hover);
+		-webkit-tap-highlight-color: var(--🥝bg--hover);
 		transition: background-color 150ms ease-out, color 150ms ease-out;
 		cursor: pointer;
 

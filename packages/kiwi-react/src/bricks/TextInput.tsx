@@ -10,7 +10,7 @@ import { useFieldId } from "./Field.js";
 type BaseInputProps = Ariakit.FocusableProps<"input">;
 
 interface TextInputProps extends Omit<BaseInputProps, "children" | "type"> {
-	/** Input is a [void element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#technical_summary) and no content is permitted. */
+	/** Input is a [void element](https://developer.mozilla.org/en-US/docs/Glossary/Void_element) and no content is permitted. */
 	children?: never;
 	/**
 	 * Describes a text based [input type](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#input_types)

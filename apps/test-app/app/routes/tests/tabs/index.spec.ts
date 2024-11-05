@@ -102,3 +102,8 @@ test("defaultSelectedId", async ({ page }) => {
 	await expect(tab1Panel).toBeVisible();
 	await expect(tab2Panel).not.toBeVisible();
 });
+
+test("@visual", async ({ page }) => {
+	await page.goto("/tests/tabs?visual=true");
+	await expect(page.locator("body")).toHaveScreenshot();
+});

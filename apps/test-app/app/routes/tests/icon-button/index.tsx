@@ -39,6 +39,7 @@ function VisualTest() {
 	return (
 		<div style={{ display: "flex", gap: 4 }}>
 			<IconButton label="Click me" icon={placeholderIcon} />
+			<IconButton variant="outline" label="Click me" icon={placeholderIcon} />
 			<IconButton variant="ghost" label="Click me" icon={placeholderIcon} />
 			<IconButton
 				variant="ghost"

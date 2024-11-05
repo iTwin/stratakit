@@ -12,7 +12,7 @@ import { useFieldId } from "./Field.js";
 interface TextInputProps extends Ariakit.FocusableProps<"input"> {}
 
 /**
- * Text input component that allows users to enter text based values.
+ * Input component that allows users to enter text based values.
  *
  * Example usage:
  * ```tsx
@@ -47,13 +47,13 @@ const TextInput = React.forwardRef<React.ElementRef<"input">, TextInputProps>(
 interface TextInputRootProps extends Ariakit.RoleProps<"div"> {}
 
 /**
- * Text input root component allows adding additional decorations to text based inputs.
+ * Root component allows adding additional decorations to text based inputs.
  *
  * Example usage to add an end icon:
  * ```tsx
  * <TextInput.Root>
- * 	<Icon href={...} />
  * 	<TextInput.Input defaultValue="Hello" />
+ * 	<Icon href={...} />
  * </TextInput.Root>
  * ```
  */

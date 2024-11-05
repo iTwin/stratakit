@@ -59,10 +59,13 @@ test.describe("@visual", () => {
 
 test.describe("@a11y", () => {
 	test("Axe Page Scan", async ({ page }) => {
-		await page.goto("/tests/field");
+		const axe = new AxeBuilder({ page });
+		const controls = ["input", "textarea", "radio", "checkbox", "switch"];
 
-		const axe = await new AxeBuilder({ page });
-		const accessibilityScan = axe.analyze();
-		expect((await accessibilityScan).violations).toEqual([]);
+		for (const control of controls) {
+			await page.goto(`/tests/field?control=${control}`);
+			const accessibilityScan = await axe.analyze();
+			expect(accessibilityScan.violations).toEqual([]);
+		}
 	});
 });

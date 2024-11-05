@@ -7,8 +7,9 @@ import * as Ariakit from "@ariakit/react";
 import cx from "classnames";
 import { useFieldId } from "./Field.js";
 
-interface TextInputProps
-	extends Omit<Ariakit.FocusableProps<"input">, "children" | "type"> {
+type BaseInputProps = Ariakit.FocusableProps<"input">;
+
+interface TextInputProps extends Omit<BaseInputProps, "children" | "type"> {
 	/** Input is a [void element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#technical_summary) and no content is permitted. */
 	children?: never;
 	/**

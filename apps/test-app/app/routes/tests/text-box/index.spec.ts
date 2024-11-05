@@ -15,7 +15,7 @@ for (const type of ["input", "composition"]) {
 	}
 
 	test(`default ${type}`, async ({ page }) => {
-		await page.goto(toUrl("/tests/text-input"));
+		await page.goto(toUrl("/tests/text-box"));
 
 		const input = page.getByRole("textbox");
 		const label = page.getByText("Fruit");
@@ -30,7 +30,7 @@ for (const type of ["input", "composition"]) {
 	});
 
 	test(`disabled ${type}`, async ({ page }) => {
-		await page.goto(toUrl("/tests/text-input?disabled"));
+		await page.goto(toUrl("/tests/text-box?disabled"));
 
 		const input = page.locator("input");
 		await expect(input).toHaveAccessibleName("Fruit");
@@ -47,12 +47,12 @@ for (const type of ["input", "composition"]) {
 
 test.describe("@visual", () => {
 	test("default", async ({ page }) => {
-		await page.goto("/tests/text-input?visual");
+		await page.goto("/tests/text-box?visual");
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
 
 	test("composition outline", async ({ page }) => {
-		await page.goto("/tests/text-input?composition");
+		await page.goto("/tests/text-box?composition");
 		const input = page.getByRole("textbox");
 		await input.click();
 		await expect(page.locator("body")).toHaveScreenshot();

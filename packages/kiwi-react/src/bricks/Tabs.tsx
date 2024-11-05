@@ -52,10 +52,9 @@ const TabList = React.forwardRef<
 	const { tone = "neutral", ...rest } = props;
 	return (
 		<Ariakit.TabList
-			{...props}
-			className={cx("🥝-tab-list", props.className)}
 			data-kiwi-tone={tone}
 			{...rest}
+			className={cx("🥝-tab-list", props.className)}
 			ref={forwardedRef}
 		/>
 	);

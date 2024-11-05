@@ -20,7 +20,7 @@ interface TextInputProps extends Omit<BaseInputProps, "children" | "type"> {
 	 */
 	type?: Extract<
 		BaseInputProps["type"],
-		"text" | "email" | "password" | "search" | "tel" | "url" | "number"
+		"text" | "email" | "password" | "search" | "tel" | "url" | "number" | "date"
 	>;
 }
 

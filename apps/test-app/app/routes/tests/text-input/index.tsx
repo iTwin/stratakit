@@ -45,7 +45,7 @@ export default function Page() {
 	return (
 		<>
 			<Label htmlFor={id}>Fruit</Label>
-			<TextInput id={id} {...inputParams} />
+			<TextInput.Input id={id} {...inputParams} />
 		</>
 	);
 }
@@ -68,7 +68,7 @@ function CompositionTest() {
 function VisualTest() {
 	return (
 		<div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-			<TextInput defaultValue="Value" />
+			<TextInput.Input defaultValue="Value" />
 			<TextInput.Root>
 				<TextInput.Input defaultValue="Value" />
 			</TextInput.Root>

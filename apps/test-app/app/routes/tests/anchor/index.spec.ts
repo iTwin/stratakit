@@ -25,7 +25,7 @@ test("disabled", async ({ page }) => {
 	await page.goto("/tests/anchor?disabled=true");
 
 	const anchor = page.getByRole("link");
-	const main = page.getByRole("main");
+	const section = page.getByRole("section");
 
 	await expect(anchor).toHaveAccessibleName("Hello");
 	await expect(anchor).toBeDisabled();
@@ -35,9 +35,9 @@ test("disabled", async ({ page }) => {
 
 	// disabled anchor should not navigate
 	await page.keyboard.press("Enter");
-	await expect(main).not.toBeFocused();
+	await expect(section).not.toBeFocused();
 	await anchor.click({ force: true });
-	await expect(main).not.toBeFocused();
+	await expect(section).not.toBeFocused();
 	await expect(anchor).toBeFocused();
 });
 

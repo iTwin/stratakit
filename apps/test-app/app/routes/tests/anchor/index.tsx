@@ -21,9 +21,9 @@ export default function Page() {
 				Hello
 			</Anchor>
 
-			<section id="main" tabIndex={-1}>
+			<article id="main" tabIndex={-1}>
 				Main content
-			</section>
+			</article>
 		</>
 	);
 }

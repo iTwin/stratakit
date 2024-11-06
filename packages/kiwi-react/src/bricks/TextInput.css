@@ -52,17 +52,17 @@
 			opacity: 1;
 		}
 
+		&:where(input, textarea) {
+			padding-block: var(--✨padding-block);
+			padding-inline: var(--✨padding-inline);
+		}
+
 		&:where(textarea) {
 			resize: vertical;
 			resize: block;
 		}
 
-		&:where(input) {
-			padding-block: var(--✨padding-block);
-			padding-inline: var(--✨padding-inline);
-		}
-
-		&:where(:not(input)) {
+		&:not(:where(input, textarea)) {
 			gap: 4px;
 			overflow: hidden;
 

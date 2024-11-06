@@ -17,7 +17,6 @@ export { Label } from "./Label.js";
 export { Radio } from "./Radio.js";
 export { Switch } from "./Switch.js";
 export * as Tabs from "./Tabs.js";
-export { Textarea } from "./Textarea.js";
 export * as TextBox from "./TextBox.js";
 export { Tooltip } from "./Tooltip.js";
 export { VisuallyHidden } from "./VisuallyHidden.js";

@@ -6,6 +6,7 @@ import * as React from "react";
 import * as Ariakit from "@ariakit/react";
 import cx from "classnames";
 import { useFieldId } from "./Field.js";
+import { Textarea } from "./Textarea.js";
 
 // ----------------------------------------------------------------------------
 
@@ -93,4 +94,4 @@ const TextBoxRootContext = React.createContext(false);
 
 // ----------------------------------------------------------------------------
 
-export { TextBoxInput as Input, TextBoxRoot as Root };
+export { TextBoxInput as Input, TextBoxRoot as Root, Textarea };

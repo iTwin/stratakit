@@ -160,6 +160,10 @@ test.describe("@a11y", () => {
 	test("Axe Page Scan", async ({ page }) => {
 		await page.goto("/tests/tooltip");
 
+		const tooltip = page.getByRole("tooltip");
+		await page.keyboard.press("Tab");
+		await expect(tooltip).toBeVisible();
+
 		const axe = new AxeBuilder({ page });
 		const accessibilityScan = await axe.analyze();
 		expect(accessibilityScan.violations).toEqual([]);

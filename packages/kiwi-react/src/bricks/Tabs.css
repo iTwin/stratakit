@@ -51,7 +51,6 @@
 		position: relative;
 		user-select: none;
 		white-space: nowrap;
-		-webkit-tap-highlight-color: var(--✨bg--hover-neutral);
 		transition: background-color 150ms ease-out, color 150ms ease-out;
 		cursor: pointer;
 
@@ -79,6 +78,7 @@
 				var(--🌀tab-state--hover, var(--✨color--hover-neutral))
 				var(--🌀tab-state--selected, var(--✨color--selected-neutral))
 				var(--🌀tab-state--disabled, var(--✨color--disabled));
+			-webkit-tap-highlight-color: var(--✨bg--hover-neutral);
 		}
 
 		:where(.🥝-tab-list[data-kiwi-tone="accent"]) & {
@@ -91,6 +91,7 @@
 				var(--🌀tab-state--hover, var(--✨color--hover-accent))
 				var(--🌀tab-state--selected, var(--✨color--selected-accent))
 				var(--🌀tab-state--disabled, var(--✨color--disabled));
+			-webkit-tap-highlight-color: var(--✨bg--hover-accent);
 		}
 	}
 

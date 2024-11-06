@@ -22,7 +22,6 @@
 	--✨color--disabled: var(--kiwi-color-text-neutral-disabled);
 	--✨height: 1.5rem;
 	--✨padding-inline: 8px;
-	--✨padding-block: 4px;
 
 	@layer base {
 		appearance: none;
@@ -35,7 +34,6 @@
 
 		min-block-size: var(--✨height);
 		padding-inline: var(--✨padding-inline);
-		padding-block: var(--✨padding-block);
 		border-radius: 4px;
 
 		background-color: var(--🌀text-input-state--default, var(--✨bg--default))

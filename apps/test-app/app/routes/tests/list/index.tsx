@@ -5,6 +5,7 @@
 import * as ListItem from "@itwin/kiwi-react-internal/src/bricks/ListItem";
 import { Icon } from "@itwin/kiwi-react-internal/src/bricks/Icon";
 import { useSearchParams } from "@remix-run/react";
+import styles from "./index.module.css";
 
 export const handle = { title: "List" };
 
@@ -18,7 +19,12 @@ export default function Page() {
 
 	return (
 		// biome-ignore lint/a11y/useSemanticElements: `div` is used as underlying element for `ListItem`
-		<div role="list">
+		<div
+			role="list"
+			className={
+				searchParams.has("active-state") ? styles.forceListStateActive : ""
+			}
+		>
 			{searchParams.has("with-icons") ? (
 				<>
 					<ListItem.Root>

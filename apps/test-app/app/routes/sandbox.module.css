@@ -5,7 +5,7 @@
 .appLayout {
 	block-size: 100vh;
 	--_panel-min-size: 256px;
-	--_panel-max-size: 30%;
+	--_panel-max-size: auto;
 	--_panel-size: minmax(var(--_panel-min-size), var(--_panel-max-size));
 
 	display: grid;
@@ -41,7 +41,6 @@
 	padding-block: 12px;
 	background-color: var(--kiwi-color-bg-surface-primary);
 	min-block-size: 0;
-	min-inline-size: 256px;
 
 	display: flex;
 	flex-direction: column;

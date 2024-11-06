@@ -40,14 +40,12 @@ const dismissIcon = new URL("@itwin/kiwi-icons/dismiss.svg", import.meta.url)
 const leftPanelLabelId = "left-panel";
 
 export default function Page() {
-	const minSize = { px: 256 };
-	const maxSize = { pct: 30 };
 	const { splitterProps, panelProps, panelMinSize, panelMaxSize } = useSplitter<
 		HTMLDivElement,
 		HTMLDivElement
 	>({
-		minSize,
-		maxSize,
+		minSize: { px: 256 },
+		maxSize: { pct: 30 },
 		labelledby: leftPanelLabelId,
 	});
 	return (
@@ -111,15 +109,15 @@ export default function Page() {
 	);
 }
 
+function clamp(value: number, min: number, max: number) {
+	return Math.min(Math.max(value, min), max);
+}
+
 interface UseSplitterArgs {
 	onCollapse?: () => void;
 	minSize?: { px: number };
 	maxSize?: { pct: number };
 	labelledby?: string;
-}
-
-function clamp(value: number, min: number, max: number) {
-	return Math.min(Math.max(value, min), max);
 }
 
 // https://www.w3.org/WAI/ARIA/apg/patterns/windowsplitter/
@@ -135,9 +133,9 @@ function useSplitter<TSplitter extends Element, TPanel extends Element>(
 	const [containerSize, setContainerSize] = React.useState<number | undefined>(
 		undefined,
 	);
-	const [paneSize, setPaneSize] = React.useState<
-		"smallest" | "largest" | undefined
-	>(undefined);
+	const [mode, setMode] = React.useState<"smallest" | "largest" | undefined>(
+		undefined,
+	);
 
 	const [preferredSize, setPreferredSize] = React.useState<number | undefined>(
 		undefined,
@@ -154,8 +152,8 @@ function useSplitter<TSplitter extends Element, TPanel extends Element>(
 		return clamp(maxSize.pct, 0, 100);
 	}, [maxSize, containerSize]);
 	const value = React.useMemo(() => {
-		if (paneSize === "smallest") return minValue ?? 0;
-		if (paneSize === "largest") return maxValue ?? 0;
+		if (mode === "smallest") return minValue ?? 0;
+		if (mode === "largest") return maxValue ?? 0;
 		if (!panelSize) return undefined;
 		if (!containerSize) return undefined;
 		return clamp(
@@ -163,7 +161,7 @@ function useSplitter<TSplitter extends Element, TPanel extends Element>(
 			minValue ?? 0,
 			maxValue ?? 0,
 		);
-	}, [panelSize, containerSize, minValue, maxValue, paneSize]);
+	}, [panelSize, containerSize, minValue, maxValue, mode]);
 
 	React.useEffect(() => {
 		const panel = panelRef.current;
@@ -190,7 +188,7 @@ function useSplitter<TSplitter extends Element, TPanel extends Element>(
 
 		const panelRect = panel.getBoundingClientRect();
 		setPreferredSize(panelRect.width + moveBy);
-		setPaneSize(undefined);
+		setMode(undefined);
 	}, []);
 	const onKeyMove = React.useCallback(
 		(direction: 1 | -1) => {
@@ -228,10 +226,10 @@ function useSplitter<TSplitter extends Element, TPanel extends Element>(
 						onCollapse?.();
 						break;
 					case "Home":
-						setPaneSize("smallest");
+						setMode("smallest");
 						break;
 					case "End":
-						setPaneSize("largest");
+						setMode("largest");
 						break;
 					// case "F6": // TODO: cycle through window panes
 				}
@@ -288,11 +286,11 @@ interface UseMoveableArgs {
 function useMoveable<T extends Element>(args?: UseMoveableArgs) {
 	const { onMove, onMoveEnd, onKeyMove } = args ?? {};
 	const ref = React.useRef<T>(null);
-	const relativePosition = React.useRef<number | undefined>(undefined);
+	const relativePositionRef = React.useRef<number | undefined>(undefined);
 	React.useEffect(() => {
 		const onPointerUp = () => {
-			if (!relativePosition.current) return;
-			relativePosition.current = undefined;
+			if (!relativePositionRef.current) return;
+			relativePositionRef.current = undefined;
 			onMoveEnd?.();
 		};
 		document.addEventListener("pointerup", onPointerUp);
@@ -302,12 +300,13 @@ function useMoveable<T extends Element>(args?: UseMoveableArgs) {
 	}, [onMoveEnd]);
 	React.useEffect(() => {
 		const onPointerMove = (e: PointerEvent) => {
-			if (relativePosition.current === undefined) return;
+			const relativePosition = relativePositionRef.current;
+			if (relativePosition === undefined) return;
 			const el = ref.current;
 			if (!el) return;
 
 			const rect = el.getBoundingClientRect();
-			const moveBy = e.clientX - relativePosition.current - rect.left;
+			const moveBy = e.clientX - relativePosition - rect.left;
 			onMove?.(moveBy);
 		};
 		document.addEventListener("pointermove", onPointerMove);
@@ -323,7 +322,7 @@ function useMoveable<T extends Element>(args?: UseMoveableArgs) {
 
 				const rect = el.getBoundingClientRect();
 				const relativeX = e.clientX - rect.left;
-				relativePosition.current = relativeX;
+				relativePositionRef.current = relativeX;
 			},
 			onKeyDown: (e) => {
 				switch (e.key) {

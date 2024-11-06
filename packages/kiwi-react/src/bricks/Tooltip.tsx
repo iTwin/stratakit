@@ -49,7 +49,7 @@ interface TooltipProps
 export const Tooltip = React.forwardRef<
 	React.ElementRef<typeof Ariakit.Tooltip>,
 	TooltipProps
->((props /* forwardedRef */) => {
+>((props, forwardedRef) => {
 	const {
 		content,
 		children,
@@ -62,15 +62,14 @@ export const Tooltip = React.forwardRef<
 		...rest
 	} = props;
 
-	const [wrapper, setWrapper] = React.useState<HTMLElement | undefined | null>(
-		undefined,
-	);
-
 	const [open, setOpen] = useControlledState(
 		defaultOpenProp,
 		openProp,
 		setOpenProp,
 	);
+
+	const store = Ariakit.useTooltipStore();
+	const wrapper = Ariakit.useStoreState(store, (state) => state.popoverElement);
 
 	// Determine the correct aria attribute dynamically
 	const ariaProps =
@@ -83,6 +82,7 @@ export const Tooltip = React.forwardRef<
 	return (
 		<>
 			<Ariakit.TooltipProvider
+				store={store}
 				open={open}
 				setOpen={React.useCallback(
 					(open: boolean) => {
@@ -97,16 +97,10 @@ export const Tooltip = React.forwardRef<
 					unmountOnHide={type === "none"}
 					{...rest}
 					className={cx("🥝-tooltip", className)}
-					ref={(el) => {
-						setWrapper(el?.parentElement);
-					}}
+					ref={forwardedRef}
 					id={id}
 					style={{ zIndex: supportsPopover ? undefined : 9999, ...props.style }}
-					wrapperProps={
-						{
-							popover: "manual",
-						} as React.ComponentProps<"div">
-					}
+					wrapperProps={{ popover: "manual" } as React.ComponentProps<"div">}
 					portal={!supportsPopover}
 				>
 					{content}

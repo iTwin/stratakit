@@ -243,8 +243,18 @@ function useSplitter<TSplitter extends Element, TPanel extends Element>(
 			"aria-controls": id,
 			"aria-labelledby": labelledby,
 			"aria-label": labelledby === undefined ? "Resize panel" : undefined,
+			"data-resizing": preferredSize === undefined ? undefined : "true",
 		};
-	}, [moveableProps, value, minValue, maxValue, id, labelledby, onCollapse]);
+	}, [
+		moveableProps,
+		value,
+		minValue,
+		maxValue,
+		id,
+		labelledby,
+		onCollapse,
+		preferredSize,
+	]);
 	const panelProps = React.useMemo<
 		Partial<React.HTMLAttributes<TPanel>>
 	>(() => {

@@ -124,12 +124,26 @@
 
 .splitter {
 	position: absolute;
-	right: -5px;
+	right: 0;
 	top: 0;
-	width: 10px;
 	user-select: none;
+	background-color: transparent;
 
 	&[aria-orientation="vertical"] {
 		cursor: ew-resize;
+	}
+
+	&:not(:focus-visible) {
+		&:where(:hover, [data-resizing="true"]) {
+			background-color: var(--kiwi-color-border-accent-strong);
+		}
+	}
+
+	&::before {
+		content: "";
+		position: absolute;
+		left: -12px;
+		inline-size: 24px;
+		block-size: 100%;
 	}
 }

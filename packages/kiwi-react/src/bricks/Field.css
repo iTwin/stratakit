@@ -10,7 +10,7 @@
 		justify-content: start;
 		grid-template-columns: auto auto;
 
-		&:has(.🥝-text-input) {
+		&:has(.🥝-text-box) {
 			grid-template-columns: auto;
 		}
 	}

@@ -2,7 +2,7 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-.🥝-text-input {
+.🥝-text-box {
 	--✨bg--default: var(--kiwi-color-bg-surface-primary);
 	--✨bg--hover: color-mix(
 		in oklch,
@@ -36,12 +36,12 @@
 		min-block-size: var(--✨height);
 		border-radius: 4px;
 
-		background-color: var(--🌀text-input-state--default, var(--✨bg--default))
-			var(--🌀text-input-state--hover, var(--✨bg--hover))
-			var(--🌀text-input-state--disabled, var(--✨bg--disabled));
-		border-color: var(--🌀text-input-state--default, var(--✨border--default))
-			var(--🌀text-input-state--hover, var(--✨border--hover))
-			var(--🌀text-input-state--disabled, var(--✨border--disabled));
+		background-color: var(--🌀text-box-state--default, var(--✨bg--default))
+			var(--🌀text-box-state--hover, var(--✨bg--hover))
+			var(--🌀text-box-state--disabled, var(--✨bg--disabled));
+		border-color: var(--🌀text-box-state--default, var(--✨border--default))
+			var(--🌀text-box-state--hover, var(--✨border--hover))
+			var(--🌀text-box-state--disabled, var(--✨border--disabled));
 		box-shadow: 0px 1px 2px 0px #00000029 inset, 0px 2px 4px 0px #00000029 inset;
 		color: var(--✨color--default);
 		transition: all 150ms ease-out;
@@ -107,12 +107,12 @@
 	@layer states {
 		@media (any-hover: hover) {
 			&:where(:hover) {
-				--🌀text-input-state: var(--🌀text-input-state--hover);
+				--🌀text-box-state: var(--🌀text-box-state--hover);
 			}
 		}
 
 		&:where(:disabled) {
-			--🌀text-input-state: var(--🌀text-input-state--disabled);
+			--🌀text-box-state: var(--🌀text-box-state--disabled);
 			color: var(--✨color--disabled);
 			cursor: not-allowed;
 		}
@@ -120,9 +120,9 @@
 
 	@layer base.🌀 {
 		/* Cyclic toggles for default/hover/active/disabled states. See https://kizu.dev/cyclic-toggles/ */
-		--🌀text-input-state: var(--🌀text-input-state--default);
-		--🌀text-input-state--default: var(--🌀text-input-state,);
-		--🌀text-input-state--hover: var(--🌀text-input-state,);
-		--🌀text-input-state--disabled: var(--🌀text-input-state,);
+		--🌀text-box-state: var(--🌀text-box-state--default);
+		--🌀text-box-state--default: var(--🌀text-box-state,);
+		--🌀text-box-state--hover: var(--🌀text-box-state,);
+		--🌀text-box-state--disabled: var(--🌀text-box-state,);
 	}
 }

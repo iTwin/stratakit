@@ -46,7 +46,7 @@ const TextBoxInput = React.forwardRef<
 		<Ariakit.Role.input
 			id={fieldId}
 			{...props}
-			className={cx(!isInRootContext && "🥝-text-input", props.className)}
+			className={cx(!isInRootContext && "🥝-text-box", props.className)}
 			render={
 				<Ariakit.Focusable
 					accessibleWhenDisabled
@@ -79,7 +79,7 @@ const TextBoxRoot = React.forwardRef<React.ElementRef<"div">, TextBoxRootProps>(
 			<TextBoxRootContext.Provider value={true}>
 				<Ariakit.Role.div
 					{...props}
-					className={cx("🥝-text-input", props.className)}
+					className={cx("🥝-text-box", props.className)}
 					ref={forwardedRef}
 				/>
 			</TextBoxRootContext.Provider>

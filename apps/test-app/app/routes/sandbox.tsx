@@ -82,9 +82,7 @@ export default function Page() {
 					<div className={styles.header}>
 						{/* biome-ignore lint/a11y: hgroup needs an explicit role for better support */}
 						<hgroup role="group">
-							<h2 id={leftPanelLabelId} className={styles.panelTitle}>
-								Epoch System iModel
-							</h2>
+							<h2 className={styles.panelTitle}>Epoch System iModel</h2>
 							<p className={styles.panelCaption}>2024 Refresh</p>
 						</hgroup>
 						<div className={styles.actions}>
@@ -430,6 +428,7 @@ function Subheader() {
 	return (
 		<div className={styles.subheader}>
 			<Ariakit.Role.h3
+				id={leftPanelLabelId}
 				className={styles.subheaderTitle}
 				tabIndex={-1}
 				ref={subheaderRef}

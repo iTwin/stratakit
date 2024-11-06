@@ -9,6 +9,14 @@ import { useFieldId } from "./Field.js";
 
 interface TextareaProps extends Ariakit.FocusableProps<"textarea"> {}
 
+/**
+ * Textarea component that allows users to enter multiline text values.
+ *
+ * Example usage:
+ * ```tsx
+ * <TextBox.Textarea defaultValue="Hello" />
+ * ```
+ */
 export const Textarea = React.forwardRef<
 	React.ElementRef<"textarea">,
 	TextareaProps

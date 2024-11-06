@@ -93,6 +93,12 @@ test.describe("@a11y", () => {
 	test("Axe Page Scan", async ({ page }) => {
 		await page.goto("/tests/dropdown-menu");
 
+		const button = page.getByRole("button", { name: "Actions" });
+		const add = page.getByRole("menuitem", { name: "Add" });
+
+		await button.click();
+		await expect(add).toBeVisible();
+
 		const axe = new AxeBuilder({ page });
 		const accessibilityScan = await axe.analyze();
 		expect(accessibilityScan.violations).toEqual([]);

@@ -9,7 +9,22 @@ import { useFieldId } from "./Field.js";
 
 // ----------------------------------------------------------------------------
 
-interface TextInputProps extends Ariakit.FocusableProps<"input"> {}
+type BaseInputProps = Ariakit.FocusableProps<"input">;
+
+interface TextInputProps extends Omit<BaseInputProps, "children" | "type"> {
+	/** Input is a [void element](https://developer.mozilla.org/en-US/docs/Glossary/Void_element) and no content is permitted. */
+	children?: never;
+	/**
+	 * Describes a text based [input type](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#input_types)
+	 * based on the value type the user will enter.
+	 *
+	 * @default "text"
+	 */
+	type?: Extract<
+		BaseInputProps["type"],
+		"text" | "email" | "password" | "search" | "tel" | "url" | "number" | "date"
+	>;
+}
 
 /**
  * Input component that allows users to enter text based values.

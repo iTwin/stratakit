@@ -184,7 +184,7 @@ export function staticVariablesTransform() {
 	return {
 		Rule(rule) {
 			if (rule.type !== "style") return;
-			if (rule.value.selectors.some((s) => s?.[0]?.type === "nesting")) return;
+			if (rule.value.selectors?.[0]?.some((s) => s?.type === "nesting")) return;
 			lastNonNestedSelector = rule.value.selectors;
 		},
 		DeclarationExit({ property, value: { name, value } }) {

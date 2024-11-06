@@ -6,10 +6,9 @@
 	block-size: 100vh;
 	--_panel-min-size: 256px;
 	--_panel-max-size: auto;
-	--_panel-size: minmax(var(--_panel-min-size), var(--_panel-max-size));
 
 	display: grid;
-	grid-template: auto / 40px var(--_panel-size) 1fr;
+	grid-template: auto / 40px minmax(var(--_panel-min-size), var(--_panel-max-size)) 1fr;
 }
 
 .platformBar {

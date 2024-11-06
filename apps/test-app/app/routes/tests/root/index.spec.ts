@@ -21,8 +21,8 @@ test.describe("@a11y", () => {
 	test("Axe Page Scan", async ({ page }) => {
 		await page.goto("/tests/root");
 
-		const axe = await new AxeBuilder({ page });
-		const accessibilityScan = axe.analyze();
-		expect((await accessibilityScan).violations).toEqual([]);
+		const axe = new AxeBuilder({ page });
+		const accessibilityScan = await axe.analyze();
+		expect(accessibilityScan.violations).toEqual([]);
 	});
 });

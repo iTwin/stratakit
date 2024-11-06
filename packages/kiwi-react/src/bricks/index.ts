@@ -2,6 +2,8 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
+"use client";
+
 export { Root } from "./Root.js";
 export { Anchor } from "./Anchor.js";
 export { Button } from "./Button.js";

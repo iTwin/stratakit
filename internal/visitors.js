@@ -84,10 +84,12 @@ export function themeTransform() {
 					throw new Error(`Unknown theme: ${theme}`);
 				}
 
-				const tokens = parseTokens(darkTheme);
 				const declarations = [];
 
-				for (let [name, { $value }] of tokens.entries()) {
+				const colorTokens = parseTokens(darkTheme.color);
+				const shadowTokens = parseTokens(darkTheme.shadow);
+
+				for (let [name, { $value }] of colorTokens.entries()) {
 					// Tokens that should be skipped are marked using "🫥" (by convention).
 					if (name.includes("🫥")) continue;
 
@@ -114,6 +116,15 @@ export function themeTransform() {
 
 					declarations.push(
 						cssCustomProperty(name, $value, { prefix: "kiwi-color" }),
+					);
+				}
+
+				for (let [name, { $value }] of shadowTokens.entries()) {
+					// Pass shadow values through the `_raw` function for inlining.
+					$value = cssFunction("_raw", $value.join(", "));
+
+					declarations.push(
+						cssCustomProperty(name, $value, { prefix: "kiwi-shadow" }),
 					);
 				}
 
@@ -173,7 +184,7 @@ export function staticVariablesTransform() {
 	return {
 		Rule(rule) {
 			if (rule.type !== "style") return;
-			if (rule.value.selectors.some((s) => s?.[0]?.type === "nesting")) return;
+			if (rule.value.selectors?.[0]?.some((s) => s?.type === "nesting")) return;
 			lastNonNestedSelector = rule.value.selectors;
 		},
 		DeclarationExit({ property, value: { name, value } }) {

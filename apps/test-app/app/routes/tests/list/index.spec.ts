@@ -31,4 +31,9 @@ test.describe("@visual", () => {
 		await page.mouse.down();
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
+
+	test("with icons", async ({ page }) => {
+		await page.goto("/tests/list?with-icons");
+		await expect(page.locator("body")).toHaveScreenshot();
+	});
 });

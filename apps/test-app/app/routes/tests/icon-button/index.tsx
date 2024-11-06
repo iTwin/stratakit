@@ -25,9 +25,21 @@ export default function Page() {
 }
 
 function VisualTest() {
+	const [searchParams] = useSearchParams();
+	const showTooltip = searchParams.has("tooltip");
+
+	if (showTooltip) {
+		return (
+			<div style={{ minHeight: 50 }}>
+				<IconButton label="Click me" icon={placeholderIcon} />
+			</div>
+		);
+	}
+
 	return (
 		<div style={{ display: "flex", gap: 4 }}>
 			<IconButton label="Click me" icon={placeholderIcon} />
+			<IconButton variant="outline" label="Click me" icon={placeholderIcon} />
 			<IconButton variant="ghost" label="Click me" icon={placeholderIcon} />
 			<IconButton
 				variant="ghost"

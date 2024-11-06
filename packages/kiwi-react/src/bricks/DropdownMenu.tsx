@@ -5,7 +5,7 @@
 import * as React from "react";
 import cx from "classnames";
 import * as Ariakit from "@ariakit/react";
-import { ListItem } from "./ListItem.js";
+import * as ListItem from "./ListItem.js";
 import { Button } from "./Button.js";
 
 // ----------------------------------------------------------------------------
@@ -88,7 +88,7 @@ const DropdownMenuItem = React.forwardRef<
 		<Ariakit.MenuItem
 			accessibleWhenDisabled
 			{...props}
-			render={<ListItem render={props.render} />}
+			render={<ListItem.Root render={props.render} />}
 			ref={forwardedRef}
 		/>
 	);

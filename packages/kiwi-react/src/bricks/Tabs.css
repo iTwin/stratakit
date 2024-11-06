@@ -1,0 +1,120 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+
+.🥝-tab-list {
+	--🥝tab-active-stripe-gap: 6px;
+
+	display: flex;
+	gap: 8px;
+
+	&[aria-orientation="horizontal"] {
+		padding-block-end: var(--🥝tab-active-stripe-gap);
+	}
+}
+
+.🥝-tab {
+	--✨height: 1.25rem;
+	--✨padding-inline: 4px;
+	--✨active-tab-stripe-size: 2px;
+
+	--✨bg--default: transparent;
+	--✨bg--hover: var(--kiwi-color-bg-glow-on-surface-accent-hover);
+	--✨bg--selected: transparent;
+	--✨bg--disabled: transparent;
+
+	--✨color--default: var(--kiwi-color-text-neutral-tertiary);
+	--✨color--hover: var(--kiwi-color-text-accent-strong);
+	--✨color--selected: var(--kiwi-color-text-accent-strong);
+	--✨color--disabled: var(--kiwi-color-text-neutral-disabled);
+
+	@layer base {
+		--🥝tab-active-stripe-color: var(--kiwi-color-border-accent-strong);
+
+		font-size: var(--kiwi-font-size-s);
+		color: var(--🌀tab-state--default, var(--✨color--default))
+			var(--🌀tab-state--hover, var(--✨color--hover))
+			var(--🌀tab-state--selected, var(--✨color--selected))
+			var(--🌀tab-state--disabled, var(--✨color--disabled));
+		background-color: var(--🌀tab-state--default, var(--✨bg--default))
+			var(--🌀tab-state--hover, var(--✨bg--hover))
+			var(--🌀tab-state--selected, var(--✨bg--selected))
+			var(--🌀tab-state--disabled, var(--✨bg--disabled));
+		border: none;
+		border-radius: 4px;
+		block-size: var(--✨height);
+		padding-inline: var(--✨padding-inline);
+		position: relative;
+		user-select: none;
+		white-space: nowrap;
+		-webkit-tap-highlight-color: var(--✨bg--hover);
+		transition: background-color 150ms ease-out, color 150ms ease-out;
+		cursor: pointer;
+
+		@media (forced-colors: active) {
+			color: ButtonText;
+		}
+
+		/* This pseudo-element increases tap target size */
+		&::before {
+			content: "";
+			position: absolute;
+			inset-inline: 0;
+			inset-block: 0 calc(var(--🥝tab-active-stripe-gap) * -1);
+		}
+	}
+
+	@layer states {
+		&:where([aria-selected="true"]) {
+			--🌀tab-state: var(--🌀tab-state--selected);
+
+			/* This pseudo-element adds the active stripe */
+			&::after {
+				content: "";
+				position: absolute;
+				background-color: var(--🥝tab-active-stripe-color);
+				block-size: var(--✨active-tab-stripe-size);
+				inset-inline: var(--✨padding-inline);
+				inset-block: auto calc(var(--🥝tab-active-stripe-gap) * -1);
+
+				@media (forced-colors: active) {
+					background-color: SelectedItem;
+				}
+			}
+		}
+
+		@media (any-hover: hover) {
+			&:where(:hover) {
+				--🌀tab-state: var(--🌀tab-state--hover);
+			}
+		}
+
+		&:where([disabled], :disabled, [aria-disabled="true"]) {
+			--🌀tab-state: var(--🌀tab-state--disabled);
+			--🥝tab-active-stripe-color: var(--kiwi-color-border-neutral-disabled);
+			cursor: not-allowed;
+
+			@media (forced-colors: active) {
+				color: GrayText;
+
+				&::after {
+					background-color: GrayText;
+				}
+			}
+		}
+	}
+
+	@layer base.🌀 {
+		/* Cyclic toggles for default/hover/disabled states. See https://kizu.dev/cyclic-toggles/ */
+		--🌀tab-state: var(--🌀tab-state--default);
+		--🌀tab-state--default: var(--🌀tab-state,);
+		--🌀tab-state--hover: var(--🌀tab-state,);
+		--🌀tab-state--selected: var(--🌀tab-state,);
+		--🌀tab-state--disabled: var(--🌀tab-state,);
+	}
+}
+
+.🥝-tab-panel {
+	outline-offset: -2px;
+}

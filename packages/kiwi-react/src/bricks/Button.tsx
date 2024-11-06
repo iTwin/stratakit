@@ -8,7 +8,7 @@ import * as Ariakit from "@ariakit/react";
 
 interface ButtonProps extends Ariakit.ButtonProps {
 	/** @default "solid" */
-	variant?: "solid" | "ghost";
+	variant?: "solid" | "outline" | "ghost";
 }
 
 export const Button = React.forwardRef<

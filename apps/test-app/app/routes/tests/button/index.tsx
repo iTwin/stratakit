@@ -35,7 +35,7 @@ export default function Page() {
 }
 
 function VisualTest() {
-	const variants = ["solid", "ghost"] as const;
+	const variants = ["solid", "outline", "ghost"] as const;
 
 	return (
 		<div style={{ display: "grid", gap: 4 }}>

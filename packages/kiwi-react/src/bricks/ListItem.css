@@ -9,7 +9,8 @@
 	--✨padding-block: 0.25rem;
 
 	--✨glow--hover: var(--kiwi-color-glow-hue) var(--kiwi-color-bg-glow-on-surface-neutral-hover-\%);
-	--✨glow--press: var(--kiwi-color-glow-hue) var(--kiwi-color-bg-glow-on-surface-neutral-press-\%);
+	--✨glow--press: var(--kiwi-color-glow-hue)
+		var(--kiwi-color-bg-glow-on-surface-neutral-pressed-\%);
 
 	--✨bg--default: transparent;
 	--✨bg--hover: color-mix(in oklch, var(--✨bg--default) 100%, var(--✨glow--hover));
@@ -36,6 +37,10 @@
 		color: var(--🌀list-item-state--default, unset) var(--🌀list-item-state--hover, unset)
 			var(--🌀list-item-state--pressed, unset)
 			var(--🌀list-item-state--disabled, var(--✨bg--disabled));
+		--🥝icon-color: var(--🌀list-item-state--default, var(--kiwi-color-icon-neutral-base))
+			var(--🌀list-item-state--hover, var(--kiwi-color-icon-neutral-hover))
+			var(--🌀list-item-state--pressed, var(--kiwi-color-icon-neutral-hover))
+			var(--🌀list-item-state--disabled, var(--kiwi-color-icon-neutral-disabled));
 	}
 
 	@layer states {
@@ -62,4 +67,8 @@
 		--🌀list-item-state--pressed: var(--🌀list-item-state,);
 		--🌀list-item-state--disabled: var(--🌀list-item-state,);
 	}
+}
+
+.🥝-list-item-content {
+	flex-grow: 1;
 }

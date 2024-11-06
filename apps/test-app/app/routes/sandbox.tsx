@@ -252,8 +252,8 @@ function useSplitter<TSplitter extends Element, TPanel extends Element>(
 	>(() => {
 		return {
 			style: {
-				"-webkit-user-select": preferredSize === undefined ? undefined : "none",
-			} as React.CSSProperties,
+				WebkitUserSelect: preferredSize === undefined ? undefined : "none",
+			},
 			id,
 			ref: panelRef,
 		};

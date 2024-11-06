@@ -294,12 +294,12 @@ function useMoveable<T extends Element>(args?: UseMoveableArgs) {
 	}, [onMoveEnd]);
 	React.useEffect(() => {
 		const onPointerMove = (e: PointerEvent) => {
-			if (!relativePosition.current) return;
+			if (relativePosition.current === undefined) return;
 			const el = ref.current;
 			if (!el) return;
 
 			const rect = el.getBoundingClientRect();
-			const moveBy = e.clientX - rect.left;
+			const moveBy = e.clientX - relativePosition.current - rect.left;
 			onMove?.(moveBy);
 		};
 		document.addEventListener("pointermove", onPointerMove);

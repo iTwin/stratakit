@@ -141,8 +141,8 @@
 	&::before {
 		content: "";
 		position: absolute;
-		left: -12px;
-		inline-size: 24px;
+		left: 0;
+		inline-size: 8px;
 		block-size: 100%;
 	}
 }

@@ -6,7 +6,6 @@ import * as React from "react";
 import cx from "classnames";
 import * as Ariakit from "@ariakit/react";
 import { useControlledState } from "./~hooks.js";
-import { flushSync } from "react-dom";
 
 interface TooltipProps
 	extends Omit<Ariakit.TooltipProps, "store" | "content">,
@@ -60,6 +59,7 @@ export const Tooltip = React.forwardRef<
 		defaultOpen: defaultOpenProp,
 		open: openProp,
 		setOpen: setOpenProp,
+		unmountOnHide = type === "none",
 		...rest
 	} = props;
 
@@ -71,6 +71,17 @@ export const Tooltip = React.forwardRef<
 
 	const store = Ariakit.useTooltipStore();
 	const wrapper = Ariakit.useStoreState(store, (state) => state.popoverElement);
+
+	React.useEffect(
+		function showTooltipOnMount() {
+			// When using unmountOnHide, we need to wait for the wrapper element to
+			// be mounted before we can call `togglePopover` on it.
+			if (unmountOnHide && open) {
+				wrapper?.togglePopover(true);
+			}
+		},
+		[open, wrapper, unmountOnHide],
+	);
 
 	// Determine the correct aria attribute dynamically
 	const ariaProps =
@@ -87,7 +98,7 @@ export const Tooltip = React.forwardRef<
 				open={open}
 				setOpen={React.useCallback(
 					(open: boolean) => {
-						flushSync(() => setOpen(open)); // Wrap setOpen in flushSync
+						setOpen(open);
 						wrapper?.togglePopover?.(open);
 					},
 					[setOpen, wrapper],
@@ -95,8 +106,8 @@ export const Tooltip = React.forwardRef<
 			>
 				<Ariakit.TooltipAnchor render={children} {...ariaProps} />
 				<Ariakit.Tooltip
-					unmountOnHide={type === "none"}
 					{...rest}
+					unmountOnHide={unmountOnHide}
 					className={cx("🥝-tooltip", className)}
 					ref={forwardedRef}
 					id={id}

@@ -72,6 +72,9 @@ test.describe("@a11y", () => {
 	test("Axe Page Scan", async ({ page }) => {
 		await page.goto("/tests/switch");
 
+		const toggleSwitch = page.getByRole("switch");
+		await expect(toggleSwitch).toBeVisible();
+
 		const axe = new AxeBuilder({ page });
 		const accessibilityScan = await axe.analyze();
 		expect(accessibilityScan.violations).toEqual([]);

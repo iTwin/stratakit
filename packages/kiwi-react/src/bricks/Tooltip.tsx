@@ -6,6 +6,7 @@ import * as React from "react";
 import cx from "classnames";
 import * as Ariakit from "@ariakit/react";
 import { useControlledState } from "./~hooks.js";
+import { flushSync } from "react-dom";
 
 interface TooltipProps
 	extends Omit<Ariakit.TooltipProps, "store" | "content">,
@@ -86,7 +87,7 @@ export const Tooltip = React.forwardRef<
 				open={open}
 				setOpen={React.useCallback(
 					(open: boolean) => {
-						setOpen(open);
+						flushSync(() => setOpen(open)); // Wrap setOpen in flushSync
 						wrapper?.togglePopover?.(open);
 					},
 					[setOpen, wrapper],

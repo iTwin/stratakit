@@ -289,7 +289,7 @@ function useMoveable<T extends Element>(args?: UseMoveableArgs) {
 	const relativePositionRef = React.useRef<number | undefined>(undefined);
 	React.useEffect(() => {
 		const onPointerUp = () => {
-			if (!relativePositionRef.current) return;
+			if (relativePositionRef.current === undefined) return;
 			relativePositionRef.current = undefined;
 			onMoveEnd?.();
 		};

@@ -82,7 +82,7 @@
 			/** Instead of using `gap` for the space between elements, we use padding to give more space to the input. */
 			> :not(input):not(:first-child) {
 				&:not(input + &) {
-					margin-left: var(--✨gap);
+					margin-inline-start: var(--✨gap);
 					box-sizing: content-box;
 				}
 			}

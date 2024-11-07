@@ -32,8 +32,18 @@ test.describe("@visual", () => {
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
 
+	test("active", async ({ page }) => {
+		await page.goto("/tests/list");
+		await expect(page.locator("body")).toHaveScreenshot();
+	});
+
 	test("with icons", async ({ page }) => {
 		await page.goto("/tests/list?with-icons");
+		await expect(page.locator("body")).toHaveScreenshot();
+	});
+
+	test("active with icons", async ({ page }) => {
+		await page.goto("/tests/list?active-state&with-icons");
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
 });

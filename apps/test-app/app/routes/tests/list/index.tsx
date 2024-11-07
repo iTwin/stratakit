@@ -21,6 +21,7 @@ export default function Page() {
 		// biome-ignore lint/a11y/useSemanticElements: `div` is used as underlying element for `ListItem`
 		<div
 			role="list"
+			style={{ display: "grid", gap: 4 }}
 			className={
 				searchParams.has("active-state") ? styles.forceListStateActive : ""
 			}

@@ -60,10 +60,31 @@ test.describe("@visual", () => {
 test.describe("@a11y", () => {
 	test("Axe Page Scan", async ({ page }) => {
 		const axe = new AxeBuilder({ page });
-		const controls = ["input", "textarea", "radio", "checkbox", "switch"];
+		const components = ["input", "textarea", "radio", "checkbox", "switch"];
 
-		for (const control of controls) {
-			await page.goto(`/tests/field?control=${control}`);
+		for (const component of components) {
+			await page.goto(`/tests/field?control=${component}`);
+
+			if (component === "input" || component === "textarea") {
+				const textbox = await page.getByRole("textbox");
+				await expect(textbox).toBeVisible();
+			}
+
+			if (component === "radio") {
+				const radio = await page.getByRole("radio");
+				await expect(radio).toBeVisible();
+			}
+
+			if (component === "checkbox") {
+				const checkbox = await page.getByRole("checkbox");
+				await expect(checkbox).toBeVisible();
+			}
+
+			if (component === "switch") {
+				const theSwitch = await page.getByRole("switch");
+				await expect(theSwitch).toBeVisible();
+			}
+
 			const accessibilityScan = await axe.analyze();
 			expect(accessibilityScan.violations).toEqual([]);
 		}

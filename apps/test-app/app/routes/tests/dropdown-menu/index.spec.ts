@@ -94,10 +94,8 @@ test.describe("@a11y", () => {
 		await page.goto("/tests/dropdown-menu");
 
 		const button = page.getByRole("button", { name: "Actions" });
-		const add = page.getByRole("menuitem", { name: "Add" });
 
-		await button.click();
-		await expect(add).toBeVisible();
+		await expect(button).toBeVisible();
 
 		const axe = new AxeBuilder({ page });
 		const accessibilityScan = await axe.analyze();

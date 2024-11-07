@@ -50,6 +50,9 @@ test.describe("@a11y", () => {
 	test("Axe Page Scan", async ({ page }) => {
 		await page.goto("/tests/anchor");
 
+		const anchor = page.getByRole("link");
+		await expect(anchor).toBeVisible();
+
 		const axe = new AxeBuilder({ page });
 		const accessibilityScan = await axe.analyze();
 		expect(accessibilityScan.violations).toEqual([]);

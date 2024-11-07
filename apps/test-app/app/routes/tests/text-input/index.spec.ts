@@ -44,6 +44,9 @@ test.describe("@a11y", () => {
 	test("Axe Page Scan", async ({ page }) => {
 		await page.goto("/tests/text-input");
 
+		const input = page.getByRole("textbox");
+		await expect(input).toBeVisible();
+
 		const axe = new AxeBuilder({ page });
 		const accessibilityScan = await axe.analyze();
 		expect(accessibilityScan.violations).toEqual([]);

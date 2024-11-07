@@ -33,6 +33,9 @@ test.describe("@a11y", () => {
 	test("Axe Page Scan", async ({ page }) => {
 		await page.goto("/tests/icon");
 
+		const icon = page.locator("svg");
+		await expect(icon).toBeVisible();
+
 		const axe = new AxeBuilder({ page });
 		const accessibilityScan = await axe.analyze();
 		expect(accessibilityScan.violations).toEqual([]);

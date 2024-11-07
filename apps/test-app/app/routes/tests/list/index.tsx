@@ -5,9 +5,14 @@
 import * as ListItem from "@itwin/kiwi-react-internal/src/bricks/ListItem";
 import { Icon } from "@itwin/kiwi-react-internal/src/bricks/Icon";
 import { useSearchParams } from "@remix-run/react";
-import styles from "./index.module.css";
+import type { LinksFunction } from "@remix-run/node";
+import testStyles from "./index.css?url";
 
 export const handle = { title: "List" };
+
+export const links: LinksFunction = () => [
+	{ rel: "stylesheet", href: testStyles },
+];
 
 const placeholderIcon = new URL(
 	"@itwin/kiwi-icons/placeholder.svg",
@@ -22,9 +27,7 @@ export default function Page() {
 		<div
 			role="list"
 			style={{ display: "grid", gap: 4 }}
-			className={
-				searchParams.has("active-state") ? styles.forceListStateActive : ""
-			}
+			className={searchParams.has("active-state") ? "force-state-active" : ""}
 		>
 			{searchParams.has("with-icons") ? (
 				<>

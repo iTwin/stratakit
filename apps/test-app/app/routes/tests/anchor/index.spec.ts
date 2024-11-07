@@ -9,7 +9,7 @@ test("default", async ({ page }) => {
 	await page.goto("/tests/anchor");
 
 	const anchor = page.getByRole("link");
-	const main = page.getByRole("main");
+	const article = page.getByRole("article");
 
 	await expect(anchor).toHaveAccessibleName("Hello");
 
@@ -18,14 +18,14 @@ test("default", async ({ page }) => {
 
 	// clicking a fragment link moves focus to the target element
 	await page.keyboard.press("Enter");
-	await expect(main).toBeFocused();
+	await expect(article).toBeFocused();
 });
 
 test("disabled", async ({ page }) => {
 	await page.goto("/tests/anchor?disabled=true");
 
 	const anchor = page.getByRole("link");
-	const section = page.getByRole("section");
+	const article = page.getByRole("article");
 
 	await expect(anchor).toHaveAccessibleName("Hello");
 	await expect(anchor).toBeDisabled();
@@ -35,9 +35,9 @@ test("disabled", async ({ page }) => {
 
 	// disabled anchor should not navigate
 	await page.keyboard.press("Enter");
-	await expect(section).not.toBeFocused();
+	await expect(article).not.toBeFocused();
 	await anchor.click({ force: true });
-	await expect(section).not.toBeFocused();
+	await expect(article).not.toBeFocused();
 	await expect(anchor).toBeFocused();
 });
 

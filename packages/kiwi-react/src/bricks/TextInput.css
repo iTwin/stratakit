@@ -96,14 +96,14 @@
 				outline: unset;
 				padding-block: var(--✨padding-block);
 				padding-inline: var(--✨padding-inline);
-			}
 
-			> * + input {
-				padding-inline-start: var(--✨gap);
-			}
+				&:not(:first-child) {
+					padding-inline-start: var(--✨gap);
+				}
 
-			> * ~ input {
-				padding-inline-end: var(--✨gap);
+				&:not(:last-child) {
+					padding-inline-end: var(--✨gap);
+				}
 			}
 
 			svg {

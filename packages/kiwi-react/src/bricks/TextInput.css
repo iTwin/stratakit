@@ -66,7 +66,7 @@
 		&:not(:where(input, textarea)) {
 			overflow: hidden;
 
-			&:has(input:focus) {
+			&:focus-within {
 				outline: 2px solid var(--kiwi-color-border-accent-strong);
 				outline-offset: 1px;
 			}
@@ -82,7 +82,7 @@
 			/** Instead of using `gap` for the space between elements, we use padding to give more space to the input. */
 			> :not(input):not(:first-child) {
 				&:not(input + &) {
-					padding-left: var(--✨gap);
+					margin-left: var(--✨gap);
 					box-sizing: content-box;
 				}
 			}

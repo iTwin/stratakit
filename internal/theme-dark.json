@@ -734,7 +734,7 @@
 				},
 				"tertiary": {
 					"$type": "color",
-					"$value": "{p-color.gray.400}"
+					"$value": "{p-color.gray.300}"
 				},
 				"disabled": {
 					"$type": "color",

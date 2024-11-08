@@ -22,11 +22,11 @@
 	--✨color--disabled: var(--kiwi-color-text-neutral-disabled);
 	--✨height: 1.5rem;
 	--✨padding-inline: 8px;
-	--✨padding-block: 4px;
 
 	@layer base {
 		appearance: none;
 		font-size: 0.75rem;
+		line-height: 1.3; /* This is a safe value for Inter — lower values will be ignored. */
 		border: 1px solid transparent;
 
 		display: inline-flex;
@@ -35,7 +35,8 @@
 
 		min-block-size: var(--✨height);
 		padding-inline: var(--✨padding-inline);
-		padding-block: var(--✨padding-block);
+		/* Dynamically adjust the padding to avoid issues with baseline alignment */
+		padding-block: max(0px, (var(--✨height) - 2px - 1lh) / 2);
 		border-radius: 4px;
 
 		background-color: var(--🌀text-input-state--default, var(--✨bg--default))

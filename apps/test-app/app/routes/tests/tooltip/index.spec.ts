@@ -169,7 +169,7 @@ test.describe("@a11y", () => {
 		await page.keyboard.press("Tab");
 		await expect(tooltip).toBeVisible();
 
-		const axe = new AxeBuilder({ page }).disableRules(["region"]);
+		const axe = new AxeBuilder({ page }));
 		const accessibilityScan = await axe.analyze();
 		expect(accessibilityScan.violations).toEqual([]);
 	});

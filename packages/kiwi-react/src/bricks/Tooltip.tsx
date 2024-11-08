@@ -77,7 +77,7 @@ export const Tooltip = React.forwardRef<
 			// When using unmountOnHide, we need to wait for the wrapper element to
 			// be mounted before we can call `togglePopover` on it.
 			if (unmountOnHide && open) {
-				wrapper?.togglePopover(true);
+				wrapper?.togglePopover?.(true);
 			}
 		},
 		[open, wrapper, unmountOnHide],

@@ -33,7 +33,7 @@ test.describe("@visual", () => {
 	});
 
 	test("active", async ({ page }) => {
-		await page.goto("/tests/list&active-state");
+		await page.goto("/tests/list?active-state");
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
 

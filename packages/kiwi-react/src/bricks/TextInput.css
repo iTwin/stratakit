@@ -24,6 +24,8 @@
 	--✨padding-inline: 8px;
 	--✨padding-block: 4px;
 	--✨gap: 4px;
+	--✨outline: 2px solid var(--kiwi-color-border-accent-strong);
+	--✨outline-offset: 1px;
 
 	@layer base {
 		appearance: none;
@@ -66,9 +68,16 @@
 		&:not(:where(input, textarea)) {
 			overflow: hidden;
 
-			&:focus-within {
-				outline: 2px solid var(--kiwi-color-border-accent-strong);
-				outline-offset: 1px;
+			&:has(input:focus-visible) {
+				outline: var(--✨outline);
+				outline-offset: var(--✨outline-offset);
+			}
+
+			@supports not selector(:has(+ *)) {
+				&:where(:focus-within) {
+					outline: var(--✨outline);
+					outline-offset: var(--✨outline-offset);
+				}
 			}
 
 			> :first-child:not(input) {

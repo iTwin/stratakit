@@ -21,37 +21,31 @@ const placeholderIcon = new URL(
 
 export default function Page() {
 	const [searchParams] = useSearchParams();
+	const isActive = searchParams.has("active-state");
 
 	return (
 		// biome-ignore lint/a11y/useSemanticElements: `div` is used as underlying element for `ListItem`
 		<div
 			role="list"
 			style={{ display: "grid", gap: 4 }}
-			className={searchParams.has("active-state") ? "force-state-active" : ""}
+			className={isActive ? "force-state-active" : ""}
 		>
-			{searchParams.has("with-icons") ? (
-				<>
-					<ListItem.Root>
-						<ListItem.Content>Kiwi</ListItem.Content>
-						<Icon href={placeholderIcon} />
-					</ListItem.Root>
-					<ListItem.Root>
-						<Icon href={placeholderIcon} />
-						<ListItem.Content>Papaya</ListItem.Content>
-					</ListItem.Root>
-					<ListItem.Root>
-						<Icon href={placeholderIcon} />
-						<ListItem.Content>Tomato</ListItem.Content>
-						<Icon href={placeholderIcon} />
-					</ListItem.Root>
-				</>
-			) : (
-				<>
-					<ListItem.Root>Apple</ListItem.Root>
-					<ListItem.Root>Cherry</ListItem.Root>
-					<ListItem.Root>Kiwi</ListItem.Root>
-				</>
-			)}
+			<ListItem.Root>Apple</ListItem.Root>
+			<ListItem.Root>Cherry</ListItem.Root>
+			<ListItem.Root>Kiwi</ListItem.Root>
+			<ListItem.Root>
+				<ListItem.Content>Mango</ListItem.Content>
+				<Icon href={placeholderIcon} />
+			</ListItem.Root>
+			<ListItem.Root>
+				<Icon href={placeholderIcon} />
+				<ListItem.Content>Papaya</ListItem.Content>
+			</ListItem.Root>
+			<ListItem.Root>
+				<Icon href={placeholderIcon} />
+				<ListItem.Content>Tomato</ListItem.Content>
+				<Icon href={placeholderIcon} />
+			</ListItem.Root>
 		</div>
 	);
 }

@@ -102,7 +102,7 @@ test.describe("@a11y", () => {
 		await expect(add).toBeVisible();
 
 		const axe = new AxeBuilder({ page })
-			.disableRules(["region", "aria-hidden-focus"])
+			.disableRules(["region"])
 			.exclude("[data-focus-trap]");
 
 		const accessibilityScan = await axe.analyze();

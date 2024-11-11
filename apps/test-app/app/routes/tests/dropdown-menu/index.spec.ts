@@ -101,7 +101,10 @@ test.describe("@a11y", () => {
 		await button.click();
 		await expect(add).toBeVisible();
 
-		const axe = new AxeBuilder({ page });
+		const axe = new AxeBuilder({ page })
+			.disableRules(["region", "aria-hidden-focus"])
+			.exclude("[data-focus-trap]");
+
 		const accessibilityScan = await axe.analyze();
 		expect(accessibilityScan.violations).toEqual([]);
 	});

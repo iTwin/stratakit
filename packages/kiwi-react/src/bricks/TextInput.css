@@ -66,8 +66,6 @@
 		}
 
 		&:not(:where(input, textarea)) {
-			overflow: hidden;
-
 			&:has(input:focus-visible) {
 				outline: var(--✨outline);
 				outline-offset: var(--✨outline-offset);

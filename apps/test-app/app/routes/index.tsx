@@ -18,6 +18,7 @@ const components = [
 	"Field",
 	"Icon",
 	"IconButton",
+	"Kbd",
 	"List",
 	"Radio",
 	"Switch",

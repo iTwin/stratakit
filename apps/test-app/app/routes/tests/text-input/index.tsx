@@ -2,7 +2,7 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-import { TextInput, Label, } from "@itwin/kiwi-react/bricks";
+import { TextInput, Label } from "@itwin/kiwi-react/bricks";
 import { useSearchParams } from "@remix-run/react";
 import { useId } from "react";
 

@@ -15,9 +15,11 @@ const placeholderIcon = new URL(
 
 function TextAffix({ children }: React.PropsWithChildren) {
 	return (
-		<span style={{ color: "var(--kiwi-color-text-neutral-tertiary)" }}>
+		<TextInput.Text
+			style={{ color: "var(--kiwi-color-text-neutral-tertiary)" }}
+		>
 			{children}
-		</span>
+		</TextInput.Text>
 	);
 }
 
@@ -73,24 +75,24 @@ function VisualTest() {
 				<TextInput.Input defaultValue="Value" />
 			</TextInput.Root>
 			<TextInput.Root>
-				<Icon href={placeholderIcon} />
+				<TextInput.Icon href={placeholderIcon} />
 				<TextInput.Input defaultValue="Value" />
 			</TextInput.Root>
 			<TextInput.Root>
 				<TextInput.Input defaultValue="Value" />
-				<Icon href={placeholderIcon} />
+				<TextInput.Icon href={placeholderIcon} />
 			</TextInput.Root>
 			<TextInput.Root>
-				<Icon href={placeholderIcon} />
+				<TextInput.Icon href={placeholderIcon} />
 				<TextInput.Input defaultValue="Value" />
-				<Icon href={placeholderIcon} />
+				<TextInput.Icon href={placeholderIcon} />
 			</TextInput.Root>
 			<TextInput.Root>
-				<Icon href={placeholderIcon} />
+				<TextInput.Icon href={placeholderIcon} />
 				<TextAffix>%</TextAffix>
 				<TextInput.Input defaultValue="Value" />
 				<TextAffix>%</TextAffix>
-				<Icon href={placeholderIcon} />
+				<TextInput.Icon href={placeholderIcon} />
 			</TextInput.Root>
 		</div>
 	);

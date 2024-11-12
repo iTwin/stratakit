@@ -66,6 +66,34 @@
 		}
 
 		&:not(:where(input, textarea)) {
+			.🥝-text-input-decoration + input {
+				padding-inline-start: var(--✨gap);
+			}
+
+			&:has(input + .🥝-text-input-decoration) {
+				input {
+					padding-inline-end: var(--✨gap);
+				}
+			}
+
+			.🥝-text-input-decoration {
+				&:not(input + .🥝-text-input-decoration) {
+					margin-inline-start: var(--✨gap);
+				}
+			}
+
+			.🥝-text-input-decoration:not(input ~ .🥝-text-input-decoration) {
+				&:nth-child(1 of .🥝-text-input-decoration) {
+					margin-inline-start: var(--✨padding-inline);
+				}
+			}
+
+			input ~ .🥝-text-input-decoration {
+				&:nth-last-child(1 of .🥝-text-input-decoration) {
+					margin-inline-end: var(--✨padding-inline);
+				}
+			}
+
 			&:has(input:focus-visible) {
 				outline: var(--✨outline);
 				outline-offset: var(--✨outline-offset);
@@ -78,22 +106,6 @@
 				}
 			}
 
-			> :first-child:not(input) {
-				margin-inline-start: var(--✨padding-inline);
-			}
-
-			> :last-child:not(input) {
-				margin-inline-end: var(--✨padding-inline);
-			}
-
-			/** Instead of using `gap` for the space between elements, we use padding to give more space to the input. */
-			> :not(input):not(:first-child) {
-				&:not(input + &) {
-					margin-inline-start: var(--✨gap);
-					box-sizing: content-box;
-				}
-			}
-
 			input {
 				flex-grow: 1;
 				min-inline-size: 1rem;
@@ -103,14 +115,6 @@
 				outline: unset;
 				padding-block: var(--✨padding-block);
 				padding-inline: var(--✨padding-inline);
-
-				&:not(:first-child) {
-					padding-inline-start: var(--✨gap);
-				}
-
-				&:not(:last-child) {
-					padding-inline-end: var(--✨gap);
-				}
 			}
 
 			svg {

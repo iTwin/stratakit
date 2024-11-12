@@ -6,6 +6,7 @@ import * as React from "react";
 import * as Ariakit from "@ariakit/react";
 import cx from "classnames";
 import { useFieldId } from "./Field.js";
+import { Icon } from "./Icon.js";
 
 // ----------------------------------------------------------------------------
 
@@ -89,8 +90,47 @@ const TextInputRoot = React.forwardRef<
 
 // ----------------------------------------------------------------------------
 
+interface TextInputIconProps extends React.ComponentProps<typeof Icon> {}
+
+const TextInputIcon = React.forwardRef<
+	React.ElementRef<typeof Icon>,
+	TextInputIconProps
+>((props, forwardedRef) => {
+	return (
+		<Icon
+			{...props}
+			className={cx("🥝-text-input-decoration", props.className)}
+			ref={forwardedRef}
+		/>
+	);
+});
+
+// ----------------------------------------------------------------------------
+
+interface TextInputTextProps extends Ariakit.RoleProps<"span"> {}
+
+const TextInputText = React.forwardRef<
+	React.ElementRef<"span">,
+	TextInputTextProps
+>((props, forwardedRef) => {
+	return (
+		<Ariakit.Role.span
+			{...props}
+			className={cx("🥝-text-input-decoration", props.className)}
+			ref={forwardedRef}
+		/>
+	);
+});
+
+// ----------------------------------------------------------------------------
+
 const TextInputRootContext = React.createContext(false);
 
 // ----------------------------------------------------------------------------
 
-export { TextInput as Input, TextInputRoot as Root };
+export {
+	TextInput as Input,
+	TextInputIcon as Icon,
+	TextInputText as Text,
+	TextInputRoot as Root,
+};

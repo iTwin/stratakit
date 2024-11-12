@@ -4,6 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 import * as React from "react";
 import * as Ariakit from "@ariakit/react";
+import * as ListItem from "./ListItem.js";
 
 // ----------------------------------------------------------------------------
 
@@ -28,9 +29,9 @@ export const TreeItem = React.forwardRef<
 	TreeItemProps
 >((props, forwardedRef) => {
 	return (
-		<Ariakit.Role.div {...props} role="treeitem" ref={forwardedRef}>
+		<ListItem.Root {...props} role="treeitem" ref={forwardedRef}>
 			{props.children}
-		</Ariakit.Role.div>
+		</ListItem.Root>
 	);
 });
 

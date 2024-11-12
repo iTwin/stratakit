@@ -126,10 +126,7 @@ type TreeRowProps = React.PropsWithChildren<{
 
 function TreeRow({ level = 0, children }: TreeRowProps) {
 	return (
-		<Tree.Item
-			style={{ ...(level > 0 ? { paddingLeft: level * 20 } : {}) }}
-			render={<ListItem.Root />}
-		>
+		<Tree.Item style={{ ...(level > 0 ? { paddingLeft: level * 20 } : {}) }}>
 			<Icon href={placeholderIcon} style={{ display: "inline" }} />
 			<ListItem.Content>{children}</ListItem.Content>
 		</Tree.Item>

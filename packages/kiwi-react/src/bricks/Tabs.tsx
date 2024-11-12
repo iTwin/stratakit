@@ -40,15 +40,20 @@ function Tabs(props: TabsProps) {
 
 // ----------------------------------------------------------------------------
 
-interface TabListProps extends Ariakit.RoleProps<"div"> {}
+interface TabListProps extends Ariakit.RoleProps<"div"> {
+	/** @default "neutral" */
+	tone?: "neutral" | "accent";
+}
 
 const TabList = React.forwardRef<
 	React.ElementRef<typeof Ariakit.TabList>,
 	TabListProps
 >((props, forwardedRef) => {
+	const { tone = "neutral", ...rest } = props;
 	return (
 		<Ariakit.TabList
-			{...props}
+			data-kiwi-tone={tone}
+			{...rest}
 			className={cx("🥝-tab-list", props.className)}
 			ref={forwardedRef}
 		/>

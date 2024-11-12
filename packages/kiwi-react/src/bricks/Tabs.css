@@ -4,13 +4,17 @@
  *--------------------------------------------------------------------------------------------*/
 
 .🥝-tab-list {
-	--🥝tab-active-stripe-gap: 6px;
+	@layer base {
+		--🥝tab-active-stripe-gap: 6px;
 
-	display: flex;
-	gap: 8px;
+		display: flex;
+		gap: 8px;
+	}
 
-	&[aria-orientation="horizontal"] {
-		padding-block-end: var(--🥝tab-active-stripe-gap);
+	@layer modifiers {
+		&[aria-orientation="horizontal"] {
+			padding-block-end: var(--🥝tab-active-stripe-gap);
+		}
 	}
 }
 
@@ -20,27 +24,26 @@
 	--✨active-tab-stripe-size: 2px;
 
 	--✨bg--default: transparent;
-	--✨bg--hover: var(--kiwi-color-bg-glow-on-surface-accent-hover);
+	--✨bg--hover-neutral: color-mix(
+		in oklch,
+		var(--✨bg--default) 100%,
+		var(--kiwi-color-glow-hue) var(--kiwi-color-bg-glow-on-surface-neutral-hover-\%)
+	);
+	--✨bg--hover-accent: var(--kiwi-color-bg-glow-on-surface-accent-hover);
 	--✨bg--selected: transparent;
 	--✨bg--disabled: transparent;
 
 	--✨color--default: var(--kiwi-color-text-neutral-tertiary);
-	--✨color--hover: var(--kiwi-color-text-accent-strong);
-	--✨color--selected: var(--kiwi-color-text-accent-strong);
+	--✨color--hover-neutral: var(--kiwi-color-text-neutral-primary);
+	--✨color--hover-accent: var(--kiwi-color-text-accent-strong);
+	--✨color--selected-neutral: var(--kiwi-color-text-neutral-primary);
+	--✨color--selected-accent: var(--kiwi-color-text-accent-strong);
 	--✨color--disabled: var(--kiwi-color-text-neutral-disabled);
 
 	@layer base {
-		--🥝tab-active-stripe-color: var(--kiwi-color-border-accent-strong);
-
 		font-size: var(--kiwi-font-size-s);
-		color: var(--🌀tab-state--default, var(--✨color--default))
-			var(--🌀tab-state--hover, var(--✨color--hover))
-			var(--🌀tab-state--selected, var(--✨color--selected))
-			var(--🌀tab-state--disabled, var(--✨color--disabled));
-		background-color: var(--🌀tab-state--default, var(--✨bg--default))
-			var(--🌀tab-state--hover, var(--✨bg--hover))
-			var(--🌀tab-state--selected, var(--✨bg--selected))
-			var(--🌀tab-state--disabled, var(--✨bg--disabled));
+		color: var(--🥝tab-color);
+		background-color: var(--🥝tab-bg);
 		border: none;
 		border-radius: 4px;
 		block-size: var(--✨height);
@@ -48,7 +51,6 @@
 		position: relative;
 		user-select: none;
 		white-space: nowrap;
-		-webkit-tap-highlight-color: var(--✨bg--hover);
 		transition: background-color 150ms ease-out, color 150ms ease-out;
 		cursor: pointer;
 
@@ -62,6 +64,34 @@
 			position: absolute;
 			inset-inline: 0;
 			inset-block: 0 calc(var(--🥝tab-active-stripe-gap) * -1);
+		}
+	}
+
+	@layer modifiers {
+		:where(.🥝-tab-list[data-kiwi-tone="neutral"]) & {
+			--🥝tab-active-stripe-color: var(--kiwi-color-border-neutral-inverse);
+			--🥝tab-bg: var(--🌀tab-state--default, var(--✨bg--default))
+				var(--🌀tab-state--hover, var(--✨bg--hover-neutral))
+				var(--🌀tab-state--selected, var(--✨bg--selected))
+				var(--🌀tab-state--disabled, var(--✨bg--disabled));
+			--🥝tab-color: var(--🌀tab-state--default, var(--✨color--default))
+				var(--🌀tab-state--hover, var(--✨color--hover-neutral))
+				var(--🌀tab-state--selected, var(--✨color--selected-neutral))
+				var(--🌀tab-state--disabled, var(--✨color--disabled));
+			-webkit-tap-highlight-color: var(--✨bg--hover-neutral);
+		}
+
+		:where(.🥝-tab-list[data-kiwi-tone="accent"]) & {
+			--🥝tab-active-stripe-color: var(--kiwi-color-border-accent-strong);
+			--🥝tab-bg: var(--🌀tab-state--default, var(--✨bg--default))
+				var(--🌀tab-state--hover, var(--✨bg--hover-accent))
+				var(--🌀tab-state--selected, var(--✨bg--selected))
+				var(--🌀tab-state--disabled, var(--✨bg--disabled));
+			--🥝tab-color: var(--🌀tab-state--default, var(--✨color--default))
+				var(--🌀tab-state--hover, var(--✨color--hover-accent))
+				var(--🌀tab-state--selected, var(--✨color--selected-accent))
+				var(--🌀tab-state--disabled, var(--✨color--disabled));
+			-webkit-tap-highlight-color: var(--✨bg--hover-accent);
 		}
 	}
 
@@ -106,7 +136,7 @@
 	}
 
 	@layer base.🌀 {
-		/* Cyclic toggles for default/hover/disabled states. See https://kizu.dev/cyclic-toggles/ */
+		/* Cyclic toggles for default/hover/selected/disabled states. See https://kizu.dev/cyclic-toggles/ */
 		--🌀tab-state: var(--🌀tab-state--default);
 		--🌀tab-state--default: var(--🌀tab-state,);
 		--🌀tab-state--hover: var(--🌀tab-state,);

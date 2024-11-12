@@ -8,7 +8,7 @@ test("default", async ({ page }) => {
 	await page.goto("/tests/list");
 
 	const items = page.getByRole("listitem");
-	await expect(items).toHaveCount(3);
+	await expect(items).toHaveCount(6);
 });
 
 test.describe("@visual", () => {
@@ -32,8 +32,8 @@ test.describe("@visual", () => {
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
 
-	test("with icons", async ({ page }) => {
-		await page.goto("/tests/list?with-icons");
+	test("active", async ({ page }) => {
+		await page.goto("/tests/list?active-state");
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
 });

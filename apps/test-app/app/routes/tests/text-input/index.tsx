@@ -2,7 +2,7 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-import { TextInput, Label, Icon } from "@itwin/kiwi-react/bricks";
+import { TextInput, Label, } from "@itwin/kiwi-react/bricks";
 import { useSearchParams } from "@remix-run/react";
 import { useId } from "react";
 
@@ -61,7 +61,7 @@ function CompositionTest() {
 			<Label htmlFor={id}>Fruit</Label>
 			<TextInput.Root>
 				<TextInput.Input id={id} {...inputParams} />
-				<Icon href={placeholderIcon} />
+				<TextInput.Icon href={placeholderIcon} />
 			</TextInput.Root>
 		</div>
 	);

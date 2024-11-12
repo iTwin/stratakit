@@ -84,7 +84,6 @@ export default function Page() {
 
 function SandboxTree() {
 	return (
-		// biome-ignore lint/a11y/useSemanticElements: `div` is used as underlying element for `ListItem`
 		<Tree.Root className={styles.tree}>
 			<TreeRow level={0}>Guides</TreeRow>
 			<TreeRow level={1}>Tree</TreeRow>
@@ -127,12 +126,13 @@ type TreeRowProps = React.PropsWithChildren<{
 
 function TreeRow({ level = 0, children }: TreeRowProps) {
 	return (
-		<ListItem.Root
+		<Tree.Item
 			style={{ ...(level > 0 ? { paddingLeft: level * 20 } : {}) }}
+			render={<ListItem.Root />}
 		>
 			<Icon href={placeholderIcon} style={{ display: "inline" }} />
 			<ListItem.Content>{children}</ListItem.Content>
-		</ListItem.Root>
+		</Tree.Item>
 	);
 }
 

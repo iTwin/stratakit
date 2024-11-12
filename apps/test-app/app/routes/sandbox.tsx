@@ -11,6 +11,7 @@ import {
 	Icon,
 	IconButton,
 	TextInput,
+	Tree,
 	VisuallyHidden,
 } from "@itwin/kiwi-react/bricks";
 import * as ListItem from "@itwin/kiwi-react-internal/src/bricks/ListItem.js";
@@ -71,7 +72,7 @@ export default function Page() {
 						</div>
 					</div>
 					<Subheader />
-					<Tree />
+					<SandboxTree />
 				</div>
 				<div className={styles.canvasWrapper}>
 					<div className={styles.canvas} />
@@ -81,10 +82,10 @@ export default function Page() {
 	);
 }
 
-function Tree() {
+function SandboxTree() {
 	return (
 		// biome-ignore lint/a11y/useSemanticElements: `div` is used as underlying element for `ListItem`
-		<div role="list" className={styles.tree}>
+		<Tree.Root className={styles.tree}>
 			<TreeRow level={0}>Guides</TreeRow>
 			<TreeRow level={1}>Tree</TreeRow>
 			<TreeRow level={2}>Guide 4</TreeRow>
@@ -116,7 +117,7 @@ function Tree() {
 			<TreeRow level={0}>Map</TreeRow>
 			<TreeRow level={1}>Location</TreeRow>
 			<TreeRow level={2}>Terrain</TreeRow>
-		</div>
+		</Tree.Root>
 	);
 }
 

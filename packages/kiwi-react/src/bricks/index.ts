@@ -20,4 +20,5 @@ export * as Tabs from "./Tabs.js";
 export { Textarea } from "./Textarea.js";
 export { TextInput } from "./TextInput.js";
 export { Tooltip } from "./Tooltip.js";
+export * as Tree from "./Tree.js";
 export { VisuallyHidden } from "./VisuallyHidden.js";

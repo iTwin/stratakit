@@ -12,6 +12,7 @@
 	},
 	"dependencies": {
 		"@ariakit/react": "*",
+		"@axe-core/playwright": "^4.10.0",
 		"@itwin/kiwi-icons": "*",
 		"@itwin/kiwi-react": "*",
 		"@remix-run/node": "^2.13.1",

@@ -3,6 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 import { test, expect } from "@playwright/test";
+import AxeBuilder from "@axe-core/playwright";
 
 test.describe("default", () => {
 	test.beforeEach(async ({ page }) => {
@@ -154,6 +155,23 @@ test.describe("@a11y", () => {
 		// Ensure no tooltip is rendered
 		const tooltips = await page.locator('[role="tooltip"]').count();
 		expect(tooltips).toBe(0);
+	});
+
+	test("Axe Page Scan", async ({ page }) => {
+		await page.goto("/tests/tooltip");
+
+		const button = page.getByRole("button");
+		const tooltip = page.getByRole("tooltip");
+
+		await expect(button).toBeVisible();
+		await expect(tooltip).toBeHidden();
+
+		await page.keyboard.press("Tab");
+		await expect(tooltip).toBeVisible();
+
+		const axe = new AxeBuilder({ page });
+		const accessibilityScan = await axe.analyze();
+		expect(accessibilityScan.violations).toEqual([]);
 	});
 });
 

@@ -103,7 +103,7 @@ function VisualTestForCheckableControls() {
 			</Field>
 			<Field>
 				<Label>Radio control</Label>
-				<Radio />
+				<Radio value="A" />
 			</Field>
 			<Field>
 				<Label>Switch control</Label>
@@ -116,7 +116,7 @@ function VisualTestForCheckableControls() {
 				<Label>Checkbox control</Label>
 			</Field>
 			<Field>
-				<Radio />
+				<Radio value="A" />
 				<Label>Radio control</Label>
 			</Field>
 			<Field>
@@ -131,7 +131,7 @@ function VisualTestForCheckableControls() {
 			</Field>
 			<Field render={<Label />}>
 				<span>Radio control</span>
-				<Radio />
+				<Radio value="A" />
 			</Field>
 			<Field render={<Label />}>
 				<span>Switch control</span>
@@ -144,7 +144,7 @@ function VisualTestForCheckableControls() {
 				<span>Checkbox control</span>
 			</Field>
 			<Field render={<Label />}>
-				<Radio />
+				<Radio value="A" />
 				<span>Radio control</span>
 			</Field>
 			<Field render={<Label />}>

@@ -3,6 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 import { test, expect } from "@playwright/test";
+import AxeBuilder from "@axe-core/playwright";
 
 test.describe("default", () => {
 	test("wrapping input and label", async ({ page }) => {
@@ -53,5 +54,39 @@ test.describe("@visual", () => {
 	test("checkable controls", async ({ page }) => {
 		await page.goto("/tests/field?visual&controlType=checkable");
 		await expect(page.locator("body")).toHaveScreenshot();
+	});
+});
+
+test.describe("@a11y", () => {
+	test("Axe Page Scan", async ({ page }) => {
+		const axe = new AxeBuilder({ page });
+		const components = ["input", "textarea", "radio", "checkbox", "switch"];
+
+		for (const component of components) {
+			await page.goto(`/tests/field?control=${component}`);
+
+			if (component === "input" || component === "textarea") {
+				const textbox = await page.getByRole("textbox");
+				await expect(textbox).toBeVisible();
+			}
+
+			if (component === "radio") {
+				const radio = await page.getByRole("radio");
+				await expect(radio).toBeVisible();
+			}
+
+			if (component === "checkbox") {
+				const checkbox = await page.getByRole("checkbox");
+				await expect(checkbox).toBeVisible();
+			}
+
+			if (component === "switch") {
+				const theSwitch = await page.getByRole("switch");
+				await expect(theSwitch).toBeVisible();
+			}
+
+			const accessibilityScan = await axe.analyze();
+			expect(accessibilityScan.violations).toEqual([]);
+		}
 	});
 });

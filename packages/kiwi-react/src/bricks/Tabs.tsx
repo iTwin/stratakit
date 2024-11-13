@@ -3,8 +3,10 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 import * as React from "react";
+import * as ReactDOM from "react-dom";
 import cx from "classnames";
 import * as Ariakit from "@ariakit/react";
+import { useControlledState } from "./~hooks.js";
 
 // ----------------------------------------------------------------------------
 
@@ -19,18 +21,29 @@ interface TabsProps
 	> {}
 
 function Tabs(props: TabsProps) {
-	const {
+	const { defaultSelectedId, selectOnMove, children } = props;
+
+	const [selectedId, setSelectedId] = useControlledState(
 		defaultSelectedId,
-		selectedId,
-		setSelectedId,
-		selectOnMove,
-		children,
-	} = props;
+		props.selectedId,
+		props.setSelectedId,
+	);
+
 	return (
 		<Ariakit.TabProvider
 			defaultSelectedId={defaultSelectedId}
 			selectedId={selectedId}
-			setSelectedId={setSelectedId}
+			setSelectedId={(id) => {
+				if (document.startViewTransition) {
+					document.startViewTransition(() => {
+						ReactDOM.flushSync(() => {
+							setSelectedId(id);
+						});
+					});
+				} else {
+					setSelectedId(id);
+				}
+			}}
 			selectOnMove={selectOnMove}
 		>
 			{children}
@@ -50,11 +63,20 @@ const TabList = React.forwardRef<
 	TabListProps
 >((props, forwardedRef) => {
 	const { tone = "neutral", ...rest } = props;
+
+	const id = React.useId().replaceAll(":", "_");
+	const viewTransitionName = `kiwi-tabs-active-tab-${id}`;
+
 	return (
 		<Ariakit.TabList
 			data-kiwi-tone={tone}
 			{...rest}
 			className={cx("🥝-tab-list", props.className)}
+			style={
+				{
+					"--kiwi-tabs-active-tab-view-transition-name": viewTransitionName,
+				} as React.CSSProperties
+			}
 			ref={forwardedRef}
 		/>
 	);

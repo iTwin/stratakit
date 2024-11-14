@@ -71,7 +71,7 @@ const TabList = React.forwardRef<
 	TabListProps
 >((props, forwardedRef) => {
 	const { tone = "neutral", ...rest } = props;
-	const viewTransitionName = `🥝${React.useId().replaceAll(":", "_")}`;
+	const viewTransitionName = `🥝active-stripe-${React.useId().replaceAll(":", "_")}`;
 
 	return (
 		<Ariakit.TabList

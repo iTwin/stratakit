@@ -118,14 +118,14 @@ const TabPanel = React.forwardRef<
 		tab,
 		() => props.tabId ?? tab?.panels.item(id)?.tabId,
 	);
-	const activeId = Ariakit.useStoreState(tab, "activeId");
+	const selectedId = Ariakit.useStoreState(tab, "selectedId");
 
 	return (
 		<Ariakit.TabPanel
 			{...props}
 			id={id}
 			tabId={tabId}
-			hidden={activeId !== tabId}
+			hidden={selectedId !== tabId}
 			alwaysVisible
 			className={cx("🥝-tab-panel", props.className)}
 			ref={forwardedRef}

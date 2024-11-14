@@ -39,17 +39,20 @@ function Tabs(props: TabsProps) {
 		<Ariakit.TabProvider
 			defaultSelectedId={defaultSelectedId}
 			selectedId={selectedId}
-			setSelectedId={(id) => {
-				if (document.startViewTransition) {
-					document.startViewTransition(() => {
-						ReactDOM.flushSync(() => {
-							setSelectedId(id);
+			setSelectedId={React.useCallback(
+				(id: Ariakit.TabStoreState["selectedId"]) => {
+					if (document.startViewTransition) {
+						document.startViewTransition(() => {
+							ReactDOM.flushSync(() => {
+								setSelectedId(id);
+							});
 						});
-					});
-				} else {
-					setSelectedId(id);
-				}
-			}}
+					} else {
+						setSelectedId(id);
+					}
+				},
+				[setSelectedId],
+			)}
 			selectOnMove={selectOnMove}
 		>
 			{children}

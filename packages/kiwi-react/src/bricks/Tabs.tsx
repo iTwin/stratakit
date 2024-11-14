@@ -37,7 +37,6 @@ function Tabs(props: TabsProps) {
 
 	return (
 		<Ariakit.TabProvider
-			defaultSelectedId={defaultSelectedId}
 			selectedId={selectedId}
 			setSelectedId={React.useCallback(
 				(id: Ariakit.TabStoreState["selectedId"]) => {

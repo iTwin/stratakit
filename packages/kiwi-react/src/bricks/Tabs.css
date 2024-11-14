@@ -110,7 +110,10 @@
 			/* This pseudo-element adds the active stripe */
 			&::after {
 				background-color: var(--🥝tab-active-stripe-color);
-				view-transition-name: var(--kiwi-tabs-active-tab-view-transition-name);
+
+				@media (prefers-reduced-motion: no-preference) {
+					view-transition-name: var(--kiwi-tabs-active-tab-view-transition-name);
+				}
 
 				@media (forced-colors: active) {
 					background-color: SelectedItem;

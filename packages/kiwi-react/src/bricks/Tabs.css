@@ -153,5 +153,12 @@
 }
 
 .🥝-tab-panel {
-	outline-offset: -2px;
+	@layer base {
+		outline-offset: -2px;
+
+		/* Prevents stacking when multiple panels are mounted (during animation) */
+		&:not([data-open]) {
+			display: none !important;
+		}
+	}
 }

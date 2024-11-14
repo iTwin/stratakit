@@ -71,9 +71,7 @@ const TabList = React.forwardRef<
 	TabListProps
 >((props, forwardedRef) => {
 	const { tone = "neutral", ...rest } = props;
-
-	const id = React.useId().replaceAll(":", "_");
-	const viewTransitionName = `kiwi-tabs-active-tab-${id}`;
+	const viewTransitionName = `🥝${React.useId().replaceAll(":", "_")}`;
 
 	return (
 		<Ariakit.TabList

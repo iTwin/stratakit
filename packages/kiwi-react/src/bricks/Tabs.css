@@ -65,14 +65,6 @@
 			inset-inline: 0;
 			inset-block: 0 calc(var(--🥝tab-active-stripe-gap) * -1);
 		}
-
-		&::after {
-			content: "";
-			position: absolute;
-			block-size: var(--✨active-tab-stripe-size);
-			inset-inline: var(--✨padding-inline);
-			inset-block: auto calc(var(--🥝tab-active-stripe-gap) * -1);
-		}
 	}
 
 	@layer modifiers {
@@ -109,6 +101,11 @@
 
 			/* This pseudo-element adds the active stripe */
 			&::after {
+				content: "";
+				position: absolute;
+				block-size: var(--✨active-tab-stripe-size);
+				inset-inline: var(--✨padding-inline);
+				inset-block: auto calc(var(--🥝tab-active-stripe-gap) * -1);
 				background-color: var(--🥝tab-active-stripe-color);
 
 				@media (prefers-reduced-motion: no-preference) {

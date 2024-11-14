@@ -23,10 +23,10 @@ interface TabsProps
 function Tabs(props: TabsProps) {
 	const {
 		defaultSelectedId,
-		selectOnMove,
-		children,
 		selectedId: selectedIdProp,
 		setSelectedId: setSelectedIdProp,
+		selectOnMove,
+		children,
 	} = props;
 
 	const [selectedId, setSelectedId] = useControlledState(

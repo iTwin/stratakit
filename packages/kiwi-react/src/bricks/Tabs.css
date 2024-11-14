@@ -103,10 +103,10 @@
 			&::after {
 				content: "";
 				position: absolute;
+				background-color: var(--🥝tab-active-stripe-color);
 				block-size: var(--✨active-tab-stripe-size);
 				inset-inline: var(--✨padding-inline);
 				inset-block: auto calc(var(--🥝tab-active-stripe-gap) * -1);
-				background-color: var(--🥝tab-active-stripe-color);
 
 				@media (prefers-reduced-motion: no-preference) {
 					view-transition-name: var(--🥝tab-active-stripe-view-transition-name);

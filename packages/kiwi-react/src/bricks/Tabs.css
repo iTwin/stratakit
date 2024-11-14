@@ -112,7 +112,7 @@
 				background-color: var(--🥝tab-active-stripe-color);
 
 				@media (prefers-reduced-motion: no-preference) {
-					view-transition-name: var(--kiwi-tabs-active-tab-view-transition-name);
+					view-transition-name: var(--🥝tab-active-stripe-view-transition-name);
 				}
 
 				@media (forced-colors: active) {

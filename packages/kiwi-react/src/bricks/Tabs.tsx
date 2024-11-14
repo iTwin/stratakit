@@ -80,7 +80,7 @@ const TabList = React.forwardRef<
 			className={cx("🥝-tab-list", props.className)}
 			style={
 				{
-					"--kiwi-tabs-active-tab-view-transition-name": viewTransitionName,
+					"--🥝tab-active-stripe-view-transition-name": viewTransitionName,
 				} as React.CSSProperties
 			}
 			ref={forwardedRef}

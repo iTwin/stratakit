@@ -26,7 +26,8 @@ function TextAffix({ children }: React.PropsWithChildren) {
 function useInputParams() {
 	const [searchParams] = useSearchParams();
 	const disabled = searchParams.has("disabled");
-	return { disabled };
+	const defaultValue = searchParams.get("defaultValue") ?? undefined;
+	return { disabled, defaultValue };
 }
 
 export default function Page() {

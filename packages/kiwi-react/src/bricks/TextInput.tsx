@@ -56,7 +56,8 @@ const TextInput = React.forwardRef<React.ElementRef<"input">, TextInputProps>(
 						render={props.render || <input />}
 					/>
 				}
-				ref={forwardedRef}
+				// TODO: merge refs
+				ref={rootContext?.inputRef ?? forwardedRef}
 			/>
 		);
 	},
@@ -81,10 +82,11 @@ const TextInputRoot = React.forwardRef<
 	React.ElementRef<"div">,
 	TextInputRootProps
 >((props, forwardedRef) => {
-	const ref = React.useRef<HTMLDivElement | null>(null);
+	const ref = React.useRef<HTMLDivElement>(null);
+	const inputRef = React.useRef<HTMLInputElement>(null);
 	const [disabled, setDisabled] = React.useState<boolean | undefined>();
 	return (
-		<TextInputRootContext.Provider value={{ setDisabled }}>
+		<TextInputRootContext.Provider value={{ setDisabled, inputRef }}>
 			<Ariakit.Role.div
 				{...props}
 				data-kiwi-disabled={disabled}
@@ -95,7 +97,7 @@ const TextInputRoot = React.forwardRef<
 					if (e.defaultPrevented) return;
 					if (disabled) return;
 
-					const input = ref.current?.querySelector("input");
+					const input = inputRef.current;
 					if (!input) return;
 					if (e.target === input) return;
 
@@ -148,6 +150,7 @@ const TextInputText = React.forwardRef<
 const TextInputRootContext = React.createContext<
 	| {
 			setDisabled: (disabled: boolean | undefined) => void;
+			inputRef: React.RefObject<HTMLInputElement>;
 	  }
 	| undefined
 >(undefined);

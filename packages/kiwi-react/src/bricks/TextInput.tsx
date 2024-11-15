@@ -92,6 +92,7 @@ const TextInputRoot = React.forwardRef<
 				onPointerDown={(e) => {
 					props.onPointerDown?.(e);
 
+					if (e.defaultPrevented) return;
 					if (disabled) return;
 
 					const input = ref.current?.querySelector("input");

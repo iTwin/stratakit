@@ -85,7 +85,9 @@ const TextInputRoot = React.forwardRef<
 	const inputRef = React.useRef<HTMLInputElement>(null);
 	const [disabled, setDisabled] = React.useState<boolean | undefined>();
 	return (
-		<TextInputRootContext.Provider value={{ setDisabled, inputRef }}>
+		<TextInputRootContext.Provider
+			value={React.useMemo(() => ({ setDisabled, inputRef }), [])}
+		>
 			<Ariakit.Role.div
 				{...props}
 				data-kiwi-disabled={disabled}

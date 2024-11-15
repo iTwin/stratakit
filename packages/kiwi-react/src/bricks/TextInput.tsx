@@ -69,7 +69,7 @@ interface TextInputRootProps extends Ariakit.RoleProps<"div"> {}
  * ```tsx
  * <TextInput.Root>
  * 	<TextInput.Input defaultValue="Hello" />
- * 	<Icon href={...} />
+ * 	<TextInput.Icon href={...} />
  * </TextInput.Root>
  * ```
  */

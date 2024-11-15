@@ -82,7 +82,6 @@ const TextInputRoot = React.forwardRef<
 	React.ElementRef<"div">,
 	TextInputRootProps
 >((props, forwardedRef) => {
-	const ref = React.useRef<HTMLDivElement>(null);
 	const inputRef = React.useRef<HTMLInputElement>(null);
 	const [disabled, setDisabled] = React.useState<boolean | undefined>();
 	return (
@@ -104,8 +103,7 @@ const TextInputRoot = React.forwardRef<
 					e.preventDefault();
 					input.focus();
 				}}
-				// TODO: merge refs
-				ref={ref}
+				ref={forwardedRef}
 			/>
 		</TextInputRootContext.Provider>
 	);

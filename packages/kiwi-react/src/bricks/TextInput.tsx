@@ -40,12 +40,13 @@ interface TextInputProps extends Omit<BaseInputProps, "children" | "type"> {
 const TextInput = React.forwardRef<React.ElementRef<"input">, TextInputProps>(
 	(props, forwardedRef) => {
 		const fieldId = useFieldId();
-		const isInRootContext = React.useContext(TextInputRootContext);
+		const rootContext = React.useContext(TextInputRootContext);
+		rootContext?.setDisabled(props.disabled);
 		return (
 			<Ariakit.Role.input
 				id={fieldId}
 				{...props}
-				className={cx(!isInRootContext && "🥝-text-input", props.className)}
+				className={cx(!rootContext && "🥝-text-input", props.className)}
 				render={
 					<Ariakit.Focusable
 						accessibleWhenDisabled
@@ -78,9 +79,9 @@ const TextInputRoot = React.forwardRef<
 	TextInputRootProps
 >((props, forwardedRef) => {
 	const ref = React.useRef<HTMLDivElement | null>(null);
-	const disabled = useIsDisabled(ref);
+	const [disabled, setDisabled] = React.useState<boolean | undefined>();
 	return (
-		<TextInputRootContext.Provider value={true}>
+		<TextInputRootContext.Provider value={{ setDisabled }}>
 			<Ariakit.Role.div
 				{...props}
 				data-kiwi-disabled={disabled}
@@ -90,7 +91,7 @@ const TextInputRoot = React.forwardRef<
 
 					if (disabled) return;
 
-					const input = findInput(ref.current);
+					const input = ref.current?.querySelector("input");
 					if (!input) return;
 					if (e.target === input) return;
 
@@ -103,46 +104,6 @@ const TextInputRoot = React.forwardRef<
 		</TextInputRootContext.Provider>
 	);
 });
-
-// ----------------------------------------------------------------------------
-
-function findInput(container?: HTMLElement | null) {
-	return container?.querySelector("input") ?? undefined;
-}
-
-function isDisabled(input: HTMLInputElement) {
-	return input.getAttribute("aria-disabled") === "true";
-}
-
-// TODO: should return a ref callback instead once merge refs util is added
-function useIsDisabled(ref: React.RefObject<HTMLElement>) {
-	const [disabled, setDisabled] = React.useState(false);
-	// biome-ignore lint/correctness/useExhaustiveDependencies: merge refs
-	React.useEffect(() => {
-		const input = findInput(ref.current);
-		if (!input) return;
-
-		setDisabled(isDisabled(input));
-	}, []);
-	// biome-ignore lint/correctness/useExhaustiveDependencies: merge refs
-	React.useEffect(() => {
-		if (!ref.current) return;
-		const observer = new MutationObserver((mutationList) => {
-			const input = findInput(ref.current);
-			if (!input) return;
-			for (const mutation of mutationList) {
-				if (input !== mutation.target) continue;
-				setDisabled(isDisabled(input));
-			}
-		});
-		observer.observe(ref.current, {
-			subtree: true,
-			attributeFilter: ["aria-disabled"],
-		});
-		return () => observer.disconnect();
-	}, []);
-	return disabled;
-}
 
 // ----------------------------------------------------------------------------
 
@@ -180,7 +141,12 @@ const TextInputText = React.forwardRef<
 
 // ----------------------------------------------------------------------------
 
-const TextInputRootContext = React.createContext(false);
+const TextInputRootContext = React.createContext<
+	| {
+			setDisabled: (disabled: boolean | undefined) => void;
+	  }
+	| undefined
+>(undefined);
 
 // ----------------------------------------------------------------------------
 

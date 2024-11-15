@@ -108,6 +108,10 @@
 				inset-inline: var(--✨padding-inline);
 				inset-block: auto calc(var(--🥝tab-active-stripe-gap) * -1);
 
+				@media (prefers-reduced-motion: no-preference) {
+					view-transition-name: var(--🥝tab-active-stripe-view-transition-name);
+				}
+
 				@media (forced-colors: active) {
 					background-color: SelectedItem;
 				}
@@ -146,5 +150,12 @@
 }
 
 .🥝-tab-panel {
-	outline-offset: -2px;
+	@layer base {
+		outline-offset: -2px;
+
+		/* Prevents stacking when multiple panels are mounted (during animation) */
+		&:not([data-open]) {
+			display: none !important;
+		}
+	}
 }

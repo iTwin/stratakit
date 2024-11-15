@@ -67,3 +67,38 @@ export function useLatestRef<T>(value: T) {
 
 	return valueRef;
 }
+
+/**
+ * Returns a memoized callback ref that merges the provided refs.
+ *
+ * ```tsx
+ * const mergedRef = useMergedRefs(ref1, ref2);
+ * ```
+ *
+ * This is useful when you need to internally use a ref in a component
+ * and also need to forward its ref.
+ *
+ * ```tsx
+ * const internalRef = useRef(null);
+ * return <div ref={useMergedRefs(internalRef, forwardedRef)} />;
+ * ```
+ *
+ * @private
+ */
+export function useMergedRefs<T>(
+	...refs: ReadonlyArray<React.Ref<T> | React.LegacyRef<T> | undefined | null>
+) {
+	// biome-ignore lint/correctness/useExhaustiveDependencies: we are spreading the refs instead of referencing the array
+	return React.useCallback(
+		(instance: T | null) => {
+			for (const ref of refs) {
+				if (typeof ref === "function") {
+					ref(instance);
+				} else if (ref) {
+					(ref as React.MutableRefObject<T | null>).current = instance;
+				}
+			}
+		},
+		[...refs],
+	);
+}

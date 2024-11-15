@@ -41,7 +41,10 @@ const TextInput = React.forwardRef<React.ElementRef<"input">, TextInputProps>(
 	(props, forwardedRef) => {
 		const fieldId = useFieldId();
 		const rootContext = React.useContext(TextInputRootContext);
-		rootContext?.setDisabled(props.disabled);
+		const setDisabled = rootContext?.setDisabled;
+		React.useEffect(() => {
+			setDisabled?.(props.disabled);
+		}, [setDisabled, props.disabled]);
 		return (
 			<Ariakit.Role.input
 				id={fieldId}

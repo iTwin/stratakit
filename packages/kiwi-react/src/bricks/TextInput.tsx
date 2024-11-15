@@ -77,12 +77,23 @@ const TextInputRoot = React.forwardRef<
 	React.ElementRef<"div">,
 	TextInputRootProps
 >((props, forwardedRef) => {
+	const ref = React.useRef<HTMLDivElement | null>(null);
 	return (
 		<TextInputRootContext.Provider value={true}>
 			<Ariakit.Role.div
 				{...props}
 				className={cx("🥝-text-input", props.className)}
-				ref={forwardedRef}
+				onPointerDown={(e) => {
+					props.onPointerDown?.(e);
+
+					const input = ref.current?.querySelector("input");
+					if (e.target === input) return;
+
+					e.preventDefault();
+					input?.focus();
+				}}
+				// TODO: merge refs
+				ref={ref}
 			/>
 		</TextInputRootContext.Provider>
 	);

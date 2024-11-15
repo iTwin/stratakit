@@ -78,19 +78,24 @@ const TextInputRoot = React.forwardRef<
 	TextInputRootProps
 >((props, forwardedRef) => {
 	const ref = React.useRef<HTMLDivElement | null>(null);
+	const disabled = useIsDisabled(ref);
 	return (
 		<TextInputRootContext.Provider value={true}>
 			<Ariakit.Role.div
 				{...props}
+				data-kiwi-disabled={disabled}
 				className={cx("🥝-text-input", props.className)}
 				onPointerDown={(e) => {
 					props.onPointerDown?.(e);
 
-					const input = ref.current?.querySelector("input");
+					if (disabled) return;
+
+					const input = findInput(ref.current);
+					if (!input) return;
 					if (e.target === input) return;
 
 					e.preventDefault();
-					input?.focus();
+					input.focus();
 				}}
 				// TODO: merge refs
 				ref={ref}
@@ -98,6 +103,46 @@ const TextInputRoot = React.forwardRef<
 		</TextInputRootContext.Provider>
 	);
 });
+
+// ----------------------------------------------------------------------------
+
+function findInput(container?: HTMLElement | null) {
+	return container?.querySelector("input") ?? undefined;
+}
+
+function isDisabled(input: HTMLInputElement) {
+	return input.getAttribute("aria-disabled") === "true";
+}
+
+// TODO: should return a ref callback instead once merge refs util is added
+function useIsDisabled(ref: React.RefObject<HTMLElement>) {
+	const [disabled, setDisabled] = React.useState(false);
+	// biome-ignore lint/correctness/useExhaustiveDependencies: merge refs
+	React.useEffect(() => {
+		const input = findInput(ref.current);
+		if (!input) return;
+
+		setDisabled(isDisabled(input));
+	}, []);
+	// biome-ignore lint/correctness/useExhaustiveDependencies: merge refs
+	React.useEffect(() => {
+		if (!ref.current) return;
+		const observer = new MutationObserver((mutationList) => {
+			const input = findInput(ref.current);
+			if (!input) return;
+			for (const mutation of mutationList) {
+				if (input !== mutation.target) continue;
+				setDisabled(isDisabled(input));
+			}
+		});
+		observer.observe(ref.current, {
+			subtree: true,
+			attributeFilter: ["aria-disabled"],
+		});
+		return () => observer.disconnect();
+	}, []);
+	return disabled;
+}
 
 // ----------------------------------------------------------------------------
 

@@ -120,7 +120,13 @@
 			}
 		}
 
-		&:where(:disabled, [data-kiwi-disabled="true"], :has(:is(input, textarea):disabled)) {
+		&:where(
+				[disabled],
+				:disabled,
+				[aria-disabled="true"],
+				[data-kiwi-disabled="true"],
+				:has(:is(input, textarea):disabled)
+			) {
 			--🌀text-input-state: var(--🌀text-input-state--disabled);
 			color: var(--✨color--disabled);
 			cursor: var(--🥝input-cursor);

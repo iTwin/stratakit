@@ -52,10 +52,10 @@ test.describe("@visual", () => {
 	});
 
 	for (const type of ["input", "composition"] as const) {
-		test(`outline ${type}`, async ({ page }) => {
+		test(`focus outline ${type}`, async ({ page }) => {
 			await page.goto(toUrl("/tests/text-input", type));
 			const input = page.getByRole("textbox");
-			await input.click();
+			await input.focus();
 			await expect(page.locator("body")).toHaveScreenshot();
 		});
 

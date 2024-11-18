@@ -35,6 +35,7 @@ export const TreeItem = React.forwardRef<
 
 	const parentContext = React.useContext(TreeItemContext);
 	const level = parentContext ? parentContext.level + 1 : 0;
+	const isParentNode = React.Children.count(children) > 0;
 	return (
 		<TreeItemContext.Provider
 			value={React.useMemo(
@@ -46,6 +47,7 @@ export const TreeItem = React.forwardRef<
 		>
 			<ListItem.Root
 				{...rest}
+				aria-expanded={isParentNode ? "true" : undefined}
 				className={cx("🥝-tree-item", className)}
 				style={
 					{

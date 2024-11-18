@@ -37,6 +37,9 @@ importers:
       "@ariakit/react":
         specifier: "*"
         version: 0.4.13(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      "@axe-core/playwright":
+        specifier: ^4.10.0
+        version: 4.10.0(playwright-core@1.48.1)
       "@itwin/kiwi-icons":
         specifier: "*"
         version: link:../../packages/kiwi-icons
@@ -169,6 +172,14 @@ packages:
     peerDependencies:
       react: ^17.0.0 || ^18.0.0 || ^19.0.0
       react-dom: ^17.0.0 || ^18.0.0 || ^19.0.0
+
+  "@axe-core/playwright@4.10.0":
+    resolution:
+      {
+        integrity: sha512-kEr3JPEVUSnKIYp/egV2jvFj+chIjCjPp3K3zlpJMza/CB3TFw8UZNbI9agEC2uMz4YbgAOyzlbUy0QS+OofFA==,
+      }
+    peerDependencies:
+      playwright-core: ">= 1.0.0"
 
   "@babel/code-frame@7.25.7":
     resolution:
@@ -1949,6 +1960,13 @@ packages:
         integrity: sha512-wvUjBtSGN7+7SjNpq/9M2Tg350UZD3q62IFZLbRAR1bSMlCo1ZaeW+BJ+D090e4hIIZLBcTDWe4Mh4jvUDajzQ==,
       }
     engines: { node: ">= 0.4" }
+
+  axe-core@4.10.2:
+    resolution:
+      {
+        integrity: sha512-RE3mdQ7P3FRSe7eqCWoeQ/Z9QXrtniSjp1wUjt5nRC3WIpz5rSCve6o3fsZ2aCpJtrZjSZgjwXAoTO5k4tEI0w==,
+      }
+    engines: { node: ">=4" }
 
   bail@2.0.2:
     resolution:
@@ -5356,6 +5374,11 @@ snapshots:
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
 
+  "@axe-core/playwright@4.10.0(playwright-core@1.48.1)":
+    dependencies:
+      axe-core: 4.10.2
+      playwright-core: 1.48.1
+
   "@babel/code-frame@7.25.7":
     dependencies:
       "@babel/highlight": 7.25.7
@@ -6361,6 +6384,8 @@ snapshots:
   available-typed-arrays@1.0.7:
     dependencies:
       possible-typed-array-names: 1.0.0
+
+  axe-core@4.10.2: {}
 
   bail@2.0.2: {}
 

@@ -46,7 +46,7 @@ type IconButtonExtraProps =
 			isActive?: boolean;
 	  }
 	| {
-			variant?: "solid";
+			variant?: Omit<React.ComponentProps<typeof Button>["variant"], "ghost">;
 			isActive?: never;
 	  };
 

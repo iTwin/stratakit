@@ -7,9 +7,8 @@
 	"scripts": {
 		"build": "pnpm --filter=\"./packages/**\" --filter=\"./apps/**\" build",
 		"build:icons": "pnpm --filter=@itwin/kiwi-icons build",
-		"dev": "npm run build:icons && npm run dev:app & npm run dev:ts &",
+		"dev": "npm run build:icons && npm run dev:app &",
 		"dev:app": "pnpm --filter=@itwin/test-app dev",
-		"dev:ts": "pnpm --filter=@itwin/kiwi-react dev",
 		"format": "biome format .",
 		"lint": "biome lint .",
 		"lint:copyright": "tsx internal/copyright-linter.ts",

@@ -5,11 +5,10 @@
 import {
 	Checkbox,
 	Field,
-	TextInput,
+	TextBox,
 	Label,
 	Radio,
 	Switch,
-	Textarea,
 } from "@itwin/kiwi-react/bricks";
 import { useSearchParams } from "@remix-run/react";
 
@@ -17,10 +16,10 @@ export const handle = { title: "Field" };
 
 const controls: Record<string, React.ElementType> = {
 	checkbox: Checkbox,
-	input: TextInput,
+	input: TextBox.Input,
 	radio: Radio,
 	switch: Switch,
-	textarea: Textarea,
+	textarea: TextBox.Textarea,
 };
 
 export default function Page() {
@@ -69,25 +68,25 @@ function VisualTestForTextControls() {
 			{/* Default layout for text controls (block) */}
 			<Field>
 				<Label>Text control</Label>
-				<TextInput />
+				<TextBox.Input />
 			</Field>
 
 			{/* Default layout for text controls (block) with wrapper rendered as a `<Label>` */}
 			<Field render={<Label />}>
 				<span>Textarea control</span>
-				<Textarea />
+				<TextBox.Textarea />
 			</Field>
 
 			{/* Inline layout for text controls */}
 			<Field layout="inline">
 				<Label>Text control</Label>
-				<TextInput />
+				<TextBox.Input />
 			</Field>
 
 			{/* Inline layout for text controls with wrapper rendered as a `<Label>` */}
 			<Field render={<Label />} layout="inline">
 				<span>Textarea control</span>
-				<Textarea />
+				<TextBox.Textarea />
 			</Field>
 		</div>
 	);
@@ -103,7 +102,7 @@ function VisualTestForCheckableControls() {
 			</Field>
 			<Field>
 				<Label>Radio control</Label>
-				<Radio />
+				<Radio value="A" />
 			</Field>
 			<Field>
 				<Label>Switch control</Label>
@@ -116,7 +115,7 @@ function VisualTestForCheckableControls() {
 				<Label>Checkbox control</Label>
 			</Field>
 			<Field>
-				<Radio />
+				<Radio value="A" />
 				<Label>Radio control</Label>
 			</Field>
 			<Field>
@@ -131,7 +130,7 @@ function VisualTestForCheckableControls() {
 			</Field>
 			<Field render={<Label />}>
 				<span>Radio control</span>
-				<Radio />
+				<Radio value="A" />
 			</Field>
 			<Field render={<Label />}>
 				<span>Switch control</span>
@@ -144,7 +143,7 @@ function VisualTestForCheckableControls() {
 				<span>Checkbox control</span>
 			</Field>
 			<Field render={<Label />}>
-				<Radio />
+				<Radio value="A" />
 				<span>Radio control</span>
 			</Field>
 			<Field render={<Label />}>

@@ -13,6 +13,8 @@ import {
 	staticVariablesTransform,
 } from "internal/visitors.js";
 
+const isDev = process.env.NODE_ENV === "development";
+
 const basename = process.env.BASE_FOLDER
 	? `/${process.env.BASE_FOLDER}/`
 	: undefined;
@@ -51,6 +53,9 @@ export default defineConfig({
 	},
 	preview: {
 		port: 1800, // prod server port
+	},
+	resolve: {
+		conditions: isDev ? ["@kiwi/source"] : undefined,
 	},
 });
 

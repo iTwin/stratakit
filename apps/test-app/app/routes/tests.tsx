@@ -21,10 +21,12 @@ export default function Page() {
 
 	return (
 		<>
-			<VisuallyHidden render={(props) => <h1 {...props} />}>
-				{title}
-			</VisuallyHidden>
-			<Outlet />
+			<main>
+				<VisuallyHidden render={(props) => <h1 {...props} />}>
+					{title}
+				</VisuallyHidden>
+				<Outlet />
+			</main>
 		</>
 	);
 }

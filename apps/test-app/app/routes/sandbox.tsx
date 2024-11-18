@@ -11,7 +11,7 @@ import {
 	DropdownMenu,
 	Icon,
 	IconButton,
-	TextInput,
+	TextBox,
 	VisuallyHidden,
 } from "@itwin/kiwi-react/bricks";
 import * as ListItem from "@itwin/kiwi-react-internal/src/bricks/ListItem.js";
@@ -450,7 +450,7 @@ function Subheader() {
 			</Ariakit.Role.h3>
 
 			{isSearching ? (
-				<TextInput
+				<TextBox.Input
 					className={styles.searchInput}
 					placeholder="Search"
 					ref={searchInputRef}

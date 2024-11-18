@@ -4,6 +4,6 @@
  *--------------------------------------------------------------------------------------------*/
 .🥝-tree-item {
 	@layer base {
-		padding-inline-start: calc(20px * var(--level));
+		padding-inline-start: calc(20px * var(--🥝tree-item-level));
 	}
 }

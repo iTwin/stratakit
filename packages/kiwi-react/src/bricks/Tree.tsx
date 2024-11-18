@@ -52,7 +52,7 @@ export const TreeItem = React.forwardRef<
 				style={
 					{
 						...style,
-						"--level": level,
+						"--🥝tree-item-level": level,
 					} as React.CSSProperties
 				}
 				role="treeitem"

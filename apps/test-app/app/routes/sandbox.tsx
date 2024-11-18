@@ -292,33 +292,6 @@ function useMoveable<T extends Element>(args?: UseMoveableArgs) {
 	const { onMove, onMoveEnd, onKeyMove } = args ?? {};
 	const ref = React.useRef<T>(null);
 	const relativePositionRef = React.useRef<number | undefined>(undefined);
-	React.useEffect(() => {
-		const onPointerUp = () => {
-			if (relativePositionRef.current === undefined) return;
-			relativePositionRef.current = undefined;
-			onMoveEnd?.();
-		};
-		document.addEventListener("pointerup", onPointerUp);
-		return () => {
-			document.removeEventListener("pointerup", onPointerUp);
-		};
-	}, [onMoveEnd]);
-	React.useEffect(() => {
-		const onPointerMove = (e: PointerEvent) => {
-			const relativePosition = relativePositionRef.current;
-			if (relativePosition === undefined) return;
-			const el = ref.current;
-			if (!el) return;
-
-			const rect = el.getBoundingClientRect();
-			const moveBy = e.clientX - relativePosition - rect.left;
-			onMove?.(moveBy);
-		};
-		document.addEventListener("pointermove", onPointerMove);
-		return () => {
-			document.removeEventListener("pointermove", onPointerMove);
-		};
-	}, [onMove]);
 	const moveableProps = React.useMemo<Partial<React.HTMLAttributes<T>>>(() => {
 		return {
 			onPointerDown: (e) => {
@@ -331,6 +304,23 @@ function useMoveable<T extends Element>(args?: UseMoveableArgs) {
 				const rect = el.getBoundingClientRect();
 				const relativeX = e.clientX - rect.left;
 				relativePositionRef.current = relativeX;
+
+				el.setPointerCapture(e.pointerId);
+			},
+			onPointerMove: (e) => {
+				const relativePosition = relativePositionRef.current;
+				if (relativePosition === undefined) return;
+				const el = ref.current;
+				if (!el) return;
+
+				const rect = el.getBoundingClientRect();
+				const moveBy = e.clientX - relativePosition - rect.left;
+				onMove?.(moveBy);
+			},
+			onPointerUp: () => {
+				if (relativePositionRef.current === undefined) return;
+				relativePositionRef.current = undefined;
+				onMoveEnd?.();
 			},
 			onKeyDown: (e) => {
 				switch (e.key) {
@@ -352,7 +342,7 @@ function useMoveable<T extends Element>(args?: UseMoveableArgs) {
 			},
 			ref,
 		};
-	}, [onKeyMove, onMoveEnd]);
+	}, [onKeyMove, onMoveEnd, onMove]);
 	return { moveableProps };
 }
 

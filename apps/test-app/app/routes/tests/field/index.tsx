@@ -5,11 +5,10 @@
 import {
 	Checkbox,
 	Field,
-	TextInput,
+	TextBox,
 	Label,
 	Radio,
 	Switch,
-	Textarea,
 } from "@itwin/kiwi-react/bricks";
 import { useSearchParams } from "@remix-run/react";
 
@@ -17,10 +16,10 @@ export const handle = { title: "Field" };
 
 const controls: Record<string, React.ElementType> = {
 	checkbox: Checkbox,
-	input: TextInput.Input,
+	input: TextBox.Input,
 	radio: Radio,
 	switch: Switch,
-	textarea: Textarea,
+	textarea: TextBox.Textarea,
 };
 
 export default function Page() {
@@ -69,25 +68,25 @@ function VisualTestForTextControls() {
 			{/* Default layout for text controls (block) */}
 			<Field>
 				<Label>Text control</Label>
-				<TextInput.Input />
+				<TextBox.Input />
 			</Field>
 
 			{/* Default layout for text controls (block) with wrapper rendered as a `<Label>` */}
 			<Field render={<Label />}>
 				<span>Textarea control</span>
-				<Textarea />
+				<TextBox.Textarea />
 			</Field>
 
 			{/* Inline layout for text controls */}
 			<Field layout="inline">
 				<Label>Text control</Label>
-				<TextInput.Input />
+				<TextBox.Input />
 			</Field>
 
 			{/* Inline layout for text controls with wrapper rendered as a `<Label>` */}
 			<Field render={<Label />} layout="inline">
 				<span>Textarea control</span>
-				<Textarea />
+				<TextBox.Textarea />
 			</Field>
 		</div>
 	);

@@ -7,6 +7,7 @@ import * as Ariakit from "@ariakit/react";
 import cx from "classnames";
 import { useFieldId } from "./Field.js";
 import { Icon } from "./Icon.js";
+import { useMergedRefs } from "./~hooks.js";
 
 // ----------------------------------------------------------------------------
 

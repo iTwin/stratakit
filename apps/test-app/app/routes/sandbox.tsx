@@ -322,6 +322,9 @@ function useMoveable<T extends Element>(args?: UseMoveableArgs) {
 	const moveableProps = React.useMemo<Partial<React.HTMLAttributes<T>>>(() => {
 		return {
 			onPointerDown: (e) => {
+				if (e.button !== 0) return; // left button only
+				if (e.ctrlKey) return; // ignore ctrl+click
+
 				const el = ref.current;
 				if (!el) return;
 

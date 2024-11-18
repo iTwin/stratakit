@@ -121,7 +121,7 @@ interface UseSplitterArgs {
 }
 
 // https://www.w3.org/WAI/ARIA/apg/patterns/windowsplitter/
-function useSplitter<TSplitter extends Element, TPanel extends Element>(
+function useSplitter<TSplitter extends HTMLElement, TPanel extends Element>(
 	args?: UseSplitterArgs,
 ) {
 	const { minSize, maxSize, labelledby, onCollapse } = args ?? {};
@@ -288,10 +288,16 @@ interface UseMoveableArgs {
 	onKeyMove?: (direction: 1 | -1) => void;
 }
 
-function useMoveable<T extends Element>(args?: UseMoveableArgs) {
+function useMoveable<T extends HTMLElement>(args?: UseMoveableArgs) {
 	const { onMove, onMoveEnd, onKeyMove } = args ?? {};
-	const ref = React.useRef<T>(null);
+	const ref = React.useRef<T | null>(null);
+	const removeTouchStart = React.useRef<(() => void) | undefined>(undefined);
 	const relativePositionRef = React.useRef<number | undefined>(undefined);
+	const handleMoveEnd = React.useCallback(() => {
+		if (relativePositionRef.current === undefined) return;
+		relativePositionRef.current = undefined;
+		onMoveEnd?.();
+	}, [onMoveEnd]);
 	const moveableProps = React.useMemo<Partial<React.HTMLAttributes<T>>>(() => {
 		return {
 			onPointerDown: (e) => {
@@ -317,11 +323,8 @@ function useMoveable<T extends Element>(args?: UseMoveableArgs) {
 				const moveBy = e.clientX - relativePosition - rect.left;
 				onMove?.(moveBy);
 			},
-			onPointerUp: () => {
-				if (relativePositionRef.current === undefined) return;
-				relativePositionRef.current = undefined;
-				onMoveEnd?.();
-			},
+			onPointerUp: handleMoveEnd,
+			onPointerCancel: handleMoveEnd,
 			onKeyDown: (e) => {
 				switch (e.key) {
 					case "ArrowLeft":
@@ -340,9 +343,23 @@ function useMoveable<T extends Element>(args?: UseMoveableArgs) {
 						break;
 				}
 			},
-			ref,
+			ref: (el: T | null) => {
+				ref.current = el;
+				removeTouchStart.current?.();
+				removeTouchStart.current = undefined;
+				if (!el) return;
+
+				const onTouchStart = (e: TouchEvent) => {
+					// onTouchStart prop doesn't prevent scrolling.
+					e.preventDefault();
+				};
+				el.addEventListener("touchstart", onTouchStart);
+				removeTouchStart.current = () => {
+					el.removeEventListener("touchstart", onTouchStart);
+				};
+			},
 		};
-	}, [onKeyMove, onMoveEnd, onMove]);
+	}, [onKeyMove, onMoveEnd, onMove, handleMoveEnd]);
 	return { moveableProps };
 }
 

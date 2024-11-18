@@ -2,8 +2,15 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-.🥝-tree-item {
+.🥝-tree-item:is(.🥝-list-item) {
 	@layer base {
 		padding-inline-start: calc(20px * var(--🥝tree-item-level));
+	}
+
+	@layer states {
+		/* TODO: combined states: active + hovered/pressed. */
+		&[data-kiwi-active="true"] {
+			--🌀list-item-state: var(--🌀list-item-state--active);
+		}
 	}
 }

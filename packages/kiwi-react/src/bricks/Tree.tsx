@@ -25,13 +25,14 @@ export const Tree = React.forwardRef<React.ElementRef<"div">, TreeProps>(
 
 interface TreeItemProps extends Omit<Ariakit.RoleProps<"div">, "content"> {
 	content?: React.ReactNode;
+	active?: boolean;
 }
 
 export const TreeItem = React.forwardRef<
 	React.ElementRef<"div">,
 	TreeItemProps
 >((props, forwardedRef) => {
-	const { content, children, className, style, ...rest } = props;
+	const { active, content, children, className, style, ...rest } = props;
 
 	const parentContext = React.useContext(TreeItemContext);
 	const level = parentContext ? parentContext.level + 1 : 0;
@@ -48,6 +49,7 @@ export const TreeItem = React.forwardRef<
 			<ListItem.Root
 				{...rest}
 				aria-expanded={isParentNode ? "true" : undefined}
+				data-kiwi-active={active}
 				className={cx("🥝-tree-item", className)}
 				style={
 					{

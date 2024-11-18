@@ -129,7 +129,7 @@
 			) {
 			--🌀text-input-state: var(--🌀text-input-state--disabled);
 			color: var(--✨color--disabled);
-			cursor: var(--🥝input-cursor);
+			--🥝input-cursor: not-allowed;
 		}
 	}
 

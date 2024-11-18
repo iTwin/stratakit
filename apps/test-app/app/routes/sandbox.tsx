@@ -36,6 +36,10 @@ const filterIcon = new URL("@itwin/kiwi-icons/filter.svg", import.meta.url)
 	.href;
 const dismissIcon = new URL("@itwin/kiwi-icons/dismiss.svg", import.meta.url)
 	.href;
+const chevronDown = new URL(
+	"@itwin/kiwi-icons/chevron-down.svg",
+	import.meta.url,
+).href;
 
 export default function Page() {
 	return (
@@ -142,8 +146,15 @@ type TreeItemProps = React.PropsWithChildren<{
 function TreeItem(props: TreeItemProps) {
 	return (
 		<Tree.Item
-			contentNode={
+			className={styles.treeItem}
+			content={
 				<>
+					<IconButton
+						icon={chevronDown}
+						className={styles.collapse}
+						label="Collapse"
+						variant="ghost"
+					/>
 					<Icon href={placeholderIcon} style={{ display: "inline" }} />
 					<ListItem.Content>{props.content}</ListItem.Content>
 				</>

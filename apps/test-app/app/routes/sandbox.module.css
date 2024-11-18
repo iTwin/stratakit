@@ -119,3 +119,9 @@
 		var(--kiwi-color-text-mono-faded) 33%
 	);
 }
+
+.treeItem:not([aria-expanded="true"]) {
+	.collapse {
+		display: none;
+	}
+}

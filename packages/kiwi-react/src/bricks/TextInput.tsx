@@ -6,6 +6,10 @@ import * as React from "react";
 import * as Ariakit from "@ariakit/react";
 import cx from "classnames";
 import { useFieldId } from "./Field.js";
+import { Icon } from "./Icon.js";
+import { useMergedRefs } from "./~hooks.js";
+
+// ----------------------------------------------------------------------------
 
 type BaseInputProps = Ariakit.FocusableProps<"input">;
 
@@ -24,24 +28,136 @@ interface TextInputProps extends Omit<BaseInputProps, "children" | "type"> {
 	>;
 }
 
-export const TextInput = React.forwardRef<
-	React.ElementRef<"input">,
-	TextInputProps
->((props, forwardedRef) => {
-	const fieldId = useFieldId();
+/**
+ * Input component that allows users to enter text based values.
+ *
+ * Example usage:
+ * ```tsx
+ * <TextInput.Input defaultValue="Hello" />
+ * ```
+ *
+ * To add additional decorations, see `TextInput.Root` component.
+ */
+const TextInput = React.forwardRef<React.ElementRef<"input">, TextInputProps>(
+	(props, forwardedRef) => {
+		const fieldId = useFieldId();
+		const rootContext = React.useContext(TextInputRootContext);
+		const setDisabled = rootContext?.setDisabled;
+		React.useEffect(() => {
+			setDisabled?.(props.disabled);
+		}, [setDisabled, props.disabled]);
+		return (
+			<Ariakit.Role.input
+				id={fieldId}
+				{...props}
+				className={cx({ "🥝-text-input": !rootContext }, props.className)}
+				render={
+					<Ariakit.Focusable
+						accessibleWhenDisabled
+						render={props.render || <input />}
+					/>
+				}
+				ref={useMergedRefs(rootContext?.inputRef, forwardedRef)}
+			/>
+		);
+	},
+);
 
+// ----------------------------------------------------------------------------
+
+interface TextInputRootProps extends Ariakit.RoleProps<"div"> {}
+
+/**
+ * Root component allows adding additional decorations to text based inputs.
+ *
+ * Example usage to add an end icon:
+ * ```tsx
+ * <TextInput.Root>
+ * 	<TextInput.Input defaultValue="Hello" />
+ * 	<TextInput.Icon href={...} />
+ * </TextInput.Root>
+ * ```
+ */
+const TextInputRoot = React.forwardRef<
+	React.ElementRef<"div">,
+	TextInputRootProps
+>((props, forwardedRef) => {
+	const inputRef = React.useRef<HTMLInputElement>(null);
+	const [disabled, setDisabled] = React.useState<boolean | undefined>();
 	return (
-		<Ariakit.Role.input
-			id={fieldId}
+		<TextInputRootContext.Provider
+			value={React.useMemo(() => ({ setDisabled, inputRef }), [])}
+		>
+			<Ariakit.Role.div
+				{...props}
+				data-kiwi-disabled={disabled}
+				className={cx("🥝-text-input", props.className)}
+				onPointerDown={(e) => {
+					props.onPointerDown?.(e);
+
+					if (e.defaultPrevented) return;
+					if (disabled) return;
+
+					if (e.target !== e.currentTarget) return;
+
+					e.preventDefault(); // Prevent default focus behavior
+					inputRef.current?.focus();
+				}}
+				ref={forwardedRef}
+			/>
+		</TextInputRootContext.Provider>
+	);
+});
+
+// ----------------------------------------------------------------------------
+
+interface TextInputIconProps extends React.ComponentProps<typeof Icon> {}
+
+const TextInputIcon = React.forwardRef<
+	React.ElementRef<typeof Icon>,
+	TextInputIconProps
+>((props, forwardedRef) => {
+	return (
+		<Icon
 			{...props}
-			className={cx("🥝-text-input", props.className)}
-			render={
-				<Ariakit.Focusable
-					accessibleWhenDisabled
-					render={props.render || <input />}
-				/>
-			}
+			className={cx("🥝-text-input-decoration", props.className)}
 			ref={forwardedRef}
 		/>
 	);
 });
+
+// ----------------------------------------------------------------------------
+
+interface TextInputTextProps extends Ariakit.RoleProps<"span"> {}
+
+const TextInputText = React.forwardRef<
+	React.ElementRef<"span">,
+	TextInputTextProps
+>((props, forwardedRef) => {
+	return (
+		<Ariakit.Role.span
+			{...props}
+			className={cx("🥝-text-input-decoration", props.className)}
+			ref={forwardedRef}
+		/>
+	);
+});
+
+// ----------------------------------------------------------------------------
+
+const TextInputRootContext = React.createContext<
+	| {
+			setDisabled: (disabled: boolean | undefined) => void;
+			inputRef: React.RefObject<HTMLInputElement>;
+	  }
+	| undefined
+>(undefined);
+
+// ----------------------------------------------------------------------------
+
+export {
+	TextInput as Input,
+	TextInputIcon as Icon,
+	TextInputText as Text,
+	TextInputRoot as Root,
+};

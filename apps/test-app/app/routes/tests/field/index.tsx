@@ -17,7 +17,7 @@ export const handle = { title: "Field" };
 
 const controls: Record<string, React.ElementType> = {
 	checkbox: Checkbox,
-	input: TextInput,
+	input: TextInput.Input,
 	radio: Radio,
 	switch: Switch,
 	textarea: Textarea,
@@ -69,7 +69,7 @@ function VisualTestForTextControls() {
 			{/* Default layout for text controls (block) */}
 			<Field>
 				<Label>Text control</Label>
-				<TextInput />
+				<TextInput.Input />
 			</Field>
 
 			{/* Default layout for text controls (block) with wrapper rendered as a `<Label>` */}
@@ -81,7 +81,7 @@ function VisualTestForTextControls() {
 			{/* Inline layout for text controls */}
 			<Field layout="inline">
 				<Label>Text control</Label>
-				<TextInput />
+				<TextInput.Input />
 			</Field>
 
 			{/* Inline layout for text controls with wrapper rendered as a `<Label>` */}

@@ -182,7 +182,7 @@ function Subheader() {
 			</Ariakit.Role.h3>
 
 			{isSearching ? (
-				<TextInput
+				<TextInput.Input
 					className={styles.searchInput}
 					placeholder="Search"
 					ref={searchInputRef}

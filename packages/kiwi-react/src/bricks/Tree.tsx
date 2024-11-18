@@ -23,15 +23,15 @@ export const Tree = React.forwardRef<React.ElementRef<"div">, TreeProps>(
 
 // ----------------------------------------------------------------------------
 
-interface TreeItemProps extends Ariakit.RoleProps<"div"> {
-	contentNode?: React.ReactNode;
+interface TreeItemProps extends Omit<Ariakit.RoleProps<"div">, "content"> {
+	content?: React.ReactNode;
 }
 
 export const TreeItem = React.forwardRef<
 	React.ElementRef<"div">,
 	TreeItemProps
 >((props, forwardedRef) => {
-	const { contentNode, children, className, style, ...rest } = props;
+	const { content, children, className, style, ...rest } = props;
 
 	const parentContext = React.useContext(TreeItemContext);
 	const level = parentContext ? parentContext.level + 1 : 0;
@@ -56,7 +56,7 @@ export const TreeItem = React.forwardRef<
 				role="treeitem"
 				ref={forwardedRef}
 			>
-				{contentNode}
+				{content}
 			</ListItem.Root>
 			{children}
 		</TreeItemContext.Provider>

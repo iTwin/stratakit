@@ -98,12 +98,10 @@ const TextInputRoot = React.forwardRef<
 					if (e.defaultPrevented) return;
 					if (disabled) return;
 
-					const input = inputRef.current;
-					if (!input) return;
-					if (e.target === input) return;
+					if (e.target !== e.currentTarget) return;
 
-					e.preventDefault();
-					input.focus();
+					e.preventDefault(); // Prevent default focus behavior
+					inputRef.current?.focus();
 				}}
 				ref={forwardedRef}
 			/>

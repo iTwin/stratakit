@@ -44,7 +44,7 @@ export default function Page() {
 		HTMLDivElement,
 		HTMLDivElement
 	>({
-		minSize: { px: 256 },
+		minSize: { px: 256, pct: 20 },
 		maxSize: { pct: 30 },
 		labelledby: leftPanelLabelId,
 	});
@@ -115,7 +115,7 @@ function clamp(value: number, min: number, max: number) {
 
 interface UseSplitterArgs {
 	onCollapse?: () => void;
-	minSize?: { px: number };
+	minSize?: { px: number; pct: number }; // same as `min(px, pct)`
 	maxSize?: { pct: number };
 	labelledby?: string;
 }
@@ -141,11 +141,16 @@ function useSplitter<TSplitter extends Element, TPanel extends Element>(
 		undefined,
 	);
 
-	const minValue = React.useMemo(() => {
+	const minSizePx = React.useMemo(() => {
 		if (!minSize) return undefined;
 		if (!containerSize) return undefined;
-		return clamp((minSize.px / containerSize) * 100, 0, 100);
+		return Math.min(minSize.px, (minSize.pct / 100) * containerSize);
 	}, [minSize, containerSize]);
+	const minValue = React.useMemo(() => {
+		if (minSizePx === undefined) return undefined;
+		if (!containerSize) return undefined;
+		return clamp((minSizePx / containerSize) * 100, 0, 100);
+	}, [minSizePx, containerSize]);
 	const maxValue = React.useMemo(() => {
 		if (!maxSize) return undefined;
 		if (!containerSize) return undefined;
@@ -265,7 +270,7 @@ function useSplitter<TSplitter extends Element, TPanel extends Element>(
 		};
 	}, [id, preferredSize]);
 
-	const panelMinSize = minSize === undefined ? undefined : `${minSize.px}px`;
+	const panelMinSize = minSize === undefined ? undefined : `${minSizePx}px`;
 	const panelMaxSize = React.useMemo(() => {
 		if (preferredSize !== undefined && maxSize !== undefined) {
 			return `min(${preferredSize}px, ${maxSize.pct}%)`;

@@ -24,6 +24,7 @@ const components = [
 	"Tabs",
 	"Textarea",
 	"TextInput",
+	"Tree",
 	"Tooltip",
 ];
 

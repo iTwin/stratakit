@@ -56,8 +56,7 @@ const TextInput = React.forwardRef<React.ElementRef<"input">, TextInputProps>(
 						render={props.render || <input />}
 					/>
 				}
-				// TODO: merge refs
-				ref={rootContext?.inputRef ?? forwardedRef}
+				ref={useMergedRefs(rootContext?.inputRef, forwardedRef)}
 			/>
 		);
 	},

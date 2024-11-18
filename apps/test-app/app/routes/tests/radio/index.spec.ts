@@ -3,6 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 import { test, expect } from "@playwright/test";
+import AxeBuilder from "@axe-core/playwright";
 
 test("default", async ({ page }) => {
 	await page.goto("/tests/radio", { waitUntil: "domcontentloaded" });
@@ -79,5 +80,18 @@ test.describe("@visual", () => {
 	test("disabled & checked", async ({ page }) => {
 		await page.goto("/tests/radio?visual=true&disabled=true&checked=true");
 		await expect(page.locator("body")).toHaveScreenshot();
+	});
+});
+
+test.describe("@a11y", () => {
+	test("Axe Page Scan", async ({ page }) => {
+		await page.goto("/tests/radio");
+
+		const radioA = page.getByRole("radio", { name: "A" });
+		await expect(radioA).toBeVisible();
+
+		const axe = new AxeBuilder({ page });
+		const accessibilityScan = await axe.analyze();
+		expect(accessibilityScan.violations).toEqual([]);
 	});
 });

@@ -36,7 +36,14 @@ export const TreeItem = React.forwardRef<
 	const parentContext = React.useContext(TreeItemContext);
 	const level = parentContext ? parentContext.level + 1 : 0;
 	return (
-		<TreeItemContext.Provider value={{ level }}>
+		<TreeItemContext.Provider
+			value={React.useMemo(
+				() => ({
+					level,
+				}),
+				[level],
+			)}
+		>
 			<ListItem.Root
 				{...rest}
 				className={cx("🥝-tree-item", className)}

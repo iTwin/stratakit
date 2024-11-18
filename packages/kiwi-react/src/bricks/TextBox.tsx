@@ -6,7 +6,9 @@ import * as React from "react";
 import * as Ariakit from "@ariakit/react";
 import cx from "classnames";
 import { useFieldId } from "./Field.js";
+import { Icon } from "./Icon.js";
 import { Textarea } from "./Textarea.js";
+import { useMergedRefs } from "./~hooks.js";
 
 // ----------------------------------------------------------------------------
 
@@ -42,19 +44,23 @@ const TextBoxInput = React.forwardRef<
 	TextBoxInputProps
 >((props, forwardedRef) => {
 	const fieldId = useFieldId();
-	const isInRootContext = React.useContext(TextBoxRootContext);
+	const rootContext = React.useContext(TextBoxRootContext);
+	const setDisabled = rootContext?.setDisabled;
+	React.useEffect(() => {
+		setDisabled?.(props.disabled);
+	}, [setDisabled, props.disabled]);
 	return (
 		<Ariakit.Role.input
 			id={fieldId}
 			{...props}
-			className={cx(!isInRootContext && "🥝-text-box", props.className)}
+			className={cx({ "🥝-text-box": !rootContext }, props.className)}
 			render={
 				<Ariakit.Focusable
 					accessibleWhenDisabled
 					render={props.render || <input />}
 				/>
 			}
-			ref={forwardedRef}
+			ref={useMergedRefs(rootContext?.inputRef, forwardedRef)}
 		/>
 	);
 });
@@ -70,17 +76,33 @@ interface TextBoxRootProps extends Ariakit.RoleProps<"div"> {}
  * ```tsx
  * <TextBox.Root>
  * 	<TextBox.Input defaultValue="Hello" />
- * 	<Icon href={...} />
+ * 	<TextBox.Icon href={...} />
  * </TextBox.Root>
  * ```
  */
 const TextBoxRoot = React.forwardRef<React.ElementRef<"div">, TextBoxRootProps>(
 	(props, forwardedRef) => {
+		const inputRef = React.useRef<HTMLInputElement>(null);
+		const [disabled, setDisabled] = React.useState<boolean | undefined>();
 		return (
-			<TextBoxRootContext.Provider value={true}>
+			<TextBoxRootContext.Provider
+				value={React.useMemo(() => ({ setDisabled, inputRef }), [])}
+			>
 				<Ariakit.Role.div
 					{...props}
+					data-kiwi-disabled={disabled}
 					className={cx("🥝-text-box", props.className)}
+					onPointerDown={(e) => {
+						props.onPointerDown?.(e);
+
+						if (e.defaultPrevented) return;
+						if (disabled) return;
+
+						if (e.target !== e.currentTarget) return;
+
+						e.preventDefault(); // Prevent default focus behavior
+						inputRef.current?.focus();
+					}}
 					ref={forwardedRef}
 				/>
 			</TextBoxRootContext.Provider>
@@ -90,8 +112,54 @@ const TextBoxRoot = React.forwardRef<React.ElementRef<"div">, TextBoxRootProps>(
 
 // ----------------------------------------------------------------------------
 
-const TextBoxRootContext = React.createContext(false);
+interface TextBoxIconProps extends React.ComponentProps<typeof Icon> {}
+
+const TextBoxIcon = React.forwardRef<
+	React.ElementRef<typeof Icon>,
+	TextBoxIconProps
+>((props, forwardedRef) => {
+	return (
+		<Icon
+			{...props}
+			className={cx("🥝-text-box-decoration", props.className)}
+			ref={forwardedRef}
+		/>
+	);
+});
 
 // ----------------------------------------------------------------------------
 
-export { TextBoxInput as Input, TextBoxRoot as Root, Textarea };
+interface TextBoxTextProps extends Ariakit.RoleProps<"span"> {}
+
+const TextBoxText = React.forwardRef<
+	React.ElementRef<"span">,
+	TextBoxTextProps
+>((props, forwardedRef) => {
+	return (
+		<Ariakit.Role.span
+			{...props}
+			className={cx("🥝-text-box-decoration", props.className)}
+			ref={forwardedRef}
+		/>
+	);
+});
+
+// ----------------------------------------------------------------------------
+
+const TextBoxRootContext = React.createContext<
+	| {
+			setDisabled: (disabled: boolean | undefined) => void;
+			inputRef: React.RefObject<HTMLInputElement>;
+	  }
+	| undefined
+>(undefined);
+
+// ----------------------------------------------------------------------------
+
+export {
+	TextBoxRoot as Root,
+	TextBoxInput as Input,
+	Textarea,
+	TextBoxIcon as Icon,
+	TextBoxText as Text,
+};

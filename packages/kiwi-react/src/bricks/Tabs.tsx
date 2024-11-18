@@ -3,8 +3,10 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 import * as React from "react";
+import * as ReactDOM from "react-dom";
 import cx from "classnames";
 import * as Ariakit from "@ariakit/react";
+import { useControlledState } from "./~hooks.js";
 
 // ----------------------------------------------------------------------------
 
@@ -21,16 +23,35 @@ interface TabsProps
 function Tabs(props: TabsProps) {
 	const {
 		defaultSelectedId,
-		selectedId,
-		setSelectedId,
+		selectedId: selectedIdProp,
+		setSelectedId: setSelectedIdProp,
 		selectOnMove,
 		children,
 	} = props;
+
+	const [selectedId, setSelectedId] = useControlledState(
+		defaultSelectedId,
+		selectedIdProp,
+		setSelectedIdProp,
+	);
+
 	return (
 		<Ariakit.TabProvider
-			defaultSelectedId={defaultSelectedId}
 			selectedId={selectedId}
-			setSelectedId={setSelectedId}
+			setSelectedId={React.useCallback(
+				(id: Ariakit.TabStoreState["selectedId"]) => {
+					if (document.startViewTransition) {
+						document.startViewTransition(() => {
+							ReactDOM.flushSync(() => {
+								setSelectedId(id);
+							});
+						});
+					} else {
+						setSelectedId(id);
+					}
+				},
+				[setSelectedId],
+			)}
 			selectOnMove={selectOnMove}
 		>
 			{children}
@@ -40,16 +61,28 @@ function Tabs(props: TabsProps) {
 
 // ----------------------------------------------------------------------------
 
-interface TabListProps extends Ariakit.RoleProps<"div"> {}
+interface TabListProps extends Ariakit.RoleProps<"div"> {
+	/** @default "neutral" */
+	tone?: "neutral" | "accent";
+}
 
 const TabList = React.forwardRef<
 	React.ElementRef<typeof Ariakit.TabList>,
 	TabListProps
 >((props, forwardedRef) => {
+	const { tone = "neutral", ...rest } = props;
+	const viewTransitionName = `🥝active-stripe-${React.useId().replaceAll(":", "_")}`;
+
 	return (
 		<Ariakit.TabList
-			{...props}
+			data-kiwi-tone={tone}
+			{...rest}
 			className={cx("🥝-tab-list", props.className)}
+			style={
+				{
+					"--🥝tab-active-stripe-view-transition-name": viewTransitionName,
+				} as React.CSSProperties
+			}
 			ref={forwardedRef}
 		/>
 	);

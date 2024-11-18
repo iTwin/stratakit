@@ -2,7 +2,7 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-import { TextBox, Label, Icon } from "@itwin/kiwi-react/bricks";
+import { TextBox, Label } from "@itwin/kiwi-react/bricks";
 import { useSearchParams } from "@remix-run/react";
 import { useId } from "react";
 
@@ -15,16 +15,17 @@ const placeholderIcon = new URL(
 
 function TextAffix({ children }: React.PropsWithChildren) {
 	return (
-		<span style={{ color: "var(--kiwi-color-text-neutral-tertiary)" }}>
+		<TextBox.Text style={{ color: "var(--kiwi-color-text-neutral-tertiary)" }}>
 			{children}
-		</span>
+		</TextBox.Text>
 	);
 }
 
 function useInputParams() {
 	const [searchParams] = useSearchParams();
 	const disabled = searchParams.has("disabled");
-	return { disabled };
+	const defaultValue = searchParams.get("defaultValue") ?? undefined;
+	return { disabled, defaultValue };
 }
 
 export default function Page() {
@@ -59,7 +60,7 @@ function CompositionTest() {
 			<Label htmlFor={id}>Fruit</Label>
 			<TextBox.Root>
 				<TextBox.Input id={id} {...inputParams} />
-				<Icon href={placeholderIcon} />
+				<TextBox.Icon href={placeholderIcon} />
 			</TextBox.Root>
 		</div>
 	);
@@ -73,24 +74,24 @@ function VisualTest() {
 				<TextBox.Input defaultValue="Value" />
 			</TextBox.Root>
 			<TextBox.Root>
-				<Icon href={placeholderIcon} />
+				<TextBox.Icon href={placeholderIcon} />
 				<TextBox.Input defaultValue="Value" />
 			</TextBox.Root>
 			<TextBox.Root>
 				<TextBox.Input defaultValue="Value" />
-				<Icon href={placeholderIcon} />
+				<TextBox.Icon href={placeholderIcon} />
 			</TextBox.Root>
 			<TextBox.Root>
-				<Icon href={placeholderIcon} />
+				<TextBox.Icon href={placeholderIcon} />
 				<TextBox.Input defaultValue="Value" />
-				<Icon href={placeholderIcon} />
+				<TextBox.Icon href={placeholderIcon} />
 			</TextBox.Root>
 			<TextBox.Root>
-				<Icon href={placeholderIcon} />
+				<TextBox.Icon href={placeholderIcon} />
 				<TextAffix>%</TextAffix>
 				<TextBox.Input defaultValue="Value" />
 				<TextAffix>%</TextAffix>
-				<Icon href={placeholderIcon} />
+				<TextBox.Icon href={placeholderIcon} />
 			</TextBox.Root>
 		</div>
 	);

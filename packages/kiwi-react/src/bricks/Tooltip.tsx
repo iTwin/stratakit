@@ -5,8 +5,11 @@
 import * as React from "react";
 import cx from "classnames";
 import * as Ariakit from "@ariakit/react";
+import { useControlledState } from "./~hooks.js";
 
-interface TooltipProps extends Omit<Ariakit.TooltipProps, "store" | "content"> {
+interface TooltipProps
+	extends Omit<Ariakit.TooltipProps, "store" | "content">,
+		Pick<Ariakit.TooltipProviderProps, "defaultOpen" | "setOpen"> {
 	/**
 	 * The content to be displayed inside the tooltip.
 	 */
@@ -53,8 +56,32 @@ export const Tooltip = React.forwardRef<
 		className,
 		type = "description",
 		id = React.useId(),
+		defaultOpen: defaultOpenProp,
+		open: openProp,
+		setOpen: setOpenProp,
+		unmountOnHide = type === "none",
 		...rest
 	} = props;
+
+	const [open, setOpen] = useControlledState(
+		defaultOpenProp,
+		openProp,
+		setOpenProp,
+	);
+
+	const store = Ariakit.useTooltipStore();
+	const wrapper = Ariakit.useStoreState(store, (state) => state.popoverElement);
+
+	React.useEffect(
+		function showTooltipOnMount() {
+			// When using unmountOnHide, we need to wait for the wrapper element to
+			// be mounted before we can call `togglePopover` on it.
+			if (unmountOnHide && open) {
+				wrapper?.togglePopover?.(true);
+			}
+		},
+		[open, wrapper, unmountOnHide],
+	);
 
 	// Determine the correct aria attribute dynamically
 	const ariaProps =
@@ -66,14 +93,27 @@ export const Tooltip = React.forwardRef<
 
 	return (
 		<>
-			<Ariakit.TooltipProvider>
+			<Ariakit.TooltipProvider
+				store={store}
+				open={open}
+				setOpen={React.useCallback(
+					(open: boolean) => {
+						setOpen(open);
+						wrapper?.togglePopover?.(open);
+					},
+					[setOpen, wrapper],
+				)}
+			>
 				<Ariakit.TooltipAnchor render={children} {...ariaProps} />
 				<Ariakit.Tooltip
-					unmountOnHide={type === "none"}
 					{...rest}
+					unmountOnHide={unmountOnHide}
 					className={cx("🥝-tooltip", className)}
 					ref={forwardedRef}
 					id={id}
+					style={{ zIndex: supportsPopover ? undefined : 9999, ...props.style }}
+					wrapperProps={{ popover: "manual" } as React.ComponentProps<"div">}
+					portal={!supportsPopover}
 				>
 					{content}
 				</Ariakit.Tooltip>
@@ -81,3 +121,7 @@ export const Tooltip = React.forwardRef<
 		</>
 	);
 });
+
+const isBrowser = typeof document !== "undefined";
+
+const supportsPopover = isBrowser && "popover" in HTMLElement.prototype;

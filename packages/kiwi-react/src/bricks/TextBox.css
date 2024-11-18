@@ -22,85 +22,82 @@
 	--✨color--disabled: var(--kiwi-color-text-neutral-disabled);
 	--✨height: 1.5rem;
 	--✨padding-inline: 8px;
-	--✨padding-block: 4px;
+	/* Dynamically adjust the padding to avoid issues with baseline alignment */
+	--✨padding-block: max(0px, (var(--✨height) - 2px - 1lh) / 2);
+	--✨gap: 4px;
+	--✨outline: 2px solid var(--kiwi-color-border-accent-strong);
+	--✨outline-offset: 1px;
 
 	@layer base {
-		appearance: none;
+		cursor: var(--🥝text-box-cursor);
 		font-size: 0.75rem;
-		border: 1px solid transparent;
-
-		display: inline-flex;
-		align-items: center;
-		justify-content: flex-start;
 
 		min-block-size: var(--✨height);
+		padding-inline: var(--✨padding-inline);
 		border-radius: 4px;
 
-		background-color: var(--🌀text-box-state--default, var(--✨bg--default))
-			var(--🌀text-box-state--hover, var(--✨bg--hover))
-			var(--🌀text-box-state--disabled, var(--✨bg--disabled));
-		border-color: var(--🌀text-box-state--default, var(--✨border--default))
-			var(--🌀text-box-state--hover, var(--✨border--hover))
-			var(--🌀text-box-state--disabled, var(--✨border--disabled));
+		background-color: var(--🥝text-box-background-color);
 		box-shadow: 0px 1px 2px 0px #00000029 inset, 0px 2px 4px 0px #00000029 inset;
 		color: var(--✨color--default);
 		transition: all 150ms ease-out;
 		transition-property: background-color, border-color;
 
-		&::placeholder {
-			color: var(--✨color--placeholder);
-			opacity: 1;
+		--🥝text-box-cursor: text;
+		--🥝text-box-background-color: var(--🌀text-box-state--default, var(--✨bg--default))
+			var(--🌀text-box-state--hover, var(--✨bg--hover))
+			var(--🌀text-box-state--disabled, var(--✨bg--disabled));
+		--🥝text-box-border-color: var(--🌀text-box-state--default, var(--✨border--default))
+			var(--🌀text-box-state--hover, var(--✨border--hover))
+			var(--🌀text-box-state--disabled, var(--✨border--disabled));
+
+		/* Styles specific to wrapper ("root") */
+		&:where(:not(input, textarea)) {
+			position: relative;
+			display: inline-flex;
+			align-items: center;
+			gap: var(--✨gap);
+
+			/* This pseudo-element is used to place a border which does not occupy space. */
+			&::before {
+				content: "";
+				position: absolute;
+				inset: 0;
+				border-radius: inherit;
+				pointer-events: none;
+				border: 1px solid var(--🥝text-box-border-color);
+				transition: border-color 150ms ease-out;
+			}
 		}
 
-		&:where(input, textarea) {
+		/* Styles specific to input/textarea (self and nested) */
+		&:where(input, textarea),
+		:where(input, textarea) {
+			appearance: none;
+			line-height: 1.3; /* This is a safe value for Inter — lower values will be ignored. */
+			border: 1px solid var(--🥝text-box-border-color);
+			cursor: var(--🥝text-box-cursor);
 			padding-block: var(--✨padding-block);
-			padding-inline: var(--✨padding-inline);
+
+			&::placeholder {
+				color: var(--✨color--placeholder);
+				opacity: 1;
+			}
 		}
 
-		&:where(textarea) {
+		/* Styles specific to textarea (self and nested) */
+		&:where(textarea),
+		:where(textarea) {
 			resize: vertical;
 			resize: block;
 		}
 
-		&:not(:where(input, textarea)) {
-			gap: 4px;
-			overflow: hidden;
-
-			&:has(input:not(:first-child)) {
-				padding-inline-start: var(--✨padding-inline);
-			}
-
-			&:has(input:not(:last-child)) {
-				padding-inline-end: var(--✨padding-inline);
-			}
-
-			&:has(input:focus) {
-				outline: 2px solid var(--kiwi-color-border-accent-strong);
-				outline-offset: 1px;
-			}
-
-			input {
-				flex-grow: 1;
-				min-inline-size: 1rem;
-				align-self: stretch;
-				border-width: 0;
-				background-color: transparent;
-				outline: unset;
-				padding-block: var(--✨padding-block);
-
-				&:where(:first-child) {
-					padding-inline-start: var(--✨padding-inline);
-				}
-
-				&:where(:last-child) {
-					padding-inline-end: var(--✨padding-inline);
-				}
-			}
-
-			svg {
-				flex-shrink: 0;
-				max-inline-size: initial;
-			}
+		/* Styles specific to input/textarea (nested only, "invisible") */
+		:where(input, textarea) {
+			border: none;
+			background-color: var(--🥝background-color);
+			outline: unset;
+			flex: 999;
+			align-self: stretch;
 		}
 	}
 
@@ -111,18 +108,42 @@
 			}
 		}
 
-		&:where(:disabled) {
+		&:where(:has(:is(input, textarea):focus-visible)) {
+			outline: var(--✨outline);
+			outline-offset: var(--✨outline-offset);
+		}
+
+		@supports not selector(:has(+ *)) {
+			&:where(:not(input, textarea):focus-within) {
+				outline: var(--✨outline);
+				outline-offset: var(--✨outline-offset);
+			}
+		}
+
+		&:where(
+				[disabled],
+				:disabled,
+				[aria-disabled="true"],
+				[data-kiwi-disabled="true"],
+				:has(:is(input, textarea):disabled)
+			) {
 			--🌀text-box-state: var(--🌀text-box-state--disabled);
 			color: var(--✨color--disabled);
-			cursor: not-allowed;
+			--🥝text-box-cursor: not-allowed;
 		}
 	}
 
 	@layer base.🌀 {
-		/* Cyclic toggles for default/hover/active/disabled states. See https://kizu.dev/cyclic-toggles/ */
+		/* Cyclic toggles for default/hover/disabled states. See https://kizu.dev/cyclic-toggles/ */
 		--🌀text-box-state: var(--🌀text-box-state--default);
 		--🌀text-box-state--default: var(--🌀text-box-state,);
 		--🌀text-box-state--hover: var(--🌀text-box-state,);
 		--🌀text-box-state--disabled: var(--🌀text-box-state,);
+	}
+}
+
+.🥝-text-box-decoration {
+	@layer base {
+		flex-shrink: 0;
 	}
 }

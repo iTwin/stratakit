@@ -29,6 +29,7 @@
 	--✨border--disabled: transparent;
 
 	@layer base {
+		--🥝checkbox-color-svg-unchecked: transparent;
 		--🥝checkbox-color-svg: var(--kiwi-color-icon-neutral-emphasis);
 		--🥝checkbox-border-radius: 4px;
 
@@ -47,7 +48,7 @@
 			var(--🌀checkbox-visual-state--checked-hover, var(--✨bg--checked-hover))
 			var(--🌀checkbox-visual-state--disabled, var(--✨bg--disabled));
 		border-radius: var(--🥝checkbox-border-radius);
-		color: var(--🌀checkbox-aria-state--unchecked, transparent)
+		color: var(--🌀checkbox-aria-state--unchecked, var(--🥝checkbox-color-svg-unchecked))
 			var(--🌀checkbox-aria-state--checked, var(--🥝checkbox-color-svg))
 			var(--🌀checkbox-aria-state--indeterminate, var(--🥝checkbox-color-svg));
 		transition: all 150ms ease-out;
@@ -93,6 +94,15 @@
 			@media (forced-colors: active) {
 				background-color: CanvasText;
 			}
+		}
+	}
+
+	@layer modifiers {
+		&:where([data-kiwi-custom-icon]) {
+			background: none;
+			box-shadow: none;
+			vertical-align: middle;
+			--🥝checkbox-color-svg-unchecked: var(--kiwi-color-icon-neutral-base);
 		}
 	}
 

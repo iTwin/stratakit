@@ -16,6 +16,7 @@ export default function Page() {
 	const visualTest = searchParams.get("visual") === "true";
 
 	const id = useId();
+	const customIconProps = useCustomIcons();
 
 	if (visualTest) {
 		return <VisualTest />;
@@ -27,6 +28,7 @@ export default function Page() {
 				id={id}
 				defaultChecked={indeterminate ? "mixed" : checked}
 				disabled={disabled}
+				{...customIconProps}
 			/>
 			<Label htmlFor={id}>Toggle me</Label>
 		</>
@@ -40,6 +42,7 @@ function VisualTest() {
 	const disabled = searchParams.get("disabled") === "true";
 
 	const id = useId();
+	const customIconProps = useCustomIcons();
 
 	return (
 		<>
@@ -47,8 +50,25 @@ function VisualTest() {
 				id={id}
 				defaultChecked={indeterminate ? "mixed" : checked}
 				disabled={disabled}
+				{...customIconProps}
 			/>
 			<VisuallyHidden render={<Label htmlFor={id} />}>Toggle me</VisuallyHidden>
 		</>
 	);
+}
+
+function useCustomIcons() {
+	const [searchParams] = useSearchParams();
+	const customIcons = searchParams.has("custom-icons");
+
+	return {
+		"data-kiwi-custom-icon": customIcons ? "" : undefined,
+		style: customIcons
+			? ({
+					"--🥝checkbox-unchecked-svg": `url("${new URL("@itwin/kiwi-icons/visibility-hide.svg", import.meta.url).href}")`,
+					"--🥝checkbox-checkmark-svg": `url("${new URL("@itwin/kiwi-icons/visibility-show.svg", import.meta.url).href}")`,
+					"--🥝checkbox-indeterminate-svg": `url("${new URL("@itwin/kiwi-icons/visibility-show.svg", import.meta.url).href}")`,
+				} as React.CSSProperties)
+			: {},
+	};
 }

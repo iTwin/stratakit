@@ -81,6 +81,7 @@ const TabList = React.forwardRef<
 			style={
 				{
 					"--🥝tab-active-stripe-view-transition-name": viewTransitionName,
+					...props.style,
 				} as React.CSSProperties
 			}
 			ref={forwardedRef}

@@ -18,7 +18,7 @@
 @import "./ListItem.css" layer(kiwi.components);
 @import "./Switch.css" layer(kiwi.components);
 @import "./Tabs.css" layer(kiwi.components);
-@import "./TextInput.css" layer(kiwi.components);
+@import "./TextBox.css" layer(kiwi.components);
 @import "./Tooltip.css" layer(kiwi.components);
 
 @import "./Field.css" layer(kiwi.components);

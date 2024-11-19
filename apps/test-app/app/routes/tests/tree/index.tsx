@@ -4,6 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 import { useSearchParams } from "@remix-run/react";
 import { Icon, IconButton, Tree } from "@itwin/kiwi-react/bricks";
+import React from "react";
 
 export const handle = { title: "Tree" };
 
@@ -12,7 +13,7 @@ const placeholderIcon = new URL(
 	import.meta.url,
 ).href;
 const expanderIcon = new URL(
-	"@itwin/kiwi-icons/chevron-right.svg",
+	"@itwin/kiwi-icons/chevron-down.svg",
 	import.meta.url,
 ).href;
 const unlockIcon = new URL(
@@ -25,42 +26,54 @@ const showIcon = new URL(
 ).href;
 
 export default function Page() {
-	const [searchParams] = useSearchParams();
-	const active = searchParams.has("active");
-	const visual = searchParams.has("visual");
-
-	if (visual) {
-		return <VisualTest />;
-	}
 	return (
 		<Tree.Root>
-			<Tree.Item content="Item 1" active={active}>
-				<Tree.Item content="Item 1.1" active={active} />
-				<Tree.Item content="Item 1.2" active={active} />
-				<Tree.Item content="Item 1.3" active={active} />
-			</Tree.Item>
-			<Tree.Item content="Item 2" active={active}>
-				<Tree.Item content="Item 2.1" active={active} />
-			</Tree.Item>
-			<Tree.Item content="Item 3" active={active} />
+			<TreeItem content="Item 1">
+				<TreeItem content="Item 1.1" />
+				<TreeItem content="Item 1.2" actions />
+				<TreeItem content="Item 1.3" actions />
+			</TreeItem>
+			<TreeItem content="Item 2">
+				<TreeItem content="Item 2.1" />
+			</TreeItem>
+			<TreeItem content="Item 3" actions />
 		</Tree.Root>
 	);
 }
 
-function VisualTest() {
+function TreeItem({
+	children,
+	content,
+	actions,
+}: React.PropsWithChildren<{
+	content?: React.ReactNode;
+	actions?: boolean;
+}>) {
+	const [searchParams] = useSearchParams();
+	const active = searchParams.has("active");
+	const isParentNode = React.Children.count(children) > 0;
 	return (
-		<Tree.Root>
-			<Tree.Item
-				content={
-					<>
-						<IconButton icon={expanderIcon} label="Expand" variant="ghost" />
-						<Icon href={placeholderIcon} />
-						Item 1
-						<IconButton icon={unlockIcon} label="Unlock" variant="ghost" />
-						<IconButton icon={showIcon} label="Show" variant="ghost" />
-					</>
-				}
-			/>
-		</Tree.Root>
+		<Tree.Item
+			content={
+				<>
+					{isParentNode ? (
+						<IconButton icon={expanderIcon} label="Collapse" variant="ghost" />
+					) : (
+						<span style={{ inlineSize: "1.5rem" }} />
+					)}
+					<Icon href={placeholderIcon} />
+					{content}
+					{actions && (
+						<div style={{ display: "flex", gap: 4, marginInlineStart: "auto" }}>
+							<IconButton icon={unlockIcon} label="Unlock" variant="ghost" />
+							<IconButton icon={showIcon} label="Show" variant="ghost" />
+						</div>
+					)}
+				</>
+			}
+			active={active}
+		>
+			{children}
+		</Tree.Item>
 	);
 }

@@ -51,6 +51,7 @@ export const TreeItem = React.forwardRef<
 			<ListItem.Root
 				{...rest}
 				aria-expanded={expanded}
+				aria-selected={false}
 				data-kiwi-active={active}
 				className={cx("🥝-tree-item", className)}
 				style={

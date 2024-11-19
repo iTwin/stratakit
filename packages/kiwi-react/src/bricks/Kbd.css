@@ -2,17 +2,21 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
+
+/*---------------------------------------------------------------------------------------------
+ * Unified CSS - Duplicates Removed
+ *--------------------------------------------------------------------------------------------*/
 .🥝-kbd {
 	@layer base {
-		color: var(--color-text-neutral-secondary, #b8bdc1);
+		color: #b8bdc1;
 		text-align: center;
 		font-feature-settings: "cv01" on, "cv05" on, "cv06" on, "cv08" on, "cv09" on;
 		font-family: "Geist Mono";
 		font-size: var(--size-12-body-small, 12px);
 		font-style: normal;
 		font-weight: 106;
-		line-height: var(--line-height-16, 16px); /* 133.333% */
-		letter-spacing: var(--_letter-spacing-0, 0px);
+		line-height: 16px; /* 133.333% */
+		letter-spacing: 0px;
 
 		display: inline-flex;
 		height: 16px;
@@ -23,27 +27,13 @@
 	}
 
 	@layer modifiers {
-		&[data-kiwi-variant="solid"] {
-			color: var(--color-text-neutral-secondary, #b8bdc1);
-			text-align: center;
-			font-feature-settings: "cv01" on, "cv05" on, "cv06" on, "cv08" on, "cv09" on;
-			font-family: "Geist Mono";
-			font-size: var(--size-12-body-small, 12px);
-			font-style: normal;
-			font-weight: 106;
-			line-height: var(--line-height-16, 16px); /* 133.333% */
-			letter-spacing: var(--_letter-spacing-0, 0px);
-
-			display: inline-flex;
-			height: 16px;
-			padding: var(--space-0, 0px) var(--space-x1, 4px);
-			justify-content: center;
-			align-items: center;
-			flex-shrink: 0;
-
+		&[data-kiwi-variant="solid"],
+		&[data-kiwi-variant="muted"] {
 			border-radius: var(--radius-small, 4px);
 			background: var(--color-bg-neutral-base, #36393f);
+		}
 
+		&[data-kiwi-variant="solid"] {
 			/* shadow/button/base */
 			box-shadow:
 				var(--shadow-bg-button-base-inset-x, 0px) var(--shadow-bg-button-base-inset-y, -1px) var(
@@ -72,44 +62,12 @@
 					-1.5px
 				) var(--shadow-bg-button-base-layer2-color, rgba(0, 0, 0, 0.16));
 		}
-		&[data-kiwi-variant="muted"] {
-			color: var(--color-text-neutral-secondary, #b8bdc1);
-			text-align: center;
-			font-feature-settings: "cv01" on, "cv05" on, "cv06" on, "cv08" on, "cv09" on;
-			font-family: "Geist Mono";
-			font-size: var(--size-12-body-small, 12px);
-			font-style: normal;
-			font-weight: 106;
-			line-height: var(--line-height-16, 16px); /* 133.333% */
-			letter-spacing: var(--_letter-spacing-0, 0px);
 
-			display: inline-flex;
-			height: 16px;
-			padding: var(--space-0, 0px) var(--space-x1, 4px);
-			justify-content: center;
-			align-items: center;
-			flex-shrink: 0;
-
-			border-radius: var(--radius-small, 4px);
-			background: var(--color-bg-neutral-base, #36393f);
-		}
 		&[data-kiwi-variant="ghost"] {
 			color: var(--color-text-neutral-tertiary, #969ca4);
-			text-align: center;
 			font-feature-settings: "ss09" on, "cv01" on, "cv05" on, "cv06" on, "cv08" on, "cv09" on;
-			font-family: "Geist Mono";
-			font-size: var(--size-12-body-small, 12px);
-			font-style: normal;
 			font-weight: 84;
-			line-height: var(--line-height-16, 16px); /* 133.333% */
-			letter-spacing: var(--_letter-spacing-0, 0px);
-
-			display: inline-flex;
-			height: 16px;
-			padding: var(--space-0, 0px);
-			justify-content: center;
-			align-items: center;
-			flex-shrink: 0;
+			padding: var(--space-0, 0px); /* No horizontal padding */
 		}
 	}
 }

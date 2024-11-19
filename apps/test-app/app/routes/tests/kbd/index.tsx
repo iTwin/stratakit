@@ -8,7 +8,7 @@ import { useSearchParams } from "@remix-run/react";
 export const handle = { title: "Kbd" };
 
 export default function Page() {
-	const visual = useSearchParams()[0].get("Visual") === "true";
+	const visual = useSearchParams()[0].get("visual") === "true";
 
 	if (visual) {
 		return <VisualTest />;

@@ -11,6 +11,11 @@ test("default", async ({ page }) => {
 	expect(kbdComponent).not.toBe(null);
 });
 
+test("@visual", async ({ page }) => {
+	await page.goto("/tests/kbd?visual=true");
+	await expect(page.locator("body")).toHaveScreenshot();
+});
+
 test.describe("@a11y", () => {
 	test("Axe Page Scan", async ({ page }) => {
 		await page.goto("/tests/kbd");

@@ -57,7 +57,11 @@ function TreeItem({
 			content={
 				<>
 					{isParentNode ? (
-						<IconButton icon={expanderIcon} label="Collapse" variant="ghost" />
+						<TreeItemButton
+							icon={expanderIcon}
+							label="Collapse"
+							variant="ghost"
+						/>
 					) : (
 						<span style={{ inlineSize: "1.5rem" }} />
 					)}
@@ -65,8 +69,12 @@ function TreeItem({
 					{content}
 					{actions && (
 						<div style={{ display: "flex", gap: 4, marginInlineStart: "auto" }}>
-							<IconButton icon={unlockIcon} label="Unlock" variant="ghost" />
-							<IconButton icon={showIcon} label="Show" variant="ghost" />
+							<TreeItemButton
+								icon={unlockIcon}
+								label="Unlock"
+								variant="ghost"
+							/>
+							<TreeItemButton icon={showIcon} label="Show" variant="ghost" />
 						</div>
 					)}
 				</>
@@ -75,5 +83,18 @@ function TreeItem({
 		>
 			{children}
 		</Tree.Item>
+	);
+}
+
+type IconButtonProps = React.ComponentProps<typeof IconButton>;
+
+function TreeItemButton(props: IconButtonProps) {
+	return (
+		<IconButton
+			{...props}
+			// TODO: IconButton inside ListItem. Button block size matches the TreeItem, while ListItem adds additional padding.
+			style={{ marginBlock: -6 }}
+			variant="ghost"
+		/>
 	);
 }

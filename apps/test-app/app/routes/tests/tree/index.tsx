@@ -54,6 +54,7 @@ function TreeItem({
 	const isParentNode = React.Children.count(children) > 0;
 	return (
 		<Tree.Item
+			expanded={isParentNode || undefined}
 			content={
 				<>
 					{isParentNode ? (

@@ -2,7 +2,7 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-import type * as React from "react";
+import * as React from "react";
 import * as Ariakit from "@ariakit/react";
 import cx from "classnames";
 
@@ -50,19 +50,20 @@ interface KbdProps extends Omit<Ariakit.RoleOptions<"kbd">, "as"> {
 /**
  * A keyboard key element, enhanced with AriaKit.
  * @example
- * <Kbd>{KbdKeys.Command}</Kbd>
+ * <Kbd ref={kbdRef}>{KbdKeys.Command}</Kbd>
  * <Kbd>{KbdKeys.Enter}</Kbd>
  */
-export const Kbd: React.FC<KbdProps> = (props) => {
-	const { variant = "solid", className, children, ...rest } = props;
-
-	return (
-		<Ariakit.Role
-			data-kiwi-variant={variant}
-			{...rest}
-			className={cx("🥝-kbd", className)}
-		>
-			{children}
-		</Ariakit.Role>
-	);
-};
+export const Kbd = React.forwardRef<HTMLDivElement, KbdProps>(
+	({ variant = "solid", className, children, ...rest }, ref) => {
+		return (
+			<Ariakit.Role
+				ref={ref}
+				data-kiwi-variant={variant}
+				{...rest}
+				className={cx("🥝-kbd", className)}
+			>
+				{children}
+			</Ariakit.Role>
+		);
+	},
+);

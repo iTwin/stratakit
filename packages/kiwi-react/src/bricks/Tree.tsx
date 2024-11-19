@@ -26,17 +26,19 @@ export const Tree = React.forwardRef<React.ElementRef<"div">, TreeProps>(
 interface TreeItemProps extends Omit<Ariakit.RoleProps<"div">, "content"> {
 	content?: React.ReactNode;
 	active?: boolean;
+	/** Specifies if the tree item is expanded. Used to determine if a tree item is a parent node. Defaults to `undefined`. */
+	expanded?: boolean;
 }
 
 export const TreeItem = React.forwardRef<
 	React.ElementRef<"div">,
 	TreeItemProps
 >((props, forwardedRef) => {
-	const { active, content, children, className, style, ...rest } = props;
+	const { active, content, children, className, expanded, style, ...rest } =
+		props;
 
 	const parentContext = React.useContext(TreeItemContext);
 	const level = parentContext ? parentContext.level + 1 : 0;
-	const isParentNode = React.Children.count(children) > 0;
 	return (
 		<TreeItemContext.Provider
 			value={React.useMemo(
@@ -48,7 +50,7 @@ export const TreeItem = React.forwardRef<
 		>
 			<ListItem.Root
 				{...rest}
-				aria-expanded={isParentNode ? "true" : undefined}
+				aria-expanded={expanded}
 				data-kiwi-active={active}
 				className={cx("🥝-tree-item", className)}
 				style={

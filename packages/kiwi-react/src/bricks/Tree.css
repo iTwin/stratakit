@@ -4,7 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 .🥝-tree-item:is(.🥝-list-item) {
 	@layer base {
-		padding-inline-start: calc(20px * var(--🥝tree-item-level));
+		padding-inline-start: calc(8px + 12px * var(--🥝tree-item-level));
 	}
 
 	@layer states {

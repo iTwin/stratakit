@@ -10,7 +10,6 @@
 	@layer base {
 		color: #b8bdc1;
 		text-align: center;
-		font-feature-settings: "cv01" on, "cv05" on, "cv06" on, "cv08" on, "cv09" on;
 		font-family: "Geist Mono";
 		font-size: var(--size-12-body-small, 12px);
 		font-style: normal;
@@ -20,7 +19,7 @@
 
 		display: inline-flex;
 		height: 16px;
-		padding: var(--space-0, 0px) var(--space-x1, 4px);
+		padding: 0px 4px;
 		justify-content: center;
 		align-items: center;
 		flex-shrink: 0;
@@ -29,45 +28,22 @@
 	@layer modifiers {
 		&[data-kiwi-variant="solid"],
 		&[data-kiwi-variant="muted"] {
-			border-radius: var(--radius-small, 4px);
-			background: var(--color-bg-neutral-base, #36393f);
+			border-radius: 4px;
+			background: #36393f;
 		}
 
 		&[data-kiwi-variant="solid"] {
-			/* shadow/button/base */
 			box-shadow:
-				var(--shadow-bg-button-base-inset-x, 0px) var(--shadow-bg-button-base-inset-y, -1px) var(
-					--shadow-bg-button-base-inset-blur,
-					0px
-				) var(--shadow-bg-button-base-inset-spread, 0px) var(
-					--shadow-bg-button-base-inset-color,
-					rgba(0, 0, 0, 0.08)
-				) inset, var(--shadow-bg-button-base-border-x, 0px) var(
-					--shadow-bg-button-base-border-y,
-					0px
-				) var(--shadow-bg-button-base-border-blur, 0px) var(
-					--shadow-bg-button-base-border-spread,
-					1px
-				) var(--shadow-bg-button-base-border-color, rgba(255, 255, 255, 0.08)) inset, var(
-					--shadow-bg-button-base-layer1-x,
-					0px
-				) var(--shadow-bg-button-base-layer1-y, 1px) var(--shadow-bg-button-base-layer1-blur, 1px) var(
-					--shadow-bg-button-base-layer1-spread,
-					-0.5px
-				) var(--shadow-bg-button-base-layer1-color, rgba(0, 0, 0, 0.16)), var(
-					--shadow-bg-button-base-layer2-x,
-					0px
-				) var(--shadow-bg-button-base-layer2-y, 3px) var(--shadow-bg-button-base-layer2-blur, 3px) var(
-					--shadow-bg-button-base-layer2-spread,
-					-1.5px
-				) var(--shadow-bg-button-base-layer2-color, rgba(0, 0, 0, 0.16));
+				0px -1px 0px 0px rgba(0, 0, 0, 0.08) inset,
+				0px 0px 0px 1px rgba(255, 255, 255, 0.08) inset,
+				0px 1px 1px -0.5px rgba(0, 0, 0, 0.16),
+				0px 3px 3px -1.5px rgba(0, 0, 0, 0.16);
 		}
 
 		&[data-kiwi-variant="ghost"] {
-			color: var(--color-text-neutral-tertiary, #969ca4);
-			font-feature-settings: "ss09" on, "cv01" on, "cv05" on, "cv06" on, "cv08" on, "cv09" on;
+			color: #969ca4;
 			font-weight: 84;
-			padding: var(--space-0, 0px); /* No horizontal padding */
+			padding: 0px; /* No horizontal padding */
 		}
 	}
 }

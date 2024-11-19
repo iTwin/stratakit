@@ -30,7 +30,7 @@ function VisualTest() {
 		<div style={{ display: "grid", gap: 4 }}>
 			{variants.map((variant) => (
 				<div key={variant} style={{ display: "flex", gap: 4 }}>
-					<Kbd variant={variant}>{`${KbdKeys.Command} - The Command Key`}</Kbd>
+					<Kbd variant={variant}>{`${KbdKeys.Command}`}</Kbd>
 				</div>
 			))}
 		</div>

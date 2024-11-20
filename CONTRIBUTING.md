@@ -53,11 +53,11 @@ This repo uses [Pnpm workspaces](https://pnpm.io/workspaces) to allow multiple p
 Packages:
 
 - [`kiwi-icons`](./packages/kiwi-icons): A standalone SVG icon library.
-- [`kiwi-react`](./packages/kiwi-react): React component library.
+- [`kiwi-react`](./packages/kiwi-react): A React component library.
 
 Apps:
 
-- [`test-app`](./apps/test-app): [Remix](https://remix.run/) app for automated and manual testing.
+- [`test-app`](./apps/test-app): A [Remix](https://remix.run/) app for automated and manual testing.
 
 Also, there’s [an internal package](./internal) which is used for configuration files and common variables for the workspace at large.
 

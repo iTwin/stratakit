@@ -13,6 +13,8 @@ import {
 	staticVariablesTransform,
 } from "internal/visitors.js";
 
+const isDev = process.env.NODE_ENV === "development";
+
 const basename = process.env.BASE_FOLDER
 	? `/${process.env.BASE_FOLDER}/`
 	: undefined;
@@ -26,6 +28,8 @@ export default defineConfig({
 				v3_fetcherPersist: true,
 				v3_relativeSplatPath: true,
 				v3_throwAbortReason: true,
+				v3_lazyRouteDiscovery: true,
+				v3_singleFetch: true,
 			},
 			ignoredRouteFiles: ["**/*"], // Ignore default Remix v2 file conventions.
 			routes: (defineRoutes) => {
@@ -51,6 +55,9 @@ export default defineConfig({
 	},
 	preview: {
 		port: 1800, // prod server port
+	},
+	resolve: {
+		conditions: isDev ? ["@kiwi/source"] : undefined,
 	},
 });
 

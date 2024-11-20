@@ -7,9 +7,8 @@
 	"scripts": {
 		"build": "pnpm --filter=\"./packages/**\" --filter=\"./apps/**\" build",
 		"build:icons": "pnpm --filter=@itwin/kiwi-icons build",
-		"dev": "npm run build:icons && npm run dev:app & npm run dev:ts &",
+		"dev": "npm run build:icons && npm run dev:app &",
 		"dev:app": "pnpm --filter=@itwin/test-app dev",
-		"dev:ts": "pnpm --filter=@itwin/kiwi-react dev",
 		"format": "biome format .",
 		"lint": "biome lint .",
 		"lint:copyright": "tsx internal/copyright-linter.ts",
@@ -18,17 +17,17 @@
 	},
 	"devDependencies": {
 		"@biomejs/biome": "1.9.4",
-		"@types/node": "^22.7.6",
+		"@types/node": "^22.9.1",
 		"fast-glob": "^3.3.2",
 		"internal": "workspace:*",
-		"lefthook": "^1.7.22",
+		"lefthook": "^1.8.4",
 		"prettier": "3.3.3",
-		"tsx": "^4.19.1"
+		"tsx": "^4.19.2"
 	},
 	"engines": {
 		"node": ">=22.11.0"
 	},
-	"packageManager": "pnpm@9.12.2",
+	"packageManager": "pnpm@9.13.2",
 	"pnpm": {
 		"overrides": {
 			"cookie@<0.7.0": ">=0.7.0"

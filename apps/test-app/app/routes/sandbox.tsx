@@ -139,26 +139,43 @@ function SandboxTree() {
 	);
 }
 
+function TreeItemButton(props: React.ComponentProps<typeof IconButton>) {
+	return (
+		<IconButton
+			{...props}
+			// TODO: IconButton inside ListItem. Button block size matches the TreeItem, while ListItem adds additional padding.
+			style={{ marginBlock: -6, ...props.style }}
+			variant="ghost"
+		/>
+	);
+}
+
 type TreeItemProps = React.PropsWithChildren<{
 	content?: React.ReactNode;
 }>;
 
 function TreeItem(props: TreeItemProps) {
+	const isParentNode = React.Children.count(props.children) > 0;
 	return (
 		<Tree.Item
 			className={styles.treeItem}
 			content={
 				<>
-					<IconButton
-						icon={chevronDown}
-						className={styles.collapse}
-						label="Collapse"
-						variant="ghost"
-					/>
+					{isParentNode ? (
+						<TreeItemButton
+							icon={chevronDown}
+							className={styles.collapse}
+							label="Collapse"
+							variant="ghost"
+						/>
+					) : (
+						<span style={{ inlineSize: "1.5rem" }} />
+					)}
 					<Icon href={placeholderIcon} style={{ display: "inline" }} />
 					<ListItem.Content>{props.content}</ListItem.Content>
 				</>
 			}
+			expanded={isParentNode || undefined}
 		>
 			{props.children}
 		</Tree.Item>

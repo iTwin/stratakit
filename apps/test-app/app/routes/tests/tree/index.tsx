@@ -87,14 +87,12 @@ function TreeItem({
 	);
 }
 
-type IconButtonProps = React.ComponentProps<typeof IconButton>;
-
-function TreeItemButton(props: IconButtonProps) {
+function TreeItemButton(props: React.ComponentProps<typeof IconButton>) {
 	return (
 		<IconButton
 			{...props}
 			// TODO: IconButton inside ListItem. Button block size matches the TreeItem, while ListItem adds additional padding.
-			style={{ marginBlock: -6 }}
+			style={{ marginBlock: -6, ...props.style }}
 			variant="ghost"
 		/>
 	);

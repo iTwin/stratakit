@@ -9,7 +9,7 @@
 
 	@layer states {
 		/* TODO: combined states: active + hovered/pressed. */
-		&[data-kiwi-active="true"] {
+		&[aria-selected="true"] {
 			--🌀list-item-state: var(--🌀list-item-state--active);
 		}
 	}

@@ -50,7 +50,7 @@ function TreeItem({
 	actions?: boolean;
 }>) {
 	const [searchParams] = useSearchParams();
-	const active = searchParams.has("active");
+	const selected = searchParams.has("selected");
 	const isParentNode = React.Children.count(children) > 0;
 	return (
 		<Tree.Item
@@ -80,7 +80,7 @@ function TreeItem({
 					)}
 				</>
 			}
-			active={active}
+			selected={selected}
 		>
 			{children}
 		</Tree.Item>

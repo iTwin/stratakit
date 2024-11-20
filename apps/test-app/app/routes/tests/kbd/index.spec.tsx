@@ -16,6 +16,20 @@ test("@visual", async ({ page }) => {
 	await expect(page.locator("body")).toHaveScreenshot();
 });
 
+test("should not be focusable", async ({ page }) => {
+	await page.goto("/tests/kbd");
+
+	const kbdComponent = page.getByTestId("kbd");
+
+	await kbdComponent.focus();
+
+	const isFocused = await page.evaluate(
+		(element) => element === document.activeElement,
+		await kbdComponent.elementHandle(),
+	);
+	expect(isFocused).toBe(false);
+});
+
 test.describe("@a11y", () => {
 	test("Axe Page Scan", async ({ page }) => {
 		await page.goto("/tests/kbd");

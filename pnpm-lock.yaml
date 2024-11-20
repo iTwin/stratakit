@@ -64,10 +64,10 @@ importers:
     devDependencies:
       "@axe-core/playwright":
         specifier: ^4.10.1
-        version: 4.10.1(playwright-core@1.48.1)
+        version: 4.10.1(playwright-core@1.49.0)
       "@playwright/test":
-        specifier: ^1.48.1
-        version: 1.48.1
+        specifier: ~1.49.0
+        version: 1.49.0
       "@remix-run/dev":
         specifier: ^2.14.0
         version: 2.14.0(@remix-run/react@2.14.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.6.3))(@remix-run/serve@2.14.0(typescript@5.6.3))(@types/node@22.9.1)(lightningcss@1.28.1)(typescript@5.6.3)(vite@5.4.11(@types/node@22.9.1)(lightningcss@1.28.1))
@@ -1459,10 +1459,10 @@ packages:
       }
     engines: { node: ">=14" }
 
-  "@playwright/test@1.48.1":
+  "@playwright/test@1.49.0":
     resolution:
       {
-        integrity: sha512-s9RtWoxkOLmRJdw3oFvhFbs9OJS0BzrLUc8Hf6l2UdCNd1rqeEyD4BhCJkvzeEoD1FsK4mirsWwGerhVmYKtZg==,
+        integrity: sha512-DMulbwQURa8rNIQrf94+jPJQ4FmOVdpE5ZppRNvWVjvhC+6sOeo28r8MgIpQRYouXRtt/FCCXU7zn20jnHR4Qw==,
       }
     engines: { node: ">=18" }
     hasBin: true
@@ -4196,18 +4196,18 @@ packages:
         integrity: sha512-sQoqa8alT3nHjGuTjuKgOnvjo4cljkufdtLMnO2LBP/wRwuDlo1tkaEdMxCRhyGRPacv/ztlZgDPm2b7FAmEvw==,
       }
 
-  playwright-core@1.48.1:
+  playwright-core@1.49.0:
     resolution:
       {
-        integrity: sha512-Yw/t4VAFX/bBr1OzwCuOMZkY1Cnb4z/doAFSwf4huqAGWmf9eMNjmK7NiOljCdLmxeRYcGPPmcDgU0zOlzP0YA==,
+        integrity: sha512-R+3KKTQF3npy5GTiKH/T+kdhoJfJojjHESR1YEWhYuEKRVfVaxH3+4+GvXE5xyCngCxhxnykk0Vlah9v8fs3jA==,
       }
     engines: { node: ">=18" }
     hasBin: true
 
-  playwright@1.48.1:
+  playwright@1.49.0:
     resolution:
       {
-        integrity: sha512-j8CiHW/V6HxmbntOfyB4+T/uk08tBy6ph0MpBXwuoofkSnLmlfdYNNkFTYD6ofzzlSqLA1fwH4vwvVFvJgLN0w==,
+        integrity: sha512-eKpmys0UFDnfNb3vfsf8Vx2LEOtflgRebl0Im2eQQnYMA4Aqd+Zw8bEOB+7ZKvN76901mRnqdsiOGKxzVTbi7A==,
       }
     engines: { node: ">=18" }
     hasBin: true
@@ -5333,10 +5333,10 @@ snapshots:
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
 
-  "@axe-core/playwright@4.10.1(playwright-core@1.48.1)":
+  "@axe-core/playwright@4.10.1(playwright-core@1.49.0)":
     dependencies:
       axe-core: 4.10.2
-      playwright-core: 1.48.1
+      playwright-core: 1.49.0
 
   "@babel/code-frame@7.26.2":
     dependencies:
@@ -5964,9 +5964,9 @@ snapshots:
   "@pkgjs/parseargs@0.11.0":
     optional: true
 
-  "@playwright/test@1.48.1":
+  "@playwright/test@1.49.0":
     dependencies:
-      playwright: 1.48.1
+      playwright: 1.49.0
 
   "@remix-run/dev@2.14.0(@remix-run/react@2.14.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.6.3))(@remix-run/serve@2.14.0(typescript@5.6.3))(@types/node@22.9.1)(lightningcss@1.28.1)(typescript@5.6.3)(vite@5.4.11(@types/node@22.9.1)(lightningcss@1.28.1))":
     dependencies:
@@ -7807,11 +7807,11 @@ snapshots:
       mlly: 1.7.3
       pathe: 1.1.2
 
-  playwright-core@1.48.1: {}
+  playwright-core@1.49.0: {}
 
-  playwright@1.48.1:
+  playwright@1.49.0:
     dependencies:
-      playwright-core: 1.48.1
+      playwright-core: 1.49.0
     optionalDependencies:
       fsevents: 2.3.2
 

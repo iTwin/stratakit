@@ -15,7 +15,9 @@ test("default", async ({ page }) => {
 
 	const item1 = page.getByRole("treeitem", { name: /Item 1$/ });
 	await expect(item1).toHaveAttribute("aria-expanded", "true");
+	await expect(item1).toHaveAttribute("aria-level", "1");
 
 	const item1_1 = page.getByRole("treeitem", { name: "Item 1.1" });
 	await expect(item1_1).not.toHaveAttribute("aria-expanded", "true");
+	await expect(item1_1).toHaveAttribute("aria-level", "2");
 });

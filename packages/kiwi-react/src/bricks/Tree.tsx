@@ -38,7 +38,7 @@ export const TreeItem = React.forwardRef<
 		props;
 
 	const parentContext = React.useContext(TreeItemContext);
-	const level = parentContext ? parentContext.level + 1 : 0;
+	const level = parentContext ? parentContext.level + 1 : 1;
 	return (
 		<TreeItemContext.Provider
 			value={React.useMemo(
@@ -52,6 +52,7 @@ export const TreeItem = React.forwardRef<
 				{...rest}
 				aria-expanded={expanded}
 				aria-selected={selected}
+				aria-level={level}
 				className={cx("🥝-tree-item", className)}
 				style={
 					{

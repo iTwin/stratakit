@@ -3,6 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 import { test, expect } from "@playwright/test";
+import AxeBuilder from "@axe-core/playwright";
 
 test("default", async ({ page }) => {
 	await page.goto("/tests/tree");
@@ -20,4 +21,17 @@ test("default", async ({ page }) => {
 	const item1_1 = page.getByRole("treeitem", { name: "Item 1.1" });
 	await expect(item1_1).not.toHaveAttribute("aria-expanded", "true");
 	await expect(item1_1).toHaveAttribute("aria-level", "2");
+});
+
+test.describe("@a11y", () => {
+	test("Axe Page Scan", async ({ page }) => {
+		await page.goto("/tests/tree");
+
+		const tree = page.getByRole("tree");
+		await expect(tree).toBeVisible();
+
+		const axe = new AxeBuilder({ page });
+		const accessibilityScan = await axe.analyze();
+		expect(accessibilityScan.violations).toEqual([]);
+	});
 });

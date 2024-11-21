@@ -446,7 +446,6 @@ function TreeItem(props: TreeItemProps) {
 					{isParentNode ? (
 						<TreeItemButton
 							icon={chevronDown}
-							className={styles.collapse}
 							label="Collapse"
 							variant="ghost"
 						/>

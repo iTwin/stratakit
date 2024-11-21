@@ -146,9 +146,3 @@
 		block-size: 100%;
 	}
 }
-
-.treeItem:not([aria-expanded="true"]) {
-	.collapse {
-		display: none;
-	}
-}

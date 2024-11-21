@@ -440,7 +440,6 @@ function TreeItem(props: TreeItemProps) {
 	const isParentNode = React.Children.count(props.children) > 0;
 	return (
 		<Tree.Item
-			className={styles.treeItem}
 			content={
 				<>
 					{isParentNode ? (

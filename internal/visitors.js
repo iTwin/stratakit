@@ -4,6 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 import primitives from "./primitives.json" with { type: "json" };
 import darkTheme from "./theme-dark.json" with { type: "json" };
+import typography from "./typography.json" with { type: "json" };
 
 /**
  * LightningCSS visitor that inlines the values of primitive color tokens.
@@ -151,6 +152,58 @@ export function themeTransform() {
 				if (fn.arguments.length === 1 && fn.arguments[0].type === "token") {
 					return { raw: fn.arguments[0].value.value };
 				}
+			},
+		},
+	};
+}
+
+/**
+ * LightningCSS visitor that exposes a `--typography` CSS mixin which can be
+ * applied (using `@apply`) to any selector to include CSS properties for a
+ * given typography token.
+ *
+ * @returns {import("lightningcss").Visitor}
+ */
+export function typographyTransform() {
+	return {
+		Rule: {
+			unknown({ name, prelude, loc }) {
+				if (
+					name !== "apply" ||
+					prelude[0]?.type !== "function" ||
+					prelude[0].value.name !== "--typography"
+				) {
+					return;
+				}
+
+				const tokenName = prelude[0].value.arguments?.[0]?.value?.value;
+				const token = typography.typography[tokenName];
+
+				if (!token) {
+					console.warn(`Missing typography token: ${tokenName}`);
+					return;
+				}
+
+				const declarations = [];
+
+				for (const property in token.$value) {
+					declarations.push({
+						property,
+						raw: token.$value[property],
+					});
+				}
+
+				return [
+					{
+						type: "style",
+						value: {
+							declarations: { declarations },
+							selectors: [[{ type: "nesting" }]],
+							rules: [],
+							loc,
+						},
+					},
+				];
 			},
 		},
 	};

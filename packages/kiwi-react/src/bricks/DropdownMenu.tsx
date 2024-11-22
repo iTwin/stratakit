@@ -7,6 +7,7 @@ import cx from "classnames";
 import * as Ariakit from "@ariakit/react";
 import * as ListItem from "./ListItem.js";
 import { Button } from "./Button.js";
+import { DisclosureArrow } from "./Icon.js";
 
 // ----------------------------------------------------------------------------
 
@@ -67,12 +68,18 @@ const DropdownMenuButton = React.forwardRef<
 	React.ElementRef<typeof Ariakit.MenuButton>,
 	Ariakit.MenuButtonProps
 >((props, forwardedRef) => {
-	const { accessibleWhenDisabled = true, ...rest } = props;
+	const { accessibleWhenDisabled = true, children, ...rest } = props;
 	return (
 		<Ariakit.MenuButton
 			accessibleWhenDisabled={accessibleWhenDisabled}
-			render={<Button accessibleWhenDisabled={accessibleWhenDisabled} />}
+			render={
+				<Button accessibleWhenDisabled={accessibleWhenDisabled}>
+					{children}
+					<DisclosureArrow />
+				</Button>
+			}
 			{...rest}
+			className={cx("🥝-dropdown-menu-button", props.className)}
 			ref={forwardedRef as Ariakit.MenuButtonProps["ref"]}
 		/>
 	);

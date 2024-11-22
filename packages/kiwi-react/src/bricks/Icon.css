@@ -20,3 +20,11 @@
 		}
 	}
 }
+
+.🥝-disclosure-arrow {
+	@layer base {
+		margin-inline-end: -8px; /* space/x2 */
+		rotate: var(--🥝disclosure-arrow-rotate);
+		transition: rotate 0.15s ease-in-out;
+	}
+}

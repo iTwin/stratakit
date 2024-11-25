@@ -14,7 +14,8 @@
 
 		display: inline-flex;
 		height: 16px;
-		padding: 0px 4px;
+		padding-block: 0px;
+		padding-inline: 4px;
 		justify-content: center;
 		align-items: center;
 		flex-shrink: 0;
@@ -38,7 +39,8 @@
 		&[data-kiwi-variant="ghost"] {
 			color: #969ca4;
 			font-weight: 84;
-			padding: 0px;
+			padding-block: 0px;
+			padding-inline: 0px;
 		}
 	}
 }

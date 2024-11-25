@@ -10,7 +10,7 @@
 		font-family: "Geist Mono";
 		font-size: var(--size-12-body-small, 12px);
 		font-weight: 106;
-		line-height: 16px; /* 133.333% */
+		line-height: 1.33333;
 
 		display: inline-flex;
 		height: 16px;
@@ -38,7 +38,7 @@
 		&[data-kiwi-variant="ghost"] {
 			color: #969ca4;
 			font-weight: 84;
-			padding: 0px; /* No horizontal padding */
+			padding: 0px;
 		}
 	}
 }

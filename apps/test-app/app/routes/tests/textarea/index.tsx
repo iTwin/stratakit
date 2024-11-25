@@ -2,7 +2,7 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-import { Label, TextBox } from "@itwin/kiwi-react/bricks";
+import { Field, Label, TextBox } from "@itwin/kiwi-react/bricks";
 import { useSearchParams } from "@remix-run/react";
 import { useId } from "react";
 
@@ -13,9 +13,9 @@ export default function Page() {
 	const id = useId();
 
 	return (
-		<>
-			<Label htmlFor={id}>Fruit</Label>
-			<TextBox.Textarea id={id} rows={3} disabled={disabled} />
-		</>
+		<Field>
+			<Label>Fruit</Label>
+			<TextBox.Textarea rows={3} disabled={disabled} />
+		</Field>
 	);
 }

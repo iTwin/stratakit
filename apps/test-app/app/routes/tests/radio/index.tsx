@@ -2,7 +2,7 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-import { Radio, Label, VisuallyHidden } from "@itwin/kiwi-react/bricks";
+import { Radio, Label, VisuallyHidden, Field } from "@itwin/kiwi-react/bricks";
 import { useSearchParams } from "@remix-run/react";
 import { useId } from "react";
 
@@ -14,33 +14,32 @@ export default function Page() {
 	const disabled = searchParams.get("disabled") === "true";
 	const visualTest = searchParams.get("visual") === "true";
 
-	const idA = useId();
-	const idB = useId();
-
 	if (visualTest) {
 		return <VisualTest />;
 	}
 
 	return (
-		<>
-			<Radio
-				name="test"
-				value="A"
-				id={idA}
-				defaultChecked={defaultValue === "A"}
-				disabled={disabled}
-			/>
-			<Label htmlFor={idA}>A</Label>
+		<div style={{ display: "grid", gap: 8 }}>
+			<Field>
+				<Radio
+					name="test"
+					value="A"
+					defaultChecked={defaultValue === "A"}
+					disabled={disabled}
+				/>
+				<Label>A</Label>
+			</Field>
 
-			<Radio
-				name="test"
-				value="B"
-				id={idB}
-				defaultChecked={defaultValue === "B"}
-				disabled={disabled}
-			/>
-			<Label htmlFor={idB}>B</Label>
-		</>
+			<Field>
+				<Radio
+					name="test"
+					value="B"
+					defaultChecked={defaultValue === "B"}
+					disabled={disabled}
+				/>
+				<Label>B</Label>
+			</Field>
+		</div>
 	);
 }
 

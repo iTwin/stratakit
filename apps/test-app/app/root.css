@@ -2,13 +2,11 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-:root,
-:host {
-	--kiwi-font-family-sans: "InterVariable", "Inter", "Noto Sans", "Open Sans", sans-serif;
-	--kiwi-font-family-mono: "Geist Mono", "Noto Sans Mono", ui-monospace, "Segoe UI Mono", Consolas,
-		monospace;
-
-	--kiwi-font-size-s: 0.75rem; /* 12px */
-	--kiwi-font-size-m: 0.875rem; /* 14px */
-	--kiwi-font-size-l: 1rem; /* 16px */
+@font-face {
+	font-family: "Geist Mono";
+	font-style: normal;
+	font-display: swap;
+	font-weight: 400;
+	src: url(https://cdn.jsdelivr.net/fontsource/fonts/geist-mono@latest/latin-400-normal.woff2)
+		format("woff2");
 }

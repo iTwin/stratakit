@@ -8,16 +8,15 @@
 		color: #b8bdc1;
 		text-align: center;
 		font-family: "Geist Mono";
-		font-size: var(--size-12-body-small, 12px);
+		font-size: var(--kiwi-font-size-s);
 		font-weight: 106;
 		line-height: 1.33333;
 
 		display: inline-flex;
-		height: 16px;
 		padding-block: 0px;
 		padding-inline: 4px;
-		justify-content: center;
 		align-items: center;
+		justify-content: center;
 		flex-shrink: 0;
 	}
 

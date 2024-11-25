@@ -27,3 +27,11 @@
 			0px 1px 0px 0px #00000014;
 	}
 }
+
+.🥝-dropdown-menu-button {
+	@layer states {
+		&:where([aria-expanded="true"]) {
+			--🥝disclosure-arrow-rotate: 0.5turn;
+		}
+	}
+}

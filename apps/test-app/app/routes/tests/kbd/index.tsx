@@ -15,11 +15,9 @@ export default function Page() {
 	}
 
 	return (
-		<>
-			<Kbd data-testid="kbd" variant={"muted"}>
-				Ctrl
-			</Kbd>
-		</>
+		<Kbd data-testid="kbd" variant={"muted"}>
+			Ctrl
+		</Kbd>
 	);
 }
 

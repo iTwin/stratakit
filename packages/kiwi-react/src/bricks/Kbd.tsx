@@ -2,8 +2,7 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-import * as React from "react";
-import * as Ariakit from "@ariakit/react";
+import { forwardRef } from "react";
 import cx from "classnames";
 
 /**
@@ -33,7 +32,7 @@ export const KbdKeys = {
 	Tab: "\u21e5 Tab",
 } as const;
 
-interface KbdProps extends Omit<Ariakit.RoleOptions<"kbd">, "as"> {
+interface KbdProps extends React.ComponentPropsWithoutRef<"kbd"> {
 	/**
 	 * Content of the key to be passed as children. Must be a string or one of the `KbdKeys`.
 	 */
@@ -53,17 +52,17 @@ interface KbdProps extends Omit<Ariakit.RoleOptions<"kbd">, "as"> {
  * <Kbd ref={kbdRef}>{KbdKeys.Command}</Kbd>
  * <Kbd>{KbdKeys.Enter}</Kbd>
  */
-export const Kbd = React.forwardRef<HTMLDivElement, KbdProps>(
+export const Kbd = forwardRef<HTMLElement, KbdProps>(
 	({ variant = "solid", className, children, ...rest }, ref) => {
 		return (
-			<Ariakit.Role
+			<kbd
 				ref={ref}
 				data-kiwi-variant={variant}
 				{...rest}
 				className={cx("🥝-kbd", className)}
 			>
 				{children}
-			</Ariakit.Role>
+			</kbd>
 		);
 	},
 );

@@ -10,6 +10,7 @@ import * as lightningcss from "lightningcss";
 import {
 	primitivesTransform,
 	themeTransform,
+	typographyTransform,
 	staticVariablesTransform,
 } from "internal/visitors.js";
 
@@ -69,6 +70,7 @@ function bundleCssPlugin() {
 			const visitor = lightningcss.composeVisitors([
 				primitivesTransform(),
 				themeTransform(),
+				typographyTransform(),
 				staticVariablesTransform(),
 			]);
 

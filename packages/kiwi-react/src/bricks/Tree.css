@@ -22,3 +22,15 @@
 		overflow: hidden;
 	}
 }
+
+.🥝-tree-item-expander:is(.🥝-icon-button) {
+	@layer base {
+		margin-block: -6px;
+	}
+
+	@layer states {
+		&:where([data-kiwi-expanded="false"]) {
+			--🥝tree-chevron-rotate: -0.25turn;
+		}
+	}
+}

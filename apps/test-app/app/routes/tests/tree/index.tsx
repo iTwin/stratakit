@@ -57,15 +57,7 @@ function TreeItem({
 			expanded={isParentNode || undefined}
 			content={
 				<>
-					{isParentNode ? (
-						<TreeItemButton
-							icon={expanderIcon}
-							label="Collapse"
-							variant="ghost"
-						/>
-					) : (
-						<span style={{ inlineSize: "1.5rem" }} />
-					)}
+					<Tree.Expander />
 					<Icon href={placeholderIcon} />
 					<Tree.Label>{label}</Tree.Label>
 					{actions && (

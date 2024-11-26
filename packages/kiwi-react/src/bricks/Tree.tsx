@@ -6,6 +6,8 @@ import * as React from "react";
 import cx from "classnames";
 import * as Ariakit from "@ariakit/react";
 import * as ListItem from "./ListItem.js";
+import { IconButton } from "./IconButton.js";
+import { TreeChevron } from "./Icon.js";
 
 // ----------------------------------------------------------------------------
 
@@ -44,8 +46,9 @@ export const TreeItem = React.forwardRef<
 			value={React.useMemo(
 				() => ({
 					level,
+					expanded: expanded ?? false,
 				}),
-				[level],
+				[level, expanded],
 			)}
 		>
 			<ListItem.Root
@@ -90,13 +93,48 @@ export const TreeItemLabel = React.forwardRef<
 
 // ----------------------------------------------------------------------------
 
+type IconButtonProps = React.ComponentProps<typeof IconButton>;
+
+interface TreeItemExpanderProps
+	extends Omit<IconButtonProps, "variant" | "label" | "icon"> {
+	label?: IconButtonProps["label"];
+	icon?: IconButtonProps["icon"];
+}
+
+const TreeItemExpander = React.forwardRef<
+	React.ElementRef<typeof IconButton>,
+	TreeItemExpanderProps
+>((props, forwardedRef) => {
+	const context = React.useContext(TreeItemContext);
+	const expanded = context?.expanded ?? false;
+	return (
+		<IconButton
+			icon={<TreeChevron />}
+			label="Collapse"
+			data-kiwi-expanded={expanded}
+			{...props}
+			className={cx("🥝-tree-item-expander", props.className)}
+			variant="ghost"
+			ref={forwardedRef}
+		/>
+	);
+});
+
+// ----------------------------------------------------------------------------
+
 const TreeItemContext = React.createContext<
 	| {
 			level: number;
+			expanded: boolean;
 	  }
 	| undefined
 >(undefined);
 
 // ----------------------------------------------------------------------------
 
-export { Tree as Root, TreeItem as Item, TreeItemLabel as Label };
+export {
+	Tree as Root,
+	TreeItem as Item,
+	TreeItemExpander as Expander,
+	TreeItemLabel as Label,
+};

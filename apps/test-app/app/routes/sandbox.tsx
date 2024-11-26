@@ -36,10 +36,6 @@ const filterIcon = new URL("@itwin/kiwi-icons/filter.svg", import.meta.url)
 	.href;
 const dismissIcon = new URL("@itwin/kiwi-icons/dismiss.svg", import.meta.url)
 	.href;
-const chevronDown = new URL(
-	"@itwin/kiwi-icons/chevron-down.svg",
-	import.meta.url,
-).href;
 
 const leftPanelLabelId = "left-panel";
 
@@ -420,17 +416,6 @@ function SandboxTree() {
 	);
 }
 
-function TreeItemButton(props: React.ComponentProps<typeof IconButton>) {
-	return (
-		<IconButton
-			{...props}
-			// TODO: IconButton inside ListItem. Button block size matches the TreeItem, while ListItem adds additional padding.
-			style={{ marginBlock: -6, ...props.style }}
-			variant="ghost"
-		/>
-	);
-}
-
 type TreeItemProps = React.PropsWithChildren<{
 	content?: React.ReactNode;
 }>;
@@ -441,15 +426,7 @@ function TreeItem(props: TreeItemProps) {
 		<Tree.Item
 			content={
 				<>
-					{isParentNode ? (
-						<TreeItemButton
-							icon={chevronDown}
-							label="Collapse"
-							variant="ghost"
-						/>
-					) : (
-						<span style={{ inlineSize: "1.5rem" }} />
-					)}
+					<Tree.Expander />
 					<Icon href={placeholderIcon} style={{ display: "inline" }} />
 					<Tree.Label>{props.content}</Tree.Label>
 				</>

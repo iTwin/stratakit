@@ -3,7 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 import { Divider } from "@itwin/kiwi-react/bricks";
-import { useSearchParams } from "@remix-run/react";
+import { useSearchParams } from "react-router";
 
 export const handle = { title: "Divider" };
 

@@ -2,11 +2,11 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-import { vitePlugin as remix } from "@remix-run/dev";
+import { reactRouter } from "@react-router/dev/vite";
 import { defineConfig, type Plugin } from "vite";
+import type { Config as ReactRouterConfig } from "@react-router/dev/config";
 import tsconfigPaths from "vite-tsconfig-paths";
 import * as lightningcss from "lightningcss";
-import { createRoutesFromFolders } from "@remix-run/v1-route-convention";
 import {
 	primitivesTransform,
 	themeTransform,
@@ -19,31 +19,16 @@ const basename = process.env.BASE_FOLDER
 	? `/${process.env.BASE_FOLDER}/`
 	: undefined;
 
+// https://reactrouter.com/explanation/special-files#react-routerconfigts
+export const reactRouterConfig = {
+	...(basename && { basename }),
+	ssr: false, // SPA mode for github-pages
+} satisfies ReactRouterConfig;
+
+// https://vite.dev/config/
 export default defineConfig({
 	...(basename && { base: basename }),
-	plugins: [
-		remix({
-			...(basename && { basename }),
-			future: {
-				v3_fetcherPersist: true,
-				v3_relativeSplatPath: true,
-				v3_throwAbortReason: true,
-				v3_lazyRouteDiscovery: true,
-				v3_singleFetch: true,
-			},
-			ignoredRouteFiles: ["**/*"], // Ignore default Remix v2 file conventions.
-			routes: (defineRoutes) => {
-				// `createRoutesFromFolders` will follow the Remix v1 route convention.
-				// See https://remix.run/docs/en/v1/file-conventions/routes-files
-				return createRoutesFromFolders(defineRoutes, {
-					ignoredFilePatterns: ["**/*.spec.*", "**/*.css", "**/.DS_Store"],
-				});
-			},
-			ssr: false, // SPA mode for github-pages
-		}),
-		tsconfigPaths(),
-		bundleCssPlugin(),
-	],
+	plugins: [reactRouter(), tsconfigPaths(), bundleCssPlugin()],
 	build: {
 		assetsInlineLimit: (filePath) => {
 			if (filePath.includes("kiwi-icons/icons")) return false;

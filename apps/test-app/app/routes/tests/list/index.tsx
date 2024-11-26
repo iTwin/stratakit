@@ -4,8 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 import * as ListItem from "@itwin/kiwi-react-internal/src/bricks/ListItem";
 import { Icon } from "@itwin/kiwi-react-internal/src/bricks/Icon";
-import { useSearchParams } from "@remix-run/react";
-import type { LinksFunction } from "@remix-run/node";
+import { useSearchParams, type LinksFunction } from "react-router";
 import testStyles from "./index.css?url";
 
 export const handle = { title: "List" };

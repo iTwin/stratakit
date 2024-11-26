@@ -3,7 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 import { Field, Label, TextBox } from "@itwin/kiwi-react/bricks";
-import { useSearchParams } from "@remix-run/react";
+import { useSearchParams } from "react-router";
 import { useId } from "react";
 
 export const handle = { title: "Textarea" };

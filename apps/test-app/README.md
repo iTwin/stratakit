@@ -1,6 +1,6 @@
 # test-app
 
-Test app built using [Remix](https://remix.run/).
+Test app built using [React Router](https://reactrouter.com/).
 
 ## Running the tests
 

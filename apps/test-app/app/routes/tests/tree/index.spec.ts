@@ -23,6 +23,22 @@ test("default", async ({ page }) => {
 	await expect(item1_1).toHaveAttribute("aria-level", "2");
 });
 
+test.describe("@visual", () => {
+	test("default", async ({ page }) => {
+		await page.goto("/tests/tree");
+		const tree = page.getByRole("tree");
+		await expect(tree).toBeVisible();
+		await expect(page.locator("body")).toHaveScreenshot();
+	});
+
+	test("overflow", async ({ page }) => {
+		await page.goto("/tests/tree?overflow");
+		const tree = page.getByRole("tree");
+		await expect(tree).toBeVisible();
+		await expect(page.locator("body")).toHaveScreenshot();
+	});
+});
+
 test.describe("@a11y", () => {
 	test("Axe Page Scan", async ({ page }) => {
 		await page.goto("/tests/tree");

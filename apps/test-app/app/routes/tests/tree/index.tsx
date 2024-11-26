@@ -22,15 +22,20 @@ const showIcon = new URL(
 ).href;
 
 export default function Page() {
+	const [searchParams] = useSearchParams();
+	const overflow = searchParams.has("overflow");
+	const overflowPostfix = overflow
+		? " with a super long label that is overflown"
+		: "";
 	return (
-		<Tree.Root>
-			<TreeItem label="Item 1">
+		<Tree.Root style={{ maxInlineSize: overflow ? 300 : undefined }}>
+			<TreeItem label={`Item 1${overflowPostfix}`}>
 				<TreeItem label="Item 1.1" />
 				<TreeItem label="Item 1.2" actions />
-				<TreeItem label="Item 1.3" actions />
+				<TreeItem label={`Item 1.3${overflowPostfix}`} actions />
 			</TreeItem>
 			<TreeItem label="Item 2">
-				<TreeItem label="Item 2.1" />
+				<TreeItem label={`Item 2.1${overflowPostfix}`} />
 			</TreeItem>
 			<TreeItem label="Item 3" actions />
 		</Tree.Root>
@@ -56,12 +61,22 @@ function TreeItem({
 					<Tree.Expander />
 					<Icon href={placeholderIcon} />
 					<Tree.Label>{label}</Tree.Label>
-					{actions && (
-						<div style={{ display: "flex", gap: 4, marginInlineStart: "auto" }}>
-							<IconButton icon={unlockIcon} label="Unlock" variant="ghost" />
-							<IconButton icon={showIcon} label="Show" variant="ghost" />
-						</div>
-					)}
+					<div style={{ display: "flex", gap: 4, marginInlineStart: "auto" }}>
+						<IconButton
+							icon={unlockIcon}
+							label="Unlock"
+							variant="ghost"
+							aria-hidden={!actions}
+							style={{ visibility: actions ? undefined : "hidden" }}
+						/>
+						<IconButton
+							icon={showIcon}
+							label="Show"
+							variant="ghost"
+							aria-hidden={!actions}
+							style={{ visibility: actions ? undefined : "hidden" }}
+						/>
+					</div>
 				</>
 			}
 			selected={selected}

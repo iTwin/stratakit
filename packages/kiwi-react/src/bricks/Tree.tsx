@@ -13,7 +13,7 @@ import { TreeChevron } from "./Icon.js";
 
 interface TreeProps extends Ariakit.RoleProps<"div"> {}
 
-export const Tree = React.forwardRef<React.ElementRef<"div">, TreeProps>(
+const Tree = React.forwardRef<React.ElementRef<"div">, TreeProps>(
 	(props, forwardedRef) => {
 		return (
 			<Ariakit.Role.div {...props} role="tree" ref={forwardedRef}>
@@ -32,53 +32,52 @@ interface TreeItemProps extends Omit<Ariakit.RoleProps<"div">, "content"> {
 	expanded?: boolean;
 }
 
-export const TreeItem = React.forwardRef<
-	React.ElementRef<"div">,
-	TreeItemProps
->((props, forwardedRef) => {
-	const { selected, content, children, className, expanded, style, ...rest } =
-		props;
+const TreeItem = React.forwardRef<React.ElementRef<"div">, TreeItemProps>(
+	(props, forwardedRef) => {
+		const { selected, content, children, className, expanded, style, ...rest } =
+			props;
 
-	const parentContext = React.useContext(TreeItemContext);
-	const level = parentContext ? parentContext.level + 1 : 1;
-	return (
-		<TreeItemContext.Provider
-			value={React.useMemo(
-				() => ({
-					level,
-					expanded: expanded ?? false,
-				}),
-				[level, expanded],
-			)}
-		>
-			<ListItem.Root
-				{...rest}
-				aria-expanded={expanded}
-				aria-selected={selected}
-				aria-level={level}
-				className={cx("🥝-tree-item", className)}
-				style={
-					{
-						...style,
-						"--🥝tree-item-level": level,
-					} as React.CSSProperties
-				}
-				role="treeitem"
-				ref={forwardedRef}
+		const parentContext = React.useContext(TreeItemContext);
+		const level = parentContext ? parentContext.level + 1 : 1;
+		return (
+			<TreeItemContext.Provider
+				value={React.useMemo(
+					() => ({
+						level,
+						expanded: expanded ?? false,
+					}),
+					[level, expanded],
+				)}
 			>
-				{content}
-			</ListItem.Root>
-			{children}
-		</TreeItemContext.Provider>
-	);
-});
+				<ListItem.Root
+					{...rest}
+					aria-expanded={expanded}
+					aria-selected={selected}
+					aria-level={level}
+					className={cx("🥝-tree-item", className)}
+					style={
+						{
+							...style,
+							"--🥝tree-item-level": level,
+						} as React.CSSProperties
+					}
+					role="treeitem"
+					ref={forwardedRef}
+				>
+					{content}
+				</ListItem.Root>
+				{children}
+			</TreeItemContext.Provider>
+		);
+	},
+);
 
 // ----------------------------------------------------------------------------
 
 interface TreeItemLabelProps
 	extends React.ComponentProps<typeof ListItem.Content> {}
 
-export const TreeItemLabel = React.forwardRef<
+const TreeItemLabel = React.forwardRef<
 	React.ElementRef<typeof ListItem.Content>,
 	TreeItemLabelProps
 >((props, forwardedRef) => {

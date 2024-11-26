@@ -44,7 +44,7 @@ const TreeItem = React.forwardRef<React.ElementRef<"div">, TreeItemProps>(
 				value={React.useMemo(
 					() => ({
 						level,
-						expanded: expanded ?? false,
+						expanded,
 					}),
 					[level, expanded],
 				)}
@@ -105,13 +105,14 @@ const TreeItemExpander = React.forwardRef<
 	TreeItemExpanderProps
 >((props, forwardedRef) => {
 	const context = React.useContext(TreeItemContext);
-	const expanded = context?.expanded ?? false;
+	const expanded = context?.expanded;
 	return (
 		<IconButton
 			icon={<TreeChevron />}
 			label="Collapse"
-			data-kiwi-expanded={expanded}
 			{...props}
+			data-kiwi-expanded={expanded}
+			aria-hidden={expanded === undefined ? true : undefined}
 			className={cx("🥝-tree-item-expander", props.className)}
 			variant="ghost"
 			ref={forwardedRef}
@@ -124,7 +125,7 @@ const TreeItemExpander = React.forwardRef<
 const TreeItemContext = React.createContext<
 	| {
 			level: number;
-			expanded: boolean;
+			expanded?: boolean;
 	  }
 	| undefined
 >(undefined);

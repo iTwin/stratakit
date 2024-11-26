@@ -32,5 +32,9 @@
 		&:where([data-kiwi-expanded="false"]) {
 			--🥝tree-chevron-rotate: -0.25turn;
 		}
+
+		&:where([aria-hidden="true"]) {
+			visibility: hidden;
+		}
 	}
 }

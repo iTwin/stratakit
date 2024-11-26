@@ -3,8 +3,11 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 .🥝-tree-item:is(.🥝-list-item) {
+	--✨padding-inline-end: 0.25rem;
+
 	@layer base {
 		padding-inline-start: calc(8px + 6px * (var(--🥝tree-item-level) - 1));
+		padding-inline-end: var(--✨padding-inline-end);
 
 		.🥝-icon-button {
 			/* TODO: IconButton inside ListItem. Button block size matches the TreeItem, while ListItem adds additional padding. */

@@ -3,14 +3,10 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 import { Icon } from "@itwin/kiwi-react/bricks";
-import { useSearchParams } from "@remix-run/react";
+import { useSearchParams } from "react-router";
+import placeholderIcon from "@itwin/kiwi-icons/placeholder.svg";
 
 export const handle = { title: "Icon" };
-
-const placeholderIcon = new URL(
-	"@itwin/kiwi-icons/placeholder.svg",
-	import.meta.url,
-).href;
 
 export default function Page() {
 	const size = useSizeParam();

@@ -4,20 +4,15 @@
  *--------------------------------------------------------------------------------------------*/
 import * as ListItem from "@itwin/kiwi-react-internal/src/bricks/ListItem";
 import { Icon } from "@itwin/kiwi-react-internal/src/bricks/Icon";
-import { useSearchParams } from "@remix-run/react";
-import type { LinksFunction } from "@remix-run/node";
+import { useSearchParams, type LinksFunction } from "react-router";
 import testStyles from "./index.css?url";
+import placeholderIcon from "@itwin/kiwi-icons/placeholder.svg";
 
 export const handle = { title: "List" };
 
 export const links: LinksFunction = () => [
 	{ rel: "stylesheet", href: testStyles },
 ];
-
-const placeholderIcon = new URL(
-	"@itwin/kiwi-icons/placeholder.svg",
-	import.meta.url,
-).href;
 
 export default function Page() {
 	const [searchParams] = useSearchParams();

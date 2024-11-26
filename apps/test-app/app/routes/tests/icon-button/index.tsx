@@ -3,12 +3,8 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 import { IconButton, Icon } from "@itwin/kiwi-react/bricks";
-import { useSearchParams } from "@remix-run/react";
-
-const placeholderIcon = new URL(
-	"@itwin/kiwi-icons/placeholder.svg",
-	import.meta.url,
-).href;
+import { useSearchParams } from "react-router";
+import placeholderIcon from "@itwin/kiwi-icons/placeholder.svg";
 
 export const handle = { title: "IconButton" };
 

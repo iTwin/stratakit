@@ -57,7 +57,7 @@ Packages:
 
 Apps:
 
-- [`test-app`](./apps/test-app): A [Remix](https://remix.run/) app for automated and manual testing.
+- [`test-app`](./apps/test-app): A [React Router](https://reactrouter.com/) app for automated and manual testing.
 
 Also, there’s [an internal package](./internal) which is used for configuration files and common variables for the workspace at large.
 

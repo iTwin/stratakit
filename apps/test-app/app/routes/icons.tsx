@@ -3,8 +3,13 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 import { Icon, VisuallyHidden } from "@itwin/kiwi-react/bricks";
-import type { MetaFunction } from "@remix-run/react";
+import type { MetaFunction } from "react-router";
 import iconsListJson from "@itwin/kiwi-icons/icons-list.json";
+
+const allIcons = import.meta.glob(
+	"../../node_modules/@itwin/kiwi-icons/icons/*.svg",
+	{ eager: true },
+);
 
 const title = "Kiwi icons";
 export const meta: MetaFunction = () => {
@@ -12,10 +17,8 @@ export const meta: MetaFunction = () => {
 };
 
 function getIconHref(icon: string) {
-	return new URL(
-		`../../node_modules/@itwin/kiwi-icons/icons/${icon}`,
-		import.meta.url,
-	).href;
+	const module = allIcons[`../../node_modules/@itwin/kiwi-icons/icons/${icon}`];
+	return (module as { default: string })?.default;
 }
 
 export default function Page() {

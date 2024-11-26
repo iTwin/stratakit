@@ -2,9 +2,9 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-import { forwardRef } from "react";
+import * as React from "react";
 import cx from "classnames";
-import type * as Ariakit from "@ariakit/react";
+import * as Ariakit from "@ariakit/react";
 
 interface KbdProps extends Ariakit.RoleProps<"kbd"> {
 	/**
@@ -22,17 +22,18 @@ interface KbdProps extends Ariakit.RoleProps<"kbd"> {
  * <Kbd ref={kbdRef}>Cmd</Kbd>
  * <Kbd>Ctrl</Kbd>
  */
-export const Kbd = forwardRef<React.ElementRef<"kbd">, KbdProps>(
-	({ variant = "solid", className, children, ...rest }, ref) => {
+export const Kbd = React.forwardRef<HTMLDivElement, KbdProps>(
+	({ variant = "solid", className, children, render, ...rest }, ref) => {
 		return (
-			<kbd
+			<Ariakit.Role
 				ref={ref}
 				data-kiwi-variant={variant}
-				{...rest}
 				className={cx("🥝-kbd", className)}
+				render={render || ((props) => <kbd {...props} />)}
+				{...rest}
 			>
 				{children}
-			</kbd>
+			</Ariakit.Role>
 		);
 	},
 );

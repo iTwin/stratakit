@@ -32,7 +32,7 @@ export const KbdKeys = {
 	Tab: "\u21e5 Tab",
 } as const;
 
-interface KbdProps extends React.ComponentPropsWithoutRef<"kbd"> {
+interface KbdProps extends Ariakit.RoleProps<"kbd"> {
 	/**
 	 * Content of the key to be passed as children. Must be a string or one of the `KbdKeys`.
 	 */

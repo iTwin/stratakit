@@ -72,6 +72,24 @@ export const TreeItem = React.forwardRef<
 
 // ----------------------------------------------------------------------------
 
+interface TreeItemLabelProps
+	extends React.ComponentProps<typeof ListItem.Content> {}
+
+export const TreeItemLabel = React.forwardRef<
+	React.ElementRef<typeof ListItem.Content>,
+	TreeItemLabelProps
+>((props, forwardedRef) => {
+	return (
+		<ListItem.Content
+			{...props}
+			className={cx("🥝-tree-item-label", props.className)}
+			ref={forwardedRef}
+		/>
+	);
+});
+
+// ----------------------------------------------------------------------------
+
 const TreeItemContext = React.createContext<
 	| {
 			level: number;
@@ -81,4 +99,4 @@ const TreeItemContext = React.createContext<
 
 // ----------------------------------------------------------------------------
 
-export { Tree as Root, TreeItem as Item };
+export { Tree as Root, TreeItem as Item, TreeItemLabel as Label };

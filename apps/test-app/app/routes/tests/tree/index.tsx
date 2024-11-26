@@ -28,25 +28,25 @@ const showIcon = new URL(
 export default function Page() {
 	return (
 		<Tree.Root>
-			<TreeItem content="Item 1">
-				<TreeItem content="Item 1.1" />
-				<TreeItem content="Item 1.2" actions />
-				<TreeItem content="Item 1.3" actions />
+			<TreeItem label="Item 1">
+				<TreeItem label="Item 1.1" />
+				<TreeItem label="Item 1.2" actions />
+				<TreeItem label="Item 1.3" actions />
 			</TreeItem>
-			<TreeItem content="Item 2">
-				<TreeItem content="Item 2.1" />
+			<TreeItem label="Item 2">
+				<TreeItem label="Item 2.1" />
 			</TreeItem>
-			<TreeItem content="Item 3" actions />
+			<TreeItem label="Item 3" actions />
 		</Tree.Root>
 	);
 }
 
 function TreeItem({
 	children,
-	content,
+	label,
 	actions,
 }: React.PropsWithChildren<{
-	content?: React.ReactNode;
+	label?: React.ReactNode;
 	actions?: boolean;
 }>) {
 	const [searchParams] = useSearchParams();
@@ -67,7 +67,7 @@ function TreeItem({
 						<span style={{ inlineSize: "1.5rem" }} />
 					)}
 					<Icon href={placeholderIcon} />
-					{content}
+					<Tree.Label>{label}</Tree.Label>
 					{actions && (
 						<div style={{ display: "flex", gap: 4, marginInlineStart: "auto" }}>
 							<TreeItemButton

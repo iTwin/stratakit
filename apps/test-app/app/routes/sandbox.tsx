@@ -15,7 +15,6 @@ import {
 	Tree,
 	VisuallyHidden,
 } from "@itwin/kiwi-react/bricks";
-import * as ListItem from "@itwin/kiwi-react-internal/src/bricks/ListItem.js";
 import type { MetaFunction } from "@remix-run/react";
 
 const title = "Kiwi sandbox";
@@ -452,7 +451,7 @@ function TreeItem(props: TreeItemProps) {
 						<span style={{ inlineSize: "1.5rem" }} />
 					)}
 					<Icon href={placeholderIcon} style={{ display: "inline" }} />
-					<ListItem.Content>{props.content}</ListItem.Content>
+					<Tree.Label>{props.content}</Tree.Label>
 				</>
 			}
 			expanded={isParentNode || undefined}

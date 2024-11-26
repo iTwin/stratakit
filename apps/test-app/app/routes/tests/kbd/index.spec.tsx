@@ -19,15 +19,10 @@ test("@visual", async ({ page }) => {
 test("should not be focusable", async ({ page }) => {
 	await page.goto("/tests/kbd");
 
-	const kbdComponent = page.getByTestId("kbd");
+	const kbd = page.getByText("Ctrl");
+	await kbd.focus();
 
-	await kbdComponent.focus();
-
-	const isFocused = await page.evaluate(
-		(element) => element === document.activeElement,
-		await kbdComponent.elementHandle(),
-	);
-	expect(isFocused).toBe(false);
+	await expect(kbd).not.toBeFocused();
 });
 
 test.describe("@a11y", () => {

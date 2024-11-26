@@ -20,3 +20,14 @@
 		}
 	}
 }
+
+.🥝-disclosure-arrow {
+	@layer base {
+		margin-inline-end: -8px; /* space/x2 */
+		rotate: var(--🥝disclosure-arrow-rotate);
+
+		@media (prefers-reduced-motion: no-preference) {
+			transition: rotate 150ms ease-in-out;
+		}
+	}
+}

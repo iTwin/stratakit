@@ -31,6 +31,7 @@
 	@layer base {
 		cursor: var(--🥝text-box-cursor);
 		font-size: 0.75rem;
+		min-inline-size: 0;
 
 		min-block-size: var(--✨height);
 		padding-inline: var(--✨padding-inline);
@@ -74,6 +75,7 @@
 		:where(input, textarea) {
 			appearance: none;
 			line-height: 1.3; /* This is a safe value for Inter — lower values will be ignored. */
+			min-inline-size: 0;
 			border: 1px solid var(--🥝text-box-border-color);
 			cursor: var(--🥝text-box-cursor);
 			padding-block: var(--✨padding-block);

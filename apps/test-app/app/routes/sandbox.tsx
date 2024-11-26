@@ -510,11 +510,10 @@ function Subheader() {
 			</Ariakit.Role.h3>
 
 			{isSearching ? (
-				<TextBox.Input
-					className={styles.searchInput}
-					placeholder="Search"
-					ref={searchInputRef}
-				/>
+				<TextBox.Root className={styles.searchInput}>
+					<TextBox.Icon href={searchIcon} />
+					<TextBox.Input placeholder="Search" ref={searchInputRef} />
+				</TextBox.Root>
 			) : null}
 
 			<div className={styles.subheaderActions}>{actions}</div>

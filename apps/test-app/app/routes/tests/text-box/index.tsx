@@ -2,7 +2,7 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-import { TextBox, Label } from "@itwin/kiwi-react/bricks";
+import { TextBox, Label, Field } from "@itwin/kiwi-react/bricks";
 import { useSearchParams } from "@remix-run/react";
 import { useId } from "react";
 
@@ -32,7 +32,6 @@ export default function Page() {
 	const [searchParams] = useSearchParams();
 	const visual = searchParams.has("visual");
 	const composition = searchParams.has("composition");
-	const id = useId();
 	const inputParams = useInputParams();
 
 	if (visual) {
@@ -44,10 +43,10 @@ export default function Page() {
 	}
 
 	return (
-		<>
-			<Label htmlFor={id}>Fruit</Label>
-			<TextBox.Input id={id} {...inputParams} />
-		</>
+		<Field>
+			<Label>Fruit</Label>
+			<TextBox.Input {...inputParams} />
+		</Field>
 	);
 }
 

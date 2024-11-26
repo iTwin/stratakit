@@ -422,18 +422,19 @@ type TreeItemProps = React.PropsWithChildren<{
 
 function TreeItem(props: TreeItemProps) {
 	const isParentNode = React.Children.count(props.children) > 0;
+	const [expanded, setExpanded] = React.useState(true);
 	return (
 		<Tree.Item
 			content={
 				<>
-					<Tree.Expander />
+					<Tree.Expander onClick={() => setExpanded((prev) => !prev)} />
 					<Icon href={placeholderIcon} style={{ display: "inline" }} />
 					<Tree.Label>{props.content}</Tree.Label>
 				</>
 			}
-			expanded={isParentNode || undefined}
+			expanded={isParentNode ? expanded : undefined}
 		>
-			{props.children}
+			{expanded ? props.children : undefined}
 		</Tree.Item>
 	);
 }

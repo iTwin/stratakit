@@ -17,30 +17,17 @@ import {
 } from "@itwin/kiwi-react/bricks";
 import * as ListItem from "@itwin/kiwi-react-internal/src/bricks/ListItem.js";
 import type { MetaFunction } from "react-router";
+import placeholderIcon from "@itwin/kiwi-icons/placeholder.svg";
+import searchIcon from "@itwin/kiwi-icons/search.svg";
+import panelLeftIcon from "@itwin/kiwi-icons/panel-left.svg";
+import filterIcon from "@itwin/kiwi-icons/filter.svg";
+import dismissIcon from "@itwin/kiwi-icons/dismiss.svg";
+import chevronDown from "@itwin/kiwi-icons/chevron-down.svg";
 
 const title = "Kiwi sandbox";
 export const meta: MetaFunction = () => {
 	return [{ title }, { name: "color-scheme", content: "dark" }];
 };
-
-const placeholderIcon = new URL(
-	"@itwin/kiwi-icons/placeholder.svg",
-	import.meta.url,
-).href;
-const searchIcon = new URL("@itwin/kiwi-icons/search.svg", import.meta.url)
-	.href;
-const panelLeftIcon = new URL(
-	"@itwin/kiwi-icons/panel-left.svg",
-	import.meta.url,
-).href;
-const filterIcon = new URL("@itwin/kiwi-icons/filter.svg", import.meta.url)
-	.href;
-const dismissIcon = new URL("@itwin/kiwi-icons/dismiss.svg", import.meta.url)
-	.href;
-const chevronDown = new URL(
-	"@itwin/kiwi-icons/chevron-down.svg",
-	import.meta.url,
-).href;
 
 const leftPanelLabelId = "left-panel";
 

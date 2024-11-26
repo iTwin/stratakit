@@ -4,11 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 import { IconButton, Icon } from "@itwin/kiwi-react/bricks";
 import { useSearchParams } from "react-router";
-
-const placeholderIcon = new URL(
-	"@itwin/kiwi-icons/placeholder.svg",
-	import.meta.url,
-).href;
+import placeholderIcon from "@itwin/kiwi-icons/placeholder.svg";
 
 export const handle = { title: "IconButton" };
 

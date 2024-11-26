@@ -4,6 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 import { forwardRef } from "react";
 import cx from "classnames";
+import type * as Ariakit from "@ariakit/react";
 
 /**
  * Some predefined strings for common keyboard keys.

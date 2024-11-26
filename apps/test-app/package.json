@@ -6,7 +6,7 @@
 	"scripts": {
 		"build": "react-router typegen && react-router build && tsc",
 		"dev": "react-router dev",
-		"preview": "pnpx serve build/client -L -p 1800",
+		"preview": "vite preview",
 		"test": "tsx ./scripts/run-tests.cts pnpm exec playwright test",
 		"typecheck": "react-router typegen && tsc"
 	},

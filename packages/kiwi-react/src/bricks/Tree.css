@@ -14,3 +14,11 @@
 		}
 	}
 }
+
+.🥝-tree-item-label:is(.🥝-list-item-content) {
+	@layer base {
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		overflow: hidden;
+	}
+}

@@ -5,6 +5,11 @@
 .🥝-tree-item:is(.🥝-list-item) {
 	@layer base {
 		padding-inline-start: calc(8px + 6px * (var(--🥝tree-item-level) - 1));
+
+		.🥝-icon-button {
+			/* TODO: IconButton inside ListItem. Button block size matches the TreeItem, while ListItem adds additional padding. */
+			margin-block: -6px;
+		}
 	}
 
 	@layer states {
@@ -24,10 +29,6 @@
 }
 
 .🥝-tree-item-expander:is(.🥝-icon-button) {
-	@layer base {
-		margin-block: -6px;
-	}
-
 	@layer states {
 		&:where([data-kiwi-expanded="false"]) {
 			--🥝tree-chevron-rotate: -0.25turn;

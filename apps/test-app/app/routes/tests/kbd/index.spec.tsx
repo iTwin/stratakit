@@ -11,23 +11,18 @@ test("default", async ({ page }) => {
 	expect(kbdComponent).not.toBe(null);
 });
 
-test("@visual", async ({ page }) => {
-	await page.goto("/tests/kbd?visual=true");
-	await expect(page.locator("body")).toHaveScreenshot();
-});
-
 test("should not be focusable", async ({ page }) => {
 	await page.goto("/tests/kbd");
 
 	const kbdComponent = page.getByText("Ctrl");
 
 	await kbdComponent.focus();
+	await expect(kbdComponent).not.toBeFocused();
+});
 
-	const isFocused = await page.evaluate(
-		(element) => element === document.activeElement,
-		await kbdComponent.elementHandle(),
-	);
-	expect(isFocused).toBe(false);
+test("@visual", async ({ page }) => {
+	await page.goto("/tests/kbd?visual=true");
+	await expect(page.locator("body")).toHaveScreenshot();
 });
 
 test.describe("@a11y", () => {

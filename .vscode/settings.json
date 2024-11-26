@@ -17,7 +17,8 @@
 		"*.css": "${capture}.css.ts",
 		".gitignore": ".gitattributes",
 		"Dockerfile": ".dockerignore",
-		"lefthook.yml": "biome.jsonc, .prettierrc"
+		"lefthook.yml": "biome.jsonc, .prettierrc",
+		"vite.config.ts": "react-router.config.ts"
 	},
 	"javascript.preferences.importModuleSpecifierEnding": "js",
 	"typescript.preferences.importModuleSpecifierEnding": "js",

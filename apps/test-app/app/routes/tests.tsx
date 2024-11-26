@@ -4,8 +4,12 @@
  *--------------------------------------------------------------------------------------------*/
 import globalStyles from "./tests.css?url";
 import { VisuallyHidden } from "@itwin/kiwi-react/bricks";
-import type { LinksFunction } from "@remix-run/node";
-import { Outlet, useMatches, type MetaFunction } from "@remix-run/react";
+import {
+	Outlet,
+	useMatches,
+	type MetaFunction,
+	type LinksFunction,
+} from "react-router";
 
 export const meta: MetaFunction = () => {
 	return [{ title: "Kiwi tests" }, { name: "color-scheme", content: "dark" }];

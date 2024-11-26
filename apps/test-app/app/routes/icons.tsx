@@ -3,7 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 import { Icon, VisuallyHidden } from "@itwin/kiwi-react/bricks";
-import type { MetaFunction } from "@remix-run/react";
+import type { MetaFunction } from "react-router";
 import iconsListJson from "@itwin/kiwi-icons/icons-list.json";
 
 const title = "Kiwi icons";

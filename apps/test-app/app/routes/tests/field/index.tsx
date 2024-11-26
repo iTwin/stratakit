@@ -10,7 +10,7 @@ import {
 	Radio,
 	Switch,
 } from "@itwin/kiwi-react/bricks";
-import { useSearchParams } from "@remix-run/react";
+import { useSearchParams } from "react-router";
 
 export const handle = { title: "Field" };
 

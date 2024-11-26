@@ -3,10 +3,9 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 import globalStyles from "./index.css?url";
-import { Link, type MetaFunction } from "@remix-run/react";
+import { Link, type MetaFunction, type LinksFunction } from "react-router";
 import { Anchor, Divider } from "@itwin/kiwi-react/bricks";
 import styles from "./index.module.css";
-import type { LinksFunction } from "@remix-run/node";
 
 const components = [
 	"Root",

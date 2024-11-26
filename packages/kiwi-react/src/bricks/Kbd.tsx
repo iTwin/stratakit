@@ -49,7 +49,7 @@ interface KbdProps extends Ariakit.RoleProps<"kbd"> {
  * <Kbd ref={kbdRef}>{KbdKeys.Command}</Kbd>
  * <Kbd>{KbdKeys.Enter}</Kbd>
  */
-export const Kbd = forwardRef<HTMLElement, KbdProps>(
+export const Kbd = forwardRef<React.ElementRef<"kbd">, KbdProps>(
 	({ variant = "solid", className, children, ...rest }, ref) => {
 		return (
 			<kbd

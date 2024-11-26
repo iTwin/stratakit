@@ -2,8 +2,8 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-import { Kbd, KbdKeys } from "@itwin/kiwi-react/bricks";
-import { useSearchParams } from "@remix-run/react";
+import { Kbd } from "@itwin/kiwi-react/bricks";
+import { useSearchParams } from "react-router";
 
 export const handle = { title: "Kbd" };
 
@@ -24,7 +24,7 @@ function VisualTest() {
 		<div style={{ display: "grid", gap: 4 }}>
 			{variants.map((variant) => (
 				<div key={variant} style={{ display: "flex", gap: 4 }}>
-					<Kbd variant={variant}>{`${KbdKeys.Command}`}</Kbd>
+					<Kbd variant={variant}>Ctrl</Kbd>
 				</div>
 			))}
 		</div>

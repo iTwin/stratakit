@@ -19,4 +19,5 @@ export { Switch } from "./Switch.js";
 export * as Tabs from "./Tabs.js";
 export * as TextBox from "./TextBox.js";
 export { Tooltip } from "./Tooltip.js";
+export * as Tree from "./Tree.js";
 export { VisuallyHidden } from "./VisuallyHidden.js";

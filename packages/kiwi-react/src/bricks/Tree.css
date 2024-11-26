@@ -1,0 +1,16 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+.🥝-tree-item:is(.🥝-list-item) {
+	@layer base {
+		padding-inline-start: calc(8px + 12px * (var(--🥝tree-item-level) - 1));
+	}
+
+	@layer states {
+		/* TODO: combined states: active + hovered/pressed. */
+		&[aria-selected="true"] {
+			--🌀list-item-state: var(--🌀list-item-state--active);
+		}
+	}
+}

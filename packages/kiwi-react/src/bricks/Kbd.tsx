@@ -29,7 +29,7 @@ export const Kbd = React.forwardRef<HTMLDivElement, KbdProps>(
 				ref={ref}
 				data-kiwi-variant={variant}
 				className={cx("🥝-kbd", className)}
-				render={render || ((props) => <kbd {...props} />)}
+				render={render || <kbd />}
 				{...rest}
 			>
 				{children}

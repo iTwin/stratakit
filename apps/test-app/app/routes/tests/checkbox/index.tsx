@@ -8,7 +8,7 @@ import {
 	Label,
 	VisuallyHidden,
 } from "@itwin/kiwi-react/bricks";
-import { useSearchParams } from "@remix-run/react";
+import { useSearchParams } from "react-router";
 import { useId } from "react";
 
 export const handle = { title: "Checkbox" };

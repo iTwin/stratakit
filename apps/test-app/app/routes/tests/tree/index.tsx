@@ -2,7 +2,7 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-import { useSearchParams } from "@remix-run/react";
+import { useSearchParams } from "react-router";
 import { Icon, IconButton, Tree } from "@itwin/kiwi-react/bricks";
 import React from "react";
 

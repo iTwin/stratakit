@@ -4,13 +4,9 @@
  *--------------------------------------------------------------------------------------------*/
 import { Icon } from "@itwin/kiwi-react/bricks";
 import { useSearchParams } from "react-router";
+import placeholderIcon from "@itwin/kiwi-icons/placeholder.svg";
 
 export const handle = { title: "Icon" };
-
-const placeholderIcon = new URL(
-	"@itwin/kiwi-icons/placeholder.svg",
-	import.meta.url,
-).href;
 
 export default function Page() {
 	const size = useSizeParam();

@@ -12,10 +12,6 @@ const placeholderIcon = new URL(
 	"@itwin/kiwi-icons/placeholder.svg",
 	import.meta.url,
 ).href;
-const expanderIcon = new URL(
-	"@itwin/kiwi-icons/chevron-down.svg",
-	import.meta.url,
-).href;
 const unlockIcon = new URL(
 	"@itwin/kiwi-icons/lock-unlocked.svg",
 	import.meta.url,

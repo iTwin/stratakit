@@ -52,3 +52,49 @@ function toIconId(size: IconProps["size"]) {
 	if (size === "large") return "icon-large";
 	return "icon";
 }
+
+// ----------------------------------------------------------------------------
+
+interface DisclosureArrowProps
+	extends Omit<Ariakit.RoleProps<"svg">, "children"> {
+	/**
+	 * Which direction should the arrow point towards?
+	 * @default "down"
+	 */
+	direction?: "down" | "right";
+}
+
+export const DisclosureArrow = React.forwardRef<
+	React.ElementRef<"svg">,
+	DisclosureArrowProps
+>((props, forwardedRef) => {
+	const { direction = "down", ...rest } = props;
+
+	const path = React.useMemo(() => {
+		switch (direction) {
+			case "down":
+				return <path d="M8 10 5 7h6l-3 3Z" />;
+			case "right":
+				return <path d="M7 11V5l3 3-3 3Z" />;
+		}
+	}, [direction]);
+
+	return (
+		<Icon
+			{...rest}
+			render={
+				<Ariakit.Role.svg
+					width="16"
+					height="16"
+					fill="currentColor"
+					viewBox="0 0 16 16"
+					render={props.render}
+				>
+					{path}
+				</Ariakit.Role.svg>
+			}
+			className={cx("🥝-disclosure-arrow", props.className)}
+			ref={forwardedRef}
+		/>
+	);
+});

@@ -20,5 +20,6 @@
 @import "./Tabs.css" layer(kiwi.components);
 @import "./TextBox.css" layer(kiwi.components);
 @import "./Tooltip.css" layer(kiwi.components);
+@import "./Tree.css" layer(kiwi.components);
 
 @import "./Field.css" layer(kiwi.components);

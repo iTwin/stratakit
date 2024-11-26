@@ -12,6 +12,7 @@ import {
 	Icon,
 	IconButton,
 	TextBox,
+	Tree,
 	VisuallyHidden,
 } from "@itwin/kiwi-react/bricks";
 import * as ListItem from "@itwin/kiwi-react-internal/src/bricks/ListItem.js";
@@ -36,6 +37,10 @@ const filterIcon = new URL("@itwin/kiwi-icons/filter.svg", import.meta.url)
 	.href;
 const dismissIcon = new URL("@itwin/kiwi-icons/dismiss.svg", import.meta.url)
 	.href;
+const chevronDown = new URL(
+	"@itwin/kiwi-icons/chevron-down.svg",
+	import.meta.url,
+).href;
 
 const leftPanelLabelId = "left-panel";
 
@@ -94,7 +99,7 @@ export default function Page() {
 						</div>
 					</div>
 					<Subheader />
-					<Tree />
+					<SandboxTree />
 					<Divider
 						className={styles.splitter}
 						render={<Ariakit.Focusable />}
@@ -363,57 +368,97 @@ function useMoveable<T extends HTMLElement>(args?: UseMoveableArgs) {
 	return { moveableProps };
 }
 
-function Tree() {
+function SandboxTree() {
 	return (
-		// biome-ignore lint/a11y/useSemanticElements: `div` is used as underlying element for `ListItem`
-		<div role="list" className={styles.tree}>
-			<TreeRow level={0}>Guides</TreeRow>
-			<TreeRow level={1}>Tree</TreeRow>
-			<TreeRow level={2}>Guide 4</TreeRow>
-			<TreeRow level={2}>Guide 3</TreeRow>
-			<TreeRow level={2}>Guide 2</TreeRow>
-			<TreeRow level={2}>Guide 1</TreeRow>
-			<TreeRow level={0}>Other</TreeRow>
-			<TreeRow level={1}>Object 2</TreeRow>
-			<TreeRow level={2}>Path 3</TreeRow>
-			<TreeRow level={1}>Object 1</TreeRow>
-			<TreeRow level={0}>Road</TreeRow>
-			<TreeRow level={1}>Parking lot access</TreeRow>
-			<TreeRow level={1}>Site access</TreeRow>
-			<TreeRow level={0}>Parking lot</TreeRow>
-			<TreeRow level={1}>Parking area</TreeRow>
-			<TreeRow level={2}>Bay point 2</TreeRow>
-			<TreeRow level={2}>Bay point 1</TreeRow>
-			<TreeRow level={2}>Space point 1</TreeRow>
-			<TreeRow level={2}>Path 6</TreeRow>
-			<TreeRow level={0}>Building</TreeRow>
-			<TreeRow level={1}>Building area</TreeRow>
-			<TreeRow level={2}>Path 5</TreeRow>
-			<TreeRow level={0}>Sewer</TreeRow>
-			<TreeRow level={1}>Run off pipe</TreeRow>
-			<TreeRow level={2}>Path 4</TreeRow>
-			<TreeRow level={0}>Project boundary</TreeRow>
-			<TreeRow level={1}>Property area</TreeRow>
-			<TreeRow level={2}>Path 1</TreeRow>
-			<TreeRow level={0}>Map</TreeRow>
-			<TreeRow level={1}>Location</TreeRow>
-			<TreeRow level={2}>Terrain</TreeRow>
-		</div>
+		<Tree.Root className={styles.tree}>
+			<TreeItem content="Guides">
+				<TreeItem content="Tree">
+					<TreeItem content="Guide 4" />
+					<TreeItem content="Guide 3" />
+					<TreeItem content="Guide 2" />
+					<TreeItem content="Guide 1" />
+				</TreeItem>
+			</TreeItem>
+			<TreeItem content="Other">
+				<TreeItem content="Object 2">
+					<TreeItem content="Path 3" />
+				</TreeItem>
+				<TreeItem content="Object 1" />
+			</TreeItem>
+			<TreeItem content="Road">
+				<TreeItem content="Parking lot access" />
+				<TreeItem content="Site access" />
+			</TreeItem>
+			<TreeItem content="Parking lot">
+				<TreeItem content="Parking area">
+					<TreeItem content="Bay point 2" />
+					<TreeItem content="Bay point 1" />
+					<TreeItem content="Space point 1" />
+					<TreeItem content="Path 6" />
+				</TreeItem>
+			</TreeItem>
+			<TreeItem content="Building">
+				<TreeItem content="Building area">
+					<TreeItem content="Path 5" />
+				</TreeItem>
+			</TreeItem>
+			<TreeItem content="Sewer">
+				<TreeItem content="Run off pipe">
+					<TreeItem content="Path 4" />
+				</TreeItem>
+			</TreeItem>
+			<TreeItem content="Project boundary">
+				<TreeItem content="Property area">
+					<TreeItem content="Path 1" />
+				</TreeItem>
+			</TreeItem>
+			<TreeItem content="Map">
+				<TreeItem content="Location">
+					<TreeItem content="Terrain" />
+				</TreeItem>
+			</TreeItem>
+		</Tree.Root>
 	);
 }
 
-type TreeRowProps = React.PropsWithChildren<{
-	level: number;
+function TreeItemButton(props: React.ComponentProps<typeof IconButton>) {
+	return (
+		<IconButton
+			{...props}
+			// TODO: IconButton inside ListItem. Button block size matches the TreeItem, while ListItem adds additional padding.
+			style={{ marginBlock: -6, ...props.style }}
+			variant="ghost"
+		/>
+	);
+}
+
+type TreeItemProps = React.PropsWithChildren<{
+	content?: React.ReactNode;
 }>;
 
-function TreeRow({ level = 0, children }: TreeRowProps) {
+function TreeItem(props: TreeItemProps) {
+	const isParentNode = React.Children.count(props.children) > 0;
 	return (
-		<ListItem.Root
-			style={{ ...(level > 0 ? { paddingLeft: level * 20 } : {}) }}
+		<Tree.Item
+			content={
+				<>
+					{isParentNode ? (
+						<TreeItemButton
+							icon={chevronDown}
+							label="Collapse"
+							variant="ghost"
+						/>
+					) : (
+						<span style={{ inlineSize: "1.5rem" }} />
+					)}
+					<Icon href={placeholderIcon} style={{ display: "inline" }} />
+					<ListItem.Content>{props.content}</ListItem.Content>
+				</>
+			}
+			expanded={isParentNode || undefined}
 		>
-			<Icon href={placeholderIcon} style={{ display: "inline" }} />
-			<ListItem.Content>{children}</ListItem.Content>
-		</ListItem.Root>
+			{props.children}
+		</Tree.Item>
 	);
 }
 

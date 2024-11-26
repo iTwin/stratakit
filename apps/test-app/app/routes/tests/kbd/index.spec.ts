@@ -8,7 +8,7 @@ import AxeBuilder from "@axe-core/playwright";
 test("default", async ({ page }) => {
 	await page.goto("/tests/kbd");
 	const kbdComponent = page.getByText("Ctrl");
-	expect(kbdComponent).not.toBe(null);
+	await expect(kbdComponent).toBeVisible();
 });
 
 test("should not be focusable", async ({ page }) => {

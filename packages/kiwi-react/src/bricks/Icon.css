@@ -31,3 +31,13 @@
 		}
 	}
 }
+
+.🥝-tree-chevron {
+	@layer base {
+		rotate: var(--🥝tree-chevron-rotate);
+
+		@media (prefers-reduced-motion: no-preference) {
+			transition: rotate 150ms ease-in-out;
+		}
+	}
+}

@@ -22,11 +22,11 @@ interface KbdProps extends Ariakit.RoleProps<"kbd"> {
  * <Kbd ref={kbdRef}>Cmd</Kbd>
  * <Kbd>Ctrl</Kbd>
  */
-export const Kbd = React.forwardRef<HTMLDivElement, KbdProps>(
+export const Kbd = React.forwardRef<React.ElementRef<"kbd">, KbdProps>(
 	({ variant = "solid", className, children, render, ...rest }, ref) => {
 		return (
 			<Ariakit.Role
-				ref={ref}
+				ref={ref as React.Ref<HTMLDivElement>}
 				data-kiwi-variant={variant}
 				className={cx("🥝-kbd", className)}
 				render={render || <kbd />}

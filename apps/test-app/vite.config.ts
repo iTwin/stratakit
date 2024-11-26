@@ -22,18 +22,20 @@ const basename = process.env.BASE_FOLDER
 // https://reactrouter.com/explanation/special-files#react-routerconfigts
 export const reactRouterConfig = {
 	...(basename && { basename }),
-	ssr: false, // SPA mode for github-pages
+	prerender: true,
 } satisfies ReactRouterConfig;
 
 // https://vite.dev/config/
 export default defineConfig({
-	...(basename && { base: basename }),
 	plugins: [reactRouter(), tsconfigPaths(), bundleCssPlugin()],
 	build: {
 		assetsInlineLimit: (filePath) => {
 			if (filePath.includes("kiwi-icons/icons")) return false;
 			return undefined;
 		},
+		assetsDir: process.env.BASE_FOLDER
+			? `${process.env.BASE_FOLDER}/assets`
+			: "assets",
 	},
 	server: {
 		port: 1800, // dev server port

@@ -7,7 +7,7 @@ import AxeBuilder from "@axe-core/playwright";
 
 test("default", async ({ page }) => {
 	await page.goto("/tests/kbd");
-	const kbdComponent = page.getByTestId("kbd");
+	const kbdComponent = page.getByText("Ctrl");
 	expect(kbdComponent).not.toBe(null);
 });
 
@@ -19,7 +19,7 @@ test("@visual", async ({ page }) => {
 test("should not be focusable", async ({ page }) => {
 	await page.goto("/tests/kbd");
 
-	const kbdComponent = page.getByTestId("kbd");
+	const kbdComponent = page.getByText("Ctrl");
 
 	await kbdComponent.focus();
 
@@ -34,7 +34,7 @@ test.describe("@a11y", () => {
 	test("Axe Page Scan", async ({ page }) => {
 		await page.goto("/tests/kbd");
 
-		const kbdComponent = page.getByTestId("kbd");
+		const kbdComponent = page.getByText("Ctrl");
 		await expect(kbdComponent).toBeVisible();
 
 		const axe = new AxeBuilder({ page });

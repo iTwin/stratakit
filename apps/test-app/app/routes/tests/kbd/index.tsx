@@ -14,11 +14,7 @@ export default function Page() {
 		return <VisualTest />;
 	}
 
-	return (
-		<Kbd data-testid="kbd" variant={"muted"}>
-			Ctrl
-		</Kbd>
-	);
+	return <Kbd variant={"muted"}>Ctrl</Kbd>;
 }
 
 function VisualTest() {

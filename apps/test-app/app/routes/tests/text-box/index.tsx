@@ -5,13 +5,9 @@
 import { TextBox, Label, Field } from "@itwin/kiwi-react/bricks";
 import { useSearchParams } from "react-router";
 import { useId } from "react";
+import placeholderIcon from "@itwin/kiwi-icons/placeholder.svg";
 
 export const handle = { title: "TextBox" };
-
-const placeholderIcon = new URL(
-	"@itwin/kiwi-icons/placeholder.svg",
-	import.meta.url,
-).href;
 
 function TextAffix({ children }: React.PropsWithChildren) {
 	return (

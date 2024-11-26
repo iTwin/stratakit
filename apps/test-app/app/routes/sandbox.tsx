@@ -36,6 +36,11 @@ const filterIcon = new URL("@itwin/kiwi-icons/filter.svg", import.meta.url)
 	.href;
 const dismissIcon = new URL("@itwin/kiwi-icons/dismiss.svg", import.meta.url)
 	.href;
+const lockIcon = new URL("@itwin/kiwi-icons/lock.svg", import.meta.url).href;
+const showIcon = new URL(
+	"@itwin/kiwi-icons/visibility-show.svg",
+	import.meta.url,
+).href;
 
 const leftPanelLabelId = "left-panel";
 
@@ -371,18 +376,18 @@ function SandboxTree() {
 					<TreeItem content="Guide 4" />
 					<TreeItem content="Guide 3" />
 					<TreeItem content="Guide 2" />
-					<TreeItem content="Guide 1" />
+					<TreeItem content="Guide 1" lockAction />
 				</TreeItem>
 			</TreeItem>
 			<TreeItem content="Other">
 				<TreeItem content="Object 2">
 					<TreeItem content="Path 3" />
 				</TreeItem>
-				<TreeItem content="Object 1" />
+				<TreeItem content="Object 1" visibilityAction />
 			</TreeItem>
 			<TreeItem content="Road">
 				<TreeItem content="Parking lot access" />
-				<TreeItem content="Site access" />
+				<TreeItem content="Site access" lockAction visibilityAction />
 			</TreeItem>
 			<TreeItem content="Parking lot">
 				<TreeItem content="Parking area">
@@ -418,6 +423,8 @@ function SandboxTree() {
 
 type TreeItemProps = React.PropsWithChildren<{
 	content?: React.ReactNode;
+	visibilityAction?: boolean;
+	lockAction?: boolean;
 }>;
 
 function TreeItem(props: TreeItemProps) {
@@ -430,6 +437,22 @@ function TreeItem(props: TreeItemProps) {
 					<Tree.Expander onClick={() => setExpanded((prev) => !prev)} />
 					<Icon href={placeholderIcon} style={{ display: "inline" }} />
 					<Tree.Label>{props.content}</Tree.Label>
+					<div style={{ display: "flex", gap: 4, marginInlineStart: "auto" }}>
+						<IconButton
+							className={styles.action}
+							icon={lockIcon}
+							label="Lock"
+							variant="ghost"
+							aria-hidden={!props.lockAction}
+						/>
+						<IconButton
+							className={styles.action}
+							icon={showIcon}
+							label="Show"
+							variant="ghost"
+							aria-hidden={!props.visibilityAction}
+						/>
+					</div>
 				</>
 			}
 			expanded={isParentNode ? expanded : undefined}

@@ -29,6 +29,10 @@
 		&:where([aria-expanded="false"]) {
 			--🥝tree-chevron-rotate: -0.25turn;
 		}
+
+		&:where(:not([aria-expanded])) {
+			--🥝tree-item-expander-visibility: hidden;
+		}
 	}
 }
 
@@ -41,10 +45,8 @@
 }
 
 .🥝-tree-item-expander:is(.🥝-icon-button) {
-	@layer states {
-		&:where([aria-hidden="true"]) {
-			visibility: hidden;
-		}
+	@layer base {
+		visibility: var(--🥝tree-item-expander-visibility);
 	}
 }
 

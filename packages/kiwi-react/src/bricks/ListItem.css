@@ -6,7 +6,6 @@
 	--✨gap: 0.25rem;
 	--✨height: 1.5rem;
 	--✨padding-inline: 0.75rem;
-	--✨padding-block: 0.25rem;
 
 	--✨glow--hover: var(--kiwi-color-glow-hue) var(--kiwi-color-bg-glow-on-surface-neutral-hover-\%);
 	--✨glow--press: var(--kiwi-color-glow-hue)
@@ -29,7 +28,6 @@
 
 		min-block-size: var(--✨height);
 		padding-inline: var(--✨padding-inline);
-		padding-block: var(--✨padding-block);
 
 		background-color: var(--🌀list-item-state--default, var(--✨bg--default))
 			var(--🌀list-item-state--hover, var(--✨bg--hover))

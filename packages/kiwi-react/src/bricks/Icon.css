@@ -6,6 +6,7 @@
 	@layer base {
 		width: var(--🥝icon-size);
 		height: var(--🥝icon-size);
+		flex-shrink: 0;
 		color: var(--🥝icon-color);
 		transition: color 150ms ease-out;
 	}

@@ -110,8 +110,6 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: mcr.microsoft.com/playwright:v1.49.0-noble
-    env:
-      BUILD_ENV: test
 
     steps:
       - uses: actions/checkout@v4

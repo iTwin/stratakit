@@ -7,7 +7,7 @@ import cx from "classnames";
 import * as Ariakit from "@ariakit/react";
 import * as ListItem from "./ListItem.js";
 import { IconButton } from "./IconButton.js";
-import { TreeChevron } from "./Icon.js";
+import { Icon } from "./Icon.js";
 
 // ----------------------------------------------------------------------------
 
@@ -119,6 +119,33 @@ const TreeItemExpander = React.forwardRef<
 		/>
 	);
 });
+
+// ----------------------------------------------------------------------------
+
+interface TreeChevronProps extends Omit<Ariakit.RoleProps<"svg">, "children"> {}
+
+const TreeChevron = React.forwardRef<React.ElementRef<"svg">, TreeChevronProps>(
+	(props, forwardedRef) => {
+		return (
+			<Icon
+				{...props}
+				render={
+					<Ariakit.Role.svg
+						width="16"
+						height="16"
+						fill="currentColor"
+						viewBox="0 0 16 16"
+						render={props.render}
+					>
+						<path d="M4.146 6.146a.5.5 0 0 1 .708 0L8 9.293l3.146-3.147a.5.5 0 0 1 .708.708l-3.5 3.5a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 0 1 0-.708Z" />
+					</Ariakit.Role.svg>
+				}
+				className={cx("🥝-tree-chevron", props.className)}
+				ref={forwardedRef}
+			/>
+		);
+	},
+);
 
 // ----------------------------------------------------------------------------
 

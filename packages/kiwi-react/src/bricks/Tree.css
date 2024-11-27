@@ -8,11 +8,6 @@
 	@layer base {
 		padding-inline-start: calc(8px + 6px * (var(--🥝tree-item-level) - 1));
 		padding-inline-end: var(--✨padding-inline-end);
-
-		.🥝-icon-button {
-			/* TODO: IconButton inside ListItem. Button block size matches the TreeItem, while ListItem adds additional padding. */
-			margin-block: -6px;
-		}
 	}
 
 	@layer states {

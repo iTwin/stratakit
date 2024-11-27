@@ -12,6 +12,8 @@ RUN --mount=type=bind,source=package.json,target=package.json \
     --mount=type=cache,target=/pnpm/store \
     pnpm install --frozen-lockfile
 
+ENV BUILD_ENV=test
+
 FROM deps AS build
 COPY . .
 RUN pnpm run build

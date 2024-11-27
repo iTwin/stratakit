@@ -423,7 +423,7 @@ function TreeItem(props: TreeItemProps) {
 				<>
 					<Tree.Expander onClick={() => setExpanded((prev) => !prev)} />
 					<Icon href={placeholderIcon} style={{ display: "inline" }} />
-					<Tree.Label>{props.content}</Tree.Label>
+					<Tree.Content>{props.content}</Tree.Content>
 					<div style={{ display: "flex", gap: 4, marginInlineStart: "auto" }}>
 						<IconButton
 							className={styles.action}

@@ -60,7 +60,7 @@ function TreeItem({
 				<>
 					<Tree.Expander />
 					<Icon href={placeholderIcon} />
-					<Tree.Label>{label}</Tree.Label>
+					<Tree.Content>{label}</Tree.Content>
 					<div style={{ display: "flex", gap: 4, marginInlineStart: "auto" }}>
 						<IconButton
 							icon={unlockIcon}

@@ -74,17 +74,17 @@ const TreeItem = React.forwardRef<React.ElementRef<"div">, TreeItemProps>(
 
 // ----------------------------------------------------------------------------
 
-interface TreeItemLabelProps
+interface TreeItemContentProps
 	extends React.ComponentProps<typeof ListItem.Content> {}
 
-const TreeItemLabel = React.forwardRef<
+const TreeItemContent = React.forwardRef<
 	React.ElementRef<typeof ListItem.Content>,
-	TreeItemLabelProps
+	TreeItemContentProps
 >((props, forwardedRef) => {
 	return (
 		<ListItem.Content
 			{...props}
-			className={cx("🥝-tree-item-label", props.className)}
+			className={cx("🥝-tree-item-content", props.className)}
 			ref={forwardedRef}
 		/>
 	);
@@ -136,5 +136,5 @@ export {
 	Tree as Root,
 	TreeItem as Item,
 	TreeItemExpander as Expander,
-	TreeItemLabel as Label,
+	TreeItemContent as Content,
 };

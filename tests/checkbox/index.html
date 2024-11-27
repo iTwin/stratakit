@@ -1,0 +1,125 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Kiwi tests</title><meta name="color-scheme" content="dark"/><link rel="icon" href="/favicon.svg" sizes="any" type="image/svg+xml"/><link rel="preconnect" href="https://rsms.me/"/><link rel="stylesheet" href="https://rsms.me/inter/inter.css"/><link rel="stylesheet" href="/assets/root-fEDipKBc.css"/><link rel="stylesheet" href="/assets/index-BpbiNg6r.css"/></head><body><template></template><main><h1 style="border:0;clip:rect(0 0 0 0);height:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;white-space:nowrap;width:1px">Checkbox</h1><div class="🥝-field"><input type="checkbox" aria-checked="false" id=":R2j5:" class="🥝-checkbox"/><label for=":R2j5:" class="🥝-label">Toggle me</label></div></main><script>((storageKey2, restoreKey) => {
+    if (!window.history.state || !window.history.state.key) {
+      let key = Math.random().toString(32).slice(2);
+      window.history.replaceState({ key }, "");
+    }
+    try {
+      let positions = JSON.parse(sessionStorage.getItem(storageKey2) || "{}");
+      let storedY = positions[restoreKey || window.history.state.key];
+      if (typeof storedY === "number") {
+        window.scrollTo(0, storedY);
+      }
+    } catch (error) {
+      console.error(error);
+      sessionStorage.removeItem(storageKey2);
+    }
+  })("react-router-scroll-positions", null)</script><link rel="modulepreload" href="/assets/entry.client-DJ4CMDlR.js"/><link rel="modulepreload" href="/assets/chunk-7R3XDUXW-DxTo8O6G.js"/><link rel="modulepreload" href="/assets/index-CpodmKhz.js"/><link rel="modulepreload" href="/assets/with-props-XFbs5UV3.js"/><link rel="modulepreload" href="/assets/Root-BgSlpYAv.js"/><link rel="modulepreload" href="/assets/root-BZhO_BbK.js"/><link rel="modulepreload" href="/assets/VisuallyHidden-DpR5ZIYl.js"/><link rel="modulepreload" href="/assets/XX67R432-CnBfjeG9.js"/><link rel="modulepreload" href="/assets/LMDWO4NN-DZi_YyQu.js"/><link rel="modulepreload" href="/assets/tests-0WttsDUr.js"/><link rel="modulepreload" href="/assets/Checkbox-qNMcqs6B.js"/><link rel="modulepreload" href="/assets/Field-xeE_zSqj.js"/><link rel="modulepreload" href="/assets/Label-DQ6Z6x59.js"/><link rel="modulepreload" href="/assets/index-6yh6O1FZ.js"/><link rel="modulepreload" href="/assets/ASMQKSDT-D_oVC_9G.js"/><link rel="modulepreload" href="/assets/KUU7WJ55-55_Apuy6.js"/><link rel="modulepreload" href="/assets/LVA2YJMS-DJV8VtX8.js"/><link rel="modulepreload" href="/assets/YV4JVR4I-IQnN8q1u.js"/><link rel="modulepreload" href="/assets/XL7CSKGW-dh1dRh0h.js"/><link rel="modulepreload" href="/assets/index-DZtQwvyB.js"/><script>window.__reactRouterContext = {"basename":"/","future":{"unstable_optimizeDeps":false},"isSpaMode":false};window.__reactRouterContext.stream = new ReadableStream({start(controller){window.__reactRouterContext.streamController = controller;}}).pipeThrough(new TextEncoderStream());</script><script type="module" async="">;
+import * as route0 from "/assets/root-BZhO_BbK.js";
+import * as route1 from "/assets/tests-0WttsDUr.js";
+import * as route2 from "/assets/index-DZtQwvyB.js";
+  window.__reactRouterManifest = {
+  "entry": {
+    "module": "/assets/entry.client-DJ4CMDlR.js",
+    "imports": [
+      "/assets/chunk-7R3XDUXW-DxTo8O6G.js",
+      "/assets/index-CpodmKhz.js"
+    ],
+    "css": []
+  },
+  "routes": {
+    "root": {
+      "id": "root",
+      "path": "",
+      "hasAction": false,
+      "hasLoader": false,
+      "hasClientAction": false,
+      "hasClientLoader": false,
+      "hasErrorBoundary": false,
+      "module": "/assets/root-BZhO_BbK.js",
+      "imports": [
+        "/assets/chunk-7R3XDUXW-DxTo8O6G.js",
+        "/assets/index-CpodmKhz.js",
+        "/assets/with-props-XFbs5UV3.js",
+        "/assets/Root-BgSlpYAv.js"
+      ],
+      "css": []
+    },
+    "routes/tests": {
+      "id": "routes/tests",
+      "parentId": "root",
+      "path": "tests",
+      "hasAction": false,
+      "hasLoader": false,
+      "hasClientAction": false,
+      "hasClientLoader": false,
+      "hasErrorBoundary": false,
+      "module": "/assets/tests-0WttsDUr.js",
+      "imports": [
+        "/assets/with-props-XFbs5UV3.js",
+        "/assets/chunk-7R3XDUXW-DxTo8O6G.js",
+        "/assets/VisuallyHidden-DpR5ZIYl.js",
+        "/assets/XX67R432-CnBfjeG9.js",
+        "/assets/LMDWO4NN-DZi_YyQu.js"
+      ],
+      "css": []
+    },
+    "routes/tests/checkbox/index": {
+      "id": "routes/tests/checkbox/index",
+      "parentId": "routes/tests",
+      "path": "checkbox",
+      "index": true,
+      "hasAction": false,
+      "hasLoader": false,
+      "hasClientAction": false,
+      "hasClientLoader": false,
+      "hasErrorBoundary": false,
+      "module": "/assets/index-DZtQwvyB.js",
+      "imports": [
+        "/assets/with-props-XFbs5UV3.js",
+        "/assets/chunk-7R3XDUXW-DxTo8O6G.js",
+        "/assets/Checkbox-qNMcqs6B.js",
+        "/assets/Field-xeE_zSqj.js",
+        "/assets/Label-DQ6Z6x59.js",
+        "/assets/VisuallyHidden-DpR5ZIYl.js",
+        "/assets/index-6yh6O1FZ.js",
+        "/assets/ASMQKSDT-D_oVC_9G.js",
+        "/assets/LMDWO4NN-DZi_YyQu.js",
+        "/assets/KUU7WJ55-55_Apuy6.js",
+        "/assets/LVA2YJMS-DJV8VtX8.js",
+        "/assets/YV4JVR4I-IQnN8q1u.js",
+        "/assets/XL7CSKGW-dh1dRh0h.js",
+        "/assets/XX67R432-CnBfjeG9.js"
+      ],
+      "css": []
+    },
+    "routes/index": {
+      "id": "routes/index",
+      "parentId": "root",
+      "index": true,
+      "hasAction": false,
+      "hasLoader": false,
+      "hasClientAction": false,
+      "hasClientLoader": false,
+      "hasErrorBoundary": false,
+      "module": "/assets/index-JzXOjCzE.js",
+      "imports": [
+        "/assets/with-props-XFbs5UV3.js",
+        "/assets/chunk-7R3XDUXW-DxTo8O6G.js",
+        "/assets/Anchor-BF_03VUw.js",
+        "/assets/Divider-BrMdR3aZ.js",
+        "/assets/index-6yh6O1FZ.js",
+        "/assets/XL7CSKGW-dh1dRh0h.js",
+        "/assets/LMDWO4NN-DZi_YyQu.js",
+        "/assets/LVA2YJMS-DJV8VtX8.js"
+      ],
+      "css": [
+        "/assets/index-D-UPBjLu.css"
+      ]
+    }
+  },
+  "url": "/assets/manifest-93921250.js",
+  "version": "93921250"
+};
+  window.__reactRouterRouteModules = {"root":route0,"routes/tests":route1,"routes/tests/checkbox/index":route2};
+
+import("/assets/entry.client-DJ4CMDlR.js");</script></body></html><!--$?--><template id="B:0"></template><!--/$--><div hidden id="S:0"><script>window.__reactRouterContext.streamController.enqueue("[{\"_1\":2,\"_6\":-5,\"_7\":-5},\"loaderData\",{\"_3\":-5,\"_4\":-5,\"_5\":-5},\"root\",\"routes/tests\",\"routes/tests/checkbox/index\",\"actionData\",\"errors\"]\n");</script><!--$?--><template id="B:1"></template><!--/$--></div><script>function $RC(a,b){a=document.getElementById(a);b=document.getElementById(b);b.parentNode.removeChild(b);if(a){a=a.previousSibling;var f=a.parentNode,c=a.nextSibling,e=0;do{if(c&&8===c.nodeType){var d=c.data;if("/$"===d)if(0===e)break;else e--;else"$"!==d&&"$?"!==d&&"$!"!==d||e++}d=c.nextSibling;f.removeChild(c);c=d}while(c);for(;b.firstChild;)f.insertBefore(b.firstChild,c);a.data="$";a._reactRetry&&a._reactRetry()}};$RC("B:0","S:0")</script><div hidden id="S:1"><script>window.__reactRouterContext.streamController.close();</script></div><script>$RC("B:1","S:1")</script>

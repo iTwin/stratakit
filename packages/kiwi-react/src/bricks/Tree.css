@@ -13,11 +13,6 @@
 			/* TODO: IconButton inside ListItem. Button block size matches the TreeItem, while ListItem adds additional padding. */
 			margin-block: -6px;
 		}
-
-		.🥝-icon {
-			/* TODO: should this be set in the icon.css? */
-			flex-shrink: 0;
-		}
 	}
 
 	@layer states {

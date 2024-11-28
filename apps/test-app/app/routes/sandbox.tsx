@@ -118,7 +118,12 @@ interface UseSplitterArgs {
 function useSplitter<TSplitter extends HTMLElement, TPanel extends Element>(
 	args?: UseSplitterArgs,
 ) {
-	const { minSize, maxSize, labelledby, onCollapse } = args ?? {};
+	const {
+		minSize: minSizeSpec,
+		maxSize: maxSizeSpec,
+		labelledby,
+		onCollapse,
+	} = args ?? {};
 	const id = React.useId();
 	const panelRef = React.useRef<TPanel>(null);
 	const [panelSize, setPanelSize] = React.useState<number | undefined>(
@@ -135,32 +140,25 @@ function useSplitter<TSplitter extends HTMLElement, TPanel extends Element>(
 		undefined,
 	);
 
-	const minSizePx = React.useMemo(() => {
+	const minSize = React.useMemo(() => {
+		if (!minSizeSpec) return undefined;
+		if (!containerSize) return undefined;
+		return Math.min(minSizeSpec.px, (minSizeSpec.pct / 100) * containerSize);
+	}, [minSizeSpec, containerSize]);
+	const maxSize = React.useMemo(() => {
 		if (!minSize) return undefined;
+		if (!maxSizeSpec) return undefined;
 		if (!containerSize) return undefined;
-		return Math.min(minSize.px, (minSize.pct / 100) * containerSize);
-	}, [minSize, containerSize]);
-	const minValue = React.useMemo(() => {
-		if (minSizePx === undefined) return undefined;
-		if (!containerSize) return undefined;
-		return clamp((minSizePx / containerSize) * 100, 0, 100);
-	}, [minSizePx, containerSize]);
-	const maxValue = React.useMemo(() => {
-		if (!maxSize) return undefined;
-		if (!containerSize) return undefined;
-		return clamp(maxSize.pct, 0, 100);
-	}, [maxSize, containerSize]);
-	const value = React.useMemo(() => {
-		if (mode === "smallest") return minValue ?? 0;
-		if (mode === "largest") return maxValue ?? 0;
+		return Math.max(minSize, (maxSizeSpec.pct / 100) * containerSize);
+	}, [maxSizeSpec, containerSize, minSize]);
+	const size = React.useMemo(() => {
+		if (mode === "smallest") return minSize ?? 0;
+		if (mode === "largest") return maxSize ?? 0;
 		if (!panelSize) return undefined;
-		if (!containerSize) return undefined;
-		return clamp(
-			(panelSize / containerSize) * 100,
-			minValue ?? 0,
-			maxValue ?? 0,
-		);
-	}, [panelSize, containerSize, minValue, maxValue, mode]);
+		if (!minSize) return undefined;
+		if (!maxSize) return undefined;
+		return clamp(panelSize, minSize, maxSize);
+	}, [panelSize, minSize, maxSize, mode]);
 
 	React.useEffect(() => {
 		const panel = panelRef.current;
@@ -234,9 +232,9 @@ function useSplitter<TSplitter extends HTMLElement, TPanel extends Element>(
 				}
 			},
 			"aria-orientation": "vertical",
-			"aria-valuenow": value,
-			"aria-valuemin": minValue,
-			"aria-valuemax": maxValue,
+			"aria-valuenow": size === undefined ? undefined : Math.floor(size),
+			"aria-valuemin": minSize === undefined ? undefined : Math.floor(minSize),
+			"aria-valuemax": maxSize === undefined ? undefined : Math.floor(maxSize),
 			"aria-controls": id,
 			"aria-labelledby": labelledby,
 			"aria-label": labelledby === undefined ? "Resize panel" : undefined,
@@ -244,9 +242,9 @@ function useSplitter<TSplitter extends HTMLElement, TPanel extends Element>(
 		};
 	}, [
 		moveableProps,
-		value,
-		minValue,
-		maxValue,
+		size,
+		minSize,
+		maxSize,
 		id,
 		labelledby,
 		onCollapse,
@@ -264,14 +262,15 @@ function useSplitter<TSplitter extends HTMLElement, TPanel extends Element>(
 		};
 	}, [id, preferredSize]);
 
-	const panelMinSize = minSize === undefined ? undefined : `${minSizePx}px`;
+	const panelMinSize = minSize === undefined ? undefined : `${minSize}px`;
 	const panelMaxSize = React.useMemo(() => {
-		if (preferredSize !== undefined && maxSize !== undefined) {
-			return `min(${preferredSize}px, ${maxSize.pct}%)`;
+		if (preferredSize !== undefined && maxSizeSpec !== undefined) {
+			return `min(${preferredSize}px, ${maxSizeSpec.pct}%)`;
 		}
 
-		return value === undefined ? undefined : `${value}%`;
-	}, [maxSize, preferredSize, value]);
+		if (size === undefined) return undefined;
+		return `${size}px`;
+	}, [maxSizeSpec, preferredSize, size]);
 
 	return { splitterProps, panelProps, panelMinSize, panelMaxSize };
 }

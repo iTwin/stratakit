@@ -1,1 +1,0 @@
-import{l as a,q as o,r as i}from"./chunk-7R3XDUXW-DxTo8O6G.js";function u(e,s){return()=>{const r=c();for(const[t,n]of Object.entries(s??{}))if(t in r)return a.jsx(n,{...r});return a.jsx(e,{...r})}}function c(){const[e]=o();return i.useMemo(()=>Object.fromEntries([...e.entries()].map(([s,r])=>[s,["","true"].includes(r)?"true":r==="false"?"":r])),[e])}export{u as d};

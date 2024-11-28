@@ -21,7 +21,7 @@
 		&[data-kiwi-variant="solid"],
 		&[data-kiwi-variant="muted"] {
 			border-radius: 4px;
-			background: var(--kiwi-color-bg-neutral-base);
+			background-color: var(--kiwi-color-bg-neutral-base);
 			padding-inline: 4px;
 		}
 

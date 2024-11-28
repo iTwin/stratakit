@@ -17,10 +17,12 @@ interface KbdProps extends Ariakit.RoleProps<"kbd"> {
 }
 
 /**
- * A keyboard key element, enhanced with AriaKit.
- * @example
- * <Kbd ref={kbdRef}>Cmd</Kbd>
- * <Kbd>Ctrl</Kbd>
+ * A styled wrapper over the HTML `<kbd>` element. This is typically
+ * used for displaying keyboard shortcuts.
+ *
+ * ```tsx
+ * <Kbd>Ctrl</Kbd> <Kbd>S</Kbd>
+ * ```
  */
 export const Kbd = React.forwardRef<React.ElementRef<"kbd">, KbdProps>(
 	(props, forwardedRef) => {

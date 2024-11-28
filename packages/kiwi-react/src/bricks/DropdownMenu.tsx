@@ -87,9 +87,13 @@ const DropdownMenuButton = React.forwardRef<
 
 // ----------------------------------------------------------------------------
 
+interface DropdownMenuItemProps extends Ariakit.MenuItemProps {
+	shortcut?: string;
+}
+
 const DropdownMenuItem = React.forwardRef<
 	React.ElementRef<typeof Ariakit.MenuItem>,
-	Ariakit.MenuItemProps
+	DropdownMenuItemProps
 >((props, forwardedRef) => {
 	return (
 		<Ariakit.MenuItem

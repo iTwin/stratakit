@@ -8,6 +8,7 @@ import AxeBuilder from "@axe-core/playwright";
 test("default", async ({ page }) => {
 	await page.goto("/tests/kbd");
 	const kbdComponent = page.getByText("Ctrl");
+	expect(await kbdComponent.evaluate((e) => e.localName)).toBe("kbd");
 	await expect(kbdComponent).toBeVisible();
 });
 

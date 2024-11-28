@@ -88,6 +88,8 @@ export default function Page() {
 					<Subheader />
 					<SandboxTree />
 					<Divider
+						presentational
+						role="slider"
 						className={styles.splitter}
 						render={<Ariakit.Focusable />}
 						{...splitterProps}

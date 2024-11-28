@@ -4,9 +4,15 @@
  *--------------------------------------------------------------------------------------------*/
 .🥝-tree-item:is(.🥝-list-item) {
 	--✨padding-inline-end: 0.25rem;
+	--✨first-level-indent: 8px;
+	--✨subsequent-level-indent: 6px;
 
 	@layer base {
-		padding-inline-start: calc(8px + 6px * (var(--🥝tree-item-level) - 1));
+		padding-inline-start: calc(
+			var(--✨first-level-indent) +
+			var(--✨subsequent-level-indent) *
+			(var(--🥝tree-item-level) - 1)
+		);
 		padding-inline-end: var(--✨padding-inline-end);
 	}
 

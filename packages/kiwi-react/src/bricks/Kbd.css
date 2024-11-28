@@ -6,7 +6,7 @@
 .🥝-kbd {
 	@layer base {
 		color: var(--kiwi-color-text-neutral-secondary);
-		font-family: "Geist Mono";
+		font-family: var(--kiwi-font-family-mono);
 		font-size: var(--kiwi-font-size-s);
 		font-weight: 500;
 

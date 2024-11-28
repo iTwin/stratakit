@@ -2,6 +2,7 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
+import * as React from "react";
 import {
 	Links,
 	Meta,
@@ -41,6 +42,10 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export default function App() {
+	React.useEffect(function signalPageLoad() {
+		document.body.dataset.loaded = "true";
+	}, []);
+
 	return (
 		<Root>
 			<Outlet />

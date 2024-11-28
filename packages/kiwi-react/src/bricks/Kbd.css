@@ -11,8 +11,6 @@
 		font-weight: 500;
 
 		display: inline-flex;
-		padding-block: 4px;
-		padding-inline: 4px;
 		align-items: center;
 		justify-content: center;
 		flex-shrink: 0;
@@ -23,6 +21,8 @@
 		&[data-kiwi-variant="muted"] {
 			border-radius: 4px;
 			background: #36393f;
+			padding-block: 4px;
+			padding-inline: 4px;
 		}
 
 		&[data-kiwi-variant="solid"] {
@@ -36,8 +36,6 @@
 		&[data-kiwi-variant="ghost"] {
 			color: #969ca4;
 			font-weight: 84;
-			padding-block: 0px;
-			padding-inline: 0px;
 		}
 	}
 }

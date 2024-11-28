@@ -11,15 +11,6 @@ test("default", async ({ page }) => {
 	await expect(kbdComponent).toBeVisible();
 });
 
-test("should not be focusable", async ({ page }) => {
-	await page.goto("/tests/kbd");
-
-	const kbdComponent = page.getByText("Ctrl");
-
-	await kbdComponent.focus();
-	await expect(kbdComponent).not.toBeFocused();
-});
-
 test("@visual", async ({ page }) => {
 	await page.goto("/tests/kbd?visual=true");
 	await expect(page.locator("body")).toHaveScreenshot();

@@ -35,7 +35,6 @@
 
 		&[data-kiwi-variant="ghost"] {
 			color: var(--kiwi-color-text-neutral-tertiary);
-			font-weight: 84;
 		}
 	}
 }

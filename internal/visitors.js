@@ -176,8 +176,13 @@ export function typographyTransform() {
 					return;
 				}
 
+				// TODO: it’s more so “leverage inheritance where value is a default”
+				const leverageInheritance = true;
+
 				const tokenName = prelude[0].value.arguments?.[0]?.value?.value;
 				const token = typography.typography[tokenName];
+
+				console.log(token);
 
 				if (!token) {
 					console.warn(`Missing typography token: ${tokenName}`);
@@ -186,12 +191,50 @@ export function typographyTransform() {
 
 				const declarations = [];
 
-				for (const property in token.$value) {
+				const { fontFamily, fontSize, lineHeight, letterSpacing } =
+					token.$value;
+
+				// font-family
+				// TODO: this seems like a bad condition
+				if (!leverageInheritance || fontFamily !== "{family.sans}") {
+					let customPropertyName;
+					switch (fontFamily) {
+						case "{family.sans}":
+							customPropertyName = "--kiwi-font-family-sans";
+							break;
+						case "{family.mono}":
+							customPropertyName = "--kiwi-font-family-mono";
+							break;
+					}
 					declarations.push({
-						property,
-						raw: token.$value[property],
+						property: "font-family",
+						raw: `var(${customPropertyName})`,
 					});
 				}
+
+				// font-size
+				// TODO: in the future it would be great to use custom properties (from tokens) for this.
+				declarations.push({
+					property: "font-size",
+					raw: `${fontSize.value}${fontSize.unit}`,
+				});
+
+				// line-height
+				if (!leverageInheritance || lineHeight !== 1.3333) {
+					declarations.push({
+						property: "line-height",
+						raw: `${lineHeight}`,
+					});
+				}
+
+				// letter-spacing
+				declarations.push({
+					property: "letter-spacing",
+					raw:
+						letterSpacing === 0
+							? "0"
+							: `${letterSpacing.value}${letterSpacing.unit}`,
+				});
 
 				return [
 					{

@@ -9,6 +9,7 @@
 		font-family: var(--kiwi-font-family-mono);
 		font-size: var(--kiwi-font-size-s);
 		font-weight: 500;
+		line-height: 1.3333;
 
 		display: inline-flex;
 		align-items: center;

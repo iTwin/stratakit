@@ -20,7 +20,7 @@
 		&[data-kiwi-variant="solid"],
 		&[data-kiwi-variant="muted"] {
 			border-radius: 4px;
-			background: #36393f;
+			background: var(--kiwi-color-bg-neutral-base);
 			padding-block: 4px;
 			padding-inline: 4px;
 		}
@@ -34,7 +34,7 @@
 		}
 
 		&[data-kiwi-variant="ghost"] {
-			color: #969ca4;
+			color: var(--kiwi-color-text-neutral-tertiary);
 			font-weight: 84;
 		}
 	}

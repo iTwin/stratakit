@@ -53,6 +53,18 @@ export default function App() {
 	);
 }
 
+export async function clientLoader() {
+	return true;
+}
+
 export function HydrateFallback() {
-	return <p>Loading…</p>;
+	const fallbackCss =
+		"html { background-color: var(--kiwi-color-bg-surface-primary, #25282c); }";
+
+	return (
+		<>
+			<style>{fallbackCss}</style>
+			<noscript>Please enable JavaScript.</noscript>
+		</>
+	);
 }

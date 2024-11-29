@@ -26,3 +26,4 @@ export const Radio = React.forwardRef<
 		/>
 	);
 });
+Radio.displayName = "Radio";

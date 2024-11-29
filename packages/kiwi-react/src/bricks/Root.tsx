@@ -20,6 +20,7 @@ export const Root = ({ children }: { children: React.ReactNode }) => {
 		</>
 	);
 };
+Root.displayName = "Root";
 
 // ----------------------------------------------------------------------------
 

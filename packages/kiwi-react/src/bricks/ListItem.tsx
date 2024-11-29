@@ -23,6 +23,7 @@ const ListItem = React.forwardRef<React.ElementRef<"div">, ListItemProps>(
 		);
 	},
 );
+ListItem.displayName = "ListItem.Root";
 
 // ----------------------------------------------------------------------------
 
@@ -41,6 +42,7 @@ const ListItemContent = React.forwardRef<
 		/>
 	);
 });
+ListItemContent.displayName = "ListItem.Content";
 
 // ----------------------------------------------------------------------------
 

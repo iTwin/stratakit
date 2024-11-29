@@ -218,15 +218,19 @@ function useSplitter<TSplitter extends HTMLElement, TPanel extends Element>(
 			...moveableProps,
 			onKeyDown: (e) => {
 				moveableProps.onKeyDown?.(e);
+				if (e.defaultPrevented) return;
 				switch (e.key) {
 					case "Enter":
 						onCollapse?.();
+						e.preventDefault();
 						break;
 					case "Home":
 						setMode("smallest");
+						e.preventDefault();
 						break;
 					case "End":
 						setMode("largest");
+						e.preventDefault();
 						break;
 					// case "F6": // TODO: cycle through window panes
 				}
@@ -319,12 +323,15 @@ function useMoveable<T extends HTMLElement>(args?: UseMoveableArgs) {
 			onPointerUp: handleMoveEnd,
 			onPointerCancel: handleMoveEnd,
 			onKeyDown: (e) => {
+				if (e.defaultPrevented) return;
 				switch (e.key) {
 					case "ArrowLeft":
 						onKeyMove?.(-1);
+						e.preventDefault();
 						break;
 					case "ArrowRight":
 						onKeyMove?.(1);
+						e.preventDefault();
 						break;
 				}
 			},

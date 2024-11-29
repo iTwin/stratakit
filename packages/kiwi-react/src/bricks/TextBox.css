@@ -38,7 +38,7 @@
 		border-radius: 4px;
 
 		background-color: var(--🥝text-box-background-color);
-		box-shadow: 0px 1px 2px 0px #00000029 inset, 0px 2px 4px 0px #00000029 inset;
+		box-shadow: var(--kiwi-shadow-input-base);
 		color: var(--✨color--default);
 		transition: all 150ms ease-out;
 		transition-property: background-color, border-color;
@@ -130,6 +130,7 @@
 				:has(:is(input, textarea):disabled)
 			) {
 			--🌀text-box-state: var(--🌀text-box-state--disabled);
+			box-shadow: none;
 			color: var(--✨color--disabled);
 			--🥝text-box-cursor: not-allowed;
 		}

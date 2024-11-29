@@ -121,6 +121,7 @@ export const Tooltip = React.forwardRef<
 		</>
 	);
 });
+Tooltip.displayName = "Tooltip";
 
 const isBrowser = typeof document !== "undefined";
 

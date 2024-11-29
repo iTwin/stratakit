@@ -128,7 +128,9 @@
 	user-select: none;
 	background-color: transparent;
 
-	&[aria-orientation="vertical"] {
+	&:not([aria-orientation="vertical"], [data-kiwi-orientation="vertical"]) {
+		min-block-size: 100%;
+		inline-size: 1px;
 		cursor: ew-resize;
 	}
 

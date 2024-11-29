@@ -235,7 +235,6 @@ function useSplitter<TSplitter extends HTMLElement, TPanel extends Element>(
 					// case "F6": // TODO: cycle through window panes
 				}
 			},
-			"aria-orientation": "vertical",
 			"aria-valuenow": size === undefined ? undefined : Math.floor(size),
 			"aria-valuemin": minSize === undefined ? undefined : Math.floor(minSize),
 			"aria-valuemax": maxSize === undefined ? undefined : Math.floor(maxSize),

@@ -11,4 +11,8 @@
 	--kiwi-font-size-s: 0.75rem; /* 12px */
 	--kiwi-font-size-m: 0.875rem; /* 14px */
 	--kiwi-font-size-l: 1rem; /* 16px */
+
+	@apply --font-sizes;
+
+	line-height: 1.3333;
 }

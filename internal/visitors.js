@@ -168,12 +168,45 @@ export function typographyTransform() {
 	return {
 		Rule: {
 			unknown({ name, prelude, loc }) {
-				if (
-					name !== "apply" ||
-					prelude[0]?.type !== "function" ||
-					prelude[0].value.name !== "--typography"
-				) {
-					return;
+				if (name !== "apply") return;
+
+				const isTypographyMixin =
+					prelude[0]?.type === "function" &&
+					prelude[0].value.name === "--typography";
+				const isFontSizesMixin =
+					prelude[0]?.type === "dashed-ident" &&
+					prelude[0].value === "--font-sizes";
+
+				if (!isTypographyMixin && !isFontSizesMixin) return;
+
+				if (isFontSizesMixin) {
+					console.log("generating font size custom properties");
+					const declarations = [];
+
+					for (const [step, token] of Object.entries(typography.size)) {
+						declarations.push(
+							cssCustomProperty(
+								step,
+								{
+									type: "length",
+									value: token.$value,
+								},
+								{ prefix: "kiwi-font-size" },
+							),
+						);
+					}
+
+					return [
+						{
+							type: "style",
+							value: {
+								declarations: { declarations },
+								selectors: [[{ type: "nesting" }]],
+								rules: [],
+								loc,
+							},
+						},
+					];
 				}
 
 				// TODO: it’s more so “leverage inheritance where value is a default”
@@ -181,8 +214,6 @@ export function typographyTransform() {
 
 				const tokenName = prelude[0].value.arguments?.[0]?.value?.value;
 				const token = typography.typography[tokenName];
-
-				console.log(token);
 
 				if (!token) {
 					console.warn(`Missing typography token: ${tokenName}`);
@@ -213,10 +244,10 @@ export function typographyTransform() {
 				}
 
 				// font-size
-				// TODO: in the future it would be great to use custom properties (from tokens) for this.
+				const { step } = fontSize.match(/{size.(?<step>\d+)}/).groups; // TODO: lazy
 				declarations.push({
 					property: "font-size",
-					raw: `${fontSize.value}${fontSize.unit}`,
+					raw: `var(--kiwi-font-size-${step})`,
 				});
 
 				// line-height

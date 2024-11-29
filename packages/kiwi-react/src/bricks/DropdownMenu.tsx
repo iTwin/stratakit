@@ -8,7 +8,6 @@ import * as Ariakit from "@ariakit/react";
 import * as ListItem from "./ListItem.js";
 import { Button } from "./Button.js";
 import { DisclosureArrow } from "./Icon.js";
-import { useControlledState } from "./~hooks.js";
 import { supportsPopover } from "./~utils.js";
 
 // ----------------------------------------------------------------------------
@@ -43,27 +42,26 @@ function DropdownMenu(props: DropdownMenuProps) {
 		defaultOpen: defaultOpenProp,
 	} = props;
 
-	const [open, setOpen] = useControlledState(
-		defaultOpenProp,
-		openProp,
-		setOpenProp,
-	);
-
 	const store = Ariakit.useMenuStore();
-	const menu = Ariakit.useStoreState(store, (store) => store.popoverElement);
+	const open = Ariakit.useStoreState(store, (store) => store.open);
+	const popover = Ariakit.useStoreState(store, (store) => store.popoverElement);
+
+	React.useEffect(
+		function syncPopoverWithOpenState() {
+			if (popover?.isConnected) {
+				popover?.togglePopover?.(open);
+			}
+		},
+		[open, popover],
+	);
 
 	return (
 		<Ariakit.MenuProvider
 			store={store}
 			placement={placement}
-			open={open}
-			setOpen={React.useCallback(
-				(open: boolean) => {
-					setOpen(open);
-					menu?.togglePopover?.(open);
-				},
-				[setOpen, menu],
-			)}
+			defaultOpen={defaultOpenProp}
+			open={openProp}
+			setOpen={setOpenProp}
 		>
 			{children}
 		</Ariakit.MenuProvider>

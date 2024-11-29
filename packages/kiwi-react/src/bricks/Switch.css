@@ -6,6 +6,8 @@
 	--✨width: 2rem;
 	--✨thumb-size: 1rem;
 
+	--✨shadow-border: 0px 0px 0px 1px --primitive("color.white.8") inset;
+
 	--✨glow--border-hover: var(--kiwi-color-glow-hue) var(--kiwi-color-border-glow-base-hover-\%);
 	--✨glow--border-press: var(--kiwi-color-glow-hue) var(--kiwi-color-border-glow-base-pressed-\%);
 	--✨glow--border-checked: var(--kiwi-color-glow-hue) var(--kiwi-color-border-glow-strong-hover-\%);
@@ -80,11 +82,8 @@
 			border-radius: 9999px;
 			margin: calc(0.125rem - 1px) /* spacing-2 - 1px to account for border */;
 			background-color: var(--🥝switch-thumb-color);
-			box-shadow:
-				0px -1px 0px 0px #00000014 inset,
-				0px 0px 0px 1px #ffffff14 inset,
-				0px 1px 1px -0.5px #00000029,
-				0px 3px 3px -1.5px #00000029;
+			box-shadow: var(--kiwi-shadow-button-base-drop), var(--✨shadow-border),
+				var(--kiwi-shadow-button-base-inset);
 			justify-self: var(--🥝switch-thumb-placement);
 
 			@media (prefers-reduced-motion: no-preference) {

@@ -11,8 +11,7 @@
 		font-size: 0.75rem;
 
 		background-color: var(--✨bg);
-		box-shadow: 0px 1px 1px -0.5px #00000029, 0px 3px 3px -1.5px #00000029, 0px 6px 6px -3px
-			#00000029, 0px 12px 12px -6px #00000029;
+		box-shadow: var(--kiwi-shadow-tooltip-base);
 
 		display: flex;
 		justify-content: center;

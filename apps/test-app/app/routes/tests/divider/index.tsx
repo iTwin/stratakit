@@ -2,33 +2,25 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
+import { definePage } from "~/~utils.tsx";
 import { Divider } from "@itwin/kiwi-react/bricks";
-import { useSearchParams } from "react-router";
 
 export const handle = { title: "Divider" };
 
-export default function Page() {
-	const visual = useSearchParams()[0].get("visual") === "true";
-	const orientation = useSearchParams()[0].get("orientation") as
-		| "horizontal"
-		| "vertical"
-		| undefined;
-	const presentational = useSearchParams()[0].get("presentational") === "true";
-
-	if (visual) {
-		return <VisualTest />;
-	}
-
-	return (
-		<>
-			<Divider
-				orientation={orientation}
-				presentational={presentational}
-				data-testid="divider"
-			/>
-		</>
-	);
-}
+export default definePage(
+	function Page({ orientation, presentational }) {
+		return (
+			<>
+				<Divider
+					orientation={orientation as "horizontal" | "vertical" | undefined}
+					presentational={presentational ? true : undefined}
+					data-testid="divider"
+				/>
+			</>
+		);
+	},
+	{ visual: VisualTest },
+);
 
 function VisualTest() {
 	return (

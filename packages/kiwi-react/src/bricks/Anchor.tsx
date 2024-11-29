@@ -30,3 +30,4 @@ export const Anchor = React.forwardRef<React.ElementRef<"a">, AnchorProps>(
 		);
 	},
 );
+Anchor.displayName = "Anchor";

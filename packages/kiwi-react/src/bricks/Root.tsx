@@ -5,6 +5,7 @@
 import * as React from "react";
 import foundationsCss from "../foundations/styles.css.js";
 import bricksCss from "./styles.css.js";
+import { isBrowser } from "./~utils.js";
 
 const css = foundationsCss + bricksCss;
 
@@ -87,8 +88,6 @@ function loadStyles(rootNode: Document | ShadowRoot, { css }: { css: string }) {
 }
 
 // ----------------------------------------------------------------------------
-
-const isBrowser = typeof document !== "undefined";
 
 const supportsAdoptedStylesheets =
 	isBrowser && "adoptedStyleSheets" in Document.prototype;

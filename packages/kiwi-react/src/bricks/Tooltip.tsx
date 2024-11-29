@@ -6,6 +6,7 @@ import * as React from "react";
 import cx from "classnames";
 import * as Ariakit from "@ariakit/react";
 import { useControlledState } from "./~hooks.js";
+import { supportsPopover } from "./~utils.js";
 
 interface TooltipProps
 	extends Omit<Ariakit.TooltipProps, "store" | "content">,
@@ -122,7 +123,3 @@ export const Tooltip = React.forwardRef<
 	);
 });
 Tooltip.displayName = "Tooltip";
-
-const isBrowser = typeof document !== "undefined";
-
-const supportsPopover = isBrowser && "popover" in HTMLElement.prototype;

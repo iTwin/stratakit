@@ -8,6 +8,8 @@ import * as Ariakit from "@ariakit/react";
 import * as ListItem from "./ListItem.js";
 import { Button } from "./Button.js";
 import { DisclosureArrow } from "./Icon.js";
+import { useControlledState } from "./~hooks.js";
+import { supportsPopover } from "./~utils.js";
 
 // ----------------------------------------------------------------------------
 
@@ -33,13 +35,35 @@ interface DropdownMenuProps
  * ```
  */
 function DropdownMenu(props: DropdownMenuProps) {
-	const { children, placement, open, setOpen, defaultOpen } = props;
+	const {
+		children,
+		placement,
+		open: openProp,
+		setOpen: setOpenProp,
+		defaultOpen: defaultOpenProp,
+	} = props;
+
+	const [open, setOpen] = useControlledState(
+		defaultOpenProp,
+		openProp,
+		setOpenProp,
+	);
+
+	const store = Ariakit.useMenuStore();
+	const menu = Ariakit.useStoreState(store, (store) => store.popoverElement);
+
 	return (
 		<Ariakit.MenuProvider
+			store={store}
 			placement={placement}
 			open={open}
-			setOpen={setOpen}
-			defaultOpen={defaultOpen}
+			setOpen={React.useCallback(
+				(open: boolean) => {
+					setOpen(open);
+					menu?.togglePopover?.(open);
+				},
+				[setOpen, menu],
+			)}
 		>
 			{children}
 		</Ariakit.MenuProvider>
@@ -55,8 +79,10 @@ const DropdownMenuContent = React.forwardRef<
 >((props, forwardedRef) => {
 	return (
 		<Ariakit.Menu
-			portal
+			portal={!supportsPopover}
 			{...props}
+			style={{ zIndex: supportsPopover ? undefined : 9999, ...props.style }}
+			wrapperProps={{ popover: "manual" } as React.ComponentProps<"div">}
 			className={cx("🥝-dropdown-menu", props.className)}
 			ref={forwardedRef}
 		/>

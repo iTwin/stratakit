@@ -136,6 +136,7 @@ function useSplitter<TSplitter extends HTMLElement, TPanel extends Element>(
 		undefined,
 	);
 
+	const [resizing, setResizing] = React.useState(false);
 	const [preferredSize, setPreferredSize] = React.useState<number | undefined>(
 		undefined,
 	);
@@ -186,25 +187,27 @@ function useSplitter<TSplitter extends HTMLElement, TPanel extends Element>(
 		const panelRect = panel.getBoundingClientRect();
 		setPreferredSize(panelRect.width + moveBy);
 		setMode(undefined);
+		setResizing(true);
 	}, []);
-	const onKeyMove = React.useCallback(
-		(direction: 1 | -1) => {
-			const panel = panelRef.current;
-			if (!panel) return;
-			const container = panel.parentElement;
-			if (!container) return;
+	const onKeyMove = React.useCallback((direction: 1 | -1) => {
+		const panel = panelRef.current;
+		if (!panel) return;
+		const container = panel.parentElement;
+		if (!container) return;
 
-			const containerRect = container.getBoundingClientRect();
-			const moveBy = direction * (containerRect.width * 0.005);
-			onMove(moveBy);
-		},
-		[onMove],
-	);
+		const containerRect = container.getBoundingClientRect();
+		const moveBy = direction * (containerRect.width * 0.005);
+
+		const panelRect = panel.getBoundingClientRect();
+		setPreferredSize(panelRect.width + moveBy);
+		setMode(undefined);
+	}, []);
 	const onMoveEnd = React.useCallback(() => {
 		const panel = panelRef.current;
 		if (!panel) return;
 
 		setPreferredSize(undefined);
+		setResizing(false);
 	}, []);
 	const { moveableProps } = useMoveable<TSplitter>({
 		onMove,
@@ -238,21 +241,11 @@ function useSplitter<TSplitter extends HTMLElement, TPanel extends Element>(
 			"aria-valuenow": size === undefined ? undefined : Math.floor(size),
 			"aria-valuemin": minSize === undefined ? undefined : Math.floor(minSize),
 			"aria-valuemax": maxSize === undefined ? undefined : Math.floor(maxSize),
-			"aria-controls": id,
 			"aria-labelledby": labelledby,
 			"aria-label": labelledby === undefined ? "Resize panel" : undefined,
-			"data-resizing": preferredSize === undefined ? undefined : "true",
+			"data-resizing": resizing ? "true" : undefined,
 		};
-	}, [
-		moveableProps,
-		size,
-		minSize,
-		maxSize,
-		id,
-		labelledby,
-		onCollapse,
-		preferredSize,
-	]);
+	}, [moveableProps, size, minSize, maxSize, labelledby, onCollapse, resizing]);
 	const panelProps = React.useMemo<
 		Partial<React.HTMLAttributes<TPanel>>
 	>(() => {
@@ -267,13 +260,17 @@ function useSplitter<TSplitter extends HTMLElement, TPanel extends Element>(
 
 	const panelMinSize = minSize === undefined ? undefined : `${minSize}px`;
 	const panelMaxSize = React.useMemo(() => {
-		if (preferredSize !== undefined && maxSizeSpec !== undefined) {
+		if (
+			preferredSize !== undefined &&
+			maxSizeSpec !== undefined &&
+			mode === undefined
+		) {
 			return `min(${preferredSize}px, ${maxSizeSpec.pct}%)`;
 		}
 
 		if (size === undefined) return undefined;
 		return `${size}px`;
-	}, [maxSizeSpec, preferredSize, size]);
+	}, [maxSizeSpec, preferredSize, size, mode]);
 
 	return { splitterProps, panelProps, panelMinSize, panelMaxSize };
 }
@@ -334,14 +331,6 @@ function useMoveable<T extends HTMLElement>(args?: UseMoveableArgs) {
 						break;
 				}
 			},
-			onKeyUp: (e) => {
-				switch (e.key) {
-					case "ArrowLeft":
-					case "ArrowRight":
-						onMoveEnd?.();
-						break;
-				}
-			},
 			ref: (el: T | null) => {
 				ref.current = el;
 				removeTouchStart.current?.();
@@ -358,7 +347,7 @@ function useMoveable<T extends HTMLElement>(args?: UseMoveableArgs) {
 				};
 			},
 		};
-	}, [onKeyMove, onMoveEnd, onMove, handleMoveEnd]);
+	}, [onKeyMove, onMove, handleMoveEnd]);
 	return { moveableProps };
 }
 

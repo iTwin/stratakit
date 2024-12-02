@@ -76,14 +76,6 @@ export const Tooltip = React.forwardRef<
 		[open, popover],
 	);
 
-	// Determine the correct aria attribute dynamically
-	const ariaProps =
-		type === "description"
-			? { "aria-describedby": id }
-			: type === "label"
-				? { "aria-labelledby": id }
-				: {};
-
 	return (
 		<>
 			<Ariakit.TooltipProvider
@@ -92,8 +84,13 @@ export const Tooltip = React.forwardRef<
 				open={openProp}
 				setOpen={setOpenProp}
 			>
-				<Ariakit.TooltipAnchor render={children} {...ariaProps} />
+				<Ariakit.TooltipAnchor
+					render={children}
+					{...(type === "description" && { "aria-describedby": id })}
+					{...(type === "label" && { "aria-labelledby": id })}
+				/>
 				<Ariakit.Tooltip
+					aria-hidden="true"
 					{...rest}
 					unmountOnHide={unmountOnHide}
 					className={cx("🥝-tooltip", className)}

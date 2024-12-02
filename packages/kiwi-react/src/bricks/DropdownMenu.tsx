@@ -7,6 +7,7 @@ import cx from "classnames";
 import * as Ariakit from "@ariakit/react";
 import * as ListItem from "./ListItem.js";
 import { Button } from "./Button.js";
+import { Kbd } from "./Kbd.js";
 import { DisclosureArrow } from "./Icon.js";
 
 // ----------------------------------------------------------------------------
@@ -91,18 +92,39 @@ DropdownMenuButton.displayName = "DropdownMenu.Button";
 // ----------------------------------------------------------------------------
 
 interface DropdownMenuItemProps extends Ariakit.MenuItemProps {
-	shortcut?: string;
+	shortcut?: string[];
 }
 
 const DropdownMenuItem = React.forwardRef<
 	React.ElementRef<typeof Ariakit.MenuItem>,
 	DropdownMenuItemProps
 >((props, forwardedRef) => {
+	const { shortcut } = props;
+
+	const renderShortcuts = () => {
+		if (!shortcut || shortcut.length === 0) return null;
+
+		return (
+			<span className="🥝-dropdown-menu-item-shortcuts">
+				{shortcut.map((key, idx) => (
+					<Kbd variant="ghost" key={`shortcut-${idx}-${key}`}>
+						{key}
+					</Kbd>
+				))}
+			</span>
+		);
+	};
+
 	return (
 		<Ariakit.MenuItem
 			accessibleWhenDisabled
 			{...props}
-			render={<ListItem.Root render={props.render} />}
+			render={
+				<ListItem.Root render={props.render}>
+					<span>{props.children}</span>
+					{renderShortcuts()}
+				</ListItem.Root>
+			}
 			ref={forwardedRef}
 		/>
 	);

@@ -16,6 +16,7 @@
 		var(--✨border--default) 100%,
 		var(--kiwi-color-glow-hue) var(--kiwi-color-border-glow-base-hover-\%)
 	);
+	--✨border--focus: var(--kiwi-color-border-accent-strong);
 	--✨border--disabled: var(--kiwi-color-border-glow-on-surface-disabled);
 	--✨color--default: var(--kiwi-color-text-neutral-primary);
 	--✨color--placeholder: var(--kiwi-color-text-neutral-secondary);
@@ -25,7 +26,7 @@
 	/* Dynamically adjust the padding to avoid issues with baseline alignment */
 	--✨padding-block: max(0px, (var(--✨height) - 2px - 1lh) / 2);
 	--✨gap: 4px;
-	--✨outline: 2px solid var(--kiwi-color-border-accent-strong);
+	--✨outline: 2px solid var(--kiwi-color-border-accent-base);
 	--✨outline-offset: 1px;
 
 	@layer base {
@@ -96,10 +97,11 @@
 		/* Styles specific to input/textarea (nested only, "invisible") */
 		:where(input, textarea) {
 			border: none;
-			background-color: var(--🥝background-color);
+			background-color: var(--🥝text-box-background-color);
 			outline: unset;
 			flex: 999;
 			align-self: stretch;
+			transition: background-color 150ms ease-out;
 		}
 	}
 
@@ -110,15 +112,19 @@
 			}
 		}
 
-		&:where(:has(:is(input, textarea):focus-visible)) {
+		&:where(:has(:is(input, textarea):focus-visible), :is(input, textarea):focus-visible) {
 			outline: var(--✨outline);
 			outline-offset: var(--✨outline-offset);
+			--🥝text-box-border-color: var(--✨border--focus);
+			--🥝icon-color: var(--kiwi-color-icon-accent-strong);
 		}
 
 		@supports not selector(:has(+ *)) {
 			&:where(:not(input, textarea):focus-within) {
 				outline: var(--✨outline);
 				outline-offset: var(--✨outline-offset);
+				--🥝text-box-border-color: var(--✨border--focus);
+				--🥝icon-color: var(--kiwi-color-icon-accent-strong);
 			}
 		}
 

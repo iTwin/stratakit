@@ -51,9 +51,8 @@ const TreeItem = React.forwardRef<React.ElementRef<"div">, TreeItemProps>(
 			>
 				<ListItem.Root
 					{...rest}
-					aria-expanded={expanded}
-					aria-selected={selected}
-					aria-level={level}
+					data-kiwi-expanded={expanded}
+					data-kiwi-selected={selected}
 					className={cx("🥝-tree-item", className)}
 					style={
 						{

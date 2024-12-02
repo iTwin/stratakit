@@ -14,18 +14,22 @@ test("default", async ({ page }) => {
 	const items = page.getByRole("listitem");
 	await expect(items).toHaveCount(7);
 
+	const expander = page.getByRole("button", { name: "Toggle" });
+
 	const item1 = items.filter({
 		has: page.getByText("Item 1", { exact: true }),
 	});
 	await expect(item1).toBeVisible();
-	await expect(item1).toHaveAttribute("aria-expanded", "true");
-	await expect(item1).toHaveAttribute("aria-level", "1");
+	await expect(item1.locator(expander)).toHaveAttribute(
+		"aria-expanded",
+		"true",
+	);
 
 	const item1_1 = items.filter({
 		has: page.getByText("Item 1.1"),
 	});
-	await expect(item1_1).not.toHaveAttribute("aria-expanded", "true");
-	await expect(item1_1).toHaveAttribute("aria-level", "2");
+	await expect(item1_1).toBeVisible();
+	await expect(item1_1.locator(expander)).not.toBeVisible();
 });
 
 test.describe("@visual", () => {

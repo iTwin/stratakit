@@ -18,15 +18,15 @@
 
 	@layer states {
 		/* TODO: combined states: active + hovered/pressed. */
-		&:where([aria-selected="true"]) {
+		&:where([data-kiwi-selected="true"]) {
 			--🌀list-item-state: var(--🌀list-item-state--active);
 		}
 
-		&:where([aria-expanded="false"]) {
+		&:where([data-kiwi-expanded="false"]) {
 			--🥝tree-chevron-rotate: -0.25turn;
 		}
 
-		&:where(:not([aria-expanded])) {
+		&:where(:not([data-kiwi-expanded])) {
 			--🥝tree-item-expander-visibility: hidden;
 		}
 	}

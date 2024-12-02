@@ -2,27 +2,27 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-import { test, expect } from "#playwright";
+import { test, expect } from "@playwright/test";
 import AxeBuilder from "@axe-core/playwright";
 
 test("default", async ({ page }) => {
-	await page.goto("/tests/root", { waitUntil: "domcontentloaded" });
-	await expect(page.locator("h1")).toHaveText("Root");
-	await expect(page.locator("body")).toHaveScreenshot("shadow.png");
+	await page.goto("/tests/kbd");
+	const kbdComponent = page.getByText("Ctrl");
+	expect(await kbdComponent.evaluate((e) => e.localName)).toBe("kbd");
+	await expect(kbdComponent).toBeVisible();
+});
 
-	const popoutPromise = page.waitForEvent("popup");
-	await page.getByRole("button", { name: "Open popout" }).click();
-	const popout = await popoutPromise;
-	await popout.waitForLoadState("domcontentloaded");
-	await expect(popout.locator("body")).toHaveScreenshot("popout.png");
+test("@visual", async ({ page }) => {
+	await page.goto("/tests/kbd?visual=true");
+	await expect(page.locator("body")).toHaveScreenshot();
 });
 
 test.describe("@a11y", () => {
 	test("Axe Page Scan", async ({ page }) => {
-		await page.goto("/tests/root");
+		await page.goto("/tests/kbd");
 
-		const button = await page.getByRole("button", { name: "Open popout" });
-		await expect(button).toBeVisible();
+		const kbdComponent = page.getByText("Ctrl");
+		await expect(kbdComponent).toBeVisible();
 
 		const axe = new AxeBuilder({ page });
 		const accessibilityScan = await axe.analyze();

@@ -2,9 +2,10 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
+import { definePage } from "~/~utils.tsx";
 import * as ListItem from "@itwin/kiwi-react-internal/src/bricks/ListItem";
 import { Icon } from "@itwin/kiwi-react-internal/src/bricks/Icon";
-import { useSearchParams, type LinksFunction } from "react-router";
+import type { LinksFunction } from "react-router";
 import testStyles from "./index.css?url";
 import placeholderIcon from "@itwin/kiwi-icons/placeholder.svg";
 
@@ -14,10 +15,7 @@ export const links: LinksFunction = () => [
 	{ rel: "stylesheet", href: testStyles },
 ];
 
-export default function Page() {
-	const [searchParams] = useSearchParams();
-	const isActive = searchParams.has("active-state");
-
+export default definePage(function Page({ "active-state": isActive = false }) {
 	return (
 		// biome-ignore lint/a11y/useSemanticElements: `div` is used as underlying element for `ListItem`
 		<div
@@ -43,4 +41,4 @@ export default function Page() {
 			</ListItem.Root>
 		</div>
 	);
-}
+});

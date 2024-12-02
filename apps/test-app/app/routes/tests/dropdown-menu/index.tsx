@@ -3,17 +3,15 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 import { DropdownMenu } from "@itwin/kiwi-react/bricks";
-import { useSearchParams } from "react-router";
+import { definePage } from "~/~utils.tsx";
 
 export const handle = { title: "DropdownMenu" };
 
-export default function Page() {
-	const visual = useSearchParams()[0].get("visual") === "true";
-	const disabled = useSearchParams()[0].get("disabled") === "true";
+export default definePage(function Page({ visual, disabled }) {
 	return (
 		<div style={{ minHeight: 150 }}>
 			<DropdownMenu.Root open={visual ? true : undefined}>
-				<DropdownMenu.Button disabled={disabled}>Actions</DropdownMenu.Button>
+				<DropdownMenu.Button disabled={!!disabled}>Actions</DropdownMenu.Button>
 
 				<DropdownMenu.Content>
 					<DropdownMenu.Item>Add</DropdownMenu.Item>
@@ -24,4 +22,4 @@ export default function Page() {
 			</DropdownMenu.Root>
 		</div>
 	);
-}
+});

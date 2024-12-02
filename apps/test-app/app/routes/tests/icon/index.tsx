@@ -2,26 +2,18 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
+import { definePage } from "~/~utils.tsx";
 import { Icon } from "@itwin/kiwi-react/bricks";
-import { useSearchParams } from "react-router";
 import placeholderIcon from "@itwin/kiwi-icons/placeholder.svg";
 
 export const handle = { title: "Icon" };
 
-export default function Page() {
-	const size = useSizeParam();
-
-	const withRenderProp = useSearchParams()[0].get("renderProp") === "true";
-	if (withRenderProp) return <RenderPropTest />;
-
-	return <Icon size={size} href={placeholderIcon} />;
-}
-
-function useSizeParam() {
-	const sizeParam = useSearchParams()[0].get("size");
-	if (sizeParam === "regular" || sizeParam === "large") return sizeParam;
-	return undefined;
-}
+export default definePage(
+	function Page({ size = "regular" }) {
+		return <Icon size={size as "regular" | "large"} href={placeholderIcon} />;
+	},
+	{ renderProp: RenderPropTest },
+);
 
 function RenderPropTest() {
 	return (

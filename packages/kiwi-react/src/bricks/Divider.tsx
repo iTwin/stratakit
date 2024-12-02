@@ -37,3 +37,4 @@ export const Divider = React.forwardRef<React.ElementRef<"div">, DividerProps>(
 		);
 	},
 );
+Divider.displayName = "Divider";

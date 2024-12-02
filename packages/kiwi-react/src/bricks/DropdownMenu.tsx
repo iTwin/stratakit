@@ -8,6 +8,7 @@ import * as Ariakit from "@ariakit/react";
 import * as ListItem from "./ListItem.js";
 import { Button } from "./Button.js";
 import { DisclosureArrow } from "./Icon.js";
+import { supportsPopover } from "./~utils.js";
 
 // ----------------------------------------------------------------------------
 
@@ -33,18 +34,40 @@ interface DropdownMenuProps
  * ```
  */
 function DropdownMenu(props: DropdownMenuProps) {
-	const { children, placement, open, setOpen, defaultOpen } = props;
+	const {
+		children,
+		placement,
+		open: openProp,
+		setOpen: setOpenProp,
+		defaultOpen: defaultOpenProp,
+	} = props;
+
+	const store = Ariakit.useMenuStore();
+	const open = Ariakit.useStoreState(store, (store) => store.open);
+	const popover = Ariakit.useStoreState(store, (store) => store.popoverElement);
+
+	React.useEffect(
+		function syncPopoverWithOpenState() {
+			if (popover?.isConnected) {
+				popover?.togglePopover?.(open);
+			}
+		},
+		[open, popover],
+	);
+
 	return (
 		<Ariakit.MenuProvider
+			store={store}
 			placement={placement}
-			open={open}
-			setOpen={setOpen}
-			defaultOpen={defaultOpen}
+			defaultOpen={defaultOpenProp}
+			open={openProp}
+			setOpen={setOpenProp}
 		>
 			{children}
 		</Ariakit.MenuProvider>
 	);
 }
+DropdownMenu.displayName = "DropdownMenu.Root";
 
 // ----------------------------------------------------------------------------
 
@@ -54,13 +77,17 @@ const DropdownMenuContent = React.forwardRef<
 >((props, forwardedRef) => {
 	return (
 		<Ariakit.Menu
-			portal
+			portal={!supportsPopover}
+			unmountOnHide
 			{...props}
+			style={{ zIndex: supportsPopover ? undefined : 9999, ...props.style }}
+			wrapperProps={{ popover: "manual" } as React.ComponentProps<"div">}
 			className={cx("🥝-dropdown-menu", props.className)}
 			ref={forwardedRef}
 		/>
 	);
 });
+DropdownMenuContent.displayName = "DropdownMenu.Content";
 
 // ----------------------------------------------------------------------------
 
@@ -84,6 +111,7 @@ const DropdownMenuButton = React.forwardRef<
 		/>
 	);
 });
+DropdownMenuButton.displayName = "DropdownMenu.Button";
 
 // ----------------------------------------------------------------------------
 
@@ -100,6 +128,7 @@ const DropdownMenuItem = React.forwardRef<
 		/>
 	);
 });
+DropdownMenuItem.displayName = "DropdownMenu.Item";
 
 // ----------------------------------------------------------------------------
 

@@ -2,33 +2,29 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
+import { definePage } from "~/~utils.tsx";
 import { Button, Icon } from "@itwin/kiwi-react/bricks";
-import { useSearchParams } from "react-router";
 import placeholderIconHref from "@itwin/kiwi-icons/placeholder.svg";
 
 export const handle = { title: "Button" };
 
-export default function Page() {
-	const visual = useSearchParams()[0].get("visual") === "true";
-	const disabled = useSearchParams()[0].get("disabled") === "true";
-
-	if (visual) {
-		return <VisualTest />;
-	}
-
-	return (
-		<>
-			<Button
-				disabled={disabled}
-				onClick={(e) => {
-					e.currentTarget.textContent = "Clicked";
-				}}
-			>
-				Hello
-			</Button>
-		</>
-	);
-}
+export default definePage(
+	function Page({ disabled }) {
+		return (
+			<>
+				<Button
+					disabled={!!disabled}
+					onClick={(e) => {
+						e.currentTarget.textContent = "Clicked";
+					}}
+				>
+					Hello
+				</Button>
+			</>
+		);
+	},
+	{ visual: VisualTest },
+);
 
 function VisualTest() {
 	const variants = ["solid", "outline", "ghost"] as const;

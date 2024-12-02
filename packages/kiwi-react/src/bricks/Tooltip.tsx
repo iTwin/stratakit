@@ -5,7 +5,7 @@
 import * as React from "react";
 import cx from "classnames";
 import * as Ariakit from "@ariakit/react";
-import { useControlledState } from "./~hooks.js";
+import { supportsPopover } from "./~utils.js";
 
 interface TooltipProps
 	extends Omit<Ariakit.TooltipProps, "store" | "content">,
@@ -63,24 +63,17 @@ export const Tooltip = React.forwardRef<
 		...rest
 	} = props;
 
-	const [open, setOpen] = useControlledState(
-		defaultOpenProp,
-		openProp,
-		setOpenProp,
-	);
-
 	const store = Ariakit.useTooltipStore();
-	const wrapper = Ariakit.useStoreState(store, (state) => state.popoverElement);
+	const open = Ariakit.useStoreState(store, (state) => state.open);
+	const popover = Ariakit.useStoreState(store, (state) => state.popoverElement);
 
 	React.useEffect(
-		function showTooltipOnMount() {
-			// When using unmountOnHide, we need to wait for the wrapper element to
-			// be mounted before we can call `togglePopover` on it.
-			if (unmountOnHide && open) {
-				wrapper?.togglePopover?.(true);
+		function syncPopoverWithOpenState() {
+			if (popover?.isConnected) {
+				popover?.togglePopover?.(open);
 			}
 		},
-		[open, wrapper, unmountOnHide],
+		[open, popover],
 	);
 
 	// Determine the correct aria attribute dynamically
@@ -95,14 +88,9 @@ export const Tooltip = React.forwardRef<
 		<>
 			<Ariakit.TooltipProvider
 				store={store}
-				open={open}
-				setOpen={React.useCallback(
-					(open: boolean) => {
-						setOpen(open);
-						wrapper?.togglePopover?.(open);
-					},
-					[setOpen, wrapper],
-				)}
+				defaultOpen={defaultOpenProp}
+				open={openProp}
+				setOpen={setOpenProp}
 			>
 				<Ariakit.TooltipAnchor render={children} {...ariaProps} />
 				<Ariakit.Tooltip
@@ -121,7 +109,4 @@ export const Tooltip = React.forwardRef<
 		</>
 	);
 });
-
-const isBrowser = typeof document !== "undefined";
-
-const supportsPopover = isBrowser && "popover" in HTMLElement.prototype;
+Tooltip.displayName = "Tooltip";

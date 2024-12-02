@@ -103,3 +103,4 @@ export const IconButton = React.forwardRef<
 		</Tooltip>
 	);
 });
+IconButton.displayName = "IconButton";

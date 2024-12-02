@@ -8,7 +8,7 @@ import AxeBuilder from "@axe-core/playwright";
 test("default", async ({ page }) => {
 	await page.goto("/tests/divider");
 	const divider = page.getByRole("separator");
-	await expect(divider).not.toHaveAttribute("aria-orientation");
+	await expect(divider).toHaveAttribute("aria-orientation", "horizontal");
 });
 
 test("horizontal", async ({ page }) => {

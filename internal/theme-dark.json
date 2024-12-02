@@ -855,23 +855,16 @@
 				"0px 24px 24px -12px --primitive('color.black.16')"
 			]
 		},
-		"button-base": {
+		"button-base-drop": {
 			"$type": "shadow",
 			"$value": [
-				"inset 0px -1px 0px 0px --primitive('color.black.8')",
-				"inset 0px 0px 0px 1px var(--🥝border-color, --primitive('color.white.8'))",
 				"0px 1px 1px -0.5px --primitive('color.black.16')",
 				"0px 3px 3px -1.5px --primitive('color.black.16')"
 			]
 		},
-		"button-strong": {
+		"button-base-inset": {
 			"$type": "shadow",
-			"$value": [
-				"inset 0px -1px 0px 0px --primitive('color.black.8')",
-				"inset 0px 0px 0px 1px var(--🥝border-color, --primitive('color.white.16'))",
-				"0px 1px 1px -0.5px --primitive('color.black.16')",
-				"0px 3px 3px -1.5px --primitive('color.black.16')"
-			]
+			"$value": ["inset 0px -1px 0px 0px --primitive('color.black.8')"]
 		},
 		"input-base": {
 			"$type": "shadow",

@@ -1,0 +1,27 @@
+{
+	"image": "mcr.microsoft.com/devcontainers/universal:2",
+	"customizations": {
+		"codespaces": {
+			"openFiles": ["apps/test-app/app/routes/sandbox.tsx"]
+		},
+		"vscode": {
+			"extensions": [
+				"biomejs.biome",
+				"esbenp.prettier-vscode",
+				"ms-playwright.playwright"
+			]
+		}
+	},
+	"portsAttributes": {
+		"1800": {
+			"label": "test-app",
+			"onAutoForward": "openPreview"
+		}
+	},
+	"onCreateCommand": "pnpm install",
+	"postCreateCommand": "pnpm run build",
+	"postStartCommand": "pnpm run dev",
+	"hostRequirements": {
+		"cpus": 4
+	}
+}

@@ -11,16 +11,23 @@ test("default", async ({ page }) => {
 	const button = page.getByRole("button", { name: "Actions" });
 	const add = page.getByRole("menuitem", { name: "Add" });
 
+	const menu = page.getByRole("menu", { includeHidden: true });
+	await expect(menu).toHaveCount(0);
+
 	await button.click();
+	await expect(menu).toBeVisible();
 	await expect(add).toBeVisible();
 
 	await add.click();
+	await expect(menu).toHaveCount(0); // unmounted
 	await expect(add).not.toBeVisible();
 
 	await button.click();
+	await expect(menu).toBeVisible();
 	await expect(add).toBeVisible();
 
 	await page.click("body");
+	await expect(menu).toHaveCount(0); // unmounted
 	await expect(add).not.toBeVisible();
 });
 

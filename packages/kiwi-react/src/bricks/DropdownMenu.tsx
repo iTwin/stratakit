@@ -78,6 +78,7 @@ const DropdownMenuContent = React.forwardRef<
 	return (
 		<Ariakit.Menu
 			portal={!supportsPopover}
+			unmountOnHide
 			{...props}
 			style={{ zIndex: supportsPopover ? undefined : 9999, ...props.style }}
 			wrapperProps={{ popover: "manual" } as React.ComponentProps<"div">}

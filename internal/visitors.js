@@ -160,7 +160,35 @@ export function themeTransform() {
 /**
  * LightningCSS visitor that exposes a `--typography` CSS mixin which can be
  * applied (using `@apply`) to any selector to include CSS properties for a
- * given typography token.
+ * given typography token. This also adds a `--font-sizes` transform which is
+ * meant to be applied to `:root` to provide custom properties which the
+ * `--typography` mixin uses.
+ *
+ * Input:
+ * ```css
+ * :root {
+ * 	 \@apply --font-sizes;
+ * }
+ *
+ * .foo {
+ *   \@apply --typography("display-sm");
+ * }
+ * ```
+ *
+ * Output:
+ * ```css
+ * :root {
+ * 	 …
+ * 	 --kiwi-font-size-32: 2rem;
+ * 	 …
+ * }
+ *
+ * .foo {
+ * 	 font-size: var(--kiwi-font-size-32);
+ * 	 letter-spacing: 0;
+ * 	 line-height: 1.25;
+ * }
+ * ```
  *
  * @returns {import("lightningcss").Visitor}
  */
@@ -168,6 +196,7 @@ export function typographyTransform() {
 	return {
 		Rule: {
 			unknown({ name, prelude, loc }) {
+				// Only process @apply
 				if (name !== "apply") return;
 
 				const isTypographyMixin =
@@ -177,10 +206,11 @@ export function typographyTransform() {
 					prelude[0]?.type === "dashed-ident" &&
 					prelude[0].value === "--font-sizes";
 
+				// Only process --typography or --font-sizes
 				if (!isTypographyMixin && !isFontSizesMixin) return;
 
+				// `@apply --font-sizes` implementation
 				if (isFontSizesMixin) {
-					console.log("generating font size custom properties");
 					const declarations = [];
 
 					for (const [step, token] of Object.entries(typography.size)) {
@@ -189,6 +219,7 @@ export function typographyTransform() {
 								step,
 								{
 									type: "length",
+									// This shape of this object coincidentally matches what Lightning expects
 									value: token.$value,
 								},
 								{ prefix: "kiwi-font-size" },
@@ -209,8 +240,7 @@ export function typographyTransform() {
 					];
 				}
 
-				// TODO: it’s more so “leverage inheritance where value is a default”
-				const leverageInheritance = true;
+				// `@apply --typography()` implementation
 
 				const tokenName = prelude[0].value.arguments?.[0]?.value?.value;
 				const token = typography.typography[tokenName];
@@ -221,37 +251,26 @@ export function typographyTransform() {
 				}
 
 				const declarations = [];
-
 				const { fontFamily, fontSize, lineHeight, letterSpacing } =
 					token.$value;
 
-				// font-family
-				// TODO: this seems like a bad condition
-				if (!leverageInheritance || fontFamily !== "{family.sans}") {
-					let customPropertyName;
-					switch (fontFamily) {
-						case "{family.sans}":
-							customPropertyName = "--kiwi-font-family-sans";
-							break;
-						case "{family.mono}":
-							customPropertyName = "--kiwi-font-family-mono";
-							break;
-					}
+				// font-family (leverage inheritance for {family.sans})
+				if (fontFamily === "{family.mono}") {
 					declarations.push({
 						property: "font-family",
-						raw: `var(${customPropertyName})`,
+						raw: "var(--kiwi-font-family-mono)",
 					});
 				}
 
 				// font-size
-				const { step } = fontSize.match(/{size.(?<step>\d+)}/).groups; // TODO: lazy
+				const { step } = fontSize.match(/{size.(?<step>\d+)}/).groups;
 				declarations.push({
 					property: "font-size",
 					raw: `var(--kiwi-font-size-${step})`,
 				});
 
-				// line-height
-				if (!leverageInheritance || lineHeight !== 1.3333) {
+				// line-height (leverage inheritance for default of 1.3333)
+				if (lineHeight !== 1.3333) {
 					declarations.push({
 						property: "line-height",
 						raw: `${lineHeight}`,

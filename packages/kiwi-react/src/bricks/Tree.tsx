@@ -109,7 +109,7 @@ const TreeItemExpander = React.forwardRef<
 	return (
 		<IconButton
 			icon={<TreeChevron />}
-			label={expanded ? "Collapse" : "Expand"}
+			label="Toggle"
 			aria-expanded={expanded === undefined ? undefined : expanded}
 			{...props}
 			className={cx("🥝-tree-item-expander", props.className)}

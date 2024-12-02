@@ -16,6 +16,22 @@ interface KbdProps extends Ariakit.RoleProps<"kbd"> {
 	variant?: "solid" | "muted" | "ghost";
 }
 
+export const kbdKeys = {
+	Command: "\u2318 Cmd",
+	Shift: "\u21e7 Shift",
+	Backspace: "\u232b Backspace",
+	Enter: "\u21b5 Enter",
+	Eject: "\u23cf Eject",
+	Control: "Ctrl",
+	Windows: "\u229e Win",
+	Apple: "\uf8ff",
+	Option: "\u2325 Option",
+	Left: "\u2190",
+	Up: "\u2191",
+	Right: "\u2192",
+	Down: "\u2193",
+} as const;
+
 /**
  * A styled wrapper over the HTML `<kbd>` element. This is typically
  * used for displaying keyboard shortcuts.

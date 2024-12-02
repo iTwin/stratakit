@@ -7,11 +7,6 @@ import cx from "classnames";
 import * as Ariakit from "@ariakit/react";
 
 interface KbdProps extends Ariakit.RoleProps<"kbd"> {
-	/**
-	 * Content of the key to be passed as children.
-	 */
-	children: string;
-
 	/** @default "solid" */
 	variant?: "solid" | "muted" | "ghost";
 }

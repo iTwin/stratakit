@@ -8,7 +8,7 @@ html {
 
 body {
 	font-family: var(--kiwi-font-family-sans);
-	font-size: var(--kiwi-font-size-m);
+	font-size: var(--kiwi-font-size-14);
 	color: var(--kiwi-color-text-neutral-primary);
 }
 

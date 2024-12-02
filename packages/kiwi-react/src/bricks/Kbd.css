@@ -9,7 +9,7 @@
 	@layer base {
 		color: var(--kiwi-color-text-neutral-secondary);
 		font-family: var(--kiwi-font-family-mono);
-		font-size: var(--kiwi-font-size-s);
+		font-size: var(--kiwi-font-size-12);
 		font-weight: 500;
 		line-height: 1.3333;
 

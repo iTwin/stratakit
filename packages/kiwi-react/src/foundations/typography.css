@@ -8,5 +8,5 @@
 	--kiwi-font-family-mono: "Geist Mono", "Noto Sans Mono", ui-monospace, "Segoe UI Mono", Consolas,
 		monospace;
 
-	@apply --font-sizes;
+	@apply --typography-root;
 }

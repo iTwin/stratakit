@@ -160,16 +160,10 @@ export function themeTransform() {
 /**
  * LightningCSS visitor that exposes a `--typography` CSS mixin which can be
  * applied (using `@apply`) to any selector to include CSS properties for a
- * given typography token. This also adds a `--font-sizes` transform which is
- * meant to be applied to `:root` to provide custom properties which the
- * `--typography` mixin uses.
+ * given typography token.
  *
  * Input:
  * ```css
- * :root {
- * 	 \@apply --font-sizes;
- * }
- *
  * .foo {
  *   \@apply --typography("display-sm");
  * }
@@ -177,12 +171,6 @@ export function themeTransform() {
  *
  * Output:
  * ```css
- * :root {
- * 	 …
- * 	 --kiwi-font-size-32: 2rem;
- * 	 …
- * }
- *
  * .foo {
  * 	 font-size: var(--kiwi-font-size-32);
  * 	 letter-spacing: 0;
@@ -196,51 +184,13 @@ export function typographyTransform() {
 	return {
 		Rule: {
 			unknown({ name, prelude, loc }) {
-				// Only process @apply
-				if (name !== "apply") return;
-
-				const isTypographyMixin =
-					prelude[0]?.type === "function" &&
-					prelude[0].value.name === "--typography";
-				const isFontSizesMixin =
-					prelude[0]?.type === "dashed-ident" &&
-					prelude[0].value === "--font-sizes";
-
-				// Only process --typography or --font-sizes
-				if (!isTypographyMixin && !isFontSizesMixin) return;
-
-				// `@apply --font-sizes` implementation
-				if (isFontSizesMixin) {
-					const declarations = [];
-
-					for (const [step, token] of Object.entries(typography.size)) {
-						declarations.push(
-							cssCustomProperty(
-								step,
-								{
-									type: "length",
-									// This shape of this object coincidentally matches what Lightning expects
-									value: token.$value,
-								},
-								{ prefix: "kiwi-font-size" },
-							),
-						);
-					}
-
-					return [
-						{
-							type: "style",
-							value: {
-								declarations: { declarations },
-								selectors: [[{ type: "nesting" }]],
-								rules: [],
-								loc,
-							},
-						},
-					];
+				if (
+					name !== "apply" ||
+					prelude[0]?.type !== "function" ||
+					prelude[0].value.name !== "--typography"
+				) {
+					return;
 				}
-
-				// `@apply --typography()` implementation
 
 				const tokenName = prelude[0].value.arguments?.[0]?.value?.value;
 				const token = typography.typography[tokenName];
@@ -285,6 +235,74 @@ export function typographyTransform() {
 							? "0"
 							: `${letterSpacing.value}${letterSpacing.unit}`,
 				});
+
+				return [
+					{
+						type: "style",
+						value: {
+							declarations: { declarations },
+							selectors: [[{ type: "nesting" }]],
+							rules: [],
+							loc,
+						},
+					},
+				];
+			},
+		},
+	};
+}
+
+/**
+ * LightningCSS visitor that exposes a `--typography-root` CSS mixin (applied
+ * with `@apply`) that adds typographic styles which are meant to be inherited
+ * by other rulesets that use typography tokens: this includes typography
+ * related properties and custom properties representing design tokens.
+ *
+ * Input:
+ * ```css
+ * :root {
+ * 	 \@apply --typography-root;
+ * }
+ * ```
+ *
+ * Output:
+ * ```css
+ * :root {
+ * 	 …
+ * 	 --kiwi-font-size-32: 2rem;
+ * 	 …
+ * }
+ * ```
+ *
+ * @returns {import("lightningcss").Visitor}
+ */
+export function typographyRootTransform() {
+	return {
+		Rule: {
+			unknown({ name, prelude, loc }) {
+				if (
+					name !== "apply" ||
+					prelude[0]?.type !== "dashed-ident" ||
+					prelude[0].value !== "--typography-root"
+				) {
+					return;
+				}
+
+				const declarations = [];
+
+				for (const [step, token] of Object.entries(typography.size)) {
+					declarations.push(
+						cssCustomProperty(
+							step,
+							{
+								type: "length",
+								// This shape of this object coincidentally matches what Lightning expects
+								value: token.$value,
+							},
+							{ prefix: "kiwi-font-size" },
+						),
+					);
+				}
 
 				return [
 					{

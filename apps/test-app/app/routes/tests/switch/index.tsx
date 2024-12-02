@@ -2,39 +2,30 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
+import { definePage, type VariantProps } from "~/~utils.tsx";
 import { Switch, Label, VisuallyHidden, Field } from "@itwin/kiwi-react/bricks";
-import { useSearchParams } from "react-router";
 import { useId } from "react";
 
 export const handle = { title: "Switch" };
 
-export default function Page() {
-	const [searchParams] = useSearchParams();
-	const checked = searchParams.get("checked") === "true";
-	const disabled = searchParams.get("disabled") === "true";
-	const visualTest = searchParams.get("visual") === "true";
+export default definePage(
+	function Page({ checked, disabled }) {
+		return (
+			<Field>
+				<Switch defaultChecked={!!checked} disabled={!!disabled} />
+				<Label>Toggle me</Label>
+			</Field>
+		);
+	},
+	{ visual: VisualTest },
+);
 
-	if (visualTest) {
-		return <VisualTest />;
-	}
-
-	return (
-		<Field>
-			<Switch defaultChecked={checked} disabled={disabled} />
-			<Label>Toggle me</Label>
-		</Field>
-	);
-}
-
-function VisualTest() {
-	const [searchParams] = useSearchParams();
-	const checked = searchParams.get("checked") === "true";
-	const disabled = searchParams.get("disabled") === "true";
+function VisualTest({ checked, disabled }: VariantProps) {
 	const id = useId();
 
 	return (
 		<>
-			<Switch defaultChecked={checked} disabled={disabled} id={id} />
+			<Switch defaultChecked={!!checked} disabled={!!disabled} id={id} />
 			<VisuallyHidden render={<Label htmlFor={id} />}>Toggle me</VisuallyHidden>
 		</>
 	);

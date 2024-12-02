@@ -2,6 +2,7 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
+import { definePage, type VariantProps } from "~/~utils.tsx";
 import {
 	Checkbox,
 	Field,
@@ -10,7 +11,6 @@ import {
 	Radio,
 	Switch,
 } from "@itwin/kiwi-react/bricks";
-import { useSearchParams } from "react-router";
 
 export const handle = { title: "Field" };
 
@@ -22,42 +22,42 @@ const controls: Record<string, React.ElementType> = {
 	textarea: TextBox.Textarea,
 };
 
-export default function Page() {
-	const [searchParams] = useSearchParams();
-	const visual = searchParams.has("visual", "");
-	const controlName = searchParams.get("control") ?? "input";
-	const asLabel = searchParams.has("asLabel", "");
-	const layout = searchParams.has("layout", "inline") ? "inline" : undefined;
-	const labelPlacement = searchParams.get("labelPlacement") ?? "before";
+export default definePage(
+	function Page({
+		control = "input",
+		asLabel,
+		layout,
+		labelPlacement = "before",
+	}) {
+		const Control = controls[control];
+		const ControlLabel = asLabel ? "span" : Label;
 
-	const Control = controls[controlName];
-	const ControlLabel = asLabel ? "span" : Label;
+		return (
+			<form style={{ display: "grid", gap: 32, justifyContent: "start" }}>
+				<Field
+					layout={layout as "inline" | undefined}
+					render={asLabel ? <Label /> : undefined}
+				>
+					{labelPlacement === "before" ? (
+						<ControlLabel>{control} example</ControlLabel>
+					) : null}
+					<Control />
+					{labelPlacement === "after" ? (
+						<ControlLabel>{control} example</ControlLabel>
+					) : null}
+				</Field>
+			</form>
+		);
+	},
+	{ visual: VisualTest },
+);
 
-	if (visual) return <VisualTest />;
-
-	return (
-		<form style={{ display: "grid", gap: 32, justifyContent: "start" }}>
-			<Field layout={layout} render={asLabel ? <Label /> : undefined}>
-				{labelPlacement === "before" ? (
-					<ControlLabel>{controlName} example</ControlLabel>
-				) : null}
-				<Control />
-				{labelPlacement === "after" ? (
-					<ControlLabel>{controlName} example</ControlLabel>
-				) : null}
-			</Field>
-		</form>
-	);
-}
-
-function VisualTest() {
-	const [searchParams] = useSearchParams();
-
-	if (searchParams.has("controlType", "text")) {
+function VisualTest({ controlType }: VariantProps) {
+	if (controlType === "text") {
 		return <VisualTestForTextControls />;
 	}
 
-	if (searchParams.has("controlType", "checkable")) {
+	if (controlType === "checkable") {
 		return <VisualTestForCheckableControls />;
 	}
 }

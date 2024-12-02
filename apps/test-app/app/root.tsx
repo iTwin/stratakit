@@ -2,6 +2,7 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
+import * as React from "react";
 import {
 	Links,
 	Meta,
@@ -41,6 +42,10 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export default function App() {
+	React.useEffect(function signalPageLoad() {
+		document.body.dataset.loaded = "true";
+	}, []);
+
 	return (
 		<Root>
 			<Outlet />
@@ -48,6 +53,18 @@ export default function App() {
 	);
 }
 
+export async function clientLoader() {
+	return true;
+}
+
 export function HydrateFallback() {
-	return <p>Loading…</p>;
+	const fallbackCss =
+		"html { background-color: var(--kiwi-color-bg-surface-primary, #25282c); }";
+
+	return (
+		<>
+			<style>{fallbackCss}</style>
+			<noscript>Please enable JavaScript.</noscript>
+		</>
+	);
 }

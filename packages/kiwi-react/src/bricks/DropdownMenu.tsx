@@ -45,6 +45,7 @@ function DropdownMenu(props: DropdownMenuProps) {
 		</Ariakit.MenuProvider>
 	);
 }
+DropdownMenu.displayName = "DropdownMenu.Root";
 
 // ----------------------------------------------------------------------------
 
@@ -61,6 +62,7 @@ const DropdownMenuContent = React.forwardRef<
 		/>
 	);
 });
+DropdownMenuContent.displayName = "DropdownMenu.Content";
 
 // ----------------------------------------------------------------------------
 
@@ -84,6 +86,7 @@ const DropdownMenuButton = React.forwardRef<
 		/>
 	);
 });
+DropdownMenuButton.displayName = "DropdownMenu.Button";
 
 // ----------------------------------------------------------------------------
 
@@ -100,6 +103,7 @@ const DropdownMenuItem = React.forwardRef<
 		/>
 	);
 });
+DropdownMenuItem.displayName = "DropdownMenu.Item";
 
 // ----------------------------------------------------------------------------
 

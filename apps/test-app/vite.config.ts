@@ -14,7 +14,6 @@ import {
 } from "internal/visitors.js";
 
 const isDev = process.env.NODE_ENV === "development";
-const isTest = process.env.BUILD_ENV === "test";
 
 const basename = process.env.BASE_FOLDER
 	? `/${process.env.BASE_FOLDER}/`
@@ -24,7 +23,7 @@ const basename = process.env.BASE_FOLDER
 export const reactRouterConfig = {
 	...(basename && { basename }),
 	ssr: false,
-	prerender: isTest ? undefined : true,
+	prerender: true,
 } satisfies ReactRouterConfig;
 
 // https://vite.dev/config/

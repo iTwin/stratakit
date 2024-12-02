@@ -5,6 +5,8 @@
 .🥝-checkbox {
 	--✨size: 1rem;
 
+	--✨shadow-border: 0px 0px 0px 1px var(--🥝checkbox-border-color) inset;
+
 	--✨glow--bg-hover: var(--kiwi-color-glow-hue) var(--kiwi-color-bg-glow-base-hover-\%);
 	--✨glow--bg-press: var(--kiwi-color-glow-hue) var(--kiwi-color-bg-glow-base-pressed-\%);
 
@@ -14,16 +16,16 @@
 	--✨bg--checked-hover: color-mix(in oklch, var(--✨bg--checked) 100%, var(--✨glow--bg-press));
 	--✨bg--disabled: var(--kiwi-color-bg-glow-on-surface-disabled);
 
-	--✨border--default: #ffffff14; /* bg/button/base/border/color */
+	--✨border--default: --primitive("color.white.8");
 	--✨border--hover: color-mix(
 		in oklch,
-		#ffffff14 /* bg/button/base/border/color */ 100%,
+		var(--✨border--default) 100%,
 		var(--kiwi-color-glow-hue) var(--kiwi-color-border-glow-base-hover-\%)
 	);
-	--✨border--checked: #ffffff29; /* bg/button/strong/border/color */
+	--✨border--checked: --primitive("color.white.16");
 	--✨border--checked-hover: color-mix(
 		in oklch,
-		#ffffff29 /* bg/button/strong/border/color */ 100%,
+		var(--✨border--checked) 100%,
 		var(--kiwi-color-glow-hue) var(--kiwi-color-border-glow-base-pressed-\%)
 	);
 	--✨border--disabled: transparent;
@@ -53,11 +55,8 @@
 		transition: all 150ms ease-out;
 		transition-property: background-color, border-color, box-shadow, --🥝checkbox-border-color;
 		position: relative;
-		box-shadow:
-			0px 3px 3px -1.5px #00000029,
-			0px 1px 1px -0.5px #00000029,
-			0px 0px 0px 1px var(--🥝checkbox-border-color) inset,
-			0px -1px 0px 0px #00000014 inset;
+		box-shadow: var(--kiwi-shadow-button-base-drop), var(--✨shadow-border),
+			var(--kiwi-shadow-button-base-inset);
 
 		--🥝checkbox-border-color: var(--🌀checkbox-visual-state--default, var(--✨border--default))
 			var(--🌀checkbox-visual-state--hover, var(--✨border--hover))

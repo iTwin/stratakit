@@ -8,17 +8,22 @@ import AxeBuilder from "@axe-core/playwright";
 test("default", async ({ page }) => {
 	await page.goto("/tests/tree");
 
-	const tree = page.getByRole("tree");
+	const tree = page.getByRole("list");
 	await expect(tree).toBeVisible();
 
-	const items = page.getByRole("treeitem");
+	const items = page.getByRole("listitem");
 	await expect(items).toHaveCount(7);
 
-	const item1 = page.getByRole("treeitem", { name: /Item 1$/ });
+	const item1 = items.filter({
+		has: page.getByText("Item 1", { exact: true }),
+	});
+	await expect(item1).toBeVisible();
 	await expect(item1).toHaveAttribute("aria-expanded", "true");
 	await expect(item1).toHaveAttribute("aria-level", "1");
 
-	const item1_1 = page.getByRole("treeitem", { name: "Item 1.1" });
+	const item1_1 = items.filter({
+		has: page.getByText("Item 1.1"),
+	});
 	await expect(item1_1).not.toHaveAttribute("aria-expanded", "true");
 	await expect(item1_1).toHaveAttribute("aria-level", "2");
 });
@@ -26,14 +31,14 @@ test("default", async ({ page }) => {
 test.describe("@visual", () => {
 	test("default", async ({ page }) => {
 		await page.goto("/tests/tree");
-		const tree = page.getByRole("tree");
+		const tree = page.getByRole("list");
 		await expect(tree).toBeVisible();
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
 
 	test("overflow", async ({ page }) => {
 		await page.goto("/tests/tree?overflow");
-		const tree = page.getByRole("tree");
+		const tree = page.getByRole("list");
 		await expect(tree).toBeVisible();
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
@@ -43,7 +48,7 @@ test.describe("@a11y", () => {
 	test("Axe Page Scan", async ({ page }) => {
 		await page.goto("/tests/tree");
 
-		const tree = page.getByRole("tree");
+		const tree = page.getByRole("list");
 		await expect(tree).toBeVisible();
 
 		const axe = new AxeBuilder({ page });

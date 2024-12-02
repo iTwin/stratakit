@@ -16,7 +16,7 @@ interface TreeProps extends Ariakit.RoleProps<"div"> {}
 const Tree = React.forwardRef<React.ElementRef<"div">, TreeProps>(
 	(props, forwardedRef) => {
 		return (
-			<Ariakit.Role.div {...props} role="tree" ref={forwardedRef}>
+			<Ariakit.Role.div {...props} role="list" ref={forwardedRef}>
 				{props.children}
 			</Ariakit.Role.div>
 		);
@@ -61,7 +61,7 @@ const TreeItem = React.forwardRef<React.ElementRef<"div">, TreeItemProps>(
 							"--🥝tree-item-level": level,
 						} as React.CSSProperties
 					}
-					role="treeitem"
+					role="listitem"
 					ref={forwardedRef}
 				>
 					{content}

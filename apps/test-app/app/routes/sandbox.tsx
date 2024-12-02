@@ -32,14 +32,12 @@ export const meta: MetaFunction = () => {
 const leftPanelLabelId = "left-panel";
 
 export default function Page() {
-	const { splitterProps, panelProps, panelMinSize, panelMaxSize } = useSplitter<
-		HTMLDivElement,
-		HTMLDivElement
-	>({
-		minSize: { px: 256, pct: 20 },
-		maxSize: { pct: 30 },
-		labelledby: leftPanelLabelId,
-	});
+	const { sliderProps, panelProps, panelMinSize, panelMaxSize, resizing } =
+		useSplitter<HTMLDivElement>({
+			minSize: { px: 256, pct: 20 },
+			maxSize: { pct: 30 },
+			labelledby: leftPanelLabelId,
+		});
 	return (
 		<>
 			<VisuallyHidden render={(props) => <h1 {...props} />}>
@@ -89,11 +87,11 @@ export default function Page() {
 					<SandboxTree />
 					<Divider
 						presentational
-						role="slider"
 						className={styles.splitter}
-						render={<Ariakit.Focusable />}
-						{...splitterProps}
-					/>
+						data-resizing={resizing ? "true" : undefined}
+					>
+						<input type="range" className={styles.slider} {...sliderProps} />
+					</Divider>
 				</div>
 				<div className={styles.canvasWrapper}>
 					<div className={styles.canvas} />
@@ -115,9 +113,7 @@ interface UseSplitterArgs {
 }
 
 // https://www.w3.org/WAI/ARIA/apg/patterns/windowsplitter/
-function useSplitter<TSplitter extends HTMLElement, TPanel extends Element>(
-	args?: UseSplitterArgs,
-) {
+function useSplitter<TPanel extends Element>(args?: UseSplitterArgs) {
 	const {
 		minSize: minSizeSpec,
 		maxSize: maxSizeSpec,
@@ -209,13 +205,13 @@ function useSplitter<TSplitter extends HTMLElement, TPanel extends Element>(
 		setPreferredSize(undefined);
 		setResizing(false);
 	}, []);
-	const { moveableProps } = useMoveable<TSplitter>({
+	const { moveableProps } = useMoveable<HTMLInputElement>({
 		onMove,
 		onMoveEnd,
 		onKeyMove,
 	});
-	const splitterProps = React.useMemo<
-		Partial<React.HTMLAttributes<TSplitter>>
+	const sliderProps = React.useMemo<
+		Partial<React.InputHTMLAttributes<HTMLInputElement>>
 	>(() => {
 		return {
 			...moveableProps,
@@ -224,26 +220,30 @@ function useSplitter<TSplitter extends HTMLElement, TPanel extends Element>(
 				if (e.defaultPrevented) return;
 				switch (e.key) {
 					case "Enter":
-						onCollapse?.();
 						e.preventDefault();
+						onCollapse?.();
 						break;
 					case "Home":
-						setMode("smallest");
 						e.preventDefault();
+						setMode("smallest");
 						break;
 					case "End":
-						setMode("largest");
 						e.preventDefault();
+						setMode("largest");
 						break;
 					// case "F6": // TODO: cycle through window panes
 				}
 			},
-			"aria-valuenow": size === undefined ? undefined : Math.floor(size),
-			"aria-valuemin": minSize === undefined ? undefined : Math.floor(minSize),
-			"aria-valuemax": maxSize === undefined ? undefined : Math.floor(maxSize),
+			onChange: (e) => {
+				if (resizing) return;
+				const newValue = Number(e.target.value);
+				setPreferredSize(newValue);
+			},
+			value: size === undefined ? 0 : Math.floor(size),
+			min: minSize === undefined ? undefined : Math.floor(minSize),
+			max: maxSize === undefined ? undefined : Math.floor(maxSize),
 			"aria-labelledby": labelledby,
 			"aria-label": labelledby === undefined ? "Resize panel" : undefined,
-			"data-resizing": resizing ? "true" : undefined,
 		};
 	}, [moveableProps, size, minSize, maxSize, labelledby, onCollapse, resizing]);
 	const panelProps = React.useMemo<
@@ -272,7 +272,7 @@ function useSplitter<TSplitter extends HTMLElement, TPanel extends Element>(
 		return `${size}px`;
 	}, [maxSizeSpec, preferredSize, size, mode]);
 
-	return { splitterProps, panelProps, panelMinSize, panelMaxSize };
+	return { sliderProps, panelProps, panelMinSize, panelMaxSize, resizing };
 }
 
 interface UseMoveableArgs {
@@ -296,14 +296,13 @@ function useMoveable<T extends HTMLElement>(args?: UseMoveableArgs) {
 			onPointerDown: (e) => {
 				if (e.button !== 0) return; // left button only
 				if (e.ctrlKey) return; // ignore ctrl+click
-
 				const el = ref.current;
 				if (!el) return;
-
 				const rect = el.getBoundingClientRect();
 				const relativeX = e.clientX - rect.left;
 				relativePositionRef.current = relativeX;
 
+				e.preventDefault();
 				el.setPointerCapture(e.pointerId);
 			},
 			onPointerMove: (e) => {
@@ -311,9 +310,10 @@ function useMoveable<T extends HTMLElement>(args?: UseMoveableArgs) {
 				if (relativePosition === undefined) return;
 				const el = ref.current;
 				if (!el) return;
-
 				const rect = el.getBoundingClientRect();
 				const moveBy = e.clientX - relativePosition - rect.left;
+
+				e.preventDefault();
 				onMove?.(moveBy);
 			},
 			onPointerUp: handleMoveEnd,
@@ -322,12 +322,12 @@ function useMoveable<T extends HTMLElement>(args?: UseMoveableArgs) {
 				if (e.defaultPrevented) return;
 				switch (e.key) {
 					case "ArrowLeft":
-						onKeyMove?.(-1);
 						e.preventDefault();
+						onKeyMove?.(-1);
 						break;
 					case "ArrowRight":
-						onKeyMove?.(1);
 						e.preventDefault();
+						onKeyMove?.(1);
 						break;
 				}
 			},

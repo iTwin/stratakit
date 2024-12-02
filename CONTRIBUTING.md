@@ -6,7 +6,15 @@ Welcome to the contribution guide for the Kiwi Project! In here you will find al
 
 ## How to setup
 
-To clone and build Kiwi, you'll need [Git](https://git-scm.com), [Node 22+](https://nodejs.org/en/download/), and [Pnpm 9](https://pnpm.io/installation) installed on your computer.
+### Using GitHub Codespaces (cloud IDE)
+
+To get started without having to install anything locally, you can create a [Codespace](https://docs.github.com/en/codespaces/overview) for this repository by clicking this link:
+
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/iTwin/kiwi)
+
+### Local setup
+
+To clone and build Kiwi locally, you'll need [Git](https://git-scm.com), [Node 22+](https://nodejs.org/en/download/), and [Pnpm 9](https://pnpm.io/installation) installed on your computer.
 
 1. [Clone the repository](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository). You can do this from the command line or using the Github Desktop app.
 

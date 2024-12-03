@@ -101,20 +101,6 @@ const DropdownMenuItem = React.forwardRef<
 >((props, forwardedRef) => {
 	const { shortcut } = props;
 
-	const renderShortcuts = () => {
-		if (!shortcut || shortcut.length === 0) return null;
-
-		return (
-			<span className="🥝-dropdown-menu-item-shortcuts">
-				{shortcut.map((key, idx) => (
-					<Kbd variant="ghost" key={`shortcut-${idx}-${key}`}>
-						{key}
-					</Kbd>
-				))}
-			</span>
-		);
-	};
-
 	return (
 		<Ariakit.MenuItem
 			accessibleWhenDisabled
@@ -122,7 +108,15 @@ const DropdownMenuItem = React.forwardRef<
 			render={
 				<ListItem.Root render={props.render}>
 					<span>{props.children}</span>
-					{renderShortcuts()}
+					{shortcut && shortcut.length > 0 && (
+						<span className="🥝-dropdown-menu-item-shortcuts">
+							{shortcut.map((key, idx) => (
+								<Kbd variant="ghost" key={`shortcut-${idx}-${key}`}>
+									{key}
+								</Kbd>
+							))}
+						</span>
+					)}
 				</ListItem.Root>
 			}
 			ref={forwardedRef}

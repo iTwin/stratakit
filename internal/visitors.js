@@ -253,15 +253,13 @@ export function typographyTransform() {
 }
 
 /**
- * LightningCSS visitor that exposes a `--typography-root` CSS mixin (applied
- * with `@apply`) that adds typographic styles which are meant to be inherited
- * by other rulesets that use typography tokens: this includes typography
- * related properties and custom properties representing design tokens.
+ * LightningCSS visitor that exposes a `--typography-tokens` CSS mixin (applied
+ * with `@apply`) that adds typography-related tokens as custom properties.
  *
  * Input:
  * ```css
  * :root {
- * 	 \@apply --typography-root;
+ * 	 \@apply --typography-tokens;
  * }
  * ```
  *
@@ -276,7 +274,7 @@ export function typographyTransform() {
  *
  * @returns {import("lightningcss").Visitor}
  */
-export function typographyRootTransform() {
+export function typographyTokensTransform() {
 	return {
 		Rule: {
 			unknown({ name, prelude, loc }) {

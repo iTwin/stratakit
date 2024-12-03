@@ -11,7 +11,7 @@ import {
 	themeTransform,
 	staticVariablesTransform,
 	typographyTransform,
-	typographyRootTransform,
+	typographyTokensTransform,
 } from "internal/visitors.js";
 
 const isDev = process.env.NODE_ENV === "development";
@@ -92,7 +92,7 @@ function inlineCssPlugin() {
 					primitivesTransform(),
 					themeTransform(),
 					typographyTransform(),
-					typographyRootTransform(),
+					typographyTokensTransform(),
 					staticVariablesTransform(),
 				]);
 

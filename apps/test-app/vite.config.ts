@@ -10,7 +10,7 @@ import * as lightningcss from "lightningcss";
 import {
 	primitivesTransform,
 	themeTransform,
-	typographyRootTransform,
+	typographyTokensTransform,
 	staticVariablesTransform,
 	typographyTransform,
 } from "internal/visitors.js";
@@ -72,7 +72,7 @@ function bundleCssPlugin() {
 				primitivesTransform(),
 				themeTransform(),
 				typographyTransform(),
-				typographyRootTransform(),
+				typographyTokensTransform(),
 				staticVariablesTransform(),
 			]);
 

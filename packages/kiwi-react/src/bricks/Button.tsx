@@ -6,19 +6,26 @@ import * as React from "react";
 import cx from "classnames";
 import * as Ariakit from "@ariakit/react";
 
-interface ButtonProps extends Ariakit.ButtonProps {
-	/** @default "solid" */
-	variant?: "solid" | "outline" | "ghost";
-	/**
-	 * The tone of the button. Most buttons should be neutral.
-	 * Accent buttons can be used to draw attention to the primary action.
-	 *
-	 * **Note:** The `"accent"` tone is only supported for the `"solid"` variant.
-	 *
-	 * @default "neutral"
-	 */
-	tone?: "neutral" | "accent";
-}
+type ButtonProps = Ariakit.ButtonProps &
+	(
+		| {
+				/** @default "solid" */
+				variant?: "solid";
+				/**
+				 * The tone of the button. Most buttons should be neutral.
+				 * Accent buttons can be used to draw attention to the primary action.
+				 *
+				 * **Note:** The `"accent"` tone is only supported for the `"solid"` variant.
+				 *
+				 * @default "neutral"
+				 */
+				tone?: "neutral" | "accent";
+		  }
+		| {
+				variant: "outline" | "ghost";
+				tone?: never;
+		  }
+	);
 
 export const Button = React.forwardRef<
 	React.ElementRef<typeof Ariakit.Button>,

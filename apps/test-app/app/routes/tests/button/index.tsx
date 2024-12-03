@@ -37,7 +37,7 @@ function VisualTest() {
 	return (
 		<div style={{ display: "grid", gap: 4 }}>
 			{permutations.map(([variant, tone]) => {
-				const props = { variant, tone };
+				const props = { variant, tone } as React.ComponentProps<typeof Button>;
 
 				return (
 					<div key={variant} style={{ display: "flex", gap: 4 }}>

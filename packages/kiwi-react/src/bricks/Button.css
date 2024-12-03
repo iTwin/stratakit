@@ -14,8 +14,7 @@
 	--✨glow--bg-press: var(--kiwi-color-glow-hue) var(--kiwi-color-bg-glow-base-pressed-\%);
 
 	--✨bg--solid-neutral-default: var(--kiwi-color-bg-neutral-base);
-	--✨bg--solid-default: var(--kiwi-color-bg-neutral-base);
-	--✨bg--solid-hover: color-mix(in oklch, var(--✨bg--solid-default) 100%, var(--✨glow--bg-hover));
+	--✨bg--solid-accent-default: var(--kiwi-color-bg-accent-base);
 	--✨bg--solid-hover: color-mix(
 		in oklch,
 		var(--🥝button-bg--solid-default) 100%,
@@ -43,7 +42,19 @@
 		var(--kiwi-color-glow-hue) var(--kiwi-color-border-glow-base-pressed-\%)
 	);
 	--✨border--solid-neutral-disabled: transparent;
-	--✨border-color--solid-disabled: transparent;
+
+	--✨border--solid-accent-default: --primitive("color.white.16");
+	--✨border--solid-accent-hover: color-mix(
+		in oklch,
+		var(--✨border--solid-accent-default) 100%,
+		var(--kiwi-color-glow-hue) var(--kiwi-color-border-glow-strong-hover-\%)
+	);
+	--✨border--solid-accent-pressed: color-mix(
+		in oklch,
+		var(--✨border--solid-accent-default) 100%,
+		var(--kiwi-color-glow-hue) var(--kiwi-color-border-glow-strong-pressed-\%)
+	);
+	--✨border--solid-accent-disabled: transparent;
 
 	--✨bg--outline-default: transparent;
 	--✨bg--outline-hover: color-mix(
@@ -134,6 +145,23 @@
 					var(--🌀button-state--hover, var(--✨border--solid-neutral-hover))
 					var(--🌀button-state--pressed, var(--✨border--solid-neutral-pressed))
 					var(--🌀button-state--disabled, var(--✨border--solid-neutral-disabled));
+			}
+
+			&:where([data-kiwi-tone="accent"]) {
+				--🥝button-bg--solid-default: var(--✨bg--solid-accent-default);
+				--🥝button-border-color: var(
+						--🌀button-state--default,
+						var(--✨border--solid-accent-default)
+					)
+					var(--🌀button-state--hover, var(--✨border--solid-accent-hover))
+					var(--🌀button-state--pressed, var(--✨border--solid-accent-pressed))
+					var(--🌀button-state--disabled, var(--✨border--solid-accent-disabled));
+
+				--🥝button-color: var(--kiwi-color-text-neutral-emphasis);
+				--🥝icon-color: var(--🌀button-state--default, var(--kiwi-color-icon-neutral-emphasis))
+					var(--🌀button-state--hover, var(--kiwi-color-icon-strong-hover))
+					var(--🌀button-state--pressed, var(--kiwi-color-icon-neutral-hover))
+					var(--🌀button-state--disabled, var(--kiwi-color-icon-neutral-disabled));
 			}
 		}
 

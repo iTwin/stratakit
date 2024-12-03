@@ -219,13 +219,11 @@ export function typographyTransform() {
 					raw: `var(--kiwi-font-size-${step})`,
 				});
 
-				// line-height (leverage inheritance for default of 1.3333)
-				if (lineHeight !== 1.3333) {
-					declarations.push({
-						property: "line-height",
-						raw: `${lineHeight}`,
-					});
-				}
+				// TODO: leverage inheritance when this token matches the root line-height
+				declarations.push({
+					property: "line-height",
+					raw: `${lineHeight}`,
+				});
 
 				// letter-spacing
 				declarations.push({

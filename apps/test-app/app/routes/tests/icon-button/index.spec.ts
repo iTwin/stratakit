@@ -21,6 +21,16 @@ test("custom icon", async ({ page }) => {
 	await expect(icon).toBeVisible();
 });
 
+test("visually-hidden label", async ({ page }) => {
+	await page.goto("/tests/icon-button?labelVariant=visually-hidden");
+
+	const button = page.getByRole("button", { name: "Click me" });
+	const tooltip = page.getByRole("tooltip", { includeHidden: true });
+
+	await button.focus();
+	await expect(tooltip).toHaveCount(0);
+});
+
 test.describe("@visual", () => {
 	test("default", async ({ page }) => {
 		await page.goto("/tests/icon-button?visual=true");

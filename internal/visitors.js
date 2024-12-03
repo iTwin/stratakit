@@ -279,7 +279,7 @@ export function typographyTokensTransform() {
 				if (
 					name !== "apply" ||
 					prelude[0]?.type !== "dashed-ident" ||
-					prelude[0].value !== "--typography-root"
+					prelude[0].value !== "--typography-tokens"
 				) {
 					return;
 				}

@@ -20,6 +20,7 @@ export const Button = React.forwardRef<
 		<Ariakit.Button
 			accessibleWhenDisabled
 			data-kiwi-variant={variant}
+			data-kiwi-tone="neutral"
 			{...rest}
 			className={cx("🥝-button", props.className)}
 			ref={forwardedRef}

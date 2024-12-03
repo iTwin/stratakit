@@ -32,4 +32,4 @@ export const Switch = React.forwardRef<
 		/>
 	);
 });
-Switch.displayName = "Switch";
+DEV: Switch.displayName = "Switch";

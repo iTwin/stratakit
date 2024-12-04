@@ -29,17 +29,12 @@ export const meta: MetaFunction = () => {
 	return [{ title }, { name: "color-scheme", content: "dark" }];
 };
 
-const leftPanelLabelId = "left-panel";
-
 export default function Page() {
-	const { splitterProps, panelProps, panelMinSize, panelMaxSize } = useSplitter<
-		HTMLDivElement,
-		HTMLDivElement
-	>({
-		minSize: { px: 256, pct: 20 },
-		maxSize: { pct: 30 },
-		labelledby: leftPanelLabelId,
-	});
+	const { sliderProps, panelProps, panelMinSize, panelMaxSize, resizing } =
+		useSplitter<HTMLDivElement>({
+			minSize: { px: 256, pct: 20 },
+			maxSize: { pct: 30 },
+		});
 	return (
 		<>
 			<VisuallyHidden render={(props) => <h1 {...props} />}>
@@ -88,10 +83,17 @@ export default function Page() {
 					<Subheader />
 					<SandboxTree />
 					<Divider
+						presentational
 						className={styles.splitter}
-						render={<Ariakit.Focusable />}
-						{...splitterProps}
-					/>
+						data-resizing={resizing ? "true" : undefined}
+					>
+						<input
+							type="range"
+							aria-label="Resize layers panel"
+							className={styles.slider}
+							{...sliderProps}
+						/>
+					</Divider>
 				</div>
 				<div className={styles.canvasWrapper}>
 					<div className={styles.canvas} />
@@ -109,14 +111,11 @@ interface UseSplitterArgs {
 	onCollapse?: () => void;
 	minSize?: { px: number; pct: number }; // same as `min(px, pct)`
 	maxSize?: { pct: number };
-	labelledby?: string;
 }
 
 // https://www.w3.org/WAI/ARIA/apg/patterns/windowsplitter/
-function useSplitter<TSplitter extends HTMLElement, TPanel extends Element>(
-	args?: UseSplitterArgs,
-) {
-	const { minSize, maxSize, labelledby, onCollapse } = args ?? {};
+function useSplitter<TPanel extends Element>(args?: UseSplitterArgs) {
+	const { minSize: minSizeSpec, maxSize: maxSizeSpec, onCollapse } = args ?? {};
 	const id = React.useId();
 	const panelRef = React.useRef<TPanel>(null);
 	const [panelSize, setPanelSize] = React.useState<number | undefined>(
@@ -129,36 +128,30 @@ function useSplitter<TSplitter extends HTMLElement, TPanel extends Element>(
 		undefined,
 	);
 
+	const [resizing, setResizing] = React.useState(false);
 	const [preferredSize, setPreferredSize] = React.useState<number | undefined>(
 		undefined,
 	);
 
-	const minSizePx = React.useMemo(() => {
+	const minSize = React.useMemo(() => {
+		if (!minSizeSpec) return undefined;
+		if (!containerSize) return undefined;
+		return Math.min(minSizeSpec.px, (minSizeSpec.pct / 100) * containerSize);
+	}, [minSizeSpec, containerSize]);
+	const maxSize = React.useMemo(() => {
 		if (!minSize) return undefined;
+		if (!maxSizeSpec) return undefined;
 		if (!containerSize) return undefined;
-		return Math.min(minSize.px, (minSize.pct / 100) * containerSize);
-	}, [minSize, containerSize]);
-	const minValue = React.useMemo(() => {
-		if (minSizePx === undefined) return undefined;
-		if (!containerSize) return undefined;
-		return clamp((minSizePx / containerSize) * 100, 0, 100);
-	}, [minSizePx, containerSize]);
-	const maxValue = React.useMemo(() => {
-		if (!maxSize) return undefined;
-		if (!containerSize) return undefined;
-		return clamp(maxSize.pct, 0, 100);
-	}, [maxSize, containerSize]);
-	const value = React.useMemo(() => {
-		if (mode === "smallest") return minValue ?? 0;
-		if (mode === "largest") return maxValue ?? 0;
+		return Math.max(minSize, (maxSizeSpec.pct / 100) * containerSize);
+	}, [maxSizeSpec, containerSize, minSize]);
+	const size = React.useMemo(() => {
+		if (mode === "smallest") return minSize ?? 0;
+		if (mode === "largest") return maxSize ?? 0;
 		if (!panelSize) return undefined;
-		if (!containerSize) return undefined;
-		return clamp(
-			(panelSize / containerSize) * 100,
-			minValue ?? 0,
-			maxValue ?? 0,
-		);
-	}, [panelSize, containerSize, minValue, maxValue, mode]);
+		if (!minSize) return undefined;
+		if (!maxSize) return undefined;
+		return clamp(panelSize, minSize, maxSize);
+	}, [panelSize, minSize, maxSize, mode]);
 
 	React.useEffect(() => {
 		const panel = panelRef.current;
@@ -186,70 +179,67 @@ function useSplitter<TSplitter extends HTMLElement, TPanel extends Element>(
 		const panelRect = panel.getBoundingClientRect();
 		setPreferredSize(panelRect.width + moveBy);
 		setMode(undefined);
+		setResizing(true);
 	}, []);
-	const onKeyMove = React.useCallback(
-		(direction: 1 | -1) => {
-			const panel = panelRef.current;
-			if (!panel) return;
-			const container = panel.parentElement;
-			if (!container) return;
+	const onKeyMove = React.useCallback((direction: 1 | -1) => {
+		const panel = panelRef.current;
+		if (!panel) return;
+		const container = panel.parentElement;
+		if (!container) return;
 
-			const containerRect = container.getBoundingClientRect();
-			const moveBy = direction * (containerRect.width * 0.005);
-			onMove(moveBy);
-		},
-		[onMove],
-	);
+		const containerRect = container.getBoundingClientRect();
+		const moveBy = direction * (containerRect.width * 0.005);
+
+		const panelRect = panel.getBoundingClientRect();
+		setPreferredSize(panelRect.width + moveBy);
+		setMode(undefined);
+	}, []);
 	const onMoveEnd = React.useCallback(() => {
 		const panel = panelRef.current;
 		if (!panel) return;
 
 		setPreferredSize(undefined);
+		setResizing(false);
 	}, []);
-	const { moveableProps } = useMoveable<TSplitter>({
+	const { moveableProps } = useMoveable<HTMLInputElement>({
 		onMove,
 		onMoveEnd,
 		onKeyMove,
 	});
-	const splitterProps = React.useMemo<
-		Partial<React.HTMLAttributes<TSplitter>>
+	const sliderProps = React.useMemo<
+		Partial<React.InputHTMLAttributes<HTMLInputElement>>
 	>(() => {
 		return {
 			...moveableProps,
 			onKeyDown: (e) => {
 				moveableProps.onKeyDown?.(e);
+				if (e.defaultPrevented) return;
 				switch (e.key) {
 					case "Enter":
+						e.preventDefault();
 						onCollapse?.();
 						break;
 					case "Home":
+						e.preventDefault();
 						setMode("smallest");
 						break;
 					case "End":
+						e.preventDefault();
 						setMode("largest");
 						break;
 					// case "F6": // TODO: cycle through window panes
 				}
 			},
-			"aria-orientation": "vertical",
-			"aria-valuenow": value,
-			"aria-valuemin": minValue,
-			"aria-valuemax": maxValue,
-			"aria-controls": id,
-			"aria-labelledby": labelledby,
-			"aria-label": labelledby === undefined ? "Resize panel" : undefined,
-			"data-resizing": preferredSize === undefined ? undefined : "true",
+			onChange: (e) => {
+				if (resizing) return;
+				const newValue = Number(e.target.value);
+				setPreferredSize(newValue);
+			},
+			value: size === undefined ? 0 : Math.floor(size),
+			min: minSize === undefined ? undefined : Math.floor(minSize),
+			max: maxSize === undefined ? undefined : Math.floor(maxSize),
 		};
-	}, [
-		moveableProps,
-		value,
-		minValue,
-		maxValue,
-		id,
-		labelledby,
-		onCollapse,
-		preferredSize,
-	]);
+	}, [moveableProps, size, minSize, maxSize, onCollapse, resizing]);
 	const panelProps = React.useMemo<
 		Partial<React.HTMLAttributes<TPanel>>
 	>(() => {
@@ -262,16 +252,21 @@ function useSplitter<TSplitter extends HTMLElement, TPanel extends Element>(
 		};
 	}, [id, preferredSize]);
 
-	const panelMinSize = minSize === undefined ? undefined : `${minSizePx}px`;
+	const panelMinSize = minSize === undefined ? undefined : `${minSize}px`;
 	const panelMaxSize = React.useMemo(() => {
-		if (preferredSize !== undefined && maxSize !== undefined) {
-			return `min(${preferredSize}px, ${maxSize.pct}%)`;
+		if (
+			preferredSize !== undefined &&
+			maxSizeSpec !== undefined &&
+			mode === undefined
+		) {
+			return `min(${preferredSize}px, ${maxSizeSpec.pct}%)`;
 		}
 
-		return value === undefined ? undefined : `${value}%`;
-	}, [maxSize, preferredSize, value]);
+		if (size === undefined) return undefined;
+		return `${size}px`;
+	}, [maxSizeSpec, preferredSize, size, mode]);
 
-	return { splitterProps, panelProps, panelMinSize, panelMaxSize };
+	return { sliderProps, panelProps, panelMinSize, panelMaxSize, resizing };
 }
 
 interface UseMoveableArgs {
@@ -295,14 +290,13 @@ function useMoveable<T extends HTMLElement>(args?: UseMoveableArgs) {
 			onPointerDown: (e) => {
 				if (e.button !== 0) return; // left button only
 				if (e.ctrlKey) return; // ignore ctrl+click
-
 				const el = ref.current;
 				if (!el) return;
-
 				const rect = el.getBoundingClientRect();
 				const relativeX = e.clientX - rect.left;
 				relativePositionRef.current = relativeX;
 
+				e.preventDefault();
 				el.setPointerCapture(e.pointerId);
 			},
 			onPointerMove: (e) => {
@@ -310,28 +304,24 @@ function useMoveable<T extends HTMLElement>(args?: UseMoveableArgs) {
 				if (relativePosition === undefined) return;
 				const el = ref.current;
 				if (!el) return;
-
 				const rect = el.getBoundingClientRect();
 				const moveBy = e.clientX - relativePosition - rect.left;
+
+				e.preventDefault();
 				onMove?.(moveBy);
 			},
 			onPointerUp: handleMoveEnd,
 			onPointerCancel: handleMoveEnd,
 			onKeyDown: (e) => {
+				if (e.defaultPrevented) return;
 				switch (e.key) {
 					case "ArrowLeft":
+						e.preventDefault();
 						onKeyMove?.(-1);
 						break;
 					case "ArrowRight":
+						e.preventDefault();
 						onKeyMove?.(1);
-						break;
-				}
-			},
-			onKeyUp: (e) => {
-				switch (e.key) {
-					case "ArrowLeft":
-					case "ArrowRight":
-						onMoveEnd?.();
 						break;
 				}
 			},
@@ -351,7 +341,7 @@ function useMoveable<T extends HTMLElement>(args?: UseMoveableArgs) {
 				};
 			},
 		};
-	}, [onKeyMove, onMoveEnd, onMove, handleMoveEnd]);
+	}, [onKeyMove, onMove, handleMoveEnd]);
 	return { moveableProps };
 }
 
@@ -484,7 +474,6 @@ function Subheader() {
 	return (
 		<div className={styles.subheader}>
 			<Ariakit.Role.h3
-				id={leftPanelLabelId}
 				className={styles.subheaderTitle}
 				tabIndex={-1}
 				ref={subheaderRef}

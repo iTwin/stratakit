@@ -8,7 +8,7 @@
 	--✨border: var(--kiwi-color-border-surface-primary);
 
 	@layer base {
-		font-size: 0.75rem;
+		font-size: var(--kiwi-font-size-12);
 
 		background-color: var(--✨bg);
 		box-shadow: var(--kiwi-shadow-tooltip-base);

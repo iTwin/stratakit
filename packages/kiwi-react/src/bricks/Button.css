@@ -97,7 +97,7 @@
 		white-space: nowrap;
 		user-select: none;
 		cursor: pointer;
-		font-size: 0.75rem;
+		font-size: var(--kiwi-font-size-12);
 		font-weight: 500;
 		border: none;
 

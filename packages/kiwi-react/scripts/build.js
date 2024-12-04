@@ -10,6 +10,8 @@ import {
 	primitivesTransform,
 	themeTransform,
 	staticVariablesTransform,
+	typographyTransform,
+	typographyTokensTransform,
 } from "internal/visitors.js";
 
 const isDev = process.env.NODE_ENV === "development";
@@ -89,6 +91,8 @@ function inlineCssPlugin() {
 				const visitor = lightningcss.composeVisitors([
 					primitivesTransform(),
 					themeTransform(),
+					typographyTransform(),
+					typographyTokensTransform(),
 					staticVariablesTransform(),
 				]);
 

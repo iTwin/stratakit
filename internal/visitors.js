@@ -4,6 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 import primitives from "./primitives.json" with { type: "json" };
 import darkTheme from "./theme-dark.json" with { type: "json" };
+import typography from "./typography.json" with { type: "json" };
 
 /**
  * LightningCSS visitor that inlines the values of primitive color tokens.
@@ -151,6 +152,165 @@ export function themeTransform() {
 				if (fn.arguments.length === 1 && fn.arguments[0].type === "token") {
 					return { raw: fn.arguments[0].value.value };
 				}
+			},
+		},
+	};
+}
+
+/**
+ * LightningCSS visitor that exposes a `--typography` CSS mixin which can be
+ * applied (using `@apply`) to any selector to include CSS properties for a
+ * given typography token.
+ *
+ * Input:
+ * ```css
+ * .foo {
+ *   \@apply --typography("display-sm");
+ * }
+ * ```
+ *
+ * Output:
+ * ```css
+ * .foo {
+ * 	 font-size: var(--kiwi-font-size-32);
+ * 	 letter-spacing: 0;
+ * 	 line-height: 1.25;
+ * }
+ * ```
+ *
+ * @returns {import("lightningcss").Visitor}
+ */
+export function typographyTransform() {
+	return {
+		Rule: {
+			unknown({ name, prelude, loc }) {
+				if (
+					name !== "apply" ||
+					prelude[0]?.type !== "function" ||
+					prelude[0].value.name !== "--typography"
+				) {
+					return;
+				}
+
+				const tokenName = prelude[0].value.arguments?.[0]?.value?.value;
+				const token = typography.typography[tokenName];
+
+				if (!token) {
+					console.warn(`Missing typography token: ${tokenName}`);
+					return;
+				}
+
+				const declarations = [];
+				const { fontFamily, fontSize, lineHeight, letterSpacing } =
+					token.$value;
+
+				// font-family (leverage inheritance for {family.sans})
+				if (fontFamily === "{family.mono}") {
+					declarations.push({
+						property: "font-family",
+						raw: "var(--kiwi-font-family-mono)",
+					});
+				}
+
+				// font-size
+				const { step } = fontSize.match(/{size.(?<step>\d+)}/).groups;
+				declarations.push({
+					property: "font-size",
+					raw: `var(--kiwi-font-size-${step})`,
+				});
+
+				// TODO: leverage inheritance when this token matches the root line-height
+				declarations.push({
+					property: "line-height",
+					raw: `${lineHeight}`,
+				});
+
+				// letter-spacing
+				declarations.push({
+					property: "letter-spacing",
+					raw:
+						letterSpacing === 0
+							? "0"
+							: `${letterSpacing.value}${letterSpacing.unit}`,
+				});
+
+				return [
+					{
+						type: "style",
+						value: {
+							declarations: { declarations },
+							selectors: [[{ type: "nesting" }]],
+							rules: [],
+							loc,
+						},
+					},
+				];
+			},
+		},
+	};
+}
+
+/**
+ * LightningCSS visitor that exposes a `--typography-tokens` CSS mixin (applied
+ * with `@apply`) that adds typography-related tokens as custom properties.
+ *
+ * Input:
+ * ```css
+ * :root {
+ * 	 \@apply --typography-tokens;
+ * }
+ * ```
+ *
+ * Output:
+ * ```css
+ * :root {
+ * 	 …
+ * 	 --kiwi-font-size-32: 2rem;
+ * 	 …
+ * }
+ * ```
+ *
+ * @returns {import("lightningcss").Visitor}
+ */
+export function typographyTokensTransform() {
+	return {
+		Rule: {
+			unknown({ name, prelude, loc }) {
+				if (
+					name !== "apply" ||
+					prelude[0]?.type !== "dashed-ident" ||
+					prelude[0].value !== "--typography-tokens"
+				) {
+					return;
+				}
+
+				const declarations = [];
+
+				for (const [step, token] of Object.entries(typography.size)) {
+					declarations.push(
+						cssCustomProperty(
+							step,
+							{
+								type: "length",
+								// This shape of this object coincidentally matches what Lightning expects
+								value: token.$value,
+							},
+							{ prefix: "kiwi-font-size" },
+						),
+					);
+				}
+
+				return [
+					{
+						type: "style",
+						value: {
+							declarations: { declarations },
+							selectors: [[{ type: "nesting" }]],
+							rules: [],
+							loc,
+						},
+					},
+				];
 			},
 		},
 	};

@@ -29,14 +29,11 @@ export const meta: MetaFunction = () => {
 	return [{ title }, { name: "color-scheme", content: "dark" }];
 };
 
-const leftPanelLabelId = "left-panel";
-
 export default function Page() {
 	const { sliderProps, panelProps, panelMinSize, panelMaxSize, resizing } =
 		useSplitter<HTMLDivElement>({
 			minSize: { px: 256, pct: 20 },
 			maxSize: { pct: 30 },
-			labelledby: leftPanelLabelId,
 		});
 	return (
 		<>
@@ -90,7 +87,12 @@ export default function Page() {
 						className={styles.splitter}
 						data-resizing={resizing ? "true" : undefined}
 					>
-						<input type="range" className={styles.slider} {...sliderProps} />
+						<input
+							type="range"
+							aria-label="Resize layers panel"
+							className={styles.slider}
+							{...sliderProps}
+						/>
 					</Divider>
 				</div>
 				<div className={styles.canvasWrapper}>
@@ -109,17 +111,11 @@ interface UseSplitterArgs {
 	onCollapse?: () => void;
 	minSize?: { px: number; pct: number }; // same as `min(px, pct)`
 	maxSize?: { pct: number };
-	labelledby?: string;
 }
 
 // https://www.w3.org/WAI/ARIA/apg/patterns/windowsplitter/
 function useSplitter<TPanel extends Element>(args?: UseSplitterArgs) {
-	const {
-		minSize: minSizeSpec,
-		maxSize: maxSizeSpec,
-		labelledby,
-		onCollapse,
-	} = args ?? {};
+	const { minSize: minSizeSpec, maxSize: maxSizeSpec, onCollapse } = args ?? {};
 	const id = React.useId();
 	const panelRef = React.useRef<TPanel>(null);
 	const [panelSize, setPanelSize] = React.useState<number | undefined>(
@@ -242,10 +238,8 @@ function useSplitter<TPanel extends Element>(args?: UseSplitterArgs) {
 			value: size === undefined ? 0 : Math.floor(size),
 			min: minSize === undefined ? undefined : Math.floor(minSize),
 			max: maxSize === undefined ? undefined : Math.floor(maxSize),
-			"aria-labelledby": labelledby,
-			"aria-label": labelledby === undefined ? "Resize panel" : undefined,
 		};
-	}, [moveableProps, size, minSize, maxSize, labelledby, onCollapse, resizing]);
+	}, [moveableProps, size, minSize, maxSize, onCollapse, resizing]);
 	const panelProps = React.useMemo<
 		Partial<React.HTMLAttributes<TPanel>>
 	>(() => {
@@ -480,7 +474,6 @@ function Subheader() {
 	return (
 		<div className={styles.subheader}>
 			<Ariakit.Role.h3
-				id={leftPanelLabelId}
 				className={styles.subheaderTitle}
 				tabIndex={-1}
 				ref={subheaderRef}

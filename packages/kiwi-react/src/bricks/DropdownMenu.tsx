@@ -117,26 +117,30 @@ DEV: DropdownMenuButton.displayName = "DropdownMenu.Button";
 // ----------------------------------------------------------------------------
 
 interface DropdownMenuItemProps extends Ariakit.MenuItemProps {
-	shortcut?: string[];
+	shortcuts?: string[];
 }
 
 const DropdownMenuItem = React.forwardRef<
 	React.ElementRef<typeof Ariakit.MenuItem>,
 	DropdownMenuItemProps
 >((props, forwardedRef) => {
-	const { shortcut } = props;
+	const { shortcuts, className } = props;
+
+	const hasShortcuts = Array.isArray(shortcuts) && shortcuts.length > 0;
+
+	const listItemWithShortCut = `${className} ${hasShortcuts ? "🥝-dropdown-menu-item-with-shortcuts" : ""}`;
 
 	return (
 		<Ariakit.MenuItem
 			accessibleWhenDisabled
 			{...props}
 			render={
-				<ListItem.Root render={props.render}>
+				<ListItem.Root render={props.render} className={listItemWithShortCut}>
 					<span>{props.children}</span>
-					{shortcut && shortcut.length > 0 && (
+					{hasShortcuts && (
 						<span className="🥝-dropdown-menu-item-shortcuts">
-							{shortcut.map((key, idx) => (
-								<Kbd variant="ghost" key={`shortcut-${idx}-${key}`}>
+							{shortcuts.map((key, index) => (
+								<Kbd variant="ghost" key={`shortcut-${index}-${key}`}>
 									{key}
 								</Kbd>
 							))}

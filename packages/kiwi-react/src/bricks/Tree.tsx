@@ -49,23 +49,25 @@ const TreeItem = React.forwardRef<React.ElementRef<"div">, TreeItemProps>(
 					[level, expanded],
 				)}
 			>
-				<ListItem.Root
-					{...rest}
-					data-kiwi-expanded={expanded}
-					data-kiwi-selected={selected}
-					className={cx("🥝-tree-item", className)}
-					style={
-						{
-							...style,
-							"--🥝tree-item-level": level,
-						} as React.CSSProperties
-					}
-					role="listitem"
-					ref={forwardedRef}
-				>
-					{content}
-				</ListItem.Root>
-				{children}
+				<div role="listitem">
+					<ListItem.Root
+						{...rest}
+						data-kiwi-expanded={expanded}
+						data-kiwi-selected={selected}
+						className={cx("🥝-tree-item", className)}
+						style={
+							{
+								...style,
+								"--🥝tree-item-level": level,
+							} as React.CSSProperties
+						}
+						ref={forwardedRef}
+						role={undefined}
+					>
+						{content}
+					</ListItem.Root>
+					{children && <div role="list">{children}</div>}
+				</div>
 			</TreeItemContext.Provider>
 		);
 	},

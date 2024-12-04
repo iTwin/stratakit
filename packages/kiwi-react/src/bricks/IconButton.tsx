@@ -10,7 +10,7 @@ import { Icon } from "./Icon.js";
 import { Tooltip } from "./Tooltip.js";
 
 interface IconButtonBaseProps
-	extends Omit<React.ComponentProps<typeof Button>, "children"> {
+	extends Omit<React.ComponentProps<typeof Button>, "children" | "tone"> {
 	/**
 	 * Accessible name for the button.
 	 *

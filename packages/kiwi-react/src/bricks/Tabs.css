@@ -41,7 +41,7 @@
 	--✨color--disabled: var(--kiwi-color-text-neutral-disabled);
 
 	@layer base {
-		font-size: var(--kiwi-font-size-s);
+		font-size: var(--kiwi-font-size-12);
 		color: var(--🥝tab-color);
 		background-color: var(--🥝tab-bg);
 		border: none;

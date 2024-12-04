@@ -17,7 +17,7 @@
 }
 
 .disclosureButton {
-	font-size: var(--kiwi-font-size-l);
+	font-size: var(--kiwi-font-size-16);
 }
 
 .disclosureButton[aria-expanded="false"] .disclosureIcon {
@@ -26,7 +26,7 @@
 
 .table {
 	border-collapse: collapse;
-	font-size: var(--kiwi-font-size-s);
+	font-size: var(--kiwi-font-size-12);
 
 	thead {
 		text-align: start;

@@ -1,0 +1,1 @@
+import{r as o,l as a}from"./chunk-7R3XDUXW-DxTo8O6G.js";import{c}from"./index-6yh6O1FZ.js";import{u as t}from"./Field-xeE_zSqj.js";import{C as m}from"./ASMQKSDT-CgO7inWS.js";const l=o.forwardRef((e,s)=>{const r=t();return a.jsx(m,{accessibleWhenDisabled:!0,id:r,...e,className:c("🥝-checkbox",e.className),ref:s})});export{l as C};

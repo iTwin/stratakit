@@ -117,6 +117,7 @@ const TreeItemExpander = React.forwardRef<
 			{...props}
 			className={cx("🥝-tree-item-expander", props.className)}
 			variant="ghost"
+			labelVariant="visually-hidden"
 			ref={forwardedRef}
 		/>
 	);

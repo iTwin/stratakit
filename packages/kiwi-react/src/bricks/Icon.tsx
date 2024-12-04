@@ -47,7 +47,7 @@ export const Icon = React.forwardRef<React.ElementRef<"svg">, IconProps>(
 		);
 	},
 );
-Icon.displayName = "Icon";
+DEV: Icon.displayName = "Icon";
 
 function toIconId(size: IconProps["size"]) {
 	if (size === "large") return "icon-large";
@@ -99,4 +99,4 @@ export const DisclosureArrow = React.forwardRef<
 		/>
 	);
 });
-DisclosureArrow.displayName = "DisclosureArrow";
+DEV: DisclosureArrow.displayName = "DisclosureArrow";

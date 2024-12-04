@@ -10,12 +10,12 @@ import { Icon } from "./Icon.js";
 import { Tooltip } from "./Tooltip.js";
 
 interface IconButtonBaseProps
-	extends Omit<React.ComponentProps<typeof Button>, "children"> {
+	extends Omit<React.ComponentProps<typeof Button>, "children" | "tone"> {
 	/**
 	 * Accessible name for the button.
 	 *
 	 * This label gets used by assistive technology to identify the button,
-	 * and also gets shown in a tooltip when hovering/focusing the button.
+	 * and also gets shown in a tooltip by default.
 	 */
 	label: string;
 	/**
@@ -25,6 +25,15 @@ interface IconButtonBaseProps
 	 * or a custom JSX icon.
 	 */
 	icon: string | React.JSX.Element;
+	/**
+	 * Behavior of the label.
+	 *
+	 * By default, the label is shown in a tooltip. Use `"visually-hidden"` to
+	 * hide the label from sighted users.
+	 *
+	 * @default "tooltip"
+	 */
+	labelVariant?: "tooltip" | "visually-hidden";
 }
 
 type IconButtonExtraProps =
@@ -87,20 +96,28 @@ export const IconButton = React.forwardRef<
 	React.ElementRef<typeof Button>,
 	IconButtonProps
 >((props, forwardedRef) => {
-	const { label, icon, isActive, ...rest } = props;
+	const { label, icon, isActive, labelVariant, ...rest } = props;
+
+	const button = (
+		<Button
+			aria-pressed={isActive}
+			{...rest}
+			className={cx("🥝-icon-button", props.className)}
+			ref={forwardedRef}
+		>
+			<VisuallyHidden>{label}</VisuallyHidden>
+			{typeof icon === "string" ? <Icon href={icon} /> : icon}
+		</Button>
+	);
+
+	if (labelVariant === "visually-hidden") {
+		return button;
+	}
 
 	return (
 		<Tooltip content={label} type="none">
-			<Button
-				aria-pressed={isActive}
-				{...rest}
-				className={cx("🥝-icon-button", props.className)}
-				ref={forwardedRef}
-			>
-				<VisuallyHidden>{label}</VisuallyHidden>
-				{typeof icon === "string" ? <Icon href={icon} /> : icon}
-			</Button>
+			{button}
 		</Tooltip>
 	);
 });
-IconButton.displayName = "IconButton";
+DEV: IconButton.displayName = "IconButton";

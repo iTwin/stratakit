@@ -8,6 +8,8 @@
 	"exports": {
 		"./bricks": {
 			"@kiwi/source": "./src/bricks/index.ts",
+			"types": "./dist/bricks/index.d.ts",
+			"development": "./dist/DEV/bricks/index.js",
 			"default": "./dist/bricks/index.js"
 		},
 		"./package.json": "./package.json"
@@ -33,7 +35,9 @@
 		"ui"
 	],
 	"scripts": {
-		"build": "rm -rf dist && node scripts/build.js && tsc --outDir dist",
+		"build": "rm -rf dist && node scripts/build.js && pnpm run build:dev && pnpm run build:types",
+		"build:dev": "NODE_ENV=development node scripts/build.js",
+		"build:types": "tsc --outDir dist",
 		"dev": "tsc --watch --outDir dist"
 	},
 	"dependencies": {

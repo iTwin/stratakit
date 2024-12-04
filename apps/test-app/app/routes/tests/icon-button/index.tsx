@@ -9,8 +9,14 @@ import placeholderIcon from "@itwin/kiwi-icons/placeholder.svg";
 export const handle = { title: "IconButton" };
 
 export default definePage(
-	function Page() {
-		return <IconButton label="Click me" icon={placeholderIcon} />;
+	function Page({ labelVariant = "tooltip" }) {
+		return (
+			<IconButton
+				label="Click me"
+				icon={placeholderIcon}
+				labelVariant={labelVariant as "tooltip" | "visually-hidden"}
+			/>
+		);
 	},
 	{
 		visual: VisualTest,

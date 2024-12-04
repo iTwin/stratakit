@@ -26,4 +26,4 @@ export const Checkbox = React.forwardRef<
 		/>
 	);
 });
-Checkbox.displayName = "Checkbox";
+DEV: Checkbox.displayName = "Checkbox";

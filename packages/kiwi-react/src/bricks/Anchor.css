@@ -5,7 +5,7 @@
 .🥝-anchor {
 	@layer base {
 		cursor: pointer;
-		font-size: 0.75rem;
+		font-size: var(--kiwi-font-size-12);
 		font-weight: 500;
 		text-underline-offset: 0.25ex;
 		text-decoration-color: inherit;

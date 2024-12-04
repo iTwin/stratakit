@@ -20,7 +20,7 @@
 	@layer base {
 		cursor: pointer;
 		line-height: 1;
-		font-size: 0.75rem;
+		font-size: var(--kiwi-font-size-12);
 
 		display: flex;
 		align-items: center;

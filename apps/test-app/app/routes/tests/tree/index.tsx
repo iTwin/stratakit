@@ -2,9 +2,9 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-import { useSearchParams } from "react-router";
-import { Icon, IconButton, Tree } from "@itwin/kiwi-react/bricks";
+import { definePage } from "~/~utils.tsx";
 import React from "react";
+import { Icon, IconButton, Tree } from "@itwin/kiwi-react/bricks";
 
 export const handle = { title: "Tree" };
 
@@ -21,18 +21,23 @@ const showIcon = new URL(
 	import.meta.url,
 ).href;
 
-export default function Page() {
-	const [searchParams] = useSearchParams();
-	const overflow = searchParams.has("overflow");
+export default definePage(function Page({
+	overflow = false,
+	selected = false,
+}) {
 	const overflowPostfix = overflow
 		? " with a super long label that is overflown"
 		: "";
 	return (
 		<Tree.Root style={{ maxInlineSize: overflow ? 300 : undefined }}>
-			<TreeItem label={`Item 1${overflowPostfix}`}>
+			<TreeItem label={`Item 1${overflowPostfix}`} selected={!!selected}>
 				<TreeItem label="Item 1.1" />
 				<TreeItem label="Item 1.2" actions />
-				<TreeItem label={`Item 1.3${overflowPostfix}`} actions />
+				<TreeItem
+					label={`Item 1.3${overflowPostfix}`}
+					actions
+					selected={!!selected}
+				/>
 			</TreeItem>
 			<TreeItem label="Item 2">
 				<TreeItem label={`Item 2.1${overflowPostfix}`} />
@@ -40,18 +45,18 @@ export default function Page() {
 			<TreeItem label="Item 3" actions />
 		</Tree.Root>
 	);
-}
+});
 
 function TreeItem({
 	children,
 	label,
 	actions,
+	selected,
 }: React.PropsWithChildren<{
 	label?: React.ReactNode;
 	actions?: boolean;
+	selected?: boolean;
 }>) {
-	const [searchParams] = useSearchParams();
-	const selected = searchParams.has("selected");
 	const isParentNode = React.Children.count(children) > 0;
 	return (
 		<Tree.Item

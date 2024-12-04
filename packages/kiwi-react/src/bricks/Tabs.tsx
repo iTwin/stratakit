@@ -58,6 +58,7 @@ function Tabs(props: TabsProps) {
 		</Ariakit.TabProvider>
 	);
 }
+DEV: Tabs.displayName = "Tabs.Root";
 
 // ----------------------------------------------------------------------------
 
@@ -88,6 +89,7 @@ const TabList = React.forwardRef<
 		/>
 	);
 });
+DEV: TabList.displayName = "Tabs.TabList";
 
 // ----------------------------------------------------------------------------
 
@@ -107,6 +109,7 @@ const Tab = React.forwardRef<React.ElementRef<typeof Ariakit.Tab>, TabProps>(
 		);
 	},
 );
+DEV: Tab.displayName = "Tabs.Tab";
 
 // ----------------------------------------------------------------------------
 
@@ -126,6 +129,7 @@ const TabPanel = React.forwardRef<
 		/>
 	);
 });
+DEV: TabPanel.displayName = "Tabs.TabPanel";
 
 // ----------------------------------------------------------------------------
 

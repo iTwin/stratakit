@@ -2,8 +2,8 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
+import { definePage, type VariantProps } from "~/~utils.tsx";
 import { TextBox, Label, Field } from "@itwin/kiwi-react/bricks";
-import { useSearchParams } from "react-router";
 import { useId } from "react";
 import placeholderIcon from "@itwin/kiwi-icons/placeholder.svg";
 
@@ -17,44 +17,33 @@ function TextAffix({ children }: React.PropsWithChildren) {
 	);
 }
 
-function useInputParams() {
-	const [searchParams] = useSearchParams();
-	const disabled = searchParams.has("disabled");
-	const defaultValue = searchParams.get("defaultValue") ?? undefined;
-	return { disabled, defaultValue };
-}
+export default definePage(
+	function Page({ disabled, defaultValue }) {
+		return (
+			<Field>
+				<Label>Fruit</Label>
+				<TextBox.Input disabled={!!disabled} defaultValue={defaultValue} />
+			</Field>
+		);
+	},
+	{
+		composition: CompositionTest,
+		visual: VisualTest,
+	},
+);
 
-export default function Page() {
-	const [searchParams] = useSearchParams();
-	const visual = searchParams.has("visual");
-	const composition = searchParams.has("composition");
-	const inputParams = useInputParams();
-
-	if (visual) {
-		return <VisualTest />;
-	}
-
-	if (composition) {
-		return <CompositionTest />;
-	}
-
-	return (
-		<Field>
-			<Label>Fruit</Label>
-			<TextBox.Input {...inputParams} />
-		</Field>
-	);
-}
-
-function CompositionTest() {
-	const inputParams = useInputParams();
+function CompositionTest({ disabled, defaultValue }: VariantProps) {
 	const id = useId();
 
 	return (
 		<div style={{ display: "flex", gap: 4, alignItems: "center" }}>
 			<Label htmlFor={id}>Fruit</Label>
 			<TextBox.Root>
-				<TextBox.Input id={id} {...inputParams} />
+				<TextBox.Input
+					id={id}
+					disabled={!!disabled}
+					defaultValue={defaultValue}
+				/>
 				<TextBox.Icon href={placeholderIcon} />
 			</TextBox.Root>
 		</div>

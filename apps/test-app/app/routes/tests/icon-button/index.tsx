@@ -2,28 +2,29 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
+import { definePage } from "~/~utils.tsx";
 import { IconButton, Icon } from "@itwin/kiwi-react/bricks";
-import { useSearchParams } from "react-router";
 import placeholderIcon from "@itwin/kiwi-icons/placeholder.svg";
 
 export const handle = { title: "IconButton" };
 
-export default function Page() {
-	const [searchParams] = useSearchParams();
+export default definePage(
+	function Page({ labelVariant = "tooltip" }) {
+		return (
+			<IconButton
+				label="Click me"
+				icon={placeholderIcon}
+				labelVariant={labelVariant as "tooltip" | "visually-hidden"}
+			/>
+		);
+	},
+	{
+		visual: VisualTest,
+		customIcon: CustomIconTest,
+	},
+);
 
-	const visual = searchParams.get("visual") === "true";
-	const customIcon = searchParams.get("customIcon") === "true";
-
-	if (visual) return <VisualTest />;
-	if (customIcon) return <CustomIconTest />;
-
-	return <IconButton label="Click me" icon={placeholderIcon} />;
-}
-
-function VisualTest() {
-	const [searchParams] = useSearchParams();
-	const showTooltip = searchParams.has("tooltip");
-
+function VisualTest({ tooltip: showTooltip = false }) {
 	if (showTooltip) {
 		return (
 			<div style={{ minHeight: 50 }}>

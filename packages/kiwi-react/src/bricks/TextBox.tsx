@@ -64,6 +64,7 @@ const TextBoxInput = React.forwardRef<
 		/>
 	);
 });
+DEV: TextBoxInput.displayName = "TextBox.Input";
 
 // ----------------------------------------------------------------------------
 
@@ -109,6 +110,7 @@ const TextBoxRoot = React.forwardRef<React.ElementRef<"div">, TextBoxRootProps>(
 		);
 	},
 );
+DEV: TextBoxRoot.displayName = "TextBox.Root";
 
 // ----------------------------------------------------------------------------
 
@@ -126,6 +128,7 @@ const TextBoxIcon = React.forwardRef<
 		/>
 	);
 });
+DEV: TextBoxIcon.displayName = "TextBox.Icon";
 
 // ----------------------------------------------------------------------------
 
@@ -143,6 +146,7 @@ const TextBoxText = React.forwardRef<
 		/>
 	);
 });
+DEV: TextBoxText.displayName = "TextBox.Text";
 
 // ----------------------------------------------------------------------------
 

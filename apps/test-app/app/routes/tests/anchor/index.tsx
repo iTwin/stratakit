@@ -2,31 +2,27 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
+import { definePage } from "~/~utils.tsx";
 import { Anchor } from "@itwin/kiwi-react/bricks";
-import { useSearchParams } from "react-router";
 
 export const handle = { title: "Anchor" };
 
-export default function Page() {
-	const visual = useSearchParams()[0].get("visual") === "true";
-	const disabled = useSearchParams()[0].get("disabled") === "true";
+export default definePage(
+	function Page({ disabled }) {
+		return (
+			<>
+				<Anchor href="#main" disabled={!!disabled}>
+					Hello
+				</Anchor>
 
-	if (visual) {
-		return <VisualTest />;
-	}
-
-	return (
-		<>
-			<Anchor href="#main" disabled={disabled}>
-				Hello
-			</Anchor>
-
-			<article id="main" tabIndex={-1}>
-				Main content
-			</article>
-		</>
-	);
-}
+				<article id="main" tabIndex={-1}>
+					Main content
+				</article>
+			</>
+		);
+	},
+	{ visual: VisualTest },
+);
 
 function VisualTest() {
 	const tones = ["neutral", "accent", "critical"] as const;

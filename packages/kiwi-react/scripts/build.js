@@ -10,7 +10,11 @@ import {
 	primitivesTransform,
 	themeTransform,
 	staticVariablesTransform,
+	typographyTransform,
+	typographyTokensTransform,
 } from "internal/visitors.js";
+
+const isDev = process.env.NODE_ENV === "development";
 
 const entryPoints = await fg("src/**/*.{ts,tsx}", {
 	onlyFiles: true,
@@ -21,11 +25,12 @@ await esbuild.build({
 	entryPoints,
 	entryNames: "[dir]/[name]",
 	outbase: "src",
-	outdir: "dist",
+	outdir: isDev ? "dist/DEV" : "dist",
 	bundle: false,
 	format: "esm",
 	jsx: "automatic",
 	target: "es2021",
+	...(!isDev && { dropLabels: ["DEV"] }),
 });
 
 // Run esbuild again, only to inline bundled CSS inside `.css.ts` files
@@ -33,7 +38,7 @@ await esbuild.build({
 	entryPoints: await fg("src/**/*.css.ts", { onlyFiles: true }),
 	entryNames: "[dir]/[name]",
 	outbase: "src",
-	outdir: "dist",
+	outdir: isDev ? "dist/DEV" : "dist",
 	bundle: true,
 	format: "esm",
 	jsx: "automatic",
@@ -86,6 +91,8 @@ function inlineCssPlugin() {
 				const visitor = lightningcss.composeVisitors([
 					primitivesTransform(),
 					themeTransform(),
+					typographyTransform(),
+					typographyTokensTransform(),
 					staticVariablesTransform(),
 				]);
 

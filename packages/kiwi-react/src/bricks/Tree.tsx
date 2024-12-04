@@ -22,6 +22,7 @@ const Tree = React.forwardRef<React.ElementRef<"div">, TreeProps>(
 		);
 	},
 );
+DEV: Tree.displayName = "Tree.Root";
 
 // ----------------------------------------------------------------------------
 
@@ -90,6 +91,7 @@ const TreeItemContent = React.forwardRef<
 		/>
 	);
 });
+DEV: TreeItem.displayName = "Tree.Item";
 
 // ----------------------------------------------------------------------------
 

@@ -2,7 +2,7 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-import { test, expect } from "@playwright/test";
+import { test, expect } from "#playwright";
 import AxeBuilder from "@axe-core/playwright";
 
 test.describe("default", () => {
@@ -10,7 +10,7 @@ test.describe("default", () => {
 		await page.goto("/tests/tooltip");
 
 		const button = page.getByRole("button");
-		const tooltip = page.getByRole("tooltip");
+		const tooltip = page.getByRole("tooltip", { includeHidden: true });
 
 		await expect(button).toBeVisible();
 		await expect(tooltip).toBeHidden();
@@ -26,7 +26,7 @@ test.describe("default", () => {
 		);
 
 		const button = page.getByRole("button");
-		const tooltip = page.getByRole("tooltip");
+		const tooltip = page.getByRole("tooltip", { includeHidden: true });
 
 		await button.hover();
 		await expect(tooltip).toBeVisible();
@@ -34,7 +34,7 @@ test.describe("default", () => {
 
 	test("Keyboard focus should display the tooltip", async ({ page }) => {
 		const button = page.getByRole("button");
-		const tooltip = page.getByRole("tooltip");
+		const tooltip = page.getByRole("tooltip", { includeHidden: true });
 
 		await page.keyboard.press("Tab");
 		await expect(button).toBeFocused();
@@ -52,7 +52,7 @@ test.describe("hover", () => {
 		await page.goto("/tests/tooltip");
 
 		const button = page.getByRole("button");
-		const tooltip = page.getByRole("tooltip");
+		const tooltip = page.getByRole("tooltip", { includeHidden: true });
 
 		await button.hover();
 		await expect(tooltip).toBeVisible();
@@ -61,7 +61,7 @@ test.describe("hover", () => {
 	test("Mouse Out / Unhover should hide the tooltip", async ({ page }) => {
 		await page.mouse.move(0, 0);
 
-		const tooltip = page.getByRole("tooltip");
+		const tooltip = page.getByRole("tooltip", { includeHidden: true });
 
 		await expect(tooltip).toBeHidden();
 	});
@@ -69,7 +69,7 @@ test.describe("hover", () => {
 	test("Tooltip should stay displayed during hover (should not hide)", async ({
 		page,
 	}) => {
-		const tooltip = page.getByRole("tooltip");
+		const tooltip = page.getByRole("tooltip", { includeHidden: true });
 
 		await page.waitForTimeout(2000);
 		await expect(tooltip).toBeVisible();
@@ -85,7 +85,7 @@ test.describe("dismissal", () => {
 		await page.goto("/tests/tooltip");
 
 		const button = page.getByRole("button");
-		const tooltip = page.getByRole("tooltip");
+		const tooltip = page.getByRole("tooltip", { includeHidden: true });
 
 		await expect(button).toBeVisible();
 		await button.focus();
@@ -93,21 +93,21 @@ test.describe("dismissal", () => {
 	});
 
 	test("Pressing Escape should hide the tooltip", async ({ page }) => {
-		const tooltip = page.getByRole("tooltip");
+		const tooltip = page.getByRole("tooltip", { includeHidden: true });
 
 		await page.keyboard.press("Escape");
 		await expect(tooltip).toBeHidden();
 	});
 
 	test("Keyboard loss of focus should hide the tooltip", async ({ page }) => {
-		const tooltip = page.getByRole("tooltip");
+		const tooltip = page.getByRole("tooltip", { includeHidden: true });
 
 		await page.keyboard.press("Tab");
 		await expect(tooltip).toBeHidden();
 	});
 
 	test("Outside click should hide the tooltip", async ({ page }) => {
-		const tooltip = page.getByRole("tooltip");
+		const tooltip = page.getByRole("tooltip", { includeHidden: true });
 
 		await page.locator("body").click();
 		await expect(tooltip).toBeHidden();
@@ -161,7 +161,7 @@ test.describe("@a11y", () => {
 		await page.goto("/tests/tooltip");
 
 		const button = page.getByRole("button");
-		const tooltip = page.getByRole("tooltip");
+		const tooltip = page.getByRole("tooltip", { includeHidden: true });
 
 		await expect(button).toBeVisible();
 		await expect(tooltip).toBeHidden();
@@ -180,7 +180,7 @@ test.describe("@visual", () => {
 		await page.goto("/tests/tooltip");
 
 		const button = page.getByRole("button");
-		const tooltip = page.getByRole("tooltip");
+		const tooltip = page.getByRole("tooltip", { includeHidden: true });
 
 		await expect(button).toBeVisible();
 		await button.focus();
@@ -194,7 +194,7 @@ test.describe("@visual", () => {
 		await page.goto("/tests/tooltip?multi-line=true");
 
 		const button = page.getByRole("button");
-		const tooltip = page.getByRole("tooltip");
+		const tooltip = page.getByRole("tooltip", { includeHidden: true });
 
 		await expect(button).toBeVisible();
 		await button.focus();

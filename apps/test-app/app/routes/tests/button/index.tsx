@@ -2,66 +2,71 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
+import { definePage } from "~/~utils.tsx";
 import { Button, Icon } from "@itwin/kiwi-react/bricks";
-import { useSearchParams } from "react-router";
 import placeholderIconHref from "@itwin/kiwi-icons/placeholder.svg";
 
 export const handle = { title: "Button" };
 
-export default function Page() {
-	const visual = useSearchParams()[0].get("visual") === "true";
-	const disabled = useSearchParams()[0].get("disabled") === "true";
-
-	if (visual) {
-		return <VisualTest />;
-	}
-
-	return (
-		<>
-			<Button
-				disabled={disabled}
-				onClick={(e) => {
-					e.currentTarget.textContent = "Clicked";
-				}}
-			>
-				Hello
-			</Button>
-		</>
-	);
-}
+export default definePage(
+	function Page({ disabled }) {
+		return (
+			<>
+				<Button
+					disabled={!!disabled}
+					onClick={(e) => {
+						e.currentTarget.textContent = "Clicked";
+					}}
+				>
+					Hello
+				</Button>
+			</>
+		);
+	},
+	{ visual: VisualTest },
+);
 
 function VisualTest() {
-	const variants = ["solid", "outline", "ghost"] as const;
+	const permutations = [
+		["solid", "neutral"],
+		["solid", "accent"],
+		["outline"],
+		["ghost"],
+	] as const;
 
 	return (
 		<div style={{ display: "grid", gap: 4 }}>
-			{variants.map((variant) => (
-				<div key={variant} style={{ display: "flex", gap: 4 }}>
-					<Button variant={variant}>Click me</Button>
+			{permutations.map(([variant, tone]) => {
+				const props = { variant, tone } as React.ComponentProps<typeof Button>;
 
-					<Button variant={variant}>
-						<Icon href={placeholderIconHref} />
-						Click me
-					</Button>
+				return (
+					<div key={variant} style={{ display: "flex", gap: 4 }}>
+						<Button {...props}>Click me</Button>
 
-					<Button variant={variant}>
-						Click me
-						<Icon href={placeholderIconHref} />
-					</Button>
+						<Button {...props}>
+							<Icon href={placeholderIconHref} />
+							Click me
+						</Button>
 
-					<Button variant={variant}>
-						<Icon href={placeholderIconHref} />
-						Click me
-						<Icon href={placeholderIconHref} />
-					</Button>
+						<Button {...props}>
+							Click me
+							<Icon href={placeholderIconHref} />
+						</Button>
 
-					<Button variant={variant} disabled>
-						<Icon href={placeholderIconHref} />
-						Click me
-						<Icon href={placeholderIconHref} />
-					</Button>
-				</div>
-			))}
+						<Button {...props}>
+							<Icon href={placeholderIconHref} />
+							Click me
+							<Icon href={placeholderIconHref} />
+						</Button>
+
+						<Button {...props} disabled>
+							<Icon href={placeholderIconHref} />
+							Click me
+							<Icon href={placeholderIconHref} />
+						</Button>
+					</div>
+				);
+			})}
 		</div>
 	);
 }

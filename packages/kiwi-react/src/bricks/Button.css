@@ -3,37 +3,93 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 .🥝-button {
-	--✨color: var(--kiwi-color-text-neutral-primary);
+	--✨color--default: var(--kiwi-color-text-neutral-primary);
 	--✨gap: 4px;
 	--✨height: 1.5rem;
 	--✨padding-inline: 12px;
 
-	--✨glow--hover: var(--kiwi-color-glow-hue) var(--kiwi-color-bg-glow-base-hover-\%);
-	--✨glow--press: var(--kiwi-color-glow-hue) var(--kiwi-color-bg-glow-base-pressed-\%);
+	--✨shadow-border: 0px 0px 0px 1px var(--🥝button-border-color) inset;
 
-	--✨bg--solid-default: var(--kiwi-color-bg-neutral-base);
-	--✨bg--solid-hover: color-mix(in oklch, var(--✨bg--solid-default) 100%, var(--✨glow--hover));
-	--✨bg--solid-pressed: color-mix(in oklch, var(--✨bg--solid-default) 100%, var(--✨glow--press));
-	--✨shadow--solid:
-		0px 3px 3px -1.5px #00000029, 0px 1px 1px -0.5px #00000029, 0px 0px 0px 1px #ffffff14 inset, 0px -1px 0px 0px #00000014 inset;
+	--✨glow--bg-hover: var(--kiwi-color-glow-hue) var(--kiwi-color-bg-glow-base-hover-\%);
+	--✨glow--bg-press: var(--kiwi-color-glow-hue) var(--kiwi-color-bg-glow-base-pressed-\%);
+
+	--✨bg--solid-neutral-default: var(--kiwi-color-bg-neutral-base);
+	--✨bg--solid-accent-default: var(--kiwi-color-bg-accent-base);
+	--✨bg--solid-hover: color-mix(
+		in oklch,
+		var(--🥝button-bg--solid-default) 100%,
+		var(--✨glow--bg-hover)
+	);
+	--✨bg--solid-pressed: color-mix(
+		in oklch,
+		var(--🥝button-bg--solid-default) 100%,
+		var(--✨glow--bg-press)
+	);
+	--✨bg--solid-disabled: var(--kiwi-color-bg-glow-on-surface-disabled);
+
+	--✨shadow--solid: var(--kiwi-shadow-button-base-drop), var(--✨shadow-border),
+		var(--kiwi-shadow-button-base-inset);
+
+	--✨border--solid-neutral-default: --primitive("color.white.8");
+	--✨border--solid-neutral-hover: color-mix(
+		in oklch,
+		var(--✨border--solid-neutral-default) 100%,
+		var(--kiwi-color-glow-hue) var(--kiwi-color-border-glow-base-hover-\%)
+	);
+	--✨border--solid-neutral-pressed: color-mix(
+		in oklch,
+		var(--✨border--solid-neutral-default) 100%,
+		var(--kiwi-color-glow-hue) var(--kiwi-color-border-glow-base-pressed-\%)
+	);
+	--✨border--solid-neutral-disabled: transparent;
+
+	--✨border--solid-accent-default: --primitive("color.white.16");
+	--✨border--solid-accent-hover: color-mix(
+		in oklch,
+		var(--✨border--solid-accent-default) 100%,
+		var(--kiwi-color-glow-hue) var(--kiwi-color-border-glow-strong-hover-\%)
+	);
+	--✨border--solid-accent-pressed: color-mix(
+		in oklch,
+		var(--✨border--solid-accent-default) 100%,
+		var(--kiwi-color-glow-hue) var(--kiwi-color-border-glow-strong-pressed-\%)
+	);
+	--✨border--solid-accent-disabled: transparent;
 
 	--✨bg--outline-default: transparent;
 	--✨bg--outline-hover: color-mix(
 		in oklch,
 		var(--✨bg--outline-default) 100%,
-		var(--✨glow--hover)
+		var(--✨glow--bg-hover)
 	);
 	--✨bg--outline-pressed: color-mix(
 		in oklch,
 		var(--✨bg--outline-default) 100%,
-		var(--✨glow--press)
+		var(--✨glow--bg-press)
 	);
-	--✨shadow--outline: 0px 0px 0px 1px var(--kiwi-color-border-neutral-base) inset;
+	--✨bg--outline-disabled: transparent;
+	--✨border--outline-default: var(--kiwi-color-border-neutral-base);
+	--✨border--outline-hover: color-mix(
+		in oklch,
+		var(--✨border--outline-default) 100%,
+		var(--kiwi-color-glow-hue) var(--kiwi-color-border-glow-base-hover-\%)
+	);
+	--✨border--outline-pressed: color-mix(
+		in oklch,
+		var(--✨border--outline-default) 100%,
+		var(--kiwi-color-glow-hue) var(--kiwi-color-border-glow-base-pressed-\%)
+	);
+	--✨border--outline-disabled: var(--kiwi-color-border-glow-on-surface-disabled);
 
 	--✨bg--ghost-default: transparent;
-	--✨bg--ghost-hover: color-mix(in oklch, var(--✨bg--ghost-default) 100%, var(--✨glow--hover));
-	--✨bg--ghost-pressed: color-mix(in oklch, var(--✨bg--ghost-default) 100%, var(--✨glow--press));
-	--✨bg--ghost-active: var(--kiwi-color-bg-glow-on-surface-accent-press);
+	--✨bg--ghost-hover: color-mix(in oklch, var(--✨bg--ghost-default) 100%, var(--✨glow--bg-hover));
+	--✨bg--ghost-pressed: color-mix(
+		in oklch,
+		var(--✨bg--ghost-default) 100%,
+		var(--✨glow--bg-press)
+	);
+	--✨bg--ghost-active: var(--kiwi-color-bg-glow-on-surface-accent-pressed);
+	--✨bg--ghost-disabled: transparent;
 
 	@layer base {
 		text-decoration: none;
@@ -41,7 +97,7 @@
 		white-space: nowrap;
 		user-select: none;
 		cursor: pointer;
-		font-size: 0.75rem;
+		font-size: var(--kiwi-font-size-12);
 		font-weight: 500;
 		border: none;
 
@@ -56,7 +112,7 @@
 		padding-inline: var(--🥝button-padding-inline, var(--✨padding-inline));
 
 		background-color: var(--🥝button-background-color);
-		color: var(--✨color);
+		color: var(--🥝button-color, var(--✨color--default));
 		transition: background-color 150ms ease-out;
 		-webkit-tap-highlight-color: var(--✨bg--solid-pressed);
 		--🥝icon-color: var(--🌀button-state--default, var(--kiwi-color-icon-neutral-base))
@@ -72,19 +128,53 @@
 
 	@layer modifiers {
 		&[data-kiwi-variant="solid"] {
-			--🥝button-background-color: var(--🌀button-state--default, var(--✨bg--solid-default))
+			--🥝button-background-color: var(--🌀button-state--default, var(--🥝button-bg--solid-default))
 				var(--🌀button-state--hover, var(--✨bg--solid-hover))
 				var(--🌀button-state--pressed, var(--✨bg--solid-pressed))
-				var(--🌀button-state--disabled, var(--✨bg--solid-default));
-			box-shadow: var(--✨shadow--solid);
+				var(--🌀button-state--disabled, var(--✨bg--solid-disabled));
+			box-shadow: var(--🌀button-state--default, var(--✨shadow--solid))
+				var(--🌀button-state--hover, var(--✨shadow--solid))
+				var(--🌀button-state--pressed, var(--✨shadow-border)) var(--🌀button-state--disabled, none);
+
+			&:where([data-kiwi-tone="neutral"]) {
+				--🥝button-bg--solid-default: var(--✨bg--solid-neutral-default);
+				--🥝button-border-color: var(
+						--🌀button-state--default,
+						var(--✨border--solid-neutral-default)
+					)
+					var(--🌀button-state--hover, var(--✨border--solid-neutral-hover))
+					var(--🌀button-state--pressed, var(--✨border--solid-neutral-pressed))
+					var(--🌀button-state--disabled, var(--✨border--solid-neutral-disabled));
+			}
+
+			&:where([data-kiwi-tone="accent"]) {
+				--🥝button-bg--solid-default: var(--✨bg--solid-accent-default);
+				--🥝button-border-color: var(
+						--🌀button-state--default,
+						var(--✨border--solid-accent-default)
+					)
+					var(--🌀button-state--hover, var(--✨border--solid-accent-hover))
+					var(--🌀button-state--pressed, var(--✨border--solid-accent-pressed))
+					var(--🌀button-state--disabled, var(--✨border--solid-accent-disabled));
+
+				--🥝button-color: var(--kiwi-color-text-neutral-emphasis);
+				--🥝icon-color: var(--🌀button-state--default, var(--kiwi-color-icon-neutral-emphasis))
+					var(--🌀button-state--hover, var(--kiwi-color-icon-strong-hover))
+					var(--🌀button-state--pressed, var(--kiwi-color-icon-neutral-hover))
+					var(--🌀button-state--disabled, var(--kiwi-color-icon-neutral-disabled));
+			}
 		}
 
 		&[data-kiwi-variant="outline"] {
 			--🥝button-background-color: var(--🌀button-state--default, var(--✨bg--outline-default))
 				var(--🌀button-state--hover, var(--✨bg--outline-hover))
 				var(--🌀button-state--pressed, var(--✨bg--outline-pressed))
-				var(--🌀button-state--disabled, var(--✨bg--outline-default));
-			box-shadow: var(--✨shadow--outline);
+				var(--🌀button-state--disabled, var(--✨bg--outline-disabled));
+			--🥝button-border-color: var(--🌀button-state--default, var(--✨border--outline-default))
+				var(--🌀button-state--hover, var(--✨border--outline-hover))
+				var(--🌀button-state--pressed, var(--✨border--outline-pressed))
+				var(--🌀button-state--disabled, var(--✨border--outline-disabled));
+			box-shadow: var(--✨shadow-border);
 		}
 
 		&[data-kiwi-variant="ghost"] {
@@ -92,7 +182,7 @@
 				var(--🌀button-state--hover, var(--✨bg--ghost-hover))
 				var(--🌀button-state--pressed, var(--✨bg--ghost-pressed))
 				var(--🌀button-state--active, var(--✨bg--ghost-active))
-				var(--🌀button-state--disabled, var(--✨bg--ghost-default));
+				var(--🌀button-state--disabled, var(--✨bg--ghost-disabled));
 		}
 	}
 

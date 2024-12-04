@@ -17,17 +17,17 @@
 	},
 	"devDependencies": {
 		"@biomejs/biome": "1.9.4",
-		"@types/node": "^22.9.1",
+		"@types/node": "^22.10.1",
 		"fast-glob": "^3.3.2",
 		"internal": "workspace:*",
-		"lefthook": "^1.8.4",
+		"lefthook": "^1.8.5",
 		"prettier": "3.3.3",
 		"tsx": "^4.19.2"
 	},
 	"engines": {
 		"node": ">=22.11.0"
 	},
-	"packageManager": "pnpm@9.13.2",
+	"packageManager": "pnpm@9.14.4",
 	"pnpm": {
 		"overrides": {
 			"cookie@<0.7.0": ">=0.7.0"

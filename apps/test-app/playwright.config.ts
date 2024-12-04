@@ -2,7 +2,12 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-import { defineConfig, devices, test as base } from "@playwright/test";
+import {
+	defineConfig,
+	devices,
+	test as base,
+	type Page,
+} from "@playwright/test";
 
 /** See https://playwright.dev/docs/test-configuration. */
 export default defineConfig({
@@ -58,7 +63,7 @@ export default defineConfig({
 	},
 });
 
-export const test = base.extend({
+export const test = base.extend<{ page: Page }>({
 	page: async ({ page }, use) => {
 		const _goto = page.goto;
 		page.goto = async (url, options) => {

@@ -124,11 +124,11 @@ const DropdownMenuItem = React.forwardRef<
 	React.ElementRef<typeof Ariakit.MenuItem>,
 	DropdownMenuItemProps
 >((props, forwardedRef) => {
-	const { shortcuts, className } = props;
+	const { shortcuts, className = "" } = props;
 
 	const hasShortcuts = Array.isArray(shortcuts) && shortcuts.length > 0;
 
-	const listItemWithShortCut = `${className} ${hasShortcuts ? "🥝-dropdown-menu-item-with-shortcuts" : ""}`;
+	const listItemWithShortCut = `${className} ${hasShortcuts ? "🥝-dropdown-menu-list-item-with-shortcuts" : ""}`;
 
 	return (
 		<Ariakit.MenuItem

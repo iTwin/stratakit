@@ -91,6 +91,23 @@ test("disabled", async ({ page }) => {
 	await expect(add).not.toBeVisible();
 });
 
+test("shortcuts", async ({ page }) => {
+	await page.goto("/tests/dropdown-menu");
+
+	const button = page.getByRole("button", { name: "Actions" });
+
+	await button.click();
+
+	const add = page.getByRole("menuitem", { name: "Add" });
+	const addingShortcut = add.locator("kbd");
+	await expect(addingShortcut).toHaveText("⌘A");
+
+	const edit = page.getByRole("menuitem", { name: "Edit" });
+	const editShortcut = edit.locator("kbd");
+	await expect(editShortcut.nth(0)).toHaveText("⇧");
+	await expect(editShortcut.nth(1)).toHaveText("E");
+});
+
 test("@visual", async ({ page }) => {
 	await page.goto("/tests/dropdown-menu?visual=true");
 	await expect(page.locator("body")).toHaveScreenshot();

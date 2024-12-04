@@ -73,6 +73,7 @@ const TreeItem = React.forwardRef<React.ElementRef<"div">, TreeItemProps>(
 		);
 	},
 );
+DEV: TreeItem.displayName = "Tree.Item";
 
 // ----------------------------------------------------------------------------
 
@@ -91,7 +92,7 @@ const TreeItemContent = React.forwardRef<
 		/>
 	);
 });
-DEV: TreeItem.displayName = "Tree.Item";
+DEV: TreeItemContent.displayName = "Tree.Content";
 
 // ----------------------------------------------------------------------------
 
@@ -122,6 +123,7 @@ const TreeItemExpander = React.forwardRef<
 		/>
 	);
 });
+DEV: TreeItemExpander.displayName = "Tree.Expander";
 
 // ----------------------------------------------------------------------------
 
@@ -149,6 +151,7 @@ const TreeChevron = React.forwardRef<React.ElementRef<"svg">, TreeChevronProps>(
 		);
 	},
 );
+DEV: TreeChevron.displayName = "TreeChevron";
 
 // ----------------------------------------------------------------------------
 

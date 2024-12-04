@@ -47,10 +47,7 @@ export default defineConfig({
 		port: 1800, // prod server port
 	},
 	resolve: {
-		conditions: [
-			...[isDev ? "@kiwi/source" : undefined].filter((c) => c !== undefined),
-			...defaultClientConditions,
-		],
+		conditions: [isDev ? ["@kiwi/source"] : [], defaultClientConditions].flat(),
 	},
 });
 

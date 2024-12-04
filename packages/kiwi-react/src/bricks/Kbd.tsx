@@ -53,4 +53,4 @@ export const Kbd = React.forwardRef<React.ElementRef<"kbd">, KbdProps>(
 		);
 	},
 );
-Kbd.displayName = "Kbd";
+DEV: Kbd.displayName = "Kbd";

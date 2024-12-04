@@ -24,4 +24,4 @@ export const Label = React.forwardRef<
 		/>
 	);
 });
-Label.displayName = "Label";
+DEV: Label.displayName = "Label";

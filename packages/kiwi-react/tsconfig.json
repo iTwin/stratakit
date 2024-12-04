@@ -25,7 +25,8 @@
 		"baseUrl": ".",
 		"emitDeclarationOnly": true,
 		"types": ["./types.d.ts"],
-		"preserveWatchOutput": true
+		"preserveWatchOutput": true,
+		"allowUnusedLabels": true
 	},
 	"include": ["src", "types.d.ts"],
 	"exclude": ["node_modules", "dist/**/*"]

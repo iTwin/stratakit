@@ -3,7 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 import { reactRouter } from "@react-router/dev/vite";
-import { defineConfig, type Plugin } from "vite";
+import { defineConfig, type Plugin, defaultClientConditions } from "vite";
 import type { Config as ReactRouterConfig } from "@react-router/dev/config";
 import tsconfigPaths from "vite-tsconfig-paths";
 import * as lightningcss from "lightningcss";
@@ -47,7 +47,10 @@ export default defineConfig({
 		port: 1800, // prod server port
 	},
 	resolve: {
-		conditions: isDev ? ["@kiwi/source"] : undefined,
+		conditions: [
+			...[isDev ? "@kiwi/source" : undefined].filter((c) => c !== undefined),
+			...defaultClientConditions,
+		],
 	},
 });
 

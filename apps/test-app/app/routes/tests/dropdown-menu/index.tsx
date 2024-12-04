@@ -14,8 +14,10 @@ export default definePage(function Page({ visual, disabled }) {
 				<DropdownMenu.Button disabled={!!disabled}>Actions</DropdownMenu.Button>
 
 				<DropdownMenu.Content>
-					<DropdownMenu.Item shortcut={["\u2318A"]}>Adding</DropdownMenu.Item>
-					<DropdownMenu.Item shortcut={["\u21e7", "E"]}>Edit</DropdownMenu.Item>
+					<DropdownMenu.Item shortcuts={["\u2318A"]}>Adding</DropdownMenu.Item>
+					<DropdownMenu.Item shortcuts={["\u21e7", "E"]}>
+						Edit
+					</DropdownMenu.Item>
 					<DropdownMenu.Item disabled>Delete</DropdownMenu.Item>
 					<DropdownMenu.Item>Disable</DropdownMenu.Item>
 				</DropdownMenu.Content>

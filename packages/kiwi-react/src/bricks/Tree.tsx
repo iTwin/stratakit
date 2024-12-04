@@ -20,7 +20,7 @@ export const Tree = React.forwardRef<React.ElementRef<"div">, TreeProps>(
 		);
 	},
 );
-Tree.displayName = "Tree.Root";
+DEV: Tree.displayName = "Tree.Root";
 
 // ----------------------------------------------------------------------------
 
@@ -70,6 +70,7 @@ export const TreeItem = React.forwardRef<
 		</TreeItemContext.Provider>
 	);
 });
+DEV: TreeItem.displayName = "Tree.Item";
 
 // ----------------------------------------------------------------------------
 

@@ -23,6 +23,9 @@
 		"rules": {
 			"correctness": {
 				"noUnusedImports": "info"
+			},
+			"suspicious": {
+				"noConfusingLabels": "off"
 			}
 		}
 	},

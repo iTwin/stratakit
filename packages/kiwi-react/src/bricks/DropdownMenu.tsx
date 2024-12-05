@@ -128,7 +128,9 @@ const DropdownMenuItem = React.forwardRef<
 
 	const hasShortcuts = Array.isArray(shortcuts) && shortcuts.length > 0;
 
-	const listItemWithShortCut = `${className} ${hasShortcuts ? "🥝-dropdown-menu-list-item-with-shortcuts" : ""}`;
+	const listItemWithShortCut = cx(className, {
+		"🥝-dropdown-menu-list-item-with-shortcuts": hasShortcuts,
+	});
 
 	return (
 		<Ariakit.MenuItem

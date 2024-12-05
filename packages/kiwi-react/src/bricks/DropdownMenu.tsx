@@ -117,7 +117,22 @@ DEV: DropdownMenuButton.displayName = "DropdownMenu.Button";
 // ----------------------------------------------------------------------------
 
 interface DropdownMenuItemProps extends Ariakit.MenuItemProps {
-	shortcuts?: string[];
+	/**
+	 * A string defining the keyboard shortcut(s) associated with the menu item.
+	 * Shortcuts should be formatted as a single string with keys separated by the '+' character.
+	 * For example: "Ctrl+S" or "Alt+Enter".
+	 *
+	 * @example
+	 * // A single shortcut:
+	 * shortcuts: "Ctrl+S"
+	 *
+	 * @example
+	 * // A multi-key combination:
+	 * shortcuts: "Ctrl+Shift+S"
+	 *
+	 * @default undefined
+	 */
+	shortcuts?: string;
 }
 
 const DropdownMenuItem = React.forwardRef<
@@ -126,7 +141,13 @@ const DropdownMenuItem = React.forwardRef<
 >((props, forwardedRef) => {
 	const { shortcuts, ...rest } = props;
 
-	const hasShortcuts = Array.isArray(shortcuts) && shortcuts.length > 0;
+	const shortcutKeys =
+		typeof shortcuts === "string"
+			? shortcuts.split("+").map((key) => key.trim())
+			: [];
+
+	const hasShortcuts =
+		typeof shortcuts === "string" && shortcuts.trim().length > 0;
 
 	const listItemWithShortCut = cx(props.className, {
 		"🥝-dropdown-menu-list-item-with-shortcuts": hasShortcuts,
@@ -141,7 +162,7 @@ const DropdownMenuItem = React.forwardRef<
 					<span>{props.children}</span>
 					{hasShortcuts && (
 						<ListItem.Content>
-							{shortcuts.map((key, index) => (
+							{shortcutKeys.map((key, index) => (
 								<Kbd variant="ghost" key={`shortcut-${index}-${key}`}>
 									{key}
 								</Kbd>

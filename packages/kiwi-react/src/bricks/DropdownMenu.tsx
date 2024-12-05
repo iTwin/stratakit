@@ -138,7 +138,7 @@ const DropdownMenuItem = React.forwardRef<
 				<ListItem.Root render={props.render} className={listItemWithShortCut}>
 					<span>{props.children}</span>
 					{hasShortcuts && (
-						<ListItem.Content className="🥝-dropdown-menu-item-shortcuts">
+						<ListItem.Content>
 							{shortcuts.map((key, index) => (
 								<Kbd variant="ghost" key={`shortcut-${index}-${key}`}>
 									{key}

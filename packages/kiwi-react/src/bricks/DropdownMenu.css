@@ -28,6 +28,6 @@
 	}
 }
 
-.🥝-dropdown-menu-list-item-with-shortcuts {
+[data-has-shortcuts="true"] {
 	gap: 0.75rem;
 }

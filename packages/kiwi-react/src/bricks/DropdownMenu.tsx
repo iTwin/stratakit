@@ -150,7 +150,7 @@ const DropdownMenuItem = React.forwardRef<
 		typeof shortcuts === "string" && shortcuts.trim().length > 0;
 
 	const listItemWithShortCut = cx(props.className, {
-		"🥝-dropdown-menu-list-item-with-shortcuts": hasShortcuts,
+		"data-has-shortcuts": hasShortcuts,
 	});
 
 	return (

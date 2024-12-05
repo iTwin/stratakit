@@ -1,0 +1,1 @@
+import{r as e,l as r}from"./chunk-D52XG6IA-Cfy4jjNa.js";import{c as a}from"./index-W0jK8xaN.js";import{R as m}from"./XL7CSKGW-6Kd9ttm8.js";const l=e.forwardRef((t,s)=>r.jsx(m.div,{role:"listitem",...t,className:a("🥝-list-item",t.className),ref:s})),n=e.forwardRef((t,s)=>r.jsx(m.span,{...t,className:a("🥝-list-item-content",t.className),ref:s}));export{l as L,n as a};

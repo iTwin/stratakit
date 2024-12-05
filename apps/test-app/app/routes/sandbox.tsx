@@ -12,9 +12,9 @@ import {
 	Icon,
 	IconButton,
 	TextBox,
-	Tree,
 	VisuallyHidden,
 } from "@itwin/kiwi-react/bricks";
+import * as Tree from "@itwin/kiwi-react-internal/src/bricks/Tree.js";
 import type { MetaFunction } from "react-router";
 import placeholderIcon from "@itwin/kiwi-icons/placeholder.svg";
 import searchIcon from "@itwin/kiwi-icons/search.svg";

@@ -4,7 +4,8 @@
  *--------------------------------------------------------------------------------------------*/
 import { definePage } from "~/~utils.tsx";
 import React from "react";
-import { Icon, IconButton, Tree } from "@itwin/kiwi-react/bricks";
+import { Icon, IconButton } from "@itwin/kiwi-react/bricks";
+import * as Tree from "@itwin/kiwi-react-internal/src/bricks/Tree.js";
 
 export const handle = { title: "Tree" };
 

@@ -41,7 +41,7 @@
 		"dev": "tsc --watch --outDir dist"
 	},
 	"dependencies": {
-		"@ariakit/react": "^0.4.14",
+		"@ariakit/react": "^0.4.15",
 		"classnames": "^2.5.1"
 	},
 	"devDependencies": {
@@ -49,7 +49,7 @@
 		"@types/react": "*",
 		"@types/react-dom": "*",
 		"esbuild": "^0.24.0",
-		"lightningcss": "^1.28.1",
+		"lightningcss": "^1.28.2",
 		"react": "18",
 		"react-dom": "18",
 		"typescript": "5"

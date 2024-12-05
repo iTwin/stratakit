@@ -102,7 +102,13 @@ jobs:
           cache: "pnpm"
 
       - run: pnpm install
-      - run: pnpm run build
+
+      - name: pnpm run build
+        uses: nick-fields/retry@v3
+        with:
+          timeout_minutes: 5
+          max_attempts: 3
+          command: pnpm run build
 
   test:
     name: Run e2e tests

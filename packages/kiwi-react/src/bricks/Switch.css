@@ -6,7 +6,7 @@
 	--✨width: 2rem;
 	--✨thumb-size: 1rem;
 
-	--✨shadow-border: 0px 0px 0px 1px --primitive("color.white.8") inset;
+	--✨shadow-border: 0px 0px 0px 1px var(--kiwi-color-border-shadow-base) inset;
 
 	--✨glow--border-hover: var(--kiwi-color-glow-hue) var(--kiwi-color-border-glow-base-hover-\%);
 	--✨glow--border-press: var(--kiwi-color-glow-hue) var(--kiwi-color-border-glow-base-pressed-\%);

@@ -19,7 +19,12 @@ export default function Page() {
 
 			{popout.popout &&
 				createPortal(
-					<Root>
+					<Root
+						style={{
+							minBlockSize: "100dvb",
+							backgroundColor: "var(--kiwi-color-bg-surface-primary)",
+						}}
+					>
 						<LightAndShadowButtons />
 					</Root>,
 					popout.popout.document.body,

@@ -30,7 +30,7 @@
 	--✨shadow--solid: var(--kiwi-shadow-button-base-drop), var(--✨shadow-border),
 		var(--kiwi-shadow-button-base-inset);
 
-	--✨border--solid-neutral-default: --primitive("color.white.8");
+	--✨border--solid-neutral-default: var(--kiwi-color-border-shadow-base);
 	--✨border--solid-neutral-hover: color-mix(
 		in oklch,
 		var(--✨border--solid-neutral-default) 100%,
@@ -43,7 +43,7 @@
 	);
 	--✨border--solid-neutral-disabled: transparent;
 
-	--✨border--solid-accent-default: --primitive("color.white.16");
+	--✨border--solid-accent-default: var(--kiwi-color-border-shadow-strong);
 	--✨border--solid-accent-hover: color-mix(
 		in oklch,
 		var(--✨border--solid-accent-default) 100%,

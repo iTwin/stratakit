@@ -14,7 +14,6 @@ import {
 	TextBox,
 	VisuallyHidden,
 } from "@itwin/kiwi-react/bricks";
-import * as ListItem from "@itwin/kiwi-react-internal/src/bricks/ListItem.js";
 import * as Tree from "@itwin/kiwi-react-internal/src/bricks/Tree.js";
 import type { MetaFunction } from "react-router";
 import placeholderIcon from "@itwin/kiwi-icons/placeholder.svg";
@@ -22,7 +21,8 @@ import searchIcon from "@itwin/kiwi-icons/search.svg";
 import panelLeftIcon from "@itwin/kiwi-icons/panel-left.svg";
 import filterIcon from "@itwin/kiwi-icons/filter.svg";
 import dismissIcon from "@itwin/kiwi-icons/dismiss.svg";
-import chevronDown from "@itwin/kiwi-icons/chevron-down.svg";
+import lockIcon from "@itwin/kiwi-icons/lock.svg";
+import showIcon from "@itwin/kiwi-icons/visibility-show.svg";
 
 const title = "Kiwi sandbox";
 export const meta: MetaFunction = () => {
@@ -353,18 +353,18 @@ function SandboxTree() {
 					<TreeItem content="Guide 4" />
 					<TreeItem content="Guide 3" />
 					<TreeItem content="Guide 2" />
-					<TreeItem content="Guide 1" />
+					<TreeItem content="Guide 1" lockAction />
 				</TreeItem>
 			</TreeItem>
 			<TreeItem content="Other">
 				<TreeItem content="Object 2">
 					<TreeItem content="Path 3" />
 				</TreeItem>
-				<TreeItem content="Object 1" />
+				<TreeItem content="Object 1" visibilityAction />
 			</TreeItem>
 			<TreeItem content="Road">
 				<TreeItem content="Parking lot access" />
-				<TreeItem content="Site access" />
+				<TreeItem content="Site access" lockAction visibilityAction />
 			</TreeItem>
 			<TreeItem content="Parking lot">
 				<TreeItem content="Parking area">
@@ -398,43 +398,43 @@ function SandboxTree() {
 	);
 }
 
-function TreeItemButton(props: React.ComponentProps<typeof IconButton>) {
-	return (
-		<IconButton
-			{...props}
-			// TODO: IconButton inside ListItem. Button block size matches the TreeItem, while ListItem adds additional padding.
-			style={{ marginBlock: -6, ...props.style }}
-			variant="ghost"
-		/>
-	);
-}
-
 type TreeItemProps = React.PropsWithChildren<{
 	content?: React.ReactNode;
+	visibilityAction?: boolean;
+	lockAction?: boolean;
 }>;
 
 function TreeItem(props: TreeItemProps) {
 	const isParentNode = React.Children.count(props.children) > 0;
+	const [expanded, setExpanded] = React.useState(true);
 	return (
 		<Tree.Item
 			content={
 				<>
-					{isParentNode ? (
-						<TreeItemButton
-							icon={chevronDown}
-							label="Collapse"
-							variant="ghost"
-						/>
-					) : (
-						<span style={{ inlineSize: "1.5rem" }} />
-					)}
+					<Tree.Expander onClick={() => setExpanded((prev) => !prev)} />
 					<Icon href={placeholderIcon} style={{ display: "inline" }} />
-					<ListItem.Content>{props.content}</ListItem.Content>
+					<Tree.Content>{props.content}</Tree.Content>
+					<div style={{ display: "flex", gap: 4, marginInlineStart: "auto" }}>
+						<IconButton
+							className={styles.action}
+							icon={lockIcon}
+							label="Lock"
+							variant="ghost"
+							aria-hidden={!props.lockAction}
+						/>
+						<IconButton
+							className={styles.action}
+							icon={showIcon}
+							label="Show"
+							variant="ghost"
+							aria-hidden={!props.visibilityAction}
+						/>
+					</div>
 				</>
 			}
-			expanded={isParentNode || undefined}
+			expanded={isParentNode ? expanded : undefined}
 		>
-			{props.children}
+			{expanded ? props.children : undefined}
 		</Tree.Item>
 	);
 }

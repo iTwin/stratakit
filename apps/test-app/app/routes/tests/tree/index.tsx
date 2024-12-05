@@ -3,7 +3,8 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 import { useSearchParams } from "react-router";
-import { Icon, IconButton, Tree } from "@itwin/kiwi-react/bricks";
+import { Icon, IconButton } from "@itwin/kiwi-react/bricks";
+import * as Tree from "@itwin/kiwi-react-internal/src/bricks/Tree.js";
 import React from "react";
 
 export const handle = { title: "Tree" };

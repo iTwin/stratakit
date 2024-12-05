@@ -16,7 +16,11 @@ import globalStyles from "./root.css?url";
 
 export const links: LinksFunction = () => {
 	return [
-		{ rel: "icon", href: "/favicon.svg", sizes: "any", type: "image/svg+xml" },
+		{
+			rel: "icon",
+			href: "data:image/svg+xml,<svg viewBox='0 -16 20 20' xmlns='http://www.w3.org/2000/svg'><text>🥝</text></svg>",
+			type: "image/svg+xml",
+		},
 		{ rel: "preconnect", href: "https://rsms.me/" },
 		{ rel: "stylesheet", href: "https://rsms.me/inter/inter.css" },
 		{ rel: "stylesheet", href: globalStyles },

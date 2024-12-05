@@ -124,18 +124,18 @@ const DropdownMenuItem = React.forwardRef<
 	React.ElementRef<typeof Ariakit.MenuItem>,
 	DropdownMenuItemProps
 >((props, forwardedRef) => {
-	const { shortcuts, className = "" } = props;
+	const { shortcuts, ...rest } = props;
 
 	const hasShortcuts = Array.isArray(shortcuts) && shortcuts.length > 0;
 
-	const listItemWithShortCut = cx(className, {
+	const listItemWithShortCut = cx(props.className, {
 		"🥝-dropdown-menu-list-item-with-shortcuts": hasShortcuts,
 	});
 
 	return (
 		<Ariakit.MenuItem
 			accessibleWhenDisabled
-			{...props}
+			{...rest}
 			render={
 				<ListItem.Root render={props.render} className={listItemWithShortCut}>
 					<span>{props.children}</span>

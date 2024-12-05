@@ -10,3 +10,11 @@
 	src: url(https://cdn.jsdelivr.net/fontsource/fonts/geist-mono@latest/latin-400-normal.woff2)
 		format("woff2");
 }
+
+.AppRoot::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	z-index: -1;
+	background-color: var(--kiwi-color-bg-surface-primary);
+}

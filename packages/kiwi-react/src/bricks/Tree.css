@@ -3,14 +3,55 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 .🥝-tree-item:is(.🥝-list-item) {
+	--✨padding-inline-end: 0.25rem;
+	--✨first-level-indent: 8px;
+	--✨subsequent-level-indent: 6px;
+
 	@layer base {
-		padding-inline-start: calc(8px + 12px * (var(--🥝tree-item-level) - 1));
+		padding-inline-start: calc(
+			var(--✨first-level-indent) +
+			var(--✨subsequent-level-indent) *
+			(var(--🥝tree-item-level) - 1)
+		);
+		padding-inline-end: var(--✨padding-inline-end);
 	}
 
 	@layer states {
 		/* TODO: combined states: active + hovered/pressed. */
-		&[aria-selected="true"] {
+		&:where([data-kiwi-selected="true"]) {
 			--🌀list-item-state: var(--🌀list-item-state--active);
+		}
+
+		&:where([data-kiwi-expanded="false"]) {
+			--🥝tree-chevron-rotate: -0.25turn;
+		}
+
+		&:where(:not([data-kiwi-expanded])) {
+			--🥝tree-item-expander-visibility: hidden;
+		}
+	}
+}
+
+.🥝-tree-item-content:is(.🥝-list-item-content) {
+	@layer base {
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		overflow: hidden;
+	}
+}
+
+.🥝-tree-item-expander:is(.🥝-icon-button) {
+	@layer base {
+		visibility: var(--🥝tree-item-expander-visibility);
+	}
+}
+
+.🥝-tree-chevron {
+	@layer base {
+		rotate: var(--🥝tree-chevron-rotate);
+
+		@media (prefers-reduced-motion: no-preference) {
+			transition: rotate 150ms ease-in-out;
 		}
 	}
 }

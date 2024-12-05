@@ -55,8 +55,8 @@
 		transition: all 150ms ease-out;
 		transition-property: background-color, border-color, box-shadow, --🥝checkbox-border-color;
 		position: relative;
-		box-shadow: var(--kiwi-shadow-button-base-drop), var(--✨shadow-border),
-			var(--kiwi-shadow-button-base-inset);
+		box-shadow: var(--kiwi-shadow-button-base-inset), var(--✨shadow-border),
+			var(--kiwi-shadow-button-base-drop);
 
 		--🥝checkbox-border-color: var(--🌀checkbox-visual-state--default, var(--✨border--default))
 			var(--🌀checkbox-visual-state--hover, var(--✨border--hover))

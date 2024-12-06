@@ -1,0 +1,1 @@
+import{r as o,l as a}from"./chunk-D52XG6IA-jQzNN5l_.js";import{c as i}from"./index-a4IuZTzE.js";import{R as m}from"./XL7CSKGW-BUWraERi.js";const x=o.forwardRef((r,s)=>{const{variant:t="solid",...e}=r;return a.jsx(m,{"data-kiwi-variant":t,...e,className:i("🥝-kbd",r.className),render:r.render||a.jsx("kbd",{}),ref:s})});export{x as K};

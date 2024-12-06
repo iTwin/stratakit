@@ -87,7 +87,7 @@ pnpm run build
 
 ### Testing
 
-To ensure your changes work as expected, tests should be written or updated as necessary. Kiwi uses [Playwright](https://playwright.dev/) for E2E testing. These tests are written in `.spec.ts` files defined next to the routes which are being tested. You can find examples of existing tests in the [`app/routes/tests/`](./apps/test-app/app/routes/tests) directory.
+To ensure your changes work as expected, tests should be written or updated as necessary. Kiwi uses [Playwright](https://playwright.dev/) for E2E testing. These tests are written in `.spec.ts` files defined next to the routes which are being tested. You can find examples of existing tests in the [`app/tests/`](./apps/test-app/app/tests) directory.
 
 For visual testing, after modifying a component, update snapshots by running the following command from the project root:
 

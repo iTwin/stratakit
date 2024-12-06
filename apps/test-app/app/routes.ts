@@ -2,14 +2,24 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-import type { RouteConfig } from "@react-router/dev/routes";
-import { createRoutesFromFolders } from "@remix-run/v1-route-convention";
-import { remixRoutesOptionAdapter } from "@react-router/remix-routes-option-adapter";
+import { type RouteConfig, route, index } from "@react-router/dev/routes";
+import { components } from "./index.tsx";
+import { toKebabCase } from "./~utils.tsx";
 
-export default remixRoutesOptionAdapter((defineRoutes) => {
-	// `createRoutesFromFolders` will follow the Remix v1 route convention.
-	// See https://remix.run/docs/en/v1/file-conventions/routes-files
-	return createRoutesFromFolders(defineRoutes, {
-		ignoredFilePatterns: ["**/*.spec.*", "**/*.css", "**/.DS_Store"],
-	});
-}) satisfies RouteConfig;
+export default [
+	index("./index.tsx"),
+	route("sandbox", "./sandbox.tsx"),
+	route("tokens", "./tokens.tsx"),
+	route("icons", "./icons.tsx"),
+
+	route(
+		"tests",
+		"./tests/tests.tsx",
+		components.map((component) =>
+			route(
+				toKebabCase(component),
+				`./tests/${toKebabCase(component)}/index.tsx`,
+			),
+		),
+	),
+] satisfies RouteConfig;

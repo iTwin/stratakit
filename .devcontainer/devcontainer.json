@@ -2,7 +2,7 @@
 	"image": "mcr.microsoft.com/devcontainers/universal:2",
 	"customizations": {
 		"codespaces": {
-			"openFiles": ["apps/test-app/app/routes/sandbox.tsx"]
+			"openFiles": ["apps/test-app/app/sandbox.tsx"]
 		},
 		"vscode": {
 			"extensions": [

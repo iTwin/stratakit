@@ -12,19 +12,27 @@ interface KbdProps extends Ariakit.RoleProps<"kbd"> {
 }
 
 export const kbdKeys = {
-	Command: "\u2318",
-	Shift: "\u21e7",
-	Backspace: "\u232b",
-	Enter: "\u21b5",
-	Eject: "\u23cf",
-	Control: "Ctrl",
-	Windows: "\u229e",
 	Apple: "\uf8ff",
-	Option: "\u2325",
-	Left: "\u2190",
-	Up: "\u2191",
-	Right: "\u2192",
+	Backspace: "\u232b",
+	Command: "\u2318",
+	Control: "Ctrl",
 	Down: "\u2193",
+	End: "\u001b",        
+	Eject: "\u23cf",
+	Enter: "\u21b5",
+	Escape: "\u001b",   
+	Home: "\u001a", 
+	Help: "\u003f",
+	Left: "\u2190",
+	Option: "\u2325",
+	PageUp: "\u0010",      
+  PageDown: "\u0011",    
+	Right: "\u2192",
+	Shift: "\u21e7",
+	Space: "\u0020",    
+	Tab: "\u0009",
+	Up: "\u2191",
+	Windows: "\u229e",
 } as const;
 
 /**

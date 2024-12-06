@@ -13,6 +13,7 @@ import {
 } from "react-router";
 import { Root } from "@itwin/kiwi-react/bricks";
 import globalStyles from "./root.css?url";
+import { useColorScheme } from "./~utils.tsx";
 
 export const links: LinksFunction = () => {
 	return [
@@ -46,12 +47,14 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export default function App() {
+	const colorScheme = useColorScheme();
+
 	React.useEffect(function signalPageLoad() {
 		document.body.dataset.loaded = "true";
 	}, []);
 
 	return (
-		<Root className="AppRoot">
+		<Root colorScheme={colorScheme} className="AppRoot">
 			<Outlet />
 		</Root>
 	);

@@ -28,6 +28,9 @@ export default defineConfig({
 
 		/* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
 		trace: "on-first-retry",
+
+		/* https://playwright.dev/docs/emulation#color-scheme-and-media */
+		colorScheme: "dark",
 	},
 	/* Keep snapshots in the same folder as the test file to nest the files. */
 	snapshotPathTemplate:

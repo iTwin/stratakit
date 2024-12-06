@@ -52,7 +52,7 @@
 }
 
 .swatch {
-	--_swatch-size: 4rem;
+	--_swatch-size: 3rem;
 
 	inline-size: var(--_swatch-size);
 	block-size: var(--_swatch-size);
@@ -71,8 +71,8 @@
 		repeating-linear-gradient(
 			45deg,
 			var(--kiwi-color-bg-neutral-base) 25%,
-			var(--kiwi-color-bg-neutral-muted) 25%,
-			var(--kiwi-color-bg-neutral-muted) 75%,
+			var(--kiwi-color-bg-neutral-faded) 25%,
+			var(--kiwi-color-bg-neutral-faded) 75%,
 			var(--kiwi-color-bg-neutral-base) 75%,
 			var(--kiwi-color-bg-neutral-base)
 		);

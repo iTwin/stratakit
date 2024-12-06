@@ -29,8 +29,8 @@
 		}
 
 		&[data-kiwi-variant="solid"] {
-			box-shadow: var(--kiwi-shadow-button-base-drop), var(--✨shadow-border),
-				var(--kiwi-shadow-button-base-inset);
+			box-shadow: var(--kiwi-shadow-button-base-inset), var(--✨shadow-border),
+				var(--kiwi-shadow-button-base-drop);
 		}
 
 		&[data-kiwi-variant="ghost"] {

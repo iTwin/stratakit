@@ -82,8 +82,8 @@
 			border-radius: 9999px;
 			margin: calc(0.125rem - 1px) /* spacing-2 - 1px to account for border */;
 			background-color: var(--🥝switch-thumb-color);
-			box-shadow: var(--kiwi-shadow-button-base-drop), var(--✨shadow-border),
-				var(--kiwi-shadow-button-base-inset);
+			box-shadow: var(--kiwi-shadow-button-base-inset), var(--✨shadow-border),
+				var(--kiwi-shadow-button-base-drop);
 			justify-self: var(--🥝switch-thumb-placement);
 
 			@media (prefers-reduced-motion: no-preference) {

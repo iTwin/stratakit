@@ -23,7 +23,7 @@
 		border: var(--✨border-width) solid var(--✨border);
 		border-radius: 0.25rem;
 		padding-block: calc(0.25rem - var(--✨border-width));
-		padding-inline: calc(0.5rem - var(--✨border-width));
+		padding-inline: calc(0.625rem - var(--✨border-width));
 		min-block-size: 1rem;
 		max-inline-size: 12.25rem;
 	}

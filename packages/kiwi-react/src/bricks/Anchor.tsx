@@ -5,11 +5,12 @@
 import * as React from "react";
 import cx from "classnames";
 import * as Ariakit from "@ariakit/react";
+import type { Props, FocusableProps } from "./~utils.js";
 
-interface AnchorProps extends Ariakit.FocusableProps<"a"> {
+type AnchorProps = Props<"a", FocusableProps> & {
 	/** @default "neutral" */
 	tone?: "neutral" | "accent" | "critical";
-}
+};
 
 export const Anchor = React.forwardRef<React.ElementRef<"a">, AnchorProps>(
 	(props, forwardedRef) => {

@@ -8,7 +8,7 @@ import * as Ariakit from "@ariakit/react";
 import * as ListItem from "./ListItem.js";
 import { Button } from "./Button.js";
 import { DisclosureArrow } from "./Icon.js";
-import { supportsPopover } from "./~utils.js";
+import { supportsPopover, type FocusableProps, type Props } from "./~utils.js";
 
 // ----------------------------------------------------------------------------
 
@@ -71,9 +71,11 @@ DEV: DropdownMenu.displayName = "DropdownMenu.Root";
 
 // ----------------------------------------------------------------------------
 
+type DropdownMenuContentProps = Props<"div", FocusableProps<Ariakit.MenuProps>>;
+
 const DropdownMenuContent = React.forwardRef<
 	React.ElementRef<typeof Ariakit.Menu>,
-	Ariakit.MenuProps
+	DropdownMenuContentProps
 >((props, forwardedRef) => {
 	return (
 		<Ariakit.Menu
@@ -91,14 +93,19 @@ DEV: DropdownMenuContent.displayName = "DropdownMenu.Content";
 
 // ----------------------------------------------------------------------------
 
+type DropdownMenuButtonProps = Props<
+	"button",
+	FocusableProps<Ariakit.MenuButtonProps>
+>;
+
 const DropdownMenuButton = React.forwardRef<
 	React.ElementRef<typeof Ariakit.MenuButton>,
-	Ariakit.MenuButtonProps
+	DropdownMenuButtonProps
 >((props, forwardedRef) => {
 	const { accessibleWhenDisabled = true, children, ...rest } = props;
 	return (
 		<Ariakit.MenuButton
-			accessibleWhenDisabled={accessibleWhenDisabled}
+			accessibleWhenDisabled
 			render={
 				<Button accessibleWhenDisabled={accessibleWhenDisabled}>
 					{children}
@@ -115,9 +122,14 @@ DEV: DropdownMenuButton.displayName = "DropdownMenu.Button";
 
 // ----------------------------------------------------------------------------
 
+type DropdownMenuItemProps = Props<
+	"div",
+	FocusableProps<Ariakit.MenuItemProps>
+>;
+
 const DropdownMenuItem = React.forwardRef<
 	React.ElementRef<typeof Ariakit.MenuItem>,
-	Ariakit.MenuItemProps
+	DropdownMenuItemProps
 >((props, forwardedRef) => {
 	return (
 		<Ariakit.MenuItem

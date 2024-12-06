@@ -6,9 +6,13 @@ import * as React from "react";
 import cx from "classnames";
 import * as Ariakit from "@ariakit/react";
 import { useFieldId } from "./Field.js";
+import type { FocusableProps, Props } from "./~utils.js";
 
-interface RadioProps
-	extends Omit<Ariakit.RadioProps, "store" | "defaultValue"> {}
+type RadioProps = Props<
+	"input",
+	FocusableProps<Ariakit.RadioProps, "value" | "checked" | "onChange">,
+	"defaultValue"
+>;
 
 export const Radio = React.forwardRef<
 	React.ElementRef<typeof Ariakit.Radio>,

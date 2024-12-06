@@ -6,14 +6,18 @@ import * as React from "react";
 import cx from "classnames";
 import * as Ariakit from "@ariakit/react";
 import { useFieldId } from "./Field.js";
+import type { FocusableProps, Props } from "./~utils.js";
 
-interface SwitchProps
-	extends Omit<Ariakit.CheckboxProps, "store" | "defaultValue"> {
+type SwitchProps = Props<
+	"input",
+	FocusableProps<Ariakit.CheckboxProps>,
+	"defaultValue"
+> & {
 	/** The default checked state of the toggle switch. */
 	defaultChecked?: boolean;
 	/** The controlled checked state of the toggle switch. */
 	checked?: boolean;
-}
+};
 
 export const Switch = React.forwardRef<
 	React.ElementRef<typeof Ariakit.Checkbox>,

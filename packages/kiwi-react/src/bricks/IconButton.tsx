@@ -8,33 +8,37 @@ import { Button } from "./Button.js";
 import { VisuallyHidden } from "./VisuallyHidden.js";
 import { Icon } from "./Icon.js";
 import { Tooltip } from "./Tooltip.js";
+import type { Props } from "./~utils.js";
 
-interface IconButtonBaseProps
-	extends Omit<React.ComponentProps<typeof Button>, "children" | "tone"> {
-	/**
-	 * Accessible name for the button.
-	 *
-	 * This label gets used by assistive technology to identify the button,
-	 * and also gets shown in a tooltip by default.
-	 */
-	label: string;
-	/**
-	 * Icon to be displayed inside the button.
-	 *
-	 * Can be a URL of an SVG from the `kiwi-icons` package,
-	 * or a custom JSX icon.
-	 */
-	icon: string | React.JSX.Element;
-	/**
-	 * Behavior of the label.
-	 *
-	 * By default, the label is shown in a tooltip. Use `"visually-hidden"` to
-	 * hide the label from sighted users.
-	 *
-	 * @default "tooltip"
-	 */
-	labelVariant?: "tooltip" | "visually-hidden";
-}
+type IconButtonBaseProps = Props<
+	typeof Button,
+	{
+		/**
+		 * Accessible name for the button.
+		 *
+		 * This label gets used by assistive technology to identify the button,
+		 * and also gets shown in a tooltip by default.
+		 */
+		label: string;
+		/**
+		 * Icon to be displayed inside the button.
+		 *
+		 * Can be a URL of an SVG from the `kiwi-icons` package,
+		 * or a custom JSX icon.
+		 */
+		icon: string | React.JSX.Element;
+		/**
+		 * Behavior of the label.
+		 *
+		 * By default, the label is shown in a tooltip. Use `"visually-hidden"` to
+		 * hide the label from sighted users.
+		 *
+		 * @default "tooltip"
+		 */
+		labelVariant?: "tooltip" | "visually-hidden";
+	},
+	"children" | "tone"
+>;
 
 type IconButtonExtraProps =
 	| {

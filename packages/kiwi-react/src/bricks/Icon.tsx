@@ -5,13 +5,18 @@
 import * as React from "react";
 import cx from "classnames";
 import * as Ariakit from "@ariakit/react";
+import type { OptionProps, Props } from "./~utils.js";
 
-interface IconProps extends Omit<Ariakit.RoleProps<"svg">, "children"> {
+type IconProps = Props<
+	"svg",
+	OptionProps<Ariakit.RoleProps<"svg">>,
+	"children"
+> & {
 	/** URL of the symbol sprite. */
 	href?: string;
 	/** Size of the icon. Defaults to `regular`. */
 	size?: "regular" | "large";
-}
+};
 
 /**
  * Icon component that provides fill and sizing to the SVGs from `@itwin/kiwi-icons`.
@@ -56,14 +61,17 @@ function toIconId(size: IconProps["size"]) {
 
 // ----------------------------------------------------------------------------
 
-interface DisclosureArrowProps
-	extends Omit<Ariakit.RoleProps<"svg">, "children"> {
+type DisclosureArrowProps = Props<
+	"svg",
+	OptionProps<Ariakit.RoleProps<"svg">>,
+	"children"
+> & {
 	/**
 	 * Which direction should the arrow point towards?
 	 * @default "down"
 	 */
 	direction?: "down" | "right";
-}
+};
 
 export const DisclosureArrow = React.forwardRef<
 	React.ElementRef<"svg">,

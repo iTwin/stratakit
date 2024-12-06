@@ -6,9 +6,13 @@ import * as React from "react";
 import cx from "classnames";
 import * as Ariakit from "@ariakit/react";
 import { useFieldId } from "./Field.js";
+import type { FocusableProps, Props } from "./~utils.js";
 
-interface CheckboxProps
-	extends Omit<Ariakit.CheckboxProps, "store" | "defaultValue"> {}
+type CheckboxProps = Props<
+	"input",
+	FocusableProps<Ariakit.CheckboxProps, "checked" | "defaultChecked">,
+	"defaultValue"
+>;
 
 export const Checkbox = React.forwardRef<
 	React.ElementRef<typeof Ariakit.Checkbox>,

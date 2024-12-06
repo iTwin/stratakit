@@ -7,6 +7,7 @@ import * as ReactDOM from "react-dom";
 import cx from "classnames";
 import * as Ariakit from "@ariakit/react";
 import { useControlledState } from "./~hooks.js";
+import type { FocusableProps, OptionProps, Props } from "./~utils.js";
 
 // ----------------------------------------------------------------------------
 
@@ -62,10 +63,10 @@ DEV: Tabs.displayName = "Tabs.Root";
 
 // ----------------------------------------------------------------------------
 
-interface TabListProps extends Ariakit.RoleProps<"div"> {
+type TabListProps = Props<"div", OptionProps> & {
 	/** @default "neutral" */
 	tone?: "neutral" | "accent";
-}
+};
 
 const TabList = React.forwardRef<
 	React.ElementRef<typeof Ariakit.TabList>,
@@ -93,9 +94,7 @@ DEV: TabList.displayName = "Tabs.TabList";
 
 // ----------------------------------------------------------------------------
 
-interface TabProps
-	extends Ariakit.FocusableProps<"button">,
-		Pick<Ariakit.TabProps, "id"> {}
+type TabProps = Props<"button", FocusableProps<Ariakit.TabProps, "id">>;
 
 const Tab = React.forwardRef<React.ElementRef<typeof Ariakit.Tab>, TabProps>(
 	(props, forwardedRef) => {
@@ -113,9 +112,10 @@ DEV: Tab.displayName = "Tabs.Tab";
 
 // ----------------------------------------------------------------------------
 
-interface TabPanelProps
-	extends Ariakit.RoleProps<"div">,
-		Pick<Ariakit.TabPanelProps, "tabId" | "unmountOnHide"> {}
+type TabPanelProps = Props<
+	"div",
+	OptionProps<Ariakit.TabPanelProps, "tabId" | "unmountOnHide">
+>;
 
 const TabPanel = React.forwardRef<
 	React.ElementRef<typeof Ariakit.TabPanel>,

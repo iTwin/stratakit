@@ -5,33 +5,35 @@
 import * as React from "react";
 import cx from "classnames";
 import * as Ariakit from "@ariakit/react";
-import { supportsPopover } from "./~utils.js";
+import { supportsPopover, type FocusableProps, type Props } from "./~utils.js";
 
-interface TooltipProps
-	extends Omit<Ariakit.TooltipProps, "store" | "content">,
-		Pick<Ariakit.TooltipProviderProps, "defaultOpen" | "setOpen"> {
-	/**
-	 * The content to be displayed inside the tooltip.
-	 */
-	content: React.ReactNode;
+type TooltipProps = Props<
+	"div",
+	FocusableProps<Ariakit.TooltipProps, "open" | "unmountOnHide">
+> &
+	Pick<Ariakit.TooltipProviderProps, "defaultOpen" | "setOpen"> & {
+		/**
+		 * The content to be displayed inside the tooltip.
+		 */
+		content: React.ReactNode;
 
-	/**
-	 * The element that will trigger the tooltip when hovered or focused.
-	 * Common examples include buttons, links, or form controls.
-	 */
-	children: React.ReactElement;
+		/**
+		 * The element that will trigger the tooltip when hovered or focused.
+		 * Common examples include buttons, links, or form controls.
+		 */
+		children: React.ReactElement;
 
-	/**
-	 * Determines how ARIA attributes are applied to the tooltip for accessibility:
-	 *
-	 * - `"description"`: The tooltip provides additional information via `aria-describedby`.
-	 * - `"label"`: The tooltip acts as a label for the trigger element via `aria-labelledby`.
-	 * - `"none"`: No ARIA attributes are applied; the tooltip is only for visual assistance.
-	 *
-	 * @default "description"
-	 */
-	type?: "description" | "label" | "none";
-}
+		/**
+		 * Determines how ARIA attributes are applied to the tooltip for accessibility:
+		 *
+		 * - `"description"`: The tooltip provides additional information via `aria-describedby`.
+		 * - `"label"`: The tooltip acts as a label for the trigger element via `aria-labelledby`.
+		 * - `"none"`: No ARIA attributes are applied; the tooltip is only for visual assistance.
+		 *
+		 * @default "description"
+		 */
+		type?: "description" | "label" | "none";
+	};
 
 /**
  * Tooltip component that provides additional information or context for a trigger element.

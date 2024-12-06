@@ -5,8 +5,9 @@
 import * as React from "react";
 import cx from "classnames";
 import * as Ariakit from "@ariakit/react";
+import type { FocusableProps, Props } from "./~utils.js";
 
-type ButtonProps = Ariakit.ButtonProps &
+type ButtonProps = Props<"button", FocusableProps<Ariakit.ButtonProps>> &
 	(
 		| {
 				/** @default "solid" */

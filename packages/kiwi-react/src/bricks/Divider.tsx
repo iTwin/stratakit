@@ -5,15 +5,19 @@
 import * as React from "react";
 import cx from "classnames";
 import * as Ariakit from "@ariakit/react";
+import type { OptionProps, Props } from "./~utils.js";
 
-interface DividerProps extends Ariakit.SeparatorProps {
+type DividerProps = Props<
+	"hr",
+	OptionProps<Ariakit.SeparatorProps, "orientation">
+> & {
 	/**
 	 * If true, the divider will be purely presentational and will not have any associated semantics.
 	 *
 	 * @default false
 	 */
 	presentational?: boolean;
-}
+};
 
 /**
  * The `Divider` component can be used for grouping and dividing content within a layout.
@@ -32,7 +36,7 @@ export const Divider = React.forwardRef<React.ElementRef<"div">, DividerProps>(
 				{...rest}
 				className={cx("🥝-divider", props.className)}
 				data-kiwi-orientation={props.orientation}
-				ref={forwardedRef as DividerProps["ref"]}
+				ref={forwardedRef as Ariakit.SeparatorProps["ref"]}
 			/>
 		);
 	},

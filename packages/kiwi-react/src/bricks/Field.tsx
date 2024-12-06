@@ -5,19 +5,19 @@
 import * as React from "react";
 import * as Ariakit from "@ariakit/react";
 import cx from "classnames";
+import type { OptionProps, Props } from "./~utils.js";
 
-interface FieldProps extends Ariakit.RoleProps {
-	/**
-	 * Allows overriding the default block layout for text controls.
-	 */
-	layout?: "inline";
-}
+// ----------------------------------------------------------------------------
 
-const FieldIdContext = React.createContext<string | undefined>(undefined);
-
-export function useFieldId() {
-	return React.useContext(FieldIdContext);
-}
+type FieldProps = Props<
+	"div",
+	OptionProps & {
+		/**
+		 * Allows overriding the default block layout for text controls.
+		 */
+		layout?: "inline";
+	}
+>;
 
 export const Field = React.forwardRef<React.ElementRef<"div">, FieldProps>(
 	(props, forwardedRef) => {
@@ -37,3 +37,11 @@ export const Field = React.forwardRef<React.ElementRef<"div">, FieldProps>(
 	},
 );
 DEV: Field.displayName = "Field";
+
+// ----------------------------------------------------------------------------
+
+const FieldIdContext = React.createContext<string | undefined>(undefined);
+
+export function useFieldId() {
+	return React.useContext(FieldIdContext);
+}

@@ -4,6 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 import primitives from "./primitives.json" with { type: "json" };
 import darkTheme from "./theme-dark.json" with { type: "json" };
+import lightTheme from "./theme-light.json" with { type: "json" };
 import typography from "./typography.json" with { type: "json" };
 
 /**
@@ -68,6 +69,10 @@ export function primitivesTransform() {
  * @returns {import("lightningcss").Visitor}
  */
 export function themeTransform() {
+	const themes = new Map(
+		Object.entries({ light: lightTheme, dark: darkTheme }),
+	);
+
 	return {
 		Rule: {
 			/** Processes `@apply` rules that match `--theme()`. */
@@ -81,14 +86,14 @@ export function themeTransform() {
 				}
 
 				const theme = prelude[0].value.arguments?.[0]?.value?.value;
-				if (theme !== "dark") {
+				if (!themes.has(theme)) {
 					throw new Error(`Unknown theme: ${theme}`);
 				}
 
 				const declarations = [];
 
-				const colorTokens = parseTokens(darkTheme.color);
-				const shadowTokens = parseTokens(darkTheme.shadow);
+				const colorTokens = parseTokens(themes.get(theme)?.color);
+				const shadowTokens = parseTokens(themes.get(theme)?.shadow);
 
 				for (let [name, { $value }] of colorTokens.entries()) {
 					// Tokens that should be skipped are marked using "🫥" (by convention).

@@ -13,10 +13,15 @@ import {
 } from "react-router";
 import { Root } from "@itwin/kiwi-react/bricks";
 import globalStyles from "./root.css?url";
+import { useColorScheme } from "./~utils.tsx";
 
 export const links: LinksFunction = () => {
 	return [
-		{ rel: "icon", href: "/favicon.svg", sizes: "any", type: "image/svg+xml" },
+		{
+			rel: "icon",
+			href: "data:image/svg+xml,<svg viewBox='0 -16 20 20' xmlns='http://www.w3.org/2000/svg'><text>🥝</text></svg>",
+			type: "image/svg+xml",
+		},
 		{ rel: "preconnect", href: "https://rsms.me/" },
 		{ rel: "stylesheet", href: "https://rsms.me/inter/inter.css" },
 		{ rel: "stylesheet", href: globalStyles },
@@ -42,12 +47,14 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export default function App() {
+	const colorScheme = useColorScheme();
+
 	React.useEffect(function signalPageLoad() {
 		document.body.dataset.loaded = "true";
 	}, []);
 
 	return (
-		<Root>
+		<Root colorScheme={colorScheme} className="AppRoot">
 			<Outlet />
 		</Root>
 	);

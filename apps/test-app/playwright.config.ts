@@ -2,7 +2,12 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-import { defineConfig, devices, test as base } from "@playwright/test";
+import {
+	defineConfig,
+	devices,
+	test as base,
+	type Page,
+} from "@playwright/test";
 
 /** See https://playwright.dev/docs/test-configuration. */
 export default defineConfig({
@@ -23,6 +28,9 @@ export default defineConfig({
 
 		/* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
 		trace: "on-first-retry",
+
+		/* https://playwright.dev/docs/emulation#color-scheme-and-media */
+		colorScheme: "dark",
 	},
 	/* Keep snapshots in the same folder as the test file to nest the files. */
 	snapshotPathTemplate:
@@ -58,7 +66,7 @@ export default defineConfig({
 	},
 });
 
-export const test = base.extend({
+export const test = base.extend<{ page: Page }>({
 	page: async ({ page }, use) => {
 		const _goto = page.goto;
 		page.goto = async (url, options) => {

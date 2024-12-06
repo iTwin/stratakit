@@ -5,11 +5,13 @@
 import { Button, Root } from "@itwin/kiwi-react/bricks";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { createPortal } from "react-dom";
+import { useColorScheme } from "~/~utils.tsx";
 
 export const handle = { title: "Root" };
 
 export default function Page() {
 	const popout = usePopout();
+	const colorScheme = useColorScheme();
 
 	return (
 		<>
@@ -19,7 +21,13 @@ export default function Page() {
 
 			{popout.popout &&
 				createPortal(
-					<Root>
+					<Root
+						colorScheme={colorScheme}
+						style={{
+							minBlockSize: "100dvb",
+							backgroundColor: "var(--kiwi-color-bg-surface-primary)",
+						}}
+					>
 						<LightAndShadowButtons />
 					</Root>,
 					popout.popout.document.body,
@@ -33,13 +41,14 @@ export default function Page() {
 function LightAndShadowButtons() {
 	const [host, setHost] = useState<HTMLElement | null>(null);
 	const shadow = useShadow(useCallback(() => host, [host]));
+	const colorScheme = useColorScheme();
 
 	return (
 		<div style={{ display: "flex", gap: 4 }} ref={setHost}>
 			<Button>Button (light)</Button>
 			{shadow &&
 				createPortal(
-					<Root>
+					<Root colorScheme={colorScheme}>
 						<Button>Button (shadow)</Button>
 					</Root>,
 					shadow,

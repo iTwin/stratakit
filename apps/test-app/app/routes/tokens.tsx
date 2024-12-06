@@ -8,11 +8,16 @@ import type * as React from "react";
 import type { MetaFunction, LinksFunction } from "react-router";
 import { Button, Divider, Icon } from "@itwin/kiwi-react/bricks";
 import { parseTokens } from "internal/visitors.js";
-import rawTokens from "internal/theme-dark.json";
+import rawLightTokens from "internal/theme-light.json";
+import rawDarkTokens from "internal/theme-dark.json";
 import styles from "./tokens.module.css";
+import { useColorScheme } from "~/~utils.tsx";
 
-const colorTokens = parseTokens(rawTokens.color);
-const shadowTokens = parseTokens(rawTokens.shadow);
+const lightColorTokens = parseTokens(rawLightTokens.color);
+const lightShadowTokens = parseTokens(rawLightTokens.shadow);
+
+const darkColorTokens = parseTokens(rawDarkTokens.color);
+const darkShadowTokens = parseTokens(rawDarkTokens.shadow);
 
 const categories = {
 	bg: "Background",
@@ -31,6 +36,13 @@ export const links: LinksFunction = () => [
 ];
 
 export default function Page() {
+	const colorScheme = useColorScheme();
+
+	const colorTokens =
+		colorScheme === "dark" ? darkColorTokens : lightColorTokens;
+	const shadowTokens =
+		colorScheme === "dark" ? darkShadowTokens : lightShadowTokens;
+
 	return (
 		<>
 			<h1>Tokens</h1>

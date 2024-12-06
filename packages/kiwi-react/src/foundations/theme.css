@@ -2,7 +2,18 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-:root,
-:host {
+.🥝-root:where([data-kiwi-theme="light"]) {
+	@apply --theme("light");
+
+	/* TODO: Replace with tokens from Figma when available */
+	--kiwi-color-border-shadow-base: var(--kiwi-color-border-neutral-base);
+	--kiwi-color-border-shadow-strong: --primitive("color.black.12");
+}
+
+.🥝-root:where([data-kiwi-theme="dark"]) {
 	@apply --theme("dark");
+
+	/* TODO: Replace with tokens from Figma when available */
+	--kiwi-color-border-shadow-base: --primitive("color.white.8");
+	--kiwi-color-border-shadow-strong: --primitive("color.white.16");
 }

@@ -3,24 +3,44 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 import * as React from "react";
+import * as Ariakit from "@ariakit/react";
+import cx from "classnames";
 import foundationsCss from "../foundations/styles.css.js";
 import bricksCss from "./styles.css.js";
 import { isBrowser } from "./~utils.js";
 
 const css = foundationsCss + bricksCss;
 
+// ----------------------------------------------------------------------------
+
+interface RootProps extends Ariakit.RoleProps {
+	/**
+	 * The color scheme to use for all components under the Root.
+	 */
+	colorScheme: "light" | "dark";
+}
+
 /**
  * Component to be used at the root of your application. It ensures that kiwi styles are loaded
  * and automatically applied to the current page or the encompassing shadow-root.
  */
-export const Root = ({ children }: { children: React.ReactNode }) => {
-	return (
-		<>
-			<Styles />
-			{children}
-		</>
-	);
-};
+export const Root = React.forwardRef<React.ElementRef<"div">, RootProps>(
+	(props, forwardedRef) => {
+		const { children, colorScheme, ...rest } = props;
+
+		return (
+			<Ariakit.Role
+				{...rest}
+				className={cx("🥝-root", props.className)}
+				data-kiwi-theme={colorScheme}
+				ref={forwardedRef}
+			>
+				<Styles />
+				{children}
+			</Ariakit.Role>
+		);
+	},
+);
 DEV: Root.displayName = "Root";
 
 // ----------------------------------------------------------------------------

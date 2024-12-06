@@ -152,6 +152,12 @@
 	}
 }
 
+.action {
+	&:where([aria-hidden="true"]) {
+		visibility: hidden;
+	}
+}
+
 .slider {
 	block-size: 100%;
 	inline-size: 8px;

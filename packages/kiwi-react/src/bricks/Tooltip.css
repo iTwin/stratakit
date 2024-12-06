@@ -5,6 +5,7 @@
 
 .🥝-tooltip {
 	--✨bg: var(--kiwi-color-bg-surface-emphasis);
+	--✨color: var(--kiwi-color-text-neutral-emphasis);
 	--✨border: var(--kiwi-color-border-surface-primary);
 
 	@layer base {
@@ -12,6 +13,7 @@
 
 		background-color: var(--✨bg);
 		box-shadow: var(--kiwi-shadow-tooltip-base);
+		color: var(--✨color);
 
 		display: flex;
 		justify-content: center;

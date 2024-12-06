@@ -16,13 +16,13 @@
 	--✨bg--checked-hover: color-mix(in oklch, var(--✨bg--checked) 100%, var(--✨glow--bg-press));
 	--✨bg--disabled: var(--kiwi-color-bg-glow-on-surface-disabled);
 
-	--✨border--default: --primitive("color.white.8");
+	--✨border--default: var(--kiwi-color-border-shadow-base);
 	--✨border--hover: color-mix(
 		in oklch,
 		var(--✨border--default) 100%,
 		var(--kiwi-color-glow-hue) var(--kiwi-color-border-glow-base-hover-\%)
 	);
-	--✨border--checked: --primitive("color.white.16");
+	--✨border--checked: var(--kiwi-color-border-shadow-strong);
 	--✨border--checked-hover: color-mix(
 		in oklch,
 		var(--✨border--checked) 100%,
@@ -55,8 +55,8 @@
 		transition: all 150ms ease-out;
 		transition-property: background-color, border-color, box-shadow, --🥝checkbox-border-color;
 		position: relative;
-		box-shadow: var(--kiwi-shadow-button-base-drop), var(--✨shadow-border),
-			var(--kiwi-shadow-button-base-inset);
+		box-shadow: var(--kiwi-shadow-button-base-inset), var(--✨shadow-border),
+			var(--kiwi-shadow-button-base-drop);
 
 		--🥝checkbox-border-color: var(--🌀checkbox-visual-state--default, var(--✨border--default))
 			var(--🌀checkbox-visual-state--hover, var(--✨border--hover))

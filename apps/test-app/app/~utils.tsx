@@ -44,6 +44,27 @@ export function definePage(
 	};
 }
 
+// ----------------------------------------------------------------------------
+
+export function useColorScheme() {
+	const query = "(prefers-color-scheme: dark)";
+
+	const getSnapshot = React.useCallback(() => {
+		if (typeof window === "undefined") return "dark";
+		return window.matchMedia?.(query).matches ? "dark" : "light";
+	}, []);
+
+	const subscribe = React.useCallback((onChange: () => void) => {
+		const mediaQueryList = window.matchMedia?.(query);
+		mediaQueryList?.addEventListener?.("change", onChange);
+		return () => mediaQueryList?.removeEventListener?.("change", onChange);
+	}, []);
+
+	return React.useSyncExternalStore(subscribe, getSnapshot, getSnapshot);
+}
+
+// ----------------------------------------------------------------------------
+
 function useNormalizedSearchParams() {
 	const [searchParams] = useSearchParams();
 

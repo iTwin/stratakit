@@ -13,7 +13,12 @@ const css = foundationsCss + bricksCss;
 
 // ----------------------------------------------------------------------------
 
-type RootProps = OptionProps;
+type RootProps = OptionProps & {
+	/**
+	 * The color scheme to use for all components under the Root.
+	 */
+	colorScheme: "light" | "dark";
+};
 
 /**
  * Component to be used at the root of your application. It ensures that kiwi styles are loaded
@@ -21,13 +26,13 @@ type RootProps = OptionProps;
  */
 export const Root = React.forwardRef<React.ElementRef<"div">, RootProps>(
 	(props, forwardedRef) => {
-		const { children, ...rest } = props;
+		const { children, colorScheme, ...rest } = props;
 
 		return (
 			<Ariakit.Role
 				{...rest}
 				className={cx("🥝-root", props.className)}
-				data-kiwi-theme="dark"
+				data-kiwi-theme={colorScheme}
 				ref={forwardedRef}
 			>
 				<Styles />

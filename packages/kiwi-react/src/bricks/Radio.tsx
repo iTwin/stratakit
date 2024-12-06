@@ -6,11 +6,10 @@ import * as React from "react";
 import cx from "classnames";
 import * as Ariakit from "@ariakit/react";
 import { useFieldId } from "./Field.js";
-import type { FocusableProps, Props } from "./~utils.js";
+import type { FocusableProps } from "./~utils.js";
 
-type RadioProps = Props<
-	"input",
-	FocusableProps<Ariakit.RadioProps, "value" | "checked" | "onChange">,
+type RadioProps = Omit<
+	FocusableProps<"input", Ariakit.RadioProps, "value" | "checked" | "onChange">,
 	"defaultValue"
 >;
 

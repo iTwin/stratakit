@@ -6,11 +6,14 @@ import * as React from "react";
 import cx from "classnames";
 import * as Ariakit from "@ariakit/react";
 import { useFieldId } from "./Field.js";
-import type { FocusableProps, Props } from "./~utils.js";
+import type { FocusableProps } from "./~utils.js";
 
-type CheckboxProps = Props<
-	"input",
-	FocusableProps<Ariakit.CheckboxProps, "checked" | "defaultChecked">,
+type CheckboxProps = Omit<
+	FocusableProps<
+		"input",
+		Ariakit.CheckboxProps,
+		"value" | "defaultChecked" | "checked" | "onChange"
+	>,
 	"defaultValue"
 >;
 

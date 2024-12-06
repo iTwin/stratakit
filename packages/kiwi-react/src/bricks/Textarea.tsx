@@ -6,12 +6,9 @@ import * as React from "react";
 import * as Ariakit from "@ariakit/react";
 import cx from "classnames";
 import { useFieldId } from "./Field.js";
-import type { FocusableProps, Props } from "./~utils.js";
+import type { FocusableProps } from "./~utils.js";
 
-type TextareaProps = Props<
-	"textarea",
-	FocusableProps<Ariakit.FocusableProps<"textarea">>
->;
+type TextareaProps = FocusableProps<"textarea">;
 
 /**
  * Textarea component that allows users to enter multiline text values.

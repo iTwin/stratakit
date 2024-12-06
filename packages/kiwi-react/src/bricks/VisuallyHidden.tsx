@@ -4,12 +4,9 @@
  *--------------------------------------------------------------------------------------------*/
 import React from "react";
 import * as Ariakit from "@ariakit/react";
-import type { OptionProps, Props } from "./~utils.js";
+import type { OptionProps } from "./~utils.js";
 
-type VisuallyHiddenProps = Props<
-	"span",
-	OptionProps<Ariakit.VisuallyHiddenProps>
->;
+type VisuallyHiddenProps = OptionProps<"span", Ariakit.VisuallyHiddenProps>;
 
 export const VisuallyHidden = React.forwardRef<
 	React.ElementRef<"span">,

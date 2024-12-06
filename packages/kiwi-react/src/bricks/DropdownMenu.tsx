@@ -8,15 +8,14 @@ import * as Ariakit from "@ariakit/react";
 import * as ListItem from "./ListItem.js";
 import { Button } from "./Button.js";
 import { DisclosureArrow } from "./Icon.js";
-import { supportsPopover, type FocusableProps, type Props } from "./~utils.js";
+import { supportsPopover, type FocusableProps } from "./~utils.js";
 
 // ----------------------------------------------------------------------------
 
-interface DropdownMenuProps
-	extends Pick<
-		Ariakit.MenuProviderProps,
-		"children" | "placement" | "open" | "setOpen" | "defaultOpen"
-	> {}
+type DropdownMenuProps = Pick<
+	Ariakit.MenuProviderProps,
+	"children" | "placement" | "open" | "setOpen" | "defaultOpen"
+>;
 
 /**
  * Dropdown menu component displays a list of actions or commands.
@@ -71,7 +70,7 @@ DEV: DropdownMenu.displayName = "DropdownMenu.Root";
 
 // ----------------------------------------------------------------------------
 
-type DropdownMenuContentProps = Props<"div", FocusableProps<Ariakit.MenuProps>>;
+type DropdownMenuContentProps = FocusableProps<"div", Ariakit.MenuProps>;
 
 const DropdownMenuContent = React.forwardRef<
 	React.ElementRef<typeof Ariakit.Menu>,
@@ -93,9 +92,9 @@ DEV: DropdownMenuContent.displayName = "DropdownMenu.Content";
 
 // ----------------------------------------------------------------------------
 
-type DropdownMenuButtonProps = Props<
+type DropdownMenuButtonProps = FocusableProps<
 	"button",
-	FocusableProps<Ariakit.MenuButtonProps>
+	Ariakit.MenuButtonProps
 >;
 
 const DropdownMenuButton = React.forwardRef<
@@ -122,10 +121,7 @@ DEV: DropdownMenuButton.displayName = "DropdownMenu.Button";
 
 // ----------------------------------------------------------------------------
 
-type DropdownMenuItemProps = Props<
-	"div",
-	FocusableProps<Ariakit.MenuItemProps>
->;
+type DropdownMenuItemProps = FocusableProps<"div", Ariakit.MenuItemProps>;
 
 const DropdownMenuItem = React.forwardRef<
 	React.ElementRef<typeof Ariakit.MenuItem>,

@@ -7,13 +7,13 @@ import * as Ariakit from "@ariakit/react";
 import cx from "classnames";
 import foundationsCss from "../foundations/styles.css.js";
 import bricksCss from "./styles.css.js";
-import { isBrowser, type OptionProps, type Props } from "./~utils.js";
+import { isBrowser, type OptionProps } from "./~utils.js";
 
 const css = foundationsCss + bricksCss;
 
 // ----------------------------------------------------------------------------
 
-type RootProps = Props<"div", OptionProps>;
+type RootProps = OptionProps;
 
 /**
  * Component to be used at the root of your application. It ensures that kiwi styles are loaded

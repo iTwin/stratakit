@@ -9,11 +9,11 @@ import { useFieldId } from "./Field.js";
 import { Icon } from "./Icon.js";
 import { Textarea } from "./Textarea.js";
 import { useMergedRefs } from "./~hooks.js";
-import type { FocusableProps, OptionProps, Props } from "./~utils.js";
+import type { FocusableProps, OptionProps } from "./~utils.js";
 
 // ----------------------------------------------------------------------------
 
-type BaseInputProps = Props<"input", FocusableProps>;
+type BaseInputProps = FocusableProps<"input">;
 
 interface TextBoxInputProps extends Omit<BaseInputProps, "children" | "type"> {
 	/** Input is a [void element](https://developer.mozilla.org/en-US/docs/Glossary/Void_element) and no content is permitted. */
@@ -69,7 +69,7 @@ DEV: TextBoxInput.displayName = "TextBox.Input";
 
 // ----------------------------------------------------------------------------
 
-type TextBoxRootProps = Props<"div", OptionProps>;
+type TextBoxRootProps = OptionProps;
 
 /**
  * Root component allows adding additional decorations to text based inputs.
@@ -133,7 +133,7 @@ DEV: TextBoxIcon.displayName = "TextBox.Icon";
 
 // ----------------------------------------------------------------------------
 
-type TextBoxTextProps = Props<"span", OptionProps<Ariakit.RoleProps<"span">>>;
+type TextBoxTextProps = OptionProps<"span">;
 
 const TextBoxText = React.forwardRef<
 	React.ElementRef<"span">,

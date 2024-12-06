@@ -8,18 +8,19 @@ export const isBrowser = typeof document !== "undefined";
 
 export const supportsPopover = isBrowser && "popover" in HTMLElement.prototype;
 
-export type Props<
+type MergeProps<
 	T extends React.ElementType,
 	AdditionalProps extends Record<string, unknown>,
-	TKeysToOmit extends keyof React.ComponentProps<T> = never,
 > = AdditionalProps &
-	Omit<React.ComponentPropsWithRef<T>, keyof AdditionalProps | TKeysToOmit>;
+	Omit<React.ComponentPropsWithRef<T>, keyof AdditionalProps>;
 
 export type OptionProps<
-	T extends Ariakit.RoleOptions = Ariakit.RoleProps,
-	AdditionalTKeys extends keyof T = never,
-> = Pick<T, "render" | AdditionalTKeys>;
+	T extends React.ElementType = "div",
+	TProps extends Ariakit.RoleOptions<T> = Ariakit.RoleProps<T>,
+	KProps extends keyof TProps = never,
+> = MergeProps<T, Pick<TProps, "render" | KProps>>;
 export type FocusableProps<
-	T extends Ariakit.FocusableOptions = Ariakit.FocusableProps,
-	AdditionalTKeys extends keyof T = never,
-> = OptionProps<T, "disabled" | "accessibleWhenDisabled" | AdditionalTKeys>;
+	T extends React.ElementType = "div",
+	TProps extends Ariakit.FocusableOptions<T> = Ariakit.FocusableProps<T>,
+	KProps extends keyof TProps = never,
+> = OptionProps<T, TProps, "disabled" | "accessibleWhenDisabled" | KProps>;

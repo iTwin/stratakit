@@ -5,19 +5,16 @@
 import * as React from "react";
 import * as Ariakit from "@ariakit/react";
 import cx from "classnames";
-import type { OptionProps, Props } from "./~utils.js";
+import type { OptionProps } from "./~utils.js";
 
 // ----------------------------------------------------------------------------
 
-type FieldProps = Props<
-	"div",
-	OptionProps & {
-		/**
-		 * Allows overriding the default block layout for text controls.
-		 */
-		layout?: "inline";
-	}
->;
+type FieldProps = OptionProps & {
+	/**
+	 * Allows overriding the default block layout for text controls.
+	 */
+	layout?: "inline";
+};
 
 export const Field = React.forwardRef<React.ElementRef<"div">, FieldProps>(
 	(props, forwardedRef) => {

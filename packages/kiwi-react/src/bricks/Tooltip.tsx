@@ -5,11 +5,11 @@
 import * as React from "react";
 import cx from "classnames";
 import * as Ariakit from "@ariakit/react";
-import { supportsPopover, type FocusableProps, type Props } from "./~utils.js";
+import { supportsPopover, type FocusableProps } from "./~utils.js";
 
-type TooltipProps = Props<
-	"div",
-	FocusableProps<Ariakit.TooltipProps, "open" | "unmountOnHide">
+type TooltipProps = Omit<
+	FocusableProps<"div", Ariakit.TooltipProps, "open" | "unmountOnHide">,
+	"content"
 > &
 	Pick<Ariakit.TooltipProviderProps, "defaultOpen" | "setOpen"> & {
 		/**

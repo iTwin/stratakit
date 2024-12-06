@@ -6,9 +6,9 @@ import * as React from "react";
 import cx from "classnames";
 import * as Ariakit from "@ariakit/react";
 import { useFieldId } from "./Field.js";
-import type { OptionProps, Props } from "./~utils.js";
+import type { OptionProps } from "./~utils.js";
 
-type LabelProps = Props<"label", OptionProps<Ariakit.RoleProps<"label">>>;
+type LabelProps = OptionProps<"label">;
 
 export const Label = React.forwardRef<
 	React.ElementRef<typeof Ariakit.Role.label>,

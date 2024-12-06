@@ -5,15 +5,12 @@
 import * as React from "react";
 import cx from "classnames";
 import * as Ariakit from "@ariakit/react";
-import type { OptionProps, Props } from "./~utils.js";
+import type { OptionProps } from "./~utils.js";
 
-type KbdProps = Props<
-	"kbd",
-	OptionProps<Ariakit.RoleProps<"kbd">> & {
-		/** @default "solid" */
-		variant?: "solid" | "muted" | "ghost";
-	}
->;
+type KbdProps = OptionProps<"kbd"> & {
+	/** @default "solid" */
+	variant?: "solid" | "muted" | "ghost";
+};
 
 /**
  * A styled wrapper over the HTML `<kbd>` element. This is typically

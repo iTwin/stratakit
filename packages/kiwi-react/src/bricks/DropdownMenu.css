@@ -29,7 +29,6 @@
 }
 
 [data-kiwi-with-shortcuts="true"] {
-	display:flex;
+	display: flex;
 	gap: 0.75rem;
 }
-

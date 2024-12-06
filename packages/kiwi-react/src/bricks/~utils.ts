@@ -13,7 +13,7 @@ type MergeProps<
 	ElementType extends React.ElementType,
 	CustomProps extends Record<string, unknown>,
 > = CustomProps &
-	Omit<React.ComponentPropsWithRef<ElementType>, keyof CustomProps>;
+	Omit<React.ComponentPropsWithoutRef<ElementType>, keyof CustomProps>;
 
 /** Base component props with custom props. */
 export type BaseProps<

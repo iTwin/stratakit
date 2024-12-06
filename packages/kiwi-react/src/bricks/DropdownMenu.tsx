@@ -149,21 +149,20 @@ const DropdownMenuItem = React.forwardRef<
 	const hasShortcuts =
 		typeof shortcuts === "string" && shortcuts.trim().length > 0;
 
-	const listItemWithShortCut = cx(props.className, {
-		"data-has-shortcuts": hasShortcuts,
-	});
-
 	return (
 		<Ariakit.MenuItem
 			accessibleWhenDisabled
 			{...rest}
 			render={
-				<ListItem.Root render={props.render} className={listItemWithShortCut}>
+				<ListItem.Root
+					render={props.render}
+					data-kiwi-with-shortcuts={hasShortcuts}
+				>
 					<span>{props.children}</span>
 					{hasShortcuts && (
 						<ListItem.Content>
 							{shortcutKeys.map((key, index) => (
-								<Kbd variant="ghost" key={index}>
+								<Kbd variant="ghost" key={`${key + index}`}>
 									{key}
 								</Kbd>
 							))}

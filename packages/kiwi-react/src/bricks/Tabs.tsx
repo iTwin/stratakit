@@ -63,10 +63,10 @@ DEV: Tabs.displayName = "Tabs.Root";
 
 // ----------------------------------------------------------------------------
 
-type TabListProps = BaseProps & {
+interface TabListProps extends BaseProps {
 	/** @default "neutral" */
 	tone?: "neutral" | "accent";
-};
+}
 
 const TabList = React.forwardRef<
 	React.ElementRef<typeof Ariakit.TabList>,
@@ -94,7 +94,7 @@ DEV: TabList.displayName = "Tabs.TabList";
 
 // ----------------------------------------------------------------------------
 
-type TabProps = FocusableProps<"button", Ariakit.TabProps, "id">;
+interface TabProps extends FocusableProps<"button", Ariakit.TabProps, "id"> {}
 
 const Tab = React.forwardRef<React.ElementRef<typeof Ariakit.Tab>, TabProps>(
 	(props, forwardedRef) => {
@@ -112,11 +112,8 @@ DEV: Tab.displayName = "Tabs.Tab";
 
 // ----------------------------------------------------------------------------
 
-type TabPanelProps = BaseProps<
-	"div",
-	Ariakit.TabPanelProps,
-	"tabId" | "unmountOnHide"
->;
+interface TabPanelProps
+	extends BaseProps<"div", Ariakit.TabPanelProps, "tabId" | "unmountOnHide"> {}
 
 const TabPanel = React.forwardRef<
 	React.ElementRef<typeof Ariakit.TabPanel>,

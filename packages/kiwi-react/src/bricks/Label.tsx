@@ -8,7 +8,7 @@ import * as Ariakit from "@ariakit/react";
 import { useFieldId } from "./Field.js";
 import type { BaseProps } from "./~utils.js";
 
-type LabelProps = BaseProps<"label">;
+interface LabelProps extends BaseProps<"label"> {}
 
 export const Label = React.forwardRef<
 	React.ElementRef<typeof Ariakit.Role.label>,

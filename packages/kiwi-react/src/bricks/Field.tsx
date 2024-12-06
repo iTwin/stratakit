@@ -9,12 +9,12 @@ import type { BaseProps } from "./~utils.js";
 
 // ----------------------------------------------------------------------------
 
-type FieldProps = BaseProps & {
+interface FieldProps extends BaseProps {
 	/**
 	 * Allows overriding the default block layout for text controls.
 	 */
 	layout?: "inline";
-};
+}
 
 export const Field = React.forwardRef<React.ElementRef<"div">, FieldProps>(
 	(props, forwardedRef) => {

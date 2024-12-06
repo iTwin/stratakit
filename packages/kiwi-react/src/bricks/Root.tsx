@@ -13,12 +13,12 @@ const css = foundationsCss + bricksCss;
 
 // ----------------------------------------------------------------------------
 
-type RootProps = BaseProps & {
+interface RootProps extends BaseProps {
 	/**
 	 * The color scheme to use for all components under the Root.
 	 */
 	colorScheme: "light" | "dark";
-};
+}
 
 /**
  * Component to be used at the root of your application. It ensures that kiwi styles are loaded

@@ -9,10 +9,8 @@ import { VisuallyHidden } from "./VisuallyHidden.js";
 import { Icon } from "./Icon.js";
 import { Tooltip } from "./Tooltip.js";
 
-type IconButtonBaseProps = Omit<
-	React.ComponentProps<typeof Button>,
-	"children" | "tone"
-> & {
+interface IconButtonBaseProps
+	extends Omit<React.ComponentProps<typeof Button>, "children" | "tone"> {
 	/**
 	 * Accessible name for the button.
 	 *
@@ -36,7 +34,7 @@ type IconButtonBaseProps = Omit<
 	 * @default "tooltip"
 	 */
 	labelVariant?: "tooltip" | "visually-hidden";
-};
+}
 
 type IconButtonExtraProps =
 	| {

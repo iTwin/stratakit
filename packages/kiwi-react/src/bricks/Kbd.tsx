@@ -7,10 +7,10 @@ import cx from "classnames";
 import * as Ariakit from "@ariakit/react";
 import type { BaseProps } from "./~utils.js";
 
-type KbdProps = BaseProps<"kbd"> & {
+interface KbdProps extends BaseProps<"kbd"> {
 	/** @default "solid" */
 	variant?: "solid" | "muted" | "ghost";
-};
+}
 
 /**
  * A styled wrapper over the HTML `<kbd>` element. This is typically

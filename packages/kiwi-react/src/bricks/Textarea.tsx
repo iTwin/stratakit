@@ -8,7 +8,7 @@ import cx from "classnames";
 import { useFieldId } from "./Field.js";
 import type { FocusableProps } from "./~utils.js";
 
-type TextareaProps = FocusableProps<"textarea">;
+interface TextareaProps extends FocusableProps<"textarea"> {}
 
 /**
  * Textarea component that allows users to enter multiline text values.

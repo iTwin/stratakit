@@ -12,7 +12,7 @@ import type { BaseProps } from "./~utils.js";
 
 // ----------------------------------------------------------------------------
 
-type TreeProps = BaseProps;
+interface TreeProps extends BaseProps {}
 
 const Tree = React.forwardRef<React.ElementRef<"div">, TreeProps>(
 	(props, forwardedRef) => {
@@ -26,12 +26,12 @@ const Tree = React.forwardRef<React.ElementRef<"div">, TreeProps>(
 DEV: Tree.displayName = "Tree.Root";
 
 // ----------------------------------------------------------------------------
-type TreeItemProps = Omit<BaseProps, "content"> & {
+interface TreeItemProps extends Omit<BaseProps, "content"> {
 	content?: React.ReactNode;
 	selected?: boolean;
 	/** Specifies if the tree item is expanded. Used to determine if a tree item is a parent node. Defaults to `undefined`. */
 	expanded?: boolean;
-};
+}
 
 const TreeItem = React.forwardRef<React.ElementRef<"div">, TreeItemProps>(
 	(props, forwardedRef) => {
@@ -77,7 +77,7 @@ DEV: TreeItem.displayName = "Tree.Item";
 
 // ----------------------------------------------------------------------------
 
-type TreeItemContentProps = BaseProps<"span">;
+interface TreeItemContentProps extends BaseProps<"span"> {}
 
 const TreeItemContent = React.forwardRef<
 	React.ElementRef<typeof ListItem.Content>,
@@ -126,7 +126,7 @@ DEV: TreeItemExpander.displayName = "Tree.Expander";
 
 // ----------------------------------------------------------------------------
 
-type TreeChevronProps = Omit<BaseProps<"svg">, "children">;
+interface TreeChevronProps extends Omit<BaseProps<"svg">, "children"> {}
 
 const TreeChevron = React.forwardRef<React.ElementRef<"svg">, TreeChevronProps>(
 	(props, forwardedRef) => {

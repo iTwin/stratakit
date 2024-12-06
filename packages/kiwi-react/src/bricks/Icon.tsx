@@ -7,12 +7,12 @@ import cx from "classnames";
 import * as Ariakit from "@ariakit/react";
 import type { BaseProps } from "./~utils.js";
 
-type IconProps = Omit<BaseProps<"svg">, "children"> & {
+interface IconProps extends Omit<BaseProps<"svg">, "children"> {
 	/** URL of the symbol sprite. */
 	href?: string;
 	/** Size of the icon. Defaults to `regular`. */
 	size?: "regular" | "large";
-};
+}
 
 /**
  * Icon component that provides fill and sizing to the SVGs from `@itwin/kiwi-icons`.
@@ -57,13 +57,13 @@ function toIconId(size: IconProps["size"]) {
 
 // ----------------------------------------------------------------------------
 
-type DisclosureArrowProps = Omit<BaseProps<"svg">, "children"> & {
+interface DisclosureArrowProps extends Omit<BaseProps<"svg">, "children"> {
 	/**
 	 * Which direction should the arrow point towards?
 	 * @default "down"
 	 */
 	direction?: "down" | "right";
-};
+}
 
 export const DisclosureArrow = React.forwardRef<
 	React.ElementRef<"svg">,

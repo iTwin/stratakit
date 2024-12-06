@@ -13,7 +13,7 @@ import type { FocusableProps, BaseProps } from "./~utils.js";
 
 // ----------------------------------------------------------------------------
 
-type BaseInputProps = FocusableProps<"input">;
+interface BaseInputProps extends FocusableProps<"input"> {}
 
 interface TextBoxInputProps extends Omit<BaseInputProps, "children" | "type"> {
 	/** Input is a [void element](https://developer.mozilla.org/en-US/docs/Glossary/Void_element) and no content is permitted. */
@@ -69,7 +69,7 @@ DEV: TextBoxInput.displayName = "TextBox.Input";
 
 // ----------------------------------------------------------------------------
 
-type TextBoxRootProps = BaseProps;
+interface TextBoxRootProps extends BaseProps {}
 
 /**
  * Root component allows adding additional decorations to text based inputs.
@@ -115,7 +115,7 @@ DEV: TextBoxRoot.displayName = "TextBox.Root";
 
 // ----------------------------------------------------------------------------
 
-type TextBoxIconProps = React.ComponentProps<typeof Icon>;
+interface TextBoxIconProps extends React.ComponentProps<typeof Icon> {}
 
 const TextBoxIcon = React.forwardRef<
 	React.ElementRef<typeof Icon>,
@@ -133,7 +133,7 @@ DEV: TextBoxIcon.displayName = "TextBox.Icon";
 
 // ----------------------------------------------------------------------------
 
-type TextBoxTextProps = BaseProps<"span">;
+interface TextBoxTextProps extends BaseProps<"span"> {}
 
 const TextBoxText = React.forwardRef<
 	React.ElementRef<"span">,

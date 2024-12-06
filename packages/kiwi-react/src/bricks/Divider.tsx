@@ -7,14 +7,15 @@ import cx from "classnames";
 import * as Ariakit from "@ariakit/react";
 import type { BaseProps } from "./~utils.js";
 
-type DividerProps = BaseProps<"hr", Ariakit.SeparatorProps, "orientation"> & {
+interface DividerProps
+	extends BaseProps<"hr", Ariakit.SeparatorProps, "orientation"> {
 	/**
 	 * If true, the divider will be purely presentational and will not have any associated semantics.
 	 *
 	 * @default false
 	 */
 	presentational?: boolean;
-};
+}
 
 /**
  * The `Divider` component can be used for grouping and dividing content within a layout.

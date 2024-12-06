@@ -7,11 +7,9 @@
 	--✨shadow-border: 0px 0px 0px 1px var(--kiwi-color-border-shadow-base) inset;
 
 	@layer base {
-		color: var(--kiwi-color-text-neutral-secondary);
-		font-family: var(--kiwi-font-family-mono);
-		font-size: var(--kiwi-font-size-12);
+		@apply --typography("body-sm");
 		font-weight: 500;
-		line-height: 1.3333;
+		color: var(--kiwi-color-text-neutral-secondary);
 
 		display: inline-flex;
 		align-items: center;

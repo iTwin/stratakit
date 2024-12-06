@@ -7,6 +7,7 @@
 	--✨bg: var(--kiwi-color-bg-surface-emphasis);
 	--✨color: var(--kiwi-color-text-neutral-emphasis);
 	--✨border: var(--kiwi-color-border-surface-primary);
+	--✨border-width: 1px;
 
 	@layer base {
 		@apply --typography("body-sm");
@@ -19,10 +20,10 @@
 		justify-content: center;
 		gap: 0.25rem;
 
-		border: 1px solid var(--✨border);
+		border: var(--✨border-width) solid var(--✨border);
 		border-radius: 0.25rem;
-		padding-block: 0.1875rem;
-		padding-inline: 0.4375rem;
+		padding-block: calc(0.25rem - var(--✨border-width));
+		padding-inline: calc(0.5rem - var(--✨border-width));
 		min-block-size: 1rem;
 		max-inline-size: 12.25rem;
 	}

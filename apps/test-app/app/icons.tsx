@@ -7,7 +7,7 @@ import type { MetaFunction } from "react-router";
 import iconsListJson from "@itwin/kiwi-icons/icons-list.json";
 
 const allIcons = import.meta.glob(
-	"../../node_modules/@itwin/kiwi-icons/icons/*.svg",
+	"../node_modules/@itwin/kiwi-icons/icons/*.svg",
 	{ eager: true },
 );
 
@@ -17,7 +17,7 @@ export const meta: MetaFunction = () => {
 };
 
 function getIconHref(icon: string) {
-	const module = allIcons[`../../node_modules/@itwin/kiwi-icons/icons/${icon}`];
+	const module = allIcons[`../node_modules/@itwin/kiwi-icons/icons/${icon}`];
 	return (module as { default: string })?.default;
 }
 

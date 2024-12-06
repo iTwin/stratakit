@@ -141,25 +141,34 @@ const DropdownMenuItem = React.forwardRef<
 >((props, forwardedRef) => {
 	const { shortcuts, ...rest } = props;
 
-	const shortcutKeys = typeof shortcuts === "string"
+	const shortcutKeys =
+		typeof shortcuts === "string"
 			? shortcuts.split("+").map((key) => key.trim())
 			: [];
 
-	const hasShortcuts = typeof shortcuts === "string" && shortcuts.trim().length > 0;
+	const hasShortcuts =
+		typeof shortcuts === "string" && shortcuts.trim().length > 0;
 
 	return (
-		<Ariakit.MenuItem accessibleWhenDisabled {...rest}
+		<Ariakit.MenuItem
+			accessibleWhenDisabled
+			{...rest}
 			render={<ListItem.Root render={props.render} />}
-			ref={forwardedRef}>
-				<ListItem.Content data-kiwi-with-shortcuts={hasShortcuts}>{props.children}</ListItem.Content>
-				{hasShortcuts && (
-					<span>
-						{shortcutKeys.map((key, index) => (
-							<Kbd variant="ghost" key={`${key + index}`}>{key}</Kbd>
-						))}
-					</span>
-				)}
-			</Ariakit.MenuItem>
+			ref={forwardedRef}
+		>
+			<ListItem.Content data-kiwi-with-shortcuts={hasShortcuts}>
+				{props.children}
+			</ListItem.Content>
+			{hasShortcuts && (
+				<span>
+					{shortcutKeys.map((key, index) => (
+						<Kbd variant="ghost" key={`${key + index}`}>
+							{key}
+						</Kbd>
+					))}
+				</span>
+			)}
+		</Ariakit.MenuItem>
 	);
 });
 DEV: DropdownMenuItem.displayName = "DropdownMenu.Item";

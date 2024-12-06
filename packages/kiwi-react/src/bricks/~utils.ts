@@ -10,20 +10,27 @@ export const supportsPopover = isBrowser && "popover" in HTMLElement.prototype;
 
 /** Element type props merged with custom props. */
 type MergeProps<
-	T extends React.ElementType,
-	P extends Record<string, unknown>,
-> = P & Omit<React.ComponentPropsWithRef<T>, keyof P>;
+	ElementType extends React.ElementType,
+	CustomProps extends Record<string, unknown>,
+> = CustomProps &
+	Omit<React.ComponentPropsWithRef<ElementType>, keyof CustomProps>;
 
 /** Base component props with custom props. */
 export type BaseProps<
-	T extends React.ElementType = "div",
-	P extends Ariakit.RoleOptions<T> = Ariakit.RoleProps<T>,
-	K extends keyof P = never,
-> = MergeProps<T, Pick<P, "render" | K>>;
+	ElementType extends React.ElementType = "div",
+	CustomProps extends
+		Ariakit.RoleOptions<ElementType> = Ariakit.RoleProps<ElementType>,
+	CustomPropKeys extends keyof CustomProps = never,
+> = MergeProps<ElementType, Pick<CustomProps, "render" | CustomPropKeys>>;
 
 /** Focusable component props with custom props. */
 export type FocusableProps<
-	T extends React.ElementType = "div",
-	P extends Ariakit.FocusableOptions<T> = Ariakit.FocusableProps<T>,
-	K extends keyof P = never,
-> = BaseProps<T, P, "disabled" | "accessibleWhenDisabled" | K>;
+	ElementType extends React.ElementType = "div",
+	CustomProps extends
+		Ariakit.FocusableOptions<ElementType> = Ariakit.FocusableProps<ElementType>,
+	CustomPropKeys extends keyof CustomProps = never,
+> = BaseProps<
+	ElementType,
+	CustomProps,
+	"disabled" | "accessibleWhenDisabled" | CustomPropKeys
+>;

@@ -27,8 +27,6 @@
 		"@axe-core/playwright": "^4.10.1",
 		"@playwright/test": "~1.49.0",
 		"@react-router/dev": "^7.0.2",
-		"@react-router/remix-routes-option-adapter": "^7.0.2",
-		"@remix-run/v1-route-convention": "^0.1.4",
 		"@types/node": "*",
 		"@types/react": "*",
 		"@types/react-dom": "*",

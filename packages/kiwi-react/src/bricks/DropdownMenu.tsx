@@ -141,33 +141,23 @@ const DropdownMenuItem = React.forwardRef<
 >((props, forwardedRef) => {
 	const { shortcuts, ...rest } = props;
 
-	const shortcutKeys =
-		typeof shortcuts === "string"
+	const shortcutKeys = typeof shortcuts === "string"
 			? shortcuts.split("+").map((key) => key.trim())
 			: [];
 
-	const hasShortcuts =
-		typeof shortcuts === "string" && shortcuts.trim().length > 0;
+	const hasShortcuts = typeof shortcuts === "string" && shortcuts.trim().length > 0;
 
 	return (
-		<Ariakit.MenuItem
-			accessibleWhenDisabled
-			{...rest}
-			render={
-				<ListItem.Root
-					render={props.render}
-					data-kiwi-with-shortcuts={hasShortcuts}
-				>
-					<span>{props.children}</span>
-					{hasShortcuts && (
-						<ListItem.Content>
-							{shortcutKeys.map((key, index) => (
-								<Kbd variant="ghost" key={`${key + index}`}>
-									{key}
-								</Kbd>
+		<Ariakit.MenuItem accessibleWhenDisabled {...rest}
+			render={<ListItem.Root render={props.render} >
+					<ListItem.Content data-kiwi-with-shortcuts={hasShortcuts}>
+						<span>{props.children}</span>
+						<div>
+							{hasShortcuts && shortcutKeys.map((key, index) => (
+								<Kbd variant="ghost" key={`${key + index}`}>{key}</Kbd>
 							))}
-						</ListItem.Content>
-					)}
+						</div>
+					</ListItem.Content>
 				</ListItem.Root>
 			}
 			ref={forwardedRef}

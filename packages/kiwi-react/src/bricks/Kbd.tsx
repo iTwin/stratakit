@@ -12,15 +12,15 @@ interface KbdProps extends Ariakit.RoleProps<"kbd"> {
 }
 
 export const kbdKeys = {
-	Command: "\u2318 Cmd",
-	Shift: "\u21e7 Shift",
-	Backspace: "\u232b Backspace",
-	Enter: "\u21b5 Enter",
-	Eject: "\u23cf Eject",
+	Command: "\u2318",
+	Shift: "\u21e7",
+	Backspace: "\u232b",
+	Enter: "\u21b5",
+	Eject: "\u23cf",
 	Control: "Ctrl",
-	Windows: "\u229e Win",
+	Windows: "\u229e",
 	Apple: "\uf8ff",
-	Option: "\u2325 Option",
+	Option: "\u2325",
 	Left: "\u2190",
 	Up: "\u2191",
 	Right: "\u2192",

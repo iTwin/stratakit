@@ -150,14 +150,12 @@ const DropdownMenuItem = React.forwardRef<
 	return (
 		<Ariakit.MenuItem accessibleWhenDisabled {...rest}
 			render={<ListItem.Root render={props.render} >
-					<ListItem.Content data-kiwi-with-shortcuts={hasShortcuts}>
-						<span>{props.children}</span>
-						<div>
+					<ListItem.Content data-kiwi-with-shortcuts={hasShortcuts}>{props.children}</ListItem.Content>
+						<span>
 							{hasShortcuts && shortcutKeys.map((key, index) => (
 								<Kbd variant="ghost" key={`${key + index}`}>{key}</Kbd>
 							))}
-						</div>
-					</ListItem.Content>
+						</span>
 				</ListItem.Root>
 			}
 			ref={forwardedRef}

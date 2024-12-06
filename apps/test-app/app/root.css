@@ -11,9 +11,19 @@
 		format("woff2");
 }
 
+.AppRoot {
+	color: var(--kiwi-color-text-neutral-primary);
+}
+
+/* FIXME: This is a temporary hack to inform axe-playwright about the page background. */
+html {
+	background-color: var(--kiwi-color-bg-surface-primary, #25282c);
+}
+
+/* FIXME: This is a temporary hack until we add custom properties to :root */
 .AppRoot::before {
 	content: "";
-	position: absolute;
+	position: fixed;
 	inset: 0;
 	z-index: -1;
 	background-color: var(--kiwi-color-bg-surface-primary);

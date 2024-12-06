@@ -27,8 +27,8 @@
 	);
 	--✨bg--solid-disabled: var(--kiwi-color-bg-glow-on-surface-disabled);
 
-	--✨shadow--solid: var(--kiwi-shadow-button-base-drop), var(--✨shadow-border),
-		var(--kiwi-shadow-button-base-inset);
+	--✨shadow--solid: var(--kiwi-shadow-button-base-inset), var(--✨shadow-border),
+		var(--kiwi-shadow-button-base-drop);
 
 	--✨border--solid-neutral-default: var(--kiwi-color-border-shadow-base);
 	--✨border--solid-neutral-hover: color-mix(

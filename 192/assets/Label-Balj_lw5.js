@@ -1,0 +1,1 @@
+import{r as e,l as o}from"./chunk-D52XG6IA-CwR_5lM7.js";import{c as t}from"./index-BKiZWcHg.js";import{u as l}from"./Field-Bv7KRzsu.js";import{R as m}from"./XL7CSKGW-D04Y8Mnq.js";const d=e.forwardRef((r,s)=>{const a=l();return o.jsx(m.label,{htmlFor:a,...r,className:t("🥝-label",r.className),ref:s})});export{d as L};

@@ -21,8 +21,8 @@
 
 		border: 1px solid var(--✨border);
 		border-radius: 0.25rem;
-		padding-block: 0.25rem;
-		padding-inline: 0.5rem;
+		padding-block: 0.1875rem;
+		padding-inline: 0.4375rem;
 		min-block-size: 1rem;
 		max-inline-size: 12.25rem;
 	}

@@ -9,7 +9,7 @@ import { useFieldId } from "./Field.js";
 import { Icon } from "./Icon.js";
 import { Textarea } from "./Textarea.js";
 import { useMergedRefs } from "./~hooks.js";
-import type { FocusableProps, OptionProps } from "./~utils.js";
+import type { FocusableProps, BaseProps } from "./~utils.js";
 
 // ----------------------------------------------------------------------------
 
@@ -69,7 +69,7 @@ DEV: TextBoxInput.displayName = "TextBox.Input";
 
 // ----------------------------------------------------------------------------
 
-type TextBoxRootProps = OptionProps;
+type TextBoxRootProps = BaseProps;
 
 /**
  * Root component allows adding additional decorations to text based inputs.
@@ -133,7 +133,7 @@ DEV: TextBoxIcon.displayName = "TextBox.Icon";
 
 // ----------------------------------------------------------------------------
 
-type TextBoxTextProps = OptionProps<"span">;
+type TextBoxTextProps = BaseProps<"span">;
 
 const TextBoxText = React.forwardRef<
 	React.ElementRef<"span">,

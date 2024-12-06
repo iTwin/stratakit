@@ -15,7 +15,7 @@ type MergeProps<
 > = P & Omit<React.ComponentPropsWithRef<T>, keyof P>;
 
 /** Base component props with custom props. */
-export type OptionProps<
+export type BaseProps<
 	T extends React.ElementType = "div",
 	P extends Ariakit.RoleOptions<T> = Ariakit.RoleProps<T>,
 	K extends keyof P = never,
@@ -26,4 +26,4 @@ export type FocusableProps<
 	T extends React.ElementType = "div",
 	P extends Ariakit.FocusableOptions<T> = Ariakit.FocusableProps<T>,
 	K extends keyof P = never,
-> = OptionProps<T, P, "disabled" | "accessibleWhenDisabled" | K>;
+> = BaseProps<T, P, "disabled" | "accessibleWhenDisabled" | K>;

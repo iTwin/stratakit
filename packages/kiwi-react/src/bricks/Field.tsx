@@ -5,11 +5,11 @@
 import * as React from "react";
 import * as Ariakit from "@ariakit/react";
 import cx from "classnames";
-import type { OptionProps } from "./~utils.js";
+import type { BaseProps } from "./~utils.js";
 
 // ----------------------------------------------------------------------------
 
-type FieldProps = OptionProps & {
+type FieldProps = BaseProps & {
 	/**
 	 * Allows overriding the default block layout for text controls.
 	 */

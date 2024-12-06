@@ -5,9 +5,9 @@
 import * as React from "react";
 import cx from "classnames";
 import * as Ariakit from "@ariakit/react";
-import type { OptionProps } from "./~utils.js";
+import type { BaseProps } from "./~utils.js";
 
-type IconProps = Omit<OptionProps<"svg">, "children"> & {
+type IconProps = Omit<BaseProps<"svg">, "children"> & {
 	/** URL of the symbol sprite. */
 	href?: string;
 	/** Size of the icon. Defaults to `regular`. */
@@ -57,7 +57,7 @@ function toIconId(size: IconProps["size"]) {
 
 // ----------------------------------------------------------------------------
 
-type DisclosureArrowProps = Omit<OptionProps<"svg">, "children"> & {
+type DisclosureArrowProps = Omit<BaseProps<"svg">, "children"> & {
 	/**
 	 * Which direction should the arrow point towards?
 	 * @default "down"

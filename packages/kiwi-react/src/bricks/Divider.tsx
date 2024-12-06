@@ -5,9 +5,9 @@
 import * as React from "react";
 import cx from "classnames";
 import * as Ariakit from "@ariakit/react";
-import type { OptionProps } from "./~utils.js";
+import type { BaseProps } from "./~utils.js";
 
-type DividerProps = OptionProps<"hr", Ariakit.SeparatorProps, "orientation"> & {
+type DividerProps = BaseProps<"hr", Ariakit.SeparatorProps, "orientation"> & {
 	/**
 	 * If true, the divider will be purely presentational and will not have any associated semantics.
 	 *

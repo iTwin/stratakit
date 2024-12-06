@@ -5,9 +5,9 @@
 import * as React from "react";
 import cx from "classnames";
 import * as Ariakit from "@ariakit/react";
-import type { OptionProps } from "./~utils.js";
+import type { BaseProps } from "./~utils.js";
 
-type KbdProps = OptionProps<"kbd"> & {
+type KbdProps = BaseProps<"kbd"> & {
 	/** @default "solid" */
 	variant?: "solid" | "muted" | "ghost";
 };

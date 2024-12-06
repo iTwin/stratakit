@@ -6,8 +6,9 @@ import globalStyles from "./index.css?url";
 import { Link, type MetaFunction, type LinksFunction } from "react-router";
 import { Anchor, Divider } from "@itwin/kiwi-react/bricks";
 import styles from "./index.module.css";
+import { toKebabCase } from "./~utils.tsx";
 
-const components = [
+export const components = [
 	"Root",
 	"Anchor",
 	"Button",
@@ -68,8 +69,4 @@ export default function Index() {
 			</ul>
 		</main>
 	);
-}
-
-function toKebabCase(str: string) {
-	return str.replace(/([a-z])([A-Z])/g, "$1-$2").toLowerCase();
 }

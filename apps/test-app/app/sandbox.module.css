@@ -41,6 +41,7 @@
 	background-color: var(--kiwi-color-bg-surface-primary);
 	min-block-size: 0;
 
+	contain: size layout; /* prevent unnecessary overflow */
 	display: flex;
 	flex-direction: column;
 	gap: 12px;
@@ -159,6 +160,7 @@
 }
 
 .slider {
+	display: block;
 	block-size: 100%;
 	inline-size: 8px;
 	user-select: none;

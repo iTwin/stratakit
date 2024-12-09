@@ -48,7 +48,7 @@ function LightAndShadowButtons() {
 			<Button>Button (light)</Button>
 			{shadow &&
 				createPortal(
-					<Root colorScheme={colorScheme}>
+					<Root colorScheme={colorScheme} density="dense">
 						<Button>Button (shadow)</Button>
 					</Root>,
 					shadow,

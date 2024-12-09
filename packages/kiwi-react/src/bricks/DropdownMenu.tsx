@@ -71,8 +71,7 @@ DEV: DropdownMenu.displayName = "DropdownMenu.Root";
 
 // ----------------------------------------------------------------------------
 
-interface DropdownMenuContentProps
-	extends FocusableProps<"div", Ariakit.MenuProps> {}
+interface DropdownMenuContentProps extends FocusableProps {}
 
 const DropdownMenuContent = React.forwardRef<
 	React.ElementRef<typeof Ariakit.Menu>,
@@ -94,8 +93,7 @@ DEV: DropdownMenuContent.displayName = "DropdownMenu.Content";
 
 // ----------------------------------------------------------------------------
 
-interface DropdownMenuButtonProps
-	extends FocusableProps<"button", Ariakit.MenuButtonProps> {}
+interface DropdownMenuButtonProps extends FocusableProps<"button"> {}
 
 const DropdownMenuButton = React.forwardRef<
 	React.ElementRef<typeof Ariakit.MenuButton>,
@@ -121,8 +119,7 @@ DEV: DropdownMenuButton.displayName = "DropdownMenu.Button";
 
 // ----------------------------------------------------------------------------
 
-interface DropdownMenuItemProps
-	extends FocusableProps<"div", Ariakit.MenuItemProps> {}
+interface DropdownMenuItemProps extends FocusableProps {}
 
 const DropdownMenuItem = React.forwardRef<
 	React.ElementRef<typeof Ariakit.MenuItem>,

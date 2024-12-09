@@ -6,8 +6,7 @@ import React from "react";
 import * as Ariakit from "@ariakit/react";
 import type { BaseProps } from "./~utils.js";
 
-interface VisuallyHiddenProps
-	extends BaseProps<"span", Ariakit.VisuallyHiddenProps> {}
+interface VisuallyHiddenProps extends BaseProps<"span"> {}
 
 export const VisuallyHidden = React.forwardRef<
 	React.ElementRef<"span">,

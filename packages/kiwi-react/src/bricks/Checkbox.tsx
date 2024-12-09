@@ -12,8 +12,10 @@ interface CheckboxProps
 	extends Omit<
 		FocusableProps<
 			"input",
-			Ariakit.CheckboxProps,
-			"value" | "defaultChecked" | "checked" | "onChange"
+			Pick<
+				Ariakit.CheckboxProps,
+				"value" | "defaultChecked" | "checked" | "onChange"
+			>
 		>,
 		"defaultValue"
 	> {}

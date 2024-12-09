@@ -18,19 +18,15 @@ type MergeProps<
 /** Base component props with custom props. */
 export type BaseProps<
 	ElementType extends React.ElementType = "div",
-	CustomProps extends
-		Ariakit.RoleOptions<ElementType> = Ariakit.RoleProps<ElementType>,
-	CustomPropKeys extends keyof CustomProps = never,
-> = MergeProps<ElementType, Pick<CustomProps, "render" | CustomPropKeys>>;
+	CustomProps extends Record<string, unknown> = Record<never, never>,
+> = MergeProps<ElementType, Pick<Ariakit.RoleProps, "render"> & CustomProps>;
 
 /** Focusable component props with custom props. */
 export type FocusableProps<
 	ElementType extends React.ElementType = "div",
-	CustomProps extends
-		Ariakit.FocusableOptions<ElementType> = Ariakit.FocusableProps<ElementType>,
-	CustomPropKeys extends keyof CustomProps = never,
+	CustomProps extends Record<string, unknown> = Record<never, never>,
 > = BaseProps<
 	ElementType,
-	CustomProps,
-	"disabled" | "accessibleWhenDisabled" | CustomPropKeys
+	Pick<Ariakit.FocusableProps, "disabled" | "accessibleWhenDisabled"> &
+		CustomProps
 >;

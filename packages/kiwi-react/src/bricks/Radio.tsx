@@ -12,8 +12,7 @@ interface RadioProps
 	extends Omit<
 		FocusableProps<
 			"input",
-			Ariakit.RadioProps,
-			"value" | "checked" | "onChange"
+			Pick<Ariakit.RadioProps, "value" | "checked" | "onChange">
 		>,
 		"defaultValue"
 	> {}

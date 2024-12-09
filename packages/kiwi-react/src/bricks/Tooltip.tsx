@@ -9,10 +9,13 @@ import { supportsPopover, type FocusableProps } from "./~utils.js";
 
 interface TooltipProps
 	extends Omit<
-			FocusableProps<"div", Ariakit.TooltipProps, "open" | "unmountOnHide">,
-			"content"
+		FocusableProps<
+			"div",
+			Pick<Ariakit.TooltipProps, "open" | "unmountOnHide"> &
+				Pick<Ariakit.TooltipProviderProps, "defaultOpen" | "setOpen">
 		>,
-		Pick<Ariakit.TooltipProviderProps, "defaultOpen" | "setOpen"> {
+		"content"
+	> {
 	/**
 	 * The content to be displayed inside the tooltip.
 	 */

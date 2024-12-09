@@ -4,7 +4,7 @@ A React component library for the Kiwi design system.
 
 ## Usage
 
-To use components from the Kiwi design system in your app, you’ll need to wrap your app’s UI with Kiwi’s `<Root>` component, specify a `colorScheme`, and specify a `density`:
+To use components from the Kiwi design system in your app, you’ll need to wrap your app’s UI with Kiwi’s `<Root>` component, and specify the required `colorScheme` and `density` props:
 
 ```jsx
 import { Root } from "@itwin/kiwi-react/bricks";

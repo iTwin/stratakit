@@ -160,7 +160,7 @@
 }
 
 .slider {
-display: block;
+	display: block;
 	block-size: 100%;
 	inline-size: 8px;
 	user-select: none;

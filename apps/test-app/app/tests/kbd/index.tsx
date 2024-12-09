@@ -3,7 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 import { definePage } from "~/~utils.tsx";
-import { Kbd } from "@itwin/kiwi-react/bricks";
+import { Kbd, kbdKeys } from "@itwin/kiwi-react/bricks";
 
 export const handle = { title: "Kbd" };
 
@@ -11,7 +11,7 @@ export default definePage(
 	function Page() {
 		return <Kbd variant={"muted"}>Ctrl</Kbd>;
 	},
-	{ visual: VisualTest },
+	{ visual: VisualTest, kbdkeys: KbdKeysTest },
 );
 
 function VisualTest() {
@@ -24,6 +24,16 @@ function VisualTest() {
 					<Kbd variant={variant}>Ctrl</Kbd>
 				</div>
 			))}
+		</div>
+	);
+}
+
+function KbdKeysTest() {
+	return (
+		<div style={{ display: "grid", gap: 4 }}>
+			<Kbd variant="solid">{kbdKeys.Apple}</Kbd>
+			<Kbd variant="solid">{kbdKeys.Option}</Kbd>
+			<Kbd variant="solid">{kbdKeys.Windows}</Kbd>
 		</div>
 	);
 }

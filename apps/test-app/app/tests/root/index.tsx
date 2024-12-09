@@ -23,6 +23,7 @@ export default function Page() {
 				createPortal(
 					<Root
 						colorScheme={colorScheme}
+						density="dense"
 						style={{
 							minBlockSize: "100dvb",
 							backgroundColor: "var(--kiwi-color-bg-surface-primary)",

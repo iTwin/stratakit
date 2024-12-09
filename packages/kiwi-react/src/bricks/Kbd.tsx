@@ -33,6 +33,7 @@ export const kbdKeys = {
 	Tab: "\u0009",
 	Up: "\u2191",
 	Windows: "\u229e",
+	WinAlt: "\u2387",
 } as const;
 
 /**

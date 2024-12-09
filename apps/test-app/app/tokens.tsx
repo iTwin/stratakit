@@ -28,7 +28,7 @@ const categories = {
 } as const;
 
 export const meta: MetaFunction = () => {
-	return [{ title: "Kiwi tokens" }, { name: "color-scheme", content: "dark" }];
+	return [{ title: "Kiwi tokens" }];
 };
 
 export const links: LinksFunction = () => [

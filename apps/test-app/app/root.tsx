@@ -12,8 +12,7 @@ import {
 	type LinksFunction,
 } from "react-router";
 import { Root } from "@itwin/kiwi-react/bricks";
-import globalStyles from "./root.css?url";
-import { useColorScheme } from "./~utils.tsx";
+import { ColorSchemeProvider, useColorScheme } from "./~utils.tsx";
 
 export const links: LinksFunction = () => {
 	return [
@@ -24,16 +23,26 @@ export const links: LinksFunction = () => {
 		},
 		{ rel: "preconnect", href: "https://rsms.me/" },
 		{ rel: "stylesheet", href: "https://rsms.me/inter/inter.css" },
-		{ rel: "stylesheet", href: globalStyles },
 	];
 };
 
 export function Layout({ children }: { children: React.ReactNode }) {
 	return (
-		<html lang="en">
+		<ColorSchemeProvider>
+			<LayoutInner>{children}</LayoutInner>
+		</ColorSchemeProvider>
+	);
+}
+
+function LayoutInner({ children }: { children: React.ReactNode }) {
+	const colorScheme = useColorScheme();
+
+	return (
+		<html lang="en" data-color-scheme={colorScheme}>
 			<head>
 				<meta charSet="utf-8" />
 				<meta name="viewport" content="width=device-width, initial-scale=1" />
+				<meta name="color-scheme" content={colorScheme} />
 				<Meta />
 				<Links />
 			</head>
@@ -54,7 +63,7 @@ export default function App() {
 	}, []);
 
 	return (
-		<Root colorScheme={colorScheme} className="AppRoot">
+		<Root colorScheme={colorScheme}>
 			<Outlet />
 		</Root>
 	);

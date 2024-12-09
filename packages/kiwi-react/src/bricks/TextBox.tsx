@@ -153,7 +153,7 @@ DEV: TextBoxText.displayName = "TextBox.Text";
 const TextBoxRootContext = React.createContext<
 	| {
 			setDisabled: (disabled: boolean | undefined) => void;
-			inputRef: React.RefObject<HTMLInputElement>;
+			inputRef: React.RefObject<HTMLInputElement | null>;
 	  }
 	| undefined
 >(undefined);

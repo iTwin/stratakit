@@ -7,13 +7,13 @@ import * as Ariakit from "@ariakit/react";
 import cx from "classnames";
 import foundationsCss from "../foundations/styles.css.js";
 import bricksCss from "./styles.css.js";
-import { isBrowser } from "./~utils.js";
+import { isBrowser, type BaseProps } from "./~utils.js";
 
 const css = foundationsCss + bricksCss;
 
 // ----------------------------------------------------------------------------
 
-interface RootProps extends Ariakit.RoleProps {
+interface RootProps extends BaseProps {
 	/**
 	 * The color scheme to use for all components under the Root.
 	 */

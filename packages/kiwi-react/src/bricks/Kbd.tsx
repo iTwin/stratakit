@@ -5,8 +5,9 @@
 import * as React from "react";
 import cx from "classnames";
 import * as Ariakit from "@ariakit/react";
+import type { BaseProps } from "./~utils.js";
 
-interface KbdProps extends Ariakit.RoleProps<"kbd"> {
+interface KbdProps extends BaseProps<"kbd"> {
 	/** @default "solid" */
 	variant?: "solid" | "muted" | "ghost";
 }

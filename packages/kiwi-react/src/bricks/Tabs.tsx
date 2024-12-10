@@ -7,6 +7,7 @@ import * as ReactDOM from "react-dom";
 import cx from "classnames";
 import * as Ariakit from "@ariakit/react";
 import { useControlledState } from "./~hooks.js";
+import type { FocusableProps, BaseProps } from "./~utils.js";
 
 // ----------------------------------------------------------------------------
 
@@ -62,7 +63,7 @@ DEV: Tabs.displayName = "Tabs.Root";
 
 // ----------------------------------------------------------------------------
 
-interface TabListProps extends Ariakit.RoleProps<"div"> {
+interface TabListProps extends BaseProps {
 	/** @default "neutral" */
 	tone?: "neutral" | "accent";
 }
@@ -94,7 +95,7 @@ DEV: TabList.displayName = "Tabs.TabList";
 // ----------------------------------------------------------------------------
 
 interface TabProps
-	extends Ariakit.FocusableProps<"button">,
+	extends FocusableProps<"button">,
 		Pick<Ariakit.TabProps, "id"> {}
 
 const Tab = React.forwardRef<React.ElementRef<typeof Ariakit.Tab>, TabProps>(
@@ -114,7 +115,7 @@ DEV: Tab.displayName = "Tabs.Tab";
 // ----------------------------------------------------------------------------
 
 interface TabPanelProps
-	extends Ariakit.RoleProps<"div">,
+	extends BaseProps<"div">,
 		Pick<Ariakit.TabPanelProps, "tabId" | "unmountOnHide"> {}
 
 const TabPanel = React.forwardRef<

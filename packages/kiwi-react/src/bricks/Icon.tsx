@@ -5,8 +5,9 @@
 import * as React from "react";
 import cx from "classnames";
 import * as Ariakit from "@ariakit/react";
+import type { BaseProps } from "./~utils.js";
 
-interface IconProps extends Omit<Ariakit.RoleProps<"svg">, "children"> {
+interface IconProps extends Omit<BaseProps<"svg">, "children"> {
 	/** URL of the symbol sprite. */
 	href?: string;
 	/** Size of the icon. Defaults to `regular`. */
@@ -56,8 +57,7 @@ function toIconId(size: IconProps["size"]) {
 
 // ----------------------------------------------------------------------------
 
-interface DisclosureArrowProps
-	extends Omit<Ariakit.RoleProps<"svg">, "children"> {
+interface DisclosureArrowProps extends Omit<BaseProps<"svg">, "children"> {
 	/**
 	 * Which direction should the arrow point towards?
 	 * @default "down"

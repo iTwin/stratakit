@@ -30,10 +30,7 @@ export const components = [
 ];
 
 export const meta: MetaFunction = () => {
-	return [
-		{ title: "Kiwi test app" },
-		{ name: "color-scheme", content: "dark" },
-	];
+	return [{ title: "Kiwi test app" }];
 };
 
 export const links: LinksFunction = () => [

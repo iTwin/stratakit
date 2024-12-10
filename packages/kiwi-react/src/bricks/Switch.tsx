@@ -6,9 +6,16 @@ import * as React from "react";
 import cx from "classnames";
 import * as Ariakit from "@ariakit/react";
 import { useFieldId } from "./Field.js";
+import type { FocusableProps } from "./~utils.js";
 
-interface SwitchProps
-	extends Omit<Ariakit.CheckboxProps, "store" | "defaultValue"> {
+type InputBaseProps = Omit<FocusableProps<"input">, "defaultValue" | "value">;
+
+type CheckboxOwnProps = Pick<
+	Ariakit.CheckboxProps,
+	"value" | "defaultChecked" | "checked" | "onChange"
+>;
+
+interface SwitchProps extends InputBaseProps, CheckboxOwnProps {
 	/** The default checked state of the toggle switch. */
 	defaultChecked?: boolean;
 	/** The controlled checked state of the toggle switch. */

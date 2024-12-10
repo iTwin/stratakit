@@ -5,8 +5,9 @@
 import * as React from "react";
 import cx from "classnames";
 import * as Ariakit from "@ariakit/react";
+import type { FocusableProps } from "./~utils.js";
 
-interface AnchorProps extends Ariakit.FocusableProps<"a"> {
+interface AnchorProps extends FocusableProps<"a"> {
 	/** @default "neutral" */
 	tone?: "neutral" | "accent" | "critical";
 }

@@ -8,10 +8,11 @@ import * as Ariakit from "@ariakit/react";
 import * as ListItem from "./ListItem.js";
 import { IconButton } from "./IconButton.js";
 import { Icon } from "./Icon.js";
+import type { BaseProps } from "./~utils.js";
 
 // ----------------------------------------------------------------------------
 
-interface TreeProps extends Ariakit.RoleProps<"div"> {}
+interface TreeProps extends BaseProps {}
 
 const Tree = React.forwardRef<React.ElementRef<"div">, TreeProps>(
 	(props, forwardedRef) => {
@@ -25,8 +26,7 @@ const Tree = React.forwardRef<React.ElementRef<"div">, TreeProps>(
 DEV: Tree.displayName = "Tree.Root";
 
 // ----------------------------------------------------------------------------
-
-interface TreeItemProps extends Omit<Ariakit.RoleProps<"div">, "content"> {
+interface TreeItemProps extends Omit<BaseProps, "content"> {
 	content?: React.ReactNode;
 	selected?: boolean;
 	/** Specifies if the tree item is expanded. Used to determine if a tree item is a parent node. Defaults to `undefined`. */
@@ -77,8 +77,7 @@ DEV: TreeItem.displayName = "Tree.Item";
 
 // ----------------------------------------------------------------------------
 
-interface TreeItemContentProps
-	extends React.ComponentProps<typeof ListItem.Content> {}
+interface TreeItemContentProps extends BaseProps<"span"> {}
 
 const TreeItemContent = React.forwardRef<
 	React.ElementRef<typeof ListItem.Content>,
@@ -127,7 +126,7 @@ DEV: TreeItemExpander.displayName = "Tree.Expander";
 
 // ----------------------------------------------------------------------------
 
-interface TreeChevronProps extends Omit<Ariakit.RoleProps<"svg">, "children"> {}
+interface TreeChevronProps extends Omit<BaseProps<"svg">, "children"> {}
 
 const TreeChevron = React.forwardRef<React.ElementRef<"svg">, TreeChevronProps>(
 	(props, forwardedRef) => {

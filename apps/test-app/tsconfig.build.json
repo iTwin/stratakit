@@ -1,6 +1,6 @@
 {
 	"extends": "./tsconfig.json",
 	"compilerOptions": {
-		"customConditions": ["@kiwi/source"]
+		"customConditions": []
 	}
 }

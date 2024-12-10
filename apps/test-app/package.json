@@ -4,11 +4,11 @@
 	"sideEffects": false,
 	"type": "module",
 	"scripts": {
-		"build": "react-router typegen && NODE_ENV=production react-router build && tsc",
+		"build": "NODE_ENV=production react-router build && pnpm run typecheck",
 		"dev": "react-router dev",
 		"preview": "pnpx serve build/client -L -p 1800",
 		"test": "tsx ./scripts/run-tests.cts pnpm exec playwright test",
-		"typecheck": "react-router typegen && tsc"
+		"typecheck": "react-router typegen && tsc -p tsconfig.build.json"
 	},
 	"imports": {
 		"#playwright": "./playwright.config.ts"

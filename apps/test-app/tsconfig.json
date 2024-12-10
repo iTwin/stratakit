@@ -31,6 +31,9 @@
 		"rootDirs": [".", "./.react-router/types"],
 
 		// Vite takes care of building everything, not tsc.
-		"noEmit": true
+		"noEmit": true,
+
+		// Use TSX source directly for better IDE experience.
+		"customConditions": ["@kiwi/source"]
 	}
 }

@@ -54,7 +54,7 @@ export default function App() {
 	}, []);
 
 	return (
-		<Root colorScheme={colorScheme} className="AppRoot">
+		<Root colorScheme={colorScheme} density="dense" className="AppRoot">
 			<Outlet />
 		</Root>
 	);

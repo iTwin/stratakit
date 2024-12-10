@@ -18,6 +18,11 @@ interface RootProps extends Ariakit.RoleProps {
 	 * The color scheme to use for all components under the Root.
 	 */
 	colorScheme: "light" | "dark";
+
+	/**
+	 * The density to use for all components under the Root.
+	 */
+	density: "dense";
 }
 
 /**
@@ -26,13 +31,14 @@ interface RootProps extends Ariakit.RoleProps {
  */
 export const Root = React.forwardRef<React.ElementRef<"div">, RootProps>(
 	(props, forwardedRef) => {
-		const { children, colorScheme, ...rest } = props;
+		const { children, colorScheme, density, ...rest } = props;
 
 		return (
 			<Ariakit.Role
 				{...rest}
 				className={cx("🥝-root", props.className)}
 				data-kiwi-theme={colorScheme}
+				data-kiwi-density={density}
 				ref={forwardedRef}
 			>
 				<Styles />

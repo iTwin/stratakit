@@ -78,7 +78,7 @@ export function ColorSchemeProvider({
 
 /** Returns the user's preferred color-scheme (provided by `ColorSchemeProvider`). */
 export function useColorScheme() {
-	return React.useContext(ColorSchemeContext);
+	return React.use(ColorSchemeContext);
 }
 
 // ----------------------------------------------------------------------------

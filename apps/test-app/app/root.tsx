@@ -13,6 +13,7 @@ import {
 } from "react-router";
 import { Root } from "@itwin/kiwi-react/bricks";
 import { ColorSchemeProvider, useColorScheme } from "./~utils.tsx";
+import { useIsRootTest } from "./tests/root/index.tsx";
 
 export const links: LinksFunction = () => {
 	return [
@@ -35,7 +36,10 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 function LayoutInner({ children }: { children: React.ReactNode }) {
-	const colorScheme = useColorScheme();
+	// Normally we want the return value of `useColorScheme` which adapts to the system preference,
+	// However, isRootTest is a special case where for testing the `synchronizeColorSchemeWithHost` prop.
+	const isRootTest = useIsRootTest();
+	const colorScheme = isRootTest ? "dark light" : useColorScheme();
 
 	return (
 		<html lang="en" data-color-scheme={colorScheme}>

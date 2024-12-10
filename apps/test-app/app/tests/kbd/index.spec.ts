@@ -22,9 +22,11 @@ test("kbd keys", async ({ page }) => {
 
 	const appleKey = page.locator("kbd", { hasText: "\uf8ff" });
 	const optionKey = page.locator("kbd", { hasText: "\u2325" });
+	const winKey = page.locator("kbd", { hasText: "\u229e" });
 
 	await expect(appleKey).toBeVisible();
 	await expect(optionKey).toBeVisible();
+	await expect(winKey).toBeVisible();
 });
 
 test.describe("@a11y", () => {

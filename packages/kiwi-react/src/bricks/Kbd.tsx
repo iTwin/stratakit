@@ -45,7 +45,7 @@ export const kbdKeys = {
  * ```
  *
  * ```tsx
- * <Kbd>{kbdKeys.Enter} - Enter</Kbd>
+ * <Kbd>{kbdKeys.Enter}</Kbd>
  * ```
  */
 export const Kbd = React.forwardRef<React.ElementRef<"kbd">, KbdProps>(

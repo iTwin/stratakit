@@ -10,3 +10,7 @@
 
 	@apply --typography-tokens;
 }
+
+.🥝-root {
+	@apply --typography("body-sm");
+}

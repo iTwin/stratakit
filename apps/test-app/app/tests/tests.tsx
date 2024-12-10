@@ -12,7 +12,7 @@ import {
 } from "react-router";
 
 export const meta: MetaFunction = () => {
-	return [{ title: "Kiwi tests" }, { name: "color-scheme", content: "dark" }];
+	return [{ title: "Kiwi tests" }];
 };
 
 export const links: LinksFunction = () => [

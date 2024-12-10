@@ -9,7 +9,7 @@ import * as ListItem from "./ListItem.js";
 import { Button } from "./Button.js";
 import { Kbd } from "./Kbd.js";
 import { DisclosureArrow } from "./Icon.js";
-import { supportsPopover } from "./~utils.js";
+import { supportsPopover, type FocusableProps } from "./~utils.js";
 
 // ----------------------------------------------------------------------------
 
@@ -72,9 +72,11 @@ DEV: DropdownMenu.displayName = "DropdownMenu.Root";
 
 // ----------------------------------------------------------------------------
 
+interface DropdownMenuContentProps extends FocusableProps {}
+
 const DropdownMenuContent = React.forwardRef<
 	React.ElementRef<typeof Ariakit.Menu>,
-	Ariakit.MenuProps
+	DropdownMenuContentProps
 >((props, forwardedRef) => {
 	return (
 		<Ariakit.Menu
@@ -92,14 +94,16 @@ DEV: DropdownMenuContent.displayName = "DropdownMenu.Content";
 
 // ----------------------------------------------------------------------------
 
+interface DropdownMenuButtonProps extends FocusableProps<"button"> {}
+
 const DropdownMenuButton = React.forwardRef<
 	React.ElementRef<typeof Ariakit.MenuButton>,
-	Ariakit.MenuButtonProps
+	DropdownMenuButtonProps
 >((props, forwardedRef) => {
 	const { accessibleWhenDisabled = true, children, ...rest } = props;
 	return (
 		<Ariakit.MenuButton
-			accessibleWhenDisabled={accessibleWhenDisabled}
+			accessibleWhenDisabled
 			render={
 				<Button accessibleWhenDisabled={accessibleWhenDisabled}>
 					{children}
@@ -115,8 +119,7 @@ const DropdownMenuButton = React.forwardRef<
 DEV: DropdownMenuButton.displayName = "DropdownMenu.Button";
 
 // ----------------------------------------------------------------------------
-
-interface DropdownMenuItemProps extends Ariakit.MenuItemProps {
+interface DropdownMenuItemProps extends FocusableProps {
 	/**
 	 * A string defining the keyboard shortcut(s) associated with the menu item.
 	 * Shortcuts should be formatted as a single string with keys separated by the '+' character.

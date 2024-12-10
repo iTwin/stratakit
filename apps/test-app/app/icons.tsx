@@ -13,7 +13,7 @@ const allIcons = import.meta.glob(
 
 const title = "Kiwi icons";
 export const meta: MetaFunction = () => {
-	return [{ title }, { name: "color-scheme", content: "dark" }];
+	return [{ title }];
 };
 
 function getIconHref(icon: string) {

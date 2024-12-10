@@ -85,6 +85,9 @@ function usePopout() {
 
 	const open = React.useCallback(() => {
 		const popout = window.open("", "popout", "width=400,height=400");
+		// Set HTML doctype for popout (this is the only way to do it when opening a blank page)
+		// We also need to inlcude the `<body>` element, otherwise the portal fails.
+		popout?.document.write("<!doctype html><body>");
 		setPopout(popout);
 	}, []);
 

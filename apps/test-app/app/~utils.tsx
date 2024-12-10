@@ -44,27 +44,6 @@ export function definePage(
 	};
 }
 
-// ----------------------------------------------------------------------------
-
-export function useColorScheme() {
-	const query = "(prefers-color-scheme: dark)";
-
-	const getSnapshot = React.useCallback(() => {
-		if (typeof window === "undefined") return "dark";
-		return window.matchMedia?.(query).matches ? "dark" : "light";
-	}, []);
-
-	const subscribe = React.useCallback((onChange: () => void) => {
-		const mediaQueryList = window.matchMedia?.(query);
-		mediaQueryList?.addEventListener?.("change", onChange);
-		return () => mediaQueryList?.removeEventListener?.("change", onChange);
-	}, []);
-
-	return React.useSyncExternalStore(subscribe, getSnapshot, getSnapshot);
-}
-
-// ----------------------------------------------------------------------------
-
 function useNormalizedSearchParams() {
 	const [searchParams] = useSearchParams();
 
@@ -78,6 +57,54 @@ function useNormalizedSearchParams() {
 				]),
 			),
 		[searchParams],
+	);
+}
+
+// ----------------------------------------------------------------------------
+
+const ColorSchemeContext = React.createContext<"light" | "dark">("dark");
+
+/** Makes the user's preferred color-scheme available to descendants (via `useColorScheme`). */
+export function ColorSchemeProvider({
+	children,
+}: { children: React.ReactNode }) {
+	const prefersDark = useMediaQuery("(prefers-color-scheme: dark)");
+	const colorScheme = prefersDark === false ? "light" : "dark"; // dark by default (e.g. during SSR)
+
+	return (
+		<ColorSchemeContext value={colorScheme}>{children}</ColorSchemeContext>
+	);
+}
+
+/** Returns the user's preferred color-scheme (provided by `ColorSchemeProvider`). */
+export function useColorScheme() {
+	return React.useContext(ColorSchemeContext);
+}
+
+// ----------------------------------------------------------------------------
+
+/**
+ * Returns whether the specified media query matches, watching for any changes.
+ * Returns `undefined` when `window` is unavailable (e.g. during SSR/prerendering + hydration).
+ */
+export function useMediaQuery(query: string) {
+	const getClientSnapshot = React.useCallback(() => {
+		return window.matchMedia?.(query).matches;
+	}, [query]);
+
+	const subscribe = React.useCallback(
+		(onChange: () => void) => {
+			const mediaQueryList = window.matchMedia?.(query);
+			mediaQueryList?.addEventListener?.("change", onChange);
+			return () => mediaQueryList?.removeEventListener?.("change", onChange);
+		},
+		[query],
+	);
+
+	return React.useSyncExternalStore(
+		subscribe,
+		getClientSnapshot,
+		() => undefined, // undefined during SSR and also during hydration
 	);
 }
 

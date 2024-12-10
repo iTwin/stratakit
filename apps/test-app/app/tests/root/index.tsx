@@ -23,6 +23,7 @@ export default function Page() {
 				createPortal(
 					<Root
 						colorScheme={colorScheme}
+						density="dense"
 						style={{
 							minBlockSize: "100dvb",
 							backgroundColor: "var(--kiwi-color-bg-surface-primary)",
@@ -48,7 +49,7 @@ function LightAndShadowButtons() {
 			<Button>Button (light)</Button>
 			{shadow &&
 				createPortal(
-					<Root colorScheme={colorScheme}>
+					<Root colorScheme={colorScheme} density="dense">
 						<Button>Button (shadow)</Button>
 					</Root>,
 					shadow,

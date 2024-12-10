@@ -2,6 +2,8 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
+html:where([data-color-scheme="light"]),
+:host([data-color-scheme="light"]),
 .🥝-root:where([data-kiwi-theme="light"]) {
 	@apply --theme("light");
 
@@ -10,6 +12,8 @@
 	--kiwi-color-border-shadow-strong: --primitive("color.black.12");
 }
 
+html:where([data-color-scheme="dark"]),
+:host([data-color-scheme="dark"]),
 .🥝-root:where([data-kiwi-theme="dark"]) {
 	@apply --theme("dark");
 

@@ -95,7 +95,8 @@ DEV: TabList.displayName = "Tabs.TabList";
 // ----------------------------------------------------------------------------
 
 interface TabProps
-	extends FocusableProps<"button", Pick<Ariakit.TabProps, "id">> {}
+	extends FocusableProps<"button">,
+		Pick<Ariakit.TabProps, "id"> {}
 
 const Tab = React.forwardRef<React.ElementRef<typeof Ariakit.Tab>, TabProps>(
 	(props, forwardedRef) => {
@@ -114,10 +115,8 @@ DEV: Tab.displayName = "Tabs.Tab";
 // ----------------------------------------------------------------------------
 
 interface TabPanelProps
-	extends BaseProps<
-		"div",
-		Pick<Ariakit.TabPanelProps, "tabId" | "unmountOnHide">
-	> {}
+	extends BaseProps<"div">,
+		Pick<Ariakit.TabPanelProps, "tabId" | "unmountOnHide"> {}
 
 const TabPanel = React.forwardRef<
 	React.ElementRef<typeof Ariakit.TabPanel>,

@@ -16,17 +16,10 @@ type MergeProps<
 	Omit<React.ComponentPropsWithoutRef<ElementType>, keyof CustomProps>;
 
 /** Base component props with custom props. */
-export type BaseProps<
-	ElementType extends React.ElementType = "div",
-	CustomProps extends Record<string, unknown> = Record<never, never>,
-> = MergeProps<ElementType, Pick<Ariakit.RoleProps, "render"> & CustomProps>;
+export type BaseProps<ElementType extends React.ElementType = "div"> =
+	MergeProps<ElementType, Pick<Ariakit.RoleProps, "render">>;
 
 /** Focusable component props with custom props. */
-export type FocusableProps<
-	ElementType extends React.ElementType = "div",
-	CustomProps extends Record<string, unknown> = Record<never, never>,
-> = BaseProps<
-	ElementType,
-	Pick<Ariakit.FocusableProps, "disabled" | "accessibleWhenDisabled"> &
-		CustomProps
->;
+export type FocusableProps<ElementType extends React.ElementType = "div"> =
+	BaseProps<ElementType> &
+		Pick<Ariakit.FocusableProps, "disabled" | "accessibleWhenDisabled">;

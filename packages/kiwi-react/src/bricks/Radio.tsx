@@ -8,14 +8,11 @@ import * as Ariakit from "@ariakit/react";
 import { useFieldId } from "./Field.js";
 import type { FocusableProps } from "./~utils.js";
 
-interface RadioProps
-	extends Omit<
-		FocusableProps<
-			"input",
-			Pick<Ariakit.RadioProps, "value" | "checked" | "onChange">
-		>,
-		"defaultValue"
-	> {}
+type InputBaseProps = Omit<FocusableProps<"input">, "defaultValue" | "value">;
+
+type RadioOwnProps = Pick<Ariakit.RadioProps, "value" | "checked" | "onChange">;
+
+interface RadioProps extends InputBaseProps, RadioOwnProps {}
 
 export const Radio = React.forwardRef<
 	React.ElementRef<typeof Ariakit.Radio>,

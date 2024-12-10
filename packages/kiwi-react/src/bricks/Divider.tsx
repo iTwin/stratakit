@@ -8,7 +8,8 @@ import * as Ariakit from "@ariakit/react";
 import type { BaseProps } from "./~utils.js";
 
 interface DividerProps
-	extends BaseProps<"hr", Pick<Ariakit.SeparatorProps, "orientation">> {
+	extends BaseProps<"hr">,
+		Pick<Ariakit.SeparatorProps, "orientation"> {
 	/**
 	 * If true, the divider will be purely presentational and will not have any associated semantics.
 	 *

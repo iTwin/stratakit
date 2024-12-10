@@ -26,7 +26,7 @@ import showIcon from "@itwin/kiwi-icons/visibility-show.svg";
 
 const title = "Kiwi sandbox";
 export const meta: MetaFunction = () => {
-	return [{ title }, { name: "color-scheme", content: "dark" }];
+	return [{ title }];
 };
 
 export default function Page() {

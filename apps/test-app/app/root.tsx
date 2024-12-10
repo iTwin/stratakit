@@ -63,7 +63,7 @@ export default function App() {
 	}, []);
 
 	return (
-		<Root colorScheme={colorScheme}>
+		<Root colorScheme={colorScheme} density="dense">
 			<Outlet />
 		</Root>
 	);

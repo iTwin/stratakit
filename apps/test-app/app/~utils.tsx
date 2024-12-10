@@ -85,11 +85,10 @@ export function useColorScheme() {
 
 /**
  * Returns whether the specified media query matches, watching for any changes.
- * Returns `undefined` when `window` is unavailable (e.g. during SSR/prerendering).
+ * Returns `undefined` when `window` is unavailable (e.g. during SSR/prerendering + hydration).
  */
 export function useMediaQuery(query: string) {
-	const getSnapshot = React.useCallback(() => {
-		if (typeof window === "undefined") return undefined;
+	const getClientSnapshot = React.useCallback(() => {
 		return window.matchMedia?.(query).matches;
 	}, [query]);
 
@@ -102,7 +101,11 @@ export function useMediaQuery(query: string) {
 		[query],
 	);
 
-	return React.useSyncExternalStore(subscribe, getSnapshot, getSnapshot);
+	return React.useSyncExternalStore(
+		subscribe,
+		getClientSnapshot,
+		() => undefined, // undefined during SSR and also during hydration
+	);
 }
 
 // ----------------------------------------------------------------------------

@@ -33,7 +33,6 @@ export const Checkbox = React.forwardRef<
 			{...props}
 			className={cx("🥝-checkbox", props.className)}
 			ref={forwardedRef}
-			onChange={(e) => {}}
 		/>
 	);
 });

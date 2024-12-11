@@ -1,6 +1,5 @@
 {
 	"name": "@itwin/itwinui-icons",
-	"private": true,
 	"type": "module",
 	"version": "5.0.0-alpha.0",
 	"license": "CC-BY-3.0",

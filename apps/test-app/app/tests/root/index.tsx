@@ -9,7 +9,7 @@ import { definePage, useColorScheme } from "~/~utils.tsx";
 
 export const handle = { title: "Root", rootTest: true };
 
-export default definePage(function Page({ synchronizeColorScheme }) {
+export default definePage(function Page({ synchronizeColorScheme = true }) {
 	const popout = usePopout();
 	const colorScheme = useColorScheme();
 

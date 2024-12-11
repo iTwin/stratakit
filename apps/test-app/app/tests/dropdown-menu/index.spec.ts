@@ -104,8 +104,7 @@ test("shortcuts", async ({ page }) => {
 
 	const edit = page.getByRole("menuitem", { name: "Edit" });
 	const editShortcut = edit.locator("kbd");
-	await expect(editShortcut.nth(0)).toHaveText("⇧");
-	await expect(editShortcut.nth(1)).toHaveText("E");
+	await expect(editShortcut).toHaveText("⇧E");
 });
 
 test("@visual", async ({ page }) => {

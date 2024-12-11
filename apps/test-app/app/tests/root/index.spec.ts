@@ -17,12 +17,12 @@ test("default", async ({ page }) => {
 	await expect(popout.locator("body")).toHaveScreenshot("popout.png");
 });
 
-test("synchronizeColorSchemeWithHost", async ({ page }) => {
+test("synchronizeColorScheme", async ({ page }) => {
 	const document = page.locator("html");
 	const meta = page.locator("meta[name='color-scheme']");
 
 	await test.step("false", async () => {
-		await page.goto("/tests/root?synchronizeColorSchemeWithHost=false");
+		await page.goto("/tests/root?synchronizeColorScheme=false");
 		const defaultScheme = "dark light"; // conditionally set in root.tsx
 
 		await expect(document).toHaveAttribute("data-color-scheme", defaultScheme);
@@ -35,7 +35,7 @@ test("synchronizeColorSchemeWithHost", async ({ page }) => {
 
 	await test.step("true", async () => {
 		page.emulateMedia({ colorScheme: "dark" });
-		await page.goto("/tests/root?synchronizeColorSchemeWithHost=true");
+		await page.goto("/tests/root?synchronizeColorScheme=true");
 
 		await expect(document).toHaveAttribute("data-color-scheme", "dark");
 		await expect(meta).toHaveAttribute("content", "dark");

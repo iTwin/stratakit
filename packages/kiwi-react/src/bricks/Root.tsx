@@ -27,7 +27,7 @@ interface RootProps extends BaseProps {
 	 *
 	 * @default false
 	 */
-	synchronizeColorSchemeWithHost?: boolean;
+	synchronizeColorScheme?: boolean;
 
 	/**
 	 * The density to use for all components under the Root.
@@ -41,13 +41,13 @@ interface RootProps extends BaseProps {
  */
 export const Root = React.forwardRef<React.ElementRef<"div">, RootProps>(
 	(props, forwardedRef) => {
-		const { children, synchronizeColorSchemeWithHost = false, ...rest } = props;
+		const { children, synchronizeColorScheme = false, ...rest } = props;
 
 		return (
 			<RootInternal {...rest} ref={forwardedRef}>
 				<Styles />
-				{synchronizeColorSchemeWithHost ? (
-					<SynchronizeColorSchemeWithHost colorScheme={props.colorScheme} />
+				{synchronizeColorScheme ? (
+					<SynchronizeColorScheme colorScheme={props.colorScheme} />
 				) : null}
 				{children}
 			</RootInternal>
@@ -69,7 +69,7 @@ function useRootNode() {
 
 const RootInternal = React.forwardRef<
 	React.ElementRef<"div">,
-	Omit<RootProps, "synchronizeColorSchemeWithHost">
+	Omit<RootProps, "synchronizeColorScheme">
 >((props, forwardedRef) => {
 	const { children, colorScheme, density, ...rest } = props;
 
@@ -108,7 +108,7 @@ const RootInternal = React.forwardRef<
  * The host will have a `data-color-scheme` attribute set to the current color scheme.
  * If the host is a document, a `<meta name="color-scheme">` tag will also be updated (if found).
  */
-function SynchronizeColorSchemeWithHost({
+function SynchronizeColorScheme({
 	colorScheme,
 }: { colorScheme: RootProps["colorScheme"] }) {
 	const rootNode = useRootNode();

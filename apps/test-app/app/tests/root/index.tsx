@@ -9,14 +9,14 @@ import { definePage, useColorScheme } from "~/~utils.tsx";
 
 export const handle = { title: "Root", rootTest: true };
 
-export default definePage(function Page({ synchronizeColorSchemeWithHost }) {
+export default definePage(function Page({ synchronizeColorScheme }) {
 	const popout = usePopout();
 	const colorScheme = useColorScheme();
 
 	return (
 		<Root
 			colorScheme={colorScheme}
-			synchronizeColorSchemeWithHost={!!synchronizeColorSchemeWithHost}
+			synchronizeColorScheme={!!synchronizeColorScheme}
 			density="dense"
 		>
 			<LightAndShadowButtons />
@@ -27,7 +27,7 @@ export default definePage(function Page({ synchronizeColorSchemeWithHost }) {
 				ReactDOM.createPortal(
 					<Root
 						colorScheme={colorScheme}
-						synchronizeColorSchemeWithHost
+						synchronizeColorScheme
 						density="dense"
 					>
 						<LightAndShadowButtons />

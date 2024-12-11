@@ -12,9 +12,16 @@ test("default", async ({ page }) => {
 	await expect(kbdComponent).toBeVisible();
 });
 
-test("@visual", async ({ page }) => {
-	await page.goto("/tests/kbd?visual=true");
-	await expect(page.locator("body")).toHaveScreenshot();
+test.describe("@visual", () => {
+	test("default visual snapshot", async ({ page }) => {
+		await page.goto("/tests/kbd?visual=true");
+		await expect(page.locator("body")).toHaveScreenshot();
+	});
+
+	test("visual KbdKeys snapshot", async ({ page }) => {
+		await page.goto("/tests/kbd?visualKbd=true");
+		await expect(page.locator("body")).toHaveScreenshot();
+	});
 });
 
 test("kbd keys", async ({ page }) => {

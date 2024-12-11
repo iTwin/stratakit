@@ -11,7 +11,7 @@ export default definePage(
 	function Page() {
 		return <Kbd variant={"muted"}>Ctrl</Kbd>;
 	},
-	{ visual: VisualTest, kbdkeys: KbdKeysTest },
+	{ visual: VisualTest, visualKbd: VisualKbdKeysTest, kbdkeys: KbdKeysTest },
 );
 
 function VisualTest() {
@@ -24,6 +24,26 @@ function VisualTest() {
 					<Kbd variant={variant}>Ctrl</Kbd>
 				</div>
 			))}
+		</div>
+	);
+}
+
+function VisualKbdKeysTest() {
+	const kbdKeysList = Object.entries(kbdKeys);
+
+	return (
+		<div style={{ display: "grid", gap: 8 }}>
+			<ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
+				{kbdKeysList.map(([name, symbol]) => (
+					<li
+						key={name}
+						style={{ display: "flex", alignItems: "center", gap: 8 }}
+					>
+						<span>{name}</span>
+						<Kbd>{symbol}</Kbd>
+					</li>
+				))}
+			</ul>
 		</div>
 	);
 }

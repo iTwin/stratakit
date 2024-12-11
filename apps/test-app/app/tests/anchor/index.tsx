@@ -3,7 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 import { definePage } from "~/~utils.tsx";
-import { Anchor } from "@itwin/kiwi-react/bricks";
+import { Anchor } from "@itwin/itwinui-react/bricks";
 
 export const handle = { title: "Anchor" };
 

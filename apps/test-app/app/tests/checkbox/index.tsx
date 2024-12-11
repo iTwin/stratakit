@@ -8,7 +8,7 @@ import {
 	Field,
 	Label,
 	VisuallyHidden,
-} from "@itwin/kiwi-react/bricks";
+} from "@itwin/itwinui-react/bricks";
 import { useId } from "react";
 
 export const handle = { title: "Checkbox" };

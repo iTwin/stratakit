@@ -6,7 +6,7 @@
 	"description": "Monorepo for the kiwi design system",
 	"scripts": {
 		"build": "pnpm --filter=\"./packages/**\" --filter=\"./apps/**\" build",
-		"build:icons": "pnpm --filter=@itwin/kiwi-icons build",
+		"build:icons": "pnpm --filter=@itwin/itwinui-icons build",
 		"dev": "npm run build:icons && npm run dev:app &",
 		"dev:app": "pnpm --filter=@itwin/test-app dev",
 		"format": "biome format .",

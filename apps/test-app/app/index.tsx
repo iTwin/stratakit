@@ -4,7 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 import globalStyles from "./index.css?url";
 import { Link, type MetaFunction, type LinksFunction } from "react-router";
-import { Anchor, Divider } from "@itwin/kiwi-react/bricks";
+import { Anchor, Divider } from "@itwin/itwinui-react/bricks";
 import styles from "./index.module.css";
 import { toKebabCase } from "./~utils.tsx";
 

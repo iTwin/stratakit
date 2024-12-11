@@ -37,11 +37,11 @@ importers:
       "@ariakit/react":
         specifier: "*"
         version: 0.4.15(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
-      "@itwin/kiwi-icons":
-        specifier: "*"
+      "@itwin/itwinui-icons":
+        specifier: workspace:*
         version: link:../../packages/kiwi-icons
-      "@itwin/kiwi-react":
-        specifier: "*"
+      "@itwin/itwinui-react":
+        specifier: workspace:*
         version: link:../../packages/kiwi-react
       "@react-router/node":
         specifier: ^7.0.2

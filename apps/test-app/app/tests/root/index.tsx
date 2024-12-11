@@ -4,7 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import { Button, Root } from "@itwin/kiwi-react/bricks";
+import { Button, Root } from "@itwin/itwinui-react/bricks";
 import { definePage, useColorScheme } from "~/~utils.tsx";
 
 export const handle = { title: "Root", rootTest: true };

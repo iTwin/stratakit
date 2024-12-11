@@ -1,8 +1,8 @@
 {
-	"name": "@itwin/kiwi-icons",
+	"name": "@itwin/itwinui-icons",
 	"private": true,
 	"type": "module",
-	"version": "0.1.0",
+	"version": "5.0.0-alpha.0",
 	"license": "CC-BY-3.0",
 	"exports": {
 		"./*.svg": "./icons/*.svg",

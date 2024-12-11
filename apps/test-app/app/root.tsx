@@ -12,7 +12,7 @@ import {
 	useMatches,
 	type LinksFunction,
 } from "react-router";
-import { Root } from "@itwin/kiwi-react/bricks";
+import { Root } from "@itwin/itwinui-react/bricks";
 import { ColorSchemeProvider, useColorScheme } from "./~utils.tsx";
 
 export const links: LinksFunction = () => {

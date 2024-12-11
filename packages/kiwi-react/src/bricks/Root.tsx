@@ -8,6 +8,7 @@ import cx from "classnames";
 import foundationsCss from "../foundations/styles.css.js";
 import bricksCss from "./styles.css.js";
 import { isBrowser, type BaseProps } from "./~utils.js";
+import { useMergedRefs } from "./~hooks.js";
 
 const css = foundationsCss + bricksCss;
 
@@ -18,6 +19,15 @@ interface RootProps extends BaseProps {
 	 * The color scheme to use for all components under the Root.
 	 */
 	colorScheme: "light" | "dark";
+
+	/**
+	 * Whether to synchronize the color scheme with the parent document (or shadow-root host).
+	 *
+	 * This is useful when you don't have explicit control over the color scheme of the host.
+	 *
+	 * @default false
+	 */
+	synchronizeColorScheme?: boolean;
 
 	/**
 	 * The density to use for all components under the Root.
@@ -31,19 +41,16 @@ interface RootProps extends BaseProps {
  */
 export const Root = React.forwardRef<React.ElementRef<"div">, RootProps>(
 	(props, forwardedRef) => {
-		const { children, colorScheme, density, ...rest } = props;
+		const { children, synchronizeColorScheme = false, ...rest } = props;
 
 		return (
-			<Ariakit.Role
-				{...rest}
-				className={cx("🥝-root", props.className)}
-				data-kiwi-theme={colorScheme}
-				data-kiwi-density={density}
-				ref={forwardedRef}
-			>
+			<RootInternal {...rest} ref={forwardedRef}>
 				<Styles />
+				{synchronizeColorScheme ? (
+					<SynchronizeColorScheme colorScheme={props.colorScheme} />
+				) : null}
 				{children}
-			</Ariakit.Role>
+			</RootInternal>
 		);
 	},
 );
@@ -51,21 +58,87 @@ DEV: Root.displayName = "Root";
 
 // ----------------------------------------------------------------------------
 
-function Styles() {
-	const templateRef = React.useRef<HTMLTemplateElement | null>(null);
-	const [loaded, setLoaded] = React.useState(false);
+const RootNodeContext = React.createContext<Document | ShadowRoot | null>(null);
 
-	useLayoutEffect(() => {
-		const rootNode = templateRef.current?.getRootNode();
-		if (!isDocument(rootNode) && !isShadow(rootNode)) {
-			return;
-		}
+/** Returns the closest [rootNode](https://developer.mozilla.org/en-US/docs/Web/API/Node/getRootNode). */
+function useRootNode() {
+	return React.useContext(RootNodeContext);
+}
 
-		const { loaded } = loadStyles(rootNode, { css: css });
-		setLoaded(loaded);
+// ----------------------------------------------------------------------------
+
+const RootInternal = React.forwardRef<
+	React.ElementRef<"div">,
+	Omit<RootProps, "synchronizeColorScheme">
+>((props, forwardedRef) => {
+	const { children, colorScheme, density, ...rest } = props;
+
+	const [rootNode, setRootNode] = React.useState<Document | ShadowRoot | null>(
+		null,
+	);
+
+	const findRootNodeFromRef = React.useCallback((element?: HTMLElement) => {
+		if (!element) return;
+
+		const rootNode = element.getRootNode();
+		if (!isDocument(rootNode) && !isShadow(rootNode)) return;
+		setRootNode(rootNode);
 	}, []);
 
-	return !loaded ? <template ref={templateRef} /> : null;
+	return (
+		<Ariakit.Role
+			{...rest}
+			className={cx("🥝-root", props.className)}
+			data-kiwi-theme={colorScheme}
+			data-kiwi-density={density}
+			ref={useMergedRefs(forwardedRef, findRootNodeFromRef)}
+		>
+			<RootNodeContext.Provider value={rootNode}>
+				{children}
+			</RootNodeContext.Provider>
+		</Ariakit.Role>
+	);
+});
+
+// ----------------------------------------------------------------------------
+
+/**
+ * Synchronizes `colorScheme` with the parent document (or shadow-root host).
+ *
+ * The host will have a `data-color-scheme` attribute set to the current color scheme.
+ * If the host is a document, a `<meta name="color-scheme">` tag will also be updated (if found).
+ */
+function SynchronizeColorScheme({
+	colorScheme,
+}: { colorScheme: RootProps["colorScheme"] }) {
+	const rootNode = useRootNode();
+
+	useLayoutEffect(() => {
+		if (!rootNode) return;
+
+		if (isDocument(rootNode)) {
+			rootNode.documentElement.dataset.colorScheme = colorScheme;
+			const meta = rootNode.querySelector("meta[name='color-scheme']");
+			if (meta) (meta as HTMLMetaElement).content = colorScheme;
+		} else if (isShadow(rootNode)) {
+			(rootNode.host as HTMLElement).dataset.colorScheme = colorScheme;
+		}
+	}, [rootNode, colorScheme]);
+
+	return null;
+}
+
+// ----------------------------------------------------------------------------
+
+function Styles() {
+	const rootNode = useRootNode();
+
+	useLayoutEffect(() => {
+		if (!rootNode) return;
+		loadStyles(rootNode, { css });
+	}, [rootNode]);
+
+	return null;
 }
 
 // ----------------------------------------------------------------------------

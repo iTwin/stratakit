@@ -6,7 +6,7 @@ import globalStyles from "./tokens.css?url";
 import * as Ariakit from "@ariakit/react";
 import type * as React from "react";
 import type { MetaFunction, LinksFunction } from "react-router";
-import { Button, Divider, Icon } from "@itwin/kiwi-react/bricks";
+import { Button, Divider, Icon } from "@itwin/itwinui-react/bricks";
 import { parseTokens } from "internal/visitors.js";
 import rawLightTokens from "internal/theme-light.json";
 import rawDarkTokens from "internal/theme-dark.json";

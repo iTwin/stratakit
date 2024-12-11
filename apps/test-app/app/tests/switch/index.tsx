@@ -3,7 +3,12 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 import { definePage, type VariantProps } from "~/~utils.tsx";
-import { Switch, Label, VisuallyHidden, Field } from "@itwin/kiwi-react/bricks";
+import {
+	Switch,
+	Label,
+	VisuallyHidden,
+	Field,
+} from "@itwin/itwinui-react/bricks";
 import { useId } from "react";
 
 export const handle = { title: "Switch" };

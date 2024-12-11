@@ -2,7 +2,7 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-import { Button, Root } from "@itwin/kiwi-react/bricks";
+import { Button, Root } from "@itwin/itwinui-react/bricks";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { createPortal } from "react-dom";
 import { useColorScheme } from "~/~utils.tsx";

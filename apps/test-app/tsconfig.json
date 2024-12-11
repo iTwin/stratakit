@@ -26,7 +26,9 @@
 		"baseUrl": ".",
 		"paths": {
 			"~/*": ["./app/*"],
-			"@itwin/kiwi-react-internal/*": ["./node_modules/@itwin/kiwi-react/*"]
+			"@itwin/itwinui-react-internal/*": [
+				"./node_modules/@itwin/itwinui-react/*"
+			]
 		},
 		"rootDirs": [".", "./.react-router/types"],
 

@@ -5,15 +5,9 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { Button, Root } from "@itwin/kiwi-react/bricks";
-import { useMatches } from "react-router";
 import { definePage, useColorScheme } from "~/~utils.tsx";
 
 export const handle = { title: "Root", rootTest: true };
-
-export function useIsRootTest() {
-	const matches = useMatches();
-	return (matches.at(-1)?.handle as typeof handle)?.rootTest ?? true;
-}
 
 export default definePage(function Page({ synchronizeColorSchemeWithHost }) {
 	const popout = usePopout();

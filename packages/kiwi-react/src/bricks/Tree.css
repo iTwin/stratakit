@@ -33,6 +33,12 @@
 		&:where(:not([data-kiwi-expanded])) {
 			--🥝tree-item-expander-visibility: hidden;
 		}
+
+		@media (any-hover: hover) {
+			&:where(:hover[data-kiwi-parent-selected="true"][data-kiwi-selected="true"]) {
+				--🌀list-item-state: var(--🌀list-item-state--active-child-hover);
+			}
+		}
 	}
 }
 

@@ -207,12 +207,11 @@ function Fonts() {
  * doesn’t already have it.
  */
 function loadFonts(rootNode: Document | ShadowRoot) {
-	const ownerDocument = getOwnerDocument(rootNode);
+	const ownerWindow = getWindow(rootNode);
 
 	if (
-		!ownerDocument ||
-		!ownerDocument.defaultView ||
-		Array.from(ownerDocument.fonts).some(
+		!ownerWindow ||
+		Array.from(ownerWindow.document.fonts).some(
 			(font) => font.family === "InterVariable",
 		)
 	) {
@@ -225,7 +224,7 @@ function loadFonts(rootNode: Document | ShadowRoot) {
 	};
 
 	for (const [style, url] of Object.entries(interStyles)) {
-		const font = new ownerDocument.defaultView.FontFace(
+		const font = new ownerWindow.FontFace(
 			"InterVariable",
 			`url(${url}) format("woff2")`,
 			{
@@ -234,7 +233,7 @@ function loadFonts(rootNode: Document | ShadowRoot) {
 				style,
 			},
 		);
-		ownerDocument.fonts.add(font);
+		ownerWindow.document.fonts.add(font);
 	}
 }
 

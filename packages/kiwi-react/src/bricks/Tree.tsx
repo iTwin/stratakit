@@ -46,7 +46,7 @@ const TreeItem = React.forwardRef<React.ElementRef<"div">, TreeItemProps>(
 					() => ({
 						level,
 						expanded,
-						parentSelected: selected ?? false,
+						selected,
 					}),
 					[level, expanded, selected],
 				)}

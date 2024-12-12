@@ -40,12 +40,14 @@
 			var(--🌀list-item-state--hover, var(--✨bg--hover))
 			var(--🌀list-item-state--pressed, var(--✨bg--pressed))
 			var(--🌀list-item-state--active, var(--✨bg--active))
+			var(--🌀list-item-state--active-hover, var(--✨bg--active))
 			var(--🌀list-item-state--active-child, var(--✨bg--active-child))
 			var(--🌀list-item-state--active-child-hover, var(--✨bg--active-child-hover))
 			var(--🌀list-item-state--disabled, var(--✨bg--default));
 		color: var(--🌀list-item-state--default, unset) var(--🌀list-item-state--hover, unset)
 			var(--🌀list-item-state--pressed, unset)
 			var(--🌀list-item-state--active, var(--kiwi-color-text-accent-strong))
+			var(--🌀list-item-state--active-hover, var(--kiwi-color-text-accent-strong))
 			var(--🌀list-item-state--active-child, unset)
 			var(--🌀list-item-state--active-child-hover, unset)
 			var(--🌀list-item-state--disabled, var(--✨bg--disabled));
@@ -53,6 +55,7 @@
 			var(--🌀list-item-state--hover, var(--kiwi-color-icon-neutral-hover))
 			var(--🌀list-item-state--pressed, var(--kiwi-color-icon-neutral-hover))
 			var(--🌀list-item-state--active, var(--kiwi-color-icon-accent-strong))
+			var(--🌀list-item-state--active-hover, var(--kiwi-color-icon-accent-strong))
 			var(--🌀list-item-state--active-child, var(--kiwi-color-icon-neutral-base))
 			var(--🌀list-item-state--active-child-hover, var(--kiwi-color-icon-neutral-base))
 			var(--🌀list-item-state--disabled, var(--kiwi-color-icon-neutral-disabled));
@@ -81,6 +84,7 @@
 		--🌀list-item-state--hover: var(--🌀list-item-state,);
 		--🌀list-item-state--pressed: var(--🌀list-item-state,);
 		--🌀list-item-state--active: var(--🌀list-item-state,);
+		--🌀list-item-state--active-hover: var(--🌀list-item-state,);
 		--🌀list-item-state--active-child: var(--🌀list-item-state,);
 		--🌀list-item-state--active-child-hover: var(--🌀list-item-state,);
 		--🌀list-item-state--disabled: var(--🌀list-item-state,);

@@ -12,7 +12,7 @@ import rawLightTokens from "internal/theme-light.json";
 import rawDarkTokens from "internal/theme-dark.json";
 import styles from "./tokens.module.css";
 import { useColorScheme } from "~/~utils.tsx";
-import { Table } from "./~components.tsx";
+import { Table } from "./~utils.tsx";
 
 const lightColorTokens = parseTokens(rawLightTokens.color);
 const lightShadowTokens = parseTokens(rawLightTokens.shadow);

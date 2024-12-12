@@ -7,7 +7,7 @@ import styles from "./icons.module.css";
 import { Divider, Icon } from "@itwin/itwinui-react/bricks";
 import type { LinksFunction, MetaFunction } from "react-router";
 import iconsListJson from "@itwin/itwinui-icons/icons-list.json";
-import { Table } from "./~components.tsx";
+import { Table } from "./~utils.tsx";
 
 const allIcons = import.meta.glob(
 	"../node_modules/@itwin/itwinui-icons/icons/*.svg",

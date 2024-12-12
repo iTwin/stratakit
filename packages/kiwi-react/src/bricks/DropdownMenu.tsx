@@ -7,6 +7,7 @@ import cx from "classnames";
 import * as Ariakit from "@ariakit/react";
 import * as ListItem from "./ListItem.js";
 import { Button } from "./Button.js";
+import { Kbd } from "./Kbd.js";
 import { DisclosureArrow } from "./Icon.js";
 import { supportsPopover, type FocusableProps } from "./~utils.js";
 
@@ -118,20 +119,57 @@ const DropdownMenuButton = React.forwardRef<
 DEV: DropdownMenuButton.displayName = "DropdownMenu.Button";
 
 // ----------------------------------------------------------------------------
-
-interface DropdownMenuItemProps extends FocusableProps {}
+interface DropdownMenuItemProps extends FocusableProps {
+	/**
+	 * A string defining the keyboard shortcut(s) associated with the menu item.
+	 * Shortcuts should be formatted as a single string with keys separated by the '+' character.
+	 * For example: "Ctrl+S" or "Alt+Enter".
+	 *
+	 * @example
+	 * // A single shortcut:
+	 * shortcuts: "Ctrl+S"
+	 *
+	 * @example
+	 * // A multi-key combination:
+	 * shortcuts: "Ctrl+Shift+S"
+	 *
+	 * @default undefined
+	 */
+	shortcuts?: string;
+}
 
 const DropdownMenuItem = React.forwardRef<
 	React.ElementRef<typeof Ariakit.MenuItem>,
 	DropdownMenuItemProps
 >((props, forwardedRef) => {
+	const { shortcuts, ...rest } = props;
+
+	const shortcutKeys = React.useMemo(() => {
+		return typeof shortcuts === "string"
+			? shortcuts.split("+").map((key) => key.trim())
+			: [];
+	}, [shortcuts]);
+
+	const hasShortcuts = shortcutKeys.length > 0;
+
 	return (
 		<Ariakit.MenuItem
 			accessibleWhenDisabled
-			{...props}
+			{...rest}
 			render={<ListItem.Root render={props.render} />}
 			ref={forwardedRef}
-		/>
+		>
+			<ListItem.Content>{props.children}</ListItem.Content>
+			{hasShortcuts && (
+				<span className={"🥝-dropdown-menu-item-shortcuts"}>
+					{shortcutKeys.map((key, index) => (
+						<Kbd variant="ghost" key={`${key + index}`}>
+							{key}
+						</Kbd>
+					))}
+				</span>
+			)}
+		</Ariakit.MenuItem>
 	);
 });
 DEV: DropdownMenuItem.displayName = "DropdownMenu.Item";

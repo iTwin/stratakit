@@ -22,6 +22,10 @@
 			--🌀list-item-state: var(--🌀list-item-state--active);
 		}
 
+		&:where([data-kiwi-parent-selected="true"][data-kiwi-selected="true"]) {
+			--🌀list-item-state: var(--🌀list-item-state--active-child);
+		}
+
 		&:where([data-kiwi-expanded="false"]) {
 			--🥝tree-chevron-rotate: -0.25turn;
 		}

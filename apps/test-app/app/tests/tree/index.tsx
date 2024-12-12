@@ -32,8 +32,8 @@ export default definePage(function Page({
 	return (
 		<Tree.Root style={{ maxInlineSize: overflow ? 300 : undefined }}>
 			<TreeItem label={`Item 1${overflowPostfix}`} selected={!!selected}>
-				<TreeItem label="Item 1.1" />
-				<TreeItem label="Item 1.2" actions />
+				<TreeItem label="Item 1.1" selected={!!selected} />
+				<TreeItem label="Item 1.2" actions selected={!!selected} />
 				<TreeItem
 					label={`Item 1.3${overflowPostfix}`}
 					actions

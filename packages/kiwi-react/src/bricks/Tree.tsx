@@ -46,8 +46,9 @@ const TreeItem = React.forwardRef<React.ElementRef<"div">, TreeItemProps>(
 					() => ({
 						level,
 						expanded,
+						selected,
 					}),
-					[level, expanded],
+					[level, expanded, selected],
 				)}
 			>
 				<div role="listitem">
@@ -55,6 +56,7 @@ const TreeItem = React.forwardRef<React.ElementRef<"div">, TreeItemProps>(
 						{...rest}
 						data-kiwi-expanded={expanded}
 						data-kiwi-selected={selected}
+						data-kiwi-parent-selected={parentContext?.selected}
 						className={cx("🥝-tree-item", className)}
 						style={
 							{
@@ -158,6 +160,7 @@ const TreeItemContext = React.createContext<
 	| {
 			level: number;
 			expanded?: boolean;
+			selected?: boolean;
 	  }
 	| undefined
 >(undefined);

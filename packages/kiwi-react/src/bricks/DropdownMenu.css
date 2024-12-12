@@ -29,5 +29,7 @@
 }
 
 .🥝-dropdown-menu-item-shortcuts {
-	margin-inline-start: 0.5rem;
+	@layer base {
+		margin-inline-start: 0.5rem;
+	}
 }

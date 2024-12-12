@@ -17,7 +17,6 @@
 	}
 
 	@layer states {
-		/* TODO: combined states: active + hovered/pressed. */
 		&:where([data-kiwi-selected="true"]) {
 			--🌀list-item-state: var(--🌀list-item-state--active);
 		}

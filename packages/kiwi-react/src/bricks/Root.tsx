@@ -46,6 +46,7 @@ export const Root = React.forwardRef<React.ElementRef<"div">, RootProps>(
 		return (
 			<RootInternal {...rest} ref={forwardedRef}>
 				<Styles />
+				<Fonts />
 				{synchronizeColorScheme ? (
 					<SynchronizeColorScheme colorScheme={props.colorScheme} />
 				) : null}
@@ -184,6 +185,52 @@ function loadStyles(rootNode: Document | ShadowRoot, { css }: { css: string }) {
 	})();
 
 	return { loaded };
+}
+
+// ----------------------------------------------------------------------------
+
+function Fonts() {
+	const rootNode = useRootNode();
+
+	useLayoutEffect(() => {
+		if (!rootNode) return;
+		loadFonts(rootNode);
+	}, [rootNode]);
+
+	return null;
+}
+
+// ----------------------------------------------------------------------------
+
+/**
+ * Conditionally loads InterVariable from the official CDN if the document
+ * doesn’t already have it.
+ */
+function loadFonts(rootNode: Document | ShadowRoot) {
+	const ownerDocument = getOwnerDocument(rootNode);
+
+	if (
+		!ownerDocument ||
+		Array.from(ownerDocument.fonts).some(
+			(font) => font.family === "InterVariable",
+		)
+	) {
+		return;
+	}
+
+	const interStyles = {
+		normal: "https://rsms.me/inter/font-files/InterVariable.woff2?v=4.1",
+		italic: "https://rsms.me/inter/font-files/InterVariable-Italic.woff2?v=4.1",
+	};
+
+	for (const [style, url] of Object.entries(interStyles)) {
+		const font = new FontFace("InterVariable", `url(${url}) format("woff2")`, {
+			display: "swap",
+			weight: "100 900",
+			style,
+		});
+		ownerDocument.fonts.add(font);
+	}
 }
 
 // ----------------------------------------------------------------------------

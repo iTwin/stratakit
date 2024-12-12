@@ -84,8 +84,20 @@ function usePopout() {
 	const [popout, setPopout] = React.useState<Window | null>(null);
 
 	const open = React.useCallback(() => {
-		const popout = window.open("", "popout", "width=400,height=400");
-		setPopout(popout);
+		// Create an object URL from a blob of an HTML document with the correct
+		// doctype and charset
+		const bytes = new TextEncoder().encode(
+			"<!doctype html><meta charset=utf-8>",
+		);
+		const url = URL.createObjectURL(new Blob([bytes], { type: "text/html" }));
+
+		// We need to open a document since otherwise it opens in Quirks mode
+		const popout = window.open(url, "popout", "width=400,height=400");
+		URL.revokeObjectURL(url);
+
+		if (!popout) return;
+		// Wait for it to load before modifying
+		popout.onload = () => setPopout(popout);
 	}, []);
 
 	return React.useMemo(() => ({ open, popout }), [open, popout]);

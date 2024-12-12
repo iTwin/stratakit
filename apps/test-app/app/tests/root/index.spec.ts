@@ -13,7 +13,15 @@ test("default", async ({ page }) => {
 	const popoutPromise = page.waitForEvent("popup");
 	await page.getByRole("button", { name: "Open popout" }).click();
 	const popout = await popoutPromise;
-	await popout.waitForLoadState("domcontentloaded");
+	await Promise.all([
+		popout.waitForLoadState("domcontentloaded"),
+		// Wait for the fonts to load, since we’re using the font
+		popout.waitForFunction(() =>
+			Array.from(document.fonts).some(
+				(font) => font.family === "InterVariable" && font.status === "loaded",
+			),
+		),
+	]);
 	await expect(popout.locator("body")).toHaveScreenshot("popout.png");
 });
 

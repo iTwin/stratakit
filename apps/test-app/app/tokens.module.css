@@ -24,33 +24,6 @@
 	transform: rotate(-90deg);
 }
 
-.table {
-	border-collapse: collapse;
-	font-size: var(--kiwi-font-size-12);
-
-	thead {
-		text-align: start;
-	}
-
-	tbody tr:hover {
-		background-color: var(--kiwi-color-bg-neutral-base);
-	}
-
-	th,
-	td {
-		border: 1px solid var(--kiwi-color-border-neutral-base);
-		padding: 1rem;
-
-		&:first-child {
-			inline-size: 400px;
-		}
-	}
-
-	code {
-		color: var(--kiwi-color-text-neutral-secondary);
-	}
-}
-
 .swatch {
 	--_swatch-size: 3rem;
 

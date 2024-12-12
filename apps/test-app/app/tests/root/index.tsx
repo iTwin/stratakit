@@ -85,7 +85,11 @@ function usePopout() {
 
 	const open = React.useCallback(() => {
 		// We need to open a document since otherwise it opens in Quirks mode
-		const popout = window.open("popout.html", "popout", "width=400,height=400");
+		const popout = window.open(
+			"/popout.html",
+			"popout",
+			"width=400,height=400",
+		);
 		if (!popout) return;
 		// Wait for it to load before modifying
 		popout.onload = () => setPopout(popout);

@@ -3,8 +3,8 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 import { definePage } from "~/~utils.tsx";
-import { IconButton, Icon } from "@itwin/kiwi-react/bricks";
-import placeholderIcon from "@itwin/kiwi-icons/placeholder.svg";
+import { IconButton, Icon } from "@itwin/itwinui-react/bricks";
+import placeholderIcon from "@itwin/itwinui-icons/placeholder.svg";
 
 export const handle = { title: "IconButton" };
 

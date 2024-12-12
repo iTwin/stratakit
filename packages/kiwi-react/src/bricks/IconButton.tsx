@@ -68,7 +68,7 @@ type IconButtonProps = IconButtonBaseProps & IconButtonExtraProps;
  * ```tsx
  * <IconButton
  *   label="Reveal full content"
- *   icon={new URL("@itwin/kiwi-icons/icons/arrow.svg", import.meta.url).href}
+ *   icon={new URL("@itwin/itwinui-icons/icons/arrow.svg", import.meta.url).href}
  * />
  * ```
  *

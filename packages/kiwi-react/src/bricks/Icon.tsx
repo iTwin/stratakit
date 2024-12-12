@@ -15,11 +15,11 @@ interface IconProps extends Omit<BaseProps<"svg">, "children"> {
 }
 
 /**
- * Icon component that provides fill and sizing to the SVGs from `@itwin/kiwi-icons`.
+ * Icon component that provides fill and sizing to the SVGs from `@itwin/itwinui-icons`.
  * It uses an external symbol sprite to render the icon based on the specified `size`.
  *
  * ```tsx
- * const arrowIcon = new URL("@itwin/kiwi-icons/icons/arrow.svg", import.meta.url).href;
+ * const arrowIcon = new URL("@itwin/itwinui-icons/icons/arrow.svg", import.meta.url).href;
  * <Icon href={arrowIcon} />
  * ```
  *

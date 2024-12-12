@@ -1,29 +1,29 @@
-# @itwin/kiwi-icons
+# @itwin/itwinui-icons
 
 Icons for the Kiwi design system. Each icon is available as an SVG symbol sprite and contains multiple resolutions of the same icon using [`<symbol>`](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/symbol) elements. This allows the icon to be used at different sizes with increasing detail and quality. Currently supported symbols as identified by their `id` attribute values are: `icon`, `icon-large`.
 
 ## Usage
 
-Preferred usage is with the `Icon` component from `@itwin/kiwi-react`:
+Preferred usage is with the `Icon` component from `@itwin/itwinui-react`:
 
 1. Import the icon you want to use.
 
    Using the [`import.meta`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/import.meta) feature to get the URL of the icon (does not work with SSR):
 
    ```tsx
-   const placeholderIcon = new URL("@itwin/kiwi-icons/placeholder.svg", import.meta.url).href;
+   const placeholderIcon = new URL("@itwin/itwinui-icons/placeholder.svg", import.meta.url).href;
    ```
 
    Or a static import:
 
    ```tsx
-   import placeholderIcon from "@itwin/kiwi-icons/placeholder.svg";
+   import placeholderIcon from "@itwin/itwinui-icons/placeholder.svg";
    ```
 
 2. Render the `Icon` component.
 
    ```tsx
-   import { Icon } from "@itwin/kiwi-react";
+   import { Icon } from "@itwin/itwinui-react";
 
    <Icon href={placeholderIcon} />
 
@@ -45,19 +45,19 @@ Preferred usage is with the `Icon` component from `@itwin/kiwi-react`:
    ```
 
 > [!IMPORTANT]
-> Icons of `@itwin/kiwi-icons` should always be used as external resources. Do not inline the SVG content directly in your HTML or React components.
+> Icons of `@itwin/itwinui-icons` should always be used as external resources. Do not inline the SVG content directly in your HTML or React components.
 
 ## Bundler configuration
 
 ### Vite
 
-Within your Vite configuration file, you will need to configure `assetsInlineLimit` option to ensure SVG icons from `@itwin/kiwi-icons` are not inlined:
+Within your Vite configuration file, you will need to configure `assetsInlineLimit` option to ensure SVG icons from `@itwin/itwinui-icons` are not inlined:
 
 ```ts
 defineConfig({
 	build: {
 		assetsInlineLimit: (filePath) => {
-			if (filePath.includes("@itwin/kiwi-icons/")) return false;
+			if (filePath.includes("@itwin/itwinui-icons/")) return false;
 			return undefined;
 		},
 	},

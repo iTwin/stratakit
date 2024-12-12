@@ -4,21 +4,21 @@
  *--------------------------------------------------------------------------------------------*/
 import { definePage } from "~/~utils.tsx";
 import React from "react";
-import { Icon, IconButton } from "@itwin/kiwi-react/bricks";
-import * as Tree from "@itwin/kiwi-react-internal/src/bricks/Tree.js";
+import { Icon, IconButton } from "@itwin/itwinui-react/bricks";
+import * as Tree from "@itwin/itwinui-react-internal/src/bricks/Tree.js";
 
 export const handle = { title: "Tree" };
 
 const placeholderIcon = new URL(
-	"@itwin/kiwi-icons/placeholder.svg",
+	"@itwin/itwinui-icons/placeholder.svg",
 	import.meta.url,
 ).href;
 const unlockIcon = new URL(
-	"@itwin/kiwi-icons/lock-unlocked.svg",
+	"@itwin/itwinui-icons/lock-unlocked.svg",
 	import.meta.url,
 ).href;
 const showIcon = new URL(
-	"@itwin/kiwi-icons/visibility-show.svg",
+	"@itwin/itwinui-icons/visibility-show.svg",
 	import.meta.url,
 ).href;
 

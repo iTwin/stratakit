@@ -84,11 +84,11 @@ function usePopout() {
 	const [popout, setPopout] = React.useState<Window | null>(null);
 
 	const open = React.useCallback(() => {
-		const popout = window.open("", "popout", "width=400,height=400");
-		// Set HTML doctype for popout (this is the only way to do it when opening a blank page)
-		// We also need to inlcude the `<body>` element, otherwise the portal fails.
-		popout?.document.write("<!doctype html><body>");
-		setPopout(popout);
+		// We need to open a document since otherwise it opens in Quirks mode
+		const popout = window.open("popout.html", "popout", "width=400,height=400");
+		if (!popout) return;
+		// Wait for it to load before modifying
+		popout.onload = () => setPopout(popout);
 	}, []);
 
 	return React.useMemo(() => ({ open, popout }), [open, popout]);

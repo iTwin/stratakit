@@ -46,6 +46,9 @@ importers:
       "@react-router/node":
         specifier: ^7.0.2
         version: 7.0.2(react-router@7.0.2(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(typescript@5.7.2)
+      classnames:
+        specifier: ^2.5.1
+        version: 2.5.1
       isbot:
         specifier: ^5.1.17
         version: 5.1.17

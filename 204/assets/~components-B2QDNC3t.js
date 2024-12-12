@@ -1,1 +1,0 @@
-import{n as a}from"./chunk-D52XG6IA-BPj3SxYk.js";import{c as s}from"./index-LDMScfjX.js";const e="_table_vq84x_5",l={table:e};function m(t){return a.jsx("table",{...t,className:s(l.table,t.className)})}export{m as T};

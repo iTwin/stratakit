@@ -2,43 +2,42 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-import { Icon, VisuallyHidden } from "@itwin/itwinui-react/bricks";
-import type { MetaFunction } from "react-router";
+import globalStyles from "./icons.css?url";
+import styles from "./icons.module.css";
+import { Divider, Icon } from "@itwin/itwinui-react/bricks";
+import type { LinksFunction, MetaFunction } from "react-router";
 import iconsListJson from "@itwin/itwinui-icons/icons-list.json";
+import { Table } from "./~components.tsx";
 
 const allIcons = import.meta.glob(
 	"../node_modules/@itwin/itwinui-icons/icons/*.svg",
 	{ eager: true },
 );
 
-const title = "Kiwi icons";
-export const meta: MetaFunction = () => {
-	return [{ title }];
-};
-
 function getIconHref(icon: string) {
 	const module = allIcons[`../node_modules/@itwin/itwinui-icons/icons/${icon}`];
 	return (module as { default: string })?.default;
 }
 
+export const meta: MetaFunction = () => {
+	return [{ title: "Kiwi icons" }];
+};
+
+export const links: LinksFunction = () => [
+	{ rel: "stylesheet", href: globalStyles },
+];
+
 export default function Page() {
 	return (
 		<>
-			<VisuallyHidden render={(props) => <h1 {...props} />}>
-				{title}
-			</VisuallyHidden>
-			<table style={{ textAlign: "left", padding: "1rem" }}>
+			<h1>Icons</h1>
+			<Divider />
+			<Table className={styles.table} style={{ marginBlockStart: "1rem" }}>
 				<thead>
 					<tr>
-						<th scope="col" style={{ inlineSize: 300 }}>
-							Name
-						</th>
-						<th scope="col" style={{ inlineSize: 100 }}>
-							Default
-						</th>
-						<th scope="col" style={{ inlineSize: 100 }}>
-							Large
-						</th>
+						<th>Name</th>
+						<th>Default</th>
+						<th>Large</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -57,7 +56,7 @@ export default function Page() {
 						);
 					})}
 				</tbody>
-			</table>
+			</Table>
 		</>
 	);
 }

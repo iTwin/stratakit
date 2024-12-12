@@ -1,6 +1,5 @@
 {
 	"name": "@itwin/itwinui-react",
-	"private": true,
 	"type": "module",
 	"version": "5.0.0-alpha.0",
 	"license": "MIT",

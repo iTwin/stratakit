@@ -149,8 +149,7 @@ const DropdownMenuItem = React.forwardRef<
 			? shortcuts.split("+").map((key) => key.trim())
 			: [];
 
-	const hasShortcuts =
-		typeof shortcuts === "string" && shortcuts.trim().length > 0;
+	const hasShortcuts = shortcutKeys.length > 0;
 
 	return (
 		<Ariakit.MenuItem

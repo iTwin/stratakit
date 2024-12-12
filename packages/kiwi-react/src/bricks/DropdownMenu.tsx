@@ -145,7 +145,9 @@ const DropdownMenuItem = React.forwardRef<
 	const { shortcuts, ...rest } = props;
 
 	const shortcutKeys =
-		typeof shortcuts === "string" ? shortcuts.replace(/\+/g, "").trim() : "";
+		typeof shortcuts === "string"
+			? shortcuts.split("+").map((key) => key.trim())
+			: [];
 
 	const hasShortcuts =
 		typeof shortcuts === "string" && shortcuts.trim().length > 0;
@@ -160,7 +162,11 @@ const DropdownMenuItem = React.forwardRef<
 			<ListItem.Content>{props.children}</ListItem.Content>
 			{hasShortcuts && (
 				<span className={"🥝-dropdown-menu-item-shortcuts"}>
-					<Kbd variant="ghost">{shortcutKeys}</Kbd>
+					{shortcutKeys.map((key, index) => (
+						<Kbd variant="ghost" key={`${key + index}`}>
+							{key}
+						</Kbd>
+					))}
 				</span>
 			)}
 		</Ariakit.MenuItem>

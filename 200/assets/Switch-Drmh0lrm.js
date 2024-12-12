@@ -1,0 +1,1 @@
+import{r as t,j as o}from"./chunk-D52XG6IA-s6jvCII1.js";import{c as a}from"./index-Ba6OMkQD.js";import{u as c}from"./Field-B91MS5QC.js";import{C as i}from"./ASMQKSDT-98Yi0L4H.js";const x=t.forwardRef((s,r)=>{const e=c();return o.jsx(i,{accessibleWhenDisabled:!0,id:e,...s,className:a("🥝-switch",s.className),role:"switch",ref:r})});export{x as S};

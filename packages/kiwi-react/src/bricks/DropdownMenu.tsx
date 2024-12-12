@@ -144,10 +144,11 @@ const DropdownMenuItem = React.forwardRef<
 >((props, forwardedRef) => {
 	const { shortcuts, ...rest } = props;
 
-	const shortcutKeys =
-		typeof shortcuts === "string"
+	const shortcutKeys = React.useMemo(() => {
+		return typeof shortcuts === "string"
 			? shortcuts.split("+").map((key) => key.trim())
 			: [];
+	}, [shortcuts]);
 
 	const hasShortcuts = shortcutKeys.length > 0;
 

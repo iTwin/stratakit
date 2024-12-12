@@ -139,7 +139,7 @@ interface DropdownMenuItemProps extends FocusableProps {
 }
 
 const DropdownMenuItem = React.forwardRef<
-	React.ComponentRef<typeof Ariakit.MenuItem>,
+	React.ElementRef<typeof Ariakit.MenuItem>,
 	DropdownMenuItemProps
 >((props, forwardedRef) => {
 	const { shortcuts, ...rest } = props;

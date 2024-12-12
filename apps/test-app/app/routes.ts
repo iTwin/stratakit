@@ -11,7 +11,6 @@ export default [
 	route("sandbox", "./sandbox.tsx"),
 	route("tokens", "./tokens.tsx"),
 	route("icons", "./icons.tsx"),
-	route("popout.html", "./popout.ts"),
 
 	route(
 		"tests",

@@ -2,11 +2,10 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-import * as React from "react";
 import cx from "classnames";
 import * as Ariakit from "@ariakit/react";
 import { useFieldId } from "./Field.js";
-import type { FocusableProps } from "./~utils.js";
+import { forwardRef, type FocusableProps } from "./~utils.js";
 
 type InputBaseProps = Omit<FocusableProps<"input">, "defaultValue" | "value">;
 
@@ -14,10 +13,7 @@ type RadioOwnProps = Pick<Ariakit.RadioProps, "value" | "checked" | "onChange">;
 
 interface RadioProps extends InputBaseProps, RadioOwnProps {}
 
-export const Radio = React.forwardRef<
-	React.ElementRef<typeof Ariakit.Radio>,
-	RadioProps
->((props, forwardedRef) => {
+export const Radio = forwardRef<"input", RadioProps>((props, forwardedRef) => {
 	const fieldId = useFieldId();
 
 	return (

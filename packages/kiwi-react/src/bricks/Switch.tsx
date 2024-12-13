@@ -2,11 +2,10 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-import * as React from "react";
 import cx from "classnames";
 import * as Ariakit from "@ariakit/react";
 import { useFieldId } from "./Field.js";
-import type { FocusableProps } from "./~utils.js";
+import { forwardRef, type FocusableProps } from "./~utils.js";
 
 type InputBaseProps = Omit<FocusableProps<"input">, "defaultValue" | "value">;
 
@@ -22,21 +21,20 @@ interface SwitchProps extends InputBaseProps, CheckboxOwnProps {
 	checked?: boolean;
 }
 
-export const Switch = React.forwardRef<
-	React.ElementRef<typeof Ariakit.Checkbox>,
-	SwitchProps
->((props, forwardedRef) => {
-	const fieldId = useFieldId();
+export const Switch = forwardRef<"input", SwitchProps>(
+	(props, forwardedRef) => {
+		const fieldId = useFieldId();
 
-	return (
-		<Ariakit.Checkbox
-			accessibleWhenDisabled
-			id={fieldId}
-			{...props}
-			className={cx("🥝-switch", props.className)}
-			role="switch"
-			ref={forwardedRef}
-		/>
-	);
-});
+		return (
+			<Ariakit.Checkbox
+				accessibleWhenDisabled
+				id={fieldId}
+				{...props}
+				className={cx("🥝-switch", props.className)}
+				role="switch"
+				ref={forwardedRef}
+			/>
+		);
+	},
+);
 DEV: Switch.displayName = "Switch";

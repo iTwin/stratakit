@@ -9,7 +9,7 @@ import * as ListItem from "./ListItem.js";
 import { Button } from "./Button.js";
 import { Kbd } from "./Kbd.js";
 import { DisclosureArrow } from "./Icon.js";
-import { supportsPopover, type FocusableProps } from "./~utils.js";
+import { forwardRef, supportsPopover, type FocusableProps } from "./~utils.js";
 
 // ----------------------------------------------------------------------------
 
@@ -74,48 +74,46 @@ DEV: DropdownMenu.displayName = "DropdownMenu.Root";
 
 interface DropdownMenuContentProps extends FocusableProps {}
 
-const DropdownMenuContent = React.forwardRef<
-	React.ElementRef<typeof Ariakit.Menu>,
-	DropdownMenuContentProps
->((props, forwardedRef) => {
-	return (
-		<Ariakit.Menu
-			portal={!supportsPopover}
-			unmountOnHide
-			{...props}
-			style={{ zIndex: supportsPopover ? undefined : 9999, ...props.style }}
-			wrapperProps={{ popover: "manual" } as React.ComponentProps<"div">}
-			className={cx("🥝-dropdown-menu", props.className)}
-			ref={forwardedRef}
-		/>
-	);
-});
+const DropdownMenuContent = forwardRef<"div", DropdownMenuContentProps>(
+	(props, forwardedRef) => {
+		return (
+			<Ariakit.Menu
+				portal={!supportsPopover}
+				unmountOnHide
+				{...props}
+				style={{ zIndex: supportsPopover ? undefined : 9999, ...props.style }}
+				wrapperProps={{ popover: "manual" } as React.ComponentProps<"div">}
+				className={cx("🥝-dropdown-menu", props.className)}
+				ref={forwardedRef}
+			/>
+		);
+	},
+);
 DEV: DropdownMenuContent.displayName = "DropdownMenu.Content";
 
 // ----------------------------------------------------------------------------
 
 interface DropdownMenuButtonProps extends FocusableProps<"button"> {}
 
-const DropdownMenuButton = React.forwardRef<
-	React.ElementRef<typeof Ariakit.MenuButton>,
-	DropdownMenuButtonProps
->((props, forwardedRef) => {
-	const { accessibleWhenDisabled = true, children, ...rest } = props;
-	return (
-		<Ariakit.MenuButton
-			accessibleWhenDisabled
-			render={
-				<Button accessibleWhenDisabled={accessibleWhenDisabled}>
-					{children}
-					<DisclosureArrow />
-				</Button>
-			}
-			{...rest}
-			className={cx("🥝-dropdown-menu-button", props.className)}
-			ref={forwardedRef as Ariakit.MenuButtonProps["ref"]}
-		/>
-	);
-});
+const DropdownMenuButton = forwardRef<"button", DropdownMenuButtonProps>(
+	(props, forwardedRef) => {
+		const { accessibleWhenDisabled = true, children, ...rest } = props;
+		return (
+			<Ariakit.MenuButton
+				accessibleWhenDisabled
+				render={
+					<Button accessibleWhenDisabled={accessibleWhenDisabled}>
+						{children}
+						<DisclosureArrow />
+					</Button>
+				}
+				{...rest}
+				className={cx("🥝-dropdown-menu-button", props.className)}
+				ref={forwardedRef}
+			/>
+		);
+	},
+);
 DEV: DropdownMenuButton.displayName = "DropdownMenu.Button";
 
 // ----------------------------------------------------------------------------
@@ -138,40 +136,39 @@ interface DropdownMenuItemProps extends FocusableProps {
 	shortcuts?: string;
 }
 
-const DropdownMenuItem = React.forwardRef<
-	React.ElementRef<typeof Ariakit.MenuItem>,
-	DropdownMenuItemProps
->((props, forwardedRef) => {
-	const { shortcuts, ...rest } = props;
+const DropdownMenuItem = forwardRef<"div", DropdownMenuItemProps>(
+	(props, forwardedRef) => {
+		const { shortcuts, ...rest } = props;
 
-	const shortcutKeys = React.useMemo(() => {
-		return typeof shortcuts === "string"
-			? shortcuts.split("+").map((key) => key.trim())
-			: [];
-	}, [shortcuts]);
+		const shortcutKeys = React.useMemo(() => {
+			return typeof shortcuts === "string"
+				? shortcuts.split("+").map((key) => key.trim())
+				: [];
+		}, [shortcuts]);
 
-	const hasShortcuts = shortcutKeys.length > 0;
+		const hasShortcuts = shortcutKeys.length > 0;
 
-	return (
-		<Ariakit.MenuItem
-			accessibleWhenDisabled
-			{...rest}
-			render={<ListItem.Root render={props.render} />}
-			ref={forwardedRef}
-		>
-			<ListItem.Content>{props.children}</ListItem.Content>
-			{hasShortcuts && (
-				<span className={"🥝-dropdown-menu-item-shortcuts"}>
-					{shortcutKeys.map((key, index) => (
-						<Kbd variant="ghost" key={`${key + index}`}>
-							{key}
-						</Kbd>
-					))}
-				</span>
-			)}
-		</Ariakit.MenuItem>
-	);
-});
+		return (
+			<Ariakit.MenuItem
+				accessibleWhenDisabled
+				{...rest}
+				render={<ListItem.Root render={props.render} />}
+				ref={forwardedRef}
+			>
+				<ListItem.Content>{props.children}</ListItem.Content>
+				{hasShortcuts && (
+					<span className={"🥝-dropdown-menu-item-shortcuts"}>
+						{shortcutKeys.map((key, index) => (
+							<Kbd variant="ghost" key={`${key + index}`}>
+								{key}
+							</Kbd>
+						))}
+					</span>
+				)}
+			</Ariakit.MenuItem>
+		);
+	},
+);
 DEV: DropdownMenuItem.displayName = "DropdownMenu.Item";
 
 // ----------------------------------------------------------------------------

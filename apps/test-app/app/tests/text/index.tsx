@@ -23,7 +23,9 @@ const variants = [
 
 export default definePage(
 	function Page({ variant = "body-md", content = "Hello, World!" }) {
-		return <Text variant={variant}>{content}</Text>;
+		return (
+			<Text variant={variant as (typeof variants)[number]}>{content}</Text>
+		);
 	},
 	{ visual: VisualTest },
 );

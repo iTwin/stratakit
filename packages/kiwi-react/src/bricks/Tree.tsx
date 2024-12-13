@@ -40,6 +40,7 @@ const TreeItem = React.forwardRef<React.ElementRef<"div">, TreeItemProps>(
 
 		const parentContext = React.useContext(TreeItemContext);
 		const level = parentContext ? parentContext.level + 1 : 1;
+		const firstSelected = !!selected && !parentContext?.selected; // TODO: temporary, only works with single selection
 		return (
 			<TreeItemContext.Provider
 				value={React.useMemo(
@@ -51,7 +52,7 @@ const TreeItem = React.forwardRef<React.ElementRef<"div">, TreeItemProps>(
 					[level, expanded, selected],
 				)}
 			>
-				<div role="listitem">
+				<div role="listitem" aria-current={firstSelected ? true : undefined}>
 					<ListItem.Root
 						{...rest}
 						data-kiwi-expanded={expanded}

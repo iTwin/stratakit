@@ -2,11 +2,31 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
+import * as React from "react";
 import type * as Ariakit from "@ariakit/react";
 
 export const isBrowser = typeof document !== "undefined";
 
 export const supportsPopover = isBrowser && "popover" in HTMLElement.prototype;
+
+// ----------------------------------------------------------------------------
+
+export function forwardRef<
+	DefaultElement extends React.ElementType,
+	Props extends Record<string, unknown>,
+>(
+	render: React.ForwardRefRenderFunction<
+		React.ComponentRef<DefaultElement>,
+		React.PropsWithoutRef<Props>
+	>,
+): React.ForwardRefExoticComponent<
+	React.PropsWithoutRef<Props> &
+		React.RefAttributes<React.ComponentRef<DefaultElement> | HTMLElement>
+> {
+	return React.forwardRef(render);
+}
+
+// ----------------------------------------------------------------------------
 
 /** Element type props merged with custom props. */
 type MergeProps<

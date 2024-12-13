@@ -9,7 +9,7 @@ import { useFieldId } from "./Field.js";
 import { Icon } from "./Icon.js";
 import { Textarea } from "./Textarea.js";
 import { useMergedRefs } from "./~hooks.js";
-import type { FocusableProps, BaseProps } from "./~utils.js";
+import { type FocusableProps, type BaseProps, forwardRef } from "./~utils.js";
 
 // ----------------------------------------------------------------------------
 
@@ -40,31 +40,30 @@ interface TextBoxInputProps extends Omit<BaseInputProps, "children" | "type"> {
  *
  * To add additional decorations, see `TextBox.Root` component.
  */
-const TextBoxInput = React.forwardRef<
-	React.ElementRef<"input">,
-	TextBoxInputProps
->((props, forwardedRef) => {
-	const fieldId = useFieldId();
-	const rootContext = React.useContext(TextBoxRootContext);
-	const setDisabled = rootContext?.setDisabled;
-	React.useEffect(() => {
-		setDisabled?.(props.disabled);
-	}, [setDisabled, props.disabled]);
-	return (
-		<Ariakit.Role.input
-			id={fieldId}
-			{...props}
-			className={cx({ "🥝-text-box": !rootContext }, props.className)}
-			render={
-				<Ariakit.Focusable
-					accessibleWhenDisabled
-					render={props.render || <input />}
-				/>
-			}
-			ref={useMergedRefs(rootContext?.inputRef, forwardedRef)}
-		/>
-	);
-});
+const TextBoxInput = forwardRef<"input", TextBoxInputProps>(
+	(props, forwardedRef) => {
+		const fieldId = useFieldId();
+		const rootContext = React.useContext(TextBoxRootContext);
+		const setDisabled = rootContext?.setDisabled;
+		React.useEffect(() => {
+			setDisabled?.(props.disabled);
+		}, [setDisabled, props.disabled]);
+		return (
+			<Ariakit.Role.input
+				id={fieldId}
+				{...props}
+				className={cx({ "🥝-text-box": !rootContext }, props.className)}
+				render={
+					<Ariakit.Focusable
+						accessibleWhenDisabled
+						render={props.render || <input />}
+					/>
+				}
+				ref={useMergedRefs(rootContext?.inputRef, forwardedRef)}
+			/>
+		);
+	},
+);
 DEV: TextBoxInput.displayName = "TextBox.Input";
 
 // ----------------------------------------------------------------------------
@@ -82,7 +81,7 @@ interface TextBoxRootProps extends BaseProps {}
  * </TextBox.Root>
  * ```
  */
-const TextBoxRoot = React.forwardRef<React.ElementRef<"div">, TextBoxRootProps>(
+const TextBoxRoot = forwardRef<"div", TextBoxRootProps>(
 	(props, forwardedRef) => {
 		const inputRef = React.useRef<HTMLInputElement>(null);
 		const [disabled, setDisabled] = React.useState<boolean | undefined>();
@@ -117,36 +116,34 @@ DEV: TextBoxRoot.displayName = "TextBox.Root";
 
 interface TextBoxIconProps extends React.ComponentProps<typeof Icon> {}
 
-const TextBoxIcon = React.forwardRef<
-	React.ElementRef<typeof Icon>,
-	TextBoxIconProps
->((props, forwardedRef) => {
-	return (
-		<Icon
-			{...props}
-			className={cx("🥝-text-box-decoration", props.className)}
-			ref={forwardedRef}
-		/>
-	);
-});
+const TextBoxIcon = forwardRef<"svg", TextBoxIconProps>(
+	(props, forwardedRef) => {
+		return (
+			<Icon
+				{...props}
+				className={cx("🥝-text-box-decoration", props.className)}
+				ref={forwardedRef}
+			/>
+		);
+	},
+);
 DEV: TextBoxIcon.displayName = "TextBox.Icon";
 
 // ----------------------------------------------------------------------------
 
 interface TextBoxTextProps extends BaseProps<"span"> {}
 
-const TextBoxText = React.forwardRef<
-	React.ElementRef<"span">,
-	TextBoxTextProps
->((props, forwardedRef) => {
-	return (
-		<Ariakit.Role.span
-			{...props}
-			className={cx("🥝-text-box-decoration", props.className)}
-			ref={forwardedRef}
-		/>
-	);
-});
+const TextBoxText = forwardRef<"span", TextBoxTextProps>(
+	(props, forwardedRef) => {
+		return (
+			<Ariakit.Role.span
+				{...props}
+				className={cx("🥝-text-box-decoration", props.className)}
+				ref={forwardedRef}
+			/>
+		);
+	},
+);
 DEV: TextBoxText.displayName = "TextBox.Text";
 
 // ----------------------------------------------------------------------------

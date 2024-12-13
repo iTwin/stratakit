@@ -2,10 +2,9 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-import * as React from "react";
 import cx from "classnames";
 import * as Ariakit from "@ariakit/react";
-import type { BaseProps } from "./~utils.js";
+import { forwardRef, type BaseProps } from "./~utils.js";
 
 interface DividerProps
 	extends BaseProps<"hr">,
@@ -24,20 +23,18 @@ interface DividerProps
  * A `Divider` can be oriented horizontally or vertically (using the `orientation` prop),
  * and can be a semantic divider or a purely presentational one (using the `presentational` prop).
  */
-export const Divider = React.forwardRef<React.ElementRef<"div">, DividerProps>(
-	(props, forwardedRef) => {
-		const { presentational, ...rest } = props;
+export const Divider = forwardRef<"hr", DividerProps>((props, forwardedRef) => {
+	const { presentational, ...rest } = props;
 
-		const Comp = presentational ? Ariakit.Role : Ariakit.Separator;
+	const Comp = presentational ? Ariakit.Role : Ariakit.Separator;
 
-		return (
-			<Comp
-				{...rest}
-				className={cx("🥝-divider", props.className)}
-				data-kiwi-orientation={props.orientation}
-				ref={forwardedRef as Ariakit.SeparatorProps["ref"]}
-			/>
-		);
-	},
-);
+	return (
+		<Comp
+			{...rest}
+			className={cx("🥝-divider", props.className)}
+			data-kiwi-orientation={props.orientation}
+			ref={forwardedRef}
+		/>
+	);
+});
 DEV: Divider.displayName = "Divider";

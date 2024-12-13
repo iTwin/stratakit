@@ -2,10 +2,9 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-import * as React from "react";
 import cx from "classnames";
 import * as Ariakit from "@ariakit/react";
-import type { BaseProps } from "./~utils.js";
+import { forwardRef, type BaseProps } from "./~utils.js";
 
 interface KbdProps extends BaseProps<"kbd"> {
 	/** @default "solid" */
@@ -20,18 +19,16 @@ interface KbdProps extends BaseProps<"kbd"> {
  * <Kbd>Ctrl</Kbd> <Kbd>S</Kbd>
  * ```
  */
-export const Kbd = React.forwardRef<React.ElementRef<"kbd">, KbdProps>(
-	(props, forwardedRef) => {
-		const { variant = "solid", ...rest } = props;
-		return (
-			<Ariakit.Role
-				data-kiwi-variant={variant}
-				{...rest}
-				className={cx("🥝-kbd", props.className)}
-				render={props.render || <kbd />}
-				ref={forwardedRef as Ariakit.RoleProps["ref"]}
-			/>
-		);
-	},
-);
+export const Kbd = forwardRef<"kbd", KbdProps>((props, forwardedRef) => {
+	const { variant = "solid", ...rest } = props;
+	return (
+		<Ariakit.Role
+			data-kiwi-variant={variant}
+			{...rest}
+			className={cx("🥝-kbd", props.className)}
+			render={props.render || <kbd />}
+			ref={forwardedRef as Ariakit.RoleProps["ref"]}
+		/>
+	);
+});
 DEV: Kbd.displayName = "Kbd";

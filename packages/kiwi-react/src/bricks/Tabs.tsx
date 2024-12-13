@@ -7,7 +7,7 @@ import * as ReactDOM from "react-dom";
 import cx from "classnames";
 import * as Ariakit from "@ariakit/react";
 import { useControlledState } from "./~hooks.js";
-import type { FocusableProps, BaseProps } from "./~utils.js";
+import { type FocusableProps, type BaseProps, forwardRef } from "./~utils.js";
 
 // ----------------------------------------------------------------------------
 
@@ -68,10 +68,7 @@ interface TabListProps extends BaseProps {
 	tone?: "neutral" | "accent";
 }
 
-const TabList = React.forwardRef<
-	React.ElementRef<typeof Ariakit.TabList>,
-	TabListProps
->((props, forwardedRef) => {
+const TabList = forwardRef<"div", TabListProps>((props, forwardedRef) => {
 	const { tone = "neutral", ...rest } = props;
 	const viewTransitionName = `🥝active-stripe-${React.useId().replaceAll(":", "_")}`;
 
@@ -98,18 +95,16 @@ interface TabProps
 	extends FocusableProps<"button">,
 		Pick<Ariakit.TabProps, "id"> {}
 
-const Tab = React.forwardRef<React.ElementRef<typeof Ariakit.Tab>, TabProps>(
-	(props, forwardedRef) => {
-		return (
-			<Ariakit.Tab
-				accessibleWhenDisabled
-				{...props}
-				className={cx("🥝-tab", props.className)}
-				ref={forwardedRef}
-			/>
-		);
-	},
-);
+const Tab = forwardRef<"button", TabProps>((props, forwardedRef) => {
+	return (
+		<Ariakit.Tab
+			accessibleWhenDisabled
+			{...props}
+			className={cx("🥝-tab", props.className)}
+			ref={forwardedRef}
+		/>
+	);
+});
 DEV: Tab.displayName = "Tabs.Tab";
 
 // ----------------------------------------------------------------------------
@@ -118,10 +113,7 @@ interface TabPanelProps
 	extends BaseProps<"div">,
 		Pick<Ariakit.TabPanelProps, "tabId" | "unmountOnHide"> {}
 
-const TabPanel = React.forwardRef<
-	React.ElementRef<typeof Ariakit.TabPanel>,
-	TabPanelProps
->((props, forwardedRef) => {
+const TabPanel = forwardRef<"div", TabPanelProps>((props, forwardedRef) => {
 	return (
 		<Ariakit.TabPanel
 			{...props}

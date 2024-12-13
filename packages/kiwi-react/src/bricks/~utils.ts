@@ -18,6 +18,9 @@ export const supportsPopover = isBrowser && "popover" in HTMLElement.prototype;
  *
  * ```tsx
  * const Button = forwardRef<"button", ButtonProps>((props, forwardedRef) => {});
+ *
+ * const ref = React.useRef<HTMLElement>(null); // or React.useRef<HTMLButtonElement>(null)
+ * <Button ref={ref} />
  * ```
  *
  * **Note**: The first type parameter is the default element type, which is slightly different

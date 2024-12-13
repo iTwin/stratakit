@@ -420,13 +420,12 @@ type TreeItemProps = React.PropsWithChildren<{
 }>;
 
 function TreeItem(props: TreeItemProps) {
+	const id = React.useId();
 	const isParentNode = React.Children.count(props.children) > 0;
 	const [expanded, setExpanded] = React.useState(true);
 	const treeContext = React.useContext(SandboxTreeContext);
 	const parentContext = React.useContext(SandboxParentItemContext);
-	const selected =
-		parentContext.selected ||
-		(!!props.label && props.label === treeContext.selected);
+	const selected = parentContext.selected || id === treeContext.selected;
 	return (
 		<SandboxParentItemContext.Provider
 			value={{
@@ -466,8 +465,8 @@ function TreeItem(props: TreeItemProps) {
 				selected={selected}
 				onClick={() => {
 					treeContext.setSelected((prev) => {
-						if (prev === props.label) return undefined;
-						return props.label;
+						if (prev === id) return undefined;
+						return id;
 					});
 				}}
 			>

@@ -173,6 +173,7 @@
 .treeContent {
 	border: unset;
 	background-color: unset;
+	text-align: unset;
 
 	&::before {
 		content: "";

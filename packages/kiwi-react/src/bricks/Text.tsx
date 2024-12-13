@@ -26,6 +26,19 @@ interface TextProps extends BaseProps {
 		| "mono-sm";
 }
 
+/**
+ * An element with text styles applied.
+ *
+ * Example usage:
+ * ```tsx
+ * <Text variant="display-sm">Hello, World!</Text>
+ * ```
+ *
+ * Use the `render` prop to change the underlying element (defaults to a `<div>`):
+ * ```tsx
+ * <Text render={<h1 />} variant="headline-lg">Hello, World!</Text>
+ * ```
+ */
 export const Text = forwardRef<"div", TextProps>((props, forwardedRef) => {
 	const { className, variant, ...rest } = props;
 

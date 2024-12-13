@@ -439,20 +439,25 @@ function TreeItem(props: TreeItemProps) {
 			}}
 		>
 			<Tree.Item
-				tabIndex={0}
+				className={styles.treeItem}
 				content={
 					<>
 						<Tree.Expander
+							className={styles.treeExpander}
 							onClick={(e) => {
 								setExpanded((prev) => !prev);
-								e.stopPropagation(); // Prevent tree item selection.
-							}}
-							onKeyDown={(e) => {
-								e.stopPropagation(); // Prevent tree item selection.
 							}}
 						/>
 						<Icon href={placeholderIcon} style={{ display: "inline" }} />
-						<Tree.Content>{props.label}</Tree.Content>
+						<Tree.Content
+							className={styles.treeContent}
+							render={<button type="button" />}
+							onClick={() => {
+								toggleSelected();
+							}}
+						>
+							{props.label}
+						</Tree.Content>
 						<div style={{ display: "flex", gap: 4, marginInlineStart: "auto" }}>
 							<IconButton
 								className={styles.action}
@@ -460,12 +465,6 @@ function TreeItem(props: TreeItemProps) {
 								label="Lock"
 								variant="ghost"
 								aria-hidden={!props.lockAction}
-								onClick={(e) => {
-									e.stopPropagation();
-								}}
-								onKeyDown={(e) => {
-									e.stopPropagation();
-								}}
 							/>
 							<IconButton
 								className={styles.action}
@@ -473,26 +472,12 @@ function TreeItem(props: TreeItemProps) {
 								label="Show"
 								variant="ghost"
 								aria-hidden={!props.visibilityAction}
-								onClick={(e) => {
-									e.stopPropagation();
-								}}
-								onKeyDown={(e) => {
-									e.stopPropagation();
-								}}
 							/>
 						</div>
 					</>
 				}
 				expanded={isParentNode ? expanded : undefined}
 				selected={selected}
-				onClick={() => {
-					toggleSelected();
-				}}
-				onKeyDown={(e) => {
-					if (e.key === "Enter" || e.key === " ") {
-						toggleSelected();
-					}
-				}}
 			>
 				{expanded ? props.children : undefined}
 			</Tree.Item>

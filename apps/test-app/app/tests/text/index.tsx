@@ -21,20 +21,28 @@ const variants = [
 	"mono-sm",
 ] as const;
 
+const LOREM_IPSUM =
+	"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
+
 export default definePage(
-	function Page({ variant = "body-md", content = "Hello, World!" }) {
+	function Page({ variant = "body-md", content = LOREM_IPSUM }) {
 		return (
-			<Text variant={variant as (typeof variants)[number]}>{content}</Text>
+			<Text
+				variant={variant as (typeof variants)[number]}
+				style={{ maxInlineSize: "24em" }}
+			>
+				{content}
+			</Text>
 		);
 	},
 	{ visual: VisualTest },
 );
 
-function VisualTest({ content = "Hello, World!" }) {
+function VisualTest({ content = LOREM_IPSUM }) {
 	return (
 		<div style={{ display: "grid", gap: "1rem" }}>
 			{variants.map((variant) => (
-				<Text key={variant} variant={variant}>
+				<Text key={variant} variant={variant} style={{ maxInlineSize: "24em" }}>
 					{content}
 				</Text>
 			))}

@@ -19,11 +19,11 @@ export function forwardRef<
 		React.ComponentRef<DefaultElement>,
 		React.PropsWithoutRef<Props>
 	>,
-): React.ForwardRefExoticComponent<
-	React.PropsWithoutRef<Props> &
-		React.RefAttributes<React.ComponentRef<DefaultElement> | HTMLElement>
-> {
-	return React.forwardRef(render);
+) {
+	return React.forwardRef(render) as React.ForwardRefExoticComponent<
+		React.PropsWithoutRef<Props> &
+			React.RefAttributes<React.ComponentRef<DefaultElement> | HTMLElement>
+	>;
 }
 
 // ----------------------------------------------------------------------------

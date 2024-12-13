@@ -40,12 +40,12 @@ interface TextProps extends BaseProps {
  * ```
  */
 export const Text = forwardRef<"div", TextProps>((props, forwardedRef) => {
-	const { className, variant, ...rest } = props;
+	const { variant, ...rest } = props;
 
 	return (
 		<Ariakit.Role
 			{...rest}
-			className={cx("🥝-text", className)}
+			className={cx("🥝-text", props.className)}
 			data-kiwi-text-variant={variant}
 			ref={forwardedRef}
 		/>

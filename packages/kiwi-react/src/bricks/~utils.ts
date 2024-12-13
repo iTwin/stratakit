@@ -28,7 +28,7 @@ export const supportsPopover = isBrowser && "popover" in HTMLElement.prototype;
  *
  * @private
  */
-export const forwardRef: ForwardRefHelper = React.forwardRef;
+export const forwardRef = React.forwardRef as ForwardRefHelper;
 
 type ForwardRefHelper = <
 	DefaultElement extends React.ElementType,

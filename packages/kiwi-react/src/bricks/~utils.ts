@@ -11,6 +11,20 @@ export const supportsPopover = isBrowser && "popover" in HTMLElement.prototype;
 
 // ----------------------------------------------------------------------------
 
+/**
+ * Wrapper over `React.forwardRef` which allows refs to be loosely typed as `HTMLElement`.
+ *
+ * Usage:
+ *
+ * ```tsx
+ * const Button = forwardRef<"button", ButtonProps>((props, forwardedRef) => {});
+ * ```
+ *
+ * **Note**: The first type parameter is the default element type, which is slightly different
+ * from what `React.forwardRef` expects. e.g. This utility expects `"div"` instead of `ComponentRef<"div">`.
+ *
+ * @private
+ */
 export function forwardRef<
 	DefaultElement extends React.ElementType,
 	Props extends Record<string, unknown>,

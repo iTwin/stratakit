@@ -426,6 +426,12 @@ function TreeItem(props: TreeItemProps) {
 	const treeContext = React.useContext(SandboxTreeContext);
 	const parentContext = React.useContext(SandboxParentItemContext);
 	const selected = parentContext.selected || id === treeContext.selected;
+	const toggleSelected = React.useCallback(() => {
+		treeContext.setSelected((prev) => {
+			if (prev === id) return undefined;
+			return id;
+		});
+	}, [id, treeContext]);
 	return (
 		<SandboxParentItemContext.Provider
 			value={{
@@ -433,11 +439,15 @@ function TreeItem(props: TreeItemProps) {
 			}}
 		>
 			<Tree.Item
+				tabIndex={0}
 				content={
 					<>
 						<Tree.Expander
 							onClick={(e) => {
 								setExpanded((prev) => !prev);
+								e.stopPropagation(); // Prevent tree item selection.
+							}}
+							onKeyDown={(e) => {
 								e.stopPropagation(); // Prevent tree item selection.
 							}}
 						/>
@@ -450,6 +460,12 @@ function TreeItem(props: TreeItemProps) {
 								label="Lock"
 								variant="ghost"
 								aria-hidden={!props.lockAction}
+								onClick={(e) => {
+									e.stopPropagation();
+								}}
+								onKeyDown={(e) => {
+									e.stopPropagation();
+								}}
 							/>
 							<IconButton
 								className={styles.action}
@@ -457,6 +473,12 @@ function TreeItem(props: TreeItemProps) {
 								label="Show"
 								variant="ghost"
 								aria-hidden={!props.visibilityAction}
+								onClick={(e) => {
+									e.stopPropagation();
+								}}
+								onKeyDown={(e) => {
+									e.stopPropagation();
+								}}
 							/>
 						</div>
 					</>
@@ -464,10 +486,12 @@ function TreeItem(props: TreeItemProps) {
 				expanded={isParentNode ? expanded : undefined}
 				selected={selected}
 				onClick={() => {
-					treeContext.setSelected((prev) => {
-						if (prev === id) return undefined;
-						return id;
-					});
+					toggleSelected();
+				}}
+				onKeyDown={(e) => {
+					if (e.key === "Enter" || e.key === " ") {
+						toggleSelected();
+					}
 				}}
 			>
 				{expanded ? props.children : undefined}

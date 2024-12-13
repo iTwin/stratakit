@@ -13,16 +13,16 @@ import {
 	IconButton,
 	TextBox,
 	VisuallyHidden,
-} from "@itwin/kiwi-react/bricks";
-import * as Tree from "@itwin/kiwi-react-internal/src/bricks/Tree.js";
+} from "@itwin/itwinui-react/bricks";
+import * as Tree from "@itwin/itwinui-react-internal/src/bricks/Tree.js";
 import type { MetaFunction } from "react-router";
-import placeholderIcon from "@itwin/kiwi-icons/placeholder.svg";
-import searchIcon from "@itwin/kiwi-icons/search.svg";
-import panelLeftIcon from "@itwin/kiwi-icons/panel-left.svg";
-import filterIcon from "@itwin/kiwi-icons/filter.svg";
-import dismissIcon from "@itwin/kiwi-icons/dismiss.svg";
-import lockIcon from "@itwin/kiwi-icons/lock.svg";
-import showIcon from "@itwin/kiwi-icons/visibility-show.svg";
+import placeholderIcon from "@itwin/itwinui-icons/placeholder.svg";
+import searchIcon from "@itwin/itwinui-icons/search.svg";
+import panelLeftIcon from "@itwin/itwinui-icons/panel-left.svg";
+import filterIcon from "@itwin/itwinui-icons/filter.svg";
+import dismissIcon from "@itwin/itwinui-icons/dismiss.svg";
+import lockIcon from "@itwin/itwinui-icons/lock.svg";
+import showIcon from "@itwin/itwinui-icons/visibility-show.svg";
 
 const title = "Kiwi sandbox";
 export const meta: MetaFunction = () => {

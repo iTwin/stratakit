@@ -3,9 +3,9 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 import { definePage, type VariantProps } from "~/~utils.tsx";
-import { TextBox, Label, Field } from "@itwin/kiwi-react/bricks";
+import { TextBox, Label, Field } from "@itwin/itwinui-react/bricks";
 import { useId } from "react";
-import placeholderIcon from "@itwin/kiwi-icons/placeholder.svg";
+import placeholderIcon from "@itwin/itwinui-icons/placeholder.svg";
 
 export const handle = { title: "TextBox" };
 

@@ -13,8 +13,46 @@ test("default", async ({ page }) => {
 	const popoutPromise = page.waitForEvent("popup");
 	await page.getByRole("button", { name: "Open popout" }).click();
 	const popout = await popoutPromise;
-	await popout.waitForLoadState("domcontentloaded");
+	await Promise.all([
+		popout.waitForLoadState("domcontentloaded"),
+		// Wait for the fonts to load, since we’re using the font
+		popout.waitForFunction(() =>
+			Array.from(document.fonts).some(
+				(font) => font.family === "InterVariable" && font.status === "loaded",
+			),
+		),
+	]);
 	await expect(popout.locator("body")).toHaveScreenshot("popout.png");
+});
+
+test("synchronizeColorScheme", async ({ page }) => {
+	const document = page.locator("html");
+	const meta = page.locator("meta[name='color-scheme']");
+
+	await test.step("false", async () => {
+		await page.goto("/tests/root?synchronizeColorScheme=false");
+		const defaultScheme = "dark light"; // conditionally set in root.tsx
+
+		await expect(document).toHaveAttribute("data-color-scheme", defaultScheme);
+		await expect(meta).toHaveAttribute("content", defaultScheme);
+
+		page.emulateMedia({ colorScheme: "light" });
+		await expect(document).toHaveAttribute("data-color-scheme", defaultScheme);
+		await expect(meta).toHaveAttribute("content", defaultScheme);
+	});
+
+	await test.step("true", async () => {
+		page.emulateMedia({ colorScheme: "dark" });
+		await page.goto("/tests/root?synchronizeColorScheme=true");
+
+		await expect(document).toHaveAttribute("data-color-scheme", "dark");
+		await expect(meta).toHaveAttribute("content", "dark");
+
+		// Switch color scheme
+		page.emulateMedia({ colorScheme: "light" });
+		await expect(document).toHaveAttribute("data-color-scheme", "light");
+		await expect(meta).toHaveAttribute("content", "light");
+	});
 });
 
 test.describe("@a11y", () => {

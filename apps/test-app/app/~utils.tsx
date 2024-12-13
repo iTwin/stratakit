@@ -2,7 +2,9 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
+import styles from "./~utils.module.css";
 import * as React from "react";
+import cx from "classnames";
 import { useSearchParams } from "react-router";
 
 export type VariantProps = Record<string, string>;
@@ -78,7 +80,7 @@ export function ColorSchemeProvider({
 
 /** Returns the user's preferred color-scheme (provided by `ColorSchemeProvider`). */
 export function useColorScheme() {
-	return React.useContext(ColorSchemeContext);
+	return React.use(ColorSchemeContext);
 }
 
 // ----------------------------------------------------------------------------
@@ -112,4 +114,10 @@ export function useMediaQuery(query: string) {
 
 export function toKebabCase(str: string) {
 	return str.replace(/([a-z])([A-Z])/g, "$1-$2").toLowerCase();
+}
+
+// ----------------------------------------------------------------------------
+
+export function Table(props: React.ComponentProps<"table">) {
+	return <table {...props} className={cx(styles.table, props.className)} />;
 }

@@ -10,7 +10,7 @@ import {
 	Label,
 	Radio,
 	Switch,
-} from "@itwin/kiwi-react/bricks";
+} from "@itwin/itwinui-react/bricks";
 
 export const handle = { title: "Field" };
 

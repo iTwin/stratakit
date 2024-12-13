@@ -25,7 +25,9 @@ export const supportsPopover = isBrowser && "popover" in HTMLElement.prototype;
  *
  * @private
  */
-export function forwardRef<
+export const forwardRef: ForwardRefHelper = React.forwardRef;
+
+type ForwardRefHelper = <
 	DefaultElement extends React.ElementType,
 	Props extends {},
 >(
@@ -33,12 +35,10 @@ export function forwardRef<
 		React.ComponentRef<DefaultElement>,
 		React.PropsWithoutRef<Props>
 	>,
-) {
-	return React.forwardRef(render) as React.ForwardRefExoticComponent<
-		React.PropsWithoutRef<Props> &
-			React.RefAttributes<React.ComponentRef<DefaultElement> | HTMLElement>
-	>;
-}
+) => React.ForwardRefExoticComponent<
+	React.PropsWithoutRef<Props> &
+		React.RefAttributes<React.ComponentRef<DefaultElement> | HTMLElement>
+>;
 
 // ----------------------------------------------------------------------------
 

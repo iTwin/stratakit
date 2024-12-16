@@ -8,6 +8,8 @@
 	--✨subsequent-level-indent: 6px;
 
 	@layer base {
+		position: relative;
+
 		padding-inline-start: calc(
 			var(--✨first-level-indent) +
 			var(--✨subsequent-level-indent) *
@@ -46,12 +48,24 @@
 		text-overflow: ellipsis;
 		white-space: nowrap;
 		overflow: hidden;
+
+		:where(button) {
+			border: unset;
+			background-color: unset;
+
+			&::before {
+				content: "";
+				position: absolute;
+				inset: 0;
+			}
+		}
 	}
 }
 
 .🥝-tree-item-expander:is(.🥝-icon-button) {
 	@layer base {
 		visibility: var(--🥝tree-item-expander-visibility);
+		z-index: 1; /* Ensure the expander is above the invisible content button */
 	}
 }
 

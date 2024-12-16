@@ -165,23 +165,3 @@
 	cursor: ew-resize;
 	opacity: 0;
 }
-
-.treeItem {
-	position: relative;
-}
-
-.treeContent {
-	border: unset;
-	background-color: unset;
-	text-align: unset;
-
-	&::before {
-		content: "";
-		position: absolute;
-		inset: 0;
-	}
-}
-
-.treeExpander {
-	z-index: 1;
-}

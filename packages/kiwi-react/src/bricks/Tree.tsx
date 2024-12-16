@@ -86,12 +86,15 @@ const TreeItemContent = React.forwardRef<
 	React.ElementRef<typeof ListItem.Content>,
 	TreeItemContentProps
 >((props, forwardedRef) => {
+	const { children, ...rest } = props;
 	return (
 		<ListItem.Content
-			{...props}
+			{...rest}
 			className={cx("🥝-tree-item-content", props.className)}
 			ref={forwardedRef}
-		/>
+		>
+			<button type="button">{props.children}</button>
+		</ListItem.Content>
 	);
 });
 DEV: TreeItemContent.displayName = "Tree.Content";

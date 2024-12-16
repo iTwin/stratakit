@@ -439,19 +439,15 @@ function TreeItem(props: TreeItemProps) {
 			}}
 		>
 			<Tree.Item
-				className={styles.treeItem}
 				content={
 					<>
 						<Tree.Expander
-							className={styles.treeExpander}
-							onClick={(e) => {
+							onClick={() => {
 								setExpanded((prev) => !prev);
 							}}
 						/>
 						<Icon href={placeholderIcon} style={{ display: "inline" }} />
 						<Tree.Content
-							className={styles.treeContent}
-							render={<button type="button" />}
 							onClick={() => {
 								toggleSelected();
 							}}

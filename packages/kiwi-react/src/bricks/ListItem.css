@@ -26,7 +26,7 @@
 
 	@layer base {
 		cursor: pointer;
-		line-height: 1;
+		line-height: 1.2;
 		font-size: var(--kiwi-font-size-12);
 
 		display: flex;

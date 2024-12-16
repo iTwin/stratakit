@@ -8,6 +8,7 @@
 
 	@layer base {
 		@apply --typography("body-sm");
+		font-family: inherit;
 		font-weight: 500;
 		color: var(--kiwi-color-text-neutral-secondary);
 

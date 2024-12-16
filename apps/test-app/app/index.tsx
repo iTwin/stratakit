@@ -23,6 +23,7 @@ export const components = [
 	"Radio",
 	"Switch",
 	"Tabs",
+	"Text",
 	"Textarea",
 	"TextBox",
 	"Tree",

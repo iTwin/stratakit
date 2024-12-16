@@ -102,7 +102,7 @@ export const Tooltip = forwardRef<"div", TooltipProps>(
 							zIndex: supportsPopover ? undefined : 9999,
 							...props.style,
 						}}
-						wrapperProps={{ popover: "manual" } as React.ComponentProps<"div">}
+						wrapperProps={{ popover: "manual" }}
 						portal={!supportsPopover}
 					>
 						{content}

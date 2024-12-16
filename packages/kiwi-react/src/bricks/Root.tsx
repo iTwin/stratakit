@@ -7,7 +7,7 @@ import * as Ariakit from "@ariakit/react";
 import cx from "classnames";
 import foundationsCss from "../foundations/styles.css.js";
 import bricksCss from "./styles.css.js";
-import { isBrowser, type BaseProps } from "./~utils.js";
+import { forwardRef, isBrowser, type BaseProps } from "./~utils.js";
 import { useMergedRefs } from "./~hooks.js";
 
 const css = foundationsCss + bricksCss;
@@ -39,22 +39,20 @@ interface RootProps extends BaseProps {
  * Component to be used at the root of your application. It ensures that kiwi styles are loaded
  * and automatically applied to the current page or the encompassing shadow-root.
  */
-export const Root = React.forwardRef<React.ElementRef<"div">, RootProps>(
-	(props, forwardedRef) => {
-		const { children, synchronizeColorScheme = false, ...rest } = props;
+export const Root = forwardRef<"div", RootProps>((props, forwardedRef) => {
+	const { children, synchronizeColorScheme = false, ...rest } = props;
 
-		return (
-			<RootInternal {...rest} ref={forwardedRef}>
-				<Styles />
-				<Fonts />
-				{synchronizeColorScheme ? (
-					<SynchronizeColorScheme colorScheme={props.colorScheme} />
-				) : null}
-				{children}
-			</RootInternal>
-		);
-	},
-);
+	return (
+		<RootInternal {...rest} ref={forwardedRef}>
+			<Styles />
+			<Fonts />
+			{synchronizeColorScheme ? (
+				<SynchronizeColorScheme colorScheme={props.colorScheme} />
+			) : null}
+			{children}
+		</RootInternal>
+	);
+});
 DEV: Root.displayName = "Root";
 
 // ----------------------------------------------------------------------------
@@ -68,38 +66,39 @@ function useRootNode() {
 
 // ----------------------------------------------------------------------------
 
-const RootInternal = React.forwardRef<
-	React.ElementRef<"div">,
-	Omit<RootProps, "synchronizeColorScheme">
->((props, forwardedRef) => {
-	const { children, colorScheme, density, ...rest } = props;
+interface RootInternalProps extends Omit<RootProps, "synchronizeColorScheme"> {}
 
-	const [rootNode, setRootNode] = React.useState<Document | ShadowRoot | null>(
-		null,
-	);
+const RootInternal = forwardRef<"div", RootInternalProps>(
+	(props, forwardedRef) => {
+		const { children, colorScheme, density, ...rest } = props;
 
-	const findRootNodeFromRef = React.useCallback((element?: HTMLElement) => {
-		if (!element) return;
+		const [rootNode, setRootNode] = React.useState<
+			Document | ShadowRoot | null
+		>(null);
 
-		const rootNode = element.getRootNode();
-		if (!isDocument(rootNode) && !isShadow(rootNode)) return;
-		setRootNode(rootNode);
-	}, []);
+		const findRootNodeFromRef = React.useCallback((element?: HTMLElement) => {
+			if (!element) return;
 
-	return (
-		<Ariakit.Role
-			{...rest}
-			className={cx("🥝-root", props.className)}
-			data-kiwi-theme={colorScheme}
-			data-kiwi-density={density}
-			ref={useMergedRefs(forwardedRef, findRootNodeFromRef)}
-		>
-			<RootNodeContext.Provider value={rootNode}>
-				{children}
-			</RootNodeContext.Provider>
-		</Ariakit.Role>
-	);
-});
+			const rootNode = element.getRootNode();
+			if (!isDocument(rootNode) && !isShadow(rootNode)) return;
+			setRootNode(rootNode);
+		}, []);
+
+		return (
+			<Ariakit.Role
+				{...rest}
+				className={cx("🥝-root", props.className)}
+				data-kiwi-theme={colorScheme}
+				data-kiwi-density={density}
+				ref={useMergedRefs(forwardedRef, findRootNodeFromRef)}
+			>
+				<RootNodeContext.Provider value={rootNode}>
+					{children}
+				</RootNodeContext.Provider>
+			</Ariakit.Role>
+		);
+	},
+);
 
 // ----------------------------------------------------------------------------
 

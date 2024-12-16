@@ -1,13 +1,13 @@
 {
 	"name": "@itwin/itwinui-icons",
 	"type": "module",
-	"version": "5.0.0-alpha.0",
-	"license": "CC-BY-3.0",
+	"version": "5.0.0-alpha.1",
+	"license": "MIT",
 	"exports": {
 		"./*.svg": "./icons/*.svg",
 		"./icons-list.json": "./icons-list.json"
 	},
-	"files": ["icons/*.svg", "icons-list.json"],
+	"files": ["icons/*.svg", "icons-list.json", "LICENSE.md"],
 	"description": "A standalone SVG icon library",
 	"author": "Bentley Systems",
 	"homepage": "https://github.com/iTwin/kiwi",

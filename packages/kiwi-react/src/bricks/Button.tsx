@@ -2,10 +2,9 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-import * as React from "react";
 import cx from "classnames";
 import * as Ariakit from "@ariakit/react";
-import type { FocusableProps } from "./~utils.js";
+import { forwardRef, type FocusableProps } from "./~utils.js";
 
 type ButtonProps = FocusableProps<"button"> &
 	(
@@ -28,20 +27,19 @@ type ButtonProps = FocusableProps<"button"> &
 		  }
 	);
 
-export const Button = React.forwardRef<
-	React.ElementRef<typeof Ariakit.Button>,
-	ButtonProps
->((props, forwardedRef) => {
-	const { variant = "solid", tone = "neutral", ...rest } = props;
-	return (
-		<Ariakit.Button
-			accessibleWhenDisabled
-			data-kiwi-variant={variant}
-			data-kiwi-tone={tone}
-			{...rest}
-			className={cx("🥝-button", props.className)}
-			ref={forwardedRef}
-		/>
-	);
-});
+export const Button = forwardRef<"button", ButtonProps>(
+	(props, forwardedRef) => {
+		const { variant = "solid", tone = "neutral", ...rest } = props;
+		return (
+			<Ariakit.Button
+				accessibleWhenDisabled
+				data-kiwi-variant={variant}
+				data-kiwi-tone={tone}
+				{...rest}
+				className={cx("🥝-button", props.className)}
+				ref={forwardedRef}
+			/>
+		);
+	},
+);
 DEV: Button.displayName = "Button";

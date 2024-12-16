@@ -2,12 +2,12 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-import * as React from "react";
 import cx from "classnames";
 import { Button } from "./Button.js";
 import { VisuallyHidden } from "./VisuallyHidden.js";
 import { Icon } from "./Icon.js";
 import { Tooltip } from "./Tooltip.js";
+import { forwardRef } from "./~utils.js";
 
 interface IconButtonBaseProps
 	extends Omit<React.ComponentProps<typeof Button>, "children" | "tone"> {
@@ -92,32 +92,31 @@ type IconButtonProps = IconButtonBaseProps & IconButtonExtraProps;
  *   onClick={() => setIsActive(!isActive)}
  * />
  */
-export const IconButton = React.forwardRef<
-	React.ElementRef<typeof Button>,
-	IconButtonProps
->((props, forwardedRef) => {
-	const { label, icon, isActive, labelVariant, ...rest } = props;
+export const IconButton = forwardRef<"button", IconButtonProps>(
+	(props, forwardedRef) => {
+		const { label, icon, isActive, labelVariant, ...rest } = props;
 
-	const button = (
-		<Button
-			aria-pressed={isActive}
-			{...rest}
-			className={cx("🥝-icon-button", props.className)}
-			ref={forwardedRef}
-		>
-			<VisuallyHidden>{label}</VisuallyHidden>
-			{typeof icon === "string" ? <Icon href={icon} /> : icon}
-		</Button>
-	);
+		const button = (
+			<Button
+				aria-pressed={isActive}
+				{...rest}
+				className={cx("🥝-icon-button", props.className)}
+				ref={forwardedRef}
+			>
+				<VisuallyHidden>{label}</VisuallyHidden>
+				{typeof icon === "string" ? <Icon href={icon} /> : icon}
+			</Button>
+		);
 
-	if (labelVariant === "visually-hidden") {
-		return button;
-	}
+		if (labelVariant === "visually-hidden") {
+			return button;
+		}
 
-	return (
-		<Tooltip content={label} type="none">
-			{button}
-		</Tooltip>
-	);
-});
+		return (
+			<Tooltip content={label} type="none">
+				{button}
+			</Tooltip>
+		);
+	},
+);
 DEV: IconButton.displayName = "IconButton";

@@ -8,21 +8,19 @@ import * as Ariakit from "@ariakit/react";
 import * as ListItem from "./ListItem.js";
 import { IconButton } from "./IconButton.js";
 import { Icon } from "./Icon.js";
-import type { BaseProps } from "./~utils.js";
+import { forwardRef, type BaseProps } from "./~utils.js";
 
 // ----------------------------------------------------------------------------
 
 interface TreeProps extends BaseProps {}
 
-const Tree = React.forwardRef<React.ElementRef<"div">, TreeProps>(
-	(props, forwardedRef) => {
-		return (
-			<Ariakit.Role.div {...props} role="list" ref={forwardedRef}>
-				{props.children}
-			</Ariakit.Role.div>
-		);
-	},
-);
+const Tree = forwardRef<"div", TreeProps>((props, forwardedRef) => {
+	return (
+		<Ariakit.Role.div {...props} role="list" ref={forwardedRef}>
+			{props.children}
+		</Ariakit.Role.div>
+	);
+});
 DEV: Tree.displayName = "Tree.Root";
 
 // ----------------------------------------------------------------------------
@@ -33,70 +31,67 @@ interface TreeItemProps extends Omit<BaseProps, "content"> {
 	expanded?: boolean;
 }
 
-const TreeItem = React.forwardRef<React.ElementRef<"div">, TreeItemProps>(
-	(props, forwardedRef) => {
-		const { selected, content, children, className, expanded, style, ...rest } =
-			props;
+const TreeItem = forwardRef<"div", TreeItemProps>((props, forwardedRef) => {
+	const { selected, content, children, className, expanded, style, ...rest } =
+		props;
 
-		const parentContext = React.useContext(TreeItemContext);
-		const level = parentContext ? parentContext.level + 1 : 1;
-		const firstSelected = !!selected && !parentContext?.selected; // TODO: temporary, only works with single selection
-		return (
-			<TreeItemContext.Provider
-				value={React.useMemo(
-					() => ({
-						level,
-						expanded,
-						selected,
-					}),
-					[level, expanded, selected],
-				)}
-			>
-				<div role="listitem" aria-current={firstSelected ? true : undefined}>
-					<ListItem.Root
-						{...rest}
-						data-kiwi-expanded={expanded}
-						data-kiwi-selected={selected}
-						data-kiwi-parent-selected={parentContext?.selected}
-						className={cx("🥝-tree-item", className)}
-						style={
-							{
-								...style,
-								"--🥝tree-item-level": level,
-							} as React.CSSProperties
-						}
-						ref={forwardedRef}
-						role={undefined}
-					>
-						{content}
-					</ListItem.Root>
-					{children && <div role="list">{children}</div>}
-				</div>
-			</TreeItemContext.Provider>
-		);
-	},
-);
+	const parentContext = React.useContext(TreeItemContext);
+	const level = parentContext ? parentContext.level + 1 : 1;
+	const firstSelected = !!selected && !parentContext?.selected; // TODO: temporary, only works with single selection
+	return (
+		<TreeItemContext.Provider
+			value={React.useMemo(
+				() => ({
+					level,
+					expanded,
+					selected,
+				}),
+				[level, expanded, selected],
+			)}
+		>
+			<div role="listitem" aria-current={firstSelected ? true : undefined}>
+				<ListItem.Root
+					{...rest}
+					data-kiwi-expanded={expanded}
+					data-kiwi-selected={selected}
+					data-kiwi-parent-selected={parentContext?.selected}
+					className={cx("🥝-tree-item", className)}
+					style={
+						{
+							...style,
+							"--🥝tree-item-level": level,
+						} as React.CSSProperties
+					}
+					ref={forwardedRef}
+					role={undefined}
+				>
+					{content}
+				</ListItem.Root>
+				{children && <div role="list">{children}</div>}
+			</div>
+		</TreeItemContext.Provider>
+	);
+});
 DEV: TreeItem.displayName = "Tree.Item";
 
 // ----------------------------------------------------------------------------
 
 interface TreeItemContentProps extends BaseProps<"span"> {}
 
-const TreeItemContent = React.forwardRef<
-	React.ElementRef<typeof ListItem.Content>,
-	TreeItemContentProps
->((props, forwardedRef) => {
-	const { children, ...rest } = props;
-	return (
-		<ListItem.Content
-			{...rest}
-			className={cx("🥝-tree-item-content", props.className)}
-			ref={forwardedRef}
-		>
-			<button type="button">{children}</button>
-		</ListItem.Content>
-	);
-});
+const TreeItemContent = forwardRef<"span", TreeItemContentProps>(
+	(props, forwardedRef) => {
+		const { children, ...rest } = props;
+		return (
+			<ListItem.Content
+				{...rest}
+				className={cx("🥝-tree-item-content", props.className)}
+				ref={forwardedRef}
+			>
+				<button type="button">{children}</button>
+			</ListItem.Content>
+		);
+	},
+);
 DEV: TreeItemContent.displayName = "Tree.Content";
 
 // ----------------------------------------------------------------------------
@@ -109,32 +104,31 @@ interface TreeItemExpanderProps
 	icon?: IconButtonProps["icon"];
 }
 
-const TreeItemExpander = React.forwardRef<
-	React.ElementRef<typeof IconButton>,
-	TreeItemExpanderProps
->((props, forwardedRef) => {
-	const context = React.useContext(TreeItemContext);
-	const expanded = context?.expanded;
-	return (
-		<IconButton
-			icon={<TreeChevron />}
-			label="Toggle"
-			aria-expanded={expanded === undefined ? undefined : expanded}
-			{...props}
-			className={cx("🥝-tree-item-expander", props.className)}
-			variant="ghost"
-			labelVariant="visually-hidden"
-			ref={forwardedRef}
-		/>
-	);
-});
+const TreeItemExpander = forwardRef<"button", TreeItemExpanderProps>(
+	(props, forwardedRef) => {
+		const context = React.useContext(TreeItemContext);
+		const expanded = context?.expanded;
+		return (
+			<IconButton
+				icon={<TreeChevron />}
+				label="Toggle"
+				aria-expanded={expanded === undefined ? undefined : expanded}
+				{...props}
+				className={cx("🥝-tree-item-expander", props.className)}
+				variant="ghost"
+				labelVariant="visually-hidden"
+				ref={forwardedRef}
+			/>
+		);
+	},
+);
 DEV: TreeItemExpander.displayName = "Tree.Expander";
 
 // ----------------------------------------------------------------------------
 
 interface TreeChevronProps extends Omit<BaseProps<"svg">, "children"> {}
 
-const TreeChevron = React.forwardRef<React.ElementRef<"svg">, TreeChevronProps>(
+const TreeChevron = forwardRef<"svg", TreeChevronProps>(
 	(props, forwardedRef) => {
 		return (
 			<Icon

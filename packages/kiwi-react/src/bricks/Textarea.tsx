@@ -10,12 +10,23 @@ import { forwardRef, type FocusableProps } from "./~utils.js";
 interface TextareaProps extends FocusableProps<"textarea"> {}
 
 /**
- * Textarea component that allows users to enter multiline text values.
+ * A styled textarea element that allows users to enter multiline text values.
  *
  * Example usage:
  * ```tsx
  * <TextBox.Textarea defaultValue="Hello" />
  * ```
+ *
+ * Works well with the `Field` and `Label` components.
+ * ```tsx
+ * <Field>
+ *   <Label>Leave a comment, be kind</Label>
+ *   <TextBox.Textarea />
+ * </Field>
+ * ```
+ *
+ * Underneath, it's an HTML textarea, i.e. `<textarea>`, so it supports the same props, including
+ * `value`, `defaultValue`, `onChange`, and `disabled`.
  */
 export const Textarea = forwardRef<"textarea", TextareaProps>(
 	(props, forwardedRef) => {

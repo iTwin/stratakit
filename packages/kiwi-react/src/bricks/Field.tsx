@@ -16,6 +16,26 @@ interface FieldProps extends BaseProps {
 	layout?: "inline";
 }
 
+/**
+ * A container for form controls. It manages ID associations provides a consistent layout and spacing.
+ *
+ * Example:
+ * ```tsx
+ * <Field>
+ *   <Label>Label</Label>
+ *   <TextBox.Input />
+ * </Field>
+ * ```
+ *
+ * Supports a `layout` prop, which can be set to `inline` to align the label and control horizontally.
+ *
+ * Should contain a `Label` component paired with a form control. Supported form controls include:
+ * - `TextBox.Input`
+ * - `TextBox.Textarea`
+ * - `Checkbox`
+ * - `Radio`
+ * - `Switch`
+ */
 export const Field = forwardRef<"div", FieldProps>((props, forwardedRef) => {
 	const fieldId = React.useId();
 	const { className, layout, ...rest } = props;

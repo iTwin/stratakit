@@ -27,7 +27,7 @@ interface TextProps extends BaseProps {
 }
 
 /**
- * An element with text styles applied.
+ * An element with text styles applied. Useful for paragraphs, headings, and other text content.
  *
  * Example usage:
  * ```tsx

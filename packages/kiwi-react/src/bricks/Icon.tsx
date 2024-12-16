@@ -19,7 +19,7 @@ interface IconProps extends Omit<BaseProps<"svg">, "children"> {
  * It uses an external symbol sprite to render the icon based on the specified `size`.
  *
  * ```tsx
- * const arrowIcon = new URL("@itwin/itwinui-icons/icons/arrow.svg", import.meta.url).href;
+ * const arrowIcon = new URL("@itwin/itwinui-icons/arrow.svg", import.meta.url).href;
  * <Icon href={arrowIcon} />
  * ```
  *

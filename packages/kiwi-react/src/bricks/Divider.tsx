@@ -18,7 +18,7 @@ interface DividerProps
 }
 
 /**
- * The `Divider` component can be used for grouping and dividing content within a layout.
+ * A styled "separator" element (e.g. `<hr>`), useful for grouping and dividing content within a layout.
  *
  * A `Divider` can be oriented horizontally or vertically (using the `orientation` prop),
  * and can be a semantic divider or a purely presentational one (using the `presentational` prop).

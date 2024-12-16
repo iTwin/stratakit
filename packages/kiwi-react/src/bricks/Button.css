@@ -93,7 +93,7 @@
 
 	@layer base {
 		text-decoration: none;
-		line-height: 1;
+		line-height: 1.2;
 		white-space: nowrap;
 		user-select: none;
 		cursor: pointer;

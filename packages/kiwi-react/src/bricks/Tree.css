@@ -45,11 +45,14 @@
 
 .🥝-tree-item-content:is(.🥝-list-item-content) {
 	@layer base {
-		text-overflow: ellipsis;
-		white-space: nowrap;
-		overflow: hidden;
+		display: inline-flex;
+		min-inline-size: 0;
 
 		:where(button) {
+			text-overflow: ellipsis;
+			white-space: nowrap;
+			overflow: hidden;
+
 			border: unset;
 			background-color: unset;
 

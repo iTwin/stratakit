@@ -93,7 +93,7 @@ const TreeItemContent = React.forwardRef<
 			className={cx("🥝-tree-item-content", props.className)}
 			ref={forwardedRef}
 		>
-			<button type="button">{props.children}</button>
+			<button type="button">{children}</button>
 		</ListItem.Content>
 	);
 });

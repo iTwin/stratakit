@@ -44,8 +44,8 @@ function DropdownMenu(props: DropdownMenuProps) {
 	} = props;
 
 	const store = Ariakit.useMenuStore();
-	const open = Ariakit.useStoreState(store, (store) => store.open);
-	const popover = Ariakit.useStoreState(store, (store) => store.popoverElement);
+	const open = Ariakit.useStoreState(store, (state) => state.open);
+	const popover = Ariakit.useStoreState(store, (state) => state.popoverElement);
 
 	React.useEffect(
 		function syncPopoverWithOpenState() {
@@ -82,7 +82,7 @@ const DropdownMenuContent = forwardRef<"div", DropdownMenuContentProps>(
 				unmountOnHide
 				{...props}
 				style={{ zIndex: supportsPopover ? undefined : 9999, ...props.style }}
-				wrapperProps={{ popover: "manual" } as React.ComponentProps<"div">}
+				wrapperProps={{ popover: "manual" }}
 				className={cx("🥝-dropdown-menu", props.className)}
 				ref={forwardedRef}
 			/>

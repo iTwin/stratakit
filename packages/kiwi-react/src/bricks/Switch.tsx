@@ -21,6 +21,21 @@ interface SwitchProps extends InputBaseProps, CheckboxOwnProps {
 	checked?: boolean;
 }
 
+/**
+ * A toggle switch element, typically used for enabling or disabling a feature.
+ *
+ * Works well with the `Field` and `Label` components.
+ *
+ * ```tsx
+ * <Field>
+ *   <Label>Enable feature</Label>
+ *   <Switch />
+ * </Field>
+ * ```
+ *
+ * Underneath, it's an HTML checkbox, i.e. `<input type="checkbox">`, so it supports the same props,
+ * including `value`, `defaultChecked`, `checked`, and `onChange`.
+ */
 export const Switch = forwardRef<"input", SwitchProps>(
 	(props, forwardedRef) => {
 		const fieldId = useFieldId();

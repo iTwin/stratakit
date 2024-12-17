@@ -23,6 +23,7 @@ import filterIcon from "@itwin/itwinui-icons/filter.svg";
 import dismissIcon from "@itwin/itwinui-icons/dismiss.svg";
 import lockIcon from "@itwin/itwinui-icons/lock.svg";
 import showIcon from "@itwin/itwinui-icons/visibility-show.svg";
+import { useSearchParams } from "react-router";
 
 const title = "Kiwi sandbox";
 export const meta: MetaFunction = () => {
@@ -30,6 +31,9 @@ export const meta: MetaFunction = () => {
 };
 
 export default function Page() {
+	const [searchParams] = useSearchParams();
+	const isTreeEmpty = searchParams.get("empty") === "true"; // Check if "empty=true" query param is present
+
 	const { sliderProps, panelProps, panelMinSize, panelMaxSize, resizing } =
 		useSplitter<HTMLDivElement>({
 			minSize: { px: 256, pct: 20 },
@@ -81,7 +85,7 @@ export default function Page() {
 						</div>
 					</div>
 					<Subheader />
-					<SandboxTree />
+					{isTreeEmpty ? <Tree.EmptyState /> : <SandboxTree />}
 					<Divider
 						presentational
 						className={styles.splitter}

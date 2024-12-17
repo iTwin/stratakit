@@ -36,8 +36,17 @@ interface RootProps extends BaseProps {
 }
 
 /**
- * Component to be used at the root of your application. It ensures that kiwi styles are loaded
+ * Component to be used at the root of your application. It ensures that kiwi styles and fonts are loaded
  * and automatically applied to the current page or the encompassing shadow-root.
+ *
+ * Make sure to specify the `colorScheme` and `density` props.
+ *
+ * Example:
+ * ```tsx
+ * <Root colorScheme="dark" density="dense">
+ *   <App />
+ * </Root>
+ * ```
  */
 export const Root = forwardRef<"div", RootProps>((props, forwardedRef) => {
 	const { children, synchronizeColorScheme = false, ...rest } = props;

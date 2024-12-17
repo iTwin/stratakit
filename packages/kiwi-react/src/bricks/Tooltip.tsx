@@ -12,13 +12,17 @@ interface TooltipProps
 		Pick<Ariakit.TooltipProps, "open" | "unmountOnHide">,
 		Pick<Ariakit.TooltipProviderProps, "defaultOpen" | "setOpen"> {
 	/**
-	 * The content to be displayed inside the tooltip.
+	 * The content to be displayed inside the tooltip when the trigger element is hovered or focused.
 	 */
 	content: React.ReactNode;
 
 	/**
 	 * The element that will trigger the tooltip when hovered or focused.
 	 * Common examples include buttons, links, or form controls.
+	 *
+	 * **Note**: The trigger must be a single interactive element. Do not add a
+	 * tooltip to a non-interactive static element (such as a `<div>` or `<svg>`). Also,
+	 * the trigger element must forward its ref and spread its props.
 	 */
 	children: React.ReactElement;
 
@@ -35,7 +39,7 @@ interface TooltipProps
 }
 
 /**
- * Tooltip component that provides additional information or context for a trigger element.
+ * A tooltip component that provides additional information or context for an interactive trigger element.
  *
  * Example usage:
  *
@@ -45,7 +49,10 @@ interface TooltipProps
  * </Tooltip>
  * ```
  *
- * **Note**: If `type` is set to `"none"`, the tooltip will not use ARIA attributes and will unmount when hidden.
+ * **Note**: The trigger element must be a single interactive element, such as a button or link. Do not add a
+ * tooltip to a non-interactive static element (such as a `<div>` or `<svg>`).
+ *
+ * **Note**: If `type` is set to `"none"`, the tooltip will not use ARIA attributes.
  */
 export const Tooltip = forwardRef<"div", TooltipProps>(
 	(props, forwardedRef) => {
@@ -102,7 +109,7 @@ export const Tooltip = forwardRef<"div", TooltipProps>(
 							zIndex: supportsPopover ? undefined : 9999,
 							...props.style,
 						}}
-						wrapperProps={{ popover: "manual" } as React.ComponentProps<"div">}
+						wrapperProps={{ popover: "manual" }}
 						portal={!supportsPopover}
 					>
 						{content}

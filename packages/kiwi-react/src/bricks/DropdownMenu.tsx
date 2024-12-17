@@ -20,19 +20,24 @@ interface DropdownMenuProps
 	> {}
 
 /**
- * Dropdown menu component displays a list of actions or commands.
+ * A dropdown menu displays a list of actions or commands when the menu button is clicked.
  *
+ * `DropdownMenu` is a compound component with subcomponents exposed for different parts.
+ *
+ * Example:
  * ```tsx
  * <DropdownMenu.Root>
- *		<DropdownMenu.Button>Actions</DropdownMenu.Button>
+ *   <DropdownMenu.Button>Actions</DropdownMenu.Button>
  *
- *		<DropdownMenu.Content>
- *			<DropdownMenu.Item>Add</DropdownMenu.Item>
- *			<DropdownMenu.Item>Edit</DropdownMenu.Item>
- *			<DropdownMenu.Item>Delete</DropdownMenu.Item>
- *		</DropdownMenu.Content>
+ *   <DropdownMenu.Content>
+ *     <DropdownMenu.Item>Add</DropdownMenu.Item>
+ *     <DropdownMenu.Item>Edit</DropdownMenu.Item>
+ *     <DropdownMenu.Item>Delete</DropdownMenu.Item>
+ *   </DropdownMenu.Content>
  * </DropdownMenu.Root>
  * ```
+ *
+ * **Note**: `DropdownMenu` should not be used for navigation; it is only intended for actions.
  */
 function DropdownMenu(props: DropdownMenuProps) {
 	const {
@@ -44,8 +49,8 @@ function DropdownMenu(props: DropdownMenuProps) {
 	} = props;
 
 	const store = Ariakit.useMenuStore();
-	const open = Ariakit.useStoreState(store, (store) => store.open);
-	const popover = Ariakit.useStoreState(store, (store) => store.popoverElement);
+	const open = Ariakit.useStoreState(store, (state) => state.open);
+	const popover = Ariakit.useStoreState(store, (state) => state.popoverElement);
 
 	React.useEffect(
 		function syncPopoverWithOpenState() {
@@ -74,6 +79,11 @@ DEV: DropdownMenu.displayName = "DropdownMenu.Root";
 
 interface DropdownMenuContentProps extends FocusableProps {}
 
+/**
+ * The actual "menu" portion containing the items shown within the dropdown.
+ *
+ * Should be used as a child of `DropdownMenu.Root`.
+ */
 const DropdownMenuContent = forwardRef<"div", DropdownMenuContentProps>(
 	(props, forwardedRef) => {
 		return (
@@ -82,7 +92,7 @@ const DropdownMenuContent = forwardRef<"div", DropdownMenuContentProps>(
 				unmountOnHide
 				{...props}
 				style={{ zIndex: supportsPopover ? undefined : 9999, ...props.style }}
-				wrapperProps={{ popover: "manual" } as React.ComponentProps<"div">}
+				wrapperProps={{ popover: "manual" }}
 				className={cx("🥝-dropdown-menu", props.className)}
 				ref={forwardedRef}
 			/>
@@ -95,6 +105,23 @@ DEV: DropdownMenuContent.displayName = "DropdownMenu.Content";
 
 interface DropdownMenuButtonProps extends FocusableProps<"button"> {}
 
+/**
+ * The button that triggers the dropdown menu to open.  Should be used as a child of `DropdownMenu.Root`.
+ *
+ * Example:
+ * ```tsx
+ * <DropdownMenu.Button>Actions</DropdownMenu.Button>
+ * ```
+ *
+ * By default it will render a solid `Button` with a disclosure arrow. This can be
+ * customized by passing a `render` prop.
+ *
+ * ```tsx
+ * <DropdownMenu.Button
+ *   render={<IconButton variant="ghost" label="More" icon={<Icon href={…} />}  />}
+ * />
+ * ```
+ */
 const DropdownMenuButton = forwardRef<"button", DropdownMenuButtonProps>(
 	(props, forwardedRef) => {
 		const { accessibleWhenDisabled = true, children, ...rest } = props;
@@ -117,25 +144,33 @@ const DropdownMenuButton = forwardRef<"button", DropdownMenuButtonProps>(
 DEV: DropdownMenuButton.displayName = "DropdownMenu.Button";
 
 // ----------------------------------------------------------------------------
+
 interface DropdownMenuItemProps extends FocusableProps {
 	/**
 	 * A string defining the keyboard shortcut(s) associated with the menu item.
-	 * Shortcuts should be formatted as a single string with keys separated by the '+' character.
-	 * For example: "Ctrl+S" or "Alt+Enter".
 	 *
-	 * @example
-	 * // A single shortcut:
-	 * shortcuts: "Ctrl+S"
+	 * ```tsx
+	 * shortcuts="S" // A single key shortcut
+	 * ```
 	 *
-	 * @example
-	 * // A multi-key combination:
-	 * shortcuts: "Ctrl+Shift+S"
+	 * Multiple keys should be separated by the '+' character.
 	 *
-	 * @default undefined
+	 * ```tsx
+	 * shortcuts="Ctrl+Shift+S" // A multi-key combination
+	 * ```
 	 */
 	shortcuts?: string;
 }
 
+/**
+ * A single menu item within the dropdown menu. Should be used as a child of `DropdownMenu.Content`.
+ *
+ * Example:
+ * ```tsx
+ * <DropdownMenu.Item>Add</DropdownMenu.Item>
+ * <DropdownMenu.Item>Edit</DropdownMenu.Item>
+ * ```
+ */
 const DropdownMenuItem = forwardRef<"div", DropdownMenuItemProps>(
 	(props, forwardedRef) => {
 		const { shortcuts, ...rest } = props;

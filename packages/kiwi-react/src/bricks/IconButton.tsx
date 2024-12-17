@@ -68,7 +68,7 @@ type IconButtonProps = IconButtonBaseProps & IconButtonExtraProps;
  * ```tsx
  * <IconButton
  *   label="Reveal full content"
- *   icon={new URL("@itwin/itwinui-icons/icons/arrow.svg", import.meta.url).href}
+ *   icon={new URL("@itwin/itwinui-icons/arrow.svg", import.meta.url).href}
  * />
  * ```
  *
@@ -91,6 +91,7 @@ type IconButtonProps = IconButtonBaseProps & IconButtonExtraProps;
  *   isActive={isActive}
  *   onClick={() => setIsActive(!isActive)}
  * />
+ * ```
  */
 export const IconButton = forwardRef<"button", IconButtonProps>(
 	(props, forwardedRef) => {

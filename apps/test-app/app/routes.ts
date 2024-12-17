@@ -3,7 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 import { type RouteConfig, route, index } from "@react-router/dev/routes";
-import { components } from "./index.tsx";
+import { components } from "./components.ts";
 import { toKebabCase } from "./~utils.tsx";
 
 export default [

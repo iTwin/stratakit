@@ -24,6 +24,7 @@ import dismissIcon from "@itwin/itwinui-icons/dismiss.svg";
 import lockIcon from "@itwin/itwinui-icons/lock.svg";
 import showIcon from "@itwin/itwinui-icons/visibility-show.svg";
 import hideIcon from "@itwin/itwinui-icons/visibility-hide.svg";
+import dotIcon from "@itwin/itwinui-icons/state-inherited-dot.svg";
 
 const title = "Kiwi sandbox";
 export const meta: MetaFunction = () => {
@@ -378,18 +379,18 @@ function SandboxTree() {
 		>
 			<Tree.Root className={styles.tree}>
 				<TreeItem label="Guides">
-					<TreeItem label="Tree">
+					<TreeItem label="Tree" actions>
 						<TreeItem label="Guide 4" />
 						<TreeItem label="Guide 3" />
 						<TreeItem label="Guide 2" />
-						<TreeItem label="Guide 1" actions />
+						<TreeItem label="Guide 1" />
 					</TreeItem>
 				</TreeItem>
 				<TreeItem label="Other">
-					<TreeItem label="Object 2">
+					<TreeItem label="Object 2" actions>
 						<TreeItem label="Path 3" />
 					</TreeItem>
-					<TreeItem label="Object 1" actions />
+					<TreeItem label="Object 1" />
 				</TreeItem>
 				<TreeItem label="Road">
 					<TreeItem label="Parking lot access" />
@@ -430,7 +431,8 @@ function SandboxTree() {
 
 const SandboxParentItemContext = React.createContext<{
 	selected: boolean;
-}>({ selected: false });
+	hidden: boolean;
+}>({ selected: false, hidden: false });
 
 type TreeItemProps = React.PropsWithChildren<{
 	label?: string;
@@ -444,8 +446,9 @@ function TreeItem(props: TreeItemProps) {
 	const [expanded, setExpanded] = React.useState(true);
 	const isParentNode = React.Children.count(props.children) > 0;
 	const hidden = React.useMemo(() => {
+		if (parentContext.hidden) return true;
 		return treeContext.hidden.includes(id);
-	}, [id, treeContext.hidden]);
+	}, [id, treeContext.hidden, parentContext.hidden]);
 	const selected = parentContext.selected || id === treeContext.selected;
 	const toggleSelected = React.useCallback(() => {
 		treeContext.setSelected((prev) => {
@@ -455,9 +458,7 @@ function TreeItem(props: TreeItemProps) {
 	}, [id, treeContext]);
 	return (
 		<SandboxParentItemContext.Provider
-			value={{
-				selected,
-			}}
+			value={React.useMemo(() => ({ selected, hidden }), [hidden, selected])}
 		>
 			<Tree.Item
 				content={
@@ -483,16 +484,22 @@ function TreeItem(props: TreeItemProps) {
 								variant="ghost"
 								aria-hidden={!props.actions || hidden}
 							/>
-							<IconButton
-								className={styles.action}
-								icon={hidden ? hideIcon : showIcon}
-								label={hidden ? "Show" : "Hide"}
-								variant="ghost"
-								aria-hidden={!props.actions}
-								onClick={() => {
-									treeContext.toggleHidden(id);
-								}}
-							/>
+							{parentContext.hidden ? (
+								<span className={styles.actionIcon}>
+									<Icon href={dotIcon} />
+								</span>
+							) : (
+								<IconButton
+									className={styles.action}
+									icon={hidden ? hideIcon : showIcon}
+									label={hidden ? "Show" : "Hide"}
+									variant="ghost"
+									aria-hidden={!props.actions}
+									onClick={() => {
+										treeContext.toggleHidden(id);
+									}}
+								/>
+							)}
 						</div>
 					</>
 				}

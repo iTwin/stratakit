@@ -23,7 +23,7 @@ import filterIcon from "@itwin/itwinui-icons/filter.svg";
 import dismissIcon from "@itwin/itwinui-icons/dismiss.svg";
 import lockIcon from "@itwin/itwinui-icons/lock.svg";
 import showIcon from "@itwin/itwinui-icons/visibility-show.svg";
-import moreIcon from "@itwin/itwinui-icons/placeholder.svg";
+import moreIcon from "@itwin/itwinui-icons/more-horizontal.svg";
 
 const title = "Kiwi sandbox";
 export const meta: MetaFunction = () => {

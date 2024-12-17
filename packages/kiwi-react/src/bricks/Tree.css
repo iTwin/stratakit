@@ -8,7 +8,6 @@
 	--✨subsequent-level-indent: 6px;
 
 	@layer base {
-		cursor: pointer;
 		position: relative;
 		isolation: isolate;
 
@@ -51,6 +50,8 @@
 		min-inline-size: 0;
 
 		:where(button) {
+			cursor: pointer;
+
 			text-overflow: ellipsis;
 			white-space: nowrap;
 			overflow: hidden;

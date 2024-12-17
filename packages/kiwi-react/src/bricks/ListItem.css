@@ -8,6 +8,7 @@
 	--✨padding-inline: 0.75rem;
 
 	--✨color--default: var(--kiwi-color-text-neutral-primary);
+	--✨color--active: var(--kiwi-color-text-accent-strong);
 
 	--✨glow--hover: var(--kiwi-color-glow-hue) var(--kiwi-color-bg-glow-on-surface-neutral-hover-\%);
 	--✨glow--press: var(--kiwi-color-glow-hue)
@@ -49,8 +50,8 @@
 		color: var(--🌀list-item-state--default, var(--✨color--default))
 			var(--🌀list-item-state--hover, var(--✨color--default))
 			var(--🌀list-item-state--pressed, var(--✨color--default))
-			var(--🌀list-item-state--active, var(--kiwi-color-text-accent-strong))
-			var(--🌀list-item-state--active-hover, var(--kiwi-color-text-accent-strong))
+			var(--🌀list-item-state--active, var(--✨color--active))
+			var(--🌀list-item-state--active-hover, var(--✨color--active))
 			var(--🌀list-item-state--active-child, var(--✨color--default))
 			var(--🌀list-item-state--active-child-hover, var(--✨color--default))
 			var(--🌀list-item-state--disabled, var(--✨bg--disabled));

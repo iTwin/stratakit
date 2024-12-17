@@ -15,7 +15,7 @@ import {
 	VisuallyHidden,
 } from "@itwin/itwinui-react/bricks";
 import * as Tree from "@itwin/itwinui-react-internal/src/bricks/Tree.js";
-import type { MetaFunction } from "react-router";
+import { useSearchParams, type MetaFunction } from "react-router";
 import placeholderIcon from "@itwin/itwinui-icons/placeholder.svg";
 import searchIcon from "@itwin/itwinui-icons/search.svg";
 import panelLeftIcon from "@itwin/itwinui-icons/panel-left.svg";
@@ -354,58 +354,131 @@ const SandboxTreeContext = React.createContext<{
 });
 
 function SandboxTree() {
+	const [searchParams] = useSearchParams();
+	const horizontalScroll = searchParams.has("horizontalScroll");
 	const [selected, setSelected] = React.useState<string | undefined>();
 	return (
 		<SandboxTreeContext.Provider value={{ selected, setSelected }}>
-			<Tree.Root className={styles.tree}>
-				<TreeItem label="Guides">
-					<TreeItem label="Tree">
-						<TreeItem label="Guide 4" />
-						<TreeItem label="Guide 3" />
-						<TreeItem label="Guide 2" />
-						<TreeItem label="Guide 1" lockAction />
-					</TreeItem>
-				</TreeItem>
-				<TreeItem label="Other">
-					<TreeItem label="Object 2">
-						<TreeItem label="Path 3" />
-					</TreeItem>
-					<TreeItem label="Object 1" visibilityAction />
-				</TreeItem>
-				<TreeItem label="Road">
-					<TreeItem label="Parking lot access" />
-					<TreeItem label="Site access" lockAction visibilityAction />
-				</TreeItem>
-				<TreeItem label="Parking lot">
-					<TreeItem label="Parking area">
-						<TreeItem label="Bay point 2" />
-						<TreeItem label="Bay point 1" />
-						<TreeItem label="Space point 1" />
-						<TreeItem label="Path 6" />
-					</TreeItem>
-				</TreeItem>
-				<TreeItem label="Building">
-					<TreeItem label="Building area">
-						<TreeItem label="Path 5" />
-					</TreeItem>
-				</TreeItem>
-				<TreeItem label="Sewer">
-					<TreeItem label="Run off pipe">
-						<TreeItem label="Path 4" />
-					</TreeItem>
-				</TreeItem>
-				<TreeItem label="Project boundary">
-					<TreeItem label="Property area">
-						<TreeItem label="Path 1" />
-					</TreeItem>
-				</TreeItem>
-				<TreeItem label="Map">
-					<TreeItem label="Location">
-						<TreeItem label="Terrain" />
-					</TreeItem>
-				</TreeItem>
-			</Tree.Root>
+			{horizontalScroll ? <HorizontalScrollTree /> : <IdealTree />}
 		</SandboxTreeContext.Provider>
+	);
+}
+
+function IdealTree() {
+	return (
+		<Tree.Root className={styles.tree}>
+			<TreeItem label="Guides">
+				<TreeItem label="Tree">
+					<TreeItem label="Guide 4" />
+					<TreeItem label="Guide 3" />
+					<TreeItem label="Guide 2" />
+					<TreeItem label="Guide 1" lockAction />
+				</TreeItem>
+			</TreeItem>
+			<TreeItem label="Other">
+				<TreeItem label="Object 2">
+					<TreeItem label="Path 3" />
+				</TreeItem>
+				<TreeItem label="Object 1" visibilityAction />
+			</TreeItem>
+			<TreeItem label="Road">
+				<TreeItem label="Parking lot access" />
+				<TreeItem label="Site access" lockAction visibilityAction />
+			</TreeItem>
+			<TreeItem label="Parking lot">
+				<TreeItem label="Parking area">
+					<TreeItem label="Bay point 2" />
+					<TreeItem label="Bay point 1" />
+					<TreeItem label="Space point 1" />
+					<TreeItem label="Path 6" />
+				</TreeItem>
+			</TreeItem>
+			<TreeItem label="Building">
+				<TreeItem label="Building area">
+					<TreeItem label="Path 5" />
+				</TreeItem>
+			</TreeItem>
+			<TreeItem label="Sewer">
+				<TreeItem label="Run off pipe">
+					<TreeItem label="Path 4" />
+				</TreeItem>
+			</TreeItem>
+			<TreeItem label="Project boundary">
+				<TreeItem label="Property area">
+					<TreeItem label="Path 1" />
+				</TreeItem>
+			</TreeItem>
+			<TreeItem label="Map">
+				<TreeItem label="Location">
+					<TreeItem label="Terrain" />
+				</TreeItem>
+			</TreeItem>
+		</Tree.Root>
+	);
+}
+
+function HorizontalScrollTree() {
+	return (
+		<Tree.Root className={styles.tree}>
+			<TreeItem label="ITC_Master">
+				<TreeItem label="002_Substation" defaultCollapsed>
+					<TreeItem label="002_Substation_A" />
+				</TreeItem>
+				<TreeItem label="005-BENROAD-00-XX-M3-D-00003.dgn" defaultCollapsed>
+					<TreeItem label="005-BENROAD-00-XX-M3-D-00003-A" />
+				</TreeItem>
+				<TreeItem label="005-BENROAD-00-XX-M3-D-00005.dgn" defaultCollapsed>
+					<TreeItem label="005-BENROAD-00-XX-M3-D-00005-A" />
+				</TreeItem>
+				<TreeItem label="005-BENROAD-00-XX-M3-G-00002.dgn" defaultCollapsed>
+					<TreeItem label="005-BENROAD-00-XX-M3-G-00002-A" />
+				</TreeItem>
+				<TreeItem label="005-BENROAD-00-XX-M3-G-00003.dgn" defaultCollapsed>
+					<TreeItem label="005-BENROAD-00-XX-M3-G-00003-A" />
+				</TreeItem>
+				<TreeItem label="007-aa_master.dgn">
+					<TreeItem label="A-CLNG-LITE" defaultCollapsed>
+						<TreeItem label="A-CLNG-LITE-A" />
+					</TreeItem>
+					<TreeItem label="A-CLNG-TILE">
+						<TreeItem label="A-DOOR-2D-PLAN">
+							<TreeItem label="P00003 [2-KA62]">
+								<TreeItem label="Cell [2-KA63]">
+									<TreeItem label="Cell [2-KA64]">
+										<TreeItem label="Complex Chain [2-KA6A]" />
+										<TreeItem label="Complex Chain [2-KA6B]" />
+										<TreeItem label="Complex Chain [2-KA6C]" />
+										<TreeItem label="Complex Chain [2-KA6D]" />
+										<TreeItem label="Complex Chain [2-KA6E]" />
+										<TreeItem label="Complex Chain [2-KA6F]" />
+										<TreeItem label="Complex Chain [2-KA6G]" />
+										<TreeItem label="Complex Chain [2-KA6H]" />
+										<TreeItem label="Complex Chain [2-KA61]" />
+										<TreeItem label="Complex Chain [2-KA65]" />
+										<TreeItem label="Complex Chain [2-KA66]" />
+										<TreeItem label="Complex Chain [2-KA67]" />
+										<TreeItem label="Complex Chain [2-KA68]" />
+										<TreeItem label="Complex Chain [2-KA69]" />
+									</TreeItem>
+								</TreeItem>
+							</TreeItem>
+							<TreeItem label="P00003 [2-KA74]" defaultCollapsed>
+								<TreeItem label="P00003 [2-KA74-A]" />
+							</TreeItem>
+							<TreeItem label="P00003 [2-KA86]" defaultCollapsed>
+								<TreeItem label="P00003 [2-KA74-A]" />
+							</TreeItem>
+							<TreeItem label="P00003 [2-KA98]" defaultCollapsed>
+								<TreeItem label="P00003 [2-KA98-A]" />
+							</TreeItem>
+							<TreeItem label="P00003 [2-KAAA]" defaultCollapsed>
+								<TreeItem label="P00003 [2-KAAA-A]" />
+							</TreeItem>
+						</TreeItem>
+					</TreeItem>
+				</TreeItem>
+			</TreeItem>
+		</Tree.Root>
 	);
 }
 
@@ -417,12 +490,15 @@ type TreeItemProps = React.PropsWithChildren<{
 	label?: string;
 	visibilityAction?: boolean;
 	lockAction?: boolean;
+	defaultCollapsed?: boolean;
 }>;
 
 function TreeItem(props: TreeItemProps) {
 	const id = React.useId();
 	const isParentNode = React.Children.count(props.children) > 0;
-	const [expanded, setExpanded] = React.useState(true);
+	const [expanded, setExpanded] = React.useState(
+		props.defaultCollapsed === undefined ? true : !props.defaultCollapsed,
+	);
 	const treeContext = React.useContext(SandboxTreeContext);
 	const parentContext = React.useContext(SandboxParentItemContext);
 	const selected = parentContext.selected || id === treeContext.selected;

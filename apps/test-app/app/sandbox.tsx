@@ -345,97 +345,139 @@ function useMoveable<T extends HTMLElement>(args?: UseMoveableArgs) {
 	return { moveableProps };
 }
 
+const SandboxTreeContext = React.createContext<{
+	selected: string | undefined;
+	setSelected: React.Dispatch<React.SetStateAction<string | undefined>>;
+}>({
+	selected: undefined,
+	setSelected: () => {},
+});
+
 function SandboxTree() {
+	const [selected, setSelected] = React.useState<string | undefined>();
 	return (
-		<Tree.Root className={styles.tree}>
-			<TreeItem content="Guides">
-				<TreeItem content="Tree">
-					<TreeItem content="Guide 4" />
-					<TreeItem content="Guide 3" />
-					<TreeItem content="Guide 2" />
-					<TreeItem content="Guide 1" lockAction />
+		<SandboxTreeContext.Provider value={{ selected, setSelected }}>
+			<Tree.Root className={styles.tree}>
+				<TreeItem label="Guides">
+					<TreeItem label="Tree">
+						<TreeItem label="Guide 4" />
+						<TreeItem label="Guide 3" />
+						<TreeItem label="Guide 2" />
+						<TreeItem label="Guide 1" lockAction />
+					</TreeItem>
 				</TreeItem>
-			</TreeItem>
-			<TreeItem content="Other">
-				<TreeItem content="Object 2">
-					<TreeItem content="Path 3" />
+				<TreeItem label="Other">
+					<TreeItem label="Object 2">
+						<TreeItem label="Path 3" />
+					</TreeItem>
+					<TreeItem label="Object 1" visibilityAction />
 				</TreeItem>
-				<TreeItem content="Object 1" visibilityAction />
-			</TreeItem>
-			<TreeItem content="Road">
-				<TreeItem content="Parking lot access" />
-				<TreeItem content="Site access" lockAction visibilityAction />
-			</TreeItem>
-			<TreeItem content="Parking lot">
-				<TreeItem content="Parking area">
-					<TreeItem content="Bay point 2" />
-					<TreeItem content="Bay point 1" />
-					<TreeItem content="Space point 1" />
-					<TreeItem content="Path 6" />
+				<TreeItem label="Road">
+					<TreeItem label="Parking lot access" />
+					<TreeItem label="Site access" lockAction visibilityAction />
 				</TreeItem>
-			</TreeItem>
-			<TreeItem content="Building">
-				<TreeItem content="Building area">
-					<TreeItem content="Path 5" />
+				<TreeItem label="Parking lot">
+					<TreeItem label="Parking area">
+						<TreeItem label="Bay point 2" />
+						<TreeItem label="Bay point 1" />
+						<TreeItem label="Space point 1" />
+						<TreeItem label="Path 6" />
+					</TreeItem>
 				</TreeItem>
-			</TreeItem>
-			<TreeItem content="Sewer">
-				<TreeItem content="Run off pipe">
-					<TreeItem content="Path 4" />
+				<TreeItem label="Building">
+					<TreeItem label="Building area">
+						<TreeItem label="Path 5" />
+					</TreeItem>
 				</TreeItem>
-			</TreeItem>
-			<TreeItem content="Project boundary">
-				<TreeItem content="Property area">
-					<TreeItem content="Path 1" />
+				<TreeItem label="Sewer">
+					<TreeItem label="Run off pipe">
+						<TreeItem label="Path 4" />
+					</TreeItem>
 				</TreeItem>
-			</TreeItem>
-			<TreeItem content="Map">
-				<TreeItem content="Location">
-					<TreeItem content="Terrain" />
+				<TreeItem label="Project boundary">
+					<TreeItem label="Property area">
+						<TreeItem label="Path 1" />
+					</TreeItem>
 				</TreeItem>
-			</TreeItem>
-		</Tree.Root>
+				<TreeItem label="Map">
+					<TreeItem label="Location">
+						<TreeItem label="Terrain" />
+					</TreeItem>
+				</TreeItem>
+			</Tree.Root>
+		</SandboxTreeContext.Provider>
 	);
 }
 
+const SandboxParentItemContext = React.createContext<{
+	selected: boolean;
+}>({ selected: false });
+
 type TreeItemProps = React.PropsWithChildren<{
-	content?: React.ReactNode;
+	label?: string;
 	visibilityAction?: boolean;
 	lockAction?: boolean;
 }>;
 
 function TreeItem(props: TreeItemProps) {
+	const id = React.useId();
 	const isParentNode = React.Children.count(props.children) > 0;
 	const [expanded, setExpanded] = React.useState(true);
+	const treeContext = React.useContext(SandboxTreeContext);
+	const parentContext = React.useContext(SandboxParentItemContext);
+	const selected = parentContext.selected || id === treeContext.selected;
+	const toggleSelected = React.useCallback(() => {
+		treeContext.setSelected((prev) => {
+			if (prev === id) return undefined;
+			return id;
+		});
+	}, [id, treeContext]);
 	return (
-		<Tree.Item
-			content={
-				<>
-					<Tree.Expander onClick={() => setExpanded((prev) => !prev)} />
-					<Icon href={placeholderIcon} style={{ display: "inline" }} />
-					<Tree.Content>{props.content}</Tree.Content>
-					<div style={{ display: "flex", gap: 4, marginInlineStart: "auto" }}>
-						<IconButton
-							className={styles.action}
-							icon={lockIcon}
-							label="Lock"
-							variant="ghost"
-							aria-hidden={!props.lockAction}
-						/>
-						<IconButton
-							className={styles.action}
-							icon={showIcon}
-							label="Show"
-							variant="ghost"
-							aria-hidden={!props.visibilityAction}
-						/>
-					</div>
-				</>
-			}
-			expanded={isParentNode ? expanded : undefined}
+		<SandboxParentItemContext.Provider
+			value={{
+				selected,
+			}}
 		>
-			{expanded ? props.children : undefined}
-		</Tree.Item>
+			<Tree.Item
+				content={
+					<>
+						<Tree.Expander
+							onClick={() => {
+								setExpanded((prev) => !prev);
+							}}
+						/>
+						<Icon href={placeholderIcon} style={{ display: "inline" }} />
+						<Tree.Content
+							onClick={() => {
+								toggleSelected();
+							}}
+						>
+							{props.label}
+						</Tree.Content>
+						<div style={{ display: "flex", gap: 4, marginInlineStart: "auto" }}>
+							<IconButton
+								className={styles.action}
+								icon={lockIcon}
+								label="Lock"
+								variant="ghost"
+								aria-hidden={!props.lockAction}
+							/>
+							<IconButton
+								className={styles.action}
+								icon={showIcon}
+								label="Show"
+								variant="ghost"
+								aria-hidden={!props.visibilityAction}
+							/>
+						</div>
+					</>
+				}
+				expanded={isParentNode ? expanded : undefined}
+				selected={selected}
+			>
+				{expanded ? props.children : undefined}
+			</Tree.Item>
+		</SandboxParentItemContext.Provider>
 	);
 }
 

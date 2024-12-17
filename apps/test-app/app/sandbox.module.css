@@ -94,10 +94,6 @@
 
 .tree {
 	overflow: auto;
-
-	display: flex;
-	flex-direction: column;
-	gap: 4px;
 }
 
 .canvasWrapper {
@@ -154,6 +150,8 @@
 }
 
 .action {
+	position: relative;
+
 	&:where([aria-hidden="true"]) {
 		visibility: hidden;
 	}

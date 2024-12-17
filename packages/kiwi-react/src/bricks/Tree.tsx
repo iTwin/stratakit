@@ -39,6 +39,7 @@ const TreeItem = forwardRef<"div", TreeItemProps>((props, forwardedRef) => {
 
 	const parentContext = React.useContext(TreeItemContext);
 	const level = parentContext ? parentContext.level + 1 : 1;
+	const firstSelected = !!selected && !parentContext?.selected; // TODO: temporary, only works with single selection
 	return (
 		<TreeItemContext.Provider
 			value={React.useMemo(
@@ -50,7 +51,7 @@ const TreeItem = forwardRef<"div", TreeItemProps>((props, forwardedRef) => {
 				[level, expanded, selected],
 			)}
 		>
-			<div role="listitem">
+			<div role="listitem" aria-current={firstSelected ? true : undefined}>
 				<ListItem.Root
 					{...rest}
 					data-kiwi-expanded={expanded}
@@ -81,12 +82,15 @@ interface TreeItemContentProps extends BaseProps<"span"> {}
 
 const TreeItemContent = forwardRef<"span", TreeItemContentProps>(
 	(props, forwardedRef) => {
+		const { children, ...rest } = props;
 		return (
 			<ListItem.Content
-				{...props}
+				{...rest}
 				className={cx("🥝-tree-item-content", props.className)}
 				ref={forwardedRef}
-			/>
+			>
+				<button type="button">{children}</button>
+			</ListItem.Content>
 		);
 	},
 );

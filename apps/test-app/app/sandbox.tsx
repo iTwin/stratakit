@@ -491,18 +491,18 @@ function TreeMoreActions({ hidden }: { hidden?: boolean }) {
 				render={<IconButton icon={moreIcon} label="More" variant="ghost" />}
 			/>
 			<DropdownMenu.Content style={{ minInlineSize: 164 }}>
-				<DropdownMenu.Item>Copy</DropdownMenu.Item>
-				<DropdownMenu.Item>Paste</DropdownMenu.Item>
-				<DropdownMenu.Item>Copy/Paste as</DropdownMenu.Item>
-				<DropdownMenu.Item>Move to</DropdownMenu.Item>
-				<DropdownMenu.Item>Bring to front</DropdownMenu.Item>
-				<DropdownMenu.Item>Send to back</DropdownMenu.Item>
-				<DropdownMenu.Item>Group selection</DropdownMenu.Item>
-				<DropdownMenu.Item>Ungroup</DropdownMenu.Item>
-				<DropdownMenu.Item>Rename</DropdownMenu.Item>
-				<DropdownMenu.Item>Show/hide</DropdownMenu.Item>
-				<DropdownMenu.Item>Lock/unlock</DropdownMenu.Item>
-				<DropdownMenu.Item>Isolate object</DropdownMenu.Item>
+				<DropdownMenu.Item shortcuts="⌘+C">Copy</DropdownMenu.Item>
+				<DropdownMenu.Item shortcuts="⌘+P">Paste</DropdownMenu.Item>
+				<DropdownMenu.Item shortcuts="⌘+V">Copy/Paste as</DropdownMenu.Item>
+				<DropdownMenu.Item shortcuts="⌘+M">Move to</DropdownMenu.Item>
+				<DropdownMenu.Item shortcuts="]">Bring to front</DropdownMenu.Item>
+				<DropdownMenu.Item shortcuts="[">Send to back</DropdownMenu.Item>
+				<DropdownMenu.Item shortcuts="⌘+G">Group selection</DropdownMenu.Item>
+				<DropdownMenu.Item shortcuts="⌘+U">Ungroup</DropdownMenu.Item>
+				<DropdownMenu.Item shortcuts="⌘+R">Rename</DropdownMenu.Item>
+				<DropdownMenu.Item shortcuts="⇧+⌘+V">Show/hide</DropdownMenu.Item>
+				<DropdownMenu.Item shortcuts="⇧+⌘+L">Lock/unlock</DropdownMenu.Item>
+				<DropdownMenu.Item shortcuts="I">Isolate object</DropdownMenu.Item>
 			</DropdownMenu.Content>
 		</DropdownMenu.Root>
 	);

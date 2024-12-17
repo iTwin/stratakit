@@ -8,7 +8,9 @@
 	--✨subsequent-level-indent: 6px;
 
 	@layer base {
+		cursor: pointer;
 		position: relative;
+		isolation: isolate;
 
 		padding-inline-start: calc(
 			var(--✨first-level-indent) +

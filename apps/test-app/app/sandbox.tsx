@@ -23,6 +23,7 @@ import filterIcon from "@itwin/itwinui-icons/filter.svg";
 import dismissIcon from "@itwin/itwinui-icons/dismiss.svg";
 import lockIcon from "@itwin/itwinui-icons/lock.svg";
 import showIcon from "@itwin/itwinui-icons/visibility-show.svg";
+import moreIcon from "@itwin/itwinui-icons/placeholder.svg";
 
 const title = "Kiwi sandbox";
 export const meta: MetaFunction = () => {
@@ -363,18 +364,18 @@ function SandboxTree() {
 						<TreeItem label="Guide 4" />
 						<TreeItem label="Guide 3" />
 						<TreeItem label="Guide 2" />
-						<TreeItem label="Guide 1" lockAction />
+						<TreeItem label="Guide 1" actions />
 					</TreeItem>
 				</TreeItem>
 				<TreeItem label="Other">
 					<TreeItem label="Object 2">
 						<TreeItem label="Path 3" />
 					</TreeItem>
-					<TreeItem label="Object 1" visibilityAction />
+					<TreeItem label="Object 1" actions />
 				</TreeItem>
 				<TreeItem label="Road">
 					<TreeItem label="Parking lot access" />
-					<TreeItem label="Site access" lockAction visibilityAction />
+					<TreeItem label="Site access" actions />
 				</TreeItem>
 				<TreeItem label="Parking lot">
 					<TreeItem label="Parking area">
@@ -415,8 +416,7 @@ const SandboxParentItemContext = React.createContext<{
 
 type TreeItemProps = React.PropsWithChildren<{
 	label?: string;
-	visibilityAction?: boolean;
-	lockAction?: boolean;
+	actions?: boolean;
 }>;
 
 function TreeItem(props: TreeItemProps) {
@@ -460,15 +460,16 @@ function TreeItem(props: TreeItemProps) {
 								icon={lockIcon}
 								label="Lock"
 								variant="ghost"
-								aria-hidden={!props.lockAction}
+								aria-hidden={!props.actions}
 							/>
 							<IconButton
 								className={styles.action}
 								icon={showIcon}
 								label="Show"
 								variant="ghost"
-								aria-hidden={!props.visibilityAction}
+								aria-hidden={!props.actions}
 							/>
+							<TreeMoreActions hidden={!props.actions} />
 						</div>
 					</>
 				}
@@ -478,6 +479,32 @@ function TreeItem(props: TreeItemProps) {
 				{expanded ? props.children : undefined}
 			</Tree.Item>
 		</SandboxParentItemContext.Provider>
+	);
+}
+
+function TreeMoreActions({ hidden }: { hidden?: boolean }) {
+	return (
+		<DropdownMenu.Root>
+			<DropdownMenu.Button
+				className={styles.action}
+				aria-hidden={hidden}
+				render={<IconButton icon={moreIcon} label="More" variant="ghost" />}
+			/>
+			<DropdownMenu.Content style={{ minInlineSize: 164 }}>
+				<DropdownMenu.Item>Copy</DropdownMenu.Item>
+				<DropdownMenu.Item>Paste</DropdownMenu.Item>
+				<DropdownMenu.Item>Copy/Paste as</DropdownMenu.Item>
+				<DropdownMenu.Item>Move to</DropdownMenu.Item>
+				<DropdownMenu.Item>Bring to front</DropdownMenu.Item>
+				<DropdownMenu.Item>Send to back</DropdownMenu.Item>
+				<DropdownMenu.Item>Group selection</DropdownMenu.Item>
+				<DropdownMenu.Item>Ungroup</DropdownMenu.Item>
+				<DropdownMenu.Item>Rename</DropdownMenu.Item>
+				<DropdownMenu.Item>Show/hide</DropdownMenu.Item>
+				<DropdownMenu.Item>Lock/unlock</DropdownMenu.Item>
+				<DropdownMenu.Item>Isolate object</DropdownMenu.Item>
+			</DropdownMenu.Content>
+		</DropdownMenu.Root>
 	);
 }
 

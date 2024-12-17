@@ -23,6 +23,7 @@ import filterIcon from "@itwin/itwinui-icons/filter.svg";
 import dismissIcon from "@itwin/itwinui-icons/dismiss.svg";
 import lockIcon from "@itwin/itwinui-icons/lock.svg";
 import showIcon from "@itwin/itwinui-icons/visibility-show.svg";
+import hideIcon from "@itwin/itwinui-icons/visibility-hide.svg";
 
 const title = "Kiwi sandbox";
 export const meta: MetaFunction = () => {
@@ -347,40 +348,58 @@ function useMoveable<T extends HTMLElement>(args?: UseMoveableArgs) {
 
 const SandboxTreeContext = React.createContext<{
 	selected: string | undefined;
+	hidden: string[];
 	setSelected: React.Dispatch<React.SetStateAction<string | undefined>>;
+	toggleHidden: (id: string) => void;
 }>({
 	selected: undefined,
+	hidden: [],
 	setSelected: () => {},
+	toggleHidden: () => {},
 });
 
 function SandboxTree() {
 	const [selected, setSelected] = React.useState<string | undefined>();
+	const [hidden, setHidden] = React.useState<string[]>([]);
+	const toggleHidden = React.useCallback((id: string) => {
+		setHidden((prev) => {
+			if (prev.includes(id)) {
+				return prev.filter((i) => i !== id);
+			}
+			return [...prev, id];
+		});
+	}, []);
 	return (
-		<SandboxTreeContext.Provider value={{ selected, setSelected }}>
+		<SandboxTreeContext.Provider
+			value={React.useMemo(
+				() => ({ selected, setSelected, hidden, toggleHidden }),
+				[hidden, selected, toggleHidden],
+			)}
+		>
 			<Tree.Root className={styles.tree}>
 				<TreeItem label="Guides">
 					<TreeItem label="Tree">
 						<TreeItem label="Guide 4" />
 						<TreeItem label="Guide 3" />
 						<TreeItem label="Guide 2" />
-						<TreeItem label="Guide 1" lockAction />
+						<TreeItem label="Guide 1" actions />
 					</TreeItem>
 				</TreeItem>
 				<TreeItem label="Other">
 					<TreeItem label="Object 2">
 						<TreeItem label="Path 3" />
 					</TreeItem>
-					<TreeItem label="Object 1" visibilityAction />
+					<TreeItem label="Object 1" actions />
 				</TreeItem>
 				<TreeItem label="Road">
 					<TreeItem label="Parking lot access" />
-					<TreeItem label="Site access" lockAction visibilityAction />
+					<TreeItem label="Site access" />
 				</TreeItem>
-				<TreeItem label="Parking lot">
-					<TreeItem label="Parking area">
+				<TreeItem label="Parking lot" actions>
+					<TreeItem label="Parking area" actions>
 						<TreeItem label="Bay point 2" />
-						<TreeItem label="Bay point 1" />
-						<TreeItem label="Space point 1" />
+						<TreeItem label="Bay point 1" actions />
+						<TreeItem label="Space point 1" actions />
 						<TreeItem label="Path 6" />
 					</TreeItem>
 				</TreeItem>
@@ -415,16 +434,18 @@ const SandboxParentItemContext = React.createContext<{
 
 type TreeItemProps = React.PropsWithChildren<{
 	label?: string;
-	visibilityAction?: boolean;
-	lockAction?: boolean;
+	actions?: boolean;
 }>;
 
 function TreeItem(props: TreeItemProps) {
-	const id = React.useId();
-	const isParentNode = React.Children.count(props.children) > 0;
-	const [expanded, setExpanded] = React.useState(true);
 	const treeContext = React.useContext(SandboxTreeContext);
 	const parentContext = React.useContext(SandboxParentItemContext);
+	const id = React.useId();
+	const [expanded, setExpanded] = React.useState(true);
+	const isParentNode = React.Children.count(props.children) > 0;
+	const hidden = React.useMemo(() => {
+		return treeContext.hidden.includes(id);
+	}, [id, treeContext.hidden]);
 	const selected = parentContext.selected || id === treeContext.selected;
 	const toggleSelected = React.useCallback(() => {
 		treeContext.setSelected((prev) => {
@@ -460,14 +481,17 @@ function TreeItem(props: TreeItemProps) {
 								icon={lockIcon}
 								label="Lock"
 								variant="ghost"
-								aria-hidden={!props.lockAction}
+								aria-hidden={!props.actions || hidden}
 							/>
 							<IconButton
 								className={styles.action}
-								icon={showIcon}
-								label="Show"
+								icon={hidden ? hideIcon : showIcon}
+								label={hidden ? "Show" : "Hide"}
 								variant="ghost"
-								aria-hidden={!props.visibilityAction}
+								aria-hidden={!props.actions}
+								onClick={() => {
+									treeContext.toggleHidden(id);
+								}}
 							/>
 						</div>
 					</>

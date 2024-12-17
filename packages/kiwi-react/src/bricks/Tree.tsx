@@ -182,10 +182,10 @@ const TreeEmptyState = forwardRef<"div", TreeEmptyStateProps>(
 		const {
 			children,
 			className,
-			title = "",
+			title = "Title Text",
 			icon,
-			description = "",
-			cta,
+			description = "Start drawing on the canvas to add a new object layer",
+			cta = <button>Button</button>,
 		} = props;
 
 		return (

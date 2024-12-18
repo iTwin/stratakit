@@ -9,6 +9,8 @@ import { forwardRef, type BaseProps } from "./~utils.js";
 interface KbdProps extends BaseProps<"kbd"> {
 	/** @default "solid" */
 	variant?: "solid" | "muted" | "ghost";
+
+	decorator: string;
 }
 
 export const kbdKeys = {
@@ -49,7 +51,7 @@ export const kbdKeys = {
  * ```
  */
 export const Kbd = forwardRef<"kbd", KbdProps>((props, forwardedRef) => {
-	const { variant = "solid", ...rest } = props;
+	const { variant = "solid", decorator, children, ...rest } = props;
 	return (
 		<Ariakit.Role
 			data-kiwi-variant={variant}
@@ -57,7 +59,9 @@ export const Kbd = forwardRef<"kbd", KbdProps>((props, forwardedRef) => {
 			className={cx("🥝-kbd", props.className)}
 			render={props.render || <kbd />}
 			ref={forwardedRef as Ariakit.RoleProps["ref"]}
-		/>
+		>
+			{decorator || children}
+		</Ariakit.Role>
 	);
 });
 DEV: Kbd.displayName = "Kbd";

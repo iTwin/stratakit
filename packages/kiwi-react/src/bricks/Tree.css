@@ -5,6 +5,7 @@
 .🥝-tree {
 	@layer base {
 		overflow: auto;
+		flex-grow: 1;
 	}
 
 	@layer modifiers {

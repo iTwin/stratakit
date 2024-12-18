@@ -1,0 +1,50 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+
+.🥝-progress {
+	@layer base {
+		color: var(--🥝progress-color);
+		block-size: var(--🥝progress-size);
+		inline-size: var(--🥝progress-size);
+
+		> svg {
+			animation: radial-indeterminate-rotate 1s linear infinite;
+			block-size: inherit;
+			inline-size: inherit;
+		}
+	}
+
+	@layer modifiers {
+		&[data-kiwi-tone="neutral"] {
+			--🥝progress-color: var(--kiwi-color-icon-neutral-base);
+		}
+
+		&[data-kiwi-tone="accent"] {
+			--🥝progress-color: var(--kiwi-color-icon-accent-strong);
+		}
+
+		&[data-kiwi-size="small"] {
+			--🥝progress-size: 1rem;
+		}
+
+		&[data-kiwi-size="medium"] {
+			--🥝progress-size: 1.5rem;
+		}
+
+		&[data-kiwi-size="large"] {
+			--🥝progress-size: 2rem;
+		}
+
+		&[data-kiwi-size="xlarge"] {
+			--🥝progress-size: 3rem;
+		}
+	}
+}
+
+@keyframes radial-indeterminate-rotate {
+	100% {
+		transform: rotate(360deg);
+	}
+}

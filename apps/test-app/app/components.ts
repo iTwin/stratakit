@@ -14,6 +14,7 @@ export const components = [
 	"IconButton",
 	"Kbd",
 	"List",
+	"ProgressIndicator",
 	"Radio",
 	"Select",
 	"Switch",

@@ -16,6 +16,7 @@ export { Field } from "./Field.js";
 export { Kbd } from "./Kbd.js";
 export { Label } from "./Label.js";
 export { Radio } from "./Radio.js";
+export * as Select from "./Select.js";
 export { Switch } from "./Switch.js";
 export * as Tabs from "./Tabs.js";
 export { Text } from "./Text.js";

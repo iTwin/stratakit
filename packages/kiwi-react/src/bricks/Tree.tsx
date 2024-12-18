@@ -15,11 +15,9 @@ import { forwardRef, type BaseProps } from "./~utils.js";
 interface TreeProps extends BaseProps {}
 
 const Tree = forwardRef<"div", TreeProps>((props, forwardedRef) => {
-	const hasChildren = React.Children.count(props.children) > 0;
-
 	return (
 		<Ariakit.Role.div {...props} role="list" ref={forwardedRef}>
-			{hasChildren ? props.children : <TreeEmptyState />}
+			{props.children}
 		</Ariakit.Role.div>
 	);
 });
@@ -167,52 +165,9 @@ const TreeItemContext = React.createContext<
 
 // ----------------------------------------------------------------------------
 
-// ----------------------------------------------------------------------------
-
-interface TreeEmptyStateProps extends BaseProps {
-	children?: React.ReactNode;
-	title?: string;
-	icon?: React.ReactNode;
-	description?: string;
-	cta?: React.ReactNode;
-}
-
-const TreeEmptyState = forwardRef<"div", TreeEmptyStateProps>(
-	(props, forwardedRef) => {
-		const {
-			children,
-			className,
-			title = "Title Text",
-			icon,
-			description = "Start drawing on the canvas to add a new object layer",
-			cta = <button>Button</button>,
-		} = props;
-
-		return (
-			<div className={cx("🥝-tree-empty-state", className)} ref={forwardedRef}>
-				{children || (
-					<div>
-						{icon && <div>{icon}</div>}
-						{title && <h3 className="🥝-tree-empty-state-title">{title}</h3>}
-						{description && (
-							<p className="🥝-tree-empty-state-description">{description}</p>
-						)}
-						{cta && <div className="🥝-tree-empty-state-action">{cta}</div>}
-					</div>
-				)}
-			</div>
-		);
-	},
-);
-
-DEV: TreeEmptyState.displayName = "Tree.EmptyState";
-
-// ----------------------------------------------------------------------------
-
 export {
 	Tree as Root,
 	TreeItem as Item,
 	TreeItemExpander as Expander,
 	TreeItemContent as Content,
-	TreeEmptyState as EmptyState,
 };

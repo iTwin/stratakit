@@ -7,6 +7,7 @@ import * as ReactDOM from "react-dom";
 import * as Ariakit from "@ariakit/react";
 import styles from "./sandbox.module.css";
 import {
+	Button,
 	Divider,
 	DropdownMenu,
 	Icon,
@@ -31,9 +32,6 @@ export const meta: MetaFunction = () => {
 };
 
 export default function Page() {
-	const [searchParams] = useSearchParams();
-	const isTreeEmpty = searchParams.get("empty") === "true";
-
 	const { sliderProps, panelProps, panelMinSize, panelMaxSize, resizing } =
 		useSplitter<HTMLDivElement>({
 			minSize: { px: 256, pct: 20 },
@@ -85,7 +83,7 @@ export default function Page() {
 						</div>
 					</div>
 					<Subheader />
-					{isTreeEmpty ? EmptyState() : <SandboxTree />}
+					<SandboxTree />
 					<Divider
 						presentational
 						className={styles.splitter}
@@ -107,19 +105,22 @@ export default function Page() {
 	);
 }
 
-function EmptyState() {
+function EmptyTreeState() {
 	return (
 		<>
-			<p
+			<div
 				style={{
 					display: "flex",
+					flexDirection: "column",
 					justifyContent: "center",
 					alignItems: "center",
 					height: "100%",
 				}}
 			>
-				Empty State
-			</p>
+				<h3>Title</h3>
+				<p>Description</p>
+				<Button>CTA</Button>
+			</div>
 		</>
 	);
 }
@@ -376,8 +377,14 @@ const SandboxTreeContext = React.createContext<{
 
 function SandboxTree() {
 	const [searchParams] = useSearchParams();
+	const empty = searchParams.get("empty");
 	const tree = searchParams.get("tree"); // for handling ?tree=complex
 	const [selected, setSelected] = React.useState<string | undefined>();
+
+	if (empty === "true") {
+		return <EmptyTreeState />;
+	}
+
 	return (
 		<SandboxTreeContext.Provider value={{ selected, setSelected }}>
 			<Tree.Root className={styles.tree}>

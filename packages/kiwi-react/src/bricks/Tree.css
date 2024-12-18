@@ -2,6 +2,12 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
+.🥝-tree {
+	@layer base {
+		overflow: auto;
+	}
+}
+
 .🥝-tree-item:is(.🥝-list-item) {
 	--✨padding-inline-end: 0.25rem;
 	--✨first-level-indent: 8px;

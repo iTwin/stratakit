@@ -366,7 +366,7 @@ function SandboxTree() {
 
 function IdealTree() {
 	return (
-		<Tree.Root className={styles.tree}>
+		<Tree.Root>
 			<TreeItem label="Guides">
 				<TreeItem label="Tree">
 					<TreeItem label="Guide 4" />
@@ -419,7 +419,7 @@ function IdealTree() {
 
 function HorizontalScrollTree() {
 	return (
-		<Tree.Root className={styles.tree}>
+		<Tree.Root>
 			<TreeItem label="ITC_Master">
 				<TreeItem label="002_Substation" defaultCollapsed>
 					<TreeItem label="002_Substation_A" />

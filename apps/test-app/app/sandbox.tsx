@@ -355,18 +355,21 @@ const SandboxTreeContext = React.createContext<{
 
 function SandboxTree() {
 	const [searchParams] = useSearchParams();
-	const horizontalScroll = searchParams.has("horizontalScroll");
+	const scroll = searchParams.get("scroll");
+	const tree = searchParams.get("tree");
 	const [selected, setSelected] = React.useState<string | undefined>();
 	return (
 		<SandboxTreeContext.Provider value={{ selected, setSelected }}>
-			{horizontalScroll ? <HorizontalScrollTree /> : <IdealTree />}
+			<Tree.Root scrolling={scroll === "both" ? "both" : "vertical"}>
+				{tree === "complex" ? <ComplexTreeItems /> : <IdealTreeItems />}
+			</Tree.Root>
 		</SandboxTreeContext.Provider>
 	);
 }
 
-function IdealTree() {
+function IdealTreeItems() {
 	return (
-		<Tree.Root scrolling="vertical">
+		<>
 			<TreeItem label="Guides">
 				<TreeItem label="Tree">
 					<TreeItem label="Guide 4" />
@@ -413,13 +416,13 @@ function IdealTree() {
 					<TreeItem label="Terrain" />
 				</TreeItem>
 			</TreeItem>
-		</Tree.Root>
+		</>
 	);
 }
 
-function HorizontalScrollTree() {
+function ComplexTreeItems() {
 	return (
-		<Tree.Root scrolling="both">
+		<>
 			<TreeItem label="ITC_Master">
 				<TreeItem label="002_Substation" defaultCollapsed>
 					<TreeItem label="002_Substation_A" />
@@ -505,7 +508,7 @@ function HorizontalScrollTree() {
 				</TreeItem>
 			</TreeItem>
 			<TreeItem label="ITC_Main" lockAction visibilityAction />
-		</Tree.Root>
+		</>
 	);
 }
 

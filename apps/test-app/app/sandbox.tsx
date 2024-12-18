@@ -355,7 +355,7 @@ const SandboxTreeContext = React.createContext<{
 
 function SandboxTree() {
 	const [searchParams] = useSearchParams();
-	const tree = searchParams.get("tree");
+	const tree = searchParams.get("tree"); // for handling ?tree=complex
 	const [selected, setSelected] = React.useState<string | undefined>();
 	return (
 		<SandboxTreeContext.Provider value={{ selected, setSelected }}>

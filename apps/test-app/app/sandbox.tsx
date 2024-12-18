@@ -366,7 +366,7 @@ function SandboxTree() {
 
 function IdealTree() {
 	return (
-		<Tree.Root>
+		<Tree.Root scrolling="vertical">
 			<TreeItem label="Guides">
 				<TreeItem label="Tree">
 					<TreeItem label="Guide 4" />
@@ -419,19 +419,33 @@ function IdealTree() {
 
 function HorizontalScrollTree() {
 	return (
-		<Tree.Root>
+		<Tree.Root scrolling="both">
 			<TreeItem label="ITC_Master">
 				<TreeItem label="002_Substation" defaultCollapsed>
 					<TreeItem label="002_Substation_A" />
 				</TreeItem>
-				<TreeItem label="005-BENROAD-00-XX-M3-D-00003.dgn" defaultCollapsed>
+				<TreeItem
+					label="005-BENROAD-00-XX-M3-D-00003.dgn"
+					defaultCollapsed
+					lockAction
+					visibilityAction
+				>
 					<TreeItem label="005-BENROAD-00-XX-M3-D-00003-A" />
 				</TreeItem>
-				<TreeItem label="005-BENROAD-00-XX-M3-D-00005.dgn" defaultCollapsed>
+				<TreeItem
+					label="005-BENROAD-00-XX-M3-D-00005.dgn"
+					defaultCollapsed
+					lockAction
+					visibilityAction
+				>
 					<TreeItem label="005-BENROAD-00-XX-M3-D-00005-A" />
 				</TreeItem>
 				<TreeItem label="005-BENROAD-00-XX-M3-G-00002.dgn" defaultCollapsed>
-					<TreeItem label="005-BENROAD-00-XX-M3-G-00002-A" />
+					<TreeItem
+						label="005-BENROAD-00-XX-M3-G-00002-A"
+						lockAction
+						visibilityAction
+					/>
 				</TreeItem>
 				<TreeItem label="005-BENROAD-00-XX-M3-G-00003.dgn" defaultCollapsed>
 					<TreeItem label="005-BENROAD-00-XX-M3-G-00003-A" />
@@ -446,9 +460,21 @@ function HorizontalScrollTree() {
 								<TreeItem label="Cell [2-KA63]">
 									<TreeItem label="Cell [2-KA64]">
 										<TreeItem label="Complex Chain [2-KA6A]" />
-										<TreeItem label="Complex Chain [2-KA6B]" />
-										<TreeItem label="Complex Chain [2-KA6C]" />
-										<TreeItem label="Complex Chain [2-KA6D]" />
+										<TreeItem
+											label="Complex Chain [2-KA6B]"
+											lockAction
+											visibilityAction
+										/>
+										<TreeItem
+											label="Complex Chain [2-KA6C]"
+											lockAction
+											visibilityAction
+										/>
+										<TreeItem
+											label="Complex Chain [2-KA6D]"
+											lockAction
+											visibilityAction
+										/>
 										<TreeItem label="Complex Chain [2-KA6E]" />
 										<TreeItem label="Complex Chain [2-KA6F]" />
 										<TreeItem label="Complex Chain [2-KA6G]" />
@@ -478,6 +504,7 @@ function HorizontalScrollTree() {
 					</TreeItem>
 				</TreeItem>
 			</TreeItem>
+			<TreeItem label="ITC_Main" lockAction visibilityAction />
 		</Tree.Root>
 	);
 }

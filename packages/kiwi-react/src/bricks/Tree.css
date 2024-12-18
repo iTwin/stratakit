@@ -6,6 +6,14 @@
 	@layer base {
 		overflow: auto;
 	}
+
+	@layer modifiers {
+		&[data-kiwi-scrolling="both"] {
+			> [role="list"] {
+				min-inline-size: max-content;
+			}
+		}
+	}
 }
 
 .🥝-tree-item:is(.🥝-list-item) {

@@ -10,7 +10,7 @@ interface KbdProps extends BaseProps<"kbd"> {
 	/** @default "solid" */
 	variant?: "solid" | "muted" | "ghost";
 
-	decorator: string;
+	decorator?: string;
 }
 
 export const kbdKeys = {

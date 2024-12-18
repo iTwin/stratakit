@@ -30,7 +30,10 @@ export default definePage(function Page({
 		? " with a super long label that is overflown"
 		: "";
 	return (
-		<Tree.Root style={{ maxInlineSize: overflow ? 300 : undefined }}>
+		<Tree.Root
+			scroll="vertical"
+			style={{ maxInlineSize: overflow ? 300 : undefined }}
+		>
 			<TreeItem label={`Item 1${overflowPostfix}`} selected={!!selected}>
 				<TreeItem label="Item 1.1" selected={!!selected} />
 				<TreeItem label="Item 1.2" actions selected={!!selected} />

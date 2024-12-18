@@ -9,7 +9,7 @@
 	}
 
 	@layer modifiers {
-		&[data-kiwi-scrolling="both"] {
+		&[data-kiwi-scroll="both"] {
 			> [role="list"] {
 				min-inline-size: max-content;
 			}

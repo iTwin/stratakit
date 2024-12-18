@@ -360,7 +360,7 @@ function SandboxTree() {
 	const [selected, setSelected] = React.useState<string | undefined>();
 	return (
 		<SandboxTreeContext.Provider value={{ selected, setSelected }}>
-			<Tree.Root scrolling={scroll === "both" ? "both" : "vertical"}>
+			<Tree.Root scroll={scroll === "both" ? "both" : "vertical"}>
 				{tree === "complex" ? <ComplexTreeItems /> : <IdealTreeItems />}
 			</Tree.Root>
 		</SandboxTreeContext.Provider>

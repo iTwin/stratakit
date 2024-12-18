@@ -3,7 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 import globalStyles from "./tests.css?url";
-import { VisuallyHidden } from "@itwin/kiwi-react/bricks";
+import { VisuallyHidden } from "@itwin/itwinui-react/bricks";
 import {
 	Outlet,
 	useMatches,

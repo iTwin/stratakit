@@ -44,5 +44,6 @@
 	"[jsonc]": {
 		"editor.defaultFormatter": "biomejs.biome"
 	},
-	"explorer.sortOrderLexicographicOptions": "unicode"
+	"explorer.sortOrderLexicographicOptions": "unicode",
+	"typescript.tsdk": "./node_modules/typescript/lib"
 }

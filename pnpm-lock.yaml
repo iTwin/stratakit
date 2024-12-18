@@ -6,6 +6,7 @@ settings:
 
 overrides:
   cookie@<0.7.0: ">=0.7.0"
+  typescript: 5.7.2
 
 importers:
   .:
@@ -31,21 +32,27 @@ importers:
       tsx:
         specifier: ^4.19.2
         version: 4.19.2
+      typescript:
+        specifier: 5.7.2
+        version: 5.7.2
 
   apps/test-app:
     dependencies:
       "@ariakit/react":
         specifier: "*"
         version: 0.4.15(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
-      "@itwin/kiwi-icons":
-        specifier: "*"
+      "@itwin/itwinui-icons":
+        specifier: workspace:*
         version: link:../../packages/kiwi-icons
-      "@itwin/kiwi-react":
-        specifier: "*"
+      "@itwin/itwinui-react":
+        specifier: workspace:*
         version: link:../../packages/kiwi-react
       "@react-router/node":
         specifier: ^7.0.2
         version: 7.0.2(react-router@7.0.2(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(typescript@5.7.2)
+      classnames:
+        specifier: ^2.5.1
+        version: 2.5.1
       isbot:
         specifier: ^5.1.17
         version: 5.1.17
@@ -84,7 +91,7 @@ importers:
         specifier: ^1.28.2
         version: 1.28.2
       typescript:
-        specifier: "5"
+        specifier: 5.7.2
         version: 5.7.2
       vite:
         specifier: ^6.0.2
@@ -132,7 +139,7 @@ importers:
         specifier: "19"
         version: 19.0.0(react@19.0.0)
       typescript:
-        specifier: "5"
+        specifier: 5.7.2
         version: 5.7.2
 
 packages:
@@ -1240,7 +1247,7 @@ packages:
     peerDependencies:
       "@react-router/serve": ^7.0.2
       react-router: ^7.0.2
-      typescript: ^5.1.0
+      typescript: 5.7.2
       vite: ^5.1.0
       wrangler: ^3.28.2
     peerDependenciesMeta:
@@ -1259,7 +1266,7 @@ packages:
     engines: { node: ">=20.0.0" }
     peerDependencies:
       react-router: 7.0.2
-      typescript: ^5.1.0
+      typescript: 5.7.2
     peerDependenciesMeta:
       typescript:
         optional: true
@@ -2633,7 +2640,7 @@ packages:
     engines: { node: ^18 || >=20 }
     hasBin: true
     peerDependencies:
-      typescript: ^5.0.0
+      typescript: 5.7.2
     peerDependenciesMeta:
       typescript:
         optional: true
@@ -2709,7 +2716,7 @@ packages:
         integrity: sha512-igDBb8CTYr8YTQlOKgaN9nSS0Be7z+WRuaeYqGf3Cjz3aKmSnqEmYnkfVjzIuumGqfHpa3fLIvMEAfhrpqN8ng==,
       }
     peerDependencies:
-      typescript: ">=5"
+      typescript: 5.7.2
     peerDependenciesMeta:
       typescript:
         optional: true

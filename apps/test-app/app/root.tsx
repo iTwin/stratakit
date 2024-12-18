@@ -9,9 +9,10 @@ import {
 	Outlet,
 	Scripts,
 	ScrollRestoration,
+	useMatches,
 	type LinksFunction,
 } from "react-router";
-import { Root } from "@itwin/kiwi-react/bricks";
+import { Root } from "@itwin/itwinui-react/bricks";
 import { ColorSchemeProvider, useColorScheme } from "./~utils.tsx";
 
 export const links: LinksFunction = () => {
@@ -35,7 +36,9 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 function LayoutInner({ children }: { children: React.ReactNode }) {
-	const colorScheme = useColorScheme();
+	// Normally we want the return value of `useColorScheme` which adapts to the system preference,
+	// However, we want to set a static value when testing the `/tests/root/` route.
+	const colorScheme = useIsRootTest() ? "dark light" : useColorScheme();
 
 	return (
 		<html lang="en" data-color-scheme={colorScheme}>
@@ -83,4 +86,9 @@ export function HydrateFallback() {
 			<noscript>Please enable JavaScript.</noscript>
 		</>
 	);
+}
+
+function useIsRootTest() {
+	type RootTestHandle = typeof import("~/tests/root/index.tsx").handle;
+	return !!(useMatches()?.at(-1)?.handle as RootTestHandle)?.rootTest;
 }

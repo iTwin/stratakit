@@ -6,12 +6,13 @@ import globalStyles from "./tokens.css?url";
 import * as Ariakit from "@ariakit/react";
 import type * as React from "react";
 import type { MetaFunction, LinksFunction } from "react-router";
-import { Button, Divider, Icon } from "@itwin/kiwi-react/bricks";
+import { Button, Divider, Icon } from "@itwin/itwinui-react/bricks";
 import { parseTokens } from "internal/visitors.js";
 import rawLightTokens from "internal/theme-light.json";
 import rawDarkTokens from "internal/theme-dark.json";
 import styles from "./tokens.module.css";
 import { useColorScheme } from "~/~utils.tsx";
+import { Table } from "./~utils.tsx";
 
 const lightColorTokens = parseTokens(rawLightTokens.color);
 const lightShadowTokens = parseTokens(rawLightTokens.shadow);
@@ -115,7 +116,7 @@ function Tokens({
 	kind: "color" | "shadow";
 }) {
 	return (
-		<table className={styles.table}>
+		<Table>
 			<thead>
 				<tr>
 					<th>Variable</th>
@@ -138,7 +139,7 @@ function Tokens({
 					);
 				})}
 			</tbody>
-		</table>
+		</Table>
 	);
 }
 

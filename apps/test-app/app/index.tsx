@@ -4,30 +4,10 @@
  *--------------------------------------------------------------------------------------------*/
 import globalStyles from "./index.css?url";
 import { Link, type MetaFunction, type LinksFunction } from "react-router";
-import { Anchor, Divider } from "@itwin/kiwi-react/bricks";
+import { Anchor, Divider } from "@itwin/itwinui-react/bricks";
 import styles from "./index.module.css";
 import { toKebabCase } from "./~utils.tsx";
-
-export const components = [
-	"Root",
-	"Anchor",
-	"Button",
-	"Checkbox",
-	"Divider",
-	"DropdownMenu",
-	"Field",
-	"Icon",
-	"IconButton",
-	"Kbd",
-	"List",
-	"Radio",
-	"Switch",
-	"Tabs",
-	"Textarea",
-	"TextBox",
-	"Tree",
-	"Tooltip",
-];
+import { components } from "./components.ts";
 
 export const meta: MetaFunction = () => {
 	return [{ title: "Kiwi test app" }];

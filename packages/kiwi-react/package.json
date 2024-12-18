@@ -1,8 +1,7 @@
 {
-	"name": "@itwin/kiwi-react",
-	"private": true,
+	"name": "@itwin/itwinui-react",
 	"type": "module",
-	"version": "0.1.0",
+	"version": "5.0.0-alpha.0",
 	"license": "MIT",
 	"sideEffects": false,
 	"exports": {

@@ -120,7 +120,7 @@ pnpm run test button
 All components, props, and public APIs must have inline documentation written as [JSDoc](https://jsdoc.app/) comments. This documentation can be used by IDEs for hover hints and auto-completion to assist developers in understanding the code. JSDoc comments support markdown syntax, which can be useful when you want to display inline code or hyperlinks.
 
 ```tsx
-interface ButtonProps extends Ariakit.ButtonProps {
+interface ButtonProps extends FocusableProps<"button"> {
 	/**
 	 * The variant style of the button.
 	 * Use "solid" for primary actions and "ghost" for less prominent actions.
@@ -133,10 +133,7 @@ interface ButtonProps extends Ariakit.ButtonProps {
 /**
  * A customizable button component supporting multiple variants.
  */
-export const Button = React.forwardRef<
-	React.ElementRef<typeof Ariakit.Button>,
-	ButtonProps
->((props, forwardedRef) => { }
+export const Button = forwardRef<"button", ButtonProps>((props, forwardedRef) => {});
 ```
 
 ## Pull Requests

@@ -3,7 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 import { definePage } from "~/~utils.tsx";
-import { Divider } from "@itwin/kiwi-react/bricks";
+import { Divider } from "@itwin/itwinui-react/bricks";
 
 export const handle = { title: "Divider" };
 

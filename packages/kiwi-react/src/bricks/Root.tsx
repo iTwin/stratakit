@@ -7,7 +7,8 @@ import * as Ariakit from "@ariakit/react";
 import cx from "classnames";
 import foundationsCss from "../foundations/styles.css.js";
 import bricksCss from "./styles.css.js";
-import { isBrowser, type BaseProps } from "./~utils.js";
+import { forwardRef, isBrowser, type BaseProps } from "./~utils.js";
+import { useMergedRefs } from "./~hooks.js";
 
 const css = foundationsCss + bricksCss;
 
@@ -20,18 +21,77 @@ interface RootProps extends BaseProps {
 	colorScheme: "light" | "dark";
 
 	/**
+	 * Whether to synchronize the color scheme with the parent document (or shadow-root host).
+	 *
+	 * This is useful when you don't have explicit control over the color scheme of the host.
+	 *
+	 * @default false
+	 */
+	synchronizeColorScheme?: boolean;
+
+	/**
 	 * The density to use for all components under the Root.
 	 */
 	density: "dense";
 }
 
 /**
- * Component to be used at the root of your application. It ensures that kiwi styles are loaded
+ * Component to be used at the root of your application. It ensures that kiwi styles and fonts are loaded
  * and automatically applied to the current page or the encompassing shadow-root.
+ *
+ * Make sure to specify the `colorScheme` and `density` props.
+ *
+ * Example:
+ * ```tsx
+ * <Root colorScheme="dark" density="dense">
+ *   <App />
+ * </Root>
+ * ```
  */
-export const Root = React.forwardRef<React.ElementRef<"div">, RootProps>(
+export const Root = forwardRef<"div", RootProps>((props, forwardedRef) => {
+	const { children, synchronizeColorScheme = false, ...rest } = props;
+
+	return (
+		<RootInternal {...rest} ref={forwardedRef}>
+			<Styles />
+			<Fonts />
+			{synchronizeColorScheme ? (
+				<SynchronizeColorScheme colorScheme={props.colorScheme} />
+			) : null}
+			{children}
+		</RootInternal>
+	);
+});
+DEV: Root.displayName = "Root";
+
+// ----------------------------------------------------------------------------
+
+const RootNodeContext = React.createContext<Document | ShadowRoot | null>(null);
+
+/** Returns the closest [rootNode](https://developer.mozilla.org/en-US/docs/Web/API/Node/getRootNode). */
+function useRootNode() {
+	return React.useContext(RootNodeContext);
+}
+
+// ----------------------------------------------------------------------------
+
+interface RootInternalProps extends Omit<RootProps, "synchronizeColorScheme"> {}
+
+const RootInternal = forwardRef<"div", RootInternalProps>(
 	(props, forwardedRef) => {
 		const { children, colorScheme, density, ...rest } = props;
+
+		const [rootNode, setRootNode] = React.useState<
+			Document | ShadowRoot | null
+		>(null);
+
+		const findRootNodeFromRef = React.useCallback((element?: HTMLElement) => {
+			if (!element) return;
+
+			const rootNode = element.getRootNode();
+			if (!isDocument(rootNode) && !isShadow(rootNode)) return;
+			setRootNode(rootNode);
+		}, []);
 
 		return (
 			<Ariakit.Role
@@ -39,33 +99,55 @@ export const Root = React.forwardRef<React.ElementRef<"div">, RootProps>(
 				className={cx("🥝-root", props.className)}
 				data-kiwi-theme={colorScheme}
 				data-kiwi-density={density}
-				ref={forwardedRef}
+				ref={useMergedRefs(forwardedRef, findRootNodeFromRef)}
 			>
-				<Styles />
-				{children}
+				<RootNodeContext.Provider value={rootNode}>
+					{children}
+				</RootNodeContext.Provider>
 			</Ariakit.Role>
 		);
 	},
 );
-DEV: Root.displayName = "Root";
+
+// ----------------------------------------------------------------------------
+
+/**
+ * Synchronizes `colorScheme` with the parent document (or shadow-root host).
+ *
+ * The host will have a `data-color-scheme` attribute set to the current color scheme.
+ * If the host is a document, a `<meta name="color-scheme">` tag will also be updated (if found).
+ */
+function SynchronizeColorScheme({
+	colorScheme,
+}: { colorScheme: RootProps["colorScheme"] }) {
+	const rootNode = useRootNode();
+
+	useLayoutEffect(() => {
+		if (!rootNode) return;
+
+		if (isDocument(rootNode)) {
+			rootNode.documentElement.dataset.colorScheme = colorScheme;
+			const meta = rootNode.querySelector("meta[name='color-scheme']");
+			if (meta) (meta as HTMLMetaElement).content = colorScheme;
+		} else if (isShadow(rootNode)) {
+			(rootNode.host as HTMLElement).dataset.colorScheme = colorScheme;
+		}
+	}, [rootNode, colorScheme]);
+
+	return null;
+}
 
 // ----------------------------------------------------------------------------
 
 function Styles() {
-	const templateRef = React.useRef<HTMLTemplateElement | null>(null);
-	const [loaded, setLoaded] = React.useState(false);
+	const rootNode = useRootNode();
 
 	useLayoutEffect(() => {
-		const rootNode = templateRef.current?.getRootNode();
-		if (!isDocument(rootNode) && !isShadow(rootNode)) {
-			return;
-		}
+		if (!rootNode) return;
+		loadStyles(rootNode, { css });
+	}, [rootNode]);
 
-		const { loaded } = loadStyles(rootNode, { css: css });
-		setLoaded(loaded);
-	}, []);
-
-	return !loaded ? <template ref={templateRef} /> : null;
+	return null;
 }
 
 // ----------------------------------------------------------------------------
@@ -111,6 +193,56 @@ function loadStyles(rootNode: Document | ShadowRoot, { css }: { css: string }) {
 	})();
 
 	return { loaded };
+}
+
+// ----------------------------------------------------------------------------
+
+function Fonts() {
+	const rootNode = useRootNode();
+
+	useLayoutEffect(() => {
+		if (!rootNode) return;
+		loadFonts(rootNode);
+	}, [rootNode]);
+
+	return null;
+}
+
+// ----------------------------------------------------------------------------
+
+/**
+ * Conditionally loads InterVariable from the official CDN if the document
+ * doesn’t already have it.
+ */
+function loadFonts(rootNode: Document | ShadowRoot) {
+	const ownerWindow = getWindow(rootNode);
+
+	if (
+		!ownerWindow ||
+		Array.from(ownerWindow.document.fonts).some(
+			(font) => font.family === "InterVariable",
+		)
+	) {
+		return;
+	}
+
+	const interStyles = {
+		normal: "https://rsms.me/inter/font-files/InterVariable.woff2?v=4.1",
+		italic: "https://rsms.me/inter/font-files/InterVariable-Italic.woff2?v=4.1",
+	};
+
+	for (const [style, url] of Object.entries(interStyles)) {
+		const font = new ownerWindow.FontFace(
+			"InterVariable",
+			`url(${url}) format("woff2")`,
+			{
+				display: "swap",
+				weight: "100 900",
+				style,
+			},
+		);
+		ownerWindow.document.fonts.add(font);
+	}
 }
 
 // ----------------------------------------------------------------------------

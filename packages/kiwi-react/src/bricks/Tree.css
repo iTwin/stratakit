@@ -8,6 +8,9 @@
 	--✨subsequent-level-indent: 6px;
 
 	@layer base {
+		position: relative;
+		isolation: isolate;
+
 		padding-inline-start: calc(
 			var(--✨first-level-indent) +
 			var(--✨subsequent-level-indent) *
@@ -17,9 +20,12 @@
 	}
 
 	@layer states {
-		/* TODO: combined states: active + hovered/pressed. */
 		&:where([data-kiwi-selected="true"]) {
 			--🌀list-item-state: var(--🌀list-item-state--active);
+		}
+
+		&:where([data-kiwi-parent-selected="true"][data-kiwi-selected="true"]) {
+			--🌀list-item-state: var(--🌀list-item-state--active-child);
 		}
 
 		&:where([data-kiwi-expanded="false"]) {
@@ -29,20 +35,43 @@
 		&:where(:not([data-kiwi-expanded])) {
 			--🥝tree-item-expander-visibility: hidden;
 		}
+
+		@media (any-hover: hover) {
+			&:where(:hover[data-kiwi-parent-selected="true"][data-kiwi-selected="true"]) {
+				--🌀list-item-state: var(--🌀list-item-state--active-child-hover);
+			}
+		}
 	}
 }
 
 .🥝-tree-item-content:is(.🥝-list-item-content) {
 	@layer base {
-		text-overflow: ellipsis;
-		white-space: nowrap;
-		overflow: hidden;
+		display: inline-flex;
+		min-inline-size: 0;
+
+		:where(button) {
+			cursor: pointer;
+
+			text-overflow: ellipsis;
+			white-space: nowrap;
+			overflow: hidden;
+
+			border: unset;
+			background-color: unset;
+
+			&::before {
+				content: "";
+				position: absolute;
+				inset: 0;
+			}
+		}
 	}
 }
 
 .🥝-tree-item-expander:is(.🥝-icon-button) {
 	@layer base {
 		visibility: var(--🥝tree-item-expander-visibility);
+		z-index: 1; /* Ensure the expander is above the invisible content button */
 	}
 }
 

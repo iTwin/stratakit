@@ -7,8 +7,9 @@ import cx from "classnames";
 import * as Ariakit from "@ariakit/react";
 import * as ListItem from "./ListItem.js";
 import { Button } from "./Button.js";
+import { Kbd } from "./Kbd.js";
 import { DisclosureArrow } from "./Icon.js";
-import { supportsPopover, type FocusableProps } from "./~utils.js";
+import { forwardRef, supportsPopover, type FocusableProps } from "./~utils.js";
 
 // ----------------------------------------------------------------------------
 
@@ -19,19 +20,24 @@ interface DropdownMenuProps
 	> {}
 
 /**
- * Dropdown menu component displays a list of actions or commands.
+ * A dropdown menu displays a list of actions or commands when the menu button is clicked.
  *
+ * `DropdownMenu` is a compound component with subcomponents exposed for different parts.
+ *
+ * Example:
  * ```tsx
  * <DropdownMenu.Root>
- *		<DropdownMenu.Button>Actions</DropdownMenu.Button>
+ *   <DropdownMenu.Button>Actions</DropdownMenu.Button>
  *
- *		<DropdownMenu.Content>
- *			<DropdownMenu.Item>Add</DropdownMenu.Item>
- *			<DropdownMenu.Item>Edit</DropdownMenu.Item>
- *			<DropdownMenu.Item>Delete</DropdownMenu.Item>
- *		</DropdownMenu.Content>
+ *   <DropdownMenu.Content>
+ *     <DropdownMenu.Item>Add</DropdownMenu.Item>
+ *     <DropdownMenu.Item>Edit</DropdownMenu.Item>
+ *     <DropdownMenu.Item>Delete</DropdownMenu.Item>
+ *   </DropdownMenu.Content>
  * </DropdownMenu.Root>
  * ```
+ *
+ * **Note**: `DropdownMenu` should not be used for navigation; it is only intended for actions.
  */
 function DropdownMenu(props: DropdownMenuProps) {
 	const {
@@ -43,8 +49,8 @@ function DropdownMenu(props: DropdownMenuProps) {
 	} = props;
 
 	const store = Ariakit.useMenuStore();
-	const open = Ariakit.useStoreState(store, (store) => store.open);
-	const popover = Ariakit.useStoreState(store, (store) => store.popoverElement);
+	const open = Ariakit.useStoreState(store, (state) => state.open);
+	const popover = Ariakit.useStoreState(store, (state) => state.popoverElement);
 
 	React.useEffect(
 		function syncPopoverWithOpenState() {
@@ -73,67 +79,131 @@ DEV: DropdownMenu.displayName = "DropdownMenu.Root";
 
 interface DropdownMenuContentProps extends FocusableProps {}
 
-const DropdownMenuContent = React.forwardRef<
-	React.ElementRef<typeof Ariakit.Menu>,
-	DropdownMenuContentProps
->((props, forwardedRef) => {
-	return (
-		<Ariakit.Menu
-			portal={!supportsPopover}
-			unmountOnHide
-			{...props}
-			style={{ zIndex: supportsPopover ? undefined : 9999, ...props.style }}
-			wrapperProps={{ popover: "manual" } as React.ComponentProps<"div">}
-			className={cx("🥝-dropdown-menu", props.className)}
-			ref={forwardedRef}
-		/>
-	);
-});
+/**
+ * The actual "menu" portion containing the items shown within the dropdown.
+ *
+ * Should be used as a child of `DropdownMenu.Root`.
+ */
+const DropdownMenuContent = forwardRef<"div", DropdownMenuContentProps>(
+	(props, forwardedRef) => {
+		return (
+			<Ariakit.Menu
+				portal={!supportsPopover}
+				unmountOnHide
+				{...props}
+				style={{ zIndex: supportsPopover ? undefined : 9999, ...props.style }}
+				wrapperProps={{ popover: "manual" }}
+				className={cx("🥝-dropdown-menu", props.className)}
+				ref={forwardedRef}
+			/>
+		);
+	},
+);
 DEV: DropdownMenuContent.displayName = "DropdownMenu.Content";
 
 // ----------------------------------------------------------------------------
 
 interface DropdownMenuButtonProps extends FocusableProps<"button"> {}
 
-const DropdownMenuButton = React.forwardRef<
-	React.ElementRef<typeof Ariakit.MenuButton>,
-	DropdownMenuButtonProps
->((props, forwardedRef) => {
-	const { accessibleWhenDisabled = true, children, ...rest } = props;
-	return (
-		<Ariakit.MenuButton
-			accessibleWhenDisabled
-			render={
-				<Button accessibleWhenDisabled={accessibleWhenDisabled}>
-					{children}
-					<DisclosureArrow />
-				</Button>
-			}
-			{...rest}
-			className={cx("🥝-dropdown-menu-button", props.className)}
-			ref={forwardedRef as Ariakit.MenuButtonProps["ref"]}
-		/>
-	);
-});
+/**
+ * The button that triggers the dropdown menu to open.  Should be used as a child of `DropdownMenu.Root`.
+ *
+ * Example:
+ * ```tsx
+ * <DropdownMenu.Button>Actions</DropdownMenu.Button>
+ * ```
+ *
+ * By default it will render a solid `Button` with a disclosure arrow. This can be
+ * customized by passing a `render` prop.
+ *
+ * ```tsx
+ * <DropdownMenu.Button
+ *   render={<IconButton variant="ghost" label="More" icon={<Icon href={…} />}  />}
+ * />
+ * ```
+ */
+const DropdownMenuButton = forwardRef<"button", DropdownMenuButtonProps>(
+	(props, forwardedRef) => {
+		const { accessibleWhenDisabled = true, children, ...rest } = props;
+		return (
+			<Ariakit.MenuButton
+				accessibleWhenDisabled
+				render={
+					<Button accessibleWhenDisabled={accessibleWhenDisabled}>
+						{children}
+						<DisclosureArrow />
+					</Button>
+				}
+				{...rest}
+				className={cx("🥝-dropdown-menu-button", props.className)}
+				ref={forwardedRef}
+			/>
+		);
+	},
+);
 DEV: DropdownMenuButton.displayName = "DropdownMenu.Button";
 
 // ----------------------------------------------------------------------------
 
-interface DropdownMenuItemProps extends FocusableProps {}
+interface DropdownMenuItemProps extends FocusableProps {
+	/**
+	 * A string defining the keyboard shortcut(s) associated with the menu item.
+	 *
+	 * ```tsx
+	 * shortcuts="S" // A single key shortcut
+	 * ```
+	 *
+	 * Multiple keys should be separated by the '+' character.
+	 *
+	 * ```tsx
+	 * shortcuts="Ctrl+Shift+S" // A multi-key combination
+	 * ```
+	 */
+	shortcuts?: string;
+}
 
-const DropdownMenuItem = React.forwardRef<
-	React.ElementRef<typeof Ariakit.MenuItem>,
-	DropdownMenuItemProps
->((props, forwardedRef) => {
-	return (
-		<Ariakit.MenuItem
-			accessibleWhenDisabled
-			{...props}
-			render={<ListItem.Root render={props.render} />}
-			ref={forwardedRef}
-		/>
-	);
-});
+/**
+ * A single menu item within the dropdown menu. Should be used as a child of `DropdownMenu.Content`.
+ *
+ * Example:
+ * ```tsx
+ * <DropdownMenu.Item>Add</DropdownMenu.Item>
+ * <DropdownMenu.Item>Edit</DropdownMenu.Item>
+ * ```
+ */
+const DropdownMenuItem = forwardRef<"div", DropdownMenuItemProps>(
+	(props, forwardedRef) => {
+		const { shortcuts, ...rest } = props;
+
+		const shortcutKeys = React.useMemo(() => {
+			return typeof shortcuts === "string"
+				? shortcuts.split("+").map((key) => key.trim())
+				: [];
+		}, [shortcuts]);
+
+		const hasShortcuts = shortcutKeys.length > 0;
+
+		return (
+			<Ariakit.MenuItem
+				accessibleWhenDisabled
+				{...rest}
+				render={<ListItem.Root render={props.render} />}
+				ref={forwardedRef}
+			>
+				<ListItem.Content>{props.children}</ListItem.Content>
+				{hasShortcuts && (
+					<span className={"🥝-dropdown-menu-item-shortcuts"}>
+						{shortcutKeys.map((key, index) => (
+							<Kbd variant="ghost" key={`${key + index}`}>
+								{key}
+							</Kbd>
+						))}
+					</span>
+				)}
+			</Ariakit.MenuItem>
+		);
+	},
+);
 DEV: DropdownMenuItem.displayName = "DropdownMenu.Item";
 
 // ----------------------------------------------------------------------------

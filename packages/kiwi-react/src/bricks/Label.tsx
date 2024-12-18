@@ -2,18 +2,34 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-import * as React from "react";
 import cx from "classnames";
 import * as Ariakit from "@ariakit/react";
 import { useFieldId } from "./Field.js";
-import type { BaseProps } from "./~utils.js";
+import { forwardRef, type BaseProps } from "./~utils.js";
 
 interface LabelProps extends BaseProps<"label"> {}
 
-export const Label = React.forwardRef<
-	React.ElementRef<typeof Ariakit.Role.label>,
-	LabelProps
->((props, forwardedRef) => {
+/**
+ * A styled wrapper over the HTML `<label>` element, used for labelling form controls.
+ * 
+ * Can be used standalone:
+
+ * ```tsx
+ * <Label htmlFor="my-input">Label</Label>
+ * <TextBox.Input id="my-input" />
+ * ```
+ * 
+ * Or within a `Field` component to automatically manage ID associations:
+ * 
+ * ```tsx
+ * <Field>
+ *   <Label>Label</Label>
+ *   <TextBox.Input />
+ * </Field>
+ * ```
+ * 
+ */
+export const Label = forwardRef<"label", LabelProps>((props, forwardedRef) => {
 	const fieldId = useFieldId();
 
 	return (

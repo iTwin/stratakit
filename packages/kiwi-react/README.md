@@ -1,4 +1,4 @@
-# @itwin/kiwi-react
+# @itwin/itwinui-react
 
 A React component library for the Kiwi design system.
 
@@ -7,7 +7,7 @@ A React component library for the Kiwi design system.
 To use components from the Kiwi design system in your app, you’ll need to wrap your app’s UI with Kiwi’s `<Root>` component, and specify the required `colorScheme` and `density` props:
 
 ```jsx
-import { Root } from "@itwin/kiwi-react/bricks";
+import { Root } from "@itwin/itwinui-react/bricks";
 
 export function App() {
 	return (
@@ -20,7 +20,7 @@ export function App() {
 
 This will ensure Kiwi’s styles are loaded to either the document or the encompassing shadow root.
 
-Once that’s in place you can import and use components from `@itwin/kiwi-react/bricks`.
+Once that’s in place you can import and use components from `@itwin/itwinui-react/bricks`.
 
 ## Contributing
 

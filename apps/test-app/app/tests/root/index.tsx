@@ -2,53 +2,54 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-import { Button, Root } from "@itwin/kiwi-react/bricks";
-import { useCallback, useEffect, useMemo, useState } from "react";
-import { createPortal } from "react-dom";
-import { useColorScheme } from "~/~utils.tsx";
+import * as React from "react";
+import * as ReactDOM from "react-dom";
+import { Button, Root } from "@itwin/itwinui-react/bricks";
+import { definePage, useColorScheme } from "~/~utils.tsx";
 
-export const handle = { title: "Root" };
+export const handle = { title: "Root", rootTest: true };
 
-export default function Page() {
+export default definePage(function Page({ synchronizeColorScheme = true }) {
 	const popout = usePopout();
 	const colorScheme = useColorScheme();
 
 	return (
-		<>
+		<Root
+			colorScheme={colorScheme}
+			synchronizeColorScheme={!!synchronizeColorScheme}
+			density="dense"
+		>
 			<LightAndShadowButtons />
 
 			<Button onClick={() => popout.open()}>Open popout</Button>
 
 			{popout.popout &&
-				createPortal(
+				ReactDOM.createPortal(
 					<Root
 						colorScheme={colorScheme}
+						synchronizeColorScheme
 						density="dense"
-						style={{
-							minBlockSize: "100dvb",
-							backgroundColor: "var(--kiwi-color-bg-surface-primary)",
-						}}
 					>
 						<LightAndShadowButtons />
 					</Root>,
 					popout.popout.document.body,
 				)}
-		</>
+		</Root>
 	);
-}
+});
 
 // ----------------------------------------------------------------------------
 
 function LightAndShadowButtons() {
-	const [host, setHost] = useState<HTMLElement | null>(null);
-	const shadow = useShadow(useCallback(() => host, [host]));
+	const [host, setHost] = React.useState<HTMLElement | null>(null);
+	const shadow = useShadow(React.useCallback(() => host, [host]));
 	const colorScheme = useColorScheme();
 
 	return (
 		<div style={{ display: "flex", gap: 4 }} ref={setHost}>
 			<Button>Button (light)</Button>
 			{shadow &&
-				createPortal(
+				ReactDOM.createPortal(
 					<Root colorScheme={colorScheme} density="dense">
 						<Button>Button (shadow)</Button>
 					</Root>,
@@ -61,10 +62,10 @@ function LightAndShadowButtons() {
 // ----------------------------------------------------------------------------
 
 function useShadow(getHost: () => HTMLElement | null) {
-	const [shadow, setShadow] = useState<ShadowRoot | null>(null);
+	const [shadow, setShadow] = React.useState<ShadowRoot | null>(null);
 	const host = getHost();
 
-	useEffect(() => {
+	React.useEffect(() => {
 		if (!host) return;
 		if (!host.shadowRoot) {
 			host
@@ -80,12 +81,24 @@ function useShadow(getHost: () => HTMLElement | null) {
 // ----------------------------------------------------------------------------
 
 function usePopout() {
-	const [popout, setPopout] = useState<Window | null>(null);
+	const [popout, setPopout] = React.useState<Window | null>(null);
 
-	const open = useCallback(() => {
-		const popout = window.open("", "popout", "width=400,height=400");
-		setPopout(popout);
+	const open = React.useCallback(() => {
+		// Create an object URL from a blob of an HTML document with the correct
+		// doctype and charset
+		const bytes = new TextEncoder().encode(
+			"<!doctype html><meta charset=utf-8>",
+		);
+		const url = URL.createObjectURL(new Blob([bytes], { type: "text/html" }));
+
+		// We need to open a document since otherwise it opens in Quirks mode
+		const popout = window.open(url, "popout", "width=400,height=400");
+		URL.revokeObjectURL(url);
+
+		if (!popout) return;
+		// Wait for it to load before modifying
+		popout.onload = () => setPopout(popout);
 	}, []);
 
-	return useMemo(() => ({ open, popout }), [open, popout]);
+	return React.useMemo(() => ({ open, popout }), [open, popout]);
 }

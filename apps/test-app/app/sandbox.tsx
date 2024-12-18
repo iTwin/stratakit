@@ -15,7 +15,7 @@ import {
 	VisuallyHidden,
 } from "@itwin/itwinui-react/bricks";
 import * as Tree from "@itwin/itwinui-react-internal/src/bricks/Tree.js";
-import type { MetaFunction } from "react-router";
+import { useSearchParams, type MetaFunction } from "react-router";
 import placeholderIcon from "@itwin/itwinui-icons/placeholder.svg";
 import searchIcon from "@itwin/itwinui-icons/search.svg";
 import panelLeftIcon from "@itwin/itwinui-icons/panel-left.svg";
@@ -23,6 +23,7 @@ import filterIcon from "@itwin/itwinui-icons/filter.svg";
 import dismissIcon from "@itwin/itwinui-icons/dismiss.svg";
 import lockIcon from "@itwin/itwinui-icons/lock.svg";
 import showIcon from "@itwin/itwinui-icons/visibility-show.svg";
+import moreIcon from "@itwin/itwinui-icons/more-horizontal.svg";
 import hideIcon from "@itwin/itwinui-icons/visibility-hide.svg";
 import dotIcon from "@itwin/itwinui-icons/state-inherited-dot.svg";
 
@@ -360,6 +361,8 @@ const SandboxTreeContext = React.createContext<{
 });
 
 function SandboxTree() {
+	const [searchParams] = useSearchParams();
+	const tree = searchParams.get("tree"); // for handling ?tree=complex
 	const [selected, setSelected] = React.useState<string | undefined>();
 	const [hidden, setHidden] = React.useState<string[]>([]);
 	const toggleHidden = React.useCallback((id: string) => {
@@ -378,54 +381,136 @@ function SandboxTree() {
 			)}
 		>
 			<Tree.Root className={styles.tree}>
-				<TreeItem label="Guides">
-					<TreeItem label="Tree" actions>
-						<TreeItem label="Guide 4" />
-						<TreeItem label="Guide 3" />
-						<TreeItem label="Guide 2" />
-						<TreeItem label="Guide 1" />
-					</TreeItem>
-				</TreeItem>
-				<TreeItem label="Other">
-					<TreeItem label="Object 2" actions>
-						<TreeItem label="Path 3" />
-					</TreeItem>
-					<TreeItem label="Object 1" />
-				</TreeItem>
-				<TreeItem label="Road">
-					<TreeItem label="Parking lot access" />
-					<TreeItem label="Site access" />
-				</TreeItem>
-				<TreeItem label="Parking lot" actions>
-					<TreeItem label="Parking area" actions>
-						<TreeItem label="Bay point 2" />
-						<TreeItem label="Bay point 1" actions />
-						<TreeItem label="Space point 1" actions />
-						<TreeItem label="Path 6" />
-					</TreeItem>
-				</TreeItem>
-				<TreeItem label="Building">
-					<TreeItem label="Building area">
-						<TreeItem label="Path 5" />
-					</TreeItem>
-				</TreeItem>
-				<TreeItem label="Sewer">
-					<TreeItem label="Run off pipe">
-						<TreeItem label="Path 4" />
-					</TreeItem>
-				</TreeItem>
-				<TreeItem label="Project boundary">
-					<TreeItem label="Property area">
-						<TreeItem label="Path 1" />
-					</TreeItem>
-				</TreeItem>
-				<TreeItem label="Map">
-					<TreeItem label="Location">
-						<TreeItem label="Terrain" />
-					</TreeItem>
-				</TreeItem>
+				{tree === "complex" ? <ComplexTreeItems /> : <IdealTreeItems />}
 			</Tree.Root>
 		</SandboxTreeContext.Provider>
+	);
+}
+
+function IdealTreeItems() {
+	return (
+		<>
+			<TreeItem label="Guides">
+				<TreeItem label="Tree" actions>
+					<TreeItem label="Guide 4" />
+					<TreeItem label="Guide 3" />
+					<TreeItem label="Guide 2" />
+					<TreeItem label="Guide 1" />
+				</TreeItem>
+			</TreeItem>
+			<TreeItem label="Other">
+				<TreeItem label="Object 2" actions>
+					<TreeItem label="Path 3" />
+				</TreeItem>
+				<TreeItem label="Object 1" />
+			</TreeItem>
+			<TreeItem label="Road">
+				<TreeItem label="Parking lot access" />
+				<TreeItem label="Site access" />
+			</TreeItem>
+			<TreeItem label="Parking lot" actions>
+				<TreeItem label="Parking area" actions>
+					<TreeItem label="Bay point 2" />
+					<TreeItem label="Bay point 1" actions />
+					<TreeItem label="Space point 1" actions />
+					<TreeItem label="Path 6" />
+				</TreeItem>
+			</TreeItem>
+			<TreeItem label="Building">
+				<TreeItem label="Building area">
+					<TreeItem label="Path 5" />
+				</TreeItem>
+			</TreeItem>
+			<TreeItem label="Sewer">
+				<TreeItem label="Run off pipe">
+					<TreeItem label="Path 4" />
+				</TreeItem>
+			</TreeItem>
+			<TreeItem label="Project boundary">
+				<TreeItem label="Property area">
+					<TreeItem label="Path 1" />
+				</TreeItem>
+			</TreeItem>
+			<TreeItem label="Map">
+				<TreeItem label="Location">
+					<TreeItem label="Terrain" />
+				</TreeItem>
+			</TreeItem>
+		</>
+	);
+}
+
+function ComplexTreeItems() {
+	return (
+		<>
+			<TreeItem label="ITC_Master">
+				<TreeItem label="002_Substation" defaultCollapsed>
+					<TreeItem label="002_Substation_A" />
+				</TreeItem>
+				<TreeItem
+					label="005-BENROAD-00-XX-M3-D-00003.dgn"
+					actions
+					defaultCollapsed
+				>
+					<TreeItem label="005-BENROAD-00-XX-M3-D-00003-A" />
+				</TreeItem>
+				<TreeItem
+					label="005-BENROAD-00-XX-M3-D-00005.dgn"
+					actions
+					defaultCollapsed
+				>
+					<TreeItem label="005-BENROAD-00-XX-M3-D-00005-A" />
+				</TreeItem>
+				<TreeItem label="005-BENROAD-00-XX-M3-G-00002.dgn" defaultCollapsed>
+					<TreeItem label="005-BENROAD-00-XX-M3-G-00002-A" actions />
+				</TreeItem>
+				<TreeItem label="005-BENROAD-00-XX-M3-G-00003.dgn" defaultCollapsed>
+					<TreeItem label="005-BENROAD-00-XX-M3-G-00003-A" />
+				</TreeItem>
+				<TreeItem label="007-aa_master.dgn">
+					<TreeItem label="A-CLNG-LITE" defaultCollapsed>
+						<TreeItem label="A-CLNG-LITE-A" />
+					</TreeItem>
+					<TreeItem label="A-CLNG-TILE">
+						<TreeItem label="A-DOOR-2D-PLAN">
+							<TreeItem label="P00003 [2-KA62]" actions>
+								<TreeItem label="Cell [2-KA63]">
+									<TreeItem label="Cell [2-KA64]">
+										<TreeItem label="Complex Chain [2-KA6A]" />
+										<TreeItem label="Complex Chain [2-KA6B]" actions />
+										<TreeItem label="Complex Chain [2-KA6C]" actions />
+										<TreeItem label="Complex Chain [2-KA6D]" actions />
+										<TreeItem label="Complex Chain [2-KA6E]" />
+										<TreeItem label="Complex Chain [2-KA6F]" />
+										<TreeItem label="Complex Chain [2-KA6G]" />
+										<TreeItem label="Complex Chain [2-KA6H]" />
+										<TreeItem label="Complex Chain [2-KA61]" />
+										<TreeItem label="Complex Chain [2-KA65]" />
+										<TreeItem label="Complex Chain [2-KA66]" />
+										<TreeItem label="Complex Chain [2-KA67]" />
+										<TreeItem label="Complex Chain [2-KA68]" />
+										<TreeItem label="Complex Chain [2-KA69]" />
+									</TreeItem>
+								</TreeItem>
+							</TreeItem>
+							<TreeItem label="P00003 [2-KA74]" defaultCollapsed>
+								<TreeItem label="P00003 [2-KA74-A]" />
+							</TreeItem>
+							<TreeItem label="P00003 [2-KA86]" defaultCollapsed>
+								<TreeItem label="P00003 [2-KA74-A]" />
+							</TreeItem>
+							<TreeItem label="P00003 [2-KA98]" defaultCollapsed>
+								<TreeItem label="P00003 [2-KA98-A]" />
+							</TreeItem>
+							<TreeItem label="P00003 [2-KAAA]" defaultCollapsed>
+								<TreeItem label="P00003 [2-KAAA-A]" />
+							</TreeItem>
+						</TreeItem>
+					</TreeItem>
+				</TreeItem>
+			</TreeItem>
+			<TreeItem label="ITC_Main" actions />
+		</>
 	);
 }
 
@@ -437,13 +522,16 @@ const SandboxParentItemContext = React.createContext<{
 type TreeItemProps = React.PropsWithChildren<{
 	label?: string;
 	actions?: boolean;
+	defaultCollapsed?: boolean;
 }>;
 
 function TreeItem(props: TreeItemProps) {
 	const treeContext = React.useContext(SandboxTreeContext);
 	const parentContext = React.useContext(SandboxParentItemContext);
 	const id = React.useId();
-	const [expanded, setExpanded] = React.useState(true);
+	const [expanded, setExpanded] = React.useState(
+		props.defaultCollapsed === undefined ? true : !props.defaultCollapsed,
+	);
 	const isParentNode = React.Children.count(props.children) > 0;
 	const hidden = React.useMemo(() => {
 		if (parentContext.hidden) return true;
@@ -500,6 +588,7 @@ function TreeItem(props: TreeItemProps) {
 									}}
 								/>
 							)}
+							<TreeMoreActions hidden={!props.actions || hidden} />
 						</div>
 					</>
 				}
@@ -509,6 +598,32 @@ function TreeItem(props: TreeItemProps) {
 				{expanded ? props.children : undefined}
 			</Tree.Item>
 		</SandboxParentItemContext.Provider>
+	);
+}
+
+function TreeMoreActions({ hidden }: { hidden?: boolean }) {
+	return (
+		<DropdownMenu.Root>
+			<DropdownMenu.Button
+				className={styles.action}
+				aria-hidden={hidden}
+				render={<IconButton icon={moreIcon} label="More" variant="ghost" />}
+			/>
+			<DropdownMenu.Content style={{ minInlineSize: 164 }}>
+				<DropdownMenu.Item shortcuts="⌘+C">Copy</DropdownMenu.Item>
+				<DropdownMenu.Item shortcuts="⌘+P">Paste</DropdownMenu.Item>
+				<DropdownMenu.Item shortcuts="⌘+V">Copy/Paste as</DropdownMenu.Item>
+				<DropdownMenu.Item shortcuts="⌘+M">Move to</DropdownMenu.Item>
+				<DropdownMenu.Item shortcuts="]">Bring to front</DropdownMenu.Item>
+				<DropdownMenu.Item shortcuts="[">Send to back</DropdownMenu.Item>
+				<DropdownMenu.Item shortcuts="⌘+G">Group selection</DropdownMenu.Item>
+				<DropdownMenu.Item shortcuts="⌘+U">Ungroup</DropdownMenu.Item>
+				<DropdownMenu.Item shortcuts="⌘+R">Rename</DropdownMenu.Item>
+				<DropdownMenu.Item shortcuts="⇧+⌘+V">Show/hide</DropdownMenu.Item>
+				<DropdownMenu.Item shortcuts="⇧+⌘+L">Lock/unlock</DropdownMenu.Item>
+				<DropdownMenu.Item shortcuts="I">Isolate object</DropdownMenu.Item>
+			</DropdownMenu.Content>
+		</DropdownMenu.Root>
 	);
 }
 

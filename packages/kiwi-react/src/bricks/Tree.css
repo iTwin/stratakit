@@ -83,6 +83,11 @@
 	}
 }
 
+.🥝-tree-item-actions {
+	display: flex;
+	gap: 4px;
+}
+
 .🥝-tree-chevron {
 	@layer base {
 		rotate: var(--🥝tree-chevron-rotate);

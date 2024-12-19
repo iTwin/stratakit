@@ -566,7 +566,11 @@ function TreeItem(props: TreeItemProps) {
 						>
 							{props.label}
 						</Tree.Content>
-						<div style={{ display: "flex", gap: 4 }}>
+					</>
+				}
+				actions={
+					actionsVisible ? (
+						<Tree.Actions>
 							<IconButton
 								className={styles.action}
 								icon={lockIcon}
@@ -591,10 +595,9 @@ function TreeItem(props: TreeItemProps) {
 								/>
 							)}
 							<TreeMoreActions hidden={!props.actions || hidden} />
-						</div>
-					</>
+						</Tree.Actions>
+					) : undefined
 				}
-				actions={actionsVisible ? true : undefined}
 				expanded={isParentNode ? expanded : undefined}
 				selected={selected}
 			>

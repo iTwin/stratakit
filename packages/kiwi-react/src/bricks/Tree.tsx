@@ -96,6 +96,7 @@ const TreeItem = forwardRef<"div", TreeItemProps>((props, forwardedRef) => {
 					role={undefined}
 				>
 					{content}
+					{actions}
 				</ListItem.Root>
 				{children && <div role="list">{children}</div>}
 			</div>
@@ -103,6 +104,25 @@ const TreeItem = forwardRef<"div", TreeItemProps>((props, forwardedRef) => {
 	);
 });
 DEV: TreeItem.displayName = "Tree.Item";
+
+// ----------------------------------------------------------------------------
+
+interface TreeItemActionsProps extends BaseProps {}
+
+const TreeItemActions = forwardRef<"div", TreeItemActionsProps>(
+	(props, forwardedRef) => {
+		return (
+			<Ariakit.Role.div
+				{...props}
+				className={cx("🥝-tree-item-actions", props.className)}
+				ref={forwardedRef}
+			>
+				{props.children}
+			</Ariakit.Role.div>
+		);
+	},
+);
+DEV: TreeItemActions.displayName = "Tree.Actions";
 
 // ----------------------------------------------------------------------------
 
@@ -209,4 +229,5 @@ export {
 	TreeItem as Item,
 	TreeItemExpander as Expander,
 	TreeItemContent as Content,
+	TreeItemActions as Actions,
 };

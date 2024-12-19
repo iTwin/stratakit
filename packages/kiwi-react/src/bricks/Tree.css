@@ -7,14 +7,6 @@
 		overflow: auto;
 		flex-grow: 1;
 	}
-
-	@layer modifiers {
-		&[data-kiwi-scroll="both"] {
-			> [role="list"] {
-				min-inline-size: max-content;
-			}
-		}
-	}
 }
 
 .🥝-tree-item:is(.🥝-list-item) {

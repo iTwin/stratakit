@@ -12,20 +12,17 @@ import { forwardRef, type BaseProps } from "./~utils.js";
 
 // ----------------------------------------------------------------------------
 
-interface TreeProps extends BaseProps {
-	scroll: "vertical" | "both";
-}
+interface TreeProps extends BaseProps {}
 
 const Tree = forwardRef<"div", TreeProps>((props, forwardedRef) => {
-	const { scroll, ...rest } = props;
 	return (
 		<Ariakit.Role.div
-			{...rest}
-			data-kiwi-scroll={scroll}
+			{...props}
 			className={cx("🥝-tree", props.className)}
+			role="list"
 			ref={forwardedRef}
 		>
-			<div role="list">{props.children}</div>
+			{props.children}
 		</Ariakit.Role.div>
 	);
 });

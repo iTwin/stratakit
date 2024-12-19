@@ -362,7 +362,6 @@ const SandboxTreeContext = React.createContext<{
 
 function SandboxTree() {
 	const [searchParams] = useSearchParams();
-	const scroll = searchParams.get("scroll"); // for handling ?scroll=both
 	const tree = searchParams.get("tree"); // for handling ?tree=complex
 	const [selected, setSelected] = React.useState<string | undefined>();
 	const [hidden, setHidden] = React.useState<string[]>([]);
@@ -381,7 +380,7 @@ function SandboxTree() {
 				[hidden, selected, toggleHidden],
 			)}
 		>
-			<Tree.Root scroll={scroll === "both" ? "both" : "vertical"}>
+			<Tree.Root>
 				{tree === "complex" ? <ComplexTreeItems /> : <IdealTreeItems />}
 			</Tree.Root>
 		</SandboxTreeContext.Provider>

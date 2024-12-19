@@ -8,16 +8,23 @@ import styles from "./index.module.css";
 
 export const handle = { title: "Progress" };
 
+const sizes = ["small", "medium", "large", "xlarge"] as const;
+const tones = ["neutral", "accent"] as const;
+
 export default definePage(
 	function Page({ size = "medium", tone = "neutral" }) {
-		return <Progress variant="radial" size={size} tone={tone} />;
+		return (
+			<Progress
+				variant="radial"
+				size={size as (typeof sizes)[number]}
+				tone={tone as (typeof tones)[number]}
+			/>
+		);
 	},
 	{ visual: VisualTest },
 );
 
 function VisualTest({ paused = false }) {
-	const tones = ["neutral", "accent"] as const;
-
 	return (
 		<div
 			style={{ display: "grid", gap: 4 }}

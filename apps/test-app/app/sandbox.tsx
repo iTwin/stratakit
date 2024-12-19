@@ -119,9 +119,8 @@ function EmptyTreeState() {
 					height: "100%",
 				}}
 			>
-				<h3>Title</h3>
-				<p>Description</p>
-				<Button>CTA</Button>
+				<p>No layers</p>
+				<Button>Create a layer</Button>
 			</div>
 		</>
 	);

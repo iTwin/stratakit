@@ -18,6 +18,7 @@
 		position: relative;
 		isolation: isolate;
 
+		min-inline-size: max-content;
 		padding-inline-start: calc(
 			var(--✨first-level-indent) +
 			var(--✨subsequent-level-indent) *

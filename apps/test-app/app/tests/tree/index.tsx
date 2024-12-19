@@ -67,23 +67,25 @@ function TreeItem({
 					<Tree.Expander />
 					<Icon href={placeholderIcon} />
 					<Tree.Content>{label}</Tree.Content>
-					<div style={{ display: "flex", gap: 4, marginInlineStart: "auto" }}>
-						<IconButton
-							icon={unlockIcon}
-							label="Unlock"
-							variant="ghost"
-							aria-hidden={!actions}
-							style={{ visibility: actions ? undefined : "hidden" }}
-						/>
-						<IconButton
-							icon={showIcon}
-							label="Show"
-							variant="ghost"
-							aria-hidden={!actions}
-							style={{ visibility: actions ? undefined : "hidden" }}
-						/>
-					</div>
 				</>
+			}
+			actions={
+				<div style={{ display: "flex", gap: 4 }}>
+					<IconButton
+						icon={unlockIcon}
+						label="Unlock"
+						variant="ghost"
+						aria-hidden={!actions}
+						style={{ visibility: actions ? undefined : "hidden" }}
+					/>
+					<IconButton
+						icon={showIcon}
+						label="Show"
+						variant="ghost"
+						aria-hidden={!actions}
+						style={{ visibility: actions ? undefined : "hidden" }}
+					/>
+				</div>
 			}
 			selected={selected}
 		>

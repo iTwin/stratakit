@@ -15,34 +15,56 @@ import { forwardRef, type BaseProps } from "./~utils.js";
 interface TreeProps extends BaseProps {}
 
 const Tree = forwardRef<"div", TreeProps>((props, forwardedRef) => {
+	const [scrollLeft, setScrollLeft] = React.useState(0);
 	return (
-		<Ariakit.Role.div
-			{...props}
-			className={cx("🥝-tree", props.className)}
-			role="list"
-			ref={forwardedRef}
+		<TreeContext.Provider
+			value={React.useMemo(() => ({ scrollLeft }), [scrollLeft])}
 		>
-			{props.children}
-		</Ariakit.Role.div>
+			<Ariakit.Role.div
+				{...props}
+				className={cx("🥝-tree", props.className)}
+				role="list"
+				ref={forwardedRef}
+				onScroll={(e) => {
+					const el = e.currentTarget;
+					setScrollLeft(el.scrollLeft);
+					props.onScroll?.(e);
+				}}
+			>
+				{props.children}
+			</Ariakit.Role.div>
+		</TreeContext.Provider>
 	);
 });
 DEV: Tree.displayName = "Tree.Root";
 
 // ----------------------------------------------------------------------------
+
 interface TreeItemProps extends Omit<BaseProps, "content"> {
 	content?: React.ReactNode;
+	actions?: React.ReactNode;
 	selected?: boolean;
 	/** Specifies if the tree item is expanded. Used to determine if a tree item is a parent node. Defaults to `undefined`. */
 	expanded?: boolean;
 }
 
 const TreeItem = forwardRef<"div", TreeItemProps>((props, forwardedRef) => {
-	const { selected, content, children, className, expanded, style, ...rest } =
-		props;
+	const {
+		selected,
+		content,
+		children,
+		className,
+		expanded,
+		style,
+		actions,
+		...rest
+	} = props;
 
+	const treeContext = React.useContext(TreeContext);
 	const parentContext = React.useContext(TreeItemContext);
 	const level = parentContext ? parentContext.level + 1 : 1;
 	const firstSelected = !!selected && !parentContext?.selected; // TODO: temporary, only works with single selection
+	const scrollLeft = treeContext?.scrollLeft ?? 0;
 	return (
 		<TreeItemContext.Provider
 			value={React.useMemo(
@@ -63,6 +85,9 @@ const TreeItem = forwardRef<"div", TreeItemProps>((props, forwardedRef) => {
 					className={cx("🥝-tree-item", className)}
 					style={
 						{
+							minInlineSize: actions
+								? `calc(100% + ${scrollLeft}px)`
+								: undefined,
 							...style,
 							"--🥝tree-item-level": level,
 						} as React.CSSProperties
@@ -156,6 +181,15 @@ const TreeChevron = forwardRef<"svg", TreeChevronProps>(
 	},
 );
 DEV: TreeChevron.displayName = "TreeChevron";
+
+// ----------------------------------------------------------------------------
+
+const TreeContext = React.createContext<
+	| {
+			scrollLeft: number;
+	  }
+	| undefined
+>(undefined);
 
 // ----------------------------------------------------------------------------
 

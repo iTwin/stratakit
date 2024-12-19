@@ -544,6 +544,8 @@ function TreeItem(props: TreeItemProps) {
 			return id;
 		});
 	}, [id, treeContext]);
+
+	const actionsVisible = props.actions || hidden;
 	return (
 		<SandboxParentItemContext.Provider
 			value={React.useMemo(() => ({ selected, hidden }), [hidden, selected])}
@@ -564,7 +566,7 @@ function TreeItem(props: TreeItemProps) {
 						>
 							{props.label}
 						</Tree.Content>
-						<div style={{ display: "flex", gap: 4, marginInlineStart: "auto" }}>
+						<div style={{ display: "flex", gap: 4 }}>
 							<IconButton
 								className={styles.action}
 								icon={lockIcon}
@@ -592,6 +594,7 @@ function TreeItem(props: TreeItemProps) {
 						</div>
 					</>
 				}
+				actions={actionsVisible ? true : undefined}
 				expanded={isParentNode ? expanded : undefined}
 				selected={selected}
 			>

@@ -15,6 +15,7 @@ export default definePage(
 	function Page({ size = "medium", tone = "neutral" }) {
 		return (
 			<Progress
+				aria-label={`${size}, ${tone} radial`}
 				variant="radial"
 				size={size as (typeof sizes)[number]}
 				tone={tone as (typeof tones)[number]}
@@ -35,10 +36,15 @@ function VisualTest({ paused = false }) {
 					key={tone}
 					style={{ display: "flex", gap: 4, alignItems: "center" }}
 				>
-					<Progress variant="radial" size="small" tone={tone} />
-					<Progress variant="radial" size="medium" tone={tone} />
-					<Progress variant="radial" size="large" tone={tone} />
-					<Progress variant="radial" size="xlarge" tone={tone} />
+					{sizes.map((size) => (
+						<Progress
+							key={size}
+							variant="radial"
+							size={size}
+							tone={tone}
+							aria-label={`${size}, ${tone} radial`}
+						/>
+					))}
 				</div>
 			))}
 		</div>

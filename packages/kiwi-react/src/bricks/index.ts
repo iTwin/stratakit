@@ -15,7 +15,7 @@ export { IconButton } from "./IconButton.js";
 export { Field } from "./Field.js";
 export { Kbd } from "./Kbd.js";
 export { Label } from "./Label.js";
-export { ProgressIndicator } from "./ProgressIndicator.js";
+export { Progress } from "./Progress.js";
 export { Radio } from "./Radio.js";
 export * as Select from "./Select.js";
 export { Switch } from "./Switch.js";

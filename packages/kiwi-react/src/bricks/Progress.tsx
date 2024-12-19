@@ -6,11 +6,22 @@ import * as Ariakit from "@ariakit/react";
 import cx from "classnames";
 import { forwardRef, type BaseProps } from "./~utils.js";
 
-interface ProgressIndicatorProps extends BaseProps {
-	/** @default "medium" */
+interface ProgressProps extends BaseProps {
+	/**
+	 * The variant of the progress indicator.
+	 */
+	variant: "radial";
+
+	/**
+	 * The size of the progress indicator.
+	 * @default "medium"
+	 */
 	size?: "small" | "medium" | "large" | "xlarge";
 
-	/** @default "neutral" */
+	/**
+	 * The tone of the progress indicator.
+	 * @default "neutral"
+	 */
 	tone?: "neutral" | "accent";
 }
 
@@ -19,22 +30,25 @@ interface ProgressIndicatorProps extends BaseProps {
  *
  * Example:
  * ```tsx
- * <ProgressIndicator />
+ * <Progress variant="radial" />
  * ```
  *
  * Supports a `tone` prop to change the tone (color) of the progress indicator.
+ * Supports a `size` prop to change the size of the progress indicator.
  */
-export const ProgressIndicator = forwardRef<"div", ProgressIndicatorProps>(
+export const Progress = forwardRef<"div", ProgressProps>(
 	(props, forwardedRef) => {
-		const { className, size = "medium", tone = "neutral", ...rest } = props;
+		const { size = "medium", tone = "neutral", variant, ...rest } = props;
 
 		return (
 			<Ariakit.Role
 				role="progressbar"
 				data-kiwi-size={size}
 				data-kiwi-tone={tone}
+				data-kiwi-variant={variant}
+				data-kiwi-indeterminate
+				className={cx("🥝-progress", props.className)}
 				{...rest}
-				className={cx("🥝-progress", className)}
 				ref={forwardedRef}
 			>
 				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none">
@@ -48,4 +62,4 @@ export const ProgressIndicator = forwardRef<"div", ProgressIndicatorProps>(
 		);
 	},
 );
-DEV: ProgressIndicator.displayName = "ProgressIndicator";
+DEV: Progress.displayName = "Progress";

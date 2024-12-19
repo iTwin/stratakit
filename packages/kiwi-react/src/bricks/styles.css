@@ -16,7 +16,7 @@
 @import "./Label.css" layer(kiwi.components);
 @import "./Radio.css" layer(kiwi.components);
 @import "./ListItem.css" layer(kiwi.components);
-@import "./ProgressIndicator.css" layer(kiwi.components);
+@import "./Progress.css" layer(kiwi.components);
 @import "./Select.css" layer(kiwi.components);
 @import "./Switch.css" layer(kiwi.components);
 @import "./Tabs.css" layer(kiwi.components);

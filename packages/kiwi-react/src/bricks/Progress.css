@@ -1,0 +1,61 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+
+.🥝-progress {
+	@layer base {
+		display: inline-block;
+		color: var(--🥝progress-color);
+		block-size: var(--🥝progress-size);
+		inline-size: var(--🥝progress-size);
+
+		> svg {
+			block-size: inherit;
+			inline-size: inherit;
+		}
+	}
+
+	@layer modifiers {
+		&:where([data-kiwi-tone="neutral"]) {
+			--🥝progress-color: var(--kiwi-color-icon-neutral-base);
+		}
+
+		&:where([data-kiwi-tone="accent"]) {
+			--🥝progress-color: var(--kiwi-color-icon-accent-strong);
+		}
+
+		&:where([data-kiwi-variant="radial"]) {
+			&:where([data-kiwi-indeterminate]) svg {
+				animation: --🥝radial-indeterminate-rotate 1s linear infinite both;
+
+				@media (prefers-reduced-motion) {
+					animation-timing-function: steps(4, end);
+					animation-duration: 2s;
+				}
+			}
+
+			&:where([data-kiwi-size="small"]) {
+				--🥝progress-size: 1rem;
+			}
+
+			&:where([data-kiwi-size="medium"]) {
+				--🥝progress-size: 1.5rem;
+			}
+
+			&:where([data-kiwi-size="large"]) {
+				--🥝progress-size: 2rem;
+			}
+
+			&:where([data-kiwi-size="xlarge"]) {
+				--🥝progress-size: 3rem;
+			}
+		}
+	}
+}
+
+@keyframes --🥝radial-indeterminate-rotate {
+	to {
+		rotate: 360deg;
+	}
+}

@@ -157,6 +157,15 @@
 	}
 }
 
+.actionIcon {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	block-size: 1.5rem;
+	aspect-ratio: 1;
+}
+
 .slider {
 	display: block;
 	block-size: 100%;

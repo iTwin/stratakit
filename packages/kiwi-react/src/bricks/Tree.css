@@ -79,6 +79,14 @@
 	}
 }
 
+.🥝-tree-item-actions {
+	position: sticky;
+	inset-inline-end: 0;
+
+	display: flex;
+	gap: 4px;
+}
+
 .🥝-tree-item-expander:is(.🥝-icon-button) {
 	@layer base {
 		visibility: var(--🥝tree-item-expander-visibility);

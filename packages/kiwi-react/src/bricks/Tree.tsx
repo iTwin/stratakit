@@ -28,6 +28,7 @@ const Tree = forwardRef<"div", TreeProps>((props, forwardedRef) => {
 DEV: Tree.displayName = "Tree.Root";
 
 // ----------------------------------------------------------------------------
+
 interface TreeItemProps extends Omit<BaseProps, "content"> {
 	content?: React.ReactNode;
 	selected?: boolean;
@@ -97,6 +98,25 @@ const TreeItemContent = forwardRef<"span", TreeItemContentProps>(
 	},
 );
 DEV: TreeItemContent.displayName = "Tree.Content";
+
+// ----------------------------------------------------------------------------
+
+interface TreeItemActionsProps extends BaseProps {}
+
+const TreeItemActions = forwardRef<"div", TreeItemActionsProps>(
+	(props, forwardedRef) => {
+		return (
+			<Ariakit.Role.div
+				{...props}
+				className={cx("🥝-tree-item-actions", props.className)}
+				ref={forwardedRef}
+			>
+				{props.children}
+			</Ariakit.Role.div>
+		);
+	},
+);
+DEV: TreeItemActions.displayName = "Tree.Actions";
 
 // ----------------------------------------------------------------------------
 
@@ -174,4 +194,5 @@ export {
 	TreeItem as Item,
 	TreeItemExpander as Expander,
 	TreeItemContent as Content,
+	TreeItemActions as Actions,
 };

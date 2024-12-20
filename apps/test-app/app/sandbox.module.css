@@ -92,10 +92,6 @@
 	margin-inline-start: auto;
 }
 
-.tree {
-	overflow: auto;
-}
-
 .canvasWrapper {
 	padding-block: 8px;
 	padding-inline-end: 8px;

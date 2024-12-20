@@ -380,7 +380,7 @@ function SandboxTree() {
 				[hidden, selected, toggleHidden],
 			)}
 		>
-			<Tree.Root className={styles.tree}>
+			<Tree.Root>
 				{tree === "complex" ? <ComplexTreeItems /> : <IdealTreeItems />}
 			</Tree.Root>
 		</SandboxTreeContext.Provider>
@@ -564,7 +564,7 @@ function TreeItem(props: TreeItemProps) {
 						>
 							{props.label}
 						</Tree.Content>
-						<div style={{ display: "flex", gap: 4, marginInlineStart: "auto" }}>
+						<div style={{ display: "flex", gap: 4 }}>
 							<IconButton
 								className={styles.action}
 								icon={lockIcon}

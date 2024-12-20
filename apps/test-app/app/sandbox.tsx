@@ -12,6 +12,7 @@ import {
 	DropdownMenu,
 	Icon,
 	IconButton,
+	Text,
 	TextBox,
 	VisuallyHidden,
 } from "@itwin/itwinui-react/bricks";
@@ -111,7 +112,7 @@ function EmptyTreeState() {
 	return (
 		<>
 			<div className={styles.emptyTree}>
-				<p>No layers</p>
+				<Text>No layers</Text>
 				<Button>Create a layer</Button>
 			</div>
 		</>

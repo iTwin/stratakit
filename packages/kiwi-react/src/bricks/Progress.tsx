@@ -42,13 +42,13 @@ export const Progress = forwardRef<"div", ProgressProps>(
 
 		return (
 			<Ariakit.Role
+				{...rest}
 				role="progressbar"
 				data-kiwi-size={size}
 				data-kiwi-tone={tone}
 				data-kiwi-variant={variant}
 				data-kiwi-indeterminate
 				className={cx("🥝-progress", props.className)}
-				{...rest}
 				ref={forwardedRef}
 			>
 				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none">

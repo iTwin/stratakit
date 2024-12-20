@@ -110,15 +110,7 @@ export default function Page() {
 function EmptyTreeState() {
 	return (
 		<>
-			<div
-				style={{
-					display: "flex",
-					flexDirection: "column",
-					justifyContent: "center",
-					alignItems: "center",
-					height: "100%",
-				}}
-			>
+			<div className={styles.emptyTree}>
 				<p>No layers</p>
 				<Button>Create a layer</Button>
 			</div>

@@ -96,6 +96,14 @@
 	overflow: auto;
 }
 
+.emptyTree {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	block-size: 100%;
+}
+
 .canvasWrapper {
 	padding-block: 8px;
 	padding-inline-end: 8px;

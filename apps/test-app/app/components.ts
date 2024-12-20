@@ -15,6 +15,7 @@ export const components = [
 	"Kbd",
 	"List",
 	"Radio",
+	"Select",
 	"Switch",
 	"Tabs",
 	"Text",

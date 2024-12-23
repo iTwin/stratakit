@@ -82,9 +82,14 @@
 .🥝-tree-item-actions {
 	position: sticky;
 	inset-inline-end: 0;
+	background-color: var(--kiwi-color-bg-surface-primary);
 
-	display: flex;
-	gap: 4px;
+	&::before {
+		position: absolute;
+		content: "";
+		inset: 0;
+		background-color: var(--🥝list-item-background-color);
+	}
 }
 
 .🥝-tree-item-expander:is(.🥝-icon-button) {

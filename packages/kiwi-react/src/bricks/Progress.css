@@ -31,7 +31,7 @@
 
 				@media (prefers-reduced-motion) {
 					animation-timing-function: steps(4, end);
-					animation-duration: 2s;
+					animation-duration: 4s;
 				}
 			}
 

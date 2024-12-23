@@ -22,7 +22,8 @@
 	"linter": {
 		"rules": {
 			"correctness": {
-				"noUnusedImports": "info"
+				"noUnusedImports": "info",
+				"noUnusedLabels": "off"
 			},
 			"suspicious": {
 				"noConfusingLabels": "off"

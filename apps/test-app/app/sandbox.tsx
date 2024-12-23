@@ -108,15 +108,12 @@ export default function Page() {
 	);
 }
 
-function EmptyTreeState() {
-	return (
-		<>
-			<div className={styles.emptyTree}>
-				<Text>No layers</Text>
-				<Button>Create a layer</Button>
-			</div>
-		</>
-	);
+/**
+ * Wrapper for empty state content, displayed as a centered vertical flex box.
+ * Accepts any arbitrary content passed as `children`.
+ */
+function EmptyState({ children }: { children: React.ReactNode }) {
+	return <div className={styles.emptyState}>{children}</div>;
 }
 
 function clamp(value: number, min: number, max: number) {
@@ -389,7 +386,12 @@ function SandboxTree() {
 	}, []);
 
 	if (empty === "true") {
-		return <EmptyTreeState />;
+		return (
+			<EmptyState>
+				<Text>No layers</Text>
+				<Button>Create a layer</Button>
+			</EmptyState>
+		);
 	}
 
 	return (

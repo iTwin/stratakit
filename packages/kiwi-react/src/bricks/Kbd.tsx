@@ -55,6 +55,14 @@ interface KbdProps extends BaseProps<"kbd"> {
 export const Kbd = forwardRef<"kbd", KbdProps>((props, forwardedRef) => {
 	const { variant = "solid", symbol, children, ...rest } = props;
 
+	DEV: {
+		if (symbol && !(symbol in predefinedSymbols)) {
+			console.error(
+				`Kbd: Invalid symbol "${symbol}". Must be one of: ${Object.keys(predefinedSymbols).join(", ")}`,
+			);
+		}
+	}
+
 	let content = children;
 
 	if (symbol) {

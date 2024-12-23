@@ -145,6 +145,10 @@
 	}
 }
 
+.tree {
+	flex-grow: 1;
+}
+
 .action {
 	position: relative;
 

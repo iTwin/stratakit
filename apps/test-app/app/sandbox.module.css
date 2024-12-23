@@ -3,23 +3,42 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 .appLayout {
-	block-size: 100vh;
 	--_panel-min-size: 256px;
 	--_panel-max-size: auto;
 
+	--_platformBar-width: 40px;
+	--_panel-width: minmax(var(--_panel-min-size), var(--_panel-max-size));
+	--_splitter-width: 12px;
+
+	block-size: 100dvb;
 	display: grid;
-	grid-template: auto / 40px minmax(var(--_panel-min-size), var(--_panel-max-size)) 1fr;
+	grid-template-areas:
+		"header header header header"
+		"platformBar leftPanel splitter canvas";
+	grid-template-rows: auto 1fr;
+	grid-template-columns: var(--_platformBar-width) var(--_panel-width) var(--_splitter-width) 1fr;
+}
+
+.header {
+	grid-area: header;
+	background-color: var(--kiwi-color-bg-surface-primary);
+	border-block-end: 1px solid var(--kiwi-color-border-neutral-base);
+
+	display: flex;
+	align-items: center;
+	gap: 12px;
 }
 
 .platformBar {
+	grid-area: platformBar;
 	background-color: var(--kiwi-color-bg-surface-secondary);
 	border-inline-end: 1px solid var(--kiwi-color-border-neutral-base);
 }
 
 .logo {
-	border-block-end: 1px solid var(--kiwi-color-border-neutral-base);
-	block-size: 2.5rem;
-	box-sizing: content-box;
+	border-inline-end: 1px solid var(--kiwi-color-border-neutral-base);
+	block-size: var(--_platformBar-width);
+	inline-size: var(--_platformBar-width);
 
 	display: flex;
 	align-items: center;
@@ -37,6 +56,7 @@
 }
 
 .leftPanel {
+	grid-area: leftPanel;
 	padding-block: 12px;
 	background-color: var(--kiwi-color-bg-surface-primary);
 	min-block-size: 0;
@@ -47,7 +67,7 @@
 	gap: 12px;
 }
 
-.header {
+.panelHeader {
 	display: flex;
 	padding-inline: 12px;
 	justify-content: space-between;
@@ -102,28 +122,50 @@
 }
 
 .canvas {
+	grid-area: canvas;
 	block-size: 100%;
 	border-radius: 16px;
-	box-shadow:
-		0px 0px 0px 1px #000000cc,
-		0px 1px 2px 0px #00000099,
-		0px 1px 0px 0px #00000066,
-		0px 0px 0px 1px #ffffff33 inset,
-		0px 1px 0px 0px #ffffff33 inset;
+	box-shadow: var(--kiwi-shadow-surface-xl);
+	border: 1px solid var(--kiwi-color-border-neutral-base);
+	position: relative;
 
-	background-image: repeating-conic-gradient(
-		var(--kiwi-color-text-mono-faded) 0%,
-		transparent 15%,
-		var(--kiwi-color-text-mono-faded) 33%
-	);
+	&::before {
+		content: "";
+		position: absolute;
+		inset: 0;
+		background-image: var(--_rings), var(--_gradient);
+		opacity: 0.5;
+		z-index: -1;
+		border-radius: inherit;
+
+		--_rings: repeating-radial-gradient(
+			circle at center,
+			var(--kiwi-color-border-neutral-base) 1px,
+			var(--kiwi-color-border-neutral-base) 3px,
+			transparent 3px,
+			transparent 10px
+		);
+		--_gradient: linear-gradient(
+			180deg,
+			var(--kiwi-color-bg-surface-primary) 0%,
+			var(--kiwi-color-bg-surface-tertiary) 100%
+		);
+	}
 }
 
 .splitter {
-	position: absolute;
-	top: 0;
-	right: 0;
+	grid-area: splitter;
+	position: relative;
 	user-select: none;
-	background-color: transparent;
+
+	&::before {
+		content: "";
+		position: absolute;
+		inline-size: 2px;
+		inset-inline-start: calc(var(--_splitter-width) / 2);
+		inset-block: 0;
+		background-color: var(--_bg);
+	}
 
 	&:not([aria-orientation="vertical"], [data-kiwi-orientation="vertical"]) {
 		min-block-size: 100%;
@@ -132,19 +174,23 @@
 
 	&:where(:hover, [data-resizing="true"]) {
 		&:not(:focus-within) {
-			background-color: var(--kiwi-color-border-accent-strong);
+			--_bg: var(--kiwi-color-border-accent-strong);
 		}
 	}
 
 	&:where(:has(:is(input):focus-visible)) {
-		outline: 2px solid var(--kiwi-color-border-accent-strong);
-		outline-offset: 1px;
+		&::before {
+			outline: 2px solid var(--kiwi-color-border-accent-strong);
+			outline-offset: 1px;
+		}
 	}
 
 	@supports not selector(:has(+ *)) {
 		&:where(:not(input):focus-within) {
-			outline: 2px solid var(--kiwi-color-border-accent-strong);
-			outline-offset: 1px;
+			&::before {
+				outline: 2px solid var(--kiwi-color-border-accent-strong);
+				outline-offset: -1px;
+			}
 		}
 	}
 }
@@ -169,7 +215,7 @@
 .slider {
 	display: block;
 	block-size: 100%;
-	inline-size: 8px;
+	inline-size: var(--_splitter-width, 12px);
 	user-select: none;
 	cursor: ew-resize;
 	opacity: 0;

@@ -7,10 +7,10 @@ import * as ReactDOM from "react-dom";
 import * as Ariakit from "@ariakit/react";
 import styles from "./sandbox.module.css";
 import {
-	Divider,
 	DropdownMenu,
 	Icon,
 	IconButton,
+	Text,
 	TextBox,
 	VisuallyHidden,
 } from "@itwin/itwinui-react/bricks";
@@ -40,9 +40,6 @@ export default function Page() {
 		});
 	return (
 		<>
-			<VisuallyHidden render={(props) => <h1 {...props} />}>
-				{title}
-			</VisuallyHidden>
 			<div
 				className={styles.appLayout}
 				style={
@@ -52,22 +49,29 @@ export default function Page() {
 					} as React.CSSProperties
 				}
 			>
-				<div className={styles.platformBar}>
+				<header className={styles.header}>
 					<div className={styles.logo}>
 						<Icon href={placeholderIcon} size="large" />
 					</div>
+					<Text render={(props) => <h1 {...props} />} variant="body-md">
+						{title}
+					</Text>
+				</header>
+
+				<div className={styles.platformBar}>
 					<div className={styles.tools}>
 						<Icon href={placeholderIcon} size="large" />
 						<Icon href={placeholderIcon} size="large" />
 						<Icon href={placeholderIcon} size="large" />
 					</div>
 				</div>
+
 				<div
 					{...panelProps}
 					className={styles.leftPanel}
 					style={{ position: "relative", ...panelProps.style }}
 				>
-					<div className={styles.header}>
+					<div className={styles.panelHeader}>
 						{/* biome-ignore lint/a11y: hgroup needs an explicit role for better support */}
 						<hgroup role="group">
 							<h2 className={styles.panelTitle}>Epoch System iModel</h2>
@@ -85,19 +89,20 @@ export default function Page() {
 					</div>
 					<Subheader />
 					<SandboxTree />
-					<Divider
-						presentational
-						className={styles.splitter}
-						data-resizing={resizing ? "true" : undefined}
-					>
-						<input
-							type="range"
-							aria-label="Resize layers panel"
-							className={styles.slider}
-							{...sliderProps}
-						/>
-					</Divider>
 				</div>
+
+				<div
+					className={styles.splitter}
+					data-resizing={resizing ? "true" : undefined}
+				>
+					<input
+						type="range"
+						aria-label="Resize layers panel"
+						className={styles.slider}
+						{...sliderProps}
+					/>
+				</div>
+
 				<div className={styles.canvasWrapper}>
 					<div className={styles.canvas} />
 				</div>

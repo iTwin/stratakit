@@ -11,7 +11,7 @@ export default definePage(
 	function Page() {
 		return <Kbd variant={"muted"}>Ctrl</Kbd>;
 	},
-	{ visual: VisualTest, kbdkeys: KbdKeysTest },
+	{ visual: VisualTest, symbols: SymbolsTest },
 );
 
 function VisualTest() {
@@ -28,7 +28,7 @@ function VisualTest() {
 	);
 }
 
-function KbdKeysTest() {
+function SymbolsTest() {
 	const symbols = [
 		"Backspace",
 		"Command",

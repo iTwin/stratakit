@@ -13,13 +13,13 @@ test("default", async ({ page }) => {
 });
 
 test.describe("@visual", () => {
-	test("default visual snapshot", async ({ page }) => {
+	test("all variants", async ({ page }) => {
 		await page.goto("/tests/kbd?visual=true");
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
 
-	test("visual KbdKeys snapshot", async ({ page }) => {
-		await page.goto("/tests/kbd?kbdkeys=true");
+	test("all symbols", async ({ page }) => {
+		await page.goto("/tests/kbd?symbols=true");
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
 });

@@ -84,6 +84,7 @@
 	inset-inline-end: 0;
 	padding-inline-end: 4px;
 	background-color: var(--kiwi-color-bg-surface-primary);
+	display: inline-flex;
 
 	&::before {
 		position: absolute;

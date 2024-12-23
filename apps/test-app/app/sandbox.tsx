@@ -372,8 +372,7 @@ const SandboxTreeContext = React.createContext<{
 
 function SandboxTree() {
 	const [searchParams] = useSearchParams();
-	const empty = searchParams.get("empty");
-	const tree = searchParams.get("tree"); // for handling ?tree=complex
+	const tree = searchParams.get("tree"); // for handling ?tree=complex and ?tree=empty
 	const [selected, setSelected] = React.useState<string | undefined>();
 	const [hidden, setHidden] = React.useState<string[]>([]);
 	const toggleHidden = React.useCallback((id: string) => {
@@ -385,7 +384,7 @@ function SandboxTree() {
 		});
 	}, []);
 
-	if (empty === "true") {
+	if (tree === "empty") {
 		return (
 			<EmptyState>
 				<Text>No layers</Text>

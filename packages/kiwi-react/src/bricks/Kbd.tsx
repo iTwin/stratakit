@@ -7,29 +7,21 @@ import * as Ariakit from "@ariakit/react";
 import { forwardRef, type BaseProps } from "./~utils.js";
 import { VisuallyHidden } from "./VisuallyHidden.js";
 
-const kbdKeys = {
-	Apple: "\uf8ff",
+const predefinedSymbols = {
 	Backspace: "\u232b",
 	Command: "\u2318",
 	Control: "Ctrl",
 	Down: "\u2193",
-	End: "\u001b",
 	Eject: "\u23cf",
 	Enter: "\u21b5",
-	Escape: "\u001b",
-	Home: "\u001a",
-	Help: "\u003f",
+	Escape: "Esc",
 	Left: "\u2190",
 	Option: "\u2325",
-	PageUp: "\u0010",
-	PageDown: "\u0011",
 	Right: "\u2192",
 	Shift: "\u21e7",
-	Space: "\u0020",
-	Tab: "\u0009",
+	Space: "\u2423",
+	Tab: "Tab",
 	Up: "\u2191",
-	Windows: "\u229e",
-	WinAlt: "\u2387",
 } as const;
 
 interface KbdProps extends BaseProps<"kbd"> {
@@ -45,7 +37,7 @@ interface KbdProps extends BaseProps<"kbd"> {
 	 * <Kbd symbol="Control" />
 	 * ```
 	 */
-	symbol?: keyof typeof kbdKeys;
+	symbol?: keyof typeof predefinedSymbols;
 }
 
 /**
@@ -68,7 +60,7 @@ export const Kbd = forwardRef<"kbd", KbdProps>((props, forwardedRef) => {
 	if (symbol) {
 		content = (
 			<>
-				<span aria-hidden="true">{kbdKeys[symbol]}</span>
+				<span aria-hidden="true">{predefinedSymbols[symbol]}</span>
 				{children || <VisuallyHidden>{symbol}</VisuallyHidden>}
 			</>
 		);

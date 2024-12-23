@@ -30,28 +30,20 @@ function VisualTest() {
 
 function KbdKeysTest() {
 	const symbols = [
-		"Apple",
 		"Backspace",
 		"Command",
 		"Control",
 		"Down",
-		"End",
 		"Eject",
 		"Enter",
 		"Escape",
-		"Home",
-		"Help",
 		"Left",
 		"Option",
-		"PageUp",
-		"PageDown",
 		"Right",
 		"Shift",
 		"Space",
 		"Tab",
 		"Up",
-		"Windows",
-		"WinAlt",
 	] as const;
 
 	return (

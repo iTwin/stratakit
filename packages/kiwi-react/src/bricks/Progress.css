@@ -9,11 +9,6 @@
 		color: var(--🥝progress-color);
 		block-size: var(--🥝progress-size);
 		inline-size: var(--🥝progress-size);
-
-		> svg {
-			block-size: inherit;
-			inline-size: inherit;
-		}
 	}
 
 	@layer modifiers {
@@ -25,31 +20,34 @@
 			--🥝progress-color: var(--kiwi-color-icon-accent-strong);
 		}
 
-		&:where([data-kiwi-variant="radial"]) {
-			&:where([data-kiwi-indeterminate]) svg {
-				animation: --🥝radial-indeterminate-rotate 1s linear infinite both;
+		&:where([data-kiwi-size="small"]) {
+			--🥝progress-size: 1rem;
+		}
 
-				@media (prefers-reduced-motion) {
-					animation-timing-function: steps(4, end);
-					animation-duration: 4s;
-				}
-			}
+		&:where([data-kiwi-size="medium"]) {
+			--🥝progress-size: 1.5rem;
+		}
 
-			&:where([data-kiwi-size="small"]) {
-				--🥝progress-size: 1rem;
-			}
+		&:where([data-kiwi-size="large"]) {
+			--🥝progress-size: 2rem;
+		}
 
-			&:where([data-kiwi-size="medium"]) {
-				--🥝progress-size: 1.5rem;
-			}
+		&:where([data-kiwi-size="xlarge"]) {
+			--🥝progress-size: 3rem;
+		}
+	}
+}
 
-			&:where([data-kiwi-size="large"]) {
-				--🥝progress-size: 2rem;
-			}
+.🥝-progress-svg {
+	@layer base {
+		block-size: inherit;
+		inline-size: inherit;
+		fill: none;
+		animation: --🥝radial-indeterminate-rotate 1s linear infinite both;
 
-			&:where([data-kiwi-size="xlarge"]) {
-				--🥝progress-size: 3rem;
-			}
+		@media (prefers-reduced-motion) {
+			animation-timing-function: steps(4, end);
+			animation-duration: 4s;
 		}
 	}
 }

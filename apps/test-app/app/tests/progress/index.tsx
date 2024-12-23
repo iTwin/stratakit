@@ -16,9 +16,9 @@ export default definePage(
 		return (
 			<Progress
 				aria-label={`${size}, ${tone} radial`}
-				variant="radial"
 				size={size as (typeof sizes)[number]}
 				tone={tone as (typeof tones)[number]}
+				data-test-id="progress"
 			/>
 		);
 	},
@@ -39,7 +39,6 @@ function VisualTest({ paused = false }) {
 					{sizes.map((size) => (
 						<Progress
 							key={size}
-							variant="radial"
 							size={size}
 							tone={tone}
 							aria-label={`${size}, ${tone} radial`}

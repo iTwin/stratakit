@@ -7,8 +7,8 @@ import AxeBuilder from "@axe-core/playwright";
 
 test("default", async ({ page }) => {
 	await page.goto("/tests/progress");
-	const progressbar = page.getByRole("progressbar");
-	await expect(progressbar).toBeVisible();
+	const progress = page.getByTestId("progress");
+	await expect(progress).toBeVisible();
 });
 
 test("@visual", async ({ page }) => {
@@ -19,9 +19,6 @@ test("@visual", async ({ page }) => {
 test.describe("@a11y", () => {
 	test("Axe Page Scan", async ({ page }) => {
 		await page.goto("/tests/progress");
-
-		const progressbar = page.getByRole("progressbar");
-		await expect(progressbar).toBeVisible();
 
 		const axe = new AxeBuilder({ page });
 		const accessibilityScan = await axe.analyze();

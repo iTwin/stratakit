@@ -4,14 +4,10 @@
  *--------------------------------------------------------------------------------------------*/
 import * as Ariakit from "@ariakit/react";
 import cx from "classnames";
+import { VisuallyHidden } from "@itwin/itwinui-react/bricks";
 import { forwardRef, type BaseProps } from "./~utils.js";
 
 interface ProgressProps extends BaseProps {
-	/**
-	 * The variant of the progress indicator.
-	 */
-	variant: "radial";
-
 	/**
 	 * The size of the progress indicator.
 	 * @default "medium"
@@ -30,7 +26,7 @@ interface ProgressProps extends BaseProps {
  *
  * Example:
  * ```tsx
- * <Progress variant="radial" />
+ * <Progress />
  * ```
  *
  * Supports a `tone` prop to change the tone (color) of the progress indicator.
@@ -38,26 +34,24 @@ interface ProgressProps extends BaseProps {
  */
 export const Progress = forwardRef<"div", ProgressProps>(
 	(props, forwardedRef) => {
-		const { size = "medium", tone = "neutral", variant, ...rest } = props;
+		const { size = "medium", tone = "neutral", ...rest } = props;
 
 		return (
 			<Ariakit.Role
 				{...rest}
-				role="progressbar"
 				data-kiwi-size={size}
 				data-kiwi-tone={tone}
-				data-kiwi-variant={variant}
-				data-kiwi-indeterminate
 				className={cx("🥝-progress", props.className)}
 				ref={forwardedRef}
 			>
-				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none">
+				<svg aria-hidden="true" className="🥝-progress-svg" viewBox="0 0 16 16">
 					<path
 						stroke="currentColor"
 						stroke-linecap="round"
 						d="M9.5 1.674a6.503 6.503 0 0 1 0 12.652m-3-12.652a6.503 6.503 0 0 0 0 12.652"
 					/>
 				</svg>
+				<VisuallyHidden>Loading</VisuallyHidden>
 			</Ariakit.Role>
 		);
 	},

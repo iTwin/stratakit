@@ -5,15 +5,9 @@
 import cx from "classnames";
 import * as Ariakit from "@ariakit/react";
 import { forwardRef, type BaseProps } from "./~utils.js";
+import { VisuallyHidden } from "./VisuallyHidden.js";
 
-interface KbdProps extends BaseProps<"kbd"> {
-	/** @default "solid" */
-	variant?: "solid" | "muted" | "ghost";
-
-	decorator?: string;
-}
-
-export const kbdKeys = {
+const kbdKeys = {
 	Apple: "\uf8ff",
 	Backspace: "\u232b",
 	Command: "\u2318",
@@ -38,6 +32,22 @@ export const kbdKeys = {
 	WinAlt: "\u2387",
 } as const;
 
+interface KbdProps extends BaseProps<"kbd"> {
+	/** @default "solid" */
+	variant?: "solid" | "muted" | "ghost";
+
+	/**
+	 * Display a specific key symbol from a predefined list. This is useful for
+	 * displaying modifier keys or special keys, such as `Control`, `Shift`, `Enter`, etc.
+	 *
+	 * Example:
+	 * ```tsx
+	 * <Kbd symbol="Control" />
+	 * ```
+	 */
+	symbol?: keyof typeof kbdKeys;
+}
+
 /**
  * A styled wrapper over the HTML `<kbd>` element. This is typically
  * used for displaying keyboard shortcuts.
@@ -47,11 +57,23 @@ export const kbdKeys = {
  * ```
  *
  * ```tsx
- * <Kbd>{kbdKeys.Enter}</Kbd>
+ * <Kbd symbol="Control" />
  * ```
  */
 export const Kbd = forwardRef<"kbd", KbdProps>((props, forwardedRef) => {
-	const { variant = "solid", decorator, children, ...rest } = props;
+	const { variant = "solid", symbol, children, ...rest } = props;
+
+	let content = children;
+
+	if (symbol) {
+		content = (
+			<>
+				<span aria-hidden="true">{kbdKeys[symbol]}</span>
+				{children || <VisuallyHidden>{symbol}</VisuallyHidden>}
+			</>
+		);
+	}
+
 	return (
 		<Ariakit.Role
 			data-kiwi-variant={variant}
@@ -60,7 +82,7 @@ export const Kbd = forwardRef<"kbd", KbdProps>((props, forwardedRef) => {
 			render={props.render || <kbd />}
 			ref={forwardedRef as Ariakit.RoleProps["ref"]}
 		>
-			{decorator || children}
+			{content}
 		</Ariakit.Role>
 	);
 });

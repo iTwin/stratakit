@@ -3,7 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 import { definePage } from "~/~utils.tsx";
-import { Kbd, kbdKeys } from "@itwin/itwinui-react/bricks";
+import { Kbd } from "@itwin/itwinui-react/bricks";
 
 export const handle = { title: "Kbd" };
 
@@ -11,7 +11,7 @@ export default definePage(
 	function Page() {
 		return <Kbd variant={"muted"}>Ctrl</Kbd>;
 	},
-	{ visual: VisualTest, visualKbd: VisualKbdKeysTest, kbdkeys: KbdKeysTest },
+	{ visual: VisualTest, kbdkeys: KbdKeysTest },
 );
 
 function VisualTest() {
@@ -28,32 +28,37 @@ function VisualTest() {
 	);
 }
 
-function VisualKbdKeysTest() {
-	const kbdKeysList = Object.entries(kbdKeys);
-
-	return (
-		<div style={{ display: "grid", gap: 8 }}>
-			<ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
-				{kbdKeysList.map(([name, symbol]) => (
-					<li
-						key={name}
-						style={{ display: "flex", alignItems: "center", gap: 8 }}
-					>
-						<span>{name}</span>
-						<Kbd>{symbol}</Kbd>
-					</li>
-				))}
-			</ul>
-		</div>
-	);
-}
-
 function KbdKeysTest() {
+	const symbols = [
+		"Apple",
+		"Backspace",
+		"Command",
+		"Control",
+		"Down",
+		"End",
+		"Eject",
+		"Enter",
+		"Escape",
+		"Home",
+		"Help",
+		"Left",
+		"Option",
+		"PageUp",
+		"PageDown",
+		"Right",
+		"Shift",
+		"Space",
+		"Tab",
+		"Up",
+		"Windows",
+		"WinAlt",
+	] as const;
+
 	return (
-		<div style={{ display: "grid", gap: 4 }}>
-			<Kbd variant="solid">{kbdKeys.Apple}</Kbd>
-			<Kbd variant="solid">{kbdKeys.Option}</Kbd>
-			<Kbd variant="solid">{kbdKeys.Windows}</Kbd>
+		<div style={{ display: "inline-grid", justifyItems: "start", gap: 4 }}>
+			{symbols.map((symbol) => (
+				<Kbd key={symbol} symbol={symbol} variant="ghost" />
+			))}
 		</div>
 	);
 }

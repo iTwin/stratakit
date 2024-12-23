@@ -37,7 +37,7 @@
 }
 
 .leftPanel {
-	padding-block: 12px;
+	padding-block-start: 12px;
 	background-color: var(--kiwi-color-bg-surface-primary);
 	min-block-size: 0;
 
@@ -147,6 +147,7 @@
 
 .tree {
 	flex-grow: 1;
+	padding-block-end: 12px;
 }
 
 .action {

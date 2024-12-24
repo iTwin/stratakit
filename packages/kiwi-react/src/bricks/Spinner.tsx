@@ -9,6 +9,12 @@ import { forwardRef, type BaseProps } from "./~utils.js";
 
 interface SpinnerProps extends BaseProps {
 	/**
+	 * A text alternative for the spinner.
+	 * @default "Loading…"
+	 */
+	alt?: string;
+
+	/**
 	 * The size of the spinner.
 	 * @default "medium"
 	 */
@@ -34,7 +40,12 @@ interface SpinnerProps extends BaseProps {
  */
 export const Spinner = forwardRef<"div", SpinnerProps>(
 	(props, forwardedRef) => {
-		const { size = "medium", tone = "neutral", ...rest } = props;
+		const {
+			alt = "Loading…",
+			size = "medium",
+			tone = "neutral",
+			...rest
+		} = props;
 
 		return (
 			<Ariakit.Role
@@ -51,7 +62,7 @@ export const Spinner = forwardRef<"div", SpinnerProps>(
 						d="M9.5 1.674a6.503 6.503 0 0 1 0 12.652m-3-12.652a6.503 6.503 0 0 0 0 12.652"
 					/>
 				</svg>
-				<VisuallyHidden>Loading</VisuallyHidden>
+				<VisuallyHidden>{alt}</VisuallyHidden>
 			</Ariakit.Role>
 		);
 	},

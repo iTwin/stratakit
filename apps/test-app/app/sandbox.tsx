@@ -7,10 +7,12 @@ import * as ReactDOM from "react-dom";
 import * as Ariakit from "@ariakit/react";
 import styles from "./sandbox.module.css";
 import {
+	Button,
 	Divider,
 	DropdownMenu,
 	Icon,
 	IconButton,
+	Text,
 	TextBox,
 	VisuallyHidden,
 } from "@itwin/itwinui-react/bricks";
@@ -104,6 +106,14 @@ export default function Page() {
 			</div>
 		</>
 	);
+}
+
+/**
+ * Wrapper for empty state content, displayed as a centered vertical flex box.
+ * Accepts any arbitrary content passed as `children`.
+ */
+function EmptyState({ children }: { children: React.ReactNode }) {
+	return <div className={styles.emptyState}>{children}</div>;
 }
 
 function clamp(value: number, min: number, max: number) {
@@ -362,7 +372,7 @@ const SandboxTreeContext = React.createContext<{
 
 function SandboxTree() {
 	const [searchParams] = useSearchParams();
-	const tree = searchParams.get("tree"); // for handling ?tree=complex
+	const tree = searchParams.get("tree"); // for handling ?tree=complex and ?tree=empty
 	const [selected, setSelected] = React.useState<string | undefined>();
 	const [hidden, setHidden] = React.useState<string[]>([]);
 	const toggleHidden = React.useCallback((id: string) => {
@@ -373,6 +383,16 @@ function SandboxTree() {
 			return [...prev, id];
 		});
 	}, []);
+
+	if (tree === "empty") {
+		return (
+			<EmptyState>
+				<Text>No layers</Text>
+				<Button>Create a layer</Button>
+			</EmptyState>
+		);
+	}
+
 	return (
 		<SandboxTreeContext.Provider
 			value={React.useMemo(

@@ -16,8 +16,12 @@ interface TreeProps extends BaseProps {}
 
 const Tree = forwardRef<"div", TreeProps>((props, forwardedRef) => {
 	return (
-		<Ariakit.Role.div {...props} role="list" ref={forwardedRef}>
-			{props.children}
+		<Ariakit.Role.div
+			{...props}
+			className={cx("🥝-tree", props.className)}
+			ref={forwardedRef}
+		>
+			<div role="list">{props.children}</div>
 		</Ariakit.Role.div>
 	);
 });

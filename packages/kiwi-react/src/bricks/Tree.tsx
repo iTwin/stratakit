@@ -106,13 +106,13 @@ interface TreeItemActionsProps extends BaseProps {}
 const TreeItemActions = forwardRef<"div", TreeItemActionsProps>(
 	(props, forwardedRef) => {
 		return (
-			<Ariakit.Role.div
+			<Ariakit.Toolbar
 				{...props}
 				className={cx("🥝-tree-item-actions", props.className)}
 				ref={forwardedRef}
 			>
 				{props.children}
-			</Ariakit.Role.div>
+			</Ariakit.Toolbar>
 		);
 	},
 );

@@ -7,32 +7,32 @@ import cx from "classnames";
 import { VisuallyHidden } from "@itwin/itwinui-react/bricks";
 import { forwardRef, type BaseProps } from "./~utils.js";
 
-interface ProgressProps extends BaseProps {
+interface SpinnerProps extends BaseProps {
 	/**
-	 * The size of the progress indicator.
+	 * The size of the spinner.
 	 * @default "medium"
 	 */
 	size?: "small" | "medium" | "large" | "xlarge";
 
 	/**
-	 * The tone of the progress indicator.
+	 * The tone of the spinner.
 	 * @default "neutral"
 	 */
 	tone?: "neutral" | "accent";
 }
 
 /**
- * A progress indicator, used to show the status of a process in real time.
+ * A loading spinner.
  *
  * Example:
  * ```tsx
- * <Progress />
+ * <Spinner />
  * ```
  *
- * Supports a `tone` prop to change the tone (color) of the progress indicator.
- * Supports a `size` prop to change the size of the progress indicator.
+ * Supports a `tone` prop to change the tone (color) of the spinner.
+ * Supports a `size` prop to change the size of the spinner.
  */
-export const Progress = forwardRef<"div", ProgressProps>(
+export const Spinner = forwardRef<"div", SpinnerProps>(
 	(props, forwardedRef) => {
 		const { size = "medium", tone = "neutral", ...rest } = props;
 
@@ -41,10 +41,10 @@ export const Progress = forwardRef<"div", ProgressProps>(
 				{...rest}
 				data-kiwi-size={size}
 				data-kiwi-tone={tone}
-				className={cx("🥝-progress", props.className)}
+				className={cx("🥝-spinner", props.className)}
 				ref={forwardedRef}
 			>
-				<svg aria-hidden="true" className="🥝-progress-svg" viewBox="0 0 16 16">
+				<svg aria-hidden="true" className="🥝-spinner-svg" viewBox="0 0 16 16">
 					<path
 						stroke="currentColor"
 						stroke-linecap="round"
@@ -56,4 +56,4 @@ export const Progress = forwardRef<"div", ProgressProps>(
 		);
 	},
 );
-DEV: Progress.displayName = "Progress";
+DEV: Spinner.displayName = "Spinner";

@@ -3,47 +3,47 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-.🥝-progress {
+.🥝-spinner {
 	@layer base {
 		display: inline-block;
-		color: var(--🥝progress-color);
-		block-size: var(--🥝progress-size);
-		inline-size: var(--🥝progress-size);
+		color: var(--🥝spinner-color);
+		block-size: var(--🥝spinner-size);
+		inline-size: var(--🥝spinner-size);
 	}
 
 	@layer modifiers {
 		&:where([data-kiwi-tone="neutral"]) {
-			--🥝progress-color: var(--kiwi-color-icon-neutral-base);
+			--🥝spinner-color: var(--kiwi-color-icon-neutral-base);
 		}
 
 		&:where([data-kiwi-tone="accent"]) {
-			--🥝progress-color: var(--kiwi-color-icon-accent-strong);
+			--🥝spinner-color: var(--kiwi-color-icon-accent-strong);
 		}
 
 		&:where([data-kiwi-size="small"]) {
-			--🥝progress-size: 1rem;
+			--🥝spinner-size: 1rem;
 		}
 
 		&:where([data-kiwi-size="medium"]) {
-			--🥝progress-size: 1.5rem;
+			--🥝spinner-size: 1.5rem;
 		}
 
 		&:where([data-kiwi-size="large"]) {
-			--🥝progress-size: 2rem;
+			--🥝spinner-size: 2rem;
 		}
 
 		&:where([data-kiwi-size="xlarge"]) {
-			--🥝progress-size: 3rem;
+			--🥝spinner-size: 3rem;
 		}
 	}
 }
 
-.🥝-progress-svg {
+.🥝-spinner-svg {
 	@layer base {
 		block-size: inherit;
 		inline-size: inherit;
 		fill: none;
-		animation: --🥝radial-indeterminate-rotate 1s linear infinite both;
+		animation: --🥝spinner-spin 1s linear infinite both;
 
 		@media (prefers-reduced-motion) {
 			animation-timing-function: steps(4, end);
@@ -52,7 +52,7 @@
 	}
 }
 
-@keyframes --🥝radial-indeterminate-rotate {
+@keyframes --🥝spinner-spin {
 	to {
 		rotate: 360deg;
 	}

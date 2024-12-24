@@ -5,7 +5,6 @@
 .🥝-tree {
 	@layer base {
 		overflow: auto;
-		flex: 1;
 
 		> [role="list"] {
 			min-inline-size: max-content;

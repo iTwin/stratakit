@@ -37,7 +37,7 @@
 }
 
 .leftPanel {
-	padding-block: 12px;
+	padding-block-start: 12px;
 	background-color: var(--kiwi-color-bg-surface-primary);
 	min-block-size: 0;
 
@@ -90,6 +90,15 @@
 
 .subheaderActions {
 	margin-inline-start: auto;
+}
+
+.emptyState {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	block-size: 100%;
+	gap: 0.5rem;
 }
 
 .canvasWrapper {
@@ -145,6 +154,11 @@
 	}
 }
 
+.tree {
+	flex-grow: 1;
+	padding-block-end: 12px;
+}
+
 .action {
 	position: relative;
 
@@ -154,6 +168,8 @@
 }
 
 .actionIcon {
+	position: relative;
+
 	display: flex;
 	align-items: center;
 	justify-content: center;

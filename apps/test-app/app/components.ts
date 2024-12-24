@@ -16,6 +16,7 @@ export const components = [
 	"List",
 	"Radio",
 	"Select",
+	"Spinner",
 	"Switch",
 	"Tabs",
 	"Text",

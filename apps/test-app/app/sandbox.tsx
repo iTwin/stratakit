@@ -15,7 +15,7 @@ import {
 	TextBox,
 	VisuallyHidden,
 } from "@itwin/itwinui-react/bricks";
-import * as Tree from "@itwin/itwinui-react-internal/src/bricks/Tree.js";
+import * as Tree from "@itwin/itwinui-react-internal/src/bricks/Tree.tsx";
 import { useSearchParams, type MetaFunction } from "react-router";
 import placeholderIcon from "@itwin/itwinui-icons/placeholder.svg";
 import searchIcon from "@itwin/itwinui-icons/search.svg";

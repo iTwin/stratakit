@@ -4,7 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 import * as Ariakit from "@ariakit/react";
 import cx from "classnames";
-import { VisuallyHidden } from "@itwin/itwinui-react/bricks";
+import { VisuallyHidden } from "./VisuallyHidden.js";
 import { forwardRef, type BaseProps } from "./~utils.js";
 
 interface SpinnerProps extends BaseProps {

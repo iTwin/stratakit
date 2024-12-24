@@ -3,24 +3,14 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 import { definePage } from "~/~utils.tsx";
-import React from "react";
+import * as React from "react";
 import { Icon, IconButton } from "@itwin/itwinui-react/bricks";
-import * as Tree from "@itwin/itwinui-react-internal/src/bricks/Tree.js";
+import * as Tree from "@itwin/itwinui-react-internal/src/bricks/Tree.tsx";
+import placeholderIcon from "@itwin/itwinui-icons/placeholder.svg";
+import unlockIcon from "@itwin/itwinui-icons/lock-unlocked.svg";
+import showIcon from "@itwin/itwinui-icons/visibility-show.svg";
 
 export const handle = { title: "Tree" };
-
-const placeholderIcon = new URL(
-	"@itwin/itwinui-icons/placeholder.svg",
-	import.meta.url,
-).href;
-const unlockIcon = new URL(
-	"@itwin/itwinui-icons/lock-unlocked.svg",
-	import.meta.url,
-).href;
-const showIcon = new URL(
-	"@itwin/itwinui-icons/visibility-show.svg",
-	import.meta.url,
-).href;
 
 export default definePage(function Page({
 	overflow = false,

@@ -4,7 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 import { definePage } from "~/~utils.tsx";
 import * as ListItem from "@itwin/itwinui-react-internal/src/bricks/ListItem";
-import { Icon } from "@itwin/itwinui-react-internal/src/bricks/Icon";
+import { Icon } from "@itwin/itwinui-react/bricks";
 import type { LinksFunction } from "react-router";
 import testStyles from "./index.css?url";
 import placeholderIcon from "@itwin/itwinui-icons/placeholder.svg";

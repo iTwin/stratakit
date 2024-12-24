@@ -265,18 +265,19 @@ function useSplitter<TPanel extends Element>(args?: UseSplitterArgs) {
 		};
 	}, [id, preferredSize]);
 
-	const panelMinSize = minSize === undefined ? undefined : `${minSize}px`;
+	const panelMinSize =
+		minSize === undefined ? undefined : `${Math.floor(minSize)}px`;
 	const panelMaxSize = React.useMemo(() => {
 		if (
 			preferredSize !== undefined &&
 			maxSizeSpec !== undefined &&
 			mode === undefined
 		) {
-			return `min(${preferredSize}px, ${maxSizeSpec.pct}%)`;
+			return `min(${Math.floor(preferredSize)}px, ${maxSizeSpec.pct}%)`;
 		}
 
 		if (size === undefined) return undefined;
-		return `${size}px`;
+		return `${Math.floor(size)}px`;
 	}, [maxSizeSpec, preferredSize, size, mode]);
 
 	return { sliderProps, panelProps, panelMinSize, panelMaxSize, resizing };

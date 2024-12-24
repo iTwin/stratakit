@@ -3,6 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 import cx from "classnames";
+import * as Ariakit from "@ariakit/react";
 import { Button } from "./Button.js";
 import { VisuallyHidden } from "./VisuallyHidden.js";
 import { Icon } from "./Icon.js";
@@ -97,10 +98,15 @@ export const IconButton = forwardRef<"button", IconButtonProps>(
 	(props, forwardedRef) => {
 		const { label, icon, isActive, labelVariant, ...rest } = props;
 
+		const toolbar = Ariakit.useToolbarContext();
+
 		const button = (
 			<Button
 				aria-pressed={isActive}
 				{...rest}
+				render={
+					toolbar ? <Ariakit.ToolbarItem render={props.render} /> : props.render
+				}
 				className={cx("🥝-icon-button", props.className)}
 				ref={forwardedRef}
 			>

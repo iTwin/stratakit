@@ -405,7 +405,7 @@ function SandboxTree() {
 				[hidden, selected, toggleHidden],
 			)}
 		>
-			<Tree.Root>
+			<Tree.Root className={styles.tree}>
 				{tree === "complex" ? <ComplexTreeItems /> : <IdealTreeItems />}
 			</Tree.Root>
 		</SandboxTreeContext.Provider>

@@ -11,7 +11,7 @@ export default definePage(
 	function Page() {
 		return <Kbd variant={"muted"}>Ctrl</Kbd>;
 	},
-	{ visual: VisualTest },
+	{ visual: VisualTest, symbols: SymbolsTest },
 );
 
 function VisualTest() {
@@ -23,6 +23,33 @@ function VisualTest() {
 				<div key={variant} style={{ display: "flex", gap: 4 }}>
 					<Kbd variant={variant}>Ctrl</Kbd>
 				</div>
+			))}
+		</div>
+	);
+}
+
+function SymbolsTest() {
+	const symbols = [
+		"Backspace",
+		"Command",
+		"Control",
+		"Down",
+		"Eject",
+		"Enter",
+		"Escape",
+		"Left",
+		"Option",
+		"Right",
+		"Shift",
+		"Space",
+		"Tab",
+		"Up",
+	] as const;
+
+	return (
+		<div style={{ display: "inline-grid", justifyItems: "start", gap: 4 }}>
+			{symbols.map((symbol) => (
+				<Kbd key={symbol} symbol={symbol} variant="ghost" />
 			))}
 		</div>
 	);

@@ -7,6 +7,7 @@ import * as ReactDOM from "react-dom";
 import * as Ariakit from "@ariakit/react";
 import styles from "./sandbox.module.css";
 import {
+	Button,
 	DropdownMenu,
 	Icon,
 	IconButton,
@@ -109,6 +110,14 @@ export default function Page() {
 			</div>
 		</>
 	);
+}
+
+/**
+ * Wrapper for empty state content, displayed as a centered vertical flex box.
+ * Accepts any arbitrary content passed as `children`.
+ */
+function EmptyState({ children }: { children: React.ReactNode }) {
+	return <div className={styles.emptyState}>{children}</div>;
 }
 
 function clamp(value: number, min: number, max: number) {
@@ -260,18 +269,19 @@ function useSplitter<TPanel extends Element>(args?: UseSplitterArgs) {
 		};
 	}, [id, preferredSize]);
 
-	const panelMinSize = minSize === undefined ? undefined : `${minSize}px`;
+	const panelMinSize =
+		minSize === undefined ? undefined : `${Math.floor(minSize)}px`;
 	const panelMaxSize = React.useMemo(() => {
 		if (
 			preferredSize !== undefined &&
 			maxSizeSpec !== undefined &&
 			mode === undefined
 		) {
-			return `min(${preferredSize}px, ${maxSizeSpec.pct}%)`;
+			return `min(${Math.floor(preferredSize)}px, ${maxSizeSpec.pct}%)`;
 		}
 
 		if (size === undefined) return undefined;
-		return `${size}px`;
+		return `${Math.floor(size)}px`;
 	}, [maxSizeSpec, preferredSize, size, mode]);
 
 	return { sliderProps, panelProps, panelMinSize, panelMaxSize, resizing };
@@ -367,7 +377,7 @@ const SandboxTreeContext = React.createContext<{
 
 function SandboxTree() {
 	const [searchParams] = useSearchParams();
-	const tree = searchParams.get("tree"); // for handling ?tree=complex
+	const tree = searchParams.get("tree"); // for handling ?tree=complex and ?tree=empty
 	const [selected, setSelected] = React.useState<string | undefined>();
 	const [hidden, setHidden] = React.useState<string[]>([]);
 	const toggleHidden = React.useCallback((id: string) => {
@@ -378,6 +388,16 @@ function SandboxTree() {
 			return [...prev, id];
 		});
 	}, []);
+
+	if (tree === "empty") {
+		return (
+			<EmptyState>
+				<Text>No layers</Text>
+				<Button>Create a layer</Button>
+			</EmptyState>
+		);
+	}
+
 	return (
 		<SandboxTreeContext.Provider
 			value={React.useMemo(
@@ -385,7 +405,7 @@ function SandboxTree() {
 				[hidden, selected, toggleHidden],
 			)}
 		>
-			<Tree.Root className={styles.tree}>
+			<Tree.Root>
 				{tree === "complex" ? <ComplexTreeItems /> : <IdealTreeItems />}
 			</Tree.Root>
 		</SandboxTreeContext.Provider>
@@ -549,6 +569,7 @@ function TreeItem(props: TreeItemProps) {
 			return id;
 		});
 	}, [id, treeContext]);
+	const actionsVisible = props.actions || hidden;
 	return (
 		<SandboxParentItemContext.Provider
 			value={React.useMemo(() => ({ selected, hidden }), [hidden, selected])}
@@ -569,32 +590,34 @@ function TreeItem(props: TreeItemProps) {
 						>
 							{props.label}
 						</Tree.Content>
-						<div style={{ display: "flex", gap: 4, marginInlineStart: "auto" }}>
-							<IconButton
-								className={styles.action}
-								icon={lockIcon}
-								label="Lock"
-								variant="ghost"
-								aria-hidden={!props.actions || hidden}
-							/>
-							{parentContext.hidden ? (
-								<span className={styles.actionIcon}>
-									<Icon href={dotIcon} />
-								</span>
-							) : (
+						{actionsVisible && (
+							<Tree.Actions>
 								<IconButton
 									className={styles.action}
-									icon={hidden ? hideIcon : showIcon}
-									label={hidden ? "Show" : "Hide"}
+									icon={lockIcon}
+									label="Lock"
 									variant="ghost"
-									aria-hidden={!props.actions}
-									onClick={() => {
-										treeContext.toggleHidden(id);
-									}}
+									aria-hidden={!props.actions || hidden}
 								/>
-							)}
-							<TreeMoreActions hidden={!props.actions || hidden} />
-						</div>
+								{parentContext.hidden ? (
+									<span className={styles.actionIcon}>
+										<Icon href={dotIcon} />
+									</span>
+								) : (
+									<IconButton
+										className={styles.action}
+										icon={hidden ? hideIcon : showIcon}
+										label={hidden ? "Show" : "Hide"}
+										variant="ghost"
+										aria-hidden={!props.actions}
+										onClick={() => {
+											treeContext.toggleHidden(id);
+										}}
+									/>
+								)}
+								<TreeMoreActions hidden={!props.actions || hidden} />
+							</Tree.Actions>
+						)}
 					</>
 				}
 				expanded={isParentNode ? expanded : undefined}

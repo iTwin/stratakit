@@ -78,6 +78,21 @@
 	}
 }
 
+.🥝-tree-item-actions {
+	position: sticky;
+	inset-inline-end: 0;
+	padding-inline-end: 4px;
+	background-color: var(--kiwi-color-bg-surface-primary);
+	display: inline-flex;
+
+	&::before {
+		position: absolute;
+		content: "";
+		inset: 0;
+		background-color: var(--🥝list-item-background-color);
+	}
+}
+
 .🥝-tree-item-expander:is(.🥝-icon-button) {
 	@layer base {
 		visibility: var(--🥝tree-item-expander-visibility);

@@ -400,7 +400,7 @@ function SandboxTree() {
 				[hidden, selected, toggleHidden],
 			)}
 		>
-			<Tree.Root className={styles.tree}>
+			<Tree.Root>
 				{tree === "complex" ? <ComplexTreeItems /> : <IdealTreeItems />}
 			</Tree.Root>
 		</SandboxTreeContext.Provider>
@@ -564,6 +564,7 @@ function TreeItem(props: TreeItemProps) {
 			return id;
 		});
 	}, [id, treeContext]);
+	const actionsVisible = props.actions || hidden;
 	return (
 		<SandboxParentItemContext.Provider
 			value={React.useMemo(() => ({ selected, hidden }), [hidden, selected])}
@@ -584,32 +585,34 @@ function TreeItem(props: TreeItemProps) {
 						>
 							{props.label}
 						</Tree.Content>
-						<div style={{ display: "flex", gap: 4 }}>
-							<IconButton
-								className={styles.action}
-								icon={lockIcon}
-								label="Lock"
-								variant="ghost"
-								aria-hidden={!props.actions || hidden}
-							/>
-							{parentContext.hidden ? (
-								<span className={styles.actionIcon}>
-									<Icon href={dotIcon} />
-								</span>
-							) : (
+						{actionsVisible && (
+							<Tree.Actions>
 								<IconButton
 									className={styles.action}
-									icon={hidden ? hideIcon : showIcon}
-									label={hidden ? "Show" : "Hide"}
+									icon={lockIcon}
+									label="Lock"
 									variant="ghost"
-									aria-hidden={!props.actions}
-									onClick={() => {
-										treeContext.toggleHidden(id);
-									}}
+									aria-hidden={!props.actions || hidden}
 								/>
-							)}
-							<TreeMoreActions hidden={!props.actions || hidden} />
-						</div>
+								{parentContext.hidden ? (
+									<span className={styles.actionIcon}>
+										<Icon href={dotIcon} />
+									</span>
+								) : (
+									<IconButton
+										className={styles.action}
+										icon={hidden ? hideIcon : showIcon}
+										label={hidden ? "Show" : "Hide"}
+										variant="ghost"
+										aria-hidden={!props.actions}
+										onClick={() => {
+											treeContext.toggleHidden(id);
+										}}
+									/>
+								)}
+								<TreeMoreActions hidden={!props.actions || hidden} />
+							</Tree.Actions>
+						)}
 					</>
 				}
 				expanded={isParentNode ? expanded : undefined}

@@ -1,0 +1,1 @@
+import{n as o}from"./chunk-D52XG6IA-Bjtbe6aB.js";import{c as e}from"./index-BCMTPUG2.js";import{f as m}from"./~utils-bgFDR2pr.js";import{R as i}from"./XL7CSKGW-Bj6N_gdg.js";const p=m((t,r)=>{const{variant:a,...s}=t;return o.jsx(i,{...s,className:e("🥝-text",t.className),"data-kiwi-text-variant":a,ref:r})});export{p as T};

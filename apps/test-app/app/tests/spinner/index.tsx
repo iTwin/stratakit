@@ -4,7 +4,6 @@
  *--------------------------------------------------------------------------------------------*/
 import { definePage } from "~/~utils.tsx";
 import { Spinner } from "@itwin/itwinui-react/bricks";
-import styles from "./index.module.css";
 
 export const handle = { title: "Spinner" };
 
@@ -24,12 +23,9 @@ export default definePage(
 	{ visual: VisualTest },
 );
 
-function VisualTest({ paused = false }) {
+function VisualTest() {
 	return (
-		<div
-			style={{ display: "grid", gap: 4 }}
-			className={paused ? styles.animationPaused : ""}
-		>
+		<div style={{ display: "grid", gap: 4 }}>
 			{tones.map((tone) => (
 				<div
 					key={tone}

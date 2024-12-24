@@ -12,7 +12,7 @@ test("default", async ({ page }) => {
 });
 
 test("@visual", async ({ page }) => {
-	await page.goto("/tests/spinner?visual=true&paused");
+	await page.goto("/tests/spinner?visual=true");
 	await expect(page.locator("body")).toHaveScreenshot();
 });
 

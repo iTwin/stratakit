@@ -50,6 +50,10 @@
 			&:where(:hover[data-kiwi-parent-selected="true"][data-kiwi-selected="true"]) {
 				--🌀list-item-state: var(--🌀list-item-state--active-child-hover);
 			}
+
+			&:where(:hover) {
+				--🥝tree-item-actions-visibility: visible;
+			}
 		}
 	}
 }
@@ -85,6 +89,8 @@
 		padding-inline-end: 4px;
 		background-color: var(--kiwi-color-bg-surface-primary);
 		display: inline-flex;
+
+		visibility: var(--🥝tree-item-actions-visibility, hidden);
 
 		&::before {
 			position: absolute;

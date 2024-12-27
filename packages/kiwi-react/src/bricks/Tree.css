@@ -46,6 +46,10 @@
 			--🥝tree-item-expander-visibility: hidden;
 		}
 
+		&:where(:focus-within) {
+			--🥝tree-item-actions-visibility: visible;
+		}
+
 		@media (any-hover: hover) {
 			&:where(:hover[data-kiwi-parent-selected="true"][data-kiwi-selected="true"]) {
 				--🌀list-item-state: var(--🌀list-item-state--active-child-hover);

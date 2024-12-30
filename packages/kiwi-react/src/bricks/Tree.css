@@ -103,6 +103,16 @@
 			background-color: var(--🥝list-item-background-color);
 		}
 	}
+
+	@layer states {
+		&:where([data-kiwi-visible="true"]) {
+			--🥝tree-item-actions-visibility: visible;
+		}
+
+		&:where([data-kiwi-visible="false"]) {
+			--🥝tree-item-actions-visibility: hidden;
+		}
+	}
 }
 
 .🥝-tree-item-expander:is(.🥝-icon-button) {

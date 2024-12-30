@@ -580,7 +580,7 @@ function TreeItem(props: TreeItemProps) {
 						>
 							{props.label}
 						</Tree.Content>
-						<Tree.Actions>
+						<Tree.Actions visible={hidden ? true : undefined}>
 							<IconButton
 								className={styles.action}
 								icon={lockIcon}

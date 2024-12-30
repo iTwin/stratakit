@@ -101,14 +101,24 @@ DEV: TreeItemContent.displayName = "Tree.Content";
 
 // ----------------------------------------------------------------------------
 
-interface TreeItemActionsProps extends BaseProps {}
+interface TreeItemActionsProps extends BaseProps {
+	/**
+	 * Controlled state to force the actions visibility.
+	 * By default only hovered actions are visible.
+	 *
+	 * @default undefined
+	 */
+	visible?: boolean;
+}
 
 const TreeItemActions = forwardRef<"div", TreeItemActionsProps>(
 	(props, forwardedRef) => {
+		const { visible, ...rest } = props;
 		return (
 			<Ariakit.Toolbar
-				{...props}
+				{...rest}
 				className={cx("🥝-tree-item-actions", props.className)}
+				data-kiwi-visible={visible}
 				ref={forwardedRef}
 			>
 				{props.children}

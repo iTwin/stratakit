@@ -59,6 +59,10 @@
 				--🥝tree-item-actions-visibility: visible;
 			}
 		}
+
+		@media (any-hover: none) {
+			--🥝tree-item-actions-visibility: visible;
+		}
 	}
 }
 

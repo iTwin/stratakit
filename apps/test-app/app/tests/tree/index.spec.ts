@@ -40,6 +40,24 @@ test.describe("@visual", () => {
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
 
+	test("hovered item", async ({ page }) => {
+		await page.goto("/tests/tree");
+
+		const item = page.getByRole("button", { name: "Item 1.2" });
+		item.hover();
+
+		await expect(page.locator("body")).toHaveScreenshot();
+	});
+
+	test("focused item", async ({ page }) => {
+		await page.goto("/tests/tree");
+
+		const item = page.getByRole("button", { name: "Item 1.2" });
+		item.focus();
+
+		await expect(page.locator("body")).toHaveScreenshot();
+	});
+
 	test("overflow", async ({ page }) => {
 		await page.goto("/tests/tree?overflow");
 		const tree = page.getByRole("list").first();
@@ -49,6 +67,13 @@ test.describe("@visual", () => {
 
 	test("selected", async ({ page }) => {
 		await page.goto("/tests/tree?selected");
+		const tree = page.getByRole("list").first();
+		await expect(tree).toBeVisible();
+		await expect(page.locator("body")).toHaveScreenshot();
+	});
+
+	test("visible actions", async ({ page }) => {
+		await page.goto("/tests/tree?visibleActions");
 		const tree = page.getByRole("list").first();
 		await expect(tree).toBeVisible();
 		await expect(page.locator("body")).toHaveScreenshot();

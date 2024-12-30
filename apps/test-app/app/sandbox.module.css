@@ -90,7 +90,8 @@
 }
 
 .subheader {
-	padding: 12px;
+	padding-block-start: 12px;
+	padding-inline: 12px;
 	border-block: 1px solid var(--kiwi-color-border-neutral-base);
 	border-inline: none;
 
@@ -200,9 +201,13 @@
 	}
 }
 
-.tree {
+.tabPanel {
 	flex-grow: 1;
 	padding-block-end: 12px;
+}
+
+.tree {
+	block-size: 100%;
 }
 
 .action {

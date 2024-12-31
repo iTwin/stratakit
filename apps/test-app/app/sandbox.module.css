@@ -90,7 +90,7 @@
 }
 
 .subheader {
-	padding-block-start: 12px;
+	min-block-size: 2.5rem;
 	padding-inline: 12px;
 	border-block: 1px solid var(--kiwi-color-border-neutral-base);
 	border-inline: none;
@@ -111,6 +111,10 @@
 
 .subheaderActions {
 	margin-inline-start: auto;
+}
+
+.tabList {
+	align-self: flex-end;
 }
 
 .emptyState {

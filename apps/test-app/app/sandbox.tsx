@@ -700,7 +700,7 @@ function Subheader() {
 	return (
 		<div className={styles.subheader}>
 			{isSearching ? undefined : (
-				<Tabs.TabList tone="accent" ref={tabsRef}>
+				<Tabs.TabList className={styles.tabList} tone="accent" ref={tabsRef}>
 					<Tabs.Tab id="simple">Simple Tree</Tabs.Tab>
 					<Tabs.Tab id="complex">Complex Tree</Tabs.Tab>
 				</Tabs.TabList>

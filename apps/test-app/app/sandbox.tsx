@@ -375,9 +375,16 @@ const SandboxTreeContext = React.createContext<{
 	toggleHidden: () => {},
 });
 
-function SandboxTree() {
+function useTreeType() {
 	const [searchParams] = useSearchParams();
 	const tree = searchParams.get("tree"); // for handling ?tree=complex and ?tree=empty
+	if (tree === "complex") return "complex";
+	if (tree === "empty") return "empty";
+	return "ideal";
+}
+
+function SandboxTree() {
+	const tree = useTreeType();
 	const [selected, setSelected] = React.useState<string | undefined>();
 	const [hidden, setHidden] = React.useState<string[]>([]);
 	const toggleHidden = React.useCallback((id: string) => {
@@ -418,6 +425,7 @@ function SandboxTree() {
 
 interface TreeItem {
 	label: string;
+	type?: string;
 	items?: TreeItem[];
 }
 
@@ -426,11 +434,21 @@ interface TreeStore {
 	items?: TreeItem[];
 }
 
-const idealTree: TreeStore = {
-	filters: [],
+const idealTree = {
+	filters: [
+		"Guides",
+		"Other",
+		"Road",
+		"Parking lot",
+		"Building",
+		"Sewer",
+		"Project boundary",
+		"Map",
+	],
 	items: [
 		{
 			label: "Guides",
+			type: "Guides",
 			items: [
 				{
 					label: "Tree",
@@ -445,6 +463,7 @@ const idealTree: TreeStore = {
 		},
 		{
 			label: "Other",
+			type: "Other",
 			items: [
 				{
 					label: "Object 2",
@@ -455,10 +474,12 @@ const idealTree: TreeStore = {
 		},
 		{
 			label: "Road",
+			type: "Road",
 			items: [{ label: "Parking lot access" }, { label: "Site access" }],
 		},
 		{
 			label: "Parking lot",
+			type: "Parking lot",
 			items: [
 				{
 					label: "Parking area",
@@ -473,6 +494,7 @@ const idealTree: TreeStore = {
 		},
 		{
 			label: "Building",
+			type: "Building",
 			items: [
 				{
 					label: "Building area",
@@ -482,6 +504,7 @@ const idealTree: TreeStore = {
 		},
 		{
 			label: "Sewer",
+			type: "Sewer",
 			items: [
 				{
 					label: "Run off pipe",
@@ -491,6 +514,7 @@ const idealTree: TreeStore = {
 		},
 		{
 			label: "Project boundary",
+			type: "Project boundary",
 			items: [
 				{
 					label: "Property area",
@@ -500,6 +524,7 @@ const idealTree: TreeStore = {
 		},
 		{
 			label: "Map",
+			type: "Map",
 			items: [
 				{
 					label: "Location",
@@ -508,7 +533,7 @@ const idealTree: TreeStore = {
 			],
 		},
 	],
-};
+} satisfies TreeStore;
 
 function TreeItemRenderer({ item: treeItem }: { item: TreeItem }) {
 	return (
@@ -724,10 +749,11 @@ function Subheader() {
 	const [isSearching, setIsSearching] = React.useState(false);
 	const searchInputRef = React.useRef<HTMLInputElement>(null);
 	const subheaderRef = React.useRef<HTMLHeadingElement>(null);
+	const tree = useTreeType();
 
 	const actions = isSearching ? (
 		<>
-			<SortingModes />
+			<FiltersMenu filters={tree === "ideal" ? idealTree.filters : []} />
 			<IconButton
 				className={styles.shiftIconRight}
 				icon={dismissIcon}
@@ -778,7 +804,11 @@ function Subheader() {
 	);
 }
 
-function SortingModes() {
+function FiltersMenu({
+	filters,
+}: {
+	filters: string[];
+}) {
 	return (
 		<DropdownMenu.Root>
 			<DropdownMenu.Button
@@ -786,16 +816,9 @@ function SortingModes() {
 			/>
 			<DropdownMenu.Content style={{ minInlineSize: 164 }}>
 				<DropdownMenu.Item>Show all</DropdownMenu.Item>
-				<DropdownMenu.Item>Guides</DropdownMenu.Item>
-				<DropdownMenu.Item>Other</DropdownMenu.Item>
-				<DropdownMenu.Item>Roadway</DropdownMenu.Item>
-				<DropdownMenu.Item>Parking</DropdownMenu.Item>
-				<DropdownMenu.Item>Building</DropdownMenu.Item>
-				<DropdownMenu.Item>Dry utility</DropdownMenu.Item>
-				<DropdownMenu.Item>Stormwater</DropdownMenu.Item>
-				<DropdownMenu.Item>Sewer</DropdownMenu.Item>
-				<DropdownMenu.Item>Boundary</DropdownMenu.Item>
-				<DropdownMenu.Item>Map</DropdownMenu.Item>
+				{filters.map((filter) => {
+					return <DropdownMenu.Item key={filter}>{filter}</DropdownMenu.Item>;
+				})}
 			</DropdownMenu.Content>
 		</DropdownMenu.Root>
 	);

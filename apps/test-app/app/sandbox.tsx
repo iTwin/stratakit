@@ -39,6 +39,18 @@ export default function Page() {
 			minSize: { px: 256, pct: 20 },
 			maxSize: { pct: 30 },
 		});
+	const [filters, setFilters] = React.useState<string[]>([]);
+	const toggleFilter = React.useCallback((filter: string) => {
+		setFilters((prev) => {
+			if (prev.includes(filter)) {
+				return prev.filter((f) => f !== filter);
+			}
+			return [...prev, filter];
+		});
+	}, []);
+	const clearFilters = React.useCallback(() => {
+		setFilters([]);
+	}, []);
 	return (
 		<>
 			<div
@@ -67,30 +79,41 @@ export default function Page() {
 					</div>
 				</div>
 
-				<div
-					{...panelProps}
-					className={styles.leftPanel}
-					style={{ position: "relative", ...panelProps.style }}
+				<TreeFilteringContext
+					value={React.useMemo(
+						() => ({
+							filters,
+							toggleFilter,
+							clearFilters,
+						}),
+						[filters, toggleFilter, clearFilters],
+					)}
 				>
-					<div className={styles.panelHeader}>
-						{/* biome-ignore lint/a11y: hgroup needs an explicit role for better support */}
-						<hgroup role="group">
-							<h2 className={styles.panelTitle}>Epoch System iModel</h2>
-							<p className={styles.panelCaption}>2024 Refresh</p>
-						</hgroup>
-						<div className={styles.actions}>
-							<IconButton
-								className={styles.shiftIconRight}
-								icon={panelLeftIcon}
-								label="Dock panel"
-								variant="ghost"
-								disabled
-							/>
+					<div
+						{...panelProps}
+						className={styles.leftPanel}
+						style={{ position: "relative", ...panelProps.style }}
+					>
+						<div className={styles.panelHeader}>
+							{/* biome-ignore lint/a11y: hgroup needs an explicit role for better support */}
+							<hgroup role="group">
+								<h2 className={styles.panelTitle}>Epoch System iModel</h2>
+								<p className={styles.panelCaption}>2024 Refresh</p>
+							</hgroup>
+							<div className={styles.actions}>
+								<IconButton
+									className={styles.shiftIconRight}
+									icon={panelLeftIcon}
+									label="Dock panel"
+									variant="ghost"
+									disabled
+								/>
+							</div>
 						</div>
+						<Subheader />
+						<SandboxTree />
 					</div>
-					<Subheader />
-					<SandboxTree />
-				</div>
+				</TreeFilteringContext>
 
 				<div
 					className={styles.splitter}
@@ -384,6 +407,7 @@ function useTreeType() {
 }
 
 function SandboxTree() {
+	const context = React.useContext(TreeFilteringContext);
 	const tree = useTreeType();
 	const [selected, setSelected] = React.useState<string | undefined>();
 	const [hidden, setHidden] = React.useState<string[]>([]);
@@ -416,7 +440,7 @@ function SandboxTree() {
 				{tree === "complex" ? (
 					<ComplexTreeItems />
 				) : (
-					<TreeRenderer tree={idealTree} />
+					<TreeRenderer tree={idealTree} activeFilters={context.filters} />
 				)}
 			</Tree.Root>
 		</SandboxTreeContext.Provider>
@@ -547,10 +571,19 @@ function TreeItemRenderer({ item: treeItem }: { item: TreeItem }) {
 
 function TreeRenderer({
 	tree,
+	activeFilters,
 }: {
 	tree: TreeStore;
+	activeFilters: string[];
 }) {
 	return tree.items?.map((item) => {
+		// Filters first level only, usually you'd want to traverse the tree.
+		if (
+			activeFilters.length > 0 &&
+			(!item.type || !activeFilters.includes(item.type))
+		) {
+			return null;
+		}
 		return <TreeItemRenderer key={item.label} item={item} />;
 	});
 }
@@ -809,17 +842,43 @@ function FiltersMenu({
 }: {
 	filters: string[];
 }) {
+	const context = React.useContext(TreeFilteringContext);
 	return (
 		<DropdownMenu.Root>
 			<DropdownMenu.Button
 				render={<IconButton icon={filterIcon} label="Filter" variant="ghost" />}
 			/>
 			<DropdownMenu.Content style={{ minInlineSize: 164 }}>
-				<DropdownMenu.Item>Show all</DropdownMenu.Item>
+				<DropdownMenu.Item
+					onClick={() => {
+						context.clearFilters();
+					}}
+				>
+					Show all
+				</DropdownMenu.Item>
 				{filters.map((filter) => {
-					return <DropdownMenu.Item key={filter}>{filter}</DropdownMenu.Item>;
+					return (
+						<DropdownMenu.Item
+							key={filter}
+							onClick={() => {
+								context.toggleFilter(filter);
+							}}
+						>
+							{filter}
+						</DropdownMenu.Item>
+					);
 				})}
 			</DropdownMenu.Content>
 		</DropdownMenu.Root>
 	);
 }
+
+const TreeFilteringContext = React.createContext<{
+	filters: string[];
+	toggleFilter: (filter: string) => void;
+	clearFilters: () => void;
+}>({
+	filters: [],
+	toggleFilter: () => {},
+	clearFilters: () => {},
+});

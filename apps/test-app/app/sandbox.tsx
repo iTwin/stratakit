@@ -406,63 +406,128 @@ function SandboxTree() {
 			)}
 		>
 			<Tree.Root className={styles.tree}>
-				{tree === "complex" ? <ComplexTreeItems /> : <IdealTreeItems />}
+				{tree === "complex" ? (
+					<ComplexTreeItems />
+				) : (
+					<TreeRenderer tree={idealTree} />
+				)}
 			</Tree.Root>
 		</SandboxTreeContext.Provider>
 	);
 }
 
-function IdealTreeItems() {
+interface TreeItem {
+	label: string;
+	items?: TreeItem[];
+}
+
+interface TreeStore {
+	filters: string[];
+	items?: TreeItem[];
+}
+
+const idealTree: TreeStore = {
+	filters: [],
+	items: [
+		{
+			label: "Guides",
+			items: [
+				{
+					label: "Tree",
+					items: [
+						{ label: "Guide 4" },
+						{ label: "Guide 3" },
+						{ label: "Guide 2" },
+						{ label: "Guide 1" },
+					],
+				},
+			],
+		},
+		{
+			label: "Other",
+			items: [
+				{
+					label: "Object 2",
+					items: [{ label: "Path 3" }],
+				},
+				{ label: "Object 1" },
+			],
+		},
+		{
+			label: "Road",
+			items: [{ label: "Parking lot access" }, { label: "Site access" }],
+		},
+		{
+			label: "Parking lot",
+			items: [
+				{
+					label: "Parking area",
+					items: [
+						{ label: "Bay point 2" },
+						{ label: "Bay point 1" },
+						{ label: "Space point 1" },
+						{ label: "Path 6" },
+					],
+				},
+			],
+		},
+		{
+			label: "Building",
+			items: [
+				{
+					label: "Building area",
+					items: [{ label: "Path 5" }],
+				},
+			],
+		},
+		{
+			label: "Sewer",
+			items: [
+				{
+					label: "Run off pipe",
+					items: [{ label: "Path 4" }],
+				},
+			],
+		},
+		{
+			label: "Project boundary",
+			items: [
+				{
+					label: "Property area",
+					items: [{ label: "Path 1" }],
+				},
+			],
+		},
+		{
+			label: "Map",
+			items: [
+				{
+					label: "Location",
+					items: [{ label: "Terrain" }],
+				},
+			],
+		},
+	],
+};
+
+function TreeItemRenderer({ item: treeItem }: { item: TreeItem }) {
 	return (
-		<>
-			<TreeItem label="Guides">
-				<TreeItem label="Tree" actions>
-					<TreeItem label="Guide 4" />
-					<TreeItem label="Guide 3" />
-					<TreeItem label="Guide 2" />
-					<TreeItem label="Guide 1" />
-				</TreeItem>
-			</TreeItem>
-			<TreeItem label="Other">
-				<TreeItem label="Object 2" actions>
-					<TreeItem label="Path 3" />
-				</TreeItem>
-				<TreeItem label="Object 1" />
-			</TreeItem>
-			<TreeItem label="Road">
-				<TreeItem label="Parking lot access" />
-				<TreeItem label="Site access" />
-			</TreeItem>
-			<TreeItem label="Parking lot" actions>
-				<TreeItem label="Parking area" actions>
-					<TreeItem label="Bay point 2" />
-					<TreeItem label="Bay point 1" actions />
-					<TreeItem label="Space point 1" actions />
-					<TreeItem label="Path 6" />
-				</TreeItem>
-			</TreeItem>
-			<TreeItem label="Building">
-				<TreeItem label="Building area">
-					<TreeItem label="Path 5" />
-				</TreeItem>
-			</TreeItem>
-			<TreeItem label="Sewer">
-				<TreeItem label="Run off pipe">
-					<TreeItem label="Path 4" />
-				</TreeItem>
-			</TreeItem>
-			<TreeItem label="Project boundary">
-				<TreeItem label="Property area">
-					<TreeItem label="Path 1" />
-				</TreeItem>
-			</TreeItem>
-			<TreeItem label="Map">
-				<TreeItem label="Location">
-					<TreeItem label="Terrain" />
-				</TreeItem>
-			</TreeItem>
-		</>
+		<TreeItem label={treeItem.label}>
+			{treeItem.items?.map((item) => (
+				<TreeItemRenderer key={item.label} item={item} />
+			))}
+		</TreeItem>
 	);
+}
+
+function TreeRenderer({
+	tree,
+}: {
+	tree: TreeStore;
+}) {
+	return tree.items?.map((item) => {
+		return <TreeItemRenderer key={item.label} item={item} />;
+	});
 }
 
 function ComplexTreeItems() {

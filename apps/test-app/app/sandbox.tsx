@@ -39,6 +39,7 @@ export default function Page() {
 			minSize: { px: 256, pct: 20 },
 			maxSize: { pct: 30 },
 		});
+	const [filtered, setFiltered] = React.useState(false);
 	const [filters, setFilters] = React.useState<string[]>([]);
 	const toggleFilter = React.useCallback((filter: string) => {
 		setFilters((prev) => {
@@ -47,9 +48,11 @@ export default function Page() {
 			}
 			return [...prev, filter];
 		});
+		setFiltered(true);
 	}, []);
 	const clearFilters = React.useCallback(() => {
 		setFilters([]);
+		setFiltered(true);
 	}, []);
 	return (
 		<>
@@ -83,10 +86,11 @@ export default function Page() {
 					value={React.useMemo(
 						() => ({
 							filters,
+							filtered,
 							toggleFilter,
 							clearFilters,
 						}),
-						[filters, toggleFilter, clearFilters],
+						[filters, filtered, toggleFilter, clearFilters],
 					)}
 				>
 					<div
@@ -779,10 +783,28 @@ function TreeMoreActions({ hidden }: { hidden?: boolean }) {
 }
 
 function Subheader() {
+	const { filters, filtered } = React.useContext(TreeFilteringContext);
 	const [isSearching, setIsSearching] = React.useState(false);
 	const searchInputRef = React.useRef<HTMLInputElement>(null);
 	const subheaderRef = React.useRef<HTMLHeadingElement>(null);
 	const tree = useTreeType();
+	const itemCount = React.useMemo(() => {
+		if (tree !== "ideal") return undefined;
+		if (filters.length === 0) return undefined;
+
+		const filteredItems = idealTree.items.filter((item) => {
+			if (!item.type) return false;
+			return filters.includes(item.type);
+		});
+
+		function countItems(items: TreeItem[]): number {
+			return items.reduce((acc, item) => {
+				const childItemCount = item.items ? countItems(item.items) : 0;
+				return acc + 1 + childItemCount;
+			}, 0);
+		}
+		return countItems(filteredItems);
+	}, [filters, tree]);
 
 	const actions = isSearching ? (
 		<>
@@ -824,6 +846,14 @@ function Subheader() {
 			>
 				Layers
 			</Ariakit.Role.h3>
+			<VisuallyHidden
+				aria-live={filtered ? "polite" : "off"}
+				aria-atomic={true}
+			>
+				{itemCount === undefined
+					? "Showing all tree items"
+					: `Showing ${itemCount} tree items`}
+			</VisuallyHidden>
 
 			{isSearching ? (
 				<TextBox.Root className={styles.searchInput}>
@@ -875,10 +905,12 @@ function FiltersMenu({
 
 const TreeFilteringContext = React.createContext<{
 	filters: string[];
+	filtered: boolean;
 	toggleFilter: (filter: string) => void;
 	clearFilters: () => void;
 }>({
 	filters: [],
+	filtered: false,
 	toggleFilter: () => {},
 	clearFilters: () => {},
 });

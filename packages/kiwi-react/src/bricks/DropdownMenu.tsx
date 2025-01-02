@@ -208,9 +208,44 @@ DEV: DropdownMenuItem.displayName = "DropdownMenu.Item";
 
 // ----------------------------------------------------------------------------
 
+interface DropdownMenuItemCheckboxProps
+	extends FocusableProps,
+		Pick<Ariakit.MenuItemCheckboxProps, "checked"> {}
+
+/**
+ * A single menu item within the dropdown menu. Should be used as a child of `DropdownMenu.Content`.
+ *
+ * Example:
+ * ```tsx
+ * <DropdownMenu.ItemCheckbox>Add</DropdownMenu.Item>
+ * <DropdownMenu.ItemCheckbox>Edit</DropdownMenu.Item>
+ * ```
+ */
+const DropdownMenuItemCheckbox = forwardRef<
+	"div",
+	DropdownMenuItemCheckboxProps
+>((props, forwardedRef) => {
+	const name = React.useId();
+	return (
+		<Ariakit.MenuItemCheckbox
+			accessibleWhenDisabled
+			{...props}
+			name={name}
+			render={<ListItem.Root render={props.render} />}
+			ref={forwardedRef}
+		>
+			<ListItem.Content>{props.children}</ListItem.Content>
+		</Ariakit.MenuItemCheckbox>
+	);
+});
+DEV: DropdownMenuItemCheckbox.displayName = "DropdownMenu.ItemCheckbox";
+
+// ----------------------------------------------------------------------------
+
 export {
 	DropdownMenu as Root,
 	DropdownMenuButton as Button,
 	DropdownMenuContent as Content,
 	DropdownMenuItem as Item,
+	DropdownMenuItemCheckbox as ItemCheckbox,
 };

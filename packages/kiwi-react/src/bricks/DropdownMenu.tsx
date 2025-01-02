@@ -91,10 +91,14 @@ interface DropdownMenuContentProps extends FocusableProps {}
  */
 const DropdownMenuContent = forwardRef<"div", DropdownMenuContentProps>(
 	(props, forwardedRef) => {
+		const ctx = Ariakit.useMenuContext();
+		const hasValues = Ariakit.useStoreState(ctx, (state) =>
+			state ? Object.keys(state?.values).length > 0 : false,
+		);
 		return (
 			<Ariakit.Menu
 				portal={!supportsPopover}
-				unmountOnHide
+				unmountOnHide={!hasValues}
 				{...props}
 				style={{ zIndex: supportsPopover ? undefined : 9999, ...props.style }}
 				wrapperProps={{ popover: "manual" }}
@@ -214,8 +218,8 @@ DEV: DropdownMenuItem.displayName = "DropdownMenu.Item";
 // ----------------------------------------------------------------------------
 
 interface DropdownMenuItemCheckboxProps
-	extends FocusableProps,
-		Pick<Ariakit.MenuItemCheckboxProps, "checked"> {}
+	extends Omit<FocusableProps, "onChange">,
+		Pick<Ariakit.MenuItemCheckboxProps, "checked" | "onChange"> {}
 
 /**
  * A single menu item within the dropdown menu. Should be used as a child of `DropdownMenu.Content`.
@@ -234,8 +238,8 @@ const DropdownMenuItemCheckbox = forwardRef<
 	return (
 		<Ariakit.MenuItemCheckbox
 			accessibleWhenDisabled
-			{...props}
 			name={name}
+			{...props}
 			render={<ListItem.Root render={props.render} />}
 			className={cx("🥝-dropdown-menu-item-checkbox", props.className)}
 			ref={forwardedRef}

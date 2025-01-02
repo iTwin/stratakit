@@ -39,5 +39,15 @@
 		&:where([aria-checked="true"]) {
 			--🌀list-item-state: var(--🌀list-item-state--active);
 		}
+
+		&:where([aria-checked="false"]) {
+			--🥝dropdown-menu-item-check-visibility: hidden;
+		}
+	}
+}
+
+.🥝-dropdown-menu-item-check {
+	@layer base {
+		visibility: var(--🥝dropdown-menu-item-check-visibility);
 	}
 }

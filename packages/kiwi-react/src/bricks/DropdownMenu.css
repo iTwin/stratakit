@@ -33,3 +33,11 @@
 		margin-inline-start: 0.5rem;
 	}
 }
+
+.🥝-dropdown-menu-item-checkbox:is(.🥝-list-item) {
+	@layer states {
+		&:where([aria-checked="true"]) {
+			--🌀list-item-state: var(--🌀list-item-state--active);
+		}
+	}
+}

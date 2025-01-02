@@ -232,6 +232,7 @@ const DropdownMenuItemCheckbox = forwardRef<
 			{...props}
 			name={name}
 			render={<ListItem.Root render={props.render} />}
+			className={cx("🥝-dropdown-menu-item-checkbox", props.className)}
 			ref={forwardedRef}
 		>
 			<ListItem.Content>{props.children}</ListItem.Content>

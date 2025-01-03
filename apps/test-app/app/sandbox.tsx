@@ -759,7 +759,8 @@ function TreeMoreActions({ hidden }: { hidden?: boolean }) {
 
 function Subheader() {
 	const { selectedId: tree } = React.useContext(TabsContext);
-	const { filters, filtered } = React.useContext(TreeFilteringContext);
+	const { filters, filtered, search, setSearch } =
+		React.useContext(TreeFilteringContext);
 	const [isSearching, setIsSearching] = React.useState(false);
 	const searchInputRef = React.useRef<HTMLInputElement>(null);
 	const itemCount = React.useMemo(() => {
@@ -790,6 +791,7 @@ function Subheader() {
 				label="Close"
 				variant="ghost"
 				onClick={() => {
+					setSearch("");
 					ReactDOM.flushSync(() => setIsSearching(false));
 					tabsRef.current?.focus();
 				}}
@@ -828,7 +830,14 @@ function Subheader() {
 			{isSearching ? (
 				<TextBox.Root className={styles.searchInput}>
 					<TextBox.Icon href={searchIcon} />
-					<TextBox.Input placeholder="Search" ref={searchInputRef} />
+					<TextBox.Input
+						placeholder="Search"
+						ref={searchInputRef}
+						onChange={(e) => {
+							setSearch(e.target.value);
+						}}
+						value={search}
+					/>
 				</TextBox.Root>
 			) : null}
 
@@ -900,6 +909,7 @@ function FiltersMenu({
 function TreeFilteringProvider(props: React.PropsWithChildren) {
 	const [filtered, setFiltered] = React.useState(false);
 	const [filters, setFilters] = React.useState<string[]>([]);
+	const [search, setSearch] = React.useState("");
 	const toggleFilter = React.useCallback((filter: string) => {
 		setFilters((prev) => {
 			if (prev.includes(filter)) {
@@ -921,8 +931,10 @@ function TreeFilteringProvider(props: React.PropsWithChildren) {
 					filtered,
 					toggleFilter,
 					clearFilters,
+					search,
+					setSearch,
 				}),
-				[filters, filtered, toggleFilter, clearFilters],
+				[filters, filtered, toggleFilter, clearFilters, search],
 			)}
 		>
 			{props.children}
@@ -963,11 +975,15 @@ const TreeFilteringContext = React.createContext<{
 	filtered: boolean;
 	toggleFilter: (filter: string) => void;
 	clearFilters: () => void;
+	search: string;
+	setSearch: (search: string) => void;
 }>({
 	filters: [],
 	filtered: false,
 	toggleFilter: () => {},
 	clearFilters: () => {},
+	search: "",
+	setSearch: () => {},
 });
 
 const TabsContext = React.createContext<{

@@ -443,7 +443,11 @@ function SandboxTree({ tree }: { tree: TreeType }) {
 				{tree === "complex" ? (
 					<ComplexTreeItems />
 				) : (
-					<TreeRenderer tree={simpleTree} activeFilters={context.filters} />
+					<TreeRenderer
+						tree={simpleTree}
+						activeFilters={context.filters}
+						search={context.search}
+					/>
 				)}
 			</Tree.Root>
 		</SandboxTreeContext.Provider>
@@ -458,7 +462,7 @@ interface TreeItem {
 
 interface TreeStore {
 	filters: string[];
-	items?: TreeItem[];
+	items: TreeItem[];
 }
 
 const simpleTree = {
@@ -575,18 +579,51 @@ function TreeItemRenderer({ item: treeItem }: { item: TreeItem }) {
 function TreeRenderer({
 	tree,
 	activeFilters,
+	search,
 }: {
 	tree: TreeStore;
 	activeFilters: string[];
+	search: string;
 }) {
-	return tree.items?.map((item) => {
-		// Filters first level only, usually you'd want to traverse the tree.
-		if (
-			activeFilters.length > 0 &&
-			(!item.type || !activeFilters.includes(item.type))
-		) {
-			return null;
+	const items = tree.items;
+	const filteredItems = React.useMemo(() => {
+		return items.reduce<TreeItem[]>((acc, item) => {
+			// Filters first level only, usually you'd want to traverse the tree.
+			if (
+				activeFilters.length > 0 &&
+				(!item.type || !activeFilters.includes(item.type))
+			) {
+				return acc;
+			}
+
+			acc.push(item);
+			return acc;
+		}, []);
+	}, [items, activeFilters]);
+
+	const searchItems = React.useMemo(() => {
+		// Traverse the tree and filter items based on search.
+		function matchSearch(items: TreeItem[]): TreeItem[] {
+			return items.reduce<TreeItem[]>((acc, item) => {
+				const matchingItems = matchSearch(item.items ?? []);
+
+				// If the item matches the search or any of the children match the search include it.
+				if (
+					item.label.toLowerCase().includes(search.toLowerCase()) ||
+					matchingItems.length > 0
+				) {
+					acc.push({
+						...item,
+						items: matchingItems,
+					});
+				}
+				return acc;
+			}, []);
 		}
+		return matchSearch(filteredItems);
+	}, [filteredItems, search]);
+
+	return searchItems.map((item) => {
 		return <TreeItemRenderer key={item.label} item={item} />;
 	});
 }

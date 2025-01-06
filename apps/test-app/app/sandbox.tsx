@@ -41,8 +41,8 @@ export default function Page() {
 	return (
 		<Layout
 			panelContent={
-				<TreeFilteringProvider>
-					<SandboxTabs>
+				<SandboxTabs>
+					<TreeFilteringProvider>
 						<div className={styles.panelHeader}>
 							{/* biome-ignore lint/a11y: hgroup needs an explicit role for better support */}
 							<hgroup role="group">
@@ -74,8 +74,8 @@ export default function Page() {
 						>
 							<SandboxTree tree="complex" />
 						</Tabs.TabPanel>
-					</SandboxTabs>
-				</TreeFilteringProvider>
+					</TreeFilteringProvider>
+				</SandboxTabs>
 			}
 		>
 			<header className={styles.header}>
@@ -408,10 +408,9 @@ const SandboxTreeContext = React.createContext<{
 
 type TreeType = "simple" | "complex";
 
-function SandboxTree({ tree }: { tree: TreeType }) {
+function SandboxTree({ tree: treeType }: { tree: TreeType }) {
 	const [searchParams] = useSearchParams();
 	const treeParam = searchParams.get("tree"); // for handling ?tree=empty
-	const context = React.useContext(TreeFilteringContext);
 	const [selected, setSelected] = React.useState<string | undefined>();
 	const [hidden, setHidden] = React.useState<string[]>([]);
 	const toggleHidden = React.useCallback((id: string) => {
@@ -422,6 +421,8 @@ function SandboxTree({ tree }: { tree: TreeType }) {
 			return [...prev, id];
 		});
 	}, []);
+
+	const { tree } = React.useContext(TreeFilteringContext);
 
 	if (treeParam === "empty") {
 		return (
@@ -440,14 +441,10 @@ function SandboxTree({ tree }: { tree: TreeType }) {
 			)}
 		>
 			<Tree.Root className={styles.tree}>
-				{tree === "complex" ? (
+				{treeType === "complex" ? (
 					<ComplexTreeItems />
 				) : (
-					<TreeRenderer
-						tree={simpleTree}
-						activeFilters={context.filters}
-						search={context.search}
-					/>
+					<TreeRenderer tree={tree} />
 				)}
 			</Tree.Root>
 		</SandboxTreeContext.Provider>
@@ -576,33 +573,31 @@ function TreeItemRenderer({ item: treeItem }: { item: TreeItem }) {
 	);
 }
 
-function TreeRenderer({
+function useFilteredTree({
 	tree,
-	activeFilters,
+	filters,
 	search,
 }: {
-	tree: TreeStore;
-	activeFilters: string[];
+	tree?: TreeStore;
+	filters: string[];
 	search: string;
 }) {
-	const items = tree.items;
+	const items = React.useMemo(() => tree?.items ?? [], [tree]);
 	const filteredItems = React.useMemo(() => {
+		if (filters.length === 0) return items;
 		return items.reduce<TreeItem[]>((acc, item) => {
 			// Filters first level only, usually you'd want to traverse the tree.
-			if (
-				activeFilters.length > 0 &&
-				(!item.type || !activeFilters.includes(item.type))
-			) {
+			if (!item.type || !filters.includes(item.type)) {
 				return acc;
 			}
 
 			acc.push(item);
 			return acc;
 		}, []);
-	}, [items, activeFilters]);
+	}, [items, filters]);
 
-	const searchItems = React.useMemo(() => {
-		// Traverse the tree and filter items based on search.
+	const foundItems = React.useMemo(() => {
+		// Filter items based on search string.
 		function matchSearch(items: TreeItem[]): TreeItem[] {
 			return items.reduce<TreeItem[]>((acc, item) => {
 				const matchingItems = matchSearch(item.items ?? []);
@@ -620,10 +615,32 @@ function TreeRenderer({
 				return acc;
 			}, []);
 		}
+
+		if (search === "") return filteredItems;
 		return matchSearch(filteredItems);
 	}, [filteredItems, search]);
 
-	return searchItems.map((item) => {
+	const itemCount = React.useMemo(() => {
+		if (!tree) return undefined;
+		if (filters.length === 0 && search === "") return undefined;
+
+		function countItems(items: TreeItem[]): number {
+			return items.reduce((acc, item) => {
+				const childItemCount = item.items ? countItems(item.items) : 0;
+				return acc + 1 + childItemCount;
+			}, 0);
+		}
+		return countItems(foundItems);
+	}, [foundItems, tree, filters, search]);
+	return { filteredTree: foundItems, itemCount };
+}
+
+function TreeRenderer({
+	tree,
+}: {
+	tree: TreeItem[];
+}) {
+	return tree.map((item) => {
 		return <TreeItemRenderer key={item.label} item={item} />;
 	});
 }
@@ -796,27 +813,11 @@ function TreeMoreActions({ hidden }: { hidden?: boolean }) {
 
 function Subheader() {
 	const { selectedId: tree } = React.useContext(TabsContext);
-	const { filters, filtered, search, setSearch } =
+	const { itemCount, clearFilters } = React.useContext(TreeFilteringContext);
+	const { filtered, search, setSearch } =
 		React.useContext(TreeFilteringContext);
 	const [isSearching, setIsSearching] = React.useState(false);
 	const searchInputRef = React.useRef<HTMLInputElement>(null);
-	const itemCount = React.useMemo(() => {
-		if (tree !== "simple") return undefined;
-		if (filters.length === 0) return undefined;
-
-		const filteredItems = simpleTree.items.filter((item) => {
-			if (!item.type) return false;
-			return filters.includes(item.type);
-		});
-
-		function countItems(items: TreeItem[]): number {
-			return items.reduce((acc, item) => {
-				const childItemCount = item.items ? countItems(item.items) : 0;
-				return acc + 1 + childItemCount;
-			}, 0);
-		}
-		return countItems(filteredItems);
-	}, [filters, tree]);
 	const tabsRef = React.useRef<HTMLHeadingElement>(null);
 
 	const actions = isSearching ? (
@@ -829,6 +830,7 @@ function Subheader() {
 				variant="ghost"
 				onClick={() => {
 					setSearch("");
+					clearFilters();
 					ReactDOM.flushSync(() => setIsSearching(false));
 					tabsRef.current?.focus();
 				}}
@@ -844,6 +846,7 @@ function Subheader() {
 				ReactDOM.flushSync(() => setIsSearching(true));
 				searchInputRef.current?.focus();
 			}}
+			disabled={tree !== "simple"}
 		/>
 	);
 
@@ -897,7 +900,6 @@ function FiltersMenu({
 						icon={filterIcon}
 						label="Filter"
 						variant="ghost"
-						disabled={filters.length === 0}
 						isActive={context.filters.length > 0}
 					/>
 				}
@@ -960,6 +962,13 @@ function TreeFilteringProvider(props: React.PropsWithChildren) {
 		setFilters([]);
 		setFiltered(true);
 	}, []);
+
+	const { filteredTree, itemCount } = useFilteredTree({
+		tree: simpleTree,
+		filters,
+		search,
+	});
+
 	return (
 		<TreeFilteringContext.Provider
 			value={React.useMemo(
@@ -970,8 +979,18 @@ function TreeFilteringProvider(props: React.PropsWithChildren) {
 					clearFilters,
 					search,
 					setSearch,
+					itemCount,
+					tree: filteredTree,
 				}),
-				[filters, filtered, toggleFilter, clearFilters, search],
+				[
+					filters,
+					filtered,
+					toggleFilter,
+					clearFilters,
+					search,
+					itemCount,
+					filteredTree,
+				],
 			)}
 		>
 			{props.children}
@@ -1014,6 +1033,8 @@ const TreeFilteringContext = React.createContext<{
 	clearFilters: () => void;
 	search: string;
 	setSearch: (search: string) => void;
+	itemCount: number | undefined;
+	tree: TreeItem[];
 }>({
 	filters: [],
 	filtered: false,
@@ -1021,6 +1042,8 @@ const TreeFilteringContext = React.createContext<{
 	clearFilters: () => {},
 	search: "",
 	setSearch: () => {},
+	tree: [],
+	itemCount: undefined,
 });
 
 const TabsContext = React.createContext<{

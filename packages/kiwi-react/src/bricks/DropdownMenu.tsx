@@ -212,7 +212,7 @@ DEV: DropdownMenuItem.displayName = "DropdownMenu.Item";
 
 // ----------------------------------------------------------------------------
 
-interface DropdownMenuItemCheckboxProps
+interface DropdownMenuCheckboxItemProps
 	extends Omit<FocusableProps, "onChange">,
 		Pick<Ariakit.MenuItemCheckboxProps, "checked" | "onChange"> {}
 
@@ -221,13 +221,13 @@ interface DropdownMenuItemCheckboxProps
  *
  * Example:
  * ```tsx
- * <DropdownMenu.ItemCheckbox>Add</DropdownMenu.Item>
- * <DropdownMenu.ItemCheckbox>Edit</DropdownMenu.Item>
+ * <DropdownMenu.CheckboxItem>Add</DropdownMenu.Item>
+ * <DropdownMenu.CheckboxItem>Edit</DropdownMenu.Item>
  * ```
  */
-const DropdownMenuItemCheckbox = forwardRef<
+const DropdownMenuCheckboxItem = forwardRef<
 	"div",
-	DropdownMenuItemCheckboxProps
+	DropdownMenuCheckboxItemProps
 >((props, forwardedRef) => {
 	const name = React.useId();
 	const ctx = Ariakit.useMenuContext();
@@ -243,7 +243,7 @@ const DropdownMenuItemCheckbox = forwardRef<
 			value={props.defaultChecked ? 1 : undefined} // For defaultChecked to work
 			{...props}
 			render={<ListItem.Root render={props.render} />}
-			className={cx("🥝-dropdown-menu-item-checkbox", props.className)}
+			className={cx("🥝-dropdown-menu-checkbox-item", props.className)}
 			ref={forwardedRef}
 		>
 			<ListItem.Content>{props.children}</ListItem.Content>
@@ -251,7 +251,7 @@ const DropdownMenuItemCheckbox = forwardRef<
 		</Ariakit.MenuItemCheckbox>
 	);
 });
-DEV: DropdownMenuItemCheckbox.displayName = "DropdownMenu.ItemCheckbox";
+DEV: DropdownMenuCheckboxItem.displayName = "DropdownMenu.CheckboxItem";
 
 // ----------------------------------------------------------------------------
 
@@ -260,5 +260,5 @@ export {
 	DropdownMenuButton as Button,
 	DropdownMenuContent as Content,
 	DropdownMenuItem as Item,
-	DropdownMenuItemCheckbox as ItemCheckbox,
+	DropdownMenuCheckboxItem as CheckboxItem,
 };

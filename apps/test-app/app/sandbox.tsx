@@ -734,16 +734,16 @@ function SortingModes() {
 				render={<IconButton icon={filterIcon} label="Filter" variant="ghost" />}
 			/>
 			<DropdownMenu.Content style={{ minInlineSize: 164 }}>
-				<DropdownMenu.ItemCheckbox
+				<DropdownMenu.CheckboxItem
 					checked={modesLength === 0 || modesLength === allModes.length}
 					onChange={() => {
 						setModes({});
 					}}
 				>
 					All
-				</DropdownMenu.ItemCheckbox>
+				</DropdownMenu.CheckboxItem>
 				{allModes.map((mode) => (
-					<DropdownMenu.ItemCheckbox
+					<DropdownMenu.CheckboxItem
 						key={mode}
 						checked={!!modes[mode]}
 						onChange={(e) => {
@@ -763,7 +763,7 @@ function SortingModes() {
 						}}
 					>
 						{mode}
-					</DropdownMenu.ItemCheckbox>
+					</DropdownMenu.CheckboxItem>
 				))}
 			</DropdownMenu.Content>
 		</DropdownMenu.Root>

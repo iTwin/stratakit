@@ -162,7 +162,7 @@ DEV: Tab.displayName = "Tabs.Tab";
 // ----------------------------------------------------------------------------
 
 interface TabPanelProps
-	extends BaseProps<"div">,
+	extends FocusableProps<"div">,
 		Pick<Ariakit.TabPanelProps, "tabId" | "unmountOnHide"> {}
 
 /**

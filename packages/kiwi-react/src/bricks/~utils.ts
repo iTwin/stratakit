@@ -61,5 +61,5 @@ export type FocusableProps<ElementType extends React.ElementType = "div"> =
 	BaseProps<ElementType> &
 		Pick<
 			Ariakit.FocusableProps,
-			"disabled" | "accessibleWhenDisabled" | "autoFocus" | "focusable"
+			"disabled" | "accessibleWhenDisabled" | "autoFocus"
 		>;

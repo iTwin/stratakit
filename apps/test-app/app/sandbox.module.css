@@ -115,6 +115,7 @@
 
 .tabList {
 	align-self: flex-end;
+	margin-block-end: -1px;
 }
 
 .emptyState {

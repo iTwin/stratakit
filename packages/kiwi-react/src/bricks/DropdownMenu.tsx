@@ -8,13 +8,8 @@ import * as Ariakit from "@ariakit/react";
 import * as ListItem from "./ListItem.js";
 import { Button } from "./Button.js";
 import { Kbd } from "./Kbd.js";
-import { DisclosureArrow, Icon } from "./Icon.js";
-import {
-	forwardRef,
-	supportsPopover,
-	type BaseProps,
-	type FocusableProps,
-} from "./~utils.js";
+import { CheckMark, DisclosureArrow, Icon } from "./Icon.js";
+import { forwardRef, supportsPopover, type FocusableProps } from "./~utils.js";
 
 // ----------------------------------------------------------------------------
 
@@ -235,6 +230,12 @@ const DropdownMenuItemCheckbox = forwardRef<
 	DropdownMenuItemCheckboxProps
 >((props, forwardedRef) => {
 	const name = React.useId();
+	const ctx = Ariakit.useMenuContext();
+	const checked = Ariakit.useStoreState(ctx, (state) => {
+		const val = state?.values[name];
+		if (val === true) return true;
+		return false;
+	});
 	return (
 		<Ariakit.MenuItemCheckbox
 			accessibleWhenDisabled
@@ -246,44 +247,11 @@ const DropdownMenuItemCheckbox = forwardRef<
 			ref={forwardedRef}
 		>
 			<ListItem.Content>{props.children}</ListItem.Content>
-			<DropdownMenuItemCheck />
+			{checked ? <CheckMark /> : <Icon render={<svg>{undefined}</svg>} />}
 		</Ariakit.MenuItemCheckbox>
 	);
 });
 DEV: DropdownMenuItemCheckbox.displayName = "DropdownMenu.ItemCheckbox";
-
-// ----------------------------------------------------------------------------
-
-interface DropdownMenuItemCheckProps
-	extends Omit<BaseProps<"svg">, "children"> {}
-
-const DropdownMenuItemCheck = forwardRef<"svg", DropdownMenuItemCheckProps>(
-	(props, forwardedRef) => {
-		return (
-			<Icon
-				{...props}
-				render={
-					<Ariakit.Role.svg
-						width="16"
-						height="16"
-						fill="currentColor"
-						viewBox="0 0 16 16"
-						render={props.render}
-					>
-						<path
-							fillRule="evenodd"
-							d="M13.854 4.146a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L6.5 10.793l6.646-6.647a.5.5 0 0 1 .708 0Z"
-							clipRule="evenodd"
-						/>
-					</Ariakit.Role.svg>
-				}
-				className={cx("🥝-dropdown-menu-item-check", props.className)}
-				ref={forwardedRef}
-			/>
-		);
-	},
-);
-DEV: DropdownMenuItemCheck.displayName = "DropdownMenuItemCheck";
 
 // ----------------------------------------------------------------------------
 

@@ -28,26 +28,16 @@
 	}
 }
 
-.🥝-dropdown-menu-item-shortcuts {
-	@layer base {
-		margin-inline-start: 0.5rem;
-	}
-}
-
 .🥝-dropdown-menu-item-checkbox:is(.🥝-list-item) {
 	@layer states {
 		&:where([aria-checked="true"]) {
 			--🌀list-item-state: var(--🌀list-item-state--active);
 		}
-
-		&:where([aria-checked="false"]) {
-			--🥝dropdown-menu-item-check-visibility: hidden;
-		}
 	}
 }
 
-.🥝-dropdown-menu-item-check {
+.🥝-dropdown-menu-item-shortcuts {
 	@layer base {
-		visibility: var(--🥝dropdown-menu-item-check-visibility);
+		margin-inline-start: 0.5rem;
 	}
 }

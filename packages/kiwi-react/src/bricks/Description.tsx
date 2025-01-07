@@ -7,6 +7,10 @@ import cx from "classnames";
 import { Text } from "./Text.js";
 
 interface DescriptionProps extends BaseProps {
+	/**
+	 * The tone of the description.
+	 * @default "neutral"
+	 */
 	tone?: "neutral" | "critical";
 }
 

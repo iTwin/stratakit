@@ -399,7 +399,7 @@ function SandboxTree({ tree }: SandboxTreeProps) {
 		});
 	}, []);
 
-	if (treeParam === "empty" && tree === "simple") {
+	if (treeParam === "empty") {
 		return (
 			<EmptyState>
 				<Text>No layers</Text>

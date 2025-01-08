@@ -42,16 +42,78 @@ export const Field = forwardRef<"div", FieldProps>((props, forwardedRef) => {
 
 	return (
 		<FieldIdContext.Provider value={fieldId}>
-			<Ariakit.Role
-				{...rest}
-				className={cx("🥝-field", className)}
-				data-kiwi-layout={layout}
-				ref={forwardedRef}
-			/>
+			<FieldDescribedByProvider>
+				<Ariakit.Role
+					{...rest}
+					className={cx("🥝-field", className)}
+					data-kiwi-layout={layout}
+					ref={forwardedRef}
+				/>
+			</FieldDescribedByProvider>
 		</FieldIdContext.Provider>
 	);
 });
 DEV: Field.displayName = "Field";
+
+// ----------------------------------------------------------------------------
+
+interface FieldDescribedBy {
+	describedBy: string;
+	register: (id: string) => void;
+	unregister: (id: string) => void;
+}
+
+const FieldDescribedByContext = React.createContext<FieldDescribedBy>({
+	describedBy: "",
+	register: () => void 0,
+	unregister: () => void 0,
+});
+
+function FieldDescribedByProvider(props: { children?: React.ReactNode }) {
+	const [describedBy, setDescribedBy] =
+		React.useState<FieldDescribedBy["describedBy"]>("");
+
+	const register = (id: string) =>
+		void setDescribedBy((describedBy) => {
+			const describedByAsSet = new Set(describedBy.split(" "));
+			describedByAsSet.add(id);
+			return Array.from(describedByAsSet).join(" ").trim();
+		});
+
+	const unregister = (id: string) =>
+		void setDescribedBy((describedBy) => {
+			const describedByAsSet = new Set(describedBy.split(" "));
+			describedByAsSet.delete(id);
+			return Array.from(describedByAsSet).join(" ").trim();
+		});
+
+	return (
+		<FieldDescribedByContext.Provider
+			value={{ describedBy, register, unregister }}
+		>
+			{props.children}
+		</FieldDescribedByContext.Provider>
+	);
+}
+
+/**
+ * Use the description IDs for a field.
+ */
+export function useFieldDescribedBy() {
+	return React.useContext(FieldDescribedByContext).describedBy;
+}
+
+/**
+ * Registers a description for an associated control.
+ */
+export function useFieldRegisterDescribedBy(id: string) {
+	const { register, unregister } = React.useContext(FieldDescribedByContext);
+
+	React.useEffect(() => {
+		register(id);
+		return () => void unregister(id);
+	}, [id, register, unregister]);
+}
 
 // ----------------------------------------------------------------------------
 

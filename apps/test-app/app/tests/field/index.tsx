@@ -10,6 +10,7 @@ import {
 	Label,
 	Radio,
 	Switch,
+	Description,
 } from "@itwin/itwinui-react/bricks";
 
 export const handle = { title: "Field" };
@@ -28,6 +29,7 @@ export default definePage(
 		asLabel,
 		layout,
 		labelPlacement = "before",
+		description,
 	}) {
 		const Control = controls[control];
 		const ControlLabel = asLabel ? "span" : Label;
@@ -45,6 +47,7 @@ export default definePage(
 					{labelPlacement === "after" ? (
 						<ControlLabel>{control} example</ControlLabel>
 					) : null}
+					{description ? <Description>{description}</Description> : null}
 				</Field>
 			</form>
 		);

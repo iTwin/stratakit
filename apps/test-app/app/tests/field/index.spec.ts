@@ -43,6 +43,14 @@ test.describe("default", () => {
 		await page.goto("/tests/field?control=checkbox&asLabel");
 		await expect(page.locator(".🥝-label.🥝-field")).toBeVisible();
 	});
+
+	test("with description", async ({ page }) => {
+		const description = "Supporting text";
+		await page.goto(`/tests/field?description=${description}`);
+		await expect(page.getByRole("textbox")).toHaveAccessibleDescription(
+			description,
+		);
+	});
 });
 
 test.describe("@visual", () => {

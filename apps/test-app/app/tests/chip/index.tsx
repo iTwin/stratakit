@@ -10,7 +10,7 @@ export const handle = { title: "Chip" };
 export default definePage(function Page({ orientation, presentational }) {
 	return (
 		<>
-			<Chip />
+			<Chip>Value</Chip>
 		</>
 	);
 });

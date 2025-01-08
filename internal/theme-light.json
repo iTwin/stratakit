@@ -803,63 +803,63 @@
 		"surface-xs": {
 			"$type": "shadow",
 			"$value": [
-				"0px 1px 0px 0px --primitive('color.black.8')",
-				"0px 0px 0px 1px --primitive('color.black.16')",
+				"0px 1px 0px 0px --primitive('color.black.4')",
+				"0px 0px 0px 1px --primitive('color.black.4')",
 				"inset 0px 0px 0px 1px --primitive('color.white.8')",
-				"0px 1px 1px -0.5px --primitive('color.black.16')"
+				"0px 1px 1px -0.5px --primitive('color.black.4')"
 			]
 		},
 		"surface-sm": {
 			"$type": "shadow",
 			"$value": [
-				"0px 1px 0px 0px --primitive('color.black.8')",
-				"0px 0px 0px 1px --primitive('color.black.16')",
+				"0px 1px 0px 0px --primitive('color.black.4')",
+				"0px 0px 0px 1px --primitive('color.black.4')",
 				"inset 0px 0px 0px 1px --primitive('color.white.8')",
-				"0px 1px 1px -0.5px --primitive('color.black.16')",
-				"0px 3px 3px -1.5px --primitive('color.black.16')"
+				"0px 1px 1px -0.5px --primitive('color.black.4')",
+				"0px 3px 3px -1.5px --primitive('color.black.4')"
 			]
 		},
 		"surface-md": {
 			"$type": "shadow",
 			"$value": [
-				"0px 1px 0px 0px --primitive('color.black.8')",
-				"0px 0px 0px 1px --primitive('color.black.16')",
-				"0px 1px 1px -0.5px --primitive('color.black.16')",
+				"0px 1px 0px 0px --primitive('color.black.4')",
+				"0px 0px 0px 1px --primitive('color.black.4')",
+				"0px 1px 1px -0.5px --primitive('color.black.4')",
 				"inset 0px 0px 0px 1px --primitive('color.white.8')",
-				"0px 3px 3px -1.5px --primitive('color.black.16')",
-				"0px 6px 6px -3px --primitive('color.black.16')"
+				"0px 3px 3px -1.5px --primitive('color.black.4')",
+				"0px 6px 6px -3px --primitive('color.black.4')"
 			]
 		},
 		"surface-lg": {
 			"$type": "shadow",
 			"$value": [
-				"0px 1px 0px 0px --primitive('color.black.8')",
-				"0px 0px 0px 1px --primitive('color.black.16')",
+				"0px 1px 0px 0px --primitive('color.black.4')",
+				"0px 0px 0px 1px --primitive('color.black.4')",
 				"inset 0px 0px 0px 1px --primitive('color.white.8')",
-				"0px 1px 1px -0.5px --primitive('color.black.16')",
-				"0px 3px 3px -1.5px --primitive('color.black.16')",
-				"0px 6px 6px -3px --primitive('color.black.16')",
-				"0px 12px 12px -6px --primitive('color.black.16')"
+				"0px 1px 1px -0.5px --primitive('color.black.4')",
+				"0px 3px 3px -1.5px --primitive('color.black.4')",
+				"0px 6px 6px -3px --primitive('color.black.4')",
+				"0px 12px 12px -6px --primitive('color.black.4')"
 			]
 		},
 		"surface-xl": {
 			"$type": "shadow",
 			"$value": [
-				"0px 1px 0px 0px --primitive('color.black.8')",
-				"0px 0px 0px 1px --primitive('color.black.16')",
+				"0px 1px 0px 0px --primitive('color.black.4')",
+				"0px 0px 0px 1px --primitive('color.black.4')",
 				"inset 0px 0px 0px 1px --primitive('color.white.8')",
-				"0px 1px 1px -0.5px --primitive('color.black.16')",
-				"0px 3px 3px -1.5px --primitive('color.black.16')",
-				"0px 6px 6px -3px --primitive('color.black.16')",
-				"0px 12px 12px -6px --primitive('color.black.16')",
-				"0px 24px 24px -12px --primitive('color.black.16')"
+				"0px 1px 1px -0.5px --primitive('color.black.4')",
+				"0px 3px 3px -1.5px --primitive('color.black.4')",
+				"0px 6px 6px -3px --primitive('color.black.4')",
+				"0px 12px 12px -6px --primitive('color.black.4')",
+				"0px 24px 24px -12px --primitive('color.black.4')"
 			]
 		},
 		"button-base-drop": {
 			"$type": "shadow",
 			"$value": [
-				"0px 1px 1px -0.5px --primitive('color.black.16')",
-				"0px 3px 3px -1.5px --primitive('color.black.16')"
+				"0px 1px 1px -0.5px --primitive('color.black.4')",
+				"0px 3px 3px -1.5px --primitive('color.black.4')"
 			]
 		},
 		"button-base-inset": {
@@ -869,30 +869,30 @@
 		"input-base": {
 			"$type": "shadow",
 			"$value": [
-				"inset 0px 1px 2px 0px --primitive('color.black.16')",
-				"inset 0px 2px 4px 0px --primitive('color.black.16')"
+				"inset 0px 1px 1px 0px --primitive('color.black.4')",
+				"inset 0px 2px 4px 0px --primitive('color.black.4')"
 			]
 		},
 		"tooltip-base": {
 			"$type": "shadow",
 			"$value": [
-				"0px 1px 1px -0.5px --primitive('color.black.16')",
-				"0px 3px 3px -1.5px --primitive('color.black.16')",
-				"0px 6px 6px -3px --primitive('color.black.16')",
-				"0px 12px 12px -6px --primitive('color.black.16')"
+				"0px 1px 1px -0.5px --primitive('color.black.4')",
+				"0px 3px 3px -1.5px --primitive('color.black.4')",
+				"0px 6px 6px -3px --primitive('color.black.4')",
+				"0px 12px 12px -6px --primitive('color.black.4')"
 			]
 		},
 		"toolbar-base": {
 			"$type": "shadow",
 			"$value": [
-				"0px 1px 0px 0px --primitive('color.black.8')",
+				"0px 1px 0px 0px --primitive('color.black.4')",
 				"0px 0px 0px 1px --primitive('color.black.80')",
 				"inset 0px 0px 0px 1px --primitive('color.white.8')",
-				"0px 1px 1px -0.5px --primitive('color.black.16')",
-				"0px 3px 3px -1.5px --primitive('color.black.16')",
-				"0px 6px 6px -3px --primitive('color.black.16')",
-				"0px 12px 12px -6px --primitive('color.black.16')",
-				"0px 24px 24px -12px --primitive('color.black.16')"
+				"0px 1px 1px -0.5px --primitive('color.black.4')",
+				"0px 3px 3px -1.5px --primitive('color.black.4')",
+				"0px 6px 6px -3px --primitive('color.black.4')",
+				"0px 12px 12px -6px --primitive('color.black.4')",
+				"0px 24px 24px -12px --primitive('color.black.4')"
 			]
 		}
 	}

@@ -1,1 +1,0 @@
-import{f as o,w as n}from"./~utils-DouCYqo5.js";import{n as r}from"./chunk-K6AXKMTT-BRQUd1RA.js";import{d as i}from"./~utils-D4_Hhdwj.js";import"./index-0yN1o7wo.js";const s=o((t,e)=>r.jsx("div",{children:"Chip"})),h={title:"Chip"},x=n(i(function({orientation:e,presentational:a}){return r.jsx(r.Fragment,{children:r.jsx(s,{})})}));export{x as default,h as handle};

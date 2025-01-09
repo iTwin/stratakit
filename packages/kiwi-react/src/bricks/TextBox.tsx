@@ -66,7 +66,9 @@ const TextBoxInput = forwardRef<"input", TextBoxInputProps>(
 			<Ariakit.Role.input
 				id={fieldId}
 				{...props}
-				aria-describedby={cx(describedBy, props["aria-describedby"])}
+				aria-describedby={
+					cx(describedBy, props["aria-describedby"]) || undefined
+				}
 				className={cx({ "🥝-text-box": !rootContext }, props.className)}
 				render={
 					<Ariakit.Focusable

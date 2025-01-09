@@ -58,38 +58,48 @@ DEV: Field.displayName = "Field";
 // ----------------------------------------------------------------------------
 
 interface FieldDescribedBy {
-	describedBy: string;
+	describedBy: Set<string>;
 	register: (id: string) => void;
 	unregister: (id: string) => void;
 }
 
-const FieldDescribedByContext = React.createContext<FieldDescribedBy>({
-	describedBy: "",
-	register: () => void 0,
-	unregister: () => void 0,
-});
+const FieldDescribedByContext = React.createContext<
+	FieldDescribedBy | undefined
+>(undefined);
 
 function FieldDescribedByProvider(props: { children?: React.ReactNode }) {
-	const [describedBy, setDescribedBy] =
-		React.useState<FieldDescribedBy["describedBy"]>("");
+	const [describedBy, setDescribedBy] = React.useState<
+		FieldDescribedBy["describedBy"]
+	>(new Set());
 
-	const register = (id: string) =>
-		void setDescribedBy((describedBy) => {
-			const describedByAsSet = new Set(describedBy.split(" "));
-			describedByAsSet.add(id);
-			return Array.from(describedByAsSet).join(" ").trim();
-		});
+	const register = React.useCallback(
+		(id: string) =>
+			void setDescribedBy((describedBy) => {
+				describedBy.add(id);
+				return describedBy;
+			}),
+		[],
+	);
 
-	const unregister = (id: string) =>
-		void setDescribedBy((describedBy) => {
-			const describedByAsSet = new Set(describedBy.split(" "));
-			describedByAsSet.delete(id);
-			return Array.from(describedByAsSet).join(" ").trim();
-		});
+	const unregister = React.useCallback(
+		(id: string) =>
+			void setDescribedBy((describedBy) => {
+				describedBy.delete(id);
+				return describedBy;
+			}),
+		[],
+	);
 
 	return (
 		<FieldDescribedByContext.Provider
-			value={{ describedBy, register, unregister }}
+			value={React.useMemo(
+				() => ({
+					describedBy,
+					register,
+					unregister,
+				}),
+				[describedBy, register, unregister],
+			)}
 		>
 			{props.children}
 		</FieldDescribedByContext.Provider>
@@ -100,16 +110,23 @@ function FieldDescribedByProvider(props: { children?: React.ReactNode }) {
  * Use the description IDs for a field.
  */
 export function useFieldDescribedBy() {
-	return React.useContext(FieldDescribedByContext).describedBy;
+	const describedBySet = React.useContext(FieldDescribedByContext)?.describedBy;
+	return describedBySet && describedBySet.size > 0
+		? Array.from(describedBySet).join(" ")
+		: undefined;
 }
 
 /**
  * Registers a description for an associated control.
  */
 export function useFieldRegisterDescribedBy(id: string) {
-	const { register, unregister } = React.useContext(FieldDescribedByContext);
+	const context = React.useContext(FieldDescribedByContext);
+	const register = context?.register;
+	const unregister = context?.unregister;
 
 	React.useEffect(() => {
+		if (!register || !unregister) return;
+
 		register(id);
 		return () => void unregister(id);
 	}, [id, register, unregister]);

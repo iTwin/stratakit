@@ -75,8 +75,9 @@ function FieldDescribedByProvider(props: { children?: React.ReactNode }) {
 	const register = React.useCallback(
 		(id: string) =>
 			void setDescribedBy((describedBy) => {
-				describedBy.add(id);
-				return describedBy;
+				const updated = new Set(describedBy);
+				updated.add(id);
+				return updated;
 			}),
 		[],
 	);
@@ -84,8 +85,9 @@ function FieldDescribedByProvider(props: { children?: React.ReactNode }) {
 	const unregister = React.useCallback(
 		(id: string) =>
 			void setDescribedBy((describedBy) => {
-				describedBy.delete(id);
-				return describedBy;
+				const updated = new Set(describedBy);
+				updated.delete(id);
+				return updated;
 			}),
 		[],
 	);

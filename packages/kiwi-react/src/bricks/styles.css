@@ -20,6 +20,7 @@
 @import "./Spinner.css" layer(kiwi.components);
 @import "./Select.css" layer(kiwi.components);
 @import "./Switch.css" layer(kiwi.components);
+@import "./Table.css" layer(kiwi.components);
 @import "./Tabs.css" layer(kiwi.components);
 @import "./Text.css" layer(kiwi.components);
 @import "./TextBox.css" layer(kiwi.components);

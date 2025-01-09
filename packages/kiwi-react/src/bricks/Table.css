@@ -1,0 +1,104 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+
+.🥝-table {
+	@layer base {
+		background-color: var(--kiwi-color-border-neutral-muted);
+		display: flex;
+		flex-direction: column;
+		row-gap: 1px;
+	}
+}
+
+.🥝-table-header {
+	@layer base {
+		color: var(--kiwi-color-text-neutral-secondary);
+	}
+}
+
+.🥝-table-body {
+	@layer base {
+		display: flex;
+		flex-direction: column;
+		row-gap: 1px;
+	}
+	/* overflow-y: auto;
+	height: 200px; */
+}
+
+.🥝-table-row {
+	--✨glow--bg-hover: var(--kiwi-color-glow-hue) var(--kiwi-color-bg-glow-base-hover-\%);
+	--✨glow--bg-selected: var(--kiwi-color-glow-hue) var(--kiwi-color-bg-glow-base-hover-\%);
+
+	--✨bg--default: var(--kiwi-color-bg-surface-primary);
+	--✨bg--hover: color-mix(in oklch, var(--✨bg--default) 100%, var(--✨glow--bg-hover));
+	--✨bg--selected: var(--kiwi-color-bg-glow-on-surface-accent-pressed);
+	--✨bg--disabled: var(--kiwi-color-bg-surface-primary);
+
+	@layer base {
+		min-inline-size: 100%;
+		min-block-size: 3rem;
+		display: flex;
+		background-color: var(--🌀table-row-state--default, var(--✨bg--default))
+			var(--🌀table-row-state--hover, var(--✨bg--hover))
+			var(--🌀table-row-state--selected, var(--✨bg--selected))
+			var(--🌀table-row-state--disabled, var(--✨bg--disabled));
+	}
+
+	@layer states {
+		@media (any-hover: hover) {
+			&:where(:hover) {
+				--🌀table-row-state: var(--🌀table-row-state--hover);
+			}
+		}
+
+		&:where([aria-selected="true"]) {
+			--🌀table-row-state: var(--🌀table-row-state--selected);
+
+			outline: 1px solid var(--kiwi-color-border-accent-strong);
+		}
+
+		&:where([aria-disabled="true"]) {
+			--🌀table-row-state: var(--🌀table-row-state--disabled);
+
+			cursor: not-allowed;
+			color: var(--kiwi-color-text-neutral-disabled);
+		}
+	}
+
+	@layer base.🌀 {
+		/* Cyclic toggles for default/hover/checked/checked+hover/disabled states. See https://kizu.dev/cyclic-toggles/ */
+		--🌀table-row-state: var(--🌀table-row-state--default);
+		--🌀table-row-state--default: var(--🌀table-row-state,);
+		--🌀table-row-state--hover: var(--🌀table-row-state,);
+		--🌀table-row-state--selected: var(--🌀table-row-state,);
+		--🌀table-row-state--disabled: var(--🌀table-row-state,);
+	}
+}
+
+.🥝-table-cell {
+	@layer base {
+		display: flex;
+		flex-grow: 1;
+		align-items: center;
+		column-gap: 0.5rem;
+		padding-block: 0.5rem;
+		padding-inline: 1rem;
+		word-break: break-word;
+		/* min-inline-size: 4rem;
+	  flex-basis: 4rem; */
+	}
+
+	@layer modifiers {
+		&:where([data-kiwi-slot]) {
+			flex-grow: 0;
+		}
+
+		&:where([data-kiwi-align="right"]) {
+			text-align: right;
+			justify-content: flex-end;
+		}
+	}
+}

@@ -111,11 +111,12 @@ function FieldDescribedByProvider(props: { children?: React.ReactNode }) {
 /**
  * Use the description IDs for a field.
  */
-export function useFieldDescribedBy() {
+export function useFieldDescribedBy(ariaDescribedByProp?: string) {
 	const describedBySet = React.useContext(FieldDescribedByContext)?.describedBy;
-	return describedBySet && describedBySet.size > 0
-		? Array.from(describedBySet).join(" ")
-		: undefined;
+
+	return !describedBySet || describedBySet.size === 0
+		? ariaDescribedByProp
+		: cx(Array.from(describedBySet).join(" "), ariaDescribedByProp);
 }
 
 /**

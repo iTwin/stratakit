@@ -52,7 +52,17 @@
 			}
 
 			&:where(:not(:hover):not(:focus-within)) {
-				--🥝tree-item-actions-visibility: hidden;
+				:where(.🥝-tree-item-actions:not([data-kiwi-visible="true"])) {
+					border: 0px;
+					clip: rect(0px, 0px, 0px, 0px);
+					height: 1px;
+					margin: -1px;
+					overflow: hidden;
+					padding: 0px;
+					position: absolute;
+					white-space: nowrap;
+					width: 1px;
+				}
 			}
 		}
 	}
@@ -90,8 +100,6 @@
 		background-color: var(--kiwi-color-bg-surface-primary);
 		display: inline-flex;
 
-		visibility: var(--🥝tree-item-actions-visibility);
-
 		&::before {
 			position: absolute;
 			content: "";
@@ -101,12 +109,17 @@
 	}
 
 	@layer states {
-		&:where([data-kiwi-visible="true"]) {
-			--🥝tree-item-actions-visibility: visible;
-		}
-
 		&:where([data-kiwi-visible="false"]) {
-			--🥝tree-item-actions-visibility: hidden;
+			/* CSS alternative for VisuallyHidden component. TODO: use https://kizu.dev/layered-toggles/ to avoid duplication. */
+			border: 0px;
+			clip: rect(0px, 0px, 0px, 0px);
+			height: 1px;
+			margin: -1px;
+			overflow: hidden;
+			padding: 0px;
+			position: absolute;
+			white-space: nowrap;
+			width: 1px;
 		}
 	}
 }

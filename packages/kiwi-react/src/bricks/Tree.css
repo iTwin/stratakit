@@ -110,16 +110,12 @@
 
 	@layer states {
 		&:where([data-kiwi-visible="false"]) {
-			/* CSS alternative for VisuallyHidden component. TODO: use https://kizu.dev/layered-toggles/ to avoid duplication. */
-			border: 0px;
-			clip: rect(0px, 0px, 0px, 0px);
-			height: 1px;
-			margin: -1px;
-			overflow: hidden;
-			padding: 0px;
-			position: absolute;
-			white-space: nowrap;
-			width: 1px;
+					clip-path: inset(50%);
+					height: 1px;
+					overflow: hidden;
+					position: absolute;
+					white-space: nowrap;
+					width: 1px;
 		}
 	}
 }

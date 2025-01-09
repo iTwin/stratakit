@@ -89,10 +89,18 @@ export default function Page() {
 					</div>
 					<Tabs.Root>
 						<Subheader />
-						<Tabs.TabPanel tabId="simple" className={styles.tabPanel}>
+						<Tabs.TabPanel
+							tabId="simple"
+							className={styles.tabPanel}
+							focusable={false}
+						>
 							<SandboxTree tree="simple" />
 						</Tabs.TabPanel>
-						<Tabs.TabPanel tabId="complex" className={styles.tabPanel}>
+						<Tabs.TabPanel
+							tabId="complex"
+							className={styles.tabPanel}
+							focusable={false}
+						>
 							<SandboxTree tree="complex" />
 						</Tabs.TabPanel>
 					</Tabs.Root>

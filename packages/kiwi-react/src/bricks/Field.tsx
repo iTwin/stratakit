@@ -116,7 +116,7 @@ export function useFieldDescribedBy(ariaDescribedByProp?: string) {
 
 	return !describedBySet || describedBySet.size === 0
 		? ariaDescribedByProp
-		: cx(Array.from(describedBySet).join(" "), ariaDescribedByProp);
+		: cx(...describedBySet, ariaDescribedByProp);
 }
 
 /**

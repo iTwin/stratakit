@@ -46,22 +46,14 @@
 			--🥝tree-item-expander-visibility: hidden;
 		}
 
-		&:where(:focus-within) {
-			--🥝tree-item-actions-visibility: visible;
-		}
-
 		@media (any-hover: hover) {
 			&:where(:hover[data-kiwi-parent-selected="true"][data-kiwi-selected="true"]) {
 				--🌀list-item-state: var(--🌀list-item-state--active-child-hover);
 			}
 
-			&:where(:hover) {
-				--🥝tree-item-actions-visibility: visible;
+			&:where(:not(:hover):not(:focus-within)) {
+				--🥝tree-item-actions-visibility: hidden;
 			}
-		}
-
-		@media (any-hover: none) {
-			--🥝tree-item-actions-visibility: visible;
 		}
 	}
 }
@@ -98,7 +90,7 @@
 		background-color: var(--kiwi-color-bg-surface-primary);
 		display: inline-flex;
 
-		visibility: var(--🥝tree-item-actions-visibility, hidden);
+		visibility: var(--🥝tree-item-actions-visibility);
 
 		&::before {
 			position: absolute;

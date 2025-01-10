@@ -114,38 +114,6 @@ test("@visual", async ({ page }) => {
 	await expect(page.locator("body")).toHaveScreenshot();
 });
 
-test("checkbox items", async ({ page }) => {
-	await page.goto("/tests/dropdown-menu?checkbox");
-
-	const button = page.getByRole("button", { name: "Settings" });
-	const item1 = page.getByRole("menuitemcheckbox", { name: "Item 1" });
-
-	await button.click();
-	await expect(item1).toHaveAttribute("aria-checked", "false");
-
-	await item1.click();
-	await expect(item1).toHaveAttribute("aria-checked", "true");
-
-	await page.click("body");
-	await expect(item1).toBeHidden();
-
-	await button.click();
-	await expect(item1).toHaveAttribute("aria-checked", "true");
-});
-
-test("checkbox items (defaultChecked)", async ({ page }) => {
-	await page.goto("/tests/dropdown-menu?checkbox&defaultChecked");
-
-	const button = page.getByRole("button", { name: "Settings" });
-	const item3 = page.getByRole("menuitemcheckbox", { name: "Item 3" });
-
-	await button.click();
-	await expect(item3).toHaveAttribute("aria-checked", "true");
-
-	await item3.click();
-	await expect(item3).toHaveAttribute("aria-checked", "false");
-});
-
 test.describe("@a11y", () => {
 	test("Axe Page Scan", async ({ page }) => {
 		await page.goto("/tests/dropdown-menu");
@@ -165,18 +133,54 @@ test.describe("@a11y", () => {
 		const accessibilityScan = await axe.analyze();
 		expect(accessibilityScan.violations).toEqual([]);
 	});
+});
 
-	test("Axe Page Scan (checkbox items)", async ({ page }) => {
+test.describe("DropdownMenu.CheckboxItem", () => {
+	test("default", async ({ page }) => {
+		await page.goto("/tests/dropdown-menu?checkbox");
+
+		const button = page.getByRole("button", { name: "Settings" });
+		const item1 = page.getByRole("menuitemcheckbox", { name: "Item 1" });
+
+		await button.click();
+		await expect(item1).toHaveAttribute("aria-checked", "false");
+
+		await item1.click();
+		await expect(item1).toHaveAttribute("aria-checked", "true");
+
+		await page.click("body");
+		await expect(item1).toBeHidden();
+
+		await button.click();
+		await expect(item1).toHaveAttribute("aria-checked", "true");
+	});
+
+	test("defaultChecked", async ({ page }) => {
 		await page.goto("/tests/dropdown-menu?checkbox&defaultChecked");
 
 		const button = page.getByRole("button", { name: "Settings" });
-		await button.click();
-
 		const item3 = page.getByRole("menuitemcheckbox", { name: "Item 3" });
+
+		await button.click();
 		await expect(item3).toHaveAttribute("aria-checked", "true");
 
-		const axe = new AxeBuilder({ page });
-		const accessibilityScan = await axe.analyze();
-		expect(accessibilityScan.violations).toEqual([]);
+		await item3.click();
+		await expect(item3).toHaveAttribute("aria-checked", "false");
+	});
+
+	test.describe("@a11y", () => {
+		test("Axe Page Scan", async ({ page }) => {
+			await page.goto("/tests/dropdown-menu?checkbox&defaultChecked");
+
+			const button = page.getByRole("button", { name: "Settings" });
+			await button.click();
+
+			const item3 = page.getByRole("menuitemcheckbox", { name: "Item 3" });
+			await expect(item3).toHaveAttribute("aria-checked", "true");
+
+			const axe = new AxeBuilder({ page });
+			const accessibilityScan = await axe.analyze();
+			expect(accessibilityScan.violations).toEqual([]);
+		});
 	});
 });

@@ -113,10 +113,13 @@ function FieldDescribedByProvider(props: { children?: React.ReactNode }) {
  */
 export function useFieldDescribedBy(ariaDescribedByProp?: string) {
 	const describedBySet = React.useContext(FieldDescribedByContext)?.describedBy;
-
-	return !describedBySet || describedBySet.size === 0
-		? ariaDescribedByProp
-		: cx(...describedBySet, ariaDescribedByProp);
+	return React.useMemo(
+		() =>
+			!describedBySet || describedBySet.size === 0
+				? ariaDescribedByProp
+				: cx(...describedBySet, ariaDescribedByProp),
+		[describedBySet, ariaDescribedByProp],
+	);
 }
 
 /**

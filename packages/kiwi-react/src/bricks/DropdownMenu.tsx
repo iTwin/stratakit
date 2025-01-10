@@ -231,7 +231,7 @@ const DropdownMenuCheckboxItem = forwardRef<
 	return (
 		<Ariakit.MenuItemCheckbox
 			accessibleWhenDisabled
-			value={props.defaultChecked ? 1 : undefined} // For defaultChecked to work
+			value={props.defaultChecked ? "on" : undefined} // For defaultChecked to work
 			{...props}
 			render={<ListItem.Root render={props.render} />}
 			className={cx("🥝-dropdown-menu-checkbox-item", props.className)}

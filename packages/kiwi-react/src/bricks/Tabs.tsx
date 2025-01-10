@@ -162,8 +162,8 @@ DEV: Tab.displayName = "Tabs.Tab";
 // ----------------------------------------------------------------------------
 
 interface TabPanelProps
-	extends BaseProps<"div">,
-		Pick<Ariakit.TabPanelProps, "tabId" | "unmountOnHide"> {}
+	extends FocusableProps<"div">,
+		Pick<Ariakit.TabPanelProps, "tabId" | "unmountOnHide" | "focusable"> {}
 
 /**
  * The actual content of a tab, shown when the tab is selected. Should be used as a child of `Tabs.Root`.

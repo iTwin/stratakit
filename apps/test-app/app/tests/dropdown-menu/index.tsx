@@ -39,9 +39,16 @@ function CheckboxTest({ defaultChecked: defaultCheckedParam }: VariantProps) {
 				<DropdownMenu.Button>Settings</DropdownMenu.Button>
 
 				<DropdownMenu.Content>
-					<DropdownMenu.CheckboxItem>Item 1</DropdownMenu.CheckboxItem>
-					<DropdownMenu.CheckboxItem>Item 2</DropdownMenu.CheckboxItem>
-					<DropdownMenu.CheckboxItem defaultChecked={defaultChecked}>
+					<DropdownMenu.CheckboxItem name="item1">
+						Item 1
+					</DropdownMenu.CheckboxItem>
+					<DropdownMenu.CheckboxItem name="item2">
+						Item 2
+					</DropdownMenu.CheckboxItem>
+					<DropdownMenu.CheckboxItem
+						name="item3"
+						defaultChecked={defaultChecked}
+					>
 						Item 3
 					</DropdownMenu.CheckboxItem>
 				</DropdownMenu.Content>

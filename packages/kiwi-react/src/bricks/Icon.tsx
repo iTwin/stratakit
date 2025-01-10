@@ -97,34 +97,3 @@ export const DisclosureArrow = forwardRef<"svg", DisclosureArrowProps>(
 	},
 );
 DEV: DisclosureArrow.displayName = "DisclosureArrow";
-
-// ----------------------------------------------------------------------------
-
-interface CheckMarkProps extends Omit<BaseProps<"svg">, "children"> {}
-
-export const CheckMark = forwardRef<"svg", CheckMarkProps>(
-	(props, forwardedRef) => {
-		return (
-			<Icon
-				{...props}
-				render={
-					<Ariakit.Role.svg
-						width="16"
-						height="16"
-						fill="currentColor"
-						viewBox="0 0 16 16"
-						render={props.render}
-					>
-						<path
-							fillRule="evenodd"
-							d="M13.854 4.146a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L6.5 10.793l6.646-6.647a.5.5 0 0 1 .708 0Z"
-							clipRule="evenodd"
-						/>
-					</Ariakit.Role.svg>
-				}
-				ref={forwardedRef}
-			/>
-		);
-	},
-);
-DEV: CheckMark.displayName = "CheckMark";

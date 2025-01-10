@@ -8,7 +8,7 @@ import * as Ariakit from "@ariakit/react";
 import * as ListItem from "./ListItem.js";
 import { Button } from "./Button.js";
 import { Kbd } from "./Kbd.js";
-import { CheckMark, DisclosureArrow, Icon } from "./Icon.js";
+import { DisclosureArrow } from "./Icon.js";
 import { forwardRef, supportsPopover, type FocusableProps } from "./~utils.js";
 
 // ----------------------------------------------------------------------------
@@ -230,12 +230,6 @@ const DropdownMenuCheckboxItem = forwardRef<
 	DropdownMenuCheckboxItemProps
 >((props, forwardedRef) => {
 	const name = React.useId();
-	const ctx = Ariakit.useMenuContext();
-	const checked = Ariakit.useStoreState(ctx, (state) => {
-		const val = state?.values[name];
-		if (val === true) return true;
-		return false;
-	});
 	return (
 		<Ariakit.MenuItemCheckbox
 			accessibleWhenDisabled
@@ -246,8 +240,8 @@ const DropdownMenuCheckboxItem = forwardRef<
 			className={cx("🥝-dropdown-menu-checkbox-item", props.className)}
 			ref={forwardedRef}
 		>
+			<span className={cx("🥝-checkbox", "🥝-menu-checkbox")} aria-hidden />
 			<ListItem.Content>{props.children}</ListItem.Content>
-			{checked ? <CheckMark /> : <Icon render={<svg>{undefined}</svg>} />}
 		</Ariakit.MenuItemCheckbox>
 	);
 });

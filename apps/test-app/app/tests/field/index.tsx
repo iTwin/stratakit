@@ -29,7 +29,7 @@ export default definePage(
 		asLabel,
 		layout,
 		labelPlacement = "before",
-		description,
+		descriptions,
 	}) {
 		const Control = controls[control];
 		const ControlLabel = asLabel ? "span" : Label;
@@ -47,7 +47,11 @@ export default definePage(
 					{labelPlacement === "after" ? (
 						<ControlLabel>{control} example</ControlLabel>
 					) : null}
-					{description ? <Description>{description}</Description> : null}
+					{descriptions
+						?.split(";")
+						.map((description) => (
+							<Description key={description}>{description}</Description>
+						)) || null}
 				</Field>
 			</form>
 		);

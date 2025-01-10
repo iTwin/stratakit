@@ -57,13 +57,21 @@ test.describe("default", () => {
 	for (const [control, role] of Object.entries(controlsToRole)) {
 		test(`${control} with description`, async ({ page }) => {
 			await page.goto(
-				`/tests/field?control=${control}&description=${description}`,
+				`/tests/field?control=${control}&descriptions=${description}`,
 			);
 			await expect(page.getByRole(role)).toHaveAccessibleDescription(
 				description,
 			);
 		});
 	}
+
+	test("with multiple descriptions", async ({ page }) => {
+		const descriptions = ["First", "Second"];
+		await page.goto(`tests/field?descriptions=${descriptions.join(";")}`);
+		await expect(page.getByRole("textbox")).toHaveAccessibleDescription(
+			descriptions.join(" "),
+		);
+	});
 });
 
 test.describe("@visual", () => {

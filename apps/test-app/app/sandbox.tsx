@@ -714,57 +714,23 @@ function Subheader() {
 }
 
 function SortingModes() {
-	const [allModes] = React.useState([
-		"Guides",
-		"Other",
-		"Roadway",
-		"Parking",
-		"Building",
-		"Dry utility",
-		"Stormwater",
-		"Sewer",
-		"Boundary",
-		"Map",
-	]);
-	const [modes, setModes] = React.useState<{ [x: string]: boolean }>({});
-	const modesLength = Object.keys(modes).length;
 	return (
 		<DropdownMenu.Root>
 			<DropdownMenu.Button
 				render={<IconButton icon={filterIcon} label="Filter" variant="ghost" />}
 			/>
 			<DropdownMenu.Content style={{ minInlineSize: 164 }}>
-				<DropdownMenu.CheckboxItem
-					checked={modesLength === 0 || modesLength === allModes.length}
-					onChange={() => {
-						setModes({});
-					}}
-				>
-					All
-				</DropdownMenu.CheckboxItem>
-				{allModes.map((mode) => (
-					<DropdownMenu.CheckboxItem
-						key={mode}
-						checked={!!modes[mode]}
-						onChange={(e) => {
-							if (e.currentTarget.checked) {
-								setModes((prev) => ({
-									...prev,
-									[mode]: true,
-								}));
-								return;
-							}
-
-							setModes((prev) => {
-								const newModes = { ...prev };
-								delete newModes[mode];
-								return newModes;
-							});
-						}}
-					>
-						{mode}
-					</DropdownMenu.CheckboxItem>
-				))}
+				<DropdownMenu.Item>Show all</DropdownMenu.Item>
+				<DropdownMenu.Item>Guides</DropdownMenu.Item>
+				<DropdownMenu.Item>Other</DropdownMenu.Item>
+				<DropdownMenu.Item>Roadway</DropdownMenu.Item>
+				<DropdownMenu.Item>Parking</DropdownMenu.Item>
+				<DropdownMenu.Item>Building</DropdownMenu.Item>
+				<DropdownMenu.Item>Dry utility</DropdownMenu.Item>
+				<DropdownMenu.Item>Stormwater</DropdownMenu.Item>
+				<DropdownMenu.Item>Sewer</DropdownMenu.Item>
+				<DropdownMenu.Item>Boundary</DropdownMenu.Item>
+				<DropdownMenu.Item>Map</DropdownMenu.Item>
 			</DropdownMenu.Content>
 		</DropdownMenu.Root>
 	);

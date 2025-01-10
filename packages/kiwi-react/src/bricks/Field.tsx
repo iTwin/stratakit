@@ -72,25 +72,21 @@ function FieldDescribedByProvider(props: { children?: React.ReactNode }) {
 		FieldDescribedBy["describedBy"]
 	>(new Set());
 
-	const register = React.useCallback(
-		(id: string) =>
-			void setDescribedBy((describedBy) => {
-				const updated = new Set(describedBy);
-				updated.add(id);
-				return updated;
-			}),
-		[],
-	);
+	const register = React.useCallback((id: string) => {
+		setDescribedBy((describedBy) => {
+			const updated = new Set(describedBy);
+			updated.add(id);
+			return updated;
+		});
+	}, []);
 
-	const unregister = React.useCallback(
-		(id: string) =>
-			void setDescribedBy((describedBy) => {
-				const updated = new Set(describedBy);
-				updated.delete(id);
-				return updated;
-			}),
-		[],
-	);
+	const unregister = React.useCallback((id: string) => {
+		setDescribedBy((describedBy) => {
+			const updated = new Set(describedBy);
+			updated.delete(id);
+			return updated;
+		});
+	}, []);
 
 	return (
 		<FieldDescribedByContext.Provider

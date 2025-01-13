@@ -56,12 +56,13 @@ interface TooltipProps
  */
 export const Tooltip = forwardRef<"div", TooltipProps>(
 	(props, forwardedRef) => {
+		const generatedId = React.useId();
 		const {
 			content,
 			children,
 			className,
 			type = "description",
-			id = React.useId(),
+			id = generatedId,
 			defaultOpen: defaultOpenProp,
 			open: openProp,
 			setOpen: setOpenProp,

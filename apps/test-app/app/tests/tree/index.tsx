@@ -54,7 +54,6 @@ function TreeItem({
 			expanded={isParentNode || undefined}
 			content={
 				<>
-					<Tree.Expander />
 					<Icon href={placeholderIcon} />
 					<Tree.Content>{label}</Tree.Content>
 					<div style={{ display: "flex", gap: 4 }}>

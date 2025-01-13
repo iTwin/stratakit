@@ -148,10 +148,7 @@ DEV: TreeItemActions.displayName = "Tree.ItemActions";
 type IconButtonProps = React.ComponentProps<typeof IconButton>;
 
 interface TreeItemExpanderProps
-	extends Omit<IconButtonProps, "variant" | "label" | "icon"> {
-	label?: IconButtonProps["label"];
-	icon?: IconButtonProps["icon"];
-}
+	extends Omit<IconButtonProps, "variant" | "label" | "icon"> {}
 
 const TreeItemExpander = forwardRef<"button", TreeItemExpanderProps>(
 	(props, forwardedRef) => {

@@ -10,8 +10,9 @@ interface ChipProps extends BaseProps<"div"> {
 	/**
 	 * The variant style of the Chip.
 	 * Use "solid" for primary states and "outline" for less prominent states.
+	 *
+	 * @default "solid"
 	 */
-	/** @default "solid" */
 	variant?: "solid" | "outline";
 
 	/**

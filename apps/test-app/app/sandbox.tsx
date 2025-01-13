@@ -577,15 +577,15 @@ function TreeItem(props: TreeItemProps) {
 			<Tree.Item
 				content={
 					<>
-						<Tree.Expander
+						<Tree.ItemExpander
 							onClick={() => {
 								setExpanded((prev) => !prev);
 							}}
 						/>
 						<Icon href={placeholderIcon} style={{ display: "inline" }} />
-						<Tree.Content>{props.label}</Tree.Content>
+						<Tree.ItemContent>{props.label}</Tree.ItemContent>
 						{actionsVisible && (
-							<Tree.Actions>
+							<Tree.ItemActions>
 								<IconButton
 									className={styles.action}
 									icon={lockIcon}
@@ -610,7 +610,7 @@ function TreeItem(props: TreeItemProps) {
 									/>
 								)}
 								<TreeMoreActions hidden={!props.actions || hidden} />
-							</Tree.Actions>
+							</Tree.ItemActions>
 						)}
 					</>
 				}

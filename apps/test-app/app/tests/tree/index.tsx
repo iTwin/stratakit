@@ -54,9 +54,9 @@ function TreeItem({
 			expanded={isParentNode || undefined}
 			content={
 				<>
-					<Tree.Expander />
+					<Tree.ItemExpander />
 					<Icon href={placeholderIcon} />
-					<Tree.Content>{label}</Tree.Content>
+					<Tree.ItemContent>{label}</Tree.ItemContent>
 					<div style={{ display: "flex", gap: 4 }}>
 						<IconButton
 							icon={unlockIcon}

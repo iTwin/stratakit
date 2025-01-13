@@ -120,7 +120,7 @@ const TreeItemContent = forwardRef<"span", TreeItemContentProps>(
 		);
 	},
 );
-DEV: TreeItemContent.displayName = "Tree.Content";
+DEV: TreeItemContent.displayName = "Tree.ItemContent";
 
 // ----------------------------------------------------------------------------
 
@@ -139,7 +139,7 @@ const TreeItemActions = forwardRef<"div", TreeItemActionsProps>(
 		);
 	},
 );
-DEV: TreeItemActions.displayName = "Tree.Actions";
+DEV: TreeItemActions.displayName = "Tree.ItemActions";
 
 // ----------------------------------------------------------------------------
 
@@ -169,7 +169,7 @@ const TreeItemExpander = forwardRef<"button", TreeItemExpanderProps>(
 		);
 	},
 );
-DEV: TreeItemExpander.displayName = "Tree.Expander";
+DEV: TreeItemExpander.displayName = "Tree.ItemExpander";
 
 // ----------------------------------------------------------------------------
 
@@ -216,7 +216,7 @@ const TreeItemContext = React.createContext<
 export {
 	Tree as Root,
 	TreeItem as Item,
-	TreeItemExpander as Expander,
-	TreeItemContent as Content,
-	TreeItemActions as Actions,
+	TreeItemExpander as ItemExpander,
+	TreeItemContent as ItemContent,
+	TreeItemActions as ItemActions,
 };

@@ -130,7 +130,7 @@ export function useFieldRegisterDescribedBy(id: string) {
 		if (!register || !unregister) return;
 
 		register(id);
-		return () => void unregister(id);
+		return () => unregister(id);
 	}, [id, register, unregister]);
 }
 

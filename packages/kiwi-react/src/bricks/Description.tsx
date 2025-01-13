@@ -28,7 +28,7 @@ interface DescriptionProps extends BaseProps {
 export const Description = forwardRef<"div", DescriptionProps>(
 	(props, forwardedRef) => {
 		const generatedId = React.useId();
-		const id = props.id ?? generatedId;
+		const { className, id = generatedId, tone } = props;
 		useFieldRegisterDescribedBy(id);
 
 		return (
@@ -36,8 +36,8 @@ export const Description = forwardRef<"div", DescriptionProps>(
 				{...props}
 				id={id}
 				variant="caption-md"
-				data-kiwi-tone={props.tone ?? "neutral"}
-				className={cx("🥝-description", props.className)}
+				data-kiwi-tone={tone ?? "neutral"}
+				className={cx("🥝-description", className)}
 				ref={forwardedRef}
 			/>
 		);

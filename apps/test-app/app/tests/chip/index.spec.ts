@@ -5,19 +5,19 @@
 import { test, expect } from "#playwright";
 import AxeBuilder from "@axe-core/playwright";
 
-test.describe("@a11y", () => {
-	test.describe("@visual", () => {
-		test("chip default", async ({ page }) => {
-			await page.goto("/tests/chip");
-			await expect(page.locator("body")).toHaveScreenshot();
-		});
-
-		test("chips visual vairants", async ({ page }) => {
-			await page.goto("/tests/chip?visual=true");
-			await expect(page.locator("body")).toHaveScreenshot();
-		});
+test.describe("@visual", () => {
+	test("chip default", async ({ page }) => {
+		await page.goto("/tests/chip");
+		await expect(page.locator("body")).toHaveScreenshot();
 	});
 
+	test("chips visual vairants", async ({ page }) => {
+		await page.goto("/tests/chip?visual=true");
+		await expect(page.locator("body")).toHaveScreenshot();
+	});
+});
+
+test.describe("@a11y", () => {
 	test("Axe Page Scan", async ({ page }) => {
 		await page.goto("/tests/chip");
 

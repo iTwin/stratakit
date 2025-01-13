@@ -7,10 +7,34 @@ import { Chip } from "@itwin/itwinui-react/bricks";
 
 export const handle = { title: "Chip" };
 
-export default definePage(function Page({ orientation, presentational }) {
+export default definePage(
+	function Page({ orientation, presentational }) {
+		return (
+			<>
+				<Chip>Value</Chip>
+			</>
+		);
+	},
+	{ visual: VisualTest },
+);
+
+function VisualTest() {
+	const permutations = [
+		["solid", "default"],
+		["outline", "default"],
+	] as const;
+
 	return (
-		<>
-			<Chip>Value</Chip>
-		</>
+		<div style={{ display: "grid", gap: 4 }}>
+			{permutations.map(([variant, tone]) => {
+				const props = { variant, tone } as React.ComponentProps<typeof Chip>;
+
+				return (
+					<div key={variant} style={{ display: "flex", gap: 4 }}>
+						<Chip {...props}>{variant}</Chip>
+					</div>
+				);
+			})}
+		</div>
 	);
-});
+}

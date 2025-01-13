@@ -583,7 +583,7 @@ function TreeItem(props: TreeItemProps) {
 							}}
 						/>
 						<Icon href={placeholderIcon} style={{ display: "inline" }} />
-						<Tree.ItemContent>{props.label}</Tree.ItemContent>
+						<Tree.ItemContent label={props.label} />
 						{actionsVisible && (
 							<Tree.ItemActions>
 								<IconButton

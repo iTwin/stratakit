@@ -94,11 +94,13 @@ DEV: TreeItem.displayName = "Tree.Item";
 
 // ----------------------------------------------------------------------------
 
-interface TreeItemContentProps extends BaseProps<"span"> {}
+interface TreeItemContentProps extends Omit<BaseProps<"span">, "children"> {
+	label?: React.ReactNode;
+}
 
 const TreeItemContent = forwardRef<"span", TreeItemContentProps>(
 	(props, forwardedRef) => {
-		const { children, ...rest } = props;
+		const { label, ...rest } = props;
 
 		const context = React.useContext(TreeItemContext);
 		return (
@@ -114,7 +116,7 @@ const TreeItemContent = forwardRef<"span", TreeItemContentProps>(
 						context.setSelected(!context.selected);
 					}}
 				>
-					{children}
+					{label}
 				</button>
 			</ListItem.Content>
 		);

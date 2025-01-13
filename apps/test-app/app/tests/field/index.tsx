@@ -10,6 +10,7 @@ import {
 	Label,
 	Radio,
 	Switch,
+	Description,
 } from "@itwin/itwinui-react/bricks";
 
 export const handle = { title: "Field" };
@@ -28,6 +29,7 @@ export default definePage(
 		asLabel,
 		layout,
 		labelPlacement = "before",
+		descriptions,
 	}) {
 		const Control = controls[control];
 		const ControlLabel = asLabel ? "span" : Label;
@@ -45,6 +47,11 @@ export default definePage(
 					{labelPlacement === "after" ? (
 						<ControlLabel>{control} example</ControlLabel>
 					) : null}
+					{descriptions
+						?.split(";")
+						.map((description) => (
+							<Description key={description}>{description}</Description>
+						)) || null}
 				</Field>
 			</form>
 		);
@@ -69,6 +76,7 @@ function VisualTestForTextControls() {
 			<Field>
 				<Label>Text control</Label>
 				<TextBox.Input />
+				<Description>Text description</Description>
 			</Field>
 
 			{/* Default layout for text controls (block) with wrapper rendered as a `<Label>` */}
@@ -81,6 +89,7 @@ function VisualTestForTextControls() {
 			<Field layout="inline">
 				<Label>Text control</Label>
 				<TextBox.Input />
+				<Description>Text description</Description>
 			</Field>
 
 			{/* Inline layout for text controls with wrapper rendered as a `<Label>` */}
@@ -99,28 +108,34 @@ function VisualTestForCheckableControls() {
 			<Field>
 				<Label>Checkbox control</Label>
 				<Checkbox />
+				<Description>Checkbox description</Description>
 			</Field>
 			<Field>
 				<Label>Radio control</Label>
 				<Radio value="A" />
+				<Description>Radio description</Description>
 			</Field>
 			<Field>
 				<Label>Switch control</Label>
 				<Switch />
+				<Description>Switch description</Description>
 			</Field>
 
 			{/* Label after control */}
 			<Field>
 				<Checkbox />
 				<Label>Checkbox control</Label>
+				<Description>Checkbox description</Description>
 			</Field>
 			<Field>
 				<Radio value="A" />
 				<Label>Radio control</Label>
+				<Description>Radio description</Description>
 			</Field>
 			<Field>
 				<Switch />
 				<Label>Switch control</Label>
+				<Description>Switch description</Description>
 			</Field>
 
 			{/* Field rendering as label, text before control */}

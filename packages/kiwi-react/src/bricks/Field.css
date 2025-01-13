@@ -9,15 +9,22 @@
 		align-items: center;
 		justify-content: start;
 		grid-template-columns: auto auto;
+		--🥝field-description-column-span: 2;
 
 		&:has(.🥝-text-box) {
 			grid-template-columns: auto;
+			--🥝field-description-column-span: 1;
+		}
+
+		.🥝-description {
+			grid-column: span var(--🥝field-description-column-span);
 		}
 	}
 
 	@layer modifiers {
 		&:where([data-kiwi-layout="inline"]) {
 			grid-template-columns: auto auto;
+			--🥝field-description-column-span: 2;
 		}
 	}
 }

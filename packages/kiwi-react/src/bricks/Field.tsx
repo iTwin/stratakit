@@ -42,16 +42,97 @@ export const Field = forwardRef<"div", FieldProps>((props, forwardedRef) => {
 
 	return (
 		<FieldIdContext.Provider value={fieldId}>
-			<Ariakit.Role
-				{...rest}
-				className={cx("🥝-field", className)}
-				data-kiwi-layout={layout}
-				ref={forwardedRef}
-			/>
+			<FieldDescribedByProvider>
+				<Ariakit.Role
+					{...rest}
+					className={cx("🥝-field", className)}
+					data-kiwi-layout={layout}
+					ref={forwardedRef}
+				/>
+			</FieldDescribedByProvider>
 		</FieldIdContext.Provider>
 	);
 });
 DEV: Field.displayName = "Field";
+
+// ----------------------------------------------------------------------------
+
+interface FieldDescribedBy {
+	describedBy: Set<string>;
+	register: (id: string) => void;
+	unregister: (id: string) => void;
+}
+
+const FieldDescribedByContext = React.createContext<
+	FieldDescribedBy | undefined
+>(undefined);
+
+function FieldDescribedByProvider(props: { children?: React.ReactNode }) {
+	const [describedBy, setDescribedBy] = React.useState<
+		FieldDescribedBy["describedBy"]
+	>(new Set());
+
+	const register = React.useCallback((id: string) => {
+		setDescribedBy((describedBy) => {
+			const updated = new Set(describedBy);
+			updated.add(id);
+			return updated;
+		});
+	}, []);
+
+	const unregister = React.useCallback((id: string) => {
+		setDescribedBy((describedBy) => {
+			const updated = new Set(describedBy);
+			updated.delete(id);
+			return updated;
+		});
+	}, []);
+
+	return (
+		<FieldDescribedByContext.Provider
+			value={React.useMemo(
+				() => ({
+					describedBy,
+					register,
+					unregister,
+				}),
+				[describedBy, register, unregister],
+			)}
+		>
+			{props.children}
+		</FieldDescribedByContext.Provider>
+	);
+}
+
+/**
+ * Use the description IDs for a field.
+ */
+export function useFieldDescribedBy(ariaDescribedByProp?: string) {
+	const describedBySet = React.useContext(FieldDescribedByContext)?.describedBy;
+	return React.useMemo(
+		() =>
+			!describedBySet || describedBySet.size === 0
+				? ariaDescribedByProp
+				: [...describedBySet, ariaDescribedByProp].filter(Boolean).join(" "),
+		[describedBySet, ariaDescribedByProp],
+	);
+}
+
+/**
+ * Registers a description for an associated control.
+ */
+export function useFieldRegisterDescribedBy(id: string) {
+	const context = React.useContext(FieldDescribedByContext);
+	const register = context?.register;
+	const unregister = context?.unregister;
+
+	React.useEffect(() => {
+		if (!register || !unregister) return;
+
+		register(id);
+		return () => unregister(id);
+	}, [id, register, unregister]);
+}
 
 // ----------------------------------------------------------------------------
 

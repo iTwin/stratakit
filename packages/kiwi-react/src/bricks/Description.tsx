@@ -27,7 +27,8 @@ interface DescriptionProps extends BaseProps {
  */
 export const Description = forwardRef<"div", DescriptionProps>(
 	(props, forwardedRef) => {
-		const id = props.id ?? React.useId();
+		const generatedId = React.useId();
+		const id = props.id ?? generatedId;
 		useFieldRegisterDescribedBy(id);
 
 		return (

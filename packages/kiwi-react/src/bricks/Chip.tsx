@@ -14,25 +14,16 @@ interface ChipProps extends BaseProps<"div"> {
 	 * @default "solid"
 	 */
 	variant?: "solid" | "outline";
-
-	/**
-	 * The tone of the chip. Most chips should be neutral.
-	 * Accent chips can be used to draw attention to the primary action.
-	 *
-	 * @default "neutral"
-	 */
-	tone?: "default" | "";
 }
 
 /**
  */
 export const Chip = forwardRef<"div", ChipProps>((props, forwardedRef) => {
-	const { variant = "solid", tone = "neutral", children, ...rest } = props;
+	const { variant = "solid", children, ...rest } = props;
 
 	return (
 		<Ariakit.Role.div
 			data-kiwi-variant={variant}
-			data-kiwi-tone={tone}
 			{...rest}
 			className={cx("🥝-chip", props.className)}
 			ref={forwardedRef}

@@ -28,12 +28,12 @@ interface DescriptionProps extends BaseProps {
 export const Description = forwardRef<"div", DescriptionProps>(
 	(props, forwardedRef) => {
 		const generatedId = React.useId();
-		const { className, id = generatedId, tone } = props;
+		const { className, id = generatedId, tone, ...rest } = props;
 		useFieldRegisterDescribedBy(id);
 
 		return (
 			<Text
-				{...props}
+				{...rest}
 				id={id}
 				variant="caption-md"
 				data-kiwi-tone={tone ?? "neutral"}

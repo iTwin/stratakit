@@ -17,6 +17,19 @@ interface ChipProps extends BaseProps<"div"> {
 }
 
 /**
+ * Chip is a UI component used to represent an item, attribute, or action in a compact visual style.
+ * It supports two visual variants: `solid` for primary emphasis and `outline` for less prominent states.
+ *
+ * Example : Render a Chip with the default "solid" variant
+ * ```tsx
+ * <Chip>Default Chip</Chip>
+ * ```
+ *
+ * Example Render a Chip with the "outline" variant
+ *
+ * ```tsx
+ * <Chip variant="outline">Outline Chip</Chip>
+ * ```
  */
 export const Chip = forwardRef<"div", ChipProps>((props, forwardedRef) => {
 	const { variant = "solid", children, ...rest } = props;

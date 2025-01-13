@@ -38,14 +38,14 @@ interface FieldProps extends BaseProps {
  */
 export const Field = forwardRef<"div", FieldProps>((props, forwardedRef) => {
 	const fieldId = React.useId();
-	const { className, layout, ...rest } = props;
+	const { layout, ...rest } = props;
 
 	return (
 		<FieldIdContext.Provider value={fieldId}>
 			<FieldDescribedByProvider>
 				<Ariakit.Role
 					{...rest}
-					className={cx("🥝-field", className)}
+					className={cx("🥝-field", props.className)}
 					data-kiwi-layout={layout}
 					ref={forwardedRef}
 				/>

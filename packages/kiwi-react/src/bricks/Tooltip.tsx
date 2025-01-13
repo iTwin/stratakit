@@ -59,7 +59,6 @@ export const Tooltip = forwardRef<"div", TooltipProps>(
 		const {
 			content,
 			children,
-			className,
 			type = "description",
 			id = React.useId(),
 			defaultOpen: defaultOpenProp,
@@ -102,7 +101,7 @@ export const Tooltip = forwardRef<"div", TooltipProps>(
 						aria-hidden="true"
 						{...rest}
 						unmountOnHide={unmountOnHide}
-						className={cx("🥝-tooltip", className)}
+						className={cx("🥝-tooltip", props.className)}
 						ref={forwardedRef}
 						id={id}
 						style={{

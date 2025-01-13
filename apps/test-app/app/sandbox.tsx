@@ -563,12 +563,12 @@ function TreeItem(props: TreeItemProps) {
 		return treeContext.hidden.includes(id);
 	}, [id, treeContext.hidden, parentContext.hidden]);
 	const selected = parentContext.selected || id === treeContext.selected;
-	const toggleSelected = React.useCallback(() => {
-		treeContext.setSelected((prev) => {
-			if (prev === id) return undefined;
-			return id;
-		});
-	}, [id, treeContext]);
+	const setSelected = React.useCallback(
+		(selected: boolean) => {
+			treeContext.setSelected(selected ? id : undefined);
+		},
+		[id, treeContext],
+	);
 	const actionsVisible = props.actions || hidden;
 	return (
 		<SandboxParentItemContext.Provider
@@ -583,13 +583,7 @@ function TreeItem(props: TreeItemProps) {
 							}}
 						/>
 						<Icon href={placeholderIcon} style={{ display: "inline" }} />
-						<Tree.Content
-							onClick={() => {
-								toggleSelected();
-							}}
-						>
-							{props.label}
-						</Tree.Content>
+						<Tree.Content>{props.label}</Tree.Content>
 						{actionsVisible && (
 							<Tree.Actions>
 								<IconButton
@@ -622,6 +616,7 @@ function TreeItem(props: TreeItemProps) {
 				}
 				expanded={isParentNode ? expanded : undefined}
 				selected={selected}
+				setSelected={setSelected}
 			>
 				{expanded ? props.children : undefined}
 			</Tree.Item>

@@ -32,13 +32,25 @@ DEV: Tree.displayName = "Tree.Root";
 interface TreeItemProps extends Omit<BaseProps, "content"> {
 	content?: React.ReactNode;
 	selected?: boolean;
+	/**
+	 * Function that is called when the item selection changes.
+	 */
+	setSelected?: (selected: boolean) => void;
 	/** Specifies if the tree item is expanded. Used to determine if a tree item is a parent node. Defaults to `undefined`. */
 	expanded?: boolean;
 }
 
 const TreeItem = forwardRef<"div", TreeItemProps>((props, forwardedRef) => {
-	const { selected, content, children, className, expanded, style, ...rest } =
-		props;
+	const {
+		selected,
+		content,
+		children,
+		className,
+		expanded,
+		style,
+		setSelected,
+		...rest
+	} = props;
 
 	const parentContext = React.useContext(TreeItemContext);
 	const level = parentContext ? parentContext.level + 1 : 1;
@@ -50,8 +62,9 @@ const TreeItem = forwardRef<"div", TreeItemProps>((props, forwardedRef) => {
 					level,
 					expanded,
 					selected,
+					setSelected,
 				}),
-				[level, expanded, selected],
+				[level, expanded, selected, setSelected],
 			)}
 		>
 			<div role="listitem" aria-current={firstSelected ? true : undefined}>
@@ -86,13 +99,23 @@ interface TreeItemContentProps extends BaseProps<"span"> {}
 const TreeItemContent = forwardRef<"span", TreeItemContentProps>(
 	(props, forwardedRef) => {
 		const { children, ...rest } = props;
+
+		const context = React.useContext(TreeItemContext);
 		return (
 			<ListItem.Content
 				{...rest}
 				className={cx("🥝-tree-item-content", props.className)}
 				ref={forwardedRef}
 			>
-				<button type="button">{children}</button>
+				<button
+					type="button"
+					onClick={() => {
+						if (!context?.setSelected || context.selected === undefined) return;
+						context.setSelected(!context.selected);
+					}}
+				>
+					{children}
+				</button>
 			</ListItem.Content>
 		);
 	},
@@ -183,6 +206,7 @@ const TreeItemContext = React.createContext<
 			level: number;
 			expanded?: boolean;
 			selected?: boolean;
+			setSelected?: (selected: boolean) => void;
 	  }
 	| undefined
 >(undefined);

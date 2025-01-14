@@ -57,9 +57,9 @@ export const Button = forwardRef<"button", ButtonProps>(
 		return (
 			<Ariakit.Button
 				accessibleWhenDisabled
+				{...rest}
 				data-kiwi-variant={variant}
 				data-kiwi-tone={tone}
-				{...rest}
 				className={cx("🥝-button", props.className)}
 				ref={forwardedRef}
 			/>

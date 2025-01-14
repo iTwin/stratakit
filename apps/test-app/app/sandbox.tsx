@@ -616,7 +616,7 @@ function TreeItem(props: TreeItemProps) {
 					</>
 				}
 				expanded={isParentNode ? expanded : undefined}
-				setExpanded={setExpanded}
+				onExpandedChange={setExpanded}
 				selected={selected}
 			>
 				{expanded ? props.children : undefined}

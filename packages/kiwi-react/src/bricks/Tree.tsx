@@ -34,7 +34,7 @@ interface TreeItemProps extends Omit<BaseProps, "content"> {
 	selected?: boolean;
 	/** Specifies if the tree item is expanded. Used to determine if a tree item is a parent node. Defaults to `undefined`. */
 	expanded?: boolean;
-	setExpanded?: (expanded: boolean) => void;
+	onExpandedChange?: (expanded: boolean) => void;
 }
 
 const TreeItem = forwardRef<"div", TreeItemProps>((props, forwardedRef) => {
@@ -45,7 +45,7 @@ const TreeItem = forwardRef<"div", TreeItemProps>((props, forwardedRef) => {
 		className,
 		expanded,
 		style,
-		setExpanded,
+		onExpandedChange,
 		...rest
 	} = props;
 
@@ -82,7 +82,7 @@ const TreeItem = forwardRef<"div", TreeItemProps>((props, forwardedRef) => {
 					<TreeItemExpander
 						onClick={() => {
 							if (expanded === undefined) return;
-							setExpanded?.(!expanded);
+							onExpandedChange?.(!expanded);
 						}}
 					/>
 					{content}

@@ -37,8 +37,7 @@ interface TreeItemProps extends Omit<BaseProps, "content"> {
 }
 
 const TreeItem = forwardRef<"div", TreeItemProps>((props, forwardedRef) => {
-	const { selected, content, children, className, expanded, style, ...rest } =
-		props;
+	const { selected, content, children, expanded, style, ...rest } = props;
 
 	const parentContext = React.useContext(TreeItemContext);
 	const level = parentContext ? parentContext.level + 1 : 1;
@@ -60,7 +59,7 @@ const TreeItem = forwardRef<"div", TreeItemProps>((props, forwardedRef) => {
 					data-kiwi-expanded={expanded}
 					data-kiwi-selected={selected}
 					data-kiwi-parent-selected={parentContext?.selected}
-					className={cx("🥝-tree-item", className)}
+					className={cx("🥝-tree-item", props.className)}
 					style={
 						{
 							...style,

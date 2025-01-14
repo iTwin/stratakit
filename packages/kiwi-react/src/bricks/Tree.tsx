@@ -37,8 +37,7 @@ interface TreeItemProps extends Omit<BaseProps, "content"> {
 }
 
 const TreeItem = forwardRef<"div", TreeItemProps>((props, forwardedRef) => {
-	const { selected, content, children, className, expanded, style, ...rest } =
-		props;
+	const { selected, content, children, expanded, style, ...rest } = props;
 
 	const parentContext = React.useContext(TreeItemContext);
 	const level = parentContext ? parentContext.level + 1 : 1;
@@ -60,7 +59,7 @@ const TreeItem = forwardRef<"div", TreeItemProps>((props, forwardedRef) => {
 					data-kiwi-expanded={expanded}
 					data-kiwi-selected={selected}
 					data-kiwi-parent-selected={parentContext?.selected}
-					className={cx("🥝-tree-item", className)}
+					className={cx("🥝-tree-item", props.className)}
 					style={
 						{
 							...style,
@@ -101,14 +100,24 @@ DEV: TreeItemContent.displayName = "Tree.Content";
 
 // ----------------------------------------------------------------------------
 
-interface TreeItemActionsProps extends BaseProps {}
+interface TreeItemActionsProps extends BaseProps {
+	/**
+	 * Controlled state to force the actions visibility.
+	 * By default only hovered actions are visible.
+	 *
+	 * @default undefined
+	 */
+	visible?: boolean;
+}
 
 const TreeItemActions = forwardRef<"div", TreeItemActionsProps>(
 	(props, forwardedRef) => {
+		const { visible, ...rest } = props;
 		return (
 			<Ariakit.Toolbar
-				{...props}
+				{...rest}
 				className={cx("🥝-tree-item-actions", props.className)}
+				data-kiwi-visible={visible}
 				ref={forwardedRef}
 			>
 				{props.children}

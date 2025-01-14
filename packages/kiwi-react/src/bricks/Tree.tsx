@@ -32,10 +32,8 @@ DEV: Tree.displayName = "Tree.Root";
 interface TreeItemProps extends Omit<BaseProps, "content"> {
 	content?: React.ReactNode;
 	selected?: boolean;
-	/**
-	 * Function that is called when the item selection changes.
-	 */
-	setSelected?: (selected: boolean) => void;
+	/** Callback fired when the tree item is selected. */
+	onSelectedChange?: (selected: boolean) => void;
 	/** Specifies if the tree item is expanded. Used to determine if a tree item is a parent node. Defaults to `undefined`. */
 	expanded?: boolean;
 }
@@ -48,7 +46,7 @@ const TreeItem = forwardRef<"div", TreeItemProps>((props, forwardedRef) => {
 		className,
 		expanded,
 		style,
-		setSelected,
+		onSelectedChange,
 		...rest
 	} = props;
 
@@ -62,9 +60,9 @@ const TreeItem = forwardRef<"div", TreeItemProps>((props, forwardedRef) => {
 					level,
 					expanded,
 					selected,
-					setSelected,
+					onSelectedChange,
 				}),
-				[level, expanded, selected, setSelected],
+				[level, expanded, selected, onSelectedChange],
 			)}
 		>
 			<div role="listitem" aria-current={firstSelected ? true : undefined}>
@@ -112,8 +110,9 @@ const TreeItemContent = forwardRef<"span", TreeItemContentProps>(
 				<button
 					type="button"
 					onClick={() => {
-						if (!context?.setSelected || context.selected === undefined) return;
-						context.setSelected(!context.selected);
+						if (!context?.onSelectedChange || context.selected === undefined)
+							return;
+						context.onSelectedChange(!context.selected);
 					}}
 				>
 					{label}
@@ -205,7 +204,7 @@ const TreeItemContext = React.createContext<
 			level: number;
 			expanded?: boolean;
 			selected?: boolean;
-			setSelected?: (selected: boolean) => void;
+			onSelectedChange?: (selected: boolean) => void;
 	  }
 	| undefined
 >(undefined);

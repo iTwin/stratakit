@@ -8,6 +8,8 @@ export { Root } from "./Root.js";
 export { Anchor } from "./Anchor.js";
 export { Button } from "./Button.js";
 export { Checkbox } from "./Checkbox.js";
+export { Chip } from "./Chip.js";
+export { Description } from "./Description.js";
 export * as DropdownMenu from "./DropdownMenu.js";
 export { Divider } from "./Divider.js";
 export { Icon } from "./Icon.js";

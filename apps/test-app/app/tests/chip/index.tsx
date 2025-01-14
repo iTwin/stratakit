@@ -19,15 +19,12 @@ export default definePage(
 );
 
 function VisualTest() {
-	const permutations = [
-		["solid", "default"],
-		["outline", "default"],
-	] as const;
+	const permutations = [["solid"], ["outline"]] as const;
 
 	return (
 		<div style={{ display: "grid", gap: 4 }}>
-			{permutations.map(([variant, tone]) => {
-				const props = { variant, tone } as React.ComponentProps<typeof Chip>;
+			{permutations.map(([variant]) => {
+				const props = { variant } as React.ComponentProps<typeof Chip>;
 
 				return (
 					<div key={variant} style={{ display: "flex", gap: 4 }}>

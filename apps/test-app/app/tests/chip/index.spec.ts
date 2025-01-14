@@ -6,7 +6,7 @@ import { test, expect } from "#playwright";
 import AxeBuilder from "@axe-core/playwright";
 
 test.describe("@visual", () => {
-	test("chips visual vairants", async ({ page }) => {
+	test("chips visual variants", async ({ page }) => {
 		await page.goto("/tests/chip?visual=true");
 		await expect(page.locator("body")).toHaveScreenshot();
 	});

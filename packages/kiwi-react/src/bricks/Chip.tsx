@@ -23,11 +23,6 @@ interface ChipProps extends BaseProps<"div"> {
  * Example : Render a Chip with the default "solid" variant
  * ```tsx
  * <Chip>Default Chip</Chip>
- * ```
- *
- * Example Render a Chip with the "outline" variant
- *
- * ```tsx
  * <Chip variant="outline">Outline Chip</Chip>
  * ```
  */

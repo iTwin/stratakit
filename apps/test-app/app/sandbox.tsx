@@ -416,7 +416,7 @@ function IdealTreeItems() {
 	return (
 		<>
 			<TreeItem label="Guides">
-				<TreeItem label="Tree" actions>
+				<TreeItem label="Tree">
 					<TreeItem label="Guide 4" />
 					<TreeItem label="Guide 3" />
 					<TreeItem label="Guide 2" />
@@ -424,7 +424,7 @@ function IdealTreeItems() {
 				</TreeItem>
 			</TreeItem>
 			<TreeItem label="Other">
-				<TreeItem label="Object 2" actions>
+				<TreeItem label="Object 2">
 					<TreeItem label="Path 3" />
 				</TreeItem>
 				<TreeItem label="Object 1" />
@@ -433,11 +433,11 @@ function IdealTreeItems() {
 				<TreeItem label="Parking lot access" />
 				<TreeItem label="Site access" />
 			</TreeItem>
-			<TreeItem label="Parking lot" actions>
-				<TreeItem label="Parking area" actions>
+			<TreeItem label="Parking lot">
+				<TreeItem label="Parking area">
 					<TreeItem label="Bay point 2" />
-					<TreeItem label="Bay point 1" actions />
-					<TreeItem label="Space point 1" actions />
+					<TreeItem label="Bay point 1" />
+					<TreeItem label="Space point 1" />
 					<TreeItem label="Path 6" />
 				</TreeItem>
 			</TreeItem>
@@ -472,22 +472,14 @@ function ComplexTreeItems() {
 				<TreeItem label="002_Substation" defaultCollapsed>
 					<TreeItem label="002_Substation_A" />
 				</TreeItem>
-				<TreeItem
-					label="005-BENROAD-00-XX-M3-D-00003.dgn"
-					actions
-					defaultCollapsed
-				>
+				<TreeItem label="005-BENROAD-00-XX-M3-D-00003.dgn" defaultCollapsed>
 					<TreeItem label="005-BENROAD-00-XX-M3-D-00003-A" />
 				</TreeItem>
-				<TreeItem
-					label="005-BENROAD-00-XX-M3-D-00005.dgn"
-					actions
-					defaultCollapsed
-				>
+				<TreeItem label="005-BENROAD-00-XX-M3-D-00005.dgn" defaultCollapsed>
 					<TreeItem label="005-BENROAD-00-XX-M3-D-00005-A" />
 				</TreeItem>
 				<TreeItem label="005-BENROAD-00-XX-M3-G-00002.dgn" defaultCollapsed>
-					<TreeItem label="005-BENROAD-00-XX-M3-G-00002-A" actions />
+					<TreeItem label="005-BENROAD-00-XX-M3-G-00002-A" />
 				</TreeItem>
 				<TreeItem label="005-BENROAD-00-XX-M3-G-00003.dgn" defaultCollapsed>
 					<TreeItem label="005-BENROAD-00-XX-M3-G-00003-A" />
@@ -498,13 +490,13 @@ function ComplexTreeItems() {
 					</TreeItem>
 					<TreeItem label="A-CLNG-TILE">
 						<TreeItem label="A-DOOR-2D-PLAN">
-							<TreeItem label="P00003 [2-KA62]" actions>
+							<TreeItem label="P00003 [2-KA62]">
 								<TreeItem label="Cell [2-KA63]">
 									<TreeItem label="Cell [2-KA64]">
 										<TreeItem label="Complex Chain [2-KA6A]" />
-										<TreeItem label="Complex Chain [2-KA6B]" actions />
-										<TreeItem label="Complex Chain [2-KA6C]" actions />
-										<TreeItem label="Complex Chain [2-KA6D]" actions />
+										<TreeItem label="Complex Chain [2-KA6B]" />
+										<TreeItem label="Complex Chain [2-KA6C]" />
+										<TreeItem label="Complex Chain [2-KA6D]" />
 										<TreeItem label="Complex Chain [2-KA6E]" />
 										<TreeItem label="Complex Chain [2-KA6F]" />
 										<TreeItem label="Complex Chain [2-KA6G]" />
@@ -534,7 +526,7 @@ function ComplexTreeItems() {
 					</TreeItem>
 				</TreeItem>
 			</TreeItem>
-			<TreeItem label="ITC_Main" actions />
+			<TreeItem label="ITC_Main" />
 		</>
 	);
 }
@@ -546,7 +538,6 @@ const SandboxParentItemContext = React.createContext<{
 
 type TreeItemProps = React.PropsWithChildren<{
 	label?: string;
-	actions?: boolean;
 	defaultCollapsed?: boolean;
 }>;
 
@@ -569,7 +560,8 @@ function TreeItem(props: TreeItemProps) {
 			return id;
 		});
 	}, [id, treeContext]);
-	const actionsVisible = props.actions || hidden;
+	// Display actions when item is hidden.
+	const actionsVisible = hidden ? true : undefined;
 	return (
 		<SandboxParentItemContext.Provider
 			value={React.useMemo(() => ({ selected, hidden }), [hidden, selected])}
@@ -590,34 +582,31 @@ function TreeItem(props: TreeItemProps) {
 						>
 							{props.label}
 						</Tree.Content>
-						{actionsVisible && (
-							<Tree.Actions>
+						<Tree.Actions visible={actionsVisible}>
+							<IconButton
+								className={styles.action}
+								icon={lockIcon}
+								label="Lock"
+								variant="ghost"
+								aria-hidden={hidden}
+							/>
+							{parentContext.hidden ? (
+								<span className={styles.actionIcon}>
+									<Icon href={dotIcon} />
+								</span>
+							) : (
 								<IconButton
 									className={styles.action}
-									icon={lockIcon}
-									label="Lock"
+									icon={hidden ? hideIcon : showIcon}
+									label={hidden ? "Show" : "Hide"}
 									variant="ghost"
-									aria-hidden={!props.actions || hidden}
+									onClick={() => {
+										treeContext.toggleHidden(id);
+									}}
 								/>
-								{parentContext.hidden ? (
-									<span className={styles.actionIcon}>
-										<Icon href={dotIcon} />
-									</span>
-								) : (
-									<IconButton
-										className={styles.action}
-										icon={hidden ? hideIcon : showIcon}
-										label={hidden ? "Show" : "Hide"}
-										variant="ghost"
-										aria-hidden={!props.actions}
-										onClick={() => {
-											treeContext.toggleHidden(id);
-										}}
-									/>
-								)}
-								<TreeMoreActions hidden={!props.actions || hidden} />
-							</Tree.Actions>
-						)}
+							)}
+							<TreeMoreActions hidden={hidden} />
+						</Tree.Actions>
 					</>
 				}
 				expanded={isParentNode ? expanded : undefined}

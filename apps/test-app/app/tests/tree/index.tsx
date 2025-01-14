@@ -13,7 +13,12 @@ import showIcon from "@itwin/itwinui-icons/visibility-show.svg";
 export const handle = { title: "Tree" };
 
 export default definePage(
-	function Page({ overflow = false, selected = false }) {
+	function Page({
+		overflow = false,
+		selected = false,
+		visibleActions = undefined,
+	}) {
+		const visibleActionsParam = visibleActions as boolean | undefined;
 		const overflowPostfix = overflow
 			? " with a super long label that is overflown"
 			: "";
@@ -21,17 +26,21 @@ export default definePage(
 			<Tree.Root style={{ maxInlineSize: overflow ? 300 : undefined }}>
 				<TreeItem label={`Item 1${overflowPostfix}`} selected={!!selected}>
 					<TreeItem label="Item 1.1" selected={!!selected} />
-					<TreeItem label="Item 1.2" actions selected={!!selected} />
+					<TreeItem
+						label="Item 1.2"
+						visibleActions={visibleActionsParam}
+						selected={!!selected}
+					/>
 					<TreeItem
 						label={`Item 1.3${overflowPostfix}`}
-						actions
+						visibleActions={visibleActionsParam}
 						selected={!!selected}
 					/>
 				</TreeItem>
 				<TreeItem label="Item 2">
 					<TreeItem label={`Item 2.1${overflowPostfix}`} />
 				</TreeItem>
-				<TreeItem label="Item 3" actions />
+				<TreeItem label="Item 3" visibleActions={visibleActionsParam} />
 			</Tree.Root>
 		);
 	},
@@ -43,11 +52,11 @@ export default definePage(
 function TreeItem({
 	children,
 	label,
-	actions,
+	visibleActions,
 	selected,
 }: React.PropsWithChildren<{
 	label?: React.ReactNode;
-	actions?: boolean;
+	visibleActions?: boolean;
 	selected?: boolean;
 }>) {
 	const isParentNode = React.Children.count(children) > 0;
@@ -59,22 +68,24 @@ function TreeItem({
 					<Tree.Expander />
 					<Icon href={placeholderIcon} />
 					<Tree.Content>{label}</Tree.Content>
-					<div style={{ display: "flex", gap: 4 }}>
+					<Tree.Actions visible={visibleActions}>
 						<IconButton
 							icon={unlockIcon}
 							label="Unlock"
 							variant="ghost"
-							aria-hidden={!actions}
-							style={{ visibility: actions ? undefined : "hidden" }}
+							style={{
+								position: "relative",
+							}}
 						/>
 						<IconButton
 							icon={showIcon}
 							label="Show"
 							variant="ghost"
-							aria-hidden={!actions}
-							style={{ visibility: actions ? undefined : "hidden" }}
+							style={{
+								position: "relative",
+							}}
 						/>
-					</div>
+					</Tree.Actions>
 				</>
 			}
 			selected={selected}

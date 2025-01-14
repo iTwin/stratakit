@@ -50,6 +50,17 @@
 			&:where(:hover[data-kiwi-parent-selected="true"][data-kiwi-selected="true"]) {
 				--🌀list-item-state: var(--🌀list-item-state--active-child-hover);
 			}
+
+			&:where(:not(:hover):not(:focus-within)) {
+				:where(.🥝-tree-item-actions:not([data-kiwi-visible="true"])) {
+					clip-path: inset(50%);
+					height: 1px;
+					overflow: hidden;
+					position: absolute;
+					white-space: nowrap;
+					width: 1px;
+				}
+			}
 		}
 	}
 }
@@ -79,17 +90,30 @@
 }
 
 .🥝-tree-item-actions {
-	position: sticky;
-	inset-inline-end: 0;
-	padding-inline-end: 4px;
-	background-color: var(--kiwi-color-bg-surface-primary);
-	display: inline-flex;
+	@layer base {
+		position: sticky;
+		inset-inline-end: 0;
+		padding-inline-end: 4px;
+		background-color: var(--kiwi-color-bg-surface-primary);
+		display: inline-flex;
 
-	&::before {
-		position: absolute;
-		content: "";
-		inset: 0;
-		background-color: var(--🥝list-item-background-color);
+		&::before {
+			position: absolute;
+			content: "";
+			inset: 0;
+			background-color: var(--🥝list-item-background-color);
+		}
+	}
+
+	@layer states {
+		&:where([data-kiwi-visible="false"]) {
+			clip-path: inset(50%);
+			height: 1px;
+			overflow: hidden;
+			position: absolute;
+			white-space: nowrap;
+			width: 1px;
+		}
 	}
 }
 

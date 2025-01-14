@@ -2,9 +2,11 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
+import * as React from "react";
 import { forwardRef, type BaseProps } from "./~utils.js";
 import cx from "classnames";
 import { Text } from "./Text.js";
+import { useFieldRegisterDescribedBy } from "./Field.js";
 
 interface DescriptionProps extends BaseProps {
 	/**
@@ -25,11 +27,16 @@ interface DescriptionProps extends BaseProps {
  */
 export const Description = forwardRef<"div", DescriptionProps>(
 	(props, forwardedRef) => {
+		const generatedId = React.useId();
+		const { id = generatedId, tone, ...rest } = props;
+		useFieldRegisterDescribedBy(id);
+
 		return (
 			<Text
-				{...props}
+				{...rest}
+				id={id}
 				variant="caption-md"
-				data-kiwi-tone={props.tone ?? "neutral"}
+				data-kiwi-tone={tone ?? "neutral"}
 				className={cx("🥝-description", props.className)}
 				ref={forwardedRef}
 			/>

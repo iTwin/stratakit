@@ -14,7 +14,7 @@ export default definePage(
 		return (
 			<Table.Root>
 				<Table.Header>
-					<Table.Row>
+					<Table.Row data-kiwi-variant="header">
 						<Table.Cell data-kiwi-slot>
 							<Checkbox aria-checked="mixed" id="table-header-checkbox" />
 							<VisuallyHidden
@@ -23,8 +23,10 @@ export default definePage(
 								Select all rows
 							</VisuallyHidden>
 						</Table.Cell>
-						<Table.Cell>Column 1</Table.Cell>
-						<Table.Cell data-kiwi-align="right">Column 2</Table.Cell>
+						<Table.Cell data-kiwi-variant="sortable">Column 1</Table.Cell>
+						<Table.Cell data-kiwi-variant="sortable" data-kiwi-align="right">
+							Column 2
+						</Table.Cell>
 					</Table.Row>
 				</Table.Header>
 				<Table.Body>

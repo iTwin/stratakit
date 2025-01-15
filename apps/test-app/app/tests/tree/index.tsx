@@ -96,13 +96,74 @@ function TreeItem(
 	);
 }
 
+interface TreeItemData {
+	id: string;
+	label: string;
+	items: TreeItemData[];
+}
+
+interface FlatTreeItem {
+	id: string;
+	parentId?: string;
+	items: string[];
+	label: string;
+	level: number;
+}
+
+function useTreeData() {
+	const items = React.useMemo(() => {
+		function createItems(
+			count: number,
+			childItemCount: number,
+			parentId?: string,
+		) {
+			const treeItems: TreeItemData[] = [];
+			for (let i = 0; i < count; i++) {
+				const id = parentId ? `${parentId}-${i}` : `${i}`;
+				const items = createItems(childItemCount, childItemCount - 1, id);
+				treeItems.push({
+					id,
+					label: `Item ${id}`,
+					items,
+				});
+			}
+			return treeItems;
+		}
+		return createItems(10, 5);
+	}, []);
+	const flatItems = React.useMemo<FlatTreeItem[]>(() => {
+		// Flatten items
+		function flattenItems(
+			items: TreeItemData[],
+			parentId?: string,
+			level = 0,
+		): FlatTreeItem[] {
+			const flatItems: FlatTreeItem[] = [];
+			for (const item of items) {
+				flatItems.push({
+					id: item.id,
+					parentId,
+					items: item.items.map((child) => child.id),
+					label: item.label,
+					level,
+				});
+				flatItems.push(...flattenItems(item.items, item.id, level + 1));
+			}
+			return flatItems;
+		}
+		return flattenItems(items);
+	}, [items]);
+	return { items, flatItems };
+}
+
 function VirtualTest() {
+	const { flatItems } = useTreeData();
 	// The scrollable element for your list
 	const parentRef = React.useRef(null);
 
 	// The virtualizer
 	const rowVirtualizer = useVirtualizer({
-		count: 10000,
+		count: flatItems.length,
 		getScrollElement: () => parentRef.current,
 		estimateSize: () => 24,
 	});
@@ -123,9 +184,10 @@ function VirtualTest() {
 					}}
 				>
 					{rowVirtualizer.getVirtualItems().map((virtualItem) => {
+						const treeItem = flatItems[virtualItem.index];
 						return (
 							<TreeItem
-								key={virtualItem.index}
+								key={treeItem.id}
 								style={{
 									position: "absolute",
 									top: 0,
@@ -134,7 +196,7 @@ function VirtualTest() {
 									height: `${virtualItem.size}px`,
 									transform: `translateY(${virtualItem.start}px)`,
 								}}
-								label={`Row ${virtualItem.index}`}
+								label={treeItem.label}
 							/>
 						);
 					})}

@@ -18,6 +18,7 @@
 		"@itwin/itwinui-icons": "workspace:*",
 		"@itwin/itwinui-react": "workspace:*",
 		"@react-router/node": "^7.1.1",
+		"@tanstack/react-virtual": "^3.11.2",
 		"classnames": "^2.5.1",
 		"isbot": "^5.1.18",
 		"react": "19",

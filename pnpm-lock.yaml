@@ -50,6 +50,9 @@ importers:
       "@react-router/node":
         specifier: ^7.1.1
         version: 7.1.1(react-router@7.1.1(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(typescript@5.7.2)
+      "@tanstack/react-virtual":
+        specifier: ^3.11.2
+        version: 3.11.2(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       classnames:
         specifier: ^2.5.1
         version: 2.5.1
@@ -1440,6 +1443,21 @@ packages:
       }
     cpu: [x64]
     os: [win32]
+
+  "@tanstack/react-virtual@3.11.2":
+    resolution:
+      {
+        integrity: sha512-OuFzMXPF4+xZgx8UzJha0AieuMihhhaWG0tCqpp6tDzlFwOmNBPYMuLOtMJ1Tr4pXLHmgjcWhG6RlknY2oNTdQ==,
+      }
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
+      react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
+
+  "@tanstack/virtual-core@3.11.2":
+    resolution:
+      {
+        integrity: sha512-vTtpNt7mKCiZ1pwU9hfKPhpdVO2sVzFQsxoVBGtOSHxlrRRzYr8iQ2TlwbAcRYCcEiZ9ECAM8kBzH0v2+VzfKw==,
+      }
 
   "@types/cookie@0.6.0":
     resolution:
@@ -3555,6 +3573,14 @@ snapshots:
 
   "@rollup/rollup-win32-x64-msvc@4.29.1":
     optional: true
+
+  "@tanstack/react-virtual@3.11.2(react-dom@19.0.0(react@19.0.0))(react@19.0.0)":
+    dependencies:
+      "@tanstack/virtual-core": 3.11.2
+      react: 19.0.0
+      react-dom: 19.0.0(react@19.0.0)
+
+  "@tanstack/virtual-core@3.11.2": {}
 
   "@types/cookie@0.6.0": {}
 

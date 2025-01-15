@@ -23,4 +23,13 @@
 			background-color: var(--kiwi-color-bg-surface-primary);
 		}
 	}
+
+	@layer base.🌀 {
+		/* Cyclic toggles for default/hover/pressed/active/disabled states. See https://kizu.dev/cyclic-toggles/ */
+		--🌀chip-state: var(--🌀chip-state--default);
+		--🌀chip-state--default: var(--🌀chip-state,);
+		--🌀chip-state--hover: var(--🌀chip-state,);
+		--🌀chip-state--active: var(--🌀chip-state,);
+		--🌀chip-state--disabled: var(--🌀chip-state,);
+	}
 }

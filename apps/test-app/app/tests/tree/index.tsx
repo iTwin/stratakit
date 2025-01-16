@@ -56,16 +56,22 @@ function TreeItem(
 		visibleActions?: boolean;
 		selected?: boolean;
 		style?: React.CSSProperties;
+		onExpanded?: () => void;
+		expanded?: boolean;
 	}>,
 ) {
 	const { children, label, visibleActions, selected, style } = props;
 	const isParentNode = React.Children.count(children) > 0;
 	return (
 		<Tree.Item
-			expanded={isParentNode || undefined}
+			expanded={
+				props.expanded !== undefined
+					? props.expanded
+					: isParentNode || undefined
+			}
 			content={
 				<>
-					<Tree.Expander />
+					<Tree.Expander onClick={props.onExpanded} />
 					<Icon href={placeholderIcon} />
 					<Tree.Content>{label}</Tree.Content>
 					<Tree.Actions visible={visibleActions}>
@@ -114,7 +120,7 @@ interface VirtualTreeItemData extends TreeItemData {
 }
 
 function useTreeData() {
-	const tree = React.useMemo(() => {
+	return React.useMemo(() => {
 		function createItems(
 			count: number,
 			childItemCount: number,
@@ -134,7 +140,43 @@ function useTreeData() {
 		}
 		return createItems(10, 5);
 	}, []);
-	const flatItems = React.useMemo<FlatTreeItem[]>(() => {
+}
+
+function useExpandableTree(tree: TreeItemData[]) {
+	const [collapsedItems, setCollapsedItems] = React.useState(new Set<string>());
+	const toggleExpanded = React.useCallback((id: string) => {
+		setCollapsedItems((prev) => {
+			const next = new Set(prev);
+			const expanded = !prev.has(id);
+			if (expanded) {
+				next.add(id);
+			} else {
+				next.delete(id);
+			}
+			return next;
+		});
+	}, []);
+	const collapsedTree = React.useMemo(() => {
+		function filterItems(items: TreeItemData[]) {
+			const filtered: TreeItemData[] = [];
+			for (const item of items) {
+				const items = collapsedItems.has(item.id)
+					? []
+					: filterItems(item.items);
+				filtered.push({
+					...item,
+					items,
+				});
+			}
+			return filtered;
+		}
+		return filterItems(tree);
+	}, [tree, collapsedItems]);
+	return { tree: collapsedTree, toggleExpanded, collapsedItems };
+}
+
+function useFlatTree(tree: TreeItemData[]) {
+	return React.useMemo<FlatTreeItem[]>(() => {
 		function flattenItems(items: TreeItemData[], level = 0): FlatTreeItem[] {
 			const flatItems: FlatTreeItem[] = [];
 			for (const item of items) {
@@ -149,11 +191,17 @@ function useTreeData() {
 		}
 		return flattenItems(tree);
 	}, [tree]);
-	return { tree, flatItems };
 }
 
 function VirtualTest() {
-	const { flatItems } = useTreeData();
+	const tree = useTreeData();
+	const {
+		tree: collapsedTree,
+		toggleExpanded,
+		collapsedItems,
+	} = useExpandableTree(tree);
+	const flatItems = useFlatTree(collapsedTree);
+
 	// The scrollable element for your list
 	const parentRef = React.useRef(null);
 
@@ -212,34 +260,49 @@ function VirtualTest() {
 						position: "relative",
 					}}
 				>
-					<VirtualTreeItemRenderer items={virtualTree} />
+					<VirtualTreeItemRenderer
+						items={virtualTree}
+						onExpanded={(id) => {
+							toggleExpanded(id);
+						}}
+						collapsedItems={collapsedItems}
+					/>
 				</Tree.Root>
 			</div>
 		</>
 	);
 }
 
-function VirtualTreeItemRenderer({ items }: { items: VirtualTreeItemData[] }) {
+function VirtualTreeItemRenderer(props: {
+	items: VirtualTreeItemData[];
+	onExpanded: (id: string) => void;
+	collapsedItems: Set<string>;
+}) {
 	return (
 		<>
-			{items.map((item) => (
-				<TreeItem
-					key={item.id}
-					style={{
-						position: "absolute",
-						top: 0,
-						left: 0,
-						width: "100%",
-						height: `${item.virtual.size}px`,
-						transform: `translateY(${item.virtual.start}px)`,
-					}}
-					label={item.label}
-				>
-					{item.items.length === 0 ? undefined : (
-						<VirtualTreeItemRenderer items={item.items} />
-					)}
-				</TreeItem>
-			))}
+			{props.items.map((item) => {
+				const expanded = props.collapsedItems.has(item.id) ? false : undefined;
+				return (
+					<TreeItem
+						key={item.id}
+						style={{
+							position: "absolute",
+							top: 0,
+							left: 0,
+							width: "100%",
+							height: `${item.virtual.size}px`,
+							transform: `translateY(${item.virtual.start}px)`,
+						}}
+						label={item.label}
+						expanded={expanded}
+						onExpanded={() => props.onExpanded(item.id)}
+					>
+						{item.items.length === 0 ? undefined : (
+							<VirtualTreeItemRenderer {...props} items={item.items} />
+						)}
+					</TreeItem>
+				);
+			})}
 		</>
 	);
 }

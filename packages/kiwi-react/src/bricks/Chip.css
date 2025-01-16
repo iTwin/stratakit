@@ -24,6 +24,24 @@
 		}
 	}
 
+	@layer states {
+		@media (any-hover: hover) {
+			&:where(:hover) {
+				--🌀chip-state: var(--🌀chip-state--hover);
+			}
+		}
+
+		&:where(:active) {
+			--🌀chip-state: var(--🌀chip-state--active);
+		}
+
+		&:where([disabled], :disabled, [aria-disabled="true"]) {
+			--🌀chip-state: var(--🌀chip-state--disabled);
+			color: var(--kiwi-color-text-neutral-disabled);
+			cursor: not-allowed;
+		}
+	}
+
 	@layer base.🌀 {
 		/* Cyclic toggles for default/hover/pressed/active/disabled states. See https://kizu.dev/cyclic-toggles/ */
 		--🌀chip-state: var(--🌀chip-state--default);

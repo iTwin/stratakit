@@ -36,9 +36,9 @@ export const Icon = forwardRef<"svg", IconProps>((props, forwardedRef) => {
 	const iconId = toIconId(size);
 	return (
 		<Ariakit.Role.svg
-			data-kiwi-size={size}
 			aria-hidden
 			{...rest}
+			data-kiwi-size={size}
 			className={cx("🥝-icon", props.className)}
 			ref={forwardedRef}
 		>

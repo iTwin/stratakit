@@ -25,8 +25,8 @@ export const Anchor = forwardRef<"a", AnchorProps>((props, forwardedRef) => {
 	const { tone = "neutral", ...rest } = props;
 	return (
 		<Ariakit.Role.a
-			data-kiwi-tone={tone}
 			{...rest}
+			data-kiwi-tone={tone}
 			className={cx("🥝-anchor", props.className)}
 			render={
 				<Ariakit.Focusable

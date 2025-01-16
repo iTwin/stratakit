@@ -58,10 +58,10 @@ function TreeItem(
 		style?: React.CSSProperties;
 		onExpanded?: () => void;
 		expanded?: boolean;
+		level?: number;
 	}>,
 ) {
-	const { children, label, visibleActions, selected, style } = props;
-	const isParentNode = React.Children.count(children) > 0;
+	const isParentNode = React.Children.count(props.children) > 0;
 	return (
 		<Tree.Item
 			expanded={
@@ -69,12 +69,15 @@ function TreeItem(
 					? props.expanded
 					: isParentNode || undefined
 			}
+			level={props.level}
+			selected={props.selected}
+			style={props.style}
 			content={
 				<>
 					<Tree.Expander onClick={props.onExpanded} />
 					<Icon href={placeholderIcon} />
-					<Tree.Content>{label}</Tree.Content>
-					<Tree.Actions visible={visibleActions}>
+					<Tree.Content>{props.label}</Tree.Content>
+					<Tree.Actions visible={props.visibleActions}>
 						<IconButton
 							icon={unlockIcon}
 							label="Unlock"
@@ -94,10 +97,8 @@ function TreeItem(
 					</Tree.Actions>
 				</>
 			}
-			selected={selected}
-			style={style}
 		>
-			{children}
+			{props.children}
 		</Tree.Item>
 	);
 }
@@ -116,6 +117,7 @@ interface FlatTreeItem {
 
 interface VirtualTreeItemData extends TreeItemData {
 	virtual: VirtualItem;
+	flat: FlatTreeItem;
 	items: VirtualTreeItemData[];
 }
 
@@ -233,10 +235,12 @@ function VirtualTest() {
 				added.add(item.id);
 
 				const items = filterItems(item.items);
+				const flat = flatItems[virtual.index];
 				filtered.push({
 					...item,
 					items,
 					virtual,
+					flat,
 				});
 			}
 			return filtered;
@@ -295,6 +299,7 @@ function VirtualTreeItemRenderer(props: {
 						}}
 						label={item.label}
 						expanded={expanded}
+						level={item.flat.level}
 						onExpanded={() => props.onExpanded(item.id)}
 					>
 						{item.items.length === 0 ? undefined : (

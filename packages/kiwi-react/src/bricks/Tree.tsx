@@ -34,13 +34,28 @@ interface TreeItemProps extends Omit<BaseProps, "content"> {
 	selected?: boolean;
 	/** Specifies if the tree item is expanded. Used to determine if a tree item is a parent node. Defaults to `undefined`. */
 	expanded?: boolean;
+	/** Specifies the nesting level of the tree item. */
+	level?: number;
 }
 
 const TreeItem = forwardRef<"div", TreeItemProps>((props, forwardedRef) => {
-	const { selected, content, children, expanded, style, ...rest } = props;
+	const {
+		selected,
+		content,
+		children,
+		expanded,
+		style,
+		level: _,
+		...rest
+	} = props;
 
 	const parentContext = React.useContext(TreeItemContext);
-	const level = parentContext ? parentContext.level + 1 : 1;
+	const level =
+		props.level !== undefined
+			? Math.max(1, props.level)
+			: parentContext
+				? parentContext.level + 1
+				: 1;
 	const firstSelected = !!selected && !parentContext?.selected; // TODO: temporary, only works with single selection
 	return (
 		<TreeItemContext.Provider

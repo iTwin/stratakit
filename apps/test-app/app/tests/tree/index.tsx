@@ -4,7 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 import { definePage } from "~/~utils.tsx";
 import * as React from "react";
-import { useVirtualizer } from "@tanstack/react-virtual";
+import { useVirtualizer, type VirtualItem } from "@tanstack/react-virtual";
 import { Icon, IconButton } from "@itwin/itwinui-react/bricks";
 import * as Tree from "@itwin/itwinui-react-internal/src/bricks/Tree.tsx";
 import placeholderIcon from "@itwin/itwinui-icons/placeholder.svg";
@@ -104,14 +104,17 @@ interface TreeItemData {
 
 interface FlatTreeItem {
 	id: string;
-	parentId?: string;
-	items: string[];
-	label: string;
+	data: TreeItemData;
 	level: number;
 }
 
+interface VirtualTreeItemData extends TreeItemData {
+	virtual: VirtualItem;
+	items: VirtualTreeItemData[];
+}
+
 function useTreeData() {
-	const items = React.useMemo(() => {
+	const tree = React.useMemo(() => {
 		function createItems(
 			count: number,
 			childItemCount: number,
@@ -132,28 +135,21 @@ function useTreeData() {
 		return createItems(10, 5);
 	}, []);
 	const flatItems = React.useMemo<FlatTreeItem[]>(() => {
-		// Flatten items
-		function flattenItems(
-			items: TreeItemData[],
-			parentId?: string,
-			level = 0,
-		): FlatTreeItem[] {
+		function flattenItems(items: TreeItemData[], level = 0): FlatTreeItem[] {
 			const flatItems: FlatTreeItem[] = [];
 			for (const item of items) {
 				flatItems.push({
 					id: item.id,
-					parentId,
-					items: item.items.map((child) => child.id),
-					label: item.label,
+					data: item,
 					level,
 				});
-				flatItems.push(...flattenItems(item.items, item.id, level + 1));
+				flatItems.push(...flattenItems(item.items, level + 1));
 			}
 			return flatItems;
 		}
-		return flattenItems(items);
-	}, [items]);
-	return { items, flatItems };
+		return flattenItems(tree);
+	}, [tree]);
+	return { tree, flatItems };
 }
 
 function VirtualTest() {
@@ -167,6 +163,39 @@ function VirtualTest() {
 		getScrollElement: () => parentRef.current,
 		estimateSize: () => 24,
 	});
+	const virtualItems = rowVirtualizer.getVirtualItems();
+
+	// Convert the virtual items to nested tree item structure.
+	const virtualTree = React.useMemo(() => {
+		const added = new Set<string>();
+		const flatVirtualItems = virtualItems.map(
+			(virtualItem) => flatItems[virtualItem.index].data,
+		);
+
+		function filterItems(items: TreeItemData[]) {
+			const filtered: VirtualTreeItemData[] = [];
+			for (const item of items) {
+				const virtual = virtualItems.find((virtualItem) => {
+					const flatItem = flatItems[virtualItem.index];
+					return flatItem.id === item.id;
+				});
+				if (!virtual) continue;
+
+				if (added.has(item.id)) continue;
+				added.add(item.id);
+
+				const items = filterItems(item.items);
+				filtered.push({
+					...item,
+					items,
+					virtual,
+				});
+			}
+			return filtered;
+		}
+
+		return filterItems(flatVirtualItems);
+	}, [virtualItems, flatItems]);
 	return (
 		<>
 			<div
@@ -183,25 +212,34 @@ function VirtualTest() {
 						position: "relative",
 					}}
 				>
-					{rowVirtualizer.getVirtualItems().map((virtualItem) => {
-						const treeItem = flatItems[virtualItem.index];
-						return (
-							<TreeItem
-								key={treeItem.id}
-								style={{
-									position: "absolute",
-									top: 0,
-									left: 0,
-									width: "100%",
-									height: `${virtualItem.size}px`,
-									transform: `translateY(${virtualItem.start}px)`,
-								}}
-								label={treeItem.label}
-							/>
-						);
-					})}
+					<VirtualTreeItemRenderer items={virtualTree} />
 				</Tree.Root>
 			</div>
+		</>
+	);
+}
+
+function VirtualTreeItemRenderer({ items }: { items: VirtualTreeItemData[] }) {
+	return (
+		<>
+			{items.map((item) => (
+				<TreeItem
+					key={item.id}
+					style={{
+						position: "absolute",
+						top: 0,
+						left: 0,
+						width: "100%",
+						height: `${item.virtual.size}px`,
+						transform: `translateY(${item.virtual.start}px)`,
+					}}
+					label={item.label}
+				>
+					{item.items.length === 0 ? undefined : (
+						<VirtualTreeItemRenderer items={item.items} />
+					)}
+				</TreeItem>
+			))}
 		</>
 	);
 }

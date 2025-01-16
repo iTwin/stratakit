@@ -1,0 +1,26 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+.🥝-chip {
+	@layer base {
+		display: inline-flex;
+		align-items: center;
+		padding-block: 0.25rem;
+		padding-inline: 0.5rem;
+		gap: 0.25rem;
+
+		border-radius: 9999px;
+		border: 1px solid var(--kiwi-color-border-neutral-base);
+	}
+
+	@layer modifiers {
+		&[data-kiwi-variant="solid"] {
+			background-color: var(--kiwi-color-bg-neutral-base);
+		}
+
+		&[data-kiwi-variant="outline"] {
+			background-color: var(--kiwi-color-bg-surface-primary);
+		}
+	}
+}

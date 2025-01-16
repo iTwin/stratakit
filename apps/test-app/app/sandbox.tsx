@@ -569,11 +569,6 @@ function TreeItem(props: TreeItemProps) {
 			<Tree.Item
 				content={
 					<>
-						<Tree.ItemExpander
-							onClick={() => {
-								setExpanded((prev) => !prev);
-							}}
-						/>
 						<Icon href={placeholderIcon} style={{ display: "inline" }} />
 						<Tree.ItemContent label={props.label} />
 						<Tree.ItemActions visible={actionsVisible}>
@@ -604,6 +599,7 @@ function TreeItem(props: TreeItemProps) {
 					</>
 				}
 				expanded={isParentNode ? expanded : undefined}
+				onExpandedChange={setExpanded}
 				selected={selected}
 				onSelectedChange={setSelected}
 			>

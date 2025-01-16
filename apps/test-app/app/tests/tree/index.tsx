@@ -60,7 +60,6 @@ function TreeItem({
 			expanded={isParentNode || undefined}
 			content={
 				<>
-					<Tree.ItemExpander />
 					<Icon href={placeholderIcon} />
 					<Tree.ItemContent label={label} />
 					<Tree.ItemActions visible={visibleActions}>

@@ -115,8 +115,8 @@ const TabList = forwardRef<"div", TabListProps>((props, forwardedRef) => {
 
 	return (
 		<Ariakit.TabList
-			data-kiwi-tone={tone}
 			{...rest}
+			data-kiwi-tone={tone}
 			className={cx("🥝-tab-list", props.className)}
 			style={
 				{

@@ -32,10 +32,11 @@ DEV: Tree.displayName = "Tree.Root";
 interface TreeItemProps extends Omit<BaseProps, "content"> {
 	content?: React.ReactNode;
 	selected?: boolean;
-	/** Callback fired when the tree item is selected. */
-	onSelectedChange?: (selected: boolean) => void;
 	/** Specifies if the tree item is expanded. Used to determine if a tree item is a parent node. Defaults to `undefined`. */
 	expanded?: boolean;
+	/** Callback fired when the tree item is selected. */
+	onSelectedChange?: (selected: boolean) => void;
+	/** Callback fired when the tree item is expanded. */
 	onExpandedChange?: (expanded: boolean) => void;
 }
 

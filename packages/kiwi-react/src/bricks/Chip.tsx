@@ -2,6 +2,7 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
+import * as React from "react";
 import cx from "classnames";
 import * as Ariakit from "@ariakit/react";
 import { forwardRef, type BaseProps } from "./~utils.js";
@@ -14,6 +15,18 @@ interface ChipProps extends BaseProps<"div"> {
 	 * @default "solid"
 	 */
 	variant?: "solid" | "outline";
+
+	/**
+	 * Callback invoked when the close button is clicked.
+	 */
+	onClose?: () => void;
+
+	/**
+	 * Whether the Chip is dismissible, showing a close button.
+	 *
+	 * @default false
+	 */
+	dismiss?: boolean;
 }
 
 /**
@@ -27,7 +40,22 @@ interface ChipProps extends BaseProps<"div"> {
  * ```
  */
 export const Chip = forwardRef<"div", ChipProps>((props, forwardedRef) => {
-	const { variant = "solid", children, ...rest } = props;
+	const {
+		variant = "solid",
+		onClose,
+		dismiss = false,
+		children,
+		...rest
+	} = props;
+
+	const [visible, setVisible] = React.useState(true);
+
+	if (!visible) return null;
+
+	const handleClose = () => {
+		setVisible(false);
+		onClose?.(); // Invoke the optional onClose callback if provided
+	};
 
 	return (
 		<Ariakit.Role.div
@@ -37,6 +65,15 @@ export const Chip = forwardRef<"div", ChipProps>((props, forwardedRef) => {
 			ref={forwardedRef}
 		>
 			{children}
+			{dismiss && (
+				<button
+					onClick={handleClose}
+					className="🥝-chip-close-button"
+					aria-label="Close"
+				>
+					✖
+				</button>
+			)}{" "}
 		</Ariakit.Role.div>
 	);
 });

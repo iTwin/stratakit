@@ -3,6 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 import * as Ariakit from "@ariakit/react";
+import * as React from "react";
 import cx from "classnames";
 import { forwardRef, type BaseProps } from "./~utils.js";
 
@@ -30,13 +31,15 @@ interface TableHeaderProps extends BaseProps {}
 const TableHeader = forwardRef<"div", TableHeaderProps>(
 	(props, forwardedRef) => {
 		return (
-			<Ariakit.Role.div
-				{...props}
-				className={cx("🥝-table-header", props.className)}
-				ref={forwardedRef}
-			>
-				{props.children}
-			</Ariakit.Role.div>
+			<TableVariantContext.Provider value={{ variant: "header" }}>
+				<Ariakit.Role.div
+					{...props}
+					className={cx("🥝-table-header", props.className)}
+					ref={forwardedRef}
+				>
+					{props.children}
+				</Ariakit.Role.div>
+			</TableVariantContext.Provider>
 		);
 	},
 );
@@ -48,29 +51,52 @@ interface TableBodyProps extends BaseProps {}
 
 const TableBody = forwardRef<"div", TableBodyProps>((props, forwardedRef) => {
 	return (
-		<Ariakit.Role.div
-			{...props}
-			className={cx("🥝-table-body", props.className)}
-			ref={forwardedRef}
-		>
-			{props.children}
-		</Ariakit.Role.div>
+		<TableVariantContext.Provider value={{ variant: "body" }}>
+			<Ariakit.Role.div
+				{...props}
+				className={cx("🥝-table-body", props.className)}
+				ref={forwardedRef}
+			>
+				{props.children}
+			</Ariakit.Role.div>
+		</TableVariantContext.Provider>
 	);
 });
 DEV: TableBody.displayName = "Table.Body";
 
 // ----------------------------------------------------------------------------
 
-interface TableRowProps extends BaseProps {}
+interface TableRowProps extends BaseProps {
+	/**
+	 * Marks the row as selected.
+	 *
+	 * @default undefined
+	 */
+	selected?: boolean;
+	/**
+	 * Disables the row and prevents user interaction.
+	 *
+	 * @default undefined
+	 */
+	disabled?: boolean;
+}
 
 const TableRow = forwardRef<"div", TableRowProps>((props, forwardedRef) => {
+	const { children, selected, disabled, ...rest } = props;
+	const tableContext = React.useContext(TableVariantContext);
+
 	return (
 		<Ariakit.Role.div
-			{...props}
+			{...rest}
 			className={cx("🥝-table-row", props.className)}
 			ref={forwardedRef}
+			aria-selected={selected}
+			aria-disabled={disabled}
+			data-kiwi-variant={
+				tableContext?.variant === "header" ? "header" : undefined
+			}
 		>
-			{props.children}
+			{children}
 		</Ariakit.Role.div>
 	);
 });
@@ -92,6 +118,15 @@ const TableCell = forwardRef<"span", TableCellProps>((props, forwardedRef) => {
 	);
 });
 DEV: TableCell.displayName = "Table.Cell";
+
+// ----------------------------------------------------------------------------
+
+const TableVariantContext = React.createContext<
+	| {
+			variant?: "header" | "body";
+	  }
+	| undefined
+>(undefined);
 
 // ----------------------------------------------------------------------------
 

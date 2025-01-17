@@ -9,6 +9,7 @@ import * as ListItem from "./ListItem.js";
 import { IconButton } from "./IconButton.js";
 import { Icon } from "./Icon.js";
 import { forwardRef, type BaseProps } from "./~utils.js";
+import { VisuallyHidden } from "./VisuallyHidden.js";
 
 // ----------------------------------------------------------------------------
 
@@ -50,7 +51,6 @@ const TreeItem = forwardRef<"div", TreeItemProps>((props, forwardedRef) => {
 
 	const parentContext = React.useContext(TreeItemContext);
 	const level = parentContext ? parentContext.level + 1 : 1;
-	const firstSelected = !!selected && !parentContext?.selected; // TODO: temporary, only works with single selection
 	return (
 		<TreeItemContext.Provider
 			value={React.useMemo(
@@ -62,12 +62,11 @@ const TreeItem = forwardRef<"div", TreeItemProps>((props, forwardedRef) => {
 				[level, expanded, selected],
 			)}
 		>
-			<div role="listitem" aria-current={firstSelected ? true : undefined}>
+			<div role="listitem">
 				<ListItem.Root
 					{...rest}
 					data-kiwi-expanded={expanded}
 					data-kiwi-selected={selected}
-					data-kiwi-parent-selected={parentContext?.selected}
 					className={cx("🥝-tree-item", props.className)}
 					style={
 						{
@@ -100,13 +99,18 @@ interface TreeItemContentProps extends BaseProps<"span"> {}
 const TreeItemContent = forwardRef<"span", TreeItemContentProps>(
 	(props, forwardedRef) => {
 		const { children, ...rest } = props;
+
+		const context = React.useContext(TreeItemContext);
 		return (
 			<ListItem.Content
 				{...rest}
 				className={cx("🥝-tree-item-content", props.className)}
 				ref={forwardedRef}
 			>
-				<button type="button">{children}</button>
+				<button type="button">
+					{children}
+					{context?.selected && <VisuallyHidden>Selected item</VisuallyHidden>}
+				</button>
 			</ListItem.Content>
 		);
 	},

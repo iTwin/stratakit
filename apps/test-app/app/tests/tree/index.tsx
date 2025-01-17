@@ -12,37 +12,42 @@ import showIcon from "@itwin/itwinui-icons/visibility-show.svg";
 
 export const handle = { title: "Tree" };
 
-export default definePage(function Page({
-	overflow = false,
-	selected = false,
-	visibleActions = undefined,
-}) {
-	const visibleActionsParam = visibleActions as boolean | undefined;
-	const overflowPostfix = overflow
-		? " with a super long label that is overflown"
-		: "";
-	return (
-		<Tree.Root style={{ maxInlineSize: overflow ? 300 : undefined }}>
-			<TreeItem label={`Item 1${overflowPostfix}`} selected={!!selected}>
-				<TreeItem label="Item 1.1" selected={!!selected} />
-				<TreeItem
-					label="Item 1.2"
-					visibleActions={visibleActionsParam}
-					selected={!!selected}
-				/>
-				<TreeItem
-					label={`Item 1.3${overflowPostfix}`}
-					visibleActions={visibleActionsParam}
-					selected={!!selected}
-				/>
-			</TreeItem>
-			<TreeItem label="Item 2">
-				<TreeItem label={`Item 2.1${overflowPostfix}`} />
-			</TreeItem>
-			<TreeItem label="Item 3" visibleActions={visibleActionsParam} />
-		</Tree.Root>
-	);
-});
+export default definePage(
+	function Page({
+		overflow = false,
+		selected = false,
+		visibleActions = undefined,
+	}) {
+		const visibleActionsParam = visibleActions as boolean | undefined;
+		const overflowPostfix = overflow
+			? " with a super long label that is overflown"
+			: "";
+		return (
+			<Tree.Root style={{ maxInlineSize: overflow ? 300 : undefined }}>
+				<TreeItem label={`Item 1${overflowPostfix}`} selected={!!selected}>
+					<TreeItem label="Item 1.1" selected={!!selected} />
+					<TreeItem
+						label="Item 1.2"
+						visibleActions={visibleActionsParam}
+						selected={!!selected}
+					/>
+					<TreeItem
+						label={`Item 1.3${overflowPostfix}`}
+						visibleActions={visibleActionsParam}
+						selected={!!selected}
+					/>
+				</TreeItem>
+				<TreeItem label="Item 2">
+					<TreeItem label={`Item 2.1${overflowPostfix}`} />
+				</TreeItem>
+				<TreeItem label="Item 3" visibleActions={visibleActionsParam} />
+			</Tree.Root>
+		);
+	},
+	{
+		multiSelect: MultiSelectTest,
+	},
+);
 
 function TreeItem({
 	children,
@@ -86,5 +91,25 @@ function TreeItem({
 		>
 			{children}
 		</Tree.Item>
+	);
+}
+
+function MultiSelectTest() {
+	return (
+		<Tree.Root>
+			<TreeItem label="Item 1" selected>
+				<TreeItem label="Item 1.1" selected />
+				<TreeItem label="Item 1.2">
+					<TreeItem label="Item 1.2.1" />
+					<TreeItem label="Item 1.2.2" selected />
+					<TreeItem label="Item 1.2.3" />
+				</TreeItem>
+				<TreeItem label="Item 1.3" selected />
+			</TreeItem>
+			<TreeItem label="Item 2">
+				<TreeItem label="Item 2.1" selected />
+			</TreeItem>
+			<TreeItem label="Item 3" selected />
+		</Tree.Root>
 	);
 }

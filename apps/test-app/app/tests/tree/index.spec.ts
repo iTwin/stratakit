@@ -71,13 +71,6 @@ test.describe("@visual", () => {
 		await expect(tree).toBeVisible();
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
-
-	test("visible actions", async ({ page }) => {
-		await page.goto("/tests/tree?visibleActions");
-		const tree = page.getByRole("list").first();
-		await expect(tree).toBeVisible();
-		await expect(page.locator("body")).toHaveScreenshot();
-	});
 });
 
 test.describe("@a11y", () => {

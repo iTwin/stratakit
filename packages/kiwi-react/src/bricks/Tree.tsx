@@ -67,7 +67,6 @@ const TreeItem = forwardRef<"div", TreeItemProps>((props, forwardedRef) => {
 					{...rest}
 					data-kiwi-expanded={expanded}
 					data-kiwi-selected={selected}
-					data-kiwi-parent-selected={parentContext?.selected}
 					className={cx("🥝-tree-item", props.className)}
 					style={
 						{

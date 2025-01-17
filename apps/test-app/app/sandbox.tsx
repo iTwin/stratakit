@@ -567,41 +567,40 @@ function TreeItem(props: TreeItemProps) {
 			value={React.useMemo(() => ({ selected, hidden }), [hidden, selected])}
 		>
 			<Tree.Item
-				content={
-					<>
-						<Icon href={placeholderIcon} style={{ display: "inline" }} />
-						<Tree.ItemContent label={props.label} />
-						<Tree.ItemActions visible={actionsVisible}>
-							<IconButton
-								className={styles.action}
-								icon={lockIcon}
-								label="Lock"
-								variant="ghost"
-								aria-hidden={hidden}
-							/>
-							{parentContext.hidden ? (
-								<span className={styles.actionIcon}>
-									<Icon href={dotIcon} />
-								</span>
-							) : (
-								<IconButton
-									className={styles.action}
-									icon={hidden ? hideIcon : showIcon}
-									label={hidden ? "Show" : "Hide"}
-									variant="ghost"
-									onClick={() => {
-										treeContext.toggleHidden(id);
-									}}
-								/>
-							)}
-							<TreeMoreActions hidden={hidden} />
-						</Tree.ItemActions>
-					</>
-				}
 				expanded={isParentNode ? expanded : undefined}
 				onExpandedChange={setExpanded}
 				selected={selected}
 				onSelectedChange={setSelected}
+				icon={<Icon href={placeholderIcon} style={{ display: "inline" }} />}
+				label={props.label}
+				actions={
+					<>
+						<IconButton
+							className={styles.action}
+							icon={lockIcon}
+							label="Lock"
+							variant="ghost"
+							aria-hidden={hidden}
+						/>
+						{parentContext.hidden ? (
+							<span className={styles.actionIcon}>
+								<Icon href={dotIcon} />
+							</span>
+						) : (
+							<IconButton
+								className={styles.action}
+								icon={hidden ? hideIcon : showIcon}
+								label={hidden ? "Show" : "Hide"}
+								variant="ghost"
+								onClick={() => {
+									treeContext.toggleHidden(id);
+								}}
+							/>
+						)}
+						<TreeMoreActions hidden={hidden} />
+					</>
+				}
+				actionsVisible={actionsVisible}
 			>
 				{expanded ? props.children : undefined}
 			</Tree.Item>

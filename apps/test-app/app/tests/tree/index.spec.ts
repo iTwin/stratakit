@@ -73,7 +73,7 @@ test.describe("@visual", () => {
 	});
 
 	test("visible actions", async ({ page }) => {
-		await page.goto("/tests/tree?visibleActions");
+		await page.goto("/tests/tree?actionsVisible");
 		const tree = page.getByRole("list").first();
 		await expect(tree).toBeVisible();
 		await expect(page.locator("body")).toHaveScreenshot();

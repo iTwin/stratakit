@@ -4,7 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 import { definePage } from "~/~utils.tsx";
 import * as React from "react";
-import { Icon, IconButton } from "@itwin/itwinui-react/bricks";
+import { IconButton } from "@itwin/itwinui-react/bricks";
 import * as Tree from "@itwin/itwinui-react-internal/src/bricks/Tree.tsx";
 import placeholderIcon from "@itwin/itwinui-icons/placeholder.svg";
 import unlockIcon from "@itwin/itwinui-icons/lock-unlocked.svg";
@@ -15,9 +15,9 @@ export const handle = { title: "Tree" };
 export default definePage(function Page({
 	overflow = false,
 	selected = false,
-	visibleActions = undefined,
+	actionsVisible: actionsVisibleParam = undefined,
 }) {
-	const visibleActionsParam = visibleActions as boolean | undefined;
+	const actionsVisible = actionsVisibleParam as boolean | undefined;
 	const overflowPostfix = overflow
 		? " with a super long label that is overflown"
 		: "";
@@ -27,19 +27,19 @@ export default definePage(function Page({
 				<TreeItem label="Item 1.1" selected={!!selected} />
 				<TreeItem
 					label="Item 1.2"
-					visibleActions={visibleActionsParam}
+					actionsVisible={actionsVisible}
 					selected={!!selected}
 				/>
 				<TreeItem
 					label={`Item 1.3${overflowPostfix}`}
-					visibleActions={visibleActionsParam}
+					actionsVisible={actionsVisible}
 					selected={!!selected}
 				/>
 			</TreeItem>
 			<TreeItem label="Item 2">
 				<TreeItem label={`Item 2.1${overflowPostfix}`} />
 			</TreeItem>
-			<TreeItem label="Item 3" visibleActions={visibleActionsParam} />
+			<TreeItem label="Item 3" actionsVisible={actionsVisible} />
 		</Tree.Root>
 	);
 });
@@ -47,42 +47,41 @@ export default definePage(function Page({
 function TreeItem({
 	children,
 	label,
-	visibleActions,
+	actionsVisible,
 	selected,
 }: React.PropsWithChildren<{
 	label?: React.ReactNode;
-	visibleActions?: boolean;
+	actionsVisible?: boolean;
 	selected?: boolean;
 }>) {
 	const isParentNode = React.Children.count(children) > 0;
 	return (
 		<Tree.Item
 			expanded={isParentNode || undefined}
-			content={
+			selected={selected}
+			icon={placeholderIcon}
+			label={label}
+			actions={
 				<>
-					<Icon href={placeholderIcon} />
-					<Tree.ItemContent label={label} />
-					<Tree.ItemActions visible={visibleActions}>
-						<IconButton
-							icon={unlockIcon}
-							label="Unlock"
-							variant="ghost"
-							style={{
-								position: "relative",
-							}}
-						/>
-						<IconButton
-							icon={showIcon}
-							label="Show"
-							variant="ghost"
-							style={{
-								position: "relative",
-							}}
-						/>
-					</Tree.ItemActions>
+					<IconButton
+						icon={unlockIcon}
+						label="Unlock"
+						variant="ghost"
+						style={{
+							position: "relative",
+						}}
+					/>
+					<IconButton
+						icon={showIcon}
+						label="Show"
+						variant="ghost"
+						style={{
+							position: "relative",
+						}}
+					/>
 				</>
 			}
-			selected={selected}
+			actionsVisible={actionsVisible}
 		>
 			{children}
 		</Tree.Item>

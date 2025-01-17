@@ -30,10 +30,22 @@ DEV: Tree.displayName = "Tree.Root";
 // ----------------------------------------------------------------------------
 
 interface TreeItemProps extends Omit<BaseProps, "content"> {
-	content?: React.ReactNode;
+	/** Specifies if the tree item is selected. */
 	selected?: boolean;
 	/** Specifies if the tree item is expanded. Used to determine if a tree item is a parent node. Defaults to `undefined`. */
 	expanded?: boolean;
+	/**
+	 * Icon to be displayed inside the tree item.
+	 *
+	 * Can be a URL of an SVG from the `kiwi-icons` package, or a custom element.
+	 */
+	icon?: string | React.JSX.Element;
+	/** The label to display for the tree item. */
+	label?: React.ReactNode;
+	/** The actions available for the tree item. */
+	actions?: React.ReactNode;
+	/** Controlled state to force the actions visibility. By default only hovered actions are visible. */
+	actionsVisible?: boolean;
 	/** Callback fired when the tree item is selected. */
 	onSelectedChange?: (selected: boolean) => void;
 	/** Callback fired when the tree item is expanded. */
@@ -43,9 +55,12 @@ interface TreeItemProps extends Omit<BaseProps, "content"> {
 const TreeItem = forwardRef<"div", TreeItemProps>((props, forwardedRef) => {
 	const {
 		selected,
-		content,
 		children,
 		expanded,
+		icon,
+		label,
+		actions,
+		actionsVisible,
 		style,
 		onSelectedChange,
 		onExpandedChange,
@@ -89,7 +104,9 @@ const TreeItem = forwardRef<"div", TreeItemProps>((props, forwardedRef) => {
 							onExpandedChange?.(!expanded);
 						}}
 					/>
-					{content}
+					{typeof icon === "string" ? <Icon href={icon} /> : icon}
+					<TreeItemContent label={label} />
+					<TreeItemActions visible={actionsVisible}>{actions}</TreeItemActions>
 				</ListItem.Root>
 				{children && <div role="list">{children}</div>}
 			</div>
@@ -129,17 +146,11 @@ const TreeItemContent = forwardRef<"span", TreeItemContentProps>(
 		);
 	},
 );
-DEV: TreeItemContent.displayName = "Tree.ItemContent";
+DEV: TreeItemContent.displayName = "TreeItemContent";
 
 // ----------------------------------------------------------------------------
 
 interface TreeItemActionsProps extends BaseProps {
-	/**
-	 * Controlled state to force the actions visibility.
-	 * By default only hovered actions are visible.
-	 *
-	 * @default undefined
-	 */
 	visible?: boolean;
 }
 
@@ -158,7 +169,7 @@ const TreeItemActions = forwardRef<"div", TreeItemActionsProps>(
 		);
 	},
 );
-DEV: TreeItemActions.displayName = "Tree.ItemActions";
+DEV: TreeItemActions.displayName = "TreeItemActions";
 
 // ----------------------------------------------------------------------------
 
@@ -229,9 +240,4 @@ const TreeItemContext = React.createContext<
 
 // ----------------------------------------------------------------------------
 
-export {
-	Tree as Root,
-	TreeItem as Item,
-	TreeItemContent as ItemContent,
-	TreeItemActions as ItemActions,
-};
+export { Tree as Root, TreeItem as Item };

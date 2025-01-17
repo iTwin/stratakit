@@ -44,8 +44,6 @@ interface TreeItemProps extends Omit<BaseProps, "content"> {
 	label?: React.ReactNode;
 	/** The actions available for the tree item. */
 	actions?: React.ReactNode;
-	/** Controlled state to force the actions visibility. By default only hovered actions are visible. */
-	actionsVisible?: boolean;
 	/** Callback fired when the tree item is selected. */
 	onSelectedChange?: (selected: boolean) => void;
 	/** Callback fired when the tree item is expanded. */
@@ -60,7 +58,6 @@ const TreeItem = forwardRef<"div", TreeItemProps>((props, forwardedRef) => {
 		icon,
 		label,
 		actions,
-		actionsVisible,
 		style,
 		onSelectedChange,
 		onExpandedChange,
@@ -106,7 +103,7 @@ const TreeItem = forwardRef<"div", TreeItemProps>((props, forwardedRef) => {
 					/>
 					{typeof icon === "string" ? <Icon href={icon} /> : icon}
 					<TreeItemContent label={label} />
-					<TreeItemActions visible={actionsVisible}>{actions}</TreeItemActions>
+					<TreeItemActions>{actions}</TreeItemActions>
 				</ListItem.Root>
 				{children && <div role="list">{children}</div>}
 			</div>

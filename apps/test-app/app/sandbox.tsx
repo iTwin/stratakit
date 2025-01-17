@@ -560,8 +560,6 @@ function TreeItem(props: TreeItemProps) {
 		},
 		[id, treeContext],
 	);
-	// Display actions when item is hidden.
-	const actionsVisible = hidden ? true : undefined;
 	return (
 		<SandboxParentItemContext.Provider
 			value={React.useMemo(() => ({ selected, hidden }), [hidden, selected])}
@@ -600,7 +598,6 @@ function TreeItem(props: TreeItemProps) {
 						<TreeMoreActions hidden={hidden} />
 					</>
 				}
-				actionsVisible={actionsVisible}
 			>
 				{expanded ? props.children : undefined}
 			</Tree.Item>

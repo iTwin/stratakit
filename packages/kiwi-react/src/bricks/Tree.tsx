@@ -35,10 +35,19 @@ interface TreeItemProps extends Omit<BaseProps, "content"> {
 	selected?: boolean;
 	/** Specifies if the tree item is expanded. Used to determine if a tree item is a parent node. Defaults to `undefined`. */
 	expanded?: boolean;
+	onExpandedChange?: (expanded: boolean) => void;
 }
 
 const TreeItem = forwardRef<"div", TreeItemProps>((props, forwardedRef) => {
-	const { selected, content, children, expanded, style, ...rest } = props;
+	const {
+		selected,
+		content,
+		children,
+		expanded,
+		style,
+		onExpandedChange,
+		...rest
+	} = props;
 
 	const parentContext = React.useContext(TreeItemContext);
 	const level = parentContext ? parentContext.level + 1 : 1;
@@ -69,6 +78,12 @@ const TreeItem = forwardRef<"div", TreeItemProps>((props, forwardedRef) => {
 					ref={forwardedRef}
 					role={undefined}
 				>
+					<TreeItemExpander
+						onClick={() => {
+							if (expanded === undefined) return;
+							onExpandedChange?.(!expanded);
+						}}
+					/>
 					{content}
 				</ListItem.Root>
 				{children && <div role="list">{children}</div>}
@@ -160,7 +175,7 @@ const TreeItemExpander = forwardRef<"button", TreeItemExpanderProps>(
 		);
 	},
 );
-DEV: TreeItemExpander.displayName = "Tree.Expander";
+DEV: TreeItemExpander.displayName = "TreeItemExpander";
 
 // ----------------------------------------------------------------------------
 
@@ -206,7 +221,6 @@ const TreeItemContext = React.createContext<
 export {
 	Tree as Root,
 	TreeItem as Item,
-	TreeItemExpander as Expander,
 	TreeItemContent as Content,
 	TreeItemActions as Actions,
 };

@@ -554,63 +554,50 @@ function TreeItem(props: TreeItemProps) {
 		return treeContext.hidden.includes(id);
 	}, [id, treeContext.hidden, parentContext.hidden]);
 	const selected = parentContext.selected || id === treeContext.selected;
-	const toggleSelected = React.useCallback(() => {
-		treeContext.setSelected((prev) => {
-			if (prev === id) return undefined;
-			return id;
-		});
-	}, [id, treeContext]);
-	// Display actions when item is hidden.
-	const actionsVisible = hidden ? true : undefined;
+	const setSelected = React.useCallback(
+		(selected: boolean) => {
+			treeContext.setSelected(selected ? id : undefined);
+		},
+		[id, treeContext],
+	);
 	return (
 		<SandboxParentItemContext.Provider
 			value={React.useMemo(() => ({ selected, hidden }), [hidden, selected])}
 		>
 			<Tree.Item
-				content={
+				expanded={isParentNode ? expanded : undefined}
+				onExpandedChange={setExpanded}
+				selected={selected}
+				onSelectedChange={setSelected}
+				icon={<Icon href={placeholderIcon} style={{ display: "inline" }} />}
+				label={props.label}
+				actions={
 					<>
-						<Tree.Expander
-							onClick={() => {
-								setExpanded((prev) => !prev);
-							}}
+						<IconButton
+							className={styles.action}
+							icon={lockIcon}
+							label="Lock"
+							variant="ghost"
+							aria-hidden={hidden}
 						/>
-						<Icon href={placeholderIcon} style={{ display: "inline" }} />
-						<Tree.Content
-							onClick={() => {
-								toggleSelected();
-							}}
-						>
-							{props.label}
-						</Tree.Content>
-						<Tree.Actions visible={actionsVisible}>
+						{parentContext.hidden ? (
+							<span className={styles.actionIcon}>
+								<Icon href={dotIcon} />
+							</span>
+						) : (
 							<IconButton
 								className={styles.action}
-								icon={lockIcon}
-								label="Lock"
+								icon={hidden ? hideIcon : showIcon}
+								label={hidden ? "Show" : "Hide"}
 								variant="ghost"
-								aria-hidden={hidden}
+								onClick={() => {
+									treeContext.toggleHidden(id);
+								}}
 							/>
-							{parentContext.hidden ? (
-								<span className={styles.actionIcon}>
-									<Icon href={dotIcon} />
-								</span>
-							) : (
-								<IconButton
-									className={styles.action}
-									icon={hidden ? hideIcon : showIcon}
-									label={hidden ? "Show" : "Hide"}
-									variant="ghost"
-									onClick={() => {
-										treeContext.toggleHidden(id);
-									}}
-								/>
-							)}
-							<TreeMoreActions hidden={hidden} />
-						</Tree.Actions>
+						)}
+						<TreeMoreActions hidden={hidden} />
 					</>
 				}
-				expanded={isParentNode ? expanded : undefined}
-				selected={selected}
 			>
 				{expanded ? props.children : undefined}
 			</Tree.Item>

@@ -13,6 +13,7 @@ import {
 } from "./~utils.js";
 import { DisclosureArrow } from "./Icon.js";
 import { useFieldDescribedBy, useFieldId } from "./Field.js";
+import { FieldCollectionItemControl } from "./FieldCollection.js";
 
 const supportsHas = isBrowser && CSS?.supports?.("selector(:has(+ *))");
 
@@ -104,14 +105,19 @@ const HtmlSelect = forwardRef<"select", HtmlSelectProps>(
 
 		return (
 			<>
-				<Ariakit.Role.select
-					id={fieldId}
-					{...rest}
-					className={cx("🥝-button", "🥝-select", props.className)}
-					aria-describedby={describedBy}
-					data-kiwi-tone="neutral"
-					data-kiwi-variant={variant}
-					ref={forwardedRef}
+				<FieldCollectionItemControl
+					type="textlike"
+					render={
+						<Ariakit.Role.select
+							id={fieldId}
+							{...rest}
+							className={cx("🥝-button", "🥝-select", props.className)}
+							aria-describedby={describedBy}
+							data-kiwi-tone="neutral"
+							data-kiwi-variant={variant}
+							ref={forwardedRef}
+						/>
+					}
 				/>
 				<DisclosureArrow className="🥝-select-arrow" />
 			</>

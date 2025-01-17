@@ -73,7 +73,7 @@ export const Chip = forwardRef<"div", ChipProps>((props, forwardedRef) => {
 				>
 					✖
 				</button>
-			)}{" "}
+			)}
 		</Ariakit.Role.div>
 	);
 });

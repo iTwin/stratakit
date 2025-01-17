@@ -12,9 +12,16 @@ test("default", async ({ page }) => {
 	await expect(kbdComponent).toBeVisible();
 });
 
-test("@visual", async ({ page }) => {
-	await page.goto("/tests/kbd?visual=true");
-	await expect(page.locator("body")).toHaveScreenshot();
+test.describe("@visual", () => {
+	test("all variants", async ({ page }) => {
+		await page.goto("/tests/kbd?visual=true");
+		await expect(page.locator("body")).toHaveScreenshot();
+	});
+
+	test("all symbols", async ({ page }) => {
+		await page.goto("/tests/kbd?symbols=true");
+		await expect(page.locator("body")).toHaveScreenshot();
+	});
 });
 
 test.describe("@a11y", () => {

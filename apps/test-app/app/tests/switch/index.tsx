@@ -9,7 +9,7 @@ import {
 	VisuallyHidden,
 	Field,
 } from "@itwin/itwinui-react/bricks";
-import { useId } from "react";
+import * as React from "react";
 
 export const handle = { title: "Switch" };
 
@@ -26,7 +26,7 @@ export default definePage(
 );
 
 function VisualTest({ checked, disabled }: VariantProps) {
-	const id = useId();
+	const id = React.useId();
 
 	return (
 		<>

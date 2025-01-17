@@ -2,6 +2,16 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
+.🥝-tree {
+	@layer base {
+		overflow: auto;
+
+		> [role="list"] {
+			min-inline-size: max-content;
+		}
+	}
+}
+
 .🥝-tree-item:is(.🥝-list-item) {
 	--✨padding-inline-end: 0.25rem;
 	--✨first-level-indent: 8px;
@@ -24,10 +34,6 @@
 			--🌀list-item-state: var(--🌀list-item-state--active);
 		}
 
-		&:where([data-kiwi-parent-selected="true"][data-kiwi-selected="true"]) {
-			--🌀list-item-state: var(--🌀list-item-state--active-child);
-		}
-
 		&:where([data-kiwi-expanded="false"]) {
 			--🥝tree-chevron-rotate: -0.25turn;
 		}
@@ -37,8 +43,15 @@
 		}
 
 		@media (any-hover: hover) {
-			&:where(:hover[data-kiwi-parent-selected="true"][data-kiwi-selected="true"]) {
-				--🌀list-item-state: var(--🌀list-item-state--active-child-hover);
+			&:where(:not(:hover):not(:focus-within)) {
+				:where(.🥝-tree-item-actions:not([data-kiwi-visible="true"])) {
+					clip-path: inset(50%);
+					height: 1px;
+					overflow: hidden;
+					position: absolute;
+					white-space: nowrap;
+					width: 1px;
+				}
 			}
 		}
 	}
@@ -64,6 +77,34 @@
 				position: absolute;
 				inset: 0;
 			}
+		}
+	}
+}
+
+.🥝-tree-item-actions {
+	@layer base {
+		position: sticky;
+		inset-inline-end: 0;
+		padding-inline-end: 4px;
+		background-color: var(--kiwi-color-bg-surface-primary);
+		display: inline-flex;
+
+		&::before {
+			position: absolute;
+			content: "";
+			inset: 0;
+			background-color: var(--🥝list-item-background-color);
+		}
+	}
+
+	@layer states {
+		&:where([data-kiwi-visible="false"]) {
+			clip-path: inset(50%);
+			height: 1px;
+			overflow: hidden;
+			position: absolute;
+			white-space: nowrap;
+			width: 1px;
 		}
 	}
 }

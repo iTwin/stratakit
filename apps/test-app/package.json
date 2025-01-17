@@ -17,24 +17,24 @@
 		"@ariakit/react": "*",
 		"@itwin/itwinui-icons": "workspace:*",
 		"@itwin/itwinui-react": "workspace:*",
-		"@react-router/node": "^7.0.2",
+		"@react-router/node": "^7.1.1",
 		"classnames": "^2.5.1",
-		"isbot": "^5.1.17",
+		"isbot": "^5.1.18",
 		"react": "19",
 		"react-dom": "19",
-		"react-router": "^7.0.2"
+		"react-router": "^7.1.1"
 	},
 	"devDependencies": {
 		"@axe-core/playwright": "^4.10.1",
-		"@playwright/test": "~1.49.0",
-		"@react-router/dev": "^7.0.2",
-		"@types/node": "*",
+		"@playwright/test": "~1.49.1",
+		"@react-router/dev": "^7.1.1",
+		"@types/node": "^22.10.2",
 		"@types/react": "19",
 		"@types/react-dom": "19",
-		"esbuild": "^0.24.0",
+		"esbuild": "^0.24.2",
 		"lightningcss": "^1.28.2",
 		"typescript": "5",
-		"vite": "^6.0.2",
-		"vite-tsconfig-paths": "^5.1.3"
+		"vite": "^6.0.5",
+		"vite-tsconfig-paths": "^5.1.4"
 	}
 }

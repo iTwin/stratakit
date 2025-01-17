@@ -9,7 +9,7 @@ import {
 	Label,
 	VisuallyHidden,
 } from "@itwin/itwinui-react/bricks";
-import { useId } from "react";
+import * as React from "react";
 
 export const handle = { title: "Checkbox" };
 
@@ -29,7 +29,7 @@ export default definePage(
 );
 
 function VisualTest({ checked, indeterminate, disabled }: VariantProps) {
-	const id = useId();
+	const id = React.useId();
 
 	return (
 		<>

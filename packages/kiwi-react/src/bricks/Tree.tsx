@@ -15,6 +15,24 @@ import { VisuallyHidden } from "./VisuallyHidden.js";
 
 interface TreeProps extends BaseProps {}
 
+/**
+ * A tree is a hierarchical list of items that can be expanded or collapsed, or optionally selected.
+ *
+ * `Tree.Root` is the root component for a tree. `Tree.Item`s can be nested inside a `Tree.Root` to create a hierarchical tree structure.
+ *
+ * Example:
+ * ```tsx
+ * <Tree.Root>
+ *   <Tree.Item label="Parent 1">
+ *     <Tree.Item label="Child 1.1" />
+ *     <Tree.Item label="Child 1.2" />
+ *   </Tree.Item>
+ *   <Tree.Item label="Parent 2">
+ *     <Tree.Item label="Child 2.1" />
+ *   </Tree.Item>
+ * </Tree.Root>
+ * ```
+ */
 const Tree = forwardRef<"div", TreeProps>((props, forwardedRef) => {
 	return (
 		<Ariakit.Role.div
@@ -31,26 +49,67 @@ DEV: Tree.displayName = "Tree.Root";
 // ----------------------------------------------------------------------------
 
 interface TreeItemProps extends Omit<BaseProps, "content"> {
-	/** Specifies if the tree item is selected. */
+	/**
+	 * Specifies if the tree item is selected.
+	 *
+	 * If `undefined`, the tree item is not selectable.
+	 *
+	 * @default undefined
+	 */
 	selected?: boolean;
-	/** Specifies if the tree item is expanded. Used to determine if a tree item is a parent node. Defaults to `undefined`. */
+	/**
+	 * Callback fired when the tree item is selected.
+	 *
+	 * Should be used with the `selected` prop.
+	 */
+	onSelectedChange?: (selected: boolean) => void;
+	/**
+	 * Specifies if the tree item is expanded.
+	 *
+	 * Used to determine if a tree item is a parent node. If `undefined`, it is a leaf node (i.e. not expandable).
+	 *
+	 * @default undefined
+	 * */
 	expanded?: boolean;
+	/**
+	 * Callback fired when the tree item is expanded.
+	 *
+	 * Should be used with the `expanded` prop.
+	 */
+	onExpandedChange?: (expanded: boolean) => void;
 	/**
 	 * Icon to be displayed inside the tree item.
 	 *
-	 * Can be a URL of an SVG from the `kiwi-icons` package, or a custom element.
+	 * Can be a URL of an SVG from the `kiwi-icons` package, or a JSX element.
 	 */
 	icon?: string | React.JSX.Element;
 	/** The label to display for the tree item. */
 	label?: React.ReactNode;
 	/** The actions available for the tree item. */
 	actions?: React.ReactNode;
-	/** Callback fired when the tree item is selected. */
-	onSelectedChange?: (selected: boolean) => void;
-	/** Callback fired when the tree item is expanded. */
-	onExpandedChange?: (expanded: boolean) => void;
 }
 
+/**
+ * A treeitem is a node in a tree structure that may be expanded or collapsed to reveal or hide its descendants.
+ *
+ * `Tree.Item`s can be nested as JSX elements inside a `Tree.Root` to create a hierarchical tree structure.
+ *
+ * Example:
+ * ```tsx
+ * <Tree.Root>
+ *   <Tree.Item label="Parent">
+ *     <Tree.Item label="Child 1" />
+ *     <Tree.Item label="Child 2" />
+ *   </Tree.Item>
+ * </Tree.Root>
+ * ```
+ *
+ * The `label` and `icon` props can be used to specify the treeitem's own content. `children` is only used for nested items.
+ *
+ * The `expanded` and `onExpandedChange` props can be used to control the expansion state of a treeitem.
+ *
+ * The `selected` and `onSelectedChange` props can be used to control the selection state of a treeitem.
+ */
 const TreeItem = forwardRef<"div", TreeItemProps>((props, forwardedRef) => {
 	const {
 		selected,

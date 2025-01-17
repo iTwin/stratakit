@@ -16,8 +16,10 @@ export default definePage(function Page({
 	overflow = false,
 	selected = false,
 	actionsVisible: actionsVisibleParam = undefined,
+	level: levelParam = undefined,
 }) {
 	const actionsVisible = actionsVisibleParam as boolean | undefined;
+	const level = levelParam ? Number(levelParam) : undefined;
 	const overflowPostfix = overflow
 		? " with a super long label that is overflown"
 		: "";
@@ -36,7 +38,7 @@ export default definePage(function Page({
 					selected={!!selected}
 				/>
 			</TreeItem>
-			<TreeItem label="Item 2">
+			<TreeItem label="Item 2" level={level}>
 				<TreeItem label={`Item 2.1${overflowPostfix}`} />
 			</TreeItem>
 			<TreeItem label="Item 3" actionsVisible={actionsVisible} />
@@ -49,10 +51,12 @@ function TreeItem({
 	label,
 	actionsVisible,
 	selected,
+	level,
 }: React.PropsWithChildren<{
 	label?: React.ReactNode;
 	actionsVisible?: boolean;
 	selected?: boolean;
+	level?: number;
 }>) {
 	const isParentNode = React.Children.count(children) > 0;
 	return (
@@ -61,6 +65,7 @@ function TreeItem({
 			selected={selected}
 			icon={placeholderIcon}
 			label={label}
+			level={level}
 			actions={
 				<>
 					<IconButton

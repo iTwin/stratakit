@@ -46,6 +46,8 @@ interface TreeItemProps extends Omit<BaseProps, "content"> {
 	actions?: React.ReactNode;
 	/** Controlled state to force the actions visibility. By default only hovered actions are visible. */
 	actionsVisible?: boolean;
+	/** Specifies the nesting level of the tree item. */
+	level?: number;
 	/** Callback fired when the tree item is selected. */
 	onSelectedChange?: (selected: boolean) => void;
 	/** Callback fired when the tree item is expanded. */
@@ -61,6 +63,7 @@ const TreeItem = forwardRef<"div", TreeItemProps>((props, forwardedRef) => {
 		label,
 		actions,
 		actionsVisible,
+		level: _,
 		style,
 		onSelectedChange,
 		onExpandedChange,
@@ -68,7 +71,12 @@ const TreeItem = forwardRef<"div", TreeItemProps>((props, forwardedRef) => {
 	} = props;
 
 	const parentContext = React.useContext(TreeItemContext);
-	const level = parentContext ? parentContext.level + 1 : 1;
+	const level =
+		props.level !== undefined
+			? Math.max(1, props.level)
+			: parentContext
+				? parentContext.level + 1
+				: 1;
 	const firstSelected = !!selected && !parentContext?.selected; // TODO: temporary, only works with single selection
 	return (
 		<TreeItemContext.Provider

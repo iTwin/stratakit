@@ -39,6 +39,11 @@ export const Textarea = forwardRef<"textarea", TextareaProps>(
 				{...props}
 				className={cx("🥝-text-box", props.className)}
 				aria-describedby={describedBy}
+				/**
+				 * Use an empty string as a placeholder to fix baseline alignment in Safari.
+				 * @see https://bugs.webkit.org/show_bug.cgi?id=142968
+				 */
+				placeholder={props.placeholder ?? " "}
 				render={
 					<Ariakit.Focusable
 						accessibleWhenDisabled

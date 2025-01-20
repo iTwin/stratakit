@@ -6,6 +6,7 @@ import * as React from "react";
 import cx from "classnames";
 import * as Ariakit from "@ariakit/react";
 import { forwardRef, type BaseProps } from "./~utils.js";
+import { Button } from "./Button.js";
 
 interface ChipProps extends BaseProps<"div"> {
 	/**
@@ -66,13 +67,9 @@ export const Chip = forwardRef<"div", ChipProps>((props, forwardedRef) => {
 		>
 			{children}
 			{dismiss && (
-				<button
-					onClick={handleClose}
-					className="🥝-chip-close-button"
-					aria-label="Close"
-				>
-					✖
-				</button>
+				<Button onClick={handleClose} className="🥝-chip-dismiss-button">
+					x
+				</Button>
 			)}
 		</Ariakit.Role.div>
 	);

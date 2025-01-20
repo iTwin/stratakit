@@ -13,6 +13,7 @@
 
 		&:has(.🥝-text-box) {
 			grid-template-columns: auto;
+			align-items: baseline;
 			--🥝field-description-column-span: 1;
 		}
 

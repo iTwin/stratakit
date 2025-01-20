@@ -12,49 +12,45 @@ import showIcon from "@itwin/itwinui-icons/visibility-show.svg";
 
 export const handle = { title: "Tree" };
 
-export default definePage(function Page({
-	overflow = false,
-	selected = false,
-	actionsVisible: actionsVisibleParam = undefined,
-	level: levelParam = undefined,
-}) {
-	const actionsVisible = actionsVisibleParam as boolean | undefined;
-	const level = levelParam ? Number(levelParam) : undefined;
-	const overflowPostfix = overflow
-		? " with a super long label that is overflown"
-		: "";
-	return (
-		<Tree.Root style={{ maxInlineSize: overflow ? 300 : undefined }}>
-			<TreeItem label={`Item 1${overflowPostfix}`} selected={!!selected}>
-				<TreeItem label="Item 1.1" selected={!!selected} />
-				<TreeItem
-					label="Item 1.2"
-					actionsVisible={actionsVisible}
-					selected={!!selected}
-				/>
-				<TreeItem
-					label={`Item 1.3${overflowPostfix}`}
-					actionsVisible={actionsVisible}
-					selected={!!selected}
-				/>
-			</TreeItem>
-			<TreeItem label="Item 2" level={level}>
-				<TreeItem label={`Item 2.1${overflowPostfix}`} />
-			</TreeItem>
-			<TreeItem label="Item 3" actionsVisible={actionsVisible} />
-		</Tree.Root>
-	);
-});
+export default definePage(
+	function Page({
+		overflow = false,
+		selected = false,
+		level: levelParam = undefined,
+	}) {
+		const overflowPostfix = overflow
+			? " with a super long label that is overflown"
+			: "";
+		const level = levelParam ? Number(levelParam) : undefined;
+		return (
+			<Tree.Root style={{ maxInlineSize: overflow ? 300 : undefined }}>
+				<TreeItem label={`Item 1${overflowPostfix}`} selected={!!selected}>
+					<TreeItem label="Item 1.1" selected={!!selected} />
+					<TreeItem label="Item 1.2" selected={!!selected} />
+					<TreeItem
+						label={`Item 1.3${overflowPostfix}`}
+						selected={!!selected}
+					/>
+				</TreeItem>
+				<TreeItem label="Item 2" level={level}>
+					<TreeItem label={`Item 2.1${overflowPostfix}`} />
+				</TreeItem>
+				<TreeItem label="Item 3" />
+			</Tree.Root>
+		);
+	},
+	{
+		multiSelect: MultiSelectTest,
+	},
+);
 
 function TreeItem({
 	children,
 	label,
-	actionsVisible,
 	selected,
 	level,
 }: React.PropsWithChildren<{
 	label?: React.ReactNode;
-	actionsVisible?: boolean;
 	selected?: boolean;
 	level?: number;
 }>) {
@@ -86,9 +82,28 @@ function TreeItem({
 					/>
 				</>
 			}
-			actionsVisible={actionsVisible}
 		>
 			{children}
 		</Tree.Item>
+	);
+}
+
+function MultiSelectTest() {
+	return (
+		<Tree.Root>
+			<TreeItem label="Item 1" selected>
+				<TreeItem label="Item 1.1" selected />
+				<TreeItem label="Item 1.2">
+					<TreeItem label="Item 1.2.1" />
+					<TreeItem label="Item 1.2.2" selected />
+					<TreeItem label="Item 1.2.3" />
+				</TreeItem>
+				<TreeItem label="Item 1.3" selected />
+			</TreeItem>
+			<TreeItem label="Item 2">
+				<TreeItem label="Item 2.1" selected />
+			</TreeItem>
+			<TreeItem label="Item 3" selected />
+		</Tree.Root>
 	);
 }

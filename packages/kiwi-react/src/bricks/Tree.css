@@ -34,10 +34,6 @@
 			--🌀list-item-state: var(--🌀list-item-state--active);
 		}
 
-		&:where([data-kiwi-parent-selected="true"][data-kiwi-selected="true"]) {
-			--🌀list-item-state: var(--🌀list-item-state--active-child);
-		}
-
 		&:where([data-kiwi-expanded="false"]) {
 			--🥝tree-chevron-rotate: -0.25turn;
 		}
@@ -47,10 +43,6 @@
 		}
 
 		@media (any-hover: hover) {
-			&:where(:hover[data-kiwi-parent-selected="true"][data-kiwi-selected="true"]) {
-				--🌀list-item-state: var(--🌀list-item-state--active-child-hover);
-			}
-
 			&:where(:not(:hover):not(:focus-within)) {
 				:where(.🥝-tree-item-actions:not([data-kiwi-visible="true"])) {
 					clip-path: inset(50%);

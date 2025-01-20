@@ -67,7 +67,11 @@ export const Chip = forwardRef<"div", ChipProps>((props, forwardedRef) => {
 		>
 			{children}
 			{dismiss && (
-				<Button onClick={handleClose} className="🥝-chip-dismiss-button">
+				<Button
+					onClick={handleClose}
+					className="🥝-chip-dismiss-button"
+					aria-label="Dismiss"
+				>
 					x
 				</Button>
 			)}

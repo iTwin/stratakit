@@ -8,17 +8,18 @@ import { Chip } from "@itwin/itwinui-react/bricks";
 export const handle = { title: "Chip" };
 
 export default definePage(
-	function Page({ orientation, presentational }) {
+	function Page() {
 		return (
 			<>
 				<Chip>Value</Chip>
 			</>
 		);
 	},
-	{ visual: VisualTest },
+	{ visual: VisualTest, dismiss: DismissTest },
 );
 
 function VisualTest() {
+	// Permutations for visual testing without dismiss functionality
 	const permutations = [["solid"], ["outline"]] as const;
 
 	return (
@@ -29,6 +30,27 @@ function VisualTest() {
 				return (
 					<div key={variant} style={{ display: "flex", gap: 4 }}>
 						<Chip {...props}>{variant}</Chip>
+					</div>
+				);
+			})}
+		</div>
+	);
+}
+
+function DismissTest() {
+	// Permutations for visual testing with dismiss functionality
+	const permutations = [["solid"], ["outline"]] as const;
+
+	return (
+		<div style={{ display: "grid", gap: 4 }}>
+			{permutations.map(([variant]) => {
+				const props = { variant, dismiss: true } as React.ComponentProps<
+					typeof Chip
+				>;
+
+				return (
+					<div key={variant} style={{ display: "flex", gap: 4 }}>
+						<Chip {...props}>{`${variant} (dismiss)`}</Chip>
 					</div>
 				);
 			})}

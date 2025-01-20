@@ -4,16 +4,15 @@
  *--------------------------------------------------------------------------------------------*/
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import * as Ariakit from "@ariakit/react";
 import styles from "./sandbox.module.css";
 import {
 	Button,
 	DropdownMenu,
 	Icon,
 	IconButton,
+	Tabs,
 	Text,
 	TextBox,
-	VisuallyHidden,
 } from "@itwin/itwinui-react/bricks";
 import * as Tree from "@itwin/itwinui-react-internal/src/bricks/Tree.tsx";
 import { useSearchParams, type MetaFunction } from "react-router";
@@ -88,8 +87,23 @@ export default function Page() {
 							/>
 						</div>
 					</div>
-					<Subheader />
-					<SandboxTree />
+					<Tabs.Root>
+						<Subheader />
+						<Tabs.TabPanel
+							tabId="simple"
+							className={styles.tabPanel}
+							focusable={false}
+						>
+							<SandboxTree tree="simple" />
+						</Tabs.TabPanel>
+						<Tabs.TabPanel
+							tabId="complex"
+							className={styles.tabPanel}
+							focusable={false}
+						>
+							<SandboxTree tree="complex" />
+						</Tabs.TabPanel>
+					</Tabs.Root>
 				</div>
 
 				<div
@@ -375,9 +389,13 @@ const SandboxTreeContext = React.createContext<{
 	toggleHidden: () => {},
 });
 
-function SandboxTree() {
+interface SandboxTreeProps {
+	tree: "simple" | "complex";
+}
+
+function SandboxTree({ tree }: SandboxTreeProps) {
 	const [searchParams] = useSearchParams();
-	const tree = searchParams.get("tree"); // for handling ?tree=complex and ?tree=empty
+	const treeParam = searchParams.get("tree"); // for handling ?tree=empty
 	const [selected, setSelected] = React.useState<string | undefined>();
 	const [hidden, setHidden] = React.useState<string[]>([]);
 	const toggleHidden = React.useCallback((id: string) => {
@@ -389,7 +407,7 @@ function SandboxTree() {
 		});
 	}, []);
 
-	if (tree === "empty") {
+	if (treeParam === "empty") {
 		return (
 			<EmptyState>
 				<Text>No layers</Text>
@@ -554,59 +572,50 @@ function TreeItem(props: TreeItemProps) {
 		return treeContext.hidden.includes(id);
 	}, [id, treeContext.hidden, parentContext.hidden]);
 	const selected = parentContext.selected || id === treeContext.selected;
-	const toggleSelected = React.useCallback(() => {
-		treeContext.setSelected((prev) => {
-			if (prev === id) return undefined;
-			return id;
-		});
-	}, [id, treeContext]);
-	// Display actions when item is hidden.
-	const actionsVisible = hidden ? true : undefined;
+	const setSelected = React.useCallback(
+		(selected: boolean) => {
+			treeContext.setSelected(selected ? id : undefined);
+		},
+		[id, treeContext],
+	);
 	return (
 		<SandboxParentItemContext.Provider
 			value={React.useMemo(() => ({ selected, hidden }), [hidden, selected])}
 		>
 			<Tree.Item
-				content={
-					<>
-						<Icon href={placeholderIcon} style={{ display: "inline" }} />
-						<Tree.Content
-							onClick={() => {
-								toggleSelected();
-							}}
-						>
-							{props.label}
-						</Tree.Content>
-						<Tree.Actions visible={actionsVisible}>
-							<IconButton
-								className={styles.action}
-								icon={lockIcon}
-								label="Lock"
-								variant="ghost"
-								aria-hidden={hidden}
-							/>
-							{parentContext.hidden ? (
-								<span className={styles.actionIcon}>
-									<Icon href={dotIcon} />
-								</span>
-							) : (
-								<IconButton
-									className={styles.action}
-									icon={hidden ? hideIcon : showIcon}
-									label={hidden ? "Show" : "Hide"}
-									variant="ghost"
-									onClick={() => {
-										treeContext.toggleHidden(id);
-									}}
-								/>
-							)}
-							<TreeMoreActions hidden={hidden} />
-						</Tree.Actions>
-					</>
-				}
 				expanded={isParentNode ? expanded : undefined}
 				onExpandedChange={setExpanded}
 				selected={selected}
+				onSelectedChange={setSelected}
+				icon={<Icon href={placeholderIcon} style={{ display: "inline" }} />}
+				label={props.label}
+				actions={
+					<>
+						<IconButton
+							className={styles.action}
+							icon={lockIcon}
+							label="Lock"
+							variant="ghost"
+							aria-hidden={hidden}
+						/>
+						{parentContext.hidden ? (
+							<span className={styles.actionIcon}>
+								<Icon href={dotIcon} />
+							</span>
+						) : (
+							<IconButton
+								className={styles.action}
+								icon={hidden ? hideIcon : showIcon}
+								label={hidden ? "Show" : "Hide"}
+								variant="ghost"
+								onClick={() => {
+									treeContext.toggleHidden(id);
+								}}
+							/>
+						)}
+						<TreeMoreActions hidden={hidden} />
+					</>
+				}
 			>
 				{expanded ? props.children : undefined}
 			</Tree.Item>
@@ -643,7 +652,7 @@ function TreeMoreActions({ hidden }: { hidden?: boolean }) {
 function Subheader() {
 	const [isSearching, setIsSearching] = React.useState(false);
 	const searchInputRef = React.useRef<HTMLInputElement>(null);
-	const subheaderRef = React.useRef<HTMLHeadingElement>(null);
+	const tabsRef = React.useRef<HTMLHeadingElement>(null);
 
 	const actions = isSearching ? (
 		<>
@@ -655,7 +664,7 @@ function Subheader() {
 				variant="ghost"
 				onClick={() => {
 					ReactDOM.flushSync(() => setIsSearching(false));
-					subheaderRef.current?.focus();
+					tabsRef.current?.focus();
 				}}
 			/>
 		</>
@@ -674,17 +683,12 @@ function Subheader() {
 
 	return (
 		<div className={styles.subheader}>
-			<Ariakit.Role.h3
-				className={styles.subheaderTitle}
-				tabIndex={-1}
-				ref={subheaderRef}
-				// When searching, we don't want to show the heading content visually, but we still want it
-				// in the DOM for screen readers. The heading structure of the page should remain the same.
-				// biome-ignore lint/a11y/useHeadingContent: This is fine. The heading content is set by children.
-				render={isSearching ? <VisuallyHidden render={<h3 />} /> : undefined}
-			>
-				Layers
-			</Ariakit.Role.h3>
+			{isSearching ? undefined : (
+				<Tabs.TabList className={styles.tabList} tone="accent" ref={tabsRef}>
+					<Tabs.Tab id="simple">Simple</Tabs.Tab>
+					<Tabs.Tab id="complex">Complex</Tabs.Tab>
+				</Tabs.TabList>
+			)}
 
 			{isSearching ? (
 				<TextBox.Root className={styles.searchInput}>

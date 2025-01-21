@@ -20,12 +20,12 @@ export default definePage(
 				id: keyValue,
 				name: `Name ${keyValue}`,
 				description: `Description ${keyValue}`,
-				date: `2025-01-0${index + 1}`,
+				date: `${index + 1 < 10 ? `0${index + 1}` : index + 1}-01-2025`,
 			};
 		}, []);
 		const data = React.useMemo(
 			() =>
-				Array(10)
+				Array(5)
 					.fill(null)
 					.map((_, index) => generateItem(index)),
 			[generateItem],
@@ -44,7 +44,7 @@ export default definePage(
 							</VisuallyHidden>
 						</Table.Cell>
 						{Object.keys(data[0]).map((columnName: string) => (
-							<Table.Cell key={columnName} data-kiwi-variant="sortable">
+							<Table.Cell key={columnName}>
 								{capitalizeFirstLetter(columnName)}
 							</Table.Cell>
 						))}

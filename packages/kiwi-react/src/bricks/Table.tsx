@@ -31,7 +31,7 @@ interface TableHeaderProps extends BaseProps {}
 const TableHeader = forwardRef<"div", TableHeaderProps>(
 	(props, forwardedRef) => {
 		return (
-			<TableVariantContext.Provider value={{ variant: "header" }}>
+			<TableVariantContext.Provider value={{ rowProps: { variant: "header" } }}>
 				<Ariakit.Role.div
 					{...props}
 					className={cx("🥝-table-header", props.className)}
@@ -51,7 +51,7 @@ interface TableBodyProps extends BaseProps {}
 
 const TableBody = forwardRef<"div", TableBodyProps>((props, forwardedRef) => {
 	return (
-		<TableVariantContext.Provider value={{ variant: "body" }}>
+		<TableVariantContext.Provider value={{ rowProps: { variant: "body" } }}>
 			<Ariakit.Role.div
 				{...props}
 				className={cx("🥝-table-body", props.className)}
@@ -93,7 +93,7 @@ const TableRow = forwardRef<"div", TableRowProps>((props, forwardedRef) => {
 			aria-selected={selected}
 			aria-disabled={disabled}
 			data-kiwi-variant={
-				tableContext?.variant === "header" ? "header" : undefined
+				tableContext?.rowProps?.variant === "header" ? "header" : undefined
 			}
 		>
 			{children}
@@ -107,11 +107,15 @@ DEV: TableRow.displayName = "Table.Row";
 interface TableCellProps extends BaseProps {}
 
 const TableCell = forwardRef<"span", TableCellProps>((props, forwardedRef) => {
+	const tableContext = React.useContext(TableVariantContext);
 	return (
 		<Ariakit.Role.span
 			{...props}
 			className={cx("🥝-table-cell", props.className)}
 			ref={forwardedRef}
+			data-kiwi-variant={
+				tableContext?.rowProps?.variant === "header" ? "sortable" : undefined
+			}
 		>
 			{props.children}
 		</Ariakit.Role.span>
@@ -123,7 +127,8 @@ DEV: TableCell.displayName = "Table.Cell";
 
 const TableVariantContext = React.createContext<
 	| {
-			variant?: "header" | "body";
+			rowProps?: { variant?: "header" | "body" };
+			cellProps?: { cellIndex: number };
 	  }
 	| undefined
 >(undefined);

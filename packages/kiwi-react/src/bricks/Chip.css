@@ -12,6 +12,32 @@
 
 		border-radius: 9999px;
 		border: 1px solid var(--kiwi-color-border-neutral-base);
+
+		--✨bg--outline-default: var(--kiwi-color-bg-surface-primary);
+		--✨bg--outline-hover: var(--kiwi-color-bg-glow-base-hover-\%);
+		--✨bg--outline-active: var(--kiwi-color-bg-glow-on-surface-accent-pressed);
+		--✨bg--outline-active-hover: var(--kiwi-color-bg-glow-base-hover-\%);
+		--✨bg--outline-disabled: var(--kiwi-color-bg-surface-primary);
+
+		--✨border--outline-default: var(--kiwi-color-border-neutral-base);
+		--✨border--outline-hover: var(--kiwi-color-border-neutral-base);
+		--✨border--outline-active: var(--kiwi-color-border-accent-base, #3d957e);
+		--✨border--outline-active-hover: var(--kiwi-color-border-accent-base, #3d957e);
+		--✨border--outline-disabled: var(
+			--kiwi-color-border-glow-on-surface-disabled,
+			rgba(255, 255, 255, 0.08)
+		);
+
+		--✨bg--solid-default: var(--kiwi-color-bg-neutral-base);
+		--✨bg--solid-hover: var(--kiwi-color-bg-glow-base-hover-\%);
+		--✨bg--solid-active: var(--kiwi-color-bg-accent-base, #3d957e);
+		--✨bg--solid-active-hover: var(--kiwi-color-bg-glow-strong-hover-\%, #198166);
+		--✨bg--solid-disabled: var(--kiwi-color-bg-glow-on-surface-disabled);
+
+		--✨border--solid-default: var(--kiwi-color-border-neutral-base);
+		--✨border--solid-hover: var(--kiwi-color-border-neutral-base);
+		--✨border--solid-active: var(--kiwi-color-bg-accent-base, #3d957e);
+		--✨border--solid-active-hover: var(--kiwi-color-border-accent-base, #3d957e);
 	}
 
 	@layer modifiers {

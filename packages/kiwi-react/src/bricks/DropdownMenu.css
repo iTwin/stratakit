@@ -9,6 +9,7 @@
 
 	@layer base {
 		background-color: var(--✨bg);
+		--🥝list-item-bg--default: var(--✨bg);
 
 		display: flex;
 		flex-direction: column;
@@ -16,7 +17,21 @@
 
 		border-radius: 8px /* radius(in progress)/medium */;
 		padding-block: var(--✨padding);
-		box-shadow: var(--kiwi-shadow-surface-xl);
+
+		@layer shame {
+			isolation: isolate;
+
+			/* TODO: Remove this. This makes the shadow appear above the items, but we'd use a border instead. */
+			&::before {
+				content: "";
+				position: absolute;
+				inset: 0;
+				z-index: 1;
+				border-radius: inherit;
+				pointer-events: none;
+				box-shadow: var(--kiwi-shadow-surface-xl);
+			}
+		}
 	}
 }
 

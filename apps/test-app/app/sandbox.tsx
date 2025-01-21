@@ -4,16 +4,15 @@
  *--------------------------------------------------------------------------------------------*/
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import * as Ariakit from "@ariakit/react";
 import styles from "./sandbox.module.css";
 import {
 	Button,
 	DropdownMenu,
 	Icon,
 	IconButton,
+	Tabs,
 	Text,
 	TextBox,
-	VisuallyHidden,
 } from "@itwin/itwinui-react/bricks";
 import * as Tree from "@itwin/itwinui-react-internal/src/bricks/Tree.tsx";
 import { useSearchParams, type MetaFunction } from "react-router";
@@ -88,8 +87,23 @@ export default function Page() {
 							/>
 						</div>
 					</div>
-					<Subheader />
-					<SandboxTree />
+					<Tabs.Root>
+						<Subheader />
+						<Tabs.TabPanel
+							tabId="simple"
+							className={styles.tabPanel}
+							focusable={false}
+						>
+							<SandboxTree tree="simple" />
+						</Tabs.TabPanel>
+						<Tabs.TabPanel
+							tabId="complex"
+							className={styles.tabPanel}
+							focusable={false}
+						>
+							<SandboxTree tree="complex" />
+						</Tabs.TabPanel>
+					</Tabs.Root>
 				</div>
 
 				<div
@@ -375,9 +389,13 @@ const SandboxTreeContext = React.createContext<{
 	toggleHidden: () => {},
 });
 
-function SandboxTree() {
+interface SandboxTreeProps {
+	tree: "simple" | "complex";
+}
+
+function SandboxTree({ tree }: SandboxTreeProps) {
 	const [searchParams] = useSearchParams();
-	const tree = searchParams.get("tree"); // for handling ?tree=complex and ?tree=empty
+	const treeParam = searchParams.get("tree"); // for handling ?tree=empty
 	const [selected, setSelected] = React.useState<string | undefined>();
 	const [hidden, setHidden] = React.useState<string[]>([]);
 	const toggleHidden = React.useCallback((id: string) => {
@@ -389,7 +407,7 @@ function SandboxTree() {
 		});
 	}, []);
 
-	if (tree === "empty") {
+	if (treeParam === "empty") {
 		return (
 			<EmptyState>
 				<Text>No layers</Text>
@@ -416,7 +434,7 @@ function IdealTreeItems() {
 	return (
 		<>
 			<TreeItem label="Guides">
-				<TreeItem label="Tree" actions>
+				<TreeItem label="Tree">
 					<TreeItem label="Guide 4" />
 					<TreeItem label="Guide 3" />
 					<TreeItem label="Guide 2" />
@@ -424,7 +442,7 @@ function IdealTreeItems() {
 				</TreeItem>
 			</TreeItem>
 			<TreeItem label="Other">
-				<TreeItem label="Object 2" actions>
+				<TreeItem label="Object 2">
 					<TreeItem label="Path 3" />
 				</TreeItem>
 				<TreeItem label="Object 1" />
@@ -433,11 +451,11 @@ function IdealTreeItems() {
 				<TreeItem label="Parking lot access" />
 				<TreeItem label="Site access" />
 			</TreeItem>
-			<TreeItem label="Parking lot" actions>
-				<TreeItem label="Parking area" actions>
+			<TreeItem label="Parking lot">
+				<TreeItem label="Parking area">
 					<TreeItem label="Bay point 2" />
-					<TreeItem label="Bay point 1" actions />
-					<TreeItem label="Space point 1" actions />
+					<TreeItem label="Bay point 1" />
+					<TreeItem label="Space point 1" />
 					<TreeItem label="Path 6" />
 				</TreeItem>
 			</TreeItem>
@@ -472,22 +490,14 @@ function ComplexTreeItems() {
 				<TreeItem label="002_Substation" defaultCollapsed>
 					<TreeItem label="002_Substation_A" />
 				</TreeItem>
-				<TreeItem
-					label="005-BENROAD-00-XX-M3-D-00003.dgn"
-					actions
-					defaultCollapsed
-				>
+				<TreeItem label="005-BENROAD-00-XX-M3-D-00003.dgn" defaultCollapsed>
 					<TreeItem label="005-BENROAD-00-XX-M3-D-00003-A" />
 				</TreeItem>
-				<TreeItem
-					label="005-BENROAD-00-XX-M3-D-00005.dgn"
-					actions
-					defaultCollapsed
-				>
+				<TreeItem label="005-BENROAD-00-XX-M3-D-00005.dgn" defaultCollapsed>
 					<TreeItem label="005-BENROAD-00-XX-M3-D-00005-A" />
 				</TreeItem>
 				<TreeItem label="005-BENROAD-00-XX-M3-G-00002.dgn" defaultCollapsed>
-					<TreeItem label="005-BENROAD-00-XX-M3-G-00002-A" actions />
+					<TreeItem label="005-BENROAD-00-XX-M3-G-00002-A" />
 				</TreeItem>
 				<TreeItem label="005-BENROAD-00-XX-M3-G-00003.dgn" defaultCollapsed>
 					<TreeItem label="005-BENROAD-00-XX-M3-G-00003-A" />
@@ -498,13 +508,13 @@ function ComplexTreeItems() {
 					</TreeItem>
 					<TreeItem label="A-CLNG-TILE">
 						<TreeItem label="A-DOOR-2D-PLAN">
-							<TreeItem label="P00003 [2-KA62]" actions>
+							<TreeItem label="P00003 [2-KA62]">
 								<TreeItem label="Cell [2-KA63]">
 									<TreeItem label="Cell [2-KA64]">
 										<TreeItem label="Complex Chain [2-KA6A]" />
-										<TreeItem label="Complex Chain [2-KA6B]" actions />
-										<TreeItem label="Complex Chain [2-KA6C]" actions />
-										<TreeItem label="Complex Chain [2-KA6D]" actions />
+										<TreeItem label="Complex Chain [2-KA6B]" />
+										<TreeItem label="Complex Chain [2-KA6C]" />
+										<TreeItem label="Complex Chain [2-KA6D]" />
 										<TreeItem label="Complex Chain [2-KA6E]" />
 										<TreeItem label="Complex Chain [2-KA6F]" />
 										<TreeItem label="Complex Chain [2-KA6G]" />
@@ -534,7 +544,7 @@ function ComplexTreeItems() {
 					</TreeItem>
 				</TreeItem>
 			</TreeItem>
-			<TreeItem label="ITC_Main" actions />
+			<TreeItem label="ITC_Main" />
 		</>
 	);
 }
@@ -546,7 +556,6 @@ const SandboxParentItemContext = React.createContext<{
 
 type TreeItemProps = React.PropsWithChildren<{
 	label?: string;
-	actions?: boolean;
 	defaultCollapsed?: boolean;
 }>;
 
@@ -563,65 +572,50 @@ function TreeItem(props: TreeItemProps) {
 		return treeContext.hidden.includes(id);
 	}, [id, treeContext.hidden, parentContext.hidden]);
 	const selected = parentContext.selected || id === treeContext.selected;
-	const toggleSelected = React.useCallback(() => {
-		treeContext.setSelected((prev) => {
-			if (prev === id) return undefined;
-			return id;
-		});
-	}, [id, treeContext]);
-	const actionsVisible = props.actions || hidden;
+	const setSelected = React.useCallback(
+		(selected: boolean) => {
+			treeContext.setSelected(selected ? id : undefined);
+		},
+		[id, treeContext],
+	);
 	return (
 		<SandboxParentItemContext.Provider
 			value={React.useMemo(() => ({ selected, hidden }), [hidden, selected])}
 		>
 			<Tree.Item
-				content={
+				expanded={isParentNode ? expanded : undefined}
+				onExpandedChange={setExpanded}
+				selected={selected}
+				onSelectedChange={setSelected}
+				icon={<Icon href={placeholderIcon} style={{ display: "inline" }} />}
+				label={props.label}
+				actions={
 					<>
-						<Tree.Expander
-							onClick={() => {
-								setExpanded((prev) => !prev);
-							}}
+						<IconButton
+							className={styles.action}
+							icon={lockIcon}
+							label="Lock"
+							variant="ghost"
+							aria-hidden={hidden}
 						/>
-						<Icon href={placeholderIcon} style={{ display: "inline" }} />
-						<Tree.Content
-							onClick={() => {
-								toggleSelected();
-							}}
-						>
-							{props.label}
-						</Tree.Content>
-						{actionsVisible && (
-							<Tree.Actions>
-								<IconButton
-									className={styles.action}
-									icon={lockIcon}
-									label="Lock"
-									variant="ghost"
-									aria-hidden={!props.actions || hidden}
-								/>
-								{parentContext.hidden ? (
-									<span className={styles.actionIcon}>
-										<Icon href={dotIcon} />
-									</span>
-								) : (
-									<IconButton
-										className={styles.action}
-										icon={hidden ? hideIcon : showIcon}
-										label={hidden ? "Show" : "Hide"}
-										variant="ghost"
-										aria-hidden={!props.actions}
-										onClick={() => {
-											treeContext.toggleHidden(id);
-										}}
-									/>
-								)}
-								<TreeMoreActions hidden={!props.actions || hidden} />
-							</Tree.Actions>
+						{parentContext.hidden ? (
+							<span className={styles.actionIcon}>
+								<Icon href={dotIcon} />
+							</span>
+						) : (
+							<IconButton
+								className={styles.action}
+								icon={hidden ? hideIcon : showIcon}
+								label={hidden ? "Show" : "Hide"}
+								variant="ghost"
+								onClick={() => {
+									treeContext.toggleHidden(id);
+								}}
+							/>
 						)}
+						<TreeMoreActions hidden={hidden} />
 					</>
 				}
-				expanded={isParentNode ? expanded : undefined}
-				selected={selected}
 			>
 				{expanded ? props.children : undefined}
 			</Tree.Item>
@@ -658,7 +652,7 @@ function TreeMoreActions({ hidden }: { hidden?: boolean }) {
 function Subheader() {
 	const [isSearching, setIsSearching] = React.useState(false);
 	const searchInputRef = React.useRef<HTMLInputElement>(null);
-	const subheaderRef = React.useRef<HTMLHeadingElement>(null);
+	const tabsRef = React.useRef<HTMLHeadingElement>(null);
 
 	const actions = isSearching ? (
 		<>
@@ -670,7 +664,7 @@ function Subheader() {
 				variant="ghost"
 				onClick={() => {
 					ReactDOM.flushSync(() => setIsSearching(false));
-					subheaderRef.current?.focus();
+					tabsRef.current?.focus();
 				}}
 			/>
 		</>
@@ -689,17 +683,12 @@ function Subheader() {
 
 	return (
 		<div className={styles.subheader}>
-			<Ariakit.Role.h3
-				className={styles.subheaderTitle}
-				tabIndex={-1}
-				ref={subheaderRef}
-				// When searching, we don't want to show the heading content visually, but we still want it
-				// in the DOM for screen readers. The heading structure of the page should remain the same.
-				// biome-ignore lint/a11y/useHeadingContent: This is fine. The heading content is set by children.
-				render={isSearching ? <VisuallyHidden render={<h3 />} /> : undefined}
-			>
-				Layers
-			</Ariakit.Role.h3>
+			{isSearching ? undefined : (
+				<Tabs.TabList className={styles.tabList} tone="accent" ref={tabsRef}>
+					<Tabs.Tab id="simple">Simple</Tabs.Tab>
+					<Tabs.Tab id="complex">Complex</Tabs.Tab>
+				</Tabs.TabList>
+			)}
 
 			{isSearching ? (
 				<TextBox.Root className={styles.searchInput}>

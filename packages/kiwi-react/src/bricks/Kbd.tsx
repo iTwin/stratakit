@@ -76,8 +76,8 @@ export const Kbd = forwardRef<"kbd", KbdProps>((props, forwardedRef) => {
 
 	return (
 		<Ariakit.Role
-			data-kiwi-variant={variant}
 			{...rest}
+			data-kiwi-variant={variant}
 			className={cx("🥝-kbd", props.className)}
 			render={props.render || <kbd />}
 			ref={forwardedRef as Ariakit.RoleProps["ref"]}

@@ -45,36 +45,19 @@
 
 .🥝-dropdown-menu-checkbox-item:is(.🥝-list-item) {
 	@layer states {
-		@media (any-hover: hover) {
-			&:where(:hover) {
-				:where(.🥝-menu-checkbox) {
-					--🌀checkbox-visual-state: var(--🌀checkbox-visual-state--hover);
-				}
-			}
-		}
-
 		&:where([aria-checked="true"]) {
 			--🌀list-item-state: var(--🌀list-item-state--active);
+		}
 
-			:where(.🥝-menu-checkbox) {
-				--🌀checkbox-visual-state: var(--🌀checkbox-visual-state--checked);
-				--🌀checkbox-aria-state: var(--🌀checkbox-aria-state--checked);
-			}
-
-			@media (any-hover: hover) {
-				&:where(:hover) {
-					:where(.🥝-menu-checkbox) {
-						--🌀checkbox-visual-state: var(--🌀checkbox-visual-state--checked-hover);
-					}
-				}
-			}
+		&:where(:not([aria-checked="true"])) {
+			--🥝dropdown-menu-checkmark-visibility: hidden;
 		}
 	}
 }
 
-.🥝-menu-checkbox:is(.🥝-checkbox) {
+.🥝-dropdown-menu-checkmark {
 	@layer base {
-		margin-inline-end: 0.5rem;
+		visibility: var(--🥝dropdown-menu-checkmark-visibility);
 	}
 }
 

@@ -8,7 +8,7 @@ import * as Ariakit from "@ariakit/react";
 import * as ListItem from "./ListItem.js";
 import { Button } from "./Button.js";
 import { Kbd } from "./Kbd.js";
-import { DisclosureArrow } from "./Icon.js";
+import { Checkmark, DisclosureArrow } from "./Icon.js";
 import { forwardRef, supportsPopover, type FocusableProps } from "./~utils.js";
 
 // ----------------------------------------------------------------------------
@@ -220,8 +220,8 @@ interface DropdownMenuCheckboxItemProps
  *
  * Example:
  * ```tsx
- * <DropdownMenu.CheckboxItem>Add</DropdownMenu.Item>
- * <DropdownMenu.CheckboxItem>Edit</DropdownMenu.Item>
+ * <DropdownMenu.CheckboxItem name="add">Add</DropdownMenu.Item>
+ * <DropdownMenu.CheckboxItem name="edit">Edit</DropdownMenu.Item>
  * ```
  */
 const DropdownMenuCheckboxItem = forwardRef<
@@ -237,8 +237,8 @@ const DropdownMenuCheckboxItem = forwardRef<
 			className={cx("🥝-dropdown-menu-checkbox-item", props.className)}
 			ref={forwardedRef}
 		>
-			<span className={cx("🥝-checkbox", "🥝-menu-checkbox")} aria-hidden />
 			<ListItem.Content>{props.children}</ListItem.Content>
+			<Checkmark className="🥝-dropdown-menu-checkmark" />
 		</Ariakit.MenuItemCheckbox>
 	);
 });

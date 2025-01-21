@@ -27,7 +27,7 @@ interface ChipProps extends BaseProps<"div"> {
 	 *
 	 * @default false
 	 */
-	dismiss?: boolean;
+	dismissible?: boolean;
 }
 
 /**
@@ -44,7 +44,7 @@ export const Chip = forwardRef<"div", ChipProps>((props, forwardedRef) => {
 	const {
 		variant = "solid",
 		onClose,
-		dismiss = false,
+		dismissible: dismiss = false,
 		children,
 		...rest
 	} = props;

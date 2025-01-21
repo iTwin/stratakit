@@ -31,7 +31,7 @@ interface TableHeaderProps extends BaseProps {}
 const TableHeader = forwardRef<"div", TableHeaderProps>(
 	(props, forwardedRef) => {
 		return (
-			<TableVariantContext.Provider value={{ rowProps: { variant: "header" } }}>
+			<TableVariantContext.Provider value={{ variant: "header" }}>
 				<Ariakit.Role.div
 					{...props}
 					className={cx("🥝-table-header", props.className)}
@@ -51,7 +51,7 @@ interface TableBodyProps extends BaseProps {}
 
 const TableBody = forwardRef<"div", TableBodyProps>((props, forwardedRef) => {
 	return (
-		<TableVariantContext.Provider value={{ rowProps: { variant: "body" } }}>
+		<TableVariantContext.Provider value={{ variant: "body" }}>
 			<Ariakit.Role.div
 				{...props}
 				className={cx("🥝-table-body", props.className)}
@@ -84,6 +84,7 @@ interface TableRowProps extends BaseProps {
 const TableRow = forwardRef<"div", TableRowProps>((props, forwardedRef) => {
 	const { children, selected, disabled, ...rest } = props;
 	const tableContext = React.useContext(TableVariantContext);
+	const isHeaderRow = tableContext?.variant === "header";
 
 	return (
 		<Ariakit.Role.div
@@ -92,9 +93,7 @@ const TableRow = forwardRef<"div", TableRowProps>((props, forwardedRef) => {
 			ref={forwardedRef}
 			aria-selected={selected}
 			aria-disabled={disabled}
-			data-kiwi-variant={
-				tableContext?.rowProps?.variant === "header" ? "header" : undefined
-			}
+			data-kiwi-variant={isHeaderRow ? "header" : undefined}
 		>
 			{children}
 		</Ariakit.Role.div>
@@ -108,14 +107,14 @@ interface TableCellProps extends BaseProps {}
 
 const TableCell = forwardRef<"span", TableCellProps>((props, forwardedRef) => {
 	const tableContext = React.useContext(TableVariantContext);
+	const isHeaderCell = tableContext?.variant === "header";
+
 	return (
 		<Ariakit.Role.span
 			{...props}
 			className={cx("🥝-table-cell", props.className)}
 			ref={forwardedRef}
-			data-kiwi-variant={
-				tableContext?.rowProps?.variant === "header" ? "sortable" : undefined
-			}
+			data-kiwi-variant={isHeaderCell ? "sortable" : undefined}
 		>
 			{props.children}
 		</Ariakit.Role.span>
@@ -127,8 +126,10 @@ DEV: TableCell.displayName = "Table.Cell";
 
 const TableVariantContext = React.createContext<
 	| {
-			rowProps?: { variant?: "header" | "body" };
-			cellProps?: { cellIndex: number };
+			/**
+			 * Marks whether the rows belong to the header or body.
+			 */
+			variant?: "header" | "body";
 	  }
 	| undefined
 >(undefined);

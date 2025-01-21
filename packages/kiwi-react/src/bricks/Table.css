@@ -104,6 +104,11 @@
 }
 
 .🥝-table-cell {
+	flex-grow: 1;
+	min-inline-size: 4rem;
+	flex-basis: 4rem;
+	padding-block: 0.5rem;
+
 	@layer base {
 		display: flex;
 		align-items: center;
@@ -113,29 +118,12 @@
 	}
 
 	@layer modifiers {
-		&:where(:not([data-kiwi-slot])) {
-			flex-grow: 1;
-			min-inline-size: 4rem;
-			flex-basis: 4rem;
-			padding-block: 0.5rem;
-		}
-
-		&:where([data-kiwi-slot]) {
-			flex-grow: 0;
-			justify-content: center;
-		}
-
 		&:where([data-kiwi-variant="sortable"]) {
 			@media (any-hover: hover) {
 				&:where(:hover) {
 					background-color: var(--🥝table-bg--hover);
 				}
 			}
-		}
-
-		&:where([data-kiwi-align="right"]) {
-			text-align: right;
-			justify-content: flex-end;
 		}
 	}
 }

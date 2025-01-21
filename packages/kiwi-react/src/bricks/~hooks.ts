@@ -102,3 +102,35 @@ export function useMergedRefs<T>(
 		[...refs],
 	);
 }
+
+/**
+ * Hook that accepts a list of event handlers and returns a single memoized handler
+ * that ensures `defaultPrevented` is respected for each handler.
+ *
+ * The first callback in the list is also optimized using `useLatestRef` to avoid
+ * breaking memoization. This is useful when the first handler is a prop that can change.
+ *
+ * Example:
+ * ```tsx
+ * <button onClick={useEventHandlers(props.onClick, ownOnClick)}>
+ * ```
+ *
+ * @private
+ */
+export function useEventHandlers<E extends React.SyntheticEvent>(
+	first: ((event: E) => void) | undefined,
+	...rest: Array<((event: E) => void) | undefined>
+) {
+	const latestFirst = useLatestRef(first);
+
+	// biome-ignore lint/correctness/useExhaustiveDependencies: Memoize based on contents of rest, not rest itself.
+	return React.useCallback(
+		(event: E) => {
+			for (const handler of [latestFirst.current, ...rest]) {
+				handler?.(event);
+				if (event.defaultPrevented) return;
+			}
+		},
+		[latestFirst, ...rest],
+	);
+}

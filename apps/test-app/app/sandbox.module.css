@@ -90,7 +90,8 @@
 }
 
 .subheader {
-	padding: 12px;
+	min-block-size: 2.5rem;
+	padding-inline: 12px;
 	border-block: 1px solid var(--kiwi-color-border-neutral-base);
 	border-inline: none;
 
@@ -110,6 +111,11 @@
 
 .subheaderActions {
 	margin-inline-start: auto;
+}
+
+.tabList {
+	align-self: flex-end;
+	margin-block-end: -1px;
 }
 
 .emptyState {
@@ -200,9 +206,14 @@
 	}
 }
 
-.tree {
+.tabPanel {
+	min-block-size: 0;
 	flex-grow: 1;
 	padding-block-end: 12px;
+}
+
+.tree {
+	block-size: 100%;
 }
 
 .action {

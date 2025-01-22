@@ -4,7 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 import * as Ariakit from "@ariakit/react";
 import cx from "classnames";
-import { useFieldId } from "./Field.js";
+import { useFieldDescribedBy, useFieldId } from "./Field.js";
 import { forwardRef, type FocusableProps } from "./~utils.js";
 
 interface TextareaProps extends FocusableProps<"textarea"> {}
@@ -31,12 +31,19 @@ interface TextareaProps extends FocusableProps<"textarea"> {}
 export const Textarea = forwardRef<"textarea", TextareaProps>(
 	(props, forwardedRef) => {
 		const fieldId = useFieldId();
+		const describedBy = useFieldDescribedBy(props["aria-describedby"]);
 
 		return (
 			<Ariakit.Role.textarea
 				id={fieldId}
 				{...props}
 				className={cx("🥝-text-box", props.className)}
+				aria-describedby={describedBy}
+				/**
+				 * Use an empty string as a placeholder to fix baseline alignment in Safari.
+				 * @see https://bugs.webkit.org/show_bug.cgi?id=142968
+				 */
+				placeholder={props.placeholder ?? " "}
 				render={
 					<Ariakit.Focusable
 						accessibleWhenDisabled

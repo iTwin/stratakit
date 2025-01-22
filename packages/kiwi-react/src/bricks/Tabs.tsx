@@ -115,8 +115,8 @@ const TabList = forwardRef<"div", TabListProps>((props, forwardedRef) => {
 
 	return (
 		<Ariakit.TabList
-			data-kiwi-tone={tone}
 			{...rest}
+			data-kiwi-tone={tone}
 			className={cx("🥝-tab-list", props.className)}
 			style={
 				{
@@ -162,8 +162,8 @@ DEV: Tab.displayName = "Tabs.Tab";
 // ----------------------------------------------------------------------------
 
 interface TabPanelProps
-	extends BaseProps<"div">,
-		Pick<Ariakit.TabPanelProps, "tabId" | "unmountOnHide"> {}
+	extends FocusableProps<"div">,
+		Pick<Ariakit.TabPanelProps, "tabId" | "unmountOnHide" | "focusable"> {}
 
 /**
  * The actual content of a tab, shown when the tab is selected. Should be used as a child of `Tabs.Root`.

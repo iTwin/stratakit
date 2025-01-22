@@ -4,13 +4,13 @@
  *--------------------------------------------------------------------------------------------*/
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import * as Ariakit from "@ariakit/react";
 import styles from "./sandbox.module.css";
 import {
 	Button,
 	DropdownMenu,
 	Icon,
 	IconButton,
+	Tabs,
 	Text,
 	TextBox,
 	VisuallyHidden,
@@ -34,11 +34,6 @@ export const meta: MetaFunction = () => {
 };
 
 export default function Page() {
-	const { sliderProps, panelProps, panelMinSize, panelMaxSize, resizing } =
-		useSplitter<HTMLDivElement>({
-			minSize: { px: 256, pct: 20 },
-			maxSize: { pct: 30 },
-		});
 	const [filtered, setFiltered] = React.useState(false);
 	const [filters, setFilters] = React.useState<string[]>([]);
 	const toggleFilter = React.useCallback((filter: string) => {
@@ -54,49 +49,27 @@ export default function Page() {
 		setFilters([]);
 		setFiltered(true);
 	}, []);
+	const [selectedId, setSelectedId] = React.useState<TreeType>("simple");
 	return (
-		<>
-			<div
-				className={styles.appLayout}
-				style={
-					{
-						"--_panel-min-size": panelMinSize,
-						"--_panel-max-size": panelMaxSize,
-					} as React.CSSProperties
-				}
-			>
-				<header className={styles.header}>
-					<div className={styles.logo}>
-						<Icon href={placeholderIcon} size="large" />
-					</div>
-					<Text render={(props) => <h1 {...props} />} variant="body-md">
-						{title}
-					</Text>
-				</header>
-
-				<div className={styles.platformBar}>
-					<div className={styles.tools}>
-						<Icon href={placeholderIcon} size="large" />
-						<Icon href={placeholderIcon} size="large" />
-						<Icon href={placeholderIcon} size="large" />
-					</div>
-				</div>
-
-				<TreeFilteringContext
-					value={React.useMemo(
-						() => ({
-							filters,
-							filtered,
-							toggleFilter,
-							clearFilters,
-						}),
-						[filters, filtered, toggleFilter, clearFilters],
-					)}
-				>
-					<div
-						{...panelProps}
-						className={styles.leftPanel}
-						style={{ position: "relative", ...panelProps.style }}
+		<TreeFilteringContext.Provider
+			value={React.useMemo(
+				() => ({
+					filters,
+					filtered,
+					toggleFilter,
+					clearFilters,
+				}),
+				[filters, filtered, toggleFilter, clearFilters],
+			)}
+		>
+			<Layout
+				panelContent={
+					<Tabs.Root
+						setSelectedId={(tabId) => {
+							if (tabId !== "simple" && tabId !== "complex") return;
+							setSelectedId(tabId);
+						}}
+						selectedId={selectedId}
 					>
 						<div className={styles.panelHeader}>
 							{/* biome-ignore lint/a11y: hgroup needs an explicit role for better support */}
@@ -114,28 +87,86 @@ export default function Page() {
 								/>
 							</div>
 						</div>
-						<Subheader />
-						<SandboxTree />
+						<Subheader tree={selectedId} />
+						<Tabs.TabPanel
+							tabId="simple"
+							className={styles.tabPanel}
+							focusable={false}
+						>
+							<SandboxTree tree="simple" />
+						</Tabs.TabPanel>
+						<Tabs.TabPanel
+							tabId="complex"
+							className={styles.tabPanel}
+							focusable={false}
+						>
+							<SandboxTree tree="complex" />
+						</Tabs.TabPanel>
+					</Tabs.Root>
+				}
+			>
+				<header className={styles.header}>
+					<div className={styles.logo}>
+						<Icon href={placeholderIcon} size="large" />
 					</div>
-				</TreeFilteringContext>
-
-				<div
-					className={styles.splitter}
-					data-resizing={resizing ? "true" : undefined}
-				>
-					<input
-						type="range"
-						aria-label="Resize layers panel"
-						className={styles.slider}
-						{...sliderProps}
-					/>
+					<Text render={(props) => <h1 {...props} />} variant="body-md">
+						{title}
+					</Text>
+				</header>
+				<div className={styles.platformBar}>
+					<div className={styles.tools}>
+						<Icon href={placeholderIcon} size="large" />
+						<Icon href={placeholderIcon} size="large" />
+						<Icon href={placeholderIcon} size="large" />
+					</div>
 				</div>
-
 				<div className={styles.canvasWrapper}>
 					<div className={styles.canvas} />
 				</div>
+			</Layout>
+		</TreeFilteringContext.Provider>
+	);
+}
+
+function Layout(props: {
+	panelContent: React.ReactNode;
+	children: React.ReactNode;
+}) {
+	const { sliderProps, panelProps, panelMinSize, panelMaxSize, resizing } =
+		useSplitter<HTMLDivElement>({
+			minSize: { px: 256, pct: 20 },
+			maxSize: { pct: 30 },
+		});
+	return (
+		<div
+			className={styles.appLayout}
+			style={
+				{
+					"--_panel-min-size": panelMinSize,
+					"--_panel-max-size": panelMaxSize,
+				} as React.CSSProperties
+			}
+		>
+			<div
+				{...panelProps}
+				className={styles.leftPanel}
+				style={{ position: "relative", ...panelProps.style }}
+			>
+				{props.panelContent}
 			</div>
-		</>
+			<div
+				className={styles.splitter}
+				data-resizing={resizing ? "true" : undefined}
+			>
+				<input
+					type="range"
+					aria-label="Resize layers panel"
+					className={styles.slider}
+					{...sliderProps}
+				/>
+			</div>
+			{props.children}
+		</div>
 	);
 }
 
@@ -402,17 +433,12 @@ const SandboxTreeContext = React.createContext<{
 	toggleHidden: () => {},
 });
 
-function useTreeType() {
-	const [searchParams] = useSearchParams();
-	const tree = searchParams.get("tree"); // for handling ?tree=complex and ?tree=empty
-	if (tree === "complex") return "complex";
-	if (tree === "empty") return "empty";
-	return "ideal";
-}
+type TreeType = "simple" | "complex";
 
-function SandboxTree() {
+function SandboxTree({ tree }: { tree: TreeType }) {
+	const [searchParams] = useSearchParams();
+	const treeParam = searchParams.get("tree"); // for handling ?tree=empty
 	const context = React.useContext(TreeFilteringContext);
-	const tree = useTreeType();
 	const [selected, setSelected] = React.useState<string | undefined>();
 	const [hidden, setHidden] = React.useState<string[]>([]);
 	const toggleHidden = React.useCallback((id: string) => {
@@ -424,7 +450,7 @@ function SandboxTree() {
 		});
 	}, []);
 
-	if (tree === "empty") {
+	if (treeParam === "empty") {
 		return (
 			<EmptyState>
 				<Text>No layers</Text>
@@ -444,7 +470,7 @@ function SandboxTree() {
 				{tree === "complex" ? (
 					<ComplexTreeItems />
 				) : (
-					<TreeRenderer tree={idealTree} activeFilters={context.filters} />
+					<TreeRenderer tree={simpleTree} activeFilters={context.filters} />
 				)}
 			</Tree.Root>
 		</SandboxTreeContext.Provider>
@@ -462,7 +488,7 @@ interface TreeStore {
 	items?: TreeItem[];
 }
 
-const idealTree = {
+const simpleTree = {
 	filters: [
 		"Guides",
 		"Other",
@@ -599,22 +625,14 @@ function ComplexTreeItems() {
 				<TreeItem label="002_Substation" defaultCollapsed>
 					<TreeItem label="002_Substation_A" />
 				</TreeItem>
-				<TreeItem
-					label="005-BENROAD-00-XX-M3-D-00003.dgn"
-					actions
-					defaultCollapsed
-				>
+				<TreeItem label="005-BENROAD-00-XX-M3-D-00003.dgn" defaultCollapsed>
 					<TreeItem label="005-BENROAD-00-XX-M3-D-00003-A" />
 				</TreeItem>
-				<TreeItem
-					label="005-BENROAD-00-XX-M3-D-00005.dgn"
-					actions
-					defaultCollapsed
-				>
+				<TreeItem label="005-BENROAD-00-XX-M3-D-00005.dgn" defaultCollapsed>
 					<TreeItem label="005-BENROAD-00-XX-M3-D-00005-A" />
 				</TreeItem>
 				<TreeItem label="005-BENROAD-00-XX-M3-G-00002.dgn" defaultCollapsed>
-					<TreeItem label="005-BENROAD-00-XX-M3-G-00002-A" actions />
+					<TreeItem label="005-BENROAD-00-XX-M3-G-00002-A" />
 				</TreeItem>
 				<TreeItem label="005-BENROAD-00-XX-M3-G-00003.dgn" defaultCollapsed>
 					<TreeItem label="005-BENROAD-00-XX-M3-G-00003-A" />
@@ -625,13 +643,13 @@ function ComplexTreeItems() {
 					</TreeItem>
 					<TreeItem label="A-CLNG-TILE">
 						<TreeItem label="A-DOOR-2D-PLAN">
-							<TreeItem label="P00003 [2-KA62]" actions>
+							<TreeItem label="P00003 [2-KA62]">
 								<TreeItem label="Cell [2-KA63]">
 									<TreeItem label="Cell [2-KA64]">
 										<TreeItem label="Complex Chain [2-KA6A]" />
-										<TreeItem label="Complex Chain [2-KA6B]" actions />
-										<TreeItem label="Complex Chain [2-KA6C]" actions />
-										<TreeItem label="Complex Chain [2-KA6D]" actions />
+										<TreeItem label="Complex Chain [2-KA6B]" />
+										<TreeItem label="Complex Chain [2-KA6C]" />
+										<TreeItem label="Complex Chain [2-KA6D]" />
 										<TreeItem label="Complex Chain [2-KA6E]" />
 										<TreeItem label="Complex Chain [2-KA6F]" />
 										<TreeItem label="Complex Chain [2-KA6G]" />
@@ -661,7 +679,7 @@ function ComplexTreeItems() {
 					</TreeItem>
 				</TreeItem>
 			</TreeItem>
-			<TreeItem label="ITC_Main" actions />
+			<TreeItem label="ITC_Main" />
 		</>
 	);
 }
@@ -673,7 +691,6 @@ const SandboxParentItemContext = React.createContext<{
 
 type TreeItemProps = React.PropsWithChildren<{
 	label?: string;
-	actions?: boolean;
 	defaultCollapsed?: boolean;
 }>;
 
@@ -690,65 +707,50 @@ function TreeItem(props: TreeItemProps) {
 		return treeContext.hidden.includes(id);
 	}, [id, treeContext.hidden, parentContext.hidden]);
 	const selected = parentContext.selected || id === treeContext.selected;
-	const toggleSelected = React.useCallback(() => {
-		treeContext.setSelected((prev) => {
-			if (prev === id) return undefined;
-			return id;
-		});
-	}, [id, treeContext]);
-	const actionsVisible = props.actions || hidden;
+	const setSelected = React.useCallback(
+		(selected: boolean) => {
+			treeContext.setSelected(selected ? id : undefined);
+		},
+		[id, treeContext],
+	);
 	return (
 		<SandboxParentItemContext.Provider
 			value={React.useMemo(() => ({ selected, hidden }), [hidden, selected])}
 		>
 			<Tree.Item
-				content={
+				expanded={isParentNode ? expanded : undefined}
+				onExpandedChange={setExpanded}
+				selected={selected}
+				onSelectedChange={setSelected}
+				icon={<Icon href={placeholderIcon} style={{ display: "inline" }} />}
+				label={props.label}
+				actions={
 					<>
-						<Tree.Expander
-							onClick={() => {
-								setExpanded((prev) => !prev);
-							}}
+						<IconButton
+							className={styles.action}
+							icon={lockIcon}
+							label="Lock"
+							variant="ghost"
+							aria-hidden={hidden}
 						/>
-						<Icon href={placeholderIcon} style={{ display: "inline" }} />
-						<Tree.Content
-							onClick={() => {
-								toggleSelected();
-							}}
-						>
-							{props.label}
-						</Tree.Content>
-						{actionsVisible && (
-							<Tree.Actions>
-								<IconButton
-									className={styles.action}
-									icon={lockIcon}
-									label="Lock"
-									variant="ghost"
-									aria-hidden={!props.actions || hidden}
-								/>
-								{parentContext.hidden ? (
-									<span className={styles.actionIcon}>
-										<Icon href={dotIcon} />
-									</span>
-								) : (
-									<IconButton
-										className={styles.action}
-										icon={hidden ? hideIcon : showIcon}
-										label={hidden ? "Show" : "Hide"}
-										variant="ghost"
-										aria-hidden={!props.actions}
-										onClick={() => {
-											treeContext.toggleHidden(id);
-										}}
-									/>
-								)}
-								<TreeMoreActions hidden={!props.actions || hidden} />
-							</Tree.Actions>
+						{parentContext.hidden ? (
+							<span className={styles.actionIcon}>
+								<Icon href={dotIcon} />
+							</span>
+						) : (
+							<IconButton
+								className={styles.action}
+								icon={hidden ? hideIcon : showIcon}
+								label={hidden ? "Show" : "Hide"}
+								variant="ghost"
+								onClick={() => {
+									treeContext.toggleHidden(id);
+								}}
+							/>
 						)}
+						<TreeMoreActions hidden={hidden} />
 					</>
 				}
-				expanded={isParentNode ? expanded : undefined}
-				selected={selected}
 			>
 				{expanded ? props.children : undefined}
 			</Tree.Item>
@@ -782,17 +784,15 @@ function TreeMoreActions({ hidden }: { hidden?: boolean }) {
 	);
 }
 
-function Subheader() {
+function Subheader({ tree }: { tree: TreeType }) {
 	const { filters, filtered } = React.useContext(TreeFilteringContext);
 	const [isSearching, setIsSearching] = React.useState(false);
 	const searchInputRef = React.useRef<HTMLInputElement>(null);
-	const subheaderRef = React.useRef<HTMLHeadingElement>(null);
-	const tree = useTreeType();
 	const itemCount = React.useMemo(() => {
-		if (tree !== "ideal") return undefined;
+		if (tree !== "simple") return undefined;
 		if (filters.length === 0) return undefined;
 
-		const filteredItems = idealTree.items.filter((item) => {
+		const filteredItems = simpleTree.items.filter((item) => {
 			if (!item.type) return false;
 			return filters.includes(item.type);
 		});
@@ -805,10 +805,11 @@ function Subheader() {
 		}
 		return countItems(filteredItems);
 	}, [filters, tree]);
+	const tabsRef = React.useRef<HTMLHeadingElement>(null);
 
 	const actions = isSearching ? (
 		<>
-			<FiltersMenu filters={tree === "ideal" ? idealTree.filters : []} />
+			<FiltersMenu filters={tree === "simple" ? simpleTree.filters : []} />
 			<IconButton
 				className={styles.shiftIconRight}
 				icon={dismissIcon}
@@ -816,7 +817,7 @@ function Subheader() {
 				variant="ghost"
 				onClick={() => {
 					ReactDOM.flushSync(() => setIsSearching(false));
-					subheaderRef.current?.focus();
+					tabsRef.current?.focus();
 				}}
 			/>
 		</>
@@ -835,17 +836,6 @@ function Subheader() {
 
 	return (
 		<div className={styles.subheader}>
-			<Ariakit.Role.h3
-				className={styles.subheaderTitle}
-				tabIndex={-1}
-				ref={subheaderRef}
-				// When searching, we don't want to show the heading content visually, but we still want it
-				// in the DOM for screen readers. The heading structure of the page should remain the same.
-				// biome-ignore lint/a11y/useHeadingContent: This is fine. The heading content is set by children.
-				render={isSearching ? <VisuallyHidden render={<h3 />} /> : undefined}
-			>
-				Layers
-			</Ariakit.Role.h3>
 			<VisuallyHidden
 				aria-live={filtered ? "polite" : "off"}
 				aria-atomic={true}
@@ -854,6 +844,12 @@ function Subheader() {
 					? "Showing all tree items"
 					: `Showing ${itemCount} tree items`}
 			</VisuallyHidden>
+			{isSearching ? undefined : (
+				<Tabs.TabList className={styles.tabList} tone="accent" ref={tabsRef}>
+					<Tabs.Tab id="simple">Simple</Tabs.Tab>
+					<Tabs.Tab id="complex">Complex</Tabs.Tab>
+				</Tabs.TabList>
+			)}
 
 			{isSearching ? (
 				<TextBox.Root className={styles.searchInput}>

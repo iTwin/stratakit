@@ -4,7 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 import cx from "classnames";
 import * as Ariakit from "@ariakit/react";
-import { useFieldId } from "./Field.js";
+import { useFieldDescribedBy, useFieldId } from "./Field.js";
 import { forwardRef, type FocusableProps } from "./~utils.js";
 
 type InputBaseProps = Omit<FocusableProps<"input">, "defaultValue" | "value">;
@@ -30,6 +30,7 @@ interface RadioProps extends InputBaseProps, RadioOwnProps {}
  */
 export const Radio = forwardRef<"input", RadioProps>((props, forwardedRef) => {
 	const fieldId = useFieldId();
+	const describedBy = useFieldDescribedBy(props["aria-describedby"]);
 
 	return (
 		<Ariakit.Radio
@@ -37,6 +38,7 @@ export const Radio = forwardRef<"input", RadioProps>((props, forwardedRef) => {
 			id={fieldId}
 			{...props}
 			className={cx("🥝-checkbox", "🥝-radio", props.className)}
+			aria-describedby={describedBy}
 			ref={forwardedRef}
 		/>
 	);

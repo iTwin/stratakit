@@ -4,6 +4,15 @@
  *--------------------------------------------------------------------------------------------*/
 import { test, expect } from "#playwright";
 import AxeBuilder from "@axe-core/playwright";
+import type { Page } from "@playwright/test";
+
+const controlsToRole: Record<string, Parameters<Page["getByRole"]>[0]> = {
+	checkbox: "checkbox",
+	switch: "switch",
+	radio: "radio",
+	input: "textbox",
+	textarea: "textbox",
+};
 
 test.describe("default", () => {
 	test("wrapping input and label", async ({ page }) => {
@@ -43,6 +52,26 @@ test.describe("default", () => {
 		await page.goto("/tests/field?control=checkbox&asLabel");
 		await expect(page.locator(".🥝-label.🥝-field")).toBeVisible();
 	});
+
+	const description = "Supporting text";
+	for (const [control, role] of Object.entries(controlsToRole)) {
+		test(`${control} with description`, async ({ page }) => {
+			await page.goto(
+				`/tests/field?control=${control}&descriptions=${description}`,
+			);
+			await expect(page.getByRole(role)).toHaveAccessibleDescription(
+				description,
+			);
+		});
+	}
+
+	test("with multiple descriptions", async ({ page }) => {
+		const descriptions = ["First", "Second"];
+		await page.goto(`tests/field?descriptions=${descriptions.join(";")}`);
+		await expect(page.getByRole("textbox")).toHaveAccessibleDescription(
+			descriptions.join(" "),
+		);
+	});
 });
 
 test.describe("@visual", () => {
@@ -60,30 +89,12 @@ test.describe("@visual", () => {
 test.describe("@a11y", () => {
 	test("Axe Page Scan", async ({ page }) => {
 		const axe = new AxeBuilder({ page });
-		const components = ["input", "textarea", "radio", "checkbox", "switch"];
 
-		for (const component of components) {
-			await page.goto(`/tests/field?control=${component}`);
+		for (const [control, role] of Object.entries(controlsToRole)) {
+			await page.goto(`/tests/field?control=${control}`);
 
-			if (component === "input" || component === "textarea") {
-				const textbox = await page.getByRole("textbox");
-				await expect(textbox).toBeVisible();
-			}
-
-			if (component === "radio") {
-				const radio = await page.getByRole("radio");
-				await expect(radio).toBeVisible();
-			}
-
-			if (component === "checkbox") {
-				const checkbox = await page.getByRole("checkbox");
-				await expect(checkbox).toBeVisible();
-			}
-
-			if (component === "switch") {
-				const theSwitch = await page.getByRole("switch");
-				await expect(theSwitch).toBeVisible();
-			}
+			const element = await page.getByRole(role);
+			await expect(element).toBeVisible();
 
 			const accessibilityScan = await axe.analyze();
 			expect(accessibilityScan.violations).toEqual([]);

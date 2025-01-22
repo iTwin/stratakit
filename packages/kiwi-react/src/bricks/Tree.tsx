@@ -9,11 +9,30 @@ import * as ListItem from "./ListItem.js";
 import { IconButton } from "./IconButton.js";
 import { Icon } from "./Icon.js";
 import { forwardRef, type BaseProps } from "./~utils.js";
+import { VisuallyHidden } from "./VisuallyHidden.js";
 
 // ----------------------------------------------------------------------------
 
 interface TreeProps extends BaseProps {}
 
+/**
+ * A tree is a hierarchical list of items that can be expanded or collapsed, or optionally selected.
+ *
+ * `Tree.Root` is the root component for a tree. `Tree.Item`s can be nested inside a `Tree.Root` to create a hierarchical tree structure.
+ *
+ * Example:
+ * ```tsx
+ * <Tree.Root>
+ *   <Tree.Item label="Parent 1">
+ *     <Tree.Item label="Child 1.1" />
+ *     <Tree.Item label="Child 1.2" />
+ *   </Tree.Item>
+ *   <Tree.Item label="Parent 2">
+ *     <Tree.Item label="Child 2.1" />
+ *   </Tree.Item>
+ * </Tree.Root>
+ * ```
+ */
 const Tree = forwardRef<"div", TreeProps>((props, forwardedRef) => {
 	return (
 		<Ariakit.Role.div
@@ -30,19 +49,83 @@ DEV: Tree.displayName = "Tree.Root";
 // ----------------------------------------------------------------------------
 
 interface TreeItemProps extends Omit<BaseProps, "content"> {
-	content?: React.ReactNode;
+	/**
+	 * Specifies if the tree item is selected.
+	 *
+	 * If `undefined`, the tree item is not selectable.
+	 *
+	 * @default undefined
+	 */
 	selected?: boolean;
-	/** Specifies if the tree item is expanded. Used to determine if a tree item is a parent node. Defaults to `undefined`. */
+	/**
+	 * Callback fired when the tree item is selected.
+	 *
+	 * Should be used with the `selected` prop.
+	 */
+	onSelectedChange?: (selected: boolean) => void;
+	/**
+	 * Specifies if the tree item is expanded.
+	 *
+	 * Used to determine if a tree item is a parent node. If `undefined`, it is a leaf node (i.e. not expandable).
+	 *
+	 * @default undefined
+	 * */
 	expanded?: boolean;
+	/**
+	 * Callback fired when the tree item is expanded.
+	 *
+	 * Should be used with the `expanded` prop.
+	 */
+	onExpandedChange?: (expanded: boolean) => void;
+	/**
+	 * Icon to be displayed inside the tree item.
+	 *
+	 * Can be a URL of an SVG from the `kiwi-icons` package, or a JSX element.
+	 */
+	icon?: string | React.JSX.Element;
+	/** The label to display for the tree item. */
+	label?: React.ReactNode;
+	/** The actions available for the tree item. */
+	actions?: React.ReactNode;
 }
 
+/**
+ * A treeitem is a node in a tree structure that may be expanded or collapsed to reveal or hide its descendants.
+ *
+ * `Tree.Item`s can be nested as JSX elements inside a `Tree.Root` to create a hierarchical tree structure.
+ *
+ * Example:
+ * ```tsx
+ * <Tree.Root>
+ *   <Tree.Item label="Parent">
+ *     <Tree.Item label="Child 1" />
+ *     <Tree.Item label="Child 2" />
+ *   </Tree.Item>
+ * </Tree.Root>
+ * ```
+ *
+ * The `label` and `icon` props can be used to specify the treeitem's own content. `children` is only used for nested items.
+ *
+ * The `expanded` and `onExpandedChange` props can be used to control the expansion state of a treeitem.
+ *
+ * The `selected` and `onSelectedChange` props can be used to control the selection state of a treeitem.
+ */
 const TreeItem = forwardRef<"div", TreeItemProps>((props, forwardedRef) => {
-	const { selected, content, children, className, expanded, style, ...rest } =
-		props;
+	const {
+		selected,
+		children,
+		expanded,
+		icon,
+		label,
+		actions,
+		style,
+		onSelectedChange,
+		onExpandedChange,
+		...rest
+	} = props;
 
 	const parentContext = React.useContext(TreeItemContext);
 	const level = parentContext ? parentContext.level + 1 : 1;
-	const firstSelected = !!selected && !parentContext?.selected; // TODO: temporary, only works with single selection
 	return (
 		<TreeItemContext.Provider
 			value={React.useMemo(
@@ -50,17 +133,17 @@ const TreeItem = forwardRef<"div", TreeItemProps>((props, forwardedRef) => {
 					level,
 					expanded,
 					selected,
+					onSelectedChange,
 				}),
-				[level, expanded, selected],
+				[level, expanded, selected, onSelectedChange],
 			)}
 		>
-			<div role="listitem" aria-current={firstSelected ? true : undefined}>
+			<div role="listitem">
 				<ListItem.Root
 					{...rest}
 					data-kiwi-expanded={expanded}
 					data-kiwi-selected={selected}
-					data-kiwi-parent-selected={parentContext?.selected}
-					className={cx("🥝-tree-item", className)}
+					className={cx("🥝-tree-item", props.className)}
 					style={
 						{
 							...style,
@@ -70,7 +153,15 @@ const TreeItem = forwardRef<"div", TreeItemProps>((props, forwardedRef) => {
 					ref={forwardedRef}
 					role={undefined}
 				>
-					{content}
+					<TreeItemExpander
+						onClick={() => {
+							if (expanded === undefined) return;
+							onExpandedChange?.(!expanded);
+						}}
+					/>
+					{typeof icon === "string" ? <Icon href={icon} /> : icon}
+					<TreeItemContent label={label} />
+					<TreeItemActions>{actions}</TreeItemActions>
 				</ListItem.Root>
 				{children && <div role="list">{children}</div>}
 			</div>
@@ -81,34 +172,52 @@ DEV: TreeItem.displayName = "Tree.Item";
 
 // ----------------------------------------------------------------------------
 
-interface TreeItemContentProps extends BaseProps<"span"> {}
+interface TreeItemContentProps extends Omit<BaseProps<"span">, "children"> {
+	label?: React.ReactNode;
+}
 
 const TreeItemContent = forwardRef<"span", TreeItemContentProps>(
 	(props, forwardedRef) => {
-		const { children, ...rest } = props;
+		const { label, ...rest } = props;
+
+		const context = React.useContext(TreeItemContext);
 		return (
 			<ListItem.Content
 				{...rest}
 				className={cx("🥝-tree-item-content", props.className)}
 				ref={forwardedRef}
 			>
-				<button type="button">{children}</button>
+				<button
+					type="button"
+					onClick={() => {
+						if (!context?.onSelectedChange || context.selected === undefined)
+							return;
+						context.onSelectedChange(!context.selected);
+					}}
+				>
+					{label}
+					{context?.selected && <VisuallyHidden>Selected item</VisuallyHidden>}
+				</button>
 			</ListItem.Content>
 		);
 	},
 );
-DEV: TreeItemContent.displayName = "Tree.Content";
+DEV: TreeItemContent.displayName = "TreeItemContent";
 
 // ----------------------------------------------------------------------------
 
-interface TreeItemActionsProps extends BaseProps {}
+interface TreeItemActionsProps extends BaseProps {
+	visible?: boolean;
+}
 
 const TreeItemActions = forwardRef<"div", TreeItemActionsProps>(
 	(props, forwardedRef) => {
+		const { visible, ...rest } = props;
 		return (
 			<Ariakit.Toolbar
-				{...props}
+				{...rest}
 				className={cx("🥝-tree-item-actions", props.className)}
+				data-kiwi-visible={visible}
 				ref={forwardedRef}
 			>
 				{props.children}
@@ -116,17 +225,14 @@ const TreeItemActions = forwardRef<"div", TreeItemActionsProps>(
 		);
 	},
 );
-DEV: TreeItemActions.displayName = "Tree.Actions";
+DEV: TreeItemActions.displayName = "TreeItemActions";
 
 // ----------------------------------------------------------------------------
 
 type IconButtonProps = React.ComponentProps<typeof IconButton>;
 
 interface TreeItemExpanderProps
-	extends Omit<IconButtonProps, "variant" | "label" | "icon"> {
-	label?: IconButtonProps["label"];
-	icon?: IconButtonProps["icon"];
-}
+	extends Omit<IconButtonProps, "variant" | "label" | "icon"> {}
 
 const TreeItemExpander = forwardRef<"button", TreeItemExpanderProps>(
 	(props, forwardedRef) => {
@@ -146,7 +252,7 @@ const TreeItemExpander = forwardRef<"button", TreeItemExpanderProps>(
 		);
 	},
 );
-DEV: TreeItemExpander.displayName = "Tree.Expander";
+DEV: TreeItemExpander.displayName = "TreeItemExpander";
 
 // ----------------------------------------------------------------------------
 
@@ -183,16 +289,11 @@ const TreeItemContext = React.createContext<
 			level: number;
 			expanded?: boolean;
 			selected?: boolean;
+			onSelectedChange?: (selected: boolean) => void;
 	  }
 	| undefined
 >(undefined);
 
 // ----------------------------------------------------------------------------
 
-export {
-	Tree as Root,
-	TreeItem as Item,
-	TreeItemExpander as Expander,
-	TreeItemContent as Content,
-	TreeItemActions as Actions,
-};
+export { Tree as Root, TreeItem as Item };

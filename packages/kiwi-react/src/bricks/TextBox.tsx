@@ -5,7 +5,7 @@
 import * as React from "react";
 import * as Ariakit from "@ariakit/react";
 import cx from "classnames";
-import { useFieldId } from "./Field.js";
+import { useFieldDescribedBy, useFieldId } from "./Field.js";
 import { Icon } from "./Icon.js";
 import { Textarea } from "./Textarea.js";
 import { useMergedRefs } from "./~hooks.js";
@@ -55,6 +55,7 @@ interface TextBoxInputProps extends Omit<BaseInputProps, "children" | "type"> {
  */
 const TextBoxInput = forwardRef<"input", TextBoxInputProps>(
 	(props, forwardedRef) => {
+		const describedBy = useFieldDescribedBy(props["aria-describedby"]);
 		const fieldId = useFieldId();
 		const rootContext = React.useContext(TextBoxRootContext);
 		const setDisabled = rootContext?.setDisabled;
@@ -65,7 +66,13 @@ const TextBoxInput = forwardRef<"input", TextBoxInputProps>(
 			<Ariakit.Role.input
 				id={fieldId}
 				{...props}
+				aria-describedby={describedBy}
 				className={cx({ "🥝-text-box": !rootContext }, props.className)}
+				/**
+				 * Use an empty string as a placeholder to fix baseline alignment in Safari.
+				 * @see https://bugs.webkit.org/show_bug.cgi?id=142968
+				 */
+				placeholder={props.placeholder ?? " "}
 				render={
 					<Ariakit.Focusable
 						accessibleWhenDisabled

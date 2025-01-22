@@ -45,10 +45,6 @@
 
 .🥝-dropdown-menu-checkbox-item:is(.🥝-list-item) {
 	@layer states {
-		&:where([aria-checked="true"]) {
-			--🌀list-item-state: var(--🌀list-item-state--active);
-		}
-
 		&:where(:not([aria-checked="true"])) {
 			--🥝dropdown-menu-checkmark-visibility: hidden;
 		}

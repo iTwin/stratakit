@@ -6,7 +6,7 @@ import * as React from "react";
 import cx from "classnames";
 import * as Ariakit from "@ariakit/react";
 import { forwardRef, type BaseProps } from "./~utils.js";
-import { Button } from "./Button.js";
+import { IconButton } from "./IconButton.js";
 
 interface ChipProps extends BaseProps<"div"> {
 	/**
@@ -21,13 +21,6 @@ interface ChipProps extends BaseProps<"div"> {
 	 * Callback invoked when the close button is clicked.
 	 */
 	onDismiss?: () => void;
-
-	/**
-	 * Whether the Chip is dismissible, showing a close button.
-	 *
-	 * @default false
-	 */
-	dismissible?: boolean;
 }
 
 /**
@@ -41,13 +34,7 @@ interface ChipProps extends BaseProps<"div"> {
  * ```
  */
 export const Chip = forwardRef<"div", ChipProps>((props, forwardedRef) => {
-	const {
-		variant = "solid",
-		onDismiss,
-		dismissible = false,
-		children,
-		...rest
-	} = props;
+	const { variant = "solid", onDismiss, children, ...rest } = props;
 
 	const [visible, setVisible] = React.useState(true);
 
@@ -66,14 +53,13 @@ export const Chip = forwardRef<"div", ChipProps>((props, forwardedRef) => {
 			ref={forwardedRef}
 		>
 			{children}
-			{dismissible && (
-				<Button
+			{onDismiss && (
+				<IconButton
+					variant="ghost"
+					label="Toggle Feature"
+					icon={""}
 					onClick={handleClick}
-					className="🥝-chip-dismiss-button"
-					aria-label="Dismiss"
-				>
-					x
-				</Button>
+				/>
 			)}
 		</Ariakit.Role.div>
 	);

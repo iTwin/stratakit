@@ -34,7 +34,7 @@
 		"esbuild": "^0.24.2",
 		"lightningcss": "^1.28.2",
 		"typescript": "5",
-		"vite": "^6.0.5",
+		"vite": "^6.0.9",
 		"vite-tsconfig-paths": "^5.1.4"
 	}
 }

@@ -25,13 +25,8 @@
 	}
 }
 
-.🥝-chip-dismiss-button {
-	padding-block: 0rem;
-	padding-inline: 0rem;
-	margin: 0;
-	background: none;
-	border: none;
-	cursor: pointer;
-	outline: none; /* Removes the default focus outline */
-	box-shadow: none; /* Ensure no box-shadow is applied */
+.🥝-chip-dismiss-button:is(.🥝-icon-button) {
+	@layer base {
+		border-radius: inherit;
+	}
 }

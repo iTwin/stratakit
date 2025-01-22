@@ -33,44 +33,10 @@ export const meta: MetaFunction = () => {
 };
 
 export default function Page() {
-	const { sliderProps, panelProps, panelMinSize, panelMaxSize, resizing } =
-		useSplitter<HTMLDivElement>({
-			minSize: { px: 256, pct: 20 },
-			maxSize: { pct: 30 },
-		});
 	return (
-		<>
-			<div
-				className={styles.appLayout}
-				style={
-					{
-						"--_panel-min-size": panelMinSize,
-						"--_panel-max-size": panelMaxSize,
-					} as React.CSSProperties
-				}
-			>
-				<header className={styles.header}>
-					<div className={styles.logo}>
-						<Icon href={placeholderIcon} size="large" />
-					</div>
-					<Text render={(props) => <h1 {...props} />} variant="body-md">
-						{title}
-					</Text>
-				</header>
-
-				<div className={styles.platformBar}>
-					<div className={styles.tools}>
-						<Icon href={placeholderIcon} size="large" />
-						<Icon href={placeholderIcon} size="large" />
-						<Icon href={placeholderIcon} size="large" />
-					</div>
-				</div>
-
-				<div
-					{...panelProps}
-					className={styles.leftPanel}
-					style={{ position: "relative", ...panelProps.style }}
-				>
+		<Layout
+			panelContent={
+				<>
 					<div className={styles.panelHeader}>
 						{/* biome-ignore lint/a11y: hgroup needs an explicit role for better support */}
 						<hgroup role="group">
@@ -104,25 +70,70 @@ export default function Page() {
 							<SandboxTree tree="complex" />
 						</Tabs.TabPanel>
 					</Tabs.Root>
+				</>
+			}
+		>
+			<header className={styles.header}>
+				<div className={styles.logo}>
+					<Icon href={placeholderIcon} size="large" />
 				</div>
-
-				<div
-					className={styles.splitter}
-					data-resizing={resizing ? "true" : undefined}
-				>
-					<input
-						type="range"
-						aria-label="Resize layers panel"
-						className={styles.slider}
-						{...sliderProps}
-					/>
-				</div>
-
-				<div className={styles.canvasWrapper}>
-					<div className={styles.canvas} />
+				<Text render={(props) => <h1 {...props} />} variant="body-md">
+					{title}
+				</Text>
+			</header>
+			<div className={styles.platformBar}>
+				<div className={styles.tools}>
+					<Icon href={placeholderIcon} size="large" />
+					<Icon href={placeholderIcon} size="large" />
+					<Icon href={placeholderIcon} size="large" />
 				</div>
 			</div>
-		</>
+			<div className={styles.canvasWrapper}>
+				<div className={styles.canvas} />
+			</div>
+		</Layout>
+	);
+}
+
+function Layout(props: {
+	panelContent: React.ReactNode;
+	children: React.ReactNode;
+}) {
+	const { sliderProps, panelProps, panelMinSize, panelMaxSize, resizing } =
+		useSplitter<HTMLDivElement>({
+			minSize: { px: 256, pct: 20 },
+			maxSize: { pct: 30 },
+		});
+	return (
+		<div
+			className={styles.appLayout}
+			style={
+				{
+					"--_panel-min-size": panelMinSize,
+					"--_panel-max-size": panelMaxSize,
+				} as React.CSSProperties
+			}
+		>
+			<div
+				{...panelProps}
+				className={styles.leftPanel}
+				style={{ position: "relative", ...panelProps.style }}
+			>
+				{props.panelContent}
+			</div>
+			<div
+				className={styles.splitter}
+				data-resizing={resizing ? "true" : undefined}
+			>
+				<input
+					type="range"
+					aria-label="Resize layers panel"
+					className={styles.slider}
+					{...sliderProps}
+				/>
+			</div>
+			{props.children}
+		</div>
 	);
 }
 

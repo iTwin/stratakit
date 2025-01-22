@@ -34,43 +34,11 @@ export const meta: MetaFunction = () => {
 };
 
 export default function Page() {
-	const [filtered, setFiltered] = React.useState(false);
-	const [filters, setFilters] = React.useState<string[]>([]);
-	const toggleFilter = React.useCallback((filter: string) => {
-		setFilters((prev) => {
-			if (prev.includes(filter)) {
-				return prev.filter((f) => f !== filter);
-			}
-			return [...prev, filter];
-		});
-		setFiltered(true);
-	}, []);
-	const clearFilters = React.useCallback(() => {
-		setFilters([]);
-		setFiltered(true);
-	}, []);
-	const [selectedId, setSelectedId] = React.useState<TreeType>("simple");
 	return (
-		<TreeFilteringContext.Provider
-			value={React.useMemo(
-				() => ({
-					filters,
-					filtered,
-					toggleFilter,
-					clearFilters,
-				}),
-				[filters, filtered, toggleFilter, clearFilters],
-			)}
-		>
-			<Layout
-				panelContent={
-					<Tabs.Root
-						setSelectedId={(tabId) => {
-							if (tabId !== "simple" && tabId !== "complex") return;
-							setSelectedId(tabId);
-						}}
-						selectedId={selectedId}
-					>
+		<Layout
+			panelContent={
+				<TreeFilteringProvider>
+					<SandboxTabs>
 						<div className={styles.panelHeader}>
 							{/* biome-ignore lint/a11y: hgroup needs an explicit role for better support */}
 							<hgroup role="group">
@@ -87,7 +55,7 @@ export default function Page() {
 								/>
 							</div>
 						</div>
-						<Subheader tree={selectedId} />
+						<Subheader />
 						<Tabs.TabPanel
 							tabId="simple"
 							className={styles.tabPanel}
@@ -102,36 +70,37 @@ export default function Page() {
 						>
 							<SandboxTree tree="complex" />
 						</Tabs.TabPanel>
-					</Tabs.Root>
-				}
-			>
-				<header className={styles.header}>
-					<div className={styles.logo}>
-						<Icon href={placeholderIcon} size="large" />
-					</div>
-					<Text render={(props) => <h1 {...props} />} variant="body-md">
-						{title}
-					</Text>
-				</header>
-				<div className={styles.platformBar}>
-					<div className={styles.tools}>
-						<Icon href={placeholderIcon} size="large" />
-						<Icon href={placeholderIcon} size="large" />
-						<Icon href={placeholderIcon} size="large" />
-					</div>
+					</SandboxTabs>
+				</TreeFilteringProvider>
+			}
+		>
+			<header className={styles.header}>
+				<div className={styles.logo}>
+					<Icon href={placeholderIcon} size="large" />
 				</div>
-				<div className={styles.canvasWrapper}>
-					<div className={styles.canvas} />
+				<Text render={(props) => <h1 {...props} />} variant="body-md">
+					{title}
+				</Text>
+			</header>
+			<div className={styles.platformBar}>
+				<div className={styles.tools}>
+					<Icon href={placeholderIcon} size="large" />
+					<Icon href={placeholderIcon} size="large" />
+					<Icon href={placeholderIcon} size="large" />
 				</div>
-			</Layout>
-		</TreeFilteringContext.Provider>
+			</div>
+			<div className={styles.canvasWrapper}>
+				<div className={styles.canvas} />
+			</div>
+		</Layout>
 	);
 }
 
-function Layout(props: {
-	panelContent: React.ReactNode;
-	children: React.ReactNode;
-}) {
+function Layout(
+	props: React.PropsWithChildren<{
+		panelContent: React.ReactNode;
+	}>,
+) {
 	const { sliderProps, panelProps, panelMinSize, panelMaxSize, resizing } =
 		useSplitter<HTMLDivElement>({
 			minSize: { px: 256, pct: 20 },
@@ -174,7 +143,7 @@ function Layout(props: {
  * Wrapper for empty state content, displayed as a centered vertical flex box.
  * Accepts any arbitrary content passed as `children`.
  */
-function EmptyState({ children }: { children: React.ReactNode }) {
+function EmptyState({ children }: React.PropsWithChildren) {
 	return <div className={styles.emptyState}>{children}</div>;
 }
 
@@ -784,7 +753,8 @@ function TreeMoreActions({ hidden }: { hidden?: boolean }) {
 	);
 }
 
-function Subheader({ tree }: { tree: TreeType }) {
+function Subheader() {
+	const { selectedId: tree } = React.useContext(TabsContext);
 	const { filters, filtered } = React.useContext(TreeFilteringContext);
 	const [isSearching, setIsSearching] = React.useState(false);
 	const searchInputRef = React.useRef<HTMLInputElement>(null);
@@ -899,6 +869,67 @@ function FiltersMenu({
 	);
 }
 
+function TreeFilteringProvider(props: React.PropsWithChildren) {
+	const [filtered, setFiltered] = React.useState(false);
+	const [filters, setFilters] = React.useState<string[]>([]);
+	const toggleFilter = React.useCallback((filter: string) => {
+		setFilters((prev) => {
+			if (prev.includes(filter)) {
+				return prev.filter((f) => f !== filter);
+			}
+			return [...prev, filter];
+		});
+		setFiltered(true);
+	}, []);
+	const clearFilters = React.useCallback(() => {
+		setFilters([]);
+		setFiltered(true);
+	}, []);
+	return (
+		<TreeFilteringContext.Provider
+			value={React.useMemo(
+				() => ({
+					filters,
+					filtered,
+					toggleFilter,
+					clearFilters,
+				}),
+				[filters, filtered, toggleFilter, clearFilters],
+			)}
+		>
+			{props.children}
+		</TreeFilteringContext.Provider>
+	);
+}
+
+function SandboxTabs(props: React.PropsWithChildren) {
+	const [selectedId, setSelectedId] = React.useState<TreeType>("simple");
+	return (
+		<TabsContext.Provider
+			value={React.useMemo(
+				() => ({
+					selectedId,
+					setSelectedId: (tabId: string) => {
+						if (tabId !== "simple" && tabId !== "complex") return;
+						setSelectedId(tabId);
+					},
+				}),
+				[selectedId],
+			)}
+		>
+			<Tabs.Root
+				setSelectedId={(tabId) => {
+					if (tabId !== "simple" && tabId !== "complex") return;
+					setSelectedId(tabId);
+				}}
+				selectedId={selectedId}
+			>
+				{props.children}
+			</Tabs.Root>
+		</TabsContext.Provider>
+	);
+}
+
 const TreeFilteringContext = React.createContext<{
 	filters: string[];
 	filtered: boolean;
@@ -909,4 +940,12 @@ const TreeFilteringContext = React.createContext<{
 	filtered: false,
 	toggleFilter: () => {},
 	clearFilters: () => {},
+});
+
+const TabsContext = React.createContext<{
+	selectedId: TreeType;
+	setSelectedId: (id: string) => void;
+}>({
+	selectedId: "simple",
+	setSelectedId: () => {},
 });

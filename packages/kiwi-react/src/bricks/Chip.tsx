@@ -43,8 +43,8 @@ interface ChipProps extends BaseProps<"div"> {
 export const Chip = forwardRef<"div", ChipProps>((props, forwardedRef) => {
 	const {
 		variant = "solid",
-		onDismiss: onClose,
-		dismissible: dismiss = false,
+		onDismiss,
+		dismissible = false,
 		children,
 		...rest
 	} = props;
@@ -53,9 +53,9 @@ export const Chip = forwardRef<"div", ChipProps>((props, forwardedRef) => {
 
 	if (!visible) return null;
 
-	const handleClose = () => {
+	const handleClick = () => {
 		setVisible(false);
-		onClose?.(); // Invoke the optional onClose callback if provided
+		onDismiss?.(); // Invoke the optional onClose callback if provided
 	};
 
 	return (
@@ -66,9 +66,9 @@ export const Chip = forwardRef<"div", ChipProps>((props, forwardedRef) => {
 			ref={forwardedRef}
 		>
 			{children}
-			{dismiss && (
+			{dismissible && (
 				<Button
-					onClick={handleClose}
+					onClick={handleClick}
 					className="🥝-chip-dismiss-button"
 					aria-label="Dismiss"
 				>

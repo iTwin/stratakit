@@ -36,13 +36,8 @@ interface ChipProps extends BaseProps<"div"> {
 export const Chip = forwardRef<"div", ChipProps>((props, forwardedRef) => {
 	const { variant = "solid", onDismiss, children, ...rest } = props;
 
-	const [visible, setVisible] = React.useState(true);
-
-	if (!visible) return null;
-
 	const handleClick = () => {
-		setVisible(false);
-		onDismiss?.(); // Invoke the optional onClose callback if provided
+		onDismiss?.(); // Invoke the optional onDismiss callback if provided
 	};
 
 	return (

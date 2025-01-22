@@ -123,6 +123,7 @@
 
 		@media (forced-colors: active) {
 			border: 1px solid;
+			--🥝icon-color: CanvasText;
 		}
 	}
 
@@ -199,12 +200,23 @@
 
 		&:where([data-kiwi-variant="ghost"][aria-pressed="true"]) {
 			--🌀button-state: var(--🌀button-state--active);
+
+			@media (forced-colors: active) {
+				--🥝icon-color: SelectedItem;
+				border-color: SelectedItem;
+			}
 		}
 
 		&:where([disabled], :disabled, [aria-disabled="true"]) {
 			--🌀button-state: var(--🌀button-state--disabled);
 			color: var(--kiwi-color-text-neutral-disabled);
 			cursor: not-allowed;
+
+			@media (forced-colors: active) {
+				--🥝icon-color: GrayText;
+				border-color: GrayText;
+				color: GrayText;
+			}
 		}
 	}
 

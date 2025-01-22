@@ -20,7 +20,7 @@ interface ChipProps extends BaseProps<"div"> {
 	/**
 	 * Callback invoked when the close button is clicked.
 	 */
-	onClose?: () => void;
+	onDismiss?: () => void;
 
 	/**
 	 * Whether the Chip is dismissible, showing a close button.
@@ -43,7 +43,7 @@ interface ChipProps extends BaseProps<"div"> {
 export const Chip = forwardRef<"div", ChipProps>((props, forwardedRef) => {
 	const {
 		variant = "solid",
-		onClose,
+		onDismiss: onClose,
 		dismissible: dismiss = false,
 		children,
 		...rest

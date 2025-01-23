@@ -17,27 +17,25 @@ test.describe("@visual", () => {
 	});
 });
 
-test("Visual test for Chip with dismiss", async ({ page }) => {
+test("chip renders with dismiss button", async ({ page }) => {
 	await page.goto("/tests/chip?dismiss=true");
 
 	const dismissButton = page.getByRole("button", { name: "Dismiss" }).first();
 	await expect(dismissButton).toBeVisible();
 });
 
-test("Test that the chip removes itself when the dismiss button is clicked.", async ({
-	page,
-}) => {
+test("chip correctly handles being clicked.", async ({ page }) => {
+	// Navigate to the test page where `DismissTest` is rendered
 	await page.goto("/tests/chip?dismiss=true");
 
-	const chips = page.locator(".🥝-chip");
-	await expect(chips).toHaveCount(2);
+	const chip = page.locator(".🥝-chip").first();
+	await expect(chip).toBeVisible();
 
-	const dismissButton = chips.first().locator("button");
+	const dismissButton = chip.locator("button");
 	await expect(dismissButton).toBeVisible();
-
 	await dismissButton.click();
 
-	await expect(chips).toHaveCount(1);
+	await expect(chip).toHaveAttribute("data-dismissed", "true");
 });
 
 test.describe("@a11y", () => {

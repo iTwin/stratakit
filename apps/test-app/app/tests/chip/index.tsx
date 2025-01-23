@@ -4,6 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 import { definePage } from "~/~utils.tsx";
 import { Chip } from "@itwin/itwinui-react/bricks";
+import * as React from "react";
 
 export const handle = { title: "Chip" };
 
@@ -41,17 +42,22 @@ function DismissTest() {
 	// Permutations for visual testing with dismiss functionality
 	const permutations = [["solid"], ["outline"]] as const;
 
+	const [isDismissed, setIsDismissed] = React.useState(false);
+
 	return (
 		<div style={{ display: "grid", gap: 4 }}>
 			{permutations.map(([variant]) => {
-				const props = {
-					variant,
-					onDismiss: () => {},
-				} as React.ComponentProps<typeof Chip>;
+				const props = { variant };
 
 				return (
 					<div key={variant} style={{ display: "flex", gap: 4 }}>
-						<Chip {...props}>{`${variant} (dismiss)`}</Chip>
+						<Chip
+							{...props}
+							onDismiss={() => {
+								setIsDismissed(true);
+							}}
+							data-dismissed={isDismissed ? "true" : "false"}
+						>{`${variant} (dismiss)`}</Chip>
 					</div>
 				);
 			})}

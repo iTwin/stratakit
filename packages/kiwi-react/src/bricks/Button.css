@@ -122,8 +122,10 @@
 			var(--🌀button-state--disabled, var(--kiwi-color-icon-neutral-disabled));
 
 		@media (forced-colors: active) {
-			border: 1px solid;
-			--🥝icon-color: CanvasText;
+			background-color: ButtonFace;
+			border: 1px solid ButtonBorder;
+			color: ButtonText;
+			--🥝icon-color: ButtonText;
 		}
 	}
 
@@ -163,6 +165,10 @@
 					var(--🌀button-state--hover, var(--kiwi-color-icon-strong-hover))
 					var(--🌀button-state--pressed, var(--kiwi-color-icon-neutral-hover))
 					var(--🌀button-state--disabled, var(--kiwi-color-icon-neutral-disabled));
+
+				@media (forced-colors: active) {
+					--🥝icon-color: ButtonText;
+				}
 			}
 		}
 
@@ -202,8 +208,9 @@
 			--🌀button-state: var(--🌀button-state--active);
 
 			@media (forced-colors: active) {
-				--🥝icon-color: SelectedItem;
-				border-color: SelectedItem;
+				background-color: SelectedItem;
+				color: SelectedItemText;
+				--🥝icon-color: SelectedItemText;
 			}
 		}
 
@@ -213,9 +220,9 @@
 			cursor: not-allowed;
 
 			@media (forced-colors: active) {
-				--🥝icon-color: GrayText;
 				border-color: GrayText;
 				color: GrayText;
+				--🥝icon-color: GrayText;
 			}
 		}
 	}

@@ -51,7 +51,7 @@ export const Chip = forwardRef<"div", ChipProps>((props, forwardedRef) => {
 			{onDismiss && (
 				<IconButton
 					variant="ghost"
-					label=""
+					label={`Dismiss ${children}`}
 					icon={<Dismiss />}
 					onClick={handleClick}
 				/>

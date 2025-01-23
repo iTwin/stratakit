@@ -58,8 +58,13 @@ const SelectRoot = forwardRef<"div", BaseProps>((props, forwardedRef) => {
 
 // ----------------------------------------------------------------------------
 
-interface HtmlSelectProps
-	extends Omit<FocusableProps<"select">, "multiple" | "size"> {}
+type HtmlSelectBaseProps = Omit<FocusableProps<"select">, "multiple" | "size">;
+
+type HtmlSelectOwnProps = {
+	variant?: "solid" | "outline" | "ghost";
+};
+
+interface HtmlSelectProps extends HtmlSelectBaseProps, HtmlSelectOwnProps {}
 
 /**
  * The actual select element to be used inside `Select.Root`. This is a wrapper around the
@@ -100,7 +105,7 @@ const HtmlSelect = forwardRef<"select", HtmlSelectProps>(
 					className={cx("🥝-button", "🥝-select", props.className)}
 					aria-describedby={describedBy}
 					data-kiwi-tone="neutral"
-					data-kiwi-variant="solid"
+					data-kiwi-variant={props.variant || "solid"}
 					ref={forwardedRef}
 				/>
 				<DisclosureArrow className="🥝-select-arrow" />

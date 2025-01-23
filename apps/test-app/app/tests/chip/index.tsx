@@ -44,9 +44,10 @@ function DismissTest() {
 	return (
 		<div style={{ display: "grid", gap: 4 }}>
 			{permutations.map(([variant]) => {
-				const props = { variant, dismiss: true } as React.ComponentProps<
-					typeof Chip
-				>;
+				const props = {
+					variant,
+					onDismiss: () => {},
+				} as React.ComponentProps<typeof Chip>;
 
 				return (
 					<div key={variant} style={{ display: "flex", gap: 4 }}>

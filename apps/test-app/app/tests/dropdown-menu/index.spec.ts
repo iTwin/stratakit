@@ -168,6 +168,15 @@ test.describe("DropdownMenu.CheckboxItem", () => {
 		await expect(item3).toHaveAttribute("aria-checked", "false");
 	});
 
+	test("@visual", async ({ page }) => {
+		await page.goto("/tests/dropdown-menu?checkbox&defaultChecked");
+
+		const button = page.getByRole("button", { name: "Settings" });
+		await button.click();
+
+		await expect(page.locator("body")).toHaveScreenshot();
+	});
+
 	test.describe("@a11y", () => {
 		test("Axe Page Scan", async ({ page }) => {
 			await page.goto("/tests/dropdown-menu?checkbox&defaultChecked");

@@ -104,7 +104,6 @@ interface DismissProps extends Omit<BaseProps<"svg">, "children"> {}
 
 export const Dismiss = forwardRef<"svg", DismissProps>(
 	(props, forwardedRef) => {
-		const { ...rest } = props;
 
 		return (
 			<Ariakit.Role.svg

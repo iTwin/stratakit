@@ -47,10 +47,12 @@ export const Chip = forwardRef<"div", ChipProps>((props, forwardedRef) => {
 			className={cx("🥝-chip", props.className)}
 			ref={forwardedRef}
 		>
-			{children}
+			<span id="1">{children}</span>
 			{onDismiss && (
 				<IconButton
+					id="2"
 					variant="ghost"
+					aria-labelledby="2 1"
 					label={`Dismiss ${children}`}
 					icon={<Dismiss />}
 					onClick={handleClick}

@@ -42,6 +42,12 @@ test.describe("@visual", () => {
 		await page.getByRole("button").focus();
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
+
+	test("forced-colors", async ({ page }) => {
+		await page.goto("/tests/icon-button?visual=true");
+		await page.emulateMedia({ forcedColors: "active" });
+		await expect(page.locator("body")).toHaveScreenshot();
+	});
 });
 
 test.describe("@a11y", () => {

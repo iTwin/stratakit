@@ -3,6 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 import cx from "classnames";
+import { useId } from "react";
 import * as Ariakit from "@ariakit/react";
 import { forwardRef, type BaseProps } from "./~utils.js";
 import { IconButton } from "./IconButton.js";
@@ -36,6 +37,10 @@ interface ChipProps extends BaseProps<"div"> {
 export const Chip = forwardRef<"div", ChipProps>((props, forwardedRef) => {
 	const { variant = "solid", onDismiss, children, ...rest } = props;
 
+	const baseId = useId();
+	const id1 = `${baseId}-label`;
+	const id2 = `${baseId}-dismiss`;
+
 	const handleClick = () => {
 		onDismiss?.(); // Invoke the optional onDismiss callback if provided
 	};
@@ -47,10 +52,10 @@ export const Chip = forwardRef<"div", ChipProps>((props, forwardedRef) => {
 			className={cx("🥝-chip", props.className)}
 			ref={forwardedRef}
 		>
-			<span id="1">{children}</span>
+			<span id={id1}>{children}</span>
 			{onDismiss && (
 				<IconButton
-					id="2"
+					id={id2}
 					variant="ghost"
 					aria-labelledby="2 1"
 					label={`Dismiss ${children}`}

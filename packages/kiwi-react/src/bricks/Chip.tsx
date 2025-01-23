@@ -57,7 +57,7 @@ export const Chip = forwardRef<"div", ChipProps>((props, forwardedRef) => {
 				<IconButton
 					id={id2}
 					variant="ghost"
-					aria-labelledby="2 1"
+					aria-labelledby={`${id2} ${id1}`}
 					label={`Dismiss ${children}`}
 					icon={<Dismiss />}
 					onClick={handleClick}

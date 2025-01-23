@@ -6,6 +6,7 @@ import cx from "classnames";
 import * as Ariakit from "@ariakit/react";
 import { forwardRef, type BaseProps } from "./~utils.js";
 import { IconButton } from "./IconButton.js";
+import { Dismiss } from "./Icon.js";
 
 interface ChipProps extends BaseProps<"div"> {
 	/**
@@ -50,8 +51,8 @@ export const Chip = forwardRef<"div", ChipProps>((props, forwardedRef) => {
 			{onDismiss && (
 				<IconButton
 					variant="ghost"
-					label="Toggle Feature"
-					icon={""}
+					label=""
+					icon={<Dismiss />}
 					onClick={handleClick}
 				/>
 			)}

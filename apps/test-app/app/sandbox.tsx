@@ -852,6 +852,7 @@ function FiltersMenu({
 						label="Filter"
 						variant="ghost"
 						disabled={filters.length === 0}
+						isActive={context.filters.length > 0}
 					/>
 				}
 			/>

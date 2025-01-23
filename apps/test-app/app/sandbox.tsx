@@ -2,14 +2,18 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
+import * as Ariakit from "@ariakit/react";
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import styles from "./sandbox.module.css";
 import {
 	Button,
+	Checkbox,
 	DropdownMenu,
+	Field,
 	Icon,
 	IconButton,
+	Label,
 	Tabs,
 	Text,
 	TextBox,
@@ -840,32 +844,55 @@ function FiltersMenu({
 }) {
 	const context = React.useContext(TreeFilteringContext);
 	return (
-		<DropdownMenu.Root>
-			<DropdownMenu.Button
-				render={<IconButton icon={filterIcon} label="Filter" variant="ghost" />}
+		<Ariakit.PopoverProvider placement="top-start">
+			<Ariakit.PopoverDisclosure
+				render={
+					<IconButton
+						icon={filterIcon}
+						label="Filter"
+						variant="ghost"
+						disabled={filters.length === 0}
+					/>
+				}
 			/>
-			<DropdownMenu.Content style={{ minInlineSize: 164 }}>
-				<DropdownMenu.Item
-					onClick={() => {
-						context.clearFilters();
-					}}
-				>
-					Show all
-				</DropdownMenu.Item>
-				{filters.map((filter) => {
-					return (
-						<DropdownMenu.Item
-							key={filter}
+			<Ariakit.Popover className={styles.popover} portal>
+				<div className={styles.filterHeader}>
+					<Text variant="body-sm" className={styles.filter}>
+						Filter
+					</Text>
+					{/* TODO: render as anchor */}
+					{context.filters.length > 0 && (
+						<Button
+							variant="ghost"
 							onClick={() => {
-								context.toggleFilter(filter);
+								context.clearFilters();
 							}}
 						>
-							{filter}
-						</DropdownMenu.Item>
-					);
-				})}
-			</DropdownMenu.Content>
-		</DropdownMenu.Root>
+							Reset
+						</Button>
+					)}
+				</div>
+				<div className={styles.filters}>
+					{filters.map((filter) => {
+						const checked = context.filters.includes(filter);
+						return (
+							<Field key={filter}>
+								<Checkbox
+									onChange={() => {
+										context.toggleFilter(filter);
+									}}
+									checked={checked}
+								/>
+								<Label className={styles.filterLabel}>
+									<Icon href={placeholderIcon} />
+									{filter}
+								</Label>
+							</Field>
+						);
+					})}
+				</div>
+			</Ariakit.Popover>
+		</Ariakit.PopoverProvider>
 	);
 }
 

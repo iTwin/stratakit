@@ -102,13 +102,6 @@ DEV: DisclosureArrow.displayName = "DisclosureArrow";
 
 interface DismissProps extends Omit<BaseProps<"svg">, "children"> {}
 
-/**
- * Dismiss - a simple SVG component with no configurable props.
- *
- * ```tsx
- * <Dismiss />
- * ```
- */
 export const Dismiss = forwardRef<"svg", DismissProps>(
 	(props, forwardedRef) => {
 		const { ...rest } = props;

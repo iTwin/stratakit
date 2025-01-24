@@ -194,7 +194,7 @@ const TableCell = forwardRef<"span", TableCellProps>((props, forwardedRef) => {
 			{...props}
 			className={cx("🥝-table-cell", props.className)}
 			ref={forwardedRef}
-			data-kiwi-variant={isHeaderCell ? "sortable" : undefined}
+			data-kiwi-variant={isHeaderCell ? "header" : undefined}
 		>
 			{props.children}
 		</Ariakit.Role.span>

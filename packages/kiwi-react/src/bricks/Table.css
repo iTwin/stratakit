@@ -118,7 +118,7 @@
 	}
 
 	@layer modifiers {
-		&:where([data-kiwi-variant="sortable"]) {
+		&:where([data-kiwi-variant="header"]) {
 			@media (any-hover: hover) {
 				&:where(:hover) {
 					background-color: var(--🥝table-bg--hover);

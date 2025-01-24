@@ -33,6 +33,8 @@ await esbuild.build({
 	...(!isDev && { dropLabels: ["DEV"] }),
 });
 
+console.log("Building with NODE_ENV:", process.env.NODE_ENV);
+
 // Run esbuild again, only to inline bundled CSS inside `.css.ts` files
 await esbuild.build({
 	entryPoints: await fg("src/**/*.css.ts", { onlyFiles: true }),

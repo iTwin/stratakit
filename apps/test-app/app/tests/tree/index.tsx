@@ -56,22 +56,8 @@ function TreeItem({
 			label={label}
 			actions={
 				<>
-					<IconButton
-						icon={unlockIcon}
-						label="Unlock"
-						variant="ghost"
-						style={{
-							position: "relative",
-						}}
-					/>
-					<IconButton
-						icon={showIcon}
-						label="Show"
-						variant="ghost"
-						style={{
-							position: "relative",
-						}}
-					/>
+					<IconButton icon={unlockIcon} label="Unlock" variant="ghost" />
+					<IconButton icon={showIcon} label="Show" variant="ghost" />
 				</>
 			}
 		>

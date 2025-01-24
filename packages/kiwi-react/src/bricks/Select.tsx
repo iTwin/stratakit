@@ -89,15 +89,11 @@ interface HtmlSelectProps extends HtmlSelectBaseProps {
  */
 const HtmlSelect = forwardRef<"select", HtmlSelectProps>(
 	(props, forwardedRef) => {
-		const {
-			variant = "solid",
-			"aria-describedby": ariaDescribedBy,
-			...rest
-		} = props;
+		const { variant = "solid", ...rest } = props;
 
 		const setIsHtmlSelect = React.useContext(HtmlSelectContext);
 		const fieldId = useFieldId();
-		const describedBy = useFieldDescribedBy(ariaDescribedBy);
+		const describedBy = useFieldDescribedBy(props["aria-describedby"]);
 
 		React.useEffect(
 			function updateContext() {

@@ -28,38 +28,18 @@ export default definePage(
 function VisualTest() {
 	return (
 		<div style={{ display: "grid", gap: 4 }}>
-			<Field>
-				<Label>Fruit</Label>
-				<Select.Root>
-					<Select.HtmlSelect variant="solid">
-						<option value="apple">Apple</option>
-						<option value="orange">Orange</option>
-						<option value="kiwi">Kiwi</option>
-					</Select.HtmlSelect>
-				</Select.Root>
-			</Field>
-
-			<Field>
-				<Label>Fruit</Label>
-				<Select.Root>
-					<Select.HtmlSelect variant="outline">
-						<option value="apple">Apple</option>
-						<option value="orange">Orange</option>
-						<option value="kiwi">Kiwi</option>
-					</Select.HtmlSelect>
-				</Select.Root>
-			</Field>
-
-			<Field>
-				<Label>Fruit</Label>
-				<Select.Root>
-					<Select.HtmlSelect variant="ghost">
-						<option value="apple">Apple</option>
-						<option value="orange">Orange</option>
-						<option value="kiwi">Kiwi</option>
-					</Select.HtmlSelect>
-				</Select.Root>
-			</Field>
+			{(["solid", "outline", "ghost"] as const).map((variant) => (
+				<Field key={variant}>
+					<Label>Fruit</Label>
+					<Select.Root>
+						<Select.HtmlSelect variant={variant}>
+							<option value="apple">Apple</option>
+							<option value="orange">Orange</option>
+							<option value="kiwi">Kiwi</option>
+						</Select.HtmlSelect>
+					</Select.Root>
+				</Field>
+			))}
 		</div>
 	);
 }

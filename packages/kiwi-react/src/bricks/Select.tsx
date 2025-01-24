@@ -60,11 +60,14 @@ const SelectRoot = forwardRef<"div", BaseProps>((props, forwardedRef) => {
 
 type HtmlSelectBaseProps = Omit<FocusableProps<"select">, "multiple" | "size">;
 
-type HtmlSelectOwnProps = {
+interface HtmlSelectProps extends HtmlSelectBaseProps {
+	/**
+	 * The variant of the `HtmlSelect`, i.e. solid, outline, or ghost.
+	 *
+	 * @default "solid"
+	 */
 	variant?: "solid" | "outline" | "ghost";
-};
-
-interface HtmlSelectProps extends HtmlSelectBaseProps, HtmlSelectOwnProps {}
+}
 
 /**
  * The actual select element to be used inside `Select.Root`. This is a wrapper around the
@@ -86,9 +89,15 @@ interface HtmlSelectProps extends HtmlSelectBaseProps, HtmlSelectOwnProps {}
  */
 const HtmlSelect = forwardRef<"select", HtmlSelectProps>(
 	(props, forwardedRef) => {
+		const {
+			variant = "solid",
+			"aria-describedby": ariaDescribedBy,
+			...rest
+		} = props;
+
 		const setIsHtmlSelect = React.useContext(HtmlSelectContext);
 		const fieldId = useFieldId();
-		const describedBy = useFieldDescribedBy(props["aria-describedby"]);
+		const describedBy = useFieldDescribedBy(ariaDescribedBy);
 
 		React.useEffect(
 			function updateContext() {
@@ -101,11 +110,11 @@ const HtmlSelect = forwardRef<"select", HtmlSelectProps>(
 			<>
 				<Ariakit.Role.select
 					id={fieldId}
-					{...props}
+					{...rest}
 					className={cx("🥝-button", "🥝-select", props.className)}
 					aria-describedby={describedBy}
 					data-kiwi-tone="neutral"
-					data-kiwi-variant={props.variant || "solid"}
+					data-kiwi-variant={variant}
 					ref={forwardedRef}
 				/>
 				<DisclosureArrow className="🥝-select-arrow" />

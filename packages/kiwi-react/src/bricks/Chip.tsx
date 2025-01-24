@@ -19,7 +19,7 @@ interface ChipProps extends BaseProps<"div"> {
 	variant?: "solid" | "outline";
 
 	/**
-	 * Callback invoked when the close button is clicked.
+	 * Callback invoked when the dismiss ("❌") button is clicked.
 	 */
 	onDismiss?: () => void;
 }

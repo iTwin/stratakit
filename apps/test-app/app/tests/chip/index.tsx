@@ -57,7 +57,9 @@ function DismissTest() {
 								setIsDismissed(true);
 							}}
 							data-dismissed={isDismissed ? "true" : "false"}
-						>{`${variant} (dismiss)`}</Chip>
+						>
+							{variant}
+						</Chip>
 					</div>
 				);
 			})}

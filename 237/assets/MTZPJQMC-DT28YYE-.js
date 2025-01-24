@@ -1,0 +1,1 @@
+import{g as r,k as e}from"./VGCJ63VH-BrqDw1CG.js";import{D as t}from"./~utils-BuKH_XhK.js";var o=t([e],[r]),i=o.useProviderContext,P=o.ContextProvider,d=o.ScopedContextProvider;export{P,d as a,i as u};

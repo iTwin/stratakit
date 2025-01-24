@@ -28,5 +28,6 @@
 .🥝-chip-dismiss-button:is(.🥝-icon-button) {
 	@layer base {
 		border-radius: inherit;
+		margin: -5;
 	}
 }

@@ -38,8 +38,8 @@ export const Chip = forwardRef<"div", ChipProps>((props, forwardedRef) => {
 	const { variant = "solid", onDismiss, children, ...rest } = props;
 
 	const baseId = useId();
-	const id1 = `${baseId}-label`;
-	const id2 = `${baseId}-dismiss`;
+	const labelId = `${baseId}-label`;
+	const dismissIconId = `${baseId}-dismiss`;
 
 	const handleClick = () => {
 		onDismiss?.(); // Invoke the optional onDismiss callback if provided
@@ -52,12 +52,12 @@ export const Chip = forwardRef<"div", ChipProps>((props, forwardedRef) => {
 			className={cx("🥝-chip", props.className)}
 			ref={forwardedRef}
 		>
-			<span id={id1}>{children}</span>
+			<span id={labelId}>{children}</span>
 			{onDismiss && (
 				<IconButton
-					id={id2}
+					id={dismissIconId}
 					variant="ghost"
-					aria-labelledby={`${id2} ${id1}`}
+					aria-labelledby={`${dismissIconId} ${labelId}`}
 					label={`Dismiss ${children}`}
 					icon={<Dismiss />}
 					onClick={handleClick}

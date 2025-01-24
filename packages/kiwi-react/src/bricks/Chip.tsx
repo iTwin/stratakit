@@ -3,7 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 import cx from "classnames";
-import { useId } from "react";
+import * as React from "react";
 import * as Ariakit from "@ariakit/react";
 import { forwardRef, type BaseProps } from "./~utils.js";
 import { IconButton } from "./IconButton.js";
@@ -37,7 +37,7 @@ interface ChipProps extends BaseProps<"div"> {
 export const Chip = forwardRef<"div", ChipProps>((props, forwardedRef) => {
 	const { variant = "solid", onDismiss, children, ...rest } = props;
 
-	const baseId = useId();
+	const baseId = React.useId();
 	const labelId = `${baseId}-label`;
 	const dismissIconId = `${baseId}-dismiss`;
 

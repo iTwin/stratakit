@@ -41,10 +41,6 @@ export const Chip = forwardRef<"div", ChipProps>((props, forwardedRef) => {
 	const labelId = `${baseId}-label`;
 	const dismissIconId = `${baseId}-dismiss`;
 
-	const handleClick = () => {
-		onDismiss?.(); // Invoke the optional onDismiss callback if provided
-	};
-
 	return (
 		<Ariakit.Role.div
 			data-kiwi-variant={variant}
@@ -60,7 +56,7 @@ export const Chip = forwardRef<"div", ChipProps>((props, forwardedRef) => {
 					aria-labelledby={`${dismissIconId} ${labelId}`}
 					label={`Dismiss ${children}`}
 					icon={<Dismiss />}
-					onClick={handleClick}
+					onClick={onDismiss}
 				/>
 			)}
 		</Ariakit.Role.div>

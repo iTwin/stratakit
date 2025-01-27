@@ -7,7 +7,7 @@
 		display: inline-flex;
 		align-items: center;
 
-		--🥝chip-padding-inline: 0.25rem;
+		--🥝chip-padding-inline: 0.5rem;
 		padding-inline: var(--🥝chip-padding-inline);
 
 		min-block-size: 24px;
@@ -32,6 +32,6 @@
 .🥝-chip-dismiss-button:is(.🥝-icon-button) {
 	@layer base {
 		border-radius: inherit;
-		margin-inline: calc(-1 * var(--🥝chip-padding-inline));
+		margin-inline-end: calc(-1 * var(--🥝chip-padding-inline));
 	}
 }

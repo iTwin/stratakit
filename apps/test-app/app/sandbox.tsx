@@ -968,33 +968,36 @@ function TreeFilteringProvider(props: React.PropsWithChildren) {
 		filters,
 		search,
 	});
+	const deferredTree = React.useDeferredValue(filteredTree);
 
 	return (
-		<TreeFilteringContext.Provider
-			value={React.useMemo(
-				() => ({
-					filters,
-					filtered,
-					toggleFilter,
-					clearFilters,
-					search,
-					setSearch,
-					itemCount,
-					tree: filteredTree,
-				}),
-				[
-					filters,
-					filtered,
-					toggleFilter,
-					clearFilters,
-					search,
-					itemCount,
-					filteredTree,
-				],
-			)}
-		>
-			{props.children}
-		</TreeFilteringContext.Provider>
+		<React.Suspense fallback="Loading...">
+			<TreeFilteringContext.Provider
+				value={React.useMemo(
+					() => ({
+						filters,
+						filtered,
+						toggleFilter,
+						clearFilters,
+						search,
+						setSearch,
+						itemCount,
+						tree: deferredTree,
+					}),
+					[
+						filters,
+						filtered,
+						toggleFilter,
+						clearFilters,
+						search,
+						itemCount,
+						deferredTree,
+					],
+				)}
+			>
+				{props.children}
+			</TreeFilteringContext.Provider>
+		</React.Suspense>
 	);
 }
 

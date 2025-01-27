@@ -118,6 +118,7 @@
 		}
 
 		&:where(:indeterminate, [aria-checked="mixed"]) {
+			--🌀checkbox-visual-state: var(--🌀checkbox-visual-state--checked);
 			--🌀checkbox-aria-state: var(--🌀checkbox-aria-state--indeterminate);
 		}
 

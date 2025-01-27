@@ -94,6 +94,7 @@
 			content: "";
 			inset: 0;
 			background-color: var(--🥝list-item-background-color);
+			z-index: -1;
 		}
 	}
 

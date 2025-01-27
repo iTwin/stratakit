@@ -8,7 +8,7 @@ import * as Ariakit from "@ariakit/react";
 import * as ListItem from "./ListItem.js";
 import { Button } from "./Button.js";
 import { Kbd } from "./Kbd.js";
-import { DisclosureArrow } from "./Icon.js";
+import { Checkmark, DisclosureArrow } from "./Icon.js";
 import { forwardRef, supportsPopover, type FocusableProps } from "./~utils.js";
 
 // ----------------------------------------------------------------------------
@@ -208,9 +208,48 @@ DEV: DropdownMenuItem.displayName = "DropdownMenu.Item";
 
 // ----------------------------------------------------------------------------
 
+interface DropdownMenuCheckboxItemProps
+	extends Omit<FocusableProps, "onChange">,
+		Pick<
+			Ariakit.MenuItemCheckboxProps,
+			"checked" | "onChange" | "name" | "value"
+		> {}
+
+/**
+ * A single menu item within the dropdown menu. Should be used as a child of `DropdownMenu.Content`.
+ *
+ * Example:
+ * ```tsx
+ * <DropdownMenu.CheckboxItem name="add">Add</DropdownMenu.Item>
+ * <DropdownMenu.CheckboxItem name="edit">Edit</DropdownMenu.Item>
+ * ```
+ */
+const DropdownMenuCheckboxItem = forwardRef<
+	"div",
+	DropdownMenuCheckboxItemProps
+>((props, forwardedRef) => {
+	return (
+		<Ariakit.MenuItemCheckbox
+			accessibleWhenDisabled
+			value={props.defaultChecked ? "on" : undefined} // For defaultChecked to work
+			{...props}
+			render={<ListItem.Root render={props.render} />}
+			className={cx("🥝-dropdown-menu-checkbox-item", props.className)}
+			ref={forwardedRef}
+		>
+			<ListItem.Content>{props.children}</ListItem.Content>
+			<Checkmark className="🥝-dropdown-menu-checkmark" />
+		</Ariakit.MenuItemCheckbox>
+	);
+});
+DEV: DropdownMenuCheckboxItem.displayName = "DropdownMenu.CheckboxItem";
+
+// ----------------------------------------------------------------------------
+
 export {
 	DropdownMenu as Root,
 	DropdownMenuButton as Button,
 	DropdownMenuContent as Content,
 	DropdownMenuItem as Item,
+	DropdownMenuCheckboxItem as CheckboxItem,
 };

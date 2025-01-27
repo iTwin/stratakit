@@ -6,8 +6,12 @@
 	@layer base {
 		display: inline-flex;
 		align-items: center;
-		padding-block: var(--kiwi-chip-padding-block, 0.25rem);
-		padding-inline: var(--kiwi-chip-padding-inline, 0.5rem);
+
+		--🥝chip-padding-inline: 0.25rem;
+		padding-inline: var(--🥝chip-padding-inline);
+
+		min-block-size: 24px;
+
 		gap: 0.25rem;
 
 		border-radius: 9999px;
@@ -28,7 +32,6 @@
 .🥝-chip-dismiss-button:is(.🥝-icon-button) {
 	@layer base {
 		border-radius: inherit;
-		margin-inline: calc(-1 * var(--kiwi-chip-padding-inline, 0.5rem));
-		margin-block: calc(-1 * var(--kiwi-chip-padding-block, 0.25rem));
+		margin-inline: calc(-1 * var(--🥝chip-padding-inline));
 	}
 }

@@ -20,7 +20,7 @@ import {
 	VisuallyHidden,
 } from "@itwin/itwinui-react/bricks";
 import * as Tree from "@itwin/itwinui-react-internal/src/bricks/Tree.tsx";
-import { useSearchParams, type MetaFunction } from "react-router";
+import type { MetaFunction } from "react-router";
 import placeholderIcon from "@itwin/itwinui-icons/placeholder.svg";
 import searchIcon from "@itwin/itwinui-icons/search.svg";
 import panelLeftIcon from "@itwin/itwinui-icons/panel-left.svg";
@@ -143,12 +143,13 @@ function Layout(
 	);
 }
 
-/**
- * Wrapper for empty state content, displayed as a centered vertical flex box.
- * Accepts any arbitrary content passed as `children`.
- */
-function EmptyState({ children }: React.PropsWithChildren) {
-	return <div className={styles.emptyState}>{children}</div>;
+function EmptyState() {
+	return (
+		<div className={styles.emptyState}>
+			<Text>No layers</Text>
+			<Button>Create a layer</Button>
+		</div>
+	);
 }
 
 function clamp(value: number, min: number, max: number) {
@@ -409,8 +410,6 @@ const SandboxTreeContext = React.createContext<{
 type TreeType = "simple" | "complex";
 
 function SandboxTree({ tree: treeType }: { tree: TreeType }) {
-	const [searchParams] = useSearchParams();
-	const treeParam = searchParams.get("tree"); // for handling ?tree=empty
 	const [selected, setSelected] = React.useState<string | undefined>();
 	const [hidden, setHidden] = React.useState<string[]>([]);
 	const toggleHidden = React.useCallback((id: string) => {
@@ -422,15 +421,6 @@ function SandboxTree({ tree: treeType }: { tree: TreeType }) {
 		});
 	}, []);
 
-	if (treeParam === "empty") {
-		return (
-			<EmptyState>
-				<Text>No layers</Text>
-				<Button>Create a layer</Button>
-			</EmptyState>
-		);
-	}
-
 	return (
 		<SandboxTreeContext.Provider
 			value={React.useMemo(
@@ -438,9 +428,7 @@ function SandboxTree({ tree: treeType }: { tree: TreeType }) {
 				[hidden, selected, toggleHidden],
 			)}
 		>
-			<Tree.Root className={styles.tree}>
-				{treeType === "complex" ? <ComplexTreeItems /> : <SimpleTreeItems />}
-			</Tree.Root>
+			{treeType === "complex" ? <ComplexTree /> : <SimpleTree />}
 		</SandboxTreeContext.Provider>
 	);
 }
@@ -639,9 +627,9 @@ function TreeRenderer({
 	});
 }
 
-function ComplexTreeItems() {
+function ComplexTree() {
 	return (
-		<>
+		<Tree.Root className={styles.tree}>
 			<TreeItem label="ITC_Master">
 				<TreeItem label="002_Substation" defaultCollapsed>
 					<TreeItem label="002_Substation_A" />
@@ -701,12 +689,13 @@ function ComplexTreeItems() {
 				</TreeItem>
 			</TreeItem>
 			<TreeItem label="ITC_Main" />
-		</>
+		</Tree.Root>
 	);
 }
 
-function SimpleTreeItems() {
+function SimpleTree() {
 	const { tree } = React.useContext(TreeFilteringContext);
+	if (tree.length === 0) return <EmptyState />;
 	return <TreeRenderer tree={tree} />;
 }
 

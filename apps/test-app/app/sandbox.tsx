@@ -422,8 +422,6 @@ function SandboxTree({ tree: treeType }: { tree: TreeType }) {
 		});
 	}, []);
 
-	const { tree } = React.useContext(TreeFilteringContext);
-
 	if (treeParam === "empty") {
 		return (
 			<EmptyState>
@@ -441,11 +439,7 @@ function SandboxTree({ tree: treeType }: { tree: TreeType }) {
 			)}
 		>
 			<Tree.Root className={styles.tree}>
-				{treeType === "complex" ? (
-					<ComplexTreeItems />
-				) : (
-					<TreeRenderer tree={tree} />
-				)}
+				{treeType === "complex" ? <ComplexTreeItems /> : <SimpleTreeItems />}
 			</Tree.Root>
 		</SandboxTreeContext.Provider>
 	);
@@ -709,6 +703,11 @@ function ComplexTreeItems() {
 			<TreeItem label="ITC_Main" />
 		</>
 	);
+}
+
+function SimpleTreeItems() {
+	const { tree } = React.useContext(TreeFilteringContext);
+	return <TreeRenderer tree={tree} />;
 }
 
 const SandboxParentItemContext = React.createContext<{

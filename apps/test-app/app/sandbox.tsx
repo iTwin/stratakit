@@ -936,7 +936,7 @@ function FiltersMenu({
 function TreeFilteringProvider(props: React.PropsWithChildren) {
 	const [filtered, setFiltered] = React.useState(false);
 	const [filters, setFilters] = React.useState<string[]>([]);
-	const [search, setSearch] = React.useState("");
+	const [search, setSearchState] = React.useState("");
 	const toggleFilter = React.useCallback((filter: string) => {
 		setFilters((prev) => {
 			if (prev.includes(filter)) {
@@ -958,6 +958,10 @@ function TreeFilteringProvider(props: React.PropsWithChildren) {
 	});
 	const deferredTree = React.useDeferredValue(filteredTree);
 
+	const setSearch = React.useCallback((s: string) => {
+		setSearchState(s);
+		setFiltered(true);
+	}, []);
 	return (
 		<React.Suspense fallback="Loading...">
 			<TreeFilteringContext.Provider
@@ -980,6 +984,7 @@ function TreeFilteringProvider(props: React.PropsWithChildren) {
 						search,
 						itemCount,
 						deferredTree,
+						setSearch,
 					],
 				)}
 			>

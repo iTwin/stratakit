@@ -16,7 +16,7 @@ test("default", async ({ page }) => {
 });
 
 test("@visual", async ({ page }) => {
-	await page.goto("/tests/select");
+	await page.goto("/tests/select?visual");
 	await expect(page.locator("body")).toHaveScreenshot();
 });
 

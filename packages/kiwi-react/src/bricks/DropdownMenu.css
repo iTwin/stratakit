@@ -43,6 +43,20 @@
 	}
 }
 
+.🥝-dropdown-menu-checkbox-item:is(.🥝-list-item) {
+	@layer states {
+		&:where(:not([aria-checked="true"])) {
+			--🥝dropdown-menu-checkmark-visibility: hidden;
+		}
+	}
+}
+
+.🥝-dropdown-menu-checkmark {
+	@layer base {
+		visibility: var(--🥝dropdown-menu-checkmark-visibility);
+	}
+}
+
 .🥝-dropdown-menu-item-shortcuts {
 	@layer base {
 		margin-inline-start: 0.5rem;

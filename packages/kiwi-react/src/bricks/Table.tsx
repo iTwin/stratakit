@@ -46,6 +46,7 @@ const Table = forwardRef<"div", TableProps>((props, forwardedRef) => {
 			{...props}
 			className={cx("🥝-table", props.className)}
 			ref={forwardedRef}
+			role="table"
 		>
 			{props.children}
 		</Ariakit.Role.div>
@@ -79,6 +80,7 @@ const TableHeader = forwardRef<"div", TableHeaderProps>(
 					{...props}
 					className={cx("🥝-table-header", props.className)}
 					ref={forwardedRef}
+					role="rowgroup"
 				>
 					{props.children}
 				</Ariakit.Role.div>
@@ -117,6 +119,7 @@ const TableBody = forwardRef<"div", TableBodyProps>((props, forwardedRef) => {
 				{...props}
 				className={cx("🥝-table-body", props.className)}
 				ref={forwardedRef}
+				role="rowgroup"
 			>
 				{props.children}
 			</Ariakit.Role.div>
@@ -163,6 +166,7 @@ const TableRow = forwardRef<"div", TableRowProps>((props, forwardedRef) => {
 			{...rest}
 			className={cx("🥝-table-row", props.className)}
 			ref={forwardedRef}
+			role="row"
 			aria-selected={selected}
 			aria-disabled={disabled}
 			data-kiwi-variant={isHeaderRow ? "header" : undefined}
@@ -194,7 +198,7 @@ const TableCell = forwardRef<"span", TableCellProps>((props, forwardedRef) => {
 			{...props}
 			className={cx("🥝-table-cell", props.className)}
 			ref={forwardedRef}
-			data-kiwi-variant={isHeaderCell ? "header" : undefined}
+			role={isHeaderCell ? "columnheader" : "cell"}
 		>
 			{props.children}
 		</Ariakit.Role.span>

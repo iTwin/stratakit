@@ -220,11 +220,10 @@ const TreeItemActions = forwardRef<"div", TreeItemActionsProps>(
 			},
 			[],
 		);
-		const onClick = useEventHandlers(props.onClick, handleClick);
 		return (
 			<Ariakit.Toolbar
 				{...rest}
-				onClick={onClick}
+				onClick={useEventHandlers(props.onClick, handleClick)}
 				className={cx("🥝-tree-item-actions", props.className)}
 				data-kiwi-visible={visible}
 				ref={forwardedRef}
@@ -253,14 +252,13 @@ const TreeItemExpander = forwardRef<"button", TreeItemExpanderProps>(
 			},
 			[],
 		);
-		const onClick = useEventHandlers(props.onClick, handleClick);
 		return (
 			<IconButton
 				icon={<TreeChevron />}
 				label="Toggle"
 				aria-expanded={expanded === undefined ? undefined : expanded}
 				{...props}
-				onClick={onClick}
+				onClick={useEventHandlers(props.onClick, handleClick)}
 				className={cx("🥝-tree-item-expander", props.className)}
 				variant="ghost"
 				labelVariant="visually-hidden"

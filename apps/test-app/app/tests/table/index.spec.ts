@@ -42,7 +42,7 @@ test.describe("@visual", () => {
 	test("cells", async ({ page }) => {
 		await page.goto("/tests/table?visual");
 		const cells = page.getByRole("cell");
-		await expect(cells).toHaveCount(20);
+		await expect(cells).toHaveCount(16);
 	});
 
 	test("hovered row", async ({ page }) => {

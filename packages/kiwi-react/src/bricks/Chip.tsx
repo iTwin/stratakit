@@ -55,7 +55,7 @@ export const Chip = forwardRef<"div", ChipProps>((props, forwardedRef) => {
 					className="🥝-chip-dismiss-button"
 					variant="ghost"
 					aria-labelledby={`${dismissIconId} ${labelId}`}
-					label={"Dismiss"}
+					label="Dismiss"
 					labelVariant="visually-hidden"
 					icon={<Dismiss />}
 					onClick={onDismiss}

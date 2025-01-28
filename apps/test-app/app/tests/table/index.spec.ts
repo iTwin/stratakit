@@ -23,10 +23,8 @@ test("default", async ({ page }) => {
 
 test.describe("@visual", () => {
 	test("default", async ({ page }) => {
-		await page.goto("/tests/table?visual");
-		const table = page.getByRole("table").first();
-		await expect(table).toBeVisible();
-		await expect(table).toHaveScreenshot();
+		await page.goto("/tests/table");
+		await expect(page.locator("body")).toHaveScreenshot();
 	});
 
 	test("header", async ({ page }) => {

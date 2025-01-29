@@ -30,6 +30,18 @@
 	}
 
 	@layer states {
+		&:where([data-kiwi-sublabel="true"]) {
+			display: grid;
+			grid-template-areas:
+				"expander icon label actions"
+				". . sublabel actions";
+			grid-template-rows: auto auto;
+			grid-template-columns: auto auto 1fr auto;
+			row-gap: 0;
+
+			min-block-size: 2.75rem;
+		}
+
 		&:where([data-kiwi-selected="true"]) {
 			--🌀list-item-state: var(--🌀list-item-state--active);
 		}
@@ -59,6 +71,8 @@
 
 .🥝-tree-item-content:is(.🥝-list-item-content) {
 	@layer base {
+		grid-area: label;
+
 		display: inline-flex;
 		min-inline-size: 0;
 
@@ -83,11 +97,16 @@
 
 .🥝-tree-item-actions {
 	@layer base {
+		grid-area: actions;
+		height: 100%;
+
 		position: sticky;
 		inset-inline-end: 0;
 		padding-inline-end: 4px;
 		background-color: var(--kiwi-color-bg-surface-primary);
+
 		display: inline-flex;
+		align-items: center;
 
 		&::before {
 			position: absolute;
@@ -112,6 +131,8 @@
 
 .🥝-tree-item-expander:is(.🥝-icon-button) {
 	@layer base {
+		grid-area: expander;
+
 		visibility: var(--🥝tree-item-expander-visibility);
 		z-index: 1; /* Ensure the expander is above the invisible content button */
 	}
@@ -124,5 +145,18 @@
 		@media (prefers-reduced-motion: no-preference) {
 			transition: rotate 150ms ease-in-out;
 		}
+	}
+}
+
+.🥝-tree-item-sublabel {
+	@layer base {
+		grid-area: sublabel;
+		color: var(--🌀list-item-state--default, var(--kiwi-color-text-neutral-secondary));
+	}
+}
+
+.🥝-tree-item-icon {
+	@layer base {
+		grid-area: icon;
 	}
 }

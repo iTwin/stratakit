@@ -10,6 +10,7 @@ import { IconButton } from "./IconButton.js";
 import { Icon } from "./Icon.js";
 import { forwardRef, type BaseProps } from "./~utils.js";
 import { VisuallyHidden } from "./VisuallyHidden.js";
+import { Text } from "./Text.js";
 
 // ----------------------------------------------------------------------------
 
@@ -85,6 +86,8 @@ interface TreeItemProps extends Omit<BaseProps, "content"> {
 	icon?: string | React.JSX.Element;
 	/** The label to display for the tree item. */
 	label?: React.ReactNode;
+	/** The sublabel to display for the tree item. */
+	sublabel?: React.ReactNode;
 	/** The actions available for the tree item. */
 	actions?: React.ReactNode;
 }
@@ -117,6 +120,7 @@ const TreeItem = forwardRef<"div", TreeItemProps>((props, forwardedRef) => {
 		expanded,
 		icon,
 		label,
+		sublabel,
 		actions,
 		style,
 		onSelectedChange,
@@ -141,6 +145,7 @@ const TreeItem = forwardRef<"div", TreeItemProps>((props, forwardedRef) => {
 			<div role="listitem">
 				<ListItem.Root
 					{...rest}
+					data-kiwi-sublabel={sublabel ? true : undefined}
 					data-kiwi-expanded={expanded}
 					data-kiwi-selected={selected}
 					className={cx("🥝-tree-item", props.className)}
@@ -159,8 +164,17 @@ const TreeItem = forwardRef<"div", TreeItemProps>((props, forwardedRef) => {
 							onExpandedChange?.(!expanded);
 						}}
 					/>
-					{typeof icon === "string" ? <Icon href={icon} /> : icon}
+					{icon && (
+						<span className="🥝-tree-item-icon">
+							{typeof icon === "string" ? <Icon href={icon} /> : icon}
+						</span>
+					)}
 					<TreeItemContent label={label} />
+					{sublabel && (
+						<Text variant="caption-lg" className="🥝-tree-item-sublabel">
+							{sublabel}
+						</Text>
+					)}
 					<TreeItemActions>{actions}</TreeItemActions>
 				</ListItem.Root>
 				{children && <div role="list">{children}</div>}

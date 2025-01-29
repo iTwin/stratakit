@@ -13,15 +13,23 @@ import showIcon from "@itwin/itwinui-icons/visibility-show.svg";
 export const handle = { title: "Tree" };
 
 export default definePage(
-	function Page({ overflow = false, selected = false }) {
+	function Page({ overflow = false, selected = false, sublabel }) {
 		const overflowPostfix = overflow
 			? " with a super long label that is overflown"
 			: "";
 		return (
 			<Tree.Root style={{ maxInlineSize: overflow ? 300 : undefined }}>
-				<TreeItem label={`Item 1${overflowPostfix}`} selected={!!selected}>
+				<TreeItem
+					label={`Item 1${overflowPostfix}`}
+					selected={!!selected}
+					sublabel={sublabel}
+				>
 					<TreeItem label="Item 1.1" selected={!!selected} />
-					<TreeItem label="Item 1.2" selected={!!selected} />
+					<TreeItem
+						label="Item 1.2"
+						selected={!!selected}
+						sublabel={sublabel}
+					/>
 					<TreeItem
 						label={`Item 1.3${overflowPostfix}`}
 						selected={!!selected}
@@ -42,9 +50,11 @@ export default definePage(
 function TreeItem({
 	children,
 	label,
+	sublabel,
 	selected,
 }: React.PropsWithChildren<{
 	label?: React.ReactNode;
+	sublabel?: React.ReactNode;
 	selected?: boolean;
 }>) {
 	const isParentNode = React.Children.count(children) > 0;
@@ -54,6 +64,7 @@ function TreeItem({
 			selected={selected}
 			icon={placeholderIcon}
 			label={label}
+			sublabel={sublabel}
 			actions={
 				<>
 					<IconButton icon={unlockIcon} label="Unlock" variant="ghost" />

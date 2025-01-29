@@ -498,19 +498,39 @@ function ComplexTreeItems() {
 	return (
 		<>
 			<TreeItem label="ITC_Master">
-				<TreeItem label="002_Substation" defaultCollapsed>
+				<TreeItem
+					label="002_Substation"
+					sublabel="Description"
+					defaultCollapsed
+				>
 					<TreeItem label="002_Substation_A" />
 				</TreeItem>
-				<TreeItem label="005-BENROAD-00-XX-M3-D-00003.dgn" defaultCollapsed>
+				<TreeItem
+					label="005-BENROAD-00-XX-M3-D-00003.dgn"
+					sublabel="Description"
+					defaultCollapsed
+				>
 					<TreeItem label="005-BENROAD-00-XX-M3-D-00003-A" />
 				</TreeItem>
-				<TreeItem label="005-BENROAD-00-XX-M3-D-00005.dgn" defaultCollapsed>
+				<TreeItem
+					label="005-BENROAD-00-XX-M3-D-00005.dgn"
+					sublabel="Description"
+					defaultCollapsed
+				>
 					<TreeItem label="005-BENROAD-00-XX-M3-D-00005-A" />
 				</TreeItem>
-				<TreeItem label="005-BENROAD-00-XX-M3-G-00002.dgn" defaultCollapsed>
+				<TreeItem
+					label="005-BENROAD-00-XX-M3-G-00002.dgn"
+					sublabel="Description"
+					defaultCollapsed
+				>
 					<TreeItem label="005-BENROAD-00-XX-M3-G-00002-A" />
 				</TreeItem>
-				<TreeItem label="005-BENROAD-00-XX-M3-G-00003.dgn" defaultCollapsed>
+				<TreeItem
+					label="005-BENROAD-00-XX-M3-G-00003.dgn"
+					sublabel="Description"
+					defaultCollapsed
+				>
 					<TreeItem label="005-BENROAD-00-XX-M3-G-00003-A" />
 				</TreeItem>
 				<TreeItem label="007-aa_master.dgn">
@@ -567,6 +587,7 @@ const SandboxParentItemContext = React.createContext<{
 
 type TreeItemProps = React.PropsWithChildren<{
 	label?: string;
+	sublabel?: string;
 	defaultCollapsed?: boolean;
 }>;
 
@@ -600,6 +621,7 @@ function TreeItem(props: TreeItemProps) {
 				onSelectedChange={setSelected}
 				icon={<Icon href={placeholderIcon} style={{ display: "inline" }} />}
 				label={props.label}
+				sublabel={props.sublabel}
 				actions={
 					<>
 						<IconButton

@@ -14,14 +14,8 @@
 			var(--✨glow--bg-hover)
 		);
 
-		background-color: var(--kiwi-color-border-neutral-muted);
 		display: flex;
 		flex-direction: column;
-		row-gap: 1px;
-
-		@media (forced-colors: active) {
-			background-color: CanvasText;
-		}
 	}
 }
 
@@ -35,7 +29,6 @@
 	@layer base {
 		display: flex;
 		flex-direction: column;
-		row-gap: 1px;
 	}
 }
 
@@ -44,6 +37,7 @@
 		min-inline-size: 100%;
 		min-block-size: 3rem;
 		display: flex;
+		border-block-end: 1px solid var(--kiwi-color-border-neutral-muted);
 	}
 
 	@layer modifiers {

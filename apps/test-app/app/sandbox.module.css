@@ -75,10 +75,15 @@
 	font-size: var(--kiwi-font-size-12);
 }
 
+.panelTitleWrapper {
+	transform: translateX(-6px);
+}
+
 .panelTitle {
 	font-size: var(--kiwi-font-size-12);
 	font-weight: 600;
 	line-height: 1.5rem;
+	padding-inline-start: 6px;
 }
 
 .panelCaption {

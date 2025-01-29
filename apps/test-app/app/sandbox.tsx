@@ -10,6 +10,7 @@ import {
 	DropdownMenu,
 	Icon,
 	IconButton,
+	Select,
 	Tabs,
 	Text,
 	TextBox,
@@ -33,6 +34,22 @@ export const meta: MetaFunction = () => {
 };
 
 export default function Page() {
+	const models = Object.fromEntries(
+		Array(5)
+			.fill(null)
+			.map((_, i) => [
+				`epoch-${i}`,
+				{
+					name: `Epoch System iModel ${i + 1}`,
+					isEmpty: i % 2 === 1,
+				},
+			]),
+	);
+
+	const [selectedModel, setSelectedModel] = React.useState(
+		Object.keys(models)[0],
+	);
+
 	return (
 		<Layout
 			panelContent={
@@ -40,7 +57,22 @@ export default function Page() {
 					<div className={styles.panelHeader}>
 						{/* biome-ignore lint/a11y: hgroup needs an explicit role for better support */}
 						<hgroup role="group">
-							<h2 className={styles.panelTitle}>Epoch System iModel</h2>
+							<Select.Root className={styles.panelTitleWrapper}>
+								<Select.HtmlSelect
+									variant="ghost"
+									className={styles.panelTitle}
+									value={selectedModel}
+									onChange={(e) => setSelectedModel(e.target.value)}
+									aria-label="Model"
+								>
+									{Object.entries(models).map(([id, model]) => (
+										<option key={id} value={id}>
+											{model.name}
+										</option>
+									))}
+								</Select.HtmlSelect>
+							</Select.Root>
+
 							<p className={styles.panelCaption}>2024 Refresh</p>
 						</hgroup>
 						<div className={styles.actions}>
@@ -60,14 +92,18 @@ export default function Page() {
 							className={styles.tabPanel}
 							focusable={false}
 						>
-							<SandboxTree tree="simple" />
+							<SandboxTree
+								tree={models[selectedModel].isEmpty ? "empty" : "simple"}
+							/>
 						</Tabs.TabPanel>
 						<Tabs.TabPanel
 							tabId="complex"
 							className={styles.tabPanel}
 							focusable={false}
 						>
-							<SandboxTree tree="complex" />
+							<SandboxTree
+								tree={models[selectedModel].isEmpty ? "empty" : "complex"}
+							/>
 						</Tabs.TabPanel>
 					</Tabs.Root>
 				</>
@@ -401,7 +437,7 @@ const SandboxTreeContext = React.createContext<{
 });
 
 interface SandboxTreeProps {
-	tree: "simple" | "complex";
+	tree: "simple" | "complex" | "empty";
 }
 
 function SandboxTree({ tree }: SandboxTreeProps) {
@@ -427,6 +463,17 @@ function SandboxTree({ tree }: SandboxTreeProps) {
 		);
 	}
 
+	const treeItems = React.useMemo(() => {
+		switch (tree) {
+			case "complex":
+				return <ComplexTreeItems />;
+			case "simple":
+				return <IdealTreeItems />;
+			default:
+				return null;
+		}
+	}, [tree]);
+
 	return (
 		<SandboxTreeContext.Provider
 			value={React.useMemo(
@@ -434,9 +481,7 @@ function SandboxTree({ tree }: SandboxTreeProps) {
 				[hidden, selected, toggleHidden],
 			)}
 		>
-			<Tree.Root className={styles.tree}>
-				{tree === "complex" ? <ComplexTreeItems /> : <IdealTreeItems />}
-			</Tree.Root>
+			<Tree.Root className={styles.tree}>{treeItems}</Tree.Root>
 		</SandboxTreeContext.Provider>
 	);
 }

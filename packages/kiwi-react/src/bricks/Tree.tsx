@@ -255,17 +255,11 @@ interface TreeItemActionsProps extends BaseProps {
 const TreeItemActions = forwardRef<"div", TreeItemActionsProps>(
 	(props, forwardedRef) => {
 		const { visible, ...rest } = props;
-		const handleClick = React.useCallback(
-			(event: React.MouseEvent<HTMLDivElement>) => {
-				event.stopPropagation();
-			},
-			[],
-		);
 
 		return (
 			<Ariakit.Toolbar
 				{...rest}
-				onClick={useEventHandlers(props.onClick, handleClick)}
+				onClick={useEventHandlers(props.onClick, (e) => e.stopPropagation())}
 				className={cx("🥝-tree-item-actions", props.className)}
 				data-kiwi-visible={visible}
 				ref={forwardedRef}
@@ -286,13 +280,6 @@ interface TreeItemExpanderProps
 
 const TreeItemExpander = forwardRef<"button", TreeItemExpanderProps>(
 	(props, forwardedRef) => {
-		const handleClick = React.useCallback(
-			(event: React.MouseEvent<HTMLButtonElement>) => {
-				event.stopPropagation();
-			},
-			[],
-		);
-
 		return (
 			<IconButton
 				tabIndex={-1}
@@ -300,7 +287,7 @@ const TreeItemExpander = forwardRef<"button", TreeItemExpanderProps>(
 				icon={<TreeChevron />}
 				label="Toggle"
 				{...props}
-				onClick={useEventHandlers(props.onClick, handleClick)}
+				onClick={useEventHandlers(props.onClick, (e) => e.stopPropagation())}
 				className={cx("🥝-tree-item-expander", props.className)}
 				variant="ghost"
 				labelVariant="visually-hidden"

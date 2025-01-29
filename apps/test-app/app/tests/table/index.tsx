@@ -88,7 +88,7 @@ function ScrollTest() {
 			}));
 	}, []);
 
-	const data = React.useMemo(() => generateData(10), [generateData]);
+	const data = React.useMemo(() => generateData(100), [generateData]);
 
 	return (
 		<Table.Root>

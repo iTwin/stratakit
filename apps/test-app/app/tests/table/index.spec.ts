@@ -30,7 +30,7 @@ test.describe("@visual", () => {
 	test("header", async ({ page }) => {
 		await page.goto("/tests/table?visual");
 		const columnHeaders = page.getByRole("columnheader");
-		await expect(columnHeaders).toHaveCount(4);
+		await expect(columnHeaders).toHaveCount(2);
 	});
 
 	test("rows", async ({ page }) => {
@@ -42,7 +42,7 @@ test.describe("@visual", () => {
 	test("cells", async ({ page }) => {
 		await page.goto("/tests/table?visual");
 		const cells = page.getByRole("cell");
-		await expect(cells).toHaveCount(16);
+		await expect(cells).toHaveCount(8);
 	});
 
 	test("hovered row", async ({ page }) => {

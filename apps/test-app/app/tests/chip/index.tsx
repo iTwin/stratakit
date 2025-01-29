@@ -21,14 +21,25 @@ export default definePage(
 function VisualTest() {
 	const permutations = [["solid"], ["outline"]] as const;
 
+	const states = ["default", "hover", "focus", "disabled"] as const;
+
 	return (
 		<div style={{ display: "grid", gap: 4 }}>
 			{permutations.map(([variant]) => {
-				const props = { variant } as React.ComponentProps<typeof Chip>;
-
 				return (
 					<div key={variant} style={{ display: "flex", gap: 4 }}>
-						<Chip {...props}>{variant}</Chip>
+						{states.map((state) => {
+							const props = {
+								variant,
+								disabled: state === "disabled",
+							} as React.ComponentProps<typeof Chip>;
+
+							return (
+								<Chip key={`${variant}-${state}`} {...props}>
+									{variant} - {state}
+								</Chip>
+							);
+						})}
 					</div>
 				);
 			})}

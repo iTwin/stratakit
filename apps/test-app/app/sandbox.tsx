@@ -34,16 +34,20 @@ export const meta: MetaFunction = () => {
 };
 
 export default function Page() {
-	const models = Object.fromEntries(
-		Array(5)
-			.fill(null)
-			.map((_, i) => [
-				`epoch-${i}`,
-				{
-					name: `Epoch System iModel ${i + 1}`,
-					isEmpty: i % 2 === 1,
-				},
-			]),
+	const models = React.useMemo(
+		() =>
+			Object.fromEntries(
+				Array(5)
+					.fill(null)
+					.map((_, i) => [
+						`epoch-${i}`,
+						{
+							name: `Epoch System iModel ${i + 1}`,
+							isEmpty: i % 2 === 1,
+						},
+					]),
+			),
+		[],
 	);
 
 	const [selectedModel, setSelectedModel] = React.useState(
@@ -482,14 +486,14 @@ type SandboxTreeItemsProps = {
 };
 
 function SandboxTreeItems({ tree }: SandboxTreeItemsProps) {
-	switch (tree) {
-		case "complex":
-			return <ComplexTreeItems />;
-		case "simple":
-			return <IdealTreeItems />;
-		default:
-			return null;
+	if (tree === "complex") {
+		return <ComplexTreeItems />;
 	}
+	if (tree === "simple") {
+		return <IdealTreeItems />;
+	}
+
+	return null;
 }
 
 function IdealTreeItems() {

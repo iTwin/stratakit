@@ -6,6 +6,7 @@
 	@layer base {
 		display: inline-flex;
 		align-items: center;
+		position: relative;
 
 		--🥝chip-padding-inline: 0.5rem;
 		padding-inline: var(--🥝chip-padding-inline);
@@ -15,7 +16,16 @@
 		gap: 0.25rem;
 
 		border-radius: 9999px;
+		border: none;
+	}
+
+	&::before {
+		content: "";
+		position: absolute;
+		inset: 0;
+		border-radius: inherit;
 		border: 1px solid var(--kiwi-color-border-neutral-base);
+		pointer-events: none;
 	}
 
 	@layer modifiers {

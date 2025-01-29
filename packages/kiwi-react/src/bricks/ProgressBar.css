@@ -1,0 +1,62 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+
+.🥝-progress-bar {
+	--✨border-radius: 9999px;
+
+	@layer base {
+		block-size: var(--🥝progress-bar-size);
+		border-radius: var(--✨border-radius);
+		overflow: hidden;
+	}
+
+	@layer modifiers {
+		&:where([data-kiwi-tone="neutral"]) {
+			--🥝progress-bar-color: var(--kiwi-color-icon-neutral-base);
+
+			/* TODO: Not the correct color */
+			--🥝progress-bar-track-color: var(--kiwi-color-border-neutral-base);
+		}
+
+		&:where([data-kiwi-tone="accent"]) {
+			--🥝progress-bar-color: var(--kiwi-color-icon-accent-strong);
+
+			/* TODO: Not the correct color */
+			--🥝progress-bar-track-color: var(--kiwi-color-bg-accent-muted);
+		}
+
+		&:where([data-kiwi-size="small"]) {
+			--🥝progress-bar-size: 0.063rem;
+		}
+
+		&:where([data-kiwi-size="medium"]) {
+			--🥝progress-bar-size: 0.125rem;
+		}
+
+		&:where([data-kiwi-size="large"]) {
+			--🥝progress-bar-size: 0.25rem;
+		}
+	}
+}
+
+.🥝-progress-bar-svg {
+	@layer base {
+		block-size: inherit;
+		inline-size: 100%;
+		fill: none;
+	}
+}
+
+.🥝-progress-bar-svg-track {
+	@layer base {
+		block-size: inherit;
+		inline-size: 100%;
+		stroke-width: 2;
+		stroke: var(--🥝progress-bar-track-color);
+		stroke-linecap: round;
+		stroke-miterlimit: 10;
+		vector-effect: non-scaling-stroke;
+	}
+}

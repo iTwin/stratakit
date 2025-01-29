@@ -72,10 +72,20 @@ interface TableHeaderProps extends BaseProps {}
  *	</Table.Header>
  * ```
  */
+const TableHeaderContext = React.createContext<
+	| {
+			/**
+			 * Marks whether the rows belong to the header.
+			 */
+			isHeader?: boolean;
+	  }
+	| undefined
+>(undefined);
+
 const TableHeader = forwardRef<"div", TableHeaderProps>(
 	(props, forwardedRef) => {
 		return (
-			<TableVariantContext.Provider value={{ variant: "header" }}>
+			<TableHeaderContext.Provider value={{ isHeader: true }}>
 				<Ariakit.Role.div
 					{...props}
 					className={cx("🥝-table-header", props.className)}
@@ -84,7 +94,7 @@ const TableHeader = forwardRef<"div", TableHeaderProps>(
 				>
 					{props.children}
 				</Ariakit.Role.div>
-			</TableVariantContext.Provider>
+			</TableHeaderContext.Provider>
 		);
 	},
 );
@@ -114,36 +124,21 @@ interface TableBodyProps extends BaseProps {}
  */
 const TableBody = forwardRef<"div", TableBodyProps>((props, forwardedRef) => {
 	return (
-		<TableVariantContext.Provider value={{ variant: "body" }}>
-			<Ariakit.Role.div
-				{...props}
-				className={cx("🥝-table-body", props.className)}
-				ref={forwardedRef}
-				role="rowgroup"
-			>
-				{props.children}
-			</Ariakit.Role.div>
-		</TableVariantContext.Provider>
+		<Ariakit.Role.div
+			{...props}
+			className={cx("🥝-table-body", props.className)}
+			ref={forwardedRef}
+			role="rowgroup"
+		>
+			{props.children}
+		</Ariakit.Role.div>
 	);
 });
 DEV: TableBody.displayName = "Table.Body";
 
 // ----------------------------------------------------------------------------
 
-interface TableRowProps extends BaseProps {
-	/**
-	 * Marks the row as selected.
-	 *
-	 * @default undefined
-	 */
-	selected?: boolean;
-	/**
-	 * Disables the row and prevents user interaction.
-	 *
-	 * @default undefined
-	 */
-	disabled?: boolean;
-}
+interface TableRowProps extends BaseProps {}
 
 /**
  * `Table.Row` is a component that contains the cells of a table row.
@@ -157,9 +152,8 @@ interface TableRowProps extends BaseProps {
  * ```
  */
 const TableRow = forwardRef<"div", TableRowProps>((props, forwardedRef) => {
-	const { children, selected, disabled, ...rest } = props;
-	const tableContext = React.useContext(TableVariantContext);
-	const isHeaderRow = tableContext?.variant === "header";
+	const { children, ...rest } = props;
+	const tableContext = React.useContext(TableHeaderContext);
 
 	return (
 		<Ariakit.Role.div
@@ -167,9 +161,7 @@ const TableRow = forwardRef<"div", TableRowProps>((props, forwardedRef) => {
 			className={cx("🥝-table-row", props.className)}
 			ref={forwardedRef}
 			role="row"
-			aria-selected={selected}
-			aria-disabled={disabled}
-			data-kiwi-variant={isHeaderRow ? "header" : undefined}
+			data-kiwi-variant={tableContext?.isHeader ? "header" : undefined}
 		>
 			{children}
 		</Ariakit.Role.div>
@@ -190,33 +182,20 @@ interface TableCellProps extends BaseProps {}
  * ```
  */
 const TableCell = forwardRef<"span", TableCellProps>((props, forwardedRef) => {
-	const tableContext = React.useContext(TableVariantContext);
-	const isHeaderCell = tableContext?.variant === "header";
+	const tableContext = React.useContext(TableHeaderContext);
 
 	return (
 		<Ariakit.Role.span
 			{...props}
 			className={cx("🥝-table-cell", props.className)}
 			ref={forwardedRef}
-			role={isHeaderCell ? "columnheader" : "cell"}
+			role={tableContext?.isHeader ? "columnheader" : "cell"}
 		>
 			{props.children}
 		</Ariakit.Role.span>
 	);
 });
 DEV: TableCell.displayName = "Table.Cell";
-
-// ----------------------------------------------------------------------------
-
-const TableVariantContext = React.createContext<
-	| {
-			/**
-			 * Marks whether the rows belong to the header or body.
-			 */
-			variant?: "header" | "body";
-	  }
-	| undefined
->(undefined);
 
 // ----------------------------------------------------------------------------
 

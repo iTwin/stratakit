@@ -33,9 +33,10 @@
 }
 
 .🥝-table-row {
+	--✨row-height-min: 3rem;
+
 	@layer base {
-		min-inline-size: 100%;
-		min-block-size: 3rem;
+		min-block-size: var(--✨row-height-min);
 		display: flex;
 		border-block-end: 1px solid var(--kiwi-color-border-neutral-muted);
 	}

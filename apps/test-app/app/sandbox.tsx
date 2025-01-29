@@ -463,17 +463,6 @@ function SandboxTree({ tree }: SandboxTreeProps) {
 		);
 	}
 
-	const treeItems = React.useMemo(() => {
-		switch (tree) {
-			case "complex":
-				return <ComplexTreeItems />;
-			case "simple":
-				return <IdealTreeItems />;
-			default:
-				return null;
-		}
-	}, [tree]);
-
 	return (
 		<SandboxTreeContext.Provider
 			value={React.useMemo(
@@ -481,9 +470,26 @@ function SandboxTree({ tree }: SandboxTreeProps) {
 				[hidden, selected, toggleHidden],
 			)}
 		>
-			<Tree.Root className={styles.tree}>{treeItems}</Tree.Root>
+			<Tree.Root className={styles.tree}>
+				<SandboxTreeItems tree={tree} />
+			</Tree.Root>
 		</SandboxTreeContext.Provider>
 	);
+}
+
+type SandboxTreeItemsProps = {
+	tree: "simple" | "complex" | "empty";
+};
+
+function SandboxTreeItems({ tree }: SandboxTreeItemsProps) {
+	switch (tree) {
+		case "complex":
+			return <ComplexTreeItems />;
+		case "simple":
+			return <IdealTreeItems />;
+		default:
+			return null;
+	}
 }
 
 function IdealTreeItems() {

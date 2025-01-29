@@ -69,16 +69,14 @@
 }
 
 .🥝-table-cell {
-	flex-grow: 1;
-	min-inline-size: 4rem;
-	flex-basis: 4rem;
-	padding-block: 0.5rem;
-
 	@layer base {
 		display: flex;
+		flex-grow: 1;
+		flex-basis: 4rem;
+		min-inline-size: 4rem;
 		align-items: center;
 		column-gap: 0.5rem;
-		padding-inline: 1rem;
+		padding-inline: 0.5rem;
 		word-break: break-word;
 	}
 

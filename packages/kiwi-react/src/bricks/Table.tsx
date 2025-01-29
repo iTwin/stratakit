@@ -57,6 +57,7 @@ DEV: Table.displayName = "Table.Root";
 // ----------------------------------------------------------------------------
 
 interface TableHeaderProps extends BaseProps {}
+const TableHeaderContext = React.createContext(false);
 
 /**
  * `Table.Header` is a column component of cells that labels the columns of a table.
@@ -72,20 +73,10 @@ interface TableHeaderProps extends BaseProps {}
  *	</Table.Header>
  * ```
  */
-const TableHeaderContext = React.createContext<
-	| {
-			/**
-			 * Marks whether the rows belong to the header.
-			 */
-			isHeader?: boolean;
-	  }
-	| undefined
->(undefined);
-
 const TableHeader = forwardRef<"div", TableHeaderProps>(
 	(props, forwardedRef) => {
 		return (
-			<TableHeaderContext.Provider value={{ isHeader: true }}>
+			<TableHeaderContext.Provider value={true}>
 				<Ariakit.Role.div
 					{...props}
 					className={cx("🥝-table-header", props.className)}
@@ -153,7 +144,7 @@ interface TableRowProps extends BaseProps {}
  */
 const TableRow = forwardRef<"div", TableRowProps>((props, forwardedRef) => {
 	const { children, ...rest } = props;
-	const tableContext = React.useContext(TableHeaderContext);
+	const isWithinTableHeader = React.useContext(TableHeaderContext);
 
 	return (
 		<Ariakit.Role.div
@@ -161,7 +152,7 @@ const TableRow = forwardRef<"div", TableRowProps>((props, forwardedRef) => {
 			className={cx("🥝-table-row", props.className)}
 			ref={forwardedRef}
 			role="row"
-			data-kiwi-variant={tableContext?.isHeader ? "header" : undefined}
+			data-kiwi-variant={isWithinTableHeader ? "header" : undefined}
 		>
 			{children}
 		</Ariakit.Role.div>
@@ -182,14 +173,14 @@ interface TableCellProps extends BaseProps {}
  * ```
  */
 const TableCell = forwardRef<"span", TableCellProps>((props, forwardedRef) => {
-	const tableContext = React.useContext(TableHeaderContext);
+	const isWithinTableHeader = React.useContext(TableHeaderContext);
 
 	return (
 		<Ariakit.Role.span
 			{...props}
 			className={cx("🥝-table-cell", props.className)}
 			ref={forwardedRef}
-			role={tableContext?.isHeader ? "columnheader" : "cell"}
+			role={isWithinTableHeader ? "columnheader" : "cell"}
 		>
 			{props.children}
 		</Ariakit.Role.span>

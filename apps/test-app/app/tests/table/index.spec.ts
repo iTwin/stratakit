@@ -11,14 +11,17 @@ test("default", async ({ page }) => {
 	const table = page.getByRole("table").first();
 	await expect(table).toBeVisible();
 
-	const header = page.getByRole("columnheader").first();
-	await expect(header).toBeVisible();
+	const columnHeaders = page.getByRole("columnheader");
+	await expect(columnHeaders).toHaveCount(2);
 
-	const rowGroups = page.getByRole("rowgroup").first();
-	await expect(rowGroups).toBeVisible();
+	const rowGroups = page.getByRole("rowgroup");
+	await expect(rowGroups).toHaveCount(2);
 
-	const rows = page.getByRole("row").first();
-	await expect(rows).toBeVisible();
+	const rows = page.getByRole("row");
+	await expect(rows).toHaveCount(5);
+
+	const cells = page.getByRole("cell");
+	await expect(cells).toHaveCount(8);
 });
 
 test.describe("@visual", () => {
@@ -26,25 +29,6 @@ test.describe("@visual", () => {
 		await page.goto("/tests/table?visual");
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
-
-	test("header", async ({ page }) => {
-		await page.goto("/tests/table?visual");
-		const columnHeaders = page.getByRole("columnheader");
-		await expect(columnHeaders).toHaveCount(2);
-	});
-
-	test("rows", async ({ page }) => {
-		await page.goto("/tests/table?visual");
-		const rows = page.getByRole("row");
-		await expect(rows).toHaveCount(5);
-	});
-
-	test("cells", async ({ page }) => {
-		await page.goto("/tests/table?visual");
-		const cells = page.getByRole("cell");
-		await expect(cells).toHaveCount(8);
-	});
-
 	test("hovered row", async ({ page }) => {
 		await page.goto("/tests/table?visual");
 		const row = page.getByRole("row").nth(1);
@@ -52,7 +36,6 @@ test.describe("@visual", () => {
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
 });
-
 test.describe("@a11y", () => {
 	test("Axe Page Scan", async ({ page }) => {
 		await page.goto("/tests/table");

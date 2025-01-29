@@ -13,7 +13,6 @@
 			var(--🥝table-bg--default) 100%,
 			var(--✨glow--bg-hover)
 		);
-		--🥝table-bg--disabled: var(--kiwi-color-bg-surface-primary);
 
 		background-color: var(--kiwi-color-border-neutral-muted);
 		display: flex;
@@ -41,10 +40,6 @@
 }
 
 .🥝-table-row {
-	/* TODO: The selected background color is incorrect. */
-	--✨glow--bg-selected: var(--kiwi-color-glow-hue) var(--kiwi-color-bg-glow-base-pressed-\%);
-	--✨bg--selected: color-mix(in oklch, var(--🥝table-bg--default) 100%, var(--✨glow--bg-selected));
-
 	@layer base {
 		min-inline-size: 100%;
 		min-block-size: 3rem;
@@ -58,9 +53,7 @@
 
 		&:where(:not([data-kiwi-variant="header"])) {
 			background-color: var(--🌀table-row-state--default, var(--🥝table-bg--default))
-				var(--🌀table-row-state--hover, var(--🥝table-bg--hover))
-				var(--🌀table-row-state--selected, var(--✨bg--selected))
-				var(--🌀table-row-state--disabled, var(--🥝table-bg--disabled));
+				var(--🌀table-row-state--hover, var(--🥝table-bg--hover));
 		}
 	}
 
@@ -70,36 +63,13 @@
 				--🌀table-row-state: var(--🌀table-row-state--hover);
 			}
 		}
-
-		&:where([aria-selected="true"]) {
-			--🌀table-row-state: var(--🌀table-row-state--selected);
-
-			outline: 1px solid var(--kiwi-color-border-accent-strong);
-
-			@media (forced-colors: active) {
-				outline-color: SelectedItem;
-			}
-		}
-
-		&:where([aria-disabled="true"]) {
-			--🌀table-row-state: var(--🌀table-row-state--disabled);
-
-			cursor: not-allowed;
-			color: var(--kiwi-color-text-neutral-disabled);
-
-			@media (forced-colors: active) {
-				color: GrayText;
-			}
-		}
 	}
 
 	@layer base.🌀 {
-		/* Cyclic toggles for default/hover/checked/checked+hover/disabled states. See https://kizu.dev/cyclic-toggles/ */
+		/* Cyclic toggles for default/hover states. See https://kizu.dev/cyclic-toggles/ */
 		--🌀table-row-state: var(--🌀table-row-state--default);
 		--🌀table-row-state--default: var(--🌀table-row-state,);
 		--🌀table-row-state--hover: var(--🌀table-row-state,);
-		--🌀table-row-state--selected: var(--🌀table-row-state,);
-		--🌀table-row-state--disabled: var(--🌀table-row-state,);
 	}
 }
 

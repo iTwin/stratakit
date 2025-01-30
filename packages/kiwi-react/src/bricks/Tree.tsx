@@ -18,18 +18,16 @@ interface TreeProps extends BaseProps {}
 /**
  * A tree is a hierarchical list of items that can be expanded or collapsed, or optionally selected.
  *
- * `Tree.Root` is the root component for a tree. `Tree.Item`s can be nested inside a `Tree.Root` to create a hierarchical tree structure.
+ * `Tree.Root` is the root component for a tree. `Tree.Item`s are rendered as a flat list in the `Tree.Root` component to create a hierarchical tree structure.
  *
  * Example:
  * ```tsx
  * <Tree.Root>
- *   <Tree.Item label="Parent 1">
- *     <Tree.Item label="Child 1.1" />
- *     <Tree.Item label="Child 1.2" />
- *   </Tree.Item>
- *   <Tree.Item label="Parent 2">
- *     <Tree.Item label="Child 2.1" />
- *   </Tree.Item>
+ *   <Tree.Item label="Parent 1" position={1} size={2} />
+ *   <Tree.Item label="Child 1.1" position={1} size={2} level={2} />
+ *   <Tree.Item label="Child 1.2" position={2} size={2} level={2} />
+ *   <Tree.Item label="Parent 2" position={2} size={2} />
+ *   <Tree.Item label="Child 2.1" position={1} size={1} level={2} />
  * </Tree.Root>
  * ```
  */
@@ -99,26 +97,29 @@ interface TreeItemProps extends Omit<BaseProps, "content"> {
 	actions?: React.ReactNode;
 	/** Defines tree item position in the current level of tree items. */
 	position: number;
-	/** Defines tree item size in the current level of tree items. */
+	/** Defines tree item set size of the current level. */
 	size: number;
 }
 
 /**
  * A treeitem is a node in a tree structure that may be expanded or collapsed to reveal or hide its descendants.
  *
- * `Tree.Item`s can be nested as JSX elements inside a `Tree.Root` to create a hierarchical tree structure.
+ * `Tree.Item`s can be rendered inside a `Tree.Root`. Additional properties are specified to the `Tree.Item`s to create a hierarchical tree structure.
  *
  * Example:
  * ```tsx
  * <Tree.Root>
- *   <Tree.Item label="Parent">
- *     <Tree.Item label="Child 1" />
- *     <Tree.Item label="Child 2" />
- *   </Tree.Item>
+ *   <Tree.Item label="Parent" position={1} size={1} />
+ *   <Tree.Item label="Child 1" position={1} size={2} level={2} />
+ *   <Tree.Item label="Child 2" position={2} size={2} level={2} />
  * </Tree.Root>
  * ```
  *
- * The `label` and `icon` props can be used to specify the treeitem's own content. `children` is only used for nested items.
+ * The `label` and `icon` props can be used to specify the treeitem's own content.
+ *
+ * The `level` prop is used to specify the nesting level of the treeitem. Nesting levels start at 1.
+ *
+ * The `position` and `size` props are used to define the treeitem's position in the current level of tree items.
  *
  * The `expanded` and `onExpandedChange` props can be used to control the expansion state of a treeitem.
  *

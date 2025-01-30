@@ -171,6 +171,9 @@ function Layout(props: {
 			minSize: { px: 256, pct: 20 },
 			maxSize: { pct: 30 },
 		});
+
+	const resizerId = React.useId();
+
 	return (
 		<div
 			className={styles.appLayout}
@@ -192,9 +195,19 @@ function Layout(props: {
 				className={styles.splitter}
 				data-resizing={resizing ? "true" : undefined}
 			>
+				<VisuallyHidden
+					render={(props) => (
+						<label {...props} htmlFor={resizerId}>
+							Resize layers panel
+						</label>
+					)}
+				>
+					Resize layers panel
+				</VisuallyHidden>
+
 				<input
+					id={resizerId}
 					type="range"
-					aria-label="Resize layers panel"
 					className={styles.slider}
 					{...sliderProps}
 				/>

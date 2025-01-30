@@ -19,7 +19,7 @@ export default definePage(
 					</Table.Row>
 				</Table.Header>
 				<Table.Body>
-					<Table.Row>
+					<Table.Row selected>
 						<Table.Cell>Name 1</Table.Cell>
 						<Table.Cell>Description 1</Table.Cell>
 					</Table.Row>

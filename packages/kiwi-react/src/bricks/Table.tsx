@@ -6,10 +6,14 @@ import * as Ariakit from "@ariakit/react";
 import * as React from "react";
 import cx from "classnames";
 import { forwardRef, type BaseProps } from "./~utils.js";
+import { Checkbox } from "./Checkbox.js";
+import { VisuallyHidden } from "./VisuallyHidden.js";
 
 // ----------------------------------------------------------------------------
 
-interface TableProps extends BaseProps {}
+interface TableProps extends BaseProps {
+	isSelectable?: boolean;
+}
 
 /**
  * A table is a grid of rows and columns that displays data in a structured format.
@@ -129,7 +133,12 @@ DEV: TableBody.displayName = "Table.Body";
 
 // ----------------------------------------------------------------------------
 
-interface TableRowProps extends BaseProps {}
+interface TableRowProps extends BaseProps {
+	/**
+	 * Marks if the table row is selected.
+	 */
+	selected?: boolean;
+}
 
 /**
  * `Table.Row` is a component that contains the cells of a table row.
@@ -143,7 +152,7 @@ interface TableRowProps extends BaseProps {}
  * ```
  */
 const TableRow = forwardRef<"div", TableRowProps>((props, forwardedRef) => {
-	const { children, ...rest } = props;
+	const { children, selected, ...rest } = props;
 	const isWithinTableHeader = React.useContext(TableHeaderContext);
 
 	return (
@@ -152,8 +161,13 @@ const TableRow = forwardRef<"div", TableRowProps>((props, forwardedRef) => {
 			className={cx("🥝-table-row", props.className)}
 			ref={forwardedRef}
 			role="row"
+			aria-selected={selected ? "true" : undefined}
 			data-kiwi-variant={isWithinTableHeader ? "header" : undefined}
 		>
+			<TableCell data-kiwi-slot>
+				<Checkbox aria-checked={selected} />
+				<VisuallyHidden>Select row</VisuallyHidden>
+			</TableCell>
 			{children}
 		</Ariakit.Role.div>
 	);

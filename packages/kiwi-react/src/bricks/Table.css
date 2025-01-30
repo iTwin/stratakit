@@ -34,6 +34,8 @@
 
 .🥝-table-row {
 	--✨row-height-min: 3rem;
+	--✨glow--bg-selected: var(--kiwi-color-glow-hue) var(--kiwi-color-bg-glow-base-pressed-\%);
+	--✨bg--selected: color-mix(in oklch, var(--🥝table-bg--default) 100%, var(--✨glow--bg-selected));
 
 	@layer base {
 		min-block-size: var(--✨row-height-min);
@@ -48,7 +50,8 @@
 
 		&:where(:not([data-kiwi-variant="header"])) {
 			background-color: var(--🌀table-row-state--default, var(--🥝table-bg--default))
-				var(--🌀table-row-state--hover, var(--🥝table-bg--hover));
+				var(--🌀table-row-state--hover, var(--🥝table-bg--hover)),
+				var(--🌀table-row-state--selected, var(--✨bg--selected));
 		}
 	}
 
@@ -58,6 +61,16 @@
 				--🌀table-row-state: var(--🌀table-row-state--hover);
 			}
 		}
+
+		&:where([aria-selected="true"]) {
+			--🌀table-row-state: var(--🌀table-row-state--selected);
+
+			outline: 1px solid var(--kiwi-color-border-accent-strong);
+
+			@media (forced-colors: active) {
+				outline-color: SelectedItem;
+			}
+		}
 	}
 
 	@layer base.🌀 {
@@ -65,15 +78,13 @@
 		--🌀table-row-state: var(--🌀table-row-state--default);
 		--🌀table-row-state--default: var(--🌀table-row-state,);
 		--🌀table-row-state--hover: var(--🌀table-row-state,);
+		--🌀table-row-state--selected: var(--🌀table-row-state,);
 	}
 }
 
 .🥝-table-cell {
 	@layer base {
 		display: flex;
-		flex-grow: 1;
-		flex-basis: 4rem;
-		min-inline-size: 4rem;
 		align-items: center;
 		column-gap: 0.5rem;
 		padding-inline: 0.5rem;
@@ -81,6 +92,18 @@
 	}
 
 	@layer modifiers {
+		&:where(:not([data-kiwi-slot])) {
+			flex-grow: 1;
+			min-inline-size: 4rem;
+			flex-basis: 4rem;
+			padding-block: 0.5rem;
+		}
+
+		&:where([data-kiwi-slot]) {
+			flex-grow: 0;
+			justify-content: center;
+		}
+
 		&:where([role="columnheader"]) {
 			@media (any-hover: hover) {
 				&:where(:hover) {

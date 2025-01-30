@@ -14,6 +14,7 @@ import {
 	Tabs,
 	Text,
 	TextBox,
+	VisuallyHidden,
 } from "@itwin/itwinui-react/bricks";
 import * as Tree from "@itwin/itwinui-react-internal/src/bricks/Tree.tsx";
 import { useSearchParams, type MetaFunction } from "react-router";
@@ -34,22 +35,37 @@ export const meta: MetaFunction = () => {
 };
 
 export default function Page() {
+	const [searchParams, setSearchParams] = useSearchParams();
+	const treeParam = searchParams.get("tree");
+
 	const models = React.useMemo(
 		() => ({
-			"epoch-1": {
-				name: "Epoch System iModel 1",
-				isEmpty: false,
-			},
-			"epoch-2": {
-				name: "Epoch System iModel 2",
-				isEmpty: true,
-			},
+			"epoch-1": "Epoch System iModel 1", // Non-empty model
+			"epoch-2": "Epoch System iModel 2", // Empty model
 		}),
 		[],
 	);
 
-	const [selectedModel, setSelectedModel] =
-		React.useState<keyof typeof models>("epoch-1");
+	const [selectedModel, _setSelectedModel] = React.useState<
+		keyof typeof models
+	>(treeParam === "empty" ? "epoch-2" : "epoch-1");
+
+	const setSelectedModel = React.useCallback(
+		(value: keyof typeof models) => {
+			_setSelectedModel(value);
+
+			setSearchParams((prev) => {
+				if (value === "epoch-2") {
+					prev.set("tree", "empty");
+				} else {
+					prev.delete("tree");
+				}
+
+				return prev;
+			});
+		},
+		[setSearchParams],
+	);
 
 	return (
 		<Layout
@@ -65,15 +81,19 @@ export default function Page() {
 									onChange={(e) =>
 										setSelectedModel(e.target.value as keyof typeof models)
 									}
-									aria-label="Model"
+									aria-label="Choose Model"
 								>
-									{Object.entries(models).map(([id, model]) => (
+									{Object.entries(models).map(([id, modelName]) => (
 										<option key={id} value={id}>
-											{model.name}
+											{modelName}
 										</option>
 									))}
 								</Select.HtmlSelect>
 							</Select.Root>
+
+							<VisuallyHidden render={(props) => <h2 {...props} />}>
+								{models[selectedModel]}
+							</VisuallyHidden>
 
 							<p className={styles.panelCaption}>2024 Refresh</p>
 						</hgroup>
@@ -95,7 +115,7 @@ export default function Page() {
 							focusable={false}
 						>
 							<SandboxTree
-								tree={models[selectedModel].isEmpty ? "empty" : "simple"}
+								tree={selectedModel === "epoch-2" ? "empty" : "simple"}
 							/>
 						</Tabs.TabPanel>
 						<Tabs.TabPanel
@@ -104,7 +124,7 @@ export default function Page() {
 							focusable={false}
 						>
 							<SandboxTree
-								tree={models[selectedModel].isEmpty ? "empty" : "complex"}
+								tree={selectedModel === "epoch-2" ? "empty" : "complex"}
 							/>
 						</Tabs.TabPanel>
 					</Tabs.Root>
@@ -443,8 +463,6 @@ interface SandboxTreeProps {
 }
 
 function SandboxTree({ tree }: SandboxTreeProps) {
-	const [searchParams] = useSearchParams();
-	const treeParam = searchParams.get("tree"); // for handling ?tree=empty
 	const [selected, setSelected] = React.useState<string | undefined>();
 	const [hidden, setHidden] = React.useState<string[]>([]);
 	const toggleHidden = React.useCallback((id: string) => {
@@ -456,7 +474,12 @@ function SandboxTree({ tree }: SandboxTreeProps) {
 		});
 	}, []);
 
-	if (treeParam === "empty") {
+	const sandboxTreeContext = React.useMemo(
+		() => ({ selected, setSelected, hidden, toggleHidden }),
+		[hidden, selected, toggleHidden],
+	);
+
+	if (tree === "empty") {
 		return (
 			<EmptyState>
 				<Text>No layers</Text>
@@ -466,12 +489,7 @@ function SandboxTree({ tree }: SandboxTreeProps) {
 	}
 
 	return (
-		<SandboxTreeContext.Provider
-			value={React.useMemo(
-				() => ({ selected, setSelected, hidden, toggleHidden }),
-				[hidden, selected, toggleHidden],
-			)}
-		>
+		<SandboxTreeContext.Provider value={sandboxTreeContext}>
 			<Tree.Root className={styles.tree}>
 				<SandboxTreeItems tree={tree} />
 			</Tree.Root>

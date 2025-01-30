@@ -97,6 +97,10 @@ interface TreeItemProps extends Omit<BaseProps, "content"> {
 	label?: React.ReactNode;
 	/** The actions available for the tree item. */
 	actions?: React.ReactNode;
+	/** Defines tree item position in the current level of tree items. */
+	position: number;
+	/** Defines tree item size in the current level of tree items. */
+	size: number;
 }
 
 /**
@@ -134,6 +138,8 @@ const TreeItem = forwardRef<"div", TreeItemProps>((props, forwardedRef) => {
 		onExpandedChange,
 		onClick: onClickProp,
 		onKeyDown: onKeyDownProp,
+		position,
+		size,
 		...rest
 	} = props;
 
@@ -190,6 +196,9 @@ const TreeItem = forwardRef<"div", TreeItemProps>((props, forwardedRef) => {
 				aria-expanded={expanded}
 				aria-selected={selected}
 				aria-labelledby={contentId}
+				aria-level={level}
+				aria-posinset={position}
+				aria-setsize={size}
 				className={cx("🥝-tree-item", props.className)}
 				ref={forwardedRef as Ariakit.CompositeItemProps["ref"]}
 			>

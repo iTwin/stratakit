@@ -455,6 +455,8 @@ interface FlatTreeItem extends TreeItem {
 	hidden: boolean;
 	parentHidden: boolean;
 	parentItem?: TreeItem;
+	position: number;
+	size: number;
 }
 
 interface TreeStore {
@@ -563,9 +565,9 @@ const simpleTree = {
 	],
 } satisfies TreeStore;
 
-function useFlatTreeItems(items: TreeItem[]) {
+function useFlatTreeItems(items: TreeItem[]): FlatTreeItem[] {
 	const treeContext = React.useContext(SandboxTreeContext);
-	return React.useMemo<FlatTreeItem[]>(() => {
+	return React.useMemo(() => {
 		function flattenItems(
 			items: TreeItem[],
 			parentItem: TreeItem | undefined,
@@ -574,6 +576,7 @@ function useFlatTreeItems(items: TreeItem[]) {
 			parentHidden: boolean,
 		): FlatTreeItem[] {
 			const flatItems: FlatTreeItem[] = [];
+			let position = 1;
 			for (const item of items) {
 				const selected = item.id === treeContext.selected || parentSelected;
 				const hidden = treeContext.hidden.includes(item.id) || parentHidden;
@@ -584,7 +587,10 @@ function useFlatTreeItems(items: TreeItem[]) {
 					selected,
 					hidden,
 					parentHidden,
+					position,
+					size: items.length,
 				});
+				position++;
 				if (!item.expanded) continue;
 				flatItems.push(
 					...flattenItems(item.items, item, level + 1, selected, hidden),
@@ -631,6 +637,8 @@ function SimpleTreeItems() {
 				selected={item.selected}
 				hidden={item.hidden}
 				parentHidden={item.parentHidden}
+				position={item.position}
+				size={item.size}
 			/>
 		);
 	});
@@ -645,7 +653,13 @@ type TreeItemProps = React.ComponentProps<typeof Tree.Item>;
 interface SandboxTreeItemProps
 	extends Pick<
 		TreeItemProps,
-		"level" | "label" | "expanded" | "onExpandedChange" | "selected"
+		| "level"
+		| "label"
+		| "expanded"
+		| "onExpandedChange"
+		| "selected"
+		| "position"
+		| "size"
 	> {
 	id: string;
 	hidden: boolean;

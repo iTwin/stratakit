@@ -5,7 +5,6 @@
 .🥝-dropdown-menu {
 	--✨bg: var(--kiwi-color-bg-surface-tertiary);
 	--✨padding: 0.5rem; /* space(in progress)/x2 */
-	--✨gap: 0.25rem; /* space(in progress)/x1 */
 
 	@layer base {
 		background-color: var(--✨bg);
@@ -13,7 +12,6 @@
 
 		display: flex;
 		flex-direction: column;
-		gap: var(--✨gap);
 
 		border-radius: 8px /* radius(in progress)/medium */;
 		padding-block: var(--✨padding);

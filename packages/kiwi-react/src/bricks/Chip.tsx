@@ -14,6 +14,11 @@ interface ChipProps extends BaseProps<"div"> {
 	 * @default "solid"
 	 */
 	variant?: "solid" | "outline";
+
+	/**
+	 * Determines if the chip is in a "checked" state.
+	 */
+	isChecked?: boolean;
 }
 
 /**

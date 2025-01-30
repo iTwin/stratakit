@@ -452,6 +452,8 @@ interface TreeItem {
 interface FlatTreeItem extends TreeItem {
 	level: number;
 	selected: boolean;
+	hidden: boolean;
+	parentHidden: boolean;
 	parentItem?: TreeItem;
 }
 
@@ -569,23 +571,29 @@ function useFlatTreeItems(items: TreeItem[]) {
 			parentItem: TreeItem | undefined,
 			level: number,
 			parentSelected: boolean,
+			parentHidden: boolean,
 		): FlatTreeItem[] {
 			const flatItems: FlatTreeItem[] = [];
 			for (const item of items) {
 				const selected = item.id === treeContext.selected || parentSelected;
+				const hidden = treeContext.hidden.includes(item.id) || parentHidden;
 				flatItems.push({
 					...item,
 					level,
 					parentItem,
 					selected,
+					hidden,
+					parentHidden,
 				});
 				if (!item.expanded) continue;
-				flatItems.push(...flattenItems(item.items, item, level + 1, selected));
+				flatItems.push(
+					...flattenItems(item.items, item, level + 1, selected, hidden),
+				);
 			}
 			return flatItems;
 		}
-		return flattenItems(items, undefined, 1, false);
-	}, [items, treeContext.selected]);
+		return flattenItems(items, undefined, 1, false, false);
+	}, [items, treeContext.selected, treeContext.hidden]);
 }
 
 function findTreeItem<T extends Pick<TreeItem, "id"> & { items: T[] }>(
@@ -621,6 +629,8 @@ function SimpleTreeItems() {
 					});
 				}}
 				selected={item.selected}
+				hidden={item.hidden}
+				parentHidden={item.parentHidden}
 			/>
 		);
 	});
@@ -638,30 +648,25 @@ interface SandboxTreeItemProps
 		"level" | "label" | "expanded" | "onExpandedChange" | "selected"
 	> {
 	id: string;
+	hidden: boolean;
+	parentHidden: boolean;
 }
 
 function SandboxTreeItem(props: SandboxTreeItemProps) {
-	const { id, ...rest } = props;
-	const treeContext = React.useContext(SandboxTreeContext);
-	const hidden = React.useMemo(() => {
-		return false;
-		// if (parentContext.hidden) return true;
-		// return treeContext.hidden.includes(id);
-	}, []);
-	const setSelected = React.useCallback(
-		(selected: boolean) => {
-			if (treeContext.selected === id) {
-				treeContext.setSelected(undefined);
-				return;
-			}
-			treeContext.setSelected(id);
-		},
-		[id, treeContext],
-	);
+	const { id, hidden, parentHidden, ...rest } = props;
+	const { setSelected, selected, toggleHidden } =
+		React.useContext(SandboxTreeContext);
+	const handleSelectedChange = React.useCallback(() => {
+		if (selected === id) {
+			setSelected(undefined);
+			return;
+		}
+		setSelected(id);
+	}, [id, selected, setSelected]);
 	return (
 		<Tree.Item
 			{...rest}
-			onSelectedChange={setSelected}
+			onSelectedChange={handleSelectedChange}
 			icon={<Icon href={placeholderIcon} style={{ display: "inline" }} />}
 			actions={
 				<>
@@ -672,7 +677,7 @@ function SandboxTreeItem(props: SandboxTreeItemProps) {
 						variant="ghost"
 						aria-hidden={hidden}
 					/>
-					{hidden ? (
+					{parentHidden ? (
 						<span className={styles.actionIcon}>
 							<Icon href={dotIcon} />
 						</span>
@@ -683,7 +688,7 @@ function SandboxTreeItem(props: SandboxTreeItemProps) {
 							label={hidden ? "Show" : "Hide"}
 							variant="ghost"
 							onClick={() => {
-								treeContext.toggleHidden(id);
+								toggleHidden(id);
 							}}
 						/>
 					)}

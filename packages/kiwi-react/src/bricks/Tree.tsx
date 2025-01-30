@@ -9,7 +9,7 @@ import * as ListItem from "./ListItem.js";
 import { IconButton } from "./IconButton.js";
 import { Icon } from "./Icon.js";
 import { forwardRef, type BaseProps } from "./~utils.js";
-import { useEventHandlers, useLatestRef } from "./~hooks.js";
+import { useEventHandlers } from "./~hooks.js";
 
 // ----------------------------------------------------------------------------
 
@@ -133,33 +133,26 @@ const TreeItem = forwardRef<"div", TreeItemProps>((props, forwardedRef) => {
 	const parentContext = React.useContext(TreeItemContext);
 	const level = parentContext ? parentContext.level + 1 : 1;
 
-	const latestOnSelectedChange = useLatestRef(onSelectedChange);
-	const latestOnExpandedChange = useLatestRef(onExpandedChange);
+	const handleClick = (event: React.MouseEvent) => {
+		if (selected === undefined) return;
 
-	const handleClick = React.useCallback(
-		(event: React.MouseEvent) => {
-			event.stopPropagation();
+		event.stopPropagation(); // Avoid selecting parent treeitem
+		onSelectedChange?.(!selected);
+	};
 
-			if (selected !== undefined) latestOnSelectedChange.current?.(!selected);
-		},
-		[latestOnSelectedChange, selected],
-	);
+	const handleKeyDown = (event: React.KeyboardEvent) => {
+		if (event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) {
+			return;
+		}
 
-	const handleKeyDown = React.useCallback(
-		(event: React.KeyboardEvent) => {
-			if (event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) {
-				return;
-			}
+		if (expanded === undefined) return;
 
-			if (event.key === "ArrowRight" || event.key === "ArrowLeft") {
-				event.stopPropagation();
-				event.preventDefault();
+		if (event.key === "ArrowRight" || event.key === "ArrowLeft") {
+			event.preventDefault(); // Prevent scrolling
 
-				latestOnExpandedChange.current?.(event.key === "ArrowRight");
-			}
-		},
-		[latestOnExpandedChange],
-	);
+			onExpandedChange?.(event.key === "ArrowRight");
+		}
+	};
 
 	const contentId = React.useId();
 
@@ -255,17 +248,11 @@ interface TreeItemActionsProps extends BaseProps {
 const TreeItemActions = forwardRef<"div", TreeItemActionsProps>(
 	(props, forwardedRef) => {
 		const { visible, ...rest } = props;
-		const handleClick = React.useCallback(
-			(event: React.MouseEvent<HTMLDivElement>) => {
-				event.stopPropagation();
-			},
-			[],
-		);
 
 		return (
 			<Ariakit.Toolbar
 				{...rest}
-				onClick={useEventHandlers(props.onClick, handleClick)}
+				onClick={useEventHandlers(props.onClick, (e) => e.stopPropagation())}
 				className={cx("🥝-tree-item-actions", props.className)}
 				data-kiwi-visible={visible}
 				ref={forwardedRef}
@@ -286,13 +273,6 @@ interface TreeItemExpanderProps
 
 const TreeItemExpander = forwardRef<"button", TreeItemExpanderProps>(
 	(props, forwardedRef) => {
-		const handleClick = React.useCallback(
-			(event: React.MouseEvent<HTMLButtonElement>) => {
-				event.stopPropagation();
-			},
-			[],
-		);
-
 		return (
 			<IconButton
 				tabIndex={-1}
@@ -300,7 +280,7 @@ const TreeItemExpander = forwardRef<"button", TreeItemExpanderProps>(
 				icon={<TreeChevron />}
 				label="Toggle"
 				{...props}
-				onClick={useEventHandlers(props.onClick, handleClick)}
+				onClick={useEventHandlers(props.onClick, (e) => e.stopPropagation())}
 				className={cx("🥝-tree-item-expander", props.className)}
 				variant="ghost"
 				labelVariant="visually-hidden"

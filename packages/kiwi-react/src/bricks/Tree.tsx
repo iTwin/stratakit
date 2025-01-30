@@ -9,8 +9,7 @@ import * as ListItem from "./ListItem.js";
 import { IconButton } from "./IconButton.js";
 import { Icon } from "./Icon.js";
 import { forwardRef, type BaseProps } from "./~utils.js";
-import { VisuallyHidden } from "./VisuallyHidden.js";
-import { useEventHandlers } from "./~hooks.js";
+import { useEventHandlers, useLatestRef } from "./~hooks.js";
 
 // ----------------------------------------------------------------------------
 
@@ -35,13 +34,17 @@ interface TreeProps extends BaseProps {}
  * ```
  */
 const Tree = forwardRef<"div", TreeProps>((props, forwardedRef) => {
+	const composite = Ariakit.useCompositeStore({ orientation: "vertical" });
+
 	return (
 		<Ariakit.Role.div
+			role="tree"
 			{...props}
+			render={<Ariakit.Composite store={composite} />}
 			className={cx("🥝-tree", props.className)}
 			ref={forwardedRef}
 		>
-			<div role="list">{props.children}</div>
+			{props.children}
 		</Ariakit.Role.div>
 	);
 });
@@ -122,11 +125,44 @@ const TreeItem = forwardRef<"div", TreeItemProps>((props, forwardedRef) => {
 		style,
 		onSelectedChange,
 		onExpandedChange,
+		onClick: onClickProp,
+		onKeyDown: onKeyDownProp,
 		...rest
 	} = props;
 
 	const parentContext = React.useContext(TreeItemContext);
 	const level = parentContext ? parentContext.level + 1 : 1;
+
+	const latestOnSelectedChange = useLatestRef(onSelectedChange);
+	const latestOnExpandedChange = useLatestRef(onExpandedChange);
+
+	const handleClick = React.useCallback(
+		(event: React.MouseEvent) => {
+			event.stopPropagation();
+
+			if (selected !== undefined) latestOnSelectedChange.current?.(!selected);
+		},
+		[latestOnSelectedChange, selected],
+	);
+
+	const handleKeyDown = React.useCallback(
+		(event: React.KeyboardEvent) => {
+			if (event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) {
+				return;
+			}
+
+			if (event.key === "ArrowRight" || event.key === "ArrowLeft") {
+				event.stopPropagation();
+				event.preventDefault();
+
+				latestOnExpandedChange.current?.(event.key === "ArrowRight");
+			}
+		},
+		[latestOnExpandedChange],
+	);
+
+	const contentId = React.useId();
+
 	return (
 		<TreeItemContext.Provider
 			value={React.useMemo(
@@ -134,24 +170,37 @@ const TreeItem = forwardRef<"div", TreeItemProps>((props, forwardedRef) => {
 					level,
 					expanded,
 					selected,
-					onSelectedChange,
+					contentId,
 				}),
-				[level, expanded, selected, onSelectedChange],
+				[level, expanded, selected, contentId],
 			)}
 		>
-			<div role="listitem">
+			<Ariakit.CompositeItem
+				render={<Ariakit.Role {...rest} />}
+				onClick={
+					useEventHandlers(
+						onClickProp,
+						handleClick,
+					) as unknown as React.MouseEventHandler<HTMLButtonElement>
+				}
+				onKeyDown={
+					useEventHandlers(
+						onKeyDownProp,
+						handleKeyDown,
+					) as unknown as React.KeyboardEventHandler<HTMLButtonElement>
+				}
+				role="treeitem"
+				aria-expanded={expanded}
+				aria-selected={selected}
+				aria-labelledby={contentId}
+				className={cx("🥝-tree-item", props.className)}
+				ref={forwardedRef as Ariakit.CompositeItemProps["ref"]}
+			>
 				<ListItem.Root
-					{...rest}
 					data-kiwi-expanded={expanded}
 					data-kiwi-selected={selected}
-					className={cx("🥝-tree-item", props.className)}
-					style={
-						{
-							...style,
-							"--🥝tree-item-level": level,
-						} as React.CSSProperties
-					}
-					ref={forwardedRef}
+					className="🥝-tree-item-node"
+					style={{ "--🥝tree-item-level": level } as React.CSSProperties}
 					role={undefined}
 				>
 					<TreeItemExpander
@@ -164,8 +213,8 @@ const TreeItem = forwardRef<"div", TreeItemProps>((props, forwardedRef) => {
 					<TreeItemContent label={label} />
 					<TreeItemActions>{actions}</TreeItemActions>
 				</ListItem.Root>
-				{children && <div role="list">{children}</div>}
-			</div>
+				{children && <div role="group">{children}</div>}
+			</Ariakit.CompositeItem>
 		</TreeItemContext.Provider>
 	);
 });
@@ -181,24 +230,16 @@ const TreeItemContent = forwardRef<"span", TreeItemContentProps>(
 	(props, forwardedRef) => {
 		const { label, ...rest } = props;
 
-		const context = React.useContext(TreeItemContext);
+		const { contentId } = React.useContext(TreeItemContext) ?? {};
+
 		return (
 			<ListItem.Content
 				{...rest}
+				id={contentId}
 				className={cx("🥝-tree-item-content", props.className)}
 				ref={forwardedRef}
 			>
-				<button
-					type="button"
-					onClick={() => {
-						if (!context?.onSelectedChange || context.selected === undefined)
-							return;
-						context.onSelectedChange(!context.selected);
-					}}
-				>
-					{label}
-					{context?.selected && <VisuallyHidden>Selected item</VisuallyHidden>}
-				</button>
+				{label}
 			</ListItem.Content>
 		);
 	},
@@ -220,6 +261,7 @@ const TreeItemActions = forwardRef<"div", TreeItemActionsProps>(
 			},
 			[],
 		);
+
 		return (
 			<Ariakit.Toolbar
 				{...rest}
@@ -244,19 +286,19 @@ interface TreeItemExpanderProps
 
 const TreeItemExpander = forwardRef<"button", TreeItemExpanderProps>(
 	(props, forwardedRef) => {
-		const context = React.useContext(TreeItemContext);
-		const expanded = context?.expanded;
 		const handleClick = React.useCallback(
 			(event: React.MouseEvent<HTMLButtonElement>) => {
 				event.stopPropagation();
 			},
 			[],
 		);
+
 		return (
 			<IconButton
+				tabIndex={-1}
+				aria-hidden="true"
 				icon={<TreeChevron />}
 				label="Toggle"
-				aria-expanded={expanded === undefined ? undefined : expanded}
 				{...props}
 				onClick={useEventHandlers(props.onClick, handleClick)}
 				className={cx("🥝-tree-item-expander", props.className)}
@@ -304,7 +346,7 @@ const TreeItemContext = React.createContext<
 			level: number;
 			expanded?: boolean;
 			selected?: boolean;
-			onSelectedChange?: (selected: boolean) => void;
+			contentId: string;
 	  }
 	| undefined
 >(undefined);

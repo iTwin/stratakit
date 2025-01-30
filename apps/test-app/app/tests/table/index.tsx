@@ -19,7 +19,7 @@ export default definePage(
 					</Table.Row>
 				</Table.Header>
 				<Table.Body>
-					<Table.Row selected>
+					<Table.Row>
 						<Table.Cell>Name 1</Table.Cell>
 						<Table.Cell>Description 1</Table.Cell>
 					</Table.Row>
@@ -39,7 +39,7 @@ export default definePage(
 			</Table.Root>
 		);
 	},
-	{ visual: VisualTest, scroll: ScrollTest },
+	{ visual: VisualTest, scroll: ScrollTest, select: SelectTest },
 );
 
 function VisualTest() {
@@ -89,6 +89,47 @@ function ScrollTest() {
 	}, []);
 
 	const data = React.useMemo(() => generateData(100), [generateData]);
+
+	return (
+		<Table.Root>
+			<Table.Header>
+				<Table.Row>
+					{Object.keys(data[0]).map((columnName: string) => (
+						<Table.Cell key={columnName}>
+							{capitalizeFirstLetter(columnName)}
+						</Table.Cell>
+					))}
+				</Table.Row>
+			</Table.Header>
+			<Table.Body>
+				{data.map((row) => (
+					<Table.Row key={row.id}>
+						{Object.values(row).map((value) => (
+							<Table.Cell key={row.id}>{value}</Table.Cell>
+						))}
+					</Table.Row>
+				))}
+			</Table.Body>
+		</Table.Root>
+	);
+}
+
+function SelectTest() {
+	const capitalizeFirstLetter = (string: string) => {
+		return string.charAt(0).toUpperCase() + string.slice(1);
+	};
+
+	const generateData = React.useCallback((numberOfData: number) => {
+		return Array(numberOfData)
+			.fill(null)
+			.map((_, index) => ({
+				id: index,
+				name: `Name ${index}`,
+				description: `Description ${index}`,
+			}));
+	}, []);
+
+	const data = React.useMemo(() => generateData(5), [generateData]);
 
 	return (
 		<Table.Root>

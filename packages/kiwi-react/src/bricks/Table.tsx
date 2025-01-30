@@ -6,14 +6,10 @@ import * as Ariakit from "@ariakit/react";
 import * as React from "react";
 import cx from "classnames";
 import { forwardRef, type BaseProps } from "./~utils.js";
-import { Checkbox } from "./Checkbox.js";
-import { VisuallyHidden } from "./VisuallyHidden.js";
 
 // ----------------------------------------------------------------------------
 
-interface TableProps extends BaseProps {
-	isSelectable?: boolean;
-}
+interface TableProps extends BaseProps {}
 
 /**
  * A table is a grid of rows and columns that displays data in a structured format.
@@ -98,6 +94,13 @@ DEV: TableHeader.displayName = "Table.Header";
 // ----------------------------------------------------------------------------
 
 interface TableBodyProps extends BaseProps {}
+const TableBodyContext = React.createContext<
+	| {
+			selectedRows: Set<number>;
+			toggleRowSelection: (index: number) => void;
+	  }
+	| undefined
+>(undefined);
 
 /**
  * `Table.Body` is a component that contains the rows of table data.
@@ -118,15 +121,37 @@ interface TableBodyProps extends BaseProps {}
  * ```
  */
 const TableBody = forwardRef<"div", TableBodyProps>((props, forwardedRef) => {
+	const [selectedRows, setSelectedRows] = React.useState<Set<number>>(
+		new Set(),
+	);
+
+	const toggleRowSelection = (index: number) => {
+		setSelectedRows((prev) => {
+			const newSelection = new Set(prev);
+			newSelection.has(index)
+				? newSelection.delete(index)
+				: newSelection.add(index);
+			return newSelection;
+		});
+	};
+
 	return (
-		<Ariakit.Role.div
-			{...props}
-			className={cx("🥝-table-body", props.className)}
-			ref={forwardedRef}
-			role="rowgroup"
-		>
-			{props.children}
-		</Ariakit.Role.div>
+		<TableBodyContext.Provider value={{ selectedRows, toggleRowSelection }}>
+			<Ariakit.Role.div
+				{...props}
+				className={cx("🥝-table-body", props.className)}
+				ref={forwardedRef}
+				role="rowgroup"
+			>
+				{React.Children.map(props.children, (child, index) => {
+					return (
+						<TableRowContext.Provider value={{ rowIndex: index }}>
+							{child}
+						</TableRowContext.Provider>
+					);
+				})}
+			</Ariakit.Role.div>
+		</TableBodyContext.Provider>
 	);
 });
 DEV: TableBody.displayName = "Table.Body";
@@ -139,6 +164,12 @@ interface TableRowProps extends BaseProps {
 	 */
 	selected?: boolean;
 }
+const TableRowContext = React.createContext<
+	| {
+			rowIndex: number;
+	  }
+	| undefined
+>(undefined);
 
 /**
  * `Table.Row` is a component that contains the cells of a table row.
@@ -153,7 +184,20 @@ interface TableRowProps extends BaseProps {
  */
 const TableRow = forwardRef<"div", TableRowProps>((props, forwardedRef) => {
 	const { children, selected, ...rest } = props;
+	const tableBodyContext = React.useContext(TableBodyContext);
+	const tableRowContext = React.useContext(TableRowContext);
 	const isWithinTableHeader = React.useContext(TableHeaderContext);
+	const rowIndex = tableRowContext?.rowIndex;
+
+	const isSelected =
+		selected ||
+		(rowIndex !== undefined && tableBodyContext?.selectedRows?.has(rowIndex));
+
+	const handleSelect = () => {
+		if (rowIndex !== undefined) {
+			tableBodyContext?.toggleRowSelection?.(rowIndex);
+		}
+	};
 
 	return (
 		<Ariakit.Role.div
@@ -161,13 +205,10 @@ const TableRow = forwardRef<"div", TableRowProps>((props, forwardedRef) => {
 			className={cx("🥝-table-row", props.className)}
 			ref={forwardedRef}
 			role="row"
-			aria-selected={selected ? "true" : undefined}
+			aria-selected={isSelected ? "true" : undefined}
 			data-kiwi-variant={isWithinTableHeader ? "header" : undefined}
+			onClick={handleSelect}
 		>
-			<TableCell data-kiwi-slot>
-				<Checkbox aria-checked={selected} />
-				<VisuallyHidden>Select row</VisuallyHidden>
-			</TableCell>
 			{children}
 		</Ariakit.Role.div>
 	);

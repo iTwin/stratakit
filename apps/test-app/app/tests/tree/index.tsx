@@ -42,14 +42,19 @@ export default definePage(
 			<Tree.Root style={{ maxInlineSize: overflow ? 300 : undefined }}>
 				{data.map((item, index) => {
 					const handleSelection = () => {
+						const oldSelected = data[index].selected;
+
 						const newData = [...data];
-						newData[index].selected = !newData[index].selected;
+						newData[index].selected = !oldSelected;
 						setData(newData);
 					};
 
 					const handleExpansion = () => {
+						const oldExpanded = data[index].expanded;
+						if (oldExpanded === undefined) return;
+
 						const newData = [...data];
-						newData[index].expanded = !newData[index].expanded;
+						newData[index].expanded = !oldExpanded;
 						setData(newData);
 					};
 

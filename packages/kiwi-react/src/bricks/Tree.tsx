@@ -134,9 +134,10 @@ const TreeItem = forwardRef<"div", TreeItemProps>((props, forwardedRef) => {
 	const level = parentContext ? parentContext.level + 1 : 1;
 
 	const handleClick = (event: React.MouseEvent) => {
-		event.stopPropagation();
+		if (selected === undefined) return;
 
-		if (selected !== undefined) onSelectedChange?.(!selected);
+		event.stopPropagation(); // Avoid selecting parent treeitem
+		onSelectedChange?.(!selected);
 	};
 
 	const handleKeyDown = (event: React.KeyboardEvent) => {
@@ -144,9 +145,10 @@ const TreeItem = forwardRef<"div", TreeItemProps>((props, forwardedRef) => {
 			return;
 		}
 
+		if (expanded === undefined) return;
+
 		if (event.key === "ArrowRight" || event.key === "ArrowLeft") {
-			event.stopPropagation();
-			event.preventDefault();
+			event.preventDefault(); // Prevent scrolling
 
 			onExpandedChange?.(event.key === "ArrowRight");
 		}

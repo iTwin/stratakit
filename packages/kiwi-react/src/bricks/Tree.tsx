@@ -62,6 +62,12 @@ interface TreeItemProps extends Omit<BaseProps, "content"> {
 	 */
 	selected?: boolean;
 	/**
+	 * Specifies the nesting level of the tree item. Nesting levels start at 1.
+	 *
+	 * @default 1
+	 */
+	level?: number;
+	/**
 	 * Callback fired when the tree item is selected.
 	 *
 	 * Should be used with the `selected` prop.
@@ -117,6 +123,7 @@ interface TreeItemProps extends Omit<BaseProps, "content"> {
 const TreeItem = forwardRef<"div", TreeItemProps>((props, forwardedRef) => {
 	const {
 		selected,
+		level = 1,
 		children,
 		expanded,
 		icon,
@@ -129,9 +136,6 @@ const TreeItem = forwardRef<"div", TreeItemProps>((props, forwardedRef) => {
 		onKeyDown: onKeyDownProp,
 		...rest
 	} = props;
-
-	const parentContext = React.useContext(TreeItemContext);
-	const level = parentContext ? parentContext.level + 1 : 1;
 
 	const handleClick = (event: React.MouseEvent) => {
 		if (selected === undefined) return;
@@ -206,7 +210,6 @@ const TreeItem = forwardRef<"div", TreeItemProps>((props, forwardedRef) => {
 					<TreeItemContent label={label} />
 					<TreeItemActions>{actions}</TreeItemActions>
 				</ListItem.Root>
-				{children && <div role="group">{children}</div>}
 			</Ariakit.CompositeItem>
 		</TreeItemContext.Provider>
 	);
@@ -323,7 +326,6 @@ DEV: TreeChevron.displayName = "TreeChevron";
 
 const TreeItemContext = React.createContext<
 	| {
-			level: number;
 			expanded?: boolean;
 			selected?: boolean;
 			contentId: string;

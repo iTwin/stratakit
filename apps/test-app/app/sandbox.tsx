@@ -4,6 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 import * as React from "react";
 import * as ReactDOM from "react-dom";
+import { produce } from "immer";
 import styles from "./sandbox.module.css";
 import {
 	Button,
@@ -435,129 +436,191 @@ function SandboxTree({ tree }: SandboxTreeProps) {
 			)}
 		>
 			<Tree.Root className={styles.tree}>
-				{tree === "complex" ? <ComplexTreeItems /> : <IdealTreeItems />}
+				{tree === "complex" ? <ComplexTreeItems /> : <SimpleTreeItems />}
 			</Tree.Root>
 		</SandboxTreeContext.Provider>
 	);
 }
 
-function IdealTreeItems() {
-	return (
-		<>
-			<TreeItem label="Guides">
-				<TreeItem label="Tree">
-					<TreeItem label="Guide 4" />
-					<TreeItem label="Guide 3" />
-					<TreeItem label="Guide 2" />
-					<TreeItem label="Guide 1" />
-				</TreeItem>
-			</TreeItem>
-			<TreeItem label="Other">
-				<TreeItem label="Object 2">
-					<TreeItem label="Path 3" />
-				</TreeItem>
-				<TreeItem label="Object 1" />
-			</TreeItem>
-			<TreeItem label="Road">
-				<TreeItem label="Parking lot access" />
-				<TreeItem label="Site access" />
-			</TreeItem>
-			<TreeItem label="Parking lot">
-				<TreeItem label="Parking area">
-					<TreeItem label="Bay point 2" />
-					<TreeItem label="Bay point 1" />
-					<TreeItem label="Space point 1" />
-					<TreeItem label="Path 6" />
-				</TreeItem>
-			</TreeItem>
-			<TreeItem label="Building">
-				<TreeItem label="Building area">
-					<TreeItem label="Path 5" />
-				</TreeItem>
-			</TreeItem>
-			<TreeItem label="Sewer">
-				<TreeItem label="Run off pipe">
-					<TreeItem label="Path 4" />
-				</TreeItem>
-			</TreeItem>
-			<TreeItem label="Project boundary">
-				<TreeItem label="Property area">
-					<TreeItem label="Path 1" />
-				</TreeItem>
-			</TreeItem>
-			<TreeItem label="Map">
-				<TreeItem label="Location">
-					<TreeItem label="Terrain" />
-				</TreeItem>
-			</TreeItem>
-		</>
-	);
+interface TreeItem {
+	id: string;
+	label: string;
+	items: TreeItem[];
+	expanded: boolean;
+}
+
+interface FlatTreeItem extends TreeItem {
+	level: number;
+	parentItem?: TreeItem;
+}
+
+interface TreeStore {
+	items: TreeItem[];
+}
+
+const nextTreeId = (() => {
+	let id = 0;
+	return () => `${id++}`;
+})();
+
+function createTreeItem(overrides?: Partial<TreeItem>): TreeItem {
+	const id = nextTreeId();
+	return {
+		id,
+		label: `Tree Item ${id}`,
+		items: [],
+		expanded: true,
+		...overrides,
+	};
+}
+
+const simpleTree = {
+	items: [
+		createTreeItem({
+			label: "Guides",
+			items: [
+				createTreeItem({
+					label: "Tree",
+					items: [
+						createTreeItem({ label: "Guide 4" }),
+						createTreeItem({ label: "Guide 3" }),
+						createTreeItem({ label: "Guide 2" }),
+						createTreeItem({ label: "Guide 1" }),
+					],
+				}),
+			],
+		}),
+		createTreeItem({
+			label: "Other",
+			items: [
+				createTreeItem({
+					label: "Object 2",
+					items: [createTreeItem({ label: "Path 3" })],
+				}),
+				createTreeItem({ label: "Object 1" }),
+			],
+		}),
+		createTreeItem({
+			label: "Road",
+			items: [
+				createTreeItem({ label: "Parking lot access" }),
+				createTreeItem({ label: "Site access" }),
+			],
+		}),
+		createTreeItem({
+			label: "Parking lot",
+			items: [
+				createTreeItem({
+					label: "Parking area",
+					items: [
+						createTreeItem({ label: "Bay point 2" }),
+						createTreeItem({ label: "Bay point 1" }),
+						createTreeItem({ label: "Space point 1" }),
+						createTreeItem({ label: "Path 6" }),
+					],
+				}),
+			],
+		}),
+		createTreeItem({
+			label: "Building",
+			items: [
+				createTreeItem({
+					label: "Building area",
+					items: [createTreeItem({ label: "Path 5" })],
+				}),
+			],
+		}),
+		createTreeItem({
+			label: "Sewer",
+			items: [
+				createTreeItem({
+					label: "Run off pipe",
+					items: [createTreeItem({ label: "Path 4" })],
+				}),
+			],
+		}),
+		createTreeItem({
+			label: "Project boundary",
+			items: [
+				createTreeItem({
+					label: "Property area",
+					items: [createTreeItem({ label: "Path 1" })],
+				}),
+			],
+		}),
+		createTreeItem({
+			label: "Map",
+			items: [
+				createTreeItem({
+					label: "Location",
+					items: [createTreeItem({ label: "Terrain" })],
+				}),
+			],
+		}),
+	],
+} satisfies TreeStore;
+
+function useFlatTreeItems(items: TreeItem[]) {
+	return React.useMemo<FlatTreeItem[]>(() => {
+		function flattenItems(
+			items: TreeItem[],
+			parentItem: TreeItem | undefined,
+			level: number,
+		): FlatTreeItem[] {
+			const flatItems: FlatTreeItem[] = [];
+			for (const item of items) {
+				flatItems.push({
+					...item,
+					level,
+					parentItem,
+				});
+				if (!item.expanded) continue;
+				flatItems.push(...flattenItems(item.items, item, level + 1));
+			}
+			return flatItems;
+		}
+		return flattenItems(items, undefined, 1);
+	}, [items]);
+}
+
+function findTreeItem<T extends Pick<TreeItem, "id"> & { items: T[] }>(
+	items: T[],
+	id: string,
+): T | undefined {
+	for (const item of items) {
+		if (item.id === id) return item;
+
+		const found = findTreeItem(item.items, id);
+		if (found) return found;
+	}
+}
+
+function SimpleTreeItems() {
+	const [items, setItems] = React.useState(simpleTree.items);
+	const flatItems = useFlatTreeItems(items);
+	return flatItems.map((item) => {
+		return (
+			<SandboxTreeItem
+				key={item.id}
+				label={item.label}
+				level={item.level}
+				expanded={item.items.length === 0 ? undefined : item.expanded}
+				onExpandedChange={(expanded) => {
+					setItems((prev) => {
+						return produce(prev, (draft) => {
+							const treeItem = findTreeItem(draft, item.id);
+							if (!treeItem) return;
+							treeItem.expanded = expanded;
+						});
+					});
+				}}
+			/>
+		);
+	});
 }
 
 function ComplexTreeItems() {
-	return (
-		<>
-			<TreeItem label="ITC_Master">
-				<TreeItem label="002_Substation" defaultCollapsed>
-					<TreeItem label="002_Substation_A" />
-				</TreeItem>
-				<TreeItem label="005-BENROAD-00-XX-M3-D-00003.dgn" defaultCollapsed>
-					<TreeItem label="005-BENROAD-00-XX-M3-D-00003-A" />
-				</TreeItem>
-				<TreeItem label="005-BENROAD-00-XX-M3-D-00005.dgn" defaultCollapsed>
-					<TreeItem label="005-BENROAD-00-XX-M3-D-00005-A" />
-				</TreeItem>
-				<TreeItem label="005-BENROAD-00-XX-M3-G-00002.dgn" defaultCollapsed>
-					<TreeItem label="005-BENROAD-00-XX-M3-G-00002-A" />
-				</TreeItem>
-				<TreeItem label="005-BENROAD-00-XX-M3-G-00003.dgn" defaultCollapsed>
-					<TreeItem label="005-BENROAD-00-XX-M3-G-00003-A" />
-				</TreeItem>
-				<TreeItem label="007-aa_master.dgn">
-					<TreeItem label="A-CLNG-LITE" defaultCollapsed>
-						<TreeItem label="A-CLNG-LITE-A" />
-					</TreeItem>
-					<TreeItem label="A-CLNG-TILE">
-						<TreeItem label="A-DOOR-2D-PLAN">
-							<TreeItem label="P00003 [2-KA62]">
-								<TreeItem label="Cell [2-KA63]">
-									<TreeItem label="Cell [2-KA64]">
-										<TreeItem label="Complex Chain [2-KA6A]" />
-										<TreeItem label="Complex Chain [2-KA6B]" />
-										<TreeItem label="Complex Chain [2-KA6C]" />
-										<TreeItem label="Complex Chain [2-KA6D]" />
-										<TreeItem label="Complex Chain [2-KA6E]" />
-										<TreeItem label="Complex Chain [2-KA6F]" />
-										<TreeItem label="Complex Chain [2-KA6G]" />
-										<TreeItem label="Complex Chain [2-KA6H]" />
-										<TreeItem label="Complex Chain [2-KA61]" />
-										<TreeItem label="Complex Chain [2-KA65]" />
-										<TreeItem label="Complex Chain [2-KA66]" />
-										<TreeItem label="Complex Chain [2-KA67]" />
-										<TreeItem label="Complex Chain [2-KA68]" />
-										<TreeItem label="Complex Chain [2-KA69]" />
-									</TreeItem>
-								</TreeItem>
-							</TreeItem>
-							<TreeItem label="P00003 [2-KA74]" defaultCollapsed>
-								<TreeItem label="P00003 [2-KA74-A]" />
-							</TreeItem>
-							<TreeItem label="P00003 [2-KA86]" defaultCollapsed>
-								<TreeItem label="P00003 [2-KA74-A]" />
-							</TreeItem>
-							<TreeItem label="P00003 [2-KA98]" defaultCollapsed>
-								<TreeItem label="P00003 [2-KA98-A]" />
-							</TreeItem>
-							<TreeItem label="P00003 [2-KAAA]" defaultCollapsed>
-								<TreeItem label="P00003 [2-KAAA-A]" />
-							</TreeItem>
-						</TreeItem>
-					</TreeItem>
-				</TreeItem>
-			</TreeItem>
-			<TreeItem label="ITC_Main" />
-		</>
-	);
+	return <>WIP</>;
 }
 
 const SandboxParentItemContext = React.createContext<{
@@ -565,19 +628,18 @@ const SandboxParentItemContext = React.createContext<{
 	hidden: boolean;
 }>({ selected: false, hidden: false });
 
-type TreeItemProps = React.PropsWithChildren<{
-	label?: string;
-	defaultCollapsed?: boolean;
-}>;
+type TreeItemProps = React.ComponentProps<typeof Tree.Item>;
 
-function TreeItem(props: TreeItemProps) {
+interface SandboxTreeItemProps
+	extends Pick<
+		TreeItemProps,
+		"level" | "label" | "expanded" | "onExpandedChange"
+	> {}
+
+function SandboxTreeItem(props: SandboxTreeItemProps) {
 	const treeContext = React.useContext(SandboxTreeContext);
 	const parentContext = React.useContext(SandboxParentItemContext);
 	const id = React.useId();
-	const [expanded, setExpanded] = React.useState(
-		props.defaultCollapsed === undefined ? true : !props.defaultCollapsed,
-	);
-	const isParentNode = React.Children.count(props.children) > 0;
 	const hidden = React.useMemo(() => {
 		if (parentContext.hidden) return true;
 		return treeContext.hidden.includes(id);
@@ -594,12 +656,10 @@ function TreeItem(props: TreeItemProps) {
 			value={React.useMemo(() => ({ selected, hidden }), [hidden, selected])}
 		>
 			<Tree.Item
-				expanded={isParentNode ? expanded : undefined}
-				onExpandedChange={setExpanded}
+				{...props}
 				selected={selected}
 				onSelectedChange={setSelected}
 				icon={<Icon href={placeholderIcon} style={{ display: "inline" }} />}
-				label={props.label}
 				actions={
 					<>
 						<IconButton
@@ -627,9 +687,7 @@ function TreeItem(props: TreeItemProps) {
 						<TreeMoreActions hidden={hidden} />
 					</>
 				}
-			>
-				{expanded ? props.children : undefined}
-			</Tree.Item>
+			/>
 		</SandboxParentItemContext.Provider>
 	);
 }

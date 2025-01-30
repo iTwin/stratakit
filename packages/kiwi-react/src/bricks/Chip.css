@@ -3,11 +3,13 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 .🥝-chip {
+	isolation: isolate;
 	@layer base {
 		display: inline-flex;
 		align-items: center;
 		position: relative;
 
+		gap: 00.1rem;
 		--🥝chip-padding-inline: 0.5rem;
 		padding-inline: var(--🥝chip-padding-inline);
 
@@ -18,8 +20,9 @@
 	}
 
 	&::before {
-		content: "";
 		position: absolute;
+		z-index: -1;
+		content: "";
 		inset: 0;
 		border-radius: inherit;
 		border: 1px solid var(--kiwi-color-border-neutral-base);
@@ -39,6 +42,7 @@
 
 .🥝-chip-dismiss-button:is(.🥝-icon-button) {
 	@layer base {
+		position: relative;
 		border-radius: inherit;
 		margin-inline-end: calc(-1 * var(--🥝chip-padding-inline));
 	}

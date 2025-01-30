@@ -451,6 +451,7 @@ interface TreeItem {
 
 interface FlatTreeItem extends TreeItem {
 	level: number;
+	selected: boolean;
 	parentItem?: TreeItem;
 }
 
@@ -561,26 +562,30 @@ const simpleTree = {
 } satisfies TreeStore;
 
 function useFlatTreeItems(items: TreeItem[]) {
+	const treeContext = React.useContext(SandboxTreeContext);
 	return React.useMemo<FlatTreeItem[]>(() => {
 		function flattenItems(
 			items: TreeItem[],
 			parentItem: TreeItem | undefined,
 			level: number,
+			parentSelected: boolean,
 		): FlatTreeItem[] {
 			const flatItems: FlatTreeItem[] = [];
 			for (const item of items) {
+				const selected = item.id === treeContext.selected || parentSelected;
 				flatItems.push({
 					...item,
 					level,
 					parentItem,
+					selected,
 				});
 				if (!item.expanded) continue;
-				flatItems.push(...flattenItems(item.items, item, level + 1));
+				flatItems.push(...flattenItems(item.items, item, level + 1, selected));
 			}
 			return flatItems;
 		}
-		return flattenItems(items, undefined, 1);
-	}, [items]);
+		return flattenItems(items, undefined, 1, false);
+	}, [items, treeContext.selected]);
 }
 
 function findTreeItem<T extends Pick<TreeItem, "id"> & { items: T[] }>(
@@ -602,6 +607,7 @@ function SimpleTreeItems() {
 		return (
 			<SandboxTreeItem
 				key={item.id}
+				id={item.id}
 				label={item.label}
 				level={item.level}
 				expanded={item.items.length === 0 ? undefined : item.expanded}
@@ -614,6 +620,7 @@ function SimpleTreeItems() {
 						});
 					});
 				}}
+				selected={item.selected}
 			/>
 		);
 	});
@@ -623,72 +630,67 @@ function ComplexTreeItems() {
 	return <>WIP</>;
 }
 
-const SandboxParentItemContext = React.createContext<{
-	selected: boolean;
-	hidden: boolean;
-}>({ selected: false, hidden: false });
-
 type TreeItemProps = React.ComponentProps<typeof Tree.Item>;
 
 interface SandboxTreeItemProps
 	extends Pick<
 		TreeItemProps,
-		"level" | "label" | "expanded" | "onExpandedChange"
-	> {}
+		"level" | "label" | "expanded" | "onExpandedChange" | "selected"
+	> {
+	id: string;
+}
 
 function SandboxTreeItem(props: SandboxTreeItemProps) {
+	const { id, ...rest } = props;
 	const treeContext = React.useContext(SandboxTreeContext);
-	const parentContext = React.useContext(SandboxParentItemContext);
-	const id = React.useId();
 	const hidden = React.useMemo(() => {
-		if (parentContext.hidden) return true;
-		return treeContext.hidden.includes(id);
-	}, [id, treeContext.hidden, parentContext.hidden]);
-	const selected = parentContext.selected || id === treeContext.selected;
+		return false;
+		// if (parentContext.hidden) return true;
+		// return treeContext.hidden.includes(id);
+	}, []);
 	const setSelected = React.useCallback(
 		(selected: boolean) => {
-			treeContext.setSelected(selected ? id : undefined);
+			if (treeContext.selected === id) {
+				treeContext.setSelected(undefined);
+				return;
+			}
+			treeContext.setSelected(id);
 		},
 		[id, treeContext],
 	);
 	return (
-		<SandboxParentItemContext.Provider
-			value={React.useMemo(() => ({ selected, hidden }), [hidden, selected])}
-		>
-			<Tree.Item
-				{...props}
-				selected={selected}
-				onSelectedChange={setSelected}
-				icon={<Icon href={placeholderIcon} style={{ display: "inline" }} />}
-				actions={
-					<>
+		<Tree.Item
+			{...rest}
+			onSelectedChange={setSelected}
+			icon={<Icon href={placeholderIcon} style={{ display: "inline" }} />}
+			actions={
+				<>
+					<IconButton
+						className={styles.action}
+						icon={lockIcon}
+						label="Lock"
+						variant="ghost"
+						aria-hidden={hidden}
+					/>
+					{hidden ? (
+						<span className={styles.actionIcon}>
+							<Icon href={dotIcon} />
+						</span>
+					) : (
 						<IconButton
 							className={styles.action}
-							icon={lockIcon}
-							label="Lock"
+							icon={hidden ? hideIcon : showIcon}
+							label={hidden ? "Show" : "Hide"}
 							variant="ghost"
-							aria-hidden={hidden}
+							onClick={() => {
+								treeContext.toggleHidden(id);
+							}}
 						/>
-						{parentContext.hidden ? (
-							<span className={styles.actionIcon}>
-								<Icon href={dotIcon} />
-							</span>
-						) : (
-							<IconButton
-								className={styles.action}
-								icon={hidden ? hideIcon : showIcon}
-								label={hidden ? "Show" : "Hide"}
-								variant="ghost"
-								onClick={() => {
-									treeContext.toggleHidden(id);
-								}}
-							/>
-						)}
-						<TreeMoreActions hidden={hidden} />
-					</>
-				}
-			/>
-		</SandboxParentItemContext.Provider>
+					)}
+					<TreeMoreActions hidden={hidden} />
+				</>
+			}
+		/>
 	);
 }
 

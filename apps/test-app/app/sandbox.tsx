@@ -35,24 +35,21 @@ export const meta: MetaFunction = () => {
 
 export default function Page() {
 	const models = React.useMemo(
-		() =>
-			Object.fromEntries(
-				Array(5)
-					.fill(null)
-					.map((_, i) => [
-						`epoch-${i}`,
-						{
-							name: `Epoch System iModel ${i + 1}`,
-							isEmpty: i % 2 === 1,
-						},
-					]),
-			),
+		() => ({
+			"epoch-1": {
+				name: "Epoch System iModel 1",
+				isEmpty: false,
+			},
+			"epoch-2": {
+				name: "Epoch System iModel 2",
+				isEmpty: true,
+			},
+		}),
 		[],
 	);
 
-	const [selectedModel, setSelectedModel] = React.useState(
-		Object.keys(models)[0],
-	);
+	const [selectedModel, setSelectedModel] =
+		React.useState<keyof typeof models>("epoch-1");
 
 	return (
 		<Layout
@@ -64,9 +61,10 @@ export default function Page() {
 							<Select.Root className={styles.panelTitleWrapper}>
 								<Select.HtmlSelect
 									variant="ghost"
-									className={styles.panelTitle}
 									value={selectedModel}
-									onChange={(e) => setSelectedModel(e.target.value)}
+									onChange={(e) =>
+										setSelectedModel(e.target.value as keyof typeof models)
+									}
 									aria-label="Model"
 								>
 									{Object.entries(models).map(([id, model]) => (

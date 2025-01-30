@@ -61,9 +61,9 @@ export function useControlledState<T>(
 export function useLatestRef<T>(value: T) {
 	const valueRef = React.useRef<T>(value);
 
-	React.useEffect(() => {
+	React.useInsertionEffect(() => {
 		valueRef.current = value;
-	}, [value]);
+	});
 
 	return valueRef;
 }
@@ -121,17 +121,15 @@ export function useMergedRefs<T>(
 export function useEventHandlers<E extends React.SyntheticEvent>(
 	...handlers: Array<((event: E) => void) | undefined>
 ) {
-	const latestHandlers = React.useRef(handlers);
+	const latestHandlers = useLatestRef(handlers);
 
-	// biome-ignore lint/correctness/useExhaustiveDependencies: Memoize based on contents of handlers, not the array itself
-	React.useInsertionEffect(() => {
-		latestHandlers.current = handlers;
-	}, [...handlers]);
-
-	return React.useCallback((event: E) => {
-		for (const handler of latestHandlers.current) {
-			handler?.(event);
-			if (event.defaultPrevented) return;
-		}
-	}, []);
+	return React.useCallback(
+		(event: E) => {
+			for (const handler of latestHandlers.current) {
+				handler?.(event);
+				if (event.defaultPrevented) return;
+			}
+		},
+		[latestHandlers],
+	);
 }

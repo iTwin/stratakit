@@ -9,7 +9,7 @@ import * as ListItem from "./ListItem.js";
 import { IconButton } from "./IconButton.js";
 import { Icon } from "./Icon.js";
 import { forwardRef, type BaseProps } from "./~utils.js";
-import { useEventHandlers, useLatestRef } from "./~hooks.js";
+import { useEventHandlers } from "./~hooks.js";
 
 // ----------------------------------------------------------------------------
 
@@ -133,33 +133,24 @@ const TreeItem = forwardRef<"div", TreeItemProps>((props, forwardedRef) => {
 	const parentContext = React.useContext(TreeItemContext);
 	const level = parentContext ? parentContext.level + 1 : 1;
 
-	const latestOnSelectedChange = useLatestRef(onSelectedChange);
-	const latestOnExpandedChange = useLatestRef(onExpandedChange);
+	const handleClick = (event: React.MouseEvent) => {
+		event.stopPropagation();
 
-	const handleClick = React.useCallback(
-		(event: React.MouseEvent) => {
+		if (selected !== undefined) onSelectedChange?.(!selected);
+	};
+
+	const handleKeyDown = (event: React.KeyboardEvent) => {
+		if (event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) {
+			return;
+		}
+
+		if (event.key === "ArrowRight" || event.key === "ArrowLeft") {
 			event.stopPropagation();
+			event.preventDefault();
 
-			if (selected !== undefined) latestOnSelectedChange.current?.(!selected);
-		},
-		[latestOnSelectedChange, selected],
-	);
-
-	const handleKeyDown = React.useCallback(
-		(event: React.KeyboardEvent) => {
-			if (event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) {
-				return;
-			}
-
-			if (event.key === "ArrowRight" || event.key === "ArrowLeft") {
-				event.stopPropagation();
-				event.preventDefault();
-
-				latestOnExpandedChange.current?.(event.key === "ArrowRight");
-			}
-		},
-		[latestOnExpandedChange],
-	);
+			onExpandedChange?.(event.key === "ArrowRight");
+		}
+	};
 
 	const contentId = React.useId();
 

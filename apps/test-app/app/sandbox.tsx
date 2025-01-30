@@ -67,6 +67,8 @@ export default function Page() {
 		[setSearchParams],
 	);
 
+	const selectModelId = React.useId();
+
 	return (
 		<Layout
 			panelContent={
@@ -74,14 +76,21 @@ export default function Page() {
 					<div className={styles.panelHeader}>
 						{/* biome-ignore lint/a11y: hgroup needs an explicit role for better support */}
 						<hgroup role="group">
+							<VisuallyHidden
+								// biome-ignore lint/a11y/noLabelWithoutControl: Accessible name comes from VisuallyHidden's children
+								render={(props) => <label {...props} htmlFor={selectModelId} />}
+							>
+								Choose Model
+							</VisuallyHidden>
+
 							<Select.Root className={styles.panelTitleWrapper}>
 								<Select.HtmlSelect
+									id={selectModelId}
 									variant="ghost"
 									value={selectedModel}
 									onChange={(e) =>
 										setSelectedModel(e.target.value as keyof typeof models)
 									}
-									aria-label="Choose Model"
 								>
 									{Object.entries(models).map(([id, modelName]) => (
 										<option key={id} value={id}>

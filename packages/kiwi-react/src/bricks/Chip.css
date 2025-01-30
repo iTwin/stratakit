@@ -3,8 +3,9 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 .🥝-chip {
-	isolation: isolate;
 	@layer base {
+		isolation: isolate;
+
 		display: inline-flex;
 		align-items: center;
 		position: relative;

@@ -23,11 +23,11 @@ interface TreeProps extends BaseProps {}
  * Example:
  * ```tsx
  * <Tree.Root>
- *   <Tree.Item label="Parent 1" position={1} size={2} />
- *   <Tree.Item label="Child 1.1" position={1} size={2} level={2} />
- *   <Tree.Item label="Child 1.2" position={2} size={2} level={2} />
- *   <Tree.Item label="Parent 2" position={2} size={2} />
- *   <Tree.Item label="Child 2.1" position={1} size={1} level={2} />
+ *   <Tree.Item label="Parent 1" level={1} position={1} size={2} />
+ *   <Tree.Item label="Child 1.1" level={2} position={1} size={2} />
+ *   <Tree.Item label="Child 1.2" level={2} position={2} size={2} />
+ *   <Tree.Item label="Parent 2" level={1} position={2} size={2} />
+ *   <Tree.Item label="Child 2.1" level={2} position={1} size={1} />
  * </Tree.Root>
  * ```
  */
@@ -51,6 +51,12 @@ DEV: Tree.displayName = "Tree.Root";
 // ----------------------------------------------------------------------------
 
 interface TreeItemProps extends Omit<BaseProps, "content"> {
+	/** Specifies the nesting level of the tree item. Nesting levels start at 1. */
+	level: number;
+	/** Defines tree item position in the current level of tree items. See  */
+	position: number;
+	/** Defines tree item set size of the current level. */
+	size: number;
 	/**
 	 * Specifies if the tree item is selected.
 	 *
@@ -59,12 +65,6 @@ interface TreeItemProps extends Omit<BaseProps, "content"> {
 	 * @default undefined
 	 */
 	selected?: boolean;
-	/**
-	 * Specifies the nesting level of the tree item. Nesting levels start at 1.
-	 *
-	 * @default 1
-	 */
-	level?: number;
 	/**
 	 * Callback fired when the tree item is selected.
 	 *
@@ -95,10 +95,6 @@ interface TreeItemProps extends Omit<BaseProps, "content"> {
 	label?: React.ReactNode;
 	/** The actions available for the tree item. */
 	actions?: React.ReactNode;
-	/** Defines tree item position in the current level of tree items. */
-	position: number;
-	/** Defines tree item set size of the current level. */
-	size: number;
 }
 
 /**
@@ -109,9 +105,9 @@ interface TreeItemProps extends Omit<BaseProps, "content"> {
  * Example:
  * ```tsx
  * <Tree.Root>
- *   <Tree.Item label="Parent" position={1} size={1} />
- *   <Tree.Item label="Child 1" position={1} size={2} level={2} />
- *   <Tree.Item label="Child 2" position={2} size={2} level={2} />
+ *   <Tree.Item label="Parent" level={1} position={1} size={1} />
+ *   <Tree.Item label="Child 1" level={2} position={1} size={2} />
+ *   <Tree.Item label="Child 2" level={2} position={2} size={2}  />
  * </Tree.Root>
  * ```
  *
@@ -128,7 +124,7 @@ interface TreeItemProps extends Omit<BaseProps, "content"> {
 const TreeItem = forwardRef<"div", TreeItemProps>((props, forwardedRef) => {
 	const {
 		selected,
-		level = 1,
+		level,
 		children,
 		expanded,
 		icon,

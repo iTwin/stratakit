@@ -1,5 +1,16 @@
 # Changelog
 
+## 5.0.0-alpha.3
+
+- Added `<DropdownMenu.CheckboxItem>` component for rendering menu items with a checkable state.
+- Added `variant` prop to `<Select.HtmlSelect>` component for displaying different visual variants of the component.
+- Updated event handling of `Tree` components to avoid firing `onClick` event of the `<Tree.Item>` component when the expander or one of the actions is clicked.
+- Updated `Tree` components to implement a tree view pattern instead of the previously used nested list approach.
+- Updated size and spacing of `<Tree.Item>`, `<DropdownMenu.Item>` and `<Select>` components.
+- Fixed `<Label>` component alignment with `TextBox` components.
+- Fixed action rendering of `<Tree.Item>` component.
+- Fixed `<Checkbox>` component styling, which caused the mixed checkbox to be displayed as unchecked in the light theme.
+
 ## 5.0.0-alpha.2
 
 - Added initial `Tree` component, exposed as `<Tree.Root>` and `<Tree.Item>` subcomponents.

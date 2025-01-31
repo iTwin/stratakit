@@ -54,21 +54,47 @@
 		inline-size: 100%;
 		stroke-width: var(--🥝progress-bar-size);
 		stroke-linecap: round;
+		animation-duration: 1.5s;
+		animation-iteration-count: infinite;
+		animation-timing-function: linear;
+		animation-direction: reverse;
 	}
 }
 
 .🥝-progress-bar-svg-track {
 	@layer base {
 		stroke: var(--🥝progress-bar-track-color);
-		stroke-dashoffset: 45%;
+		/* stroke-dashoffset: 45%; */
 		stroke-dasharray: 100%, 35%;
+		animation-name: --🥝progress-bar-track-slide;
 	}
 }
 
 .🥝-progress-bar-svg-fill {
 	@layer base {
 		stroke: var(--🥝progress-bar-color);
-		stroke-dashoffset: 65%;
+		/* stroke-dashoffset: 65%; */
 		stroke-dasharray: 25%, 100%;
+		animation-name: --🥝progress-bar-fill-slide;
+	}
+}
+
+@keyframes --🥝progress-bar-track-slide {
+	0% {
+		stroke-dashoffset: 45%;
+	}
+
+	100% {
+		stroke-dashoffset: 145%;
+	}
+}
+
+@keyframes --🥝progress-bar-fill-slide {
+	0% {
+		stroke-dashoffset: 65%;
+	}
+
+	100% {
+		stroke-dashoffset: 165%;
 	}
 }

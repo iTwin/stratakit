@@ -13,7 +13,7 @@
 		--🥝chip-padding-inline: 0.5rem;
 		padding-inline: var(--🥝chip-padding-inline);
 
-		min-block-size: 24px;
+		min-block-size: 1.5rem;
 
 		border-radius: 9999px;
 		border: none;

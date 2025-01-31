@@ -49,14 +49,29 @@
 	}
 }
 
-.🥝-progress-bar-svg-track {
+.🥝-progress-bar-svg-track,
+.🥝-progress-bar-svg-fill {
 	@layer base {
 		block-size: inherit;
 		inline-size: 100%;
-		stroke-width: 2;
-		stroke: var(--🥝progress-bar-track-color);
+		stroke-width: var(--🥝progress-bar-size);
 		stroke-linecap: round;
-		stroke-miterlimit: 10;
-		vector-effect: non-scaling-stroke;
+		/* vector-effect: non-scaling-stroke; */
+	}
+}
+
+.🥝-progress-bar-svg-track {
+	@layer base {
+		stroke: var(--🥝progress-bar-track-color);
+		/* stroke-dashoffset: 2; */
+		stroke-dasharray: 100%, 50%;
+	}
+}
+
+.🥝-progress-bar-svg-fill {
+	@layer base {
+		stroke: var(--🥝progress-bar-color);
+		stroke-dashoffset: 50%;
+		stroke-dasharray: 50%, 100%;
 	}
 }

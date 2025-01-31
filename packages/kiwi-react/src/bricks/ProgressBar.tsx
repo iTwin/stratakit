@@ -58,10 +58,23 @@ export const ProgressBar = forwardRef<"div", ProgressBarProps>(
 				<svg
 					aria-hidden="true"
 					className="🥝-progress-bar-svg"
-					viewBox="0 0 16 1"
 					preserveAspectRatio="none"
 				>
-					<path className="🥝-progress-bar-svg-track" d="M0 .5h16" />
+					<line
+						className="🥝-progress-bar-svg-track"
+						x1="0%"
+						x2="100%"
+						y1="50%"
+						y2="50%"
+					/>
+
+					<line
+						className="🥝-progress-bar-svg-fill"
+						x1="0%"
+						x2="100%"
+						y1="50%"
+						y2="50%"
+					/>
 				</svg>
 				<VisuallyHidden>{alt}</VisuallyHidden>
 			</Ariakit.Role>

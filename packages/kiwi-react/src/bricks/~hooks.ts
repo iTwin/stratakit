@@ -61,9 +61,9 @@ export function useControlledState<T>(
 export function useLatestRef<T>(value: T) {
 	const valueRef = React.useRef<T>(value);
 
-	React.useEffect(() => {
+	React.useInsertionEffect(() => {
 		valueRef.current = value;
-	}, [value]);
+	});
 
 	return valueRef;
 }
@@ -107,8 +107,9 @@ export function useMergedRefs<T>(
  * Hook that accepts a list of event handlers and returns a single memoized handler
  * that ensures `defaultPrevented` is respected for each handler.
  *
- * The first callback in the list is also optimized using `useLatestRef` to avoid
- * breaking memoization. This is useful when the first handler is a prop that can change.
+ * The memoization technique used by this hook ensures that only the "latest" handlers are ever called.
+ * The "latest" handlers are stored in a ref and updated on each render in an insertion effect. The result
+ * is that the handlers passed to this hook do not always need to be memoized.
  *
  * Example:
  * ```tsx
@@ -118,19 +119,17 @@ export function useMergedRefs<T>(
  * @private
  */
 export function useEventHandlers<E extends React.SyntheticEvent>(
-	first: ((event: E) => void) | undefined,
-	...rest: Array<((event: E) => void) | undefined>
+	...handlers: Array<((event: E) => void) | undefined>
 ) {
-	const latestFirst = useLatestRef(first);
+	const latestHandlers = useLatestRef(handlers);
 
-	// biome-ignore lint/correctness/useExhaustiveDependencies: Memoize based on contents of rest, not rest itself.
 	return React.useCallback(
 		(event: E) => {
-			for (const handler of [latestFirst.current, ...rest]) {
+			for (const handler of latestHandlers.current) {
 				handler?.(event);
 				if (event.defaultPrevented) return;
 			}
 		},
-		[latestFirst, ...rest],
+		[latestHandlers],
 	);
 }

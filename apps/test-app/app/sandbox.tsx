@@ -4,16 +4,15 @@
  *--------------------------------------------------------------------------------------------*/
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import * as Ariakit from "@ariakit/react";
 import styles from "./sandbox.module.css";
 import {
 	Button,
 	DropdownMenu,
 	Icon,
 	IconButton,
+	Tabs,
 	Text,
 	TextBox,
-	VisuallyHidden,
 } from "@itwin/itwinui-react/bricks";
 import * as Tree from "@itwin/itwinui-react-internal/src/bricks/Tree.tsx";
 import { useSearchParams, type MetaFunction } from "react-router";
@@ -34,44 +33,10 @@ export const meta: MetaFunction = () => {
 };
 
 export default function Page() {
-	const { sliderProps, panelProps, panelMinSize, panelMaxSize, resizing } =
-		useSplitter<HTMLDivElement>({
-			minSize: { px: 256, pct: 20 },
-			maxSize: { pct: 30 },
-		});
 	return (
-		<>
-			<div
-				className={styles.appLayout}
-				style={
-					{
-						"--_panel-min-size": panelMinSize,
-						"--_panel-max-size": panelMaxSize,
-					} as React.CSSProperties
-				}
-			>
-				<header className={styles.header}>
-					<div className={styles.logo}>
-						<Icon href={placeholderIcon} size="large" />
-					</div>
-					<Text render={(props) => <h1 {...props} />} variant="body-md">
-						{title}
-					</Text>
-				</header>
-
-				<div className={styles.platformBar}>
-					<div className={styles.tools}>
-						<Icon href={placeholderIcon} size="large" />
-						<Icon href={placeholderIcon} size="large" />
-						<Icon href={placeholderIcon} size="large" />
-					</div>
-				</div>
-
-				<div
-					{...panelProps}
-					className={styles.leftPanel}
-					style={{ position: "relative", ...panelProps.style }}
-				>
+		<Layout
+			panelContent={
+				<>
 					<div className={styles.panelHeader}>
 						{/* biome-ignore lint/a11y: hgroup needs an explicit role for better support */}
 						<hgroup role="group">
@@ -88,27 +53,87 @@ export default function Page() {
 							/>
 						</div>
 					</div>
-					<Subheader />
-					<SandboxTree />
+					<Tabs.Root>
+						<Subheader />
+						<Tabs.TabPanel
+							tabId="simple"
+							className={styles.tabPanel}
+							focusable={false}
+						>
+							<SandboxTree tree="simple" />
+						</Tabs.TabPanel>
+						<Tabs.TabPanel
+							tabId="complex"
+							className={styles.tabPanel}
+							focusable={false}
+						>
+							<SandboxTree tree="complex" />
+						</Tabs.TabPanel>
+					</Tabs.Root>
+				</>
+			}
+		>
+			<header className={styles.header}>
+				<div className={styles.logo}>
+					<Icon href={placeholderIcon} size="large" />
 				</div>
-
-				<div
-					className={styles.splitter}
-					data-resizing={resizing ? "true" : undefined}
-				>
-					<input
-						type="range"
-						aria-label="Resize layers panel"
-						className={styles.slider}
-						{...sliderProps}
-					/>
-				</div>
-
-				<div className={styles.canvasWrapper}>
-					<div className={styles.canvas} />
+				<Text render={(props) => <h1 {...props} />} variant="body-md">
+					{title}
+				</Text>
+			</header>
+			<div className={styles.platformBar}>
+				<div className={styles.tools}>
+					<Icon href={placeholderIcon} size="large" />
+					<Icon href={placeholderIcon} size="large" />
+					<Icon href={placeholderIcon} size="large" />
 				</div>
 			</div>
-		</>
+			<div className={styles.canvasWrapper}>
+				<div className={styles.canvas} />
+			</div>
+		</Layout>
+	);
+}
+
+function Layout(props: {
+	panelContent: React.ReactNode;
+	children: React.ReactNode;
+}) {
+	const { sliderProps, panelProps, panelMinSize, panelMaxSize, resizing } =
+		useSplitter<HTMLDivElement>({
+			minSize: { px: 256, pct: 20 },
+			maxSize: { pct: 30 },
+		});
+	return (
+		<div
+			className={styles.appLayout}
+			style={
+				{
+					"--_panel-min-size": panelMinSize,
+					"--_panel-max-size": panelMaxSize,
+				} as React.CSSProperties
+			}
+		>
+			<div
+				{...panelProps}
+				className={styles.leftPanel}
+				style={{ position: "relative", ...panelProps.style }}
+			>
+				{props.panelContent}
+			</div>
+			<div
+				className={styles.splitter}
+				data-resizing={resizing ? "true" : undefined}
+			>
+				<input
+					type="range"
+					aria-label="Resize layers panel"
+					className={styles.slider}
+					{...sliderProps}
+				/>
+			</div>
+			{props.children}
+		</div>
 	);
 }
 
@@ -375,9 +400,13 @@ const SandboxTreeContext = React.createContext<{
 	toggleHidden: () => {},
 });
 
-function SandboxTree() {
+interface SandboxTreeProps {
+	tree: "simple" | "complex";
+}
+
+function SandboxTree({ tree }: SandboxTreeProps) {
 	const [searchParams] = useSearchParams();
-	const tree = searchParams.get("tree"); // for handling ?tree=complex and ?tree=empty
+	const treeParam = searchParams.get("tree"); // for handling ?tree=empty
 	const [selected, setSelected] = React.useState<string | undefined>();
 	const [hidden, setHidden] = React.useState<string[]>([]);
 	const toggleHidden = React.useCallback((id: string) => {
@@ -389,7 +418,7 @@ function SandboxTree() {
 		});
 	}, []);
 
-	if (tree === "empty") {
+	if (treeParam === "empty") {
 		return (
 			<EmptyState>
 				<Text>No layers</Text>
@@ -634,7 +663,7 @@ function TreeMoreActions({ hidden }: { hidden?: boolean }) {
 function Subheader() {
 	const [isSearching, setIsSearching] = React.useState(false);
 	const searchInputRef = React.useRef<HTMLInputElement>(null);
-	const subheaderRef = React.useRef<HTMLHeadingElement>(null);
+	const tabsRef = React.useRef<HTMLHeadingElement>(null);
 
 	const actions = isSearching ? (
 		<>
@@ -646,7 +675,7 @@ function Subheader() {
 				variant="ghost"
 				onClick={() => {
 					ReactDOM.flushSync(() => setIsSearching(false));
-					subheaderRef.current?.focus();
+					tabsRef.current?.focus();
 				}}
 			/>
 		</>
@@ -665,17 +694,12 @@ function Subheader() {
 
 	return (
 		<div className={styles.subheader}>
-			<Ariakit.Role.h3
-				className={styles.subheaderTitle}
-				tabIndex={-1}
-				ref={subheaderRef}
-				// When searching, we don't want to show the heading content visually, but we still want it
-				// in the DOM for screen readers. The heading structure of the page should remain the same.
-				// biome-ignore lint/a11y/useHeadingContent: This is fine. The heading content is set by children.
-				render={isSearching ? <VisuallyHidden render={<h3 />} /> : undefined}
-			>
-				Layers
-			</Ariakit.Role.h3>
+			{isSearching ? undefined : (
+				<Tabs.TabList className={styles.tabList} tone="accent" ref={tabsRef}>
+					<Tabs.Tab id="simple">Simple</Tabs.Tab>
+					<Tabs.Tab id="complex">Complex</Tabs.Tab>
+				</Tabs.TabList>
+			)}
 
 			{isSearching ? (
 				<TextBox.Root className={styles.searchInput}>

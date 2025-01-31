@@ -10,7 +10,6 @@
 		align-items: center;
 		position: relative;
 
-		gap: 0;
 		--🥝chip-padding-inline: 0.5rem;
 		padding-inline: var(--🥝chip-padding-inline);
 

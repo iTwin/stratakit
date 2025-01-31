@@ -94,13 +94,6 @@ DEV: TableHeader.displayName = "Table.Header";
 // ----------------------------------------------------------------------------
 
 interface TableBodyProps extends BaseProps {}
-const TableBodyContext = React.createContext<
-	| {
-			selectedRows: Set<number>;
-			toggleRowSelection: (index: number) => void;
-	  }
-	| undefined
->(undefined);
 
 /**
  * `Table.Body` is a component that contains the rows of table data.
@@ -125,33 +118,27 @@ const TableBody = forwardRef<"div", TableBodyProps>((props, forwardedRef) => {
 		new Set(),
 	);
 
-	const toggleRowSelection = (index: number) => {
-		setSelectedRows((prev) => {
-			const newSelection = new Set(prev);
-			newSelection.has(index)
-				? newSelection.delete(index)
-				: newSelection.add(index);
-			return newSelection;
-		});
-	};
-
 	return (
-		<TableBodyContext.Provider value={{ selectedRows, toggleRowSelection }}>
-			<Ariakit.Role.div
-				{...props}
-				className={cx("🥝-table-body", props.className)}
-				ref={forwardedRef}
-				role="rowgroup"
-			>
-				{React.Children.map(props.children, (child, index) => {
-					return (
-						<TableRowContext.Provider value={{ rowIndex: index }}>
-							{child}
-						</TableRowContext.Provider>
-					);
-				})}
-			</Ariakit.Role.div>
-		</TableBodyContext.Provider>
+		<Ariakit.Role.div
+			{...props}
+			className={cx("🥝-table-body", props.className)}
+			ref={forwardedRef}
+			role="rowgroup"
+		>
+			{React.Children.map(props.children, (child, index) => {
+				return (
+					<TableRowContext.Provider
+						value={{
+							rowIndex: index,
+							selectedRows: selectedRows,
+							setSelectedRows: setSelectedRows,
+						}}
+					>
+						{child}
+					</TableRowContext.Provider>
+				);
+			})}
+		</Ariakit.Role.div>
 	);
 });
 DEV: TableBody.displayName = "Table.Body";
@@ -167,6 +154,12 @@ interface TableRowProps extends BaseProps {
 const TableRowContext = React.createContext<
 	| {
 			rowIndex: number;
+			selectedRows: Set<number>;
+			setSelectedRows: (
+				selectedRows:
+					| Set<number>
+					| ((selectedRows: Set<number>) => Set<number>),
+			) => void;
 	  }
 	| undefined
 >(undefined);
@@ -184,18 +177,29 @@ const TableRowContext = React.createContext<
  */
 const TableRow = forwardRef<"div", TableRowProps>((props, forwardedRef) => {
 	const { children, selected, ...rest } = props;
-	const tableBodyContext = React.useContext(TableBodyContext);
 	const tableRowContext = React.useContext(TableRowContext);
 	const isWithinTableHeader = React.useContext(TableHeaderContext);
 	const rowIndex = tableRowContext?.rowIndex;
 
-	const isSelected =
-		selected ||
-		(rowIndex !== undefined && tableBodyContext?.selectedRows?.has(rowIndex));
+	React.useEffect(() => {
+		if (selected) {
+			tableRowContext?.setSelectedRows((prev: Set<number>) => {
+				const newSelection = new Set(prev);
+				newSelection.add(rowIndex);
+				return newSelection;
+			});
+		}
+	}, [rowIndex, selected]);
 
 	const handleSelect = () => {
 		if (rowIndex !== undefined) {
-			tableBodyContext?.toggleRowSelection?.(rowIndex);
+			tableRowContext?.setSelectedRows((prev: Set<number>) => {
+				const newSelection = new Set(prev);
+				newSelection.has(rowIndex)
+					? newSelection.delete(rowIndex)
+					: newSelection.add(rowIndex);
+				return newSelection;
+			});
 		}
 	};
 
@@ -205,7 +209,11 @@ const TableRow = forwardRef<"div", TableRowProps>((props, forwardedRef) => {
 			className={cx("🥝-table-row", props.className)}
 			ref={forwardedRef}
 			role="row"
-			aria-selected={isSelected ? "true" : undefined}
+			aria-selected={
+				rowIndex !== undefined && tableRowContext?.selectedRows?.has(rowIndex)
+					? "true"
+					: undefined
+			}
 			data-kiwi-variant={isWithinTableHeader ? "header" : undefined}
 			onClick={handleSelect}
 		>

@@ -53,7 +53,7 @@ DEV: Tree.displayName = "Tree.Root";
 interface TreeItemProps extends Omit<BaseProps, "content"> {
 	/** Specifies the nesting level of the tree item. Nesting levels start at 1. */
 	"aria-level": number;
-	/** Defines tree item position in the current level of tree items. */
+	/** Defines tree item position in the current level of tree items. Integer greater than or equal to 1. */
 	"aria-posinset": number;
 	/** Defines tree item set size of the current level. */
 	"aria-setsize": number;

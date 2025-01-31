@@ -44,8 +44,6 @@
 .🥝-progress-bar-svg {
 	@layer base {
 		block-size: inherit;
-		inline-size: 100%;
-		fill: none;
 	}
 }
 
@@ -56,22 +54,21 @@
 		inline-size: 100%;
 		stroke-width: var(--🥝progress-bar-size);
 		stroke-linecap: round;
-		/* vector-effect: non-scaling-stroke; */
 	}
 }
 
 .🥝-progress-bar-svg-track {
 	@layer base {
 		stroke: var(--🥝progress-bar-track-color);
-		/* stroke-dashoffset: 2; */
-		stroke-dasharray: 100%, 50%;
+		stroke-dashoffset: 45%;
+		stroke-dasharray: 100%, 35%;
 	}
 }
 
 .🥝-progress-bar-svg-fill {
 	@layer base {
 		stroke: var(--🥝progress-bar-color);
-		stroke-dashoffset: 50%;
-		stroke-dasharray: 50%, 100%;
+		stroke-dashoffset: 65%;
+		stroke-dasharray: 25%, 100%;
 	}
 }

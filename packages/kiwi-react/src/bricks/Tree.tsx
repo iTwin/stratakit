@@ -23,11 +23,11 @@ interface TreeProps extends BaseProps {}
  * Example:
  * ```tsx
  * <Tree.Root>
- *   <Tree.Item label="Parent 1" level={1} position={1} size={2} />
- *   <Tree.Item label="Child 1.1" level={2} position={1} size={2} />
- *   <Tree.Item label="Child 1.2" level={2} position={2} size={2} />
- *   <Tree.Item label="Parent 2" level={1} position={2} size={2} />
- *   <Tree.Item label="Child 2.1" level={2} position={1} size={1} />
+ *   <Tree.Item label="Parent 1" aria-level={1} aria-posinset={1} aria-setsize={2} />
+ *   <Tree.Item label="Child 1.1" aria-level={2} aria-posinset={1} aria-setsize={2} />
+ *   <Tree.Item label="Child 1.2" aria-level={2} aria-posinset={2} aria-setsize={2} />
+ *   <Tree.Item label="Parent 2" aria-level={1} aria-posinset={2} aria-setsize={2} />
+ *   <Tree.Item label="Child 2.1" aria-level={2} aria-posinset={1} aria-setsize={1} />
  * </Tree.Root>
  * ```
  */
@@ -52,11 +52,11 @@ DEV: Tree.displayName = "Tree.Root";
 
 interface TreeItemProps extends Omit<BaseProps, "content"> {
 	/** Specifies the nesting level of the tree item. Nesting levels start at 1. */
-	level: number;
-	/** Defines tree item position in the current level of tree items. See  */
-	position: number;
+	"aria-level": number;
+	/** Defines tree item position in the current level of tree items. */
+	"aria-posinset": number;
 	/** Defines tree item set size of the current level. */
-	size: number;
+	"aria-setsize": number;
 	/**
 	 * Specifies if the tree item is selected.
 	 *
@@ -105,9 +105,9 @@ interface TreeItemProps extends Omit<BaseProps, "content"> {
  * Example:
  * ```tsx
  * <Tree.Root>
- *   <Tree.Item label="Parent" level={1} position={1} size={1} />
- *   <Tree.Item label="Child 1" level={2} position={1} size={2} />
- *   <Tree.Item label="Child 2" level={2} position={2} size={2}  />
+ *   <Tree.Item label="Parent" aria-level={1} aria-posinset={1} aria-setsize={1} />
+ *   <Tree.Item label="Child 1" aria-level={2} aria-posinset={1} aria-setsize={2} />
+ *   <Tree.Item label="Child 2" aria-level={2} aria-posinset={2} aria-setsize={2}  />
  * </Tree.Root>
  * ```
  *
@@ -123,8 +123,8 @@ interface TreeItemProps extends Omit<BaseProps, "content"> {
  */
 const TreeItem = forwardRef<"div", TreeItemProps>((props, forwardedRef) => {
 	const {
+		"aria-level": level,
 		selected,
-		level,
 		children,
 		expanded,
 		icon,
@@ -135,8 +135,6 @@ const TreeItem = forwardRef<"div", TreeItemProps>((props, forwardedRef) => {
 		onExpandedChange,
 		onClick: onClickProp,
 		onKeyDown: onKeyDownProp,
-		position,
-		size,
 		...rest
 	} = props;
 
@@ -194,8 +192,6 @@ const TreeItem = forwardRef<"div", TreeItemProps>((props, forwardedRef) => {
 				aria-selected={selected}
 				aria-labelledby={contentId}
 				aria-level={level}
-				aria-posinset={position}
-				aria-setsize={size}
 				className={cx("🥝-tree-item", props.className)}
 				ref={forwardedRef as Ariakit.CompositeItemProps["ref"]}
 			>

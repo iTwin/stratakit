@@ -44,11 +44,13 @@ test.describe("@visual", () => {
 	});
 
 	test("forced-colors", async ({ page, browserName }) => {
-		if (browserName !== "webkit") {
-			await page.goto("/tests/button?visual=true");
-			await page.emulateMedia({ forcedColors: "active" });
-			await expect(page.locator("body")).toHaveScreenshot();
-		}
+		test.skip(
+			browserName === "webkit",
+			"forced-colors for Button does not appear correctly in Webkit",
+		);
+		await page.goto("/tests/button?visual=true");
+		await page.emulateMedia({ forcedColors: "active" });
+		await expect(page.locator("body")).toHaveScreenshot();
 	});
 });
 

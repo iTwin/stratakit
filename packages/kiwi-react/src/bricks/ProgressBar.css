@@ -4,11 +4,9 @@
  *--------------------------------------------------------------------------------------------*/
 
 .🥝-progress-bar {
-	--✨border-radius: 9999px;
-
 	@layer base {
 		block-size: var(--🥝progress-bar-size);
-		border-radius: var(--✨border-radius);
+		border-radius: 9999px;
 		overflow: hidden;
 	}
 
@@ -50,8 +48,6 @@
 .🥝-progress-bar-svg-track,
 .🥝-progress-bar-svg-fill {
 	@layer base {
-		block-size: inherit;
-		inline-size: 100%;
 		stroke-width: var(--🥝progress-bar-size);
 		stroke-linecap: round;
 		animation-duration: 1.5s;

@@ -37,9 +37,21 @@ test("disabled", async ({ page }) => {
 	await expect(button).toHaveAccessibleName("Hello");
 });
 
-test("@visual", async ({ page }) => {
-	await page.goto("/tests/button?visual=true");
-	await expect(page.locator("body")).toHaveScreenshot();
+test.describe("@visual", () => {
+	test("default", async ({ page }) => {
+		await page.goto("/tests/button?visual=true");
+		await expect(page.locator("body")).toHaveScreenshot();
+	});
+
+	test("forced-colors", async ({ page, browserName }) => {
+		test.skip(
+			browserName === "webkit",
+			"forced-colors for Button does not appear correctly in Webkit",
+		);
+		await page.goto("/tests/button?visual=true");
+		await page.emulateMedia({ forcedColors: "active" });
+		await expect(page.locator("body")).toHaveScreenshot();
+	});
 });
 
 test.describe("@a11y", () => {

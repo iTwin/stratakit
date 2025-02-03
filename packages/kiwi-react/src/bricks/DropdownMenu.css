@@ -13,8 +13,9 @@
 		display: flex;
 		flex-direction: column;
 
+		min-inline-size: min(95vi, 164px);
 		border-radius: 8px /* radius(in progress)/medium */;
-		padding-block: var(--✨padding);
+		padding: var(--✨padding);
 
 		@layer shame {
 			isolation: isolate;
@@ -41,9 +42,13 @@
 	}
 }
 
-.🥝-dropdown-menu-checkbox-item:is(.🥝-list-item) {
+.🥝-dropdown-menu-item:is(.🥝-list-item) {
+	@layer base {
+		border-radius: 4px;
+	}
+
 	@layer states {
-		&:where(:not([aria-checked="true"])) {
+		&:where([role="menuitemcheckbox"]:not([aria-checked="true"])) {
 			--🥝dropdown-menu-checkmark-visibility: hidden;
 		}
 	}

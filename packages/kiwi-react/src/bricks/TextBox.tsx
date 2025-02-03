@@ -9,7 +9,7 @@ import { useFieldDescribedBy, useFieldId } from "./Field.js";
 import { Icon } from "./Icon.js";
 import { useMergedRefs } from "./~hooks.js";
 import { type FocusableProps, type BaseProps, forwardRef } from "./~utils.js";
-import { FieldCollectionItemControl } from "./FieldCollection.js";
+import { FieldControl } from "./FieldCollection.js";
 
 // ----------------------------------------------------------------------------
 
@@ -63,7 +63,7 @@ const TextBoxInput = forwardRef<"input", TextBoxInputProps>(
 			setDisabled?.(props.disabled);
 		}, [setDisabled, props.disabled]);
 		return (
-			<FieldCollectionItemControl
+			<FieldControl
 				type="textlike"
 				render={
 					<Ariakit.Role.input
@@ -121,7 +121,7 @@ const TextBoxTextarea = forwardRef<"textarea", TextareaProps>(
 		const describedBy = useFieldDescribedBy(props["aria-describedby"]);
 
 		return (
-			<FieldCollectionItemControl
+			<FieldControl
 				type="textlike"
 				render={
 					<Ariakit.Role.textarea

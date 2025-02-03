@@ -80,9 +80,7 @@ interface FieldCollectionItemControlProps
 /**
  * An element tracked as a control in the `Field`’s collection.
  */
-export function FieldCollectionItemControl(
-	props: FieldCollectionItemControlProps,
-) {
+export function FieldControl(props: FieldCollectionItemControlProps) {
 	const { type, ...rest } = props;
 	const getData = React.useCallback(
 		(data: FieldElementCollectionStoreItem) => ({
@@ -100,9 +98,7 @@ export function FieldCollectionItemControl(
 /**
  * An element tracked as a label in the `Field`’s collection.
  */
-export function FieldCollectionItemLabel(
-	props: Pick<Ariakit.CollectionItemProps, "render">,
-) {
+export function FieldLabel(props: Pick<Ariakit.CollectionItemProps, "render">) {
 	const getData = React.useCallback(
 		(data: FieldElementCollectionStoreItem) => ({
 			...data,

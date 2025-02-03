@@ -6,7 +6,7 @@ import cx from "classnames";
 import * as Ariakit from "@ariakit/react";
 import { useFieldId } from "./Field.js";
 import { forwardRef, type BaseProps } from "./~utils.js";
-import { FieldCollectionItemLabel } from "./FieldCollection.js";
+import { FieldLabel } from "./FieldCollection.js";
 
 interface LabelProps extends BaseProps<"label"> {}
 
@@ -34,7 +34,7 @@ export const Label = forwardRef<"label", LabelProps>((props, forwardedRef) => {
 	const fieldId = useFieldId();
 
 	return (
-		<FieldCollectionItemLabel
+		<FieldLabel
 			render={
 				<Ariakit.Role.label
 					htmlFor={fieldId}

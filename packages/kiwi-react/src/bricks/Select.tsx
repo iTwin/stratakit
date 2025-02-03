@@ -13,7 +13,7 @@ import {
 } from "./~utils.js";
 import { DisclosureArrow } from "./Icon.js";
 import { useFieldDescribedBy, useFieldId } from "./Field.js";
-import { FieldCollectionItemControl } from "./FieldCollection.js";
+import { FieldControl } from "./FieldCollection.js";
 
 const supportsHas = isBrowser && CSS?.supports?.("selector(:has(+ *))");
 
@@ -105,7 +105,7 @@ const HtmlSelect = forwardRef<"select", HtmlSelectProps>(
 
 		return (
 			<>
-				<FieldCollectionItemControl
+				<FieldControl
 					type="textlike"
 					render={
 						<Ariakit.Role.select

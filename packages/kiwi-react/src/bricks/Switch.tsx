@@ -6,7 +6,7 @@ import cx from "classnames";
 import * as Ariakit from "@ariakit/react";
 import { useFieldDescribedBy, useFieldId } from "./Field.js";
 import { forwardRef, type FocusableProps } from "./~utils.js";
-import { FieldCollectionItemControl } from "./FieldCollection.js";
+import { FieldControl } from "./FieldCollection.js";
 
 type InputBaseProps = Omit<FocusableProps<"input">, "defaultValue" | "value">;
 
@@ -43,7 +43,7 @@ export const Switch = forwardRef<"input", SwitchProps>(
 		const describedBy = useFieldDescribedBy(props["aria-describedby"]);
 
 		return (
-			<FieldCollectionItemControl
+			<FieldControl
 				type="checkable"
 				render={
 					<Ariakit.Checkbox

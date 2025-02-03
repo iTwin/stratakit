@@ -6,6 +6,7 @@ import * as React from "react";
 import cx from "classnames";
 import * as Ariakit from "@ariakit/react";
 import {
+	FieldControl,
 	forwardRef,
 	isBrowser,
 	type BaseProps,
@@ -13,7 +14,6 @@ import {
 } from "./~utils.js";
 import { DisclosureArrow } from "./Icon.js";
 import { useFieldDescribedBy, useFieldId } from "./Field.js";
-import { FieldControl } from "./FieldCollection.js";
 
 const supportsHas = isBrowser && CSS?.supports?.("selector(:has(+ *))");
 

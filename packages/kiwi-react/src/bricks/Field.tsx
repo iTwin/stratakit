@@ -5,8 +5,7 @@
 import * as React from "react";
 import * as Ariakit from "@ariakit/react";
 import cx from "classnames";
-import { forwardRef, type BaseProps } from "./~utils.js";
-import { FieldCollection } from "./FieldCollection.js";
+import { FieldCollection, forwardRef, type BaseProps } from "./~utils.js";
 
 // ----------------------------------------------------------------------------
 

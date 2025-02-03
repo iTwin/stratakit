@@ -5,8 +5,7 @@
 import cx from "classnames";
 import * as Ariakit from "@ariakit/react";
 import { useFieldDescribedBy, useFieldId } from "./Field.js";
-import { forwardRef, type FocusableProps } from "./~utils.js";
-import { FieldControl } from "./FieldCollection.js";
+import { FieldControl, forwardRef, type FocusableProps } from "./~utils.js";
 
 type InputBaseProps = Omit<FocusableProps<"input">, "defaultValue" | "value">;
 

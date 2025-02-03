@@ -8,8 +8,12 @@ import cx from "classnames";
 import { useFieldDescribedBy, useFieldId } from "./Field.js";
 import { Icon } from "./Icon.js";
 import { useMergedRefs } from "./~hooks.js";
-import { type FocusableProps, type BaseProps, forwardRef } from "./~utils.js";
-import { FieldControl } from "./FieldCollection.js";
+import {
+	type FocusableProps,
+	type BaseProps,
+	forwardRef,
+	FieldControl,
+} from "./~utils.js";
 
 // ----------------------------------------------------------------------------
 

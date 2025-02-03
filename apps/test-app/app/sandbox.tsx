@@ -36,26 +36,13 @@ export const meta: MetaFunction = () => {
 
 export default function Page() {
 	const [searchParams, setSearchParams] = useSearchParams();
-	const treeParam = searchParams.get("tree");
-
-	const models = React.useMemo(
-		() => ({
-			"epoch-1": "Epoch System iModel 1", // Non-empty model
-			"epoch-2": "Epoch System iModel 2", // Empty model
-		}),
-		[],
-	);
-
-	const [selectedModel, _setSelectedModel] = React.useState<
-		keyof typeof models
-	>(treeParam === "empty" ? "epoch-2" : "epoch-1");
+	const selectedModel =
+		searchParams.get("tree") === "empty" ? "epoch-2" : "epoch-1";
 
 	const setSelectedModel = React.useCallback(
-		(value: keyof typeof models) => {
-			_setSelectedModel(value);
-
+		(model: keyof typeof models) => {
 			setSearchParams((prev) => {
-				if (value === "epoch-2") {
+				if (model === "epoch-2") {
 					prev.set("tree", "empty");
 				} else {
 					prev.delete("tree");
@@ -65,6 +52,14 @@ export default function Page() {
 			});
 		},
 		[setSearchParams],
+	);
+
+	const models = React.useMemo(
+		() => ({
+			"epoch-1": "Epoch System iModel 1", // Non-empty model
+			"epoch-2": "Epoch System iModel 2", // Empty model
+		}),
+		[],
 	);
 
 	const selectModelId = React.useId();
@@ -87,7 +82,7 @@ export default function Page() {
 								<Select.HtmlSelect
 									id={selectModelId}
 									variant="ghost"
-									value={selectedModel}
+									defaultValue={selectedModel}
 									onChange={(e) =>
 										setSelectedModel(e.target.value as keyof typeof models)
 									}

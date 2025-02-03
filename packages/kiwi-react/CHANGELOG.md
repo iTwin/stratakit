@@ -1,5 +1,13 @@
 # Changelog
 
+## 5.0.0-alpha.4
+
+- Added `onDismiss` prop and dismiss button to `<Chip>`.
+- Fixed a rare issue where `TextBox` was still editable when `disabled`.
+- Fixed "forced colors" mode styling for `<Button>` and `<IconButton>`.
+- Explicitly set typography styles on `<Root>` to improve compatibility with iTwinUI theme bridge.
+- Updated `DropdownMenu` visuals.
+
 ## 5.0.0-alpha.3
 
 - Added `<DropdownMenu.CheckboxItem>` component for rendering menu items with a checkable state.

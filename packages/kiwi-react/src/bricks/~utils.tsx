@@ -66,11 +66,10 @@ export type FocusableProps<ElementType extends React.ElementType = "div"> =
 
 // ----------------------------------------------------------------------------
 
-type CollectionStoreItem = Parameters<
-	NonNullable<Ariakit.CollectionItemProps["getItem"]>
->[0];
+type CollectionStoreItem = NonNullable<
+	ReturnType<ReturnType<typeof Ariakit.useCollectionStore>["item"]>
+>;
 
-/* TODO: maybe find a way to get this in from `@ariakit/core` */
 interface FieldElementCollectionStoreItem extends CollectionStoreItem {
 	/** The type of field element being tracked */
 	elementType: "label" | "control" | "description";

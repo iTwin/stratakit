@@ -25,14 +25,10 @@ export interface FieldElementCollectionStoreItem {
 export function FieldCollection(
 	props: Pick<Ariakit.CollectionProps, "render">,
 ) {
-	/* Control the collection store items: this really is only necessary for TypeScript */
-	const [items, setItems] = React.useState<FieldElementCollectionStoreItem[]>(
-		[],
-	);
-	const fieldElementCollection = Ariakit.useCollectionStore({
-		items,
-		setItems,
-	});
+	const fieldElementCollection =
+		Ariakit.useCollectionStore<FieldElementCollectionStoreItem>({
+			defaultItems: [],
+		});
 	const renderedItems = Ariakit.useStoreState(
 		fieldElementCollection,
 		"renderedItems",

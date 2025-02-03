@@ -3,8 +3,11 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 import cx from "classnames";
+import * as React from "react";
 import * as Ariakit from "@ariakit/react";
 import { forwardRef, type BaseProps } from "./~utils.js";
+import { IconButton } from "./IconButton.js";
+import { Dismiss } from "./Icon.js";
 
 interface ChipProps extends BaseProps<"div"> {
 	/**
@@ -14,6 +17,11 @@ interface ChipProps extends BaseProps<"div"> {
 	 * @default "solid"
 	 */
 	variant?: "solid" | "outline";
+
+	/**
+	 * Callback invoked when the dismiss ("❌") button is clicked.
+	 */
+	onDismiss?: () => void;
 }
 
 /**
@@ -27,7 +35,11 @@ interface ChipProps extends BaseProps<"div"> {
  * ```
  */
 export const Chip = forwardRef<"div", ChipProps>((props, forwardedRef) => {
-	const { variant = "solid", children, ...rest } = props;
+	const { variant = "solid", onDismiss, children, ...rest } = props;
+
+	const baseId = React.useId();
+	const labelId = `${baseId}-label`;
+	const dismissIconId = `${baseId}-dismiss`;
 
 	return (
 		<Ariakit.Role.div
@@ -36,7 +48,19 @@ export const Chip = forwardRef<"div", ChipProps>((props, forwardedRef) => {
 			className={cx("🥝-chip", props.className)}
 			ref={forwardedRef}
 		>
-			{children}
+			<span id={labelId}>{children}</span>
+			{onDismiss && (
+				<IconButton
+					id={dismissIconId}
+					className="🥝-chip-dismiss-button"
+					variant="ghost"
+					aria-labelledby={`${dismissIconId} ${labelId}`}
+					label="Dismiss"
+					labelVariant="visually-hidden"
+					icon={<Dismiss />}
+					onClick={onDismiss}
+				/>
+			)}
 		</Ariakit.Role.div>
 	);
 });

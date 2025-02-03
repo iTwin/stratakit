@@ -36,6 +36,11 @@
 		&:where([data-kiwi-size="large"]) {
 			--🥝progress-bar-size: 0.25rem;
 		}
+
+		@media (forced-colors: active) {
+			--🥝progress-bar-color: CanvasText;
+			--🥝progress-bar-track-color: CanvasText;
+		}
 	}
 }
 
@@ -54,6 +59,12 @@
 		animation-iteration-count: infinite;
 		animation-timing-function: linear;
 		animation-direction: reverse;
+		animation-fill-mode: both;
+
+		@media (prefers-reduced-motion) {
+			animation-timing-function: steps(4, end);
+			animation-duration: 4s;
+		}
 	}
 }
 

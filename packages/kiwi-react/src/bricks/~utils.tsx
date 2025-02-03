@@ -78,8 +78,6 @@ interface FieldElementCollectionStoreItem extends CollectionStoreItem {
 	controlType?: "textlike" | "checkable";
 }
 
-// ----------------------------------------------------------------------------
-
 export function FieldCollection(
 	props: Pick<Ariakit.CollectionProps, "render">,
 ) {
@@ -121,8 +119,6 @@ export function FieldCollection(
 	);
 }
 
-// ----------------------------------------------------------------------------
-
 interface FieldCollectionItemControlProps
 	extends Pick<Ariakit.CollectionItemProps, "render"> {
 	type: FieldElementCollectionStoreItem["controlType"];
@@ -143,8 +139,6 @@ export function FieldControl(props: FieldCollectionItemControlProps) {
 	);
 	return <Ariakit.CollectionItem {...rest} getItem={getData} />;
 }
-
-// ----------------------------------------------------------------------------
 
 /**
  * An element tracked as a label in the `Field`’s collection.

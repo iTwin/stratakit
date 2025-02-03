@@ -69,8 +69,7 @@ export default function Page() {
 			panelContent={
 				<>
 					<div className={styles.panelHeader}>
-						{/* biome-ignore lint/a11y: hgroup needs an explicit role for better support */}
-						<hgroup role="group">
+						<div>
 							<VisuallyHidden
 								// biome-ignore lint/a11y/noLabelWithoutControl: Accessible name comes from VisuallyHidden's children
 								render={(props) => <label {...props} htmlFor={selectModelId} />}
@@ -95,12 +94,15 @@ export default function Page() {
 								</Select.HtmlSelect>
 							</Select.Root>
 
-							<VisuallyHidden render={(props) => <h2 {...props} />}>
-								{models[selectedModel]}
-							</VisuallyHidden>
+							{/* biome-ignore lint/a11y: hgroup needs an explicit role for better support */}
+							<hgroup role="group">
+								<VisuallyHidden render={(props) => <h2 {...props} />}>
+									{models[selectedModel]}
+								</VisuallyHidden>
 
-							<p className={styles.panelCaption}>2024 Refresh</p>
-						</hgroup>
+								<p className={styles.panelCaption}>2024 Refresh</p>
+							</hgroup>
+						</div>
 						<div className={styles.actions}>
 							<IconButton
 								className={styles.shiftIconRight}

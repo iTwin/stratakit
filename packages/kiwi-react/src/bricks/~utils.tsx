@@ -66,14 +66,12 @@ export type FocusableProps<ElementType extends React.ElementType = "div"> =
 
 // ----------------------------------------------------------------------------
 
+type CollectionStoreItem = Parameters<
+	NonNullable<Ariakit.CollectionItemProps["getItem"]>
+>[0];
+
 /* TODO: maybe find a way to get this in from `@ariakit/core` */
-interface FieldElementCollectionStoreItem {
-	/** The ID of the element being tracked */
-	id: string;
-
-	/** The element being tracked */
-	element?: HTMLElement | null;
-
+interface FieldElementCollectionStoreItem extends CollectionStoreItem {
 	/** The type of field element being tracked */
 	elementType: "label" | "control" | "description";
 
@@ -144,7 +142,7 @@ interface FieldCollectionItemControlProps
 export function FieldControl(props: FieldCollectionItemControlProps) {
 	const { type, ...rest } = props;
 	const getData = React.useCallback(
-		(data: FieldElementCollectionStoreItem) => ({
+		(data: CollectionStoreItem) => ({
 			...data,
 			elementType: "control",
 			controlType: type,
@@ -161,7 +159,7 @@ export function FieldControl(props: FieldCollectionItemControlProps) {
  */
 export function FieldLabel(props: Pick<Ariakit.CollectionItemProps, "render">) {
 	const getData = React.useCallback(
-		(data: FieldElementCollectionStoreItem) => ({
+		(data: CollectionStoreItem) => ({
 			...data,
 			elementType: "label",
 		}),

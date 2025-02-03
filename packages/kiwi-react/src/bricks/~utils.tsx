@@ -94,28 +94,21 @@ export function FieldCollection(
 
 	// Collect the control type and index
 	const [controlType, controlIndex] = React.useMemo(() => {
-		let controlIndex: number | undefined;
-		return [
-			renderedItems.find((item, index) => {
-				if (item.elementType !== "control") return;
-				controlIndex = index;
-				return true;
-			})?.controlType,
-			controlIndex,
-		];
+		const controlIndex = renderedItems.findIndex(
+			(item) => item.elementType === "control",
+		);
+
+		return [renderedItems[controlIndex]?.controlType, controlIndex];
 	}, [renderedItems]);
 
 	// Compare the control and label position
 	const labelPlacement = React.useMemo(() => {
-		if (controlIndex == null) return;
 		const labelIndex = renderedItems.findIndex(
 			(item) => item.elementType === "label",
 		);
-		return labelIndex === -1
-			? undefined
-			: labelIndex < controlIndex
-				? "before"
-				: "after";
+		if (controlIndex === -1 || labelIndex === -1) return;
+
+		return labelIndex < controlIndex ? "before" : "after";
 	}, [renderedItems, controlIndex]);
 
 	return (

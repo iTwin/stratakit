@@ -1023,30 +1023,20 @@ function TreeFilteringProvider(props: React.PropsWithChildren) {
 	);
 }
 
-type TreeType = "simple" | "complex";
-
 function SandboxTabs(props: React.PropsWithChildren) {
-	const [selectedId, setSelectedId] = React.useState<TreeType>("simple");
+	const [selectedId, setSelectedId] = React.useState<string | null | undefined>(
+		undefined,
+	);
 	return (
 		<TabsContext.Provider
 			value={React.useMemo(
 				() => ({
-					selectedId,
-					setSelectedId: (tabId: string) => {
-						if (tabId !== "simple" && tabId !== "complex") return;
-						setSelectedId(tabId);
-					},
+					selectedId: selectedId ?? "",
 				}),
 				[selectedId],
 			)}
 		>
-			<Tabs.Root
-				setSelectedId={(tabId) => {
-					if (tabId !== "simple" && tabId !== "complex") return;
-					setSelectedId(tabId);
-				}}
-				selectedId={selectedId}
-			>
+			<Tabs.Root setSelectedId={setSelectedId} selectedId={selectedId}>
 				{props.children}
 			</Tabs.Root>
 		</TabsContext.Provider>
@@ -1066,9 +1056,7 @@ const TreeFilteringContext = React.createContext<{
 });
 
 const TabsContext = React.createContext<{
-	selectedId: TreeType;
-	setSelectedId: (id: string) => void;
+	selectedId: string;
 }>({
-	selectedId: "simple",
-	setSelectedId: () => {},
+	selectedId: "",
 });

@@ -6,6 +6,8 @@ import * as Ariakit from "@ariakit/react";
 import * as React from "react";
 import cx from "classnames";
 import { forwardRef, type BaseProps } from "./~utils.js";
+import { Checkbox } from "./Checkbox.js";
+import { VisuallyHidden } from "./VisuallyHidden.js";
 
 // ----------------------------------------------------------------------------
 
@@ -118,6 +120,8 @@ const TableBody = forwardRef<"div", TableBodyProps>((props, forwardedRef) => {
 		new Set(),
 	);
 
+	React.useEffect(() => {}, []);
+
 	return (
 		<Ariakit.Role.div
 			{...props}
@@ -155,11 +159,7 @@ const TableRowContext = React.createContext<
 	| {
 			rowIndex: number;
 			selectedRows: Set<number>;
-			setSelectedRows: (
-				selectedRows:
-					| Set<number>
-					| ((selectedRows: Set<number>) => Set<number>),
-			) => void;
+			setSelectedRows: React.Dispatch<React.SetStateAction<Set<number>>>;
 	  }
 	| undefined
 >(undefined);
@@ -177,23 +177,24 @@ const TableRowContext = React.createContext<
  */
 const TableRow = forwardRef<"div", TableRowProps>((props, forwardedRef) => {
 	const { children, selected, ...rest } = props;
-	const tableRowContext = React.useContext(TableRowContext);
 	const isWithinTableHeader = React.useContext(TableHeaderContext);
-	const rowIndex = tableRowContext?.rowIndex;
+	const { selectedRows, setSelectedRows, rowIndex } =
+		React.useContext(TableRowContext) || {};
 
 	React.useEffect(() => {
-		if (selected) {
-			tableRowContext?.setSelectedRows((prev: Set<number>) => {
-				const newSelection = new Set(prev);
-				newSelection.add(rowIndex);
-				return newSelection;
+		if (rowIndex !== undefined && selected) {
+			setSelectedRows?.((prev: Set<number>) => {
+				if (prev.has(rowIndex)) {
+					return prev;
+				}
+				return new Set(prev).add(rowIndex);
 			});
 		}
-	}, [rowIndex, selected]);
+	}, [rowIndex, selected, setSelectedRows]);
 
 	const handleSelect = () => {
 		if (rowIndex !== undefined) {
-			tableRowContext?.setSelectedRows((prev: Set<number>) => {
+			setSelectedRows?.((prev: Set<number>) => {
 				const newSelection = new Set(prev);
 				newSelection.has(rowIndex)
 					? newSelection.delete(rowIndex)
@@ -203,20 +204,30 @@ const TableRow = forwardRef<"div", TableRowProps>((props, forwardedRef) => {
 		}
 	};
 
+	const isSelected = rowIndex !== undefined && selectedRows?.has(rowIndex);
+
 	return (
 		<Ariakit.Role.div
 			{...rest}
 			className={cx("🥝-table-row", props.className)}
 			ref={forwardedRef}
 			role="row"
-			aria-selected={
-				rowIndex !== undefined && tableRowContext?.selectedRows?.has(rowIndex)
-					? "true"
-					: undefined
-			}
+			aria-selected={isSelected ? "true" : undefined}
 			data-kiwi-variant={isWithinTableHeader ? "header" : undefined}
 			onClick={handleSelect}
 		>
+			<TableCell data-kiwi-slot>
+				<Checkbox
+					onClick={(event) => {
+						event.stopPropagation();
+						handleSelect();
+					}}
+					checked={isSelected}
+				/>
+			</TableCell>
+			<VisuallyHidden>
+				{isWithinTableHeader ? "Select all rows" : `Select row ${rowIndex}`}
+			</VisuallyHidden>
 			{children}
 		</Ariakit.Role.div>
 	);

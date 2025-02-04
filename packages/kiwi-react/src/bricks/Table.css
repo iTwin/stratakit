@@ -94,6 +94,18 @@
 		word-break: break-word;
 	}
 
+	&:where(:not([data-kiwi-slot])) {
+		flex-grow: 1;
+		min-inline-size: 4rem;
+		flex-basis: 4rem;
+		padding-block: 0.5rem;
+	}
+
+	&:where([data-kiwi-slot]) {
+		flex-grow: 0;
+		justify-content: center;
+	}
+
 	@layer modifiers {
 		&:where([role="columnheader"]) {
 			@media (any-hover: hover) {

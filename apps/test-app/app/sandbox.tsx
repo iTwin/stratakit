@@ -623,7 +623,9 @@ function SimpleTreeItems() {
 				key={item.id}
 				id={item.id}
 				label={item.label}
-				level={item.level}
+				aria-level={item.level}
+				aria-posinset={item.position}
+				aria-setsize={item.size}
 				expanded={item.items.length === 0 ? undefined : item.expanded}
 				onExpandedChange={(expanded) => {
 					setItems((prev) => {
@@ -637,8 +639,6 @@ function SimpleTreeItems() {
 				selected={item.selected}
 				hidden={item.hidden}
 				parentHidden={item.parentHidden}
-				position={item.position}
-				size={item.size}
 			/>
 		);
 	});
@@ -653,13 +653,13 @@ type TreeItemProps = React.ComponentProps<typeof Tree.Item>;
 interface SandboxTreeItemProps
 	extends Pick<
 		TreeItemProps,
-		| "level"
+		| "aria-level"
+		| "aria-posinset"
+		| "aria-setsize"
 		| "label"
 		| "expanded"
 		| "onExpandedChange"
 		| "selected"
-		| "position"
-		| "size"
 	> {
 	id: string;
 	hidden: boolean;

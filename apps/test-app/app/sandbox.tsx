@@ -14,6 +14,7 @@ import {
 	Icon,
 	IconButton,
 	Label,
+	Select,
 	Tabs,
 	Text,
 	TextBox,
@@ -38,44 +39,108 @@ export const meta: MetaFunction = () => {
 };
 
 export default function Page() {
+	const [searchParams, setSearchParams] = useSearchParams();
+	const selectedModel =
+		searchParams.get("tree") === "empty" ? "epoch-2" : "epoch-1";
+
+	const setSelectedModel = React.useCallback(
+		(model: keyof typeof models) => {
+			setSearchParams((prev) => {
+				if (model === "epoch-2") {
+					prev.set("tree", "empty");
+				} else {
+					prev.delete("tree");
+				}
+
+				return prev;
+			});
+		},
+		[setSearchParams],
+	);
+
+	const models = React.useMemo(
+		() => ({
+			"epoch-1": "Epoch System iModel 1", // Non-empty model
+			"epoch-2": "Epoch System iModel 2", // Empty model
+		}),
+		[],
+	);
+
+	const selectModelId = React.useId();
+
 	return (
 		<Layout
 			panelContent={
-				<TreeFilteringProvider>
-					<SandboxTabs>
-						<div className={styles.panelHeader}>
+				<>
+					<div className={styles.panelHeader}>
+						<div>
+							<VisuallyHidden
+								// biome-ignore lint/a11y/noLabelWithoutControl: Accessible name comes from VisuallyHidden's children
+								render={(props) => <label {...props} htmlFor={selectModelId} />}
+							>
+								Choose Model
+							</VisuallyHidden>
+
+							<Select.Root className={styles.panelTitleWrapper}>
+								<Select.HtmlSelect
+									id={selectModelId}
+									variant="ghost"
+									defaultValue={selectedModel}
+									onChange={(e) =>
+										setSelectedModel(e.target.value as keyof typeof models)
+									}
+								>
+									{Object.entries(models).map(([id, modelName]) => (
+										<option key={id} value={id}>
+											{modelName}
+										</option>
+									))}
+								</Select.HtmlSelect>
+							</Select.Root>
+
 							{/* biome-ignore lint/a11y: hgroup needs an explicit role for better support */}
 							<hgroup role="group">
-								<h2 className={styles.panelTitle}>Epoch System iModel</h2>
+								<VisuallyHidden render={(props) => <h2 {...props} />}>
+									{models[selectedModel]}
+								</VisuallyHidden>
+
 								<p className={styles.panelCaption}>2024 Refresh</p>
 							</hgroup>
-							<div className={styles.actions}>
-								<IconButton
-									className={styles.shiftIconRight}
-									icon={panelLeftIcon}
-									label="Dock panel"
-									variant="ghost"
-									disabled
-								/>
-							</div>
 						</div>
-						<Subheader />
-						<Tabs.TabPanel
-							tabId="simple"
-							className={styles.tabPanel}
-							focusable={false}
-						>
-							<SandboxTree tree="simple" />
-						</Tabs.TabPanel>
-						<Tabs.TabPanel
-							tabId="complex"
-							className={styles.tabPanel}
-							focusable={false}
-						>
-							<SandboxTree tree="complex" />
-						</Tabs.TabPanel>
-					</SandboxTabs>
-				</TreeFilteringProvider>
+						<div className={styles.actions}>
+							<IconButton
+								className={styles.shiftIconRight}
+								icon={panelLeftIcon}
+								label="Dock panel"
+								variant="ghost"
+								disabled
+							/>
+						</div>
+					</div>
+					<TreeFilteringProvider>
+						<SandboxTabs>
+							<Subheader />
+							<Tabs.TabPanel
+								tabId="simple"
+								className={styles.tabPanel}
+								focusable={false}
+							>
+								<SandboxTree
+									tree={selectedModel === "epoch-2" ? "empty" : "simple"}
+								/>
+							</Tabs.TabPanel>
+							<Tabs.TabPanel
+								tabId="complex"
+								className={styles.tabPanel}
+								focusable={false}
+							>
+								<SandboxTree
+									tree={selectedModel === "epoch-2" ? "empty" : "complex"}
+								/>
+							</Tabs.TabPanel>
+						</SandboxTabs>
+					</TreeFilteringProvider>
+				</>
 			}
 		>
 			<header className={styles.header}>
@@ -110,6 +175,9 @@ function Layout(
 			minSize: { px: 256, pct: 20 },
 			maxSize: { pct: 30 },
 		});
+
+	const resizerId = React.useId();
+
 	return (
 		<div
 			className={styles.appLayout}
@@ -131,9 +199,19 @@ function Layout(
 				className={styles.splitter}
 				data-resizing={resizing ? "true" : undefined}
 			>
+				<VisuallyHidden
+					render={(props) => (
+						<label {...props} htmlFor={resizerId}>
+							Resize layers panel
+						</label>
+					)}
+				>
+					Resize layers panel
+				</VisuallyHidden>
+
 				<input
+					id={resizerId}
 					type="range"
-					aria-label="Resize layers panel"
 					className={styles.slider}
 					{...sliderProps}
 				/>
@@ -406,12 +484,11 @@ const SandboxTreeContext = React.createContext<{
 	toggleHidden: () => {},
 });
 
-type TreeType = "simple" | "complex";
+interface SandboxTreeProps {
+	tree: "simple" | "complex" | "empty";
+}
 
-function SandboxTree({ tree }: { tree: TreeType }) {
-	const [searchParams] = useSearchParams();
-	const treeParam = searchParams.get("tree"); // for handling ?tree=empty
-	const context = React.useContext(TreeFilteringContext);
+function SandboxTree({ tree }: SandboxTreeProps) {
 	const [selected, setSelected] = React.useState<string | undefined>();
 	const [hidden, setHidden] = React.useState<string[]>([]);
 	const toggleHidden = React.useCallback((id: string) => {
@@ -423,7 +500,12 @@ function SandboxTree({ tree }: { tree: TreeType }) {
 		});
 	}, []);
 
-	if (treeParam === "empty") {
+	const sandboxTreeContext = React.useMemo(
+		() => ({ selected, setSelected, hidden, toggleHidden }),
+		[hidden, selected, toggleHidden],
+	);
+
+	if (tree === "empty") {
 		return (
 			<EmptyState>
 				<Text>No layers</Text>
@@ -433,18 +515,9 @@ function SandboxTree({ tree }: { tree: TreeType }) {
 	}
 
 	return (
-		<SandboxTreeContext.Provider
-			value={React.useMemo(
-				() => ({ selected, setSelected, hidden, toggleHidden }),
-				[hidden, selected, toggleHidden],
-			)}
-		>
+		<SandboxTreeContext.Provider value={sandboxTreeContext}>
 			<Tree.Root className={styles.tree}>
-				{tree === "complex" ? (
-					<ComplexTreeItems />
-				) : (
-					<TreeRenderer tree={simpleTree} activeFilters={context.filters} />
-				)}
+				<SandboxTreeItems tree={tree} />
 			</Tree.Root>
 		</SandboxTreeContext.Provider>
 	);
@@ -562,6 +635,21 @@ const simpleTree = {
 	],
 } satisfies TreeStore;
 
+type SandboxTreeItemsProps = {
+	tree: "simple" | "complex" | "empty";
+};
+
+function SandboxTreeItems({ tree }: SandboxTreeItemsProps) {
+	if (tree === "complex") {
+		return <ComplexTreeItems />;
+	}
+	if (tree === "simple") {
+		return <SimpleTreeItems />;
+	}
+
+	return null;
+}
+
 function TreeItemRenderer({ item: treeItem }: { item: TreeItem }) {
 	return (
 		<TreeItem label={treeItem.label}>
@@ -589,6 +677,11 @@ function TreeRenderer({
 		}
 		return <TreeItemRenderer key={item.label} item={item} />;
 	});
+}
+
+function SimpleTreeItems() {
+	const context = React.useContext(TreeFilteringContext);
+	return <TreeRenderer tree={simpleTree} activeFilters={context.filters} />;
 }
 
 function ComplexTreeItems() {
@@ -929,6 +1022,8 @@ function TreeFilteringProvider(props: React.PropsWithChildren) {
 		</TreeFilteringContext.Provider>
 	);
 }
+
+type TreeType = "simple" | "complex";
 
 function SandboxTabs(props: React.PropsWithChildren) {
 	const [selectedId, setSelectedId] = React.useState<TreeType>("simple");

@@ -5,7 +5,7 @@
 import * as React from "react";
 import * as Ariakit from "@ariakit/react";
 import cx from "classnames";
-import { useFieldDescribedBy, useFieldId } from "./Field.js";
+import { useFieldDescribedBy } from "./Field.js";
 import { Icon } from "./Icon.js";
 import { useMergedRefs } from "./~hooks.js";
 import {
@@ -60,7 +60,6 @@ interface TextBoxInputProps extends Omit<BaseInputProps, "children" | "type"> {
 const TextBoxInput = forwardRef<"input", TextBoxInputProps>(
 	(props, forwardedRef) => {
 		const describedBy = useFieldDescribedBy(props["aria-describedby"]);
-		const fieldId = useFieldId();
 		const rootContext = React.useContext(TextBoxRootContext);
 		const setDisabled = rootContext?.setDisabled;
 		React.useEffect(() => {
@@ -69,9 +68,9 @@ const TextBoxInput = forwardRef<"input", TextBoxInputProps>(
 		return (
 			<FieldControl
 				type="textlike"
+				id={props.id}
 				render={
 					<Ariakit.Role.input
-						id={fieldId}
 						readOnly={props.disabled}
 						{...props}
 						aria-describedby={describedBy}
@@ -121,15 +120,14 @@ interface TextareaProps extends FocusableProps<"textarea"> {}
  */
 const TextBoxTextarea = forwardRef<"textarea", TextareaProps>(
 	(props, forwardedRef) => {
-		const fieldId = useFieldId();
 		const describedBy = useFieldDescribedBy(props["aria-describedby"]);
 
 		return (
 			<FieldControl
 				type="textlike"
+				id={props.id}
 				render={
 					<Ariakit.Role.textarea
-						id={fieldId}
 						readOnly={props.disabled}
 						{...props}
 						className={cx("🥝-text-box", props.className)}

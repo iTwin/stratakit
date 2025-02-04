@@ -70,7 +70,7 @@ type CollectionStoreItem = NonNullable<
 	ReturnType<ReturnType<typeof Ariakit.useCollectionStore>["item"]>
 >;
 
-interface FieldElementCollectionStoreItem extends CollectionStoreItem {
+export interface FieldElementCollectionStoreItem extends CollectionStoreItem {
 	/** The type of field element being tracked */
 	elementType: "label" | "control" | "description";
 
@@ -120,7 +120,7 @@ export function FieldCollection(
 }
 
 interface FieldCollectionItemControlProps
-	extends Pick<Ariakit.CollectionItemProps, "render"> {
+	extends Pick<Ariakit.CollectionItemProps, "render" | "id"> {
 	type: FieldElementCollectionStoreItem["controlType"];
 }
 
@@ -128,7 +128,8 @@ interface FieldCollectionItemControlProps
  * An element tracked as a control in the `Field`’s collection.
  */
 export function FieldControl(props: FieldCollectionItemControlProps) {
-	const { type, ...rest } = props;
+	const generatedId = React.useId();
+	const { id = generatedId, type, ...rest } = props;
 	const getData = React.useCallback(
 		(data: CollectionStoreItem) => ({
 			...data,
@@ -137,13 +138,21 @@ export function FieldControl(props: FieldCollectionItemControlProps) {
 		}),
 		[type],
 	);
-	return <Ariakit.CollectionItem {...rest} getItem={getData} />;
+	return <Ariakit.CollectionItem {...rest} id={id} getItem={getData} />;
 }
 
 /**
  * An element tracked as a label in the `Field`’s collection.
  */
 export function FieldLabel(props: Pick<Ariakit.CollectionItemProps, "render">) {
+	const store =
+		Ariakit.useCollectionContext() as Ariakit.CollectionStore<FieldElementCollectionStoreItem>;
+	const renderedItems = Ariakit.useStoreState(store, "renderedItems");
+	const fieldId = React.useMemo(
+		() => renderedItems?.find((item) => item.elementType === "control")?.id,
+		[renderedItems],
+	);
+
 	const getData = React.useCallback(
 		(data: CollectionStoreItem) => ({
 			...data,
@@ -151,5 +160,11 @@ export function FieldLabel(props: Pick<Ariakit.CollectionItemProps, "render">) {
 		}),
 		[],
 	);
-	return <Ariakit.CollectionItem {...props} getItem={getData} />;
+
+	return (
+		<Ariakit.CollectionItem
+			getItem={getData}
+			render={<Ariakit.Role.label {...props} htmlFor={fieldId} />}
+		/>
+	);
 }

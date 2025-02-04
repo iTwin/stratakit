@@ -37,24 +37,20 @@ interface FieldProps extends BaseProps {
  * - `Switch`
  */
 export const Field = forwardRef<"div", FieldProps>((props, forwardedRef) => {
-	const fieldId = React.useId();
 	const { layout, ...rest } = props;
-
 	return (
-		<FieldIdContext.Provider value={fieldId}>
-			<FieldDescribedByProvider>
-				<FieldCollection
-					render={
-						<Ariakit.Role.div
-							{...rest}
-							className={cx("🥝-field", props.className)}
-							data-kiwi-layout={layout}
-							ref={forwardedRef}
-						/>
-					}
-				/>
-			</FieldDescribedByProvider>
-		</FieldIdContext.Provider>
+		<FieldDescribedByProvider>
+			<FieldCollection
+				render={
+					<Ariakit.Role.div
+						{...rest}
+						className={cx("🥝-field", props.className)}
+						data-kiwi-layout={layout}
+						ref={forwardedRef}
+					/>
+				}
+			/>
+		</FieldDescribedByProvider>
 	);
 });
 DEV: Field.displayName = "Field";
@@ -136,12 +132,4 @@ export function useFieldRegisterDescribedBy(id: string) {
 		register(id);
 		return () => unregister(id);
 	}, [id, register, unregister]);
-}
-
-// ----------------------------------------------------------------------------
-
-const FieldIdContext = React.createContext<string | undefined>(undefined);
-
-export function useFieldId() {
-	return React.useContext(FieldIdContext);
 }

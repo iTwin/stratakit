@@ -4,7 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 import cx from "classnames";
 import * as Ariakit from "@ariakit/react";
-import { useFieldDescribedBy, useFieldId } from "./Field.js";
+import { useFieldDescribedBy } from "./Field.js";
 import { FieldControl, forwardRef, type FocusableProps } from "./~utils.js";
 
 type InputBaseProps = Omit<FocusableProps<"input">, "defaultValue" | "value">;
@@ -38,16 +38,15 @@ interface SwitchProps extends InputBaseProps, CheckboxOwnProps {
  */
 export const Switch = forwardRef<"input", SwitchProps>(
 	(props, forwardedRef) => {
-		const fieldId = useFieldId();
 		const describedBy = useFieldDescribedBy(props["aria-describedby"]);
 
 		return (
 			<FieldControl
 				type="checkable"
+				id={props.id}
 				render={
 					<Ariakit.Checkbox
 						accessibleWhenDisabled
-						id={fieldId}
 						{...props}
 						className={cx("🥝-switch", props.className)}
 						aria-describedby={describedBy}

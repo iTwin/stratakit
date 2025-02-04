@@ -538,85 +538,18 @@ interface TreeStore {
 	items: TreeItem[];
 }
 
-const nextTreeId = (() => {
+const createTreeItem = (() => {
 	let id = 0;
-	return () => `${id++}`;
-})();
-
-function createTreeItem(overrides?: Partial<TreeItem>): TreeItem {
-	const id = nextTreeId();
-	return {
-		id,
-		label: `Tree Item ${id}`,
-		items: [],
-		expanded: true,
-		...overrides,
+	return (overrides?: Partial<TreeItem>): TreeItem => {
+		return {
+			id: `${id++}`,
+			label: `Tree Item ${id}`,
+			items: [],
+			expanded: true,
+			...overrides,
+		};
 	};
-}
-
-function useFlatTreeItems(items: TreeItem[]): FlatTreeItem[] {
-	const treeContext = React.useContext(SandboxTreeContext);
-	return React.useMemo(() => {
-		function flattenItems(
-			items: TreeItem[],
-			parentItem: TreeItem | undefined,
-			level: number,
-			parentSelected: boolean,
-			parentHidden: boolean,
-		): FlatTreeItem[] {
-			const flatItems: FlatTreeItem[] = [];
-			let position = 1;
-			for (const item of items) {
-				const selected = item.id === treeContext.selected || parentSelected;
-				const hidden = treeContext.hidden.includes(item.id) || parentHidden;
-				flatItems.push({
-					...item,
-					level,
-					parentItem,
-					selected,
-					hidden,
-					parentHidden,
-					position,
-					size: items.length,
-				});
-				position++;
-				if (!item.expanded) continue;
-				flatItems.push(
-					...flattenItems(item.items, item, level + 1, selected, hidden),
-				);
-			}
-			return flatItems;
-		}
-		return flattenItems(items, undefined, 1, false, false);
-	}, [items, treeContext.selected, treeContext.hidden]);
-}
-
-function findTreeItem<T extends Pick<TreeItem, "id"> & { items: T[] }>(
-	items: T[],
-	id: string,
-): T | undefined {
-	for (const item of items) {
-		if (item.id === id) return item;
-
-		const found = findTreeItem(item.items, id);
-		if (found) return found;
-	}
-}
-
-type SandboxTreeItemsProps = {
-	tree: "simple" | "complex" | "empty";
-};
-
-function SandboxTreeItems({ tree }: SandboxTreeItemsProps) {
-	if (tree === "complex") {
-		return <ComplexTreeItems />;
-	}
-	if (tree === "simple") {
-		return <SimpleTreeItems />;
-	}
-
-	return null;
-}
+})();
 
 const simpleTree = {
 	items: [
@@ -704,8 +637,228 @@ const simpleTree = {
 	],
 } satisfies TreeStore;
 
-function SimpleTreeItems() {
-	const [items, setItems] = React.useState(simpleTree.items);
+const complexTree = {
+	items: [
+		createTreeItem({
+			label: "ITC_Master",
+			items: [
+				createTreeItem({
+					label: "002_Substation",
+					items: [createTreeItem({ label: "002_Substation_A" })],
+				}),
+				createTreeItem({
+					label: "005-BENROAD-00-XX-M3-D-00003.dgn",
+					items: [
+						createTreeItem({
+							label: "005-BENROAD-00-XX-M3-D-00003-A",
+						}),
+					],
+				}),
+				createTreeItem({
+					label: "005-BENROAD-00-XX-M3-D-00005.dgn",
+					items: [
+						createTreeItem({
+							label: "005-BENROAD-00-XX-M3-D-00005-A",
+						}),
+					],
+				}),
+				createTreeItem({
+					label: "005-BENROAD-00-XX-M3-G-00002.dgn",
+					items: [
+						createTreeItem({
+							label: "005-BENROAD-00-XX-M3-G-00002-A",
+						}),
+					],
+				}),
+				createTreeItem({
+					label: "005-BENROAD-00-XX-M3-G-00003.dgn",
+					items: [
+						createTreeItem({
+							label: "005-BENROAD-00-XX-M3-G-00003-A",
+						}),
+					],
+				}),
+				createTreeItem({
+					label: "007-aa_master.dgn",
+					items: [
+						createTreeItem({
+							label: "A-CLNG-LITE",
+							items: [
+								createTreeItem({
+									label: "A-CLNG-LITE-A",
+								}),
+							],
+						}),
+						createTreeItem({
+							label: "A-CLNG-TILE",
+							items: [
+								createTreeItem({
+									label: "A-DOOR-2D-PLAN",
+									items: [
+										createTreeItem({
+											label: "P00003 [2-KA62]",
+											items: [
+												createTreeItem({
+													label: "Cell [2-KA63]",
+													items: [
+														createTreeItem({
+															label: "Cell [2-KA64]",
+															items: [
+																createTreeItem({
+																	label: "Complex Chain [2-KA6A]",
+																}),
+																createTreeItem({
+																	label: "Complex Chain [2-KA6B]",
+																}),
+																createTreeItem({
+																	label: "Complex Chain [2-KA6C]",
+																}),
+																createTreeItem({
+																	label: "Complex Chain [2-KA6D]",
+																}),
+																createTreeItem({
+																	label: "Complex Chain [2-KA6E]",
+																}),
+																createTreeItem({
+																	label: "Complex Chain [2-KA6F]",
+																}),
+																createTreeItem({
+																	label: "Complex Chain [2-KA6G]",
+																}),
+																createTreeItem({
+																	label: "Complex Chain [2-KA6H]",
+																}),
+																createTreeItem({
+																	label: "Complex Chain [2-KA61]",
+																}),
+																createTreeItem({
+																	label: "Complex Chain [2-KA65]",
+																}),
+																createTreeItem({
+																	label: "Complex Chain [2-KA66]",
+																}),
+																createTreeItem({
+																	label: "Complex Chain [2-KA67]",
+																}),
+																createTreeItem({
+																	label: "Complex Chain [2-KA68]",
+																}),
+																createTreeItem({
+																	label: "Complex Chain [2-KA69]",
+																}),
+															],
+														}),
+													],
+												}),
+											],
+										}),
+										createTreeItem({
+											label: "P00003 [2-KA74]",
+											items: [
+												createTreeItem({
+													label: "P00003 [2-KA74-A]",
+												}),
+											],
+										}),
+										createTreeItem({
+											label: "P00003 [2-KA86]",
+											items: [
+												createTreeItem({
+													label: "P00003 [2-KA74-A]",
+												}),
+											],
+										}),
+										createTreeItem({
+											label: "P00003 [2-KA98]",
+											items: [
+												createTreeItem({
+													label: "P00003 [2-KA98-A]",
+												}),
+											],
+										}),
+										createTreeItem({
+											label: "P00003 [2-KAAA]",
+											items: [
+												createTreeItem({
+													label: "P00003 [2-KAAA-A]",
+												}),
+											],
+										}),
+									],
+								}),
+							],
+						}),
+					],
+				}),
+			],
+		}),
+	],
+} satisfies TreeStore;
+
+interface SandboxTreeItemsProps extends Pick<SandboxTreeProps, "tree"> {}
+
+function SandboxTreeItems({ tree }: SandboxTreeItemsProps) {
+	if (tree === "complex") {
+		return <TreeItems initialItems={complexTree.items} />;
+	}
+	if (tree === "simple") {
+		return <TreeItems initialItems={simpleTree.items} />;
+	}
+
+	return null;
+}
+
+function useFlatTreeItems(items: TreeItem[]): FlatTreeItem[] {
+	const treeContext = React.useContext(SandboxTreeContext);
+	return React.useMemo(() => {
+		function flattenItems(
+			items: TreeItem[],
+			parentItem: TreeItem | undefined,
+			level: number,
+			parentSelected: boolean,
+			parentHidden: boolean,
+		): FlatTreeItem[] {
+			const flatItems: FlatTreeItem[] = [];
+			let position = 1;
+			for (const item of items) {
+				const selected = item.id === treeContext.selected || parentSelected;
+				const hidden = treeContext.hidden.includes(item.id) || parentHidden;
+				flatItems.push({
+					...item,
+					level,
+					parentItem,
+					selected,
+					hidden,
+					parentHidden,
+					position,
+					size: items.length,
+				});
+				position++;
+				if (!item.expanded) continue;
+				flatItems.push(
+					...flattenItems(item.items, item, level + 1, selected, hidden),
+				);
+			}
+			return flatItems;
+		}
+		return flattenItems(items, undefined, 1, false, false);
+	}, [items, treeContext.selected, treeContext.hidden]);
+}
+
+function findTreeItem<T extends Pick<TreeItem, "id"> & { items: T[] }>(
+	items: T[],
+	id: string,
+): T | undefined {
+	for (const item of items) {
+		if (item.id === id) return item;
+
+		const found = findTreeItem(item.items, id);
+		if (found) return found;
+	}
+}
+
+function TreeItems({ initialItems }: { initialItems: TreeItem[] }) {
+	const [items, setItems] = React.useState(initialItems);
 	const flatItems = useFlatTreeItems(items);
 	return flatItems.map((item) => {
 		return (
@@ -732,10 +885,6 @@ function SimpleTreeItems() {
 			/>
 		);
 	});
-}
-
-function ComplexTreeItems() {
-	return <>WIP</>;
 }
 
 type TreeItemProps = React.ComponentProps<typeof Tree.Item>;

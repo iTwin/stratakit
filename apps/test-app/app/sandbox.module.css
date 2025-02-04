@@ -239,32 +239,3 @@
 	cursor: ew-resize;
 	opacity: 0;
 }
-
-.popover {
-	background-color: var(--kiwi-color-bg-surface-tertiary);
-	padding: 0.5rem 0.75rem;
-	border-radius: 8px;
-}
-
-.filter {
-	color: var(--kiwi-color-text-neutral-secondary);
-}
-
-.filterHeader {
-	min-block-size: 1.5rem;
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-}
-
-.filters {
-	display: flex;
-	gap: 0.5rem;
-	flex-direction: column;
-}
-
-.filterLabel {
-	display: inline-flex;
-	gap: 0.25rem;
-	align-items: center;
-}

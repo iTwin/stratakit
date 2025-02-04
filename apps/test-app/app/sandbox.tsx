@@ -2,18 +2,14 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-import * as Ariakit from "@ariakit/react";
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import styles from "./sandbox.module.css";
 import {
 	Button,
-	Checkbox,
 	DropdownMenu,
-	Field,
 	Icon,
 	IconButton,
-	Label,
 	Select,
 	Tabs,
 	Text,
@@ -937,8 +933,8 @@ function FiltersMenu({
 }) {
 	const context = React.useContext(TreeFilteringContext);
 	return (
-		<Ariakit.PopoverProvider placement="top-start">
-			<Ariakit.PopoverDisclosure
+		<DropdownMenu.Root>
+			<DropdownMenu.Button
 				render={
 					<IconButton
 						icon={filterIcon}
@@ -949,44 +945,24 @@ function FiltersMenu({
 					/>
 				}
 			/>
-			<Ariakit.Popover className={styles.popover} portal>
-				<div className={styles.filterHeader}>
-					<Text variant="body-sm" className={styles.filter}>
-						Filter
-					</Text>
-					{/* TODO: render as anchor */}
-					{context.filters.length > 0 && (
-						<Button
-							variant="ghost"
-							onClick={() => {
-								context.clearFilters();
+			<DropdownMenu.Content>
+				{filters.map((filter) => {
+					const checked = context.filters.includes(filter);
+					return (
+						<DropdownMenu.CheckboxItem
+							key={filter}
+							name={filter}
+							checked={checked}
+							onChange={() => {
+								context.toggleFilter(filter);
 							}}
 						>
-							Reset
-						</Button>
-					)}
-				</div>
-				<div className={styles.filters}>
-					{filters.map((filter) => {
-						const checked = context.filters.includes(filter);
-						return (
-							<Field key={filter}>
-								<Checkbox
-									onChange={() => {
-										context.toggleFilter(filter);
-									}}
-									checked={checked}
-								/>
-								<Label className={styles.filterLabel}>
-									<Icon href={placeholderIcon} />
-									{filter}
-								</Label>
-							</Field>
-						);
-					})}
-				</div>
-			</Ariakit.Popover>
-		</Ariakit.PopoverProvider>
+							{filter}
+						</DropdownMenu.CheckboxItem>
+					);
+				})}
+			</DropdownMenu.Content>
+		</DropdownMenu.Root>
 	);
 }
 

@@ -860,15 +860,24 @@ function findTreeItem<T extends Pick<TreeItem, "id"> & { items: T[] }>(
 function TreeItems({ initialItems }: { initialItems: TreeItem[] }) {
 	const [items, setItems] = React.useState(initialItems);
 	const flatItems = useFlatTreeItems(items);
+	const { setSelected, selected, toggleHidden } =
+		React.useContext(SandboxTreeContext);
 	return flatItems.map((item) => {
 		return (
-			<SandboxTreeItem
+			<Tree.Item
 				key={item.id}
-				id={item.id}
 				label={item.label}
 				aria-level={item.level}
 				aria-posinset={item.position}
 				aria-setsize={item.size}
+				selected={item.selected}
+				onSelectedChange={() => {
+					if (selected === item.id) {
+						setSelected(undefined);
+						return;
+					}
+					setSelected(item.id);
+				}}
 				expanded={item.items.length === 0 ? undefined : item.expanded}
 				onExpandedChange={(expanded) => {
 					setItems((prev) => {
@@ -879,77 +888,37 @@ function TreeItems({ initialItems }: { initialItems: TreeItem[] }) {
 						});
 					});
 				}}
-				selected={item.selected}
-				hidden={item.hidden}
-				parentHidden={item.parentHidden}
+				icon={<Icon href={placeholderIcon} style={{ display: "inline" }} />}
+				actions={
+					<>
+						<IconButton
+							className={styles.action}
+							icon={lockIcon}
+							label="Lock"
+							variant="ghost"
+							aria-hidden={item.hidden}
+						/>
+						{item.parentHidden ? (
+							<span className={styles.actionIcon}>
+								<Icon href={dotIcon} />
+							</span>
+						) : (
+							<IconButton
+								className={styles.action}
+								icon={item.hidden ? hideIcon : showIcon}
+								label={item.hidden ? "Show" : "Hide"}
+								variant="ghost"
+								onClick={() => {
+									toggleHidden(item.id);
+								}}
+							/>
+						)}
+						<TreeMoreActions hidden={item.hidden} />
+					</>
+				}
 			/>
 		);
 	});
-}
-
-type TreeItemProps = React.ComponentProps<typeof Tree.Item>;
-
-interface SandboxTreeItemProps
-	extends Pick<
-		TreeItemProps,
-		| "aria-level"
-		| "aria-posinset"
-		| "aria-setsize"
-		| "label"
-		| "expanded"
-		| "onExpandedChange"
-		| "selected"
-	> {
-	id: string;
-	hidden: boolean;
-	parentHidden: boolean;
-}
-
-function SandboxTreeItem(props: SandboxTreeItemProps) {
-	const { id, hidden, parentHidden, ...rest } = props;
-	const { setSelected, selected, toggleHidden } =
-		React.useContext(SandboxTreeContext);
-	const handleSelectedChange = React.useCallback(() => {
-		if (selected === id) {
-			setSelected(undefined);
-			return;
-		}
-		setSelected(id);
-	}, [id, selected, setSelected]);
-	return (
-		<Tree.Item
-			{...rest}
-			onSelectedChange={handleSelectedChange}
-			icon={<Icon href={placeholderIcon} style={{ display: "inline" }} />}
-			actions={
-				<>
-					<IconButton
-						className={styles.action}
-						icon={lockIcon}
-						label="Lock"
-						variant="ghost"
-						aria-hidden={hidden}
-					/>
-					{parentHidden ? (
-						<span className={styles.actionIcon}>
-							<Icon href={dotIcon} />
-						</span>
-					) : (
-						<IconButton
-							className={styles.action}
-							icon={hidden ? hideIcon : showIcon}
-							label={hidden ? "Show" : "Hide"}
-							variant="ghost"
-							onClick={() => {
-								toggleHidden(id);
-							}}
-						/>
-					)}
-					<TreeMoreActions hidden={hidden} />
-				</>
-			}
-		/>
-	);
 }
 
 function TreeMoreActions({ hidden }: { hidden?: boolean }) {

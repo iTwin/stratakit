@@ -6,6 +6,7 @@ import * as React from "react";
 import cx from "classnames";
 import * as Ariakit from "@ariakit/react";
 import {
+	FieldControl,
 	forwardRef,
 	isBrowser,
 	type BaseProps,
@@ -104,14 +105,19 @@ const HtmlSelect = forwardRef<"select", HtmlSelectProps>(
 
 		return (
 			<>
-				<Ariakit.Role.select
-					id={fieldId}
-					{...rest}
-					className={cx("🥝-button", "🥝-select", props.className)}
-					aria-describedby={describedBy}
-					data-kiwi-tone="neutral"
-					data-kiwi-variant={variant}
-					ref={forwardedRef}
+				<FieldControl
+					type="textlike"
+					render={
+						<Ariakit.Role.select
+							id={fieldId}
+							{...rest}
+							className={cx("🥝-button", "🥝-select", props.className)}
+							aria-describedby={describedBy}
+							data-kiwi-tone="neutral"
+							data-kiwi-variant={variant}
+							ref={forwardedRef}
+						/>
+					}
 				/>
 				<DisclosureArrow className="🥝-select-arrow" />
 			</>

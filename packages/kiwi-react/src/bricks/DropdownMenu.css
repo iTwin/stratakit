@@ -5,7 +5,6 @@
 .🥝-dropdown-menu {
 	--✨bg: var(--kiwi-color-bg-surface-tertiary);
 	--✨padding: 0.5rem; /* space(in progress)/x2 */
-	--✨gap: 0.25rem; /* space(in progress)/x1 */
 
 	@layer base {
 		background-color: var(--✨bg);
@@ -13,10 +12,10 @@
 
 		display: flex;
 		flex-direction: column;
-		gap: var(--✨gap);
 
+		min-inline-size: min(95vi, 164px);
 		border-radius: 8px /* radius(in progress)/medium */;
-		padding-block: var(--✨padding);
+		padding: var(--✨padding);
 
 		@layer shame {
 			isolation: isolate;
@@ -43,9 +42,13 @@
 	}
 }
 
-.🥝-dropdown-menu-checkbox-item:is(.🥝-list-item) {
+.🥝-dropdown-menu-item:is(.🥝-list-item) {
+	@layer base {
+		border-radius: 4px;
+	}
+
 	@layer states {
-		&:where(:not([aria-checked="true"])) {
+		&:where([role="menuitemcheckbox"]:not([aria-checked="true"])) {
 			--🥝dropdown-menu-checkmark-visibility: hidden;
 		}
 	}

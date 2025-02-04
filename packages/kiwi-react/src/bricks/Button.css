@@ -122,7 +122,10 @@
 			var(--🌀button-state--disabled, var(--kiwi-color-icon-neutral-disabled));
 
 		@media (forced-colors: active) {
-			border: 1px solid;
+			background-color: ButtonFace;
+			border: 1px solid ButtonBorder;
+			color: ButtonText;
+			--🥝icon-color: ButtonText;
 		}
 	}
 
@@ -162,6 +165,10 @@
 					var(--🌀button-state--hover, var(--kiwi-color-icon-strong-hover))
 					var(--🌀button-state--pressed, var(--kiwi-color-icon-neutral-hover))
 					var(--🌀button-state--disabled, var(--kiwi-color-icon-neutral-disabled));
+
+				@media (forced-colors: active) {
+					--🥝icon-color: ButtonText;
+				}
 			}
 		}
 
@@ -199,12 +206,24 @@
 
 		&:where([data-kiwi-variant="ghost"][aria-pressed="true"]) {
 			--🌀button-state: var(--🌀button-state--active);
+
+			@media (forced-colors: active) {
+				background-color: SelectedItem;
+				color: SelectedItemText;
+				--🥝icon-color: SelectedItemText;
+			}
 		}
 
 		&:where([disabled], :disabled, [aria-disabled="true"]) {
 			--🌀button-state: var(--🌀button-state--disabled);
 			color: var(--kiwi-color-text-neutral-disabled);
 			cursor: not-allowed;
+
+			@media (forced-colors: active) {
+				border-color: GrayText;
+				color: GrayText;
+				--🥝icon-color: GrayText;
+			}
 		}
 	}
 

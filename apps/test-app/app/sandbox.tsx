@@ -897,15 +897,15 @@ function Subheader() {
 		/>
 	);
 
+	const filteredNotification = React.useMemo(() => {
+		if (!filtered) return undefined;
+		if (itemCount === undefined) return "Showing all tree items";
+		return `Showing ${itemCount} tree items`;
+	}, [filtered, itemCount]);
 	return (
 		<div className={styles.subheader}>
-			<VisuallyHidden
-				aria-live={filtered ? "polite" : "off"}
-				aria-atomic={true}
-			>
-				{itemCount === undefined
-					? "Showing all tree items"
-					: `Showing ${itemCount} tree items`}
+			<VisuallyHidden aria-live="polite" aria-atomic={true}>
+				{filteredNotification}
 			</VisuallyHidden>
 			{isSearching ? undefined : (
 				<Tabs.TabList className={styles.tabList} tone="accent" ref={tabsRef}>

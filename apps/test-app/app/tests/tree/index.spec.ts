@@ -19,12 +19,18 @@ test("default", async ({ page }) => {
 	});
 	await expect(item1).toBeVisible();
 	await expect(item1).toHaveAttribute("aria-expanded", "true");
+	await expect(item1).toHaveAttribute("aria-level", "1");
+	await expect(item1).toHaveAttribute("aria-posinset", "1");
+	await expect(item1).toHaveAttribute("aria-setsize", "3");
 
 	const item1_1 = items.filter({
 		has: page.getByText("Item 1.1"),
 	});
 	await expect(item1_1).toBeVisible();
 	await expect(item1_1).not.toHaveAttribute("aria-expanded");
+	await expect(item1_1).toHaveAttribute("aria-level", "2");
+	await expect(item1_1).toHaveAttribute("aria-posinset", "1");
+	await expect(item1_1).toHaveAttribute("aria-setsize", "3");
 });
 
 test.describe("keyboard", () => {

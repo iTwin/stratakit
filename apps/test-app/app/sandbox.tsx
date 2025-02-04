@@ -644,10 +644,12 @@ const complexTree = {
 			items: [
 				createTreeItem({
 					label: "002_Substation",
+					expanded: false,
 					items: [createTreeItem({ label: "002_Substation_A" })],
 				}),
 				createTreeItem({
 					label: "005-BENROAD-00-XX-M3-D-00003.dgn",
+					expanded: false,
 					items: [
 						createTreeItem({
 							label: "005-BENROAD-00-XX-M3-D-00003-A",
@@ -656,6 +658,7 @@ const complexTree = {
 				}),
 				createTreeItem({
 					label: "005-BENROAD-00-XX-M3-D-00005.dgn",
+					expanded: false,
 					items: [
 						createTreeItem({
 							label: "005-BENROAD-00-XX-M3-D-00005-A",
@@ -664,6 +667,7 @@ const complexTree = {
 				}),
 				createTreeItem({
 					label: "005-BENROAD-00-XX-M3-G-00002.dgn",
+					expanded: false,
 					items: [
 						createTreeItem({
 							label: "005-BENROAD-00-XX-M3-G-00002-A",
@@ -672,6 +676,7 @@ const complexTree = {
 				}),
 				createTreeItem({
 					label: "005-BENROAD-00-XX-M3-G-00003.dgn",
+					expanded: false,
 					items: [
 						createTreeItem({
 							label: "005-BENROAD-00-XX-M3-G-00003-A",
@@ -683,6 +688,7 @@ const complexTree = {
 					items: [
 						createTreeItem({
 							label: "A-CLNG-LITE",
+							expanded: false,
 							items: [
 								createTreeItem({
 									label: "A-CLNG-LITE-A",
@@ -754,6 +760,7 @@ const complexTree = {
 										}),
 										createTreeItem({
 											label: "P00003 [2-KA74]",
+											expanded: false,
 											items: [
 												createTreeItem({
 													label: "P00003 [2-KA74-A]",
@@ -762,6 +769,7 @@ const complexTree = {
 										}),
 										createTreeItem({
 											label: "P00003 [2-KA86]",
+											expanded: false,
 											items: [
 												createTreeItem({
 													label: "P00003 [2-KA74-A]",
@@ -770,6 +778,7 @@ const complexTree = {
 										}),
 										createTreeItem({
 											label: "P00003 [2-KA98]",
+											expanded: false,
 											items: [
 												createTreeItem({
 													label: "P00003 [2-KA98-A]",
@@ -778,6 +787,7 @@ const complexTree = {
 										}),
 										createTreeItem({
 											label: "P00003 [2-KAAA]",
+											expanded: false,
 											items: [
 												createTreeItem({
 													label: "P00003 [2-KAAA-A]",

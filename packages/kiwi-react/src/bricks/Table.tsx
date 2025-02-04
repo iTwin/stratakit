@@ -120,8 +120,6 @@ const TableBody = forwardRef<"div", TableBodyProps>((props, forwardedRef) => {
 		new Set(),
 	);
 
-	React.useEffect(() => {}, []);
-
 	return (
 		<Ariakit.Role.div
 			{...props}

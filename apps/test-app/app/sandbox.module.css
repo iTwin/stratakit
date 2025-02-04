@@ -75,10 +75,8 @@
 	font-size: var(--kiwi-font-size-12);
 }
 
-.panelTitle {
-	font-size: var(--kiwi-font-size-12);
-	font-weight: 600;
-	line-height: 1.5rem;
+.panelTitleWrapper {
+	margin-inline-start: -8px;
 }
 
 .panelCaption {
@@ -186,6 +184,10 @@
 	&:where(:hover, [data-resizing="true"]) {
 		&:not(:focus-within) {
 			--_bg: var(--kiwi-color-border-accent-strong);
+
+			@media (forced-colors: active) {
+				--_bg: Highlight;
+			}
 		}
 	}
 

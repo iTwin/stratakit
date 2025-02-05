@@ -5,15 +5,10 @@
 import * as React from "react";
 import * as Ariakit from "@ariakit/react";
 import cx from "classnames";
-import { useFieldDescribedBy } from "./Field.js";
+import { FieldControl, useFieldDescribedBy } from "./Field.js";
 import { Icon } from "./Icon.js";
 import { useMergedRefs } from "./~hooks.js";
-import {
-	type FocusableProps,
-	type BaseProps,
-	forwardRef,
-	FieldControl,
-} from "./~utils.js";
+import { type FocusableProps, type BaseProps, forwardRef } from "./~utils.js";
 
 // ----------------------------------------------------------------------------
 

@@ -4,7 +4,8 @@
  *--------------------------------------------------------------------------------------------*/
 import cx from "classnames";
 import * as Ariakit from "@ariakit/react";
-import { FieldLabel, forwardRef, type BaseProps } from "./~utils.js";
+import { forwardRef, type BaseProps } from "./~utils.js";
+import { FieldLabel } from "./Field.js";
 
 interface LabelProps extends BaseProps<"label"> {}
 

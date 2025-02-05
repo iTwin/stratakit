@@ -113,27 +113,29 @@ export default function Page() {
 							/>
 						</div>
 					</div>
-					<Tabs.Root>
-						<Subheader />
-						<Tabs.TabPanel
-							tabId="simple"
-							className={styles.tabPanel}
-							focusable={false}
-						>
-							<SandboxTree
-								tree={selectedModel === "epoch-2" ? "empty" : "simple"}
-							/>
-						</Tabs.TabPanel>
-						<Tabs.TabPanel
-							tabId="complex"
-							className={styles.tabPanel}
-							focusable={false}
-						>
-							<SandboxTree
-								tree={selectedModel === "epoch-2" ? "empty" : "complex"}
-							/>
-						</Tabs.TabPanel>
-					</Tabs.Root>
+					<TreeFilteringProvider>
+						<SandboxTabs>
+							<Subheader />
+							<Tabs.TabPanel
+								tabId="simple"
+								className={styles.tabPanel}
+								focusable={false}
+							>
+								<SandboxTree
+									tree={selectedModel === "epoch-2" ? "empty" : "simple"}
+								/>
+							</Tabs.TabPanel>
+							<Tabs.TabPanel
+								tabId="complex"
+								className={styles.tabPanel}
+								focusable={false}
+							>
+								<SandboxTree
+									tree={selectedModel === "epoch-2" ? "empty" : "complex"}
+								/>
+							</Tabs.TabPanel>
+						</SandboxTabs>
+					</TreeFilteringProvider>
 				</>
 			}
 		>
@@ -159,10 +161,11 @@ export default function Page() {
 	);
 }
 
-function Layout(props: {
-	panelContent: React.ReactNode;
-	children: React.ReactNode;
-}) {
+function Layout(
+	props: React.PropsWithChildren<{
+		panelContent: React.ReactNode;
+	}>,
+) {
 	const { sliderProps, panelProps, panelMinSize, panelMaxSize, resizing } =
 		useSplitter<HTMLDivElement>({
 			minSize: { px: 256, pct: 20 },
@@ -218,7 +221,7 @@ function Layout(props: {
  * Wrapper for empty state content, displayed as a centered vertical flex box.
  * Accepts any arbitrary content passed as `children`.
  */
-function EmptyState({ children }: { children: React.ReactNode }) {
+function EmptyState({ children }: React.PropsWithChildren) {
 	return <div className={styles.emptyState}>{children}</div>;
 }
 
@@ -516,6 +519,118 @@ function SandboxTree({ tree }: SandboxTreeProps) {
 	);
 }
 
+interface TreeItem {
+	label: string;
+	type?: string;
+	items?: TreeItem[];
+}
+
+interface TreeStore {
+	filters: string[];
+	items?: TreeItem[];
+}
+
+const simpleTree = {
+	filters: [
+		"Guides",
+		"Other",
+		"Road",
+		"Parking lot",
+		"Building",
+		"Sewer",
+		"Project boundary",
+		"Map",
+	],
+	items: [
+		{
+			label: "Guides",
+			type: "Guides",
+			items: [
+				{
+					label: "Tree",
+					items: [
+						{ label: "Guide 4" },
+						{ label: "Guide 3" },
+						{ label: "Guide 2" },
+						{ label: "Guide 1" },
+					],
+				},
+			],
+		},
+		{
+			label: "Other",
+			type: "Other",
+			items: [
+				{
+					label: "Object 2",
+					items: [{ label: "Path 3" }],
+				},
+				{ label: "Object 1" },
+			],
+		},
+		{
+			label: "Road",
+			type: "Road",
+			items: [{ label: "Parking lot access" }, { label: "Site access" }],
+		},
+		{
+			label: "Parking lot",
+			type: "Parking lot",
+			items: [
+				{
+					label: "Parking area",
+					items: [
+						{ label: "Bay point 2" },
+						{ label: "Bay point 1" },
+						{ label: "Space point 1" },
+						{ label: "Path 6" },
+					],
+				},
+			],
+		},
+		{
+			label: "Building",
+			type: "Building",
+			items: [
+				{
+					label: "Building area",
+					items: [{ label: "Path 5" }],
+				},
+			],
+		},
+		{
+			label: "Sewer",
+			type: "Sewer",
+			items: [
+				{
+					label: "Run off pipe",
+					items: [{ label: "Path 4" }],
+				},
+			],
+		},
+		{
+			label: "Project boundary",
+			type: "Project boundary",
+			items: [
+				{
+					label: "Property area",
+					items: [{ label: "Path 1" }],
+				},
+			],
+		},
+		{
+			label: "Map",
+			type: "Map",
+			items: [
+				{
+					label: "Location",
+					items: [{ label: "Terrain" }],
+				},
+			],
+		},
+	],
+} satisfies TreeStore;
+
 type SandboxTreeItemsProps = {
 	tree: "simple" | "complex" | "empty";
 };
@@ -525,63 +640,44 @@ function SandboxTreeItems({ tree }: SandboxTreeItemsProps) {
 		return <ComplexTreeItems />;
 	}
 	if (tree === "simple") {
-		return <IdealTreeItems />;
+		return <SimpleTreeItems />;
 	}
 
 	return null;
 }
 
-function IdealTreeItems() {
+function TreeItemRenderer({ item: treeItem }: { item: TreeItem }) {
 	return (
-		<>
-			<TreeItem label="Guides">
-				<TreeItem label="Tree">
-					<TreeItem label="Guide 4" />
-					<TreeItem label="Guide 3" />
-					<TreeItem label="Guide 2" />
-					<TreeItem label="Guide 1" />
-				</TreeItem>
-			</TreeItem>
-			<TreeItem label="Other">
-				<TreeItem label="Object 2">
-					<TreeItem label="Path 3" />
-				</TreeItem>
-				<TreeItem label="Object 1" />
-			</TreeItem>
-			<TreeItem label="Road">
-				<TreeItem label="Parking lot access" />
-				<TreeItem label="Site access" />
-			</TreeItem>
-			<TreeItem label="Parking lot">
-				<TreeItem label="Parking area">
-					<TreeItem label="Bay point 2" />
-					<TreeItem label="Bay point 1" />
-					<TreeItem label="Space point 1" />
-					<TreeItem label="Path 6" />
-				</TreeItem>
-			</TreeItem>
-			<TreeItem label="Building">
-				<TreeItem label="Building area">
-					<TreeItem label="Path 5" />
-				</TreeItem>
-			</TreeItem>
-			<TreeItem label="Sewer">
-				<TreeItem label="Run off pipe">
-					<TreeItem label="Path 4" />
-				</TreeItem>
-			</TreeItem>
-			<TreeItem label="Project boundary">
-				<TreeItem label="Property area">
-					<TreeItem label="Path 1" />
-				</TreeItem>
-			</TreeItem>
-			<TreeItem label="Map">
-				<TreeItem label="Location">
-					<TreeItem label="Terrain" />
-				</TreeItem>
-			</TreeItem>
-		</>
+		<TreeItem label={treeItem.label}>
+			{treeItem.items?.map((item) => (
+				<TreeItemRenderer key={item.label} item={item} />
+			))}
+		</TreeItem>
 	);
+}
+
+function TreeRenderer({
+	tree,
+	activeFilters,
+}: {
+	tree: TreeStore;
+	activeFilters: string[];
+}) {
+	return tree.items?.map((item) => {
+		// Filters first level only, usually you'd want to traverse the tree.
+		if (
+			activeFilters.length > 0 &&
+			(!item.type || !activeFilters.includes(item.type))
+		) {
+			return null;
+		}
+		return <TreeItemRenderer key={item.label} item={item} />;
+	});
+}
+
+function SimpleTreeItems() {
+	const context = React.useContext(TreeFilteringContext);
+	return <TreeRenderer tree={simpleTree} activeFilters={context.filters} />;
 }
 
 function ComplexTreeItems() {
@@ -751,13 +847,32 @@ function TreeMoreActions({ hidden }: { hidden?: boolean }) {
 }
 
 function Subheader() {
+	const { selectedId: tree } = React.useContext(TabsContext);
+	const { filters, filtered } = React.useContext(TreeFilteringContext);
 	const [isSearching, setIsSearching] = React.useState(false);
 	const searchInputRef = React.useRef<HTMLInputElement>(null);
+	const itemCount = React.useMemo(() => {
+		if (tree !== "simple") return undefined;
+		if (filters.length === 0) return undefined;
+
+		const filteredItems = simpleTree.items.filter((item) => {
+			if (!item.type) return false;
+			return filters.includes(item.type);
+		});
+
+		function countItems(items: TreeItem[]): number {
+			return items.reduce((acc, item) => {
+				const childItemCount = item.items ? countItems(item.items) : 0;
+				return acc + 1 + childItemCount;
+			}, 0);
+		}
+		return countItems(filteredItems);
+	}, [filters, tree]);
 	const tabsRef = React.useRef<HTMLHeadingElement>(null);
 
 	const actions = isSearching ? (
 		<>
-			<SortingModes />
+			<FiltersMenu filters={tree === "simple" ? simpleTree.filters : []} />
 			<IconButton
 				className={styles.shiftIconRight}
 				icon={dismissIcon}
@@ -782,8 +897,16 @@ function Subheader() {
 		/>
 	);
 
+	const filteredNotification = React.useMemo(() => {
+		if (!filtered) return undefined;
+		if (itemCount === undefined) return "Showing all tree items";
+		return `Showing ${itemCount} tree items`;
+	}, [filtered, itemCount]);
 	return (
 		<div className={styles.subheader}>
+			<VisuallyHidden aria-live="polite" aria-atomic={true}>
+				{filteredNotification}
+			</VisuallyHidden>
 			{isSearching ? undefined : (
 				<Tabs.TabList className={styles.tabList} tone="accent" ref={tabsRef}>
 					<Tabs.Tab id="simple">Simple</Tabs.Tab>
@@ -803,25 +926,113 @@ function Subheader() {
 	);
 }
 
-function SortingModes() {
+function FiltersMenu({
+	filters,
+}: {
+	filters: string[];
+}) {
+	const context = React.useContext(TreeFilteringContext);
 	return (
 		<DropdownMenu.Root>
 			<DropdownMenu.Button
-				render={<IconButton icon={filterIcon} label="Filter" variant="ghost" />}
+				render={
+					<IconButton
+						icon={filterIcon}
+						label="Filter"
+						variant="ghost"
+						disabled={filters.length === 0}
+						isActive={context.filters.length > 0}
+					/>
+				}
 			/>
-			<DropdownMenu.Content style={{ minInlineSize: 164 }}>
-				<DropdownMenu.Item>Show all</DropdownMenu.Item>
-				<DropdownMenu.Item>Guides</DropdownMenu.Item>
-				<DropdownMenu.Item>Other</DropdownMenu.Item>
-				<DropdownMenu.Item>Roadway</DropdownMenu.Item>
-				<DropdownMenu.Item>Parking</DropdownMenu.Item>
-				<DropdownMenu.Item>Building</DropdownMenu.Item>
-				<DropdownMenu.Item>Dry utility</DropdownMenu.Item>
-				<DropdownMenu.Item>Stormwater</DropdownMenu.Item>
-				<DropdownMenu.Item>Sewer</DropdownMenu.Item>
-				<DropdownMenu.Item>Boundary</DropdownMenu.Item>
-				<DropdownMenu.Item>Map</DropdownMenu.Item>
+			<DropdownMenu.Content>
+				{filters.map((filter) => {
+					const checked = context.filters.includes(filter);
+					return (
+						<DropdownMenu.CheckboxItem
+							key={filter}
+							name={filter}
+							checked={checked}
+							onChange={() => {
+								context.toggleFilter(filter);
+							}}
+						>
+							{filter}
+						</DropdownMenu.CheckboxItem>
+					);
+				})}
 			</DropdownMenu.Content>
 		</DropdownMenu.Root>
 	);
 }
+
+function TreeFilteringProvider(props: React.PropsWithChildren) {
+	const [filtered, setFiltered] = React.useState(false);
+	const [filters, setFilters] = React.useState<string[]>([]);
+	const toggleFilter = React.useCallback((filter: string) => {
+		setFilters((prev) => {
+			if (prev.includes(filter)) {
+				return prev.filter((f) => f !== filter);
+			}
+			return [...prev, filter];
+		});
+		setFiltered(true);
+	}, []);
+	const clearFilters = React.useCallback(() => {
+		setFilters([]);
+		setFiltered(true);
+	}, []);
+	return (
+		<TreeFilteringContext.Provider
+			value={React.useMemo(
+				() => ({
+					filters,
+					filtered,
+					toggleFilter,
+					clearFilters,
+				}),
+				[filters, filtered, toggleFilter, clearFilters],
+			)}
+		>
+			{props.children}
+		</TreeFilteringContext.Provider>
+	);
+}
+
+function SandboxTabs(props: React.PropsWithChildren) {
+	const [selectedId, setSelectedId] = React.useState<string | null | undefined>(
+		undefined,
+	);
+	return (
+		<TabsContext.Provider
+			value={React.useMemo(
+				() => ({
+					selectedId: selectedId ?? "",
+				}),
+				[selectedId],
+			)}
+		>
+			<Tabs.Root setSelectedId={setSelectedId} selectedId={selectedId}>
+				{props.children}
+			</Tabs.Root>
+		</TabsContext.Provider>
+	);
+}
+
+const TreeFilteringContext = React.createContext<{
+	filters: string[];
+	filtered: boolean;
+	toggleFilter: (filter: string) => void;
+	clearFilters: () => void;
+}>({
+	filters: [],
+	filtered: false,
+	toggleFilter: () => {},
+	clearFilters: () => {},
+});
+
+const TabsContext = React.createContext<{
+	selectedId: string;
+}>({
+	selectedId: "",
+});

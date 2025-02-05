@@ -4,7 +4,6 @@
  *--------------------------------------------------------------------------------------------*/
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import { produce } from "immer";
 import styles from "./sandbox.module.css";
 import {
 	Button,
@@ -891,11 +890,11 @@ function TreeItems({ initialItems }: { initialItems: TreeItem[] }) {
 				expanded={item.items.length === 0 ? undefined : item.expanded}
 				onExpandedChange={(expanded) => {
 					setItems((prev) => {
-						return produce(prev, (draft) => {
-							const treeItem = findTreeItem(draft, item.id);
-							if (!treeItem) return;
-							treeItem.expanded = expanded;
-						});
+						const treeItem = findTreeItem(prev, item.id);
+						if (!treeItem) return prev;
+						const newData = [...prev];
+						treeItem.expanded = expanded; // TODO: should be immutable https://github.com/iTwin/kiwi/pull/300#discussion_r1941452941
+						return newData;
 					});
 				}}
 				icon={<Icon href={placeholderIcon} style={{ display: "inline" }} />}

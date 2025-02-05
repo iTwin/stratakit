@@ -54,6 +54,7 @@ interface TextBoxInputProps extends Omit<BaseInputProps, "children" | "type"> {
  */
 const TextBoxInput = forwardRef<"input", TextBoxInputProps>(
 	(props, forwardedRef) => {
+		const { id, ...rest } = props;
 		const describedBy = useFieldDescribedBy(props["aria-describedby"]);
 		const rootContext = React.useContext(TextBoxRootContext);
 		const setDisabled = rootContext?.setDisabled;
@@ -67,7 +68,7 @@ const TextBoxInput = forwardRef<"input", TextBoxInputProps>(
 				render={
 					<Ariakit.Role.input
 						readOnly={props.disabled}
-						{...props}
+						{...rest}
 						aria-describedby={describedBy}
 						className={cx({ "🥝-text-box": !rootContext }, props.className)}
 						/**
@@ -115,16 +116,17 @@ interface TextareaProps extends FocusableProps<"textarea"> {}
  */
 const TextBoxTextarea = forwardRef<"textarea", TextareaProps>(
 	(props, forwardedRef) => {
+		const { id, ...rest } = props;
 		const describedBy = useFieldDescribedBy(props["aria-describedby"]);
 
 		return (
 			<FieldControl
 				type="textlike"
-				id={props.id}
+				id={id}
 				render={
 					<Ariakit.Role.textarea
 						readOnly={props.disabled}
-						{...props}
+						{...rest}
 						className={cx("🥝-text-box", props.className)}
 						aria-describedby={describedBy}
 						/**

@@ -38,16 +38,17 @@ interface SwitchProps extends InputBaseProps, CheckboxOwnProps {
  */
 export const Switch = forwardRef<"input", SwitchProps>(
 	(props, forwardedRef) => {
+		const { id, ...rest } = props;
 		const describedBy = useFieldDescribedBy(props["aria-describedby"]);
 
 		return (
 			<FieldControl
 				type="checkable"
-				id={props.id}
+				id={id}
 				render={
 					<Ariakit.Checkbox
 						accessibleWhenDisabled
-						{...props}
+						{...rest}
 						className={cx("🥝-switch", props.className)}
 						aria-describedby={describedBy}
 						role="switch"

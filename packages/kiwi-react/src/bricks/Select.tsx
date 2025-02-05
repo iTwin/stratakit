@@ -89,7 +89,7 @@ interface HtmlSelectProps extends HtmlSelectBaseProps {
  */
 const HtmlSelect = forwardRef<"select", HtmlSelectProps>(
 	(props, forwardedRef) => {
-		const { variant = "solid", ...rest } = props;
+		const { id, variant = "solid", ...rest } = props;
 
 		const setIsHtmlSelect = React.useContext(HtmlSelectContext);
 		const describedBy = useFieldDescribedBy(props["aria-describedby"]);
@@ -105,7 +105,7 @@ const HtmlSelect = forwardRef<"select", HtmlSelectProps>(
 			<>
 				<FieldControl
 					type="textlike"
-					id={props.id}
+					id={id}
 					render={
 						<Ariakit.Role.select
 							{...rest}

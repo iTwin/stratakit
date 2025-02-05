@@ -29,16 +29,17 @@ interface RadioProps extends InputBaseProps, RadioOwnProps {}
  * including `value`, `defaultChecked`, `checked`, and `onChange`.
  */
 export const Radio = forwardRef<"input", RadioProps>((props, forwardedRef) => {
+	const { id, ...rest } = props;
 	const describedBy = useFieldDescribedBy(props["aria-describedby"]);
 
 	return (
 		<FieldControl
 			type="checkable"
-			id={props.id}
+			id={id}
 			render={
 				<Ariakit.Radio
 					accessibleWhenDisabled
-					{...props}
+					{...rest}
 					className={cx("🥝-checkbox", "🥝-radio", props.className)}
 					aria-describedby={describedBy}
 					ref={forwardedRef}

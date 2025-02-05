@@ -70,7 +70,7 @@ type CollectionStoreItem = NonNullable<
 	ReturnType<ReturnType<typeof Ariakit.useCollectionStore>["item"]>
 >;
 
-export interface FieldElementCollectionStoreItem extends CollectionStoreItem {
+interface FieldElementCollectionStoreItem extends CollectionStoreItem {
 	/** The type of field element being tracked */
 	elementType: "label" | "control" | "description";
 

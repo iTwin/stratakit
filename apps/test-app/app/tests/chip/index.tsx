@@ -12,7 +12,7 @@ export default definePage(
 	function Page() {
 		return (
 			<>
-				<Chip>Value</Chip>
+				<Chip label="Value" />
 			</>
 		);
 	},
@@ -21,16 +21,14 @@ export default definePage(
 
 function VisualTest() {
 	// Permutations for visual testing without dismiss functionality
-	const permutations = [["solid"], ["outline"]] as const;
+	const permutations = ["solid", "outline"] as const;
 
 	return (
 		<div style={{ display: "grid", gap: 4 }}>
-			{permutations.map(([variant]) => {
-				const props = { variant } as React.ComponentProps<typeof Chip>;
-
+			{permutations.map((variant) => {
 				return (
-					<div key={variant} style={{ display: "flex", gap: 4 }}>
-						<Chip {...props}>{variant}</Chip>
+					<div key={variant}>
+						<Chip variant={variant} label={variant} />
 					</div>
 				);
 			})}
@@ -40,26 +38,24 @@ function VisualTest() {
 
 function DismissTest() {
 	// Permutations for visual testing with dismiss functionality
-	const permutations = [["solid"], ["outline"]] as const;
+	const permutations = ["solid", "outline"] as const;
 
 	const [isDismissed, setIsDismissed] = React.useState(false);
 
 	return (
 		<div style={{ display: "grid", gap: 4 }}>
-			{permutations.map(([variant]) => {
-				const props = { variant };
-
+			{permutations.map((variant) => {
 				return (
-					<div key={variant} style={{ display: "flex", gap: 4 }}>
+					<div key={variant}>
 						<Chip
-							{...props}
+							key={variant}
+							variant={variant}
+							label={variant}
 							onDismiss={() => {
 								setIsDismissed(true);
 							}}
-							data-dismissed={isDismissed ? "true" : "false"}
-						>
-							{variant}
-						</Chip>
+							data-dismissed={isDismissed}
+						/>
 					</div>
 				);
 			})}

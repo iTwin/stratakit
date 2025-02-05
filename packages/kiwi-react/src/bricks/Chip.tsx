@@ -9,7 +9,12 @@ import { forwardRef, type BaseProps } from "./~utils.js";
 import { IconButton } from "./IconButton.js";
 import { Dismiss } from "./Icon.js";
 
-interface ChipProps extends BaseProps<"div"> {
+interface ChipProps extends Omit<BaseProps<"div">, "children"> {
+	/**
+	 * The label displayed inside the chip.
+	 */
+	label: React.ReactNode;
+
 	/**
 	 * The variant style of the Chip.
 	 * Use "solid" for primary states and "outline" for less prominent states.
@@ -28,14 +33,14 @@ interface ChipProps extends BaseProps<"div"> {
  * Chip is a UI component used to represent an item, attribute, or action in a compact visual style.
  * It supports two visual variants: `solid` for primary emphasis and `outline` for less prominent states.
  *
- * Example : Render a Chip with the default "solid" variant
+ * Example:
  * ```tsx
- * <Chip>Default Chip</Chip>
- * <Chip variant="outline">Outline Chip</Chip>
+ * <Chip label="Value" />
+ * <Chip label="Value" variant="outline" />
  * ```
  */
 export const Chip = forwardRef<"div", ChipProps>((props, forwardedRef) => {
-	const { variant = "solid", onDismiss, children, ...rest } = props;
+	const { variant = "solid", onDismiss, label, ...rest } = props;
 
 	const baseId = React.useId();
 	const labelId = `${baseId}-label`;
@@ -48,7 +53,7 @@ export const Chip = forwardRef<"div", ChipProps>((props, forwardedRef) => {
 			className={cx("🥝-chip", props.className)}
 			ref={forwardedRef}
 		>
-			<span id={labelId}>{children}</span>
+			<span id={labelId}>{label}</span>
 			{onDismiss && (
 				<IconButton
 					id={dismissIconId}

@@ -20,19 +20,18 @@
 	}
 
 	@layer modifiers {
-		&[data-kiwi-variant="solid"],
-		&[data-kiwi-variant="muted"] {
+		&:where([data-kiwi-variant="solid"], [data-kiwi-variant="muted"]) {
 			border-radius: 4px;
 			background-color: var(--kiwi-color-bg-neutral-base);
 			padding-inline: 4px;
 		}
 
-		&[data-kiwi-variant="solid"] {
+		&:where([data-kiwi-variant="solid"]) {
 			box-shadow: var(--kiwi-shadow-button-base-inset), var(--✨shadow-border),
 				var(--kiwi-shadow-button-base-drop);
 		}
 
-		&[data-kiwi-variant="ghost"] {
+		&:where([data-kiwi-variant="ghost"]) {
 			color: var(--kiwi-color-text-neutral-tertiary);
 		}
 	}

@@ -12,55 +12,61 @@ import showIcon from "@itwin/itwinui-icons/visibility-show.svg";
 
 export const handle = { title: "Tree" };
 
-export default definePage(
-	function Page({ overflow = false, selected = false }) {
-		const overflowPostfix = overflow
-			? " with a super long label that is overflown"
-			: "";
+export default definePage(function Page({
+	overflow = false,
+	selected = false,
+}) {
+	const overflowPostfix = overflow
+		? " with a super long label that is overflown"
+		: "";
 
-		const [data, setData] = React.useState(() => [
-			{
-				label: `Item 1${overflowPostfix}`,
-				selected: !!selected,
-				expanded: true,
-				children: [
-					{ label: "Item 1.1", selected: !!selected },
-					{ label: "Item 1.2", selected: !!selected },
-					{ label: `Item 1.3${overflowPostfix}`, selected: !!selected },
-				],
-			},
-			{
-				label: "Item 2",
-				selected: false,
-				expanded: true,
-				children: [{ label: `Item 2.1${overflowPostfix}`, selected: false }],
-			},
-			{ label: "Item 3", selected: false },
-		]);
+	const [data, setData] = React.useState(() => [
+		{
+			label: `Item 1${overflowPostfix}`,
+			selected: !!selected,
+			expanded: true,
+			children: [
+				{ label: "Item 1.1", selected: !!selected },
+				{ label: "Item 1.2", selected: !!selected },
+				{ label: `Item 1.3${overflowPostfix}`, selected: !!selected },
+			],
+		},
+		{
+			label: "Item 2",
+			selected: false,
+			expanded: true,
+			children: [{ label: `Item 2.1${overflowPostfix}`, selected: false }],
+		},
+		{ label: "Item 3", selected: false },
+	]);
 
-		return (
-			<Tree.Root style={{ maxInlineSize: overflow ? 300 : undefined }}>
-				{data.map((item, index) => {
-					const handleSelection = () => {
-						const oldSelected = data[index].selected;
+	return (
+		<Tree.Root style={{ maxInlineSize: overflow ? 300 : undefined }}>
+			{data.map((item, index, items) => {
+				const handleSelection = () => {
+					const oldSelected = data[index].selected;
 
-						const newData = [...data];
-						newData[index].selected = !oldSelected;
-						setData(newData);
-					};
+					const newData = [...data];
+					newData[index].selected = !oldSelected;
+					setData(newData);
+				};
 
-					const handleExpansion = () => {
-						const oldExpanded = data[index].expanded;
-						if (oldExpanded === undefined) return;
+				const handleExpansion = () => {
+					const oldExpanded = data[index].expanded;
+					if (oldExpanded === undefined) return;
 
-						const newData = [...data];
-						newData[index].expanded = !oldExpanded;
-						setData(newData);
-					};
+					const newData = [...data];
+					newData[index].expanded = !oldExpanded;
+					setData(newData);
+				};
 
-					return (
+				return (
+					<>
 						<Tree.Item
 							key={item.label}
+							aria-level={1}
+							aria-posinset={index + 1}
+							aria-setsize={items.length}
 							label={item.label}
 							expanded={item.expanded}
 							onExpandedChange={handleExpansion}
@@ -77,95 +83,47 @@ export default definePage(
 									<IconButton icon={showIcon} label="Show" variant="ghost" />
 								</>
 							}
-						>
-							{item.children?.map((child, childIndex) => {
-								if (!item.expanded) return null;
+						/>
+						{item.children?.map((child, childIndex, children) => {
+							if (!item.expanded) return null;
 
-								const handleSelection = () => {
-									const newData = [...data];
-									const childItem = newData[index].children?.[childIndex];
-									if (childItem) childItem.selected = !childItem.selected;
-									setData(newData);
-								};
+							const handleSelection = () => {
+								const newData = [...data];
+								const childItem = newData[index].children?.[childIndex];
+								if (childItem) childItem.selected = !childItem.selected;
+								setData(newData);
+							};
 
-								return (
-									<Tree.Item
-										key={child.label}
-										label={child.label}
-										selected={child.selected}
-										onSelectedChange={handleSelection}
-										icon={placeholderIcon}
-										actions={
-											<>
-												<IconButton
-													icon={unlockIcon}
-													label="Unlock"
-													variant="ghost"
-												/>
-												<IconButton
-													icon={showIcon}
-													label="Show"
-													variant="ghost"
-												/>
-											</>
-										}
-									/>
-								);
-							})}
-						</Tree.Item>
-					);
-				})}
-			</Tree.Root>
-		);
-	},
-	{
-		multiSelect: MultiSelectTest,
-	},
-);
-
-function TreeItem({
-	children,
-	label,
-	selected,
-}: React.PropsWithChildren<{
-	label?: React.ReactNode;
-	selected?: boolean;
-}>) {
-	const isParentNode = React.Children.count(children) > 0;
-	return (
-		<Tree.Item
-			expanded={isParentNode || undefined}
-			selected={selected}
-			icon={placeholderIcon}
-			label={label}
-			actions={
-				<>
-					<IconButton icon={unlockIcon} label="Unlock" variant="ghost" />
-					<IconButton icon={showIcon} label="Show" variant="ghost" />
-				</>
-			}
-		>
-			{children}
-		</Tree.Item>
-	);
-}
-
-function MultiSelectTest() {
-	return (
-		<Tree.Root>
-			<TreeItem label="Item 1" selected>
-				<TreeItem label="Item 1.1" selected />
-				<TreeItem label="Item 1.2">
-					<TreeItem label="Item 1.2.1" />
-					<TreeItem label="Item 1.2.2" selected />
-					<TreeItem label="Item 1.2.3" />
-				</TreeItem>
-				<TreeItem label="Item 1.3" selected />
-			</TreeItem>
-			<TreeItem label="Item 2">
-				<TreeItem label="Item 2.1" selected />
-			</TreeItem>
-			<TreeItem label="Item 3" selected />
+							return (
+								<Tree.Item
+									key={child.label}
+									aria-level={2}
+									aria-posinset={childIndex + 1}
+									aria-setsize={children.length}
+									label={child.label}
+									selected={child.selected}
+									onSelectedChange={handleSelection}
+									icon={placeholderIcon}
+									actions={
+										<>
+											<IconButton
+												icon={unlockIcon}
+												label="Unlock"
+												variant="ghost"
+											/>
+											<IconButton
+												icon={showIcon}
+												label="Show"
+												variant="ghost"
+											/>
+										</>
+									}
+								/>
+							);
+						})}
+					</>
+				);
+			})}
 		</Tree.Root>
 	);
-}
+});

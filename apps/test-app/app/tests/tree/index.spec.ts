@@ -8,7 +8,7 @@ import AxeBuilder from "@axe-core/playwright";
 test("default", async ({ page }) => {
 	await page.goto("/tests/tree");
 
-	const tree = page.getByRole("tree").first();
+	const tree = page.getByRole("tree");
 	await expect(tree).toBeVisible();
 
 	const items = page.getByRole("treeitem");
@@ -19,25 +19,31 @@ test("default", async ({ page }) => {
 	});
 	await expect(item1).toBeVisible();
 	await expect(item1).toHaveAttribute("aria-expanded", "true");
+	await expect(item1).toHaveAttribute("aria-level", "1");
+	await expect(item1).toHaveAttribute("aria-posinset", "1");
+	await expect(item1).toHaveAttribute("aria-setsize", "3");
 
-	const item1_1 = item1.getByRole("treeitem").filter({
+	const item1_1 = items.filter({
 		has: page.getByText("Item 1.1"),
 	});
 	await expect(item1_1).toBeVisible();
 	await expect(item1_1).not.toHaveAttribute("aria-expanded");
+	await expect(item1_1).toHaveAttribute("aria-level", "2");
+	await expect(item1_1).toHaveAttribute("aria-posinset", "1");
+	await expect(item1_1).toHaveAttribute("aria-setsize", "3");
 });
 
 test.describe("keyboard", () => {
 	test("navigation and expansion", async ({ page }) => {
 		await page.goto("/tests/tree");
 
-		const tree = page.getByRole("tree").first();
+		const tree = page.getByRole("tree");
 		const items = tree.getByRole("treeitem");
 
 		const item1 = items.filter({
 			has: page.getByText("Item 1", { exact: true }),
 		});
-		const item1_1 = item1.getByRole("treeitem").filter({
+		const item1_1 = items.filter({
 			has: page.getByText("Item 1.1"),
 		});
 		const item2 = items.filter({

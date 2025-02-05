@@ -7,6 +7,7 @@
 @import "./Icon.css" layer(kiwi.components);
 
 @import "./Anchor.css" layer(kiwi.components);
+@import "./Avatar.css" layer(kiwi.components);
 @import "./Button.css" layer(kiwi.components);
 @import "./Checkbox.css" layer(kiwi.components);
 @import "./Chip.css" layer(kiwi.components);

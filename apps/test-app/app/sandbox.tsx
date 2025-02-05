@@ -877,9 +877,11 @@ function TreeItems({ initialItems }: { initialItems: TreeItem[] }) {
 			<Tree.Item
 				key={item.id}
 				label={item.label}
-				aria-level={item.level}
-				aria-posinset={item.position}
-				aria-setsize={item.size}
+				value={item.id}
+				parentValue={item.parentItem?.id}
+				// aria-level={item.level}
+				// aria-posinset={item.position}
+				// aria-setsize={item.size}
 				selected={item.selected}
 				onSelectedChange={() => {
 					if (selected === item.id) {

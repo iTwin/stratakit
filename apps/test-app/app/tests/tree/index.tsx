@@ -42,7 +42,7 @@ export default definePage(function Page({
 
 	return (
 		<Tree.Root style={{ maxInlineSize: overflow ? 300 : undefined }}>
-			{data.map((item, index, items) => {
+			{data.map((item, index) => {
 				const handleSelection = () => {
 					const oldSelected = data[index].selected;
 
@@ -64,9 +64,10 @@ export default definePage(function Page({
 					<>
 						<Tree.Item
 							key={item.label}
-							aria-level={1}
-							aria-posinset={index + 1}
-							aria-setsize={items.length}
+							value={item.label}
+							// aria-level={1}
+							// aria-posinset={index + 1}
+							// aria-setsize={items.length}
 							label={item.label}
 							expanded={item.expanded}
 							onExpandedChange={handleExpansion}
@@ -84,7 +85,7 @@ export default definePage(function Page({
 								</>
 							}
 						/>
-						{item.children?.map((child, childIndex, children) => {
+						{item.children?.map((child, childIndex) => {
 							if (!item.expanded) return null;
 
 							const handleSelection = () => {
@@ -97,9 +98,11 @@ export default definePage(function Page({
 							return (
 								<Tree.Item
 									key={child.label}
-									aria-level={2}
-									aria-posinset={childIndex + 1}
-									aria-setsize={children.length}
+									value={child.label}
+									parentValue={item.label}
+									// aria-level={2}
+									// aria-posinset={childIndex + 1}
+									// aria-setsize={children.length}
 									label={child.label}
 									selected={child.selected}
 									onSelectedChange={handleSelection}

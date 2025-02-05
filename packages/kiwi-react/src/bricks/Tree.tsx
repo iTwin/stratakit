@@ -10,6 +10,7 @@ import { IconButton } from "./IconButton.js";
 import { Icon } from "./Icon.js";
 import { forwardRef, type BaseProps } from "./~utils.js";
 import { useEventHandlers } from "./~hooks.js";
+import { VisuallyHidden } from "./VisuallyHidden.js";
 
 // ----------------------------------------------------------------------------
 
@@ -23,40 +24,68 @@ interface TreeProps extends BaseProps {}
  * Example:
  * ```tsx
  * <Tree.Root>
- *   <Tree.Item label="Parent 1" aria-level={1} aria-posinset={1} aria-setsize={2} />
- *   <Tree.Item label="Child 1.1" aria-level={2} aria-posinset={1} aria-setsize={2} />
- *   <Tree.Item label="Child 1.2" aria-level={2} aria-posinset={2} aria-setsize={2} />
- *   <Tree.Item label="Parent 2" aria-level={1} aria-posinset={2} aria-setsize={2} />
- *   <Tree.Item label="Child 2.1" aria-level={2} aria-posinset={1} aria-setsize={1} />
+ *   <Tree.Item label="Parent 1" value="parent-1" />
+ *   <Tree.Item label="Child 1.1" value="child-1-1" parentValue="parent-1" />
+ *   <Tree.Item label="Child 1.2" value="child-1-2" parentValue="parent-1" />
+ *   <Tree.Item label="Parent 2" value="parent-2" />
+ *   <Tree.Item label="Child 2.1" value="child-2-1" parentValue="parent-2" />
  * </Tree.Root>
  * ```
  */
 const Tree = forwardRef<"div", TreeProps>((props, forwardedRef) => {
 	const composite = Ariakit.useCompositeStore({ orientation: "vertical" });
+	const baseId = React.useId();
+
+	const [nodes, setNodes] = React.useState<NodesMap>(() => new Map());
 
 	return (
-		<Ariakit.Role.div
-			role="tree"
-			{...props}
-			render={<Ariakit.Composite store={composite} />}
-			className={cx("🥝-tree", props.className)}
-			ref={forwardedRef}
+		<TreeContext.Provider
+			value={React.useMemo(
+				() => ({ baseId, nodes, setNodes }),
+				[baseId, nodes],
+			)}
 		>
-			{props.children}
-		</Ariakit.Role.div>
+			<Ariakit.Role.div
+				role="tree"
+				{...props}
+				render={<Ariakit.Composite store={composite} />}
+				className={cx("🥝-tree", props.className)}
+				ref={forwardedRef}
+			>
+				{props.children}
+			</Ariakit.Role.div>
+		</TreeContext.Provider>
 	);
 });
 DEV: Tree.displayName = "Tree.Root";
 
+type NodesMap = Map<
+	string,
+	{ collection: Ariakit.CollectionStore; level: number }
+>;
+
+const TreeContext = React.createContext<
+	| {
+			baseId: string;
+			nodes: NodesMap;
+			setNodes: React.Dispatch<React.SetStateAction<NodesMap>>;
+	  }
+	| undefined
+>(undefined);
+
 // ----------------------------------------------------------------------------
 
 interface TreeItemProps extends Omit<BaseProps, "content"> {
-	/** Specifies the nesting level of the tree item. Nesting levels start at 1. */
-	"aria-level": number;
-	/** Defines tree item position in the current level of tree items. Integer greater than or equal to 1. */
-	"aria-posinset": number;
-	/** Defines tree item set size of the current level. */
-	"aria-setsize": number;
+	/**
+	 * An identifier for the tree item. Must be unique within the tree.
+	 */
+	value: string;
+	/**
+	 * The `value` of the parent tree item.
+	 *
+	 * This is used to create a parent-child relationship and automatically determine levels, group size, etc.
+	 */
+	parentValue?: string;
 	/**
 	 * Specifies if the tree item is selected.
 	 *
@@ -105,9 +134,9 @@ interface TreeItemProps extends Omit<BaseProps, "content"> {
  * Example:
  * ```tsx
  * <Tree.Root>
- *   <Tree.Item label="Parent" aria-level={1} aria-posinset={1} aria-setsize={1} />
- *   <Tree.Item label="Child 1" aria-level={2} aria-posinset={1} aria-setsize={2} />
- *   <Tree.Item label="Child 2" aria-level={2} aria-posinset={2} aria-setsize={2}  />
+ *   <Tree.Item label="Parent" value="parent-1" />
+ *   <Tree.Item label="Child 1" value="child-1" parentValue="parent-1" />
+ *   <Tree.Item label="Child 2" value="child-2" parentValue="parent-1" />
  * </Tree.Root>
  * ```
  *
@@ -122,8 +151,13 @@ interface TreeItemProps extends Omit<BaseProps, "content"> {
  * The `selected` and `onSelectedChange` props can be used to control the selection state of a treeitem.
  */
 const TreeItem = forwardRef<"div", TreeItemProps>((props, forwardedRef) => {
+	const generatedId = React.useId();
+	const { baseId = generatedId } = React.useContext(TreeContext) ?? {};
+
 	const {
-		"aria-level": level,
+		value,
+		parentValue,
+		id = `${baseId}-${value.replaceAll(" ", "-")}`,
 		selected,
 		children,
 		expanded,
@@ -159,64 +193,133 @@ const TreeItem = forwardRef<"div", TreeItemProps>((props, forwardedRef) => {
 		}
 	};
 
-	const contentId = React.useId();
+	const store = useTreeItemStore({ value, parentValue });
+	const collectionItems = Ariakit.useStoreState(
+		store.collection,
+		"renderedItems",
+	);
+	const parentCollectionItems = Ariakit.useStoreState(
+		store.parentCollection,
+		"renderedItems",
+	);
+
+	const [position, size] = React.useMemo(() => {
+		const index =
+			parentCollectionItems?.findIndex((item) => item.id === id) ?? -1;
+		if (index === -1) return [undefined, undefined];
+
+		return [index + 1, parentCollectionItems?.length];
+	}, [parentCollectionItems, id]);
+
+	const childrenIds = React.useMemo(() => {
+		return collectionItems?.map((item) => item.id).join(" ");
+	}, [collectionItems]);
+
+	const contentId = `${id}-content`;
+
+	const treeitem = (
+		<Ariakit.CompositeItem
+			render={<Ariakit.Role {...rest} />}
+			id={id}
+			onClick={
+				useEventHandlers(
+					onClickProp,
+					handleClick,
+				) as unknown as React.MouseEventHandler<HTMLButtonElement>
+			}
+			onKeyDown={
+				useEventHandlers(
+					onKeyDownProp,
+					handleKeyDown,
+				) as unknown as React.KeyboardEventHandler<HTMLButtonElement>
+			}
+			role="treeitem"
+			aria-expanded={expanded}
+			aria-selected={selected}
+			aria-labelledby={contentId}
+			aria-level={store.level}
+			aria-posinset={position}
+			aria-setsize={size}
+			className={cx("🥝-tree-item", props.className)}
+			ref={forwardedRef as Ariakit.CompositeItemProps["ref"]}
+		>
+			<ListItem.Root
+				data-kiwi-expanded={expanded}
+				data-kiwi-selected={selected}
+				className="🥝-tree-item-node"
+				style={
+					{
+						"--🥝tree-item-level": store.level,
+					} as React.CSSProperties
+				}
+				role={undefined}
+			>
+				<TreeItemExpander
+					onClick={() => {
+						if (expanded === undefined) return;
+						onExpandedChange?.(!expanded);
+					}}
+				/>
+				{typeof icon === "string" ? <Icon href={icon} /> : icon}
+				<TreeItemContent label={label} id={contentId} />
+				<TreeItemActions>{actions}</TreeItemActions>
+
+				{childrenIds ? (
+					<VisuallyHidden role="group" aria-owns={childrenIds} />
+				) : null}
+			</ListItem.Root>
+		</Ariakit.CompositeItem>
+	);
 
 	return (
-		<TreeItemContext.Provider
-			value={React.useMemo(
-				() => ({
-					level,
-					expanded,
-					selected,
-					contentId,
-				}),
-				[level, expanded, selected, contentId],
-			)}
-		>
-			<Ariakit.CompositeItem
-				render={<Ariakit.Role {...rest} />}
-				onClick={
-					useEventHandlers(
-						onClickProp,
-						handleClick,
-					) as unknown as React.MouseEventHandler<HTMLButtonElement>
-				}
-				onKeyDown={
-					useEventHandlers(
-						onKeyDownProp,
-						handleKeyDown,
-					) as unknown as React.KeyboardEventHandler<HTMLButtonElement>
-				}
-				role="treeitem"
-				aria-expanded={expanded}
-				aria-selected={selected}
-				aria-labelledby={contentId}
-				aria-level={level}
-				className={cx("🥝-tree-item", props.className)}
-				ref={forwardedRef as Ariakit.CompositeItemProps["ref"]}
-			>
-				<ListItem.Root
-					data-kiwi-expanded={expanded}
-					data-kiwi-selected={selected}
-					className="🥝-tree-item-node"
-					style={{ "--🥝tree-item-level": level } as React.CSSProperties}
-					role={undefined}
-				>
-					<TreeItemExpander
-						onClick={() => {
-							if (expanded === undefined) return;
-							onExpandedChange?.(!expanded);
-						}}
-					/>
-					{typeof icon === "string" ? <Icon href={icon} /> : icon}
-					<TreeItemContent label={label} />
-					<TreeItemActions>{actions}</TreeItemActions>
-				</ListItem.Root>
-			</Ariakit.CompositeItem>
-		</TreeItemContext.Provider>
+		<Ariakit.CollectionItem
+			id={id}
+			store={store.parentCollection}
+			render={<Ariakit.Collection store={store.collection} render={treeitem} />}
+		/>
 	);
 });
 DEV: TreeItem.displayName = "Tree.Item";
+
+function useTreeItemStore(props: {
+	value: string;
+	parentValue?: string;
+}) {
+	const { value, parentValue } = props;
+
+	const treeContext = React.useContext(TreeContext);
+	const parent = React.useMemo(() => {
+		if (!treeContext || !parentValue) return undefined;
+		return treeContext.nodes.get(parentValue);
+	}, [treeContext, parentValue]);
+
+	const collection = Ariakit.useCollectionStore();
+	const parentCollection = parent?.collection; // TODO: first level collection
+	const level = (parent?.level ?? 0) + 1;
+
+	React.useEffect(
+		function updateTreeContext() {
+			// TODO: perf
+			treeContext?.setNodes?.((nodes) => {
+				nodes.set(value, { collection, level });
+				return new Map(nodes);
+			});
+
+			return () => {
+				treeContext?.setNodes?.((nodes) => {
+					nodes.delete(value);
+					return new Map(nodes);
+				});
+			};
+		},
+		[treeContext?.setNodes, collection, value, level],
+	);
+
+	return React.useMemo(
+		() => ({ level, collection, parentCollection }),
+		[level, collection, parentCollection],
+	);
+}
 
 // ----------------------------------------------------------------------------
 
@@ -228,12 +331,9 @@ const TreeItemContent = forwardRef<"span", TreeItemContentProps>(
 	(props, forwardedRef) => {
 		const { label, ...rest } = props;
 
-		const { contentId } = React.useContext(TreeItemContext) ?? {};
-
 		return (
 			<ListItem.Content
 				{...rest}
-				id={contentId}
 				className={cx("🥝-tree-item-content", props.className)}
 				ref={forwardedRef}
 			>
@@ -323,17 +423,6 @@ const TreeChevron = forwardRef<"svg", TreeChevronProps>(
 	},
 );
 DEV: TreeChevron.displayName = "TreeChevron";
-
-// ----------------------------------------------------------------------------
-
-const TreeItemContext = React.createContext<
-	| {
-			expanded?: boolean;
-			selected?: boolean;
-			contentId: string;
-	  }
-	| undefined
->(undefined);
 
 // ----------------------------------------------------------------------------
 

@@ -68,16 +68,22 @@
 	}
 }
 
+.🥝-table-caption,
 .🥝-table-cell {
 	@layer base {
 		display: flex;
-		flex-grow: 1;
-		flex-basis: 4rem;
-		min-inline-size: 4rem;
 		align-items: center;
 		column-gap: 0.5rem;
 		padding: var(--🥝table-cell-padding);
 		word-break: break-word;
+	}
+}
+
+.🥝-table-cell {
+	@layer base {
+		flex-grow: 1;
+		flex-basis: 4rem;
+		min-inline-size: 4rem;
 	}
 
 	@layer modifiers {

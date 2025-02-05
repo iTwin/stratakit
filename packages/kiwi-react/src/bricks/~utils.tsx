@@ -145,11 +145,14 @@ export function FieldControl(props: FieldCollectionItemControlProps) {
  * An element tracked as a label in the `Field`’s collection.
  */
 export function FieldLabel(props: Pick<Ariakit.CollectionItemProps, "render">) {
-	const store =
-		Ariakit.useCollectionContext() as Ariakit.CollectionStore<FieldElementCollectionStoreItem>;
+	const store = Ariakit.useCollectionContext();
 	const renderedItems = Ariakit.useStoreState(store, "renderedItems");
 	const fieldId = React.useMemo(
-		() => renderedItems?.find((item) => item.elementType === "control")?.id,
+		() =>
+			renderedItems?.find(
+				(item: FieldElementCollectionStoreItem) =>
+					item.elementType === "control",
+			)?.id,
 		[renderedItems],
 	);
 

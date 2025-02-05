@@ -70,7 +70,7 @@ type CollectionStoreItem = NonNullable<
 	ReturnType<ReturnType<typeof Ariakit.useCollectionStore>["item"]>
 >;
 
-interface FieldElementCollectionStoreItem extends CollectionStoreItem {
+interface FieldCollectionStoreItem extends CollectionStoreItem {
 	/** The type of field element being tracked */
 	elementType: "label" | "control" | "description";
 
@@ -82,7 +82,7 @@ export function FieldCollection(
 	props: Pick<Ariakit.CollectionProps, "render">,
 ) {
 	const fieldElementCollection =
-		Ariakit.useCollectionStore<FieldElementCollectionStoreItem>({
+		Ariakit.useCollectionStore<FieldCollectionStoreItem>({
 			defaultItems: [],
 		});
 	const renderedItems = Ariakit.useStoreState(
@@ -121,7 +121,7 @@ export function FieldCollection(
 
 interface FieldCollectionItemControlProps
 	extends Pick<Ariakit.CollectionItemProps, "render" | "id"> {
-	type: FieldElementCollectionStoreItem["controlType"];
+	type: FieldCollectionStoreItem["controlType"];
 }
 
 /**
@@ -150,8 +150,7 @@ export function FieldLabel(props: Pick<Ariakit.CollectionItemProps, "render">) {
 	const fieldId = React.useMemo(
 		() =>
 			renderedItems?.find(
-				(item: FieldElementCollectionStoreItem) =>
-					item.elementType === "control",
+				(item: FieldCollectionStoreItem) => item.elementType === "control",
 			)?.id,
 		[renderedItems],
 	);

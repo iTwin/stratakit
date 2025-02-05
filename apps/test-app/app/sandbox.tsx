@@ -2,25 +2,22 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-import * as Ariakit from "@ariakit/react";
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import styles from "./sandbox.module.css";
 import {
 	Button,
-	Checkbox,
 	DropdownMenu,
-	Field,
 	Icon,
 	IconButton,
-	Label,
+	Select,
 	Tabs,
 	Text,
 	TextBox,
 	VisuallyHidden,
 } from "@itwin/itwinui-react/bricks";
 import * as Tree from "@itwin/itwinui-react-internal/src/bricks/Tree.tsx";
-import type { MetaFunction } from "react-router";
+import { useSearchParams, type MetaFunction } from "react-router";
 import placeholderIcon from "@itwin/itwinui-icons/placeholder.svg";
 import searchIcon from "@itwin/itwinui-icons/search.svg";
 import panelLeftIcon from "@itwin/itwinui-icons/panel-left.svg";
@@ -38,44 +35,108 @@ export const meta: MetaFunction = () => {
 };
 
 export default function Page() {
+	const [searchParams, setSearchParams] = useSearchParams();
+	const selectedModel =
+		searchParams.get("tree") === "empty" ? "epoch-2" : "epoch-1";
+
+	const setSelectedModel = React.useCallback(
+		(model: keyof typeof models) => {
+			setSearchParams((prev) => {
+				if (model === "epoch-2") {
+					prev.set("tree", "empty");
+				} else {
+					prev.delete("tree");
+				}
+
+				return prev;
+			});
+		},
+		[setSearchParams],
+	);
+
+	const models = React.useMemo(
+		() => ({
+			"epoch-1": "Epoch System iModel 1", // Non-empty model
+			"epoch-2": "Epoch System iModel 2", // Empty model
+		}),
+		[],
+	);
+
+	const selectModelId = React.useId();
+
 	return (
 		<Layout
 			panelContent={
-				<SandboxTabs>
-					<TreeFilteringProvider>
-						<div className={styles.panelHeader}>
+				<>
+					<div className={styles.panelHeader}>
+						<div>
+							<VisuallyHidden
+								// biome-ignore lint/a11y/noLabelWithoutControl: Accessible name comes from VisuallyHidden's children
+								render={(props) => <label {...props} htmlFor={selectModelId} />}
+							>
+								Choose Model
+							</VisuallyHidden>
+
+							<Select.Root className={styles.panelTitleWrapper}>
+								<Select.HtmlSelect
+									id={selectModelId}
+									variant="ghost"
+									defaultValue={selectedModel}
+									onChange={(e) =>
+										setSelectedModel(e.target.value as keyof typeof models)
+									}
+								>
+									{Object.entries(models).map(([id, modelName]) => (
+										<option key={id} value={id}>
+											{modelName}
+										</option>
+									))}
+								</Select.HtmlSelect>
+							</Select.Root>
+
 							{/* biome-ignore lint/a11y: hgroup needs an explicit role for better support */}
 							<hgroup role="group">
-								<h2 className={styles.panelTitle}>Epoch System iModel</h2>
+								<VisuallyHidden render={(props) => <h2 {...props} />}>
+									{models[selectedModel]}
+								</VisuallyHidden>
+
 								<p className={styles.panelCaption}>2024 Refresh</p>
 							</hgroup>
-							<div className={styles.actions}>
-								<IconButton
-									className={styles.shiftIconRight}
-									icon={panelLeftIcon}
-									label="Dock panel"
-									variant="ghost"
-									disabled
-								/>
-							</div>
 						</div>
-						<Subheader />
-						<Tabs.TabPanel
-							tabId="simple"
-							className={styles.tabPanel}
-							focusable={false}
-						>
-							<SandboxTree tree="simple" />
-						</Tabs.TabPanel>
-						<Tabs.TabPanel
-							tabId="complex"
-							className={styles.tabPanel}
-							focusable={false}
-						>
-							<SandboxTree tree="complex" />
-						</Tabs.TabPanel>
+						<div className={styles.actions}>
+							<IconButton
+								className={styles.shiftIconRight}
+								icon={panelLeftIcon}
+								label="Dock panel"
+								variant="ghost"
+								disabled
+							/>
+						</div>
+					</div>
+					<TreeFilteringProvider>
+						<SandboxTabs>
+							<Subheader />
+							<Tabs.TabPanel
+								tabId="simple"
+								className={styles.tabPanel}
+								focusable={false}
+							>
+								<SandboxTree
+									tree={selectedModel === "epoch-2" ? "empty" : "simple"}
+								/>
+							</Tabs.TabPanel>
+							<Tabs.TabPanel
+								tabId="complex"
+								className={styles.tabPanel}
+								focusable={false}
+							>
+								<SandboxTree
+									tree={selectedModel === "epoch-2" ? "empty" : "complex"}
+								/>
+							</Tabs.TabPanel>
+						</SandboxTabs>
 					</TreeFilteringProvider>
-				</SandboxTabs>
+				</>
 			}
 		>
 			<header className={styles.header}>
@@ -110,6 +171,9 @@ function Layout(
 			minSize: { px: 256, pct: 20 },
 			maxSize: { pct: 30 },
 		});
+
+	const resizerId = React.useId();
+
 	return (
 		<div
 			className={styles.appLayout}
@@ -131,9 +195,19 @@ function Layout(
 				className={styles.splitter}
 				data-resizing={resizing ? "true" : undefined}
 			>
+				<VisuallyHidden
+					render={(props) => (
+						<label {...props} htmlFor={resizerId}>
+							Resize layers panel
+						</label>
+					)}
+				>
+					Resize layers panel
+				</VisuallyHidden>
+
 				<input
+					id={resizerId}
 					type="range"
-					aria-label="Resize layers panel"
 					className={styles.slider}
 					{...sliderProps}
 				/>
@@ -407,9 +481,11 @@ const SandboxTreeContext = React.createContext<{
 	toggleHidden: () => {},
 });
 
-type TreeType = "simple" | "complex";
+interface SandboxTreeProps {
+	tree: "simple" | "complex" | "empty";
+}
 
-function SandboxTree({ tree: treeType }: { tree: TreeType }) {
+function SandboxTree({ tree }: SandboxTreeProps) {
 	const [selected, setSelected] = React.useState<string | undefined>();
 	const [hidden, setHidden] = React.useState<string[]>([]);
 	const toggleHidden = React.useCallback((id: string) => {
@@ -421,14 +497,22 @@ function SandboxTree({ tree: treeType }: { tree: TreeType }) {
 		});
 	}, []);
 
+	const sandboxTreeContext = React.useMemo(
+		() => ({ selected, setSelected, hidden, toggleHidden }),
+		[hidden, selected, toggleHidden],
+	);
+
+	if (tree === "empty") {
+		return <EmptyState />;
+	}
+
 	return (
-		<SandboxTreeContext.Provider
-			value={React.useMemo(
-				() => ({ selected, setSelected, hidden, toggleHidden }),
-				[hidden, selected, toggleHidden],
-			)}
-		>
-			{treeType === "complex" ? <ComplexTree /> : <SimpleTree />}
+		<SandboxTreeContext.Provider value={sandboxTreeContext}>
+			{tree === "simple" ? (
+				<SimpleTree />
+			) : tree === "complex" ? (
+				<ComplexTree />
+			) : undefined}
 		</SandboxTreeContext.Provider>
 	);
 }
@@ -441,7 +525,7 @@ interface TreeItem {
 
 interface TreeStore {
 	filters: string[];
-	items: TreeItem[];
+	items?: TreeItem[];
 }
 
 const simpleTree = {
@@ -545,16 +629,6 @@ const simpleTree = {
 	],
 } satisfies TreeStore;
 
-function TreeItemRenderer({ item: treeItem }: { item: TreeItem }) {
-	return (
-		<TreeItem label={treeItem.label}>
-			{treeItem.items?.map((item) => (
-				<TreeItemRenderer key={item.label} item={item} />
-			))}
-		</TreeItem>
-	);
-}
-
 function useFilteredTree({
 	tree,
 	filters,
@@ -617,14 +691,26 @@ function useFilteredTree({
 	return { filteredTree: foundItems, itemCount };
 }
 
-function TreeRenderer({
-	tree,
-}: {
-	tree: TreeItem[];
-}) {
-	return tree.map((item) => {
-		return <TreeItemRenderer key={item.label} item={item} />;
-	});
+function TreeItemRenderer({ item: treeItem }: { item: TreeItem }) {
+	return (
+		<TreeItem label={treeItem.label}>
+			{treeItem.items?.map((item) => (
+				<TreeItemRenderer key={item.label} item={item} />
+			))}
+		</TreeItem>
+	);
+}
+
+function SimpleTree() {
+	const { tree } = React.useContext(TreeFilteringContext);
+	if (tree.length === 0) return <EmptyState />;
+	return (
+		<Tree.Root>
+			{tree.map((item) => {
+				return <TreeItemRenderer key={item.label} item={item} />;
+			})}
+		</Tree.Root>
+	);
 }
 
 function ComplexTree() {
@@ -691,12 +777,6 @@ function ComplexTree() {
 			<TreeItem label="ITC_Main" />
 		</Tree.Root>
 	);
-}
-
-function SimpleTree() {
-	const { tree } = React.useContext(TreeFilteringContext);
-	if (tree.length === 0) return <EmptyState />;
-	return <TreeRenderer tree={tree} />;
 }
 
 const SandboxParentItemContext = React.createContext<{
@@ -801,8 +881,7 @@ function TreeMoreActions({ hidden }: { hidden?: boolean }) {
 
 function Subheader() {
 	const { selectedId: tree } = React.useContext(TabsContext);
-	const { itemCount, clearFilters } = React.useContext(TreeFilteringContext);
-	const { filtered, search, setSearch } =
+	const { itemCount, filtered, clearFilters, search, setSearch } =
 		React.useContext(TreeFilteringContext);
 	const [isSearching, setIsSearching] = React.useState(false);
 	const searchInputRef = React.useRef<HTMLInputElement>(null);
@@ -838,15 +917,15 @@ function Subheader() {
 		/>
 	);
 
+	const filteredNotification = React.useMemo(() => {
+		if (!filtered) return undefined;
+		if (itemCount === undefined) return "Showing all tree items";
+		return `Showing ${itemCount} tree items`;
+	}, [filtered, itemCount]);
 	return (
 		<div className={styles.subheader}>
-			<VisuallyHidden
-				aria-live={filtered ? "polite" : "off"}
-				aria-atomic={true}
-			>
-				{itemCount === undefined
-					? "Showing all tree items"
-					: `Showing ${itemCount} tree items`}
+			<VisuallyHidden aria-live="polite" aria-atomic={true}>
+				{filteredNotification}
 			</VisuallyHidden>
 			{isSearching ? undefined : (
 				<Tabs.TabList className={styles.tabList} tone="accent" ref={tabsRef}>
@@ -881,55 +960,36 @@ function FiltersMenu({
 }) {
 	const context = React.useContext(TreeFilteringContext);
 	return (
-		<Ariakit.PopoverProvider placement="top-start">
-			<Ariakit.PopoverDisclosure
+		<DropdownMenu.Root>
+			<DropdownMenu.Button
 				render={
 					<IconButton
 						icon={filterIcon}
 						label="Filter"
 						variant="ghost"
+						disabled={filters.length === 0}
 						isActive={context.filters.length > 0}
 					/>
 				}
 			/>
-			<Ariakit.Popover className={styles.popover} portal>
-				<div className={styles.filterHeader}>
-					<Text variant="body-sm" className={styles.filter}>
-						Filter
-					</Text>
-					{/* TODO: render as anchor */}
-					{context.filters.length > 0 && (
-						<Button
-							variant="ghost"
-							onClick={() => {
-								context.clearFilters();
+			<DropdownMenu.Content>
+				{filters.map((filter) => {
+					const checked = context.filters.includes(filter);
+					return (
+						<DropdownMenu.CheckboxItem
+							key={filter}
+							name={filter}
+							checked={checked}
+							onChange={() => {
+								context.toggleFilter(filter);
 							}}
 						>
-							Reset
-						</Button>
-					)}
-				</div>
-				<div className={styles.filters}>
-					{filters.map((filter) => {
-						const checked = context.filters.includes(filter);
-						return (
-							<Field key={filter}>
-								<Checkbox
-									onChange={() => {
-										context.toggleFilter(filter);
-									}}
-									checked={checked}
-								/>
-								<Label className={styles.filterLabel}>
-									<Icon href={placeholderIcon} />
-									{filter}
-								</Label>
-							</Field>
-						);
-					})}
-				</div>
-			</Ariakit.Popover>
-		</Ariakit.PopoverProvider>
+							{filter}
+						</DropdownMenu.CheckboxItem>
+					);
+				})}
+			</DropdownMenu.Content>
+		</DropdownMenu.Root>
 	);
 }
 
@@ -995,27 +1055,19 @@ function TreeFilteringProvider(props: React.PropsWithChildren) {
 }
 
 function SandboxTabs(props: React.PropsWithChildren) {
-	const [selectedId, setSelectedId] = React.useState<TreeType>("simple");
+	const [selectedId, setSelectedId] = React.useState<string | null | undefined>(
+		undefined,
+	);
 	return (
 		<TabsContext.Provider
 			value={React.useMemo(
 				() => ({
-					selectedId,
-					setSelectedId: (tabId: string) => {
-						if (tabId !== "simple" && tabId !== "complex") return;
-						setSelectedId(tabId);
-					},
+					selectedId: selectedId ?? "",
 				}),
 				[selectedId],
 			)}
 		>
-			<Tabs.Root
-				setSelectedId={(tabId) => {
-					if (tabId !== "simple" && tabId !== "complex") return;
-					setSelectedId(tabId);
-				}}
-				selectedId={selectedId}
-			>
+			<Tabs.Root setSelectedId={setSelectedId} selectedId={selectedId}>
 				{props.children}
 			</Tabs.Root>
 		</TabsContext.Provider>
@@ -1043,9 +1095,7 @@ const TreeFilteringContext = React.createContext<{
 });
 
 const TabsContext = React.createContext<{
-	selectedId: TreeType;
-	setSelectedId: (id: string) => void;
+	selectedId: string;
 }>({
-	selectedId: "simple",
-	setSelectedId: () => {},
+	selectedId: "",
 });

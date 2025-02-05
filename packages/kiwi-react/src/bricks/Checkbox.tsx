@@ -5,7 +5,7 @@
 import cx from "classnames";
 import * as Ariakit from "@ariakit/react";
 import { useFieldDescribedBy, useFieldId } from "./Field.js";
-import { forwardRef, type FocusableProps } from "./~utils.js";
+import { FieldControl, forwardRef, type FocusableProps } from "./~utils.js";
 
 type InputBaseProps = Omit<
 	FocusableProps<"input">,
@@ -40,13 +40,18 @@ export const Checkbox = forwardRef<"input", CheckboxProps>(
 		const describedBy = useFieldDescribedBy(props["aria-describedby"]);
 
 		return (
-			<Ariakit.Checkbox
-				accessibleWhenDisabled
-				id={fieldId}
-				{...props}
-				className={cx("🥝-checkbox", props.className)}
-				aria-describedby={describedBy}
-				ref={forwardedRef}
+			<FieldControl
+				type="checkable"
+				render={
+					<Ariakit.Checkbox
+						accessibleWhenDisabled
+						id={fieldId}
+						{...props}
+						className={cx("🥝-checkbox", props.className)}
+						aria-describedby={describedBy}
+						ref={forwardedRef}
+					/>
+				}
 			/>
 		);
 	},

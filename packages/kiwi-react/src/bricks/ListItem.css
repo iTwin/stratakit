@@ -4,8 +4,8 @@
  *--------------------------------------------------------------------------------------------*/
 .🥝-list-item {
 	--✨gap: 0.25rem;
-	--✨height: 1.5rem;
-	--✨padding-inline: 0.75rem;
+	--✨height: 1.75rem;
+	--✨padding-inline: 0.5rem;
 
 	--✨color--default: var(--kiwi-color-text-neutral-primary);
 	--✨color--active: var(--kiwi-color-text-accent-strong);

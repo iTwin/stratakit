@@ -91,6 +91,7 @@ const DropdownMenuContent = forwardRef<"div", DropdownMenuContentProps>(
 				portal={!supportsPopover}
 				unmountOnHide
 				{...props}
+				gutter={4}
 				style={{ zIndex: supportsPopover ? undefined : 9999, ...props.style }}
 				wrapperProps={{ popover: "manual" }}
 				className={cx("🥝-dropdown-menu", props.className)}
@@ -188,6 +189,7 @@ const DropdownMenuItem = forwardRef<"div", DropdownMenuItemProps>(
 				accessibleWhenDisabled
 				{...rest}
 				render={<ListItem.Root render={props.render} />}
+				className={cx("🥝-dropdown-menu-item", props.className)}
 				ref={forwardedRef}
 			>
 				<ListItem.Content>{props.children}</ListItem.Content>
@@ -234,7 +236,7 @@ const DropdownMenuCheckboxItem = forwardRef<
 			value={props.defaultChecked ? "on" : undefined} // For defaultChecked to work
 			{...props}
 			render={<ListItem.Root render={props.render} />}
-			className={cx("🥝-dropdown-menu-checkbox-item", props.className)}
+			className={cx("🥝-dropdown-menu-item", props.className)}
 			ref={forwardedRef}
 		>
 			<ListItem.Content>{props.children}</ListItem.Content>

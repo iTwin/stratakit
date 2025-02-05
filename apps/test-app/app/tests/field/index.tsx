@@ -30,6 +30,7 @@ export default definePage(
 		layout,
 		labelPlacement = "before",
 		descriptions,
+		controlId,
 	}) {
 		const Control = controls[control];
 		const ControlLabel = asLabel ? "span" : Label;
@@ -43,7 +44,7 @@ export default definePage(
 					{labelPlacement === "before" ? (
 						<ControlLabel>{control} example</ControlLabel>
 					) : null}
-					<Control />
+					<Control id={controlId} />
 					{labelPlacement === "after" ? (
 						<ControlLabel>{control} example</ControlLabel>
 					) : null}

@@ -12,6 +12,15 @@ import { VisuallyHidden } from "./VisuallyHidden.js";
 // ----------------------------------------------------------------------------
 
 interface TableProps extends BaseProps {}
+const TableContext = React.createContext<
+	| {
+			totalRows?: number;
+			setTotalRows?: React.Dispatch<React.SetStateAction<number>>;
+			selectedRows?: Set<number>;
+			setSelectedRows?: React.Dispatch<React.SetStateAction<Set<number>>>;
+	  }
+	| undefined
+>(undefined);
 
 /**
  * A table is a grid of rows and columns that displays data in a structured format.
@@ -43,15 +52,24 @@ interface TableProps extends BaseProps {}
  * ```
  */
 const Table = forwardRef<"div", TableProps>((props, forwardedRef) => {
+	const [selectedRows, setSelectedRows] = React.useState<Set<number>>(
+		new Set(),
+	);
+	const [totalRows, setTotalRows] = React.useState<number>();
+
 	return (
-		<Ariakit.Role.div
-			{...props}
-			className={cx("🥝-table", props.className)}
-			ref={forwardedRef}
-			role="table"
+		<TableContext.Provider
+			value={{ selectedRows, setSelectedRows, totalRows, setTotalRows }}
 		>
-			{props.children}
-		</Ariakit.Role.div>
+			<Ariakit.Role.div
+				{...props}
+				className={cx("🥝-table", props.className)}
+				ref={forwardedRef}
+				role="table"
+			>
+				{props.children}
+			</Ariakit.Role.div>
+		</TableContext.Provider>
 	);
 });
 DEV: Table.displayName = "Table.Root";
@@ -116,31 +134,34 @@ interface TableBodyProps extends BaseProps {}
  * ```
  */
 const TableBody = forwardRef<"div", TableBodyProps>((props, forwardedRef) => {
-	const [selectedRows, setSelectedRows] = React.useState<Set<number>>(
-		new Set(),
-	);
+	const { totalRows, setTotalRows, selectedRows, setSelectedRows } =
+		React.useContext(TableContext) || {};
+
+	React.useEffect(() => {
+		setTotalRows?.(React.Children.count(props.children));
+	}, [setTotalRows, props.children]);
 
 	return (
-		<Ariakit.Role.div
-			{...props}
-			className={cx("🥝-table-body", props.className)}
-			ref={forwardedRef}
-			role="rowgroup"
-		>
-			{React.Children.map(props.children, (child, index) => {
-				return (
-					<TableRowContext.Provider
-						value={{
-							rowIndex: index,
-							selectedRows: selectedRows,
-							setSelectedRows: setSelectedRows,
-						}}
-					>
-						{child}
-					</TableRowContext.Provider>
-				);
-			})}
-		</Ariakit.Role.div>
+		<TableContext.Provider value={{ selectedRows, setSelectedRows, totalRows }}>
+			<Ariakit.Role.div
+				{...props}
+				className={cx("🥝-table-body", props.className)}
+				ref={forwardedRef}
+				role="rowgroup"
+			>
+				{React.Children.map(props.children, (child, index) => {
+					return (
+						<TableRowContext.Provider
+							value={{
+								rowIndex: index,
+							}}
+						>
+							{child}
+						</TableRowContext.Provider>
+					);
+				})}
+			</Ariakit.Role.div>
+		</TableContext.Provider>
 	);
 });
 DEV: TableBody.displayName = "Table.Body";
@@ -155,9 +176,7 @@ interface TableRowProps extends BaseProps {
 }
 const TableRowContext = React.createContext<
 	| {
-			rowIndex: number;
-			selectedRows: Set<number>;
-			setSelectedRows: React.Dispatch<React.SetStateAction<Set<number>>>;
+			rowIndex?: number;
 	  }
 	| undefined
 >(undefined);
@@ -176,8 +195,9 @@ const TableRowContext = React.createContext<
 const TableRow = forwardRef<"div", TableRowProps>((props, forwardedRef) => {
 	const { children, selected, ...rest } = props;
 	const isWithinTableHeader = React.useContext(TableHeaderContext);
-	const { selectedRows, setSelectedRows, rowIndex } =
-		React.useContext(TableRowContext) || {};
+	const { selectedRows, setSelectedRows, totalRows } =
+		React.useContext(TableContext) || {};
+	const { rowIndex } = React.useContext(TableRowContext) || {};
 
 	React.useEffect(() => {
 		if (rowIndex !== undefined && selected) {
@@ -189,6 +209,12 @@ const TableRow = forwardRef<"div", TableRowProps>((props, forwardedRef) => {
 			});
 		}
 	}, [rowIndex, selected, setSelectedRows]);
+
+	const isSelected = rowIndex !== undefined && selectedRows?.has(rowIndex);
+	const allSelected =
+		totalRows !== undefined && totalRows === selectedRows?.size;
+	const isIndeterminate =
+		!allSelected && selectedRows !== undefined && selectedRows.size > 0;
 
 	const handleSelect = () => {
 		if (rowIndex !== undefined) {
@@ -202,7 +228,17 @@ const TableRow = forwardRef<"div", TableRowProps>((props, forwardedRef) => {
 		}
 	};
 
-	const isSelected = rowIndex !== undefined && selectedRows?.has(rowIndex);
+	const handleSelectAll = () => {
+		setSelectedRows?.((prev) => {
+			if (allSelected) {
+				return new Set();
+			}
+			if (totalRows !== undefined) {
+				return new Set(Array.from({ length: totalRows }, (_, i) => i));
+			}
+			return prev;
+		});
+	};
 
 	return (
 		<Ariakit.Role.div
@@ -215,17 +251,36 @@ const TableRow = forwardRef<"div", TableRowProps>((props, forwardedRef) => {
 			onClick={handleSelect}
 		>
 			<TableCell data-kiwi-slot>
-				<Checkbox
-					onClick={(event) => {
-						event.stopPropagation();
-						handleSelect();
-					}}
-					checked={isSelected}
-				/>
+				{isWithinTableHeader ? (
+					<>
+						<Checkbox
+							onClick={(event) => {
+								event.stopPropagation();
+								handleSelectAll();
+							}}
+							checked={isIndeterminate ? "mixed" : allSelected}
+						/>
+						<VisuallyHidden>
+							{allSelected ? "Deselect all" : "Select all"}
+						</VisuallyHidden>
+					</>
+				) : (
+					<>
+						<Checkbox
+							onClick={(event) => {
+								event.stopPropagation();
+								handleSelect();
+							}}
+							checked={isSelected}
+						/>
+						<VisuallyHidden>
+							{isSelected
+								? `Deselect row ${rowIndex}`
+								: `Select row ${rowIndex}`}
+						</VisuallyHidden>
+					</>
+				)}
 			</TableCell>
-			<VisuallyHidden>
-				{isWithinTableHeader ? "Select all rows" : `Select row ${rowIndex}`}
-			</VisuallyHidden>
 			{children}
 		</Ariakit.Role.div>
 	);

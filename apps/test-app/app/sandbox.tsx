@@ -113,27 +113,29 @@ export default function Page() {
 							/>
 						</div>
 					</div>
-					<Tabs.Root>
-						<Subheader />
-						<Tabs.TabPanel
-							tabId="simple"
-							className={styles.tabPanel}
-							focusable={false}
-						>
-							<SandboxTree
-								tree={selectedModel === "epoch-2" ? "empty" : "simple"}
-							/>
-						</Tabs.TabPanel>
-						<Tabs.TabPanel
-							tabId="complex"
-							className={styles.tabPanel}
-							focusable={false}
-						>
-							<SandboxTree
-								tree={selectedModel === "epoch-2" ? "empty" : "complex"}
-							/>
-						</Tabs.TabPanel>
-					</Tabs.Root>
+					<TreeFilteringProvider>
+						<SandboxTabs>
+							<Subheader />
+							<Tabs.TabPanel
+								tabId="simple"
+								className={styles.tabPanel}
+								focusable={false}
+							>
+								<SandboxTree
+									tree={selectedModel === "epoch-2" ? "empty" : "simple"}
+								/>
+							</Tabs.TabPanel>
+							<Tabs.TabPanel
+								tabId="complex"
+								className={styles.tabPanel}
+								focusable={false}
+							>
+								<SandboxTree
+									tree={selectedModel === "epoch-2" ? "empty" : "complex"}
+								/>
+							</Tabs.TabPanel>
+						</SandboxTabs>
+					</TreeFilteringProvider>
 				</>
 			}
 		>
@@ -159,10 +161,11 @@ export default function Page() {
 	);
 }
 
-function Layout(props: {
-	panelContent: React.ReactNode;
-	children: React.ReactNode;
-}) {
+function Layout(
+	props: React.PropsWithChildren<{
+		panelContent: React.ReactNode;
+	}>,
+) {
 	const { sliderProps, panelProps, panelMinSize, panelMaxSize, resizing } =
 		useSplitter<HTMLDivElement>({
 			minSize: { px: 256, pct: 20 },
@@ -218,7 +221,7 @@ function Layout(props: {
  * Wrapper for empty state content, displayed as a centered vertical flex box.
  * Accepts any arbitrary content passed as `children`.
  */
-function EmptyState({ children }: { children: React.ReactNode }) {
+function EmptyState({ children }: React.PropsWithChildren) {
 	return <div className={styles.emptyState}>{children}</div>;
 }
 
@@ -519,21 +522,13 @@ function SandboxTree({ tree }: SandboxTreeProps) {
 interface TreeItem {
 	id: string;
 	label: string;
+	type?: string; // Used for filtering
 	items: TreeItem[];
 	expanded: boolean;
 }
 
-interface FlatTreeItem extends TreeItem {
-	level: number;
-	selected: boolean;
-	hidden: boolean;
-	parentHidden: boolean;
-	parentItem?: TreeItem;
-	position: number;
-	size: number;
-}
-
 interface TreeStore {
+	filters: string[];
 	items: TreeItem[];
 }
 
@@ -551,9 +546,20 @@ const createTreeItem = (() => {
 })();
 
 const simpleTree = {
+	filters: [
+		"Guides",
+		"Other",
+		"Road",
+		"Parking lot",
+		"Building",
+		"Sewer",
+		"Project boundary",
+		"Map",
+	],
 	items: [
 		createTreeItem({
 			label: "Guides",
+			type: "Guides",
 			items: [
 				createTreeItem({
 					label: "Tree",
@@ -568,6 +574,7 @@ const simpleTree = {
 		}),
 		createTreeItem({
 			label: "Other",
+			type: "Other",
 			items: [
 				createTreeItem({
 					label: "Object 2",
@@ -578,6 +585,7 @@ const simpleTree = {
 		}),
 		createTreeItem({
 			label: "Road",
+			type: "Road",
 			items: [
 				createTreeItem({ label: "Parking lot access" }),
 				createTreeItem({ label: "Site access" }),
@@ -585,6 +593,7 @@ const simpleTree = {
 		}),
 		createTreeItem({
 			label: "Parking lot",
+			type: "Parking lot",
 			items: [
 				createTreeItem({
 					label: "Parking area",
@@ -599,6 +608,7 @@ const simpleTree = {
 		}),
 		createTreeItem({
 			label: "Building",
+			type: "Building",
 			items: [
 				createTreeItem({
 					label: "Building area",
@@ -608,6 +618,7 @@ const simpleTree = {
 		}),
 		createTreeItem({
 			label: "Sewer",
+			type: "Building",
 			items: [
 				createTreeItem({
 					label: "Run off pipe",
@@ -617,6 +628,7 @@ const simpleTree = {
 		}),
 		createTreeItem({
 			label: "Project boundary",
+			type: "Project boundary",
 			items: [
 				createTreeItem({
 					label: "Property area",
@@ -626,6 +638,7 @@ const simpleTree = {
 		}),
 		createTreeItem({
 			label: "Map",
+			type: "Map",
 			items: [
 				createTreeItem({
 					label: "Location",
@@ -637,6 +650,7 @@ const simpleTree = {
 } satisfies TreeStore;
 
 const complexTree = {
+	filters: [],
 	items: [
 		createTreeItem({
 			label: "ITC_Master",
@@ -811,10 +825,46 @@ function SandboxTreeItems({ tree }: SandboxTreeItemsProps) {
 		return <TreeItems initialItems={complexTree.items} />;
 	}
 	if (tree === "simple") {
-		return <TreeItems initialItems={simpleTree.items} />;
+		return <SimpleTreeItems />;
 	}
 
 	return null;
+}
+
+function SimpleTreeItems() {
+	const { filters } = React.useContext(TreeFilteringContext);
+	return <TreeItems initialItems={simpleTree.items} filters={filters} />;
+}
+
+function useFilteredTree({
+	items,
+	filters,
+}: {
+	items: TreeItem[];
+	filters: string[];
+}) {
+	return React.useMemo(() => {
+		if (filters.length === 0) return items;
+		return items.reduce<TreeItem[]>((acc, item) => {
+			// Filters first level only, usually you'd want to traverse the tree.
+			if (!item.type || !filters.includes(item.type)) {
+				return acc;
+			}
+
+			acc.push(item);
+			return acc;
+		}, []);
+	}, [items, filters]);
+}
+
+interface FlatTreeItem extends TreeItem {
+	level: number;
+	selected: boolean;
+	hidden: boolean;
+	parentHidden: boolean;
+	parentItem?: TreeItem;
+	position: number;
+	size: number;
 }
 
 function useFlatTreeItems(items: TreeItem[]): FlatTreeItem[] {
@@ -839,10 +889,9 @@ function useFlatTreeItems(items: TreeItem[]): FlatTreeItem[] {
 					selected,
 					hidden,
 					parentHidden,
-					position,
+					position: position++,
 					size: items.length,
 				});
-				position++;
 				if (!item.expanded) continue;
 				flatItems.push(
 					...flattenItems(item.items, item, level + 1, selected, hidden),
@@ -866,11 +915,14 @@ function findTreeItem<T extends Pick<TreeItem, "id"> & { items: T[] }>(
 	}
 }
 
-function TreeItems({ initialItems }: { initialItems: TreeItem[] }) {
-	const [items, setItems] = React.useState(initialItems);
-	const flatItems = useFlatTreeItems(items);
+function TreeItems(props: { initialItems: TreeItem[]; filters?: string[] }) {
 	const { setSelected, selected, toggleHidden } =
 		React.useContext(SandboxTreeContext);
+	const [items, setItems] = React.useState(props.initialItems);
+	const filters = React.useMemo(() => props.filters ?? [], [props.filters]);
+	const filteredItems = useFilteredTree({ items, filters });
+	const flatItems = useFlatTreeItems(filteredItems);
+
 	return flatItems.map((item) => {
 		return (
 			<Tree.Item
@@ -957,13 +1009,32 @@ function TreeMoreActions({ hidden }: { hidden?: boolean }) {
 }
 
 function Subheader() {
+	const { selectedId: tree } = React.useContext(TabsContext);
+	const { filters, filtered } = React.useContext(TreeFilteringContext);
 	const [isSearching, setIsSearching] = React.useState(false);
 	const searchInputRef = React.useRef<HTMLInputElement>(null);
+	const itemCount = React.useMemo(() => {
+		if (tree !== "simple") return undefined;
+		if (filters.length === 0) return undefined;
+
+		const filteredItems = simpleTree.items.filter((item) => {
+			if (!item.type) return false;
+			return filters.includes(item.type);
+		});
+
+		function countItems(items: TreeItem[]): number {
+			return items.reduce((acc, item) => {
+				const childItemCount = item.items ? countItems(item.items) : 0;
+				return acc + 1 + childItemCount;
+			}, 0);
+		}
+		return countItems(filteredItems);
+	}, [filters, tree]);
 	const tabsRef = React.useRef<HTMLHeadingElement>(null);
 
 	const actions = isSearching ? (
 		<>
-			<SortingModes />
+			<FiltersMenu filters={tree === "simple" ? simpleTree.filters : []} />
 			<IconButton
 				className={styles.shiftIconRight}
 				icon={dismissIcon}
@@ -988,8 +1059,16 @@ function Subheader() {
 		/>
 	);
 
+	const filteredNotification = React.useMemo(() => {
+		if (!filtered) return undefined;
+		if (itemCount === undefined) return "Showing all tree items";
+		return `Showing ${itemCount} tree items`;
+	}, [filtered, itemCount]);
 	return (
 		<div className={styles.subheader}>
+			<VisuallyHidden aria-live="polite" aria-atomic={true}>
+				{filteredNotification}
+			</VisuallyHidden>
 			{isSearching ? undefined : (
 				<Tabs.TabList className={styles.tabList} tone="accent" ref={tabsRef}>
 					<Tabs.Tab id="simple">Simple</Tabs.Tab>
@@ -1009,25 +1088,113 @@ function Subheader() {
 	);
 }
 
-function SortingModes() {
+function FiltersMenu({
+	filters,
+}: {
+	filters: string[];
+}) {
+	const context = React.useContext(TreeFilteringContext);
 	return (
 		<DropdownMenu.Root>
 			<DropdownMenu.Button
-				render={<IconButton icon={filterIcon} label="Filter" variant="ghost" />}
+				render={
+					<IconButton
+						icon={filterIcon}
+						label="Filter"
+						variant="ghost"
+						disabled={filters.length === 0}
+						isActive={context.filters.length > 0}
+					/>
+				}
 			/>
-			<DropdownMenu.Content style={{ minInlineSize: 164 }}>
-				<DropdownMenu.Item>Show all</DropdownMenu.Item>
-				<DropdownMenu.Item>Guides</DropdownMenu.Item>
-				<DropdownMenu.Item>Other</DropdownMenu.Item>
-				<DropdownMenu.Item>Roadway</DropdownMenu.Item>
-				<DropdownMenu.Item>Parking</DropdownMenu.Item>
-				<DropdownMenu.Item>Building</DropdownMenu.Item>
-				<DropdownMenu.Item>Dry utility</DropdownMenu.Item>
-				<DropdownMenu.Item>Stormwater</DropdownMenu.Item>
-				<DropdownMenu.Item>Sewer</DropdownMenu.Item>
-				<DropdownMenu.Item>Boundary</DropdownMenu.Item>
-				<DropdownMenu.Item>Map</DropdownMenu.Item>
+			<DropdownMenu.Content>
+				{filters.map((filter) => {
+					const checked = context.filters.includes(filter);
+					return (
+						<DropdownMenu.CheckboxItem
+							key={filter}
+							name={filter}
+							checked={checked}
+							onChange={() => {
+								context.toggleFilter(filter);
+							}}
+						>
+							{filter}
+						</DropdownMenu.CheckboxItem>
+					);
+				})}
 			</DropdownMenu.Content>
 		</DropdownMenu.Root>
 	);
 }
+
+function TreeFilteringProvider(props: React.PropsWithChildren) {
+	const [filtered, setFiltered] = React.useState(false);
+	const [filters, setFilters] = React.useState<string[]>([]);
+	const toggleFilter = React.useCallback((filter: string) => {
+		setFilters((prev) => {
+			if (prev.includes(filter)) {
+				return prev.filter((f) => f !== filter);
+			}
+			return [...prev, filter];
+		});
+		setFiltered(true);
+	}, []);
+	const clearFilters = React.useCallback(() => {
+		setFilters([]);
+		setFiltered(true);
+	}, []);
+	return (
+		<TreeFilteringContext.Provider
+			value={React.useMemo(
+				() => ({
+					filters,
+					filtered,
+					toggleFilter,
+					clearFilters,
+				}),
+				[filters, filtered, toggleFilter, clearFilters],
+			)}
+		>
+			{props.children}
+		</TreeFilteringContext.Provider>
+	);
+}
+
+function SandboxTabs(props: React.PropsWithChildren) {
+	const [selectedId, setSelectedId] = React.useState<string | null | undefined>(
+		undefined,
+	);
+	return (
+		<TabsContext.Provider
+			value={React.useMemo(
+				() => ({
+					selectedId: selectedId ?? "",
+				}),
+				[selectedId],
+			)}
+		>
+			<Tabs.Root setSelectedId={setSelectedId} selectedId={selectedId}>
+				{props.children}
+			</Tabs.Root>
+		</TabsContext.Provider>
+	);
+}
+
+const TreeFilteringContext = React.createContext<{
+	filters: string[];
+	filtered: boolean;
+	toggleFilter: (filter: string) => void;
+	clearFilters: () => void;
+}>({
+	filters: [],
+	filtered: false,
+	toggleFilter: () => {},
+	clearFilters: () => {},
+});
+
+const TabsContext = React.createContext<{
+	selectedId: string;
+}>({
+	selectedId: "",
+});

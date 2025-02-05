@@ -116,6 +116,11 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: mcr.microsoft.com/playwright:v1.49.1-noble
+    strategy:
+      fail-fast: false
+      matrix:
+        shardIndex: [1, 2, 3, 4]
+        shardTotal: [4]
 
     steps:
       - uses: actions/checkout@v4
@@ -126,7 +131,7 @@ jobs:
 
       - run: pnpm install
       - run: pnpm run build
-      - run: pnpm --filter=@itwin/test-app exec playwright test
+      - run: pnpm --filter=@itwin/test-app exec playwright test --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
         env:
           HOME: /root
 

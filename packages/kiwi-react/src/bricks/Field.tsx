@@ -5,7 +5,7 @@
 import * as React from "react";
 import * as Ariakit from "@ariakit/react";
 import cx from "classnames";
-import { forwardRef, type BaseProps } from "./~utils.js";
+import { FieldCollection, forwardRef, type BaseProps } from "./~utils.js";
 
 // ----------------------------------------------------------------------------
 
@@ -43,11 +43,15 @@ export const Field = forwardRef<"div", FieldProps>((props, forwardedRef) => {
 	return (
 		<FieldIdContext.Provider value={fieldId}>
 			<FieldDescribedByProvider>
-				<Ariakit.Role
-					{...rest}
-					className={cx("🥝-field", props.className)}
-					data-kiwi-layout={layout}
-					ref={forwardedRef}
+				<FieldCollection
+					render={
+						<Ariakit.Role.div
+							{...rest}
+							className={cx("🥝-field", props.className)}
+							data-kiwi-layout={layout}
+							ref={forwardedRef}
+						/>
+					}
 				/>
 			</FieldDescribedByProvider>
 		</FieldIdContext.Provider>

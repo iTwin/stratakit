@@ -3,7 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 .🥝-avatar {
-	--✨shadow-border: 0px 0px 0px 1px #ffffff29 inset;
+	--✨shadow-border: 0px 0px 0px 1px var(--kiwi-color-border-glow-strong-default, #ffffff29) inset;
 
 	@layer base {
 		--🥝avatar-background-color: var(--kiwi-color-bg-mono-base);
@@ -11,8 +11,8 @@
 		block-size: var(--🥝avatar-size);
 		inline-size: var(--🥝avatar-size);
 		background-color: var(--🥝avatar-background-color);
+		color: var(--kiwi-color-text-neutral-emphasis);
 		font-size: var(--🥝avatar-font-size);
-
 		display: inline-grid;
 		place-items: center;
 		border-radius: 50%;

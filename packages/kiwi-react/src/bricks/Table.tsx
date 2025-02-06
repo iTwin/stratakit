@@ -12,9 +12,9 @@ import { useMergedRefs } from "./~hooks.js";
 
 interface TableProps extends BaseProps {}
 const TableContext = React.createContext<{
-	setDescribedBy: React.Dispatch<React.SetStateAction<string | undefined>>;
+	setLabelledBy: React.Dispatch<React.SetStateAction<string | undefined>>;
 }>({
-	setDescribedBy: () => {},
+	setLabelledBy: () => {},
 });
 
 /**
@@ -48,16 +48,16 @@ const TableContext = React.createContext<{
  * ```
  */
 const Table = forwardRef<"div", TableProps>((props, forwardedRef) => {
-	const [describedBy, setDescribedBy] = React.useState<string | undefined>();
+	const [labelledBy, setLabelledBy] = React.useState<string | undefined>();
 
 	return (
-		<TableContext.Provider value={{ setDescribedBy }}>
+		<TableContext.Provider value={{ setLabelledBy }}>
 			<Ariakit.Role
 				{...props}
 				className={cx("🥝-table", props.className)}
 				ref={forwardedRef}
 				role="table"
-				aria-describedby={describedBy}
+				aria-labelledby={labelledBy}
 			>
 				{props.children}
 			</Ariakit.Role>
@@ -177,7 +177,7 @@ DEV: TableRow.displayName = "Table.Row";
 interface TableCaptionProps extends BaseProps<"caption"> {}
 
 /**
- * `Table.Caption` is serves as the accessible description for the table.
+ * `Table.Caption` is a component that contains the caption of a table.
  *
  * Example:
  * ```tsx
@@ -190,19 +190,19 @@ interface TableCaptionProps extends BaseProps<"caption"> {}
 const TableCaption = forwardRef<"caption", TableCaptionProps>(
 	(props, forwardedRef) => {
 		const { id: idProp, children, ...rest } = props;
-		const { setDescribedBy } = React.useContext(TableContext);
+		const { setLabelledBy } = React.useContext(TableContext);
 
 		const fallbackId = React.useId();
 		const id = idProp || fallbackId;
 
-		const describedByRef = React.useCallback(
+		const labelledByRef = React.useCallback(
 			(element: HTMLElement | null) => {
-				setDescribedBy(element ? id : undefined);
+				setLabelledBy(element ? id : undefined);
 			},
-			[id, setDescribedBy],
+			[id, setLabelledBy],
 		);
 
-		const ref = useMergedRefs(forwardedRef, describedByRef);
+		const ref = useMergedRefs(forwardedRef, labelledByRef);
 
 		return (
 			<Ariakit.Role

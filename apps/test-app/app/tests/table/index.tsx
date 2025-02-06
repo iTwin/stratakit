@@ -11,7 +11,7 @@ export const handle = { title: "Table" };
 export default definePage(
 	function Page() {
 		return (
-			<Table.Root label="Table example">
+			<Table.Root>
 				<Table.Caption>Description of the table contents.</Table.Caption>
 				<Table.Header>
 					<Table.Row>
@@ -45,7 +45,7 @@ export default definePage(
 
 function VisualTest() {
 	return (
-		<Table.Root label="Table example">
+		<Table.Root>
 			<Table.Caption>Description of the table contents.</Table.Caption>
 			<Table.Header>
 				<Table.Row>
@@ -93,7 +93,7 @@ function ScrollTest() {
 	);
 
 	return (
-		<Table.Root label="Table example">
+		<Table.Root>
 			<Table.Caption>Description of the table contents.</Table.Caption>
 			<Table.Header>
 				<Table.Row>

@@ -4,7 +4,6 @@
  *--------------------------------------------------------------------------------------------*/
 import { definePage } from "~/~utils.tsx";
 import * as React from "react";
-import { IconButton } from "@itwin/itwinui-react/bricks";
 import * as Tree from "@itwin/itwinui-react-internal/src/bricks/Tree.tsx";
 import placeholderIcon from "@itwin/itwinui-icons/placeholder.svg";
 import unlockIcon from "@itwin/itwinui-icons/lock-unlocked.svg";
@@ -75,12 +74,8 @@ export default definePage(function Page({
 							icon={placeholderIcon}
 							actions={
 								<>
-									<IconButton
-										icon={unlockIcon}
-										label="Unlock"
-										variant="ghost"
-									/>
-									<IconButton icon={showIcon} label="Show" variant="ghost" />
+									<Tree.ItemAction icon={unlockIcon} label="Unlock" />
+									<Tree.ItemAction icon={showIcon} label="Show" />
 								</>
 							}
 						/>
@@ -106,16 +101,8 @@ export default definePage(function Page({
 									icon={placeholderIcon}
 									actions={
 										<>
-											<IconButton
-												icon={unlockIcon}
-												label="Unlock"
-												variant="ghost"
-											/>
-											<IconButton
-												icon={showIcon}
-												label="Show"
-												variant="ghost"
-											/>
+											<Tree.ItemAction icon={unlockIcon} label="Unlock" />
+											<Tree.ItemAction icon={showIcon} label="Show" />
 										</>
 									}
 								/>

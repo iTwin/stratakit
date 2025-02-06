@@ -78,13 +78,17 @@ function ScrollTest() {
 		return string.charAt(0).toUpperCase() + string.slice(1);
 	};
 
-	const data = React.useMemo(() => Array(100)
-			.fill(null)
-			.map((_, index) => ({
-				id: index,
-				name: `Name ${index}`,
-				description: `Description ${index}`,
-			})), []);
+	const data = React.useMemo(
+		() =>
+			Array(100)
+				.fill(null)
+				.map((_, index) => ({
+					id: index,
+					name: `Name ${index}`,
+					description: `Description ${index}`,
+				})),
+		[],
+	);
 
 	return (
 		<Table.Root>

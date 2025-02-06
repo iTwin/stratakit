@@ -10,12 +10,7 @@ import { useMergedRefs } from "./~hooks.js";
 
 // ----------------------------------------------------------------------------
 
-interface TableProps extends BaseProps {
-	/**
-	 * The accessible name for the table.
-	 */
-	label: string;
-}
+interface TableProps extends BaseProps {}
 const TableContext = React.createContext<{
 	setDescribedBy: React.Dispatch<React.SetStateAction<string | undefined>>;
 }>({
@@ -62,7 +57,6 @@ const Table = forwardRef<"div", TableProps>((props, forwardedRef) => {
 				className={cx("🥝-table", props.className)}
 				ref={forwardedRef}
 				role="table"
-				aria-label={props.label}
 				aria-describedby={describedBy}
 			>
 				{props.children}
@@ -201,14 +195,14 @@ const TableCaption = forwardRef<"caption", TableCaptionProps>(
 		const fallbackId = React.useId();
 		const id = idProp || fallbackId;
 
-		const labelledByRef = React.useCallback(
+		const describedByRef = React.useCallback(
 			(element: HTMLElement | null) => {
 				setDescribedBy(element ? id : undefined);
 			},
 			[id, setDescribedBy],
 		);
 
-		const ref = useMergedRefs(forwardedRef, labelledByRef);
+		const ref = useMergedRefs(forwardedRef, describedByRef);
 
 		return (
 			<Ariakit.Role

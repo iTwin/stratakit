@@ -6,10 +6,16 @@ import * as Ariakit from "@ariakit/react";
 import * as React from "react";
 import cx from "classnames";
 import { forwardRef, type BaseProps } from "./~utils.js";
+import { useMergedRefs } from "./~hooks.js";
 
 // ----------------------------------------------------------------------------
 
 interface TableProps extends BaseProps {}
+const TableContext = React.createContext<{
+	setLabelledBy: React.Dispatch<React.SetStateAction<string | undefined>>;
+}>({
+	setLabelledBy: () => {},
+});
 
 /**
  * A table is a grid of rows and columns that displays data in a structured format.
@@ -42,15 +48,20 @@ interface TableProps extends BaseProps {}
  * ```
  */
 const Table = forwardRef<"div", TableProps>((props, forwardedRef) => {
+	const [labelledBy, setLabelledBy] = React.useState<string | undefined>();
+
 	return (
-		<Ariakit.Role.div
-			{...props}
-			className={cx("🥝-table", props.className)}
-			ref={forwardedRef}
-			role="table"
-		>
-			{props.children}
-		</Ariakit.Role.div>
+		<TableContext.Provider value={{ setLabelledBy }}>
+			<Ariakit.Role
+				{...props}
+				className={cx("🥝-table", props.className)}
+				ref={forwardedRef}
+				role="table"
+				aria-labelledby={labelledBy}
+			>
+				{props.children}
+			</Ariakit.Role>
+		</TableContext.Provider>
 	);
 });
 DEV: Table.displayName = "Table.Root";
@@ -178,14 +189,27 @@ interface TableCaptionProps extends BaseProps<"caption"> {}
  */
 const TableCaption = forwardRef<"caption", TableCaptionProps>(
 	(props, forwardedRef) => {
-		const { children, ...rest } = props;
+		const { id: idProp, children, ...rest } = props;
+		const { setLabelledBy } = React.useContext(TableContext);
+
+		const fallbackId = React.useId();
+		const id = idProp || fallbackId;
+
+		const labelledByRef = React.useCallback(
+			(element: HTMLElement | null) => {
+				setLabelledBy(element ? id : undefined);
+			},
+			[id, setLabelledBy],
+		);
+
+		const ref = useMergedRefs(forwardedRef, labelledByRef);
 
 		return (
 			<Ariakit.Role
 				{...rest}
+				id={id}
 				className={cx("🥝-table-caption", props.className)}
-				render={props.render || <caption />}
-				ref={forwardedRef as Ariakit.RoleProps["ref"]}
+				ref={ref}
 			>
 				{children}
 			</Ariakit.Role>

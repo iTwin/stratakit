@@ -94,6 +94,7 @@ function ScrollTest() {
 
 	return (
 		<Table.Root>
+			<Table.Caption>Description of the table contents.</Table.Caption>
 			<Table.Header>
 				<Table.Row>
 					{Object.keys(data[0]).map((columnName: string) => (

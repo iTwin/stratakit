@@ -20,6 +20,7 @@ interface TableProps extends BaseProps {}
  * Example:
  * ```tsx
  * <Table.Root>
+ *  <Table.Caption>Table Caption</Table.Caption>
  * 	<Table.Header>
  * 		<Table.Row>
  * 			<Table.Cell>Header 1</Table.Cell>
@@ -162,6 +163,39 @@ DEV: TableRow.displayName = "Table.Row";
 
 // ----------------------------------------------------------------------------
 
+interface TableCaptionProps extends BaseProps<"caption"> {}
+
+/**
+ * `Table.Caption` is a component that contains the caption of a table.
+ *
+ * Example:
+ * ```tsx
+ * <Table.Root>
+ * 	<Table.Caption>Table Caption</Table.Caption>
+ * 	…
+ * </Table.Root>
+ * ```
+ */
+const TableCaption = forwardRef<"caption", TableCaptionProps>(
+	(props, forwardedRef) => {
+		const { children, ...rest } = props;
+
+		return (
+			<Ariakit.Role
+				{...rest}
+				className={cx("🥝-table-caption", props.className)}
+				render={props.render || <caption />}
+				ref={forwardedRef as Ariakit.RoleProps["ref"]}
+			>
+				{children}
+			</Ariakit.Role>
+		);
+	},
+);
+DEV: TableCaption.displayName = "Table.Caption";
+
+// ----------------------------------------------------------------------------
+
 interface TableCellProps extends BaseProps<"span"> {}
 
 /**
@@ -195,5 +229,6 @@ export {
 	TableHeader as Header,
 	TableBody as Body,
 	TableRow as Row,
+	TableCaption as Caption,
 	TableCell as Cell,
 };

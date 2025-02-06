@@ -4,7 +4,9 @@
  *--------------------------------------------------------------------------------------------*/
 .🥝-tree {
 	@layer base {
+		display: grid;
 		overflow: auto;
+		background-color: var(--kiwi-color-bg-surface-primary);
 	}
 }
 

@@ -13,7 +13,7 @@ interface ChipProps extends Omit<BaseProps<"div">, "children"> {
 	/**
 	 * The label displayed inside the chip.
 	 */
-	label: React.ReactNode;
+	label: string;
 
 	/**
 	 * The variant style of the Chip.

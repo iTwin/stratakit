@@ -162,7 +162,7 @@ DEV: TableRow.displayName = "Table.Row";
 
 // ----------------------------------------------------------------------------
 
-interface TableCellProps extends BaseProps {}
+interface TableCellProps extends BaseProps<"span"> {}
 
 /**
  * `Table.Cell` is a component that contains the data of a table cell.

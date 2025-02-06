@@ -8,7 +8,7 @@ import AxeBuilder from "@axe-core/playwright";
 test("default", async ({ page }) => {
 	await page.goto("/tests/table");
 
-	const table = page.getByRole("table").first();
+	const table = page.getByRole("table");
 	await expect(table).toBeVisible();
 
 	const columnHeaders = page.getByRole("columnheader");

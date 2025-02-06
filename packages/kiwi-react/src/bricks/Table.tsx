@@ -10,11 +10,16 @@ import { useMergedRefs } from "./~hooks.js";
 
 // ----------------------------------------------------------------------------
 
-interface TableProps extends BaseProps {}
+interface TableProps extends BaseProps {
+	/**
+	 * The accessible name for the table.
+	 */
+	label: string;
+}
 const TableContext = React.createContext<{
-	setLabelledBy: React.Dispatch<React.SetStateAction<string | undefined>>;
+	setDescribedBy: React.Dispatch<React.SetStateAction<string | undefined>>;
 }>({
-	setLabelledBy: () => {},
+	setDescribedBy: () => {},
 });
 
 /**
@@ -48,16 +53,17 @@ const TableContext = React.createContext<{
  * ```
  */
 const Table = forwardRef<"div", TableProps>((props, forwardedRef) => {
-	const [labelledBy, setLabelledBy] = React.useState<string | undefined>();
+	const [describedBy, setDescribedBy] = React.useState<string | undefined>();
 
 	return (
-		<TableContext.Provider value={{ setLabelledBy }}>
+		<TableContext.Provider value={{ setDescribedBy }}>
 			<Ariakit.Role
 				{...props}
 				className={cx("🥝-table", props.className)}
 				ref={forwardedRef}
 				role="table"
-				aria-labelledby={labelledBy}
+				aria-label={props.label}
+				aria-describedby={describedBy}
 			>
 				{props.children}
 			</Ariakit.Role>
@@ -177,7 +183,7 @@ DEV: TableRow.displayName = "Table.Row";
 interface TableCaptionProps extends BaseProps<"caption"> {}
 
 /**
- * `Table.Caption` is a component that contains the caption of a table.
+ * `Table.Caption` is serves as the accessible description for the table.
  *
  * Example:
  * ```tsx
@@ -190,16 +196,16 @@ interface TableCaptionProps extends BaseProps<"caption"> {}
 const TableCaption = forwardRef<"caption", TableCaptionProps>(
 	(props, forwardedRef) => {
 		const { id: idProp, children, ...rest } = props;
-		const { setLabelledBy } = React.useContext(TableContext);
+		const { setDescribedBy } = React.useContext(TableContext);
 
 		const fallbackId = React.useId();
 		const id = idProp || fallbackId;
 
 		const labelledByRef = React.useCallback(
 			(element: HTMLElement | null) => {
-				setLabelledBy(element ? id : undefined);
+				setDescribedBy(element ? id : undefined);
 			},
-			[id, setLabelledBy],
+			[id, setDescribedBy],
 		);
 
 		const ref = useMergedRefs(forwardedRef, labelledByRef);
@@ -208,7 +214,6 @@ const TableCaption = forwardRef<"caption", TableCaptionProps>(
 			<Ariakit.Role
 				{...rest}
 				id={id}
-				role="caption"
 				className={cx("🥝-table-caption", props.className)}
 				ref={ref}
 			>

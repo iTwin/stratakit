@@ -12,6 +12,7 @@ export default definePage(
 	function Page() {
 		return (
 			<Table.Root>
+				<Table.Caption>Description of the table contents.</Table.Caption>
 				<Table.Header>
 					<Table.Row>
 						<Table.Cell>Name</Table.Cell>
@@ -45,6 +46,7 @@ export default definePage(
 function VisualTest() {
 	return (
 		<Table.Root>
+			<Table.Caption>Description of the table contents.</Table.Caption>
 			<Table.Header>
 				<Table.Row>
 					<Table.Cell>Name</Table.Cell>

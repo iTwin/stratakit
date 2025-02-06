@@ -208,6 +208,7 @@ const TableCaption = forwardRef<"caption", TableCaptionProps>(
 			<Ariakit.Role
 				{...rest}
 				id={id}
+				role="caption"
 				className={cx("🥝-table-caption", props.className)}
 				ref={ref}
 			>

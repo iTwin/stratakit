@@ -64,7 +64,7 @@ const TextBoxInput = forwardRef<"input", TextBoxInputProps>(
 		return (
 			<FieldControl
 				type="textlike"
-				id={props.id}
+				id={id}
 				render={
 					<Ariakit.Role.input
 						readOnly={props.disabled}

@@ -17,9 +17,11 @@ const TableContext = React.createContext<
 	| {
 			setLabelledBy?: React.Dispatch<React.SetStateAction<string | undefined>>;
 			totalRows?: number;
-			setTotalRows?: React.Dispatch<React.SetStateAction<number>>;
+			setTotalRows?: React.Dispatch<React.SetStateAction<number | undefined>>;
 			selectedRows?: Set<number>;
-			setSelectedRows?: React.Dispatch<React.SetStateAction<Set<number>>>;
+			setSelectedRows?: React.Dispatch<
+				React.SetStateAction<Set<number | undefined>>
+			>;
 	  }
 	| undefined
 >({ setLabelledBy: () => {} });

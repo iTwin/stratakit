@@ -4,7 +4,9 @@
  *--------------------------------------------------------------------------------------------*/
 .🥝-tree {
 	@layer base {
+		display: grid;
 		overflow: auto;
+		background-color: var(--kiwi-color-bg-surface-primary);
 	}
 }
 
@@ -17,15 +19,22 @@
 	@layer states {
 		&:focus-visible {
 			outline: none;
+			isolation: isolate;
 
 			&::before {
 				content: "";
 				position: absolute;
 				inset: 0;
-				z-index: 1;
+				z-index: 1; /* Ensure the outline appears above the actions */
 				pointer-events: none;
 				outline: 2px solid var(--kiwi-color-border-accent-strong);
 				outline-offset: -1px;
+			}
+		}
+
+		@media (any-hover: hover) {
+			&:where(:not(:hover, :focus-within)) {
+				--🥝tree-item-action-visibility: hidden;
 			}
 		}
 	}
@@ -59,19 +68,6 @@
 		&:where(:not([data-kiwi-expanded])) {
 			--🥝tree-item-expander-visibility: hidden;
 		}
-
-		@media (any-hover: hover) {
-			&:where(:not(:hover, :focus-within)) {
-				:where(.🥝-tree-item-actions:not([data-kiwi-visible="true"])) {
-					clip-path: inset(50%);
-					height: 1px;
-					overflow: hidden;
-					position: absolute;
-					white-space: nowrap;
-					width: 1px;
-				}
-			}
-		}
 	}
 }
 
@@ -88,6 +84,7 @@
 		padding-inline-end: 4px;
 		background-color: var(--kiwi-color-bg-surface-primary);
 		display: inline-flex;
+		visibility: var(--🥝tree-item-actions-visibility, var(--🥝tree-item-action-visibility));
 
 		&::before {
 			position: absolute;
@@ -98,14 +95,30 @@
 		}
 	}
 
-	@layer states {
+	@layer modifiers {
+		&:where(:has(.🥝-tree-item-action[data-kiwi-visible="true"])) {
+			--🥝tree-item-actions-visibility: visible;
+		}
+
+		/* Without :has, we can't easily detect if there are any forcibily-visible actions, so unconditionally show this. */
+		@supports not selector(:has(+ *)) {
+			--🥝tree-item-actions-visibility: visible;
+		}
+	}
+}
+
+.🥝-tree-item-action:is(.🥝-icon-button) {
+	@layer base {
+		visibility: var(--🥝tree-item-action-visibility);
+	}
+
+	@layer modifiers {
 		&:where([data-kiwi-visible="false"]) {
-			clip-path: inset(50%);
-			height: 1px;
-			overflow: hidden;
-			position: absolute;
-			white-space: nowrap;
-			width: 1px;
+			--🥝tree-item-action-visibility: hidden;
+		}
+
+		&:where([data-kiwi-visible="true"]) {
+			--🥝tree-item-action-visibility: visible;
 		}
 	}
 }

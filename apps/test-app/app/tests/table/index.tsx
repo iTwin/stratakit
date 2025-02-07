@@ -49,8 +49,8 @@ function VisualTest() {
 			<Table.Caption>Fruits and their colors</Table.Caption>
 			<Table.Header>
 				<Table.Row>
-					<Table.Cell>Name</Table.Cell>
-					<Table.Cell>Description</Table.Cell>
+					<Table.Cell>Fruit</Table.Cell>
+					<Table.Cell>Color</Table.Cell>
 				</Table.Row>
 			</Table.Header>
 			<Table.Body>

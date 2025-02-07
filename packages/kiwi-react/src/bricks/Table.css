@@ -76,6 +76,7 @@
 		padding: var(--✨cell-padding);
 		min-block-size: var(--✨cell-height-min);
 		word-break: break-word;
+		hyphens: auto;
 	}
 }
 

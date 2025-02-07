@@ -8,7 +8,7 @@ import AxeBuilder from "@axe-core/playwright";
 test("default", async ({ page }) => {
 	await page.goto("/tests/table");
 
-	const table = page.getByRole("table").first();
+	const table = page.getByRole("table");
 	await expect(table).toBeVisible();
 
 	const columnHeaders = page.getByRole("columnheader");
@@ -29,13 +29,25 @@ test.describe("@visual", () => {
 		await page.goto("/tests/table?visual");
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
+
 	test("hovered row", async ({ page }) => {
 		await page.goto("/tests/table?visual");
 		const row = page.getByRole("row").nth(1);
 		await row.hover();
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
+
+	test("forced-colors", async ({ page, browserName }) => {
+		test.skip(
+			browserName === "webkit",
+			"Webkit does not support forced-colors",
+		);
+		await page.goto("/tests/table?visual=true");
+		await page.emulateMedia({ forcedColors: "active" });
+		await expect(page.locator("body")).toHaveScreenshot();
+	});
 });
+
 test.describe("@a11y", () => {
 	test("Axe Page Scan", async ({ page }) => {
 		await page.goto("/tests/table");

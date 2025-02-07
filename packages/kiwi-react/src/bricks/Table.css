@@ -13,9 +13,6 @@
 			var(--🥝table-bg--default) 100%,
 			var(--✨glow--bg-hover)
 		);
-		--🥝table-row-height-min: 3rem;
-		--🥝table-cell-padding: 0.5rem;
-
 		display: flex;
 		flex-direction: column;
 	}
@@ -41,7 +38,6 @@
 	--✨bg--selected: color-mix(in oklch, var(--🥝table-bg--default) 100%, var(--✨glow--bg-selected));
 
 	@layer base {
-		min-block-size: var(--🥝table-row-height-min);
 		display: flex;
 		border-block-end: 1px solid var(--kiwi-color-border-neutral-muted);
 	}
@@ -84,16 +80,26 @@
 	}
 }
 
+.🥝-table-caption,
 .🥝-table-cell {
+	--✨cell-padding: 0.5rem;
+	--✨cell-height-min: 3rem;
+
 	@layer base {
 		display: flex;
+		align-items: center;
+		column-gap: 0.5rem;
+		padding: var(--✨cell-padding);
+		min-block-size: var(--✨cell-height-min);
+		word-break: break-word;
+	}
+}
+
+.🥝-table-cell {
+	@layer base {
 		flex-grow: 1;
 		flex-basis: 4rem;
 		min-inline-size: 4rem;
-		align-items: center;
-		column-gap: 0.5rem;
-		padding: var(--🥝table-cell-padding);
-		word-break: break-word;
 	}
 
 	&:where(:not([data-kiwi-slot])) {

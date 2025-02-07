@@ -8,19 +8,21 @@ import cx from "classnames";
 import { forwardRef, type BaseProps } from "./~utils.js";
 import { Checkbox } from "./Checkbox.js";
 import { VisuallyHidden } from "./VisuallyHidden.js";
+import { useMergedRefs } from "./~hooks.js";
 
 // ----------------------------------------------------------------------------
 
 interface TableProps extends BaseProps {}
 const TableContext = React.createContext<
 	| {
+			setLabelledBy?: React.Dispatch<React.SetStateAction<string | undefined>>;
 			totalRows?: number;
 			setTotalRows?: React.Dispatch<React.SetStateAction<number>>;
 			selectedRows?: Set<number>;
 			setSelectedRows?: React.Dispatch<React.SetStateAction<Set<number>>>;
 	  }
 	| undefined
->(undefined);
+>({ setLabelledBy: () => {} });
 
 /**
  * A table is a grid of rows and columns that displays data in a structured format.
@@ -31,6 +33,7 @@ const TableContext = React.createContext<
  * Example:
  * ```tsx
  * <Table.Root>
+ *  <Table.Caption>Table Caption</Table.Caption>
  * 	<Table.Header>
  * 		<Table.Row>
  * 			<Table.Cell>Header 1</Table.Cell>
@@ -56,19 +59,27 @@ const Table = forwardRef<"div", TableProps>((props, forwardedRef) => {
 		new Set(),
 	);
 	const [totalRows, setTotalRows] = React.useState<number>();
+	const [labelledBy, setLabelledBy] = React.useState<string | undefined>();
 
 	return (
 		<TableContext.Provider
-			value={{ selectedRows, setSelectedRows, totalRows, setTotalRows }}
+			value={{
+				selectedRows,
+				setSelectedRows,
+				totalRows,
+				setTotalRows,
+				setLabelledBy,
+			}}
 		>
-			<Ariakit.Role.div
+			<Ariakit.Role
 				{...props}
 				className={cx("🥝-table", props.className)}
 				ref={forwardedRef}
 				role="table"
+				aria-labelledby={labelledBy}
 			>
 				{props.children}
-			</Ariakit.Role.div>
+			</Ariakit.Role>
 		</TableContext.Provider>
 	);
 });
@@ -289,7 +300,53 @@ DEV: TableRow.displayName = "Table.Row";
 
 // ----------------------------------------------------------------------------
 
-interface TableCellProps extends BaseProps {}
+interface TableCaptionProps extends BaseProps<"caption"> {}
+
+/**
+ * `Table.Caption` is a component that contains the caption of a table.
+ *
+ * Example:
+ * ```tsx
+ * <Table.Root>
+ * 	<Table.Caption>Table Caption</Table.Caption>
+ * 	…
+ * </Table.Root>
+ * ```
+ */
+const TableCaption = forwardRef<"caption", TableCaptionProps>(
+	(props, forwardedRef) => {
+		const { id: idProp, children, ...rest } = props;
+		const tableContext = React.useContext(TableContext);
+
+		const fallbackId = React.useId();
+		const id = idProp || fallbackId;
+
+		const labelledByRef = React.useCallback(
+			(element: HTMLElement | null) => {
+				tableContext?.setLabelledBy?.(element ? id : undefined);
+			},
+			[id, tableContext],
+		);
+
+		const ref = useMergedRefs(forwardedRef, labelledByRef);
+
+		return (
+			<Ariakit.Role
+				{...rest}
+				id={id}
+				className={cx("🥝-table-caption", props.className)}
+				ref={ref}
+			>
+				{children}
+			</Ariakit.Role>
+		);
+	},
+);
+DEV: TableCaption.displayName = "Table.Caption";
+
+// ----------------------------------------------------------------------------
+
+interface TableCellProps extends BaseProps<"span"> {}
 
 /**
  * `Table.Cell` is a component that contains the data of a table cell.
@@ -322,5 +379,6 @@ export {
 	TableHeader as Header,
 	TableBody as Body,
 	TableRow as Row,
+	TableCaption as Caption,
 	TableCell as Cell,
 };

@@ -130,7 +130,7 @@
 	}
 
 	@layer modifiers {
-		&[data-kiwi-variant="solid"] {
+		&:where([data-kiwi-variant="solid"]) {
 			--🥝button-background-color: var(--🌀button-state--default, var(--🥝button-bg--solid-default))
 				var(--🌀button-state--hover, var(--✨bg--solid-hover))
 				var(--🌀button-state--pressed, var(--✨bg--solid-pressed))
@@ -172,7 +172,7 @@
 			}
 		}
 
-		&[data-kiwi-variant="outline"] {
+		&:where([data-kiwi-variant="outline"]) {
 			--🥝button-background-color: var(--🌀button-state--default, var(--✨bg--outline-default))
 				var(--🌀button-state--hover, var(--✨bg--outline-hover))
 				var(--🌀button-state--pressed, var(--✨bg--outline-pressed))
@@ -184,7 +184,7 @@
 			box-shadow: var(--✨shadow-border);
 		}
 
-		&[data-kiwi-variant="ghost"] {
+		&:where([data-kiwi-variant="ghost"]) {
 			--🥝button-background-color: var(--🌀button-state--default, var(--✨bg--ghost-default))
 				var(--🌀button-state--hover, var(--✨bg--ghost-hover))
 				var(--🌀button-state--pressed, var(--✨bg--ghost-pressed))

@@ -12,6 +12,7 @@ export default definePage(
 	function Page() {
 		return (
 			<Table.Root>
+				<Table.Caption>Description of the table contents.</Table.Caption>
 				<Table.Header>
 					<Table.Row>
 						<Table.Cell>Name</Table.Cell>
@@ -45,6 +46,7 @@ export default definePage(
 function VisualTest() {
 	return (
 		<Table.Root>
+			<Table.Caption>Description of the table contents.</Table.Caption>
 			<Table.Header>
 				<Table.Row>
 					<Table.Cell>Name</Table.Cell>
@@ -78,20 +80,21 @@ function ScrollTest() {
 		return string.charAt(0).toUpperCase() + string.slice(1);
 	};
 
-	const generateData = React.useCallback((numberOfData: number) => {
-		return Array(numberOfData)
-			.fill(null)
-			.map((_, index) => ({
-				id: index,
-				name: `Name ${index}`,
-				description: `Description ${index}`,
-			}));
-	}, []);
-
-	const data = React.useMemo(() => generateData(100), [generateData]);
+	const data = React.useMemo(
+		() =>
+			Array(100)
+				.fill(null)
+				.map((_, index) => ({
+					id: index,
+					name: `Name ${index}`,
+					description: `Description ${index}`,
+				})),
+		[],
+	);
 
 	return (
 		<Table.Root>
+			<Table.Caption>Description of the table contents.</Table.Caption>
 			<Table.Header>
 				<Table.Row>
 					{Object.keys(data[0]).map((columnName: string) => (

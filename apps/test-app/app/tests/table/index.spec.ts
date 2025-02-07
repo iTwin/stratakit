@@ -11,6 +11,8 @@ test("default", async ({ page }) => {
 	const table = page.getByRole("table");
 	await expect(table).toBeVisible();
 
+	await expect(table).toHaveAccessibleName("Fruits and their colors");
+
 	const columnHeaders = page.getByRole("columnheader");
 	await expect(columnHeaders).toHaveCount(2);
 

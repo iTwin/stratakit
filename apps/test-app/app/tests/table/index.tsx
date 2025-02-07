@@ -12,29 +12,29 @@ export default definePage(
 	function Page() {
 		return (
 			<Table.Root>
-				<Table.Caption>Description of the table contents.</Table.Caption>
+				<Table.Caption>Fruits and their colors</Table.Caption>
 				<Table.Header>
 					<Table.Row>
-						<Table.Cell>Name</Table.Cell>
-						<Table.Cell>Description</Table.Cell>
+						<Table.Cell>Fruit</Table.Cell>
+						<Table.Cell>Color</Table.Cell>
 					</Table.Row>
 				</Table.Header>
 				<Table.Body>
 					<Table.Row>
-						<Table.Cell>Name 1</Table.Cell>
-						<Table.Cell>Description 1</Table.Cell>
+						<Table.Cell>Apple</Table.Cell>
+						<Table.Cell>Red</Table.Cell>
 					</Table.Row>
 					<Table.Row>
-						<Table.Cell>Name 2</Table.Cell>
-						<Table.Cell>Description 2</Table.Cell>
+						<Table.Cell>Orange</Table.Cell>
+						<Table.Cell>Orange</Table.Cell>
 					</Table.Row>
 					<Table.Row>
-						<Table.Cell>Name 3</Table.Cell>
-						<Table.Cell>Description 3</Table.Cell>
+						<Table.Cell>Kiwi</Table.Cell>
+						<Table.Cell>Golden brown</Table.Cell>
 					</Table.Row>
 					<Table.Row>
-						<Table.Cell>Name 4</Table.Cell>
-						<Table.Cell>Description 4</Table.Cell>
+						<Table.Cell>Watermelon</Table.Cell>
+						<Table.Cell>Green</Table.Cell>
 					</Table.Row>
 				</Table.Body>
 			</Table.Root>
@@ -46,7 +46,7 @@ export default definePage(
 function VisualTest() {
 	return (
 		<Table.Root>
-			<Table.Caption>Description of the table contents.</Table.Caption>
+			<Table.Caption>Fruits and their colors</Table.Caption>
 			<Table.Header>
 				<Table.Row>
 					<Table.Cell>Name</Table.Cell>
@@ -55,20 +55,20 @@ function VisualTest() {
 			</Table.Header>
 			<Table.Body>
 				<Table.Row>
-					<Table.Cell>Name 1</Table.Cell>
-					<Table.Cell>Description 1</Table.Cell>
+					<Table.Cell>Apple</Table.Cell>
+					<Table.Cell>Red</Table.Cell>
 				</Table.Row>
 				<Table.Row>
-					<Table.Cell>Name 2</Table.Cell>
-					<Table.Cell>Description 2</Table.Cell>
+					<Table.Cell>Orange</Table.Cell>
+					<Table.Cell>Orange</Table.Cell>
 				</Table.Row>
 				<Table.Row>
-					<Table.Cell>Name 3</Table.Cell>
-					<Table.Cell>Description 3</Table.Cell>
+					<Table.Cell>Kiwi</Table.Cell>
+					<Table.Cell>Golden brown</Table.Cell>
 				</Table.Row>
 				<Table.Row>
-					<Table.Cell>Name 4</Table.Cell>
-					<Table.Cell>Description 4</Table.Cell>
+					<Table.Cell>Watermelon</Table.Cell>
+					<Table.Cell>Green</Table.Cell>
 				</Table.Row>
 			</Table.Body>
 		</Table.Root>
@@ -94,7 +94,7 @@ function ScrollTest() {
 
 	return (
 		<Table.Root>
-			<Table.Caption>Description of the table contents.</Table.Caption>
+			<Table.Caption>Table caption</Table.Caption>
 			<Table.Header>
 				<Table.Row>
 					{Object.keys(data[0]).map((columnName: string) => (

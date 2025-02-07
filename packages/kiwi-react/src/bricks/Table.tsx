@@ -50,8 +50,10 @@ const TableContext = React.createContext<{
 const Table = forwardRef<"div", TableProps>((props, forwardedRef) => {
 	const [labelledBy, setLabelledBy] = React.useState<string | undefined>();
 
+	const tableContext = React.useMemo(() => ({ setLabelledBy }), []);
+
 	return (
-		<TableContext.Provider value={{ setLabelledBy }}>
+		<TableContext.Provider value={tableContext}>
 			<Ariakit.Role
 				{...props}
 				className={cx("🥝-table", props.className)}

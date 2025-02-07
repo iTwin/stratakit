@@ -3,7 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 import * as React from "react";
-import * as Ariakit from "@ariakit/react";
+import type * as Ariakit from "@ariakit/react";
 
 export const isBrowser = typeof document !== "undefined";
 
@@ -63,93 +63,3 @@ export type FocusableProps<ElementType extends React.ElementType = "div"> =
 			Ariakit.FocusableProps,
 			"disabled" | "accessibleWhenDisabled" | "autoFocus"
 		>;
-
-// ----------------------------------------------------------------------------
-
-type CollectionStoreItem = NonNullable<
-	ReturnType<ReturnType<typeof Ariakit.useCollectionStore>["item"]>
->;
-
-interface FieldElementCollectionStoreItem extends CollectionStoreItem {
-	/** The type of field element being tracked */
-	elementType: "label" | "control" | "description";
-
-	/** If a control, the type of control. */
-	controlType?: "textlike" | "checkable";
-}
-
-export function FieldCollection(
-	props: Pick<Ariakit.CollectionProps, "render">,
-) {
-	const fieldElementCollection =
-		Ariakit.useCollectionStore<FieldElementCollectionStoreItem>({
-			defaultItems: [],
-		});
-	const renderedItems = Ariakit.useStoreState(
-		fieldElementCollection,
-		"renderedItems",
-	);
-
-	// Collect the control type and index
-	const [controlType, controlIndex] = React.useMemo(() => {
-		const controlIndex = renderedItems.findIndex(
-			(item) => item.elementType === "control",
-		);
-
-		return [renderedItems[controlIndex]?.controlType, controlIndex];
-	}, [renderedItems]);
-
-	// Compare the control and label position
-	const labelPlacement = React.useMemo(() => {
-		const labelIndex = renderedItems.findIndex(
-			(item) => item.elementType === "label",
-		);
-		if (controlIndex === -1 || labelIndex === -1) return;
-
-		return labelIndex < controlIndex ? "before" : "after";
-	}, [renderedItems, controlIndex]);
-
-	return (
-		<Ariakit.Collection
-			{...props}
-			store={fieldElementCollection}
-			data-kiwi-label-placement={labelPlacement}
-			data-kiwi-control-type={controlType}
-		/>
-	);
-}
-
-interface FieldCollectionItemControlProps
-	extends Pick<Ariakit.CollectionItemProps, "render"> {
-	type: FieldElementCollectionStoreItem["controlType"];
-}
-
-/**
- * An element tracked as a control in the `Field`’s collection.
- */
-export function FieldControl(props: FieldCollectionItemControlProps) {
-	const { type, ...rest } = props;
-	const getData = React.useCallback(
-		(data: CollectionStoreItem) => ({
-			...data,
-			elementType: "control",
-			controlType: type,
-		}),
-		[type],
-	);
-	return <Ariakit.CollectionItem {...rest} getItem={getData} />;
-}
-
-/**
- * An element tracked as a label in the `Field`’s collection.
- */
-export function FieldLabel(props: Pick<Ariakit.CollectionItemProps, "render">) {
-	const getData = React.useCallback(
-		(data: CollectionStoreItem) => ({
-			...data,
-			elementType: "label",
-		}),
-		[],
-	);
-	return <Ariakit.CollectionItem {...props} getItem={getData} />;
-}

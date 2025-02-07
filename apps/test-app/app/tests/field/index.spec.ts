@@ -53,6 +53,13 @@ test.describe("default", () => {
 		await expect(page.locator(".🥝-label.🥝-field")).toBeVisible();
 	});
 
+	test("with explicit id", async ({ page }) => {
+		await page.goto("/tests/field?control=input&controlId=example");
+		await expect(page.getByRole("textbox")).toHaveAccessibleName(
+			"input example",
+		);
+	});
+
 	const description = "Supporting text";
 	for (const [control, role] of Object.entries(controlsToRole)) {
 		test(`${control} with description`, async ({ page }) => {

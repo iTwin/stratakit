@@ -6,14 +6,13 @@ import * as React from "react";
 import cx from "classnames";
 import * as Ariakit from "@ariakit/react";
 import {
-	FieldControl,
 	forwardRef,
 	isBrowser,
 	type BaseProps,
 	type FocusableProps,
 } from "./~utils.js";
 import { DisclosureArrow } from "./Icon.js";
-import { useFieldDescribedBy, useFieldId } from "./Field.js";
+import { FieldControl, useFieldDescribedBy } from "./Field.js";
 
 const supportsHas = isBrowser && CSS?.supports?.("selector(:has(+ *))");
 
@@ -90,10 +89,9 @@ interface HtmlSelectProps extends HtmlSelectBaseProps {
  */
 const HtmlSelect = forwardRef<"select", HtmlSelectProps>(
 	(props, forwardedRef) => {
-		const { variant = "solid", ...rest } = props;
+		const { id, variant = "solid", ...rest } = props;
 
 		const setIsHtmlSelect = React.useContext(HtmlSelectContext);
-		const fieldId = useFieldId();
 		const describedBy = useFieldDescribedBy(props["aria-describedby"]);
 
 		React.useEffect(
@@ -107,9 +105,9 @@ const HtmlSelect = forwardRef<"select", HtmlSelectProps>(
 			<>
 				<FieldControl
 					type="textlike"
+					id={id}
 					render={
 						<Ariakit.Role.select
-							id={fieldId}
 							{...rest}
 							className={cx("🥝-button", "🥝-select", props.className)}
 							aria-describedby={describedBy}

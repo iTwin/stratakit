@@ -19,9 +19,7 @@ const TableContext = React.createContext<
 			totalRows?: number;
 			setTotalRows?: React.Dispatch<React.SetStateAction<number | undefined>>;
 			selectedRows?: Set<number>;
-			setSelectedRows?: React.Dispatch<
-				React.SetStateAction<Set<number | undefined>>
-			>;
+			setSelectedRows?: React.Dispatch<React.SetStateAction<Set<number>>>;
 	  }
 	| undefined
 >({ setLabelledBy: () => {} });
@@ -60,7 +58,7 @@ const Table = forwardRef<"div", TableProps>((props, forwardedRef) => {
 	const [selectedRows, setSelectedRows] = React.useState<Set<number>>(
 		new Set(),
 	);
-	const [totalRows, setTotalRows] = React.useState<number>();
+	const [totalRows, setTotalRows] = React.useState<number | undefined>();
 	const [labelledBy, setLabelledBy] = React.useState<string | undefined>();
 
 	return (

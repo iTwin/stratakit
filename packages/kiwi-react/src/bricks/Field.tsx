@@ -148,6 +148,10 @@ interface FieldCollectionStoreItem extends CollectionStoreItem {
 	controlType?: "textlike" | "checkable";
 }
 
+/**
+ * A collection that tracks labels, controls, and descriptions which provides
+ * information about IDs, placement of labels, and control types.
+ */
 function FieldCollection(props: Pick<Ariakit.CollectionProps, "render">) {
 	const fieldElementCollection =
 		Ariakit.useCollectionStore<FieldCollectionStoreItem>({

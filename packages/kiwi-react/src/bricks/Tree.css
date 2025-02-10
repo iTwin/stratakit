@@ -88,6 +88,8 @@
 
 .🥝-tree-item-content:is(.🥝-list-item-content) {
 	@layer base {
+		@apply --typography("body-sm");
+
 		grid-area: label;
 		white-space: nowrap;
 	}

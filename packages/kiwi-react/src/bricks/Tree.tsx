@@ -216,7 +216,6 @@ const TreeItem = forwardRef<"div", TreeItemProps>((props, forwardedRef) => {
 				ref={forwardedRef as Ariakit.CompositeItemProps["ref"]}
 			>
 				<ListItem.Root
-					{...rest}
 					data-kiwi-sublabel={sublabel ? true : undefined}
 					data-kiwi-expanded={expanded}
 					data-kiwi-selected={selected}

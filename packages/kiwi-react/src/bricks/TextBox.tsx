@@ -5,9 +5,8 @@
 import * as React from "react";
 import * as Ariakit from "@ariakit/react";
 import cx from "classnames";
-import { useFieldDescribedBy, useFieldId } from "./Field.js";
+import { FieldControl, useFieldDescribedBy } from "./Field.js";
 import { Icon } from "./Icon.js";
-import { Textarea } from "./Textarea.js";
 import { useMergedRefs } from "./~hooks.js";
 import { type FocusableProps, type BaseProps, forwardRef } from "./~utils.js";
 
@@ -55,36 +54,100 @@ interface TextBoxInputProps extends Omit<BaseInputProps, "children" | "type"> {
  */
 const TextBoxInput = forwardRef<"input", TextBoxInputProps>(
 	(props, forwardedRef) => {
+		const { id, ...rest } = props;
 		const describedBy = useFieldDescribedBy(props["aria-describedby"]);
-		const fieldId = useFieldId();
 		const rootContext = React.useContext(TextBoxRootContext);
 		const setDisabled = rootContext?.setDisabled;
 		React.useEffect(() => {
 			setDisabled?.(props.disabled);
 		}, [setDisabled, props.disabled]);
 		return (
-			<Ariakit.Role.input
-				id={fieldId}
-				{...props}
-				aria-describedby={describedBy}
-				className={cx({ "🥝-text-box": !rootContext }, props.className)}
-				/**
-				 * Use an empty string as a placeholder to fix baseline alignment in Safari.
-				 * @see https://bugs.webkit.org/show_bug.cgi?id=142968
-				 */
-				placeholder={props.placeholder ?? " "}
+			<FieldControl
+				type="textlike"
+				id={id}
 				render={
-					<Ariakit.Focusable
-						accessibleWhenDisabled
-						render={props.render || <input />}
+					<Ariakit.Role.input
+						readOnly={props.disabled}
+						{...rest}
+						aria-describedby={describedBy}
+						className={cx({ "🥝-text-box": !rootContext }, props.className)}
+						/**
+						 * Use an empty string as a placeholder to fix baseline alignment in Safari.
+						 * @see https://bugs.webkit.org/show_bug.cgi?id=142968
+						 */
+						placeholder={props.placeholder ?? " "}
+						render={
+							<Ariakit.Focusable
+								accessibleWhenDisabled
+								render={props.render || <input />}
+							/>
+						}
+						ref={useMergedRefs(rootContext?.inputRef, forwardedRef)}
 					/>
 				}
-				ref={useMergedRefs(rootContext?.inputRef, forwardedRef)}
 			/>
 		);
 	},
 );
 DEV: TextBoxInput.displayName = "TextBox.Input";
+
+// ----------------------------------------------------------------------------
+
+interface TextareaProps extends FocusableProps<"textarea"> {}
+
+/**
+ * A styled textarea element that allows users to enter multiline text values.
+ *
+ * Example usage:
+ * ```tsx
+ * <TextBox.Textarea defaultValue="Hello" />
+ * ```
+ *
+ * Works well with the `Field` and `Label` components.
+ * ```tsx
+ * <Field>
+ *   <Label>Leave a comment, be kind</Label>
+ *   <TextBox.Textarea />
+ * </Field>
+ * ```
+ *
+ * Underneath, it's an HTML textarea, i.e. `<textarea>`, so it supports the same props, including
+ * `value`, `defaultValue`, `onChange`, and `disabled`.
+ */
+const TextBoxTextarea = forwardRef<"textarea", TextareaProps>(
+	(props, forwardedRef) => {
+		const { id, ...rest } = props;
+		const describedBy = useFieldDescribedBy(props["aria-describedby"]);
+
+		return (
+			<FieldControl
+				type="textlike"
+				id={id}
+				render={
+					<Ariakit.Role.textarea
+						readOnly={props.disabled}
+						{...rest}
+						className={cx("🥝-text-box", props.className)}
+						aria-describedby={describedBy}
+						/**
+						 * Use an empty string as a placeholder to fix baseline alignment in Safari.
+						 * @see https://bugs.webkit.org/show_bug.cgi?id=142968
+						 */
+						placeholder={props.placeholder ?? " "}
+						render={
+							<Ariakit.Focusable
+								accessibleWhenDisabled
+								render={props.render || <textarea />}
+							/>
+						}
+						ref={forwardedRef}
+					/>
+				}
+			/>
+		);
+	},
+);
+DEV: TextBoxTextarea.displayName = "TextBox.Textarea";
 
 // ----------------------------------------------------------------------------
 
@@ -198,7 +261,7 @@ const TextBoxRootContext = React.createContext<
 export {
 	TextBoxRoot as Root,
 	TextBoxInput as Input,
-	Textarea,
+	TextBoxTextarea as Textarea,
 	TextBoxIcon as Icon,
 	TextBoxText as Text,
 };

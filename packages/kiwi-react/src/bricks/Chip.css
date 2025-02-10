@@ -4,23 +4,46 @@
  *--------------------------------------------------------------------------------------------*/
 .🥝-chip {
 	@layer base {
+		isolation: isolate;
+
 		display: inline-flex;
 		align-items: center;
-		padding-block: 0.25rem;
-		padding-inline: 0.5rem;
-		gap: 0.25rem;
+		position: relative;
+
+		--🥝chip-padding-inline: 0.5rem;
+		padding-inline: var(--🥝chip-padding-inline);
+
+		min-block-size: 1.5rem;
 
 		border-radius: 9999px;
+		border: none;
+	}
+
+	&::before {
+		position: absolute;
+		z-index: -1;
+		content: "";
+		inset: 0;
+		border-radius: inherit;
 		border: 1px solid var(--kiwi-color-border-neutral-base);
+		pointer-events: none;
 	}
 
 	@layer modifiers {
-		&[data-kiwi-variant="solid"] {
+		&:where([data-kiwi-variant="solid"]) {
 			background-color: var(--kiwi-color-bg-neutral-base);
 		}
 
-		&[data-kiwi-variant="outline"] {
+		&:where([data-kiwi-variant="outline"]) {
 			background-color: var(--kiwi-color-bg-surface-primary);
 		}
+	}
+}
+
+.🥝-chip-dismiss-button:is(.🥝-icon-button) {
+	@layer base {
+		position: relative;
+		border-radius: inherit;
+		margin-inline-end: calc(-1 * var(--🥝chip-padding-inline));
 	}
 }

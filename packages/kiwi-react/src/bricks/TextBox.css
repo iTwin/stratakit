@@ -84,6 +84,7 @@
 			&::placeholder {
 				color: var(--✨color--placeholder);
 				opacity: 1;
+				user-select: none;
 			}
 		}
 

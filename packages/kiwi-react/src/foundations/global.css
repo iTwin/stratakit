@@ -8,6 +8,9 @@ html {
 
 body {
 	@apply --typography("body-md");
+}
+
+:is(body, .🥝-root) {
 	font-family: var(--kiwi-font-family-sans);
 	color: var(--kiwi-color-text-neutral-primary);
 }

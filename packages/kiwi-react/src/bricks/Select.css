@@ -3,7 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 .🥝-select-root {
-	--✨padding-inline-start: 12px; /* same as button's padding-inline */
+	--✨padding-inline-start: 8px;
 	--✨padding-inline-end: calc(4px + 16px + 4px); /* (gap) + (arrow size) + (padding-inline - disclosure arrow offset) */
 
 	@layer base {

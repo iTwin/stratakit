@@ -1,5 +1,14 @@
 # Changelog
 
+## 5.0.0-alpha.5
+
+- **breaking**: `Tree` API has changed to require flat structure, with explicit ARIA props (see [#300](https://github.com/iTwin/kiwi/pull/300)). `<Tree.Item>` no longer allows passing `children`.
+- **breaking**: `Tree.Item`s `action` prop now requires a list of `<Tree.ItemAction>` components (see [#355](https://github.com/iTwin/kiwi/pull/355) and [#362](https://github.com/iTwin/kiwi/pull/362)).
+- **breaking**: Replaced `<Chip>` children with new `label` prop (see [#349](https://github.com/iTwin/kiwi/pull/349)).
+- Added `<Tree.ItemAction>` component with `visible` prop for more granular control over action visibility.
+- Updated the layout of `<Field>` so that `<Description>` is placed in the best spot according on the label position and control type.
+- `<Field>` now considers the presence of explicit control `id`s when creating associations.
+
 ## 5.0.0-alpha.4
 
 - Added `onDismiss` prop and dismiss button to `<Chip>`.

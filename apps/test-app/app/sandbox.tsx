@@ -113,29 +113,33 @@ export default function Page() {
 							/>
 						</div>
 					</div>
-					<TreeFilteringProvider>
-						<SandboxTabs>
+					<SandboxTabs>
+						<TreeFilteringProvider>
 							<Subheader />
 							<Tabs.TabPanel
 								tabId="simple"
 								className={styles.tabPanel}
 								focusable={false}
 							>
-								<SandboxTree
-									tree={selectedModel === "epoch-2" ? "empty" : "simple"}
-								/>
+								{selectedModel === "epoch-2" ? (
+									<EmptyState />
+								) : (
+									<SandboxTree tree="simple" />
+								)}
 							</Tabs.TabPanel>
 							<Tabs.TabPanel
 								tabId="complex"
 								className={styles.tabPanel}
 								focusable={false}
 							>
-								<SandboxTree
-									tree={selectedModel === "epoch-2" ? "empty" : "complex"}
-								/>
+								{selectedModel === "epoch-2" ? (
+									<EmptyState />
+								) : (
+									<SandboxTree tree="complex" />
+								)}
 							</Tabs.TabPanel>
-						</SandboxTabs>
-					</TreeFilteringProvider>
+						</TreeFilteringProvider>
+					</SandboxTabs>
 				</>
 			}
 		>
@@ -469,64 +473,31 @@ function useMoveable<T extends HTMLElement>(args?: UseMoveableArgs) {
 	return { moveableProps };
 }
 
-const SandboxTreeContext = React.createContext<{
-	selected: string | undefined;
-	hidden: string[];
-	setSelected: React.Dispatch<React.SetStateAction<string | undefined>>;
-	toggleHidden: (id: string) => void;
-}>({
-	selected: undefined,
-	hidden: [],
-	setSelected: () => {},
-	toggleHidden: () => {},
-});
-
-interface SandboxTreeProps {
-	tree: "simple" | "complex" | "empty";
-}
-
-function SandboxTree({ tree }: SandboxTreeProps) {
-	const [selected, setSelected] = React.useState<string | undefined>();
-	const [hidden, setHidden] = React.useState<string[]>([]);
-	const toggleHidden = React.useCallback((id: string) => {
-		setHidden((prev) => {
-			if (prev.includes(id)) {
-				return prev.filter((i) => i !== id);
-			}
-			return [...prev, id];
-		});
-	}, []);
-
-	const sandboxTreeContext = React.useMemo(
-		() => ({ selected, setSelected, hidden, toggleHidden }),
-		[hidden, selected, toggleHidden],
-	);
-
-	if (tree === "empty") {
-		return <EmptyState />;
-	}
-
-	return (
-		<SandboxTreeContext.Provider value={sandboxTreeContext}>
-			{tree === "simple" ? (
-				<SimpleTree />
-			) : tree === "complex" ? (
-				<ComplexTree />
-			) : undefined}
-		</SandboxTreeContext.Provider>
-	);
-}
-
 interface TreeItem {
+	id: string;
 	label: string;
-	type?: string;
-	items?: TreeItem[];
+	type?: string; // Used for filtering
+	items: TreeItem[];
+	expanded: boolean;
 }
 
 interface TreeStore {
 	filters: string[];
-	items?: TreeItem[];
+	items: TreeItem[];
 }
+
+const createTreeItem = (() => {
+	let id = 0;
+	return (overrides?: Partial<TreeItem>): TreeItem => {
+		return {
+			id: `${id++}`,
+			label: `Tree Item ${id}`,
+			items: [],
+			expanded: true,
+			...overrides,
+		};
+	};
+})();
 
 const simpleTree = {
 	filters: [
@@ -540,105 +511,276 @@ const simpleTree = {
 		"Map",
 	],
 	items: [
-		{
+		createTreeItem({
 			label: "Guides",
 			type: "Guides",
 			items: [
-				{
+				createTreeItem({
 					label: "Tree",
 					items: [
-						{ label: "Guide 4" },
-						{ label: "Guide 3" },
-						{ label: "Guide 2" },
-						{ label: "Guide 1" },
+						createTreeItem({ label: "Guide 4" }),
+						createTreeItem({ label: "Guide 3" }),
+						createTreeItem({ label: "Guide 2" }),
+						createTreeItem({ label: "Guide 1" }),
 					],
-				},
+				}),
 			],
-		},
-		{
+		}),
+		createTreeItem({
 			label: "Other",
 			type: "Other",
 			items: [
-				{
+				createTreeItem({
 					label: "Object 2",
-					items: [{ label: "Path 3" }],
-				},
-				{ label: "Object 1" },
+					items: [createTreeItem({ label: "Path 3" })],
+				}),
+				createTreeItem({ label: "Object 1" }),
 			],
-		},
-		{
+		}),
+		createTreeItem({
 			label: "Road",
 			type: "Road",
-			items: [{ label: "Parking lot access" }, { label: "Site access" }],
-		},
-		{
+			items: [
+				createTreeItem({ label: "Parking lot access" }),
+				createTreeItem({ label: "Site access" }),
+			],
+		}),
+		createTreeItem({
 			label: "Parking lot",
 			type: "Parking lot",
 			items: [
-				{
+				createTreeItem({
 					label: "Parking area",
 					items: [
-						{ label: "Bay point 2" },
-						{ label: "Bay point 1" },
-						{ label: "Space point 1" },
-						{ label: "Path 6" },
+						createTreeItem({ label: "Bay point 2" }),
+						createTreeItem({ label: "Bay point 1" }),
+						createTreeItem({ label: "Space point 1" }),
+						createTreeItem({ label: "Path 6" }),
 					],
-				},
+				}),
 			],
-		},
-		{
+		}),
+		createTreeItem({
 			label: "Building",
 			type: "Building",
 			items: [
-				{
+				createTreeItem({
 					label: "Building area",
-					items: [{ label: "Path 5" }],
-				},
+					items: [createTreeItem({ label: "Path 5" })],
+				}),
 			],
-		},
-		{
+		}),
+		createTreeItem({
 			label: "Sewer",
-			type: "Sewer",
+			type: "Building",
 			items: [
-				{
+				createTreeItem({
 					label: "Run off pipe",
-					items: [{ label: "Path 4" }],
-				},
+					items: [createTreeItem({ label: "Path 4" })],
+				}),
 			],
-		},
-		{
+		}),
+		createTreeItem({
 			label: "Project boundary",
 			type: "Project boundary",
 			items: [
-				{
+				createTreeItem({
 					label: "Property area",
-					items: [{ label: "Path 1" }],
-				},
+					items: [createTreeItem({ label: "Path 1" })],
+				}),
 			],
-		},
-		{
+		}),
+		createTreeItem({
 			label: "Map",
 			type: "Map",
 			items: [
-				{
+				createTreeItem({
 					label: "Location",
-					items: [{ label: "Terrain" }],
-				},
+					items: [createTreeItem({ label: "Terrain" })],
+				}),
 			],
-		},
+		}),
+	],
+} satisfies TreeStore;
+
+const complexTree = {
+	filters: [],
+	items: [
+		createTreeItem({
+			label: "ITC_Master",
+			items: [
+				createTreeItem({
+					label: "002_Substation",
+					expanded: false,
+					items: [createTreeItem({ label: "002_Substation_A" })],
+				}),
+				createTreeItem({
+					label: "005-BENROAD-00-XX-M3-D-00003.dgn",
+					expanded: false,
+					items: [
+						createTreeItem({
+							label: "005-BENROAD-00-XX-M3-D-00003-A",
+						}),
+					],
+				}),
+				createTreeItem({
+					label: "005-BENROAD-00-XX-M3-D-00005.dgn",
+					expanded: false,
+					items: [
+						createTreeItem({
+							label: "005-BENROAD-00-XX-M3-D-00005-A",
+						}),
+					],
+				}),
+				createTreeItem({
+					label: "005-BENROAD-00-XX-M3-G-00002.dgn",
+					expanded: false,
+					items: [
+						createTreeItem({
+							label: "005-BENROAD-00-XX-M3-G-00002-A",
+						}),
+					],
+				}),
+				createTreeItem({
+					label: "005-BENROAD-00-XX-M3-G-00003.dgn",
+					expanded: false,
+					items: [
+						createTreeItem({
+							label: "005-BENROAD-00-XX-M3-G-00003-A",
+						}),
+					],
+				}),
+				createTreeItem({
+					label: "007-aa_master.dgn",
+					items: [
+						createTreeItem({
+							label: "A-CLNG-LITE",
+							expanded: false,
+							items: [
+								createTreeItem({
+									label: "A-CLNG-LITE-A",
+								}),
+							],
+						}),
+						createTreeItem({
+							label: "A-CLNG-TILE",
+							items: [
+								createTreeItem({
+									label: "A-DOOR-2D-PLAN",
+									items: [
+										createTreeItem({
+											label: "P00003 [2-KA62]",
+											items: [
+												createTreeItem({
+													label: "Cell [2-KA63]",
+													items: [
+														createTreeItem({
+															label: "Cell [2-KA64]",
+															items: [
+																createTreeItem({
+																	label: "Complex Chain [2-KA6A]",
+																}),
+																createTreeItem({
+																	label: "Complex Chain [2-KA6B]",
+																}),
+																createTreeItem({
+																	label: "Complex Chain [2-KA6C]",
+																}),
+																createTreeItem({
+																	label: "Complex Chain [2-KA6D]",
+																}),
+																createTreeItem({
+																	label: "Complex Chain [2-KA6E]",
+																}),
+																createTreeItem({
+																	label: "Complex Chain [2-KA6F]",
+																}),
+																createTreeItem({
+																	label: "Complex Chain [2-KA6G]",
+																}),
+																createTreeItem({
+																	label: "Complex Chain [2-KA6H]",
+																}),
+																createTreeItem({
+																	label: "Complex Chain [2-KA61]",
+																}),
+																createTreeItem({
+																	label: "Complex Chain [2-KA65]",
+																}),
+																createTreeItem({
+																	label: "Complex Chain [2-KA66]",
+																}),
+																createTreeItem({
+																	label: "Complex Chain [2-KA67]",
+																}),
+																createTreeItem({
+																	label: "Complex Chain [2-KA68]",
+																}),
+																createTreeItem({
+																	label: "Complex Chain [2-KA69]",
+																}),
+															],
+														}),
+													],
+												}),
+											],
+										}),
+										createTreeItem({
+											label: "P00003 [2-KA74]",
+											expanded: false,
+											items: [
+												createTreeItem({
+													label: "P00003 [2-KA74-A]",
+												}),
+											],
+										}),
+										createTreeItem({
+											label: "P00003 [2-KA86]",
+											expanded: false,
+											items: [
+												createTreeItem({
+													label: "P00003 [2-KA74-A]",
+												}),
+											],
+										}),
+										createTreeItem({
+											label: "P00003 [2-KA98]",
+											expanded: false,
+											items: [
+												createTreeItem({
+													label: "P00003 [2-KA98-A]",
+												}),
+											],
+										}),
+										createTreeItem({
+											label: "P00003 [2-KAAA]",
+											expanded: false,
+											items: [
+												createTreeItem({
+													label: "P00003 [2-KAAA-A]",
+												}),
+											],
+										}),
+									],
+								}),
+							],
+						}),
+					],
+				}),
+			],
+		}),
 	],
 } satisfies TreeStore;
 
 function useFilteredTree({
-	tree,
+	items,
 	filters,
 	search,
 }: {
-	tree?: TreeStore;
+	items: TreeItem[];
 	filters: string[];
 	search: string;
 }) {
-	const items = React.useMemo(() => tree?.items ?? [], [tree]);
 	const filteredItems = React.useMemo(() => {
 		if (filters.length === 0) return items;
 		return items.reduce<TreeItem[]>((acc, item) => {
@@ -651,7 +793,6 @@ function useFilteredTree({
 			return acc;
 		}, []);
 	}, [items, filters]);
-
 	const foundItems = React.useMemo(() => {
 		// Filter items based on search string.
 		function matchSearch(items: TreeItem[]): TreeItem[] {
@@ -677,7 +818,6 @@ function useFilteredTree({
 	}, [filteredItems, search]);
 
 	const itemCount = React.useMemo(() => {
-		if (!tree) return undefined;
 		if (filters.length === 0 && search === "") return undefined;
 
 		function countItems(items: TreeItem[]): number {
@@ -687,169 +827,172 @@ function useFilteredTree({
 			}, 0);
 		}
 		return countItems(foundItems);
-	}, [foundItems, tree, filters, search]);
+	}, [foundItems, filters, search]);
 	return { filteredTree: foundItems, itemCount };
 }
 
-function TreeItemRenderer({ item: treeItem }: { item: TreeItem }) {
-	return (
-		<TreeItem label={treeItem.label}>
-			{treeItem.items?.map((item) => (
-				<TreeItemRenderer key={item.label} item={item} />
-			))}
-		</TreeItem>
-	);
-}
-
-function SimpleTree() {
-	const { tree } = React.useContext(TreeFilteringContext);
-	if (tree.length === 0) return <EmptyState />;
-	return (
-		<Tree.Root>
-			{tree.map((item) => {
-				return <TreeItemRenderer key={item.label} item={item} />;
-			})}
-		</Tree.Root>
-	);
-}
-
-function ComplexTree() {
-	return (
-		<Tree.Root className={styles.tree}>
-			<TreeItem label="ITC_Master">
-				<TreeItem label="002_Substation" defaultCollapsed>
-					<TreeItem label="002_Substation_A" />
-				</TreeItem>
-				<TreeItem label="005-BENROAD-00-XX-M3-D-00003.dgn" defaultCollapsed>
-					<TreeItem label="005-BENROAD-00-XX-M3-D-00003-A" />
-				</TreeItem>
-				<TreeItem label="005-BENROAD-00-XX-M3-D-00005.dgn" defaultCollapsed>
-					<TreeItem label="005-BENROAD-00-XX-M3-D-00005-A" />
-				</TreeItem>
-				<TreeItem label="005-BENROAD-00-XX-M3-G-00002.dgn" defaultCollapsed>
-					<TreeItem label="005-BENROAD-00-XX-M3-G-00002-A" />
-				</TreeItem>
-				<TreeItem label="005-BENROAD-00-XX-M3-G-00003.dgn" defaultCollapsed>
-					<TreeItem label="005-BENROAD-00-XX-M3-G-00003-A" />
-				</TreeItem>
-				<TreeItem label="007-aa_master.dgn">
-					<TreeItem label="A-CLNG-LITE" defaultCollapsed>
-						<TreeItem label="A-CLNG-LITE-A" />
-					</TreeItem>
-					<TreeItem label="A-CLNG-TILE">
-						<TreeItem label="A-DOOR-2D-PLAN">
-							<TreeItem label="P00003 [2-KA62]">
-								<TreeItem label="Cell [2-KA63]">
-									<TreeItem label="Cell [2-KA64]">
-										<TreeItem label="Complex Chain [2-KA6A]" />
-										<TreeItem label="Complex Chain [2-KA6B]" />
-										<TreeItem label="Complex Chain [2-KA6C]" />
-										<TreeItem label="Complex Chain [2-KA6D]" />
-										<TreeItem label="Complex Chain [2-KA6E]" />
-										<TreeItem label="Complex Chain [2-KA6F]" />
-										<TreeItem label="Complex Chain [2-KA6G]" />
-										<TreeItem label="Complex Chain [2-KA6H]" />
-										<TreeItem label="Complex Chain [2-KA61]" />
-										<TreeItem label="Complex Chain [2-KA65]" />
-										<TreeItem label="Complex Chain [2-KA66]" />
-										<TreeItem label="Complex Chain [2-KA67]" />
-										<TreeItem label="Complex Chain [2-KA68]" />
-										<TreeItem label="Complex Chain [2-KA69]" />
-									</TreeItem>
-								</TreeItem>
-							</TreeItem>
-							<TreeItem label="P00003 [2-KA74]" defaultCollapsed>
-								<TreeItem label="P00003 [2-KA74-A]" />
-							</TreeItem>
-							<TreeItem label="P00003 [2-KA86]" defaultCollapsed>
-								<TreeItem label="P00003 [2-KA74-A]" />
-							</TreeItem>
-							<TreeItem label="P00003 [2-KA98]" defaultCollapsed>
-								<TreeItem label="P00003 [2-KA98-A]" />
-							</TreeItem>
-							<TreeItem label="P00003 [2-KAAA]" defaultCollapsed>
-								<TreeItem label="P00003 [2-KAAA-A]" />
-							</TreeItem>
-						</TreeItem>
-					</TreeItem>
-				</TreeItem>
-			</TreeItem>
-			<TreeItem label="ITC_Main" />
-		</Tree.Root>
-	);
-}
-
-const SandboxParentItemContext = React.createContext<{
+interface FlatTreeItem extends TreeItem {
+	level: number;
 	selected: boolean;
 	hidden: boolean;
-}>({ selected: false, hidden: false });
+	parentHidden: boolean;
+	parentItem?: TreeItem;
+	position: number;
+	size: number;
+}
 
-type TreeItemProps = React.PropsWithChildren<{
-	label?: string;
-	defaultCollapsed?: boolean;
-}>;
+function useFlatTreeItems(
+	items: TreeItem[],
+	selectedItem: string | undefined,
+	hiddenItems: string[],
+): FlatTreeItem[] {
+	return React.useMemo(() => {
+		function flattenItems(
+			items: TreeItem[],
+			parentItem: TreeItem | undefined,
+			level: number,
+			parentSelected: boolean,
+			parentHidden: boolean,
+		): FlatTreeItem[] {
+			const flatItems: FlatTreeItem[] = [];
+			let position = 1;
+			for (const item of items) {
+				const selected = item.id === selectedItem || parentSelected;
+				const hidden = hiddenItems.includes(item.id) || parentHidden;
+				flatItems.push({
+					...item,
+					level,
+					parentItem,
+					selected,
+					hidden,
+					parentHidden,
+					position: position++,
+					size: items.length,
+				});
+				if (!item.expanded) continue;
+				flatItems.push(
+					...flattenItems(item.items, item, level + 1, selected, hidden),
+				);
+			}
+			return flatItems;
+		}
+		return flattenItems(items, undefined, 1, false, false);
+	}, [items, selectedItem, hiddenItems]);
+}
 
-function TreeItem(props: TreeItemProps) {
-	const treeContext = React.useContext(SandboxTreeContext);
-	const parentContext = React.useContext(SandboxParentItemContext);
-	const id = React.useId();
-	const [expanded, setExpanded] = React.useState(
-		props.defaultCollapsed === undefined ? true : !props.defaultCollapsed,
-	);
-	const isParentNode = React.Children.count(props.children) > 0;
-	const hidden = React.useMemo(() => {
-		if (parentContext.hidden) return true;
-		return treeContext.hidden.includes(id);
-	}, [id, treeContext.hidden, parentContext.hidden]);
-	const selected = parentContext.selected || id === treeContext.selected;
-	const setSelected = React.useCallback(
-		(selected: boolean) => {
-			treeContext.setSelected(selected ? id : undefined);
-		},
-		[id, treeContext],
-	);
+function findTreeItem<T extends Pick<TreeItem, "id"> & { items: T[] }>(
+	items: T[],
+	id: string,
+): T | undefined {
+	for (const item of items) {
+		if (item.id === id) return item;
+
+		const found = findTreeItem(item.items, id);
+		if (found) return found;
+	}
+}
+
+function SandboxTree({
+	tree,
+}: {
+	tree: "simple" | "complex";
+}) {
+	const { selectedId } = React.useContext(TabsContext);
+	const { filters, search, setItemCount } =
+		React.useContext(TreeFilteringContext);
+	const [selected, setSelected] = React.useState<string | undefined>();
+	const [hidden, setHidden] = React.useState<string[]>([]);
+	const toggleHidden = React.useCallback((id: string) => {
+		setHidden((prev) => {
+			if (prev.includes(id)) {
+				return prev.filter((i) => i !== id);
+			}
+			return [...prev, id];
+		});
+	}, []);
+
+	const [items, setItems] = React.useState(() => {
+		if (tree === "complex") return complexTree.items;
+		return simpleTree.items;
+	});
+	const { filteredTree, itemCount } = useFilteredTree({
+		items,
+		filters,
+		search,
+	});
+	const flatItems = useFlatTreeItems(filteredTree, selected, hidden);
+
+	React.useEffect(() => {
+		if (tree !== selectedId) return;
+		setItemCount(itemCount);
+	}, [tree, selectedId, setItemCount, itemCount]);
+
+	const deferredItems = React.useDeferredValue(flatItems);
+	if (deferredItems.length === 0) return <EmptyState />;
 	return (
-		<SandboxParentItemContext.Provider
-			value={React.useMemo(() => ({ selected, hidden }), [hidden, selected])}
-		>
-			<Tree.Item
-				expanded={isParentNode ? expanded : undefined}
-				onExpandedChange={setExpanded}
-				selected={selected}
-				onSelectedChange={setSelected}
-				icon={<Icon href={placeholderIcon} style={{ display: "inline" }} />}
-				label={props.label}
-				actions={
-					<>
-						<IconButton
-							className={styles.action}
-							icon={lockIcon}
-							label="Lock"
-							variant="ghost"
-							aria-hidden={hidden}
+		<React.Suspense fallback="Loading...">
+			<Tree.Root>
+				{deferredItems.map((item) => {
+					return (
+						<Tree.Item
+							key={item.id}
+							label={item.label}
+							aria-level={item.level}
+							aria-posinset={item.position}
+							aria-setsize={item.size}
+							selected={item.selected}
+							onSelectedChange={() => {
+								if (selected === item.id) {
+									setSelected(undefined);
+									return;
+								}
+								setSelected(item.id);
+							}}
+							expanded={item.items.length === 0 ? undefined : item.expanded}
+							onExpandedChange={(expanded) => {
+								setItems((prev) => {
+									const treeItem = findTreeItem(prev, item.id);
+									if (!treeItem) return prev;
+									const newData = [...prev];
+									treeItem.expanded = expanded; // TODO: should be immutable https://github.com/iTwin/kiwi/pull/300#discussion_r1941452941
+									return newData;
+								});
+							}}
+							icon={
+								<Icon href={placeholderIcon} style={{ display: "inline" }} />
+							}
+							actions={
+								<>
+									<IconButton
+										className={styles.action}
+										icon={lockIcon}
+										label="Lock"
+										variant="ghost"
+										aria-hidden={item.hidden}
+									/>
+									{item.parentHidden ? (
+										<span className={styles.actionIcon}>
+											<Icon href={dotIcon} />
+										</span>
+									) : (
+										<IconButton
+											className={styles.action}
+											icon={item.hidden ? hideIcon : showIcon}
+											label={item.hidden ? "Show" : "Hide"}
+											variant="ghost"
+											onClick={() => {
+												toggleHidden(item.id);
+											}}
+										/>
+									)}
+									<TreeMoreActions hidden={item.hidden} />
+								</>
+							}
 						/>
-						{parentContext.hidden ? (
-							<span className={styles.actionIcon}>
-								<Icon href={dotIcon} />
-							</span>
-						) : (
-							<IconButton
-								className={styles.action}
-								icon={hidden ? hideIcon : showIcon}
-								label={hidden ? "Show" : "Hide"}
-								variant="ghost"
-								onClick={() => {
-									treeContext.toggleHidden(id);
-								}}
-							/>
-						)}
-						<TreeMoreActions hidden={hidden} />
-					</>
-				}
-			>
-				{expanded ? props.children : undefined}
-			</Tree.Item>
-		</SandboxParentItemContext.Provider>
+					);
+				})}
+			</Tree.Root>
+		</React.Suspense>
 	);
 }
 
@@ -913,7 +1056,6 @@ function Subheader() {
 				ReactDOM.flushSync(() => setIsSearching(true));
 				searchInputRef.current?.focus();
 			}}
-			disabled={tree !== "simple"}
 		/>
 	);
 
@@ -997,6 +1139,9 @@ function TreeFilteringProvider(props: React.PropsWithChildren) {
 	const [filtered, setFiltered] = React.useState(false);
 	const [filters, setFilters] = React.useState<string[]>([]);
 	const [search, setSearchState] = React.useState("");
+	const [itemCount, setItemCount] = React.useState<number | undefined>(
+		undefined,
+	);
 	const toggleFilter = React.useCallback((filter: string) => {
 		setFilters((prev) => {
 			if (prev.includes(filter)) {
@@ -1010,47 +1155,37 @@ function TreeFilteringProvider(props: React.PropsWithChildren) {
 		setFilters([]);
 		setFiltered(true);
 	}, []);
-
-	const { filteredTree, itemCount } = useFilteredTree({
-		tree: simpleTree,
-		filters,
-		search,
-	});
-	const deferredTree = React.useDeferredValue(filteredTree);
-
 	const setSearch = React.useCallback((s: string) => {
 		setSearchState(s);
 		setFiltered(true);
 	}, []);
+
 	return (
-		<React.Suspense fallback="Loading...">
-			<TreeFilteringContext.Provider
-				value={React.useMemo(
-					() => ({
-						filters,
-						filtered,
-						toggleFilter,
-						clearFilters,
-						search,
-						setSearch,
-						itemCount,
-						tree: deferredTree,
-					}),
-					[
-						filters,
-						filtered,
-						toggleFilter,
-						clearFilters,
-						search,
-						itemCount,
-						deferredTree,
-						setSearch,
-					],
-				)}
-			>
-				{props.children}
-			</TreeFilteringContext.Provider>
-		</React.Suspense>
+		<TreeFilteringContext.Provider
+			value={React.useMemo(
+				() => ({
+					filters,
+					filtered,
+					toggleFilter,
+					clearFilters,
+					search,
+					setSearch,
+					itemCount,
+					setItemCount,
+				}),
+				[
+					filters,
+					filtered,
+					toggleFilter,
+					clearFilters,
+					search,
+					setSearch,
+					itemCount,
+				],
+			)}
+		>
+			{props.children}
+		</TreeFilteringContext.Provider>
 	);
 }
 
@@ -1082,7 +1217,7 @@ const TreeFilteringContext = React.createContext<{
 	search: string;
 	setSearch: (search: string) => void;
 	itemCount: number | undefined;
-	tree: TreeItem[];
+	setItemCount: (count: number | undefined) => void;
 }>({
 	filters: [],
 	filtered: false,
@@ -1090,8 +1225,8 @@ const TreeFilteringContext = React.createContext<{
 	clearFilters: () => {},
 	search: "",
 	setSearch: () => {},
-	tree: [],
 	itemCount: undefined,
+	setItemCount: () => {},
 });
 
 const TabsContext = React.createContext<{

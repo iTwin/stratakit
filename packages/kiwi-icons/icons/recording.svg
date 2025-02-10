@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg">
-  <symbol id="icon" fill="none" viewBox="0 0 16 16"><path fill="currentColor" fill-opacity=".24" d="M8 11.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Z"/></symbol>
-  <symbol id="icon-large" fill="none" viewBox="0 0 24 24"><path fill="currentColor" fill-opacity=".24" d="M12 18.5a6.5 6.5 0 1 0 0-13 6.5 6.5 0 0 0 0 13Z"/></symbol>
+  <symbol id="icon" fill="none" viewBox="0 0 16 16"><path fill="currentColor" fill-opacity=".24" d="M8 11.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Z"/><path fill="currentColor" fill-rule="evenodd" d="M2 8a6 6 0 1 1 12.002 0A6 6 0 0 1 2 8Zm6-7a7 7 0 1 0 0 14.001A7 7 0 0 0 8 1ZM5 8a3 3 0 1 1 6 0 3 3 0 0 1-6 0Zm3-4a4 4 0 1 0 0 8 4 4 0 0 0 0-8Z" clip-rule="evenodd"/></symbol>
+  <symbol id="icon-large" fill="none" viewBox="0 0 24 24"><path fill="currentColor" fill-opacity=".24" d="M12 18.5a6.5 6.5 0 1 0 0-13 6.5 6.5 0 0 0 0 13Z"/><path fill="currentColor" fill-rule="evenodd" d="M3 12a9 9 0 1 1 18 0 9 9 0 0 1-18 0Zm9-10C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2ZM6 12a6 6 0 1 1 12 0 6 6 0 0 1-12 0Zm6-7a7 7 0 1 0 0 14 7 7 0 0 0 0-14Z" clip-rule="evenodd"/></symbol>
   <use href="#icon"/>
 </svg>

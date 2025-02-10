@@ -97,7 +97,7 @@ test.describe("keyboard", () => {
 	test("selection", async ({ page }) => {
 		await page.goto("/tests/tree");
 
-		const tree = page.getByRole("tree").first();
+		const tree = page.getByRole("tree");
 		const item1 = tree.getByRole("treeitem").filter({
 			has: page.getByText("Item 1", { exact: true }),
 		});
@@ -120,7 +120,7 @@ test.describe("keyboard", () => {
 test.describe("@visual", () => {
 	test("default", async ({ page }) => {
 		await page.goto("/tests/tree");
-		const tree = page.getByRole("tree").first();
+		const tree = page.getByRole("tree");
 		await expect(tree).toBeVisible();
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
@@ -145,14 +145,21 @@ test.describe("@visual", () => {
 
 	test("overflow", async ({ page }) => {
 		await page.goto("/tests/tree?overflow");
-		const tree = page.getByRole("tree").first();
+		const tree = page.getByRole("tree");
 		await expect(tree).toBeVisible();
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
 
 	test("selected", async ({ page }) => {
 		await page.goto("/tests/tree?selected");
-		const tree = page.getByRole("tree").first();
+		const tree = page.getByRole("tree");
+		await expect(tree).toBeVisible();
+		await expect(page.locator("body")).toHaveScreenshot();
+	});
+
+	test("sublabel", async ({ page }) => {
+		await page.goto("/tests/tree?sublabel=Custom description of the tree item");
+		const tree = page.getByRole("tree");
 		await expect(tree).toBeVisible();
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
@@ -162,7 +169,7 @@ test.describe("@a11y", () => {
 	test("Axe Page Scan", async ({ page }) => {
 		await page.goto("/tests/tree");
 
-		const tree = page.getByRole("tree").first();
+		const tree = page.getByRole("tree");
 		await expect(tree).toBeVisible();
 
 		const axe = new AxeBuilder({ page });

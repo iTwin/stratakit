@@ -27,7 +27,6 @@ import lockIcon from "@itwin/itwinui-icons/lock.svg";
 import showIcon from "@itwin/itwinui-icons/visibility-show.svg";
 import moreIcon from "@itwin/itwinui-icons/more-horizontal.svg";
 import hideIcon from "@itwin/itwinui-icons/visibility-hide.svg";
-import dotIcon from "@itwin/itwinui-icons/state-inherited-dot.svg";
 
 const title = "Kiwi sandbox";
 export const meta: MetaFunction = () => {
@@ -915,6 +914,7 @@ function SandboxTree({
 		if (tree === "complex") return complexTree.items;
 		return simpleTree.items;
 	});
+
 	const { filteredTree, itemCount } = useFilteredTree({
 		items,
 		filters,
@@ -963,28 +963,21 @@ function SandboxTree({
 							}
 							actions={
 								<>
-									<IconButton
+									<Tree.ItemAction
 										className={styles.action}
 										icon={lockIcon}
 										label="Lock"
-										variant="ghost"
 										aria-hidden={item.hidden}
 									/>
-									{item.parentHidden ? (
-										<span className={styles.actionIcon}>
-											<Icon href={dotIcon} />
-										</span>
-									) : (
-										<IconButton
-											className={styles.action}
-											icon={item.hidden ? hideIcon : showIcon}
-											label={item.hidden ? "Show" : "Hide"}
-											variant="ghost"
-											onClick={() => {
-												toggleHidden(item.id);
-											}}
-										/>
-									)}
+									<Tree.ItemAction
+										className={styles.action}
+										icon={item.hidden ? hideIcon : showIcon}
+										label={item.hidden ? "Show" : "Hide"}
+										visible={item.hidden ? true : undefined}
+										onClick={() => {
+											toggleHidden(item.id);
+										}}
+									/>
 									<TreeMoreActions hidden={item.hidden} />
 								</>
 							}
@@ -1002,7 +995,7 @@ function TreeMoreActions({ hidden }: { hidden?: boolean }) {
 			<DropdownMenu.Button
 				className={styles.action}
 				aria-hidden={hidden}
-				render={<IconButton icon={moreIcon} label="More" variant="ghost" />}
+				render={<Tree.ItemAction icon={moreIcon} label="More" />}
 			/>
 			<DropdownMenu.Content style={{ minInlineSize: 164 }}>
 				<DropdownMenu.Item shortcuts="⌘+C">Copy</DropdownMenu.Item>

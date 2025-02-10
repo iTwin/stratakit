@@ -5,7 +5,7 @@
 import * as React from "react";
 import * as Ariakit from "@ariakit/react";
 import cx from "classnames";
-import { FieldCollection, forwardRef, type BaseProps } from "./~utils.js";
+import { forwardRef, type BaseProps } from "./~utils.js";
 
 // ----------------------------------------------------------------------------
 
@@ -37,24 +37,20 @@ interface FieldProps extends BaseProps {
  * - `Switch`
  */
 export const Field = forwardRef<"div", FieldProps>((props, forwardedRef) => {
-	const fieldId = React.useId();
 	const { layout, ...rest } = props;
-
 	return (
-		<FieldIdContext.Provider value={fieldId}>
-			<FieldDescribedByProvider>
-				<FieldCollection
-					render={
-						<Ariakit.Role.div
-							{...rest}
-							className={cx("🥝-field", props.className)}
-							data-kiwi-layout={layout}
-							ref={forwardedRef}
-						/>
-					}
-				/>
-			</FieldDescribedByProvider>
-		</FieldIdContext.Provider>
+		<FieldDescribedByProvider>
+			<FieldCollection
+				render={
+					<Ariakit.Role.div
+						{...rest}
+						className={cx("🥝-field", props.className)}
+						data-kiwi-layout={layout}
+						ref={forwardedRef}
+					/>
+				}
+			/>
+		</FieldDescribedByProvider>
 	);
 });
 DEV: Field.displayName = "Field";
@@ -140,8 +136,109 @@ export function useFieldRegisterDescribedBy(id: string) {
 
 // ----------------------------------------------------------------------------
 
-const FieldIdContext = React.createContext<string | undefined>(undefined);
+type CollectionStoreItem = NonNullable<
+	ReturnType<ReturnType<typeof Ariakit.useCollectionStore>["item"]>
+>;
 
-export function useFieldId() {
-	return React.useContext(FieldIdContext);
+interface FieldCollectionStoreItem extends CollectionStoreItem {
+	/** The type of field element being tracked */
+	elementType: "label" | "control" | "description";
+
+	/** If a control, the type of control. */
+	controlType?: "textlike" | "checkable";
+}
+
+/**
+ * A collection that tracks labels, controls, and descriptions which provides
+ * information about IDs, placement of labels, and control types.
+ */
+function FieldCollection(props: Pick<Ariakit.CollectionProps, "render">) {
+	const fieldElementCollection =
+		Ariakit.useCollectionStore<FieldCollectionStoreItem>({
+			defaultItems: [],
+		});
+	const renderedItems = Ariakit.useStoreState(
+		fieldElementCollection,
+		"renderedItems",
+	);
+
+	// Collect the control type and index
+	const [controlType, controlIndex] = React.useMemo(() => {
+		const controlIndex = renderedItems.findIndex(
+			(item) => item.elementType === "control",
+		);
+
+		return [renderedItems[controlIndex]?.controlType, controlIndex];
+	}, [renderedItems]);
+
+	// Compare the control and label position
+	const labelPlacement = React.useMemo(() => {
+		const labelIndex = renderedItems.findIndex(
+			(item) => item.elementType === "label",
+		);
+		if (controlIndex === -1 || labelIndex === -1) return;
+
+		return labelIndex < controlIndex ? "before" : "after";
+	}, [renderedItems, controlIndex]);
+
+	return (
+		<Ariakit.Collection
+			{...props}
+			store={fieldElementCollection}
+			data-kiwi-label-placement={labelPlacement}
+			data-kiwi-control-type={controlType}
+		/>
+	);
+}
+
+interface FieldCollectionItemControlProps
+	extends Pick<Ariakit.CollectionItemProps, "render" | "id"> {
+	type: FieldCollectionStoreItem["controlType"];
+}
+
+/**
+ * An element tracked as a control in the `Field`’s collection.
+ */
+export function FieldControl(props: FieldCollectionItemControlProps) {
+	const generatedId = React.useId();
+	const { id = generatedId, type, ...rest } = props;
+	const getData = React.useCallback(
+		(data: CollectionStoreItem) => ({
+			...data,
+			elementType: "control",
+			controlType: type,
+		}),
+		[type],
+	);
+	return <Ariakit.CollectionItem {...rest} id={id} getItem={getData} />;
+}
+
+/**
+ * An element tracked as a label in the `Field`’s collection.
+ */
+export function FieldLabel(props: Pick<Ariakit.CollectionItemProps, "render">) {
+	const store = Ariakit.useCollectionContext();
+	const renderedItems = Ariakit.useStoreState(store, "renderedItems");
+	const fieldId = React.useMemo(
+		() =>
+			renderedItems?.find(
+				(item: FieldCollectionStoreItem) => item.elementType === "control",
+			)?.id,
+		[renderedItems],
+	);
+
+	const getData = React.useCallback(
+		(data: CollectionStoreItem) => ({
+			...data,
+			elementType: "label",
+		}),
+		[],
+	);
+
+	return (
+		<Ariakit.CollectionItem
+			getItem={getData}
+			render={<Ariakit.Role.label {...props} htmlFor={fieldId} />}
+		/>
+	);
 }

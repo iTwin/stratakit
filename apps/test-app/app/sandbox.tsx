@@ -521,6 +521,7 @@ function SandboxTree({ tree }: SandboxTreeProps) {
 interface TreeItem {
 	id: string;
 	label: string;
+	sublabel?: string;
 	type?: string; // Used for filtering
 	items: TreeItem[];
 	expanded: boolean;
@@ -656,6 +657,7 @@ const complexTree = {
 			items: [
 				createTreeItem({
 					label: "002_Substation",
+					sublabel: "Additional description",
 					expanded: false,
 					items: [createTreeItem({ label: "002_Substation_A" })],
 				}),
@@ -760,9 +762,11 @@ const complexTree = {
 																}),
 																createTreeItem({
 																	label: "Complex Chain [2-KA68]",
+																	sublabel: "Additional description",
 																}),
 																createTreeItem({
 																	label: "Complex Chain [2-KA69]",
+																	sublabel: "Additional description",
 																}),
 															],
 														}),
@@ -927,6 +931,7 @@ function TreeItems(props: { initialItems: TreeItem[]; filters?: string[] }) {
 			<Tree.Item
 				key={item.id}
 				label={item.label}
+				sublabel={item.sublabel}
 				aria-level={item.level}
 				aria-posinset={item.position}
 				aria-setsize={item.size}

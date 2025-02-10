@@ -30,11 +30,11 @@
 	}
 
 	@layer modifiers {
-		&[data-kiwi-variant="solid"] {
+		&:where([data-kiwi-variant="solid"]) {
 			background-color: var(--kiwi-color-bg-neutral-base);
 		}
 
-		&[data-kiwi-variant="outline"] {
+		&:where([data-kiwi-variant="outline"]) {
 			background-color: var(--kiwi-color-bg-surface-primary);
 		}
 	}

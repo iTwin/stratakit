@@ -10,7 +10,7 @@ export const handle = { title: "Select" };
 export default definePage(
 	function Page() {
 		return (
-			<Field>
+			<Field layout="inline">
 				<Label>Fruit</Label>
 				<Select.Root>
 					<Select.HtmlSelect>
@@ -29,7 +29,7 @@ function VisualTest() {
 	return (
 		<div style={{ display: "grid", gap: 4 }}>
 			{(["solid", "outline", "ghost"] as const).map((variant) => (
-				<Field key={variant}>
+				<Field key={variant} layout="inline">
 					<Label>Fruit</Label>
 					<Select.Root>
 						<Select.HtmlSelect variant={variant}>

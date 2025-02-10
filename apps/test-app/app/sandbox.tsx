@@ -949,26 +949,26 @@ function TreeItems(props: { initialItems: TreeItem[]; filters?: string[] }) {
 					});
 				}}
 				icon={<Icon href={placeholderIcon} style={{ display: "inline" }} />}
-				actions={
-					<>
-						<Tree.ItemAction
-							className={styles.action}
-							icon={lockIcon}
-							label="Lock"
-							aria-hidden={item.hidden}
-						/>
-						<Tree.ItemAction
-							className={styles.action}
-							icon={item.hidden ? hideIcon : showIcon}
-							label={item.hidden ? "Show" : "Hide"}
-							visible={item.hidden ? true : undefined}
-							onClick={() => {
-								toggleHidden(item.id);
-							}}
-						/>
-						<TreeMoreActions hidden={item.hidden} />
-					</>
-				}
+				actions={[
+					<Tree.ItemAction
+						key="lock"
+						className={styles.action}
+						icon={lockIcon}
+						label="Lock"
+						aria-hidden={item.hidden}
+					/>,
+					<Tree.ItemAction
+						key="visibility"
+						className={styles.action}
+						icon={item.hidden ? hideIcon : showIcon}
+						label={item.hidden ? "Show" : "Hide"}
+						visible={item.hidden ? true : undefined}
+						onClick={() => {
+							toggleHidden(item.id);
+						}}
+					/>,
+					<TreeMoreActions key="more" hidden={item.hidden} />,
+				]}
 			/>
 		);
 	});

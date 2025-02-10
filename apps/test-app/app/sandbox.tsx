@@ -229,6 +229,14 @@ function EmptyState() {
 	);
 }
 
+function NoResultsState() {
+	return (
+		<div style={{ textAlign: "center" }}>
+			<Text>No results found</Text>
+		</div>
+	);
+}
+
 function clamp(value: number, min: number, max: number) {
 	return Math.min(Math.max(value, min), max);
 }
@@ -928,7 +936,7 @@ function SandboxTree({
 	}, [tree, selectedId, setItemCount, itemCount]);
 
 	const deferredItems = React.useDeferredValue(flatItems);
-	if (deferredItems.length === 0) return <EmptyState />;
+	if (deferredItems.length === 0) return <NoResultsState />;
 	return (
 		<React.Suspense fallback="Loading...">
 			<Tree.Root>

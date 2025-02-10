@@ -48,6 +48,11 @@
 		position: relative;
 		isolation: isolate;
 
+		display: grid;
+		grid-template-areas: "expander icon label actions";
+		grid-template-rows: auto;
+		grid-template-columns: auto auto 1fr auto;
+
 		padding-inline-start: calc(
 			var(--✨first-level-indent) +
 			var(--✨subsequent-level-indent) *
@@ -58,12 +63,10 @@
 
 	@layer states {
 		&:where([data-kiwi-sublabel="true"]) {
-			display: grid;
 			grid-template-areas:
 				"expander icon label actions"
 				". . sublabel actions";
 			grid-template-rows: auto auto;
-			grid-template-columns: auto auto 1fr auto;
 			row-gap: 0;
 
 			min-block-size: 2.75rem;
@@ -85,6 +88,7 @@
 
 .🥝-tree-item-content:is(.🥝-list-item-content) {
 	@layer base {
+		grid-area: label;
 		white-space: nowrap;
 	}
 }
@@ -98,8 +102,8 @@
 		inset-inline-end: 0;
 		padding-inline-end: 4px;
 		background-color: var(--kiwi-color-bg-surface-primary);
-
 		display: inline-flex;
+		align-items: center;
 		visibility: var(--🥝tree-item-actions-visibility, var(--🥝tree-item-action-visibility));
 
 		&::before {
@@ -168,5 +172,8 @@
 .🥝-tree-item-icon {
 	@layer base {
 		grid-area: icon;
+
+		display: inline-flex;
+		align-items: center;
 	}
 }

@@ -61,7 +61,7 @@ export default definePage(function Page({
 				};
 
 				return (
-					<>
+					<React.Fragment key={item.label}>
 						<Tree.Item
 							key={item.label}
 							aria-level={1}
@@ -74,12 +74,14 @@ export default definePage(function Page({
 							selected={item.selected}
 							onSelectedChange={handleSelection}
 							icon={placeholderIcon}
-							actions={
-								<>
-									<Tree.ItemAction icon={unlockIcon} label="Unlock" />
-									<Tree.ItemAction icon={showIcon} label="Show" />
-								</>
-							}
+							actions={[
+								<Tree.ItemAction
+									key="unlock"
+									icon={unlockIcon}
+									label="Unlock"
+								/>,
+								<Tree.ItemAction key="show" icon={showIcon} label="Show" />,
+							]}
 						/>
 						{item.children?.map((child, childIndex, children) => {
 							if (!item.expanded) return null;
@@ -102,16 +104,18 @@ export default definePage(function Page({
 									selected={child.selected}
 									onSelectedChange={handleSelection}
 									icon={placeholderIcon}
-									actions={
-										<>
-											<Tree.ItemAction icon={unlockIcon} label="Unlock" />
-											<Tree.ItemAction icon={showIcon} label="Show" />
-										</>
-									}
+									actions={[
+										<Tree.ItemAction
+											key="unlock"
+											icon={unlockIcon}
+											label="Unlock"
+										/>,
+										<Tree.ItemAction key="show" icon={showIcon} label="Show" />,
+									]}
 								/>
 							);
 						})}
-					</>
+					</React.Fragment>
 				);
 			})}
 		</Tree.Root>

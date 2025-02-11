@@ -112,6 +112,7 @@ interface TableBodyProps extends BaseProps {}
 /**
  * `Table.Body` is a component that contains the rows of table data.
  * Multiple `Table.Row`s and `Table.Cell`s can be nested inside a `Table.Body` to create a table body.
+ * Intentionally not adding `role=rowgroup` for this wrapping div. https://github.com/iTwin/kiwi/pull/243#discussion_r1947045668
  *
  * Example:
  * ```tsx
@@ -133,7 +134,6 @@ const TableBody = forwardRef<"div", TableBodyProps>((props, forwardedRef) => {
 			{...props}
 			className={cx("🥝-table-body", props.className)}
 			ref={forwardedRef}
-			role="rowgroup"
 		>
 			{props.children}
 		</Ariakit.Role.div>

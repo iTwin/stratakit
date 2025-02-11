@@ -17,7 +17,7 @@ test("default", async ({ page }) => {
 	await expect(columnHeaders).toHaveCount(2);
 
 	const rowGroups = page.getByRole("rowgroup");
-	await expect(rowGroups).toHaveCount(2);
+	await expect(rowGroups).toHaveCount(1);
 
 	const rows = page.getByRole("row");
 	await expect(rows).toHaveCount(5);

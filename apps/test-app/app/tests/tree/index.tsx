@@ -4,7 +4,6 @@
  *--------------------------------------------------------------------------------------------*/
 import { definePage } from "~/~utils.tsx";
 import * as React from "react";
-import { IconButton } from "@itwin/itwinui-react/bricks";
 import * as Tree from "@itwin/itwinui-react-internal/src/bricks/Tree.tsx";
 import placeholderIcon from "@itwin/itwinui-icons/placeholder.svg";
 import unlockIcon from "@itwin/itwinui-icons/lock-unlocked.svg";
@@ -61,7 +60,7 @@ export default definePage(function Page({
 				};
 
 				return (
-					<>
+					<React.Fragment key={item.label}>
 						<Tree.Item
 							key={item.label}
 							aria-level={1}
@@ -73,16 +72,14 @@ export default definePage(function Page({
 							selected={item.selected}
 							onSelectedChange={handleSelection}
 							icon={placeholderIcon}
-							actions={
-								<>
-									<IconButton
-										icon={unlockIcon}
-										label="Unlock"
-										variant="ghost"
-									/>
-									<IconButton icon={showIcon} label="Show" variant="ghost" />
-								</>
-							}
+							actions={[
+								<Tree.ItemAction
+									key="unlock"
+									icon={unlockIcon}
+									label="Unlock"
+								/>,
+								<Tree.ItemAction key="show" icon={showIcon} label="Show" />,
+							]}
 						/>
 						{item.children?.map((child, childIndex, children) => {
 							if (!item.expanded) return null;
@@ -104,24 +101,18 @@ export default definePage(function Page({
 									selected={child.selected}
 									onSelectedChange={handleSelection}
 									icon={placeholderIcon}
-									actions={
-										<>
-											<IconButton
-												icon={unlockIcon}
-												label="Unlock"
-												variant="ghost"
-											/>
-											<IconButton
-												icon={showIcon}
-												label="Show"
-												variant="ghost"
-											/>
-										</>
-									}
+									actions={[
+										<Tree.ItemAction
+											key="unlock"
+											icon={unlockIcon}
+											label="Unlock"
+										/>,
+										<Tree.ItemAction key="show" icon={showIcon} label="Show" />,
+									]}
 								/>
 							);
 						})}
-					</>
+					</React.Fragment>
 				);
 			})}
 		</Tree.Root>

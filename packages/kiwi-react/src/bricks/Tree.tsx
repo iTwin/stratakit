@@ -91,10 +91,22 @@ interface TreeItemProps extends Omit<BaseProps, "content"> {
 	 * Can be a URL of an SVG from the `kiwi-icons` package, or a JSX element.
 	 */
 	icon?: string | React.JSX.Element;
-	/** The label to display for the tree item. */
+	/**
+	 * The primary label that identifies the tree item and is displayed inside it.
+	 */
 	label?: React.ReactNode;
-	/** The actions available for the tree item. */
-	actions?: React.ReactNode;
+	/**
+	 * The actions available for the tree item. Must be a list of `Tree.ItemAction` components.
+	 *
+	 * Example:
+	 * ```tsx
+	 * actions={[
+	 *   <Tree.ItemAction key={…} icon={…} label={…} />,
+	 *   <Tree.ItemAction key={…} icon={…} label={…} />,
+	 * ]}
+	 * ```
+	 */
+	actions?: React.ReactNode[];
 }
 
 /**
@@ -113,13 +125,15 @@ interface TreeItemProps extends Omit<BaseProps, "content"> {
  *
  * The `label` and `icon` props can be used to specify the treeitem's own content.
  *
- * The `level` prop is used to specify the nesting level of the treeitem. Nesting levels start at 1.
+ * The `aria-level` prop is used to specify the nesting level of the treeitem. Nesting levels start at 1.
  *
- * The `position` and `size` props are used to define the treeitem's position in the current level of tree items.
+ * The `aria-posinset` and `aria-setsize` props are used to define the treeitem's position in the current level of tree items.
  *
  * The `expanded` and `onExpandedChange` props can be used to control the expansion state of a treeitem.
  *
  * The `selected` and `onSelectedChange` props can be used to control the selection state of a treeitem.
+ *
+ * Secondary actions can be passed into the `actions` prop.
  */
 const TreeItem = forwardRef<"div", TreeItemProps>((props, forwardedRef) => {
 	const {
@@ -246,32 +260,63 @@ DEV: TreeItemContent.displayName = "TreeItemContent";
 
 // ----------------------------------------------------------------------------
 
-interface TreeItemActionsProps extends BaseProps {
-	visible?: boolean;
-}
-
-const TreeItemActions = forwardRef<"div", TreeItemActionsProps>(
-	(props, forwardedRef) => {
-		const { visible, ...rest } = props;
-
-		return (
-			<Ariakit.Toolbar
-				{...rest}
-				onClick={useEventHandlers(props.onClick, (e) => e.stopPropagation())}
-				className={cx("🥝-tree-item-actions", props.className)}
-				data-kiwi-visible={visible}
-				ref={forwardedRef}
-			>
-				{props.children}
-			</Ariakit.Toolbar>
-		);
-	},
-);
+const TreeItemActions = forwardRef<"div", BaseProps>((props, forwardedRef) => {
+	return (
+		<Ariakit.Toolbar
+			{...props}
+			onClick={useEventHandlers(props.onClick, (e) => e.stopPropagation())}
+			className={cx("🥝-tree-item-actions", props.className)}
+			ref={forwardedRef}
+		>
+			{props.children}
+		</Ariakit.Toolbar>
+	);
+});
 DEV: TreeItemActions.displayName = "TreeItemActions";
 
 // ----------------------------------------------------------------------------
 
 type IconButtonProps = React.ComponentProps<typeof IconButton>;
+
+interface TreeItemActionProps
+	extends BaseProps<"button">,
+		Pick<IconButtonProps, "label" | "icon"> {
+	/**
+	 * Controls the visibility of the action.
+	 *
+	 * If `true`, the action is always visible.
+	 * If `false`, the action is hidden and becomes inaccessible, but still occupies space.
+	 *
+	 * By default, the action is shown only when the treeitem receives hover/focus.
+	 */
+	visible?: boolean;
+}
+
+/**
+ * A secondary action for `<Tree.Item>`, to be passed into the `actions` prop. The action is typically
+ * displayed as an icon-button on the right end of the treeitem.
+ *
+ * By default, the action appears only on hover/focus. This can be controlled by the `visible` prop.
+ */
+const TreeItemAction = forwardRef<"button", TreeItemActionProps>(
+	(props, forwardedRef) => {
+		const { visible, ...rest } = props;
+
+		return (
+			<IconButton
+				inert={visible === false ? true : undefined}
+				{...rest}
+				variant="ghost"
+				className={cx("🥝-tree-item-action", props.className)}
+				data-kiwi-visible={visible}
+				ref={forwardedRef}
+			/>
+		);
+	},
+);
+DEV: TreeItemAction.displayName = "Tree.ItemAction";
+
+// ----------------------------------------------------------------------------
 
 interface TreeItemExpanderProps
 	extends Omit<IconButtonProps, "variant" | "label" | "icon"> {}
@@ -337,4 +382,4 @@ const TreeItemContext = React.createContext<
 
 // ----------------------------------------------------------------------------
 
-export { Tree as Root, TreeItem as Item };
+export { Tree as Root, TreeItem as Item, TreeItemAction as ItemAction };

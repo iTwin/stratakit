@@ -96,19 +96,17 @@ interface TreeItemProps extends Omit<BaseProps, "content"> {
 	 */
 	label?: React.ReactNode;
 	/**
-	 * The actions available for the tree item. Must be `Tree.ItemAction` components.
+	 * The actions available for the tree item. Must be a list of `Tree.ItemAction` components.
 	 *
 	 * Example:
 	 * ```tsx
-	 * actions={
-	 *   <>
-	 *     <Tree.ItemAction icon={…} label={…} />
-	 *     <Tree.ItemAction icon={…} label={…} />
-	 *   </>
-	 * }
+	 * actions={[
+	 *   <Tree.ItemAction key={…} icon={…} label={…} />,
+	 *   <Tree.ItemAction key={…} icon={…} label={…} />,
+	 * ]}
 	 * ```
 	 */
-	actions?: React.ReactNode;
+	actions?: React.ReactNode[];
 }
 
 /**

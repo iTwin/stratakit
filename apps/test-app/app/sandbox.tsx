@@ -922,7 +922,6 @@ function SandboxTree({
 		if (tree === "complex") return complexTree.items;
 		return simpleTree.items;
 	});
-
 	const { filteredTree, itemCount } = useFilteredTree({
 		items,
 		filters,
@@ -937,6 +936,7 @@ function SandboxTree({
 
 	const deferredItems = React.useDeferredValue(flatItems);
 	if (deferredItems.length === 0) return <NoResultsState />;
+
 	return (
 		<React.Suspense fallback="Loading...">
 			<Tree.Root>
@@ -969,26 +969,26 @@ function SandboxTree({
 							icon={
 								<Icon href={placeholderIcon} style={{ display: "inline" }} />
 							}
-							actions={
-								<>
-									<Tree.ItemAction
-										className={styles.action}
-										icon={lockIcon}
-										label="Lock"
-										aria-hidden={item.hidden}
-									/>
-									<Tree.ItemAction
-										className={styles.action}
-										icon={item.hidden ? hideIcon : showIcon}
-										label={item.hidden ? "Show" : "Hide"}
-										visible={item.hidden ? true : undefined}
-										onClick={() => {
-											toggleHidden(item.id);
-										}}
-									/>
-									<TreeMoreActions hidden={item.hidden} />
-								</>
-							}
+							actions={[
+								<Tree.ItemAction
+									key="lock"
+									className={styles.action}
+									icon={lockIcon}
+									label="Lock"
+									aria-hidden={item.hidden}
+								/>,
+								<Tree.ItemAction
+									key="visibility"
+									className={styles.action}
+									icon={item.hidden ? hideIcon : showIcon}
+									label={item.hidden ? "Show" : "Hide"}
+									visible={item.hidden ? true : undefined}
+									onClick={() => {
+										toggleHidden(item.id);
+									}}
+								/>,
+								<TreeMoreActions key="more" hidden={item.hidden} />,
+							]}
 						/>
 					);
 				})}

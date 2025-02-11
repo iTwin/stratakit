@@ -5,6 +5,7 @@
 .🥝-tree {
 	@layer base {
 		display: grid;
+		align-content: start;
 		overflow: auto;
 		background-color: var(--kiwi-color-bg-surface-primary);
 	}

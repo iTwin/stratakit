@@ -216,7 +216,6 @@
 
 .tree {
 	block-size: 100%;
-	grid-auto-rows: min-content;
 }
 
 .action {

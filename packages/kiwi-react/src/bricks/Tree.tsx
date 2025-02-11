@@ -8,7 +8,6 @@ import * as Ariakit from "@ariakit/react";
 import * as ListItem from "./ListItem.js";
 import { IconButton } from "./IconButton.js";
 import { Icon } from "./Icon.js";
-import { Text } from "./Text.js";
 import { forwardRef, type BaseProps } from "./~utils.js";
 import { useEventHandlers } from "./~hooks.js";
 
@@ -234,12 +233,7 @@ const TreeItem = forwardRef<"div", TreeItemProps>((props, forwardedRef) => {
 							{typeof icon === "string" ? <Icon href={icon} /> : icon}
 						</span>
 					)}
-					<TreeItemContent label={label} />
-					{sublabel && (
-						<Text variant="caption-lg" className="🥝-tree-item-sublabel">
-							{sublabel}
-						</Text>
-					)}
+					<TreeItemContent label={label} sublabel={sublabel} />
 					<TreeItemActions>{actions}</TreeItemActions>
 				</ListItem.Root>
 			</Ariakit.CompositeItem>
@@ -252,11 +246,12 @@ DEV: TreeItem.displayName = "Tree.Item";
 
 interface TreeItemContentProps extends Omit<BaseProps<"span">, "children"> {
 	label?: React.ReactNode;
+	sublabel?: React.ReactNode;
 }
 
 const TreeItemContent = forwardRef<"span", TreeItemContentProps>(
 	(props, forwardedRef) => {
-		const { label, ...rest } = props;
+		const { label, sublabel, ...rest } = props;
 
 		const { contentId } = React.useContext(TreeItemContext) ?? {};
 
@@ -267,7 +262,8 @@ const TreeItemContent = forwardRef<"span", TreeItemContentProps>(
 				className={cx("🥝-tree-item-content", props.className)}
 				ref={forwardedRef}
 			>
-				{label}
+				<span className="🥝-tree-item-label">{label}</span>
+				<span className="🥝-tree-item-sublabel">{sublabel}</span>
 			</ListItem.Content>
 		);
 	},

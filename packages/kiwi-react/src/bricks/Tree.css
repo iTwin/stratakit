@@ -48,11 +48,6 @@
 		position: relative;
 		isolation: isolate;
 
-		display: grid;
-		grid-template-areas: "expander icon label actions";
-		grid-template-rows: auto;
-		grid-template-columns: auto auto 1fr auto;
-
 		padding-inline-start: calc(
 			var(--✨first-level-indent) +
 			var(--✨subsequent-level-indent) *
@@ -63,13 +58,11 @@
 
 	@layer states {
 		&:where([data-kiwi-sublabel="true"]) {
-			grid-template-areas:
-				"expander icon label actions"
-				". . sublabel actions";
-			grid-template-rows: auto auto;
-			row-gap: 0;
-
+			align-items: start;
 			min-block-size: 2.75rem;
+
+			--🥝-tree-item-expander-margin: 2px;
+			--🥝-tree-item-content-padding: 6px;
 		}
 
 		&:where([data-kiwi-selected="true"]) {
@@ -88,24 +81,23 @@
 
 .🥝-tree-item-content:is(.🥝-list-item-content) {
 	@layer base {
-		@apply --typography("body-sm");
-
-		grid-area: label;
 		white-space: nowrap;
+		display: inline-flex;
+		flex-direction: column;
+
+		padding-block-start: var(--🥝-tree-item-content-padding);
 	}
 }
 
 .🥝-tree-item-actions {
 	@layer base {
-		grid-area: actions;
-		height: 100%;
-
 		position: sticky;
 		inset-inline-end: 0;
 		padding-inline-end: 4px;
 		background-color: var(--kiwi-color-bg-surface-primary);
 		display: inline-flex;
 		align-items: center;
+		align-self: stretch;
 		visibility: var(--🥝tree-item-actions-visibility, var(--🥝tree-item-action-visibility));
 
 		&::before {
@@ -147,10 +139,9 @@
 
 .🥝-tree-item-expander:is(.🥝-icon-button) {
 	@layer base {
-		grid-area: expander;
-
 		visibility: var(--🥝tree-item-expander-visibility);
 		z-index: 1; /* Ensure the expander is above the invisible content button */
+		margin-block-start: var(--🥝-tree-item-expander-margin);
 		margin-inline-end: calc(var(--🥝button-padding-inline) * -1);
 	}
 }
@@ -165,18 +156,22 @@
 	}
 }
 
+.🥝-tree-item-label {
+	@layer base {
+		@apply --typography("body-sm");
+	}
+}
+
 .🥝-tree-item-sublabel {
 	@layer base {
-		grid-area: sublabel;
+		@apply --typography("caption-lg");
+
 		color: var(--🌀list-item-state--default, var(--kiwi-color-text-neutral-secondary));
 	}
 }
 
 .🥝-tree-item-icon {
 	@layer base {
-		grid-area: icon;
-
-		display: inline-flex;
-		align-items: center;
+		padding-block-start: var(--🥝-tree-item-content-padding);
 	}
 }

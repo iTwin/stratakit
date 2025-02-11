@@ -4,7 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 import { definePage } from "~/~utils.tsx";
 import { Avatar, Icon } from "@itwin/itwinui-react/bricks";
-import placeholderIconHref from "@itwin/itwinui-icons/placeholder.svg";
+import userIconHref from "@itwin/itwinui-icons/user.svg";
 
 export const handle = { title: "Avatar" };
 
@@ -40,11 +40,7 @@ function VisualTest() {
 				<div key={size} style={{ display: "flex", gap: 4 }}>
 					<Avatar {...props} size={size} />
 
-					<Avatar
-						{...props}
-						size={size}
-						image={<Icon href={placeholderIconHref} />}
-					/>
+					<Avatar {...props} size={size} image={<Icon href={userIconHref} />} />
 
 					<Avatar {...props} size={size} image={<img src={imgSrc} alt="" />} />
 				</div>

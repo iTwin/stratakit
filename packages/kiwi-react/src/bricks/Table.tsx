@@ -158,7 +158,6 @@ interface TableRowProps extends BaseProps {}
  */
 const TableRow = forwardRef<"div", TableRowProps>((props, forwardedRef) => {
 	const { children, ...rest } = props;
-	const isWithinTableHeader = React.useContext(TableHeaderContext);
 
 	return (
 		<Ariakit.Role.div
@@ -166,7 +165,6 @@ const TableRow = forwardRef<"div", TableRowProps>((props, forwardedRef) => {
 			className={cx("🥝-table-row", props.className)}
 			ref={forwardedRef}
 			role="row"
-			data-kiwi-variant={isWithinTableHeader ? "header" : undefined}
 		>
 			{children}
 		</Ariakit.Role.div>

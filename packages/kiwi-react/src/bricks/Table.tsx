@@ -190,11 +190,10 @@ interface TableCaptionProps extends BaseProps<"caption"> {}
  */
 const TableCaption = forwardRef<"caption", TableCaptionProps>(
 	(props, forwardedRef) => {
-		const { id: idProp, children, ...rest } = props;
-		const { setCaptionId } = React.useContext(TableContext);
-
 		const fallbackId = React.useId();
-		const id = idProp || fallbackId;
+
+		const { id = fallbackId, children, ...rest } = props;
+		const { setCaptionId } = React.useContext(TableContext);
 
 		const captionIdRef = React.useCallback(
 			(element: HTMLElement | null) => {
@@ -203,14 +202,12 @@ const TableCaption = forwardRef<"caption", TableCaptionProps>(
 			[id, setCaptionId],
 		);
 
-		const ref = useMergedRefs(forwardedRef, captionIdRef);
-
 		return (
 			<Ariakit.Role
 				{...rest}
 				id={id}
 				className={cx("🥝-table-caption", props.className)}
-				ref={ref}
+				ref={useMergedRefs(forwardedRef, captionIdRef)}
 			>
 				{children}
 			</Ariakit.Role>

@@ -112,7 +112,8 @@ interface TableBodyProps extends BaseProps {}
 /**
  * `Table.Body` is a component that contains the rows of table data.
  * Multiple `Table.Row`s and `Table.Cell`s can be nested inside a `Table.Body` to create a table body.
- * Intentionally not adding `role=rowgroup` for this wrapping div. https://github.com/iTwin/kiwi/pull/243#discussion_r1947045668
+ * 
+ *  This component intentionally does not set `role=rowgroup` because it is not properly supported.
  *
  * Example:
  * ```tsx

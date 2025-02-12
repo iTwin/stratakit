@@ -143,7 +143,6 @@
 		visibility: var(--🥝tree-item-expander-visibility);
 		z-index: 1; /* Ensure the expander is above the invisible content button */
 		margin-block-start: var(--🥝-tree-item-expander-margin);
-		margin-inline-end: calc(var(--🥝button-padding-inline) * -1);
 	}
 }
 

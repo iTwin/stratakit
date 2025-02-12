@@ -229,13 +229,11 @@ const TreeItem = forwardRef<"div", TreeItemProps>((props, forwardedRef) => {
 							onExpandedChange?.(!expanded);
 						}}
 					/>
-					{icon ? (
-						<Ariakit.Role
-							className="🥝-tree-item-icon"
-							render={typeof icon === "string" ? <Icon href={icon} /> : icon}
-						/>
-					) : null}
-					<TreeItemContent label={label} description={description} />
+					<TreeItemContent
+						icon={icon}
+						label={label}
+						description={description}
+					/>
 					<TreeItemActions>{actions}</TreeItemActions>
 				</ListItem.Root>
 			</Ariakit.CompositeItem>
@@ -247,28 +245,39 @@ DEV: TreeItem.displayName = "Tree.Item";
 // ----------------------------------------------------------------------------
 
 interface TreeItemContentProps extends Omit<BaseProps<"span">, "children"> {
+	icon?: string | React.JSX.Element;
 	label?: React.ReactNode;
 	description?: React.ReactNode;
 }
 
 const TreeItemContent = forwardRef<"span", TreeItemContentProps>(
 	(props, forwardedRef) => {
-		const { label, description, ...rest } = props;
+		const { icon, label, description, ...rest } = props;
 
 		const { labelId, descriptionId } = React.useContext(TreeItemContext) ?? {};
 
 		return (
 			<ListItem.Content
 				{...rest}
+				icon={
+					icon ? (
+						<ListItem.Icon
+							href={typeof icon === "string" ? icon : undefined}
+							render={typeof icon === "string" ? undefined : icon}
+						/>
+					) : undefined
+				}
+				description={
+					description ? (
+						<ListItem.Description id={descriptionId}>
+							{description}
+						</ListItem.Description>
+					) : undefined
+				}
 				className={cx("🥝-tree-item-content", props.className)}
 				ref={forwardedRef}
 			>
-				<span id={labelId} className="🥝-tree-item-label">
-					{label}
-				</span>
-				<span id={descriptionId} className="🥝-tree-item-description">
-					{description}
-				</span>
+				<ListItem.Label id={labelId}>{label}</ListItem.Label>
 			</ListItem.Content>
 		);
 	},

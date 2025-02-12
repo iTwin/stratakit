@@ -8,6 +8,7 @@ import { Icon } from "@itwin/itwinui-react/bricks";
 import type { LinksFunction } from "react-router";
 import testStyles from "./index.css?url";
 import placeholderIcon from "@itwin/itwinui-icons/placeholder.svg";
+import caretDown from "@itwin/itwinui-icons/caret-down.svg";
 
 export const handle = { title: "List" };
 
@@ -15,30 +16,66 @@ export const links: LinksFunction = () => [
 	{ rel: "stylesheet", href: testStyles },
 ];
 
-export default definePage(function Page({ "active-state": isActive = false }) {
+export default definePage(
+	function Page({ "active-state": isActive = false }) {
+		return (
+			// biome-ignore lint/a11y/useSemanticElements: `div` is used as underlying element for `ListItem`
+			<div
+				role="list"
+				style={{ display: "grid", gap: 4 }}
+				className={isActive ? "force-state-active" : ""}
+			>
+				<ListItem.Root>Apple</ListItem.Root>
+				<ListItem.Root>Cherry</ListItem.Root>
+				<ListItem.Root>Kiwi</ListItem.Root>
+				<ListItem.Root>
+					<ListItem.Content>Mango</ListItem.Content>
+					<Icon href={placeholderIcon} />
+				</ListItem.Root>
+				<ListItem.Root>
+					<Icon href={placeholderIcon} />
+					<ListItem.Content>Papaya</ListItem.Content>
+				</ListItem.Root>
+				<ListItem.Root>
+					<Icon href={placeholderIcon} />
+					<ListItem.Content>Tomato</ListItem.Content>
+					<Icon href={placeholderIcon} />
+				</ListItem.Root>
+			</div>
+		);
+	},
+	{
+		description: DescriptionTest,
+	},
+);
+
+function DescriptionTest() {
 	return (
 		// biome-ignore lint/a11y/useSemanticElements: `div` is used as underlying element for `ListItem`
-		<div
-			role="list"
-			style={{ display: "grid", gap: 4 }}
-			className={isActive ? "force-state-active" : ""}
-		>
-			<ListItem.Root>Apple</ListItem.Root>
-			<ListItem.Root>Cherry</ListItem.Root>
-			<ListItem.Root>Kiwi</ListItem.Root>
+		<div role="list" style={{ display: "grid", gap: 4 }}>
 			<ListItem.Root>
-				<ListItem.Content>Mango</ListItem.Content>
-				<Icon href={placeholderIcon} />
+				<ListItem.Icon href={caretDown} />
+				<ListItem.Content
+					icon={<ListItem.Icon href={placeholderIcon} />}
+					description={<ListItem.Description>Green fruit</ListItem.Description>}
+				>
+					<ListItem.Label>Kiwi</ListItem.Label>
+				</ListItem.Content>
 			</ListItem.Root>
 			<ListItem.Root>
-				<Icon href={placeholderIcon} />
-				<ListItem.Content>Papaya</ListItem.Content>
+				<ListItem.Icon href={caretDown} />
+				<ListItem.Content
+					description={<ListItem.Description>Green fruit</ListItem.Description>}
+				>
+					<ListItem.Label>Kiwi</ListItem.Label>
+				</ListItem.Content>
 			</ListItem.Root>
 			<ListItem.Root>
-				<Icon href={placeholderIcon} />
-				<ListItem.Content>Tomato</ListItem.Content>
-				<Icon href={placeholderIcon} />
+				<ListItem.Icon href={caretDown} />
+				<ListItem.Content icon={<ListItem.Icon href={placeholderIcon} />}>
+					<ListItem.Label>Kiwi</ListItem.Label>
+				</ListItem.Content>
 			</ListItem.Root>
 		</div>
 	);
-});
+}

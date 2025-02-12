@@ -176,7 +176,8 @@ const TreeItem = forwardRef<"div", TreeItemProps>((props, forwardedRef) => {
 		}
 	};
 
-	const contentId = React.useId();
+	const labelId = React.useId();
+	const descriptionId = React.useId();
 
 	return (
 		<TreeItemContext.Provider
@@ -185,9 +186,10 @@ const TreeItem = forwardRef<"div", TreeItemProps>((props, forwardedRef) => {
 					level,
 					expanded,
 					selected,
-					contentId,
+					labelId,
+					descriptionId,
 				}),
-				[level, expanded, selected, contentId],
+				[level, expanded, selected, labelId, descriptionId],
 			)}
 		>
 			<Ariakit.CompositeItem
@@ -207,7 +209,8 @@ const TreeItem = forwardRef<"div", TreeItemProps>((props, forwardedRef) => {
 				role="treeitem"
 				aria-expanded={expanded}
 				aria-selected={selected}
-				aria-labelledby={contentId}
+				aria-labelledby={labelId}
+				aria-describedby={description ? descriptionId : undefined}
 				aria-level={level}
 				className={cx("🥝-tree-item", props.className)}
 				ref={forwardedRef as Ariakit.CompositeItemProps["ref"]}
@@ -252,17 +255,20 @@ const TreeItemContent = forwardRef<"span", TreeItemContentProps>(
 	(props, forwardedRef) => {
 		const { label, description, ...rest } = props;
 
-		const { contentId } = React.useContext(TreeItemContext) ?? {};
+		const { labelId, descriptionId } = React.useContext(TreeItemContext) ?? {};
 
 		return (
 			<ListItem.Content
 				{...rest}
-				id={contentId}
 				className={cx("🥝-tree-item-content", props.className)}
 				ref={forwardedRef}
 			>
-				<span className="🥝-tree-item-label">{label}</span>
-				<span className="🥝-tree-item-description">{description}</span>
+				<span id={labelId} className="🥝-tree-item-label">
+					{label}
+				</span>
+				<span id={descriptionId} className="🥝-tree-item-description">
+					{description}
+				</span>
 			</ListItem.Content>
 		);
 	},
@@ -386,7 +392,8 @@ const TreeItemContext = React.createContext<
 	| {
 			expanded?: boolean;
 			selected?: boolean;
-			contentId: string;
+			labelId: string;
+			descriptionId: string;
 	  }
 	| undefined
 >(undefined);

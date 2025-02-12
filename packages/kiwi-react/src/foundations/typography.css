@@ -4,8 +4,8 @@
  *--------------------------------------------------------------------------------------------*/
 :root,
 :host {
-	--kiwi-font-family-sans: "InterVariable", "Noto Sans", "Open Sans", sans-serif;
-	--kiwi-font-family-mono: "Geist Mono", "Noto Sans Mono", ui-monospace, "Segoe UI Mono", Consolas,
+	--ids-font-family-sans: "InterVariable", "Noto Sans", "Open Sans", sans-serif;
+	--ids-font-family-mono: "Geist Mono", "Noto Sans Mono", ui-monospace, "Segoe UI Mono", Consolas,
 		monospace;
 
 	@apply --typography-tokens;

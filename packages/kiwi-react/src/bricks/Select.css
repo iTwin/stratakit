@@ -33,9 +33,9 @@
 		margin-inline-end: 4px; /* (padding - disclosure offset) */
 		pointer-events: none;
 
-		--🥝icon-color: var(--🌀select-arrow-state--default, var(--kiwi-color-icon-neutral-base))
-			var(--🌀select-arrow-state--hover, var(--kiwi-color-icon-neutral-hover))
-			var(--🌀select-arrow-state--disabled, var(--kiwi-color-icon-neutral-disabled));
+		--🥝icon-color: var(--🌀select-arrow-state--default, var(--ids-color-icon-neutral-base))
+			var(--🌀select-arrow-state--hover, var(--ids-color-icon-neutral-hover))
+			var(--🌀select-arrow-state--disabled, var(--ids-color-icon-neutral-disabled));
 	}
 
 	@layer states {

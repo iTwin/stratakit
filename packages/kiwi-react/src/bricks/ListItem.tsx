@@ -38,6 +38,7 @@ const ListItemContent = forwardRef<"span", ListItemContentProps>(
 		const { icon, description, children, ...rest } = props;
 		return (
 			<Ariakit.Role.span
+				role="listitem"
 				{...rest}
 				data-kiwi-icon={icon ? true : undefined}
 				data-kiwi-description={description ? true : undefined}

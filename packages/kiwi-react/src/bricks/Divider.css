@@ -5,7 +5,7 @@
 .🥝-divider {
 	flex: 0 0 auto;
 	align-self: stretch;
-	background-color: var(--kiwi-color-border-neutral-muted);
+	background-color: var(--ids-color-border-neutral-muted);
 
 	@media (forced-colors: active) {
 		background-color: CanvasText;

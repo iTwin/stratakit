@@ -4,13 +4,13 @@
  *--------------------------------------------------------------------------------------------*/
 
 .🥝-kbd {
-	--✨shadow-border: 0px 0px 0px 1px var(--kiwi-color-border-shadow-base) inset;
+	--✨shadow-border: 0px 0px 0px 1px var(--ids-color-border-shadow-base) inset;
 
 	@layer base {
 		@apply --typography("body-sm");
 		font-family: inherit;
 		font-weight: 500;
-		color: var(--kiwi-color-text-neutral-secondary);
+		color: var(--ids-color-text-neutral-secondary);
 
 		display: inline-flex;
 		align-items: center;
@@ -22,17 +22,17 @@
 	@layer modifiers {
 		&:where([data-kiwi-variant="solid"], [data-kiwi-variant="muted"]) {
 			border-radius: 4px;
-			background-color: var(--kiwi-color-bg-neutral-base);
+			background-color: var(--ids-color-bg-neutral-base);
 			padding-inline: 4px;
 		}
 
 		&:where([data-kiwi-variant="solid"]) {
-			box-shadow: var(--kiwi-shadow-button-base-inset), var(--✨shadow-border),
-				var(--kiwi-shadow-button-base-drop);
+			box-shadow: var(--ids-shadow-button-base-inset), var(--✨shadow-border),
+				var(--ids-shadow-button-base-drop);
 		}
 
 		&:where([data-kiwi-variant="ghost"]) {
-			color: var(--kiwi-color-text-neutral-tertiary);
+			color: var(--ids-color-text-neutral-tertiary);
 		}
 	}
 }

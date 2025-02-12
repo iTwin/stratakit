@@ -8,8 +8,8 @@ html:where([data-color-scheme="light"]),
 	@apply --theme("light");
 
 	/* TODO: Replace with tokens from Figma when available */
-	--kiwi-color-border-shadow-base: var(--kiwi-color-border-neutral-base);
-	--kiwi-color-border-shadow-strong: --primitive("color.black.12");
+	--ids-color-border-shadow-base: var(--ids-color-border-neutral-base);
+	--ids-color-border-shadow-strong: --primitive("color.black.12");
 }
 
 html:where([data-color-scheme="dark"]),
@@ -18,6 +18,6 @@ html:where([data-color-scheme="dark"]),
 	@apply --theme("dark");
 
 	/* TODO: Replace with tokens from Figma when available */
-	--kiwi-color-border-shadow-base: --primitive("color.white.8");
-	--kiwi-color-border-shadow-strong: --primitive("color.white.16");
+	--ids-color-border-shadow-base: --primitive("color.white.8");
+	--ids-color-border-shadow-strong: --primitive("color.white.16");
 }

@@ -14,11 +14,12 @@ export const handle = { title: "Tree" };
 export default definePage(function Page({
 	overflow = false,
 	selected = false,
-	description,
+	description: descriptionParam,
 }) {
 	const overflowPostfix = overflow
 		? " with a super long label that is overflown"
 		: "";
+	const description = descriptionParam ? "Additional description" : undefined;
 
 	const [data, setData] = React.useState(() => [
 		{

@@ -4,16 +4,16 @@
  *--------------------------------------------------------------------------------------------*/
 
 .🥝-tooltip {
-	--✨bg: var(--kiwi-color-bg-surface-emphasis);
-	--✨color: var(--kiwi-color-text-neutral-emphasis);
-	--✨border: var(--kiwi-color-border-surface-primary);
+	--✨bg: var(--ids-color-bg-surface-emphasis);
+	--✨color: var(--ids-color-text-neutral-emphasis);
+	--✨border: var(--ids-color-border-surface-primary);
 	--✨border-width: 1px;
 
 	@layer base {
 		@apply --typography("body-sm");
 
 		background-color: var(--✨bg);
-		box-shadow: var(--kiwi-shadow-tooltip-base);
+		box-shadow: var(--ids-shadow-tooltip-base);
 		color: var(--✨color);
 
 		display: flex;

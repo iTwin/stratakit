@@ -4,9 +4,9 @@
  *--------------------------------------------------------------------------------------------*/
 .🥝-label {
 	@layer base {
-		color: var(--kiwi-color-text-neutral-secondary);
+		color: var(--ids-color-text-neutral-secondary);
 		cursor: default;
-		font-size: var(--kiwi-font-size-12);
+		font-size: var(--ids-font-size-12);
 
 		&:is(label) {
 			cursor: pointer;
@@ -15,7 +15,7 @@
 
 	@layer states {
 		&:has(+ :where(:disabled, [disabled], [aria-disabled="true"])) {
-			color: var(--kiwi-color-text-neutral-disabled);
+			color: var(--ids-color-text-neutral-disabled);
 
 			&:is(label) {
 				cursor: not-allowed;

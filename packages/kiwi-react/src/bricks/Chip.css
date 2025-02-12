@@ -25,17 +25,17 @@
 		content: "";
 		inset: 0;
 		border-radius: inherit;
-		border: 1px solid var(--kiwi-color-border-neutral-base);
+		border: 1px solid var(--ids-color-border-neutral-base);
 		pointer-events: none;
 	}
 
 	@layer modifiers {
 		&:where([data-kiwi-variant="solid"]) {
-			background-color: var(--kiwi-color-bg-neutral-base);
+			background-color: var(--ids-color-bg-neutral-base);
 		}
 
 		&:where([data-kiwi-variant="outline"]) {
-			background-color: var(--kiwi-color-bg-surface-primary);
+			background-color: var(--ids-color-bg-surface-primary);
 		}
 	}
 }

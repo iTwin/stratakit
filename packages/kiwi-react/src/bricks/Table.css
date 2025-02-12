@@ -12,7 +12,7 @@
 
 .🥝-table-header {
 	@layer base {
-		color: var(--kiwi-color-text-neutral-secondary);
+		color: var(--ids-color-text-neutral-secondary);
 	}
 }
 
@@ -26,7 +26,7 @@
 .🥝-table-row {
 	@layer base {
 		display: flex;
-		border-block-end: 1px solid var(--kiwi-color-border-neutral-muted);
+		border-block-end: 1px solid var(--ids-color-border-neutral-muted);
 	}
 }
 
@@ -47,8 +47,8 @@
 }
 
 .🥝-table-cell {
-	--✨glow--bg-hover: var(--kiwi-color-glow-hue) var(--kiwi-color-bg-glow-base-hover-\%);
-	--✨cell-bg--default: var(--kiwi-color-bg-surface-primary);
+	--✨glow--bg-hover: var(--ids-color-glow-hue) var(--ids-color-bg-glow-base-hover-\%);
+	--✨cell-bg--default: var(--ids-color-bg-surface-primary);
 	--✨cell-bg--hover: color-mix(in oklch, var(--✨cell-bg--default) 100%, var(--✨glow--bg-hover));
 
 	@layer base {

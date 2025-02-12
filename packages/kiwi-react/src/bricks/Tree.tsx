@@ -226,11 +226,12 @@ const TreeItem = forwardRef<"div", TreeItemProps>((props, forwardedRef) => {
 							onExpandedChange?.(!expanded);
 						}}
 					/>
-					{icon && (
-						<span className="🥝-tree-item-icon">
-							{typeof icon === "string" ? <Icon href={icon} /> : icon}
-						</span>
-					)}
+					{icon ? (
+						<Ariakit.Role
+							className="🥝-tree-item-icon"
+							render={typeof icon === "string" ? <Icon href={icon} /> : icon}
+						/>
+					) : null}
 					<TreeItemContent label={label} sublabel={sublabel} />
 					<TreeItemActions>{actions}</TreeItemActions>
 				</ListItem.Root>

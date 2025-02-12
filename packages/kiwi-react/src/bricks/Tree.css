@@ -172,6 +172,6 @@
 
 .🥝-tree-item-icon {
 	@layer base {
-		padding-block-start: var(--🥝-tree-item-content-padding);
+		margin-block-start: var(--🥝-tree-item-content-padding);
 	}
 }

@@ -53,6 +53,11 @@ test.describe("default", () => {
 		await expect(page.locator(".🥝-label.🥝-field")).toBeVisible();
 	});
 
+	test("with explicit id", async ({ page }) => {
+		await page.goto("/tests/field?customControlId");
+		await expect(page.getByRole("textbox")).toHaveAccessibleName("Example");
+	});
+
 	const description = "Supporting text";
 	for (const [control, role] of Object.entries(controlsToRole)) {
 		test(`${control} with description`, async ({ page }) => {
@@ -70,6 +75,20 @@ test.describe("default", () => {
 		await page.goto(`tests/field?descriptions=${descriptions.join(";")}`);
 		await expect(page.getByRole("textbox")).toHaveAccessibleDescription(
 			descriptions.join(" "),
+		);
+	});
+
+	test("with custom description ids", async ({ page }) => {
+		await page.goto("tests/field?customDescriptionIds");
+		await expect(page.getByRole("textbox")).toHaveAccessibleDescription(
+			"Supporting text. More supporting text.",
+		);
+	});
+
+	test("with custom aria-describedby", async ({ page }) => {
+		await page.goto("tests/field?customAriaDescribedBy");
+		await expect(page.getByRole("textbox")).toHaveAccessibleDescription(
+			"Custom description.",
 		);
 	});
 });

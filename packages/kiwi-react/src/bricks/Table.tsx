@@ -61,16 +61,19 @@ const Table = forwardRef<"div", TableProps>((props, forwardedRef) => {
 	const [totalRows, setTotalRows] = React.useState<number | undefined>();
 	const [labelledBy, setLabelledBy] = React.useState<string | undefined>();
 
+	const tableContext = React.useMemo(
+		() => ({
+			selectedRows,
+			setSelectedRows,
+			totalRows,
+			setTotalRows,
+			setLabelledBy,
+		}),
+		[selectedRows, totalRows],
+	);
+
 	return (
-		<TableContext.Provider
-			value={{
-				selectedRows,
-				setSelectedRows,
-				totalRows,
-				setTotalRows,
-				setLabelledBy,
-			}}
-		>
+		<TableContext.Provider value={tableContext}>
 			<Ariakit.Role
 				{...props}
 				className={cx("🥝-table", props.className)}
@@ -130,6 +133,8 @@ interface TableBodyProps extends BaseProps {}
  * `Table.Body` is a component that contains the rows of table data.
  * Multiple `Table.Row`s and `Table.Cell`s can be nested inside a `Table.Body` to create a table body.
  *
+ * This component intentionally does not set `role=rowgroup` because it is not properly supported.
+ *
  * Example:
  * ```tsx
  *	<Table.Body>
@@ -152,27 +157,29 @@ const TableBody = forwardRef<"div", TableBodyProps>((props, forwardedRef) => {
 		setTotalRows?.(React.Children.count(props.children));
 	}, [setTotalRows, props.children]);
 
+	// const table
+
 	return (
-		<TableContext.Provider value={{ selectedRows, setSelectedRows, totalRows }}>
-			<Ariakit.Role.div
-				{...props}
-				className={cx("🥝-table-body", props.className)}
-				ref={forwardedRef}
-				role="rowgroup"
-			>
-				{React.Children.map(props.children, (child, index) => {
-					return (
-						<TableRowContext.Provider
-							value={{
-								rowIndex: index,
-							}}
-						>
-							{child}
-						</TableRowContext.Provider>
-					);
-				})}
-			</Ariakit.Role.div>
-		</TableContext.Provider>
+		// TODO: Do we need this context again?
+		// <TableContext.Provider value={{ selectedRows, setSelectedRows, totalRows }}>
+		<Ariakit.Role.div
+			{...props}
+			className={cx("🥝-table-body", props.className)}
+			ref={forwardedRef}
+		>
+			{React.Children.map(props.children, (child, index) => {
+				return (
+					<TableRowContext.Provider
+						value={{
+							rowIndex: index,
+						}}
+					>
+						{child}
+					</TableRowContext.Provider>
+				);
+			})}
+		</Ariakit.Role.div>
+		// </TableContext.Provider>
 	);
 });
 DEV: TableBody.displayName = "Table.Body";

@@ -4,15 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 
 .🥝-table {
-	--✨glow--bg-hover: var(--kiwi-color-glow-hue) var(--kiwi-color-bg-glow-base-hover-\%);
-
 	@layer base {
-		--🥝table-bg--default: var(--kiwi-color-bg-surface-primary);
-		--🥝table-bg--hover: color-mix(
-			in oklch,
-			var(--🥝table-bg--default) 100%,
-			var(--✨glow--bg-hover)
-		);
 		display: flex;
 		flex-direction: column;
 	}
@@ -32,51 +24,9 @@
 }
 
 .🥝-table-row {
-	--✨row-height-min: 3rem;
-	/* TODO: The selected background color is incorrect. */
-	--✨glow--bg-selected: var(--kiwi-color-glow-hue) var(--kiwi-color-bg-glow-base-pressed-\%);
-	--✨bg--selected: color-mix(in oklch, var(--🥝table-bg--default) 100%, var(--✨glow--bg-selected));
-
 	@layer base {
 		display: flex;
 		border-block-end: 1px solid var(--kiwi-color-border-neutral-muted);
-	}
-
-	@layer modifiers {
-		&:where([data-kiwi-variant="header"]) {
-			background-color: var(--🥝table-bg--default);
-		}
-
-		&:where(:not([data-kiwi-variant="header"])) {
-			background-color: var(--🌀table-row-state--default, var(--🥝table-bg--default))
-				var(--🌀table-row-state--hover, var(--🥝table-bg--hover))
-				var(--🌀table-row-state--selected, var(--✨bg--selected));
-		}
-	}
-
-	@layer states {
-		@media (any-hover: hover) {
-			&:where(:hover) {
-				--🌀table-row-state: var(--🌀table-row-state--hover);
-			}
-		}
-
-		&:where([aria-selected="true"]) {
-			--🌀table-row-state: var(--🌀table-row-state--selected);
-
-			outline: 1px solid var(--kiwi-color-border-accent-strong);
-
-			@media (forced-colors: active) {
-				outline-color: SelectedItem;
-			}
-		}
-	}
-
-	@layer base.🌀 {
-		/* Cyclic toggles for default/hover states. See https://kizu.dev/cyclic-toggles/ */
-		--🌀table-row-state: var(--🌀table-row-state--default);
-		--🌀table-row-state--default: var(--🌀table-row-state,);
-		--🌀table-row-state--hover: var(--🌀table-row-state,);
 	}
 }
 
@@ -92,35 +42,41 @@
 		padding: var(--✨cell-padding);
 		min-block-size: var(--✨cell-height-min);
 		word-break: break-word;
+		hyphens: auto;
 	}
 }
 
 .🥝-table-cell {
+	--✨glow--bg-hover: var(--kiwi-color-glow-hue) var(--kiwi-color-bg-glow-base-hover-\%);
+	--✨cell-bg--default: var(--kiwi-color-bg-surface-primary);
+	--✨cell-bg--hover: color-mix(in oklch, var(--✨cell-bg--default) 100%, var(--✨glow--bg-hover));
+
 	@layer base {
 		flex-grow: 1;
 		flex-basis: 4rem;
 		min-inline-size: 4rem;
+		background-color: var(--🌀table-cell-state--default, var(--✨cell-bg--default))
+			var(--🌀table-cell-state--hover, var(--✨cell-bg--hover));
 	}
 
-	&:where(:not([data-kiwi-slot])) {
-		flex-grow: 1;
-		min-inline-size: 4rem;
-		flex-basis: 4rem;
-		padding-block: 0.5rem;
-	}
+	@layer states {
+		@media (any-hover: hover) {
+			&:where(:hover) {
+				--🌀table-cell-state: var(--🌀table-cell-state--hover);
+			}
 
-	&:where([data-kiwi-slot]) {
-		flex-grow: 0;
-		justify-content: center;
-	}
-
-	@layer modifiers {
-		&:where([role="columnheader"]) {
-			@media (any-hover: hover) {
-				&:where(:hover) {
-					background-color: var(--🥝table-bg--hover);
+			&:where(:not([role="columnheader"])) {
+				:where(.🥝-table-row:hover) & {
+					--🌀table-cell-state: var(--🌀table-cell-state--hover);
 				}
 			}
 		}
+	}
+
+	@layer base.🌀 {
+		/* Cyclic toggles for default/hover states. See https://kizu.dev/cyclic-toggles/ */
+		--🌀table-cell-state: var(--🌀table-cell-state--default);
+		--🌀table-cell-state--default: var(--🌀table-cell-state,);
+		--🌀table-cell-state--hover: var(--🌀table-cell-state,);
 	}
 }

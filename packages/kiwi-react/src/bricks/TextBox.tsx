@@ -5,15 +5,10 @@
 import * as React from "react";
 import * as Ariakit from "@ariakit/react";
 import cx from "classnames";
-import { useFieldDescribedBy, useFieldId } from "./Field.js";
+import { FieldControl } from "./Field.js";
 import { Icon } from "./Icon.js";
 import { useMergedRefs } from "./~hooks.js";
-import {
-	type FocusableProps,
-	type BaseProps,
-	forwardRef,
-	FieldControl,
-} from "./~utils.js";
+import { type FocusableProps, type BaseProps, forwardRef } from "./~utils.js";
 
 // ----------------------------------------------------------------------------
 
@@ -59,8 +54,7 @@ interface TextBoxInputProps extends Omit<BaseInputProps, "children" | "type"> {
  */
 const TextBoxInput = forwardRef<"input", TextBoxInputProps>(
 	(props, forwardedRef) => {
-		const describedBy = useFieldDescribedBy(props["aria-describedby"]);
-		const fieldId = useFieldId();
+		const { id, ...rest } = props;
 		const rootContext = React.useContext(TextBoxRootContext);
 		const setDisabled = rootContext?.setDisabled;
 		React.useEffect(() => {
@@ -69,12 +63,11 @@ const TextBoxInput = forwardRef<"input", TextBoxInputProps>(
 		return (
 			<FieldControl
 				type="textlike"
+				id={id}
 				render={
 					<Ariakit.Role.input
-						id={fieldId}
 						readOnly={props.disabled}
-						{...props}
-						aria-describedby={describedBy}
+						{...rest}
 						className={cx({ "🥝-text-box": !rootContext }, props.className)}
 						/**
 						 * Use an empty string as a placeholder to fix baseline alignment in Safari.
@@ -121,19 +114,17 @@ interface TextareaProps extends FocusableProps<"textarea"> {}
  */
 const TextBoxTextarea = forwardRef<"textarea", TextareaProps>(
 	(props, forwardedRef) => {
-		const fieldId = useFieldId();
-		const describedBy = useFieldDescribedBy(props["aria-describedby"]);
+		const { id, ...rest } = props;
 
 		return (
 			<FieldControl
 				type="textlike"
+				id={id}
 				render={
 					<Ariakit.Role.textarea
-						id={fieldId}
 						readOnly={props.disabled}
-						{...props}
+						{...rest}
 						className={cx("🥝-text-box", props.className)}
-						aria-describedby={describedBy}
 						/**
 						 * Use an empty string as a placeholder to fix baseline alignment in Safari.
 						 * @see https://bugs.webkit.org/show_bug.cgi?id=142968

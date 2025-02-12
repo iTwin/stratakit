@@ -40,7 +40,7 @@ export default definePage(
 			</Table.Root>
 		);
 	},
-	{ visual: VisualTest, scroll: ScrollTest, select: SelectTest },
+	{ visual: VisualTest, scroll: ScrollTest },
 );
 
 function VisualTest() {
@@ -49,8 +49,8 @@ function VisualTest() {
 			<Table.Caption>Fruits and their colors</Table.Caption>
 			<Table.Header>
 				<Table.Row>
-					<Table.Cell>Name</Table.Cell>
-					<Table.Cell>Description</Table.Cell>
+					<Table.Cell>Fruit</Table.Cell>
+					<Table.Cell>Color</Table.Cell>
 				</Table.Row>
 			</Table.Header>
 			<Table.Body>
@@ -112,37 +112,6 @@ function ScrollTest() {
 						))}
 					</Table.Row>
 				))}
-			</Table.Body>
-		</Table.Root>
-	);
-}
-
-function SelectTest() {
-	return (
-		<Table.Root>
-			<Table.Header>
-				<Table.Row>
-					<Table.Cell>Name</Table.Cell>
-					<Table.Cell>Description</Table.Cell>
-				</Table.Row>
-			</Table.Header>
-			<Table.Body>
-				<Table.Row selected>
-					<Table.Cell>Name 1</Table.Cell>
-					<Table.Cell>Description 1</Table.Cell>
-				</Table.Row>
-				<Table.Row selected>
-					<Table.Cell>Name 2</Table.Cell>
-					<Table.Cell>Description 2</Table.Cell>
-				</Table.Row>
-				<Table.Row>
-					<Table.Cell>Name 3</Table.Cell>
-					<Table.Cell>Description 3</Table.Cell>
-				</Table.Row>
-				<Table.Row>
-					<Table.Cell>Name 4</Table.Cell>
-					<Table.Cell>Description 4</Table.Cell>
-				</Table.Row>
 			</Table.Body>
 		</Table.Root>
 	);

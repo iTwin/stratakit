@@ -47,16 +47,19 @@ export default definePage(
 					{labelPlacement === "after" ? (
 						<ControlLabel>{control} example</ControlLabel>
 					) : null}
-					{descriptions
-						?.split(";")
-						.map((description) => (
-							<Description key={description}>{description}</Description>
-						)) || null}
+					{descriptions?.split(";").map((description) => (
+						<Description key={description}>{description}</Description>
+					))}
 				</Field>
 			</form>
 		);
 	},
-	{ visual: VisualTest },
+	{
+		visual: VisualTest,
+		customAriaDescribedBy: CustomAriaDescribedByTest,
+		customControlId: CustomControlIdTest,
+		customDescriptionIds: CustomDescriptionIdsTest,
+	},
 );
 
 function VisualTest({ controlType }: VariantProps) {
@@ -166,5 +169,35 @@ function VisualTestForCheckableControls() {
 				<span>Switch control</span>
 			</Field>
 		</div>
+	);
+}
+
+function CustomAriaDescribedByTest() {
+	return (
+		<Field>
+			<Label>Example</Label>
+			<TextBox.Input aria-describedby="custom-description" />
+			<div id="custom-description">Custom description.</div>
+		</Field>
+	);
+}
+
+function CustomDescriptionIdsTest() {
+	return (
+		<Field>
+			<Label>Example</Label>
+			<TextBox.Input />
+			<Description id="a">Supporting text.</Description>
+			<Description id="b">More supporting text.</Description>
+		</Field>
+	);
+}
+
+function CustomControlIdTest() {
+	return (
+		<Field>
+			<Label>Example</Label>
+			<TextBox.Input id="custom" />
+		</Field>
 	);
 }

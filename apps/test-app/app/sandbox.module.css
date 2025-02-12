@@ -212,10 +212,12 @@
 	min-block-size: 0;
 	flex-grow: 1;
 	padding-block-end: 12px;
+	display: grid;
+	align-content: stretch;
 }
 
 .tree {
-	block-size: 100%;
+	scrollbar-gutter: stable;
 }
 
 .action {

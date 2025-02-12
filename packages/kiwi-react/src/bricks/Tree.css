@@ -7,7 +7,7 @@
 		display: grid;
 		align-content: start;
 		overflow: auto;
-		background-color: var(--ids-color-bg-surface-primary);
+		background-color: var(--ids-color-bg-page-base);
 	}
 }
 
@@ -83,7 +83,7 @@
 		position: sticky;
 		inset-inline-end: 0;
 		padding-inline-end: 4px;
-		background-color: var(--ids-color-bg-surface-primary);
+		background-color: var(--ids-color-bg-page-base);
 		display: inline-flex;
 		visibility: var(--🥝tree-item-actions-visibility, var(--🥝tree-item-action-visibility));
 

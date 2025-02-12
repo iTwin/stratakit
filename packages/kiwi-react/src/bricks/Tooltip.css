@@ -4,9 +4,9 @@
  *--------------------------------------------------------------------------------------------*/
 
 .🥝-tooltip {
-	--✨bg: var(--ids-color-bg-surface-emphasis);
+	--✨bg: var(--ids-color-bg-elevation-emphasis);
 	--✨color: var(--ids-color-text-neutral-emphasis);
-	--✨border: var(--ids-color-border-surface-primary);
+	--✨border: var(--ids-color-border-elevation-base);
 	--✨border-width: 1px;
 
 	@layer base {

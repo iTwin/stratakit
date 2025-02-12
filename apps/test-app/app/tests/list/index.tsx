@@ -8,7 +8,6 @@ import { Icon } from "@itwin/itwinui-react/bricks";
 import type { LinksFunction } from "react-router";
 import testStyles from "./index.css?url";
 import placeholderIcon from "@itwin/itwinui-icons/placeholder.svg";
-import caretDown from "@itwin/itwinui-icons/caret-down.svg";
 
 export const handle = { title: "List" };
 
@@ -54,7 +53,6 @@ function DescriptionTest() {
 		// biome-ignore lint/a11y/useSemanticElements: `div` is used as underlying element for `ListItem`
 		<div role="list" style={{ display: "grid", gap: 4 }}>
 			<ListItem.Root>
-				<ListItem.Icon href={caretDown} />
 				<ListItem.Content
 					icon={<ListItem.Icon href={placeholderIcon} />}
 					description={<ListItem.Description>Green fruit</ListItem.Description>}
@@ -63,7 +61,6 @@ function DescriptionTest() {
 				</ListItem.Content>
 			</ListItem.Root>
 			<ListItem.Root>
-				<ListItem.Icon href={caretDown} />
 				<ListItem.Content
 					description={<ListItem.Description>Green fruit</ListItem.Description>}
 				>
@@ -71,8 +68,12 @@ function DescriptionTest() {
 				</ListItem.Content>
 			</ListItem.Root>
 			<ListItem.Root>
-				<ListItem.Icon href={caretDown} />
 				<ListItem.Content icon={<ListItem.Icon href={placeholderIcon} />}>
+					<ListItem.Label>Kiwi</ListItem.Label>
+				</ListItem.Content>
+			</ListItem.Root>
+			<ListItem.Root>
+				<ListItem.Content>
 					<ListItem.Label>Kiwi</ListItem.Label>
 				</ListItem.Content>
 			</ListItem.Root>

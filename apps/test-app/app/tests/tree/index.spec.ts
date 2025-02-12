@@ -157,8 +157,10 @@ test.describe("@visual", () => {
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
 
-	test("sublabel", async ({ page }) => {
-		await page.goto("/tests/tree?sublabel=Custom description of the tree item");
+	test("description", async ({ page }) => {
+		await page.goto(
+			"/tests/tree?description=Custom description of the tree item",
+		);
 		const tree = page.getByRole("tree");
 		await expect(tree).toBeVisible();
 		await expect(page.locator("body")).toHaveScreenshot();

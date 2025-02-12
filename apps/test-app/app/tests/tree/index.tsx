@@ -14,7 +14,7 @@ export const handle = { title: "Tree" };
 export default definePage(function Page({
 	overflow = false,
 	selected = false,
-	sublabel,
+	description,
 }) {
 	const overflowPostfix = overflow
 		? " with a super long label that is overflown"
@@ -68,7 +68,7 @@ export default definePage(function Page({
 							aria-posinset={index + 1}
 							aria-setsize={items.length}
 							label={item.label}
-							sublabel={index === 0 ? sublabel : undefined}
+							description={index === 0 ? description : undefined}
 							expanded={item.expanded}
 							onExpandedChange={handleExpansion}
 							selected={item.selected}
@@ -100,7 +100,7 @@ export default definePage(function Page({
 									aria-posinset={childIndex + 1}
 									aria-setsize={children.length}
 									label={child.label}
-									sublabel={childIndex === 0 ? sublabel : undefined}
+									description={childIndex === 0 ? description : undefined}
 									selected={child.selected}
 									onSelectedChange={handleSelection}
 									icon={placeholderIcon}

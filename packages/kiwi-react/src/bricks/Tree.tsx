@@ -95,8 +95,8 @@ interface TreeItemProps extends Omit<BaseProps, "content"> {
 	 * The primary label that identifies the tree item and is displayed inside it.
 	 */
 	label?: React.ReactNode;
-	/** Secondary label to display additional information about the tree item. */
-	sublabel?: React.ReactNode;
+	/** Secondary line of text to display additional information about the tree item. */
+	description?: React.ReactNode;
 	/**
 	 * The actions available for the tree item. Must be a list of `Tree.ItemAction` components.
 	 *
@@ -145,7 +145,7 @@ const TreeItem = forwardRef<"div", TreeItemProps>((props, forwardedRef) => {
 		expanded,
 		icon,
 		label,
-		sublabel,
+		description,
 		actions,
 		style,
 		onSelectedChange,
@@ -213,7 +213,7 @@ const TreeItem = forwardRef<"div", TreeItemProps>((props, forwardedRef) => {
 				ref={forwardedRef as Ariakit.CompositeItemProps["ref"]}
 			>
 				<ListItem.Root
-					data-kiwi-sublabel={sublabel ? true : undefined}
+					data-kiwi-description={description ? true : undefined}
 					data-kiwi-expanded={expanded}
 					data-kiwi-selected={selected}
 					className="🥝-tree-item-node"
@@ -232,7 +232,7 @@ const TreeItem = forwardRef<"div", TreeItemProps>((props, forwardedRef) => {
 							render={typeof icon === "string" ? <Icon href={icon} /> : icon}
 						/>
 					) : null}
-					<TreeItemContent label={label} sublabel={sublabel} />
+					<TreeItemContent label={label} description={description} />
 					<TreeItemActions>{actions}</TreeItemActions>
 				</ListItem.Root>
 			</Ariakit.CompositeItem>
@@ -245,12 +245,12 @@ DEV: TreeItem.displayName = "Tree.Item";
 
 interface TreeItemContentProps extends Omit<BaseProps<"span">, "children"> {
 	label?: React.ReactNode;
-	sublabel?: React.ReactNode;
+	description?: React.ReactNode;
 }
 
 const TreeItemContent = forwardRef<"span", TreeItemContentProps>(
 	(props, forwardedRef) => {
-		const { label, sublabel, ...rest } = props;
+		const { label, description, ...rest } = props;
 
 		const { contentId } = React.useContext(TreeItemContext) ?? {};
 
@@ -262,7 +262,7 @@ const TreeItemContent = forwardRef<"span", TreeItemContentProps>(
 				ref={forwardedRef}
 			>
 				<span className="🥝-tree-item-label">{label}</span>
-				<span className="🥝-tree-item-sublabel">{sublabel}</span>
+				<span className="🥝-tree-item-description">{description}</span>
 			</ListItem.Content>
 		);
 	},

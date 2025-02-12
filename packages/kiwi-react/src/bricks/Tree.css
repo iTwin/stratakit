@@ -58,7 +58,7 @@
 	}
 
 	@layer states {
-		&:where([data-kiwi-sublabel="true"]) {
+		&:where([data-kiwi-description="true"]) {
 			align-items: start;
 			min-block-size: 2.75rem;
 
@@ -162,7 +162,7 @@
 	}
 }
 
-.🥝-tree-item-sublabel {
+.🥝-tree-item-description {
 	@layer base {
 		@apply --typography("caption-lg");
 

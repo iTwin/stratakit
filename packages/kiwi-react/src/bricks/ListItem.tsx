@@ -15,6 +15,7 @@ interface ListItemProps extends Ariakit.RoleProps<"div"> {}
 const ListItem = forwardRef<"div", ListItemProps>((props, forwardedRef) => {
 	return (
 		<Ariakit.Role.div
+			role="listitem"
 			{...props}
 			className={cx("🥝-list-item", props.className)}
 			ref={forwardedRef}
@@ -38,7 +39,6 @@ const ListItemContent = forwardRef<"span", ListItemContentProps>(
 		const { icon, description, children, ...rest } = props;
 		return (
 			<Ariakit.Role.span
-				role="listitem"
 				{...rest}
 				data-kiwi-icon={icon ? true : undefined}
 				data-kiwi-description={description ? true : undefined}

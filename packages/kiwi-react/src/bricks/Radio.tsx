@@ -7,7 +7,7 @@ import {
 	Radio as AkRadio,
 	type RadioProps as AkRadioProps,
 } from "@ariakit/react/radio";
-import { FieldControl } from "./Field.js";
+import { FieldControl } from "./Field.internal.js";
 import { forwardRef, type FocusableProps } from "./~utils.js";
 
 type InputBaseProps = Omit<FocusableProps<"input">, "defaultValue" | "value">;

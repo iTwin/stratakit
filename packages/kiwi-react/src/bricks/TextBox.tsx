@@ -6,7 +6,7 @@ import * as React from "react";
 import { Role } from "@ariakit/react/role";
 import { Focusable } from "@ariakit/react/focusable";
 import cx from "classnames";
-import { FieldControl } from "./Field.js";
+import { FieldControl } from "./Field.internal.js";
 import { Icon } from "./Icon.js";
 import { useMergedRefs } from "./~hooks.js";
 import { type FocusableProps, type BaseProps, forwardRef } from "./~utils.js";

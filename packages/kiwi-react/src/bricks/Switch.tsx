@@ -7,7 +7,7 @@ import {
 	Checkbox as AkCheckbox,
 	type CheckboxProps as AkCheckboxProps,
 } from "@ariakit/react/checkbox";
-import { FieldControl } from "./Field.js";
+import { FieldControl } from "./Field.internal.js";
 import { forwardRef, type FocusableProps } from "./~utils.js";
 
 type InputBaseProps = Omit<FocusableProps<"input">, "defaultValue" | "value">;

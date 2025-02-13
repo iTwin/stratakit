@@ -5,7 +5,7 @@
 import { forwardRef, type BaseProps } from "./~utils.js";
 import cx from "classnames";
 import { Text } from "./Text.js";
-import { FieldDescription } from "./Field.js";
+import { FieldDescription } from "./Field.internal.js";
 
 interface DescriptionProps extends BaseProps {
 	/**

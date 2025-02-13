@@ -12,7 +12,7 @@ import {
 	type FocusableProps,
 } from "./~utils.js";
 import { DisclosureArrow } from "./Icon.js";
-import { FieldControl } from "./Field.js";
+import { FieldControl } from "./Field.internal.js";
 
 const supportsHas = isBrowser && CSS?.supports?.("selector(:has(+ *))");
 

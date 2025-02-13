@@ -9,7 +9,8 @@ import * as ListItem from "./ListItem.js";
 import { Button } from "./Button.js";
 import { Kbd } from "./Kbd.js";
 import { Checkmark, DisclosureArrow } from "./Icon.js";
-import { forwardRef, supportsPopover, type FocusableProps } from "./~utils.js";
+import { forwardRef, type FocusableProps } from "./~utils.js";
+import { usePopoverApi } from "./~hooks.js";
 
 // ----------------------------------------------------------------------------
 
@@ -48,22 +49,8 @@ function DropdownMenu(props: DropdownMenuProps) {
 		defaultOpen: defaultOpenProp,
 	} = props;
 
-	const store = Ariakit.useMenuStore();
-	const open = Ariakit.useStoreState(store, (state) => state.open);
-	const popover = Ariakit.useStoreState(store, (state) => state.popoverElement);
-
-	React.useEffect(
-		function syncPopoverWithOpenState() {
-			if (popover?.isConnected) {
-				popover?.togglePopover?.(open);
-			}
-		},
-		[open, popover],
-	);
-
 	return (
 		<Ariakit.MenuProvider
-			store={store}
 			placement={placement}
 			defaultOpen={defaultOpenProp}
 			open={openProp}
@@ -86,14 +73,16 @@ interface DropdownMenuContentProps extends FocusableProps {}
  */
 const DropdownMenuContent = forwardRef<"div", DropdownMenuContentProps>(
 	(props, forwardedRef) => {
+		const popover = usePopoverApi(Ariakit.useMenuContext());
+
 		return (
 			<Ariakit.Menu
-				portal={!supportsPopover}
+				portal={popover.portal}
 				unmountOnHide
 				{...props}
 				gutter={4}
-				style={{ zIndex: supportsPopover ? undefined : 9999, ...props.style }}
-				wrapperProps={{ popover: "manual" }}
+				style={{ ...popover.style, ...props.style }}
+				wrapperProps={popover.wrapperProps}
 				className={cx("🥝-dropdown-menu", props.className)}
 				ref={forwardedRef}
 			/>

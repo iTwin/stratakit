@@ -90,7 +90,7 @@ const ListItemLabel = forwardRef<"span", ListItemLabelProps>(
 		);
 	},
 );
-DEV: ListItemContent.displayName = "ListItem.Label";
+DEV: ListItemLabel.displayName = "ListItem.Label";
 
 // ----------------------------------------------------------------------------
 

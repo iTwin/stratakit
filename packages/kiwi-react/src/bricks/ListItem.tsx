@@ -72,7 +72,7 @@ const ListItemIcon = forwardRef<"svg", ListItemIconProps>(
 		);
 	},
 );
-DEV: ListItemContent.displayName = "ListItem.Icon";
+DEV: ListItemIcon.displayName = "ListItem.Icon";
 
 // ----------------------------------------------------------------------------
 

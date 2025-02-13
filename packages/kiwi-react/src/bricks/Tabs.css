@@ -24,11 +24,7 @@
 	--✨active-tab-stripe-size: 2px;
 
 	--✨bg--default: transparent;
-	--✨bg--hover-neutral: color-mix(
-		in oklch,
-		var(--✨bg--default) 100%,
-		var(--ids-color-glow-hue) var(--ids-color-bg-glow-on-surface-neutral-hover-\%)
-	);
+	--✨bg--hover-neutral: var(--ids-color-bg-glow-on-surface-neutral-hover);
 	--✨bg--hover-accent: var(--ids-color-bg-glow-on-surface-accent-hover);
 	--✨bg--selected: transparent;
 	--✨bg--disabled: transparent;

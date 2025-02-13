@@ -240,14 +240,6 @@
 					"disabled": {
 						"$type": "color",
 						"$value": "{p-color.white.4}"
-					},
-					"neutral-hover-%": {
-						"$type": "number",
-						"$value": 4
-					},
-					"neutral-pressed-%": {
-						"$type": "number",
-						"$value": 8
 					}
 				},
 				"strong": {

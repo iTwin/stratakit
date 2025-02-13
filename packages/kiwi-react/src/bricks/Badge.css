@@ -3,140 +3,80 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 .🥝-badge {
-	--kiwi-color-bg-severe-base: #c74801;
-	--kiwi-color-bg-special-base: #845ec0;
-	--kiwi-color-bg-highlight-base: #d72665;
-
-	--kiwi-color-bg-severe-muted: #662501;
-	--kiwi-color-bg-special-muted: #432e64;
-	--kiwi-color-bg-highlight-muted: #6f1334;
-
-	--kiwi-color-text-severe-faded: #e3a27e;
-	--kiwi-color-text-special-faded: #bca7dd;
-	--kiwi-color-text-highlight-faded: #ef96b6;
-
-	--kiwi-color-text-severe-base: #db8657;
-	--kiwi-color-text-special-base: #a98fd3;
-	--kiwi-color-text-highlight-base: #ea759f;
-
-	--kiwi-color-border-severe-base: #d2692e;
-	--kiwi-color-border-special-base: #9677ca;
-	--kiwi-color-border-highlight-base: #e45085;
-
 	@layer base {
 		display: inline-flex;
 		align-items: center;
+		justify-content: center;
+		flex-shrink: 0;
 		white-space: nowrap;
-		border-radius: 4px;
+		border-radius: 9999px;
 		border: 1px solid var(--🥝badge-border-color);
 		background-color: var(--🥝badge-background-color);
 		color: var(--🥝badge-text-color);
 		font-weight: 500;
+		block-size: 1.25rem;
+		padding-inline: 4px;
 	}
 
 	@layer modifiers {
-		&:where([data-kiwi-size="small"]) {
-			block-size: 1rem;
-			padding-inline: 2px;
-			font-size: var(--kiwi-font-size-10);
-		}
-
-		&:where([data-kiwi-size="medium"]) {
-			block-size: 1.25rem;
-			padding-inline: 4px;
-		}
-
 		&:where([data-kiwi-variant="solid"]) {
-			--🥝badge-text-color: var(--kiwi-color-text-neutral-emphasis);
+			--🥝badge-text-color: var(--ids-color-text-neutral-emphasis);
 
 			&:where([data-kiwi-tone="neutral"]) {
-				--🥝badge-background-color: var(--kiwi-color-bg-mono-base);
-				--🥝badge-border-color: var(--kiwi-color-bg-mono-base);
+				--🥝badge-background-color: var(--ids-color-bg-mono-base);
+				--🥝badge-border-color: var(--ids-color-bg-mono-base);
 			}
 
 			&:where([data-kiwi-tone="info"]) {
-				--🥝badge-background-color: var(--kiwi-color-bg-info-base);
-				--🥝badge-border-color: var(--kiwi-color-bg-info-base);
+				--🥝badge-background-color: var(--ids-color-bg-info-base);
+				--🥝badge-border-color: var(--ids-color-bg-info-base);
 			}
 
 			&:where([data-kiwi-tone="positive"]) {
-				--🥝badge-background-color: var(--kiwi-color-bg-positive-base);
-				--🥝badge-border-color: var(--kiwi-color-bg-positive-base);
+				--🥝badge-background-color: var(--ids-color-bg-positive-base);
+				--🥝badge-border-color: var(--ids-color-bg-positive-base);
 			}
 
 			&:where([data-kiwi-tone="attention"]) {
-				--🥝badge-background-color: var(--kiwi-color-bg-attention-base);
-				--🥝badge-border-color: var(--kiwi-color-bg-attention-base);
-			}
-
-			&:where([data-kiwi-tone="severe"]) {
-				--🥝badge-background-color: var(--kiwi-color-bg-severe-base);
-				--🥝badge-border-color: var(--kiwi-color-bg-severe-base);
+				--🥝badge-background-color: var(--ids-color-bg-attention-base);
+				--🥝badge-border-color: var(--ids-color-bg-attention-base);
 			}
 
 			&:where([data-kiwi-tone="critical"]) {
-				--🥝badge-background-color: var(--kiwi-color-bg-critical-base);
-				--🥝badge-border-color: var(--kiwi-color-bg-critical-base);
-			}
-
-			&:where([data-kiwi-tone="special"]) {
-				--🥝badge-background-color: var(--kiwi-color-bg-special-base);
-				--🥝badge-border-color: var(--kiwi-color-bg-special-base);
-			}
-
-			&:where([data-kiwi-tone="highlight"]) {
-				--🥝badge-background-color: var(--kiwi-color-bg-highlight-base);
-				--🥝badge-border-color: var(--kiwi-color-bg-highlight-base);
+				--🥝badge-background-color: var(--ids-color-bg-critical-base);
+				--🥝badge-border-color: var(--ids-color-bg-critical-base);
 			}
 		}
 
 		&:where([data-kiwi-variant="muted"]) {
 			&:where([data-kiwi-tone="neutral"]) {
-				--🥝badge-background-color: var(--kiwi-color-bg-mono-muted);
-				--🥝badge-border-color: var(--kiwi-color-bg-mono-muted);
-				--🥝badge-text-color: var(--kiwi-color-text-mono-faded);
+				--🥝badge-background-color: var(--ids-color-bg-mono-muted);
+				--🥝badge-border-color: var(--ids-color-bg-mono-muted);
+				--🥝badge-text-color: var(--ids-color-text-mono-faded);
 			}
 
 			&:where([data-kiwi-tone="info"]) {
-				--🥝badge-background-color: var(--kiwi-color-bg-info-muted);
-				--🥝badge-border-color: var(--kiwi-color-bg-info-muted);
-				--🥝badge-text-color: var(--kiwi-color-text-info-faded);
+				--🥝badge-background-color: var(--ids-color-bg-info-muted);
+				--🥝badge-border-color: var(--ids-color-bg-info-muted);
+				--🥝badge-text-color: var(--ids-color-text-info-faded);
 			}
 
 			&:where([data-kiwi-tone="positive"]) {
-				--🥝badge-background-color: var(--kiwi-color-bg-positive-muted);
-				--🥝badge-border-color: var(--kiwi-color-bg-positive-muted);
-				--🥝badge-text-color: var(--kiwi-color-text-positive-faded);
+				--🥝badge-background-color: var(--ids-color-bg-positive-muted);
+				--🥝badge-border-color: var(--ids-color-bg-positive-muted);
+				--🥝badge-text-color: var(--ids-color-text-positive-faded);
 			}
 
 			&:where([data-kiwi-tone="attention"]) {
-				--🥝badge-background-color: var(--kiwi-color-bg-attention-muted);
-				--🥝badge-border-color: var(--kiwi-color-bg-attention-muted);
-				--🥝badge-text-color: var(--kiwi-color-text-attention-faded);
-			}
-
-			&:where([data-kiwi-tone="severe"]) {
-				--🥝badge-background-color: var(--kiwi-color-bg-severe-muted);
-				--🥝badge-border-color: var(--kiwi-color-bg-severe-muted);
-				--🥝badge-text-color: var(--kiwi-color-text-severe-faded);
+				--🥝badge-background-color: var(--ids-color-bg-attention-muted);
+				--🥝badge-border-color: var(--ids-color-bg-attention-muted);
+				--🥝badge-text-color: var(--ids-color-text-attention-faded);
 			}
 
 			&:where([data-kiwi-tone="critical"]) {
-				--🥝badge-background-color: var(--kiwi-color-bg-critical-muted);
-				--🥝badge-border-color: var(--kiwi-color-bg-critical-muted);
-				--🥝badge-text-color: var(--kiwi-color-text-critical-faded);
-			}
-
-			&:where([data-kiwi-tone="special"]) {
-				--🥝badge-background-color: var(--kiwi-color-bg-special-muted);
-				--🥝badge-border-color: var(--kiwi-color-bg-special-muted);
-				--🥝badge-text-color: var(--kiwi-color-text-special-faded);
-			}
-
-			&:where([data-kiwi-tone="highlight"]) {
-				--🥝badge-background-color: var(--kiwi-color-bg-highlight-muted);
-				--🥝badge-border-color: var(--kiwi-color-bg-highlight-muted);
-				--🥝badge-text-color: var(--kiwi-color-text-highlight-faded);
+				--🥝badge-background-color: var(--ids-color-bg-critical-muted);
+				--🥝badge-border-color: var(--ids-color-bg-critical-muted);
+				--🥝badge-text-color: var(--ids-color-text-critical-faded);
 			}
 		}
 
@@ -144,43 +84,28 @@
 			--🥝badge-background-color: transparent;
 
 			&:where([data-kiwi-tone="neutral"]) {
-				--🥝badge-text-color: var(--kiwi-color-text-mono-base);
-				--🥝badge-border-color: var(--kiwi-color-border-mono-base);
+				--🥝badge-text-color: var(--ids-color-text-mono-base);
+				--🥝badge-border-color: var(--ids-color-border-mono-base);
 			}
 
 			&:where([data-kiwi-tone="info"]) {
-				--🥝badge-text-color: var(--kiwi-color-text-info-base);
-				--🥝badge-border-color: var(--kiwi-color-border-info-base);
+				--🥝badge-text-color: var(--ids-color-text-info-base);
+				--🥝badge-border-color: var(--ids-color-border-info-base);
 			}
 
 			&:where([data-kiwi-tone="positive"]) {
-				--🥝badge-text-color: var(--kiwi-color-text-positive-base);
-				--🥝badge-border-color: var(--kiwi-color-border-positive-base);
+				--🥝badge-text-color: var(--ids-color-text-positive-base);
+				--🥝badge-border-color: var(--ids-color-border-positive-base);
 			}
 
 			&:where([data-kiwi-tone="attention"]) {
-				--🥝badge-text-color: var(--kiwi-color-text-attention-base);
-				--🥝badge-border-color: var(--kiwi-color-border-attention-base);
-			}
-
-			&:where([data-kiwi-tone="severe"]) {
-				--🥝badge-text-color: var(--kiwi-color-text-severe-base);
-				--🥝badge-border-color: var(--kiwi-color-border-severe-base);
+				--🥝badge-text-color: var(--ids-color-text-attention-base);
+				--🥝badge-border-color: var(--ids-color-border-attention-base);
 			}
 
 			&:where([data-kiwi-tone="critical"]) {
-				--🥝badge-text-color: var(--kiwi-color-text-critical-base);
-				--🥝badge-border-color: var(--kiwi-color-border-critical-base);
-			}
-
-			&:where([data-kiwi-tone="special"]) {
-				--🥝badge-text-color: var(--kiwi-color-text-special-base);
-				--🥝badge-border-color: var(--kiwi-color-border-special-base);
-			}
-
-			&:where([data-kiwi-tone="highlight"]) {
-				--🥝badge-text-color: var(--kiwi-color-text-highlight-base);
-				--🥝badge-border-color: var(--kiwi-color-border-highlight-base);
+				--🥝badge-text-color: var(--ids-color-text-critical-base);
+				--🥝badge-border-color: var(--ids-color-border-critical-base);
 			}
 		}
 	}

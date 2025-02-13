@@ -13,24 +13,10 @@ interface BadgeProps extends Omit<BaseProps<"div">, "children"> {
 	label: string;
 
 	/**
-	 * The size of the badge.
-	 * @default "medium"
-	 */
-	size?: "small" | "medium";
-
-	/**
 	 * The tone of the badge.
 	 * @default "neutral"
 	 */
-	tone?:
-		| "neutral"
-		| "info"
-		| "positive"
-		| "attention"
-		| "severe"
-		| "critical"
-		| "special"
-		| "highlight";
+	tone?: "neutral" | "info" | "positive" | "attention" | "critical";
 
 	/**
 	 * The variant style of the badge.
@@ -47,18 +33,11 @@ interface BadgeProps extends Omit<BaseProps<"div">, "children"> {
  * ```
  */
 export const Badge = forwardRef<"div", BadgeProps>((props, forwardedRef) => {
-	const {
-		size = "medium",
-		tone = "neutral",
-		variant = "solid",
-		label,
-		...rest
-	} = props;
+	const { tone = "neutral", variant = "solid", label, ...rest } = props;
 
 	return (
 		<Ariakit.Role.div
 			{...rest}
-			data-kiwi-size={size}
 			data-kiwi-tone={tone}
 			data-kiwi-variant={variant}
 			className={cx("🥝-badge", props.className)}

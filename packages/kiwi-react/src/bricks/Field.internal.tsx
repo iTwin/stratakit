@@ -17,6 +17,10 @@ interface FieldCollectionStoreItem extends CollectionStoreItem {
 	controlType?: "textlike" | "checkable";
 }
 
+export const FieldInvalidContext = React.createContext<boolean | undefined>(
+	undefined,
+);
+
 /**
  * A collection that tracks labels, controls, and descriptions which provides
  * information about IDs, placement of labels, and control types.
@@ -73,6 +77,7 @@ interface FieldCollectionItemControlProps
  * @internal
  */
 export function FieldControl(props: FieldCollectionItemControlProps) {
+	const invalid = React.useContext(FieldInvalidContext);
 	const store = Ariakit.useCollectionContext();
 	const generatedId = React.useId();
 	const { id = store ? generatedId : undefined, type, ...rest } = props;
@@ -102,7 +107,13 @@ export function FieldControl(props: FieldCollectionItemControlProps) {
 		<Ariakit.CollectionItem
 			id={id}
 			getItem={getData}
-			render={<Ariakit.Role {...rest} aria-describedby={describedBy} />}
+			render={
+				<Ariakit.Role
+					{...rest}
+					aria-invalid={invalid}
+					aria-describedby={describedBy}
+				/>
+			}
 		/>
 	);
 }

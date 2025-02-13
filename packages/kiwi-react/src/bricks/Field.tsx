@@ -5,7 +5,7 @@
 import * as Ariakit from "@ariakit/react";
 import cx from "classnames";
 import { forwardRef, type BaseProps } from "./~utils.js";
-import { FieldCollection } from "./Field.internal.js";
+import { FieldCollection, FieldInvalidContext } from "./Field.internal.js";
 
 // ----------------------------------------------------------------------------
 
@@ -14,6 +14,11 @@ interface FieldProps extends BaseProps {
 	 * Allows overriding the default block layout for text controls.
 	 */
 	layout?: "inline";
+
+	/**
+	 * Is the field initially invalid.
+	 */
+	invalid?: boolean;
 }
 
 /**
@@ -37,18 +42,20 @@ interface FieldProps extends BaseProps {
  * - `Switch`
  */
 export const Field = forwardRef<"div", FieldProps>((props, forwardedRef) => {
-	const { layout, ...rest } = props;
+	const { invalid, layout, ...rest } = props;
 	return (
-		<FieldCollection
-			render={
-				<Ariakit.Role.div
-					{...rest}
-					className={cx("🥝-field", props.className)}
-					data-kiwi-layout={layout}
-					ref={forwardedRef}
-				/>
-			}
-		/>
+		<FieldInvalidContext.Provider value={invalid}>
+			<FieldCollection
+				render={
+					<Ariakit.Role.div
+						{...rest}
+						className={cx("🥝-field", props.className)}
+						data-kiwi-layout={layout}
+						ref={forwardedRef}
+					/>
+				}
+			/>
+		</FieldInvalidContext.Provider>
 	);
 });
 DEV: Field.displayName = "Field";

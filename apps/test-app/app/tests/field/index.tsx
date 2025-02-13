@@ -30,6 +30,7 @@ export default definePage(
 		layout,
 		labelPlacement = "before",
 		descriptions,
+		invalid,
 	}) {
 		const Control = controls[control];
 		const ControlLabel = asLabel ? "span" : Label;
@@ -38,6 +39,7 @@ export default definePage(
 			<form style={{ display: "grid", gap: 32, justifyContent: "start" }}>
 				<Field
 					layout={layout as "inline" | undefined}
+					invalid={invalid ? true : undefined}
 					render={asLabel ? <Label /> : undefined}
 				>
 					{labelPlacement === "before" ? (

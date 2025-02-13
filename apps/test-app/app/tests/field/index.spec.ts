@@ -91,6 +91,14 @@ test.describe("default", () => {
 			"Custom description.",
 		);
 	});
+
+	test("with invalid", async ({ page }) => {
+		await page.goto("tests/field?invalid");
+		await expect(page.getByRole("textbox")).toHaveAttribute(
+			"aria-invalid",
+			"true",
+		);
+	});
 });
 
 test.describe("@visual", () => {

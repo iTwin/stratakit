@@ -267,6 +267,7 @@ const TreeItemContent = forwardRef<"span", TreeItemContentProps>(
 						/>
 					) : undefined
 				}
+				label={<ListItem.Label id={labelId}>{label}</ListItem.Label>}
 				description={
 					description ? (
 						<ListItem.Description id={descriptionId}>
@@ -276,9 +277,7 @@ const TreeItemContent = forwardRef<"span", TreeItemContentProps>(
 				}
 				className={cx("🥝-tree-item-content", props.className)}
 				ref={forwardedRef}
-			>
-				<ListItem.Label id={labelId}>{label}</ListItem.Label>
-			</ListItem.Content>
+			/>
 		);
 	},
 );

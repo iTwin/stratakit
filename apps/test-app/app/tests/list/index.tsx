@@ -28,16 +28,16 @@ export default definePage(
 				<ListItem.Root>Cherry</ListItem.Root>
 				<ListItem.Root>Kiwi</ListItem.Root>
 				<ListItem.Root>
-					<ListItem.Content>Mango</ListItem.Content>
+					<ListItem.Content label="Mango" />
 					<Icon href={placeholderIcon} />
 				</ListItem.Root>
 				<ListItem.Root>
 					<Icon href={placeholderIcon} />
-					<ListItem.Content>Papaya</ListItem.Content>
+					<ListItem.Content label="Papaya" />
 				</ListItem.Root>
 				<ListItem.Root>
 					<Icon href={placeholderIcon} />
-					<ListItem.Content>Tomato</ListItem.Content>
+					<ListItem.Content label="Tomato" />
 					<Icon href={placeholderIcon} />
 				</ListItem.Root>
 			</div>
@@ -55,27 +55,24 @@ function DescriptionTest() {
 			<ListItem.Root>
 				<ListItem.Content
 					icon={<ListItem.Icon href={placeholderIcon} />}
+					label={<ListItem.Label>Kiwi</ListItem.Label>}
 					description={<ListItem.Description>Green fruit</ListItem.Description>}
-				>
-					<ListItem.Label>Kiwi</ListItem.Label>
-				</ListItem.Content>
+				/>
 			</ListItem.Root>
 			<ListItem.Root>
 				<ListItem.Content
+					label={<ListItem.Label>Kiwi</ListItem.Label>}
 					description={<ListItem.Description>Green fruit</ListItem.Description>}
-				>
-					<ListItem.Label>Kiwi</ListItem.Label>
-				</ListItem.Content>
+				/>
 			</ListItem.Root>
 			<ListItem.Root>
-				<ListItem.Content icon={<ListItem.Icon href={placeholderIcon} />}>
-					<ListItem.Label>Kiwi</ListItem.Label>
-				</ListItem.Content>
+				<ListItem.Content
+					icon={<ListItem.Icon href={placeholderIcon} />}
+					label={<ListItem.Label>Kiwi</ListItem.Label>}
+				/>
 			</ListItem.Root>
 			<ListItem.Root>
-				<ListItem.Content>
-					<ListItem.Label>Kiwi</ListItem.Label>
-				</ListItem.Content>
+				<ListItem.Content label={<ListItem.Label>Kiwi</ListItem.Label>} />
 			</ListItem.Root>
 		</div>
 	);

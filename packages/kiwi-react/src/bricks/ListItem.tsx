@@ -27,17 +27,20 @@ DEV: ListItem.displayName = "ListItem.Root";
 
 // ----------------------------------------------------------------------------
 
-interface ListItemContentProps extends Ariakit.RoleProps<"span"> {
+interface ListItemContentProps
+	extends Omit<Ariakit.RoleProps<"span">, "children"> {
+	/** Use `ListItem.Label` if `description` is set. */
+	label?: React.ReactNode;
 	/** Use `ListItem.Icon`. */
 	icon?: React.ReactNode;
-	/** Use `ListItem.Description` and `ListItem.Label` for `children` prop. */
+	/** Use `ListItem.Description`. */
 	description?: React.ReactNode;
 }
 
 /** @internal */
 const ListItemContent = forwardRef<"span", ListItemContentProps>(
 	(props, forwardedRef) => {
-		const { icon, description, children, ...rest } = props;
+		const { icon, label, description, ...rest } = props;
 		return (
 			<Ariakit.Role.span
 				{...rest}
@@ -47,7 +50,7 @@ const ListItemContent = forwardRef<"span", ListItemContentProps>(
 				ref={forwardedRef}
 			>
 				{icon}
-				{children}
+				{label}
 				{description}
 			</Ariakit.Role.span>
 		);

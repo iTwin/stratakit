@@ -9,7 +9,7 @@
 		var(--✨bg--default) 100%,
 		var(--ids-color-glow-hue) var(--ids-color-bg-glow-base-hover-\%)
 	);
-	--✨bg--disabled: var(--ids-color-bg-elevation-control-bg);
+	--✨bg--disabled: var(--ids-color-bg-elevation-control);
 	--✨border--default: var(--ids-color-border-neutral-base);
 	--✨border--hover: color-mix(
 		in oklch,

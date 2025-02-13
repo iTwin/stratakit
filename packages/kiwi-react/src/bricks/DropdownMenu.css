@@ -3,7 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 .🥝-dropdown-menu {
-	--✨bg: var(--ids-color-bg-elevation-elevation-1);
+	--✨bg: var(--ids-color-bg-elevation-level-1);
 	--✨padding: 0.5rem; /* space(in progress)/x2 */
 
 	@layer base {

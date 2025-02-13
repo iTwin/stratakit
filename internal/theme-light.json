@@ -150,11 +150,11 @@
 					"$type": "color",
 					"$value": "{p-color.gray.975}"
 				},
-				"control-bg": {
+				"control": {
 					"$type": "color",
 					"$value": "{p-color.white.100}"
 				},
-				"elevation-1": {
+				"level-1": {
 					"$type": "color",
 					"$value": "{p-color.white.100}"
 				},
@@ -162,7 +162,7 @@
 					"$type": "color",
 					"$value": "{p-color.gray.5}"
 				},
-				"elevation-2": {
+				"level-2": {
 					"$type": "color",
 					"$value": "{p-color.white.100}"
 				},

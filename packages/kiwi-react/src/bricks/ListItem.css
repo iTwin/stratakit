@@ -142,7 +142,7 @@
 
 .🥝-list-item-description {
 	@layer base {
-		color: var(--🌀list-item-state--default, var(--kiwi-color-text-neutral-secondary));
+		color: var(--🌀list-item-state--default, var(--ids-color-text-neutral-secondary));
 		grid-area: var(--🥝list-item-description-grid-area);
 	}
 }

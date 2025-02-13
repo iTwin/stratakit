@@ -3,7 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 html {
-	background-color: var(--ids-color-bg-surface-primary);
+	background-color: var(--ids-color-bg-page-base);
 }
 
 body {

@@ -10,20 +10,10 @@
 	--✨color--default: var(--ids-color-text-neutral-primary);
 	--✨color--active: var(--ids-color-text-accent-strong);
 
-	--✨glow--hover: var(--ids-color-glow-hue) var(--ids-color-bg-glow-on-surface-neutral-hover-\%);
-	--✨glow--press: var(--ids-color-glow-hue) var(--ids-color-bg-glow-on-surface-neutral-pressed-\%);
-	--✨glow--bg-hover: var(--ids-color-glow-hue) var(--ids-color-bg-glow-base-hover-\%);
-
 	--✨bg--default: transparent;
-	--✨bg--hover: color-mix(in oklch, var(--✨bg--default) 100%, var(--✨glow--hover));
-	--✨bg--pressed: color-mix(in oklch, var(--✨bg--default) 100%, var(--✨glow--press));
+	--✨bg--hover: var(--ids-color-bg-glow-on-surface-neutral-hover);
+	--✨bg--pressed: var(--ids-color-bg-glow-on-surface-neutral-pressed);
 	--✨bg--active: var(--ids-color-bg-glow-on-surface-accent-pressed);
-	--✨bg--active-child: color-mix(in oklch, var(--✨bg--active), transparent 50%);
-	--✨bg--active-child-hover: color-mix(
-		in oklch,
-		var(--✨bg--active-child) 100%,
-		var(--✨glow--bg-hover)
-	);
 	--✨bg--disabled: var(--ids-color-text-neutral-disabled);
 
 	@layer base {
@@ -44,24 +34,18 @@
 			var(--🌀list-item-state--pressed, var(--✨bg--pressed))
 			var(--🌀list-item-state--active, var(--✨bg--active))
 			var(--🌀list-item-state--active-hover, var(--✨bg--active))
-			var(--🌀list-item-state--active-child, var(--✨bg--active-child))
-			var(--🌀list-item-state--active-child-hover, var(--✨bg--active-child-hover))
 			var(--🌀list-item-state--disabled, var(--✨bg--default));
 		color: var(--🌀list-item-state--default, var(--✨color--default))
 			var(--🌀list-item-state--hover, var(--✨color--default))
 			var(--🌀list-item-state--pressed, var(--✨color--default))
 			var(--🌀list-item-state--active, var(--✨color--active))
 			var(--🌀list-item-state--active-hover, var(--✨color--active))
-			var(--🌀list-item-state--active-child, var(--✨color--default))
-			var(--🌀list-item-state--active-child-hover, var(--✨color--default))
 			var(--🌀list-item-state--disabled, var(--✨bg--disabled));
 		--🥝icon-color: var(--🌀list-item-state--default, var(--ids-color-icon-neutral-base))
 			var(--🌀list-item-state--hover, var(--ids-color-icon-neutral-hover))
 			var(--🌀list-item-state--pressed, var(--ids-color-icon-neutral-hover))
 			var(--🌀list-item-state--active, var(--ids-color-icon-accent-strong))
 			var(--🌀list-item-state--active-hover, var(--ids-color-icon-accent-strong))
-			var(--🌀list-item-state--active-child, var(--ids-color-icon-neutral-base))
-			var(--🌀list-item-state--active-child-hover, var(--ids-color-icon-neutral-base))
 			var(--🌀list-item-state--disabled, var(--ids-color-icon-neutral-disabled));
 	}
 
@@ -89,8 +73,6 @@
 		--🌀list-item-state--pressed: var(--🌀list-item-state,);
 		--🌀list-item-state--active: var(--🌀list-item-state,);
 		--🌀list-item-state--active-hover: var(--🌀list-item-state,);
-		--🌀list-item-state--active-child: var(--🌀list-item-state,);
-		--🌀list-item-state--active-child-hover: var(--🌀list-item-state,);
 		--🌀list-item-state--disabled: var(--🌀list-item-state,);
 	}
 }

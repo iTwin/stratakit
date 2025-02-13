@@ -6,6 +6,7 @@ import cx from "classnames";
 import * as Ariakit from "@ariakit/react";
 import { forwardRef } from "./~utils.js";
 import { Icon } from "./Icon.js";
+import { Text } from "./Text.js";
 
 // ----------------------------------------------------------------------------
 
@@ -82,8 +83,10 @@ interface ListItemLabelProps extends Ariakit.RoleProps<"span"> {}
 const ListItemLabel = forwardRef<"span", ListItemLabelProps>(
 	(props, forwardedRef) => {
 		return (
-			<Ariakit.Role.span
+			<Text
 				{...props}
+				variant="body-sm"
+				render={<span />}
 				className={cx("🥝-list-item-label", props.className)}
 				ref={forwardedRef}
 			/>
@@ -100,8 +103,10 @@ interface ListItemDescriptionProps extends Ariakit.RoleProps<"span"> {}
 const ListItemDescription = forwardRef<"span", ListItemDescriptionProps>(
 	(props, forwardedRef) => {
 		return (
-			<Ariakit.Role.span
+			<Text
 				{...props}
+				variant="caption-lg"
+				render={<span />}
 				className={cx("🥝-list-item-description", props.className)}
 				ref={forwardedRef}
 			/>

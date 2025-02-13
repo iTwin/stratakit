@@ -137,16 +137,12 @@
 
 .🥝-list-item-label {
 	@layer base {
-		@apply --typography("body-sm");
-
 		grid-area: var(--🥝list-item-label-grid-area);
 	}
 }
 
 .🥝-list-item-description {
 	@layer base {
-		@apply --typography("caption-lg");
-
 		color: var(--🌀list-item-state--default, var(--kiwi-color-text-neutral-secondary));
 		grid-area: var(--🥝list-item-description-grid-area);
 	}

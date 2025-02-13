@@ -3,7 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 .🥝-dropdown-menu {
-	--✨bg: var(--kiwi-color-bg-surface-tertiary);
+	--✨bg: var(--ids-color-bg-elevation-level-1);
 	--✨padding: 0.5rem; /* space(in progress)/x2 */
 
 	@layer base {
@@ -15,7 +15,7 @@
 		min-inline-size: min(95vi, 164px);
 		border-radius: 8px /* radius(in progress)/medium */;
 		padding: var(--✨padding);
-		box-shadow: var(--kiwi-shadow-surface-xl);
+		box-shadow: var(--ids-shadow-surface-xl);
 	}
 }
 

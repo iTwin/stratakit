@@ -4,7 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 import cx from "classnames";
 import * as Ariakit from "@ariakit/react";
-import { FieldControl, useFieldDescribedBy } from "./Field.js";
+import { FieldControl } from "./Field.js";
 import { forwardRef, type FocusableProps } from "./~utils.js";
 
 type InputBaseProps = Omit<FocusableProps<"input">, "defaultValue" | "value">;
@@ -30,7 +30,6 @@ interface RadioProps extends InputBaseProps, RadioOwnProps {}
  */
 export const Radio = forwardRef<"input", RadioProps>((props, forwardedRef) => {
 	const { id, ...rest } = props;
-	const describedBy = useFieldDescribedBy(props["aria-describedby"]);
 
 	return (
 		<FieldControl
@@ -41,7 +40,6 @@ export const Radio = forwardRef<"input", RadioProps>((props, forwardedRef) => {
 					accessibleWhenDisabled
 					{...rest}
 					className={cx("🥝-checkbox", "🥝-radio", props.className)}
-					aria-describedby={describedBy}
 					ref={forwardedRef}
 				/>
 			}

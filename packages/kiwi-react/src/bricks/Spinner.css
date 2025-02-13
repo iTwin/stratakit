@@ -13,11 +13,11 @@
 
 	@layer modifiers {
 		&:where([data-kiwi-tone="neutral"]) {
-			--🥝spinner-color: var(--kiwi-color-icon-neutral-base);
+			--🥝spinner-color: var(--ids-color-icon-neutral-base);
 		}
 
 		&:where([data-kiwi-tone="accent"]) {
-			--🥝spinner-color: var(--kiwi-color-icon-accent-strong);
+			--🥝spinner-color: var(--ids-color-icon-accent-strong);
 		}
 
 		&:where([data-kiwi-size="small"]) {

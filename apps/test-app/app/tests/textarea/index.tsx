@@ -9,9 +9,9 @@ export const handle = { title: "Textarea" };
 
 export default definePage(function Page({ disabled }) {
 	return (
-		<Field>
+		<Field.Root>
 			<Label>Fruit</Label>
 			<TextBox.Textarea rows={3} disabled={!!disabled} />
-		</Field>
+		</Field.Root>
 	);
 });

@@ -22,10 +22,10 @@ interface RadioProps extends InputBaseProps, RadioOwnProps {}
  * Works well with the `Field` and `Label` components.
  *
  * ```tsx
- * <Field>
+ * <Field.Root>
  *   <Label>Choose one</Label>
  *   <Radio />
- * </Field>
+ * </Field.Root>
  * ```
  *
  * Underneath, it's an HTML radio input, i.e. `<input type="radio">`, so it supports the same props,

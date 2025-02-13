@@ -20,10 +20,10 @@ function TextAffix({ children }: React.PropsWithChildren) {
 export default definePage(
 	function Page({ disabled, defaultValue }) {
 		return (
-			<Field>
+			<Field.Root>
 				<Label>Fruit</Label>
 				<TextBox.Input disabled={!!disabled} defaultValue={defaultValue} />
-			</Field>
+			</Field.Root>
 		);
 	},
 	{

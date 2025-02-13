@@ -21,10 +21,10 @@ interface FieldProps extends BaseProps {
  *
  * Example:
  * ```tsx
- * <Field>
+ * <Field.Root>
  *   <Label>Label</Label>
  *   <TextBox.Input />
- * </Field>
+ * </Field.Root>
  * ```
  *
  * Supports a `layout` prop, which can be set to `inline` to align the label and control horizontally.
@@ -36,7 +36,7 @@ interface FieldProps extends BaseProps {
  * - `Radio`
  * - `Switch`
  */
-export const Field = forwardRef<"div", FieldProps>((props, forwardedRef) => {
+const FieldRoot = forwardRef<"div", FieldProps>((props, forwardedRef) => {
 	const { layout, ...rest } = props;
 	return (
 		<FieldCollection
@@ -51,4 +51,6 @@ export const Field = forwardRef<"div", FieldProps>((props, forwardedRef) => {
 		/>
 	);
 });
-DEV: Field.displayName = "Field";
+DEV: FieldRoot.displayName = "Field";
+
+export { FieldRoot as Root };

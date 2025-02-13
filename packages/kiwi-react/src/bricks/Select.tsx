@@ -29,7 +29,7 @@ const HtmlSelectContext = React.createContext<
  *
  * Example usage:
  * ```tsx
- * <Field>
+ * <Field.Root>
  *   <Label>Select an option</Label>
  *   <Select.Root>
  *     <Select.HtmlSelect>
@@ -38,7 +38,7 @@ const HtmlSelectContext = React.createContext<
  *       <option value="3">Option 3</option>
  *     </Select.HtmlSelect>
  *   </Select.Root>
- * </Field>
+ * </Field.Root>
  * ```
  */
 const SelectRoot = forwardRef<"div", BaseProps>((props, forwardedRef) => {

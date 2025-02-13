@@ -16,13 +16,13 @@ export const handle = { title: "Checkbox" };
 export default definePage(
 	function Page({ checked, indeterminate, disabled }) {
 		return (
-			<Field>
+			<Field.Root>
 				<Checkbox
 					defaultChecked={indeterminate ? "mixed" : !!checked}
 					disabled={!!disabled}
 				/>
 				<Label>Toggle me</Label>
-			</Field>
+			</Field.Root>
 		);
 	},
 	{ visual: VisualTest },

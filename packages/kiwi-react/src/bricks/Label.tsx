@@ -22,10 +22,10 @@ interface LabelProps extends BaseProps<"label"> {}
  * Or within a `Field` component to automatically manage ID associations:
  * 
  * ```tsx
- * <Field>
+ * <Field.Root>
  *   <Label>Label</Label>
  *   <TextBox.Input />
- * </Field>
+ * </Field.Root>
  * ```
  * 
  */

@@ -17,7 +17,7 @@ export default definePage(
 	function Page({ disabled, defaultValue }) {
 		return (
 			<div style={{ display: "grid", gap: 8 }}>
-				<Field>
+				<Field.Root>
 					<Radio
 						name="test"
 						value="A"
@@ -25,9 +25,9 @@ export default definePage(
 						disabled={!!disabled}
 					/>
 					<Label>A</Label>
-				</Field>
+				</Field.Root>
 
-				<Field>
+				<Field.Root>
 					<Radio
 						name="test"
 						value="B"
@@ -35,7 +35,7 @@ export default definePage(
 						disabled={!!disabled}
 					/>
 					<Label>B</Label>
-				</Field>
+				</Field.Root>
 			</div>
 		);
 	},

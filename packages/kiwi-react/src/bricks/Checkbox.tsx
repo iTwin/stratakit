@@ -28,10 +28,10 @@ interface CheckboxProps extends InputBaseProps, CheckboxOwnProps {}
  * Works well the `Field` and `Label` components.
  *
  * ```tsx
- * <Field>
+ * <Field.Root>
  *   <Label>Check me</Label>
  *   <Checkbox />
- * </Field>
+ * </Field.Root>
  * ```
  *
  * Underneath, it's an HTML checkbox, i.e. `<input type="checkbox">`, so it supports the same props,

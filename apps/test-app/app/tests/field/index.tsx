@@ -36,7 +36,7 @@ export default definePage(
 
 		return (
 			<form style={{ display: "grid", gap: 32, justifyContent: "start" }}>
-				<Field
+				<Field.Root
 					layout={layout as "inline" | undefined}
 					render={asLabel ? <Label /> : undefined}
 				>
@@ -50,7 +50,7 @@ export default definePage(
 					{descriptions?.split(";").map((description) => (
 						<Description key={description}>{description}</Description>
 					))}
-				</Field>
+				</Field.Root>
 			</form>
 		);
 	},
@@ -76,30 +76,30 @@ function VisualTestForTextControls() {
 	return (
 		<div style={{ display: "grid", gap: 16 }}>
 			{/* Default layout for text controls (block) */}
-			<Field>
+			<Field.Root>
 				<Label>Text control</Label>
 				<TextBox.Input />
 				<Description>Text description</Description>
-			</Field>
+			</Field.Root>
 
 			{/* Default layout for text controls (block) with wrapper rendered as a `<Label>` */}
-			<Field render={<Label />}>
+			<Field.Root render={<Label />}>
 				<span>Textarea control</span>
 				<TextBox.Textarea />
-			</Field>
+			</Field.Root>
 
 			{/* Inline layout for text controls */}
-			<Field layout="inline">
+			<Field.Root layout="inline">
 				<Label>Text control</Label>
 				<TextBox.Input />
 				<Description>Text description</Description>
-			</Field>
+			</Field.Root>
 
 			{/* Inline layout for text controls with wrapper rendered as a `<Label>` */}
-			<Field render={<Label />} layout="inline">
+			<Field.Root render={<Label />} layout="inline">
 				<span>Textarea control</span>
 				<TextBox.Textarea />
-			</Field>
+			</Field.Root>
 		</div>
 	);
 }
@@ -108,96 +108,96 @@ function VisualTestForCheckableControls() {
 	return (
 		<div style={{ display: "grid", gap: 16 }}>
 			{/* Label before control */}
-			<Field>
+			<Field.Root>
 				<Label>Checkbox control</Label>
 				<Checkbox />
 				<Description>Checkbox description</Description>
-			</Field>
-			<Field>
+			</Field.Root>
+			<Field.Root>
 				<Label>Radio control</Label>
 				<Radio value="A" />
 				<Description>Radio description</Description>
-			</Field>
-			<Field>
+			</Field.Root>
+			<Field.Root>
 				<Label>Switch control</Label>
 				<Switch />
 				<Description>Switch description</Description>
-			</Field>
+			</Field.Root>
 
 			{/* Label after control */}
-			<Field>
+			<Field.Root>
 				<Checkbox />
 				<Label>Checkbox control</Label>
 				<Description>Checkbox description</Description>
-			</Field>
-			<Field>
+			</Field.Root>
+			<Field.Root>
 				<Radio value="A" />
 				<Label>Radio control</Label>
 				<Description>Radio description</Description>
-			</Field>
-			<Field>
+			</Field.Root>
+			<Field.Root>
 				<Switch />
 				<Label>Switch control</Label>
 				<Description>Switch description</Description>
-			</Field>
+			</Field.Root>
 
 			{/* Field rendering as label, text before control */}
-			<Field render={<Label />}>
+			<Field.Root render={<Label />}>
 				<span>Checkbox control</span>
 				<Checkbox />
-			</Field>
-			<Field render={<Label />}>
+			</Field.Root>
+			<Field.Root render={<Label />}>
 				<span>Radio control</span>
 				<Radio value="A" />
-			</Field>
-			<Field render={<Label />}>
+			</Field.Root>
+			<Field.Root render={<Label />}>
 				<span>Switch control</span>
 				<Switch />
-			</Field>
+			</Field.Root>
 
 			{/* Field rendering as label, text after control */}
-			<Field render={<Label />}>
+			<Field.Root render={<Label />}>
 				<Checkbox />
 				<span>Checkbox control</span>
-			</Field>
-			<Field render={<Label />}>
+			</Field.Root>
+			<Field.Root render={<Label />}>
 				<Radio value="A" />
 				<span>Radio control</span>
-			</Field>
-			<Field render={<Label />}>
+			</Field.Root>
+			<Field.Root render={<Label />}>
 				<Switch />
 				<span>Switch control</span>
-			</Field>
+			</Field.Root>
 		</div>
 	);
 }
 
 function CustomAriaDescribedByTest() {
 	return (
-		<Field>
+		<Field.Root>
 			<Label>Example</Label>
 			<TextBox.Input aria-describedby="custom-description" />
 			<div id="custom-description">Custom description.</div>
-		</Field>
+		</Field.Root>
 	);
 }
 
 function CustomDescriptionIdsTest() {
 	return (
-		<Field>
+		<Field.Root>
 			<Label>Example</Label>
 			<TextBox.Input />
 			<Description id="a">Supporting text.</Description>
 			<Description id="b">More supporting text.</Description>
-		</Field>
+		</Field.Root>
 	);
 }
 
 function CustomControlIdTest() {
 	return (
-		<Field>
+		<Field.Root>
 			<Label>Example</Label>
 			<TextBox.Input id="custom" />
-		</Field>
+		</Field.Root>
 	);
 }

@@ -30,10 +30,10 @@ interface SwitchProps extends InputBaseProps, CheckboxOwnProps {
  * Works well with the `Field` and `Label` components.
  *
  * ```tsx
- * <Field>
+ * <Field.Root>
  *   <Label>Enable feature</Label>
  *   <Switch />
- * </Field>
+ * </Field.Root>
  * ```
  *
  * Underneath, it's an HTML checkbox, i.e. `<input type="checkbox">`, so it supports the same props,

@@ -108,7 +108,7 @@ const ListItemDescription = forwardRef<"span", ListItemDescriptionProps>(
 		);
 	},
 );
-DEV: ListItemContent.displayName = "ListItem.Description";
+DEV: ListItemDescription.displayName = "ListItem.Description";
 
 // ----------------------------------------------------------------------------
 

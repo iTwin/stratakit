@@ -20,6 +20,7 @@ export const components = [
 	"Select",
 	"Spinner",
 	"Switch",
+	"Table",
 	"Tabs",
 	"Text",
 	"Textarea",

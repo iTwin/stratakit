@@ -39,100 +39,19 @@ interface FieldProps extends BaseProps {
 export const Field = forwardRef<"div", FieldProps>((props, forwardedRef) => {
 	const { layout, ...rest } = props;
 	return (
-		<FieldDescribedByProvider>
-			<FieldCollection
-				render={
-					<Ariakit.Role.div
-						{...rest}
-						className={cx("🥝-field", props.className)}
-						data-kiwi-layout={layout}
-						ref={forwardedRef}
-					/>
-				}
-			/>
-		</FieldDescribedByProvider>
+		<FieldCollection
+			render={
+				<Ariakit.Role.div
+					{...rest}
+					className={cx("🥝-field", props.className)}
+					data-kiwi-layout={layout}
+					ref={forwardedRef}
+				/>
+			}
+		/>
 	);
 });
 DEV: Field.displayName = "Field";
-
-// ----------------------------------------------------------------------------
-
-interface FieldDescribedBy {
-	describedBy: Set<string>;
-	register: (id: string) => void;
-	unregister: (id: string) => void;
-}
-
-const FieldDescribedByContext = React.createContext<
-	FieldDescribedBy | undefined
->(undefined);
-
-function FieldDescribedByProvider(props: { children?: React.ReactNode }) {
-	const [describedBy, setDescribedBy] = React.useState<
-		FieldDescribedBy["describedBy"]
-	>(new Set());
-
-	const register = React.useCallback((id: string) => {
-		setDescribedBy((describedBy) => {
-			const updated = new Set(describedBy);
-			updated.add(id);
-			return updated;
-		});
-	}, []);
-
-	const unregister = React.useCallback((id: string) => {
-		setDescribedBy((describedBy) => {
-			const updated = new Set(describedBy);
-			updated.delete(id);
-			return updated;
-		});
-	}, []);
-
-	return (
-		<FieldDescribedByContext.Provider
-			value={React.useMemo(
-				() => ({
-					describedBy,
-					register,
-					unregister,
-				}),
-				[describedBy, register, unregister],
-			)}
-		>
-			{props.children}
-		</FieldDescribedByContext.Provider>
-	);
-}
-
-/**
- * Use the description IDs for a field.
- */
-export function useFieldDescribedBy(ariaDescribedByProp?: string) {
-	const describedBySet = React.useContext(FieldDescribedByContext)?.describedBy;
-	return React.useMemo(
-		() =>
-			!describedBySet || describedBySet.size === 0
-				? ariaDescribedByProp
-				: [...describedBySet, ariaDescribedByProp].filter(Boolean).join(" "),
-		[describedBySet, ariaDescribedByProp],
-	);
-}
-
-/**
- * Registers a description for an associated control.
- */
-export function useFieldRegisterDescribedBy(id: string) {
-	const context = React.useContext(FieldDescribedByContext);
-	const register = context?.register;
-	const unregister = context?.unregister;
-
-	React.useEffect(() => {
-		if (!register || !unregister) return;
-
-		register(id);
-		return () => unregister(id);
-	}, [id, register, unregister]);
-}
 
 // ----------------------------------------------------------------------------
 
@@ -200,8 +119,23 @@ interface FieldCollectionItemControlProps
  * An element tracked as a control in the `Field`’s collection.
  */
 export function FieldControl(props: FieldCollectionItemControlProps) {
+	const store = Ariakit.useCollectionContext();
 	const generatedId = React.useId();
-	const { id = generatedId, type, ...rest } = props;
+	const { id = store ? generatedId : undefined, type, ...rest } = props;
+	const renderedItems = Ariakit.useStoreState(store, "renderedItems");
+	const describedBy = React.useMemo(() => {
+		// Create a space separated list of description IDs
+		const idRefList = renderedItems
+			?.filter(
+				(item: FieldCollectionStoreItem) => item.elementType === "description",
+			)
+			?.map((item) => item.id)
+			.join(" ");
+		// An empty string is valid for `aria-describedby`, but we don’t want that
+		// (e.g. `aria-describedby=""`). We use the empty string’s falsiness to
+		// return undefined to avoid setting the attribute at all.
+		return idRefList || undefined;
+	}, [renderedItems]);
 	const getData = React.useCallback(
 		(data: CollectionStoreItem) => ({
 			...data,
@@ -210,7 +144,13 @@ export function FieldControl(props: FieldCollectionItemControlProps) {
 		}),
 		[type],
 	);
-	return <Ariakit.CollectionItem {...rest} id={id} getItem={getData} />;
+	return (
+		<Ariakit.CollectionItem
+			id={id}
+			getItem={getData}
+			render={<Ariakit.Role {...rest} aria-describedby={describedBy} />}
+		/>
+	);
 }
 
 /**
@@ -241,4 +181,22 @@ export function FieldLabel(props: Pick<Ariakit.CollectionItemProps, "render">) {
 			render={<Ariakit.Role.label {...props} htmlFor={fieldId} />}
 		/>
 	);
+}
+
+/**
+ * An element tracked as a description in the `Field`’s collection.
+ */
+export function FieldDescription(
+	props: Pick<Ariakit.CollectionItemProps, "render" | "id">,
+) {
+	const generatedId = React.useId();
+	const { id = generatedId, ...rest } = props;
+	const getData = React.useCallback(
+		(data: CollectionStoreItem) => ({
+			...data,
+			elementType: "description",
+		}),
+		[],
+	);
+	return <Ariakit.CollectionItem {...rest} id={id} getItem={getData} />;
 }

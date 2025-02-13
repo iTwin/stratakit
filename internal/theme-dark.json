@@ -127,30 +127,52 @@
 					"$value": "{p-color.purple.300}"
 				}
 			},
-			"surface": {
-				"secondary": {
+			"page": {
+				"depth": {
+					"$type": "color",
+					"$value": "{p-color.gray.950}"
+				},
+				"base": {
 					"$type": "color",
 					"$value": "{p-color.gray.925}"
 				},
-				"primary": {
+				"zebra": {
+					"$type": "color",
+					"$value": "{p-color.black.4}"
+				}
+			},
+			"elevation": {
+				"base": {
 					"$type": "color",
 					"$value": "{p-color.gray.900}"
-				},
-				"tertiary": {
-					"$type": "color",
-					"$value": "{p-color.gray.950}"
 				},
 				"emphasis": {
 					"$type": "color",
 					"$value": "{p-color.gray.1000}"
 				},
-				"base": {
+				"control": {
 					"$type": "color",
-					"$value": "{p-color.gray.900}"
+					"$value": "{p-color.gray.925}"
 				},
-				"quaternary": {
+				"level-1": {
+					"$type": "color",
+					"$value": "{p-color.gray.850}"
+				},
+				"overlay": {
 					"$type": "color",
 					"$value": "{p-color.gray.975}"
+				},
+				"level-2": {
+					"$type": "color",
+					"$value": "{p-color.gray.825}"
+				},
+				"scrollbar-surface": {
+					"$type": "color",
+					"$value": "{p-color.white.32}"
+				},
+				"scrollbar-canvas": {
+					"$type": "color",
+					"$value": "{p-color.black.48}"
 				}
 			},
 			"neutral": {
@@ -160,7 +182,7 @@
 				},
 				"muted": {
 					"$type": "color",
-					"$value": "{p-color.gray.900}"
+					"$value": "{p-color.gray.825}"
 				},
 				"faded": {
 					"$type": "color",
@@ -199,11 +221,11 @@
 						"$type": "color",
 						"$value": "{p-color.aurora.16}"
 					},
-					"🫥neutral-hover": {
+					"neutral-hover": {
 						"$type": "color",
 						"$value": "{p-color.white.4}"
 					},
-					"🫥neutral-pressed": {
+					"neutral-pressed": {
 						"$type": "color",
 						"$value": "{p-color.white.8}"
 					},
@@ -218,18 +240,6 @@
 					"disabled": {
 						"$type": "color",
 						"$value": "{p-color.white.4}"
-					},
-					"overlay": {
-						"$type": "color",
-						"$value": "{p-color.white.32}"
-					},
-					"neutral-hover-%": {
-						"$type": "number",
-						"$value": 4
-					},
-					"neutral-pressed-%": {
-						"$type": "number",
-						"$value": 8
 					}
 				},
 				"strong": {
@@ -564,6 +574,10 @@
 					"pressed-%": {
 						"$type": "number",
 						"$value": 12
+					},
+					"default": {
+						"$type": "color",
+						"$value": "{p-color.white.8}"
 					}
 				},
 				"on-surface": {
@@ -592,6 +606,10 @@
 					"pressed-%": {
 						"$type": "number",
 						"$value": 24
+					},
+					"default": {
+						"$type": "color",
+						"$value": "{p-color.white.16}"
 					}
 				}
 			},
@@ -602,7 +620,7 @@
 				},
 				"muted": {
 					"$type": "color",
-					"$value": "{p-color.gray.800}"
+					"$value": "{p-color.gray.825}"
 				},
 				"faded": {
 					"$type": "color",
@@ -617,10 +635,24 @@
 					"$value": "{p-color.gray.600}"
 				}
 			},
-			"surface": {
-				"primary": {
+			"elevation": {
+				"base": {
 					"$type": "color",
 					"$value": "{p-color.black.64}"
+				},
+				"scrollbar-canvas": {
+					"$type": "color",
+					"$value": "{p-color.white.24}"
+				}
+			},
+			"page": {
+				"base": {
+					"$type": "color",
+					"$value": "{p-color.white.8}"
+				},
+				"depth": {
+					"$type": "color",
+					"$value": "{p-color.white.8}"
 				}
 			}
 		},

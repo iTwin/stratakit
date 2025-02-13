@@ -126,7 +126,7 @@ function Tokens({
 
 			<tbody>
 				{tokens.map((token) => {
-					const variableName = `--kiwi-${kind}-${token}`;
+					const variableName = `--ids-${kind}-${token}`;
 					return (
 						<tr key={token}>
 							<td>

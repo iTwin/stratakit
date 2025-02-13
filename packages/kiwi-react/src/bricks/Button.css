@@ -3,18 +3,18 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 .🥝-button {
-	--✨color--default: var(--kiwi-color-text-neutral-primary);
+	--✨color--default: var(--ids-color-text-neutral-primary);
 	--✨gap: 4px;
 	--✨height: 1.5rem;
 	--✨padding-inline: 12px;
 
 	--✨shadow-border: 0px 0px 0px 1px var(--🥝button-border-color) inset;
 
-	--✨glow--bg-hover: var(--kiwi-color-glow-hue) var(--kiwi-color-bg-glow-base-hover-\%);
-	--✨glow--bg-press: var(--kiwi-color-glow-hue) var(--kiwi-color-bg-glow-base-pressed-\%);
+	--✨glow--bg-hover: var(--ids-color-glow-hue) var(--ids-color-bg-glow-base-hover-\%);
+	--✨glow--bg-press: var(--ids-color-glow-hue) var(--ids-color-bg-glow-base-pressed-\%);
 
-	--✨bg--solid-neutral-default: var(--kiwi-color-bg-neutral-base);
-	--✨bg--solid-accent-default: var(--kiwi-color-bg-accent-base);
+	--✨bg--solid-neutral-default: var(--ids-color-bg-neutral-base);
+	--✨bg--solid-accent-default: var(--ids-color-bg-accent-base);
 	--✨bg--solid-hover: color-mix(
 		in oklch,
 		var(--🥝button-bg--solid-default) 100%,
@@ -25,34 +25,34 @@
 		var(--🥝button-bg--solid-default) 100%,
 		var(--✨glow--bg-press)
 	);
-	--✨bg--solid-disabled: var(--kiwi-color-bg-glow-on-surface-disabled);
+	--✨bg--solid-disabled: var(--ids-color-bg-glow-on-surface-disabled);
 
-	--✨shadow--solid: var(--kiwi-shadow-button-base-inset), var(--✨shadow-border),
-		var(--kiwi-shadow-button-base-drop);
+	--✨shadow--solid: var(--ids-shadow-button-base-inset), var(--✨shadow-border),
+		var(--ids-shadow-button-base-drop);
 
-	--✨border--solid-neutral-default: var(--kiwi-color-border-shadow-base);
+	--✨border--solid-neutral-default: var(--ids-color-border-shadow-base);
 	--✨border--solid-neutral-hover: color-mix(
 		in oklch,
 		var(--✨border--solid-neutral-default) 100%,
-		var(--kiwi-color-glow-hue) var(--kiwi-color-border-glow-base-hover-\%)
+		var(--ids-color-glow-hue) var(--ids-color-border-glow-base-hover-\%)
 	);
 	--✨border--solid-neutral-pressed: color-mix(
 		in oklch,
 		var(--✨border--solid-neutral-default) 100%,
-		var(--kiwi-color-glow-hue) var(--kiwi-color-border-glow-base-pressed-\%)
+		var(--ids-color-glow-hue) var(--ids-color-border-glow-base-pressed-\%)
 	);
 	--✨border--solid-neutral-disabled: transparent;
 
-	--✨border--solid-accent-default: var(--kiwi-color-border-shadow-strong);
+	--✨border--solid-accent-default: var(--ids-color-border-shadow-strong);
 	--✨border--solid-accent-hover: color-mix(
 		in oklch,
 		var(--✨border--solid-accent-default) 100%,
-		var(--kiwi-color-glow-hue) var(--kiwi-color-border-glow-strong-hover-\%)
+		var(--ids-color-glow-hue) var(--ids-color-border-glow-strong-hover-\%)
 	);
 	--✨border--solid-accent-pressed: color-mix(
 		in oklch,
 		var(--✨border--solid-accent-default) 100%,
-		var(--kiwi-color-glow-hue) var(--kiwi-color-border-glow-strong-pressed-\%)
+		var(--ids-color-glow-hue) var(--ids-color-border-glow-strong-pressed-\%)
 	);
 	--✨border--solid-accent-disabled: transparent;
 
@@ -68,18 +68,18 @@
 		var(--✨glow--bg-press)
 	);
 	--✨bg--outline-disabled: transparent;
-	--✨border--outline-default: var(--kiwi-color-border-neutral-base);
+	--✨border--outline-default: var(--ids-color-border-neutral-base);
 	--✨border--outline-hover: color-mix(
 		in oklch,
 		var(--✨border--outline-default) 100%,
-		var(--kiwi-color-glow-hue) var(--kiwi-color-border-glow-base-hover-\%)
+		var(--ids-color-glow-hue) var(--ids-color-border-glow-base-hover-\%)
 	);
 	--✨border--outline-pressed: color-mix(
 		in oklch,
 		var(--✨border--outline-default) 100%,
-		var(--kiwi-color-glow-hue) var(--kiwi-color-border-glow-base-pressed-\%)
+		var(--ids-color-glow-hue) var(--ids-color-border-glow-base-pressed-\%)
 	);
-	--✨border--outline-disabled: var(--kiwi-color-border-glow-on-surface-disabled);
+	--✨border--outline-disabled: var(--ids-color-border-glow-on-surface-disabled);
 
 	--✨bg--ghost-default: transparent;
 	--✨bg--ghost-hover: color-mix(in oklch, var(--✨bg--ghost-default) 100%, var(--✨glow--bg-hover));
@@ -88,7 +88,7 @@
 		var(--✨bg--ghost-default) 100%,
 		var(--✨glow--bg-press)
 	);
-	--✨bg--ghost-active: var(--kiwi-color-bg-glow-on-surface-accent-pressed);
+	--✨bg--ghost-active: var(--ids-color-bg-glow-on-surface-accent-pressed);
 	--✨bg--ghost-disabled: transparent;
 
 	@layer base {
@@ -97,7 +97,7 @@
 		white-space: nowrap;
 		user-select: none;
 		cursor: pointer;
-		font-size: var(--kiwi-font-size-12);
+		font-size: var(--ids-font-size-12);
 		font-weight: 500;
 		border: none;
 
@@ -115,11 +115,11 @@
 		color: var(--🥝button-color, var(--✨color--default));
 		transition: background-color 150ms ease-out;
 		-webkit-tap-highlight-color: var(--✨bg--solid-pressed);
-		--🥝icon-color: var(--🌀button-state--default, var(--kiwi-color-icon-neutral-base))
-			var(--🌀button-state--hover, var(--kiwi-color-icon-neutral-hover))
-			var(--🌀button-state--pressed, var(--kiwi-color-icon-neutral-hover))
-			var(--🌀button-state--active, var(--kiwi-color-icon-accent-strong))
-			var(--🌀button-state--disabled, var(--kiwi-color-icon-neutral-disabled));
+		--🥝icon-color: var(--🌀button-state--default, var(--ids-color-icon-neutral-base))
+			var(--🌀button-state--hover, var(--ids-color-icon-neutral-hover))
+			var(--🌀button-state--pressed, var(--ids-color-icon-neutral-hover))
+			var(--🌀button-state--active, var(--ids-color-icon-accent-strong))
+			var(--🌀button-state--disabled, var(--ids-color-icon-neutral-disabled));
 
 		@media (forced-colors: active) {
 			background-color: ButtonFace;
@@ -160,11 +160,11 @@
 					var(--🌀button-state--pressed, var(--✨border--solid-accent-pressed))
 					var(--🌀button-state--disabled, var(--✨border--solid-accent-disabled));
 
-				--🥝button-color: var(--kiwi-color-text-neutral-emphasis);
-				--🥝icon-color: var(--🌀button-state--default, var(--kiwi-color-icon-neutral-emphasis))
-					var(--🌀button-state--hover, var(--kiwi-color-icon-strong-hover))
-					var(--🌀button-state--pressed, var(--kiwi-color-icon-neutral-hover))
-					var(--🌀button-state--disabled, var(--kiwi-color-icon-neutral-disabled));
+				--🥝button-color: var(--ids-color-text-neutral-emphasis);
+				--🥝icon-color: var(--🌀button-state--default, var(--ids-color-icon-neutral-emphasis))
+					var(--🌀button-state--hover, var(--ids-color-icon-strong-hover))
+					var(--🌀button-state--pressed, var(--ids-color-icon-neutral-hover))
+					var(--🌀button-state--disabled, var(--ids-color-icon-neutral-disabled));
 
 				@media (forced-colors: active) {
 					--🥝icon-color: ButtonText;
@@ -216,7 +216,7 @@
 
 		&:where([disabled], :disabled, [aria-disabled="true"]) {
 			--🌀button-state: var(--🌀button-state--disabled);
-			color: var(--kiwi-color-text-neutral-disabled);
+			color: var(--ids-color-text-neutral-disabled);
 			cursor: not-allowed;
 
 			@media (forced-colors: active) {

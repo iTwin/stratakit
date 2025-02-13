@@ -5,11 +5,11 @@
 .🥝-description:is(.🥝-text) {
 	@layer modifiers {
 		&:where([data-kiwi-tone="neutral"]) {
-			color: var(--kiwi-color-text-neutral-tertiary);
+			color: var(--ids-color-text-neutral-tertiary);
 		}
 
 		&:where([data-kiwi-tone="critical"]) {
-			color: var(--kiwi-color-text-critical-base);
+			color: var(--ids-color-text-critical-base);
 		}
 	}
 }

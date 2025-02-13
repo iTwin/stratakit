@@ -939,7 +939,7 @@ function SandboxTree({
 
 	return (
 		<React.Suspense fallback="Loading...">
-			<Tree.Root>
+			<Tree.Root className={styles.tree}>
 				{deferredItems.map((item) => {
 					return (
 						<Tree.Item

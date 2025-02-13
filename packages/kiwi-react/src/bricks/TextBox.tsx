@@ -5,7 +5,7 @@
 import * as React from "react";
 import * as Ariakit from "@ariakit/react";
 import cx from "classnames";
-import { FieldControl, useFieldDescribedBy } from "./Field.js";
+import { FieldControl } from "./Field.js";
 import { Icon } from "./Icon.js";
 import { useMergedRefs } from "./~hooks.js";
 import { type FocusableProps, type BaseProps, forwardRef } from "./~utils.js";
@@ -55,7 +55,6 @@ interface TextBoxInputProps extends Omit<BaseInputProps, "children" | "type"> {
 const TextBoxInput = forwardRef<"input", TextBoxInputProps>(
 	(props, forwardedRef) => {
 		const { id, ...rest } = props;
-		const describedBy = useFieldDescribedBy(props["aria-describedby"]);
 		const rootContext = React.useContext(TextBoxRootContext);
 		const setDisabled = rootContext?.setDisabled;
 		React.useEffect(() => {
@@ -69,7 +68,6 @@ const TextBoxInput = forwardRef<"input", TextBoxInputProps>(
 					<Ariakit.Role.input
 						readOnly={props.disabled}
 						{...rest}
-						aria-describedby={describedBy}
 						className={cx({ "🥝-text-box": !rootContext }, props.className)}
 						/**
 						 * Use an empty string as a placeholder to fix baseline alignment in Safari.
@@ -117,7 +115,6 @@ interface TextareaProps extends FocusableProps<"textarea"> {}
 const TextBoxTextarea = forwardRef<"textarea", TextareaProps>(
 	(props, forwardedRef) => {
 		const { id, ...rest } = props;
-		const describedBy = useFieldDescribedBy(props["aria-describedby"]);
 
 		return (
 			<FieldControl
@@ -128,7 +125,6 @@ const TextBoxTextarea = forwardRef<"textarea", TextareaProps>(
 						readOnly={props.disabled}
 						{...rest}
 						className={cx("🥝-text-box", props.className)}
-						aria-describedby={describedBy}
 						/**
 						 * Use an empty string as a placeholder to fix baseline alignment in Safari.
 						 * @see https://bugs.webkit.org/show_bug.cgi?id=142968

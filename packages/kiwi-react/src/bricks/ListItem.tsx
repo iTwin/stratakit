@@ -105,7 +105,7 @@ const ListItemDescription = forwardRef<"span", ListItemDescriptionProps>(
 		return (
 			<Text
 				{...props}
-				variant="caption-lg"
+				variant="body-sm"
 				render={<span />}
 				className={cx("🥝-list-item-description", props.className)}
 				ref={forwardedRef}

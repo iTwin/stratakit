@@ -1,5 +1,14 @@
 # Changelog
 
+## 5.0.0-alpha.6
+
+- **breaking**: All CSS variables have been renamed to use the `--ids` prefix. See [#369](https://github.com/iTwin/kiwi/pull/369).
+- **breaking**: Some CSS variables were renamed further. See [#368](https://github.com/iTwin/kiwi/pull/368).
+  - Notably, the "surface" backgrounds have been split into two different "page" and "elevation" scales.
+- Background colors have been updated to match the latest design.
+- All styles are now loaded into `@layer itwinui`. The one exception is the CSS reset which remains in `@layer reset`.
+- `<Field>` now respects the order of `<Description>`s when creating associations.
+
 ## 5.0.0-alpha.5
 
 - **breaking**: `Tree` API has changed to require flat structure, with explicit ARIA props (see [#300](https://github.com/iTwin/kiwi/pull/300)). `<Tree.Item>` no longer allows passing `children`.

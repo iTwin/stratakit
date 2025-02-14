@@ -10,11 +10,17 @@ import { useMergedRefs } from "./~hooks.js";
 
 // ----------------------------------------------------------------------------
 
-interface TableProps extends BaseProps {}
+interface TableProps extends BaseProps<"div" | "table"> {
+	// TODO: Confirm name of prop
+	as?: "div" | "table";
+}
+
 const TableContext = React.createContext<{
 	setCaptionId: React.Dispatch<React.SetStateAction<string | undefined>>;
+	as: "div" | "table";
 }>({
 	setCaptionId: () => {},
+	as: "div",
 });
 
 /**
@@ -25,7 +31,7 @@ const TableContext = React.createContext<{
  *
  * Example:
  * ```tsx
- * <Table.Root>
+ * <Table.Root as="table">
  *  <Table.Caption>Table Caption</Table.Caption>
  * 	<Table.Header>
  * 		<Table.Row>
@@ -47,22 +53,26 @@ const TableContext = React.createContext<{
  * </Table.Root>
  * ```
  */
-const Table = forwardRef<"div", TableProps>((props, forwardedRef) => {
+const Table = forwardRef<"div" | "table", TableProps>((props, forwardedRef) => {
+	const { as = "div", className, children, ...rest } = props;
 	const [captionId, setCaptionId] = React.useState<string | undefined>();
 
-	const tableContext = React.useMemo(() => ({ setCaptionId }), []);
+	const tableContext = React.useMemo(() => ({ setCaptionId, as }), [as]);
+
+	const Component = as;
 
 	return (
 		<TableContext.Provider value={tableContext}>
-			<Ariakit.Role
-				{...props}
-				className={cx("🥝-table", props.className)}
+			<Component
+				{...rest}
+				className={cx("🥝-table", className)}
+				// @ts-ignore TODO: Fix type error
 				ref={forwardedRef}
-				role="table"
+				role={as === "div" ? "table" : undefined}
 				aria-labelledby={captionId}
 			>
-				{props.children}
-			</Ariakit.Role>
+				{children}
+			</Component>
 		</TableContext.Provider>
 	);
 });
@@ -87,18 +97,22 @@ const TableHeaderContext = React.createContext(false);
  *	</Table.Header>
  * ```
  */
-const TableHeader = forwardRef<"div", TableHeaderProps>(
+const TableHeader = forwardRef<"div" | "thead", TableHeaderProps>(
 	(props, forwardedRef) => {
+		const { as } = React.useContext(TableContext);
+		const Component = as === "table" ? "thead" : "div";
+
 		return (
 			<TableHeaderContext.Provider value={true}>
-				<Ariakit.Role.div
+				<Component
 					{...props}
 					className={cx("🥝-table-header", props.className)}
+					// @ts-ignore TODO: Fix type error
 					ref={forwardedRef}
-					role="rowgroup"
+					role={as === "div" ? "rowgroup" : undefined}
 				>
 					{props.children}
-				</Ariakit.Role.div>
+				</Component>
 			</TableHeaderContext.Provider>
 		);
 	},
@@ -107,7 +121,7 @@ DEV: TableHeader.displayName = "Table.Header";
 
 // ----------------------------------------------------------------------------
 
-interface TableBodyProps extends BaseProps {}
+interface TableBodyProps extends BaseProps<"div" | "tbody"> {}
 
 /**
  * `Table.Body` is a component that contains the rows of table data.
@@ -129,22 +143,28 @@ interface TableBodyProps extends BaseProps {}
  *	</Table.Body>
  * ```
  */
-const TableBody = forwardRef<"div", TableBodyProps>((props, forwardedRef) => {
-	return (
-		<Ariakit.Role.div
-			{...props}
-			className={cx("🥝-table-body", props.className)}
-			ref={forwardedRef}
-		>
-			{props.children}
-		</Ariakit.Role.div>
-	);
-});
+const TableBody = forwardRef<"div" | "tbody", TableBodyProps>(
+	(props, forwardedRef) => {
+		const { as } = React.useContext(TableContext);
+		const Component = as === "table" ? "tbody" : "div";
+
+		return (
+			<Component
+				{...props}
+				className={cx("🥝-table-body", props.className)}
+				// @ts-ignore TODO: Fix type error
+				ref={forwardedRef}
+			>
+				{props.children}
+			</Component>
+		);
+	},
+);
 DEV: TableBody.displayName = "Table.Body";
 
 // ----------------------------------------------------------------------------
 
-interface TableRowProps extends BaseProps {}
+interface TableRowProps extends BaseProps<"div" | "tr"> {}
 
 /**
  * `Table.Row` is a component that contains the cells of a table row.
@@ -157,25 +177,29 @@ interface TableRowProps extends BaseProps {}
  *	</Table.Row>
  * ```
  */
-const TableRow = forwardRef<"div", TableRowProps>((props, forwardedRef) => {
-	const { children, ...rest } = props;
+const TableRow = forwardRef<"div" | "tr", TableRowProps>(
+	(props, forwardedRef) => {
+		const { as } = React.useContext(TableContext);
+		const Component = as === "table" ? "tr" : "div";
 
-	return (
-		<Ariakit.Role.div
-			{...rest}
-			className={cx("🥝-table-row", props.className)}
-			ref={forwardedRef}
-			role="row"
-		>
-			{children}
-		</Ariakit.Role.div>
-	);
-});
+		return (
+			<Component
+				{...props}
+				className={cx("🥝-table-row", props.className)}
+				// @ts-ignore TODO: Fix type error
+				ref={forwardedRef}
+				role={as === "div" ? "row" : undefined}
+			>
+				{props.children}
+			</Component>
+		);
+	},
+);
 DEV: TableRow.displayName = "Table.Row";
 
 // ----------------------------------------------------------------------------
 
-interface TableCaptionProps extends BaseProps<"caption"> {}
+interface TableCaptionProps extends BaseProps<"div" | "caption"> {}
 
 /**
  * `Table.Caption` is a component that contains the caption of a table.
@@ -188,12 +212,14 @@ interface TableCaptionProps extends BaseProps<"caption"> {}
  * </Table.Root>
  * ```
  */
-const TableCaption = forwardRef<"caption", TableCaptionProps>(
+const TableCaption = forwardRef<"div" | "caption", TableCaptionProps>(
 	(props, forwardedRef) => {
 		const fallbackId = React.useId();
 
 		const { id = fallbackId, children, ...rest } = props;
-		const { setCaptionId } = React.useContext(TableContext);
+		const { setCaptionId, as } = React.useContext(TableContext);
+
+		const Component = as === "table" ? "caption" : "div";
 
 		const captionIdRef = React.useCallback(
 			(element: HTMLElement | null) => {
@@ -203,14 +229,14 @@ const TableCaption = forwardRef<"caption", TableCaptionProps>(
 		);
 
 		return (
-			<Ariakit.Role
+			<Component
 				{...rest}
 				id={id}
 				className={cx("🥝-table-caption", props.className)}
 				ref={useMergedRefs(forwardedRef, captionIdRef)}
 			>
 				{children}
-			</Ariakit.Role>
+			</Component>
 		);
 	},
 );
@@ -230,16 +256,38 @@ interface TableCellProps extends BaseProps<"span"> {}
  */
 const TableCell = forwardRef<"span", TableCellProps>((props, forwardedRef) => {
 	const isWithinTableHeader = React.useContext(TableHeaderContext);
+	const { as } = React.useContext(TableContext);
+	const { className, render: renderProp, ...rest } = props;
+
+	const role = React.useMemo(() => {
+		if (as === "div") {
+			return isWithinTableHeader ? "columnheader" : "cell";
+		}
+
+		return undefined;
+	}, [as, isWithinTableHeader]);
+
+	const [Component, render] = React.useMemo(() => {
+		if (as === "div") {
+			return [Ariakit.Role.span, undefined];
+		}
+
+		return isWithinTableHeader
+			? [Ariakit.Role, <th key={0} />]
+			: [Ariakit.Role, <td key={0} />];
+	}, [as, isWithinTableHeader]);
 
 	return (
-		<Ariakit.Role.span
+		<Component
 			{...props}
+			render={renderProp || render}
 			className={cx("🥝-table-cell", props.className)}
+			// @ts-ignore TODO: Fix type error
 			ref={forwardedRef}
-			role={isWithinTableHeader ? "columnheader" : "cell"}
+			role={role}
 		>
 			{props.children}
-		</Ariakit.Role.span>
+		</Component>
 	);
 });
 DEV: TableCell.displayName = "Table.Cell";

@@ -45,7 +45,7 @@ export default definePage(
 
 function VisualTest() {
 	return (
-		<Table.Root>
+		<Table.Root as="table">
 			<Table.Caption>Fruits and their colors</Table.Caption>
 			<Table.Header>
 				<Table.Row>

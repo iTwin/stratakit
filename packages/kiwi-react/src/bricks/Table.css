@@ -5,8 +5,10 @@
 
 .🥝-table {
 	@layer base {
-		display: flex;
-		flex-direction: column;
+		&:is(:not(table)) {
+			display: flex;
+			flex-direction: column;
+		}
 	}
 }
 
@@ -18,15 +20,19 @@
 
 .🥝-table-body {
 	@layer base {
-		display: flex;
-		flex-direction: column;
+		&:is(:not(tbody)) {
+			display: flex;
+			flex-direction: column;
+		}
 	}
 }
 
 .🥝-table-row {
 	@layer base {
-		display: flex;
-		border-block-end: 1px solid var(--ids-color-border-neutral-muted);
+		&:is(:not(tr)) {
+			display: flex;
+			border-block-end: 1px solid var(--ids-color-border-neutral-muted);
+		}
 	}
 }
 

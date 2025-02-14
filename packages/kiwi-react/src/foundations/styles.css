@@ -4,6 +4,6 @@
  *--------------------------------------------------------------------------------------------*/
 @import "./reset.css" layer(reset);
 
-@import "./theme.css" layer(kiwi.foundations);
-@import "./typography.css" layer(kiwi.foundations);
-@import "./global.css" layer(kiwi.foundations);
+@import "./theme.css" layer(itwinui.foundations);
+@import "./typography.css" layer(itwinui.foundations);
+@import "./global.css" layer(itwinui.foundations);

@@ -58,9 +58,7 @@ export const Avatar = forwardRef<"span", AvatarProps>((props, forwardedRef) => {
 			className={cx("🥝-avatar", props.className)}
 			ref={forwardedRef}
 		>
-			{!image
-				? abbreviation?.substring(0, size === "small" ? 1 : 2)
-				: null}
+			{!image ? abbreviation?.substring(0, size === "small" ? 1 : 2) : null}
 			{image}
 		</Ariakit.Role.span>
 	);

@@ -21,8 +21,8 @@
 
 .header {
 	grid-area: header;
-	background-color: var(--kiwi-color-bg-surface-primary);
-	border-block-end: 1px solid var(--kiwi-color-border-neutral-base);
+	background-color: var(--ids-color-bg-page-base);
+	border-block-end: 1px solid var(--ids-color-border-neutral-base);
 
 	display: flex;
 	align-items: center;
@@ -31,12 +31,12 @@
 
 .platformBar {
 	grid-area: platformBar;
-	background-color: var(--kiwi-color-bg-surface-secondary);
-	border-inline-end: 1px solid var(--kiwi-color-border-neutral-base);
+	background-color: var(--ids-color-bg-page-depth);
+	border-inline-end: 1px solid var(--ids-color-border-neutral-base);
 }
 
 .logo {
-	border-inline-end: 1px solid var(--kiwi-color-border-neutral-base);
+	border-inline-end: 1px solid var(--ids-color-border-neutral-base);
 	block-size: var(--_platformBar-width);
 	inline-size: var(--_platformBar-width);
 
@@ -58,7 +58,7 @@
 .leftPanel {
 	grid-area: leftPanel;
 	padding-block-start: 12px;
-	background-color: var(--kiwi-color-bg-surface-primary);
+	background-color: var(--ids-color-bg-page-base);
 	min-block-size: 0;
 
 	contain: size layout; /* prevent unnecessary overflow */
@@ -72,7 +72,7 @@
 	padding-inline: 12px;
 	justify-content: space-between;
 
-	font-size: var(--kiwi-font-size-12);
+	font-size: var(--ids-font-size-12);
 }
 
 .panelTitleWrapper {
@@ -80,7 +80,7 @@
 }
 
 .panelCaption {
-	color: var(--kiwi-color-text-neutral-secondary);
+	color: var(--ids-color-text-neutral-secondary);
 }
 
 .shiftIconRight {
@@ -90,7 +90,7 @@
 .subheader {
 	min-block-size: 2.5rem;
 	padding-inline: 12px;
-	border-block: 1px solid var(--kiwi-color-border-neutral-base);
+	border-block: 1px solid var(--ids-color-border-neutral-base);
 	border-inline: none;
 
 	display: flex;
@@ -99,7 +99,7 @@
 }
 
 .subheaderTitle {
-	font-size: var(--kiwi-font-size-12);
+	font-size: var(--ids-font-size-12);
 	font-weight: 600;
 }
 
@@ -134,8 +134,8 @@
 	grid-area: canvas;
 	block-size: 100%;
 	border-radius: 16px;
-	box-shadow: var(--kiwi-shadow-surface-xl);
-	border: 1px solid var(--kiwi-color-border-neutral-base);
+	box-shadow: var(--ids-shadow-surface-xl);
+	border: 1px solid var(--ids-color-border-neutral-muted);
 	position: relative;
 
 	&::before {
@@ -149,15 +149,15 @@
 
 		--_rings: repeating-radial-gradient(
 			circle at center,
-			var(--kiwi-color-border-neutral-base) 1px,
-			var(--kiwi-color-border-neutral-base) 3px,
+			var(--ids-color-border-neutral-muted) 1px,
+			var(--ids-color-border-neutral-muted) 3px,
 			transparent 3px,
 			transparent 10px
 		);
 		--_gradient: linear-gradient(
 			180deg,
-			var(--kiwi-color-bg-surface-primary) 0%,
-			var(--kiwi-color-bg-surface-tertiary) 100%
+			var(--ids-color-bg-page-base) 0%,
+			var(--ids-color-bg-page-depth) 100%
 		);
 	}
 }
@@ -183,7 +183,7 @@
 
 	&:where(:hover, [data-resizing="true"]) {
 		&:not(:focus-within) {
-			--_bg: var(--kiwi-color-border-accent-strong);
+			--_bg: var(--ids-color-border-accent-strong);
 
 			@media (forced-colors: active) {
 				--_bg: Highlight;
@@ -193,7 +193,7 @@
 
 	&:where(:has(:is(input):focus-visible)) {
 		&::before {
-			outline: 2px solid var(--kiwi-color-border-accent-strong);
+			outline: 2px solid var(--ids-color-border-accent-strong);
 			outline-offset: 1px;
 		}
 	}
@@ -201,7 +201,7 @@
 	@supports not selector(:has(+ *)) {
 		&:where(:not(input):focus-within) {
 			&::before {
-				outline: 2px solid var(--kiwi-color-border-accent-strong);
+				outline: 2px solid var(--ids-color-border-accent-strong);
 				outline-offset: -1px;
 			}
 		}
@@ -212,10 +212,12 @@
 	min-block-size: 0;
 	flex-grow: 1;
 	padding-block-end: 12px;
+	display: grid;
+	align-content: stretch;
 }
 
 .tree {
-	block-size: 100%;
+	scrollbar-gutter: stable;
 }
 
 .action {

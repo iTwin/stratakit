@@ -2,29 +2,30 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-@import "./sublayers.css" layer(kiwi.components);
+@import "./sublayers.css" layer(itwinui.components);
 
-@import "./Icon.css" layer(kiwi.components);
+@import "./Icon.css" layer(itwinui.components);
 
-@import "./Anchor.css" layer(kiwi.components);
-@import "./Button.css" layer(kiwi.components);
-@import "./Checkbox.css" layer(kiwi.components);
-@import "./Chip.css" layer(kiwi.components);
-@import "./Description.css" layer(kiwi.components);
-@import "./Divider.css" layer(kiwi.components);
-@import "./DropdownMenu.css" layer(kiwi.components);
-@import "./IconButton.css" layer(kiwi.components);
-@import "./Kbd.css" layer(kiwi.components);
-@import "./Label.css" layer(kiwi.components);
-@import "./Radio.css" layer(kiwi.components);
-@import "./ListItem.css" layer(kiwi.components);
-@import "./Spinner.css" layer(kiwi.components);
-@import "./Select.css" layer(kiwi.components);
-@import "./Switch.css" layer(kiwi.components);
-@import "./Tabs.css" layer(kiwi.components);
-@import "./Text.css" layer(kiwi.components);
-@import "./TextBox.css" layer(kiwi.components);
-@import "./Tooltip.css" layer(kiwi.components);
-@import "./Tree.css" layer(kiwi.components);
+@import "./Anchor.css" layer(itwinui.components);
+@import "./Button.css" layer(itwinui.components);
+@import "./Checkbox.css" layer(itwinui.components);
+@import "./Chip.css" layer(itwinui.components);
+@import "./Description.css" layer(itwinui.components);
+@import "./Divider.css" layer(itwinui.components);
+@import "./DropdownMenu.css" layer(itwinui.components);
+@import "./IconButton.css" layer(itwinui.components);
+@import "./Kbd.css" layer(itwinui.components);
+@import "./Label.css" layer(itwinui.components);
+@import "./Radio.css" layer(itwinui.components);
+@import "./ListItem.css" layer(itwinui.components);
+@import "./Spinner.css" layer(itwinui.components);
+@import "./Select.css" layer(itwinui.components);
+@import "./Switch.css" layer(itwinui.components);
+@import "./Table.css" layer(itwinui.components);
+@import "./Tabs.css" layer(itwinui.components);
+@import "./Text.css" layer(itwinui.components);
+@import "./TextBox.css" layer(itwinui.components);
+@import "./Tooltip.css" layer(itwinui.components);
+@import "./Tree.css" layer(itwinui.components);
 
-@import "./Field.css" layer(kiwi.components);
+@import "./Field.css" layer(itwinui.components);

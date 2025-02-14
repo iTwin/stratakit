@@ -7,7 +7,7 @@
 		display: grid;
 		align-content: start;
 		overflow: auto;
-		background-color: var(--kiwi-color-bg-surface-primary);
+		background-color: var(--ids-color-bg-page-base);
 	}
 }
 
@@ -28,7 +28,7 @@
 				inset: 0;
 				z-index: 1; /* Ensure the outline appears above the actions */
 				pointer-events: none;
-				outline: 2px solid var(--kiwi-color-border-accent-strong);
+				outline: 2px solid var(--ids-color-border-accent-strong);
 				outline-offset: -1px;
 			}
 		}
@@ -83,7 +83,7 @@
 		position: sticky;
 		inset-inline-end: 0;
 		padding-inline-end: 4px;
-		background-color: var(--kiwi-color-bg-surface-primary);
+		background-color: var(--ids-color-bg-page-base);
 		display: inline-flex;
 		visibility: var(--🥝tree-item-actions-visibility, var(--🥝tree-item-action-visibility));
 

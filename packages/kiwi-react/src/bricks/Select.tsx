@@ -12,7 +12,7 @@ import {
 	type FocusableProps,
 } from "./~utils.js";
 import { DisclosureArrow } from "./Icon.js";
-import { FieldControl, useFieldDescribedBy } from "./Field.js";
+import { FieldControl } from "./Field.js";
 
 const supportsHas = isBrowser && CSS?.supports?.("selector(:has(+ *))");
 
@@ -92,7 +92,6 @@ const HtmlSelect = forwardRef<"select", HtmlSelectProps>(
 		const { id, variant = "solid", ...rest } = props;
 
 		const setIsHtmlSelect = React.useContext(HtmlSelectContext);
-		const describedBy = useFieldDescribedBy(props["aria-describedby"]);
 
 		React.useEffect(
 			function updateContext() {
@@ -110,7 +109,6 @@ const HtmlSelect = forwardRef<"select", HtmlSelectProps>(
 						<Ariakit.Role.select
 							{...rest}
 							className={cx("🥝-button", "🥝-select", props.className)}
-							aria-describedby={describedBy}
 							data-kiwi-tone="neutral"
 							data-kiwi-variant={variant}
 							ref={forwardedRef}

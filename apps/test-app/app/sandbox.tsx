@@ -112,29 +112,33 @@ export default function Page() {
 							/>
 						</div>
 					</div>
-					<TreeFilteringProvider>
-						<SandboxTabs>
+					<SandboxTabs>
+						<TreeFilteringProvider>
 							<Subheader />
 							<Tabs.TabPanel
 								tabId="simple"
 								className={styles.tabPanel}
 								focusable={false}
 							>
-								<SandboxTree
-									tree={selectedModel === "epoch-2" ? "empty" : "simple"}
-								/>
+								{selectedModel === "epoch-2" ? (
+									<EmptyState />
+								) : (
+									<SandboxTree tree="simple" />
+								)}
 							</Tabs.TabPanel>
 							<Tabs.TabPanel
 								tabId="complex"
 								className={styles.tabPanel}
 								focusable={false}
 							>
-								<SandboxTree
-									tree={selectedModel === "epoch-2" ? "empty" : "complex"}
-								/>
+								{selectedModel === "epoch-2" ? (
+									<EmptyState />
+								) : (
+									<SandboxTree tree="complex" />
+								)}
 							</Tabs.TabPanel>
-						</SandboxTabs>
-					</TreeFilteringProvider>
+						</TreeFilteringProvider>
+					</SandboxTabs>
 				</>
 			}
 		>
@@ -216,12 +220,21 @@ function Layout(
 	);
 }
 
-/**
- * Wrapper for empty state content, displayed as a centered vertical flex box.
- * Accepts any arbitrary content passed as `children`.
- */
-function EmptyState({ children }: React.PropsWithChildren) {
-	return <div className={styles.emptyState}>{children}</div>;
+function EmptyState() {
+	return (
+		<div className={styles.emptyState}>
+			<Text>No layers</Text>
+			<Button>Create a layer</Button>
+		</div>
+	);
+}
+
+function NoResultsState() {
+	return (
+		<div style={{ textAlign: "center" }}>
+			<Text>No results found</Text>
+		</div>
+	);
 }
 
 function clamp(value: number, min: number, max: number) {
@@ -465,57 +478,6 @@ function useMoveable<T extends HTMLElement>(args?: UseMoveableArgs) {
 		};
 	}, [onKeyMove, onMove, handleMoveEnd]);
 	return { moveableProps };
-}
-
-const SandboxTreeContext = React.createContext<{
-	selected: string | undefined;
-	hidden: string[];
-	setSelected: React.Dispatch<React.SetStateAction<string | undefined>>;
-	toggleHidden: (id: string) => void;
-}>({
-	selected: undefined,
-	hidden: [],
-	setSelected: () => {},
-	toggleHidden: () => {},
-});
-
-interface SandboxTreeProps {
-	tree: "simple" | "complex" | "empty";
-}
-
-function SandboxTree({ tree }: SandboxTreeProps) {
-	const [selected, setSelected] = React.useState<string | undefined>();
-	const [hidden, setHidden] = React.useState<string[]>([]);
-	const toggleHidden = React.useCallback((id: string) => {
-		setHidden((prev) => {
-			if (prev.includes(id)) {
-				return prev.filter((i) => i !== id);
-			}
-			return [...prev, id];
-		});
-	}, []);
-
-	const sandboxTreeContext = React.useMemo(
-		() => ({ selected, setSelected, hidden, toggleHidden }),
-		[hidden, selected, toggleHidden],
-	);
-
-	if (tree === "empty") {
-		return (
-			<EmptyState>
-				<Text>No layers</Text>
-				<Button>Create a layer</Button>
-			</EmptyState>
-		);
-	}
-
-	return (
-		<SandboxTreeContext.Provider value={sandboxTreeContext}>
-			<Tree.Root className={styles.tree}>
-				<SandboxTreeItems tree={tree} />
-			</Tree.Root>
-		</SandboxTreeContext.Provider>
-	);
 }
 
 interface TreeItem {
@@ -817,32 +779,16 @@ const complexTree = {
 	],
 } satisfies TreeStore;
 
-interface SandboxTreeItemsProps extends Pick<SandboxTreeProps, "tree"> {}
-
-function SandboxTreeItems({ tree }: SandboxTreeItemsProps) {
-	if (tree === "complex") {
-		return <TreeItems initialItems={complexTree.items} />;
-	}
-	if (tree === "simple") {
-		return <SimpleTreeItems />;
-	}
-
-	return null;
-}
-
-function SimpleTreeItems() {
-	const { filters } = React.useContext(TreeFilteringContext);
-	return <TreeItems initialItems={simpleTree.items} filters={filters} />;
-}
-
 function useFilteredTree({
 	items,
 	filters,
+	search,
 }: {
 	items: TreeItem[];
 	filters: string[];
+	search: string;
 }) {
-	return React.useMemo(() => {
+	const filteredItems = React.useMemo(() => {
 		if (filters.length === 0) return items;
 		return items.reduce<TreeItem[]>((acc, item) => {
 			// Filters first level only, usually you'd want to traverse the tree.
@@ -854,6 +800,42 @@ function useFilteredTree({
 			return acc;
 		}, []);
 	}, [items, filters]);
+	const foundItems = React.useMemo(() => {
+		// Filter items based on search string.
+		function matchSearch(items: TreeItem[]): TreeItem[] {
+			return items.reduce<TreeItem[]>((acc, item) => {
+				const matchingItems = matchSearch(item.items ?? []);
+
+				// If the item matches the search or any of the children match the search include it.
+				if (
+					item.label.toLowerCase().includes(search.toLowerCase()) ||
+					matchingItems.length > 0
+				) {
+					acc.push({
+						...item,
+						items: matchingItems,
+					});
+				}
+				return acc;
+			}, []);
+		}
+
+		if (search === "") return filteredItems;
+		return matchSearch(filteredItems);
+	}, [filteredItems, search]);
+
+	const itemCount = React.useMemo(() => {
+		if (filters.length === 0 && search === "") return undefined;
+
+		function countItems(items: TreeItem[]): number {
+			return items.reduce((acc, item) => {
+				const childItemCount = item.items ? countItems(item.items) : 0;
+				return acc + 1 + childItemCount;
+			}, 0);
+		}
+		return countItems(foundItems);
+	}, [foundItems, filters, search]);
+	return { filteredTree: foundItems, itemCount };
 }
 
 interface FlatTreeItem extends TreeItem {
@@ -866,8 +848,11 @@ interface FlatTreeItem extends TreeItem {
 	size: number;
 }
 
-function useFlatTreeItems(items: TreeItem[]): FlatTreeItem[] {
-	const treeContext = React.useContext(SandboxTreeContext);
+function useFlatTreeItems(
+	items: TreeItem[],
+	selectedItem: string | undefined,
+	hiddenItems: string[],
+): FlatTreeItem[] {
 	return React.useMemo(() => {
 		function flattenItems(
 			items: TreeItem[],
@@ -879,8 +864,8 @@ function useFlatTreeItems(items: TreeItem[]): FlatTreeItem[] {
 			const flatItems: FlatTreeItem[] = [];
 			let position = 1;
 			for (const item of items) {
-				const selected = item.id === treeContext.selected || parentSelected;
-				const hidden = treeContext.hidden.includes(item.id) || parentHidden;
+				const selected = item.id === selectedItem || parentSelected;
+				const hidden = hiddenItems.includes(item.id) || parentHidden;
 				flatItems.push({
 					...item,
 					level,
@@ -899,7 +884,7 @@ function useFlatTreeItems(items: TreeItem[]): FlatTreeItem[] {
 			return flatItems;
 		}
 		return flattenItems(items, undefined, 1, false, false);
-	}, [items, treeContext.selected, treeContext.hidden]);
+	}, [items, selectedItem, hiddenItems]);
 }
 
 function findTreeItem<T extends Pick<TreeItem, "id"> & { items: T[] }>(
@@ -914,64 +899,102 @@ function findTreeItem<T extends Pick<TreeItem, "id"> & { items: T[] }>(
 	}
 }
 
-function TreeItems(props: { initialItems: TreeItem[]; filters?: string[] }) {
-	const { setSelected, selected, toggleHidden } =
-		React.useContext(SandboxTreeContext);
-	const [items, setItems] = React.useState(props.initialItems);
-	const filters = React.useMemo(() => props.filters ?? [], [props.filters]);
-	const filteredItems = useFilteredTree({ items, filters });
-	const flatItems = useFlatTreeItems(filteredItems);
+function SandboxTree({
+	tree,
+}: {
+	tree: "simple" | "complex";
+}) {
+	const { selectedId } = React.useContext(TabsContext);
+	const { filters, search, setItemCount } =
+		React.useContext(TreeFilteringContext);
+	const [selected, setSelected] = React.useState<string | undefined>();
+	const [hidden, setHidden] = React.useState<string[]>([]);
+	const toggleHidden = React.useCallback((id: string) => {
+		setHidden((prev) => {
+			if (prev.includes(id)) {
+				return prev.filter((i) => i !== id);
+			}
+			return [...prev, id];
+		});
+	}, []);
 
-	return flatItems.map((item) => {
-		return (
-			<Tree.Item
-				key={item.id}
-				label={item.label}
-				aria-level={item.level}
-				aria-posinset={item.position}
-				aria-setsize={item.size}
-				selected={item.selected}
-				onSelectedChange={() => {
-					if (selected === item.id) {
-						setSelected(undefined);
-						return;
-					}
-					setSelected(item.id);
-				}}
-				expanded={item.items.length === 0 ? undefined : item.expanded}
-				onExpandedChange={(expanded) => {
-					setItems((prev) => {
-						const treeItem = findTreeItem(prev, item.id);
-						if (!treeItem) return prev;
-						const newData = [...prev];
-						treeItem.expanded = expanded; // TODO: should be immutable https://github.com/iTwin/kiwi/pull/300#discussion_r1941452941
-						return newData;
-					});
-				}}
-				icon={<Icon href={placeholderIcon} style={{ display: "inline" }} />}
-				actions={[
-					<Tree.ItemAction
-						key="lock"
-						className={styles.action}
-						icon={lockIcon}
-						label="Lock"
-						aria-hidden={item.hidden}
-					/>,
-					<Tree.ItemAction
-						key="visibility"
-						className={styles.action}
-						icon={item.hidden ? hideIcon : showIcon}
-						label={item.hidden ? "Show" : "Hide"}
-						visible={item.hidden ? true : undefined}
-						onClick={() => {
-							toggleHidden(item.id);
-						}}
-					/>,
-					<TreeMoreActions key="more" hidden={item.hidden} />,
-				]}
-			/>
-		);
+	const [items, setItems] = React.useState(() => {
+		if (tree === "complex") return complexTree.items;
+		return simpleTree.items;
 	});
+	const { filteredTree, itemCount } = useFilteredTree({
+		items,
+		filters,
+		search,
+	});
+	const flatItems = useFlatTreeItems(filteredTree, selected, hidden);
+
+	React.useEffect(() => {
+		if (tree !== selectedId) return;
+		setItemCount(itemCount);
+	}, [tree, selectedId, setItemCount, itemCount]);
+
+	const deferredItems = React.useDeferredValue(flatItems);
+	if (deferredItems.length === 0) return <NoResultsState />;
+
+	return (
+		<React.Suspense fallback="Loading...">
+			<Tree.Root className={styles.tree}>
+				{deferredItems.map((item) => {
+					return (
+						<Tree.Item
+							key={item.id}
+							label={item.label}
+							aria-level={item.level}
+							aria-posinset={item.position}
+							aria-setsize={item.size}
+							selected={item.selected}
+							onSelectedChange={() => {
+								if (selected === item.id) {
+									setSelected(undefined);
+									return;
+								}
+								setSelected(item.id);
+							}}
+							expanded={item.items.length === 0 ? undefined : item.expanded}
+							onExpandedChange={(expanded) => {
+								setItems((prev) => {
+									const treeItem = findTreeItem(prev, item.id);
+									if (!treeItem) return prev;
+									const newData = [...prev];
+									treeItem.expanded = expanded; // TODO: should be immutable https://github.com/iTwin/kiwi/pull/300#discussion_r1941452941
+									return newData;
+								});
+							}}
+							icon={
+								<Icon href={placeholderIcon} style={{ display: "inline" }} />
+							}
+							actions={[
+								<Tree.ItemAction
+									key="lock"
+									className={styles.action}
+									icon={lockIcon}
+									label="Lock"
+									aria-hidden={item.hidden}
+								/>,
+								<Tree.ItemAction
+									key="visibility"
+									className={styles.action}
+									icon={item.hidden ? hideIcon : showIcon}
+									label={item.hidden ? "Show" : "Hide"}
+									visible={item.hidden ? true : undefined}
+									onClick={() => {
+										toggleHidden(item.id);
+									}}
+								/>,
+								<TreeMoreActions key="more" hidden={item.hidden} />,
+							]}
+						/>
+					);
+				})}
+			</Tree.Root>
+		</React.Suspense>
+	);
 }
 
 function TreeMoreActions({ hidden }: { hidden?: boolean }) {
@@ -1002,26 +1025,10 @@ function TreeMoreActions({ hidden }: { hidden?: boolean }) {
 
 function Subheader() {
 	const { selectedId: tree } = React.useContext(TabsContext);
-	const { filters, filtered } = React.useContext(TreeFilteringContext);
+	const { itemCount, filtered, clearFilters, search, setSearch } =
+		React.useContext(TreeFilteringContext);
 	const [isSearching, setIsSearching] = React.useState(false);
 	const searchInputRef = React.useRef<HTMLInputElement>(null);
-	const itemCount = React.useMemo(() => {
-		if (tree !== "simple") return undefined;
-		if (filters.length === 0) return undefined;
-
-		const filteredItems = simpleTree.items.filter((item) => {
-			if (!item.type) return false;
-			return filters.includes(item.type);
-		});
-
-		function countItems(items: TreeItem[]): number {
-			return items.reduce((acc, item) => {
-				const childItemCount = item.items ? countItems(item.items) : 0;
-				return acc + 1 + childItemCount;
-			}, 0);
-		}
-		return countItems(filteredItems);
-	}, [filters, tree]);
 	const tabsRef = React.useRef<HTMLHeadingElement>(null);
 
 	const actions = isSearching ? (
@@ -1033,6 +1040,8 @@ function Subheader() {
 				label="Close"
 				variant="ghost"
 				onClick={() => {
+					setSearch("");
+					clearFilters();
 					ReactDOM.flushSync(() => setIsSearching(false));
 					tabsRef.current?.focus();
 				}}
@@ -1071,7 +1080,14 @@ function Subheader() {
 			{isSearching ? (
 				<TextBox.Root className={styles.searchInput}>
 					<TextBox.Icon href={searchIcon} />
-					<TextBox.Input placeholder="Search" ref={searchInputRef} />
+					<TextBox.Input
+						placeholder="Search"
+						ref={searchInputRef}
+						onChange={(e) => {
+							setSearch(e.target.value);
+						}}
+						value={search}
+					/>
 				</TextBox.Root>
 			) : null}
 
@@ -1123,6 +1139,10 @@ function FiltersMenu({
 function TreeFilteringProvider(props: React.PropsWithChildren) {
 	const [filtered, setFiltered] = React.useState(false);
 	const [filters, setFilters] = React.useState<string[]>([]);
+	const [search, setSearchState] = React.useState("");
+	const [itemCount, setItemCount] = React.useState<number | undefined>(
+		undefined,
+	);
 	const toggleFilter = React.useCallback((filter: string) => {
 		setFilters((prev) => {
 			if (prev.includes(filter)) {
@@ -1136,6 +1156,11 @@ function TreeFilteringProvider(props: React.PropsWithChildren) {
 		setFilters([]);
 		setFiltered(true);
 	}, []);
+	const setSearch = React.useCallback((s: string) => {
+		setSearchState(s);
+		setFiltered(true);
+	}, []);
+
 	return (
 		<TreeFilteringContext.Provider
 			value={React.useMemo(
@@ -1144,8 +1169,20 @@ function TreeFilteringProvider(props: React.PropsWithChildren) {
 					filtered,
 					toggleFilter,
 					clearFilters,
+					search,
+					setSearch,
+					itemCount,
+					setItemCount,
 				}),
-				[filters, filtered, toggleFilter, clearFilters],
+				[
+					filters,
+					filtered,
+					toggleFilter,
+					clearFilters,
+					search,
+					setSearch,
+					itemCount,
+				],
 			)}
 		>
 			{props.children}
@@ -1178,11 +1215,19 @@ const TreeFilteringContext = React.createContext<{
 	filtered: boolean;
 	toggleFilter: (filter: string) => void;
 	clearFilters: () => void;
+	search: string;
+	setSearch: (search: string) => void;
+	itemCount: number | undefined;
+	setItemCount: (count: number | undefined) => void;
 }>({
 	filters: [],
 	filtered: false,
 	toggleFilter: () => {},
 	clearFilters: () => {},
+	search: "",
+	setSearch: () => {},
+	itemCount: undefined,
+	setItemCount: () => {},
 });
 
 const TabsContext = React.createContext<{

@@ -7,31 +7,31 @@
 
 	--✨shadow-border: 0px 0px 0px 1px var(--🥝checkbox-border-color) inset;
 
-	--✨glow--bg-hover: var(--kiwi-color-glow-hue) var(--kiwi-color-bg-glow-base-hover-\%);
-	--✨glow--bg-press: var(--kiwi-color-glow-hue) var(--kiwi-color-bg-glow-base-pressed-\%);
+	--✨glow--bg-hover: var(--ids-color-glow-hue) var(--ids-color-bg-glow-base-hover-\%);
+	--✨glow--bg-press: var(--ids-color-glow-hue) var(--ids-color-bg-glow-base-pressed-\%);
 
-	--✨bg--default: var(--kiwi-color-bg-neutral-base);
+	--✨bg--default: var(--ids-color-bg-neutral-base);
 	--✨bg--hover: color-mix(in oklch, var(--✨bg--default) 100%, var(--✨glow--bg-hover));
-	--✨bg--checked: var(--kiwi-color-bg-accent-base);
+	--✨bg--checked: var(--ids-color-bg-accent-base);
 	--✨bg--checked-hover: color-mix(in oklch, var(--✨bg--checked) 100%, var(--✨glow--bg-press));
-	--✨bg--disabled: var(--kiwi-color-bg-glow-on-surface-disabled);
+	--✨bg--disabled: var(--ids-color-bg-glow-on-surface-disabled);
 
-	--✨border--default: var(--kiwi-color-border-shadow-base);
+	--✨border--default: var(--ids-color-border-shadow-base);
 	--✨border--hover: color-mix(
 		in oklch,
 		var(--✨border--default) 100%,
-		var(--kiwi-color-glow-hue) var(--kiwi-color-border-glow-base-hover-\%)
+		var(--ids-color-glow-hue) var(--ids-color-border-glow-base-hover-\%)
 	);
-	--✨border--checked: var(--kiwi-color-border-shadow-strong);
+	--✨border--checked: var(--ids-color-border-shadow-strong);
 	--✨border--checked-hover: color-mix(
 		in oklch,
 		var(--✨border--checked) 100%,
-		var(--kiwi-color-glow-hue) var(--kiwi-color-border-glow-base-pressed-\%)
+		var(--ids-color-glow-hue) var(--ids-color-border-glow-base-pressed-\%)
 	);
 	--✨border--disabled: transparent;
 
 	@layer base {
-		--🥝checkbox-color-svg: var(--kiwi-color-icon-neutral-emphasis);
+		--🥝checkbox-color-svg: var(--ids-color-icon-neutral-emphasis);
 		--🥝checkbox-border-radius: 4px;
 
 		--🥝checkbox-unchecked-svg: url('data:image/svg+xml;utf8,<svg viewBox="0 0 16 16"></svg>');
@@ -55,8 +55,8 @@
 		transition: all 150ms ease-out;
 		transition-property: background-color, border-color, box-shadow, --🥝checkbox-border-color;
 		position: relative;
-		box-shadow: var(--kiwi-shadow-button-base-inset), var(--✨shadow-border),
-			var(--kiwi-shadow-button-base-drop);
+		box-shadow: var(--ids-shadow-button-base-inset), var(--✨shadow-border),
+			var(--ids-shadow-button-base-drop);
 
 		--🥝checkbox-border-color: var(--🌀checkbox-visual-state--default, var(--✨border--default))
 			var(--🌀checkbox-visual-state--hover, var(--✨border--hover))
@@ -124,7 +124,7 @@
 
 		&:where([disabled], :disabled, [aria-disabled="true"]) {
 			--🌀checkbox-visual-state: var(--🌀checkbox-visual-state--disabled);
-			--🥝checkbox-color-svg: var(--kiwi-color-icon-neutral-disabled);
+			--🥝checkbox-color-svg: var(--ids-color-icon-neutral-disabled);
 			cursor: not-allowed;
 			box-shadow: none;
 

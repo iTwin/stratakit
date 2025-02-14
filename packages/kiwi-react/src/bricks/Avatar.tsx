@@ -59,9 +59,7 @@ export const Avatar = forwardRef<"span", AvatarProps>((props, forwardedRef) => {
 			ref={forwardedRef}
 		>
 			{!image
-				? size === "small"
-					? abbreviation?.substring(0, 1)
-					: abbreviation?.substring(0, 2)
+				? abbreviation?.substring(0, size === "small" ? 1 : 2)
 				: null}
 			{image}
 		</Ariakit.Role.span>

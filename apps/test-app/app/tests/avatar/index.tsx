@@ -14,7 +14,7 @@ export default definePage(
 			<>
 				<Avatar
 					abbreviation="BS"
-					title="Bentley Systems"
+					label="Bentley Systems"
 					data-testid="avatar"
 				/>
 			</>
@@ -31,7 +31,7 @@ function VisualTest() {
 
 	const props = {
 		abbreviation: "WW",
-		title: "Walter White",
+		label: "Walter White",
 	};
 
 	return (

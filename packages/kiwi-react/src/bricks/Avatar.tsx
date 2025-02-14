@@ -3,7 +3,9 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 import cx from "classnames";
+import * as React from "react";
 import * as Ariakit from "@ariakit/react";
+import { VisuallyHidden } from "./VisuallyHidden.js";
 import { forwardRef, type BaseProps } from "./~utils.js";
 
 interface AvatarProps extends BaseProps<"span"> {
@@ -21,7 +23,7 @@ interface AvatarProps extends BaseProps<"span"> {
 	/**
 	 * Text which will be read by screen reader.
 	 */
-	title?: string;
+	label?: string;
 
 	/**
 	 * Image to be displayed. Can be `<img>` or `<svg>` or anything else.
@@ -34,32 +36,35 @@ interface AvatarProps extends BaseProps<"span"> {
  *
  * Examples:
  * ```tsx
- * <Avatar abbreviation="JD" title="John Doe" />
- * <Avatar abbreviation="JD" title="John Doe" size="xlarge" image={<img src="...">} />
- * <Avatar abbreviation="JD" title="John Doe" size="small" image={<Icon href="...">} />
+ * <Avatar abbreviation="JD" label="John Doe" />
+ * <Avatar abbreviation="JD" label="John Doe" size="xlarge" image={<img src="...">} />
+ * <Avatar abbreviation="JD" label="John Doe" size="small" image={<Icon href="...">} />
  * ```
  */
 export const Avatar = forwardRef<"span", AvatarProps>((props, forwardedRef) => {
 	const {
 		size = "medium",
 		abbreviation,
-		title,
+		label,
 		image,
 		children,
 		...rest
 	} = props;
 
+	const avatarId = React.useId();
+
 	return (
 		<Ariakit.Role.span
 			{...rest}
 			role="img"
-			aria-label={title}
+			aria-labelledby={avatarId}
 			data-kiwi-size={size}
 			className={cx("🥝-avatar", props.className)}
 			ref={forwardedRef}
 		>
 			{!image ? abbreviation?.substring(0, size === "small" ? 1 : 2) : null}
 			{image}
+			<VisuallyHidden id={avatarId}>{label}</VisuallyHidden>
 		</Ariakit.Role.span>
 	);
 });

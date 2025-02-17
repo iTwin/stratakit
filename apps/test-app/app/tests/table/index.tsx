@@ -45,33 +45,37 @@ export default definePage(
 
 function VisualTest() {
 	return (
-		<Table.Root as="table">
-			<Table.Caption>Fruits and their colors</Table.Caption>
-			<Table.Header>
-				<Table.Row>
-					<Table.Cell>Fruit</Table.Cell>
-					<Table.Cell>Color</Table.Cell>
-				</Table.Row>
-			</Table.Header>
-			<Table.Body>
-				<Table.Row>
-					<Table.Cell>Apple</Table.Cell>
-					<Table.Cell>Red</Table.Cell>
-				</Table.Row>
-				<Table.Row>
-					<Table.Cell>Orange</Table.Cell>
-					<Table.Cell>Orange</Table.Cell>
-				</Table.Row>
-				<Table.Row>
-					<Table.Cell>Kiwi</Table.Cell>
-					<Table.Cell>Golden brown</Table.Cell>
-				</Table.Row>
-				<Table.Row>
-					<Table.Cell>Watermelon</Table.Cell>
-					<Table.Cell>Green</Table.Cell>
-				</Table.Row>
-			</Table.Body>
-		</Table.Root>
+		<div style={{ display: "grid", gap: 20 }}>
+			{(["table", "div"] as const).map((asProp) => (
+				<Table.Root as={asProp} key={asProp}>
+					<Table.Caption>Fruits and their colors (as={asProp})</Table.Caption>
+					<Table.Header>
+						<Table.Row>
+							<Table.Cell>Fruit</Table.Cell>
+							<Table.Cell>Color</Table.Cell>
+						</Table.Row>
+					</Table.Header>
+					<Table.Body>
+						<Table.Row>
+							<Table.Cell>Apple</Table.Cell>
+							<Table.Cell>Red</Table.Cell>
+						</Table.Row>
+						<Table.Row>
+							<Table.Cell>Orange</Table.Cell>
+							<Table.Cell>Orange</Table.Cell>
+						</Table.Row>
+						<Table.Row>
+							<Table.Cell>Kiwi</Table.Cell>
+							<Table.Cell>Golden brown</Table.Cell>
+						</Table.Row>
+						<Table.Row>
+							<Table.Cell>Watermelon</Table.Cell>
+							<Table.Cell>Green</Table.Cell>
+						</Table.Row>
+					</Table.Body>
+				</Table.Root>
+			))}
+		</div>
 	);
 }
 

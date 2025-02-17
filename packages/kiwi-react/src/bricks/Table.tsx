@@ -279,12 +279,12 @@ const TableCell = forwardRef<"span", TableCellProps>((props, forwardedRef) => {
 
 	return (
 		<Component
-			{...props}
-			render={renderProp || render}
-			className={cx("🥝-table-cell", props.className)}
 			// @ts-ignore TODO: Fix type error
 			ref={forwardedRef}
 			role={role}
+			{...rest}
+			render={renderProp || render}
+			className={cx("🥝-table-cell", className)}
 		>
 			{props.children}
 		</Component>

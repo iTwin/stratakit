@@ -6,7 +6,7 @@ import cx from "classnames";
 import * as Ariakit from "@ariakit/react";
 import { forwardRef, type BaseProps } from "./~utils.js";
 
-interface BadgeProps extends Omit<BaseProps<"div">, "children"> {
+interface BadgeProps extends Omit<BaseProps<"span">, "children"> {
 	/**
 	 * The label displayed inside the badge.
 	 */
@@ -32,11 +32,11 @@ interface BadgeProps extends Omit<BaseProps<"div">, "children"> {
  * <Badge label="Value" tone="info" variant="outline" />
  * ```
  */
-export const Badge = forwardRef<"div", BadgeProps>((props, forwardedRef) => {
+export const Badge = forwardRef<"span", BadgeProps>((props, forwardedRef) => {
 	const { tone = "neutral", variant = "solid", label, ...rest } = props;
 
 	return (
-		<Ariakit.Role.div
+		<Ariakit.Role.span
 			{...rest}
 			data-kiwi-tone={tone}
 			data-kiwi-variant={variant}
@@ -44,7 +44,7 @@ export const Badge = forwardRef<"div", BadgeProps>((props, forwardedRef) => {
 			ref={forwardedRef}
 		>
 			{label}
-		</Ariakit.Role.div>
+		</Ariakit.Role.span>
 	);
 });
 DEV: Badge.displayName = "Badge";

@@ -44,37 +44,25 @@
 		&:where([data-kiwi-size="small"]) {
 			--🥝avatar-size: 1rem;
 			--🥝avatar-font-size: var(--ids-font-size-8);
-
-			> svg {
-				--🥝icon-size: 0.75rem;
-			}
+			--🥝icon-size: 0.75rem;
 		}
 
 		&:where([data-kiwi-size="medium"]) {
 			--🥝avatar-size: 1.5rem;
 			--🥝avatar-font-size: var(--ids-font-size-10);
-
-			> svg {
-				--🥝icon-size: 1rem;
-			}
+			--🥝icon-size: 1rem;
 		}
 
 		&:where([data-kiwi-size="large"]) {
 			--🥝avatar-size: 2rem;
 			--🥝avatar-font-size: var(--ids-font-size-12);
-
-			> svg {
-				--🥝icon-size: 1rem;
-			}
+			--🥝icon-size: 1rem;
 		}
 
 		&:where([data-kiwi-size="xlarge"]) {
 			--🥝avatar-size: 3rem;
 			--🥝avatar-font-size: var(--ids-font-size-16);
-
-			> svg {
-				--🥝icon-size: 1.5rem;
-			}
+			--🥝icon-size: 1.5rem;
 		}
 	}
 }

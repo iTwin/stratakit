@@ -20,6 +20,7 @@
 @import "./ListItem.css" layer(itwinui.components);
 @import "./Spinner.css" layer(itwinui.components);
 @import "./Select.css" layer(itwinui.components);
+@import "./Skeleton.css" layer(itwinui.components);
 @import "./Switch.css" layer(itwinui.components);
 @import "./Table.css" layer(itwinui.components);
 @import "./Tabs.css" layer(itwinui.components);

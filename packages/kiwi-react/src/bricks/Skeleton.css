@@ -1,0 +1,112 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+
+.🥝-skeleton {
+	@layer base {
+		background-color: var(--ids-color-bg-glow-on-surface-disabled);
+		border-radius: var(--🥝skeleton-border-radius);
+		block-size: var(--🥝skeleton-height);
+		inline-size: var(--🥝skeleton-width);
+	}
+
+	@layer modifiers {
+		&:where([data-kiwi-variant="text"]) {
+			&:where([data-kiwi-size="xsmall"]) {
+				--🥝skeleton-height: 12px;
+			}
+
+			&:where([data-kiwi-size="small"]) {
+				--🥝skeleton-height: 14px;
+			}
+
+			&:where([data-kiwi-size="medium"]) {
+				--🥝skeleton-height: 16px;
+			}
+
+			&:where([data-kiwi-size="large"]) {
+				--🥝skeleton-height: 20px;
+			}
+
+			&:where([data-kiwi-size="xlarge"]) {
+				--🥝skeleton-height: 24px;
+			}
+
+			&:where([data-kiwi-size="xxlarge"]) {
+				--🥝skeleton-height: 32px;
+			}
+		}
+
+		&:where([data-kiwi-variant="object"]) {
+			&:where([data-kiwi-shape="square"], [data-kiwi-shape="circle"]) {
+				&:where([data-kiwi-size="xsmall"]) {
+					--🥝skeleton-height: 12px;
+					--🥝skeleton-width: 12px;
+				}
+
+				&:where([data-kiwi-size="small"]) {
+					--🥝skeleton-height: 16px;
+					--🥝skeleton-width: 16px;
+				}
+
+				&:where([data-kiwi-size="medium"]) {
+					--🥝skeleton-height: 24px;
+					--🥝skeleton-width: 24px;
+				}
+
+				&:where([data-kiwi-size="large"]) {
+					--🥝skeleton-height: 32px;
+					--🥝skeleton-width: 32px;
+				}
+
+				&:where([data-kiwi-size="xlarge"]) {
+					--🥝skeleton-height: 48px;
+					--🥝skeleton-width: 48px;
+				}
+			}
+
+			&:where([data-kiwi-shape="pill"]) {
+				&:where([data-kiwi-size="xsmall"]) {
+					--🥝skeleton-height: 12px;
+					--🥝skeleton-width: 24px;
+				}
+
+				&:where([data-kiwi-size="small"]) {
+					--🥝skeleton-height: 16px;
+					--🥝skeleton-width: 32px;
+				}
+
+				&:where([data-kiwi-size="medium"]) {
+					--🥝skeleton-height: 24px;
+					--🥝skeleton-width: 48px;
+				}
+
+				&:where([data-kiwi-size="large"]) {
+					--🥝skeleton-height: 32px;
+					--🥝skeleton-width: 64px;
+				}
+
+				&:where([data-kiwi-size="xlarge"]) {
+					--🥝skeleton-height: 48px;
+					--🥝skeleton-width: 96px;
+				}
+			}
+
+			/* Border radius */
+			&:where([data-kiwi-shape="pill"], [data-kiwi-shape="circle"]) {
+				--🥝skeleton-border-radius: 9999px;
+			}
+
+			&:where([data-kiwi-shape="square"]) {
+				&:where([data-kiwi-size$="small"]) {
+					--🥝skeleton-border-radius: 2px /* radius(in progress)/xsmall */;
+				}
+
+				&:where([data-kiwi-size$="medium"], [data-kiwi-size$="large"], [data-kiwi-size$="xlarge"]) {
+					--🥝skeleton-border-radius: 4px /* radius(in progress)/small */;
+				}
+			}
+		}
+	}
+}

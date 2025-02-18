@@ -16,9 +16,9 @@ interface AvatarProps extends BaseProps<"span"> {
 	size?: "small" | "medium" | "large" | "xlarge";
 
 	/**
-	 * Abbreviation that gets displayed in the absence of an image.
+	 * Initials that gets displayed in the absence of an image.
 	 */
-	abbreviation?: string;
+	initials?: string;
 
 	/**
 	 * Text which will be read by screen reader.
@@ -36,20 +36,13 @@ interface AvatarProps extends BaseProps<"span"> {
  *
  * Examples:
  * ```tsx
- * <Avatar abbreviation="JD" label="John Doe" />
- * <Avatar abbreviation="JD" label="John Doe" size="xlarge" image={<img src="...">} />
- * <Avatar abbreviation="JD" label="John Doe" size="small" image={<Icon href="...">} />
+ * <Avatar initials="JD" label="John Doe" />
+ * <Avatar initials="JD" label="John Doe" size="xlarge" image={<img src="...">} />
+ * <Avatar initials="JD" label="John Doe" size="small" image={<Icon href="...">} />
  * ```
  */
 export const Avatar = forwardRef<"span", AvatarProps>((props, forwardedRef) => {
-	const {
-		size = "medium",
-		abbreviation,
-		label,
-		image,
-		children,
-		...rest
-	} = props;
+	const { size = "medium", initials, label, image, children, ...rest } = props;
 
 	const avatarId = React.useId();
 
@@ -62,7 +55,7 @@ export const Avatar = forwardRef<"span", AvatarProps>((props, forwardedRef) => {
 			className={cx("🥝-avatar", props.className)}
 			ref={forwardedRef}
 		>
-			{!image ? abbreviation?.substring(0, size === "small" ? 1 : 2) : null}
+			{!image ? initials?.substring(0, size === "small" ? 1 : 2) : null}
 			{image}
 			<VisuallyHidden id={avatarId}>{label}</VisuallyHidden>
 		</Ariakit.Role.span>

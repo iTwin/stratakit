@@ -10,7 +10,7 @@ import { forwardRef, type BaseProps } from "./~utils.js";
 
 interface AvatarProps extends BaseProps<"span"> {
 	/**
-	 * The size of the spinner.
+	 * The size of the avatar.
 	 * @default "medium"
 	 */
 	size?: "small" | "medium" | "large" | "xlarge";

@@ -32,7 +32,7 @@ interface IconProps extends Omit<BaseProps<"svg">, "children"> {
  * **Note**: This component is meant to be used with decorative icons, so it adds `aria-hidden` by default.
  */
 export const Icon = forwardRef<"svg", IconProps>((props, forwardedRef) => {
-	const { href, size = "regular", ...rest } = props;
+	const { href, size, ...rest } = props;
 	const iconId = toIconId(size);
 	return (
 		<Ariakit.Role.svg

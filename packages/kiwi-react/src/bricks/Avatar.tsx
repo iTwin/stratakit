@@ -16,7 +16,7 @@ interface AvatarProps extends BaseProps<"span"> {
 	size?: "small" | "medium" | "large" | "xlarge";
 
 	/**
-	 * Abbreviation to be displayed.
+	 * Abbreviation that gets displayed in the absence of an image.
 	 */
 	abbreviation?: string;
 

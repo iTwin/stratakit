@@ -12,13 +12,9 @@
 		inline-size: var(--🥝avatar-size);
 		background-color: var(--🥝avatar-background-color);
 		color: var(--ids-color-text-neutral-emphasis);
-		font-size: var(--🥝avatar-font-size);
 		display: inline-grid;
 		place-items: center;
 		border-radius: 50%;
-		text-align: center;
-		text-transform: uppercase;
-		font-weight: 600;
 		user-select: none;
 		position: relative;
 		overflow: hidden;
@@ -80,5 +76,14 @@
 				--🥝icon-size: 1.5rem;
 			}
 		}
+	}
+}
+
+.🥝-avatar-initials {
+	@layer base {
+		font-size: var(--🥝avatar-font-size);
+		font-weight: 600;
+		text-align: center;
+		text-transform: uppercase;
 	}
 }

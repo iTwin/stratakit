@@ -37,8 +37,8 @@ interface AvatarProps extends BaseProps<"span"> {
  * Examples:
  * ```tsx
  * <Avatar initials="JD" label="John Doe" />
- * <Avatar initials="JD" label="John Doe" size="xlarge" image={<img src="...">} />
- * <Avatar initials="JD" label="John Doe" size="small" image={<Icon href="...">} />
+ * <Avatar initials="JD" label="John Doe" size="xlarge" image={<img src="…">} />
+ * <Avatar initials="JD" label="John Doe" size="small" image={<Icon href="…">} />
  * ```
  */
 export const Avatar = forwardRef<"span", AvatarProps>((props, forwardedRef) => {

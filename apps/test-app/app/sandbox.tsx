@@ -137,6 +137,13 @@ export default function Page() {
 									<SandboxTree tree="complex" />
 								)}
 							</Tabs.TabPanel>
+							<Tabs.TabPanel
+								tabId="loading"
+								className={styles.tabPanel}
+								focusable={false}
+							>
+								<SandboxTree tree="simple" />
+							</Tabs.TabPanel>
 						</TreeFilteringProvider>
 					</SandboxTabs>
 				</>
@@ -901,8 +908,10 @@ function findTreeItem<T extends Pick<TreeItem, "id"> & { items: T[] }>(
 
 function SandboxTree({
 	tree,
+	isSkeleton,
 }: {
 	tree: "simple" | "complex";
+	isSkeleton?: boolean;
 }) {
 	const { selectedId } = React.useContext(TabsContext);
 	const { filters, search, setItemCount } =
@@ -938,13 +947,15 @@ function SandboxTree({
 	if (deferredItems.length === 0) return <NoResultsState />;
 
 	return (
-		<React.Suspense fallback="Loading...">
+		<React.Suspense fallback="Loading…">
 			<Tree.Root className={styles.tree}>
 				{deferredItems.map((item) => {
 					return (
 						<Tree.Item
 							key={item.id}
 							label={item.label}
+							isSkeleton={isSkeleton}
+							// isSkeleton={false}
 							aria-level={item.level}
 							aria-posinset={item.position}
 							aria-setsize={item.size}
@@ -1074,6 +1085,7 @@ function Subheader() {
 				<Tabs.TabList className={styles.tabList} tone="accent" ref={tabsRef}>
 					<Tabs.Tab id="simple">Simple</Tabs.Tab>
 					<Tabs.Tab id="complex">Complex</Tabs.Tab>
+					<Tabs.Tab id="loading">Loading</Tabs.Tab>
 				</Tabs.TabList>
 			)}
 

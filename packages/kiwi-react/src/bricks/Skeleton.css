@@ -3,8 +3,10 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-.🥝-skeleton {
+.🥝-skeleton-item {
 	@layer base {
+		--🥝skeleton-width: 100%;
+
 		background-color: var(--ids-color-bg-glow-on-surface-disabled);
 		border-radius: var(--🥝skeleton-border-radius);
 		block-size: var(--🥝skeleton-height);
@@ -40,6 +42,8 @@
 
 		&:where([data-kiwi-variant="object"]) {
 			&:where([data-kiwi-shape="square"], [data-kiwi-shape="circle"]) {
+				aspect-ratio: 1;
+
 				&:where([data-kiwi-size="xsmall"]) {
 					--🥝skeleton-height: 12px;
 					--🥝skeleton-width: 12px;
@@ -110,3 +114,8 @@
 		}
 	}
 }
+
+/* *[aria-busy="true"],
+.🥝-skeleton[aria-hidden="true"] {
+	display: none;
+} */

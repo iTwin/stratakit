@@ -5,46 +5,12 @@
 import * as Ariakit from "@ariakit/react";
 import cx from "classnames";
 import { forwardRef, type BaseProps } from "./~utils.js";
-import { VisuallyHidden } from "./VisuallyHidden.js";
 
-// ----------------------------------------------------------------------------
-
-interface SkeletonProps extends BaseProps {
-	/**
-	 * A text alternative for the skeleton.
-	 * @default "Loading…"
-	 */
-	alt?: string;
-}
-
-/**
- * A skeleton component to roughly represent the loaded content before it finishes loading.
- *
- * TODO: JSDocs
- */
-const Skeleton = forwardRef<"div", SkeletonProps>((props, forwardedRef) => {
-	const { alt = "Loading…", ...rest } = props;
-
-	return (
-		<Ariakit.Role.div
-			{...rest}
-			className={cx("🥝-skeleton", props.className)}
-			ref={forwardedRef}
-		>
-			{props.children}
-			<VisuallyHidden>{alt}</VisuallyHidden>
-		</Ariakit.Role.div>
-	);
-});
-DEV: Skeleton.displayName = "Skeleton.Root";
-
-// ----------------------------------------------------------------------------
-
-interface SkeletonItemPropsBase extends BaseProps {
+interface SkeletonPropsBase extends BaseProps {
 	children?: never;
 }
 
-type SkeletonItemProps = SkeletonItemPropsBase &
+type SkeletonProps = SkeletonPropsBase &
 	(
 		| {
 				variant: "text";
@@ -59,27 +25,22 @@ type SkeletonItemProps = SkeletonItemPropsBase &
 	);
 
 /**
- * TODO: JSDocs
+ * A skeleton component to roughly represent the loaded content before it finishes loading.
  */
-const SkeletonItem = forwardRef<"div", SkeletonItemProps>(
+export const Skeleton = forwardRef<"div", SkeletonProps>(
 	(props, forwardedRef) => {
 		const { variant, shape, size, ...rest } = props;
 
 		return (
-			<Ariakit.Role.div
+			<Ariakit.Role
 				{...rest}
 				ref={forwardedRef}
-				className={cx("🥝-skeleton-item", props.className)}
+				className={cx("🥝-skeleton", props.className)}
 				data-kiwi-variant={variant}
 				data-kiwi-size={size}
 				data-kiwi-shape={shape}
-				aria-hidden="true"
 			/>
 		);
 	},
 );
-DEV: SkeletonItem.displayName = "Skeleton.Item";
-
-// ----------------------------------------------------------------------------
-
-export { Skeleton as Root, SkeletonItem as Item };
+DEV: Skeleton.displayName = "Skeleton";

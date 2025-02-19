@@ -10,7 +10,6 @@ import { IconButton } from "./IconButton.js";
 import { Icon } from "./Icon.js";
 import { forwardRef, type BaseProps } from "./~utils.js";
 import { useEventHandlers } from "./~hooks.js";
-import * as Skeleton from "./Skeleton.js";
 
 // ----------------------------------------------------------------------------
 
@@ -108,10 +107,6 @@ interface TreeItemProps extends Omit<BaseProps, "content"> {
 	 * ```
 	 */
 	actions?: React.ReactNode[];
-	/**
-	 * If true, `Tree.Item` shows a skeleton component to roughly represent the loaded content before it finishes loading.
-	 */
-	isSkeleton?: boolean;
 }
 
 /**
@@ -154,66 +149,31 @@ const TreeItem = forwardRef<"div", TreeItemProps>((props, forwardedRef) => {
 		onExpandedChange,
 		onClick: onClickProp,
 		onKeyDown: onKeyDownProp,
-		isSkeleton = true,
 		...rest
 	} = props;
 
-	const handleClick = React.useCallback(
-		(event: React.MouseEvent) => {
-			if (selected === undefined) return;
+	const handleClick = (event: React.MouseEvent) => {
+		if (selected === undefined) return;
 
-			event.stopPropagation(); // Avoid selecting parent treeitem
-			onSelectedChange?.(!selected);
-		},
-		[selected, onSelectedChange],
-	);
+		event.stopPropagation(); // Avoid selecting parent treeitem
+		onSelectedChange?.(!selected);
+	};
 
-	const handleKeyDown = React.useCallback(
-		(event: React.KeyboardEvent) => {
-			if (event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) {
-				return;
-			}
+	const handleKeyDown = (event: React.KeyboardEvent) => {
+		if (event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) {
+			return;
+		}
 
-			if (expanded === undefined) return;
+		if (expanded === undefined) return;
 
-			if (event.key === "ArrowRight" || event.key === "ArrowLeft") {
-				event.preventDefault(); // Prevent scrolling
+		if (event.key === "ArrowRight" || event.key === "ArrowLeft") {
+			event.preventDefault(); // Prevent scrolling
 
-				onExpandedChange?.(event.key === "ArrowRight");
-			}
-		},
-		[expanded, onExpandedChange],
-	);
+			onExpandedChange?.(event.key === "ArrowRight");
+		}
+	};
 
 	const contentId = React.useId();
-
-	const iconToDisplay = React.useMemo(() => {
-		if (isSkeleton) {
-			return null;
-		}
-
-		if (typeof icon === "string") {
-			return <Icon href={icon} />;
-		}
-		return icon;
-	}, [icon, isSkeleton]);
-
-	const eventHandlers = React.useMemo(() => {
-		if (!isSkeleton) {
-			return {
-				onClick: useEventHandlers(
-					onClickProp,
-					handleClick,
-				) as unknown as React.MouseEventHandler<HTMLButtonElement>,
-				onKeyDown: useEventHandlers(
-					onKeyDownProp,
-					handleKeyDown,
-				) as unknown as React.KeyboardEventHandler<HTMLButtonElement>,
-			};
-		}
-
-		return {};
-	}, [handleClick, isSkeleton, handleKeyDown, onClickProp, onKeyDownProp]);
 
 	return (
 		<TreeItemContext.Provider
@@ -223,62 +183,50 @@ const TreeItem = forwardRef<"div", TreeItemProps>((props, forwardedRef) => {
 					expanded,
 					selected,
 					contentId,
-					isSkeleton,
 				}),
-				[level, expanded, selected, contentId, isSkeleton],
+				[level, expanded, selected, contentId],
 			)}
 		>
-			<Skeleton.Root
-				render={
-					<Ariakit.CompositeItem
-						render={<Ariakit.Role {...rest} />}
-						{...eventHandlers}
-						role="treeitem"
-						aria-expanded={expanded}
-						aria-selected={selected}
-						aria-labelledby={contentId}
-						aria-level={level}
-						// aria-busy={isSkeleton}
-						className={cx("🥝-tree-item", props.className)}
-						ref={forwardedRef as Ariakit.CompositeItemProps["ref"]}
-					/>
+			<Ariakit.CompositeItem
+				render={<Ariakit.Role {...rest} />}
+				onClick={
+					useEventHandlers(
+						onClickProp,
+						handleClick,
+					) as unknown as React.MouseEventHandler<HTMLButtonElement>
 				}
+				onKeyDown={
+					useEventHandlers(
+						onKeyDownProp,
+						handleKeyDown,
+					) as unknown as React.KeyboardEventHandler<HTMLButtonElement>
+				}
+				role="treeitem"
+				aria-expanded={expanded}
+				aria-selected={selected}
+				aria-labelledby={contentId}
+				aria-level={level}
+				className={cx("🥝-tree-item", props.className)}
+				ref={forwardedRef as Ariakit.CompositeItemProps["ref"]}
 			>
-				{/* <Skeleton.Root
-					className="🥝-tree-item-node"
-					style={{ "--🥝tree-item-level": level + 2 } as React.CSSProperties}
-				>
-					<Skeleton.Item variant="text" size="medium" />
-				</Skeleton.Root> */}
-
 				<ListItem.Root
 					data-kiwi-expanded={expanded}
 					data-kiwi-selected={selected}
 					className="🥝-tree-item-node"
 					style={{ "--🥝tree-item-level": level } as React.CSSProperties}
 					role={undefined}
-					aria-busy={isSkeleton}
 				>
-					{isSkeleton ? (
-						<Skeleton.Item variant="object" shape="square" size="small" />
-					) : (
-						<TreeItemExpander
-							onClick={() => {
-								if (expanded === undefined) return;
-								onExpandedChange?.(!expanded);
-							}}
-						/>
-					)}
-					{iconToDisplay}
-					{/* <TreeItemContent label={label} /> */}
-					{!isSkeleton ? (
-						<TreeItemContent label={label} />
-					) : (
-						<Skeleton.Item variant="text" size="medium" />
-					)}
-					{!isSkeleton ? <TreeItemActions>{actions}</TreeItemActions> : null}
+					<TreeItemExpander
+						onClick={() => {
+							if (expanded === undefined) return;
+							onExpandedChange?.(!expanded);
+						}}
+					/>
+					{typeof icon === "string" ? <Icon href={icon} /> : icon}
+					<TreeItemContent label={label} />
+					<TreeItemActions>{actions}</TreeItemActions>
 				</ListItem.Root>
-			</Skeleton.Root>
+			</Ariakit.CompositeItem>
 		</TreeItemContext.Provider>
 	);
 });
@@ -294,17 +242,15 @@ const TreeItemContent = forwardRef<"span", TreeItemContentProps>(
 	(props, forwardedRef) => {
 		const { label, ...rest } = props;
 
-		const { contentId, isSkeleton } = React.useContext(TreeItemContext) ?? {};
+		const { contentId } = React.useContext(TreeItemContext) ?? {};
 
 		return (
 			<ListItem.Content
 				{...rest}
-				render={isSkeleton ? <Skeleton.Item variant="text" /> : undefined}
 				id={contentId}
 				className={cx("🥝-tree-item-content", props.className)}
 				ref={forwardedRef}
 			>
-				{/* {!isSkeleton ? label : <Skeleton variant="text" />} */}
 				{label}
 			</ListItem.Content>
 		);
@@ -401,9 +347,7 @@ interface TreeChevronProps extends Omit<BaseProps<"svg">, "children"> {}
 
 const TreeChevron = forwardRef<"svg", TreeChevronProps>(
 	(props, forwardedRef) => {
-		const { isSkeleton } = React.useContext(TreeItemContext) ?? {};
-
-		return isSkeleton ? null : (
+		return (
 			<Icon
 				{...props}
 				render={
@@ -432,7 +376,6 @@ const TreeItemContext = React.createContext<
 			expanded?: boolean;
 			selected?: boolean;
 			contentId: string;
-			isSkeleton?: boolean;
 	  }
 	| undefined
 >(undefined);

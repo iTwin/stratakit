@@ -17,6 +17,9 @@ importers:
       "@types/node":
         specifier: ^22.10.2
         version: 22.10.2
+      colorjs.io:
+        specifier: ^0.5.2
+        version: 0.5.2
       fast-glob:
         specifier: ^3.3.2
         version: 3.3.2
@@ -101,6 +104,10 @@ importers:
         version: 5.1.4(typescript@5.7.2)(vite@6.0.9(@types/node@22.10.2)(lightningcss@1.28.2)(tsx@4.19.2)(yaml@2.6.1))
 
   internal:
+    dependencies:
+      colorjs.io:
+        specifier: ^0.5.2
+        version: 0.5.2
     devDependencies:
       lightningcss:
         specifier: "*"
@@ -1605,6 +1612,12 @@ packages:
     resolution:
       {
         integrity: sha512-dOy+3AuW3a2wNbZHIuMZpTcgjGuLU/uBL/ubcZF9OXbDo8ff4O8yVp5Bf0efS8uEoYo5q4Fx7dY9OgQGXgAsQA==,
+      }
+
+  colorjs.io@0.5.2:
+    resolution:
+      {
+        integrity: sha512-twmVoizEW7ylZSN32OgKdXRmo1qg+wT5/6C3xu5b9QsWzSFAhHLn2xd8ro0diCsKfCj1RdaTP/nrcW+vAoQPIw==,
       }
 
   convert-source-map@2.0.0:
@@ -3645,6 +3658,8 @@ snapshots:
       color-name: 1.1.4
 
   color-name@1.1.4: {}
+
+  colorjs.io@0.5.2: {}
 
   convert-source-map@2.0.0: {}
 

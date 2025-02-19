@@ -15,7 +15,7 @@
 		color: var(--🥝badge-text-color);
 		font-weight: 500;
 		block-size: 1.25rem;
-		padding-inline: 4px;
+		padding-inline: 8px;
 	}
 
 	@layer modifiers {

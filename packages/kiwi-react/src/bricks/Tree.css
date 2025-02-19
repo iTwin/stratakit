@@ -78,8 +78,10 @@
 	}
 }
 
-.🥝-tree-item-actions {
+.🥝-tree-item-actions:is(.🥝-list-item-decoration:where([data-kiwi-placement="after"])) {
 	@layer base {
+		grid-row: block;
+		align-self: stretch;
 		position: sticky;
 		inset-inline-end: 0;
 		padding-inline-end: 4px;

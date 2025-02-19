@@ -28,16 +28,28 @@ export default definePage(function Page({ "active-state": isActive = false }) {
 			<ListItem.Root>Kiwi</ListItem.Root>
 			<ListItem.Root>
 				<ListItem.Content>Mango</ListItem.Content>
-				<Icon href={placeholderIcon} />
+				<ListItem.Decoration
+					placement="after"
+					render={<Icon href={placeholderIcon} />}
+				/>
 			</ListItem.Root>
 			<ListItem.Root>
-				<Icon href={placeholderIcon} />
+				<ListItem.Decoration
+					placement="before"
+					render={<Icon href={placeholderIcon} />}
+				/>
 				<ListItem.Content>Papaya</ListItem.Content>
 			</ListItem.Root>
 			<ListItem.Root>
-				<Icon href={placeholderIcon} />
+				<ListItem.Decoration
+					placement="before"
+					render={<Icon href={placeholderIcon} />}
+				/>
 				<ListItem.Content>Tomato</ListItem.Content>
-				<Icon href={placeholderIcon} />
+				<ListItem.Decoration
+					placement="after"
+					render={<Icon href={placeholderIcon} />}
+				/>
 			</ListItem.Root>
 		</div>
 	);

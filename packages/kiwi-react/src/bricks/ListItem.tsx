@@ -43,4 +43,30 @@ DEV: ListItemContent.displayName = "ListItem.Content";
 
 // ----------------------------------------------------------------------------
 
-export { ListItem as Root, ListItemContent as Content };
+interface ListItemDecorationProps extends Ariakit.RoleProps<"span"> {
+	placement: "before" | "after";
+}
+
+/** @internal */
+const ListItemDecoration = forwardRef<"span", ListItemDecorationProps>(
+	(props, forwardedRef) => {
+		const { placement, ...rest } = props;
+		return (
+			<Ariakit.Role.span
+				{...rest}
+				className={cx("🥝-list-item-decoration", props.className)}
+				data-kiwi-placement={placement}
+				ref={forwardedRef}
+			/>
+		);
+	},
+);
+DEV: ListItemDecoration.displayName = "ListItem.Decoration";
+
+// ----------------------------------------------------------------------------
+
+export {
+	ListItem as Root,
+	ListItemContent as Content,
+	ListItemDecoration as Decoration,
+};

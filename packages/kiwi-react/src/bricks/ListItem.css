@@ -21,9 +21,29 @@
 		line-height: 1.2;
 		font-size: var(--ids-font-size-12);
 
-		display: flex;
+		display: grid;
 		align-items: center;
-		gap: var(--✨gap);
+		column-gap: var(--✨gap);
+		grid-template-rows: [block-start] auto min-content [block-end];
+		grid-template-columns: [decoration-before-start] max-content [decoration-before-end content-start] auto [content-end decoration-after-start] max-content [decoration-after-end];
+
+		/* Conditionally add the tracks when they are used to avoid extra leading/trailing gap */
+		@supports selector(:has(+ *)) {
+			grid-template-columns: var(--🥝list-item-columns-prepend, [content-start]) auto var(
+					--🥝list-item-columns-append,
+					[content-end]
+				);
+
+			&:has(.🥝-list-item-decoration[data-kiwi-placement="before"]) {
+				--🥝list-item-columns-prepend: [decoration-before-start] max-content
+					[decoration-before-end content-start];
+			}
+
+			&:has(.🥝-list-item-decoration[data-kiwi-placement="after"]) {
+				--🥝list-item-columns-append: [content-end decoration-after-start] max-content
+					[decoration-after-end];
+			}
+		}
 
 		min-block-size: var(--✨height);
 		padding-inline: var(--✨padding-inline);
@@ -78,5 +98,23 @@
 }
 
 .🥝-list-item-content {
-	flex-grow: 1;
+	@layer base {
+		grid-column: content;
+	}
+}
+
+.🥝-list-item-decoration {
+	@layer base {
+		display: flex;
+		align-items: center;
+	}
+
+	@layer modifiers {
+		&:where([data-kiwi-placement="before"]) {
+			grid-column: decoration-before;
+		}
+		&:where([data-kiwi-placement="after"]) {
+			grid-column: decoration-after;
+		}
+	}
 }

@@ -34,8 +34,6 @@
 
 .🥝-table-row {
 	@layer base {
-		/* border-block-end: 1px solid var(--ids-color-border-neutral-muted); */
-
 		&:is(:not(tr)) {
 			display: flex;
 		}
@@ -53,7 +51,7 @@
 		hyphens: auto;
 
 		&:is(caption) {
-			text-align: left;
+			text-align: start;
 		}
 
 		&:is(th, td) {
@@ -89,7 +87,7 @@
 		}
 
 		&:is(th) {
-			text-align: left;
+			text-align: start;
 			font-weight: inherit;
 		}
 	}

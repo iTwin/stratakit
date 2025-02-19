@@ -26,6 +26,8 @@ interface BadgeProps extends Omit<BaseProps<"span">, "children"> {
 }
 
 /**
+ * A badge component, typically used to designate the status of an item.
+ *
  * Example:
  * ```tsx
  * <Badge label="Value" />

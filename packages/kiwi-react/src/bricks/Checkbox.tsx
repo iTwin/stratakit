@@ -17,7 +17,14 @@ type CheckboxOwnProps = Pick<
 	"value" | "defaultChecked" | "checked" | "onChange"
 >;
 
-interface CheckboxProps extends InputBaseProps, CheckboxOwnProps {}
+interface CheckboxProps extends InputBaseProps, CheckboxOwnProps {
+	/**
+	 * The variant of the checkbox, i.e. solid or outline.
+	 *
+	 * @default "solid"
+	 */
+	variant?: "solid" | "outline";
+}
 
 /**
  * A styled checkbox element, typically used for selecting one or more options from a list.
@@ -36,7 +43,7 @@ interface CheckboxProps extends InputBaseProps, CheckboxOwnProps {}
  */
 export const Checkbox = forwardRef<"input", CheckboxProps>(
 	(props, forwardedRef) => {
-		const { id, ...rest } = props;
+		const { id, variant = "solid", ...rest } = props;
 
 		return (
 			<FieldControl
@@ -47,6 +54,7 @@ export const Checkbox = forwardRef<"input", CheckboxProps>(
 						accessibleWhenDisabled
 						{...rest}
 						className={cx("🥝-checkbox", props.className)}
+						data-kiwi-variant={variant}
 						ref={forwardedRef}
 					/>
 				}

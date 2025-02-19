@@ -13,13 +13,16 @@ import * as React from "react";
 
 export const handle = { title: "Checkbox" };
 
+const variants = ["solid", "outline"] as const;
+
 export default definePage(
-	function Page({ checked, indeterminate, disabled }) {
+	function Page({ checked, indeterminate, disabled, variant = "solid" }) {
 		return (
 			<Field>
 				<Checkbox
 					defaultChecked={indeterminate ? "mixed" : !!checked}
 					disabled={!!disabled}
+					variant={variant as (typeof variants)[number]}
 				/>
 				<Label>Toggle me</Label>
 			</Field>
@@ -32,13 +35,20 @@ function VisualTest({ checked, indeterminate, disabled }: VariantProps) {
 	const id = React.useId();
 
 	return (
-		<>
-			<Checkbox
-				id={id}
-				defaultChecked={indeterminate ? "mixed" : !!checked}
-				disabled={!!disabled}
-			/>
-			<VisuallyHidden render={<Label htmlFor={id} />}>Toggle me</VisuallyHidden>
-		</>
+		<div style={{ display: "flex", gap: 4, flexDirection: "column" }}>
+			{variants.map((variant) => (
+				<div key={variant}>
+					<Checkbox
+						id={id}
+						defaultChecked={indeterminate ? "mixed" : !!checked}
+						disabled={!!disabled}
+						variant={variant}
+					/>
+					<VisuallyHidden render={<Label htmlFor={id} />}>
+						Toggle me
+					</VisuallyHidden>
+				</div>
+			))}
+		</div>
 	);
 }

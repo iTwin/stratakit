@@ -11,7 +11,14 @@ type InputBaseProps = Omit<FocusableProps<"input">, "defaultValue" | "value">;
 
 type RadioOwnProps = Pick<Ariakit.RadioProps, "value" | "checked" | "onChange">;
 
-interface RadioProps extends InputBaseProps, RadioOwnProps {}
+interface RadioProps extends InputBaseProps, RadioOwnProps {
+	/**
+	 * The variant of the radio, i.e. solid or outline.
+	 *
+	 * @default "solid"
+	 */
+	variant?: "solid" | "outline";
+}
 
 /**
  * A styled radio input element, typically used for selecting a single option from a list.
@@ -29,7 +36,7 @@ interface RadioProps extends InputBaseProps, RadioOwnProps {}
  * including `value`, `defaultChecked`, `checked`, and `onChange`.
  */
 export const Radio = forwardRef<"input", RadioProps>((props, forwardedRef) => {
-	const { id, ...rest } = props;
+	const { id, variant = "solid", ...rest } = props;
 
 	return (
 		<FieldControl
@@ -40,6 +47,7 @@ export const Radio = forwardRef<"input", RadioProps>((props, forwardedRef) => {
 					accessibleWhenDisabled
 					{...rest}
 					className={cx("🥝-checkbox", "🥝-radio", props.className)}
+					data-kiwi-variant={variant}
 					ref={forwardedRef}
 				/>
 			}

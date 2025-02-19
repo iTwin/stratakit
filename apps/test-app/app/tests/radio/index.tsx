@@ -13,8 +13,10 @@ import * as React from "react";
 
 export const handle = { title: "Radio" };
 
+const variants = ["solid", "outline"] as const;
+
 export default definePage(
-	function Page({ disabled, defaultValue }) {
+	function Page({ disabled, defaultValue, variant = "solid" }) {
 		return (
 			<div style={{ display: "grid", gap: 8 }}>
 				<Field>
@@ -23,6 +25,7 @@ export default definePage(
 						value="A"
 						defaultChecked={defaultValue === "A"}
 						disabled={!!disabled}
+						variant={variant as (typeof variants)[number]}
 					/>
 					<Label>A</Label>
 				</Field>
@@ -33,6 +36,7 @@ export default definePage(
 						value="B"
 						defaultChecked={defaultValue === "B"}
 						disabled={!!disabled}
+						variant={variant as (typeof variants)[number]}
 					/>
 					<Label>B</Label>
 				</Field>
@@ -46,15 +50,22 @@ function VisualTest({ checked, disabled }: VariantProps) {
 	const id = React.useId();
 
 	return (
-		<>
-			<Radio
-				name="test"
-				value="A"
-				id={id}
-				defaultChecked={!!checked}
-				disabled={!!disabled}
-			/>
-			<VisuallyHidden render={<Label htmlFor={id} />}>Toggle me</VisuallyHidden>
-		</>
+		<div style={{ display: "flex", gap: 4, flexDirection: "column" }}>
+			{variants.map((variant) => (
+				<div key={variant}>
+					<Radio
+						name="test"
+						value="A"
+						id={id}
+						defaultChecked={!!checked}
+						disabled={!!disabled}
+						variant={variant}
+					/>
+					<VisuallyHidden render={<Label htmlFor={id} />}>
+						Toggle me
+					</VisuallyHidden>
+				</div>
+			))}
+		</div>
 	);
 }

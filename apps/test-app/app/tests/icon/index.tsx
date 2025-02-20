@@ -9,8 +9,14 @@ import placeholderIcon from "@itwin/itwinui-icons/placeholder.svg";
 export const handle = { title: "Icon" };
 
 export default definePage(
-	function Page({ size = "regular" }) {
-		return <Icon size={size as "regular" | "large"} href={placeholderIcon} />;
+	function Page({ size = "regular", alt }) {
+		return (
+			<Icon
+				alt={alt}
+				size={size as "regular" | "large"}
+				href={placeholderIcon}
+			/>
+		);
 	},
 	{ renderProp: RenderPropTest },
 );

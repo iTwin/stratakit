@@ -12,6 +12,14 @@ test("default", async ({ page }) => {
 	await expect(icon).toHaveAttribute("aria-hidden", "true");
 });
 
+test("alt prop", async ({ page }) => {
+	await page.goto("/tests/icon?alt=Help me");
+
+	const icon = page.getByRole("img");
+	await expect(icon).toHaveAccessibleName("Help me");
+	await expect(icon).not.toHaveAttribute("aria-hidden");
+});
+
 test.describe("@visual", () => {
 	test("default", async ({ page }) => {
 		await page.goto("/tests/icon");

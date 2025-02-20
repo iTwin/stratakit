@@ -23,7 +23,7 @@ interface AvatarProps extends BaseProps<"span"> {
 	/**
 	 * Text which will be read by screen reader.
 	 */
-	label?: string;
+	alt?: string;
 
 	/**
 	 * Image to be displayed. Can be `<img>` or `<svg>` or anything else.
@@ -36,16 +36,16 @@ interface AvatarProps extends BaseProps<"span"> {
  *
  * Examples:
  * ```tsx
- * <Avatar initials="JD" label="John Doe" />
- * <Avatar initials="JD" label="John Doe" size="xlarge" image={<img src="…">} />
- * <Avatar initials="JD" label="John Doe" size="small" image={<Icon href="…">} />
+ * <Avatar initials="JD" alt="John Doe" />
+ * <Avatar initials="JD" alt="John Doe" size="xlarge" image={<img src="…">} />
+ * <Avatar initials="JD" alt="John Doe" size="small" image={<Icon href="…">} />
  * ```
  */
 export const Avatar = forwardRef<"span", AvatarProps>((props, forwardedRef) => {
-	const { size = "medium", initials, label, image, children, ...rest } = props;
+	const { size = "medium", initials, alt, image, children, ...rest } = props;
 
 	const avatarId = React.useId();
-	const isDecorative = !label;
+	const isDecorative = !alt;
 
 	return (
 		<Ariakit.Role.span
@@ -61,7 +61,7 @@ export const Avatar = forwardRef<"span", AvatarProps>((props, forwardedRef) => {
 					{initials?.substring(0, 1)}
 				</abbr>
 			)}
-			{label ? <VisuallyHidden id={avatarId}>{label}</VisuallyHidden> : null}
+			{alt ? <VisuallyHidden id={avatarId}>{alt}</VisuallyHidden> : null}
 		</Ariakit.Role.span>
 	);
 });

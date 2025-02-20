@@ -60,7 +60,7 @@ export const Avatar = forwardRef<"span", AvatarProps>((props, forwardedRef) => {
 					{initials?.substring(0, 1)}
 				</abbr>
 			)}
-			<VisuallyHidden id={avatarId}>{label}</VisuallyHidden>
+			{label ? <VisuallyHidden id={avatarId}>{label}</VisuallyHidden> : null}
 		</Ariakit.Role.span>
 	);
 });

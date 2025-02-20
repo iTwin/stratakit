@@ -4,16 +4,44 @@
  *--------------------------------------------------------------------------------------------*/
 .🥝-tree {
 	@layer base {
+		display: grid;
+		align-content: start;
 		overflow: auto;
+		background-color: var(--ids-color-bg-page-base);
+	}
+}
 
-		> [role="list"] {
-			min-inline-size: max-content;
+.🥝-tree-item {
+	@layer base {
+		position: relative;
+		min-inline-size: max-content;
+	}
+
+	@layer states {
+		&:focus-visible {
+			outline: none;
+			isolation: isolate;
+
+			&::before {
+				content: "";
+				position: absolute;
+				inset: 0;
+				z-index: 1; /* Ensure the outline appears above the actions */
+				pointer-events: none;
+				outline: 2px solid var(--ids-color-border-accent-strong);
+				outline-offset: -1px;
+			}
+		}
+
+		@media (any-hover: hover) {
+			&:where(:not(:hover, :focus-within)) {
+				--🥝tree-item-action-visibility: hidden;
+			}
 		}
 	}
 }
 
-.🥝-tree-item:is(.🥝-list-item) {
-	--✨padding-inline-end: 0.25rem;
+.🥝-tree-item-node:is(.🥝-list-item) {
 	--✨first-level-indent: 8px;
 	--✨subsequent-level-indent: 6px;
 
@@ -26,7 +54,7 @@
 			var(--✨subsequent-level-indent) *
 			(var(--🥝tree-item-level) - 1)
 		);
-		padding-inline-end: var(--✨padding-inline-end);
+		padding-inline-end: 0;
 	}
 
 	@layer states {
@@ -41,43 +69,12 @@
 		&:where(:not([data-kiwi-expanded])) {
 			--🥝tree-item-expander-visibility: hidden;
 		}
-
-		@media (any-hover: hover) {
-			&:where(:not(:hover):not(:focus-within)) {
-				:where(.🥝-tree-item-actions:not([data-kiwi-visible="true"])) {
-					clip-path: inset(50%);
-					height: 1px;
-					overflow: hidden;
-					position: absolute;
-					white-space: nowrap;
-					width: 1px;
-				}
-			}
-		}
 	}
 }
 
 .🥝-tree-item-content:is(.🥝-list-item-content) {
 	@layer base {
-		display: inline-flex;
-		min-inline-size: 0;
-
-		:where(button) {
-			cursor: pointer;
-
-			text-overflow: ellipsis;
-			white-space: nowrap;
-			overflow: hidden;
-
-			border: unset;
-			background-color: unset;
-
-			&::before {
-				content: "";
-				position: absolute;
-				inset: 0;
-			}
-		}
+		white-space: nowrap;
 	}
 }
 
@@ -86,8 +83,9 @@
 		position: sticky;
 		inset-inline-end: 0;
 		padding-inline-end: 4px;
-		background-color: var(--kiwi-color-bg-surface-primary);
+		background-color: var(--ids-color-bg-page-base);
 		display: inline-flex;
+		visibility: var(--🥝tree-item-actions-visibility, var(--🥝tree-item-action-visibility));
 
 		&::before {
 			position: absolute;
@@ -98,14 +96,30 @@
 		}
 	}
 
-	@layer states {
+	@layer modifiers {
+		&:where(:has(.🥝-tree-item-action[data-kiwi-visible="true"])) {
+			--🥝tree-item-actions-visibility: visible;
+		}
+
+		/* Without :has, we can't easily detect if there are any forcibily-visible actions, so unconditionally show this. */
+		@supports not selector(:has(+ *)) {
+			--🥝tree-item-actions-visibility: visible;
+		}
+	}
+}
+
+.🥝-tree-item-action:is(.🥝-icon-button) {
+	@layer base {
+		visibility: var(--🥝tree-item-action-visibility);
+	}
+
+	@layer modifiers {
 		&:where([data-kiwi-visible="false"]) {
-			clip-path: inset(50%);
-			height: 1px;
-			overflow: hidden;
-			position: absolute;
-			white-space: nowrap;
-			width: 1px;
+			--🥝tree-item-action-visibility: hidden;
+		}
+
+		&:where([data-kiwi-visible="true"]) {
+			--🥝tree-item-action-visibility: visible;
 		}
 	}
 }

@@ -5,6 +5,7 @@
 export const components = [
 	"Root",
 	"Anchor",
+	"Badge",
 	"Button",
 	"Checkbox",
 	"Chip",
@@ -20,6 +21,7 @@ export const components = [
 	"Select",
 	"Spinner",
 	"Switch",
+	"Table",
 	"Tabs",
 	"Text",
 	"Textarea",

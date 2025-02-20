@@ -91,6 +91,7 @@ function bundleCssPlugin() {
 					safari: (16 << 16) | (4 << 8), // safari 16.4
 				},
 				visitor,
+				exclude: lightningcss.Features.Colors,
 			});
 
 			return { code: finalCode.toString().trim() };

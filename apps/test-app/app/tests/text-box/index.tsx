@@ -11,7 +11,7 @@ export const handle = { title: "TextBox" };
 
 function TextAffix({ children }: React.PropsWithChildren) {
 	return (
-		<TextBox.Text style={{ color: "var(--kiwi-color-text-neutral-tertiary)" }}>
+		<TextBox.Text style={{ color: "var(--ids-color-text-neutral-tertiary)" }}>
 			{children}
 		</TextBox.Text>
 	);

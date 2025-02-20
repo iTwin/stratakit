@@ -4,31 +4,58 @@
  *--------------------------------------------------------------------------------------------*/
 import { definePage } from "~/~utils.tsx";
 import { Chip } from "@itwin/itwinui-react/bricks";
+import * as React from "react";
 
 export const handle = { title: "Chip" };
 
 export default definePage(
-	function Page({ orientation, presentational }) {
+	function Page() {
 		return (
 			<>
-				<Chip>Value</Chip>
+				<Chip label="Value" />
 			</>
 		);
 	},
-	{ visual: VisualTest },
+	{ visual: VisualTest, dismiss: DismissTest },
 );
 
 function VisualTest() {
-	const permutations = [["solid"], ["outline"]] as const;
+	// Permutations for visual testing without dismiss functionality
+	const permutations = ["solid", "outline"] as const;
 
 	return (
 		<div style={{ display: "grid", gap: 4 }}>
-			{permutations.map(([variant]) => {
-				const props = { variant } as React.ComponentProps<typeof Chip>;
-
+			{permutations.map((variant) => {
 				return (
-					<div key={variant} style={{ display: "flex", gap: 4 }}>
-						<Chip {...props}>{variant}</Chip>
+					<div key={variant}>
+						<Chip variant={variant} label={variant} />
+					</div>
+				);
+			})}
+		</div>
+	);
+}
+
+function DismissTest() {
+	// Permutations for visual testing with dismiss functionality
+	const permutations = ["solid", "outline"] as const;
+
+	const [isDismissed, setIsDismissed] = React.useState(false);
+
+	return (
+		<div style={{ display: "grid", gap: 4 }}>
+			{permutations.map((variant) => {
+				return (
+					<div key={variant}>
+						<Chip
+							key={variant}
+							variant={variant}
+							label={variant}
+							onDismiss={() => {
+								setIsDismissed(true);
+							}}
+							data-dismissed={isDismissed}
+						/>
 					</div>
 				);
 			})}

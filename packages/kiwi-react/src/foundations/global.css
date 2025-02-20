@@ -3,17 +3,20 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 html {
-	background-color: var(--kiwi-color-bg-surface-primary);
+	background-color: var(--ids-color-bg-page-base);
 }
 
 body {
 	@apply --typography("body-md");
-	font-family: var(--kiwi-font-family-sans);
-	color: var(--kiwi-color-text-neutral-primary);
+}
+
+:is(body, .🥝-root) {
+	font-family: var(--ids-font-family-sans);
+	color: var(--ids-color-text-neutral-primary);
 }
 
 *:focus-visible {
-	--✨focus-color: var(--kiwi-color-border-accent-strong);
+	--✨focus-color: var(--ids-color-border-accent-strong);
 	outline: 2px solid var(--✨focus-color);
 	outline-offset: 1px;
 }

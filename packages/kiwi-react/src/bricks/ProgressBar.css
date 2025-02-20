@@ -12,17 +12,13 @@
 
 	@layer modifiers {
 		&:where([data-kiwi-tone="neutral"]) {
-			--🥝progress-bar-color: var(--kiwi-color-icon-neutral-base);
-
-			/* TODO: Not the correct color */
-			--🥝progress-bar-track-color: var(--kiwi-color-border-neutral-base);
+			--🥝progress-bar-color: var(--ids-color-icon-neutral-base);
+			--🥝progress-bar-track-color: var(--ids-color-border-page-base);
 		}
 
 		&:where([data-kiwi-tone="accent"]) {
-			--🥝progress-bar-color: var(--kiwi-color-icon-accent-strong);
-
-			/* TODO: Not the correct color */
-			--🥝progress-bar-track-color: var(--kiwi-color-bg-accent-muted);
+			--🥝progress-bar-color: var(--ids-color-icon-accent-strong);
+			--🥝progress-bar-track-color: var(--ids-color-bg-accent-muted);
 		}
 
 		&:where([data-kiwi-size="small"]) {

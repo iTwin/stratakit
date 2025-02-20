@@ -6,6 +6,9 @@
 	"exports": {
 		"./*": "./*"
 	},
+	"dependencies": {
+		"colorjs.io": "^0.5.2"
+	},
 	"devDependencies": {
 		"lightningcss": "*"
 	}

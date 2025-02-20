@@ -12,7 +12,7 @@ import {
 	type FocusableProps,
 } from "./~utils.js";
 import { DisclosureArrow } from "./Icon.js";
-import { useFieldDescribedBy, useFieldId } from "./Field.js";
+import { FieldControl } from "./Field.js";
 
 const supportsHas = isBrowser && CSS?.supports?.("selector(:has(+ *))");
 
@@ -89,11 +89,9 @@ interface HtmlSelectProps extends HtmlSelectBaseProps {
  */
 const HtmlSelect = forwardRef<"select", HtmlSelectProps>(
 	(props, forwardedRef) => {
-		const { variant = "solid", ...rest } = props;
+		const { id, variant = "solid", ...rest } = props;
 
 		const setIsHtmlSelect = React.useContext(HtmlSelectContext);
-		const fieldId = useFieldId();
-		const describedBy = useFieldDescribedBy(props["aria-describedby"]);
 
 		React.useEffect(
 			function updateContext() {
@@ -104,14 +102,18 @@ const HtmlSelect = forwardRef<"select", HtmlSelectProps>(
 
 		return (
 			<>
-				<Ariakit.Role.select
-					id={fieldId}
-					{...rest}
-					className={cx("🥝-button", "🥝-select", props.className)}
-					aria-describedby={describedBy}
-					data-kiwi-tone="neutral"
-					data-kiwi-variant={variant}
-					ref={forwardedRef}
+				<FieldControl
+					type="textlike"
+					id={id}
+					render={
+						<Ariakit.Role.select
+							{...rest}
+							className={cx("🥝-button", "🥝-select", props.className)}
+							data-kiwi-tone="neutral"
+							data-kiwi-variant={variant}
+							ref={forwardedRef}
+						/>
+					}
 				/>
 				<DisclosureArrow className="🥝-select-arrow" />
 			</>

@@ -32,7 +32,7 @@ interface IconProps extends Omit<BaseProps<"svg">, "children"> {
  * **Note**: This component is meant to be used with decorative icons, so it adds `aria-hidden` by default.
  */
 export const Icon = forwardRef<"svg", IconProps>((props, forwardedRef) => {
-	const { href, size = "regular", ...rest } = props;
+	const { href, size, ...rest } = props;
 	const iconId = toIconId(size);
 	return (
 		<Ariakit.Role.svg
@@ -128,3 +128,30 @@ export const Checkmark = forwardRef<"svg", CheckmarkProps>(
 	},
 );
 DEV: Checkmark.displayName = "Checkmark";
+
+// ----------------------------------------------------------------------------
+
+interface DismissProps extends Omit<BaseProps<"svg">, "children"> {}
+
+export const Dismiss = forwardRef<"svg", DismissProps>(
+	(props, forwardedRef) => {
+		return (
+			<Icon
+				{...props}
+				render={
+					<Ariakit.Role.svg
+						width="16"
+						height="16"
+						viewBox="0 0 16 16"
+						fill="currentColor"
+						render={props.render}
+					>
+						<path d="M4.853 4.146a.5.5 0 1 0-.707.708L7.293 8l-3.147 3.146a.5.5 0 0 0 .707.708L8 8.707l3.146 3.147a.5.5 0 0 0 .707-.708L8.707 8l3.146-3.146a.5.5 0 1 0-.707-.708L8 7.293 4.853 4.146Z" />
+					</Ariakit.Role.svg>
+				}
+				ref={forwardedRef}
+			/>
+		);
+	},
+);
+DEV: Dismiss.displayName = "Dismiss";

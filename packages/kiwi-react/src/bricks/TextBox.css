@@ -3,35 +3,35 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 .🥝-text-box {
-	--✨bg--default: var(--kiwi-color-bg-surface-primary);
+	--✨bg--default: var(--ids-color-bg-page-base);
 	--✨bg--hover: color-mix(
 		in oklch,
 		var(--✨bg--default) 100%,
-		var(--kiwi-color-glow-hue) var(--kiwi-color-bg-glow-base-hover-\%)
+		var(--ids-color-glow-hue) var(--ids-color-bg-glow-base-hover-\%)
 	);
-	--✨bg--disabled: var(--kiwi-color-bg-surface-base);
-	--✨border--default: var(--kiwi-color-border-neutral-base);
+	--✨bg--disabled: var(--ids-color-bg-elevation-control);
+	--✨border--default: var(--ids-color-border-neutral-base);
 	--✨border--hover: color-mix(
 		in oklch,
 		var(--✨border--default) 100%,
-		var(--kiwi-color-glow-hue) var(--kiwi-color-border-glow-base-hover-\%)
+		var(--ids-color-glow-hue) var(--ids-color-border-glow-base-hover-\%)
 	);
-	--✨border--focus: var(--kiwi-color-border-accent-strong);
-	--✨border--disabled: var(--kiwi-color-border-glow-on-surface-disabled);
-	--✨color--default: var(--kiwi-color-text-neutral-primary);
-	--✨color--placeholder: var(--kiwi-color-text-neutral-secondary);
-	--✨color--disabled: var(--kiwi-color-text-neutral-disabled);
+	--✨border--focus: var(--ids-color-border-accent-strong);
+	--✨border--disabled: var(--ids-color-border-glow-on-surface-disabled);
+	--✨color--default: var(--ids-color-text-neutral-primary);
+	--✨color--placeholder: var(--ids-color-text-neutral-secondary);
+	--✨color--disabled: var(--ids-color-text-neutral-disabled);
 	--✨height: 1.5rem;
 	--✨padding-inline: 8px;
 	/* Dynamically adjust the padding to avoid issues with baseline alignment */
 	--✨padding-block: max(0px, (var(--✨height) - 2px - 1lh) / 2);
 	--✨gap: 4px;
-	--✨outline: 2px solid var(--kiwi-color-border-accent-base);
+	--✨outline: 2px solid var(--ids-color-border-accent-base);
 	--✨outline-offset: 1px;
 
 	@layer base {
 		cursor: var(--🥝text-box-cursor);
-		font-size: var(--kiwi-font-size-12);
+		font-size: var(--ids-font-size-12);
 		min-inline-size: 0;
 
 		min-block-size: var(--✨height);
@@ -39,7 +39,7 @@
 		border-radius: 4px;
 
 		background-color: var(--🥝text-box-background-color);
-		box-shadow: var(--kiwi-shadow-input-base);
+		box-shadow: var(--ids-shadow-input-base);
 		color: var(--✨color--default);
 		transition: all 150ms ease-out;
 		transition-property: background-color, border-color;
@@ -84,6 +84,7 @@
 			&::placeholder {
 				color: var(--✨color--placeholder);
 				opacity: 1;
+				user-select: none;
 			}
 		}
 
@@ -116,7 +117,7 @@
 			outline: var(--✨outline);
 			outline-offset: var(--✨outline-offset);
 			--🥝text-box-border-color: var(--✨border--focus);
-			--🥝icon-color: var(--kiwi-color-icon-accent-strong);
+			--🥝icon-color: var(--ids-color-icon-accent-strong);
 		}
 
 		@supports not selector(:has(+ *)) {
@@ -124,7 +125,7 @@
 				outline: var(--✨outline);
 				outline-offset: var(--✨outline-offset);
 				--🥝text-box-border-color: var(--✨border--focus);
-				--🥝icon-color: var(--kiwi-color-icon-accent-strong);
+				--🥝icon-color: var(--ids-color-icon-accent-strong);
 			}
 		}
 

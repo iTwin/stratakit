@@ -3,7 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 .🥝-select-root {
-	--✨padding-inline-start: 12px; /* same as button's padding-inline */
+	--✨padding-inline-start: 8px;
 	--✨padding-inline-end: calc(4px + 16px + 4px); /* (gap) + (arrow size) + (padding-inline - disclosure arrow offset) */
 
 	@layer base {
@@ -33,9 +33,9 @@
 		margin-inline-end: 4px; /* (padding - disclosure offset) */
 		pointer-events: none;
 
-		--🥝icon-color: var(--🌀select-arrow-state--default, var(--kiwi-color-icon-neutral-base))
-			var(--🌀select-arrow-state--hover, var(--kiwi-color-icon-neutral-hover))
-			var(--🌀select-arrow-state--disabled, var(--kiwi-color-icon-neutral-disabled));
+		--🥝icon-color: var(--🌀select-arrow-state--default, var(--ids-color-icon-neutral-base))
+			var(--🌀select-arrow-state--hover, var(--ids-color-icon-neutral-hover))
+			var(--🌀select-arrow-state--disabled, var(--ids-color-icon-neutral-disabled));
 	}
 
 	@layer states {

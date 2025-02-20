@@ -5,7 +5,7 @@
 .🥝-anchor {
 	@layer base {
 		cursor: pointer;
-		font-size: var(--kiwi-font-size-12);
+		font-size: var(--ids-font-size-12);
 		font-weight: 500;
 		text-underline-offset: 0.25ex;
 		text-decoration-color: inherit;
@@ -23,16 +23,16 @@
 	}
 
 	@layer modifiers {
-		&[data-kiwi-tone="neutral"] {
-			--🥝anchor-color: var(--kiwi-color-text-neutral-primary);
+		&:where([data-kiwi-tone="neutral"]) {
+			--🥝anchor-color: var(--ids-color-text-neutral-primary);
 		}
 
-		&[data-kiwi-tone="accent"] {
-			--🥝anchor-color: var(--kiwi-color-text-accent-strong);
+		&:where([data-kiwi-tone="accent"]) {
+			--🥝anchor-color: var(--ids-color-text-accent-strong);
 		}
 
-		&[data-kiwi-tone="critical"] {
-			--🥝anchor-color: var(--kiwi-color-text-critical-base);
+		&:where([data-kiwi-tone="critical"]) {
+			--🥝anchor-color: var(--ids-color-text-critical-base);
 
 			&:focus-visible {
 				outline-color: var(--🥝anchor-color);
@@ -52,7 +52,7 @@
 		}
 
 		&:where([disabled], :disabled, [aria-disabled="true"]) {
-			--🥝anchor-color-text: var(--kiwi-color-text-neutral-disabled);
+			--🥝anchor-color-text: var(--ids-color-text-neutral-disabled);
 
 			cursor: not-allowed;
 			text-decoration-color: transparent;

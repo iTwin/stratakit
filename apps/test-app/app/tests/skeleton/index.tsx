@@ -3,7 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 import { definePage } from "~/~utils.tsx";
-import { Skeleton } from "@itwin/itwinui-react-internal/src/bricks/Skeleton.tsx";
+import * as Skeleton from "@itwin/itwinui-react-internal/src/bricks/Skeleton.tsx";
 import { Divider } from "@itwin/itwinui-react-internal/src/bricks/Divider.tsx";
 
 export const handle = { title: "Tree" };
@@ -22,20 +22,22 @@ export default definePage(function Page() {
 
 	return (
 		<div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
-			<h2>Text</h2>
-			{textSizes.map((textSize) => (
-				<Skeleton
-					key={textSize}
-					variant="text"
-					size={textSize}
-					style={{ marginBottom: 8 }}
-				/>
-			))}
+			<Skeleton.Root>
+				<h2>Text</h2>
+				{textSizes.map((textSize) => (
+					<Skeleton.Item
+						key={textSize}
+						variant="text"
+						size={textSize}
+						style={{ marginBottom: 8 }}
+					/>
+				))}
+			</Skeleton.Root>
 
 			<Divider style={{ margin: "16px 0" }} />
 
 			<h2>Object</h2>
-			<div
+			<Skeleton.Root
 				style={{
 					display: "grid",
 					gridTemplateColumns: "repeat(3, min-content)",
@@ -44,7 +46,7 @@ export default definePage(function Page() {
 			>
 				{objectSizes.map((objectSize) =>
 					objectShapes.map((objectShape) => (
-						<Skeleton
+						<Skeleton.Item
 							key={objectSize}
 							variant="object"
 							size={objectSize}
@@ -53,7 +55,7 @@ export default definePage(function Page() {
 						/>
 					)),
 				)}
-			</div>
+			</Skeleton.Root>
 		</div>
 	);
 });

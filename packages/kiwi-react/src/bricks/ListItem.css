@@ -16,8 +16,6 @@
 	--✨bg--disabled: var(--ids-color-text-neutral-disabled);
 
 	@layer base {
-		--🥝list-item-column-gap: 0.25rem;
-
 		cursor: pointer;
 		line-height: 1.2;
 		font-size: var(--ids-font-size-12);
@@ -89,16 +87,17 @@
 }
 
 .🥝-list-item-decoration {
+	--✨gap: 0.25rem;
+
 	@layer base {
 		display: flex;
 		align-items: center;
 		grid-column: decoration-before;
-		margin-inline-end: var(--🥝list-item-column-gap);
+		margin-inline-end: var(--✨gap);
 
-		&:where(.🥝-list-item-content ~ .🥝-list-item-decoration) {
+		:where(.🥝-list-item-content) ~ & {
 			grid-column: decoration-after;
-			margin-inline-end: 0;
-			margin-inline-start: var(--🥝list-item-column-gap);
+			margin-inline: var(--✨gap) 0;
 		}
 	}
 }

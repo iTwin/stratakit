@@ -12,7 +12,7 @@ export default definePage(
 	function Page({ disabled }) {
 		return (
 			<>
-				<Avatar initials="BS" label="Bentley Systems" data-testid="avatar" />
+				<Avatar initials="WW" label="Willow Winters" data-testid="avatar" />
 			</>
 		);
 	},
@@ -27,7 +27,7 @@ function VisualTest() {
 
 	const props = {
 		initials: "WW",
-		label: "Walter White",
+		label: "Willow Winters",
 	};
 
 	return (

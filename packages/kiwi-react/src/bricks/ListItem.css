@@ -23,10 +23,11 @@
 		display: grid;
 		align-items: center;
 		grid-template-rows: [block-start] auto min-content [block-end];
-		grid-template-columns: [decoration-before-start] auto [decoration-before-end content-start] minmax(
-				0,
-				1fr
-			) [content-end decoration-after-start] auto [decoration-after-end];
+		/* biome-ignore format: improve readability */
+		grid-template-columns:
+			[decoration-before-start] auto [decoration-before-end
+			content-start] minmax(0, 1fr) [content-end
+			decoration-after-start] auto [decoration-after-end];
 
 		min-block-size: var(--✨height);
 		padding-inline: var(--✨padding-inline);

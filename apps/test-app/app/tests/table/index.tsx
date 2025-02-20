@@ -3,7 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 import { definePage } from "~/~utils.tsx";
-import * as Table from "@itwin/itwinui-react-internal/src/bricks/Table.tsx";
+import { Table } from "@itwin/itwinui-react/bricks";
 import * as React from "react";
 
 export const handle = { title: "Table" };

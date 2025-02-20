@@ -23,6 +23,7 @@ export { Radio } from "./Radio.js";
 export * as Select from "./Select.js";
 export { Spinner } from "./Spinner.js";
 export { Switch } from "./Switch.js";
+export * as Table from "./Table.js";
 export * as Tabs from "./Tabs.js";
 export { Text } from "./Text.js";
 export * as TextBox from "./TextBox.js";

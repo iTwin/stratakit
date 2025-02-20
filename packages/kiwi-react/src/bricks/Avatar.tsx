@@ -45,12 +45,13 @@ export const Avatar = forwardRef<"span", AvatarProps>((props, forwardedRef) => {
 	const { size = "medium", initials, label, image, children, ...rest } = props;
 
 	const avatarId = React.useId();
+	const isDecorative = !label;
 
 	return (
 		<Ariakit.Role.span
-			{...rest}
-			role="img"
+			role={isDecorative ? undefined : "img"}
 			aria-labelledby={avatarId}
+			{...rest}
 			data-kiwi-size={size}
 			className={cx("🥝-avatar", props.className)}
 			ref={forwardedRef}

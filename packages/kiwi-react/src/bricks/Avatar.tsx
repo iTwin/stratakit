@@ -36,12 +36,21 @@ interface AvatarProps extends BaseProps<"span"> {
 }
 
 /**
- * An avatar to represent users or organizations.
+ * An avatar to represent a user or organization.
  *
- * Examples:
+ * By default, this component assumes that the avatar is decorative, so it adds `aria-hidden` by default.
+ * ```tsx
+ * <Avatar initials="JD" />
+ * ```
+ *
+ * If the avatar is semantically meaningful, the `alt` prop can be used to provide alternative text.
  * ```tsx
  * <Avatar initials="JD" alt="John Doe" />
- * <Avatar initials="JD" alt="John Doe" size="xlarge" image={<img src="…">} />
+ * ```
+ *
+ * Image & size examples:
+ * ```tsx
+ * <Avatar initials="JD" alt="John Doe" size="xlarge" image={<img src="…" alt="">} />
  * <Avatar initials="JD" alt="John Doe" size="small" image={<Icon href="…">} />
  * ```
  */

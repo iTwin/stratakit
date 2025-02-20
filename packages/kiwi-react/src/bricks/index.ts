@@ -7,6 +7,7 @@
 export { Root } from "./Root.js";
 export { Anchor } from "./Anchor.js";
 export { Avatar } from "./Avatar.js";
+export { Badge } from "./Badge.js";
 export { Button } from "./Button.js";
 export { Checkbox } from "./Checkbox.js";
 export { Chip } from "./Chip.js";

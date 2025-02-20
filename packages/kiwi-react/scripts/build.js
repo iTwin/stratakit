@@ -100,6 +100,7 @@ function inlineCssPlugin() {
 				const { code: intermediateCode } = await lightningcss.bundleAsync({
 					filename: args.path,
 					visitor,
+					exclude: lightningcss.Features.Colors,
 				});
 
 				// Process the bundled CSS again, for minification and any leftover transformations.
@@ -113,6 +114,7 @@ function inlineCssPlugin() {
 						safari: (16 << 16) | (4 << 8), // safari 16.4
 					},
 					visitor,
+					exclude: lightningcss.Features.Colors,
 				});
 				const css = finalCode.toString().trim();
 

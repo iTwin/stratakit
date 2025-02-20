@@ -19,7 +19,13 @@ interface AvatarProps extends BaseProps<"span"> {
 	initials?: string;
 
 	/**
-	 * Text which will be read by screen reader.
+	 * Alternative text describing the avatar, typically the user's or organization's full name.
+	 *
+	 * When this prop is passed, the avatar gets rendered as `role="img"` and labelled
+	 * using the provided text.
+	 *
+	 * This prop is not required if the avatar is purely decorative. By default, the avatar
+	 * will be hidden from the accessibility tree.
 	 */
 	alt?: string;
 

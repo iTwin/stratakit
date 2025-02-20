@@ -47,8 +47,8 @@ export const Avatar = forwardRef<"span", AvatarProps>((props, forwardedRef) => {
 	return (
 		<Ariakit.Role.span
 			role={isDecorative ? undefined : "img"}
+			aria-label={isDecorative ? undefined : alt}
 			{...rest}
-			aria-label={alt}
 			data-kiwi-size={size}
 			className={cx("🥝-avatar", props.className)}
 			ref={forwardedRef}

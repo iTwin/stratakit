@@ -3,9 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 import cx from "classnames";
-import * as React from "react";
 import * as Ariakit from "@ariakit/react";
-import { VisuallyHidden } from "./VisuallyHidden.js";
 import { forwardRef, type BaseProps } from "./~utils.js";
 
 interface AvatarProps extends BaseProps<"span"> {
@@ -44,14 +42,13 @@ interface AvatarProps extends BaseProps<"span"> {
 export const Avatar = forwardRef<"span", AvatarProps>((props, forwardedRef) => {
 	const { size = "medium", initials, alt, image, children, ...rest } = props;
 
-	const avatarId = React.useId();
 	const isDecorative = !alt;
 
 	return (
 		<Ariakit.Role.span
 			role={isDecorative ? undefined : "img"}
-			aria-labelledby={avatarId}
 			{...rest}
+			aria-label={alt}
 			data-kiwi-size={size}
 			className={cx("🥝-avatar", props.className)}
 			ref={forwardedRef}
@@ -61,7 +58,6 @@ export const Avatar = forwardRef<"span", AvatarProps>((props, forwardedRef) => {
 					{initials?.substring(0, 1)}
 				</abbr>
 			)}
-			{alt ? <VisuallyHidden id={avatarId}>{alt}</VisuallyHidden> : null}
 		</Ariakit.Role.span>
 	);
 });

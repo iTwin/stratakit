@@ -7,6 +7,7 @@
 @import "./Icon.css" layer(itwinui.components);
 
 @import "./Anchor.css" layer(itwinui.components);
+@import "./Badge.css" layer(itwinui.components);
 @import "./Button.css" layer(itwinui.components);
 @import "./Checkbox.css" layer(itwinui.components);
 @import "./Chip.css" layer(itwinui.components);

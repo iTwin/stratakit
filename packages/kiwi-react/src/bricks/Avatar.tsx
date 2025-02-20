@@ -55,12 +55,11 @@ export const Avatar = forwardRef<"span", AvatarProps>((props, forwardedRef) => {
 			className={cx("🥝-avatar", props.className)}
 			ref={forwardedRef}
 		>
-			{!image ? (
+			{image ?? (
 				<abbr className="🥝-avatar-initials" aria-hidden="true">
 					{initials?.substring(0, 1)}
 				</abbr>
-			) : null}
-			{image}
+			)}
 			<VisuallyHidden id={avatarId}>{label}</VisuallyHidden>
 		</Ariakit.Role.span>
 	);

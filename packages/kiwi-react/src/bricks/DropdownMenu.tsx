@@ -194,10 +194,7 @@ const DropdownMenuItem = forwardRef<"div", DropdownMenuItemProps>(
 			>
 				<ListItem.Content>{props.children}</ListItem.Content>
 				{hasShortcuts && (
-					<ListItem.Decoration
-						placement="after"
-						className={"🥝-dropdown-menu-item-shortcuts"}
-					>
+					<ListItem.Decoration className={"🥝-dropdown-menu-item-shortcuts"}>
 						{shortcutKeys.map((key, index) => (
 							<Kbd variant="ghost" key={`${key + index}`}>
 								{key}
@@ -244,7 +241,6 @@ const DropdownMenuCheckboxItem = forwardRef<
 		>
 			<ListItem.Content>{props.children}</ListItem.Content>
 			<ListItem.Decoration
-				placement="after"
 				render={<Checkmark className="🥝-dropdown-menu-checkmark" />}
 			/>
 		</Ariakit.MenuItemCheckbox>

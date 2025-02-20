@@ -43,19 +43,15 @@ DEV: ListItemContent.displayName = "ListItem.Content";
 
 // ----------------------------------------------------------------------------
 
-interface ListItemDecorationProps extends Ariakit.RoleProps<"span"> {
-	placement: "before" | "after";
-}
+interface ListItemDecorationProps extends Ariakit.RoleProps<"span"> {}
 
 /** @internal */
 const ListItemDecoration = forwardRef<"span", ListItemDecorationProps>(
 	(props, forwardedRef) => {
-		const { placement, ...rest } = props;
 		return (
 			<Ariakit.Role.span
-				{...rest}
+				{...props}
 				className={cx("🥝-list-item-decoration", props.className)}
-				data-kiwi-placement={placement}
 				ref={forwardedRef}
 			/>
 		);

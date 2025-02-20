@@ -78,7 +78,7 @@
 	}
 }
 
-.🥝-tree-item-actions:is(.🥝-list-item-decoration:where([data-kiwi-placement="after"])) {
+.🥝-tree-item-actions:is(.🥝-list-item-decoration) {
 	@layer base {
 		grid-row: block;
 		align-self: stretch;

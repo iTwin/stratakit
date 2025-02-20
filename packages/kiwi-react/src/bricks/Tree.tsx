@@ -216,7 +216,7 @@ const TreeItem = forwardRef<"div", TreeItemProps>((props, forwardedRef) => {
 					style={{ "--🥝tree-item-level": level } as React.CSSProperties}
 					role={undefined}
 				>
-					<ListItem.Decoration placement="before">
+					<ListItem.Decoration>
 						<TreeItemExpander
 							onClick={() => {
 								if (expanded === undefined) return;
@@ -227,7 +227,6 @@ const TreeItem = forwardRef<"div", TreeItemProps>((props, forwardedRef) => {
 					</ListItem.Decoration>
 					<TreeItemContent label={label} />
 					<ListItem.Decoration
-						placement="after"
 						render={<TreeItemActions>{actions}</TreeItemActions>}
 					/>
 				</ListItem.Root>

@@ -3,7 +3,6 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 .🥝-list-item {
-	--✨gap: 0.25rem;
 	--✨height: 1.75rem;
 	--✨padding-inline: 0.5rem;
 
@@ -17,33 +16,19 @@
 	--✨bg--disabled: var(--ids-color-text-neutral-disabled);
 
 	@layer base {
+		--🥝list-item-column-gap: 0.25rem;
+
 		cursor: pointer;
 		line-height: 1.2;
 		font-size: var(--ids-font-size-12);
 
 		display: grid;
 		align-items: center;
-		column-gap: var(--✨gap);
 		grid-template-rows: [block-start] auto min-content [block-end];
-		grid-template-columns: [decoration-before-start] max-content [decoration-before-end content-start] auto [content-end decoration-after-start] max-content [decoration-after-end];
-
-		/* Conditionally add the tracks when they are used to avoid extra leading/trailing gap */
-		@supports selector(:has(+ *)) {
-			grid-template-columns: var(--🥝list-item-columns-prepend, [content-start]) auto var(
-					--🥝list-item-columns-append,
-					[content-end]
-				);
-
-			&:has(.🥝-list-item-decoration[data-kiwi-placement="before"]) {
-				--🥝list-item-columns-prepend: [decoration-before-start] max-content
-					[decoration-before-end content-start];
-			}
-
-			&:has(.🥝-list-item-decoration[data-kiwi-placement="after"]) {
-				--🥝list-item-columns-append: [content-end decoration-after-start] max-content
-					[decoration-after-end];
-			}
-		}
+		grid-template-columns: [decoration-before-start] minmax(0, max-content) [decoration-before-end content-start] auto [content-end decoration-after-start] minmax(
+				0,
+				max-content
+			) [decoration-after-end];
 
 		min-block-size: var(--✨height);
 		padding-inline: var(--✨padding-inline);
@@ -107,14 +92,13 @@
 	@layer base {
 		display: flex;
 		align-items: center;
-	}
+		grid-column: decoration-before;
+		margin-inline-end: var(--🥝list-item-column-gap);
 
-	@layer modifiers {
-		&:where([data-kiwi-placement="before"]) {
-			grid-column: decoration-before;
-		}
-		&:where([data-kiwi-placement="after"]) {
+		&:where(.🥝-list-item-content ~ .🥝-list-item-decoration) {
 			grid-column: decoration-after;
+			margin-inline-end: 0;
+			margin-inline-start: var(--🥝list-item-column-gap);
 		}
 	}
 }

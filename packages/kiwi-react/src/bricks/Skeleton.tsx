@@ -72,14 +72,31 @@ type SkeletonItemProps = SkeletonItemPropsBase &
 				shape?: never;
 		  }
 		| {
+				/**
+				 * The type of the skeleton item. Available variants: `text`, `object`.
+				 * @default "text"
+				 */
 				variant?: "object";
+				/**
+				 * The size of the skeleton item. Available sizes:
+				 * * `variant=text`: `xsmall`, `small`, `medium`, `large`, `xlarge`, `xxlarge`
+				 * * `variant=object`: `xsmall`, `small`, `medium`, `large`, `xlarge`
+				 * @default "medium"
+				 */
 				size?: "xsmall" | "small" | "medium" | "large" | "xlarge";
+				/**
+				 * The shape of the skeleton item. Available shapes: `square`, `pill`, `circle`.
+				 * @default "square" // if `variant=object`
+				 * @default undefined // if `variant=text`
+				 */
 				shape?: "square" | "pill" | "circle";
 		  }
 	);
 
 /**
- * A skeleton item to represent the loaded content before it finishes loading.
+ * Needs to be wrapped around `Skeleton.Root`.
+ *
+ * `Skeleton.Item` represents the loaded content before it finishes loading.
  *
  * ```tsx
  * <Skeleton.Root>

@@ -20,7 +20,6 @@ test.describe("default", () => {
 	test("text variant", async ({ page }) => {
 		for (const size of textSizes) {
 			await page.goto(`/tests/skeleton?variant=text&size=${size}`);
-			await page.waitForTimeout(500);
 
 			const skeleton = page.locator(".🥝-skeleton");
 			const skeletonItem = page.locator(".🥝-skeleton-item");
@@ -39,7 +38,6 @@ test.describe("default", () => {
 				await page.goto(
 					`/tests/skeleton?variant=object&size=${size}&shape=${shape}`,
 				);
-				await page.waitForTimeout(500);
 
 				const skeleton = page.locator(".🥝-skeleton");
 				const skeletonItem = page.locator(".🥝-skeleton-item");

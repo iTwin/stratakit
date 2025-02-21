@@ -6,43 +6,31 @@ import { test, expect } from "#playwright";
 import AxeBuilder from "@axe-core/playwright";
 
 test("default", async ({ page }) => {
-	await page.goto("/tests/icon");
-
-	const icon = page.locator("svg");
-	await expect(icon).toHaveAttribute("aria-hidden", "true");
-});
-
-test("alt prop", async ({ page }) => {
-	await page.goto("/tests/icon?alt=Help me");
-
-	const icon = page.getByRole("img");
-	await expect(icon).toHaveAccessibleName("Help me");
-	await expect(icon).not.toHaveAttribute("aria-hidden");
+	await page.goto("/tests/avatar");
+	const avatar = page.getByTestId("avatar");
+	await expect(avatar).toBeVisible();
 });
 
 test.describe("@visual", () => {
 	test("default", async ({ page }) => {
-		await page.goto("/tests/icon");
+		await page.goto("/tests/avatar?visual=true");
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
 
-	test("large", async ({ page }) => {
-		await page.goto("/tests/icon?size=large");
-		await expect(page.locator("body")).toHaveScreenshot();
-	});
-
-	test("render prop", async ({ page }) => {
-		await page.goto("/tests/icon?renderProp=true");
+	test("forced-colors", async ({ page, browserName }) => {
+		test.skip(
+			browserName === "webkit",
+			"Webkit does not support forced-colors",
+		);
+		await page.goto("/tests/avatar?visual=true");
+		await page.emulateMedia({ forcedColors: "active" });
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
 });
 
 test.describe("@a11y", () => {
 	test("Axe Page Scan", async ({ page }) => {
-		await page.goto("/tests/icon");
-
-		const icon = page.locator("svg");
-		await expect(icon).toBeVisible();
+		await page.goto("/tests/avatar");
 
 		const axe = new AxeBuilder({ page });
 		const accessibilityScan = await axe.analyze();

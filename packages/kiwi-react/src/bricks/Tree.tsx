@@ -216,15 +216,19 @@ const TreeItem = forwardRef<"div", TreeItemProps>((props, forwardedRef) => {
 					style={{ "--🥝tree-item-level": level } as React.CSSProperties}
 					role={undefined}
 				>
-					<TreeItemExpander
-						onClick={() => {
-							if (expanded === undefined) return;
-							onExpandedChange?.(!expanded);
-						}}
-					/>
-					{typeof icon === "string" ? <Icon href={icon} /> : icon}
+					<ListItem.Decoration>
+						<TreeItemExpander
+							onClick={() => {
+								if (expanded === undefined) return;
+								onExpandedChange?.(!expanded);
+							}}
+						/>
+						{typeof icon === "string" ? <Icon href={icon} /> : icon}
+					</ListItem.Decoration>
 					<TreeItemContent label={label} />
-					<TreeItemActions>{actions}</TreeItemActions>
+					<ListItem.Decoration
+						render={<TreeItemActions>{actions}</TreeItemActions>}
+					/>
 				</ListItem.Root>
 			</Ariakit.CompositeItem>
 		</TreeItemContext.Provider>

@@ -66,7 +66,7 @@ type SkeletonItemProps = SkeletonItemPropsBase &
 				size?: "xsmall" | "small" | "medium" | "large" | "xlarge" | "xxlarge";
 				/**
 				 * The shape of the skeleton item. Available shapes: `square`, `pill`, `circle`.
-				 * @default square // if `variant=object`
+				 * @default "square" // if `variant=object`
 				 * @default undefined // if `variant=text`
 				 */
 				shape?: never;

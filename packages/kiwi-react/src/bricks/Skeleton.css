@@ -5,8 +5,6 @@
 
 .🥝-skeleton-item {
 	@layer base {
-		--🥝skeleton-width: 100%;
-
 		background-color: var(--ids-color-bg-glow-on-surface-disabled);
 		border-radius: var(--🥝skeleton-border-radius);
 		block-size: var(--🥝skeleton-height);
@@ -15,83 +13,85 @@
 
 	@layer modifiers {
 		&:where([data-kiwi-variant="text"]) {
+			--🥝skeleton-width: 100%;
+
 			&:where([data-kiwi-size="xsmall"]) {
-				--🥝skeleton-height: 12px;
+				--🥝skeleton-height: 0.75rem;
 			}
 
 			&:where([data-kiwi-size="small"]) {
-				--🥝skeleton-height: 14px;
+				--🥝skeleton-height: 0.875rem;
 			}
 
 			&:where([data-kiwi-size="medium"]) {
-				--🥝skeleton-height: 16px;
+				--🥝skeleton-height: 1rem;
 			}
 
 			&:where([data-kiwi-size="large"]) {
-				--🥝skeleton-height: 20px;
+				--🥝skeleton-height: 1.25rem;
 			}
 
 			&:where([data-kiwi-size="xlarge"]) {
-				--🥝skeleton-height: 24px;
+				--🥝skeleton-height: 1.5rem;
 			}
 
 			&:where([data-kiwi-size="xxlarge"]) {
-				--🥝skeleton-height: 32px;
+				--🥝skeleton-height: 2rem;
 			}
 		}
 
 		&:where([data-kiwi-variant="object"]) {
 			&:where([data-kiwi-shape="square"], [data-kiwi-shape="circle"]) {
 				&:where([data-kiwi-size="xsmall"]) {
-					--🥝skeleton-height: 12px;
-					--🥝skeleton-width: 12px;
+					--🥝skeleton-height: 0.75rem;
+					--🥝skeleton-width: 0.75rem;
 				}
 
 				&:where([data-kiwi-size="small"]) {
-					--🥝skeleton-height: 16px;
-					--🥝skeleton-width: 16px;
+					--🥝skeleton-height: 1rem;
+					--🥝skeleton-width: 1rem;
 				}
 
 				&:where([data-kiwi-size="medium"]) {
-					--🥝skeleton-height: 24px;
-					--🥝skeleton-width: 24px;
+					--🥝skeleton-height: 1.5rem;
+					--🥝skeleton-width: 1.5rem;
 				}
 
 				&:where([data-kiwi-size="large"]) {
-					--🥝skeleton-height: 32px;
-					--🥝skeleton-width: 32px;
+					--🥝skeleton-height: 2rem;
+					--🥝skeleton-width: 2rem;
 				}
 
 				&:where([data-kiwi-size="xlarge"]) {
-					--🥝skeleton-height: 48px;
-					--🥝skeleton-width: 48px;
+					--🥝skeleton-height: 3rem;
+					--🥝skeleton-width: 3rem;
 				}
 			}
 
 			&:where([data-kiwi-shape="pill"]) {
 				&:where([data-kiwi-size="xsmall"]) {
-					--🥝skeleton-height: 12px;
-					--🥝skeleton-width: 24px;
+					--🥝skeleton-height: 0.75rem;
+					--🥝skeleton-width: 1.5rem;
 				}
 
 				&:where([data-kiwi-size="small"]) {
-					--🥝skeleton-height: 16px;
-					--🥝skeleton-width: 32px;
+					--🥝skeleton-height: 1rem;
+					--🥝skeleton-width: 2rem;
 				}
 
 				&:where([data-kiwi-size="medium"]) {
-					--🥝skeleton-height: 24px;
-					--🥝skeleton-width: 48px;
+					--🥝skeleton-height: 1.5rem;
+					--🥝skeleton-width: 3rem;
 				}
 
 				&:where([data-kiwi-size="large"]) {
-					--🥝skeleton-height: 32px;
-					--🥝skeleton-width: 64px;
+					--🥝skeleton-height: 2rem;
+					--🥝skeleton-width: 4rem;
 				}
 
 				&:where([data-kiwi-size="xlarge"]) {
-					--🥝skeleton-height: 48px;
-					--🥝skeleton-width: 96px;
+					--🥝skeleton-height: 3rem;
+					--🥝skeleton-width: 6rem;
 				}
 			}
 

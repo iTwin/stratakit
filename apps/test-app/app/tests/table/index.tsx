@@ -46,7 +46,7 @@ export default definePage(
 function VisualTest() {
 	return (
 		<div style={{ display: "grid", gap: 20 }}>
-			{(["table", "div"] as const).map((asProp) => (
+			{(["div", "table"] as const).map((asProp) => (
 				<Table.Root as={asProp} key={asProp}>
 					<Table.Caption>Fruits and their colors (as={asProp})</Table.Caption>
 					<Table.Header>

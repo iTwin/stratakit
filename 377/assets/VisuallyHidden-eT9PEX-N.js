@@ -1,0 +1,1 @@
+import{n as i}from"./chunk-K6AXKMTT-BW7jlo3W.js";import{f as a}from"./~utils-CHOcCWb4.js";import{V as o}from"./XX67R432-Ci9mmfqb.js";const e=a((r,s)=>i.jsx(o,{...r,ref:s}));e.displayName="VisuallyHidden";export{e as V};

@@ -52,8 +52,23 @@ interface SkeletonItemPropsBase extends BaseProps {
 type SkeletonItemProps = SkeletonItemPropsBase &
 	(
 		| {
+				/**
+				 * The type of the skeleton item. Available variants: `text`, `object`.
+				 * @default "text"
+				 */
 				variant: "text";
+				/**
+				 * The size of the skeleton item. Available sizes:
+				 * * `variant=text`: `xsmall`, `small`, `medium`, `large`, `xlarge`, `xxlarge`
+				 * * `variant=object`: `xsmall`, `small`, `medium`, `large`, `xlarge`
+				 * @default "medium"
+				 */
 				size?: "xsmall" | "small" | "medium" | "large" | "xlarge" | "xxlarge";
+				/**
+				 * The shape of the skeleton item. Available shapes: `square`, `pill`, `circle`.
+				 * @default square // if `variant=object`
+				 * @default undefined // if `variant=text`
+				 */
 				shape?: never;
 		  }
 		| {
@@ -75,7 +90,12 @@ type SkeletonItemProps = SkeletonItemPropsBase &
  */
 const SkeletonItem = forwardRef<"div", SkeletonItemProps>(
 	(props, forwardedRef) => {
-		const { variant, shape, size, ...rest } = props;
+		const {
+			variant = "text",
+			shape = variant === "object" ? "square" : undefined,
+			size = "medium",
+			...rest
+		} = props;
 
 		return (
 			<Ariakit.Role.div
@@ -85,7 +105,7 @@ const SkeletonItem = forwardRef<"div", SkeletonItemProps>(
 				data-kiwi-variant={variant}
 				data-kiwi-size={size}
 				data-kiwi-shape={shape}
-				aria-hidden="true"
+				aria-hidden
 			/>
 		);
 	},

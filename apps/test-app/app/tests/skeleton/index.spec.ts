@@ -5,39 +5,68 @@
 import { test, expect } from "#playwright";
 import AxeBuilder from "@axe-core/playwright";
 
-test("default", async ({ page }) => {
-	await page.goto("/tests/tree");
+const textSizes = [
+	"xsmall",
+	"small",
+	"medium",
+	"large",
+	"xlarge",
+	"xxlarge",
+] as const;
+const objectSizes = ["xsmall", "small", "medium", "large", "xlarge"] as const;
+const objectShapes = ["square", "pill", "circle"] as const;
 
-	const tree = page.getByRole("tree");
-	await expect(tree).toBeVisible();
+test.describe("default", () => {
+	test("text variant", async ({ page }) => {
+		for (const size of textSizes) {
+			await page.goto(`/tests/skeleton?variant=text&size=${size}`);
+			await page.waitForTimeout(500);
 
-	const items = page.getByRole("treeitem");
-	await expect(items).toHaveCount(7);
+			const skeleton = page.locator(".🥝-skeleton");
+			const skeletonItem = page.locator(".🥝-skeleton-item");
 
-	const item1 = items.filter({
-		has: page.getByText("Item 1", { exact: true }),
+			await expect(skeleton).toHaveText("Loading…");
+
+			await expect(skeletonItem).toHaveAttribute("data-kiwi-variant", "text");
+			await expect(skeletonItem).toHaveAttribute("data-kiwi-size", size);
+			await expect(skeletonItem).not.toHaveAttribute("data-kiwi-shape");
+		}
 	});
-	await expect(item1).toBeVisible();
-	await expect(item1).toHaveAttribute("aria-expanded", "true");
-	await expect(item1).toHaveAttribute("aria-level", "1");
-	await expect(item1).toHaveAttribute("aria-posinset", "1");
-	await expect(item1).toHaveAttribute("aria-setsize", "3");
 
-	const item1_1 = items.filter({
-		has: page.getByText("Item 1.1"),
+	test("object variant", async ({ page }) => {
+		for (const size of objectSizes) {
+			for (const shape of objectShapes) {
+				await page.goto(
+					`/tests/skeleton?variant=object&size=${size}&shape=${shape}`,
+				);
+				await page.waitForTimeout(500);
+
+				const skeleton = page.locator(".🥝-skeleton");
+				const skeletonItem = page.locator(".🥝-skeleton-item");
+
+				await expect(skeleton).toHaveText("Loading…");
+
+				await expect(skeletonItem).toHaveAttribute(
+					"data-kiwi-variant",
+					"object",
+				);
+				await expect(skeletonItem).toHaveAttribute("data-kiwi-size", size);
+				await expect(skeletonItem).toHaveAttribute("data-kiwi-shape", shape);
+			}
+		}
 	});
-	await expect(item1_1).toBeVisible();
-	await expect(item1_1).not.toHaveAttribute("aria-expanded");
-	await expect(item1_1).toHaveAttribute("aria-level", "2");
-	await expect(item1_1).toHaveAttribute("aria-posinset", "1");
-	await expect(item1_1).toHaveAttribute("aria-setsize", "3");
+
+	test("custom alt", async ({ page }) => {
+		await page.goto("/tests/skeleton?alt=Custom alt");
+
+		const skeleton = page.locator(".🥝-skeleton");
+		await expect(skeleton).toHaveText("Custom alt");
+	});
 });
 
 test.describe("@visual", () => {
 	test("default", async ({ page }) => {
-		await page.goto("/tests/tree");
-		const tree = page.getByRole("tree").first();
-		await expect(tree).toBeVisible();
+		await page.goto("/tests/skeleton?visual");
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
 });
@@ -45,9 +74,6 @@ test.describe("@visual", () => {
 test.describe("@a11y", () => {
 	test("Axe Page Scan", async ({ page }) => {
 		await page.goto("/tests/skeleton");
-
-		const tree = page.getByRole("tree").first();
-		await expect(tree).toBeVisible();
 
 		const axe = new AxeBuilder({ page });
 		const accessibilityScan = await axe.analyze();

@@ -186,9 +186,8 @@ const TreeItem = forwardRef<"div", TreeItemProps>((props, forwardedRef) => {
 					level,
 					expanded,
 					selected,
-					labelId,
 				}),
-				[level, expanded, selected, labelId],
+				[level, expanded, selected],
 			)}
 		>
 			<Ariakit.CompositeItem
@@ -230,7 +229,9 @@ const TreeItem = forwardRef<"div", TreeItemProps>((props, forwardedRef) => {
 						/>
 						{typeof icon === "string" ? <Icon href={icon} /> : icon}
 					</ListItem.Decoration>
-					<TreeItemContent label={label} />
+					<ListItem.Content id={labelId} className="🥝-tree-item-content">
+						{label}
+					</ListItem.Content>
 					{description ? (
 						<ListItem.Content id={descriptionId}>
 							{description}
@@ -245,32 +246,6 @@ const TreeItem = forwardRef<"div", TreeItemProps>((props, forwardedRef) => {
 	);
 });
 DEV: TreeItem.displayName = "Tree.Item";
-
-// ----------------------------------------------------------------------------
-
-interface TreeItemContentProps extends Omit<BaseProps<"span">, "children"> {
-	label?: React.ReactNode;
-}
-
-const TreeItemContent = forwardRef<"span", TreeItemContentProps>(
-	(props, forwardedRef) => {
-		const { label, ...rest } = props;
-
-		const { labelId } = React.useContext(TreeItemContext) ?? {};
-
-		return (
-			<ListItem.Content
-				{...rest}
-				id={labelId}
-				className={cx("🥝-tree-item-content", props.className)}
-				ref={forwardedRef}
-			>
-				{label}
-			</ListItem.Content>
-		);
-	},
-);
-DEV: TreeItemContent.displayName = "TreeItemContent";
 
 // ----------------------------------------------------------------------------
 
@@ -389,7 +364,6 @@ const TreeItemContext = React.createContext<
 	| {
 			expanded?: boolean;
 			selected?: boolean;
-			labelId: string;
 	  }
 	| undefined
 >(undefined);

@@ -187,9 +187,8 @@ const TreeItem = forwardRef<"div", TreeItemProps>((props, forwardedRef) => {
 					expanded,
 					selected,
 					labelId,
-					descriptionId,
 				}),
-				[level, expanded, selected, labelId, descriptionId],
+				[level, expanded, selected, labelId],
 			)}
 		>
 			<Ariakit.CompositeItem
@@ -216,25 +215,30 @@ const TreeItem = forwardRef<"div", TreeItemProps>((props, forwardedRef) => {
 				ref={forwardedRef as Ariakit.CompositeItemProps["ref"]}
 			>
 				<ListItem.Root
-					data-kiwi-description={description ? true : undefined}
 					data-kiwi-expanded={expanded}
 					data-kiwi-selected={selected}
 					className="🥝-tree-item-node"
 					style={{ "--🥝tree-item-level": level } as React.CSSProperties}
 					role={undefined}
 				>
-					<TreeItemExpander
-						onClick={() => {
-							if (expanded === undefined) return;
-							onExpandedChange?.(!expanded);
-						}}
+					<ListItem.Decoration>
+						<TreeItemExpander
+							onClick={() => {
+								if (expanded === undefined) return;
+								onExpandedChange?.(!expanded);
+							}}
+						/>
+						{typeof icon === "string" ? <Icon href={icon} /> : icon}
+					</ListItem.Decoration>
+					<TreeItemContent label={label} />
+					{description ? (
+						<ListItem.Content id={descriptionId}>
+							{description}
+						</ListItem.Content>
+					) : undefined}
+					<ListItem.Decoration
+						render={<TreeItemActions>{actions}</TreeItemActions>}
 					/>
-					<TreeItemContent
-						icon={icon}
-						label={label}
-						description={description}
-					/>
-					<TreeItemActions>{actions}</TreeItemActions>
 				</ListItem.Root>
 			</Ariakit.CompositeItem>
 		</TreeItemContext.Provider>
@@ -245,39 +249,24 @@ DEV: TreeItem.displayName = "Tree.Item";
 // ----------------------------------------------------------------------------
 
 interface TreeItemContentProps extends Omit<BaseProps<"span">, "children"> {
-	icon?: string | React.JSX.Element;
 	label?: React.ReactNode;
-	description?: React.ReactNode;
 }
 
 const TreeItemContent = forwardRef<"span", TreeItemContentProps>(
 	(props, forwardedRef) => {
-		const { icon, label, description, ...rest } = props;
+		const { label, ...rest } = props;
 
-		const { labelId, descriptionId } = React.useContext(TreeItemContext) ?? {};
+		const { labelId } = React.useContext(TreeItemContext) ?? {};
 
 		return (
 			<ListItem.Content
 				{...rest}
-				icon={
-					icon ? (
-						<ListItem.Icon
-							href={typeof icon === "string" ? icon : undefined}
-							render={typeof icon === "string" ? undefined : icon}
-						/>
-					) : undefined
-				}
-				label={<ListItem.Label id={labelId}>{label}</ListItem.Label>}
-				description={
-					description ? (
-						<ListItem.Description id={descriptionId}>
-							{description}
-						</ListItem.Description>
-					) : undefined
-				}
+				id={labelId}
 				className={cx("🥝-tree-item-content", props.className)}
 				ref={forwardedRef}
-			/>
+			>
+				{label}
+			</ListItem.Content>
 		);
 	},
 );
@@ -401,7 +390,6 @@ const TreeItemContext = React.createContext<
 			expanded?: boolean;
 			selected?: boolean;
 			labelId: string;
-			descriptionId: string;
 	  }
 	| undefined
 >(undefined);

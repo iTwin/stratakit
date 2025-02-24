@@ -192,15 +192,15 @@ const DropdownMenuItem = forwardRef<"div", DropdownMenuItemProps>(
 				className={cx("🥝-dropdown-menu-item", props.className)}
 				ref={forwardedRef}
 			>
-				<ListItem.Content label={props.children} />
+				<ListItem.Content>{props.children}</ListItem.Content>
 				{hasShortcuts && (
-					<span className={"🥝-dropdown-menu-item-shortcuts"}>
+					<ListItem.Decoration className={"🥝-dropdown-menu-item-shortcuts"}>
 						{shortcutKeys.map((key, index) => (
 							<Kbd variant="ghost" key={`${key + index}`}>
 								{key}
 							</Kbd>
 						))}
-					</span>
+					</ListItem.Decoration>
 				)}
 			</Ariakit.MenuItem>
 		);
@@ -239,8 +239,10 @@ const DropdownMenuCheckboxItem = forwardRef<
 			className={cx("🥝-dropdown-menu-item", props.className)}
 			ref={forwardedRef}
 		>
-			<ListItem.Content label={props.children} />
-			<Checkmark className="🥝-dropdown-menu-checkmark" />
+			<ListItem.Content>{props.children}</ListItem.Content>
+			<ListItem.Decoration
+				render={<Checkmark className="🥝-dropdown-menu-checkmark" />}
+			/>
 		</Ariakit.MenuItemCheckbox>
 	);
 });

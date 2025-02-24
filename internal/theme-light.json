@@ -8,7 +8,7 @@
 				},
 				"muted": {
 					"$type": "color",
-					"$value": "{p-color.gray.5}"
+					"$value": "{p-color.gray.40}"
 				},
 				"faded": {
 					"$type": "color",
@@ -120,47 +120,69 @@
 				},
 				"muted": {
 					"$type": "color",
-					"$value": "{p-color.pink.50}"
+					"$value": "{p-color.purple.50}"
 				},
 				"faded": {
 					"$type": "color",
 					"$value": "{p-color.purple.800}"
 				}
 			},
-			"surface": {
-				"secondary": {
+			"page": {
+				"depth": {
 					"$type": "color",
 					"$value": "{p-color.gray.20}"
-				},
-				"primary": {
-					"$type": "color",
-					"$value": "{p-color.gray.10}"
-				},
-				"tertiary": {
-					"$type": "color",
-					"$value": "{p-color.gray.30}"
-				},
-				"emphasis": {
-					"$type": "color",
-					"$value": "{p-color.gray.1000}"
 				},
 				"base": {
 					"$type": "color",
 					"$value": "{p-color.gray.5}"
 				},
-				"quaternary": {
+				"zebra": {
+					"$type": "color",
+					"$value": "{p-color.black.2}"
+				}
+			},
+			"elevation": {
+				"base": {
+					"$type": "color",
+					"$value": "{p-color.white.100}"
+				},
+				"emphasis": {
 					"$type": "color",
 					"$value": "{p-color.gray.975}"
+				},
+				"control": {
+					"$type": "color",
+					"$value": "{p-color.white.100}"
+				},
+				"level-1": {
+					"$type": "color",
+					"$value": "{p-color.white.100}"
+				},
+				"overlay": {
+					"$type": "color",
+					"$value": "{p-color.gray.5}"
+				},
+				"level-2": {
+					"$type": "color",
+					"$value": "{p-color.white.100}"
+				},
+				"scrollbar-surface": {
+					"$type": "color",
+					"$value": "{p-color.black.32}"
+				},
+				"scrollbar-canvas": {
+					"$type": "color",
+					"$value": "{p-color.black.48}"
 				}
 			},
 			"neutral": {
 				"base": {
 					"$type": "color",
-					"$value": "{p-color.gray.5}"
+					"$value": "{p-color.white.100}"
 				},
 				"muted": {
 					"$type": "color",
-					"$value": "{p-color.gray.900}"
+					"$value": "{p-color.gray.10}"
 				},
 				"faded": {
 					"$type": "color",
@@ -168,7 +190,7 @@
 				},
 				"inverse": {
 					"$type": "color",
-					"$value": "{p-color.gray.5}"
+					"$value": "{p-color.white.100}"
 				}
 			},
 			"glow": {
@@ -218,18 +240,6 @@
 					"disabled": {
 						"$type": "color",
 						"$value": "{p-color.black.4}"
-					},
-					"overlay": {
-						"$type": "color",
-						"$value": "{p-color.black.24}"
-					},
-					"neutral-hover-%": {
-						"$type": "number",
-						"$value": 4
-					},
-					"neutral-pressed-%": {
-						"$type": "number",
-						"$value": 8
 					}
 				},
 				"strong": {
@@ -564,6 +574,10 @@
 					"pressed-%": {
 						"$type": "number",
 						"$value": 12
+					},
+					"default": {
+						"$type": "color",
+						"$value": "{p-color.black.8}"
 					}
 				},
 				"on-surface": {
@@ -592,6 +606,10 @@
 					"pressed-%": {
 						"$type": "number",
 						"$value": 16
+					},
+					"default": {
+						"$type": "color",
+						"$value": "{p-color.black.12}"
 					}
 				}
 			},
@@ -602,7 +620,7 @@
 				},
 				"muted": {
 					"$type": "color",
-					"$value": "{p-color.gray.20}"
+					"$value": "{p-color.gray.30}"
 				},
 				"faded": {
 					"$type": "color",
@@ -617,10 +635,24 @@
 					"$value": "{p-color.gray.200}"
 				}
 			},
-			"surface": {
-				"primary": {
+			"elevation": {
+				"base": {
 					"$type": "color",
 					"$value": "{p-color.black.64}"
+				},
+				"scrollbar-canvas": {
+					"$type": "color",
+					"$value": "{p-color.white.24}"
+				}
+			},
+			"page": {
+				"base": {
+					"$type": "color",
+					"$value": "{p-color.black.8}"
+				},
+				"depth": {
+					"$type": "color",
+					"$value": "{p-color.black.8}"
 				}
 			}
 		},
@@ -726,7 +758,7 @@
 				},
 				"primary": {
 					"$type": "color",
-					"$value": "{p-color.gray.900}"
+					"$value": "{p-color.gray.925}"
 				},
 				"secondary": {
 					"$type": "color",
@@ -804,8 +836,8 @@
 			"$type": "shadow",
 			"$value": [
 				"0px 1px 0px 0px --primitive('color.black.4')",
-				"0px 0px 0px 1px --primitive('color.black.4')",
-				"inset 0px 0px 0px 1px --primitive('color.white.8')",
+				"0px 0px 0px 1px --primitive('color.black.8')",
+				"inset 0px 0px 0px 1px --primitive('color.white.4')",
 				"0px 1px 1px -0.5px --primitive('color.black.4')"
 			]
 		},
@@ -813,8 +845,8 @@
 			"$type": "shadow",
 			"$value": [
 				"0px 1px 0px 0px --primitive('color.black.4')",
-				"0px 0px 0px 1px --primitive('color.black.4')",
-				"inset 0px 0px 0px 1px --primitive('color.white.8')",
+				"0px 0px 0px 1px --primitive('color.black.8')",
+				"inset 0px 0px 0px 1px --primitive('color.white.4')",
 				"0px 1px 1px -0.5px --primitive('color.black.4')",
 				"0px 3px 3px -1.5px --primitive('color.black.4')"
 			]
@@ -823,9 +855,9 @@
 			"$type": "shadow",
 			"$value": [
 				"0px 1px 0px 0px --primitive('color.black.4')",
-				"0px 0px 0px 1px --primitive('color.black.4')",
+				"0px 0px 0px 1px --primitive('color.black.8')",
 				"0px 1px 1px -0.5px --primitive('color.black.4')",
-				"inset 0px 0px 0px 1px --primitive('color.white.8')",
+				"inset 0px 0px 0px 1px --primitive('color.white.4')",
 				"0px 3px 3px -1.5px --primitive('color.black.4')",
 				"0px 6px 6px -3px --primitive('color.black.4')"
 			]
@@ -834,8 +866,8 @@
 			"$type": "shadow",
 			"$value": [
 				"0px 1px 0px 0px --primitive('color.black.4')",
-				"0px 0px 0px 1px --primitive('color.black.4')",
-				"inset 0px 0px 0px 1px --primitive('color.white.8')",
+				"0px 0px 0px 1px --primitive('color.black.8')",
+				"inset 0px 0px 0px 1px --primitive('color.white.4')",
 				"0px 1px 1px -0.5px --primitive('color.black.4')",
 				"0px 3px 3px -1.5px --primitive('color.black.4')",
 				"0px 6px 6px -3px --primitive('color.black.4')",
@@ -846,8 +878,8 @@
 			"$type": "shadow",
 			"$value": [
 				"0px 1px 0px 0px --primitive('color.black.4')",
-				"0px 0px 0px 1px --primitive('color.black.4')",
-				"inset 0px 0px 0px 1px --primitive('color.white.8')",
+				"0px 0px 0px 1px --primitive('color.black.8')",
+				"inset 0px 0px 0px 1px --primitive('color.white.4')",
 				"0px 1px 1px -0.5px --primitive('color.black.4')",
 				"0px 3px 3px -1.5px --primitive('color.black.4')",
 				"0px 6px 6px -3px --primitive('color.black.4')",

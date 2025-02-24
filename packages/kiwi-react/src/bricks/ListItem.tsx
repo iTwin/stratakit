@@ -5,8 +5,6 @@
 import cx from "classnames";
 import * as Ariakit from "@ariakit/react";
 import { forwardRef } from "./~utils.js";
-import { Icon } from "./Icon.js";
-import { Text } from "./Text.js";
 
 // ----------------------------------------------------------------------------
 
@@ -27,32 +25,17 @@ DEV: ListItem.displayName = "ListItem.Root";
 
 // ----------------------------------------------------------------------------
 
-interface ListItemContentProps
-	extends Omit<Ariakit.RoleProps<"span">, "children"> {
-	/** Use `ListItem.Label` if `description` is set. */
-	label?: React.ReactNode;
-	/** Use `ListItem.Icon`. */
-	icon?: React.ReactNode;
-	/** Use `ListItem.Description`. */
-	description?: React.ReactNode;
-}
+interface ListItemContentProps extends Ariakit.RoleProps<"span"> {}
 
 /** @internal */
 const ListItemContent = forwardRef<"span", ListItemContentProps>(
 	(props, forwardedRef) => {
-		const { icon, label, description, ...rest } = props;
 		return (
 			<Ariakit.Role.span
-				{...rest}
-				data-kiwi-icon={icon ? true : undefined}
-				data-kiwi-description={description ? true : undefined}
+				{...props}
 				className={cx("🥝-list-item-content", props.className)}
 				ref={forwardedRef}
-			>
-				{icon}
-				{label}
-				{description}
-			</Ariakit.Role.span>
+			/>
 		);
 	},
 );
@@ -60,70 +43,26 @@ DEV: ListItemContent.displayName = "ListItem.Content";
 
 // ----------------------------------------------------------------------------
 
-type IconProps = React.ComponentProps<typeof Icon>;
-
-interface ListItemIconProps extends IconProps {}
+interface ListItemDecorationProps extends Ariakit.RoleProps<"span"> {}
 
 /** @internal */
-const ListItemIcon = forwardRef<"svg", ListItemIconProps>(
+const ListItemDecoration = forwardRef<"span", ListItemDecorationProps>(
 	(props, forwardedRef) => {
 		return (
-			<Icon
+			<Ariakit.Role.span
 				{...props}
-				className={cx("🥝-list-item-icon", props.className)}
+				className={cx("🥝-list-item-decoration", props.className)}
 				ref={forwardedRef}
 			/>
 		);
 	},
 );
-DEV: ListItemIcon.displayName = "ListItem.Icon";
-
-// ----------------------------------------------------------------------------
-
-interface ListItemLabelProps extends Ariakit.RoleProps<"span"> {}
-
-/** @internal */
-const ListItemLabel = forwardRef<"span", ListItemLabelProps>(
-	(props, forwardedRef) => {
-		return (
-			<Text
-				{...props}
-				variant="body-sm"
-				render={<span />}
-				className={cx("🥝-list-item-label", props.className)}
-				ref={forwardedRef}
-			/>
-		);
-	},
-);
-DEV: ListItemLabel.displayName = "ListItem.Label";
-
-// ----------------------------------------------------------------------------
-
-interface ListItemDescriptionProps extends Ariakit.RoleProps<"span"> {}
-
-/** @internal */
-const ListItemDescription = forwardRef<"span", ListItemDescriptionProps>(
-	(props, forwardedRef) => {
-		return (
-			<Text
-				{...props}
-				variant="body-sm"
-				render={<span />}
-				className={cx("🥝-list-item-description", props.className)}
-				ref={forwardedRef}
-			/>
-		);
-	},
-);
-DEV: ListItemDescription.displayName = "ListItem.Description";
+DEV: ListItemDecoration.displayName = "ListItem.Decoration";
 
 // ----------------------------------------------------------------------------
 
 export {
 	ListItem as Root,
 	ListItemContent as Content,
-	ListItemLabel as Label,
-	ListItemDescription as Description,
-	ListItemIcon as Icon,
+	ListItemDecoration as Decoration,
 };

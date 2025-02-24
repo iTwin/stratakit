@@ -21,7 +21,7 @@
 
 .header {
 	grid-area: header;
-	background-color: var(--ids-color-bg-surface-primary);
+	background-color: var(--ids-color-bg-page-base);
 	border-block-end: 1px solid var(--ids-color-border-neutral-base);
 
 	display: flex;
@@ -31,7 +31,7 @@
 
 .platformBar {
 	grid-area: platformBar;
-	background-color: var(--ids-color-bg-surface-secondary);
+	background-color: var(--ids-color-bg-page-depth);
 	border-inline-end: 1px solid var(--ids-color-border-neutral-base);
 }
 
@@ -58,7 +58,7 @@
 .leftPanel {
 	grid-area: leftPanel;
 	padding-block-start: 12px;
-	background-color: var(--ids-color-bg-surface-primary);
+	background-color: var(--ids-color-bg-page-base);
 	min-block-size: 0;
 
 	contain: size layout; /* prevent unnecessary overflow */
@@ -135,7 +135,7 @@
 	block-size: 100%;
 	border-radius: 16px;
 	box-shadow: var(--ids-shadow-surface-xl);
-	border: 1px solid var(--ids-color-border-neutral-base);
+	border: 1px solid var(--ids-color-border-neutral-muted);
 	position: relative;
 
 	&::before {
@@ -149,15 +149,15 @@
 
 		--_rings: repeating-radial-gradient(
 			circle at center,
-			var(--ids-color-border-neutral-base) 1px,
-			var(--ids-color-border-neutral-base) 3px,
+			var(--ids-color-border-neutral-muted) 1px,
+			var(--ids-color-border-neutral-muted) 3px,
 			transparent 3px,
 			transparent 10px
 		);
 		--_gradient: linear-gradient(
 			180deg,
-			var(--ids-color-bg-surface-primary) 0%,
-			var(--ids-color-bg-surface-tertiary) 100%
+			var(--ids-color-bg-page-base) 0%,
+			var(--ids-color-bg-page-depth) 100%
 		);
 	}
 }

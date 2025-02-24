@@ -15,65 +15,30 @@ export const links: LinksFunction = () => [
 	{ rel: "stylesheet", href: testStyles },
 ];
 
-export default definePage(
-	function Page({ "active-state": isActive = false }) {
-		return (
-			// biome-ignore lint/a11y/useSemanticElements: `div` is used as underlying element for `ListItem`
-			<div
-				role="list"
-				style={{ display: "grid", gap: 4 }}
-				className={isActive ? "force-state-active" : ""}
-			>
-				<ListItem.Root>Apple</ListItem.Root>
-				<ListItem.Root>Cherry</ListItem.Root>
-				<ListItem.Root>Kiwi</ListItem.Root>
-				<ListItem.Root>
-					<ListItem.Content label="Mango" />
-					<Icon href={placeholderIcon} />
-				</ListItem.Root>
-				<ListItem.Root>
-					<Icon href={placeholderIcon} />
-					<ListItem.Content label="Papaya" />
-				</ListItem.Root>
-				<ListItem.Root>
-					<Icon href={placeholderIcon} />
-					<ListItem.Content label="Tomato" />
-					<Icon href={placeholderIcon} />
-				</ListItem.Root>
-			</div>
-		);
-	},
-	{
-		description: DescriptionTest,
-	},
-);
-
-function DescriptionTest() {
+export default definePage(function Page({ "active-state": isActive = false }) {
 	return (
 		// biome-ignore lint/a11y/useSemanticElements: `div` is used as underlying element for `ListItem`
-		<div role="list" style={{ display: "grid", gap: 4 }}>
+		<div
+			role="list"
+			style={{ display: "grid", gap: 4 }}
+			className={isActive ? "force-state-active" : ""}
+		>
+			<ListItem.Root>Apple</ListItem.Root>
+			<ListItem.Root>Cherry</ListItem.Root>
+			<ListItem.Root>Kiwi</ListItem.Root>
 			<ListItem.Root>
-				<ListItem.Content
-					icon={<ListItem.Icon href={placeholderIcon} />}
-					label={<ListItem.Label>Kiwi</ListItem.Label>}
-					description={<ListItem.Description>Green fruit</ListItem.Description>}
-				/>
+				<ListItem.Content>Mango</ListItem.Content>
+				<ListItem.Decoration render={<Icon href={placeholderIcon} />} />
 			</ListItem.Root>
 			<ListItem.Root>
-				<ListItem.Content
-					label={<ListItem.Label>Kiwi</ListItem.Label>}
-					description={<ListItem.Description>Green fruit</ListItem.Description>}
-				/>
+				<ListItem.Decoration render={<Icon href={placeholderIcon} />} />
+				<ListItem.Content>Papaya</ListItem.Content>
 			</ListItem.Root>
 			<ListItem.Root>
-				<ListItem.Content
-					icon={<ListItem.Icon href={placeholderIcon} />}
-					label={<ListItem.Label>Kiwi</ListItem.Label>}
-				/>
-			</ListItem.Root>
-			<ListItem.Root>
-				<ListItem.Content label={<ListItem.Label>Kiwi</ListItem.Label>} />
+				<ListItem.Decoration render={<Icon href={placeholderIcon} />} />
+				<ListItem.Content>Tomato</ListItem.Content>
+				<ListItem.Decoration render={<Icon href={placeholderIcon} />} />
 			</ListItem.Root>
 		</div>
 	);
-}
+});

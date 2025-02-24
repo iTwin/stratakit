@@ -8,10 +8,29 @@ import * as Ariakit from "@ariakit/react";
 import { forwardRef, type BaseProps } from "./~utils.js";
 
 interface IconProps extends Omit<BaseProps<"svg">, "children"> {
-	/** URL of the symbol sprite. */
+	/**
+	 * URL of the symbol sprite.
+	 *
+	 * Should be a URL to an `.svg` file from `@itwin/itwinui-icons`.
+	 */
 	href?: string;
-	/** Size of the icon. Defaults to `regular`. */
+	/**
+	 * Size of the icon. This affects the icon's physical dimensions, as well as the
+	 * actual SVG contents (different sizes might have different fidelity).
+	 *
+	 * Defaults to `"regular"` (16px) and can be optionally set to `"large"` (24px).
+	 */
 	size?: "regular" | "large";
+	/**
+	 * Alternative text describing the icon.
+	 *
+	 * When this prop is passed, the SVG gets rendered as `role="img"` and labelled
+	 * using the provided text.
+	 *
+	 * This prop is not required if the icon is purely decorative. By default, the icon
+	 * will be hidden from the accessibility tree.
+	 */
+	alt?: string;
 }
 
 /**
@@ -29,14 +48,25 @@ interface IconProps extends Omit<BaseProps<"svg">, "children"> {
  * <Icon render={<svg><path d="…" fill="currentColor" /></svg>} />
  * ```
  *
- * **Note**: This component is meant to be used with decorative icons, so it adds `aria-hidden` by default.
+ * By default, this component assumes that the icon is decorative, so it adds `aria-hidden` by default.
+ *
+ * If the icon is semantically meaningful, the `alt` prop can be used to provide alternative text.
+ *
+ * ```tsx
+ * <Icon href={…} alt="Help" />
+ * ```
  */
 export const Icon = forwardRef<"svg", IconProps>((props, forwardedRef) => {
-	const { href, size = "regular", ...rest } = props;
+	const { href, size, alt, ...rest } = props;
+
 	const iconId = toIconId(size);
+	const isDecorative = !alt;
+
 	return (
 		<Ariakit.Role.svg
-			aria-hidden
+			aria-hidden={isDecorative ? "true" : undefined}
+			role={isDecorative ? undefined : "img"}
+			aria-label={isDecorative ? undefined : alt}
 			{...rest}
 			data-kiwi-size={size}
 			className={cx("🥝-icon", props.className)}

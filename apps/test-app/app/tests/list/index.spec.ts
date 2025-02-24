@@ -37,11 +37,6 @@ test.describe("@visual", () => {
 		await page.goto("/tests/list?active-state");
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
-
-	test("description", async ({ page }) => {
-		await page.goto("/tests/list?description");
-		await expect(page.locator("body")).toHaveScreenshot();
-	});
 });
 
 test.describe("@a11y", () => {

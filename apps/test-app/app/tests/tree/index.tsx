@@ -8,7 +8,7 @@ import * as Tree from "@itwin/itwinui-react-internal/src/bricks/Tree.tsx";
 import placeholderIcon from "@itwin/itwinui-icons/placeholder.svg";
 import unlockIcon from "@itwin/itwinui-icons/lock-unlocked.svg";
 import showIcon from "@itwin/itwinui-icons/visibility-show.svg";
-import { Anchor, } from "@itwin/itwinui-react/bricks";
+import { Anchor } from "@itwin/itwinui-react/bricks";
 
 export const handle = { title: "Tree" };
 
@@ -41,6 +41,7 @@ export default definePage(function Page({
 		{ label: "Item 3", selected: false },
 	]);
 
+	const [hasError, setHasError] = React.useState(error);
 	return (
 		<Tree.Root style={{ maxInlineSize: overflow ? 300 : undefined }}>
 			{data.map((item, index, items) => {
@@ -112,7 +113,7 @@ export default definePage(function Page({
 										<Tree.ItemAction key="show" icon={showIcon} label="Show" />,
 									]}
 									error={
-										error && childIndex === 0 ? (
+										hasError && childIndex === 0 ? (
 											<Tree.ItemError
 												label="Failed to create hierarchy"
 												icon={placeholderIcon}
@@ -121,6 +122,7 @@ export default definePage(function Page({
 														key="retry"
 														// biome-ignore lint/a11y/useButtonType: <explanation>
 														render={<button />}
+														onClick={() => setHasError(false)}
 													>
 														Retry
 													</Anchor>,

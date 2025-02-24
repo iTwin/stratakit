@@ -179,6 +179,7 @@ const TreeItem = forwardRef<"div", TreeItemProps>((props, forwardedRef) => {
 	};
 
 	const contentId = React.useId();
+	const errorId = React.useId();
 
 	return (
 		<TreeItemContext.Provider
@@ -188,8 +189,9 @@ const TreeItem = forwardRef<"div", TreeItemProps>((props, forwardedRef) => {
 					expanded,
 					selected,
 					contentId,
+					errorId,
 				}),
-				[level, expanded, selected, contentId],
+				[level, expanded, selected, contentId, errorId],
 			)}
 		>
 			<Ariakit.CompositeItem
@@ -210,6 +212,7 @@ const TreeItem = forwardRef<"div", TreeItemProps>((props, forwardedRef) => {
 				aria-expanded={expanded}
 				aria-selected={selected}
 				aria-labelledby={contentId}
+				aria-describedby={error ? errorId : undefined}
 				aria-level={level}
 				className={cx("🥝-tree-item", props.className)}
 				style={{ "--🥝tree-item-level": level } as React.CSSProperties}
@@ -381,17 +384,6 @@ DEV: TreeChevron.displayName = "TreeChevron";
 
 // ----------------------------------------------------------------------------
 
-const TreeItemContext = React.createContext<
-	| {
-			expanded?: boolean;
-			selected?: boolean;
-			contentId: string;
-	  }
-	| undefined
->(undefined);
-
-// ----------------------------------------------------------------------------
-
 interface TreeItemErrorProps extends BaseProps {
 	/**
 	 * Icon to be displayed for the error.
@@ -415,6 +407,7 @@ interface TreeItemErrorProps extends BaseProps {
 const TreeItemError = forwardRef<"div", TreeItemErrorProps>(
 	(props, forwardedRef) => {
 		const { icon, label, actions, ...rest } = props;
+		const { errorId } = React.useContext(TreeItemContext) ?? {};
 		return (
 			<ListItem.Root
 				role={undefined}
@@ -426,15 +419,43 @@ const TreeItemError = forwardRef<"div", TreeItemErrorProps>(
 				<ListItem.Decoration>
 					{typeof icon === "string" ? <Icon href={icon} /> : icon}
 				</ListItem.Decoration>
-				<ListItem.Content>{label}</ListItem.Content>
-				<ListItem.Content className="🥝-tree-item-error-actions">
-					{actions}
-				</ListItem.Content>
+				<ListItem.Content id={errorId}>{label}</ListItem.Content>
+				<TreeItemErrorActions>{actions}</TreeItemErrorActions>
 			</ListItem.Root>
 		);
 	},
 );
-DEV: TreeItemAction.displayName = "Tree.ItemError";
+DEV: TreeItemError.displayName = "Tree.ItemError";
+
+// ----------------------------------------------------------------------------
+
+const TreeItemErrorActions = forwardRef<"div", BaseProps>(
+	(props, forwardedRef) => {
+		return (
+			<Ariakit.Toolbar
+				{...props}
+				render={<ListItem.Content />}
+				className={cx("🥝-tree-item-error-actions", props.className)}
+				ref={forwardedRef}
+			>
+				{props.children}
+			</Ariakit.Toolbar>
+		);
+	},
+);
+DEV: TreeItemErrorActions.displayName = "TreeItemErrorActions";
+
+// ----------------------------------------------------------------------------
+
+const TreeItemContext = React.createContext<
+	| {
+			expanded?: boolean;
+			selected?: boolean;
+			contentId: string;
+			errorId: string;
+	  }
+	| undefined
+>(undefined);
 
 // ----------------------------------------------------------------------------
 

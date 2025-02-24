@@ -10,25 +10,16 @@ import { useMergedRefs } from "./~hooks.js";
 
 // ----------------------------------------------------------------------------
 
-interface TableProps extends BaseProps<"div" | "table"> {
-	/**
-	 * Either renders the table as a `<div role="role">` or a `<table>`.
-	 * The table descendants will also follow the same structure.
-	 * E.g. `Table.Header` will render as `<div role="rowgroup">` or `<thead>`.
-	 *
-	 * If a `render` prop is provided, this prop is ignored.
-	 *
-	 * @default "div"
-	 */
-	as?: "div" | "table";
+interface TableProps {
+	children: React.ReactNode;
 }
 
 const TableContext = React.createContext<{
+	captionId: string | undefined;
 	setCaptionId: React.Dispatch<React.SetStateAction<string | undefined>>;
-	as: "div" | "table";
 }>({
+	captionId: undefined,
 	setCaptionId: () => {},
-	as: "div",
 });
 
 /**
@@ -39,59 +30,103 @@ const TableContext = React.createContext<{
  *
  * Example:
  * ```tsx
- * <Table.Root as="table">
- *  <Table.Caption>Table Caption</Table.Caption>
- * 	<Table.Header>
- * 		<Table.Row>
- * 			<Table.Cell>Header 1</Table.Cell>
- * 			<Table.Cell>Header 2</Table.Cell>
- * 		</Table.Row>
- * 	</Table.Header>
+ * <Table.Root>
+ *   <Table.CustomTable> // Or, <Table.HtmlTable>
+ *     <Table.Caption>Table Caption</Table.Caption>
  *
- * 	<Table.Body>
- * 		<Table.Row>
- * 			<Table.Cell>Cell 1.1</Table.Cell>
- * 			<Table.Cell>Cell 1.2</Table.Cell>
- * 		</Table.Row>
- * 		<Table.Row>
- * 			<Table.Cell>Cell 2.1</Table.Cell>
- * 			<Table.Cell>Cell 2.2</Table.Cell>
- * 		</Table.Row>
- * 	</Table.Body>
+ *     <Table.Header>
+ *   	   <Table.Row>
+ *   	     <Table.Cell>Header 1</Table.Cell>
+ *   	 	   <Table.Cell>Header 2</Table.Cell>
+ *   	   </Table.Row>
+ *     </Table.Header>
+ *
+ *     <Table.Body>
+ *   	   <Table.Row>
+ *   		   <Table.Cell>Cell 1.1</Table.Cell>
+ *   		   <Table.Cell>Cell 1.2</Table.Cell>
+ *   	   </Table.Row>
+ *   	   <Table.Row>
+ *   		   <Table.Cell>Cell 2.1</Table.Cell>
+ *   		   <Table.Cell>Cell 2.2</Table.Cell>
+ *   	   </Table.Row>
+ *     </Table.Body>
+ *   </Table.CustomTable> // Or, <Table.HtmlTable>
  * </Table.Root>
  * ```
  */
-const Table = forwardRef<"div" | "table", TableProps>((props, forwardedRef) => {
-	const {
-		as = "div",
-		render: renderProp,
-		className,
-		children,
-		...rest
-	} = props;
+function Table(props: TableProps) {
+	const { children } = props;
 	const [captionId, setCaptionId] = React.useState<string | undefined>();
 
-	const tableContext = React.useMemo(() => ({ setCaptionId, as }), [as]);
-
-	const Component = as === "table" ? Ariakit.Role : Ariakit.Role.div;
-	const defaultRender = as === "table" ? <table /> : undefined;
+	const tableContext = React.useMemo(
+		() => ({ captionId, setCaptionId }),
+		[captionId],
+	);
 
 	return (
 		<TableContext.Provider value={tableContext}>
-			<Component
-				ref={forwardedRef}
-				role={as === "div" ? "table" : undefined}
-				aria-labelledby={captionId}
-				{...rest}
-				render={renderProp || defaultRender}
-				className={cx("🥝-table", className)}
-			>
-				{children}
-			</Component>
+			{children}
 		</TableContext.Provider>
 	);
-});
+}
 DEV: Table.displayName = "Table.Root";
+
+// ----------------------------------------------------------------------------
+
+interface HtmlTableProps extends BaseProps {}
+const TableModeContext = React.createContext<"custom" | "html">("custom");
+
+/**
+ * `Table.HtmlTable` is a table component that uses native HTML table elements.
+ * E.g. `<table>`, `<thead>`, `<tbody>`, `<tr>`, `<th>`, and `<td>`.
+ *
+ * Related: `Table.CustomTable`
+ */
+const HtmlTable = forwardRef<"table", HtmlTableProps>((props, forwardedRef) => {
+	const { className, ...rest } = props;
+
+	return (
+		<TableModeContext.Provider value="html">
+			<Ariakit.Role
+				ref={forwardedRef}
+				render={<table />}
+				{...rest}
+				className={cx("🥝-table-header", className)}
+			/>
+		</TableModeContext.Provider>
+	);
+});
+DEV: HtmlTable.displayName = "Table.HtmlTable";
+
+// ----------------------------------------------------------------------------
+
+interface CustomTableProps extends BaseProps {}
+
+/**
+ * `Table.CustomTable` is a table component that uses custom elements to create a table.
+ * E.g. `<div role="table">`, `<div role="rowgroup">`, `<div role="row">`, `<div role="columnheader">`, and `<div role="cell">`.
+ */
+const CustomTable = forwardRef<"div", CustomTableProps>(
+	(props, forwardedRef) => {
+		const { className, ...rest } = props;
+
+		const { captionId } = React.useContext(TableContext);
+
+		return (
+			<TableModeContext.Provider value="custom">
+				<Ariakit.Role.div
+					ref={forwardedRef}
+					role="table"
+					aria-labelledby={captionId}
+					{...rest}
+					className={cx("🥝-table", className)}
+				/>
+			</TableModeContext.Provider>
+		);
+	},
+);
+DEV: CustomTable.displayName = "Table.CustomTable";
 
 // ----------------------------------------------------------------------------
 
@@ -115,16 +150,16 @@ const TableHeaderContext = React.createContext(false);
 const TableHeader = forwardRef<"div" | "thead", TableHeaderProps>(
 	(props, forwardedRef) => {
 		const { render: renderProp, className, ...rest } = props;
-		const { as } = React.useContext(TableContext);
+		const mode = React.useContext(TableModeContext);
 
-		const Component = as === "table" ? Ariakit.Role : Ariakit.Role.div;
-		const defaultRender = as === "table" ? <thead /> : undefined;
+		const Component = mode === "html" ? Ariakit.Role : Ariakit.Role.div;
+		const defaultRender = mode === "html" ? <thead /> : undefined;
 
 		return (
 			<TableHeaderContext.Provider value={true}>
 				<Component
 					ref={forwardedRef}
-					role={as === "div" ? "rowgroup" : undefined}
+					role={mode === "custom" ? "rowgroup" : undefined}
 					{...rest}
 					render={renderProp || defaultRender}
 					className={cx("🥝-table-header", className)}
@@ -162,10 +197,10 @@ interface TableBodyProps extends BaseProps<"div" | "tbody"> {}
 const TableBody = forwardRef<"div" | "tbody", TableBodyProps>(
 	(props, forwardedRef) => {
 		const { render: renderProp, className, ...rest } = props;
-		const { as } = React.useContext(TableContext);
+		const mode = React.useContext(TableModeContext);
 
-		const Component = as === "table" ? Ariakit.Role : Ariakit.Role.div;
-		const defaultRender = as === "table" ? <tbody /> : undefined;
+		const Component = mode === "html" ? Ariakit.Role : Ariakit.Role.div;
+		const defaultRender = mode === "html" ? <tbody /> : undefined;
 
 		return (
 			<Component
@@ -197,15 +232,15 @@ interface TableRowProps extends BaseProps<"div" | "tr"> {}
 const TableRow = forwardRef<"div" | "tr", TableRowProps>(
 	(props, forwardedRef) => {
 		const { render: renderProp, className, ...rest } = props;
-		const { as } = React.useContext(TableContext);
+		const mode = React.useContext(TableModeContext);
 
-		const Component = as === "table" ? Ariakit.Role : Ariakit.Role.div;
-		const defaultRender = as === "table" ? <tr /> : undefined;
+		const Component = mode === "html" ? Ariakit.Role : Ariakit.Role.div;
+		const defaultRender = mode === "html" ? <tr /> : undefined;
 
 		return (
 			<Component
 				ref={forwardedRef}
-				role={as === "div" ? "row" : undefined}
+				role={mode === "custom" ? "row" : undefined}
 				{...rest}
 				render={renderProp || defaultRender}
 				className={cx("🥝-table-row", className)}
@@ -241,10 +276,11 @@ const TableCaption = forwardRef<"div" | "caption", TableCaptionProps>(
 			className,
 			...rest
 		} = props;
-		const { setCaptionId, as } = React.useContext(TableContext);
+		const { setCaptionId } = React.useContext(TableContext);
+		const mode = React.useContext(TableModeContext);
 
-		const Component = as === "table" ? Ariakit.Role : Ariakit.Role.div;
-		const defaultRender = as === "table" ? <caption /> : undefined;
+		const Component = mode === "html" ? Ariakit.Role : Ariakit.Role.div;
+		const defaultRender = mode === "html" ? <caption /> : undefined;
 
 		const captionIdRef = React.useCallback(
 			(element: HTMLElement | null) => {
@@ -283,26 +319,26 @@ interface TableCellProps extends BaseProps<"span"> {}
 const TableCell = forwardRef<"div" | "span", TableCellProps>(
 	(props, forwardedRef) => {
 		const isWithinTableHeader = React.useContext(TableHeaderContext);
-		const { as } = React.useContext(TableContext);
+		const mode = React.useContext(TableModeContext);
 		const { className, render: renderProp, children, ...rest } = props;
 
 		const role = React.useMemo(() => {
-			if (as === "div") {
+			if (mode === "custom") {
 				return isWithinTableHeader ? "columnheader" : "cell";
 			}
 
 			return undefined;
-		}, [as, isWithinTableHeader]);
+		}, [mode, isWithinTableHeader]);
 
 		const [Component, defaultRender] = React.useMemo(() => {
-			if (as === "div") {
+			if (mode === "custom") {
 				return [Ariakit.Role.span, undefined];
 			}
 
 			return isWithinTableHeader
 				? [Ariakit.Role, <th key={0} />]
 				: [Ariakit.Role, <td key={0} />];
-		}, [as, isWithinTableHeader]);
+		}, [mode, isWithinTableHeader]);
 
 		return (
 			<Component
@@ -323,6 +359,8 @@ DEV: TableCell.displayName = "Table.Cell";
 
 export {
 	Table as Root,
+	HtmlTable,
+	CustomTable,
 	TableHeader as Header,
 	TableBody as Body,
 	TableRow as Row,

@@ -8,12 +8,14 @@ import * as Tree from "@itwin/itwinui-react-internal/src/bricks/Tree.tsx";
 import placeholderIcon from "@itwin/itwinui-icons/placeholder.svg";
 import unlockIcon from "@itwin/itwinui-icons/lock-unlocked.svg";
 import showIcon from "@itwin/itwinui-icons/visibility-show.svg";
+import { Anchor, } from "@itwin/itwinui-react/bricks";
 
 export const handle = { title: "Tree" };
 
 export default definePage(function Page({
 	overflow = false,
 	selected = false,
+	error = false,
 }) {
 	const overflowPostfix = overflow
 		? " with a super long label that is overflown"
@@ -109,6 +111,23 @@ export default definePage(function Page({
 										/>,
 										<Tree.ItemAction key="show" icon={showIcon} label="Show" />,
 									]}
+									error={
+										error && childIndex === 0 ? (
+											<Tree.ItemError
+												label="Failed to create hierarchy"
+												icon={placeholderIcon}
+												actions={[
+													<Anchor
+														key="retry"
+														// biome-ignore lint/a11y/useButtonType: <explanation>
+														render={<button />}
+													>
+														Retry
+													</Anchor>,
+												]}
+											/>
+										) : undefined
+									}
 								/>
 							);
 						})}

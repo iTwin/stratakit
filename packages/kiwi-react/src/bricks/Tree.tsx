@@ -107,6 +107,10 @@ interface TreeItemProps extends Omit<BaseProps, "content"> {
 	 * ```
 	 */
 	actions?: React.ReactNode[];
+	/**
+	 * Describes the error state of the tree item. Must be a `Tree.ItemError` component.
+	 */
+	error?: React.ReactNode;
 }
 
 /**
@@ -144,6 +148,7 @@ const TreeItem = forwardRef<"div", TreeItemProps>((props, forwardedRef) => {
 		icon,
 		label,
 		actions,
+		error,
 		style,
 		onSelectedChange,
 		onExpandedChange,
@@ -207,13 +212,13 @@ const TreeItem = forwardRef<"div", TreeItemProps>((props, forwardedRef) => {
 				aria-labelledby={contentId}
 				aria-level={level}
 				className={cx("🥝-tree-item", props.className)}
+				style={{ "--🥝tree-item-level": level } as React.CSSProperties}
 				ref={forwardedRef as Ariakit.CompositeItemProps["ref"]}
 			>
 				<ListItem.Root
 					data-kiwi-expanded={expanded}
 					data-kiwi-selected={selected}
 					className="🥝-tree-item-node"
-					style={{ "--🥝tree-item-level": level } as React.CSSProperties}
 					role={undefined}
 				>
 					<ListItem.Decoration>
@@ -230,6 +235,7 @@ const TreeItem = forwardRef<"div", TreeItemProps>((props, forwardedRef) => {
 						render={<TreeItemActions>{actions}</TreeItemActions>}
 					/>
 				</ListItem.Root>
+				{error}
 			</Ariakit.CompositeItem>
 		</TreeItemContext.Provider>
 	);
@@ -386,4 +392,55 @@ const TreeItemContext = React.createContext<
 
 // ----------------------------------------------------------------------------
 
-export { Tree as Root, TreeItem as Item, TreeItemAction as ItemAction };
+interface TreeItemErrorProps extends BaseProps {
+	/**
+	 * Icon to be displayed for the error.
+	 *
+	 * Can be a URL of an SVG from the `kiwi-icons` package, or a JSX element.
+	 */
+	icon?: string | React.JSX.Element;
+	/**
+	 * The primary label that identifies the tree item and is displayed inside it.
+	 */
+	label?: React.ReactNode;
+	/**
+	 * The actions available for the tree item error. Use `Button` component.
+	 */
+	actions?: React.ReactNode[];
+}
+
+/**
+ * An error message for `<Tree.Item>`, to be passed into the `error` prop.
+ */
+const TreeItemError = forwardRef<"div", TreeItemErrorProps>(
+	(props, forwardedRef) => {
+		const { icon, label, actions, ...rest } = props;
+		return (
+			<ListItem.Root
+				role={undefined}
+				{...rest}
+				onClick={useEventHandlers(props.onClick, (e) => e.stopPropagation())}
+				className={cx("🥝-tree-item-error", props.className)}
+				ref={forwardedRef}
+			>
+				<ListItem.Decoration>
+					{typeof icon === "string" ? <Icon href={icon} /> : icon}
+				</ListItem.Decoration>
+				<ListItem.Content>{label}</ListItem.Content>
+				<ListItem.Content className="🥝-tree-item-error-actions">
+					{actions}
+				</ListItem.Content>
+			</ListItem.Root>
+		);
+	},
+);
+DEV: TreeItemAction.displayName = "Tree.ItemError";
+
+// ----------------------------------------------------------------------------
+
+export {
+	Tree as Root,
+	TreeItem as Item,
+	TreeItemAction as ItemAction,
+	TreeItemError as ItemError,
+};

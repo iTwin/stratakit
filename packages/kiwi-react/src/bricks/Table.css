@@ -5,12 +5,12 @@
 
 .🥝-table {
 	@layer base {
-		&:is(:not(table)) {
+		&:where(:not(table)) {
 			display: flex;
 			flex-direction: column;
 		}
 
-		&:is(table) {
+		&:where(table) {
 			border-collapse: collapse;
 			inline-size: 100%;
 		}
@@ -25,7 +25,7 @@
 
 .🥝-table-body {
 	@layer base {
-		&:is(:not(tbody)) {
+		&:where(:not(tbody)) {
 			display: flex;
 			flex-direction: column;
 		}
@@ -34,7 +34,7 @@
 
 .🥝-table-row {
 	@layer base {
-		&:is(:not(tr)) {
+		&:where(:not(tr)) {
 			display: flex;
 		}
 	}
@@ -50,15 +50,15 @@
 		word-break: break-word;
 		hyphens: auto;
 
-		&:is(caption) {
+		&:where(caption) {
 			text-align: start;
 		}
 
-		&:is(th, td) {
+		&:where(th, td) {
 			block-size: var(--✨cell-height-min);
 		}
 
-		&:is(div, span) {
+		&:where(:not(th, td, caption)) {
 			display: flex;
 			align-items: center;
 			column-gap: 0.5rem;
@@ -78,7 +78,7 @@
 			var(--🌀table-cell-state--hover, var(--✨cell-bg--hover));
 		border-block-end: 1px solid var(--ids-color-border-neutral-muted);
 
-		&:is(:not(th, td)) {
+		&:where(:not(th, td)) {
 			display: flex;
 			align-items: center;
 			column-gap: 0.5rem;
@@ -86,7 +86,7 @@
 			flex-basis: 4rem;
 		}
 
-		&:is(th) {
+		&:where(th) {
 			text-align: start;
 			font-weight: inherit;
 		}

@@ -7,7 +7,6 @@ settings:
 overrides:
   cookie@<0.7.0: ">=0.7.0"
   typescript: 5.7.2
-  esbuild: 0.25.0
 
 importers:
   .:
@@ -78,7 +77,7 @@ importers:
         version: 1.49.1
       "@react-router/dev":
         specifier: ^7.1.1
-        version: 7.1.1(@types/node@22.10.2)(lightningcss@1.28.2)(react-router@7.1.1(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(tsx@4.19.3)(typescript@5.7.2)(vite@6.0.9(@types/node@22.10.2)(lightningcss@1.28.2)(tsx@4.19.3)(yaml@2.6.1))(yaml@2.6.1)
+        version: 7.1.1(@types/node@22.10.2)(lightningcss@1.28.2)(react-router@7.1.1(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(tsx@4.19.3)(typescript@5.7.2)(vite@6.2.0(@types/node@22.10.2)(lightningcss@1.28.2)(tsx@4.19.3)(yaml@2.6.1))(yaml@2.6.1)
       "@types/node":
         specifier: ^22.10.2
         version: 22.10.2
@@ -89,7 +88,7 @@ importers:
         specifier: "19"
         version: 19.0.2(@types/react@19.0.2)
       esbuild:
-        specifier: 0.25.0
+        specifier: ^0.25.0
         version: 0.25.0
       lightningcss:
         specifier: ^1.28.2
@@ -98,11 +97,11 @@ importers:
         specifier: 5.7.2
         version: 5.7.2
       vite:
-        specifier: ^6.0.9
-        version: 6.0.9(@types/node@22.10.2)(lightningcss@1.28.2)(tsx@4.19.3)(yaml@2.6.1)
+        specifier: ^6.2.0
+        version: 6.2.0(@types/node@22.10.2)(lightningcss@1.28.2)(tsx@4.19.3)(yaml@2.6.1)
       vite-tsconfig-paths:
         specifier: ^5.1.4
-        version: 5.1.4(typescript@5.7.2)(vite@6.0.9(@types/node@22.10.2)(lightningcss@1.28.2)(tsx@4.19.3)(yaml@2.6.1))
+        version: 5.1.4(typescript@5.7.2)(vite@6.2.0(@types/node@22.10.2)(lightningcss@1.28.2)(tsx@4.19.3)(yaml@2.6.1))
 
   internal:
     dependencies:
@@ -135,7 +134,7 @@ importers:
         specifier: "19"
         version: 19.0.2(@types/react@19.0.2)
       esbuild:
-        specifier: 0.25.0
+        specifier: ^0.25.0
         version: 0.25.0
       lightningcss:
         specifier: ^1.28.2
@@ -1915,10 +1914,10 @@ packages:
     engines: { node: ">=18" }
     hasBin: true
 
-  postcss@8.5.1:
+  postcss@8.5.3:
     resolution:
       {
-        integrity: sha512-6oz2beyjc5VMn/KV1pPw8fliQkhBXrVn1Z3TVyqZxU8kZpzEKhBdmCFqI6ZbmGtamQvQGuU1sgPTk8ZrXDD7jQ==,
+        integrity: sha512-dle9A3yYxlBSrt8Fu+IpjGT8SY8hN0mlaA6GY8t0P5PjIOZemULz/E2Bnm/2dcUOena75OTNkHI76uZBNUUq3A==,
       }
     engines: { node: ^10 || ^12 || >=14 }
 
@@ -2347,10 +2346,10 @@ packages:
       vite:
         optional: true
 
-  vite@6.0.9:
+  vite@6.2.0:
     resolution:
       {
-        integrity: sha512-MSgUxHcaXLtnBPktkbUSoQUANApKYuxZ6DrbVENlIorbhL2dZydTLaZ01tjUoE3szeFzlFk9ANOKk0xurh4MKA==,
+        integrity: sha512-7dPxoo+WsT/64rDcwoOjk76XHj+TqNTIvHKcuMQ1k4/SeHDaQt5GFAeLYzrimZrMpn/O6DtdI03WUjdxuPM0oQ==,
       }
     engines: { node: ^18.0.0 || ^20.0.0 || >=22.0.0 }
     hasBin: true
@@ -2860,7 +2859,7 @@ snapshots:
     dependencies:
       playwright: 1.49.1
 
-  "@react-router/dev@7.1.1(@types/node@22.10.2)(lightningcss@1.28.2)(react-router@7.1.1(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(tsx@4.19.3)(typescript@5.7.2)(vite@6.0.9(@types/node@22.10.2)(lightningcss@1.28.2)(tsx@4.19.3)(yaml@2.6.1))(yaml@2.6.1)":
+  "@react-router/dev@7.1.1(@types/node@22.10.2)(lightningcss@1.28.2)(react-router@7.1.1(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(tsx@4.19.3)(typescript@5.7.2)(vite@6.2.0(@types/node@22.10.2)(lightningcss@1.28.2)(tsx@4.19.3)(yaml@2.6.1))(yaml@2.6.1)":
     dependencies:
       "@babel/core": 7.26.0
       "@babel/generator": 7.26.3
@@ -2891,7 +2890,7 @@ snapshots:
       semver: 7.6.3
       set-cookie-parser: 2.7.1
       valibot: 0.41.0(typescript@5.7.2)
-      vite: 6.0.9(@types/node@22.10.2)(lightningcss@1.28.2)(tsx@4.19.3)(yaml@2.6.1)
+      vite: 6.2.0(@types/node@22.10.2)(lightningcss@1.28.2)(tsx@4.19.3)(yaml@2.6.1)
       vite-node: 3.0.0-beta.2(@types/node@22.10.2)(lightningcss@1.28.2)(tsx@4.19.3)(yaml@2.6.1)
     optionalDependencies:
       typescript: 5.7.2
@@ -3437,7 +3436,7 @@ snapshots:
     optionalDependencies:
       fsevents: 2.3.2
 
-  postcss@8.5.1:
+  postcss@8.5.3:
     dependencies:
       nanoid: 3.3.8
       picocolors: 1.1.1
@@ -3665,7 +3664,7 @@ snapshots:
       debug: 4.4.0
       es-module-lexer: 1.5.4
       pathe: 1.1.2
-      vite: 6.0.9(@types/node@22.10.2)(lightningcss@1.28.2)(tsx@4.19.3)(yaml@2.6.1)
+      vite: 6.2.0(@types/node@22.10.2)(lightningcss@1.28.2)(tsx@4.19.3)(yaml@2.6.1)
     transitivePeerDependencies:
       - "@types/node"
       - jiti
@@ -3680,21 +3679,21 @@ snapshots:
       - tsx
       - yaml
 
-  vite-tsconfig-paths@5.1.4(typescript@5.7.2)(vite@6.0.9(@types/node@22.10.2)(lightningcss@1.28.2)(tsx@4.19.3)(yaml@2.6.1)):
+  vite-tsconfig-paths@5.1.4(typescript@5.7.2)(vite@6.2.0(@types/node@22.10.2)(lightningcss@1.28.2)(tsx@4.19.3)(yaml@2.6.1)):
     dependencies:
       debug: 4.4.0
       globrex: 0.1.2
       tsconfck: 3.1.4(typescript@5.7.2)
     optionalDependencies:
-      vite: 6.0.9(@types/node@22.10.2)(lightningcss@1.28.2)(tsx@4.19.3)(yaml@2.6.1)
+      vite: 6.2.0(@types/node@22.10.2)(lightningcss@1.28.2)(tsx@4.19.3)(yaml@2.6.1)
     transitivePeerDependencies:
       - supports-color
       - typescript
 
-  vite@6.0.9(@types/node@22.10.2)(lightningcss@1.28.2)(tsx@4.19.3)(yaml@2.6.1):
+  vite@6.2.0(@types/node@22.10.2)(lightningcss@1.28.2)(tsx@4.19.3)(yaml@2.6.1):
     dependencies:
       esbuild: 0.25.0
-      postcss: 8.5.1
+      postcss: 8.5.3
       rollup: 4.31.0
     optionalDependencies:
       "@types/node": 22.10.2

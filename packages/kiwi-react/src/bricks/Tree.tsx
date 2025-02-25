@@ -144,7 +144,6 @@ const TreeItem = forwardRef<"div", TreeItemProps>((props, forwardedRef) => {
 		icon,
 		label,
 		actions,
-		style,
 		onSelectedChange,
 		onExpandedChange,
 		onClick: onClickProp,

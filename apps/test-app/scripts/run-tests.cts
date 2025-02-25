@@ -4,13 +4,14 @@
  *--------------------------------------------------------------------------------------------*/
 import { spawn } from "node:child_process";
 import { join } from "node:path";
+import { join as posixJoin } from "node:path/posix";
 
 const repoDir = join(__dirname, "..", "..", "..");
 const appDir = join(repoDir, "apps", "test-app");
 
 const imageName = "kiwi";
 const containerRepoDir = "/kiwi";
-const containerAppDir = join(containerRepoDir, "apps", "test-app");
+const containerAppDir = posixJoin(containerRepoDir, "apps", "test-app");
 
 const [_node, _fileName, ...args] = process.argv;
 

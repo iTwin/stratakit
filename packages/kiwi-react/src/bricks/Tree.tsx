@@ -233,7 +233,10 @@ const TreeItem = forwardRef<"div", TreeItemProps>((props, forwardedRef) => {
 						{label}
 					</ListItem.Content>
 					{description ? (
-						<ListItem.Content id={descriptionId}>
+						<ListItem.Content
+							id={descriptionId}
+							className="🥝-tree-item-description"
+						>
 							{description}
 						</ListItem.Content>
 					) : undefined}

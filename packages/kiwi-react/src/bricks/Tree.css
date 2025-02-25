@@ -78,6 +78,12 @@
 	}
 }
 
+.🥝-tree-item-description:is(.🥝-list-item-content) {
+	@layer base {
+		color: var(--🌀list-item-state--default, var(--ids-color-text-neutral-secondary));
+	}
+}
+
 .🥝-tree-item-actions:is(.🥝-list-item-decoration) {
 	@layer base {
 		grid-row: block;

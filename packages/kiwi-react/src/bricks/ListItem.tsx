@@ -26,14 +26,15 @@ DEV: ListItem.displayName = "ListItem.Root";
 
 // ----------------------------------------------------------------------------
 
-interface ListItemContentProps extends Ariakit.RoleProps<"span"> {}
+interface ListItemContentProps extends Ariakit.RoleProps<"div"> {}
 
 /** @internal */
-const ListItemContent = forwardRef<"span", ListItemContentProps>(
+const ListItemContent = forwardRef<"div", ListItemContentProps>(
 	(props, forwardedRef) => {
 		return (
 			<Text
 				{...props}
+				variant="body-sm"
 				className={cx("🥝-list-item-content", props.className)}
 				ref={forwardedRef}
 			/>

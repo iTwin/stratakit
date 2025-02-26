@@ -6,7 +6,7 @@ import * as Ariakit from "@ariakit/react";
 import * as React from "react";
 import cx from "classnames";
 import { forwardRef, type BaseProps } from "./~utils.js";
-import { useMergedRefs } from "./~hooks.js";
+import { useMergedRefs, useSafeContext } from "./~hooks.js";
 
 // ----------------------------------------------------------------------------
 
@@ -14,13 +14,13 @@ interface TableProps {
 	children: React.ReactNode;
 }
 
-const TableContext = React.createContext<{
-	captionId: string | undefined;
-	setCaptionId: React.Dispatch<React.SetStateAction<string | undefined>>;
-}>({
-	captionId: undefined,
-	setCaptionId: () => {},
-});
+const TableContext = React.createContext<
+	| {
+			captionId: string | undefined;
+			setCaptionId: React.Dispatch<React.SetStateAction<string | undefined>>;
+	  }
+	| undefined
+>(undefined);
 
 /**
  * A table is a grid of rows and columns that displays data in a structured format.
@@ -75,7 +75,7 @@ DEV: Table.displayName = "Table.Root";
 // ----------------------------------------------------------------------------
 
 interface HtmlTableProps extends BaseProps {}
-const TableModeContext = React.createContext<"custom" | "html">("custom");
+const TableModeContext = React.createContext<"aria" | "html">("aria");
 
 /**
  * `Table.HtmlTable` uses native HTML table elements for the table root *and its descendants*.
@@ -171,10 +171,10 @@ const CustomTable = forwardRef<"div", CustomTableProps>(
 	(props, forwardedRef) => {
 		const { className, ...rest } = props;
 
-		const { captionId } = React.useContext(TableContext);
+		const { captionId } = useSafeContext(TableContext);
 
 		return (
-			<TableModeContext.Provider value="custom">
+			<TableModeContext.Provider value="aria">
 				<Ariakit.Role.div
 					ref={forwardedRef}
 					role="table"
@@ -213,15 +213,14 @@ const TableHeaderContext = React.createContext(false);
 const TableHeader = forwardRef<"div" | "thead", TableHeaderProps>(
 	(props, forwardedRef) => {
 		const { className, ...rest } = props;
-		const mode = React.useContext(TableModeContext);
+		const mode = useSafeContext(TableModeContext);
 
-		const Component = mode === "html" ? Ariakit.Role : Ariakit.Role.div;
 		const render = mode === "html" ? <thead /> : undefined;
 		const role = mode === "html" ? undefined : "rowgroup";
 
 		return (
 			<TableHeaderContext.Provider value={true}>
-				<Component
+				<Ariakit.Role.div
 					ref={forwardedRef}
 					render={render}
 					role={role}
@@ -262,14 +261,13 @@ interface TableBodyProps extends BaseProps<"div" | "tbody"> {}
 const TableBody = forwardRef<"div" | "tbody", TableBodyProps>(
 	(props, forwardedRef) => {
 		const { className, ...rest } = props;
-		const mode = React.useContext(TableModeContext);
+		const mode = useSafeContext(TableModeContext);
 
-		const Component = mode === "html" ? Ariakit.Role : Ariakit.Role.div;
 		const render = mode === "html" ? <tbody /> : undefined;
 		const role = mode === "html" ? undefined : "rowgroup";
 
 		return (
-			<Component
+			<Ariakit.Role.div
 				ref={forwardedRef}
 				render={render}
 				role={role}
@@ -302,14 +300,13 @@ interface TableRowProps extends BaseProps<"div" | "tr"> {}
 const TableRow = forwardRef<"div" | "tr", TableRowProps>(
 	(props, forwardedRef) => {
 		const { className, ...rest } = props;
-		const mode = React.useContext(TableModeContext);
+		const mode = useSafeContext(TableModeContext);
 
-		const Component = mode === "html" ? Ariakit.Role : Ariakit.Role.div;
 		const render = mode === "html" ? <tr /> : undefined;
 		const role = mode === "html" ? undefined : "row";
 
 		return (
-			<Component
+			<Ariakit.Role.div
 				ref={forwardedRef}
 				render={render}
 				role={role}
@@ -344,10 +341,9 @@ const TableCaption = forwardRef<"div" | "caption", TableCaptionProps>(
 		const fallbackId = React.useId();
 
 		const { id = fallbackId, children, className, ...rest } = props;
-		const { setCaptionId } = React.useContext(TableContext);
-		const mode = React.useContext(TableModeContext);
+		const { setCaptionId } = useSafeContext(TableContext);
+		const mode = useSafeContext(TableModeContext);
 
-		const Component = mode === "html" ? Ariakit.Role : Ariakit.Role.div;
 		const render = mode === "html" ? <caption /> : undefined;
 		const role = mode === "html" ? undefined : "caption";
 
@@ -359,7 +355,7 @@ const TableCaption = forwardRef<"div" | "caption", TableCaptionProps>(
 		);
 
 		return (
-			<Component
+			<Ariakit.Role.div
 				id={id}
 				ref={useMergedRefs(forwardedRef, captionIdRef)}
 				render={render}
@@ -368,7 +364,7 @@ const TableCaption = forwardRef<"div" | "caption", TableCaptionProps>(
 				className={cx("🥝-table-caption", className)}
 			>
 				{children}
-			</Component>
+			</Ariakit.Role.div>
 		);
 	},
 );
@@ -392,28 +388,20 @@ interface TableCellProps extends BaseProps<"span"> {}
  * ```
  */
 const TableCell = forwardRef<"span", TableCellProps>((props, forwardedRef) => {
-	const isWithinTableHeader = React.useContext(TableHeaderContext);
-	const mode = React.useContext(TableModeContext);
+	const isWithinTableHeader = useSafeContext(TableHeaderContext);
+	const mode = useSafeContext(TableModeContext);
 	const { className, children, ...rest } = props;
 
-	const [Component, render, role] = React.useMemo(() => {
-		if (mode === "custom") {
-			return [
-				Ariakit.Role.span,
-				undefined,
-				isWithinTableHeader ? "columnheader" : "cell",
-			];
+	const [render, role] = React.useMemo(() => {
+		if (mode === "aria") {
+			return [undefined, isWithinTableHeader ? "columnheader" : "cell"];
 		}
 
-		return [
-			Ariakit.Role,
-			isWithinTableHeader ? <th key={0} /> : <td key={0} />,
-			undefined,
-		];
+		return [isWithinTableHeader ? <th key={0} /> : <td key={0} />, undefined];
 	}, [isWithinTableHeader, mode]);
 
 	return (
-		<Component
+		<Ariakit.Role.span
 			ref={forwardedRef as React.Ref<HTMLDivElement>}
 			render={render}
 			role={role}
@@ -421,7 +409,7 @@ const TableCell = forwardRef<"span", TableCellProps>((props, forwardedRef) => {
 			className={cx("🥝-table-cell", className)}
 		>
 			{children}
-		</Component>
+		</Ariakit.Role.span>
 	);
 });
 DEV: TableCell.displayName = "Table.Cell";

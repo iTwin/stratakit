@@ -6,6 +6,14 @@ import { definePage } from "~/~utils.tsx";
 import { Icon } from "@itwin/itwinui-react/bricks";
 import placeholderIcon from "@itwin/itwinui-icons/placeholder.svg";
 
+export const demoVariants = {
+	Default: "",
+	Visual: "?visual",
+	Alt: "?alt=Help me",
+	Large: "?size=large",
+	RenderProp: "?renderProp=true",
+};
+
 export const handle = { title: "Icon" };
 
 export default definePage(

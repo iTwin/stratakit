@@ -4,10 +4,15 @@
  *--------------------------------------------------------------------------------------------*/
 .asideHeading {
 	padding: 8px;
+	position: sticky;
+	top: 0;
+	background-color: var(--ids-color-bg-page-depth);
+	z-index: 1;
+	padding-top: 1rem;
 }
 
 .listItem {
-	height: 32px;
+	min-block-size: 32px;
 	border-radius: 4px;
 	position: relative;
 
@@ -25,5 +30,21 @@
 		content: "";
 		position: absolute;
 		inset: 0;
+	}
+
+	&:focus-visible {
+		outline: none;
+		isolation: isolate;
+
+		&::before {
+			content: "";
+			position: absolute;
+			inset: 0;
+			z-index: 1; /* Ensure the outline appears above the actions */
+			pointer-events: none;
+			outline: 2px solid var(--ids-color-border-accent-strong);
+			outline-offset: -1px;
+			border-radius: 4px;
+		}
 	}
 }

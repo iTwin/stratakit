@@ -5,6 +5,19 @@
 import { definePage } from "~/~utils.tsx";
 import { Badge } from "@itwin/itwinui-react/bricks";
 
+export const demoVariants = {
+	Default: "",
+	Visual: "?visual",
+	Neutral: "?tone=neutral",
+	Info: "?tone=info",
+	Positive: "?tone=positive",
+	Attention: "?tone=attention",
+	Critical: "?tone=critical",
+	Solid: "?variant=solid",
+	Muted: "?variant=muted",
+	Outline: "?variant=outline",
+};
+
 export const handle = { title: "Badge" };
 
 const tones = ["neutral", "info", "positive", "attention", "critical"] as const;

@@ -9,6 +9,13 @@ import placeholderIcon from "@itwin/itwinui-icons/placeholder.svg";
 import unlockIcon from "@itwin/itwinui-icons/lock-unlocked.svg";
 import showIcon from "@itwin/itwinui-icons/visibility-show.svg";
 
+export const demoVariants = {
+	Default: "",
+	Visual: "?visual",
+	Overflow: "?overflow",
+	Selected: "?selected",
+};
+
 export const handle = { title: "Tree" };
 
 export default definePage(function Page({

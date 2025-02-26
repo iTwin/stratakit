@@ -7,6 +7,12 @@ import * as ReactDOM from "react-dom";
 import { Button, Root } from "@itwin/itwinui-react/bricks";
 import { definePage, useColorScheme } from "~/~utils.tsx";
 
+export const demoVariants = {
+	Default: "",
+	SynchronizeColorSchemeTrue: "?synchronizeColorScheme=true",
+	SynchronizeColorSchemeFalse: "?synchronizeColorScheme=false",
+};
+
 export const handle = { title: "Root", rootTest: true };
 
 export default definePage(function Page({ synchronizeColorScheme = true }) {

@@ -11,6 +11,16 @@ import {
 } from "@itwin/itwinui-react/bricks";
 import * as React from "react";
 
+export const demoVariants = {
+	Default: "",
+	Visual: "?visual",
+	DefaultValue: "?defaultValue=A",
+	DisabledWithDefaultValue: "?disabled=true&defaultValue=B",
+	VisualChecked: "?visual=true&checked=true",
+	VisualDisabled: "?visual=true&disabled=true",
+	VisualDisabledChecked: "?visual=true&disabled=true&checked=true",
+};
+
 export const handle = { title: "Radio" };
 
 export default definePage(

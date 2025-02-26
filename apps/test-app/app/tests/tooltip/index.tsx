@@ -5,6 +5,15 @@
 import { definePage } from "~/~utils.tsx";
 import { Tooltip, Button, VisuallyHidden } from "@itwin/itwinui-react/bricks";
 
+export const demoVariants = {
+	Default: "",
+	Visual: "?visual",
+	TypeDescription: "?type=description",
+	TypeLabel: "?type=label",
+	TypeNone: "?type=none",
+	MultiLine: "?multi-line",
+};
+
 export const handle = { title: "Tooltip" };
 
 export default definePage(function Page({ "multi-line": multiLine, type }) {

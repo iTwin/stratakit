@@ -5,6 +5,13 @@
 import { definePage } from "~/~utils.tsx";
 import { Tabs } from "@itwin/itwinui-react/bricks";
 
+export const demoVariants = {
+	Default: "",
+	Visual: "?visual",
+	Disabled: "?disabled=true",
+	DefaultSelectedId: "?defaultSelectedId=tab2",
+};
+
 export const handle = { title: "Tabs" };
 
 export default definePage(

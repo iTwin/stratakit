@@ -5,6 +5,12 @@
 import { definePage } from "~/~utils.tsx";
 import { Kbd } from "@itwin/itwinui-react/bricks";
 
+export const demoVariants = {
+	Default: "",
+	Visual: "?visual",
+	Symbols: "?symbols",
+};
+
 export const handle = { title: "Kbd" };
 
 export default definePage(

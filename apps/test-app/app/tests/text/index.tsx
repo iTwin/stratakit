@@ -5,6 +5,24 @@
 import { Text } from "@itwin/itwinui-react/bricks";
 import { definePage } from "~/~utils.tsx";
 
+export const demoVariants = {
+	Default: "",
+	Visual: "?visual",
+	DisplayLg: "?variant=display-lg",
+	DisplayMd: "?variant=display-md",
+	DisplaySm: "?variant=display-sm",
+	HeadlineLg: "?variant=headline-lg",
+	HeadlineMd: "?variant=headline-md",
+	HeadlineSm: "?variant=headline-sm",
+	BodyLg: "?variant=body-lg",
+	BodyMd: "?variant=body-md",
+	BodySm: "?variant=body-sm",
+	CaptionLg: "?variant=caption-lg",
+	CaptionMd: "?variant=caption-md",
+	CaptionSm: "?variant=caption-sm",
+	MonoSm: "?variant=mono-sm",
+};
+
 const variants = [
 	"display-lg",
 	"display-md",

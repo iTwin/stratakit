@@ -6,6 +6,11 @@ import { definePage } from "~/~utils.tsx";
 import * as Table from "@itwin/itwinui-react-internal/src/bricks/Table.tsx";
 import * as React from "react";
 
+export const demoVariants = {
+	Default: "",
+	Visual: "?visual",
+};
+
 export const handle = { title: "Table" };
 
 export default definePage(

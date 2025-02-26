@@ -5,6 +5,14 @@
 import { DropdownMenu } from "@itwin/itwinui-react/bricks";
 import { type VariantProps, definePage } from "~/~utils.tsx";
 
+export const demoVariants = {
+	Default: "",
+	Visual: "?visual",
+	Disabled: "?disabled",
+	Checkbox: "?checkbox",
+	CheckboxDefaultChecked: "?checkbox&defaultChecked",
+};
+
 export const handle = { title: "DropdownMenu" };
 
 export default definePage(

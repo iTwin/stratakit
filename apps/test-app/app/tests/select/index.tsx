@@ -5,6 +5,11 @@
 import { Field, Label, Select } from "@itwin/itwinui-react/bricks";
 import { definePage } from "~/~utils.tsx";
 
+export const demoVariants = {
+	Default: "",
+	Visual: "?visual",
+};
+
 export const handle = { title: "Select" };
 
 export default definePage(

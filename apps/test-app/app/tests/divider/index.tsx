@@ -5,6 +5,14 @@
 import { definePage } from "~/~utils.tsx";
 import { Divider } from "@itwin/itwinui-react/bricks";
 
+export const demoVariants = {
+	Default: "",
+	Visual: "?visual",
+	Horizontal: "?orientation=horizontal",
+	Vertical: "?orientation=vertical",
+	Presentational: "?presentational",
+};
+
 export const handle = { title: "Divider" };
 
 export default definePage(

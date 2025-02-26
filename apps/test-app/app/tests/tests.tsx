@@ -7,6 +7,7 @@ import type * as React from "react";
 import { Outlet, useMatches, type MetaFunction, Link } from "react-router";
 import * as ListItem from "@itwin/itwinui-react-internal/src/bricks/ListItem";
 import styles from "./tests.module.css";
+import { allDemoVariants } from "./_allVariants.tsx";
 
 export const meta: MetaFunction = () => {
 	return [{ title: "Kiwi tests" }];
@@ -16,15 +17,10 @@ function Layout({
 	children,
 	title,
 }: { children: React.ReactNode; title: string }) {
-	const variants = {
-		Default: "",
-		Disabled: "?disabled",
-		Visual: "?visual",
-	};
-
+	const demoVariants = allDemoVariants[title] ?? {};
 	const variantFromUrl =
-		Object.entries(variants).find(
-			([, url]) => window.location.search === url,
+		Object.entries(demoVariants).find(
+			([, url]) => window.location.search === encodeURI(url),
 		)?.[0] ?? "";
 
 	return (
@@ -43,6 +39,7 @@ function Layout({
 					overflow: "auto",
 					backgroundColor: "var(--ids-color-bg-page-depth)",
 					padding: "1rem",
+					paddingTop: "0",
 				}}
 			>
 				<div
@@ -54,33 +51,11 @@ function Layout({
 						height: "100%",
 					}}
 				>
-					{/* <ListItem.Root
-						className={styles.listItem}
-						data-selected={variantFromUrl === "" ? "" : undefined}
-					>
-						<ListItem.Content
-							render={(props) => (
-								<Anchor
-									render={
-										<Link
-											className={styles.listItemAnchor}
-											to={"?"}
-											style={{ textDecoration: "none" }}
-										/>
-									}
-									{...props}
-								/>
-							)}
-						>
-							{title}
-						</ListItem.Content>
-					</ListItem.Root> */}
-
 					<Text variant="body-sm" className={styles.asideHeading}>
 						{title} variants
 					</Text>
 
-					{Object.entries(variants).map(([title, url]) => (
+					{Object.entries(demoVariants).map(([title, url]) => (
 						<ListItem.Root
 							key={title}
 							className={styles.listItem}
@@ -142,6 +117,7 @@ function Layout({
 
 export default function Page() {
 	const matches = useMatches();
+
 	const title = (matches.at(-1)?.handle as { title: string })?.title ?? "Tests";
 
 	return (

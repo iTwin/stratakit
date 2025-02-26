@@ -6,10 +6,15 @@ import { definePage } from "~/~utils.tsx";
 import { Avatar, Icon } from "@itwin/itwinui-react/bricks";
 import userIconHref from "@itwin/itwinui-icons/user.svg";
 
+export const demoVariants = {
+	Default: "",
+	Visual: "?visual",
+};
+
 export const handle = { title: "Avatar" };
 
 export default definePage(
-	function Page({ disabled }) {
+	function Page() {
 		return (
 			<>
 				<Avatar initials="WW" alt="Willow Winters" data-testid="avatar" />

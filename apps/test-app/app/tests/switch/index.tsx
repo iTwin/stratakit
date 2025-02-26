@@ -11,6 +11,16 @@ import {
 } from "@itwin/itwinui-react/bricks";
 import * as React from "react";
 
+export const demoVariants = {
+	Default: "",
+	Visual: "?visual",
+	Checked: "?checked",
+	Disabled: "?disabled",
+	VisualChecked: "?visual&checked",
+	VisualDisabled: "?visual&disabled",
+	VisualDisabledChecked: "?visual&disabled&checked",
+};
+
 export const handle = { title: "Switch" };
 
 export default definePage(

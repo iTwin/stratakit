@@ -13,6 +13,28 @@ import {
 	Description,
 } from "@itwin/itwinui-react/bricks";
 
+export const demoVariants = {
+	Default: "",
+	Visual: "?visual",
+	Input: "?control=input",
+	Textarea: "?control=textarea",
+	Radio: "?control=radio",
+	Checkbox: "?control=checkbox",
+	Switch: "?control=switch",
+	CheckboxAsLabel: "?control=checkbox&asLabel",
+	CustomControlId: "?customControlId",
+	InputWithDescription: "?control=input&descriptions=Supporting text",
+	TextareaWithDescription: "?control=textarea&descriptions=Supporting text",
+	RadioWithDescription: "?control=radio&descriptions=Supporting text",
+	CheckboxWithDescription: "?control=checkbox&descriptions=Supporting text",
+	SwitchWithDescription: "?control=switch&descriptions=Supporting text",
+	MultipleDescriptions: "?control=input&descriptions=First;Second",
+	CustomDescriptionIds: "?customDescriptionIds",
+	CustomAriaDescribedBy: "?customAriaDescribedBy",
+	VisualText: "?visual&controlType=text",
+	VisualCheckable: "?visual&controlType=checkable",
+};
+
 export const handle = { title: "Field" };
 
 const controls: Record<string, React.ElementType> = {

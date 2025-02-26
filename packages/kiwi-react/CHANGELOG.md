@@ -1,5 +1,13 @@
 # Changelog
 
+## 5.0.0-alpha.7
+
+- Added new `<Avatar>` component.
+- Added new `<Badge>` component.
+- Added `alt` prop to `<Icon>` component.
+- Fixed all color tokens to use the correct `oklch` values.
+- Fixed an issue where `<Tree.Item>` was not respecting its `style` prop.
+
 ## 5.0.0-alpha.6
 
 - **breaking**: All CSS variables have been renamed to use the `--ids` prefix. See [#369](https://github.com/iTwin/kiwi/pull/369).

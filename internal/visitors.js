@@ -6,12 +6,14 @@ import primitives from "./primitives.json" with { type: "json" };
 import darkTheme from "./theme-dark.json" with { type: "json" };
 import lightTheme from "./theme-light.json" with { type: "json" };
 import typography from "./typography.json" with { type: "json" };
+import Color from "colorjs.io";
 
 /**
  * LightningCSS visitor that inlines the values of primitive color tokens.
  *
  * The primitive tokens are defined in `primitives.json` and can be used
- * in CSS as `--primitive("[group].[token]")` function calls.
+ * in CSS as `--primitive("[group].[token]")` function calls. There is also a
+ * `--primitive-fallback` function that can be used to provide a hex fallback for oklch.
  *
  * Input:
  * ```css
@@ -40,6 +42,20 @@ export function primitivesTransform() {
 					};
 				}
 			},
+			"--primitive-fallback"(fn) {
+				if (
+					fn.arguments.length === 1 &&
+					fn.arguments[0].type === "token" &&
+					fn.arguments[0].value.type === "string"
+				) {
+					const [, group, token] = fn.arguments[0].value.value.split(".");
+					const raw = primitives[group][token];
+					const fallback = new Color(raw).to("srgb");
+					return {
+						raw: fallback.toString({ format: "hex" }),
+					};
+				}
+			},
 		},
 	};
 }
@@ -48,7 +64,11 @@ export function primitivesTransform() {
  * LightningCSS visitor that exposes a `--theme` CSS mixin which can be applied (using `@apply`)
  * to any selector to include the theme's design tokens as CSS properties.
  *
- * The dark theme is defined in `theme-dark.json` and maps to the tokens from `primitives.json`.
+ * For supporting older browsers, a `--theme-fallback` mixin is also provided that converts `oklch`
+ * color values to hex values.
+ *
+ * The dark and light themes are defined in `theme-dark.json` and `theme-light.json` respectively,
+ * and map to the tokens from `primitives.json`.
  *
  * Input:
  * ```css
@@ -80,11 +100,12 @@ export function themeTransform() {
 				if (
 					name !== "apply" ||
 					prelude[0]?.type !== "function" ||
-					prelude[0].value.name !== "--theme"
+					!["--theme", "--theme-fallback"].includes(prelude[0].value.name)
 				) {
 					return;
 				}
 
+				const isFallback = prelude[0].value.name === "--theme-fallback";
 				const theme = prelude[0].value.arguments?.[0]?.value?.value;
 				if (!themes.has(theme)) {
 					throw new Error(`Unknown theme: ${theme}`);
@@ -104,7 +125,7 @@ export function themeTransform() {
 					if (typeof $value === "string" && $value.startsWith("{p-")) {
 						// Convert {p.color.gray.200} into --primitive("color.gray.200") for further processing.
 						$value = cssFunction(
-							"--primitive",
+							isFallback ? "--primitive-fallback" : "--primitive",
 							$value.replace("{p-", "").replace("}", ""),
 						);
 					}
@@ -126,8 +147,13 @@ export function themeTransform() {
 				}
 
 				for (let [name, { $value }] of shadowTokens.entries()) {
+					$value = $value.join(", ");
+
+					if (isFallback)
+						$value = $value.replaceAll("--primitive", "--primitive-fallback");
+
 					// Pass shadow values through the `_raw` function for inlining.
-					$value = cssFunction("_raw", $value.join(", "));
+					$value = cssFunction("_raw", $value);
 
 					declarations.push(
 						cssCustomProperty(name, $value, { prefix: "ids-shadow" }),

@@ -18,11 +18,12 @@
 	"devDependencies": {
 		"@biomejs/biome": "1.9.4",
 		"@types/node": "^22.10.2",
+		"colorjs.io": "^0.5.2",
 		"fast-glob": "^3.3.2",
 		"internal": "workspace:*",
 		"lefthook": "^1.10.0",
 		"prettier": "3.3.3",
-		"tsx": "^4.19.2",
+		"tsx": "^4.19.3",
 		"typescript": "~5.7.2"
 	},
 	"engines": {

@@ -87,7 +87,7 @@ function inlineCssPlugin() {
 				return { path: args.path, external: true };
 			});
 
-			onLoad({ filter: /.*/, namespace: "inline-css" }, async (args) => {
+			onLoad({ filter: /.*/, namespace: "inline-css" }, (args) => {
 				const visitor = lightningcss.composeVisitors([
 					primitivesTransform(),
 					themeTransform(),
@@ -97,9 +97,11 @@ function inlineCssPlugin() {
 				]);
 
 				// Process the CSS file using lightningcss for bundling and other transformations.
-				const { code: intermediateCode } = await lightningcss.bundleAsync({
+				// bundleAsync sometimes fails on Windows machines with error 3221225477
+				const { code: intermediateCode } = lightningcss.bundle({
 					filename: args.path,
 					visitor,
+					exclude: lightningcss.Features.Colors,
 				});
 
 				// Process the bundled CSS again, for minification and any leftover transformations.
@@ -113,6 +115,7 @@ function inlineCssPlugin() {
 						safari: (16 << 16) | (4 << 8), // safari 16.4
 					},
 					visitor,
+					exclude: lightningcss.Features.Colors,
 				});
 				const css = finalCode.toString().trim();
 

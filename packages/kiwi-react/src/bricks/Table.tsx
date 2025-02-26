@@ -10,10 +10,6 @@ import { useMergedRefs, useSafeContext } from "./~hooks.js";
 
 // ----------------------------------------------------------------------------
 
-interface TableProps {
-	children: React.ReactNode;
-}
-
 const TableContext = React.createContext<
 	| {
 			captionId: string | undefined;
@@ -21,6 +17,16 @@ const TableContext = React.createContext<
 	  }
 	| undefined
 >(undefined);
+
+const TableModeContext = React.createContext<"aria" | "html">("aria");
+
+const TableHeaderContext = React.createContext(false);
+
+// ----------------------------------------------------------------------------
+
+interface TableProps {
+	children: React.ReactNode;
+}
 
 /**
  * A table is a grid of rows and columns that displays data in a structured format.
@@ -75,7 +81,6 @@ DEV: Table.displayName = "Table.Root";
 // ----------------------------------------------------------------------------
 
 interface HtmlTableProps extends BaseProps {}
-const TableModeContext = React.createContext<"aria" | "html">("aria");
 
 /**
  * `Table.HtmlTable` uses native HTML table elements for the table root *and its descendants*.
@@ -191,7 +196,6 @@ DEV: CustomTable.displayName = "Table.CustomTable";
 // ----------------------------------------------------------------------------
 
 interface TableHeaderProps extends BaseProps<"div" | "thead"> {}
-const TableHeaderContext = React.createContext(false);
 
 /**
  * `Table.Header` is a column component of cells that labels the columns of a table.

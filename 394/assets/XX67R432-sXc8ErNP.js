@@ -1,0 +1,1 @@
+import{b as i,g as t,j as a,f as n,k as d}from"./index-DksOGUVp.js";var l="span",o=i(function(e){return e=t(a({},e),{style:a({border:0,clip:"rect(0 0 0 0)",height:"1px",margin:"-1px",overflow:"hidden",padding:0,position:"absolute",whiteSpace:"nowrap",width:"1px"},e.style)}),e}),p=n(function(e){const s=o(e);return d(l,s)});export{p as V,o as u};

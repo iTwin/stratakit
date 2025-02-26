@@ -195,7 +195,7 @@ DEV: CustomTable.displayName = "Table.CustomTable";
 
 // ----------------------------------------------------------------------------
 
-interface TableHeaderProps extends BaseProps<"div" | "thead"> {}
+interface TableHeaderProps extends BaseProps<"div"> {}
 
 /**
  * `Table.Header` is a column component of cells that labels the columns of a table.
@@ -214,7 +214,7 @@ interface TableHeaderProps extends BaseProps<"div" | "thead"> {}
  *	</Table.Header>
  * ```
  */
-const TableHeader = forwardRef<"div" | "thead", TableHeaderProps>(
+const TableHeader = forwardRef<"div", TableHeaderProps>(
 	(props, forwardedRef) => {
 		const { className, ...rest } = props;
 		const mode = useSafeContext(TableModeContext);
@@ -239,7 +239,7 @@ DEV: TableHeader.displayName = "Table.Header";
 
 // ----------------------------------------------------------------------------
 
-interface TableBodyProps extends BaseProps<"div" | "tbody"> {}
+interface TableBodyProps extends BaseProps<"div"> {}
 
 /**
  * `Table.Body` is a component that contains the rows of table data.
@@ -262,30 +262,28 @@ interface TableBodyProps extends BaseProps<"div" | "tbody"> {}
  *	</Table.Body>
  * ```
  */
-const TableBody = forwardRef<"div" | "tbody", TableBodyProps>(
-	(props, forwardedRef) => {
-		const { className, ...rest } = props;
-		const mode = useSafeContext(TableModeContext);
+const TableBody = forwardRef<"div", TableBodyProps>((props, forwardedRef) => {
+	const { className, ...rest } = props;
+	const mode = useSafeContext(TableModeContext);
 
-		const render = mode === "html" ? <tbody /> : undefined;
-		const role = mode === "html" ? undefined : "rowgroup";
+	const render = mode === "html" ? <tbody /> : undefined;
+	const role = mode === "html" ? undefined : "rowgroup";
 
-		return (
-			<Ariakit.Role.div
-				ref={forwardedRef}
-				render={render}
-				role={role}
-				{...rest}
-				className={cx("🥝-table-body", className)}
-			/>
-		);
-	},
-);
+	return (
+		<Ariakit.Role.div
+			ref={forwardedRef}
+			render={render}
+			role={role}
+			{...rest}
+			className={cx("🥝-table-body", className)}
+		/>
+	);
+});
 DEV: TableBody.displayName = "Table.Body";
 
 // ----------------------------------------------------------------------------
 
-interface TableRowProps extends BaseProps<"div" | "tr"> {}
+interface TableRowProps extends BaseProps<"div"> {}
 
 /**
  * `Table.Row` is a component that contains the cells of a table row.
@@ -301,30 +299,28 @@ interface TableRowProps extends BaseProps<"div" | "tr"> {}
  *	</Table.Row>
  * ```
  */
-const TableRow = forwardRef<"div" | "tr", TableRowProps>(
-	(props, forwardedRef) => {
-		const { className, ...rest } = props;
-		const mode = useSafeContext(TableModeContext);
+const TableRow = forwardRef<"div", TableRowProps>((props, forwardedRef) => {
+	const { className, ...rest } = props;
+	const mode = useSafeContext(TableModeContext);
 
-		const render = mode === "html" ? <tr /> : undefined;
-		const role = mode === "html" ? undefined : "row";
+	const render = mode === "html" ? <tr /> : undefined;
+	const role = mode === "html" ? undefined : "row";
 
-		return (
-			<Ariakit.Role.div
-				ref={forwardedRef}
-				render={render}
-				role={role}
-				{...rest}
-				className={cx("🥝-table-row", className)}
-			/>
-		);
-	},
-);
+	return (
+		<Ariakit.Role.div
+			ref={forwardedRef}
+			render={render}
+			role={role}
+			{...rest}
+			className={cx("🥝-table-row", className)}
+		/>
+	);
+});
 DEV: TableRow.displayName = "Table.Row";
 
 // ----------------------------------------------------------------------------
 
-interface TableCaptionProps extends BaseProps<"div" | "caption"> {}
+interface TableCaptionProps extends BaseProps<"div"> {}
 
 /**
  * `Table.Caption` is a component that contains the caption of a table.
@@ -340,7 +336,7 @@ interface TableCaptionProps extends BaseProps<"div" | "caption"> {}
  * </Table.Root>
  * ```
  */
-const TableCaption = forwardRef<"div" | "caption", TableCaptionProps>(
+const TableCaption = forwardRef<"div", TableCaptionProps>(
 	(props, forwardedRef) => {
 		const fallbackId = React.useId();
 

@@ -2,7 +2,7 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-import { Anchor, VisuallyHidden } from "@itwin/itwinui-react/bricks";
+import { Anchor, Text, VisuallyHidden } from "@itwin/itwinui-react/bricks";
 import type * as React from "react";
 import { Outlet, useMatches, type MetaFunction, Link } from "react-router";
 import * as ListItem from "@itwin/itwinui-react-internal/src/bricks/ListItem";
@@ -17,6 +17,7 @@ function Layout({
 	title,
 }: { children: React.ReactNode; title: string }) {
 	const variants = {
+		Default: "",
 		Disabled: "?disabled",
 		Visual: "?visual",
 	};
@@ -53,7 +54,7 @@ function Layout({
 						height: "100%",
 					}}
 				>
-					<ListItem.Root
+					{/* <ListItem.Root
 						className={styles.listItem}
 						data-selected={variantFromUrl === "" ? "" : undefined}
 					>
@@ -73,7 +74,11 @@ function Layout({
 						>
 							{title}
 						</ListItem.Content>
-					</ListItem.Root>
+					</ListItem.Root> */}
+
+					<Text variant="body-sm" className={styles.asideHeading}>
+						{title} variants
+					</Text>
 
 					{Object.entries(variants).map(([title, url]) => (
 						<ListItem.Root
@@ -103,7 +108,7 @@ function Layout({
 									<span
 										style={{
 											width: 0,
-											height: "80%",
+											height: "62.5%",
 											border: "2px solid var(--ids-color-border-accent-strong)",
 											borderRadius: "9999px",
 											position: "absolute",

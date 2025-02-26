@@ -2,6 +2,10 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
+.asideHeading {
+	padding: 8px;
+}
+
 .listItem {
 	height: 32px;
 	border-radius: 4px;

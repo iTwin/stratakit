@@ -2,3 +2,24 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
+.listItem {
+	height: 32px;
+	border-radius: 4px;
+	position: relative;
+
+	&[data-selected] {
+		background-color: var(--ids-color-bg-glow-on-surface-accent-pressed);
+	}
+}
+
+.listItemAnchor {
+	all: unset;
+	color: inherit;
+	cursor: pointer;
+
+	&::after {
+		content: "";
+		position: absolute;
+		inset: 0;
+	}
+}

@@ -2,32 +2,21 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-import globalStyles from "./tests.css?url";
 import { Anchor, VisuallyHidden } from "@itwin/itwinui-react/bricks";
 import type * as React from "react";
-import {
-	Outlet,
-	useMatches,
-	type MetaFunction,
-	type LinksFunction,
-	Link,
-} from "react-router";
+import { Outlet, useMatches, type MetaFunction, Link } from "react-router";
 import * as ListItem from "@itwin/itwinui-react-internal/src/bricks/ListItem";
+import styles from "./tests.module.css";
 
 export const meta: MetaFunction = () => {
 	return [{ title: "Kiwi tests" }];
 };
-
-export const links: LinksFunction = () => [
-	{ rel: "stylesheet", href: globalStyles },
-];
 
 function Layout({
 	children,
 	title,
 }: { children: React.ReactNode; title: string }) {
 	const variants = {
-		Default: "",
 		Disabled: "?disabled",
 		Visual: "?visual",
 	};
@@ -35,7 +24,7 @@ function Layout({
 	const variantFromUrl =
 		Object.entries(variants).find(
 			([, url]) => window.location.search === url,
-		)?.[0] ?? Object.keys(variants)[0];
+		)?.[0] ?? "";
 
 	return (
 		<div
@@ -61,29 +50,75 @@ function Layout({
 					style={{
 						display: "flex",
 						flexDirection: "column",
-						gap: 4,
 						height: "100%",
 					}}
 				>
+					<ListItem.Root
+						className={styles.listItem}
+						data-selected={variantFromUrl === "" ? "" : undefined}
+					>
+						<ListItem.Content
+							render={(props) => (
+								<Anchor
+									render={
+										<Link
+											className={styles.listItemAnchor}
+											to={"?"}
+											style={{ textDecoration: "none" }}
+										/>
+									}
+									{...props}
+								/>
+							)}
+						>
+							{title}
+						</ListItem.Content>
+					</ListItem.Root>
+
 					{Object.entries(variants).map(([title, url]) => (
 						<ListItem.Root
 							key={title}
-							style={{
-								backgroundColor:
-									title === variantFromUrl
-										? "var(--ids-color-bg-glow-on-surface-accent-pressed)"
-										: undefined,
-							}}
+							className={styles.listItem}
+							data-selected={title === variantFromUrl ? "" : undefined}
 						>
+							<ListItem.Decoration
+								style={{
+									width: 24,
+									height: "100%",
+									position: "relative",
+									display: "flex",
+									flexDirection: "column",
+									justifyContent: "center",
+								}}
+							>
+								<span
+									style={{
+										width: 0,
+										height: "100%",
+										border: "1px solid var(--ids-color-border-page-base)",
+										position: "absolute",
+									}}
+								/>
+								{title === variantFromUrl ? (
+									<span
+										style={{
+											width: 0,
+											height: "80%",
+											border: "2px solid var(--ids-color-border-accent-strong)",
+											borderRadius: "9999px",
+											position: "absolute",
+										}}
+									/>
+								) : null}
+							</ListItem.Decoration>
 							<ListItem.Content
 								render={(props) => (
 									<Anchor
 										render={
 											<Link
+												className={styles.listItemAnchor}
 												to={url.length === 0 ? "?" : url}
-												style={{
-													textDecoration: "none",
-												}}
+												style={{ textDecoration: "none" }}
 											/>
 										}
 										{...props}

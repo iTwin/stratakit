@@ -1,6 +1,6 @@
 # Contributing
 
-Welcome to the contribution guide for the Kiwi Project! In here you will find all the information you need to get started.
+Welcome to the contribution guide for the iTwinUI design system! In here you will find all the information you need to get started.
 
 ---
 
@@ -10,15 +10,15 @@ Welcome to the contribution guide for the Kiwi Project! In here you will find al
 
 To get started without having to install anything locally, you can create a [Codespace](https://docs.github.com/en/codespaces/overview) for this repository by clicking this link:
 
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/iTwin/kiwi)
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/iTwin/design-system)
 
 ### Local setup
 
-To clone and build Kiwi locally, you'll need [Git](https://git-scm.com), [Node 22+](https://nodejs.org/en/download/), and [Pnpm 9](https://pnpm.io/installation) installed on your computer.
+To clone and build the repo locally, you'll need [Git](https://git-scm.com), [Node 22+](https://nodejs.org/en/download/), and [Pnpm 9](https://pnpm.io/installation) installed on your computer.
 
 1. [Clone the repository](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository). You can do this from the command line or using the Github Desktop app.
 
-2. Go to the directory where you cloned Kiwi. e.g. `cd kiwi`.
+2. Go to the directory where you cloned the repo. e.g. `cd design-system`.
 
 3. Run `pnpm install` from that directory.
 
@@ -60,8 +60,8 @@ This repo uses [Pnpm workspaces](https://pnpm.io/workspaces) to allow multiple p
 
 Packages:
 
-- [`kiwi-icons`](./packages/kiwi-icons): A standalone SVG icon library.
-- [`kiwi-react`](./packages/kiwi-react): A React component library.
+- [`@itwin/itwinui-icons`](./packages/kiwi-icons): A standalone SVG icon library.
+- [`@itwin/itwinui-react`](./packages/kiwi-react): A React component library.
 
 Apps:
 
@@ -87,7 +87,7 @@ pnpm run build
 
 ### Testing
 
-To ensure your changes work as expected, tests should be written or updated as necessary. Kiwi uses [Playwright](https://playwright.dev/) for E2E testing. These tests are written in `.spec.ts` files defined next to the routes which are being tested. You can find examples of existing tests in the [`app/tests/`](./apps/test-app/app/tests) directory.
+To ensure your changes work as expected, tests should be written or updated as necessary. This repo uses [Playwright](https://playwright.dev/) for E2E testing. These tests are written in `.spec.ts` files defined next to the routes which are being tested. You can find examples of existing tests in the [`app/tests/`](./apps/test-app/app/tests) directory.
 
 For visual testing, after modifying a component, update snapshots by running the following command from the project root:
 

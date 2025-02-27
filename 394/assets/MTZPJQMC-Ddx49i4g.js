@@ -1,1 +1,0 @@
-import{D as e,a as r}from"./VGCJ63VH-DD759LrV.js";import{l as t}from"./index-DksOGUVp.js";var o=t([r],[e]);o.useContext;o.useScopedContext;var x=o.useProviderContext,d=o.ContextProvider,i=o.ScopedContextProvider;export{i as P,d as a,x as u};

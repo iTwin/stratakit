@@ -1,0 +1,1 @@
+import{p as o}from"./index-DSPnbld9.js";import{f as i,c as n}from"./ListItem-BmbSmWDq.js";import{B as m}from"./X5NMLKT6-BgUenKuU.js";const l=i((t,a)=>{const{variant:s="solid",tone:r="neutral",...e}=t;return o.jsx(m,{accessibleWhenDisabled:!0,...e,"data-kiwi-variant":s,"data-kiwi-tone":r,className:n("🥝-button",t.className),ref:a})});export{l as B};

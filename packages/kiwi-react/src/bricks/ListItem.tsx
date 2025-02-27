@@ -5,6 +5,7 @@
 import cx from "classnames";
 import * as Ariakit from "@ariakit/react";
 import { forwardRef } from "./~utils.js";
+import { Text } from "./Text.js";
 
 // ----------------------------------------------------------------------------
 
@@ -25,14 +26,15 @@ DEV: ListItem.displayName = "ListItem.Root";
 
 // ----------------------------------------------------------------------------
 
-interface ListItemContentProps extends Ariakit.RoleProps<"span"> {}
+interface ListItemContentProps extends Ariakit.RoleProps<"div"> {}
 
 /** @internal */
-const ListItemContent = forwardRef<"span", ListItemContentProps>(
+const ListItemContent = forwardRef<"div", ListItemContentProps>(
 	(props, forwardedRef) => {
 		return (
-			<Ariakit.Role.span
+			<Text
 				{...props}
+				variant="body-sm"
 				className={cx("🥝-list-item-content", props.className)}
 				ref={forwardedRef}
 			/>

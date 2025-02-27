@@ -2,49 +2,14 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-.asideHeading {
-	padding: 8px;
-	position: sticky;
-	top: 0;
+.page {
+	display: grid;
+	grid-template-columns: 1fr auto;
+}
+
+.rightSidebar {
 	background-color: var(--ids-color-bg-page-depth);
-	z-index: 1;
-	padding-top: 1rem;
-}
-
-.listItem {
-	min-block-size: 32px;
-	border-radius: 4px;
-	position: relative;
-
-	&[data-selected] {
-		background-color: var(--ids-color-bg-glow-on-surface-accent-pressed);
-	}
-}
-
-.listItemAnchor {
-	all: unset;
-	color: inherit;
-	cursor: pointer;
-
-	&::after {
-		content: "";
-		position: absolute;
-		inset: 0;
-	}
-
-	&:focus-visible {
-		outline: none;
-		isolation: isolate;
-
-		&::before {
-			content: "";
-			position: absolute;
-			inset: 0;
-			z-index: 1; /* Ensure the outline appears above the actions */
-			pointer-events: none;
-			outline: 2px solid var(--ids-color-border-accent-strong);
-			outline-offset: -1px;
-			border-radius: 4px;
-		}
-	}
+	inline-size: min(100vi, 256px);
+	block-size: 100vb;
+	overflow: auto;
 }

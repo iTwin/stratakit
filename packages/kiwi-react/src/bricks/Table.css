@@ -5,7 +5,7 @@
 
 .🥝-table {
 	@layer base {
-		&:where(:not(table)) {
+		&:where([role="table"]) {
 			display: flex;
 			flex-direction: column;
 		}
@@ -25,7 +25,7 @@
 
 .🥝-table-body {
 	@layer base {
-		&:where(:not(tbody)) {
+		&:where([role="rowgroup"]) {
 			display: flex;
 			flex-direction: column;
 		}
@@ -34,7 +34,7 @@
 
 .🥝-table-row {
 	@layer base {
-		&:where(:not(tr)) {
+		&:where([role="row"]) {
 			display: flex;
 		}
 	}
@@ -58,7 +58,7 @@
 			block-size: var(--✨cell-height-min);
 		}
 
-		&:where(:not(th, td, caption)) {
+		&:where([role="columnheader"], [role="cell"], [role="caption"]) {
 			display: flex;
 			align-items: center;
 			column-gap: 0.5rem;
@@ -78,7 +78,7 @@
 			var(--🌀table-cell-state--hover, var(--✨cell-bg--hover));
 		border-block-end: 1px solid var(--ids-color-border-neutral-muted);
 
-		&:where(:not(th, td)) {
+		&:where([role="columnheader"], [role="cell"]) {
 			display: flex;
 			align-items: center;
 			column-gap: 0.5rem;
@@ -98,7 +98,7 @@
 				--🌀table-cell-state: var(--🌀table-cell-state--hover);
 			}
 
-			&:where(:not([role="columnheader"], th)) {
+			&:where([role="cell"], td) {
 				:where(.🥝-table-row:hover) & {
 					--🌀table-cell-state: var(--🌀table-cell-state--hover);
 				}

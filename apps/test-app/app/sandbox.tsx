@@ -223,7 +223,7 @@ function Layout(
 function EmptyState() {
 	return (
 		<div className={styles.emptyState}>
-			<Text>No layers</Text>
+			<Text variant="body-sm">No layers</Text>
 			<Button>Create a layer</Button>
 		</div>
 	);
@@ -232,7 +232,7 @@ function EmptyState() {
 function NoResultsState() {
 	return (
 		<div style={{ textAlign: "center" }}>
-			<Text>No results found</Text>
+			<Text variant="body-sm">No results found</Text>
 		</div>
 	);
 }

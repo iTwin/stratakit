@@ -125,7 +125,7 @@ const HtmlTable = forwardRef<"table", HtmlTableProps>((props, forwardedRef) => {
 				ref={forwardedRef}
 				render={<table />}
 				{...rest}
-				className={cx("🥝-table-header", className)}
+				className={cx("🥝-table", className)}
 			/>
 		</TableModeContext.Provider>
 	);

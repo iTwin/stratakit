@@ -35,25 +35,16 @@
 
 div[role="listitem"] {
 	block-size: 2rem;
-	/* padding: 16px;  */
-	/* padding: 0 4px; */
+	padding: 0 8px;
 	position: relative;
 	border-radius: 4px;
 
 	&::before {
 		content: "";
-		/* border: 1px var(--ids-color-border-page-base) solid; */
 		background-color: var(--ids-color-bg-page-base);
-		/* background-color: red; */
-		/* border: 1px var(--ids-color-bg-page-base) solid; */
-		/* inline-size: 1.5rem; */
-		/* inline-size: 0.0625rem; */
-		/* inline-size: 1px; */
-		margin: 0 11.5px;
-		inline-size: 1px;
-		/* block-size: calc(100% + 16px); */
+		margin: 0 calc(12px - 0.0625rem / 2); /* 12px padding - (1px / 2) width of the indent guide on each side */
+		inline-size: 0.0625rem;
 		block-size: 2rem;
-		/* box-sizing: content-box; */
 	}
 
 	> *:first-child {
@@ -70,8 +61,9 @@ div[role="listitem"] {
 			inline-size: 0.125rem;
 			border-radius: 9999px;
 			position: absolute;
-			inset-inline-start: 19px;
-			/* transform: translateX(50%); */
+
+			inset-inline-start: calc(8px + 12px - 0.0625rem);
+			/* 8px padding + 12 indent guide margin - 0.0625rem space between item left edge and indent guide */
 		}
 	}
 }

@@ -66,6 +66,7 @@ export const ProgressBar = forwardRef<"div", ProgressBarProps>(
 						x2="100%"
 						y1="50%"
 						y2="50%"
+						pathLength="100"
 					/>
 
 					<line
@@ -74,6 +75,7 @@ export const ProgressBar = forwardRef<"div", ProgressBarProps>(
 						x2="100%"
 						y1="50%"
 						y2="50%"
+						pathLength="100"
 					/>
 				</svg>
 				<VisuallyHidden>{alt}</VisuallyHidden>

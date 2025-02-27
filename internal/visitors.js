@@ -95,7 +95,7 @@ export function themeTransform() {
 
 	return {
 		Rule: {
-			/** Processes `@apply` rules that match `--theme()`. */
+			/** Processes `@apply` rules that match `--theme()` or `--theme-fallback()`. */
 			unknown({ name, prelude, loc }) {
 				if (
 					name !== "apply" ||
@@ -204,7 +204,6 @@ export function themeTransform() {
  * ```css
  * .foo {
  * 	 font-size: var(--ids-font-size-32);
- * 	 letter-spacing: 0;
  * 	 line-height: 1.25;
  * }
  * ```
@@ -256,14 +255,13 @@ export function typographyTransform() {
 					raw: `${lineHeight}`,
 				});
 
-				// letter-spacing
-				declarations.push({
-					property: "letter-spacing",
-					raw:
-						letterSpacing === 0
-							? "0"
-							: `${letterSpacing.value}${letterSpacing.unit}`,
-				});
+				// letter-spacing (0 is the default)
+				if (letterSpacing !== 0) {
+					declarations.push({
+						property: "letter-spacing",
+						raw: `${letterSpacing.value}${letterSpacing.unit}`,
+					});
+				}
 
 				return [
 					{

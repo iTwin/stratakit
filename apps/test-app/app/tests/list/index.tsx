@@ -17,7 +17,6 @@ export const links: LinksFunction = () => [
 
 export default definePage(function Page({ "active-state": isActive = false }) {
 	return (
-		// biome-ignore lint/a11y/useSemanticElements: `div` is used as underlying element for `ListItem`
 		<div
 			role="list"
 			style={{ display: "grid", gap: 4 }}

@@ -48,10 +48,12 @@ export default function Page() {
 				}
 				className={styles.rightSidebar}
 			>
-				<Text variant="body-sm" className={styles.rightSidebarComponentName}>
-					{title}
-				</Text>
-				<nav ref={setPortalTarget} />
+				<div className={styles.rightSidebarContent}>
+					<Text variant="body-sm" className={styles.rightSidebarComponentName}>
+						{title}
+					</Text>
+					<nav ref={setPortalTarget} />
+				</div>
 			</RightSidebar>
 		</div>
 	);

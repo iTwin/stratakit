@@ -5,12 +5,6 @@
 import { definePage } from "~/~utils.tsx";
 import { Field, Label, TextBox } from "@itwin/itwinui-react/bricks";
 
-export const demoVariants = {
-	Default: "",
-	Visual: "?visual",
-	Disabled: "?disabled=true",
-};
-
 export const handle = { title: "Textarea" };
 
 export default definePage(function Page({ disabled }) {

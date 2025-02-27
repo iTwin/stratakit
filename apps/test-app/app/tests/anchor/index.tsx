@@ -5,12 +5,6 @@
 import { definePage } from "~/~utils.tsx";
 import { Anchor } from "@itwin/itwinui-react/bricks";
 
-export const demoVariants = {
-	Default: "",
-	Visual: "?visual",
-	Disabled: "?disabled",
-};
-
 export const handle = { title: "Anchor" };
 
 export default definePage(

@@ -5,11 +5,6 @@
 import { definePage } from "~/~utils.tsx";
 import { Spinner } from "@itwin/itwinui-react/bricks";
 
-export const demoVariants = {
-	Default: "",
-	Visual: "?visual",
-};
-
 export const handle = { title: "Spinner" };
 
 const sizes = ["small", "medium", "large", "xlarge"] as const;

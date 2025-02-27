@@ -7,13 +7,6 @@ import { TextBox, Label, Field } from "@itwin/itwinui-react/bricks";
 import { useId } from "react";
 import placeholderIcon from "@itwin/itwinui-icons/placeholder.svg";
 
-export const demoVariants = {
-	Default: "",
-	Visual: "?visual",
-	Disabled: "?disabled=true",
-	DisabledWithDefaultValue: "?disabled=true&defaultValue=Kiwi",
-};
-
 export const handle = { title: "TextBox" };
 
 function TextAffix({ children }: React.PropsWithChildren) {

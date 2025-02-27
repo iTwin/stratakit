@@ -9,12 +9,6 @@ import type { LinksFunction } from "react-router";
 import testStyles from "./index.css?url";
 import placeholderIcon from "@itwin/itwinui-icons/placeholder.svg";
 
-export const demoVariants = {
-	Default: "",
-	Visual: "?visual",
-	ActiveState: "?active-state",
-};
-
 export const handle = { title: "List" };
 
 export const links: LinksFunction = () => [

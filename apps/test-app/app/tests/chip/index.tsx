@@ -6,12 +6,6 @@ import { definePage } from "~/~utils.tsx";
 import { Chip } from "@itwin/itwinui-react/bricks";
 import * as React from "react";
 
-export const demoVariants = {
-	Default: "",
-	Visual: "?visual",
-	Dismiss: "?dismiss",
-};
-
 export const handle = { title: "Chip" };
 
 export default definePage(

@@ -6,13 +6,6 @@ import { definePage } from "~/~utils.tsx";
 import { IconButton, Icon } from "@itwin/itwinui-react/bricks";
 import placeholderIcon from "@itwin/itwinui-icons/placeholder.svg";
 
-export const demoVariants = {
-	Default: "",
-	Visual: "?visual",
-	CustomIcon: "?customIcon",
-	LabelVisuallyHidden: "?labelVariant=visually-hidden",
-};
-
 export const handle = { title: "IconButton" };
 
 export default definePage(

@@ -11,19 +11,6 @@ import {
 } from "@itwin/itwinui-react/bricks";
 import * as React from "react";
 
-export const demoVariants = {
-	Default: "",
-	Visual: "?visual",
-	Checked: "?checked",
-	Indeterminate: "?indeterminate",
-	Disabled: "?disabled",
-	VisualChecked: "?visual&checked",
-	VisualIndeterminate: "?visual&indeterminate",
-	VisualDisabled: "?visual&disabled",
-	VisualDisabledChecked: "?visual&disabled&checked",
-	VisualDisabledIndeterminate: "?visual&disabled&indeterminate",
-};
-
 export const handle = { title: "Checkbox" };
 
 export default definePage(

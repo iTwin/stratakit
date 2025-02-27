@@ -7,8 +7,8 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 import cx from "classnames";
 import { useSearchParams, Link } from "react-router";
-import * as ListItem from "@itwin/itwinui-react-internal/src/bricks/ListItem.tsx";
 import { Anchor } from "@itwin/itwinui-react/bricks";
+import * as ListItem from "../node_modules/@itwin/itwinui-react/src/bricks/ListItem.tsx";
 
 const isTest = false; // TODO: Use a VITE_ env var set in test build command
 
@@ -50,11 +50,20 @@ export function definePage(
 				),
 			];
 
-			return variantNames.map((variantName) => ({
-				name: variantName || "default", // TODO: first letter camelcase
-				url: variantName ? `?${variantName}` : "",
-				isCurrent: variantName in searchParams,
-			}));
+			return variantNames.map((variantName) => {
+				const safeVariableName = variantName || "default";
+
+				return {
+					name:
+						safeVariableName.charAt(0).toUpperCase() +
+						safeVariableName.slice(1),
+					url: variantName ? `?${variantName}` : "",
+					isCurrent:
+						variantName === ""
+							? Object.keys(searchParams).length === 0
+							: variantName in searchParams,
+				};
+			});
 		}, [otherVariants, searchParams]);
 
 		for (const [variantName, Variant] of Object.entries(otherVariants ?? {})) {
@@ -176,7 +185,15 @@ export const VariantsListContext = React.createContext<
 
 export function VariantsList({
 	variants,
-}: { variants: Array<{ name: string; url: string; isCurrent: boolean }> }) {
+	listItemProps,
+}: {
+	variants: Array<{
+		name: string;
+		url: string;
+		isCurrent: boolean;
+	}>;
+	listItemProps?: React.ComponentProps<typeof ListItem.Root>;
+}) {
 	const { portalTarget } = React.useContext(VariantsListContext) ?? {};
 
 	if (portalTarget == null) return null;
@@ -185,7 +202,7 @@ export function VariantsList({
 		// biome-ignore lint/a11y/useSemanticElements: bad lint rule
 		<div role="list">
 			{variants.map((variant) => (
-				<ListItem.Root key={variant.name}>
+				<ListItem.Root key={variant.name} {...listItemProps}>
 					<ListItem.Content>
 						<Anchor
 							render={<Link to={variant.url} />}

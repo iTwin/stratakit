@@ -14,7 +14,6 @@ export const meta: MetaFunction = () => {
 
 export default function Page() {
 	const matches = useMatches();
-
 	const title = (matches.at(-1)?.handle as { title: string })?.title ?? "Tests";
 
 	const [portalTarget, setPortalTarget] = React.useState<HTMLElement | null>(
@@ -37,13 +36,21 @@ export default function Page() {
 
 			<RightSidebar
 				header={
-					<Text variant="body-md" render={<Anchor render={<Link to="/" />} />}>
-						Kiwi components
-					</Text>
+					<div className={styles.rightSidebarHeader}>
+						<Text
+							variant="body-md"
+							className={styles.rightSidebarHeaderText}
+							render={<Anchor render={<Link to="/" />} />}
+						>
+							Kiwi components
+						</Text>
+					</div>
 				}
 				className={styles.rightSidebar}
 			>
-				<Text variant="body-sm">{title}</Text>
+				<Text variant="body-sm" className={styles.rightSidebarComponentName}>
+					{title}
+				</Text>
 				<nav ref={setPortalTarget} />
 			</RightSidebar>
 		</div>

@@ -13,3 +13,59 @@
 	block-size: 100vb;
 	overflow: auto;
 }
+
+.rightSidebarHeader {
+	block-size: 2.5rem;
+	display: flex;
+	align-items: center;
+}
+
+.rightSidebarHeaderText {
+	padding: 16px;
+}
+
+.rightSidebarComponentName {
+	block-size: 2rem;
+	padding: 8px 16px;
+}
+
+div[role="listitem"] {
+	block-size: 2rem;
+	/* padding: 16px;  */
+	position: relative;
+
+	&::before {
+		content: "";
+		/* border: 1px var(--ids-color-border-page-base) solid; */
+		background-color: var(--ids-color-bg-page-base);
+		/* background-color: red; */
+		/* border: 1px var(--ids-color-bg-page-base) solid; */
+		/* inline-size: 1.5rem; */
+		/* inline-size: 0.0625rem; */
+		/* inline-size: 1px; */
+		margin: 0 11.5px;
+		inline-size: 1px;
+		/* block-size: calc(100% + 16px); */
+		block-size: 2rem;
+		/* box-sizing: content-box; */
+	}
+
+	> *:first-child {
+		padding-inline-start: 4px;
+	}
+
+	&:has(a[aria-current="page"]) {
+		background-color: var(--ids-color-bg-glow-on-surface-accent-pressed);
+
+		&::after {
+			content: "";
+			background-color: var(--ids-color-border-accent-strong);
+			block-size: 1.25rem;
+			inline-size: 0.125rem;
+			border-radius: 9999px;
+			position: absolute;
+			inset-inline-start: 19px;
+			/* transform: translateX(50%); */
+		}
+	}
+}

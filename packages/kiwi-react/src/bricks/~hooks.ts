@@ -151,8 +151,7 @@ export function useSafeContext<C>(context: React.Context<C>) {
 		throw new Error(`${context.displayName || "Context"} is undefined`);
 	}
 
-	// biome-ignore lint/style/noNonNullAssertion: we already checked for undefined
-	return value!;
+	return value;
 }
 
 /**

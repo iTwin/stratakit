@@ -1,5 +1,5 @@
 {
-	"$schema": "https://biomejs.dev/schemas/1.9.1/schema.json",
+	"$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
 	"files": {
 		"ignoreUnknown": true
 	},
@@ -27,18 +27,8 @@
 			},
 			"suspicious": {
 				"noConfusingLabels": "off"
-			}
+			},
+			"a11y": { "all": false }
 		}
-	},
-	"overrides": [
-		{
-			"include": ["packages/kiwi-react/**"],
-			"linter": {
-				"rules": {
-					// a11y rules raise false alarms in packages
-					"a11y": { "all": false }
-				}
-			}
-		}
-	]
+	}
 }

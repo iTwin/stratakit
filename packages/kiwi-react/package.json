@@ -14,12 +14,12 @@
 		"./package.json": "./package.json"
 	},
 	"files": ["dist", "CHANGELOG.md", "LICENSE.md"],
-	"description": "A React component library for the Kiwi design system",
+	"description": "A React component library for the iTwinUI design system",
 	"author": "Bentley Systems",
-	"homepage": "https://github.com/iTwin/kiwi",
+	"homepage": "https://github.com/iTwin/design-system",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/iTwin/kiwi.git",
+		"url": "https://github.com/iTwin/design-system.git",
 		"directory": "packages/kiwi-react"
 	},
 	"keywords": [

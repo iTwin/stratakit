@@ -88,7 +88,7 @@ interface TreeItemProps extends Omit<BaseProps, "content" | "children"> {
 	/**
 	 * Icon to be displayed inside the tree item.
 	 *
-	 * Can be a URL of an SVG from the `kiwi-icons` package, or a JSX element.
+	 * Can be a URL of an SVG from the `@itwin/itwinui-icons` package, or a JSX element.
 	 */
 	icon?: string | React.JSX.Element;
 	/**

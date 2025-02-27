@@ -86,7 +86,6 @@
 
 .🥝-tree-item-actions:is(.🥝-list-item-decoration) {
 	@layer base {
-		grid-row: block;
 		align-self: stretch;
 		position: sticky;
 		inset-inline-end: 0;

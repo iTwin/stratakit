@@ -50,7 +50,7 @@ DEV: Tree.displayName = "Tree.Root";
 
 // ----------------------------------------------------------------------------
 
-interface TreeItemProps extends Omit<BaseProps, "content"> {
+interface TreeItemProps extends Omit<BaseProps, "content" | "children"> {
 	/** Specifies the nesting level of the tree item. Nesting levels start at 1. */
 	"aria-level": number;
 	/** Defines tree item position in the current level of tree items. Integer greater than or equal to 1. */
@@ -88,7 +88,7 @@ interface TreeItemProps extends Omit<BaseProps, "content"> {
 	/**
 	 * Icon to be displayed inside the tree item.
 	 *
-	 * Can be a URL of an SVG from the `kiwi-icons` package, or a JSX element.
+	 * Can be a URL of an SVG from the `@itwin/itwinui-icons` package, or a JSX element.
 	 */
 	icon?: string | React.JSX.Element;
 	/**
@@ -139,7 +139,6 @@ const TreeItem = forwardRef<"div", TreeItemProps>((props, forwardedRef) => {
 	const {
 		"aria-level": level,
 		selected,
-		children,
 		expanded,
 		icon,
 		label,

@@ -221,6 +221,7 @@ const TreeItem = forwardRef<"div", TreeItemProps>((props, forwardedRef) => {
 				>
 					<ListItem.Decoration>
 						<TreeItemExpander
+							data-kiwi-description={description ? true : undefined}
 							onClick={() => {
 								if (expanded === undefined) return;
 								onExpandedChange?.(!expanded);

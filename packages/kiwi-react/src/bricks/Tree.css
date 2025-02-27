@@ -136,6 +136,12 @@
 		visibility: var(--🥝tree-item-expander-visibility);
 		z-index: 1; /* Ensure the expander is above the invisible content button */
 	}
+
+	@layer modifiers {
+		&:where([data-kiwi-description="true"]) {
+			margin-block: calc(-1 * var(--🥝button-padding-inline));
+		}
+	}
 }
 
 .🥝-tree-chevron {

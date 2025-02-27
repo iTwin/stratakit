@@ -3,7 +3,8 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 .🥝-list-item {
-	--✨height: 1.75rem;
+	--✨height--default: 1.75rem;
+	--✨height--large: 2.75rem;
 	--✨padding-inline: 0.5rem;
 
 	--✨color--default: var(--ids-color-text-neutral-primary);
@@ -22,14 +23,14 @@
 
 		display: grid;
 		align-items: center;
-		grid-template-rows: [block-start] auto min-content [block-end];
+		align-content: center;
 		/* biome-ignore format: improve readability */
 		grid-template-columns:
 			[decoration-before-start] auto [decoration-before-end
 			content-start] minmax(0, 1fr) [content-end
 			decoration-after-start] auto [decoration-after-end];
 
-		min-block-size: var(--✨height);
+		min-block-size: var(--🥝list-item-height, var(--✨height--default));
 		padding-inline: var(--✨padding-inline);
 		background-color: var(--🥝list-item-background-color);
 
@@ -69,6 +70,14 @@
 			cursor: not-allowed;
 		}
 	}
+
+	@layer modifiers {
+		&:where(:has(> :nth-child(2 of .🥝-list-item-content))) {
+			--🥝list-item-height: var(--✨height--large);
+			grid-template-rows: repeat(auto-fit, minmax(0, auto));
+		}
+	}
+
 	@layer base.🌀 {
 		/* See https://kizu.dev/cyclic-toggles/ */
 		--🌀list-item-state: var(--🌀list-item-state--default);
@@ -91,9 +100,12 @@
 	--✨gap: 0.25rem;
 
 	@layer base {
+		grid-column: decoration-before;
+		grid-row: 1 / -1;
+		align-self: start;
+
 		display: flex;
 		align-items: center;
-		grid-column: decoration-before;
 		margin-inline-end: var(--✨gap);
 
 		:where(.🥝-list-item-content) ~ & {

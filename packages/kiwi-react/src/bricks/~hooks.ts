@@ -133,3 +133,22 @@ export function useEventHandlers<E extends React.SyntheticEvent>(
 		[latestHandlers],
 	);
 }
+
+/**
+ * Wrapper hook around `useContext` to ensure that the Context is provided.
+ * The component calling this hook will throw an error if the Context is not found.
+ *
+ * The Context's `displayName` will be used for a more useful error message.
+ *
+ * @private
+ */
+export function useSafeContext<C>(context: React.Context<C>) {
+	const value = React.useContext(context);
+
+	if (value === undefined) {
+		throw new Error(`${context.displayName || "Context"} is undefined`);
+	}
+
+	// biome-ignore lint/style/noNonNullAssertion: we already checked for undefined
+	return value!;
+}

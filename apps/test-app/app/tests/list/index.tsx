@@ -25,9 +25,13 @@ export default definePage(function Page({ "active-state": isActive = false }) {
 		>
 			<ListItem.Root>Apple</ListItem.Root>
 			<ListItem.Root>Cherry</ListItem.Root>
-			<ListItem.Root>Kiwi</ListItem.Root>
+			<ListItem.Root>
+				<ListItem.Content>Kiwi</ListItem.Content>
+				<ListItem.Content>A green fruit</ListItem.Content>
+			</ListItem.Root>
 			<ListItem.Root>
 				<ListItem.Content>Mango</ListItem.Content>
+				<ListItem.Content>A yellow fruit</ListItem.Content>
 				<ListItem.Decoration render={<Icon href={placeholderIcon} />} />
 			</ListItem.Root>
 			<ListItem.Root>
@@ -37,6 +41,7 @@ export default definePage(function Page({ "active-state": isActive = false }) {
 			<ListItem.Root>
 				<ListItem.Decoration render={<Icon href={placeholderIcon} />} />
 				<ListItem.Content>Tomato</ListItem.Content>
+				<ListItem.Content>A red fruit</ListItem.Content>
 				<ListItem.Decoration render={<Icon href={placeholderIcon} />} />
 			</ListItem.Root>
 		</div>

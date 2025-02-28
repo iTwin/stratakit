@@ -117,15 +117,13 @@ interface HtmlTableProps extends BaseProps {}
  * ```
  */
 const HtmlTable = forwardRef<"table", HtmlTableProps>((props, forwardedRef) => {
-	const { className, ...rest } = props;
-
 	return (
 		<TableModeContext.Provider value="html">
 			<Ariakit.Role
-				ref={forwardedRef}
 				render={<table />}
-				{...rest}
-				className={cx("🥝-table", className)}
+				{...props}
+				ref={forwardedRef}
+				className={cx("🥝-table", props.className)}
 			/>
 		</TableModeContext.Provider>
 	);
@@ -174,17 +172,16 @@ interface CustomTableProps extends BaseProps {}
  */
 const CustomTable = forwardRef<"div", CustomTableProps>(
 	(props, forwardedRef) => {
-		const { className, ...rest } = props;
 		const { captionId } = useSafeContext(TableContext);
 
 		return (
 			<TableModeContext.Provider value="aria">
 				<Ariakit.Role.div
-					ref={forwardedRef}
 					role="table"
 					aria-labelledby={captionId}
-					{...rest}
-					className={cx("🥝-table", className)}
+					{...props}
+					ref={forwardedRef}
+					className={cx("🥝-table", props.className)}
 				/>
 			</TableModeContext.Provider>
 		);
@@ -215,20 +212,19 @@ interface TableHeaderProps extends BaseProps<"div"> {}
  */
 const TableHeader = forwardRef<"div", TableHeaderProps>(
 	(props, forwardedRef) => {
-		const { className, ...rest } = props;
 		const mode = useSafeContext(TableModeContext);
 
-		const render = mode === "html" ? <thead /> : undefined;
-		const role = mode === "html" ? undefined : "rowgroup";
+		const render = mode === "aria" ? undefined : <thead />;
+		const role = mode === "aria" ? "rowgroup" : undefined;
 
 		return (
 			<TableHeaderContext.Provider value={true}>
 				<Ariakit.Role.div
-					ref={forwardedRef}
 					render={render}
 					role={role}
-					{...rest}
-					className={cx("🥝-table-header", className)}
+					{...props}
+					ref={forwardedRef}
+					className={cx("🥝-table-header", props.className)}
 				/>
 			</TableHeaderContext.Provider>
 		);
@@ -262,19 +258,18 @@ interface TableBodyProps extends BaseProps<"div"> {}
  * ```
  */
 const TableBody = forwardRef<"div", TableBodyProps>((props, forwardedRef) => {
-	const { className, ...rest } = props;
 	const mode = useSafeContext(TableModeContext);
 
-	const render = mode === "html" ? <tbody /> : undefined;
-	const role = mode === "html" ? undefined : "rowgroup";
+	const render = mode === "aria" ? undefined : <tbody />;
+	const role = mode === "aria" ? "rowgroup" : undefined;
 
 	return (
 		<Ariakit.Role.div
-			ref={forwardedRef}
 			render={render}
 			role={role}
-			{...rest}
-			className={cx("🥝-table-body", className)}
+			{...props}
+			ref={forwardedRef}
+			className={cx("🥝-table-body", props.className)}
 		/>
 	);
 });
@@ -299,19 +294,18 @@ interface TableRowProps extends BaseProps<"div"> {}
  * ```
  */
 const TableRow = forwardRef<"div", TableRowProps>((props, forwardedRef) => {
-	const { className, ...rest } = props;
 	const mode = useSafeContext(TableModeContext);
 
-	const render = mode === "html" ? <tr /> : undefined;
-	const role = mode === "html" ? undefined : "row";
+	const render = mode === "aria" ? undefined : <tr />;
+	const role = mode === "aria" ? "row" : undefined;
 
 	return (
 		<Ariakit.Role.div
-			ref={forwardedRef}
 			render={render}
 			role={role}
-			{...rest}
-			className={cx("🥝-table-row", className)}
+			{...props}
+			ref={forwardedRef}
+			className={cx("🥝-table-row", props.className)}
 		/>
 	);
 });
@@ -339,12 +333,12 @@ const TableCaption = forwardRef<"div", TableCaptionProps>(
 	(props, forwardedRef) => {
 		const fallbackId = React.useId();
 
-		const { id = fallbackId, children, className, ...rest } = props;
+		const { id = fallbackId, ...rest } = props;
 		const { setCaptionId } = useSafeContext(TableContext);
 		const mode = useSafeContext(TableModeContext);
 
-		const render = mode === "html" ? <caption /> : undefined;
-		const role = mode === "html" ? undefined : "caption";
+		const render = mode === "aria" ? undefined : <caption />;
+		const role = mode === "aria" ? "caption" : undefined;
 
 		const captionIdRef = React.useCallback(
 			(element: HTMLElement | null) => {
@@ -355,15 +349,13 @@ const TableCaption = forwardRef<"div", TableCaptionProps>(
 
 		return (
 			<Ariakit.Role.div
-				id={id}
-				ref={useMergedRefs(forwardedRef, captionIdRef)}
 				render={render}
 				role={role}
 				{...rest}
-				className={cx("🥝-table-caption", className)}
-			>
-				{children}
-			</Ariakit.Role.div>
+				id={id}
+				ref={useMergedRefs(forwardedRef, captionIdRef)}
+				className={cx("🥝-table-caption", props.className)}
+			/>
 		);
 	},
 );
@@ -387,7 +379,6 @@ interface TableCellProps extends BaseProps<"span"> {}
  * ```
  */
 const TableCell = forwardRef<"span", TableCellProps>((props, forwardedRef) => {
-	const { className, children, ...rest } = props;
 	const isWithinTableHeader = useSafeContext(TableHeaderContext);
 	const mode = useSafeContext(TableModeContext);
 
@@ -400,14 +391,12 @@ const TableCell = forwardRef<"span", TableCellProps>((props, forwardedRef) => {
 
 	return (
 		<Ariakit.Role.span
-			ref={forwardedRef as React.Ref<HTMLDivElement>}
 			render={render}
 			role={role}
-			{...rest}
-			className={cx("🥝-table-cell", className)}
-		>
-			{children}
-		</Ariakit.Role.span>
+			{...props}
+			ref={forwardedRef as React.Ref<HTMLDivElement>}
+			className={cx("🥝-table-cell", props.className)}
+		/>
 	);
 });
 DEV: TableCell.displayName = "Table.Cell";

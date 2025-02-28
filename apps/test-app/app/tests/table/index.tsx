@@ -42,48 +42,89 @@ export default definePage(
 			</Table.Root>
 		);
 	},
-	{ visual: VisualTest, scroll: ScrollTest },
+	{
+		visual: VisualTest,
+		scroll: ScrollTest,
+		customTable: CustomTableTest,
+		htmlTable: HtmlTableTest,
+	},
 );
+
+function CustomTableTest() {
+	return (
+		<Table.Root>
+			<Table.CustomTable>
+				<Table.Caption>
+					Fruits and their colors (Table.CustomTable)
+				</Table.Caption>
+				<Table.Header>
+					<Table.Row>
+						<Table.Cell>Fruit</Table.Cell>
+						<Table.Cell>Color</Table.Cell>
+					</Table.Row>
+				</Table.Header>
+				<Table.Body>
+					<Table.Row>
+						<Table.Cell>Apple</Table.Cell>
+						<Table.Cell>Red</Table.Cell>
+					</Table.Row>
+					<Table.Row>
+						<Table.Cell>Orange</Table.Cell>
+						<Table.Cell>Orange</Table.Cell>
+					</Table.Row>
+					<Table.Row>
+						<Table.Cell>Kiwi</Table.Cell>
+						<Table.Cell>Golden brown</Table.Cell>
+					</Table.Row>
+					<Table.Row>
+						<Table.Cell>Watermelon</Table.Cell>
+						<Table.Cell>Green</Table.Cell>
+					</Table.Row>
+				</Table.Body>
+			</Table.CustomTable>
+		</Table.Root>
+	);
+}
+
+function HtmlTableTest() {
+	return (
+		<Table.Root>
+			<Table.HtmlTable>
+				<Table.Caption>Fruits and their colors (Table.HtmlTable)</Table.Caption>
+				<Table.Header>
+					<Table.Row>
+						<Table.Cell>Fruit</Table.Cell>
+						<Table.Cell>Color</Table.Cell>
+					</Table.Row>
+				</Table.Header>
+				<Table.Body>
+					<Table.Row>
+						<Table.Cell>Apple</Table.Cell>
+						<Table.Cell>Red</Table.Cell>
+					</Table.Row>
+					<Table.Row>
+						<Table.Cell>Orange</Table.Cell>
+						<Table.Cell>Orange</Table.Cell>
+					</Table.Row>
+					<Table.Row>
+						<Table.Cell>Kiwi</Table.Cell>
+						<Table.Cell>Golden brown</Table.Cell>
+					</Table.Row>
+					<Table.Row>
+						<Table.Cell>Watermelon</Table.Cell>
+						<Table.Cell>Green</Table.Cell>
+					</Table.Row>
+				</Table.Body>
+			</Table.HtmlTable>
+		</Table.Root>
+	);
+}
 
 function VisualTest() {
 	return (
 		<div style={{ display: "grid", gap: 20 }}>
-			{(["custom", "html"] as const).map((mode) => {
-				const Component =
-					mode === "custom" ? Table.CustomTable : Table.HtmlTable;
-
-				return (
-					<Table.Root key={mode}>
-						<Component>
-							<Table.Caption>Fruits and their colors (as={mode})</Table.Caption>
-							<Table.Header>
-								<Table.Row>
-									<Table.Cell>Fruit</Table.Cell>
-									<Table.Cell>Color</Table.Cell>
-								</Table.Row>
-							</Table.Header>
-							<Table.Body>
-								<Table.Row>
-									<Table.Cell>Apple</Table.Cell>
-									<Table.Cell>Red</Table.Cell>
-								</Table.Row>
-								<Table.Row>
-									<Table.Cell>Orange</Table.Cell>
-									<Table.Cell>Orange</Table.Cell>
-								</Table.Row>
-								<Table.Row>
-									<Table.Cell>Kiwi</Table.Cell>
-									<Table.Cell>Golden brown</Table.Cell>
-								</Table.Row>
-								<Table.Row>
-									<Table.Cell>Watermelon</Table.Cell>
-									<Table.Cell>Green</Table.Cell>
-								</Table.Row>
-							</Table.Body>
-						</Component>
-					</Table.Root>
-				);
-			})}
+			<CustomTableTest />
+			<HtmlTableTest />
 		</div>
 	);
 }

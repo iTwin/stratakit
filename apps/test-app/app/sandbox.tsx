@@ -481,6 +481,7 @@ function useMoveable<T extends HTMLElement>(args?: UseMoveableArgs) {
 interface TreeItem {
 	id: string;
 	label: string;
+	description?: string;
 	type?: string; // Used for filtering
 	items: TreeItem[];
 	expanded: boolean;
@@ -620,22 +621,23 @@ const complexTree = {
 					items: [createTreeItem({ label: "002_Substation_A" })],
 				}),
 				createTreeItem({
-					label: "005-BENROAD-00-XX-M3-D-00003.dgn",
+					label: "003-BENARCH-ZO-RF-M3-A-00001 - S-COLS",
+					description: "Columns",
 					expanded: false,
 					items: [
 						createTreeItem({
-							label: "005-BENROAD-00-XX-M3-D-00003-A",
+							label: "003-BENARCH-ZO-RF-M3-A-00001 - S-JOIS-ENVL",
+							description: "Bar Joist: Envelopes",
 						}),
 					],
 				}),
 				createTreeItem({
-					label: "005-BENROAD-00-XX-M3-D-00005.dgn",
-					expanded: false,
-					items: [
-						createTreeItem({
-							label: "005-BENROAD-00-XX-M3-D-00005-A",
-						}),
-					],
+					label: "003-BENARCH-ZO-RF-M3-A-00001 - S-SLAB-CONC",
+					description: "Slabs: Concrete",
+				}),
+				createTreeItem({
+					label: "003-BENSTR-ZO-LG2-M3-S-00001 - S-BEAM-PURL",
+					description: "Columns: concrete",
 				}),
 				createTreeItem({
 					label: "005-BENROAD-00-XX-M3-G-00002.dgn",
@@ -920,6 +922,7 @@ function SandboxTree({
 		if (tree === "complex") return complexTree.items;
 		return simpleTree.items;
 	});
+
 	const { filteredTree, itemCount } = useFilteredTree({
 		items,
 		filters,
@@ -943,6 +946,7 @@ function SandboxTree({
 						<Tree.Item
 							key={item.id}
 							label={item.label}
+							description={item.description}
 							aria-level={item.level}
 							aria-posinset={item.position}
 							aria-setsize={item.size}

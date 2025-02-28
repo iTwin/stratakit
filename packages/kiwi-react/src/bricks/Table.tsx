@@ -29,39 +29,38 @@ interface TableProps {
 }
 
 /**
+ * @private
  * A table is a grid of rows and columns that displays data in a structured format.
  *
- * `Table.Root` is the root component for a table.
- * `Table.Header`, `Table.Body`, and `Table.Cell` can be nested inside a `Table.Root` to create a table structure.
+ * `Table.CustomTable` or `Table.HtmlTable` is the root component for a table.
+ * `Table.Header`, `Table.Body`, and `Table.Cell` should be nested inside the root to create a table structure.
  *
  * Example:
  * ```tsx
- * <Table.Root>
- *   <Table.CustomTable> // Or, <Table.HtmlTable>
- *     <Table.Caption>Table Caption</Table.Caption>
+ * <Table.CustomTable> // Or <Table.HtmlTable>
+ *   <Table.Caption>Table Caption</Table.Caption>
  *
- *     <Table.Header>
- *   	   <Table.Row>
- *   	     <Table.Cell>Header 1</Table.Cell>
- *   	 	   <Table.Cell>Header 2</Table.Cell>
- *   	   </Table.Row>
- *     </Table.Header>
+ *   <Table.Header>
+ * 	   <Table.Row>
+ * 	     <Table.Cell>Header 1</Table.Cell>
+ * 	 	   <Table.Cell>Header 2</Table.Cell>
+ * 	   </Table.Row>
+ *   </Table.Header>
  *
- *     <Table.Body>
- *   	   <Table.Row>
- *   		   <Table.Cell>Cell 1.1</Table.Cell>
- *   		   <Table.Cell>Cell 1.2</Table.Cell>
- *   	   </Table.Row>
- *   	   <Table.Row>
- *   		   <Table.Cell>Cell 2.1</Table.Cell>
- *   		   <Table.Cell>Cell 2.2</Table.Cell>
- *   	   </Table.Row>
- *     </Table.Body>
- *   </Table.CustomTable> // Or, <Table.HtmlTable>
- * </Table.Root>
+ *   <Table.Body>
+ * 	   <Table.Row>
+ * 		   <Table.Cell>Cell 1.1</Table.Cell>
+ * 		   <Table.Cell>Cell 1.2</Table.Cell>
+ * 	   </Table.Row>
+ * 	   <Table.Row>
+ * 		   <Table.Cell>Cell 2.1</Table.Cell>
+ * 		   <Table.Cell>Cell 2.2</Table.Cell>
+ * 	   </Table.Row>
+ *   </Table.Body>
+ * </Table.CustomTable> // Or </Table.HtmlTable>
  * ```
  */
-function Table(props: TableProps) {
+function TableRoot(props: TableProps) {
 	const { children } = props;
 	const [captionId, setCaptionId] = React.useState<string | undefined>();
 
@@ -76,7 +75,7 @@ function Table(props: TableProps) {
 		</TableContext.Provider>
 	);
 }
-DEV: Table.displayName = "Table.Root";
+DEV: TableRoot.displayName = "TableRoot";
 
 // ----------------------------------------------------------------------------
 
@@ -91,41 +90,41 @@ interface HtmlTableProps extends BaseProps {}
  *
  * Example:
  * ```tsx
- * <Table.Root>
- *   <Table.HtmlTable> // <table>
- *     <Table.Caption>Table Caption</Table.Caption> // <caption>
+ * <Table.HtmlTable> // <table>
+ *   <Table.Caption>Table Caption</Table.Caption> // <caption>
  *
- *     <Table.Header> // <thead>
- *   	   <Table.Row> // <tr>
- *   	     <Table.Cell>Header 1</Table.Cell> // <th>
- *   	 	   <Table.Cell>Header 2</Table.Cell> // <th>
- *   	   </Table.Row>
- *     </Table.Header>
+ *   <Table.Header> // <thead>
+ * 	   <Table.Row> // <tr>
+ * 	     <Table.Cell>Header 1</Table.Cell> // <th>
+ * 	 	   <Table.Cell>Header 2</Table.Cell> // <th>
+ * 	   </Table.Row>
+ *   </Table.Header>
  *
- *     <Table.Body> // <tbody>
- *   	   <Table.Row> // <tr>
- *   		   <Table.Cell>Cell 1.1</Table.Cell> // <td>
- *   		   <Table.Cell>Cell 1.2</Table.Cell> // <td>
- *   	   </Table.Row>
- *   	   <Table.Row> // <tr>
- *   		   <Table.Cell>Cell 2.1</Table.Cell> // <td>
- *   		   <Table.Cell>Cell 2.2</Table.Cell> // <td>
- *   	   </Table.Row>
- *     </Table.Body>
- *   </Table.HtmlTable>
- * </Table.Root>
+ *   <Table.Body> // <tbody>
+ * 	   <Table.Row> // <tr>
+ * 		   <Table.Cell>Cell 1.1</Table.Cell> // <td>
+ * 		   <Table.Cell>Cell 1.2</Table.Cell> // <td>
+ * 	   </Table.Row>
+ * 	   <Table.Row> // <tr>
+ * 		   <Table.Cell>Cell 2.1</Table.Cell> // <td>
+ * 		   <Table.Cell>Cell 2.2</Table.Cell> // <td>
+ * 	   </Table.Row>
+ *   </Table.Body>
+ * </Table.HtmlTable>
  * ```
  */
 const HtmlTable = forwardRef<"table", HtmlTableProps>((props, forwardedRef) => {
 	return (
-		<TableModeContext.Provider value="html">
-			<Ariakit.Role
-				render={<table />}
-				{...props}
-				ref={forwardedRef}
-				className={cx("🥝-table", props.className)}
-			/>
-		</TableModeContext.Provider>
+		<TableRoot>
+			<TableModeContext.Provider value="html">
+				<Ariakit.Role
+					render={<table />}
+					{...props}
+					ref={forwardedRef}
+					className={cx("🥝-table", props.className)}
+				/>
+			</TableModeContext.Provider>
+		</TableRoot>
 	);
 });
 DEV: HtmlTable.displayName = "Table.HtmlTable";
@@ -144,29 +143,27 @@ interface CustomTableProps extends BaseProps {}
  *
  * Example:
  * ```tsx
- * <Table.Root>
- *   <Table.CustomTable> // <div role="table">
- *     <Table.Caption>Table Caption</Table.Caption> // <div role="caption">
+ * <Table.CustomTable> // <div role="table">
+ *   <Table.Caption>Table Caption</Table.Caption> // <div role="caption">
  *
- *     <Table.Header> // <div role="rowgroup">
- *   	   <Table.Row> // <div role="row">
- *   	     <Table.Cell>Header 1</Table.Cell> // <span role="columnheader">
- *   	 	   <Table.Cell>Header 2</Table.Cell> // <span role="columnheader">
- *   	   </Table.Row>
- *     </Table.Header>
+ *   <Table.Header> // <div role="rowgroup">
+ * 	   <Table.Row> // <div role="row">
+ * 	     <Table.Cell>Header 1</Table.Cell> // <span role="columnheader">
+ * 	 	   <Table.Cell>Header 2</Table.Cell> // <span role="columnheader">
+ * 	   </Table.Row>
+ *   </Table.Header>
  *
- *     <Table.Body>
- *   	   <Table.Row> // <div role="row">
- *   		   <Table.Cell>Cell 1.1</Table.Cell> // <span role="cell">
- *   		   <Table.Cell>Cell 1.2</Table.Cell> // <span role="cell">
- *   	   </Table.Row>
- *   	   <Table.Row> // <div role="row">
- *   		   <Table.Cell>Cell 2.1</Table.Cell> // <span role="cell">
- *   		   <Table.Cell>Cell 2.2</Table.Cell> // <span role="cell">
- *   	   </Table.Row>
- *     </Table.Body>
- *   </Table.CustomTable>
- * </Table.Root>
+ *   <Table.Body>
+ * 	   <Table.Row> // <div role="row">
+ * 		   <Table.Cell>Cell 1.1</Table.Cell> // <span role="cell">
+ * 		   <Table.Cell>Cell 1.2</Table.Cell> // <span role="cell">
+ * 	   </Table.Row>
+ * 	   <Table.Row> // <div role="row">
+ * 		   <Table.Cell>Cell 2.1</Table.Cell> // <span role="cell">
+ * 		   <Table.Cell>Cell 2.2</Table.Cell> // <span role="cell">
+ * 	   </Table.Row>
+ *   </Table.Body>
+ * </Table.CustomTable>
  * ```
  */
 const CustomTable = forwardRef<"div", CustomTableProps>(
@@ -174,15 +171,17 @@ const CustomTable = forwardRef<"div", CustomTableProps>(
 		const { captionId } = useSafeContext(TableContext);
 
 		return (
-			<TableModeContext.Provider value="aria">
-				<Ariakit.Role.div
-					role="table"
-					aria-labelledby={captionId}
-					{...props}
-					ref={forwardedRef}
-					className={cx("🥝-table", props.className)}
-				/>
-			</TableModeContext.Provider>
+			<TableRoot>
+				<TableModeContext.Provider value="aria">
+					<Ariakit.Role.div
+						role="table"
+						aria-labelledby={captionId}
+						{...props}
+						ref={forwardedRef}
+						className={cx("🥝-table", props.className)}
+					/>
+				</TableModeContext.Provider>
+			</TableRoot>
 		);
 	},
 );
@@ -321,10 +320,10 @@ interface TableCaptionProps extends BaseProps<"div"> {}
  *
  * Example:
  * ```tsx
- * <Table.Root>
+ * <Table.CustomTable> // Or <Table.HtmlTable>
  * 	<Table.Caption>Table Caption</Table.Caption>
  * 	…
- * </Table.Root>
+ * </Table.CustomTable> // Or </Table.HtmlTable>
  * ```
  */
 const TableCaption = forwardRef<"div", TableCaptionProps>(
@@ -402,7 +401,6 @@ DEV: TableCell.displayName = "Table.Cell";
 // ----------------------------------------------------------------------------
 
 export {
-	Table as Root,
 	HtmlTable,
 	CustomTable,
 	TableHeader as Header,

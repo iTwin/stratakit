@@ -42,11 +42,15 @@
 
 .🥝-table-caption,
 .🥝-table-cell {
-	--✨cell-padding: 0.5rem;
+	--✨cell-padding-block: 0.5rem;
+	--✨cell-padding-inline-start: 1rem;
+	--✨cell-padding-inline-end: 0.75rem;
 	--✨cell-height-min: 3rem;
 
 	@layer base {
-		padding: var(--✨cell-padding);
+		padding-block: var(--✨cell-padding-block);
+		padding-inline-start: var(--✨cell-padding-inline-start);
+		padding-inline-end: var(--✨cell-padding-inline-end);
 		word-break: break-word;
 		hyphens: auto;
 

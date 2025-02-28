@@ -85,7 +85,7 @@ interface HtmlTableProps extends BaseProps {}
 /**
  * `Table.HtmlTable` uses native HTML table elements for the table root *and its descendants*.
  *
- * E.g. `<table>`, `<thead>`, `<tr>`, `<th>`, and `<td>`.
+ * E.g. `<table>`, `<thead>`, `<tbody>`, `<tr>`, `<th>`, and `<td>`.
  *
  * Related: `Table.CustomTable`
  *
@@ -148,7 +148,7 @@ interface CustomTableProps extends BaseProps {}
  *   <Table.CustomTable> // <div role="table">
  *     <Table.Caption>Table Caption</Table.Caption> // <div role="caption">
  *
- *     <Table.Header>
+ *     <Table.Header> // <div role="rowgroup">
  *   	   <Table.Row> // <div role="row">
  *   	     <Table.Cell>Header 1</Table.Cell> // <span role="columnheader">
  *   	 	   <Table.Cell>Header 2</Table.Cell> // <span role="columnheader">

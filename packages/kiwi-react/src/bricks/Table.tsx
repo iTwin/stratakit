@@ -175,7 +175,6 @@ interface CustomTableProps extends BaseProps {}
 const CustomTable = forwardRef<"div", CustomTableProps>(
 	(props, forwardedRef) => {
 		const { className, ...rest } = props;
-
 		const { captionId } = useSafeContext(TableContext);
 
 		return (
@@ -388,16 +387,15 @@ interface TableCellProps extends BaseProps<"span"> {}
  * ```
  */
 const TableCell = forwardRef<"span", TableCellProps>((props, forwardedRef) => {
+	const { className, children, ...rest } = props;
 	const isWithinTableHeader = useSafeContext(TableHeaderContext);
 	const mode = useSafeContext(TableModeContext);
-	const { className, children, ...rest } = props;
 
-	const [render, role] = React.useMemo(() => {
+	const { render, role } = React.useMemo(() => {
 		if (mode === "aria") {
-			return [undefined, isWithinTableHeader ? "columnheader" : "cell"];
+			return { role: isWithinTableHeader ? "columnheader" : "cell" };
 		}
-
-		return [isWithinTableHeader ? <th key={0} /> : <td key={0} />, undefined];
+		return { render: isWithinTableHeader ? <th /> : <td /> };
 	}, [isWithinTableHeader, mode]);
 
 	return (

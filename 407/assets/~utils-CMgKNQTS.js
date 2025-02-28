@@ -1,1 +1,0 @@
-import{a as e,n as o}from"./chunk-K6AXKMTT-B_QCnNdX.js";const r=typeof document<"u",i=r&&"popover"in HTMLElement.prototype,a=e.forwardRef,n=e.createContext(void 0);function u(t){return o.jsx(n.Provider,{value:t.align,children:t.children})}function c(){return e.useContext(n)}export{u as G,a as f,i as s,c as u};

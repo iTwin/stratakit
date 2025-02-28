@@ -10,6 +10,7 @@ import { IconButton } from "./IconButton.js";
 import { Icon } from "./Icon.js";
 import { forwardRef, type BaseProps } from "./~utils.js";
 import { useEventHandlers } from "./~hooks.js";
+import { GhostAligner } from "./GhostAligner.js";
 
 // ----------------------------------------------------------------------------
 
@@ -219,13 +220,14 @@ const TreeItem = forwardRef<"div", TreeItemProps>((props, forwardedRef) => {
 					role={undefined}
 				>
 					<ListItem.Decoration>
-						<TreeItemExpander
-							data-kiwi-description={description ? true : undefined}
-							onClick={() => {
-								if (expanded === undefined) return;
-								onExpandedChange?.(!expanded);
-							}}
-						/>
+						<GhostAligner align={description ? "block" : undefined}>
+							<TreeItemExpander
+								onClick={() => {
+									if (expanded === undefined) return;
+									onExpandedChange?.(!expanded);
+								}}
+							/>
+						</GhostAligner>
 						{typeof icon === "string" ? <Icon href={icon} /> : icon}
 					</ListItem.Decoration>
 					<ListItem.Content id={labelId} className="🥝-tree-item-content">

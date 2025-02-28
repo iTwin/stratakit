@@ -85,7 +85,7 @@ interface HtmlTableProps extends BaseProps {}
 /**
  * `Table.HtmlTable` uses native HTML table elements for the table root *and its descendants*.
  *
- * E.g. `<table>`, `<thead>`, `<tbody>`, `<tr>`, `<th>`, and `<td>`.
+ * E.g. `<table>`, `<thead>`, `<tr>`, `<th>`, and `<td>`.
  *
  * Related: `Table.CustomTable`
  *
@@ -138,8 +138,7 @@ interface CustomTableProps extends BaseProps {}
  * `Table.CustomTable` implements the [WAI-ARIA table pattern](https://www.w3.org/WAI/ARIA/apg/patterns/table/) using
  * divs or spans + appropriate roles for the table root *and its descendants*.
  *
- * E.g. `<div role="table">`, `<div role="rowgroup">`, `<div role="row">`, `<span role="columnheader">`,
- * and `<span role="cell">`.
+ * E.g. `<div role="table">`, `<div role="row">`, `<span role="columnheader">`, and `<span role="cell">`.
  *
  * Related: `Table.HtmlTable`
  *
@@ -149,14 +148,14 @@ interface CustomTableProps extends BaseProps {}
  *   <Table.CustomTable> // <div role="table">
  *     <Table.Caption>Table Caption</Table.Caption> // <div role="caption">
  *
- *     <Table.Header> // <div role="rowgroup">
+ *     <Table.Header>
  *   	   <Table.Row> // <div role="row">
  *   	     <Table.Cell>Header 1</Table.Cell> // <span role="columnheader">
  *   	 	   <Table.Cell>Header 2</Table.Cell> // <span role="columnheader">
  *   	   </Table.Row>
  *     </Table.Header>
  *
- *     <Table.Body> // <div role="rowgroup">
+ *     <Table.Body>
  *   	   <Table.Row> // <div role="row">
  *   		   <Table.Cell>Cell 1.1</Table.Cell> // <span role="cell">
  *   		   <Table.Cell>Cell 1.2</Table.Cell> // <span role="cell">
@@ -241,7 +240,7 @@ interface TableBodyProps extends BaseProps<"div"> {}
  * Multiple `Table.Row`s and `Table.Cell`s can be nested inside a `Table.Body` to create a table body.
  *
  * If within a `Table.HtmlTable`: it will render a `<tbody>` element.
- * If within a `Table.CustomTable`: it will render a `<div role="rowgroup">` element.
+ * If within a `Table.CustomTable`: it will render a `<div>` element.
  *
  * Example:
  * ```tsx
@@ -261,12 +260,11 @@ const TableBody = forwardRef<"div", TableBodyProps>((props, forwardedRef) => {
 	const mode = useSafeContext(TableModeContext);
 
 	const render = mode === "aria" ? undefined : <tbody />;
-	const role = mode === "aria" ? "rowgroup" : undefined;
 
 	return (
 		<Ariakit.Role.div
 			render={render}
-			role={role}
+			role={undefined} // Intentionally not using "rowgroup" https://github.com/iTwin/design-system/pull/243#discussion_r1947045668
 			{...props}
 			ref={forwardedRef}
 			className={cx("🥝-table-body", props.className)}
@@ -394,7 +392,7 @@ const TableCell = forwardRef<"span", TableCellProps>((props, forwardedRef) => {
 			render={render}
 			role={role}
 			{...props}
-			ref={forwardedRef as React.Ref<HTMLDivElement>}
+			ref={forwardedRef}
 			className={cx("🥝-table-cell", props.className)}
 		/>
 	);

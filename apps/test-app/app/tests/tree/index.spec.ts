@@ -33,6 +33,15 @@ test("default", async ({ page }) => {
 	await expect(item1_1).toHaveAttribute("aria-setsize", "3");
 });
 
+test("description", async ({ page }) => {
+	await page.goto("/tests/tree?description");
+
+	const item1_1 = page.getByRole("treeitem").filter({
+		has: page.getByText("Item 1.1"),
+	});
+	await expect(item1_1).toHaveAccessibleDescription("Additional description");
+});
+
 test.describe("keyboard", () => {
 	test("navigation and expansion", async ({ page }) => {
 		await page.goto("/tests/tree");

@@ -5,7 +5,8 @@
 import * as React from "react";
 import cx from "classnames";
 import * as Ariakit from "@ariakit/react";
-import { forwardRef, supportsPopover, type FocusableProps } from "./~utils.js";
+import { forwardRef, type FocusableProps } from "./~utils.js";
+import { usePopoverApi } from "./~hooks.js";
 
 interface TooltipProps
 	extends Omit<FocusableProps<"div">, "content">,
@@ -70,20 +71,7 @@ export const Tooltip = forwardRef<"div", TooltipProps>(
 		} = props;
 
 		const store = Ariakit.useTooltipStore();
-		const open = Ariakit.useStoreState(store, (state) => state.open);
-		const popover = Ariakit.useStoreState(
-			store,
-			(state) => state.popoverElement,
-		);
-
-		React.useEffect(
-			function syncPopoverWithOpenState() {
-				if (popover?.isConnected) {
-					popover?.togglePopover?.(open);
-				}
-			},
-			[open, popover],
-		);
+		const popover = usePopoverApi(store);
 
 		return (
 			<>
@@ -106,11 +94,11 @@ export const Tooltip = forwardRef<"div", TooltipProps>(
 						ref={forwardedRef}
 						id={id}
 						style={{
-							zIndex: supportsPopover ? undefined : 9999,
+							...popover.style,
 							...props.style,
 						}}
-						wrapperProps={{ popover: "manual" }}
-						portal={!supportsPopover}
+						wrapperProps={popover.wrapperProps}
+						portal={popover.portal}
 					>
 						{content}
 					</Ariakit.Tooltip>

@@ -70,7 +70,6 @@ export default function Page() {
 					<div className={styles.panelHeader}>
 						<div>
 							<VisuallyHidden
-								// biome-ignore lint/a11y/noLabelWithoutControl: Accessible name comes from VisuallyHidden's children
 								render={(props) => <label {...props} htmlFor={selectModelId} />}
 							>
 								Choose Model
@@ -93,7 +92,6 @@ export default function Page() {
 								</Select.HtmlSelect>
 							</Select.Root>
 
-							{/* biome-ignore lint/a11y: hgroup needs an explicit role for better support */}
 							<hgroup role="group">
 								<VisuallyHidden render={(props) => <h2 {...props} />}>
 									{models[selectedModel]}
@@ -223,7 +221,7 @@ function Layout(
 function EmptyState() {
 	return (
 		<div className={styles.emptyState}>
-			<Text>No layers</Text>
+			<Text variant="body-sm">No layers</Text>
 			<Button>Create a layer</Button>
 		</div>
 	);
@@ -232,7 +230,7 @@ function EmptyState() {
 function NoResultsState() {
 	return (
 		<div style={{ textAlign: "center" }}>
-			<Text>No results found</Text>
+			<Text variant="body-sm">No results found</Text>
 		</div>
 	);
 }

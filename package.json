@@ -1,9 +1,9 @@
 {
-	"name": "kiwi",
+	"name": "design-system",
 	"private": true,
 	"type": "module",
 	"version": "0.0.0",
-	"description": "Monorepo for the kiwi design system",
+	"description": "Monorepo for the iTwinUI design system",
 	"scripts": {
 		"build": "pnpm --filter=\"./packages/**\" --filter=\"./apps/**\" build",
 		"build:icons": "pnpm --filter=@itwin/itwinui-icons build",

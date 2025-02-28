@@ -12,76 +12,22 @@ import { useMergedRefs, useSafeContext } from "./~hooks.js";
 
 const TableContext = React.createContext<
 	| {
-			captionId: string | undefined;
-			setCaptionId: React.Dispatch<React.SetStateAction<string | undefined>>;
+			captionId?: string;
+			setCaptionId?: React.Dispatch<React.SetStateAction<string | undefined>>;
+			mode: "aria" | "html";
 	  }
 	| undefined
 >(undefined);
 
-const TableModeContext = React.createContext<"aria" | "html">("aria");
-
 const TableHeaderContext = React.createContext(false);
-
-// ----------------------------------------------------------------------------
-
-interface TableProps {
-	children: React.ReactNode;
-}
-
-/**
- * @private
- * A table is a grid of rows and columns that displays data in a structured format.
- *
- * `Table.CustomTable` or `Table.HtmlTable` is the root component for a table.
- * `Table.Header`, `Table.Body`, and `Table.Cell` should be nested inside the root to create a table structure.
- *
- * Example:
- * ```tsx
- * <Table.CustomTable> // Or <Table.HtmlTable>
- *   <Table.Caption>Table Caption</Table.Caption>
- *
- *   <Table.Header>
- * 	   <Table.Row>
- * 	     <Table.Cell>Header 1</Table.Cell>
- * 	 	   <Table.Cell>Header 2</Table.Cell>
- * 	   </Table.Row>
- *   </Table.Header>
- *
- *   <Table.Body>
- * 	   <Table.Row>
- * 		   <Table.Cell>Cell 1.1</Table.Cell>
- * 		   <Table.Cell>Cell 1.2</Table.Cell>
- * 	   </Table.Row>
- * 	   <Table.Row>
- * 		   <Table.Cell>Cell 2.1</Table.Cell>
- * 		   <Table.Cell>Cell 2.2</Table.Cell>
- * 	   </Table.Row>
- *   </Table.Body>
- * </Table.CustomTable> // Or </Table.HtmlTable>
- * ```
- */
-function TableRoot(props: TableProps) {
-	const { children } = props;
-	const [captionId, setCaptionId] = React.useState<string | undefined>();
-
-	const tableContext = React.useMemo(
-		() => ({ captionId, setCaptionId }),
-		[captionId],
-	);
-
-	return (
-		<TableContext.Provider value={tableContext}>
-			{children}
-		</TableContext.Provider>
-	);
-}
-DEV: TableRoot.displayName = "TableRoot";
 
 // ----------------------------------------------------------------------------
 
 interface HtmlTableProps extends BaseProps {}
 
 /**
+ * A table is a grid of rows and columns that displays data in a structured format.
+ *
  * `Table.HtmlTable` uses native HTML table elements for the table root *and its descendants*.
  *
  * E.g. `<table>`, `<thead>`, `<tbody>`, `<tr>`, `<th>`, and `<td>`.
@@ -114,17 +60,20 @@ interface HtmlTableProps extends BaseProps {}
  * ```
  */
 const HtmlTable = forwardRef<"table", HtmlTableProps>((props, forwardedRef) => {
+	const tableContextValue = React.useMemo(
+		() => ({ mode: "html" as const }),
+		[],
+	);
+
 	return (
-		<TableRoot>
-			<TableModeContext.Provider value="html">
-				<Ariakit.Role
-					render={<table />}
-					{...props}
-					ref={forwardedRef}
-					className={cx("🥝-table", props.className)}
-				/>
-			</TableModeContext.Provider>
-		</TableRoot>
+		<TableContext.Provider value={tableContextValue}>
+			<Ariakit.Role
+				render={<table />}
+				{...props}
+				ref={forwardedRef}
+				className={cx("🥝-table", props.className)}
+			/>
+		</TableContext.Provider>
 	);
 });
 DEV: HtmlTable.displayName = "Table.HtmlTable";
@@ -134,6 +83,8 @@ DEV: HtmlTable.displayName = "Table.HtmlTable";
 interface CustomTableProps extends BaseProps {}
 
 /**
+ * A table is a grid of rows and columns that displays data in a structured format.
+ *
  * `Table.CustomTable` implements the [WAI-ARIA table pattern](https://www.w3.org/WAI/ARIA/apg/patterns/table/) using
  * divs or spans + appropriate roles for the table root *and its descendants*.
  *
@@ -168,20 +119,24 @@ interface CustomTableProps extends BaseProps {}
  */
 const CustomTable = forwardRef<"div", CustomTableProps>(
 	(props, forwardedRef) => {
-		const { captionId } = useSafeContext(TableContext);
+		// const { captionId } = useSafeContext(TableContext);
+		const [captionId, setCaptionId] = React.useState<string | undefined>();
+
+		const tableContextValue = React.useMemo(
+			() => ({ captionId, setCaptionId, mode: "aria" as const }),
+			[captionId],
+		);
 
 		return (
-			<TableRoot>
-				<TableModeContext.Provider value="aria">
-					<Ariakit.Role.div
-						role="table"
-						aria-labelledby={captionId}
-						{...props}
-						ref={forwardedRef}
-						className={cx("🥝-table", props.className)}
-					/>
-				</TableModeContext.Provider>
-			</TableRoot>
+			<TableContext.Provider value={tableContextValue}>
+				<Ariakit.Role.div
+					role="table"
+					aria-labelledby={captionId}
+					{...props}
+					ref={forwardedRef}
+					className={cx("🥝-table", props.className)}
+				/>
+			</TableContext.Provider>
 		);
 	},
 );
@@ -210,7 +165,7 @@ interface TableHeaderProps extends BaseProps<"div"> {}
  */
 const TableHeader = forwardRef<"div", TableHeaderProps>(
 	(props, forwardedRef) => {
-		const mode = useSafeContext(TableModeContext);
+		const { mode } = useSafeContext(TableContext);
 
 		const render = mode === "aria" ? undefined : <thead />;
 		const role = mode === "aria" ? "rowgroup" : undefined;
@@ -256,7 +211,7 @@ interface TableBodyProps extends BaseProps<"div"> {}
  * ```
  */
 const TableBody = forwardRef<"div", TableBodyProps>((props, forwardedRef) => {
-	const mode = useSafeContext(TableModeContext);
+	const { mode } = useSafeContext(TableContext);
 
 	const render = mode === "aria" ? undefined : <tbody />;
 
@@ -291,7 +246,7 @@ interface TableRowProps extends BaseProps<"div"> {}
  * ```
  */
 const TableRow = forwardRef<"div", TableRowProps>((props, forwardedRef) => {
-	const mode = useSafeContext(TableModeContext);
+	const { mode } = useSafeContext(TableContext);
 
 	const render = mode === "aria" ? undefined : <tr />;
 	const role = mode === "aria" ? "row" : undefined;
@@ -331,15 +286,14 @@ const TableCaption = forwardRef<"div", TableCaptionProps>(
 		const fallbackId = React.useId();
 
 		const { id = fallbackId, ...rest } = props;
-		const { setCaptionId } = useSafeContext(TableContext);
-		const mode = useSafeContext(TableModeContext);
+		const { mode, setCaptionId } = useSafeContext(TableContext);
 
 		const render = mode === "aria" ? undefined : <caption />;
 		const role = mode === "aria" ? "caption" : undefined;
 
 		const captionIdRef = React.useCallback(
 			(element: HTMLElement | null) => {
-				setCaptionId(element ? id : undefined);
+				setCaptionId?.(element ? id : undefined);
 			},
 			[id, setCaptionId],
 		);
@@ -377,7 +331,7 @@ interface TableCellProps extends BaseProps<"span"> {}
  */
 const TableCell = forwardRef<"span", TableCellProps>((props, forwardedRef) => {
 	const isWithinTableHeader = useSafeContext(TableHeaderContext);
-	const mode = useSafeContext(TableModeContext);
+	const { mode } = useSafeContext(TableContext);
 
 	const { render, role } = React.useMemo(() => {
 		if (mode === "aria") {

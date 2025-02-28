@@ -1,5 +1,12 @@
 # Changelog
 
+## 5.0.0-alpha.8
+
+- Added `description` prop to `<Tree.Item>` component for showing "sublabels".
+- **breaking**: Updated `<Text>`  component to require `variant` prop.
+- (soft breaking) Removed `children` from `<Tree.Item>` prop types.
+- Updated `DropdownMenu` padding.
+
 ## 5.0.0-alpha.7
 
 - Added new `<Avatar>` component.

@@ -162,6 +162,7 @@
 	@layer base {
 		padding-inline-start: calc(var(--🥝tree-item-indent) + var(--✨expander-width));
 		padding-block: 6px;
+		cursor: unset;
 
 		--🥝icon-color: var(--ids-color-icon-attention-base);
 		color: var(--ids-color-text-attention-base);

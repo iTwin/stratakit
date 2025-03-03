@@ -10,6 +10,7 @@ import { IconButton } from "./IconButton.js";
 import { Icon } from "./Icon.js";
 import { forwardRef, type BaseProps } from "./~utils.js";
 import { useEventHandlers } from "./~hooks.js";
+import { GhostAligner } from "./GhostAligner.js";
 
 // ----------------------------------------------------------------------------
 
@@ -95,6 +96,8 @@ interface TreeItemProps extends Omit<BaseProps, "content" | "children"> {
 	 * The primary label that identifies the tree item and is displayed inside it.
 	 */
 	label?: React.ReactNode;
+	/** Secondary line of text to display additional information about the tree item. */
+	description?: React.ReactNode;
 	/**
 	 * The actions available for the tree item. Must be a list of `Tree.ItemAction` components.
 	 *
@@ -142,6 +145,7 @@ const TreeItem = forwardRef<"div", TreeItemProps>((props, forwardedRef) => {
 		expanded,
 		icon,
 		label,
+		description,
 		actions,
 		onSelectedChange,
 		onExpandedChange,
@@ -171,7 +175,8 @@ const TreeItem = forwardRef<"div", TreeItemProps>((props, forwardedRef) => {
 		}
 	};
 
-	const contentId = React.useId();
+	const labelId = React.useId();
+	const descriptionId = React.useId();
 
 	return (
 		<TreeItemContext.Provider
@@ -180,9 +185,8 @@ const TreeItem = forwardRef<"div", TreeItemProps>((props, forwardedRef) => {
 					level,
 					expanded,
 					selected,
-					contentId,
 				}),
-				[level, expanded, selected, contentId],
+				[level, expanded, selected],
 			)}
 		>
 			<Ariakit.CompositeItem
@@ -202,7 +206,8 @@ const TreeItem = forwardRef<"div", TreeItemProps>((props, forwardedRef) => {
 				role="treeitem"
 				aria-expanded={expanded}
 				aria-selected={selected}
-				aria-labelledby={contentId}
+				aria-labelledby={labelId}
+				aria-describedby={description ? descriptionId : undefined}
 				aria-level={level}
 				className={cx("🥝-tree-item", props.className)}
 				ref={forwardedRef as Ariakit.CompositeItemProps["ref"]}
@@ -215,15 +220,27 @@ const TreeItem = forwardRef<"div", TreeItemProps>((props, forwardedRef) => {
 					role={undefined}
 				>
 					<ListItem.Decoration>
-						<TreeItemExpander
-							onClick={() => {
-								if (expanded === undefined) return;
-								onExpandedChange?.(!expanded);
-							}}
-						/>
+						<GhostAligner align={description ? "block" : undefined}>
+							<TreeItemExpander
+								onClick={() => {
+									if (expanded === undefined) return;
+									onExpandedChange?.(!expanded);
+								}}
+							/>
+						</GhostAligner>
 						{typeof icon === "string" ? <Icon href={icon} /> : icon}
 					</ListItem.Decoration>
-					<TreeItemContent label={label} />
+					<ListItem.Content id={labelId} className="🥝-tree-item-content">
+						{label}
+					</ListItem.Content>
+					{description ? (
+						<ListItem.Content
+							id={descriptionId}
+							className="🥝-tree-item-description"
+						>
+							{description}
+						</ListItem.Content>
+					) : undefined}
 					<ListItem.Decoration
 						render={<TreeItemActions>{actions}</TreeItemActions>}
 					/>
@@ -233,32 +250,6 @@ const TreeItem = forwardRef<"div", TreeItemProps>((props, forwardedRef) => {
 	);
 });
 DEV: TreeItem.displayName = "Tree.Item";
-
-// ----------------------------------------------------------------------------
-
-interface TreeItemContentProps extends Omit<BaseProps<"span">, "children"> {
-	label?: React.ReactNode;
-}
-
-const TreeItemContent = forwardRef<"span", TreeItemContentProps>(
-	(props, forwardedRef) => {
-		const { label, ...rest } = props;
-
-		const { contentId } = React.useContext(TreeItemContext) ?? {};
-
-		return (
-			<ListItem.Content
-				{...rest}
-				id={contentId}
-				className={cx("🥝-tree-item-content", props.className)}
-				ref={forwardedRef}
-			>
-				{label}
-			</ListItem.Content>
-		);
-	},
-);
-DEV: TreeItemContent.displayName = "TreeItemContent";
 
 // ----------------------------------------------------------------------------
 
@@ -377,7 +368,6 @@ const TreeItemContext = React.createContext<
 	| {
 			expanded?: boolean;
 			selected?: boolean;
-			contentId: string;
 	  }
 	| undefined
 >(undefined);

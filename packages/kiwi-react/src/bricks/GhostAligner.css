@@ -1,0 +1,31 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+.🥝-ghost-aligner {
+	@layer base {
+		&:where([data-kiwi-ghost-align="inline"]) {
+			margin-inline: calc(-1 * var(--🥝ghost-inline-offset));
+		}
+
+		&:where([data-kiwi-ghost-align="inline-start"]) {
+			margin-inline-start: calc(-1 * var(--🥝ghost-inline-offset));
+		}
+
+		&:where([data-kiwi-ghost-align="inline-end"]) {
+			margin-inline-end: calc(-1 * var(--🥝ghost-inline-offset));
+		}
+
+		&:where([data-kiwi-ghost-align="block"]) {
+			margin-block: calc(-1 * var(--🥝ghost-block-offset));
+		}
+
+		&:where([data-kiwi-ghost-align="block-start"]) {
+			margin-block-start: calc(-1 * var(--🥝ghost-block-offset));
+		}
+
+		&:where([data-kiwi-ghost-align="block-end"]) {
+			margin-block-end: calc(-1 * var(--🥝ghost-block-offset));
+		}
+	}
+}

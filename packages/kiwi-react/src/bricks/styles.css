@@ -5,6 +5,7 @@
 @import "./sublayers.css" layer(itwinui.components);
 
 @import "./Icon.css" layer(itwinui.components);
+@import "./GhostAligner.css" layer(itwinui.components);
 
 @import "./Anchor.css" layer(itwinui.components);
 @import "./Avatar.css" layer(itwinui.components);

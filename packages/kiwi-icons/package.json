@@ -8,12 +8,12 @@
 		"./icons-list.json": "./icons-list.json"
 	},
 	"files": ["icons/*.svg", "icons-list.json", "LICENSE.md"],
-	"description": "A standalone SVG icon library",
+	"description": "A standalone SVG icon library for the iTwinUI design system",
 	"author": "Bentley Systems",
-	"homepage": "https://github.com/iTwin/kiwi",
+	"homepage": "https://github.com/iTwin/design-system",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/iTwin/kiwi.git",
+		"url": "https://github.com/iTwin/design-system.git",
 		"directory": "packages/kiwi-icons"
 	},
 	"keywords": ["itwinui", "svg", "icons"],

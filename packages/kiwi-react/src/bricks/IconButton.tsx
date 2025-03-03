@@ -22,7 +22,7 @@ interface IconButtonBaseProps
 	/**
 	 * Icon to be displayed inside the button.
 	 *
-	 * Can be a URL of an SVG from the `kiwi-icons` package,
+	 * Can be a URL of an SVG from the `@itwin/itwinui-icons` package,
 	 * or a custom JSX icon.
 	 */
 	icon: string | React.JSX.Element;
@@ -65,7 +65,7 @@ type IconButtonProps = IconButtonBaseProps & IconButtonExtraProps;
 /**
  * An icon-only button, with a required accessible name.
  *
- * The icon can be a URL from the `kiwi-icons` package:
+ * The icon can be a URL from the `@itwin/itwinui-icons` package:
  * ```tsx
  * <IconButton
  *   label="Reveal full content"

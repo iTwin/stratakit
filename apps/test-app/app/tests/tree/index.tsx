@@ -15,12 +15,17 @@ export default definePage(function Page({
 	overflow = false,
 	selected = false,
 	description: descriptionParam,
-	error = false,
+	error: errorParam,
 }) {
 	const overflowPostfix = overflow
 		? " with a super long label that is overflown"
 		: "";
 	const description = descriptionParam ? "Additional description" : undefined;
+	const errorType = React.useMemo(() => {
+		if (errorParam === "complex") return "complex";
+		if (errorParam) return "simple";
+		return undefined;
+	}, [errorParam]);
 
 	const [data, setData] = React.useState(() => [
 		{
@@ -42,7 +47,7 @@ export default definePage(function Page({
 		{ label: "Item 3", selected: false },
 	]);
 
-	const [renderError, setRenderError] = React.useState(error);
+	const [renderError, setRenderError] = React.useState(!!errorType);
 	return (
 		<Tree.Root style={{ maxInlineSize: overflow ? 300 : undefined }}>
 			{data.map((item, index, items) => {
@@ -96,7 +101,7 @@ export default definePage(function Page({
 								setData(newData);
 							};
 
-							const hasError = renderError && childIndex === 0;
+							const hasError = renderError && index === 0 && childIndex === 0;
 							return (
 								<Tree.Item
 									key={child.label}
@@ -117,22 +122,47 @@ export default definePage(function Page({
 										<Tree.ItemAction key="show" icon={showIcon} label="Show" />,
 									]}
 									expanded={hasError ? true : undefined}
-									error={
-										hasError ? (
-											<Tree.ItemError
-												label="Failed to create hierarchy"
-												icon={placeholderIcon}
-												actions={[
-													<Tree.ItemErrorAction
-														key="retry"
-														onClick={() => setRenderError(false)}
-													>
-														Retry
-													</Tree.ItemErrorAction>,
-												]}
-											/>
-										) : undefined
-									}
+									error={(() => {
+										if (!hasError) return undefined;
+										if (errorType === "simple") {
+											return (
+												<Tree.ItemError
+													label="Failed to create hierarchy"
+													icon={placeholderIcon}
+													actions={[
+														<Tree.ItemErrorAction
+															key="retry"
+															onClick={() => setRenderError(false)}
+														>
+															Retry
+														</Tree.ItemErrorAction>,
+													]}
+												/>
+											);
+										}
+										if (errorType === "complex") {
+											return (
+												<Tree.ItemError
+													label="The hierarchy exceeds 1000 items. Provide additional filtering or increase the limit."
+													icon={placeholderIcon}
+													actions={[
+														<Tree.ItemErrorAction
+															key="add"
+															onClick={() => setRenderError(false)}
+														>
+															Add filter
+														</Tree.ItemErrorAction>,
+														<Tree.ItemErrorAction
+															key="increase"
+															onClick={() => setRenderError(false)}
+														>
+															Increase limit
+														</Tree.ItemErrorAction>,
+													]}
+												/>
+											);
+										}
+									})()}
 								/>
 							);
 						})}

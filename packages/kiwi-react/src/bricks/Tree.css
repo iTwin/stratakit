@@ -179,6 +179,7 @@
 
 .🥝-tree-item-error-action:is(.🥝-anchor) {
 	@layer base {
+		/* TODO: move to Anchor.css */
 		text-decoration: underline;
 	}
 }

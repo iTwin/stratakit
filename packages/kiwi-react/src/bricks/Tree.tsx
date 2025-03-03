@@ -186,6 +186,7 @@ const TreeItem = forwardRef<"div", TreeItemProps>((props, forwardedRef) => {
 	const labelId = React.useId();
 	const descriptionId = React.useId();
 	const errorId = React.useId();
+	// TODO: move to ~hooks.ts
 	const describedBy = React.useMemo(
 		() =>
 			[

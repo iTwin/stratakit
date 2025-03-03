@@ -50,7 +50,7 @@ DEV: Tree.displayName = "Tree.Root";
 
 // ----------------------------------------------------------------------------
 
-interface TreeItemProps extends Omit<BaseProps, "content"> {
+interface TreeItemProps extends Omit<BaseProps, "content" | "children"> {
 	/** Specifies the nesting level of the tree item. Nesting levels start at 1. */
 	"aria-level": number;
 	/** Defines tree item position in the current level of tree items. Integer greater than or equal to 1. */
@@ -88,13 +88,15 @@ interface TreeItemProps extends Omit<BaseProps, "content"> {
 	/**
 	 * Icon to be displayed inside the tree item.
 	 *
-	 * Can be a URL of an SVG from the `kiwi-icons` package, or a JSX element.
+	 * Can be a URL of an SVG from the `@itwin/itwinui-icons` package, or a JSX element.
 	 */
 	icon?: string | React.JSX.Element;
 	/**
 	 * The primary label that identifies the tree item and is displayed inside it.
 	 */
 	label?: React.ReactNode;
+	/** Secondary line of text to display additional information about the tree item. */
+	description?: React.ReactNode;
 	/**
 	 * The actions available for the tree item. Must be a list of `Tree.ItemAction` components.
 	 *
@@ -143,10 +145,10 @@ const TreeItem = forwardRef<"div", TreeItemProps>((props, forwardedRef) => {
 	const {
 		"aria-level": level,
 		selected,
-		children,
 		expanded,
 		icon,
 		label,
+		description,
 		actions,
 		error,
 		style,
@@ -178,9 +180,19 @@ const TreeItem = forwardRef<"div", TreeItemProps>((props, forwardedRef) => {
 		}
 	};
 
-	const contentId = React.useId();
+	const hasDescription = !!description;
+	const hasError = !!description;
+	const labelId = React.useId();
+	const descriptionId = React.useId();
 	const errorId = React.useId();
-
+	const describedBy = React.useMemo(
+		() =>
+			[
+				...[hasDescription ? descriptionId : undefined],
+				...[hasError ? errorId : undefined],
+			].join(" ") || undefined,
+		[hasDescription, hasError, descriptionId, errorId],
+	);
 	return (
 		<TreeItemContext.Provider
 			value={React.useMemo(
@@ -188,10 +200,9 @@ const TreeItem = forwardRef<"div", TreeItemProps>((props, forwardedRef) => {
 					level,
 					expanded,
 					selected,
-					contentId,
 					errorId,
 				}),
-				[level, expanded, selected, contentId, errorId],
+				[level, expanded, selected, errorId],
 			)}
 		>
 			<Ariakit.CompositeItem
@@ -211,8 +222,8 @@ const TreeItem = forwardRef<"div", TreeItemProps>((props, forwardedRef) => {
 				role="treeitem"
 				aria-expanded={expanded}
 				aria-selected={selected}
-				aria-labelledby={contentId}
-				aria-describedby={error ? errorId : undefined}
+				aria-labelledby={labelId}
+				aria-describedby={describedBy}
 				aria-level={level}
 				className={cx("🥝-tree-item", props.className)}
 				style={{ "--🥝tree-item-level": level } as React.CSSProperties}
@@ -226,6 +237,7 @@ const TreeItem = forwardRef<"div", TreeItemProps>((props, forwardedRef) => {
 				>
 					<ListItem.Decoration>
 						<TreeItemExpander
+							data-kiwi-description={description ? true : undefined}
 							onClick={() => {
 								if (expanded === undefined) return;
 								onExpandedChange?.(!expanded);
@@ -233,7 +245,17 @@ const TreeItem = forwardRef<"div", TreeItemProps>((props, forwardedRef) => {
 						/>
 						{typeof icon === "string" ? <Icon href={icon} /> : icon}
 					</ListItem.Decoration>
-					<TreeItemContent label={label} />
+					<ListItem.Content id={labelId} className="🥝-tree-item-content">
+						{label}
+					</ListItem.Content>
+					{description ? (
+						<ListItem.Content
+							id={descriptionId}
+							className="🥝-tree-item-description"
+						>
+							{description}
+						</ListItem.Content>
+					) : undefined}
 					<ListItem.Decoration
 						render={<TreeItemActions>{actions}</TreeItemActions>}
 					/>
@@ -244,32 +266,6 @@ const TreeItem = forwardRef<"div", TreeItemProps>((props, forwardedRef) => {
 	);
 });
 DEV: TreeItem.displayName = "Tree.Item";
-
-// ----------------------------------------------------------------------------
-
-interface TreeItemContentProps extends Omit<BaseProps<"span">, "children"> {
-	label?: React.ReactNode;
-}
-
-const TreeItemContent = forwardRef<"span", TreeItemContentProps>(
-	(props, forwardedRef) => {
-		const { label, ...rest } = props;
-
-		const { contentId } = React.useContext(TreeItemContext) ?? {};
-
-		return (
-			<ListItem.Content
-				{...rest}
-				id={contentId}
-				className={cx("🥝-tree-item-content", props.className)}
-				ref={forwardedRef}
-			>
-				{label}
-			</ListItem.Content>
-		);
-	},
-);
-DEV: TreeItemContent.displayName = "TreeItemContent";
 
 // ----------------------------------------------------------------------------
 
@@ -451,7 +447,6 @@ const TreeItemContext = React.createContext<
 	| {
 			expanded?: boolean;
 			selected?: boolean;
-			contentId: string;
 			errorId: string;
 	  }
 	| undefined

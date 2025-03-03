@@ -10,7 +10,7 @@ const appDir = join(repoDir, "apps", "test-app");
 
 const imageName = "kiwi";
 const containerRepoDir = "/kiwi";
-const containerAppDir = join(containerRepoDir, "apps", "test-app");
+const containerAppDir = `${containerRepoDir}/apps/test-app`;
 
 const [_node, _fileName, ...args] = process.argv;
 

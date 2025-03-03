@@ -10,7 +10,7 @@ interface TextProps extends BaseProps {
 	/**
 	 * The typography variant to use.
 	 */
-	variant?:
+	variant:
 		| "display-lg"
 		| "display-md"
 		| "display-sm"

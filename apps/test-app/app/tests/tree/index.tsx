@@ -15,11 +15,13 @@ export const handle = { title: "Tree" };
 export default definePage(function Page({
 	overflow = false,
 	selected = false,
+	description: descriptionParam,
 	error = false,
 }) {
 	const overflowPostfix = overflow
 		? " with a super long label that is overflown"
 		: "";
+	const description = descriptionParam ? "Additional description" : undefined;
 
 	const [data, setData] = React.useState(() => [
 		{
@@ -70,6 +72,7 @@ export default definePage(function Page({
 							aria-posinset={index + 1}
 							aria-setsize={items.length}
 							label={item.label}
+							description={index === 0 ? description : undefined}
 							expanded={item.expanded}
 							onExpandedChange={handleExpansion}
 							selected={item.selected}
@@ -101,6 +104,7 @@ export default definePage(function Page({
 									aria-posinset={childIndex + 1}
 									aria-setsize={children.length}
 									label={child.label}
+									description={childIndex === 0 ? description : undefined}
 									selected={child.selected}
 									onSelectedChange={handleSelection}
 									icon={placeholderIcon}

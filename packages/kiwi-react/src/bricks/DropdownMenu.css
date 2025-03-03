@@ -4,7 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 .🥝-dropdown-menu {
 	--✨bg: var(--ids-color-bg-elevation-level-1);
-	--✨padding: 0.5rem; /* space(in progress)/x2 */
+	--✨padding: 4px; /* space(in progress)/x1 */
 
 	@layer base {
 		background-color: var(--✨bg);

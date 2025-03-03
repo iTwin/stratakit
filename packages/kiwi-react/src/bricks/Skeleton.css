@@ -41,73 +41,34 @@
 		}
 
 		&:where([data-kiwi-variant="object"]) {
-			&:where([data-kiwi-shape="square"], [data-kiwi-shape="circle"]) {
-				&:where([data-kiwi-size="xsmall"]) {
-					--🥝skeleton-height: 0.75rem;
-					--🥝skeleton-width: 0.75rem;
-				}
-
-				&:where([data-kiwi-size="small"]) {
-					--🥝skeleton-height: 1rem;
-					--🥝skeleton-width: 1rem;
-				}
-
-				&:where([data-kiwi-size="medium"]) {
-					--🥝skeleton-height: 1.5rem;
-					--🥝skeleton-width: 1.5rem;
-				}
-
-				&:where([data-kiwi-size="large"]) {
-					--🥝skeleton-height: 2rem;
-					--🥝skeleton-width: 2rem;
-				}
-
-				&:where([data-kiwi-size="xlarge"]) {
-					--🥝skeleton-height: 3rem;
-					--🥝skeleton-width: 3rem;
-				}
+			&:where([data-kiwi-size="xsmall"]) {
+				--🥝skeleton-border-radius: 2px /* radius(in progress)/xsmall */;
+				--🥝skeleton-height: 0.75rem;
+				--🥝skeleton-width: 0.75rem;
 			}
 
-			&:where([data-kiwi-shape="pill"]) {
-				&:where([data-kiwi-size="xsmall"]) {
-					--🥝skeleton-height: 0.75rem;
-					--🥝skeleton-width: 1.5rem;
-				}
-
-				&:where([data-kiwi-size="small"]) {
-					--🥝skeleton-height: 1rem;
-					--🥝skeleton-width: 2rem;
-				}
-
-				&:where([data-kiwi-size="medium"]) {
-					--🥝skeleton-height: 1.5rem;
-					--🥝skeleton-width: 3rem;
-				}
-
-				&:where([data-kiwi-size="large"]) {
-					--🥝skeleton-height: 2rem;
-					--🥝skeleton-width: 4rem;
-				}
-
-				&:where([data-kiwi-size="xlarge"]) {
-					--🥝skeleton-height: 3rem;
-					--🥝skeleton-width: 6rem;
-				}
+			&:where([data-kiwi-size="small"]) {
+				--🥝skeleton-border-radius: 2px /* radius(in progress)/xsmall */;
+				--🥝skeleton-height: 1rem;
+				--🥝skeleton-width: 1rem;
 			}
 
-			/* Border radius */
-			&:where([data-kiwi-shape="pill"], [data-kiwi-shape="circle"]) {
-				--🥝skeleton-border-radius: 9999px;
+			&:where([data-kiwi-size="medium"]) {
+				--🥝skeleton-border-radius: 4px /* radius(in progress)/small */;
+				--🥝skeleton-height: 1.5rem;
+				--🥝skeleton-width: 1.5rem;
 			}
 
-			&:where([data-kiwi-shape="square"]) {
-				&:where([data-kiwi-size$="small"]) {
-					--🥝skeleton-border-radius: 2px /* radius(in progress)/xsmall */;
-				}
+			&:where([data-kiwi-size="large"]) {
+				--🥝skeleton-border-radius: 4px /* radius(in progress)/small */;
+				--🥝skeleton-height: 2rem;
+				--🥝skeleton-width: 2rem;
+			}
 
-				&:where([data-kiwi-size$="medium"], [data-kiwi-size$="large"], [data-kiwi-size$="xlarge"]) {
-					--🥝skeleton-border-radius: 4px /* radius(in progress)/small */;
-				}
+			&:where([data-kiwi-size="xlarge"]) {
+				--🥝skeleton-border-radius: 4px /* radius(in progress)/small */;
+				--🥝skeleton-height: 3rem;
+				--🥝skeleton-width: 3rem;
 			}
 		}
 	}

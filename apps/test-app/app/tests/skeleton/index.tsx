@@ -8,25 +8,15 @@ import { Divider } from "@itwin/itwinui-react-internal/src/bricks/Divider.tsx";
 
 export const handle = { title: "Skeleton" };
 
-const textSizes = [
-	"xsmall",
-	"small",
-	"medium",
-	"large",
-	"xlarge",
-	"xxlarge",
-] as const;
-const objectSizes = ["xsmall", "small", "medium", "large", "xlarge"] as const;
-const objectShapes = ["square", "pill", "circle"] as const;
+const sizes = ["xsmall", "small", "medium", "large", "xlarge"] as const;
 
 export default definePage(
-	function Page({ variant, size, shape, alt }) {
+	function Page({ variant, size, alt }) {
 		return (
 			<Skeleton.Root alt={alt}>
 				<Skeleton.Item
 					variant={variant as "object" | undefined}
-					shape={shape as (typeof objectShapes)[0]}
-					size={size as (typeof objectSizes)[0]}
+					size={size as (typeof sizes)[0]}
 				/>
 			</Skeleton.Root>
 		);
@@ -38,7 +28,7 @@ function VisualTest() {
 	return (
 		<div style={{ display: "flex", flexDirection: "column", rowGap: 4 }}>
 			<Skeleton.Root>
-				{textSizes.map((textSize) => (
+				{sizes.map((textSize) => (
 					<Skeleton.Item
 						key={textSize}
 						variant="text"
@@ -50,24 +40,15 @@ function VisualTest() {
 
 			<Divider style={{ margin: "16px 0" }} />
 
-			<Skeleton.Root
-				style={{
-					display: "grid",
-					gridTemplateColumns: "repeat(3, min-content)",
-					columnGap: 16,
-				}}
-			>
-				{objectSizes.map((objectSize) =>
-					objectShapes.map((objectShape) => (
-						<Skeleton.Item
-							key={`${objectSize}-${objectShape}`}
-							variant="object"
-							size={objectSize}
-							shape={objectShape}
-							style={{ marginBottom: 8 }}
-						/>
-					)),
-				)}
+			<Skeleton.Root style={{ gap: 16 }}>
+				{sizes.map((objectSize) => (
+					<Skeleton.Item
+						key={objectSize}
+						variant="object"
+						size={objectSize}
+						style={{ marginBottom: 8 }}
+					/>
+				))}
 			</Skeleton.Root>
 		</div>
 	);

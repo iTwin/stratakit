@@ -5,39 +5,13 @@
 import { test, expect } from "#playwright";
 import AxeBuilder from "@axe-core/playwright";
 
-const textSizes = [
-	"xsmall",
-	"small",
-	"medium",
-	"large",
-	"xlarge",
-	"xxlarge",
-] as const;
-const objectSizes = ["xsmall", "small", "medium", "large", "xlarge"] as const;
-const objectShapes = ["square", "pill", "circle"] as const;
+const sizes = ["xsmall", "small", "medium", "large", "xlarge"] as const;
 
 test.describe("default", () => {
-	test("text variant", async ({ page }) => {
-		for (const size of textSizes) {
-			await page.goto(`/tests/skeleton?variant=text&size=${size}`);
-
-			const skeleton = page.locator(".🥝-skeleton");
-			const skeletonItem = page.locator(".🥝-skeleton-item");
-
-			await expect(skeleton).toHaveText("Loading…");
-
-			await expect(skeletonItem).toHaveAttribute("data-kiwi-variant", "text");
-			await expect(skeletonItem).toHaveAttribute("data-kiwi-size", size);
-			await expect(skeletonItem).not.toHaveAttribute("data-kiwi-shape");
-		}
-	});
-
-	test("object variant", async ({ page }) => {
-		for (const size of objectSizes) {
-			for (const shape of objectShapes) {
-				await page.goto(
-					`/tests/skeleton?variant=object&size=${size}&shape=${shape}`,
-				);
+	test("default", async ({ page }) => {
+		for (const size of sizes) {
+			for (const variant of ["text", "object"]) {
+				await page.goto(`/tests/skeleton?variant=${variant}&size=${size}`);
 
 				const skeleton = page.locator(".🥝-skeleton");
 				const skeletonItem = page.locator(".🥝-skeleton-item");
@@ -46,10 +20,9 @@ test.describe("default", () => {
 
 				await expect(skeletonItem).toHaveAttribute(
 					"data-kiwi-variant",
-					"object",
+					variant,
 				);
 				await expect(skeletonItem).toHaveAttribute("data-kiwi-size", size);
-				await expect(skeletonItem).toHaveAttribute("data-kiwi-shape", shape);
 			}
 		}
 	});

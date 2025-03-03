@@ -9,6 +9,20 @@
 		inline-size: 100%;
 		border-radius: 9999px;
 		overflow: hidden;
+		/* outline: 1px solid red; */
+
+		/* position: relative;
+
+		&::after {
+			content: "";
+			height: inherit;
+			width: 25%;
+			background-color: red;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+		} */
 	}
 
 	@layer modifiers {
@@ -68,18 +82,18 @@
 .🥝-progress-bar-svg-track {
 	@layer base {
 		stroke: var(--🥝progress-bar-track-color);
-		/* stroke-dashoffset: 8%; */
-		stroke-dasharray: 65, 35;
-		animation-name: --🥝progress-bar-track-slide;
+		stroke-dashoffset: 36;
+		stroke-dasharray: 72, 28;
+		/* animation-name: --🥝progress-bar-track-slide; */
 	}
 }
 
 .🥝-progress-bar-svg-fill {
 	@layer base {
 		stroke: var(--🥝progress-bar-color);
-		/* stroke-dashoffset: 15%; */
+		stroke-dashoffset: 62.5;
 		stroke-dasharray: 25, 75;
-		animation-name: --🥝progress-bar-fill-slide;
+		/* animation-name: --🥝progress-bar-fill-slide; */
 	}
 }
 

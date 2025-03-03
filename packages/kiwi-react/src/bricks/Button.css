@@ -7,6 +7,7 @@
 	--✨gap: 4px;
 	--✨height: 1.5rem;
 	--✨padding-inline: 12px;
+	--✨padding-block: 4px;
 
 	--✨shadow-border: 0px 0px 0px 1px var(--🥝button-border-color) inset;
 
@@ -110,6 +111,9 @@
 		block-size: var(--✨height);
 		border-radius: 4px;
 		padding-inline: var(--🥝button-padding-inline, var(--✨padding-inline));
+		padding-block: var(--✨padding-block);
+		--🥝ghost-inline-offset: var(--✨padding-inline);
+		--🥝ghost-block-offset: var(--✨padding-block);
 
 		background-color: var(--🥝button-background-color);
 		color: var(--🥝button-color, var(--✨color--default));

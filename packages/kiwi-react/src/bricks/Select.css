@@ -3,14 +3,10 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 .🥝-select-root {
-	--✨padding-inline-start: 8px;
-	--✨padding-inline-end: calc(4px + 16px + 4px); /* (gap) + (arrow size) + (padding-inline - disclosure arrow offset) */
-
 	@layer base {
 		&:where(:has(select.🥝-select), [data-kiwi-has-select="true"]) {
 			display: inline-grid;
 			align-items: center;
-			--🥝button-padding-inline: var(--✨padding-inline-start) var(--✨padding-inline-end);
 
 			> * {
 				grid-area: 1 / 1 / -1 / -1;
@@ -20,9 +16,14 @@
 }
 
 .🥝-select:is(.🥝-button) {
+	--✨padding-inline-start: 8px;
+	--✨padding-inline-end: calc(4px + 16px + 4px); /* (gap) + (arrow size) + (padding-inline - disclosure arrow offset) */
+
 	@layer base {
 		&:where(select:not([multiple])) {
 			appearance: none;
+			--🥝button-padding-inline: var(--✨padding-inline-start) var(--✨padding-inline-end);
+			--🥝ghost-inline-offset: var(--✨padding-inline-start);
 		}
 	}
 }

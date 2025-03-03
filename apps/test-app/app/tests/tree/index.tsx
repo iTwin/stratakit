@@ -8,7 +8,6 @@ import * as Tree from "@itwin/itwinui-react-internal/src/bricks/Tree.tsx";
 import placeholderIcon from "@itwin/itwinui-icons/placeholder.svg";
 import unlockIcon from "@itwin/itwinui-icons/lock-unlocked.svg";
 import showIcon from "@itwin/itwinui-icons/visibility-show.svg";
-import { Anchor } from "@itwin/itwinui-react/bricks";
 
 export const handle = { title: "Tree" };
 
@@ -122,14 +121,12 @@ export default definePage(function Page({
 												label="Failed to create hierarchy"
 												icon={placeholderIcon}
 												actions={[
-													<Anchor
+													<Tree.ItemErrorAction
 														key="retry"
-														// biome-ignore lint/a11y/useButtonType: <explanation>
-														render={<button />}
 														onClick={() => setHasError(false)}
 													>
 														Retry
-													</Anchor>,
+													</Tree.ItemErrorAction>,
 												]}
 											/>
 										) : undefined

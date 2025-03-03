@@ -176,3 +176,9 @@
 		padding-block-start: 4px;
 	}
 }
+
+.🥝-tree-item-error-action:is(.🥝-anchor) {
+	@layer base {
+		text-decoration: underline;
+	}
+}

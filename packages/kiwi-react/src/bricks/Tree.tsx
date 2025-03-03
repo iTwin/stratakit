@@ -10,6 +10,7 @@ import { IconButton } from "./IconButton.js";
 import { Icon } from "./Icon.js";
 import { forwardRef, type BaseProps } from "./~utils.js";
 import { useEventHandlers } from "./~hooks.js";
+import { Anchor } from "./Anchor.js";
 
 // ----------------------------------------------------------------------------
 
@@ -392,7 +393,7 @@ interface TreeItemErrorProps extends BaseProps {
 	 */
 	label?: React.ReactNode;
 	/**
-	 * The actions available for the tree item error. Use `Button` component.
+	 * The actions available for the tree item error. Must be a list of `Tree.ItemErrorAction` components.
 	 */
 	actions?: React.ReactNode[];
 }
@@ -443,6 +444,28 @@ DEV: TreeItemErrorActions.displayName = "TreeItemErrorActions";
 
 // ----------------------------------------------------------------------------
 
+interface TreeItemErrorActionProps extends BaseProps<"button"> {}
+
+/**
+ * An action for `<Tree.ItemError>`, to be passed into the `actions` prop. The action is typically
+ * displayed as an anchor button just below the error description.
+ */
+const TreeItemErrorAction = forwardRef<"button", TreeItemErrorActionProps>(
+	(props, forwardedRef) => {
+		return (
+			<Ariakit.Button
+				render={<Anchor render={<button />} />}
+				{...props}
+				className={cx("🥝-tree-item-error-action", props.className)}
+				ref={forwardedRef}
+			/>
+		);
+	},
+);
+DEV: TreeItemErrorAction.displayName = "Tree.ItemErrorAction";
+
+// ----------------------------------------------------------------------------
+
 const TreeItemContext = React.createContext<
 	| {
 			expanded?: boolean;
@@ -459,4 +482,5 @@ export {
 	TreeItem as Item,
 	TreeItemAction as ItemAction,
 	TreeItemError as ItemError,
+	TreeItemErrorAction as ItemErrorAction,
 };

@@ -1,1 +1,0 @@
-import{c as n,_ as s,d as i,f as p,e as u}from"./LMDWO4NN-D67-TuL4.js";var c="hr",f=n(function(a){var r=a,{orientation:t="horizontal"}=r,e=s(r,["orientation"]);return e=i({role:"separator","aria-orientation":t},e),e}),l=p(function(a){const r=f(a);return u(c,r)});export{l as S};

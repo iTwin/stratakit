@@ -9,20 +9,17 @@
 		inline-size: 100%;
 		border-radius: 9999px;
 		overflow: hidden;
-		position: relative;
-		display: grid;
-		grid-template-columns: auto;
-		grid-template-rows: 1fr;
+		display: flex;
 	}
 
 	@layer modifiers {
 		&:where([data-kiwi-tone="neutral"]) {
-			--🥝progress-bar-color: var(--ids-color-icon-neutral-base);
+			--🥝progress-bar-fill-color: var(--ids-color-icon-neutral-base);
 			--🥝progress-bar-track-color: var(--ids-color-border-page-base);
 		}
 
 		&:where([data-kiwi-tone="accent"]) {
-			--🥝progress-bar-color: var(--ids-color-icon-accent-strong);
+			--🥝progress-bar-fill-color: var(--ids-color-icon-accent-strong);
 			--🥝progress-bar-track-color: var(--ids-color-bg-accent-muted);
 		}
 
@@ -42,7 +39,7 @@
 		}
 
 		@media (forced-colors: active) {
-			--🥝progress-bar-color: CanvasText;
+			--🥝progress-bar-fill-color: CanvasText;
 			--🥝progress-bar-track-color: CanvasText;
 		}
 	}
@@ -73,7 +70,7 @@
 
 .🥝-progress-bar-fill {
 	@layer base {
-		background-color: var(--🥝progress-bar-color);
+		background-color: var(--🥝progress-bar-fill-color);
 		border-radius: inherit;
 	}
 }

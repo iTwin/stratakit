@@ -13,12 +13,12 @@ const sizes = ["xsmall", "small", "medium", "large", "xlarge"] as const;
 export default definePage(
 	function Page({ variant, size, alt }) {
 		return (
-			<Skeleton.Root alt={alt}>
+			<Skeleton.Group alt={alt}>
 				<Skeleton.Item
 					variant={variant as "object" | undefined}
 					size={size as (typeof sizes)[0]}
 				/>
-			</Skeleton.Root>
+			</Skeleton.Group>
 		);
 	},
 	{ visual: VisualTest },
@@ -27,7 +27,7 @@ export default definePage(
 function VisualTest() {
 	return (
 		<div style={{ display: "flex", flexDirection: "column", rowGap: 4 }}>
-			<Skeleton.Root>
+			<Skeleton.Group>
 				{sizes.map((textSize) => (
 					<Skeleton.Item
 						key={textSize}
@@ -36,11 +36,11 @@ function VisualTest() {
 						style={{ marginBottom: 8 }}
 					/>
 				))}
-			</Skeleton.Root>
+			</Skeleton.Group>
 
 			<Divider style={{ margin: "16px 0" }} />
 
-			<Skeleton.Root style={{ gap: 16 }}>
+			<Skeleton.Group style={{ gap: 16 }}>
 				{sizes.map((objectSize) => (
 					<Skeleton.Item
 						key={objectSize}
@@ -49,7 +49,7 @@ function VisualTest() {
 						style={{ marginBottom: 8 }}
 					/>
 				))}
-			</Skeleton.Root>
+			</Skeleton.Group>
 		</div>
 	);
 }

@@ -21,10 +21,10 @@ interface SkeletonProps extends BaseProps {
  * A wrapper around `Skeleton.Item`s to roughly represent the loaded content before it finishes loading.
  *
  * ```tsx
- * <Skeleton.Root>
+ * <Skeleton.Group>
  *   <Skeleton.Item variant="object" size="small" shape="square" />
  *   <Skeleton.Item variant="text" size="medium" />
- * </Skeleton.Root>
+ * </Skeleton.Group>
  * ```
  */
 const Skeleton = forwardRef<"div", SkeletonProps>((props, forwardedRef) => {
@@ -41,7 +41,7 @@ const Skeleton = forwardRef<"div", SkeletonProps>((props, forwardedRef) => {
 		</Ariakit.Role.div>
 	);
 });
-DEV: Skeleton.displayName = "Skeleton.Root";
+DEV: Skeleton.displayName = "Skeleton.Group";
 
 // ----------------------------------------------------------------------------
 
@@ -63,15 +63,15 @@ type SkeletonItemProps = SkeletonItemPropsBase & {
 };
 
 /**
- * Needs to be wrapped around `Skeleton.Root`.
+ * Needs to be wrapped around `Skeleton.Group`.
  *
  * `Skeleton.Item` represents the loaded content before it finishes loading.
  *
  * ```tsx
- * <Skeleton.Root>
+ * <Skeleton.Group>
  *   <Skeleton.Item variant="object" size="small" shape="square" />
  *   <Skeleton.Item variant="text" size="medium" />
- * </Skeleton.Root>
+ * </Skeleton.Group>
  * ```
  */
 const SkeletonItem = forwardRef<"div", SkeletonItemProps>(
@@ -94,4 +94,4 @@ DEV: SkeletonItem.displayName = "Skeleton.Item";
 
 // ----------------------------------------------------------------------------
 
-export { Skeleton as Root, SkeletonItem as Item };
+export { Skeleton as Group, SkeletonItem as Item };

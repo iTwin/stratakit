@@ -42,7 +42,7 @@ export default definePage(function Page({
 		{ label: "Item 3", selected: false },
 	]);
 
-	const [hasError, setHasError] = React.useState(error);
+	const [renderError, setRenderError] = React.useState(error);
 	return (
 		<Tree.Root style={{ maxInlineSize: overflow ? 300 : undefined }}>
 			{data.map((item, index, items) => {
@@ -96,6 +96,7 @@ export default definePage(function Page({
 								setData(newData);
 							};
 
+							const hasError = renderError && childIndex === 0;
 							return (
 								<Tree.Item
 									key={child.label}
@@ -115,15 +116,16 @@ export default definePage(function Page({
 										/>,
 										<Tree.ItemAction key="show" icon={showIcon} label="Show" />,
 									]}
+									expanded={hasError ? true : undefined}
 									error={
-										hasError && childIndex === 0 ? (
+										hasError ? (
 											<Tree.ItemError
 												label="Failed to create hierarchy"
 												icon={placeholderIcon}
 												actions={[
 													<Tree.ItemErrorAction
 														key="retry"
-														onClick={() => setHasError(false)}
+														onClick={() => setRenderError(false)}
 													>
 														Retry
 													</Tree.ItemErrorAction>,

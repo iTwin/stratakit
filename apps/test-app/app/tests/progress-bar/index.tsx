@@ -25,12 +25,9 @@ export default definePage(
 
 function VisualTest() {
 	return (
-		<div style={{ display: "grid", gap: 4 }}>
+		<div style={{ display: "grid", gap: 10 }}>
 			{tones.map((tone) => (
-				<div
-					key={tone}
-					style={{ display: "flex", gap: 4, alignItems: "center" }}
-				>
+				<div key={tone} style={{ display: "grid", gap: 10 }}>
 					{sizes.map((size) => (
 						<ProgressBar key={size} size={size} tone={tone} />
 					))}

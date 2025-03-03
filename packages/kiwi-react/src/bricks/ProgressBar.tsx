@@ -55,29 +55,10 @@ export const ProgressBar = forwardRef<"div", ProgressBarProps>(
 				className={cx("🥝-progress-bar", props.className)}
 				ref={forwardedRef}
 			>
-				<svg
-					aria-hidden="true"
-					className="🥝-progress-bar-svg"
-					preserveAspectRatio="none"
-				>
-					<line
-						className="🥝-progress-bar-svg-track"
-						x1="0%"
-						x2="100%"
-						y1="50%"
-						y2="50%"
-						pathLength="100"
-					/>
+				<div className="🥝-progress-bar-wrapper">
+					<div className="🥝-progress-bar-fill" />
+				</div>
 
-					<line
-						className="🥝-progress-bar-svg-fill"
-						x1="0%"
-						x2="100%"
-						y1="50%"
-						y2="50%"
-						pathLength="100"
-					/>
-				</svg>
 				<VisuallyHidden>{alt}</VisuallyHidden>
 			</Ariakit.Role>
 		);

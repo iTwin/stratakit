@@ -9,20 +9,10 @@
 		inline-size: 100%;
 		border-radius: 9999px;
 		overflow: hidden;
-		/* outline: 1px solid red; */
-
-		/* position: relative;
-
-		&::after {
-			content: "";
-			height: inherit;
-			width: 25%;
-			background-color: red;
-			position: absolute;
-			top: 50%;
-			left: 50%;
-			transform: translate(-50%, -50%);
-		} */
+		position: relative;
+		display: grid;
+		grid-template-columns: auto;
+		grid-template-rows: 1fr;
 	}
 
 	@layer modifiers {
@@ -38,14 +28,17 @@
 
 		&:where([data-kiwi-size="small"]) {
 			--🥝progress-bar-size: 0.063rem;
+			--🥝progress-bar-gap: 0.125rem;
 		}
 
 		&:where([data-kiwi-size="medium"]) {
 			--🥝progress-bar-size: 0.125rem;
+			--🥝progress-bar-gap: 0.125rem;
 		}
 
 		&:where([data-kiwi-size="large"]) {
 			--🥝progress-bar-size: 0.25rem;
+			--🥝progress-bar-gap: 0.25rem;
 		}
 
 		@media (forced-colors: active) {
@@ -55,64 +48,41 @@
 	}
 }
 
-.🥝-progress-bar-svg {
+.🥝-progress-bar-wrapper {
 	@layer base {
-		block-size: inherit;
-		inline-size: inherit;
-	}
-}
-
-.🥝-progress-bar-svg-track,
-.🥝-progress-bar-svg-fill {
-	@layer base {
-		stroke-width: var(--🥝progress-bar-size);
-		stroke-linecap: round;
-		animation-duration: 1.5s;
-		animation-iteration-count: infinite;
-		animation-timing-function: linear;
-		animation-fill-mode: both;
+		display: grid;
+		grid-template-columns: 100% 25% 100%;
+		column-gap: var(--🥝progress-bar-gap);
+		border-radius: inherit;
+		inline-size: 100%;
+		animation: --🥝progress-bar-fill linear 1.5s infinite;
 
 		@media (prefers-reduced-motion) {
 			animation-timing-function: steps(4, end);
 			animation-duration: 4s;
 		}
+
+		&::before,
+		&::after {
+			content: "";
+			background-color: var(--🥝progress-bar-track-color);
+			border-radius: inherit;
+		}
 	}
 }
 
-.🥝-progress-bar-svg-track {
+.🥝-progress-bar-fill {
 	@layer base {
-		stroke: var(--🥝progress-bar-track-color);
-		stroke-dashoffset: 36;
-		stroke-dasharray: 72, 28;
-		/* animation-name: --🥝progress-bar-track-slide; */
+		background-color: var(--🥝progress-bar-color);
+		border-radius: inherit;
 	}
 }
 
-.🥝-progress-bar-svg-fill {
-	@layer base {
-		stroke: var(--🥝progress-bar-color);
-		stroke-dashoffset: 62.5;
-		stroke-dasharray: 25, 75;
-		/* animation-name: --🥝progress-bar-fill-slide; */
-	}
-}
-
-@keyframes --🥝progress-bar-track-slide {
+@keyframes --🥝progress-bar-fill {
 	0% {
-		stroke-dashoffset: 31%;
+		transform: translateX(calc(-125% - var(--🥝progress-bar-gap)));
 	}
-
 	100% {
-		stroke-dashoffset: 8%;
-	}
-}
-
-@keyframes --🥝progress-bar-fill-slide {
-	0% {
-		stroke-dashoffset: 38%;
-	}
-
-	100% {
-		stroke-dashoffset: 15%;
+		transform: translateX(0%);
 	}
 }

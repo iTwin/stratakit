@@ -67,7 +67,7 @@ interface TreeItemRootProps extends Omit<BaseProps, "content" | "children"> {
 	/**
 	 * Decoration(s) to be displayed inside the tree item.
 	 */
-	decoration?: React.ReactNode;
+	decorations?: React.ReactNode;
 	/**
 	 * The primary label that identifies the tree item and is displayed inside it.
 	 */
@@ -120,7 +120,7 @@ const TreeItemRoot = forwardRef<"div", TreeItemRootProps>(
 			"aria-level": level,
 			selected,
 			expanded,
-			decoration,
+			decorations,
 			label,
 			description,
 			actions,
@@ -159,9 +159,9 @@ const TreeItemRoot = forwardRef<"div", TreeItemRootProps>(
 		const describedBy = React.useMemo(() => {
 			const idRefs = [];
 			if (description) idRefs.push(descriptionId);
-			if (decoration) idRefs.push(decorationId);
+			if (decorations) idRefs.push(decorationId);
 			return idRefs.length > 0 ? idRefs.join(" ") : undefined;
-		}, [decoration, decorationId, description, descriptionId]);
+		}, [decorations, decorationId, description, descriptionId]);
 
 		return (
 			<TreeItemContext.Provider
@@ -214,7 +214,7 @@ const TreeItemRoot = forwardRef<"div", TreeItemRootProps>(
 								/>
 							</GhostAligner>
 							<div id={decorationId} className="🥝-tree-item-decoration">
-								{decoration}
+								{decorations}
 							</div>
 						</ListItem.Decoration>
 						<ListItem.Content id={labelId} className="🥝-tree-item-content">

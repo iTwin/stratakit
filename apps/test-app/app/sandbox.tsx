@@ -1018,7 +1018,7 @@ function SandboxTree({
 									return newData;
 								});
 							}}
-							decoration={
+							decorations={
 								<>
 									{item.color ? (
 										<div

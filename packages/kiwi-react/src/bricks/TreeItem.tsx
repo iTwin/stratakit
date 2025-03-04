@@ -205,7 +205,7 @@ const TreeItemRoot = forwardRef<"div", TreeItemRootProps>(
 									}}
 								/>
 							</GhostAligner>
-							{decoration}
+							<div className="🥝-tree-item-decoration">{decoration}</div>
 						</ListItem.Decoration>
 						<ListItem.Content id={labelId} className="🥝-tree-item-content">
 							{label}

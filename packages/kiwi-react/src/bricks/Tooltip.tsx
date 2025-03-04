@@ -4,13 +4,14 @@
  *--------------------------------------------------------------------------------------------*/
 import * as React from "react";
 import cx from "classnames";
-import * as Ariakit from "@ariakit/react";
-import { forwardRef, supportsPopover, type FocusableProps } from "./~utils.js";
+import * as AkTooltip from "@ariakit/react/tooltip";
+import { forwardRef, type FocusableProps } from "./~utils.js";
+import { usePopoverApi } from "./~hooks.js";
 
 interface TooltipProps
 	extends Omit<FocusableProps<"div">, "content">,
-		Pick<Ariakit.TooltipProps, "open" | "unmountOnHide">,
-		Pick<Ariakit.TooltipProviderProps, "defaultOpen" | "setOpen"> {
+		Pick<AkTooltip.TooltipProps, "open" | "unmountOnHide">,
+		Pick<AkTooltip.TooltipProviderProps, "defaultOpen" | "setOpen"> {
 	/**
 	 * The content to be displayed inside the tooltip when the trigger element is hovered or focused.
 	 */
@@ -69,36 +70,23 @@ export const Tooltip = forwardRef<"div", TooltipProps>(
 			...rest
 		} = props;
 
-		const store = Ariakit.useTooltipStore();
-		const open = Ariakit.useStoreState(store, (state) => state.open);
-		const popover = Ariakit.useStoreState(
-			store,
-			(state) => state.popoverElement,
-		);
-
-		React.useEffect(
-			function syncPopoverWithOpenState() {
-				if (popover?.isConnected) {
-					popover?.togglePopover?.(open);
-				}
-			},
-			[open, popover],
-		);
+		const store = AkTooltip.useTooltipStore();
+		const popover = usePopoverApi(store);
 
 		return (
 			<>
-				<Ariakit.TooltipProvider
+				<AkTooltip.TooltipProvider
 					store={store}
 					defaultOpen={defaultOpenProp}
 					open={openProp}
 					setOpen={setOpenProp}
 				>
-					<Ariakit.TooltipAnchor
+					<AkTooltip.TooltipAnchor
 						render={children}
 						{...(type === "description" && { "aria-describedby": id })}
 						{...(type === "label" && { "aria-labelledby": id })}
 					/>
-					<Ariakit.Tooltip
+					<AkTooltip.Tooltip
 						aria-hidden="true"
 						{...rest}
 						unmountOnHide={unmountOnHide}
@@ -106,15 +94,15 @@ export const Tooltip = forwardRef<"div", TooltipProps>(
 						ref={forwardedRef}
 						id={id}
 						style={{
-							zIndex: supportsPopover ? undefined : 9999,
+							...popover.style,
 							...props.style,
 						}}
-						wrapperProps={{ popover: "manual" }}
-						portal={!supportsPopover}
+						wrapperProps={popover.wrapperProps}
+						portal={popover.portal}
 					>
 						{content}
-					</Ariakit.Tooltip>
-				</Ariakit.TooltipProvider>
+					</AkTooltip.Tooltip>
+				</AkTooltip.TooltipProvider>
 			</>
 		);
 	},

@@ -56,7 +56,6 @@ function CustomIconTest() {
 				<Icon
 					data-custom-icon
 					render={
-						// biome-ignore lint/a11y/noSvgWithoutTitle: Bad lint rule
 						<svg viewBox="0 0 100 100">
 							<circle cx="50" cy="50" r="50" fill="currentColor" />
 						</svg>

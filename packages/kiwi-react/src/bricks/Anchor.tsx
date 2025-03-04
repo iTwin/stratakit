@@ -3,7 +3,8 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 import cx from "classnames";
-import * as Ariakit from "@ariakit/react";
+import { Role } from "@ariakit/react/role";
+import { Focusable } from "@ariakit/react/focusable";
 import { forwardRef, type FocusableProps } from "./~utils.js";
 
 interface AnchorProps extends FocusableProps<"a"> {
@@ -24,15 +25,12 @@ interface AnchorProps extends FocusableProps<"a"> {
 export const Anchor = forwardRef<"a", AnchorProps>((props, forwardedRef) => {
 	const { tone = "neutral", ...rest } = props;
 	return (
-		<Ariakit.Role.a
+		<Role.a
 			{...rest}
 			data-kiwi-tone={tone}
 			className={cx("🥝-anchor", props.className)}
 			render={
-				<Ariakit.Focusable
-					accessibleWhenDisabled
-					render={props.render || <a />}
-				/>
+				<Focusable accessibleWhenDisabled render={props.render || <a />} />
 			}
 			ref={forwardedRef}
 		/>

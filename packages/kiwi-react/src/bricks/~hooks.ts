@@ -3,6 +3,9 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 import * as React from "react";
+import { useStoreState } from "@ariakit/react/store";
+import { supportsPopover } from "./~utils.js";
+import type { PopoverStore } from "@ariakit/react/popover";
 
 /**
  * Wrapper over `useState` that always gives preference to the
@@ -149,6 +152,40 @@ export function useSafeContext<C>(context: React.Context<C>) {
 		throw new Error(`${context.displayName || "Context"} is undefined`);
 	}
 
-	// biome-ignore lint/style/noNonNullAssertion: we already checked for undefined
-	return value!;
+	return value;
+}
+
+/**
+ * Hook that makes it easy to use the [Popover API](https://developer.mozilla.org/en-US/docs/Web/API/Popover_API).
+ *
+ * Accepts an Ariakit store of a popover-like component, and returns a
+ * set of props that should be passed back to the component.
+ *
+ * Internally, this hook will sync the `open` state of the store with the
+ * DOM element.
+ *
+ * @private
+ */
+export function usePopoverApi(store: PopoverStore | undefined) {
+	const open = useStoreState(store, (state) => state?.open);
+	const popover = useStoreState(store, (state) => state?.popoverElement);
+
+	React.useEffect(
+		function syncPopoverWithOpenState() {
+			if (popover?.isConnected) {
+				popover?.togglePopover?.(open);
+			}
+		},
+		[open, popover],
+	);
+
+	return React.useMemo(
+		() =>
+			({
+				portal: !supportsPopover,
+				style: { zIndex: supportsPopover ? undefined : 9999 },
+				wrapperProps: { popover: "manual" },
+			}) as const,
+		[],
+	);
 }

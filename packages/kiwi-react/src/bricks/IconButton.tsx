@@ -3,7 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 import cx from "classnames";
-import * as Ariakit from "@ariakit/react";
+import { useToolbarContext, ToolbarItem } from "@ariakit/react/toolbar";
 import { Button } from "./Button.js";
 import { VisuallyHidden } from "./VisuallyHidden.js";
 import { Icon } from "./Icon.js";
@@ -22,7 +22,7 @@ interface IconButtonBaseProps
 	/**
 	 * Icon to be displayed inside the button.
 	 *
-	 * Can be a URL of an SVG from the `kiwi-icons` package,
+	 * Can be a URL of an SVG from the `@itwin/itwinui-icons` package,
 	 * or a custom JSX icon.
 	 */
 	icon: string | React.JSX.Element;
@@ -65,7 +65,7 @@ type IconButtonProps = IconButtonBaseProps & IconButtonExtraProps;
 /**
  * An icon-only button, with a required accessible name.
  *
- * The icon can be a URL from the `kiwi-icons` package:
+ * The icon can be a URL from the `@itwin/itwinui-icons` package:
  * ```tsx
  * <IconButton
  *   label="Reveal full content"
@@ -98,15 +98,13 @@ export const IconButton = forwardRef<"button", IconButtonProps>(
 	(props, forwardedRef) => {
 		const { label, icon, isActive, labelVariant, ...rest } = props;
 
-		const toolbar = Ariakit.useToolbarContext();
+		const toolbar = useToolbarContext();
 
 		const button = (
 			<Button
 				aria-pressed={isActive}
 				{...rest}
-				render={
-					toolbar ? <Ariakit.ToolbarItem render={props.render} /> : props.render
-				}
+				render={toolbar ? <ToolbarItem render={props.render} /> : props.render}
 				className={cx("🥝-icon-button", props.className)}
 				ref={forwardedRef}
 			>

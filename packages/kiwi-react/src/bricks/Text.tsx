@@ -2,7 +2,7 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-import * as Ariakit from "@ariakit/react";
+import { Role } from "@ariakit/react/role";
 import cx from "classnames";
 import { forwardRef, type BaseProps } from "./~utils.js";
 
@@ -10,7 +10,7 @@ interface TextProps extends BaseProps {
 	/**
 	 * The typography variant to use.
 	 */
-	variant?:
+	variant:
 		| "display-lg"
 		| "display-md"
 		| "display-sm"
@@ -43,7 +43,7 @@ export const Text = forwardRef<"div", TextProps>((props, forwardedRef) => {
 	const { variant, ...rest } = props;
 
 	return (
-		<Ariakit.Role
+		<Role
 			{...rest}
 			className={cx("🥝-text", props.className)}
 			data-kiwi-text-variant={variant}

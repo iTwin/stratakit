@@ -9,6 +9,11 @@
 		border-radius: var(--🥝skeleton-border-radius);
 		block-size: var(--🥝skeleton-height);
 		inline-size: var(--🥝skeleton-width);
+
+		@media (forced-colors: active) {
+			forced-color-adjust: none;
+			background: linear-gradient(292deg, CanvasText, CanvasText, Canvas, CanvasText, CanvasText);
+		}
 	}
 
 	@layer modifiers {

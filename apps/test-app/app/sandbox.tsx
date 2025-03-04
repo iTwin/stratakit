@@ -1021,16 +1021,7 @@ function SandboxTree({
 							decorations={
 								<>
 									{item.color ? (
-										<div
-											style={
-												{
-													"--color": `var(--color--${item.color})`,
-												} as React.CSSProperties
-											}
-											className={styles.colorTile}
-										>
-											<VisuallyHidden>{item.color}</VisuallyHidden>
-										</div>
+										<ColorSwatch color={item.color} alt={item.color} />
 									) : null}
 									<Icon href={placeholderIcon} />
 								</>
@@ -1301,3 +1292,18 @@ const TabsContext = React.createContext<{
 }>({
 	selectedId: "",
 });
+
+function ColorSwatch(props: { color: string; alt?: string }) {
+	return (
+		<div
+			style={
+				{
+					"--color": `var(--color--${props.color})`,
+				} as React.CSSProperties
+			}
+			className={styles.colorSwatch}
+		>
+			{props.alt ? <VisuallyHidden>{props.alt}</VisuallyHidden> : null}
+		</div>
+	);
+}

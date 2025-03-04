@@ -246,7 +246,7 @@
 	opacity: 0;
 }
 
-.colorTile {
+.colorSwatch {
 	--color: var(--color--default);
 	--color--default: var(--color,);
 	--color--blue: var(--color,);

@@ -1296,12 +1296,12 @@ const TabsContext = React.createContext<{
 function ColorSwatch(props: { color: string; alt?: string }) {
 	return (
 		<div
+			className={styles.colorSwatch}
 			style={
 				{
-					"--color": `var(--color--${props.color})`,
+					"--_color": `var(--_color--${props.color})`,
 				} as React.CSSProperties
 			}
-			className={styles.colorSwatch}
 		>
 			{props.alt ? <VisuallyHidden>{props.alt}</VisuallyHidden> : null}
 		</div>

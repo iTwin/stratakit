@@ -4,7 +4,6 @@
  *--------------------------------------------------------------------------------------------*/
 import { definePage } from "~/~utils.tsx";
 import * as Skeleton from "@itwin/itwinui-react-internal/src/bricks/Skeleton.tsx";
-import { Divider } from "@itwin/itwinui-react-internal/src/bricks/Divider.tsx";
 
 export const handle = { title: "Skeleton" };
 
@@ -37,8 +36,6 @@ function VisualTest() {
 					/>
 				))}
 			</Skeleton.Group>
-
-			<Divider style={{ margin: "16px 0" }} />
 
 			<Skeleton.Group style={{ gap: 16 }}>
 				{sizes.map((objectSize) => (

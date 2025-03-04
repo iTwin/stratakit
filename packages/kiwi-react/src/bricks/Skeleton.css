@@ -34,10 +34,6 @@
 			&:where([data-kiwi-size="xlarge"]) {
 				--🥝skeleton-height: 1.5rem;
 			}
-
-			&:where([data-kiwi-size="xxlarge"]) {
-				--🥝skeleton-height: 2rem;
-			}
 		}
 
 		&:where([data-kiwi-variant="object"]) {

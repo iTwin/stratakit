@@ -3,7 +3,8 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 import cx from "classnames";
-import * as Ariakit from "@ariakit/react";
+import { Role } from "@ariakit/react/role";
+import { useCompositeStore, Composite } from "@ariakit/react/composite";
 import { forwardRef, type BaseProps } from "./~utils.js";
 import { Root as TreeItemRoot, Action as TreeItemAction } from "./TreeItem.js";
 
@@ -28,18 +29,18 @@ interface TreeProps extends BaseProps {}
  * ```
  */
 const Tree = forwardRef<"div", TreeProps>((props, forwardedRef) => {
-	const composite = Ariakit.useCompositeStore({ orientation: "vertical" });
+	const composite = useCompositeStore({ orientation: "vertical" });
 
 	return (
-		<Ariakit.Role.div
+		<Role.div
 			role="tree"
 			{...props}
-			render={<Ariakit.Composite store={composite} />}
+			render={<Composite store={composite} />}
 			className={cx("🥝-tree", props.className)}
 			ref={forwardedRef}
 		>
 			{props.children}
-		</Ariakit.Role.div>
+		</Role.div>
 	);
 });
 DEV: Tree.displayName = "Tree.Root";

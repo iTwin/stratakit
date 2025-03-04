@@ -4,7 +4,12 @@
  *--------------------------------------------------------------------------------------------*/
 import * as React from "react";
 import cx from "classnames";
-import * as Ariakit from "@ariakit/react";
+import { Role } from "@ariakit/react/role";
+import {
+	CompositeItem,
+	type CompositeItemProps,
+} from "@ariakit/react/composite";
+import { Toolbar } from "@ariakit/react/toolbar";
 import * as ListItem from "./ListItem.js";
 import { IconButton } from "./IconButton.js";
 import { Icon } from "./Icon.js";
@@ -163,8 +168,8 @@ const TreeItemRoot = forwardRef<"div", TreeItemRootProps>(
 					[level, expanded, selected],
 				)}
 			>
-				<Ariakit.CompositeItem
-					render={<Ariakit.Role {...rest} />}
+				<CompositeItem
+					render={<Role {...rest} />}
 					onClick={
 						useEventHandlers(
 							onClickProp,
@@ -184,7 +189,7 @@ const TreeItemRoot = forwardRef<"div", TreeItemRootProps>(
 					aria-describedby={description ? descriptionId : undefined}
 					aria-level={level}
 					className={cx("🥝-tree-item", props.className)}
-					ref={forwardedRef as Ariakit.CompositeItemProps["ref"]}
+					ref={forwardedRef as CompositeItemProps["ref"]}
 				>
 					<ListItem.Root
 						data-kiwi-expanded={expanded}
@@ -219,7 +224,7 @@ const TreeItemRoot = forwardRef<"div", TreeItemRootProps>(
 							render={<TreeItemActions>{actions}</TreeItemActions>}
 						/>
 					</ListItem.Root>
-				</Ariakit.CompositeItem>
+				</CompositeItem>
 			</TreeItemContext.Provider>
 		);
 	},
@@ -230,14 +235,14 @@ DEV: TreeItemRoot.displayName = "TreeItem.Root";
 
 const TreeItemActions = forwardRef<"div", BaseProps>((props, forwardedRef) => {
 	return (
-		<Ariakit.Toolbar
+		<Toolbar
 			{...props}
 			onClick={useEventHandlers(props.onClick, (e) => e.stopPropagation())}
 			className={cx("🥝-tree-item-actions", props.className)}
 			ref={forwardedRef}
 		>
 			{props.children}
-		</Ariakit.Toolbar>
+		</Toolbar>
 	);
 });
 DEV: TreeItemActions.displayName = "TreeItemActions";
@@ -319,7 +324,7 @@ const TreeChevron = forwardRef<"svg", TreeChevronProps>(
 			<Icon
 				{...props}
 				render={
-					<Ariakit.Role.svg
+					<Role.svg
 						width="16"
 						height="16"
 						fill="currentColor"
@@ -327,7 +332,7 @@ const TreeChevron = forwardRef<"svg", TreeChevronProps>(
 						render={props.render}
 					>
 						<path d="M4.146 6.146a.5.5 0 0 1 .708 0L8 9.293l3.146-3.147a.5.5 0 0 1 .708.708l-3.5 3.5a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 0 1 0-.708Z" />
-					</Ariakit.Role.svg>
+					</Role.svg>
 				}
 				className={cx("🥝-tree-chevron", props.className)}
 				ref={forwardedRef}

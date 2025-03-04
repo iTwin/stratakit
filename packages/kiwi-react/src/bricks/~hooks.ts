@@ -3,8 +3,9 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 import * as React from "react";
-import * as Ariakit from "@ariakit/react";
+import { useStoreState } from "@ariakit/react/store";
 import { supportsPopover } from "./~utils.js";
+import type { PopoverStore } from "@ariakit/react/popover";
 
 /**
  * Wrapper over `useState` that always gives preference to the
@@ -165,14 +166,9 @@ export function useSafeContext<C>(context: React.Context<C>) {
  *
  * @private
  */
-export function usePopoverApi(
-	store: Parameters<typeof Ariakit.useStoreState>[0],
-) {
-	const open = Ariakit.useStoreState(store, (state) => state?.open);
-	const popover = Ariakit.useStoreState(
-		store,
-		(state) => state?.popoverElement,
-	);
+export function usePopoverApi(store: PopoverStore | undefined) {
+	const open = useStoreState(store, (state) => state?.open);
+	const popover = useStoreState(store, (state) => state?.popoverElement);
 
 	React.useEffect(
 		function syncPopoverWithOpenState() {

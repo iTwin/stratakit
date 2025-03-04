@@ -3,7 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 import cx from "classnames";
-import * as Ariakit from "@ariakit/react";
+import { Role } from "@ariakit/react/role";
 import { forwardRef, type BaseProps } from "./~utils.js";
 import { FieldLabel } from "./Field.js";
 
@@ -33,7 +33,7 @@ export const Label = forwardRef<"label", LabelProps>((props, forwardedRef) => {
 	return (
 		<FieldLabel
 			render={
-				<Ariakit.Role.label
+				<Role.label
 					{...props}
 					className={cx("🥝-label", props.className)}
 					ref={forwardedRef}

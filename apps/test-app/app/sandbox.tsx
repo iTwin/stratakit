@@ -482,6 +482,7 @@ interface TreeItem {
 	id: string;
 	label: string;
 	description?: string;
+	error?: "simple" | "complex";
 	type?: string; // Used for filtering
 	items: TreeItem[];
 	expanded: boolean;
@@ -637,11 +638,14 @@ const complexTree = {
 				}),
 				createTreeItem({
 					label: "003-BENSTR-ZO-LG2-M3-S-00001 - S-BEAM-PURL",
+					expanded: false,
+					error: "simple",
 					description: "Columns: concrete",
 				}),
 				createTreeItem({
 					label: "005-BENROAD-00-XX-M3-G-00002.dgn",
 					expanded: false,
+					error: "complex",
 					items: [
 						createTreeItem({
 							label: "005-BENROAD-00-XX-M3-G-00002-A",
@@ -958,7 +962,11 @@ function SandboxTree({
 								}
 								setSelected(item.id);
 							}}
-							expanded={item.items.length === 0 ? undefined : item.expanded}
+							expanded={
+								item.items.length === 0 && !item.error
+									? undefined
+									: item.expanded
+							}
 							onExpandedChange={(expanded) => {
 								setItems((prev) => {
 									const treeItem = findTreeItem(prev, item.id);
@@ -991,12 +999,44 @@ function SandboxTree({
 								/>,
 								<TreeMoreActions key="more" hidden={item.hidden} />,
 							]}
+							error={
+								item.error && item.expanded ? (
+									<TreeItemError error={item.error} />
+								) : undefined
+							}
 						/>
 					);
 				})}
 			</Tree.Root>
 		</React.Suspense>
 	);
+}
+
+function TreeItemError({ error }: { error: "simple" | "complex" }) {
+	if (error === "simple")
+		return (
+			<Tree.ItemError
+				label="Failed to create hierarchy"
+				icon={placeholderIcon}
+				actions={[
+					<Tree.ItemErrorAction key="retry">Retry</Tree.ItemErrorAction>,
+				]}
+			/>
+		);
+
+	if (error === "complex")
+		return (
+			<Tree.ItemError
+				label="The hierarchy exceeds 1000 items. Provide additional filtering or increase the limit."
+				icon={placeholderIcon}
+				actions={[
+					<Tree.ItemErrorAction key="add">Add filter</Tree.ItemErrorAction>,
+					<Tree.ItemErrorAction key="increase">
+						Increase limit
+					</Tree.ItemErrorAction>,
+				]}
+			/>
+		);
 }
 
 function TreeMoreActions({ hidden }: { hidden?: boolean }) {

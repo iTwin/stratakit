@@ -182,7 +182,7 @@ const TreeItem = forwardRef<"div", TreeItemProps>((props, forwardedRef) => {
 	};
 
 	const hasDescription = !!description;
-	const hasError = !!description;
+	const hasError = !!error;
 	const labelId = React.useId();
 	const descriptionId = React.useId();
 	const errorId = React.useId();

@@ -1032,7 +1032,7 @@ function SandboxTree({
 											<VisuallyHidden>{item.color}</VisuallyHidden>
 										</div>
 									) : null}
-									<Icon href={placeholderIcon} style={{ display: "inline" }} />
+									<Icon href={placeholderIcon} />
 								</>
 							}
 							actions={[

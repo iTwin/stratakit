@@ -2,15 +2,26 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
+import globalStyles from "./tests.css?url";
 import { Anchor, Text, VisuallyHidden } from "@itwin/itwinui-react/bricks";
-import * as React from "react";
-import { Outlet, useMatches, type MetaFunction, Link } from "react-router";
+import {
+	Outlet,
+	useMatches,
+	type MetaFunction,
+	type LinksFunction,
+	Link,
+} from "react-router";
 import { RightSidebar, VariantsListContext } from "~/~utils.tsx";
 import styles from "./tests.module.css";
+import * as React from "react";
 
 export const meta: MetaFunction = () => {
 	return [{ title: "Kiwi tests" }];
 };
+
+export const links: LinksFunction = () => [
+	{ rel: "stylesheet", href: globalStyles },
+];
 
 export default function Page() {
 	const matches = useMatches();

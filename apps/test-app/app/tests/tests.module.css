@@ -39,12 +39,14 @@ div[role="listitem"] {
 	position: relative;
 	border-radius: 4px;
 
+	/* Indent guide */
 	&::before {
 		content: "";
 		background-color: var(--ids-color-bg-page-base);
-		margin: 0 calc(12px - 0.0625rem / 2); /* 12px padding - (1px / 2) width of the indent guide on each side */
+		margin: 0 12px;
 		inline-size: 0.0625rem;
 		block-size: 2rem;
+		transform: translateX(-50%);
 	}
 
 	> *:first-child {
@@ -54,6 +56,7 @@ div[role="listitem"] {
 	&:has(a[aria-current="page"]) {
 		background-color: var(--ids-color-bg-glow-on-surface-accent-pressed);
 
+		/* Current page line */
 		&::after {
 			content: "";
 			background-color: var(--ids-color-border-accent-strong);
@@ -61,9 +64,8 @@ div[role="listitem"] {
 			inline-size: 0.125rem;
 			border-radius: 9999px;
 			position: absolute;
-
-			inset-inline-start: calc(8px + 12px - 0.0625rem);
-			/* 8px padding + 12 indent guide margin - 0.0625rem space between item left edge and indent guide */
+			inset-inline-start: 20px; /* 8px padding + 12px indent guide margin */
+			transform: translateX(-50%);
 		}
 	}
 }

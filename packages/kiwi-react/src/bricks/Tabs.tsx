@@ -5,7 +5,7 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import cx from "classnames";
-import * as Ariakit from "@ariakit/react";
+import * as AkTab from "@ariakit/react/tab";
 import { useControlledState } from "./~hooks.js";
 import { type FocusableProps, type BaseProps, forwardRef } from "./~utils.js";
 
@@ -13,7 +13,7 @@ import { type FocusableProps, type BaseProps, forwardRef } from "./~utils.js";
 
 interface TabsProps
 	extends Pick<
-		Ariakit.TabProviderProps,
+		AkTab.TabProviderProps,
 		| "defaultSelectedId"
 		| "selectedId"
 		| "setSelectedId"
@@ -65,10 +65,10 @@ function Tabs(props: TabsProps) {
 	);
 
 	return (
-		<Ariakit.TabProvider
+		<AkTab.TabProvider
 			selectedId={selectedId}
 			setSelectedId={React.useCallback(
-				(id: Ariakit.TabStoreState["selectedId"]) => {
+				(id: AkTab.TabStoreState["selectedId"]) => {
 					if (document.startViewTransition) {
 						document.startViewTransition(() => {
 							ReactDOM.flushSync(() => {
@@ -84,7 +84,7 @@ function Tabs(props: TabsProps) {
 			selectOnMove={selectOnMove}
 		>
 			{children}
-		</Ariakit.TabProvider>
+		</AkTab.TabProvider>
 	);
 }
 DEV: Tabs.displayName = "Tabs.Root";
@@ -114,7 +114,7 @@ const TabList = forwardRef<"div", TabListProps>((props, forwardedRef) => {
 	const viewTransitionName = `🥝active-stripe-${React.useId().replaceAll(":", "_")}`;
 
 	return (
-		<Ariakit.TabList
+		<AkTab.TabList
 			{...rest}
 			data-kiwi-tone={tone}
 			className={cx("🥝-tab-list", props.className)}
@@ -134,7 +134,7 @@ DEV: TabList.displayName = "Tabs.TabList";
 
 interface TabProps
 	extends FocusableProps<"button">,
-		Pick<Ariakit.TabProps, "id"> {}
+		Pick<AkTab.TabProps, "id"> {}
 
 /**
  * An individual tab button that switches the selected tab panel when clicked.
@@ -149,7 +149,7 @@ interface TabProps
  */
 const Tab = forwardRef<"button", TabProps>((props, forwardedRef) => {
 	return (
-		<Ariakit.Tab
+		<AkTab.Tab
 			accessibleWhenDisabled
 			{...props}
 			className={cx("🥝-tab", props.className)}
@@ -163,7 +163,7 @@ DEV: Tab.displayName = "Tabs.Tab";
 
 interface TabPanelProps
 	extends FocusableProps<"div">,
-		Pick<Ariakit.TabPanelProps, "tabId" | "unmountOnHide" | "focusable"> {}
+		Pick<AkTab.TabPanelProps, "tabId" | "unmountOnHide" | "focusable"> {}
 
 /**
  * The actual content of a tab, shown when the tab is selected. Should be used as a child of `Tabs.Root`.
@@ -176,7 +176,7 @@ interface TabPanelProps
  */
 const TabPanel = forwardRef<"div", TabPanelProps>((props, forwardedRef) => {
 	return (
-		<Ariakit.TabPanel
+		<AkTab.TabPanel
 			{...props}
 			className={cx("🥝-tab-panel", props.className)}
 			ref={forwardedRef}

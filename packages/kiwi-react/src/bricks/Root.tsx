@@ -3,7 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 import * as React from "react";
-import * as Ariakit from "@ariakit/react";
+import { Role } from "@ariakit/react/role";
 import cx from "classnames";
 import foundationsCss from "../foundations/styles.css.js";
 import bricksCss from "./styles.css.js";
@@ -94,7 +94,7 @@ const RootInternal = forwardRef<"div", RootInternalProps>(
 		}, []);
 
 		return (
-			<Ariakit.Role
+			<Role
 				{...rest}
 				className={cx("🥝-root", props.className)}
 				data-kiwi-theme={colorScheme}
@@ -104,7 +104,7 @@ const RootInternal = forwardRef<"div", RootInternalProps>(
 				<RootNodeContext.Provider value={rootNode}>
 					{children}
 				</RootNodeContext.Provider>
-			</Ariakit.Role>
+			</Role>
 		);
 	},
 );

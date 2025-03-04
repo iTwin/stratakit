@@ -3,7 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 import cx from "classnames";
-import * as Ariakit from "@ariakit/react";
+import { Role } from "@ariakit/react/role";
 import { forwardRef, type BaseProps } from "./~utils.js";
 
 interface BadgeProps extends Omit<BaseProps<"span">, "children"> {
@@ -38,7 +38,7 @@ export const Badge = forwardRef<"span", BadgeProps>((props, forwardedRef) => {
 	const { tone = "neutral", variant = "solid", label, ...rest } = props;
 
 	return (
-		<Ariakit.Role.span
+		<Role.span
 			{...rest}
 			data-kiwi-tone={tone}
 			data-kiwi-variant={variant}
@@ -46,7 +46,7 @@ export const Badge = forwardRef<"span", BadgeProps>((props, forwardedRef) => {
 			ref={forwardedRef}
 		>
 			{label}
-		</Ariakit.Role.span>
+		</Role.span>
 	);
 });
 DEV: Badge.displayName = "Badge";

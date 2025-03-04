@@ -9,6 +9,7 @@ test("default", async ({ page }) => {
 	await page.goto("/tests/progress-bar");
 	const progressBar = page.getByTestId("progress-bar");
 	await expect(progressBar).toBeVisible();
+	await expect(progressBar).toHaveText("Loading…");
 });
 
 test.describe("@visual", () => {

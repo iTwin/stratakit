@@ -10,8 +10,6 @@ import { useSearchParams, Link } from "react-router";
 import { Anchor } from "@itwin/itwinui-react/bricks";
 import * as ListItem from "../node_modules/@itwin/itwinui-react/src/bricks/ListItem.tsx";
 
-const isTest = false; // TODO: Use a VITE_ env var set in test build command
-
 export type VariantProps = Record<string, string>;
 
 /**
@@ -71,7 +69,7 @@ export function definePage(
 				return (
 					<>
 						<Variant {...searchParams} />
-						{isTest ? null : <VariantsList variants={variants} />}
+						<VariantsList variants={variants} />
 					</>
 				);
 			}
@@ -80,7 +78,7 @@ export function definePage(
 		return (
 			<>
 				<DefaultVariant {...searchParams} />
-				{isTest ? null : <VariantsList variants={variants} />}
+				<VariantsList variants={variants} />
 			</>
 		);
 	};

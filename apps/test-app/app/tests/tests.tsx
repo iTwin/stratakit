@@ -23,6 +23,8 @@ export const links: LinksFunction = () => [
 	{ rel: "stylesheet", href: globalStyles },
 ];
 
+const isTest = import.meta.env.VITE_ENV === "test";
+
 export default function Page() {
 	const matches = useMatches();
 	const title = (matches.at(-1)?.handle as { title: string })?.title ?? "Tests";
@@ -45,27 +47,32 @@ export default function Page() {
 				</VariantsListContext>
 			</main>
 
-			<RightSidebar
-				header={
-					<div className={styles.rightSidebarHeader}>
+			{isTest ? null : (
+				<RightSidebar
+					header={
+						<div className={styles.rightSidebarHeader}>
+							<Text
+								variant="body-md"
+								className={styles.rightSidebarHeaderText}
+								render={<Anchor render={<Link to="/" />} />}
+							>
+								Kiwi components
+							</Text>
+						</div>
+					}
+					className={styles.rightSidebar}
+				>
+					<div className={styles.rightSidebarContent}>
 						<Text
-							variant="body-md"
-							className={styles.rightSidebarHeaderText}
-							render={<Anchor render={<Link to="/" />} />}
+							variant="body-sm"
+							className={styles.rightSidebarComponentName}
 						>
-							Kiwi components
+							{title}
 						</Text>
+						<nav ref={setPortalTarget} />
 					</div>
-				}
-				className={styles.rightSidebar}
-			>
-				<div className={styles.rightSidebarContent}>
-					<Text variant="body-sm" className={styles.rightSidebarComponentName}>
-						{title}
-					</Text>
-					<nav ref={setPortalTarget} />
-				</div>
-			</RightSidebar>
+				</RightSidebar>
+			)}
 		</div>
 	);
 }

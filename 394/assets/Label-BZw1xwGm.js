@@ -1,1 +1,0 @@
-import{p as e}from"./index-DSPnbld9.js";import{f as s,R as l,c as o}from"./ListItem-BmbSmWDq.js";import{c as m}from"./Field-DskqOoXu.js";const x=s((a,r)=>e.jsx(m,{render:e.jsx(l.label,{...a,className:o("🥝-label",a.className),ref:r})}));export{x as L};

@@ -65,11 +65,9 @@ interface TreeItemRootProps extends Omit<BaseProps, "content" | "children"> {
 	 */
 	onExpandedChange?: (expanded: boolean) => void;
 	/**
-	 * Icon to be displayed inside the tree item.
-	 *
-	 * Can be a URL of an SVG from the `@itwin/itwinui-icons` package, or a JSX element.
+	 * Decoration(s) to be displayed inside the tree item.
 	 */
-	icon?: string | React.JSX.Element;
+	decoration?: React.ReactNode;
 	/**
 	 * The primary label that identifies the tree item and is displayed inside it.
 	 */
@@ -122,7 +120,7 @@ const TreeItemRoot = forwardRef<"div", TreeItemRootProps>(
 			"aria-level": level,
 			selected,
 			expanded,
-			icon,
+			decoration,
 			label,
 			description,
 			actions,
@@ -207,7 +205,7 @@ const TreeItemRoot = forwardRef<"div", TreeItemRootProps>(
 									}}
 								/>
 							</GhostAligner>
-							{typeof icon === "string" ? <Icon href={icon} /> : icon}
+							{decoration}
 						</ListItem.Decoration>
 						<ListItem.Content id={labelId} className="🥝-tree-item-content">
 							{label}

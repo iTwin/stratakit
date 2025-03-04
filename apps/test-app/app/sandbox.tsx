@@ -968,7 +968,7 @@ function SandboxTree({
 									return newData;
 								});
 							}}
-							icon={
+							decoration={
 								<Icon href={placeholderIcon} style={{ display: "inline" }} />
 							}
 							actions={[

@@ -3,7 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 import cx from "classnames";
-import * as Ariakit from "@ariakit/react";
+import { Button as AkButton } from "@ariakit/react/button";
 import { forwardRef, type FocusableProps } from "./~utils.js";
 import { useGhostAlignment } from "./GhostAligner.js";
 
@@ -59,7 +59,7 @@ export const Button = forwardRef<"button", ButtonProps>(
 		const ghostAlignment = useGhostAlignment();
 
 		return (
-			<Ariakit.Button
+			<AkButton
 				accessibleWhenDisabled
 				{...rest}
 				data-kiwi-variant={variant}

@@ -3,7 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 import cx from "classnames";
-import * as Ariakit from "@ariakit/react";
+import { Role, type RoleProps } from "@ariakit/react/role";
 import { forwardRef, type BaseProps } from "./~utils.js";
 import { VisuallyHidden } from "./VisuallyHidden.js";
 
@@ -75,15 +75,15 @@ export const Kbd = forwardRef<"kbd", KbdProps>((props, forwardedRef) => {
 	}
 
 	return (
-		<Ariakit.Role
+		<Role
 			{...rest}
 			data-kiwi-variant={variant}
 			className={cx("🥝-kbd", props.className)}
 			render={props.render || <kbd />}
-			ref={forwardedRef as Ariakit.RoleProps["ref"]}
+			ref={forwardedRef as RoleProps["ref"]}
 		>
 			{content}
-		</Ariakit.Role>
+		</Role>
 	);
 });
 DEV: Kbd.displayName = "Kbd";

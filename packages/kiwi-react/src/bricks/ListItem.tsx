@@ -45,13 +45,13 @@ DEV: ListItemContent.displayName = "ListItem.Content";
 
 // ----------------------------------------------------------------------------
 
-interface ListItemDecorationProps extends RoleProps<"span"> {}
+interface ListItemDecorationProps extends RoleProps<"div"> {}
 
 /** @internal */
-const ListItemDecoration = forwardRef<"span", ListItemDecorationProps>(
+const ListItemDecoration = forwardRef<"div", ListItemDecorationProps>(
 	(props, forwardedRef) => {
 		return (
-			<Role.span
+			<Role.div
 				{...props}
 				className={cx("🥝-list-item-decoration", props.className)}
 				ref={forwardedRef}

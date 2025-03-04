@@ -154,6 +154,14 @@ const TreeItemRoot = forwardRef<"div", TreeItemRootProps>(
 
 		const labelId = React.useId();
 		const descriptionId = React.useId();
+		const decorationId = React.useId();
+
+		const describedBy = React.useMemo(() => {
+			const idRefs = [];
+			if (description) idRefs.push(descriptionId);
+			if (decoration) idRefs.push(decorationId);
+			return idRefs.length > 0 ? idRefs.join(" ") : undefined;
+		}, [decoration, decorationId, description, descriptionId]);
 
 		return (
 			<TreeItemContext.Provider
@@ -184,7 +192,7 @@ const TreeItemRoot = forwardRef<"div", TreeItemRootProps>(
 					aria-expanded={expanded}
 					aria-selected={selected}
 					aria-labelledby={labelId}
-					aria-describedby={description ? descriptionId : undefined}
+					aria-describedby={describedBy}
 					aria-level={level}
 					className={cx("🥝-tree-item", props.className)}
 					ref={forwardedRef as CompositeItemProps["ref"]}
@@ -205,7 +213,9 @@ const TreeItemRoot = forwardRef<"div", TreeItemRootProps>(
 									}}
 								/>
 							</GhostAligner>
-							<div className="🥝-tree-item-decoration">{decoration}</div>
+							<div id={decorationId} className="🥝-tree-item-decoration">
+								{decoration}
+							</div>
 						</ListItem.Decoration>
 						<ListItem.Content id={labelId} className="🥝-tree-item-content">
 							{label}

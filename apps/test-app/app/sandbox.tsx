@@ -1028,7 +1028,9 @@ function SandboxTree({
 												} as React.CSSProperties
 											}
 											className={styles.colorTile}
-										/>
+										>
+											<VisuallyHidden>{item.color}</VisuallyHidden>
+										</div>
 									) : null}
 									<Icon href={placeholderIcon} style={{ display: "inline" }} />
 								</>

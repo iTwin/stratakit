@@ -52,7 +52,7 @@
 		column-gap: var(--🥝progress-bar-gap);
 		border-radius: inherit;
 		inline-size: 100%;
-		animation: --🥝progress-bar-fill linear 1.5s infinite;
+		animation: --🥝progress-bar-fill cubic-bezier(0.5, 0, 0.5, 1) 1.5s infinite;
 
 		@media (prefers-reduced-motion) {
 			animation-timing-function: steps(4, end);
@@ -77,6 +77,6 @@
 
 @keyframes --🥝progress-bar-fill {
 	from {
-		translate: calc(-125% - var(--🥝progress-bar-gap)) 0;
+		translate: calc(-125% - 2 * var(--🥝progress-bar-gap)) 0;
 	}
 }

@@ -106,6 +106,7 @@
 
 .searchInput {
 	flex: 1;
+	margin-block: 4px;
 }
 
 .subheaderActions {

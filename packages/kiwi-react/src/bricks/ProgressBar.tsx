@@ -2,7 +2,7 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-import * as Ariakit from "@ariakit/react/role";
+import { Role } from "@ariakit/react/role";
 import cx from "classnames";
 import { forwardRef, type BaseProps } from "./~utils.js";
 import { VisuallyHidden } from "./VisuallyHidden.js";
@@ -52,7 +52,7 @@ export const ProgressBar = forwardRef<"div", ProgressBarProps>(
 		const labelId = React.useId();
 
 		return (
-			<Ariakit.Role
+			<Role
 				aria-labelledby={labelId}
 				role="progressbar"
 				{...rest}
@@ -65,7 +65,7 @@ export const ProgressBar = forwardRef<"div", ProgressBarProps>(
 					<div className="🥝-progress-bar-fill" />
 				</div>
 				<VisuallyHidden id={labelId}>{label}</VisuallyHidden>
-			</Ariakit.Role>
+			</Role>
 		);
 	},
 );

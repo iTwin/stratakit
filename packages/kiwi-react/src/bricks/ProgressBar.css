@@ -8,7 +8,7 @@
 		block-size: var(--🥝progress-bar-size);
 		inline-size: 100%;
 		border-radius: 9999px;
-		overflow: hidden;
+		contain: strict;
 		display: flex;
 	}
 

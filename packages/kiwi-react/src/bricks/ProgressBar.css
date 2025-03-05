@@ -45,7 +45,7 @@
 	}
 }
 
-.🥝-progress-bar-wrapper {
+.🥝-progress-bar-track {
 	@layer base {
 		display: grid;
 		grid-template-columns: 100% 25% 100%;

@@ -47,7 +47,7 @@ export const ProgressBar = forwardRef<"div", ProgressBarProps>(
 				className={cx("🥝-progress-bar", props.className)}
 				ref={forwardedRef}
 			>
-				<div className="🥝-progress-bar-wrapper">
+				<div className="🥝-progress-bar-track">
 					<div className="🥝-progress-bar-fill" />
 				</div>
 			</Role>

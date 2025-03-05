@@ -6,23 +6,7 @@ import cx from "classnames";
 import { Role, type RoleProps } from "@ariakit/react/role";
 import { forwardRef, type BaseProps } from "./~utils.js";
 import { VisuallyHidden } from "./VisuallyHidden.js";
-
-const predefinedSymbols = {
-	Backspace: "\u232b",
-	Command: "\u2318",
-	Control: "Ctrl",
-	Down: "\u2193",
-	Eject: "\u23cf",
-	Enter: "\u21b5",
-	Escape: "Esc",
-	Left: "\u2190",
-	Option: "\u2325",
-	Right: "\u2192",
-	Shift: "\u21e7",
-	Space: "\u2423",
-	Tab: "Tab",
-	Up: "\u2191",
-} as const;
+import { predefinedSymbols, type PredefinedSymbol } from "./Kbd.internal.js";
 
 interface KbdProps extends BaseProps<"kbd"> {
 	/** @default "solid" */
@@ -37,7 +21,7 @@ interface KbdProps extends BaseProps<"kbd"> {
 	 * <Kbd symbol="Control" />
 	 * ```
 	 */
-	symbol?: keyof typeof predefinedSymbols;
+	symbol?: PredefinedSymbol;
 }
 
 /**

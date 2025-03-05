@@ -61,3 +61,8 @@ export type BaseProps<ElementType extends React.ElementType = "div"> =
 export type FocusableProps<ElementType extends React.ElementType = "div"> =
 	BaseProps<ElementType> &
 		Pick<AkFocusableProps, "disabled" | "accessibleWhenDisabled" | "autoFocus">;
+
+// ----------------------------------------------------------------------------
+
+/** See https://github.com/Microsoft/TypeScript/issues/29729 */
+export type AnyString = string & {};

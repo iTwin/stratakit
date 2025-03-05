@@ -48,7 +48,7 @@
 
 	/* Click target should be entire listItem */
 	.listItemLink {
-		all: unset;
+		outline: unset;
 		color: inherit;
 		cursor: pointer;
 

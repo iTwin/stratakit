@@ -100,12 +100,12 @@ test("shortcuts", async ({ page }) => {
 
 	const add = page.getByRole("menuitem", { name: "Add" });
 	const addingShortcut = add.locator("kbd");
-	await expect(addingShortcut.nth(0)).toHaveText("⌘");
+	await expect(addingShortcut.nth(0)).toMatchAriaSnapshot("- text: Command");
 	await expect(addingShortcut.nth(1)).toHaveText("A");
 
 	const edit = page.getByRole("menuitem", { name: "Edit" });
 	const editShortcut = edit.locator("kbd");
-	await expect(editShortcut.nth(0)).toHaveText("⇧");
+	await expect(editShortcut.nth(0)).toMatchAriaSnapshot("- text: Shift");
 	await expect(editShortcut.nth(1)).toHaveText("E");
 });
 

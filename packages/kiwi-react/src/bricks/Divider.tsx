@@ -3,12 +3,13 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 import cx from "classnames";
-import * as Ariakit from "@ariakit/react";
+import { Role } from "@ariakit/react/role";
+import { Separator, type SeparatorProps } from "@ariakit/react/separator";
 import { forwardRef, type BaseProps } from "./~utils.js";
 
 interface DividerProps
 	extends BaseProps<"hr">,
-		Pick<Ariakit.SeparatorProps, "orientation"> {
+		Pick<SeparatorProps, "orientation"> {
 	/**
 	 * If true, the divider will be purely presentational and will not have any associated semantics.
 	 *
@@ -26,7 +27,7 @@ interface DividerProps
 export const Divider = forwardRef<"hr", DividerProps>((props, forwardedRef) => {
 	const { presentational, ...rest } = props;
 
-	const Comp = presentational ? Ariakit.Role : Ariakit.Separator;
+	const Comp = presentational ? Role : Separator;
 
 	return (
 		<Comp

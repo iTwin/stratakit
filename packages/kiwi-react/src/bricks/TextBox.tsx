@@ -3,7 +3,8 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 import * as React from "react";
-import * as Ariakit from "@ariakit/react";
+import { Role } from "@ariakit/react/role";
+import { Focusable } from "@ariakit/react/focusable";
 import cx from "classnames";
 import { FieldControl } from "./Field.js";
 import { Icon } from "./Icon.js";
@@ -65,7 +66,7 @@ const TextBoxInput = forwardRef<"input", TextBoxInputProps>(
 				type="textlike"
 				id={id}
 				render={
-					<Ariakit.Role.input
+					<Role.input
 						readOnly={props.disabled}
 						{...rest}
 						className={cx({ "🥝-text-box": !rootContext }, props.className)}
@@ -75,7 +76,7 @@ const TextBoxInput = forwardRef<"input", TextBoxInputProps>(
 						 */
 						placeholder={props.placeholder ?? " "}
 						render={
-							<Ariakit.Focusable
+							<Focusable
 								accessibleWhenDisabled
 								render={props.render || <input />}
 							/>
@@ -121,7 +122,7 @@ const TextBoxTextarea = forwardRef<"textarea", TextareaProps>(
 				type="textlike"
 				id={id}
 				render={
-					<Ariakit.Role.textarea
+					<Role.textarea
 						readOnly={props.disabled}
 						{...rest}
 						className={cx("🥝-text-box", props.className)}
@@ -131,7 +132,7 @@ const TextBoxTextarea = forwardRef<"textarea", TextareaProps>(
 						 */
 						placeholder={props.placeholder ?? " "}
 						render={
-							<Ariakit.Focusable
+							<Focusable
 								accessibleWhenDisabled
 								render={props.render || <textarea />}
 							/>
@@ -179,7 +180,7 @@ const TextBoxRoot = forwardRef<"div", TextBoxRootProps>(
 			<TextBoxRootContext.Provider
 				value={React.useMemo(() => ({ setDisabled, inputRef }), [])}
 			>
-				<Ariakit.Role.div
+				<Role.div
 					{...props}
 					data-kiwi-disabled={disabled}
 					className={cx("🥝-text-box", props.className)}
@@ -232,7 +233,7 @@ interface TextBoxTextProps extends BaseProps<"span"> {}
 const TextBoxText = forwardRef<"span", TextBoxTextProps>(
 	(props, forwardedRef) => {
 		return (
-			<Ariakit.Role.span
+			<Role.span
 				{...props}
 				className={cx("🥝-text-box-decoration", props.className)}
 				ref={forwardedRef}

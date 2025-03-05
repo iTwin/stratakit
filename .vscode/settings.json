@@ -10,7 +10,7 @@
 		"package.json": "package-lock.json, pnpm-lock.yaml, pnpm-workspace.yaml, .npmrc",
 		"tsconfig.json": "tsconfig.*.json",
 		"README.md": "*.md",
-		"*.tsx": "${capture}.ts, ${capture}.css, ${capture}.module.css, ${capture}.spec.ts, ${capture}.spec.ts-snapshot.*",
+		"*.tsx": "${capture}.ts, ${capture}.css, ${capture}.module.css, ${capture}.spec.ts, ${capture}.spec.ts-snapshot.*, ${capture}.internal.*",
 		"*.ts": "${capture}.js, ${capture}.css",
 		"*.jsx": "${capture}.js, ${capture}.css",
 		"*.js": "${capture}.js.map, ${capture}.min.js, ${capture}.d.ts, ${capture}.css",

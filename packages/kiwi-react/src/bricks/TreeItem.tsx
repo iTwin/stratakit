@@ -381,7 +381,7 @@ interface TreeItemErrorProps extends BaseProps {
 	 */
 	icon?: string | React.JSX.Element;
 	/**
-	 * The primary label that identifies the tree item and is displayed inside it.
+	 * The primary error message.
 	 */
 	label?: React.ReactNode;
 	/**

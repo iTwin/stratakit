@@ -2,7 +2,7 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-import * as Ariakit from "@ariakit/react/role";
+import { Role } from "@ariakit/react/role";
 import cx from "classnames";
 import { forwardRef, type BaseProps } from "./~utils.js";
 
@@ -36,7 +36,7 @@ export const ProgressBar = forwardRef<"div", ProgressBarProps>(
 		const { size = "medium", tone = "neutral", ...rest } = props;
 
 		return (
-			<Ariakit.Role
+			<Role
 				role="progressbar"
 				{...rest}
 				data-kiwi-size={size}
@@ -47,7 +47,7 @@ export const ProgressBar = forwardRef<"div", ProgressBarProps>(
 				<div className="🥝-progress-bar-wrapper">
 					<div className="🥝-progress-bar-fill" />
 				</div>
-			</Ariakit.Role>
+			</Role>
 		);
 	},
 );

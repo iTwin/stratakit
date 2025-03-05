@@ -37,6 +37,7 @@ interface ProgressBarProps extends BaseProps {
  *
  * Supports a `tone` prop to change the tone (color) of the progress bar.
  * Supports a `size` prop to change the size of the progress bar.
+ * Supports an `alt` prop to provide an accessible alternative (default is “Loading”).
  */
 export const ProgressBar = forwardRef<"div", ProgressBarProps>(
 	(props, forwardedRef) => {

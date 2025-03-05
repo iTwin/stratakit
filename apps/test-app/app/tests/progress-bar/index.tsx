@@ -3,7 +3,8 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 import { definePage } from "~/~utils.tsx";
-import { ProgressBar } from "@itwin/itwinui-react/bricks";
+import { ProgressBar, VisuallyHidden } from "@itwin/itwinui-react/bricks";
+import * as React from "react";
 
 export const handle = { title: "ProgressBar" };
 
@@ -12,25 +13,47 @@ const tones = ["neutral", "accent"] as const;
 
 export default definePage(
 	function Page({ size = "medium", tone = "neutral" }) {
+		const labelledBy = React.useId();
+
 		return (
-			<ProgressBar
-				size={size as (typeof sizes)[number]}
-				tone={tone as (typeof tones)[number]}
-				data-testid="progress-bar"
-			/>
+			<>
+				<ProgressBar
+					size={size as (typeof sizes)[number]}
+					tone={tone as (typeof tones)[number]}
+					aria-labelledBy={labelledBy}
+					data-testid="progress-bar"
+				/>
+				<VisuallyHidden id={labelledBy}>Loading…</VisuallyHidden>
+			</>
 		);
 	},
 	{ visual: VisualTest },
 );
 
 function VisualTest() {
+	const idPrefix = React.useId();
+
 	return (
 		<div style={{ display: "grid", gap: 10 }}>
 			{tones.map((tone) => (
 				<div key={tone} style={{ display: "grid", gap: 10 }}>
-					{sizes.map((size) => (
-						<ProgressBar key={size} size={size} tone={tone} />
-					))}
+					{sizes.map((size) => {
+						const labelledBy = `${idPrefix}-${size}-${tone}`;
+
+						return (
+							<>
+								<ProgressBar
+									key={size}
+									size={size}
+									tone={tone}
+									aria-labelledBy={labelledBy}
+								/>
+								<VisuallyHidden id={labelledBy} key={labelledBy}>
+									Loading…
+								</VisuallyHidden>
+							</>
+						);
+					})}
 				</div>
 			))}
 		</div>

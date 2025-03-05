@@ -5,16 +5,8 @@
 import * as Ariakit from "@ariakit/react/role";
 import cx from "classnames";
 import { forwardRef, type BaseProps } from "./~utils.js";
-import { VisuallyHidden } from "./VisuallyHidden.js";
-import * as React from "react";
 
 interface ProgressBarProps extends BaseProps {
-	/**
-	 * Accessible name for the progress bar.
-	 * @default "Loading…"
-	 */
-	label?: string;
-
 	/**
 	 * The size of the progress bar.
 	 * @default "medium"
@@ -38,22 +30,13 @@ interface ProgressBarProps extends BaseProps {
  *
  * Supports a `tone` prop to change the tone (color) of the progress bar.
  * Supports a `size` prop to change the size of the progress bar.
- * Supports a `label` prop to provide an accessible name (default is “Loading…”).
  */
 export const ProgressBar = forwardRef<"div", ProgressBarProps>(
 	(props, forwardedRef) => {
-		const {
-			label = "Loading…",
-			size = "medium",
-			tone = "neutral",
-			...rest
-		} = props;
-
-		const labelId = React.useId();
+		const { size = "medium", tone = "neutral", ...rest } = props;
 
 		return (
 			<Ariakit.Role
-				aria-labelledby={labelId}
 				role="progressbar"
 				{...rest}
 				data-kiwi-size={size}
@@ -64,7 +47,6 @@ export const ProgressBar = forwardRef<"div", ProgressBarProps>(
 				<div className="🥝-progress-bar-wrapper">
 					<div className="🥝-progress-bar-fill" />
 				</div>
-				<VisuallyHidden id={labelId}>{label}</VisuallyHidden>
 			</Ariakit.Role>
 		);
 	},

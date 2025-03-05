@@ -49,10 +49,6 @@ div[role="listitem"] {
 		transform: translateX(-50%);
 	}
 
-	> *:first-child {
-		padding-inline-start: 4px;
-	}
-
 	&:has(a[aria-current="page"]) {
 		background-color: var(--ids-color-bg-glow-on-surface-accent-pressed);
 

@@ -3,8 +3,17 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 import * as React from "react";
-import * as Ariakit from "@ariakit/react";
 import cx from "classnames";
+import { Role } from "@ariakit/react/role";
+import {
+	useCollectionStore,
+	Collection,
+	useCollectionContext,
+	CollectionItem,
+	type CollectionProps,
+	type CollectionItemProps,
+} from "@ariakit/react/collection";
+import { useStoreState } from "@ariakit/react/store";
 import { forwardRef, type BaseProps } from "./~utils.js";
 
 // ----------------------------------------------------------------------------
@@ -41,7 +50,7 @@ export const Field = forwardRef<"div", FieldProps>((props, forwardedRef) => {
 	return (
 		<FieldCollection
 			render={
-				<Ariakit.Role.div
+				<Role.div
 					{...rest}
 					className={cx("🥝-field", props.className)}
 					data-kiwi-layout={layout}
@@ -56,7 +65,7 @@ DEV: Field.displayName = "Field";
 // ----------------------------------------------------------------------------
 
 type CollectionStoreItem = NonNullable<
-	ReturnType<ReturnType<typeof Ariakit.useCollectionStore>["item"]>
+	ReturnType<ReturnType<typeof useCollectionStore>["item"]>
 >;
 
 interface FieldCollectionStoreItem extends CollectionStoreItem {
@@ -71,15 +80,11 @@ interface FieldCollectionStoreItem extends CollectionStoreItem {
  * A collection that tracks labels, controls, and descriptions which provides
  * information about IDs, placement of labels, and control types.
  */
-function FieldCollection(props: Pick<Ariakit.CollectionProps, "render">) {
-	const fieldElementCollection =
-		Ariakit.useCollectionStore<FieldCollectionStoreItem>({
-			defaultItems: [],
-		});
-	const renderedItems = Ariakit.useStoreState(
-		fieldElementCollection,
-		"renderedItems",
-	);
+function FieldCollection(props: Pick<CollectionProps, "render">) {
+	const fieldElementCollection = useCollectionStore<FieldCollectionStoreItem>({
+		defaultItems: [],
+	});
+	const renderedItems = useStoreState(fieldElementCollection, "renderedItems");
 
 	// Collect the control type and index
 	const [controlType, controlIndex] = React.useMemo(() => {
@@ -101,7 +106,7 @@ function FieldCollection(props: Pick<Ariakit.CollectionProps, "render">) {
 	}, [renderedItems, controlIndex]);
 
 	return (
-		<Ariakit.Collection
+		<Collection
 			{...props}
 			store={fieldElementCollection}
 			data-kiwi-label-placement={labelPlacement}
@@ -111,7 +116,7 @@ function FieldCollection(props: Pick<Ariakit.CollectionProps, "render">) {
 }
 
 interface FieldCollectionItemControlProps
-	extends Pick<Ariakit.CollectionItemProps, "render" | "id"> {
+	extends Pick<CollectionItemProps, "render" | "id"> {
 	type: FieldCollectionStoreItem["controlType"];
 }
 
@@ -119,10 +124,10 @@ interface FieldCollectionItemControlProps
  * An element tracked as a control in the `Field`’s collection.
  */
 export function FieldControl(props: FieldCollectionItemControlProps) {
-	const store = Ariakit.useCollectionContext();
+	const store = useCollectionContext();
 	const generatedId = React.useId();
 	const { id = store ? generatedId : undefined, type, ...rest } = props;
-	const renderedItems = Ariakit.useStoreState(store, "renderedItems");
+	const renderedItems = useStoreState(store, "renderedItems");
 	const describedBy = React.useMemo(() => {
 		// Create a space separated list of description IDs
 		const idRefList = renderedItems
@@ -145,10 +150,10 @@ export function FieldControl(props: FieldCollectionItemControlProps) {
 		[type],
 	);
 	return (
-		<Ariakit.CollectionItem
+		<CollectionItem
 			id={id}
 			getItem={getData}
-			render={<Ariakit.Role {...rest} aria-describedby={describedBy} />}
+			render={<Role {...rest} aria-describedby={describedBy} />}
 		/>
 	);
 }
@@ -156,9 +161,9 @@ export function FieldControl(props: FieldCollectionItemControlProps) {
 /**
  * An element tracked as a label in the `Field`’s collection.
  */
-export function FieldLabel(props: Pick<Ariakit.CollectionItemProps, "render">) {
-	const store = Ariakit.useCollectionContext();
-	const renderedItems = Ariakit.useStoreState(store, "renderedItems");
+export function FieldLabel(props: Pick<CollectionItemProps, "render">) {
+	const store = useCollectionContext();
+	const renderedItems = useStoreState(store, "renderedItems");
 	const fieldId = React.useMemo(
 		() =>
 			renderedItems?.find(
@@ -176,9 +181,9 @@ export function FieldLabel(props: Pick<Ariakit.CollectionItemProps, "render">) {
 	);
 
 	return (
-		<Ariakit.CollectionItem
+		<CollectionItem
 			getItem={getData}
-			render={<Ariakit.Role.label {...props} htmlFor={fieldId} />}
+			render={<Role.label {...props} htmlFor={fieldId} />}
 		/>
 	);
 }
@@ -187,7 +192,7 @@ export function FieldLabel(props: Pick<Ariakit.CollectionItemProps, "render">) {
  * An element tracked as a description in the `Field`’s collection.
  */
 export function FieldDescription(
-	props: Pick<Ariakit.CollectionItemProps, "render" | "id">,
+	props: Pick<CollectionItemProps, "render" | "id">,
 ) {
 	const generatedId = React.useId();
 	const { id = generatedId, ...rest } = props;
@@ -198,5 +203,5 @@ export function FieldDescription(
 		}),
 		[],
 	);
-	return <Ariakit.CollectionItem {...rest} id={id} getItem={getData} />;
+	return <CollectionItem {...rest} id={id} getItem={getData} />;
 }

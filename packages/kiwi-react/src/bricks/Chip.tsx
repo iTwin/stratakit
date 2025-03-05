@@ -4,7 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 import cx from "classnames";
 import * as React from "react";
-import * as Ariakit from "@ariakit/react";
+import { Role } from "@ariakit/react/role";
 import { forwardRef, type BaseProps } from "./~utils.js";
 import { IconButton } from "./IconButton.js";
 import { Dismiss } from "./Icon.js";
@@ -47,7 +47,7 @@ export const Chip = forwardRef<"div", ChipProps>((props, forwardedRef) => {
 	const dismissIconId = `${baseId}-dismiss`;
 
 	return (
-		<Ariakit.Role.div
+		<Role.div
 			data-kiwi-variant={variant}
 			{...rest}
 			className={cx("🥝-chip", props.className)}
@@ -66,7 +66,7 @@ export const Chip = forwardRef<"div", ChipProps>((props, forwardedRef) => {
 					onClick={onDismiss}
 				/>
 			)}
-		</Ariakit.Role.div>
+		</Role.div>
 	);
 });
 DEV: Chip.displayName = "Chip";

@@ -197,12 +197,16 @@ export function VariantsList({
 	if (portalTarget == null) return null;
 
 	return ReactDOM.createPortal(
-		// biome-ignore lint/a11y/useSemanticElements: bad lint rule
 		<div role="list">
 			{variants.map((variant) => (
-				<ListItem.Root key={variant.name} {...listItemProps}>
+				<ListItem.Root
+					key={variant.name}
+					className={styles.listItem}
+					{...listItemProps}
+				>
 					<ListItem.Content>
 						<Anchor
+							className={styles.listItemLink}
 							render={<Link to={variant.url} />}
 							aria-current={variant.isCurrent ? "page" : "false"}
 						>

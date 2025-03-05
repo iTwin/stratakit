@@ -10,4 +10,27 @@
 		--🥝button-padding-inline: var(--✨padding-inline);
 		--🥝ghost-inline-offset: var(--✨padding-inline);
 	}
+
+	@layer modifiers {
+		&:where([data-kiwi-dot="true"]) {
+			&::after {
+				content: "";
+
+				position: absolute;
+				inset-block-start: 2px;
+				inset-inline-end: 2px;
+
+				display: inline-block;
+				inline-size: 4px;
+				block-size: 4px;
+
+				border-radius: 9999px;
+				background-color: var(--ids-color-icon-accent-strong);
+
+				@media (forced-colors: active) {
+					background-color: CanvasText;
+				}
+			}
+		}
+	}
 }

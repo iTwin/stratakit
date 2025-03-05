@@ -4,7 +4,7 @@
 	"sideEffects": false,
 	"type": "module",
 	"scripts": {
-		"build": "VITE_ENV=test NODE_ENV=production react-router build && pnpm run typecheck",
+		"build": "NODE_ENV=production react-router build && pnpm run typecheck",
 		"dev": "NODE_OPTIONS=--conditions=@kiwi/source react-router dev",
 		"preview": "pnpx serve build/client -L -p 1800",
 		"test": "tsx ./scripts/run-tests.cts pnpm exec playwright test",

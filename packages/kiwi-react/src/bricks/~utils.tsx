@@ -3,7 +3,8 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 import * as React from "react";
-import type * as Ariakit from "@ariakit/react";
+import type { RoleProps } from "@ariakit/react/role";
+import type { FocusableProps as AkFocusableProps } from "@ariakit/react/focusable";
 
 export const isBrowser = typeof document !== "undefined";
 
@@ -54,12 +55,9 @@ type MergeProps<
 
 /** Base component props with custom props. */
 export type BaseProps<ElementType extends React.ElementType = "div"> =
-	MergeProps<ElementType, Pick<Ariakit.RoleProps, "render">>;
+	MergeProps<ElementType, Pick<RoleProps, "render">>;
 
 /** Focusable component props with custom props. */
 export type FocusableProps<ElementType extends React.ElementType = "div"> =
 	BaseProps<ElementType> &
-		Pick<
-			Ariakit.FocusableProps,
-			"disabled" | "accessibleWhenDisabled" | "autoFocus"
-		>;
+		Pick<AkFocusableProps, "disabled" | "accessibleWhenDisabled" | "autoFocus">;

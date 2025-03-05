@@ -76,10 +76,7 @@
 }
 
 @keyframes --🥝progress-bar-fill {
-	0% {
-		transform: translateX(calc(-125% - var(--🥝progress-bar-gap)));
-	}
-	100% {
-		transform: translateX(0%);
+	from {
+		translate: calc(-125% - var(--🥝progress-bar-gap)) 0;
 	}
 }

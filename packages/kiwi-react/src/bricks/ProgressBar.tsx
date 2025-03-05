@@ -6,7 +6,10 @@ import { Role } from "@ariakit/react/role";
 import cx from "classnames";
 import { forwardRef, type BaseProps } from "./~utils.js";
 
-interface ProgressBarProps extends BaseProps {
+// TODO: Handle label and remove the requirement for the aria-labelledby prop
+interface ProgressBarProps
+	extends Omit<BaseProps, "aria-labelledby">,
+		Required<Pick<BaseProps, "aria-labelledby">> {
 	/**
 	 * The size of the progress bar.
 	 * @default "medium"

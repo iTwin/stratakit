@@ -20,7 +20,7 @@ export default definePage(
 				<ProgressBar
 					size={size as (typeof sizes)[number]}
 					tone={tone as (typeof tones)[number]}
-					aria-labelledBy={labelledBy}
+					aria-labelledby={labelledBy}
 					data-testid="progress-bar"
 				/>
 				<VisuallyHidden id={labelledBy}>Loading…</VisuallyHidden>
@@ -46,7 +46,7 @@ function VisualTest() {
 									key={size}
 									size={size}
 									tone={tone}
-									aria-labelledBy={labelledBy}
+									aria-labelledby={labelledBy}
 								/>
 								<VisuallyHidden id={labelledBy} key={labelledBy}>
 									Loading…

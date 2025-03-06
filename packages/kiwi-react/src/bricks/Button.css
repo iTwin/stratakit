@@ -101,6 +101,7 @@
 		font-size: var(--ids-font-size-12);
 		font-weight: 500;
 		border: none;
+		position: relative;
 
 		display: inline-flex;
 		align-items: center;

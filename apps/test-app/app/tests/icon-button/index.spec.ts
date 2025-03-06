@@ -31,6 +31,15 @@ test("visually-hidden label", async ({ page }) => {
 	await expect(tooltip).toHaveCount(0);
 });
 
+test("dot", async ({ page }) => {
+	await page.goto("/tests/icon-button?dot=true");
+
+	const button = page.getByRole("button", { name: "Notifications" });
+	await expect(button).toHaveAccessibleDescription(
+		"You have unread notifications",
+	);
+});
+
 test.describe("@visual", () => {
 	test("default", async ({ page }) => {
 		await page.goto("/tests/icon-button?visual=true");

@@ -3,7 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 import globalStyles from "./tokens.css?url";
-import * as Ariakit from "@ariakit/react";
+import * as Disclosure from "@ariakit/react/disclosure";
 import type * as React from "react";
 import type { MetaFunction, LinksFunction } from "react-router";
 import { Button, Divider, Icon } from "@itwin/itwinui-react/bricks";
@@ -64,9 +64,9 @@ export default function Page() {
 				});
 
 				return (
-					<Ariakit.DisclosureProvider key={key} defaultOpen={true}>
+					<Disclosure.DisclosureProvider key={key} defaultOpen={true}>
 						<div className={styles.disclosureWrapper}>
-							<Ariakit.Disclosure
+							<Disclosure.Disclosure
 								render={<Button variant="ghost" />}
 								className={styles.disclosureButton}
 							>
@@ -75,13 +75,13 @@ export default function Page() {
 									className={styles.disclosureIcon}
 								/>
 								{value}
-							</Ariakit.Disclosure>
+							</Disclosure.Disclosure>
 
-							<Ariakit.DisclosureContent>
+							<Disclosure.DisclosureContent>
 								<Tokens tokens={relevantTokens} kind="color" />
-							</Ariakit.DisclosureContent>
+							</Disclosure.DisclosureContent>
 						</div>
-					</Ariakit.DisclosureProvider>
+					</Disclosure.DisclosureProvider>
 				);
 			})}
 
@@ -89,21 +89,21 @@ export default function Page() {
 
 			<h2>Shadows</h2>
 
-			<Ariakit.DisclosureProvider defaultOpen={true}>
+			<Disclosure.DisclosureProvider defaultOpen={true}>
 				<div className={styles.disclosureWrapper}>
-					<Ariakit.Disclosure
+					<Disclosure.Disclosure
 						render={<Button variant="ghost" />}
 						className={styles.disclosureButton}
 					>
 						<Icon render={<ArrowIcon />} className={styles.disclosureIcon} />
 						All shadows
-					</Ariakit.Disclosure>
+					</Disclosure.Disclosure>
 
-					<Ariakit.DisclosureContent>
+					<Disclosure.DisclosureContent>
 						<Tokens tokens={[...shadowTokens.keys()]} kind="shadow" />
-					</Ariakit.DisclosureContent>
+					</Disclosure.DisclosureContent>
 				</div>
-			</Ariakit.DisclosureProvider>
+			</Disclosure.DisclosureProvider>
 		</>
 	);
 }

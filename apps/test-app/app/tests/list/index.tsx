@@ -3,7 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 import { definePage } from "~/~utils.tsx";
-import * as ListItem from "@itwin/itwinui-react-internal/src/bricks/ListItem";
+import * as ListItem from "@itwin/itwinui-react-internal/src/bricks/~utils.ListItem.tsx";
 import { Icon } from "@itwin/itwinui-react/bricks";
 import type { LinksFunction } from "react-router";
 import testStyles from "./index.css?url";

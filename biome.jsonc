@@ -28,7 +28,17 @@
 			"suspicious": {
 				"noConfusingLabels": "off"
 			},
-			"a11y": { "all": false }
+			"a11y": { "all": false },
+			"nursery": {
+				"noRestrictedImports": {
+					"level": "warn",
+					"options": {
+						"paths": {
+							"@ariakit/react": "Use of Ariakit's barrel is discouraged. Import Ariakit components from their individual entrypoints instead."
+						}
+					}
+				}
+			}
 		}
 	}
 }

@@ -3,12 +3,14 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 import * as React from "react";
+import * as ReactDOM from "react-dom";
 import { Role } from "@ariakit/react/role";
+import { PortalContext } from "@ariakit/react/portal";
 import cx from "classnames";
 import foundationsCss from "../foundations/styles.css.js";
 import bricksCss from "./styles.css.js";
 import { forwardRef, isBrowser, type BaseProps } from "./~utils.js";
-import { useMergedRefs } from "./~hooks.js";
+import { useIsClient, useMergedRefs } from "./~hooks.js";
 
 const css = foundationsCss + bricksCss;
 
@@ -51,14 +53,27 @@ interface RootProps extends BaseProps {
 export const Root = forwardRef<"div", RootProps>((props, forwardedRef) => {
 	const { children, synchronizeColorScheme = false, ...rest } = props;
 
+	const [portalContainer, setPortalContainer] =
+		React.useState<HTMLElement | null>(null);
+
 	return (
 		<RootInternal {...rest} ref={forwardedRef}>
 			<Styles />
 			<Fonts />
+
 			{synchronizeColorScheme ? (
 				<SynchronizeColorScheme colorScheme={props.colorScheme} />
 			) : null}
-			{children}
+
+			<PortalContainer
+				colorScheme={props.colorScheme}
+				density={props.density}
+				ref={setPortalContainer}
+			/>
+
+			<PortalContext.Provider value={portalContainer}>
+				{children}
+			</PortalContext.Provider>
 		</RootInternal>
 	);
 });
@@ -137,6 +152,27 @@ function SynchronizeColorScheme({
 	return null;
 }
 
+// ----------------------------------------------------------------------------
+
+/** A separate root rendered at the end of `<body>`, to be used as the target for all portals. */
+const PortalContainer = forwardRef<
+	"div",
+	Pick<RootProps, "colorScheme" | "density">
+>((props, forwardedRef) => {
+	const isClient = useIsClient();
+	if (!isClient) return null;
+
+	return ReactDOM.createPortal(
+		<div
+			className="🥝-root"
+			data-kiwi-theme={props.colorScheme}
+			data-kiwi-density={props.density}
+			style={{ display: "contents" }}
+			ref={forwardedRef}
+		/>,
+		document.body,
+	);
+});
 // ----------------------------------------------------------------------------
 
 function Styles() {

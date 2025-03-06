@@ -8,40 +8,11 @@ import { forwardRef, type BaseProps } from "./~utils.js";
 
 // ----------------------------------------------------------------------------
 
-interface SkeletonProps extends BaseProps {}
-
-/**
- * A wrapper around `Skeleton.Item`s to roughly represent the loaded content before it finishes loading.
- *
- * ```tsx
- * <Skeleton.Group>
- *   <Skeleton.Item variant="object" size="small" shape="square" />
- *   <Skeleton.Item variant="text" size="medium" />
- * </Skeleton.Group>
- * ```
- */
-const Skeleton = forwardRef<"div", SkeletonProps>((props, forwardedRef) => {
-	const { children, ...rest } = props;
-
-	return (
-		<Role.div
-			{...rest}
-			className={cx("🥝-skeleton", props.className)}
-			ref={forwardedRef}
-		>
-			{children}
-		</Role.div>
-	);
-});
-DEV: Skeleton.displayName = "Skeleton.Group";
-
-// ----------------------------------------------------------------------------
-
-interface SkeletonItemPropsBase extends BaseProps {
+interface SkeletonPropsBase extends BaseProps {
 	children?: never;
 }
 
-type SkeletonItemProps = SkeletonItemPropsBase & {
+type SkeletonProps = SkeletonPropsBase & {
 	/**
 	 * The type of the skeleton item. Available variants: `text`, `object`.
 	 * @default "text"
@@ -55,18 +26,15 @@ type SkeletonItemProps = SkeletonItemPropsBase & {
 };
 
 /**
- * Needs to be wrapped around `Skeleton.Group`.
+ * Represents the loaded content before it finishes loading.
  *
- * `Skeleton.Item` represents the loaded content before it finishes loading.
- *
+ * Example:
  * ```tsx
- * <Skeleton.Group>
- *   <Skeleton.Item variant="object" size="small" shape="square" />
- *   <Skeleton.Item variant="text" size="medium" />
- * </Skeleton.Group>
+ * <Skeleton variant="object" size="small" shape="square" />
+ * <Skeleton variant="text" size="medium" />
  * ```
  */
-const SkeletonItem = forwardRef<"div", SkeletonItemProps>(
+export const Skeleton = forwardRef<"div", SkeletonProps>(
 	(props, forwardedRef) => {
 		const { variant = "text", size = "medium", ...rest } = props;
 
@@ -82,8 +50,4 @@ const SkeletonItem = forwardRef<"div", SkeletonItemProps>(
 		);
 	},
 );
-DEV: SkeletonItem.displayName = "Skeleton.Item";
-
-// ----------------------------------------------------------------------------
-
-export { Skeleton as Group, SkeletonItem as Item };
+DEV: Skeleton.displayName = "Skeleton.Item";

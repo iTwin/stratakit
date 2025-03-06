@@ -65,11 +65,9 @@ interface TreeItemRootProps extends Omit<BaseProps, "content" | "children"> {
 	 */
 	onExpandedChange?: (expanded: boolean) => void;
 	/**
-	 * Icon to be displayed inside the tree item.
-	 *
-	 * Can be a URL of an SVG from the `@itwin/itwinui-icons` package, or a JSX element.
+	 * Decoration(s) to be displayed inside the tree item.
 	 */
-	icon?: string | React.JSX.Element;
+	decorations?: React.ReactNode;
 	/**
 	 * The primary label that identifies the tree item and is displayed inside it.
 	 */
@@ -122,7 +120,7 @@ const TreeItemRoot = forwardRef<"div", TreeItemRootProps>(
 			"aria-level": level,
 			selected,
 			expanded,
-			icon,
+			decorations,
 			label,
 			description,
 			actions,
@@ -156,6 +154,14 @@ const TreeItemRoot = forwardRef<"div", TreeItemRootProps>(
 
 		const labelId = React.useId();
 		const descriptionId = React.useId();
+		const decorationId = React.useId();
+
+		const describedBy = React.useMemo(() => {
+			const idRefs = [];
+			if (description) idRefs.push(descriptionId);
+			if (decorations) idRefs.push(decorationId);
+			return idRefs.length > 0 ? idRefs.join(" ") : undefined;
+		}, [decorations, decorationId, description, descriptionId]);
 
 		return (
 			<TreeItemContext.Provider
@@ -186,7 +192,7 @@ const TreeItemRoot = forwardRef<"div", TreeItemRootProps>(
 					aria-expanded={expanded}
 					aria-selected={selected}
 					aria-labelledby={labelId}
-					aria-describedby={description ? descriptionId : undefined}
+					aria-describedby={describedBy}
 					aria-level={level}
 					className={cx("🥝-tree-item", props.className)}
 					ref={forwardedRef as CompositeItemProps["ref"]}
@@ -207,7 +213,9 @@ const TreeItemRoot = forwardRef<"div", TreeItemRootProps>(
 									}}
 								/>
 							</GhostAligner>
-							{typeof icon === "string" ? <Icon href={icon} /> : icon}
+							<div id={decorationId} className="🥝-tree-item-decoration">
+								{decorations}
+							</div>
 						</ListItem.Decoration>
 						<ListItem.Content id={labelId} className="🥝-tree-item-content">
 							{label}

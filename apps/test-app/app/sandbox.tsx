@@ -478,6 +478,15 @@ function useMoveable<T extends HTMLElement>(args?: UseMoveableArgs) {
 	return { moveableProps };
 }
 
+type ExampleColor =
+	| "red"
+	| "purple"
+	| "blue"
+	| "green"
+	| "yellow"
+	| "gray"
+	| "teal";
+
 interface TreeItem {
 	id: string;
 	label: string;
@@ -485,6 +494,7 @@ interface TreeItem {
 	type?: string; // Used for filtering
 	items: TreeItem[];
 	expanded: boolean;
+	color?: ExampleColor;
 }
 
 interface TreeStore {
@@ -614,55 +624,67 @@ const complexTree = {
 	items: [
 		createTreeItem({
 			label: "ITC_Master",
+			color: "purple",
 			items: [
 				createTreeItem({
 					label: "002_Substation",
 					expanded: false,
+					color: "red",
 					items: [createTreeItem({ label: "002_Substation_A" })],
 				}),
 				createTreeItem({
 					label: "003-BENARCH-ZO-RF-M3-A-00001 - S-COLS",
 					description: "Columns",
 					expanded: false,
+					color: "yellow",
 					items: [
 						createTreeItem({
 							label: "003-BENARCH-ZO-RF-M3-A-00001 - S-JOIS-ENVL",
 							description: "Bar Joist: Envelopes",
+							color: "teal",
 						}),
 					],
 				}),
 				createTreeItem({
 					label: "003-BENARCH-ZO-RF-M3-A-00001 - S-SLAB-CONC",
 					description: "Slabs: Concrete",
+					color: "green",
 				}),
 				createTreeItem({
 					label: "003-BENSTR-ZO-LG2-M3-S-00001 - S-BEAM-PURL",
 					description: "Columns: concrete",
+					color: "yellow",
 				}),
 				createTreeItem({
 					label: "005-BENROAD-00-XX-M3-G-00002.dgn",
 					expanded: false,
+					color: "yellow",
 					items: [
 						createTreeItem({
 							label: "005-BENROAD-00-XX-M3-G-00002-A",
+							color: "red",
 						}),
 					],
 				}),
 				createTreeItem({
 					label: "005-BENROAD-00-XX-M3-G-00003.dgn",
+					color: "yellow",
 					expanded: false,
 					items: [
 						createTreeItem({
 							label: "005-BENROAD-00-XX-M3-G-00003-A",
+							color: "blue",
 						}),
 					],
 				}),
 				createTreeItem({
 					label: "007-aa_master.dgn",
+					color: "green",
 					items: [
 						createTreeItem({
 							label: "A-CLNG-LITE",
 							expanded: false,
+							color: "blue",
 							items: [
 								createTreeItem({
 									label: "A-CLNG-LITE-A",
@@ -671,60 +693,79 @@ const complexTree = {
 						}),
 						createTreeItem({
 							label: "A-CLNG-TILE",
+							color: "gray",
 							items: [
 								createTreeItem({
 									label: "A-DOOR-2D-PLAN",
+									color: "green",
 									items: [
 										createTreeItem({
 											label: "P00003 [2-KA62]",
+											color: "yellow",
 											items: [
 												createTreeItem({
 													label: "Cell [2-KA63]",
+													color: "teal",
 													items: [
 														createTreeItem({
 															label: "Cell [2-KA64]",
+															color: "red",
 															items: [
 																createTreeItem({
 																	label: "Complex Chain [2-KA6A]",
+																	color: "purple",
 																}),
 																createTreeItem({
 																	label: "Complex Chain [2-KA6B]",
+																	color: "purple",
 																}),
 																createTreeItem({
 																	label: "Complex Chain [2-KA6C]",
+																	color: "purple",
 																}),
 																createTreeItem({
 																	label: "Complex Chain [2-KA6D]",
+																	color: "purple",
 																}),
 																createTreeItem({
 																	label: "Complex Chain [2-KA6E]",
+																	color: "purple",
 																}),
 																createTreeItem({
 																	label: "Complex Chain [2-KA6F]",
+																	color: "purple",
 																}),
 																createTreeItem({
 																	label: "Complex Chain [2-KA6G]",
+																	color: "purple",
 																}),
 																createTreeItem({
 																	label: "Complex Chain [2-KA6H]",
+																	color: "purple",
 																}),
 																createTreeItem({
 																	label: "Complex Chain [2-KA61]",
+																	color: "purple",
 																}),
 																createTreeItem({
 																	label: "Complex Chain [2-KA65]",
+																	color: "purple",
 																}),
 																createTreeItem({
 																	label: "Complex Chain [2-KA66]",
+																	color: "purple",
 																}),
 																createTreeItem({
 																	label: "Complex Chain [2-KA67]",
+																	color: "purple",
 																}),
 																createTreeItem({
 																	label: "Complex Chain [2-KA68]",
+																	color: "purple",
 																}),
 																createTreeItem({
 																	label: "Complex Chain [2-KA69]",
+																	color: "purple",
 																}),
 															],
 														}),
@@ -735,36 +776,44 @@ const complexTree = {
 										createTreeItem({
 											label: "P00003 [2-KA74]",
 											expanded: false,
+											color: "yellow",
 											items: [
 												createTreeItem({
 													label: "P00003 [2-KA74-A]",
+													color: "green",
 												}),
 											],
 										}),
 										createTreeItem({
 											label: "P00003 [2-KA86]",
 											expanded: false,
+											color: "teal",
 											items: [
 												createTreeItem({
 													label: "P00003 [2-KA74-A]",
+													color: "blue",
 												}),
 											],
 										}),
 										createTreeItem({
 											label: "P00003 [2-KA98]",
 											expanded: false,
+											color: "red",
 											items: [
 												createTreeItem({
 													label: "P00003 [2-KA98-A]",
+													color: "purple",
 												}),
 											],
 										}),
 										createTreeItem({
 											label: "P00003 [2-KAAA]",
 											expanded: false,
+											color: "teal",
 											items: [
 												createTreeItem({
 													label: "P00003 [2-KAAA-A]",
+													color: "gray",
 												}),
 											],
 										}),
@@ -846,6 +895,7 @@ interface FlatTreeItem extends TreeItem {
 	parentItem?: TreeItem;
 	position: number;
 	size: number;
+	color?: ExampleColor;
 }
 
 function useFlatTreeItems(
@@ -968,8 +1018,13 @@ function SandboxTree({
 									return newData;
 								});
 							}}
-							icon={
-								<Icon href={placeholderIcon} style={{ display: "inline" }} />
+							decorations={
+								<>
+									{item.color ? (
+										<ColorSwatch color={item.color} alt={item.color} />
+									) : null}
+									<Icon href={placeholderIcon} />
+								</>
 							}
 							actions={[
 								<Tree.ItemAction
@@ -1244,3 +1299,18 @@ const TabsContext = React.createContext<{
 }>({
 	selectedId: "",
 });
+
+function ColorSwatch(props: { color: string; alt?: string }) {
+	return (
+		<div
+			className={styles.colorSwatch}
+			style={
+				{
+					"--_color": `var(--_color--${props.color})`,
+				} as React.CSSProperties
+			}
+		>
+			{props.alt ? <VisuallyHidden>{props.alt}</VisuallyHidden> : null}
+		</div>
+	);
+}

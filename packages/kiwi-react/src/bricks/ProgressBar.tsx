@@ -44,13 +44,10 @@ export const ProgressBar = forwardRef<"div", ProgressBarProps>(
 				{...rest}
 				data-kiwi-size={size}
 				data-kiwi-tone={tone}
+				data-kiwi-variant="indeterminate"
 				className={cx("🥝-progress-bar", props.className)}
 				ref={forwardedRef}
-			>
-				<div className="🥝-progress-bar-track">
-					<div className="🥝-progress-bar-fill" />
-				</div>
-			</Role>
+			/>
 		);
 	},
 );

@@ -9,7 +9,16 @@
 		inline-size: 100%;
 		border-radius: 9999px;
 		contain: strict;
-		display: flex;
+		display: grid;
+		background-color: var(--🥝progress-bar-track-color);
+
+		&::before {
+			content: "";
+			block-size: inherit;
+			inline-size: var(--🥝progress-bar-fill-size);
+			border-radius: inherit;
+			background-color: var(--🥝progress-bar-fill-color);
+		}
 	}
 
 	@layer modifiers {
@@ -25,58 +34,47 @@
 
 		&:where([data-kiwi-size="small"]) {
 			--🥝progress-bar-size: 0.063rem;
-			--🥝progress-bar-gap: 0.125rem;
 		}
 
 		&:where([data-kiwi-size="medium"]) {
 			--🥝progress-bar-size: 0.125rem;
-			--🥝progress-bar-gap: 0.125rem;
 		}
 
 		&:where([data-kiwi-size="large"]) {
 			--🥝progress-bar-size: 0.25rem;
-			--🥝progress-bar-gap: 0.25rem;
+		}
+
+		&:where([data-kiwi-variant="indeterminate"]) {
+			--🥝progress-bar-fill-size: 25%;
+
+			&::before {
+				animation: --🥝progress-bar-animation-indeterminate cubic-bezier(0.5, 0, 0.5, 1) 1.5s
+					infinite;
+
+				@media (prefers-reduced-motion) {
+					animation-timing-function: steps(4, end);
+					animation-duration: 4s;
+				}
+			}
 		}
 
 		@media (forced-colors: active) {
 			--🥝progress-bar-fill-color: CanvasText;
 			--🥝progress-bar-track-color: CanvasText;
+
+			&::before {
+				outline: 2px solid Canvas;
+			}
 		}
 	}
 }
 
-.🥝-progress-bar-track {
-	@layer base {
-		display: grid;
-		grid-template-columns: 100% 25% 100%;
-		column-gap: var(--🥝progress-bar-gap);
-		border-radius: inherit;
-		inline-size: 100%;
-		animation: --🥝progress-bar-fill cubic-bezier(0.5, 0, 0.5, 1) 1.5s infinite;
-
-		@media (prefers-reduced-motion) {
-			animation-timing-function: steps(4, end);
-			animation-duration: 4s;
-		}
-
-		&::before,
-		&::after {
-			content: "";
-			background-color: var(--🥝progress-bar-track-color);
-			border-radius: inherit;
-		}
-	}
-}
-
-.🥝-progress-bar-fill {
-	@layer base {
-		background-color: var(--🥝progress-bar-fill-color);
-		border-radius: inherit;
-	}
-}
-
-@keyframes --🥝progress-bar-fill {
+@keyframes --🥝progress-bar-animation-indeterminate {
 	from {
-		translate: calc(-125% - 2 * var(--🥝progress-bar-gap)) 0;
+		translate: -100% 0;
+	}
+
+	to {
+		translate: 400% 0;
 	}
 }

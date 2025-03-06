@@ -7,7 +7,7 @@ import cx from "classnames";
 import * as ListItem from "./~utils.ListItem.js";
 import { Button } from "./Button.js";
 import { Kbd } from "./Kbd.js";
-import { Checkmark, DisclosureArrow } from "./Icon.js";
+import { Checkmark, DisclosureArrow, Icon } from "./Icon.js";
 import {
 	forwardRef,
 	type AnyString,
@@ -46,9 +46,9 @@ interface DropdownMenuProps
  *   <DropdownMenu.Button>Actions</DropdownMenu.Button>
  *
  *   <DropdownMenu.Content>
- *     <DropdownMenu.Item>Add</DropdownMenu.Item>
- *     <DropdownMenu.Item>Edit</DropdownMenu.Item>
- *     <DropdownMenu.Item>Delete</DropdownMenu.Item>
+ *     <DropdownMenu.Item label="Add" />
+ *     <DropdownMenu.Item label="Edit" />
+ *     <DropdownMenu.Item label="Delete" />
  *   </DropdownMenu.Content>
  * </DropdownMenu.Root>
  * ```
@@ -151,21 +151,27 @@ DEV: DropdownMenuButton.displayName = "DropdownMenu.Button";
 // ----------------------------------------------------------------------------
 
 interface DropdownMenuItemProps
-	extends FocusableProps,
-		Partial<Pick<DropdownMenuItemShortcutsProps, "shortcuts">> {}
+	extends Omit<FocusableProps, "children">,
+		Partial<
+			Pick<DropdownMenuItemShortcutsProps, "shortcuts"> &
+				Pick<DropdownMenuIconProps, "icon">
+		> {
+	/** The primary text label for the menu-item. */
+	label: React.ReactNode;
+}
 
 /**
  * A single menu item within the dropdown menu. Should be used as a child of `DropdownMenu.Content`.
  *
  * Example:
  * ```tsx
- * <DropdownMenu.Item>Add</DropdownMenu.Item>
- * <DropdownMenu.Item>Edit</DropdownMenu.Item>
+ * <DropdownMenu.Item label="Add" />
+ * <DropdownMenu.Item label="Edit" />
  * ```
  */
 const DropdownMenuItem = forwardRef<"div", DropdownMenuItemProps>(
 	(props, forwardedRef) => {
-		const { shortcuts, ...rest } = props;
+		const { label, shortcuts, icon, ...rest } = props;
 
 		return (
 			<MenuItem
@@ -175,7 +181,8 @@ const DropdownMenuItem = forwardRef<"div", DropdownMenuItemProps>(
 				className={cx("🥝-dropdown-menu-item", props.className)}
 				ref={forwardedRef}
 			>
-				<ListItem.Content>{props.children}</ListItem.Content>
+				{icon ? <DropdownMenuIcon icon={icon} /> : null}
+				<ListItem.Content>{label}</ListItem.Content>
 				{shortcuts ? <DropdownMenuItemShortcuts shortcuts={shortcuts} /> : null}
 			</MenuItem>
 		);
@@ -246,33 +253,69 @@ DEV: DropdownMenuItemShortcuts.displayName = "DropdownMenuItemShortcuts";
 
 // ----------------------------------------------------------------------------
 
+interface DropdownMenuIconProps extends BaseProps {
+	/**
+	 * An optional icon displayed before the menu-item label.
+	 *
+	 * Can be a URL of an SVG from the `@itwin/itwinui-icons` package,
+	 * or a custom JSX icon.
+	 */
+	icon?: string | React.JSX.Element;
+}
+
+const DropdownMenuIcon = forwardRef<"div", DropdownMenuIconProps>(
+	(props, forwardedRef) => {
+		const { icon, ...rest } = props;
+
+		return (
+			<ListItem.Decoration
+				render={
+					<Icon
+						href={typeof icon === "string" ? icon : undefined}
+						render={React.isValidElement(icon) ? icon : undefined}
+					/>
+				}
+				{...rest}
+				ref={forwardedRef}
+			/>
+		);
+	},
+);
+DEV: DropdownMenuIcon.displayName = "DropdownMenuIcon";
+
+// ----------------------------------------------------------------------------
+
 interface DropdownMenuCheckboxItemProps
-	extends Omit<FocusableProps, "onChange">,
-		Pick<MenuItemCheckboxProps, "checked" | "onChange" | "name" | "value"> {}
+	extends Omit<FocusableProps, "onChange" | "children">,
+		Pick<MenuItemCheckboxProps, "checked" | "onChange" | "name" | "value">,
+		Pick<DropdownMenuItemProps, "label" | "icon"> {}
 
 /**
  * A single menu item within the dropdown menu. Should be used as a child of `DropdownMenu.Content`.
  *
  * Example:
  * ```tsx
- * <DropdownMenu.CheckboxItem name="add">Add</DropdownMenu.Item>
- * <DropdownMenu.CheckboxItem name="edit">Edit</DropdownMenu.Item>
+ * <DropdownMenu.CheckboxItem name="add" label="Add" />
+ * <DropdownMenu.CheckboxItem name="edit" label="Edit" />
  * ```
  */
 const DropdownMenuCheckboxItem = forwardRef<
 	"div",
 	DropdownMenuCheckboxItemProps
 >((props, forwardedRef) => {
+	const { label, icon, ...rest } = props;
+
 	return (
 		<MenuItemCheckbox
 			accessibleWhenDisabled
 			value={props.defaultChecked ? "on" : undefined} // For defaultChecked to work
-			{...props}
+			{...rest}
 			render={<ListItem.Root render={props.render} />}
 			className={cx("🥝-dropdown-menu-item", props.className)}
 			ref={forwardedRef}
 		>
-			<ListItem.Content>{props.children}</ListItem.Content>
+			{icon ? <DropdownMenuIcon icon={icon} /> : null}
+			<ListItem.Content>{label}</ListItem.Content>
 			<ListItem.Decoration
 				render={<Checkmark className="🥝-dropdown-menu-checkmark" />}
 			/>

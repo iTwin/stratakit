@@ -1008,18 +1008,18 @@ function TreeMoreActions({ hidden }: { hidden?: boolean }) {
 				render={<Tree.ItemAction icon={moreIcon} label="More" />}
 			/>
 			<DropdownMenu.Content style={{ minInlineSize: 164 }}>
-				<DropdownMenu.Item shortcuts="⌘+C">Copy</DropdownMenu.Item>
-				<DropdownMenu.Item shortcuts="⌘+P">Paste</DropdownMenu.Item>
-				<DropdownMenu.Item shortcuts="⌘+V">Copy/Paste as</DropdownMenu.Item>
-				<DropdownMenu.Item shortcuts="⌘+M">Move to</DropdownMenu.Item>
-				<DropdownMenu.Item shortcuts="]">Bring to front</DropdownMenu.Item>
-				<DropdownMenu.Item shortcuts="[">Send to back</DropdownMenu.Item>
-				<DropdownMenu.Item shortcuts="⌘+G">Group selection</DropdownMenu.Item>
-				<DropdownMenu.Item shortcuts="⌘+U">Ungroup</DropdownMenu.Item>
-				<DropdownMenu.Item shortcuts="⌘+R">Rename</DropdownMenu.Item>
-				<DropdownMenu.Item shortcuts="⇧+⌘+V">Show/hide</DropdownMenu.Item>
-				<DropdownMenu.Item shortcuts="⇧+⌘+L">Lock/unlock</DropdownMenu.Item>
-				<DropdownMenu.Item shortcuts="I">Isolate object</DropdownMenu.Item>
+				<DropdownMenu.Item label="Copy" shortcuts="Command+C" />
+				<DropdownMenu.Item label="Paste" shortcuts="Command+P" />
+				<DropdownMenu.Item label="Copy/Paste as" shortcuts="Command+V" />
+				<DropdownMenu.Item label="Move to" shortcuts="Command+M" />
+				<DropdownMenu.Item label="Bring to front" shortcuts="]" />
+				<DropdownMenu.Item label="Send to back" shortcuts="[" />
+				<DropdownMenu.Item label="Group selection" shortcuts="Command+G" />
+				<DropdownMenu.Item label="Ungroup" shortcuts="Command+U" />
+				<DropdownMenu.Item label="Rename" shortcuts="Command+R" />
+				<DropdownMenu.Item label="Show/hide" shortcuts="Shift+Command+V" />
+				<DropdownMenu.Item label="Lock/unlock" shortcuts="Shift+Command+L" />
+				<DropdownMenu.Item label="Isolate object" shortcuts="I" />
 			</DropdownMenu.Content>
 		</DropdownMenu.Root>
 	);
@@ -1124,13 +1124,12 @@ function FiltersMenu({
 						<DropdownMenu.CheckboxItem
 							key={filter}
 							name={filter}
+							label={filter}
 							checked={checked}
 							onChange={() => {
 								context.toggleFilter(filter);
 							}}
-						>
-							{filter}
-						</DropdownMenu.CheckboxItem>
+						/>
 					);
 				})}
 			</DropdownMenu.Content>

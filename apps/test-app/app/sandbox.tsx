@@ -1033,6 +1033,8 @@ function Subheader() {
 	const searchInputRef = React.useRef<HTMLInputElement>(null);
 	const tabsRef = React.useRef<HTMLHeadingElement>(null);
 
+	const filterOrSearchActive = filtered || !!search;
+
 	const actions = isSearching ? (
 		<>
 			<FiltersMenu filters={tree === "simple" ? simpleTree.filters : []} />
@@ -1042,8 +1044,6 @@ function Subheader() {
 				label="Close"
 				variant="ghost"
 				onClick={() => {
-					setSearch("");
-					clearFilters();
 					ReactDOM.flushSync(() => setIsSearching(false));
 					tabsRef.current?.focus();
 				}}
@@ -1054,6 +1054,7 @@ function Subheader() {
 			className={styles.shiftIconRight}
 			icon={searchIcon}
 			label="Search"
+			dot={filterOrSearchActive ? "Some filters or search applied" : undefined}
 			variant="ghost"
 			onClick={() => {
 				ReactDOM.flushSync(() => setIsSearching(true));
@@ -1067,11 +1068,13 @@ function Subheader() {
 		if (itemCount === undefined) return "Showing all tree items";
 		return `Showing ${itemCount} tree items`;
 	}, [filtered, itemCount]);
+
 	return (
 		<div className={styles.subheader}>
 			<VisuallyHidden aria-live="polite" aria-atomic={true}>
 				{filteredNotification}
 			</VisuallyHidden>
+
 			{isSearching ? undefined : (
 				<Tabs.TabList className={styles.tabList} tone="accent" ref={tabsRef}>
 					<Tabs.Tab id="simple">Simple</Tabs.Tab>
@@ -1104,6 +1107,9 @@ function FiltersMenu({
 	filters: string[];
 }) {
 	const context = React.useContext(TreeFilteringContext);
+
+	const filtersApplied = context.filters.length > 0;
+
 	return (
 		<DropdownMenu.Root>
 			<DropdownMenu.Button
@@ -1111,9 +1117,9 @@ function FiltersMenu({
 					<IconButton
 						icon={filterIcon}
 						label="Filter"
+						dot={filtersApplied ? "Some filters applied" : undefined}
 						variant="ghost"
 						disabled={filters.length === 0}
-						isActive={context.filters.length > 0}
 					/>
 				}
 			/>
@@ -1144,22 +1150,24 @@ function TreeFilteringProvider(props: React.PropsWithChildren) {
 	const [itemCount, setItemCount] = React.useState<number | undefined>(
 		undefined,
 	);
-	const toggleFilter = React.useCallback((filter: string) => {
-		setFilters((prev) => {
-			if (prev.includes(filter)) {
-				return prev.filter((f) => f !== filter);
-			}
-			return [...prev, filter];
-		});
-		setFiltered(true);
-	}, []);
+	const toggleFilter = React.useCallback(
+		(filter: string) => {
+			const newFilters = filters.includes(filter)
+				? filters.filter((f) => f !== filter)
+				: [...filters, filter];
+
+			setFilters(newFilters);
+			setFiltered(newFilters.length > 0);
+		},
+		[filters],
+	);
 	const clearFilters = React.useCallback(() => {
 		setFilters([]);
-		setFiltered(true);
+		setFiltered(false);
 	}, []);
 	const setSearch = React.useCallback((s: string) => {
 		setSearchState(s);
-		setFiltered(true);
+		setFiltered(!!s);
 	}, []);
 
 	return (

@@ -16,6 +16,10 @@
 		border-radius: 8px /* radius(in progress)/medium */;
 		padding: var(--✨padding);
 		box-shadow: var(--ids-shadow-surface-xl);
+
+		@media (forced-colors: active) {
+			border: 1px solid CanvasText;
+		}
 	}
 }
 

@@ -16,7 +16,7 @@ on:
         required: false
 
 jobs:
-  base:
+  paths:
     name: Calculate paths
     runs-on: ubuntu-latest
 
@@ -25,19 +25,19 @@ jobs:
       PRESERVE_FOLDERS: ${{ steps.preserve_folders.outputs.result }}
 
     steps:
-      - name: Print base path # (<inputs.base> or commits/<short_sha>)
+      - name: Print base path # (<inputs.base> or commit/<short_sha>)
         if: github.ref != 'refs/heads/main'
         id: base_path
         run: |
-          echo "base_path=${{ inputs.base || 'commits/${GITHUB_SHA::7}' }}" >> "$GITHUB_OUTPUT"
+          echo "base_path=${{ inputs.base || 'commit/${GITHUB_SHA::7}' }}" >> "$GITHUB_OUTPUT"
 
-      - name: Print folders to preserve # (open PRs and "commits/" folder)
+      - name: Print folders to preserve # (open PRs and "commit/" folder)
         id: preserve_folders
         uses: actions/github-script@v7
         with:
           result-encoding: string
           script: |
-            return ['commits', ...((await github.rest.pulls.list({
+            return ['commit', ...((await github.rest.pulls.list({
               owner: context.repo.owner,
               repo: context.repo.repo,
               state: 'open'
@@ -46,11 +46,11 @@ jobs:
   deploy:
     name: Deploy to GitHub Pages
     runs-on: ubuntu-latest
-    needs: base
+    needs: paths
 
     env:
-      BASE_FOLDER: ${{ needs.base.outputs.BASE_FOLDER }}
-      CLEAN_EXCLUDE: ${{ needs.base.outputs.PRESERVE_FOLDERS }}
+      BASE_FOLDER: ${{ needs.paths.outputs.BASE_FOLDER }}
+      CLEAN_EXCLUDE: ${{ needs.paths.outputs.PRESERVE_FOLDERS }}
 
     steps:
       - uses: actions/checkout@v4

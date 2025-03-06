@@ -14,24 +14,11 @@ test.describe("default", () => {
 				await page.goto(`/tests/skeleton?variant=${variant}&size=${size}`);
 
 				const skeleton = page.locator(".🥝-skeleton");
-				const skeletonItem = page.locator(".🥝-skeleton-item");
 
-				await expect(skeleton).toHaveText("Loading…");
-
-				await expect(skeletonItem).toHaveAttribute(
-					"data-kiwi-variant",
-					variant,
-				);
-				await expect(skeletonItem).toHaveAttribute("data-kiwi-size", size);
+				await expect(skeleton).toHaveAttribute("data-kiwi-variant", variant);
+				await expect(skeleton).toHaveAttribute("data-kiwi-size", size);
 			}
 		}
-	});
-
-	test("custom alt", async ({ page }) => {
-		await page.goto("/tests/skeleton?alt=Custom alt");
-
-		const skeleton = page.locator(".🥝-skeleton");
-		await expect(skeleton).toHaveText("Custom alt");
 	});
 });
 

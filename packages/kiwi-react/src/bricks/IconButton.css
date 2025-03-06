@@ -32,5 +32,13 @@
 				}
 			}
 		}
+		
+		&:where([data-kiwi-dot="true"][aria-pressed="true"]) {
+			&::after {
+				@media (forced-colors: active) {
+					background-color: SelectedItemText;
+				}
+			}
+		}
 	}
 }

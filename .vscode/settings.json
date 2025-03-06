@@ -15,6 +15,7 @@
 		"*.jsx": "${capture}.js, ${capture}.css",
 		"*.js": "${capture}.js.map, ${capture}.min.js, ${capture}.d.ts, ${capture}.css",
 		"*.css": "${capture}.css.ts",
+		"~utils.tsx": "~utils.*",
 		".gitignore": ".gitattributes",
 		"Dockerfile": ".dockerignore",
 		"lefthook.yml": "biome.jsonc, .prettierrc",

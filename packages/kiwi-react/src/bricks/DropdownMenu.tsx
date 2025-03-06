@@ -4,7 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 import * as React from "react";
 import cx from "classnames";
-import * as ListItem from "./ListItem.js";
+import * as ListItem from "./~utils.ListItem.js";
 import { Button } from "./Button.js";
 import { Kbd } from "./Kbd.js";
 import { Checkmark, DisclosureArrow } from "./Icon.js";

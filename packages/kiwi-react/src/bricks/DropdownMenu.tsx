@@ -7,7 +7,7 @@ import cx from "classnames";
 import * as ListItem from "./~utils.ListItem.js";
 import { Button } from "./Button.js";
 import { Kbd } from "./Kbd.js";
-import { Checkmark, DisclosureArrow } from "./Icon.js";
+import { Checkmark, DisclosureArrow, Icon } from "./Icon.js";
 import {
 	forwardRef,
 	type AnyString,
@@ -152,7 +152,10 @@ DEV: DropdownMenuButton.displayName = "DropdownMenu.Button";
 
 interface DropdownMenuItemProps
 	extends Omit<FocusableProps, "children">,
-		Partial<Pick<DropdownMenuItemShortcutsProps, "shortcuts">> {
+		Partial<
+			Pick<DropdownMenuItemShortcutsProps, "shortcuts"> &
+				Pick<DropdownMenuIconProps, "icon">
+		> {
 	/** The primary text label for the menu-item. */
 	label: React.ReactNode;
 }
@@ -168,7 +171,7 @@ interface DropdownMenuItemProps
  */
 const DropdownMenuItem = forwardRef<"div", DropdownMenuItemProps>(
 	(props, forwardedRef) => {
-		const { label, shortcuts, ...rest } = props;
+		const { label, shortcuts, icon, ...rest } = props;
 
 		return (
 			<MenuItem
@@ -178,6 +181,7 @@ const DropdownMenuItem = forwardRef<"div", DropdownMenuItemProps>(
 				className={cx("🥝-dropdown-menu-item", props.className)}
 				ref={forwardedRef}
 			>
+				{icon ? <DropdownMenuIcon icon={icon} /> : null}
 				<ListItem.Content>{label}</ListItem.Content>
 				{shortcuts ? <DropdownMenuItemShortcuts shortcuts={shortcuts} /> : null}
 			</MenuItem>
@@ -249,12 +253,42 @@ DEV: DropdownMenuItemShortcuts.displayName = "DropdownMenuItemShortcuts";
 
 // ----------------------------------------------------------------------------
 
+interface DropdownMenuIconProps extends BaseProps {
+	/**
+	 * An optional icon displayed before the menu-item label.
+	 *
+	 * Can be a URL of an SVG from the `@itwin/itwinui-icons` package,
+	 * or a custom JSX icon.
+	 */
+	icon?: string | React.JSX.Element;
+}
+
+const DropdownMenuIcon = forwardRef<"div", DropdownMenuIconProps>(
+	(props, forwardedRef) => {
+		const { icon, ...rest } = props;
+
+		return (
+			<ListItem.Decoration
+				render={
+					<Icon
+						href={typeof icon === "string" ? icon : undefined}
+						render={React.isValidElement(icon) ? icon : undefined}
+					/>
+				}
+				{...rest}
+				ref={forwardedRef}
+			/>
+		);
+	},
+);
+DEV: DropdownMenuIcon.displayName = "DropdownMenuIcon";
+
+// ----------------------------------------------------------------------------
+
 interface DropdownMenuCheckboxItemProps
 	extends Omit<FocusableProps, "onChange" | "children">,
-		Pick<MenuItemCheckboxProps, "checked" | "onChange" | "name" | "value"> {
-	/** The primary text label for the menu-item. */
-	label: React.ReactNode;
-}
+		Pick<MenuItemCheckboxProps, "checked" | "onChange" | "name" | "value">,
+		Pick<DropdownMenuItemProps, "label" | "icon"> {}
 
 /**
  * A single menu item within the dropdown menu. Should be used as a child of `DropdownMenu.Content`.
@@ -269,7 +303,7 @@ const DropdownMenuCheckboxItem = forwardRef<
 	"div",
 	DropdownMenuCheckboxItemProps
 >((props, forwardedRef) => {
-	const { label, ...rest } = props;
+	const { label, icon, ...rest } = props;
 
 	return (
 		<MenuItemCheckbox
@@ -280,6 +314,7 @@ const DropdownMenuCheckboxItem = forwardRef<
 			className={cx("🥝-dropdown-menu-item", props.className)}
 			ref={forwardedRef}
 		>
+			{icon ? <DropdownMenuIcon icon={icon} /> : null}
 			<ListItem.Content>{label}</ListItem.Content>
 			<ListItem.Decoration
 				render={<Checkmark className="🥝-dropdown-menu-checkmark" />}

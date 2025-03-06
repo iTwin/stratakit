@@ -154,13 +154,20 @@ function SynchronizeColorScheme({
 
 // ----------------------------------------------------------------------------
 
-/** A separate root rendered at the end of `<body>`, to be used as the target for all portals. */
+/** A separate root rendered at the end of root node, to be used as the container for all portals. */
 const PortalContainer = forwardRef<
 	"div",
 	Pick<RootProps, "colorScheme" | "density">
 >((props, forwardedRef) => {
 	const isClient = useIsClient();
+	const rootNode = useRootNode();
+
 	if (!isClient) return null;
+
+	const destination =
+		rootNode && isDocument(rootNode) ? rootNode.body : rootNode;
+
+	if (!destination) return null;
 
 	return ReactDOM.createPortal(
 		<div
@@ -170,9 +177,10 @@ const PortalContainer = forwardRef<
 			style={{ display: "contents" }}
 			ref={forwardedRef}
 		/>,
-		document.body,
+		destination,
 	);
 });
+
 // ----------------------------------------------------------------------------
 
 function Styles() {

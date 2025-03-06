@@ -17,10 +17,10 @@ export default definePage(
 					</DropdownMenu.Button>
 
 					<DropdownMenu.Content>
-						<DropdownMenu.Item shortcuts="Command+A">Add</DropdownMenu.Item>
-						<DropdownMenu.Item shortcuts="Shift+E">Edit</DropdownMenu.Item>
-						<DropdownMenu.Item disabled>Delete</DropdownMenu.Item>
-						<DropdownMenu.Item>Disable</DropdownMenu.Item>
+						<DropdownMenu.Item shortcuts="Command+A" label="Add" />
+						<DropdownMenu.Item shortcuts="Shift+E" label="Edit" />
+						<DropdownMenu.Item disabled label="Delete" />
+						<DropdownMenu.Item label="Disable" />
 					</DropdownMenu.Content>
 				</DropdownMenu.Root>
 			</div>
@@ -39,18 +39,13 @@ function CheckboxTest({ defaultChecked: defaultCheckedParam }: VariantProps) {
 				<DropdownMenu.Button>Settings</DropdownMenu.Button>
 
 				<DropdownMenu.Content>
-					<DropdownMenu.CheckboxItem name="item1">
-						Item 1
-					</DropdownMenu.CheckboxItem>
-					<DropdownMenu.CheckboxItem name="item2">
-						Item 2
-					</DropdownMenu.CheckboxItem>
+					<DropdownMenu.CheckboxItem name="item1" label="Item 1" />
+					<DropdownMenu.CheckboxItem name="item2" label="Item 2" />
 					<DropdownMenu.CheckboxItem
 						name="item3"
+						label="Item 3"
 						defaultChecked={defaultChecked}
-					>
-						Item 3
-					</DropdownMenu.CheckboxItem>
+					/>
 				</DropdownMenu.Content>
 			</DropdownMenu.Root>
 		</div>

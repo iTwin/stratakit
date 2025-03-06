@@ -8,9 +8,7 @@ import { forwardRef, type BaseProps } from "./~utils.js";
 
 // ----------------------------------------------------------------------------
 
-interface SkeletonPropsBase extends BaseProps {
-	children?: never;
-}
+interface SkeletonPropsBase extends Omit<BaseProps, "children"> {}
 
 type SkeletonProps = SkeletonPropsBase & {
 	/**

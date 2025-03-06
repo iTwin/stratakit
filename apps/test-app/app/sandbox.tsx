@@ -909,7 +909,7 @@ function SandboxTree({
 	tree: "simple" | "complex";
 }) {
 	const { selectedId } = React.useContext(TabsContext);
-	const { filters, search, setItemCount } =
+	const { filters, search, setItemCount, errors } =
 		React.useContext(TreeFilteringContext);
 	const [selected, setSelected] = React.useState<string | undefined>();
 	const [hidden, setHidden] = React.useState<string[]>([]);
@@ -1008,26 +1008,58 @@ function SandboxTree({
 					);
 				})}
 			</Tree.Root>
+			<VisuallyHidden aria-live="polite">
+				{Object.entries(errors).map(([id, error]) => (
+					<span key={id}>{error}</span>
+				))}
+			</VisuallyHidden>
 		</React.Suspense>
 	);
 }
 
+interface LiveTreeItemErrorProps
+	extends Omit<React.ComponentProps<typeof Tree.ItemError>, "label"> {
+	message: string;
+}
+
+function LiveTreeItemError(props: LiveTreeItemErrorProps) {
+	const { message, actions, ...rest } = props;
+	const { setError } = React.useContext(TreeFilteringContext);
+	const actionCount = actions?.length ?? 0;
+	const id = React.useId();
+	React.useEffect(() => {
+		setError(
+			id,
+			<>
+				{message}
+				{actionCount === 1 ? "1 action available" : undefined}
+				{actionCount > 1 ? `${actionCount} actions available` : undefined}
+			</>,
+		);
+		return () => {
+			setError(id, undefined);
+		};
+	}, [id, message, actionCount, setError]);
+	return <Tree.ItemError {...rest} label={message} actions={actions} />;
+}
+
 function TreeItemError({ error }: { error: "simple" | "complex" }) {
-	if (error === "simple")
+	if (error === "simple") {
 		return (
-			<Tree.ItemError
-				label="Failed to create hierarchy"
+			<LiveTreeItemError
+				message="Failed to create hierarchy"
 				icon={placeholderIcon}
 				actions={[
 					<Tree.ItemErrorAction key="retry">Retry</Tree.ItemErrorAction>,
 				]}
 			/>
 		);
+	}
 
-	if (error === "complex")
+	if (error === "complex") {
 		return (
-			<Tree.ItemError
-				label="The hierarchy exceeds 1000 items. Provide additional filtering or increase the limit."
+			<LiveTreeItemError
+				message="The hierarchy exceeds 1000 items. Provide additional filtering or increase the limit."
 				icon={placeholderIcon}
 				actions={[
 					<Tree.ItemErrorAction key="add">Add filter</Tree.ItemErrorAction>,
@@ -1037,6 +1069,7 @@ function TreeItemError({ error }: { error: "simple" | "complex" }) {
 				]}
 			/>
 		);
+	}
 }
 
 function TreeMoreActions({ hidden }: { hidden?: boolean }) {
@@ -1202,6 +1235,20 @@ function TreeFilteringProvider(props: React.PropsWithChildren) {
 		setSearchState(s);
 		setFiltered(true);
 	}, []);
+	const [errors, setErrors] = React.useState<Record<string, React.ReactNode>>(
+		{},
+	);
+
+	const setError = React.useCallback((id: string, error: React.ReactNode) => {
+		if (!error) {
+			setErrors((prev) => {
+				const { [id]: _, ...rest } = prev;
+				return rest;
+			});
+			return;
+		}
+		setErrors((prev) => ({ ...prev, [id]: error }));
+	}, []);
 
 	return (
 		<TreeFilteringContext.Provider
@@ -1215,6 +1262,8 @@ function TreeFilteringProvider(props: React.PropsWithChildren) {
 					setSearch,
 					itemCount,
 					setItemCount,
+					setError,
+					errors,
 				}),
 				[
 					filters,
@@ -1224,6 +1273,8 @@ function TreeFilteringProvider(props: React.PropsWithChildren) {
 					search,
 					setSearch,
 					itemCount,
+					setError,
+					errors,
 				],
 			)}
 		>
@@ -1261,6 +1312,8 @@ const TreeFilteringContext = React.createContext<{
 	setSearch: (search: string) => void;
 	itemCount: number | undefined;
 	setItemCount: (count: number | undefined) => void;
+	errors: Record<string, React.ReactNode>;
+	setError: (id: string, error: React.ReactNode) => void;
 }>({
 	filters: [],
 	filtered: false,
@@ -1270,6 +1323,8 @@ const TreeFilteringContext = React.createContext<{
 	setSearch: () => {},
 	itemCount: undefined,
 	setItemCount: () => {},
+	errors: {},
+	setError: () => {},
 });
 
 const TabsContext = React.createContext<{

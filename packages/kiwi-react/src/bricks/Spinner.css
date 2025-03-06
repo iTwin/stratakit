@@ -6,18 +6,19 @@
 .🥝-spinner {
 	@layer base {
 		display: inline-block;
-		color: var(--🥝spinner-color);
 		block-size: var(--🥝spinner-size);
 		inline-size: var(--🥝spinner-size);
 	}
 
 	@layer modifiers {
 		&:where([data-kiwi-tone="neutral"]) {
-			--🥝spinner-color: var(--ids-color-icon-neutral-base);
+			--🥝spinner-fill-color: var(--ids-color-icon-neutral-base);
+			--🥝spinner-track-color: var(--ids-color-border-page-base);
 		}
 
 		&:where([data-kiwi-tone="accent"]) {
-			--🥝spinner-color: var(--ids-color-icon-accent-strong);
+			--🥝spinner-fill-color: var(--ids-color-icon-accent-strong);
+			--🥝spinner-track-color: var(--ids-color-bg-accent-muted);
 		}
 
 		&:where([data-kiwi-size="small"]) {
@@ -35,6 +36,11 @@
 		&:where([data-kiwi-size="xlarge"]) {
 			--🥝spinner-size: 3rem;
 		}
+
+		@media (forced-colors: active) {
+			--🥝spinner-fill-color: CanvasText;
+			--🥝spinner-track-color: transparent;
+		}
 	}
 }
 
@@ -43,12 +49,32 @@
 		block-size: inherit;
 		inline-size: inherit;
 		fill: none;
-		animation: --🥝spinner-spin 1s linear infinite both;
+	}
+}
+
+.🥝-spinner-svg-track {
+	stroke: var(--🥝spinner-track-color);
+}
+
+.🥝-spinner-svg-fill {
+	stroke: var(--🥝spinner-fill-color);
+	stroke-linecap: round;
+	stroke-dashoffset: 25;
+	transform-origin: 50% 50%;
+	transform-box: fill-box;
+
+	:where([data-kiwi-variant="indeterminate"]) .🥝-spinner-svg & {
+		stroke-dasharray: 50 50;
+		animation: --🥝spinner-spin 1s cubic-bezier(0.5, 0, 0.5, 1) infinite both;
 
 		@media (prefers-reduced-motion) {
 			animation-timing-function: steps(4, end);
 			animation-duration: 4s;
 		}
+	}
+
+	:where([data-kiwi-variant="determinate"]) .🥝-spinner-svg & {
+		stroke-dasharray: var(--🥝spinner-percentage) calc(100 - var(--🥝spinner-percentage));
 	}
 }
 

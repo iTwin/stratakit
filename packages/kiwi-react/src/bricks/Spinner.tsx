@@ -25,6 +25,12 @@ interface SpinnerProps extends BaseProps {
 	 * @default "neutral"
 	 */
 	tone?: "neutral" | "accent";
+
+	/**
+	 * The variant of the spinner.
+	 * @default "indeterminate"
+	 */
+	variant?: "indeterminate" | "determinate";
 }
 
 /**
@@ -44,6 +50,7 @@ export const Spinner = forwardRef<"div", SpinnerProps>(
 			alt = "Loading…",
 			size = "medium",
 			tone = "neutral",
+			variant = "indeterminate",
 			...rest
 		} = props;
 
@@ -52,14 +59,24 @@ export const Spinner = forwardRef<"div", SpinnerProps>(
 				{...rest}
 				data-kiwi-size={size}
 				data-kiwi-tone={tone}
+				data-kiwi-variant={variant}
 				className={cx("🥝-spinner", props.className)}
 				ref={forwardedRef}
 			>
 				<svg aria-hidden="true" className="🥝-spinner-svg" viewBox="0 0 16 16">
-					<path
-						stroke="currentColor"
-						stroke-linecap="round"
-						d="M9.5 1.674a6.503 6.503 0 0 1 0 12.652m-3-12.652a6.503 6.503 0 0 0 0 12.652"
+					<circle
+						pathLength="100"
+						className="🥝-spinner-svg-track"
+						cx="8"
+						cy="8"
+						r="6.5"
+					/>
+					<circle
+						pathLength="100"
+						className="🥝-spinner-svg-fill"
+						cx="8"
+						cy="8"
+						r="6.5"
 					/>
 				</svg>
 				<VisuallyHidden>{alt}</VisuallyHidden>

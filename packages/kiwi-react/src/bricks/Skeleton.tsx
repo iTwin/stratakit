@@ -2,20 +2,13 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-import * as Ariakit from "@ariakit/react";
+import { Role } from "@ariakit/react/role";
 import cx from "classnames";
 import { forwardRef, type BaseProps } from "./~utils.js";
-import { VisuallyHidden } from "./VisuallyHidden.js";
 
 // ----------------------------------------------------------------------------
 
-interface SkeletonProps extends BaseProps {
-	/**
-	 * A text alternative for the skeleton.
-	 * @default "Loading…"
-	 */
-	alt?: string;
-}
+interface SkeletonProps extends BaseProps {}
 
 /**
  * A wrapper around `Skeleton.Item`s to roughly represent the loaded content before it finishes loading.
@@ -28,17 +21,16 @@ interface SkeletonProps extends BaseProps {
  * ```
  */
 const Skeleton = forwardRef<"div", SkeletonProps>((props, forwardedRef) => {
-	const { alt = "Loading…", children, ...rest } = props;
+	const { children, ...rest } = props;
 
 	return (
-		<Ariakit.Role.div
+		<Role.div
 			{...rest}
 			className={cx("🥝-skeleton", props.className)}
 			ref={forwardedRef}
 		>
 			{children}
-			<VisuallyHidden>{alt}</VisuallyHidden>
-		</Ariakit.Role.div>
+		</Role.div>
 	);
 });
 DEV: Skeleton.displayName = "Skeleton.Group";
@@ -79,7 +71,7 @@ const SkeletonItem = forwardRef<"div", SkeletonItemProps>(
 		const { variant = "text", size = "medium", ...rest } = props;
 
 		return (
-			<Ariakit.Role.div
+			<Role.div
 				{...rest}
 				ref={forwardedRef}
 				className={cx("🥝-skeleton-item", props.className)}

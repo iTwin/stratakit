@@ -4,6 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 import { definePage } from "~/~utils.tsx";
 import * as Skeleton from "@itwin/itwinui-react-internal/src/bricks/Skeleton.tsx";
+import { VisuallyHidden } from "@itwin/itwinui-react/bricks";
 
 export const handle = { title: "Skeleton" };
 
@@ -12,11 +13,12 @@ const sizes = ["xsmall", "small", "medium", "large", "xlarge"] as const;
 export default definePage(
 	function Page({ variant, size, alt }) {
 		return (
-			<Skeleton.Group alt={alt}>
+			<Skeleton.Group>
 				<Skeleton.Item
 					variant={variant as "object" | undefined}
 					size={size as (typeof sizes)[0]}
 				/>
+				<VisuallyHidden>{alt ?? "Loading…"}</VisuallyHidden>
 			</Skeleton.Group>
 		);
 	},
@@ -35,6 +37,7 @@ function VisualTest() {
 						style={{ marginBottom: 8 }}
 					/>
 				))}
+				<VisuallyHidden>Loading…</VisuallyHidden>
 			</Skeleton.Group>
 
 			<Skeleton.Group style={{ gap: 16 }}>
@@ -46,6 +49,7 @@ function VisualTest() {
 						style={{ marginBottom: 8 }}
 					/>
 				))}
+				<VisuallyHidden>Loading…</VisuallyHidden>
 			</Skeleton.Group>
 		</div>
 	);

@@ -17,8 +17,8 @@ export default definePage(
 					</DropdownMenu.Button>
 
 					<DropdownMenu.Content>
-						<DropdownMenu.Item shortcuts="⌘+A">Add</DropdownMenu.Item>
-						<DropdownMenu.Item shortcuts="⇧+E">Edit</DropdownMenu.Item>
+						<DropdownMenu.Item shortcuts="Command+A">Add</DropdownMenu.Item>
+						<DropdownMenu.Item shortcuts="Shift+E">Edit</DropdownMenu.Item>
 						<DropdownMenu.Item disabled>Delete</DropdownMenu.Item>
 						<DropdownMenu.Item>Disable</DropdownMenu.Item>
 					</DropdownMenu.Content>

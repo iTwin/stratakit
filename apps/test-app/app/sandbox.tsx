@@ -1018,7 +1018,7 @@ function SandboxTree({
 									return newData;
 								});
 							}}
-							decorations={
+							unstable_decorations={
 								<>
 									{item.color ? (
 										<ColorSwatch color={item.color} alt={item.color} />

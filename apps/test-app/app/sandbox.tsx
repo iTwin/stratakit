@@ -1040,7 +1040,7 @@ function LiveTreeItemError(props: LiveTreeItemErrorProps) {
 			setError(id, undefined);
 		};
 	}, [id, message, actionCount, setError]);
-	return <Tree.ItemError {...rest} label={message} actions={actions} />;
+	return <Tree.ItemError {...rest} message={message} actions={actions} />;
 }
 
 function TreeItemError({ error }: { error: "simple" | "complex" }) {

@@ -127,7 +127,7 @@ export default definePage(function Page({
 										if (errorType === "simple") {
 											return (
 												<Tree.ItemError
-													label="Failed to create hierarchy"
+													message="Failed to create hierarchy"
 													icon={placeholderIcon}
 													actions={[
 														<Tree.ItemErrorAction
@@ -143,7 +143,7 @@ export default definePage(function Page({
 										if (errorType === "complex") {
 											return (
 												<Tree.ItemError
-													label="The hierarchy exceeds 1000 items. Provide additional filtering or increase the limit."
+													message="The hierarchy exceeds 1000 items. Provide additional filtering or increase the limit."
 													icon={placeholderIcon}
 													actions={[
 														<Tree.ItemErrorAction

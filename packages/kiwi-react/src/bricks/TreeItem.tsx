@@ -383,7 +383,7 @@ interface TreeItemErrorProps extends BaseProps {
 	/**
 	 * The primary error message.
 	 */
-	label?: React.ReactNode;
+	message?: React.ReactNode;
 	/**
 	 * The actions available for the tree item error. Must be a list of `Tree.ItemErrorAction` components.
 	 */
@@ -395,7 +395,7 @@ interface TreeItemErrorProps extends BaseProps {
  */
 const TreeItemError = forwardRef<"div", TreeItemErrorProps>(
 	(props, forwardedRef) => {
-		const { icon, label, actions, ...rest } = props;
+		const { icon, message, actions, ...rest } = props;
 		const { errorId } = React.useContext(TreeItemContext) ?? {};
 		return (
 			<ListItem.Root
@@ -408,7 +408,7 @@ const TreeItemError = forwardRef<"div", TreeItemErrorProps>(
 				<ListItem.Decoration>
 					{typeof icon === "string" ? <Icon href={icon} /> : icon}
 				</ListItem.Decoration>
-				<ListItem.Content id={errorId}>{label}</ListItem.Content>
+				<ListItem.Content id={errorId}>{message}</ListItem.Content>
 				<TreeItemErrorActions>{actions}</TreeItemErrorActions>
 			</ListItem.Root>
 		);

@@ -50,4 +50,4 @@ export const Skeleton = forwardRef<"div", SkeletonProps>(
 		);
 	},
 );
-DEV: Skeleton.displayName = "Skeleton.Item";
+DEV: Skeleton.displayName = "Skeleton";

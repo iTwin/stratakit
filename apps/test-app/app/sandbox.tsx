@@ -1063,18 +1063,18 @@ function TreeMoreActions({ hidden }: { hidden?: boolean }) {
 				render={<Tree.ItemAction icon={moreIcon} label="More" />}
 			/>
 			<DropdownMenu.Content style={{ minInlineSize: 164 }}>
-				<DropdownMenu.Item shortcuts="⌘+C">Copy</DropdownMenu.Item>
-				<DropdownMenu.Item shortcuts="⌘+P">Paste</DropdownMenu.Item>
-				<DropdownMenu.Item shortcuts="⌘+V">Copy/Paste as</DropdownMenu.Item>
-				<DropdownMenu.Item shortcuts="⌘+M">Move to</DropdownMenu.Item>
-				<DropdownMenu.Item shortcuts="]">Bring to front</DropdownMenu.Item>
-				<DropdownMenu.Item shortcuts="[">Send to back</DropdownMenu.Item>
-				<DropdownMenu.Item shortcuts="⌘+G">Group selection</DropdownMenu.Item>
-				<DropdownMenu.Item shortcuts="⌘+U">Ungroup</DropdownMenu.Item>
-				<DropdownMenu.Item shortcuts="⌘+R">Rename</DropdownMenu.Item>
-				<DropdownMenu.Item shortcuts="⇧+⌘+V">Show/hide</DropdownMenu.Item>
-				<DropdownMenu.Item shortcuts="⇧+⌘+L">Lock/unlock</DropdownMenu.Item>
-				<DropdownMenu.Item shortcuts="I">Isolate object</DropdownMenu.Item>
+				<DropdownMenu.Item label="Copy" shortcuts="Command+C" />
+				<DropdownMenu.Item label="Paste" shortcuts="Command+P" />
+				<DropdownMenu.Item label="Copy/Paste as" shortcuts="Command+V" />
+				<DropdownMenu.Item label="Move to" shortcuts="Command+M" />
+				<DropdownMenu.Item label="Bring to front" shortcuts="]" />
+				<DropdownMenu.Item label="Send to back" shortcuts="[" />
+				<DropdownMenu.Item label="Group selection" shortcuts="Command+G" />
+				<DropdownMenu.Item label="Ungroup" shortcuts="Command+U" />
+				<DropdownMenu.Item label="Rename" shortcuts="Command+R" />
+				<DropdownMenu.Item label="Show/hide" shortcuts="Shift+Command+V" />
+				<DropdownMenu.Item label="Lock/unlock" shortcuts="Shift+Command+L" />
+				<DropdownMenu.Item label="Isolate object" shortcuts="I" />
 			</DropdownMenu.Content>
 		</DropdownMenu.Root>
 	);
@@ -1088,6 +1088,8 @@ function Subheader() {
 	const searchInputRef = React.useRef<HTMLInputElement>(null);
 	const tabsRef = React.useRef<HTMLHeadingElement>(null);
 
+	const filterOrSearchActive = filtered || !!search;
+
 	const actions = isSearching ? (
 		<>
 			<FiltersMenu filters={tree === "simple" ? simpleTree.filters : []} />
@@ -1097,8 +1099,6 @@ function Subheader() {
 				label="Close"
 				variant="ghost"
 				onClick={() => {
-					setSearch("");
-					clearFilters();
 					ReactDOM.flushSync(() => setIsSearching(false));
 					tabsRef.current?.focus();
 				}}
@@ -1109,6 +1109,7 @@ function Subheader() {
 			className={styles.shiftIconRight}
 			icon={searchIcon}
 			label="Search"
+			dot={filterOrSearchActive ? "Some filters or search applied" : undefined}
 			variant="ghost"
 			onClick={() => {
 				ReactDOM.flushSync(() => setIsSearching(true));
@@ -1122,11 +1123,13 @@ function Subheader() {
 		if (itemCount === undefined) return "Showing all tree items";
 		return `Showing ${itemCount} tree items`;
 	}, [filtered, itemCount]);
+
 	return (
 		<div className={styles.subheader}>
 			<VisuallyHidden aria-live="polite" aria-atomic={true}>
 				{filteredNotification}
 			</VisuallyHidden>
+
 			{isSearching ? undefined : (
 				<Tabs.TabList className={styles.tabList} tone="accent" ref={tabsRef}>
 					<Tabs.Tab id="simple">Simple</Tabs.Tab>
@@ -1159,6 +1162,9 @@ function FiltersMenu({
 	filters: string[];
 }) {
 	const context = React.useContext(TreeFilteringContext);
+
+	const filtersApplied = context.filters.length > 0;
+
 	return (
 		<DropdownMenu.Root>
 			<DropdownMenu.Button
@@ -1166,9 +1172,9 @@ function FiltersMenu({
 					<IconButton
 						icon={filterIcon}
 						label="Filter"
+						dot={filtersApplied ? "Some filters applied" : undefined}
 						variant="ghost"
 						disabled={filters.length === 0}
-						isActive={context.filters.length > 0}
 					/>
 				}
 			/>
@@ -1179,13 +1185,12 @@ function FiltersMenu({
 						<DropdownMenu.CheckboxItem
 							key={filter}
 							name={filter}
+							label={filter}
 							checked={checked}
 							onChange={() => {
 								context.toggleFilter(filter);
 							}}
-						>
-							{filter}
-						</DropdownMenu.CheckboxItem>
+						/>
 					);
 				})}
 			</DropdownMenu.Content>
@@ -1200,22 +1205,24 @@ function TreeFilteringProvider(props: React.PropsWithChildren) {
 	const [itemCount, setItemCount] = React.useState<number | undefined>(
 		undefined,
 	);
-	const toggleFilter = React.useCallback((filter: string) => {
-		setFilters((prev) => {
-			if (prev.includes(filter)) {
-				return prev.filter((f) => f !== filter);
-			}
-			return [...prev, filter];
-		});
-		setFiltered(true);
-	}, []);
+	const toggleFilter = React.useCallback(
+		(filter: string) => {
+			const newFilters = filters.includes(filter)
+				? filters.filter((f) => f !== filter)
+				: [...filters, filter];
+
+			setFilters(newFilters);
+			setFiltered(newFilters.length > 0);
+		},
+		[filters],
+	);
 	const clearFilters = React.useCallback(() => {
 		setFilters([]);
-		setFiltered(true);
+		setFiltered(false);
 	}, []);
 	const setSearch = React.useCallback((s: string) => {
 		setSearchState(s);
-		setFiltered(true);
+		setFiltered(!!s);
 	}, []);
 
 	return (

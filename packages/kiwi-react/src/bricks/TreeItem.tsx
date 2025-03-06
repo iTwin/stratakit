@@ -10,12 +10,12 @@ import {
 	type CompositeItemProps,
 } from "@ariakit/react/composite";
 import { Toolbar } from "@ariakit/react/toolbar";
-import * as ListItem from "./ListItem.js";
+import * as ListItem from "./~utils.ListItem.js";
 import { IconButton } from "./IconButton.js";
 import { Icon } from "./Icon.js";
 import { forwardRef, type BaseProps } from "./~utils.js";
 import { useEventHandlers } from "./~hooks.js";
-import { GhostAligner } from "./GhostAligner.js";
+import { GhostAligner } from "./~utils.GhostAligner.js";
 
 // ----------------------------------------------------------------------------
 

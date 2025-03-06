@@ -5,6 +5,7 @@
 import { definePage } from "~/~utils.tsx";
 import { IconButton, Icon } from "@itwin/itwinui-react/bricks";
 import placeholderIcon from "@itwin/itwinui-icons/placeholder.svg";
+import notificationsIcon from "@itwin/itwinui-icons/notifications.svg";
 
 export const handle = { title: "IconButton" };
 
@@ -21,6 +22,7 @@ export default definePage(
 	{
 		visual: VisualTest,
 		customIcon: CustomIconTest,
+		dot: DotTest,
 	},
 );
 
@@ -44,6 +46,12 @@ function VisualTest({ tooltip: showTooltip = false }) {
 				icon={placeholderIcon}
 				isActive
 			/>
+			<IconButton
+				variant="ghost"
+				label="Notifications"
+				dot="You have unread notifications"
+				icon={placeholderIcon}
+			/>
 		</div>
 	);
 }
@@ -62,6 +70,17 @@ function CustomIconTest() {
 					}
 				/>
 			}
+		/>
+	);
+}
+
+function DotTest() {
+	return (
+		<IconButton
+			variant="ghost"
+			label="Notifications"
+			dot="You have unread notifications"
+			icon={notificationsIcon}
 		/>
 	);
 }

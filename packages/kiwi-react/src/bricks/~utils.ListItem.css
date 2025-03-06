@@ -68,6 +68,10 @@
 		&:where([disabled], :disabled, [aria-disabled="true"]) {
 			--🌀list-item-state: var(--🌀list-item-state--disabled);
 			cursor: not-allowed;
+
+			@media (forced-colors: active) {
+				color: GrayText;
+			}
 		}
 	}
 

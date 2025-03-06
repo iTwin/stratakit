@@ -42,6 +42,17 @@ test("description", async ({ page }) => {
 	await expect(item1_1).toHaveAccessibleDescription("Additional description");
 });
 
+test("error", async ({ page }) => {
+	await page.goto("/tests/tree?error");
+
+	const item1_1 = page.getByRole("treeitem").filter({
+		has: page.getByText("Item 1.1"),
+	});
+	await expect(item1_1).toHaveAccessibleDescription(
+		"Failed to create hierarchy",
+	);
+});
+
 test.describe("keyboard", () => {
 	test("navigation and expansion", async ({ page }) => {
 		await page.goto("/tests/tree");
@@ -168,6 +179,13 @@ test.describe("@visual", () => {
 
 	test("description", async ({ page }) => {
 		await page.goto("/tests/tree?description");
+		const tree = page.getByRole("tree");
+		await expect(tree).toBeVisible();
+		await expect(page.locator("body")).toHaveScreenshot();
+	});
+
+	test("error", async ({ page }) => {
+		await page.goto("/tests/tree?error");
 		const tree = page.getByRole("tree");
 		await expect(tree).toBeVisible();
 		await expect(page.locator("body")).toHaveScreenshot();

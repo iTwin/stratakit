@@ -4,14 +4,14 @@ on:
   workflow_dispatch:
     inputs:
       base:
-        description: "Base path under which to deploy (defaults to commit SHA)"
+        description: "Base path under which to deploy (defaults to `commit/<SHA>`)"
         type: string
         required: false
 
   workflow_call:
     inputs:
       base:
-        description: "Base path under which to deploy (defaults to commit SHA)"
+        description: "Base path under which to deploy (defaults to `commit/<SHA>`)"
         type: string
         required: false
 

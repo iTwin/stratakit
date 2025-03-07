@@ -25,38 +25,53 @@
 }
 
 .swatch {
-	--_swatch-size: 3rem;
+	&:where([data-kind="shadow"], [data-kind="color"]) {
+		--_swatch-size: 3rem;
 
-	inline-size: var(--_swatch-size);
-	block-size: var(--_swatch-size);
-	border-radius: 4px;
-	position: relative;
-	background-position: 0 0, calc(var(--_swatch-size) * 0.25) calc(var(--_swatch-size) * 0.25);
-	background-size: calc(var(--_swatch-size) * 0.5) calc(var(--_swatch-size) * 0.5);
-	background-image: repeating-linear-gradient(
-			45deg,
-			var(--ids-color-bg-neutral-base) 25%,
-			transparent 25%,
-			transparent 75%,
-			var(--ids-color-bg-neutral-base) 75%,
-			var(--ids-color-bg-neutral-base)
-		),
-		repeating-linear-gradient(
-			45deg,
-			var(--ids-color-bg-neutral-base) 25%,
-			var(--ids-color-bg-neutral-faded) 25%,
-			var(--ids-color-bg-neutral-faded) 75%,
-			var(--ids-color-bg-neutral-base) 75%,
-			var(--ids-color-bg-neutral-base)
-		);
-	forced-color-adjust: none;
+		inline-size: var(--_swatch-size);
+		block-size: var(--_swatch-size);
+		border-radius: 4px;
+		position: relative;
+		background-position: 0 0, calc(var(--_swatch-size) * 0.25) calc(var(--_swatch-size) * 0.25);
+		background-size: calc(var(--_swatch-size) * 0.5) calc(var(--_swatch-size) * 0.5);
+		background-image: repeating-linear-gradient(
+				45deg,
+				var(--ids-color-bg-neutral-base) 25%,
+				transparent 25%,
+				transparent 75%,
+				var(--ids-color-bg-neutral-base) 75%,
+				var(--ids-color-bg-neutral-base)
+			),
+			repeating-linear-gradient(
+				45deg,
+				var(--ids-color-bg-neutral-base) 25%,
+				var(--ids-color-bg-neutral-faded) 25%,
+				var(--ids-color-bg-neutral-faded) 75%,
+				var(--ids-color-bg-neutral-base) 75%,
+				var(--ids-color-bg-neutral-base)
+			);
+		forced-color-adjust: none;
 
-	&::before {
-		content: "";
-		position: absolute;
-		inset: 0;
-		border-radius: inherit;
-		background-color: var(--_swatch-color, var(--ids-color-bg-neutral-base));
-		box-shadow: var(--_swatch-shadow, var(--ids-shadow-surface-xs));
+		&::before {
+			content: "";
+			position: absolute;
+			inset: 0;
+			border-radius: inherit;
+			background-color: var(--_swatch-color, var(--ids-color-bg-neutral-base));
+			box-shadow: var(--_swatch-shadow, var(--ids-shadow-surface-xs));
+		}
+	}
+
+	&:where([data-kind="typography"]) {
+		inline-size: 300px;
+
+		&::before {
+			content: "Example text";
+
+			font-size: var(--_swatch-font-size, var(--ids-font-size-16));
+			line-height: var(--_swatch-line-height, 1.2);
+			font-family: var(--_swatch-font-family, var(--ids-font-family-sans));
+			letter-spacing: var(--_swatch-letter-spacing, 0);
+		}
 	}
 }

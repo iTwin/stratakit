@@ -250,10 +250,13 @@ export function typographyTransform() {
 				});
 
 				// TODO: leverage inheritance when this token matches the root line-height
-				declarations.push({
-					property: "line-height",
-					raw: `${lineHeight}`,
-				});
+				// line-height (1.2 is the default)
+				if (lineHeight !== 1.2) {
+					declarations.push({
+						property: "line-height",
+						raw: `${lineHeight}`,
+					});
+				}
 
 				// letter-spacing (0 is the default)
 				if (letterSpacing !== 0) {
@@ -315,7 +318,11 @@ export function typographyTokensTransform() {
 
 				const declarations = [];
 
+				const sizeValues = {};
+
+				// size token
 				for (const [step, token] of Object.entries(typography.size)) {
+					sizeValues[step] = token.$value;
 					declarations.push(
 						cssCustomProperty(
 							step,
@@ -327,6 +334,60 @@ export function typographyTokensTransform() {
 							{ prefix: "ids-font-size" },
 						),
 					);
+				}
+
+				for (const [name, token] of Object.entries(typography.typography)) {
+					const { fontFamily, fontSize, lineHeight, letterSpacing } =
+						token.$value;
+
+					// font-size
+					const { step } = fontSize.match(/{size.(?<step>\d+)}/).groups;
+					declarations.push(
+						cssCustomProperty(
+							name,
+							{ type: "length", value: sizeValues[step] },
+							{ prefix: "ids-font-size" },
+						),
+					);
+
+					// line-height (1.2 is the default)
+					if (lineHeight !== 1.2) {
+						declarations.push(
+							cssCustomProperty(
+								name,
+								{ type: "token", value: { type: "number", value: lineHeight } },
+								{ prefix: "ids-line-height" },
+							),
+						);
+					}
+
+					// font-family (leverage inheritance for {family.sans})
+					if (fontFamily === "{family.mono}") {
+						declarations.push(
+							cssCustomProperty(
+								name,
+								{
+									type: "token",
+									value: { type: "string", value: "Geist Mono" },
+								},
+								{ prefix: "ids-font-family" },
+							),
+						);
+					}
+
+					// letter-spacing (0 is the default)
+					if (letterSpacing !== 0) {
+						declarations.push(
+							cssCustomProperty(
+								name,
+								{
+									type: "token",
+									value: { type: "number", value: letterSpacing },
+								},
+								{ prefix: "ids-letter-spacing" },
+							),
+						);
+					}
 				}
 
 				return [

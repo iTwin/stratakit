@@ -10,6 +10,7 @@ import { Button, Divider, Icon } from "@itwin/itwinui-react/bricks";
 import { parseTokens } from "internal/visitors.js";
 import rawLightTokens from "internal/theme-light.json";
 import rawDarkTokens from "internal/theme-dark.json";
+import rawTypographyTokens from "internal/typography.json";
 import styles from "./tokens.module.css";
 import { useColorScheme } from "~/~utils.tsx";
 import { Table } from "./~utils.tsx";
@@ -19,6 +20,8 @@ const lightShadowTokens = parseTokens(rawLightTokens.shadow);
 
 const darkColorTokens = parseTokens(rawDarkTokens.color);
 const darkShadowTokens = parseTokens(rawDarkTokens.shadow);
+
+const typographyTokens = parseTokens(rawTypographyTokens.typography);
 
 const categories = {
 	bg: "Background",
@@ -104,6 +107,26 @@ export default function Page() {
 					</Disclosure.DisclosureContent>
 				</div>
 			</Disclosure.DisclosureProvider>
+
+			<Divider />
+
+			<h2>Typography</h2>
+
+			<Disclosure.DisclosureProvider defaultOpen={true}>
+				<div className={styles.disclosureWrapper}>
+					<Disclosure.Disclosure
+						render={<Button variant="ghost" />}
+						className={styles.disclosureButton}
+					>
+						<Icon render={<ArrowIcon />} className={styles.disclosureIcon} />
+						All typography
+					</Disclosure.Disclosure>
+
+					<Disclosure.DisclosureContent>
+						<Tokens tokens={[...typographyTokens.keys()]} kind="typography" />
+					</Disclosure.DisclosureContent>
+				</div>
+			</Disclosure.DisclosureProvider>
 		</>
 	);
 }
@@ -113,7 +136,7 @@ function Tokens({
 	kind,
 }: {
 	tokens: string[];
-	kind: "color" | "shadow";
+	kind: "color" | "shadow" | "typography";
 }) {
 	return (
 		<Table>
@@ -133,7 +156,7 @@ function Tokens({
 								<code>{variableName}</code>
 							</td>
 							<td>
-								<Swatch variable={variableName} kind={kind} />
+								<Swatch variable={variableName} token={token} kind={kind} />
 							</td>
 						</tr>
 					);
@@ -145,17 +168,31 @@ function Tokens({
 
 function Swatch({
 	variable,
+	token,
 	kind = "color",
 }: {
 	variable: string;
-	kind: "color" | "shadow";
+	token: string;
+	kind: "color" | "shadow" | "typography";
 }) {
 	const style = {
 		...(kind === "color" && { "--_swatch-color": `var(${variable})` }),
 		...(kind === "shadow" && { "--_swatch-shadow": `var(${variable})` }),
+		...(kind === "typography" && {
+			"--_swatch-font-size": `var(${`--ids-font-size-${token}`})`,
+			"--_swatch-line-height": `var(${`--ids-line-height-${token}`})`,
+			"--_swatch-font-family": `var(${`--ids-font-family-${token}`})`,
+			"--_swatch-letter-spacing": `var(${`--ids-letter-spacing-${token}`})`,
+		}),
 	};
 
-	return <div className={styles.swatch} style={style as React.CSSProperties} />;
+	return (
+		<div
+			className={styles.swatch}
+			data-kind={kind}
+			style={style as React.CSSProperties}
+		/>
+	);
 }
 
 function ArrowIcon(props: React.ComponentProps<"svg">) {

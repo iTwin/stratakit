@@ -4,6 +4,9 @@
  *--------------------------------------------------------------------------------------------*/
 
 .🥝-progress-bar {
+	--✨duration: 1.5s;
+	--✨easing: cubic-bezier(0.5, 0, 0.5, 1);
+
 	@layer base {
 		block-size: var(--🥝progress-bar-size);
 		inline-size: 100%;
@@ -48,7 +51,7 @@
 			--🥝progress-bar-fill-size: 25%;
 
 			&::before {
-				animation: --🥝progress-bar-animation-indeterminate cubic-bezier(0.5, 0, 0.5, 1) 1.5s
+				animation: --🥝progress-bar-animation-indeterminate var(--✨easing) var(--✨duration)
 					infinite;
 
 				@media (prefers-reduced-motion) {

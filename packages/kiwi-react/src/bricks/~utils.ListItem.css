@@ -71,6 +71,7 @@
 
 			@media (forced-colors: active) {
 				color: GrayText;
+				--🥝icon-color: GrayText;
 			}
 		}
 	}

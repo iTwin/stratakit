@@ -5,6 +5,7 @@
 import { definePage } from "~/~utils.tsx";
 import * as React from "react";
 import * as Tree from "@itwin/itwinui-react-internal/src/bricks/Tree.tsx";
+import { Icon } from "@itwin/itwinui-react-internal/src/bricks/Icon.tsx";
 import placeholderIcon from "@itwin/itwinui-icons/placeholder.svg";
 import unlockIcon from "@itwin/itwinui-icons/lock-unlocked.svg";
 import showIcon from "@itwin/itwinui-icons/visibility-show.svg";
@@ -74,7 +75,7 @@ export default definePage(function Page({
 							onExpandedChange={handleExpansion}
 							selected={item.selected}
 							onSelectedChange={handleSelection}
-							icon={placeholderIcon}
+							decorations={<Icon href={placeholderIcon} alt="decoration" />}
 							actions={[
 								<Tree.ItemAction
 									key="unlock"
@@ -104,7 +105,16 @@ export default definePage(function Page({
 									description={childIndex === 0 ? description : undefined}
 									selected={child.selected}
 									onSelectedChange={handleSelection}
-									icon={placeholderIcon}
+									decorations={
+										childIndex === 0 ? (
+											<>
+												<Icon href={placeholderIcon} />
+												<Icon href={placeholderIcon} />
+											</>
+										) : (
+											<Icon href={placeholderIcon} />
+										)
+									}
 									actions={[
 										<Tree.ItemAction
 											key="unlock"

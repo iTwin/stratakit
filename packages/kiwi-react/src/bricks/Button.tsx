@@ -5,7 +5,7 @@
 import cx from "classnames";
 import { Button as AkButton } from "@ariakit/react/button";
 import { forwardRef, type FocusableProps } from "./~utils.js";
-import { useGhostAlignment } from "./GhostAligner.js";
+import { useGhostAlignment } from "./~utils.GhostAligner.js";
 
 type ButtonProps = FocusableProps<"button"> &
 	(

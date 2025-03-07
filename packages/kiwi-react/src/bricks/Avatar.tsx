@@ -3,7 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 import cx from "classnames";
-import * as Ariakit from "@ariakit/react";
+import { Role } from "@ariakit/react/role";
 import { forwardRef, type BaseProps } from "./~utils.js";
 
 interface AvatarProps extends BaseProps<"span"> {
@@ -60,7 +60,7 @@ export const Avatar = forwardRef<"span", AvatarProps>((props, forwardedRef) => {
 	const isDecorative = !alt;
 
 	return (
-		<Ariakit.Role.span
+		<Role.span
 			role={isDecorative ? undefined : "img"}
 			aria-label={isDecorative ? undefined : alt}
 			{...rest}
@@ -73,7 +73,7 @@ export const Avatar = forwardRef<"span", AvatarProps>((props, forwardedRef) => {
 					{initials?.substring(0, 1)}
 				</abbr>
 			)}
-		</Ariakit.Role.span>
+		</Role.span>
 	);
 });
 DEV: Avatar.displayName = "Avatar";

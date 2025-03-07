@@ -42,6 +42,26 @@ test("description", async ({ page }) => {
 	await expect(item1_1).toHaveAccessibleDescription("Additional description");
 });
 
+test("decoration as description", async ({ page }) => {
+	await page.goto("/tests/tree");
+
+	const item1 = page.getByRole("treeitem").filter({
+		has: page.getByText("Item 1", { exact: true }),
+	});
+	await expect(item1).toHaveAccessibleDescription("decoration");
+});
+
+test("description and decoration as description", async ({ page }) => {
+	await page.goto("/tests/tree?description");
+
+	const item1 = page.getByRole("treeitem").filter({
+		has: page.getByText("Item 1", { exact: true }),
+	});
+	await expect(item1).toHaveAccessibleDescription(
+		"Additional description decoration",
+	);
+});
+
 test.describe("keyboard", () => {
 	test("navigation and expansion", async ({ page }) => {
 		await page.goto("/tests/tree");

@@ -4,19 +4,34 @@
  *--------------------------------------------------------------------------------------------*/
 import * as React from "react";
 import cx from "classnames";
-import * as Ariakit from "@ariakit/react";
-import * as ListItem from "./ListItem.js";
+import * as ListItem from "./~utils.ListItem.js";
 import { Button } from "./Button.js";
 import { Kbd } from "./Kbd.js";
-import { Checkmark, DisclosureArrow } from "./Icon.js";
-import { forwardRef, type FocusableProps } from "./~utils.js";
+import { Checkmark, DisclosureArrow, Icon } from "./Icon.js";
+import {
+	forwardRef,
+	type AnyString,
+	type BaseProps,
+	type FocusableProps,
+} from "./~utils.js";
 import { usePopoverApi } from "./~hooks.js";
+import {
+	MenuProvider,
+	useMenuContext,
+	Menu,
+	MenuButton,
+	MenuItem,
+	MenuItemCheckbox,
+	type MenuItemCheckboxProps,
+	type MenuProviderProps,
+} from "@ariakit/react/menu";
+import { predefinedSymbols, type PredefinedSymbol } from "./Kbd.internal.js";
 
 // ----------------------------------------------------------------------------
 
 interface DropdownMenuProps
 	extends Pick<
-		Ariakit.MenuProviderProps,
+		MenuProviderProps,
 		"children" | "placement" | "open" | "setOpen" | "defaultOpen"
 	> {}
 
@@ -31,9 +46,9 @@ interface DropdownMenuProps
  *   <DropdownMenu.Button>Actions</DropdownMenu.Button>
  *
  *   <DropdownMenu.Content>
- *     <DropdownMenu.Item>Add</DropdownMenu.Item>
- *     <DropdownMenu.Item>Edit</DropdownMenu.Item>
- *     <DropdownMenu.Item>Delete</DropdownMenu.Item>
+ *     <DropdownMenu.Item label="Add" />
+ *     <DropdownMenu.Item label="Edit" />
+ *     <DropdownMenu.Item label="Delete" />
  *   </DropdownMenu.Content>
  * </DropdownMenu.Root>
  * ```
@@ -50,14 +65,14 @@ function DropdownMenu(props: DropdownMenuProps) {
 	} = props;
 
 	return (
-		<Ariakit.MenuProvider
+		<MenuProvider
 			placement={placement}
 			defaultOpen={defaultOpenProp}
 			open={openProp}
 			setOpen={setOpenProp}
 		>
 			{children}
-		</Ariakit.MenuProvider>
+		</MenuProvider>
 	);
 }
 DEV: DropdownMenu.displayName = "DropdownMenu.Root";
@@ -73,10 +88,10 @@ interface DropdownMenuContentProps extends FocusableProps {}
  */
 const DropdownMenuContent = forwardRef<"div", DropdownMenuContentProps>(
 	(props, forwardedRef) => {
-		const popover = usePopoverApi(Ariakit.useMenuContext());
+		const popover = usePopoverApi(useMenuContext());
 
 		return (
-			<Ariakit.Menu
+			<Menu
 				portal={popover.portal}
 				unmountOnHide
 				{...props}
@@ -116,7 +131,7 @@ const DropdownMenuButton = forwardRef<"button", DropdownMenuButtonProps>(
 	(props, forwardedRef) => {
 		const { accessibleWhenDisabled = true, children, ...rest } = props;
 		return (
-			<Ariakit.MenuButton
+			<MenuButton
 				accessibleWhenDisabled
 				render={
 					<Button accessibleWhenDisabled={accessibleWhenDisabled}>
@@ -135,21 +150,14 @@ DEV: DropdownMenuButton.displayName = "DropdownMenu.Button";
 
 // ----------------------------------------------------------------------------
 
-interface DropdownMenuItemProps extends FocusableProps {
-	/**
-	 * A string defining the keyboard shortcut(s) associated with the menu item.
-	 *
-	 * ```tsx
-	 * shortcuts="S" // A single key shortcut
-	 * ```
-	 *
-	 * Multiple keys should be separated by the '+' character.
-	 *
-	 * ```tsx
-	 * shortcuts="Ctrl+Shift+S" // A multi-key combination
-	 * ```
-	 */
-	shortcuts?: string;
+interface DropdownMenuItemProps
+	extends Omit<FocusableProps, "children">,
+		Partial<
+			Pick<DropdownMenuItemShortcutsProps, "shortcuts"> &
+				Pick<DropdownMenuIconProps, "icon">
+		> {
+	/** The primary text label for the menu-item. */
+	label: React.ReactNode;
 }
 
 /**
@@ -157,41 +165,26 @@ interface DropdownMenuItemProps extends FocusableProps {
  *
  * Example:
  * ```tsx
- * <DropdownMenu.Item>Add</DropdownMenu.Item>
- * <DropdownMenu.Item>Edit</DropdownMenu.Item>
+ * <DropdownMenu.Item label="Add" />
+ * <DropdownMenu.Item label="Edit" />
  * ```
  */
 const DropdownMenuItem = forwardRef<"div", DropdownMenuItemProps>(
 	(props, forwardedRef) => {
-		const { shortcuts, ...rest } = props;
-
-		const shortcutKeys = React.useMemo(() => {
-			return typeof shortcuts === "string"
-				? shortcuts.split("+").map((key) => key.trim())
-				: [];
-		}, [shortcuts]);
-
-		const hasShortcuts = shortcutKeys.length > 0;
+		const { label, shortcuts, icon, ...rest } = props;
 
 		return (
-			<Ariakit.MenuItem
+			<MenuItem
 				accessibleWhenDisabled
 				{...rest}
 				render={<ListItem.Root render={props.render} />}
 				className={cx("🥝-dropdown-menu-item", props.className)}
 				ref={forwardedRef}
 			>
-				<ListItem.Content>{props.children}</ListItem.Content>
-				{hasShortcuts && (
-					<ListItem.Decoration className={"🥝-dropdown-menu-item-shortcuts"}>
-						{shortcutKeys.map((key, index) => (
-							<Kbd variant="ghost" key={`${key + index}`}>
-								{key}
-							</Kbd>
-						))}
-					</ListItem.Decoration>
-				)}
-			</Ariakit.MenuItem>
+				{icon ? <DropdownMenuIcon icon={icon} /> : null}
+				<ListItem.Content>{label}</ListItem.Content>
+				{shortcuts ? <DropdownMenuItemShortcuts shortcuts={shortcuts} /> : null}
+			</MenuItem>
 		);
 	},
 );
@@ -199,40 +192,134 @@ DEV: DropdownMenuItem.displayName = "DropdownMenu.Item";
 
 // ----------------------------------------------------------------------------
 
+interface DropdownMenuItemShortcutsProps extends BaseProps {
+	/**
+	 * A string defining the keyboard shortcut(s) associated with the menu item.
+	 *
+	 * ```tsx
+	 * shortcuts="S" // A single key shortcut
+	 * ```
+	 *
+	 * Multiple keys should be separated by the `+` character. If one of the keys is
+	 * recognized as a symbol name or a modifier key, it will be displayed as a symbol.
+	 *
+	 * ```tsx
+	 * shortcuts="Control+Enter" // A multi-key shortcut, displayed as "Ctrl ⏎"
+	 * ```
+	 */
+	shortcuts: AnyString | `${PredefinedSymbol}+${AnyString}`;
+}
+
+const DropdownMenuItemShortcuts = forwardRef<
+	"div",
+	DropdownMenuItemShortcutsProps
+>((props, forwardedRef) => {
+	const { shortcuts, ...rest } = props;
+
+	const shortcutKeys = React.useMemo(() => {
+		return shortcuts.split("+").map((key) => ({
+			key: key.trim(),
+			isSymbol: key in predefinedSymbols,
+		}));
+	}, [shortcuts]);
+
+	return (
+		<ListItem.Decoration
+			{...rest}
+			className={cx("🥝-dropdown-menu-item-shortcuts", props.className)}
+			ref={forwardedRef}
+		>
+			{shortcutKeys.map(({ key, isSymbol }, index) => {
+				if (isSymbol) {
+					return (
+						<Kbd
+							variant="ghost"
+							key={`${key + index}`}
+							symbol={key as PredefinedSymbol}
+						/>
+					);
+				}
+
+				return (
+					<Kbd variant="ghost" key={`${key + index}`}>
+						{key}
+					</Kbd>
+				);
+			})}
+		</ListItem.Decoration>
+	);
+});
+DEV: DropdownMenuItemShortcuts.displayName = "DropdownMenuItemShortcuts";
+
+// ----------------------------------------------------------------------------
+
+interface DropdownMenuIconProps extends BaseProps {
+	/**
+	 * An optional icon displayed before the menu-item label.
+	 *
+	 * Can be a URL of an SVG from the `@itwin/itwinui-icons` package,
+	 * or a custom JSX icon.
+	 */
+	icon?: string | React.JSX.Element;
+}
+
+const DropdownMenuIcon = forwardRef<"div", DropdownMenuIconProps>(
+	(props, forwardedRef) => {
+		const { icon, ...rest } = props;
+
+		return (
+			<ListItem.Decoration
+				render={
+					<Icon
+						href={typeof icon === "string" ? icon : undefined}
+						render={React.isValidElement(icon) ? icon : undefined}
+					/>
+				}
+				{...rest}
+				ref={forwardedRef}
+			/>
+		);
+	},
+);
+DEV: DropdownMenuIcon.displayName = "DropdownMenuIcon";
+
+// ----------------------------------------------------------------------------
+
 interface DropdownMenuCheckboxItemProps
-	extends Omit<FocusableProps, "onChange">,
-		Pick<
-			Ariakit.MenuItemCheckboxProps,
-			"checked" | "onChange" | "name" | "value"
-		> {}
+	extends Omit<FocusableProps, "onChange" | "children">,
+		Pick<MenuItemCheckboxProps, "checked" | "onChange" | "name" | "value">,
+		Pick<DropdownMenuItemProps, "label" | "icon"> {}
 
 /**
  * A single menu item within the dropdown menu. Should be used as a child of `DropdownMenu.Content`.
  *
  * Example:
  * ```tsx
- * <DropdownMenu.CheckboxItem name="add">Add</DropdownMenu.Item>
- * <DropdownMenu.CheckboxItem name="edit">Edit</DropdownMenu.Item>
+ * <DropdownMenu.CheckboxItem name="add" label="Add" />
+ * <DropdownMenu.CheckboxItem name="edit" label="Edit" />
  * ```
  */
 const DropdownMenuCheckboxItem = forwardRef<
 	"div",
 	DropdownMenuCheckboxItemProps
 >((props, forwardedRef) => {
+	const { label, icon, ...rest } = props;
+
 	return (
-		<Ariakit.MenuItemCheckbox
+		<MenuItemCheckbox
 			accessibleWhenDisabled
 			value={props.defaultChecked ? "on" : undefined} // For defaultChecked to work
-			{...props}
+			{...rest}
 			render={<ListItem.Root render={props.render} />}
 			className={cx("🥝-dropdown-menu-item", props.className)}
 			ref={forwardedRef}
 		>
-			<ListItem.Content>{props.children}</ListItem.Content>
+			{icon ? <DropdownMenuIcon icon={icon} /> : null}
+			<ListItem.Content>{label}</ListItem.Content>
 			<ListItem.Decoration
 				render={<Checkmark className="🥝-dropdown-menu-checkmark" />}
 			/>
-		</Ariakit.MenuItemCheckbox>
+		</MenuItemCheckbox>
 	);
 });
 DEV: DropdownMenuCheckboxItem.displayName = "DropdownMenu.CheckboxItem";

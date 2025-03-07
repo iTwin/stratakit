@@ -3,13 +3,16 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 import cx from "classnames";
-import * as Ariakit from "@ariakit/react";
+import {
+	Radio as AkRadio,
+	type RadioProps as AkRadioProps,
+} from "@ariakit/react/radio";
 import { FieldControl } from "./Field.js";
 import { forwardRef, type FocusableProps } from "./~utils.js";
 
 type InputBaseProps = Omit<FocusableProps<"input">, "defaultValue" | "value">;
 
-type RadioOwnProps = Pick<Ariakit.RadioProps, "value" | "checked" | "onChange">;
+type RadioOwnProps = Pick<AkRadioProps, "value" | "checked" | "onChange">;
 
 interface RadioProps extends InputBaseProps, RadioOwnProps {}
 
@@ -36,7 +39,7 @@ export const Radio = forwardRef<"input", RadioProps>((props, forwardedRef) => {
 			type="checkable"
 			id={id}
 			render={
-				<Ariakit.Radio
+				<AkRadio
 					accessibleWhenDisabled
 					{...rest}
 					className={cx("🥝-checkbox", "🥝-radio", props.className)}

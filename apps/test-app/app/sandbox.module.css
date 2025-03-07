@@ -247,3 +247,23 @@
 	cursor: ew-resize;
 	opacity: 0;
 }
+
+.colorSwatch {
+	--_color: var(--_color--default);
+	--_color--default: var(--_color,);
+	--_color--blue: var(--_color,);
+	--_color--gray: var(--_color,);
+	--_color--green: var(--_color,);
+	--_color--purple: var(--_color,);
+	--_color--red: var(--_color,);
+	--_color--teal: var(--_color,);
+	--_color--yellow: var(--_color,);
+
+	aspect-ratio: 1;
+	block-size: 1em;
+	border-radius: 2px;
+	border: 1px solid rgb(255 255 255 / 0.16);
+	background-color: var(--_color--default, CurrentColor) var(--_color--blue, #0005f9)
+		var(--_color--gray, #808080) var(--_color--green, #15c72f) var(--_color--purple, #8c00ff)
+		var(--_color--red, #fe0f17) var(--_color--teal, #1cfffe) var(--_color--yellow, #ffff43);
+}

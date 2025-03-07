@@ -1,1 +1,0 @@
-import{b as i,o as t,d as a,e as d,g as n}from"./ListItem-ClAzMpVV.js";var l="span",o=i(function(e){return e=t(a({},e),{style:a({border:0,clip:"rect(0 0 0 0)",height:"1px",margin:"-1px",overflow:"hidden",padding:0,position:"absolute",whiteSpace:"nowrap",width:"1px"},e.style)}),e}),p=d(function(e){const s=o(e);return n(l,s)});export{p as V,o as u};

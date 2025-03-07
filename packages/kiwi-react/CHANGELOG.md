@@ -1,9 +1,19 @@
 # Changelog
 
+## 5.0.0-alpha.9
+
+- Added `dot` prop to `<IconButton>` for showing a small "dot" next to the icon.
+- Added `unstable_decorations` prop to `<Tree.Item>` for showing multiple decorations (e.g. icons).
+- **breaking**: Replaced `<DropdownMenu.Item>` children with new `label` prop (see [#423](https://github.com/iTwin/design-system/pull/423)).
+- Added `icon` prop to `<DropdownMenu.Item>` and `<DropdownMenu.CheckboxItem>`.
+- Updated the `shortcuts` prop of `<DropdownMenu.Item>` to recognize predefined "symbols" (e.g. modifier keys).
+- Updated `<Anchor>` and `<Badge>` visuals to match the latest design.
+- Fixed forced-colors mode styling for `DropdownMenu`.
+
 ## 5.0.0-alpha.8
 
 - Added `description` prop to `<Tree.Item>` component for showing "sublabels".
-- **breaking**: Updated `<Text>`  component to require `variant` prop.
+- **breaking**: Updated `<Text>` component to require `variant` prop.
 - (soft breaking) Removed `children` from `<Tree.Item>` prop types.
 - Updated `DropdownMenu` padding.
 

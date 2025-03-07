@@ -7,9 +7,8 @@ import AxeBuilder from "@axe-core/playwright";
 
 test("default", async ({ page }) => {
 	await page.goto("/tests/progress-bar");
-	const progressBar = page.getByTestId("progress-bar");
+	const progressBar = page.getByRole("progressbar");
 	await expect(progressBar).toBeVisible();
-	await expect(progressBar).toHaveRole("progressbar");
 	await expect(progressBar).toHaveAccessibleName("Loading…");
 });
 

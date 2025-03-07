@@ -21,7 +21,6 @@ export default definePage(
 					size={size as (typeof sizes)[number]}
 					tone={tone as (typeof tones)[number]}
 					aria-labelledby={labelledBy}
-					data-testid="progress-bar"
 				/>
 				<VisuallyHidden id={labelledBy}>Loading…</VisuallyHidden>
 			</>

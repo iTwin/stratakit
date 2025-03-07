@@ -7,7 +7,8 @@
 	--✨duration: 1.5s;
 	--✨easing: cubic-bezier(0.5, 0, 0.5, 1);
 	--✨animation-indeterminate: --🥝progress-bar-animation-indeterminate var(--✨easing)
-		var(--✨duration) infinite;
+		var(--✨duration) 4 forwards, --🥝progress-bar-animation-indeterminate var(--✨easing)
+		calc(var(--✨duration) * 2) infinite 6s;
 
 	@layer base {
 		block-size: var(--🥝progress-bar-size);

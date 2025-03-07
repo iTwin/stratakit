@@ -6,6 +6,8 @@
 .🥝-progress-bar {
 	--✨duration: 1.5s;
 	--✨easing: cubic-bezier(0.5, 0, 0.5, 1);
+	--✨animation-indeterminate: --🥝progress-bar-animation-indeterminate var(--✨easing)
+		var(--✨duration) infinite;
 
 	@layer base {
 		block-size: var(--🥝progress-bar-size);
@@ -21,6 +23,12 @@
 			inline-size: var(--🥝progress-bar-fill-size);
 			border-radius: inherit;
 			background-color: var(--🥝progress-bar-fill-color);
+			animation: var(--🥝progress-bar-animation);
+
+			@media (prefers-reduced-motion) {
+				animation-timing-function: steps(4, end);
+				animation-duration: 4s;
+			}
 		}
 	}
 
@@ -48,17 +56,8 @@
 		}
 
 		&:where([data-kiwi-variant="indeterminate"]) {
+			--🥝progress-bar-animation: var(--✨animation-indeterminate);
 			--🥝progress-bar-fill-size: 25%;
-
-			&::before {
-				animation: --🥝progress-bar-animation-indeterminate var(--✨easing) var(--✨duration)
-					infinite;
-
-				@media (prefers-reduced-motion) {
-					animation-timing-function: steps(4, end);
-					animation-duration: 4s;
-				}
-			}
 		}
 
 		@media (forced-colors: active) {

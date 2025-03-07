@@ -229,19 +229,21 @@ const TreeItemRoot = forwardRef<"div", TreeItemRootProps>(
 									}}
 								/>
 							</GhostAligner>
-							<Role
-								className="🥝-tree-item-decoration"
-								id={decorationId}
-								render={
-									React.isValidElement(icon) ? (
-										icon
-									) : typeof icon === "string" ? (
-										<Icon href={icon} />
-									) : undefined
-								}
-							>
-								{!icon ? unstable_decorations : null}
-							</Role>
+							{icon || unstable_decorations ? (
+								<Role
+									className="🥝-tree-item-decoration"
+									id={decorationId}
+									render={
+										React.isValidElement(icon) ? (
+											icon
+										) : typeof icon === "string" ? (
+											<Icon href={icon} />
+										) : undefined
+									}
+								>
+									{!icon ? unstable_decorations : null}
+								</Role>
+							) : null}
 						</ListItem.Decoration>
 
 						<ListItem.Content id={labelId} className="🥝-tree-item-content">

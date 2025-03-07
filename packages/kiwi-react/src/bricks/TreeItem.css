@@ -89,6 +89,7 @@
 		background-color: var(--ids-color-bg-page-base);
 		display: inline-flex;
 		visibility: var(--🥝tree-item-actions-visibility, var(--🥝tree-item-action-visibility));
+		transition: visibility 16ms; /* This allows focus to "settle" before determining final visibility */
 
 		&::before {
 			position: absolute;

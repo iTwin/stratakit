@@ -70,10 +70,10 @@
 
 @keyframes --🥝progress-bar-animation-indeterminate {
 	from {
-		translate: -100% 0; /* -100% moves the fill out of view on the left side. */
+		transform: translateX(-100%); /* -100% moves the fill out of view on the left side. */
 	}
 
 	to {
-		translate: 400% 0; /* The fill is 25% width of the container, multiplied by 4 moves the fill out of view on the right side. */
+		transform: translateX(400%); /* The fill is 25% width of the container, multiplied by 4 moves the fill out of view on the right side. */
 	}
 }

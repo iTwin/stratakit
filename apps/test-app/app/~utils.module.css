@@ -46,8 +46,12 @@
 		}
 	}
 
-	/* Click target should be entire listItem */
 	.listItemLink {
+		display: block;
+		text-overflow: ellipsis;
+		overflow-x: hidden;
+
+		/* Click target should be entire listItem */
 		outline: unset;
 		color: inherit;
 		cursor: pointer;

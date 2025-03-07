@@ -8,7 +8,7 @@ import * as ReactDOM from "react-dom";
 import cx from "classnames";
 import { useSearchParams, Link } from "react-router";
 import { Anchor } from "@itwin/itwinui-react/bricks";
-import * as ListItem from "../node_modules/@itwin/itwinui-react/src/bricks/ListItem.tsx";
+import * as ListItem from "../node_modules/@itwin/itwinui-react/src/bricks/~utils.ListItem.tsx";
 
 export type VariantProps = Record<string, string>;
 

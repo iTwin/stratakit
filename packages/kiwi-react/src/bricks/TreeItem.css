@@ -25,8 +25,13 @@
 		}
 
 		@media (any-hover: hover) {
-			&:where(:not(:hover, :focus-visible, :has(:focus-visible))) {
+			&:where(:not(:hover, :focus-visible, :has(:focus-visible), :has([data-has-popover-open]))) {
 				--🥝tree-item-actions-visibility: hidden;
+			}
+
+			/* Without :has, we can't easily detect complex conditions, so unconditionally show actions. */
+			@supports not selector(:has(+ *)) {
+				--🥝tree-item-actions-visibility: visible;
 			}
 		}
 	}
@@ -96,11 +101,6 @@
 
 	@layer modifiers {
 		&:where(:has(.🥝-tree-item-action[data-kiwi-visible="true"])) {
-			--🥝tree-item-actions-visibility: visible;
-		}
-
-		/* Without :has, we can't easily detect if there are any forcibily-visible actions, so unconditionally show this. */
-		@supports not selector(:has(+ *)) {
 			--🥝tree-item-actions-visibility: visible;
 		}
 	}

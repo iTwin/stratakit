@@ -10,11 +10,13 @@ test("default", async ({ page }) => {
 
 	const button = page.getByRole("button", { name: "Actions" });
 	const add = page.getByRole("menuitem", { name: "Add" });
-
 	const menu = page.getByRole("menu", { includeHidden: true });
+
+	await expect(button).not.toHaveAttribute("data-has-popover-open");
 	await expect(menu).toHaveCount(0);
 
 	await button.click();
+	await expect(button).toHaveAttribute("data-has-popover-open");
 	await expect(menu).toBeVisible();
 	await expect(add).toBeVisible();
 
@@ -41,11 +43,13 @@ test("default (keyboard)", async ({ page }) => {
 	const disable = page.getByRole("menuitem", { name: "Disable" });
 
 	await expect(button).toBeVisible();
+	await expect(button).not.toHaveAttribute("data-has-popover-open");
 
 	await page.keyboard.press("Tab");
 	await expect(button).toBeFocused();
 
 	await page.keyboard.press("Enter");
+	await expect(button).toHaveAttribute("data-has-popover-open");
 	await expect(add).toBeFocused();
 
 	await page.keyboard.press("ArrowDown");

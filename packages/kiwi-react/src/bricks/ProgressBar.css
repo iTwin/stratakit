@@ -9,6 +9,8 @@
 	--✨animation-indeterminate: --🥝progress-bar-animation-indeterminate var(--✨duration)
 		var(--✨easing) 4 forwards, --🥝progress-bar-animation-indeterminate-pause
 		calc(var(--✨duration) * 3) var(--✨easing) calc(var(--✨duration) * 4) infinite;
+	--✨animation-indeterminate-reduced-motion: --🥝progress-bar-animation-indeterminate
+		var(--✨duration) var(--✨easing) infinite;
 
 	@layer base {
 		block-size: var(--🥝progress-bar-size);
@@ -27,6 +29,7 @@
 			animation: var(--🥝progress-bar-animation);
 
 			@media (prefers-reduced-motion) {
+				--🥝progress-bar-animation: var(--✨animation-indeterminate-reduced-motion);
 				animation-timing-function: steps(4, end);
 				animation-duration: 4s;
 			}

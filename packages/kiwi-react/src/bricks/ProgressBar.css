@@ -63,11 +63,7 @@
 
 		@media (forced-colors: active) {
 			--🥝progress-bar-fill-color: CanvasText;
-			--🥝progress-bar-track-color: CanvasText;
-
-			&::before {
-				outline: 2px solid Canvas;
-			}
+			--🥝progress-bar-track-color: Canvas;
 		}
 	}
 }

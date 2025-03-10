@@ -6,10 +6,11 @@ import globalStyles from "./tokens.css?url";
 import * as Disclosure from "@ariakit/react/disclosure";
 import type * as React from "react";
 import type { MetaFunction, LinksFunction } from "react-router";
-import { Button, Divider, Icon } from "@itwin/itwinui-react/bricks";
+import { Button, Divider, Icon, Text } from "@itwin/itwinui-react/bricks";
 import { parseTokens } from "internal/visitors.js";
 import rawLightTokens from "internal/theme-light.json";
 import rawDarkTokens from "internal/theme-dark.json";
+import rawTypographyTokens from "internal/typography.json";
 import styles from "./tokens.module.css";
 import { useColorScheme } from "~/~utils.tsx";
 import { Table } from "./~utils.tsx";
@@ -19,6 +20,9 @@ const lightShadowTokens = parseTokens(rawLightTokens.shadow);
 
 const darkColorTokens = parseTokens(rawDarkTokens.color);
 const darkShadowTokens = parseTokens(rawDarkTokens.shadow);
+
+const typographyTokens = parseTokens(rawTypographyTokens.typography);
+const typographyVariants = [...typographyTokens.keys()];
 
 const categories = {
 	bg: "Background",
@@ -104,6 +108,26 @@ export default function Page() {
 					</Disclosure.DisclosureContent>
 				</div>
 			</Disclosure.DisclosureProvider>
+
+			<Divider />
+
+			<h2>Typography</h2>
+
+			<Disclosure.DisclosureProvider defaultOpen={true}>
+				<div className={styles.disclosureWrapper}>
+					<Disclosure.Disclosure
+						render={<Button variant="ghost" />}
+						className={styles.disclosureButton}
+					>
+						<Icon render={<ArrowIcon />} className={styles.disclosureIcon} />
+						All typography
+					</Disclosure.Disclosure>
+
+					<Disclosure.DisclosureContent>
+						<Tokens tokens={typographyVariants} kind="typography" />
+					</Disclosure.DisclosureContent>
+				</div>
+			</Disclosure.DisclosureProvider>
 		</>
 	);
 }
@@ -113,7 +137,7 @@ function Tokens({
 	kind,
 }: {
 	tokens: string[];
-	kind: "color" | "shadow";
+	kind: "color" | "shadow" | "typography";
 }) {
 	return (
 		<Table>
@@ -130,10 +154,16 @@ function Tokens({
 					return (
 						<tr key={token}>
 							<td>
-								<code>{variableName}</code>
+								<code>{kind === "typography" ? token : variableName}</code>
 							</td>
 							<td>
-								<Swatch variable={variableName} kind={kind} />
+								{kind === "typography" ? (
+									<Text variant={token as (typeof typographyVariants)[number]}>
+										The quick brown fox jumped over the lazy dog
+									</Text>
+								) : (
+									<Swatch variable={variableName} kind={kind} />
+								)}
 							</td>
 						</tr>
 					);

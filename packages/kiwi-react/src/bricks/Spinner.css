@@ -75,6 +75,10 @@
 
 	:where([data-kiwi-variant="determinate"]) .🥝-spinner-svg & {
 		stroke-dasharray: var(--🥝spinner-percentage), calc(100px - var(--🥝spinner-percentage));
+
+		@media (prefers-reduced-motion: no-preference) {
+			transition: stroke-dasharray 150ms cubic-bezier(0.5, 0, 0.5, 1);
+		}
 	}
 }
 

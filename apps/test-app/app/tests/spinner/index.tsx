@@ -54,7 +54,9 @@ function VisualTest() {
 							size={size}
 							tone={tone}
 							variant="determinate"
-							style={{ "--🥝spinner-percentage": 50 } as React.CSSProperties}
+							style={
+								{ "--🥝spinner-percentage": "50px" } as React.CSSProperties
+							}
 						/>
 					))}
 				</div>

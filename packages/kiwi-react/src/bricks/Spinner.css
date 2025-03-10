@@ -74,7 +74,7 @@
 	}
 
 	:where([data-kiwi-variant="determinate"]) .🥝-spinner-svg & {
-		stroke-dasharray: var(--🥝spinner-percentage) calc(100 - var(--🥝spinner-percentage));
+		stroke-dasharray: var(--🥝spinner-percentage), calc(100px - var(--🥝spinner-percentage));
 	}
 }
 

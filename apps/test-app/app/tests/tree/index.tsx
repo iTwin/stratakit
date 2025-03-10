@@ -75,7 +75,7 @@ export default definePage(function Page({
 							onExpandedChange={handleExpansion}
 							selected={item.selected}
 							onSelectedChange={handleSelection}
-							decorations={<Icon href={placeholderIcon} alt="decoration" />}
+							icon={<Icon href={placeholderIcon} alt="decoration" />}
 							actions={[
 								<Tree.ItemAction
 									key="unlock"
@@ -105,7 +105,7 @@ export default definePage(function Page({
 									description={childIndex === 0 ? description : undefined}
 									selected={child.selected}
 									onSelectedChange={handleSelection}
-									decorations={
+									unstable_decorations={
 										childIndex === 0 ? (
 											<>
 												<Icon href={placeholderIcon} />

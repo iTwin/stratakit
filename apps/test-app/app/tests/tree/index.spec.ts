@@ -168,11 +168,8 @@ test.describe("keyboard", () => {
 		await expect(item1).toHaveAttribute("aria-selected", "false");
 	});
 
-	test("actions", async ({ page, browserName }) => {
-		test.fixme(
-			browserName === "firefox",
-			"This fails here but works in Firefox (manual)",
-		);
+	test("actions", async ({ page }) => {
+		test.fixme();
 
 		await page.goto("/tests/tree");
 

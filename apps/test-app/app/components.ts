@@ -20,6 +20,7 @@ export const components = [
 	"ProgressBar",
 	"Radio",
 	"Select",
+	"Skeleton",
 	"Spinner",
 	"Switch",
 	"Table",

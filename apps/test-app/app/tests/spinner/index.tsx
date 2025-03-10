@@ -21,7 +21,7 @@ export default definePage(
 			<Spinner
 				size={size as (typeof sizes)[number]}
 				tone={tone as (typeof tones)[number]}
-				variant={tone as (typeof variants)[number]}
+				variant={variant as (typeof variants)[number]}
 				data-testid="spinner"
 			/>
 		);
@@ -54,7 +54,7 @@ function VisualTest() {
 							size={size}
 							tone={tone}
 							variant="determinate"
-							style={{ "--🥝spinner-percentage": 50 }}
+							style={{ "--🥝spinner-percentage": 50 } as React.CSSProperties}
 						/>
 					))}
 				</div>

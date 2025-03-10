@@ -14,27 +14,27 @@
 		"#playwright": "./playwright.config.ts"
 	},
 	"dependencies": {
-		"@ariakit/react": "*",
+		"@ariakit/react": "^0.4.15",
 		"@itwin/itwinui-icons": "workspace:*",
 		"@itwin/itwinui-react": "workspace:*",
-		"@react-router/node": "^7.1.1",
+		"@react-router/node": "^7.3.0",
 		"classnames": "^2.5.1",
-		"isbot": "^5.1.18",
-		"react": "19",
-		"react-dom": "19",
-		"react-router": "^7.1.1"
+		"isbot": "^5.1.23",
+		"react": "catalog:",
+		"react-dom": "catalog:",
+		"react-router": "^7.3.0"
 	},
 	"devDependencies": {
 		"@axe-core/playwright": "^4.10.1",
-		"@playwright/test": "~1.49.1",
-		"@react-router/dev": "^7.1.1",
-		"@types/node": "^22.10.2",
-		"@types/react": "19",
-		"@types/react-dom": "19",
-		"esbuild": "^0.25.0",
-		"lightningcss": "^1.28.2",
-		"typescript": "5",
-		"vite": "^6.2.0",
+		"@playwright/test": "~1.51.0",
+		"@react-router/dev": "^7.3.0",
+		"@types/node": "catalog:",
+		"@types/react": "^19.0.10",
+		"@types/react-dom": "^19.0.4",
+		"esbuild": "^0.25.1",
+		"lightningcss": "catalog:",
+		"typescript": "catalog:",
+		"vite": "^6.2.1",
 		"vite-tsconfig-paths": "^5.1.4"
 	}
 }

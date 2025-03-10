@@ -17,23 +17,20 @@
 	},
 	"devDependencies": {
 		"@biomejs/biome": "1.9.4",
-		"@types/node": "^22.10.2",
+		"@types/node": "catalog:",
 		"colorjs.io": "^0.5.2",
-		"fast-glob": "^3.3.2",
+		"fast-glob": "^3.3.3",
 		"internal": "workspace:*",
-		"lefthook": "^1.10.0",
+		"lefthook": "^1.11.3",
 		"prettier": "3.3.3",
 		"tsx": "^4.19.3",
-		"typescript": "~5.7.2"
+		"typescript": "catalog:"
 	},
 	"engines": {
 		"node": ">=22.11.0"
 	},
-	"packageManager": "pnpm@9.15.1",
+	"packageManager": "pnpm@9.15.4",
 	"pnpm": {
-		"overrides": {
-			"cookie@<0.7.0": ">=0.7.0",
-			"typescript": "5.7.2"
-		}
+		"overrides": {}
 	}
 }

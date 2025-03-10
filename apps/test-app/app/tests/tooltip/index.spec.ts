@@ -14,6 +14,8 @@ test.describe("default", () => {
 
 		await expect(button).toBeVisible();
 		await expect(tooltip).toBeHidden();
+
+		await expect(button).not.toHaveAttribute("data-has-popover-open");
 	});
 
 	test("Mouse in / Hover should display the tooltip", async ({
@@ -30,6 +32,7 @@ test.describe("default", () => {
 
 		await button.hover();
 		await expect(tooltip).toBeVisible();
+		await expect(button).toHaveAttribute("data-has-popover-open");
 	});
 
 	test("Keyboard focus should display the tooltip", async ({ page }) => {
@@ -39,6 +42,7 @@ test.describe("default", () => {
 		await page.keyboard.press("Tab");
 		await expect(button).toBeFocused();
 		await expect(tooltip).toBeVisible();
+		await expect(button).toHaveAttribute("data-has-popover-open");
 	});
 });
 

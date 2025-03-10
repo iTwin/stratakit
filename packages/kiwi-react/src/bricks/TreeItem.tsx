@@ -343,6 +343,9 @@ const TreeItemExpander = forwardRef<"button", TreeItemExpanderProps>(
 				label="Toggle"
 				{...props}
 				onClick={useEventHandlers(props.onClick, (e) => e.stopPropagation())}
+				onKeyDown={useEventHandlers(props.onKeyDown, (e) => {
+					e.stopPropagation();
+				})}
 				className={cx("🥝-tree-item-expander", props.className)}
 				variant="ghost"
 				labelVariant="visually-hidden"

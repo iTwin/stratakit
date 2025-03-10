@@ -1,0 +1,244 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+.🥝-button {
+	--✨color--default: var(--ids-color-text-neutral-primary);
+	--✨gap: 4px;
+	--✨height: 1.5rem;
+	--✨padding-inline: 12px;
+	--✨padding-block: 4px;
+
+	--✨shadow-border: 0px 0px 0px 1px var(--🥝button-border-color) inset;
+
+	--✨glow--bg-hover: var(--ids-color-glow-hue) var(--ids-color-bg-glow-base-hover-\%);
+	--✨glow--bg-press: var(--ids-color-glow-hue) var(--ids-color-bg-glow-base-pressed-\%);
+
+	--✨bg--solid-neutral-default: var(--ids-color-bg-neutral-base);
+	--✨bg--solid-accent-default: var(--ids-color-bg-accent-base);
+	--✨bg--solid-hover: color-mix(
+		in oklch,
+		var(--🥝button-bg--solid-default) 100%,
+		var(--✨glow--bg-hover)
+	);
+	--✨bg--solid-pressed: color-mix(
+		in oklch,
+		var(--🥝button-bg--solid-default) 100%,
+		var(--✨glow--bg-press)
+	);
+	--✨bg--solid-disabled: var(--ids-color-bg-glow-on-surface-disabled);
+
+	--✨shadow--solid: var(--ids-shadow-button-base-inset), var(--✨shadow-border),
+		var(--ids-shadow-button-base-drop);
+
+	--✨border--solid-neutral-default: var(--ids-color-border-shadow-base);
+	--✨border--solid-neutral-hover: color-mix(
+		in oklch,
+		var(--✨border--solid-neutral-default) 100%,
+		var(--ids-color-glow-hue) var(--ids-color-border-glow-base-hover-\%)
+	);
+	--✨border--solid-neutral-pressed: color-mix(
+		in oklch,
+		var(--✨border--solid-neutral-default) 100%,
+		var(--ids-color-glow-hue) var(--ids-color-border-glow-base-pressed-\%)
+	);
+	--✨border--solid-neutral-disabled: transparent;
+
+	--✨border--solid-accent-default: var(--ids-color-border-shadow-strong);
+	--✨border--solid-accent-hover: color-mix(
+		in oklch,
+		var(--✨border--solid-accent-default) 100%,
+		var(--ids-color-glow-hue) var(--ids-color-border-glow-strong-hover-\%)
+	);
+	--✨border--solid-accent-pressed: color-mix(
+		in oklch,
+		var(--✨border--solid-accent-default) 100%,
+		var(--ids-color-glow-hue) var(--ids-color-border-glow-strong-pressed-\%)
+	);
+	--✨border--solid-accent-disabled: transparent;
+
+	--✨bg--outline-default: transparent;
+	--✨bg--outline-hover: color-mix(
+		in oklch,
+		var(--✨bg--outline-default) 100%,
+		var(--✨glow--bg-hover)
+	);
+	--✨bg--outline-pressed: color-mix(
+		in oklch,
+		var(--✨bg--outline-default) 100%,
+		var(--✨glow--bg-press)
+	);
+	--✨bg--outline-disabled: transparent;
+	--✨border--outline-default: var(--ids-color-border-neutral-base);
+	--✨border--outline-hover: color-mix(
+		in oklch,
+		var(--✨border--outline-default) 100%,
+		var(--ids-color-glow-hue) var(--ids-color-border-glow-base-hover-\%)
+	);
+	--✨border--outline-pressed: color-mix(
+		in oklch,
+		var(--✨border--outline-default) 100%,
+		var(--ids-color-glow-hue) var(--ids-color-border-glow-base-pressed-\%)
+	);
+	--✨border--outline-disabled: var(--ids-color-border-glow-on-surface-disabled);
+
+	--✨bg--ghost-default: transparent;
+	--✨bg--ghost-hover: color-mix(in oklch, var(--✨bg--ghost-default) 100%, var(--✨glow--bg-hover));
+	--✨bg--ghost-pressed: color-mix(
+		in oklch,
+		var(--✨bg--ghost-default) 100%,
+		var(--✨glow--bg-press)
+	);
+	--✨bg--ghost-active: var(--ids-color-bg-glow-on-surface-accent-pressed);
+	--✨bg--ghost-disabled: transparent;
+
+	@layer base {
+		text-decoration: none;
+		line-height: 1.2;
+		white-space: nowrap;
+		user-select: none;
+		cursor: pointer;
+		font-size: var(--ids-font-size-12);
+		font-weight: 500;
+		border: none;
+		position: relative;
+
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		flex-shrink: 0;
+		gap: var(--✨gap);
+
+		block-size: var(--✨height);
+		border-radius: 4px;
+		padding-inline: var(--🥝button-padding-inline, var(--✨padding-inline));
+		padding-block: var(--✨padding-block);
+		--🥝ghost-inline-offset: var(--✨padding-inline);
+		--🥝ghost-block-offset: var(--✨padding-block);
+
+		background-color: var(--🥝button-background-color);
+		color: var(--🥝button-color, var(--✨color--default));
+		transition: background-color 150ms ease-out;
+		-webkit-tap-highlight-color: var(--✨bg--solid-pressed);
+		--🥝icon-color: var(--🌀button-state--default, var(--ids-color-icon-neutral-base))
+			var(--🌀button-state--hover, var(--ids-color-icon-neutral-hover))
+			var(--🌀button-state--pressed, var(--ids-color-icon-neutral-hover))
+			var(--🌀button-state--active, var(--ids-color-icon-accent-strong))
+			var(--🌀button-state--disabled, var(--ids-color-icon-neutral-disabled));
+
+		@media (forced-colors: active) {
+			background-color: ButtonFace;
+			border: 1px solid ButtonBorder;
+			color: ButtonText;
+			--🥝icon-color: ButtonText;
+		}
+	}
+
+	@layer modifiers {
+		&:where([data-kiwi-variant="solid"]) {
+			--🥝button-background-color: var(--🌀button-state--default, var(--🥝button-bg--solid-default))
+				var(--🌀button-state--hover, var(--✨bg--solid-hover))
+				var(--🌀button-state--pressed, var(--✨bg--solid-pressed))
+				var(--🌀button-state--disabled, var(--✨bg--solid-disabled));
+			box-shadow: var(--🌀button-state--default, var(--✨shadow--solid))
+				var(--🌀button-state--hover, var(--✨shadow--solid))
+				var(--🌀button-state--pressed, var(--✨shadow-border)) var(--🌀button-state--disabled, none);
+
+			&:where([data-kiwi-tone="neutral"]) {
+				--🥝button-bg--solid-default: var(--✨bg--solid-neutral-default);
+				--🥝button-border-color: var(
+						--🌀button-state--default,
+						var(--✨border--solid-neutral-default)
+					)
+					var(--🌀button-state--hover, var(--✨border--solid-neutral-hover))
+					var(--🌀button-state--pressed, var(--✨border--solid-neutral-pressed))
+					var(--🌀button-state--disabled, var(--✨border--solid-neutral-disabled));
+			}
+
+			&:where([data-kiwi-tone="accent"]) {
+				--🥝button-bg--solid-default: var(--✨bg--solid-accent-default);
+				--🥝button-border-color: var(
+						--🌀button-state--default,
+						var(--✨border--solid-accent-default)
+					)
+					var(--🌀button-state--hover, var(--✨border--solid-accent-hover))
+					var(--🌀button-state--pressed, var(--✨border--solid-accent-pressed))
+					var(--🌀button-state--disabled, var(--✨border--solid-accent-disabled));
+
+				--🥝button-color: var(--ids-color-text-neutral-emphasis);
+				--🥝icon-color: var(--🌀button-state--default, var(--ids-color-icon-neutral-emphasis))
+					var(--🌀button-state--hover, var(--ids-color-icon-strong-hover))
+					var(--🌀button-state--pressed, var(--ids-color-icon-neutral-hover))
+					var(--🌀button-state--disabled, var(--ids-color-icon-neutral-disabled));
+
+				@media (forced-colors: active) {
+					--🥝icon-color: ButtonText;
+				}
+			}
+		}
+
+		&:where([data-kiwi-variant="outline"]) {
+			--🥝button-background-color: var(--🌀button-state--default, var(--✨bg--outline-default))
+				var(--🌀button-state--hover, var(--✨bg--outline-hover))
+				var(--🌀button-state--pressed, var(--✨bg--outline-pressed))
+				var(--🌀button-state--disabled, var(--✨bg--outline-disabled));
+			--🥝button-border-color: var(--🌀button-state--default, var(--✨border--outline-default))
+				var(--🌀button-state--hover, var(--✨border--outline-hover))
+				var(--🌀button-state--pressed, var(--✨border--outline-pressed))
+				var(--🌀button-state--disabled, var(--✨border--outline-disabled));
+			box-shadow: var(--✨shadow-border);
+		}
+
+		&:where([data-kiwi-variant="ghost"]) {
+			--🥝button-background-color: var(--🌀button-state--default, var(--✨bg--ghost-default))
+				var(--🌀button-state--hover, var(--✨bg--ghost-hover))
+				var(--🌀button-state--pressed, var(--✨bg--ghost-pressed))
+				var(--🌀button-state--active, var(--✨bg--ghost-active))
+				var(--🌀button-state--disabled, var(--✨bg--ghost-disabled));
+		}
+	}
+
+	@layer states {
+		@media (any-hover: hover) {
+			&:where(:hover) {
+				--🌀button-state: var(--🌀button-state--hover);
+			}
+		}
+
+		&:where(:active) {
+			--🌀button-state: var(--🌀button-state--pressed);
+		}
+
+		&:where([data-kiwi-variant="ghost"][aria-pressed="true"]) {
+			--🌀button-state: var(--🌀button-state--active);
+
+			@media (forced-colors: active) {
+				background-color: SelectedItem;
+				color: SelectedItemText;
+				--🥝icon-color: SelectedItemText;
+			}
+		}
+
+		&:where([disabled], :disabled, [aria-disabled="true"]) {
+			--🌀button-state: var(--🌀button-state--disabled);
+			color: var(--ids-color-text-neutral-disabled);
+			cursor: not-allowed;
+
+			@media (forced-colors: active) {
+				border-color: GrayText;
+				color: GrayText;
+				--🥝icon-color: GrayText;
+			}
+		}
+	}
+
+	@layer base.🌀 {
+		/* Cyclic toggles for default/hover/pressed/active/disabled states. See https://kizu.dev/cyclic-toggles/ */
+		--🌀button-state: var(--🌀button-state--default);
+		--🌀button-state--default: var(--🌀button-state,);
+		--🌀button-state--hover: var(--🌀button-state,);
+		--🌀button-state--pressed: var(--🌀button-state,);
+		--🌀button-state--active: var(--🌀button-state,); /* "active" state is only supported in ghost variant */
+		--🌀button-state--disabled: var(--🌀button-state,);
+	}
+}

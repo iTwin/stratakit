@@ -1,0 +1,38 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+
+.🥝-kbd {
+	--✨shadow-border: 0px 0px 0px 1px var(--ids-color-border-shadow-base) inset;
+
+	@layer base {
+		@apply --typography("body-sm");
+		font-family: inherit;
+		font-weight: 500;
+		color: var(--ids-color-text-neutral-secondary);
+
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		flex-shrink: 0;
+		min-block-size: 16px;
+	}
+
+	@layer modifiers {
+		&:where([data-kiwi-variant="solid"], [data-kiwi-variant="muted"]) {
+			border-radius: 4px;
+			background-color: var(--ids-color-bg-neutral-base);
+			padding-inline: 4px;
+		}
+
+		&:where([data-kiwi-variant="solid"]) {
+			box-shadow: var(--ids-shadow-button-base-inset), var(--✨shadow-border),
+				var(--ids-shadow-button-base-drop);
+		}
+
+		&:where([data-kiwi-variant="ghost"]) {
+			color: var(--ids-color-text-neutral-tertiary);
+		}
+	}
+}

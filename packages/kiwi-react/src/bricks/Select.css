@@ -1,0 +1,62 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+.🥝-select-root {
+	@layer base {
+		&:where(:has(select.🥝-select), [data-kiwi-has-select="true"]) {
+			display: inline-grid;
+			align-items: center;
+			isolation: isolate;
+
+			> * {
+				grid-area: 1 / 1 / -1 / -1;
+			}
+		}
+	}
+}
+
+.🥝-select:is(.🥝-button) {
+	--✨padding-inline-start: 8px;
+	--✨padding-inline-end: calc(4px + 16px + 4px); /* (gap) + (arrow size) + (padding-inline - disclosure arrow offset) */
+
+	@layer base {
+		&:where(select:not([multiple])) {
+			appearance: none;
+			--🥝button-padding-inline: var(--✨padding-inline-start) var(--✨padding-inline-end);
+			--🥝ghost-inline-offset: var(--✨padding-inline-start);
+		}
+	}
+}
+
+.🥝-select-arrow:is(.🥝-disclosure-arrow) {
+	@layer base {
+		justify-self: end;
+		margin-inline-end: 4px; /* (padding - disclosure offset) */
+		pointer-events: none;
+		z-index: 1; /* should be above the button */
+
+		--🥝icon-color: var(--🌀select-arrow-state--default, var(--ids-color-icon-neutral-base))
+			var(--🌀select-arrow-state--hover, var(--ids-color-icon-neutral-hover))
+			var(--🌀select-arrow-state--disabled, var(--ids-color-icon-neutral-disabled));
+	}
+
+	@layer states {
+		@media (any-hover: hover) {
+			:where(.🥝-select:hover) + & {
+				--🌀select-arrow-state: var(--🌀select-arrow-state--hover);
+			}
+		}
+
+		:where(.🥝-select:disabled) + & {
+			--🌀select-arrow-state: var(--🌀select-arrow-state--disabled);
+		}
+	}
+
+	@layer base.🌀 {
+		--🌀select-arrow-state: var(--🌀select-arrow-state--default);
+		--🌀select-arrow-state--default: var(--🌀select-arrow-state,);
+		--🌀select-arrow-state--hover: var(--🌀select-arrow-state,);
+		--🌀select-arrow-state--disabled: var(--🌀select-arrow-state,);
+	}
+}

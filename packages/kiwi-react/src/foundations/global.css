@@ -1,0 +1,22 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+html {
+	background-color: var(--ids-color-bg-page-base);
+}
+
+body {
+	@apply --typography("body-md");
+}
+
+:is(body, .🥝-root) {
+	font-family: var(--ids-font-family-sans);
+	color: var(--ids-color-text-neutral-primary);
+}
+
+*:focus-visible {
+	--✨focus-color: var(--ids-color-border-accent-strong);
+	outline: 2px solid var(--✨focus-color);
+	outline-offset: 1px;
+}

@@ -1,0 +1,44 @@
+{
+	"$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
+	"files": {
+		"ignoreUnknown": true
+	},
+	"vcs": {
+		"enabled": true,
+		"clientKind": "git",
+		"useIgnoreFile": true
+	},
+	"css": {
+		"formatter": {
+			"lineWidth": 100
+		},
+		"linter": {
+			"enabled": true
+		}
+	},
+	"organizeImports": {
+		"enabled": false
+	},
+	"linter": {
+		"rules": {
+			"correctness": {
+				"noUnusedImports": "info",
+				"noUnusedLabels": "off"
+			},
+			"suspicious": {
+				"noConfusingLabels": "off"
+			},
+			"a11y": { "all": false },
+			"nursery": {
+				"noRestrictedImports": {
+					"level": "warn",
+					"options": {
+						"paths": {
+							"@ariakit/react": "Use of Ariakit's barrel is discouraged. Import Ariakit components from their individual entrypoints instead."
+						}
+					}
+				}
+			}
+		}
+	}
+}

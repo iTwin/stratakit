@@ -1,0 +1,110 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+import { test, expect } from "#playwright";
+import AxeBuilder from "@axe-core/playwright";
+
+test("default", async ({ page }) => {
+	await page.goto("/tests/checkbox");
+
+	const checkbox = page.getByRole("checkbox");
+	const label = page.getByText("Toggle me");
+
+	await expect(checkbox).toHaveAccessibleName("Toggle me");
+	await expect(checkbox).not.toBeChecked();
+
+	await page.keyboard.press("Tab");
+	await expect(checkbox).toBeFocused();
+
+	await page.keyboard.press("Space");
+	await expect(checkbox).toBeChecked();
+
+	await label.click();
+	await expect(checkbox).not.toBeChecked();
+});
+
+test("checked", async ({ page }) => {
+	await page.goto("/tests/checkbox?checked=true");
+
+	const checkbox = page.getByRole("checkbox");
+	await expect(checkbox).toBeChecked();
+
+	await checkbox.click();
+	await expect(checkbox).not.toBeChecked();
+});
+
+test("indeterminate/mixed", async ({ page }) => {
+	await page.goto("/tests/checkbox?indeterminate=true");
+
+	const checkbox = page.getByRole("checkbox");
+	await expect(checkbox).toHaveAttribute("aria-checked", "mixed");
+
+	await checkbox.click();
+	await expect(checkbox).toBeChecked();
+
+	await checkbox.click();
+	await expect(checkbox).not.toBeChecked();
+});
+
+test("disabled", async ({ page }) => {
+	await page.goto("/tests/checkbox?disabled=true");
+
+	const checkbox = page.getByRole("checkbox", { name: "Toggle me" });
+	await expect(checkbox).toBeDisabled();
+	await expect(checkbox).not.toBeChecked();
+
+	await page.keyboard.press("Tab");
+	await expect(checkbox).toBeFocused();
+
+	// should not be able to toggle the disabled checkbox
+	await page.keyboard.press("Space");
+	await expect(checkbox).not.toBeChecked();
+});
+
+test.describe("@visual", () => {
+	test("unchecked", async ({ page }) => {
+		await page.goto("/tests/checkbox?visual=true");
+		await expect(page.locator("body")).toHaveScreenshot();
+	});
+
+	test("checked", async ({ page }) => {
+		await page.goto("/tests/checkbox?visual=true&checked=true");
+		await expect(page.locator("body")).toHaveScreenshot();
+	});
+
+	test("indeterminate/mixed", async ({ page }) => {
+		await page.goto("/tests/checkbox?visual=true&indeterminate=true");
+		await expect(page.locator("body")).toHaveScreenshot();
+	});
+
+	test("disabled", async ({ page }) => {
+		await page.goto("/tests/checkbox?visual=true&disabled=true");
+		await expect(page.locator("body")).toHaveScreenshot();
+	});
+
+	test("disabled & checked", async ({ page }) => {
+		await page.goto("/tests/checkbox?visual=true&disabled=true&checked=true");
+		await expect(page.locator("body")).toHaveScreenshot();
+	});
+
+	test("disabled & indeterminate/mixed", async ({ page }) => {
+		await page.goto(
+			"/tests/checkbox?visual=true&disabled=true&indeterminate=true",
+		);
+		await expect(page.locator("body")).toHaveScreenshot();
+	});
+});
+
+test.describe("@a11y", () => {
+	test("Axe Page Scan", async ({ page }) => {
+		await page.goto("/tests/checkbox");
+
+		const checkbox = page.getByRole("checkbox");
+		await expect(checkbox).toBeVisible();
+
+		const axe = new AxeBuilder({ page });
+		const accessibilityScan = await axe.analyze();
+		expect(accessibilityScan.violations).toEqual([]);
+	});
+});

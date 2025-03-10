@@ -1,0 +1,59 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+
+.🥝-spinner {
+	@layer base {
+		display: inline-block;
+		color: var(--🥝spinner-color);
+		block-size: var(--🥝spinner-size);
+		inline-size: var(--🥝spinner-size);
+	}
+
+	@layer modifiers {
+		&:where([data-kiwi-tone="neutral"]) {
+			--🥝spinner-color: var(--ids-color-icon-neutral-base);
+		}
+
+		&:where([data-kiwi-tone="accent"]) {
+			--🥝spinner-color: var(--ids-color-icon-accent-strong);
+		}
+
+		&:where([data-kiwi-size="small"]) {
+			--🥝spinner-size: 1rem;
+		}
+
+		&:where([data-kiwi-size="medium"]) {
+			--🥝spinner-size: 1.5rem;
+		}
+
+		&:where([data-kiwi-size="large"]) {
+			--🥝spinner-size: 2rem;
+		}
+
+		&:where([data-kiwi-size="xlarge"]) {
+			--🥝spinner-size: 3rem;
+		}
+	}
+}
+
+.🥝-spinner-svg {
+	@layer base {
+		block-size: inherit;
+		inline-size: inherit;
+		fill: none;
+		animation: --🥝spinner-spin 1s linear infinite both;
+
+		@media (prefers-reduced-motion) {
+			animation-timing-function: steps(4, end);
+			animation-duration: 4s;
+		}
+	}
+}
+
+@keyframes --🥝spinner-spin {
+	to {
+		rotate: 360deg;
+	}
+}

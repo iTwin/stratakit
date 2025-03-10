@@ -1,0 +1,156 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+.🥝-checkbox {
+	--✨size: 1rem;
+
+	--✨shadow-border: 0px 0px 0px 1px var(--🥝checkbox-border-color) inset;
+
+	--✨glow--bg-hover: var(--ids-color-glow-hue) var(--ids-color-bg-glow-base-hover-\%);
+	--✨glow--bg-press: var(--ids-color-glow-hue) var(--ids-color-bg-glow-base-pressed-\%);
+
+	--✨bg--default: var(--ids-color-bg-neutral-base);
+	--✨bg--hover: color-mix(in oklch, var(--✨bg--default) 100%, var(--✨glow--bg-hover));
+	--✨bg--checked: var(--ids-color-bg-accent-base);
+	--✨bg--checked-hover: color-mix(in oklch, var(--✨bg--checked) 100%, var(--✨glow--bg-press));
+	--✨bg--disabled: var(--ids-color-bg-glow-on-surface-disabled);
+
+	--✨border--default: var(--ids-color-border-shadow-base);
+	--✨border--hover: color-mix(
+		in oklch,
+		var(--✨border--default) 100%,
+		var(--ids-color-glow-hue) var(--ids-color-border-glow-base-hover-\%)
+	);
+	--✨border--checked: var(--ids-color-border-shadow-strong);
+	--✨border--checked-hover: color-mix(
+		in oklch,
+		var(--✨border--checked) 100%,
+		var(--ids-color-glow-hue) var(--ids-color-border-glow-base-pressed-\%)
+	);
+	--✨border--disabled: transparent;
+
+	@layer base {
+		--🥝checkbox-color-svg: var(--ids-color-icon-neutral-emphasis);
+		--🥝checkbox-border-radius: 4px;
+
+		--🥝checkbox-unchecked-svg: url('data:image/svg+xml;utf8,<svg viewBox="0 0 16 16"></svg>');
+		--🥝checkbox-checkmark-svg: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 16"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M11.2 5.6 6.8 10l-2-2"/></svg>');
+		--🥝checkbox-indeterminate-svg: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 16"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 8h6.5"/></svg>');
+
+		appearance: none;
+		inline-size: var(--✨size);
+		block-size: var(--✨size);
+		cursor: pointer;
+
+		background-color: var(--🌀checkbox-visual-state--default, var(--✨bg--default))
+			var(--🌀checkbox-visual-state--hover, var(--✨bg--hover))
+			var(--🌀checkbox-visual-state--checked, var(--✨bg--checked))
+			var(--🌀checkbox-visual-state--checked-hover, var(--✨bg--checked-hover))
+			var(--🌀checkbox-visual-state--disabled, var(--✨bg--disabled));
+		border-radius: var(--🥝checkbox-border-radius);
+		color: var(--🌀checkbox-aria-state--unchecked, transparent)
+			var(--🌀checkbox-aria-state--checked, var(--🥝checkbox-color-svg))
+			var(--🌀checkbox-aria-state--indeterminate, var(--🥝checkbox-color-svg));
+		transition: all 150ms ease-out;
+		transition-property: background-color, border-color, box-shadow, --🥝checkbox-border-color;
+		position: relative;
+		box-shadow: var(--ids-shadow-button-base-inset), var(--✨shadow-border),
+			var(--ids-shadow-button-base-drop);
+
+		--🥝checkbox-border-color: var(--🌀checkbox-visual-state--default, var(--✨border--default))
+			var(--🌀checkbox-visual-state--hover, var(--✨border--hover))
+			var(--🌀checkbox-visual-state--checked, var(--✨border--checked))
+			var(--🌀checkbox-visual-state--checked-hover, var(--✨border--checked-hover))
+			var(--🌀checkbox-visual-state--disabled, var(--✨border--disabled));
+		--🥝checkbox-mask-image: var(
+				--🌀checkbox-aria-state--unchecked,
+				var(--🥝checkbox-unchecked-svg)
+			)
+			var(--🌀checkbox-aria-state--checked, var(--🥝checkbox-checkmark-svg))
+			var(--🌀checkbox-aria-state--indeterminate, var(--🥝checkbox-indeterminate-svg));
+
+		&::before,
+		&::after {
+			content: "";
+			position: absolute;
+			inset: 0px;
+		}
+
+		/* This pseudo-element increases tap target size to 24x24 */
+		&::before {
+			inset: calc((var(--✨size) - 24px) / 2);
+		}
+
+		/* This pseudo-element adds the actual checkmark SVG via --🥝checkbox-mask-image */
+		&::after {
+			background-color: currentColor;
+			mask-image: var(--🥝checkbox-mask-image, initial);
+			mask-repeat: no-repeat;
+			mask-position: center;
+
+			@media (forced-colors: active) {
+				background-color: CanvasText;
+			}
+		}
+	}
+
+	@layer states {
+		@media (forced-colors: active) {
+			border: 1px solid CanvasText;
+		}
+
+		@media (any-hover: hover) {
+			&:where(:hover) {
+				--🌀checkbox-visual-state: var(--🌀checkbox-visual-state--hover);
+			}
+		}
+
+		&:where(:checked, [aria-checked="true"]) {
+			--🌀checkbox-visual-state: var(--🌀checkbox-visual-state--checked);
+			--🌀checkbox-aria-state: var(--🌀checkbox-aria-state--checked);
+
+			@media (any-hover: hover) {
+				&:where(:hover) {
+					--🌀checkbox-visual-state: var(--🌀checkbox-visual-state--checked-hover);
+				}
+			}
+		}
+
+		&:where(:indeterminate, [aria-checked="mixed"]) {
+			--🌀checkbox-visual-state: var(--🌀checkbox-visual-state--checked);
+			--🌀checkbox-aria-state: var(--🌀checkbox-aria-state--indeterminate);
+		}
+
+		&:where([disabled], :disabled, [aria-disabled="true"]) {
+			--🌀checkbox-visual-state: var(--🌀checkbox-visual-state--disabled);
+			--🥝checkbox-color-svg: var(--ids-color-icon-neutral-disabled);
+			cursor: not-allowed;
+			box-shadow: none;
+
+			@media (forced-colors: active) {
+				border-color: GrayText;
+
+				&::after {
+					background-color: GrayText;
+				}
+			}
+		}
+	}
+
+	@layer base.🌀 {
+		/* Cyclic toggles for default/hover/checked/checked+hover/disabled states. See https://kizu.dev/cyclic-toggles/ */
+		--🌀checkbox-visual-state: var(--🌀checkbox-visual-state--default);
+		--🌀checkbox-visual-state--default: var(--🌀checkbox-visual-state,);
+		--🌀checkbox-visual-state--hover: var(--🌀checkbox-visual-state,);
+		--🌀checkbox-visual-state--checked: var(--🌀checkbox-visual-state,);
+		--🌀checkbox-visual-state--checked-hover: var(--🌀checkbox-visual-state,);
+		--🌀checkbox-visual-state--disabled: var(--🌀checkbox-visual-state,);
+
+		/* Cyclic toggles for unchecked/checked/indeterminate states. */
+		--🌀checkbox-aria-state: var(--🌀checkbox-aria-state--unchecked);
+		--🌀checkbox-aria-state--unchecked: var(--🌀checkbox-aria-state,);
+		--🌀checkbox-aria-state--checked: var(--🌀checkbox-aria-state,);
+		--🌀checkbox-aria-state--indeterminate: var(--🌀checkbox-aria-state,);
+	}
+}

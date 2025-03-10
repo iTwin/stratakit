@@ -1,0 +1,143 @@
+name: CI
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+  pull_request:
+  merge_group:
+
+jobs:
+  install:
+    name: Install node modules
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v3
+        with:
+          version: 9
+
+      - name: Use Node 22.x
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22.x
+          cache: "pnpm"
+
+      - run: pnpm install
+
+  audit:
+    name: Audit node modules
+    needs: install
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v3
+        with:
+          version: 9
+
+      - name: Use Node 22.x
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22.x
+          cache: "pnpm"
+
+      - run: pnpm install
+      - run: pnpm audit
+
+  check:
+    name: Check code quality
+    needs: install
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v3
+        with:
+          version: 9
+
+      - uses: biomejs/setup-biome@v2
+
+      - name: Use Node 22.x
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22.x
+          cache: "pnpm"
+
+      - run: pnpm install
+
+      - run: biome ci . --reporter=github
+        if: ${{ !cancelled() }}
+
+      - run: pnpm lint:copyright
+        if: ${{ !cancelled() }}
+
+      - run: pnpm prettier
+        if: ${{ !cancelled() }}
+
+  build:
+    name: Build test app
+    needs: install
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v3
+        with:
+          version: 9
+
+      - name: Use Node 22.x
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22.x
+          cache: "pnpm"
+
+      - run: pnpm install
+
+      - name: pnpm run build
+        uses: nick-fields/retry@v3
+        with:
+          timeout_minutes: 5
+          max_attempts: 3
+          command: pnpm run build
+
+  test:
+    name: Run e2e tests
+    needs: install
+    runs-on: ubuntu-latest
+    container:
+      image: mcr.microsoft.com/playwright:v1.49.1-noble
+    strategy:
+      fail-fast: false
+      matrix:
+        shardIndex: [1, 2, 3, 4]
+        shardTotal: [4]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v3
+        with:
+          version: 9
+
+      - run: pnpm install
+      - run: pnpm run build
+      - run: pnpm --filter=@itwin/test-app exec playwright test --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
+        env:
+          HOME: /root
+
+  deploy-gh-pages:
+    name: Deploy test app
+    if: ${{ github.event_name == 'pull_request' || github.event_name == 'push' }}
+    uses: "./.github/workflows/deploy-gh-pages.yaml"
+    with:
+      base: ${{ github.event.number || github.ref_name != 'main' && github.ref_name || '' }}

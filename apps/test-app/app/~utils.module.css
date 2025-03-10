@@ -1,0 +1,30 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+.table {
+	border-collapse: collapse;
+	font-size: var(--ids-font-size-12);
+
+	th {
+		text-align: start;
+	}
+
+	tbody tr:hover {
+		background-color: var(--ids-color-bg-neutral-base);
+	}
+
+	th,
+	td {
+		border: 1px solid var(--ids-color-border-neutral-base);
+		padding: 1rem;
+
+		&:first-child {
+			inline-size: 400px;
+		}
+	}
+
+	code {
+		color: var(--ids-color-text-neutral-secondary);
+	}
+}

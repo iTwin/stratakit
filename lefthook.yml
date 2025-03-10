@@ -1,0 +1,23 @@
+pre-commit:
+  parallel: true
+  commands:
+    copyright:
+      glob: "*.{js,ts,jsx,tsx,css,html}"
+      run: pnpm lint:copyright {staged_files} --fix
+      stage_fixed: true
+
+    format:
+      glob: "*.{js,ts,jsx,tsx,json,jsonc}"
+      run: pnpm biome format --write {staged_files}
+      stage_fixed: true
+
+    lint:
+      glob: "*.{js,ts,jsx,tsx}"
+      run: pnpm biome lint --write {staged_files}
+      stage_fixed: true
+
+    prettier:
+      exclude:
+        - "*.{js,ts,jsx,tsx,cjs,cts,mjs,mts,css,json,jsonc}"
+      run: pnpm exec prettier {staged_files} --ignore-unknown --write
+      stage_fixed: true

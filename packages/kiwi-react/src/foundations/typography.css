@@ -1,0 +1,16 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+:root,
+:host {
+	--ids-font-family-sans: "InterVariable", "Noto Sans", "Open Sans", sans-serif;
+	--ids-font-family-mono: "Geist Mono", "Noto Sans Mono", ui-monospace, "Segoe UI Mono", Consolas,
+		monospace;
+
+	@apply --typography-tokens;
+}
+
+.🥝-root:where([data-kiwi-density="dense"]) {
+	@apply --typography("body-sm");
+}

@@ -1,0 +1,33 @@
+{
+	"$schema": "https://json.schemastore.org/tsconfig",
+	"compilerOptions": {
+		"rootDir": "src",
+		"target": "es2021",
+		"module": "NodeNext",
+		"lib": ["esnext", "dom", "dom.iterable"],
+		"declaration": true,
+		"esModuleInterop": true,
+		"sourceMap": false,
+		"allowJs": true,
+		"jsx": "react-jsx",
+		"moduleResolution": "NodeNext",
+		"traceResolution": false,
+		"forceConsistentCasingInFileNames": true,
+		"noImplicitReturns": true,
+		"noImplicitThis": true,
+		"noImplicitAny": true,
+		"importHelpers": false,
+		"strictNullChecks": true,
+		"noUnusedLocals": true,
+		"skipLibCheck": true,
+		"isolatedModules": true,
+		"verbatimModuleSyntax": true,
+		"baseUrl": ".",
+		"emitDeclarationOnly": true,
+		"types": ["./types.d.ts"],
+		"preserveWatchOutput": true,
+		"allowUnusedLabels": true
+	},
+	"include": ["src", "types.d.ts"],
+	"exclude": ["node_modules", "dist/**/*"]
+}

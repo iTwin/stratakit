@@ -1,0 +1,121 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+.🥝-list-item {
+	--✨height--default: 1.75rem;
+	--✨height--large: 2.75rem;
+	--✨padding-inline: 0.5rem;
+
+	--✨color--default: var(--ids-color-text-neutral-primary);
+	--✨color--active: var(--ids-color-text-accent-strong);
+
+	--✨bg--default: transparent;
+	--✨bg--hover: var(--ids-color-bg-glow-on-surface-neutral-hover);
+	--✨bg--pressed: var(--ids-color-bg-glow-on-surface-neutral-pressed);
+	--✨bg--active: var(--ids-color-bg-glow-on-surface-accent-pressed);
+	--✨bg--disabled: var(--ids-color-text-neutral-disabled);
+
+	@layer base {
+		cursor: pointer;
+		line-height: 1.2;
+		font-size: var(--ids-font-size-12);
+
+		display: grid;
+		align-items: center;
+		align-content: center;
+		/* biome-ignore format: improve readability */
+		grid-template-columns:
+			[decoration-before-start] auto [decoration-before-end
+			content-start] minmax(0, 1fr) [content-end
+			decoration-after-start] auto [decoration-after-end];
+
+		min-block-size: var(--🥝list-item-height, var(--✨height--default));
+		padding-inline: var(--✨padding-inline);
+		background-color: var(--🥝list-item-background-color);
+
+		--🥝list-item-background-color: var(--🌀list-item-state--default, var(--✨bg--default))
+			var(--🌀list-item-state--hover, var(--✨bg--hover))
+			var(--🌀list-item-state--pressed, var(--✨bg--pressed))
+			var(--🌀list-item-state--active, var(--✨bg--active))
+			var(--🌀list-item-state--active-hover, var(--✨bg--active))
+			var(--🌀list-item-state--disabled, var(--✨bg--default));
+		color: var(--🌀list-item-state--default, var(--✨color--default))
+			var(--🌀list-item-state--hover, var(--✨color--default))
+			var(--🌀list-item-state--pressed, var(--✨color--default))
+			var(--🌀list-item-state--active, var(--✨color--active))
+			var(--🌀list-item-state--active-hover, var(--✨color--active))
+			var(--🌀list-item-state--disabled, var(--✨bg--disabled));
+		--🥝icon-color: var(--🌀list-item-state--default, var(--ids-color-icon-neutral-base))
+			var(--🌀list-item-state--hover, var(--ids-color-icon-neutral-hover))
+			var(--🌀list-item-state--pressed, var(--ids-color-icon-neutral-hover))
+			var(--🌀list-item-state--active, var(--ids-color-icon-accent-strong))
+			var(--🌀list-item-state--active-hover, var(--ids-color-icon-accent-strong))
+			var(--🌀list-item-state--disabled, var(--ids-color-icon-neutral-disabled));
+	}
+
+	@layer states {
+		@media (any-hover: hover) {
+			&:where(:hover) {
+				--🌀list-item-state: var(--🌀list-item-state--hover);
+			}
+		}
+
+		&:where(:active) {
+			--🌀list-item-state: var(--🌀list-item-state--pressed);
+		}
+
+		&:where([disabled], :disabled, [aria-disabled="true"]) {
+			--🌀list-item-state: var(--🌀list-item-state--disabled);
+			cursor: not-allowed;
+
+			@media (forced-colors: active) {
+				color: GrayText;
+				--🥝icon-color: GrayText;
+			}
+		}
+	}
+
+	@layer modifiers {
+		&:where(:has(> :nth-child(2 of .🥝-list-item-content))) {
+			--🥝list-item-height: var(--✨height--large);
+			grid-template-rows: repeat(auto-fit, minmax(0, auto));
+		}
+	}
+
+	@layer base.🌀 {
+		/* See https://kizu.dev/cyclic-toggles/ */
+		--🌀list-item-state: var(--🌀list-item-state--default);
+		--🌀list-item-state--default: var(--🌀list-item-state,);
+		--🌀list-item-state--hover: var(--🌀list-item-state,);
+		--🌀list-item-state--pressed: var(--🌀list-item-state,);
+		--🌀list-item-state--active: var(--🌀list-item-state,);
+		--🌀list-item-state--active-hover: var(--🌀list-item-state,);
+		--🌀list-item-state--disabled: var(--🌀list-item-state,);
+	}
+}
+
+.🥝-list-item-content {
+	@layer base {
+		grid-column: content;
+	}
+}
+
+.🥝-list-item-decoration {
+	--✨gap: 0.25rem;
+
+	@layer base {
+		grid-column: decoration-before;
+		grid-row: 1 / -1;
+		align-self: start;
+
+		display: flex;
+		align-items: center;
+		margin-inline-end: var(--✨gap);
+
+		:where(.🥝-list-item-content) ~ & {
+			grid-column: decoration-after;
+			margin-inline: var(--✨gap) 0;
+		}
+	}
+}

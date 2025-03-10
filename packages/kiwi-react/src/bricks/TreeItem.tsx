@@ -68,8 +68,21 @@ interface TreeItemRootProps extends Omit<BaseProps, "content" | "children"> {
 	 * Icon to be displayed inside the tree item.
 	 *
 	 * Can be a URL of an SVG from the `@itwin/itwinui-icons` package, or a JSX element.
+	 *
+	 * For multiple icons/decorations, use the `unstable_decorations` prop.
 	 */
 	icon?: string | React.JSX.Element;
+	/**
+	 * Decoration(s) to be displayed inside the tree item.
+	 *
+	 * This is an alternative to the `icon` prop, and can be used to
+	 * display multiple icons or other decorations before the label.
+	 *
+	 * Note: This should _not_ be used together with the `icon` prop.
+	 *
+	 * @experimental
+	 */
+	unstable_decorations?: React.ReactNode;
 	/**
 	 * The primary label that identifies the tree item and is displayed inside it.
 	 */
@@ -123,6 +136,7 @@ const TreeItemRoot = forwardRef<"div", TreeItemRootProps>(
 			selected,
 			expanded,
 			icon,
+			unstable_decorations,
 			label,
 			description,
 			actions,
@@ -156,6 +170,14 @@ const TreeItemRoot = forwardRef<"div", TreeItemRootProps>(
 
 		const labelId = React.useId();
 		const descriptionId = React.useId();
+		const decorationId = React.useId();
+
+		const describedBy = React.useMemo(() => {
+			const idRefs = [];
+			if (description) idRefs.push(descriptionId);
+			if (unstable_decorations || icon) idRefs.push(decorationId);
+			return idRefs.length > 0 ? idRefs.join(" ") : undefined;
+		}, [unstable_decorations, icon, decorationId, description, descriptionId]);
 
 		return (
 			<TreeItemContext.Provider
@@ -186,7 +208,7 @@ const TreeItemRoot = forwardRef<"div", TreeItemRootProps>(
 					aria-expanded={expanded}
 					aria-selected={selected}
 					aria-labelledby={labelId}
-					aria-describedby={description ? descriptionId : undefined}
+					aria-describedby={describedBy}
 					aria-level={level}
 					className={cx("🥝-tree-item", props.className)}
 					ref={forwardedRef as CompositeItemProps["ref"]}
@@ -207,11 +229,27 @@ const TreeItemRoot = forwardRef<"div", TreeItemRootProps>(
 									}}
 								/>
 							</GhostAligner>
-							{typeof icon === "string" ? <Icon href={icon} /> : icon}
+							{icon || unstable_decorations ? (
+								<Role
+									className="🥝-tree-item-decoration"
+									id={decorationId}
+									render={
+										React.isValidElement(icon) ? (
+											icon
+										) : typeof icon === "string" ? (
+											<Icon href={icon} />
+										) : undefined
+									}
+								>
+									{!icon ? unstable_decorations : null}
+								</Role>
+							) : null}
 						</ListItem.Decoration>
+
 						<ListItem.Content id={labelId} className="🥝-tree-item-content">
 							{label}
 						</ListItem.Content>
+
 						{description ? (
 							<ListItem.Content
 								id={descriptionId}
@@ -220,6 +258,7 @@ const TreeItemRoot = forwardRef<"div", TreeItemRootProps>(
 								{description}
 							</ListItem.Content>
 						) : undefined}
+
 						<ListItem.Decoration
 							render={<TreeItemActions>{actions}</TreeItemActions>}
 						/>

@@ -19,6 +19,7 @@ export const components = [
 	"List",
 	"Radio",
 	"Select",
+	"Skeleton",
 	"Spinner",
 	"Switch",
 	"Table",

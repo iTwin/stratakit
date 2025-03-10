@@ -33,6 +33,29 @@ test("default", async ({ page }) => {
 	await expect(item1_1).toHaveAttribute("aria-setsize", "3");
 });
 
+test("actions", async ({ page, browserName }) => {
+	test.fixme(
+		browserName === "firefox",
+		"This fails here but works in Firefox (manual)",
+	);
+
+	await page.goto("/tests/tree");
+
+	const item1_1 = page.getByRole("treeitem", { name: "Item 1.1" });
+	const item1_2 = page.getByRole("treeitem", { name: "Item 1.2" });
+	const toolbar1_1 = item1_1.getByRole("toolbar");
+
+	await expect(toolbar1_1).not.toBeVisible();
+
+	// Hover to show actions
+	await item1_1.hover();
+	await expect(toolbar1_1).toBeVisible();
+
+	// Hover away to hide actions
+	await item1_2.hover();
+	await expect(toolbar1_1).not.toBeVisible();
+});
+
 test("description", async ({ page }) => {
 	await page.goto("/tests/tree?description");
 
@@ -143,6 +166,42 @@ test.describe("keyboard", () => {
 		// Enter: Deselect
 		await page.keyboard.press("Enter");
 		await expect(item1).toHaveAttribute("aria-selected", "false");
+	});
+
+	test("actions", async ({ page, browserName }) => {
+		test.fixme(
+			browserName === "firefox",
+			"This fails here but works in Firefox (manual)",
+		);
+
+		await page.goto("/tests/tree");
+
+		const item1 = page.getByRole("treeitem", { name: "Item 1", exact: true });
+		const item1_1 = page.getByRole("treeitem", { name: "Item 1.1" });
+		const toolbar1_1 = item1_1.getByRole("toolbar");
+		const toolbar1_1Actions = toolbar1_1.getByRole("button");
+
+		await expect(toolbar1_1).not.toBeVisible();
+
+		// Initial: Tab to enter tree
+		await page.keyboard.press("Tab");
+		await expect(item1).toBeFocused();
+
+		// ⬇️ focus Item 1.1
+		await page.keyboard.press("ArrowDown");
+		await expect(item1_1).toBeFocused();
+
+		// Tab: focus first action within Item 1.1
+		await page.keyboard.press("Tab");
+		await page.waitForTimeout(100);
+		await expect(toolbar1_1).toBeVisible();
+		await page.waitForTimeout(100);
+		await expect(toolbar1_1Actions).toHaveCount(2);
+		await expect(toolbar1_1Actions.first()).toBeFocused();
+
+		// ➡️ focus next action within Item 1.1
+		await page.keyboard.press("ArrowRight");
+		await expect(toolbar1_1Actions.last()).toBeFocused();
 	});
 });
 

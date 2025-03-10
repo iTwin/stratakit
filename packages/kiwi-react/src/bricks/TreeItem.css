@@ -25,8 +25,13 @@
 		}
 
 		@media (any-hover: hover) {
-			&:where(:not(:hover, :focus-within)) {
-				--🥝tree-item-action-visibility: hidden;
+			&:where(:not(:hover, :focus-visible, :has(:focus-visible), :has([data-has-popover-open]))) {
+				--🥝tree-item-all-actions-visibility: hidden;
+			}
+
+			/* Without :has, we can't easily detect complex conditions, so unconditionally show actions container. */
+			@supports not selector(:has(+ *)) {
+				--🥝tree-item-all-actions-visibility: visible;
 			}
 		}
 	}
@@ -83,7 +88,8 @@
 		padding-inline-end: 4px;
 		background-color: var(--ids-color-bg-page-base);
 		display: inline-flex;
-		visibility: var(--🥝tree-item-actions-visibility, var(--🥝tree-item-action-visibility));
+		visibility: var(--🥝tree-item-all-actions-visibility, var(--🥝tree-item-action-visibility));
+		transition: visibility 16ms; /* This allows some time focus to "settle" before determining final visibility. */
 
 		&::before {
 			position: absolute;
@@ -95,13 +101,9 @@
 	}
 
 	@layer modifiers {
+		/* Actions container should be made visible when any individual action is forcibly visible. */
 		&:where(:has(.🥝-tree-item-action[data-kiwi-visible="true"])) {
-			--🥝tree-item-actions-visibility: visible;
-		}
-
-		/* Without :has, we can't easily detect if there are any forcibily-visible actions, so unconditionally show this. */
-		@supports not selector(:has(+ *)) {
-			--🥝tree-item-actions-visibility: visible;
+			--🥝tree-item-all-actions-visibility: visible;
 		}
 	}
 }

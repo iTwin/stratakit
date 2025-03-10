@@ -25,6 +25,7 @@ import {
 	type MenuItemCheckboxProps,
 	type MenuProviderProps,
 } from "@ariakit/react/menu";
+import { useStoreState } from "@ariakit/react/store";
 import { predefinedSymbols, type PredefinedSymbol } from "./Kbd.internal.js";
 
 // ----------------------------------------------------------------------------
@@ -130,6 +131,9 @@ interface DropdownMenuButtonProps extends FocusableProps<"button"> {}
 const DropdownMenuButton = forwardRef<"button", DropdownMenuButtonProps>(
 	(props, forwardedRef) => {
 		const { accessibleWhenDisabled = true, children, ...rest } = props;
+
+		const open = useStoreState(useMenuContext(), (state) => state?.open);
+
 		return (
 			<MenuButton
 				accessibleWhenDisabled
@@ -141,6 +145,7 @@ const DropdownMenuButton = forwardRef<"button", DropdownMenuButtonProps>(
 				}
 				{...rest}
 				className={cx("🥝-dropdown-menu-button", props.className)}
+				data-has-popover-open={open || undefined}
 				ref={forwardedRef}
 			/>
 		);

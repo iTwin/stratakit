@@ -115,7 +115,7 @@ jobs:
     needs: install
     runs-on: ubuntu-latest
     container:
-      image: mcr.microsoft.com/playwright:v1.49.1-noble
+      image: mcr.microsoft.com/playwright:v1.51.0-noble
     strategy:
       fail-fast: false
       matrix:

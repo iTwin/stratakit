@@ -169,9 +169,9 @@ test.describe("keyboard", () => {
 	});
 
 	test("actions", async ({ page, browserName }) => {
-		test.skip(
-			browserName !== "chromium",
-			"This fails here but works when testing manually in Firefox and Safari",
+		test.fixme(
+			browserName === "firefox",
+			"This fails here but works in Firefox (manual)",
 		);
 
 		await page.goto("/tests/tree");

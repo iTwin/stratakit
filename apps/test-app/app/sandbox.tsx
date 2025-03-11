@@ -222,43 +222,48 @@ function PanelContent(props: {
 }) {
 	const { data } = React.use(props.query.promise);
 
-	const trees = Object.entries(data).map(([treeName, treeData]) => {
-		const filters =
-			treeData.length <= 1 ? [] : treeData.map(({ label }) => label); // top-level items are used as filters
+	const trees = React.useMemo(
+		() =>
+			Object.entries(data).map(([treeName, treeData]) => {
+				const filters =
+					treeData.length <= 1 ? [] : treeData.map(({ label }) => label); // top-level items are used as filters
 
-		return {
-			name: treeName,
-			filters,
-			content:
-				treeData.length > 0 ? (
-					<SandboxTree data={treeData} />
-				) : (
-					<EmptyState>
-						<Text variant="body-sm">No layers</Text>
-						<Button>Create a layer</Button>
-					</EmptyState>
-				),
-		} as const;
-	});
+				return {
+					name: treeName,
+					filters,
+					content:
+						treeData.length > 0 ? (
+							<SandboxTree data={treeData} />
+						) : (
+							<EmptyState>
+								<Text variant="body-sm">No layers</Text>
+								<Button>Create a layer</Button>
+							</EmptyState>
+						),
+				} as const;
+			}),
+		[data],
+	);
 
 	const [selectedTreeId, setSelectedTreeId] = React.useState<
 		string | undefined | null
 	>(trees[0]?.name);
 
+	const allFilters = React.useMemo(() => {
+		if (!selectedTreeId) return trees[0].filters;
+		return trees.find((tree) => tree.name === selectedTreeId)?.filters || [];
+	}, [trees, selectedTreeId]);
+
 	if (trees.length === 1)
 		return (
-			<TreeFilteringProvider allFilters={trees[0]?.filters}>
+			<TreeFilteringProvider allFilters={allFilters}>
 				<Subheader />
 				{trees[0].content}
 			</TreeFilteringProvider>
 		);
 
 	return (
-		<TreeFilteringProvider
-			allFilters={
-				trees.find((tree) => tree.name === selectedTreeId)?.filters || []
-			}
-		>
+		<TreeFilteringProvider allFilters={allFilters}>
 			<Tabs.Root selectOnMove={false} setSelectedId={setSelectedTreeId}>
 				<Subheader
 					tabs={trees.map((tree) => (

@@ -4,13 +4,18 @@
  *--------------------------------------------------------------------------------------------*/
 
 .🥝-progress-bar {
+	--✨count: 4;
 	--✨duration: 1.5s;
 	--✨easing: cubic-bezier(0.5, 0, 0.5, 1);
-	--✨animation-indeterminate: --🥝progress-bar-animation-indeterminate var(--✨duration)
-		var(--✨easing) 4 forwards, --🥝progress-bar-animation-indeterminate-pause
-		calc(var(--✨duration) * 3) var(--✨easing) calc(var(--✨duration) * 4) infinite;
-	--✨animation-indeterminate-reduced-motion: --🥝progress-bar-animation-indeterminate
-		var(--✨duration) var(--✨easing) infinite;
+	--✨steps: 4;
+
+	--✨animation--indeterminate-steps: calc(var(--✨steps) * var(--✨duration))
+		--🥝progress-bar-animation-indeterminate steps(var(--✨steps), end) infinite;
+	--✨animation--indeterminate: var(--✨duration) --🥝progress-bar-animation-indeterminate
+		var(--✨easing) var(--✨count);
+	--✨animation--indeterminate-slow: calc(var(--✨duration) * 2)
+		--🥝progress-bar-animation-indeterminate-slow var(--✨easing)
+		calc(var(--✨count) * var(--✨duration)) infinite;
 
 	@layer base {
 		block-size: var(--🥝progress-bar-size);
@@ -27,12 +32,6 @@
 			border-radius: inherit;
 			background-color: var(--🥝progress-bar-fill-color);
 			animation: var(--🥝progress-bar-animation);
-
-			@media (prefers-reduced-motion) {
-				--🥝progress-bar-animation: var(--✨animation-indeterminate-reduced-motion);
-				animation-timing-function: steps(4, end);
-				animation-duration: 4s;
-			}
 		}
 	}
 
@@ -60,8 +59,13 @@
 		}
 
 		&:where([data-kiwi-variant="indeterminate"]) {
-			--🥝progress-bar-animation: var(--✨animation-indeterminate);
+			--🥝progress-bar-animation: var(--✨animation--indeterminate-steps);
 			--🥝progress-bar-fill-size: 25%;
+
+			@media (prefers-reduced-motion: no-preference) {
+				--🥝progress-bar-animation: var(--✨animation--indeterminate),
+					var(--✨animation--indeterminate-slow);
+			}
 		}
 
 		@media (forced-colors: active) {
@@ -81,14 +85,14 @@
 	}
 }
 
-@keyframes --🥝progress-bar-animation-indeterminate-pause {
+@keyframes --🥝progress-bar-animation-indeterminate-slow {
 	0% {
-		transform: translateX(-100%); /* A pause before the animation starts, see WCAG SC 2.2.2. */
+		transform: translateX(-100%); /* -100% moves the fill out of view on the left side. */
 	}
-	33.33% {
-		transform: translateX(-100%);
+	50% {
+		transform: translateX(-95%); /* Simulate a short slowdown between each cycle to help with WCAG SC 2.2.2. */
 	}
 	100% {
-		transform: translateX(400%);
+		transform: translateX(400%); /* The fill is 25% width of the container, multiplied by 4 moves the fill out of view on the right side. */
 	}
 }

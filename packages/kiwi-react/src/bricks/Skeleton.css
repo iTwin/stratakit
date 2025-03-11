@@ -4,11 +4,29 @@
  *--------------------------------------------------------------------------------------------*/
 
 .🥝-skeleton {
+	--✨duration: 1.5s;
+	--✨easing: cubic-bezier(0.5, 0, 0.5, 1);
+	--✨gradient: linear-gradient(
+		to right,
+		transparent 0,
+		transparent 20%,
+		var(--ids-color-bg-glow-on-surface-disabled) 50%,
+		transparent 80%,
+		transparent 100%
+	);
+
 	@layer base {
 		background-color: var(--ids-color-bg-glow-on-surface-disabled);
 		border-radius: var(--🥝skeleton-border-radius);
 		block-size: var(--🥝skeleton-height);
 		inline-size: var(--🥝skeleton-width);
+
+		@media (prefers-reduced-motion: no-preference) {
+			background: var(--✨gradient);
+			background-size: 200%;
+			background-attachment: fixed;
+			animation: skeleton-shimmer var(--✨duration) var(--✨easing) infinite;
+		}
 
 		@media (forced-colors: active) {
 			border: 1px solid CanvasText;
@@ -72,5 +90,14 @@
 				--🥝skeleton-width: 3rem;
 			}
 		}
+	}
+}
+
+@keyframes skeleton-shimmer {
+	from {
+		background-position-x: 250%;
+	}
+	to {
+		background-position-x: 50%;
 	}
 }

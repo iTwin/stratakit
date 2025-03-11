@@ -4,14 +4,15 @@
  *--------------------------------------------------------------------------------------------*/
 import * as React from "react";
 import cx from "classnames";
-import * as Ariakit from "@ariakit/react";
+import * as AkTooltip from "@ariakit/react/tooltip";
+import { useStoreState } from "@ariakit/react/store";
 import { forwardRef, type FocusableProps } from "./~utils.js";
 import { usePopoverApi } from "./~hooks.js";
 
 interface TooltipProps
 	extends Omit<FocusableProps<"div">, "content">,
-		Pick<Ariakit.TooltipProps, "open" | "unmountOnHide">,
-		Pick<Ariakit.TooltipProviderProps, "defaultOpen" | "setOpen"> {
+		Pick<AkTooltip.TooltipProps, "open" | "unmountOnHide">,
+		Pick<AkTooltip.TooltipProviderProps, "defaultOpen" | "setOpen"> {
 	/**
 	 * The content to be displayed inside the tooltip when the trigger element is hovered or focused.
 	 */
@@ -70,23 +71,25 @@ export const Tooltip = forwardRef<"div", TooltipProps>(
 			...rest
 		} = props;
 
-		const store = Ariakit.useTooltipStore();
+		const store = AkTooltip.useTooltipStore();
+		const open = useStoreState(store, (store) => store.open);
 		const popover = usePopoverApi(store);
 
 		return (
 			<>
-				<Ariakit.TooltipProvider
+				<AkTooltip.TooltipProvider
 					store={store}
 					defaultOpen={defaultOpenProp}
 					open={openProp}
 					setOpen={setOpenProp}
 				>
-					<Ariakit.TooltipAnchor
+					<AkTooltip.TooltipAnchor
 						render={children}
+						data-has-popover-open={open || undefined}
 						{...(type === "description" && { "aria-describedby": id })}
 						{...(type === "label" && { "aria-labelledby": id })}
 					/>
-					<Ariakit.Tooltip
+					<AkTooltip.Tooltip
 						aria-hidden="true"
 						{...rest}
 						unmountOnHide={unmountOnHide}
@@ -101,8 +104,8 @@ export const Tooltip = forwardRef<"div", TooltipProps>(
 						portal={popover.portal}
 					>
 						{content}
-					</Ariakit.Tooltip>
-				</Ariakit.TooltipProvider>
+					</AkTooltip.Tooltip>
+				</AkTooltip.TooltipProvider>
 			</>
 		);
 	},

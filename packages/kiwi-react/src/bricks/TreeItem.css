@@ -1,0 +1,150 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+.🥝-tree-item {
+	@layer base {
+		position: relative;
+		min-inline-size: max-content;
+	}
+
+	@layer states {
+		&:focus-visible {
+			outline: none;
+			isolation: isolate;
+
+			&::before {
+				content: "";
+				position: absolute;
+				inset: 0;
+				z-index: 1; /* Ensure the outline appears above the actions */
+				pointer-events: none;
+				outline: 2px solid var(--ids-color-border-accent-strong);
+				outline-offset: -1px;
+			}
+		}
+
+		@media (any-hover: hover) {
+			&:where(:not(:hover, :focus-visible, :has(:focus-visible), :has([data-has-popover-open]))) {
+				--🥝tree-item-all-actions-visibility: hidden;
+			}
+
+			/* Without :has, we can't easily detect complex conditions, so unconditionally show actions container. */
+			@supports not selector(:has(+ *)) {
+				--🥝tree-item-all-actions-visibility: visible;
+			}
+		}
+	}
+}
+
+.🥝-tree-item-node:is(.🥝-list-item) {
+	--✨first-level-indent: 8px;
+	--✨subsequent-level-indent: 6px;
+
+	@layer base {
+		position: relative;
+		isolation: isolate;
+
+		padding-inline-start: calc(
+			var(--✨first-level-indent) +
+			var(--✨subsequent-level-indent) *
+			(var(--🥝tree-item-level) - 1)
+		);
+		padding-inline-end: 0;
+	}
+
+	@layer states {
+		&:where([data-kiwi-selected="true"]) {
+			--🌀list-item-state: var(--🌀list-item-state--active);
+		}
+
+		&:where([data-kiwi-expanded="false"]) {
+			--🥝tree-chevron-rotate: -0.25turn;
+		}
+
+		&:where(:not([data-kiwi-expanded])) {
+			--🥝tree-item-expander-visibility: hidden;
+		}
+	}
+}
+
+.🥝-tree-item-content:is(.🥝-list-item-content) {
+	@layer base {
+		white-space: nowrap;
+	}
+}
+
+.🥝-tree-item-description:is(.🥝-list-item-content) {
+	@layer base {
+		color: var(--🌀list-item-state--default, var(--ids-color-text-neutral-secondary));
+	}
+}
+
+.🥝-tree-item-actions:is(.🥝-list-item-decoration) {
+	@layer base {
+		align-self: stretch;
+		position: sticky;
+		inset-inline-end: 0;
+		padding-inline-end: 4px;
+		background-color: var(--ids-color-bg-page-base);
+		display: inline-flex;
+		visibility: var(--🥝tree-item-all-actions-visibility, var(--🥝tree-item-action-visibility));
+		transition: visibility 16ms; /* This allows some time focus to "settle" before determining final visibility. */
+
+		&::before {
+			position: absolute;
+			content: "";
+			inset: 0;
+			background-color: var(--🥝list-item-background-color);
+			z-index: -1;
+		}
+	}
+
+	@layer modifiers {
+		/* Actions container should be made visible when any individual action is forcibly visible. */
+		&:where(:has(.🥝-tree-item-action[data-kiwi-visible="true"])) {
+			--🥝tree-item-all-actions-visibility: visible;
+		}
+	}
+}
+
+.🥝-tree-item-action:is(.🥝-icon-button) {
+	@layer base {
+		visibility: var(--🥝tree-item-action-visibility);
+	}
+
+	@layer modifiers {
+		&:where([data-kiwi-visible="false"]) {
+			--🥝tree-item-action-visibility: hidden;
+		}
+
+		&:where([data-kiwi-visible="true"]) {
+			--🥝tree-item-action-visibility: visible;
+		}
+	}
+}
+
+.🥝-tree-item-expander:is(.🥝-icon-button) {
+	@layer base {
+		visibility: var(--🥝tree-item-expander-visibility);
+		z-index: 1; /* Ensure the expander is above the invisible content button */
+	}
+}
+
+.🥝-tree-chevron {
+	@layer base {
+		rotate: var(--🥝tree-chevron-rotate);
+
+		@media (prefers-reduced-motion: no-preference) {
+			transition: rotate 150ms ease-in-out;
+		}
+	}
+}
+
+.🥝-tree-item-decoration {
+	@layer base {
+		display: flex;
+		align-items: center;
+		gap: 0.25rem;
+	}
+}

@@ -4,7 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 import * as React from "react";
 import cx from "classnames";
-import * as Ariakit from "@ariakit/react";
+import { Role } from "@ariakit/react/role";
 import {
 	forwardRef,
 	isBrowser,
@@ -46,7 +46,7 @@ const SelectRoot = forwardRef<"div", BaseProps>((props, forwardedRef) => {
 
 	return (
 		<HtmlSelectContext.Provider value={setIsHtmlSelect}>
-			<Ariakit.Role.div
+			<Role.div
 				{...props}
 				className={cx("🥝-select-root", props.className)}
 				data-kiwi-has-select={!supportsHas && isHtmlSelect ? "true" : undefined}
@@ -106,7 +106,7 @@ const HtmlSelect = forwardRef<"select", HtmlSelectProps>(
 					type="textlike"
 					id={id}
 					render={
-						<Ariakit.Role.select
+						<Role.select
 							{...rest}
 							className={cx("🥝-button", "🥝-select", props.className)}
 							data-kiwi-tone="neutral"

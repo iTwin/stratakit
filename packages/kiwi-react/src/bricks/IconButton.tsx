@@ -2,8 +2,9 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
+import * as React from "react";
 import cx from "classnames";
-import * as Ariakit from "@ariakit/react";
+import { useToolbarContext, ToolbarItem } from "@ariakit/react/toolbar";
 import { Button } from "./Button.js";
 import { VisuallyHidden } from "./VisuallyHidden.js";
 import { Icon } from "./Icon.js";
@@ -35,6 +36,21 @@ interface IconButtonBaseProps
 	 * @default "tooltip"
 	 */
 	labelVariant?: "tooltip" | "visually-hidden";
+	/**
+	 * A small dot displayed in the corner of the icon.
+	 *
+	 * The value of this prop gets used as the button's "accessible description".
+	 *
+	 * Example:
+	 * ```tsx
+	 * <IconButton
+	 *   label="Messages"
+	 *   dot="You have unread messages"
+	 *   icon={…}
+	 * />
+	 * ```
+	 */
+	dot?: string;
 }
 
 type IconButtonExtraProps =
@@ -96,22 +112,34 @@ type IconButtonProps = IconButtonBaseProps & IconButtonExtraProps;
  */
 export const IconButton = forwardRef<"button", IconButtonProps>(
 	(props, forwardedRef) => {
-		const { label, icon, isActive, labelVariant, ...rest } = props;
+		const { label, icon, isActive, labelVariant, dot, ...rest } = props;
 
-		const toolbar = Ariakit.useToolbarContext();
+		const baseId = React.useId();
+		const labelId = `${baseId}-label`;
+		const dotId = `${baseId}-dot`;
+
+		const toolbar = useToolbarContext();
 
 		const button = (
 			<Button
 				aria-pressed={isActive}
+				aria-labelledby={labelId}
+				aria-describedby={dot ? dotId : undefined}
 				{...rest}
-				render={
-					toolbar ? <Ariakit.ToolbarItem render={props.render} /> : props.render
-				}
+				data-kiwi-dot={dot ? "true" : undefined}
+				render={toolbar ? <ToolbarItem render={props.render} /> : props.render}
 				className={cx("🥝-icon-button", props.className)}
 				ref={forwardedRef}
 			>
-				<VisuallyHidden>{label}</VisuallyHidden>
+				<VisuallyHidden id={labelId}>{label}</VisuallyHidden>
+
 				{typeof icon === "string" ? <Icon href={icon} /> : icon}
+
+				{dot ? (
+					<VisuallyHidden id={dotId} aria-hidden="true">
+						{dot}
+					</VisuallyHidden>
+				) : null}
 			</Button>
 		);
 

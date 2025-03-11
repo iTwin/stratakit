@@ -2,7 +2,7 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-import * as Ariakit from "@ariakit/react";
+import { Role } from "@ariakit/react/role";
 import cx from "classnames";
 import { VisuallyHidden } from "./VisuallyHidden.js";
 import { forwardRef, type BaseProps } from "./~utils.js";
@@ -48,7 +48,7 @@ export const Spinner = forwardRef<"div", SpinnerProps>(
 		} = props;
 
 		return (
-			<Ariakit.Role
+			<Role
 				{...rest}
 				data-kiwi-size={size}
 				data-kiwi-tone={tone}
@@ -58,12 +58,12 @@ export const Spinner = forwardRef<"div", SpinnerProps>(
 				<svg aria-hidden="true" className="🥝-spinner-svg" viewBox="0 0 16 16">
 					<path
 						stroke="currentColor"
-						stroke-linecap="round"
+						strokeLinecap="round"
 						d="M9.5 1.674a6.503 6.503 0 0 1 0 12.652m-3-12.652a6.503 6.503 0 0 0 0 12.652"
 					/>
 				</svg>
 				<VisuallyHidden>{alt}</VisuallyHidden>
-			</Ariakit.Role>
+			</Role>
 		);
 	},
 );

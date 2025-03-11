@@ -115,12 +115,11 @@ jobs:
     needs: install
     runs-on: ubuntu-latest
     container:
-      image: mcr.microsoft.com/playwright:v1.49.1-noble
+      image: mcr.microsoft.com/playwright:v1.51.0-noble
     strategy:
       fail-fast: false
       matrix:
-        shardIndex: [1, 2, 3, 4]
-        shardTotal: [4]
+        shard: [1/4, 2/4, 3/4, 4/4]
 
     steps:
       - uses: actions/checkout@v4
@@ -131,71 +130,13 @@ jobs:
 
       - run: pnpm install
       - run: pnpm run build
-      - run: pnpm --filter=@itwin/test-app exec playwright test --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
+      - run: pnpm --filter=@itwin/test-app exec playwright test --shard=${{ matrix.shard }}
         env:
           HOME: /root
 
   deploy-gh-pages:
-    name: Deploy test app to github pages
-    needs: install
-    runs-on: ubuntu-latest
+    name: Deploy test app
     if: ${{ github.event_name == 'pull_request' || github.event_name == 'push' }}
-    concurrency:
-      group: ${{ github.workflow }}-${{ github.ref }}
-    env:
-      BASE_FOLDER: ${{ github.event.number || github.ref_name != 'main' && github.ref_name || '' }}
-
-    steps:
-      - uses: actions/checkout@v4
-
-      - uses: pnpm/action-setup@v3
-        with:
-          version: 9
-
-      - name: Use Node 22.x
-        uses: actions/setup-node@v4
-        with:
-          node-version: 22.x
-          cache: "pnpm"
-
-      - run: pnpm install
-
-      - name: Build test-app
-        run: pnpm run build
-
-      - name: List folders to preserve (open PRs)
-        id: clean_exclude_folders
-        uses: actions/github-script@v7
-        with:
-          result-encoding: string
-          script: |
-            return [...((await github.rest.pulls.list({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              state: 'open'
-            })).data.map(pr => pr.number))].join('\n')
-
-      - name: Deploy build output to gh-pages branch
-        uses: JamesIves/github-pages-deploy-action@v4
-        with:
-          branch: gh-pages
-          folder: ${{ github.workspace }}/apps/test-app/build/client/${{ env.BASE_FOLDER }}
-          target-folder: ${{ env.BASE_FOLDER }}
-          clean-exclude: ${{ steps.clean_exclude_folders.outputs.result }}
-          git-config-name: github-actions[bot]
-          git-config-email: github-actions[bot]@users.noreply.github.com
-
-      - name: Add deploy preview link under Checks
-        if: github.ref != 'refs/heads/main' && always()
-        uses: actions/github-script@v7
-        with:
-          script: |
-            github.rest.repos.createCommitStatus({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              sha: '${{ github.event.pull_request.head.sha }}',
-              state: 'success',
-              context: 'Deploy preview',
-              description: 'Live preview of the current branch',
-              target_url: '${{ vars.GH_PAGES_URL }}/${{ github.event.number }}/',
-            })
+    uses: "./.github/workflows/deploy-gh-pages.yaml"
+    with:
+      base: ${{ github.event.number || github.ref_name != 'main' && github.ref_name || '' }}

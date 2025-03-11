@@ -8,16 +8,22 @@ import styles from "./sandbox.module.css";
 import {
 	Button,
 	DropdownMenu,
+	Field,
 	Icon,
 	IconButton,
+	Label,
 	Select,
+	Spinner,
 	Tabs,
 	Text,
 	TextBox,
+	Tree,
 	VisuallyHidden,
 } from "@itwin/itwinui-react/bricks";
-import * as Tree from "@itwin/itwinui-react-internal/src/bricks/Tree.tsx";
 import { useSearchParams, type MetaFunction } from "react-router";
+import { useQuery, type UseQueryResult } from "@tanstack/react-query";
+import { toUpperCamelCase } from "./~utils.tsx";
+
 import placeholderIcon from "@itwin/itwinui-icons/placeholder.svg";
 import searchIcon from "@itwin/itwinui-icons/search.svg";
 import panelLeftIcon from "@itwin/itwinui-icons/panel-left.svg";
@@ -28,6 +34,39 @@ import showIcon from "@itwin/itwinui-icons/visibility-show.svg";
 import moreIcon from "@itwin/itwinui-icons/more-horizontal.svg";
 import hideIcon from "@itwin/itwinui-icons/visibility-hide.svg";
 
+import model1Url from "./sandbox.model1.json?url";
+import model2Url from "./sandbox.model2.json?url";
+import model3Url from "./sandbox.model3.json?url";
+
+// ----------------------------------------------------------------------------
+
+const models = {
+	model1: { name: "Epoch System iModel 1", url: model1Url },
+	model2: { name: "Epoch System iModel 2", url: model2Url },
+	model3: { name: "Epoch System iModel 3", url: model3Url },
+} as const;
+
+async function fetchModelsData(
+	model: keyof typeof models,
+): Promise<typeof import("./sandbox.model3.json")> {
+	if (model in models) {
+		const data = await fetch(models[model].url).then((res) => res.json());
+		// Simulate network delay for models marked as "slow"
+		if (data.slow) {
+			await new Promise((resolve) => setTimeout(resolve, Math.random() * 2000));
+		}
+		return data;
+	}
+
+	return {
+		name: "Unknown",
+		version: "Unknown",
+		data: { default: [] },
+	};
+}
+
+// ----------------------------------------------------------------------------
+
 const title = "Kiwi sandbox";
 export const meta: MetaFunction = () => {
 	return [{ title }];
@@ -36,32 +75,12 @@ export const meta: MetaFunction = () => {
 export default function Page() {
 	const [searchParams, setSearchParams] = useSearchParams();
 	const selectedModel =
-		searchParams.get("tree") === "empty" ? "epoch-2" : "epoch-1";
+		(searchParams.get("model") as keyof typeof models) || "model1";
 
-	const setSelectedModel = React.useCallback(
-		(model: keyof typeof models) => {
-			setSearchParams((prev) => {
-				if (model === "epoch-2") {
-					prev.set("tree", "empty");
-				} else {
-					prev.delete("tree");
-				}
-
-				return prev;
-			});
-		},
-		[setSearchParams],
-	);
-
-	const models = React.useMemo(
-		() => ({
-			"epoch-1": "Epoch System iModel 1", // Non-empty model
-			"epoch-2": "Epoch System iModel 2", // Empty model
-		}),
-		[],
-	);
-
-	const selectModelId = React.useId();
+	const query = useQuery({
+		queryKey: ["sandbox-data", selectedModel],
+		queryFn: () => fetchModelsData(selectedModel),
+	});
 
 	return (
 		<Layout
@@ -69,37 +88,41 @@ export default function Page() {
 				<>
 					<div className={styles.panelHeader}>
 						<div>
-							<VisuallyHidden
-								render={(props) => <label {...props} htmlFor={selectModelId} />}
-							>
-								Choose Model
-							</VisuallyHidden>
+							<Field>
+								<VisuallyHidden render={<Label />}>Choose Model</VisuallyHidden>
 
-							<Select.Root className={styles.panelTitleWrapper}>
-								<Select.HtmlSelect
-									id={selectModelId}
-									variant="ghost"
-									defaultValue={selectedModel}
-									onChange={(e) =>
-										setSelectedModel(e.target.value as keyof typeof models)
-									}
-								>
-									{Object.entries(models).map(([id, modelName]) => (
-										<option key={id} value={id}>
-											{modelName}
-										</option>
-									))}
-								</Select.HtmlSelect>
-							</Select.Root>
+								<Select.Root className={styles.panelTitleWrapper}>
+									<Select.HtmlSelect
+										variant="ghost"
+										defaultValue={selectedModel}
+										onChange={(e) =>
+											setSearchParams({ model: e.currentTarget.value })
+										}
+									>
+										{Object.entries(models).map(([id, { name }]) => (
+											<option key={id} value={id}>
+												{name}
+											</option>
+										))}
+									</Select.HtmlSelect>
+								</Select.Root>
+							</Field>
 
 							<hgroup role="group">
-								<VisuallyHidden render={(props) => <h2 {...props} />}>
-									{models[selectedModel]}
+								<VisuallyHidden render={<h2 />}>
+									{models[selectedModel]?.name}
 								</VisuallyHidden>
 
-								<p className={styles.panelCaption}>2024 Refresh</p>
+								<Text
+									className={styles.panelCaption}
+									variant="body-sm"
+									render={<p />}
+								>
+									{query.data?.version || ""}
+								</Text>
 							</hgroup>
 						</div>
+
 						<div className={styles.actions}>
 							<IconButton
 								className={styles.shiftIconRight}
@@ -110,33 +133,10 @@ export default function Page() {
 							/>
 						</div>
 					</div>
-					<SandboxTabs>
-						<TreeFilteringProvider>
-							<Subheader />
-							<Tabs.TabPanel
-								tabId="simple"
-								className={styles.tabPanel}
-								focusable={false}
-							>
-								{selectedModel === "epoch-2" ? (
-									<EmptyState />
-								) : (
-									<SandboxTree tree="simple" />
-								)}
-							</Tabs.TabPanel>
-							<Tabs.TabPanel
-								tabId="complex"
-								className={styles.tabPanel}
-								focusable={false}
-							>
-								{selectedModel === "epoch-2" ? (
-									<EmptyState />
-								) : (
-									<SandboxTree tree="complex" />
-								)}
-							</Tabs.TabPanel>
-						</TreeFilteringProvider>
-					</SandboxTabs>
+
+					<React.Suspense fallback={<PanelLoading />} key={selectedModel}>
+						<PanelContent query={query} />
+					</React.Suspense>
 				</>
 			}
 		>
@@ -161,6 +161,8 @@ export default function Page() {
 		</Layout>
 	);
 }
+
+// ----------------------------------------------------------------------------
 
 function Layout(
 	props: React.PropsWithChildren<{
@@ -218,13 +220,86 @@ function Layout(
 	);
 }
 
-function EmptyState() {
+function PanelLoading() {
 	return (
-		<div className={styles.emptyState}>
-			<Text variant="body-sm">No layers</Text>
-			<Button>Create a layer</Button>
-		</div>
+		<EmptyState>
+			<Spinner aria-hidden="true" />
+			<Text variant="body-sm">Loading…</Text>
+		</EmptyState>
 	);
+}
+
+function PanelContent(props: {
+	query: UseQueryResult<Awaited<ReturnType<typeof fetchModelsData>>>;
+}) {
+	const { data } = React.use(props.query.promise);
+
+	const trees = React.useMemo(
+		() =>
+			Object.entries(data).map(([treeName, treeData]) => {
+				const filters =
+					treeData.length <= 1 ? [] : treeData.map(({ label }) => label); // top-level items are used as filters
+
+				return {
+					name: treeName,
+					filters,
+					content:
+						treeData.length > 0 ? (
+							<SandboxTree data={treeData} />
+						) : (
+							<EmptyState>
+								<Text variant="body-sm">No layers</Text>
+								<Button>Create a layer</Button>
+							</EmptyState>
+						),
+				} as const;
+			}),
+		[data],
+	);
+
+	const [selectedTreeId, setSelectedTreeId] = React.useState<
+		string | undefined | null
+	>(trees[0]?.name);
+
+	const allFilters = React.useMemo(() => {
+		if (!selectedTreeId) return trees[0].filters;
+		return trees.find((tree) => tree.name === selectedTreeId)?.filters || [];
+	}, [trees, selectedTreeId]);
+
+	if (trees.length === 1)
+		return (
+			<TreeFilteringProvider allFilters={allFilters}>
+				<Subheader />
+				{trees[0].content}
+			</TreeFilteringProvider>
+		);
+
+	return (
+		<TreeFilteringProvider allFilters={allFilters}>
+			<Tabs.Root selectOnMove={false} setSelectedId={setSelectedTreeId}>
+				<Subheader
+					tabs={trees.map((tree) => (
+						<Tabs.Tab key={tree.name} id={tree.name}>
+							{toUpperCamelCase(tree.name)}
+						</Tabs.Tab>
+					))}
+				/>
+				{trees.map((tree) => {
+					return (
+						<Tabs.TabPanel key={tree.name} tabId={tree.name} unmountOnHide>
+							{tree.content}
+						</Tabs.TabPanel>
+					);
+				})}
+			</Tabs.Root>
+		</TreeFilteringProvider>
+	);
+}
+
+// ----------------------------------------------------------------------------
+
+function EmptyState({ children }: React.PropsWithChildren) {
+	return <div className={styles.emptyState}>{children}</div>;
 }
 
 function NoResultsState() {
@@ -234,6 +309,8 @@ function NoResultsState() {
 		</div>
 	);
 }
+
+// ----------------------------------------------------------------------------
 
 function clamp(value: number, min: number, max: number) {
 	return Math.min(Math.max(value, min), max);
@@ -478,6 +555,24 @@ function useMoveable<T extends HTMLElement>(args?: UseMoveableArgs) {
 	return { moveableProps };
 }
 
+// ----------------------------------------------------------------------------
+
+type ExampleColor =
+	| "red"
+	| "purple"
+	| "blue"
+	| "green"
+	| "yellow"
+	| "gray"
+	| "teal";
+
+interface TreeItemData {
+	label: string;
+	description?: string;
+	items?: TreeItemData[];
+	[key: string]: unknown;
+}
+
 interface TreeItem {
 	id: string;
 	label: string;
@@ -485,299 +580,21 @@ interface TreeItem {
 	type?: string; // Used for filtering
 	items: TreeItem[];
 	expanded: boolean;
-}
-
-interface TreeStore {
-	filters: string[];
-	items: TreeItem[];
+	color?: ExampleColor;
 }
 
 const createTreeItem = (() => {
 	let id = 0;
-	return (overrides?: Partial<TreeItem>): TreeItem => {
+	return (raw?: TreeItemData): TreeItem => {
 		return {
 			id: `${id++}`,
 			label: `Tree Item ${id}`,
-			items: [],
 			expanded: true,
-			...overrides,
+			...raw,
+			items: (raw?.items ?? []).map(createTreeItem),
 		};
 	};
 })();
-
-const simpleTree = {
-	filters: [
-		"Guides",
-		"Other",
-		"Road",
-		"Parking lot",
-		"Building",
-		"Sewer",
-		"Project boundary",
-		"Map",
-	],
-	items: [
-		createTreeItem({
-			label: "Guides",
-			type: "Guides",
-			items: [
-				createTreeItem({
-					label: "Tree",
-					items: [
-						createTreeItem({ label: "Guide 4" }),
-						createTreeItem({ label: "Guide 3" }),
-						createTreeItem({ label: "Guide 2" }),
-						createTreeItem({ label: "Guide 1" }),
-					],
-				}),
-			],
-		}),
-		createTreeItem({
-			label: "Other",
-			type: "Other",
-			items: [
-				createTreeItem({
-					label: "Object 2",
-					items: [createTreeItem({ label: "Path 3" })],
-				}),
-				createTreeItem({ label: "Object 1" }),
-			],
-		}),
-		createTreeItem({
-			label: "Road",
-			type: "Road",
-			items: [
-				createTreeItem({ label: "Parking lot access" }),
-				createTreeItem({ label: "Site access" }),
-			],
-		}),
-		createTreeItem({
-			label: "Parking lot",
-			type: "Parking lot",
-			items: [
-				createTreeItem({
-					label: "Parking area",
-					items: [
-						createTreeItem({ label: "Bay point 2" }),
-						createTreeItem({ label: "Bay point 1" }),
-						createTreeItem({ label: "Space point 1" }),
-						createTreeItem({ label: "Path 6" }),
-					],
-				}),
-			],
-		}),
-		createTreeItem({
-			label: "Building",
-			type: "Building",
-			items: [
-				createTreeItem({
-					label: "Building area",
-					items: [createTreeItem({ label: "Path 5" })],
-				}),
-			],
-		}),
-		createTreeItem({
-			label: "Sewer",
-			type: "Building",
-			items: [
-				createTreeItem({
-					label: "Run off pipe",
-					items: [createTreeItem({ label: "Path 4" })],
-				}),
-			],
-		}),
-		createTreeItem({
-			label: "Project boundary",
-			type: "Project boundary",
-			items: [
-				createTreeItem({
-					label: "Property area",
-					items: [createTreeItem({ label: "Path 1" })],
-				}),
-			],
-		}),
-		createTreeItem({
-			label: "Map",
-			type: "Map",
-			items: [
-				createTreeItem({
-					label: "Location",
-					items: [createTreeItem({ label: "Terrain" })],
-				}),
-			],
-		}),
-	],
-} satisfies TreeStore;
-
-const complexTree = {
-	filters: [],
-	items: [
-		createTreeItem({
-			label: "ITC_Master",
-			items: [
-				createTreeItem({
-					label: "002_Substation",
-					expanded: false,
-					items: [createTreeItem({ label: "002_Substation_A" })],
-				}),
-				createTreeItem({
-					label: "003-BENARCH-ZO-RF-M3-A-00001 - S-COLS",
-					description: "Columns",
-					expanded: false,
-					items: [
-						createTreeItem({
-							label: "003-BENARCH-ZO-RF-M3-A-00001 - S-JOIS-ENVL",
-							description: "Bar Joist: Envelopes",
-						}),
-					],
-				}),
-				createTreeItem({
-					label: "003-BENARCH-ZO-RF-M3-A-00001 - S-SLAB-CONC",
-					description: "Slabs: Concrete",
-				}),
-				createTreeItem({
-					label: "003-BENSTR-ZO-LG2-M3-S-00001 - S-BEAM-PURL",
-					description: "Columns: concrete",
-				}),
-				createTreeItem({
-					label: "005-BENROAD-00-XX-M3-G-00002.dgn",
-					expanded: false,
-					items: [
-						createTreeItem({
-							label: "005-BENROAD-00-XX-M3-G-00002-A",
-						}),
-					],
-				}),
-				createTreeItem({
-					label: "005-BENROAD-00-XX-M3-G-00003.dgn",
-					expanded: false,
-					items: [
-						createTreeItem({
-							label: "005-BENROAD-00-XX-M3-G-00003-A",
-						}),
-					],
-				}),
-				createTreeItem({
-					label: "007-aa_master.dgn",
-					items: [
-						createTreeItem({
-							label: "A-CLNG-LITE",
-							expanded: false,
-							items: [
-								createTreeItem({
-									label: "A-CLNG-LITE-A",
-								}),
-							],
-						}),
-						createTreeItem({
-							label: "A-CLNG-TILE",
-							items: [
-								createTreeItem({
-									label: "A-DOOR-2D-PLAN",
-									items: [
-										createTreeItem({
-											label: "P00003 [2-KA62]",
-											items: [
-												createTreeItem({
-													label: "Cell [2-KA63]",
-													items: [
-														createTreeItem({
-															label: "Cell [2-KA64]",
-															items: [
-																createTreeItem({
-																	label: "Complex Chain [2-KA6A]",
-																}),
-																createTreeItem({
-																	label: "Complex Chain [2-KA6B]",
-																}),
-																createTreeItem({
-																	label: "Complex Chain [2-KA6C]",
-																}),
-																createTreeItem({
-																	label: "Complex Chain [2-KA6D]",
-																}),
-																createTreeItem({
-																	label: "Complex Chain [2-KA6E]",
-																}),
-																createTreeItem({
-																	label: "Complex Chain [2-KA6F]",
-																}),
-																createTreeItem({
-																	label: "Complex Chain [2-KA6G]",
-																}),
-																createTreeItem({
-																	label: "Complex Chain [2-KA6H]",
-																}),
-																createTreeItem({
-																	label: "Complex Chain [2-KA61]",
-																}),
-																createTreeItem({
-																	label: "Complex Chain [2-KA65]",
-																}),
-																createTreeItem({
-																	label: "Complex Chain [2-KA66]",
-																}),
-																createTreeItem({
-																	label: "Complex Chain [2-KA67]",
-																}),
-																createTreeItem({
-																	label: "Complex Chain [2-KA68]",
-																}),
-																createTreeItem({
-																	label: "Complex Chain [2-KA69]",
-																}),
-															],
-														}),
-													],
-												}),
-											],
-										}),
-										createTreeItem({
-											label: "P00003 [2-KA74]",
-											expanded: false,
-											items: [
-												createTreeItem({
-													label: "P00003 [2-KA74-A]",
-												}),
-											],
-										}),
-										createTreeItem({
-											label: "P00003 [2-KA86]",
-											expanded: false,
-											items: [
-												createTreeItem({
-													label: "P00003 [2-KA74-A]",
-												}),
-											],
-										}),
-										createTreeItem({
-											label: "P00003 [2-KA98]",
-											expanded: false,
-											items: [
-												createTreeItem({
-													label: "P00003 [2-KA98-A]",
-												}),
-											],
-										}),
-										createTreeItem({
-											label: "P00003 [2-KAAA]",
-											expanded: false,
-											items: [
-												createTreeItem({
-													label: "P00003 [2-KAAA-A]",
-												}),
-											],
-										}),
-									],
-								}),
-							],
-						}),
-					],
-				}),
-			],
-		}),
-	],
-} satisfies TreeStore;
 
 function useFilteredTree({
 	items,
@@ -792,7 +609,7 @@ function useFilteredTree({
 		if (filters.length === 0) return items;
 		return items.reduce<TreeItem[]>((acc, item) => {
 			// Filters first level only, usually you'd want to traverse the tree.
-			if (!item.type || !filters.includes(item.type)) {
+			if (!filters.includes(item.label)) {
 				return acc;
 			}
 
@@ -846,6 +663,7 @@ interface FlatTreeItem extends TreeItem {
 	parentItem?: TreeItem;
 	position: number;
 	size: number;
+	color?: ExampleColor;
 }
 
 function useFlatTreeItems(
@@ -900,13 +718,15 @@ function findTreeItem<T extends Pick<TreeItem, "id"> & { items: T[] }>(
 }
 
 function SandboxTree({
-	tree,
+	data: treeData,
 }: {
-	tree: "simple" | "complex";
+	data: TreeItemData[];
 }) {
-	const { selectedId } = React.useContext(TabsContext);
-	const { filters, search, setItemCount } =
-		React.useContext(TreeFilteringContext);
+	const {
+		appliedFilters: filters,
+		search,
+		setItemCount,
+	} = React.useContext(TreeFilteringContext);
 	const [selected, setSelected] = React.useState<string | undefined>();
 	const [hidden, setHidden] = React.useState<string[]>([]);
 	const toggleHidden = React.useCallback((id: string) => {
@@ -918,10 +738,9 @@ function SandboxTree({
 		});
 	}, []);
 
-	const [items, setItems] = React.useState(() => {
-		if (tree === "complex") return complexTree.items;
-		return simpleTree.items;
-	});
+	const [items, setItems] = React.useState(() =>
+		treeData.map((item) => createTreeItem(item)),
+	);
 
 	const { filteredTree, itemCount } = useFilteredTree({
 		items,
@@ -931,9 +750,8 @@ function SandboxTree({
 	const flatItems = useFlatTreeItems(filteredTree, selected, hidden);
 
 	React.useEffect(() => {
-		if (tree !== selectedId) return;
 		setItemCount(itemCount);
-	}, [tree, selectedId, setItemCount, itemCount]);
+	}, [setItemCount, itemCount]);
 
 	const deferredItems = React.useDeferredValue(flatItems);
 	if (deferredItems.length === 0) return <NoResultsState />;
@@ -968,8 +786,13 @@ function SandboxTree({
 									return newData;
 								});
 							}}
-							icon={
-								<Icon href={placeholderIcon} style={{ display: "inline" }} />
+							unstable_decorations={
+								<>
+									{item.color ? (
+										<ColorSwatch color={item.color} alt={item.color} />
+									) : null}
+									<Icon href={placeholderIcon} />
+								</>
 							}
 							actions={[
 								<Tree.ItemAction
@@ -1008,87 +831,88 @@ function TreeMoreActions({ hidden }: { hidden?: boolean }) {
 				render={<Tree.ItemAction icon={moreIcon} label="More" />}
 			/>
 			<DropdownMenu.Content style={{ minInlineSize: 164 }}>
-				<DropdownMenu.Item shortcuts="⌘+C">Copy</DropdownMenu.Item>
-				<DropdownMenu.Item shortcuts="⌘+P">Paste</DropdownMenu.Item>
-				<DropdownMenu.Item shortcuts="⌘+V">Copy/Paste as</DropdownMenu.Item>
-				<DropdownMenu.Item shortcuts="⌘+M">Move to</DropdownMenu.Item>
-				<DropdownMenu.Item shortcuts="]">Bring to front</DropdownMenu.Item>
-				<DropdownMenu.Item shortcuts="[">Send to back</DropdownMenu.Item>
-				<DropdownMenu.Item shortcuts="⌘+G">Group selection</DropdownMenu.Item>
-				<DropdownMenu.Item shortcuts="⌘+U">Ungroup</DropdownMenu.Item>
-				<DropdownMenu.Item shortcuts="⌘+R">Rename</DropdownMenu.Item>
-				<DropdownMenu.Item shortcuts="⇧+⌘+V">Show/hide</DropdownMenu.Item>
-				<DropdownMenu.Item shortcuts="⇧+⌘+L">Lock/unlock</DropdownMenu.Item>
-				<DropdownMenu.Item shortcuts="I">Isolate object</DropdownMenu.Item>
+				<DropdownMenu.Item label="Copy" shortcuts="Command+C" />
+				<DropdownMenu.Item label="Paste" shortcuts="Command+P" />
+				<DropdownMenu.Item label="Copy/Paste as" shortcuts="Command+V" />
+				<DropdownMenu.Item label="Move to" shortcuts="Command+M" />
+				<DropdownMenu.Item label="Bring to front" shortcuts="]" />
+				<DropdownMenu.Item label="Send to back" shortcuts="[" />
+				<DropdownMenu.Item label="Group selection" shortcuts="Command+G" />
+				<DropdownMenu.Item label="Ungroup" shortcuts="Command+U" />
+				<DropdownMenu.Item label="Rename" shortcuts="Command+R" />
+				<DropdownMenu.Item label="Show/hide" shortcuts="Shift+Command+V" />
+				<DropdownMenu.Item label="Lock/unlock" shortcuts="Shift+Command+L" />
+				<DropdownMenu.Item label="Isolate object" shortcuts="I" />
 			</DropdownMenu.Content>
 		</DropdownMenu.Root>
 	);
 }
 
-function Subheader() {
-	const { selectedId: tree } = React.useContext(TabsContext);
-	const { itemCount, filtered, clearFilters, search, setSearch } =
+function Subheader({ tabs }: { tabs?: React.ReactNode }) {
+	const { itemCount, isFiltered, search, setSearch } =
 		React.useContext(TreeFilteringContext);
-	const [isSearching, setIsSearching] = React.useState(false);
+
 	const searchInputRef = React.useRef<HTMLInputElement>(null);
 	const tabsRef = React.useRef<HTMLHeadingElement>(null);
 
-	const actions = isSearching ? (
+	const [isSearchboxVisible, setIsSearchboxVisible] = React.useState(!tabs);
+	const filterOrSearchActive = isFiltered || !!search;
+
+	const actions = isSearchboxVisible ? (
 		<>
-			<FiltersMenu filters={tree === "simple" ? simpleTree.filters : []} />
-			<IconButton
-				className={styles.shiftIconRight}
-				icon={dismissIcon}
-				label="Close"
-				variant="ghost"
-				onClick={() => {
-					setSearch("");
-					clearFilters();
-					ReactDOM.flushSync(() => setIsSearching(false));
-					tabsRef.current?.focus();
-				}}
-			/>
+			<FiltersMenu />
+			{tabs ? (
+				<IconButton
+					className={styles.shiftIconRight}
+					icon={dismissIcon}
+					label="Close"
+					variant="ghost"
+					onClick={() => {
+						ReactDOM.flushSync(() => setIsSearchboxVisible(false));
+						tabsRef.current?.focus();
+					}}
+				/>
+			) : null}
 		</>
 	) : (
 		<IconButton
 			className={styles.shiftIconRight}
 			icon={searchIcon}
 			label="Search"
+			dot={filterOrSearchActive ? "Some filters or search applied" : undefined}
 			variant="ghost"
 			onClick={() => {
-				ReactDOM.flushSync(() => setIsSearching(true));
+				ReactDOM.flushSync(() => setIsSearchboxVisible(true));
 				searchInputRef.current?.focus();
 			}}
 		/>
 	);
 
 	const filteredNotification = React.useMemo(() => {
-		if (!filtered) return undefined;
+		if (!isFiltered) return undefined;
 		if (itemCount === undefined) return "Showing all tree items";
 		return `Showing ${itemCount} tree items`;
-	}, [filtered, itemCount]);
+	}, [isFiltered, itemCount]);
+
 	return (
 		<div className={styles.subheader}>
 			<VisuallyHidden aria-live="polite" aria-atomic={true}>
 				{filteredNotification}
 			</VisuallyHidden>
-			{isSearching ? undefined : (
-				<Tabs.TabList className={styles.tabList} tone="accent" ref={tabsRef}>
-					<Tabs.Tab id="simple">Simple</Tabs.Tab>
-					<Tabs.Tab id="complex">Complex</Tabs.Tab>
-				</Tabs.TabList>
-			)}
 
-			{isSearching ? (
+			{tabs && !isSearchboxVisible ? (
+				<Tabs.TabList className={styles.tabList} tone="accent" ref={tabsRef}>
+					{tabs}
+				</Tabs.TabList>
+			) : null}
+
+			{isSearchboxVisible ? (
 				<TextBox.Root className={styles.searchInput}>
 					<TextBox.Icon href={searchIcon} />
 					<TextBox.Input
 						placeholder="Search"
 						ref={searchInputRef}
-						onChange={(e) => {
-							setSearch(e.target.value);
-						}}
-						value={search}
+						onChange={(e) => setSearch(e.currentTarget.value)}
 					/>
 				</TextBox.Root>
 			) : null}
@@ -1098,12 +922,11 @@ function Subheader() {
 	);
 }
 
-function FiltersMenu({
-	filters,
-}: {
-	filters: string[];
-}) {
+function FiltersMenu() {
 	const context = React.useContext(TreeFilteringContext);
+
+	const filtersApplied = context.appliedFilters.length > 0;
+
 	return (
 		<DropdownMenu.Root>
 			<DropdownMenu.Button
@@ -1111,26 +934,25 @@ function FiltersMenu({
 					<IconButton
 						icon={filterIcon}
 						label="Filter"
+						dot={filtersApplied ? "Some filters applied" : undefined}
 						variant="ghost"
-						disabled={filters.length === 0}
-						isActive={context.filters.length > 0}
+						disabled={context.allFilters.length === 0}
 					/>
 				}
 			/>
 			<DropdownMenu.Content>
-				{filters.map((filter) => {
-					const checked = context.filters.includes(filter);
+				{context.allFilters.map((filter) => {
+					const checked = context.appliedFilters.includes(filter);
 					return (
 						<DropdownMenu.CheckboxItem
 							key={filter}
 							name={filter}
+							label={filter}
 							checked={checked}
 							onChange={() => {
 								context.toggleFilter(filter);
 							}}
-						>
-							{filter}
-						</DropdownMenu.CheckboxItem>
+						/>
 					);
 				})}
 			</DropdownMenu.Content>
@@ -1138,37 +960,42 @@ function FiltersMenu({
 	);
 }
 
-function TreeFilteringProvider(props: React.PropsWithChildren) {
-	const [filtered, setFiltered] = React.useState(false);
-	const [filters, setFilters] = React.useState<string[]>([]);
+function TreeFilteringProvider(
+	props: React.PropsWithChildren<{ allFilters: string[] }>,
+) {
+	const [isFiltered, setIsFiltered] = React.useState(false);
+	const [appliedFilters, setAppliedFilters] = React.useState<string[]>([]);
 	const [search, setSearchState] = React.useState("");
 	const [itemCount, setItemCount] = React.useState<number | undefined>(
 		undefined,
 	);
-	const toggleFilter = React.useCallback((filter: string) => {
-		setFilters((prev) => {
-			if (prev.includes(filter)) {
-				return prev.filter((f) => f !== filter);
-			}
-			return [...prev, filter];
-		});
-		setFiltered(true);
-	}, []);
+	const toggleFilter = React.useCallback(
+		(filter: string) => {
+			const newFilters = appliedFilters.includes(filter)
+				? appliedFilters.filter((f) => f !== filter)
+				: [...appliedFilters, filter];
+
+			setAppliedFilters(newFilters);
+			setIsFiltered(newFilters.length > 0);
+		},
+		[appliedFilters],
+	);
 	const clearFilters = React.useCallback(() => {
-		setFilters([]);
-		setFiltered(true);
+		setAppliedFilters([]);
+		setIsFiltered(false);
 	}, []);
 	const setSearch = React.useCallback((s: string) => {
 		setSearchState(s);
-		setFiltered(true);
+		setIsFiltered(!!s);
 	}, []);
 
 	return (
 		<TreeFilteringContext.Provider
 			value={React.useMemo(
 				() => ({
-					filters,
-					filtered,
+					allFilters: props.allFilters,
+					appliedFilters,
+					isFiltered,
 					toggleFilter,
 					clearFilters,
 					search,
@@ -1177,8 +1004,9 @@ function TreeFilteringProvider(props: React.PropsWithChildren) {
 					setItemCount,
 				}),
 				[
-					filters,
-					filtered,
+					props.allFilters,
+					appliedFilters,
+					isFiltered,
 					toggleFilter,
 					clearFilters,
 					search,
@@ -1192,29 +1020,10 @@ function TreeFilteringProvider(props: React.PropsWithChildren) {
 	);
 }
 
-function SandboxTabs(props: React.PropsWithChildren) {
-	const [selectedId, setSelectedId] = React.useState<string | null | undefined>(
-		undefined,
-	);
-	return (
-		<TabsContext.Provider
-			value={React.useMemo(
-				() => ({
-					selectedId: selectedId ?? "",
-				}),
-				[selectedId],
-			)}
-		>
-			<Tabs.Root setSelectedId={setSelectedId} selectedId={selectedId}>
-				{props.children}
-			</Tabs.Root>
-		</TabsContext.Provider>
-	);
-}
-
 const TreeFilteringContext = React.createContext<{
-	filters: string[];
-	filtered: boolean;
+	allFilters: string[];
+	appliedFilters: string[];
+	isFiltered: boolean;
 	toggleFilter: (filter: string) => void;
 	clearFilters: () => void;
 	search: string;
@@ -1222,8 +1031,9 @@ const TreeFilteringContext = React.createContext<{
 	itemCount: number | undefined;
 	setItemCount: (count: number | undefined) => void;
 }>({
-	filters: [],
-	filtered: false,
+	allFilters: [],
+	appliedFilters: [],
+	isFiltered: false,
 	toggleFilter: () => {},
 	clearFilters: () => {},
 	search: "",
@@ -1232,8 +1042,17 @@ const TreeFilteringContext = React.createContext<{
 	setItemCount: () => {},
 });
 
-const TabsContext = React.createContext<{
-	selectedId: string;
-}>({
-	selectedId: "",
-});
+function ColorSwatch(props: { color: string; alt?: string }) {
+	return (
+		<div
+			className={styles.colorSwatch}
+			style={
+				{
+					"--_color": `var(--_color--${props.color})`,
+				} as React.CSSProperties
+			}
+		>
+			{props.alt ? <VisuallyHidden>{props.alt}</VisuallyHidden> : null}
+		</div>
+	);
+}

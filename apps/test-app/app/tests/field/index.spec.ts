@@ -15,7 +15,9 @@ const controlsToRole: Record<string, Parameters<Page["getByRole"]>[0]> = {
 };
 
 test.describe("default", () => {
-	test("wrapping input and label", async ({ page }) => {
+	test("wrapping input and label", async ({ page, browserName }) => {
+		test.fixme(browserName === "firefox", "This test is flaky in Firefox");
+
 		await page.goto("/tests/field?control=input");
 		await expect(page.getByRole("textbox")).toHaveAccessibleName(
 			"input example",

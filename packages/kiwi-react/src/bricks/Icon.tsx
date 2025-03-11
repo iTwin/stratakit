@@ -4,7 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 import * as React from "react";
 import cx from "classnames";
-import * as Ariakit from "@ariakit/react";
+import { Role } from "@ariakit/react/role";
 import { forwardRef, type BaseProps } from "./~utils.js";
 
 interface IconProps extends Omit<BaseProps<"svg">, "children"> {
@@ -63,7 +63,7 @@ export const Icon = forwardRef<"svg", IconProps>((props, forwardedRef) => {
 	const isDecorative = !alt;
 
 	return (
-		<Ariakit.Role.svg
+		<Role.svg
 			aria-hidden={isDecorative ? "true" : undefined}
 			role={isDecorative ? undefined : "img"}
 			aria-label={isDecorative ? undefined : alt}
@@ -73,7 +73,7 @@ export const Icon = forwardRef<"svg", IconProps>((props, forwardedRef) => {
 			ref={forwardedRef}
 		>
 			<use href={`${props.href}#${iconId}`} />
-		</Ariakit.Role.svg>
+		</Role.svg>
 	);
 });
 DEV: Icon.displayName = "Icon";
@@ -110,7 +110,7 @@ export const DisclosureArrow = forwardRef<"svg", DisclosureArrowProps>(
 			<Icon
 				{...rest}
 				render={
-					<Ariakit.Role.svg
+					<Role.svg
 						width="16"
 						height="16"
 						fill="currentColor"
@@ -118,7 +118,7 @@ export const DisclosureArrow = forwardRef<"svg", DisclosureArrowProps>(
 						render={props.render}
 					>
 						{path}
-					</Ariakit.Role.svg>
+					</Role.svg>
 				}
 				className={cx("🥝-disclosure-arrow", props.className)}
 				ref={forwardedRef}
@@ -138,7 +138,7 @@ export const Checkmark = forwardRef<"svg", CheckmarkProps>(
 			<Icon
 				{...props}
 				render={
-					<Ariakit.Role.svg
+					<Role.svg
 						width="16"
 						height="16"
 						fill="currentColor"
@@ -150,7 +150,7 @@ export const Checkmark = forwardRef<"svg", CheckmarkProps>(
 							d="M13.854 4.146a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L6.5 10.793l6.646-6.647a.5.5 0 0 1 .708 0Z"
 							clipRule="evenodd"
 						/>
-					</Ariakit.Role.svg>
+					</Role.svg>
 				}
 				ref={forwardedRef}
 			/>
@@ -169,7 +169,7 @@ export const Dismiss = forwardRef<"svg", DismissProps>(
 			<Icon
 				{...props}
 				render={
-					<Ariakit.Role.svg
+					<Role.svg
 						width="16"
 						height="16"
 						viewBox="0 0 16 16"
@@ -177,7 +177,7 @@ export const Dismiss = forwardRef<"svg", DismissProps>(
 						render={props.render}
 					>
 						<path d="M4.853 4.146a.5.5 0 1 0-.707.708L7.293 8l-3.147 3.146a.5.5 0 0 0 .707.708L8 8.707l3.146 3.147a.5.5 0 0 0 .707-.708L8.707 8l3.146-3.146a.5.5 0 1 0-.707-.708L8 7.293 4.853 4.146Z" />
-					</Ariakit.Role.svg>
+					</Role.svg>
 				}
 				ref={forwardedRef}
 			/>

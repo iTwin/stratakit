@@ -3,18 +3,18 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 import cx from "classnames";
-import * as Ariakit from "@ariakit/react";
+import { Role, type RoleProps } from "@ariakit/react/role";
 import { forwardRef } from "./~utils.js";
 import { Text } from "./Text.js";
 
 // ----------------------------------------------------------------------------
 
-interface ListItemProps extends Ariakit.RoleProps<"div"> {}
+interface ListItemProps extends RoleProps<"div"> {}
 
 /** @internal */
 const ListItem = forwardRef<"div", ListItemProps>((props, forwardedRef) => {
 	return (
-		<Ariakit.Role.div
+		<Role.div
 			role="listitem"
 			{...props}
 			className={cx("🥝-list-item", props.className)}
@@ -26,7 +26,7 @@ DEV: ListItem.displayName = "ListItem.Root";
 
 // ----------------------------------------------------------------------------
 
-interface ListItemContentProps extends Ariakit.RoleProps<"div"> {}
+interface ListItemContentProps extends RoleProps<"div"> {}
 
 /** @internal */
 const ListItemContent = forwardRef<"div", ListItemContentProps>(
@@ -45,13 +45,13 @@ DEV: ListItemContent.displayName = "ListItem.Content";
 
 // ----------------------------------------------------------------------------
 
-interface ListItemDecorationProps extends Ariakit.RoleProps<"span"> {}
+interface ListItemDecorationProps extends RoleProps<"div"> {}
 
 /** @internal */
-const ListItemDecoration = forwardRef<"span", ListItemDecorationProps>(
+const ListItemDecoration = forwardRef<"div", ListItemDecorationProps>(
 	(props, forwardedRef) => {
 		return (
-			<Ariakit.Role.span
+			<Role.div
 				{...props}
 				className={cx("🥝-list-item-decoration", props.className)}
 				ref={forwardedRef}

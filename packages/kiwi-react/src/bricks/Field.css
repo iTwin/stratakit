@@ -9,7 +9,7 @@
 
 	@layer base {
 		display: grid;
-		gap: 0.5rem;
+		gap: 4px; /* space/x1 */
 		align-items: center;
 		justify-content: start;
 

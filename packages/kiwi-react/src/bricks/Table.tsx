@@ -2,7 +2,7 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-
+import { Role } from "@ariakit/react/role";
 import * as React from "react";
 import cx from "classnames";
 import { forwardRef, type BaseProps } from "./~utils.js";
@@ -67,7 +67,7 @@ const HtmlTable = forwardRef<"table", HtmlTableProps>((props, forwardedRef) => {
 
 	return (
 		<TableContext.Provider value={tableContextValue}>
-			<Ariakit.Role
+			<Role
 				render={<table />}
 				{...props}
 				ref={forwardedRef}
@@ -129,7 +129,7 @@ const CustomTable = forwardRef<"div", CustomTableProps>(
 
 		return (
 			<TableContext.Provider value={tableContextValue}>
-				<Ariakit.Role.div
+				<Role.div
 					role="table"
 					aria-labelledby={captionId}
 					{...props}
@@ -172,7 +172,7 @@ const TableHeader = forwardRef<"div", TableHeaderProps>(
 
 		return (
 			<TableHeaderContext.Provider value={true}>
-				<Ariakit.Role.div
+				<Role.div
 					render={render}
 					role={role}
 					{...props}
@@ -216,7 +216,7 @@ const TableBody = forwardRef<"div", TableBodyProps>((props, forwardedRef) => {
 	const render = mode === "aria" ? undefined : <tbody />;
 
 	return (
-		<Ariakit.Role.div
+		<Role.div
 			render={render}
 			role={undefined} // Intentionally not using "rowgroup" https://github.com/iTwin/design-system/pull/243#discussion_r1947045668
 			{...props}
@@ -252,7 +252,7 @@ const TableRow = forwardRef<"div", TableRowProps>((props, forwardedRef) => {
 	const role = mode === "aria" ? "row" : undefined;
 
 	return (
-		<Ariakit.Role.div
+		<Role.div
 			render={render}
 			role={role}
 			{...props}
@@ -276,8 +276,8 @@ interface TableCaptionProps extends BaseProps<"div"> {}
  * Example:
  * ```tsx
  * <Table.CustomTable> // Or <Table.HtmlTable>
- * 	<Table.Caption>Table Caption</Table.Caption>
- * 	…
+ * 	 <Table.Caption>Table Caption</Table.Caption>
+ * 	 …
  * </Table.CustomTable> // Or </Table.HtmlTable>
  * ```
  */
@@ -289,7 +289,6 @@ const TableCaption = forwardRef<"div", TableCaptionProps>(
 		const { mode, setCaptionId } = useSafeContext(TableContext);
 
 		const render = mode === "aria" ? undefined : <caption />;
-		const role = mode === "aria" ? "caption" : undefined;
 
 		const captionIdRef = React.useCallback(
 			(element: HTMLElement | null) => {
@@ -299,7 +298,7 @@ const TableCaption = forwardRef<"div", TableCaptionProps>(
 		);
 
 		return (
-			<Ariakit.Role.div
+			<Role.div
 				render={render}
 				role={role}
 				{...rest}
@@ -341,7 +340,7 @@ const TableCell = forwardRef<"span", TableCellProps>((props, forwardedRef) => {
 	}, [isWithinTableHeader, mode]);
 
 	return (
-		<Ariakit.Role.span
+		<Role.span
 			render={render}
 			role={role}
 			{...props}

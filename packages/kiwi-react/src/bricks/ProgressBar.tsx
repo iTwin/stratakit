@@ -52,3 +52,5 @@ export const ProgressBar = forwardRef<"div", ProgressBarProps>(
 	},
 );
 DEV: ProgressBar.displayName = "ProgressBar";
+
+const ProgressBarWrapper = null; // TODO

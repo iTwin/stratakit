@@ -82,6 +82,9 @@ importers:
       "@react-router/node":
         specifier: ^7.3.0
         version: 7.3.0(react-router@7.3.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(typescript@5.8.2)
+      "@tanstack/react-query":
+        specifier: ^5.67.2
+        version: 5.67.2(react@19.0.0)
       classnames:
         specifier: ^2.5.1
         version: 2.5.1
@@ -1047,6 +1050,20 @@ packages:
       }
     cpu: [x64]
     os: [win32]
+
+  "@tanstack/query-core@5.67.2":
+    resolution:
+      {
+        integrity: sha512-+iaFJ/pt8TaApCk6LuZ0WHS/ECVfTzrxDOEL9HH9Dayyb5OVuomLzDXeSaI2GlGT/8HN7bDGiRXDts3LV+u6ww==,
+      }
+
+  "@tanstack/react-query@5.67.2":
+    resolution:
+      {
+        integrity: sha512-6Sa+BVNJWhAV4QHvIqM73norNeGRWGC3ftN0Ix87cmMvI215I1wyJ44KUTt/9a0V9YimfGcg25AITaYVel71Og==,
+      }
+    peerDependencies:
+      react: ^18 || ^19
 
   "@types/cookie@0.6.0":
     resolution:
@@ -2908,6 +2925,13 @@ snapshots:
 
   "@rollup/rollup-win32-x64-msvc@4.35.0":
     optional: true
+
+  "@tanstack/query-core@5.67.2": {}
+
+  "@tanstack/react-query@5.67.2(react@19.0.0)":
+    dependencies:
+      "@tanstack/query-core": 5.67.2
+      react: 19.0.0
 
   "@types/cookie@0.6.0": {}
 

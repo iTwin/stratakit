@@ -15,7 +15,7 @@ import { IconButton } from "./IconButton.js";
 import { Icon } from "./Icon.js";
 import { forwardRef, type BaseProps } from "./~utils.js";
 import { useEventHandlers } from "./~hooks.js";
-import { GhostAligner } from "./~utils.GhostAligner.js";
+import { GhostAligner, useGhostAlignment } from "./~utils.GhostAligner.js";
 
 // ----------------------------------------------------------------------------
 
@@ -331,24 +331,28 @@ DEV: TreeItemAction.displayName = "TreeItem.Action";
 
 // ----------------------------------------------------------------------------
 
-interface TreeItemExpanderProps
-	extends Omit<IconButtonProps, "variant" | "label" | "icon"> {}
+interface TreeItemExpanderProps extends Omit<BaseProps<"span">, "children"> {}
 
 const TreeItemExpander = forwardRef<"button", TreeItemExpanderProps>(
 	(props, forwardedRef) => {
 		return (
-			<IconButton
-				tabIndex={-1}
+			<Role.span
 				aria-hidden="true"
-				icon={<TreeChevron />}
-				label="Toggle"
 				{...props}
 				onClick={useEventHandlers(props.onClick, (e) => e.stopPropagation())}
-				className={cx("🥝-tree-item-expander", props.className)}
-				variant="ghost"
-				labelVariant="visually-hidden"
+				className={cx(
+					"🥝-button",
+					"🥝-icon-button",
+					"🥝-ghost-aligner",
+					"🥝-tree-item-expander",
+					props.className,
+				)}
+				data-kiwi-variant="ghost"
+				data-kiwi-ghost-align={useGhostAlignment()}
 				ref={forwardedRef}
-			/>
+			>
+				<TreeChevron />
+			</Role.span>
 		);
 	},
 );

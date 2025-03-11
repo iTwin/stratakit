@@ -1,6 +1,7 @@
 {
 	"name": "Epoch System iModel 2",
 	"version": "2024 Refresh",
+	"slow": true,
 	"data": {
 		"default": [
 			{

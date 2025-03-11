@@ -34,23 +34,35 @@ import showIcon from "@itwin/itwinui-icons/visibility-show.svg";
 import moreIcon from "@itwin/itwinui-icons/more-horizontal.svg";
 import hideIcon from "@itwin/itwinui-icons/visibility-hide.svg";
 
+import model1Url from "./sandbox.model1.json?url";
+import model2Url from "./sandbox.model2.json?url";
+import model3Url from "./sandbox.model3.json?url";
+
 // ----------------------------------------------------------------------------
 
 const models = {
-	model1: "Epoch System iModel 1",
-	model2: "Epoch System iModel 2",
-	model3: "Epoch System iModel 3",
+	model1: { name: "Epoch System iModel 1", url: model1Url },
+	model2: { name: "Epoch System iModel 2", url: model2Url },
+	model3: { name: "Epoch System iModel 3", url: model3Url },
 } as const;
 
-async function fetchModelsData(model: keyof typeof models) {
-	if (model === "model1") return await import("./sandbox.model1.json");
-
-	if (model === "model2") {
-		await new Promise((resolve) => setTimeout(resolve, 2000)); // artificial delay
-		return await import("./sandbox.model2.json");
+async function fetchModelsData(
+	model: keyof typeof models,
+): Promise<typeof import("./sandbox.model3.json")> {
+	if (model in models) {
+		const data = await fetch(models[model].url).then((res) => res.json());
+		// Simulate network delay for models marked as "slow"
+		if (data.slow) {
+			await new Promise((resolve) => setTimeout(resolve, Math.random() * 2000));
+		}
+		return data;
 	}
 
-	return await import("./sandbox.model3.json");
+	return {
+		name: "Unknown",
+		version: "Unknown",
+		data: { default: [] },
+	};
 }
 
 // ----------------------------------------------------------------------------
@@ -87,9 +99,9 @@ export default function Page() {
 											setSearchParams({ model: e.currentTarget.value })
 										}
 									>
-										{Object.entries(models).map(([id, modelName]) => (
+										{Object.entries(models).map(([id, { name }]) => (
 											<option key={id} value={id}>
-												{modelName}
+												{name}
 											</option>
 										))}
 									</Select.HtmlSelect>
@@ -98,7 +110,7 @@ export default function Page() {
 
 							<hgroup role="group">
 								<VisuallyHidden render={<h2 />}>
-									{models[selectedModel]}
+									{models[selectedModel]?.name}
 								</VisuallyHidden>
 
 								<Text

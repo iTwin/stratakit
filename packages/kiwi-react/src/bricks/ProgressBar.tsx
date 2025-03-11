@@ -6,7 +6,6 @@ import { Role } from "@ariakit/react/role";
 import cx from "classnames";
 import { forwardRef, type BaseProps } from "./~utils.js";
 
-// TODO: Handle label and remove the requirement for the aria-labelledby prop
 interface ProgressBarProps
 	extends Omit<BaseProps, "aria-labelledby">,
 		Required<Pick<BaseProps, "aria-labelledby">> {
@@ -24,15 +23,20 @@ interface ProgressBarProps
 }
 
 /**
- * A loading progress bar.
+ * A linear progress bar for indicating progress of an operation (or loading of data).
+ * This component maps to the [ARIA `progressbar` role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/progressbar_role)
+ * and must be labelled using `aria-labelledby`.
  *
  * Example:
  * ```tsx
- * <ProgressBar />
+ * <ProgressBar aria-labelledby={…} />
  * ```
  *
  * Supports a `tone` prop to change the tone (color) of the progress bar.
  * Supports a `size` prop to change the size of the progress bar.
+ *
+ * Note: This component currently only supports indeterminate progress, and should
+ * only be used for indicating the progress of short operations (i.e. less than 5 seconds).
  */
 export const ProgressBar = forwardRef<"div", ProgressBarProps>(
 	(props, forwardedRef) => {

@@ -3,14 +3,14 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 import { definePage } from "~/~utils.tsx";
-import { Field, Label, TextBox } from "@itwin/itwinui-react/bricks";
+import { Field, TextBox } from "@itwin/itwinui-react/bricks";
 
 export const handle = { title: "Textarea" };
 
 export default definePage(function Page({ disabled }) {
 	return (
 		<Field.Root>
-			<Label>Fruit</Label>
+			<Field.Label>Fruit</Field.Label>
 			<TextBox.Textarea rows={3} disabled={!!disabled} />
 		</Field.Root>
 	);

@@ -43,7 +43,7 @@ interface TextBoxInputProps extends Omit<BaseInputProps, "children" | "type"> {
  * Works well with the `Field` and `Label` components.
  * ```tsx
  * <Field.Root>
- *   <Label>Enter your name</Label>
+ *   <Field.Label>Enter your name</Field.Label>
  *   <TextBox.Input />
  * </Field.Root>
  * ```
@@ -105,7 +105,7 @@ interface TextareaProps extends FocusableProps<"textarea"> {}
  * Works well with the `Field` and `Label` components.
  * ```tsx
  * <Field.Root>
- *   <Label>Leave a comment, be kind</Label>
+ *   <Field.Label>Leave a comment, be kind</Field.Label>
  *   <TextBox.Textarea />
  * </Field.Root>
  * ```
@@ -164,7 +164,7 @@ interface TextBoxRootProps extends BaseProps {}
  * Works well with the `Field` and `Label` components.
  * ```tsx
  * <Field.Root>
- *   <Label>Enter your name</Label>
+ *   <Field.Label>Enter your name</Field.Label>
  *   <TextBox.Root>
  *     <TextBox.Input />
  *     <TextBox.Icon href={…} />

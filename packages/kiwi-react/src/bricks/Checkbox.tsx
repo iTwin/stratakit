@@ -29,7 +29,7 @@ interface CheckboxProps extends InputBaseProps, CheckboxOwnProps {}
  *
  * ```tsx
  * <Field.Root>
- *   <Label>Check me</Label>
+ *   <Field.Label>Check me</Field.Label>
  *   <Checkbox />
  * </Field.Root>
  * ```

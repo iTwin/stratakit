@@ -21,7 +21,7 @@ export default definePage(
 	function Page({ disabled, defaultValue }) {
 		return (
 			<Field.Root>
-				<Label>Fruit</Label>
+				<Field.Label>Fruit</Field.Label>
 				<TextBox.Input disabled={!!disabled} defaultValue={defaultValue} />
 			</Field.Root>
 		);

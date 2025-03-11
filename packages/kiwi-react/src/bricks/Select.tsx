@@ -30,7 +30,7 @@ const HtmlSelectContext = React.createContext<
  * Example usage:
  * ```tsx
  * <Field.Root>
- *   <Label>Select an option</Label>
+ *   <Field.Label>Select an option</Field.Label>
  *   <Select.Root>
  *     <Select.HtmlSelect>
  *       <option value="1">Option 1</option>

@@ -2,7 +2,7 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-import { Field, Label, Select } from "@itwin/itwinui-react/bricks";
+import { Field, Select } from "@itwin/itwinui-react/bricks";
 import { definePage } from "~/~utils.tsx";
 
 export const handle = { title: "Select" };
@@ -11,7 +11,7 @@ export default definePage(
 	function Page() {
 		return (
 			<Field.Root layout="inline">
-				<Label>Fruit</Label>
+				<Field.Label>Fruit</Field.Label>
 				<Select.Root>
 					<Select.HtmlSelect>
 						<option value="apple">Apple</option>
@@ -30,7 +30,7 @@ function VisualTest() {
 		<div style={{ display: "grid", gap: 4 }}>
 			{(["solid", "outline", "ghost"] as const).map((variant) => (
 				<Field.Root key={variant} layout="inline">
-					<Label>Fruit</Label>
+					<Field.Label>Fruit</Field.Label>
 					<Select.Root>
 						<Select.HtmlSelect variant={variant}>
 							<option value="apple">Apple</option>

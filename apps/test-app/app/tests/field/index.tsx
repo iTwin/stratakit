@@ -7,10 +7,8 @@ import {
 	Checkbox,
 	Field,
 	TextBox,
-	Label,
 	Radio,
 	Switch,
-	Description,
 } from "@itwin/itwinui-react/bricks";
 
 export const handle = { title: "Field" };
@@ -32,13 +30,13 @@ export default definePage(
 		descriptions,
 	}) {
 		const Control = controls[control];
-		const ControlLabel = asLabel ? "span" : Label;
+		const ControlLabel = asLabel ? "span" : Field.Label;
 
 		return (
 			<form style={{ display: "grid", gap: 32, justifyContent: "start" }}>
 				<Field.Root
 					layout={layout as "inline" | undefined}
-					render={asLabel ? <Label /> : undefined}
+					render={asLabel ? <Field.Label /> : undefined}
 				>
 					{labelPlacement === "before" ? (
 						<ControlLabel>{control} example</ControlLabel>
@@ -48,7 +46,9 @@ export default definePage(
 						<ControlLabel>{control} example</ControlLabel>
 					) : null}
 					{descriptions?.split(";").map((description) => (
-						<Description key={description}>{description}</Description>
+						<Field.Description key={description}>
+							{description}
+						</Field.Description>
 					))}
 				</Field.Root>
 			</form>
@@ -77,26 +77,26 @@ function VisualTestForTextControls() {
 		<div style={{ display: "grid", gap: 16 }}>
 			{/* Default layout for text controls (block) */}
 			<Field.Root>
-				<Label>Text control</Label>
+				<Field.Label>Text control</Field.Label>
 				<TextBox.Input />
-				<Description>Text description</Description>
+				<Field.Description>Text description</Field.Description>
 			</Field.Root>
 
-			{/* Default layout for text controls (block) with wrapper rendered as a `<Label>` */}
-			<Field.Root render={<Label />}>
+			{/* Default layout for text controls (block) with wrapper rendered as a `<Field.Label>` */}
+			<Field.Root render={<Field.Label />}>
 				<span>Textarea control</span>
 				<TextBox.Textarea />
 			</Field.Root>
 
 			{/* Inline layout for text controls */}
 			<Field.Root layout="inline">
-				<Label>Text control</Label>
+				<Field.Label>Text control</Field.Label>
 				<TextBox.Input />
-				<Description>Text description</Description>
+				<Field.Description>Text description</Field.Description>
 			</Field.Root>
 
-			{/* Inline layout for text controls with wrapper rendered as a `<Label>` */}
-			<Field.Root render={<Label />} layout="inline">
+			{/* Inline layout for text controls with wrapper rendered as a `<Field.Label>` */}
+			<Field.Root render={<Field.Label />} layout="inline">
 				<span>Textarea control</span>
 				<TextBox.Textarea />
 			</Field.Root>
@@ -109,62 +109,62 @@ function VisualTestForCheckableControls() {
 		<div style={{ display: "grid", gap: 16 }}>
 			{/* Label before control */}
 			<Field.Root>
-				<Label>Checkbox control</Label>
+				<Field.Label>Checkbox control</Field.Label>
 				<Checkbox />
-				<Description>Checkbox description</Description>
+				<Field.Description>Checkbox description</Field.Description>
 			</Field.Root>
 			<Field.Root>
-				<Label>Radio control</Label>
+				<Field.Label>Radio control</Field.Label>
 				<Radio value="A" />
-				<Description>Radio description</Description>
+				<Field.Description>Radio description</Field.Description>
 			</Field.Root>
 			<Field.Root>
-				<Label>Switch control</Label>
+				<Field.Label>Switch control</Field.Label>
 				<Switch />
-				<Description>Switch description</Description>
+				<Field.Description>Switch description</Field.Description>
 			</Field.Root>
 
 			{/* Label after control */}
 			<Field.Root>
 				<Checkbox />
-				<Label>Checkbox control</Label>
-				<Description>Checkbox description</Description>
+				<Field.Label>Checkbox control</Field.Label>
+				<Field.Description>Checkbox description</Field.Description>
 			</Field.Root>
 			<Field.Root>
 				<Radio value="A" />
-				<Label>Radio control</Label>
-				<Description>Radio description</Description>
+				<Field.Label>Radio control</Field.Label>
+				<Field.Description>Radio description</Field.Description>
 			</Field.Root>
 			<Field.Root>
 				<Switch />
-				<Label>Switch control</Label>
-				<Description>Switch description</Description>
+				<Field.Label>Switch control</Field.Label>
+				<Field.Description>Switch description</Field.Description>
 			</Field.Root>
 
 			{/* Field rendering as label, text before control */}
-			<Field.Root render={<Label />}>
+			<Field.Root render={<Field.Label />}>
 				<span>Checkbox control</span>
 				<Checkbox />
 			</Field.Root>
-			<Field.Root render={<Label />}>
+			<Field.Root render={<Field.Label />}>
 				<span>Radio control</span>
 				<Radio value="A" />
 			</Field.Root>
-			<Field.Root render={<Label />}>
+			<Field.Root render={<Field.Label />}>
 				<span>Switch control</span>
 				<Switch />
 			</Field.Root>
 
 			{/* Field rendering as label, text after control */}
-			<Field.Root render={<Label />}>
+			<Field.Root render={<Field.Label />}>
 				<Checkbox />
 				<span>Checkbox control</span>
 			</Field.Root>
-			<Field.Root render={<Label />}>
+			<Field.Root render={<Field.Label />}>
 				<Radio value="A" />
 				<span>Radio control</span>
 			</Field.Root>
-			<Field.Root render={<Label />}>
+			<Field.Root render={<Field.Label />}>
 				<Switch />
 				<span>Switch control</span>
 			</Field.Root>
@@ -175,7 +175,7 @@ function VisualTestForCheckableControls() {
 function CustomAriaDescribedByTest() {
 	return (
 		<Field.Root>
-			<Label>Example</Label>
+			<Field.Label>Example</Field.Label>
 			<TextBox.Input aria-describedby="custom-description" />
 			<div id="custom-description">Custom description.</div>
 		</Field.Root>
@@ -185,10 +185,10 @@ function CustomAriaDescribedByTest() {
 function CustomDescriptionIdsTest() {
 	return (
 		<Field.Root>
-			<Label>Example</Label>
+			<Field.Label>Example</Field.Label>
 			<TextBox.Input />
-			<Description id="a">Supporting text.</Description>
-			<Description id="b">More supporting text.</Description>
+			<Field.Description id="a">Supporting text.</Field.Description>
+			<Field.Description id="b">More supporting text.</Field.Description>
 		</Field.Root>
 	);
 }
@@ -196,7 +196,7 @@ function CustomDescriptionIdsTest() {
 function CustomControlIdTest() {
 	return (
 		<Field.Root>
-			<Label>Example</Label>
+			<Field.Label>Example</Field.Label>
 			<TextBox.Input id="custom" />
 		</Field.Root>
 	);

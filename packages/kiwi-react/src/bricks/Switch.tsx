@@ -31,7 +31,7 @@ interface SwitchProps extends InputBaseProps, CheckboxOwnProps {
  *
  * ```tsx
  * <Field.Root>
- *   <Label>Enable feature</Label>
+ *   <Field.Label>Enable feature</Field.Label>
  *   <Switch />
  * </Field.Root>
  * ```

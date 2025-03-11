@@ -24,7 +24,7 @@ export default definePage(
 						defaultChecked={defaultValue === "A"}
 						disabled={!!disabled}
 					/>
-					<Label>A</Label>
+					<Field.Label>A</Field.Label>
 				</Field.Root>
 
 				<Field.Root>
@@ -34,7 +34,7 @@ export default definePage(
 						defaultChecked={defaultValue === "B"}
 						disabled={!!disabled}
 					/>
-					<Label>B</Label>
+					<Field.Label>B</Field.Label>
 				</Field.Root>
 			</div>
 		);

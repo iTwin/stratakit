@@ -5,7 +5,6 @@
 import { forwardRef, type BaseProps } from "./~utils.js";
 import cx from "classnames";
 import { Text } from "./Text.js";
-import { FieldDescription } from "./Field.internal.js";
 
 interface DescriptionProps extends BaseProps {
 	/**
@@ -26,20 +25,15 @@ interface DescriptionProps extends BaseProps {
  */
 export const Description = forwardRef<"div", DescriptionProps>(
 	(props, forwardedRef) => {
-		const { id, tone, ...rest } = props;
+		const { tone, ...rest } = props;
 
 		return (
-			<FieldDescription
-				id={id}
-				render={
-					<Text
-						{...rest}
-						variant="caption-md"
-						data-kiwi-tone={tone ?? "neutral"}
-						className={cx("🥝-description", props.className)}
-						ref={forwardedRef}
-					/>
-				}
+			<Text
+				{...rest}
+				variant="caption-md"
+				data-kiwi-tone={tone ?? "neutral"}
+				className={cx("🥝-description", props.className)}
+				ref={forwardedRef}
 			/>
 		);
 	},

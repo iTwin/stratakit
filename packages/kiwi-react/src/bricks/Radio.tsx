@@ -23,7 +23,7 @@ interface RadioProps extends InputBaseProps, RadioOwnProps {}
  *
  * ```tsx
  * <Field.Root>
- *   <Label>Choose one</Label>
+ *   <Field.Label>Choose one</Field.Label>
  *   <Radio />
  * </Field.Root>
  * ```

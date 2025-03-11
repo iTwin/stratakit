@@ -5,7 +5,6 @@
 import cx from "classnames";
 import { Role } from "@ariakit/react/role";
 import { forwardRef, type BaseProps } from "./~utils.js";
-import { FieldLabel } from "./Field.internal.js";
 
 interface LabelProps extends BaseProps<"label"> {}
 
@@ -19,11 +18,11 @@ interface LabelProps extends BaseProps<"label"> {}
  * <TextBox.Input id="my-input" />
  * ```
  * 
- * Or within a `Field` component to automatically manage ID associations:
+ * Or as a sub-component of `Field` to automatically manage ID associations:
  * 
  * ```tsx
  * <Field.Root>
- *   <Label>Label</Label>
+ *   <Field.Label>Label</Field.Label>
  *   <TextBox.Input />
  * </Field.Root>
  * ```
@@ -31,14 +30,10 @@ interface LabelProps extends BaseProps<"label"> {}
  */
 export const Label = forwardRef<"label", LabelProps>((props, forwardedRef) => {
 	return (
-		<FieldLabel
-			render={
-				<Role.label
-					{...props}
-					className={cx("🥝-label", props.className)}
-					ref={forwardedRef}
-				/>
-			}
+		<Role.label
+			{...props}
+			className={cx("🥝-label", props.className)}
+			ref={forwardedRef}
 		/>
 	);
 });

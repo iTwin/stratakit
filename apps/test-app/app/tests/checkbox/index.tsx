@@ -21,7 +21,7 @@ export default definePage(
 					defaultChecked={indeterminate ? "mixed" : !!checked}
 					disabled={!!disabled}
 				/>
-				<Label>Toggle me</Label>
+				<Field.Label>Toggle me</Field.Label>
 			</Field.Root>
 		);
 	},

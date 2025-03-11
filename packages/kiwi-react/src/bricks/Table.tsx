@@ -167,7 +167,7 @@ const TableHeader = forwardRef<"div", TableHeaderProps>(
 	(props, forwardedRef) => {
 		const { mode } = useSafeContext(TableContext);
 
-		const render = mode === "aria" ? undefined : <thead />;
+		const render = mode === "html" ? <thead /> : undefined;
 		const role = mode === "aria" ? "rowgroup" : undefined;
 
 		return (
@@ -213,7 +213,7 @@ interface TableBodyProps extends BaseProps<"div"> {}
 const TableBody = forwardRef<"div", TableBodyProps>((props, forwardedRef) => {
 	const { mode } = useSafeContext(TableContext);
 
-	const render = mode === "aria" ? undefined : <tbody />;
+	const render = mode === "html" ? <tbody /> : undefined;
 
 	return (
 		<Role.div
@@ -248,7 +248,7 @@ interface TableRowProps extends BaseProps<"div"> {}
 const TableRow = forwardRef<"div", TableRowProps>((props, forwardedRef) => {
 	const { mode } = useSafeContext(TableContext);
 
-	const render = mode === "aria" ? undefined : <tr />;
+	const render = mode === "html" ? <tr /> : undefined;
 	const role = mode === "aria" ? "row" : undefined;
 
 	return (
@@ -288,7 +288,7 @@ const TableCaption = forwardRef<"div", TableCaptionProps>(
 		const { id = fallbackId, ...rest } = props;
 		const { mode, setCaptionId } = useSafeContext(TableContext);
 
-		const render = mode === "aria" ? undefined : <caption />;
+		const render = mode === "html" ? <caption /> : undefined;
 
 		const captionIdRef = React.useCallback(
 			(element: HTMLElement | null) => {
@@ -300,7 +300,6 @@ const TableCaption = forwardRef<"div", TableCaptionProps>(
 		return (
 			<Role.div
 				render={render}
-				role={role}
 				{...rest}
 				id={id}
 				ref={useMergedRefs(forwardedRef, captionIdRef)}

@@ -12,7 +12,7 @@ import {
 	type FocusableProps,
 } from "./~utils.js";
 import { DisclosureArrow } from "./Icon.js";
-import { FieldControl } from "./Field.internal.js";
+import { useFieldControlType } from "./Field.internal.js";
 
 const supportsHas = isBrowser && CSS?.supports?.("selector(:has(+ *))");
 
@@ -42,6 +42,7 @@ const HtmlSelectContext = React.createContext<
  * ```
  */
 const SelectRoot = forwardRef<"div", BaseProps>((props, forwardedRef) => {
+	useFieldControlType("textlike");
 	const [isHtmlSelect, setIsHtmlSelect] = React.useState(false);
 
 	return (
@@ -89,7 +90,7 @@ interface HtmlSelectProps extends HtmlSelectBaseProps {
  */
 const HtmlSelect = forwardRef<"select", HtmlSelectProps>(
 	(props, forwardedRef) => {
-		const { id, variant = "solid", ...rest } = props;
+		const { variant = "solid", ...rest } = props;
 
 		const setIsHtmlSelect = React.useContext(HtmlSelectContext);
 
@@ -102,18 +103,12 @@ const HtmlSelect = forwardRef<"select", HtmlSelectProps>(
 
 		return (
 			<>
-				<FieldControl
-					type="textlike"
-					id={id}
-					render={
-						<Role.select
-							{...rest}
-							className={cx("🥝-button", "🥝-select", props.className)}
-							data-kiwi-tone="neutral"
-							data-kiwi-variant={variant}
-							ref={forwardedRef}
-						/>
-					}
+				<Role.select
+					{...rest}
+					className={cx("🥝-button", "🥝-select", props.className)}
+					data-kiwi-tone="neutral"
+					data-kiwi-variant={variant}
+					ref={forwardedRef}
 				/>
 				<DisclosureArrow className="🥝-select-arrow" />
 			</>

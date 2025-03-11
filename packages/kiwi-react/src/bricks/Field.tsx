@@ -7,27 +7,19 @@ import cx from "classnames";
 import { Role } from "@ariakit/react/role";
 import {
 	useCollectionContext,
-	type useCollectionStore,
 	CollectionItem,
 	type CollectionItemProps,
 } from "@ariakit/react/collection";
 import { useStoreState } from "@ariakit/react/store";
 import { forwardRef, type BaseProps } from "./~utils.js";
-import { FieldCollection } from "./Field.internal.js";
+import {
+	FieldCollection,
+	FieldControlTypeContext,
+	type CollectionStoreItem,
+	type FieldCollectionStoreItem,
+} from "./Field.internal.js";
 import { Label } from "./Label.js";
 import { Description } from "./Description.js";
-
-type CollectionStoreItem = NonNullable<
-	ReturnType<ReturnType<typeof useCollectionStore>["item"]>
->;
-
-interface FieldCollectionStoreItem extends CollectionStoreItem {
-	/** The type of field element being tracked */
-	elementType: "label" | "control" | "description";
-
-	/** If a control, the type of control. */
-	controlType?: "textlike" | "checkable";
-}
 
 // ----------------------------------------------------------------------------
 
@@ -77,68 +69,116 @@ DEV: FieldRoot.displayName = "Field";
 
 // ----------------------------------------------------------------------------
 
-export const FieldLabel = forwardRef<
-	"div",
-	Pick<CollectionItemProps, "render">
->((props, forwardedRef) => {
-	const store = useCollectionContext();
-	const renderedItems = useStoreState(store, "renderedItems");
-	const fieldId = React.useMemo(
-		() =>
-			renderedItems?.find(
-				(item: FieldCollectionStoreItem) => item.elementType === "control",
-			)?.id,
-		[renderedItems],
-	);
+export const FieldLabel = forwardRef<"div", BaseProps<"label">>(
+	(props, forwardedRef) => {
+		const store = useCollectionContext();
+		const renderedItems = useStoreState(store, "renderedItems");
+		const fieldId = React.useMemo(
+			() =>
+				renderedItems?.find(
+					(item: FieldCollectionStoreItem) => item.elementType === "control",
+				)?.id,
+			[renderedItems],
+		);
 
-	const getData = React.useCallback(
-		(data: CollectionStoreItem) => ({
-			...data,
-			elementType: "label",
-		}),
-		[],
-	);
+		const getData = React.useCallback(
+			(data: CollectionStoreItem) => ({
+				...data,
+				elementType: "label",
+			}),
+			[],
+		);
 
-	return (
-		<CollectionItem
-			getItem={getData}
-			render={<Label {...props} htmlFor={fieldId} />}
-			ref={forwardedRef}
-		/>
-	);
-});
+		return (
+			<CollectionItem
+				getItem={getData}
+				render={<Label {...props} htmlFor={fieldId} />}
+				ref={forwardedRef}
+			/>
+		);
+	},
+);
 DEV: FieldLabel.displayName = "Field.Label";
 
 // ----------------------------------------------------------------------------
 
-export const FieldDescription = forwardRef<
-	"div",
-	Pick<CollectionItemProps, "render" | "id">
->((props, forwardedRef) => {
-	const generatedId = React.useId();
-	const { id = generatedId, ...rest } = props;
-	const getData = React.useCallback(
-		(data: CollectionStoreItem) => ({
-			...data,
-			elementType: "description",
-		}),
-		[],
-	);
-	return (
-		<CollectionItem
-			getItem={getData}
-			id={id}
-			render={<Description {...rest} />}
-			ref={forwardedRef}
-		/>
-	);
-});
+export const FieldDescription = forwardRef<"div", BaseProps>(
+	(props, forwardedRef) => {
+		const generatedId = React.useId();
+		const { id = generatedId, ...rest } = props;
+		const getData = React.useCallback(
+			(data: CollectionStoreItem) => ({
+				...data,
+				elementType: "description",
+			}),
+			[],
+		);
+		return (
+			<CollectionItem
+				getItem={getData}
+				id={id}
+				render={<Description {...rest} />}
+				ref={forwardedRef}
+			/>
+		);
+	},
+);
 DEV: FieldDescription.displayName = "Field.Description";
+
+// ----------------------------------------------------------------------------
+
+interface FieldCollectionItemControlProps
+	extends Pick<CollectionItemProps, "render" | "id"> {}
+
+export const FieldControl = forwardRef<"div", FieldCollectionItemControlProps>(
+	(props, forwardedRef) => {
+		const [controlType, setControlType] =
+			React.useState<FieldCollectionStoreItem["controlType"]>();
+		const store = useCollectionContext();
+		const generatedId = React.useId();
+		const { id = store ? generatedId : undefined, ...rest } = props;
+		const renderedItems = useStoreState(store, "renderedItems");
+		const describedBy = React.useMemo(() => {
+			// Create a space separated list of description IDs
+			const idRefList = renderedItems
+				?.filter(
+					(item: FieldCollectionStoreItem) =>
+						item.elementType === "description",
+				)
+				?.map((item) => item.id)
+				.join(" ");
+			// An empty string is valid for `aria-describedby`, but we don’t want that
+			// (e.g. `aria-describedby=""`). We use the empty string’s falsiness to
+			// return undefined to avoid setting the attribute at all.
+			return idRefList || undefined;
+		}, [renderedItems]);
+		const getData = React.useCallback(
+			(data: CollectionStoreItem) => ({
+				...data,
+				elementType: "control",
+				controlType,
+			}),
+			[controlType],
+		);
+		return (
+			<FieldControlTypeContext.Provider value={setControlType}>
+				<CollectionItem
+					id={id}
+					getItem={getData}
+					render={<Role {...rest} aria-describedby={describedBy} />}
+					ref={forwardedRef}
+				/>
+			</FieldControlTypeContext.Provider>
+		);
+	},
+);
+DEV: FieldControl.displayName = "Field.Control";
 
 // ----------------------------------------------------------------------------
 
 export {
 	FieldRoot as Root,
+	FieldControl as Control,
 	FieldLabel as Label,
 	FieldDescription as Description,
 };

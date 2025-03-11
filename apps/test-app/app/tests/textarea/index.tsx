@@ -11,7 +11,9 @@ export default definePage(function Page({ disabled }) {
 	return (
 		<Field.Root>
 			<Field.Label>Fruit</Field.Label>
-			<TextBox.Textarea rows={3} disabled={!!disabled} />
+			<Field.Control
+				render={<TextBox.Textarea rows={3} disabled={!!disabled} />}
+			/>
 		</Field.Root>
 	);
 });

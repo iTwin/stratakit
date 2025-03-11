@@ -11,7 +11,6 @@ import {
 	Field,
 	Icon,
 	IconButton,
-	Label,
 	Select,
 	Skeleton,
 	Tabs,
@@ -89,25 +88,32 @@ export default function Page() {
 				<>
 					<div className={styles.panelHeader}>
 						<div>
-							<Field>
-								<VisuallyHidden render={<Label />}>Choose Model</VisuallyHidden>
+							<Field.Root>
+								<VisuallyHidden render={<Field.Label />}>
+									Choose Model
+								</VisuallyHidden>
 
-								<Select.Root className={styles.panelTitleWrapper}>
-									<Select.HtmlSelect
-										variant="ghost"
-										defaultValue={selectedModel}
-										onChange={(e) =>
-											setSearchParams({ model: e.currentTarget.value })
-										}
-									>
-										{Object.entries(models).map(([id, { name }]) => (
-											<option key={id} value={id}>
-												{name}
-											</option>
-										))}
-									</Select.HtmlSelect>
-								</Select.Root>
-							</Field>
+								<Field.Control
+									render={(controlProps) => (
+										<Select.Root className={styles.panelTitleWrapper}>
+											<Select.HtmlSelect
+												variant="ghost"
+												defaultValue={selectedModel}
+												onChange={(e) =>
+													setSearchParams({ model: e.currentTarget.value })
+												}
+												{...controlProps}
+											>
+												{Object.entries(models).map(([id, { name }]) => (
+													<option key={id} value={id}>
+														{name}
+													</option>
+												))}
+											</Select.HtmlSelect>
+										</Select.Root>
+									)}
+								/>
+							</Field.Root>
 
 							<hgroup role="group">
 								<VisuallyHidden render={<h2 />}>

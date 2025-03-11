@@ -22,7 +22,11 @@ export default definePage(
 		return (
 			<Field.Root>
 				<Field.Label>Fruit</Field.Label>
-				<TextBox.Input disabled={!!disabled} defaultValue={defaultValue} />
+				<Field.Control
+					render={
+						<TextBox.Input disabled={!!disabled} defaultValue={defaultValue} />
+					}
+				/>
 			</Field.Root>
 		);
 	},

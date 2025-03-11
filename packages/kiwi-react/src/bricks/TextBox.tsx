@@ -6,10 +6,10 @@ import * as React from "react";
 import { Role } from "@ariakit/react/role";
 import { Focusable } from "@ariakit/react/focusable";
 import cx from "classnames";
-import { FieldControl } from "./Field.internal.js";
 import { Icon } from "./Icon.js";
 import { useMergedRefs } from "./~hooks.js";
 import { type FocusableProps, type BaseProps, forwardRef } from "./~utils.js";
+import { useFieldControlType } from "./Field.internal.js";
 
 // ----------------------------------------------------------------------------
 
@@ -55,35 +55,29 @@ interface TextBoxInputProps extends Omit<BaseInputProps, "children" | "type"> {
  */
 const TextBoxInput = forwardRef<"input", TextBoxInputProps>(
 	(props, forwardedRef) => {
-		const { id, ...rest } = props;
+		useFieldControlType("textlike");
 		const rootContext = React.useContext(TextBoxRootContext);
 		const setDisabled = rootContext?.setDisabled;
 		React.useEffect(() => {
 			setDisabled?.(props.disabled);
 		}, [setDisabled, props.disabled]);
 		return (
-			<FieldControl
-				type="textlike"
-				id={id}
+			<Role.input
+				readOnly={props.disabled}
+				{...props}
+				className={cx({ "🥝-text-box": !rootContext }, props.className)}
+				/**
+				 * Use an empty string as a placeholder to fix baseline alignment in Safari.
+				 * @see https://bugs.webkit.org/show_bug.cgi?id=142968
+				 */
+				placeholder={props.placeholder ?? " "}
 				render={
-					<Role.input
-						readOnly={props.disabled}
-						{...rest}
-						className={cx({ "🥝-text-box": !rootContext }, props.className)}
-						/**
-						 * Use an empty string as a placeholder to fix baseline alignment in Safari.
-						 * @see https://bugs.webkit.org/show_bug.cgi?id=142968
-						 */
-						placeholder={props.placeholder ?? " "}
-						render={
-							<Focusable
-								accessibleWhenDisabled
-								render={props.render || <input />}
-							/>
-						}
-						ref={useMergedRefs(rootContext?.inputRef, forwardedRef)}
+					<Focusable
+						accessibleWhenDisabled
+						render={props.render || <input />}
 					/>
 				}
+				ref={useMergedRefs(rootContext?.inputRef, forwardedRef)}
 			/>
 		);
 	},
@@ -115,31 +109,24 @@ interface TextareaProps extends FocusableProps<"textarea"> {}
  */
 const TextBoxTextarea = forwardRef<"textarea", TextareaProps>(
 	(props, forwardedRef) => {
-		const { id, ...rest } = props;
-
+		useFieldControlType("textlike");
 		return (
-			<FieldControl
-				type="textlike"
-				id={id}
+			<Role.textarea
+				readOnly={props.disabled}
+				{...props}
+				className={cx("🥝-text-box", props.className)}
+				/**
+				 * Use an empty string as a placeholder to fix baseline alignment in Safari.
+				 * @see https://bugs.webkit.org/show_bug.cgi?id=142968
+				 */
+				placeholder={props.placeholder ?? " "}
 				render={
-					<Role.textarea
-						readOnly={props.disabled}
-						{...rest}
-						className={cx("🥝-text-box", props.className)}
-						/**
-						 * Use an empty string as a placeholder to fix baseline alignment in Safari.
-						 * @see https://bugs.webkit.org/show_bug.cgi?id=142968
-						 */
-						placeholder={props.placeholder ?? " "}
-						render={
-							<Focusable
-								accessibleWhenDisabled
-								render={props.render || <textarea />}
-							/>
-						}
-						ref={forwardedRef}
+					<Focusable
+						accessibleWhenDisabled
+						render={props.render || <textarea />}
 					/>
 				}
+				ref={forwardedRef}
 			/>
 		);
 	},

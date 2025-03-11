@@ -18,21 +18,29 @@ export default definePage(
 		return (
 			<div style={{ display: "grid", gap: 8 }}>
 				<Field.Root>
-					<Radio
-						name="test"
-						value="A"
-						defaultChecked={defaultValue === "A"}
-						disabled={!!disabled}
+					<Field.Control
+						render={
+							<Radio
+								name="test"
+								value="A"
+								defaultChecked={defaultValue === "A"}
+								disabled={!!disabled}
+							/>
+						}
 					/>
 					<Field.Label>A</Field.Label>
 				</Field.Root>
 
 				<Field.Root>
-					<Radio
-						name="test"
-						value="B"
-						defaultChecked={defaultValue === "B"}
-						disabled={!!disabled}
+					<Field.Control
+						render={
+							<Radio
+								name="test"
+								value="B"
+								defaultChecked={defaultValue === "B"}
+								disabled={!!disabled}
+							/>
+						}
 					/>
 					<Field.Label>B</Field.Label>
 				</Field.Root>

@@ -3,22 +3,18 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 import * as React from "react";
-import { Role } from "@ariakit/react/role";
 import {
 	useCollectionStore,
 	Collection,
-	useCollectionContext,
-	CollectionItem,
 	type CollectionProps,
-	type CollectionItemProps,
 } from "@ariakit/react/collection";
 import { useStoreState } from "@ariakit/react/store";
 
-type CollectionStoreItem = NonNullable<
+export type CollectionStoreItem = NonNullable<
 	ReturnType<ReturnType<typeof useCollectionStore>["item"]>
 >;
 
-interface FieldCollectionStoreItem extends CollectionStoreItem {
+export interface FieldCollectionStoreItem extends CollectionStoreItem {
 	/** The type of field element being tracked */
 	elementType: "label" | "control" | "description";
 
@@ -66,46 +62,24 @@ export function FieldCollection(props: Pick<CollectionProps, "render">) {
 	);
 }
 
-interface FieldCollectionItemControlProps
-	extends Pick<CollectionItemProps, "render" | "id"> {
-	type: FieldCollectionStoreItem["controlType"];
-}
+// ----------------------------------------------------------------------------
+
+export const FieldControlTypeContext = React.createContext<
+	| React.Dispatch<
+			React.SetStateAction<FieldCollectionStoreItem["controlType"]>
+	  >
+	| undefined
+>(undefined);
 
 /**
- * An element tracked as a control in the `Field`’s collection.
- * @internal
+ * Sets the control type for the field. Necessary for layout.
+ * @private
  */
-export function FieldControl(props: FieldCollectionItemControlProps) {
-	const store = useCollectionContext();
-	const generatedId = React.useId();
-	const { id = store ? generatedId : undefined, type, ...rest } = props;
-	const renderedItems = useStoreState(store, "renderedItems");
-	const describedBy = React.useMemo(() => {
-		// Create a space separated list of description IDs
-		const idRefList = renderedItems
-			?.filter(
-				(item: FieldCollectionStoreItem) => item.elementType === "description",
-			)
-			?.map((item) => item.id)
-			.join(" ");
-		// An empty string is valid for `aria-describedby`, but we don’t want that
-		// (e.g. `aria-describedby=""`). We use the empty string’s falsiness to
-		// return undefined to avoid setting the attribute at all.
-		return idRefList || undefined;
-	}, [renderedItems]);
-	const getData = React.useCallback(
-		(data: CollectionStoreItem) => ({
-			...data,
-			elementType: "control",
-			controlType: type,
-		}),
-		[type],
-	);
-	return (
-		<CollectionItem
-			id={id}
-			getItem={getData}
-			render={<Role {...rest} aria-describedby={describedBy} />}
-		/>
-	);
+export function useFieldControlType(
+	controlType: NonNullable<FieldCollectionStoreItem["controlType"]>,
+) {
+	const setControlType = React.useContext(FieldControlTypeContext);
+	React.useEffect(() => {
+		setControlType?.(controlType);
+	}, [controlType, setControlType]);
 }

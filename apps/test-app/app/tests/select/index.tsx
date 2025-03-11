@@ -12,13 +12,17 @@ export default definePage(
 		return (
 			<Field.Root layout="inline">
 				<Field.Label>Fruit</Field.Label>
-				<Select.Root>
-					<Select.HtmlSelect>
-						<option value="apple">Apple</option>
-						<option value="orange">Orange</option>
-						<option value="kiwi">Kiwi</option>
-					</Select.HtmlSelect>
-				</Select.Root>
+				<Field.Control
+					render={(controlProps) => (
+						<Select.Root>
+							<Select.HtmlSelect {...controlProps}>
+								<option value="apple">Apple</option>
+								<option value="orange">Orange</option>
+								<option value="kiwi">Kiwi</option>
+							</Select.HtmlSelect>
+						</Select.Root>
+					)}
+				/>
 			</Field.Root>
 		);
 	},
@@ -31,13 +35,17 @@ function VisualTest() {
 			{(["solid", "outline", "ghost"] as const).map((variant) => (
 				<Field.Root key={variant} layout="inline">
 					<Field.Label>Fruit</Field.Label>
-					<Select.Root>
-						<Select.HtmlSelect variant={variant}>
-							<option value="apple">Apple</option>
-							<option value="orange">Orange</option>
-							<option value="kiwi">Kiwi</option>
-						</Select.HtmlSelect>
-					</Select.Root>
+					<Field.Control
+						render={(controlProps) => (
+							<Select.Root>
+								<Select.HtmlSelect variant={variant} {...controlProps}>
+									<option value="apple">Apple</option>
+									<option value="orange">Orange</option>
+									<option value="kiwi">Kiwi</option>
+								</Select.HtmlSelect>
+							</Select.Root>
+						)}
+					/>
 				</Field.Root>
 			))}
 		</div>

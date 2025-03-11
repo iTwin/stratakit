@@ -7,8 +7,8 @@ import {
 	Radio as AkRadio,
 	type RadioProps as AkRadioProps,
 } from "@ariakit/react/radio";
-import { FieldControl } from "./Field.internal.js";
 import { forwardRef, type FocusableProps } from "./~utils.js";
+import { useFieldControlType } from "./Field.internal.js";
 
 type InputBaseProps = Omit<FocusableProps<"input">, "defaultValue" | "value">;
 
@@ -32,20 +32,13 @@ interface RadioProps extends InputBaseProps, RadioOwnProps {}
  * including `value`, `defaultChecked`, `checked`, and `onChange`.
  */
 export const Radio = forwardRef<"input", RadioProps>((props, forwardedRef) => {
-	const { id, ...rest } = props;
-
+	useFieldControlType("checkable");
 	return (
-		<FieldControl
-			type="checkable"
-			id={id}
-			render={
-				<AkRadio
-					accessibleWhenDisabled
-					{...rest}
-					className={cx("🥝-checkbox", "🥝-radio", props.className)}
-					ref={forwardedRef}
-				/>
-			}
+		<AkRadio
+			accessibleWhenDisabled
+			{...props}
+			className={cx("🥝-checkbox", "🥝-radio", props.className)}
+			ref={forwardedRef}
 		/>
 	);
 });

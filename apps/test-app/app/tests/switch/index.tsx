@@ -17,7 +17,9 @@ export default definePage(
 	function Page({ checked, disabled }) {
 		return (
 			<Field.Root>
-				<Switch defaultChecked={!!checked} disabled={!!disabled} />
+				<Field.Control
+					render={<Switch defaultChecked={!!checked} disabled={!!disabled} />}
+				/>
 				<Field.Label>Toggle me</Field.Label>
 			</Field.Root>
 		);

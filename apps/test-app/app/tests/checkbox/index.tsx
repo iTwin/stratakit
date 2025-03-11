@@ -17,9 +17,13 @@ export default definePage(
 	function Page({ checked, indeterminate, disabled }) {
 		return (
 			<Field.Root>
-				<Checkbox
-					defaultChecked={indeterminate ? "mixed" : !!checked}
-					disabled={!!disabled}
+				<Field.Control
+					render={
+						<Checkbox
+							defaultChecked={indeterminate ? "mixed" : !!checked}
+							disabled={!!disabled}
+						/>
+					}
 				/>
 				<Field.Label>Toggle me</Field.Label>
 			</Field.Root>

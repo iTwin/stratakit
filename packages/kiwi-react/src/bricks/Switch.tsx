@@ -7,8 +7,8 @@ import {
 	Checkbox as AkCheckbox,
 	type CheckboxProps as AkCheckboxProps,
 } from "@ariakit/react/checkbox";
-import { FieldControl } from "./Field.internal.js";
 import { forwardRef, type FocusableProps } from "./~utils.js";
+import { useFieldControlType } from "./Field.internal.js";
 
 type InputBaseProps = Omit<FocusableProps<"input">, "defaultValue" | "value">;
 
@@ -41,21 +41,14 @@ interface SwitchProps extends InputBaseProps, CheckboxOwnProps {
  */
 export const Switch = forwardRef<"input", SwitchProps>(
 	(props, forwardedRef) => {
-		const { id, ...rest } = props;
-
+		useFieldControlType("checkable");
 		return (
-			<FieldControl
-				type="checkable"
-				id={id}
-				render={
-					<AkCheckbox
-						accessibleWhenDisabled
-						{...rest}
-						className={cx("🥝-switch", props.className)}
-						role="switch"
-						ref={forwardedRef}
-					/>
-				}
+			<AkCheckbox
+				accessibleWhenDisabled
+				{...props}
+				className={cx("🥝-switch", props.className)}
+				role="switch"
+				ref={forwardedRef}
 			/>
 		);
 	},

@@ -12,6 +12,7 @@ import { Text } from "./Text.js";
 import { IconButton } from "./IconButton.js";
 import { Anchor } from "./Anchor.js";
 import { TreeContext } from "./Tree.internal.js";
+import { Divider } from "./Divider.js";
 
 // ----------------------------------------------------------------------------
 
@@ -60,7 +61,10 @@ const TreeError = forwardRef<"div", TreeErrorProps>((props, forwardedRef) => {
 					/>
 				</div>
 				{expanded && (
-					<div className="🥝-tree-error-items">{props.children}</div>
+					<>
+						<Divider className="🥝-tree-error-divider" presentational />
+						<div className="🥝-tree-error-items">{props.children}</div>
+					</>
 				)}
 			</div>
 		</Role.div>

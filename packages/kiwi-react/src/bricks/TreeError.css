@@ -19,10 +19,12 @@
 
 .🥝-tree-error-container {
 	@layer base {
+		display: flex;
+		flex-direction: column;
+		gap: 4px;
+
 		padding-block-start: 4px;
 		padding-block-end: var(--🥝tree-error-container-padding-block-end, 4px);
-		padding-inline-start: 8px;
-		padding-inline-end: 4px;
 
 		border: 1px solid var(--ids-color-border-attention-base);
 		border-radius: 8px;
@@ -40,6 +42,9 @@
 		display: flex;
 		align-items: center;
 		gap: 4px;
+
+		padding-inline-start: 8px;
+		padding-inline-end: 4px;
 	}
 }
 
@@ -55,6 +60,13 @@
 	}
 }
 
+.🥝-tree-error-divider:is(.🥝-divider) {
+	@layer base {
+		/* TODO: Divider.css is not using layers */
+		background-color: var(--ids-color-border-page-base);
+	}
+}
+
 .🥝-tree-error-items {
 	@layer base {
 		display: flex;
@@ -62,7 +74,8 @@
 		gap: 16px;
 
 		padding-block-start: 4px;
-		padding-inline-start: 20px;
+		padding-inline-start: 28px;
+		padding-inline-end: 4px;
 	}
 }
 

@@ -114,7 +114,12 @@
 						"id": "benstr",
 						"label": "003-BENSTR-ZO-LG2-M3-S-00001 - S-BEAM-PURL",
 						"description": "Columns: concrete",
-						"expanded": false
+						"expanded": false,
+						"items": [
+							{
+								"label": "003-BENSTR-ZO-LG2-M3-S-00001 - S-BEAM-PURL-A"
+							}
+						]
 					},
 					{
 						"id": "benroad",

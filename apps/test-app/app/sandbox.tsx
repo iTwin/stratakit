@@ -608,10 +608,12 @@ function useFilteredTree({
 	items,
 	filters,
 	search,
+	errorIds,
 }: {
 	items: TreeItem[];
 	filters: string[];
 	search: string;
+	errorIds: string[];
 }) {
 	const filteredItems = React.useMemo(() => {
 		if (filters.length === 0) return items;
@@ -629,7 +631,8 @@ function useFilteredTree({
 		// Filter items based on search string.
 		function matchSearch(items: TreeItem[]): TreeItem[] {
 			return items.reduce<TreeItem[]>((acc, item) => {
-				const matchingItems = matchSearch(item.items ?? []);
+				const excludeItems = errorIds.includes(item.id);
+				const matchingItems = excludeItems ? [] : matchSearch(item.items ?? []);
 
 				// If the item matches the search or any of the children match the search include it.
 				if (
@@ -645,9 +648,9 @@ function useFilteredTree({
 			}, []);
 		}
 
-		if (search === "") return filteredItems;
+		if (search === "" && errorIds.length === 0) return filteredItems;
 		return matchSearch(filteredItems);
-	}, [filteredItems, search]);
+	}, [filteredItems, search, errorIds]);
 
 	const itemCount = React.useMemo(() => {
 		if (filters.length === 0 && search === "") return undefined;
@@ -768,16 +771,22 @@ function SandboxTree({
 		treeData.map((item) => createTreeItem(item)),
 	);
 
-	const { filteredTree, itemCount } = useFilteredTree({
-		items,
-		filters,
-		search,
-	});
-	const failingIds = React.useMemo(() => ["benstr", "benroad"], []);
+	const [failingIds, setFailingIds] = React.useState(["benstr", "benroad"]);
 	const failingItems = useTreeItems(items, failingIds);
 	const errorItems = React.useMemo(() => {
 		return failingItems.filter((item) => item.expanded);
 	}, [failingItems]);
+	const errorIds = React.useMemo(
+		() => errorItems.map((item) => item.id),
+		[errorItems],
+	);
+
+	const { filteredTree, itemCount } = useFilteredTree({
+		items,
+		filters,
+		search,
+		errorIds,
+	});
 
 	const flatItems = useFlatTreeItems(filteredTree, selected, hidden);
 
@@ -821,7 +830,14 @@ function SandboxTree({
 											</>
 										}
 										actions={[
-											<Tree.ErrorItemAction key="retry">
+											<Tree.ErrorItemAction
+												key="retry"
+												onClick={() => {
+													setFailingIds((prev) => {
+														return prev.filter((id) => id !== item.id);
+													});
+												}}
+											>
 												Retry
 											</Tree.ErrorItemAction>,
 										]}
@@ -855,9 +871,7 @@ function SandboxTree({
 								setSelected(item.id);
 							}}
 							expanded={
-								item.items.length === 0 && !failingIds.includes(item.id)
-									? undefined
-									: item.expanded
+								item.items.length === 0 && !hasError ? undefined : item.expanded
 							}
 							onExpandedChange={(expanded) => {
 								setItems((prev) => {

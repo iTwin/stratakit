@@ -4,11 +4,28 @@
  *--------------------------------------------------------------------------------------------*/
 
 .🥝-skeleton {
+	--✨duration: 1.6s;
+	--✨easing: cubic-bezier(0.32, 1, 0.64, 1);
+	--✨gradient: linear-gradient(
+		to right,
+		var(--ids-color-bg-glow-on-surface-neutral-hover) 40%,
+		var(--ids-color-bg-glow-on-surface-neutral-pressed) 50%,
+		var(--ids-color-bg-glow-on-surface-neutral-hover) 60%
+	);
+
 	@layer base {
-		background-color: var(--ids-color-bg-glow-on-surface-disabled);
+		background-color: var(--ids-color-bg-glow-on-surface-neutral-hover);
 		border-radius: var(--🥝skeleton-border-radius);
 		block-size: var(--🥝skeleton-height);
 		inline-size: var(--🥝skeleton-width);
+
+		@media (prefers-reduced-motion: no-preference) {
+			background: var(--✨gradient);
+			background-size: 300%;
+			background-position-x: 100%;
+			background-attachment: fixed;
+			animation: skeleton-shimmer var(--✨duration) var(--✨easing) infinite;
+		}
 
 		@media (forced-colors: active) {
 			border: 1px solid CanvasText;
@@ -72,5 +89,11 @@
 				--🥝skeleton-width: 3rem;
 			}
 		}
+	}
+}
+
+@keyframes skeleton-shimmer {
+	to {
+		background-position-x: 0%;
 	}
 }

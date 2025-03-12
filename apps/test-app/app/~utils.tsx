@@ -116,6 +116,18 @@ export function toKebabCase(str: string) {
 	return str.replace(/([a-z])([A-Z])/g, "$1-$2").toLowerCase();
 }
 
+export function toLowerCamelCase(str: string) {
+	return str.replace(/-\w/g, clearAndUpper);
+}
+
+export function toUpperCamelCase(str: string) {
+	return str.replace(/(^\w|-\w)/g, clearAndUpper);
+}
+
+function clearAndUpper(str: string) {
+	return str.replace(/-/, "").toUpperCase();
+}
+
 // ----------------------------------------------------------------------------
 
 export function Table(props: React.ComponentProps<"table">) {

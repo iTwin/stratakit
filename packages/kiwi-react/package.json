@@ -44,15 +44,15 @@
 		"classnames": "^2.5.1"
 	},
 	"devDependencies": {
-		"@types/node": "*",
-		"@types/react": "19",
-		"@types/react-dom": "19",
-		"esbuild": "^0.25.0",
-		"lightningcss": "^1.28.2",
-		"react": "19",
-		"react-dom": "19",
+		"@types/node": "catalog:",
+		"@types/react": "catalog:",
+		"@types/react-dom": "catalog:",
+		"esbuild": "catalog:",
+		"lightningcss": "catalog:",
+		"react": "catalog:",
+		"react-dom": "catalog:",
 		"rimraf": "^6.0.1",
-		"typescript": "5"
+		"typescript": "catalog:"
 	},
 	"peerDependencies": {
 		"react": ">=18.0.0",

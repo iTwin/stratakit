@@ -10,6 +10,6 @@
 		"colorjs.io": "^0.5.2"
 	},
 	"devDependencies": {
-		"lightningcss": "*"
+		"lightningcss": "catalog:"
 	}
 }

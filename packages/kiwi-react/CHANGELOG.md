@@ -1,5 +1,17 @@
 # Changelog
 
+## 5.0.0-alpha.10
+
+- Added initial `<Skeleton>` component.
+- Added initial `<ProgressBar>` component.
+- Fixed various UX and accessibility issues related to `<Tree.Item>` actions visibility.
+  - Actions no longer get stuck.
+  - Tooltips can now be hovered.
+  - Focus correctly returns to actions after menu closes.
+  - Keyboard events no longer affect the main treeitem.
+- Reduced `<Field>` spacing.
+- Experimental changes in `<Icon>` component's `href` handling.
+
 ## 5.0.0-alpha.9
 
 - Added `dot` prop to `<IconButton>` for showing a small "dot" next to the icon.

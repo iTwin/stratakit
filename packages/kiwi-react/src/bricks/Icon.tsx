@@ -59,7 +59,6 @@ interface IconProps extends Omit<BaseProps<"svg">, "children"> {
 export const Icon = forwardRef<"svg", IconProps>((props, forwardedRef) => {
 	const { href, size, alt, ...rest } = props;
 
-	const iconId = toIconId(size);
 	const isDecorative = !alt;
 
 	return (
@@ -72,11 +71,17 @@ export const Icon = forwardRef<"svg", IconProps>((props, forwardedRef) => {
 			className={cx("🥝-icon", props.className)}
 			ref={forwardedRef}
 		>
-			<use href={`${props.href}#${iconId}`} />
+			{href ? <use href={toIconHref(href, size)} /> : null}
 		</Role.svg>
 	);
 });
 DEV: Icon.displayName = "Icon";
+
+function toIconHref(href: string, size: IconProps["size"]) {
+	const separator = href.includes("#") ? "--" : "#";
+	const suffix = toIconId(size);
+	return `${href}${separator}${suffix}`;
+}
 
 function toIconId(size: IconProps["size"]) {
 	if (size === "large") return "icon-large";

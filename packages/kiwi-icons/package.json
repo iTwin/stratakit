@@ -5,9 +5,11 @@
 	"license": "MIT",
 	"exports": {
 		"./*.svg": "./icons/*.svg",
-		"./icons-list.json": "./icons-list.json"
+		"./icons-list.json": "./icons-list.json",
+		"./SpriteSheet": "./dist/SpriteSheet.js",
+		"./package.json": "./package.json"
 	},
-	"files": ["icons/*.svg", "icons-list.json", "LICENSE.md"],
+	"files": ["dist", "icons/*.svg", "icons-list.json", "LICENSE.md"],
 	"description": "A standalone SVG icon library for the iTwinUI design system",
 	"author": "Bentley Systems",
 	"homepage": "https://github.com/iTwin/design-system",
@@ -18,6 +20,17 @@
 	},
 	"keywords": ["itwinui", "svg", "icons"],
 	"scripts": {
-		"build": "tsx scripts/icons-list.cts"
+		"build": "npm run build:icons-list && npm run build:spritesheet",
+		"build:icons-list": "tsx scripts/icons-list.cts",
+		"build:spritesheet": "esbuild src/SpriteSheet.tsx --outdir=dist"
+	},
+	"devDependencies": {
+		"esbuild": "catalog:",
+		"react": "catalog:",
+		"react-dom": "catalog:"
+	},
+	"peerDependencies": {
+		"react": ">=18.0.0",
+		"react-dom": ">=18.0.0"
 	}
 }

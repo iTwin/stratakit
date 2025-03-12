@@ -10,3 +10,30 @@
 		background-color: var(--ids-color-bg-page-base);
 	}
 }
+
+.🥝-tree-error {
+	@layer base {
+		padding-block-start: 4px;
+		padding-block-end: 12px;
+		padding-inline-start: 8px;
+		padding-inline-end: 4px;
+
+		border: 1px solid var(--ids-color-border-attention-base);
+		border-radius: 8px;
+		background-color: var(--ids-color-bg-elevation-base, #25262a);
+		box-shadow: var(--ids-shadow-surface-sm);
+
+		position: sticky;
+		top: 4px;
+		z-index: 1;
+	}
+}
+
+.🥝-tree-error-header {
+	@layer base {
+		--🥝icon-color: var(--ids-color-icon-attention-base);
+
+		display: flex;
+		gap: 4px;
+	}
+}

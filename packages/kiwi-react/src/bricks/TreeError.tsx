@@ -16,11 +16,15 @@ import { Divider } from "./Divider.js";
 
 // ----------------------------------------------------------------------------
 
-interface TreeErrorProps extends BaseProps {
+interface TreeErrorProps extends Omit<BaseProps, "children"> {
 	/**
-	 * Label for the tree header indicating the number of errors displayed.
+	 * Label for the error header indicating the number of errors displayed.
 	 */
 	label?: React.ReactNode;
+	/**
+	 * A list of error items where each item describes an individual error in a tree. Must be a list of `Tree.ErrorItem` components.
+	 */
+	items?: React.ReactNode[];
 	/**
 	 * Specifies if the tree error is expanded.
 	 *
@@ -36,7 +40,7 @@ interface TreeErrorProps extends BaseProps {
 }
 
 const TreeError = forwardRef<"div", TreeErrorProps>((props, forwardedRef) => {
-	const { label, expanded = false, onExpandedChange, ...rest } = props;
+	const { label, items, expanded = false, onExpandedChange, ...rest } = props;
 
 	return (
 		<Role.div
@@ -63,7 +67,7 @@ const TreeError = forwardRef<"div", TreeErrorProps>((props, forwardedRef) => {
 				{expanded && (
 					<>
 						<Divider className="🥝-tree-error-divider" presentational />
-						<div className="🥝-tree-error-items">{props.children}</div>
+						<div className="🥝-tree-error-items">{items}</div>
 					</>
 				)}
 			</div>
@@ -74,13 +78,15 @@ DEV: TreeError.displayName = "Tree.Error";
 
 // ----------------------------------------------------------------------------
 
-interface TreeErrorItemProps extends BaseProps {
+interface TreeErrorItemProps extends Omit<BaseProps, "children"> {
 	/**
 	 * The `id` of the associated `Tree.Item`.
+	 *
+	 * @default undefined
 	 */
 	treeItemId?: string;
 	/**
-	 * The primary error message.
+	 * The error message.
 	 */
 	message?: React.ReactNode;
 	/**
@@ -139,8 +145,8 @@ DEV: TreeErrorItem.displayName = "Tree.ErrorItem";
 interface TreeErrorItemActionProps extends BaseProps<"button"> {}
 
 /**
- * An action for `<Tree.ErrorItem>`, to be passed into the `actions` prop. The action is typically
- * displayed as an anchor button just below the error description.
+ * An action for the `<Tree.ErrorItem>` component, to be passed into the `actions` prop.
+ * The action is typically displayed as an anchor button just below the error message.
  */
 const TreeErrorItemAction = forwardRef<"button", TreeErrorItemActionProps>(
 	(props, forwardedRef) => {

@@ -3,7 +3,13 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 import globalStyles from "./tests.css?url";
-import { Anchor, Text, VisuallyHidden } from "@itwin/itwinui-react/bricks";
+import {
+	Anchor,
+	IconButton,
+	Text,
+	VisuallyHidden,
+} from "@itwin/itwinui-react/bricks";
+import chevronLeftIcon from "@itwin/itwinui-icons/chevron-left.svg";
 import {
 	Outlet,
 	useMatches,
@@ -54,24 +60,20 @@ export default function Page() {
 				<RightSidebar
 					header={
 						<div className={styles.rightSidebarHeader}>
-							<Text
-								variant="body-md"
-								className={styles.rightSidebarHeaderText}
+							<IconButton
+								icon={chevronLeftIcon}
+								variant="ghost"
+								label="Back to homepage"
+								labelVariant="visually-hidden"
 								render={<Anchor render={<Link to="/" />} />}
-							>
-								Kiwi components
-							</Text>
+							/>
+
+							<Text variant="body-md">{title}</Text>
 						</div>
 					}
 					className={styles.rightSidebar}
 				>
 					<div className={styles.rightSidebarContent}>
-						<Text
-							variant="body-sm"
-							className={styles.rightSidebarComponentName}
-						>
-							{title}
-						</Text>
 						<nav ref={setPortalTarget} />
 					</div>
 				</RightSidebar>

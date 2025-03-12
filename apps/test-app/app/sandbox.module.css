@@ -118,9 +118,17 @@
 
 .emptyState {
 	display: flex;
+	align-items: center;
+	justify-content: center;
 	flex-direction: column;
 	block-size: 100%;
 	gap: 0.5rem;
+}
+
+.skeletonTree {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
 	overflow: auto;
 }
 
@@ -130,6 +138,7 @@
 	gap: 8px;
 	width: 100%;
 	padding-inline-start: calc(8px + 6px * (var(--level) - 1));
+	padding-inline-end: 8px;
 }
 
 .canvasWrapper {

@@ -251,7 +251,7 @@ function PanelLoading() {
 	);
 
 	return (
-		<EmptyState>
+		<div className={styles.skeletonTree}>
 			{levels.map((level, i) => {
 				return (
 					<SkeletonTreeItem
@@ -262,7 +262,7 @@ function PanelLoading() {
 			})}
 
 			<VisuallyHidden>Loading…</VisuallyHidden>
-		</EmptyState>
+		</div>
 	);
 }
 

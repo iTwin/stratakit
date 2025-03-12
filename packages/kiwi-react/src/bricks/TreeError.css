@@ -5,6 +5,8 @@
 .🥝-tree-error {
 	@layer base {
 		padding: 4px;
+		min-block-size: 2.625rem;
+		block-size: 2.625rem;
 	}
 
 	@layer states {

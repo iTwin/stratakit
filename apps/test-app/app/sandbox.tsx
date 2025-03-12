@@ -13,7 +13,7 @@ import {
 	IconButton,
 	Label,
 	Select,
-	Spinner,
+	Skeleton,
 	Tabs,
 	Text,
 	TextBox,
@@ -23,6 +23,7 @@ import {
 import { useSearchParams, type MetaFunction } from "react-router";
 import { useQuery, type UseQueryResult } from "@tanstack/react-query";
 import { toUpperCamelCase } from "./~utils.tsx";
+import cx from "classnames";
 
 import placeholderIcon from "@itwin/itwinui-icons/placeholder.svg";
 import searchIcon from "@itwin/itwinui-icons/search.svg";
@@ -220,12 +221,62 @@ function Layout(
 	);
 }
 
+const createSkeletonTreeItem = (() => {
+	let level = 1;
+
+	/** A level between 1 and 3 */
+	function updateLevel() {
+		const random = Math.random();
+		let nextLevel = level;
+
+		if (random < 0.3) {
+			nextLevel = level - 1;
+		} else if (random > 0.7) {
+			nextLevel = level + 1;
+		}
+
+		level = clamp(nextLevel, 1, 3);
+	}
+
+	return (): number => {
+		const toReturn = level;
+		updateLevel();
+		return toReturn;
+	};
+})();
+
 function PanelLoading() {
+	const [levels, _] = React.useState(() =>
+		new Array(30).fill(null).map(() => createSkeletonTreeItem()),
+	);
+
 	return (
 		<EmptyState>
-			<Spinner aria-hidden="true" />
-			<Text variant="body-sm">Loading…</Text>
+			{levels.map((level, i) => {
+				return (
+					<SkeletonTreeItem
+						key={`${i}-${level}`}
+						style={
+							{
+								// Random between 1 and 3
+								"--level": level,
+							} as React.CSSProperties
+						}
+					/>
+				);
+			})}
+
+			<VisuallyHidden>Loading…</VisuallyHidden>
 		</EmptyState>
+	);
+}
+
+function SkeletonTreeItem(props: React.ComponentProps<"div">) {
+	return (
+		<div {...props} className={cx(styles.skeletonTreeItem, props.className)}>
+			<Skeleton variant="object" size="small" />
+			<Skeleton variant="text" />
+		</div>
 	);
 }
 

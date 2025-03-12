@@ -84,7 +84,7 @@ interface TreeErrorItemProps extends BaseProps {
 	 */
 	message?: React.ReactNode;
 	/**
-	 * The actions available for the tree item error. Must be a list of `Tree.ErrorAction` components.
+	 * The actions available for the tree item error. Must be a list of `Tree.ErrorItemAction` components.
 	 */
 	actions?: React.ReactNode[];
 	/**

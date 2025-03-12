@@ -56,7 +56,7 @@ interface TreeItemRootProps extends Omit<BaseProps, "content" | "children"> {
 	 * Used to determine if a tree item is a parent node. If `undefined`, it is a leaf node (i.e. not expandable).
 	 *
 	 * @default undefined
-	 * */
+	 */
 	expanded?: boolean;
 	/**
 	 * Callback fired when the tree item is expanded.
@@ -101,6 +101,12 @@ interface TreeItemRootProps extends Omit<BaseProps, "content" | "children"> {
 	 * ```
 	 */
 	actions?: React.ReactNode[];
+	/**
+	 * Specifies if the tree item is in an error state.
+	 *
+	 * @default false
+	 */
+	error?: boolean;
 }
 
 /**
@@ -135,17 +141,18 @@ const TreeItemRoot = forwardRef<"div", TreeItemRootProps>(
 			"aria-level": level,
 			selected,
 			expanded,
-			icon,
 			unstable_decorations,
 			label,
 			description,
 			actions,
+			error,
 			onSelectedChange,
 			onExpandedChange,
 			onClick: onClickProp,
 			onKeyDown: onKeyDownProp,
 			...rest
 		} = props;
+		let { icon } = props;
 
 		const handleClick = (event: React.MouseEvent) => {
 			if (selected === undefined) return;
@@ -171,6 +178,8 @@ const TreeItemRoot = forwardRef<"div", TreeItemRootProps>(
 		const labelId = React.useId();
 		const descriptionId = React.useId();
 		const decorationId = React.useId();
+
+		icon = error ? <StatusWarning /> : icon;
 
 		const describedBy = React.useMemo(() => {
 			const idRefs = [];
@@ -216,6 +225,7 @@ const TreeItemRoot = forwardRef<"div", TreeItemRootProps>(
 					<ListItem.Root
 						data-kiwi-expanded={expanded}
 						data-kiwi-selected={selected}
+						data-kiwi-error={error ? true : undefined}
 						className="🥝-tree-item-node"
 						style={{ "--🥝tree-item-level": level } as React.CSSProperties}
 						role={undefined}
@@ -385,6 +395,38 @@ const TreeChevron = forwardRef<"svg", TreeChevronProps>(
 	},
 );
 DEV: TreeChevron.displayName = "TreeChevron";
+
+// ----------------------------------------------------------------------------
+
+interface StatusWarningProps extends Omit<BaseProps<"svg">, "children"> {}
+
+const StatusWarning = forwardRef<"svg", StatusWarningProps>(
+	(props, forwardedRef) => {
+		return (
+			<Icon
+				{...props}
+				render={
+					<Role.svg
+						width="16"
+						height="16"
+						fill="currentColor"
+						viewBox="0 0 16 16"
+						render={props.render}
+					>
+						<path
+							fill="currentColor"
+							fill-rule="evenodd"
+							d="M8.354 2.06a.5.5 0 0 0-.708 0L2.061 7.647a.5.5 0 0 0 0 .707l5.585 5.586a.5.5 0 0 0 .708 0l5.585-5.586a.5.5 0 0 0 0-.707L8.354 2.061Zm-1.415-.707a1.5 1.5 0 0 1 2.122 0l5.585 5.586a1.5 1.5 0 0 1 0 2.122l-5.585 5.585a1.5 1.5 0 0 1-2.122 0L1.354 9.061a1.5 1.5 0 0 1 0-2.122l5.585-5.586ZM8.75 10.75a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM8.5 8.5v-3a.5.5 0 0 0-1 0v3a.5.5 0 0 0 1 0Z"
+							clip-rule="evenodd"
+						/>
+					</Role.svg>
+				}
+				ref={forwardedRef}
+			/>
+		);
+	},
+);
+DEV: StatusWarning.displayName = "StatusWarning";
 
 // ----------------------------------------------------------------------------
 

@@ -9,6 +9,7 @@ import { Icon } from "@itwin/itwinui-react-internal/src/bricks/Icon.tsx";
 import placeholderIcon from "@itwin/itwinui-icons/placeholder.svg";
 import unlockIcon from "@itwin/itwinui-icons/lock-unlocked.svg";
 import showIcon from "@itwin/itwinui-icons/visibility-show.svg";
+import refreshIcon from "@itwin/itwinui-icons/refresh.svg";
 
 export const handle = { title: "Tree" };
 
@@ -16,6 +17,7 @@ export default definePage(function Page({
 	overflow = false,
 	selected = false,
 	description: descriptionParam,
+	error: errorParam,
 }) {
 	const overflowPostfix = overflow
 		? " with a super long label that is overflown"
@@ -42,6 +44,7 @@ export default definePage(function Page({
 		{ label: "Item 3", selected: false },
 	]);
 
+	const [renderError, setRenderError] = React.useState(!!errorParam);
 	return (
 		<Tree.Root style={{ maxInlineSize: overflow ? 300 : undefined }}>
 			{data.map((item, index, items) => {
@@ -95,6 +98,7 @@ export default definePage(function Page({
 								setData(newData);
 							};
 
+							const hasError = renderError && index === 0 && childIndex === 1;
 							return (
 								<Tree.Item
 									key={child.label}
@@ -115,14 +119,31 @@ export default definePage(function Page({
 											<Icon href={placeholderIcon} />
 										)
 									}
-									actions={[
-										<Tree.ItemAction
-											key="unlock"
-											icon={unlockIcon}
-											label="Unlock"
-										/>,
-										<Tree.ItemAction key="show" icon={showIcon} label="Show" />,
-									]}
+									actions={
+										hasError
+											? [
+													<Tree.ItemAction
+														key="retry"
+														icon={refreshIcon}
+														label="Retry"
+														visible
+														onClick={() => setRenderError(false)}
+													/>,
+												]
+											: [
+													<Tree.ItemAction
+														key="unlock"
+														icon={unlockIcon}
+														label="Unlock"
+													/>,
+													<Tree.ItemAction
+														key="show"
+														icon={showIcon}
+														label="Show"
+													/>,
+												]
+									}
+									error={hasError ? true : undefined}
 								/>
 							);
 						})}

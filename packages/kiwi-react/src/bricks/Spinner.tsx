@@ -25,12 +25,6 @@ interface SpinnerProps extends BaseProps {
 	 * @default "neutral"
 	 */
 	tone?: "neutral" | "accent";
-
-	/**
-	 * The variant of the spinner.
-	 * @default "indeterminate"
-	 */
-	variant?: "indeterminate" | "determinate";
 }
 
 /**
@@ -50,7 +44,6 @@ export const Spinner = forwardRef<"div", SpinnerProps>(
 			alt = "Loading…",
 			size = "medium",
 			tone = "neutral",
-			variant = "indeterminate",
 			...rest
 		} = props;
 
@@ -59,7 +52,7 @@ export const Spinner = forwardRef<"div", SpinnerProps>(
 				{...rest}
 				data-kiwi-size={size}
 				data-kiwi-tone={tone}
-				data-kiwi-variant={variant}
+				data-kiwi-variant="indeterminate"
 				className={cx("🥝-spinner", props.className)}
 				ref={forwardedRef}
 			>

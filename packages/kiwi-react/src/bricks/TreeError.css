@@ -3,10 +3,18 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 .🥝-tree-error {
+	--✨padding: 4px;
+
 	@layer base {
-		padding: 4px;
+		padding-inline: var(--✨padding);
+		padding-block: var(--✨padding);
 		min-block-size: 2.625rem;
 		block-size: 2.625rem;
+
+		position: sticky;
+		top: 0;
+		left: 0;
+		z-index: 1;
 	}
 
 	@layer states {
@@ -30,10 +38,6 @@
 		border-radius: 8px;
 		background-color: var(--ids-color-bg-elevation-base, #25262a);
 		box-shadow: var(--ids-shadow-surface-sm);
-
-		position: sticky;
-		top: 4px;
-		z-index: 1;
 	}
 }
 

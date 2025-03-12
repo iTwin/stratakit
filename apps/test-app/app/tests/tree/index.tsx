@@ -59,9 +59,7 @@ export default definePage(function Page({
 	}, [treeId]);
 	const [expanded, setExpanded] = React.useState(true);
 	return (
-		<div
-			style={{ display: "flex", flexDirection: "column", maxBlockSize: 500 }}
-		>
+		<>
 			<Tree.Root
 				style={{ maxInlineSize: overflow ? 300 : undefined }}
 				error={
@@ -207,6 +205,6 @@ export default definePage(function Page({
 					);
 				})}
 			</Tree.Root>
-		</div>
+		</>
 	);
 });

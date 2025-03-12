@@ -209,15 +209,13 @@
 }
 
 .tabPanel {
-	min-block-size: 0;
-	flex-grow: 1;
-	padding-block-end: 12px;
-	display: flex;
-	flex-direction: column;
+	/* TODO: need a scrollable container for error and tree. */
+	overflow: auto;
 }
 
 .tree {
 	scrollbar-gutter: stable;
+	overflow: unset;
 }
 
 .action {

@@ -88,7 +88,7 @@
 }
 
 .subheader {
-	/* min-block-size: 2.5rem; */
+	min-block-size: 2.5rem;
 	padding-inline: 12px;
 	padding-block: 1px;
 	border-block: 1px solid var(--ids-color-border-neutral-base);
@@ -97,6 +97,7 @@
 	display: flex;
 	gap: 4px;
 	align-items: center;
+	flex-shrink: 0;
 }
 
 .subheaderTitle {
@@ -106,7 +107,6 @@
 
 .searchInput {
 	flex: 1;
-	margin-block: 4px;
 }
 
 .subheaderActions {

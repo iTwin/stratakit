@@ -64,8 +64,8 @@
 	transform-box: fill-box;
 
 	:where([data-kiwi-variant="indeterminate"]) .🥝-spinner-svg & {
-		stroke-dasharray: 50 50;
-		animation: --🥝spinner-spin 1s cubic-bezier(0.5, 0, 0.5, 1) infinite both;
+		stroke-dasharray: 25 75;
+		animation: --🥝spinner-spin 1s linear infinite both;
 
 		@media (prefers-reduced-motion) {
 			animation-timing-function: steps(4, end);

@@ -824,6 +824,10 @@ function SandboxTree({
 													onClick={() => {
 														document.getElementById(treeItemId)?.focus();
 													}}
+													style={{
+														// TODO: handle in Anchor.css
+														textAlign: "start",
+													}}
 												>
 													{item.label}
 												</Anchor>

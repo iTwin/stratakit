@@ -23,11 +23,14 @@ export const links: LinksFunction = () => [
 	{ rel: "stylesheet", href: globalStyles },
 ];
 
-const isTest = import.meta.env.VITE_ENV === "test";
-
 export default function Page() {
 	const matches = useMatches();
 	const title = (matches.at(-1)?.handle as { title: string })?.title ?? "Tests";
+
+	const [isTest, setIsTest] = React.useState(false);
+	React.useEffect(() => {
+		setIsTest(localStorage.getItem("isTest") === "true");
+	}, []);
 
 	const [portalTarget, setPortalTarget] = React.useState<HTMLElement | null>(
 		null,

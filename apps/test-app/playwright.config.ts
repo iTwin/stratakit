@@ -31,6 +31,22 @@ export default defineConfig({
 
 		/* https://playwright.dev/docs/emulation#color-scheme-and-media */
 		colorScheme: "dark",
+
+		/* Set localStorage.isTest to true to hide the right sidebar during tests. See https://playwright.dev/docs/api/class-testoptions#test-options-storage-state */
+		storageState: {
+			cookies: [],
+			origins: [
+				{
+					origin: "http://localhost:1800",
+					localStorage: [
+						{
+							name: "isTest",
+							value: "true",
+						},
+					],
+				},
+			],
+		},
 	},
 	/* Keep snapshots in the same folder as the test file to nest the files. */
 	snapshotPathTemplate:
@@ -72,6 +88,13 @@ export const test = base.extend<{ page: Page }>({
 		page.goto = async (url, options) => {
 			const result = await _goto.call(page, url, options);
 			await page.waitForSelector("body[data-loaded]", { timeout: 5000 });
+
+			// Set localStorage.isTest to true
+			// await page.evaluate(() => localStorage.setItem("isTest", "true"));
+
+			// // Reload page
+			// await page.reload();
+
 			return result;
 		};
 		await use(page);

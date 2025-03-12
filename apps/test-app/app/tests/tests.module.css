@@ -10,7 +10,7 @@
 .rightSidebar {
 	background-color: var(--ids-color-bg-page-depth);
 	inline-size: min(100vi, 256px);
-	block-size: 100vb;
+	block-size: max(100vb, 100%);
 	overflow-y: auto;
 	overflow-x: hidden;
 }

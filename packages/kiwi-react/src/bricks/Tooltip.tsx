@@ -5,6 +5,7 @@
 import * as React from "react";
 import cx from "classnames";
 import * as AkTooltip from "@ariakit/react/tooltip";
+import { useStoreState } from "@ariakit/react/store";
 import { forwardRef, type FocusableProps } from "./~utils.js";
 import { usePopoverApi } from "./~hooks.js";
 
@@ -71,6 +72,7 @@ export const Tooltip = forwardRef<"div", TooltipProps>(
 		} = props;
 
 		const store = AkTooltip.useTooltipStore();
+		const open = useStoreState(store, (store) => store.open);
 		const popover = usePopoverApi(store);
 
 		return (
@@ -83,6 +85,7 @@ export const Tooltip = forwardRef<"div", TooltipProps>(
 				>
 					<AkTooltip.TooltipAnchor
 						render={children}
+						data-has-popover-open={open || undefined}
 						{...(type === "description" && { "aria-describedby": id })}
 						{...(type === "label" && { "aria-labelledby": id })}
 					/>

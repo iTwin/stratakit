@@ -1,0 +1,1 @@
+import{q as n,i as s,t as i,j as p,h as u}from"./LMDWO4NN-DUubhdkr.js";var c="hr",f=s(function(a){var r=a,{orientation:t="horizontal"}=r,o=p(r,["orientation"]);return o=u({role:"separator","aria-orientation":t},o),o}),m=n(function(a){const r=f(a);return i(c,r)});export{m as S};

@@ -55,7 +55,11 @@ export default definePage(function Page({
 		<>
 			{renderError && (
 				<Tree.Error label="1 issue found">
-					Failed to create hierarchy for Item 1.2
+					<Tree.ErrorItem
+						message={<>Failed to create hierarchy for Item 1.2</>}
+						onDismiss={() => setRenderError(false)}
+						actions={["Retry"]}
+					/>
 				</Tree.Error>
 			)}
 			<Tree.Root style={{ maxInlineSize: overflow ? 300 : undefined }}>

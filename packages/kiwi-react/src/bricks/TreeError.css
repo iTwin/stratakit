@@ -28,3 +28,42 @@
 		gap: 4px;
 	}
 }
+
+.🥝-tree-error-items {
+	@layer base {
+		display: flex;
+		flex-direction: column;
+		gap: 16px;
+
+		padding-block-start: 4px;
+		padding-inline-start: 20px;
+	}
+}
+
+.🥝-tree-error-item {
+	@layer base {
+		display: grid;
+		grid-template-columns: 1fr auto;
+		row-gap: 8px;
+		column-gap: 4px;
+	}
+}
+
+.🥝-tree-error-item-message {
+	@layer base {
+		grid-row: 1;
+		align-self: center;
+	}
+}
+
+.🥝-tree-error-item-dismiss {
+	@layer base {
+		grid-row: 1;
+	}
+}
+
+.🥝-tree-error-item-actions {
+	@layer base {
+		grid-row: 2;
+	}
+}

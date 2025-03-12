@@ -247,7 +247,7 @@ const createSkeletonTreeItem = (() => {
 
 function PanelLoading() {
 	const [levels, _] = React.useState(() =>
-		new Array(30).fill(null).map(() => createSkeletonTreeItem()),
+		new Array(60).fill(null).map(() => createSkeletonTreeItem()),
 	);
 
 	return (

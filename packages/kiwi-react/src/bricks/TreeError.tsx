@@ -7,7 +7,7 @@ import cx from "classnames";
 import { Role } from "@ariakit/react/role";
 import { Button as ButtonAk } from "@ariakit/react/button";
 import { forwardRef, type BaseProps } from "./~utils.js";
-import { Dismiss, StatusWarning } from "./Icon.js";
+import { ChevronDown, Dismiss, StatusWarning } from "./Icon.js";
 import { Text } from "./Text.js";
 import { IconButton } from "./IconButton.js";
 import { Anchor } from "./Anchor.js";
@@ -20,22 +20,48 @@ interface TreeErrorProps extends BaseProps {
 	 * Label for the tree header indicating the number of errors displayed.
 	 */
 	label?: React.ReactNode;
+	/**
+	 * Specifies if the tree error is expanded.
+	 *
+	 * @default false
+	 */
+	expanded?: boolean;
+	/**
+	 * Callback fired when the tree error is expanded.
+	 *
+	 * Should be used with the `expanded` prop.
+	 */
+	onExpandedChange?: (expanded: boolean) => void;
 }
 
 const TreeError = forwardRef<"div", TreeErrorProps>((props, forwardedRef) => {
-	const { label, ...rest } = props;
+	const { label, expanded = false, onExpandedChange, ...rest } = props;
+
 	return (
 		<Role.div
+			data-kiwi-expanded={expanded}
 			{...rest}
 			className={cx("🥝-tree-error", props.className)}
 			ref={forwardedRef}
 		>
 			<div className="🥝-tree-error-container">
 				<div className="🥝-tree-error-header">
-					<StatusWarning />
-					<Text variant="body-sm">{label}</Text>
+					<StatusWarning className="🥝-tree-error-icon" />
+					<Text className="🥝-tree-error-label" variant="body-sm">
+						{label}
+					</Text>
+					<IconButton
+						label={expanded ? "Collapse" : "Expand"}
+						icon={<ChevronDown />}
+						variant="ghost"
+						onClick={() => {
+							onExpandedChange?.(!expanded);
+						}}
+					/>
 				</div>
-				<div className="🥝-tree-error-items">{props.children}</div>
+				{expanded && (
+					<div className="🥝-tree-error-items">{props.children}</div>
+				)}
 			</div>
 		</Role.div>
 	);

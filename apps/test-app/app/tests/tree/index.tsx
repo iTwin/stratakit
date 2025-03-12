@@ -57,13 +57,18 @@ export default definePage(function Page({
 	const errors = React.useMemo(() => {
 		return [`${treeId}-0-1`];
 	}, [treeId]);
+	const [expanded, setExpanded] = React.useState(true);
 	return (
 		<>
 			<Tree.Root
 				style={{ maxInlineSize: overflow ? 300 : undefined }}
 				error={
 					renderError ? (
-						<Tree.Error label="1 issue found">
+						<Tree.Error
+							label="1 issue found"
+							expanded={expanded}
+							onExpandedChange={setExpanded}
+						>
 							<Tree.ErrorItem
 								treeItemId={errors[0]}
 								message={

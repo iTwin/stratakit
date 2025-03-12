@@ -767,6 +767,7 @@ function SandboxTree({
 		});
 	}, []);
 
+	const [expanded, setExpanded] = React.useState(true);
 	const [items, setItems] = React.useState(() =>
 		treeData.map((item) => createTreeItem(item)),
 	);
@@ -804,6 +805,8 @@ function SandboxTree({
 				error={
 					errorItems.length > 0 ? (
 						<Tree.Error
+							expanded={expanded}
+							onExpandedChange={setExpanded}
 							label={
 								errorItems.length === 1
 									? "1 issue found"

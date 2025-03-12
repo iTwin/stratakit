@@ -6,12 +6,19 @@
 	@layer base {
 		padding: 4px;
 	}
+
+	@layer states {
+		&:where([data-kiwi-expanded="true"]) {
+			--🥝chevron-down-rotate: -0.5turn;
+			--🥝tree-error-container-padding-block-end: 12px;
+		}
+	}
 }
 
 .🥝-tree-error-container {
 	@layer base {
 		padding-block-start: 4px;
-		padding-block-end: 12px;
+		padding-block-end: var(--🥝tree-error-container-padding-block-end, 4px);
 		padding-inline-start: 8px;
 		padding-inline-end: 4px;
 
@@ -28,10 +35,21 @@
 
 .🥝-tree-error-header {
 	@layer base {
-		--🥝icon-color: var(--ids-color-icon-attention-base);
-
 		display: flex;
+		align-items: center;
 		gap: 4px;
+	}
+}
+
+.🥝-tree-error-icon {
+	@layer base {
+		--🥝icon-color: var(--ids-color-icon-attention-base);
+	}
+}
+
+.🥝-tree-error-label {
+	@layer base {
+		flex: 1;
 	}
 }
 

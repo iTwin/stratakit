@@ -16,6 +16,7 @@ import { Icon, StatusWarning } from "./Icon.js";
 import { forwardRef, type BaseProps } from "./~utils.js";
 import { useEventHandlers } from "./~hooks.js";
 import { GhostAligner, useGhostAlignment } from "./~utils.GhostAligner.js";
+import { TreeContext } from "./Tree.internal.js";
 
 // ----------------------------------------------------------------------------
 
@@ -138,6 +139,7 @@ interface TreeItemRootProps extends Omit<BaseProps, "content" | "children"> {
 const TreeItemRoot = forwardRef<"div", TreeItemRootProps>(
 	(props, forwardedRef) => {
 		const {
+			id,
 			"aria-level": level,
 			selected,
 			expanded,
@@ -153,6 +155,8 @@ const TreeItemRoot = forwardRef<"div", TreeItemRootProps>(
 			...rest
 		} = props;
 		let { icon } = props;
+
+		const { itemIdToErrorId } = React.useContext(TreeContext) ?? {};
 
 		const handleClick = (event: React.MouseEvent) => {
 			if (selected === undefined) return;
@@ -178,6 +182,7 @@ const TreeItemRoot = forwardRef<"div", TreeItemRootProps>(
 		const labelId = React.useId();
 		const descriptionId = React.useId();
 		const decorationId = React.useId();
+		const errorId = id && itemIdToErrorId ? itemIdToErrorId.get(id) : undefined;
 
 		icon = error ? <StatusWarning /> : icon;
 
@@ -185,8 +190,16 @@ const TreeItemRoot = forwardRef<"div", TreeItemRootProps>(
 			const idRefs = [];
 			if (description) idRefs.push(descriptionId);
 			if (unstable_decorations || icon) idRefs.push(decorationId);
+			if (errorId) idRefs.push(errorId);
 			return idRefs.length > 0 ? idRefs.join(" ") : undefined;
-		}, [unstable_decorations, icon, decorationId, description, descriptionId]);
+		}, [
+			unstable_decorations,
+			icon,
+			decorationId,
+			description,
+			descriptionId,
+			errorId,
+		]);
 
 		return (
 			<TreeItemContext.Provider

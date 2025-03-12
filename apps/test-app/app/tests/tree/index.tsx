@@ -51,39 +51,48 @@ export default definePage(function Page({
 			: []),
 	]);
 
+	const treeId = React.useId();
 	const errorItemRef = React.useRef<HTMLElement>(null);
 	const [renderError, setRenderError] = React.useState(!!errorParam);
+	const errors = React.useMemo(() => {
+		return [`${treeId}-0-1`];
+	}, [treeId]);
 	return (
 		<>
-			{renderError && (
-				<Tree.Error label="1 issue found">
-					<Tree.ErrorItem
-						message={
-							<>
-								<span>Failed to create hierarchy for </span>
-								<Anchor
-									render={<button />}
-									onClick={() => {
-										errorItemRef.current?.focus();
-									}}
-								>
-									Item 1.2
-								</Anchor>
-							</>
-						}
-						onDismiss={() => setRenderError(false)}
-						actions={[
-							<Tree.ErrorItemAction
-								key="retry"
-								onClick={() => setRenderError(false)}
-							>
-								Retry
-							</Tree.ErrorItemAction>,
-						]}
-					/>
-				</Tree.Error>
-			)}
-			<Tree.Root style={{ maxInlineSize: overflow ? 300 : undefined }}>
+			<Tree.Root
+				style={{ maxInlineSize: overflow ? 300 : undefined }}
+				error={
+					renderError ? (
+						<Tree.Error label="1 issue found">
+							<Tree.ErrorItem
+								treeItemId={errors[0]}
+								message={
+									<>
+										<span>Failed to create hierarchy for </span>
+										<Anchor
+											render={<button />}
+											onClick={() => {
+												errorItemRef.current?.focus();
+											}}
+										>
+											Item 1.2
+										</Anchor>
+									</>
+								}
+								onDismiss={() => setRenderError(false)}
+								actions={[
+									<Tree.ErrorItemAction
+										key="retry"
+										onClick={() => setRenderError(false)}
+									>
+										Retry
+									</Tree.ErrorItemAction>,
+								]}
+							/>
+						</Tree.Error>
+					) : undefined
+				}
+			>
 				{data.map((item, index, items) => {
 					const handleSelection = () => {
 						const oldSelected = data[index].selected;
@@ -135,10 +144,12 @@ export default definePage(function Page({
 									setData(newData);
 								};
 
-								const hasError = renderError && index === 0 && childIndex === 1;
+								const itemId = `${treeId}-${index}-${childIndex}`;
+								const hasError = renderError && errors.includes(itemId);
 								return (
 									<Tree.Item
 										key={child.label}
+										id={hasError ? itemId : undefined}
 										aria-level={2}
 										aria-posinset={childIndex + 1}
 										aria-setsize={children.length}

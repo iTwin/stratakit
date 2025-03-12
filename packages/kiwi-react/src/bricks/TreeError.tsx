@@ -2,6 +2,7 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
+import * as React from "react";
 import cx from "classnames";
 import { Role } from "@ariakit/react/role";
 import { Button as ButtonAk } from "@ariakit/react/button";
@@ -10,6 +11,7 @@ import { Dismiss, StatusWarning } from "./Icon.js";
 import { Text } from "./Text.js";
 import { IconButton } from "./IconButton.js";
 import { Anchor } from "./Anchor.js";
+import { TreeContext } from "./Tree.internal.js";
 
 // ----------------------------------------------------------------------------
 
@@ -42,6 +44,10 @@ DEV: TreeError.displayName = "Tree.Error";
 
 interface TreeErrorItemProps extends BaseProps {
 	/**
+	 * The `id` of the associated `Tree.Item`.
+	 */
+	treeItemId?: string;
+	/**
 	 * The primary error message.
 	 */
 	message?: React.ReactNode;
@@ -57,14 +63,27 @@ interface TreeErrorItemProps extends BaseProps {
 
 const TreeErrorItem = forwardRef<"div", TreeErrorItemProps>(
 	(props, forwardedRef) => {
-		const { message, actions, onDismiss, ...rest } = props;
+		const { treeItemId: itemId, message, actions, onDismiss, ...rest } = props;
+		const { setErrorId } = React.useContext(TreeContext) ?? {};
+		const errorId = React.useId();
+		React.useEffect(() => {
+			if (!itemId) return;
+			setErrorId?.({ itemId, errorId });
+			return () => {
+				setErrorId?.({ itemId, errorId: undefined });
+			};
+		}, [itemId, errorId, setErrorId]);
 		return (
 			<Role.div
 				{...rest}
 				className={cx("🥝-tree-error-item", props.className)}
 				ref={forwardedRef}
 			>
-				<Text variant="body-sm" className="🥝-tree-error-item-message">
+				<Text
+					id={errorId}
+					variant="body-sm"
+					className="🥝-tree-error-item-message"
+				>
 					{message}
 				</Text>
 				{onDismiss && (

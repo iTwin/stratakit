@@ -39,7 +39,7 @@
 
 		@media (forced-colors: active) {
 			--🥝spinner-fill-color: CanvasText;
-			--🥝spinner-track-color: transparent;
+			--🥝spinner-track-color: Canvas;
 		}
 	}
 }

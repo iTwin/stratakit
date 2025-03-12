@@ -10,6 +10,7 @@ import placeholderIcon from "@itwin/itwinui-icons/placeholder.svg";
 import unlockIcon from "@itwin/itwinui-icons/lock-unlocked.svg";
 import showIcon from "@itwin/itwinui-icons/visibility-show.svg";
 import refreshIcon from "@itwin/itwinui-icons/refresh.svg";
+import { Anchor } from "@itwin/itwinui-react/bricks";
 
 export const handle = { title: "Tree" };
 
@@ -50,15 +51,35 @@ export default definePage(function Page({
 			: []),
 	]);
 
+	const errorItemRef = React.useRef<HTMLElement>(null);
 	const [renderError, setRenderError] = React.useState(!!errorParam);
 	return (
 		<>
 			{renderError && (
 				<Tree.Error label="1 issue found">
 					<Tree.ErrorItem
-						message={<>Failed to create hierarchy for Item 1.2</>}
+						message={
+							<>
+								<span>Failed to create hierarchy for </span>
+								<Anchor
+									render={<button />}
+									onClick={() => {
+										errorItemRef.current?.focus();
+									}}
+								>
+									Item 1.2
+								</Anchor>
+							</>
+						}
 						onDismiss={() => setRenderError(false)}
-						actions={["Retry"]}
+						actions={[
+							<Tree.ErrorItemAction
+								key="retry"
+								onClick={() => setRenderError(false)}
+							>
+								Retry
+							</Tree.ErrorItemAction>,
+						]}
 					/>
 				</Tree.Error>
 			)}
@@ -160,6 +181,7 @@ export default definePage(function Page({
 													]
 										}
 										error={hasError ? true : undefined}
+										ref={hasError ? errorItemRef : undefined}
 									/>
 								);
 							})}

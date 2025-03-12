@@ -4,10 +4,12 @@
  *--------------------------------------------------------------------------------------------*/
 import cx from "classnames";
 import { Role } from "@ariakit/react/role";
+import { Button as ButtonAk } from "@ariakit/react/button";
 import { forwardRef, type BaseProps } from "./~utils.js";
 import { Dismiss, StatusWarning } from "./Icon.js";
 import { Text } from "./Text.js";
 import { IconButton } from "./IconButton.js";
+import { Anchor } from "./Anchor.js";
 
 // ----------------------------------------------------------------------------
 
@@ -83,4 +85,30 @@ DEV: TreeErrorItem.displayName = "Tree.ErrorItem";
 
 // ----------------------------------------------------------------------------
 
-export { TreeError as Root, TreeErrorItem as Item };
+interface TreeErrorItemActionProps extends BaseProps<"button"> {}
+
+/**
+ * An action for `<Tree.ErrorItem>`, to be passed into the `actions` prop. The action is typically
+ * displayed as an anchor button just below the error description.
+ */
+const TreeErrorItemAction = forwardRef<"button", TreeErrorItemActionProps>(
+	(props, forwardedRef) => {
+		return (
+			<ButtonAk
+				render={<Anchor render={<button />} />}
+				{...props}
+				className={cx("🥝-tree-error-item-action", props.className)}
+				ref={forwardedRef}
+			/>
+		);
+	},
+);
+DEV: TreeErrorItemAction.displayName = "Tree.ErrorItemAction";
+
+// -------------------------------------------------------------------------
+
+export {
+	TreeError as Root,
+	TreeErrorItem as Item,
+	TreeErrorItemAction as ItemAction,
+};

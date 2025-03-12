@@ -14,6 +14,11 @@ import {
 } from "react-router";
 import { Root } from "@itwin/itwinui-react/bricks";
 import { ColorSchemeProvider, useColorScheme } from "./~utils.tsx";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
+const queryClient = new QueryClient({
+	defaultOptions: { queries: { experimental_prefetchInRender: true } }, // https://tanstack.com/query/latest/docs/framework/react/guides/suspense#using-usequerypromise-and-reactuse-experimental
+});
 
 export const links: LinksFunction = () => {
 	return [
@@ -66,9 +71,11 @@ export default function App() {
 	}, []);
 
 	return (
-		<Root colorScheme={colorScheme} density="dense">
-			<Outlet />
-		</Root>
+		<QueryClientProvider client={queryClient}>
+			<Root colorScheme={colorScheme} density="dense">
+				<Outlet />
+			</Root>
+		</QueryClientProvider>
 	);
 }
 

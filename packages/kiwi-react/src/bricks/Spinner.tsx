@@ -58,7 +58,7 @@ export const Spinner = forwardRef<"div", SpinnerProps>(
 				<svg aria-hidden="true" className="🥝-spinner-svg" viewBox="0 0 16 16">
 					<path
 						stroke="currentColor"
-						stroke-linecap="round"
+						strokeLinecap="round"
 						d="M9.5 1.674a6.503 6.503 0 0 1 0 12.652m-3-12.652a6.503 6.503 0 0 0 0 12.652"
 					/>
 				</svg>

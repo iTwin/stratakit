@@ -213,6 +213,7 @@ const TreeItemRoot = forwardRef<"div", TreeItemRootProps>(
 				)}
 			>
 				<CompositeItem
+					id={id}
 					render={<Role {...rest} />}
 					onClick={
 						useEventHandlers(

@@ -4,6 +4,12 @@
  *--------------------------------------------------------------------------------------------*/
 .🥝-tree-error {
 	@layer base {
+		padding: 4px;
+	}
+}
+
+.🥝-tree-error-container {
+	@layer base {
 		padding-block-start: 4px;
 		padding-block-end: 12px;
 		padding-inline-start: 8px;

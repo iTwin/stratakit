@@ -6,6 +6,7 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 import styles from "./sandbox.module.css";
 import {
+	Anchor,
 	Button,
 	DropdownMenu,
 	Field,
@@ -286,7 +287,12 @@ function PanelContent(props: {
 				/>
 				{trees.map((tree) => {
 					return (
-						<Tabs.TabPanel key={tree.name} tabId={tree.name} unmountOnHide>
+						<Tabs.TabPanel
+							key={tree.name}
+							className={styles.tabPanel}
+							tabId={tree.name}
+							unmountOnHide
+						>
 							{tree.content}
 						</Tabs.TabPanel>
 					);
@@ -567,8 +573,10 @@ type ExampleColor =
 	| "teal";
 
 interface TreeItemData {
+	id?: string;
 	label: string;
 	description?: string;
+	expanded?: boolean;
 	items?: TreeItemData[];
 	[key: string]: unknown;
 }
@@ -655,6 +663,23 @@ function useFilteredTree({
 	return { filteredTree: foundItems, itemCount };
 }
 
+function useTreeItems(items: TreeItem[], itemIds: string[]) {
+	return React.useMemo(() => {
+		function findItems(items: TreeItem[]): TreeItem[] {
+			return items.reduce<TreeItem[]>((acc, item) => {
+				if (itemIds.includes(item.id)) {
+					acc.push(item);
+				}
+				if (item.items) {
+					acc.push(...findItems(item.items));
+				}
+				return acc;
+			}, []);
+		}
+		return findItems(items);
+	}, [items, itemIds]);
+}
+
 interface FlatTreeItem extends TreeItem {
 	level: number;
 	selected: boolean;
@@ -727,6 +752,7 @@ function SandboxTree({
 		search,
 		setItemCount,
 	} = React.useContext(TreeFilteringContext);
+	const treeId = React.useId();
 	const [selected, setSelected] = React.useState<string | undefined>();
 	const [hidden, setHidden] = React.useState<string[]>([]);
 	const toggleHidden = React.useCallback((id: string) => {
@@ -747,6 +773,12 @@ function SandboxTree({
 		filters,
 		search,
 	});
+	const failingIds = React.useMemo(() => ["benstr", "benroad"], []);
+	const failingItems = useTreeItems(items, failingIds);
+	const errorItems = React.useMemo(() => {
+		return failingItems.filter((item) => item.expanded);
+	}, [failingItems]);
+
 	const flatItems = useFlatTreeItems(filteredTree, selected, hidden);
 
 	React.useEffect(() => {
@@ -758,11 +790,57 @@ function SandboxTree({
 
 	return (
 		<React.Suspense fallback="Loading...">
-			<Tree.Root className={styles.tree}>
+			<Tree.Root
+				className={styles.tree}
+				error={
+					errorItems.length > 0 ? (
+						<Tree.Error
+							label={
+								errorItems.length === 1
+									? "1 issue found"
+									: `${errorItems.length} issues found`
+							}
+						>
+							{errorItems.map((item) => {
+								const treeItemId = `${treeId}-${item.id}`;
+								return (
+									<Tree.ErrorItem
+										key={item.id}
+										treeItemId={treeItemId}
+										message={
+											<>
+												<span>Failed to create hierarchy for </span>
+												<Anchor
+													render={<button />}
+													onClick={() => {
+														document.getElementById(treeItemId)?.focus();
+													}}
+												>
+													{item.label}
+												</Anchor>
+											</>
+										}
+										actions={[
+											<Tree.ErrorItemAction key="retry">
+												Retry
+											</Tree.ErrorItemAction>,
+										]}
+									/>
+								);
+							})}
+						</Tree.Error>
+					) : undefined
+				}
+			>
 				{deferredItems.map((item) => {
+					const hasError = errorItems.find(
+						(errorItem) => errorItem.id === item.id,
+					);
+					const id = hasError ? `${treeId}-${item.id}` : undefined;
 					return (
 						<Tree.Item
 							key={item.id}
+							id={id}
 							label={item.label}
 							description={item.description}
 							aria-level={item.level}
@@ -776,7 +854,11 @@ function SandboxTree({
 								}
 								setSelected(item.id);
 							}}
-							expanded={item.items.length === 0 ? undefined : item.expanded}
+							expanded={
+								item.items.length === 0 && !failingIds.includes(item.id)
+									? undefined
+									: item.expanded
+							}
 							onExpandedChange={(expanded) => {
 								setItems((prev) => {
 									const treeItem = findTreeItem(prev, item.id);
@@ -814,6 +896,7 @@ function SandboxTree({
 								/>,
 								<TreeMoreActions key="more" hidden={item.hidden} />,
 							]}
+							error={hasError ? true : undefined}
 						/>
 					);
 				})}

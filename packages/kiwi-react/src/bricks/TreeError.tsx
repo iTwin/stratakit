@@ -30,11 +30,13 @@ const TreeError = forwardRef<"div", TreeErrorProps>((props, forwardedRef) => {
 			className={cx("🥝-tree-error", props.className)}
 			ref={forwardedRef}
 		>
-			<div className="🥝-tree-error-header">
-				<StatusWarning />
-				<Text variant="body-sm">{label}</Text>
+			<div className="🥝-tree-error-container">
+				<div className="🥝-tree-error-header">
+					<StatusWarning />
+					<Text variant="body-sm">{label}</Text>
+				</div>
+				<div className="🥝-tree-error-items">{props.children}</div>
 			</div>
-			<div className="🥝-tree-error-items">{props.children}</div>
 		</Role.div>
 	);
 });

@@ -224,21 +224,21 @@ function Layout(
 const createSkeletonTreeItem = (() => {
 	let level = 1;
 
-	/** A level between 1 and 3 */
+	/** A level between 1 and 5 */
 	function updateLevel() {
 		const random = Math.random();
 		let nextLevel = level;
 
-		if (random < 0.3) {
+		if (random < 0.4) {
 			nextLevel = level - 1;
-		} else if (random > 0.7) {
+		} else if (random < 0.8) {
 			nextLevel = level + 1;
 		}
 
-		level = clamp(nextLevel, 1, 3);
+		level = clamp(nextLevel, 1, 5);
 	}
 
-	return (): number => {
+	return () => {
 		const toReturn = level;
 		updateLevel();
 		return toReturn;
@@ -256,12 +256,7 @@ function PanelLoading() {
 				return (
 					<SkeletonTreeItem
 						key={`${i}-${level}`}
-						style={
-							{
-								// Random between 1 and 3
-								"--level": level,
-							} as React.CSSProperties
-						}
+						style={{ "--level": level } as React.CSSProperties}
 					/>
 				);
 			})}

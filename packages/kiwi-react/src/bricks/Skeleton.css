@@ -24,7 +24,7 @@
 			background-size: 300%;
 			background-position-x: 100%;
 			background-attachment: fixed;
-			animation: skeleton-shimmer var(--✨duration) var(--✨easing) infinite;
+			animation: --🥝skeleton-shimmer var(--✨duration) var(--✨easing) infinite;
 		}
 
 		@media (forced-colors: active) {
@@ -92,7 +92,7 @@
 	}
 }
 
-@keyframes skeleton-shimmer {
+@keyframes --🥝skeleton-shimmer {
 	to {
 		background-position-x: 0%;
 	}

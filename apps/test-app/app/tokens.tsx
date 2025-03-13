@@ -22,7 +22,8 @@ const darkColorTokens = parseTokens(rawDarkTokens.color);
 const darkShadowTokens = parseTokens(rawDarkTokens.shadow);
 
 const typographyTokens = parseTokens(rawTypographyTokens.typography);
-const typographyVariants = [...typographyTokens.keys()];
+
+const typographyVariants = [...typographyTokens.keys()] as const;
 
 const categories = {
 	bg: "Background",
@@ -124,7 +125,7 @@ export default function Page() {
 					</Disclosure.Disclosure>
 
 					<Disclosure.DisclosureContent>
-						<Tokens tokens={typographyVariants} kind="typography" />
+						<Tokens tokens={[...typographyTokens.keys()]} kind="typography" />
 					</Disclosure.DisclosureContent>
 				</div>
 			</Disclosure.DisclosureProvider>

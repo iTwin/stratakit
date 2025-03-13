@@ -30,6 +30,7 @@ function VisualTest() {
 	const permutations = [
 		["solid", "neutral"],
 		["solid", "accent"],
+		["solid", "critical"],
 		["outline"],
 		["ghost"],
 	] as const;

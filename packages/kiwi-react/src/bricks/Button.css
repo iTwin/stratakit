@@ -14,8 +14,10 @@
 	--✨glow--bg-hover: var(--ids-color-glow-hue) var(--ids-color-bg-glow-base-hover-\%);
 	--✨glow--bg-press: var(--ids-color-glow-hue) var(--ids-color-bg-glow-base-pressed-\%);
 
+	/* #region Variant: solid */
 	--✨bg--solid-neutral-default: var(--ids-color-bg-neutral-base);
 	--✨bg--solid-accent-default: var(--ids-color-bg-accent-base);
+	--✨bg--solid-critical-default: var(--ids-color-bg-critical-base);
 	--✨bg--solid-hover: color-mix(
 		in oklch,
 		var(--🥝button-bg--solid-default) 100%,
@@ -57,6 +59,21 @@
 	);
 	--✨border--solid-accent-disabled: transparent;
 
+	--✨border--solid-critical-default: var(--ids-color-border-shadow-strong);
+	--✨border--solid-critical-hover: color-mix(
+		in oklch,
+		var(--✨border--solid-critical-default) 100%,
+		var(--ids-color-glow-hue) var(--ids-color-border-glow-strong-hover-\%)
+	);
+	--✨border--solid-critical-pressed: color-mix(
+		in oklch,
+		var(--✨border--solid-critical-default) 100%,
+		var(--ids-color-glow-hue) var(--ids-color-border-glow-strong-pressed-\%)
+	);
+	--✨border--solid-critical-disabled: transparent;
+	/* #endregion */
+
+	/* #region Variant: outline */
 	--✨bg--outline-default: transparent;
 	--✨bg--outline-hover: color-mix(
 		in oklch,
@@ -81,7 +98,9 @@
 		var(--ids-color-glow-hue) var(--ids-color-border-glow-base-pressed-\%)
 	);
 	--✨border--outline-disabled: var(--ids-color-border-glow-on-surface-disabled);
+	/* #endregion */
 
+	/* #region Variant: ghost */
 	--✨bg--ghost-default: transparent;
 	--✨bg--ghost-hover: color-mix(in oklch, var(--✨bg--ghost-default) 100%, var(--✨glow--bg-hover));
 	--✨bg--ghost-pressed: color-mix(
@@ -91,6 +110,7 @@
 	);
 	--✨bg--ghost-active: var(--ids-color-bg-glow-on-surface-accent-pressed);
 	--✨bg--ghost-disabled: transparent;
+	/* #endregion */
 
 	@layer base {
 		text-decoration: none;
@@ -155,16 +175,7 @@
 					var(--🌀button-state--disabled, var(--✨border--solid-neutral-disabled));
 			}
 
-			&:where([data-kiwi-tone="accent"]) {
-				--🥝button-bg--solid-default: var(--✨bg--solid-accent-default);
-				--🥝button-border-color: var(
-						--🌀button-state--default,
-						var(--✨border--solid-accent-default)
-					)
-					var(--🌀button-state--hover, var(--✨border--solid-accent-hover))
-					var(--🌀button-state--pressed, var(--✨border--solid-accent-pressed))
-					var(--🌀button-state--disabled, var(--✨border--solid-accent-disabled));
-
+			&:where([data-kiwi-tone="accent"], [data-kiwi-tone="critical"]) {
 				--🥝button-color: var(--ids-color-text-neutral-emphasis);
 				--🥝icon-color: var(--🌀button-state--default, var(--ids-color-icon-neutral-emphasis))
 					var(--🌀button-state--hover, var(--ids-color-icon-neutral-emphasis))
@@ -174,6 +185,28 @@
 				@media (forced-colors: active) {
 					--🥝icon-color: ButtonText;
 				}
+			}
+
+			&:where([data-kiwi-tone="accent"]) {
+				--🥝button-bg--solid-default: var(--✨bg--solid-accent-default);
+				--🥝button-border-color: var(
+						--🌀button-state--default,
+						var(--✨border--solid-accent-default)
+					)
+					var(--🌀button-state--hover, var(--✨border--solid-accent-hover))
+					var(--🌀button-state--pressed, var(--✨border--solid-accent-pressed))
+					var(--🌀button-state--disabled, var(--✨border--solid-accent-disabled));
+			}
+
+			&:where([data-kiwi-tone="critical"]) {
+				--🥝button-bg--solid-default: var(--✨bg--solid-critical-default);
+				--🥝button-border-color: var(
+						--🌀button-state--default,
+						var(--✨border--solid-critical-default)
+					)
+					var(--🌀button-state--hover, var(--✨border--solid-critical-hover))
+					var(--🌀button-state--pressed, var(--✨border--solid-critical-pressed))
+					var(--🌀button-state--disabled, var(--✨border--solid-critical-disabled));
 			}
 		}
 

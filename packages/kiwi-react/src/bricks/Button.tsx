@@ -20,11 +20,11 @@ type ButtonProps = FocusableProps<"button"> &
 				 * The tone of the button. Most buttons should be neutral.
 				 * Accent buttons can be used to draw attention to the primary action.
 				 *
-				 * **Note:** The `"accent"` tone is only supported for the `"solid"` variant.
+				 * **Note:** The `"accent"` and `critical` tones are only supported for the `"solid"` variant.
 				 *
 				 * @default "neutral"
 				 */
-				tone?: "neutral" | "accent";
+				tone?: "neutral" | "accent" | "critical";
 		  }
 		| {
 				variant: "outline" | "ghost";

@@ -9,6 +9,7 @@ test("default", async ({ page }) => {
 	await page.goto("/tests/spinner");
 	const spinner = page.getByTestId("spinner");
 	await expect(spinner).toBeVisible();
+	await expect(spinner).toHaveText("Loading…");
 });
 
 test("@visual", async ({ page }) => {

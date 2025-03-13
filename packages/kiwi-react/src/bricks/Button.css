@@ -167,8 +167,8 @@
 
 				--🥝button-color: var(--ids-color-text-neutral-emphasis);
 				--🥝icon-color: var(--🌀button-state--default, var(--ids-color-icon-neutral-emphasis))
-					var(--🌀button-state--hover, var(--ids-color-icon-strong-hover))
-					var(--🌀button-state--pressed, var(--ids-color-icon-neutral-hover))
+					var(--🌀button-state--hover, var(--ids-color-icon-neutral-emphasis))
+					var(--🌀button-state--pressed, var(--ids-color-icon-neutral-emphasis))
 					var(--🌀button-state--disabled, var(--ids-color-icon-neutral-disabled));
 
 				@media (forced-colors: active) {

@@ -194,9 +194,9 @@ export function RightSidebar({
 	...props
 }: { header: React.ReactNode } & React.ComponentProps<"div">) {
 	return (
-		<div {...props}>
-			{header}
-			{children}
+		<div {...props} className={cx(styles.rightSidebar, props.className)}>
+			<div className={styles.rightSidebarHeader}>{header}</div>
+			<div className={styles.rightSidebarContent}>{children}</div>
 		</div>
 	);
 }

@@ -6,23 +6,3 @@
 	display: grid;
 	grid-template-columns: 1fr auto;
 }
-
-.rightSidebar {
-	background-color: var(--ids-color-bg-page-depth);
-	inline-size: min(100vi, 256px);
-	block-size: max(100vb, 100%);
-	overflow-y: auto;
-	overflow-x: hidden;
-}
-
-.rightSidebarContent {
-	padding: 0 8px;
-}
-
-.rightSidebarHeader {
-	block-size: 2.5rem;
-	display: flex;
-	align-items: center;
-	padding: 16px;
-	column-gap: 8px;
-}

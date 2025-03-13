@@ -60,7 +60,7 @@ export default function Page() {
 			{showRightSidebar ? (
 				<RightSidebar
 					header={
-						<div className={styles.rightSidebarHeader}>
+						<>
 							<IconButton
 								icon={chevronLeftIcon}
 								variant="ghost"
@@ -70,13 +70,10 @@ export default function Page() {
 							/>
 
 							<Text variant="body-md">{title}</Text>
-						</div>
+						</>
 					}
-					className={styles.rightSidebar}
 				>
-					<div className={styles.rightSidebarContent}>
-						<nav ref={setPortalTarget} />
-					</div>
+					<nav ref={setPortalTarget} />
 				</RightSidebar>
 			) : null}
 		</div>

@@ -150,6 +150,20 @@ export function useMediaQuery(query: string) {
 
 // ----------------------------------------------------------------------------
 
+/** Returns the value from local storage associated with the passed key */
+export const useLocalStorage = (key: string) => {
+	const [value, setValue] = React.useState<string | null>(null);
+
+	React.useEffect(() => {
+		const localStorageValue = localStorage.getItem(key);
+		setValue(localStorageValue);
+	}, [key]);
+
+	return value;
+};
+
+// ----------------------------------------------------------------------------
+
 export function toKebabCase(str: string) {
 	return str.replace(/([a-z])([A-Z])/g, "$1-$2").toLowerCase();
 }

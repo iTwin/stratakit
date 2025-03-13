@@ -17,7 +17,11 @@ import {
 	type LinksFunction,
 	Link,
 } from "react-router";
-import { RightSidebar, VariantsListContext } from "~/~utils.tsx";
+import {
+	RightSidebar,
+	useLocalStorage,
+	VariantsListContext,
+} from "~/~utils.tsx";
 import styles from "./tests.module.css";
 import * as React from "react";
 
@@ -33,10 +37,7 @@ export default function Page() {
 	const matches = useMatches();
 	const title = (matches.at(-1)?.handle as { title: string })?.title ?? "Tests";
 
-	const [isTest, setIsTest] = React.useState(false);
-	React.useEffect(() => {
-		setIsTest(localStorage.getItem("isTest") === "true");
-	}, []);
+	const showRightSidebar = useLocalStorage("🥝:right-sidebar") !== "false";
 
 	const [portalTarget, setPortalTarget] = React.useState<HTMLElement | null>(
 		null,
@@ -56,7 +57,7 @@ export default function Page() {
 				</VariantsListContext>
 			</main>
 
-			{isTest ? null : (
+			{showRightSidebar ? (
 				<RightSidebar
 					header={
 						<div className={styles.rightSidebarHeader}>
@@ -77,7 +78,7 @@ export default function Page() {
 						<nav ref={setPortalTarget} />
 					</div>
 				</RightSidebar>
-			)}
+			) : null}
 		</div>
 	);
 }

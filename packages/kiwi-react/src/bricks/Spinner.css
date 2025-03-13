@@ -4,6 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 
 .🥝-spinner {
+	--✨count: 4;
 	--✨duration: 1s;
 	--✨easing: linear;
 	--✨steps: 4;
@@ -11,7 +12,9 @@
 	--✨animation--indeterminate-steps: calc(var(--✨steps) * var(--✨duration))
 		--🥝spinner-animation-indeterminate steps(var(--✨steps), end) infinite;
 	--✨animation--indeterminate: var(--✨duration) --🥝spinner-animation-indeterminate
-		var(--✨easing) infinite;
+		var(--✨easing) var(--✨count);
+	--✨animation--indeterminate-slow: calc(var(--✨duration) * 2) --🥝spinner-animation-indeterminate
+		var(--✨easing) calc(var(--✨count) * var(--✨duration)) infinite;
 
 	@layer base {
 		display: inline-block;
@@ -51,7 +54,8 @@
 			--🥝spinner-dash-array: 25 75;
 
 			@media (prefers-reduced-motion: no-preference) {
-				--🥝spinner-animation: var(--✨animation--indeterminate);
+				--🥝spinner-animation: var(--✨animation--indeterminate),
+					var(--✨animation--indeterminate-slow);
 			}
 		}
 

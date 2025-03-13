@@ -48,6 +48,7 @@
 	position: relative;
 	border-radius: 4px;
 	padding-inline-start: calc(16px + 1rem); /* 8px padding + 8px header's gap + 1rem back icon size */
+	user-select: none;
 
 	/* Outline listItem when the listItemLink has focus */
 	&:has(.listItemLink:focus-visible) {

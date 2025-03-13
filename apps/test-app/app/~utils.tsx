@@ -224,7 +224,7 @@ export function VariantsList({
 	if (portalTarget == null) return null;
 
 	return ReactDOM.createPortal(
-		<div role="list">
+		<div role="list" className={styles.list}>
 			{variants.map((variant) => (
 				<ListItem.Root
 					key={variant.name}

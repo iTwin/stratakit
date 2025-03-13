@@ -29,10 +29,25 @@
 	}
 }
 
+.list {
+	position: relative;
+	--indent-guide-left-inset: calc(4px + 0.5rem); /* 4px button left padding + 1/2 of SVG icon size */
+
+	&::before {
+		content: "";
+		background-color: var(--ids-color-bg-page-base);
+		background-color: red;
+		inline-size: 1px;
+		position: absolute;
+		inset: 0 auto 0 var(--indent-guide-left-inset);
+	}
+}
+
 .listItem {
 	min-block-size: 2rem;
 	position: relative;
 	border-radius: 4px;
+	padding-inline-start: calc(16px + 1rem); /* 8px padding + 8px header gap + 1rem icon size */
 
 	/* Outline listItem when the listItemLink has focus */
 	&:has(.listItemLink:focus-visible) {
@@ -56,34 +71,19 @@
 		}
 	}
 
-	/* Indent guide */
-	&::before {
-		content: "";
-		background-color: var(--ids-color-bg-page-base);
-		margin: 0 12px;
-		inline-size: 0.0625rem;
-		block-size: 2rem;
-		transform: translateX(-50%);
-		
-		@media (forced-colors: active) {
-			background-color: CanvasText;
-		}
-	}
-
 	&:has(.listItemLink[aria-current="page"]) {
 		background-color: var(--ids-color-bg-glow-on-surface-accent-pressed);
 
 		/* Current page line */
-		&::after {
+		&::before {
 			content: "";
 			background-color: var(--ids-color-border-accent-strong);
 			block-size: 1.25rem;
-			inline-size: 0.125rem;
+			inline-size: 3px;
 			border-radius: 9999px;
 			position: absolute;
-			inset-inline-start: 20px; /* 8px padding + 12px indent guide margin */
-			transform: translateX(-50%);
-			
+			inset-inline-start: calc(var(--indent-guide-left-inset) - 1px); /* Indent guide inset - 1px for centering */
+
 			@media (forced-colors: active) {
 				background-color: CanvasText;
 			}
@@ -98,16 +98,15 @@
 	overflow-y: auto;
 	overflow-x: hidden;
 	border-inline-start: 1px solid var(--ids-color-border-neutral-muted);
-}
-
-.rightSidebarContent {
-	padding: 0 8px;
+	/* padding-inline: 8px;
+	padding-block: 16px; */
+	padding: 16px 8px;
 }
 
 .rightSidebarHeader {
 	min-block-size: 2.5rem;
 	display: flex;
 	align-items: center;
-	padding: 16px;
+	/* padding-block: 16px; */
 	column-gap: 8px;
 }

@@ -88,13 +88,6 @@ export const test = base.extend<{ page: Page }>({
 		page.goto = async (url, options) => {
 			const result = await _goto.call(page, url, options);
 			await page.waitForSelector("body[data-loaded]", { timeout: 5000 });
-
-			// Set localStorage.isTest to true
-			// await page.evaluate(() => localStorage.setItem("isTest", "true"));
-
-			// // Reload page
-			// await page.reload();
-
 			return result;
 		};
 		await use(page);

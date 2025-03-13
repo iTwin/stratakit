@@ -4,6 +4,15 @@
  *--------------------------------------------------------------------------------------------*/
 
 .🥝-spinner {
+	--✨duration: 1s;
+	--✨easing: linear;
+	--✨steps: 4;
+
+	--✨animation--indeterminate-steps: calc(var(--✨steps) * var(--✨duration))
+		--🥝spinner-animation-indeterminate steps(var(--✨steps), end) infinite;
+	--✨animation--indeterminate: var(--✨duration) --🥝spinner-animation-indeterminate
+		var(--✨easing) infinite;
+
 	@layer base {
 		display: inline-block;
 		block-size: var(--🥝spinner-size);
@@ -38,7 +47,12 @@
 		}
 
 		&:where([data-kiwi-variant="indeterminate"]) {
+			--🥝spinner-animation: var(--✨animation--indeterminate-steps);
 			--🥝spinner-dash-array: 25 75;
+
+			@media (prefers-reduced-motion: no-preference) {
+				--🥝spinner-animation: var(--✨animation--indeterminate);
+			}
 		}
 
 		@media (forced-colors: active) {
@@ -61,24 +75,16 @@
 }
 
 .🥝-spinner-svg-fill {
+	animation: var(--🥝spinner-animation);
 	stroke: var(--🥝spinner-fill-color);
 	stroke-dasharray: var(--🥝spinner-dash-array);
 	stroke-dashoffset: 25;
 	stroke-linecap: round;
 	transform-box: fill-box;
 	transform-origin: center;
-
-	:where([data-kiwi-variant="indeterminate"]) .🥝-spinner-svg & {
-		animation: --🥝spinner-spin 1s linear infinite both;
-
-		@media (prefers-reduced-motion) {
-			animation-timing-function: steps(4, end);
-			animation-duration: 4s;
-		}
-	}
 }
 
-@keyframes --🥝spinner-spin {
+@keyframes --🥝spinner-animation-indeterminate {
 	to {
 		rotate: 360deg;
 	}

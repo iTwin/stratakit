@@ -33,10 +33,10 @@
 	position: relative;
 	--indent-guide-left-inset: calc(4px + 0.5rem); /* 4px button left padding + 1/2 of SVG icon size */
 
+	/* Indent guide */
 	&::before {
 		content: "";
-		background-color: var(--ids-color-bg-page-base);
-		background-color: red;
+		background-color: var(--ids-color-border-page-base);
 		inline-size: 1px;
 		position: absolute;
 		inset: 0 auto 0 var(--indent-guide-left-inset);
@@ -47,7 +47,7 @@
 	min-block-size: 2rem;
 	position: relative;
 	border-radius: 4px;
-	padding-inline-start: calc(16px + 1rem); /* 8px padding + 8px header gap + 1rem icon size */
+	padding-inline-start: calc(16px + 1rem); /* 8px padding + 8px header's gap + 1rem back icon size */
 
 	/* Outline listItem when the listItemLink has focus */
 	&:has(.listItemLink:focus-visible) {
@@ -96,17 +96,16 @@
 	inline-size: min(100vi, 256px);
 	block-size: max(100vb, 100%);
 	overflow-y: auto;
-	overflow-x: hidden;
 	border-inline-start: 1px solid var(--ids-color-border-neutral-muted);
-	/* padding-inline: 8px;
-	padding-block: 16px; */
 	padding: 16px 8px;
+	display: flex;
+	flex-direction: column;
+	row-gap: 8px;
 }
 
 .rightSidebarHeader {
 	min-block-size: 2.5rem;
 	display: flex;
 	align-items: center;
-	/* padding-block: 16px; */
 	column-gap: 8px;
 }

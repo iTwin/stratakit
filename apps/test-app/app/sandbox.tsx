@@ -221,34 +221,8 @@ function Layout(
 	);
 }
 
-const createSkeletonTreeItem = (() => {
-	let level = 1;
-
-	/** A level between 1 and 5 */
-	function updateLevel() {
-		const random = Math.random();
-		let nextLevel = level;
-
-		if (random < 0.4) {
-			nextLevel = level - 1;
-		} else if (random < 0.8) {
-			nextLevel = level + 1;
-		}
-
-		level = clamp(nextLevel, 1, 5);
-	}
-
-	return () => {
-		const toReturn = level;
-		updateLevel();
-		return toReturn;
-	};
-})();
-
 function PanelLoading() {
-	const [levels, _] = React.useState(() =>
-		new Array(60).fill(null).map(() => createSkeletonTreeItem()),
-	);
+	const levels = [1, 1, 2, 2, 3, 2, 3, 2, 1, 1, 2, 3, 4, 5, 2, 3, 4, 5];
 
 	return (
 		<div className={styles.skeletonTree}>

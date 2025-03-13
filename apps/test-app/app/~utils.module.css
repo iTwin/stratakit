@@ -64,6 +64,10 @@
 		inline-size: 0.0625rem;
 		block-size: 2rem;
 		transform: translateX(-50%);
+		
+		@media (forced-colors: active) {
+			background-color: CanvasText;
+		}
 	}
 
 	&:has(.listItemLink[aria-current="page"]) {
@@ -79,6 +83,10 @@
 			position: absolute;
 			inset-inline-start: 20px; /* 8px padding + 12px indent guide margin */
 			transform: translateX(-50%);
+			
+			@media (forced-colors: active) {
+				background-color: CanvasText;
+			}
 		}
 	}
 }
@@ -89,6 +97,7 @@
 	block-size: max(100vb, 100%);
 	overflow-y: auto;
 	overflow-x: hidden;
+	border-inline-start: 1px solid var(--ids-color-border-neutral-muted);
 }
 
 .rightSidebarContent {

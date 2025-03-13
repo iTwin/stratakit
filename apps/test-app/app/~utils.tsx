@@ -9,6 +9,7 @@ import cx from "classnames";
 import { useSearchParams, Link } from "react-router";
 import { Anchor } from "@itwin/itwinui-react/bricks";
 import * as ListItem from "../node_modules/@itwin/itwinui-react/src/bricks/~utils.ListItem.tsx";
+import { Role } from "@ariakit/react/role";
 
 export type VariantProps = Record<string, string>;
 
@@ -231,13 +232,17 @@ export function VariantsList({
 					{...listItemProps}
 				>
 					<ListItem.Content>
-						<Anchor
+						<Role.span
 							className={styles.listItemLink}
-							render={<Link to={variant.url} />}
+							render={
+								!variant.isCurrent ? (
+									<Anchor render={<Link to={variant.url} />} />
+								) : undefined
+							}
 							aria-current={variant.isCurrent ? "page" : "false"}
 						>
 							{variant.name}
-						</Anchor>
+						</Role.span>
 					</ListItem.Content>
 				</ListItem.Root>
 			))}

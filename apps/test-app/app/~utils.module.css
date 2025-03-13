@@ -30,8 +30,7 @@
 }
 
 .listItem {
-	block-size: 2rem;
-	padding: 0 8px;
+	min-block-size: 2rem;
 	position: relative;
 	border-radius: 4px;
 
@@ -47,14 +46,8 @@
 	}
 
 	.listItemLink {
-		display: block;
-		text-overflow: ellipsis;
-		overflow-x: hidden;
-
 		/* Click target should be entire listItem */
 		outline: unset;
-		color: inherit;
-		cursor: pointer;
 
 		&::after {
 			content: "";
@@ -103,7 +96,7 @@
 }
 
 .rightSidebarHeader {
-	block-size: 2.5rem;
+	min-block-size: 2.5rem;
 	display: flex;
 	align-items: center;
 	padding: 16px;

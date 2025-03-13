@@ -54,7 +54,7 @@ async function fetchModelsData(
 		const data = await fetch(models[model].url).then((res) => res.json());
 		// Simulate network delay for models marked as "slow"
 		if (data.slow) {
-			await new Promise((resolve) => setTimeout(resolve, Math.random() * 2000));
+			await new Promise((resolve) => setTimeout(resolve, 2000));
 		}
 		return data;
 	}
@@ -114,13 +114,9 @@ export default function Page() {
 									{models[selectedModel]?.name}
 								</VisuallyHidden>
 
-								<Text
-									className={styles.panelCaption}
-									variant="body-sm"
-									render={<p />}
-								>
-									{query.data?.version || ""}
-								</Text>
+								<React.Suspense fallback={<Skeleton variant="text" />}>
+									<VersionContent query={query} />
+								</React.Suspense>
 							</hgroup>
 						</div>
 
@@ -135,7 +131,16 @@ export default function Page() {
 						</div>
 					</div>
 
-					<React.Suspense fallback={<PanelLoading />} key={selectedModel}>
+					<React.Suspense
+						fallback={
+							<>
+								<div className={styles.subheader}>
+									<Skeleton variant="text" />
+								</div>
+								<PanelLoading />
+							</>
+						}
+					>
 						<PanelContent query={query} />
 					</React.Suspense>
 				</>
@@ -246,6 +251,18 @@ function SkeletonTreeItem(props: React.ComponentProps<"div">) {
 			<Skeleton variant="object" size="small" />
 			<Skeleton variant="text" />
 		</div>
+	);
+}
+
+function VersionContent(props: {
+	query: UseQueryResult<Awaited<ReturnType<typeof fetchModelsData>>>;
+}) {
+	const { version = "" } = React.use(props.query.promise);
+
+	return (
+		<Text className={styles.panelCaption} variant="body-sm" render={<p />}>
+			{version}
+		</Text>
 	);
 }
 

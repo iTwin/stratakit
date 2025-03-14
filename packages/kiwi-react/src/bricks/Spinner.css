@@ -13,8 +13,9 @@
 		--🥝spinner-animation-indeterminate steps(var(--✨steps), end) infinite;
 	--✨animation--indeterminate: var(--✨duration) --🥝spinner-animation-indeterminate
 		var(--✨easing) var(--✨count);
-	--✨animation--indeterminate-slow: calc(var(--✨duration) * 2) --🥝spinner-animation-indeterminate
-		var(--✨easing) calc(var(--✨count) * var(--✨duration)) infinite;
+	--✨animation--indeterminate-slow: calc(var(--✨duration) * 2)
+		--🥝spinner-animation-indeterminate-slow var(--✨easing)
+		calc(var(--✨count) * var(--✨duration)) infinite;
 
 	@layer base {
 		display: inline-block;
@@ -90,6 +91,16 @@
 
 @keyframes --🥝spinner-animation-indeterminate {
 	to {
+		rotate: 360deg;
+	}
+}
+
+@keyframes --🥝spinner-animation-indeterminate-slow {
+	50% {
+		rotate: 10deg;
+	}
+
+	100% {
 		rotate: 360deg;
 	}
 }

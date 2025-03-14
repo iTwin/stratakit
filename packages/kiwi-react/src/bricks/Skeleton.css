@@ -14,7 +14,7 @@
 	);
 
 	@layer base {
-		background-color: oklch(from var(--ids-color-glow-hue) l c h / 0.04);
+		background-color: var(--ids-color-bg-glow-on-surface-disabled);
 		border-radius: var(--🥝skeleton-border-radius);
 		block-size: var(--🥝skeleton-height);
 		inline-size: var(--🥝skeleton-width);

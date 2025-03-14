@@ -53,9 +53,7 @@ export function definePage(
 				const safeVariableName = variantName || "default";
 
 				return {
-					name:
-						safeVariableName.charAt(0).toUpperCase() +
-						safeVariableName.slice(1),
+					name: toUpperCamelCase(safeVariableName),
 					url: variantName ? `?${variantName}` : "",
 					isCurrent:
 						variantName === ""

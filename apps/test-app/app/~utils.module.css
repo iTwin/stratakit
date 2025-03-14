@@ -47,7 +47,7 @@
 	min-block-size: 2rem;
 	position: relative;
 	border-radius: 4px;
-	padding-inline-start: calc(16px + 1rem); /* 8px padding + 8px header's gap + 1rem back icon size */
+	padding-inline-start: calc(8px + 1rem); /* 8px padding + 1rem back icon size */
 	user-select: none;
 
 	/* Outline listItem when the listItemLink has focus */
@@ -62,9 +62,10 @@
 	}
 
 	.listItemLink {
-		/* Click target should be entire listItem */
+		/* Focus outline will be shown on the listItem */
 		outline: unset;
 
+		/* Expand hit target area */
 		&::after {
 			content: "";
 			position: absolute;
@@ -98,7 +99,7 @@
 	block-size: max(100vb, 100%);
 	overflow-y: auto;
 	border-inline-start: 1px solid var(--ids-color-border-neutral-muted);
-	padding: 16px 8px;
+	padding: 8px;
 	display: flex;
 	flex-direction: column;
 	row-gap: 8px;
@@ -108,5 +109,4 @@
 	min-block-size: 2.5rem;
 	display: flex;
 	align-items: center;
-	column-gap: 8px;
 }

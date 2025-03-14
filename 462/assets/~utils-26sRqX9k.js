@@ -1,0 +1,1 @@
+import{a as t}from"./chunk-K6CSEXPM-Djlbx4X2.js";const o=typeof document<"u",s=o&&"popover"in HTMLElement.prototype;function e(r){return(r==null?void 0:r.nodeType)===Node.DOCUMENT_NODE}function u(r){return r&&(e(r)?r:r.ownerDocument)||null}const p=t.forwardRef;export{o as a,p as f,u as g,e as i,s};

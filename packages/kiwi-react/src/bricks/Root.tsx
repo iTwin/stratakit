@@ -9,8 +9,15 @@ import { PortalContext } from "@ariakit/react/portal";
 import cx from "classnames";
 import foundationsCss from "../foundations/styles.css.js";
 import bricksCss from "./styles.css.js";
-import { forwardRef, isBrowser, type BaseProps } from "./~utils.js";
-import { useIsClient, useMergedRefs } from "./~hooks.js";
+import {
+	forwardRef,
+	getOwnerDocument,
+	isBrowser,
+	isDocument,
+	type BaseProps,
+} from "./~utils.js";
+import { useLayoutEffect, useMergedRefs } from "./~hooks.js";
+import { RootNodeContext, useRootNode } from "./Root.internal.js";
 
 const css = foundationsCss + bricksCss;
 
@@ -81,16 +88,9 @@ DEV: Root.displayName = "Root";
 
 // ----------------------------------------------------------------------------
 
-const RootNodeContext = React.createContext<Document | ShadowRoot | null>(null);
-
-/** Returns the closest [rootNode](https://developer.mozilla.org/en-US/docs/Web/API/Node/getRootNode). */
-function useRootNode() {
-	return React.useContext(RootNodeContext);
-}
-
-// ----------------------------------------------------------------------------
-
-interface RootInternalProps extends Omit<RootProps, "synchronizeColorScheme"> {}
+interface RootInternalProps
+	extends BaseProps,
+		Pick<RootProps, "colorScheme" | "density"> {}
 
 const RootInternal = forwardRef<"div", RootInternalProps>(
 	(props, forwardedRef) => {
@@ -159,14 +159,10 @@ const PortalContainer = forwardRef<
 	"div",
 	Pick<RootProps, "colorScheme" | "density">
 >((props, forwardedRef) => {
-	const isClient = useIsClient();
 	const rootNode = useRootNode();
+	if (!rootNode) return null;
 
-	if (!isClient) return null;
-
-	const destination =
-		rootNode && isDocument(rootNode) ? rootNode.body : rootNode;
-
+	const destination = isDocument(rootNode) ? rootNode.body : rootNode;
 	if (!destination) return null;
 
 	return ReactDOM.createPortal(
@@ -302,17 +298,7 @@ function isShadow(node?: Node): node is ShadowRoot {
 	);
 }
 
-function isDocument(node?: Node): node is Document {
-	return node?.nodeType === Node.DOCUMENT_NODE;
-}
-
-function getOwnerDocument(node: Node) {
-	return (isDocument(node) ? node : node.ownerDocument) || null;
-}
-
 function getWindow(node: Node) {
 	const ownerDocument = getOwnerDocument(node);
 	return ownerDocument?.defaultView || null;
 }
-
-const useLayoutEffect = isBrowser ? React.useLayoutEffect : React.useEffect;

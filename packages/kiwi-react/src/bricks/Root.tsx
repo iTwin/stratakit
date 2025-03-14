@@ -197,11 +197,14 @@ function Styles() {
 
 // ----------------------------------------------------------------------------
 
-const styleSheets = new Map(
-	Object.entries({
-		/** Maintains a single stylesheet object per window to enable reuse. */
-		default: new WeakMap<Window, CSSStyleSheet>(),
-	}),
+/**
+ * A Map of WeakMaps containing information for all stylesheets.
+ *
+ * The outer Map expects string keys (unique per set of CSS contents).
+ * The inner WeakMap maintains a single CSSStyleSheet object per window (to enable reuse).
+ */
+const styleSheets = new Map<string, WeakMap<Window, CSSStyleSheet>>(
+	Object.entries({ default: new WeakMap() }),
 );
 
 /**

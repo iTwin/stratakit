@@ -6,22 +6,55 @@
 .🥝-tab-list {
 	@layer base {
 		--🥝tab-active-stripe-gap: 6px;
+		--🥝tab-active-tab-stripe-size: 2px;
+		--🥝tab-padding-inline: 4px;
 
 		display: flex;
 		gap: 8px;
+
+		@supports (position-anchor: --active-tab) {
+			position: relative;
+
+			&::after {
+				@layer base {
+					content: "";
+					position: absolute;
+					position-anchor: --active-tab;
+					inset-inline: calc(anchor(left) + var(--🥝tab-padding-inline))
+						calc(anchor(right) + var(--🥝tab-padding-inline));
+					inset-block-end: calc(anchor(bottom) - var(--🥝tab-active-stripe-gap));
+					block-size: var(--🥝tab-active-tab-stripe-size);
+					background-color: var(--🥝tab-active-stripe-color);
+
+					@media (prefers-reduced-motion: no-preference) {
+						transition: inset-inline 150ms ease-in-out;
+					}
+
+					@media (forced-colors: active) {
+						background-color: SelectedItem;
+					}
+				}
+			}
+		}
 	}
 
 	@layer modifiers {
 		&[aria-orientation="horizontal"] {
 			padding-block-end: var(--🥝tab-active-stripe-gap);
 		}
+
+		&:where([data-kiwi-tone="neutral"]) {
+			--🥝tab-active-stripe-color: var(--ids-color-border-neutral-inverse);
+		}
+
+		&:where([data-kiwi-tone="accent"]) {
+			--🥝tab-active-stripe-color: var(--ids-color-border-accent-strong);
+		}
 	}
 }
 
 .🥝-tab {
 	--✨height: 1.25rem;
-	--✨padding-inline: 4px;
-	--✨active-tab-stripe-size: 2px;
 
 	--✨bg--default: transparent;
 	--✨bg--hover-neutral: var(--ids-color-bg-glow-on-surface-neutral-hover);
@@ -43,7 +76,7 @@
 		border: none;
 		border-radius: 4px;
 		block-size: var(--✨height);
-		padding-inline: var(--✨padding-inline);
+		padding-inline: var(--🥝tab-padding-inline);
 		position: relative;
 		user-select: none;
 		white-space: nowrap;
@@ -65,7 +98,6 @@
 
 	@layer modifiers {
 		:where(.🥝-tab-list[data-kiwi-tone="neutral"]) & {
-			--🥝tab-active-stripe-color: var(--ids-color-border-neutral-inverse);
 			--🥝tab-bg: var(--🌀tab-state--default, var(--✨bg--default))
 				var(--🌀tab-state--hover, var(--✨bg--hover-neutral))
 				var(--🌀tab-state--selected, var(--✨bg--selected))
@@ -78,7 +110,6 @@
 		}
 
 		:where(.🥝-tab-list[data-kiwi-tone="accent"]) & {
-			--🥝tab-active-stripe-color: var(--ids-color-border-accent-strong);
 			--🥝tab-bg: var(--🌀tab-state--default, var(--✨bg--default))
 				var(--🌀tab-state--hover, var(--✨bg--hover-accent))
 				var(--🌀tab-state--selected, var(--✨bg--selected))
@@ -95,21 +126,22 @@
 		&:where([aria-selected="true"]) {
 			--🌀tab-state: var(--🌀tab-state--selected);
 
-			/* This pseudo-element adds the active stripe */
-			&::after {
-				content: "";
-				position: absolute;
-				background-color: var(--🥝tab-active-stripe-color);
-				block-size: var(--✨active-tab-stripe-size);
-				inset-inline: var(--✨padding-inline);
-				inset-block: auto calc(var(--🥝tab-active-stripe-gap) * -1);
+			@supports (position-anchor: --active-tab) {
+				anchor-name: --active-tab;
+			}
 
-				@media (prefers-reduced-motion: no-preference) {
-					view-transition-name: var(--🥝tab-active-stripe-view-transition-name);
-				}
+			@supports not (position-anchor: --active-tab) {
+				&::after {
+					content: "";
+					position: absolute;
+					background-color: var(--🥝tab-active-stripe-color);
+					block-size: var(--🥝tab-active-tab-stripe-size);
+					inset-inline: var(--🥝tab-padding-inline);
+					inset-block: auto calc(var(--🥝tab-active-stripe-gap) * -1);
 
-				@media (forced-colors: active) {
-					background-color: SelectedItem;
+					@media (forced-colors: active) {
+						background-color: SelectedItem;
+					}
 				}
 			}
 		}
@@ -127,10 +159,6 @@
 
 			@media (forced-colors: active) {
 				color: GrayText;
-
-				&::after {
-					background-color: GrayText;
-				}
 			}
 		}
 	}

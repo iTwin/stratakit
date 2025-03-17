@@ -87,7 +87,7 @@ export const identity = <T,>(value: T) => value;
  * `cyrb53`: A fast and simple 53-bit hash function.
  *
  * © 2018 bryc (License: Public domain)
- * @see https://github.com/bryc/code/blob/master/jshash/experimental/cyrb53.js
+ * @see https://github.com/bryc/code/blob/fdd2d21471febe58c7879707c0f43a65e1dd8248/jshash/experimental/cyrb53.js#L1-L19
  */
 export const hash = (str: string, seed = 0) => {
 	let h1 = 0xdeadbeef ^ seed;

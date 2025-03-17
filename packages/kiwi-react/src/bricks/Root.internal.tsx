@@ -4,7 +4,6 @@
  *--------------------------------------------------------------------------------------------*/
 import * as React from "react";
 import { useIsClient } from "./~hooks.js";
-import { identity } from "./~utils.js";
 
 // ----------------------------------------------------------------------------
 
@@ -23,10 +22,10 @@ export function useRootNode() {
 
 // ----------------------------------------------------------------------------
 
-export const spriteSheetId = "🥝-inline-sprite";
+export const spriteSheetId = "🥝-inline-sprites";
 
 // ----------------------------------------------------------------------------
 
 export const HtmlSanitizerContext = React.createContext<
 	((html: string) => string) | undefined
->(identity);
+>(undefined);

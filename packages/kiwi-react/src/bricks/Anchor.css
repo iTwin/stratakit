@@ -47,6 +47,7 @@
 		&:where(button) {
 			border: none;
 			background: transparent;
+			text-decoration: underline;
 		}
 	}
 

@@ -16,12 +16,13 @@ export default definePage(function Page({
 	overflow = false,
 	selected = false,
 	description: descriptionParam,
+	error: errorParam,
 }) {
 	const overflowPostfix = overflow
 		? " with a super long label that is overflown"
 		: "";
 	const description = descriptionParam ? "Additional description" : undefined;
-
+	const [renderError, setRenderError] = React.useState(!!errorParam);
 	const [data, setData] = React.useState(() => [
 		{
 			label: `Item 1${overflowPostfix}`,
@@ -62,6 +63,7 @@ export default definePage(function Page({
 					setData(newData);
 				};
 
+				const error = renderError && index === 0;
 				return (
 					<React.Fragment key={item.label}>
 						<Tree.Item
@@ -84,6 +86,7 @@ export default definePage(function Page({
 								/>,
 								<Tree.ItemAction key="show" icon={showIcon} label="Show" />,
 							]}
+							error={error}
 						/>
 						{item.children?.map((child, childIndex, children) => {
 							if (!item.expanded) return null;

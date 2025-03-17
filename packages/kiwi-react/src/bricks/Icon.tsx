@@ -16,7 +16,7 @@ import {
 	spriteSheetId,
 	useRootNode,
 } from "./Root.internal.js";
-import { useLatestRef, useLayoutEffect, useSafeContext } from "./~hooks.js";
+import { useLatestRef, useSafeContext } from "./~hooks.js";
 
 interface IconProps extends Omit<BaseProps<"svg">, "children"> {
 	/**
@@ -114,72 +114,90 @@ function toIconId(size: IconProps["size"]) {
 /**
  * Handles runtime fallback of URLs that are not natively supported in `<use href="…">`.
  *
- * The SVG content is fetched, and the symbols are stored as same-document fragments.
- * This makes it possible to refer to the symbols using `<use href="#…">`.
+ * When the URL protocol is not HTTP/HTTPS, the SVG content is fetched from the URL,
+ * and the symbols are stored as same-document fragments. This makes it possible to refer
+ * to the symbols using `<use href="#…">`.
  */
 function useNormalizedHrefBase(rawHref: string | undefined) {
-	const [href, setHref] = React.useState<string | undefined>(() =>
-		// Skip data URLs on first render to prevent console warnings.
-		rawHref?.startsWith("data:") ? undefined : rawHref,
-	);
-
 	const sanitizeHtml = useLatestRef(useSafeContext(HtmlSanitizerContext));
 	const rootNode = useRootNode();
+	const inlineHref = React.useRef<string | undefined>(undefined);
 
-	useLayoutEffect(
-		function handleNonHttpProtocols() {
+	const getClientSnapshot = () => {
+		const ownerDocument = getOwnerDocument(rootNode);
+		if (!rawHref || !ownerDocument) return undefined;
+
+		// Browser will handle this.
+		if (isHttpProtocol(rawHref, ownerDocument)) return rawHref;
+
+		return inlineHref.current;
+	};
+
+	const subscribe = React.useCallback(
+		(notify: () => void) => {
 			const ownerDocument = getOwnerDocument(rootNode);
-			if (!rawHref || !ownerDocument) return;
+			if (!rawHref || !ownerDocument) return () => {};
 
-			const { protocol } = new URL(rawHref, ownerDocument.baseURI);
-			if (["http:", "https:"].includes(protocol)) return; // Browser will handle these.
+			// Browser will handle this.
+			if (isHttpProtocol(rawHref, ownerDocument)) return () => {};
 
 			// Prefix for the inlined sprite ids. The rest is handled in `toIconHref`.
 			const id = `🥝${hash(rawHref)}`;
+			const href = `#${id}`;
 
 			// Short-circuit if the inline sprite is already present in the document.
-			if (ownerDocument.getElementById(id)) {
-				setHref(`#${id}`);
-				return;
+			if (ownerDocument.querySelector(`symbol[data-kiwi-symbol="${id}"]`)) {
+				inlineHref.current = href;
+				notify();
+				return () => {};
 			}
 
 			const abortController = new AbortController();
+			const { signal } = abortController;
 
-			fetch(rawHref, { signal: abortController.signal }).then(
-				async (response) => {
-					if (!response.ok) throw new Error(`Failed to fetch ${rawHref}`);
+			fetch(rawHref, { signal }).then(async (response) => {
+				if (!response.ok) throw new Error(`Failed to fetch ${rawHref}`);
 
-					const svgString = sanitizeHtml.current(await response.text());
-					const template = Object.assign(
-						ownerDocument.createElement("template"),
-						{ innerHTML: svgString },
-					);
-					const symbols = template.content.querySelectorAll("symbol");
+				const svgString = sanitizeHtml.current(await response.text());
+				const template = Object.assign(
+					ownerDocument.createElement("template"),
+					{ innerHTML: svgString },
+				);
+				const symbols = template.content.querySelectorAll("symbol");
 
-					for (const symbol of symbols) {
-						symbol.id = `${id}--${symbol.id}`;
+				for (const symbol of symbols) {
+					symbol.id = `${id}--${symbol.id}`;
+					symbol.dataset.kiwiSymbol = id;
 
-						// Skip if already present.
-						if (ownerDocument.getElementById(symbol.id)) continue;
+					// Skip if already present.
+					if (ownerDocument.getElementById(symbol.id)) continue;
 
-						// Store symbols in the spritesheet rendered by the <Root>.
-						ownerDocument
-							.getElementById(spriteSheetId)
-							?.appendChild(symbol.cloneNode(true));
-					}
-					setHref(`#${id}`);
-				},
-			);
+					// Store symbols in the spritesheet rendered by the <Root>.
+					ownerDocument
+						.getElementById(spriteSheetId)
+						?.appendChild(symbol.cloneNode(true));
+				}
 
-			return () => {
-				setHref(undefined);
-				abortController.abort(); // Cancel ongoing fetch.
-			};
+				inlineHref.current = href;
+				notify();
+			});
+
+			return () => abortController.abort(); // Cancel ongoing fetch.
 		},
 		[rawHref, rootNode, sanitizeHtml],
 	);
 
-	return href;
+	return React.useSyncExternalStore(
+		subscribe,
+		getClientSnapshot,
+		() => rawHref,
+	);
+}
+
+/** Returns true if the url's protocol is http: or https: */
+function isHttpProtocol(url: string, ownerDocument: Document) {
+	const { protocol } = new URL(url, ownerDocument.baseURI);
+	return ["http:", "https:"].includes(protocol);
 }
 
 // ----------------------------------------------------------------------------

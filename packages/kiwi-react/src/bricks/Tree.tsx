@@ -50,14 +50,13 @@ const Tree = forwardRef<"div", TreeProps>((props, forwardedRef) => {
 		NonNullable<React.ContextType<typeof TreeContext>>["setErrorId"]
 	>((args) => {
 		const { errorId } = args;
-		if (errorId === undefined) {
-			setItemIdToErrorId((prev) => {
-				const next = new Map(prev);
+		setItemIdToErrorId((prev) => {
+			const next = new Map(prev);
+			if (errorId === undefined) {
 				return next.delete(args.itemId) ? next : prev;
-			});
-			return;
-		}
-		setItemIdToErrorId((prev) => new Map(prev).set(args.itemId, errorId));
+			}
+			return next.set(args.itemId, errorId);
+		});
 	}, []);
 	return (
 		<TreeContext.Provider

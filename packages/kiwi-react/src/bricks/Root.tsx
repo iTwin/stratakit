@@ -303,7 +303,10 @@ function Fonts() {
 
 // ----------------------------------------------------------------------------
 
-/** Container for holding inline SVG sprites. */
+/**
+ * A hidden `<svg>` element that gets injected into the `<body>`. This hidden element gets used as
+ * a container for holding inlined SVG sprites (added/used by `<Icon>` component in certain scenarios).
+ */
 function InlineSpriteSheet() {
 	const rootNode = useRootNode();
 

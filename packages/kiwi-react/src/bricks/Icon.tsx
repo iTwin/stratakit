@@ -9,6 +9,7 @@ import {
 	forwardRef,
 	getOwnerDocument,
 	hash,
+	parseDOM,
 	type BaseProps,
 } from "./~utils.js";
 import {
@@ -98,12 +99,19 @@ DEV: Icon.displayName = "Icon";
 
 // ----------------------------------------------------------------------------
 
+/**
+ * Constructs a final URL from the base and "size".
+ *
+ * For external URLs, we use a regular URL hash (e.g. `placeholder.svg#${id}`).
+ * For same-document URLs, we append `--${id}` (e.g. `#placeholder--${id}`).
+ */
 function toIconHref(hrefBase: string, size: IconProps["size"]) {
 	const separator = hrefBase.includes("#") ? "--" : "#";
 	const suffix = toIconId(size);
 	return `${hrefBase}${separator}${suffix}`;
 }
 
+/** Returns a symbol ID matching the conventions used in `@itwin/itwinui-icons`. */
 function toIconId(size: IconProps["size"]) {
 	if (size === "large") return "icon-large";
 	return "icon";
@@ -155,19 +163,18 @@ function useNormalizedHrefBase(rawHref: string | undefined) {
 			const abortController = new AbortController();
 			const { signal } = abortController;
 
+			// Make a network request
 			fetch(rawHref, { signal }).then(async (response) => {
 				if (!response.ok) throw new Error(`Failed to fetch ${rawHref}`);
 
-				const svgString = sanitizeHtml.current(await response.text());
-				const template = Object.assign(
-					ownerDocument.createElement("template"),
-					{ innerHTML: svgString },
-				);
-				const symbols = template.content.querySelectorAll("symbol");
+				// Find all `<symbol>` elements from the response.
+				const fetchedSvgString = sanitizeHtml.current(await response.text());
+				const parsedSvgContent = parseDOM(fetchedSvgString, { ownerDocument });
+				const symbols = parsedSvgContent.querySelectorAll("symbol");
 
 				for (const symbol of symbols) {
-					symbol.id = `${id}--${symbol.id}`;
-					symbol.dataset.kiwiSymbol = id;
+					symbol.id = `${id}--${symbol.id}`; // unique ID
+					symbol.dataset.kiwiSymbol = id; // for quick lookup
 
 					// Skip if already present.
 					if (ownerDocument.getElementById(symbol.id)) continue;
@@ -179,7 +186,7 @@ function useNormalizedHrefBase(rawHref: string | undefined) {
 				}
 
 				inlineHref.current = href;
-				notify();
+				if (!signal.aborted) notify();
 			});
 
 			return () => abortController.abort(); // Cancel ongoing fetch.
@@ -193,6 +200,8 @@ function useNormalizedHrefBase(rawHref: string | undefined) {
 		() => rawHref,
 	);
 }
+
+// ----------------------------------------------------------------------------
 
 /** Returns true if the url's protocol is http: or https: */
 function isHttpProtocol(url: string, ownerDocument: Document) {

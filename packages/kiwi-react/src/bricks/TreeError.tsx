@@ -5,7 +5,6 @@
 import * as React from "react";
 import cx from "classnames";
 import { Role } from "@ariakit/react/role";
-import { Button as ButtonAk } from "@ariakit/react/button";
 import { forwardRef, type BaseProps } from "./~utils.js";
 import { ChevronDown, Dismiss, StatusWarning } from "./Icon.js";
 import { Text } from "./Text.js";
@@ -150,17 +149,7 @@ interface TreeErrorItemActionProps extends BaseProps<"button"> {}
  */
 const TreeErrorItemAction = forwardRef<"button", TreeErrorItemActionProps>(
 	(props, forwardedRef) => {
-		return (
-			<Anchor
-				render={
-					<button
-						{...props}
-						className={cx("🥝-tree-error-item-action", props.className)}
-					/>
-				}
-				ref={forwardedRef}
-			/>
-		);
+		return <Anchor render={<button {...props} />} ref={forwardedRef} />;
 	},
 );
 DEV: TreeErrorItemAction.displayName = "Tree.ErrorItemAction";

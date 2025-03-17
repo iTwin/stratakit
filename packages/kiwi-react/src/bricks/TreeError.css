@@ -110,10 +110,3 @@
 		grid-row: 2;
 	}
 }
-
-.🥝-tree-error-item-action:is(.🥝-anchor) {
-	@layer base {
-		/* TODO: move to Anchor.css */
-		text-decoration: underline;
-	}
-}

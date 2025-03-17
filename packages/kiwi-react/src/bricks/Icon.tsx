@@ -5,7 +5,12 @@
 import * as React from "react";
 import cx from "classnames";
 import { Role } from "@ariakit/react/role";
-import { forwardRef, getOwnerDocument, type BaseProps } from "./~utils.js";
+import {
+	forwardRef,
+	getOwnerDocument,
+	hash,
+	type BaseProps,
+} from "./~utils.js";
 import {
 	HtmlSanitizerContext,
 	spriteSheetId,
@@ -113,7 +118,6 @@ function toIconId(size: IconProps["size"]) {
  * This makes it possible to refer to the symbols using `<use href="#…">`.
  */
 function useNormalizedHrefBase(rawHref: string | undefined) {
-	const id = React.useId();
 	const [href, setHref] = React.useState<string | undefined>(() =>
 		// Skip data URLs on first render to prevent console warnings.
 		rawHref?.startsWith("data:") ? undefined : rawHref,
@@ -128,14 +132,14 @@ function useNormalizedHrefBase(rawHref: string | undefined) {
 			if (!rawHref || !ownerDocument) return;
 
 			const { protocol } = new URL(rawHref, ownerDocument.baseURI);
-			if (["http://", "https://"].includes(protocol)) return; // Browser will handle these.
+			if (["http:", "https:"].includes(protocol)) return; // Browser will handle these.
 
 			// Prefix for the inlined sprite ids. The rest is handled in `toIconHref`.
-			const inlineHref = `#🥝${id}`;
+			const id = `🥝${hash(rawHref)}`;
 
 			// Short-circuit if the inline sprite is already present in the document.
-			if (ownerDocument.getElementById(inlineHref)) {
-				setHref(inlineHref);
+			if (ownerDocument.getElementById(id)) {
+				setHref(`#${id}`);
 				return;
 			}
 
@@ -153,7 +157,7 @@ function useNormalizedHrefBase(rawHref: string | undefined) {
 					const symbols = template.content.querySelectorAll("symbol");
 
 					for (const symbol of symbols) {
-						symbol.id = `🥝${id}--${symbol.id}`;
+						symbol.id = `${id}--${symbol.id}`;
 
 						// Skip if already present.
 						if (ownerDocument.getElementById(symbol.id)) continue;
@@ -163,7 +167,7 @@ function useNormalizedHrefBase(rawHref: string | undefined) {
 							.getElementById(spriteSheetId)
 							?.appendChild(symbol.cloneNode(true));
 					}
-					setHref(inlineHref);
+					setHref(`#${id}`);
 				},
 			);
 
@@ -172,7 +176,7 @@ function useNormalizedHrefBase(rawHref: string | undefined) {
 				abortController.abort(); // Cancel ongoing fetch.
 			};
 		},
-		[rawHref, id, rootNode, sanitizeHtml],
+		[rawHref, rootNode, sanitizeHtml],
 	);
 
 	return href;

@@ -46,7 +46,7 @@ interface IconProps extends Omit<BaseProps<"svg">, "children"> {
 
 /**
  * Icon component that provides fill and sizing to the SVGs from `@itwin/itwinui-icons`.
- * It uses renders the correct symbol sprite based on the specified `size`.
+ * It renders the correct symbol sprite based on the specified `size`.
  *
  * ```tsx
  * const arrowIcon = new URL("@itwin/itwinui-icons/arrow.svg", import.meta.url).href;

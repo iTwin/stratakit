@@ -812,8 +812,7 @@ function SandboxTree({
 									? "1 issue found"
 									: `${errorItems.length} issues found`
 							}
-						>
-							{errorItems.map((item) => {
+							items={errorItems.map((item) => {
 								const treeItemId = `${treeId}-${item.id}`;
 								return (
 									<Tree.ErrorItem
@@ -851,7 +850,7 @@ function SandboxTree({
 									/>
 								);
 							})}
-						</Tree.Error>
+						/>
 					) : undefined
 				}
 			>

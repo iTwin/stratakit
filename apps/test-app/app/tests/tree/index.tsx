@@ -68,33 +68,35 @@ export default definePage(function Page({
 							label="1 issue found"
 							expanded={expanded}
 							onExpandedChange={setExpanded}
-						>
-							<Tree.ErrorItem
-								treeItemId={errors[0]}
-								message={
-									<>
-										<span>Failed to create hierarchy for </span>
-										<Anchor
-											render={<button />}
-											onClick={() => {
-												errorItemRef.current?.focus();
-											}}
+							items={[
+								<Tree.ErrorItem
+									key="1.2"
+									treeItemId={errors[0]}
+									message={
+										<>
+											<span>Failed to create hierarchy for </span>
+											<Anchor
+												render={<button />}
+												onClick={() => {
+													errorItemRef.current?.focus();
+												}}
+											>
+												Item 1.2
+											</Anchor>
+										</>
+									}
+									onDismiss={() => setRenderError(false)}
+									actions={[
+										<Tree.ErrorItemAction
+											key="retry"
+											onClick={() => setRenderError(false)}
 										>
-											Item 1.2
-										</Anchor>
-									</>
-								}
-								onDismiss={() => setRenderError(false)}
-								actions={[
-									<Tree.ErrorItemAction
-										key="retry"
-										onClick={() => setRenderError(false)}
-									>
-										Retry
-									</Tree.ErrorItemAction>,
-								]}
-							/>
-						</Tree.Error>
+											Retry
+										</Tree.ErrorItemAction>,
+									]}
+								/>,
+							]}
+						/>
 					) : undefined
 				}
 			>

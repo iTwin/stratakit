@@ -75,3 +75,7 @@ export type FocusableProps<ElementType extends React.ElementType = "div"> =
 
 /** See https://github.com/Microsoft/TypeScript/issues/29729 */
 export type AnyString = string & {};
+
+// ----------------------------------------------------------------------------
+
+export const identity = <T,>(value: T) => value;

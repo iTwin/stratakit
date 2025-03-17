@@ -12,12 +12,18 @@ import bricksCss from "./styles.css.js";
 import {
 	forwardRef,
 	getOwnerDocument,
+	identity,
 	isBrowser,
 	isDocument,
 	type BaseProps,
 } from "./~utils.js";
 import { useLayoutEffect, useMergedRefs } from "./~hooks.js";
-import { RootNodeContext, useRootNode } from "./Root.internal.js";
+import {
+	HtmlSanitizerContext,
+	RootNodeContext,
+	spriteSheetId,
+	useRootNode,
+} from "./Root.internal.js";
 
 const css = foundationsCss + bricksCss;
 
@@ -42,6 +48,19 @@ interface RootProps extends BaseProps {
 	 * The density to use for all components under the Root.
 	 */
 	density: "dense";
+
+	/**
+	 * An HTML sanitizer function that will be used across all components wherever DOM elements
+	 * are created from HTML strings.
+	 *
+	 * When this prop is not passed, sanitization will be skipped.
+	 *
+	 * Example:
+	 * ```tsx
+	 * unstablized_htmlSanitizer={DOMPurify.sanitize}
+	 * ```
+	 */
+	unstable_htmlSanitizer?: (html: string) => string;
 }
 
 /**
@@ -58,7 +77,12 @@ interface RootProps extends BaseProps {
  * ```
  */
 export const Root = forwardRef<"div", RootProps>((props, forwardedRef) => {
-	const { children, synchronizeColorScheme = false, ...rest } = props;
+	const {
+		children,
+		synchronizeColorScheme = false,
+		unstable_htmlSanitizer = identity,
+		...rest
+	} = props;
 
 	const [portalContainer, setPortalContainer] =
 		React.useState<HTMLElement | null>(null);
@@ -67,6 +91,7 @@ export const Root = forwardRef<"div", RootProps>((props, forwardedRef) => {
 		<RootInternal {...rest} ref={forwardedRef}>
 			<Styles />
 			<Fonts />
+			<InlineSpriteSheet />
 
 			{synchronizeColorScheme ? (
 				<SynchronizeColorScheme colorScheme={props.colorScheme} />
@@ -79,7 +104,9 @@ export const Root = forwardRef<"div", RootProps>((props, forwardedRef) => {
 			/>
 
 			<PortalContext.Provider value={portalContainer}>
-				{children}
+				<HtmlSanitizerContext.Provider value={unstable_htmlSanitizer}>
+					{children}
+				</HtmlSanitizerContext.Provider>
 			</PortalContext.Provider>
 		</RootInternal>
 	);
@@ -270,6 +297,39 @@ function Fonts() {
 		if (!rootNode) return;
 		loadFonts(rootNode);
 	}, [rootNode]);
+
+	return null;
+}
+
+// ----------------------------------------------------------------------------
+
+/** Container for holding inline SVG sprites. */
+function InlineSpriteSheet() {
+	const rootNode = useRootNode();
+
+	React.useEffect(
+		function maybeCreateSpriteSheet() {
+			const ownerDocument = getOwnerDocument(rootNode);
+			if (!ownerDocument) return;
+
+			// Ensure there is only one.
+			const spriteSheet = ownerDocument?.getElementById(spriteSheetId);
+			if (spriteSheet) return;
+
+			const svg = ownerDocument.createElementNS(
+				"http://www.w3.org/2000/svg",
+				"svg",
+			);
+			svg.id = spriteSheetId;
+			svg.style.display = "none";
+			ownerDocument.body.appendChild(svg);
+
+			return () => {
+				ownerDocument.body.removeChild(svg);
+			};
+		},
+		[rootNode],
+	);
 
 	return null;
 }

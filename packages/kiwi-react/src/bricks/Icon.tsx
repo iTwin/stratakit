@@ -5,13 +5,24 @@
 import * as React from "react";
 import cx from "classnames";
 import { Role } from "@ariakit/react/role";
-import { forwardRef, type BaseProps } from "./~utils.js";
+import { forwardRef, getOwnerDocument, type BaseProps } from "./~utils.js";
+import {
+	HtmlSanitizerContext,
+	spriteSheetId,
+	useRootNode,
+} from "./Root.internal.js";
+import { useLatestRef, useLayoutEffect, useSafeContext } from "./~hooks.js";
 
 interface IconProps extends Omit<BaseProps<"svg">, "children"> {
 	/**
 	 * URL of the symbol sprite.
 	 *
 	 * Should be a URL to an `.svg` file from `@itwin/itwinui-icons`.
+	 *
+	 * Note: The `.svg` must be an external HTTP resource for it to be processed by
+	 * the `<use>` element. As a fallback, JS will be used to `fetch` the SVG from
+	 * non-supported URLs; the fetched SVG content will be sanitized using the
+	 * `unstable_htmlSanitizer` function passed to `<Root>`.
 	 */
 	href?: string;
 	/**
@@ -35,7 +46,7 @@ interface IconProps extends Omit<BaseProps<"svg">, "children"> {
 
 /**
  * Icon component that provides fill and sizing to the SVGs from `@itwin/itwinui-icons`.
- * It uses an external symbol sprite to render the icon based on the specified `size`.
+ * It uses renders the correct symbol sprite based on the specified `size`.
  *
  * ```tsx
  * const arrowIcon = new URL("@itwin/itwinui-icons/arrow.svg", import.meta.url).href;
@@ -56,31 +67,115 @@ interface IconProps extends Omit<BaseProps<"svg">, "children"> {
  * <Icon href={…} alt="Help" />
  * ```
  */
-export const Icon = forwardRef<"svg", IconProps>((props, forwardedRef) => {
-	const { href, size, alt, ...rest } = props;
+export const Icon = React.memo(
+	forwardRef<"svg", IconProps>((props, forwardedRef) => {
+		const { href: hrefProp, size, alt, ...rest } = props;
 
-	const iconId = toIconId(size);
-	const isDecorative = !alt;
+		const isDecorative = !alt;
+		const hrefBase = useNormalizedHrefBase(hrefProp);
 
-	return (
-		<Role.svg
-			aria-hidden={isDecorative ? "true" : undefined}
-			role={isDecorative ? undefined : "img"}
-			aria-label={isDecorative ? undefined : alt}
-			{...rest}
-			data-kiwi-size={size}
-			className={cx("🥝-icon", props.className)}
-			ref={forwardedRef}
-		>
-			<use href={`${props.href}#${iconId}`} />
-		</Role.svg>
-	);
-});
+		return (
+			<Role.svg
+				aria-hidden={isDecorative ? "true" : undefined}
+				role={isDecorative ? undefined : "img"}
+				aria-label={isDecorative ? undefined : alt}
+				{...rest}
+				data-kiwi-size={size}
+				className={cx("🥝-icon", props.className)}
+				ref={forwardedRef}
+			>
+				{hrefBase ? <use href={toIconHref(hrefBase, size)} /> : null}
+			</Role.svg>
+		);
+	}),
+);
 DEV: Icon.displayName = "Icon";
+
+// ----------------------------------------------------------------------------
+
+function toIconHref(hrefBase: string, size: IconProps["size"]) {
+	const separator = hrefBase.includes("#") ? "--" : "#";
+	const suffix = toIconId(size);
+	return `${hrefBase}${separator}${suffix}`;
+}
 
 function toIconId(size: IconProps["size"]) {
 	if (size === "large") return "icon-large";
 	return "icon";
+}
+
+// ----------------------------------------------------------------------------
+
+/**
+ * Handles runtime fallback of URLs that are not natively supported in `<use href="…">`.
+ *
+ * The SVG content is fetched, and the symbols are stored as same-document fragments.
+ * This makes it possible to refer to the symbols using `<use href="#…">`.
+ */
+function useNormalizedHrefBase(rawHref: string | undefined) {
+	const id = React.useId();
+	const [href, setHref] = React.useState<string | undefined>(() =>
+		// Skip data URLs on first render to prevent console warnings.
+		rawHref?.startsWith("data:") ? undefined : rawHref,
+	);
+
+	const sanitizeHtml = useLatestRef(useSafeContext(HtmlSanitizerContext));
+	const rootNode = useRootNode();
+
+	useLayoutEffect(
+		function handleNonHttpProtocols() {
+			const ownerDocument = getOwnerDocument(rootNode);
+			if (!rawHref || !ownerDocument) return;
+
+			const { protocol } = new URL(rawHref, ownerDocument.baseURI);
+			if (["http://", "https://"].includes(protocol)) return; // Browser will handle these.
+
+			// Prefix for the inlined sprite ids. The rest is handled in `toIconHref`.
+			const inlineHref = `#🥝${id}`;
+
+			// Short-circuit if the inline sprite is already present in the document.
+			if (ownerDocument.getElementById(inlineHref)) {
+				setHref(inlineHref);
+				return;
+			}
+
+			const abortController = new AbortController();
+
+			fetch(rawHref, { signal: abortController.signal }).then(
+				async (response) => {
+					if (!response.ok) throw new Error(`Failed to fetch ${rawHref}`);
+
+					const svgString = sanitizeHtml.current(await response.text());
+					const template = Object.assign(
+						ownerDocument.createElement("template"),
+						{ innerHTML: svgString },
+					);
+					const symbols = template.content.querySelectorAll("symbol");
+
+					for (const symbol of symbols) {
+						symbol.id = `🥝${id}--${symbol.id}`;
+
+						// Skip if already present.
+						if (ownerDocument.getElementById(symbol.id)) continue;
+
+						// Store symbols in the spritesheet rendered by the <Root>.
+						ownerDocument
+							.getElementById(spriteSheetId)
+							?.appendChild(symbol.cloneNode(true));
+					}
+					setHref(inlineHref);
+				},
+			);
+
+			return () => {
+				setHref(undefined);
+				abortController.abort(); // Cancel ongoing fetch.
+			};
+		},
+		[rawHref, id, rootNode, sanitizeHtml],
+	);
+
+	return href;
 }
 
 // ----------------------------------------------------------------------------

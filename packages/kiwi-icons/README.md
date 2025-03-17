@@ -45,7 +45,8 @@ Preferred usage is with the `Icon` component from `@itwin/itwinui-react`:
    ```
 
 > [!IMPORTANT]
-> Icons of `@itwin/itwinui-icons` should always be used as external resources. Do not inline the SVG content directly in your HTML or React components.
+> Icons of `@itwin/itwinui-icons` should always be used as external HTTP resources, because of [SVG `<use>` element restrictions](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/use#usage_notes). Do not inline the SVG content directly in your React components.
+> Data uris and non-HTTP protocols are supported on a best effort basis using client-side JavaScript.
 
 ## Bundler configuration
 

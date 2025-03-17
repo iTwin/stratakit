@@ -151,10 +151,13 @@ interface TreeErrorItemActionProps extends BaseProps<"button"> {}
 const TreeErrorItemAction = forwardRef<"button", TreeErrorItemActionProps>(
 	(props, forwardedRef) => {
 		return (
-			<ButtonAk
-				render={<Anchor render={<button />} />}
-				{...props}
-				className={cx("🥝-tree-error-item-action", props.className)}
+			<Anchor
+				render={
+					<button
+						{...props}
+						className={cx("🥝-tree-error-item-action", props.className)}
+					/>
+				}
 				ref={forwardedRef}
 			/>
 		);

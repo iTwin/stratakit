@@ -18,6 +18,7 @@ import { Anchor } from "./Anchor.js";
 import { TreeContext } from "./Tree.internal.js";
 import { Divider } from "./Divider.js";
 import { Button } from "./Button.js";
+import { useControlledState } from "./~hooks.js";
 
 // ----------------------------------------------------------------------------
 
@@ -31,9 +32,7 @@ interface TreeErrorProps extends Omit<BaseProps, "children"> {
 	 */
 	items?: React.ReactNode[];
 	/**
-	 * Specifies if the tree error is expanded.
-	 *
-	 * @default false
+	 * The controlled expanded state of the error.
 	 */
 	expanded?: boolean;
 	/**
@@ -45,18 +44,13 @@ interface TreeErrorProps extends Omit<BaseProps, "children"> {
 }
 
 const TreeError = forwardRef<"div", TreeErrorProps>((props, forwardedRef) => {
-	const {
-		label,
-		items,
-		expanded: expandedProp = false,
-		onExpandedChange,
-		...rest
-	} = props;
+	const { label, items, expanded, onExpandedChange, ...rest } = props;
 
+	const [open, setOpen] = useControlledState(false, expanded, onExpandedChange);
 	return (
-		<DisclosureProvider open={expandedProp} setOpen={onExpandedChange}>
+		<DisclosureProvider open={open} setOpen={setOpen}>
 			<Role.div
-				data-kiwi-expanded={expandedProp}
+				data-kiwi-expanded={open}
 				{...rest}
 				className={cx("🥝-tree-error", props.className)}
 				ref={forwardedRef}

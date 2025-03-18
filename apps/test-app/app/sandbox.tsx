@@ -54,7 +54,7 @@ async function fetchModelsData(
 		const data = await fetch(models[model].url).then((res) => res.json());
 		// Simulate network delay for models marked as "slow"
 		if (data.slow) {
-			await new Promise((resolve) => setTimeout(resolve, 2000));
+			await new Promise((resolve) => setTimeout(resolve, Math.random() * 2000));
 		}
 		return data;
 	}
@@ -114,7 +114,10 @@ export default function Page() {
 									{models[selectedModel]?.name}
 								</VisuallyHidden>
 
-								<React.Suspense fallback={<Skeleton variant="text" />}>
+								<React.Suspense
+									key={selectedModel}
+									fallback={<Skeleton variant="text" />}
+								>
 									<VersionContent query={query} />
 								</React.Suspense>
 							</hgroup>
@@ -131,16 +134,7 @@ export default function Page() {
 						</div>
 					</div>
 
-					<React.Suspense
-						fallback={
-							<>
-								<div className={styles.subheader}>
-									<Skeleton variant="text" />
-								</div>
-								<PanelLoading />
-							</>
-						}
-					>
+					<React.Suspense key={selectedModel} fallback={<PanelLoading />}>
 						<PanelContent query={query} />
 					</React.Suspense>
 				</>
@@ -230,18 +224,24 @@ function PanelLoading() {
 	const levels = [1, 1, 2, 2, 3, 2, 3, 2, 1, 1, 2, 3, 4, 5, 2, 3, 4, 5];
 
 	return (
-		<div className={styles.skeletonTree}>
-			{levels.map((level, i) => {
-				return (
-					<SkeletonTreeItem
-						key={`${i}-${level}`}
-						style={{ "--level": level } as React.CSSProperties}
-					/>
-				);
-			})}
+		<>
+			<div className={styles.subheader}>
+				<Skeleton variant="text" />
+			</div>
 
-			<VisuallyHidden>Loading…</VisuallyHidden>
-		</div>
+			<div className={styles.skeletonTree}>
+				{levels.map((level, i) => {
+					return (
+						<SkeletonTreeItem
+							key={`${i}-${level}`}
+							style={{ "--level": level } as React.CSSProperties}
+						/>
+					);
+				})}
+
+				<VisuallyHidden>Loading…</VisuallyHidden>
+			</div>
+		</>
 	);
 }
 

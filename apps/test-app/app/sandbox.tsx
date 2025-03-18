@@ -819,18 +819,9 @@ function SandboxTree({
 										message={
 											<>
 												<span>Failed to create hierarchy for </span>
-												<Anchor
-													href={`#${treeItemId}`}
-													onClick={() => {
-														document.getElementById(treeItemId)?.focus();
-													}}
-													style={{
-														// TODO: handle in Anchor.css
-														textAlign: "start",
-													}}
-												>
+												<Tree.ErrorItemAnchor>
 													{item.label}
-												</Anchor>
+												</Tree.ErrorItemAnchor>
 											</>
 										}
 										actions={[

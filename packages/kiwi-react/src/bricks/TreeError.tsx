@@ -22,6 +22,15 @@ import { useControlledState } from "./~hooks.js";
 
 // ----------------------------------------------------------------------------
 
+const TreeErrorItemContext = React.createContext<
+	| {
+			itemId?: string;
+	  }
+	| undefined
+>(undefined);
+
+// ----------------------------------------------------------------------------
+
 interface TreeErrorProps extends Omit<BaseProps, "children"> {
 	/**
 	 * Label for the error header indicating the number of errors displayed.
@@ -108,7 +117,7 @@ interface TreeErrorItemProps extends Omit<BaseProps, "children"> {
 	 */
 	treeItemId?: string;
 	/**
-	 * The error message.
+	 * The error message. Use `Tree.ErrorItemAnchor` component to link to the associated tree item.
 	 */
 	message?: React.ReactNode;
 	/**
@@ -134,35 +143,61 @@ const TreeErrorItem = forwardRef<"div", TreeErrorItemProps>(
 			};
 		}, [itemId, errorId, setErrorId]);
 		return (
-			<Role.div
-				{...rest}
-				className={cx("🥝-tree-error-item", props.className)}
-				ref={forwardedRef}
+			<TreeErrorItemContext.Provider
+				value={React.useMemo(() => ({ itemId }), [itemId])}
 			>
-				<Text
-					id={errorId}
-					variant="body-sm"
-					className="🥝-tree-error-item-message"
+				<Role.div
+					{...rest}
+					className={cx("🥝-tree-error-item", props.className)}
+					ref={forwardedRef}
 				>
-					{message}
-				</Text>
-				{onDismiss && (
-					<IconButton
-						className="🥝-tree-error-item-dismiss"
-						variant="ghost"
-						label="Dismiss"
-						icon={<Dismiss />}
-						onClick={onDismiss}
-					/>
-				)}
-				<div className="🥝-tree-error-item-actions">{actions}</div>
-			</Role.div>
+					<Text
+						id={errorId}
+						variant="body-sm"
+						className="🥝-tree-error-item-message"
+					>
+						{message}
+					</Text>
+					{onDismiss && (
+						<IconButton
+							className="🥝-tree-error-item-dismiss"
+							variant="ghost"
+							label="Dismiss"
+							icon={<Dismiss />}
+							onClick={onDismiss}
+						/>
+					)}
+					<div className="🥝-tree-error-item-actions">{actions}</div>
+				</Role.div>
+			</TreeErrorItemContext.Provider>
 		);
 	},
 );
 DEV: TreeErrorItem.displayName = "Tree.ErrorItem";
 
-// ----------------------------------------------------------------------------
+// -------------------------------------------------------------------------
+
+interface TreeErrorItemAnchorProps extends BaseProps<"a"> {}
+
+/**
+ * An anchor for the `<Tree.ErrorItem>` component, to be passed into the `message` prop.
+ * The anchor typically matches the label of the associated tree item.
+ */
+const TreeErrorItemAnchor = forwardRef<"a", TreeErrorItemAnchorProps>(
+	(props, forwardedRef) => {
+		const { itemId } = React.useContext(TreeErrorItemContext) ?? {};
+		return (
+			<Anchor
+				href={itemId ? `#${itemId}` : undefined}
+				{...props}
+				ref={forwardedRef}
+			/>
+		);
+	},
+);
+DEV: TreeErrorItemAnchor.displayName = "Tree.ErrorItemAnchor";
+
+// -------------------------------------------------------------------------
 
 interface TreeErrorItemActionProps extends BaseProps<"button"> {}
 
@@ -182,5 +217,6 @@ DEV: TreeErrorItemAction.displayName = "Tree.ErrorItemAction";
 export {
 	TreeError as Root,
 	TreeErrorItem as Item,
+	TreeErrorItemAnchor as ItemAnchor,
 	TreeErrorItemAction as ItemAction,
 };

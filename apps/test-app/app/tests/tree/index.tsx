@@ -78,14 +78,7 @@ export default definePage(function Page({
 									message={
 										<>
 											<span>Failed to create hierarchy for </span>
-											<Anchor
-												href={`#${errors[0]}`}
-												onClick={() => {
-													errorItemRef.current?.focus();
-												}}
-											>
-												Item 1.2
-											</Anchor>
+											<Tree.ErrorItemAnchor>Item 1.2</Tree.ErrorItemAnchor>
 										</>
 									}
 									onDismiss={() => setRenderError(false)}

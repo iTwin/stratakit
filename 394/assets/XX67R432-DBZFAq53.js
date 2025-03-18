@@ -1,0 +1,1 @@
+import{k as i,l as n,m as t,y as d,n as a}from"./~utils-B9Xqq0ul.js";var l="span",o=n(function(e){return e=d(a({},e),{style:a({border:0,clip:"rect(0 0 0 0)",height:"1px",margin:"-1px",overflow:"hidden",padding:0,position:"absolute",whiteSpace:"nowrap",width:"1px"},e.style)}),e}),p=i(function(e){const s=o(e);return t(l,s)});export{p as V,o as u};

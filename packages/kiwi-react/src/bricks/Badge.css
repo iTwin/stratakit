@@ -48,6 +48,10 @@
 			&:where([data-kiwi-tone="critical"]) {
 				--🥝badge-background-color: var(--ids-color-bg-critical-base);
 			}
+
+			&:where([data-kiwi-tone="accent"]) {
+				--🥝badge-background-color: var(--ids-color-bg-accent-base);
+			}
 		}
 
 		&:where([data-kiwi-variant="muted"]) {
@@ -80,6 +84,12 @@
 				--🥝badge-border-color: var(--ids-color-border-critical-muted);
 				--🥝badge-text-color: var(--ids-color-text-critical-faded);
 			}
+
+			&:where([data-kiwi-tone="accent"]) {
+				--🥝badge-background-color: var(--ids-color-bg-accent-muted);
+				--🥝badge-border-color: var(--ids-color-border-accent-muted);
+				--🥝badge-text-color: var(--ids-color-text-accent-faded);
+			}
 		}
 
 		&:where([data-kiwi-variant="outline"]) {
@@ -108,6 +118,11 @@
 			&:where([data-kiwi-tone="critical"]) {
 				--🥝badge-text-color: var(--ids-color-text-critical-base);
 				--🥝badge-border-color: var(--ids-color-border-critical-base);
+			}
+
+			&:where([data-kiwi-tone="accent"]) {
+				--🥝badge-text-color: var(--ids-color-text-accent-base);
+				--🥝badge-border-color: var(--ids-color-border-accent-base);
 			}
 		}
 	}

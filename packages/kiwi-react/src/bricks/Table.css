@@ -33,19 +33,18 @@
 	--✨cell-height-min: 3rem;
 
 	@layer base {
+		min-block-size: var(--✨cell-height-min);
 		padding-block: var(--✨cell-padding-block);
 		padding-inline-start: var(--✨cell-padding-inline-start);
 		padding-inline-end: var(--✨cell-padding-inline-end);
 		overflow-wrap: anywhere;
 		hyphens: auto;
+		text-align: start;
+		align-content: center;
 
 		&:where(th, td) {
 			block-size: var(--✨cell-height-min);
 		}
-
-		min-block-size: var(--✨cell-height-min);
-		text-align: start;
-		align-content: center;
 	}
 }
 

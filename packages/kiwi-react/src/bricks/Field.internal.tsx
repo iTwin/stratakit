@@ -10,10 +10,20 @@ import {
 } from "@ariakit/react/collection";
 import { useStoreState } from "@ariakit/react/store";
 
+// ----------------------------------------------------------------------------
+
+/**
+ * Ariakit’s unexported `CollectionStoreItem` type inferred.
+ * @private
+ */
 export type CollectionStoreItem = NonNullable<
 	ReturnType<ReturnType<typeof useCollectionStore>["item"]>
 >;
 
+/**
+ * An extension of `CollectionStoreItem` to track element and control types.
+ * @private
+ */
 export interface FieldCollectionStoreItem extends CollectionStoreItem {
 	/** The type of field element being tracked */
 	elementType: "label" | "control" | "description";
@@ -22,10 +32,12 @@ export interface FieldCollectionStoreItem extends CollectionStoreItem {
 	controlType?: "textlike" | "checkable";
 }
 
+// ----------------------------------------------------------------------------
+
 /**
  * A collection that tracks labels, controls, and descriptions which provides
  * information about IDs, placement of labels, and control types.
- * @internal
+ * @private
  */
 export function FieldCollection(props: Pick<CollectionProps, "render">) {
 	const fieldElementCollection = useCollectionStore<FieldCollectionStoreItem>({
@@ -64,6 +76,10 @@ export function FieldCollection(props: Pick<CollectionProps, "render">) {
 
 // ----------------------------------------------------------------------------
 
+/**
+ * Control type context for the field.
+ * @private
+ */
 export const FieldControlTypeContext = React.createContext<
 	| React.Dispatch<
 			React.SetStateAction<FieldCollectionStoreItem["controlType"]>

@@ -19,12 +19,12 @@ interface RadioProps extends InputBaseProps, RadioOwnProps {}
 /**
  * A styled radio input element, typically used for selecting a single option from a list.
  *
- * Works well with the `Field` and `Label` components.
- *
+ * Use with the `Field` components to automatically handle ID associations for
+ * labels and descriptions:
  * ```tsx
  * <Field.Root>
  *   <Field.Label>Choose one</Field.Label>
- *   <Radio />
+ *   <Field.Control render={<Radio />} />
  * </Field.Root>
  * ```
  *

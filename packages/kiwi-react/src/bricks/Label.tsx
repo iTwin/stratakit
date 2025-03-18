@@ -9,24 +9,17 @@ import { forwardRef, type BaseProps } from "./~utils.js";
 interface LabelProps extends BaseProps<"label"> {}
 
 /**
- * A styled wrapper over the HTML `<label>` element, used for labelling form controls.
- * 
- * Can be used standalone:
-
+ * A styled wrapper over the HTML `<label>` element, used for labelling form
+ * controls.
+ *
+ * Example usage:
  * ```tsx
  * <Label htmlFor="my-input">Label</Label>
  * <TextBox.Input id="my-input" />
  * ```
- * 
- * Or as a sub-component of `Field` to automatically manage ID associations:
- * 
- * ```tsx
- * <Field.Root>
- *   <Field.Label>Label</Field.Label>
- *   <TextBox.Input />
- * </Field.Root>
- * ```
- * 
+ *
+ * See `Field.Label` for convenient usage with form controls (e.g. automatic
+ * association with adjacent form control).
  */
 export const Label = forwardRef<"label", LabelProps>((props, forwardedRef) => {
 	return (

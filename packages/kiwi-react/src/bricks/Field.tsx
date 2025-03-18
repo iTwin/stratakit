@@ -23,7 +23,7 @@ import { Description } from "./Description.js";
 
 // ----------------------------------------------------------------------------
 
-interface FieldProps extends BaseProps {
+interface FieldRootProps extends BaseProps {
 	/**
 	 * Allows overriding the default block layout for text controls.
 	 */
@@ -31,26 +31,30 @@ interface FieldProps extends BaseProps {
 }
 
 /**
- * A container for form controls. It manages ID associations provides a consistent layout and spacing.
+ * A container for form controls. It manages ID associations, and provides a
+ * consistent layout and spacing.
  *
  * Example:
  * ```tsx
  * <Field.Root>
  *   <Field.Label>Label</Field.Label>
- *   <TextBox.Input />
+ *   <Field.Control render={<TextBox.Input />} />
  * </Field.Root>
  * ```
  *
- * Supports a `layout` prop, which can be set to `inline` to align the label and control horizontally.
+ * Supports a `layout` prop, which can be set to `inline` to align the label and
+ * control horizontally.
  *
- * Should contain a `Label` component paired with a form control. Supported form controls include:
+ * Should contain a `Field.Label` component paired with a form control.
+ *
+ * Supported form controls include:
  * - `TextBox.Input`
  * - `TextBox.Textarea`
  * - `Checkbox`
  * - `Radio`
  * - `Switch`
  */
-const FieldRoot = forwardRef<"div", FieldProps>((props, forwardedRef) => {
+const FieldRoot = forwardRef<"div", FieldRootProps>((props, forwardedRef) => {
 	const { layout, ...rest } = props;
 	return (
 		<FieldCollection
@@ -69,7 +73,11 @@ DEV: FieldRoot.displayName = "Field";
 
 // ----------------------------------------------------------------------------
 
-export const FieldLabel = forwardRef<"div", BaseProps<"label">>(
+/**
+ * A label for the field’s control element. This is automatically associated
+ * with the control’s `id`.
+ */
+const FieldLabel = forwardRef<"div", BaseProps<"label">>(
 	(props, forwardedRef) => {
 		const store = useCollectionContext();
 		const renderedItems = useStoreState(store, "renderedItems");
@@ -102,27 +110,32 @@ DEV: FieldLabel.displayName = "Field.Label";
 
 // ----------------------------------------------------------------------------
 
-export const FieldDescription = forwardRef<"div", BaseProps>(
-	(props, forwardedRef) => {
-		const generatedId = React.useId();
-		const { id = generatedId, ...rest } = props;
-		const getData = React.useCallback(
-			(data: CollectionStoreItem) => ({
-				...data,
-				elementType: "description",
-			}),
-			[],
-		);
-		return (
-			<CollectionItem
-				getItem={getData}
-				id={id}
-				render={<Description {...rest} />}
-				ref={forwardedRef}
-			/>
-		);
-	},
-);
+/**
+ * A description for the field’s control element. This is automatically
+ * associated with the control.
+ *
+ * Should not include content without an adequate text alternative (e.g.
+ * interactive elements).
+ */
+const FieldDescription = forwardRef<"div", BaseProps>((props, forwardedRef) => {
+	const generatedId = React.useId();
+	const { id = generatedId, ...rest } = props;
+	const getData = React.useCallback(
+		(data: CollectionStoreItem) => ({
+			...data,
+			elementType: "description",
+		}),
+		[],
+	);
+	return (
+		<CollectionItem
+			getItem={getData}
+			id={id}
+			render={<Description {...rest} />}
+			ref={forwardedRef}
+		/>
+	);
+});
 DEV: FieldDescription.displayName = "Field.Description";
 
 // ----------------------------------------------------------------------------
@@ -130,7 +143,31 @@ DEV: FieldDescription.displayName = "Field.Description";
 interface FieldCollectionItemControlProps
 	extends Pick<CollectionItemProps, "render" | "id"> {}
 
-export const FieldControl = forwardRef<"div", FieldCollectionItemControlProps>(
+/**
+ * The control component for the field.
+ *
+ * If the rendered component uses a compositional API, then use a function
+ * within `render` to apply the `controlProps` to the correct sub-component:
+ *
+ * ```tsx
+ * <Field.Control
+ *   render={(controlProps) => (
+ *     <TextBox.Root>
+ *       <TextBox.Icon href={placeholder} />
+ *       <TextBox.Input {...controlProps} />
+ *     </TextBox.Root>
+ *   )}
+ * />
+ * ```
+ *
+ * If you need a custom `id` set for the control, set it on this component
+ * instead of the control component within `render`.
+ *
+ * ```tsx
+ * <Field.Control id="custom" render={<TextBox.Input />} />
+ * ```
+ */
+const FieldControl = forwardRef<"div", FieldCollectionItemControlProps>(
 	(props, forwardedRef) => {
 		const [controlType, setControlType] =
 			React.useState<FieldCollectionStoreItem["controlType"]>();
@@ -138,6 +175,7 @@ export const FieldControl = forwardRef<"div", FieldCollectionItemControlProps>(
 		const generatedId = React.useId();
 		const { id = store ? generatedId : undefined, ...rest } = props;
 		const renderedItems = useStoreState(store, "renderedItems");
+
 		const describedBy = React.useMemo(() => {
 			// Create a space separated list of description IDs
 			const idRefList = renderedItems
@@ -152,6 +190,7 @@ export const FieldControl = forwardRef<"div", FieldCollectionItemControlProps>(
 			// return undefined to avoid setting the attribute at all.
 			return idRefList || undefined;
 		}, [renderedItems]);
+
 		const getData = React.useCallback(
 			(data: CollectionStoreItem) => ({
 				...data,
@@ -160,6 +199,7 @@ export const FieldControl = forwardRef<"div", FieldCollectionItemControlProps>(
 			}),
 			[controlType],
 		);
+
 		return (
 			<FieldControlTypeContext.Provider value={setControlType}>
 				<CollectionItem

@@ -35,16 +35,17 @@ interface TextBoxInputProps extends Omit<BaseInputProps, "children" | "type"> {
  *
  * Example usage:
  * ```tsx
- * <TextBox.Input defaultValue="Hello" />
+ * <TextBox.Input name="greeting" defaultValue="Hello" />
  * ```
  *
  * To add additional decorations, see `TextBox.Root` component.
  *
- * Works well with the `Field` and `Label` components.
+ * Use with the `Field` components to automatically handle ID associations for
+ * labels and descriptions:
  * ```tsx
  * <Field.Root>
- *   <Field.Label>Enter your name</Field.Label>
- *   <TextBox.Input />
+ *   <Field.Label>First name</Field.Label>
+ *   <Field.Control render={<TextBox.Input name="firstName" />} />
  * </Field.Root>
  * ```
  *
@@ -96,11 +97,12 @@ interface TextareaProps extends FocusableProps<"textarea"> {}
  * <TextBox.Textarea defaultValue="Hello" />
  * ```
  *
- * Works well with the `Field` and `Label` components.
+ * Use with the `Field` components to automatically handle ID associations for
+ * labels and descriptions:
  * ```tsx
  * <Field.Root>
  *   <Field.Label>Leave a comment, be kind</Field.Label>
- *   <TextBox.Textarea />
+ *   <Field.Control render={<TextBox.Textarea name="comment" />} />
  * </Field.Root>
  * ```
  *
@@ -148,14 +150,19 @@ interface TextBoxRootProps extends BaseProps {}
  * </TextBox.Root>
  * ```
  *
- * Works well with the `Field` and `Label` components.
+ * Use with the `Field` components to automatically handle ID associations for
+ * labels and descriptions:
  * ```tsx
  * <Field.Root>
- *   <Field.Label>Enter your name</Field.Label>
- *   <TextBox.Root>
- *     <TextBox.Input />
- *     <TextBox.Icon href={…} />
- *   </TextBox.Root>
+ *   <Field.Label>First name</Field.Label>
+ *   <Field.Control
+ *     render={(controlProps) => (
+ *       <TextBox.Root>
+ *         <TextBox.Input name="firstName" {...controlProps} />
+ *         <TextBox.Icon href={…} />
+ *       </TextBox.Root>
+ *     )}
+ *   />
  * </Field.Root>
  * ```
  */

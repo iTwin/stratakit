@@ -25,19 +25,22 @@ const HtmlSelectContext = React.createContext<
 /**
  * Compound component for a select element, which allows the user to select a value from a list of options.
  *
- * Works well with the `Field` and `Label` components.
- *
- * Example usage:
+ * Use with the `Field` components to automatically handle ID associations for
+ * labels and descriptions:
  * ```tsx
  * <Field.Root>
- *   <Field.Label>Select an option</Field.Label>
- *   <Select.Root>
- *     <Select.HtmlSelect>
- *       <option value="1">Option 1</option>
- *       <option value="2">Option 2</option>
- *       <option value="3">Option 3</option>
- *     </Select.HtmlSelect>
- *   </Select.Root>
+ *   <Field.Label>Fruit</Field.Label>
+ *   <Field.Control
+ *     render={(controlProps) => (
+ *       <Select.Root>
+ *         <Select.HtmlSelect name="fruit" {...controlProps}>
+ *           <option value="kiwi">Kiwi</option>
+ *           <option value="mango">Mango</option>
+ *           <option value="papaya">Papaya</option>
+ *         </Select.HtmlSelect>
+ *       </Select.Root>
+ *     )}
+ *   />
  * </Field.Root>
  * ```
  */

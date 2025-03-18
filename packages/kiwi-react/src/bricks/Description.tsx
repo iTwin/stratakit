@@ -15,13 +15,9 @@ interface DescriptionProps extends BaseProps {
 }
 
 /**
- * An additional description for a form control.
+ * A presentational description.
  *
- * Should not include content without an adequate text alternative.
- *
- * Either give this component an `id` and manually associate with a form control
- * using `aria-describedby` on said control or use the `<Field.Root>` component
- * (WIP).
+ * See `Field.Description` for convenient usage with form controls.
  */
 export const Description = forwardRef<"div", DescriptionProps>(
 	(props, forwardedRef) => {

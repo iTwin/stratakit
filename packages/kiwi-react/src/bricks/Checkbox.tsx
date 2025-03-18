@@ -25,12 +25,12 @@ interface CheckboxProps extends InputBaseProps, CheckboxOwnProps {}
 /**
  * A styled checkbox element, typically used for selecting one or more options from a list.
  *
- * Works well the `Field` and `Label` components.
- *
+ * Use with the `Field` components to automatically handle ID associations for
+ * labels and descriptions:
  * ```tsx
  * <Field.Root>
  *   <Field.Label>Check me</Field.Label>
- *   <Checkbox />
+ *   <Field.Control render={<Checkbox />} />
  * </Field.Root>
  * ```
  *

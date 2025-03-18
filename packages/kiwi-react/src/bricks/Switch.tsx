@@ -27,12 +27,12 @@ interface SwitchProps extends InputBaseProps, CheckboxOwnProps {
 /**
  * A toggle switch element, typically used for enabling or disabling a feature.
  *
- * Works well with the `Field` and `Label` components.
- *
+ * Use with the `Field` components to automatically handle ID associations for
+ * labels and descriptions:
  * ```tsx
  * <Field.Root>
  *   <Field.Label>Enable feature</Field.Label>
- *   <Switch />
+ *   <Field.Control render={<Switch />} />
  * </Field.Root>
  * ```
  *

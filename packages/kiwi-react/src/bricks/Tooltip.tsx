@@ -91,6 +91,7 @@ export const Tooltip = forwardRef<"div", TooltipProps>(
 					/>
 					<AkTooltip.Tooltip
 						aria-hidden="true"
+						portal
 						{...rest}
 						unmountOnHide={unmountOnHide}
 						className={cx("🥝-tooltip", props.className)}
@@ -101,7 +102,6 @@ export const Tooltip = forwardRef<"div", TooltipProps>(
 							...props.style,
 						}}
 						wrapperProps={popover.wrapperProps}
-						portal={popover.portal}
 					>
 						{content}
 					</AkTooltip.Tooltip>

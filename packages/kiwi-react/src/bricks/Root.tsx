@@ -9,8 +9,15 @@ import { PortalContext } from "@ariakit/react/portal";
 import cx from "classnames";
 import foundationsCss from "../foundations/styles.css.js";
 import bricksCss from "./styles.css.js";
-import { forwardRef, isBrowser, type BaseProps } from "./~utils.js";
-import { useIsClient, useMergedRefs } from "./~hooks.js";
+import {
+	forwardRef,
+	getOwnerDocument,
+	isBrowser,
+	isDocument,
+	type BaseProps,
+} from "./~utils.js";
+import { useLayoutEffect, useMergedRefs } from "./~hooks.js";
+import { RootNodeContext, useRootNode } from "./Root.internal.js";
 
 const css = foundationsCss + bricksCss;
 
@@ -81,16 +88,9 @@ DEV: Root.displayName = "Root";
 
 // ----------------------------------------------------------------------------
 
-const RootNodeContext = React.createContext<Document | ShadowRoot | null>(null);
-
-/** Returns the closest [rootNode](https://developer.mozilla.org/en-US/docs/Web/API/Node/getRootNode). */
-function useRootNode() {
-	return React.useContext(RootNodeContext);
-}
-
-// ----------------------------------------------------------------------------
-
-interface RootInternalProps extends Omit<RootProps, "synchronizeColorScheme"> {}
+interface RootInternalProps
+	extends BaseProps,
+		Pick<RootProps, "colorScheme" | "density"> {}
 
 const RootInternal = forwardRef<"div", RootInternalProps>(
 	(props, forwardedRef) => {
@@ -159,14 +159,10 @@ const PortalContainer = forwardRef<
 	"div",
 	Pick<RootProps, "colorScheme" | "density">
 >((props, forwardedRef) => {
-	const isClient = useIsClient();
 	const rootNode = useRootNode();
+	if (!rootNode) return null;
 
-	if (!isClient) return null;
-
-	const destination =
-		rootNode && isDocument(rootNode) ? rootNode.body : rootNode;
-
+	const destination = isDocument(rootNode) ? rootNode.body : rootNode;
 	if (!destination) return null;
 
 	return ReactDOM.createPortal(
@@ -188,7 +184,8 @@ function Styles() {
 
 	useLayoutEffect(() => {
 		if (!rootNode) return;
-		loadStyles(rootNode, { css });
+		const { cleanup } = loadStyles(rootNode, { css });
+		return cleanup;
 	}, [rootNode]);
 
 	return null;
@@ -196,14 +193,30 @@ function Styles() {
 
 // ----------------------------------------------------------------------------
 
-/** Maintains a single stylesheet object per window to enable reuse. */
-const styleSheets = new WeakMap<Window, CSSStyleSheet>();
+/**
+ * A Map of WeakMaps containing information for all stylesheets.
+ *
+ * The outer Map expects string keys (unique per set of CSS contents).
+ * The inner WeakMap maintains a single CSSStyleSheet object per window (to enable reuse).
+ */
+const styleSheets = new Map<string, WeakMap<Window, CSSStyleSheet>>(
+	Object.entries({ default: new WeakMap() }),
+);
 
 /**
  * Adds css to the root node using `adoptedStyleSheets` in modern browsers
  * and falls back to using a `<style>` element in older browsers.
+ *
+ * Pass an optional key to distinguish multiple stylesheets from each other.
+ *
+ * Returns a cleanup function to remove the styles.
  */
-function loadStyles(rootNode: Document | ShadowRoot, { css }: { css: string }) {
+function loadStyles(
+	rootNode: Document | ShadowRoot,
+	{ css, key = "default" }: { css: string; key?: string },
+) {
+	let cleanup = () => {};
+
 	const loaded = (() => {
 		if (!isBrowser) return false;
 
@@ -215,28 +228,37 @@ function loadStyles(rootNode: Document | ShadowRoot, { css }: { css: string }) {
 		// Inject <style> elements if `adoptedStyleSheets` is not supported.
 		if (
 			!supportsAdoptedStylesheets &&
-			!rootNode.querySelector("style[data-kiwi]")
+			!rootNode.querySelector(`style[data-kiwi="${key}"]`)
 		) {
 			const styleElement = ownerDocument.createElement("style");
-			styleElement.dataset.kiwi = "true";
+			styleElement.dataset.kiwi = key;
 			styleElement.textContent = css;
 			((rootNode as Document).head || rootNode).appendChild(styleElement);
+			cleanup = () => styleElement.remove();
 			return true;
 		}
 
-		const styleSheet = styleSheets.get(_window) || new _window.CSSStyleSheet();
-		if (!styleSheets.has(_window)) {
-			styleSheets.set(_window, styleSheet);
+		const styleSheet =
+			styleSheets.get(key)?.get(_window) || new _window.CSSStyleSheet();
+		if (!styleSheets.get(key)?.has(_window)) {
+			styleSheets.get(key)?.set(_window, styleSheet);
 		}
 		styleSheet.replaceSync(css);
 
 		if (!rootNode.adoptedStyleSheets.includes(styleSheet)) {
 			rootNode.adoptedStyleSheets.push(styleSheet);
+
+			cleanup = () => {
+				rootNode.adoptedStyleSheets = rootNode.adoptedStyleSheets.filter(
+					(sheet) => sheet !== styleSheet,
+				);
+			};
 		}
+
 		return true;
 	})();
 
-	return { loaded };
+	return { loaded, cleanup };
 }
 
 // ----------------------------------------------------------------------------
@@ -302,17 +324,7 @@ function isShadow(node?: Node): node is ShadowRoot {
 	);
 }
 
-function isDocument(node?: Node): node is Document {
-	return node?.nodeType === Node.DOCUMENT_NODE;
-}
-
-function getOwnerDocument(node: Node) {
-	return (isDocument(node) ? node : node.ownerDocument) || null;
-}
-
 function getWindow(node: Node) {
 	const ownerDocument = getOwnerDocument(node);
 	return ownerDocument?.defaultView || null;
 }
-
-const useLayoutEffect = isBrowser ? React.useLayoutEffect : React.useEffect;

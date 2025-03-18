@@ -93,7 +93,7 @@ const DropdownMenuContent = forwardRef<"div", DropdownMenuContentProps>(
 
 		return (
 			<Menu
-				portal={popover.portal}
+				portal
 				unmountOnHide
 				{...props}
 				gutter={4}

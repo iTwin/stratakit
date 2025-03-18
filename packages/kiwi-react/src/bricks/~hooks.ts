@@ -4,8 +4,19 @@
  *--------------------------------------------------------------------------------------------*/
 import * as React from "react";
 import { useStoreState } from "@ariakit/react/store";
-import { supportsPopover } from "./~utils.js";
+import { isBrowser, supportsPopover } from "./~utils.js";
 import type { PopoverStore } from "@ariakit/react/popover";
+
+/**
+ * SSR-safe wrapper over `React.useLayoutEffect`.
+ *
+ * @see https://fb.me/react-uselayouteffect-ssr
+ *
+ * @private
+ */
+export const useLayoutEffect = isBrowser
+	? React.useLayoutEffect
+	: React.useEffect;
 
 /**
  * Wrapper over `useState` that always gives preference to the

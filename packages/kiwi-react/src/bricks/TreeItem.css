@@ -56,8 +56,8 @@
 	@layer modifiers {
 		&:where([data-kiwi-error="true"]) {
 			--🥝icon-color: var(--ids-color-icon-attention-base);
+			--🥝list-item-color: var(--ids-color-text-attention-base);
 			--🥝tree-item-description-color: var(--ids-color-text-attention-base);
-			color: var(--ids-color-text-attention-base);
 		}
 	}
 

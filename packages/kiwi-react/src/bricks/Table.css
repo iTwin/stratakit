@@ -39,17 +39,13 @@
 		overflow-wrap: anywhere;
 		hyphens: auto;
 
-		&:where(caption) {
-			text-align: start;
-		}
-
 		&:where(th, td) {
 			block-size: var(--✨cell-height-min);
 		}
 
-		&:where([role="columnheader"], [role="cell"]) {
-			min-block-size: var(--✨cell-height-min);
-		}
+		min-block-size: var(--✨cell-height-min);
+		text-align: start;
+		align-content: center;
 	}
 }
 
@@ -65,8 +61,6 @@
 		border-block-end: 1px solid var(--ids-color-border-neutral-muted);
 
 		&:where([role="columnheader"], [role="cell"]) {
-			display: flex;
-			align-items: center;
 			column-gap: 0.5rem;
 			flex-grow: 1;
 			flex-basis: 4rem;

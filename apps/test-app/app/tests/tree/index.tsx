@@ -79,7 +79,7 @@ export default definePage(function Page({
 										<>
 											<span>Failed to create hierarchy for </span>
 											<Anchor
-												render={<button />}
+												href={`#${errors[0]}`}
 												onClick={() => {
 													errorItemRef.current?.focus();
 												}}

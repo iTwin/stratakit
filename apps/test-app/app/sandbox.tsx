@@ -820,7 +820,7 @@ function SandboxTree({
 											<>
 												<span>Failed to create hierarchy for </span>
 												<Anchor
-													render={<button />}
+													href={`#${treeItemId}`}
 													onClick={() => {
 														document.getElementById(treeItemId)?.focus();
 													}}

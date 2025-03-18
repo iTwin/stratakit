@@ -73,7 +73,7 @@
 		}
 	}
 
-	&:has(.listItemLink[aria-current="page"]) {
+	&:has([aria-current="page"]) {
 		background-color: var(--ids-color-bg-glow-on-surface-accent-pressed);
 
 		/* Current page line */

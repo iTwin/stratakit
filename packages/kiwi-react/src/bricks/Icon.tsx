@@ -8,7 +8,6 @@ import { Role } from "@ariakit/react/role";
 import {
 	forwardRef,
 	getOwnerDocument,
-	hash,
 	parseDOM,
 	type BaseProps,
 } from "./~utils.js";
@@ -127,6 +126,7 @@ function toIconId(size: IconProps["size"]) {
  * to the symbols using `<use href="#…">`.
  */
 function useNormalizedHrefBase(rawHref: string | undefined) {
+	const generatedId = React.useId();
 	const sanitizeHtml = useLatestRef(useSafeContext(HtmlSanitizerContext));
 	const rootNode = useRootNode();
 	const inlineHref = React.useRef<string | undefined>(undefined);
@@ -144,18 +144,22 @@ function useNormalizedHrefBase(rawHref: string | undefined) {
 	const subscribe = React.useCallback(
 		(notify: () => void) => {
 			const ownerDocument = getOwnerDocument(rootNode);
-			if (!rawHref || !ownerDocument) return () => {};
+			const spriteSheet = ownerDocument?.getElementById(spriteSheetId);
+			if (!rawHref || !ownerDocument || !spriteSheet) return () => {};
 
 			// Browser will handle this.
 			if (isHttpProtocol(rawHref, ownerDocument)) return () => {};
 
-			// Prefix for the inlined sprite ids. The rest is handled in `toIconHref`.
-			const id = `🥝${hash(rawHref)}`;
-			const href = `#${id}`;
+			// @ts-ignore -- This is initialized in `<InlineSpriteSheet>`.
+			const cache = spriteSheet[Symbol.for("🥝")]?.icons as Map<string, string>;
+			if (!cache) return () => {};
 
-			// Short-circuit if the inline sprite is already present in the document.
-			if (ownerDocument.querySelector(`symbol[data-kiwi-symbol="${id}"]`)) {
-				inlineHref.current = href;
+			// Prefix for the inlined sprite ids. The rest is handled in `toIconHref`.
+			const prefix = `🥝${generatedId}`;
+
+			// Short-circuit if the symbol is already cached.
+			if (cache.has(rawHref)) {
+				inlineHref.current = cache.get(rawHref);
 				notify();
 				return () => {};
 			}
@@ -173,25 +177,19 @@ function useNormalizedHrefBase(rawHref: string | undefined) {
 				const symbols = parsedSvgContent.querySelectorAll("symbol");
 
 				for (const symbol of symbols) {
-					symbol.id = `${id}--${symbol.id}`; // unique ID
-					symbol.dataset.kiwiSymbol = id; // for quick lookup
-
-					// Skip if already present.
-					if (ownerDocument.getElementById(symbol.id)) continue;
-
-					// Store symbols in the spritesheet rendered by the <Root>.
-					ownerDocument
-						.getElementById(spriteSheetId)
-						?.appendChild(symbol.cloneNode(true));
+					symbol.id = `${prefix}--${symbol.id}`; // unique ID
+					if (ownerDocument.getElementById(symbol.id)) continue; // Skip if already present.
+					spriteSheet.appendChild(symbol.cloneNode(true)); // Store symbols in the spritesheet renderered by `<Root>`.
 				}
 
-				inlineHref.current = href;
+				inlineHref.current = `#${prefix}`;
+				cache.set(rawHref, inlineHref.current); // Cache for future use.
 				if (!signal.aborted) notify();
 			});
 
 			return () => abortController.abort(); // Cancel ongoing fetch.
 		},
-		[rawHref, rootNode, sanitizeHtml],
+		[rawHref, rootNode, sanitizeHtml, generatedId],
 	);
 
 	return React.useSyncExternalStore(

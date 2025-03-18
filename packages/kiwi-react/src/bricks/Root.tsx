@@ -325,10 +325,15 @@ function InlineSpriteSheet() {
 			);
 			svg.id = spriteSheetId;
 			svg.style.display = "none";
+			Object.defineProperty(svg, Symbol.for("🥝"), {
+				value: { icons: new Map() }, // Map of icon URLs that have already been inlined.
+			});
 			ownerDocument.body.appendChild(svg);
 
 			return () => {
-				ownerDocument.body.removeChild(svg);
+				if (svg.isConnected) {
+					ownerDocument.body.removeChild(svg);
+				}
 			};
 		},
 		[rootNode],

@@ -92,27 +92,3 @@ export type AnyString = string & {};
 
 /** Returns the value unchanged. */
 export const identity = <T,>(value: T) => value;
-
-// ----------------------------------------------------------------------------
-
-/**
- * `cyrb53`: A fast and simple 53-bit hash function.
- *
- * © 2018 bryc (License: Public domain)
- * @see https://github.com/bryc/code/blob/fdd2d21471febe58c7879707c0f43a65e1dd8248/jshash/experimental/cyrb53.js#L1-L19
- */
-export const hash = (str: string, seed = 0) => {
-	let h1 = 0xdeadbeef ^ seed;
-	let h2 = 0x41c6ce57 ^ seed;
-	for (let i = 0; i < str.length; i++) {
-		const ch = str.charCodeAt(i);
-		h1 = Math.imul(h1 ^ ch, 2654435761);
-		h2 = Math.imul(h2 ^ ch, 1597334677);
-	}
-	h1 = Math.imul(h1 ^ (h1 >>> 16), 2246822507);
-	h1 ^= Math.imul(h2 ^ (h2 >>> 13), 3266489909);
-	h2 = Math.imul(h2 ^ (h2 >>> 16), 2246822507);
-	h2 ^= Math.imul(h1 ^ (h1 >>> 13), 3266489909);
-
-	return 4294967296 * (2097151 & h2) + (h1 >>> 0);
-};

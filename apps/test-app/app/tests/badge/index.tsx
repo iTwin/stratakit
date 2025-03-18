@@ -7,7 +7,14 @@ import { Badge } from "@itwin/itwinui-react/bricks";
 
 export const handle = { title: "Badge" };
 
-const tones = ["neutral", "info", "positive", "attention", "critical"] as const;
+const tones = [
+	"neutral",
+	"info",
+	"positive",
+	"attention",
+	"critical",
+	"accent",
+] as const;
 const variants = ["solid", "muted", "outline"] as const;
 
 export default definePage(

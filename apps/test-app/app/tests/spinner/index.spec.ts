@@ -12,9 +12,21 @@ test("default", async ({ page }) => {
 	await expect(spinner).toHaveText("Loading…");
 });
 
-test("@visual", async ({ page }) => {
-	await page.goto("/tests/spinner?visual=true");
-	await expect(page.locator("body")).toHaveScreenshot();
+test.describe("@visual", () => {
+	test("default", async ({ page }) => {
+		await page.goto("/tests/spinner?visual=true");
+		await expect(page.locator("body")).toHaveScreenshot();
+	});
+
+	test("forced-colors", async ({ page, browserName }) => {
+		test.skip(
+			browserName === "webkit",
+			"Webkit does not support forced-colors",
+		);
+		await page.goto("/tests/spinner?visual=true");
+		await page.emulateMedia({ forcedColors: "active" });
+		await expect(page.locator("body")).toHaveScreenshot();
+	});
 });
 
 test.describe("@a11y", () => {

@@ -9,34 +9,37 @@ import { definePage, useColorScheme } from "~/~utils.tsx";
 
 export const handle = { title: "Root", rootTest: true };
 
-export default definePage(function Page({ synchronizeColorScheme = true }) {
-	const popout = usePopout();
-	const colorScheme = useColorScheme();
+export default definePage(
+	function Page({ synchronizeColorScheme = true }) {
+		const popout = usePopout();
+		const colorScheme = useColorScheme();
 
-	return (
-		<Root
-			colorScheme={colorScheme}
-			synchronizeColorScheme={!!synchronizeColorScheme}
-			density="dense"
-		>
-			<LightAndShadowComponents />
+		return (
+			<Root
+				colorScheme={colorScheme}
+				synchronizeColorScheme={!!synchronizeColorScheme}
+				density="dense"
+			>
+				<LightAndShadowComponents />
 
-			<Button onClick={() => popout.open()}>Open popout</Button>
+				<Button onClick={() => popout.open()}>Open popout</Button>
 
-			{popout.popout &&
-				ReactDOM.createPortal(
-					<Root
-						colorScheme={colorScheme}
-						synchronizeColorScheme
-						density="dense"
-					>
-						<LightAndShadowComponents />
-					</Root>,
-					popout.popout.document.body,
-				)}
-		</Root>
-	);
-});
+				{popout.popout &&
+					ReactDOM.createPortal(
+						<Root
+							colorScheme={colorScheme}
+							synchronizeColorScheme
+							density="dense"
+						>
+							<LightAndShadowComponents />
+						</Root>,
+						popout.popout.document.body,
+					)}
+			</Root>
+		);
+	},
+	{ _conditionalRendering: ConditionalRenderingTest },
+);
 
 // ----------------------------------------------------------------------------
 
@@ -77,6 +80,37 @@ function LightAndShadowComponents() {
 					</Root>,
 					shadow,
 				)}
+		</div>
+	);
+}
+
+// ----------------------------------------------------------------------------
+
+function ConditionalRenderingTest() {
+	const [host, setHost] = React.useState<HTMLElement | null>(null);
+	const [shouldRenderRoot, setShouldRenderRoot] = React.useState(true);
+	const shadow = useShadow(React.useCallback(() => host, [host]));
+
+	const button = (
+		<Button onClick={() => setShouldRenderRoot(!shouldRenderRoot)}>
+			Toggle Root
+		</Button>
+	);
+
+	return (
+		<div ref={setHost}>
+			{shadow
+				? ReactDOM.createPortal(
+						shouldRenderRoot ? (
+							<Root colorScheme="dark" density="dense">
+								{button}
+							</Root>
+						) : (
+							button
+						),
+						shadow,
+					)
+				: null}
 		</div>
 	);
 }

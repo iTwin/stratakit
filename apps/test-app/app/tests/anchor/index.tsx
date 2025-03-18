@@ -8,10 +8,11 @@ import { Anchor } from "@itwin/itwinui-react/bricks";
 export const handle = { title: "Anchor" };
 
 export default definePage(
-	function Page({ disabled }) {
+	function Page({ disabled, render: renderParam }) {
+		const render = renderParam ? <button /> : undefined;
 		return (
 			<>
-				<Anchor href="#main" disabled={!!disabled}>
+				<Anchor href="#main" disabled={!!disabled} render={render}>
 					Hello
 				</Anchor>
 

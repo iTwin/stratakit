@@ -10,6 +10,15 @@ export const isBrowser = typeof document !== "undefined";
 
 export const supportsPopover = isBrowser && "popover" in HTMLElement.prototype;
 
+export function isDocument(node?: Node): node is Document {
+	return node?.nodeType === Node.DOCUMENT_NODE;
+}
+
+export function getOwnerDocument(node?: Node | null) {
+	if (!node) return null;
+	return (isDocument(node) ? node : node.ownerDocument) || null;
+}
+
 // ----------------------------------------------------------------------------
 
 /**

@@ -286,7 +286,13 @@ function PanelContent(props: {
 				/>
 				{trees.map((tree) => {
 					return (
-						<Tabs.TabPanel key={tree.name} tabId={tree.name} unmountOnHide>
+						<Tabs.TabPanel
+							key={tree.name}
+							tabId={tree.name}
+							className={styles.tabPanel}
+							focusable={false}
+							unmountOnHide
+						>
 							{tree.content}
 						</Tabs.TabPanel>
 					);

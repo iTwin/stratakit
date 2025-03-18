@@ -209,13 +209,13 @@
 }
 
 .tabPanel {
-	/* TODO: need a scrollable container for error and tree. */
-	overflow: auto;
+	min-block-size: 0;
+	display: flex;
+	flex-direction: column;
 }
 
 .tree {
 	scrollbar-gutter: stable;
-	overflow: unset;
 }
 
 .action {

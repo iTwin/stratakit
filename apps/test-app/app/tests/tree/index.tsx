@@ -58,7 +58,13 @@ export default definePage(function Page({
 		return [`${treeId}-0-1`];
 	}, [treeId]);
 	return (
-		<>
+		<div
+			style={{
+				display: "flex",
+				flexDirection: "column",
+				maxBlockSize: 500,
+			}}
+		>
 			<Tree.Root
 				style={{ maxInlineSize: overflow ? 300 : undefined }}
 				error={
@@ -204,6 +210,6 @@ export default definePage(function Page({
 					);
 				})}
 			</Tree.Root>
-		</>
+		</div>
 	);
 });

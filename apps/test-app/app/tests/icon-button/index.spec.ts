@@ -55,7 +55,7 @@ test.describe("@visual", () => {
 	test("forced-colors", async ({ page, browserName }) => {
 		test.skip(
 			browserName === "webkit",
-			"forced-colors for IconButton does not appear correctly in Webkit",
+			"Webkit does not support forced-colors",
 		);
 		await page.goto("/tests/icon-button?visual=true");
 		await page.emulateMedia({ forcedColors: "active" });

@@ -289,8 +289,9 @@ function PanelContent(props: {
 					return (
 						<Tabs.TabPanel
 							key={tree.name}
-							className={styles.tabPanel}
 							tabId={tree.name}
+							className={styles.tabPanel}
+							focusable={false}
 							unmountOnHide
 						>
 							{tree.content}

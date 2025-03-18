@@ -47,7 +47,7 @@
 			block-size: var(--✨cell-height-min);
 		}
 
-		&:where([role="columnheader"], [role="cell"], [role="caption"]) {
+		&:where([role="columnheader"], [role="cell"]) {
 			min-block-size: var(--✨cell-height-min);
 		}
 	}

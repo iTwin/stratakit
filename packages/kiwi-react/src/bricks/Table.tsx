@@ -86,9 +86,9 @@ interface CustomTableProps extends BaseProps {}
  * A table is a grid of rows and columns that displays data in a structured format.
  *
  * `Table.CustomTable` implements the [WAI-ARIA table pattern](https://www.w3.org/WAI/ARIA/apg/patterns/table/) using
- * divs or spans + appropriate roles for the table root *and its descendants*.
+ * divs + appropriate roles for the table root *and its descendants*.
  *
- * E.g. `<div role="table">`, `<div role="row">`, `<span role="columnheader">`, and `<span role="cell">`.
+ * E.g. `<div role="table">`, `<div role="row">`, `<div role="columnheader">`, and `<div role="cell">`.
  *
  * Related: `Table.HtmlTable`
  *
@@ -99,19 +99,19 @@ interface CustomTableProps extends BaseProps {}
  *
  *   <Table.Header> // <div role="rowgroup">
  * 	   <Table.Row> // <div role="row">
- * 	     <Table.Cell>Header 1</Table.Cell> // <span role="columnheader">
- * 	 	   <Table.Cell>Header 2</Table.Cell> // <span role="columnheader">
+ * 	     <Table.Cell>Header 1</Table.Cell> // <div role="columnheader">
+ * 	 	   <Table.Cell>Header 2</Table.Cell> // <div role="columnheader">
  * 	   </Table.Row>
  *   </Table.Header>
  *
  *   <Table.Body>
  * 	   <Table.Row> // <div role="row">
- * 		   <Table.Cell>Cell 1.1</Table.Cell> // <span role="cell">
- * 		   <Table.Cell>Cell 1.2</Table.Cell> // <span role="cell">
+ * 		   <Table.Cell>Cell 1.1</Table.Cell> // <div role="cell">
+ * 		   <Table.Cell>Cell 1.2</Table.Cell> // <div role="cell">
  * 	   </Table.Row>
  * 	   <Table.Row> // <div role="row">
- * 		   <Table.Cell>Cell 2.1</Table.Cell> // <span role="cell">
- * 		   <Table.Cell>Cell 2.2</Table.Cell> // <span role="cell">
+ * 		   <Table.Cell>Cell 2.1</Table.Cell> // <div role="cell">
+ * 		   <Table.Cell>Cell 2.2</Table.Cell> // <div role="cell">
  * 	   </Table.Row>
  *   </Table.Body>
  * </Table.CustomTable>
@@ -312,22 +312,22 @@ DEV: TableCaption.displayName = "Table.Caption";
 
 // ----------------------------------------------------------------------------
 
-interface TableCellProps extends BaseProps<"span"> {}
+interface TableCellProps extends BaseProps<"div"> {}
 
 /**
  * `Table.Cell` is a component that contains the data of a table cell.
  *
  * - If within a `Table.HtmlTable`: it will render a `<th>` element if also within a `Table.Header`, or a `<td>` element
  * if also within a `Table.Body`.
- * - If within a `Table.CustomTable`: it will render a `<span role="columnheader">` element if also within a
- * `Table.Header`, or a `<span role="cell">` element if also within a `Table.Body`.
+ * - If within a `Table.CustomTable`: it will render a `<div role="columnheader">` element if also within a
+ * `Table.Header`, or a `<div role="cell">` element if also within a `Table.Body`.
  *
  * Example:
  * ```tsx
  *	<Table.Cell>Cell 1.1</Table.Cell>
  * ```
  */
-const TableCell = forwardRef<"span", TableCellProps>((props, forwardedRef) => {
+const TableCell = forwardRef<"div", TableCellProps>((props, forwardedRef) => {
 	const isWithinTableHeader = useSafeContext(TableHeaderContext);
 	const { mode } = useSafeContext(TableContext);
 
@@ -339,7 +339,7 @@ const TableCell = forwardRef<"span", TableCellProps>((props, forwardedRef) => {
 	}, [isWithinTableHeader, mode]);
 
 	return (
-		<Role.span
+		<Role.div
 			render={render}
 			role={role}
 			{...props}

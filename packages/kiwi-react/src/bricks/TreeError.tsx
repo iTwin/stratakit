@@ -55,7 +55,12 @@ interface TreeErrorProps extends Omit<BaseProps, "children"> {
 const TreeError = forwardRef<"div", TreeErrorProps>((props, forwardedRef) => {
 	const { label, items, expanded, onExpandedChange, ...rest } = props;
 	const labelId = React.useId();
-	const [open, setOpen] = useControlledState(false, expanded, onExpandedChange);
+
+	const [open, setOpen] = useControlledState(
+		false,
+		expanded,
+		onExpandedChange as React.Dispatch<React.SetStateAction<boolean>>,
+	);
 	return (
 		<PopoverProvider open={open} setOpen={setOpen}>
 			<Role.div

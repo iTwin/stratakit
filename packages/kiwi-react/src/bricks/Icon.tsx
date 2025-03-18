@@ -166,12 +166,15 @@ function useNormalizedHrefBase(rawHref: string | undefined) {
 			const { signal } = abortController;
 
 			// Make a network request
-			fetch(rawHref, { signal }).then(async (response) => {
+			(async () => {
+				const response = await fetch(rawHref, { signal });
 				if (!response.ok) throw new Error(`Failed to fetch ${rawHref}`);
 
 				// Find all `<symbol>` elements from the response.
 				const fetchedSvgString = sanitizeHtml.current(await response.text());
-				const parsedSvgContent = parseDOM(fetchedSvgString, { ownerDocument });
+				const parsedSvgContent = parseDOM(fetchedSvgString, {
+					ownerDocument,
+				});
 				const symbols = parsedSvgContent.querySelectorAll("symbol");
 
 				for (const symbol of symbols) {
@@ -183,7 +186,7 @@ function useNormalizedHrefBase(rawHref: string | undefined) {
 				inlineHref.current = `#${prefix}`;
 				cache.set(rawHref, inlineHref.current); // Cache for future use.
 				if (!signal.aborted) notify();
-			});
+			})();
 
 			return () => abortController.abort(); // Cancel ongoing fetch.
 		},

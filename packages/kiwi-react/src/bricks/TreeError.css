@@ -29,7 +29,6 @@
 	@layer base {
 		display: flex;
 		flex-direction: column;
-		gap: 4px;
 
 		padding-block-start: 4px;
 		padding-block-end: var(--🥝tree-error-container-padding-block-end, 4px);
@@ -66,6 +65,7 @@
 	@layer base {
 		/* TODO: Divider.css is not using layers */
 		background-color: var(--ids-color-border-page-base);
+		margin-block-start: 4px;
 	}
 }
 

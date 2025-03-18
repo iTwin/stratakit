@@ -5,10 +5,10 @@
 import * as React from "react";
 import cx from "classnames";
 import {
-	DisclosureProvider,
-	Disclosure,
-	DisclosureContent,
-} from "@ariakit/react/disclosure";
+	PopoverProvider,
+	PopoverDisclosure,
+	Popover,
+} from "@ariakit/react/popover";
 import { Role } from "@ariakit/react/role";
 import { forwardRef, type BaseProps } from "./~utils.js";
 import { ChevronDown, Dismiss, StatusWarning } from "./Icon.js";
@@ -45,10 +45,10 @@ interface TreeErrorProps extends Omit<BaseProps, "children"> {
 
 const TreeError = forwardRef<"div", TreeErrorProps>((props, forwardedRef) => {
 	const { label, items, expanded, onExpandedChange, ...rest } = props;
-
+	const labelId = React.useId();
 	const [open, setOpen] = useControlledState(false, expanded, onExpandedChange);
 	return (
-		<DisclosureProvider open={open} setOpen={setOpen}>
+		<PopoverProvider open={open} setOpen={setOpen}>
 			<Role.div
 				data-kiwi-expanded={open}
 				{...rest}
@@ -56,12 +56,16 @@ const TreeError = forwardRef<"div", TreeErrorProps>((props, forwardedRef) => {
 				ref={forwardedRef}
 			>
 				<div className="🥝-tree-error-container">
-					<Disclosure
+					<PopoverDisclosure
 						className="🥝-tree-error-header"
 						render={<Button variant="ghost" />}
 					>
 						<StatusWarning className="🥝-tree-error-icon" />
-						<Text className="🥝-tree-error-label" variant="body-sm">
+						<Text
+							id={labelId}
+							className="🥝-tree-error-label"
+							variant="body-sm"
+						>
 							{label}
 						</Text>
 						<IconButton
@@ -71,14 +75,25 @@ const TreeError = forwardRef<"div", TreeErrorProps>((props, forwardedRef) => {
 							icon={<ChevronDown />}
 							variant="ghost"
 						/>
-					</Disclosure>
-					<DisclosureContent>
+					</PopoverDisclosure>
+					<Popover
+						portal={false}
+						modal={false}
+						wrapperProps={{
+							style: {
+								position: undefined,
+								width: undefined,
+							},
+						}}
+						updatePosition={() => {}}
+						aria-labelledby={labelId}
+					>
 						<Divider className="🥝-tree-error-divider" presentational />
 						<div className="🥝-tree-error-items">{items}</div>
-					</DisclosureContent>
+					</Popover>
 				</div>
 			</Role.div>
-		</DisclosureProvider>
+		</PopoverProvider>
 	);
 });
 DEV: TreeError.displayName = "Tree.Error";

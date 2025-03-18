@@ -5,9 +5,8 @@
 import * as React from "react";
 import cx from "classnames";
 import * as AkTooltip from "@ariakit/react/tooltip";
-import { useStoreState } from "@ariakit/react/store";
 import { forwardRef, type FocusableProps } from "./~utils.js";
-import { usePopoverApi } from "./~hooks.js";
+import { usePopoverApi, useStoreState } from "./~hooks.js";
 
 interface TooltipProps
 	extends Omit<FocusableProps<"div">, "content">,

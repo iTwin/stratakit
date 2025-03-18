@@ -3,9 +3,15 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 import * as React from "react";
-import { useStoreState } from "@ariakit/react/store";
 import { isBrowser, supportsPopover } from "./~utils.js";
 import type { PopoverStore } from "@ariakit/react/popover";
+import {
+	createStore as createZStore,
+	useStore as useZStoreState,
+	type StateCreator as ZStateCreator,
+	type StoreApi as ZStore,
+} from "zustand";
+import { useStoreState as useAkStoreState } from "@ariakit/react/store";
 
 /**
  * SSR-safe wrapper over `React.useLayoutEffect`.
@@ -217,4 +223,80 @@ export function useIsClient() {
 	}, []);
 
 	return isClient;
+}
+
+// ----------------------------------------------------------------------------
+
+export type Store<S = Record<string, unknown>> = Pick<
+	ZStore<S>,
+	"getState" | "setState"
+> &
+	Pick<Partial<ZStore<S>>, "subscribe" | "getInitialState">;
+
+/**
+ * Wrapper over Zustand's `createStore` that puts the store in React state,
+ * so that it can be passed into a React Context.
+ *
+ * Should be used in conjunction with {@link useStoreState}.
+ *
+ * Example:
+ * ```tsx
+ * type CountStore = { count: 0; increment: () => void; decrement: () => void; };
+ * const CountStoreContext = React.createContext<Store<CountStore>>();
+ *
+ * function CounterRoot() {
+ *   const countStore = useCreateStore<CountStore>((set) => ({
+ *     count: 0,
+ *     increment: () => set((state) => ({ count: state.count + 1 })),
+ *     decrement: () => set((state) => ({ count: state.count - 1 })),
+ *   }));
+ *   const increment = useStoreState(countStore, (state) => state.increment);
+ *   const decrement = useStoreState(countStore, (state) => state.decrement);
+ *
+ *   return (
+ *     <CountStoreContext.Provider value={countStore}>
+ *       <button onClick={increment}>Increment</button>
+ *       <Count />
+ *       <button onClick={decrement}>Decrement</button>
+ *     </CountStoreContext.Provider>
+ *   );
+ * }
+ * ```
+ *
+ * @see https://zustand.docs.pmnd.rs/apis/create-store
+ */
+export function useCreateStore<T>(creator: ZStateCreator<T, [], []>) {
+	const [store] = React.useState(() =>
+		Object.assign(createZStore<T>(creator), { [Symbol.for("🥝")]: true }),
+	);
+	return store as Store<T>;
+}
+
+/**
+ * Hook that returns the state of a either a Zustand store or an Ariakit store.
+ *
+ * Example (Zustand + {@link useCreateStore}):
+ * ```jsx
+ * const countStore = useSafeContext(CountStoreContext);
+ * const count = useStoreState(countStore, (state) => state.count);
+ * ```
+ *
+ * Example (Ariakit):
+ * ```jsx
+ * const comboboxStore = Ariakit.useComboboxContext();
+ * const open = useStoreState(comboboxStore, (state) => state.open);
+ * ```
+ *
+ * @see https://zustand.docs.pmnd.rs/hooks/use-store
+ * @see https://ariakit.org/reference/use-store-state
+ */
+export function useStoreState<T, V>(
+	store: Store<T> | undefined,
+	selector: (state: T) => V,
+): V {
+	const isZustandStore = store && Symbol.for("🥝") in store;
+	const useStoreStateHook = isZustandStore ? useZStoreState : useAkStoreState;
+
+	// @ts-expect-error -- store is not undefined
+	return useStoreStateHook(store, selector);
 }

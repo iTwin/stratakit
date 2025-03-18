@@ -14,7 +14,7 @@ import {
 	type BaseProps,
 	type FocusableProps,
 } from "./~utils.js";
-import { usePopoverApi } from "./~hooks.js";
+import { usePopoverApi, useStoreState } from "./~hooks.js";
 import {
 	MenuProvider,
 	useMenuContext,
@@ -25,7 +25,6 @@ import {
 	type MenuItemCheckboxProps,
 	type MenuProviderProps,
 } from "@ariakit/react/menu";
-import { useStoreState } from "@ariakit/react/store";
 import { predefinedSymbols, type PredefinedSymbol } from "./Kbd.internal.js";
 
 // ----------------------------------------------------------------------------

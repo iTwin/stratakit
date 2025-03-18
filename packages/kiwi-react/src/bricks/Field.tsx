@@ -13,8 +13,8 @@ import {
 	type CollectionProps,
 	type CollectionItemProps,
 } from "@ariakit/react/collection";
-import { useStoreState } from "@ariakit/react/store";
 import { forwardRef, type BaseProps } from "./~utils.js";
+import { useStoreState } from "./~hooks.js";
 
 // ----------------------------------------------------------------------------
 
@@ -84,7 +84,10 @@ function FieldCollection(props: Pick<CollectionProps, "render">) {
 	const fieldElementCollection = useCollectionStore<FieldCollectionStoreItem>({
 		defaultItems: [],
 	});
-	const renderedItems = useStoreState(fieldElementCollection, "renderedItems");
+	const renderedItems = useStoreState(
+		fieldElementCollection,
+		(state) => state.renderedItems,
+	);
 
 	// Collect the control type and index
 	const [controlType, controlIndex] = React.useMemo(() => {
@@ -127,7 +130,7 @@ export function FieldControl(props: FieldCollectionItemControlProps) {
 	const store = useCollectionContext();
 	const generatedId = React.useId();
 	const { id = store ? generatedId : undefined, type, ...rest } = props;
-	const renderedItems = useStoreState(store, "renderedItems");
+	const renderedItems = useStoreState(store, (state) => state?.renderedItems);
 	const describedBy = React.useMemo(() => {
 		// Create a space separated list of description IDs
 		const idRefList = renderedItems
@@ -163,7 +166,7 @@ export function FieldControl(props: FieldCollectionItemControlProps) {
  */
 export function FieldLabel(props: Pick<CollectionItemProps, "render">) {
 	const store = useCollectionContext();
-	const renderedItems = useStoreState(store, "renderedItems");
+	const renderedItems = useStoreState(store, (state) => state?.renderedItems);
 	const fieldId = React.useMemo(
 		() =>
 			renderedItems?.find(

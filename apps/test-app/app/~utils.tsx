@@ -49,18 +49,23 @@ export function definePage(
 				),
 			];
 
-			return variantNames.map((variantName) => {
-				const safeVariableName = variantName || "default";
+			return (
+				variantNames
+					// In production, exclude any variant names that start with "_". In dev, show all.
+					.filter((varName) => !isProduction || !varName.startsWith("_"))
+					.map((variantName) => {
+						const safeVariableName = variantName || "default";
 
-				return {
-					name: toUpperCamelCase(safeVariableName),
-					url: variantName ? `?${variantName}` : "",
-					isCurrent:
-						variantName === ""
-							? Object.keys(searchParams).length === 0
-							: variantName in searchParams,
-				};
-			});
+						return {
+							name: toUpperCamelCase(safeVariableName),
+							url: variantName ? `?${variantName}` : "",
+							isCurrent:
+								variantName === ""
+									? Object.keys(searchParams).length === 0
+									: variantName in searchParams,
+						};
+					})
+			);
 		}, [otherVariants, searchParams]);
 
 		for (const [variantName, Variant] of Object.entries(otherVariants ?? {})) {
@@ -231,10 +236,12 @@ export function VariantsList({
 				>
 					<ListItem.Content>
 						<Role.span
-							className={styles.listItemLink}
 							render={
 								!variant.isCurrent ? (
-									<Anchor render={<Link to={variant.url} />} />
+									<Anchor
+										render={<Link to={variant.url} />}
+										className={styles.listItemLink}
+									/>
 								) : undefined
 							}
 							aria-current={variant.isCurrent ? "page" : "false"}
@@ -248,3 +255,7 @@ export function VariantsList({
 		portalTarget,
 	);
 }
+
+// ----------------------------------------------------------------------------
+
+const isProduction = process.env.NODE_ENV === "production";

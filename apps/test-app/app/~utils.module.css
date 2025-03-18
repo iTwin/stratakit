@@ -39,7 +39,8 @@
 		background-color: var(--ids-color-border-page-base);
 		inline-size: 1px;
 		position: absolute;
-		inset: 0 auto 0 var(--indent-guide-left-inset);
+		inset-inline: var(--indent-guide-left-inset) auto;
+		inset-block: 0;
 	}
 }
 

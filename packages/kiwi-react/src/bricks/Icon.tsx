@@ -72,28 +72,26 @@ interface IconProps extends Omit<BaseProps<"svg">, "children"> {
  * <Icon href={…} alt="Help" />
  * ```
  */
-export const Icon = React.memo(
-	forwardRef<"svg", IconProps>((props, forwardedRef) => {
-		const { href: hrefProp, size, alt, ...rest } = props;
+export const Icon = forwardRef<"svg", IconProps>((props, forwardedRef) => {
+	const { href: hrefProp, size, alt, ...rest } = props;
 
-		const isDecorative = !alt;
-		const hrefBase = useNormalizedHrefBase(hrefProp);
+	const isDecorative = !alt;
+	const hrefBase = useNormalizedHrefBase(hrefProp);
 
-		return (
-			<Role.svg
-				aria-hidden={isDecorative ? "true" : undefined}
-				role={isDecorative ? undefined : "img"}
-				aria-label={isDecorative ? undefined : alt}
-				{...rest}
-				data-kiwi-size={size}
-				className={cx("🥝-icon", props.className)}
-				ref={forwardedRef}
-			>
-				{hrefBase ? <use href={toIconHref(hrefBase, size)} /> : null}
-			</Role.svg>
-		);
-	}),
-);
+	return (
+		<Role.svg
+			aria-hidden={isDecorative ? "true" : undefined}
+			role={isDecorative ? undefined : "img"}
+			aria-label={isDecorative ? undefined : alt}
+			{...rest}
+			data-kiwi-size={size}
+			className={cx("🥝-icon", props.className)}
+			ref={forwardedRef}
+		>
+			{hrefBase ? <use href={toIconHref(hrefBase, size)} /> : null}
+		</Role.svg>
+	);
+});
 DEV: Icon.displayName = "Icon";
 
 // ----------------------------------------------------------------------------

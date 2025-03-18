@@ -4,6 +4,11 @@
  *--------------------------------------------------------------------------------------------*/
 import * as React from "react";
 import cx from "classnames";
+import {
+	DisclosureProvider,
+	Disclosure,
+	DisclosureContent,
+} from "@ariakit/react/disclosure";
 import { Role } from "@ariakit/react/role";
 import { forwardRef, type BaseProps } from "./~utils.js";
 import { ChevronDown, Dismiss, StatusWarning } from "./Icon.js";
@@ -12,6 +17,7 @@ import { IconButton } from "./IconButton.js";
 import { Anchor } from "./Anchor.js";
 import { TreeContext } from "./Tree.internal.js";
 import { Divider } from "./Divider.js";
+import { Button } from "./Button.js";
 
 // ----------------------------------------------------------------------------
 
@@ -39,38 +45,46 @@ interface TreeErrorProps extends Omit<BaseProps, "children"> {
 }
 
 const TreeError = forwardRef<"div", TreeErrorProps>((props, forwardedRef) => {
-	const { label, items, expanded = false, onExpandedChange, ...rest } = props;
+	const {
+		label,
+		items,
+		expanded: expandedProp = false,
+		onExpandedChange,
+		...rest
+	} = props;
 
 	return (
-		<Role.div
-			data-kiwi-expanded={expanded}
-			{...rest}
-			className={cx("🥝-tree-error", props.className)}
-			ref={forwardedRef}
-		>
-			<div className="🥝-tree-error-container">
-				<div className="🥝-tree-error-header">
-					<StatusWarning className="🥝-tree-error-icon" />
-					<Text className="🥝-tree-error-label" variant="body-sm">
-						{label}
-					</Text>
-					<IconButton
-						label={expanded ? "Collapse" : "Expand"}
-						icon={<ChevronDown />}
-						variant="ghost"
-						onClick={() => {
-							onExpandedChange?.(!expanded);
-						}}
-					/>
-				</div>
-				{expanded && (
-					<>
+		<DisclosureProvider open={expandedProp} setOpen={onExpandedChange}>
+			<Role.div
+				data-kiwi-expanded={expandedProp}
+				{...rest}
+				className={cx("🥝-tree-error", props.className)}
+				ref={forwardedRef}
+			>
+				<div className="🥝-tree-error-container">
+					<Disclosure
+						className="🥝-tree-error-header"
+						render={<Button variant="ghost" />}
+					>
+						<StatusWarning className="🥝-tree-error-icon" />
+						<Text className="🥝-tree-error-label" variant="body-sm">
+							{label}
+						</Text>
+						<IconButton
+							inert
+							render={<span />}
+							label="Toggle"
+							icon={<ChevronDown />}
+							variant="ghost"
+						/>
+					</Disclosure>
+					<DisclosureContent>
 						<Divider className="🥝-tree-error-divider" presentational />
 						<div className="🥝-tree-error-items">{items}</div>
-					</>
-				)}
-			</div>
-		</Role.div>
+					</DisclosureContent>
+				</div>
+			</Role.div>
+		</DisclosureProvider>
 	);
 });
 DEV: TreeError.displayName = "Tree.Error";

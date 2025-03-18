@@ -43,12 +43,9 @@
 
 .🥝-tree-error-header {
 	@layer base {
-		display: flex;
-		align-items: center;
-		gap: 4px;
-
 		padding-inline-start: 8px;
 		padding-inline-end: 4px;
+		font-weight: 400;
 	}
 }
 
@@ -61,6 +58,7 @@
 .🥝-tree-error-label {
 	@layer base {
 		flex: 1;
+		text-align: start;
 	}
 }
 
@@ -77,7 +75,7 @@
 		flex-direction: column;
 		gap: 16px;
 
-		padding-block-start: 4px;
+		padding-block-start: 8px;
 		padding-inline-start: 28px;
 		padding-inline-end: 4px;
 	}

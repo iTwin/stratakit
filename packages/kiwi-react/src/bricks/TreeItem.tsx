@@ -12,7 +12,7 @@ import {
 import { Toolbar } from "@ariakit/react/toolbar";
 import * as ListItem from "./~utils.ListItem.js";
 import { IconButton } from "./IconButton.js";
-import { Icon } from "./Icon.js";
+import { Icon, StatusWarning } from "./Icon.js";
 import { forwardRef, type BaseProps } from "./~utils.js";
 import { useEventHandlers } from "./~hooks.js";
 import { GhostAligner, useGhostAlignment } from "./~utils.GhostAligner.js";
@@ -56,7 +56,7 @@ interface TreeItemRootProps extends Omit<BaseProps, "content" | "children"> {
 	 * Used to determine if a tree item is a parent node. If `undefined`, it is a leaf node (i.e. not expandable).
 	 *
 	 * @default undefined
-	 * */
+	 */
 	expanded?: boolean;
 	/**
 	 * Callback fired when the tree item is expanded.
@@ -101,6 +101,12 @@ interface TreeItemRootProps extends Omit<BaseProps, "content" | "children"> {
 	 * ```
 	 */
 	actions?: React.ReactNode[];
+	/**
+	 * Specifies if the tree item is in an error state.
+	 *
+	 * @default false
+	 */
+	error?: boolean;
 }
 
 /**
@@ -135,11 +141,12 @@ const TreeItemRoot = forwardRef<"div", TreeItemRootProps>(
 			"aria-level": level,
 			selected,
 			expanded,
-			icon,
+			icon: iconProp,
 			unstable_decorations,
 			label,
 			description,
 			actions,
+			error,
 			onSelectedChange,
 			onExpandedChange,
 			onClick: onClickProp,
@@ -172,6 +179,7 @@ const TreeItemRoot = forwardRef<"div", TreeItemRootProps>(
 		const descriptionId = React.useId();
 		const decorationId = React.useId();
 
+		const icon = error ? <StatusWarning /> : iconProp;
 		const describedBy = React.useMemo(() => {
 			const idRefs = [];
 			if (description) idRefs.push(descriptionId);
@@ -216,6 +224,7 @@ const TreeItemRoot = forwardRef<"div", TreeItemRootProps>(
 					<ListItem.Root
 						data-kiwi-expanded={expanded}
 						data-kiwi-selected={selected}
+						data-kiwi-error={error ? true : undefined}
 						className="🥝-tree-item-node"
 						style={{ "--🥝tree-item-level": level } as React.CSSProperties}
 						role={undefined}
@@ -278,7 +287,7 @@ const TreeItemActions = forwardRef<"div", BaseProps>((props, forwardedRef) => {
 			{...props}
 			onClick={useEventHandlers(props.onClick, (e) => e.stopPropagation())}
 			onKeyDown={useEventHandlers(props.onKeyDown, (e) => e.stopPropagation())}
-			className={cx("🥝-tree-item-actions", props.className)}
+			className={cx("🥝-tree-item-actions-container", props.className)}
 			ref={forwardedRef}
 		>
 			{props.children}

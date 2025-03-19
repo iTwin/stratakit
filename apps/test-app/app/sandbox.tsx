@@ -13,7 +13,7 @@ import {
 	IconButton,
 	Label,
 	Select,
-	Spinner,
+	Skeleton,
 	Tabs,
 	Text,
 	TextBox,
@@ -23,6 +23,7 @@ import {
 import { useSearchParams, type MetaFunction } from "react-router";
 import { useQuery, type UseQueryResult } from "@tanstack/react-query";
 import { toUpperCamelCase } from "./~utils.tsx";
+import cx from "classnames";
 
 import placeholderIcon from "@itwin/itwinui-icons/placeholder.svg";
 import searchIcon from "@itwin/itwinui-icons/search.svg";
@@ -113,13 +114,12 @@ export default function Page() {
 									{models[selectedModel]?.name}
 								</VisuallyHidden>
 
-								<Text
-									className={styles.panelCaption}
-									variant="body-sm"
-									render={<p />}
+								<React.Suspense
+									key={selectedModel}
+									fallback={<Skeleton variant="text" />}
 								>
-									{query.data?.version || ""}
-								</Text>
+									<VersionContent query={query} />
+								</React.Suspense>
 							</hgroup>
 						</div>
 
@@ -134,7 +134,7 @@ export default function Page() {
 						</div>
 					</div>
 
-					<React.Suspense fallback={<PanelLoading />} key={selectedModel}>
+					<React.Suspense key={selectedModel} fallback={<PanelLoading />}>
 						<PanelContent query={query} />
 					</React.Suspense>
 				</>
@@ -221,11 +221,48 @@ function Layout(
 }
 
 function PanelLoading() {
+	const levels = [1, 1, 2, 2, 3, 2, 3, 2, 1, 1, 2, 3, 4, 5, 2, 3, 4, 5];
+
 	return (
-		<EmptyState>
-			<Spinner aria-hidden="true" />
-			<Text variant="body-sm">Loading…</Text>
-		</EmptyState>
+		<>
+			<div className={styles.subheader}>
+				<Skeleton variant="text" />
+			</div>
+
+			<div className={styles.skeletonTree}>
+				{levels.map((level, i) => {
+					return (
+						<SkeletonTreeItem
+							key={`${i}-${level}`}
+							style={{ "--level": level } as React.CSSProperties}
+						/>
+					);
+				})}
+
+				<VisuallyHidden>Loading…</VisuallyHidden>
+			</div>
+		</>
+	);
+}
+
+function SkeletonTreeItem(props: React.ComponentProps<"div">) {
+	return (
+		<div {...props} className={cx(styles.skeletonTreeItem, props.className)}>
+			<Skeleton variant="object" size="small" />
+			<Skeleton variant="text" />
+		</div>
+	);
+}
+
+function VersionContent(props: {
+	query: UseQueryResult<Awaited<ReturnType<typeof fetchModelsData>>>;
+}) {
+	const { version = "" } = React.use(props.query.promise);
+
+	return (
+		<Text className={styles.panelCaption} variant="body-sm" render={<p />}>
+			{version}
+		</Text>
 	);
 }
 
@@ -286,7 +323,13 @@ function PanelContent(props: {
 				/>
 				{trees.map((tree) => {
 					return (
-						<Tabs.TabPanel key={tree.name} tabId={tree.name} unmountOnHide>
+						<Tabs.TabPanel
+							key={tree.name}
+							tabId={tree.name}
+							className={styles.tabPanel}
+							focusable={false}
+							unmountOnHide
+						>
 							{tree.content}
 						</Tabs.TabPanel>
 					);
@@ -800,7 +843,6 @@ function SandboxTree({
 									className={styles.action}
 									icon={lockIcon}
 									label="Lock"
-									aria-hidden={item.hidden}
 								/>,
 								<Tree.ItemAction
 									key="visibility"
@@ -812,7 +854,7 @@ function SandboxTree({
 										toggleHidden(item.id);
 									}}
 								/>,
-								<TreeMoreActions key="more" hidden={item.hidden} />,
+								<TreeMoreActions key="more" />,
 							]}
 						/>
 					);
@@ -822,12 +864,11 @@ function SandboxTree({
 	);
 }
 
-function TreeMoreActions({ hidden }: { hidden?: boolean }) {
+function TreeMoreActions() {
 	return (
 		<DropdownMenu.Root>
 			<DropdownMenu.Button
 				className={styles.action}
-				aria-hidden={hidden}
 				render={<Tree.ItemAction icon={moreIcon} label="More" />}
 			/>
 			<DropdownMenu.Content style={{ minInlineSize: 164 }}>

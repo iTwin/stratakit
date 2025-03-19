@@ -4,11 +4,11 @@
  *--------------------------------------------------------------------------------------------*/
 import { definePage } from "~/~utils.tsx";
 import * as React from "react";
-import * as Tree from "@itwin/itwinui-react-internal/src/bricks/Tree.tsx";
-import { Icon } from "@itwin/itwinui-react-internal/src/bricks/Icon.tsx";
+import { Tree, Icon } from "@itwin/itwinui-react/bricks";
 import placeholderIcon from "@itwin/itwinui-icons/placeholder.svg";
 import unlockIcon from "@itwin/itwinui-icons/lock-unlocked.svg";
 import showIcon from "@itwin/itwinui-icons/visibility-show.svg";
+import refreshIcon from "@itwin/itwinui-icons/refresh.svg";
 
 export const handle = { title: "Tree" };
 
@@ -16,12 +16,13 @@ export default definePage(function Page({
 	overflow = false,
 	selected = false,
 	description: descriptionParam,
+	error: errorParam,
 }) {
 	const overflowPostfix = overflow
 		? " with a super long label that is overflown"
 		: "";
 	const description = descriptionParam ? "Additional description" : undefined;
-
+	const [renderError, setRenderError] = React.useState(!!errorParam);
 	const [data, setData] = React.useState(() => [
 		{
 			label: `Item 1${overflowPostfix}`,
@@ -62,6 +63,7 @@ export default definePage(function Page({
 					setData(newData);
 				};
 
+				const error = renderError && index === 0;
 				return (
 					<React.Fragment key={item.label}>
 						<Tree.Item
@@ -76,14 +78,31 @@ export default definePage(function Page({
 							selected={item.selected}
 							onSelectedChange={handleSelection}
 							icon={<Icon href={placeholderIcon} alt="decoration" />}
-							actions={[
-								<Tree.ItemAction
-									key="unlock"
-									icon={unlockIcon}
-									label="Unlock"
-								/>,
-								<Tree.ItemAction key="show" icon={showIcon} label="Show" />,
-							]}
+							actions={
+								error
+									? [
+											<Tree.ItemAction
+												key="retry"
+												icon={refreshIcon}
+												label="Retry"
+												visible
+												onClick={() => setRenderError(false)}
+											/>,
+										]
+									: [
+											<Tree.ItemAction
+												key="unlock"
+												icon={unlockIcon}
+												label="Unlock"
+											/>,
+											<Tree.ItemAction
+												key="show"
+												icon={showIcon}
+												label="Show"
+											/>,
+										]
+							}
+							error={error}
 						/>
 						{item.children?.map((child, childIndex, children) => {
 							if (!item.expanded) return null;

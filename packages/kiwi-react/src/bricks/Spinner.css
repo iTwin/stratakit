@@ -97,7 +97,7 @@
 
 @keyframes --🥝spinner-animation-indeterminate-slow {
 	50% {
-		rotate: 30deg;
+		rotate: 30deg; /* Simulate a short slowdown between each cycle to help with WCAG SC 2.2.2. */
 	}
 
 	100% {

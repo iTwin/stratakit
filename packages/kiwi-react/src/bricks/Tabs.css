@@ -5,7 +5,7 @@
 
 .🥝-tab-list {
 	@layer base {
-		--🥝tab-active-stripe-gap: 8px;
+		--🥝tab-active-stripe-gap: 6px;
 
 		display: flex;
 		gap: 8px;
@@ -105,9 +105,9 @@
 				inset-inline: var(--✨padding-inline);
 				inset-block: auto calc(var(--🥝tab-active-stripe-gap) * -1);
 
-				/* @media (prefers-reduced-motion: no-preference) {
+				@media (prefers-reduced-motion: no-preference) {
 					view-transition-name: var(--🥝tab-active-stripe-view-transition-name);
-				} */
+				}
 
 				@media (forced-colors: active) {
 					background-color: SelectedItem;

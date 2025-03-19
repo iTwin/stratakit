@@ -18,7 +18,7 @@ export default definePage(
 			/>
 		);
 	},
-	{ renderProp: RenderPropTest },
+	{ renderProp: RenderPropTest, _fallback: RuntimeFallbackTest },
 );
 
 function RenderPropTest() {
@@ -31,4 +31,9 @@ function RenderPropTest() {
 			}
 		/>
 	);
+}
+
+function RuntimeFallbackTest() {
+	const datauri = `data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"><symbol id="icon" fill="none" viewBox="0 0 16 16"><path fill="currentColor" fill-rule="evenodd" d="M8 2a6 6 0 1 0 0 12A6 6 0 0 0 8 2ZM1 8a7 7 0 1 1 14 0A7 7 0 0 1 1 8Z" clip-rule="evenodd"/></symbol></svg>`;
+	return <Icon href={datauri} />;
 }

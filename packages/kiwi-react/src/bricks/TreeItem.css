@@ -51,6 +51,15 @@
 			(var(--🥝tree-item-level) - 1)
 		);
 		padding-inline-end: 0;
+
+		--🥝list-item-color: var(--🥝tree-item-color);
+	}
+
+	@layer modifiers {
+		&:where([data-kiwi-error="true"]) {
+			--🥝icon-color: var(--ids-color-icon-attention-base);
+			--🥝tree-item-color: var(--ids-color-text-attention-base);
+		}
 	}
 
 	@layer states {
@@ -76,7 +85,10 @@
 
 .🥝-tree-item-description:is(.🥝-list-item-content) {
 	@layer base {
-		color: var(--🌀list-item-state--default, var(--ids-color-text-neutral-secondary));
+		color: var(
+			--🥝tree-item-color,
+			var(--🌀list-item-state--default, var(--ids-color-text-neutral-secondary))
+		);
 	}
 }
 

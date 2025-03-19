@@ -93,7 +93,7 @@
 	}
 }
 
-.🥝-tree-item-actions:is(.🥝-list-item-decoration) {
+.🥝-tree-item-actions-container:is(.🥝-list-item-decoration) {
 	@layer base {
 		align-self: stretch;
 		position: sticky;
@@ -102,7 +102,10 @@
 		background-color: var(--ids-color-bg-page-base);
 		display: inline-flex;
 		/** If actions are made visible (by a parent), the actions container should also become visible. */
-		visibility: var(--🥝tree-item-all-actions-visibility, var(--🥝tree-item-action-visibility));
+		visibility: var(
+			--🥝tree-item-actions-container-visibility,
+			var(--🥝tree-item-action-visibility)
+		);
 
 		&::before {
 			position: absolute;
@@ -116,7 +119,7 @@
 	@layer modifiers {
 		/* Actions container should be additionally made visible when any individual action is forcibly visible. */
 		&:where(:has(.🥝-tree-item-action[data-kiwi-visible="true"])) {
-			--🥝tree-item-all-actions-visibility: visible;
+			--🥝tree-item-actions-container-visibility: visible;
 		}
 	}
 }

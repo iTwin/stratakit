@@ -11,11 +11,10 @@
 
 		display: flex;
 		gap: 8px;
+		position: relative;
 
 		/* biome-ignore lint/correctness/noUnknownProperty: `position-anchor` is within `@supports` and offers a fallback. */
 		@supports (position-anchor: --foo) {
-			position: relative;
-
 			&::after {
 				content: "";
 				position: absolute;

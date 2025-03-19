@@ -31,6 +31,22 @@ export default defineConfig({
 
 		/* https://playwright.dev/docs/emulation#color-scheme-and-media */
 		colorScheme: "dark",
+
+		/* Set localStorage.🥝:right-sidebar to false to hide the right sidebar during tests. See https://playwright.dev/docs/api/class-testoptions#test-options-storage-state */
+		storageState: {
+			cookies: [],
+			origins: [
+				{
+					origin: "http://localhost:1800",
+					localStorage: [
+						{
+							name: "🥝:right-sidebar",
+							value: "false",
+						},
+					],
+				},
+			],
+		},
 	},
 	/* Keep snapshots in the same folder as the test file to nest the files. */
 	snapshotPathTemplate:

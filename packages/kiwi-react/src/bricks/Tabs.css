@@ -21,9 +21,9 @@
 				position: absolute;
 				/* biome-ignore lint/correctness/noUnknownProperty: `position-anchor` is within `@supports` and offers a fallback. */
 				position-anchor: --🥝active-tab;
-				inset-inline: calc(anchor(left) + var(--🥝tab-padding-inline))
-					calc(anchor(right) + var(--🥝tab-padding-inline));
-				inset-block-end: calc(anchor(bottom) - var(--🥝tab-active-stripe-gap));
+				inset-inline: calc(anchor(start) + var(--🥝tab-padding-inline))
+					calc(anchor(end) + var(--🥝tab-padding-inline));
+				inset-block-end: calc(anchor(end) - var(--🥝tab-active-stripe-gap));
 				block-size: var(--🥝tab-active-stripe-size);
 				background-color: var(--🥝tab-active-stripe-color);
 

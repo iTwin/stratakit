@@ -4,13 +4,11 @@
  *--------------------------------------------------------------------------------------------*/
 import { definePage } from "~/~utils.tsx";
 import * as React from "react";
-import * as Tree from "@itwin/itwinui-react-internal/src/bricks/Tree.tsx";
-import { Icon } from "@itwin/itwinui-react-internal/src/bricks/Icon.tsx";
+import { Tree, Icon } from "@itwin/itwinui-react/bricks";
 import placeholderIcon from "@itwin/itwinui-icons/placeholder.svg";
 import unlockIcon from "@itwin/itwinui-icons/lock-unlocked.svg";
 import showIcon from "@itwin/itwinui-icons/visibility-show.svg";
 import refreshIcon from "@itwin/itwinui-icons/refresh.svg";
-import { Anchor } from "@itwin/itwinui-react/bricks";
 
 export const handle = { title: "Tree" };
 
@@ -24,7 +22,7 @@ export default definePage(function Page({
 		? " with a super long label that is overflown"
 		: "";
 	const description = descriptionParam ? "Additional description" : undefined;
-
+	const [renderError, setRenderError] = React.useState(!!errorParam);
 	const [data, setData] = React.useState(() => [
 		{
 			label: `Item 1${overflowPostfix}`,
@@ -53,7 +51,6 @@ export default definePage(function Page({
 
 	const treeId = React.useId();
 	const errorItemRef = React.useRef<HTMLElement>(null);
-	const [renderError, setRenderError] = React.useState(!!errorParam);
 	const errors = React.useMemo(() => {
 		return [`${treeId}-0-1`];
 	}, [treeId]);

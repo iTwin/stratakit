@@ -125,6 +125,22 @@
 	gap: 0.5rem;
 }
 
+.skeletonTree {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	overflow: auto;
+}
+
+.skeletonTreeItem {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	width: 100%;
+	padding-inline-start: calc(12px + 6px * (var(--level) - 1));
+	padding-inline-end: 8px;
+}
+
 .canvasWrapper {
 	padding-block: 8px;
 	padding-inline-end: 8px;
@@ -209,13 +225,16 @@
 }
 
 .tabPanel {
+	flex: 1;
 	min-block-size: 0;
+
 	display: flex;
 	flex-direction: column;
 }
 
 .tree {
 	scrollbar-gutter: stable;
+	flex: 1;
 }
 
 .action {

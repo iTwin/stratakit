@@ -143,6 +143,7 @@ const TreeItemRoot = forwardRef<"div", TreeItemRootProps>(
 			"aria-level": level,
 			selected,
 			expanded,
+			icon: iconProp,
 			unstable_decorations,
 			label,
 			description,
@@ -154,7 +155,6 @@ const TreeItemRoot = forwardRef<"div", TreeItemRootProps>(
 			onKeyDown: onKeyDownProp,
 			...rest
 		} = props;
-		let { icon } = props;
 
 		const { itemIdToErrorId } = React.useContext(TreeContext) ?? {};
 
@@ -184,8 +184,7 @@ const TreeItemRoot = forwardRef<"div", TreeItemRootProps>(
 		const decorationId = React.useId();
 		const errorId = id && itemIdToErrorId ? itemIdToErrorId.get(id) : undefined;
 
-		icon = error ? <StatusWarning /> : icon;
-
+		const icon = error ? <StatusWarning /> : iconProp;
 		const describedBy = React.useMemo(() => {
 			const idRefs = [];
 			if (description) idRefs.push(descriptionId);

@@ -137,7 +137,7 @@
 	align-items: center;
 	gap: 8px;
 	width: 100%;
-	padding-inline-start: calc(8px + 6px * (var(--level) - 1));
+	padding-inline-start: calc(12px + 6px * (var(--level) - 1));
 	padding-inline-end: 8px;
 }
 

@@ -1,0 +1,107 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+
+.🥝-banner {
+	@layer base {
+		background-color: var(--🥝banner-color-background);
+		border: 1px solid var(--🥝banner-color-border);
+		border-radius: 8px;
+		padding: 12px;
+		padding-inline-start: 16px;
+		display: flex;
+		align-items: center;
+		column-gap: 8px;
+	}
+
+	@layer modifiers {
+		&:where([data-kiwi-variant="outline"]) {
+			--🥝banner-color-background: var(--ids-color-bg-elevation-base);
+
+			&:where([data-kiwi-tone="neutral"]) {
+				--🥝banner-color-border: var(--ids-color-border-neutral-base);
+			}
+		}
+
+		&:where([data-kiwi-variant="solid"]) {
+			&:where([data-kiwi-tone="info"]) {
+				--🥝banner-color-background: var(--ids-color-bg-info-muted);
+			}
+
+			&:where([data-kiwi-tone="positive"]) {
+				--🥝banner-color-background: var(--ids-color-bg-positive-muted);
+			}
+
+			&:where([data-kiwi-tone="attention"]) {
+				--🥝banner-color-background: var(--ids-color-bg-attention-muted);
+			}
+
+			&:where([data-kiwi-tone="critical"]) {
+				--🥝banner-color-background: var(--ids-color-bg-critical-muted);
+			}
+		}
+
+		&:where([data-kiwi-tone="info"]) {
+			--🥝banner-color-border: var(--ids-color-border-info-base);
+			--🥝icon-color: var(--ids-color-icon-info-base);
+		}
+
+		&:where([data-kiwi-tone="positive"]) {
+			--🥝icon-color: var(--ids-color-icon-positive-base);
+			--🥝banner-color-border: var(--ids-color-border-positive-base);
+		}
+
+		&:where([data-kiwi-tone="attention"]) {
+			--🥝icon-color: var(--ids-color-icon-attention-base);
+			--🥝banner-color-border: var(--ids-color-border-attention-base);
+		}
+
+		&:where([data-kiwi-tone="critical"]) {
+			--🥝icon-color: var(--ids-color-icon-critical-base);
+			--🥝banner-color-border: var(--ids-color-border-critical-base);
+		}
+
+		@media (forced-colors: active) {
+			--🥝icon-color: CanvasText;
+		}
+	}
+}
+
+.🥝-banner-label {
+	@layer base {
+		font-weight: 500;
+	}
+}
+
+.🥝-banner-message {
+	@layer base {
+		flex: 1;
+	}
+}
+
+.🥝-banner-dismiss-button {
+	@layer modifiers {
+		:where([data-kiwi-variant="solid"]) & {
+			:where([data-kiwi-tone="info"]) & {
+				--🥝icon-color: var(--ids-color-icon-info-base);
+			}
+
+			:where([data-kiwi-tone="positive"]) & {
+				--🥝icon-color: var(--ids-color-icon-positive-base);
+			}
+
+			:where([data-kiwi-tone="attention"]) & {
+				--🥝icon-color: var(--ids-color-icon-attention-base);
+			}
+
+			:where([data-kiwi-tone="critical"]) & {
+				--🥝icon-color: var(--ids-color-icon-critical-base);
+			}
+
+			@media (forced-colors: active) {
+				--🥝icon-color: CanvasText;
+			}
+		}
+	}
+}

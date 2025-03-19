@@ -31,6 +31,15 @@ test("visually-hidden label", async ({ page }) => {
 	await expect(tooltip).toHaveCount(0);
 });
 
+test("dot", async ({ page }) => {
+	await page.goto("/tests/icon-button?dot=true");
+
+	const button = page.getByRole("button", { name: "Notifications" });
+	await expect(button).toHaveAccessibleDescription(
+		"You have unread notifications",
+	);
+});
+
 test.describe("@visual", () => {
 	test("default", async ({ page }) => {
 		await page.goto("/tests/icon-button?visual=true");
@@ -46,7 +55,7 @@ test.describe("@visual", () => {
 	test("forced-colors", async ({ page, browserName }) => {
 		test.skip(
 			browserName === "webkit",
-			"forced-colors for IconButton does not appear correctly in Webkit",
+			"Webkit does not support forced-colors",
 		);
 		await page.goto("/tests/icon-button?visual=true");
 		await page.emulateMedia({ forcedColors: "active" });

@@ -4,8 +4,12 @@
  *--------------------------------------------------------------------------------------------*/
 import styles from "./~utils.module.css";
 import * as React from "react";
+import * as ReactDOM from "react-dom";
 import cx from "classnames";
-import { useSearchParams } from "react-router";
+import { useSearchParams, Link } from "react-router";
+import { Anchor } from "@itwin/itwinui-react/bricks";
+import * as ListItem from "../node_modules/@itwin/itwinui-react/src/bricks/~utils.ListItem.tsx";
+import { Role } from "@ariakit/react/role";
 
 export type VariantProps = Record<string, string>;
 
@@ -36,13 +40,51 @@ export function definePage(
 	return () => {
 		const searchParams = useNormalizedSearchParams();
 
+		const variants = React.useMemo(() => {
+			// Collect and normalize variant names
+			const variantNames = [
+				"",
+				...Object.entries(otherVariants ?? {}).map(
+					([variantName]) => variantName,
+				),
+			];
+
+			return (
+				variantNames
+					// In production, exclude any variant names that start with "_". In dev, show all.
+					.filter((varName) => !isProduction || !varName.startsWith("_"))
+					.map((variantName) => {
+						const safeVariableName = variantName || "default";
+
+						return {
+							name: toUpperCamelCase(safeVariableName),
+							url: variantName ? `?${variantName}` : "",
+							isCurrent:
+								variantName === ""
+									? Object.keys(searchParams).length === 0
+									: variantName in searchParams,
+						};
+					})
+			);
+		}, [otherVariants, searchParams]);
+
 		for (const [variantName, Variant] of Object.entries(otherVariants ?? {})) {
 			if (variantName in searchParams) {
-				return <Variant {...searchParams} />;
+				return (
+					<>
+						<Variant {...searchParams} />
+						<VariantsList variants={variants} />
+					</>
+				);
 			}
 		}
 
-		return <DefaultVariant {...searchParams} />;
+		return (
+			<>
+				<DefaultVariant {...searchParams} />
+				<VariantsList variants={variants} />
+			</>
+		);
 	};
 }
 
@@ -112,8 +154,34 @@ export function useMediaQuery(query: string) {
 
 // ----------------------------------------------------------------------------
 
+/** Returns the value from local storage associated with the passed key */
+export const useLocalStorage = (key: string) => {
+	const [value, setValue] = React.useState<string | null>(null);
+
+	React.useEffect(() => {
+		const localStorageValue = localStorage.getItem(key);
+		setValue(localStorageValue);
+	}, [key]);
+
+	return value;
+};
+
+// ----------------------------------------------------------------------------
+
 export function toKebabCase(str: string) {
 	return str.replace(/([a-z])([A-Z])/g, "$1-$2").toLowerCase();
+}
+
+export function toLowerCamelCase(str: string) {
+	return str.replace(/-\w/g, clearAndUpper);
+}
+
+export function toUpperCamelCase(str: string) {
+	return str.replace(/(^\w|-\w)/g, clearAndUpper);
+}
+
+function clearAndUpper(str: string) {
+	return str.replace(/-/, "").toUpperCase();
 }
 
 // ----------------------------------------------------------------------------
@@ -121,3 +189,73 @@ export function toKebabCase(str: string) {
 export function Table(props: React.ComponentProps<"table">) {
 	return <table {...props} className={cx(styles.table, props.className)} />;
 }
+
+// ----------------------------------------------------------------------------
+
+export function RightSidebar({
+	header,
+	children,
+	...props
+}: { header: React.ReactNode } & React.ComponentProps<"div">) {
+	return (
+		<div {...props} className={cx(styles.rightSidebar, props.className)}>
+			<div className={styles.rightSidebarHeader}>{header}</div>
+			<div className={styles.rightSidebarContent}>{children}</div>
+		</div>
+	);
+}
+
+// ----------------------------------------------------------------------------
+
+export const VariantsListContext = React.createContext<
+	{ portalTarget: HTMLElement | null } | undefined
+>(undefined);
+
+export function VariantsList({
+	variants,
+	listItemProps,
+}: {
+	variants: Array<{
+		name: string;
+		url: string;
+		isCurrent: boolean;
+	}>;
+	listItemProps?: React.ComponentProps<typeof ListItem.Root>;
+}) {
+	const { portalTarget } = React.useContext(VariantsListContext) ?? {};
+
+	if (portalTarget == null) return null;
+
+	return ReactDOM.createPortal(
+		<div role="list" className={styles.list}>
+			{variants.map((variant) => (
+				<ListItem.Root
+					key={variant.name}
+					className={styles.listItem}
+					{...listItemProps}
+				>
+					<ListItem.Content>
+						<Role.span
+							render={
+								!variant.isCurrent ? (
+									<Anchor
+										render={<Link to={variant.url} />}
+										className={styles.listItemLink}
+									/>
+								) : undefined
+							}
+							aria-current={variant.isCurrent ? "page" : "false"}
+						>
+							{variant.name}
+						</Role.span>
+					</ListItem.Content>
+				</ListItem.Root>
+			))}
+		</div>,
+		portalTarget,
+	);
+}
+
+// ----------------------------------------------------------------------------
+
+const isProduction = process.env.NODE_ENV === "production";

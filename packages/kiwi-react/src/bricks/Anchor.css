@@ -3,18 +3,47 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 .🥝-anchor {
+	--✨color--default: var(--ids-color-text-neutral-primary);
+	--✨color--accent: var(--ids-color-text-accent-strong);
+	--✨color--accent-hover: color-mix(
+		in oklch,
+		var(--✨color--accent) 100%,
+		var(--ids-color-glow-hue) var(--ids-color-text-glow-strong-hover-\%)
+	);
+	--✨color--accent-pressed: color-mix(
+		in oklch,
+		var(--✨color--accent) 100%,
+		var(--ids-color-glow-hue) var(--ids-color-text-glow-strong-pressed-\%)
+	);
+	--✨color--critical: var(--ids-color-text-critical-base);
+	--✨color--critical-hover: color-mix(
+		in oklch,
+		var(--✨color--critical) 100%,
+		var(--ids-color-glow-hue) var(--ids-color-text-glow-strong-hover-\%)
+	);
+	--✨color--critical-pressed: color-mix(
+		in oklch,
+		var(--✨color--critical) 100%,
+		var(--ids-color-glow-hue) var(--ids-color-text-glow-strong-pressed-\%)
+	);
+	--✨color--disabled: var(--ids-color-text-neutral-disabled);
+
 	@layer base {
 		cursor: pointer;
 		font-size: var(--ids-font-size-12);
 		font-weight: 500;
-		text-underline-offset: 0.25ex;
-		text-decoration-color: inherit;
+		text-underline-offset: var(--🌀anchor-state--default, 2px) var(--🌀anchor-state--hover, 3px)
+			var(--🌀anchor-state--pressed, 3px);
+		text-decoration-color: var(--🌀anchor-state--default, currentColor)
+			var(--🌀anchor-state--hover, currentColor) var(--🌀anchor-state--pressed, transparent);
+		text-decoration-line: underline;
 
 		border-radius: 4px;
 
-		color: var(--🥝anchor-color);
+		color: var(--🥝anchor-color, var(--✨color--default));
 
-		transition: color 150ms ease-out, text-decoration-color 150ms ease-out;
+		transition: all 150ms ease-out;
+		transition-property: color, text-decoration-color, text-underline-offset;
 
 		&:where(button) {
 			border: none;
@@ -23,39 +52,46 @@
 	}
 
 	@layer modifiers {
-		&:where([data-kiwi-tone="neutral"]) {
-			--🥝anchor-color: var(--ids-color-text-neutral-primary);
-		}
-
 		&:where([data-kiwi-tone="accent"]) {
-			--🥝anchor-color: var(--ids-color-text-accent-strong);
+			--🥝anchor-color: var(--🌀anchor-state--default, var(--✨color--accent))
+				var(--🌀anchor-state--hover, var(--✨color--accent-hover))
+				var(--🌀anchor-state--pressed, var(--✨color--accent-pressed));
 		}
 
 		&:where([data-kiwi-tone="critical"]) {
-			--🥝anchor-color: var(--ids-color-text-critical-base);
-
-			&:focus-visible {
-				outline-color: var(--🥝anchor-color);
-			}
+			--🥝anchor-color: var(--🌀anchor-state--default, var(--✨color--critical))
+				var(--🌀anchor-state--hover, var(--✨color--critical-hover))
+				var(--🌀anchor-state--pressed, var(--✨color--critical-pressed));
 		}
 	}
 
 	@layer states {
 		@media (any-hover: hover) {
 			&:where(:hover) {
-				text-decoration-color: transparent;
+				--🌀anchor-state: var(--🌀anchor-state--hover);
 			}
 		}
 
 		&:where(:active) {
-			text-decoration-color: transparent;
+			--🌀anchor-state: var(--🌀anchor-state--pressed);
+		}
+
+		&:where(:focus-visible) {
+			outline-offset: 2px;
 		}
 
 		&:where([disabled], :disabled, [aria-disabled="true"]) {
-			--🥝anchor-color-text: var(--ids-color-text-neutral-disabled);
-
+			--🥝anchor-color: var(--✨color--disabled);
 			cursor: not-allowed;
-			text-decoration-color: transparent;
+			text-decoration: none;
 		}
+	}
+
+	@layer base.🌀 {
+		/* https://kizu.dev/cyclic-toggles/ */
+		--🌀anchor-state: var(--🌀anchor-state--default);
+		--🌀anchor-state--default: var(--🌀anchor-state,);
+		--🌀anchor-state--hover: var(--🌀anchor-state,);
+		--🌀anchor-state--pressed: var(--🌀anchor-state,);
 	}
 }

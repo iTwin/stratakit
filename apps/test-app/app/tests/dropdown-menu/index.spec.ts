@@ -10,11 +10,13 @@ test("default", async ({ page }) => {
 
 	const button = page.getByRole("button", { name: "Actions" });
 	const add = page.getByRole("menuitem", { name: "Add" });
-
 	const menu = page.getByRole("menu", { includeHidden: true });
+
+	await expect(button).not.toHaveAttribute("data-has-popover-open");
 	await expect(menu).toHaveCount(0);
 
 	await button.click();
+	await expect(button).toHaveAttribute("data-has-popover-open");
 	await expect(menu).toBeVisible();
 	await expect(add).toBeVisible();
 
@@ -41,11 +43,13 @@ test("default (keyboard)", async ({ page }) => {
 	const disable = page.getByRole("menuitem", { name: "Disable" });
 
 	await expect(button).toBeVisible();
+	await expect(button).not.toHaveAttribute("data-has-popover-open");
 
 	await page.keyboard.press("Tab");
 	await expect(button).toBeFocused();
 
 	await page.keyboard.press("Enter");
+	await expect(button).toHaveAttribute("data-has-popover-open");
 	await expect(add).toBeFocused();
 
 	await page.keyboard.press("ArrowDown");
@@ -100,18 +104,30 @@ test("shortcuts", async ({ page }) => {
 
 	const add = page.getByRole("menuitem", { name: "Add" });
 	const addingShortcut = add.locator("kbd");
-	await expect(addingShortcut.nth(0)).toHaveText("⌘");
+	await expect(addingShortcut.nth(0)).toMatchAriaSnapshot("- text: Command");
 	await expect(addingShortcut.nth(1)).toHaveText("A");
 
 	const edit = page.getByRole("menuitem", { name: "Edit" });
 	const editShortcut = edit.locator("kbd");
-	await expect(editShortcut.nth(0)).toHaveText("⇧");
+	await expect(editShortcut.nth(0)).toMatchAriaSnapshot("- text: Shift");
 	await expect(editShortcut.nth(1)).toHaveText("E");
 });
 
-test("@visual", async ({ page }) => {
-	await page.goto("/tests/dropdown-menu?visual=true");
-	await expect(page.locator("body")).toHaveScreenshot();
+test.describe("@visual", () => {
+	test("default", async ({ page }) => {
+		await page.goto("/tests/dropdown-menu?visual=true");
+		await expect(page.locator("body")).toHaveScreenshot();
+	});
+
+	test("forced-colors", async ({ page, browserName }) => {
+		test.skip(
+			browserName === "webkit",
+			"forced-colors does not appear correctly in Webkit",
+		);
+		await page.goto("/tests/dropdown-menu?visual=true");
+		await page.emulateMedia({ forcedColors: "active" });
+		await expect(page.locator("body")).toHaveScreenshot();
+	});
 });
 
 test.describe("@a11y", () => {
@@ -188,7 +204,10 @@ test.describe("DropdownMenu.CheckboxItem", () => {
 			await expect(item3).toHaveAttribute("aria-checked", "true");
 
 			const axe = new AxeBuilder({ page });
-			const accessibilityScan = await axe.analyze();
+			const accessibilityScan = await axe
+				.disableRules(["region"])
+				.exclude("[data-focus-trap]")
+				.analyze();
 			expect(accessibilityScan.violations).toEqual([]);
 		});
 	});

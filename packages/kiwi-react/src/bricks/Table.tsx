@@ -2,7 +2,7 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-import * as Ariakit from "@ariakit/react";
+import { Role } from "@ariakit/react/role";
 import * as React from "react";
 import cx from "classnames";
 import { forwardRef, type BaseProps } from "./~utils.js";
@@ -54,7 +54,7 @@ const Table = forwardRef<"div", TableProps>((props, forwardedRef) => {
 
 	return (
 		<TableContext.Provider value={tableContext}>
-			<Ariakit.Role
+			<Role
 				{...props}
 				className={cx("🥝-table", props.className)}
 				ref={forwardedRef}
@@ -62,7 +62,7 @@ const Table = forwardRef<"div", TableProps>((props, forwardedRef) => {
 				aria-labelledby={captionId}
 			>
 				{props.children}
-			</Ariakit.Role>
+			</Role>
 		</TableContext.Provider>
 	);
 });
@@ -91,14 +91,14 @@ const TableHeader = forwardRef<"div", TableHeaderProps>(
 	(props, forwardedRef) => {
 		return (
 			<TableHeaderContext.Provider value={true}>
-				<Ariakit.Role.div
+				<Role.div
 					{...props}
 					className={cx("🥝-table-header", props.className)}
 					ref={forwardedRef}
 					role="rowgroup"
 				>
 					{props.children}
-				</Ariakit.Role.div>
+				</Role.div>
 			</TableHeaderContext.Provider>
 		);
 	},
@@ -131,13 +131,13 @@ interface TableBodyProps extends BaseProps {}
  */
 const TableBody = forwardRef<"div", TableBodyProps>((props, forwardedRef) => {
 	return (
-		<Ariakit.Role.div
+		<Role.div
 			{...props}
 			className={cx("🥝-table-body", props.className)}
 			ref={forwardedRef}
 		>
 			{props.children}
-		</Ariakit.Role.div>
+		</Role.div>
 	);
 });
 DEV: TableBody.displayName = "Table.Body";
@@ -161,14 +161,14 @@ const TableRow = forwardRef<"div", TableRowProps>((props, forwardedRef) => {
 	const { children, ...rest } = props;
 
 	return (
-		<Ariakit.Role.div
+		<Role.div
 			{...rest}
 			className={cx("🥝-table-row", props.className)}
 			ref={forwardedRef}
 			role="row"
 		>
 			{children}
-		</Ariakit.Role.div>
+		</Role.div>
 	);
 });
 DEV: TableRow.displayName = "Table.Row";
@@ -203,14 +203,14 @@ const TableCaption = forwardRef<"caption", TableCaptionProps>(
 		);
 
 		return (
-			<Ariakit.Role
+			<Role
 				{...rest}
 				id={id}
 				className={cx("🥝-table-caption", props.className)}
 				ref={useMergedRefs(forwardedRef, captionIdRef)}
 			>
 				{children}
-			</Ariakit.Role>
+			</Role>
 		);
 	},
 );
@@ -232,14 +232,14 @@ const TableCell = forwardRef<"span", TableCellProps>((props, forwardedRef) => {
 	const isWithinTableHeader = React.useContext(TableHeaderContext);
 
 	return (
-		<Ariakit.Role.span
+		<Role.span
 			{...props}
 			className={cx("🥝-table-cell", props.className)}
 			ref={forwardedRef}
 			role={isWithinTableHeader ? "columnheader" : "cell"}
 		>
 			{props.children}
-		</Ariakit.Role.span>
+		</Role.span>
 	);
 });
 DEV: TableCell.displayName = "Table.Cell";

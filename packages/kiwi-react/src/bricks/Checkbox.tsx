@@ -3,7 +3,10 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 import cx from "classnames";
-import * as Ariakit from "@ariakit/react";
+import {
+	Checkbox as AkCheckbox,
+	type CheckboxProps as AkCheckboxProps,
+} from "@ariakit/react/checkbox";
 import { FieldControl } from "./Field.js";
 import { forwardRef, type FocusableProps } from "./~utils.js";
 
@@ -13,7 +16,7 @@ type InputBaseProps = Omit<
 >;
 
 type CheckboxOwnProps = Pick<
-	Ariakit.CheckboxProps,
+	AkCheckboxProps,
 	"value" | "defaultChecked" | "checked" | "onChange"
 >;
 
@@ -50,7 +53,7 @@ export const Checkbox = forwardRef<"input", CheckboxProps>(
 				type="checkable"
 				id={id}
 				render={
-					<Ariakit.Checkbox
+					<AkCheckbox
 						accessibleWhenDisabled
 						{...rest}
 						className={cx("🥝-checkbox", props.className)}

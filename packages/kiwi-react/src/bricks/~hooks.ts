@@ -3,6 +3,20 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 import * as React from "react";
+import { useStoreState } from "@ariakit/react/store";
+import { isBrowser, supportsPopover } from "./~utils.js";
+import type { PopoverStore } from "@ariakit/react/popover";
+
+/**
+ * SSR-safe wrapper over `React.useLayoutEffect`.
+ *
+ * @see https://fb.me/react-uselayouteffect-ssr
+ *
+ * @private
+ */
+export const useLayoutEffect = isBrowser
+	? React.useLayoutEffect
+	: React.useEffect;
 
 /**
  * Wrapper over `useState` that always gives preference to the
@@ -132,4 +146,75 @@ export function useEventHandlers<E extends React.SyntheticEvent>(
 		},
 		[latestHandlers],
 	);
+}
+
+/**
+ * Wrapper hook around `useContext` to ensure that the Context is provided.
+ * The component calling this hook will throw an error if the Context is not found.
+ *
+ * The Context's `displayName` will be used for a more useful error message.
+ *
+ * @private
+ */
+export function useSafeContext<C>(context: React.Context<C>) {
+	const value = React.useContext(context);
+
+	if (value === undefined) {
+		throw new Error(`${context.displayName || "Context"} is undefined`);
+	}
+
+	return value;
+}
+
+/**
+ * Hook that makes it easy to use the [Popover API](https://developer.mozilla.org/en-US/docs/Web/API/Popover_API).
+ *
+ * Accepts an Ariakit store of a popover-like component, and returns a
+ * set of props that should be passed back to the component.
+ *
+ * Internally, this hook will sync the `open` state of the store with the
+ * DOM element.
+ *
+ * @private
+ */
+export function usePopoverApi(store: PopoverStore | undefined) {
+	const open = useStoreState(store, (state) => state?.open);
+	const popover = useStoreState(store, (state) => state?.popoverElement);
+
+	React.useEffect(
+		function syncPopoverWithOpenState() {
+			if (popover?.isConnected) {
+				popover?.togglePopover?.(open);
+			}
+		},
+		[open, popover],
+	);
+
+	return React.useMemo(
+		() =>
+			({
+				portal: !supportsPopover,
+				style: { zIndex: supportsPopover ? undefined : 9999 },
+				wrapperProps: { popover: "manual" },
+			}) as const,
+		[],
+	);
+}
+
+/**
+ * Hook that returns false initially, then returns true after the first client render.
+ * Useful to guard against using client APIs during SSR.
+ *
+ * Note: This will return `false` during hydration.
+ *
+ * @private
+ */
+export function useIsClient() {
+	const [isClient, setIsClient] = React.useState(false);
+
+	React.useEffect(() => {
+		setIsClient(true);
+	}, []);
+
+	return isClient;
 }

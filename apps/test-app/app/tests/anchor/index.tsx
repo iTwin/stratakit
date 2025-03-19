@@ -8,10 +8,11 @@ import { Anchor } from "@itwin/itwinui-react/bricks";
 export const handle = { title: "Anchor" };
 
 export default definePage(
-	function Page({ disabled }) {
+	function Page({ disabled, render: renderParam }) {
+		const render = renderParam ? <button /> : undefined;
 		return (
 			<>
-				<Anchor href="#main" disabled={!!disabled}>
+				<Anchor href="#main" disabled={!!disabled} render={render}>
 					Hello
 				</Anchor>
 
@@ -28,9 +29,9 @@ function VisualTest() {
 	const tones = ["neutral", "accent", "critical"] as const;
 
 	return (
-		<div style={{ display: "grid", gap: 4 }}>
+		<div style={{ display: "grid", gap: 4, justifyContent: "start" }}>
 			{tones.map((tone) => (
-				<Anchor key={tone} tone={tone} href="https://bentley.com">
+				<Anchor key={tone} tone={tone} href="https://example.com">
 					Example
 				</Anchor>
 			))}

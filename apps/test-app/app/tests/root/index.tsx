@@ -4,57 +4,113 @@
  *--------------------------------------------------------------------------------------------*/
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import { Button, Root } from "@itwin/itwinui-react/bricks";
+import { Button, Root, DropdownMenu } from "@itwin/itwinui-react/bricks";
 import { definePage, useColorScheme } from "~/~utils.tsx";
 
 export const handle = { title: "Root", rootTest: true };
 
-export default definePage(function Page({ synchronizeColorScheme = true }) {
-	const popout = usePopout();
-	const colorScheme = useColorScheme();
+export default definePage(
+	function Page({ synchronizeColorScheme = true }) {
+		const popout = usePopout();
+		const colorScheme = useColorScheme();
 
-	return (
-		<Root
-			colorScheme={colorScheme}
-			synchronizeColorScheme={!!synchronizeColorScheme}
-			density="dense"
-		>
-			<LightAndShadowButtons />
+		return (
+			<Root
+				colorScheme={colorScheme}
+				synchronizeColorScheme={!!synchronizeColorScheme}
+				density="dense"
+			>
+				<LightAndShadowComponents />
 
-			<Button onClick={() => popout.open()}>Open popout</Button>
+				<Button onClick={() => popout.open()}>Open popout</Button>
 
-			{popout.popout &&
-				ReactDOM.createPortal(
-					<Root
-						colorScheme={colorScheme}
-						synchronizeColorScheme
-						density="dense"
-					>
-						<LightAndShadowButtons />
-					</Root>,
-					popout.popout.document.body,
-				)}
-		</Root>
-	);
-});
+				{popout.popout &&
+					ReactDOM.createPortal(
+						<Root
+							colorScheme={colorScheme}
+							synchronizeColorScheme
+							density="dense"
+						>
+							<LightAndShadowComponents />
+						</Root>,
+						popout.popout.document.body,
+					)}
+			</Root>
+		);
+	},
+	{ _conditionalRendering: ConditionalRenderingTest },
+);
 
 // ----------------------------------------------------------------------------
 
-function LightAndShadowButtons() {
+function LightAndShadowComponents() {
 	const [host, setHost] = React.useState<HTMLElement | null>(null);
 	const shadow = useShadow(React.useCallback(() => host, [host]));
 	const colorScheme = useColorScheme();
 
 	return (
-		<div style={{ display: "flex", gap: 4 }} ref={setHost}>
+		<div style={{ display: "flex", gap: 4, flexWrap: "wrap" }} ref={setHost}>
 			<Button>Button (light)</Button>
+			<DropdownMenu.Root>
+				<DropdownMenu.Button>Menu (light)</DropdownMenu.Button>
+
+				<DropdownMenu.Content>
+					<DropdownMenu.Item label="Item 1" />
+					<DropdownMenu.Item label="Item 2" />
+				</DropdownMenu.Content>
+			</DropdownMenu.Root>
+
 			{shadow &&
 				ReactDOM.createPortal(
-					<Root colorScheme={colorScheme} density="dense">
+					<Root
+						colorScheme={colorScheme}
+						density="dense"
+						style={{ display: "flex", gap: 4 }}
+					>
 						<Button>Button (shadow)</Button>
+
+						<DropdownMenu.Root>
+							<DropdownMenu.Button>Menu (shadow)</DropdownMenu.Button>
+
+							<DropdownMenu.Content>
+								<DropdownMenu.Item label="Item 1" />
+								<DropdownMenu.Item label="Item 2" />
+							</DropdownMenu.Content>
+						</DropdownMenu.Root>
 					</Root>,
 					shadow,
 				)}
+		</div>
+	);
+}
+
+// ----------------------------------------------------------------------------
+
+function ConditionalRenderingTest() {
+	const [host, setHost] = React.useState<HTMLElement | null>(null);
+	const [shouldRenderRoot, setShouldRenderRoot] = React.useState(true);
+	const shadow = useShadow(React.useCallback(() => host, [host]));
+
+	const button = (
+		<Button onClick={() => setShouldRenderRoot(!shouldRenderRoot)}>
+			Toggle Root
+		</Button>
+	);
+
+	return (
+		<div ref={setHost}>
+			{shadow
+				? ReactDOM.createPortal(
+						shouldRenderRoot ? (
+							<Root colorScheme="dark" density="dense">
+								{button}
+							</Root>
+						) : (
+							button
+						),
+						shadow,
+					)
+				: null}
 		</div>
 	);
 }

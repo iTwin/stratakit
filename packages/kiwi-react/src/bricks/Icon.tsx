@@ -4,19 +4,54 @@
  *--------------------------------------------------------------------------------------------*/
 import * as React from "react";
 import cx from "classnames";
-import * as Ariakit from "@ariakit/react";
-import { forwardRef, type BaseProps } from "./~utils.js";
+import { Role } from "@ariakit/react/role";
+import {
+	forwardRef,
+	getOwnerDocument,
+	parseDOM,
+	type BaseProps,
+} from "./~utils.js";
+import {
+	HtmlSanitizerContext,
+	spriteSheetId,
+	useRootNode,
+} from "./Root.internal.js";
+import { useLatestRef, useSafeContext } from "./~hooks.js";
 
 interface IconProps extends Omit<BaseProps<"svg">, "children"> {
-	/** URL of the symbol sprite. */
+	/**
+	 * URL of the symbol sprite.
+	 *
+	 * Should be a URL to an `.svg` file from `@itwin/itwinui-icons`.
+	 *
+	 * Note: The `.svg` must be an external HTTP resource for it to be processed by
+	 * the `<use>` element. As a fallback, JS will be used to `fetch` the SVG from
+	 * non-supported URLs; the fetched SVG content will be sanitized using the
+	 * `unstable_htmlSanitizer` function passed to `<Root>`.
+	 */
 	href?: string;
-	/** Size of the icon. Defaults to `regular`. */
+	/**
+	 * Size of the icon. This affects the icon's physical dimensions, as well as the
+	 * actual SVG contents (different sizes might have different fidelity).
+	 *
+	 * Defaults to `"regular"` (16px) and can be optionally set to `"large"` (24px).
+	 */
 	size?: "regular" | "large";
+	/**
+	 * Alternative text describing the icon.
+	 *
+	 * When this prop is passed, the SVG gets rendered as `role="img"` and labelled
+	 * using the provided text.
+	 *
+	 * This prop is not required if the icon is purely decorative. By default, the icon
+	 * will be hidden from the accessibility tree.
+	 */
+	alt?: string;
 }
 
 /**
  * Icon component that provides fill and sizing to the SVGs from `@itwin/itwinui-icons`.
- * It uses an external symbol sprite to render the icon based on the specified `size`.
+ * It renders the correct symbol sprite based on the specified `size`.
  *
  * ```tsx
  * const arrowIcon = new URL("@itwin/itwinui-icons/arrow.svg", import.meta.url).href;
@@ -29,28 +64,148 @@ interface IconProps extends Omit<BaseProps<"svg">, "children"> {
  * <Icon render={<svg><path d="…" fill="currentColor" /></svg>} />
  * ```
  *
- * **Note**: This component is meant to be used with decorative icons, so it adds `aria-hidden` by default.
+ * By default, this component assumes that the icon is decorative, so it adds `aria-hidden` by default.
+ *
+ * If the icon is semantically meaningful, the `alt` prop can be used to provide alternative text.
+ *
+ * ```tsx
+ * <Icon href={…} alt="Help" />
+ * ```
  */
 export const Icon = forwardRef<"svg", IconProps>((props, forwardedRef) => {
-	const { href, size, ...rest } = props;
-	const iconId = toIconId(size);
+	const { href: hrefProp, size, alt, ...rest } = props;
+
+	const isDecorative = !alt;
+	const hrefBase = useNormalizedHrefBase(hrefProp);
+
 	return (
-		<Ariakit.Role.svg
-			aria-hidden
+		<Role.svg
+			aria-hidden={isDecorative ? "true" : undefined}
+			role={isDecorative ? undefined : "img"}
+			aria-label={isDecorative ? undefined : alt}
 			{...rest}
 			data-kiwi-size={size}
 			className={cx("🥝-icon", props.className)}
 			ref={forwardedRef}
 		>
-			<use href={`${props.href}#${iconId}`} />
-		</Ariakit.Role.svg>
+			{hrefBase ? <use href={toIconHref(hrefBase, size)} /> : null}
+		</Role.svg>
 	);
 });
 DEV: Icon.displayName = "Icon";
 
+// ----------------------------------------------------------------------------
+
+/**
+ * Constructs a final URL from the base and "size".
+ *
+ * For external URLs, we use a regular URL hash (e.g. `placeholder.svg#${id}`).
+ * For same-document URLs, we append `--${id}` (e.g. `#placeholder--${id}`).
+ */
+function toIconHref(hrefBase: string, size: IconProps["size"]) {
+	const separator = hrefBase.includes("#") ? "--" : "#";
+	const suffix = toIconId(size);
+	return `${hrefBase}${separator}${suffix}`;
+}
+
+/** Returns a symbol ID matching the conventions used in `@itwin/itwinui-icons`. */
 function toIconId(size: IconProps["size"]) {
 	if (size === "large") return "icon-large";
 	return "icon";
+}
+
+// ----------------------------------------------------------------------------
+
+/**
+ * Handles runtime fallback of URLs that are not natively supported in `<use href="…">`.
+ *
+ * When the URL protocol is not HTTP/HTTPS, the SVG content is fetched from the URL,
+ * and the symbols are stored as same-document fragments. This makes it possible to refer
+ * to the symbols using `<use href="#…">`.
+ */
+function useNormalizedHrefBase(rawHref: string | undefined) {
+	const generatedId = React.useId();
+	const sanitizeHtml = useLatestRef(useSafeContext(HtmlSanitizerContext));
+	const rootNode = useRootNode();
+	const inlineHref = React.useRef<string | undefined>(undefined);
+
+	const getClientSnapshot = () => {
+		const ownerDocument = getOwnerDocument(rootNode);
+		if (!rawHref || !ownerDocument) return undefined;
+
+		// Browser will handle this.
+		if (isHttpProtocol(rawHref, ownerDocument)) return rawHref;
+
+		return inlineHref.current;
+	};
+
+	const subscribe = React.useCallback(
+		(notify: () => void) => {
+			const ownerDocument = getOwnerDocument(rootNode);
+			const spriteSheet = ownerDocument?.getElementById(spriteSheetId);
+			if (!rawHref || !ownerDocument || !spriteSheet) return () => {};
+
+			// Browser will handle this.
+			if (isHttpProtocol(rawHref, ownerDocument)) return () => {};
+
+			// @ts-ignore -- This is initialized in `<InlineSpriteSheet>`.
+			const cache = spriteSheet[Symbol.for("🥝")]?.icons as Map<string, string>;
+			if (!cache) return () => {};
+
+			// Prefix for the inlined sprite ids. The rest is handled in `toIconHref`.
+			const prefix = `🥝${generatedId}`;
+
+			// Short-circuit if the symbol is already cached.
+			if (cache.has(rawHref)) {
+				inlineHref.current = cache.get(rawHref);
+				notify();
+				return () => {};
+			}
+
+			const abortController = new AbortController();
+			const { signal } = abortController;
+
+			// Make a network request
+			(async () => {
+				const response = await fetch(rawHref, { signal });
+				if (!response.ok) throw new Error(`Failed to fetch ${rawHref}`);
+
+				// Find all `<symbol>` elements from the response.
+				const fetchedSvgString = sanitizeHtml.current(await response.text());
+				const parsedSvgContent = parseDOM(fetchedSvgString, {
+					ownerDocument,
+				});
+				const symbols = parsedSvgContent.querySelectorAll("symbol");
+
+				for (const symbol of symbols) {
+					symbol.id = `${prefix}--${symbol.id}`; // unique ID
+					if (ownerDocument.getElementById(symbol.id)) continue; // Skip if already present.
+					spriteSheet.appendChild(symbol.cloneNode(true)); // Store symbols in the spritesheet renderered by `<Root>`.
+				}
+
+				inlineHref.current = `#${prefix}`;
+				cache.set(rawHref, inlineHref.current); // Cache for future use.
+				if (!signal.aborted) notify();
+			})();
+
+			return () => abortController.abort(); // Cancel ongoing fetch.
+		},
+		[rawHref, rootNode, sanitizeHtml, generatedId],
+	);
+
+	return React.useSyncExternalStore(
+		subscribe,
+		getClientSnapshot,
+		() => rawHref,
+	);
+}
+
+// ----------------------------------------------------------------------------
+
+/** Returns true if the url's protocol is http: or https: */
+function isHttpProtocol(url: string, ownerDocument: Document) {
+	const { protocol } = new URL(url, ownerDocument.baseURI);
+	return ["http:", "https:"].includes(protocol);
 }
 
 // ----------------------------------------------------------------------------
@@ -80,7 +235,7 @@ export const DisclosureArrow = forwardRef<"svg", DisclosureArrowProps>(
 			<Icon
 				{...rest}
 				render={
-					<Ariakit.Role.svg
+					<Role.svg
 						width="16"
 						height="16"
 						fill="currentColor"
@@ -88,7 +243,7 @@ export const DisclosureArrow = forwardRef<"svg", DisclosureArrowProps>(
 						render={props.render}
 					>
 						{path}
-					</Ariakit.Role.svg>
+					</Role.svg>
 				}
 				className={cx("🥝-disclosure-arrow", props.className)}
 				ref={forwardedRef}
@@ -108,7 +263,7 @@ export const Checkmark = forwardRef<"svg", CheckmarkProps>(
 			<Icon
 				{...props}
 				render={
-					<Ariakit.Role.svg
+					<Role.svg
 						width="16"
 						height="16"
 						fill="currentColor"
@@ -120,7 +275,7 @@ export const Checkmark = forwardRef<"svg", CheckmarkProps>(
 							d="M13.854 4.146a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L6.5 10.793l6.646-6.647a.5.5 0 0 1 .708 0Z"
 							clipRule="evenodd"
 						/>
-					</Ariakit.Role.svg>
+					</Role.svg>
 				}
 				ref={forwardedRef}
 			/>
@@ -139,7 +294,7 @@ export const Dismiss = forwardRef<"svg", DismissProps>(
 			<Icon
 				{...props}
 				render={
-					<Ariakit.Role.svg
+					<Role.svg
 						width="16"
 						height="16"
 						viewBox="0 0 16 16"
@@ -147,7 +302,7 @@ export const Dismiss = forwardRef<"svg", DismissProps>(
 						render={props.render}
 					>
 						<path d="M4.853 4.146a.5.5 0 1 0-.707.708L7.293 8l-3.147 3.146a.5.5 0 0 0 .707.708L8 8.707l3.146 3.147a.5.5 0 0 0 .707-.708L8.707 8l3.146-3.146a.5.5 0 1 0-.707-.708L8 7.293 4.853 4.146Z" />
-					</Ariakit.Role.svg>
+					</Role.svg>
 				}
 				ref={forwardedRef}
 			/>
@@ -155,3 +310,35 @@ export const Dismiss = forwardRef<"svg", DismissProps>(
 	},
 );
 DEV: Dismiss.displayName = "Dismiss";
+
+// ----------------------------------------------------------------------------
+
+interface StatusWarningProps extends Omit<BaseProps<"svg">, "children"> {}
+
+export const StatusWarning = forwardRef<"svg", StatusWarningProps>(
+	(props, forwardedRef) => {
+		return (
+			<Icon
+				{...props}
+				render={
+					<Role.svg
+						width="16"
+						height="16"
+						fill="currentColor"
+						viewBox="0 0 16 16"
+						render={props.render}
+					>
+						<path
+							fill="currentColor"
+							fillRule="evenodd"
+							d="M8.354 2.06a.5.5 0 0 0-.708 0L2.061 7.647a.5.5 0 0 0 0 .707l5.585 5.586a.5.5 0 0 0 .708 0l5.585-5.586a.5.5 0 0 0 0-.707L8.354 2.061Zm-1.415-.707a1.5 1.5 0 0 1 2.122 0l5.585 5.586a1.5 1.5 0 0 1 0 2.122l-5.585 5.585a1.5 1.5 0 0 1-2.122 0L1.354 9.061a1.5 1.5 0 0 1 0-2.122l5.585-5.586ZM8.75 10.75a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM8.5 8.5v-3a.5.5 0 0 0-1 0v3a.5.5 0 0 0 1 0Z"
+							clipRule="evenodd"
+						/>
+					</Role.svg>
+				}
+				ref={forwardedRef}
+			/>
+		);
+	},
+);
+DEV: StatusWarning.displayName = "StatusWarning";

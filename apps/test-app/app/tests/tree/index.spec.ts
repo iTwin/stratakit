@@ -33,6 +33,58 @@ test("default", async ({ page }) => {
 	await expect(item1_1).toHaveAttribute("aria-setsize", "3");
 });
 
+test("actions", async ({ page, browserName }) => {
+	test.fixme(
+		browserName === "firefox",
+		"This fails here but works in Firefox (manual)",
+	);
+
+	await page.goto("/tests/tree");
+
+	const item1_1 = page.getByRole("treeitem", { name: "Item 1.1" });
+	const item1_2 = page.getByRole("treeitem", { name: "Item 1.2" });
+	const toolbar1_1 = item1_1.getByRole("toolbar");
+
+	await expect(toolbar1_1).not.toBeVisible();
+
+	// Hover to show actions
+	await item1_1.hover();
+	await expect(toolbar1_1).toBeVisible();
+
+	// Hover away to hide actions
+	await item1_2.hover();
+	await expect(toolbar1_1).not.toBeVisible();
+});
+
+test("description", async ({ page }) => {
+	await page.goto("/tests/tree?description");
+
+	const item1_1 = page.getByRole("treeitem").filter({
+		has: page.getByText("Item 1.1"),
+	});
+	await expect(item1_1).toHaveAccessibleDescription("Additional description");
+});
+
+test("decoration as description", async ({ page }) => {
+	await page.goto("/tests/tree");
+
+	const item1 = page.getByRole("treeitem").filter({
+		has: page.getByText("Item 1", { exact: true }),
+	});
+	await expect(item1).toHaveAccessibleDescription("decoration");
+});
+
+test("description and decoration as description", async ({ page }) => {
+	await page.goto("/tests/tree?description");
+
+	const item1 = page.getByRole("treeitem").filter({
+		has: page.getByText("Item 1", { exact: true }),
+	});
+	await expect(item1).toHaveAccessibleDescription(
+		"Additional description decoration",
+	);
+});
+
 test.describe("keyboard", () => {
 	test("navigation and expansion", async ({ page }) => {
 		await page.goto("/tests/tree");
@@ -97,7 +149,7 @@ test.describe("keyboard", () => {
 	test("selection", async ({ page }) => {
 		await page.goto("/tests/tree");
 
-		const tree = page.getByRole("tree").first();
+		const tree = page.getByRole("tree");
 		const item1 = tree.getByRole("treeitem").filter({
 			has: page.getByText("Item 1", { exact: true }),
 		});
@@ -115,12 +167,45 @@ test.describe("keyboard", () => {
 		await page.keyboard.press("Enter");
 		await expect(item1).toHaveAttribute("aria-selected", "false");
 	});
+
+	test("actions", async ({ page }) => {
+		test.fixme();
+
+		await page.goto("/tests/tree");
+
+		const item1 = page.getByRole("treeitem", { name: "Item 1", exact: true });
+		const item1_1 = page.getByRole("treeitem", { name: "Item 1.1" });
+		const toolbar1_1 = item1_1.getByRole("toolbar");
+		const toolbar1_1Actions = toolbar1_1.getByRole("button");
+
+		await expect(toolbar1_1).not.toBeVisible();
+
+		// Initial: Tab to enter tree
+		await page.keyboard.press("Tab");
+		await expect(item1).toBeFocused();
+
+		// ⬇️ focus Item 1.1
+		await page.keyboard.press("ArrowDown");
+		await expect(item1_1).toBeFocused();
+
+		// Tab: focus first action within Item 1.1
+		await page.keyboard.press("Tab");
+		await page.waitForTimeout(100);
+		await expect(toolbar1_1).toBeVisible();
+		await page.waitForTimeout(100);
+		await expect(toolbar1_1Actions).toHaveCount(2);
+		await expect(toolbar1_1Actions.first()).toBeFocused();
+
+		// ➡️ focus next action within Item 1.1
+		await page.keyboard.press("ArrowRight");
+		await expect(toolbar1_1Actions.last()).toBeFocused();
+	});
 });
 
 test.describe("@visual", () => {
 	test("default", async ({ page }) => {
 		await page.goto("/tests/tree");
-		const tree = page.getByRole("tree").first();
+		const tree = page.getByRole("tree");
 		await expect(tree).toBeVisible();
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
@@ -145,14 +230,28 @@ test.describe("@visual", () => {
 
 	test("overflow", async ({ page }) => {
 		await page.goto("/tests/tree?overflow");
-		const tree = page.getByRole("tree").first();
+		const tree = page.getByRole("tree");
 		await expect(tree).toBeVisible();
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
 
 	test("selected", async ({ page }) => {
 		await page.goto("/tests/tree?selected");
-		const tree = page.getByRole("tree").first();
+		const tree = page.getByRole("tree");
+		await expect(tree).toBeVisible();
+		await expect(page.locator("body")).toHaveScreenshot();
+	});
+
+	test("description", async ({ page }) => {
+		await page.goto("/tests/tree?description");
+		const tree = page.getByRole("tree");
+		await expect(tree).toBeVisible();
+		await expect(page.locator("body")).toHaveScreenshot();
+	});
+
+	test("error", async ({ page }) => {
+		await page.goto("/tests/tree?error");
+		const tree = page.getByRole("tree");
 		await expect(tree).toBeVisible();
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
@@ -162,7 +261,7 @@ test.describe("@a11y", () => {
 	test("Axe Page Scan", async ({ page }) => {
 		await page.goto("/tests/tree");
 
-		const tree = page.getByRole("tree").first();
+		const tree = page.getByRole("tree");
 		await expect(tree).toBeVisible();
 
 		const axe = new AxeBuilder({ page });

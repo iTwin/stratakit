@@ -1,0 +1,129 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems: Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+.🥝-badge {
+	@layer base {
+		@apply --typography("body-sm");
+
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		flex-shrink: 0;
+		white-space: nowrap;
+		border-radius: 9999px;
+		box-shadow: 0px 0px 0px 1px var(--🥝badge-border-color) inset;
+		background-color: var(--🥝badge-background-color);
+		color: var(--🥝badge-text-color);
+		font-weight: 500;
+		block-size: 1.25rem;
+		padding-inline: 8px;
+
+		@media (forced-colors: active) {
+			border: 1px solid;
+		}
+	}
+
+	@layer modifiers {
+		&:where([data-kiwi-variant="solid"]) {
+			--🥝badge-border-color: var(--ids-color-border-glow-strong-default);
+			--🥝badge-text-color: var(--ids-color-text-neutral-emphasis);
+
+			&:where([data-kiwi-tone="neutral"]) {
+				--🥝badge-background-color: var(--ids-color-bg-mono-base);
+			}
+
+			&:where([data-kiwi-tone="info"]) {
+				--🥝badge-background-color: var(--ids-color-bg-info-base);
+			}
+
+			&:where([data-kiwi-tone="positive"]) {
+				--🥝badge-background-color: var(--ids-color-bg-positive-base);
+			}
+
+			&:where([data-kiwi-tone="attention"]) {
+				--🥝badge-background-color: var(--ids-color-bg-attention-base);
+			}
+
+			&:where([data-kiwi-tone="critical"]) {
+				--🥝badge-background-color: var(--ids-color-bg-critical-base);
+			}
+
+			&:where([data-kiwi-tone="accent"]) {
+				--🥝badge-background-color: var(--ids-color-bg-accent-base);
+			}
+		}
+
+		&:where([data-kiwi-variant="muted"]) {
+			&:where([data-kiwi-tone="neutral"]) {
+				--🥝badge-background-color: var(--ids-color-bg-mono-muted);
+				--🥝badge-border-color: var(--ids-color-border-mono-muted);
+				--🥝badge-text-color: var(--ids-color-text-mono-faded);
+			}
+
+			&:where([data-kiwi-tone="info"]) {
+				--🥝badge-background-color: var(--ids-color-bg-info-muted);
+				--🥝badge-border-color: var(--ids-color-border-info-muted);
+				--🥝badge-text-color: var(--ids-color-text-info-faded);
+			}
+
+			&:where([data-kiwi-tone="positive"]) {
+				--🥝badge-background-color: var(--ids-color-bg-positive-muted);
+				--🥝badge-border-color: var(--ids-color-border-positive-muted);
+				--🥝badge-text-color: var(--ids-color-text-positive-faded);
+			}
+
+			&:where([data-kiwi-tone="attention"]) {
+				--🥝badge-background-color: var(--ids-color-bg-attention-muted);
+				--🥝badge-border-color: var(--ids-color-border-attention-muted);
+				--🥝badge-text-color: var(--ids-color-text-attention-faded);
+			}
+
+			&:where([data-kiwi-tone="critical"]) {
+				--🥝badge-background-color: var(--ids-color-bg-critical-muted);
+				--🥝badge-border-color: var(--ids-color-border-critical-muted);
+				--🥝badge-text-color: var(--ids-color-text-critical-faded);
+			}
+
+			&:where([data-kiwi-tone="accent"]) {
+				--🥝badge-background-color: var(--ids-color-bg-accent-muted);
+				--🥝badge-border-color: var(--ids-color-border-accent-muted);
+				--🥝badge-text-color: var(--ids-color-text-accent-faded);
+			}
+		}
+
+		&:where([data-kiwi-variant="outline"]) {
+			--🥝badge-background-color: transparent;
+
+			&:where([data-kiwi-tone="neutral"]) {
+				--🥝badge-text-color: var(--ids-color-text-mono-base);
+				--🥝badge-border-color: var(--ids-color-border-mono-base);
+			}
+
+			&:where([data-kiwi-tone="info"]) {
+				--🥝badge-text-color: var(--ids-color-text-info-base);
+				--🥝badge-border-color: var(--ids-color-border-info-base);
+			}
+
+			&:where([data-kiwi-tone="positive"]) {
+				--🥝badge-text-color: var(--ids-color-text-positive-base);
+				--🥝badge-border-color: var(--ids-color-border-positive-base);
+			}
+
+			&:where([data-kiwi-tone="attention"]) {
+				--🥝badge-text-color: var(--ids-color-text-attention-base);
+				--🥝badge-border-color: var(--ids-color-border-attention-base);
+			}
+
+			&:where([data-kiwi-tone="critical"]) {
+				--🥝badge-text-color: var(--ids-color-text-critical-base);
+				--🥝badge-border-color: var(--ids-color-border-critical-base);
+			}
+
+			&:where([data-kiwi-tone="accent"]) {
+				--🥝badge-text-color: var(--ids-color-text-accent-base);
+				--🥝badge-border-color: var(--ids-color-border-accent-base);
+			}
+		}
+	}
+}

@@ -5,7 +5,7 @@
 
 .🥝-tab-list {
 	@layer base {
-		--🥝tab-active-stripe-gap: 6px;
+		--🥝tab-active-stripe-gap: 8px;
 
 		display: flex;
 		gap: 8px;

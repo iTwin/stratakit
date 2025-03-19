@@ -1,1 +1,0 @@
-import{A as s}from"./chunk-K6CSEXPM-DTpfuivu.js";const u=t=>t;function o(t,e=u){const n=s.useSyncExternalStore(t.subscribe,()=>e(t.getState()),()=>e(t.getInitialState()));return s.useDebugValue(n),n}export{o as u};

@@ -126,10 +126,7 @@
 		&:where([aria-selected="true"]) {
 			--🌀tab-state: var(--🌀tab-state--selected);
 
-			/* biome-ignore lint/correctness/noUnknownProperty: `position-anchor` is within `@supports` and offers a fallback. */
-			@supports (position-anchor: --active-tab) {
-				anchor-name: --active-tab;
-			}
+			anchor-name: --active-tab;
 
 			/* biome-ignore lint/correctness/noUnknownProperty: `position-anchor` is within `@supports` and offers a fallback. */
 			@supports not (position-anchor: --active-tab) {

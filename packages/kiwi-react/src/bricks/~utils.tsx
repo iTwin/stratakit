@@ -6,9 +6,30 @@ import * as React from "react";
 import type { RoleProps } from "@ariakit/react/role";
 import type { FocusableProps as AkFocusableProps } from "@ariakit/react/focusable";
 
+// ----------------------------------------------------------------------------
+
 export const isBrowser = typeof document !== "undefined";
 
 export const supportsPopover = isBrowser && "popover" in HTMLElement.prototype;
+
+export function isDocument(node?: Node): node is Document {
+	return node?.nodeType === Node.DOCUMENT_NODE;
+}
+
+export function getOwnerDocument(node?: Node | null) {
+	if (!node) return null;
+	return (isDocument(node) ? node : node.ownerDocument) || null;
+}
+
+/** "Parses" a string of HTML into a DocumentFragment. */
+export function parseDOM(
+	htmlString: string,
+	{ ownerDocument }: { ownerDocument: Document },
+) {
+	const template = ownerDocument.createElement("template");
+	template.innerHTML = htmlString;
+	return template.content;
+}
 
 // ----------------------------------------------------------------------------
 
@@ -66,3 +87,8 @@ export type FocusableProps<ElementType extends React.ElementType = "div"> =
 
 /** See https://github.com/Microsoft/TypeScript/issues/29729 */
 export type AnyString = string & {};
+
+// ----------------------------------------------------------------------------
+
+/** Returns the value unchanged. */
+export const identity = <T,>(value: T) => value;

@@ -13,9 +13,9 @@
 	--✨bg--active: var(--ids-color-bg-glow-on-surface-accent-pressed);
 	--✨bg--disabled: var(--ids-color-text-neutral-disabled);
 
-	--✨color--default: var(--🥝list-item-color, var(--ids-color-text-neutral-primary));
-	--✨color--active: var(--🥝list-item-color, var(--ids-color-text-accent-strong));
-	--✨color--disabled: var(--🥝list-item-color, var(--✨bg--disabled));
+	--✨color--default: var(--ids-color-text-neutral-primary);
+	--✨color--active: var(--ids-color-text-accent-strong);
+	--✨color--disabled: var(--✨bg--disabled);
 
 	@layer base {
 		cursor: pointer;
@@ -41,12 +41,15 @@
 			var(--🌀list-item-state--active, var(--✨bg--active))
 			var(--🌀list-item-state--active-hover, var(--✨bg--active))
 			var(--🌀list-item-state--disabled, var(--✨bg--default));
-		color: var(--🌀list-item-state--default, var(--✨color--default))
-			var(--🌀list-item-state--hover, var(--✨color--default))
-			var(--🌀list-item-state--pressed, var(--✨color--default))
-			var(--🌀list-item-state--active, var(--✨color--active))
-			var(--🌀list-item-state--active-hover, var(--✨color--active))
-			var(--🌀list-item-state--disabled, var(--✨color--disabled));
+		color: var(
+			--🥝list-item-color,
+			var(--🌀list-item-state--default, var(--✨color--default))
+				var(--🌀list-item-state--hover, var(--✨color--default))
+				var(--🌀list-item-state--pressed, var(--✨color--default))
+				var(--🌀list-item-state--active, var(--✨color--active))
+				var(--🌀list-item-state--active-hover, var(--✨color--active))
+				var(--🌀list-item-state--disabled, var(--✨color--disabled))
+		);
 		--🥝icon-color: var(--🌀list-item-state--default, var(--ids-color-icon-neutral-base))
 			var(--🌀list-item-state--hover, var(--ids-color-icon-neutral-hover))
 			var(--🌀list-item-state--pressed, var(--ids-color-icon-neutral-hover))

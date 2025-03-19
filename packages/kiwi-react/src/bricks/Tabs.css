@@ -20,7 +20,7 @@
 				content: "";
 				position: absolute;
 				/* biome-ignore lint/correctness/noUnknownProperty: `position-anchor` is within `@supports` and offers a fallback. */
-				position-anchor: --active-tab;
+				position-anchor: --🥝active-tab;
 				inset-inline: calc(anchor(left) + var(--🥝tab-padding-inline))
 					calc(anchor(right) + var(--🥝tab-padding-inline));
 				inset-block-end: calc(anchor(bottom) - var(--🥝tab-active-stripe-gap));
@@ -126,10 +126,10 @@
 		&:where([aria-selected="true"]) {
 			--🌀tab-state: var(--🌀tab-state--selected);
 
-			anchor-name: --active-tab;
+			anchor-name: --🥝active-tab;
 
 			/* biome-ignore lint/correctness/noUnknownProperty: `position-anchor` is within `@supports` and offers a fallback. */
-			@supports not (position-anchor: --active-tab) {
+			@supports not (position-anchor: --foo) {
 				&::after {
 					content: "";
 					position: absolute;

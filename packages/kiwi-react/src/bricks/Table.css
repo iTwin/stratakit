@@ -31,7 +31,7 @@
 	--✨cell-padding-inline-start: 1rem;
 	--✨cell-padding-inline-end: 0.75rem;
 	--✨cell-height-min: 3rem;
-	
+
 	@layer base {
 		padding-block: var(--✨cell-padding-block);
 		padding-inline-start: var(--✨cell-padding-inline-start);

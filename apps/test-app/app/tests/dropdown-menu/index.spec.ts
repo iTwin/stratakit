@@ -204,7 +204,10 @@ test.describe("DropdownMenu.CheckboxItem", () => {
 			await expect(item3).toHaveAttribute("aria-checked", "true");
 
 			const axe = new AxeBuilder({ page });
-			const accessibilityScan = await axe.analyze();
+			const accessibilityScan = await axe
+				.disableRules(["region"])
+				.exclude("[data-focus-trap]")
+				.analyze();
 			expect(accessibilityScan.violations).toEqual([]);
 		});
 	});

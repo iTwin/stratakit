@@ -16,7 +16,7 @@ interface BadgeProps extends Omit<BaseProps<"span">, "children"> {
 	 * The tone of the badge.
 	 * @default "neutral"
 	 */
-	tone?: "neutral" | "info" | "positive" | "attention" | "critical";
+	tone?: "neutral" | "info" | "positive" | "attention" | "critical" | "accent";
 
 	/**
 	 * The variant style of the badge.

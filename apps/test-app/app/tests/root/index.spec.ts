@@ -25,6 +25,16 @@ test("default", async ({ page }) => {
 	await expect(popout.locator("body")).toHaveScreenshot("popout.png");
 });
 
+test("conditional rendering", async ({ page }) => {
+	await page.goto("/tests/root?_conditionalRendering");
+
+	const button = page.getByRole("button", { name: "Toggle Root" });
+	await expect(button).toHaveScreenshot("with-root.png");
+
+	await button.click();
+	await expect(button).toHaveScreenshot("without-root.png");
+});
+
 test("synchronizeColorScheme", async ({ page }) => {
 	const document = page.locator("html");
 	const meta = page.locator("meta[name='color-scheme']");

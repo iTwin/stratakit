@@ -6,7 +6,7 @@
 .🥝-tab-list {
 	@layer base {
 		--🥝tab-active-stripe-gap: 6px;
-		--🥝tab-active-tab-stripe-size: 2px;
+		--🥝tab-active-stripe-size: 2px;
 		--🥝tab-padding-inline: 4px;
 
 		display: flex;
@@ -24,7 +24,7 @@
 				inset-inline: calc(anchor(left) + var(--🥝tab-padding-inline))
 					calc(anchor(right) + var(--🥝tab-padding-inline));
 				inset-block-end: calc(anchor(bottom) - var(--🥝tab-active-stripe-gap));
-				block-size: var(--🥝tab-active-tab-stripe-size);
+				block-size: var(--🥝tab-active-stripe-size);
 				background-color: var(--🥝tab-active-stripe-color);
 
 				@media (prefers-reduced-motion: no-preference) {
@@ -134,7 +134,7 @@
 					content: "";
 					position: absolute;
 					background-color: var(--🥝tab-active-stripe-color);
-					block-size: var(--🥝tab-active-tab-stripe-size);
+					block-size: var(--🥝tab-active-stripe-size);
 					inset-inline: var(--🥝tab-padding-inline);
 					inset-block: auto calc(var(--🥝tab-active-stripe-gap) * -1);
 

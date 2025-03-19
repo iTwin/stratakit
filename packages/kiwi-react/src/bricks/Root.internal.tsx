@@ -19,3 +19,13 @@ export function useRootNode() {
 	if (!isClient) return undefined;
 	return maybeRootNode;
 }
+
+// ----------------------------------------------------------------------------
+
+export const spriteSheetId = "🥝-inline-sprites";
+
+// ----------------------------------------------------------------------------
+
+export const HtmlSanitizerContext = React.createContext<
+	((html: string) => string) | undefined
+>(undefined);

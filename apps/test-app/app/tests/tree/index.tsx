@@ -4,8 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 import { definePage } from "~/~utils.tsx";
 import * as React from "react";
-import * as Tree from "@itwin/itwinui-react-internal/src/bricks/Tree.tsx";
-import { Icon } from "@itwin/itwinui-react-internal/src/bricks/Icon.tsx";
+import { Tree, Icon } from "@itwin/itwinui-react/bricks";
 import placeholderIcon from "@itwin/itwinui-icons/placeholder.svg";
 import unlockIcon from "@itwin/itwinui-icons/lock-unlocked.svg";
 import showIcon from "@itwin/itwinui-icons/visibility-show.svg";

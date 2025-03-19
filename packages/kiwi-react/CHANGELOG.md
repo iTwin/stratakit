@@ -1,5 +1,23 @@
 # Changelog
 
+## 5.0.0-alpha.11
+
+- Added `error` prop to `<Tree.Item>`.
+- Implemented fallback strategy for `<Icon>`, so that non-HTTP URLs are fetched at runtime.
+- Added `unstable_htmlSanitizer` prop to `<Root>`.
+- Added `tone="accent"` support to `<Badge>`.
+- Adjusted `DropdownMenu` and `Tooltip` to be portaled by default.
+- Styling changes:
+  - Added shimmer animation to `<Skeleton>`.
+  - Updated `<Spinner>` visuals and animation to match `<ProgressBar>`.
+- Bug fixes:
+  - Fixed styles not unloading when `<Root>` is unmounted.
+  - Fixed `<Anchor>` underline not showing when rendered as a `<button>`.
+  - Fixed `<Tree.ItemAction visible>` affecting the visibility of all actions.
+  - Fixed vertical centering in `<Tab.TabList>`.
+  - Fixed `Tab` active stripe positioning and animation.
+  - Fixed `<Button variant="solid" tone="accent">` icon fill in pressed state.
+
 ## 5.0.0-alpha.10
 
 - Added initial `<Skeleton>` component.

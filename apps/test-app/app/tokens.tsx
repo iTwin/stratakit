@@ -125,7 +125,7 @@ export default function Page() {
 					</Disclosure.Disclosure>
 
 					<Disclosure.DisclosureContent>
-						<Tokens tokens={[...typographyTokens.keys()]} kind="typography" />
+						<TypographyVariants variants={[...typographyTokens.keys()]} />
 					</Disclosure.DisclosureContent>
 				</div>
 			</Disclosure.DisclosureProvider>
@@ -138,7 +138,7 @@ function Tokens({
 	kind,
 }: {
 	tokens: string[];
-	kind: "color" | "shadow" | "typography";
+	kind: "color" | "shadow";
 }) {
 	return (
 		<Table>
@@ -155,16 +155,44 @@ function Tokens({
 					return (
 						<tr key={token}>
 							<td>
-								<code>{kind === "typography" ? token : variableName}</code>
+								<code>{variableName}</code>
 							</td>
 							<td>
-								{kind === "typography" ? (
-									<Text variant={token as (typeof typographyVariants)[number]}>
-										The quick brown fox jumped over the lazy dog
-									</Text>
-								) : (
-									<Swatch variable={variableName} kind={kind} />
-								)}
+								<Swatch variable={variableName} kind={kind} />
+							</td>
+						</tr>
+					);
+				})}
+			</tbody>
+		</Table>
+	);
+}
+
+function TypographyVariants({
+	variants,
+}: {
+	variants: string[];
+}) {
+	return (
+		<Table>
+			<thead>
+				<tr>
+					<th>Variant</th>
+					<th>Preview</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				{variants.map((variant) => {
+					return (
+						<tr key={variant}>
+							<td>
+								<code>{variant}</code>
+							</td>
+							<td>
+								<Text variant={variant as (typeof typographyVariants)[number]}>
+									The quick brown fox jumped over the lazy dog
+								</Text>
 							</td>
 						</tr>
 					);

@@ -11,6 +11,7 @@ export { Badge } from "./Badge.js";
 export { Button } from "./Button.js";
 export { Checkbox } from "./Checkbox.js";
 export { Chip } from "./Chip.js";
+export { Code } from "./Code.js";
 export { Description } from "./Description.js";
 export * as DropdownMenu from "./DropdownMenu.js";
 export { Divider } from "./Divider.js";

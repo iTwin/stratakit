@@ -14,6 +14,7 @@
 @import "./Button.css" layer(itwinui.components);
 @import "./Checkbox.css" layer(itwinui.components);
 @import "./Chip.css" layer(itwinui.components);
+@import "./Code.css" layer(itwinui.components);
 @import "./Description.css" layer(itwinui.components);
 @import "./Divider.css" layer(itwinui.components);
 @import "./DropdownMenu.css" layer(itwinui.components);

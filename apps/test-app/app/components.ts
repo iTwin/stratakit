@@ -10,6 +10,7 @@ export const components = [
 	"Button",
 	"Checkbox",
 	"Chip",
+	"Code",
 	"Divider",
 	"DropdownMenu",
 	"Field",

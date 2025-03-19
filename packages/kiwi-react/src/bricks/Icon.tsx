@@ -5,13 +5,29 @@
 import * as React from "react";
 import cx from "classnames";
 import { Role } from "@ariakit/react/role";
-import { forwardRef, type BaseProps } from "./~utils.js";
+import {
+	forwardRef,
+	getOwnerDocument,
+	parseDOM,
+	type BaseProps,
+} from "./~utils.js";
+import {
+	HtmlSanitizerContext,
+	spriteSheetId,
+	useRootNode,
+} from "./Root.internal.js";
+import { useLatestRef, useSafeContext } from "./~hooks.js";
 
 interface IconProps extends Omit<BaseProps<"svg">, "children"> {
 	/**
 	 * URL of the symbol sprite.
 	 *
 	 * Should be a URL to an `.svg` file from `@itwin/itwinui-icons`.
+	 *
+	 * Note: The `.svg` must be an external HTTP resource for it to be processed by
+	 * the `<use>` element. As a fallback, JS will be used to `fetch` the SVG from
+	 * non-supported URLs; the fetched SVG content will be sanitized using the
+	 * `unstable_htmlSanitizer` function passed to `<Root>`.
 	 */
 	href?: string;
 	/**
@@ -35,7 +51,7 @@ interface IconProps extends Omit<BaseProps<"svg">, "children"> {
 
 /**
  * Icon component that provides fill and sizing to the SVGs from `@itwin/itwinui-icons`.
- * It uses an external symbol sprite to render the icon based on the specified `size`.
+ * It renders the correct symbol sprite based on the specified `size`.
  *
  * ```tsx
  * const arrowIcon = new URL("@itwin/itwinui-icons/arrow.svg", import.meta.url).href;
@@ -57,10 +73,10 @@ interface IconProps extends Omit<BaseProps<"svg">, "children"> {
  * ```
  */
 export const Icon = forwardRef<"svg", IconProps>((props, forwardedRef) => {
-	const { href, size, alt, ...rest } = props;
+	const { href: hrefProp, size, alt, ...rest } = props;
 
-	const iconId = toIconId(size);
 	const isDecorative = !alt;
+	const hrefBase = useNormalizedHrefBase(hrefProp);
 
 	return (
 		<Role.svg
@@ -72,15 +88,124 @@ export const Icon = forwardRef<"svg", IconProps>((props, forwardedRef) => {
 			className={cx("🥝-icon", props.className)}
 			ref={forwardedRef}
 		>
-			<use href={`${props.href}#${iconId}`} />
+			{hrefBase ? <use href={toIconHref(hrefBase, size)} /> : null}
 		</Role.svg>
 	);
 });
 DEV: Icon.displayName = "Icon";
 
+// ----------------------------------------------------------------------------
+
+/**
+ * Constructs a final URL from the base and "size".
+ *
+ * For external URLs, we use a regular URL hash (e.g. `placeholder.svg#${id}`).
+ * For same-document URLs, we append `--${id}` (e.g. `#placeholder--${id}`).
+ */
+function toIconHref(hrefBase: string, size: IconProps["size"]) {
+	const separator = hrefBase.includes("#") ? "--" : "#";
+	const suffix = toIconId(size);
+	return `${hrefBase}${separator}${suffix}`;
+}
+
+/** Returns a symbol ID matching the conventions used in `@itwin/itwinui-icons`. */
 function toIconId(size: IconProps["size"]) {
 	if (size === "large") return "icon-large";
 	return "icon";
+}
+
+// ----------------------------------------------------------------------------
+
+/**
+ * Handles runtime fallback of URLs that are not natively supported in `<use href="…">`.
+ *
+ * When the URL protocol is not HTTP/HTTPS, the SVG content is fetched from the URL,
+ * and the symbols are stored as same-document fragments. This makes it possible to refer
+ * to the symbols using `<use href="#…">`.
+ */
+function useNormalizedHrefBase(rawHref: string | undefined) {
+	const generatedId = React.useId();
+	const sanitizeHtml = useLatestRef(useSafeContext(HtmlSanitizerContext));
+	const rootNode = useRootNode();
+	const inlineHref = React.useRef<string | undefined>(undefined);
+
+	const getClientSnapshot = () => {
+		const ownerDocument = getOwnerDocument(rootNode);
+		if (!rawHref || !ownerDocument) return undefined;
+
+		// Browser will handle this.
+		if (isHttpProtocol(rawHref, ownerDocument)) return rawHref;
+
+		return inlineHref.current;
+	};
+
+	const subscribe = React.useCallback(
+		(notify: () => void) => {
+			const ownerDocument = getOwnerDocument(rootNode);
+			const spriteSheet = ownerDocument?.getElementById(spriteSheetId);
+			if (!rawHref || !ownerDocument || !spriteSheet) return () => {};
+
+			// Browser will handle this.
+			if (isHttpProtocol(rawHref, ownerDocument)) return () => {};
+
+			// @ts-ignore -- This is initialized in `<InlineSpriteSheet>`.
+			const cache = spriteSheet[Symbol.for("🥝")]?.icons as Map<string, string>;
+			if (!cache) return () => {};
+
+			// Prefix for the inlined sprite ids. The rest is handled in `toIconHref`.
+			const prefix = `🥝${generatedId}`;
+
+			// Short-circuit if the symbol is already cached.
+			if (cache.has(rawHref)) {
+				inlineHref.current = cache.get(rawHref);
+				notify();
+				return () => {};
+			}
+
+			const abortController = new AbortController();
+			const { signal } = abortController;
+
+			// Make a network request
+			(async () => {
+				const response = await fetch(rawHref, { signal });
+				if (!response.ok) throw new Error(`Failed to fetch ${rawHref}`);
+
+				// Find all `<symbol>` elements from the response.
+				const fetchedSvgString = sanitizeHtml.current(await response.text());
+				const parsedSvgContent = parseDOM(fetchedSvgString, {
+					ownerDocument,
+				});
+				const symbols = parsedSvgContent.querySelectorAll("symbol");
+
+				for (const symbol of symbols) {
+					symbol.id = `${prefix}--${symbol.id}`; // unique ID
+					if (ownerDocument.getElementById(symbol.id)) continue; // Skip if already present.
+					spriteSheet.appendChild(symbol.cloneNode(true)); // Store symbols in the spritesheet renderered by `<Root>`.
+				}
+
+				inlineHref.current = `#${prefix}`;
+				cache.set(rawHref, inlineHref.current); // Cache for future use.
+				if (!signal.aborted) notify();
+			})();
+
+			return () => abortController.abort(); // Cancel ongoing fetch.
+		},
+		[rawHref, rootNode, sanitizeHtml, generatedId],
+	);
+
+	return React.useSyncExternalStore(
+		subscribe,
+		getClientSnapshot,
+		() => rawHref,
+	);
+}
+
+// ----------------------------------------------------------------------------
+
+/** Returns true if the url's protocol is http: or https: */
+function isHttpProtocol(url: string, ownerDocument: Document) {
+	const { protocol } = new URL(url, ownerDocument.baseURI);
+	return ["http:", "https:"].includes(protocol);
 }
 
 // ----------------------------------------------------------------------------

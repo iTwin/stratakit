@@ -63,11 +63,12 @@ const TreeError = forwardRef<"div", TreeErrorProps>((props, forwardedRef) => {
 	);
 	return (
 		<PopoverProvider open={open} setOpen={setOpen}>
-			<Role.div
+			<Role.section
 				data-kiwi-expanded={open}
 				{...rest}
 				className={cx("🥝-tree-error", props.className)}
 				ref={forwardedRef}
+				aria-labelledby={labelId}
 			>
 				<div className="🥝-tree-error-container">
 					<PopoverDisclosure
@@ -108,7 +109,7 @@ const TreeError = forwardRef<"div", TreeErrorProps>((props, forwardedRef) => {
 						</div>
 					</Popover>
 				</div>
-			</Role.div>
+			</Role.section>
 		</PopoverProvider>
 	);
 });

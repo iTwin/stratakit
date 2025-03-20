@@ -843,7 +843,6 @@ function SandboxTree({
 									className={styles.action}
 									icon={lockIcon}
 									label="Lock"
-									aria-hidden={item.hidden}
 								/>,
 								<Tree.ItemAction
 									key="visibility"
@@ -855,7 +854,7 @@ function SandboxTree({
 										toggleHidden(item.id);
 									}}
 								/>,
-								<TreeMoreActions key="more" hidden={item.hidden} />,
+								<TreeMoreActions key="more" />,
 							]}
 						/>
 					);
@@ -865,12 +864,11 @@ function SandboxTree({
 	);
 }
 
-function TreeMoreActions({ hidden }: { hidden?: boolean }) {
+function TreeMoreActions() {
 	return (
 		<DropdownMenu.Root>
 			<DropdownMenu.Button
 				className={styles.action}
-				aria-hidden={hidden}
 				render={<Tree.ItemAction icon={moreIcon} label="More" />}
 			/>
 			<DropdownMenu.Content style={{ minInlineSize: 164 }}>

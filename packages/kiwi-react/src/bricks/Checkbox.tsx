@@ -34,6 +34,14 @@ interface CheckboxProps extends InputBaseProps, CheckboxOwnProps {}
  * </Field.Root>
  * ```
  *
+ * Without the `Field` components you will need to manually associate labels,
+ * descriptions, etc.:
+ * ```tsx
+ * <Checkbox id="newsletter" name="newsletter" aria-describedby="newsletter-description" />
+ * <Label htmlFor="newsletter">Sign me up for the newsletter.</Label>
+ * <Description id="newsletter-description">No spam, we promise.</Description>
+ * ```
+ *
  * Underneath, it's an HTML checkbox, i.e. `<input type="checkbox">`, so it supports the same props,
  * including `value`, `defaultChecked`, `checked`, and `onChange`.
  */

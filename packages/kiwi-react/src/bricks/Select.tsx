@@ -43,6 +43,20 @@ const HtmlSelectContext = React.createContext<
  *   />
  * </Field.Root>
  * ```
+ *
+ * Without the `Field` components you will need to manually associate labels,
+ * descriptions, etc.:
+ * ```tsx
+ * <Label htmlFor="fruit">Fruit</Label>
+ * <Description id="fruit-description">Something to include in a fruit salad.</Description>
+ * <Select.Root>
+ *   <Select.HtmlSelect id="fruit" aria-labelledby="fruit-description">
+ *     <option value="kiwi">Kiwi</option>
+ *     <option value="mango">Mango</option>
+ *     <option value="papaya">Papaya</option>
+ *   </Select.HtmlSelect>
+ * </Select.Root>
+ * ```
  */
 const SelectRoot = forwardRef<"div", BaseProps>((props, forwardedRef) => {
 	useFieldControlType("textlike");

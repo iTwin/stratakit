@@ -36,6 +36,13 @@ interface SwitchProps extends InputBaseProps, CheckboxOwnProps {
  * </Field.Root>
  * ```
  *
+ * Without the `Field` components you will need to manually associate labels,
+ * descriptions, etc.:
+ * ```tsx
+ * <Switch id="dark-mode" />
+ * <Label htmlFor="dark-mode">Dark mode</Label>
+ * ```
+ *
  * Underneath, it's an HTML checkbox, i.e. `<input type="checkbox">`, so it supports the same props,
  * including `value`, `defaultChecked`, `checked`, and `onChange`.
  */

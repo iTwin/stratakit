@@ -49,6 +49,14 @@ interface TextBoxInputProps extends Omit<BaseInputProps, "children" | "type"> {
  * </Field.Root>
  * ```
  *
+ * Without the `Field` components you will need to manually associate labels,
+ * descriptions, etc.:
+ * ```tsx
+ * <Label htmlFor="fruit">Fruit</Label>
+ * <TextBox.Input id="fruit" aria-describedby="fruit-description" />
+ * <Description id="fruit-description">Something to include in a fruit salad.</Description>
+ * ```
+ *
  * Underneath, it's an HTML input, i.e. `<input>`, so it supports the same props, including
  * `value`, `defaultValue`, `onChange`, and `disabled`.
  *
@@ -104,6 +112,14 @@ interface TextareaProps extends FocusableProps<"textarea"> {}
  *   <Field.Label>Leave a comment, be kind</Field.Label>
  *   <Field.Control render={<TextBox.Textarea name="comment" />} />
  * </Field.Root>
+ * ```
+ *
+ * Without the `Field` components you will need to manually associate labels,
+ * descriptions, etc.:
+ * ```tsx
+ * <Label htmlFor="fruit">Fruit</Label>
+ * <TextBox.Input id="fruit" aria-describedby="fruit-description" />
+ * <Description id="fruit-description">Something to include in a fruit salad.</Description>
  * ```
  *
  * Underneath, it's an HTML textarea, i.e. `<textarea>`, so it supports the same props, including

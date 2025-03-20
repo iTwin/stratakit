@@ -28,6 +28,15 @@ interface RadioProps extends InputBaseProps, RadioOwnProps {}
  * </Field.Root>
  * ```
  *
+ * Without the `Field` components you will need to manually associate labels,
+ * descriptions, etc.:
+ * ```tsx
+ * <Radio id="editor-vim" name="editor" value="vim" />
+ * <Label htmlFor="editor-vim">Vim</Label>
+ * <Radio id="editor-emacs" name="editor" value="emacs" />
+ * <Label htmlFor="editor-emacs">Emacs</Label>
+ * ```
+ *
  * Underneath, it's an HTML radio input, i.e. `<input type="radio">`, so it supports the same props,
  * including `value`, `defaultChecked`, `checked`, and `onChange`.
  */

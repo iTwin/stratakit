@@ -78,30 +78,22 @@ export default definePage(function Page({
 							selected={item.selected}
 							onSelectedChange={handleSelection}
 							icon={<Icon href={placeholderIcon} alt="decoration" />}
-							actions={
-								error
-									? [
-											<Tree.ItemAction
-												key="retry"
-												icon={refreshIcon}
-												label="Retry"
-												visible
-												onClick={() => setRenderError(false)}
-											/>,
-										]
-									: [
-											<Tree.ItemAction
-												key="unlock"
-												icon={unlockIcon}
-												label="Unlock"
-											/>,
-											<Tree.ItemAction
-												key="show"
-												icon={showIcon}
-												label="Show"
-											/>,
-										]
-							}
+							actions={[
+								error && (
+									<Tree.ItemAction
+										key="retry"
+										icon={refreshIcon}
+										label="Retry"
+										onClick={() => setRenderError(false)}
+									/>
+								),
+								<Tree.ItemAction
+									key="unlock"
+									icon={unlockIcon}
+									label="Unlock"
+								/>,
+								<Tree.ItemAction key="show" icon={showIcon} label="Show" />,
+							]}
 							error={error}
 						/>
 						{item.children?.map((child, childIndex, children) => {

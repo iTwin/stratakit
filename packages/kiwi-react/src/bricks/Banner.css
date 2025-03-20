@@ -5,14 +5,11 @@
 
 .🥝-banner {
 	@layer base {
+		container: banner / inline-size;
 		background-color: var(--🥝banner-color-background);
 		border: 1px solid var(--🥝banner-color-border);
 		border-radius: 8px;
 		padding: 12px;
-		padding-inline-start: 16px;
-		display: flex;
-		align-items: center;
-		column-gap: 8px;
 	}
 
 	@layer modifiers {
@@ -48,18 +45,18 @@
 		}
 
 		&:where([data-kiwi-tone="positive"]) {
-			--🥝icon-color: var(--ids-color-icon-positive-base);
 			--🥝banner-color-border: var(--ids-color-border-positive-base);
+			--🥝icon-color: var(--ids-color-icon-positive-base);
 		}
 
 		&:where([data-kiwi-tone="attention"]) {
-			--🥝icon-color: var(--ids-color-icon-attention-base);
 			--🥝banner-color-border: var(--ids-color-border-attention-base);
+			--🥝icon-color: var(--ids-color-icon-attention-base);
 		}
 
 		&:where([data-kiwi-tone="critical"]) {
-			--🥝icon-color: var(--ids-color-icon-critical-base);
 			--🥝banner-color-border: var(--ids-color-border-critical-base);
+			--🥝icon-color: var(--ids-color-icon-critical-base);
 		}
 
 		@media (forced-colors: active) {
@@ -68,19 +65,62 @@
 	}
 }
 
+.🥝-banner-grid {
+	@layer base {
+		display: grid;
+		align-items: center;
+		column-gap: 8px;
+
+		@container banner (min-width: 400px) {
+			grid-template-areas: "icon label message action dismiss";
+			grid-template-columns: 1.5rem auto 1fr auto auto;
+		}
+
+		@container banner (max-width: 400px) {
+			grid-template-areas:
+				"icon label dismiss"
+				". message ."
+				". action .";
+			grid-template-columns: 1.5rem 1fr auto;
+			grid-template-rows: repeat(3, minmax(1.5rem, auto));
+		}
+	}
+}
+
+.🥝-banner-icon {
+	@layer base {
+		grid-area: icon;
+		justify-self: center;
+	}
+}
+
 .🥝-banner-label {
 	@layer base {
+		grid-area: label;
 		font-weight: 500;
+		margin-inline-end: 4px;
 	}
 }
 
 .🥝-banner-message {
 	@layer base {
-		flex: 1;
+		grid-area: message;
+	}
+}
+
+.🥝-banner-action-button {
+	@layer base {
+		grid-area: action;
+		justify-self: start;
+		margin-inline-end: 4px;
 	}
 }
 
 .🥝-banner-dismiss-button {
+	@layer base {
+		grid-area: dismiss;
+	}
+
 	@layer modifiers {
 		:where([data-kiwi-variant="solid"]) & {
 			:where([data-kiwi-tone="info"]) & {

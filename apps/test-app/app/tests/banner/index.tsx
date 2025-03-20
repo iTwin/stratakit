@@ -41,6 +41,9 @@ function VisualTest() {
 			{variants.map((variant) => (
 				<div key={variant} style={{ display: "grid", gap: 4 }}>
 					{tones.map((tone) => {
+						if (variant === "solid" && tone === "neutral") {
+							return null;
+						}
 						const sentenceCaseTone =
 							tone.charAt(0).toUpperCase() + tone.slice(1).toLowerCase();
 						return (
@@ -55,7 +58,9 @@ function VisualTest() {
 								}}
 								data-dismissed={isDismissed}
 							>
-								Lorem ipsum
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+								eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+								enim ad minim veniam, quis nostrud exercitation ullamco laboris
 							</Banner>
 						);
 					})}

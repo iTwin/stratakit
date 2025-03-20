@@ -74,13 +74,6 @@ export const Banner = forwardRef<"div", BannerProps>((props, forwardedRef) => {
 		...rest
 	} = props;
 
-	const predefinedIcons = {
-		info: "info",
-		positive: "status-success",
-		attention: "StatusWarning",
-		critical: "status-error",
-	};
-
 	const baseId = React.useId();
 	const labelId = `${baseId}-label`;
 	const dismissIconId = `${baseId}-dismiss`;
@@ -94,33 +87,47 @@ export const Banner = forwardRef<"div", BannerProps>((props, forwardedRef) => {
 			className={cx("🥝-banner", props.className)}
 			ref={forwardedRef}
 		>
-			{tone === "neutral" && icon ? <Icon href={icon} /> : null}
-			{tone === "info" && <Info />}
-			{tone === "positive" && <StatusSuccess />}
-			{tone === "attention" && <StatusWarning />}
-			{tone === "critical" && <StatusError />}
-			<span className={cx("🥝-banner-label", props.className)} id={labelId}>
-				{label}
-			</span>
-			<Text
-				variant="body-sm"
-				className={cx("🥝-banner-message", props.className)}
-			>
-				{children}
-			</Text>
-			<Button>Action</Button>
-			{onDismiss && (
-				<IconButton
-					id={dismissIconId}
-					className={cx("🥝-banner-dismiss-button", props.className)}
-					variant="ghost"
-					aria-labelledby={`${dismissIconId} ${labelId}`}
-					label="Dismiss"
-					labelVariant="visually-hidden"
-					icon={<Dismiss />}
-					onClick={onDismiss}
-				/>
-			)}{" "}
+			<div className={cx("🥝-banner-grid", props.className)}>
+				{tone === "neutral" && icon ? (
+					<Icon href={icon} className={cx("🥝-banner-icon", props.className)} />
+				) : null}
+				{tone === "info" && (
+					<Info className={cx("🥝-banner-icon", props.className)} />
+				)}
+				{tone === "positive" && (
+					<StatusSuccess className={cx("🥝-banner-icon", props.className)} />
+				)}
+				{tone === "attention" && (
+					<StatusWarning className={cx("🥝-banner-icon", props.className)} />
+				)}
+				{tone === "critical" && (
+					<StatusError className={cx("🥝-banner-icon", props.className)} />
+				)}
+				<span className={cx("🥝-banner-label", props.className)} id={labelId}>
+					{label}
+				</span>
+				<Text
+					variant="body-sm"
+					className={cx("🥝-banner-message", props.className)}
+				>
+					{children}
+				</Text>
+				<Button className={cx("🥝-banner-action-button", props.className)}>
+					Action
+				</Button>
+				{onDismiss && (
+					<IconButton
+						id={dismissIconId}
+						className={cx("🥝-banner-dismiss-button", props.className)}
+						variant="ghost"
+						aria-labelledby={`${dismissIconId} ${labelId}`}
+						label="Dismiss"
+						labelVariant="visually-hidden"
+						icon={<Dismiss />}
+						onClick={onDismiss}
+					/>
+				)}{" "}
+			</div>
 		</Role>
 	);
 });

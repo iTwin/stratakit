@@ -103,7 +103,9 @@ const TreeError = forwardRef<"div", TreeErrorProps>((props, forwardedRef) => {
 						aria-labelledby={labelId}
 					>
 						<Divider className="🥝-tree-error-divider" presentational />
-						<div className="🥝-tree-error-items">{items}</div>
+						<div className="🥝-tree-error-items" role="list">
+							{items}
+						</div>
 					</Popover>
 				</div>
 			</Role.div>
@@ -153,6 +155,7 @@ const TreeErrorItem = forwardRef<"div", TreeErrorItemProps>(
 			>
 				<Role.div
 					{...rest}
+					role="listitem"
 					className={cx("🥝-tree-error-item", props.className)}
 					ref={forwardedRef}
 				>

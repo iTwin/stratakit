@@ -832,21 +832,27 @@ function SandboxTree({
 		setItemCount(itemCount);
 	}, [setItemCount, itemCount]);
 
+	const errorLength = errorItems.length;
+	const errorMessage = React.useMemo(() => {
+		if (errorLength === 0) return undefined;
+		if (errorLength === 1) return "1 issue found";
+		return `${errorLength} issues found`;
+	}, [errorLength]);
+
 	const deferredItems = React.useDeferredValue(flatItems);
 	if (deferredItems.length === 0) return <NoResultsState />;
 
 	return (
 		<React.Suspense fallback="Loading...">
+			<VisuallyHidden aria-live="polite" aria-atomic={true}>
+				{errorMessage}
+			</VisuallyHidden>
 			<Tree.Root
 				className={styles.tree}
 				error={
 					errorItems.length > 0 ? (
 						<Tree.Error
-							label={
-								errorItems.length === 1
-									? "1 issue found"
-									: `${errorItems.length} issues found`
-							}
+							label={errorMessage}
 							items={errorItems.map((item) => {
 								const treeItemId = `${treeId}-${item.id}`;
 								return (

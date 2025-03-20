@@ -97,12 +97,12 @@ export default function Page() {
 									render={(controlProps) => (
 										<Select.Root className={styles.panelTitleWrapper}>
 											<Select.HtmlSelect
+												{...controlProps}
 												variant="ghost"
 												defaultValue={selectedModel}
 												onChange={(e) =>
 													setSearchParams({ model: e.currentTarget.value })
 												}
-												{...controlProps}
 											>
 												{Object.entries(models).map(([id, { name }]) => (
 													<option key={id} value={id}>

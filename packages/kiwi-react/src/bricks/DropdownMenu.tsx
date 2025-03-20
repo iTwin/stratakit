@@ -27,6 +27,8 @@ import {
 } from "@ariakit/react/menu";
 import { useStoreState } from "@ariakit/react/store";
 import { predefinedSymbols, type PredefinedSymbol } from "./Kbd.internal.js";
+import { DropdownMenuContentContext } from "./DropdownMenu.internal.js";
+import { usePopoverContext } from "@ariakit/react/popover";
 
 // ----------------------------------------------------------------------------
 
@@ -56,7 +58,7 @@ interface DropdownMenuProps
  *
  * **Note**: `DropdownMenu` should not be used for navigation; it is only intended for actions.
  */
-function DropdownMenu(props: DropdownMenuProps) {
+function DropdownMenuRoot(props: DropdownMenuProps) {
 	const {
 		children,
 		placement,
@@ -71,12 +73,13 @@ function DropdownMenu(props: DropdownMenuProps) {
 			defaultOpen={defaultOpenProp}
 			open={openProp}
 			setOpen={setOpenProp}
+			popover={usePopoverContext()}
 		>
 			{children}
 		</MenuProvider>
 	);
 }
-DEV: DropdownMenu.displayName = "DropdownMenu.Root";
+DEV: DropdownMenuRoot.displayName = "DropdownMenu.Root";
 
 // ----------------------------------------------------------------------------
 
@@ -92,16 +95,18 @@ const DropdownMenuContent = forwardRef<"div", DropdownMenuContentProps>(
 		const popover = usePopoverApi(useMenuContext());
 
 		return (
-			<Menu
-				portal
-				unmountOnHide
-				{...props}
-				gutter={4}
-				style={{ ...popover.style, ...props.style }}
-				wrapperProps={popover.wrapperProps}
-				className={cx("🥝-dropdown-menu", props.className)}
-				ref={forwardedRef}
-			/>
+			<DropdownMenuContentContext.Provider value={true}>
+				<Menu
+					portal
+					unmountOnHide
+					{...props}
+					gutter={4}
+					style={{ ...popover.style, ...props.style }}
+					wrapperProps={popover.wrapperProps}
+					className={cx("🥝-dropdown-menu", props.className)}
+					ref={forwardedRef}
+				/>
+			</DropdownMenuContentContext.Provider>
 		);
 	},
 );
@@ -332,7 +337,7 @@ DEV: DropdownMenuCheckboxItem.displayName = "DropdownMenu.CheckboxItem";
 // ----------------------------------------------------------------------------
 
 export {
-	DropdownMenu as Root,
+	DropdownMenuRoot as Root,
 	DropdownMenuButton as Button,
 	DropdownMenuContent as Content,
 	DropdownMenuItem as Item,

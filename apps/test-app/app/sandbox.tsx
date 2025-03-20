@@ -31,7 +31,6 @@ import filterIcon from "@itwin/itwinui-icons/filter.svg";
 import dismissIcon from "@itwin/itwinui-icons/dismiss.svg";
 import lockIcon from "@itwin/itwinui-icons/lock.svg";
 import showIcon from "@itwin/itwinui-icons/visibility-show.svg";
-import moreIcon from "@itwin/itwinui-icons/more-horizontal.svg";
 import hideIcon from "@itwin/itwinui-icons/visibility-hide.svg";
 
 import model1Url from "./sandbox.model1.json?url";
@@ -129,7 +128,7 @@ export default function Page() {
 							</hgroup>
 						</div>
 
-						<div className={styles.actions}>
+						<div>
 							<IconButton
 								className={styles.shiftIconRight}
 								icon={panelLeftIcon}
@@ -844,15 +843,9 @@ function SandboxTree({
 								</>
 							}
 							actions={[
-								<Tree.ItemAction
-									key="lock"
-									className={styles.action}
-									icon={lockIcon}
-									label="Lock"
-								/>,
+								<Tree.ItemAction key="lock" icon={lockIcon} label="Lock" />,
 								<Tree.ItemAction
 									key="visibility"
-									className={styles.action}
 									icon={item.hidden ? hideIcon : showIcon}
 									label={item.hidden ? "Show" : "Hide"}
 									visible={item.hidden ? true : undefined}
@@ -860,38 +853,24 @@ function SandboxTree({
 										toggleHidden(item.id);
 									}}
 								/>,
-								<TreeMoreActions key="more" />,
+								<Tree.ItemAction key="copy" label="Copy" />,
+								<Tree.ItemAction key="paste" label="Paste" />,
+								<Tree.ItemAction key="copy-paste" label="Copy/Paste as" />,
+								<Tree.ItemAction key="move" label="Move to" />,
+								<Tree.ItemAction key="bring-to-front" label="Bring to front" />,
+								<Tree.ItemAction key="send-to-back" label="Send to back" />,
+								<Tree.ItemAction key="group" label="Group selection" />,
+								<Tree.ItemAction key="ungroup" label="Ungroup" />,
+								<Tree.ItemAction key="rename" label="Rename" />,
+								<Tree.ItemAction key="show-hide" label="Show/hide" />,
+								<Tree.ItemAction key="lock-unlock" label="Lock/unlock" />,
+								<Tree.ItemAction key="isolate" label="Isolate object" />,
 							]}
 						/>
 					);
 				})}
 			</Tree.Root>
 		</React.Suspense>
-	);
-}
-
-function TreeMoreActions() {
-	return (
-		<DropdownMenu.Root>
-			<DropdownMenu.Button
-				className={styles.action}
-				render={<Tree.ItemAction icon={moreIcon} label="More" />}
-			/>
-			<DropdownMenu.Content style={{ minInlineSize: 164 }}>
-				<DropdownMenu.Item label="Copy" shortcuts="Command+C" />
-				<DropdownMenu.Item label="Paste" shortcuts="Command+P" />
-				<DropdownMenu.Item label="Copy/Paste as" shortcuts="Command+V" />
-				<DropdownMenu.Item label="Move to" shortcuts="Command+M" />
-				<DropdownMenu.Item label="Bring to front" shortcuts="]" />
-				<DropdownMenu.Item label="Send to back" shortcuts="[" />
-				<DropdownMenu.Item label="Group selection" shortcuts="Command+G" />
-				<DropdownMenu.Item label="Ungroup" shortcuts="Command+U" />
-				<DropdownMenu.Item label="Rename" shortcuts="Command+R" />
-				<DropdownMenu.Item label="Show/hide" shortcuts="Shift+Command+V" />
-				<DropdownMenu.Item label="Lock/unlock" shortcuts="Shift+Command+L" />
-				<DropdownMenu.Item label="Isolate object" shortcuts="I" />
-			</DropdownMenu.Content>
-		</DropdownMenu.Root>
 	);
 }
 

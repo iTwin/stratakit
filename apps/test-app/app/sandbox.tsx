@@ -342,17 +342,6 @@ function PanelContent(props: {
 					return (
 						<React.Fragment key={tree.name}>{tree.content}</React.Fragment>
 					);
-					// <Element
-					// 	// render={<div />}
-					// 	// role="generic"
-					// 	key={tree.name}
-					// 	tabId={tree.name}
-					// 	className={styles.tabPanel}
-					// 	focusable={false}
-					// 	unmountOnHide
-					// >
-					// 	{tree.content}
-					// </Element>
 				})}
 			</Tabs.Root>
 		</TreeFilteringProvider>

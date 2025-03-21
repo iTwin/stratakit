@@ -847,45 +847,40 @@ function SandboxTree({
 			<VisuallyHidden aria-live="polite" aria-atomic={true}>
 				{errorMessage}
 			</VisuallyHidden>
-			<Tree.Root
-				className={styles.tree}
-				error={
-					errorItems.length > 0 ? (
-						<Tree.Error
-							label={errorMessage}
-							items={errorItems.map((item) => {
-								const treeItemId = `${treeId}-${item.id}`;
-								return (
-									<Tree.ErrorItem
-										key={item.id}
-										treeItemId={treeItemId}
-										message={
-											<>
-												<span>Failed to create hierarchy for </span>
-												<Tree.ErrorItemAnchor>
-													{item.label}
-												</Tree.ErrorItemAnchor>
-											</>
-										}
-										actions={[
-											<Tree.ErrorItemAction
-												key="retry"
-												onClick={() => {
-													setFailingIds((prev) => {
-														return prev.filter((id) => id !== item.id);
-													});
-												}}
-											>
-												Retry
-											</Tree.ErrorItemAction>,
-										]}
-									/>
-								);
-							})}
-						/>
-					) : undefined
-				}
-			>
+			{errorItems.length > 0 && (
+				<Tree.Error
+					label={errorMessage}
+					items={errorItems.map((item) => {
+						const treeItemId = `${treeId}-${item.id}`;
+						return (
+							<Tree.ErrorItem
+								key={item.id}
+								treeItemId={treeItemId}
+								message={
+									<>
+										<span>Failed to create hierarchy for </span>
+										<Tree.ErrorItemAnchor>{item.label}</Tree.ErrorItemAnchor>
+									</>
+								}
+								messageId={`${treeItemId}-message`}
+								actions={[
+									<Tree.ErrorItemAction
+										key="retry"
+										onClick={() => {
+											setFailingIds((prev) => {
+												return prev.filter((id) => id !== item.id);
+											});
+										}}
+									>
+										Retry
+									</Tree.ErrorItemAction>,
+								]}
+							/>
+						);
+					})}
+				/>
+			)}
+			<Tree.Root className={styles.tree}>
 				{deferredItems.map((item) => {
 					const hasError = errorItems.find(
 						(errorItem) => errorItem.id === item.id,
@@ -948,7 +943,7 @@ function SandboxTree({
 								/>,
 								<TreeMoreActions key="more" hidden={item.hidden} />,
 							]}
-							error={hasError ? true : undefined}
+							error={hasError ? `${id}-message` : undefined}
 						/>
 					);
 				})}

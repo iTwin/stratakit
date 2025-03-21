@@ -15,7 +15,6 @@ import { ChevronDown, Dismiss, StatusWarning } from "./Icon.js";
 import { Text } from "./Text.js";
 import { IconButton } from "./IconButton.js";
 import { Anchor } from "./Anchor.js";
-import { TreeContext } from "./Tree.internal.js";
 import { Divider } from "./Divider.js";
 import { Button } from "./Button.js";
 import { useControlledState } from "./~hooks.js";
@@ -129,6 +128,12 @@ interface TreeErrorItemProps extends Omit<BaseProps, "children"> {
 	 */
 	message?: React.ReactNode;
 	/**
+	 * The `id` of the associated message.
+	 *
+	 * @default undefined
+	 */
+	messageId?: string;
+	/**
 	 * The actions available for the tree item error. Must be a list of `Tree.ErrorItemAction` components.
 	 */
 	actions?: React.ReactNode[];
@@ -140,16 +145,14 @@ interface TreeErrorItemProps extends Omit<BaseProps, "children"> {
 
 const TreeErrorItem = forwardRef<"div", TreeErrorItemProps>(
 	(props, forwardedRef) => {
-		const { treeItemId: itemId, message, actions, onDismiss, ...rest } = props;
-		const { setErrorId } = React.useContext(TreeContext) ?? {};
-		const errorId = React.useId();
-		React.useEffect(() => {
-			if (!itemId) return;
-			setErrorId?.({ itemId, errorId });
-			return () => {
-				setErrorId?.({ itemId, errorId: undefined });
-			};
-		}, [itemId, errorId, setErrorId]);
+		const {
+			treeItemId: itemId,
+			message,
+			messageId,
+			actions,
+			onDismiss,
+			...rest
+		} = props;
 		return (
 			<TreeErrorItemContext.Provider
 				value={React.useMemo(() => ({ itemId }), [itemId])}
@@ -161,7 +164,7 @@ const TreeErrorItem = forwardRef<"div", TreeErrorItemProps>(
 					ref={forwardedRef}
 				>
 					<Text
-						id={errorId}
+						id={messageId}
 						variant="body-sm"
 						className="🥝-tree-error-item-message"
 					>

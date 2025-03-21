@@ -16,7 +16,6 @@ import { ChevronDown, Icon, StatusWarning } from "./Icon.js";
 import { forwardRef, type BaseProps } from "./~utils.js";
 import { useEventHandlers } from "./~hooks.js";
 import { GhostAligner, useGhostAlignment } from "./~utils.GhostAligner.js";
-import { TreeContext } from "./Tree.internal.js";
 
 // ----------------------------------------------------------------------------
 
@@ -104,10 +103,11 @@ interface TreeItemRootProps extends Omit<BaseProps, "content" | "children"> {
 	actions?: React.ReactNode[];
 	/**
 	 * Specifies if the tree item is in an error state.
+	 * The associated error message id can be passed as a string.
 	 *
 	 * @default false
 	 */
-	error?: boolean;
+	error?: boolean | string;
 }
 
 /**
@@ -139,7 +139,6 @@ interface TreeItemRootProps extends Omit<BaseProps, "content" | "children"> {
 const TreeItemRoot = forwardRef<"div", TreeItemRootProps>(
 	(props, forwardedRef) => {
 		const {
-			id,
 			"aria-level": level,
 			selected,
 			expanded,
@@ -155,8 +154,6 @@ const TreeItemRoot = forwardRef<"div", TreeItemRootProps>(
 			onKeyDown: onKeyDownProp,
 			...rest
 		} = props;
-
-		const { itemIdToErrorId } = React.useContext(TreeContext) ?? {};
 
 		const handleClick = (event: React.MouseEvent) => {
 			if (selected === undefined) return;
@@ -182,7 +179,7 @@ const TreeItemRoot = forwardRef<"div", TreeItemRootProps>(
 		const labelId = React.useId();
 		const descriptionId = React.useId();
 		const decorationId = React.useId();
-		const errorId = id && itemIdToErrorId ? itemIdToErrorId.get(id) : undefined;
+		const errorId = typeof error === "string" ? error : undefined;
 
 		const icon = error ? <StatusWarning /> : iconProp;
 		const describedBy = React.useMemo(() => {
@@ -212,7 +209,6 @@ const TreeItemRoot = forwardRef<"div", TreeItemRootProps>(
 				)}
 			>
 				<CompositeItem
-					id={id}
 					render={<Role {...rest} />}
 					onClick={
 						useEventHandlers(

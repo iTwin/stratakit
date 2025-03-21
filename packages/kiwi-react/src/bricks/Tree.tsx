@@ -2,7 +2,6 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-import * as React from "react";
 import cx from "classnames";
 import { Role } from "@ariakit/react/role";
 import { useCompositeStore, Composite } from "@ariakit/react/composite";
@@ -14,16 +13,10 @@ import {
 	ItemAnchor as TreeErrorItemAnchor,
 } from "./TreeError.js";
 import { Root as TreeItemRoot, Action as TreeItemAction } from "./TreeItem.js";
-import { TreeContext } from "./Tree.internal.js";
 
 // ----------------------------------------------------------------------------
 
-interface TreeProps extends BaseProps {
-	/**
-	 * Describes the error information for the tree. Must be a `Tree.Error` component.
-	 */
-	error?: React.ReactNode;
-}
+interface TreeProps extends BaseProps {}
 
 /**
  * A tree is a hierarchical list of items that can be expanded or collapsed, or optionally selected.
@@ -42,41 +35,17 @@ interface TreeProps extends BaseProps {
  * ```
  */
 const Tree = forwardRef<"div", TreeProps>((props, forwardedRef) => {
-	const { error, ...rest } = props;
 	const composite = useCompositeStore({ orientation: "vertical" });
-	const [itemIdToErrorId, setItemIdToErrorId] = React.useState(
-		new Map<string, string>(),
-	);
-	const setErrorId = React.useCallback<
-		NonNullable<React.ContextType<typeof TreeContext>>["setErrorId"]
-	>((args) => {
-		const { errorId } = args;
-		setItemIdToErrorId((prev) => {
-			const next = new Map(prev);
-			if (errorId === undefined) {
-				return next.delete(args.itemId) ? next : prev;
-			}
-			return next.set(args.itemId, errorId);
-		});
-	}, []);
 	return (
-		<TreeContext.Provider
-			value={React.useMemo(
-				() => ({ itemIdToErrorId, setErrorId }),
-				[itemIdToErrorId, setErrorId],
-			)}
+		<Role.div
+			role="tree"
+			{...props}
+			render={<Composite store={composite} />}
+			className={cx("🥝-tree", props.className)}
+			ref={forwardedRef}
 		>
-			{error}
-			<Role.div
-				role="tree"
-				{...rest}
-				render={<Composite store={composite} />}
-				className={cx("🥝-tree", props.className)}
-				ref={forwardedRef}
-			>
-				{props.children}
-			</Role.div>
-		</TreeContext.Provider>
+			{props.children}
+		</Role.div>
 	);
 });
 DEV: Tree.displayName = "Tree.Root";

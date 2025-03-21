@@ -62,37 +62,34 @@ export default definePage(function Page({
 				maxBlockSize: 500,
 			}}
 		>
-			<Tree.Root
-				style={{ maxInlineSize: overflow ? 300 : undefined }}
-				error={
-					renderError ? (
-						<Tree.Error
-							label="1 issue found"
-							items={[
-								<Tree.ErrorItem
-									key="1.2"
-									treeItemId={errors[0]}
-									message={
-										<>
-											<span>Failed to create hierarchy for </span>
-											<Tree.ErrorItemAnchor>Item 1.2</Tree.ErrorItemAnchor>
-										</>
-									}
-									onDismiss={() => setRenderError(false)}
-									actions={[
-										<Tree.ErrorItemAction
-											key="retry"
-											onClick={() => setRenderError(false)}
-										>
-											Retry
-										</Tree.ErrorItemAction>,
-									]}
-								/>,
+			{renderError && (
+				<Tree.Error
+					label="1 issue found"
+					items={[
+						<Tree.ErrorItem
+							key="1.2"
+							treeItemId={errors[0]}
+							message={
+								<>
+									<span>Failed to create hierarchy for </span>
+									<Tree.ErrorItemAnchor>Item 1.2</Tree.ErrorItemAnchor>
+								</>
+							}
+							messageId={`${errors[0]}-message`}
+							onDismiss={() => setRenderError(false)}
+							actions={[
+								<Tree.ErrorItemAction
+									key="retry"
+									onClick={() => setRenderError(false)}
+								>
+									Retry
+								</Tree.ErrorItemAction>,
 							]}
-						/>
-					) : undefined
-				}
-			>
+						/>,
+					]}
+				/>
+			)}
+			<Tree.Root style={{ maxInlineSize: overflow ? 300 : undefined }}>
 				{data.map((item, index, items) => {
 					const handleSelection = () => {
 						const oldSelected = data[index].selected;
@@ -191,7 +188,7 @@ export default definePage(function Page({
 														/>,
 													]
 										}
-										error={hasError ? true : undefined}
+										error={hasError ? `${itemId}-message` : undefined}
 										ref={hasError ? errorItemRef : undefined}
 									/>
 								);

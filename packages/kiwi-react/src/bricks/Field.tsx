@@ -181,7 +181,7 @@ const FieldControl = forwardRef<"div", FieldCollectionItemControlProps>(
 			const idRefList = renderedItems
 				?.filter(
 					(item: FieldCollectionStoreItem) =>
-						item.elementType === "description",
+						item.elementType === "description" || item.elementType === "error",
 				)
 				?.map((item) => item.id)
 				.join(" ");
@@ -200,12 +200,26 @@ const FieldControl = forwardRef<"div", FieldCollectionItemControlProps>(
 			[controlType],
 		);
 
+		const invalid = React.useMemo(
+			() =>
+				renderedItems?.some(
+					(item: FieldCollectionStoreItem) => item.elementType === "error",
+				),
+			[renderedItems],
+		);
+
 		return (
 			<FieldControlTypeContext.Provider value={setControlType}>
 				<CollectionItem
 					id={id}
 					getItem={getData}
-					render={<Role {...rest} aria-describedby={describedBy} />}
+					render={
+						<Role
+							{...rest}
+							aria-invalid={invalid ? "true" : undefined}
+							aria-describedby={describedBy}
+						/>
+					}
 					ref={forwardedRef}
 				/>
 			</FieldControlTypeContext.Provider>
@@ -216,9 +230,50 @@ DEV: FieldControl.displayName = "Field.Control";
 
 // ----------------------------------------------------------------------------
 
+/**
+ * An associated error message for a field. When used within `<Field.Root>`, the
+ * associated form control will be rendered with `aria-invalid="true"`.
+ *
+ * Example:
+ * ```tsx
+ * <Field.Root>
+ *   <Field.Label>Label</Field.Label>
+ *   <Field.Control render={<TextBox.Input />} />
+ *   <Field.ErrorMessage>Something is wrong!</Field.ErrorMessage>
+ * </Field.Root>
+ * ```
+ */
+const FieldErrorMessage = forwardRef<"div", BaseProps>(
+	(props, forwardedRef) => {
+		const generatedId = React.useId();
+		const { id = generatedId, ...rest } = props;
+
+		const getData = React.useCallback(
+			(data: CollectionStoreItem) => ({
+				...data,
+				elementType: "error",
+			}),
+			[],
+		);
+
+		return (
+			<CollectionItem
+				id={id}
+				getItem={getData}
+				render={<Description {...rest} tone="critical" />}
+				ref={forwardedRef}
+			/>
+		);
+	},
+);
+DEV: FieldErrorMessage.displayName = "Field.ErrorMessage";
+
+// ----------------------------------------------------------------------------
+
 export {
 	FieldRoot as Root,
 	FieldControl as Control,
 	FieldLabel as Label,
 	FieldDescription as Description,
+	FieldErrorMessage as ErrorMessage,
 };

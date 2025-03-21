@@ -93,6 +93,14 @@ test.describe("default", () => {
 			"Custom description.",
 		);
 	});
+
+	test("invalid with error message", async ({ page }) => {
+		const errorMessage = "Something is wrong";
+		await page.goto(`tests/field?errorMessages=${errorMessage}`);
+		const control = page.getByRole("textbox");
+		await expect(control).toHaveAttribute("aria-invalid", "true");
+		await expect(control).toHaveAccessibleDescription(errorMessage);
+	});
 });
 
 test.describe("@visual", () => {

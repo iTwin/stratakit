@@ -1,0 +1,1 @@
+import{p as r}from"./index-DDCMeoDP.js";import{f as c,c as t}from"./~utils-C4sqZCfw.js";import{C as m}from"./ASMQKSDT-B9q_InmI.js";import{b as i}from"./Label-BsuSAlAB.js";const n=c((e,s)=>{const{id:o,...a}=e;return r.jsx(i,{type:"checkable",id:o,render:r.jsx(m,{accessibleWhenDisabled:!0,...a,className:t("🥝-checkbox",e.className),ref:s})})});export{n as C};

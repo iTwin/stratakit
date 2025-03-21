@@ -68,11 +68,12 @@ export default definePage(function Page({
 					items={[
 						<Tree.ErrorItem
 							key="1.2"
-							treeItemId={errors[0]}
 							message={
 								<>
 									<span>Failed to create hierarchy for </span>
-									<Tree.ErrorItemAnchor>Item 1.2</Tree.ErrorItemAnchor>
+									<Tree.ErrorItemAnchor href={`#${errors[0]}`}>
+										Item 1.2
+									</Tree.ErrorItemAnchor>
 								</>
 							}
 							messageId={`${errors[0]}-message`}

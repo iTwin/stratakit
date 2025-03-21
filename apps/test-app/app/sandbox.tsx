@@ -855,11 +855,12 @@ function SandboxTree({
 						return (
 							<Tree.ErrorItem
 								key={item.id}
-								treeItemId={treeItemId}
 								message={
 									<>
 										<span>Failed to create hierarchy for </span>
-										<Tree.ErrorItemAnchor>{item.label}</Tree.ErrorItemAnchor>
+										<Tree.ErrorItemAnchor href={`#${treeItemId}`}>
+											{item.label}
+										</Tree.ErrorItemAnchor>
 									</>
 								}
 								messageId={`${treeItemId}-message`}

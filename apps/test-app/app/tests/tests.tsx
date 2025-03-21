@@ -19,6 +19,7 @@ import {
 } from "react-router";
 import {
 	RightSidebar,
+	ThemeSwitcher,
 	useLocalStorage,
 	VariantsListContext,
 } from "~/~utils.tsx";
@@ -70,6 +71,8 @@ export default function Page() {
 							/>
 
 							<Text variant="body-md">{title}</Text>
+
+							<ThemeSwitcher className={styles.pushRight} />
 						</>
 					}
 				>

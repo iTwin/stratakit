@@ -240,12 +240,6 @@
 	scrollbar-gutter: stable;
 }
 
-.action {
-	&:where([aria-hidden="true"]) {
-		visibility: hidden;
-	}
-}
-
 .actionIcon {
 	position: relative;
 

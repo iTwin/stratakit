@@ -5,7 +5,6 @@
 import { forwardRef, type BaseProps } from "./~utils.js";
 import cx from "classnames";
 import { Text } from "./Text.js";
-import { FieldDescription } from "./Field.js";
 
 interface DescriptionProps extends BaseProps {
 	/**
@@ -16,30 +15,21 @@ interface DescriptionProps extends BaseProps {
 }
 
 /**
- * An additional description for a form control.
+ * A presentational description.
  *
- * Should not include content without an adequate text alternative.
- *
- * Either give this component an `id` and manually associate with a form control
- * using `aria-describedby` on said control or use the `<Field>` component
- * (WIP).
+ * See `Field.Description` for convenient usage with form controls.
  */
 export const Description = forwardRef<"div", DescriptionProps>(
 	(props, forwardedRef) => {
-		const { id, tone, ...rest } = props;
+		const { tone, ...rest } = props;
 
 		return (
-			<FieldDescription
-				id={id}
-				render={
-					<Text
-						{...rest}
-						variant="caption-md"
-						data-kiwi-tone={tone ?? "neutral"}
-						className={cx("🥝-description", props.className)}
-						ref={forwardedRef}
-					/>
-				}
+			<Text
+				{...rest}
+				variant="caption-md"
+				data-kiwi-tone={tone ?? "neutral"}
+				className={cx("🥝-description", props.className)}
+				ref={forwardedRef}
 			/>
 		);
 	},

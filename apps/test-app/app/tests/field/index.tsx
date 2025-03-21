@@ -2,7 +2,7 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-import { definePage, type VariantProps } from "~/~utils.tsx";
+import { definePage } from "~/~utils.tsx";
 import {
 	Checkbox,
 	Field,
@@ -61,24 +61,15 @@ export default definePage(
 		);
 	},
 	{
-		visual: VisualTest,
+		visualCheckableControls: VisualTestForCheckableControls,
+		visualTextlikeControls: VisualTestForTextlikeControls,
 		customAriaDescribedBy: CustomAriaDescribedByTest,
 		customControlId: CustomControlIdTest,
 		customDescriptionIds: CustomDescriptionIdsTest,
 	},
 );
 
-function VisualTest({ controlType }: VariantProps) {
-	if (controlType === "text") {
-		return <VisualTestForTextControls />;
-	}
-
-	if (controlType === "checkable") {
-		return <VisualTestForCheckableControls />;
-	}
-}
-
-function VisualTestForTextControls() {
+function VisualTestForTextlikeControls() {
 	return (
 		<div style={{ display: "grid", gap: 16 }}>
 			{/* Default layout for text controls (block) */}

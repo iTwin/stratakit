@@ -105,12 +105,12 @@ test.describe("default", () => {
 
 test.describe("@visual", () => {
 	test("text controls", async ({ page }) => {
-		await page.goto("/tests/field?visual&controlType=text");
+		await page.goto("/tests/field?visualTextlikeControls");
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
 
 	test("checkable controls", async ({ page }) => {
-		await page.goto("/tests/field?visual&controlType=checkable");
+		await page.goto("/tests/field?visualCheckableControls");
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
 });

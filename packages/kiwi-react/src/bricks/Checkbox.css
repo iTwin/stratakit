@@ -88,10 +88,6 @@
 			mask-image: var(--🥝checkbox-mask-image, initial);
 			mask-repeat: no-repeat;
 			mask-position: center;
-
-			@media (forced-colors: active) {
-				background-color: CanvasText;
-			}
 		}
 	}
 
@@ -122,6 +118,21 @@
 			--🌀checkbox-aria-state: var(--🌀checkbox-aria-state--indeterminate);
 		}
 
+		&:where(
+				:checked,
+				[type="checkbox"]:indeterminate,
+				[aria-checked="true"],
+				[aria-checked="mixed"]
+			) {
+			@media (forced-colors: active) {
+				background-color: SelectedItem;
+
+				&::after {
+					background-color: SelectedItemText;
+				}
+			}
+		}
+
 		&:where([disabled], :disabled, [aria-disabled="true"]) {
 			--🌀checkbox-visual-state: var(--🌀checkbox-visual-state--disabled);
 			--🥝checkbox-color-svg: var(--ids-color-icon-neutral-disabled);
@@ -129,6 +140,7 @@
 			box-shadow: none;
 
 			@media (forced-colors: active) {
+				background-color: Canvas;
 				border-color: GrayText;
 
 				&::after {

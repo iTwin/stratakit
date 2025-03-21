@@ -121,11 +121,11 @@ export default function Page() {
 						className={styles.disclosureButton}
 					>
 						<Icon render={<ArrowIcon />} className={styles.disclosureIcon} />
-						All typography
+						All typography variants
 					</Disclosure.Disclosure>
 
 					<Disclosure.DisclosureContent>
-						<TypographyVariants variants={[...typographyTokens.keys()]} />
+						<TypographyVariants variants={typographyVariants} />
 					</Disclosure.DisclosureContent>
 				</div>
 			</Disclosure.DisclosureProvider>
@@ -171,7 +171,7 @@ function Tokens({
 function TypographyVariants({
 	variants,
 }: {
-	variants: string[];
+	variants: readonly string[];
 }) {
 	return (
 		<Table>

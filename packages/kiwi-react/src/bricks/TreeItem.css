@@ -19,7 +19,7 @@
 				inset: 0;
 				z-index: 1; /* Ensure the outline appears above the actions */
 				pointer-events: none;
-				outline: 2px solid var(--ids-color-border-accent-strong);
+				outline: var(--🥝focus-outline);
 				outline-offset: -1px;
 			}
 		}

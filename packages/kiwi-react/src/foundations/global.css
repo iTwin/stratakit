@@ -13,10 +13,11 @@ body {
 :is(body, .🥝-root) {
 	font-family: var(--ids-font-family-sans);
 	color: var(--ids-color-text-neutral-primary);
+	--🥝focus-outline: 2px solid var(--ids-color-border-accent-strong);
+	--🥝focus-outline-offset: 1px;
 }
 
 *:focus-visible {
-	--✨focus-color: var(--ids-color-border-accent-strong);
-	outline: 2px solid var(--✨focus-color);
-	outline-offset: 1px;
+	outline: var(--🥝focus-outline);
+	outline-offset: var(--🥝focus-outline-offset);
 }

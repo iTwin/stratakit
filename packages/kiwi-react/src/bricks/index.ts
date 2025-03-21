@@ -16,7 +16,7 @@ export * as DropdownMenu from "./DropdownMenu.js";
 export { Divider } from "./Divider.js";
 export { Icon } from "./Icon.js";
 export { IconButton } from "./IconButton.js";
-export { Field } from "./Field.js";
+export * as Field from "./Field.js";
 export { Kbd } from "./Kbd.js";
 export { Label } from "./Label.js";
 export { ProgressBar } from "./ProgressBar.js";

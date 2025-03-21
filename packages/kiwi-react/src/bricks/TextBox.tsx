@@ -6,10 +6,10 @@ import * as React from "react";
 import { Role } from "@ariakit/react/role";
 import { Focusable } from "@ariakit/react/focusable";
 import cx from "classnames";
-import { FieldControl } from "./Field.js";
 import { Icon } from "./Icon.js";
 import { useMergedRefs } from "./~hooks.js";
 import { type FocusableProps, type BaseProps, forwardRef } from "./~utils.js";
+import { useFieldControlType } from "./Field.internal.js";
 
 // ----------------------------------------------------------------------------
 
@@ -35,17 +35,26 @@ interface TextBoxInputProps extends Omit<BaseInputProps, "children" | "type"> {
  *
  * Example usage:
  * ```tsx
- * <TextBox.Input defaultValue="Hello" />
+ * <TextBox.Input name="greeting" defaultValue="Hello" />
  * ```
  *
  * To add additional decorations, see `TextBox.Root` component.
  *
- * Works well with the `Field` and `Label` components.
+ * Use with the `Field` components to automatically handle ID associations for
+ * labels and descriptions:
  * ```tsx
- * <Field>
- *   <Label>Enter your name</Label>
- *   <TextBox.Input />
- * </Field>
+ * <Field.Root>
+ *   <Field.Label>First name</Field.Label>
+ *   <Field.Control render={<TextBox.Input name="firstName" />} />
+ * </Field.Root>
+ * ```
+ *
+ * Without the `Field` components you will need to manually associate labels,
+ * descriptions, etc.:
+ * ```tsx
+ * <Label htmlFor="fruit">Fruit</Label>
+ * <TextBox.Input id="fruit" aria-describedby="fruit-description" />
+ * <Description id="fruit-description">Something to include in a fruit salad.</Description>
  * ```
  *
  * Underneath, it's an HTML input, i.e. `<input>`, so it supports the same props, including
@@ -55,35 +64,29 @@ interface TextBoxInputProps extends Omit<BaseInputProps, "children" | "type"> {
  */
 const TextBoxInput = forwardRef<"input", TextBoxInputProps>(
 	(props, forwardedRef) => {
-		const { id, ...rest } = props;
+		useFieldControlType("textlike");
 		const rootContext = React.useContext(TextBoxRootContext);
 		const setDisabled = rootContext?.setDisabled;
 		React.useEffect(() => {
 			setDisabled?.(props.disabled);
 		}, [setDisabled, props.disabled]);
 		return (
-			<FieldControl
-				type="textlike"
-				id={id}
+			<Role.input
+				readOnly={props.disabled}
+				{...props}
+				className={cx({ "🥝-text-box": !rootContext }, props.className)}
+				/**
+				 * Use an empty string as a placeholder to fix baseline alignment in Safari.
+				 * @see https://bugs.webkit.org/show_bug.cgi?id=142968
+				 */
+				placeholder={props.placeholder ?? " "}
 				render={
-					<Role.input
-						readOnly={props.disabled}
-						{...rest}
-						className={cx({ "🥝-text-box": !rootContext }, props.className)}
-						/**
-						 * Use an empty string as a placeholder to fix baseline alignment in Safari.
-						 * @see https://bugs.webkit.org/show_bug.cgi?id=142968
-						 */
-						placeholder={props.placeholder ?? " "}
-						render={
-							<Focusable
-								accessibleWhenDisabled
-								render={props.render || <input />}
-							/>
-						}
-						ref={useMergedRefs(rootContext?.inputRef, forwardedRef)}
+					<Focusable
+						accessibleWhenDisabled
+						render={props.render || <input />}
 					/>
 				}
+				ref={useMergedRefs(rootContext?.inputRef, forwardedRef)}
 			/>
 		);
 	},
@@ -102,12 +105,21 @@ interface TextareaProps extends FocusableProps<"textarea"> {}
  * <TextBox.Textarea defaultValue="Hello" />
  * ```
  *
- * Works well with the `Field` and `Label` components.
+ * Use with the `Field` components to automatically handle ID associations for
+ * labels and descriptions:
  * ```tsx
- * <Field>
- *   <Label>Leave a comment, be kind</Label>
- *   <TextBox.Textarea />
- * </Field>
+ * <Field.Root>
+ *   <Field.Label>Leave a comment, be kind</Field.Label>
+ *   <Field.Control render={<TextBox.Textarea name="comment" />} />
+ * </Field.Root>
+ * ```
+ *
+ * Without the `Field` components you will need to manually associate labels,
+ * descriptions, etc.:
+ * ```tsx
+ * <Label htmlFor="fruit">Fruit</Label>
+ * <TextBox.Input id="fruit" aria-describedby="fruit-description" />
+ * <Description id="fruit-description">Something to include in a fruit salad.</Description>
  * ```
  *
  * Underneath, it's an HTML textarea, i.e. `<textarea>`, so it supports the same props, including
@@ -115,31 +127,24 @@ interface TextareaProps extends FocusableProps<"textarea"> {}
  */
 const TextBoxTextarea = forwardRef<"textarea", TextareaProps>(
 	(props, forwardedRef) => {
-		const { id, ...rest } = props;
-
+		useFieldControlType("textlike");
 		return (
-			<FieldControl
-				type="textlike"
-				id={id}
+			<Role.textarea
+				readOnly={props.disabled}
+				{...props}
+				className={cx("🥝-text-box", props.className)}
+				/**
+				 * Use an empty string as a placeholder to fix baseline alignment in Safari.
+				 * @see https://bugs.webkit.org/show_bug.cgi?id=142968
+				 */
+				placeholder={props.placeholder ?? " "}
 				render={
-					<Role.textarea
-						readOnly={props.disabled}
-						{...rest}
-						className={cx("🥝-text-box", props.className)}
-						/**
-						 * Use an empty string as a placeholder to fix baseline alignment in Safari.
-						 * @see https://bugs.webkit.org/show_bug.cgi?id=142968
-						 */
-						placeholder={props.placeholder ?? " "}
-						render={
-							<Focusable
-								accessibleWhenDisabled
-								render={props.render || <textarea />}
-							/>
-						}
-						ref={forwardedRef}
+					<Focusable
+						accessibleWhenDisabled
+						render={props.render || <textarea />}
 					/>
 				}
+				ref={forwardedRef}
 			/>
 		);
 	},
@@ -161,15 +166,20 @@ interface TextBoxRootProps extends BaseProps {}
  * </TextBox.Root>
  * ```
  *
- * Works well with the `Field` and `Label` components.
+ * Use with the `Field` components to automatically handle ID associations for
+ * labels and descriptions:
  * ```tsx
- * <Field>
- *   <Label>Enter your name</Label>
- *   <TextBox.Root>
- *     <TextBox.Input />
- *     <TextBox.Icon href={…} />
- *   </TextBox.Root>
- * </Field>
+ * <Field.Root>
+ *   <Field.Label>First name</Field.Label>
+ *   <Field.Control
+ *     render={(controlProps) => (
+ *       <TextBox.Root>
+ *         <TextBox.Input name="firstName" {...controlProps} />
+ *         <TextBox.Icon href={…} />
+ *       </TextBox.Root>
+ *     )}
+ *   />
+ * </Field.Root>
  * ```
  */
 const TextBoxRoot = forwardRef<"div", TextBoxRootProps>(

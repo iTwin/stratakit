@@ -7,8 +7,8 @@ import {
 	Checkbox as AkCheckbox,
 	type CheckboxProps as AkCheckboxProps,
 } from "@ariakit/react/checkbox";
-import { FieldControl } from "./Field.js";
 import { forwardRef, type FocusableProps } from "./~utils.js";
+import { useFieldControlType } from "./Field.internal.js";
 
 type InputBaseProps = Omit<FocusableProps<"input">, "defaultValue" | "value">;
 
@@ -27,13 +27,20 @@ interface SwitchProps extends InputBaseProps, CheckboxOwnProps {
 /**
  * A toggle switch element, typically used for enabling or disabling a feature.
  *
- * Works well with the `Field` and `Label` components.
- *
+ * Use with the `Field` components to automatically handle ID associations for
+ * labels and descriptions:
  * ```tsx
- * <Field>
- *   <Label>Enable feature</Label>
- *   <Switch />
- * </Field>
+ * <Field.Root>
+ *   <Field.Label>Enable feature</Field.Label>
+ *   <Field.Control render={<Switch />} />
+ * </Field.Root>
+ * ```
+ *
+ * Without the `Field` components you will need to manually associate labels,
+ * descriptions, etc.:
+ * ```tsx
+ * <Switch id="dark-mode" />
+ * <Label htmlFor="dark-mode">Dark mode</Label>
  * ```
  *
  * Underneath, it's an HTML checkbox, i.e. `<input type="checkbox">`, so it supports the same props,
@@ -41,21 +48,14 @@ interface SwitchProps extends InputBaseProps, CheckboxOwnProps {
  */
 export const Switch = forwardRef<"input", SwitchProps>(
 	(props, forwardedRef) => {
-		const { id, ...rest } = props;
-
+		useFieldControlType("checkable");
 		return (
-			<FieldControl
-				type="checkable"
-				id={id}
-				render={
-					<AkCheckbox
-						accessibleWhenDisabled
-						{...rest}
-						className={cx("🥝-switch", props.className)}
-						role="switch"
-						ref={forwardedRef}
-					/>
-				}
+			<AkCheckbox
+				accessibleWhenDisabled
+				{...props}
+				className={cx("🥝-switch", props.className)}
+				role="switch"
+				ref={forwardedRef}
 			/>
 		);
 	},

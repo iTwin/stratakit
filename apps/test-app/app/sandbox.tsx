@@ -11,7 +11,6 @@ import {
 	Field,
 	Icon,
 	IconButton,
-	Label,
 	Select,
 	Skeleton,
 	Tabs,
@@ -89,25 +88,32 @@ export default function Page() {
 				<>
 					<div className={styles.panelHeader}>
 						<div>
-							<Field>
-								<VisuallyHidden render={<Label />}>Choose Model</VisuallyHidden>
+							<Field.Root>
+								<VisuallyHidden render={<Field.Label />}>
+									Choose Model
+								</VisuallyHidden>
 
-								<Select.Root className={styles.panelTitleWrapper}>
-									<Select.HtmlSelect
-										variant="ghost"
-										defaultValue={selectedModel}
-										onChange={(e) =>
-											setSearchParams({ model: e.currentTarget.value })
-										}
-									>
-										{Object.entries(models).map(([id, { name }]) => (
-											<option key={id} value={id}>
-												{name}
-											</option>
-										))}
-									</Select.HtmlSelect>
-								</Select.Root>
-							</Field>
+								<Field.Control
+									render={(controlProps) => (
+										<Select.Root className={styles.panelTitleWrapper}>
+											<Select.HtmlSelect
+												{...controlProps}
+												variant="ghost"
+												defaultValue={selectedModel}
+												onChange={(e) =>
+													setSearchParams({ model: e.currentTarget.value })
+												}
+											>
+												{Object.entries(models).map(([id, { name }]) => (
+													<option key={id} value={id}>
+														{name}
+													</option>
+												))}
+											</Select.HtmlSelect>
+										</Select.Root>
+									)}
+								/>
+							</Field.Root>
 
 							<hgroup role="group">
 								<VisuallyHidden render={<h2 />}>
@@ -843,7 +849,6 @@ function SandboxTree({
 									className={styles.action}
 									icon={lockIcon}
 									label="Lock"
-									aria-hidden={item.hidden}
 								/>,
 								<Tree.ItemAction
 									key="visibility"
@@ -855,7 +860,7 @@ function SandboxTree({
 										toggleHidden(item.id);
 									}}
 								/>,
-								<TreeMoreActions key="more" hidden={item.hidden} />,
+								<TreeMoreActions key="more" />,
 							]}
 						/>
 					);
@@ -865,12 +870,11 @@ function SandboxTree({
 	);
 }
 
-function TreeMoreActions({ hidden }: { hidden?: boolean }) {
+function TreeMoreActions() {
 	return (
 		<DropdownMenu.Root>
 			<DropdownMenu.Button
 				className={styles.action}
-				aria-hidden={hidden}
 				render={<Tree.ItemAction icon={moreIcon} label="More" />}
 			/>
 			<DropdownMenu.Content style={{ minInlineSize: 164 }}>

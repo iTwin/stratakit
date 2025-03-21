@@ -4,20 +4,34 @@
  *--------------------------------------------------------------------------------------------*/
 
 .🥝-spinner {
+	--✨count: 4;
+	--✨duration: 1s;
+	--✨easing: linear;
+	--✨steps: 4;
+
+	--✨animation--indeterminate-steps: calc(var(--✨steps) * var(--✨duration))
+		--🥝spinner-animation-indeterminate steps(var(--✨steps), end) infinite;
+	--✨animation--indeterminate: var(--✨duration) --🥝spinner-animation-indeterminate
+		var(--✨easing) var(--✨count);
+	--✨animation--indeterminate-slow: calc(var(--✨duration) * 2)
+		--🥝spinner-animation-indeterminate-slow var(--✨easing)
+		calc(var(--✨count) * var(--✨duration)) infinite;
+
 	@layer base {
 		display: inline-block;
-		color: var(--🥝spinner-color);
 		block-size: var(--🥝spinner-size);
 		inline-size: var(--🥝spinner-size);
 	}
 
 	@layer modifiers {
 		&:where([data-kiwi-tone="neutral"]) {
-			--🥝spinner-color: var(--ids-color-icon-neutral-base);
+			--🥝spinner-fill-color: var(--ids-color-icon-neutral-base);
+			--🥝spinner-track-color: var(--ids-color-border-page-base);
 		}
 
 		&:where([data-kiwi-tone="accent"]) {
-			--🥝spinner-color: var(--ids-color-icon-accent-strong);
+			--🥝spinner-fill-color: var(--ids-color-icon-accent-strong);
+			--🥝spinner-track-color: var(--ids-color-bg-accent-muted);
 		}
 
 		&:where([data-kiwi-size="small"]) {
@@ -35,6 +49,21 @@
 		&:where([data-kiwi-size="xlarge"]) {
 			--🥝spinner-size: 3rem;
 		}
+
+		&:where([data-kiwi-variant="indeterminate"]) {
+			--🥝spinner-animation: var(--✨animation--indeterminate-steps);
+			--🥝spinner-dash-array: 25 75;
+
+			@media (prefers-reduced-motion: no-preference) {
+				--🥝spinner-animation: var(--✨animation--indeterminate),
+					var(--✨animation--indeterminate-slow);
+			}
+		}
+
+		@media (forced-colors: active) {
+			--🥝spinner-fill-color: CanvasText;
+			--🥝spinner-track-color: Canvas;
+		}
 	}
 }
 
@@ -43,17 +72,35 @@
 		block-size: inherit;
 		inline-size: inherit;
 		fill: none;
-		animation: --🥝spinner-spin 1s linear infinite both;
-
-		@media (prefers-reduced-motion) {
-			animation-timing-function: steps(4, end);
-			animation-duration: 4s;
-		}
 	}
 }
 
-@keyframes --🥝spinner-spin {
+.🥝-spinner-svg-track {
+	stroke: var(--🥝spinner-track-color);
+}
+
+.🥝-spinner-svg-fill {
+	animation: var(--🥝spinner-animation);
+	stroke: var(--🥝spinner-fill-color);
+	stroke-dasharray: var(--🥝spinner-dash-array);
+	stroke-dashoffset: 25;
+	stroke-linecap: round;
+	transform-box: fill-box;
+	transform-origin: center;
+}
+
+@keyframes --🥝spinner-animation-indeterminate {
 	to {
+		rotate: 360deg;
+	}
+}
+
+@keyframes --🥝spinner-animation-indeterminate-slow {
+	50% {
+		rotate: 30deg; /* Simulate a short slowdown between each cycle to help with WCAG SC 2.2.2. */
+	}
+
+	100% {
 		rotate: 360deg;
 	}
 }

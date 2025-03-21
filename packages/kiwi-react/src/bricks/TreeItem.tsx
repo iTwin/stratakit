@@ -287,7 +287,7 @@ const TreeItemActions = forwardRef<"div", BaseProps>((props, forwardedRef) => {
 			{...props}
 			onClick={useEventHandlers(props.onClick, (e) => e.stopPropagation())}
 			onKeyDown={useEventHandlers(props.onKeyDown, (e) => e.stopPropagation())}
-			className={cx("🥝-tree-item-actions", props.className)}
+			className={cx("🥝-tree-item-actions-container", props.className)}
 			ref={forwardedRef}
 		>
 			{props.children}

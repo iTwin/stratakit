@@ -5,40 +5,28 @@
 import cx from "classnames";
 import { Role } from "@ariakit/react/role";
 import { forwardRef, type BaseProps } from "./~utils.js";
-import { FieldLabel } from "./Field.js";
 
 interface LabelProps extends BaseProps<"label"> {}
 
 /**
- * A styled wrapper over the HTML `<label>` element, used for labelling form controls.
- * 
- * Can be used standalone:
-
+ * A styled wrapper over the HTML `<label>` element, used for labelling form
+ * controls.
+ *
+ * Example usage:
  * ```tsx
  * <Label htmlFor="my-input">Label</Label>
  * <TextBox.Input id="my-input" />
  * ```
- * 
- * Or within a `Field` component to automatically manage ID associations:
- * 
- * ```tsx
- * <Field>
- *   <Label>Label</Label>
- *   <TextBox.Input />
- * </Field>
- * ```
- * 
+ *
+ * See `Field.Label` for convenient usage with form controls (e.g. automatic
+ * association with adjacent form control).
  */
 export const Label = forwardRef<"label", LabelProps>((props, forwardedRef) => {
 	return (
-		<FieldLabel
-			render={
-				<Role.label
-					{...props}
-					className={cx("🥝-label", props.className)}
-					ref={forwardedRef}
-				/>
-			}
+		<Role.label
+			{...props}
+			className={cx("🥝-label", props.className)}
+			ref={forwardedRef}
 		/>
 	);
 });

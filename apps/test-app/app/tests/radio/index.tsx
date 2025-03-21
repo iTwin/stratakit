@@ -17,25 +17,33 @@ export default definePage(
 	function Page({ disabled, defaultValue }) {
 		return (
 			<div style={{ display: "grid", gap: 8 }}>
-				<Field>
-					<Radio
-						name="test"
-						value="A"
-						defaultChecked={defaultValue === "A"}
-						disabled={!!disabled}
+				<Field.Root>
+					<Field.Control
+						render={
+							<Radio
+								name="test"
+								value="A"
+								defaultChecked={defaultValue === "A"}
+								disabled={!!disabled}
+							/>
+						}
 					/>
-					<Label>A</Label>
-				</Field>
+					<Field.Label>A</Field.Label>
+				</Field.Root>
 
-				<Field>
-					<Radio
-						name="test"
-						value="B"
-						defaultChecked={defaultValue === "B"}
-						disabled={!!disabled}
+				<Field.Root>
+					<Field.Control
+						render={
+							<Radio
+								name="test"
+								value="B"
+								defaultChecked={defaultValue === "B"}
+								disabled={!!disabled}
+							/>
+						}
 					/>
-					<Label>B</Label>
-				</Field>
+					<Field.Label>B</Field.Label>
+				</Field.Root>
 			</div>
 		);
 	},

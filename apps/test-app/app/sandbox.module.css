@@ -230,6 +230,10 @@
 	padding-block-end: 12px;
 	display: grid;
 	align-content: stretch;
+
+	&:not([data-open]) {
+		display: none !important;
+	}
 }
 
 .tree {

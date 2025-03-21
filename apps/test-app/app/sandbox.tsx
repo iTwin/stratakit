@@ -271,6 +271,8 @@ function PanelContent(props: {
 }) {
 	const { data } = React.use(props.query.promise);
 
+	const [isSearchboxVisible, setIsSearchboxVisible] = React.useState(!data);
+
 	const trees = React.useMemo(
 		() =>
 			Object.entries(data).map(([treeName, treeData]) => {
@@ -282,7 +284,11 @@ function PanelContent(props: {
 					filters,
 					content:
 						treeData.length > 0 ? (
-							<SandboxTree data={treeData} />
+							<SandboxTree
+								name={treeName}
+								data={treeData}
+								isSearchboxVisible={isSearchboxVisible}
+							/>
 						) : (
 							<EmptyState>
 								<Text variant="body-sm">No layers</Text>
@@ -291,14 +297,8 @@ function PanelContent(props: {
 						),
 				} as const;
 			}),
-		[data],
+		[data, isSearchboxVisible],
 	);
-
-	const tabs = trees.map((tree) => (
-		<Tabs.Tab key={tree.name} id={tree.name}>
-			{toUpperCamelCase(tree.name)}
-		</Tabs.Tab>
-	));
 
 	const [selectedTreeId, setSelectedTreeId] = React.useState<
 		string | undefined | null
@@ -309,8 +309,6 @@ function PanelContent(props: {
 		return trees.find((tree) => tree.name === selectedTreeId)?.filters || [];
 	}, [trees, selectedTreeId]);
 
-	const [isSearchboxVisible, setIsSearchboxVisible] = React.useState(!tabs);
-
 	if (trees.length === 1)
 		return (
 			<TreeFilteringProvider allFilters={allFilters}>
@@ -318,7 +316,7 @@ function PanelContent(props: {
 					isSearchboxVisible={isSearchboxVisible}
 					setIsSearchboxVisible={setIsSearchboxVisible}
 				/>
-				{isSearchboxVisible ? null : trees[0].content}
+				{trees[0].content}
 			</TreeFilteringProvider>
 		);
 
@@ -326,23 +324,29 @@ function PanelContent(props: {
 		<TreeFilteringProvider allFilters={allFilters}>
 			<Tabs.Root selectOnMove={false} setSelectedId={setSelectedTreeId}>
 				<Subheader
-					tabs={tabs}
+					tabs={trees.map((tree) => (
+						<Tabs.Tab key={tree.name} id={tree.name}>
+							{toUpperCamelCase(tree.name)}
+						</Tabs.Tab>
+					))}
 					isSearchboxVisible={isSearchboxVisible}
 					setIsSearchboxVisible={setIsSearchboxVisible}
 				/>
 				{trees.map((tree) => {
-					if (isSearchboxVisible) return <div key={tree.name} />;
 					return (
-						<Tabs.TabPanel
-							key={tree.name}
-							tabId={tree.name}
-							className={styles.tabPanel}
-							focusable={false}
-							unmountOnHide
-						>
-							{tree.content}
-						</Tabs.TabPanel>
+						<React.Fragment key={tree.name}>{tree.content}</React.Fragment>
 					);
+					// <Element
+					// 	// render={<div />}
+					// 	// role="generic"
+					// 	key={tree.name}
+					// 	tabId={tree.name}
+					// 	className={styles.tabPanel}
+					// 	focusable={false}
+					// 	unmountOnHide
+					// >
+					// 	{tree.content}
+					// </Element>
 				})}
 			</Tabs.Root>
 		</TreeFilteringProvider>
@@ -771,9 +775,13 @@ function findTreeItem<T extends Pick<TreeItem, "id"> & { items: T[] }>(
 }
 
 function SandboxTree({
+	name,
 	data: treeData,
+	isSearchboxVisible,
 }: {
+	name: string;
 	data: TreeItemData[];
+	isSearchboxVisible: boolean;
 }) {
 	const {
 		appliedFilters: filters,
@@ -809,69 +817,83 @@ function SandboxTree({
 	const deferredItems = React.useDeferredValue(flatItems);
 	if (deferredItems.length === 0) return <NoResultsState />;
 
+	const panelRef = React.useRef<HTMLDivElement>(null);
+	const Element = !isSearchboxVisible ? Tabs.TabPanel : "div";
+
 	return (
-		<React.Suspense fallback="Loading...">
-			<Tree.Root className={styles.tree}>
-				{deferredItems.map((item) => {
-					return (
-						<Tree.Item
-							key={item.id}
-							label={item.label}
-							description={item.description}
-							aria-level={item.level}
-							aria-posinset={item.position}
-							aria-setsize={item.size}
-							selected={item.selected}
-							onSelectedChange={() => {
-								if (selected === item.id) {
-									setSelected(undefined);
-									return;
+		<Element
+			key={name}
+			{...(Element !== "div" && { tabId: name })}
+			className={styles.tabPanel}
+			focusable={false}
+			{...(Element !== "div" && { unmountOnHide: true })}
+			ref={panelRef}
+			{...(Element === "div" &&
+				panelRef?.current?.dataset.open && { "data-open": true })}
+		>
+			<React.Suspense fallback="Loading...">
+				<Tree.Root className={styles.tree}>
+					{deferredItems.map((item) => {
+						return (
+							<Tree.Item
+								key={item.id}
+								label={item.label}
+								description={item.description}
+								aria-level={item.level}
+								aria-posinset={item.position}
+								aria-setsize={item.size}
+								selected={item.selected}
+								onSelectedChange={() => {
+									if (selected === item.id) {
+										setSelected(undefined);
+										return;
+									}
+									setSelected(item.id);
+								}}
+								expanded={item.items.length === 0 ? undefined : item.expanded}
+								onExpandedChange={(expanded) => {
+									setItems((prev) => {
+										const treeItem = findTreeItem(prev, item.id);
+										if (!treeItem) return prev;
+										const newData = [...prev];
+										treeItem.expanded = expanded; // TODO: should be immutable https://github.com/iTwin/kiwi/pull/300#discussion_r1941452941
+										return newData;
+									});
+								}}
+								unstable_decorations={
+									<>
+										{item.color ? (
+											<ColorSwatch color={item.color} alt={item.color} />
+										) : null}
+										<Icon href={placeholderIcon} />
+									</>
 								}
-								setSelected(item.id);
-							}}
-							expanded={item.items.length === 0 ? undefined : item.expanded}
-							onExpandedChange={(expanded) => {
-								setItems((prev) => {
-									const treeItem = findTreeItem(prev, item.id);
-									if (!treeItem) return prev;
-									const newData = [...prev];
-									treeItem.expanded = expanded; // TODO: should be immutable https://github.com/iTwin/kiwi/pull/300#discussion_r1941452941
-									return newData;
-								});
-							}}
-							unstable_decorations={
-								<>
-									{item.color ? (
-										<ColorSwatch color={item.color} alt={item.color} />
-									) : null}
-									<Icon href={placeholderIcon} />
-								</>
-							}
-							actions={[
-								<Tree.ItemAction
-									key="lock"
-									className={styles.action}
-									icon={lockIcon}
-									label="Lock"
-									aria-hidden={item.hidden}
-								/>,
-								<Tree.ItemAction
-									key="visibility"
-									className={styles.action}
-									icon={item.hidden ? hideIcon : showIcon}
-									label={item.hidden ? "Show" : "Hide"}
-									visible={item.hidden ? true : undefined}
-									onClick={() => {
-										toggleHidden(item.id);
-									}}
-								/>,
-								<TreeMoreActions key="more" hidden={item.hidden} />,
-							]}
-						/>
-					);
-				})}
-			</Tree.Root>
-		</React.Suspense>
+								actions={[
+									<Tree.ItemAction
+										key="lock"
+										className={styles.action}
+										icon={lockIcon}
+										label="Lock"
+										aria-hidden={item.hidden}
+									/>,
+									<Tree.ItemAction
+										key="visibility"
+										className={styles.action}
+										icon={item.hidden ? hideIcon : showIcon}
+										label={item.hidden ? "Show" : "Hide"}
+										visible={item.hidden ? true : undefined}
+										onClick={() => {
+											toggleHidden(item.id);
+										}}
+									/>,
+									<TreeMoreActions key="more" hidden={item.hidden} />,
+								]}
+							/>
+						);
+					})}
+				</Tree.Root>
+			</React.Suspense>
+		</Element>
 	);
 }
 

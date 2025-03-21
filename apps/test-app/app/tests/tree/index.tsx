@@ -4,7 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 import { definePage } from "~/~utils.tsx";
 import * as React from "react";
-import { Tree, Icon } from "@itwin/itwinui-react/bricks";
+import { Tree, Icon, Anchor } from "@itwin/itwinui-react/bricks";
 import placeholderIcon from "@itwin/itwinui-icons/placeholder.svg";
 import unlockIcon from "@itwin/itwinui-icons/lock-unlocked.svg";
 import showIcon from "@itwin/itwinui-icons/visibility-show.svg";
@@ -71,9 +71,7 @@ export default definePage(function Page({
 							message={
 								<>
 									<span>Failed to create hierarchy for </span>
-									<Tree.ErrorItemAnchor href={`#${errors[0]}`}>
-										Item 1.2
-									</Tree.ErrorItemAnchor>
+									<Anchor href={`#${errors[0]}`}>Item 1.2</Anchor>
 								</>
 							}
 							messageId={`${errors[0]}-message`}

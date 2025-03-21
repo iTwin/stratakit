@@ -10,7 +10,6 @@ import {
 	Root as TreeError,
 	Item as TreeErrorItem,
 	ItemAction as TreeErrorItemAction,
-	ItemAnchor as TreeErrorItemAnchor,
 } from "./TreeError.js";
 import { Root as TreeItemRoot, Action as TreeItemAction } from "./TreeItem.js";
 
@@ -58,6 +57,5 @@ export {
 	TreeItemAction as ItemAction,
 	TreeError as Error,
 	TreeErrorItem as ErrorItem,
-	TreeErrorItemAnchor as ErrorItemAnchor,
 	TreeErrorItemAction as ErrorItemAction,
 };

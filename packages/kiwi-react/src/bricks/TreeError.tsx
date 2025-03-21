@@ -109,13 +109,11 @@ DEV: TreeError.displayName = "Tree.Error";
 
 interface TreeErrorItemProps extends Omit<BaseProps, "children"> {
 	/**
-	 * The error message. Use `Tree.ErrorItemAnchor` component to link to the associated tree item.
+	 * The error message. Use `Anchor` component to link to the associated tree item.
 	 */
 	message?: React.ReactNode;
 	/**
-	 * The `id` of the associated message.
-	 *
-	 * @default undefined
+	 * The `id` of the message node.
 	 */
 	messageId?: string;
 	/**
@@ -163,21 +161,6 @@ DEV: TreeErrorItem.displayName = "Tree.ErrorItem";
 
 // -------------------------------------------------------------------------
 
-interface TreeErrorItemAnchorProps extends BaseProps<"a"> {}
-
-/**
- * An anchor for the `<Tree.ErrorItem>` component, to be passed into the `message` prop.
- * The anchor typically matches the label of the associated tree item.
- */
-const TreeErrorItemAnchor = forwardRef<"a", TreeErrorItemAnchorProps>(
-	(props, forwardedRef) => {
-		return <Anchor {...props} ref={forwardedRef} />;
-	},
-);
-DEV: TreeErrorItemAnchor.displayName = "Tree.ErrorItemAnchor";
-
-// -------------------------------------------------------------------------
-
 interface TreeErrorItemActionProps extends BaseProps<"button"> {}
 
 /**
@@ -196,6 +179,5 @@ DEV: TreeErrorItemAction.displayName = "Tree.ErrorItemAction";
 export {
 	TreeError as Root,
 	TreeErrorItem as Item,
-	TreeErrorItemAnchor as ItemAnchor,
 	TreeErrorItemAction as ItemAction,
 };

@@ -858,9 +858,7 @@ function SandboxTree({
 								message={
 									<>
 										<span>Failed to create hierarchy for </span>
-										<Tree.ErrorItemAnchor href={`#${treeItemId}`}>
-											{item.label}
-										</Tree.ErrorItemAnchor>
+										<Anchor href={`#${treeItemId}`}>{item.label}</Anchor>
 									</>
 								}
 								messageId={`${treeItemId}-message`}

@@ -26,7 +26,7 @@ export type CollectionStoreItem = NonNullable<
  */
 export interface FieldCollectionStoreItem extends CollectionStoreItem {
 	/** The type of field element being tracked */
-	elementType: "label" | "control" | "description";
+	elementType: "label" | "control" | "description" | "error";
 
 	/** If a control, the type of control. */
 	controlType?: "textlike" | "checkable";

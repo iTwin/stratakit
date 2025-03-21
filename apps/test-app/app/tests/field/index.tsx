@@ -28,6 +28,7 @@ export default definePage(
 		layout,
 		labelPlacement = "before",
 		descriptions,
+		errorMessages,
 	}) {
 		const Control = controls[control];
 		const ControlLabel = asLabel ? "span" : Field.Label;
@@ -45,6 +46,11 @@ export default definePage(
 					{labelPlacement === "after" ? (
 						<ControlLabel>{control} example</ControlLabel>
 					) : null}
+					{errorMessages?.split(";").map((errorMessage) => (
+						<Field.ErrorMessage key={errorMessage}>
+							{errorMessage}
+						</Field.ErrorMessage>
+					))}
 					{descriptions?.split(";").map((description) => (
 						<Field.Description key={description}>
 							{description}
@@ -92,6 +98,7 @@ function VisualTestForTextControls() {
 			<Field.Root layout="inline">
 				<Field.Label>Text control</Field.Label>
 				<Field.Control render={<TextBox.Input />} />
+				<Field.ErrorMessage>Text error message</Field.ErrorMessage>
 				<Field.Description>Text description</Field.Description>
 			</Field.Root>
 
@@ -128,6 +135,7 @@ function VisualTestForCheckableControls() {
 			<Field.Root>
 				<Field.Control render={<Checkbox />} />
 				<Field.Label>Checkbox control</Field.Label>
+				<Field.ErrorMessage>Checkbox error message</Field.ErrorMessage>
 				<Field.Description>Checkbox description</Field.Description>
 			</Field.Root>
 			<Field.Root>

@@ -34,6 +34,10 @@
 	--✨border--disabled: var(--ids-color-border-glow-on-surface-disabled);
 
 	@layer base {
+		--🥝switch-thumb-color: var(--ids-color-bg-neutral-inverse);
+		--🥝switch-thumb-placement: start;
+		--🥝switch-thumb-aspect-ratio: 1 / 1;
+
 		appearance: none;
 		border: 1px solid transparent;
 		cursor: pointer;
@@ -59,10 +63,6 @@
 			var(--🌀switch-state--disabled, var(--✨border--disabled));
 		transition: all 150ms ease-out;
 		transition-property: background-color, border-color;
-
-		@media (forced-colors: active) {
-			border-color: CanvasText;
-		}
 
 		&::before,
 		&::after {
@@ -94,18 +94,15 @@
 				transition: aspect-ratio 150ms ease-out;
 				will-change: aspect-ratio;
 			}
+		}
 
-			@media (forced-colors: active) {
-				background-color: CanvasText;
-			}
+		@media (forced-colors: active) {
+			border-color: CanvasText;
+			--🥝switch-thumb-color: CanvasText;
 		}
 	}
 
 	@layer states {
-		--🥝switch-thumb-color: var(--ids-color-bg-neutral-inverse);
-		--🥝switch-thumb-placement: start;
-		--🥝switch-thumb-aspect-ratio: 1 / 1;
-
 		@media (any-hover: hover) {
 			&:where(:hover) {
 				--🌀switch-state: var(--🌀switch-state--hover);
@@ -124,10 +121,7 @@
 
 			@media (forced-colors: active) {
 				background-color: SelectedItem;
-
-				&::after {
-					background-color: SelectedItemText;
-				}
+				--🥝switch-thumb-color: SelectedItemText;
 			}
 		}
 
@@ -148,10 +142,7 @@
 			@media (forced-colors: active) {
 				background-color: Canvas;
 				border-color: GrayText;
-
-				&::after {
-					background-color: GrayText;
-				}
+				--🥝switch-thumb-color: GrayText;
 			}
 		}
 	}

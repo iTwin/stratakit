@@ -17,6 +17,7 @@ import { IconButton } from "./IconButton.js";
 import { Divider } from "./Divider.js";
 import { Button } from "./Button.js";
 import { useControlledState } from "./~hooks.js";
+import { VisuallyHidden } from "./VisuallyHidden.js";
 
 // ----------------------------------------------------------------------------
 
@@ -52,55 +53,62 @@ const ErrorRegionRoot = forwardRef<"div", ErrorRegionRootProps>(
 			onExpandedChange as React.Dispatch<React.SetStateAction<boolean>>,
 		);
 		return (
-			<PopoverProvider open={open} setOpen={setOpen}>
-				<Role.section
-					data-kiwi-expanded={open}
-					{...rest}
-					className={cx("🥝-error-region", props.className)}
-					ref={forwardedRef}
-					aria-labelledby={labelId}
-				>
-					<div className="🥝-error-region-container">
-						<PopoverDisclosure
-							className="🥝-error-region-header"
-							render={<Button variant="ghost" />}
-						>
-							<StatusWarning className="🥝-error-region-icon" />
-							<Text
-								id={labelId}
-								className="🥝-error-region-label"
-								variant="body-sm"
-							>
-								{label}
-							</Text>
-							<IconButton
-								inert
-								render={<span />}
-								label="Toggle"
-								icon={<ChevronDown />}
-								variant="ghost"
-							/>
-						</PopoverDisclosure>
-						<Popover
-							portal={false}
-							modal={false}
-							wrapperProps={{
-								style: {
-									position: undefined,
-									width: undefined,
-								},
-							}}
-							updatePosition={() => {}}
+			<>
+				<VisuallyHidden aria-live="polite" aria-atomic={true}>
+					{label}
+				</VisuallyHidden>
+				{label && (
+					<PopoverProvider open={open} setOpen={setOpen}>
+						<Role.section
+							data-kiwi-expanded={open}
+							{...rest}
+							className={cx("🥝-error-region", props.className)}
+							ref={forwardedRef}
 							aria-labelledby={labelId}
 						>
-							<Divider className="🥝-error-region-divider" presentational />
-							<div className="🥝-error-region-items" role="list">
-								{items}
+							<div className="🥝-error-region-container">
+								<PopoverDisclosure
+									className="🥝-error-region-header"
+									render={<Button variant="ghost" />}
+								>
+									<StatusWarning className="🥝-error-region-icon" />
+									<Text
+										id={labelId}
+										className="🥝-error-region-label"
+										variant="body-sm"
+									>
+										{label}
+									</Text>
+									<IconButton
+										inert
+										render={<span />}
+										label="Toggle"
+										icon={<ChevronDown />}
+										variant="ghost"
+									/>
+								</PopoverDisclosure>
+								<Popover
+									portal={false}
+									modal={false}
+									wrapperProps={{
+										style: {
+											position: undefined,
+											width: undefined,
+										},
+									}}
+									updatePosition={() => {}}
+									aria-labelledby={labelId}
+								>
+									<Divider className="🥝-error-region-divider" presentational />
+									<div className="🥝-error-region-items" role="list">
+										{items}
+									</div>
+								</Popover>
 							</div>
-						</Popover>
-					</div>
-				</Role.section>
-			</PopoverProvider>
+						</Role.section>
+					</PopoverProvider>
+				)}
+			</>
 		);
 	},
 );

@@ -845,42 +845,37 @@ function SandboxTree({
 
 	return (
 		<React.Suspense fallback="Loading...">
-			<VisuallyHidden aria-live="polite" aria-atomic={true}>
-				{errorMessage}
-			</VisuallyHidden>
-			{errorItems.length > 0 && (
-				<ErrorRegion.Root
-					label={errorMessage}
-					items={errorItems.map((item) => {
-						const treeItemId = `${treeId}-${item.id}`;
-						return (
-							<ErrorRegion.Item
-								key={item.id}
-								message={
-									<>
-										<span>Failed to create hierarchy for </span>
-										<Anchor href={`#${treeItemId}`}>{item.label}</Anchor>
-									</>
-								}
-								messageId={`${treeItemId}-message`}
-								actions={[
-									<Anchor
-										render={<button />}
-										key="retry"
-										onClick={() => {
-											setFailingIds((prev) => {
-												return prev.filter((id) => id !== item.id);
-											});
-										}}
-									>
-										Retry
-									</Anchor>,
-								]}
-							/>
-						);
-					})}
-				/>
-			)}
+			<ErrorRegion.Root
+				label={errorMessage}
+				items={errorItems.map((item) => {
+					const treeItemId = `${treeId}-${item.id}`;
+					return (
+						<ErrorRegion.Item
+							key={item.id}
+							message={
+								<>
+									<span>Failed to create hierarchy for </span>
+									<Anchor href={`#${treeItemId}`}>{item.label}</Anchor>
+								</>
+							}
+							messageId={`${treeItemId}-message`}
+							actions={[
+								<Anchor
+									render={<button />}
+									key="retry"
+									onClick={() => {
+										setFailingIds((prev) => {
+											return prev.filter((id) => id !== item.id);
+										});
+									}}
+								>
+									Retry
+								</Anchor>,
+							]}
+						/>
+					);
+				})}
+			/>
 			<Tree.Root className={styles.tree}>
 				{deferredItems.map((item) => {
 					const hasError = errorItems.find(

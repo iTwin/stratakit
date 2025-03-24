@@ -67,33 +67,31 @@ export default definePage(function Page({
 				maxBlockSize: 500,
 			}}
 		>
-			{renderError && (
-				<ErrorRegion.Root
-					label="1 issue found"
-					items={[
-						<ErrorRegion.Item
-							key="1.2"
-							message={
-								<>
-									<span>Failed to create hierarchy for </span>
-									<Anchor href={`#${errors[0]}`}>Item 1.2</Anchor>
-								</>
-							}
-							messageId={`${errors[0]}-message`}
-							onDismiss={() => setRenderError(false)}
-							actions={[
-								<Anchor
-									render={<button />}
-									key="retry"
-									onClick={() => setRenderError(false)}
-								>
-									Retry
-								</Anchor>,
-							]}
-						/>,
-					]}
-				/>
-			)}
+			<ErrorRegion.Root
+				label="1 issue found"
+				items={[
+					<ErrorRegion.Item
+						key="1.2"
+						message={
+							<>
+								<span>Failed to create hierarchy for </span>
+								<Anchor href={`#${errors[0]}`}>Item 1.2</Anchor>
+							</>
+						}
+						messageId={`${errors[0]}-message`}
+						onDismiss={() => setRenderError(false)}
+						actions={[
+							<Anchor
+								render={<button />}
+								key="retry"
+								onClick={() => setRenderError(false)}
+							>
+								Retry
+							</Anchor>,
+						]}
+					/>,
+				]}
+			/>
 			<Tree.Root style={{ maxInlineSize: overflow ? 300 : undefined }}>
 				{data.map((item, index, items) => {
 					const handleSelection = () => {

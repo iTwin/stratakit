@@ -3,7 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 import { definePage } from "~/~utils.tsx";
-import * as Table from "@itwin/itwinui-react-internal/src/bricks/Table.tsx";
+import { Table } from "@itwin/itwinui-react/bricks";
 import * as React from "react";
 
 export const handle = { title: "Table" };
@@ -11,7 +11,7 @@ export const handle = { title: "Table" };
 export default definePage(
 	function Page() {
 		return (
-			<Table.Root>
+			<Table.CustomTable>
 				<Table.Caption>Fruits and their colors</Table.Caption>
 				<Table.Header>
 					<Table.Row>
@@ -37,16 +37,21 @@ export default definePage(
 						<Table.Cell>Green</Table.Cell>
 					</Table.Row>
 				</Table.Body>
-			</Table.Root>
+			</Table.CustomTable>
 		);
 	},
-	{ visual: VisualTest, scroll: ScrollTest },
+	{
+		visual: VisualTest,
+		scroll: ScrollTest,
+		customTable: CustomTableTest,
+		htmlTable: HtmlTableTest,
+	},
 );
 
-function VisualTest() {
+function CustomTableTest() {
 	return (
-		<Table.Root>
-			<Table.Caption>Fruits and their colors</Table.Caption>
+		<Table.CustomTable>
+			<Table.Caption>Fruits and their colors (Table.CustomTable)</Table.Caption>
 			<Table.Header>
 				<Table.Row>
 					<Table.Cell>Fruit</Table.Cell>
@@ -71,7 +76,48 @@ function VisualTest() {
 					<Table.Cell>Green</Table.Cell>
 				</Table.Row>
 			</Table.Body>
-		</Table.Root>
+		</Table.CustomTable>
+	);
+}
+
+function HtmlTableTest() {
+	return (
+		<Table.HtmlTable>
+			<Table.Caption>Fruits and their colors (Table.HtmlTable)</Table.Caption>
+			<Table.Header>
+				<Table.Row>
+					<Table.Cell>Fruit</Table.Cell>
+					<Table.Cell>Color</Table.Cell>
+				</Table.Row>
+			</Table.Header>
+			<Table.Body>
+				<Table.Row>
+					<Table.Cell>Apple</Table.Cell>
+					<Table.Cell>Red</Table.Cell>
+				</Table.Row>
+				<Table.Row>
+					<Table.Cell>Orange</Table.Cell>
+					<Table.Cell>Orange</Table.Cell>
+				</Table.Row>
+				<Table.Row>
+					<Table.Cell>Kiwi</Table.Cell>
+					<Table.Cell>Golden brown</Table.Cell>
+				</Table.Row>
+				<Table.Row>
+					<Table.Cell>Watermelon</Table.Cell>
+					<Table.Cell>Green</Table.Cell>
+				</Table.Row>
+			</Table.Body>
+		</Table.HtmlTable>
+	);
+}
+
+function VisualTest() {
+	return (
+		<div style={{ display: "grid", gap: 20 }}>
+			<CustomTableTest />
+			<HtmlTableTest />
+		</div>
 	);
 }
 
@@ -93,7 +139,7 @@ function ScrollTest() {
 	);
 
 	return (
-		<Table.Root>
+		<Table.CustomTable>
 			<Table.Caption>Table caption</Table.Caption>
 			<Table.Header>
 				<Table.Row>
@@ -113,6 +159,6 @@ function ScrollTest() {
 					</Table.Row>
 				))}
 			</Table.Body>
-		</Table.Root>
+		</Table.CustomTable>
 	);
 }

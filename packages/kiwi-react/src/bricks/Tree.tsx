@@ -30,6 +30,7 @@ interface TreeProps extends BaseProps {}
  */
 const Tree = forwardRef<"div", TreeProps>((props, forwardedRef) => {
 	const composite = useCompositeStore({ orientation: "vertical" });
+
 	return (
 		<Role.div
 			role="tree"

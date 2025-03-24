@@ -63,14 +63,6 @@
 		}
 	}
 
-	@layer modifiers {
-		&:where([data-kiwi-error="true"]) {
-			--🥝icon-color: var(--ids-color-icon-attention-base);
-			--🥝tree-item-description-color: var(--ids-color-text-attention-base);
-			color: var(--ids-color-text-attention-base);
-		}
-	}
-
 	@layer states {
 		&:where([data-kiwi-selected="true"]) {
 			--🌀list-item-state: var(--🌀list-item-state--active);

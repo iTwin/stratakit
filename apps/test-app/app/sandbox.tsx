@@ -872,6 +872,11 @@ function SandboxTree({
 									Retry
 								</Anchor>,
 							]}
+							onDismiss={() => {
+								setFailingIds((prev) => {
+									return prev.filter((id) => id !== item.id);
+								});
+							}}
 						/>
 					);
 				})}

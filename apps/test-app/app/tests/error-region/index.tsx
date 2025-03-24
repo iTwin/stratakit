@@ -22,35 +22,37 @@ export default definePage(function Page({ items = 2 }) {
 		return `${errorsLength} issues found`;
 	}, [errorsLength]);
 	return (
-		<ErrorRegion.Root
-			label={label}
-			items={errors.map((error) => {
-				return (
-					<ErrorRegion.Item
-						key={error}
-						message={
-							<>
-								<span>Failed to create hierarchy for </span>
-								<Anchor href="#">Item {error}</Anchor>
-							</>
-						}
-						onDismiss={() =>
-							setErrors((prev) => prev.filter((e) => e !== error))
-						}
-						actions={[
-							<Anchor
-								render={<button />}
-								key="retry"
-								onClick={() =>
-									setErrors((prev) => prev.filter((e) => e !== error))
-								}
-							>
-								Retry
-							</Anchor>,
-						]}
-					/>
-				);
-			})}
-		/>
+		<div style={{ minHeight: 200 }}>
+			<ErrorRegion.Root
+				label={label}
+				items={errors.map((error) => {
+					return (
+						<ErrorRegion.Item
+							key={error}
+							message={
+								<>
+									<span>Failed to create hierarchy for </span>
+									<Anchor href="#">Item {error}</Anchor>
+								</>
+							}
+							onDismiss={() =>
+								setErrors((prev) => prev.filter((e) => e !== error))
+							}
+							actions={[
+								<Anchor
+									render={<button />}
+									key="retry"
+									onClick={() =>
+										setErrors((prev) => prev.filter((e) => e !== error))
+									}
+								>
+									Retry
+								</Anchor>,
+							]}
+						/>
+					);
+				})}
+			/>
+		</div>
 	);
 });

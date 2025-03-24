@@ -205,6 +205,11 @@
 			}
 		}
 
+		/* Reuse hover state when an associated popover is open. */
+		&:where([data-has-popover-open]) {
+			--🌀button-state: var(--🌀button-state--hover);
+		}
+
 		&:where(:active) {
 			--🌀button-state: var(--🌀button-state--pressed);
 		}

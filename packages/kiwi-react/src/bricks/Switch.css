@@ -95,11 +95,6 @@
 				will-change: aspect-ratio;
 			}
 		}
-
-		@media (forced-colors: active) {
-			border-color: CanvasText;
-			--🥝switch-thumb-color: CanvasText;
-		}
 	}
 
 	@layer states {
@@ -118,11 +113,6 @@
 					--🌀switch-state: var(--🌀switch-state--checked-hover);
 				}
 			}
-
-			@media (forced-colors: active) {
-				background-color: SelectedItem;
-				--🥝switch-thumb-color: SelectedItemText;
-			}
 		}
 
 		&:where(:active) {
@@ -138,12 +128,6 @@
 			&::after {
 				box-shadow: none;
 			}
-
-			@media (forced-colors: active) {
-				background-color: Canvas;
-				border-color: GrayText;
-				--🥝switch-thumb-color: GrayText;
-			}
 		}
 	}
 
@@ -156,5 +140,23 @@
 		--🌀switch-state--checked: var(--🌀switch-state,);
 		--🌀switch-state--checked-hover: var(--🌀switch-state,);
 		--🌀switch-state--disabled: var(--🌀switch-state,);
+	}
+}
+
+@media (forced-colors: active) {
+	.🥝-switch {
+		border-color: CanvasText;
+		--🥝switch-thumb-color: CanvasText;
+
+		&:where(:checked, [aria-checked="true"]) {
+			background-color: SelectedItem;
+			--🥝switch-thumb-color: SelectedItemText;
+		}
+
+		&:where([disabled], :disabled, [aria-disabled="true"]) {
+			background-color: Canvas;
+			border-color: GrayText;
+			--🥝switch-thumb-color: GrayText;
+		}
 	}
 }

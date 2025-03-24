@@ -12,7 +12,7 @@ import {
 	type FocusableProps,
 } from "./~utils.js";
 import { DisclosureArrow } from "./Icon.js";
-import { FieldControl } from "./Field.js";
+import { useFieldControlType } from "./Field.internal.js";
 
 const supportsHas = isBrowser && CSS?.supports?.("selector(:has(+ *))");
 
@@ -25,23 +25,41 @@ const HtmlSelectContext = React.createContext<
 /**
  * Compound component for a select element, which allows the user to select a value from a list of options.
  *
- * Works well with the `Field` and `Label` components.
- *
- * Example usage:
+ * Use with the `Field` components to automatically handle ID associations for
+ * labels and descriptions:
  * ```tsx
- * <Field>
- *   <Label>Select an option</Label>
- *   <Select.Root>
- *     <Select.HtmlSelect>
- *       <option value="1">Option 1</option>
- *       <option value="2">Option 2</option>
- *       <option value="3">Option 3</option>
- *     </Select.HtmlSelect>
- *   </Select.Root>
- * </Field>
+ * <Field.Root>
+ *   <Field.Label>Fruit</Field.Label>
+ *   <Field.Control
+ *     render={(controlProps) => (
+ *       <Select.Root>
+ *         <Select.HtmlSelect name="fruit" {...controlProps}>
+ *           <option value="kiwi">Kiwi</option>
+ *           <option value="mango">Mango</option>
+ *           <option value="papaya">Papaya</option>
+ *         </Select.HtmlSelect>
+ *       </Select.Root>
+ *     )}
+ *   />
+ * </Field.Root>
+ * ```
+ *
+ * Without the `Field` components you will need to manually associate labels,
+ * descriptions, etc.:
+ * ```tsx
+ * <Label htmlFor="fruit">Fruit</Label>
+ * <Description id="fruit-description">Something to include in a fruit salad.</Description>
+ * <Select.Root>
+ *   <Select.HtmlSelect id="fruit" aria-labelledby="fruit-description">
+ *     <option value="kiwi">Kiwi</option>
+ *     <option value="mango">Mango</option>
+ *     <option value="papaya">Papaya</option>
+ *   </Select.HtmlSelect>
+ * </Select.Root>
  * ```
  */
 const SelectRoot = forwardRef<"div", BaseProps>((props, forwardedRef) => {
+	useFieldControlType("textlike");
 	const [isHtmlSelect, setIsHtmlSelect] = React.useState(false);
 
 	return (
@@ -89,7 +107,7 @@ interface HtmlSelectProps extends HtmlSelectBaseProps {
  */
 const HtmlSelect = forwardRef<"select", HtmlSelectProps>(
 	(props, forwardedRef) => {
-		const { id, variant = "solid", ...rest } = props;
+		const { variant = "solid", ...rest } = props;
 
 		const setIsHtmlSelect = React.useContext(HtmlSelectContext);
 
@@ -102,18 +120,12 @@ const HtmlSelect = forwardRef<"select", HtmlSelectProps>(
 
 		return (
 			<>
-				<FieldControl
-					type="textlike"
-					id={id}
-					render={
-						<Role.select
-							{...rest}
-							className={cx("🥝-button", "🥝-select", props.className)}
-							data-kiwi-tone="neutral"
-							data-kiwi-variant={variant}
-							ref={forwardedRef}
-						/>
-					}
+				<Role.select
+					{...rest}
+					className={cx("🥝-button", "🥝-select", props.className)}
+					data-kiwi-tone="neutral"
+					data-kiwi-variant={variant}
+					ref={forwardedRef}
 				/>
 				<DisclosureArrow className="🥝-select-arrow" />
 			</>

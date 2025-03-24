@@ -93,16 +93,24 @@ test.describe("default", () => {
 			"Custom description.",
 		);
 	});
+
+	test("invalid with error message", async ({ page }) => {
+		const errorMessage = "Something is wrong";
+		await page.goto(`tests/field?errorMessages=${errorMessage}`);
+		const control = page.getByRole("textbox");
+		await expect(control).toHaveAttribute("aria-invalid", "true");
+		await expect(control).toHaveAccessibleDescription(errorMessage);
+	});
 });
 
 test.describe("@visual", () => {
 	test("text controls", async ({ page }) => {
-		await page.goto("/tests/field?visual&controlType=text");
+		await page.goto("/tests/field?visualTextlikeControls");
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
 
 	test("checkable controls", async ({ page }) => {
-		await page.goto("/tests/field?visual&controlType=checkable");
+		await page.goto("/tests/field?visualCheckableControls");
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
 });

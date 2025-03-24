@@ -6,3 +6,7 @@
 	display: grid;
 	grid-template-columns: 1fr auto;
 }
+
+.pushRight {
+	margin-inline-start: auto;
+}

@@ -5,10 +5,10 @@
 import * as React from "react";
 import cx from "classnames";
 import {
-	PopoverProvider,
-	PopoverDisclosure,
-	Popover,
-} from "@ariakit/react/popover";
+	DialogProvider,
+	DialogDisclosure,
+	Dialog,
+} from "@ariakit/react/dialog";
 import { Role } from "@ariakit/react/role";
 import { forwardRef, type BaseProps } from "./~utils.js";
 import { ChevronDown, Dismiss, StatusWarning } from "./Icon.js";
@@ -58,7 +58,7 @@ const ErrorRegionRoot = forwardRef<"div", ErrorRegionRootProps>(
 					{label}
 				</VisuallyHidden>
 				{label && (
-					<PopoverProvider open={open} setOpen={setOpen}>
+					<DialogProvider open={open} setOpen={setOpen}>
 						<Role.section
 							data-kiwi-expanded={open}
 							{...rest}
@@ -67,7 +67,7 @@ const ErrorRegionRoot = forwardRef<"div", ErrorRegionRootProps>(
 							aria-labelledby={labelId}
 						>
 							<div className="🥝-error-region-container">
-								<PopoverDisclosure
+								<DialogDisclosure
 									className="🥝-error-region-header"
 									render={<Button variant="ghost" />}
 								>
@@ -86,27 +86,16 @@ const ErrorRegionRoot = forwardRef<"div", ErrorRegionRootProps>(
 										icon={<ChevronDown />}
 										variant="ghost"
 									/>
-								</PopoverDisclosure>
-								<Popover
-									portal={false}
-									modal={false}
-									wrapperProps={{
-										style: {
-											position: undefined,
-											width: undefined,
-										},
-									}}
-									updatePosition={() => {}}
-									aria-labelledby={labelId}
-								>
+								</DialogDisclosure>
+								<Dialog portal={false} modal={false} aria-labelledby={labelId}>
 									<Divider className="🥝-error-region-divider" presentational />
 									<div className="🥝-error-region-items" role="list">
 										{items}
 									</div>
-								</Popover>
+								</Dialog>
 							</div>
 						</Role.section>
-					</PopoverProvider>
+					</DialogProvider>
 				)}
 			</>
 		);

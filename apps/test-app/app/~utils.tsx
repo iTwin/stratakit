@@ -7,9 +7,18 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 import cx from "classnames";
 import { useSearchParams, Link } from "react-router";
-import { Anchor } from "@itwin/itwinui-react/bricks";
+import { Anchor, IconButton } from "@itwin/itwinui-react/bricks";
 import * as ListItem from "../node_modules/@itwin/itwinui-react/src/bricks/~utils.ListItem.tsx";
 import { Role } from "@ariakit/react/role";
+
+import sun from "@itwin/itwinui-icons/sun.svg";
+import moon from "@itwin/itwinui-icons/moon.svg";
+
+// ----------------------------------------------------------------------------
+
+const isProduction = process.env.NODE_ENV === "production";
+
+// ----------------------------------------------------------------------------
 
 export type VariantProps = Record<string, string>;
 
@@ -106,23 +115,44 @@ function useNormalizedSearchParams() {
 
 // ----------------------------------------------------------------------------
 
-const ColorSchemeContext = React.createContext<"light" | "dark">("dark");
+/** undefined == system preference */
+type ColorScheme = "light" | "dark" | undefined;
 
-/** Makes the user's preferred color-scheme available to descendants (via `useColorScheme`). */
+const ColorSchemeContext = React.createContext<{
+	colorScheme: ColorScheme;
+	setColorScheme: React.Dispatch<React.SetStateAction<ColorScheme>>;
+}>({ colorScheme: undefined, setColorScheme: () => {} });
+
+/** Makes the color-scheme available to descendants (via `useColorScheme` and `useSetColorScheme`). */
 export function ColorSchemeProvider({
 	children,
 }: { children: React.ReactNode }) {
-	const prefersDark = useMediaQuery("(prefers-color-scheme: dark)");
-	const colorScheme = prefersDark === false ? "light" : "dark"; // dark by default (e.g. during SSR)
+	const [colorScheme, setColorScheme] = React.useState<ColorScheme>(undefined);
 
 	return (
-		<ColorSchemeContext value={colorScheme}>{children}</ColorSchemeContext>
+		<ColorSchemeContext
+			value={React.useMemo(
+				() => ({ colorScheme, setColorScheme }),
+				[colorScheme],
+			)}
+		>
+			{children}
+		</ColorSchemeContext>
 	);
 }
 
-/** Returns the user's preferred color-scheme (provided by `ColorSchemeProvider`). */
+/** Returns the current color-scheme (provided by `ColorSchemeProvider`) or the system preference. */
 export function useColorScheme() {
-	return React.use(ColorSchemeContext);
+	const { colorScheme } = React.use(ColorSchemeContext);
+	const prefersDark = useMediaQuery("(prefers-color-scheme: dark)");
+	const preferredColorScheme = prefersDark === false ? "light" : "dark"; // dark by default (e.g. during SSR)
+
+	return colorScheme || preferredColorScheme;
+}
+
+/** Allows changing the color-scheme returned by `useColorScheme`. */
+export function useSetColorScheme() {
+	return React.use(ColorSchemeContext).setColorScheme;
 }
 
 // ----------------------------------------------------------------------------
@@ -196,12 +226,12 @@ export function RightSidebar({
 	header,
 	children,
 	...props
-}: { header: React.ReactNode } & React.ComponentProps<"div">) {
+}: { header: React.ReactNode } & React.ComponentProps<"aside">) {
 	return (
-		<div {...props} className={cx(styles.rightSidebar, props.className)}>
+		<aside {...props} className={cx(styles.rightSidebar, props.className)}>
 			<div className={styles.rightSidebarHeader}>{header}</div>
 			<div className={styles.rightSidebarContent}>{children}</div>
-		</div>
+		</aside>
 	);
 }
 
@@ -258,4 +288,17 @@ export function VariantsList({
 
 // ----------------------------------------------------------------------------
 
-const isProduction = process.env.NODE_ENV === "production";
+export function ThemeSwitcher(props: React.ComponentProps<"button">) {
+	const colorScheme = useColorScheme();
+	const setColorScheme = useSetColorScheme();
+
+	return (
+		<IconButton
+			label="Toggle color scheme"
+			icon={colorScheme === "dark" ? sun : moon}
+			onClick={() => setColorScheme(colorScheme === "dark" ? "light" : "dark")}
+			variant="outline"
+			{...props}
+		/>
+	);
+}

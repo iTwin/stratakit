@@ -237,12 +237,6 @@
 	flex: 1;
 }
 
-.action {
-	&:where([aria-hidden="true"]) {
-		visibility: hidden;
-	}
-}
-
 .actionIcon {
 	position: relative;
 

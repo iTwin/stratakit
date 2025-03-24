@@ -26,12 +26,13 @@
 
 		@media (any-hover: hover) {
 			&:where(:not(:hover, :focus-visible, :has(:focus-visible), :has([data-has-popover-open]))) {
-				--🥝tree-item-all-actions-visibility: hidden;
+				/** Hide every action unless one of these conditions match. */
+				--🥝tree-item-action-visibility: hidden;
 			}
 
-			/* Without :has, we can't easily detect complex conditions, so unconditionally show actions container. */
+			/* Without :has, we can't easily detect complex conditions, so unconditionally show actions. */
 			@supports not selector(:has(+ *)) {
-				--🥝tree-item-all-actions-visibility: visible;
+				--🥝tree-item-action-visibility: visible;
 			}
 		}
 	}
@@ -100,7 +101,7 @@
 	}
 }
 
-.🥝-tree-item-actions:is(.🥝-list-item-decoration) {
+.🥝-tree-item-actions-container:is(.🥝-list-item-decoration) {
 	@layer base {
 		align-self: stretch;
 		position: sticky;
@@ -108,8 +109,11 @@
 		padding-inline-end: 4px;
 		background-color: var(--ids-color-bg-page-base);
 		display: inline-flex;
-		visibility: var(--🥝tree-item-all-actions-visibility, var(--🥝tree-item-action-visibility));
-		transition: visibility 16ms; /* This allows some time focus to "settle" before determining final visibility. */
+		/** If actions are made visible (by a parent), the actions container should also become visible. */
+		visibility: var(
+			--🥝tree-item-actions-container-visibility,
+			var(--🥝tree-item-action-visibility)
+		);
 
 		&::before {
 			position: absolute;
@@ -121,9 +125,9 @@
 	}
 
 	@layer modifiers {
-		/* Actions container should be made visible when any individual action is forcibly visible. */
+		/* Actions container should be additionally made visible when any individual action is forcibly visible. */
 		&:where(:has(.🥝-tree-item-action[data-kiwi-visible="true"])) {
-			--🥝tree-item-all-actions-visibility: visible;
+			--🥝tree-item-actions-container-visibility: visible;
 		}
 	}
 }
@@ -131,6 +135,7 @@
 .🥝-tree-item-action:is(.🥝-icon-button) {
 	@layer base {
 		visibility: var(--🥝tree-item-action-visibility);
+		transition: visibility 16ms; /* This allows some time focus to "settle" before determining final visibility. */
 	}
 
 	@layer modifiers {

@@ -45,6 +45,11 @@
 		&:where(th, td) {
 			block-size: var(--✨cell-height-min);
 		}
+
+		&:where(:not(caption, th, td)) {
+			display: flex;
+			align-items: center;
+		}
 	}
 }
 
@@ -59,7 +64,7 @@
 			var(--🌀table-cell-state--hover, var(--✨cell-bg--hover));
 		border-block-end: 1px solid var(--ids-color-border-neutral-muted);
 
-		&:where([role="columnheader"], [role="cell"]) {
+		&:where(:not(th, td)) {
 			column-gap: 0.5rem;
 			flex-grow: 1;
 			flex-basis: 4rem;

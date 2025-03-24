@@ -105,8 +105,13 @@ interface TreeItemRootProps extends Omit<BaseProps, "content" | "children"> {
 	 * ]}
 	 * ```
 	 *
-	 * Excess actions will get collapsed into an overflow menu. Normally, this is the third action and
-	 * onwards, except when `error` is set to true, in which case it's the second action and onwards.
+	 * Excess actions will automatically get collapsed into an overflow menu.
+	 * - Normally, the third action and onwards will overflow.
+	 * - When the `error` prop is set, the _second_ action and onwards will overflow.
+	 *
+	 * The actions are normally hidden until the treeitem is hovered or focused.
+	 * When the `error` prop is set, the actions will be made visible by default. The first
+	 * action slot can be used to display an error-related action.
 	 *
 	 * ```tsx
 	 * actions={[
@@ -115,9 +120,6 @@ interface TreeItemRootProps extends Omit<BaseProps, "content" | "children"> {
 	 *   <Tree.ItemAction key={…} icon={…} label={…} />,
 	 * ]}
 	 * ```
-	 *
-	 * The actions are normally hidden until the treeitem is hovered or focused.
-	 * When the `error` prop is set, the actions will be made visible by default.
 	 *
 	 * @experimental
 	 */
@@ -369,13 +371,14 @@ interface TreeItemActionProps extends Omit<BaseProps<"button">, "children"> {
 	icon?: string | React.JSX.Element;
 
 	/**
-	 * Controls the visibility of the action (when the action is displayed as icon-button).
+	 * Controls the visibility of the action (only when the action is displayed as icon-button).
 	 *
 	 * If `true`, the action is always visible.
 	 * If `false`, the action is hidden and becomes inaccessible, but still occupies space.
 	 *
 	 * By default, the action is shown only when the treeitem receives hover/focus. When the
-	 * treeitem has an `error`, the action will become always visible.
+	 * treeitem has an `error`, the action will become always visible (i.e. it will default
+	 * to `true` when `error` is set).
 	 */
 	visible?: boolean;
 }

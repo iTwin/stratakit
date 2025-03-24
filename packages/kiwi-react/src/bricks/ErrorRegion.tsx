@@ -14,7 +14,6 @@ import { forwardRef, type BaseProps } from "./~utils.js";
 import { ChevronDown, Dismiss, StatusWarning } from "./Icon.js";
 import { Text } from "./Text.js";
 import { IconButton } from "./IconButton.js";
-import { Anchor } from "./Anchor.js";
 import { Divider } from "./Divider.js";
 import { Button } from "./Button.js";
 import { useControlledState } from "./~hooks.js";
@@ -119,7 +118,7 @@ interface ErrorRegionItemProps extends Omit<BaseProps, "children"> {
 	 */
 	messageId?: string;
 	/**
-	 * The actions available for this item. Must be a list of `ErrorRegion.ItemAction` components.
+	 * The actions available for this item. Must be a list of anchors, each rendered as a button using `<Anchor render={<button />} />`.
 	 */
 	actions?: React.ReactNode[];
 	/**
@@ -163,23 +162,4 @@ DEV: ErrorRegionItem.displayName = "ErrorRegion.Item";
 
 // -------------------------------------------------------------------------
 
-interface ErrorRegionItemActionProps extends BaseProps<"button"> {}
-
-/**
- * An action for the `<ErrorRegion.Item>` component, to be passed into the `actions` prop.
- * The action is typically displayed as an anchor button just below the error message.
- */
-const ErrorRegionItemAction = forwardRef<"button", ErrorRegionItemActionProps>(
-	(props, forwardedRef) => {
-		return <Anchor render={<button {...props} />} ref={forwardedRef} />;
-	},
-);
-DEV: ErrorRegionItemAction.displayName = "ErrorRegion.ItemAction";
-
-// -------------------------------------------------------------------------
-
-export {
-	ErrorRegionRoot as Root,
-	ErrorRegionItem as Item,
-	ErrorRegionItemAction as ItemAction,
-};
+export { ErrorRegionRoot as Root, ErrorRegionItem as Item };

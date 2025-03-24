@@ -864,7 +864,8 @@ function SandboxTree({
 								}
 								messageId={`${treeItemId}-message`}
 								actions={[
-									<ErrorRegion.ItemAction
+									<Anchor
+										render={<button />}
 										key="retry"
 										onClick={() => {
 											setFailingIds((prev) => {
@@ -873,7 +874,7 @@ function SandboxTree({
 										}}
 									>
 										Retry
-									</ErrorRegion.ItemAction>,
+									</Anchor>,
 								]}
 							/>
 						);

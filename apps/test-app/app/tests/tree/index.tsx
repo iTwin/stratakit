@@ -82,12 +82,13 @@ export default definePage(function Page({
 							messageId={`${errors[0]}-message`}
 							onDismiss={() => setRenderError(false)}
 							actions={[
-								<ErrorRegion.ItemAction
+								<Anchor
+									render={<button />}
 									key="retry"
 									onClick={() => setRenderError(false)}
 								>
 									Retry
-								</ErrorRegion.ItemAction>,
+								</Anchor>,
 							]}
 						/>,
 					]}

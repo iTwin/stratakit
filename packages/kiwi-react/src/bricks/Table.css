@@ -45,11 +45,6 @@
 		&:where(th, td) {
 			block-size: var(--✨cell-height-min);
 		}
-
-		&:where(:not(caption, th, td)) {
-			display: flex;
-			align-items: center;
-		}
 	}
 }
 

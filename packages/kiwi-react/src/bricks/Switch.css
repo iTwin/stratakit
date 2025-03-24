@@ -34,10 +34,6 @@
 	--✨border--disabled: var(--ids-color-border-glow-on-surface-disabled);
 
 	@layer base {
-		--🥝switch-thumb-color: var(--ids-color-bg-neutral-inverse);
-		--🥝switch-thumb-placement: start;
-		--🥝switch-thumb-aspect-ratio: 1 / 1;
-
 		appearance: none;
 		border: 1px solid transparent;
 		cursor: pointer;
@@ -98,6 +94,10 @@
 	}
 
 	@layer states {
+		--🥝switch-thumb-color: var(--ids-color-bg-neutral-inverse);
+		--🥝switch-thumb-placement: start;
+		--🥝switch-thumb-aspect-ratio: 1 / 1;
+
 		@media (any-hover: hover) {
 			&:where(:hover) {
 				--🌀switch-state: var(--🌀switch-state--hover);

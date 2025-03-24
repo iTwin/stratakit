@@ -405,7 +405,6 @@ const TreeItemAction = forwardRef<"button", TreeItemActionProps>(
 			}
 
 			return (
-				// @ts-expect-error -- types fixed in #490
 				<DropdownMenu.Item
 					{...rest}
 					label={label}

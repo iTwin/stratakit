@@ -20,7 +20,7 @@ export default definePage(
 			</>
 		);
 	},
-	{ visual: VisualTest },
+	{ visual: VisualTest, dismissible: DismissibleTest },
 );
 
 function VisualTest() {
@@ -44,6 +44,7 @@ function VisualTest() {
 						if (variant === "solid" && tone === "neutral") {
 							return null;
 						}
+
 						const sentenceCaseTone =
 							tone.charAt(0).toUpperCase() + tone.slice(1).toLowerCase();
 						return (
@@ -51,8 +52,8 @@ function VisualTest() {
 								icon={placeholderIcon}
 								label={sentenceCaseTone}
 								key={tone}
-								tone={tone}
-								variant={variant}
+								tone={tone as "neutral"}
+								variant={variant as "outline"}
 								onDismiss={() => {
 									setIsDismissed(true);
 								}}
@@ -66,6 +67,25 @@ function VisualTest() {
 					})}
 				</div>
 			))}
+		</div>
+	);
+}
+
+function DismissibleTest() {
+	return (
+		<div style={{ display: "grid", gap: 4 }}>
+			<Banner
+				icon={placeholderIcon}
+				label="Title"
+				onDismiss={() => {
+					console.log("Dismissed");
+				}}
+			>
+				Message
+			</Banner>
+			<Banner icon={placeholderIcon} label="Title" dismissible={false}>
+				Message
+			</Banner>
 		</div>
 	);
 }

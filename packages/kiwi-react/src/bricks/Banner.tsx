@@ -19,7 +19,7 @@ import { IconButton } from "./IconButton.js";
 
 import { forwardRef, type BaseProps } from "./~utils.js";
 
-interface BannerProps extends BaseProps {
+type BannerProps = BaseProps & {
 	/**
 	 * Icon to be displayed inside the banner.
 	 *
@@ -34,24 +34,39 @@ interface BannerProps extends BaseProps {
 	label: string;
 
 	/**
-	 * The variant of the banner.
-	 *
-	 * @default "solid"
+	 * Whether the banner is dismissible. If `true`, a dismiss ("❌") button will be displayed.
+	 * @default true
 	 */
-	variant?: "outline" | "solid";
-	/**
-
-	/**
-	 * The tone of the banner.
-	 * @default "neutral"
-	 */
-	tone?: "neutral" | "info" | "positive" | "attention" | "critical";
+	dismissible?: boolean;
 
 	/**
 	 * Callback invoked when the dismiss ("❌") button is clicked.
 	 */
 	onDismiss?: () => void;
-}
+} & (
+		| {
+				/**
+				 * The tone of the banner.
+				 *
+				 * When `tone="neutral"`, only the `"outline"` `variant` is supported.
+				 *
+				 * @default "neutral"
+				 */
+				tone?: "neutral";
+				/**
+				 * The variant of the banner.
+				 *
+				 * When `tone="neutral"`, only the `"outline"` `variant` is supported.
+				 *
+				 * @default "outline"
+				 */
+				variant?: "outline";
+		  }
+		| {
+				tone: "info" | "positive" | "attention" | "critical";
+				variant?: "outline" | "solid";
+		  }
+	);
 
 /**
  * A banner used to alert the user of something.
@@ -66,8 +81,9 @@ interface BannerProps extends BaseProps {
 export const Banner = forwardRef<"div", BannerProps>((props, forwardedRef) => {
 	const {
 		children,
-		icon,
+		icon: iconProp,
 		label,
+		dismissible = true,
 		onDismiss,
 		tone = "neutral",
 		variant = "outline",
@@ -77,6 +93,33 @@ export const Banner = forwardRef<"div", BannerProps>((props, forwardedRef) => {
 	const baseId = React.useId();
 	const labelId = `${baseId}-label`;
 	const dismissIconId = `${baseId}-dismiss`;
+
+	const icon = React.useMemo(() => {
+		if (tone === "neutral" && !!iconProp) {
+			if (React.isValidElement(iconProp)) {
+				return iconProp;
+			}
+			if (typeof iconProp === "string") {
+				return <Icon href={iconProp} className="🥝-banner-icon" />;
+			}
+			return null;
+		}
+
+		if (tone === "info") {
+			return <Info className="🥝-banner-icon" />;
+		}
+		if (tone === "positive") {
+			return <StatusSuccess className="🥝-banner-icon" />;
+		}
+		if (tone === "attention") {
+			return <StatusWarning className="🥝-banner-icon" />;
+		}
+		if (tone === "critical") {
+			return <StatusError className="🥝-banner-icon" />;
+		}
+
+		return undefined;
+	}, [iconProp, tone]);
 
 	return (
 		<Role
@@ -88,41 +131,24 @@ export const Banner = forwardRef<"div", BannerProps>((props, forwardedRef) => {
 			ref={forwardedRef}
 		>
 			<div className={cx("🥝-banner-grid", props.className)}>
-				{tone === "neutral" && icon ? (
-					React.isValidElement(icon) ? (
-						icon
-					) : typeof icon === "string" ? (
-						<Icon
-							href={icon}
-							className={cx("🥝-banner-icon", props.className)}
-						/>
-					) : undefined
-				) : null}
-				{tone === "info" && (
-					<Info className={cx("🥝-banner-icon", props.className)} />
-				)}
-				{tone === "positive" && (
-					<StatusSuccess className={cx("🥝-banner-icon", props.className)} />
-				)}
-				{tone === "attention" && (
-					<StatusWarning className={cx("🥝-banner-icon", props.className)} />
-				)}
-				{tone === "critical" && (
-					<StatusError className={cx("🥝-banner-icon", props.className)} />
-				)}
+				{icon}
+
 				<span className={cx("🥝-banner-label", props.className)} id={labelId}>
 					{label}
 				</span>
+
 				<Text
 					variant="body-sm"
 					className={cx("🥝-banner-message", props.className)}
 				>
 					{children}
 				</Text>
+
 				<Button className={cx("🥝-banner-action-button", props.className)}>
 					Action
 				</Button>
-				{onDismiss && (
+
+				{dismissible && (
 					<IconButton
 						id={dismissIconId}
 						className={cx("🥝-banner-dismiss-button", props.className)}
@@ -133,7 +159,7 @@ export const Banner = forwardRef<"div", BannerProps>((props, forwardedRef) => {
 						icon={<Dismiss />}
 						onClick={onDismiss}
 					/>
-				)}{" "}
+				)}
 			</div>
 		</Role>
 	);

@@ -68,7 +68,7 @@ export default definePage(function Page({
 			}}
 		>
 			<ErrorRegion.Root
-				label="1 issue found"
+				label={renderError ? "1 issue found" : undefined}
 				items={[
 					<ErrorRegion.Item
 						key="1.2"

@@ -89,7 +89,14 @@ export const Banner = forwardRef<"div", BannerProps>((props, forwardedRef) => {
 		>
 			<div className={cx("🥝-banner-grid", props.className)}>
 				{tone === "neutral" && icon ? (
-					<Icon href={icon} className={cx("🥝-banner-icon", props.className)} />
+					React.isValidElement(icon) ? (
+						icon
+					) : typeof icon === "string" ? (
+						<Icon
+							href={icon}
+							className={cx("🥝-banner-icon", props.className)}
+						/>
+					) : undefined
 				) : null}
 				{tone === "info" && (
 					<Info className={cx("🥝-banner-icon", props.className)} />

@@ -27,7 +27,7 @@ interface ErrorRegionRootProps extends Omit<BaseProps, "children"> {
 	 */
 	label?: React.ReactNode;
 	/**
-	 * A list of error items where each item describes an individual error in a tree. Must be a list of `ErrorRegion.Item` components.
+	 * A list of error items where each item describes an individual error. Must be a list of `ErrorRegion.Item` components.
 	 */
 	items?: React.ReactNode[];
 	/**
@@ -35,7 +35,7 @@ interface ErrorRegionRootProps extends Omit<BaseProps, "children"> {
 	 */
 	expanded?: boolean;
 	/**
-	 * Callback fired when the tree error is expanded.
+	 * Callback fired when the error is expanded.
 	 *
 	 * Should be used with the `expanded` prop.
 	 */
@@ -107,7 +107,7 @@ DEV: ErrorRegionRoot.displayName = "ErrorRegion.Root";
 
 interface ErrorRegionItemProps extends Omit<BaseProps, "children"> {
 	/**
-	 * The error message. Use `Anchor` component to link to the associated tree item.
+	 * The error message. Consumers might consider using `Anchor` component to link to the associated element in the UI.
 	 */
 	message?: React.ReactNode;
 	/**
@@ -119,7 +119,7 @@ interface ErrorRegionItemProps extends Omit<BaseProps, "children"> {
 	 */
 	actions?: React.ReactNode[];
 	/**
-	 * Callback fired when the tree error item is dismissed.
+	 * Callback fired when the error item is dismissed.
 	 */
 	onDismiss?: () => void;
 }

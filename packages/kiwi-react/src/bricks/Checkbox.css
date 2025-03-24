@@ -92,10 +92,6 @@
 	}
 
 	@layer states {
-		@media (forced-colors: active) {
-			border: 1px solid CanvasText;
-		}
-
 		@media (any-hover: hover) {
 			&:where(:hover) {
 				--🌀checkbox-visual-state: var(--🌀checkbox-visual-state--hover);
@@ -118,35 +114,11 @@
 			--🌀checkbox-aria-state: var(--🌀checkbox-aria-state--indeterminate);
 		}
 
-		&:where(
-				:checked,
-				[type="checkbox"]:indeterminate,
-				[aria-checked="true"],
-				[aria-checked="mixed"]
-			) {
-			@media (forced-colors: active) {
-				background-color: SelectedItem;
-
-				&::after {
-					background-color: SelectedItemText;
-				}
-			}
-		}
-
 		&:where([disabled], :disabled, [aria-disabled="true"]) {
 			--🌀checkbox-visual-state: var(--🌀checkbox-visual-state--disabled);
 			--🥝checkbox-color-svg: var(--ids-color-icon-neutral-disabled);
 			cursor: not-allowed;
 			box-shadow: none;
-
-			@media (forced-colors: active) {
-				background-color: Canvas;
-				border-color: GrayText;
-
-				&::after {
-					background-color: GrayText;
-				}
-			}
 		}
 	}
 
@@ -164,5 +136,33 @@
 		--🌀checkbox-aria-state--unchecked: var(--🌀checkbox-aria-state,);
 		--🌀checkbox-aria-state--checked: var(--🌀checkbox-aria-state,);
 		--🌀checkbox-aria-state--indeterminate: var(--🌀checkbox-aria-state,);
+	}
+}
+
+@media (forced-colors: active) {
+	.🥝-checkbox {
+		border: 1px solid CanvasText;
+
+		&:where(
+				:checked,
+				[type="checkbox"]:indeterminate,
+				[aria-checked="true"],
+				[aria-checked="mixed"]
+			) {
+			background-color: SelectedItem;
+
+			&::after {
+				background-color: SelectedItemText;
+			}
+		}
+
+		&:where([disabled], :disabled, [aria-disabled="true"]) {
+			background-color: Canvas;
+			border-color: GrayText;
+
+			&::after {
+				background-color: GrayText;
+			}
+		}
 	}
 }

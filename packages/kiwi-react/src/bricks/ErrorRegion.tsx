@@ -23,7 +23,9 @@ import { VisuallyHidden } from "./VisuallyHidden.js";
 
 interface ErrorRegionRootProps extends Omit<BaseProps, "children"> {
 	/**
-	 * Label for the error header indicating the number of errors displayed.
+	 * Label for the error header, usually indicating the number of errors displayed.
+	 *
+	 * Use `undefined` if you don't want to display errors rather than conditionally rendering the component.
 	 */
 	label?: React.ReactNode;
 	/**

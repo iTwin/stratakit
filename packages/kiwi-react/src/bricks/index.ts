@@ -13,6 +13,7 @@ export { Checkbox } from "./Checkbox.js";
 export { Chip } from "./Chip.js";
 export { Description } from "./Description.js";
 export * as DropdownMenu from "./DropdownMenu.js";
+export * as unstable_ErrorRegion from "./ErrorRegion.js";
 export { Divider } from "./Divider.js";
 export { Icon } from "./Icon.js";
 export { IconButton } from "./IconButton.js";

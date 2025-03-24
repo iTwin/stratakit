@@ -17,6 +17,7 @@
 @import "./Description.css" layer(itwinui.components);
 @import "./Divider.css" layer(itwinui.components);
 @import "./DropdownMenu.css" layer(itwinui.components);
+@import "./ErrorRegion.css" layer(itwinui.components);
 @import "./IconButton.css" layer(itwinui.components);
 @import "./Kbd.css" layer(itwinui.components);
 @import "./Label.css" layer(itwinui.components);
@@ -32,7 +33,6 @@
 @import "./TextBox.css" layer(itwinui.components);
 @import "./Tooltip.css" layer(itwinui.components);
 @import "./Tree.css" layer(itwinui.components);
-@import "./TreeError.css" layer(itwinui.components);
 @import "./TreeItem.css" layer(itwinui.components);
 
 @import "./Field.css" layer(itwinui.components);

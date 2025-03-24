@@ -6,11 +6,6 @@ import cx from "classnames";
 import { Role } from "@ariakit/react/role";
 import { useCompositeStore, Composite } from "@ariakit/react/composite";
 import { forwardRef, type BaseProps } from "./~utils.js";
-import {
-	Root as TreeError,
-	Item as TreeErrorItem,
-	ItemAction as TreeErrorItemAction,
-} from "./TreeError.js";
 import { Root as TreeItemRoot, Action as TreeItemAction } from "./TreeItem.js";
 
 // ----------------------------------------------------------------------------
@@ -51,11 +46,4 @@ DEV: Tree.displayName = "Tree.Root";
 
 // ----------------------------------------------------------------------------
 
-export {
-	Tree as Root,
-	TreeItemRoot as Item,
-	TreeItemAction as ItemAction,
-	TreeError as Error,
-	TreeErrorItem as ErrorItem,
-	TreeErrorItemAction as ErrorItemAction,
-};
+export { Tree as Root, TreeItemRoot as Item, TreeItemAction as ItemAction };

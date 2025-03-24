@@ -19,6 +19,7 @@ import {
 	Text,
 	TextBox,
 	Tree,
+	unstable_ErrorRegion as ErrorRegion,
 	VisuallyHidden,
 } from "@itwin/itwinui-react/bricks";
 import { useSearchParams, type MetaFunction } from "react-router";
@@ -848,12 +849,12 @@ function SandboxTree({
 				{errorMessage}
 			</VisuallyHidden>
 			{errorItems.length > 0 && (
-				<Tree.Error
+				<ErrorRegion.Root
 					label={errorMessage}
 					items={errorItems.map((item) => {
 						const treeItemId = `${treeId}-${item.id}`;
 						return (
-							<Tree.ErrorItem
+							<ErrorRegion.Item
 								key={item.id}
 								message={
 									<>
@@ -863,7 +864,7 @@ function SandboxTree({
 								}
 								messageId={`${treeItemId}-message`}
 								actions={[
-									<Tree.ErrorItemAction
+									<ErrorRegion.ItemAction
 										key="retry"
 										onClick={() => {
 											setFailingIds((prev) => {
@@ -872,7 +873,7 @@ function SandboxTree({
 										}}
 									>
 										Retry
-									</Tree.ErrorItemAction>,
+									</ErrorRegion.ItemAction>,
 								]}
 							/>
 						);

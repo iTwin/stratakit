@@ -4,7 +4,12 @@
  *--------------------------------------------------------------------------------------------*/
 import { definePage } from "~/~utils.tsx";
 import * as React from "react";
-import { Tree, Icon, Anchor } from "@itwin/itwinui-react/bricks";
+import {
+	Tree,
+	Icon,
+	Anchor,
+	unstable_ErrorRegion as ErrorRegion,
+} from "@itwin/itwinui-react/bricks";
 import placeholderIcon from "@itwin/itwinui-icons/placeholder.svg";
 import unlockIcon from "@itwin/itwinui-icons/lock-unlocked.svg";
 import showIcon from "@itwin/itwinui-icons/visibility-show.svg";
@@ -63,10 +68,10 @@ export default definePage(function Page({
 			}}
 		>
 			{renderError && (
-				<Tree.Error
+				<ErrorRegion.Root
 					label="1 issue found"
 					items={[
-						<Tree.ErrorItem
+						<ErrorRegion.Item
 							key="1.2"
 							message={
 								<>
@@ -77,12 +82,12 @@ export default definePage(function Page({
 							messageId={`${errors[0]}-message`}
 							onDismiss={() => setRenderError(false)}
 							actions={[
-								<Tree.ErrorItemAction
+								<ErrorRegion.ItemAction
 									key="retry"
 									onClick={() => setRenderError(false)}
 								>
 									Retry
-								</Tree.ErrorItemAction>,
+								</ErrorRegion.ItemAction>,
 							]}
 						/>,
 					]}

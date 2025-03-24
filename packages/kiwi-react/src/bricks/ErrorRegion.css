@@ -2,7 +2,7 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-.🥝-tree-error {
+.🥝-error-region {
 	--✨padding: 4px;
 
 	@layer base {
@@ -17,18 +17,18 @@
 	@layer states {
 		&:where([data-kiwi-expanded="true"]) {
 			--🥝chevron-down-rotate: -0.5turn;
-			--🥝tree-error-container-padding-block-end: 12px;
+			--🥝error-container-padding-block-end: 12px;
 		}
 	}
 }
 
-.🥝-tree-error-container {
+.🥝-error-region-container {
 	@layer base {
 		display: flex;
 		flex-direction: column;
 
 		padding-block-start: 4px;
-		padding-block-end: var(--🥝tree-error-container-padding-block-end, 4px);
+		padding-block-end: var(--🥝error-container-padding-block-end, 4px);
 
 		border: 1px solid var(--ids-color-border-attention-base);
 		border-radius: 8px;
@@ -37,7 +37,7 @@
 	}
 }
 
-.🥝-tree-error-header {
+.🥝-error-region-header {
 	@layer base {
 		padding-inline-start: 8px;
 		padding-inline-end: 4px;
@@ -45,20 +45,20 @@
 	}
 }
 
-.🥝-tree-error-icon {
+.🥝-error-region-icon {
 	@layer base {
 		--🥝icon-color: var(--ids-color-icon-attention-base);
 	}
 }
 
-.🥝-tree-error-label {
+.🥝-error-region-label {
 	@layer base {
 		flex: 1;
 		text-align: start;
 	}
 }
 
-.🥝-tree-error-divider:is(.🥝-divider) {
+.🥝-error-region-divider:is(.🥝-divider) {
 	@layer base {
 		/* TODO: Divider.css is not using layers */
 		background-color: var(--ids-color-border-page-base);
@@ -66,7 +66,7 @@
 	}
 }
 
-.🥝-tree-error-items {
+.🥝-error-region-items {
 	@layer base {
 		display: flex;
 		flex-direction: column;
@@ -78,7 +78,7 @@
 	}
 }
 
-.🥝-tree-error-item {
+.🥝-error-region-item {
 	@layer base {
 		display: grid;
 		grid-template-columns: 1fr auto;
@@ -87,20 +87,20 @@
 	}
 }
 
-.🥝-tree-error-item-message {
+.🥝-error-region-item-message {
 	@layer base {
 		grid-row: 1;
 		align-self: center;
 	}
 }
 
-.🥝-tree-error-item-dismiss {
+.🥝-error-region-item-dismiss {
 	@layer base {
 		grid-row: 1;
 	}
 }
 
-.🥝-tree-error-item-actions {
+.🥝-error-region-item-actions {
 	@layer base {
 		grid-row: 2;
 	}

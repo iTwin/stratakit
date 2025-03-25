@@ -15,13 +15,9 @@ export const links: LinksFunction = () => [
 	{ rel: "stylesheet", href: testStyles },
 ];
 
-export default definePage(function Page({ "active-state": isActive = false }) {
+export default definePage(function Page() {
 	return (
-		<div
-			role="list"
-			style={{ display: "grid", gap: 4 }}
-			className={isActive ? "force-state-active" : ""}
-		>
+		<div role="list" style={{ display: "grid", gap: 4 }}>
 			<ListItem.Root>Apple</ListItem.Root>
 			<ListItem.Root>Cherry</ListItem.Root>
 			<ListItem.Root>

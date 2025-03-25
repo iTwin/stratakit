@@ -33,11 +33,6 @@ test.describe("@visual", () => {
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
 
-	test("active", async ({ page }) => {
-		await page.goto("/tests/list?active-state");
-		await expect(page.locator("body")).toHaveScreenshot();
-	});
-
 	test("forced-colors default", async ({ page, browserName }) => {
 		test.skip(
 			browserName === "webkit",
@@ -69,16 +64,6 @@ test.describe("@visual", () => {
 		const item = page.getByText("Cherry");
 		await item.hover();
 		await page.mouse.down();
-		await page.emulateMedia({ forcedColors: "active" });
-		await expect(page.locator("body")).toHaveScreenshot();
-	});
-
-	test("forced-colors active", async ({ page, browserName }) => {
-		test.skip(
-			browserName === "webkit",
-			"Webkit does not support forced-colors",
-		);
-		await page.goto("/tests/list?active-state");
 		await page.emulateMedia({ forcedColors: "active" });
 		await expect(page.locator("body")).toHaveScreenshot();
 	});

@@ -6,6 +6,7 @@
 	--✨padding: 4px;
 
 	@layer base {
+		position: relative;
 		z-index: 1;
 	}
 

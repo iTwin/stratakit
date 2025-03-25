@@ -14,7 +14,6 @@ import { Toolbar } from "@ariakit/react/toolbar";
 import * as ListItem from "./~utils.ListItem.js";
 import { IconButton } from "./IconButton.js";
 import * as DropdownMenu from "./DropdownMenu.js";
-import { DropdownMenuContentContext } from "./DropdownMenu.internal.js";
 import { Icon, StatusWarning, MoreHorizontal } from "./Icon.js";
 import { forwardRef, type BaseProps } from "./~utils.js";
 import { useEventHandlers, useSafeContext } from "./~hooks.js";
@@ -348,6 +347,8 @@ DEV: TreeItemActions.displayName = "TreeItemActions";
 
 const arrowKeys = ["ArrowDown", "ArrowUp", "ArrowLeft", "ArrowRight"];
 
+const TreeItemActionsOverflowMenuContext = React.createContext(false);
+
 /**
  * Displays overflowing actions inside a dropdown menu.
  * @private
@@ -380,7 +381,9 @@ function TreeItemActionsOverflowMenu({ children }: React.PropsWithChildren) {
 					}}
 					render={<TreeItemAction label="More" icon={<MoreHorizontal />} />}
 				/>
-				<DropdownMenu.Content>{children}</DropdownMenu.Content>
+				<TreeItemActionsOverflowMenuContext.Provider value={true}>
+					<DropdownMenu.Content>{children}</DropdownMenu.Content>
+				</TreeItemActionsOverflowMenuContext.Provider>
 			</DropdownMenu.Root>
 		</PopoverProvider>
 	);
@@ -438,10 +441,10 @@ const TreeItemAction = forwardRef<"button", TreeItemActionProps>(
 		} = props;
 
 		// return a MenuItem if inside a Menu
-		if (React.useContext(DropdownMenuContentContext)) {
+		if (React.useContext(TreeItemActionsOverflowMenuContext)) {
 			DEV: {
 				if (visible !== undefined)
-					console.error("overflowing actions should not use `visible` prop");
+					console.warn("overflowing actions should not use `visible` prop");
 			}
 
 			return (

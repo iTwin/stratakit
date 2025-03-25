@@ -28,7 +28,6 @@ import {
 } from "@ariakit/react/menu";
 import { useStoreState } from "@ariakit/react/store";
 import { predefinedSymbols, type PredefinedSymbol } from "./Kbd.internal.js";
-import { DropdownMenuContentContext } from "./DropdownMenu.internal.js";
 import { usePopoverContext } from "@ariakit/react/popover";
 
 // ----------------------------------------------------------------------------
@@ -96,18 +95,16 @@ const DropdownMenuContent = forwardRef<"div", DropdownMenuContentProps>(
 		const popover = usePopoverApi(useMenuContext());
 
 		return (
-			<DropdownMenuContentContext.Provider value={true}>
-				<Menu
-					portal
-					unmountOnHide
-					{...props}
-					gutter={4}
-					style={{ ...popover.style, ...props.style }}
-					wrapperProps={popover.wrapperProps}
-					className={cx("🥝-dropdown-menu", props.className)}
-					ref={forwardedRef}
-				/>
-			</DropdownMenuContentContext.Provider>
+			<Menu
+				portal
+				unmountOnHide
+				{...props}
+				gutter={4}
+				style={{ ...popover.style, ...props.style }}
+				wrapperProps={popover.wrapperProps}
+				className={cx("🥝-dropdown-menu", props.className)}
+				ref={forwardedRef}
+			/>
 		);
 	},
 );

@@ -15,7 +15,7 @@ import { ChevronDown, Dismiss, StatusWarning } from "./Icon.js";
 import { Text } from "./Text.js";
 import { IconButton } from "./IconButton.js";
 import { Button } from "./Button.js";
-import { useControlledState } from "./~hooks.js";
+import { useControlledState, useEventHandlers } from "./~hooks.js";
 import { VisuallyHidden } from "./VisuallyHidden.js";
 
 // ----------------------------------------------------------------------------
@@ -135,6 +135,27 @@ interface ErrorRegionItemProps extends Omit<BaseProps, "children"> {
 const ErrorRegionItem = forwardRef<"div", ErrorRegionItemProps>(
 	(props, forwardedRef) => {
 		const { message, messageId, actions, onDismiss, ...rest } = props;
+		const onDismissClick = useEventHandlers<
+			React.MouseEvent<HTMLButtonElement, MouseEvent>
+		>(props.onDismiss, (e) => {
+			const dismiss = e.currentTarget;
+			const item = dismiss.closest(".🥝-error-region-item");
+			const prevItem = item?.previousElementSibling;
+			const prevDismiss = prevItem?.querySelector(
+				".🥝-error-region-item-dismiss",
+			);
+			if (prevDismiss instanceof HTMLElement) {
+				prevDismiss.focus();
+				return;
+			}
+
+			const region = dismiss.closest(".🥝-error-region");
+			const header = region?.querySelector(".🥝-error-region-header");
+			if (header instanceof HTMLElement) {
+				header.focus();
+				return;
+			}
+		});
 		return (
 			<Role.div
 				{...rest}
@@ -155,7 +176,7 @@ const ErrorRegionItem = forwardRef<"div", ErrorRegionItemProps>(
 						variant="ghost"
 						label="Dismiss"
 						icon={<Dismiss />}
-						onClick={onDismiss}
+						onClick={onDismissClick}
 					/>
 				)}
 				<div className="🥝-error-region-item-actions">{actions}</div>

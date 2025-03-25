@@ -39,7 +39,7 @@
 
 		border: 1px solid var(--ids-color-border-attention-base);
 		border-radius: 8px;
-		background-color: var(--ids-color-bg-elevation-base, #25262a);
+		background-color: var(--ids-color-bg-elevation-base);
 		box-shadow: var(--ids-shadow-surface-sm);
 	}
 }

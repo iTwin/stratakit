@@ -65,10 +65,9 @@
 	}
 }
 
-.🥝-error-region-divider:is(.🥝-divider) {
+.🥝-error-region-dialog {
 	@layer base {
-		/* TODO: Divider.css is not using layers */
-		background-color: var(--ids-color-border-page-base);
+		border-block-start: 1px solid var(--ids-color-border-page-base);
 		margin-block-start: 4px;
 	}
 }

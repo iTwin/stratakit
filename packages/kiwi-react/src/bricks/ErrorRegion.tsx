@@ -14,7 +14,6 @@ import { forwardRef, type BaseProps } from "./~utils.js";
 import { ChevronDown, Dismiss, StatusWarning } from "./Icon.js";
 import { Text } from "./Text.js";
 import { IconButton } from "./IconButton.js";
-import { Divider } from "./Divider.js";
 import { Button } from "./Button.js";
 import { useControlledState } from "./~hooks.js";
 import { VisuallyHidden } from "./VisuallyHidden.js";
@@ -93,8 +92,12 @@ const ErrorRegionRoot = forwardRef<"div", ErrorRegionRootProps>(
 									variant="ghost"
 								/>
 							</DialogDisclosure>
-							<Dialog portal={false} modal={false} aria-labelledby={labelId}>
-								<Divider className="🥝-error-region-divider" presentational />
+							<Dialog
+								className="🥝-error-region-dialog"
+								portal={false}
+								modal={false}
+								aria-labelledby={labelId}
+							>
 								<div className="🥝-error-region-items" role="list">
 									{items}
 								</div>

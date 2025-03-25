@@ -96,6 +96,7 @@ const ErrorRegionRoot = forwardRef<"div", ErrorRegionRootProps>(
 								className="🥝-error-region-dialog"
 								portal={false}
 								modal={false}
+								autoFocusOnShow={false}
 								aria-labelledby={labelId}
 							>
 								<div className="🥝-error-region-items" role="list">

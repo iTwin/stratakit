@@ -329,26 +329,63 @@ const TreeItemActions = forwardRef<"div", BaseProps>((props, forwardedRef) => {
 			onClick={useEventHandlers(props.onClick, (e) => e.stopPropagation())}
 			onKeyDown={useEventHandlers(props.onKeyDown, (e) => e.stopPropagation())}
 			className={cx("🥝-tree-item-actions-container", props.className)}
+			focusLoop={false}
 			ref={forwardedRef}
 		>
 			{actions.slice(0, limit - 1)}
 			{actions.length === limit ? actions[limit - 1] : null}
 			{actions.length > limit && (
-				<PopoverProvider placement="right-start">
-					<DropdownMenu.Root>
-						<DropdownMenu.Button
-							render={<TreeItemAction label="More" icon={<MoreHorizontal />} />}
-						/>
-						<DropdownMenu.Content>
-							{actions.slice(limit - 1)}
-						</DropdownMenu.Content>
-					</DropdownMenu.Root>
-				</PopoverProvider>
+				<TreeItemActionsOverflowMenu>
+					{actions.slice(limit - 1)}
+				</TreeItemActionsOverflowMenu>
 			)}
 		</Toolbar>
 	);
 });
 DEV: TreeItemActions.displayName = "TreeItemActions";
+
+// ----------------------------------------------------------------------------
+
+const arrowKeys = ["ArrowDown", "ArrowUp", "ArrowLeft", "ArrowRight"];
+
+/**
+ * Displays overflowing actions inside a dropdown menu.
+ * @private
+ */
+function TreeItemActionsOverflowMenu({ children }: React.PropsWithChildren) {
+	const [open, setOpen] = React.useState(false);
+	const isArrowKeyPressed = React.useRef(false);
+
+	return (
+		<PopoverProvider placement="right-start">
+			<DropdownMenu.Root
+				open={open}
+				setOpen={React.useCallback((value: boolean) => {
+					// Do not open the menu using arrow keys because it conflicts with the toolbar's arrow key navigation
+					if (value && !isArrowKeyPressed.current) {
+						setOpen(true);
+					} else {
+						setOpen(false);
+					}
+				}, [])}
+			>
+				<DropdownMenu.Button
+					onKeyDown={(e) => {
+						if (arrowKeys.includes(e.key)) {
+							isArrowKeyPressed.current = true;
+						}
+						queueMicrotask(() => {
+							isArrowKeyPressed.current = false;
+						});
+					}}
+					render={<TreeItemAction label="More" icon={<MoreHorizontal />} />}
+				/>
+				<DropdownMenu.Content>{children}</DropdownMenu.Content>
+			</DropdownMenu.Root>
+		</PopoverProvider>
+	);
+}
+DEV: TreeItemActionsOverflowMenu.displayName = "TreeItemActionsOverflowMenu";
 
 // ----------------------------------------------------------------------------
 

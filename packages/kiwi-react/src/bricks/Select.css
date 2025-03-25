@@ -25,12 +25,12 @@
 			appearance: none;
 			--🥝button-padding-inline: var(--✨padding-inline-start) var(--✨padding-inline-end);
 			--🥝ghost-inline-offset: var(--✨padding-inline-start);
+
+			> option {
+				background-color: var(--ids-color-bg-neutral-base);
+			}
 		}
 	}
-}
-
-.🥝-select > option {
-	background-color: var(--ids-color-bg-neutral-base);
 }
 
 .🥝-select-arrow:is(.🥝-disclosure-arrow) {

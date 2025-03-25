@@ -274,4 +274,9 @@
 	background-color: var(--_color--default, CurrentColor) var(--_color--blue, #0005f9)
 		var(--_color--gray, #808080) var(--_color--green, #15c72f) var(--_color--purple, #8c00ff)
 		var(--_color--red, #fe0f17) var(--_color--teal, #1cfffe) var(--_color--yellow, #ffff43);
+	forced-color-adjust: none;
+
+	@media (forced-colors: active) {
+		border-color: currentColor;
+	}
 }

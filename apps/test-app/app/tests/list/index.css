@@ -4,4 +4,10 @@
  *--------------------------------------------------------------------------------------------*/
 .force-state-active .🥝-list-item {
 	--🌀list-item-state: var(--🌀list-item-state--active);
+
+	@media (forced-colors: active) {
+		forced-color-adjust: none;
+		background-color: SelectedItem;
+		color: SelectedItemText;
+	}
 }

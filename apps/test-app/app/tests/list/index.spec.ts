@@ -37,6 +37,51 @@ test.describe("@visual", () => {
 		await page.goto("/tests/list?active-state");
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
+
+	test("forced-colors default", async ({ page, browserName }) => {
+		test.skip(
+			browserName === "webkit",
+			"Webkit does not support forced-colors",
+		);
+		await page.goto("/tests/list");
+		await page.emulateMedia({ forcedColors: "active" });
+		await expect(page.locator("body")).toHaveScreenshot();
+	});
+
+	test("forced-colors hovered", async ({ page, browserName }) => {
+		test.skip(
+			browserName === "webkit",
+			"Webkit does not support forced-colors",
+		);
+		await page.goto("/tests/list");
+		const item = page.getByText("Cherry");
+		await item.hover();
+		await page.emulateMedia({ forcedColors: "active" });
+		await expect(page.locator("body")).toHaveScreenshot();
+	});
+
+	test("forced-colors pressed", async ({ page, browserName }) => {
+		test.skip(
+			browserName === "webkit",
+			"Webkit does not support forced-colors",
+		);
+		await page.goto("/tests/list");
+		const item = page.getByText("Cherry");
+		await item.hover();
+		await page.mouse.down();
+		await page.emulateMedia({ forcedColors: "active" });
+		await expect(page.locator("body")).toHaveScreenshot();
+	});
+
+	test("forced-colors active", async ({ page, browserName }) => {
+		test.skip(
+			browserName === "webkit",
+			"Webkit does not support forced-colors",
+		);
+		await page.goto("/tests/list?active-state");
+		await page.emulateMedia({ forcedColors: "active" });
+		await expect(page.locator("body")).toHaveScreenshot();
+	});
 });
 
 test.describe("@a11y", () => {

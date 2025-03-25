@@ -72,11 +72,6 @@
 		&:where([disabled], :disabled, [aria-disabled="true"]) {
 			--🌀list-item-state: var(--🌀list-item-state--disabled);
 			cursor: not-allowed;
-
-			@media (forced-colors: active) {
-				color: GrayText;
-				--🥝icon-color: GrayText;
-			}
 		}
 	}
 
@@ -120,6 +115,16 @@
 		:where(.🥝-list-item-content) ~ & {
 			grid-column: decoration-after;
 			margin-inline: var(--✨gap) 0;
+		}
+	}
+}
+
+@media (forced-colors: active) {
+	.🥝-list-item {
+		--🥝icon-color: currentColor;
+
+		&:where([disabled], :disabled, [aria-disabled="true"]) {
+			color: GrayText;
 		}
 	}
 }

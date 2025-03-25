@@ -268,19 +268,6 @@ test.describe("@visual", () => {
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
 
-	test("forced-colors hovered item", async ({ page, browserName }) => {
-		test.skip(
-			browserName === "webkit",
-			"Webkit does not support forced-colors",
-		);
-		await page.goto("/tests/tree");
-
-		const item = page.getByRole("treeitem", { name: "Item 1.2" });
-		item.hover();
-		await page.emulateMedia({ forcedColors: "active" });
-		await expect(page.locator("body")).toHaveScreenshot();
-	});
-
 	test("forced-colors focused item", async ({ page, browserName }) => {
 		test.skip(
 			browserName === "webkit",

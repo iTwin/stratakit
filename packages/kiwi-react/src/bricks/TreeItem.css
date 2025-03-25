@@ -171,13 +171,27 @@
 		outline-color: Highlight;
 	}
 
-	.🥝-tree-item-node:is(.🥝-list-item):where([data-kiwi-selected="true"]) {
-		forced-color-adjust: none;
-		background-color: SelectedItem;
-		color: SelectedItemText;
-	}
+	.🥝-tree-item-node:is(.🥝-list-item) {
+		&:where([data-kiwi-error="true"], [data-kiwi-selected="true"]) {
+			forced-color-adjust: none;
+		}
 
-	[data-kiwi-selected="true"] .🥝-tree-item-actions-container:is(.🥝-list-item-decoration) {
-		background-color: SelectedItem;
+		&:where([data-kiwi-error="true"]) {
+			color: MarkText;
+
+			&,
+			& .🥝-tree-item-actions-container:is(.🥝-list-item-decoration) {
+				background-color: Mark;
+			}
+		}
+
+		&:where([data-kiwi-selected="true"]) {
+			color: SelectedItemText;
+
+			&,
+			& .🥝-tree-item-actions-container:is(.🥝-list-item-decoration) {
+				background-color: SelectedItem;
+			}
+		}
 	}
 }

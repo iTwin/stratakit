@@ -11,8 +11,8 @@ test("default", async ({ page }) => {
 	const errors = page.getByRole("listitem");
 	await expect(errors).toHaveCount(0);
 
-	let button = page.getByRole("button", { name: "2 issues found" });
-	await button.click();
+	let disclosure = page.getByRole("button", { name: "2 issues found" });
+	await disclosure.click();
 	await expect(errors).toHaveCount(2);
 
 	const error1 = errors.filter({
@@ -22,8 +22,8 @@ test("default", async ({ page }) => {
 
 	const dismiss = error1.getByRole("button", { name: "Dismiss" });
 	await dismiss.click();
-	button = page.getByRole("button", { name: "1 issue found" });
-	await expect(button).toBeVisible();
+	disclosure = page.getByRole("button", { name: "1 issue found" });
+	await expect(disclosure).toBeVisible();
 	await expect(errors).toHaveCount(1);
 });
 
@@ -31,8 +31,8 @@ test.describe("@visual", () => {
 	test("default", async ({ page }) => {
 		await page.goto("/tests/error-region");
 
-		const button = page.getByRole("button", { name: "2 issues found" });
-		await button.click();
+		const disclosure = page.getByRole("button");
+		await disclosure.click();
 
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
@@ -42,8 +42,8 @@ test.describe("@a11y", () => {
 	test("Axe Page Scan", async ({ page }) => {
 		await page.goto("/tests/error-region");
 
-		const button = page.getByRole("button", { name: "2 issues found" });
-		await button.click();
+		const disclosure = page.getByRole("button");
+		await disclosure.click();
 
 		const axe = new AxeBuilder({ page });
 		const accessibilityScan = await axe.analyze();

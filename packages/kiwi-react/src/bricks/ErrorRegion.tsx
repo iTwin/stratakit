@@ -87,7 +87,8 @@ const ErrorRegionRoot = forwardRef<"div", ErrorRegionRootProps>(
 								<IconButton
 									inert
 									render={<span />}
-									label="Toggle"
+									role={undefined}
+									label=""
 									icon={<ChevronDown />}
 									variant="ghost"
 								/>

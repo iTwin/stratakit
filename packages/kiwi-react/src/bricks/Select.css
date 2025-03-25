@@ -19,6 +19,8 @@
 .🥝-select:is(.🥝-button) {
 	--✨padding-inline-start: 8px;
 	--✨padding-inline-end: calc(4px + 16px + 4px); /* (gap) + (arrow size) + (padding-inline - disclosure arrow offset) */
+	min-inline-size: calc(var(--✨padding-inline-start) + 1ch + var(--✨padding-inline-end));
+	text-overflow: ellipsis;
 
 	@layer base {
 		&:where(select:not([multiple])) {

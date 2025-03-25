@@ -24,6 +24,7 @@ import { VisuallyHidden } from "./VisuallyHidden.js";
 interface ErrorRegionRootProps extends Omit<BaseProps, "children"> {
 	/**
 	 * Label for the error header, usually indicating the number of errors displayed.
+	 * By default this is used as a name of the region navigational landmark, however an explicit `aria-label` or `aria-labelledby` is strongly suggested.
 	 *
 	 * Use `undefined` if you don't want to display errors rather than conditionally rendering the component.
 	 */
@@ -48,6 +49,8 @@ const ErrorRegionRoot = forwardRef<"div", ErrorRegionRootProps>(
 	(props, forwardedRef) => {
 		const { label, items, expanded, onExpandedChange, ...rest } = props;
 		const labelId = React.useId();
+		const sectionLabelledBy =
+			props["aria-labelledby"] ?? (props["aria-label"] ? undefined : labelId);
 
 		const [open, setOpen] = useControlledState(
 			false,
@@ -63,10 +66,10 @@ const ErrorRegionRoot = forwardRef<"div", ErrorRegionRootProps>(
 					<Role.section
 						data-kiwi-visible={!!label}
 						data-kiwi-expanded={open}
+						aria-labelledby={sectionLabelledBy}
 						{...rest}
 						className={cx("🥝-error-region", props.className)}
 						ref={forwardedRef}
-						aria-labelledby={labelId}
 					>
 						<div className="🥝-error-region-container">
 							<DialogDisclosure

@@ -852,6 +852,7 @@ function SandboxTree({
 	return (
 		<React.Suspense fallback="Loading...">
 			<ErrorRegion.Root
+				aria-label="Tree errors"
 				label={errorMessage}
 				items={errorItems.map((item) => {
 					const treeItemId = `${treeId}-${item.id}`;

@@ -1,6 +1,14 @@
 # @itwin/itwinui-react
 
-A React component library for the next evolution of the iTwinUI design system.
+A React component library for the [next evolution of the iTwinUI design system](https://github.com/iTwin/design-system/discussions/481).
+
+## Installation
+
+Using your package manager of choice, install the latest **alpha** version of [`@itwin/itwinui-react`](https://www.npmjs.com/package/@itwin/itwinui-react?activeTab=versions).
+
+```console
+npm add @itwin/itwinui-react@alpha
+```
 
 ## Usage
 
@@ -20,7 +28,10 @@ export function App() {
 
 This will ensure iTwinUI's styles are loaded to either the document or the encompassing shadow root.
 
-Once that’s in place you can import and use components from `@itwin/itwinui-react/bricks`.
+Once that’s in place, you can import and use components from `@itwin/itwinui-react/bricks`.
+
+> [!NOTE]
+> If you are trying to use this package alongside the current stable version of iTwinUI, you will need to set up the [iTwinUI theme bridge](https://github.com/iTwin/iTwinUI/wiki/iTwinUI-v5-theme-bridge).
 
 ## Contributing
 

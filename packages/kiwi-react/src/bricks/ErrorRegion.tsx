@@ -134,7 +134,16 @@ interface ErrorRegionItemProps extends Omit<BaseProps, "children"> {
 
 const ErrorRegionItem = forwardRef<"div", ErrorRegionItemProps>(
 	(props, forwardedRef) => {
-		const { message, messageId, actions, onDismiss, ...rest } = props;
+		const {
+			message,
+			messageId: messageIdProp,
+			actions,
+			onDismiss,
+			...rest
+		} = props;
+		const uniqueMessageId = React.useId();
+		const dismissId = React.useId();
+		const messageId = messageIdProp ?? uniqueMessageId;
 		const onDismissClick = useEventHandlers<
 			React.MouseEvent<HTMLButtonElement, MouseEvent>
 		>(props.onDismiss, (e) => {
@@ -171,13 +180,17 @@ const ErrorRegionItem = forwardRef<"div", ErrorRegionItemProps>(
 					{message}
 				</Text>
 				{onDismiss && (
-					<IconButton
-						className="🥝-error-region-item-dismiss"
-						variant="ghost"
-						label="Dismiss"
-						icon={<Dismiss />}
-						onClick={onDismissClick}
-					/>
+					<>
+						<VisuallyHidden id={dismissId}>Dismiss</VisuallyHidden>
+						<IconButton
+							className="🥝-error-region-item-dismiss"
+							variant="ghost"
+							label="Dismiss"
+							aria-labelledby={`${dismissId} ${messageId}`}
+							icon={<Dismiss />}
+							onClick={onDismissClick}
+						/>
+					</>
 				)}
 				<div className="🥝-error-region-item-actions">{actions}</div>
 			</Role.div>

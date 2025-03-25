@@ -225,8 +225,9 @@
 }
 
 .tabPanel {
-	flex: 1;
 	min-block-size: 0;
+	flex-grow: 1;
+	padding-block-end: 12px;
 
 	display: flex;
 	flex-direction: column;

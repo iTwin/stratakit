@@ -5,15 +5,9 @@
 import { definePage } from "~/~utils.tsx";
 import * as ListItem from "@itwin/itwinui-react-internal/src/bricks/~utils.ListItem.tsx";
 import { Icon } from "@itwin/itwinui-react/bricks";
-import type { LinksFunction } from "react-router";
-import testStyles from "./index.css?url";
 import placeholderIcon from "@itwin/itwinui-icons/placeholder.svg";
 
 export const handle = { title: "List" };
-
-export const links: LinksFunction = () => [
-	{ rel: "stylesheet", href: testStyles },
-];
 
 export default definePage(function Page() {
 	return (

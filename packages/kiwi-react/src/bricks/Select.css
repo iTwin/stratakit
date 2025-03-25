@@ -29,6 +29,10 @@
 	}
 }
 
+.🥝-select > option {
+	background-color: var(--ids-color-bg-neutral-base);
+}
+
 .🥝-select-arrow:is(.🥝-disclosure-arrow) {
 	@layer base {
 		justify-self: end;

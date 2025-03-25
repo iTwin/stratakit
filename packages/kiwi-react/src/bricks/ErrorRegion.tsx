@@ -59,46 +59,45 @@ const ErrorRegionRoot = forwardRef<"div", ErrorRegionRootProps>(
 				<VisuallyHidden aria-live="polite" aria-atomic={true}>
 					{label}
 				</VisuallyHidden>
-				{label && (
-					<DialogProvider open={open} setOpen={setOpen}>
-						<Role.section
-							data-kiwi-expanded={open}
-							{...rest}
-							className={cx("🥝-error-region", props.className)}
-							ref={forwardedRef}
-							aria-labelledby={labelId}
-						>
-							<div className="🥝-error-region-container">
-								<DialogDisclosure
-									className="🥝-error-region-header"
-									render={<Button variant="ghost" />}
+				<DialogProvider open={open} setOpen={setOpen}>
+					<Role.section
+						data-kiwi-visible={!!label}
+						data-kiwi-expanded={open}
+						{...rest}
+						className={cx("🥝-error-region", props.className)}
+						ref={forwardedRef}
+						aria-labelledby={labelId}
+					>
+						<div className="🥝-error-region-container">
+							<DialogDisclosure
+								className="🥝-error-region-header"
+								render={<Button variant="ghost" />}
+							>
+								<StatusWarning className="🥝-error-region-icon" />
+								<Text
+									id={labelId}
+									className="🥝-error-region-label"
+									variant="body-sm"
 								>
-									<StatusWarning className="🥝-error-region-icon" />
-									<Text
-										id={labelId}
-										className="🥝-error-region-label"
-										variant="body-sm"
-									>
-										{label}
-									</Text>
-									<IconButton
-										inert
-										render={<span />}
-										label="Toggle"
-										icon={<ChevronDown />}
-										variant="ghost"
-									/>
-								</DialogDisclosure>
-								<Dialog portal={false} modal={false} aria-labelledby={labelId}>
-									<Divider className="🥝-error-region-divider" presentational />
-									<div className="🥝-error-region-items" role="list">
-										{items}
-									</div>
-								</Dialog>
-							</div>
-						</Role.section>
-					</DialogProvider>
-				)}
+									{label}
+								</Text>
+								<IconButton
+									inert
+									render={<span />}
+									label="Toggle"
+									icon={<ChevronDown />}
+									variant="ghost"
+								/>
+							</DialogDisclosure>
+							<Dialog portal={false} modal={false} aria-labelledby={labelId}>
+								<Divider className="🥝-error-region-divider" presentational />
+								<div className="🥝-error-region-items" role="list">
+									{items}
+								</div>
+							</Dialog>
+						</div>
+					</Role.section>
+				</DialogProvider>
 			</>
 		);
 	},

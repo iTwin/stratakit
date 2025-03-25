@@ -6,29 +6,36 @@
 	--✨padding: 4px;
 
 	@layer base {
-		padding-inline: var(--✨padding);
-		padding-block: var(--✨padding);
-		min-block-size: 2.625rem;
-		block-size: 2.625rem;
-
 		z-index: 1;
 	}
 
 	@layer states {
 		&:where([data-kiwi-expanded="true"]) {
 			--🥝chevron-down-rotate: -0.5turn;
-			--🥝error-container-padding-block-end: 12px;
+			--🥝error-region-container-padding-block-end: 12px;
+		}
+
+		&:where([data-kiwi-visible="true"]) {
+			padding-inline: var(--✨padding);
+			padding-block: var(--✨padding);
+
+			min-block-size: 2.625rem;
+			block-size: 2.625rem;
+		}
+
+		&:where([data-kiwi-visible="false"]) {
+			--🥝error-region-container-display: none;
 		}
 	}
 }
 
 .🥝-error-region-container {
 	@layer base {
-		display: flex;
+		display: var(--🥝error-region-container-display, flex);
 		flex-direction: column;
 
 		padding-block-start: 4px;
-		padding-block-end: var(--🥝error-container-padding-block-end, 4px);
+		padding-block-end: var(--🥝error-region-container-padding-block-end, 4px);
 
 		border: 1px solid var(--ids-color-border-attention-base);
 		border-radius: 8px;

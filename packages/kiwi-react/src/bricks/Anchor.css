@@ -95,3 +95,9 @@
 		--🌀anchor-state--pressed: var(--🌀anchor-state,);
 	}
 }
+
+@media (forced-colors: active) {
+	.🥝-anchor:where(button) {
+		color: LinkText;
+	}
+}

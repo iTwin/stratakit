@@ -15,7 +15,7 @@ import { ChevronDown, Dismiss, StatusWarning } from "./Icon.js";
 import { Text } from "./Text.js";
 import { IconButton } from "./IconButton.js";
 import { Button } from "./Button.js";
-import { useControlledState, useEventHandlers } from "./~hooks.js";
+import { useControlledState } from "./~hooks.js";
 import { VisuallyHidden } from "./VisuallyHidden.js";
 
 // ----------------------------------------------------------------------------
@@ -145,27 +145,6 @@ const ErrorRegionItem = forwardRef<"div", ErrorRegionItemProps>(
 		const uniqueMessageId = React.useId();
 		const dismissId = React.useId();
 		const messageId = messageIdProp ?? uniqueMessageId;
-		const onDismissClick = useEventHandlers<
-			React.MouseEvent<HTMLButtonElement, MouseEvent>
-		>(props.onDismiss, (e) => {
-			const dismiss = e.currentTarget;
-			const item = dismiss.closest(".🥝-error-region-item");
-			const prevItem = item?.previousElementSibling;
-			const prevDismiss = prevItem?.querySelector(
-				".🥝-error-region-item-dismiss",
-			);
-			if (prevDismiss instanceof HTMLElement) {
-				prevDismiss.focus();
-				return;
-			}
-
-			const region = dismiss.closest(".🥝-error-region");
-			const header = region?.querySelector(".🥝-error-region-header");
-			if (header instanceof HTMLElement) {
-				header.focus();
-				return;
-			}
-		});
 		return (
 			<Role.div
 				{...rest}
@@ -189,7 +168,7 @@ const ErrorRegionItem = forwardRef<"div", ErrorRegionItemProps>(
 							label="Dismiss"
 							aria-labelledby={`${dismissId} ${messageId}`}
 							icon={<Dismiss />}
-							onClick={onDismissClick}
+							onClick={onDismiss}
 						/>
 					</>
 				)}

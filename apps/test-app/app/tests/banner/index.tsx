@@ -3,7 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 import { definePage } from "~/~utils.tsx";
-import { Banner } from "@itwin/itwinui-react/bricks";
+import { Anchor, Banner, Button } from "@itwin/itwinui-react/bricks";
 import placeholderIcon from "@itwin/itwinui-icons/placeholder.svg";
 import * as React from "react";
 
@@ -58,6 +58,11 @@ function VisualTest() {
 									setIsDismissed(true);
 								}}
 								data-dismissed={isDismissed}
+								actions={[
+									<Button key="1">Action 1</Button>,
+									<Button key="2">Action 2</Button>,
+									<Anchor key="3">Action 3</Anchor>,
+								]}
 							>
 								Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
 								eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
@@ -83,7 +88,7 @@ function DismissibleTest() {
 			>
 				Message
 			</Banner>
-			<Banner icon={placeholderIcon} label="Title" dismissible={false}>
+			<Banner icon={placeholderIcon} label="Title">
 				Message
 			</Banner>
 		</div>

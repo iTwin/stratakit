@@ -25,6 +25,10 @@ interface ChipProps extends Omit<BaseProps<"div">, "children"> {
 
 	/**
 	 * Callback invoked when the dismiss ("❌") button is clicked.
+	 *
+	 * If `undefined`, the dismiss button will not be rendered.
+	 *
+	 * @default undefined
 	 */
 	onDismiss?: () => void;
 }

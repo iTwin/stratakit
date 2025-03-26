@@ -5,16 +5,8 @@
 import { Role } from "@ariakit/react/role";
 import cx from "classnames";
 import * as React from "react";
-import {
-	Dismiss,
-	Icon,
-	Info,
-	StatusSuccess,
-	StatusWarning,
-	StatusError,
-} from "./Icon.js";
+import { Dismiss, Icon, StatusWarning } from "./Icon.js";
 import { Text } from "./Text.js";
-import { Button } from "./Button.js";
 import { IconButton } from "./IconButton.js";
 
 import { forwardRef, type BaseProps } from "./~utils.js";
@@ -27,22 +19,30 @@ type BannerProps = BaseProps & {
 	 * or a custom JSX icon.
 	 */
 	icon: string | React.JSX.Element;
-
 	/**
 	 * The label displayed inside the banner.
 	 */
 	label: string;
-
-	/**
-	 * Whether the banner is dismissible. If `true`, a dismiss ("❌") button will be displayed.
-	 * @default true
-	 */
-	dismissible?: boolean;
-
 	/**
 	 * Callback invoked when the dismiss ("❌") button is clicked.
+	 *
+	 * If `undefined`, the dismiss button will not be rendered.
+	 *
+	 * @default undefined
 	 */
 	onDismiss?: () => void;
+	/**
+	 * The actions available for the banner. Must be a list of `Tree.ItemAction` components.
+	 *
+	 * Example:
+	 * ```tsx
+	 * actions={[
+	 *   <Tree.ItemAction key={…} icon={…} label={…} />,
+	 *   <Tree.ItemAction key={…} icon={…} label={…} />,
+	 * ]}
+	 * ```
+	 */
+	actions?: React.ReactNode[];
 } & (
 		| {
 				/**
@@ -83,7 +83,7 @@ export const Banner = forwardRef<"div", BannerProps>((props, forwardedRef) => {
 		children,
 		icon: iconProp,
 		label,
-		dismissible = true,
+		actions,
 		onDismiss,
 		tone = "neutral",
 		variant = "outline",
@@ -106,16 +106,16 @@ export const Banner = forwardRef<"div", BannerProps>((props, forwardedRef) => {
 		}
 
 		if (tone === "info") {
-			return <Info className="🥝-banner-icon" />;
+			return <StatusWarning className="🥝-banner-icon" />;
 		}
 		if (tone === "positive") {
-			return <StatusSuccess className="🥝-banner-icon" />;
+			return <StatusWarning className="🥝-banner-icon" />;
 		}
 		if (tone === "attention") {
 			return <StatusWarning className="🥝-banner-icon" />;
 		}
 		if (tone === "critical") {
-			return <StatusError className="🥝-banner-icon" />;
+			return <StatusWarning className="🥝-banner-icon" />;
 		}
 
 		return undefined;
@@ -144,11 +144,13 @@ export const Banner = forwardRef<"div", BannerProps>((props, forwardedRef) => {
 					{children}
 				</Text>
 
-				<Button className={cx("🥝-banner-action-button", props.className)}>
-					Action
-				</Button>
+				{actions != null && actions.length > 0 ? (
+					<div className={cx("🥝-banner-actions", props.className)}>
+						{actions}
+					</div>
+				) : null}
 
-				{dismissible && (
+				{onDismiss ? (
 					<IconButton
 						id={dismissIconId}
 						className={cx("🥝-banner-dismiss-button", props.className)}
@@ -159,9 +161,10 @@ export const Banner = forwardRef<"div", BannerProps>((props, forwardedRef) => {
 						icon={<Dismiss />}
 						onClick={onDismiss}
 					/>
-				)}
+				) : null}
 			</div>
 		</Role>
 	);
 });
+
 DEV: Banner.displayName = "Banner";

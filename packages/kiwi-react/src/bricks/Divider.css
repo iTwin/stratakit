@@ -3,25 +3,31 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 .🥝-divider {
-	flex: 0 0 auto;
-	align-self: stretch;
-	background-color: var(--ids-color-border-neutral-muted);
+	@layer base {
+		flex: 0 0 auto;
+		align-self: stretch;
+		background-color: var(--ids-color-border-neutral-muted);
 
-	@media (forced-colors: active) {
+		&:where(hr) {
+			border: none;
+			margin: 0;
+		}
+	}
+
+	@layer modifiers {
+		&:where(:not([aria-orientation="vertical"], [data-kiwi-orientation="vertical"])) {
+			block-size: 1px;
+		}
+
+		&:where([aria-orientation="vertical"], [data-kiwi-orientation="vertical"]) {
+			inline-size: 1px;
+			min-block-size: 100%;
+		}
+	}
+}
+
+@media (forced-colors: active) {
+	.🥝-divider {
 		background-color: CanvasText;
-	}
-
-	&:is(hr) {
-		border: none;
-		margin: 0;
-	}
-
-	&:not([aria-orientation="vertical"], [data-kiwi-orientation="vertical"]) {
-		block-size: 1px;
-	}
-
-	&:is([aria-orientation="vertical"], [data-kiwi-orientation="vertical"]) {
-		inline-size: 1px;
-		min-block-size: 100%;
 	}
 }

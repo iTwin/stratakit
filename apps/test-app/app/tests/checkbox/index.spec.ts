@@ -94,6 +94,71 @@ test.describe("@visual", () => {
 		);
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
+
+	test("forced-colors unchecked", async ({ page, browserName }) => {
+		test.skip(
+			browserName === "webkit",
+			"Webkit does not support forced-colors",
+		);
+		await page.goto("/tests/checkbox?visual=true");
+		await page.emulateMedia({ forcedColors: "active" });
+		await expect(page.locator("body")).toHaveScreenshot();
+	});
+
+	test("forced-colors checked", async ({ page, browserName }) => {
+		test.skip(
+			browserName === "webkit",
+			"Webkit does not support forced-colors",
+		);
+		await page.goto("/tests/checkbox?visual=true&checked=true");
+		await page.emulateMedia({ forcedColors: "active" });
+		await expect(page.locator("body")).toHaveScreenshot();
+	});
+
+	test("forced-colors indeterminate/mixed", async ({ page, browserName }) => {
+		test.skip(
+			browserName === "webkit",
+			"Webkit does not support forced-colors",
+		);
+		await page.goto("/tests/checkbox?visual=true&indeterminate=true");
+		await page.emulateMedia({ forcedColors: "active" });
+		await expect(page.locator("body")).toHaveScreenshot();
+	});
+
+	test("forced-colors disabled", async ({ page, browserName }) => {
+		test.skip(
+			browserName === "webkit",
+			"Webkit does not support forced-colors",
+		);
+		await page.goto("/tests/checkbox?visual=true&disabled=true");
+		await page.emulateMedia({ forcedColors: "active" });
+		await expect(page.locator("body")).toHaveScreenshot();
+	});
+
+	test("forced-colors disabled & checked", async ({ page, browserName }) => {
+		test.skip(
+			browserName === "webkit",
+			"Webkit does not support forced-colors",
+		);
+		await page.goto("/tests/checkbox?visual=true&disabled=true&checked=true");
+		await page.emulateMedia({ forcedColors: "active" });
+		await expect(page.locator("body")).toHaveScreenshot();
+	});
+
+	test("forced-colors disabled & indeterminate/mixed", async ({
+		page,
+		browserName,
+	}) => {
+		test.skip(
+			browserName === "webkit",
+			"Webkit does not support forced-colors",
+		);
+		await page.goto(
+			"/tests/checkbox?visual=true&disabled=true&indeterminate=true",
+		);
+		await page.emulateMedia({ forcedColors: "active" });
+		await expect(page.locator("body")).toHaveScreenshot();
+	});
 });
 
 test.describe("@a11y", () => {

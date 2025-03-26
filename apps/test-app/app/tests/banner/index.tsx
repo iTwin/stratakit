@@ -97,7 +97,11 @@ function ActionsTest() {
 				actions={[<Button key="1">Manage cookies</Button>]}
 			/>
 			<ActionsTextBannerComponent
-				actions={[<Anchor key="1">Manage cookies</Anchor>]}
+				actions={[
+					<Anchor key="1" render={<button />}>
+						Manage cookies
+					</Anchor>,
+				]}
 			/>
 			<ActionsTextBannerComponent
 				actions={[
@@ -107,8 +111,12 @@ function ActionsTest() {
 			/>
 			<ActionsTextBannerComponent
 				actions={[
-					<Anchor key="1">Manage cookies</Anchor>,
-					<Anchor key="2">Don't show again</Anchor>,
+					<Anchor key="1" render={<button />}>
+						Manage cookies
+					</Anchor>,
+					<Anchor key="2" render={<button />}>
+						Don't show again
+					</Anchor>,
 				]}
 			/>
 		</div>
@@ -121,6 +129,7 @@ function ActionsTextBannerComponent({
 	return (
 		<Banner
 			icon={placeholderIcon}
+			label="Privacy Notice"
 			onDismiss={() => {
 				console.log("Dismissed");
 			}}

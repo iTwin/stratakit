@@ -22,7 +22,7 @@ type BannerProps = BaseProps & {
 	/**
 	 * The label displayed inside the banner.
 	 */
-	label?: string;
+	label: string;
 	/**
 	 * Callback invoked when the dismiss ("❌") button is clicked.
 	 *
@@ -133,11 +133,9 @@ export const Banner = forwardRef<"div", BannerProps>((props, forwardedRef) => {
 			<div className={cx("🥝-banner-grid", props.className)}>
 				{icon}
 
-				{label ? (
-					<span className={cx("🥝-banner-label", props.className)} id={labelId}>
-						{label}
-					</span>
-				) : null}
+				<span className={cx("🥝-banner-label", props.className)} id={labelId}>
+					{label}
+				</span>
 
 				<Text
 					variant="body-sm"

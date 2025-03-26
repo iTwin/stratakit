@@ -21,10 +21,17 @@
 	--✨padding-inline-end: calc(4px + 16px + 4px); /* (gap) + (arrow size) + (padding-inline - disclosure arrow offset) */
 
 	@layer base {
+		min-inline-size: calc(var(--✨padding-inline-start) + 1ch + var(--✨padding-inline-end));
+		text-overflow: ellipsis;
+
 		&:where(select:not([multiple])) {
 			appearance: none;
 			--🥝button-padding-inline: var(--✨padding-inline-start) var(--✨padding-inline-end);
 			--🥝ghost-inline-offset: var(--✨padding-inline-start);
+
+			> option {
+				background-color: var(--ids-color-bg-neutral-base);
+			}
 		}
 	}
 }

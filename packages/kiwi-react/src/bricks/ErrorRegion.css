@@ -74,13 +74,18 @@
 }
 
 .🥝-error-region-items {
+	--✨container-padding: 8px;
+	--✨icon-size: 1rem;
+	--✨gap: 4px;
+	--✨padding-inline-start: calc(var(--✨container-padding) + var(--✨icon-size) + var(--✨gap));
+
 	@layer base {
 		display: flex;
 		flex-direction: column;
 		gap: 16px;
 
 		padding-block-start: 8px;
-		padding-inline-start: 28px;
+		padding-inline-start: var(--✨padding-inline-start);
 		padding-inline-end: 4px;
 	}
 }

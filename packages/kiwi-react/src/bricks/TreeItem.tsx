@@ -333,11 +333,11 @@ const TreeItemActions = forwardRef<"div", BaseProps>((props, forwardedRef) => {
 		>
 			{actions.slice(0, limit - 1)}
 			{actions.length === limit ? actions[limit - 1] : null}
-			{actions.length > limit && (
+			{actions.length > limit ? (
 				<TreeItemActionsOverflowMenu>
 					{actions.slice(limit - 1)}
 				</TreeItemActionsOverflowMenu>
-			)}
+			) : null}
 		</Toolbar>
 	);
 });

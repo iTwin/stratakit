@@ -10,6 +10,8 @@
 		border: 1px solid var(--🥝banner-color-border);
 		border-radius: 8px;
 		padding: 12px;
+		min-block-size: calc(3rem + 2px);
+		display: flex;
 	}
 
 	@layer modifiers {
@@ -69,6 +71,7 @@
 	@layer base {
 		display: grid;
 		align-items: center;
+		width: 100%;
 
 		@container banner (min-width: 400px) {
 			grid-template-areas: "icon label message action dismiss";

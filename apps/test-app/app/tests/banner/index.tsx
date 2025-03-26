@@ -20,7 +20,7 @@ export default definePage(
 			</>
 		);
 	},
-	{ visual: VisualTest, dismissible: DismissibleTest },
+	{ visual: VisualTest, dismiss: DismissibleTest, actions: ActionsTest },
 );
 
 function VisualTest() {
@@ -58,11 +58,7 @@ function VisualTest() {
 									setIsDismissed(true);
 								}}
 								data-dismissed={isDismissed}
-								actions={[
-									<Button key="1">Action 1</Button>,
-									<Button key="2">Action 2</Button>,
-									<Anchor key="3">Action 3</Anchor>,
-								]}
+								actions={[<Button key="1">Action</Button>]}
 							>
 								Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
 								eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
@@ -92,5 +88,46 @@ function DismissibleTest() {
 				Message
 			</Banner>
 		</div>
+	);
+}
+
+function ActionsTest() {
+	return (
+		<div style={{ display: "grid", gap: 4 }}>
+			<ActionsTextBannerComponent
+				actions={[<Button key="1">Manage cookies</Button>]}
+			/>
+			<ActionsTextBannerComponent
+				actions={[<Anchor key="1">Manage cookies</Anchor>]}
+			/>
+			<ActionsTextBannerComponent
+				actions={[
+					<Button key="1">Manage cookies</Button>,
+					<Button key="2">Don't show again</Button>,
+				]}
+			/>
+			<ActionsTextBannerComponent
+				actions={[
+					<Anchor key="1">Manage cookies</Anchor>,
+					<Anchor key="2">Don't show again</Anchor>,
+				]}
+			/>
+		</div>
+	);
+}
+
+function ActionsTextBannerComponent({
+	actions,
+}: { actions: React.ReactNode[] }) {
+	return (
+		<Banner
+			icon={placeholderIcon}
+			onDismiss={() => {
+				console.log("Dismissed");
+			}}
+			actions={actions}
+		>
+			This site uses cookies to improve your experience.
+		</Banner>
 	);
 }

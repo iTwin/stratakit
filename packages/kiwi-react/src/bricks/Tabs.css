@@ -29,10 +29,6 @@
 				@media (prefers-reduced-motion: no-preference) {
 					transition: inset-inline 150ms ease-in-out;
 				}
-
-				@media (forced-colors: active) {
-					background-color: SelectedItem;
-				}
 			}
 		}
 	}
@@ -81,10 +77,6 @@
 		white-space: nowrap;
 		transition: background-color 150ms ease-out, color 150ms ease-out;
 		cursor: pointer;
-
-		@media (forced-colors: active) {
-			color: ButtonText;
-		}
 
 		/* This pseudo-element increases tap target size */
 		&::before {
@@ -135,10 +127,6 @@
 					block-size: var(--🥝tab-active-stripe-size);
 					inset-inline: var(--🥝tab-padding-inline);
 					inset-block: auto calc(var(--🥝tab-active-stripe-gap) * -1);
-
-					@media (forced-colors: active) {
-						background-color: SelectedItem;
-					}
 				}
 			}
 		}
@@ -153,10 +141,6 @@
 			--🌀tab-state: var(--🌀tab-state--disabled);
 			--🥝tab-active-stripe-color: var(--ids-color-border-neutral-disabled);
 			cursor: not-allowed;
-
-			@media (forced-colors: active) {
-				color: GrayText;
-			}
 		}
 	}
 
@@ -177,6 +161,38 @@
 		/* Prevents stacking when multiple panels are mounted (during animation) */
 		&:not([data-open]) {
 			display: none !important;
+		}
+	}
+}
+
+@media (forced-colors: active) {
+	/* biome-ignore lint/correctness/noUnknownProperty: `position-anchor` is within `@supports` and offers a fallback. */
+	@supports (position-anchor: --foo) {
+		.🥝-tab-list::after {
+			background-color: SelectedItem;
+		}
+	}
+
+	.🥝-tab {
+		background-color: ButtonFace;
+		border: 1px solid ButtonBorder;
+		color: ButtonText;
+
+		&:where([aria-selected="true"]) {
+			forced-color-adjust: none;
+			background-color: SelectedItem;
+			color: SelectedItemText;
+
+			@supports not (anchor-name: --foo) {
+				&::after {
+					background-color: SelectedItem;
+				}
+			}
+		}
+
+		&:where([disabled], :disabled, [aria-disabled="true"]) {
+			border-color: GrayText;
+			color: GrayText;
 		}
 	}
 }

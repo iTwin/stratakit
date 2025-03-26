@@ -946,25 +946,32 @@ function Subheader({ tabs }: { tabs?: React.ReactNode }) {
 			<VisuallyHidden aria-live="polite" aria-atomic={true}>
 				{filteredNotification}
 			</VisuallyHidden>
+			<div className={styles.subheaderContent}>
+				{tabs && !isSearchboxVisible ? (
+					<div className={styles.tabListWrapper}>
+						<Tabs.TabList
+							className={styles.tabList}
+							tone="accent"
+							ref={tabsRef}
+						>
+							{tabs}
+						</Tabs.TabList>
+					</div>
+				) : null}
 
-			{tabs && !isSearchboxVisible ? (
-				<Tabs.TabList className={styles.tabList} tone="accent" ref={tabsRef}>
-					{tabs}
-				</Tabs.TabList>
-			) : null}
+				{isSearchboxVisible ? (
+					<TextBox.Root className={styles.searchInput}>
+						<TextBox.Icon href={searchIcon} />
+						<TextBox.Input
+							placeholder="Search"
+							ref={searchInputRef}
+							onChange={(e) => setSearch(e.currentTarget.value)}
+						/>
+					</TextBox.Root>
+				) : null}
 
-			{isSearchboxVisible ? (
-				<TextBox.Root className={styles.searchInput}>
-					<TextBox.Icon href={searchIcon} />
-					<TextBox.Input
-						placeholder="Search"
-						ref={searchInputRef}
-						onChange={(e) => setSearch(e.currentTarget.value)}
-					/>
-				</TextBox.Root>
-			) : null}
-
-			<div className={styles.subheaderActions}>{actions}</div>
+				<div className={styles.subheaderActions}>{actions}</div>
+			</div>
 		</div>
 	);
 }

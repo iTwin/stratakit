@@ -89,8 +89,8 @@
 
 .subheader {
 	min-block-size: 2.5rem;
-	padding-inline: 12px;
-	padding-block: 1px;
+	/* padding-inline: 12px; */
+	/* padding-block: 1px; */
 	border-block: 1px solid var(--ids-color-border-neutral-base);
 	border-inline: none;
 
@@ -107,15 +107,38 @@
 
 .searchInput {
 	flex: 1;
+	margin-right: 50px;
 }
 
 .subheaderActions {
 	margin-inline-start: auto;
+	right: 0;
+	/* display: flex;
+	align-items: center; */
+	position: absolute;
+	transform: translateY(-1.5px);
 }
 
 .tabList {
 	align-self: flex-end;
 	margin-block-end: -1px;
+	padding-inline: 12px;
+	border-bottom: 1px solid var(--ids-color-border-neutral-base);
+
+	/* clip-path: inset(0 40px 0 0); */
+	/* transform: translateX(-30px); */
+}
+
+.tabListWrapper {
+	margin-bottom: 6px;
+	/* width: 100%; */
+}
+
+.subheaderContent {
+	overflow: auto;
+	display: flex;
+	margin-block: 6px;
+	flex: 1;
 }
 
 .emptyState {

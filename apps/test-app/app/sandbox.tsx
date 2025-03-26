@@ -277,8 +277,6 @@ function PanelContent(props: {
 }) {
 	const { data } = React.use(props.query.promise);
 
-	const [isSearchboxVisible, setIsSearchboxVisible] = React.useState(!data);
-
 	const trees = React.useMemo(
 		() =>
 			Object.entries(data).map(([treeName, treeData]) => {
@@ -293,7 +291,7 @@ function PanelContent(props: {
 							<SandboxTree
 								name={treeName}
 								data={treeData}
-								isSearchboxVisible={isSearchboxVisible}
+								length={Object.entries(data).length}
 							/>
 						) : (
 							<EmptyState>
@@ -303,7 +301,7 @@ function PanelContent(props: {
 						),
 				} as const;
 			}),
-		[data, isSearchboxVisible],
+		[data],
 	);
 
 	const [selectedTreeId, setSelectedTreeId] = React.useState<
@@ -318,10 +316,7 @@ function PanelContent(props: {
 	if (trees.length === 1)
 		return (
 			<TreeFilteringProvider allFilters={allFilters}>
-				<Subheader
-					isSearchboxVisible={isSearchboxVisible}
-					setIsSearchboxVisible={setIsSearchboxVisible}
-				/>
+				<Subheader />
 				{trees[0].content}
 			</TreeFilteringProvider>
 		);
@@ -335,8 +330,6 @@ function PanelContent(props: {
 							{toUpperCamelCase(tree.name)}
 						</Tabs.Tab>
 					))}
-					isSearchboxVisible={isSearchboxVisible}
-					setIsSearchboxVisible={setIsSearchboxVisible}
 				/>
 				{trees.map((tree) => {
 					return (
@@ -770,18 +763,19 @@ function findTreeItem<T extends Pick<TreeItem, "id"> & { items: T[] }>(
 }
 
 function SandboxTree({
-	name,
+	name: treeName,
 	data: treeData,
-	isSearchboxVisible,
+	length,
 }: {
 	name: string;
 	data: TreeItemData[];
-	isSearchboxVisible: boolean;
+	length: number;
 }) {
 	const {
 		appliedFilters: filters,
 		search,
 		setItemCount,
+		isSearchboxVisible,
 	} = React.useContext(TreeFilteringContext);
 	const [selected, setSelected] = React.useState<string | undefined>();
 	const [hidden, setHidden] = React.useState<string[]>([]);
@@ -813,18 +807,20 @@ function SandboxTree({
 	if (deferredItems.length === 0) return <NoResultsState />;
 
 	const panelRef = React.useRef<HTMLDivElement>(null);
-	const Element = !isSearchboxVisible ? Tabs.TabPanel : "div";
+	const Element = !isSearchboxVisible && length > 1 ? Tabs.TabPanel : "div";
 
 	return (
 		<Element
-			key={name}
-			{...(Element !== "div" && { tabId: name })}
+			key={treeName}
+			{...(Element !== "div" && { tabId: treeName })}
 			className={styles.tabPanel}
 			focusable={false}
 			{...(Element !== "div" && { unmountOnHide: true })}
 			ref={panelRef}
 			{...(Element === "div" &&
-				panelRef?.current?.dataset.open && { "data-open": true })}
+				(panelRef?.current?.dataset.open || length === 1) && {
+					"data-open": true,
+				})}
 		>
 			<React.Suspense fallback="Loading...">
 				<Tree.Root className={styles.tree}>
@@ -918,15 +914,17 @@ function TreeMoreActions() {
 
 function Subheader({
 	tabs,
-	isSearchboxVisible,
-	setIsSearchboxVisible,
 }: {
 	tabs?: React.ReactNode;
-	isSearchboxVisible: boolean;
-	setIsSearchboxVisible: React.Dispatch<React.SetStateAction<boolean>>;
 }) {
-	const { itemCount, isFiltered, search, setSearch } =
-		React.useContext(TreeFilteringContext);
+	const {
+		itemCount,
+		isFiltered,
+		search,
+		setSearch,
+		isSearchboxVisible,
+		setIsSearchboxVisible,
+	} = React.useContext(TreeFilteringContext);
 
 	const searchInputRef = React.useRef<HTMLInputElement>(null);
 	const tabsRef = React.useRef<HTMLHeadingElement>(null);
@@ -1041,6 +1039,7 @@ function TreeFilteringProvider(
 	const [isFiltered, setIsFiltered] = React.useState(false);
 	const [appliedFilters, setAppliedFilters] = React.useState<string[]>([]);
 	const [search, setSearchState] = React.useState("");
+	const [isSearchboxVisible, setIsSearchboxVisible] = React.useState(false);
 	const [itemCount, setItemCount] = React.useState<number | undefined>(
 		undefined,
 	);
@@ -1075,6 +1074,8 @@ function TreeFilteringProvider(
 					clearFilters,
 					search,
 					setSearch,
+					isSearchboxVisible,
+					setIsSearchboxVisible,
 					itemCount,
 					setItemCount,
 				}),
@@ -1086,6 +1087,7 @@ function TreeFilteringProvider(
 					clearFilters,
 					search,
 					setSearch,
+					isSearchboxVisible,
 					itemCount,
 				],
 			)}
@@ -1103,6 +1105,8 @@ const TreeFilteringContext = React.createContext<{
 	clearFilters: () => void;
 	search: string;
 	setSearch: (search: string) => void;
+	isSearchboxVisible: boolean;
+	setIsSearchboxVisible: (isSearchboxVisible: boolean) => void;
 	itemCount: number | undefined;
 	setItemCount: (count: number | undefined) => void;
 }>({
@@ -1113,6 +1117,8 @@ const TreeFilteringContext = React.createContext<{
 	clearFilters: () => {},
 	search: "",
 	setSearch: () => {},
+	isSearchboxVisible: false,
+	setIsSearchboxVisible: () => {},
 	itemCount: undefined,
 	setItemCount: () => {},
 });

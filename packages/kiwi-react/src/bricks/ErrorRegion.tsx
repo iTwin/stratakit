@@ -120,7 +120,7 @@ interface ErrorRegionItemProps extends Omit<BaseProps, "children"> {
 	 */
 	message?: React.ReactNode;
 	/**
-	 * The `id` of the message node.
+	 * The `id` of the message node which can be used to semantically associate the error item with the related UI item i.e. `Tree.Item`.
 	 */
 	messageId?: string;
 	/**

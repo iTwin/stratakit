@@ -90,10 +90,6 @@ export const Banner = forwardRef<"div", BannerProps>((props, forwardedRef) => {
 		...rest
 	} = props;
 
-	const baseId = React.useId();
-	const labelId = `${baseId}-label`;
-	const dismissIconId = `${baseId}-dismiss`;
-
 	const icon = React.useMemo(() => {
 		if (tone === "neutral" && !!iconProp) {
 			if (React.isValidElement(iconProp)) {
@@ -133,9 +129,7 @@ export const Banner = forwardRef<"div", BannerProps>((props, forwardedRef) => {
 			<div className={cx("🥝-banner-grid", props.className)}>
 				{icon}
 
-				<span className={cx("🥝-banner-label", props.className)} id={labelId}>
-					{label}
-				</span>
+				<span className={cx("🥝-banner-label", props.className)}>{label}</span>
 
 				<Text
 					variant="body-sm"
@@ -152,11 +146,9 @@ export const Banner = forwardRef<"div", BannerProps>((props, forwardedRef) => {
 
 				{onDismiss ? (
 					<IconButton
-						id={dismissIconId}
 						className={cx("🥝-banner-dismiss-button", props.className)}
 						variant="ghost"
-						aria-labelledby={`${dismissIconId} ${labelId}`}
-						label="Dismiss"
+						label={`Dismiss ${label}`}
 						labelVariant="visually-hidden"
 						icon={<Dismiss />}
 						onClick={onDismiss}

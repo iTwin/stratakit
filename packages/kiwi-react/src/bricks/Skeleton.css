@@ -36,6 +36,7 @@
 	@layer modifiers {
 		&:where([data-kiwi-variant="text"]) {
 			--🥝skeleton-width: 100%;
+			--🥝skeleton-border-radius: 2px /* radius(in progress)/xsmall */;
 
 			&:where([data-kiwi-size="xsmall"]) {
 				--🥝skeleton-height: 0.75rem;

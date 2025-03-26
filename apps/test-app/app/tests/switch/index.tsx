@@ -16,10 +16,12 @@ export const handle = { title: "Switch" };
 export default definePage(
 	function Page({ checked, disabled }) {
 		return (
-			<Field>
-				<Switch defaultChecked={!!checked} disabled={!!disabled} />
-				<Label>Toggle me</Label>
-			</Field>
+			<Field.Root>
+				<Field.Control
+					render={<Switch defaultChecked={!!checked} disabled={!!disabled} />}
+				/>
+				<Field.Label>Toggle me</Field.Label>
+			</Field.Root>
 		);
 	},
 	{ visual: VisualTest },

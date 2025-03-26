@@ -2,11 +2,8 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-import * as React from "react";
-import * as ReactDOM from "react-dom";
 import cx from "classnames";
 import * as AkTab from "@ariakit/react/tab";
-import { useControlledState } from "./~hooks.js";
 import { type FocusableProps, type BaseProps, forwardRef } from "./~utils.js";
 
 // ----------------------------------------------------------------------------
@@ -52,35 +49,17 @@ interface TabsProps
 function Tabs(props: TabsProps) {
 	const {
 		defaultSelectedId,
-		selectedId: selectedIdProp,
-		setSelectedId: setSelectedIdProp,
+		selectedId,
+		setSelectedId,
 		selectOnMove,
 		children,
 	} = props;
 
-	const [selectedId, setSelectedId] = useControlledState(
-		defaultSelectedId,
-		selectedIdProp,
-		setSelectedIdProp,
-	);
-
 	return (
 		<AkTab.TabProvider
+			defaultSelectedId={defaultSelectedId}
 			selectedId={selectedId}
-			setSelectedId={React.useCallback(
-				(id: AkTab.TabStoreState["selectedId"]) => {
-					if (document.startViewTransition) {
-						document.startViewTransition(() => {
-							ReactDOM.flushSync(() => {
-								setSelectedId(id);
-							});
-						});
-					} else {
-						setSelectedId(id);
-					}
-				},
-				[setSelectedId],
-			)}
+			setSelectedId={setSelectedId}
 			selectOnMove={selectOnMove}
 		>
 			{children}
@@ -111,19 +90,12 @@ interface TabListProps extends BaseProps {
  */
 const TabList = forwardRef<"div", TabListProps>((props, forwardedRef) => {
 	const { tone = "neutral", ...rest } = props;
-	const viewTransitionName = `🥝active-stripe-${React.useId().replaceAll(":", "_")}`;
 
 	return (
 		<AkTab.TabList
 			{...rest}
 			data-kiwi-tone={tone}
 			className={cx("🥝-tab-list", props.className)}
-			style={
-				{
-					"--🥝tab-active-stripe-view-transition-name": viewTransitionName,
-					...props.style,
-				} as React.CSSProperties
-			}
 			ref={forwardedRef}
 		/>
 	);

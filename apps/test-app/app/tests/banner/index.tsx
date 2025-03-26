@@ -10,11 +10,10 @@ import * as React from "react";
 export const handle = { title: "Banner" };
 
 export default definePage(
-	function Page({ disabled, render: renderParam }) {
-		const render = renderParam ? <button /> : undefined;
+	function Page() {
 		return (
 			<>
-				<Banner label="Title" icon={placeholderIcon}>
+				<Banner label="Title" icon={placeholderIcon} onDismiss={() => {}}>
 					Message
 				</Banner>
 			</>

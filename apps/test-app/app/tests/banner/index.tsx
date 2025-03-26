@@ -12,11 +12,9 @@ export const handle = { title: "Banner" };
 export default definePage(
 	function Page() {
 		return (
-			<>
-				<Banner label="Title" icon={placeholderIcon} onDismiss={() => {}}>
-					Message
-				</Banner>
-			</>
+			<Banner label="Title" icon={placeholderIcon} onDismiss={() => {}}>
+				Message
+			</Banner>
 		);
 	},
 	{ visual: VisualTest, dismiss: DismissibleTest, actions: ActionsTest },
@@ -48,7 +46,9 @@ function VisualTest() {
 							tone.charAt(0).toUpperCase() + tone.slice(1).toLowerCase();
 						return (
 							<Banner
-								icon={placeholderIcon}
+								icon={
+									(tone === "neutral" ? placeholderIcon : undefined) as string
+								}
 								label={sentenceCaseTone}
 								key={tone}
 								tone={tone as "neutral"}

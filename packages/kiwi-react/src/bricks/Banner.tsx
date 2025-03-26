@@ -13,13 +13,6 @@ import { forwardRef, type BaseProps } from "./~utils.js";
 
 type BannerProps = BaseProps & {
 	/**
-	 * Icon to be displayed inside the banner.
-	 *
-	 * Can be a URL of an SVG from the `@itwin/itwinui-icons` package,
-	 * or a custom JSX icon.
-	 */
-	icon: string | React.JSX.Element;
-	/**
 	 * The label displayed inside the banner.
 	 */
 	label: string;
@@ -53,6 +46,7 @@ type BannerProps = BaseProps & {
 				 * @default "neutral"
 				 */
 				tone?: "neutral";
+
 				/**
 				 * The variant of the banner.
 				 *
@@ -61,10 +55,18 @@ type BannerProps = BaseProps & {
 				 * @default "outline"
 				 */
 				variant?: "outline";
+				/**
+				 * Icon to be displayed inside the banner.
+				 *
+				 * Can be a URL of an SVG from the `@itwin/itwinui-icons` package,
+				 * or a custom JSX icon.
+				 */
+				icon: string | React.JSX.Element;
 		  }
 		| {
 				tone: "info" | "positive" | "attention" | "critical";
 				variant?: "outline" | "solid";
+				icon?: undefined;
 		  }
 	);
 
@@ -114,7 +116,7 @@ export const Banner = forwardRef<"div", BannerProps>((props, forwardedRef) => {
 			return <StatusWarning className="🥝-banner-icon" />;
 		}
 
-		return undefined;
+		return null;
 	}, [iconProp, tone]);
 
 	return (

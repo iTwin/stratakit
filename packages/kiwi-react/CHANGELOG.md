@@ -1,5 +1,23 @@
 # Changelog
 
+## 5.0.0-alpha.12
+
+- **breaking**: Introduce composition API for `Field`. See [#449](https://github.com/iTwin/design-system/pull/449).
+  - Includes `<Field.Root>`, `<Field.Label>`, `<Field.Control>`, `<Field.Description>`.
+  - Added a new `<Field.ErrorMessage>` subcomponent.
+- `Tree.Item`: Added automatic overflow handling for `actions`.
+  - **breaking**: `DropdownMenu` is no longer allowed to be passed into `actions`. See [#404](https://github.com/iTwin/design-system/pull/404).
+- Added a new `Table` component, usable as `<Table.HtmlTable>` or `<Table.CustomTable>`.
+- `DropdownMenu`: menuitems will now be rendered as `<button>`.
+- Styling changes:
+  - Reset `<button>` styles.
+  - Added popover-open state styles to `<Button>` and `<IconButton>`.
+  - Improved forced-colors mode styling for `<Checkbox>`, `<Radio>` and `<Switch>`.
+- Bug fixes:
+  - Fixed `<Select.HtmlSelect>` overflowing beyond its container.
+  - Fixed `<Select.HtmlSelect>` options text not appearing in Windows in certain cases.
+  - Added missing `border-radius` to `<Skeleton>`.
+
 ## 5.0.0-alpha.11
 
 - Added `error` prop to `<Tree.Item>`.

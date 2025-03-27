@@ -56,6 +56,33 @@ test("actions", async ({ page, browserName }) => {
 	await expect(toolbar1_1).not.toBeVisible();
 });
 
+test("actions overflow", async ({ page }) => {
+	await page.goto("/tests/tree?_actionsOverflow");
+
+	const treeitem = page.getByRole("treeitem");
+	const toolbar = treeitem.getByRole("toolbar");
+	const actions = toolbar.getByRole("button");
+
+	// Hover to show actions
+	await treeitem.hover();
+	await expect(toolbar).toBeVisible();
+
+	// 3rd action and onwards should overflow
+	await expect(actions).toHaveCount(3);
+	const more = actions.nth(2);
+	await expect(more).toHaveAccessibleName("More");
+
+	// Overflow menu
+	await more.click();
+	const menu = page.getByRole("menu");
+	await expect(menu).toMatchAriaSnapshot(`
+	  - menu "More":
+	    - menuitem "Action 3"
+	    - menuitem "Action 4"
+	    - menuitem "Action 5"
+	`);
+});
+
 test("description", async ({ page }) => {
 	await page.goto("/tests/tree?description");
 

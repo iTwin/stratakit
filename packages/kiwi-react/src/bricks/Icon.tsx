@@ -345,6 +345,38 @@ DEV: StatusWarning.displayName = "StatusWarning";
 
 // ----------------------------------------------------------------------------
 
+interface MoreHorizontalProps extends Omit<BaseProps<"svg">, "children"> {}
+
+export const MoreHorizontal = forwardRef<"svg", MoreHorizontalProps>(
+	(props, forwardedRef) => {
+		return (
+			<Icon
+				{...props}
+				render={
+					<Role.svg
+						width="16"
+						height="16"
+						viewBox="0 0 16 16"
+						fill="none"
+						render={props.render}
+					>
+						<path
+							fill="currentColor"
+							fillRule="evenodd"
+							d="M3 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm6-1a1 1 0 1 1-2 0 1 1 0 0 1 2 0Zm5 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"
+							clipRule="evenodd"
+						/>
+					</Role.svg>
+				}
+				ref={forwardedRef}
+			/>
+		);
+	},
+);
+DEV: MoreHorizontal.displayName = "MoreHorizontal";
+
+// ----------------------------------------------------------------------------
+
 interface ChevronDownProps extends Omit<BaseProps<"svg">, "children"> {}
 
 export const ChevronDown = forwardRef<"svg", ChevronDownProps>(

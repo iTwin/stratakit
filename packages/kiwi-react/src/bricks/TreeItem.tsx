@@ -5,6 +5,7 @@
 import * as React from "react";
 import cx from "classnames";
 import { Role } from "@ariakit/react/role";
+import { PopoverProvider } from "@ariakit/react/popover";
 import {
 	CompositeItem,
 	type CompositeItemProps,
@@ -12,9 +13,10 @@ import {
 import { Toolbar } from "@ariakit/react/toolbar";
 import * as ListItem from "./~utils.ListItem.js";
 import { IconButton } from "./IconButton.js";
-import { ChevronDown, Icon, StatusWarning } from "./Icon.js";
+import * as DropdownMenu from "./DropdownMenu.js";
+import { ChevronDown, Icon, StatusWarning, MoreHorizontal } from "./Icon.js";
 import { forwardRef, type BaseProps } from "./~utils.js";
-import { useEventHandlers } from "./~hooks.js";
+import { useEventHandlers, useSafeContext } from "./~hooks.js";
 import { GhostAligner, useGhostAlignment } from "./~utils.GhostAligner.js";
 
 // ----------------------------------------------------------------------------
@@ -23,6 +25,7 @@ const TreeItemContext = React.createContext<
 	| {
 			expanded?: boolean;
 			selected?: boolean;
+			error?: boolean;
 	  }
 	| undefined
 >(undefined);
@@ -90,20 +93,42 @@ interface TreeItemRootProps extends Omit<BaseProps, "content" | "children"> {
 	/** Secondary line of text to display additional information about the tree item. */
 	description?: React.ReactNode;
 	/**
-	 * The actions available for the tree item. Must be a list of `Tree.ItemAction` components.
+	 * The secondary actions available for the tree item. Must be a list of `Tree.ItemAction` components.
 	 *
 	 * Example:
 	 * ```tsx
 	 * actions={[
+	 *   error && <Tree.ItemAction key={…} icon={…} label={…} />,
 	 *   <Tree.ItemAction key={…} icon={…} label={…} />,
 	 *   <Tree.ItemAction key={…} icon={…} label={…} />,
 	 * ]}
 	 * ```
+	 *
+	 * Excess actions will automatically get collapsed into an overflow menu.
+	 * - Normally, the third action and onwards will overflow.
+	 * - When the `error` prop is set, the _second_ action and onwards will overflow.
+	 *
+	 * The actions are normally hidden until the treeitem is hovered or focused.
+	 * When the `error` prop is set, the actions will be made visible by default. The first
+	 * action slot can be used to display an error-related action.
+	 *
+	 * ```tsx
+	 * actions={[
+	 *   error && <Tree.ItemAction key={…} icon={…} label={…} />,
+	 *   <Tree.ItemAction key={…} icon={…} label={…} />,
+	 *   <Tree.ItemAction key={…} icon={…} label={…} />,
+	 * ]}
+	 * ```
+	 *
+	 * @experimental
 	 */
 	actions?: React.ReactNode[];
 	/**
 	 * Specifies if the tree item is in an error state.
 	 * The associated error message id can be passed as a string.
+	 *
+	 * Can be combined with the `actions` prop to display an error-related action. The first
+	 * action will be made visible by default.
 	 *
 	 * @default false
 	 */
@@ -204,8 +229,9 @@ const TreeItemRoot = forwardRef<"div", TreeItemRootProps>(
 						level,
 						expanded,
 						selected,
+						error,
 					}),
-					[level, expanded, selected],
+					[level, expanded, selected, error],
 				)}
 			>
 				<CompositeItem
@@ -291,16 +317,37 @@ DEV: TreeItemRoot.displayName = "TreeItem.Root";
 
 // ----------------------------------------------------------------------------
 
+/**
+ * Container for secondary actions for a `<Tree.Item>`. Typically displayed on the right end.
+ *
+ * Semantically, this is a "toolbar". It enables arrow-key navigation and manage focus for its children.
+ *
+ * Excess actions will get collapsed in an overflow menu.
+ */
 const TreeItemActions = forwardRef<"div", BaseProps>((props, forwardedRef) => {
+	const { children, ...rest } = props;
+
+	const actions = React.Children.toArray(children).filter(Boolean);
+
+	const { error } = useSafeContext(TreeItemContext);
+	const limit = error ? 2 : 3;
+
 	return (
 		<Toolbar
-			{...props}
+			{...rest}
 			onClick={useEventHandlers(props.onClick, (e) => e.stopPropagation())}
 			onKeyDown={useEventHandlers(props.onKeyDown, (e) => e.stopPropagation())}
 			className={cx("🥝-tree-item-actions-container", props.className)}
+			focusLoop={false}
 			ref={forwardedRef}
 		>
-			{props.children}
+			{actions.slice(0, limit - 1)}
+			{actions.length === limit ? actions[limit - 1] : null}
+			{actions.length > limit ? (
+				<TreeItemActionsOverflowMenu>
+					{actions.slice(limit - 1)}
+				</TreeItemActionsOverflowMenu>
+			) : null}
 		</Toolbar>
 	);
 });
@@ -308,34 +355,129 @@ DEV: TreeItemActions.displayName = "TreeItemActions";
 
 // ----------------------------------------------------------------------------
 
-type IconButtonProps = React.ComponentProps<typeof IconButton>;
+const arrowKeys = ["ArrowDown", "ArrowUp", "ArrowLeft", "ArrowRight"];
 
-interface TreeItemActionProps
-	extends BaseProps<"button">,
-		Pick<IconButtonProps, "label" | "icon"> {
+const TreeItemActionsOverflowMenuContext = React.createContext(false);
+
+/**
+ * Displays overflowing actions inside a dropdown menu.
+ * @private
+ */
+function TreeItemActionsOverflowMenu({ children }: React.PropsWithChildren) {
+	const [open, setOpen] = React.useState(false);
+	const isArrowKeyPressed = React.useRef(false);
+
+	return (
+		<PopoverProvider placement="right-start">
+			<DropdownMenu.Root
+				open={open}
+				setOpen={React.useCallback((value: boolean) => {
+					// Do not open the menu using arrow keys because it conflicts with the toolbar's arrow key navigation
+					if (value && !isArrowKeyPressed.current) {
+						setOpen(true);
+					} else {
+						setOpen(false);
+					}
+				}, [])}
+			>
+				<DropdownMenu.Button
+					onKeyDown={(e) => {
+						if (arrowKeys.includes(e.key)) {
+							isArrowKeyPressed.current = true;
+						}
+						queueMicrotask(() => {
+							isArrowKeyPressed.current = false;
+						});
+					}}
+					render={<TreeItemAction label="More" icon={<MoreHorizontal />} />}
+				/>
+				<TreeItemActionsOverflowMenuContext.Provider value={true}>
+					<DropdownMenu.Content>{children}</DropdownMenu.Content>
+				</TreeItemActionsOverflowMenuContext.Provider>
+			</DropdownMenu.Root>
+		</PopoverProvider>
+	);
+}
+DEV: TreeItemActionsOverflowMenu.displayName = "TreeItemActionsOverflowMenu";
+
+// ----------------------------------------------------------------------------
+
+interface TreeItemActionProps extends Omit<BaseProps<"button">, "children"> {
 	/**
-	 * Controls the visibility of the action.
+	 * Label for the action.
+	 *
+	 * Will be displayed as a tooltip when the action is an icon-button,
+	 * otherwise will be displayed as a label inside the menu-item.
+	 */
+	label: string;
+
+	/**
+	 * Icon for the action.
+	 *
+	 * Can be a URL of an SVG from the `@itwin/itwinui-icons` package, or a JSX element.
+	 *
+	 * Required when the action is displayed as an icon-button (i.e. not overflowing).
+	 */
+	icon?: string | React.JSX.Element;
+
+	/**
+	 * Controls the visibility of the action (only when the action is displayed as icon-button).
 	 *
 	 * If `true`, the action is always visible.
 	 * If `false`, the action is hidden and becomes inaccessible, but still occupies space.
 	 *
-	 * By default, the action is shown only when the treeitem receives hover/focus.
+	 * By default, the action is shown only when the treeitem receives hover/focus. When the
+	 * treeitem has an `error`, the action will become always visible (i.e. it will default
+	 * to `true` when `error` is set).
 	 */
 	visible?: boolean;
 }
 
 /**
  * A secondary action for `<Tree.Item>`, to be passed into the `actions` prop. The action is typically
- * displayed as an icon-button on the right end of the treeitem.
+ * displayed as an icon-button or a menu-item (e.g. when overflowing).
  *
- * By default, the action appears only on hover/focus. This can be controlled by the `visible` prop.
+ * By default, the action appears only when the treeitem has hover/focus or an error. This behavior can
+ * be overridden using the `visible` prop.
  */
 const TreeItemAction = forwardRef<"button", TreeItemActionProps>(
 	(props, forwardedRef) => {
-		const { visible, ...rest } = props;
+		const { error } = useSafeContext(TreeItemContext);
+		const {
+			visible = error ? true : undefined, // visible by default during error state
+			label,
+			icon,
+			...rest
+		} = props;
+
+		// return a MenuItem if inside a Menu
+		if (React.useContext(TreeItemActionsOverflowMenuContext)) {
+			DEV: {
+				if (visible !== undefined)
+					console.warn("overflowing actions should not use `visible` prop");
+			}
+
+			return (
+				<DropdownMenu.Item
+					{...rest}
+					label={label}
+					icon={icon}
+					ref={forwardedRef}
+				/>
+			);
+		}
+
+		DEV: {
+			if (!icon)
+				throw new Error(
+					"`icon` prop is required when the action is displayed as a button",
+				);
+		}
 
 		return (
 			<IconButton
+				label={label}
+				icon={icon}
 				inert={visible === false ? true : undefined}
 				{...rest}
 				variant="ghost"

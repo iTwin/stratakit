@@ -852,6 +852,7 @@ function SandboxTree({
 									onClick={() => {
 										toggleHidden(item.id);
 									}}
+									dot={item.hidden ? "Hidden" : undefined}
 								/>,
 								<Tree.ItemAction key="copy" label="Copy" />,
 								<Tree.ItemAction key="paste" label="Paste" />,

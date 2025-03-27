@@ -5,7 +5,14 @@
 import { Role } from "@ariakit/react/role";
 import cx from "classnames";
 import * as React from "react";
-import { Dismiss, Icon, StatusWarning } from "./Icon.js";
+import {
+	Dismiss,
+	Icon,
+	StatusWarning,
+	StatusSuccess,
+	StatusError,
+	Info,
+} from "./Icon.js";
 import { Text } from "./Text.js";
 import { IconButton } from "./IconButton.js";
 
@@ -112,16 +119,16 @@ export const Banner = forwardRef<"div", BannerProps>((props, forwardedRef) => {
 		}
 
 		if (tone === "info") {
-			return <StatusWarning className="🥝-banner-icon" />;
+			return <Info className="🥝-banner-icon" />;
 		}
 		if (tone === "positive") {
-			return <StatusWarning className="🥝-banner-icon" />;
+			return <StatusSuccess className="🥝-banner-icon" />;
 		}
 		if (tone === "attention") {
 			return <StatusWarning className="🥝-banner-icon" />;
 		}
 		if (tone === "critical") {
-			return <StatusWarning className="🥝-banner-icon" />;
+			return <StatusError className="🥝-banner-icon" />;
 		}
 
 		return null;

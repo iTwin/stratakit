@@ -343,6 +343,94 @@ DEV: StatusWarning.displayName = "StatusWarning";
 
 // ----------------------------------------------------------------------------
 
+interface StatusSuccessProps extends Omit<BaseProps<"svg">, "children"> {}
+
+export const StatusSuccess = forwardRef<"svg", StatusSuccessProps>(
+	(props, forwardedRef) => {
+		return (
+			<Icon
+				{...props}
+				render={
+					<Role.svg
+						width="16"
+						height="16"
+						fill="currentColor"
+						viewBox="0 0 16 16"
+						render={props.render}
+					>
+						<path
+							fill="currentColor"
+							d="M7.748 1.726a.5.5 0 0 1 .504 0l5 2.916a.5.5 0 0 1 .248.432v5.852a.5.5 0 0 1-.248.431l-5 2.917a.5.5 0 0 1-.504 0l-5-2.916a.5.5 0 0 1-.248-.432V5.074a.5.5 0 0 1 .248-.432l5-2.916ZM8.756.862a1.5 1.5 0 0 0-1.512 0l-5 2.917A1.5 1.5 0 0 0 1.5 5.074v5.852a1.5 1.5 0 0 0 .744 1.295l5 2.917a1.5 1.5 0 0 0 1.512 0l5-2.917a1.5 1.5 0 0 0 .744-1.295V5.074a1.5 1.5 0 0 0-.744-1.295l-5-2.917Zm2.139 5.445a.5.5 0 0 0-.79-.614L6.953 9.746l-1.1-1.1a.5.5 0 0 0-.707.708l1.5 1.5a.5.5 0 0 0 .749-.047l3.5-4.5Z"
+						/>
+					</Role.svg>
+				}
+				ref={forwardedRef}
+			/>
+		);
+	},
+);
+DEV: StatusSuccess.displayName = "StatusSuccess";
+
+// ----------------------------------------------------------------------------
+
+interface StatusErrorProps extends Omit<BaseProps<"svg">, "children"> {}
+
+export const StatusError = forwardRef<"svg", StatusErrorProps>(
+	(props, forwardedRef) => {
+		return (
+			<Icon
+				{...props}
+				render={
+					<Role.svg
+						width="16"
+						height="16"
+						fill="currentColor"
+						viewBox="0 0 16 16"
+						render={props.render}
+					>
+						<path
+							fill="currentColor"
+							d="M8.252 1.726a.5.5 0 0 0-.504 0l-5 2.916a.5.5 0 0 0-.248.432v5.852a.5.5 0 0 0 .248.431l5 2.917a.5.5 0 0 0 .504 0l5-2.916a.5.5 0 0 0 .248-.432V5.074a.5.5 0 0 0-.248-.432l-5-2.916ZM7.244.862a1.5 1.5 0 0 1 1.512 0l5 2.917a1.5 1.5 0 0 1 .744 1.295v5.852a1.5 1.5 0 0 1-.744 1.295l-5 2.917a1.5 1.5 0 0 1-1.512 0l-5-2.917a1.5 1.5 0 0 1-.744-1.295V5.074a1.5 1.5 0 0 1 .744-1.295l5-2.917ZM8.75 10.75a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM8.5 5.5a.5.5 0 0 0-1 0v3a.5.5 0 0 0 1 0v-3Z"
+						/>
+					</Role.svg>
+				}
+				ref={forwardedRef}
+			/>
+		);
+	},
+);
+DEV: StatusError.displayName = "StatusError";
+
+// ----------------------------------------------------------------------------
+
+interface InfoProps extends Omit<BaseProps<"svg">, "children"> {}
+
+export const Info = forwardRef<"svg", InfoProps>((props, forwardedRef) => {
+	return (
+		<Icon
+			{...props}
+			render={
+				<Role.svg
+					width="16"
+					height="16"
+					fill="currentColor"
+					viewBox="0 0 16 16"
+					render={props.render}
+				>
+					<path
+						fill="currentColor"
+						d="M8 2a6 6 0 1 0 0 12A6 6 0 0 0 8 2ZM1 8a7 7 0 1 1 14 0A7 7 0 0 1 1 8Zm5.5-1.5a.5.5 0 0 0 0 1h1v3h-1a.5.5 0 1 0 0 1h3a.5.5 0 0 0 0-1h-1V7a.5.5 0 0 0-.5-.5H6.5Zm1.375-1a.625.625 0 1 0 0-1.25.625.625 0 0 0 0 1.25Z"
+					/>
+				</Role.svg>
+			}
+			ref={forwardedRef}
+		/>
+	);
+});
+DEV: Info.displayName = "Info";
+
+// ----------------------------------------------------------------------------
+
 interface MoreHorizontalProps extends Omit<BaseProps<"svg">, "children"> {}
 
 export const MoreHorizontal = forwardRef<"svg", MoreHorizontalProps>(

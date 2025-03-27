@@ -287,7 +287,7 @@ function PanelContent(props: {
 					filters,
 					content:
 						treeData.length > 0 ? (
-							<SandboxTree
+							<TabPanelContainer
 								name={treeName}
 								data={treeData}
 								length={Object.entries(data).length}
@@ -762,6 +762,84 @@ function findTreeItem<T extends Pick<TreeItem, "id"> & { items: T[] }>(
 }
 
 function SandboxTree({
+	deferredItems,
+	selected,
+	setSelected,
+	onExpandedChange,
+	toggleHidden,
+}: {
+	deferredItems: FlatTreeItem[];
+	selected: string | undefined;
+	setSelected: (selected: string | undefined) => void;
+	onExpandedChange: (expanded: boolean, item: FlatTreeItem) => void;
+	toggleHidden: (id: string) => void;
+}) {
+	if (deferredItems.length === 0) return <NoResultsState />;
+	return (
+		<React.Suspense fallback="Loading...">
+			<Tree.Root className={styles.tree}>
+				{deferredItems.map((item) => {
+					return (
+						<Tree.Item
+							key={item.id}
+							label={item.label}
+							description={item.description}
+							aria-level={item.level}
+							aria-posinset={item.position}
+							aria-setsize={item.size}
+							selected={item.selected}
+							onSelectedChange={() => {
+								if (selected === item.id) {
+									setSelected(undefined);
+									return;
+								}
+								setSelected(item.id);
+							}}
+							expanded={item.items.length === 0 ? undefined : item.expanded}
+							onExpandedChange={(expanded) => {
+								onExpandedChange(expanded, item);
+							}}
+							unstable_decorations={
+								<>
+									{item.color ? (
+										<ColorSwatch color={item.color} alt={item.color} />
+									) : null}
+									<Icon href={placeholderIcon} />
+								</>
+							}
+							actions={[
+								<Tree.ItemAction key="lock" icon={lockIcon} label="Lock" />,
+								<Tree.ItemAction
+									key="visibility"
+									icon={item.hidden ? hideIcon : showIcon}
+									label={item.hidden ? "Show" : "Hide"}
+									visible={item.hidden ? true : undefined}
+									onClick={() => {
+										toggleHidden(item.id);
+									}}
+								/>,
+								<Tree.ItemAction key="copy" label="Copy" />,
+								<Tree.ItemAction key="paste" label="Paste" />,
+								<Tree.ItemAction key="copy-paste" label="Copy/Paste as" />,
+								<Tree.ItemAction key="move" label="Move to" />,
+								<Tree.ItemAction key="bring-to-front" label="Bring to front" />,
+								<Tree.ItemAction key="send-to-back" label="Send to back" />,
+								<Tree.ItemAction key="group" label="Group selection" />,
+								<Tree.ItemAction key="ungroup" label="Ungroup" />,
+								<Tree.ItemAction key="rename" label="Rename" />,
+								<Tree.ItemAction key="show-hide" label="Show/hide" />,
+								<Tree.ItemAction key="lock-unlock" label="Lock/unlock" />,
+								<Tree.ItemAction key="isolate" label="Isolate object" />,
+							]}
+						/>
+					);
+				})}
+			</Tree.Root>
+		</React.Suspense>
+	);
+}
+
+function TabPanelContainer({
 	name: treeName,
 	data: treeData,
 	length,
@@ -791,6 +869,19 @@ function SandboxTree({
 		treeData.map((item) => createTreeItem(item)),
 	);
 
+	const onExpandedChange = React.useCallback(
+		(expanded: boolean, item: FlatTreeItem) => {
+			setItems((prev) => {
+				const treeItem = findTreeItem(prev, item.id);
+				if (!treeItem) return prev;
+				const newData = [...prev];
+				treeItem.expanded = expanded; // TODO: should be immutable https://github.com/iTwin/kiwi/pull/300#discussion_r1941452941
+				return newData;
+			});
+		},
+		[],
+	);
+
 	const { filteredTree, itemCount } = useFilteredTree({
 		items,
 		filters,
@@ -802,94 +893,43 @@ function SandboxTree({
 		setItemCount(itemCount);
 	}, [setItemCount, itemCount]);
 
-	const deferredItems = React.useDeferredValue(flatItems);
-	if (deferredItems.length === 0) return <NoResultsState />;
-
 	const panelRef = React.useRef<HTMLDivElement>(null);
+	const deferredItems = React.useDeferredValue(flatItems);
 	const Element = !isSearchboxVisible && length > 1 ? Tabs.TabPanel : "div";
+
+	const tabPanelProps = React.useMemo(
+		() => ({ tabId: treeName, unmountOnHide: true }),
+		[treeName],
+	);
+
+	const nonTabPanelProps = React.useMemo(
+		() => ({
+			...((panelRef?.current?.dataset.open || length === 1) && {
+				"data-open": true,
+			}),
+		}),
+		[length],
+	);
 
 	return (
 		<Element
 			key={treeName}
-			{...(Element !== "div" && { tabId: treeName })}
 			className={styles.tabPanel}
 			focusable={false}
-			{...(Element !== "div" && { unmountOnHide: true })}
 			ref={panelRef}
 			{...(Element === "div" &&
 				(panelRef?.current?.dataset.open || length === 1) && {
 					"data-open": true,
 				})}
+			{...(Element === "div" ? nonTabPanelProps : tabPanelProps)}
 		>
-			<React.Suspense fallback="Loading...">
-				<Tree.Root className={styles.tree}>
-					{deferredItems.map((item) => {
-						return (
-							<Tree.Item
-								key={item.id}
-								label={item.label}
-								description={item.description}
-								aria-level={item.level}
-								aria-posinset={item.position}
-								aria-setsize={item.size}
-								selected={item.selected}
-								onSelectedChange={() => {
-									if (selected === item.id) {
-										setSelected(undefined);
-										return;
-									}
-									setSelected(item.id);
-								}}
-								expanded={item.items.length === 0 ? undefined : item.expanded}
-								onExpandedChange={(expanded) => {
-									setItems((prev) => {
-										const treeItem = findTreeItem(prev, item.id);
-										if (!treeItem) return prev;
-										const newData = [...prev];
-										treeItem.expanded = expanded; // TODO: should be immutable https://github.com/iTwin/kiwi/pull/300#discussion_r1941452941
-										return newData;
-									});
-								}}
-								unstable_decorations={
-									<>
-										{item.color ? (
-											<ColorSwatch color={item.color} alt={item.color} />
-										) : null}
-										<Icon href={placeholderIcon} />
-									</>
-								}
-								actions={[
-									<Tree.ItemAction key="lock" icon={lockIcon} label="Lock" />,
-									<Tree.ItemAction
-										key="visibility"
-										icon={item.hidden ? hideIcon : showIcon}
-										label={item.hidden ? "Show" : "Hide"}
-										visible={item.hidden ? true : undefined}
-										onClick={() => {
-											toggleHidden(item.id);
-										}}
-									/>,
-									<Tree.ItemAction key="copy" label="Copy" />,
-									<Tree.ItemAction key="paste" label="Paste" />,
-									<Tree.ItemAction key="copy-paste" label="Copy/Paste as" />,
-									<Tree.ItemAction key="move" label="Move to" />,
-									<Tree.ItemAction
-										key="bring-to-front"
-										label="Bring to front"
-									/>,
-									<Tree.ItemAction key="send-to-back" label="Send to back" />,
-									<Tree.ItemAction key="group" label="Group selection" />,
-									<Tree.ItemAction key="ungroup" label="Ungroup" />,
-									<Tree.ItemAction key="rename" label="Rename" />,
-									<Tree.ItemAction key="show-hide" label="Show/hide" />,
-									<Tree.ItemAction key="lock-unlock" label="Lock/unlock" />,
-									<Tree.ItemAction key="isolate" label="Isolate object" />,
-								]}
-							/>
-						);
-					})}
-				</Tree.Root>
-			</React.Suspense>
+			<SandboxTree
+				deferredItems={deferredItems}
+				selected={selected}
+				setSelected={setSelected}
+				onExpandedChange={onExpandedChange}
+				toggleHidden={toggleHidden}
+			/>
 		</Element>
 	);
 }

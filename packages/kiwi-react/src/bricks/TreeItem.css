@@ -189,5 +189,9 @@
 				background-color: SelectedItem;
 			}
 		}
+
+		&:where([data-kiwi-error="true"], [data-kiwi-selected="true"]) .🥝-tree-item-description {
+			color: inherit;
+		}
 	}
 }

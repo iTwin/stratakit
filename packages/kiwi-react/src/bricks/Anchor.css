@@ -44,11 +44,6 @@
 
 		transition: all 150ms ease-out;
 		transition-property: color, text-decoration-color, text-underline-offset;
-
-		&:where(button) {
-			border: none;
-			background: transparent;
-		}
 	}
 
 	@layer modifiers {

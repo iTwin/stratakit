@@ -8,7 +8,7 @@ import AxeBuilder from "@axe-core/playwright";
 test("default", async ({ page }) => {
 	await page.goto("/tests/banner");
 
-	const banner = page.getByRole("alert");
+	const banner = page.locator(".🥝-banner").first();
 	await expect(banner).toBeVisible();
 
 	const dismissButton = page.locator("button");
@@ -37,7 +37,7 @@ test.describe("@a11y", () => {
 	test("Axe Page Scan", async ({ page }) => {
 		await page.goto("/tests/banner");
 
-		const banner = page.getByRole("alert");
+		const banner = page.locator(".🥝-banner").first();
 		await expect(banner).toBeVisible();
 
 		const axe = new AxeBuilder({ page });

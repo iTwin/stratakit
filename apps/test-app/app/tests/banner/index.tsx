@@ -12,15 +12,20 @@ export const handle = { title: "Banner" };
 export default definePage(
 	function Page() {
 		return (
-			<Banner label="Title" icon={placeholderIcon} onDismiss={() => {}}>
+			<Banner label="Title" onDismiss={() => {}}>
 				Message
 			</Banner>
 		);
 	},
-	{ visual: VisualTest, dismiss: DismissibleTest, actions: ActionsTest },
+	{
+		visual: VisualTest,
+		customIcons: CustomIcons,
+		dismiss: DismissibleTest,
+		actions: ActionsTest,
+	},
 );
 
-function VisualTest() {
+function VisualTest({ customIcon = false }: { customIcon?: boolean }) {
 	const tones = [
 		"neutral",
 		"info",
@@ -46,9 +51,7 @@ function VisualTest() {
 							tone.charAt(0).toUpperCase() + tone.slice(1).toLowerCase();
 						return (
 							<Banner
-								icon={
-									(tone === "neutral" ? placeholderIcon : undefined) as string
-								}
+								icon={customIcon ? placeholderIcon : undefined}
 								label={sentenceCaseTone}
 								key={tone}
 								tone={tone as "neutral"}
@@ -71,11 +74,14 @@ function VisualTest() {
 	);
 }
 
+function CustomIcons() {
+	return VisualTest({ customIcon: true });
+}
+
 function DismissibleTest() {
 	return (
 		<div style={{ display: "grid", gap: 4 }}>
 			<Banner
-				icon={placeholderIcon}
 				label="Title"
 				onDismiss={() => {
 					console.log("Dismissed");
@@ -83,9 +89,7 @@ function DismissibleTest() {
 			>
 				Message
 			</Banner>
-			<Banner icon={placeholderIcon} label="Title">
-				Message
-			</Banner>
+			<Banner label="Title">Message</Banner>
 		</div>
 	);
 }
@@ -128,8 +132,8 @@ function ActionsTest() {
 function ActionsTextBanner({ actions }: { actions: React.ReactNode }) {
 	return (
 		<Banner
-			icon={placeholderIcon}
 			label="Privacy Notice"
+			tone="info"
 			onDismiss={() => {
 				console.log("Dismissed");
 			}}

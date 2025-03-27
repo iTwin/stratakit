@@ -20,6 +20,16 @@ import { forwardRef, type BaseProps } from "./~utils.js";
 
 type BannerProps = BaseProps & {
 	/**
+	 * Icon to be displayed inside the banner.
+	 *
+	 * Can be a URL of an SVG from the `@itwin/itwinui-icons` package,
+	 * or a custom JSX icon.
+	 *
+	 * - If `icon=undefined` and `tone="neutral"`, no icon is shown.
+	 * - If `icon=undefined` and `tone!="neutral"`, the status icon will be shown.
+	 */
+	icon?: string | React.JSX.Element;
+	/**
 	 * The label displayed inside the banner.
 	 *
 	 * Serves as the accessible name for the banner.
@@ -79,18 +89,10 @@ type BannerProps = BaseProps & {
 				 * @default "outline"
 				 */
 				variant?: "outline";
-				/**
-				 * Icon to be displayed inside the banner.
-				 *
-				 * Can be a URL of an SVG from the `@itwin/itwinui-icons` package,
-				 * or a custom JSX icon.
-				 */
-				icon: string | React.JSX.Element;
 		  }
 		| {
 				tone: "info" | "positive" | "attention" | "critical";
 				variant?: "outline" | "solid";
-				icon?: undefined;
 		  }
 	);
 
@@ -118,14 +120,14 @@ export const Banner = forwardRef<"div", BannerProps>((props, forwardedRef) => {
 	} = props;
 
 	const icon = React.useMemo(() => {
-		if (tone === "neutral" && !!iconProp) {
-			if (React.isValidElement(iconProp)) {
-				return iconProp;
-			}
+		if (iconProp) {
 			if (typeof iconProp === "string") {
 				return <Icon href={iconProp} className="🥝-banner-icon" />;
 			}
-			return null;
+
+			return React.cloneElement(iconProp, {
+				className: cx("🥝-banner-icon", iconProp.props),
+			});
 		}
 
 		if (tone === "info") {

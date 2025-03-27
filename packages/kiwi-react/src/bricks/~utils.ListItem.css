@@ -120,11 +120,7 @@
 }
 
 @media (forced-colors: active) {
-	.🥝-list-item {
-		--🥝icon-color: currentColor;
-
-		&:where([disabled], :disabled, [aria-disabled="true"]) {
-			color: GrayText;
-		}
+	.🥝-list-item:where([disabled], :disabled, [aria-disabled="true"]) {
+		color: GrayText;
 	}
 }

@@ -130,7 +130,6 @@
 			background-color: ButtonFace;
 			border: 1px solid ButtonBorder;
 			color: ButtonText;
-			--🥝icon-color: ButtonText;
 		}
 	}
 
@@ -170,10 +169,6 @@
 					var(--🌀button-state--hover, var(--ids-color-icon-neutral-emphasis))
 					var(--🌀button-state--pressed, var(--ids-color-icon-neutral-emphasis))
 					var(--🌀button-state--disabled, var(--ids-color-icon-neutral-disabled));
-
-				@media (forced-colors: active) {
-					--🥝icon-color: ButtonText;
-				}
 			}
 		}
 
@@ -220,7 +215,6 @@
 			@media (forced-colors: active) {
 				background-color: SelectedItem;
 				color: SelectedItemText;
-				--🥝icon-color: SelectedItemText;
 			}
 		}
 
@@ -232,7 +226,6 @@
 			@media (forced-colors: active) {
 				border-color: GrayText;
 				color: GrayText;
-				--🥝icon-color: GrayText;
 			}
 		}
 	}

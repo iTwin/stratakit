@@ -80,7 +80,6 @@ type BannerProps = BaseProps & {
 
 /**
  * A banner used to alert the user of something.
- * Follows the [WAI-ARIA Alert pattern](https://www.w3.org/WAI/ARIA/apg/patterns/alert/).
  *
  * Example:
  * ```tsx
@@ -130,7 +129,6 @@ export const Banner = forwardRef<"div", BannerProps>((props, forwardedRef) => {
 
 	return (
 		<Role
-			role="alert"
 			{...rest}
 			data-kiwi-tone={tone}
 			data-kiwi-variant={variant}

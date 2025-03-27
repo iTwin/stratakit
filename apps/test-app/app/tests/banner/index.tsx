@@ -93,23 +93,21 @@ function DismissibleTest() {
 function ActionsTest() {
 	return (
 		<div style={{ display: "grid", gap: 4 }}>
-			<ActionsTextBannerComponent
-				actions={[<Button key="1">Manage cookies</Button>]}
-			/>
-			<ActionsTextBannerComponent
+			<ActionsTextBanner actions={[<Button key="1">Manage cookies</Button>]} />
+			<ActionsTextBanner
 				actions={[
 					<Anchor key="1" render={<button />}>
 						Manage cookies
 					</Anchor>,
 				]}
 			/>
-			<ActionsTextBannerComponent
+			<ActionsTextBanner
 				actions={[
 					<Button key="1">Manage cookies</Button>,
 					<Button key="2">Don't show again</Button>,
 				]}
 			/>
-			<ActionsTextBannerComponent
+			<ActionsTextBanner
 				actions={[
 					<Anchor key="1" render={<button />}>
 						Manage cookies
@@ -123,9 +121,7 @@ function ActionsTest() {
 	);
 }
 
-function ActionsTextBannerComponent({
-	actions,
-}: { actions: React.ReactNode[] }) {
+function ActionsTextBanner({ actions }: { actions: React.ReactNode[] }) {
 	return (
 		<Banner
 			icon={placeholderIcon}

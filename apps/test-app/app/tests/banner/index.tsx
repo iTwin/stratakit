@@ -55,7 +55,6 @@ function VisualTest({ customIcon = false }: { customIcon?: boolean }) {
 								onDismiss={() => {
 									setIsDismissed(true);
 								}}
-								data-dismissed={isDismissed}
 								actions={<Button key="1">Action</Button>}
 							>
 								Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do

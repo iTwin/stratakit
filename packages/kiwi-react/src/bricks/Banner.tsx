@@ -14,6 +14,8 @@ import { forwardRef, type BaseProps } from "./~utils.js";
 type BannerProps = BaseProps & {
 	/**
 	 * The label displayed inside the banner.
+	 *
+	 * Serves as the accessible name for the banner.
 	 */
 	label: string;
 	/**
@@ -25,15 +27,22 @@ type BannerProps = BaseProps & {
 	 */
 	onDismiss?: () => void;
 	/**
-	 * The actions available for the banner. Must be a list of `Tree.ItemAction` components.
+	 * The actions available for the banner.
 	 *
-	 * Example:
+	 * Example with `Button`:
 	 * ```tsx
 	 * actions={[
-	 *   <Tree.ItemAction key={…} icon={…} label={…} />,
-	 *   <Tree.ItemAction key={…} icon={…} label={…} />,
+	 *   <Button key={…} onClick={}>Action 1</Button>,
+	 *   <Button key={…} onClick={}>Action 2</Button>,
 	 * ]}
 	 * ```
+	 *
+	 * Example with `Anchor` as `Button`:
+	 * ```tsx
+	 * actions={[
+	 *   <Anchor key={…} render={<button />} onClick={}>Action 1</Anchor>,
+	 *   <Anchor key={…} render={<button />} onClick={}>Action 2</Anchor>,
+	 * ]}
 	 */
 	actions?: React.ReactNode[];
 } & (
@@ -46,7 +55,6 @@ type BannerProps = BaseProps & {
 				 * @default "neutral"
 				 */
 				tone?: "neutral";
-
 				/**
 				 * The variant of the banner.
 				 *
@@ -72,13 +80,14 @@ type BannerProps = BaseProps & {
 
 /**
  * A banner used to alert the user of something.
+ * Follows the [WAI-ARIA Alert pattern](https://www.w3.org/WAI/ARIA/apg/patterns/alert/).
  *
  * Example:
  * ```tsx
- * <Banner />
+ * <Banner label="Title" icon={placeholderIcon} onDismiss={() => {}}>
+ *   Message
+ * </Banner>
  * ```
- *
- * Supports a `tone` prop to change the tone (color) of the banner.
  */
 export const Banner = forwardRef<"div", BannerProps>((props, forwardedRef) => {
 	const {
@@ -160,5 +169,4 @@ export const Banner = forwardRef<"div", BannerProps>((props, forwardedRef) => {
 		</Role>
 	);
 });
-
 DEV: Banner.displayName = "Banner";

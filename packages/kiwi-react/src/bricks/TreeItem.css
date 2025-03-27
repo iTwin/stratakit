@@ -167,10 +167,6 @@
 }
 
 @media (forced-colors: active) {
-	.🥝-tree-item:focus-visible::before {
-		outline-color: Highlight;
-	}
-
 	.🥝-tree-item-node:is(.🥝-list-item) {
 		&:where([data-kiwi-error="true"], [data-kiwi-selected="true"]) {
 			forced-color-adjust: none;

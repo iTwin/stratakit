@@ -120,9 +120,11 @@ export const Banner = forwardRef<"div", BannerProps>((props, forwardedRef) => {
 	} = props;
 
 	const icon = React.useMemo(() => {
+		const defaultIconProps = { className: "🥝-banner-icon" };
+
 		if (iconProp) {
 			if (typeof iconProp === "string") {
-				return <Icon href={iconProp} className="🥝-banner-icon" />;
+				return <Icon href={iconProp} {...defaultIconProps} />;
 			}
 
 			return React.cloneElement(iconProp, {
@@ -131,16 +133,16 @@ export const Banner = forwardRef<"div", BannerProps>((props, forwardedRef) => {
 		}
 
 		if (tone === "info") {
-			return <Info className="🥝-banner-icon" />;
+			return <Info {...defaultIconProps} />;
 		}
 		if (tone === "positive") {
-			return <StatusSuccess className="🥝-banner-icon" />;
+			return <StatusSuccess {...defaultIconProps} />;
 		}
 		if (tone === "attention") {
-			return <StatusWarning className="🥝-banner-icon" />;
+			return <StatusWarning {...defaultIconProps} />;
 		}
 		if (tone === "critical") {
-			return <StatusError className="🥝-banner-icon" />;
+			return <StatusError {...defaultIconProps} />;
 		}
 
 		return null;

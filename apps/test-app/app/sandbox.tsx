@@ -924,6 +924,7 @@ function Subheader({ tabs }: { tabs?: React.ReactNode }) {
 	) : (
 		<IconButton
 			className={styles.shiftIconRight}
+			data-icon="Search"
 			icon={searchIcon}
 			label="Search"
 			dot={filterOrSearchActive ? "Some filters or search applied" : undefined}
@@ -941,6 +942,41 @@ function Subheader({ tabs }: { tabs?: React.ReactNode }) {
 		return `Showing ${itemCount} tree items`;
 	}, [isFiltered, itemCount]);
 
+	const [isOverflowing, setIsOverflowing] = React.useState(false);
+
+	React.useEffect(() => {
+		const tabList = tabsRef.current;
+		if (tabList) {
+			setIsOverflowing(tabList.scrollWidth > tabList.clientWidth);
+		}
+	}, []);
+	if (!isOverflowing) {
+		return (
+			<div className={styles.subheader}>
+				<VisuallyHidden aria-live="polite" aria-atomic={true}>
+					{filteredNotification}
+				</VisuallyHidden>
+				{tabs && !isSearchboxVisible ? (
+					<Tabs.TabList className={styles.tabList} tone="accent" ref={tabsRef}>
+						{tabs}
+					</Tabs.TabList>
+				) : null}
+
+				{isSearchboxVisible ? (
+					<TextBox.Root className={styles.searchInput}>
+						<TextBox.Icon href={searchIcon} />
+						<TextBox.Input
+							placeholder="Search"
+							ref={searchInputRef}
+							onChange={(e) => setSearch(e.currentTarget.value)}
+						/>
+					</TextBox.Root>
+				) : null}
+
+				<div className={styles.subheaderActions}>{actions}</div>
+			</div>
+		);
+	}
 	return (
 		<div className={styles.subheader}>
 			<VisuallyHidden aria-live="polite" aria-atomic={true}>

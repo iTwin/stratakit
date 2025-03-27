@@ -112,33 +112,43 @@
 
 .subheaderActions {
 	margin-inline-start: auto;
+
 	right: 0;
 	/* display: flex;
 	align-items: center; */
 	position: absolute;
 	transform: translateY(-1.5px);
+	padding-inline: 12px;
+	background: var(--ids-color-bg-page-base);
+	/* mask-image: linear-gradient(to left, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%);
+	-webkit-mask-image: linear-gradient(to left, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%); */
 }
 
 .tabList {
 	align-self: flex-end;
 	margin-block-end: -1px;
-	padding-inline: 12px;
-	border-bottom: 1px solid var(--ids-color-border-neutral-base);
+	padding-inline: 15px;
+	overflow: auto;
+	margin-right: 24px;
+	position: relative;
 
 	/* clip-path: inset(0 40px 0 0); */
 	/* transform: translateX(-30px); */
 }
 
 .tabListWrapper {
-	margin-bottom: 6px;
+	margin-bottom: 4px;
+	border-bottom: 1px solid var(--ids-color-border-neutral-base);
 	/* width: 100%; */
 }
 
 .subheaderContent {
 	overflow: auto;
 	display: flex;
-	margin-block: 6px;
-	flex: 1;
+	margin-block: 4px;
+	/* padding-inline-start: 10px; */
+	box-sizing: border-box;
+	/* padding-top: 5px; */
 }
 
 .emptyState {

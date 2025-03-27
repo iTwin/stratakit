@@ -36,22 +36,31 @@ type BannerProps = BaseProps & {
 	/**
 	 * The actions available for the banner.
 	 *
-	 * Example with `Button`:
+	 * Example with one action:
 	 * ```tsx
-	 * actions={[
-	 *   <Button key={…} onClick={}>Action 1</Button>,
-	 *   <Button key={…} onClick={}>Action 2</Button>,
-	 * ]}
+	 * actions={<Button key={…} onClick={}>Action</Button>}
 	 * ```
 	 *
-	 * Example with `Anchor` as `Button`:
+	 * Example with two `Button`s:
 	 * ```tsx
-	 * actions={[
-	 *   <Anchor key={…} render={<button />} onClick={}>Action 1</Anchor>,
-	 *   <Anchor key={…} render={<button />} onClick={}>Action 2</Anchor>,
-	 * ]}
+	 * actions={
+	 *   <>
+	 *     <Button key={…} onClick={…}>Action 1</Button>,
+	 *     <Button key={…} onClick={…}>Action 2</Button>,
+	 *   </>
+	 * }
+	 * ```
+	 *
+	 * Example with two `Anchor`s as `Button`:
+	 * ```tsx
+	 * actions={
+	 *   <>
+	 *     <Anchor key={…} render={<button />} onClick={…}>Action 1</Anchor>,
+	 *     <Anchor key={…} render={<button />} onClick={…}>Action 2</Anchor>,
+	 *   </>
+	 * }
 	 */
-	actions?: React.ReactNode[];
+	actions?: React.ReactNode;
 } & (
 		| {
 				/**
@@ -152,7 +161,7 @@ export const Banner = forwardRef<"div", BannerProps>((props, forwardedRef) => {
 					{children}
 				</Text>
 
-				{actions != null && actions.length > 0 ? (
+				{actions != null ? (
 					<div className="🥝-banner-actions">{actions}</div>
 				) : null}
 

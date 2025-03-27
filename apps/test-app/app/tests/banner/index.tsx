@@ -57,7 +57,7 @@ function VisualTest() {
 									setIsDismissed(true);
 								}}
 								data-dismissed={isDismissed}
-								actions={[<Button key="1">Action</Button>]}
+								actions={<Button key="1">Action</Button>}
 							>
 								Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
 								eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
@@ -93,35 +93,39 @@ function DismissibleTest() {
 function ActionsTest() {
 	return (
 		<div style={{ display: "grid", gap: 4 }}>
-			<ActionsTextBanner actions={[<Button key="1">Manage cookies</Button>]} />
+			<ActionsTextBanner actions={<Button key="1">Manage cookies</Button>} />
 			<ActionsTextBanner
-				actions={[
+				actions={
 					<Anchor key="1" render={<button />}>
 						Manage cookies
-					</Anchor>,
-				]}
+					</Anchor>
+				}
 			/>
 			<ActionsTextBanner
-				actions={[
-					<Button key="1">Manage cookies</Button>,
-					<Button key="2">Don't show again</Button>,
-				]}
+				actions={
+					<>
+						<Button key="1">Manage cookies</Button>
+						<Button key="2">Don't show again</Button>
+					</>
+				}
 			/>
 			<ActionsTextBanner
-				actions={[
-					<Anchor key="1" render={<button />}>
-						Manage cookies
-					</Anchor>,
-					<Anchor key="2" render={<button />}>
-						Don't show again
-					</Anchor>,
-				]}
+				actions={
+					<>
+						<Anchor key="1" render={<button />}>
+							Manage cookies
+						</Anchor>
+						<Anchor key="2" render={<button />}>
+							Don't show again
+						</Anchor>
+					</>
+				}
 			/>
 		</div>
 	);
 }
 
-function ActionsTextBanner({ actions }: { actions: React.ReactNode[] }) {
+function ActionsTextBanner({ actions }: { actions: React.ReactNode }) {
 	return (
 		<Banner
 			icon={placeholderIcon}

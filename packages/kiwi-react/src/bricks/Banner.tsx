@@ -97,6 +97,7 @@ type BannerProps = BaseProps & {
  */
 export const Banner = forwardRef<"div", BannerProps>((props, forwardedRef) => {
 	const {
+		className,
 		children,
 		icon: iconProp,
 		label,
@@ -139,30 +140,25 @@ export const Banner = forwardRef<"div", BannerProps>((props, forwardedRef) => {
 			{...rest}
 			data-kiwi-tone={tone}
 			data-kiwi-variant={variant}
-			className={cx("🥝-banner", props.className)}
+			className={cx("🥝-banner", className)}
 			ref={forwardedRef}
 		>
-			<div className={cx("🥝-banner-grid", props.className)}>
+			<div className="🥝-banner-grid">
 				{icon}
 
-				<span className={cx("🥝-banner-label", props.className)}>{label}</span>
+				<span className="🥝-banner-label">{label}</span>
 
-				<Text
-					variant="body-sm"
-					className={cx("🥝-banner-message", props.className)}
-				>
+				<Text variant="body-sm" className="🥝-banner-message">
 					{children}
 				</Text>
 
 				{actions != null && actions.length > 0 ? (
-					<div className={cx("🥝-banner-actions", props.className)}>
-						{actions}
-					</div>
+					<div className="🥝-banner-actions">{actions}</div>
 				) : null}
 
 				{onDismiss ? (
 					<IconButton
-						className={cx("🥝-banner-dismiss-button", props.className)}
+						className="🥝-banner-dismiss-button"
 						variant="ghost"
 						label={`Dismiss ${label}`}
 						labelVariant="visually-hidden"

@@ -11,11 +11,7 @@ export const handle = { title: "Banner" };
 
 export default definePage(
 	function Page() {
-		return (
-			<Banner label="Title" onDismiss={() => {}}>
-				Message
-			</Banner>
-		);
+		return <Banner>Message</Banner>;
 	},
 	{
 		visual: VisualTest,
@@ -81,15 +77,22 @@ function CustomIcons() {
 function DismissibleTest() {
 	return (
 		<div style={{ display: "grid", gap: 4 }}>
+			<Banner>Banner</Banner>
 			<Banner
-				label="Title"
 				onDismiss={() => {
 					console.log("Dismissed");
 				}}
 			>
-				Message
+				Banner with dismiss button
 			</Banner>
-			<Banner label="Title">Message</Banner>
+			<Banner
+				label="Privacy Notice"
+				onDismiss={() => {
+					console.log("Dismissed");
+				}}
+			>
+				Banner with dismiss button and label
+			</Banner>
 		</div>
 	);
 }
@@ -132,7 +135,6 @@ function ActionsTest() {
 function ActionsTextBanner({ actions }: { actions: React.ReactNode }) {
 	return (
 		<Banner
-			label="Privacy Notice"
 			tone="info"
 			onDismiss={() => {
 				console.log("Dismissed");

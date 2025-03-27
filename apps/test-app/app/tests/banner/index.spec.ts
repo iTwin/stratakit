@@ -10,10 +10,28 @@ test("default", async ({ page }) => {
 
 	const banner = page.locator(".🥝-banner").first();
 	await expect(banner).toBeVisible();
+});
 
-	const dismissButton = page.locator("button");
-	await expect(dismissButton).toBeVisible();
-	await expect(dismissButton).toHaveAccessibleName("Dismiss Title");
+test("dismiss", async ({ page }) => {
+	await page.goto("/tests/banner?dismiss=true");
+
+	const banners = page.locator(".🥝-banner");
+	await expect(banners).toHaveCount(3);
+
+	// Dismiss button should not exist
+	await expect(banners.nth(0).locator("button")).not.toBeVisible();
+
+	// Dismiss button's accessible name should be "Dismiss" since there is no label
+	await expect(banners.nth(1).locator("button")).toBeVisible();
+	await expect(banners.nth(1).locator("button")).toHaveAccessibleName(
+		"Dismiss",
+	);
+
+	// Dismiss button's accessible name should be "Dismiss Privacy Notice" since label="Privacy Notice"
+	await expect(banners.nth(2).locator("button")).toBeVisible();
+	await expect(banners.nth(2).locator("button")).toHaveAccessibleName(
+		"Dismiss Privacy Notice",
+	);
 });
 
 test.describe("@visual", () => {

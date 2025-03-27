@@ -34,7 +34,7 @@ type BannerProps = BaseProps & {
 	 *
 	 * Serves as the accessible name for the banner.
 	 */
-	label: string;
+	label?: string;
 	/**
 	 * Callback invoked when the dismiss ("❌") button is clicked.
 	 *
@@ -146,6 +146,13 @@ export const Banner = forwardRef<"div", BannerProps>((props, forwardedRef) => {
 		return null;
 	}, [iconProp, tone]);
 
+	const dismissButtonLabel = React.useMemo(() => {
+		if (label) {
+			return `Dismiss ${label}`;
+		}
+		return "Dismiss";
+	}, [label]);
+
 	return (
 		<Role
 			{...rest}
@@ -157,7 +164,7 @@ export const Banner = forwardRef<"div", BannerProps>((props, forwardedRef) => {
 			<div className="🥝-banner-grid">
 				{icon}
 
-				<span className="🥝-banner-label">{label}</span>
+				{label ? <span className="🥝-banner-label">{label}</span> : null}
 
 				<Text variant="body-sm" className="🥝-banner-message">
 					{children}
@@ -171,7 +178,7 @@ export const Banner = forwardRef<"div", BannerProps>((props, forwardedRef) => {
 					<IconButton
 						className="🥝-banner-dismiss-button"
 						variant="ghost"
-						label={`Dismiss ${label}`}
+						label={dismissButtonLabel}
 						labelVariant="visually-hidden"
 						icon={<Dismiss />}
 						onClick={onDismiss}

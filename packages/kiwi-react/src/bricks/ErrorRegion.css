@@ -100,8 +100,6 @@
 		display: grid;
 		grid-template-columns: [message-start] 1fr [message-end dismiss-start] auto [dismiss-end];
 		grid-template-rows: [main-start] auto [main-end actions-start] auto [actions-end];
-		row-gap: 8px;
-		column-gap: 4px;
 	}
 }
 
@@ -115,11 +113,13 @@
 .🥝-error-region-item-dismiss {
 	@layer base {
 		grid-row: main;
+		margin-inline-start: 4px;
 	}
 }
 
 .🥝-error-region-item-actions {
 	@layer base {
 		grid-row: actions;
+		margin-block-start: 8px;
 	}
 }

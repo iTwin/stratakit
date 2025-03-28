@@ -10,35 +10,20 @@
 		--🥝button-padding-inline: var(--✨padding-inline);
 		--🥝ghost-inline-offset: var(--✨padding-inline);
 	}
+}
 
-	@layer modifiers {
-		&:where([data-kiwi-dot="true"]) {
-			&::after {
-				content: "";
+.🥝-icon-button-dot:is(.🥝-dot) {
+	@layer base {
+		position: absolute;
+		inset-block-start: 2px;
+		inset-inline-end: 2px;
+	}
+}
 
-				position: absolute;
-				inset-block-start: 2px;
-				inset-inline-end: 2px;
-
-				display: inline-block;
-				inline-size: 4px;
-				block-size: 4px;
-
-				border-radius: 9999px;
-				background-color: var(--ids-color-icon-accent-strong);
-
-				@media (forced-colors: active) {
-					background-color: CanvasText;
-				}
-			}
-		}
-
-		&:where([data-kiwi-dot="true"][aria-pressed="true"]) {
-			&::after {
-				@media (forced-colors: active) {
-					background-color: SelectedItemText;
-				}
-			}
+@media (forced-colors: active) {
+	.🥝-icon-button-dot:is(.🥝-dot) {
+		:where(.🥝-icon-button[aria-pressed="true"]) & {
+			background-color: SelectedItemText;
 		}
 	}
 }

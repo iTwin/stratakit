@@ -342,7 +342,12 @@ export const StatusIcon = forwardRef<"svg", StatusIconProps>(
 						viewBox="0 0 16 16"
 						render={render}
 					>
-						<path fill="currentColor" d={paths[status]} />
+						<path
+							fill="currentColor"
+							fillRule="evenodd"
+							d={paths[status]}
+							clipRule="evenodd"
+						/>
 					</Role.svg>
 				}
 				ref={forwardedRef}

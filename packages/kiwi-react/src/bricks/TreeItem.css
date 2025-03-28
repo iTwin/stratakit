@@ -173,17 +173,13 @@
 		}
 
 		&:where([data-kiwi-error="true"]) {
-			color: MarkText;
 			--🥝list-item-background-color: Mark;
+			--🥝tree-item-color: MarkText;
 		}
 
 		&:where([data-kiwi-selected="true"]) {
-			color: SelectedItemText;
 			--🥝list-item-background-color: SelectedItem;
-		}
-
-		&:where([data-kiwi-error="true"], [data-kiwi-selected="true"]) .🥝-tree-item-description {
-			color: inherit;
+			--🥝tree-item-color: SelectedItemText;
 		}
 	}
 }

@@ -38,7 +38,7 @@ export default definePage(function Page({ items = 2 }) {
 							onDismiss={() =>
 								setErrors((prev) => prev.filter((e) => e !== error))
 							}
-							actions={[
+							actions={
 								<Anchor
 									render={<button />}
 									key="retry"
@@ -47,8 +47,8 @@ export default definePage(function Page({ items = 2 }) {
 									}
 								>
 									Retry
-								</Anchor>,
-							]}
+								</Anchor>
+							}
 						/>
 					);
 				})}

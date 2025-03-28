@@ -865,7 +865,7 @@ function SandboxTree({
 								</>
 							}
 							messageId={`${treeItemId}-message`}
-							actions={[
+							actions={
 								<Anchor
 									render={<button />}
 									key="retry"
@@ -876,8 +876,8 @@ function SandboxTree({
 									}}
 								>
 									Retry
-								</Anchor>,
-							]}
+								</Anchor>
+							}
 							onDismiss={() => {
 								setFailingIds((prev) => {
 									return prev.filter((id) => id !== item.id);

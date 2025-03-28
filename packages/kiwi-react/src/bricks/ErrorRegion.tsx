@@ -31,7 +31,7 @@ interface ErrorRegionRootProps extends Omit<BaseProps, "children"> {
 	/**
 	 * A list of error items where each item describes an individual error. Must be a list of `ErrorRegion.Item` components.
 	 */
-	items?: React.ReactNode[];
+	items?: React.ReactNode;
 	/**
 	 * The controlled expanded state of the error.
 	 */
@@ -126,7 +126,7 @@ interface ErrorRegionItemProps extends Omit<BaseProps, "children"> {
 	/**
 	 * The actions available for this item. Must be a list of anchors, each rendered as a button using `<Anchor render={<button />} />`.
 	 */
-	actions?: React.ReactNode[];
+	actions?: React.ReactNode;
 	/**
 	 * Callback fired when the error item is dismissed.
 	 */

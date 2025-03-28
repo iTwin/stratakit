@@ -168,13 +168,19 @@
 
 @media (forced-colors: active) {
 	.🥝-tree-item-node:is(.🥝-list-item) {
+		--🥝list-item-background-color: Canvas;
+		--🥝tree-item-color: CanvasText;
+
 		&:where([data-kiwi-error="true"], [data-kiwi-selected="true"]) {
 			forced-color-adjust: none;
 		}
 
 		&:where([data-kiwi-error="true"]) {
-			--🥝list-item-background-color: Mark;
-			--🥝tree-item-color: MarkText;
+			.🥝-tree-item-content,
+			.🥝-tree-item-decoration {
+				background-color: Mark;
+				color: MarkText;
+			}
 		}
 
 		&:where([data-kiwi-selected="true"]) {

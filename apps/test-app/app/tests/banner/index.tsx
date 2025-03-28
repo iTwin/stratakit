@@ -10,7 +10,6 @@ import {
 	VisuallyHidden,
 } from "@itwin/itwinui-react/bricks";
 import placeholderIcon from "@itwin/itwinui-icons/placeholder.svg";
-import type * as React from "react";
 
 export const handle = { title: "Banner" };
 
@@ -95,23 +94,47 @@ function DismissibleTest() {
 function ActionsTest() {
 	return (
 		<div style={{ display: "grid", gap: 4 }}>
-			<ActionsTextBanner actions={<Button key="1">Manage cookies</Button>} />
-			<ActionsTextBanner
+			<Banner
+				tone="info"
+				onDismiss={() => {
+					console.log("Dismissed");
+				}}
+				actions={<Button key="1">Manage cookies</Button>}
+				label={<VisuallyHidden>Privacy Notice</VisuallyHidden>}
+				message="This site uses cookies to improve your experience."
+			/>
+			<Banner
+				tone="info"
+				onDismiss={() => {
+					console.log("Dismissed");
+				}}
 				actions={
 					<Anchor key="1" render={<button />}>
 						Manage cookies
 					</Anchor>
 				}
+				label={<VisuallyHidden>Privacy Notice</VisuallyHidden>}
+				message="This site uses cookies to improve your experience."
 			/>
-			<ActionsTextBanner
+			<Banner
+				tone="info"
+				onDismiss={() => {
+					console.log("Dismissed");
+				}}
 				actions={
 					<>
 						<Button key="1">Manage cookies</Button>
 						<Button key="2">Don't show again</Button>
 					</>
 				}
+				label={<VisuallyHidden>Privacy Notice</VisuallyHidden>}
+				message="This site uses cookies to improve your experience."
 			/>
-			<ActionsTextBanner
+			<Banner
+				tone="info"
+				onDismiss={() => {
+					console.log("Dismissed");
+				}}
 				actions={
 					<>
 						<Anchor key="1" render={<button />}>
@@ -122,21 +145,9 @@ function ActionsTest() {
 						</Anchor>
 					</>
 				}
+				label={<VisuallyHidden>Privacy Notice</VisuallyHidden>}
+				message="This site uses cookies to improve your experience."
 			/>
 		</div>
-	);
-}
-
-function ActionsTextBanner({ actions }: { actions: React.ReactNode }) {
-	return (
-		<Banner
-			tone="info"
-			onDismiss={() => {
-				console.log("Dismissed");
-			}}
-			actions={actions}
-			label={<VisuallyHidden>Privacy Notice</VisuallyHidden>}
-			message="This site uses cookies to improve your experience."
-		/>
 	);
 }

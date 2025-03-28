@@ -1,0 +1,21 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+.🥝-dot {
+	@layer base {
+		display: inline-block;
+		inline-size: 4px;
+		block-size: 4px;
+
+		border-radius: 9999px;
+		background-color: var(--ids-color-bg-accent-base);
+		border: 1px solid var(--ids-color-border-glow-strong-default);
+	}
+}
+
+@media (forced-colors: active) {
+	.🥝-dot {
+		background-color: CanvasText;
+	}
+}

@@ -47,27 +47,12 @@ test.describe("@visual", () => {
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
 
-	test("button", async ({ page }) => {
-		await page.goto("/tests/anchor?visual=true&button=true");
-		await expect(page.locator("body")).toHaveScreenshot();
-	});
-
 	test("forced-colors", async ({ page, browserName }) => {
 		test.skip(
 			browserName === "webkit",
 			"Webkit does not support forced-colors",
 		);
 		await page.goto("/tests/anchor?visual=true");
-		await page.emulateMedia({ forcedColors: "active" });
-		await expect(page.locator("body")).toHaveScreenshot();
-	});
-
-	test("forced-colors button", async ({ page, browserName }) => {
-		test.skip(
-			browserName === "webkit",
-			"Webkit does not support forced-colors",
-		);
-		await page.goto("/tests/anchor?visual=true&button=true");
 		await page.emulateMedia({ forcedColors: "active" });
 		await expect(page.locator("body")).toHaveScreenshot();
 	});

@@ -3,8 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 import { definePage } from "~/~utils.tsx";
-import type * as React from "react";
-import { Anchor, Button } from "@itwin/itwinui-react/bricks";
+import { Anchor } from "@itwin/itwinui-react/bricks";
 
 export const handle = { title: "Anchor" };
 
@@ -26,21 +25,26 @@ export default definePage(
 	{ visual: VisualTest },
 );
 
-function VisualTest({ button = false }) {
+function VisualTest() {
 	const tones = ["neutral", "accent", "critical"] as const;
 
 	return (
 		<div style={{ display: "grid", gap: 4, justifyContent: "start" }}>
 			{tones.map((tone) => {
-				let content: React.ReactNode = "Example";
-				if (button) {
-					if (tone === "critical") return null;
-					content = <Button tone={tone}>Example</Button>;
-				}
 				return (
-					<Anchor key={tone} tone={tone} href="https://example.com">
-						{content}
-					</Anchor>
+					<div key={tone} style={{ display: "flex", gap: 6 }}>
+						<Anchor key={tone} tone={tone} href="https://example.com">
+							"Example"
+						</Anchor>
+						<Anchor
+							render={<button />}
+							key={tone}
+							tone={tone}
+							href="https://example.com"
+						>
+							"Example"
+						</Anchor>
+					</div>
 				);
 			})}
 		</div>

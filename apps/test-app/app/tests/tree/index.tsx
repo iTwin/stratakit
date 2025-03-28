@@ -151,12 +151,13 @@ export default definePage(
 	{ _actionsOverflow: ActionsOverflowTest },
 );
 
-function ActionsOverflowTest({ count = 5 }) {
+function ActionsOverflowTest({ count = 5, dot = false }) {
 	const actions = Array.from({ length: Number(count) }).map((_, index) => (
 		<Tree.ItemAction
 			key={`${index + 1}`}
 			label={`Action ${index + 1}`}
 			icon={placeholderIcon}
+			dot={dot ? "Something's going on" : undefined}
 		/>
 	));
 

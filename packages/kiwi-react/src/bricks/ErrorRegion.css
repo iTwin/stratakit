@@ -98,7 +98,8 @@
 .🥝-error-region-item {
 	@layer base {
 		display: grid;
-		grid-template-columns: 1fr auto;
+		grid-template-columns: [message-start] 1fr [message-end dismiss-start] auto [dismiss-end];
+		grid-template-rows: [main-start] auto [main-end actions-start] auto [actions-end];
 		row-gap: 8px;
 		column-gap: 4px;
 	}
@@ -106,19 +107,19 @@
 
 .🥝-error-region-item-message {
 	@layer base {
-		grid-row: 1;
+		grid-row: main;
 		align-self: center;
 	}
 }
 
 .🥝-error-region-item-dismiss {
 	@layer base {
-		grid-row: 1;
+		grid-row: main;
 	}
 }
 
 .🥝-error-region-item-actions {
 	@layer base {
-		grid-row: 2;
+		grid-row: actions;
 	}
 }

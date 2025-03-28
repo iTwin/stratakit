@@ -174,20 +174,12 @@
 
 		&:where([data-kiwi-error="true"]) {
 			color: MarkText;
-
-			&,
-			& .🥝-tree-item-actions-container:is(.🥝-list-item-decoration) {
-				background-color: Mark;
-			}
+			--🥝list-item-background-color: Mark;
 		}
 
 		&:where([data-kiwi-selected="true"]) {
 			color: SelectedItemText;
-
-			&,
-			& .🥝-tree-item-actions-container:is(.🥝-list-item-decoration) {
-				background-color: SelectedItem;
-			}
+			--🥝list-item-background-color: SelectedItem;
 		}
 
 		&:where([data-kiwi-error="true"], [data-kiwi-selected="true"]) .🥝-tree-item-description {

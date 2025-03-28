@@ -14,7 +14,7 @@
 		&:where([data-kiwi-expanded="true"]) {
 			--🥝chevron-down-rotate: -0.5turn;
 			--🥝error-region-container-padding-block-end: 12px;
-			--🥝error-region-header-border-bottom-radius: 0;
+			--🥝error-region-header-border-end-radius: 0;
 		}
 
 		&:where([data-kiwi-visible="true"]) {
@@ -47,15 +47,20 @@
 }
 
 .🥝-error-region-header {
+	--✨container-border-radius: 8px;
+	--✨container-border-width: 1px;
+	--✨border-radius: calc(var(--✨container-border-radius) - var(--✨container-border-width));
+
 	@layer base {
 		min-block-size: 2rem;
 		margin-block: -4px;
 		padding-inline-start: 8px;
 		padding-inline-end: 4px;
 		font-weight: 400;
-		border-radius: inherit;
-		border-bottom-left-radius: var(--🥝error-region-header-border-bottom-radius, inherit);
-		border-bottom-right-radius: var(--🥝error-region-header-border-bottom-radius, inherit);
+		border-start-start-radius: var(--✨border-radius);
+		border-start-end-radius: var(--✨border-radius);
+		border-end-start-radius: var(--🥝error-region-header-border-end-radius, var(--✨border-radius));
+		border-end-end-radius: var(--🥝error-region-header-border-end-radius, var(--✨border-radius));
 	}
 }
 

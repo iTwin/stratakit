@@ -47,7 +47,7 @@
 
 .🥝-error-region-header {
 	@layer base {
-		block-size: 2rem;
+		min-block-size: 2rem;
 		margin-block: -4px;
 		padding-inline-start: 8px;
 		padding-inline-end: 4px;

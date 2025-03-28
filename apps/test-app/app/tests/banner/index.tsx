@@ -19,13 +19,12 @@ export default definePage(
 	},
 	{
 		visual: VisualTest,
-		customIcons: CustomIcons,
 		dismiss: DismissibleTest,
 		actions: ActionsTest,
 	},
 );
 
-function VisualTest({ customIcon = false }: { customIcon?: boolean }) {
+function VisualTest({ customIcons = false }: { customIcons?: boolean }) {
 	const tones = [
 		"neutral",
 		"info",
@@ -42,7 +41,7 @@ function VisualTest({ customIcon = false }: { customIcon?: boolean }) {
 						tone.charAt(0).toUpperCase() + tone.slice(1).toLowerCase();
 					return (
 						<Banner
-							icon={customIcon ? placeholderIcon : undefined}
+							icon={customIcons ? placeholderIcon : undefined}
 							label={sentenceCaseTone}
 							message={`Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
 								eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
@@ -60,10 +59,6 @@ function VisualTest({ customIcon = false }: { customIcon?: boolean }) {
 			</div>
 		</div>
 	);
-}
-
-function CustomIcons() {
-	return VisualTest({ customIcon: true });
 }
 
 function DismissibleTest() {

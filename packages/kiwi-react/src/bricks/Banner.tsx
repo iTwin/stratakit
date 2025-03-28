@@ -104,7 +104,7 @@ export const Banner = forwardRef<"div", BannerProps>((props, forwardedRef) => {
 
 	const baseId = React.useId();
 	const labelId = `${baseId}-label`;
-	const dismissIconId = `${baseId}-dismiss`;
+	const dismissId = `${baseId}-dismiss`;
 
 	const toneToStatus = {
 		positive: "success",
@@ -156,16 +156,17 @@ export const Banner = forwardRef<"div", BannerProps>((props, forwardedRef) => {
 				) : null}
 
 				{onDismiss ? (
-					<IconButton
-						id={dismissIconId}
-						className="🥝-banner-dismiss-button"
-						variant="ghost"
-						aria-labelledby={`${dismissIconId} ${labelId}`}
-						label="Dismiss"
-						labelVariant="visually-hidden"
-						icon={<Dismiss />}
-						onClick={onDismiss}
-					/>
+					<>
+						<IconButton
+							id={dismissId}
+							className="🥝-banner-dismiss-button"
+							variant="ghost"
+							label="Dismiss"
+							aria-labelledby={`${dismissId} ${labelId}`}
+							icon={<Dismiss />}
+							onClick={onDismiss}
+						/>
+					</>
 				) : null}
 			</div>
 		</Role>

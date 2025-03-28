@@ -21,17 +21,14 @@ test("dismiss", async ({ page }) => {
 	// Dismiss button should not exist
 	await expect(banners.nth(0).locator("button")).not.toBeVisible();
 
-	// Dismiss button's accessible name should be "Dismiss" since there is no label
-	await expect(banners.nth(1).locator("button")).toBeVisible();
-	await expect(banners.nth(1).locator("button")).toHaveAccessibleName(
-		"Dismiss",
-	);
-
-	// Dismiss button's accessible name should be "Dismiss Privacy Notice" since label="Privacy Notice"
-	await expect(banners.nth(2).locator("button")).toBeVisible();
-	await expect(banners.nth(2).locator("button")).toHaveAccessibleName(
-		"Dismiss Privacy Notice",
-	);
+	// Dismiss button's accessible name should be "Dismiss Label" since label="Label"
+	// regardless of if the label is visually hidden (i=2) or not (i=1).
+	for (let i = 1; i < 3; i++) {
+		await expect(banners.nth(i).locator("button")).toBeVisible();
+		await expect(banners.nth(i).locator("button")).toHaveAccessibleName(
+			"Dismiss Label",
+		);
+	}
 });
 
 test.describe("@visual", () => {

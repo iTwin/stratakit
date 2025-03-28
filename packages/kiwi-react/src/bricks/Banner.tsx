@@ -32,9 +32,9 @@ type BannerProps = Omit<BaseProps, "children"> & {
 	/**
 	 * The label displayed inside the banner.
 	 *
-	 * Serves as the accessible name for the banner.
+	 * Consider using a `VisuallyHidden` component if the label is not meant to be visible.
 	 */
-	label?: string;
+	label: React.ReactNode;
 	/**
 	 * The content of the banner.
 	 */
@@ -109,6 +109,10 @@ export const Banner = forwardRef<"div", BannerProps>((props, forwardedRef) => {
 		...rest
 	} = props;
 
+	const baseId = React.useId();
+	const labelId = `${baseId}-label`;
+	const dismissIconId = `${baseId}-dismiss`;
+
 	const icon = React.useMemo(() => {
 		const defaultIconProps = { className: "🥝-banner-icon" };
 
@@ -138,13 +142,6 @@ export const Banner = forwardRef<"div", BannerProps>((props, forwardedRef) => {
 		return null;
 	}, [iconProp, tone]);
 
-	const dismissButtonLabel = React.useMemo(() => {
-		if (label) {
-			return `Dismiss ${label}`;
-		}
-		return "Dismiss";
-	}, [label]);
-
 	return (
 		<Role
 			{...rest}
@@ -156,7 +153,9 @@ export const Banner = forwardRef<"div", BannerProps>((props, forwardedRef) => {
 			<div className="🥝-banner-grid">
 				{icon}
 
-				{label ? <span className="🥝-banner-label">{label}</span> : null}
+				<span className="🥝-banner-label" id={labelId}>
+					{label}
+				</span>
 
 				<Text variant="body-sm" className="🥝-banner-message">
 					{message}
@@ -168,9 +167,11 @@ export const Banner = forwardRef<"div", BannerProps>((props, forwardedRef) => {
 
 				{onDismiss ? (
 					<IconButton
+						id={dismissIconId}
 						className="🥝-banner-dismiss-button"
 						variant="ghost"
-						label={dismissButtonLabel}
+						aria-labelledby={`${dismissIconId} ${labelId}`}
+						label="Dismiss"
 						labelVariant="visually-hidden"
 						icon={<Dismiss />}
 						onClick={onDismiss}

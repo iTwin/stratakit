@@ -3,7 +3,12 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 import { definePage } from "~/~utils.tsx";
-import { Anchor, Banner, Button } from "@itwin/itwinui-react/bricks";
+import {
+	Anchor,
+	Banner,
+	Button,
+	VisuallyHidden,
+} from "@itwin/itwinui-react/bricks";
 import placeholderIcon from "@itwin/itwinui-icons/placeholder.svg";
 import type * as React from "react";
 
@@ -11,7 +16,7 @@ export const handle = { title: "Banner" };
 
 export default definePage(
 	function Page() {
-		return <Banner message="Message" />;
+		return <Banner label="Label" message="Message" />;
 	},
 	{
 		visual: VisualTest,
@@ -65,16 +70,20 @@ function CustomIcons() {
 function DismissibleTest() {
 	return (
 		<div style={{ display: "grid", gap: 4 }}>
-			<Banner message="Banner" />
 			<Banner
-				message="Banner with dismiss button"
+				label="Label"
+				message="Banner with visual label and with no dismiss button"
+			/>
+			<Banner
+				label={"Label"}
+				message="Banner with visual label and with dismiss button"
 				onDismiss={() => {
 					console.log("Dismissed");
 				}}
 			/>
 			<Banner
-				label="Privacy Notice"
-				message="Banner with dismiss button and label"
+				label={<VisuallyHidden>Label</VisuallyHidden>}
+				message="Banner with visually hidden label and with dismiss button"
 				onDismiss={() => {
 					console.log("Dismissed");
 				}}
@@ -126,6 +135,7 @@ function ActionsTextBanner({ actions }: { actions: React.ReactNode }) {
 				console.log("Dismissed");
 			}}
 			actions={actions}
+			label={<VisuallyHidden>Privacy Notice</VisuallyHidden>}
 			message="This site uses cookies to improve your experience."
 		/>
 	);

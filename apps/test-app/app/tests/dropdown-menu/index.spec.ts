@@ -113,6 +113,16 @@ test("shortcuts", async ({ page }) => {
 	await expect(editShortcut.nth(1)).toHaveText("E");
 });
 
+test("dot", async ({ page }) => {
+	await page.goto("/tests/dropdown-menu");
+
+	const button = page.getByRole("button", { name: "Actions" });
+	await button.click();
+
+	const filterItem = page.getByRole("menuitem", { name: "Filter" });
+	await expect(filterItem).toHaveAccessibleDescription("Some filters applied");
+});
+
 test.describe("@visual", () => {
 	test("default", async ({ page }) => {
 		await page.goto("/tests/dropdown-menu?visual=true");

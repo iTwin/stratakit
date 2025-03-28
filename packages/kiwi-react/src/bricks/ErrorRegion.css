@@ -35,6 +35,7 @@
 		display: var(--🥝error-region-container-display, flex);
 		flex-direction: column;
 
+		max-block-size: 350px;
 		padding-block-start: 4px;
 		padding-block-end: var(--🥝error-region-container-padding-block-end, 4px);
 
@@ -74,6 +75,7 @@
 .🥝-error-region-dialog {
 	@layer base {
 		margin-block-start: 4px;
+		overflow: auto;
 	}
 }
 

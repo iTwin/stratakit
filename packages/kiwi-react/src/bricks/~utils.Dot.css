@@ -5,8 +5,8 @@
 .🥝-dot {
 	@layer base {
 		display: inline-block;
-		inline-size: 4px;
-		block-size: 4px;
+		inline-size: var(--🥝dot-size, 4px);
+		block-size: var(--🥝dot-size, 4px);
 
 		border-radius: 9999px;
 		background-color: var(--ids-color-bg-accent-base);

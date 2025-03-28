@@ -152,27 +152,29 @@ const ErrorRegionItem = forwardRef<"div", ErrorRegionItemProps>(
 				className={cx("🥝-error-region-item", props.className)}
 				ref={forwardedRef}
 			>
-				<Text
-					id={messageId}
-					variant="body-sm"
-					className="🥝-error-region-item-message"
-				>
-					{message}
-				</Text>
-				{onDismiss && (
-					<>
-						<VisuallyHidden id={dismissId}>Dismiss</VisuallyHidden>
-						<IconButton
-							className="🥝-error-region-item-dismiss"
-							variant="ghost"
-							label="Dismiss"
-							aria-labelledby={`${dismissId} ${messageId}`}
-							icon={<Dismiss />}
-							onClick={onDismiss}
-						/>
-					</>
-				)}
-				<div className="🥝-error-region-item-actions">{actions}</div>
+				<div className="🥝-error-region-item-container">
+					<Text
+						id={messageId}
+						variant="body-sm"
+						className="🥝-error-region-item-message"
+					>
+						{message}
+					</Text>
+					{onDismiss && (
+						<>
+							<VisuallyHidden id={dismissId}>Dismiss</VisuallyHidden>
+							<IconButton
+								className="🥝-error-region-item-dismiss"
+								variant="ghost"
+								label="Dismiss"
+								aria-labelledby={`${dismissId} ${messageId}`}
+								icon={<Dismiss />}
+								onClick={onDismiss}
+							/>
+						</>
+					)}
+					<div className="🥝-error-region-item-actions">{actions}</div>
+				</div>
 			</Role.div>
 		);
 	},

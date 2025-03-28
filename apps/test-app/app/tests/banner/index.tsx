@@ -5,7 +5,7 @@
 import { definePage } from "~/~utils.tsx";
 import { Anchor, Banner, Button } from "@itwin/itwinui-react/bricks";
 import placeholderIcon from "@itwin/itwinui-icons/placeholder.svg";
-import * as React from "react";
+import type * as React from "react";
 
 export const handle = { title: "Banner" };
 
@@ -30,40 +30,30 @@ function VisualTest({ customIcon = false }: { customIcon?: boolean }) {
 		"critical",
 	] as const;
 
-	const variants = ["outline", "solid"] as const;
-
-	const [isDismissed, setIsDismissed] = React.useState(false);
-
 	return (
 		<div style={{ display: "grid", gap: 4 }}>
-			{variants.map((variant) => (
-				<div key={variant} style={{ display: "grid", gap: 4 }}>
-					{tones.map((tone) => {
-						if (variant === "solid" && tone === "neutral") {
-							return null;
-						}
-
-						const sentenceCaseTone =
-							tone.charAt(0).toUpperCase() + tone.slice(1).toLowerCase();
-						return (
-							<Banner
-								icon={customIcon ? placeholderIcon : undefined}
-								label={sentenceCaseTone}
-								message={`Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+			<div style={{ display: "grid", gap: 4 }}>
+				{tones.map((tone) => {
+					const sentenceCaseTone =
+						tone.charAt(0).toUpperCase() + tone.slice(1).toLowerCase();
+					return (
+						<Banner
+							icon={customIcon ? placeholderIcon : undefined}
+							label={sentenceCaseTone}
+							message={`Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
 								eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
 								enim ad minim veniam, quis nostrud exercitation ullamco laboris`}
-								key={tone}
-								tone={tone as "neutral"}
-								variant={variant as "outline"}
-								onDismiss={() => {
-									setIsDismissed(true);
-								}}
-								actions={<Button key="1">Action</Button>}
-							/>
-						);
-					})}
-				</div>
-			))}
+							key={tone}
+							tone={tone}
+							variant="outline"
+							onDismiss={() => {
+								console.log("Dismissed");
+							}}
+							actions={<Button key="1">Action</Button>}
+						/>
+					);
+				})}
+			</div>
 		</div>
 	);
 }

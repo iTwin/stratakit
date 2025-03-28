@@ -75,30 +75,19 @@ type BannerProps = Omit<BaseProps, "children"> & {
 	 * }
 	 */
 	actions?: React.ReactNode;
-} & (
-		| {
-				/**
-				 * The tone of the banner.
-				 *
-				 * When `tone="neutral"`, only the `"outline"` `variant` is supported.
-				 *
-				 * @default "neutral"
-				 */
-				tone?: "neutral";
-				/**
-				 * The variant of the banner.
-				 *
-				 * When `tone="neutral"`, only the `"outline"` `variant` is supported.
-				 *
-				 * @default "outline"
-				 */
-				variant?: "outline";
-		  }
-		| {
-				tone: "info" | "positive" | "attention" | "critical";
-				variant?: "outline" | "solid";
-		  }
-	);
+	/**
+	 * The tone of the banner.
+	 *
+	 * @default "neutral"
+	 */
+	tone?: "neutral" | "info" | "positive" | "attention" | "critical";
+	/**
+	 * The variant of the banner.
+	 *
+	 * @default "outline"
+	 */
+	variant?: "outline";
+};
 
 /**
  * A banner used to alert the user of something.

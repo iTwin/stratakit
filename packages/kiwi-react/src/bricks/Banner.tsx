@@ -18,7 +18,7 @@ import { IconButton } from "./IconButton.js";
 
 import { forwardRef, type BaseProps } from "./~utils.js";
 
-type BannerProps = BaseProps & {
+type BannerProps = Omit<BaseProps, "children"> & {
 	/**
 	 * Icon to be displayed inside the banner.
 	 *
@@ -35,6 +35,10 @@ type BannerProps = BaseProps & {
 	 * Serves as the accessible name for the banner.
 	 */
 	label?: string;
+	/**
+	 * The content of the banner.
+	 */
+	message?: React.ReactNode;
 	/**
 	 * Callback invoked when the dismiss ("❌") button is clicked.
 	 *
@@ -99,17 +103,14 @@ type BannerProps = BaseProps & {
 /**
  * A banner used to alert the user of something.
  *
- * Example:
  * ```tsx
- * <Banner label="Title" icon={placeholderIcon} onDismiss={() => {}}>
- *   Message
- * </Banner>
+ * <Banner label="Title" message="Message" icon={placeholderIcon} onDismiss={() => {}} />
  * ```
  */
 export const Banner = forwardRef<"div", BannerProps>((props, forwardedRef) => {
 	const {
 		className,
-		children,
+		message,
 		icon: iconProp,
 		label,
 		actions,
@@ -169,7 +170,7 @@ export const Banner = forwardRef<"div", BannerProps>((props, forwardedRef) => {
 				{label ? <span className="🥝-banner-label">{label}</span> : null}
 
 				<Text variant="body-sm" className="🥝-banner-message">
-					{children}
+					{message}
 				</Text>
 
 				{actions != null ? (

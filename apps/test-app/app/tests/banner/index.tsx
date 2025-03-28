@@ -11,7 +11,7 @@ export const handle = { title: "Banner" };
 
 export default definePage(
 	function Page() {
-		return <Banner>Message</Banner>;
+		return <Banner message="Message" />;
 	},
 	{
 		visual: VisualTest,
@@ -49,6 +49,9 @@ function VisualTest({ customIcon = false }: { customIcon?: boolean }) {
 							<Banner
 								icon={customIcon ? placeholderIcon : undefined}
 								label={sentenceCaseTone}
+								message={`Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+								eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+								enim ad minim veniam, quis nostrud exercitation ullamco laboris`}
 								key={tone}
 								tone={tone as "neutral"}
 								variant={variant as "outline"}
@@ -56,11 +59,7 @@ function VisualTest({ customIcon = false }: { customIcon?: boolean }) {
 									setIsDismissed(true);
 								}}
 								actions={<Button key="1">Action</Button>}
-							>
-								Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-								eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-								enim ad minim veniam, quis nostrud exercitation ullamco laboris
-							</Banner>
+							/>
 						);
 					})}
 				</div>
@@ -76,22 +75,20 @@ function CustomIcons() {
 function DismissibleTest() {
 	return (
 		<div style={{ display: "grid", gap: 4 }}>
-			<Banner>Banner</Banner>
+			<Banner message="Banner" />
 			<Banner
+				message="Banner with dismiss button"
 				onDismiss={() => {
 					console.log("Dismissed");
 				}}
-			>
-				Banner with dismiss button
-			</Banner>
+			/>
 			<Banner
 				label="Privacy Notice"
+				message="Banner with dismiss button and label"
 				onDismiss={() => {
 					console.log("Dismissed");
 				}}
-			>
-				Banner with dismiss button and label
-			</Banner>
+			/>
 		</div>
 	);
 }
@@ -139,8 +136,7 @@ function ActionsTextBanner({ actions }: { actions: React.ReactNode }) {
 				console.log("Dismissed");
 			}}
 			actions={actions}
-		>
-			This site uses cookies to improve your experience.
-		</Banner>
+			message="This site uses cookies to improve your experience."
+		/>
 	);
 }

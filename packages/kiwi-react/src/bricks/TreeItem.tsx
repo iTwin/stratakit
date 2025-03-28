@@ -25,7 +25,7 @@ const TreeItemContext = React.createContext<
 	| {
 			expanded?: boolean;
 			selected?: boolean;
-			error?: boolean;
+			error?: TreeItemRootProps["error"];
 	  }
 	| undefined
 >(undefined);

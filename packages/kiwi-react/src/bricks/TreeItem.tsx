@@ -14,7 +14,7 @@ import { Toolbar } from "@ariakit/react/toolbar";
 import * as ListItem from "./~utils.ListItem.js";
 import { IconButton } from "./IconButton.js";
 import * as DropdownMenu from "./DropdownMenu.js";
-import { Icon, StatusWarning, MoreHorizontal } from "./Icon.js";
+import { Icon, StatusIcon, MoreHorizontal } from "./Icon.js";
 import { forwardRef, type BaseProps } from "./~utils.js";
 import { useEventHandlers, useSafeContext } from "./~hooks.js";
 import { GhostAligner, useGhostAlignment } from "./~utils.GhostAligner.js";
@@ -204,7 +204,7 @@ const TreeItemRoot = forwardRef<"div", TreeItemRootProps>(
 		const descriptionId = React.useId();
 		const decorationId = React.useId();
 
-		const icon = error ? <StatusWarning /> : iconProp;
+		const icon = error ? <StatusIcon status="warning" /> : iconProp;
 		const describedBy = React.useMemo(() => {
 			const idRefs = [];
 			if (description) idRefs.push(descriptionId);

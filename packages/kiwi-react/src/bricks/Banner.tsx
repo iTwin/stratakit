@@ -5,14 +5,7 @@
 import { Role } from "@ariakit/react/role";
 import cx from "classnames";
 import * as React from "react";
-import {
-	Dismiss,
-	Icon,
-	StatusWarning,
-	StatusSuccess,
-	StatusError,
-	Info,
-} from "./Icon.js";
+import { Dismiss, Icon, StatusIcon } from "./Icon.js";
 import { Text } from "./Text.js";
 import { IconButton } from "./IconButton.js";
 
@@ -113,6 +106,13 @@ export const Banner = forwardRef<"div", BannerProps>((props, forwardedRef) => {
 	const labelId = `${baseId}-label`;
 	const dismissIconId = `${baseId}-dismiss`;
 
+	const toneToStatus = {
+		positive: "success",
+		attention: "warning",
+		critical: "error",
+		info: "info",
+	} as const;
+
 	const icon = React.useMemo(() => {
 		const defaultIconProps = { className: "🥝-banner-icon" };
 
@@ -126,21 +126,11 @@ export const Banner = forwardRef<"div", BannerProps>((props, forwardedRef) => {
 			});
 		}
 
-		if (tone === "info") {
-			return <Info {...defaultIconProps} />;
+		if (tone === "neutral") {
+			return null;
 		}
-		if (tone === "positive") {
-			return <StatusSuccess {...defaultIconProps} />;
-		}
-		if (tone === "attention") {
-			return <StatusWarning {...defaultIconProps} />;
-		}
-		if (tone === "critical") {
-			return <StatusError {...defaultIconProps} />;
-		}
-
-		return null;
-	}, [iconProp, tone]);
+		return <StatusIcon status={toneToStatus[tone]} {...defaultIconProps} />;
+	}, [iconProp, tone, toneToStatus]);
 
 	return (
 		<Role

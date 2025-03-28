@@ -92,20 +92,6 @@
 }
 
 .🥝-error-region-item {
-	@layer base {
-		border-block-start: 1px solid var(--ids-color-border-page-base);
-
-		&:first-child {
-			--🥝error-region-item-container-border-block-start: 8px;
-		}
-
-		&:last-child {
-			--🥝error-region-item-container-border-block-end: 4px;
-		}
-	}
-}
-
-.🥝-error-region-item-container {
 	--✨container-padding: 8px;
 	--✨icon-size: 1rem;
 	--✨gap: 4px;
@@ -117,13 +103,18 @@
 		grid-template-columns: [message-start] 1fr [message-end dismiss-start] auto [dismiss-end];
 		grid-template-rows: [main-start] auto [main-end actions-start] auto [actions-end];
 
-		padding-block-start: var(
-			--🥝error-region-item-container-border-block-start,
-			var(--✨padding-block)
-		);
-		padding-block-end: var(--🥝error-region-item-container-border-block-end, var(--✨padding-block));
+		padding-block: var(--✨padding-block);
 		padding-inline-start: var(--✨padding-inline-start);
 		padding-inline-end: 4px;
+		border-block-start: 1px solid var(--ids-color-border-page-base);
+
+		&:first-child {
+			padding-block-start: 8px;
+		}
+
+		&:last-child {
+			padding-block-end: 4px;
+		}
 	}
 }
 

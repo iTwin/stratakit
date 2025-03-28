@@ -37,4 +37,5 @@
 @import "./Tree.css" layer(itwinui.components);
 @import "./TreeItem.css" layer(itwinui.components);
 
+@import "./AccordionItem.css" layer(itwinui.components);
 @import "./Field.css" layer(itwinui.components);

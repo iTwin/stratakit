@@ -57,11 +57,13 @@ test("actions", async ({ page, browserName }) => {
 });
 
 test("actions overflow", async ({ page }) => {
-	await page.goto("/tests/tree?_actionsOverflow");
+	await page.goto("/tests/tree?_actionsOverflow&dot");
 
 	const treeitem = page.getByRole("treeitem");
 	const toolbar = treeitem.getByRole("toolbar");
 	const actions = toolbar.getByRole("button");
+	const menu = page.getByRole("menu");
+	const menuitem = menu.getByRole("menuitem").first();
 
 	// Hover to show actions
 	await treeitem.hover();
@@ -74,13 +76,17 @@ test("actions overflow", async ({ page }) => {
 
 	// Overflow menu
 	await more.click();
-	const menu = page.getByRole("menu");
 	await expect(menu).toMatchAriaSnapshot(`
 	  - menu "More":
 	    - menuitem "Action 3"
 	    - menuitem "Action 4"
 	    - menuitem "Action 5"
 	`);
+
+	// Dot
+	const firstAction = actions.first();
+	await expect(firstAction).toHaveAccessibleDescription("Something's going on");
+	await expect(menuitem).toHaveAccessibleDescription("Something's going on");
 });
 
 test("description", async ({ page }) => {

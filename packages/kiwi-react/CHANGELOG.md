@@ -1,5 +1,15 @@
 # Changelog
 
+## 5.0.0-alpha.13
+
+- Added new `unstable_ErrorRegion` component for displaying errors originating from `Tree`. See [#454](https://github.com/iTwin/design-system/pull/454).
+- Added initial `unstable_Toolbar` component. See [#529](https://github.com/iTwin/design-system/pull/529).
+- Added `dot` prop to `<Tree.ItemAction>`, matching the `dot` prop from `<IconButton>`.
+  - Also added `unstable_dot` prop to `<DropdownMenu.Item>`, although it's not meant to be used currently.
+- Styling changes:
+  - Improved forced-colors mode styling for `<Icon>`, `<Button>` as anchor, and `<Tree.Item>`.
+  - Updated the color of `dot` used in `<IconButton>`.
+
 ## 5.0.0-alpha.12
 
 - **breaking**: Introduce composition API for `Field`. See [#449](https://github.com/iTwin/design-system/pull/449).

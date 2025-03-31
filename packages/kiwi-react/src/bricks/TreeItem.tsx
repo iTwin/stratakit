@@ -125,10 +125,10 @@ interface TreeItemRootProps extends Omit<BaseProps, "content" | "children"> {
 	actions?: React.ReactNode[];
 	/**
 	 * Specifies if the tree item is in an error state.
-	 * The associated error message id can be passed as a string.
+	 * The id for an associated error message (e.g. `<ErrorRegion.Item>`) can be passed as a string.
 	 *
-	 * Can be combined with the `actions` prop to display an error-related action. The first
-	 * action will be made visible by default.
+	 * Can be combined with the `actions` prop to display an error-related action (e.g. "Retry").
+	 * The first action will be made visible by default.
 	 *
 	 * @default false
 	 */

@@ -6,6 +6,7 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 import styles from "./sandbox.module.css";
 import {
+	Anchor,
 	Button,
 	DropdownMenu,
 	Field,
@@ -17,6 +18,7 @@ import {
 	Text,
 	TextBox,
 	Tree,
+	unstable_ErrorRegion as ErrorRegion,
 	VisuallyHidden,
 	unstable_Toolbar as Toolbar,
 } from "@itwin/itwinui-react/bricks";
@@ -651,8 +653,10 @@ type ExampleColor =
 	| "teal";
 
 interface TreeItemData {
+	id?: string;
 	label: string;
 	description?: string;
+	expanded?: boolean;
 	items?: TreeItemData[];
 	[key: string]: unknown;
 }
@@ -684,10 +688,12 @@ function useFilteredTree({
 	items,
 	filters,
 	search,
+	errorIds,
 }: {
 	items: TreeItem[];
 	filters: string[];
 	search: string;
+	errorIds: string[];
 }) {
 	const filteredItems = React.useMemo(() => {
 		if (filters.length === 0) return items;
@@ -705,7 +711,8 @@ function useFilteredTree({
 		// Filter items based on search string.
 		function matchSearch(items: TreeItem[]): TreeItem[] {
 			return items.reduce<TreeItem[]>((acc, item) => {
-				const matchingItems = matchSearch(item.items ?? []);
+				const excludeItems = errorIds.includes(item.id);
+				const matchingItems = excludeItems ? [] : matchSearch(item.items ?? []);
 
 				// If the item matches the search or any of the children match the search include it.
 				if (
@@ -721,9 +728,9 @@ function useFilteredTree({
 			}, []);
 		}
 
-		if (search === "") return filteredItems;
+		if (search === "" && errorIds.length === 0) return filteredItems;
 		return matchSearch(filteredItems);
-	}, [filteredItems, search]);
+	}, [filteredItems, search, errorIds]);
 
 	const itemCount = React.useMemo(() => {
 		if (filters.length === 0 && search === "") return undefined;
@@ -737,6 +744,23 @@ function useFilteredTree({
 		return countItems(foundItems);
 	}, [foundItems, filters, search]);
 	return { filteredTree: foundItems, itemCount };
+}
+
+function useTreeItems(items: TreeItem[], itemIds: string[]) {
+	return React.useMemo(() => {
+		function findItems(items: TreeItem[]): TreeItem[] {
+			return items.reduce<TreeItem[]>((acc, item) => {
+				if (itemIds.includes(item.id)) {
+					acc.push(item);
+				}
+				if (item.items) {
+					acc.push(...findItems(item.items));
+				}
+				return acc;
+			}, []);
+		}
+		return findItems(items);
+	}, [items, itemIds]);
 }
 
 interface FlatTreeItem extends TreeItem {
@@ -811,6 +835,7 @@ function SandboxTree({
 		search,
 		setItemCount,
 	} = React.useContext(TreeFilteringContext);
+	const treeId = React.useId();
 	const [selected, setSelected] = React.useState<string | undefined>();
 	const [hidden, setHidden] = React.useState<string[]>([]);
 	const toggleHidden = React.useCallback((id: string) => {
@@ -826,27 +851,88 @@ function SandboxTree({
 		treeData.map((item) => createTreeItem(item)),
 	);
 
+	const [failingIds, setFailingIds] = React.useState(["benstr", "benroad"]);
+	const failingItems = useTreeItems(items, failingIds);
+	const errorItems = React.useMemo(() => {
+		return failingItems.filter((item) => item.expanded);
+	}, [failingItems]);
+	const errorIds = React.useMemo(
+		() => errorItems.map((item) => item.id),
+		[errorItems],
+	);
+
 	const { filteredTree, itemCount } = useFilteredTree({
 		items,
 		filters,
 		search,
+		errorIds,
 	});
+
 	const flatItems = useFlatTreeItems(filteredTree, selected, hidden);
 
 	React.useEffect(() => {
 		setItemCount(itemCount);
 	}, [setItemCount, itemCount]);
 
+	const errorLength = errorItems.length;
+	const errorMessage = React.useMemo(() => {
+		if (errorLength === 0) return undefined;
+		if (errorLength === 1) return "1 issue found";
+		return `${errorLength} issues found`;
+	}, [errorLength]);
+
 	const deferredItems = React.useDeferredValue(flatItems);
 	if (deferredItems.length === 0) return <NoResultsState />;
 
 	return (
 		<React.Suspense fallback="Loading...">
+			<ErrorRegion.Root
+				aria-label="Tree errors"
+				label={errorMessage}
+				items={errorItems.map((item) => {
+					const treeItemId = `${treeId}-${item.id}`;
+					return (
+						<ErrorRegion.Item
+							key={item.id}
+							message={
+								<>
+									<span>Failed to create hierarchy for </span>
+									<Anchor href={`#${treeItemId}`}>{item.label}</Anchor>
+								</>
+							}
+							messageId={`${treeItemId}-message`}
+							actions={
+								<Anchor
+									render={<button />}
+									key="retry"
+									onClick={() => {
+										setFailingIds((prev) => {
+											return prev.filter((id) => id !== item.id);
+										});
+									}}
+								>
+									Retry
+								</Anchor>
+							}
+							onDismiss={() => {
+								setFailingIds((prev) => {
+									return prev.filter((id) => id !== item.id);
+								});
+							}}
+						/>
+					);
+				})}
+			/>
 			<Tree.Root className={styles.tree}>
 				{deferredItems.map((item) => {
+					const hasError = errorItems.find(
+						(errorItem) => errorItem.id === item.id,
+					);
+					const id = hasError ? `${treeId}-${item.id}` : undefined;
 					return (
 						<Tree.Item
 							key={item.id}
+							id={id}
 							label={item.label}
 							description={item.description}
 							aria-level={item.level}
@@ -860,7 +946,9 @@ function SandboxTree({
 								}
 								setSelected(item.id);
 							}}
-							expanded={item.items.length === 0 ? undefined : item.expanded}
+							expanded={
+								item.items.length === 0 && !hasError ? undefined : item.expanded
+							}
 							onExpandedChange={(expanded) => {
 								setItems((prev) => {
 									const treeItem = findTreeItem(prev, item.id);
@@ -903,6 +991,7 @@ function SandboxTree({
 								<Tree.ItemAction key="lock-unlock" label="Lock/unlock" />,
 								<Tree.ItemAction key="isolate" label="Isolate object" />,
 							]}
+							error={hasError ? `${id}-message` : undefined}
 						/>
 					);
 				})}

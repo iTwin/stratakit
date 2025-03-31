@@ -20,6 +20,7 @@ import {
 	Tree,
 	unstable_ErrorRegion as ErrorRegion,
 	VisuallyHidden,
+	unstable_Toolbar as Toolbar,
 } from "@itwin/itwinui-react/bricks";
 import { useSearchParams, type MetaFunction } from "react-router";
 import { useQuery, type UseQueryResult } from "@tanstack/react-query";
@@ -34,6 +35,10 @@ import dismissIcon from "@itwin/itwinui-icons/dismiss.svg";
 import lockIcon from "@itwin/itwinui-icons/lock.svg";
 import showIcon from "@itwin/itwinui-icons/visibility-show.svg";
 import hideIcon from "@itwin/itwinui-icons/visibility-hide.svg";
+import cursorIcon from "@itwin/itwinui-icons/cursor.svg";
+import cursorSelectIcon from "@itwin/itwinui-icons/cursor-select.svg";
+import drawIcon from "@itwin/itwinui-icons/draw.svg";
+import measureIcon from "@itwin/itwinui-icons/measure.svg";
 
 import model1Url from "./sandbox.model1.json?url";
 import model2Url from "./sandbox.model2.json?url";
@@ -163,7 +168,38 @@ export default function Page() {
 				</div>
 			</div>
 			<div className={styles.canvasWrapper}>
-				<div className={styles.canvas} />
+				<div className={styles.canvas}>
+					<Toolbar.Group variant="solid">
+						<Toolbar.Item
+							render={
+								<IconButton label="Select" icon={cursorIcon} variant="ghost" />
+							}
+						/>
+						<Toolbar.Item
+							render={
+								<IconButton
+									label="Move"
+									icon={cursorSelectIcon}
+									variant="ghost"
+								/>
+							}
+						/>
+						<Toolbar.Item
+							render={
+								<IconButton label="Draw" icon={drawIcon} variant="ghost" />
+							}
+						/>
+						<Toolbar.Item
+							render={
+								<IconButton
+									label="Measure"
+									icon={measureIcon}
+									variant="ghost"
+								/>
+							}
+						/>
+					</Toolbar.Group>
+				</div>
 			</div>
 		</Layout>
 	);

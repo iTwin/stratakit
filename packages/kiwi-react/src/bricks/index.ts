@@ -30,6 +30,7 @@ export * as Table from "./Table.js";
 export * as Tabs from "./Tabs.js";
 export { Text } from "./Text.js";
 export * as TextBox from "./TextBox.js";
-export * as Tree from "./Tree.js";
+export * as unstable_Toolbar from "./Toolbar.js";
 export { Tooltip } from "./Tooltip.js";
+export * as Tree from "./Tree.js";
 export { VisuallyHidden } from "./VisuallyHidden.js";

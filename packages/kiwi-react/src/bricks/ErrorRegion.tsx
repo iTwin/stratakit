@@ -44,6 +44,27 @@ interface ErrorRegionRootProps extends Omit<BaseProps, "children"> {
 	onExpandedChange?: (expanded: boolean) => void;
 }
 
+/**
+ * A collapsible region that displays a list of error messages, which might originate from another
+ * component, such as `Tree`.
+ *
+ * This component is rendered as a [region landmark](https://www.w3.org/WAI/ARIA/apg/patterns/landmarks/examples/region.html)
+ * and should be labelled either using `label` or `aria-label`/`aria-labelledby`. Changes to the `label` prop will be
+ * announced communicated using a [live region](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Guides/Live_regions).
+ *
+ * Example:
+ * ```tsx
+ * <ErrorRegion.Root
+ *   label="3 issues found"
+ *   items={
+ *     <>
+ *       <ErrorRegion.Item message="…" />
+ *       <ErrorRegion.Item message="…" />
+ *       <ErrorRegion.Item message="…" />
+ *     </>
+ *   }
+ * />
+ */
 const ErrorRegionRoot = forwardRef<"div", ErrorRegionRootProps>(
 	(props, forwardedRef) => {
 		const { label, items, expanded, onExpandedChange, ...rest } = props;
@@ -63,11 +84,11 @@ const ErrorRegionRoot = forwardRef<"div", ErrorRegionRootProps>(
 				</VisuallyHidden>
 				<DialogProvider open={open} setOpen={setOpen}>
 					<Role.section
+						{...rest}
+						aria-labelledby={sectionLabelledBy}
+						className={cx("🥝-error-region", props.className)}
 						data-kiwi-visible={!!label}
 						data-kiwi-expanded={open}
-						aria-labelledby={sectionLabelledBy}
-						{...rest}
-						className={cx("🥝-error-region", props.className)}
 						ref={forwardedRef}
 					>
 						<div className="🥝-error-region-container">
@@ -133,18 +154,41 @@ interface ErrorRegionItemProps extends Omit<BaseProps, "children"> {
 	onDismiss?: () => void;
 }
 
+/**
+ * An individual error item within the `ErrorRegion` component. It displays an error message and optional actions.
+ *
+ * The `messageId` prop can be used to semantically associate the error item with the related UI item, such as a `Tree.Item`.
+ *
+ * Example:
+ * ```tsx
+ * <ErrorRegion.Item
+ *   message={<>Something went wrong with <Anchor href="item-10001">Item 10001</Anchor>.</>}
+ *   messageId="item-10001-error"
+ *   actions={<Button>Retry</Button>}
+ *   onDismiss={() => {}}
+ * />
+ *
+ * <Tree.Item
+ *   id="item-10001"
+ *   label="Item 10001"
+ *   error="item-10001-error"
+ * />
+ * ```
+ */
 const ErrorRegionItem = forwardRef<"div", ErrorRegionItemProps>(
 	(props, forwardedRef) => {
+		const generatedId = React.useId();
+
 		const {
 			message,
-			messageId: messageIdProp,
+			messageId = `${generatedId}-message`,
 			actions,
 			onDismiss,
 			...rest
 		} = props;
-		const uniqueMessageId = React.useId();
-		const dismissId = React.useId();
-		const messageId = messageIdProp ?? uniqueMessageId;
+
+		const dismissButtonId = `${generatedId}-dismiss`;
+
 		return (
 			<Role.div
 				{...rest}
@@ -160,17 +204,15 @@ const ErrorRegionItem = forwardRef<"div", ErrorRegionItemProps>(
 					{message}
 				</Text>
 				{onDismiss && (
-					<>
-						<VisuallyHidden id={dismissId}>Dismiss</VisuallyHidden>
-						<IconButton
-							className="🥝-error-region-item-dismiss"
-							variant="ghost"
-							label="Dismiss"
-							aria-labelledby={`${dismissId} ${messageId}`}
-							icon={<Dismiss />}
-							onClick={onDismiss}
-						/>
-					</>
+					<IconButton
+						id={dismissButtonId}
+						className="🥝-error-region-item-dismiss"
+						variant="ghost"
+						label="Dismiss"
+						aria-labelledby={`${dismissButtonId} ${messageId}`}
+						icon={<Dismiss />}
+						onClick={onDismiss}
+					/>
 				)}
 				<div className="🥝-error-region-item-actions">{actions}</div>
 			</Role.div>

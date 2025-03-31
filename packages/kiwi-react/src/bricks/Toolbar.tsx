@@ -20,14 +20,14 @@ interface ToolbarProps extends BaseProps {
  *
  * Example:
  * ```jsx
- * <Toolbar.Root variant="solid">
+ * <Toolbar.Group variant="solid">
  *   <Toolbar.Item render={…} />
  *   <Toolbar.Item render={…} />
  *   <Toolbar.Item render={…} />
- * </Toolbar.Root>
+ * </Toolbar.Group>
  * ```
  */
-const ToolbarRoot = forwardRef<"div", ToolbarProps>((props, forwardedRef) => {
+const ToolbarGroup = forwardRef<"div", ToolbarProps>((props, forwardedRef) => {
 	return (
 		<Toolbar.Toolbar
 			{...props}
@@ -36,7 +36,7 @@ const ToolbarRoot = forwardRef<"div", ToolbarProps>((props, forwardedRef) => {
 		/>
 	);
 });
-DEV: ToolbarRoot.displayName = "Toolbar.Root";
+DEV: ToolbarGroup.displayName = "Toolbar.Group";
 
 // ----------------------------------------------------------------------------
 
@@ -64,4 +64,4 @@ DEV: ToolbarItem.displayName = "Toolbar.Item";
 
 // ----------------------------------------------------------------------------
 
-export { ToolbarRoot as Root, ToolbarItem as Item };
+export { ToolbarGroup as Group, ToolbarItem as Item };

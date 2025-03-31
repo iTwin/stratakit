@@ -169,7 +169,7 @@ export default function Page() {
 			</div>
 			<div className={styles.canvasWrapper}>
 				<div className={styles.canvas}>
-					<Toolbar.Root variant="solid">
+					<Toolbar.Group variant="solid">
 						<Toolbar.Item
 							render={
 								<IconButton label="Select" icon={cursorIcon} variant="ghost" />
@@ -198,7 +198,7 @@ export default function Page() {
 								/>
 							}
 						/>
-					</Toolbar.Root>
+					</Toolbar.Group>
 				</div>
 			</div>
 		</Layout>

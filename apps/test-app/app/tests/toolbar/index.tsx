@@ -11,7 +11,7 @@ import placeholderIcon from "@itwin/itwinui-icons/placeholder.svg";
 
 export default definePage(function Page() {
 	return (
-		<Toolbar.Root variant="solid">
+		<Toolbar.Group variant="solid">
 			<Toolbar.Item
 				render={
 					<IconButton icon={placeholderIcon} label="Click me" variant="ghost" />
@@ -27,6 +27,6 @@ export default definePage(function Page() {
 					<IconButton icon={placeholderIcon} label="Click me" variant="ghost" />
 				}
 			/>
-		</Toolbar.Root>
+		</Toolbar.Group>
 	);
 });

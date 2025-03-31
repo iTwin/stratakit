@@ -23,17 +23,17 @@ export default definePage(
 			</>
 		);
 	},
-	{ visual: VisualTest },
+	{ visual: VisualTest, anchor: AnchorTest },
 );
 
-function VisualTest() {
-	const permutations = [
-		["solid", "neutral"],
-		["solid", "accent"],
-		["outline"],
-		["ghost"],
-	] as const;
+const permutations = [
+	["solid", "neutral"],
+	["solid", "accent"],
+	["outline"],
+	["ghost"],
+] as const;
 
+function VisualTest() {
 	return (
 		<div style={{ display: "grid", gap: 4 }}>
 			{permutations.map(([variant, tone]) => {
@@ -60,6 +60,46 @@ function VisualTest() {
 						</Button>
 
 						<Button {...props} disabled>
+							<Icon href={placeholderIconHref} />
+							Click me
+							<Icon href={placeholderIconHref} />
+						</Button>
+					</div>
+				);
+			})}
+		</div>
+	);
+}
+
+function AnchorTest() {
+	return (
+		<div style={{ display: "grid", gap: 4 }}>
+			{permutations.map(([variant, tone]) => {
+				const props = { variant, tone } as React.ComponentProps<typeof Button>;
+
+				return (
+					<div key={variant} style={{ display: "flex", gap: 4 }}>
+						<Button {...props} render={<a />}>
+							Click me
+						</Button>
+
+						<Button {...props} render={<a />}>
+							<Icon href={placeholderIconHref} />
+							Click me
+						</Button>
+
+						<Button {...props} render={<a />}>
+							Click me
+							<Icon href={placeholderIconHref} />
+						</Button>
+
+						<Button {...props} render={<a />}>
+							<Icon href={placeholderIconHref} />
+							Click me
+							<Icon href={placeholderIconHref} />
+						</Button>
+
+						<Button {...props} render={<a />} disabled>
 							<Icon href={placeholderIconHref} />
 							Click me
 							<Icon href={placeholderIconHref} />

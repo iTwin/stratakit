@@ -13,7 +13,6 @@
 	@layer states {
 		&:where([data-kiwi-expanded="true"]) {
 			--🥝chevron-down-rotate: -0.5turn;
-			--🥝error-region-container-padding-block-end: 12px;
 			--🥝error-region-header-border-end-radius: 0;
 		}
 
@@ -36,8 +35,6 @@
 		flex-direction: column;
 
 		max-block-size: 350px;
-		padding-block-start: 4px;
-		padding-block-end: var(--🥝error-region-container-padding-block-end, 4px);
 
 		border: 1px solid var(--ids-color-border-attention-base);
 		border-radius: 8px;
@@ -53,7 +50,6 @@
 
 	@layer base {
 		min-block-size: 2rem;
-		margin-block: -4px;
 		padding-inline-start: 8px;
 		padding-inline-end: 4px;
 		font-weight: 400;
@@ -79,7 +75,7 @@
 
 .🥝-error-region-dialog {
 	@layer base {
-		margin-block-start: 4px;
+		border-block-start: 1px solid var(--ids-color-border-page-base);
 		overflow: auto;
 	}
 }
@@ -106,14 +102,9 @@
 		padding-block: var(--✨padding-block);
 		padding-inline-start: var(--✨padding-inline-start);
 		padding-inline-end: 4px;
-		border-block-start: 1px solid var(--ids-color-border-page-base);
 
-		&:first-child {
-			padding-block-start: 8px;
-		}
-
-		&:last-child {
-			padding-block-end: 4px;
+		&:not(:first-child) {
+			border-block-start: 1px solid var(--ids-color-border-page-base);
 		}
 	}
 }

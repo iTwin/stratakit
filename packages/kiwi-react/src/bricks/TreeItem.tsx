@@ -204,7 +204,7 @@ const TreeItemRoot = forwardRef<"div", TreeItemRootProps>(
 		const descriptionId = React.useId();
 		const decorationId = React.useId();
 
-		const icon = error ? <StatusIcon status="warning" /> : iconProp;
+		const icon = error ? <StatusIcon tone="critical" /> : iconProp;
 		const describedBy = React.useMemo(() => {
 			const idRefs = [];
 			if (description) idRefs.push(descriptionId);

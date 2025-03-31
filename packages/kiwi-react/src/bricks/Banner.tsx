@@ -93,11 +93,13 @@ export const Banner = forwardRef<"div", BannerProps>((props, forwardedRef) => {
 	const {
 		className,
 		message,
-		icon: iconProp,
 		label,
 		actions,
 		onDismiss,
 		tone = "neutral",
+		icon: iconProp = tone !== "neutral" ? (
+			<StatusIcon tone={tone} />
+		) : undefined,
 		variant = "outline",
 		...rest
 	} = props;
@@ -105,13 +107,6 @@ export const Banner = forwardRef<"div", BannerProps>((props, forwardedRef) => {
 	const baseId = React.useId();
 	const labelId = `${baseId}-label`;
 	const dismissId = `${baseId}-dismiss`;
-
-	const toneToStatus = {
-		positive: "success",
-		attention: "warning",
-		critical: "error",
-		info: "info",
-	} as const;
 
 	const icon = React.useMemo(() => {
 		const defaultIconProps = { className: "🥝-banner-icon" };
@@ -129,8 +124,8 @@ export const Banner = forwardRef<"div", BannerProps>((props, forwardedRef) => {
 		if (tone === "neutral") {
 			return null;
 		}
-		return <StatusIcon status={toneToStatus[tone]} {...defaultIconProps} />;
-	}, [iconProp, tone, toneToStatus]);
+		return <StatusIcon tone={tone} {...defaultIconProps} />;
+	}, [iconProp, tone]);
 
 	return (
 		<Role

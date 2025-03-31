@@ -29,6 +29,7 @@ export const components = [
 	"Text",
 	"Textarea",
 	"TextBox",
-	"Tree",
+	"Toolbar",
 	"Tooltip",
+	"Tree",
 ];

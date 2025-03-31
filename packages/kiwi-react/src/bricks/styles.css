@@ -32,6 +32,7 @@
 @import "./Tabs.css" layer(itwinui.components);
 @import "./Text.css" layer(itwinui.components);
 @import "./TextBox.css" layer(itwinui.components);
+@import "./Toolbar.css" layer(itwinui.components);
 @import "./Tooltip.css" layer(itwinui.components);
 @import "./Tree.css" layer(itwinui.components);
 @import "./TreeItem.css" layer(itwinui.components);

@@ -146,6 +146,12 @@ interface FieldCollectionItemControlProps
 /**
  * The control component for the field.
  *
+ * Use the `render` prop to render the control component.
+ *
+ * ```tsx
+ * <Field.Control render={<TextBox.Input />} />
+ * ```
+ *
  * If the rendered component uses a compositional API, then use a function
  * within `render` to apply the `controlProps` to the correct sub-component:
  *

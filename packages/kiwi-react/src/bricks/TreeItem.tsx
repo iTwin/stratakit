@@ -10,7 +10,7 @@ import {
 	CompositeItem,
 	type CompositeItemProps,
 } from "@ariakit/react/composite";
-import { Toolbar } from "@ariakit/react/toolbar";
+import { Toolbar, ToolbarItem } from "@ariakit/react/toolbar";
 import * as ListItem from "./~utils.ListItem.js";
 import { IconButton } from "./IconButton.js";
 import * as DropdownMenu from "./DropdownMenu.js";
@@ -493,16 +493,20 @@ const TreeItemAction = forwardRef<"button", TreeItemActionProps>(
 		}
 
 		return (
-			<IconButton
-				label={label}
-				icon={icon}
-				inert={visible === false ? true : undefined}
-				{...rest}
-				dot={dot}
-				variant="ghost"
-				className={cx("🥝-tree-item-action", props.className)}
-				data-kiwi-visible={visible}
-				ref={forwardedRef}
+			<ToolbarItem
+				render={
+					<IconButton
+						label={label}
+						icon={icon}
+						inert={visible === false ? true : undefined}
+						{...rest}
+						dot={dot}
+						variant="ghost"
+						className={cx("🥝-tree-item-action", props.className)}
+						data-kiwi-visible={visible}
+						ref={forwardedRef}
+					/>
+				}
 			/>
 		);
 	},

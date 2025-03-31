@@ -4,7 +4,6 @@
  *--------------------------------------------------------------------------------------------*/
 import * as React from "react";
 import cx from "classnames";
-import { useToolbarContext, ToolbarItem } from "@ariakit/react/toolbar";
 import { Button } from "./Button.js";
 import { VisuallyHidden } from "./VisuallyHidden.js";
 import { Icon } from "./Icon.js";
@@ -119,15 +118,12 @@ export const IconButton = forwardRef<"button", IconButtonProps>(
 		const labelId = `${baseId}-label`;
 		const dotId = `${baseId}-dot`;
 
-		const toolbar = useToolbarContext();
-
 		const button = (
 			<Button
 				aria-pressed={isActive}
 				aria-labelledby={labelId}
 				aria-describedby={dot ? dotId : undefined}
 				{...rest}
-				render={toolbar ? <ToolbarItem render={props.render} /> : props.render}
 				className={cx("🥝-icon-button", props.className)}
 				ref={forwardedRef}
 			>

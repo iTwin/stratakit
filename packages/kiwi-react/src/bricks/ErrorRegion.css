@@ -103,7 +103,7 @@
 		padding-inline-start: var(--✨padding-inline-start);
 		padding-inline-end: 4px;
 
-		&:not(:first-child) {
+		&:where(:not(:nth-child(1 of &))) {
 			border-block-start: 1px solid var(--ids-color-border-page-base);
 		}
 	}

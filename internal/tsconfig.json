@@ -1,6 +1,32 @@
 {
+	"$schema": "https://json.schemastore.org/tsconfig",
 	"compilerOptions": {
-		"lib": ["ES2021"],
-		"esModuleInterop": true
+		/* Base */
+		"skipLibCheck": true,
+		"allowJs": true,
+		"allowImportingTsExtensions": true,
+		"resolveJsonModule": true,
+		"esModuleInterop": true,
+		"moduleDetection": "force",
+		"isolatedModules": true,
+		"verbatimModuleSyntax": true,
+		"erasableSyntaxOnly": true,
+		"allowUnusedLabels": true,
+		"preserveWatchOutput": true,
+
+		/* Strictness/Linting */
+		"strict": true,
+		"strictNullChecks": true,
+		"noImplicitOverride": true,
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
+		"noUncheckedSideEffectImports": true,
+
+		/* Output */
+		"lib": ["DOM", "DOM.Iterable", "ES2022"],
+		"target": "es2022",
+		"module": "preserve",
+		"jsx": "react-jsx",
+		"noEmit": true
 	}
 }

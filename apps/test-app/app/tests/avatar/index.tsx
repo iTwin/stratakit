@@ -9,7 +9,7 @@ import userIconHref from "@itwin/itwinui-icons/user.svg";
 export const handle = { title: "Avatar" };
 
 export default definePage(
-	function Page({ disabled }) {
+	function Page() {
 		return (
 			<>
 				<Avatar initials="WW" alt="Willow Winters" data-testid="avatar" />

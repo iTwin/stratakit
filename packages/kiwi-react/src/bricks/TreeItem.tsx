@@ -421,6 +421,22 @@ interface TreeItemActionProps extends Omit<BaseProps<"button">, "children"> {
 	 * to `true` when `error` is set).
 	 */
 	visible?: boolean;
+
+	/**
+	 * A small dot displayed in the corner of the action.
+	 *
+	 * The value of this prop gets used as the button's "accessible description".
+	 *
+	 * Example:
+	 * ```tsx
+	 * <Tree.ItemAction
+	 *   label="Filter"
+	 *   dot="Some filters applied"
+	 *   icon={…}
+	 * />
+	 * ```
+	 */
+	dot?: string;
 }
 
 /**
@@ -437,6 +453,7 @@ const TreeItemAction = forwardRef<"button", TreeItemActionProps>(
 			visible = error ? true : undefined, // visible by default during error state
 			label,
 			icon,
+			dot,
 			...rest
 		} = props;
 
@@ -452,6 +469,7 @@ const TreeItemAction = forwardRef<"button", TreeItemActionProps>(
 					{...rest}
 					label={label}
 					icon={icon}
+					unstable_dot={dot}
 					ref={forwardedRef}
 				/>
 			);
@@ -470,6 +488,7 @@ const TreeItemAction = forwardRef<"button", TreeItemActionProps>(
 				icon={icon}
 				inert={visible === false ? true : undefined}
 				{...rest}
+				dot={dot}
 				variant="ghost"
 				className={cx("🥝-tree-item-action", props.className)}
 				data-kiwi-visible={visible}

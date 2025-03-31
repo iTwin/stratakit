@@ -43,6 +43,13 @@
 	}
 }
 
+.🥝-dropdown-menu-item-dot:is(.🥝-dot) {
+	@layer base {
+		align-self: center;
+		--🥝dot-size: 8px;
+	}
+}
+
 .🥝-dropdown-menu-checkmark {
 	@layer base {
 		visibility: var(--🥝dropdown-menu-checkmark-visibility);

@@ -138,9 +138,9 @@ export const Banner = forwardRef<"div", BannerProps>((props, forwardedRef) => {
 			<div className="🥝-banner-grid">
 				{icon}
 
-				<span className="🥝-banner-label" id={labelId}>
+				<Text id={labelId} variant="body-sm" className="🥝-banner-label">
 					{label}
-				</span>
+				</Text>
 
 				<Text variant="body-sm" className="🥝-banner-message">
 					{message}

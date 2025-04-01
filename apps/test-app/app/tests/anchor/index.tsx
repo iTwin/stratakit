@@ -32,11 +32,9 @@ function VisualTest() {
 		<div style={{ display: "grid", gap: 4, justifyContent: "start" }}>
 			{tones.map((tone) => {
 				return (
-					<div key={tone} style={{ display: "flex", gap: 6 }}>
-						<Anchor key={tone} tone={tone} href="https://example.com">
-							"Example"
-						</Anchor>
-					</div>
+					<Anchor key={tone} tone={tone} href="https://example.com">
+						"Example"
+					</Anchor>
 				);
 			})}
 		</div>
@@ -52,15 +50,13 @@ function ButtonTest() {
 		<div style={{ display: "grid", gap: 4, justifyContent: "start" }}>
 			{tones.map((tone) => {
 				return (
-					<div key={tone} style={{ display: "flex", gap: 6 }}>
-						<Anchor
-							render={<button onClick={() => handleOnClick()} />}
-							key={tone}
-							tone={tone}
-						>
-							"Example"
-						</Anchor>
-					</div>
+					<Anchor
+						render={<button onClick={() => handleOnClick()} />}
+						key={tone}
+						tone={tone}
+					>
+						"Example"
+					</Anchor>
 				);
 			})}
 		</div>

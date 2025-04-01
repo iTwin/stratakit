@@ -1,0 +1,131 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+.🥝-error-region {
+	--✨padding: 4px;
+
+	@layer base {
+		position: relative;
+		z-index: 1;
+	}
+
+	@layer states {
+		&:where([data-kiwi-expanded="true"]) {
+			--🥝chevron-down-rotate: -0.5turn;
+			--🥝error-region-header-border-end-radius: 0;
+		}
+
+		&:where([data-kiwi-visible="true"]) {
+			padding-inline: var(--✨padding);
+			padding-block: var(--✨padding);
+
+			block-size: 2.625rem;
+		}
+
+		&:where([data-kiwi-visible="false"]) {
+			--🥝error-region-container-display: none;
+		}
+	}
+}
+
+.🥝-error-region-container {
+	@layer base {
+		display: var(--🥝error-region-container-display, flex);
+		flex-direction: column;
+
+		max-block-size: 350px;
+
+		border: 1px solid var(--ids-color-border-attention-base);
+		border-radius: 8px;
+		background-color: var(--ids-color-bg-elevation-base);
+		box-shadow: var(--ids-shadow-surface-sm);
+	}
+}
+
+.🥝-error-region-header {
+	--✨container-border-radius: 8px;
+	--✨container-border-width: 1px;
+	--✨border-radius: calc(var(--✨container-border-radius) - var(--✨container-border-width));
+
+	@layer base {
+		min-block-size: 2rem;
+		padding-inline-start: 8px;
+		padding-inline-end: 4px;
+		font-weight: 400;
+		border-start-start-radius: var(--✨border-radius);
+		border-start-end-radius: var(--✨border-radius);
+		border-end-start-radius: var(--🥝error-region-header-border-end-radius, var(--✨border-radius));
+		border-end-end-radius: var(--🥝error-region-header-border-end-radius, var(--✨border-radius));
+	}
+}
+
+.🥝-error-region-icon {
+	@layer base {
+		--🥝icon-color: var(--ids-color-icon-attention-base);
+	}
+}
+
+.🥝-error-region-label {
+	@layer base {
+		flex: 1;
+		text-align: start;
+	}
+}
+
+.🥝-error-region-dialog {
+	@layer base {
+		border-block-start: 1px solid var(--ids-color-border-page-base);
+		overflow: auto;
+	}
+}
+
+.🥝-error-region-items {
+	@layer base {
+		display: flex;
+		flex-direction: column;
+	}
+}
+
+.🥝-error-region-item {
+	--✨container-padding: 8px;
+	--✨icon-size: 1rem;
+	--✨gap: 4px;
+	--✨padding-inline-start: calc(var(--✨container-padding) + var(--✨icon-size) + var(--✨gap));
+	--✨padding-block: calc(4px + 8px);
+
+	@layer base {
+		display: grid;
+		grid-template-columns: [message-start] 1fr [message-end dismiss-start] auto [dismiss-end];
+		grid-template-rows: [main-start] auto [main-end actions-start] auto [actions-end];
+
+		padding-block: var(--✨padding-block);
+		padding-inline-start: var(--✨padding-inline-start);
+		padding-inline-end: 4px;
+
+		&:where(:not(:nth-child(1 of &))) {
+			border-block-start: 1px solid var(--ids-color-border-page-base);
+		}
+	}
+}
+
+.🥝-error-region-item-message {
+	@layer base {
+		grid-row: main;
+		align-self: center;
+	}
+}
+
+.🥝-error-region-item-dismiss {
+	@layer base {
+		grid-row: main;
+		margin-inline-start: 4px;
+	}
+}
+
+.🥝-error-region-item-actions {
+	@layer base {
+		grid-row: actions;
+		margin-block-start: 8px;
+	}
+}

@@ -19,7 +19,7 @@
 				inset: 0;
 				z-index: 1; /* Ensure the outline appears above the actions */
 				pointer-events: none;
-				outline: 2px solid var(--ids-color-border-accent-strong);
+				outline: var(--🥝focus-outline);
 				outline-offset: -1px;
 			}
 		}
@@ -69,7 +69,7 @@
 		}
 
 		&:where([data-kiwi-expanded="false"]) {
-			--🥝tree-chevron-rotate: -0.25turn;
+			--🥝chevron-down-rotate: -0.25turn;
 		}
 
 		&:where(:not([data-kiwi-expanded])) {
@@ -148,20 +148,34 @@
 	}
 }
 
-.🥝-tree-chevron {
-	@layer base {
-		rotate: var(--🥝tree-chevron-rotate);
-
-		@media (prefers-reduced-motion: no-preference) {
-			transition: rotate 150ms ease-in-out;
-		}
-	}
-}
-
 .🥝-tree-item-decoration {
 	@layer base {
 		display: flex;
 		align-items: center;
 		gap: 0.25rem;
+	}
+}
+
+@media (forced-colors: active) {
+	.🥝-tree-item-node:is(.🥝-list-item) {
+		--🥝list-item-background-color: Canvas;
+		--🥝tree-item-color: CanvasText;
+
+		&:where([data-kiwi-error="true"], [data-kiwi-selected="true"]) {
+			forced-color-adjust: none;
+		}
+
+		&:where([data-kiwi-error="true"]) {
+			.🥝-tree-item-content,
+			.🥝-tree-item-decoration {
+				background-color: Mark;
+				color: MarkText;
+			}
+		}
+
+		&:where([data-kiwi-selected="true"]) {
+			--🥝list-item-background-color: SelectedItem;
+			--🥝tree-item-color: SelectedItemText;
+		}
 	}
 }

@@ -44,11 +44,6 @@
 
 		transition: all 150ms ease-out;
 		transition-property: color, text-decoration-color, text-underline-offset;
-
-		&:where(button) {
-			border: none;
-			background: transparent;
-		}
 	}
 
 	@layer modifiers {
@@ -77,7 +72,7 @@
 		}
 
 		&:where(:focus-visible) {
-			outline-offset: 2px;
+			--🥝focus-outline-offset: 2px;
 		}
 
 		&:where([disabled], :disabled, [aria-disabled="true"]) {
@@ -93,5 +88,11 @@
 		--🌀anchor-state--default: var(--🌀anchor-state,);
 		--🌀anchor-state--hover: var(--🌀anchor-state,);
 		--🌀anchor-state--pressed: var(--🌀anchor-state,);
+	}
+}
+
+@media (forced-colors: active) {
+	.🥝-anchor:where(button) {
+		color: LinkText;
 	}
 }

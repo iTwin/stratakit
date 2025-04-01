@@ -156,7 +156,7 @@
 
 .🥝-tab-panel {
 	@layer base {
-		outline-offset: -2px;
+		--🥝focus-outline-offset: -2px;
 
 		/* Prevents stacking when multiple panels are mounted (during animation) */
 		&:not([data-open]) {

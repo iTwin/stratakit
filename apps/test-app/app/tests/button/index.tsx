@@ -79,27 +79,27 @@ function AnchorTest() {
 
 				return (
 					<div key={variant} style={{ display: "flex", gap: 4 }}>
-						<Button {...props} render={<a />}>
+						<Button {...props} render={<a href="#" />}>
 							Click me
 						</Button>
 
-						<Button {...props} render={<a />}>
+						<Button {...props} render={<a href="#" />}>
 							<Icon href={placeholderIconHref} />
 							Click me
 						</Button>
 
-						<Button {...props} render={<a />}>
+						<Button {...props} render={<a href="#" />}>
 							Click me
 							<Icon href={placeholderIconHref} />
 						</Button>
 
-						<Button {...props} render={<a />}>
+						<Button {...props} render={<a href="#" />}>
 							<Icon href={placeholderIconHref} />
 							Click me
 							<Icon href={placeholderIconHref} />
 						</Button>
 
-						<Button {...props} render={<a />} disabled>
+						<Button {...props} render={<a href="#" />} disabled>
 							<Icon href={placeholderIconHref} />
 							Click me
 							<Icon href={placeholderIconHref} />

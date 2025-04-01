@@ -30,13 +30,11 @@ const tones = ["neutral", "accent", "critical"] as const;
 function VisualTest() {
 	return (
 		<div style={{ display: "grid", gap: 4, justifyContent: "start" }}>
-			{tones.map((tone) => {
-				return (
-					<Anchor key={tone} tone={tone} href="https://example.com">
-						"Example"
-					</Anchor>
-				);
-			})}
+			{tones.map((tone) => (
+				<Anchor key={tone} tone={tone} href="https://example.com">
+					Example
+				</Anchor>
+			))}
 		</div>
 	);
 }
@@ -55,7 +53,7 @@ function ButtonTest() {
 						key={tone}
 						tone={tone}
 					>
-						"Example"
+						Example
 					</Anchor>
 				);
 			})}

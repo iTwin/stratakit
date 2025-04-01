@@ -29,6 +29,7 @@ import {
 import { useStoreState } from "@ariakit/react/store";
 import { predefinedSymbols, type PredefinedSymbol } from "./Kbd.internal.js";
 import { usePopoverContext } from "@ariakit/react/popover";
+import { Dot } from "./~utils.Dot.js";
 
 // ----------------------------------------------------------------------------
 
@@ -166,6 +167,9 @@ interface DropdownMenuItemProps
 		> {
 	/** The primary text label for the menu-item. */
 	label: React.ReactNode;
+
+	/** Dot shown on the right end of the menu-item. Value will be used as accessible description. */
+	unstable_dot?: string;
 }
 
 /**
@@ -179,7 +183,9 @@ interface DropdownMenuItemProps
  */
 const DropdownMenuItem = forwardRef<"button", DropdownMenuItemProps>(
 	(props, forwardedRef) => {
-		const { label, shortcuts, icon, ...rest } = props;
+		const { label, shortcuts, icon, unstable_dot, ...rest } = props;
+
+		const dotId = React.useId();
 
 		return (
 			<MenuItem
@@ -189,6 +195,7 @@ const DropdownMenuItem = forwardRef<"button", DropdownMenuItemProps>(
 						render={
 							<ButtonAk
 								accessibleWhenDisabled
+								aria-describedby={dotId}
 								{...rest}
 								className={cx("🥝-dropdown-menu-item", props.className)}
 								ref={forwardedRef}
@@ -200,6 +207,15 @@ const DropdownMenuItem = forwardRef<"button", DropdownMenuItemProps>(
 				{icon ? <DropdownMenuIcon icon={icon} /> : null}
 				<ListItem.Content render={<span />}>{label}</ListItem.Content>
 				{shortcuts ? <DropdownMenuItemShortcuts shortcuts={shortcuts} /> : null}
+				{unstable_dot ? (
+					<ListItem.Decoration
+						render={
+							<Dot id={dotId} className="🥝-dropdown-menu-item-dot">
+								{unstable_dot}
+							</Dot>
+						}
+					/>
+				) : null}
 			</MenuItem>
 		);
 	},

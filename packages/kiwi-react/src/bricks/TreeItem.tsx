@@ -10,11 +10,11 @@ import {
 	CompositeItem,
 	type CompositeItemProps,
 } from "@ariakit/react/composite";
-import { Toolbar } from "@ariakit/react/toolbar";
+import { Toolbar, ToolbarItem } from "@ariakit/react/toolbar";
 import * as ListItem from "./~utils.ListItem.js";
 import { IconButton } from "./IconButton.js";
 import * as DropdownMenu from "./DropdownMenu.js";
-import { Icon, StatusWarning, MoreHorizontal } from "./Icon.js";
+import { ChevronDown, Icon, StatusWarning, MoreHorizontal } from "./Icon.js";
 import { forwardRef, type BaseProps } from "./~utils.js";
 import { useEventHandlers, useSafeContext } from "./~hooks.js";
 import { GhostAligner, useGhostAlignment } from "./~utils.GhostAligner.js";
@@ -25,7 +25,7 @@ const TreeItemContext = React.createContext<
 	| {
 			expanded?: boolean;
 			selected?: boolean;
-			error?: boolean;
+			error?: TreeItemRootProps["error"];
 	  }
 	| undefined
 >(undefined);
@@ -125,13 +125,14 @@ interface TreeItemRootProps extends Omit<BaseProps, "content" | "children"> {
 	actions?: React.ReactNode[];
 	/**
 	 * Specifies if the tree item is in an error state.
+	 * The id for an associated error message (e.g. `<ErrorRegion.Item>`) can be passed as a string.
 	 *
-	 * Can be combined with the `actions` prop to display an error-related action. The first
-	 * action will be made visible by default.
+	 * Can be combined with the `actions` prop to display an error-related action (e.g. "Retry").
+	 * The first action will be made visible by default.
 	 *
 	 * @default false
 	 */
-	error?: boolean;
+	error?: boolean | string;
 }
 
 /**
@@ -203,14 +204,23 @@ const TreeItemRoot = forwardRef<"div", TreeItemRootProps>(
 		const labelId = React.useId();
 		const descriptionId = React.useId();
 		const decorationId = React.useId();
+		const errorId = typeof error === "string" ? error : undefined;
 
 		const icon = error ? <StatusWarning /> : iconProp;
 		const describedBy = React.useMemo(() => {
 			const idRefs = [];
 			if (description) idRefs.push(descriptionId);
 			if (unstable_decorations || icon) idRefs.push(decorationId);
+			if (errorId) idRefs.push(errorId);
 			return idRefs.length > 0 ? idRefs.join(" ") : undefined;
-		}, [unstable_decorations, icon, decorationId, description, descriptionId]);
+		}, [
+			unstable_decorations,
+			icon,
+			decorationId,
+			description,
+			descriptionId,
+			errorId,
+		]);
 
 		return (
 			<TreeItemContext.Provider
@@ -483,16 +493,20 @@ const TreeItemAction = forwardRef<"button", TreeItemActionProps>(
 		}
 
 		return (
-			<IconButton
-				label={label}
-				icon={icon}
-				inert={visible === false ? true : undefined}
-				{...rest}
-				dot={dot}
-				variant="ghost"
-				className={cx("🥝-tree-item-action", props.className)}
-				data-kiwi-visible={visible}
-				ref={forwardedRef}
+			<ToolbarItem
+				render={
+					<IconButton
+						label={label}
+						icon={icon}
+						inert={visible === false ? true : undefined}
+						{...rest}
+						dot={dot}
+						variant="ghost"
+						className={cx("🥝-tree-item-action", props.className)}
+						data-kiwi-visible={visible}
+						ref={forwardedRef}
+					/>
+				}
 			/>
 		);
 	},
@@ -521,40 +535,12 @@ const TreeItemExpander = forwardRef<"button", TreeItemExpanderProps>(
 				data-kiwi-ghost-align={useGhostAlignment()}
 				ref={forwardedRef}
 			>
-				<TreeChevron />
+				<ChevronDown />
 			</Role.span>
 		);
 	},
 );
 DEV: TreeItemExpander.displayName = "TreeItemExpander";
-
-// ----------------------------------------------------------------------------
-
-interface TreeChevronProps extends Omit<BaseProps<"svg">, "children"> {}
-
-const TreeChevron = forwardRef<"svg", TreeChevronProps>(
-	(props, forwardedRef) => {
-		return (
-			<Icon
-				{...props}
-				render={
-					<Role.svg
-						width="16"
-						height="16"
-						fill="currentColor"
-						viewBox="0 0 16 16"
-						render={props.render}
-					>
-						<path d="M4.146 6.146a.5.5 0 0 1 .708 0L8 9.293l3.146-3.147a.5.5 0 0 1 .708.708l-3.5 3.5a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 0 1 0-.708Z" />
-					</Role.svg>
-				}
-				className={cx("🥝-tree-chevron", props.className)}
-				ref={forwardedRef}
-			/>
-		);
-	},
-);
-DEV: TreeChevron.displayName = "TreeChevron";
 
 // ----------------------------------------------------------------------------
 

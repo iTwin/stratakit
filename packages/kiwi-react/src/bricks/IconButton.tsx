@@ -10,6 +10,7 @@ import { Icon } from "./Icon.js";
 import { Tooltip } from "./Tooltip.js";
 import { forwardRef } from "./~utils.js";
 import { Dot } from "./~utils.Dot.js";
+import { IconButtonContext } from "./IconButton.internal.js";
 
 interface IconButtonBaseProps
 	extends Omit<React.ComponentProps<typeof Button>, "children" | "tone"> {
@@ -118,6 +119,8 @@ export const IconButton = forwardRef<"button", IconButtonProps>(
 		const labelId = `${baseId}-label`;
 		const dotId = `${baseId}-dot`;
 
+		const { iconSize } = React.useContext(IconButtonContext);
+
 		const button = (
 			<Button
 				aria-pressed={isActive}
@@ -129,7 +132,7 @@ export const IconButton = forwardRef<"button", IconButtonProps>(
 			>
 				<VisuallyHidden id={labelId}>{label}</VisuallyHidden>
 
-				{typeof icon === "string" ? <Icon href={icon} /> : icon}
+				{typeof icon === "string" ? <Icon href={icon} size={iconSize} /> : icon}
 
 				{dot ? (
 					<Dot id={dotId} className="🥝-icon-button-dot">

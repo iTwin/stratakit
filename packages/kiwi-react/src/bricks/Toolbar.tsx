@@ -2,9 +2,11 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
+import * as React from "react";
 import cx from "classnames";
 import * as Toolbar from "@ariakit/react/toolbar";
 import { forwardRef, type BaseProps } from "./~utils.js";
+import { IconButtonContext } from "./IconButton.internal.js";
 
 // ----------------------------------------------------------------------------
 
@@ -57,7 +59,13 @@ interface ToolbarItemProps
  */
 const ToolbarItem = forwardRef<"button", ToolbarItemProps>(
 	(props, forwardedRef) => {
-		return <Toolbar.ToolbarItem {...props} ref={forwardedRef} />;
+		return (
+			<IconButtonContext
+				value={React.useMemo(() => ({ iconSize: "large" }), [])}
+			>
+				<Toolbar.ToolbarItem {...props} ref={forwardedRef} />
+			</IconButtonContext>
+		);
 	},
 );
 DEV: ToolbarItem.displayName = "Toolbar.Item";

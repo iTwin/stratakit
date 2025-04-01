@@ -901,6 +901,7 @@ function Subheader({ tabs }: { tabs?: React.ReactNode }) {
 
 	const searchInputRef = React.useRef<HTMLInputElement>(null);
 	const tabsRef = React.useRef<HTMLHeadingElement>(null);
+	const contentRef = React.useRef<HTMLDivElement>(null);
 
 	const [isSearchboxVisible, setIsSearchboxVisible] = React.useState(!tabs);
 	const filterOrSearchActive = isFiltered || !!search;
@@ -942,49 +943,295 @@ function Subheader({ tabs }: { tabs?: React.ReactNode }) {
 		return `Showing ${itemCount} tree items`;
 	}, [isFiltered, itemCount]);
 
+	const [isOverflowing1, setIsOverflowing1] = React.useState(false);
+	const [isOverflowing2, setIsOverflowing2] = React.useState(false);
 	const [isOverflowing, setIsOverflowing] = React.useState(false);
+	const [isScrolled, setIsScrolled] = React.useState(false);
+
+	// React.useEffect(() => {
+	// 	let tabList = !isSearchboxVisible && tabsRef.current;
+	// 	let content = contentRef.current;
+
+	// 	const ro = new ResizeObserver(() => {
+	// 		if (tabList) {
+	// 			console.log(
+	// 				"scrollwidth:",
+	// 				tabList.scrollWidth,
+	// 				"cientwidth:",
+	// 				tabList.clientWidth,
+	// 			);
+	// 			setIsOverflowing1(tabList.scrollWidth > tabList.clientWidth);
+	// 			console.log("overflow:", tabList.scrollWidth > tabList.clientWidth);
+	// 			if (tabList.scrollWidth > tabList.clientWidth) {
+	// 				content = contentRef.current;
+	// 				if (content) ro.observe(content);
+	// 			}
+	// 		}
+	// 		if (content) {
+	// 			console.log(
+	// 				content.className,
+	// 				"scrollwidth2:",
+	// 				content.scrollWidth,
+	// 				"cientwidth2:",
+	// 				content.clientWidth,
+	// 			);
+	// 			setIsOverflowing2(content.scrollWidth > content.clientWidth);
+	// 			console.log("overflow:", content.scrollWidth > content.clientWidth);
+	// 			if (content.scrollWidth <= content.clientWidth) {
+	// 				tabList = tabsRef.current;
+	// 				if (tabList) ro.observe(tabList);
+	// 			}
+	// 		}
+	// 	});
+
+	// 	if (isOverflowing1 && content) ro.observe(content);
+	// 	else if (tabList) ro.observe(tabList);
+
+	// 	return () => {
+	// 		if (tabList) ro.unobserve(tabList);
+	// 		if (content) ro.unobserve(content);
+	// 	};
+	// }, [isSearchboxVisible, isOverflowing1]);
+
+	// React.useEffect(() => {
+	// 	let tabList = !isSearchboxVisible && tabsRef.current;
+	// 	let content = !isSearchboxVisible && contentRef.current;
+
+	// 	const ro = new ResizeObserver(() => {
+	// 		if (tabList) {
+	// 			console.log(
+	// 				"scrollwidth:",
+	// 				tabList.scrollWidth,
+	// 				"cientwidth:",
+	// 				tabList.clientWidth,
+	// 			);
+	// 			if (tabList.scrollWidth && tabList.clientWidth) {
+	// 				console.log("overflow:", tabList.scrollWidth > tabList.clientWidth);
+	// 				setIsOverflowing(tabList.scrollWidth > tabList.clientWidth);
+	// 			} else {
+	// 				console.log("enter tablist 0");
+	// 				tabList = null;
+	// 				content = !isSearchboxVisible && contentRef.current;
+	// 				if (content) {
+	// 					console.log("content present:", content);
+	// 					ro2.observe(content);
+	// 				}
+	// 			}
+	// 		}
+	// 	});
+
+	// 	const ro2 = new ResizeObserver(() => {
+	// 		if (content) {
+	// 			console.log(
+	// 				content.className,
+	// 				"scrollwidth2:",
+	// 				content.scrollWidth,
+	// 				"cientwidth2:",
+	// 				content.clientWidth,
+	// 			);
+	// 			console.log("isScrolled:", isScrolled);
+	// 			if (content.scrollWidth && content.clientWidth) {
+	// 				console.log("overflow:", content.scrollWidth > content.clientWidth);
+	// 				if (isScrolled) {
+	// 					setIsOverflowing(content.scrollWidth > content.clientWidth);
+	// 				} else {
+	// 					setIsScrolled(true);
+	// 				}
+	// 			} else {
+	// 				tabList = !isSearchboxVisible && tabsRef.current;
+	// 				if (tabList) {
+	// 					console.log("tablist present:", tabList);
+	// 					ro.observe(tabList);
+	// 				}
+	// 				setIsScrolled(false);
+	// 			}
+	// 		}
+	// 	});
+
+	// 	if (tabList) ro.observe(tabList);
+
+	// 	return () => {
+	// 		ro2.disconnect();
+	// 		ro.disconnect();
+	// 	};
+	// }, [isSearchboxVisible, isScrolled]);
+
+	// React.useEffect(() => {
+	// 	const content = contentRef.current;
+	// 	if (content) return
+
+	// 	const ro = new ResizeObserver(() => {
+
+	// 	});
+	// 	if (content) ro.observe(content);
+	// 	return () => {
+	// 		ro.disconnect();
+	// 	};
+	// }, []);
 
 	React.useEffect(() => {
-		const tabList = tabsRef.current;
-		if (tabList) {
-			setIsOverflowing(tabList.scrollWidth > tabList.clientWidth);
-		}
-	}, []);
-	if (!isOverflowing) {
-		return (
-			<div className={styles.subheader}>
-				<VisuallyHidden aria-live="polite" aria-atomic={true}>
-					{filteredNotification}
-				</VisuallyHidden>
-				{tabs && !isSearchboxVisible ? (
-					<Tabs.TabList className={styles.tabList} tone="accent" ref={tabsRef}>
-						{tabs}
-					</Tabs.TabList>
-				) : null}
+		let tabList = !isSearchboxVisible && tabsRef.current;
+		let content: HTMLDivElement | null = null;
 
-				{isSearchboxVisible ? (
-					<TextBox.Root className={styles.searchInput}>
-						<TextBox.Icon href={searchIcon} />
-						<TextBox.Input
-							placeholder="Search"
-							ref={searchInputRef}
-							onChange={(e) => setSearch(e.currentTarget.value)}
-						/>
-					</TextBox.Root>
-				) : null}
+		const ro = new ResizeObserver(() => {
+			if (tabList) {
+				console.log(
+					"scrollwidth:",
+					tabList.scrollWidth,
+					"cientwidth:",
+					tabList.clientWidth,
+				);
+				if (tabList.scrollWidth && tabList.clientWidth) {
+					console.log("overflow:", tabList.scrollWidth > tabList.clientWidth);
+					setIsOverflowing(tabList.scrollWidth > tabList.clientWidth);
+				} else {
+					content = contentRef.current;
+					if (content) {
+						console.log("content present:", content);
+						ro.observe(content);
+					}
+				}
+			}
+			if (content) {
+				console.log(
+					content.className,
+					"scrollwidth2:",
+					content.scrollWidth,
+					"cientwidth2:",
+					content.clientWidth,
+				);
+				if (content.scrollWidth && content.clientWidth) {
+					console.log("overflow:", content.scrollWidth > content.clientWidth);
+					setIsOverflowing(content.scrollWidth > content.clientWidth);
+				}
+			} else {
+				tabList = tabsRef.current;
+				if (tabList) {
+					console.log("tablist present:", tabList);
+					ro.observe(tabList);
+				}
+			}
+		});
+		if (tabList) ro.observe(tabList);
+		return () => {
+			ro.disconnect();
+		};
+	}, [isSearchboxVisible]);
 
-				<div className={styles.subheaderActions}>{actions}</div>
-			</div>
-		);
-	}
+	// let content = null;
+	const overflowAndNotSearch = isOverflowing && !isSearchboxVisible;
+	const Element = overflowAndNotSearch ? "div" : React.Fragment;
+
+	// if (!isOverflowing) {
+	// 	content = (
+	// 		<div className={styles.subheader}>
+	// 			<VisuallyHidden aria-live="polite" aria-atomic={true}>
+	// 				{filteredNotification}
+	// 			</VisuallyHidden>
+	// 			{tabs && !isSearchboxVisible ? (
+	// 				<Tabs.TabList className={styles.tabList} tone="accent" ref={tabsRef}>
+	// 					{tabs}
+	// 				</Tabs.TabList>
+	// 			) : null}
+
+	// 			{isSearchboxVisible ? (
+	// 				<TextBox.Root className={styles.searchInput}>
+	// 					<TextBox.Icon href={searchIcon} />
+	// 					<TextBox.Input
+	// 						placeholder="Search"
+	// 						ref={searchInputRef}
+	// 						onChange={(e) => setSearch(e.currentTarget.value)}
+	// 					/>
+	// 				</TextBox.Root>
+	// 			) : null}
+
+	// 			<div className={styles.subheaderActions}>{actions}</div>
+	// 		</div>
+	// 	);
+	// } else if (isSearchboxVisible) {
+	// 	content = (
+	// 		<div className={styles.subheader}>
+	// 			<VisuallyHidden aria-live="polite" aria-atomic={true}>
+	// 				{filteredNotification}
+	// 			</VisuallyHidden>
+	// 			{tabs && !isSearchboxVisible ? (
+	// 				<div className={styles.tabListWrapper}>
+	// 					<Tabs.TabList
+	// 						className={styles.tabList}
+	// 						tone="accent"
+	// 						ref={tabsRef}
+	// 					>
+	// 						{tabs}
+	// 					</Tabs.TabList>
+	// 				</div>
+	// 			) : null}
+
+	// 			{isSearchboxVisible ? (
+	// 				<TextBox.Root className={styles.searchInput}>
+	// 					<TextBox.Icon href={searchIcon} />
+	// 					<TextBox.Input
+	// 						placeholder="Search"
+	// 						ref={searchInputRef}
+	// 						onChange={(e) => setSearch(e.currentTarget.value)}
+	// 					/>
+	// 				</TextBox.Root>
+	// 			) : null}
+
+	// 			<div className={styles.subheaderActions}>{actions}</div>
+	// 		</div>
+	// 	);
+	// } else {
+	// 	content = (
+	// 		<div className={styles.subheader}>
+	// 			<VisuallyHidden aria-live="polite" aria-atomic={true}>
+	// 				{filteredNotification}
+	// 			</VisuallyHidden>
+	// 			<div className={styles.subheaderContent} ref={contentRef}>
+	// 				<div className={styles.subheaderBuffer} />
+	// 				{tabs && !isSearchboxVisible ? (
+	// 					<div className={styles.tabListWrapper}>
+	// 						<Tabs.TabList
+	// 							className={styles.tabList}
+	// 							tone="accent"
+	// 							ref={tabsRef}
+	// 						>
+	// 							{tabs}
+	// 						</Tabs.TabList>
+	// 					</div>
+	// 				) : null}
+
+	// 				{isSearchboxVisible ? (
+	// 					<TextBox.Root className={styles.searchInput}>
+	// 						<TextBox.Icon href={searchIcon} />
+	// 						<TextBox.Input
+	// 							placeholder="Search"
+	// 							ref={searchInputRef}
+	// 							onChange={(e) => setSearch(e.currentTarget.value)}
+	// 						/>
+	// 					</TextBox.Root>
+	// 				) : null}
+
+	// 				<div className={styles.subHeaderActionsOverflow}>{actions}</div>
+	// 			</div>
+	// 		</div>
+	// 	);
+	// }
 	return (
 		<div className={styles.subheader}>
 			<VisuallyHidden aria-live="polite" aria-atomic={true}>
 				{filteredNotification}
 			</VisuallyHidden>
-			<div className={styles.subheaderContent}>
+			<Element
+				{...(overflowAndNotSearch && { className: styles.subheaderContent })}
+				{...(overflowAndNotSearch && { ref: contentRef })}
+			>
+				{overflowAndNotSearch ? (
+					<div className={styles.subheaderBuffer} />
+				) : null}
 				{tabs && !isSearchboxVisible ? (
-					<div className={styles.tabListWrapper}>
+					<Element
+						{...(overflowAndNotSearch && { className: styles.tabListWrapper })}
+					>
 						<Tabs.TabList
 							className={styles.tabList}
 							tone="accent"
@@ -992,7 +1239,7 @@ function Subheader({ tabs }: { tabs?: React.ReactNode }) {
 						>
 							{tabs}
 						</Tabs.TabList>
-					</div>
+					</Element>
 				) : null}
 
 				{isSearchboxVisible ? (
@@ -1006,8 +1253,16 @@ function Subheader({ tabs }: { tabs?: React.ReactNode }) {
 					</TextBox.Root>
 				) : null}
 
-				<div className={styles.subheaderActions}>{actions}</div>
-			</div>
+				<div
+					className={
+						overflowAndNotSearch
+							? styles.subHeaderActionsOverflow
+							: styles.subheaderActions
+					}
+				>
+					{actions}
+				</div>
+			</Element>
 		</div>
 	);
 }

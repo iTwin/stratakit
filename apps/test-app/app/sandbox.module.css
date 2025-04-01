@@ -90,8 +90,7 @@
 .subheader {
 	min-block-size: 2.5rem;
 	/* padding-inline: 12px; */
-	/* padding-block: 1px; */
-	border-block: 1px solid var(--ids-color-border-neutral-base);
+	border-block: 1.5px solid var(--ids-color-border-neutral-base);
 	border-inline: none;
 
 	display: flex;
@@ -107,19 +106,24 @@
 
 .searchInput {
 	flex: 1;
-	margin-right: 50px;
+	margin-inline: 12px;
 }
 
 .subheaderActions {
-	margin-inline-start: auto;
+	margin-inline: auto 12px;
+}
+
+.subHeaderActionsOverflow {
+	margin-inline: auto;
 
 	right: 0;
-	/* display: flex;
-	align-items: center; */
 	position: absolute;
 	transform: translateY(-1.5px);
-	padding-inline: 12px;
+	padding-inline: 10px;
+	padding-block-end: 4.5px;
 	background: var(--ids-color-bg-page-base);
+	border-block-end: 1.5px solid var(--ids-color-border-neutral-base);
+	z-index: 100;
 	/* mask-image: linear-gradient(to left, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%);
 	-webkit-mask-image: linear-gradient(to left, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%); */
 }
@@ -127,28 +131,32 @@
 .tabList {
 	align-self: flex-end;
 	margin-block-end: -1px;
-	padding-inline: 15px;
-	overflow: auto;
-	margin-right: 24px;
-	position: relative;
-
-	/* clip-path: inset(0 40px 0 0); */
-	/* transform: translateX(-30px); */
+	padding-inline: 10px;
+	overflow: hidden;
 }
 
 .tabListWrapper {
-	margin-bottom: 4px;
-	border-bottom: 1px solid var(--ids-color-border-neutral-base);
-	/* width: 100%; */
+	margin-block-end: 5px;
+	border-block-end: 1.5px solid var(--ids-color-border-neutral-base);
+	margin-inline-end: 26px;
+}
+
+.subheaderBuffer {
+	min-width: 8px;
+	margin-bottom: 5px;
+	visibility: visible;
+	position: sticky;
+	background-color: var(--ids-color-bg-page-base);
+	border-block-end: 1.5px solid var(--ids-color-border-neutral-base);
+	left: 0;
+	z-index: 100;
 }
 
 .subheaderContent {
-	overflow: auto;
+	overflow-x: auto;
+	overflow-y: hidden;
 	display: flex;
-	margin-block: 4px;
-	/* padding-inline-start: 10px; */
-	box-sizing: border-box;
-	/* padding-top: 5px; */
+	margin-block: 5px;
 }
 
 .emptyState {

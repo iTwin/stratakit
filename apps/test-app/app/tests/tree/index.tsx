@@ -130,6 +130,9 @@ export default definePage(
 				return [...prev.slice(0, index), newItem, ...prev.slice(index + 1)];
 			});
 		}, []);
+		const handleRetry = React.useCallback(() => {
+			setRenderError(false);
+		}, []);
 		return (
 			<Tree.Root style={{ maxInlineSize: overflow ? 300 : undefined }}>
 				{flatData.map((item) => {
@@ -150,23 +153,8 @@ export default definePage(
 							onExpandedChange={handleExpansion}
 							selected={item.selected}
 							onSelectedChange={handleSelection}
-							actions={[
-								error && (
-									<Tree.ItemAction
-										key="retry"
-										icon={refreshIcon}
-										label="Retry"
-										onClick={() => setRenderError(false)}
-									/>
-								),
-								<Tree.ItemAction
-									key="unlock"
-									icon={unlockIcon}
-									label="Unlock"
-								/>,
-								<Tree.ItemAction key="show" icon={showIcon} label="Show" />,
-							]}
 							error={error}
+							onRetry={handleRetry}
 						/>
 					);
 				})}
@@ -181,17 +169,28 @@ type TreeItemProps = React.ComponentProps<typeof Tree.Item>;
 interface TestTreeItemProps
 	extends Omit<
 		TreeItemProps,
-		"onSelectedChange" | "onExpandedChange" | "icon" | "unstable_decorations"
+		| "onSelectedChange"
+		| "onExpandedChange"
+		| "icon"
+		| "unstable_decorations"
+		| "actions"
 	> {
 	index: number;
 	childIndex?: number;
 	onSelectedChange: (index: number, childIndex?: number) => void;
 	onExpandedChange: (index: number) => void;
+	onRetry?: () => void;
 }
 
 function TestTreeItem(props: TestTreeItemProps) {
-	const { index, childIndex, onSelectedChange, onExpandedChange, ...rest } =
-		props;
+	const {
+		index,
+		childIndex,
+		onSelectedChange,
+		onExpandedChange,
+		onRetry,
+		...rest
+	} = props;
 	const handleSelectedChange = React.useCallback(() => {
 		onSelectedChange(index, childIndex);
 	}, [index, childIndex, onSelectedChange]);
@@ -213,12 +212,27 @@ function TestTreeItem(props: TestTreeItemProps) {
 			<Icon href={placeholderIcon} />
 		);
 	}, [childIndex]);
+	const actions = React.useMemo(() => {
+		return [
+			props.error && (
+				<Tree.ItemAction
+					key="retry"
+					icon={refreshIcon}
+					label="Retry"
+					onClick={onRetry}
+				/>
+			),
+			<Tree.ItemAction key="unlock" icon={unlockIcon} label="Unlock" />,
+			<Tree.ItemAction key="show" icon={showIcon} label="Show" />,
+		];
+	}, [props.error, onRetry]);
 	return (
 		<Tree.Item
 			onSelectedChange={handleSelectedChange}
 			onExpandedChange={handleExpandedChange}
 			icon={icon}
 			unstable_decorations={decorations}
+			actions={actions}
 			{...rest}
 		/>
 	);

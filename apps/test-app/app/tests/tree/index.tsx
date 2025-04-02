@@ -42,16 +42,48 @@ export default definePage(
 				children: [{ label: `Item 2.1${overflowPostfix}`, selected: false }],
 			},
 			{ label: "Item 3", selected: false },
+			...Array.from({ length: 100 }).map((_, index) => ({
+				label: `Item ${index + 4}`,
+				selected: false,
+			})),
 		]);
+		const flatData = React.useMemo(
+			() =>
+				data.flatMap((item, index, items) => {
+					const flatItem = {
+						...item,
+						level: 1,
+						index,
+						setSize: items.length,
+						childIndex: undefined,
+					};
+					if (!item.expanded) return flatItem;
 
+					const flatChildren = item.children.map((child, childIndex) => ({
+						...child,
+						level: 2,
+						index,
+						childIndex,
+						setSize: item.children.length,
+						expanded: undefined,
+					}));
+					return [flatItem, ...flatChildren];
+				}),
+			[data],
+		);
 		return (
 			<Tree.Root style={{ maxInlineSize: overflow ? 300 : undefined }}>
-				{data.map((item, index, items) => {
+				{flatData.map((item) => {
+					const { index, childIndex } = item;
 					const handleSelection = () => {
-						const oldSelected = data[index].selected;
-
 						const newData = [...data];
-						newData[index].selected = !oldSelected;
+						const itemToUpdate =
+							childIndex === undefined
+								? newData[index]
+								: newData[index].children?.[childIndex];
+						if (!itemToUpdate) return;
+
+						itemToUpdate.selected = !itemToUpdate.selected;
 						setData(newData);
 					};
 
@@ -69,16 +101,30 @@ export default definePage(
 						<React.Fragment key={item.label}>
 							<Tree.Item
 								key={item.label}
-								aria-level={1}
+								aria-level={item.level}
 								aria-posinset={index + 1}
-								aria-setsize={items.length}
+								aria-setsize={item.setSize}
 								label={item.label}
 								description={index === 0 ? description : undefined}
 								expanded={item.expanded}
 								onExpandedChange={handleExpansion}
 								selected={item.selected}
 								onSelectedChange={handleSelection}
-								icon={<Icon href={placeholderIcon} alt="decoration" />}
+								icon={
+									childIndex === undefined ? (
+										<Icon href={placeholderIcon} alt="decoration" />
+									) : undefined
+								}
+								unstable_decorations={
+									childIndex === 0 ? (
+										<>
+											<Icon href={placeholderIcon} />
+											<Icon href={placeholderIcon} />
+										</>
+									) : (
+										<Icon href={placeholderIcon} />
+									)
+								}
 								actions={[
 									error && (
 										<Tree.ItemAction
@@ -97,51 +143,6 @@ export default definePage(
 								]}
 								error={error}
 							/>
-							{item.children?.map((child, childIndex, children) => {
-								if (!item.expanded) return null;
-
-								const handleSelection = () => {
-									const newData = [...data];
-									const childItem = newData[index].children?.[childIndex];
-									if (childItem) childItem.selected = !childItem.selected;
-									setData(newData);
-								};
-
-								return (
-									<Tree.Item
-										key={child.label}
-										aria-level={2}
-										aria-posinset={childIndex + 1}
-										aria-setsize={children.length}
-										label={child.label}
-										description={childIndex === 0 ? description : undefined}
-										selected={child.selected}
-										onSelectedChange={handleSelection}
-										unstable_decorations={
-											childIndex === 0 ? (
-												<>
-													<Icon href={placeholderIcon} />
-													<Icon href={placeholderIcon} />
-												</>
-											) : (
-												<Icon href={placeholderIcon} />
-											)
-										}
-										actions={[
-											<Tree.ItemAction
-												key="unlock"
-												icon={unlockIcon}
-												label="Unlock"
-											/>,
-											<Tree.ItemAction
-												key="show"
-												icon={showIcon}
-												label="Show"
-											/>,
-										]}
-									/>
-								);
-							})}
 						</React.Fragment>
 					);
 				})}

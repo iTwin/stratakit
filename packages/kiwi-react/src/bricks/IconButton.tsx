@@ -4,12 +4,13 @@
  *--------------------------------------------------------------------------------------------*/
 import * as React from "react";
 import cx from "classnames";
-import { useToolbarContext, ToolbarItem } from "@ariakit/react/toolbar";
 import { Button } from "./Button.js";
 import { VisuallyHidden } from "./VisuallyHidden.js";
 import { Icon } from "./Icon.js";
 import { Tooltip } from "./Tooltip.js";
 import { forwardRef } from "./~utils.js";
+import { Dot } from "./~utils.Dot.js";
+import { IconButtonContext } from "./IconButton.internal.js";
 
 interface IconButtonBaseProps
 	extends Omit<React.ComponentProps<typeof Button>, "children" | "tone"> {
@@ -118,7 +119,7 @@ export const IconButton = forwardRef<"button", IconButtonProps>(
 		const labelId = `${baseId}-label`;
 		const dotId = `${baseId}-dot`;
 
-		const toolbar = useToolbarContext();
+		const { iconSize } = React.useContext(IconButtonContext);
 
 		const button = (
 			<Button
@@ -126,19 +127,17 @@ export const IconButton = forwardRef<"button", IconButtonProps>(
 				aria-labelledby={labelId}
 				aria-describedby={dot ? dotId : undefined}
 				{...rest}
-				data-kiwi-dot={dot ? "true" : undefined}
-				render={toolbar ? <ToolbarItem render={props.render} /> : props.render}
 				className={cx("🥝-icon-button", props.className)}
 				ref={forwardedRef}
 			>
 				<VisuallyHidden id={labelId}>{label}</VisuallyHidden>
 
-				{typeof icon === "string" ? <Icon href={icon} /> : icon}
+				{typeof icon === "string" ? <Icon href={icon} size={iconSize} /> : icon}
 
 				{dot ? (
-					<VisuallyHidden id={dotId} aria-hidden="true">
+					<Dot id={dotId} className="🥝-icon-button-dot">
 						{dot}
-					</VisuallyHidden>
+					</Dot>
 				) : null}
 			</Button>
 		);

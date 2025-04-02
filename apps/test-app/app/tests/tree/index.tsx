@@ -182,7 +182,7 @@ interface TestTreeItemProps
 	onRetry?: () => void;
 }
 
-function TestTreeItem(props: TestTreeItemProps) {
+const TestTreeItem = React.memo((props: TestTreeItemProps) => {
 	const {
 		index,
 		childIndex,
@@ -236,7 +236,7 @@ function TestTreeItem(props: TestTreeItemProps) {
 			{...rest}
 		/>
 	);
-}
+});
 
 function ActionsOverflowTest({ count = 5, dot = false }) {
 	const actions = Array.from({ length: Number(count) }).map((_, index) => (

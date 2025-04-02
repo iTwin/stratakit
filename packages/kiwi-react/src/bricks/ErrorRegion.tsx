@@ -98,6 +98,7 @@ const ErrorRegionRoot = forwardRef<"div", ErrorRegionRootProps>(
 							>
 								<StatusWarning className="🥝-error-region-icon" />
 								<Text
+									render={<span />}
 									id={labelId}
 									className="🥝-error-region-label"
 									variant="body-sm"

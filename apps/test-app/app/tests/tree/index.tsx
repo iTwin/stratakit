@@ -150,16 +150,6 @@ export default definePage(
 							onExpandedChange={handleExpansion}
 							selected={item.selected}
 							onSelectedChange={handleSelection}
-							unstable_decorations={
-								childIndex === 0 ? (
-									<>
-										<Icon href={placeholderIcon} />
-										<Icon href={placeholderIcon} />
-									</>
-								) : (
-									<Icon href={placeholderIcon} />
-								)
-							}
 							actions={[
 								error && (
 									<Tree.ItemAction
@@ -191,7 +181,7 @@ type TreeItemProps = React.ComponentProps<typeof Tree.Item>;
 interface TestTreeItemProps
 	extends Omit<
 		TreeItemProps,
-		"onSelectedChange" | "onExpandedChange" | "icon"
+		"onSelectedChange" | "onExpandedChange" | "icon" | "unstable_decorations"
 	> {
 	index: number;
 	childIndex?: number;
@@ -213,11 +203,22 @@ function TestTreeItem(props: TestTreeItemProps) {
 			<Icon href={placeholderIcon} alt="decoration" />
 		) : undefined;
 	}, [childIndex]);
+	const decorations = React.useMemo(() => {
+		return childIndex === 0 ? (
+			<>
+				<Icon href={placeholderIcon} />
+				<Icon href={placeholderIcon} />
+			</>
+		) : (
+			<Icon href={placeholderIcon} />
+		);
+	}, [childIndex]);
 	return (
 		<Tree.Item
 			onSelectedChange={handleSelectedChange}
 			onExpandedChange={handleExpandedChange}
 			icon={icon}
+			unstable_decorations={decorations}
 			{...rest}
 		/>
 	);

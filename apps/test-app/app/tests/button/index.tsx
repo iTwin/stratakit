@@ -43,10 +43,6 @@ function VisualTest() {
 					<div key={variant} style={{ display: "flex", gap: 4 }}>
 						<Button {...props}>Click me</Button>
 
-						<Button {...props} render={<a href="#" />}>
-							Click me
-						</Button>
-
 						<Button {...props}>
 							<Icon href={placeholderIconHref} />
 							Click me
@@ -67,6 +63,10 @@ function VisualTest() {
 							<Icon href={placeholderIconHref} />
 							Click me
 							<Icon href={placeholderIconHref} />
+						</Button>
+
+						<Button {...props} render={<a href="#" />}>
+							Click me
 						</Button>
 					</div>
 				);

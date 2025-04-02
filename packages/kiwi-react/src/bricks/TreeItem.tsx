@@ -18,6 +18,7 @@ import { ChevronDown, Icon, StatusWarning, MoreHorizontal } from "./Icon.js";
 import { forwardRef, type BaseProps } from "./~utils.js";
 import { useEventHandlers, useSafeContext } from "./~hooks.js";
 import { GhostAligner, useGhostAlignment } from "./~utils.GhostAligner.js";
+import { IconButtonPresentation } from "./IconButton.internal.js";
 
 // ----------------------------------------------------------------------------
 
@@ -520,23 +521,21 @@ interface TreeItemExpanderProps extends Omit<BaseProps<"span">, "children"> {}
 const TreeItemExpander = forwardRef<"button", TreeItemExpanderProps>(
 	(props, forwardedRef) => {
 		return (
-			<Role.span
+			<IconButtonPresentation
 				aria-hidden="true"
 				{...props}
 				onClick={useEventHandlers(props.onClick, (e) => e.stopPropagation())}
 				className={cx(
-					"🥝-button",
-					"🥝-icon-button",
 					"🥝-ghost-aligner",
 					"🥝-tree-item-expander",
 					props.className,
 				)}
-				data-kiwi-variant="ghost"
+				variant="ghost"
 				data-kiwi-ghost-align={useGhostAlignment()}
 				ref={forwardedRef}
 			>
 				<ChevronDown />
-			</Role.span>
+			</IconButtonPresentation>
 		);
 	},
 );

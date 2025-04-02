@@ -22,7 +22,7 @@ export default definePage(
 			</>
 		);
 	},
-	{ visual: VisualTest, button: ButtonTest },
+	{ visual: VisualTest },
 );
 
 const tones = ["neutral", "accent", "critical"] as const;
@@ -30,31 +30,26 @@ const tones = ["neutral", "accent", "critical"] as const;
 function VisualTest() {
 	return (
 		<div style={{ display: "grid", gap: 4, justifyContent: "start" }}>
-			{tones.map((tone) => (
-				<Anchor key={tone} tone={tone} href="https://example.com">
-					Example
-				</Anchor>
-			))}
-		</div>
-	);
-}
-
-function ButtonTest() {
-	const handleOnClick = () => {
-		window.location.href = "https://example.com";
-	};
-
-	return (
-		<div style={{ display: "grid", gap: 4, justifyContent: "start" }}>
 			{tones.map((tone) => {
 				return (
-					<Anchor
-						render={<button onClick={() => handleOnClick()} />}
-						key={tone}
-						tone={tone}
-					>
-						Example
-					</Anchor>
+					<div key={tone} style={{ display: "flex", gap: 4 }}>
+						<Anchor key={tone} tone={tone} href="https://example.com">
+							Example
+						</Anchor>
+						<Anchor
+							render={
+								<button
+									onClick={() => {
+										window.location.href = "https://example.com";
+									}}
+								/>
+							}
+							key={tone}
+							tone={tone}
+						>
+							Example
+						</Anchor>
+					</div>
 				);
 			})}
 		</div>

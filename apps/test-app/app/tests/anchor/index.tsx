@@ -37,13 +37,7 @@ function VisualTest() {
 							Example
 						</Anchor>
 						<Anchor
-							render={
-								<button
-									onClick={() => {
-										window.location.href = "https://example.com";
-									}}
-								/>
-							}
+							render={<button onClick={() => {}} />}
 							key={tone}
 							tone={tone}
 						>

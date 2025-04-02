@@ -121,19 +121,19 @@ export default definePage(
 			},
 			[],
 		);
+		const handleExpansion = React.useCallback((index: number) => {
+			setData((prev) => {
+				const itemToUpdate = prev[index];
+				if (itemToUpdate.expanded === undefined) return prev;
+
+				const newItem = { ...itemToUpdate, expanded: !itemToUpdate.expanded };
+				return [...prev.slice(0, index), newItem, ...prev.slice(index + 1)];
+			});
+		}, []);
 		return (
 			<Tree.Root style={{ maxInlineSize: overflow ? 300 : undefined }}>
 				{flatData.map((item) => {
 					const { index, childIndex } = item;
-
-					const handleExpansion = () => {
-						const oldExpanded = data[index].expanded;
-						if (oldExpanded === undefined) return;
-
-						const newData = [...data];
-						newData[index].expanded = !oldExpanded;
-						setData(newData);
-					};
 
 					const error = renderError && index === 0;
 					return (
@@ -193,18 +193,30 @@ export default definePage(
 
 type TreeItemProps = React.ComponentProps<typeof Tree.Item>;
 
-interface TestTreeItemProps extends Omit<TreeItemProps, "onSelectedChange"> {
+interface TestTreeItemProps
+	extends Omit<TreeItemProps, "onSelectedChange" | "onExpandedChange"> {
 	index: number;
 	childIndex?: number;
 	onSelectedChange: (index: number, childIndex?: number) => void;
+	onExpandedChange: (index: number) => void;
 }
 
 function TestTreeItem(props: TestTreeItemProps) {
-	const { index, childIndex, onSelectedChange, ...rest } = props;
+	const { index, childIndex, onSelectedChange, onExpandedChange, ...rest } =
+		props;
 	const handleSelectedChange = React.useCallback(() => {
 		onSelectedChange(index, childIndex);
 	}, [index, childIndex, onSelectedChange]);
-	return <Tree.Item onSelectedChange={handleSelectedChange} {...rest} />;
+	const handleExpandedChange = React.useCallback(() => {
+		onExpandedChange(index);
+	}, [index, onExpandedChange]);
+	return (
+		<Tree.Item
+			onSelectedChange={handleSelectedChange}
+			onExpandedChange={handleExpandedChange}
+			{...rest}
+		/>
+	);
 }
 
 function ActionsOverflowTest({ count = 5, dot = false }) {

@@ -902,6 +902,7 @@ function Subheader({ tabs }: { tabs?: React.ReactNode }) {
 	const searchInputRef = React.useRef<HTMLInputElement>(null);
 	const tabsRef = React.useRef<HTMLHeadingElement>(null);
 	const contentRef = React.useRef<HTMLDivElement>(null);
+	const subHeaderRef = React.useRef<HTMLDivElement>(null);
 
 	const [isSearchboxVisible, setIsSearchboxVisible] = React.useState(!tabs);
 	const filterOrSearchActive = isFiltered || !!search;
@@ -1069,12 +1070,23 @@ function Subheader({ tabs }: { tabs?: React.ReactNode }) {
 	// 	};
 	// }, []);
 
+	const [tabList, setTabList] = React.useState<null | HTMLElement>();
+	const [content, setContent] = React.useState<null | HTMLElement>();
 	React.useEffect(() => {
-		let tabList = !isSearchboxVisible && tabsRef.current;
+		let tabList = tabsRef.current;
+		const searchInput = isSearchboxVisible && searchInputRef.current;
+		const subHeader = subHeaderRef.current;
 		let content: HTMLDivElement | null = null;
+		let currWidth: number | null = null;
+		let currWidth2: number | null = null;
+		let tabListScrollWidthReached = true;
 
 		const ro = new ResizeObserver(() => {
+			console.log(
+				"-----------------------------------------------------------------",
+			);
 			if (tabList) {
+				console.log("entered tablist");
 				console.log(
 					"scrollwidth:",
 					tabList.scrollWidth,
@@ -1082,17 +1094,36 @@ function Subheader({ tabs }: { tabs?: React.ReactNode }) {
 					tabList.clientWidth,
 				);
 				if (tabList.scrollWidth && tabList.clientWidth) {
-					console.log("overflow:", tabList.scrollWidth > tabList.clientWidth);
-					setIsOverflowing(tabList.scrollWidth > tabList.clientWidth);
+					console.log(currWidth2, tabList.clientWidth);
+					if (
+						currWidth2 &&
+						currWidth2 !== tabList.clientWidth &&
+						tabListScrollWidthReached
+					) {
+						console.log("entered bc scrolled");
+						console.log("overflow:", tabList.scrollWidth > tabList.clientWidth);
+						setIsOverflowing(tabList.scrollWidth > tabList.clientWidth);
+						currWidth2 = tabList.clientWidth;
+					} else {
+						console.log("not scrolled");
+						currWidth2 = tabList.clientWidth;
+						if (tabList.scrollWidth === tabList.clientWidth)
+							tabListScrollWidthReached = true;
+					}
 				} else {
+					tabListScrollWidthReached = false;
+					console.log("entered tablist overflow");
+					currWidth2 = null;
+					ro.unobserve(tabList);
+					tabList = null;
 					content = contentRef.current;
 					if (content) {
 						console.log("content present:", content);
 						ro.observe(content);
 					}
 				}
-			}
-			if (content) {
+			} else if (content) {
+				console.log("entered content");
 				console.log(
 					content.className,
 					"scrollwidth2:",
@@ -1101,18 +1132,30 @@ function Subheader({ tabs }: { tabs?: React.ReactNode }) {
 					content.clientWidth,
 				);
 				if (content.scrollWidth && content.clientWidth) {
-					console.log("overflow:", content.scrollWidth > content.clientWidth);
-					setIsOverflowing(content.scrollWidth > content.clientWidth);
-				}
-			} else {
-				tabList = tabsRef.current;
-				if (tabList) {
-					console.log("tablist present:", tabList);
-					ro.observe(tabList);
+					console.log(currWidth, content.clientWidth);
+					if (currWidth && currWidth !== content.clientWidth) {
+						console.log("entered bc scrolled");
+						console.log("overflow:", content.scrollWidth > content.clientWidth);
+						currWidth = content.clientWidth;
+						setIsOverflowing(content.scrollWidth > content.clientWidth);
+					} else {
+						console.log("not scrolled");
+						currWidth = content.clientWidth;
+					}
+				} else {
+					console.log("entered content no more overflow");
+					currWidth = null;
+					tabList = tabsRef.current;
+					if (tabList) {
+						console.log("tablist present:", tabList);
+						ro.observe(tabList);
+					}
 				}
 			}
 		});
 		if (tabList) ro.observe(tabList);
+		if (subHeader) ro.observe(subHeader);
+		// if (searchInput) ro.observe(searchInput);
 		return () => {
 			ro.disconnect();
 		};
@@ -1217,7 +1260,7 @@ function Subheader({ tabs }: { tabs?: React.ReactNode }) {
 	// 	);
 	// }
 	return (
-		<div className={styles.subheader}>
+		<div className={styles.subheader} ref={subHeaderRef}>
 			<VisuallyHidden aria-live="polite" aria-atomic={true}>
 				{filteredNotification}
 			</VisuallyHidden>

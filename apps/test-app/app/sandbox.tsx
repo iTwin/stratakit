@@ -904,11 +904,12 @@ function TabPanelContainer({
 
 	const nonTabPanelProps = React.useMemo(
 		() => ({
-			...((panelRef?.current?.dataset.open || length === 1) && {
+			...(((isSearchboxVisible && panelRef?.current?.dataset.open) ||
+				length === 1) && {
 				"data-open": true,
 			}),
 		}),
-		[length],
+		[length, isSearchboxVisible],
 	);
 
 	return (
@@ -917,10 +918,6 @@ function TabPanelContainer({
 			className={styles.tabPanel}
 			focusable={false}
 			ref={panelRef}
-			{...(Element === "div" &&
-				(panelRef?.current?.dataset.open || length === 1) && {
-					"data-open": true,
-				})}
 			{...(Element === "div" ? nonTabPanelProps : tabPanelProps)}
 		>
 			<SandboxTree

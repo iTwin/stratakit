@@ -7,7 +7,7 @@ import { Role } from "@ariakit/react/role";
 import { Focusable } from "@ariakit/react/focusable";
 import cx from "classnames";
 import { Icon } from "./Icon.js";
-import { useMergedRefs } from "./~hooks.js";
+import { useEventHandlers, useMergedRefs } from "./~hooks.js";
 import { type FocusableProps, type BaseProps, forwardRef } from "./~utils.js";
 import { useFieldControlType } from "./Field.internal.js";
 
@@ -194,17 +194,14 @@ const TextBoxRoot = forwardRef<"div", TextBoxRootProps>(
 					{...props}
 					data-kiwi-disabled={disabled}
 					className={cx("🥝-text-box", props.className)}
-					onPointerDown={(e) => {
-						props.onPointerDown?.(e);
-
-						if (e.defaultPrevented) return;
+					onPointerDown={useEventHandlers(props.onPointerDown, (e) => {
 						if (disabled) return;
 
 						if (e.target !== e.currentTarget) return;
 
 						e.preventDefault(); // Prevent default focus behavior
 						inputRef.current?.focus();
-					}}
+					})}
 					ref={forwardedRef}
 				/>
 			</TextBoxRootContext.Provider>

@@ -38,25 +38,20 @@ test("disabled", async ({ page }) => {
 });
 
 test.describe("@visual", () => {
-	for (const { name, path } of [
-		{ name: "default", path: "/tests/button?visual=true" },
-		{ name: "anchor", path: "/tests/button?anchor=true" },
-	]) {
-		test(name, async ({ page }) => {
-			await page.goto(path);
-			await expect(page.locator("body")).toHaveScreenshot();
-		});
+	test("default", async ({ page }) => {
+		await page.goto("/tests/button?visual=true");
+		await expect(page.locator("body")).toHaveScreenshot();
+	});
 
-		test(`forced-colors-${name}`, async ({ page, browserName }) => {
-			test.skip(
-				browserName === "webkit",
-				"Webkit does not support forced-colors",
-			);
-			await page.goto(path);
-			await page.emulateMedia({ forcedColors: "active" });
-			await expect(page.locator("body")).toHaveScreenshot();
-		});
-	}
+	test("forced-colors", async ({ page, browserName }) => {
+		test.skip(
+			browserName === "webkit",
+			"Webkit does not support forced-colors",
+		);
+		await page.goto("/tests/button?visual=true");
+		await page.emulateMedia({ forcedColors: "active" });
+		await expect(page.locator("body")).toHaveScreenshot();
+	});
 });
 
 test.describe("@a11y", () => {

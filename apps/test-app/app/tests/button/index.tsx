@@ -23,17 +23,17 @@ export default definePage(
 			</>
 		);
 	},
-	{ visual: VisualTest, anchor: AnchorTest },
+	{ visual: VisualTest },
 );
 
-const permutations = [
-	["solid", "neutral"],
-	["solid", "accent"],
-	["outline"],
-	["ghost"],
-] as const;
-
 function VisualTest() {
+	const permutations = [
+		["solid", "neutral"],
+		["solid", "accent"],
+		["outline"],
+		["ghost"],
+	] as const;
+
 	return (
 		<div style={{ display: "grid", gap: 4 }}>
 			{permutations.map(([variant, tone]) => {
@@ -42,6 +42,10 @@ function VisualTest() {
 				return (
 					<div key={variant} style={{ display: "flex", gap: 4 }}>
 						<Button {...props}>Click me</Button>
+
+						<Button {...props} render={<a href="#" />}>
+							Click me
+						</Button>
 
 						<Button {...props}>
 							<Icon href={placeholderIconHref} />
@@ -60,46 +64,6 @@ function VisualTest() {
 						</Button>
 
 						<Button {...props} disabled>
-							<Icon href={placeholderIconHref} />
-							Click me
-							<Icon href={placeholderIconHref} />
-						</Button>
-					</div>
-				);
-			})}
-		</div>
-	);
-}
-
-function AnchorTest() {
-	return (
-		<div style={{ display: "grid", gap: 4 }}>
-			{permutations.map(([variant, tone]) => {
-				const props = { variant, tone } as React.ComponentProps<typeof Button>;
-
-				return (
-					<div key={variant} style={{ display: "flex", gap: 4 }}>
-						<Button {...props} render={<a href="#" />}>
-							Click me
-						</Button>
-
-						<Button {...props} render={<a href="#" />}>
-							<Icon href={placeholderIconHref} />
-							Click me
-						</Button>
-
-						<Button {...props} render={<a href="#" />}>
-							Click me
-							<Icon href={placeholderIconHref} />
-						</Button>
-
-						<Button {...props} render={<a href="#" />}>
-							<Icon href={placeholderIconHref} />
-							Click me
-							<Icon href={placeholderIconHref} />
-						</Button>
-
-						<Button {...props} render={<a href="#" />} disabled>
 							<Icon href={placeholderIconHref} />
 							Click me
 							<Icon href={placeholderIconHref} />

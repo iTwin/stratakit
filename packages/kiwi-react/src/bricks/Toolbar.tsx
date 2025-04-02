@@ -2,9 +2,11 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
+import * as React from "react";
 import cx from "classnames";
 import * as Toolbar from "@ariakit/react/toolbar";
 import { forwardRef, type BaseProps } from "./~utils.js";
+import { IconButtonContext } from "./IconButton.internal.js";
 
 // ----------------------------------------------------------------------------
 
@@ -29,11 +31,13 @@ interface ToolbarProps extends BaseProps {
  */
 const ToolbarGroup = forwardRef<"div", ToolbarProps>((props, forwardedRef) => {
 	return (
-		<Toolbar.Toolbar
-			{...props}
-			className={cx("🥝-toolbar", props.className)}
-			ref={forwardedRef}
-		/>
+		<IconButtonContext value={React.useMemo(() => ({ iconSize: "large" }), [])}>
+			<Toolbar.Toolbar
+				{...props}
+				className={cx("🥝-toolbar", props.className)}
+				ref={forwardedRef}
+			/>
+		</IconButtonContext>
 	);
 });
 DEV: ToolbarGroup.displayName = "Toolbar.Group";

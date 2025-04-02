@@ -29,9 +29,9 @@ import cx from "classnames";
 
 import placeholderIcon from "@itwin/itwinui-icons/placeholder.svg";
 import searchIcon from "@itwin/itwinui-icons/search.svg";
-import panelLeftIcon from "@itwin/itwinui-icons/panel-left.svg";
+import panelCollapseLeftIcon from "@itwin/itwinui-icons/panel-collapse-left.svg";
 import filterIcon from "@itwin/itwinui-icons/filter.svg";
-import dismissIcon from "@itwin/itwinui-icons/dismiss.svg";
+import closeIcon from "@itwin/itwinui-icons/close.svg";
 import lockIcon from "@itwin/itwinui-icons/lock.svg";
 import showIcon from "@itwin/itwinui-icons/visibility-show.svg";
 import hideIcon from "@itwin/itwinui-icons/visibility-hide.svg";
@@ -138,7 +138,7 @@ export default function Page() {
 						<div>
 							<IconButton
 								className={styles.shiftIconRight}
-								icon={panelLeftIcon}
+								icon={panelCollapseLeftIcon}
 								label="Dock panel"
 								variant="ghost"
 								disabled
@@ -1016,7 +1016,7 @@ function Subheader({ tabs }: { tabs?: React.ReactNode }) {
 			{tabs ? (
 				<IconButton
 					className={styles.shiftIconRight}
-					icon={dismissIcon}
+					icon={closeIcon}
 					label="Close"
 					variant="ghost"
 					onClick={() => {

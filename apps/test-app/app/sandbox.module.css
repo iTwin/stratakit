@@ -94,9 +94,12 @@
 	border-inline: none;
 
 	display: flex;
-	gap: 4px;
+	/* gap: 4px; */
 	align-items: center;
 	flex-shrink: 0;
+
+	overflow-y: hidden;
+	overflow-x: auto;
 }
 
 .subheaderTitle {
@@ -118,9 +121,12 @@
 
 	right: 0;
 	position: absolute;
-	transform: translateY(-1.5px);
+	/* padding-block-end: 3px; */
+	padding-block: 4.5px;
+	padding-inline: 8px;
+	/* transform: translateY(-1.5px);
 	padding-inline: 10px;
-	padding-block-end: 4.5px;
+	padding-block-end: 4.5px; */
 	background: var(--ids-color-bg-page-base);
 	border-block-end: 1.5px solid var(--ids-color-border-neutral-base);
 	z-index: 100;
@@ -132,31 +138,26 @@
 	align-self: flex-end;
 	margin-block-end: -1px;
 	padding-inline: 10px;
-	overflow: hidden;
+	/* overflow: hidden; */
 }
 
 .tabListWrapper {
-	margin-block-end: 5px;
+	/* margin-block-end: 5px; */
 	border-block-end: 1.5px solid var(--ids-color-border-neutral-base);
-	margin-inline-end: 26px;
+	margin-inline-end: 24px;
+	margin-block-start: 6px;
 }
 
 .subheaderBuffer {
-	min-width: 8px;
-	margin-bottom: 5px;
+	min-width: 10px;
+	/* margin-bottom: 5px; */
 	visibility: visible;
 	position: sticky;
 	background-color: var(--ids-color-bg-page-base);
 	border-block-end: 1.5px solid var(--ids-color-border-neutral-base);
 	left: 0;
 	z-index: 100;
-}
-
-.subheaderContent {
-	overflow-x: auto;
-	overflow-y: hidden;
-	display: flex;
-	margin-block: 5px;
+	padding-block: 16.5px;
 }
 
 .emptyState {

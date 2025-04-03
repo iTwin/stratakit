@@ -19,6 +19,10 @@ export default definePage(
 					<DropdownMenu.Item shortcuts="Shift+E" label="Edit" />
 					<DropdownMenu.Item disabled label="Delete" />
 					<DropdownMenu.Item label="Disable" />
+					<DropdownMenu.Item
+						label="Filter"
+						unstable_dot="Some filters applied"
+					/>
 				</DropdownMenu.Content>
 			</DropdownMenu.Root>
 		);
@@ -52,7 +56,7 @@ function CheckboxTest({ defaultChecked: defaultCheckedParam }: VariantProps) {
 
 function VisualTest({ disabled }: VariantProps) {
 	return (
-		<div style={{ minHeight: 150 }}>
+		<div style={{ minHeight: 200 }}>
 			<DropdownMenu.Root defaultOpen>
 				<DropdownMenu.Button disabled={!!disabled}>Actions</DropdownMenu.Button>
 
@@ -69,6 +73,10 @@ function VisualTest({ disabled }: VariantProps) {
 					/>
 					<DropdownMenu.Item disabled label="Delete" icon={placeholderIcon} />
 					<DropdownMenu.Item label="Disable" icon={placeholderIcon} />
+					<DropdownMenu.Item
+						label="Filter"
+						unstable_dot="Some filters applied"
+					/>
 				</DropdownMenu.Content>
 			</DropdownMenu.Root>
 		</div>

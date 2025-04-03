@@ -342,3 +342,63 @@ export const StatusWarning = forwardRef<"svg", StatusWarningProps>(
 	},
 );
 DEV: StatusWarning.displayName = "StatusWarning";
+
+// ----------------------------------------------------------------------------
+
+interface MoreHorizontalProps extends Omit<BaseProps<"svg">, "children"> {}
+
+export const MoreHorizontal = forwardRef<"svg", MoreHorizontalProps>(
+	(props, forwardedRef) => {
+		return (
+			<Icon
+				{...props}
+				render={
+					<Role.svg
+						width="16"
+						height="16"
+						viewBox="0 0 16 16"
+						fill="none"
+						render={props.render}
+					>
+						<path
+							fill="currentColor"
+							fillRule="evenodd"
+							d="M3 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm6-1a1 1 0 1 1-2 0 1 1 0 0 1 2 0Zm5 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"
+							clipRule="evenodd"
+						/>
+					</Role.svg>
+				}
+				ref={forwardedRef}
+			/>
+		);
+	},
+);
+DEV: MoreHorizontal.displayName = "MoreHorizontal";
+
+// ----------------------------------------------------------------------------
+
+interface ChevronDownProps extends Omit<BaseProps<"svg">, "children"> {}
+
+export const ChevronDown = forwardRef<"svg", ChevronDownProps>(
+	(props, forwardedRef) => {
+		return (
+			<Icon
+				{...props}
+				render={
+					<Role.svg
+						width="16"
+						height="16"
+						fill="currentColor"
+						viewBox="0 0 16 16"
+						render={props.render}
+					>
+						<path d="M4.146 6.146a.5.5 0 0 1 .708 0L8 9.293l3.146-3.147a.5.5 0 0 1 .708.708l-3.5 3.5a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 0 1 0-.708Z" />
+					</Role.svg>
+				}
+				className={cx("🥝-chevron-down", props.className)}
+				ref={forwardedRef}
+			/>
+		);
+	},
+);
+DEV: ChevronDown.displayName = "ChevronDown";

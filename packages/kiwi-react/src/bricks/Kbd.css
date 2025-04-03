@@ -36,3 +36,9 @@
 		}
 	}
 }
+
+@media (forced-colors: active) {
+	.🥝-kbd:where([data-kiwi-variant="solid"]) {
+		border: 1px solid CanvasText;
+	}
+}

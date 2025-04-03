@@ -42,7 +42,7 @@ export default definePage(
 			{
 				label: `Item 1${overflowPostfix}`,
 				selected: !!selected,
-				expanded: true,
+				expanded: false,
 				children: [
 					{ label: "Item 1.1", selected: !!selected },
 					{ label: "Item 1.2", selected: !!selected },
@@ -182,7 +182,7 @@ interface TestTreeItemProps
 	onRetry?: () => void;
 }
 
-const TestTreeItem = React.memo((props: TestTreeItemProps) => {
+function TestTreeItem(props: TestTreeItemProps) {
 	const {
 		index,
 		childIndex,
@@ -236,7 +236,7 @@ const TestTreeItem = React.memo((props: TestTreeItemProps) => {
 			{...rest}
 		/>
 	);
-});
+}
 
 function ActionsOverflowTest({ count = 5, dot = false }) {
 	const actions = Array.from({ length: Number(count) }).map((_, index) => (

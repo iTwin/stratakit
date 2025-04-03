@@ -161,8 +161,8 @@ interface TreeItemRootProps extends Omit<BaseProps, "content" | "children"> {
  *
  * Secondary actions can be passed into the `actions` prop.
  */
-const TreeItemRoot = forwardRef<"div", TreeItemRootProps>(
-	(props, forwardedRef) => {
+const TreeItemRoot = React.memo(
+	forwardRef<"div", TreeItemRootProps>((props, forwardedRef) => {
 		const {
 			"aria-level": level,
 			selected,
@@ -311,7 +311,7 @@ const TreeItemRoot = forwardRef<"div", TreeItemRootProps>(
 				</CompositeItem>
 			</TreeItemContext.Provider>
 		);
-	},
+	}),
 );
 DEV: TreeItemRoot.displayName = "TreeItem.Root";
 

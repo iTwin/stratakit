@@ -1,0 +1,1 @@
+import{p as r}from"./index-DDCMeoDP.js";import{j as o,m,d as n}from"./~utils-CtoCgYC5.js";const c=o((a,e)=>{const{variant:t="text",size:s="medium",...i}=a;return r.jsx(m.div,{...i,ref:e,className:n("🥝-skeleton",a.className),"data-kiwi-variant":t,"data-kiwi-size":s,"aria-hidden":!0})});export{c as S};

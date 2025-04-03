@@ -11,7 +11,7 @@ export default definePage(
 	function Page() {
 		return (
 			<>
-				<AvatarGroup label="Sample group">
+				<AvatarGroup label="Sample group" data-testid="avatar-group">
 					<Avatar initials="AA" />
 					<Avatar initials="BB" />
 					<Avatar initials="CC" />

@@ -21,6 +21,12 @@
 }
 
 @media (forced-colors: active) {
+	.🥝-icon-button {
+		&:where([inert]) {
+			border: none;
+		}
+	}
+
 	.🥝-icon-button-dot:is(.🥝-dot) {
 		:where(.🥝-icon-button[aria-pressed="true"]) & {
 			background-color: SelectedItemText;

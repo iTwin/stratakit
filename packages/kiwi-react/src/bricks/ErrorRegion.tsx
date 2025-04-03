@@ -17,6 +17,7 @@ import { IconButton } from "./IconButton.js";
 import { Button } from "./Button.js";
 import { useControlledState } from "./~hooks.js";
 import { VisuallyHidden } from "./VisuallyHidden.js";
+import { IconButtonPresentation } from "./IconButton.internal.js";
 
 // ----------------------------------------------------------------------------
 
@@ -98,20 +99,16 @@ const ErrorRegionRoot = forwardRef<"div", ErrorRegionRootProps>(
 							>
 								<StatusWarning className="🥝-error-region-icon" />
 								<Text
+									render={<span />}
 									id={labelId}
 									className="🥝-error-region-label"
 									variant="body-sm"
 								>
 									{label}
 								</Text>
-								<IconButton
-									inert
-									render={<span />}
-									role={undefined}
-									label=""
-									icon={<ChevronDown />}
-									variant="ghost"
-								/>
+								<IconButtonPresentation inert variant="ghost">
+									<ChevronDown />
+								</IconButtonPresentation>
 							</DialogDisclosure>
 							<Dialog
 								className="🥝-error-region-dialog"

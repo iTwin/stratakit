@@ -324,33 +324,37 @@ DEV: TreeItemRoot.displayName = "TreeItem.Root";
  *
  * Excess actions will get collapsed in an overflow menu.
  */
-const TreeItemActions = forwardRef<"div", BaseProps>((props, forwardedRef) => {
-	const { children, ...rest } = props;
+const TreeItemActions = React.memo(
+	forwardRef<"div", BaseProps>((props, forwardedRef) => {
+		const { children, ...rest } = props;
 
-	const actions = React.Children.toArray(children).filter(Boolean);
+		const actions = React.Children.toArray(children).filter(Boolean);
 
-	const { error } = useSafeContext(TreeItemContext);
-	const limit = error ? 2 : 3;
+		const { error } = useSafeContext(TreeItemContext);
+		const limit = error ? 2 : 3;
 
-	return (
-		<Toolbar
-			{...rest}
-			onClick={useEventHandlers(props.onClick, (e) => e.stopPropagation())}
-			onKeyDown={useEventHandlers(props.onKeyDown, (e) => e.stopPropagation())}
-			className={cx("🥝-tree-item-actions-container", props.className)}
-			focusLoop={false}
-			ref={forwardedRef}
-		>
-			{actions.slice(0, limit - 1)}
-			{actions.length === limit ? actions[limit - 1] : null}
-			{actions.length > limit ? (
-				<TreeItemActionsOverflowMenu>
-					{actions.slice(limit - 1)}
-				</TreeItemActionsOverflowMenu>
-			) : null}
-		</Toolbar>
-	);
-});
+		return (
+			<Toolbar
+				{...rest}
+				onClick={useEventHandlers(props.onClick, (e) => e.stopPropagation())}
+				onKeyDown={useEventHandlers(props.onKeyDown, (e) =>
+					e.stopPropagation(),
+				)}
+				className={cx("🥝-tree-item-actions-container", props.className)}
+				focusLoop={false}
+				ref={forwardedRef}
+			>
+				{actions.slice(0, limit - 1)}
+				{actions.length === limit ? actions[limit - 1] : null}
+				{actions.length > limit ? (
+					<TreeItemActionsOverflowMenu>
+						{actions.slice(limit - 1)}
+					</TreeItemActionsOverflowMenu>
+				) : null}
+			</Toolbar>
+		);
+	}),
+);
 DEV: TreeItemActions.displayName = "TreeItemActions";
 
 // ----------------------------------------------------------------------------

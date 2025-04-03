@@ -215,6 +215,11 @@ const TreeItemRoot = React.memo(
 			errorId,
 		]);
 
+		const handleExpanderClick = React.useCallback(() => {
+			if (expanded === undefined) return;
+			onExpandedChange?.(!expanded);
+		}, [expanded, onExpandedChange]);
+
 		return (
 			<TreeItemErrorContext.Provider value={!!error}>
 				<CompositeItem
@@ -240,61 +245,113 @@ const TreeItemRoot = React.memo(
 					className={cx("🥝-tree-item", props.className)}
 					ref={forwardedRef as CompositeItemProps["ref"]}
 				>
-					<ListItem.Root
-						data-kiwi-expanded={expanded}
-						data-kiwi-selected={selected}
-						data-kiwi-error={error ? true : undefined}
-						className="🥝-tree-item-node"
-						style={{ "--🥝tree-item-level": level } as React.CSSProperties}
-						role={undefined}
-					>
-						<ListItem.Decoration>
-							<GhostAligner align={description ? "block" : undefined}>
-								<TreeItemExpander
-									onClick={() => {
-										if (expanded === undefined) return;
-										onExpandedChange?.(!expanded);
-									}}
-								/>
-							</GhostAligner>
-							{icon || unstable_decorations ? (
-								<Role
-									className="🥝-tree-item-decoration"
-									id={decorationId}
-									render={
-										React.isValidElement(icon) ? (
-											icon
-										) : typeof icon === "string" ? (
-											<Icon href={icon} />
-										) : undefined
-									}
-								>
-									{!icon ? unstable_decorations : null}
-								</Role>
-							) : null}
-						</ListItem.Decoration>
-
-						<ListItem.Content id={labelId} className="🥝-tree-item-content">
-							{label}
-						</ListItem.Content>
-
-						{description ? (
-							<ListItem.Content
-								id={descriptionId}
-								className="🥝-tree-item-description"
-							>
-								{description}
-							</ListItem.Content>
-						) : undefined}
-
-						<TreeItemActions>{actions}</TreeItemActions>
-					</ListItem.Root>
+					<TreeItemNode
+						expanded={expanded}
+						selected={selected}
+						error={error}
+						aria-level={level}
+						description={description}
+						icon={icon}
+						unstable_decorations={unstable_decorations}
+						label={label}
+						actions={actions}
+						onExpanderClick={handleExpanderClick}
+						decorationId={decorationId}
+						descriptionId={descriptionId}
+						labelId={labelId}
+					/>
 				</CompositeItem>
 			</TreeItemErrorContext.Provider>
 		);
 	}),
 );
 DEV: TreeItemRoot.displayName = "TreeItem.Root";
+
+// ----------------------------------------------------------------------------
+
+interface TreeItemNodeProps
+	extends Pick<
+		TreeItemRootProps,
+		| "expanded"
+		| "selected"
+		| "error"
+		| "aria-level"
+		| "description"
+		| "icon"
+		| "unstable_decorations"
+		| "label"
+		| "actions"
+	> {
+	onExpanderClick: () => void;
+	decorationId: string;
+	descriptionId: string;
+	labelId: string;
+}
+
+const TreeItemNode = React.memo((props: TreeItemNodeProps) => {
+	const {
+		expanded,
+		selected,
+		error,
+		"aria-level": level,
+		description,
+		onExpanderClick,
+		icon,
+		unstable_decorations,
+		decorationId,
+		descriptionId,
+		labelId,
+		label,
+		actions,
+	} = props;
+	return (
+		<ListItem.Root
+			data-kiwi-expanded={expanded}
+			data-kiwi-selected={selected}
+			data-kiwi-error={error ? true : undefined}
+			className="🥝-tree-item-node"
+			style={{ "--🥝tree-item-level": level } as React.CSSProperties}
+			role={undefined}
+		>
+			<ListItem.Decoration>
+				<GhostAligner align={description ? "block" : undefined}>
+					<TreeItemExpander onClick={onExpanderClick} />
+				</GhostAligner>
+				{icon || unstable_decorations ? (
+					<Role
+						className="🥝-tree-item-decoration"
+						id={decorationId}
+						render={
+							React.isValidElement(icon) ? (
+								icon
+							) : typeof icon === "string" ? (
+								<Icon href={icon} />
+							) : undefined
+						}
+					>
+						{!icon ? unstable_decorations : null}
+					</Role>
+				) : null}
+			</ListItem.Decoration>
+
+			<ListItem.Content id={labelId} className="🥝-tree-item-content">
+				{label}
+			</ListItem.Content>
+
+			{description ? (
+				<ListItem.Content
+					id={descriptionId}
+					className="🥝-tree-item-description"
+				>
+					{description}
+				</ListItem.Content>
+			) : undefined}
+
+			<TreeItemActions>{actions}</TreeItemActions>
+		</ListItem.Root>
+	);
+});
+DEV: TreeItemNode.displayName = "TreeItemNode";
 
 // ----------------------------------------------------------------------------
 

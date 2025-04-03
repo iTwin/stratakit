@@ -287,9 +287,7 @@ const TreeItemRoot = React.memo(
 							</ListItem.Content>
 						) : undefined}
 
-						<ListItem.Decoration
-							render={<TreeItemActions>{actions}</TreeItemActions>}
-						/>
+						<TreeItemActions>{actions}</TreeItemActions>
 					</ListItem.Root>
 				</CompositeItem>
 			</TreeItemErrorContext.Provider>
@@ -317,24 +315,28 @@ const TreeItemActions = React.memo(
 		const limit = error ? 2 : 3;
 
 		return (
-			<Toolbar
+			<ListItem.Decoration
 				{...rest}
 				onClick={useEventHandlers(props.onClick, (e) => e.stopPropagation())}
 				onKeyDown={useEventHandlers(props.onKeyDown, (e) =>
 					e.stopPropagation(),
 				)}
 				className={cx("🥝-tree-item-actions-container", props.className)}
-				focusLoop={false}
 				ref={forwardedRef}
+				render={
+					<Toolbar focusLoop={false}>
+						{actions.slice(0, limit - 1)}
+						{actions.length === limit ? actions[limit - 1] : null}
+						{actions.length > limit ? (
+							<TreeItemActionsOverflowMenu>
+								{actions.slice(limit - 1)}
+							</TreeItemActionsOverflowMenu>
+						) : null}
+					</Toolbar>
+				}
 			>
-				{actions.slice(0, limit - 1)}
-				{actions.length === limit ? actions[limit - 1] : null}
-				{actions.length > limit ? (
-					<TreeItemActionsOverflowMenu>
-						{actions.slice(limit - 1)}
-					</TreeItemActionsOverflowMenu>
-				) : null}
-			</Toolbar>
+				{actions}
+			</ListItem.Decoration>
 		);
 	}),
 );

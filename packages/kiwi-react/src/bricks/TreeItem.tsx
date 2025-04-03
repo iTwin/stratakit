@@ -25,14 +25,7 @@ const Toolbar = React.memo(ToolbarAk);
 
 // ----------------------------------------------------------------------------
 
-const TreeItemContext = React.createContext<
-	| {
-			expanded?: boolean;
-			selected?: boolean;
-			error?: TreeItemRootProps["error"];
-	  }
-	| undefined
->(undefined);
+const TreeItemErrorContext = React.createContext(false);
 
 // ----------------------------------------------------------------------------
 
@@ -227,17 +220,7 @@ const TreeItemRoot = React.memo(
 		]);
 
 		return (
-			<TreeItemContext.Provider
-				value={React.useMemo(
-					() => ({
-						level,
-						expanded,
-						selected,
-						error,
-					}),
-					[level, expanded, selected, error],
-				)}
-			>
+			<TreeItemErrorContext.Provider value={!!error}>
 				<CompositeItem
 					render={<Role {...rest} />}
 					onClick={
@@ -313,7 +296,7 @@ const TreeItemRoot = React.memo(
 						/>
 					</ListItem.Root>
 				</CompositeItem>
-			</TreeItemContext.Provider>
+			</TreeItemErrorContext.Provider>
 		);
 	}),
 );
@@ -331,7 +314,7 @@ DEV: TreeItemRoot.displayName = "TreeItem.Root";
 const TreeItemActions = forwardRef<"div", BaseProps>((props, forwardedRef) => {
 	const { children, ...rest } = props;
 
-	const { error } = useSafeContext(TreeItemContext);
+	const error = useSafeContext(TreeItemErrorContext);
 	const limit = error ? 2 : 3;
 
 	return (
@@ -467,7 +450,7 @@ interface TreeItemActionProps extends Omit<BaseProps<"button">, "children"> {
  */
 const TreeItemAction = forwardRef<"button", TreeItemActionProps>(
 	(props, forwardedRef) => {
-		const { error } = useSafeContext(TreeItemContext);
+		const error = useSafeContext(TreeItemErrorContext);
 		const {
 			visible = error ? true : undefined, // visible by default during error state
 			label,

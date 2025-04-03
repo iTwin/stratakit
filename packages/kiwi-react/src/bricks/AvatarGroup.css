@@ -14,10 +14,9 @@
 
 			&:where(:not(:last-child)) {
 				mask-image: radial-gradient(
-					ellipse calc(var(--🥝avatar-size) * 0.5 + 2px) calc(var(--🥝avatar-size) * 0.5 + 2px) at
-						125% 50%,
-					transparent 99%,
-					#000 100%
+					circle calc(var(--🥝avatar-size) * 0.5 + 2px) at 125% 50%,
+					transparent 100%,
+					black 100%
 				);
 				mask-mode: alpha;
 			}

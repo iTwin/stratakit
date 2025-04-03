@@ -44,6 +44,14 @@
 	overflow-wrap: break-word;
 }
 
+:where(table) {
+	border-collapse: collapse;
+}
+
+:where(table, th, caption) {
+	text-align: start;
+}
+
 :where(dialog, [popover]) {
 	border: none;
 	background: none;

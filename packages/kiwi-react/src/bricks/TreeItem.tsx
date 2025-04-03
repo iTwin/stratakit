@@ -246,7 +246,6 @@ const TreeItemRoot = React.memo(
 					ref={forwardedRef as CompositeItemProps["ref"]}
 				>
 					<TreeItemNode
-						expanded={expanded}
 						selected={selected}
 						error={error}
 						aria-level={level}
@@ -272,7 +271,6 @@ DEV: TreeItemRoot.displayName = "TreeItem.Root";
 interface TreeItemNodeProps
 	extends Pick<
 		TreeItemRootProps,
-		| "expanded"
 		| "selected"
 		| "error"
 		| "aria-level"
@@ -290,7 +288,6 @@ interface TreeItemNodeProps
 
 const TreeItemNode = React.memo((props: TreeItemNodeProps) => {
 	const {
-		expanded,
 		selected,
 		error,
 		"aria-level": level,
@@ -306,7 +303,6 @@ const TreeItemNode = React.memo((props: TreeItemNodeProps) => {
 	} = props;
 	return (
 		<ListItem.Root
-			data-kiwi-expanded={expanded}
 			data-kiwi-selected={selected}
 			data-kiwi-error={error ? true : undefined}
 			className="🥝-tree-item-node"

@@ -157,6 +157,7 @@ interface TreeItemRootProps extends Omit<BaseProps, "content" | "children"> {
 const TreeItemRoot = React.memo(
 	forwardRef<"div", TreeItemRootProps>((props, forwardedRef) => {
 		const {
+			style,
 			"aria-level": level,
 			selected,
 			expanded,
@@ -243,12 +244,17 @@ const TreeItemRoot = React.memo(
 					aria-describedby={describedBy}
 					aria-level={level}
 					className={cx("🥝-tree-item", props.className)}
+					style={
+						{
+							...style,
+							"--🥝tree-item-level": level,
+						} as React.CSSProperties
+					}
 					ref={forwardedRef as CompositeItemProps["ref"]}
 				>
 					<TreeItemNode
 						selected={selected}
 						error={error}
-						aria-level={level}
 						description={description}
 						icon={icon}
 						unstable_decorations={unstable_decorations}
@@ -273,7 +279,6 @@ interface TreeItemNodeProps
 		TreeItemRootProps,
 		| "selected"
 		| "error"
-		| "aria-level"
 		| "description"
 		| "icon"
 		| "unstable_decorations"
@@ -290,7 +295,6 @@ const TreeItemNode = React.memo((props: TreeItemNodeProps) => {
 	const {
 		selected,
 		error,
-		"aria-level": level,
 		description,
 		onExpanderClick,
 		icon,
@@ -306,7 +310,6 @@ const TreeItemNode = React.memo((props: TreeItemNodeProps) => {
 			data-kiwi-selected={selected}
 			data-kiwi-error={error ? true : undefined}
 			className="🥝-tree-item-node"
-			style={{ "--🥝tree-item-level": level } as React.CSSProperties}
 			role={undefined}
 		>
 			<ListItem.Decoration>

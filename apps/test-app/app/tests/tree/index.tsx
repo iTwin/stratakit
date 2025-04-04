@@ -33,6 +33,7 @@ export default definePage(
 		description: descriptionParam,
 		error: errorParam,
 	}) {
+		const [_, startTransition] = React.useTransition();
 		const overflowPostfix = overflow
 			? " with a super long label that is overflown"
 			: "";
@@ -122,12 +123,14 @@ export default definePage(
 			[],
 		);
 		const handleExpansion = React.useCallback((index: number) => {
-			setData((prev) => {
-				const itemToUpdate = prev[index];
-				if (itemToUpdate.expanded === undefined) return prev;
+			startTransition(() => {
+				setData((prev) => {
+					const itemToUpdate = prev[index];
+					if (itemToUpdate.expanded === undefined) return prev;
 
-				const newItem = { ...itemToUpdate, expanded: !itemToUpdate.expanded };
-				return [...prev.slice(0, index), newItem, ...prev.slice(index + 1)];
+					const newItem = { ...itemToUpdate, expanded: !itemToUpdate.expanded };
+					return [...prev.slice(0, index), newItem, ...prev.slice(index + 1)];
+				});
 			});
 		}, []);
 		const handleRetry = React.useCallback(() => {

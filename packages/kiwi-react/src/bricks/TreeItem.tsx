@@ -254,7 +254,6 @@ const TreeItemRoot = React.memo(
 				>
 					<TreeItemNode
 						selected={selected}
-						error={error}
 						description={description}
 						icon={icon}
 						unstable_decorations={unstable_decorations}
@@ -278,7 +277,6 @@ interface TreeItemNodeProps
 	extends Pick<
 		TreeItemRootProps,
 		| "selected"
-		| "error"
 		| "description"
 		| "icon"
 		| "unstable_decorations"
@@ -294,7 +292,6 @@ interface TreeItemNodeProps
 const TreeItemNode = React.memo((props: TreeItemNodeProps) => {
 	const {
 		selected,
-		error,
 		description,
 		onExpanderClick,
 		icon,
@@ -305,6 +302,7 @@ const TreeItemNode = React.memo((props: TreeItemNodeProps) => {
 		label,
 		actions,
 	} = props;
+	const error = React.useContext(TreeItemErrorContext);
 	return (
 		<ListItem.Root
 			data-kiwi-selected={selected}

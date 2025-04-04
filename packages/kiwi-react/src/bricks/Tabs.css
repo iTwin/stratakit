@@ -11,7 +11,6 @@
 
 		display: flex;
 		gap: 8px;
-		/* overflow: auto; */
 		position: relative;
 
 		/* biome-ignore lint/correctness/noUnknownProperty: `position-anchor` is within `@supports` and offers a fallback. */

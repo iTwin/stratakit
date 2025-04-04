@@ -1030,7 +1030,6 @@ function Subheader({ tabs }: { tabs?: React.ReactNode }) {
 	) : (
 		<IconButton
 			className={styles.shiftIconRight}
-			data-icon="Search"
 			icon={searchIcon}
 			label="Search"
 			dot={filterOrSearchActive ? "Some filters or search applied" : undefined}

@@ -154,12 +154,13 @@
 
 .subheaderBuffer {
 	min-width: 10px;
+	min-height: 100%;
 	position: sticky;
 	background-color: var(--ids-color-bg-page-base);
 	border-block-end: 1.5px solid var(--ids-color-border-neutral-base);
 	left: 0;
 	z-index: 100;
-	padding-block: 15px;
+	margin-block-end: 10px;
 }
 
 .emptyState {

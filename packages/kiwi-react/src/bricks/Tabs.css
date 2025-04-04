@@ -174,9 +174,7 @@
 	}
 
 	.🥝-tab {
-		background-color: ButtonFace;
-		border: 1px solid ButtonBorder;
-		color: ButtonText;
+		color: CanvasText;
 
 		&:where([aria-selected="true"]) {
 			forced-color-adjust: none;
@@ -191,7 +189,6 @@
 		}
 
 		&:where([disabled], :disabled, [aria-disabled="true"]) {
-			border-color: GrayText;
 			color: GrayText;
 		}
 	}

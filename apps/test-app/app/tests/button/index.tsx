@@ -64,6 +64,10 @@ function VisualTest() {
 							Click me
 							<Icon href={placeholderIconHref} />
 						</Button>
+
+						<Button {...props} render={<a href="#" />}>
+							Click me
+						</Button>
 					</div>
 				);
 			})}

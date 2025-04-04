@@ -172,7 +172,8 @@
 	}
 
 	.🥝-tab {
-		--🥝tab-color: CanvasText;
+		--🥝tab-bg: ButtonFace;
+		--🥝tab-color: ButtonText;
 
 		&:where([aria-selected="true"]) {
 			forced-color-adjust: none;

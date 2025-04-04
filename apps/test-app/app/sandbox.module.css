@@ -94,12 +94,21 @@
 	border-inline: none;
 
 	display: flex;
-	/* gap: 4px; */
-	align-items: center;
+	gap: 4px;
+	/* align-items: center; */
 	flex-shrink: 0;
 
+	&:where([data-overflow="true"]) {
+		padding-block-end: 5px;
+	}
+}
+
+.subheaderContent {
+	display: flex;
 	overflow-y: hidden;
 	overflow-x: auto;
+	width: 100%;
+	align-items: center;
 }
 
 .subheaderTitle {
@@ -114,50 +123,43 @@
 
 .subheaderActions {
 	margin-inline: auto 12px;
-}
 
-.subHeaderActionsOverflow {
-	margin-inline: auto;
+	&:where([data-overflow="true"]) {
+		margin-inline: auto;
 
-	right: 0;
-	position: absolute;
-	/* padding-block-end: 3px; */
-	padding-block: 4.5px;
-	padding-inline: 8px;
-	/* transform: translateY(-1.5px);
-	padding-inline: 10px;
-	padding-block-end: 4.5px; */
-	background: var(--ids-color-bg-page-base);
-	border-block-end: 1.5px solid var(--ids-color-border-neutral-base);
-	z-index: 100;
-	/* mask-image: linear-gradient(to left, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%);
-	-webkit-mask-image: linear-gradient(to left, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%); */
+		right: 0;
+		position: absolute;
+		padding-block-end: 6px;
+		padding-inline: 8px;
+		background: var(--ids-color-bg-page-base);
+		border-block-end: 1.5px solid var(--ids-color-border-neutral-base);
+		z-index: 100;
+		/* mask-image: linear-gradient(to left, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%);
+		-webkit-mask-image: linear-gradient(to left, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%); */
+	}
 }
 
 .tabList {
 	align-self: flex-end;
 	margin-block-end: -1px;
 	padding-inline: 10px;
-	/* overflow: hidden; */
 }
 
 .tabListWrapper {
-	/* margin-block-end: 5px; */
 	border-block-end: 1.5px solid var(--ids-color-border-neutral-base);
 	margin-inline-end: 24px;
-	margin-block-start: 6px;
+	margin-block-start: 8px;
+	margin-block-end: 5px;
 }
 
 .subheaderBuffer {
 	min-width: 10px;
-	/* margin-bottom: 5px; */
-	visibility: visible;
 	position: sticky;
 	background-color: var(--ids-color-bg-page-base);
 	border-block-end: 1.5px solid var(--ids-color-border-neutral-base);
 	left: 0;
 	z-index: 100;
-	padding-block: 16.5px;
+	padding-block: 15px;
 }
 
 .emptyState {

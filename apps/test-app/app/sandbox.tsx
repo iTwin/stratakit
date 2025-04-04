@@ -1006,7 +1006,7 @@ function Subheader({ tabs }: { tabs?: React.ReactNode }) {
 
 	const searchInputRef = React.useRef<HTMLInputElement>(null);
 	const tabsRef = React.useRef<HTMLHeadingElement>(null);
-	const subHeaderRef = React.useRef<HTMLDivElement>(null);
+	const subHeaderContentRef = React.useRef<HTMLDivElement>(null);
 
 	const [isSearchboxVisible, setIsSearchboxVisible] = React.useState(!tabs);
 	const filterOrSearchActive = isFiltered || !!search;
@@ -1051,55 +1051,65 @@ function Subheader({ tabs }: { tabs?: React.ReactNode }) {
 	const [isOverflowing, setIsOverflowing] = React.useState(false);
 
 	React.useEffect(() => {
-		const subHeader = subHeaderRef.current;
-		if (!subHeader) return;
+		const subHeaderContent = subHeaderContentRef.current;
+		if (!subHeaderContent) return;
 		const ro = new ResizeObserver(() => {
-			setIsOverflowing(subHeader.scrollWidth > subHeader.clientWidth);
+			const overflow =
+				subHeaderContent.scrollWidth > subHeaderContent.clientWidth;
+			const overflowValue =
+				!overflow && !isSearchboxVisible ? "hidden" : "auto";
+			subHeaderContent.setAttribute("style", `overflow-x: ${overflowValue}`);
+			setIsOverflowing(overflow);
 		});
-		ro.observe(subHeader);
+		ro.observe(subHeaderContent);
 		return () => {
 			ro.disconnect();
 		};
-	}, []);
+	}, [isSearchboxVisible]);
 
 	const overflowAndNotSearch = isOverflowing && !isSearchboxVisible;
 	const Element = overflowAndNotSearch ? "div" : React.Fragment;
 
 	return (
-		<div className={styles.subheader} ref={subHeaderRef}>
-			<VisuallyHidden aria-live="polite" aria-atomic={true}>
-				{filteredNotification}
-			</VisuallyHidden>
-			{overflowAndNotSearch ? <div className={styles.subheaderBuffer} /> : null}
-			{tabs && !isSearchboxVisible ? (
-				<Element
-					{...(overflowAndNotSearch && { className: styles.tabListWrapper })}
+		<div className={styles.subheader} data-overflow={overflowAndNotSearch}>
+			<div className={styles.subheaderContent} ref={subHeaderContentRef}>
+				<VisuallyHidden aria-live="polite" aria-atomic={true}>
+					{filteredNotification}
+				</VisuallyHidden>
+				{overflowAndNotSearch ? (
+					<div className={styles.subheaderBuffer} />
+				) : null}
+				{tabs && !isSearchboxVisible ? (
+					<Element
+						{...(overflowAndNotSearch && { className: styles.tabListWrapper })}
+					>
+						<Tabs.TabList
+							className={styles.tabList}
+							tone="accent"
+							ref={tabsRef}
+						>
+							{tabs}
+						</Tabs.TabList>
+					</Element>
+				) : null}
+
+				{isSearchboxVisible ? (
+					<TextBox.Root className={styles.searchInput}>
+						<TextBox.Icon href={searchIcon} />
+						<TextBox.Input
+							placeholder="Search"
+							ref={searchInputRef}
+							onChange={(e) => setSearch(e.currentTarget.value)}
+						/>
+					</TextBox.Root>
+				) : null}
+
+				<div
+					className={styles.subheaderActions}
+					data-overflow={overflowAndNotSearch}
 				>
-					<Tabs.TabList className={styles.tabList} tone="accent" ref={tabsRef}>
-						{tabs}
-					</Tabs.TabList>
-				</Element>
-			) : null}
-
-			{isSearchboxVisible ? (
-				<TextBox.Root className={styles.searchInput}>
-					<TextBox.Icon href={searchIcon} />
-					<TextBox.Input
-						placeholder="Search"
-						ref={searchInputRef}
-						onChange={(e) => setSearch(e.currentTarget.value)}
-					/>
-				</TextBox.Root>
-			) : null}
-
-			<div
-				className={
-					overflowAndNotSearch
-						? styles.subHeaderActionsOverflow
-						: styles.subheaderActions
-				}
-			>
-				{actions}
+					{actions}
+				</div>
 			</div>
 		</div>
 	);

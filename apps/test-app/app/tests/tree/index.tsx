@@ -43,7 +43,7 @@ export default definePage(
 			{
 				label: `Item 1${overflowPostfix}`,
 				selected: !!selected,
-				expanded: false,
+				expanded: true,
 				children: [
 					{ label: "Item 1.1", selected: !!selected },
 					{ label: "Item 1.2", selected: !!selected },
@@ -57,10 +57,6 @@ export default definePage(
 				children: [{ label: `Item 2.1${overflowPostfix}`, selected: false }],
 			},
 			{ label: "Item 3", selected: false },
-			...Array.from({ length: 100 }).map((_, index) => ({
-				label: `Item ${index + 4}`,
-				selected: false,
-			})),
 		]);
 		const flatData = React.useMemo<FlatTreeItem[]>(
 			() =>

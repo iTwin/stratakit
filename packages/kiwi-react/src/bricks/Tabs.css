@@ -168,28 +168,26 @@
 @media (forced-colors: active) {
 	/* biome-ignore lint/correctness/noUnknownProperty: `position-anchor` is within `@supports` and offers a fallback. */
 	@supports (position-anchor: --foo) {
-		.🥝-tab-list::after {
-			background-color: CanvasText;
+		.🥝-tab-list {
+			--🥝tab-active-stripe-color: CanvasText;
 		}
 	}
 
 	.🥝-tab {
-		color: CanvasText;
+		--🥝tab-color: CanvasText;
 
 		&:where([aria-selected="true"]) {
 			forced-color-adjust: none;
-			background-color: SelectedItem;
-			color: SelectedItemText;
+			--🥝tab-bg: SelectedItem;
+			--🥝tab-color: SelectedItemText;
 
 			@supports not (anchor-name: --foo) {
-				&::after {
-					background-color: CanvasText;
-				}
+				--🥝tab-active-stripe-color: CanvasText;
 			}
 		}
 
 		&:where([disabled], :disabled, [aria-disabled="true"]) {
-			color: GrayText;
+			--🥝tab-color: GrayText;
 		}
 	}
 }

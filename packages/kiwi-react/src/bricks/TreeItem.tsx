@@ -30,6 +30,14 @@ const TreeItemActionsContext = React.createContext<
 	| undefined
 >(undefined);
 const TreeItemOverflowActionsContext = React.createContext(false);
+const TreeItemDecorationContext = React.createContext<
+	| {
+			decorationId: string;
+			decorations: TreeItemRootProps["unstable_decorations"];
+			icon: TreeItemRootProps["icon"];
+	  }
+	| undefined
+>(undefined);
 
 // ----------------------------------------------------------------------------
 
@@ -249,47 +257,55 @@ const TreeItemRoot = React.memo(
 			<TreeItemErrorContext.Provider value={!!error}>
 				<TreeItemActionsContext.Provider value={actions}>
 					<TreeItemOverflowActionsContext.Provider value={!!actions.overflow}>
-						<CompositeItem
-							render={<Role {...rest} />}
-							onClick={
-								useEventHandlers(
-									onClickProp,
-									handleClick,
-								) as unknown as React.MouseEventHandler<HTMLButtonElement>
-							}
-							onKeyDown={
-								useEventHandlers(
-									onKeyDownProp,
-									handleKeyDown,
-								) as unknown as React.KeyboardEventHandler<HTMLButtonElement>
-							}
-							role="treeitem"
-							aria-expanded={expanded}
-							aria-selected={selected}
-							aria-labelledby={labelId}
-							aria-describedby={describedBy}
-							aria-level={level}
-							className={cx("🥝-tree-item", props.className)}
-							style={
-								{
-									...style,
-									"--🥝tree-item-level": level,
-								} as React.CSSProperties
-							}
-							ref={forwardedRef as CompositeItemProps["ref"]}
+						<TreeItemDecorationContext.Provider
+							value={React.useMemo(
+								() => ({
+									decorationId,
+									decorations: unstable_decorations,
+									icon,
+								}),
+								[decorationId, unstable_decorations, icon],
+							)}
 						>
-							<TreeItemNode
-								selected={selected}
-								description={description}
-								icon={icon}
-								unstable_decorations={unstable_decorations}
-								label={label}
-								onExpanderClick={handleExpanderClick}
-								decorationId={decorationId}
-								descriptionId={descriptionId}
-								labelId={labelId}
-							/>
-						</CompositeItem>
+							<CompositeItem
+								render={<Role {...rest} />}
+								onClick={
+									useEventHandlers(
+										onClickProp,
+										handleClick,
+									) as unknown as React.MouseEventHandler<HTMLButtonElement>
+								}
+								onKeyDown={
+									useEventHandlers(
+										onKeyDownProp,
+										handleKeyDown,
+									) as unknown as React.KeyboardEventHandler<HTMLButtonElement>
+								}
+								role="treeitem"
+								aria-expanded={expanded}
+								aria-selected={selected}
+								aria-labelledby={labelId}
+								aria-describedby={describedBy}
+								aria-level={level}
+								className={cx("🥝-tree-item", props.className)}
+								style={
+									{
+										...style,
+										"--🥝tree-item-level": level,
+									} as React.CSSProperties
+								}
+								ref={forwardedRef as CompositeItemProps["ref"]}
+							>
+								<TreeItemNode
+									selected={selected}
+									description={description}
+									label={label}
+									onExpanderClick={handleExpanderClick}
+									descriptionId={descriptionId}
+									labelId={labelId}
+								/>
+							</CompositeItem>
+						</TreeItemDecorationContext.Provider>
 					</TreeItemOverflowActionsContext.Provider>
 				</TreeItemActionsContext.Provider>
 			</TreeItemErrorContext.Provider>
@@ -301,12 +317,8 @@ DEV: TreeItemRoot.displayName = "TreeItem.Root";
 // ----------------------------------------------------------------------------
 
 interface TreeItemNodeProps
-	extends Pick<
-		TreeItemRootProps,
-		"selected" | "description" | "icon" | "unstable_decorations" | "label"
-	> {
+	extends Pick<TreeItemRootProps, "selected" | "description" | "label"> {
 	onExpanderClick: TreeItemExpanderProps["onClick"];
-	decorationId: string;
 	descriptionId: string;
 	labelId: string;
 }
@@ -316,9 +328,6 @@ const TreeItemNode = React.memo((props: TreeItemNodeProps) => {
 		selected,
 		description,
 		onExpanderClick,
-		icon,
-		unstable_decorations,
-		decorationId,
 		descriptionId,
 		labelId,
 		label,
@@ -335,21 +344,7 @@ const TreeItemNode = React.memo((props: TreeItemNodeProps) => {
 				<GhostAligner align={description ? "block" : undefined}>
 					<TreeItemExpander onClick={onExpanderClick} />
 				</GhostAligner>
-				{icon || unstable_decorations ? (
-					<Role
-						className="🥝-tree-item-decoration"
-						id={decorationId}
-						render={
-							React.isValidElement(icon) ? (
-								icon
-							) : typeof icon === "string" ? (
-								<Icon href={icon} />
-							) : undefined
-						}
-					>
-						{!icon ? unstable_decorations : null}
-					</Role>
-				) : null}
+				<TreeItemDecoration />
 			</ListItem.Decoration>
 
 			<ListItem.Content id={labelId} className="🥝-tree-item-content">
@@ -372,6 +367,26 @@ const TreeItemNode = React.memo((props: TreeItemNodeProps) => {
 DEV: TreeItemNode.displayName = "TreeItemNode";
 
 // ----------------------------------------------------------------------------
+
+function TreeItemDecoration() {
+	const { decorationId, decorations, icon } =
+		React.useContext(TreeItemDecorationContext) ?? {};
+	return icon || decorations ? (
+		<Role
+			className="🥝-tree-item-decoration"
+			id={decorationId}
+			render={
+				React.isValidElement(icon) ? (
+					icon
+				) : typeof icon === "string" ? (
+					<Icon href={icon} />
+				) : undefined
+			}
+		>
+			{!icon ? decorations : null}
+		</Role>
+	) : null;
+}
 
 /**
  * Container for secondary actions for a `<Tree.Item>`. Typically displayed on the right end.

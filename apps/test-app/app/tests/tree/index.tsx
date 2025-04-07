@@ -33,6 +33,7 @@ export default definePage(
 		selected = false,
 		description: descriptionParam,
 		error: errorParam,
+		items: itemsParam,
 	}) {
 		const [_, startTransition] = React.useTransition();
 		const overflowPostfix = overflow
@@ -40,6 +41,7 @@ export default definePage(
 			: "";
 		const description = descriptionParam ? "Additional description" : undefined;
 		const [renderError, setRenderError] = React.useState(!!errorParam);
+		const items = itemsParam ? Number(itemsParam) : 0;
 		const [data, setData] = React.useState<TreeItem[]>(() => [
 			{
 				label: `Item 1${overflowPostfix}`,
@@ -58,6 +60,12 @@ export default definePage(
 				children: [{ label: `Item 2.1${overflowPostfix}`, selected: false }],
 			},
 			{ label: "Item 3", selected: false },
+			...Array.from({ length: items }).map((_, index) => {
+				return {
+					label: `Item ${index + 4}`,
+					selected: false,
+				};
+			}),
 		]);
 		const flatData = React.useMemo<FlatTreeItem[]>(
 			() =>

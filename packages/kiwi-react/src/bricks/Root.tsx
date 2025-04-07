@@ -352,7 +352,7 @@ function loadFonts(rootNode: Document | ShadowRoot) {
 	const ownerWindow = getWindow(rootNode);
 
 	if (
-		!ownerWindow ||
+		!ownerWindow?.document?.fonts ||
 		Array.from(ownerWindow.document.fonts).some(
 			(font) => font.family === "InterVariable",
 		)

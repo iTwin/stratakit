@@ -870,9 +870,6 @@ function SandboxTree({
 									Retry
 								</Anchor>
 							}
-							onDismiss={() => {
-								toggleFailingIds(item);
-							}}
 						/>
 					);
 				})}

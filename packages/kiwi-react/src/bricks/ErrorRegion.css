@@ -95,9 +95,8 @@
 	--✨padding-block: calc(4px + 8px);
 
 	@layer base {
-		display: grid;
-		grid-template-columns: [message-start] 1fr [message-end dismiss-start] auto [dismiss-end];
-		grid-template-rows: [main-start] auto [main-end actions-start] auto [actions-end];
+		display: flex;
+		flex-direction: column;
 
 		padding-block: var(--✨padding-block);
 		padding-inline-start: var(--✨padding-inline-start);
@@ -109,23 +108,8 @@
 	}
 }
 
-.🥝-error-region-item-message {
-	@layer base {
-		grid-row: main;
-		align-self: center;
-	}
-}
-
-.🥝-error-region-item-dismiss {
-	@layer base {
-		grid-row: main;
-		margin-inline-start: 4px;
-	}
-}
-
 .🥝-error-region-item-actions {
 	@layer base {
-		grid-row: actions;
 		margin-block-start: 8px;
 	}
 }

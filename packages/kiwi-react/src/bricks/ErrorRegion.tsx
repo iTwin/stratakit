@@ -184,11 +184,7 @@ const ErrorRegionItem = forwardRef<"div", ErrorRegionItemProps>(
 				className={cx("🥝-error-region-item", props.className)}
 				ref={forwardedRef}
 			>
-				<Text
-					id={messageId}
-					variant="body-sm"
-					className="🥝-error-region-item-message"
-				>
+				<Text id={messageId} variant="body-sm">
 					{message}
 				</Text>
 				<div className="🥝-error-region-item-actions">{actions}</div>

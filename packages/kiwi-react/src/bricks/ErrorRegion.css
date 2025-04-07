@@ -108,12 +108,6 @@
 	}
 }
 
-.🥝-error-region-item-message {
-	@layer base {
-		align-self: center;
-	}
-}
-
 .🥝-error-region-item-actions {
 	@layer base {
 		margin-block-start: 8px;

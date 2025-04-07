@@ -17,7 +17,6 @@ import * as DropdownMenu from "./DropdownMenu.js";
 import { ChevronDown, Icon, StatusWarning, MoreHorizontal } from "./Icon.js";
 import { forwardRef, type BaseProps } from "./~utils.js";
 import { useEventHandlers, useSafeContext } from "./~hooks.js";
-import { GhostAligner, useGhostAlignment } from "./~utils.GhostAligner.js";
 import { IconButtonPresentation } from "./IconButton.internal.js";
 
 // ----------------------------------------------------------------------------
@@ -667,23 +666,21 @@ const TreeItemExpander = forwardRef<"button", TreeItemExpanderProps>(
 	(props, forwardedRef) => {
 		const descriptionId = React.useContext(TreeItemDescriptionIdContext);
 		return (
-			<GhostAligner align={descriptionId ? "block" : undefined}>
-				<IconButtonPresentation
-					aria-hidden="true"
-					{...props}
-					onClick={useEventHandlers(props.onClick, (e) => e.stopPropagation())}
-					className={cx(
-						"🥝-ghost-aligner",
-						"🥝-tree-item-expander",
-						props.className,
-					)}
-					variant="ghost"
-					data-kiwi-ghost-align={useGhostAlignment()}
-					ref={forwardedRef}
-				>
-					<ChevronDown />
-				</IconButtonPresentation>
-			</GhostAligner>
+			<IconButtonPresentation
+				aria-hidden="true"
+				{...props}
+				onClick={useEventHandlers(props.onClick, (e) => e.stopPropagation())}
+				className={cx(
+					"🥝-ghost-aligner",
+					"🥝-tree-item-expander",
+					props.className,
+				)}
+				variant="ghost"
+				data-kiwi-ghost-align={descriptionId ? "block" : undefined}
+				ref={forwardedRef}
+			>
+				<ChevronDown />
+			</IconButtonPresentation>
 		);
 	},
 );

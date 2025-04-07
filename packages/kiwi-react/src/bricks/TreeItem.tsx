@@ -224,10 +224,10 @@ const TreeItemRoot = React.memo(
 			errorId,
 		]);
 
-		const handleExpanderClick = React.useCallback(() => {
+		const handleExpanderClick = useEventHandlers(() => {
 			if (expanded === undefined) return;
 			onExpandedChange?.(!expanded);
-		}, [expanded, onExpandedChange]);
+		});
 
 		const actionsLimit = error ? 2 : 3;
 		const actions = React.useMemo(() => {
@@ -305,7 +305,7 @@ interface TreeItemNodeProps
 		TreeItemRootProps,
 		"selected" | "description" | "icon" | "unstable_decorations" | "label"
 	> {
-	onExpanderClick: () => void;
+	onExpanderClick: TreeItemExpanderProps["onClick"];
 	decorationId: string;
 	descriptionId: string;
 	labelId: string;

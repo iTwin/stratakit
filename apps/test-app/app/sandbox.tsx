@@ -968,15 +968,10 @@ function SandboxTree({
 							}
 							actions={[
 								<Tree.ItemAction key="lock" icon={lockIcon} label="Lock" />,
-								<Tree.ItemAction
+								<VisibilityAction
 									key="visibility"
-									icon={item.hidden ? hideIcon : showIcon}
-									label={item.hidden ? "Show" : "Hide"}
-									visible={item.hidden ? true : undefined}
-									onClick={() => {
-										toggleHidden(item.id);
-									}}
-									dot={item.hidden ? "Hidden" : undefined}
+									item={item}
+									onClick={toggleHidden}
 								/>,
 								<Tree.ItemAction key="copy" label="Copy" />,
 								<Tree.ItemAction key="paste" label="Paste" />,
@@ -997,6 +992,26 @@ function SandboxTree({
 				})}
 			</Tree.Root>
 		</React.Suspense>
+	);
+}
+
+interface VisibilityActionProps {
+	item: FlatTreeItem;
+	onClick: (id: string) => void;
+}
+
+function VisibilityAction({ item, onClick }: VisibilityActionProps) {
+	return (
+		<Tree.ItemAction
+			key="visibility"
+			icon={item.hidden ? hideIcon : showIcon}
+			label={item.hidden ? "Show" : "Hide"}
+			visible={item.hidden ? true : undefined}
+			onClick={React.useCallback(() => {
+				onClick(item.id);
+			}, [onClick, item.id])}
+			dot={item.hidden ? "Hidden" : undefined}
+		/>
 	);
 }
 

@@ -120,23 +120,55 @@ export default definePage(
 				{flatData.map((item) => {
 					const { index, childIndex } = item;
 
-					const error = renderError && index === 0;
+					const error = renderError && index === 0 && childIndex === undefined;
 					return (
-						<TestTreeItem
+						<Tree.Item
 							key={item.label}
-							index={index}
-							childIndex={childIndex}
 							aria-level={item.level}
 							aria-posinset={index + 1}
 							aria-setsize={item.setSize}
 							label={item.label}
 							description={index === 0 ? description : undefined}
 							expanded={item.expanded}
-							onExpandedChange={handleExpansion}
 							selected={item.selected}
-							onSelectedChange={handleSelection}
 							error={error}
-							onRetry={handleRetry}
+							onSelectedChange={() => {
+								handleSelection(index, childIndex);
+							}}
+							onExpandedChange={() => {
+								handleExpansion(index);
+							}}
+							icon={
+								childIndex === undefined ? (
+									<Icon href={placeholderIcon} alt="decoration" />
+								) : undefined
+							}
+							unstable_decorations={
+								childIndex === 0 ? (
+									<>
+										<Icon href={placeholderIcon} />
+										<Icon href={placeholderIcon} />
+									</>
+								) : (
+									<Icon href={placeholderIcon} />
+								)
+							}
+							actions={[
+								error && (
+									<Tree.ItemAction
+										key="retry"
+										icon={refreshIcon}
+										label="Retry"
+										onClick={handleRetry}
+									/>
+								),
+								<Tree.ItemAction
+									key="unlock"
+									icon={unlockIcon}
+									label="Unlock"
+								/>,
+								<Tree.ItemAction key="show" icon={showIcon} label="Show" />,
+							]}
 						/>
 					);
 				})}
@@ -145,80 +177,6 @@ export default definePage(
 	},
 	{ _actionsOverflow: ActionsOverflowTest },
 );
-
-type TreeItemProps = React.ComponentProps<typeof Tree.Item>;
-
-interface TestTreeItemProps
-	extends Omit<
-		TreeItemProps,
-		| "onSelectedChange"
-		| "onExpandedChange"
-		| "icon"
-		| "unstable_decorations"
-		| "actions"
-	> {
-	index: number;
-	childIndex?: number;
-	onSelectedChange: (index: number, childIndex?: number) => void;
-	onExpandedChange: (index: number) => void;
-	onRetry?: () => void;
-}
-
-function TestTreeItem(props: TestTreeItemProps) {
-	const {
-		index,
-		childIndex,
-		onSelectedChange,
-		onExpandedChange,
-		onRetry,
-		...rest
-	} = props;
-	const handleSelectedChange = React.useCallback(() => {
-		onSelectedChange(index, childIndex);
-	}, [index, childIndex, onSelectedChange]);
-	const handleExpandedChange = React.useCallback(() => {
-		onExpandedChange(index);
-	}, [index, onExpandedChange]);
-	const icon = React.useMemo(() => {
-		return childIndex === undefined ? (
-			<Icon href={placeholderIcon} alt="decoration" />
-		) : undefined;
-	}, [childIndex]);
-	const decorations = React.useMemo(() => {
-		return childIndex === 0 ? (
-			<>
-				<Icon href={placeholderIcon} />
-				<Icon href={placeholderIcon} />
-			</>
-		) : (
-			<Icon href={placeholderIcon} />
-		);
-	}, [childIndex]);
-	const actions = React.useMemo(() => {
-		return [
-			props.error && (
-				<Tree.ItemAction
-					key="retry"
-					icon={refreshIcon}
-					label="Retry"
-					onClick={onRetry}
-				/>
-			),
-			<Tree.ItemAction key="unlock" icon={unlockIcon} label="Unlock" />,
-			<Tree.ItemAction key="show" icon={showIcon} label="Show" />,
-		];
-	}, [props.error, onRetry]);
-	return (
-		<Tree.Item
-			onSelectedChange={handleSelectedChange}
-			onExpandedChange={handleExpandedChange}
-			icon={icon}
-			unstable_decorations={decorations}
-			actions={actions}
-			{...rest}
-		/>
-	);
-}
 
 function ActionsOverflowTest({ count = 5, dot = false }) {
 	const actions = Array.from({ length: Number(count) }).map((_, index) => (

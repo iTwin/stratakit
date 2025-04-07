@@ -6,7 +6,8 @@
 .🥝-table {
 	@layer base {
 		&:where(table) {
-			border-collapse: collapse;
+			table-layout: fixed;
+			inline-size: 100%;
 		}
 	}
 }
@@ -39,7 +40,6 @@
 		padding-inline-end: var(--✨cell-padding-inline-end);
 		overflow-wrap: anywhere;
 		hyphens: auto;
-		text-align: start;
 		align-content: center;
 
 		&:where(th, td) {
@@ -66,7 +66,6 @@
 		}
 
 		&:where(th) {
-			text-align: start;
 			font-weight: inherit;
 		}
 	}

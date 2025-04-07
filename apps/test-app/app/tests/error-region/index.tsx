@@ -35,9 +35,6 @@ export default definePage(function Page({ items = 2 }) {
 									<Anchor href="#">Item {error}</Anchor>
 								</>
 							}
-							onDismiss={() =>
-								setErrors((prev) => prev.filter((e) => e !== error))
-							}
 							actions={
 								<Anchor
 									render={<button />}

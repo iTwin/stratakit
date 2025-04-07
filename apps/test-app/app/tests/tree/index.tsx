@@ -93,33 +93,6 @@ export default definePage(
 				}),
 			[data],
 		);
-		const handleSelection = React.useCallback(
-			(index: number, childIndex?: number) => {
-				setData(
-					produce((prev) => {
-						const itemToUpdate =
-							childIndex === undefined
-								? prev[index]
-								: prev[index].children?.[childIndex];
-						if (!itemToUpdate) return;
-						itemToUpdate.selected = !itemToUpdate.selected;
-					}),
-				);
-			},
-			[],
-		);
-		const handleExpansion = React.useCallback((index: number) => {
-			startTransition(() => {
-				setData(
-					produce((prev) => {
-						const itemToUpdate = prev[index];
-						if (itemToUpdate.expanded === undefined) return;
-
-						itemToUpdate.expanded = !itemToUpdate.expanded;
-					}),
-				);
-			});
-		}, []);
 		const handleRetry = React.useCallback(() => {
 			setRenderError(false);
 		}, []);
@@ -143,10 +116,28 @@ export default definePage(
 							selected={item.selected}
 							error={error}
 							onSelectedChange={() => {
-								handleSelection(index, childIndex);
+								setData(
+									produce((prev) => {
+										const itemToUpdate =
+											childIndex === undefined
+												? prev[index]
+												: prev[index].children?.[childIndex];
+										if (!itemToUpdate) return;
+										itemToUpdate.selected = !itemToUpdate.selected;
+									}),
+								);
 							}}
 							onExpandedChange={() => {
-								handleExpansion(index);
+								startTransition(() => {
+									setData(
+										produce((prev) => {
+											const itemToUpdate = prev[index];
+											if (itemToUpdate.expanded === undefined) return;
+
+											itemToUpdate.expanded = !itemToUpdate.expanded;
+										}),
+									);
+								});
 							}}
 							icon={
 								childIndex === undefined ? (

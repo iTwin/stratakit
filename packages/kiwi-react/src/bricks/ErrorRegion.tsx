@@ -157,7 +157,6 @@ interface ErrorRegionItemProps extends Omit<BaseProps, "children"> {
  *   message={<>Something went wrong with <Anchor href="item-10001">Item 10001</Anchor>.</>}
  *   messageId="item-10001-error"
  *   actions={<Button>Retry</Button>}
- *   onDismiss={() => {}}
  * />
  *
  * <Tree.Item

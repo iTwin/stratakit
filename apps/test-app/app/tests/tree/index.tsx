@@ -4,6 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 import { definePage } from "~/~utils.tsx";
 import * as React from "react";
+import { produce } from "immer";
 import { Tree, Icon } from "@itwin/itwinui-react/bricks";
 import placeholderIcon from "@itwin/itwinui-icons/placeholder.svg";
 import unlockIcon from "@itwin/itwinui-icons/lock-unlocked.svg";
@@ -86,47 +87,29 @@ export default definePage(
 		);
 		const handleSelection = React.useCallback(
 			(index: number, childIndex?: number) => {
-				setData((prev) => {
-					const itemToUpdate =
-						childIndex === undefined
-							? prev[index]
-							: prev[index].children?.[childIndex];
-					if (!itemToUpdate) return prev;
-
-					const newItem = {
-						...itemToUpdate,
-						selected: !itemToUpdate.selected,
-					};
-
-					if (childIndex === undefined)
-						return [...prev.slice(0, index), newItem, ...prev.slice(index + 1)];
-
-					const children = prev[index].children ?? [];
-					return [
-						...prev.slice(0, index),
-						{
-							...prev[index],
-							children: [
-								...children.slice(0, childIndex),
-								newItem,
-								...children.slice(childIndex + 1),
-							],
-						},
-						...prev.slice(index + 1),
-					];
-				});
+				setData(
+					produce((prev) => {
+						const itemToUpdate =
+							childIndex === undefined
+								? prev[index]
+								: prev[index].children?.[childIndex];
+						if (!itemToUpdate) return;
+						itemToUpdate.selected = !itemToUpdate.selected;
+					}),
+				);
 			},
 			[],
 		);
 		const handleExpansion = React.useCallback((index: number) => {
 			startTransition(() => {
-				setData((prev) => {
-					const itemToUpdate = prev[index];
-					if (itemToUpdate.expanded === undefined) return prev;
+				setData(
+					produce((prev) => {
+						const itemToUpdate = prev[index];
+						if (itemToUpdate.expanded === undefined) return;
 
-					const newItem = { ...itemToUpdate, expanded: !itemToUpdate.expanded };
-					return [...prev.slice(0, index), newItem, ...prev.slice(index + 1)];
-				});
+						itemToUpdate.expanded = !itemToUpdate.expanded;
+					}),
+				);
 			});
 		}, []);
 		const handleRetry = React.useCallback(() => {

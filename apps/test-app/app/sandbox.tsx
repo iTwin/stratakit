@@ -26,6 +26,7 @@ import { useSearchParams, type MetaFunction } from "react-router";
 import { useQuery, type UseQueryResult } from "@tanstack/react-query";
 import { toUpperCamelCase } from "./~utils.tsx";
 import cx from "classnames";
+import { produce } from "immer";
 
 import placeholderIcon from "@itwin/itwinui-icons/placeholder.svg";
 import searchIcon from "@itwin/itwinui-icons/search.svg";
@@ -950,13 +951,13 @@ function SandboxTree({
 								item.items.length === 0 && !hasError ? undefined : item.expanded
 							}
 							onExpandedChange={(expanded) => {
-								setItems((prev) => {
-									const treeItem = findTreeItem(prev, item.id);
-									if (!treeItem) return prev;
-									const newData = [...prev];
-									treeItem.expanded = expanded; // TODO: should be immutable https://github.com/iTwin/kiwi/pull/300#discussion_r1941452941
-									return newData;
-								});
+								setItems(
+									produce((prev) => {
+										const treeItem = findTreeItem(prev, item.id);
+										if (!treeItem) return;
+										treeItem.expanded = expanded;
+									}),
+								);
 							}}
 							unstable_decorations={
 								<>

@@ -20,8 +20,8 @@ test("default", async ({ page }) => {
 	});
 	await expect(error1).toBeVisible();
 
-	const dismiss = error1.getByRole("button", { name: "Dismiss" });
-	await dismiss.click();
+	const retry = error1.getByRole("button", { name: "Retry" });
+	await retry.click();
 	disclosure = page.getByRole("button", { name: "1 issue found" });
 	await expect(disclosure).toBeVisible();
 	await expect(errors).toHaveCount(1);

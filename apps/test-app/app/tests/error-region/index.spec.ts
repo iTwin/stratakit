@@ -28,12 +28,23 @@ test("default", async ({ page }) => {
 });
 
 test.describe("@visual", () => {
-	test("default", async ({ page }) => {
+	test.beforeEach(async ({ page }) => {
 		await page.goto("/tests/error-region");
 
 		const disclosure = page.getByRole("button");
 		await disclosure.click();
+	});
 
+	test("default", async ({ page }) => {
+		await expect(page.locator("body")).toHaveScreenshot();
+	});
+
+	test("forced-colors", async ({ page, browserName }) => {
+		test.skip(
+			browserName === "webkit",
+			"Webkit does not support forced-colors",
+		);
+		await page.emulateMedia({ forcedColors: "active" });
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
 });

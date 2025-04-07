@@ -383,6 +383,33 @@ DEV: TreeItemDecorations.displayName = "TreeItemDecorations";
 // ----------------------------------------------------------------------------
 
 /**
+ * Displays an icon or multiple decorations of a `<Tree.Item>`.
+ * @private
+ */
+function TreeItemDecoration() {
+	const { decorationId, decorations, icon } =
+		React.useContext(TreeItemDecorationContext) ?? {};
+	return icon || decorations ? (
+		<Role
+			className="🥝-tree-item-decoration"
+			id={decorationId}
+			render={
+				React.isValidElement(icon) ? (
+					icon
+				) : typeof icon === "string" ? (
+					<Icon href={icon} />
+				) : undefined
+			}
+		>
+			{!icon ? decorations : null}
+		</Role>
+	) : null;
+}
+DEV: TreeItemDecoration.displayName = "TreeItemDecoration";
+
+// ----------------------------------------------------------------------------
+
+/**
  * Displays the label of a `<Tree.Item>`.
  * @private
  */
@@ -412,33 +439,6 @@ const TreeItemDescription = React.memo(() => {
 	) : undefined;
 });
 DEV: TreeItemDescription.displayName = "TreeItemDescription";
-
-// ----------------------------------------------------------------------------
-
-/**
- * Displays an icon or multiple decorations of a `<Tree.Item>`.
- * @private
- */
-function TreeItemDecoration() {
-	const { decorationId, decorations, icon } =
-		React.useContext(TreeItemDecorationContext) ?? {};
-	return icon || decorations ? (
-		<Role
-			className="🥝-tree-item-decoration"
-			id={decorationId}
-			render={
-				React.isValidElement(icon) ? (
-					icon
-				) : typeof icon === "string" ? (
-					<Icon href={icon} />
-				) : undefined
-			}
-		>
-			{!icon ? decorations : null}
-		</Role>
-	) : null;
-}
-DEV: TreeItemDecoration.displayName = "TreeItemDecoration";
 
 // ----------------------------------------------------------------------------
 

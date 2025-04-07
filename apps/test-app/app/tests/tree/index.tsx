@@ -129,6 +129,8 @@ export default definePage(
 					const { index, childIndex } = item;
 
 					const error = renderError && index === 0 && childIndex === undefined;
+					const hasDescription =
+						(index === 0 && childIndex === undefined) || childIndex === 0;
 					return (
 						<Tree.Item
 							key={item.label}
@@ -136,7 +138,7 @@ export default definePage(
 							aria-posinset={index + 1}
 							aria-setsize={item.setSize}
 							label={item.label}
-							description={index === 0 ? description : undefined}
+							description={hasDescription ? description : undefined}
 							expanded={item.expanded}
 							selected={item.selected}
 							error={error}

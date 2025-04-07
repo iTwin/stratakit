@@ -2,7 +2,6 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-import * as React from "react";
 import cx from "classnames";
 import { Role, type RoleProps } from "@ariakit/react/role";
 import { forwardRef } from "./~utils.js";
@@ -30,8 +29,8 @@ DEV: ListItem.displayName = "ListItem.Root";
 interface ListItemContentProps extends RoleProps<"div"> {}
 
 /** @internal */
-const ListItemContent = React.memo(
-	forwardRef<"div", ListItemContentProps>((props, forwardedRef) => {
+const ListItemContent = forwardRef<"div", ListItemContentProps>(
+	(props, forwardedRef) => {
 		return (
 			<Text
 				{...props}
@@ -40,7 +39,7 @@ const ListItemContent = React.memo(
 				ref={forwardedRef}
 			/>
 		);
-	}),
+	},
 );
 DEV: ListItemContent.displayName = "ListItem.Content";
 

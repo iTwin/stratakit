@@ -416,11 +416,8 @@ DEV: TreeItemDescription.displayName = "TreeItemDescription";
 // ----------------------------------------------------------------------------
 
 /**
- * Decorations of a `<Tree.Item>`. Typically displayed on the right end.
- *
- * Semantically, this is a "toolbar". It enables arrow-key navigation and manage focus for its children.
- *
- * Excess actions will get collapsed in an overflow menu.
+ * Displays an icon or multiple decorations of a `<Tree.Item>`.
+ * @private
  */
 function TreeItemDecoration() {
 	const { decorationId, decorations, icon } =

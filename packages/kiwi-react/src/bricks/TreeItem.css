@@ -9,14 +9,6 @@
 	}
 
 	@layer states {
-		&:where([aria-expanded="false"]) {
-			--🥝chevron-down-rotate: -0.25turn;
-		}
-
-		&:where(:not([aria-expanded])) {
-			--🥝tree-item-expander-visibility: hidden;
-		}
-
 		&:focus-visible {
 			outline: none;
 			isolation: isolate;
@@ -74,6 +66,14 @@
 	@layer states {
 		&:where([data-kiwi-selected="true"]) {
 			--🌀list-item-state: var(--🌀list-item-state--active);
+		}
+
+		&:where([data-kiwi-expanded="false"]) {
+			--🥝chevron-down-rotate: -0.25turn;
+		}
+
+		&:where(:not([data-kiwi-expanded])) {
+			--🥝tree-item-expander-visibility: hidden;
 		}
 	}
 }

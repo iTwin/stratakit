@@ -330,6 +330,7 @@ const TreeItemRoot = React.memo(
 											{React.useMemo(
 												() => (
 													<ListItem.Root
+														data-kiwi-expanded={expanded}
 														data-kiwi-selected={selected}
 														data-kiwi-error={hasError ? true : undefined}
 														className="🥝-tree-item-node"
@@ -345,7 +346,7 @@ const TreeItemRoot = React.memo(
 														<TreeItemActions />
 													</ListItem.Root>
 												),
-												[hasError, selected, onExpanderClick],
+												[expanded, hasError, selected, onExpanderClick],
 											)}
 										</CompositeItem>
 									</TreeItemDescriptionIdContext.Provider>

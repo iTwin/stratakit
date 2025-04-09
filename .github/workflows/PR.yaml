@@ -2,21 +2,41 @@ name: PR
 
 on:
   pull_request:
-    types: [opened]
+    types: [opened, synchronize]
 
 jobs:
   assign-author:
+    name: Assign PR author
     runs-on: ubuntu-latest
 
     steps:
-      - name: Assign PR author
+      - name: Auto-assign author using github-script
         uses: actions/github-script@v7
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
-            github.rest.issues.addAssignees({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              issue_number: context.payload.pull_request.number,
-              assignees: [context.payload.pull_request.user.login]
-            })
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+            const prNumber = context.payload.pull_request.number;
+            const prAuthor = context.actor;
+
+            try {
+              const permissionInfo = await github.rest.repos.getCollaboratorPermissionLevel({
+                owner: owner,
+                repo: repo,
+                username: prAuthor,
+              });
+
+              if (permissionInfo.data.permission === "admin" || permissionInfo.data.permission === "write") {
+                github.rest.issues.addAssignees({
+                  owner: owner,
+                  repo: repo,
+                  issue_number: prNumber,
+                  assignees: [prAuthor]
+                });
+              } else {
+                console.log("Author does not have write access to the repository.");
+              }
+            } catch (error) {
+              console.log("Failed checking permissions or assigning author");
+              console.error(error);
+            }

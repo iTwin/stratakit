@@ -22,14 +22,7 @@ import { IconButtonPresentation } from "./IconButton.internal.js";
 // ----------------------------------------------------------------------------
 
 const TreeItemErrorContext = React.createContext(false);
-const TreeItemActionsContext = React.createContext<
-	| {
-			inline: React.ReactNode;
-			overflow: React.ReactNode;
-	  }
-	| undefined
->(undefined);
-const TreeItemOverflowActionsContext = React.createContext(false);
+const TreeItemActionsContext = React.createContext<React.ReactNode>(undefined);
 const TreeItemDecorationContext = React.createContext<
 	| {
 			decorationId: string;
@@ -50,6 +43,12 @@ const TreeItemDescriptionContext =
 const TreeItemDescriptionIdContext = React.createContext<string | undefined>(
 	undefined,
 );
+
+const TreeItemInlineActionsContext =
+	React.createContext<React.ReactNode>(undefined);
+const TreeItemOverflowActionsContext =
+	React.createContext<React.ReactNode>(undefined);
+const TreeItemHasOverflowActionsContext = React.createContext(false);
 
 // ----------------------------------------------------------------------------
 
@@ -193,7 +192,7 @@ const TreeItemRoot = React.memo(
 			unstable_decorations,
 			label,
 			description,
-			actions: actionsProp,
+			actions,
 			error,
 			onSelectedChange,
 			onExpandedChange,
@@ -249,22 +248,6 @@ const TreeItemRoot = React.memo(
 			onExpandedChange?.(!expanded);
 		});
 
-		const actionsLimit = error ? 2 : 3;
-		const actions = React.useMemo(() => {
-			const actions = React.Children.toArray(actionsProp).filter(Boolean);
-			const inline = (
-				<>
-					{actions.slice(0, actionsLimit - 1)}
-					{actions.length === actionsLimit ? actions[actionsLimit - 1] : null}
-				</>
-			);
-			const overflow =
-				actions.length > actionsLimit
-					? actions.slice(actionsLimit - 1)
-					: undefined;
-			return { inline, overflow };
-		}, [actionsProp, actionsLimit]);
-
 		const style = React.useMemo(
 			() =>
 				({
@@ -276,84 +259,82 @@ const TreeItemRoot = React.memo(
 
 		const hasError = !!error;
 		return (
-			<TreeItemErrorContext.Provider value={!!error}>
+			<TreeItemErrorContext.Provider value={hasError}>
 				<TreeItemActionsContext.Provider value={actions}>
-					<TreeItemOverflowActionsContext.Provider value={!!actions.overflow}>
-						<TreeItemDecorationContext.Provider
+					<TreeItemDecorationContext.Provider
+						value={React.useMemo(
+							() => ({
+								decorationId,
+								decorations: unstable_decorations,
+								icon,
+							}),
+							[decorationId, unstable_decorations, icon],
+						)}
+					>
+						<TreeItemContentContext.Provider
 							value={React.useMemo(
 								() => ({
-									decorationId,
-									decorations: unstable_decorations,
-									icon,
+									label,
+									labelId,
 								}),
-								[decorationId, unstable_decorations, icon],
+								[label, labelId],
 							)}
 						>
-							<TreeItemContentContext.Provider
-								value={React.useMemo(
-									() => ({
-										label,
-										labelId,
-									}),
-									[label, labelId],
-								)}
-							>
-								<TreeItemDescriptionContext.Provider value={description}>
-									<TreeItemDescriptionIdContext.Provider
-										value={description ? descriptionId : undefined}
+							<TreeItemDescriptionContext.Provider value={description}>
+								<TreeItemDescriptionIdContext.Provider
+									value={description ? descriptionId : undefined}
+								>
+									<CompositeItem
+										{...(rest as CompositeItemProps)}
+										render={React.useMemo(() => <Role />, [])}
+										onClick={
+											useEventHandlers(
+												onClickProp,
+												handleClick,
+											) as unknown as React.MouseEventHandler<HTMLButtonElement>
+										}
+										onKeyDown={
+											useEventHandlers(
+												onKeyDownProp,
+												handleKeyDown,
+											) as unknown as React.KeyboardEventHandler<HTMLButtonElement>
+										}
+										role="treeitem"
+										aria-expanded={expanded}
+										aria-selected={selected}
+										aria-labelledby={labelId}
+										aria-describedby={describedBy}
+										aria-level={level}
+										className={cx("🥝-tree-item", props.className)}
+										style={style}
+										ref={forwardedRef as CompositeItemProps["ref"]}
 									>
-										<CompositeItem
-											{...(rest as CompositeItemProps)}
-											render={React.useMemo(() => <Role />, [])}
-											onClick={
-												useEventHandlers(
-													onClickProp,
-													handleClick,
-												) as unknown as React.MouseEventHandler<HTMLButtonElement>
-											}
-											onKeyDown={
-												useEventHandlers(
-													onKeyDownProp,
-													handleKeyDown,
-												) as unknown as React.KeyboardEventHandler<HTMLButtonElement>
-											}
-											role="treeitem"
-											aria-expanded={expanded}
-											aria-selected={selected}
-											aria-labelledby={labelId}
-											aria-describedby={describedBy}
-											aria-level={level}
-											className={cx("🥝-tree-item", props.className)}
-											style={style}
-											ref={forwardedRef as CompositeItemProps["ref"]}
-										>
-											{React.useMemo(
-												() => (
-													<ListItem.Root
-														data-kiwi-expanded={expanded}
-														data-kiwi-selected={selected}
-														data-kiwi-error={hasError ? true : undefined}
-														className="🥝-tree-item-node"
-														role={undefined}
-													>
-														<TreeItemDecorations
-															onExpanderClick={onExpanderClick}
-														/>
+										{React.useMemo(
+											() => (
+												<ListItem.Root
+													data-kiwi-expanded={expanded}
+													data-kiwi-selected={selected}
+													data-kiwi-error={hasError ? true : undefined}
+													className="🥝-tree-item-node"
+													role={undefined}
+												>
+													<TreeItemDecorations
+														onExpanderClick={onExpanderClick}
+													/>
 
-														<TreeItemContent />
-														<TreeItemDescription />
+													<TreeItemContent />
+													<TreeItemDescription />
 
-														<TreeItemActions />
-													</ListItem.Root>
-												),
-												[expanded, hasError, selected, onExpanderClick],
-											)}
-										</CompositeItem>
-									</TreeItemDescriptionIdContext.Provider>
-								</TreeItemDescriptionContext.Provider>
-							</TreeItemContentContext.Provider>
-						</TreeItemDecorationContext.Provider>
-					</TreeItemOverflowActionsContext.Provider>
+													<TreeItemActions />
+												</ListItem.Root>
+											),
+											[expanded, hasError, selected, onExpanderClick],
+										)}
+									</CompositeItem>
+								</TreeItemDescriptionIdContext.Provider>
+							</TreeItemDescriptionContext.Provider>
+						</TreeItemContentContext.Provider>
+					</TreeItemDecorationContext.Provider>
 				</TreeItemActionsContext.Provider>
 			</TreeItemErrorContext.Provider>
 		);
@@ -452,28 +433,70 @@ DEV: TreeItemDescription.displayName = "TreeItemDescription";
  */
 const TreeItemActions = React.memo(
 	forwardRef<"div", Omit<BaseProps, "children">>((props, forwardedRef) => {
-		const overflowActions = React.useContext(TreeItemOverflowActionsContext);
-
 		return (
-			<ListItem.Decoration
-				{...props}
-				onClick={useEventHandlers(props.onClick, (e) => e.stopPropagation())}
-				onKeyDown={useEventHandlers(props.onKeyDown, (e) =>
-					e.stopPropagation(),
-				)}
-				className={cx("🥝-tree-item-actions-container", props.className)}
-				ref={forwardedRef}
-				render={
-					<Toolbar focusLoop={false}>
-						<TreeItemInlineActions />
-						{overflowActions ? <TreeItemActionsOverflowMenu /> : null}
-					</Toolbar>
-				}
-			/>
+			<TreeItemActionsProvider>
+				<ListItem.Decoration
+					{...props}
+					onClick={useEventHandlers(props.onClick, (e) => e.stopPropagation())}
+					onKeyDown={useEventHandlers(props.onKeyDown, (e) =>
+						e.stopPropagation(),
+					)}
+					className={cx("🥝-tree-item-actions-container", props.className)}
+					ref={forwardedRef}
+					render={
+						<Toolbar focusLoop={false}>
+							<TreeItemInlineActions />
+							<TreeItemActionsOverflowMenu />
+						</Toolbar>
+					}
+				/>
+			</TreeItemActionsProvider>
 		);
 	}),
 );
 DEV: TreeItemActions.displayName = "TreeItemActions";
+
+// ----------------------------------------------------------------------------
+
+interface TreeItemActionsProvider {
+	children?: React.ReactNode;
+}
+
+/**
+ * Provides the overflow menu and the inline actions.
+ * @private
+ */
+function TreeItemActionsProvider(props: TreeItemActionsProvider) {
+	const actionsProp = React.useContext(TreeItemActionsContext);
+	const error = React.useContext(TreeItemErrorContext);
+	const actionsLimit = error ? 2 : 3;
+
+	const { inline, overflow } = React.useMemo(() => {
+		const actions = React.Children.toArray(actionsProp).filter(Boolean);
+		const inline = (
+			<>
+				{actions.slice(0, actionsLimit - 1)}
+				{actions.length === actionsLimit ? actions[actionsLimit - 1] : null}
+			</>
+		);
+		const overflow =
+			actions.length > actionsLimit
+				? actions.slice(actionsLimit - 1)
+				: undefined;
+		return { inline, overflow };
+	}, [actionsProp, actionsLimit]);
+
+	return (
+		<TreeItemInlineActionsContext.Provider value={inline}>
+			<TreeItemOverflowActionsContext.Provider value={overflow}>
+				<TreeItemHasOverflowActionsContext.Provider value={!!overflow}>
+					{props.children}
+				</TreeItemHasOverflowActionsContext.Provider>
+			</TreeItemOverflowActionsContext.Provider>
+		</TreeItemInlineActionsContext.Provider>
+	);
+}
+DEV: TreeItemActionsProvider.displayName = "TreeItemActionsProvider";
 
 // ----------------------------------------------------------------------------
 
@@ -482,8 +505,8 @@ DEV: TreeItemActions.displayName = "TreeItemActions";
  * @private
  */
 function TreeItemInlineActions() {
-	const { inline } = React.useContext(TreeItemActionsContext) ?? {};
-	return inline;
+	const actions = React.useContext(TreeItemInlineActionsContext);
+	return actions;
 }
 DEV: TreeItemInlineActions.displayName = "TreeItemInlineActions";
 
@@ -498,9 +521,11 @@ const TreeItemActionsOverflowMenuContext = React.createContext(false);
  * @private
  */
 function TreeItemActionsOverflowMenu() {
+	const overflow = React.useContext(TreeItemHasOverflowActionsContext);
 	const [open, setOpen] = React.useState(false);
 	const isArrowKeyPressed = React.useRef(false);
 
+	if (!overflow) return null;
 	return (
 		<PopoverProvider placement="right-start">
 			<DropdownMenu.Root
@@ -541,8 +566,8 @@ DEV: TreeItemActionsOverflowMenu.displayName = "TreeItemActionsOverflowMenu";
  * @private
  */
 function TreeItemActionsOverflowMenuContent() {
-	const { overflow } = React.useContext(TreeItemActionsContext) ?? {};
-	return <DropdownMenu.Content>{overflow}</DropdownMenu.Content>;
+	const actions = React.useContext(TreeItemOverflowActionsContext);
+	return <DropdownMenu.Content>{actions}</DropdownMenu.Content>;
 }
 DEV: TreeItemActionsOverflowMenu.displayName = "TreeItemActionsOverflowMenu";
 

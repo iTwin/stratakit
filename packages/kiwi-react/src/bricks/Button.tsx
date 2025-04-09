@@ -2,10 +2,13 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-import cx from "classnames";
+
 import { Button as AkButton } from "@ariakit/react/button";
-import { forwardRef, type FocusableProps } from "./~utils.js";
+import cx from "classnames";
 import { useGhostAlignment } from "./~utils.GhostAligner.js";
+import { forwardRef } from "./~utils.js";
+
+import type { FocusableProps } from "./~utils.js";
 
 type ButtonProps = FocusableProps<"button"> &
 	(

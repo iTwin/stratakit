@@ -2,6 +2,9 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
+
+import { Root } from "@itwin/itwinui-react/bricks";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import * as React from "react";
 import {
 	Links,
@@ -10,11 +13,10 @@ import {
 	Scripts,
 	ScrollRestoration,
 	useMatches,
-	type LinksFunction,
 } from "react-router";
-import { Root } from "@itwin/itwinui-react/bricks";
 import { ColorSchemeProvider, useColorScheme } from "./~utils.tsx";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
+import type { LinksFunction } from "react-router";
 
 const queryClient = new QueryClient({
 	defaultOptions: { queries: { experimental_prefetchInRender: true } }, // https://tanstack.com/query/latest/docs/framework/react/guides/suspense#using-usequerypromise-and-reactuse-experimental

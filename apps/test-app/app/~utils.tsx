@@ -2,17 +2,17 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-import styles from "./~utils.module.css";
+
+import { Role } from "@ariakit/react/role";
+import moon from "@itwin/itwinui-icons/moon.svg";
+import sun from "@itwin/itwinui-icons/sun.svg";
+import { Anchor, IconButton } from "@itwin/itwinui-react/bricks";
+import cx from "classnames";
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import cx from "classnames";
-import { useSearchParams, Link } from "react-router";
-import { Anchor, IconButton } from "@itwin/itwinui-react/bricks";
+import { Link, useSearchParams } from "react-router";
 import * as ListItem from "../node_modules/@itwin/itwinui-react/src/bricks/~utils.ListItem.tsx";
-import { Role } from "@ariakit/react/role";
-
-import sun from "@itwin/itwinui-icons/sun.svg";
-import moon from "@itwin/itwinui-icons/moon.svg";
+import styles from "./~utils.module.css";
 
 // ----------------------------------------------------------------------------
 

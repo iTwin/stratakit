@@ -2,14 +2,17 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-import * as React from "react";
-import { Role } from "@ariakit/react/role";
+
 import { Focusable } from "@ariakit/react/focusable";
+import { Role } from "@ariakit/react/role";
 import cx from "classnames";
+import * as React from "react";
+import { useFieldControlType } from "./Field.internal.js";
 import { Icon } from "./Icon.js";
 import { useEventHandlers, useMergedRefs } from "./~hooks.js";
-import { type FocusableProps, type BaseProps, forwardRef } from "./~utils.js";
-import { useFieldControlType } from "./Field.internal.js";
+import { forwardRef } from "./~utils.js";
+
+import type { BaseProps, FocusableProps } from "./~utils.js";
 
 // ----------------------------------------------------------------------------
 

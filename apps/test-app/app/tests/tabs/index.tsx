@@ -2,8 +2,9 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-import { definePage } from "~/~utils.tsx";
+
 import { Tabs } from "@itwin/itwinui-react/bricks";
+import { definePage } from "~/~utils.tsx";
 
 export const handle = { title: "Tabs" };
 

@@ -2,8 +2,10 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-import { test, expect } from "#playwright";
+
 import AxeBuilder from "@axe-core/playwright";
+import { expect, test } from "#playwright";
+
 import type { Page } from "@playwright/test";
 
 const controlsToRole: Record<string, Parameters<Page["getByRole"]>[0]> = {

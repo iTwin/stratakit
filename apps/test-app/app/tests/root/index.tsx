@@ -2,9 +2,10 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
+
+import { Button, DropdownMenu, Root } from "@itwin/itwinui-react/bricks";
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import { Button, Root, DropdownMenu } from "@itwin/itwinui-react/bricks";
 import { definePage, useColorScheme } from "~/~utils.tsx";
 
 export const handle = { title: "Root", rootTest: true };

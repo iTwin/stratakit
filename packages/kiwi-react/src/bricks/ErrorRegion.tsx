@@ -2,21 +2,24 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-import * as React from "react";
-import cx from "classnames";
+
 import {
-	DialogProvider,
-	DialogDisclosure,
 	Dialog,
+	DialogDisclosure,
+	DialogProvider,
 } from "@ariakit/react/dialog";
 import { Role } from "@ariakit/react/role";
-import { forwardRef, type BaseProps } from "./~utils.js";
-import { ChevronDown, StatusWarning } from "./Icon.js";
-import { Text } from "./Text.js";
+import cx from "classnames";
+import * as React from "react";
 import { Button } from "./Button.js";
-import { useControlledState } from "./~hooks.js";
-import { VisuallyHidden } from "./VisuallyHidden.js";
+import { ChevronDown, StatusWarning } from "./Icon.js";
 import { IconButtonPresentation } from "./IconButton.internal.js";
+import { Text } from "./Text.js";
+import { VisuallyHidden } from "./VisuallyHidden.js";
+import { useControlledState } from "./~hooks.js";
+import { forwardRef } from "./~utils.js";
+
+import type { BaseProps } from "./~utils.js";
 
 // ----------------------------------------------------------------------------
 

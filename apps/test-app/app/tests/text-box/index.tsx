@@ -2,10 +2,13 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-import { definePage, type VariantProps } from "~/~utils.tsx";
-import { TextBox, Label, Field } from "@itwin/itwinui-react/bricks";
-import { useId } from "react";
+
 import placeholderIcon from "@itwin/itwinui-icons/placeholder.svg";
+import { Field, Label, TextBox } from "@itwin/itwinui-react/bricks";
+import { useId } from "react";
+import { definePage } from "~/~utils.tsx";
+
+import type { VariantProps } from "~/~utils.tsx";
 
 export const handle = { title: "TextBox" };
 

@@ -2,17 +2,18 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
+
 import * as React from "react";
 import { Button } from "./Button.js";
-import { VisuallyHidden } from "./VisuallyHidden.js";
 import { Icon } from "./Icon.js";
-import { Tooltip } from "./Tooltip.js";
-import { forwardRef } from "./~utils.js";
-import { Dot } from "./~utils.Dot.js";
 import {
 	IconButtonContext,
 	IconButtonPresentation,
 } from "./IconButton.internal.js";
+import { Tooltip } from "./Tooltip.js";
+import { VisuallyHidden } from "./VisuallyHidden.js";
+import { Dot } from "./~utils.Dot.js";
+import { forwardRef } from "./~utils.js";
 
 interface IconButtonBaseProps
 	extends Omit<React.ComponentProps<typeof Button>, "children" | "tone"> {

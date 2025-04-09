@@ -2,12 +2,13 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
+
+import placeholderIcon from "@itwin/itwinui-icons/placeholder.svg";
 import {
-	unstable_Toolbar as Toolbar,
 	IconButton,
+	unstable_Toolbar as Toolbar,
 } from "@itwin/itwinui-react/bricks";
 import { definePage } from "~/~utils.tsx";
-import placeholderIcon from "@itwin/itwinui-icons/placeholder.svg";
 
 export default definePage(
 	function Page() {

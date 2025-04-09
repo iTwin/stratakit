@@ -2,13 +2,14 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
+
+import { Radio as AkRadio } from "@ariakit/react/radio";
 import cx from "classnames";
-import {
-	Radio as AkRadio,
-	type RadioProps as AkRadioProps,
-} from "@ariakit/react/radio";
-import { forwardRef, type FocusableProps } from "./~utils.js";
 import { useFieldControlType } from "./Field.internal.js";
+import { forwardRef } from "./~utils.js";
+
+import type { RadioProps as AkRadioProps } from "@ariakit/react/radio";
+import type { FocusableProps } from "./~utils.js";
 
 type InputBaseProps = Omit<FocusableProps<"input">, "defaultValue" | "value">;
 

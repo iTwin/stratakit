@@ -20,14 +20,14 @@
 				position: absolute;
 				/* biome-ignore lint/correctness/noUnknownProperty: `position-anchor` is within `@supports` and offers a fallback. */
 				position-anchor: --🥝active-tab;
-				inset-inline: calc(anchor(start) + var(--🥝tab-padding-inline))
-					calc(anchor(end) + var(--🥝tab-padding-inline));
+				inset-inline-start: calc(anchor(start) + var(--🥝tab-padding-inline));
 				inset-block-end: calc(anchor(end) - var(--🥝tab-active-stripe-gap));
+				inline-size: calc(anchor-size(inline) - 2 * var(--🥝tab-padding-inline));
 				block-size: var(--🥝tab-active-stripe-size);
 				background-color: var(--🥝tab-active-stripe-color);
 
 				@media (prefers-reduced-motion: no-preference) {
-					transition: inset-inline 150ms ease-in-out;
+					transition: inset-inline-start 150ms ease-in-out, inline-size 150ms ease-in-out;
 				}
 			}
 		}

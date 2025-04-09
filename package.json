@@ -10,8 +10,7 @@
 		"dev": "npm run build:icons && npm run dev:app &",
 		"dev:app": "pnpm --filter=@itwin/test-app dev",
 		"format": "biome format .",
-		"lint": "biome lint .",
-		"check": "biome check --formatter-enabled=false --linter-enabled=false --organize-imports-enabled=true .",
+		"lint": "biome check --formatter-enabled=false --linter-enabled=true --organize-imports-enabled=true .",
 		"lint:copyright": "tsx internal/copyright-linter.ts",
 		"prettier": "prettier . '!**/*.{js,jsx,ts,tsx,cjs,cts,mjs,mts,css,json,jsonc}' --check",
 		"test": "pnpm --filter=@itwin/test-app test"

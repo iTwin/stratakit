@@ -16,7 +16,7 @@ pre-commit:
       run: pnpm biome lint --write {staged_files}
       stage_fixed: true
 
-    check:
+    fix-imports:
       glob: "*.{js,ts,jsx,tsx,cts}"
       run: pnpm biome check --formatter-enabled=false --linter-enabled=false --organize-imports-enabled=true --write {staged_files}
       stage_fixed: true

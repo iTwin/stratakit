@@ -13,12 +13,10 @@
 		gap: 8px;
 		position: relative;
 
-		/* biome-ignore lint/correctness/noUnknownProperty: `position-anchor` is within `@supports` and offers a fallback. */
 		@supports (position-anchor: --foo) {
 			&::after {
 				content: "";
 				position: absolute;
-				/* biome-ignore lint/correctness/noUnknownProperty: `position-anchor` is within `@supports` and offers a fallback. */
 				position-anchor: --🥝active-tab;
 				inset-inline-start: calc(anchor(start) + var(--🥝tab-padding-inline));
 				inset-block-end: calc(anchor(end) - var(--🥝tab-active-stripe-gap));

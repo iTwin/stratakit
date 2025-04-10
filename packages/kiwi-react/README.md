@@ -59,7 +59,7 @@ To self-host `InterVariable`, download the [`InterVariable.woff2`](https://rsms.
 </style>
 ```
 
-It is recommended to use a build tool like [Vite](https://vite.dev/guide/assets.html#importing-asset-as-url) that can handle `url()` references and automatically copy these files into your public directory with hashed file names. This will allow you to safely take advantage of [HTTP caching](https://developer.chrome.com/docs/lighthouse/performance/uses-long-cache-ttl/#how_to_cache_static_resources_using_http_caching) without blocking upgrades to newer versions of the fonts.
+Build tools such as [Vite](https://vite.dev/guide/assets.html#importing-asset-as-url) can handle `url()` references and automatically copy these files into your output directory with hashed file names. These files can then be safely served with [HTTP caching](https://developer.chrome.com/docs/lighthouse/performance/uses-long-cache-ttl/#how_to_cache_static_resources_using_http_caching) without blocking upgrades to newer versions of the fonts.
 
 > [!NOTE]
 > If the `<Root>` component cannot find `InterVariable` as a font in the document, it will automatically add a fallback which uses [Inter’s CDN](https://rsms.me/inter/#faq-cdn). In all cases, we recommend self-hosting to avoid any potential security and reliability issues that may arise from the use of a third-party CDN.

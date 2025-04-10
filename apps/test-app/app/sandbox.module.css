@@ -89,13 +89,14 @@
 
 .subheader {
 	min-block-size: 2.5rem;
-	padding-inline: 12px;
 	border-block: 1px solid var(--ids-color-border-neutral-base);
 	border-inline: none;
-
-	display: flex;
-	gap: 4px;
+	display: grid;
+	column-gap: 4px;
 	align-items: center;
+	grid-template-columns: [full-width-start] 1fr [actions-start] auto [full-width-end];
+	/* grid-template-rows: [full-height-start] calc(1rem + 24px) [tabs-height-end] 8px [full-height-end]; */
+	grid-template-rows: [full-height-start] 1fr [tabs-height-end] 8px [full-height-end];
 }
 
 .subheaderTitle {
@@ -104,16 +105,44 @@
 }
 
 .searchInput {
-	flex: 1;
+	/* flex: 1; */
+	grid-column: full-width-start / actions-start;
+	grid-row: full-height-start / tabs-height-end;
+	margin-inline-start: 12px;
+	align-self: center;
 }
 
 .subheaderActions {
 	margin-inline-start: auto;
+
+	grid-column: actions-start / full-width-end;
+	grid-row: full-height-start / tabs-height-end;
+
+	background-color: var(--ids-color-bg-page-base);
+	display: flex;
+	align-self: stretch;
+	align-items: center;
+	z-index: 1;
+	padding-inline-end: 12px;
+}
+
+.subheaderXYZ {
+	display: grid;
+	grid-column: full-width-start / full-width-end;
+	grid-row: full-height-start / full-height-end;
+	grid-template-rows: subgrid;
+	scrollbar-gutter: stable;
+	overflow-x: auto;
 }
 
 .tabList {
-	align-self: flex-end;
+	align-self: end;
 	margin-block-end: -1px;
+	grid-row: full-height-start / tabs-height-end;
+	padding-inline-start: 8px;
+	padding-inline-end: calc(1rem + 20px); /* 1rem for icon + (4px * 2 for button padding) + 12px for subheader actions padding */
+	border-block-end: 1px solid var(--ids-color-border-neutral-base);
+	margin-block-start: 12px;
 }
 
 .emptyState {

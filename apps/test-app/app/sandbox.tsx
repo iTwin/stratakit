@@ -1048,9 +1048,11 @@ function Subheader({ tabs }: { tabs?: React.ReactNode }) {
 			</VisuallyHidden>
 
 			{tabs && !isSearchboxVisible ? (
-				<Tabs.TabList className={styles.tabList} tone="accent" ref={tabsRef}>
-					{tabs}
-				</Tabs.TabList>
+				<div className={styles.subheaderXYZ}>
+					<Tabs.TabList className={styles.tabList} tone="accent" ref={tabsRef}>
+						{tabs}
+					</Tabs.TabList>
+				</div>
 			) : null}
 
 			{isSearchboxVisible ? (

@@ -6,14 +6,20 @@ import globalStyles from "./tokens.css?url";
 import * as Disclosure from "@ariakit/react/disclosure";
 import type * as React from "react";
 import type { MetaFunction, LinksFunction } from "react-router";
-import { Button, Divider, Icon, Text } from "@itwin/itwinui-react/bricks";
+import {
+	Button,
+	Divider,
+	Icon,
+	Table,
+	Text,
+} from "@itwin/itwinui-react/bricks";
 import { parseTokens } from "internal/visitors.js";
 import rawLightTokens from "internal/theme-light.json";
 import rawDarkTokens from "internal/theme-dark.json";
 import rawTypographyTokens from "internal/typography.json";
 import styles from "./tokens.module.css";
 import { useColorScheme } from "~/~utils.tsx";
-import { Table } from "./~utils.tsx";
+// import { Table as Table2 } from "./~utils.tsx";
 
 const lightColorTokens = parseTokens(rawLightTokens.color);
 const lightShadowTokens = parseTokens(rawLightTokens.shadow);
@@ -141,30 +147,54 @@ function Tokens({
 	kind: "color" | "shadow";
 }) {
 	return (
-		<Table>
-			<thead>
-				<tr>
-					<th>Variable</th>
-					<th>Preview</th>
-				</tr>
-			</thead>
+		<Table.CustomTable>
+			<Table.Header>
+				<Table.Row>
+					<Table.Cell>Variable</Table.Cell>
+					<Table.Cell>Preview</Table.Cell>
+				</Table.Row>
+			</Table.Header>
 
-			<tbody>
+			<Table.Body>
 				{tokens.map((token) => {
 					const variableName = `--ids-${kind}-${token}`;
 					return (
-						<tr key={token}>
-							<td>
+						<Table.Row key={token}>
+							<Table.Cell>
 								<code>{variableName}</code>
-							</td>
-							<td>
+							</Table.Cell>
+							<Table.Cell>
 								<Swatch variable={variableName} kind={kind} />
-							</td>
-						</tr>
+							</Table.Cell>
+						</Table.Row>
 					);
 				})}
-			</tbody>
-		</Table>
+			</Table.Body>
+		</Table.CustomTable>
+		// <Table2>
+		// 	<thead>
+		// 		<tr>
+		// 			<th>Variable</th>
+		// 			<th>Preview</th>
+		// 		</tr>
+		// 	</thead>
+
+		// 	<tbody>
+		// 		{tokens.map((token) => {
+		// 			const variableName = `--ids-${kind}-${token}`;
+		// 			return (
+		// 				<tr key={token}>
+		// 					<td>
+		// 						<code>{variableName}</code>
+		// 					</td>
+		// 					<td>
+		// 						<Swatch variable={variableName} kind={kind} />
+		// 					</td>
+		// 				</tr>
+		// 			);
+		// 		})}
+		// 	</tbody>
+		// </Table2>
 	);
 }
 
@@ -174,31 +204,56 @@ function TypographyVariants({
 	variants: readonly string[];
 }) {
 	return (
-		<Table>
-			<thead>
-				<tr>
-					<th>Variant</th>
-					<th>Preview</th>
-				</tr>
-			</thead>
+		<Table.CustomTable>
+			<Table.Header>
+				<Table.Row>
+					<Table.Cell>Variant</Table.Cell>
+					<Table.Cell>Preview</Table.Cell>
+				</Table.Row>
+			</Table.Header>
 
-			<tbody>
+			<Table.Body>
 				{variants.map((variant) => {
 					return (
-						<tr key={variant}>
-							<td>
+						<Table.Row key={variant}>
+							<Table.Cell>
 								<code>{variant}</code>
-							</td>
-							<td>
+							</Table.Cell>
+							<Table.Cell>
 								<Text variant={variant as (typeof typographyVariants)[number]}>
 									The quick brown fox jumped over the lazy dog
 								</Text>
-							</td>
-						</tr>
+							</Table.Cell>
+						</Table.Row>
 					);
 				})}
-			</tbody>
-		</Table>
+			</Table.Body>
+		</Table.CustomTable>
+		// <Table2>
+		// 	<thead>
+		// 		<tr>
+		// 			<th>Variant</th>
+		// 			<th>Preview</th>
+		// 		</tr>
+		// 	</thead>
+
+		// 	<tbody>
+		// 		{variants.map((variant) => {
+		// 			return (
+		// 				<tr key={variant}>
+		// 					<td>
+		// 						<code>{variant}</code>
+		// 					</td>
+		// 					<td>
+		// 						<Text variant={variant as (typeof typographyVariants)[number]}>
+		// 							The quick brown fox jumped over the lazy dog
+		// 						</Text>
+		// 					</td>
+		// 				</tr>
+		// 			);
+		// 		})}
+		// 	</tbody>
+		// </Table2>
 	);
 }
 

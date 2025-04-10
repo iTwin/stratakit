@@ -216,9 +216,9 @@ function clearAndUpper(str: string) {
 
 // ----------------------------------------------------------------------------
 
-export function Table(props: React.ComponentProps<"table">) {
-	return <table {...props} className={cx(styles.table, props.className)} />;
-}
+// export function Table(props: React.ComponentProps<"table">) {
+// 	return <table {...props} className={cx(styles.table, props.className)} />;
+// }
 
 // ----------------------------------------------------------------------------
 

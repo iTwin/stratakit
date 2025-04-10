@@ -35,7 +35,7 @@ Once that’s in place, you can import and use components from `@itwin/itwinui-r
 
 ### Fonts
 
-iTwinUI uses [InterVariable](https://rsms.me/inter/) as its interface font. In the future, other fonts for may also be added for different purposes. We recommend self-hosting all fonts for robustness, security and performance reasons.
+iTwinUI uses [InterVariable](https://rsms.me/inter/) as its interface font. In the future, other fonts may also be added for different purposes. We recommend self-hosting all fonts for robustness, security and performance reasons.
 
 To self-host `InterVariable`, download the [`InterVariable.woff2`](https://rsms.me/inter/font-files/InterVariable.woff2) and [`InterVariable-Italic.woff2`](https://rsms.me/inter/font-files/InterVariable-Italic.woff2) font files from the official website, and serve them alongside your other assets. Then include the following CSS in the `<head>` of your document, replacing the placeholder paths with the correct path to where the fonts are located:
 

@@ -35,9 +35,9 @@ Once that’s in place, you can import and use components from `@itwin/itwinui-r
 
 ### Fonts
 
-iTwinUI uses [Inter](https://rsms.me/inter/) as its interface font and, in the future, fonts for other purpose may be added. We recommend self-hosting fonts for better control over cacheability and to avoid fingerprinting.
+iTwinUI uses [InterVariable](https://rsms.me/inter/) as its interface font. In the future, other fonts for may also be added for different purposes. We recommend self-hosting all fonts for robustness, security and performance reasons.
 
-To self-host Inter, download the fonts from the official website, then include `InterVariable.woff2` and `InterVariable-Italic.woff2`, and serve them somewhere public. Once that’s set up, include the following CSS in the `<head>` of your document, replacing the placeholder paths with the correct path to where you’re hosting the fonts:
+To self-host `InterVariable`, download the [`InterVariable.woff2`](https://rsms.me/inter/font-files/InterVariable.woff2) and [`InterVariable-Italic.woff2`](https://rsms.me/inter/font-files/InterVariable-Italic.woff2) font files from the official website, and serve them alongside your other assets. Then include the following CSS in the `<head>` of your document, replacing the placeholder paths with the correct path to where the fonts are located:
 
 ```html
 <style>
@@ -59,8 +59,10 @@ To self-host Inter, download the fonts from the official website, then include `
 </style>
 ```
 
+It is recommended to use a build tool like [Vite](https://vite.dev/guide/assets.html#importing-asset-as-url) that can handle `url()` references and automatically copy these files into your public directory with hashed file names. This will allow you to safely take advantage of [HTTP caching](https://developer.chrome.com/docs/lighthouse/performance/uses-long-cache-ttl/#how_to_cache_static_resources_using_http_caching) without blocking upgrades to newer versions of the fonts.
+
 > [!NOTE]
-> If the `<Root>` component cannot find `InterVariable` as a font in the document, it will automatically add a fallback which uses [Inter’s CDN](https://rsms.me/inter/#faq-cdn). In all cases, we recommend self-hosting to avoid security and performance implications of relying on a third-party CDN.
+> If the `<Root>` component cannot find `InterVariable` as a font in the document, it will automatically add a fallback which uses [Inter’s CDN](https://rsms.me/inter/#faq-cdn). In all cases, we recommend self-hosting to avoid any potential security and reliability issues that may arise from the use of a third-party CDN.
 
 ## Contributing
 

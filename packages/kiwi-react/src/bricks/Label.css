@@ -10,6 +10,7 @@
 
 		&:is(label) {
 			cursor: pointer;
+			-webkit-tap-highlight-color: var(--ids-color-bg-glow-on-surface-neutral-pressed);
 		}
 	}
 
@@ -19,6 +20,7 @@
 
 			&:is(label) {
 				cursor: not-allowed;
+				-webkit-tap-highlight-color: transparent;
 			}
 		}
 	}

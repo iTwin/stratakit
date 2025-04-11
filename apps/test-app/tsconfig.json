@@ -15,13 +15,11 @@
 		"baseUrl": ".",
 		"paths": {
 			"~/*": ["./app/*"],
-			"@itwin/itwinui-react-internal/*": [
-				"./node_modules/@itwin/itwinui-react/*"
-			]
+			"@stratakit/bricks-internal/*": ["./node_modules/@stratakit/bricks/*"]
 		},
 		"rootDirs": [".", "./.react-router/types"],
 
 		// Use TSX source directly for better IDE experience.
-		"customConditions": ["@kiwi/source"]
+		"customConditions": ["@stratakit/source"]
 	}
 }

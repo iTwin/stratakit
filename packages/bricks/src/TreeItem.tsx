@@ -72,7 +72,7 @@ interface TreeItemRootProps extends Omit<BaseProps, "content" | "children"> {
 	/**
 	 * Icon to be displayed inside the tree item.
 	 *
-	 * Can be a URL of an SVG from the `@itwin/itwinui-icons` package, or a JSX element.
+	 * Can be a URL of an SVG from the `@stratakit/icons` package, or a JSX element.
 	 *
 	 * For multiple icons/decorations, use the `unstable_decorations` prop.
 	 */
@@ -416,7 +416,7 @@ interface TreeItemActionProps extends Omit<BaseProps<"button">, "children"> {
 	/**
 	 * Icon for the action.
 	 *
-	 * Can be a URL of an SVG from the `@itwin/itwinui-icons` package, or a JSX element.
+	 * Can be a URL of an SVG from the `@stratakit/icons` package, or a JSX element.
 	 *
 	 * Required when the action is displayed as an icon-button (i.e. not overflowing).
 	 */

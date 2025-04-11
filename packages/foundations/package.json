@@ -1,0 +1,11 @@
+{
+	"name": "@stratakit/foundations",
+	"private": true,
+	"type": "module",
+	"version": "0.1.0",
+	"license": "MIT",
+	"sideEffects": false,
+	"exports": {
+		"./styles.css": "./styles.css"
+	}
+}

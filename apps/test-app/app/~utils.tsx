@@ -4,15 +4,16 @@
  *--------------------------------------------------------------------------------------------*/
 
 import { Role } from "@ariakit/react/role";
-import moon from "@itwin/itwinui-icons/moon.svg";
-import sun from "@itwin/itwinui-icons/sun.svg";
-import { Anchor, IconButton } from "@itwin/itwinui-react/bricks";
+import { Anchor, IconButton } from "@stratakit/bricks";
 import cx from "classnames";
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { Link, useSearchParams } from "react-router";
-import * as ListItem from "../node_modules/@itwin/itwinui-react/src/bricks/~utils.ListItem.tsx";
+import * as ListItem from "../node_modules/@stratakit/bricks/src/~utils.ListItem.tsx";
 import styles from "./~utils.module.css";
+
+import moon from "@stratakit/icons/moon.svg";
+import sun from "@stratakit/icons/sun.svg";
 
 // ----------------------------------------------------------------------------
 

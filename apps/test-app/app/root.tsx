@@ -3,7 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import { Root } from "@itwin/itwinui-react/bricks";
+import { Root } from "@stratakit/bricks";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import * as React from "react";
 import {

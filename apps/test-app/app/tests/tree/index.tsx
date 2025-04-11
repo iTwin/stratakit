@@ -3,13 +3,14 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import unlockIcon from "@itwin/itwinui-icons/lock-unlocked.svg";
-import placeholderIcon from "@itwin/itwinui-icons/placeholder.svg";
-import refreshIcon from "@itwin/itwinui-icons/refresh.svg";
-import showIcon from "@itwin/itwinui-icons/visibility-show.svg";
-import { Icon, Tree } from "@itwin/itwinui-react/bricks";
+import { Icon, Tree } from "@stratakit/bricks";
 import * as React from "react";
 import { definePage } from "~/~utils.tsx";
+
+import unlockIcon from "@stratakit/icons/lock-unlocked.svg";
+import placeholderIcon from "@stratakit/icons/placeholder.svg";
+import refreshIcon from "@stratakit/icons/refresh.svg";
+import showIcon from "@stratakit/icons/visibility-show.svg";
 
 export const handle = { title: "Tree" };
 

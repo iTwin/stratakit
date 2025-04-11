@@ -3,26 +3,27 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import iconsListJson from "@itwin/itwinui-icons/icons-list.json";
-import { Divider, Icon } from "@itwin/itwinui-react/bricks";
+import { Divider, Icon } from "@stratakit/bricks";
 import globalStyles from "./icons.css?url";
 import styles from "./icons.module.css";
 import { Table } from "./~utils.tsx";
 
+import iconsListJson from "@stratakit/icons/icons-list.json";
+
 import type { LinksFunction, MetaFunction } from "react-router";
 
 const allIcons = import.meta.glob(
-	"../node_modules/@itwin/itwinui-icons/icons/*.svg",
+	"../node_modules/@stratakit/icons/icons/*.svg",
 	{ eager: true },
 );
 
 function getIconHref(icon: string) {
-	const module = allIcons[`../node_modules/@itwin/itwinui-icons/icons/${icon}`];
+	const module = allIcons[`../node_modules/@stratakit/icons/icons/${icon}`];
 	return (module as { default: string })?.default;
 }
 
 export const meta: MetaFunction = () => {
-	return [{ title: "Kiwi icons" }];
+	return [{ title: "Stratakit icons" }];
 };
 
 export const links: LinksFunction = () => [

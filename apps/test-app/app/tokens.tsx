@@ -19,7 +19,6 @@ import rawDarkTokens from "internal/theme-dark.json";
 import rawTypographyTokens from "internal/typography.json";
 import styles from "./tokens.module.css";
 import { useColorScheme } from "~/~utils.tsx";
-// import { Table as Table2 } from "./~utils.tsx";
 
 const lightColorTokens = parseTokens(rawLightTokens.color);
 const lightShadowTokens = parseTokens(rawLightTokens.shadow);
@@ -147,7 +146,7 @@ function Tokens({
 	kind: "color" | "shadow";
 }) {
 	return (
-		<Table.CustomTable>
+		<Table.HtmlTable>
 			<Table.Header>
 				<Table.Row>
 					<Table.Cell>Variable</Table.Cell>
@@ -170,31 +169,7 @@ function Tokens({
 					);
 				})}
 			</Table.Body>
-		</Table.CustomTable>
-		// <Table2>
-		// 	<thead>
-		// 		<tr>
-		// 			<th>Variable</th>
-		// 			<th>Preview</th>
-		// 		</tr>
-		// 	</thead>
-
-		// 	<tbody>
-		// 		{tokens.map((token) => {
-		// 			const variableName = `--ids-${kind}-${token}`;
-		// 			return (
-		// 				<tr key={token}>
-		// 					<td>
-		// 						<code>{variableName}</code>
-		// 					</td>
-		// 					<td>
-		// 						<Swatch variable={variableName} kind={kind} />
-		// 					</td>
-		// 				</tr>
-		// 			);
-		// 		})}
-		// 	</tbody>
-		// </Table2>
+		</Table.HtmlTable>
 	);
 }
 
@@ -204,7 +179,7 @@ function TypographyVariants({
 	variants: readonly string[];
 }) {
 	return (
-		<Table.CustomTable>
+		<Table.HtmlTable>
 			<Table.Header>
 				<Table.Row>
 					<Table.Cell>Variant</Table.Cell>
@@ -228,32 +203,7 @@ function TypographyVariants({
 					);
 				})}
 			</Table.Body>
-		</Table.CustomTable>
-		// <Table2>
-		// 	<thead>
-		// 		<tr>
-		// 			<th>Variant</th>
-		// 			<th>Preview</th>
-		// 		</tr>
-		// 	</thead>
-
-		// 	<tbody>
-		// 		{variants.map((variant) => {
-		// 			return (
-		// 				<tr key={variant}>
-		// 					<td>
-		// 						<code>{variant}</code>
-		// 					</td>
-		// 					<td>
-		// 						<Text variant={variant as (typeof typographyVariants)[number]}>
-		// 							The quick brown fox jumped over the lazy dog
-		// 						</Text>
-		// 					</td>
-		// 				</tr>
-		// 			);
-		// 		})}
-		// 	</tbody>
-		// </Table2>
+		</Table.HtmlTable>
 	);
 }
 

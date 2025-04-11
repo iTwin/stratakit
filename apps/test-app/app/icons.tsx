@@ -3,11 +3,9 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 import globalStyles from "./icons.css?url";
-// import styles from "./icons.module.css";
 import { Divider, Icon, Table } from "@itwin/itwinui-react/bricks";
 import type { LinksFunction, MetaFunction } from "react-router";
 import iconsListJson from "@itwin/itwinui-icons/icons-list.json";
-// import { Table as Table2 } from "./~utils.tsx";
 
 const allIcons = import.meta.glob(
 	"../node_modules/@itwin/itwinui-icons/icons/*.svg",
@@ -32,7 +30,7 @@ export default function Page() {
 		<>
 			<h1>Icons</h1>
 			<Divider />
-			<Table.CustomTable>
+			<Table.HtmlTable>
 				<Table.Header>
 					<Table.Row>
 						<Table.Cell>Name</Table.Cell>
@@ -56,32 +54,7 @@ export default function Page() {
 						);
 					})}
 				</Table.Body>
-			</Table.CustomTable>
-			{/* <Table2 className={styles.table} style={{ marginBlockStart: "1rem" }}>
-				<thead>
-					<tr>
-						<th>Name</th>
-						<th>Default</th>
-						<th>Large</th>
-					</tr>
-				</thead>
-				<tbody>
-					{iconsListJson.map((icon) => {
-						const iconHref = getIconHref(icon);
-						return (
-							<tr key={icon}>
-								<td>{icon}</td>
-								<td>
-									<Icon href={iconHref} />
-								</td>
-								<td>
-									<Icon size="large" href={iconHref} />
-								</td>
-							</tr>
-						);
-					})}
-				</tbody>
-			</Table2> */}
+			</Table.HtmlTable>
 		</>
 	);
 }

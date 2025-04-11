@@ -2,14 +2,17 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-import { definePage, type VariantProps } from "~/~utils.tsx";
+
 import {
-	Radio,
-	Label,
-	VisuallyHidden,
 	Field,
+	Label,
+	Radio,
+	VisuallyHidden,
 } from "@itwin/itwinui-react/bricks";
 import * as React from "react";
+import { definePage } from "~/~utils.tsx";
+
+import type { VariantProps } from "~/~utils.tsx";
 
 export const handle = { title: "Radio" };
 

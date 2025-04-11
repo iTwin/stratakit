@@ -2,10 +2,12 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-import globalStyles from "./icons.css?url";
-import { Divider, Icon, Table } from "@itwin/itwinui-react/bricks";
-import type { LinksFunction, MetaFunction } from "react-router";
+
 import iconsListJson from "@itwin/itwinui-icons/icons-list.json";
+import { Divider, Icon, Table } from "@itwin/itwinui-react/bricks";
+import globalStyles from "./icons.css?url";
+
+import type { LinksFunction, MetaFunction } from "react-router";
 
 const allIcons = import.meta.glob(
 	"../node_modules/@itwin/itwinui-icons/icons/*.svg",

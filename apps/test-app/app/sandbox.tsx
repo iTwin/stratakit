@@ -2,13 +2,24 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-import * as React from "react";
-import * as ReactDOM from "react-dom";
-import styles from "./sandbox.module.css";
+
+import closeIcon from "@itwin/itwinui-icons/close.svg";
+import cursorSelectIcon from "@itwin/itwinui-icons/cursor-select.svg";
+import cursorIcon from "@itwin/itwinui-icons/cursor.svg";
+import drawIcon from "@itwin/itwinui-icons/draw.svg";
+import filterIcon from "@itwin/itwinui-icons/filter.svg";
+import lockIcon from "@itwin/itwinui-icons/lock.svg";
+import measureIcon from "@itwin/itwinui-icons/measure.svg";
+import panelCollapseLeftIcon from "@itwin/itwinui-icons/panel-collapse-left.svg";
+import placeholderIcon from "@itwin/itwinui-icons/placeholder.svg";
+import searchIcon from "@itwin/itwinui-icons/search.svg";
+import hideIcon from "@itwin/itwinui-icons/visibility-hide.svg";
+import showIcon from "@itwin/itwinui-icons/visibility-show.svg";
 import {
 	Anchor,
 	Button,
 	DropdownMenu,
+	unstable_ErrorRegion as ErrorRegion,
 	Field,
 	Icon,
 	IconButton,
@@ -17,32 +28,23 @@ import {
 	Tabs,
 	Text,
 	TextBox,
-	Tree,
-	unstable_ErrorRegion as ErrorRegion,
-	VisuallyHidden,
 	unstable_Toolbar as Toolbar,
+	Tree,
+	VisuallyHidden,
 } from "@itwin/itwinui-react/bricks";
-import { useSearchParams, type MetaFunction } from "react-router";
-import { useQuery, type UseQueryResult } from "@tanstack/react-query";
-import { toUpperCamelCase } from "./~utils.tsx";
+import { useQuery } from "@tanstack/react-query";
 import cx from "classnames";
-
-import placeholderIcon from "@itwin/itwinui-icons/placeholder.svg";
-import searchIcon from "@itwin/itwinui-icons/search.svg";
-import panelCollapseLeftIcon from "@itwin/itwinui-icons/panel-collapse-left.svg";
-import filterIcon from "@itwin/itwinui-icons/filter.svg";
-import closeIcon from "@itwin/itwinui-icons/close.svg";
-import lockIcon from "@itwin/itwinui-icons/lock.svg";
-import showIcon from "@itwin/itwinui-icons/visibility-show.svg";
-import hideIcon from "@itwin/itwinui-icons/visibility-hide.svg";
-import cursorIcon from "@itwin/itwinui-icons/cursor.svg";
-import cursorSelectIcon from "@itwin/itwinui-icons/cursor-select.svg";
-import drawIcon from "@itwin/itwinui-icons/draw.svg";
-import measureIcon from "@itwin/itwinui-icons/measure.svg";
-
+import * as React from "react";
+import * as ReactDOM from "react-dom";
+import { useSearchParams } from "react-router";
 import model1Url from "./sandbox.model1.json?url";
 import model2Url from "./sandbox.model2.json?url";
 import model3Url from "./sandbox.model3.json?url";
+import styles from "./sandbox.module.css";
+import { toUpperCamelCase } from "./~utils.tsx";
+
+import type { UseQueryResult } from "@tanstack/react-query";
+import type { MetaFunction } from "react-router";
 
 // ----------------------------------------------------------------------------
 

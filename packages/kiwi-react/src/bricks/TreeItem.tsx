@@ -297,22 +297,14 @@ const TreeItemRoot = React.memo(
 				>
 					{React.useMemo(
 						() => (
-							<ListItem.Root
-								data-kiwi-expanded={expanded}
-								data-kiwi-selected={selected}
-								data-kiwi-error={hasError ? true : undefined}
-								className="🥝-tree-item-node"
-								role={undefined}
-							>
-								<TreeItemDecorations onExpanderClick={onExpanderClick} />
-
-								<TreeItemContent />
-								<TreeItemDescription />
-
-								<TreeItemActions />
-							</ListItem.Root>
+							<TreeItemNode
+								hasError={hasError}
+								onExpanderClick={onExpanderClick}
+								expanded={expanded}
+								selected={selected}
+							/>
 						),
-						[expanded, hasError, selected, onExpanderClick],
+						[hasError, onExpanderClick, expanded, selected],
 					)}
 				</CompositeItem>
 			</TreeItemRootProvider>
@@ -388,6 +380,38 @@ function TreeItemRootProvider(props: TreeItemRootProviderProps) {
 	);
 }
 DEV: TreeItemRootProvider.displayName = "TreeItemRootProvider";
+
+// ----------------------------------------------------------------------------
+
+interface TreeItemNodeProps
+	extends Pick<TreeItemRootProps, "expanded" | "selected">,
+		Pick<TreeItemDecorationsProps, "onExpanderClick">,
+		Pick<TreeItemRootProviderProps, "hasError"> {}
+
+/**
+ * Displays the styled tree item node.
+ * @private
+ */
+const TreeItemNode = React.memo((props: TreeItemNodeProps) => {
+	const { expanded, selected, hasError, onExpanderClick } = props;
+	return (
+		<ListItem.Root
+			data-kiwi-expanded={expanded}
+			data-kiwi-selected={selected}
+			data-kiwi-error={hasError ? true : undefined}
+			className="🥝-tree-item-node"
+			role={undefined}
+		>
+			<TreeItemDecorations onExpanderClick={onExpanderClick} />
+
+			<TreeItemContent />
+			<TreeItemDescription />
+
+			<TreeItemActions />
+		</ListItem.Root>
+	);
+});
+DEV: TreeItemNode.displayName = "TreeItemNode";
 
 // ----------------------------------------------------------------------------
 

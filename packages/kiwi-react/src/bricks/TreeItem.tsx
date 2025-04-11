@@ -259,88 +259,135 @@ const TreeItemRoot = React.memo(
 
 		const hasError = !!error;
 		return (
-			<TreeItemErrorContext.Provider value={hasError}>
-				<TreeItemActionsContext.Provider value={actions}>
-					<TreeItemDecorationContext.Provider
-						value={React.useMemo(
-							() => ({
-								decorationId,
-								decorations: unstable_decorations,
-								icon,
-							}),
-							[decorationId, unstable_decorations, icon],
-						)}
-					>
-						<TreeItemContentContext.Provider
-							value={React.useMemo(
-								() => ({
-									label,
-									labelId,
-								}),
-								[label, labelId],
-							)}
-						>
-							<TreeItemDescriptionContext.Provider value={description}>
-								<TreeItemDescriptionIdContext.Provider
-									value={description ? descriptionId : undefined}
-								>
-									<CompositeItem
-										{...(rest as CompositeItemProps)}
-										render={React.useMemo(() => <Role />, [])}
-										onClick={
-											useEventHandlers(
-												onClickProp,
-												handleClick,
-											) as unknown as React.MouseEventHandler<HTMLButtonElement>
-										}
-										onKeyDown={
-											useEventHandlers(
-												onKeyDownProp,
-												handleKeyDown,
-											) as unknown as React.KeyboardEventHandler<HTMLButtonElement>
-										}
-										role="treeitem"
-										aria-expanded={expanded}
-										aria-selected={selected}
-										aria-labelledby={labelId}
-										aria-describedby={describedBy}
-										aria-level={level}
-										className={cx("🥝-tree-item", props.className)}
-										style={style}
-										ref={forwardedRef as CompositeItemProps["ref"]}
-									>
-										{React.useMemo(
-											() => (
-												<ListItem.Root
-													data-kiwi-expanded={expanded}
-													data-kiwi-selected={selected}
-													data-kiwi-error={hasError ? true : undefined}
-													className="🥝-tree-item-node"
-													role={undefined}
-												>
-													<TreeItemDecorations
-														onExpanderClick={onExpanderClick}
-													/>
+			<TreeItemRootProvider
+				hasError={hasError}
+				actions={actions}
+				decorationId={decorationId}
+				decorations={unstable_decorations}
+				icon={icon}
+				label={label}
+				labelId={labelId}
+				description={description}
+				descriptionId={descriptionId}
+			>
+				<CompositeItem
+					{...(rest as CompositeItemProps)}
+					render={React.useMemo(() => <Role />, [])}
+					onClick={
+						useEventHandlers(
+							onClickProp,
+							handleClick,
+						) as unknown as React.MouseEventHandler<HTMLButtonElement>
+					}
+					onKeyDown={
+						useEventHandlers(
+							onKeyDownProp,
+							handleKeyDown,
+						) as unknown as React.KeyboardEventHandler<HTMLButtonElement>
+					}
+					role="treeitem"
+					aria-expanded={expanded}
+					aria-selected={selected}
+					aria-labelledby={labelId}
+					aria-describedby={describedBy}
+					aria-level={level}
+					className={cx("🥝-tree-item", props.className)}
+					style={style}
+					ref={forwardedRef as CompositeItemProps["ref"]}
+				>
+					{React.useMemo(
+						() => (
+							<ListItem.Root
+								data-kiwi-expanded={expanded}
+								data-kiwi-selected={selected}
+								data-kiwi-error={hasError ? true : undefined}
+								className="🥝-tree-item-node"
+								role={undefined}
+							>
+								<TreeItemDecorations onExpanderClick={onExpanderClick} />
 
-													<TreeItemContent />
-													<TreeItemDescription />
+								<TreeItemContent />
+								<TreeItemDescription />
 
-													<TreeItemActions />
-												</ListItem.Root>
-											),
-											[expanded, hasError, selected, onExpanderClick],
-										)}
-									</CompositeItem>
-								</TreeItemDescriptionIdContext.Provider>
-							</TreeItemDescriptionContext.Provider>
-						</TreeItemContentContext.Provider>
-					</TreeItemDecorationContext.Provider>
-				</TreeItemActionsContext.Provider>
-			</TreeItemErrorContext.Provider>
+								<TreeItemActions />
+							</ListItem.Root>
+						),
+						[expanded, hasError, selected, onExpanderClick],
+					)}
+				</CompositeItem>
+			</TreeItemRootProvider>
 		);
 	}),
 );
 DEV: TreeItemRoot.displayName = "TreeItem.Root";
+
+// ----------------------------------------------------------------------------
+
+interface TreeItemRootProviderProps
+	extends Pick<
+		TreeItemRootProps,
+		"actions" | "icon" | "label" | "description"
+	> {
+	children?: React.ReactNode;
+	hasError: boolean;
+	decorationId: string;
+	labelId: string;
+	descriptionId: string;
+	decorations: TreeItemRootProps["unstable_decorations"];
+}
+
+/**
+ * Providers of the tree item.
+ * @private
+ */
+function TreeItemRootProvider(props: TreeItemRootProviderProps) {
+	const {
+		hasError,
+		actions,
+		decorationId,
+		decorations,
+		icon,
+		label,
+		labelId,
+		description,
+		descriptionId,
+	} = props;
+	return (
+		<TreeItemErrorContext.Provider value={hasError}>
+			<TreeItemActionsContext.Provider value={actions}>
+				<TreeItemDecorationContext.Provider
+					value={React.useMemo(
+						() => ({
+							decorationId,
+							decorations,
+							icon,
+						}),
+						[decorationId, decorations, icon],
+					)}
+				>
+					<TreeItemContentContext.Provider
+						value={React.useMemo(
+							() => ({
+								label,
+								labelId,
+							}),
+							[label, labelId],
+						)}
+					>
+						<TreeItemDescriptionContext.Provider value={description}>
+							<TreeItemDescriptionIdContext.Provider
+								value={description ? descriptionId : undefined}
+							>
+								{props.children}
+							</TreeItemDescriptionIdContext.Provider>
+						</TreeItemDescriptionContext.Provider>
+					</TreeItemContentContext.Provider>
+				</TreeItemDecorationContext.Provider>
+			</TreeItemActionsContext.Provider>
+		</TreeItemErrorContext.Provider>
+	);
+}
+DEV: TreeItemRootProvider.displayName = "TreeItemRootProvider";
 
 // ----------------------------------------------------------------------------
 

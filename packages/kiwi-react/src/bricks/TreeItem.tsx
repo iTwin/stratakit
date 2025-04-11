@@ -261,14 +261,9 @@ const TreeItemRoot = React.memo(
 		const hasError = !!error;
 		return (
 			<TreeItemRootProvider
-				hasError={hasError}
-				actions={actions}
+				{...props}
 				decorationId={decorationId}
-				decorations={unstable_decorations}
-				icon={icon}
-				label={label}
 				labelId={labelId}
-				description={description}
 				descriptionId={descriptionId}
 			>
 				<CompositeItem
@@ -316,17 +311,11 @@ DEV: TreeItemRoot.displayName = "TreeItem.Root";
 
 // ----------------------------------------------------------------------------
 
-interface TreeItemRootProviderProps
-	extends Pick<
-		TreeItemRootProps,
-		"actions" | "icon" | "label" | "description"
-	> {
+interface TreeItemRootProviderProps extends TreeItemRootProps {
 	children?: React.ReactNode;
-	hasError: boolean;
 	decorationId: string;
 	labelId: string;
 	descriptionId: string;
-	decorations: TreeItemRootProps["unstable_decorations"];
 }
 
 /**
@@ -335,18 +324,18 @@ interface TreeItemRootProviderProps
  */
 function TreeItemRootProvider(props: TreeItemRootProviderProps) {
 	const {
-		hasError,
 		actions,
-		decorationId,
-		decorations,
-		icon,
 		label,
 		labelId,
 		description,
+		icon,
+		unstable_decorations: decorations,
 		descriptionId,
+		decorationId,
+		error,
 	} = props;
 	return (
-		<TreeItemErrorContext.Provider value={hasError}>
+		<TreeItemErrorContext.Provider value={!!error}>
 			<TreeItemActionsContext.Provider value={actions}>
 				<TreeItemDecorationContext.Provider
 					value={React.useMemo(
@@ -386,8 +375,9 @@ DEV: TreeItemRootProvider.displayName = "TreeItemRootProvider";
 
 interface TreeItemNodeProps
 	extends Pick<TreeItemRootProps, "expanded" | "selected">,
-		Pick<TreeItemDecorationsProps, "onExpanderClick">,
-		Pick<TreeItemRootProviderProps, "hasError"> {}
+		Pick<TreeItemDecorationsProps, "onExpanderClick"> {
+	hasError: boolean;
+}
 
 /**
  * Displays the styled tree item node.

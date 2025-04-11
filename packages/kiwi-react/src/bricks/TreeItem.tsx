@@ -529,15 +529,11 @@ DEV: TreeItemActions.displayName = "TreeItemActions";
 
 // ----------------------------------------------------------------------------
 
-interface TreeItemActionsProvider {
-	children?: React.ReactNode;
-}
-
 /**
  * Provides the overflow menu and the inline actions.
  * @private
  */
-function TreeItemActionsProvider(props: TreeItemActionsProvider) {
+function TreeItemActionsProvider(props: React.PropsWithChildren) {
 	const actionsProp = React.useContext(TreeItemActionsContext);
 	const error = React.useContext(TreeItemErrorContext);
 	const actionsLimit = error ? 2 : 3;

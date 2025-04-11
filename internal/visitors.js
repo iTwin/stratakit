@@ -2,11 +2,13 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
+
+import Color from "colorjs.io";
+
 import primitives from "./primitives.json" with { type: "json" };
 import darkTheme from "./theme-dark.json" with { type: "json" };
 import lightTheme from "./theme-light.json" with { type: "json" };
 import typography from "./typography.json" with { type: "json" };
-import Color from "colorjs.io";
 
 /**
  * LightningCSS visitor that inlines the values of primitive color tokens.

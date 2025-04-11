@@ -2,22 +2,24 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-import * as React from "react";
-import cx from "classnames";
+
 import {
-	DialogProvider,
-	DialogDisclosure,
 	Dialog,
+	DialogDisclosure,
+	DialogProvider,
 } from "@ariakit/react/dialog";
 import { Role } from "@ariakit/react/role";
-import { forwardRef, type BaseProps } from "./~utils.js";
-import { ChevronDown, Dismiss, StatusWarning } from "./Icon.js";
-import { Text } from "./Text.js";
-import { IconButton } from "./IconButton.js";
+import cx from "classnames";
+import * as React from "react";
 import { Button } from "./Button.js";
-import { useControlledState } from "./~hooks.js";
-import { VisuallyHidden } from "./VisuallyHidden.js";
+import { ChevronDown, StatusWarning } from "./Icon.js";
 import { IconButtonPresentation } from "./IconButton.internal.js";
+import { Text } from "./Text.js";
+import { VisuallyHidden } from "./VisuallyHidden.js";
+import { useControlledState } from "./~hooks.js";
+import { forwardRef } from "./~utils.js";
+
+import type { BaseProps } from "./~utils.js";
 
 // ----------------------------------------------------------------------------
 
@@ -145,10 +147,6 @@ interface ErrorRegionItemProps extends Omit<BaseProps, "children"> {
 	 * The actions available for this item. Must be a list of anchors, each rendered as a button using `<Anchor render={<button />} />`.
 	 */
 	actions?: React.ReactNode;
-	/**
-	 * Callback fired when the error item is dismissed.
-	 */
-	onDismiss?: () => void;
 }
 
 /**
@@ -162,7 +160,6 @@ interface ErrorRegionItemProps extends Omit<BaseProps, "children"> {
  *   message={<>Something went wrong with <Anchor href="item-10001">Item 10001</Anchor>.</>}
  *   messageId="item-10001-error"
  *   actions={<Button>Retry</Button>}
- *   onDismiss={() => {}}
  * />
  *
  * <Tree.Item
@@ -180,11 +177,8 @@ const ErrorRegionItem = forwardRef<"div", ErrorRegionItemProps>(
 			message,
 			messageId = `${generatedId}-message`,
 			actions,
-			onDismiss,
 			...rest
 		} = props;
-
-		const dismissButtonId = `${generatedId}-dismiss`;
 
 		return (
 			<Role.div
@@ -193,24 +187,9 @@ const ErrorRegionItem = forwardRef<"div", ErrorRegionItemProps>(
 				className={cx("🥝-error-region-item", props.className)}
 				ref={forwardedRef}
 			>
-				<Text
-					id={messageId}
-					variant="body-sm"
-					className="🥝-error-region-item-message"
-				>
+				<Text id={messageId} variant="body-sm">
 					{message}
 				</Text>
-				{onDismiss && (
-					<IconButton
-						id={dismissButtonId}
-						className="🥝-error-region-item-dismiss"
-						variant="ghost"
-						label="Dismiss"
-						aria-labelledby={`${dismissButtonId} ${messageId}`}
-						icon={<Dismiss />}
-						onClick={onDismiss}
-					/>
-				)}
 				<div className="🥝-error-region-item-actions">{actions}</div>
 			</Role.div>
 		);

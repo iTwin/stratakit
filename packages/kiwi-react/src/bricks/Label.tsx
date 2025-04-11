@@ -2,9 +2,12 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-import cx from "classnames";
+
 import { Role } from "@ariakit/react/role";
-import { forwardRef, type BaseProps } from "./~utils.js";
+import cx from "classnames";
+import { forwardRef } from "./~utils.js";
+
+import type { BaseProps } from "./~utils.js";
 
 interface LabelProps extends BaseProps<"label"> {}
 

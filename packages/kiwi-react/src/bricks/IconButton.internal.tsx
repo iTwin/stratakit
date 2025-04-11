@@ -2,11 +2,14 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-import * as React from "react";
-import cx from "classnames";
-import { forwardRef, type BaseProps } from "./~utils.js";
+
 import { Role } from "@ariakit/react/role";
+import cx from "classnames";
+import * as React from "react";
+import { forwardRef } from "./~utils.js";
+
 import type { Button } from "./Button.js";
+import type { BaseProps } from "./~utils.js";
 
 // ----------------------------------------------------------------------------
 

@@ -2,10 +2,13 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-import cx from "classnames";
-import { Role } from "@ariakit/react/role";
+
 import { Focusable } from "@ariakit/react/focusable";
-import { forwardRef, type FocusableProps } from "./~utils.js";
+import { Role } from "@ariakit/react/role";
+import cx from "classnames";
+import { forwardRef } from "./~utils.js";
+
+import type { FocusableProps } from "./~utils.js";
 
 interface AnchorProps extends FocusableProps<"a"> {
 	/** @default "neutral" */

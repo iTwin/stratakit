@@ -2,10 +2,13 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
+
 import { Role } from "@ariakit/react/role";
 import cx from "classnames";
 import { VisuallyHidden } from "./VisuallyHidden.js";
-import { forwardRef, type BaseProps } from "./~utils.js";
+import { forwardRef } from "./~utils.js";
+
+import type { BaseProps } from "./~utils.js";
 
 interface SpinnerProps extends BaseProps {
 	/**

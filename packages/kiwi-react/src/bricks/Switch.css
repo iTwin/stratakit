@@ -44,6 +44,7 @@
 		position: relative;
 		border-radius: 9999px;
 		inline-size: var(--✨width);
+		block-size: auto; /* Necessary to override iOS Safari UA styles */
 
 		background-color: var(--🌀switch-state--default, var(--✨bg--default))
 			var(--🌀switch-state--hover, var(--✨bg--hover))

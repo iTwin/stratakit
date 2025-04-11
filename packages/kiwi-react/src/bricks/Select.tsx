@@ -2,17 +2,15 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-import * as React from "react";
-import cx from "classnames";
+
 import { Role } from "@ariakit/react/role";
-import {
-	forwardRef,
-	isBrowser,
-	type BaseProps,
-	type FocusableProps,
-} from "./~utils.js";
-import { DisclosureArrow } from "./Icon.js";
+import cx from "classnames";
+import * as React from "react";
 import { useFieldControlType } from "./Field.internal.js";
+import { DisclosureArrow } from "./Icon.js";
+import { forwardRef, isBrowser } from "./~utils.js";
+
+import type { BaseProps, FocusableProps } from "./~utils.js";
 
 const supportsHas = isBrowser && CSS?.supports?.("selector(:has(+ *))");
 

@@ -2,7 +2,8 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-import { test, expect } from "#playwright";
+
+import { expect, test } from "#playwright";
 
 test.describe("@visual", () => {
 	test("default", async ({ page }) => {

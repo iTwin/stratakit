@@ -2,12 +2,13 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-import { definePage } from "~/~utils.tsx";
-import * as React from "react";
+
 import {
 	Anchor,
 	unstable_ErrorRegion as ErrorRegion,
 } from "@itwin/itwinui-react/bricks";
+import * as React from "react";
+import { definePage } from "~/~utils.tsx";
 
 export const handle = { title: "Error Region" };
 

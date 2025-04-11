@@ -2,13 +2,14 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
+
+import { Checkbox as AkCheckbox } from "@ariakit/react/checkbox";
 import cx from "classnames";
-import {
-	Checkbox as AkCheckbox,
-	type CheckboxProps as AkCheckboxProps,
-} from "@ariakit/react/checkbox";
-import { forwardRef, type FocusableProps } from "./~utils.js";
 import { useFieldControlType } from "./Field.internal.js";
+import { forwardRef } from "./~utils.js";
+
+import type { CheckboxProps as AkCheckboxProps } from "@ariakit/react/checkbox";
+import type { FocusableProps } from "./~utils.js";
 
 type InputBaseProps = Omit<FocusableProps<"input">, "defaultValue" | "value">;
 

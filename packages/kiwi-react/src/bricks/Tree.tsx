@@ -2,11 +2,14 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-import cx from "classnames";
+
+import { Composite, useCompositeStore } from "@ariakit/react/composite";
 import { Role } from "@ariakit/react/role";
-import { useCompositeStore, Composite } from "@ariakit/react/composite";
-import { forwardRef, type BaseProps } from "./~utils.js";
-import { Root as TreeItemRoot, Action as TreeItemAction } from "./TreeItem.js";
+import cx from "classnames";
+import { Action as TreeItemAction, Root as TreeItemRoot } from "./TreeItem.js";
+import { forwardRef } from "./~utils.js";
+
+import type { BaseProps } from "./~utils.js";
 
 // ----------------------------------------------------------------------------
 

@@ -17,7 +17,7 @@
 		}
 	},
 	"organizeImports": {
-		"enabled": false
+		"enabled": true
 	},
 	"linter": {
 		"rules": {

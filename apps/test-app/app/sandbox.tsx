@@ -1001,6 +1001,7 @@ function Subheader({ tabs }: { tabs?: React.ReactNode }) {
 
 	const searchInputRef = React.useRef<HTMLInputElement>(null);
 	const tabsRef = React.useRef<HTMLHeadingElement>(null);
+	const subHeaderContentRef = React.useRef<HTMLDivElement>(null);
 
 	const [isSearchboxVisible, setIsSearchboxVisible] = React.useState(!tabs);
 	const filterOrSearchActive = isFiltered || !!search;
@@ -1041,14 +1042,34 @@ function Subheader({ tabs }: { tabs?: React.ReactNode }) {
 		return `Showing ${itemCount} tree items`;
 	}, [isFiltered, itemCount]);
 
+	const [isOverflowing, setIsOverflowing] = React.useState(false);
+
+	React.useEffect(() => {
+		const subHeaderContent = subHeaderContentRef.current;
+		if (!subHeaderContent) return;
+		const ro = new ResizeObserver(() => {
+			setIsOverflowing(
+				!isSearchboxVisible &&
+					subHeaderContent.scrollWidth > subHeaderContent.clientWidth,
+			);
+		});
+		ro.observe(subHeaderContent);
+		return () => {
+			ro.disconnect();
+		};
+	}, [isSearchboxVisible]);
+
 	return (
-		<div className={styles.subheader}>
+		<div
+			className={styles.subheader}
+			data-overflow={isOverflowing && !isSearchboxVisible}
+		>
 			<VisuallyHidden aria-live="polite" aria-atomic={true}>
 				{filteredNotification}
 			</VisuallyHidden>
 
 			{tabs && !isSearchboxVisible ? (
-				<div className={styles.subheaderXYZ}>
+				<div className={styles.subheaderXYZ} ref={subHeaderContentRef}>
 					<Tabs.TabList className={styles.tabList} tone="accent" ref={tabsRef}>
 						{tabs}
 					</Tabs.TabList>

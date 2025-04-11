@@ -96,7 +96,11 @@
 	align-items: center;
 	grid-template-columns: [full-width-start] 1fr [actions-start] auto [full-width-end];
 	/* grid-template-rows: [full-height-start] calc(1rem + 24px) [tabs-height-end] 8px [full-height-end]; */
-	grid-template-rows: [full-height-start] 1fr [tabs-height-end] 8px [full-height-end];
+	grid-template-rows: [full-height-start] 1fr [tabs-height-end] auto [full-height-end];
+
+	&:where([data-overflow="true"]) {
+		grid-template-rows: [full-height-start] 1fr [tabs-height-end] 17px [full-height-end]; /* 17px as placeholder for scrollbar height */
+	}
 }
 
 .subheaderTitle {
@@ -131,7 +135,7 @@
 	grid-column: full-width-start / full-width-end;
 	grid-row: full-height-start / full-height-end;
 	grid-template-rows: subgrid;
-	scrollbar-gutter: stable;
+	/* scrollbar-gutter: stable; */
 	overflow-x: auto;
 }
 

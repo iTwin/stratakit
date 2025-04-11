@@ -41,6 +41,7 @@
 		border-radius: 4px;
 
 		color: var(--🥝anchor-color, var(--✨color--default));
+		-webkit-tap-highlight-color: var(--ids-color-bg-glow-on-surface-neutral-pressed);
 
 		transition: all 150ms ease-out;
 		transition-property: color, text-decoration-color, text-underline-offset;
@@ -51,12 +52,14 @@
 			--🥝anchor-color: var(--🌀anchor-state--default, var(--✨color--accent))
 				var(--🌀anchor-state--hover, var(--✨color--accent-hover))
 				var(--🌀anchor-state--pressed, var(--✨color--accent-pressed));
+			-webkit-tap-highlight-color: var(--ids-color-bg-glow-on-surface-accent-pressed);
 		}
 
 		&:where([data-kiwi-tone="critical"]) {
 			--🥝anchor-color: var(--🌀anchor-state--default, var(--✨color--critical))
 				var(--🌀anchor-state--hover, var(--✨color--critical-hover))
 				var(--🌀anchor-state--pressed, var(--✨color--critical-pressed));
+			-webkit-tap-highlight-color: var(--ids-color-bg-glow-on-surface-critical-pressed);
 		}
 	}
 

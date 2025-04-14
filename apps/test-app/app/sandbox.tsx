@@ -2,13 +2,23 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-import * as React from "react";
-import * as ReactDOM from "react-dom";
-import styles from "./sandbox.module.css";
+import closeIcon from "@itwin/itwinui-icons/close.svg";
+import cursorSelectIcon from "@itwin/itwinui-icons/cursor-select.svg";
+import cursorIcon from "@itwin/itwinui-icons/cursor.svg";
+import drawIcon from "@itwin/itwinui-icons/draw.svg";
+import filterIcon from "@itwin/itwinui-icons/filter.svg";
+import lockIcon from "@itwin/itwinui-icons/lock.svg";
+import measureIcon from "@itwin/itwinui-icons/measure.svg";
+import panelCollapseLeftIcon from "@itwin/itwinui-icons/panel-collapse-left.svg";
+import placeholderIcon from "@itwin/itwinui-icons/placeholder.svg";
+import searchIcon from "@itwin/itwinui-icons/search.svg";
+import hideIcon from "@itwin/itwinui-icons/visibility-hide.svg";
+import showIcon from "@itwin/itwinui-icons/visibility-show.svg";
 import {
 	Anchor,
 	Button,
 	DropdownMenu,
+	unstable_ErrorRegion as ErrorRegion,
 	Field,
 	Icon,
 	IconButton,
@@ -17,32 +27,24 @@ import {
 	Tabs,
 	Text,
 	TextBox,
-	Tree,
-	unstable_ErrorRegion as ErrorRegion,
-	VisuallyHidden,
 	unstable_Toolbar as Toolbar,
+	Tree,
+	VisuallyHidden,
 } from "@itwin/itwinui-react/bricks";
-import { useSearchParams, type MetaFunction } from "react-router";
-import { useQuery, type UseQueryResult } from "@tanstack/react-query";
-import { toUpperCamelCase } from "./~utils.tsx";
+import { useQuery } from "@tanstack/react-query";
 import cx from "classnames";
-
-import placeholderIcon from "@itwin/itwinui-icons/placeholder.svg";
-import searchIcon from "@itwin/itwinui-icons/search.svg";
-import panelLeftIcon from "@itwin/itwinui-icons/panel-left.svg";
-import filterIcon from "@itwin/itwinui-icons/filter.svg";
-import dismissIcon from "@itwin/itwinui-icons/dismiss.svg";
-import lockIcon from "@itwin/itwinui-icons/lock.svg";
-import showIcon from "@itwin/itwinui-icons/visibility-show.svg";
-import hideIcon from "@itwin/itwinui-icons/visibility-hide.svg";
-import cursorIcon from "@itwin/itwinui-icons/cursor.svg";
-import cursorSelectIcon from "@itwin/itwinui-icons/cursor-select.svg";
-import drawIcon from "@itwin/itwinui-icons/draw.svg";
-import measureIcon from "@itwin/itwinui-icons/measure.svg";
-
+import { produce } from "immer";
+import * as React from "react";
+import * as ReactDOM from "react-dom";
+import { useSearchParams } from "react-router";
 import model1Url from "./sandbox.model1.json?url";
 import model2Url from "./sandbox.model2.json?url";
 import model3Url from "./sandbox.model3.json?url";
+import styles from "./sandbox.module.css";
+import { toUpperCamelCase } from "./~utils.tsx";
+
+import type { UseQueryResult } from "@tanstack/react-query";
+import type { MetaFunction } from "react-router";
 
 // ----------------------------------------------------------------------------
 
@@ -138,7 +140,7 @@ export default function Page() {
 						<div>
 							<IconButton
 								className={styles.shiftIconRight}
-								icon={panelLeftIcon}
+								icon={panelCollapseLeftIcon}
 								label="Dock panel"
 								variant="ghost"
 								disabled
@@ -914,11 +916,6 @@ function SandboxTree({
 									Retry
 								</Anchor>
 							}
-							onDismiss={() => {
-								setFailingIds((prev) => {
-									return prev.filter((id) => id !== item.id);
-								});
-							}}
 						/>
 					);
 				})}
@@ -950,13 +947,13 @@ function SandboxTree({
 								item.items.length === 0 && !hasError ? undefined : item.expanded
 							}
 							onExpandedChange={(expanded) => {
-								setItems((prev) => {
-									const treeItem = findTreeItem(prev, item.id);
-									if (!treeItem) return prev;
-									const newData = [...prev];
-									treeItem.expanded = expanded; // TODO: should be immutable https://github.com/iTwin/kiwi/pull/300#discussion_r1941452941
-									return newData;
-								});
+								setItems(
+									produce((prev) => {
+										const treeItem = findTreeItem(prev, item.id);
+										if (!treeItem) return;
+										treeItem.expanded = expanded;
+									}),
+								);
 							}}
 							unstable_decorations={
 								<>
@@ -968,15 +965,10 @@ function SandboxTree({
 							}
 							actions={[
 								<Tree.ItemAction key="lock" icon={lockIcon} label="Lock" />,
-								<Tree.ItemAction
+								<VisibilityAction
 									key="visibility"
-									icon={item.hidden ? hideIcon : showIcon}
-									label={item.hidden ? "Show" : "Hide"}
-									visible={item.hidden ? true : undefined}
-									onClick={() => {
-										toggleHidden(item.id);
-									}}
-									dot={item.hidden ? "Hidden" : undefined}
+									item={item}
+									onClick={toggleHidden}
 								/>,
 								<Tree.ItemAction key="copy" label="Copy" />,
 								<Tree.ItemAction key="paste" label="Paste" />,
@@ -1000,6 +992,26 @@ function SandboxTree({
 	);
 }
 
+interface VisibilityActionProps {
+	item: FlatTreeItem;
+	onClick: (id: string) => void;
+}
+
+function VisibilityAction({ item, onClick }: VisibilityActionProps) {
+	return (
+		<Tree.ItemAction
+			key="visibility"
+			icon={item.hidden ? hideIcon : showIcon}
+			label={item.hidden ? "Show" : "Hide"}
+			visible={item.hidden ? true : undefined}
+			onClick={React.useCallback(() => {
+				onClick(item.id);
+			}, [onClick, item.id])}
+			dot={item.hidden ? "Hidden" : undefined}
+		/>
+	);
+}
+
 function Subheader({ tabs }: { tabs?: React.ReactNode }) {
 	const { itemCount, isFiltered, search, setSearch } =
 		React.useContext(TreeFilteringContext);
@@ -1016,7 +1028,7 @@ function Subheader({ tabs }: { tabs?: React.ReactNode }) {
 			{tabs ? (
 				<IconButton
 					className={styles.shiftIconRight}
-					icon={dismissIcon}
+					icon={closeIcon}
 					label="Close"
 					variant="ghost"
 					onClick={() => {

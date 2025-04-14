@@ -2,8 +2,9 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-import { definePage } from "~/~utils.tsx";
+
 import { Anchor } from "@itwin/itwinui-react/bricks";
+import { definePage } from "~/~utils.tsx";
 
 export const handle = { title: "Anchor" };
 
@@ -30,11 +31,22 @@ function VisualTest() {
 
 	return (
 		<div style={{ display: "grid", gap: 4, justifyContent: "start" }}>
-			{tones.map((tone) => (
-				<Anchor key={tone} tone={tone} href="https://example.com">
-					Example
-				</Anchor>
-			))}
+			{tones.map((tone) => {
+				return (
+					<div key={tone} style={{ display: "flex", gap: 4 }}>
+						<Anchor key={tone} tone={tone} href="https://example.com">
+							Example
+						</Anchor>
+						<Anchor
+							render={<button onClick={() => {}} />}
+							key={tone}
+							tone={tone}
+						>
+							Example
+						</Anchor>
+					</div>
+				);
+			})}
 		</div>
 	);
 }

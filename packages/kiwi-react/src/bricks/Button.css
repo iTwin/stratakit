@@ -109,7 +109,7 @@
 		flex-shrink: 0;
 		gap: var(--✨gap);
 
-		block-size: var(--✨height);
+		min-block-size: var(--✨height);
 		border-radius: 4px;
 		padding-inline: var(--🥝button-padding-inline, var(--✨padding-inline));
 		padding-block: var(--✨padding-block);

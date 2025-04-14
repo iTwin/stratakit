@@ -2,8 +2,9 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-import { test, expect } from "#playwright";
+
 import AxeBuilder from "@axe-core/playwright";
+import { expect, test } from "#playwright";
 
 test("default", async ({ page }) => {
 	await page.goto("/tests/error-region");
@@ -20,20 +21,31 @@ test("default", async ({ page }) => {
 	});
 	await expect(error1).toBeVisible();
 
-	const dismiss = error1.getByRole("button", { name: "Dismiss" });
-	await dismiss.click();
+	const retry = error1.getByRole("button", { name: "Retry" });
+	await retry.click();
 	disclosure = page.getByRole("button", { name: "1 issue found" });
 	await expect(disclosure).toBeVisible();
 	await expect(errors).toHaveCount(1);
 });
 
 test.describe("@visual", () => {
-	test("default", async ({ page }) => {
+	test.beforeEach(async ({ page }) => {
 		await page.goto("/tests/error-region");
 
 		const disclosure = page.getByRole("button");
 		await disclosure.click();
+	});
 
+	test("default", async ({ page }) => {
+		await expect(page.locator("body")).toHaveScreenshot();
+	});
+
+	test("forced-colors", async ({ page, browserName }) => {
+		test.skip(
+			browserName === "webkit",
+			"Webkit does not support forced-colors",
+		);
+		await page.emulateMedia({ forcedColors: "active" });
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
 });

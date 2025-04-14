@@ -5,6 +5,7 @@
 @import "./sublayers.css" layer(itwinui.components);
 
 @import "./Icon.css" layer(itwinui.components);
+@import "./VisuallyHidden.css" layer(itwinui.components);
 @import "./~utils.Dot.css" layer(itwinui.components);
 @import "./~utils.GhostAligner.css" layer(itwinui.components);
 @import "./~utils.ListItem.css" layer(itwinui.components);

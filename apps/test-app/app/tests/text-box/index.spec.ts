@@ -2,8 +2,9 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-import { test, expect } from "#playwright";
+
 import AxeBuilder from "@axe-core/playwright";
+import { expect, test } from "#playwright";
 
 function toUrl(urlStr: string, type: "input" | "composition") {
 	const [url, urlParams] = urlStr.split("?");

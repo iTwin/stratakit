@@ -2,10 +2,13 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
+
+import { Role } from "@ariakit/react/role";
 import cx from "classnames";
-import { Role, type RoleProps } from "@ariakit/react/role";
-import { forwardRef } from "./~utils.js";
 import { Text } from "./Text.js";
+import { forwardRef } from "./~utils.js";
+
+import type { RoleProps } from "@ariakit/react/role";
 
 // ----------------------------------------------------------------------------
 

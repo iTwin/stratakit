@@ -52,18 +52,50 @@ Preferred usage is with the `Icon` component from `@itwin/itwinui-react`:
 
 ### Vite
 
-Within your Vite configuration file, you will need to configure `assetsInlineLimit` option to ensure SVG icons from `@itwin/itwinui-icons` are not inlined:
+Within your Vite configuration, you will need to configure [`build.assetsInlineLimit`](https://vite.dev/config/build-options.html#build-assetsinlinelimit) to ensure `.svg` files are not inlined:
 
 ```ts
-defineConfig({
+export default defineConfig({
+	// …
 	build: {
 		assetsInlineLimit: (filePath) => {
-			if (filePath.includes("@itwin/itwinui-icons/")) return false;
+			if (filePath.endsWith(".svg")) return false;
 			return undefined;
 		},
 	},
 });
 ```
+
+### Rsbuild
+
+Within your Rsbuild configuration, you will need to configure [`output.dataUriLimit`](https://rsbuild.dev/config/output/data-uri-limit) to ensure `.svg` files are not inlined:
+
+```ts
+export default {
+	// …
+	output: {
+		dataUriLimit: {
+			svg: 0,
+		},
+	},
+};
+```
+
+### esbuild
+
+With esbuild, you will need to enable the [`file` loader](https://esbuild.github.io/content-types/#external-file) for `.svg` files:
+
+```ts
+esbuild.build({
+	// …
+	loader: {
+		".svg": "file",
+	},
+});
+```
+
+> [!NOTE]
+> esbuild [does not support](https://github.com/evanw/esbuild/issues/795) bundling of assets when using the `URL` constructor, so you may need to additionally use a plugin to transform those into static `import` statements.
 
 ## Contributing
 

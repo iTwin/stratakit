@@ -27,14 +27,14 @@ const TreeItemActionsContext = React.createContext<React.ReactNode>(undefined);
 const TreeItemDecorationContext = React.createContext<
 	| {
 			decorationId: string;
-			decorations: TreeItemRootProps["unstable_decorations"];
-			icon: TreeItemRootProps["icon"];
+			decorations: TreeItemProps["unstable_decorations"];
+			icon: TreeItemProps["icon"];
 	  }
 	| undefined
 >(undefined);
 const TreeItemContentContext = React.createContext<
 	| {
-			label: TreeItemRootProps["label"];
+			label: TreeItemProps["label"];
 			labelId: string;
 	  }
 	| undefined
@@ -53,7 +53,7 @@ const TreeItemHasOverflowActionsContext = React.createContext(false);
 
 // ----------------------------------------------------------------------------
 
-interface TreeItemRootProps extends Omit<BaseProps, "content" | "children"> {
+interface TreeItemProps extends Omit<BaseProps, "content" | "children"> {
 	/** Specifies the nesting level of the tree item. Nesting levels start at 1. */
 	"aria-level": number;
 	/** Defines tree item position in the current level of tree items. Integer greater than or equal to 1. */
@@ -182,8 +182,8 @@ interface TreeItemRootProps extends Omit<BaseProps, "content" | "children"> {
  *
  * Secondary actions can be passed into the `actions` prop.
  */
-const TreeItemRoot = React.memo(
-	forwardRef<"div", TreeItemRootProps>((props, forwardedRef) => {
+const TreeItem = React.memo(
+	forwardRef<"div", TreeItemProps>((props, forwardedRef) => {
 		const {
 			style: styleProp,
 			"aria-level": level,
@@ -307,11 +307,11 @@ const TreeItemRoot = React.memo(
 		);
 	}),
 );
-DEV: TreeItemRoot.displayName = "TreeItem.Root";
+DEV: TreeItem.displayName = "Tree.Item";
 
 // ----------------------------------------------------------------------------
 
-interface TreeItemRootProviderProps extends TreeItemRootProps {
+interface TreeItemRootProviderProps extends TreeItemProps {
 	children?: React.ReactNode;
 	decorationId: string;
 	labelId: string;
@@ -374,7 +374,7 @@ DEV: TreeItemRootProvider.displayName = "TreeItemRootProvider";
 // ----------------------------------------------------------------------------
 
 interface TreeItemNodeProps
-	extends Pick<TreeItemRootProps, "expanded" | "selected">,
+	extends Pick<TreeItemProps, "expanded" | "selected">,
 		Pick<TreeItemDecorationsProps, "onExpanderClick"> {
 	hasError: boolean;
 }
@@ -772,4 +772,4 @@ DEV: TreeItemExpander.displayName = "TreeItemExpander";
 
 // ----------------------------------------------------------------------------
 
-export { TreeItemRoot as Root, TreeItemAction as Action };
+export { TreeItem as Root, TreeItemAction as Action };

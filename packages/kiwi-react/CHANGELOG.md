@@ -1,5 +1,19 @@
 # Changelog
 
+## 5.0.0-alpha.14
+
+- Improved the performance of `<Tree.Item>`.
+- Removed dismiss button from `<ErrorRegion.Item>`.
+- **breaking**: Added and renamed some CSS variables. See [#571](https://github.com/iTwin/design-system/pull/571).
+- Styling changes:
+  - Enabled some disambiguation character variants for `InterVariable` font.
+  - Improved forced-colors mode styling for `Tabs`.
+  - Updated some color values in light mode to match the latest design.
+- Bug fixes:
+  - Fixed an `undefined` check for `document.fonts`.
+  - Fixed a Safari issue where `<Switch>` was not using the correct height.
+  - Fixed a responsive design issue in `Tabs` where the active stripe was not reacting to viewport resize.
+
 ## 5.0.0-alpha.13
 
 - Added new `unstable_ErrorRegion` component for displaying errors originating from `Tree`. See [#454](https://github.com/iTwin/design-system/pull/454).

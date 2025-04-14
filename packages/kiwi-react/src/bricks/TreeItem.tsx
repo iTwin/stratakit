@@ -17,7 +17,6 @@ import { useEventHandlers } from "./~hooks.js";
 import * as ListItem from "./~utils.ListItem.js";
 import { forwardRef } from "./~utils.js";
 
-import type { CompositeItemProps } from "@ariakit/react/composite";
 import type { BaseProps } from "./~utils.js";
 
 // ----------------------------------------------------------------------------

@@ -13,7 +13,7 @@ import * as DropdownMenu from "./DropdownMenu.js";
 import { ChevronDown, Icon, MoreHorizontal, StatusWarning } from "./Icon.js";
 import { IconButtonPresentation } from "./IconButton.internal.js";
 import { IconButton } from "./IconButton.js";
-import { useEventHandlers, useSafeContext } from "./~hooks.js";
+import { useEventHandlers } from "./~hooks.js";
 import * as ListItem from "./~utils.ListItem.js";
 import { forwardRef } from "./~utils.js";
 
@@ -680,7 +680,7 @@ interface TreeItemActionProps extends Omit<BaseProps<"button">, "children"> {
  */
 const TreeItemAction = React.memo(
 	forwardRef<"button", TreeItemActionProps>((props, forwardedRef) => {
-		const error = useSafeContext(TreeItemErrorContext);
+		const error = React.useContext(TreeItemErrorContext);
 		const {
 			visible = error ? true : undefined, // visible by default during error state
 			label,

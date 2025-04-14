@@ -1,15 +1,15 @@
-/*---------------------------------------------------------------------------------------------
- * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
- * See LICENSE.md in the project root for license terms and full copyright notice.
- *--------------------------------------------------------------------------------------------*/
-import { definePage } from "~/~utils.tsx";
+import placeholderIcon from "@itwin/itwinui-icons/placeholder.svg";
 import {
 	Anchor,
 	Banner,
 	Button,
 	VisuallyHidden,
 } from "@itwin/itwinui-react/bricks";
-import placeholderIcon from "@itwin/itwinui-icons/placeholder.svg";
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+import { definePage } from "~/~utils.tsx";
 
 export const handle = { title: "Banner" };
 
@@ -49,10 +49,8 @@ function VisualTest({ customIcons = false }: { customIcons?: boolean }) {
 							key={tone}
 							tone={tone}
 							variant="outline"
-							onDismiss={() => {
-								console.log("Dismissed");
-							}}
-							actions={<Button key="1">Action</Button>}
+							onDismiss={() => {}}
+							actions={<Button>Action</Button>}
 						/>
 					);
 				})}
@@ -94,7 +92,7 @@ function ActionsTest() {
 				onDismiss={() => {
 					console.log("Dismissed");
 				}}
-				actions={<Button key="1">Manage cookies</Button>}
+				actions={<Button>Manage cookies</Button>}
 				label={<VisuallyHidden>Privacy Notice</VisuallyHidden>}
 				message="This site uses cookies to improve your experience."
 			/>
@@ -103,11 +101,7 @@ function ActionsTest() {
 				onDismiss={() => {
 					console.log("Dismissed");
 				}}
-				actions={
-					<Anchor key="1" render={<button />}>
-						Manage cookies
-					</Anchor>
-				}
+				actions={<Anchor render={<button />}>Manage cookies</Anchor>}
 				label={<VisuallyHidden>Privacy Notice</VisuallyHidden>}
 				message="This site uses cookies to improve your experience."
 			/>
@@ -118,8 +112,8 @@ function ActionsTest() {
 				}}
 				actions={
 					<>
-						<Button key="1">Manage cookies</Button>
-						<Button key="2">Don't show again</Button>
+						<Button>Manage cookies</Button>
+						<Button>Don't show again</Button>
 					</>
 				}
 				label={<VisuallyHidden>Privacy Notice</VisuallyHidden>}
@@ -132,12 +126,8 @@ function ActionsTest() {
 				}}
 				actions={
 					<>
-						<Anchor key="1" render={<button />}>
-							Manage cookies
-						</Anchor>
-						<Anchor key="2" render={<button />}>
-							Don't show again
-						</Anchor>
+						<Anchor render={<button />}>Manage cookies</Anchor>
+						<Anchor render={<button />}>Don't show again</Anchor>
 					</>
 				}
 				label={<VisuallyHidden>Privacy Notice</VisuallyHidden>}

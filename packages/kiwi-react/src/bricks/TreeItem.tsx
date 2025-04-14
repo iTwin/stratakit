@@ -22,25 +22,24 @@ import type { BaseProps } from "./~utils.js";
 
 // ----------------------------------------------------------------------------
 
-const TreeItemErrorContext = React.createContext(false);
-const TreeItemActionsContext = React.createContext<React.ReactNode>(undefined);
-const TreeItemDecorationContext = React.createContext<
-	| {
-			decorationId: string | undefined;
-			decorations: TreeItemProps["unstable_decorations"];
-			icon: TreeItemProps["icon"];
-	  }
-	| undefined
->(undefined);
-const TreeItemContentContext = React.createContext<
-	| {
-			label: TreeItemProps["label"];
-			labelId: string;
-	  }
-	| undefined
->(undefined);
+const TreeItemErrorContext =
+	React.createContext<TreeItemProps["error"]>(undefined);
+const TreeItemActionsContext =
+	React.createContext<TreeItemProps["actions"]>(undefined);
+const TreeItemDecorationsContext =
+	React.createContext<TreeItemProps["unstable_decorations"]>(undefined);
+const TreeItemIconContext =
+	React.createContext<TreeItemProps["icon"]>(undefined);
+const TreeItemDecorationIdContext = React.createContext<string | undefined>(
+	undefined,
+);
+const TreeItemLabelContext =
+	React.createContext<TreeItemProps["label"]>(undefined);
+const TreeItemLabelIdContext = React.createContext<string | undefined>(
+	undefined,
+);
 const TreeItemDescriptionContext =
-	React.createContext<React.ReactNode>(undefined);
+	React.createContext<TreeItemProps["description"]>(undefined);
 const TreeItemDescriptionIdContext = React.createContext<string | undefined>(
 	undefined,
 );
@@ -184,7 +183,7 @@ interface TreeItemProps extends Omit<BaseProps, "content" | "children"> {
  */
 const TreeItem = React.memo(
 	forwardRef<"div", TreeItemProps>((props, forwardedRef) => {
-		const { expanded, selected, error } = props;
+		const { expanded, selected } = props;
 		const {
 			onSelectedChange,
 			onExpandedChange,
@@ -224,7 +223,6 @@ const TreeItem = React.memo(
 			}
 		};
 
-		const hasError = !!error;
 		return (
 			<TreeItemRootProvider {...props}>
 				<TreeItemRoot
@@ -236,13 +234,12 @@ const TreeItem = React.memo(
 					{React.useMemo(
 						() => (
 							<TreeItemNode
-								hasError={hasError}
 								onExpanderClick={onExpanderClick}
 								expanded={expanded}
 								selected={selected}
 							/>
 						),
-						[hasError, onExpanderClick, expanded, selected],
+						[onExpanderClick, expanded, selected],
 					)}
 				</TreeItemRoot>
 			</TreeItemRootProvider>
@@ -276,37 +273,29 @@ function TreeItemRootProvider(props: TreeItemRootProviderProps) {
 	const decorationId = React.useId();
 
 	const icon = error ? <StatusWarning /> : iconProp;
+	const hasDecoration = icon || decorations;
 	return (
-		<TreeItemErrorContext.Provider value={!!error}>
+		<TreeItemErrorContext.Provider value={error}>
 			<TreeItemActionsContext.Provider value={actions}>
-				<TreeItemDecorationContext.Provider
-					value={React.useMemo(() => {
-						const hasDecoration = icon || decorations;
-						return {
-							decorationId: hasDecoration ? decorationId : undefined,
-							decorations,
-							icon,
-						};
-					}, [decorationId, decorations, icon])}
+				<TreeItemDecorationIdContext.Provider
+					value={hasDecoration ? decorationId : undefined}
 				>
-					<TreeItemContentContext.Provider
-						value={React.useMemo(
-							() => ({
-								label,
-								labelId,
-							}),
-							[label, labelId],
-						)}
-					>
-						<TreeItemDescriptionContext.Provider value={description}>
-							<TreeItemDescriptionIdContext.Provider
-								value={description ? descriptionId : undefined}
-							>
-								{props.children}
-							</TreeItemDescriptionIdContext.Provider>
-						</TreeItemDescriptionContext.Provider>
-					</TreeItemContentContext.Provider>
-				</TreeItemDecorationContext.Provider>
+					<TreeItemDecorationsContext.Provider value={decorations}>
+						<TreeItemIconContext.Provider value={icon}>
+							<TreeItemLabelIdContext.Provider value={labelId}>
+								<TreeItemLabelContext.Provider value={label}>
+									<TreeItemDescriptionContext.Provider value={description}>
+										<TreeItemDescriptionIdContext.Provider
+											value={description ? descriptionId : undefined}
+										>
+											{props.children}
+										</TreeItemDescriptionIdContext.Provider>
+									</TreeItemDescriptionContext.Provider>
+								</TreeItemLabelContext.Provider>
+							</TreeItemLabelIdContext.Provider>
+						</TreeItemIconContext.Provider>
+					</TreeItemDecorationsContext.Provider>
+				</TreeItemDecorationIdContext.Provider>
 			</TreeItemActionsContext.Provider>
 		</TreeItemErrorContext.Provider>
 	);
@@ -317,7 +306,7 @@ DEV: TreeItemRootProvider.displayName = "TreeItemRootProvider";
 
 interface TreeItemRootProps
 	extends Omit<BaseProps, "aria-level">,
-		Pick<TreeItemProps, "aria-level" | "selected" | "expanded" | "error"> {
+		Pick<TreeItemProps, "aria-level" | "selected" | "expanded"> {
 	children?: React.ReactNode;
 }
 
@@ -328,13 +317,13 @@ const TreeItemRoot = React.memo(
 			"aria-level": level,
 			selected,
 			expanded,
-			error,
 			...rest
 		} = props;
 
-		const { labelId } = React.useContext(TreeItemContentContext) ?? {};
-		const { decorationId } = React.useContext(TreeItemDecorationContext) ?? {};
+		const labelId = React.useContext(TreeItemLabelIdContext);
+		const decorationId = React.useContext(TreeItemDecorationIdContext);
 		const descriptionId = React.useContext(TreeItemDescriptionIdContext);
+		const error = React.useContext(TreeItemErrorContext);
 
 		const errorId = typeof error === "string" ? error : undefined;
 		const describedBy = React.useMemo(() => {
@@ -378,21 +367,20 @@ DEV: TreeItemRoot.displayName = "TreeItemRoot";
 
 interface TreeItemNodeProps
 	extends Pick<TreeItemProps, "expanded" | "selected">,
-		Pick<TreeItemDecorationsProps, "onExpanderClick"> {
-	hasError: boolean;
-}
+		Pick<TreeItemDecorationsProps, "onExpanderClick"> {}
 
 /**
  * Displays the styled tree item node.
  * @private
  */
 const TreeItemNode = React.memo((props: TreeItemNodeProps) => {
-	const { expanded, selected, hasError, onExpanderClick } = props;
+	const { expanded, selected, onExpanderClick } = props;
+	const error = React.useContext(TreeItemErrorContext);
 	return (
 		<ListItem.Root
 			data-kiwi-expanded={expanded}
 			data-kiwi-selected={selected}
-			data-kiwi-error={hasError ? true : undefined}
+			data-kiwi-error={error ? true : undefined}
 			className="🥝-tree-item-node"
 			role={undefined}
 		>
@@ -434,8 +422,9 @@ DEV: TreeItemDecorations.displayName = "TreeItemDecorations";
  * @private
  */
 function TreeItemDecoration() {
-	const { decorationId, decorations, icon } =
-		React.useContext(TreeItemDecorationContext) ?? {};
+	const decorationId = React.useContext(TreeItemDecorationIdContext);
+	const decorations = React.useContext(TreeItemDecorationsContext);
+	const icon = React.useContext(TreeItemIconContext);
 	return icon || decorations ? (
 		<Role
 			className="🥝-tree-item-decoration"
@@ -461,7 +450,8 @@ DEV: TreeItemDecoration.displayName = "TreeItemDecoration";
  * @private
  */
 const TreeItemContent = React.memo(() => {
-	const { label, labelId } = React.useContext(TreeItemContentContext) ?? {};
+	const labelId = React.useContext(TreeItemLabelIdContext);
+	const label = React.useContext(TreeItemLabelContext);
 	return (
 		<ListItem.Content id={labelId} className="🥝-tree-item-content">
 			{label}

@@ -26,7 +26,7 @@ const TreeItemErrorContext = React.createContext(false);
 const TreeItemActionsContext = React.createContext<React.ReactNode>(undefined);
 const TreeItemDecorationContext = React.createContext<
 	| {
-			decorationId: string;
+			decorationId: string | undefined;
 			decorations: TreeItemProps["unstable_decorations"];
 			icon: TreeItemProps["icon"];
 	  }
@@ -184,23 +184,24 @@ interface TreeItemProps extends Omit<BaseProps, "content" | "children"> {
  */
 const TreeItem = React.memo(
 	forwardRef<"div", TreeItemProps>((props, forwardedRef) => {
+		const { expanded, selected, error } = props;
 		const {
-			style: styleProp,
-			"aria-level": level,
-			selected,
-			expanded,
-			icon: iconProp,
+			onSelectedChange,
+			onExpandedChange,
+			icon,
 			unstable_decorations,
 			label,
 			description,
 			actions,
-			error,
-			onSelectedChange,
-			onExpandedChange,
 			onClick: onClickProp,
 			onKeyDown: onKeyDownProp,
 			...rest
 		} = props;
+
+		const onExpanderClick = useEventHandlers(() => {
+			if (expanded === undefined) return;
+			onExpandedChange?.(!expanded);
+		});
 
 		const handleClick = (event: React.MouseEvent) => {
 			if (selected === undefined) return;
@@ -223,73 +224,14 @@ const TreeItem = React.memo(
 			}
 		};
 
-		const labelId = React.useId();
-		const descriptionId = React.useId();
-		const decorationId = React.useId();
-		const errorId = typeof error === "string" ? error : undefined;
-
-		const icon = error ? <StatusWarning /> : iconProp;
-		const describedBy = React.useMemo(() => {
-			const idRefs = [];
-			if (description) idRefs.push(descriptionId);
-			if (unstable_decorations || icon) idRefs.push(decorationId);
-			if (errorId) idRefs.push(errorId);
-			return idRefs.length > 0 ? idRefs.join(" ") : undefined;
-		}, [
-			unstable_decorations,
-			icon,
-			decorationId,
-			description,
-			descriptionId,
-			errorId,
-		]);
-
-		const onExpanderClick = useEventHandlers(() => {
-			if (expanded === undefined) return;
-			onExpandedChange?.(!expanded);
-		});
-
-		const style = React.useMemo(
-			() =>
-				({
-					...styleProp,
-					"--🥝tree-item-level": level,
-				}) as React.CSSProperties,
-			[styleProp, level],
-		);
-
 		const hasError = !!error;
 		return (
-			<TreeItemRootProvider
-				{...props}
-				decorationId={decorationId}
-				labelId={labelId}
-				descriptionId={descriptionId}
-			>
-				<CompositeItem
-					{...(rest as CompositeItemProps)}
-					render={React.useMemo(() => <Role />, [])}
-					onClick={
-						useEventHandlers(
-							onClickProp,
-							handleClick,
-						) as unknown as React.MouseEventHandler<HTMLButtonElement>
-					}
-					onKeyDown={
-						useEventHandlers(
-							onKeyDownProp,
-							handleKeyDown,
-						) as unknown as React.KeyboardEventHandler<HTMLButtonElement>
-					}
-					role="treeitem"
-					aria-expanded={expanded}
-					aria-selected={selected}
-					aria-labelledby={labelId}
-					aria-describedby={describedBy}
-					aria-level={level}
-					className={cx("🥝-tree-item", props.className)}
-					style={style}
-					ref={forwardedRef as CompositeItemProps["ref"]}
+			<TreeItemRootProvider {...props}>
+				<TreeItemRoot
+					{...rest}
+					onClick={useEventHandlers(onClickProp, handleClick)}
+					onKeyDown={useEventHandlers(onKeyDownProp, handleKeyDown)}
+					ref={forwardedRef}
 				>
 					{React.useMemo(
 						() => (
@@ -302,7 +244,7 @@ const TreeItem = React.memo(
 						),
 						[hasError, onExpanderClick, expanded, selected],
 					)}
-				</CompositeItem>
+				</TreeItemRoot>
 			</TreeItemRootProvider>
 		);
 	}),
@@ -313,9 +255,6 @@ DEV: TreeItem.displayName = "Tree.Item";
 
 interface TreeItemRootProviderProps extends TreeItemProps {
 	children?: React.ReactNode;
-	decorationId: string;
-	labelId: string;
-	descriptionId: string;
 }
 
 /**
@@ -326,26 +265,29 @@ function TreeItemRootProvider(props: TreeItemRootProviderProps) {
 	const {
 		actions,
 		label,
-		labelId,
 		description,
-		icon,
+		icon: iconProp,
 		unstable_decorations: decorations,
-		descriptionId,
-		decorationId,
 		error,
 	} = props;
+
+	const labelId = React.useId();
+	const descriptionId = React.useId();
+	const decorationId = React.useId();
+
+	const icon = error ? <StatusWarning /> : iconProp;
 	return (
 		<TreeItemErrorContext.Provider value={!!error}>
 			<TreeItemActionsContext.Provider value={actions}>
 				<TreeItemDecorationContext.Provider
-					value={React.useMemo(
-						() => ({
-							decorationId,
+					value={React.useMemo(() => {
+						const hasDecoration = icon || decorations;
+						return {
+							decorationId: hasDecoration ? decorationId : undefined,
 							decorations,
 							icon,
-						}),
-						[decorationId, decorations, icon],
-					)}
+						};
+					}, [decorationId, decorations, icon])}
 				>
 					<TreeItemContentContext.Provider
 						value={React.useMemo(
@@ -370,6 +312,67 @@ function TreeItemRootProvider(props: TreeItemRootProviderProps) {
 	);
 }
 DEV: TreeItemRootProvider.displayName = "TreeItemRootProvider";
+
+// ----------------------------------------------------------------------------
+
+interface TreeItemRootProps
+	extends Omit<BaseProps, "aria-level">,
+		Pick<TreeItemProps, "aria-level" | "selected" | "expanded" | "error"> {
+	children?: React.ReactNode;
+}
+
+const TreeItemRoot = React.memo(
+	forwardRef<"div", TreeItemRootProps>((props, forwardedRef) => {
+		const {
+			style: styleProp,
+			"aria-level": level,
+			selected,
+			expanded,
+			error,
+			...rest
+		} = props;
+
+		const { labelId } = React.useContext(TreeItemContentContext) ?? {};
+		const { decorationId } = React.useContext(TreeItemDecorationContext) ?? {};
+		const descriptionId = React.useContext(TreeItemDescriptionIdContext);
+
+		const errorId = typeof error === "string" ? error : undefined;
+		const describedBy = React.useMemo(() => {
+			const ids = [];
+			if (descriptionId) ids.push(descriptionId);
+			if (decorationId) ids.push(decorationId);
+			if (errorId) ids.push(errorId);
+			return ids.length > 0 ? ids.join(" ") : undefined;
+		}, [decorationId, descriptionId, errorId]);
+
+		const style = React.useMemo(
+			() =>
+				({
+					...styleProp,
+					"--🥝tree-item-level": level,
+				}) as React.CSSProperties,
+			[styleProp, level],
+		);
+		return (
+			<CompositeItem
+				{...(rest as CompositeItemProps)}
+				render={React.useMemo(() => <Role />, [])}
+				role="treeitem"
+				aria-expanded={expanded}
+				aria-selected={selected}
+				aria-labelledby={labelId}
+				aria-describedby={describedBy}
+				aria-level={level}
+				className={cx("🥝-tree-item", props.className)}
+				style={style}
+				ref={forwardedRef as CompositeItemProps["ref"]}
+			>
+				{props.children}
+			</CompositeItem>
+		);
+	}),
+);
+DEV: TreeItemRoot.displayName = "TreeItemRoot";
 
 // ----------------------------------------------------------------------------
 

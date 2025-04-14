@@ -344,15 +344,19 @@ const TreeItemRoot = React.memo(
 		);
 		return (
 			<CompositeItem
-				render={<Role {...rest} />}
-				role="treeitem"
-				aria-expanded={expanded}
-				aria-selected={selected}
-				aria-labelledby={labelId}
-				aria-describedby={describedBy}
-				aria-level={level}
-				className={cx("🥝-tree-item", props.className)}
-				style={style}
+				render={
+					<Role
+						{...rest}
+						role="treeitem"
+						aria-expanded={expanded}
+						aria-selected={selected}
+						aria-labelledby={labelId}
+						aria-describedby={describedBy}
+						aria-level={level}
+						className={cx("🥝-tree-item", props.className)}
+						style={style}
+					/>
+				}
 				ref={forwardedRef as CompositeItemProps["ref"]}
 			>
 				{props.children}

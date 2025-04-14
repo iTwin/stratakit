@@ -13,6 +13,10 @@
 				"faded": {
 					"$type": "color",
 					"$value": "{p-color.gray.300}"
+				},
+				"transparent": {
+					"$type": "color",
+					"$value": "{p-color.gray.16}"
 				}
 			},
 			"accent": {
@@ -27,6 +31,10 @@
 				"faded": {
 					"$type": "color",
 					"$value": "{p-color.aurora.300}"
+				},
+				"transparent": {
+					"$type": "color",
+					"$value": "{p-color.aurora.16}"
 				}
 			},
 			"info": {
@@ -41,6 +49,10 @@
 				"faded": {
 					"$type": "color",
 					"$value": "{p-color.blue.300}"
+				},
+				"transparent": {
+					"$type": "color",
+					"$value": "{p-color.blue.16}"
 				}
 			},
 			"positive": {
@@ -55,6 +67,10 @@
 				"faded": {
 					"$type": "color",
 					"$value": "{p-color.green.300}"
+				},
+				"transparent": {
+					"$type": "color",
+					"$value": "{p-color.green.16}"
 				}
 			},
 			"attention": {
@@ -69,6 +85,10 @@
 				"faded": {
 					"$type": "color",
 					"$value": "{p-color.yellow.300}"
+				},
+				"transparent": {
+					"$type": "color",
+					"$value": "{p-color.yellow.16}"
 				}
 			},
 			"🫥severe": {
@@ -83,6 +103,10 @@
 				"faded": {
 					"$type": "color",
 					"$value": "{p-color.orange.300}"
+				},
+				"transparent": {
+					"$type": "color",
+					"$value": "{p-color.orange.16}"
 				}
 			},
 			"critical": {
@@ -97,6 +121,10 @@
 				"faded": {
 					"$type": "color",
 					"$value": "{p-color.red.300}"
+				},
+				"transparent": {
+					"$type": "color",
+					"$value": "{p-color.red.16}"
 				}
 			},
 			"🫥highlight": {
@@ -111,6 +139,10 @@
 				"faded": {
 					"$type": "color",
 					"$value": "{p-color.pink.300}"
+				},
+				"transparent": {
+					"$type": "color",
+					"$value": "{p-color.pink.16}"
 				}
 			},
 			"🫥special": {
@@ -125,6 +157,10 @@
 				"faded": {
 					"$type": "color",
 					"$value": "{p-color.purple.300}"
+				},
+				"transparent": {
+					"$type": "color",
+					"$value": "{p-color.purple.16}"
 				}
 			},
 			"page": {
@@ -138,7 +174,7 @@
 				},
 				"zebra": {
 					"$type": "color",
-					"$value": "{p-color.black.4}"
+					"$value": "{p-color.black.8}"
 				}
 			},
 			"elevation": {
@@ -149,10 +185,6 @@
 				"emphasis": {
 					"$type": "color",
 					"$value": "{p-color.gray.1000}"
-				},
-				"control": {
-					"$type": "color",
-					"$value": "{p-color.gray.925}"
 				},
 				"level-1": {
 					"$type": "color",
@@ -165,14 +197,6 @@
 				"level-2": {
 					"$type": "color",
 					"$value": "{p-color.gray.825}"
-				},
-				"scrollbar-surface": {
-					"$type": "color",
-					"$value": "{p-color.white.32}"
-				},
-				"scrollbar-canvas": {
-					"$type": "color",
-					"$value": "{p-color.black.48}"
 				}
 			},
 			"neutral": {
@@ -259,6 +283,28 @@
 						"$type": "number",
 						"$value": 8
 					}
+				}
+			},
+			"control": {
+				"textbox": {
+					"$type": "color",
+					"$value": "{p-color.gray.925}"
+				},
+				"scrollbar-surface": {
+					"$type": "color",
+					"$value": "{p-color.white.32}"
+				},
+				"scrollbar-canvas": {
+					"$type": "color",
+					"$value": "{p-color.black.48}"
+				},
+				"switch": {
+					"$type": "color",
+					"$value": "{p-color.gray.950}"
+				},
+				"slider-track": {
+					"$type": "color",
+					"$value": "{p-color.gray.800}"
 				}
 			}
 		},
@@ -639,10 +685,6 @@
 				"base": {
 					"$type": "color",
 					"$value": "{p-color.black.64}"
-				},
-				"scrollbar-canvas": {
-					"$type": "color",
-					"$value": "{p-color.white.24}"
 				}
 			},
 			"page": {
@@ -653,6 +695,16 @@
 				"depth": {
 					"$type": "color",
 					"$value": "{p-color.white.8}"
+				}
+			},
+			"control": {
+				"scrollbar-canvas": {
+					"$type": "color",
+					"$value": "{p-color.white.24}"
+				},
+				"switch": {
+					"$type": "color",
+					"$value": "{p-color.gray.700}"
 				}
 			}
 		},
@@ -829,6 +881,12 @@
 		"glow-hue": {
 			"$type": "color",
 			"$value": "{p-color.white.100}"
+		},
+		"brand": {
+			"logo": {
+				"$type": "color",
+				"$value": "{p-color.gray.15}"
+			}
 		}
 	},
 	"shadow": {
@@ -856,8 +914,8 @@
 			"$value": [
 				"0px 1px 0px 0px --primitive('color.black.8')",
 				"0px 0px 0px 1px --primitive('color.black.16')",
-				"0px 1px 1px -0.5px --primitive('color.black.16')",
 				"inset 0px 0px 0px 1px --primitive('color.white.8')",
+				"0px 1px 1px -0.5px --primitive('color.black.16')",
 				"0px 3px 3px -1.5px --primitive('color.black.16')",
 				"0px 6px 6px -3px --primitive('color.black.16')"
 			]
@@ -908,6 +966,7 @@
 		"tooltip-base": {
 			"$type": "shadow",
 			"$value": [
+				"inset 0px 0px 0px 1px --primitive('color.black.80')",
 				"0px 1px 1px -0.5px --primitive('color.black.16')",
 				"0px 3px 3px -1.5px --primitive('color.black.16')",
 				"0px 6px 6px -3px --primitive('color.black.16')",

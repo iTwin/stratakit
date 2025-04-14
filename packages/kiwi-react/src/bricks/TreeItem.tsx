@@ -344,8 +344,7 @@ const TreeItemRoot = React.memo(
 		);
 		return (
 			<CompositeItem
-				{...(rest as CompositeItemProps)}
-				render={React.useMemo(() => <Role />, [])}
+				render={<Role {...rest} />}
 				role="treeitem"
 				aria-expanded={expanded}
 				aria-selected={selected}

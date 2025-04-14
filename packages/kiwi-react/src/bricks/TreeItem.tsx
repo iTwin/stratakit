@@ -355,9 +355,9 @@ const TreeItemRoot = React.memo(
 						aria-level={level}
 						className={cx("🥝-tree-item", props.className)}
 						style={style}
+						ref={forwardedRef}
 					/>
 				}
-				ref={forwardedRef as CompositeItemProps["ref"]}
 			>
 				{props.children}
 			</CompositeItem>

@@ -12,6 +12,7 @@ body {
 
 :is(body, .🥝-root) {
 	font-family: var(--ids-font-family-sans);
+	font-variant-alternates: character-variant(alt-1, alt-3, lc-l-with-tail, uc-i-with-serif);
 	color: var(--ids-color-text-neutral-primary);
 	--🥝focus-outline: 2px solid var(--ids-color-border-accent-strong);
 	--🥝focus-outline-offset: 1px;

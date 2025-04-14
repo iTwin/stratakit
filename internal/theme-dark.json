@@ -675,6 +675,10 @@
 				"inverse": {
 					"$type": "color",
 					"$value": "{p-color.gray.5}"
+				},
+				"disabled": {
+					"$type": "color",
+					"$value": "{p-color.gray.600}"
 				}
 			},
 			"elevation": {

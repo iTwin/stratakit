@@ -2,7 +2,6 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-
 import {
 	Anchor,
 	Button,
@@ -22,6 +21,7 @@ import {
 } from "@stratakit/bricks";
 import { useQuery } from "@tanstack/react-query";
 import cx from "classnames";
+import { produce } from "immer";
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { useSearchParams } from "react-router";
@@ -948,13 +948,13 @@ function SandboxTree({
 								item.items.length === 0 && !hasError ? undefined : item.expanded
 							}
 							onExpandedChange={(expanded) => {
-								setItems((prev) => {
-									const treeItem = findTreeItem(prev, item.id);
-									if (!treeItem) return prev;
-									const newData = [...prev];
-									treeItem.expanded = expanded; // TODO: should be immutable https://github.com/iTwin/kiwi/pull/300#discussion_r1941452941
-									return newData;
-								});
+								setItems(
+									produce((prev) => {
+										const treeItem = findTreeItem(prev, item.id);
+										if (!treeItem) return;
+										treeItem.expanded = expanded;
+									}),
+								);
 							}}
 							unstable_decorations={
 								<>
@@ -966,15 +966,10 @@ function SandboxTree({
 							}
 							actions={[
 								<Tree.ItemAction key="lock" icon={lockIcon} label="Lock" />,
-								<Tree.ItemAction
+								<VisibilityAction
 									key="visibility"
-									icon={item.hidden ? hideIcon : showIcon}
-									label={item.hidden ? "Show" : "Hide"}
-									visible={item.hidden ? true : undefined}
-									onClick={() => {
-										toggleHidden(item.id);
-									}}
-									dot={item.hidden ? "Hidden" : undefined}
+									item={item}
+									onClick={toggleHidden}
 								/>,
 								<Tree.ItemAction key="copy" label="Copy" />,
 								<Tree.ItemAction key="paste" label="Paste" />,
@@ -995,6 +990,26 @@ function SandboxTree({
 				})}
 			</Tree.Root>
 		</React.Suspense>
+	);
+}
+
+interface VisibilityActionProps {
+	item: FlatTreeItem;
+	onClick: (id: string) => void;
+}
+
+function VisibilityAction({ item, onClick }: VisibilityActionProps) {
+	return (
+		<Tree.ItemAction
+			key="visibility"
+			icon={item.hidden ? hideIcon : showIcon}
+			label={item.hidden ? "Show" : "Hide"}
+			visible={item.hidden ? true : undefined}
+			onClick={React.useCallback(() => {
+				onClick(item.id);
+			}, [onClick, item.id])}
+			dot={item.hidden ? "Hidden" : undefined}
+		/>
 	);
 }
 

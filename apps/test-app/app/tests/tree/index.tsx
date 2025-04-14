@@ -4,6 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 
 import { Icon, Tree } from "@stratakit/bricks";
+import { produce } from "immer";
 import * as React from "react";
 import { definePage } from "~/~utils.tsx";
 
@@ -14,19 +15,36 @@ import showIcon from "@stratakit/icons/visibility-show.svg";
 
 export const handle = { title: "Tree" };
 
+interface TreeItem {
+	label: string;
+	selected: boolean;
+	expanded?: boolean;
+	children?: TreeItem[];
+}
+
+interface FlatTreeItem extends TreeItem {
+	level: number;
+	index: number;
+	childIndex?: number;
+	setSize: number;
+}
+
 export default definePage(
 	function Page({
 		overflow = false,
 		selected = false,
 		description: descriptionParam,
 		error: errorParam,
+		items: itemsParam,
 	}) {
+		const [_, startTransition] = React.useTransition();
 		const overflowPostfix = overflow
 			? " with a super long label that is overflown"
 			: "";
 		const description = descriptionParam ? "Additional description" : undefined;
 		const [renderError, setRenderError] = React.useState(!!errorParam);
-		const [data, setData] = React.useState(() => [
+		const items = itemsParam ? Number(itemsParam) : 0;
+		const [data, setData] = React.useState<TreeItem[]>(() => [
 			{
 				label: `Item 1${overflowPostfix}`,
 				selected: !!selected,
@@ -44,107 +62,117 @@ export default definePage(
 				children: [{ label: `Item 2.1${overflowPostfix}`, selected: false }],
 			},
 			{ label: "Item 3", selected: false },
+			...Array.from({ length: items }).map((_, index) => {
+				return {
+					label: `Item ${index + 4}`,
+					selected: false,
+				};
+			}),
 		]);
+		const flatData = React.useMemo<FlatTreeItem[]>(
+			() =>
+				data.flatMap((item, index, items) => {
+					const flatItem = {
+						...item,
+						level: 1,
+						index,
+						setSize: items.length,
+						childIndex: undefined,
+					};
+					if (!item.expanded) return flatItem;
 
+					const flatChildren = item.children
+						? item.children.map((child, childIndex, children) => ({
+								...child,
+								level: 2,
+								index,
+								childIndex,
+								setSize: children.length,
+								expanded: undefined,
+							}))
+						: [];
+					return [flatItem, ...flatChildren];
+				}),
+			[data],
+		);
+		const handleRetry = React.useCallback(() => {
+			setRenderError(false);
+		}, []);
 		return (
 			<Tree.Root style={{ maxInlineSize: overflow ? 300 : undefined }}>
-				{data.map((item, index, items) => {
-					const handleSelection = () => {
-						const oldSelected = data[index].selected;
+				{flatData.map((item) => {
+					const { index, childIndex } = item;
 
-						const newData = [...data];
-						newData[index].selected = !oldSelected;
-						setData(newData);
-					};
-
-					const handleExpansion = () => {
-						const oldExpanded = data[index].expanded;
-						if (oldExpanded === undefined) return;
-
-						const newData = [...data];
-						newData[index].expanded = !oldExpanded;
-						setData(newData);
-					};
-
-					const error = renderError && index === 0;
+					const error = renderError && index === 0 && childIndex === undefined;
+					const hasDescription =
+						(index === 0 && childIndex === undefined) || childIndex === 0;
 					return (
-						<React.Fragment key={item.label}>
-							<Tree.Item
-								key={item.label}
-								aria-level={1}
-								aria-posinset={index + 1}
-								aria-setsize={items.length}
-								label={item.label}
-								description={index === 0 ? description : undefined}
-								expanded={item.expanded}
-								onExpandedChange={handleExpansion}
-								selected={item.selected}
-								onSelectedChange={handleSelection}
-								icon={<Icon href={placeholderIcon} alt="decoration" />}
-								actions={[
-									error && (
-										<Tree.ItemAction
-											key="retry"
-											icon={refreshIcon}
-											label="Retry"
-											onClick={() => setRenderError(false)}
-										/>
-									),
-									<Tree.ItemAction
-										key="unlock"
-										icon={unlockIcon}
-										label="Unlock"
-									/>,
-									<Tree.ItemAction key="show" icon={showIcon} label="Show" />,
-								]}
-								error={error}
-							/>
-							{item.children?.map((child, childIndex, children) => {
-								if (!item.expanded) return null;
-
-								const handleSelection = () => {
-									const newData = [...data];
-									const childItem = newData[index].children?.[childIndex];
-									if (childItem) childItem.selected = !childItem.selected;
-									setData(newData);
-								};
-
-								return (
-									<Tree.Item
-										key={child.label}
-										aria-level={2}
-										aria-posinset={childIndex + 1}
-										aria-setsize={children.length}
-										label={child.label}
-										description={childIndex === 0 ? description : undefined}
-										selected={child.selected}
-										onSelectedChange={handleSelection}
-										unstable_decorations={
-											childIndex === 0 ? (
-												<>
-													<Icon href={placeholderIcon} />
-													<Icon href={placeholderIcon} />
-												</>
-											) : (
-												<Icon href={placeholderIcon} />
-											)
-										}
-										actions={[
-											<Tree.ItemAction
-												key="unlock"
-												icon={unlockIcon}
-												label="Unlock"
-											/>,
-											<Tree.ItemAction
-												key="show"
-												icon={showIcon}
-												label="Show"
-											/>,
-										]}
-									/>
+						<Tree.Item
+							key={item.label}
+							aria-level={item.level}
+							aria-posinset={index + 1}
+							aria-setsize={item.setSize}
+							label={item.label}
+							description={hasDescription ? description : undefined}
+							expanded={item.expanded}
+							selected={item.selected}
+							error={error}
+							onSelectedChange={() => {
+								setData(
+									produce((prev) => {
+										const itemToUpdate =
+											childIndex === undefined
+												? prev[index]
+												: prev[index].children?.[childIndex];
+										if (!itemToUpdate) return;
+										itemToUpdate.selected = !itemToUpdate.selected;
+									}),
 								);
-							})}
-						</React.Fragment>
+							}}
+							onExpandedChange={() => {
+								startTransition(() => {
+									setData(
+										produce((prev) => {
+											const itemToUpdate = prev[index];
+											if (itemToUpdate.expanded === undefined) return;
+
+											itemToUpdate.expanded = !itemToUpdate.expanded;
+										}),
+									);
+								});
+							}}
+							icon={
+								childIndex === undefined ? (
+									<Icon href={placeholderIcon} alt="decoration" />
+								) : undefined
+							}
+							unstable_decorations={
+								childIndex === 0 ? (
+									<>
+										<Icon href={placeholderIcon} />
+										<Icon href={placeholderIcon} />
+									</>
+								) : (
+									<Icon href={placeholderIcon} />
+								)
+							}
+							actions={[
+								error && (
+									<Tree.ItemAction
+										key="retry"
+										icon={refreshIcon}
+										label="Retry"
+										onClick={handleRetry}
+									/>
+								),
+								<Tree.ItemAction
+									key="unlock"
+									icon={unlockIcon}
+									label="Unlock"
+								/>,
+								<Tree.ItemAction key="show" icon={showIcon} label="Show" />,
+							]}
+						/>
 					);
 				})}
 			</Tree.Root>

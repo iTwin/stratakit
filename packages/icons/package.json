@@ -7,7 +7,7 @@
 		"./*.svg": "./icons/*.svg",
 		"./icons-list.json": "./icons-list.json"
 	},
-	"files": ["icons/*.svg", "icons-list.json", "LICENSE.md"],
+	"files": ["icons/*.svg", "icons-list.json", "LICENSE.md", "CHANGELOG.md"],
 	"description": "A standalone SVG icon library for the Strata design system",
 	"author": "Bentley Systems",
 	"homepage": "https://github.com/iTwin/design-system",

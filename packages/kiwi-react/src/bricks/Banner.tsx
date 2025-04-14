@@ -6,10 +6,10 @@ import { Role } from "@ariakit/react/role";
 import cx from "classnames";
 import * as React from "react";
 import { Dismiss, Icon, StatusIcon } from "./Icon.js";
-import { Text } from "./Text.js";
 import { IconButton } from "./IconButton.js";
+import { Text } from "./Text.js";
 
-import { forwardRef, type BaseProps } from "./~utils.js";
+import { type BaseProps, forwardRef } from "./~utils.js";
 
 type BannerProps = Omit<BaseProps, "children"> & {
 	/**
@@ -25,9 +25,9 @@ type BannerProps = Omit<BaseProps, "children"> & {
 	/**
 	 * The label displayed inside the banner.
 	 *
-	 * Consider using a `VisuallyHidden` component if the label is not meant to be visible.
+	 * Either pass a string or a component (e.g. `<VisuallyHidden>`).
 	 */
-	label: React.ReactNode;
+	label: string | React.JSX.Element;
 	/**
 	 * The content of the banner.
 	 */
@@ -138,9 +138,16 @@ export const Banner = forwardRef<"div", BannerProps>((props, forwardedRef) => {
 			<div className="🥝-banner-grid">
 				{icon}
 
-				<Text id={labelId} variant="body-sm" className="🥝-banner-label">
-					{label}
-				</Text>
+				{typeof label === "string" ? (
+					<Text id={labelId} variant="body-sm" className="🥝-banner-label">
+						{label}
+					</Text>
+				) : (
+					React.cloneElement(label, {
+						id: labelId,
+						className: cx("🥝-banner-label", label?.props.className),
+					})
+				)}
 
 				<Text variant="body-sm" className="🥝-banner-message">
 					{message}

@@ -10,7 +10,7 @@ import { Toolbar, ToolbarItem } from "@ariakit/react/toolbar";
 import cx from "classnames";
 import * as React from "react";
 import * as DropdownMenu from "./DropdownMenu.js";
-import { ChevronDown, Icon, MoreHorizontal, StatusWarning } from "./Icon.js";
+import { ChevronDown, Icon, MoreHorizontal, StatusIcon } from "./Icon.js";
 import { IconButtonPresentation } from "./IconButton.internal.js";
 import { IconButton } from "./IconButton.js";
 import { useEventHandlers } from "./~hooks.js";
@@ -271,7 +271,7 @@ function TreeItemRootProvider(props: TreeItemRootProviderProps) {
 	const descriptionId = React.useId();
 	const decorationId = React.useId();
 
-	const icon = error ? <StatusWarning /> : iconProp;
+	const icon = error ? <StatusIcon tone="critical" /> : iconProp;
 	const hasDecoration = icon || decorations;
 	return (
 		<TreeItemErrorContext.Provider value={error}>

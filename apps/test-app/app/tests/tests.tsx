@@ -3,13 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import chevronLeftIcon from "@itwin/itwinui-icons/chevron-left.svg";
-import {
-	Anchor,
-	IconButton,
-	Text,
-	VisuallyHidden,
-} from "@itwin/itwinui-react/bricks";
+import { Anchor, IconButton, Text, VisuallyHidden } from "@stratakit/bricks";
 import * as React from "react";
 import { Link, Outlet, useMatches } from "react-router";
 import {
@@ -18,13 +12,16 @@ import {
 	VariantsListContext,
 	useLocalStorage,
 } from "~/~utils.tsx";
+
+import chevronLeftIcon from "@stratakit/icons/chevron-left.svg";
+
 import globalStyles from "./tests.css?url";
 import styles from "./tests.module.css";
 
 import type { LinksFunction, MetaFunction } from "react-router";
 
 export const meta: MetaFunction = () => {
-	return [{ title: "Kiwi tests" }];
+	return [{ title: "Stratakit tests" }];
 };
 
 export const links: LinksFunction = () => [

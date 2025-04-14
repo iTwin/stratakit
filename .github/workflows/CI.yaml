@@ -130,7 +130,7 @@ jobs:
 
       - run: pnpm install
       - run: pnpm run build
-      - run: pnpm --filter=@itwin/test-app exec playwright test --shard=${{ matrix.shard }}
+      - run: pnpm --filter=@stratakit/test-app exec playwright test --shard=${{ matrix.shard }}
         env:
           HOME: /root
 

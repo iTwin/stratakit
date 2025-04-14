@@ -3,7 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import { Badge } from "@itwin/itwinui-react/bricks";
+import { Badge } from "@stratakit/bricks";
 import { definePage } from "~/~utils.tsx";
 
 export const handle = { title: "Badge" };

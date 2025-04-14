@@ -1,6 +1,6 @@
 # Changelog
 
-## 5.0.0-alpha.14
+## @itwin/itwinui-react@5.0.0-alpha.14
 
 - Improved the performance of `<Tree.Item>`.
 - Removed dismiss button from `<ErrorRegion.Item>`.

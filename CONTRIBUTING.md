@@ -1,6 +1,6 @@
 # Contributing
 
-Welcome to the contribution guide for the iTwinUI design system! In here you will find all the information you need to get started.
+Welcome to the contribution guide for the Strata design system! In here you will find all the information you need to get started.
 
 ---
 
@@ -60,8 +60,8 @@ This repo uses [Pnpm workspaces](https://pnpm.io/workspaces) to allow multiple p
 
 Packages:
 
-- [`@itwin/itwinui-icons`](./packages/kiwi-icons): A standalone SVG icon library.
-- [`@itwin/itwinui-react`](./packages/kiwi-react): A React component library.
+- [`@stratakit/icons`](./packages/icons): A standalone SVG icon library.
+- [`@stratakit/bricks`](./packages/bricks): A React component library.
 
 Apps:
 
@@ -101,7 +101,7 @@ If a script is not available in the root package.json or if you need to pass wor
 
 ```
 # passing button as a cli arg to the `test` command in test-app
-pnpm --filter=@itwin/test-app run test button
+pnpm --filter=@stratakit/test-app run test button
 ```
 
 ...or you can simply run the command normally from inside the workspace folder instead of the monorepo root.

@@ -3,12 +3,10 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import placeholderIcon from "@itwin/itwinui-icons/placeholder.svg";
-import {
-	IconButton,
-	unstable_Toolbar as Toolbar,
-} from "@itwin/itwinui-react/bricks";
+import { IconButton, unstable_Toolbar as Toolbar } from "@stratakit/bricks";
 import { definePage } from "~/~utils.tsx";
+
+import placeholderIcon from "@stratakit/icons/placeholder.svg";
 
 export default definePage(
 	function Page() {

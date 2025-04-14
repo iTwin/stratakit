@@ -3,7 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import { Table } from "@itwin/itwinui-react/bricks";
+import { Table } from "@stratakit/bricks";
 import * as React from "react";
 import { definePage } from "~/~utils.tsx";
 

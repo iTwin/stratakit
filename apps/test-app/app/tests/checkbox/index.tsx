@@ -3,12 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import {
-	Checkbox,
-	Field,
-	Label,
-	VisuallyHidden,
-} from "@itwin/itwinui-react/bricks";
+import { Checkbox, Field, Label, VisuallyHidden } from "@stratakit/bricks";
 import * as React from "react";
 import { definePage } from "~/~utils.tsx";
 

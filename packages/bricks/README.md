@@ -1,21 +1,21 @@
-# @itwin/itwinui-react
+# @stratakit/bricks
 
-A React component library for the [next evolution of the iTwinUI design system](https://github.com/iTwin/design-system/discussions/481).
+A React component library for the [next evolution of the iTwinUI design system](https://github.com/iTwin/design-system/discussions/481), aka **Stratakit**.
 
 ## Installation
 
-Using your package manager of choice, install the latest **alpha** version of [`@itwin/itwinui-react`](https://www.npmjs.com/package/@itwin/itwinui-react?activeTab=versions).
+Using your package manager of choice, install the latest version of [`@stratakit/bricks`](https://www.npmjs.com/package/@stratakit/bricks?activeTab=versions).
 
 ```console
-npm add @itwin/itwinui-react@alpha
+npm add @stratakit/bricks
 ```
 
 ## Usage
 
-To use components from the iTwinUI design system in your app, you’ll need to wrap your app’s UI with iTwinUI's `<Root>` component, and specify the required `colorScheme` and `density` props:
+To use components from the Strata design system in your app, you’ll need to wrap your app’s UI with Stratakit's `<Root>` component, and specify the required `colorScheme` and `density` props:
 
 ```jsx
-import { Root } from "@itwin/itwinui-react/bricks";
+import { Root } from "@stratakit/bricks";
 
 export function App() {
 	return (
@@ -26,16 +26,16 @@ export function App() {
 }
 ```
 
-This will ensure iTwinUI's styles are loaded to either the document or the encompassing shadow root.
+This will ensure Stratakit's styles are loaded to either the document or the encompassing shadow root.
 
-Once that’s in place, you can import and use components from `@itwin/itwinui-react/bricks`.
+Once that’s in place, you can import and use components from `@stratakit/bricks`.
 
 > [!NOTE]
 > If you are trying to use this package alongside the current stable version of iTwinUI, you will need to set up the [iTwinUI theme bridge](https://github.com/iTwin/iTwinUI/wiki/iTwinUI-v5-theme-bridge).
 
 ### Fonts
 
-iTwinUI uses [InterVariable](https://rsms.me/inter/) as its interface font. In the future, other fonts may also be added for different purposes. We recommend self-hosting all fonts for robustness, security and performance reasons.
+Stratakit uses [InterVariable](https://rsms.me/inter/) as its interface font. In the future, other fonts may also be added for different purposes. We recommend self-hosting all fonts for robustness, security and performance reasons.
 
 To self-host `InterVariable`, download the [`InterVariable.woff2`](https://rsms.me/inter/font-files/InterVariable.woff2) and [`InterVariable-Italic.woff2`](https://rsms.me/inter/font-files/InterVariable-Italic.woff2) font files from the official website, and serve them alongside your other assets. Then include the following CSS in the `<head>` of your document, replacing the placeholder paths with the correct path to where the fonts are located:
 
@@ -66,6 +66,6 @@ Build tools such as [Vite](https://vite.dev/guide/assets.html#importing-asset-as
 
 ## Contributing
 
-Are you interested in helping iTwinUI grow and expand? You can submit feature requests or bugs by creating [issues](https://github.com/iTwin/design-system/issues).
+Are you interested in helping Stratakit grow and expand? You can submit feature requests or bugs by creating [issues](https://github.com/iTwin/design-system/issues).
 
 If you're interested in contributing code, please read [`CONTRIBUTING.md`](https://github.com/iTwin/design-system/blob/main/CONTRIBUTING.md) for more information.

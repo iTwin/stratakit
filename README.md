@@ -1,6 +1,6 @@
-# iTwinUI Design System
+# Stratakit
 
-Monorepo for the [next evolution of the iTwinUI design system](https://github.com/iTwin/design-system/discussions/481).
+Monorepo for the [next evolution of the iTwinUI design system](https://github.com/iTwin/design-system/discussions/481), aka **Stratakit**.
 
 ## Monorepo structure
 
@@ -8,10 +8,10 @@ This monorepo is a [pnpm workspace](https://pnpm.io/workspaces) which can be con
 
 ### Packages
 
-These are the packages of the iTwinUI design system:
+These are the packages of the Strata design system:
 
-- [`@itwin/itwinui-react`](./packages/kiwi-react/): A React component library.
-- [`@itwin/itwinui-icons`](./packages/kiwi-icons/): A standalone SVG icon library.
+- [`@stratakit/bricks`](./packages/bricks/): A React component library.
+- [`@stratakit/icons`](./packages/icons/): A standalone SVG icon library.
 
 ### Apps
 
@@ -19,6 +19,6 @@ Currently, this repo has one [test app](./apps/test-app/) which is used for test
 
 ## Contributing
 
-Are you interested in helping iTwinUI grow and expand? You can submit feature requests or bugs by creating [issues](https://github.com/iTwin/design-system/issues).
+Are you interested in helping Stratakit grow and expand? You can submit feature requests or bugs by creating [issues](https://github.com/iTwin/design-system/issues).
 
 If you're interested in contributing code, please read [`CONTRIBUTING.md`](./CONTRIBUTING.md) for more information.

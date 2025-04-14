@@ -1,22 +1,22 @@
 {
-	"name": "@itwin/itwinui-icons",
+	"name": "@stratakit/icons",
 	"type": "module",
-	"version": "5.0.0-alpha.7",
+	"version": "0.1.0",
 	"license": "MIT",
 	"exports": {
 		"./*.svg": "./icons/*.svg",
 		"./icons-list.json": "./icons-list.json"
 	},
 	"files": ["icons/*.svg", "icons-list.json", "LICENSE.md", "CHANGELOG.md"],
-	"description": "A standalone SVG icon library for the iTwinUI design system",
+	"description": "A standalone SVG icon library for the Strata design system",
 	"author": "Bentley Systems",
 	"homepage": "https://github.com/iTwin/design-system",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/iTwin/design-system.git",
-		"directory": "packages/kiwi-icons"
+		"directory": "packages/icons"
 	},
-	"keywords": ["itwinui", "svg", "icons"],
+	"keywords": ["itwinui", "strata", "stratakit", "svg", "icons"],
 	"scripts": {
 		"build": "tsx scripts/icons-list.cts"
 	}

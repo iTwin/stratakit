@@ -1,29 +1,29 @@
-# @itwin/itwinui-icons
+# @stratakit/icons
 
-Icons for the iTwinUI design system. Each icon is available as an SVG symbol sprite and contains multiple resolutions of the same icon using [`<symbol>`](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/symbol) elements. This allows the icon to be used at different sizes with increasing detail and quality. Currently supported symbols as identified by their `id` attribute values are: `icon`, `icon-large`.
+Icons for the Strata design system. Each icon is available as an SVG symbol sprite and contains multiple resolutions of the same icon using [`<symbol>`](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/symbol) elements. This allows the icon to be used at different sizes with increasing detail and quality. Currently supported symbols as identified by their `id` attribute values are: `icon`, `icon-large`.
 
 ## Usage
 
-Preferred usage is with the `Icon` component from `@itwin/itwinui-react`:
+Preferred usage is with the `Icon` component from `@stratakit/bricks`:
 
 1. Import the icon you want to use.
 
    Using the [`import.meta`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/import.meta) feature to get the URL of the icon (does not work with SSR):
 
    ```tsx
-   const placeholderIcon = new URL("@itwin/itwinui-icons/placeholder.svg", import.meta.url).href;
+   const placeholderIcon = new URL("@stratakit/icons/placeholder.svg", import.meta.url).href;
    ```
 
    Or a static import:
 
    ```tsx
-   import placeholderIcon from "@itwin/itwinui-icons/placeholder.svg";
+   import placeholderIcon from "@stratakit/icons/placeholder.svg";
    ```
 
 2. Render the `Icon` component.
 
    ```tsx
-   import { Icon } from "@itwin/itwinui-react";
+   import { Icon } from "@stratakit/bricks";
 
    <Icon href={placeholderIcon} />
 
@@ -45,7 +45,7 @@ Preferred usage is with the `Icon` component from `@itwin/itwinui-react`:
    ```
 
 > [!IMPORTANT]
-> Icons of `@itwin/itwinui-icons` should always be used as external HTTP resources, because of [SVG `<use>` element restrictions](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/use#usage_notes). Do not inline the SVG content directly in your React components.
+> Icons of `@stratakit/icons` should always be used as external HTTP resources, because of [SVG `<use>` element restrictions](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/use#usage_notes). Do not inline the SVG content directly in your React components.
 > Data URIs and non-HTTP protocols are supported on a best effort basis using client-side JavaScript.
 
 ## Bundler configuration
@@ -99,6 +99,6 @@ esbuild.build({
 
 ## Contributing
 
-Are you interested in helping iTwinUI grow and expand? You can submit feature requests or bugs by creating [issues](https://github.com/iTwin/design-system/issues).
+Are you interested in helping Stratakit grow and expand? You can submit feature requests or bugs by creating [issues](https://github.com/iTwin/design-system/issues).
 
 If you're interested in contributing code, please read [`CONTRIBUTING.md`](https://github.com/iTwin/design-system/blob/main/CONTRIBUTING.md) for more information.

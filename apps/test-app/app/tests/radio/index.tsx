@@ -3,12 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import {
-	Field,
-	Label,
-	Radio,
-	VisuallyHidden,
-} from "@itwin/itwinui-react/bricks";
+import { Field, Label, Radio, VisuallyHidden } from "@stratakit/bricks";
 import * as React from "react";
 import { definePage } from "~/~utils.tsx";
 

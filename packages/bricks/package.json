@@ -1,26 +1,26 @@
 {
-	"name": "@itwin/itwinui-react",
+	"name": "@stratakit/bricks",
 	"type": "module",
-	"version": "5.0.0-alpha.14",
+	"version": "0.1.0",
 	"license": "MIT",
 	"sideEffects": false,
 	"exports": {
-		"./bricks": {
-			"@kiwi/source": "./src/bricks/index.ts",
-			"types": "./dist/bricks/index.d.ts",
-			"development": "./dist/DEV/bricks/index.js",
-			"default": "./dist/bricks/index.js"
+		".": {
+			"@stratakit/source": "./src/index.ts",
+			"types": "./dist/index.d.ts",
+			"development": "./dist/DEV/index.js",
+			"default": "./dist/index.js"
 		},
 		"./package.json": "./package.json"
 	},
 	"files": ["dist", "CHANGELOG.md", "LICENSE.md"],
-	"description": "A React component library for the iTwinUI design system",
+	"description": "A React component library for the Strata design system",
 	"author": "Bentley Systems",
 	"homepage": "https://github.com/iTwin/design-system",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/iTwin/design-system.git",
-		"directory": "packages/kiwi-react"
+		"directory": "packages/bricks"
 	},
 	"keywords": [
 		"component",
@@ -30,6 +30,8 @@
 		"frontend",
 		"itwin",
 		"itwinui",
+		"strata",
+		"stratakit",
 		"react",
 		"ui"
 	],
@@ -44,6 +46,7 @@
 		"classnames": "^2.5.1"
 	},
 	"devDependencies": {
+		"@stratakit/foundations": "workspace:*",
 		"@types/node": "catalog:",
 		"@types/react": "catalog:",
 		"@types/react-dom": "catalog:",

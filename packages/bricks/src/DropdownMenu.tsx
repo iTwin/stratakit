@@ -292,7 +292,7 @@ interface DropdownMenuIconProps extends BaseProps<"svg"> {
 	/**
 	 * An optional icon displayed before the menu-item label.
 	 *
-	 * Can be a URL of an SVG from the `@itwin/itwinui-icons` package,
+	 * Can be a URL of an SVG from the `@stratakit/icons` package,
 	 * or a custom JSX icon.
 	 */
 	icon?: string | React.JSX.Element;

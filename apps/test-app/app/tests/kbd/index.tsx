@@ -3,7 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import { Kbd } from "@itwin/itwinui-react/bricks";
+import { Kbd } from "@stratakit/bricks";
 import { definePage } from "~/~utils.tsx";
 
 export const handle = { title: "Kbd" };

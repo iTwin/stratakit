@@ -3,7 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import { ProgressBar, VisuallyHidden } from "@itwin/itwinui-react/bricks";
+import { ProgressBar, VisuallyHidden } from "@stratakit/bricks";
 import * as React from "react";
 import { definePage } from "~/~utils.tsx";
 

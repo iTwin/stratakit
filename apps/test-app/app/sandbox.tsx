@@ -2,18 +2,6 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-import closeIcon from "@itwin/itwinui-icons/close.svg";
-import cursorSelectIcon from "@itwin/itwinui-icons/cursor-select.svg";
-import cursorIcon from "@itwin/itwinui-icons/cursor.svg";
-import drawIcon from "@itwin/itwinui-icons/draw.svg";
-import filterIcon from "@itwin/itwinui-icons/filter.svg";
-import lockIcon from "@itwin/itwinui-icons/lock.svg";
-import measureIcon from "@itwin/itwinui-icons/measure.svg";
-import panelCollapseLeftIcon from "@itwin/itwinui-icons/panel-collapse-left.svg";
-import placeholderIcon from "@itwin/itwinui-icons/placeholder.svg";
-import searchIcon from "@itwin/itwinui-icons/search.svg";
-import hideIcon from "@itwin/itwinui-icons/visibility-hide.svg";
-import showIcon from "@itwin/itwinui-icons/visibility-show.svg";
 import {
 	Anchor,
 	Button,
@@ -30,7 +18,7 @@ import {
 	unstable_Toolbar as Toolbar,
 	Tree,
 	VisuallyHidden,
-} from "@itwin/itwinui-react/bricks";
+} from "@stratakit/bricks";
 import { useQuery } from "@tanstack/react-query";
 import cx from "classnames";
 import { produce } from "immer";
@@ -45,6 +33,19 @@ import { toUpperCamelCase } from "./~utils.tsx";
 
 import type { UseQueryResult } from "@tanstack/react-query";
 import type { MetaFunction } from "react-router";
+
+import closeIcon from "@stratakit/icons/close.svg";
+import cursorSelectIcon from "@stratakit/icons/cursor-select.svg";
+import cursorIcon from "@stratakit/icons/cursor.svg";
+import drawIcon from "@stratakit/icons/draw.svg";
+import filterIcon from "@stratakit/icons/filter.svg";
+import lockIcon from "@stratakit/icons/lock.svg";
+import measureIcon from "@stratakit/icons/measure.svg";
+import panelCollapseLeftIcon from "@stratakit/icons/panel-collapse-left.svg";
+import placeholderIcon from "@stratakit/icons/placeholder.svg";
+import searchIcon from "@stratakit/icons/search.svg";
+import hideIcon from "@stratakit/icons/visibility-hide.svg";
+import showIcon from "@stratakit/icons/visibility-show.svg";
 
 // ----------------------------------------------------------------------------
 
@@ -75,7 +76,7 @@ async function fetchModelsData(
 
 // ----------------------------------------------------------------------------
 
-const title = "Kiwi sandbox";
+const title = "Stratakit sandbox";
 export const meta: MetaFunction = () => {
 	return [{ title }];
 };

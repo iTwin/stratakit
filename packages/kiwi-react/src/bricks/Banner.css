@@ -55,12 +55,12 @@
 		align-items: center;
 		width: 100%;
 
-		@container banner (min-width: 400px) {
+		@container banner (min-width: 18.5rem) {
 			grid-template-areas: "icon label message action dismiss";
 			grid-template-columns: auto auto 1fr auto auto;
 		}
 
-		@container banner (max-width: 400px) {
+		@container banner (max-width: 18.5rem) {
 			grid-template-areas:
 				"icon label dismiss"
 				". message ."
@@ -75,7 +75,7 @@
 	@layer base {
 		grid-area: icon;
 		justify-self: center;
-		margin-inline: 4px 8px;
+		margin-inline-end: 8px;
 	}
 }
 
@@ -83,7 +83,13 @@
 	@layer base {
 		grid-area: label;
 		font-weight: 500;
-		margin-inline-end: 8px;
+
+		@container banner (max-width: 18.5rem) {
+			margin-block-end: 4px;
+		}
+		@container banner (min-width: 18.5rem) {
+			margin-inline-end: 8px;
+		}
 	}
 }
 
@@ -91,8 +97,8 @@
 	@layer base {
 		grid-area: message;
 
-		@container banner (min-width: 400px) {
-			margin-inline-end: 4px;
+		@container banner (min-width: 18.5rem) {
+			margin-inline-end: 16px;
 		}
 	}
 }
@@ -105,8 +111,8 @@
 		align-items: baseline;
 		column-gap: 8px;
 
-		@container banner (max-width: 400px) {
-			margin-block-start: 4px;
+		@container banner (max-width: 18.5rem) {
+			margin-block-start: 12px;
 		}
 	}
 }
@@ -114,6 +120,6 @@
 .🥝-banner-dismiss-button {
 	@layer base {
 		grid-area: dismiss;
-		margin-inline-start: 8px;
+		margin-inline-start: 12px;
 	}
 }

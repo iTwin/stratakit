@@ -2,8 +2,12 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-import { VisuallyHidden as AkVisuallyHidden } from "@ariakit/react/visually-hidden";
-import { forwardRef, type BaseProps } from "./~utils.js";
+
+import { Role } from "@ariakit/react/role";
+import cx from "classnames";
+import { forwardRef } from "./~utils.js";
+
+import type { BaseProps } from "./~utils.js";
 
 interface VisuallyHiddenProps extends BaseProps<"span"> {}
 
@@ -22,7 +26,13 @@ interface VisuallyHiddenProps extends BaseProps<"span"> {}
  */
 export const VisuallyHidden = forwardRef<"span", VisuallyHiddenProps>(
 	(props, forwardedRef) => {
-		return <AkVisuallyHidden {...props} ref={forwardedRef} />;
+		return (
+			<Role.span
+				{...props}
+				className={cx("🥝-visually-hidden", props.className)}
+				ref={forwardedRef}
+			/>
+		);
 	},
 );
 DEV: VisuallyHidden.displayName = "VisuallyHidden";

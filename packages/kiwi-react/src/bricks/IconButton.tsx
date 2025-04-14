@@ -2,15 +2,18 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
+
 import * as React from "react";
-import cx from "classnames";
-import { useToolbarContext, ToolbarItem } from "@ariakit/react/toolbar";
 import { Button } from "./Button.js";
-import { VisuallyHidden } from "./VisuallyHidden.js";
 import { Icon } from "./Icon.js";
+import {
+	IconButtonContext,
+	IconButtonPresentation,
+} from "./IconButton.internal.js";
 import { Tooltip } from "./Tooltip.js";
-import { forwardRef } from "./~utils.js";
+import { VisuallyHidden } from "./VisuallyHidden.js";
 import { Dot } from "./~utils.Dot.js";
+import { forwardRef } from "./~utils.js";
 
 interface IconButtonBaseProps
 	extends Omit<React.ComponentProps<typeof Button>, "children" | "tone"> {
@@ -119,28 +122,34 @@ export const IconButton = forwardRef<"button", IconButtonProps>(
 		const labelId = `${baseId}-label`;
 		const dotId = `${baseId}-dot`;
 
-		const toolbar = useToolbarContext();
+		const { iconSize } = React.useContext(IconButtonContext);
 
 		const button = (
-			<Button
-				aria-pressed={isActive}
-				aria-labelledby={labelId}
-				aria-describedby={dot ? dotId : undefined}
-				{...rest}
-				render={toolbar ? <ToolbarItem render={props.render} /> : props.render}
-				className={cx("🥝-icon-button", props.className)}
-				ref={forwardedRef}
-			>
-				<VisuallyHidden id={labelId}>{label}</VisuallyHidden>
+			<IconButtonPresentation
+				render={
+					<Button
+						aria-pressed={isActive}
+						aria-labelledby={labelId}
+						aria-describedby={dot ? dotId : undefined}
+						{...rest}
+						ref={forwardedRef}
+					>
+						<VisuallyHidden id={labelId}>{label}</VisuallyHidden>
 
-				{typeof icon === "string" ? <Icon href={icon} /> : icon}
+						{typeof icon === "string" ? (
+							<Icon href={icon} size={iconSize} />
+						) : (
+							icon
+						)}
 
-				{dot ? (
-					<Dot id={dotId} className="🥝-icon-button-dot">
-						{dot}
-					</Dot>
-				) : null}
-			</Button>
+						{dot ? (
+							<Dot id={dotId} className="🥝-icon-button-dot">
+								{dot}
+							</Dot>
+						) : null}
+					</Button>
+				}
+			/>
 		);
 
 		if (labelVariant === "visually-hidden") {

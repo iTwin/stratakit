@@ -2,9 +2,12 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-import { DropdownMenu } from "@itwin/itwinui-react/bricks";
-import { type VariantProps, definePage } from "~/~utils.tsx";
+
 import placeholderIcon from "@itwin/itwinui-icons/placeholder.svg";
+import { DropdownMenu } from "@itwin/itwinui-react/bricks";
+import { definePage } from "~/~utils.tsx";
+
+import type { VariantProps } from "~/~utils.tsx";
 
 export const handle = { title: "DropdownMenu" };
 

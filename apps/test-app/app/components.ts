@@ -13,6 +13,7 @@ export const components = [
 	"Chip",
 	"Divider",
 	"DropdownMenu",
+	"ErrorRegion",
 	"Field",
 	"Icon",
 	"IconButton",
@@ -29,6 +30,7 @@ export const components = [
 	"Text",
 	"Textarea",
 	"TextBox",
-	"Tree",
+	"Toolbar",
 	"Tooltip",
+	"Tree",
 ];

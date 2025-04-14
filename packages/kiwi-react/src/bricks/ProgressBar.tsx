@@ -2,13 +2,20 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
+
 import { Role } from "@ariakit/react/role";
 import cx from "classnames";
-import { forwardRef, type BaseProps } from "./~utils.js";
+import { forwardRef } from "./~utils.js";
 
-interface ProgressBarProps
-	extends Omit<BaseProps, "aria-labelledby">,
-		Required<Pick<BaseProps, "aria-labelledby">> {
+import type { BaseProps } from "./~utils.js";
+
+interface ProgressBarProps extends Omit<BaseProps, "aria-labelledby"> {
+	/**
+	 * Label for the progress bar.
+	 *
+	 * This prop is required because `role="progressbar"` requires an accessible name.
+	 */
+	"aria-labelledby": string;
 	/**
 	 * The size of the progress bar.
 	 * @default "medium"

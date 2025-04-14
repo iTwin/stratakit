@@ -2,8 +2,9 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-import { test, expect } from "#playwright";
+
 import AxeBuilder from "@axe-core/playwright";
+import { expect, test } from "#playwright";
 
 test("default", async ({ page }) => {
 	await page.goto("/tests/tree");
@@ -286,6 +287,79 @@ test.describe("@visual", () => {
 		await page.goto("/tests/tree?error");
 		const tree = page.getByRole("tree");
 		await expect(tree).toBeVisible();
+		await expect(page.locator("body")).toHaveScreenshot();
+	});
+
+	test("forced-colors default", async ({ page, browserName }) => {
+		test.skip(
+			browserName === "webkit",
+			"Webkit does not support forced-colors",
+		);
+		await page.goto("/tests/tree");
+		const tree = page.getByRole("tree");
+		await expect(tree).toBeVisible();
+		await page.emulateMedia({ forcedColors: "active" });
+		await expect(page.locator("body")).toHaveScreenshot();
+	});
+
+	test("forced-colors focused item", async ({ page, browserName }) => {
+		test.skip(
+			browserName === "webkit",
+			"Webkit does not support forced-colors",
+		);
+		await page.goto("/tests/tree");
+
+		const item = page.getByRole("treeitem", { name: "Item 1.2" });
+		item.focus();
+		await page.emulateMedia({ forcedColors: "active" });
+		await expect(page.locator("body")).toHaveScreenshot();
+	});
+
+	test("forced-colors overflow", async ({ page, browserName }) => {
+		test.skip(
+			browserName === "webkit",
+			"Webkit does not support forced-colors",
+		);
+		await page.goto("/tests/tree?overflow");
+		const tree = page.getByRole("tree");
+		await expect(tree).toBeVisible();
+		await page.emulateMedia({ forcedColors: "active" });
+		await expect(page.locator("body")).toHaveScreenshot();
+	});
+
+	test("forced-colors selected", async ({ page, browserName }) => {
+		test.skip(
+			browserName === "webkit",
+			"Webkit does not support forced-colors",
+		);
+		await page.goto("/tests/tree?selected");
+		const tree = page.getByRole("tree");
+		await expect(tree).toBeVisible();
+		await page.emulateMedia({ forcedColors: "active" });
+		await expect(page.locator("body")).toHaveScreenshot();
+	});
+
+	test("forced-colors description", async ({ page, browserName }) => {
+		test.skip(
+			browserName === "webkit",
+			"Webkit does not support forced-colors",
+		);
+		await page.goto("/tests/tree?description");
+		const tree = page.getByRole("tree");
+		await expect(tree).toBeVisible();
+		await page.emulateMedia({ forcedColors: "active" });
+		await expect(page.locator("body")).toHaveScreenshot();
+	});
+
+	test("forced-colors error", async ({ page, browserName }) => {
+		test.skip(
+			browserName === "webkit",
+			"Webkit does not support forced-colors",
+		);
+		await page.goto("/tests/tree?error");
+		const tree = page.getByRole("tree");
+		await expect(tree).toBeVisible();
+		await page.emulateMedia({ forcedColors: "active" });
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
 });

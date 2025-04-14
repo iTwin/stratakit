@@ -2,14 +2,15 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-import { definePage } from "~/~utils.tsx";
-import { Avatar, Icon } from "@itwin/itwinui-react/bricks";
+
 import userIconHref from "@itwin/itwinui-icons/user.svg";
+import { Avatar, Icon } from "@itwin/itwinui-react/bricks";
+import { definePage } from "~/~utils.tsx";
 
 export const handle = { title: "Avatar" };
 
 export default definePage(
-	function Page({ disabled }) {
+	function Page() {
 		return (
 			<>
 				<Avatar initials="WW" alt="Willow Winters" data-testid="avatar" />

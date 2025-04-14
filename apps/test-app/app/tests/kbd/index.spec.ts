@@ -2,8 +2,9 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-import { test, expect } from "@playwright/test";
+
 import AxeBuilder from "@axe-core/playwright";
+import { expect, test } from "@playwright/test";
 
 test("default", async ({ page }) => {
 	await page.goto("/tests/kbd");
@@ -20,6 +21,16 @@ test.describe("@visual", () => {
 
 	test("all symbols", async ({ page }) => {
 		await page.goto("/tests/kbd?symbols=true");
+		await expect(page.locator("body")).toHaveScreenshot();
+	});
+
+	test("forced-colors", async ({ page, browserName }) => {
+		test.skip(
+			browserName === "webkit",
+			"Webkit does not support forced-colors",
+		);
+		await page.goto("/tests/kbd?visual=true");
+		await page.emulateMedia({ forcedColors: "active" });
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
 });

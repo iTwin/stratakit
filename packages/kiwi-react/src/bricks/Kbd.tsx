@@ -2,11 +2,16 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
+
+import { Role } from "@ariakit/react/role";
 import cx from "classnames";
-import { Role, type RoleProps } from "@ariakit/react/role";
-import { forwardRef, type BaseProps } from "./~utils.js";
+import { predefinedSymbols } from "./Kbd.internal.js";
 import { VisuallyHidden } from "./VisuallyHidden.js";
-import { predefinedSymbols, type PredefinedSymbol } from "./Kbd.internal.js";
+import { forwardRef } from "./~utils.js";
+
+import type { RoleProps } from "@ariakit/react/role";
+import type { PredefinedSymbol } from "./Kbd.internal.js";
+import type { BaseProps } from "./~utils.js";
 
 interface KbdProps extends BaseProps<"kbd"> {
 	/** @default "solid" */

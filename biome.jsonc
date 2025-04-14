@@ -17,11 +17,12 @@
 		}
 	},
 	"organizeImports": {
-		"enabled": false
+		"enabled": true
 	},
 	"linter": {
 		"rules": {
 			"correctness": {
+				"noUnknownProperty": "off",
 				"noUnusedImports": "info",
 				"noUnusedLabels": "off"
 			},

@@ -46,7 +46,6 @@
 .🥝-dropdown-menu-item-dot:is(.🥝-dot) {
 	@layer base {
 		align-self: center;
-		--🥝dot-size: 8px;
 	}
 }
 

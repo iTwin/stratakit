@@ -2,21 +2,19 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-import * as React from "react";
-import cx from "classnames";
+
 import { Role } from "@ariakit/react/role";
-import {
-	forwardRef,
-	getOwnerDocument,
-	parseDOM,
-	type BaseProps,
-} from "./~utils.js";
+import cx from "classnames";
+import * as React from "react";
 import {
 	HtmlSanitizerContext,
 	spriteSheetId,
 	useRootNode,
 } from "./Root.internal.js";
 import { useLatestRef, useSafeContext } from "./~hooks.js";
+import { forwardRef, getOwnerDocument, parseDOM } from "./~utils.js";
+
+import type { BaseProps } from "./~utils.js";
 
 interface IconProps extends Omit<BaseProps<"svg">, "children"> {
 	/**
@@ -388,3 +386,31 @@ export const MoreHorizontal = forwardRef<"svg", MoreHorizontalProps>(
 	},
 );
 DEV: MoreHorizontal.displayName = "MoreHorizontal";
+
+// ----------------------------------------------------------------------------
+
+interface ChevronDownProps extends Omit<BaseProps<"svg">, "children"> {}
+
+export const ChevronDown = forwardRef<"svg", ChevronDownProps>(
+	(props, forwardedRef) => {
+		return (
+			<Icon
+				{...props}
+				render={
+					<Role.svg
+						width="16"
+						height="16"
+						fill="currentColor"
+						viewBox="0 0 16 16"
+						render={props.render}
+					>
+						<path d="M4.146 6.146a.5.5 0 0 1 .708 0L8 9.293l3.146-3.147a.5.5 0 0 1 .708.708l-3.5 3.5a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 0 1 0-.708Z" />
+					</Role.svg>
+				}
+				className={cx("🥝-chevron-down", props.className)}
+				ref={forwardedRef}
+			/>
+		);
+	},
+);
+DEV: ChevronDown.displayName = "ChevronDown";

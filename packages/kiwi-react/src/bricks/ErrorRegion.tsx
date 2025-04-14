@@ -99,7 +99,7 @@ const ErrorRegionRoot = forwardRef<"div", ErrorRegionRootProps>(
 								className="🥝-error-region-header"
 								render={<Button variant="ghost" />}
 							>
-								<StatusIcon tone="critical" className="🥝-error-region-icon" />
+								<StatusIcon tone="attention" className="🥝-error-region-icon" />
 								<Text
 									render={<span />}
 									id={labelId}

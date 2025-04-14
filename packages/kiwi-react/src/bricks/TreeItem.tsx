@@ -271,7 +271,7 @@ function TreeItemRootProvider(props: TreeItemRootProviderProps) {
 	const descriptionId = React.useId();
 	const decorationId = React.useId();
 
-	const icon = error ? <StatusIcon tone="critical" /> : iconProp;
+	const icon = error ? <StatusIcon tone="attention" /> : iconProp;
 	const hasDecoration = icon || decorations;
 	return (
 		<TreeItemErrorContext.Provider value={error}>

@@ -10,7 +10,7 @@
 
 		&:is(label) {
 			cursor: pointer;
-			-webkit-tap-highlight-color: var(--ids-color-bg-glow-on-surface-neutral-pressed);
+			-webkit-tap-highlight-color: var(--ids-color-bg-mono-transparent);
 		}
 	}
 

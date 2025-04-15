@@ -21,6 +21,7 @@ export default definePage(
 		visual: VisualTest,
 		dismiss: DismissibleTest,
 		actions: ActionsTest,
+		allStyleCases: AllStyleCases,
 	},
 );
 
@@ -133,6 +134,62 @@ function ActionsTest() {
 				label={<VisuallyHidden>Privacy Notice</VisuallyHidden>}
 				message="This site uses cookies to improve your experience."
 			/>
+		</div>
+	);
+}
+
+function AllStyleCases() {
+	const labelPermutations = ["visual", "visually hidden"];
+	const actionPermutations = ["anchors", "buttons", "none"];
+	const dismissPermutations = ["dismissable", "non-dismissable"];
+
+	return (
+		<div style={{ display: "grid", gap: 4 }}>
+			{labelPermutations.map((labelPermutation) => {
+				return actionPermutations.map((actionPermutation) => {
+					return dismissPermutations.map((dismissPermutation) => {
+						return (
+							<Banner
+								key={`${labelPermutation}-${actionPermutation}-${dismissPermutation}`}
+								icon={placeholderIcon}
+								variant="outline"
+								tone="info"
+								label={
+									labelPermutation === "visual" ? (
+										"Label"
+									) : (
+										<VisuallyHidden>Label</VisuallyHidden>
+									)
+								}
+								// message="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+								// eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+								// enim ad minim veniam, quis nostrud exercitation ullamco laboris"
+								message={`${JSON.stringify({ label: labelPermutation, action: actionPermutation, dismiss: dismissPermutation })}. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris`}
+								onDismiss={
+									dismissPermutation === "dismissable"
+										? () => {
+												console.log("Dismissed");
+											}
+										: undefined
+								}
+								actions={
+									actionPermutation === "buttons" ? (
+										<>
+											<Button>Manage cookies</Button>
+											<Button>Don't show again</Button>
+										</>
+									) : actionPermutation === "anchors" ? (
+										<>
+											<Anchor render={<button />}>Manage cookies</Anchor>
+											<Anchor render={<button />}>Don't show again</Anchor>
+										</>
+									) : undefined
+								}
+							/>
+						);
+					});
+				});
+			})}
 		</div>
 	);
 }

@@ -128,6 +128,27 @@ export const Banner = forwardRef<"div", BannerProps>((props, forwardedRef) => {
 		return <StatusIcon tone={tone} {...defaultIconProps} />;
 	}, [iconProp, tone]);
 
+	// PSEUDO CODE PLANNING
+	// // Visually hidden label
+	// if (label == null) { // DONE
+	//   inline content with horizontal stacking (iconstart, message, actions, dismiss)
+	// }
+	// // Visual label
+	// else if (typeof label === "string") {
+	//   // Dismissable
+	//   if (onDismiss != null) {
+	//     if (actions != null) { // DONE
+	//       default to vertically stacked. title and message can wrap depending on available width.
+	//     }
+	//   }
+	//   // Non-dismissable
+	//   else {
+	//     if (actions != null) {
+	//       actions align right until width (480px) then start aligning actions bottom left
+	//     }
+	//   }
+	// }
+
 	return (
 		<Role
 			{...rest}
@@ -140,13 +161,19 @@ export const Banner = forwardRef<"div", BannerProps>((props, forwardedRef) => {
 				{icon}
 
 				{typeof label === "string" ? (
-					<Text id={labelId} variant="body-sm" className="🥝-banner-label">
+					<Text
+						id={labelId}
+						variant="body-sm"
+						className="🥝-banner-label"
+						data-kiwi-label-type="visual"
+					>
 						{label}
 					</Text>
 				) : (
 					React.cloneElement(label, {
 						id: labelId,
 						className: cx("🥝-banner-label", label?.props.className),
+						"data-kiwi-label-type": "visually-hidden",
 					})
 				)}
 

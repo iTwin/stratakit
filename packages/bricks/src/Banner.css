@@ -55,19 +55,86 @@
 		align-items: center;
 		width: 100%;
 
-		@container banner (min-width: 18.5rem) {
-			grid-template-areas: "icon label message action dismiss";
-			grid-template-columns: auto auto 1fr auto auto;
+		/* @container banner (min-width: 18.5rem) { */
+		&:has(> .🥝-banner-label[data-kiwi-label-type="visual"]) {
+			&:has(.🥝-banner-actions) {
+				@container banner (min-width: 480px) {
+					&:has(.🥝-banner-dismiss-button) {
+						/* grid-template-areas: "icon label message action dismiss"; */
+						grid-template-areas:
+							"icon label actions dismiss"
+							". message . .";
+						grid-template-columns: 16px 1fr auto auto;
+						/* background-color: orange !important; */
+					}
+
+					&:not(:has(.🥝-banner-dismiss-button)) {
+						grid-template-areas:
+							"icon label actions"
+							". message .";
+						grid-template-columns: 16px 1fr auto;
+						/* background-color: red !important; */
+					}
+				}
+
+				@container banner (max-width: 480px) {
+					&:has(.🥝-banner-dismiss-button) {
+						/* grid-template-areas: "icon label message action dismiss"; */
+						grid-template-areas:
+							"icon label dismiss"
+							". message ."
+							". actions .";
+						grid-template-columns: 16px 1fr auto;
+						/* background-color: hotpink !important; */
+					}
+
+					&:not(:has(.🥝-banner-dismiss-button)) {
+						grid-template-areas:
+							"icon label"
+							". message"
+							". actions";
+						grid-template-columns: 16px 1fr;
+						/* background-color: grey !important; */
+					}
+				}
+			}
+
+			&:not(:has(.🥝-banner-actions)) {
+				grid-template-areas:
+					"icon label dismiss"
+					". message .";
+				grid-template-columns: 16px 1fr;
+				/* background-color: forestgreen !important; */
+			}
 		}
 
-		@container banner (max-width: 18.5rem) {
+		&:has(> .🥝-banner-label[data-kiwi-label-type="visually-hidden"]) {
+			@container banner (min-width: 480px) {
+				grid-template-areas:
+					"icon message actions dismiss"
+					". message . .";
+				grid-template-columns: 16px 1fr auto auto;
+			}
+
+			@container banner (max-width: 480px) {
+				grid-template-areas:
+					"icon message dismiss"
+					". message ."
+					". actions .";
+				grid-template-columns: 16px 1fr auto;
+			}
+			/* background-color: blue !important; */
+		}
+		/* } */
+
+		/* @container banner (max-width: 18.5rem) {
 			grid-template-areas:
 				"icon label dismiss"
 				". message ."
 				". action .";
-			grid-template-columns: auto 1fr auto;
+			grid-template-columns: 16px 1fr auto;
 			grid-template-rows: repeat(3, auto);
-		}
+		} */
 	}
 }
 
@@ -75,7 +142,7 @@
 	@layer base {
 		grid-area: icon;
 		justify-self: center;
-		margin-inline-end: 8px;
+		/* margin-inline-end: 8px; */
 	}
 }
 
@@ -85,10 +152,10 @@
 		font-weight: 500;
 
 		@container banner (max-width: 18.5rem) {
-			margin-block-end: 4px;
+			/* margin-block-end: 4px; */
 		}
 		@container banner (min-width: 18.5rem) {
-			margin-inline-end: 8px;
+			/* margin-inline-end: 8px; */
 		}
 	}
 }
@@ -98,21 +165,25 @@
 		grid-area: message;
 
 		@container banner (min-width: 18.5rem) {
-			margin-inline-end: 16px;
+			/* margin-inline-end: 16px; */
 		}
 	}
 }
 
 .🥝-banner-actions {
 	@layer base {
-		grid-area: action;
+		grid-area: actions;
 		justify-self: start;
 		display: flex;
+		/* flex-wrap: wrap; */
 		align-items: baseline;
 		column-gap: 8px;
 
+		/* position at the top of the grid slot */
+		/* align-self: start; */
+
 		@container banner (max-width: 18.5rem) {
-			margin-block-start: 12px;
+			/* margin-block-start: 12px; */
 		}
 	}
 }
@@ -120,6 +191,6 @@
 .🥝-banner-dismiss-button {
 	@layer base {
 		grid-area: dismiss;
-		margin-inline-start: 12px;
+		/* margin-inline-start: 12px; */
 	}
 }

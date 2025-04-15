@@ -43,9 +43,11 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 function LayoutInner({ children }: { children: React.ReactNode }) {
+	const preferredColorScheme = useColorScheme();
+
 	// Normally we want the return value of `useColorScheme` which adapts to the system preference,
 	// However, we want to set a static value when testing the `/tests/root/` route.
-	const colorScheme = useIsRootTest() ? "dark light" : useColorScheme();
+	const colorScheme = useIsRootTest() ? "dark light" : preferredColorScheme;
 
 	return (
 		<html lang="en" data-color-scheme={colorScheme}>

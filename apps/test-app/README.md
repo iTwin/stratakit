@@ -24,7 +24,7 @@ pnpm run test button -- --update-snapshots
 To see the generated report on a host:
 
 ```sh
-pnpm --filter=@itwin/test-app exec playwright show-report
+pnpm --filter=@stratakit/test-app exec playwright show-report
 ```
 
 > [!NOTE]

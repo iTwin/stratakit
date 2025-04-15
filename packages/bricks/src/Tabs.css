@@ -1,0 +1,185 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+
+.🥝-tab-list {
+	@layer base {
+		--🥝tab-active-stripe-gap: 8px;
+		--🥝tab-active-stripe-size: 2px;
+		--🥝tab-padding-inline: 4px;
+
+		display: flex;
+		gap: 8px;
+		position: relative;
+
+		@supports (position-anchor: --foo) {
+			&::after {
+				content: "";
+				position: absolute;
+				position-anchor: --🥝active-tab;
+				inset-inline-start: calc(anchor(start) + var(--🥝tab-padding-inline));
+				inset-block-end: calc(anchor(end) - var(--🥝tab-active-stripe-gap));
+				inline-size: calc(anchor-size(inline) - 2 * var(--🥝tab-padding-inline));
+				block-size: var(--🥝tab-active-stripe-size);
+				background-color: var(--🥝tab-active-stripe-color);
+
+				@media (prefers-reduced-motion: no-preference) {
+					transition: inset-inline-start 150ms ease-in-out, inline-size 150ms ease-in-out;
+				}
+			}
+		}
+	}
+
+	@layer modifiers {
+		&[aria-orientation="horizontal"] {
+			padding-block-end: var(--🥝tab-active-stripe-gap);
+		}
+
+		&:where([data-kiwi-tone="neutral"]) {
+			--🥝tab-active-stripe-color: var(--ids-color-border-neutral-inverse);
+		}
+
+		&:where([data-kiwi-tone="accent"]) {
+			--🥝tab-active-stripe-color: var(--ids-color-border-accent-strong);
+		}
+	}
+}
+
+.🥝-tab {
+	--✨height: 1.25rem;
+
+	--✨bg--default: transparent;
+	--✨bg--hover-neutral: var(--ids-color-bg-glow-on-surface-neutral-hover);
+	--✨bg--hover-accent: var(--ids-color-bg-glow-on-surface-accent-hover);
+	--✨bg--selected: transparent;
+	--✨bg--disabled: transparent;
+
+	--✨color--default: var(--ids-color-text-neutral-tertiary);
+	--✨color--hover-neutral: var(--ids-color-text-neutral-primary);
+	--✨color--hover-accent: var(--ids-color-text-accent-strong);
+	--✨color--selected-neutral: var(--ids-color-text-neutral-primary);
+	--✨color--selected-accent: var(--ids-color-text-accent-strong);
+	--✨color--disabled: var(--ids-color-text-neutral-disabled);
+
+	@layer base {
+		font-size: var(--ids-font-size-12);
+		color: var(--🥝tab-color);
+		background-color: var(--🥝tab-bg);
+		border: none;
+		border-radius: 4px;
+		block-size: var(--✨height);
+		padding-inline: var(--🥝tab-padding-inline);
+		position: relative;
+		user-select: none;
+		white-space: nowrap;
+		transition: background-color 150ms ease-out, color 150ms ease-out;
+		cursor: pointer;
+
+		/* This pseudo-element increases tap target size */
+		&::before {
+			content: "";
+			position: absolute;
+			inset-inline: 0;
+			inset-block: 0 calc(var(--🥝tab-active-stripe-gap) * -1);
+		}
+	}
+
+	@layer modifiers {
+		:where(.🥝-tab-list[data-kiwi-tone="neutral"]) & {
+			--🥝tab-bg: var(--🌀tab-state--default, var(--✨bg--default))
+				var(--🌀tab-state--hover, var(--✨bg--hover-neutral))
+				var(--🌀tab-state--selected, var(--✨bg--selected))
+				var(--🌀tab-state--disabled, var(--✨bg--disabled));
+			--🥝tab-color: var(--🌀tab-state--default, var(--✨color--default))
+				var(--🌀tab-state--hover, var(--✨color--hover-neutral))
+				var(--🌀tab-state--selected, var(--✨color--selected-neutral))
+				var(--🌀tab-state--disabled, var(--✨color--disabled));
+			-webkit-tap-highlight-color: var(--✨bg--hover-neutral);
+		}
+
+		:where(.🥝-tab-list[data-kiwi-tone="accent"]) & {
+			--🥝tab-bg: var(--🌀tab-state--default, var(--✨bg--default))
+				var(--🌀tab-state--hover, var(--✨bg--hover-accent))
+				var(--🌀tab-state--selected, var(--✨bg--selected))
+				var(--🌀tab-state--disabled, var(--✨bg--disabled));
+			--🥝tab-color: var(--🌀tab-state--default, var(--✨color--default))
+				var(--🌀tab-state--hover, var(--✨color--hover-accent))
+				var(--🌀tab-state--selected, var(--✨color--selected-accent))
+				var(--🌀tab-state--disabled, var(--✨color--disabled));
+			-webkit-tap-highlight-color: var(--✨bg--hover-accent);
+		}
+	}
+
+	@layer states {
+		&:where([aria-selected="true"]) {
+			--🌀tab-state: var(--🌀tab-state--selected);
+
+			anchor-name: --🥝active-tab;
+
+			@supports not (anchor-name: --foo) {
+				&::after {
+					content: "";
+					position: absolute;
+					background-color: var(--🥝tab-active-stripe-color);
+					block-size: var(--🥝tab-active-stripe-size);
+					inset-inline: var(--🥝tab-padding-inline);
+					inset-block: auto calc(var(--🥝tab-active-stripe-gap) * -1);
+				}
+			}
+		}
+
+		@media (any-hover: hover) {
+			&:where(:hover) {
+				--🌀tab-state: var(--🌀tab-state--hover);
+			}
+		}
+
+		&:where([disabled], :disabled, [aria-disabled="true"]) {
+			--🌀tab-state: var(--🌀tab-state--disabled);
+			--🥝tab-active-stripe-color: var(--ids-color-border-neutral-disabled);
+			cursor: not-allowed;
+		}
+	}
+
+	@layer base.🌀 {
+		/* Cyclic toggles for default/hover/selected/disabled states. See https://kizu.dev/cyclic-toggles/ */
+		--🌀tab-state: var(--🌀tab-state--default);
+		--🌀tab-state--default: var(--🌀tab-state,);
+		--🌀tab-state--hover: var(--🌀tab-state,);
+		--🌀tab-state--selected: var(--🌀tab-state,);
+		--🌀tab-state--disabled: var(--🌀tab-state,);
+	}
+}
+
+.🥝-tab-panel {
+	@layer base {
+		--🥝focus-outline-offset: -2px;
+
+		/* Prevents stacking when multiple panels are mounted (during animation) */
+		&:not([data-open]) {
+			display: none !important;
+		}
+	}
+}
+
+@media (forced-colors: active) {
+	.🥝-tab-list,
+	.🥝-tab {
+		--🥝tab-active-stripe-color: CanvasText;
+	}
+
+	.🥝-tab {
+		--🥝tab-color: CanvasText;
+
+		&:where([aria-selected="true"]) {
+			forced-color-adjust: none;
+			--🥝tab-bg: SelectedItem;
+			--🥝tab-color: SelectedItemText;
+		}
+
+		&:where([disabled], :disabled, [aria-disabled="true"]) {
+			--🥝tab-color: GrayText;
+		}
+	}
+}

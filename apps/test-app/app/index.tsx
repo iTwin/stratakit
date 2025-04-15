@@ -2,15 +2,16 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
+
+import { Anchor, Divider } from "@stratakit/bricks";
+import { Link, type LinksFunction, type MetaFunction } from "react-router";
+import { components } from "./components.ts";
 import globalStyles from "./index.css?url";
-import { Link, type MetaFunction, type LinksFunction } from "react-router";
-import { Anchor, Divider } from "@itwin/itwinui-react/bricks";
 import styles from "./index.module.css";
 import { toKebabCase } from "./~utils.tsx";
-import { components } from "./components.ts";
 
 export const meta: MetaFunction = () => {
-	return [{ title: "Kiwi test app" }];
+	return [{ title: "Stratakit test app" }];
 };
 
 export const links: LinksFunction = () => [
@@ -20,7 +21,7 @@ export const links: LinksFunction = () => [
 export default function Index() {
 	return (
 		<main className={styles.main}>
-			<h1>Kiwi</h1>
+			<h1>Stratakit</h1>
 			<Divider />
 
 			<ul className={styles.list}>

@@ -1,11 +1,11 @@
 {
-	"name": "@itwin/test-app",
+	"name": "@stratakit/test-app",
 	"private": true,
 	"sideEffects": false,
 	"type": "module",
 	"scripts": {
 		"build": "NODE_ENV=production react-router build && pnpm run typecheck",
-		"dev": "NODE_OPTIONS=--conditions=@kiwi/source react-router dev",
+		"dev": "NODE_OPTIONS=--conditions=@stratakit/source react-router dev",
 		"preview": "pnpx serve build/client -L -p 1800",
 		"test": "tsx ./scripts/run-tests.cts pnpm exec playwright test",
 		"typecheck": "react-router typegen && tsc -p tsconfig.build.json"
@@ -15,11 +15,12 @@
 	},
 	"dependencies": {
 		"@ariakit/react": "^0.4.15",
-		"@itwin/itwinui-icons": "workspace:*",
-		"@itwin/itwinui-react": "workspace:*",
+		"@stratakit/icons": "workspace:*",
+		"@stratakit/bricks": "workspace:*",
 		"@react-router/node": "^7.3.0",
 		"@tanstack/react-query": "^5.67.2",
 		"classnames": "^2.5.1",
+		"immer": "^10.1.1",
 		"isbot": "^5.1.23",
 		"react": "catalog:",
 		"react-dom": "catalog:",
@@ -35,7 +36,7 @@
 		"esbuild": "catalog:",
 		"lightningcss": "catalog:",
 		"typescript": "catalog:",
-		"vite": "^6.2.4",
+		"vite": "^6.2.6",
 		"vite-tsconfig-paths": "^5.1.4"
 	}
 }

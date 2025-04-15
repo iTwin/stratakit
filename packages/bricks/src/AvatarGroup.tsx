@@ -2,9 +2,9 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-import cx from "classnames";
 import { Role } from "@ariakit/react/role";
-import { forwardRef, type BaseProps } from "./~utils.js";
+import cx from "classnames";
+import { type BaseProps, forwardRef } from "./~utils.js";
 
 interface AvatarGroupProps extends BaseProps<"div"> {
 	/**

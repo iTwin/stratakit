@@ -6,7 +6,7 @@ FROM base AS deps
 WORKDIR /kiwi
 RUN --mount=type=bind,source=package.json,target=package.json \
     --mount=type=bind,source=apps/test-app/package.json,target=apps/test-app/package.json \
-    --mount=type=bind,source=packages/kiwi-react/package.json,target=packages/kiwi-react/package.json \
+    --mount=type=bind,source=packages/bricks/package.json,target=packages/bricks/package.json \
     --mount=type=bind,source=pnpm-workspace.yaml,target=pnpm-workspace.yaml \
     --mount=type=bind,source=pnpm-lock.yaml,target=pnpm-lock.yaml \
     --mount=type=cache,target=/pnpm/store \

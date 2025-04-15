@@ -2,24 +2,27 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
+
+import { createRequire } from "node:module";
 import { reactRouter } from "@react-router/dev/vite";
-import { defineConfig, type Plugin, defaultClientConditions } from "vite";
-import type { Config as ReactRouterConfig } from "@react-router/dev/config";
-import tsconfigPaths from "vite-tsconfig-paths";
-import * as lightningcss from "lightningcss";
 import {
 	primitivesTransform,
+	staticVariablesTransform,
 	themeTransform,
 	typographyTokensTransform,
-	staticVariablesTransform,
 	typographyTransform,
 } from "internal/visitors.js";
-import { createRequire } from "node:module";
+import * as lightningcss from "lightningcss";
+import { defaultClientConditions, defineConfig } from "vite";
+import tsconfigPaths from "vite-tsconfig-paths";
+
+import type { Config as ReactRouterConfig } from "@react-router/dev/config";
+import type { Plugin } from "vite";
 
 const isDev = process.env.NODE_ENV === "development";
 
 const require = createRequire(import.meta.url);
-const bricksPath = require.resolve("@itwin/itwinui-react/bricks");
+const bricksPath = require.resolve("@stratakit/bricks");
 
 const basename = process.env.BASE_FOLDER
 	? `/${process.env.BASE_FOLDER}/`
@@ -37,7 +40,7 @@ export default defineConfig({
 	plugins: [reactRouter(), tsconfigPaths(), bundleCssPlugin()],
 	build: {
 		assetsInlineLimit: (filePath) => {
-			if (filePath.includes("kiwi-icons/icons")) return false;
+			if (filePath.endsWith(".svg")) return false;
 			return undefined;
 		},
 		assetsDir: process.env.BASE_FOLDER
@@ -51,8 +54,11 @@ export default defineConfig({
 		port: 1800, // prod server port
 	},
 	resolve: {
-		alias: { "@itwin/itwinui-react/bricks": bricksPath },
-		conditions: [isDev ? ["@kiwi/source"] : [], defaultClientConditions].flat(),
+		alias: { "@stratakit/bricks": bricksPath },
+		conditions: [
+			isDev ? ["@stratakit/source"] : [],
+			defaultClientConditions,
+		].flat(),
 	},
 });
 

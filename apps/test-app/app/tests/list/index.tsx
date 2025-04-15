@@ -2,10 +2,12 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
+
+import { Icon } from "@stratakit/bricks";
+import * as ListItem from "@stratakit/bricks-internal/src/~utils.ListItem.tsx";
 import { definePage } from "~/~utils.tsx";
-import * as ListItem from "@itwin/itwinui-react-internal/src/bricks/~utils.ListItem.tsx";
-import { Icon } from "@itwin/itwinui-react/bricks";
-import placeholderIcon from "@itwin/itwinui-icons/placeholder.svg";
+
+import placeholderIcon from "@stratakit/icons/placeholder.svg";
 
 export const handle = { title: "List" };
 

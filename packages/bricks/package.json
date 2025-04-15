@@ -1,0 +1,64 @@
+{
+	"name": "@stratakit/bricks",
+	"type": "module",
+	"version": "0.1.0",
+	"license": "MIT",
+	"sideEffects": false,
+	"exports": {
+		".": {
+			"@stratakit/source": "./src/index.ts",
+			"types": "./dist/index.d.ts",
+			"development": "./dist/DEV/index.js",
+			"default": "./dist/index.js"
+		},
+		"./package.json": "./package.json"
+	},
+	"files": ["dist", "CHANGELOG.md", "LICENSE.md"],
+	"description": "A React component library for the Strata design system",
+	"author": "Bentley Systems",
+	"homepage": "https://github.com/iTwin/design-system",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/iTwin/design-system.git",
+		"directory": "packages/bricks"
+	},
+	"keywords": [
+		"component",
+		"components",
+		"design-system",
+		"design",
+		"frontend",
+		"itwin",
+		"itwinui",
+		"strata",
+		"stratakit",
+		"react",
+		"ui"
+	],
+	"scripts": {
+		"build": "rimraf dist && node scripts/build.js && pnpm run build:dev && pnpm run build:types",
+		"build:dev": "NODE_ENV=development node scripts/build.js",
+		"build:types": "tsc --outDir dist",
+		"dev": "tsc --watch --outDir dist"
+	},
+	"dependencies": {
+		"@ariakit/react": "^0.4.15",
+		"classnames": "^2.5.1"
+	},
+	"devDependencies": {
+		"@stratakit/foundations": "workspace:*",
+		"@types/node": "catalog:",
+		"@types/react": "catalog:",
+		"@types/react-dom": "catalog:",
+		"esbuild": "catalog:",
+		"lightningcss": "catalog:",
+		"react": "catalog:",
+		"react-dom": "catalog:",
+		"rimraf": "^6.0.1",
+		"typescript": "catalog:"
+	},
+	"peerDependencies": {
+		"react": ">=18.0.0",
+		"react-dom": ">=18.0.0"
+	}
+}

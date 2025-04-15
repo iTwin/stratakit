@@ -20,7 +20,7 @@ interface IconProps extends Omit<BaseProps<"svg">, "children"> {
 	/**
 	 * URL of the symbol sprite.
 	 *
-	 * Should be a URL to an `.svg` file from `@itwin/itwinui-icons`.
+	 * Should be a URL to an `.svg` file from `@stratakit/icons`.
 	 *
 	 * Note: The `.svg` must be an external HTTP resource for it to be processed by
 	 * the `<use>` element. As a fallback, JS will be used to `fetch` the SVG from
@@ -48,11 +48,11 @@ interface IconProps extends Omit<BaseProps<"svg">, "children"> {
 }
 
 /**
- * Icon component that provides fill and sizing to the SVGs from `@itwin/itwinui-icons`.
+ * Icon component that provides fill and sizing to the SVGs from `@stratakit/icons`.
  * It renders the correct symbol sprite based on the specified `size`.
  *
  * ```tsx
- * const arrowIcon = new URL("@itwin/itwinui-icons/arrow.svg", import.meta.url).href;
+ * const arrowIcon = new URL("@stratakit/icons/arrow.svg", import.meta.url).href;
  * <Icon href={arrowIcon} />
  * ```
  *
@@ -106,7 +106,7 @@ function toIconHref(hrefBase: string, size: IconProps["size"]) {
 	return `${hrefBase}${separator}${suffix}`;
 }
 
-/** Returns a symbol ID matching the conventions used in `@itwin/itwinui-icons`. */
+/** Returns a symbol ID matching the conventions used in `@stratakit/icons`. */
 function toIconId(size: IconProps["size"]) {
 	if (size === "large") return "icon-large";
 	return "icon";

@@ -4,7 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 
 import * as Disclosure from "@ariakit/react/disclosure";
-import { Button, Divider, Icon, Text } from "@itwin/itwinui-react/bricks";
+import { Button, Divider, Icon, Text } from "@stratakit/bricks";
 import rawDarkTokens from "internal/theme-dark.json";
 import rawLightTokens from "internal/theme-light.json";
 import rawTypographyTokens from "internal/typography.json";
@@ -36,7 +36,7 @@ const categories = {
 } as const;
 
 export const meta: MetaFunction = () => {
-	return [{ title: "Kiwi tokens" }];
+	return [{ title: "Stratakit tokens" }];
 };
 
 export const links: LinksFunction = () => [

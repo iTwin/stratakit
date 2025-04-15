@@ -10,7 +10,7 @@ dist
 build
 .react-router
 
-packages/kiwi-icons/icons-list.json
+packages/icons/icons-list.json
 
 # Caches
 .cache

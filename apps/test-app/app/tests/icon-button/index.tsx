@@ -3,10 +3,11 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import notificationsIcon from "@itwin/itwinui-icons/notifications.svg";
-import placeholderIcon from "@itwin/itwinui-icons/placeholder.svg";
-import { Icon, IconButton } from "@itwin/itwinui-react/bricks";
+import { Icon, IconButton } from "@stratakit/bricks";
 import { definePage } from "~/~utils.tsx";
+
+import notificationsIcon from "@stratakit/icons/notifications.svg";
+import placeholderIcon from "@stratakit/icons/placeholder.svg";
 
 export const handle = { title: "IconButton" };
 

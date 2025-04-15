@@ -8,7 +8,6 @@ import { Role } from "@ariakit/react/role";
 import cx from "classnames";
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import foundationsCss from "../foundations/styles.css.js";
 import {
 	HtmlSanitizerContext,
 	RootNodeContext,
@@ -24,6 +23,8 @@ import {
 	isBrowser,
 	isDocument,
 } from "./~utils.js";
+
+import foundationsCss from "./foundations.css.js";
 
 import type { BaseProps } from "./~utils.js";
 

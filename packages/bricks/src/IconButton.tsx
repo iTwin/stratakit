@@ -27,7 +27,7 @@ interface IconButtonBaseProps
 	/**
 	 * Icon to be displayed inside the button.
 	 *
-	 * Can be a URL of an SVG from the `@itwin/itwinui-icons` package,
+	 * Can be a URL of an SVG from the `@stratakit/icons` package,
 	 * or a custom JSX icon.
 	 */
 	icon: string | React.JSX.Element;
@@ -85,11 +85,11 @@ type IconButtonProps = IconButtonBaseProps & IconButtonExtraProps;
 /**
  * An icon-only button, with a required accessible name.
  *
- * The icon can be a URL from the `@itwin/itwinui-icons` package:
+ * The icon can be a URL from the `@stratakit/icons` package:
  * ```tsx
  * <IconButton
  *   label="Reveal full content"
- *   icon={new URL("@itwin/itwinui-icons/arrow.svg", import.meta.url).href}
+ *   icon={new URL("@stratakit/icons/arrow.svg", import.meta.url).href}
  * />
  * ```
  *

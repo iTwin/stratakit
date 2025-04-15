@@ -22,7 +22,7 @@ import type { Plugin } from "vite";
 const isDev = process.env.NODE_ENV === "development";
 
 const require = createRequire(import.meta.url);
-const bricksPath = require.resolve("@itwin/itwinui-react/bricks");
+const bricksPath = require.resolve("@stratakit/bricks");
 
 const basename = process.env.BASE_FOLDER
 	? `/${process.env.BASE_FOLDER}/`
@@ -40,7 +40,7 @@ export default defineConfig({
 	plugins: [reactRouter(), tsconfigPaths(), bundleCssPlugin()],
 	build: {
 		assetsInlineLimit: (filePath) => {
-			if (filePath.includes("kiwi-icons/icons")) return false;
+			if (filePath.endsWith(".svg")) return false;
 			return undefined;
 		},
 		assetsDir: process.env.BASE_FOLDER
@@ -54,8 +54,11 @@ export default defineConfig({
 		port: 1800, // prod server port
 	},
 	resolve: {
-		alias: { "@itwin/itwinui-react/bricks": bricksPath },
-		conditions: [isDev ? ["@kiwi/source"] : [], defaultClientConditions].flat(),
+		alias: { "@stratakit/bricks": bricksPath },
+		conditions: [
+			isDev ? ["@stratakit/source"] : [],
+			defaultClientConditions,
+		].flat(),
 	},
 });
 

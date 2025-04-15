@@ -3,7 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import { Button, Tooltip, VisuallyHidden } from "@itwin/itwinui-react/bricks";
+import { Button, Tooltip, VisuallyHidden } from "@stratakit/bricks";
 import { definePage } from "~/~utils.tsx";
 
 export const handle = { title: "Tooltip" };

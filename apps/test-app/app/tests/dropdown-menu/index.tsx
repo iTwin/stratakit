@@ -3,9 +3,10 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import placeholderIcon from "@itwin/itwinui-icons/placeholder.svg";
-import { DropdownMenu } from "@itwin/itwinui-react/bricks";
+import { DropdownMenu } from "@stratakit/bricks";
 import { definePage } from "~/~utils.tsx";
+
+import placeholderIcon from "@stratakit/icons/placeholder.svg";
 
 import type { VariantProps } from "~/~utils.tsx";
 

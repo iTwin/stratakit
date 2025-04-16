@@ -1,10 +1,5 @@
-import placeholderIcon from "@itwin/itwinui-icons/placeholder.svg";
-import {
-	Anchor,
-	Banner,
-	Button,
-	VisuallyHidden,
-} from "@itwin/itwinui-react/bricks";
+import { Anchor, Banner, Button, VisuallyHidden } from "@stratakit/bricks";
+import placeholderIcon from "@stratakit/icons/placeholder.svg";
 /*---------------------------------------------------------------------------------------------
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
@@ -139,7 +134,7 @@ function ActionsTest() {
 }
 
 function AllStyleCases() {
-	const labelPermutations = ["visual", "visually hidden"];
+	const labelPermutations = ["visual", "visually-hidden"];
 	const actionPermutations = ["anchors", "buttons", "none"];
 	const dismissPermutations = ["dismissable", "non-dismissable"];
 

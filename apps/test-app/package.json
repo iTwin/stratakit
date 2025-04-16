@@ -4,11 +4,11 @@
 	"sideEffects": false,
 	"type": "module",
 	"scripts": {
-		"build": "NODE_ENV=production react-router build && pnpm run typecheck",
-		"dev": "react-router dev",
-		"preview": "pnpx serve build/client -L -p 1800",
-		"test": "tsx ./scripts/run-tests.cts pnpm exec playwright test",
-		"typecheck": "react-router typegen && tsc -p tsconfig.build.json"
+		"build": "wireit",
+		"dev": "wireit",
+		"preview": "wireit",
+		"test": "wireit",
+		"typecheck": "wireit"
 	},
 	"imports": {
 		"#playwright": "./playwright.config.ts"
@@ -39,5 +39,43 @@
 		"typescript": "catalog:",
 		"vite": "^6.2.6",
 		"vite-tsconfig-paths": "^5.1.4"
+	},
+	"wireit": {
+		"build": {
+			"command": "react-router build",
+			"dependencies": [
+				"../../packages/bricks:build",
+				"../../packages/icons:build"
+			],
+			"files": ["app", "vite.config.ts", "react-router.config.ts"],
+			"output": ["build", ".react-router"],
+			"env": {
+				"NODE_ENV": "production"
+			}
+		},
+		"dev": {
+			"command": "react-router dev",
+			"dependencies": [
+				"../../packages/icons:build",
+				"../../packages/bricks:dev"
+			],
+			"service": true
+		},
+		"preview": {
+			"command": "pnpx serve build/client -L -p 1800",
+			"dependencies": ["build"],
+			"service": true
+		},
+		"test": {
+			"command": "tsx ./scripts/run-tests.cts pnpm exec playwright test",
+			"dependencies": ["build", "typecheck"],
+			"files": ["app", "playwright.config.ts"],
+			"output": ["test-results"]
+		},
+		"typecheck": {
+			"command": "react-router typegen && tsc -p tsconfig.build.json",
+			"files": ["app", "tsconfig.build.json"],
+			"output": []
+		}
 	}
 }

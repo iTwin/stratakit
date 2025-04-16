@@ -3,7 +3,6 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import { createRequire } from "node:module";
 import { reactRouter } from "@react-router/dev/vite";
 import {
 	primitivesTransform,
@@ -13,7 +12,11 @@ import {
 	typographyTransform,
 } from "internal/visitors.js";
 import * as lightningcss from "lightningcss";
-import { defaultClientConditions, defineConfig } from "vite";
+import {
+	defaultClientConditions,
+	defaultServerConditions,
+	defineConfig,
+} from "vite";
 import tsconfigPaths from "vite-tsconfig-paths";
 
 import type { Config as ReactRouterConfig } from "@react-router/dev/config";
@@ -21,12 +24,11 @@ import type { Plugin } from "vite";
 
 const isDev = process.env.NODE_ENV === "development";
 
-const require = createRequire(import.meta.url);
-const bricksPath = require.resolve("@stratakit/bricks");
-
 const basename = process.env.BASE_FOLDER
 	? `/${process.env.BASE_FOLDER}/`
 	: undefined;
+
+const customConditions = isDev ? ["@stratakit/source"] : [];
 
 // https://reactrouter.com/explanation/special-files#react-routerconfigts
 export const reactRouterConfig = {
@@ -57,11 +59,12 @@ export default defineConfig({
 		port: 1800, // prod server port
 	},
 	resolve: {
-		alias: { "@stratakit/bricks": bricksPath },
-		conditions: [
-			isDev ? ["@stratakit/source"] : [],
-			defaultClientConditions,
-		].flat(),
+		conditions: [customConditions, defaultClientConditions].flat(),
+	},
+	ssr: {
+		resolve: {
+			conditions: [customConditions, defaultServerConditions].flat(),
+		},
 	},
 });
 

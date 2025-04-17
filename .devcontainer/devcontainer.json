@@ -19,7 +19,6 @@
 		}
 	},
 	"onCreateCommand": "pnpm install",
-	"postCreateCommand": "pnpm run build",
 	"postStartCommand": "pnpm run dev",
 	"hostRequirements": {
 		"cpus": 4

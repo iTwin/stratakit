@@ -28,7 +28,7 @@ export default definePage(function Page({ items = 2, controls }) {
 			{controls ? (
 				<Button
 					onClick={() => {
-						setErrors((prev) => [...prev, prev[prev.length - 1] + 1]);
+						setErrors((prev) => [...prev, (prev[prev.length - 1] ?? 0) + 1]);
 					}}
 				>
 					Add

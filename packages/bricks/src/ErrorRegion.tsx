@@ -91,12 +91,10 @@ const ErrorRegionRoot = forwardRef<"div", ErrorRegionRootProps>(
 
 		const store = useCollectionStore({
 			setItems: (newItems) => {
-				// Initial render.
+				// Rendering initially
 				if (prevItems.length === 0) return;
 
-				// Find new items that are not in the previous items
-				const prevItemIds = prevItems.map((item) => item.id);
-				const prevItemsSet = new Set(prevItemIds);
+				const prevItemsSet = new Set(prevItems.map((item) => item.id));
 				const addedItems = newItems.filter(
 					(item) => !prevItemsSet.has(item.id),
 				);

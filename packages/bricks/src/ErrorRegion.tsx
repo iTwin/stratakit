@@ -4,11 +4,17 @@
  *--------------------------------------------------------------------------------------------*/
 
 import {
+	Collection,
+	CollectionItem,
+	useCollectionStore,
+} from "@ariakit/react/collection";
+import {
 	Dialog,
 	DialogDisclosure,
 	DialogProvider,
 } from "@ariakit/react/dialog";
 import { Role } from "@ariakit/react/role";
+import { useStoreState } from "@ariakit/react/store";
 import cx from "classnames";
 import * as React from "react";
 import { Button } from "./Button.js";
@@ -16,7 +22,7 @@ import { ChevronDown, StatusWarning } from "./Icon.js";
 import { IconButtonPresentation } from "./IconButton.internal.js";
 import { Text } from "./Text.js";
 import { VisuallyHidden } from "./VisuallyHidden.js";
-import { useControlledState } from "./~hooks.js";
+import { useControlledState, useEventHandlers } from "./~hooks.js";
 import { forwardRef } from "./~utils.js";
 
 import type { BaseProps } from "./~utils.js";
@@ -80,6 +86,26 @@ const ErrorRegionRoot = forwardRef<"div", ErrorRegionRootProps>(
 			expanded,
 			onExpandedChange as React.Dispatch<React.SetStateAction<boolean>>,
 		);
+
+		const [pulse, setPulse] = React.useState(false);
+
+		const store = useCollectionStore({
+			setItems: (newItems) => {
+				// Initial render.
+				if (prevItems.length === 0) return;
+
+				// Find new items that are not in the previous items
+				const prevItemIds = prevItems.map((item) => item.id);
+				const prevItemsSet = new Set(prevItemIds);
+				const addedItems = newItems.filter(
+					(item) => !prevItemsSet.has(item.id),
+				);
+				if (addedItems.length === 0) return;
+
+				setPulse(true);
+			},
+		});
+		const prevItems = useStoreState(store, "items");
 		return (
 			<>
 				<VisuallyHidden aria-live="polite" aria-atomic={true}>
@@ -92,6 +118,10 @@ const ErrorRegionRoot = forwardRef<"div", ErrorRegionRootProps>(
 						className={cx("🥝-error-region", props.className)}
 						data-kiwi-visible={!!label}
 						data-kiwi-expanded={open}
+						data-kiwi-pulse={pulse}
+						onAnimationEnd={useEventHandlers(props.onAnimationEnd, () => {
+							setPulse(false);
+						})}
 						ref={forwardedRef}
 					>
 						<div className="🥝-error-region-container">
@@ -119,9 +149,13 @@ const ErrorRegionRoot = forwardRef<"div", ErrorRegionRootProps>(
 								autoFocusOnShow={false}
 								aria-labelledby={labelId}
 							>
-								<div className="🥝-error-region-items" role="list">
+								<Collection
+									store={store}
+									className="🥝-error-region-items"
+									role="list"
+								>
 									{items}
-								</div>
+								</Collection>
 							</Dialog>
 						</div>
 					</Role.section>
@@ -181,7 +215,7 @@ const ErrorRegionItem = forwardRef<"div", ErrorRegionItemProps>(
 		} = props;
 
 		return (
-			<Role.div
+			<CollectionItem
 				{...rest}
 				role="listitem"
 				className={cx("🥝-error-region-item", props.className)}
@@ -191,7 +225,7 @@ const ErrorRegionItem = forwardRef<"div", ErrorRegionItemProps>(
 					{message}
 				</Text>
 				<div className="🥝-error-region-item-actions">{actions}</div>
-			</Role.div>
+			</CollectionItem>
 		);
 	},
 );

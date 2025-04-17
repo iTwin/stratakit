@@ -40,6 +40,7 @@
 
 .🥝-error-region-container {
 	@layer base {
+		position: relative;
 		display: var(--🥝error-region-container-display, flex);
 		flex-direction: column;
 
@@ -50,7 +51,14 @@
 		background-color: var(--ids-color-bg-elevation-base);
 		box-shadow: var(--ids-shadow-surface-sm);
 
-		animation: var(--🥝error-region-container-animation);
+		&::before {
+			content: "";
+			position: absolute;
+			inset: 0;
+			border-radius: inherit;
+			z-index: -1;
+			animation: var(--🥝error-region-container-animation);
+		}
 	}
 }
 

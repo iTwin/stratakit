@@ -3,13 +3,17 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import { Anchor, unstable_ErrorRegion as ErrorRegion } from "@stratakit/bricks";
+import {
+	Anchor,
+	Button,
+	unstable_ErrorRegion as ErrorRegion,
+} from "@stratakit/bricks";
 import * as React from "react";
 import { definePage } from "~/~utils.tsx";
 
 export const handle = { title: "Error Region" };
 
-export default definePage(function Page({ items = 2 }) {
+export default definePage(function Page({ items = 2, controls }) {
 	const [errors, setErrors] = React.useState(() => {
 		return Array.from({ length: Number(items) }).map((_, index) => index + 1);
 	});
@@ -21,6 +25,15 @@ export default definePage(function Page({ items = 2 }) {
 	}, [errorsLength]);
 	return (
 		<div style={{ minHeight: 200 }}>
+			{controls ? (
+				<Button
+					onClick={() => {
+						setErrors((prev) => [...prev, prev[prev.length - 1] + 1]);
+					}}
+				>
+					Add
+				</Button>
+			) : undefined}
 			<ErrorRegion.Root
 				label={label}
 				items={errors.map((error) => {

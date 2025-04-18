@@ -41,7 +41,7 @@ function VisualTest({ controls }: { controls?: boolean }) {
 	return (
 		<div style={{ display: "flex", flexDirection: "column", rowGap: 4 }}>
 			{controls != null ? (
-				<div>
+				<div style={{ display: "flex", gap: 8 }}>
 					<Button onClick={() => setIsStarted((prev) => !prev)}>Toggle</Button>
 
 					<Field.Root layout="inline">

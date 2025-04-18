@@ -99,7 +99,7 @@ function VisualTestForTextlikeControls() {
 
 function VisualTestForCheckableControls() {
 	return (
-		<div style={{ display: "grid", gap: 16 }}>
+		<div style={{ display: "grid", gap: 16, justifyItems: "start" }}>
 			{/* Label before control */}
 			<Field.Root>
 				<Field.Label>Checkbox control</Field.Label>

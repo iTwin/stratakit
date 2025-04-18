@@ -22,7 +22,7 @@ import { ChevronDown, StatusWarning } from "./Icon.js";
 import { IconButtonPresentation } from "./IconButton.internal.js";
 import { Text } from "./Text.js";
 import { VisuallyHidden } from "./VisuallyHidden.js";
-import { useControlledState, useEventHandlers } from "./~hooks.js";
+import { useControlledState, useMergedRefs } from "./~hooks.js";
 import { forwardRef } from "./~utils.js";
 
 import type { BaseProps } from "./~utils.js";
@@ -87,7 +87,12 @@ const ErrorRegionRoot = forwardRef<"div", ErrorRegionRootProps>(
 			onExpandedChange as React.Dispatch<React.SetStateAction<boolean>>,
 		);
 
-		const [pulse, setPulse] = React.useState(false);
+		const pulseAnimationRef = React.useRef<Animation | undefined>(undefined);
+		const pulse = () => {
+			const animation = pulseAnimationRef.current;
+			if (!animation) return;
+			animation.play();
+		};
 
 		const store = useCollectionStore({
 			setItems: (newItems) => {
@@ -100,7 +105,7 @@ const ErrorRegionRoot = forwardRef<"div", ErrorRegionRootProps>(
 				);
 				if (addedItems.length === 0) return;
 
-				setPulse(true);
+				pulse();
 			},
 		});
 		const prevItems = useStoreState(store, "items");
@@ -116,11 +121,18 @@ const ErrorRegionRoot = forwardRef<"div", ErrorRegionRootProps>(
 						className={cx("🥝-error-region", props.className)}
 						data-kiwi-visible={!!label}
 						data-kiwi-expanded={open}
-						data-kiwi-pulse={pulse}
-						onAnimationEnd={useEventHandlers(props.onAnimationEnd, () => {
-							setPulse(false);
+						ref={useMergedRefs(forwardedRef, (el) => {
+							if (!el) return;
+							const animations = el.getAnimations({
+								subtree: true,
+							});
+							const animation = animations.find((animation) => {
+								if (!(animation instanceof CSSAnimation)) return false;
+								return animation.animationName === "--🥝error-region-pulse";
+							});
+							if (!animation) return;
+							pulseAnimationRef.current = animation;
 						})}
-						ref={forwardedRef}
 					>
 						<div className="🥝-error-region-container">
 							<DialogDisclosure

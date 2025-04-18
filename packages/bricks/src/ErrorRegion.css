@@ -4,8 +4,6 @@
  *--------------------------------------------------------------------------------------------*/
 .🥝-error-region {
 	--✨padding: 4px;
-	--✨duration: 600ms;
-	--✨easing: cubic-bezier(0.4, 0, 0.2, 1);
 
 	@layer base {
 		position: relative;
@@ -28,17 +26,13 @@
 		&:where([data-kiwi-visible="false"]) {
 			--🥝error-region-container-display: none;
 		}
-
-		&:where([data-kiwi-pulse="true"]) {
-			@media (prefers-reduced-motion: no-preference) {
-				--🥝error-region-container-animation: --🥝error-region-pulse var(--✨duration)
-					var(--✨easing);
-			}
-		}
 	}
 }
 
 .🥝-error-region-container {
+	--✨duration: 600ms;
+	--✨easing: cubic-bezier(0.4, 0, 0.2, 1);
+
 	@layer base {
 		isolation: isolate;
 
@@ -53,13 +47,15 @@
 		background-color: var(--ids-color-bg-elevation-base);
 		box-shadow: var(--ids-shadow-surface-sm);
 
-		&::before {
-			content: "";
-			position: absolute;
-			inset: 0;
-			border-radius: inherit;
-			z-index: -1;
-			animation: var(--🥝error-region-container-animation);
+		@media (prefers-reduced-motion: no-preference) {
+			&::before {
+				content: "";
+				position: absolute;
+				inset: 0;
+				border-radius: inherit;
+				z-index: -1;
+				animation: var(--✨duration) var(--✨easing) paused --🥝error-region-pulse;
+			}
 		}
 	}
 }

@@ -40,6 +40,8 @@
 
 .🥝-error-region-container {
 	@layer base {
+		isolation: isolate;
+
 		position: relative;
 		display: var(--🥝error-region-container-display, flex);
 		flex-direction: column;

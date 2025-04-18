@@ -59,11 +59,6 @@
 					var(--✨animation--indeterminate-slow);
 			}
 		}
-
-		@media (forced-colors: active) {
-			--🥝spinner-fill-color: CanvasText;
-			--🥝spinner-track-color: Canvas;
-		}
 	}
 }
 
@@ -102,5 +97,16 @@
 
 	100% {
 		rotate: 360deg;
+	}
+}
+
+@media (forced-colors: active) {
+	.🥝-spinner {
+		--🥝spinner-fill-color: Canvas;
+		--🥝spinner-track-color: CanvasText;
+	}
+
+	.🥝-spinner-svg-track {
+		stroke-width: 2;
 	}
 }

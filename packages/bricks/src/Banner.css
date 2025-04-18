@@ -65,6 +65,21 @@
 				". message ."
 				". actions .";
 			grid-template-columns: auto 1fr auto;
+
+			@container banner (max-inline-size: 18.5rem) {
+				grid-template-areas:
+					"icon label dismiss"
+					"message message message"
+					"actions actions actions";
+				grid-template-columns: auto 1fr auto;
+			}
+
+			@container banner (max-inline-size: 12.5rem) {
+				.🥝-banner-icon {
+					display: none;
+					margin: 0;
+				}
+			}
 		}
 
 		&:has(> .🥝-banner-label[data-kiwi-label-type="visually-hidden"]) {
@@ -77,6 +92,27 @@
 				". message ."
 				". actions .";
 			grid-template-columns: auto 1fr auto;
+
+			@container banner (max-inline-size: 18.5rem) {
+				.🥝-banner-icon {
+					align-self: center;
+				}
+
+				.🥝-banner-dismiss-button {
+					justify-self: end;
+					margin-inline-start: 0;
+				}
+
+				.🥝-banner-message {
+					margin-block-start: 12px;
+				}
+
+				grid-template-areas:
+					"icon dismiss"
+					"message message"
+					"actions actions";
+				grid-template-columns: auto 1fr auto;
+			}
 		}
 	}
 }
@@ -84,7 +120,7 @@
 .🥝-banner-icon {
 	@layer base {
 		grid-area: icon;
-		justify-self: center;
+		align-self: start;
 		margin-inline-end: 8px;
 	}
 }
@@ -93,14 +129,7 @@
 	@layer base {
 		grid-area: label;
 		font-weight: 500;
-		/* margin-block-end: 4px; */
-
-		@container banner (max-inline-size: 18.5rem) {
-			/* margin-block-end: 4px; */
-		}
-		@container banner (min-inline-size: 18.5rem) {
-			/* margin-inline-end: 8px; */
-		}
+		align-self: start;
 	}
 }
 
@@ -111,10 +140,6 @@
 		overflow: hidden;
 		overflow-wrap: break-word;
 		hyphens: auto;
-
-		@container banner (min-inline-size: 18.5rem) {
-			/* margin-inline-end: auto; */
-		}
 	}
 }
 
@@ -134,5 +159,6 @@
 	@layer base {
 		grid-area: dismiss;
 		margin-inline-start: 12px;
+		align-self: start;
 	}
 }

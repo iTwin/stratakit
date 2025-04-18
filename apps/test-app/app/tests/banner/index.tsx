@@ -151,9 +151,11 @@ function AllStyleCases() {
 								tone="info"
 								label={
 									labelPermutation === "visual" ? (
-										"Label"
+										"This is a long label that goes on and on and on and on"
 									) : (
-										<VisuallyHidden>Label</VisuallyHidden>
+										<VisuallyHidden>
+											This is a long label that goes on and on and on and on
+										</VisuallyHidden>
 									)
 								}
 								// message="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do

@@ -88,12 +88,6 @@ const ErrorRegionRoot = forwardRef<"div", ErrorRegionRootProps>(
 		);
 
 		const pulseAnimationRef = React.useRef<Animation | undefined>(undefined);
-		const pulse = () => {
-			const animation = pulseAnimationRef.current;
-			if (!animation) return;
-			animation.play();
-		};
-
 		const store = useCollectionStore({
 			setItems: (newItems) => {
 				// Rendering initially
@@ -105,7 +99,7 @@ const ErrorRegionRoot = forwardRef<"div", ErrorRegionRootProps>(
 				);
 				if (addedItems.length === 0) return;
 
-				pulse();
+				pulseAnimationRef.current?.play();
 			},
 		});
 		const prevItems = useStoreState(store, "items");

@@ -85,18 +85,24 @@ export const ProgressBar = forwardRef<"div", ProgressBarProps>(
 		const value = React.useMemo(() => {
 			return valueProp != null
 				? Math.min(Math.max(valueProp, valueMin), valueMax)
-				: null;
+				: undefined;
 		}, [valueProp, valueMin, valueMax]);
+
+		const progressBarFillSizePercent = React.useMemo(() => {
+			return value != null
+				? ((value - valueMin) / (valueMax - valueMin)) * 100
+				: undefined;
+		}, [value, valueMin, valueMax]);
 
 		const style = React.useMemo(
 			() =>
 				value != null
 					? {
 							...styleProp,
-							"--🥝progress-bar-fill-size": `${value}%`,
+							"--🥝progress-bar-fill-size": `${progressBarFillSizePercent}%`,
 						}
 					: styleProp,
-			[value, styleProp],
+			[progressBarFillSizePercent, styleProp, value],
 		);
 
 		const determinateAriaProps = React.useMemo(

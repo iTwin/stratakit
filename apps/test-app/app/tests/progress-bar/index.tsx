@@ -12,6 +12,14 @@ export const handle = { title: "ProgressBar" };
 const sizes = ["small", "medium", "large"] as const;
 const tones = ["neutral", "accent"] as const;
 
+type DemoProps = {
+	size?: string;
+	tone?: string;
+	value?: number;
+	valueMin?: number;
+	valueMax?: number;
+};
+
 export default definePage(
 	function Page({
 		size = "medium",
@@ -19,13 +27,7 @@ export default definePage(
 		value,
 		valueMin,
 		valueMax,
-	}: {
-		size?: string;
-		tone?: string;
-		value?: number;
-		valueMin?: number;
-		valueMax?: number;
-	}) {
+	}: DemoProps) {
 		return (
 			<Default
 				size={size as (typeof sizes)[number]}
@@ -49,20 +51,14 @@ function Default({
 	value,
 	valueMin = 0,
 	valueMax = 100,
-}: {
-	size: (typeof sizes)[number];
-	tone: (typeof tones)[number];
-	value?: number;
-	valueMin?: number;
-	valueMax?: number;
-}) {
+}: DemoProps) {
 	const labelledBy = React.useId();
 
 	return (
 		<>
 			<ProgressBar
-				size={size}
-				tone={tone}
+				size={size as (typeof sizes)[number]}
+				tone={tone as (typeof tones)[number]}
 				value={value}
 				valueMin={valueMin}
 				valueMax={valueMax}
@@ -73,11 +69,19 @@ function Default({
 	);
 }
 
-function Determinate({ size = "medium", tone = "neutral", value = 50 }) {
+function Determinate({
+	size = "medium",
+	tone = "neutral",
+	value = 50,
+	valueMin,
+	valueMax,
+}: DemoProps) {
 	return (
 		<Default
 			size={size as (typeof sizes)[number]}
 			tone={tone as (typeof tones)[number]}
+			valueMin={valueMin}
+			valueMax={valueMax}
 			value={value}
 		/>
 	);

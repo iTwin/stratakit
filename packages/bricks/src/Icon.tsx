@@ -214,14 +214,14 @@ function createIconFromPath(d: string) {
 		(props, forwardedRef) => {
 			return (
 				<Icon
-					{...props}
 					render={
 						<Role.svg
 							width="16"
 							height="16"
 							fill="none"
 							viewBox="0 0 16 16"
-							render={props.render}
+							{...props}
+							ref={forwardedRef}
 						>
 							<path
 								fill="currentColor"
@@ -231,7 +231,6 @@ function createIconFromPath(d: string) {
 							/>
 						</Role.svg>
 					}
-					ref={forwardedRef}
 				/>
 			);
 		},

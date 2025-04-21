@@ -25,33 +25,47 @@ export default definePage(
 		tone = "neutral",
 		...rest
 	}: ProgressBarProps) {
-		return <Default size={size} tone={tone} {...rest} />;
+		const labelledBy = React.useId();
+
+		return (
+			<>
+				<ProgressBar
+					size={size}
+					tone={tone}
+					{...rest}
+					aria-labelledby={labelledBy}
+				/>
+				<VisuallyHidden id={labelledBy}>Loading…</VisuallyHidden>
+			</>
+		);
 	},
 	{
-		determinate: Determinate,
+		determinate: DeterminateTest,
 		visualIndeterminate: VisualIndeterminateTest,
 		visualDeterminate: VisualDeterminateTest,
 	},
 );
 
-function Default(props: ProgressBarProps) {
-	const labelledBy = React.useId();
-
-	return (
-		<>
-			<ProgressBar {...props} aria-labelledby={labelledBy} />
-			<VisuallyHidden id={labelledBy}>Loading…</VisuallyHidden>
-		</>
-	);
-}
-
-function Determinate({
+function DeterminateTest({
 	size = "medium",
 	tone = "neutral",
 	value = 50,
 	...rest
 }: ProgressBarProps) {
-	return <Default size={size} tone={tone} value={value} {...rest} />;
+	const labelledBy = React.useId();
+
+	return (
+		<>
+			<ProgressBar
+				size={size}
+				tone={tone}
+				value={value}
+				{...rest}
+				aria-labelledby={labelledBy}
+			/>
+			<VisuallyHidden id={labelledBy}>Loading…</VisuallyHidden>
+		</>
+	);
 }
 
 function VisualIndeterminateTest() {

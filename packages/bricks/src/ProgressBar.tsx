@@ -33,6 +33,9 @@ interface ProgressBarProps extends Omit<BaseProps, "aria-labelledby"> {
 	 *
 	 * - If passed, the progress bar will be determinate.
 	 * - If not passed, the progress bar will be indeterminate.
+	 *
+	 * Note: Indeterminate progress bars (`value` not passed) should only be used for indicating the progress of short
+	 * operations (i.e. less than 5 seconds).
 	 */
 	value?: number;
 }
@@ -50,8 +53,8 @@ interface ProgressBarProps extends Omit<BaseProps, "aria-labelledby"> {
  * Supports a `tone` prop to change the tone (color) of the progress bar.
  * Supports a `size` prop to change the size of the progress bar.
  *
- * Note: This component currently only supports indeterminate progress, and should
- * only be used for indicating the progress of short operations (i.e. less than 5 seconds).
+ * Note: Indeterminate progress bars (`value` not passed) should only be used for indicating the progress of short
+ * operations (i.e. less than 5 seconds).
  */
 export const ProgressBar = forwardRef<"div", ProgressBarProps>(
 	(props, forwardedRef) => {

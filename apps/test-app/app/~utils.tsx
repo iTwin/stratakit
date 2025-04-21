@@ -266,19 +266,17 @@ export function VariantsList({
 					{...listItemProps}
 				>
 					<ListItem.Content>
-						<Role.span
+						<Anchor
 							render={
 								!variant.isCurrent ? (
-									<Anchor
-										render={<Link to={variant.url} />}
-										className={styles.listItemLink}
-									/>
+									<Link to={variant.url} replace />
 								) : undefined
 							}
 							aria-current={variant.isCurrent ? "page" : "false"}
+							className={styles.listItemLink}
 						>
 							{variant.name}
-						</Role.span>
+						</Anchor>
 					</ListItem.Content>
 				</ListItem.Root>
 			))}

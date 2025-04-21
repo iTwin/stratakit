@@ -5,6 +5,7 @@
 
 import { Role } from "@ariakit/react/role";
 import cx from "classnames";
+import * as React from "react";
 import { VisuallyHidden } from "./VisuallyHidden.js";
 import { forwardRef } from "./~utils.js";
 
@@ -28,6 +29,14 @@ interface SpinnerProps extends BaseProps {
 	 * @default "neutral"
 	 */
 	tone?: "neutral" | "accent";
+
+	/**
+	 * The value out of 100 of the spinner.
+	 *
+	 * - If passed, the spinner will be determinate.
+	 * - If not passed, the spinner will be indeterminate.
+	 */
+	value?: number;
 }
 
 /**
@@ -47,16 +56,30 @@ export const Spinner = forwardRef<"div", SpinnerProps>(
 			alt = "Loading…",
 			size = "medium",
 			tone = "neutral",
+			value,
+			style: styleProp,
 			...rest
 		} = props;
+
+		const style = React.useMemo(
+			() =>
+				value != null
+					? {
+							...styleProp,
+							"--🥝spinner-dash-array": `${value} ${100 - value}`,
+						}
+					: styleProp,
+			[styleProp, value],
+		);
 
 		return (
 			<Role
 				{...rest}
 				data-kiwi-size={size}
 				data-kiwi-tone={tone}
-				data-kiwi-variant="indeterminate"
+				data-kiwi-variant={value != null ? "determinate" : "indeterminate"}
 				className={cx("🥝-spinner", props.className)}
+				style={style}
 				ref={forwardedRef}
 			>
 				<svg aria-hidden="true" className="🥝-spinner-svg" viewBox="0 0 16 16">

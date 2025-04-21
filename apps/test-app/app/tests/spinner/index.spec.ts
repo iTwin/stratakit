@@ -14,8 +14,13 @@ test("default", async ({ page }) => {
 });
 
 test.describe("@visual", () => {
-	test("default", async ({ page }) => {
-		await page.goto("/tests/spinner?visual=true");
+	test("indeterminate", async ({ page }) => {
+		await page.goto("/tests/spinner?visualIndeterminate");
+		await expect(page.locator("body")).toHaveScreenshot();
+	});
+
+	test("determinate", async ({ page }) => {
+		await page.goto("/tests/spinner?visualDeterminate");
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
 
@@ -24,7 +29,7 @@ test.describe("@visual", () => {
 			browserName === "webkit",
 			"Webkit does not support forced-colors",
 		);
-		await page.goto("/tests/spinner?visual=true");
+		await page.goto("/tests/spinner?visualIndeterminate");
 		await page.emulateMedia({ forcedColors: "active" });
 		await expect(page.locator("body")).toHaveScreenshot();
 	});

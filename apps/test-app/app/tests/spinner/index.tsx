@@ -21,10 +21,25 @@ export default definePage(
 			/>
 		);
 	},
-	{ visual: VisualTest },
+	{
+		determine: DeterminateTest,
+		visualIndeterminate: VisualIndeterminateTest,
+		visualDeterminate: VisualDeterminateTest,
+	},
 );
 
-function VisualTest() {
+function DeterminateTest({ size = "medium", tone = "neutral", value = 50 }) {
+	return (
+		<Spinner
+			key={value}
+			size={size as (typeof sizes)[number]}
+			tone={tone as (typeof tones)[number]}
+			value={value}
+		/>
+	);
+}
+
+function VisualIndeterminateTest() {
 	return (
 		<div style={{ display: "grid", gap: 4 }}>
 			{tones.map((tone) => (
@@ -37,6 +52,25 @@ function VisualTest() {
 					))}
 				</div>
 			))}
+		</div>
+	);
+}
+
+function VisualDeterminateTest() {
+	return (
+		<div style={{ display: "grid", gap: 4 }}>
+			{tones.map((tone) =>
+				sizes.map((size) => (
+					<div
+						key={size}
+						style={{ display: "flex", gap: 4, alignItems: "center" }}
+					>
+						{[0, 25, 50, 75, 100].map((value) => (
+							<Spinner key={value} value={value} size={size} tone={tone} />
+						))}
+					</div>
+				)),
+			)}
 		</div>
 	);
 }

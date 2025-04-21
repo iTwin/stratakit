@@ -13,48 +13,124 @@ const sizes = ["small", "medium", "large"] as const;
 const tones = ["neutral", "accent"] as const;
 
 export default definePage(
-	function Page({ size = "medium", tone = "neutral" }) {
-		const labelledBy = React.useId();
-
+	function Page({
+		size = "medium",
+		tone = "neutral",
+		value,
+	}: {
+		size?: string;
+		tone?: string;
+		value?: number;
+	}) {
 		return (
-			<>
-				<ProgressBar
-					size={size as (typeof sizes)[number]}
-					tone={tone as (typeof tones)[number]}
-					aria-labelledby={labelledBy}
-				/>
-				<VisuallyHidden id={labelledBy}>Loading…</VisuallyHidden>
-			</>
+			<Default
+				size={size as (typeof sizes)[number]}
+				tone={tone as (typeof tones)[number]}
+				value={value}
+			/>
 		);
 	},
-	{ visual: VisualTest },
+	{
+		determinate: Determinate,
+		visualIndeterminate: VisualIndeterminateTest,
+		visualDeterminate: VisualDeterminateTest,
+	},
 );
 
-function VisualTest() {
+function Default({
+	size,
+	tone,
+	value,
+}: {
+	size: (typeof sizes)[number];
+	tone: (typeof tones)[number];
+	value?: number;
+}) {
+	const labelledBy = React.useId();
+
+	return (
+		<>
+			<ProgressBar
+				size={size}
+				tone={tone}
+				value={value}
+				aria-labelledby={labelledBy}
+			/>
+			<VisuallyHidden id={labelledBy}>Loading…</VisuallyHidden>
+		</>
+	);
+}
+
+function Determinate({ size = "medium", tone = "neutral", value = 50 }) {
+	return (
+		<Default
+			size={size as (typeof sizes)[number]}
+			tone={tone as (typeof tones)[number]}
+			value={value}
+		/>
+	);
+}
+
+function VisualIndeterminateTest() {
+	const idPrefix = React.useId();
+
+	return (
+		<div style={{ display: "grid", gap: 10 }}>
+			{tones.map((tone) =>
+				sizes.map((size) => {
+					const labelledBy = `${idPrefix}-${size}-${tone}`;
+
+					return (
+						<>
+							<ProgressBar
+								key={size}
+								size={size}
+								tone={tone}
+								aria-labelledby={labelledBy}
+							/>
+							<VisuallyHidden id={labelledBy} key={labelledBy}>
+								Loading…
+							</VisuallyHidden>
+						</>
+					);
+				}),
+			)}
+		</div>
+	);
+}
+
+function VisualDeterminateTest() {
 	const idPrefix = React.useId();
 
 	return (
 		<div style={{ display: "grid", gap: 10 }}>
 			{tones.map((tone) => (
-				<div key={tone} style={{ display: "grid", gap: 10 }}>
+				<React.Fragment key={tone}>
 					{sizes.map((size) => {
-						const labelledBy = `${idPrefix}-${size}-${tone}`;
-
 						return (
-							<>
-								<ProgressBar
-									key={size}
-									size={size}
-									tone={tone}
-									aria-labelledby={labelledBy}
-								/>
-								<VisuallyHidden id={labelledBy} key={labelledBy}>
-									Loading…
-								</VisuallyHidden>
-							</>
+							<React.Fragment key={size}>
+								{[0, 25, 50, 75, 100].map((value) => {
+									const labelledBy = `${idPrefix}-${size}-${tone}-${value}`;
+									return (
+										<>
+											<ProgressBar
+												key={size}
+												size={size}
+												tone={tone}
+												aria-labelledby={labelledBy}
+												value={value}
+											/>
+											<VisuallyHidden id={labelledBy} key={labelledBy}>
+												Loading…
+											</VisuallyHidden>
+										</>
+									);
+								})}
+								<br />
+							</React.Fragment>
 						);
 					})}
-				</div>
+				</React.Fragment>
 			))}
 		</div>
 	);

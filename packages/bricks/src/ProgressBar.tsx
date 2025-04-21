@@ -5,6 +5,7 @@
 
 import { Role } from "@ariakit/react/role";
 import cx from "classnames";
+import * as React from "react";
 import { forwardRef } from "./~utils.js";
 
 import type { BaseProps } from "./~utils.js";
@@ -27,6 +28,13 @@ interface ProgressBarProps extends Omit<BaseProps, "aria-labelledby"> {
 	 * @default "neutral"
 	 */
 	tone?: "neutral" | "accent";
+	/**
+	 * The value out of 100 of the progress bar.
+	 *
+	 * - If passed, the progress bar will be determinate.
+	 * - If not passed, the progress bar will be indeterminate.
+	 */
+	value?: number;
 }
 
 /**
@@ -47,7 +55,24 @@ interface ProgressBarProps extends Omit<BaseProps, "aria-labelledby"> {
  */
 export const ProgressBar = forwardRef<"div", ProgressBarProps>(
 	(props, forwardedRef) => {
-		const { size = "medium", tone = "neutral", ...rest } = props;
+		const {
+			size = "medium",
+			tone = "neutral",
+			value,
+			style: styleProp,
+			...rest
+		} = props;
+
+		const style = React.useMemo(
+			() =>
+				value != null
+					? {
+							...styleProp,
+							"--🥝progress-bar-fill-size": `${value}%`,
+						}
+					: styleProp,
+			[value, styleProp],
+		);
 
 		return (
 			<Role
@@ -55,8 +80,9 @@ export const ProgressBar = forwardRef<"div", ProgressBarProps>(
 				{...rest}
 				data-kiwi-size={size}
 				data-kiwi-tone={tone}
-				data-kiwi-variant="indeterminate"
+				data-kiwi-variant={value != null ? "determinate" : "indeterminate"}
 				className={cx("🥝-progress-bar", props.className)}
+				style={style}
 				ref={forwardedRef}
 			/>
 		);

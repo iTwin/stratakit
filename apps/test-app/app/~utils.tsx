@@ -3,7 +3,6 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import { Role } from "@ariakit/react/role";
 import { Anchor, IconButton } from "@stratakit/bricks";
 import cx from "classnames";
 import * as React from "react";

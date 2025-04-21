@@ -13,6 +13,59 @@ test("default", async ({ page }) => {
 	await expect(progressBar).toHaveAccessibleName("Loading…");
 });
 
+test.describe("determinate", () => {
+	test("default", async ({ page }) => {
+		await page.goto("/tests/progress-bar?determinate");
+		const progressBar = page.getByRole("progressbar");
+		await expect(progressBar).toBeVisible();
+		await expect(progressBar).toHaveAttribute("aria-valuenow", "50");
+		await expect(progressBar).toHaveAttribute("aria-valuemin", "0");
+		await expect(progressBar).toHaveAttribute("aria-valuemax", "100");
+		await expect(progressBar).toHaveAccessibleName("Loading…");
+	});
+
+	test("custom value", async ({ page }) => {
+		await page.goto("/tests/progress-bar?determinate&value=75");
+		const progressBar = page.getByRole("progressbar");
+		await expect(progressBar).toHaveAttribute("aria-valuenow", "75");
+		await expect(progressBar).toHaveAttribute("aria-valuemin", "0");
+		await expect(progressBar).toHaveAttribute("aria-valuemax", "100");
+		await expect(progressBar).toHaveAccessibleName("Loading…");
+	});
+
+	test("custom valueMin", async ({ page }) => {
+		await page.goto("/tests/progress-bar?determinate&valueMin=10");
+		const progressBar = page.getByRole("progressbar");
+		await expect(progressBar).toHaveAttribute("aria-valuenow", "50");
+		await expect(progressBar).toHaveAttribute("aria-valuemin", "10");
+		await expect(progressBar).toHaveAttribute("aria-valuemax", "100");
+		await expect(progressBar).toHaveAccessibleName("Loading…");
+	});
+
+	test("custom valueMax", async ({ page }) => {
+		await page.goto("/tests/progress-bar?determinate&valueMax=200");
+		const progressBar = page.getByRole("progressbar");
+		await expect(progressBar).toHaveAttribute("aria-valuenow", "50");
+		await expect(progressBar).toHaveAttribute("aria-valuemin", "0");
+		await expect(progressBar).toHaveAttribute("aria-valuemax", "200");
+		await expect(progressBar).toHaveAccessibleName("Loading…");
+	});
+
+	test("value cannot exceed valueMax", async ({ page }) => {
+		await page.goto("/tests/progress-bar?determinate&value=200");
+		const progressBar = page.getByRole("progressbar");
+		await expect(progressBar).toHaveAttribute("aria-valuenow", "100");
+		await expect(progressBar).toHaveAccessibleName("Loading…");
+	});
+
+	test("value cannot be less than valueMin", async ({ page }) => {
+		await page.goto("/tests/progress-bar?determinate&value=-200");
+		const progressBar = page.getByRole("progressbar");
+		await expect(progressBar).toHaveAttribute("aria-valuenow", "0");
+		await expect(progressBar).toHaveAccessibleName("Loading…");
+	});
+});
+
 test.describe("@visual", () => {
 	test("indeterminate", async ({ page }) => {
 		await page.goto("/tests/progress-bar?visualIndeterminate");

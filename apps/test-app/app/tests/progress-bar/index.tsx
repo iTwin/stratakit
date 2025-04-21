@@ -12,31 +12,20 @@ export const handle = { title: "ProgressBar" };
 const sizes = ["small", "medium", "large"] as const;
 const tones = ["neutral", "accent"] as const;
 
-type DemoProps = {
-	size?: string;
-	tone?: string;
-	value?: number;
-	valueMin?: number;
-	valueMax?: number;
-};
+type ProgressBarProps = Partial<
+	Pick<
+		React.ComponentProps<typeof ProgressBar>,
+		"size" | "tone" | "value" | "valueMin" | "valueMax"
+	>
+>;
 
 export default definePage(
 	function Page({
 		size = "medium",
 		tone = "neutral",
-		value,
-		valueMin,
-		valueMax,
-	}: DemoProps) {
-		return (
-			<Default
-				size={size as (typeof sizes)[number]}
-				tone={tone as (typeof tones)[number]}
-				value={value}
-				valueMin={valueMin}
-				valueMax={valueMax}
-			/>
-		);
+		...rest
+	}: ProgressBarProps) {
+		return <Default size={size} tone={tone} {...rest} />;
 	},
 	{
 		determinate: Determinate,
@@ -45,25 +34,12 @@ export default definePage(
 	},
 );
 
-function Default({
-	size,
-	tone,
-	value,
-	valueMin = 0,
-	valueMax = 100,
-}: DemoProps) {
+function Default(props: ProgressBarProps) {
 	const labelledBy = React.useId();
 
 	return (
 		<>
-			<ProgressBar
-				size={size as (typeof sizes)[number]}
-				tone={tone as (typeof tones)[number]}
-				value={value}
-				valueMin={valueMin}
-				valueMax={valueMax}
-				aria-labelledby={labelledBy}
-			/>
+			<ProgressBar {...props} aria-labelledby={labelledBy} />
 			<VisuallyHidden id={labelledBy}>Loading…</VisuallyHidden>
 		</>
 	);
@@ -73,18 +49,9 @@ function Determinate({
 	size = "medium",
 	tone = "neutral",
 	value = 50,
-	valueMin,
-	valueMax,
-}: DemoProps) {
-	return (
-		<Default
-			size={size as (typeof sizes)[number]}
-			tone={tone as (typeof tones)[number]}
-			valueMin={valueMin}
-			valueMax={valueMax}
-			value={value}
-		/>
-	);
+	...rest
+}: ProgressBarProps) {
+	return <Default size={size} tone={tone} value={value} {...rest} />;
 }
 
 function VisualIndeterminateTest() {

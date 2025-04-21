@@ -29,7 +29,7 @@ interface ProgressBarProps extends Omit<BaseProps, "aria-labelledby"> {
 	 */
 	tone?: "neutral" | "accent";
 	/**
-	 * The value of the progress bar. By default, is it between 0 and 100.
+	 * The value of the progress bar. By default, it is between 0 and 100.
 	 * This can be modified using `valueMin` and `valueMax`.
 	 *
 	 * - If passed, the progress bar will be determinate.
@@ -80,7 +80,7 @@ export const ProgressBar = forwardRef<"div", ProgressBarProps>(
 		} = props;
 
 		/**
-		 * Keeps the value between `valueMin` and `valueMax`.
+		 * `valueProp` between `valueMin` and `valueMax`
 		 */
 		const value = React.useMemo(() => {
 			return valueProp != null
@@ -88,22 +88,19 @@ export const ProgressBar = forwardRef<"div", ProgressBarProps>(
 				: undefined;
 		}, [valueProp, valueMin, valueMax]);
 
-		const progressBarFillSizePercent = React.useMemo(() => {
-			return value != null
-				? ((value - valueMin) / (valueMax - valueMin)) * 100
-				: undefined;
-		}, [value, valueMin, valueMax]);
-
-		const style = React.useMemo(
-			() =>
+		const style = React.useMemo(() => {
+			const progressBarFillSizePercent =
 				value != null
-					? {
-							...styleProp,
-							"--🥝progress-bar-fill-size": `${progressBarFillSizePercent}%`,
-						}
-					: styleProp,
-			[progressBarFillSizePercent, styleProp, value],
-		);
+					? ((value - valueMin) / (valueMax - valueMin)) * 100
+					: undefined;
+
+			return value != null
+				? {
+						...styleProp,
+						"--🥝progress-bar-fill-size": `${progressBarFillSizePercent}%`,
+					}
+				: styleProp;
+		}, [styleProp, value, valueMin, valueMax]);
 
 		const determinateAriaProps = React.useMemo(
 			() =>

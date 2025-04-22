@@ -60,40 +60,6 @@ test.describe("@visual", () => {
 			await input.focus();
 			await expect(page.locator("body")).toHaveScreenshot();
 		});
-
-		test(`disabled ${type}`, async ({ page }) => {
-			await page.goto(
-				toUrl("/tests/text-box?disabled&defaultValue=Value", type),
-			);
-			await expect(page.locator("body")).toHaveScreenshot();
-		});
-
-		test(`forced-colors focus outline ${type}`, async ({
-			page,
-			browserName,
-		}) => {
-			test.skip(
-				browserName === "webkit",
-				"Webkit does not support forced-colors",
-			);
-			await page.goto(toUrl("/tests/text-box", type));
-			const input = page.getByRole("textbox");
-			await input.focus();
-			await page.emulateMedia({ forcedColors: "active" });
-			await expect(page.locator("body")).toHaveScreenshot();
-		});
-
-		test(`forced-colors disabled ${type}`, async ({ page, browserName }) => {
-			test.skip(
-				browserName === "webkit",
-				"Webkit does not support forced-colors",
-			);
-			await page.goto(
-				toUrl("/tests/text-box?disabled&defaultValue=Value", type),
-			);
-			await page.emulateMedia({ forcedColors: "active" });
-			await expect(page.locator("body")).toHaveScreenshot();
-		});
 	}
 
 	test("forced-colors default", async ({ page, browserName }) => {

@@ -61,7 +61,9 @@ function CompositionTest({ disabled, defaultValue }: VariantProps) {
 function VisualTest() {
 	return (
 		<div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+			<TextBox.Input placeholder="Placeholder" />
 			<TextBox.Input defaultValue="Value" />
+			<TextBox.Input disabled defaultValue="Disabled value" />
 			<TextBox.Root>
 				<TextBox.Input defaultValue="Value" />
 			</TextBox.Root>
@@ -82,6 +84,13 @@ function VisualTest() {
 				<TextBox.Icon href={placeholderIcon} />
 				<TextAffix>%</TextAffix>
 				<TextBox.Input defaultValue="Value" />
+				<TextAffix>%</TextAffix>
+				<TextBox.Icon href={placeholderIcon} />
+			</TextBox.Root>
+			<TextBox.Root>
+				<TextBox.Icon href={placeholderIcon} />
+				<TextAffix>%</TextAffix>
+				<TextBox.Input disabled defaultValue="Disabled value" />
 				<TextAffix>%</TextAffix>
 				<TextBox.Icon href={placeholderIcon} />
 			</TextBox.Root>

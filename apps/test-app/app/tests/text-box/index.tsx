@@ -4,7 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 
 import { Field, Label, TextBox } from "@stratakit/bricks";
-import { useId } from "react";
+import * as React from "react";
 import { definePage } from "~/~utils.tsx";
 
 import placeholderIcon from "@stratakit/icons/placeholder.svg";
@@ -35,13 +35,25 @@ export default definePage(
 		);
 	},
 	{
+		textarea: Textarea,
 		composition: CompositionTest,
 		visual: VisualTest,
 	},
 );
 
+function Textarea({ disabled }: VariantProps) {
+	return (
+		<Field.Root>
+			<Field.Label>Fruit</Field.Label>
+			<Field.Control
+				render={<TextBox.Textarea rows={3} disabled={!!disabled} />}
+			/>
+		</Field.Root>
+	);
+}
+
 function CompositionTest({ disabled, defaultValue }: VariantProps) {
-	const id = useId();
+	const id = React.useId();
 
 	return (
 		<div style={{ display: "flex", gap: 4, alignItems: "center" }}>
@@ -63,6 +75,7 @@ function VisualTest() {
 		<div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
 			<TextBox.Input placeholder="Placeholder" />
 			<TextBox.Input defaultValue="Value" />
+			<TextBox.Textarea defaultValue="Value" />
 			<TextBox.Input disabled defaultValue="Disabled value" />
 			<TextBox.Root>
 				<TextBox.Input defaultValue="Value" />

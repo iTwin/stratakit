@@ -6,18 +6,9 @@
 import AxeBuilder from "@axe-core/playwright";
 import { expect, test } from "#playwright";
 
-function toUrl(urlStr: string, type: "input" | "composition") {
-	const [url, urlParams] = urlStr.split("?");
-	const params = new URLSearchParams(urlParams);
-	if (type === "composition") params.set("composition", "true");
-
-	const paramsStr = params.toString();
-	return `${url}?${paramsStr}`;
-}
-
-for (const type of ["input", "composition"] as const) {
+for (const type of ["input", "textarea", "composition"] as const) {
 	test(`default ${type}`, async ({ page }) => {
-		await page.goto(toUrl("/tests/text-box", type));
+		await page.goto(`/tests/text-box?${type}`);
 
 		const input = page.getByRole("textbox");
 		const label = page.getByText("Fruit");
@@ -32,9 +23,9 @@ for (const type of ["input", "composition"] as const) {
 	});
 
 	test(`disabled ${type}`, async ({ page }) => {
-		await page.goto(toUrl("/tests/text-box?disabled", type));
+		await page.goto(`/tests/text-box?${type}&disabled`);
 
-		const input = page.locator("input");
+		const input = page.getByRole("textbox");
 		await expect(input).toHaveAccessibleName("Fruit");
 		await expect(input).toBeDisabled();
 
@@ -55,14 +46,14 @@ test.describe("@visual", () => {
 
 	for (const type of ["input", "composition"] as const) {
 		test(`focus outline ${type}`, async ({ page }) => {
-			await page.goto(toUrl("/tests/text-box", type));
+			await page.goto(`/tests/text-box?${type}`);
 			const input = page.getByRole("textbox");
 			await input.focus();
 			await expect(page.locator("body")).toHaveScreenshot();
 		});
 	}
 
-	test("forced-colors default", async ({ page, browserName }) => {
+	test("forced-colors", async ({ page, browserName }) => {
 		test.skip(
 			browserName === "webkit",
 			"Webkit does not support forced-colors",
@@ -74,14 +65,13 @@ test.describe("@visual", () => {
 });
 
 test.describe("@a11y", () => {
-	test("Axe Page Scan", async ({ page }) => {
-		await page.goto("/tests/text-box");
+	for (const type of ["input", "textarea", "composition"] as const) {
+		test(`Axe Page Scan ${type}`, async ({ page }) => {
+			await page.goto(`/tests/text-box?${type}`);
 
-		const input = page.getByRole("textbox");
-		await expect(input).toBeVisible();
-
-		const axe = new AxeBuilder({ page });
-		const accessibilityScan = await axe.analyze();
-		expect(accessibilityScan.violations).toEqual([]);
-	});
+			const axe = new AxeBuilder({ page });
+			const accessibilityScan = await axe.analyze();
+			expect(accessibilityScan.violations).toEqual([]);
+		});
+	}
 });

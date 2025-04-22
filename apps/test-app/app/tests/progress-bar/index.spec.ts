@@ -67,13 +67,8 @@ test.describe("determinate", () => {
 });
 
 test.describe("@visual", () => {
-	test("indeterminate", async ({ page }) => {
-		await page.goto("/tests/progress-bar?visualIndeterminate");
-		await expect(page.locator("body")).toHaveScreenshot();
-	});
-
-	test("determinate", async ({ page }) => {
-		await page.goto("/tests/progress-bar?visualDeterminate");
+	test("default", async ({ page }) => {
+		await page.goto("/tests/progress-bar?visual");
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
 
@@ -82,7 +77,7 @@ test.describe("@visual", () => {
 			browserName === "webkit",
 			"Webkit does not support forced-colors",
 		);
-		await page.goto("/tests/progress-bar?visualIndeterminate");
+		await page.goto("/tests/progress-bar?visual");
 		await page.emulateMedia({ forcedColors: "active" });
 		await expect(page.locator("body")).toHaveScreenshot();
 	});

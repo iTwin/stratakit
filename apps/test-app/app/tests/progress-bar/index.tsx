@@ -12,26 +12,15 @@ export const handle = { title: "ProgressBar" };
 const sizes = ["small", "medium", "large"] as const;
 const tones = ["neutral", "accent"] as const;
 
-type ProgressBarProps = Partial<
-	Pick<
-		React.ComponentProps<typeof ProgressBar>,
-		"size" | "tone" | "value" | "valueMin" | "valueMax"
-	>
->;
-
 export default definePage(
-	function Page({
-		size = "medium",
-		tone = "neutral",
-		...rest
-	}: ProgressBarProps) {
+	function Page({ size = "medium", tone = "neutral", ...rest }) {
 		const labelledBy = React.useId();
 
 		return (
 			<>
 				<ProgressBar
-					size={size}
-					tone={tone}
+					size={size as (typeof sizes)[number]}
+					tone={tone as (typeof tones)[number]}
 					{...rest}
 					aria-labelledby={labelledBy}
 				/>
@@ -40,73 +29,46 @@ export default definePage(
 		);
 	},
 	{
+		visual: VisualTest,
 		determinate: DeterminateTest,
-		visualIndeterminate: VisualIndeterminateTest,
-		visualDeterminate: VisualDeterminateTest,
+		changing: ChangingText,
 	},
 );
 
-function DeterminateTest({
-	size = "medium",
-	tone = "neutral",
-	value = 50,
-	...rest
-}: ProgressBarProps) {
-	const labelledBy = React.useId();
-
-	return (
-		<>
-			<ProgressBar
-				size={size}
-				tone={tone}
-				value={value}
-				{...rest}
-				aria-labelledby={labelledBy}
-			/>
-			<VisuallyHidden id={labelledBy}>Loading…</VisuallyHidden>
-		</>
-	);
-}
-
-function VisualIndeterminateTest() {
-	const idPrefix = React.useId();
-
-	return (
-		<div style={{ display: "grid", gap: 10 }}>
-			{tones.map((tone) =>
-				sizes.map((size) => {
-					const labelledBy = `${idPrefix}-${size}-${tone}`;
-
-					return (
-						<>
-							<ProgressBar
-								key={size}
-								size={size}
-								tone={tone}
-								aria-labelledby={labelledBy}
-							/>
-							<VisuallyHidden id={labelledBy} key={labelledBy}>
-								Loading…
-							</VisuallyHidden>
-						</>
-					);
-				}),
-			)}
-		</div>
-	);
-}
-
-function VisualDeterminateTest() {
+function VisualTest() {
 	const idPrefix = React.useId();
 
 	return (
 		<div style={{ display: "grid", gap: 10 }}>
 			{tones.map((tone) => (
+				<div key={tone} style={{ display: "grid", gap: 10 }}>
+					{sizes.map((size) => {
+						const labelledBy = `${idPrefix}-${size}-${tone}`;
+
+						return (
+							<>
+								<ProgressBar
+									key={size}
+									size={size}
+									tone={tone}
+									aria-labelledby={labelledBy}
+								/>
+								<VisuallyHidden id={labelledBy} key={labelledBy}>
+									Loading…
+								</VisuallyHidden>
+							</>
+						);
+					})}
+				</div>
+			))}
+
+			{tones.map((tone) => (
 				<React.Fragment key={tone}>
 					{sizes.map((size) => {
 						return (
 							<React.Fragment key={size}>
-								{[0, 25, 50, 75, 100].map((value) => {
+								<br style={{ margin: "10px 0" }} />
+								{[0, 50, 100].map((value) => {
 									const labelledBy = `${idPrefix}-${size}-${tone}-${value}`;
 									return (
 										<>
@@ -123,12 +85,55 @@ function VisualDeterminateTest() {
 										</>
 									);
 								})}
-								<br />
 							</React.Fragment>
 						);
 					})}
 				</React.Fragment>
 			))}
 		</div>
+	);
+}
+
+function DeterminateTest({
+	size = "medium",
+	tone = "neutral",
+	value = 50,
+	...rest
+}) {
+	const labelledBy = React.useId();
+
+	return (
+		<>
+			<ProgressBar
+				size={size as (typeof sizes)[number]}
+				tone={tone as (typeof tones)[number]}
+				value={value}
+				{...rest}
+				aria-labelledby={labelledBy}
+			/>
+			<VisuallyHidden id={labelledBy}>Loading…</VisuallyHidden>
+		</>
+	);
+}
+
+function ChangingText() {
+	const [value, setValue] = React.useState(0);
+	const labelledBy = React.useId();
+
+	React.useEffect(() => {
+		const interval = setInterval(() => {
+			const randomProgress = Math.floor(Math.random() * 25);
+
+			setValue((prev) => (prev + randomProgress) % 100);
+		}, 1000);
+
+		return () => clearInterval(interval);
+	}, []);
+
+	return (
+		<>
+			<ProgressBar value={value} aria-labelledby={""} />
+			<VisuallyHidden id={labelledBy}>Loading…</VisuallyHidden>
+		</>
 	);
 }

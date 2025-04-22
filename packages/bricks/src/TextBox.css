@@ -132,7 +132,7 @@
 				:disabled,
 				[aria-disabled="true"],
 				[data-kiwi-disabled="true"],
-				:has(:is(input, textarea):disabled)
+				:has(:is(input, textarea):is(:disabled, [aria-disabled="true"]))
 			) {
 			--🌀text-box-state: var(--🌀text-box-state--disabled);
 			box-shadow: none;
@@ -167,7 +167,7 @@
 				:disabled,
 				[aria-disabled="true"],
 				[data-kiwi-disabled="true"],
-				:has(:is(input, textarea):disabled)
+				:has(:is(input, textarea):is(:disabled, [aria-disabled="true"]))
 			) {
 			--🥝text-box-border-color: GrayText;
 			color: GrayText;

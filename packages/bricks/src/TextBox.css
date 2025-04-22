@@ -157,3 +157,32 @@
 		flex-shrink: 0;
 	}
 }
+
+@media (forced-colors: active) {
+	.🥝-text-box {
+		--🥝text-box-background-color: Field;
+		--🥝text-box-border-color: CanvasText;
+		color: FieldText;
+
+		&:where(:has(:is(input, textarea):focus-visible), :is(input, textarea):focus-visible) {
+			outline-color: Highlight;
+		}
+
+		@supports not selector(:has(+ *)) {
+			&:where(:not(input, textarea):focus-within) {
+				outline-color: Highlight;
+			}
+		}
+
+		&:where(
+				[disabled],
+				:disabled,
+				[aria-disabled="true"],
+				[data-kiwi-disabled="true"],
+				:has(:is(input, textarea):disabled)
+			) {
+			--🥝text-box-border-color: GrayText;
+			color: GrayText;
+		}
+	}
+}

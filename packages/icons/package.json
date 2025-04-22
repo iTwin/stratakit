@@ -18,6 +18,13 @@
 	},
 	"keywords": ["itwinui", "strata", "stratakit", "svg", "icons"],
 	"scripts": {
-		"build": "tsx scripts/icons-list.cts"
+		"build": "wireit"
+	},
+	"wireit": {
+		"build": {
+			"command": "tsx scripts/icons-list.cts",
+			"files": ["icons", "scripts"],
+			"output": ["icons-list.json"]
+		}
 	}
 }

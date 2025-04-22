@@ -204,7 +204,7 @@ export function usePopoverApi(store: PopoverStore | undefined) {
 }
 
 /**
- * Hook that returns false initially, then returns true after the first client render.
+ * Hook that returns true for the first "full" client render.
  * Useful to guard against using client APIs during SSR.
  *
  * Note: This will return `false` during hydration.
@@ -212,11 +212,9 @@ export function usePopoverApi(store: PopoverStore | undefined) {
  * @private
  */
 export function useIsClient() {
-	const [isClient, setIsClient] = React.useState(false);
-
-	React.useEffect(() => {
-		setIsClient(true);
-	}, []);
-
-	return isClient;
+	return React.useSyncExternalStore(
+		React.useCallback(() => () => {}, []),
+		() => true,
+		() => false,
+	);
 }

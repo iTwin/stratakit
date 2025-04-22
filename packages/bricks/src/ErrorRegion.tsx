@@ -18,7 +18,7 @@ import { useStoreState } from "@ariakit/react/store";
 import cx from "classnames";
 import * as React from "react";
 import { Button } from "./Button.js";
-import { ChevronDown, StatusWarning } from "./Icon.js";
+import { ChevronDown, StatusIcon } from "./Icon.js";
 import { IconButtonPresentation } from "./IconButton.internal.js";
 import { Text } from "./Text.js";
 import { VisuallyHidden } from "./VisuallyHidden.js";
@@ -141,7 +141,7 @@ const ErrorRegionRoot = forwardRef<"div", ErrorRegionRootProps>(
 								className="🥝-error-region-header"
 								render={<Button variant="ghost" />}
 							>
-								<StatusWarning className="🥝-error-region-icon" />
+								<StatusIcon tone="attention" className="🥝-error-region-icon" />
 								<Text
 									render={<span />}
 									id={labelId}

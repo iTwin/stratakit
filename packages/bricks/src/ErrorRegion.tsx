@@ -87,7 +87,27 @@ const ErrorRegionRoot = forwardRef<"div", ErrorRegionRootProps>(
 			onExpandedChange as React.Dispatch<React.SetStateAction<boolean>>,
 		);
 
+		const ref = React.useRef<HTMLDivElement>(null);
 		const pulseAnimationRef = React.useRef<Animation | undefined>(undefined);
+		const getPulseAnimation = () => {
+			if (pulseAnimationRef.current) {
+				return pulseAnimationRef.current;
+			}
+
+			const el = ref.current;
+			if (!el) return;
+			const animations = el.getAnimations({
+				subtree: true,
+			});
+			const animation = animations.find((animation) => {
+				if (!(animation instanceof CSSAnimation)) return false;
+				return animation.animationName === "--🥝error-region-pulse";
+			});
+			if (!animation) return;
+			pulseAnimationRef.current = animation;
+			return animation;
+		};
+
 		const store = useCollectionStore({
 			setItems: (newItems) => {
 				const prevItemsSet = new Set(prevItems.map((item) => item.id));
@@ -96,7 +116,9 @@ const ErrorRegionRoot = forwardRef<"div", ErrorRegionRootProps>(
 				);
 				if (addedItems.length === 0) return;
 
-				pulseAnimationRef.current?.play();
+				const pulse = getPulseAnimation();
+				if (!pulse) return;
+				pulse.play();
 			},
 		});
 		const prevItems = useStoreState(store, "items");
@@ -112,18 +134,7 @@ const ErrorRegionRoot = forwardRef<"div", ErrorRegionRootProps>(
 						className={cx("🥝-error-region", props.className)}
 						data-kiwi-visible={!!label}
 						data-kiwi-expanded={open}
-						ref={useMergedRefs(forwardedRef, (el) => {
-							if (!el) return;
-							const animations = el.getAnimations({
-								subtree: true,
-							});
-							const animation = animations.find((animation) => {
-								if (!(animation instanceof CSSAnimation)) return false;
-								return animation.animationName === "--🥝error-region-pulse";
-							});
-							if (!animation) return;
-							pulseAnimationRef.current = animation;
-						})}
+						ref={useMergedRefs(forwardedRef, ref)}
 					>
 						<div className="🥝-error-region-container">
 							<DialogDisclosure

@@ -90,9 +90,6 @@ const ErrorRegionRoot = forwardRef<"div", ErrorRegionRootProps>(
 		const pulseAnimationRef = React.useRef<Animation | undefined>(undefined);
 		const store = useCollectionStore({
 			setItems: (newItems) => {
-				// Rendering initially
-				if (prevItems.length === 0) return;
-
 				const prevItemsSet = new Set(prevItems.map((item) => item.id));
 				const addedItems = newItems.filter(
 					(item) => !prevItemsSet.has(item.id),

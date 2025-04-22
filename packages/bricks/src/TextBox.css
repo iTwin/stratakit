@@ -26,8 +26,6 @@
 	/* Dynamically adjust the padding to avoid issues with baseline alignment */
 	--✨padding-block: max(0px, (var(--✨height) - 2px - 1lh) / 2);
 	--✨gap: 4px;
-	--✨outline: 2px solid var(--ids-color-border-accent-base);
-	--✨outline-offset: 1px;
 
 	@layer base {
 		cursor: var(--🥝text-box-cursor);
@@ -114,16 +112,16 @@
 		}
 
 		&:where(:has(:is(input, textarea):focus-visible), :is(input, textarea):focus-visible) {
-			outline: var(--✨outline);
-			outline-offset: var(--✨outline-offset);
+			outline: var(--🥝focus-outline);
+			outline-offset: var(--🥝focus-outline-offset);
 			--🥝text-box-border-color: var(--✨border--focus);
 			--🥝icon-color: var(--ids-color-icon-accent-strong);
 		}
 
 		@supports not selector(:has(+ *)) {
 			&:where(:not(input, textarea):focus-within) {
-				outline: var(--✨outline);
-				outline-offset: var(--✨outline-offset);
+				outline: var(--🥝focus-outline);
+				outline-offset: var(--🥝focus-outline-offset);
 				--🥝text-box-border-color: var(--✨border--focus);
 				--🥝icon-color: var(--ids-color-icon-accent-strong);
 			}
@@ -163,7 +161,6 @@
 		--🥝text-box-background-color: Field;
 		--🥝text-box-border-color: CanvasText;
 		color: FieldText;
-		outline-color: Highlight;
 
 		&:where(
 				[disabled],

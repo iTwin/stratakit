@@ -120,11 +120,19 @@ function ChangingText() {
 	const [value, setValue] = React.useState(0);
 	const labelledBy = React.useId();
 
+	// Simulate progress bar value changing over time
 	React.useEffect(() => {
 		const interval = setInterval(() => {
-			const randomProgress = Math.floor(Math.random() * 25);
+			setValue((prev) => {
+				if (prev === 100) {
+					return 0;
+				}
 
-			setValue((prev) => (prev + randomProgress) % 100);
+				const randomProgress = Math.random() * 25;
+				const newValue = Math.min(prev + randomProgress, 100);
+
+				return newValue;
+			});
 		}, 1000);
 
 		return () => clearInterval(interval);
@@ -132,7 +140,7 @@ function ChangingText() {
 
 	return (
 		<>
-			<ProgressBar value={value} aria-labelledby={""} />
+			<ProgressBar value={value} aria-labelledby={labelledBy} />
 			<VisuallyHidden id={labelledBy}>Loading…</VisuallyHidden>
 		</>
 	);

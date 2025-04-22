@@ -132,11 +132,6 @@
 }
 
 @keyframes --🥝error-region-pulse {
-	0%,
-	100% {
-		box-shadow: 0 0 0 0 var(--ids-color-border-attention-base);
-		opacity: 0;
-	}
 	50% {
 		box-shadow: 0 0 15px 2px var(--ids-color-border-attention-base);
 		opacity: 0.7;

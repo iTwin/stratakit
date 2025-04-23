@@ -1,9 +1,10 @@
-import { Anchor, Banner, Button, VisuallyHidden } from "@stratakit/bricks";
-import placeholderIcon from "@stratakit/icons/placeholder.svg";
 /*---------------------------------------------------------------------------------------------
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
+
+import { Anchor, Banner, Button, VisuallyHidden } from "@stratakit/bricks";
+import placeholderIcon from "@stratakit/icons/placeholder.svg";
 import { definePage } from "~/~utils.tsx";
 
 export const handle = { title: "Banner" };

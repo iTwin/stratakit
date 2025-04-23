@@ -10,7 +10,6 @@
 		border: 1px solid var(--🥝banner-color-border);
 		border-radius: 8px;
 		padding: 12px;
-		min-block-size: calc(3rem + 2px);
 		display: flex;
 	}
 

@@ -11,7 +11,7 @@ export const handle = { title: "Banner" };
 
 export default definePage(
 	function Page() {
-		return <Banner label="Label" message="Message" />;
+		return <Banner label="Label" />;
 	},
 	{
 		visual: VisualTest,

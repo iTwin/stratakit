@@ -141,9 +141,15 @@ export const Banner = forwardRef<"div", BannerProps>((props, forwardedRef) => {
 					})
 				)}
 
-				<Text render={<span />} variant="body-sm" className="🥝-banner-message">
-					{message}
-				</Text>
+				{message != null ? (
+					<Text
+						render={<span />}
+						variant="body-sm"
+						className="🥝-banner-message"
+					>
+						{message}
+					</Text>
+				) : null}
 
 				{actions != null ? (
 					<div className="🥝-banner-actions">{actions}</div>

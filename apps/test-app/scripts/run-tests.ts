@@ -7,6 +7,7 @@ import { fileURLToPath } from "node:url";
 
 const repoDir = fileURLToPath(new URL("../../..", import.meta.url));
 const appDir = fileURLToPath(new URL("..", import.meta.url));
+const dockerfilePath = fileURLToPath(new URL("./Dockerfile", import.meta.url));
 
 const imageName = "kiwi";
 const containerRepoDir = "/kiwi";
@@ -30,7 +31,14 @@ async function execute(command: string, args: string[] = []) {
 }
 
 void (async () => {
-	await execute("docker", ["build", "-t", imageName, repoDir]);
+	await execute("docker", [
+		"build",
+		"-t",
+		imageName,
+		"-f",
+		dockerfilePath,
+		repoDir, // Build context
+	]);
 
 	await execute("docker", [
 		"run",

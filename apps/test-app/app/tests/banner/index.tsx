@@ -9,6 +9,9 @@ import { definePage } from "~/~utils.tsx";
 
 export const handle = { title: "Banner" };
 
+const loremIpsum =
+	"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris";
+
 export default definePage(
 	function Page() {
 		return <Banner label="Label" />;
@@ -40,9 +43,7 @@ function VisualTest({ customIcons = false }: { customIcons?: boolean }) {
 						<Banner
 							icon={customIcons ? placeholderIcon : undefined}
 							label={sentenceCaseTone}
-							message={`Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-								eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-								enim ad minim veniam, quis nostrud exercitation ullamco laboris`}
+							message={loremIpsum}
 							key={tone}
 							tone={tone}
 							variant="outline"
@@ -66,16 +67,12 @@ function DismissibleTest() {
 			<Banner
 				label={"Label"}
 				message="Banner with visual label and with dismiss button"
-				onDismiss={() => {
-					console.log("Dismissed");
-				}}
+				onDismiss={() => {}}
 			/>
 			<Banner
 				label={<VisuallyHidden>Label</VisuallyHidden>}
 				message="Banner with visually hidden label and with dismiss button"
-				onDismiss={() => {
-					console.log("Dismissed");
-				}}
+				onDismiss={() => {}}
 			/>
 		</div>
 	);
@@ -86,27 +83,21 @@ function ActionsTest() {
 		<div style={{ display: "grid", gap: 4 }}>
 			<Banner
 				tone="info"
-				onDismiss={() => {
-					console.log("Dismissed");
-				}}
+				onDismiss={() => {}}
 				actions={<Button>Manage cookies</Button>}
 				label={<VisuallyHidden>Privacy Notice</VisuallyHidden>}
 				message="This site uses cookies to improve your experience."
 			/>
 			<Banner
 				tone="info"
-				onDismiss={() => {
-					console.log("Dismissed");
-				}}
+				onDismiss={() => {}}
 				actions={<Anchor render={<button />}>Manage cookies</Anchor>}
 				label={<VisuallyHidden>Privacy Notice</VisuallyHidden>}
 				message="This site uses cookies to improve your experience."
 			/>
 			<Banner
 				tone="info"
-				onDismiss={() => {
-					console.log("Dismissed");
-				}}
+				onDismiss={() => {}}
 				actions={
 					<>
 						<Button>Manage cookies</Button>
@@ -118,9 +109,7 @@ function ActionsTest() {
 			/>
 			<Banner
 				tone="info"
-				onDismiss={() => {
-					console.log("Dismissed");
-				}}
+				onDismiss={() => {}}
 				actions={
 					<>
 						<Anchor render={<button />}>Manage cookies</Anchor>
@@ -159,16 +148,9 @@ function AllStyleCases() {
 										</VisuallyHidden>
 									)
 								}
-								// message="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-								// eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-								// enim ad minim veniam, quis nostrud exercitation ullamco laboris"
-								message={`${JSON.stringify({ label: labelPermutation, action: actionPermutation, dismiss: dismissPermutation })}. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris`}
+								message={`${JSON.stringify({ label: labelPermutation, action: actionPermutation, dismiss: dismissPermutation })}. ${loremIpsum}`}
 								onDismiss={
-									dismissPermutation === "dismissable"
-										? () => {
-												console.log("Dismissed");
-											}
-										: undefined
+									dismissPermutation === "dismissable" ? () => {} : undefined
 								}
 								actions={
 									actionPermutation === "buttons" ? (

@@ -26,7 +26,7 @@ type BannerProps = Omit<BaseProps, "children"> & {
 	/**
 	 * The label displayed inside the banner.
 	 *
-	 * Either pass a string or a component (e.g. `<VisuallyHidden>`).
+	 * Either pass a string or a `<VisuallyHidden>` component if you don't want the label to be visible.
 	 */
 	label: string | React.JSX.Element;
 	/**

@@ -16,6 +16,10 @@
 			--🥝error-region-header-border-end-radius: 0;
 		}
 
+		&:where([data-kiwi-expanded="false"]) {
+			--🥝error-region-header-transition: border-radius 0s linear 150ms;
+		}
+
 		&:where([data-kiwi-visible="true"]) {
 			padding-inline: var(--✨padding);
 			padding-block: var(--✨padding);
@@ -57,6 +61,8 @@
 		border-start-end-radius: var(--✨border-radius);
 		border-end-start-radius: var(--🥝error-region-header-border-end-radius, var(--✨border-radius));
 		border-end-end-radius: var(--🥝error-region-header-border-end-radius, var(--✨border-radius));
+
+		transition: var(--🥝error-region-header-transition);
 	}
 }
 
@@ -81,7 +87,8 @@
 		interpolate-size: allow-keywords;
 		max-block-size: 0px;
 		opacity: 0;
-		transition: max-block-size 150ms linear, opacity 150ms linear;
+		transition: all 150ms linear;
+		transition-property: max-block-size, opacity;
 	}
 
 	@layer states {

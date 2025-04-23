@@ -98,9 +98,7 @@ export const Banner = forwardRef<"div", BannerProps>((props, forwardedRef) => {
 		actions,
 		onDismiss,
 		tone = "neutral",
-		icon: iconProp = tone !== "neutral" ? (
-			<StatusIcon tone={tone} />
-		) : undefined,
+		icon = tone !== "neutral" ? <StatusIcon tone={tone} /> : undefined,
 		variant = "outline",
 		...rest
 	} = props;
@@ -108,46 +106,6 @@ export const Banner = forwardRef<"div", BannerProps>((props, forwardedRef) => {
 	const baseId = React.useId();
 	const labelId = `${baseId}-label`;
 	const dismissId = `${baseId}-dismiss`;
-
-	const icon = React.useMemo(() => {
-		const defaultIconProps = { className: "🥝-banner-icon" };
-
-		if (iconProp) {
-			if (typeof iconProp === "string") {
-				return <Icon href={iconProp} {...defaultIconProps} />;
-			}
-
-			return React.cloneElement(iconProp, {
-				className: cx("🥝-banner-icon", iconProp.props),
-			});
-		}
-
-		if (tone === "neutral") {
-			return null;
-		}
-		return <StatusIcon tone={tone} {...defaultIconProps} />;
-	}, [iconProp, tone]);
-
-	// PSEUDO CODE PLANNING
-	// // Visually hidden label
-	// if (label == null) { // DONE
-	//   inline content with horizontal stacking (iconstart, message, actions, dismiss)
-	// }
-	// // Visual label
-	// else if (typeof label === "string") {
-	//   // Dismissable
-	//   if (onDismiss != null) {
-	//     if (actions != null) { // DONE
-	//       default to vertically stacked. title and message can wrap depending on available width.
-	//     }
-	//   }
-	//   // Non-dismissable
-	//   else {
-	//     if (actions != null) {
-	//       actions align right until width (480px) then start aligning actions bottom left
-	//     }
-	//   }
-	// }
 
 	return (
 		<Role
@@ -158,7 +116,13 @@ export const Banner = forwardRef<"div", BannerProps>((props, forwardedRef) => {
 			ref={forwardedRef}
 		>
 			<div className="🥝-banner-grid">
-				{icon}
+				{icon ? (
+					<Icon
+						className="🥝-banner-icon"
+						href={typeof icon === "string" ? icon : undefined}
+						render={React.isValidElement(icon) ? icon : undefined}
+					/>
+				) : null}
 
 				{typeof label === "string" ? (
 					<Text

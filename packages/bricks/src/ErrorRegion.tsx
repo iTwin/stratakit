@@ -22,7 +22,7 @@ import { ChevronDown, StatusIcon } from "./Icon.js";
 import { IconButtonPresentation } from "./IconButton.internal.js";
 import { Text } from "./Text.js";
 import { VisuallyHidden } from "./VisuallyHidden.js";
-import { useControlledState, useMergedRefs } from "./~hooks.js";
+import { useControlledState } from "./~hooks.js";
 import { forwardRef } from "./~utils.js";
 
 import type { BaseProps } from "./~utils.js";
@@ -87,21 +87,37 @@ const ErrorRegionRoot = forwardRef<"div", ErrorRegionRootProps>(
 			onExpandedChange as React.Dispatch<React.SetStateAction<boolean>>,
 		);
 
-		const ref = React.useRef<HTMLDivElement>(null);
-		const pulseAnimationRef = React.useRef<Animation | undefined>(undefined);
-		const getPulseAnimation = () => {
-			const el = ref.current;
-			if (!el) return pulseAnimationRef.current;
-			const animations = el.getAnimations({
-				subtree: true,
-			});
-			const animation = animations.find((animation) => {
-				if (!(animation instanceof CSSAnimation)) return false;
-				return animation.animationName === "--🥝error-region-pulse";
-			});
-			if (!animation) return pulseAnimationRef.current;
-			pulseAnimationRef.current = animation;
-			return animation;
+		const disclosureRef = React.useRef<HTMLButtonElement>(null);
+		const pulse = () => {
+			const el = disclosureRef.current;
+			if (!el) return;
+
+			const id = "--🥝error-region-pulse";
+			const animations = el.getAnimations();
+			if (animations.find((animation) => animation.id === id)) return;
+
+			el.animate(
+				[
+					{
+						boxShadow: "0 0 0 0 var(--ids-color-border-attention-base)",
+						opacity: 1,
+					},
+					{
+						boxShadow: "0 0 15px 2px var(--ids-color-border-attention-base)",
+						opacity: 0.7,
+						offset: 0.5,
+					},
+					{
+						boxShadow: "0 0 0 0 var(--ids-color-border-attention-base)",
+						opacity: 1,
+					},
+				],
+				{
+					id,
+					duration: 600,
+					easing: "cubic-bezier(0.4, 0, 0.2, 1)",
+				},
+			);
 		};
 
 		const store = useCollectionStore({
@@ -112,9 +128,7 @@ const ErrorRegionRoot = forwardRef<"div", ErrorRegionRootProps>(
 				);
 				if (addedItems.length === 0) return;
 
-				const pulse = getPulseAnimation();
-				if (!pulse) return;
-				pulse.play();
+				pulse();
 			},
 		});
 		const prevItems = useStoreState(store, "items");
@@ -130,12 +144,13 @@ const ErrorRegionRoot = forwardRef<"div", ErrorRegionRootProps>(
 						className={cx("🥝-error-region", props.className)}
 						data-kiwi-visible={!!label}
 						data-kiwi-expanded={open}
-						ref={useMergedRefs(forwardedRef, ref)}
+						ref={forwardedRef}
 					>
 						<div className="🥝-error-region-container">
 							<DialogDisclosure
 								className="🥝-error-region-header"
 								render={<Button variant="ghost" />}
+								ref={disclosureRef}
 							>
 								<StatusIcon tone="attention" className="🥝-error-region-icon" />
 								<Text

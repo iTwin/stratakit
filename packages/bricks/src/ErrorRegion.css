@@ -30,9 +30,6 @@
 }
 
 .🥝-error-region-container {
-	--✨duration: 600ms;
-	--✨easing: cubic-bezier(0.4, 0, 0.2, 1);
-
 	@layer base {
 		isolation: isolate;
 
@@ -54,7 +51,6 @@
 				inset: 0;
 				border-radius: inherit;
 				z-index: -1;
-				animation: var(--✨duration) var(--✨easing) paused --🥝error-region-pulse;
 			}
 		}
 	}
@@ -128,12 +124,5 @@
 .🥝-error-region-item-actions {
 	@layer base {
 		margin-block-start: 8px;
-	}
-}
-
-@keyframes --🥝error-region-pulse {
-	50% {
-		box-shadow: 0 0 15px 2px var(--ids-color-border-attention-base);
-		opacity: 0.7;
 	}
 }

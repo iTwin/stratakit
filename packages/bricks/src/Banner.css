@@ -64,14 +64,14 @@
 				"icon label dismiss"
 				". message ."
 				". actions .";
-			grid-template-columns: auto 1fr auto;
+			grid-template-columns: auto minmax(0, 1fr) auto;
 
 			@container banner (max-inline-size: 18.5rem) {
 				grid-template-areas:
 					"icon label dismiss"
 					"message message message"
 					"actions actions actions";
-				grid-template-columns: auto 1fr auto;
+				grid-template-columns: auto minmax(0, 1fr) auto;
 			}
 
 			@container banner (max-inline-size: 12.5rem) {
@@ -91,7 +91,7 @@
 				"icon message dismiss"
 				". message ."
 				". actions .";
-			grid-template-columns: auto 1fr auto;
+			grid-template-columns: auto minmax(0, 1fr) auto;
 
 			@container banner (max-inline-size: 18.5rem) {
 				.🥝-banner-icon {
@@ -111,7 +111,7 @@
 					"icon dismiss"
 					"message message"
 					"actions actions";
-				grid-template-columns: auto 1fr auto;
+				grid-template-columns: auto minmax(0, 1fr) auto;
 			}
 		}
 	}

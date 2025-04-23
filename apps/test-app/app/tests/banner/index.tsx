@@ -9,6 +9,9 @@ import { definePage } from "~/~utils.tsx";
 
 export const handle = { title: "Banner" };
 
+const tones = ["neutral", "info", "positive", "attention", "critical"] as const;
+const variants = ["outline", "solid"] as const;
+
 export default definePage(
 	function Page() {
 		return <Banner label="Label" message="Message" />;
@@ -17,23 +20,19 @@ export default definePage(
 		visual: VisualTest,
 		dismiss: DismissibleTest,
 		actions: ActionsTest,
-		allStyleCases: AllStyleCases,
+		responsiveDesign: ResponsiveDesign,
 	},
 );
 
 function VisualTest({ customIcons = false }: { customIcons?: boolean }) {
-	const tones = [
-		"neutral",
-		"info",
-		"positive",
-		"attention",
-		"critical",
-	] as const;
-
 	return (
 		<div style={{ display: "grid", gap: 4 }}>
-			<div style={{ display: "grid", gap: 4 }}>
-				{tones.map((tone) => {
+			{variants.map((variant) =>
+				tones.map((tone) => {
+					if (variant === "solid" && tone === "neutral") {
+						return null;
+					}
+
 					const sentenceCaseTone =
 						tone.charAt(0).toUpperCase() + tone.slice(1).toLowerCase();
 					return (
@@ -41,17 +40,17 @@ function VisualTest({ customIcons = false }: { customIcons?: boolean }) {
 							icon={customIcons ? placeholderIcon : undefined}
 							label={sentenceCaseTone}
 							message={`Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-								eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-								enim ad minim veniam, quis nostrud exercitation ullamco laboris`}
-							key={tone}
-							tone={tone}
-							variant="outline"
+					eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+					enim ad minim veniam, quis nostrud exercitation ullamco laboris`}
+							key={`${variant}-${tone}`}
+							tone={tone as "neutral"}
+							variant={variant as "outline"}
 							onDismiss={() => {}}
 							actions={<Button>Action</Button>}
 						/>
 					);
-				})}
-			</div>
+				}),
+			)}
 		</div>
 	);
 }
@@ -134,7 +133,7 @@ function ActionsTest() {
 	);
 }
 
-function AllStyleCases() {
+function ResponsiveDesign() {
 	const labelPermutations = ["visual", "visually-hidden"];
 	const actionPermutations = ["anchors", "buttons", "none"];
 	const dismissPermutations = ["dismissable", "non-dismissable"];

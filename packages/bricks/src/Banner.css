@@ -23,6 +23,24 @@
 			}
 		}
 
+		&:where([data-kiwi-variant="solid"]) {
+			&:where([data-kiwi-tone="info"]) {
+				--🥝banner-color-background: var(--ids-color-bg-info-transparent);
+			}
+
+			&:where([data-kiwi-tone="positive"]) {
+				--🥝banner-color-background: var(--ids-color-bg-positive-transparent);
+			}
+
+			&:where([data-kiwi-tone="attention"]) {
+				--🥝banner-color-background: var(--ids-color-bg-attention-transparent);
+			}
+
+			&:where([data-kiwi-tone="critical"]) {
+				--🥝banner-color-background: var(--ids-color-bg-critical-transparent);
+			}
+		}
+
 		&:where([data-kiwi-tone="info"]) {
 			--🥝banner-color-border: var(--ids-color-border-info-base);
 			--🥝icon-color: var(--ids-color-icon-info-base);
@@ -160,5 +178,29 @@
 		grid-area: dismiss;
 		margin-inline-start: 12px;
 		align-self: start;
+	}
+
+	@layer modifiers {
+		:where([data-kiwi-variant="solid"]) & {
+			:where([data-kiwi-tone="info"]) & {
+				--🥝icon-color: var(--ids-color-icon-info-base);
+			}
+
+			:where([data-kiwi-tone="positive"]) & {
+				--🥝icon-color: var(--ids-color-icon-positive-base);
+			}
+
+			:where([data-kiwi-tone="attention"]) & {
+				--🥝icon-color: var(--ids-color-icon-attention-base);
+			}
+
+			:where([data-kiwi-tone="critical"]) & {
+				--🥝icon-color: var(--ids-color-icon-critical-base);
+			}
+
+			@media (forced-colors: active) {
+				--🥝icon-color: CanvasText;
+			}
+		}
 	}
 }

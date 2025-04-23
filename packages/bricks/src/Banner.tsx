@@ -177,7 +177,7 @@ export const Banner = forwardRef<"div", BannerProps>((props, forwardedRef) => {
 					})
 				)}
 
-				<Text variant="body-sm" className="🥝-banner-message">
+				<Text render={<span />} variant="body-sm" className="🥝-banner-message">
 					{message}
 				</Text>
 

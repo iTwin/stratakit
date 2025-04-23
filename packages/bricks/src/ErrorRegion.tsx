@@ -90,12 +90,8 @@ const ErrorRegionRoot = forwardRef<"div", ErrorRegionRootProps>(
 		const ref = React.useRef<HTMLDivElement>(null);
 		const pulseAnimationRef = React.useRef<Animation | undefined>(undefined);
 		const getPulseAnimation = () => {
-			if (pulseAnimationRef.current) {
-				return pulseAnimationRef.current;
-			}
-
 			const el = ref.current;
-			if (!el) return;
+			if (!el) return pulseAnimationRef.current;
 			const animations = el.getAnimations({
 				subtree: true,
 			});
@@ -103,7 +99,7 @@ const ErrorRegionRoot = forwardRef<"div", ErrorRegionRootProps>(
 				if (!(animation instanceof CSSAnimation)) return false;
 				return animation.animationName === "--🥝error-region-pulse";
 			});
-			if (!animation) return;
+			if (!animation) return pulseAnimationRef.current;
 			pulseAnimationRef.current = animation;
 			return animation;
 		};

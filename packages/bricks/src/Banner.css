@@ -53,6 +53,7 @@
 		display: grid;
 		align-items: center;
 		inline-size: 100%;
+		padding: 4px;
 
 		&:has(> .🥝-banner-label[data-kiwi-label-type="visual"]) {
 			.🥝-banner-message {
@@ -157,7 +158,8 @@
 .🥝-banner-dismiss-button {
 	@layer base {
 		grid-area: dismiss;
-		margin-inline-start: 12px;
 		align-self: start;
+		margin-inline: 16px -4px;
+		margin-block: -4px 0;
 	}
 }

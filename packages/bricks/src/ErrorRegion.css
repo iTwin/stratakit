@@ -77,6 +77,22 @@
 	@layer base {
 		border-block-start: 1px solid var(--ids-color-border-page-base);
 		overflow: auto;
+
+		interpolate-size: allow-keywords;
+		max-block-size: 0px;
+		opacity: 0;
+		transition: max-block-size 150ms linear, opacity 150ms linear;
+	}
+
+	@layer states {
+		&:where([data-enter]) {
+			max-block-size: calc(350px - 2.625rem);
+			opacity: 1;
+
+			@supports (interpolate-size: allow-keywords) {
+				max-block-size: max-content;
+			}
+		}
 	}
 }
 

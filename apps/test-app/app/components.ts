@@ -28,7 +28,6 @@ export const components = [
 	"Table",
 	"Tabs",
 	"Text",
-	"Textarea",
 	"TextBox",
 	"Toolbar",
 	"Tooltip",

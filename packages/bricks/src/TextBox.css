@@ -128,7 +128,6 @@
 		}
 
 		&:where(
-				[disabled],
 				:disabled,
 				[aria-disabled="true"],
 				[data-kiwi-disabled="true"],
@@ -163,7 +162,6 @@
 		color: FieldText;
 
 		&:where(
-				[disabled],
 				:disabled,
 				[aria-disabled="true"],
 				[data-kiwi-disabled="true"],

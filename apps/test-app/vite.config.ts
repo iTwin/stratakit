@@ -70,7 +70,7 @@ export default defineConfig({
 function bundleCssPlugin() {
 	let isDev = false;
 
-	return <Plugin>{
+	return {
 		name: "bundle-css",
 
 		configResolved({ command }) {
@@ -115,5 +115,5 @@ function bundleCssPlugin() {
 			}
 			return modules;
 		},
-	};
+	} satisfies Plugin;
 }

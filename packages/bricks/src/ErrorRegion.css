@@ -38,8 +38,6 @@
 		display: var(--🥝error-region-container-display, flex);
 		flex-direction: column;
 
-		max-block-size: 350px;
-
 		border: 1px solid var(--ids-color-border-attention-base);
 		border-radius: 8px;
 		background-color: var(--ids-color-bg-elevation-base);
@@ -83,8 +81,7 @@
 
 .🥝-error-region-dialog {
 	@layer base {
-		border-block-start: 1px solid var(--ids-color-border-page-base);
-		overflow: auto;
+		overflow: hidden;
 
 		@media (prefers-reduced-motion: no-preference) {
 			interpolate-size: allow-keywords;
@@ -98,7 +95,7 @@
 	@layer states {
 		@media (prefers-reduced-motion: no-preference) {
 			&:where([data-enter]) {
-				max-block-size: calc(350px - 2.625rem);
+				max-block-size: calc(350px - 2rem - 2px);
 				opacity: 1;
 
 				@supports (interpolate-size: allow-keywords) {
@@ -111,8 +108,10 @@
 
 .🥝-error-region-items {
 	@layer base {
-		display: flex;
-		flex-direction: column;
+		border-block-start: 1px solid var(--ids-color-border-page-base);
+
+		overflow: auto;
+		max-block-size: calc(350px - 2rem - 2px);
 	}
 }
 

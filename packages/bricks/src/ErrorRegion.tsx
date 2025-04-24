@@ -87,13 +87,13 @@ const ErrorRegionRoot = forwardRef<"div", ErrorRegionRootProps>(
 			onExpandedChange as React.Dispatch<React.SetStateAction<boolean>>,
 		);
 
-		const disclosureRef = React.useRef<HTMLButtonElement>(null);
+		const containerRef = React.useRef<HTMLDivElement>(null);
 		const pulse = () => {
-			const el = disclosureRef.current;
+			const el = containerRef.current;
 			if (!el) return;
 
 			const id = "--🥝error-region-pulse";
-			const animations = el.getAnimations();
+			const animations = el.getAnimations({ subtree: true });
 			if (animations.find((animation) => animation.id === id)) return;
 
 			el.animate(
@@ -116,6 +116,7 @@ const ErrorRegionRoot = forwardRef<"div", ErrorRegionRootProps>(
 					id,
 					duration: 600,
 					easing: "cubic-bezier(0.4, 0, 0.2, 1)",
+					pseudoElement: "::before",
 				},
 			);
 		};
@@ -146,11 +147,10 @@ const ErrorRegionRoot = forwardRef<"div", ErrorRegionRootProps>(
 						data-kiwi-expanded={open}
 						ref={forwardedRef}
 					>
-						<div className="🥝-error-region-container">
+						<div className="🥝-error-region-container" ref={containerRef}>
 							<DialogDisclosure
 								className="🥝-error-region-header"
 								render={<Button variant="ghost" />}
-								ref={disclosureRef}
 							>
 								<StatusIcon tone="attention" className="🥝-error-region-icon" />
 								<Text

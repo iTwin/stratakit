@@ -33,6 +33,12 @@
 			background-color: var(--🥝progress-bar-fill-color);
 			animation: var(--🥝progress-bar-animation);
 		}
+
+		&:where([data-kiwi-variant="determinate"])::before {
+			@media (prefers-reduced-motion: no-preference) {
+				transition: inline-size 150ms ease-in-out;
+			}
+		}
 	}
 
 	@layer modifiers {

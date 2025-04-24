@@ -3,7 +3,6 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import { Role } from "@ariakit/react/role";
 import { Anchor, IconButton } from "@stratakit/bricks";
 import cx from "classnames";
 import * as React from "react";
@@ -266,19 +265,17 @@ export function VariantsList({
 					{...listItemProps}
 				>
 					<ListItem.Content>
-						<Role.span
+						<Anchor
 							render={
 								!variant.isCurrent ? (
-									<Anchor
-										render={<Link to={variant.url} />}
-										className={styles.listItemLink}
-									/>
+									<Link to={variant.url} replace />
 								) : undefined
 							}
 							aria-current={variant.isCurrent ? "page" : "false"}
+							className={styles.listItemLink}
 						>
 							{variant.name}
-						</Role.span>
+						</Anchor>
 					</ListItem.Content>
 				</ListItem.Root>
 			))}

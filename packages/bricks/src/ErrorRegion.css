@@ -81,9 +81,8 @@
 
 .🥝-error-region-dialog {
 	@layer base {
-		overflow: hidden;
-
 		@media (prefers-reduced-motion: no-preference) {
+			overflow: hidden;
 			interpolate-size: allow-keywords;
 			max-block-size: 0px;
 			opacity: 0;

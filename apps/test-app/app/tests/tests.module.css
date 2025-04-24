@@ -6,6 +6,7 @@
 	display: flex;
 	flex-wrap: wrap;
 	gap: 16px;
+	container-type: inline-size;
 }
 
 .main {
@@ -16,10 +17,13 @@
 
 .sidebar {
 	flex-grow: 1;
+	position: sticky;
+	inset-block-start: -1px; /* hide the border off screen */
+	inset-inline-end: 0;
+	align-self: flex-start;
 
-	/* TODO: move this to page and update visual test selectors. */
-	@media (width >= 544px) {
-		min-block-size: 100dvb;
+	@container (inline-size >= 542px) {
+		block-size: 100dvb; /* TODO: move this to page and update visual test selectors. */
 	}
 }
 

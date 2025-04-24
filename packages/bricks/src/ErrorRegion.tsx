@@ -100,7 +100,7 @@ const ErrorRegionRoot = forwardRef<"div", ErrorRegionRootProps>(
 				[
 					{
 						boxShadow: "0 0 0 0 var(--ids-color-border-attention-base)",
-						opacity: 1,
+						opacity: 0,
 					},
 					{
 						boxShadow: "0 0 15px 2px var(--ids-color-border-attention-base)",
@@ -109,7 +109,7 @@ const ErrorRegionRoot = forwardRef<"div", ErrorRegionRootProps>(
 					},
 					{
 						boxShadow: "0 0 0 0 var(--ids-color-border-attention-base)",
-						opacity: 1,
+						opacity: 0,
 					},
 				],
 				{

@@ -29,8 +29,7 @@ interface ProgressBarProps extends Omit<BaseProps, "aria-labelledby"> {
 	 */
 	tone?: "neutral" | "accent";
 	/**
-	 * The value of the progress bar. By default, it is between 0 and 100.
-	 * This can be modified using `valueMin` and `valueMax`.
+	 * The value of the progress bar between 0 and 100 (inclusive).
 	 *
 	 * - If passed, the progress bar will be determinate.
 	 * - If not passed, the progress bar will be indeterminate.
@@ -39,16 +38,6 @@ interface ProgressBarProps extends Omit<BaseProps, "aria-labelledby"> {
 	 * operations (i.e. less than 5 seconds).
 	 */
 	value?: number;
-	/**
-	 * The minimum value of the progress bar.
-	 * @default 0
-	 */
-	valueMin?: number;
-	/**
-	 * The maximum value of the progress bar.
-	 * @default 100
-	 */
-	valueMax?: number;
 }
 
 /**
@@ -73,46 +62,27 @@ export const ProgressBar = forwardRef<"div", ProgressBarProps>(
 			size = "medium",
 			tone = "neutral",
 			style: styleProp,
-			valueMin = 0,
-			valueMax = 100,
 			value: valueProp,
 			...rest
 		} = props;
 
 		/**
-		 * `valueProp` between `valueMin` and `valueMax`
+		 * `valueProp` between 0 and 100.
 		 */
 		const value = React.useMemo(() => {
 			return valueProp != null
-				? Math.min(Math.max(valueProp, valueMin), valueMax)
+				? Math.min(Math.max(valueProp, 0), 100)
 				: undefined;
-		}, [valueProp, valueMin, valueMax]);
+		}, [valueProp]);
 
 		const style = React.useMemo(() => {
-			const progressBarFillSizePercent =
-				value != null
-					? ((value - valueMin) / (valueMax - valueMin)) * 100
-					: undefined;
-
 			return value != null
 				? {
 						...styleProp,
-						"--🥝progress-bar-fill-size": `${progressBarFillSizePercent}%`,
+						"--🥝progress-bar-fill-size": `${value}%`,
 					}
 				: styleProp;
-		}, [styleProp, value, valueMin, valueMax]);
-
-		const determinateAriaProps = React.useMemo(
-			() =>
-				value != null
-					? {
-							"aria-valuenow": value,
-							"aria-valuemin": valueMin,
-							"aria-valuemax": valueMax,
-						}
-					: {},
-			[value, valueMin, valueMax],
-		);
+		}, [styleProp, value]);
 
 		return (
 			<Role
@@ -124,7 +94,9 @@ export const ProgressBar = forwardRef<"div", ProgressBarProps>(
 				className={cx("🥝-progress-bar", props.className)}
 				style={style}
 				ref={forwardedRef}
-				{...determinateAriaProps}
+				aria-valuenow={value}
+				aria-valuemin={value != null ? 0 : undefined}
+				aria-valuemax={value != null ? 100 : undefined}
 			/>
 		);
 	},

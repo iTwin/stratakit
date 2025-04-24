@@ -62,8 +62,8 @@
 
 			grid-template-areas:
 				"icon label dismiss"
-				". message ."
-				". actions .";
+				"icon message dismiss"
+				"icon actions dismiss";
 			grid-template-columns: auto minmax(0, 1fr) auto;
 
 			@container banner (max-inline-size: 18.5rem) {
@@ -89,8 +89,8 @@
 
 			grid-template-areas:
 				"icon message dismiss"
-				". message ."
-				". actions .";
+				"icon message dismiss"
+				"icon actions dismiss";
 			grid-template-columns: auto minmax(0, 1fr) auto;
 
 			@container banner (max-inline-size: 18.5rem) {

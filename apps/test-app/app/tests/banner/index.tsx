@@ -123,6 +123,9 @@ function ActionsTest() {
 	);
 }
 
+const dummyLongLabel =
+	"This is a long label that goes on and on and on and on and on and on and on and on and on and on";
+
 function AllStyleCases() {
 	const labelPermutations = ["visual", "visually-hidden"];
 	const actionPermutations = ["anchors", "buttons", "none"];
@@ -141,11 +144,9 @@ function AllStyleCases() {
 								tone="info"
 								label={
 									labelPermutation === "visual" ? (
-										"This is a long label that goes on and on and on and on"
+										dummyLongLabel
 									) : (
-										<VisuallyHidden>
-											This is a long label that goes on and on and on and on
-										</VisuallyHidden>
+										<VisuallyHidden>{dummyLongLabel}</VisuallyHidden>
 									)
 								}
 								message={`${JSON.stringify({ label: labelPermutation, action: actionPermutation, dismiss: dismissPermutation })}. ${loremIpsum}`}

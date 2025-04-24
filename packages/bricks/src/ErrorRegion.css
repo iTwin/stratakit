@@ -84,21 +84,21 @@
 		@media (prefers-reduced-motion: no-preference) {
 			overflow: hidden;
 			interpolate-size: allow-keywords;
-			max-block-size: 0px;
+			block-size: 0px;
 			opacity: 0;
 			transition: all 150ms linear;
-			transition-property: max-block-size, opacity;
+			transition-property: block-size, opacity;
 		}
 	}
 
 	@layer states {
 		@media (prefers-reduced-motion: no-preference) {
 			&:where([data-enter]) {
-				max-block-size: calc(350px - 2rem - 2px);
+				block-size: calc(350px - 2rem - 2px);
 				opacity: 1;
 
 				@supports (interpolate-size: allow-keywords) {
-					max-block-size: max-content;
+					block-size: max-content;
 				}
 			}
 		}

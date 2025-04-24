@@ -83,7 +83,6 @@
 	@layer base {
 		@media (prefers-reduced-motion: no-preference) {
 			overflow: hidden;
-			interpolate-size: allow-keywords;
 			block-size: 0px;
 			opacity: 0;
 			transition: all 150ms linear;

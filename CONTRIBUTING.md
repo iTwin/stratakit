@@ -68,6 +68,10 @@ Apps:
 
 - [`test-app`](./apps/test-app): A [React Router](https://reactrouter.com/) app for automated and manual testing.
 
+Examples:
+
+- [`examples`](./examples): A private package for storing examples of StrataKit in action.
+
 Also, there’s [an internal package](./internal) which is used for configuration files and common variables for the workspace at large.
 
 ### Development environment

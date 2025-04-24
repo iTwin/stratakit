@@ -86,22 +86,24 @@
 		border-block-start: 1px solid var(--ids-color-border-page-base);
 		overflow: auto;
 
-		interpolate-size: allow-keywords;
-		max-block-size: 0px;
-		opacity: 0;
 		@media (prefers-reduced-motion: no-preference) {
+			interpolate-size: allow-keywords;
+			max-block-size: 0px;
+			opacity: 0;
 			transition: all 150ms linear;
 			transition-property: max-block-size, opacity;
 		}
 	}
 
 	@layer states {
-		&:where([data-enter]) {
-			max-block-size: calc(350px - 2.625rem);
-			opacity: 1;
+		@media (prefers-reduced-motion: no-preference) {
+			&:where([data-enter]) {
+				max-block-size: calc(350px - 2.625rem);
+				opacity: 1;
 
-			@supports (interpolate-size: allow-keywords) {
-				max-block-size: max-content;
+				@supports (interpolate-size: allow-keywords) {
+					max-block-size: max-content;
+				}
 			}
 		}
 	}

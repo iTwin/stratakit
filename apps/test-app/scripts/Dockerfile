@@ -14,4 +14,3 @@ RUN --mount=type=bind,source=package.json,target=package.json \
 
 FROM deps AS build
 COPY . .
-RUN pnpm run build

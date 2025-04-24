@@ -3,10 +3,11 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 import { spawn } from "node:child_process";
-import { join } from "node:path";
+import { fileURLToPath } from "node:url";
 
-const repoDir = join(__dirname, "..", "..", "..");
-const appDir = join(repoDir, "apps", "test-app");
+const repoDir = fileURLToPath(new URL("../../..", import.meta.url));
+const appDir = fileURLToPath(new URL("..", import.meta.url));
+const dockerfilePath = fileURLToPath(new URL("./Dockerfile", import.meta.url));
 
 const imageName = "kiwi";
 const containerRepoDir = "/kiwi";
@@ -30,10 +31,18 @@ async function execute(command: string, args: string[] = []) {
 }
 
 void (async () => {
-	await execute("docker", ["build", "-t", imageName, repoDir]);
+	await execute("docker", [
+		"build",
+		"-t",
+		imageName,
+		"-f",
+		dockerfilePath,
+		repoDir, // Build context
+	]);
 
 	await execute("docker", [
 		"run",
+		"--init", // Use init process to handle zombie processes
 		"--rm", // Remove the container after run
 		"-v", // Mount snapshot directory from host to container
 		`${appDir}/app:${containerAppDir}/app`,

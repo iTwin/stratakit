@@ -14,30 +14,30 @@
 		"#playwright": "./playwright.config.ts"
 	},
 	"dependencies": {
-		"@ariakit/react": "^0.4.15",
-		"@stratakit/icons": "workspace:*",
+		"@ariakit/react": "^0.4.17",
+		"@react-router/node": "^7.5.1",
 		"@stratakit/bricks": "workspace:*",
+		"@stratakit/icons": "workspace:*",
 		"@stratakit/react": "workspace:*",
-		"@react-router/node": "^7.3.0",
-		"@tanstack/react-query": "^5.67.2",
+		"@tanstack/react-query": "^5.74.4",
 		"classnames": "^2.5.1",
 		"immer": "^10.1.1",
-		"isbot": "^5.1.23",
+		"isbot": "^5.1.26",
 		"react": "catalog:",
 		"react-dom": "catalog:",
-		"react-router": "^7.3.0"
+		"react-router": "^7.5.1"
 	},
 	"devDependencies": {
 		"@axe-core/playwright": "^4.10.1",
 		"@playwright/test": "catalog:",
-		"@react-router/dev": "^7.3.0",
+		"@react-router/dev": "^7.5.1",
 		"@types/node": "catalog:",
 		"@types/react": "catalog:",
 		"@types/react-dom": "catalog:",
 		"esbuild": "catalog:",
 		"lightningcss": "catalog:",
 		"typescript": "catalog:",
-		"vite": "^6.2.6",
+		"vite": "^6.3.3",
 		"vite-tsconfig-paths": "^5.1.4"
 	},
 	"wireit": {

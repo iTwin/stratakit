@@ -67,13 +67,14 @@
 			"service": true
 		},
 		"test": {
-			"command": "tsx ./scripts/run-tests.cts pnpm exec playwright test",
+			"command": "tsx ./scripts/run-tests.ts pnpm exec playwright test",
 			"dependencies": ["build", "typecheck"],
 			"files": ["app", "playwright.config.ts"],
 			"output": ["test-results"]
 		},
 		"typecheck": {
 			"command": "react-router typegen && tsc -p tsconfig.build.json",
+			"dependencies": ["build"],
 			"files": ["app", "tsconfig.build.json"],
 			"output": []
 		}

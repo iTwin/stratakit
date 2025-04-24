@@ -77,8 +77,8 @@ importers:
         specifier: ^0.4.17
         version: 0.4.17(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       "@react-router/node":
-        specifier: ^7.5.1
-        version: 7.5.1(react-router@7.5.1(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(typescript@5.8.3)
+        specifier: ^7.5.2
+        version: 7.5.2(react-router@7.5.2(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(typescript@5.8.3)
       "@stratakit/bricks":
         specifier: workspace:*
         version: link:../../packages/bricks
@@ -107,8 +107,8 @@ importers:
         specifier: "catalog:"
         version: 19.1.0(react@19.1.0)
       react-router:
-        specifier: ^7.5.1
-        version: 7.5.1(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+        specifier: ^7.5.2
+        version: 7.5.2(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
     devDependencies:
       "@axe-core/playwright":
         specifier: ^4.10.1
@@ -117,8 +117,8 @@ importers:
         specifier: "catalog:"
         version: 1.52.0
       "@react-router/dev":
-        specifier: ^7.5.1
-        version: 7.5.1(@types/node@22.14.1)(lightningcss@1.29.3)(react-router@7.5.1(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(tsx@4.19.3)(typescript@5.8.3)(vite@6.3.3(@types/node@22.14.1)(lightningcss@1.29.3)(tsx@4.19.3)(yaml@2.6.1))(yaml@2.6.1)
+        specifier: ^7.5.2
+        version: 7.5.2(@types/node@22.14.1)(lightningcss@1.29.3)(react-router@7.5.2(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(tsx@4.19.3)(typescript@5.8.3)(vite@6.3.3(@types/node@22.14.1)(lightningcss@1.29.3)(tsx@4.19.3)(yaml@2.6.1))(yaml@2.6.1)
       "@types/node":
         specifier: "catalog:"
         version: 22.14.1
@@ -940,16 +940,16 @@ packages:
     engines: { node: ">=18" }
     hasBin: true
 
-  "@react-router/dev@7.5.1":
+  "@react-router/dev@7.5.2":
     resolution:
       {
-        integrity: sha512-enQC69I4olCLhudnJMHkoKKMqn8YQ8ceJOwIFX1Vsl1CBOd5Cfra2Pzdf8QDi2nRLqyE8kVKNJiCMaryB4ZGBQ==,
+        integrity: sha512-5gam2/IhcBUNoLa0k/Mlk/HZBmkYXn0uGycmz9vi0QCQROX8x3Wbq4W2D0/vnjF3ol6rlp4Sp1GQCWGgqgUwOQ==,
       }
     engines: { node: ">=20.0.0" }
     hasBin: true
     peerDependencies:
-      "@react-router/serve": ^7.5.1
-      react-router: ^7.5.1
+      "@react-router/serve": ^7.5.2
+      react-router: ^7.5.2
       typescript: ^5.1.0
       vite: ^5.1.0 || ^6.0.0
       wrangler: ^3.28.2 || ^4.0.0
@@ -961,14 +961,14 @@ packages:
       wrangler:
         optional: true
 
-  "@react-router/node@7.5.1":
+  "@react-router/node@7.5.2":
     resolution:
       {
-        integrity: sha512-A7HoNAN3ic2fgbGu9jqVZGgk6Pnpwo6MVKvfpneyz5cLJrB3xZlUeNGJ5mZ4T+dVRMAL0yEjxXhDOWZO7P/vSg==,
+        integrity: sha512-dFMPpPgRMYI4Lvi+9fPs8FjsIto/Z0DCrpAw85+mBKeluLvPOLQ9XhlhCu0G850ZBWiHIm9eReWFLnPWo5+tZg==,
       }
     engines: { node: ">=20.0.0" }
     peerDependencies:
-      react-router: 7.5.1
+      react-router: 7.5.2
       typescript: ^5.1.0
     peerDependenciesMeta:
       typescript:
@@ -1417,10 +1417,10 @@ packages:
         integrity: sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA==,
       }
 
-  electron-to-chromium@1.5.141:
+  electron-to-chromium@1.5.142:
     resolution:
       {
-        integrity: sha512-qS+qH9oqVYc1ooubTiB9l904WVyM6qNYxtOEEGReoZXw3xlqeYdFr5GclNzbkAufWgwWLEPoDi3d9MoRwwIjGw==,
+        integrity: sha512-Ah2HgkTu/9RhTDNThBtzu2Wirdy4DC9b0sMT1pUhbkZQ5U/iwmE+PHZX1MpjD5IkJCc2wSghgGG/B04szAx07w==,
       }
 
   emoji-regex@8.0.0:
@@ -2140,10 +2140,10 @@ packages:
       }
     engines: { node: ">=0.10.0" }
 
-  react-router@7.5.1:
+  react-router@7.5.2:
     resolution:
       {
-        integrity: sha512-/jjU3fcYNd2bwz9Q0xt5TwyiyoO8XjSEFXJY4O/lMAlkGTHWuHRAbR9Etik+lSDqMC7A7mz3UlXzgYT6Vl58sA==,
+        integrity: sha512-9Rw8r199klMnlGZ8VAsV/I8WrIF6IyJ90JQUdboupx1cdkgYqwnrYjH+I/nY/7cA1X5zia4mDJqH36npP7sxGQ==,
       }
     engines: { node: ">=20.0.0" }
     peerDependencies:
@@ -3027,7 +3027,7 @@ snapshots:
     dependencies:
       playwright: 1.52.0
 
-  "@react-router/dev@7.5.1(@types/node@22.14.1)(lightningcss@1.29.3)(react-router@7.5.1(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(tsx@4.19.3)(typescript@5.8.3)(vite@6.3.3(@types/node@22.14.1)(lightningcss@1.29.3)(tsx@4.19.3)(yaml@2.6.1))(yaml@2.6.1)":
+  "@react-router/dev@7.5.2(@types/node@22.14.1)(lightningcss@1.29.3)(react-router@7.5.2(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(tsx@4.19.3)(typescript@5.8.3)(vite@6.3.3(@types/node@22.14.1)(lightningcss@1.29.3)(tsx@4.19.3)(yaml@2.6.1))(yaml@2.6.1)":
     dependencies:
       "@babel/core": 7.26.10
       "@babel/generator": 7.27.0
@@ -3038,7 +3038,7 @@ snapshots:
       "@babel/traverse": 7.27.0
       "@babel/types": 7.27.0
       "@npmcli/package-json": 4.0.1
-      "@react-router/node": 7.5.1(react-router@7.5.1(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(typescript@5.8.3)
+      "@react-router/node": 7.5.2(react-router@7.5.2(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(typescript@5.8.3)
       arg: 5.0.2
       babel-dead-code-elimination: 1.0.10
       chokidar: 4.0.3
@@ -3052,7 +3052,7 @@ snapshots:
       picocolors: 1.1.1
       prettier: 2.8.8
       react-refresh: 0.14.2
-      react-router: 7.5.1(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+      react-router: 7.5.2(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       semver: 7.7.1
       set-cookie-parser: 2.7.1
       valibot: 0.41.0(typescript@5.8.3)
@@ -3076,10 +3076,10 @@ snapshots:
       - tsx
       - yaml
 
-  "@react-router/node@7.5.1(react-router@7.5.1(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(typescript@5.8.3)":
+  "@react-router/node@7.5.2(react-router@7.5.2(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(typescript@5.8.3)":
     dependencies:
       "@mjackson/node-fetch-server": 0.2.0
-      react-router: 7.5.1(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+      react-router: 7.5.2(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       source-map-support: 0.5.21
       stream-slice: 0.1.2
       undici: 6.21.2
@@ -3228,7 +3228,7 @@ snapshots:
   browserslist@4.24.4:
     dependencies:
       caniuse-lite: 1.0.30001715
-      electron-to-chromium: 1.5.141
+      electron-to-chromium: 1.5.142
       node-releases: 2.0.19
       update-browserslist-db: 1.1.3(browserslist@4.24.4)
 
@@ -3286,7 +3286,7 @@ snapshots:
 
   eastasianwidth@0.2.0: {}
 
-  electron-to-chromium@1.5.141: {}
+  electron-to-chromium@1.5.142: {}
 
   emoji-regex@8.0.0: {}
 
@@ -3651,7 +3651,7 @@ snapshots:
 
   react-refresh@0.14.2: {}
 
-  react-router@7.5.1(react-dom@19.1.0(react@19.1.0))(react@19.1.0):
+  react-router@7.5.2(react-dom@19.1.0(react@19.1.0))(react@19.1.0):
     dependencies:
       cookie: 1.0.2
       react: 19.1.0

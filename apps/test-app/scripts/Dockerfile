@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/playwright:v1.51.0-noble AS base
+FROM mcr.microsoft.com/playwright:v1.52.0-noble AS base
 RUN --mount=type=cache,target=/root/.npm \
     npm install -g pnpm@9.15.4
 

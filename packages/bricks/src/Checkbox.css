@@ -114,7 +114,7 @@
 			--🌀checkbox-aria-state: var(--🌀checkbox-aria-state--indeterminate);
 		}
 
-		&:where([disabled], :disabled, [aria-disabled="true"]) {
+		&:where(:disabled, [aria-disabled="true"]) {
 			--🌀checkbox-visual-state: var(--🌀checkbox-visual-state--disabled);
 			--🥝checkbox-color-svg: var(--ids-color-icon-neutral-disabled);
 			cursor: not-allowed;
@@ -156,7 +156,7 @@
 			}
 		}
 
-		&:where([disabled], :disabled, [aria-disabled="true"]) {
+		&:where(:disabled, [aria-disabled="true"]) {
 			background-color: Canvas;
 			border-color: GrayText;
 

@@ -6,7 +6,6 @@
 	display: flex;
 	flex-wrap: wrap;
 	gap: 16px;
-	min-block-size: 100dvb;
 }
 
 .main {
@@ -17,6 +16,11 @@
 
 .sidebar {
 	flex-grow: 1;
+
+	/* TODO: move this to page and update visual test selectors. */
+	@media (width >= 544px) {
+		min-block-size: 100dvb;
+	}
 }
 
 .pushRight {

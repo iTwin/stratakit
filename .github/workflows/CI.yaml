@@ -80,6 +80,9 @@ jobs:
       - run: pnpm prettier
         if: ${{ !cancelled() }}
 
+      - run: pnpm --filter=@stratakit/test-app run typecheck
+        if: ${{ !cancelled() }}
+
   build:
     name: Build test app
     needs: install

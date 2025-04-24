@@ -15,7 +15,7 @@
 }
 
 :where(html) {
-	-webkit-text-size-adjust: auto;
+	-webkit-text-size-adjust: none;
 }
 
 :where(html:has(dialog:modal[open])) {

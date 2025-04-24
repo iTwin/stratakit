@@ -3,8 +3,20 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 .page {
-	display: grid;
-	grid-template-columns: 1fr auto;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 16px;
+	min-block-size: 100dvb;
+}
+
+.main {
+	padding: 1rem;
+	flex: 999;
+	min-inline-size: 50%; /* never less than half the screen */
+}
+
+.sidebar {
+	flex-grow: 1;
 }
 
 .pushRight {

@@ -35,9 +35,6 @@ export const reactRouterConfig = {
 	...(basename && { basename }),
 	ssr: false,
 	prerender: true,
-	future: {
-		unstable_optimizeDeps: true, // https://github.com/remix-run/react-router/issues/12786#issuecomment-2634033513
-	},
 } satisfies ReactRouterConfig;
 
 // https://vite.dev/config/
@@ -54,6 +51,7 @@ export default defineConfig({
 	},
 	server: {
 		port: 1800, // dev server port
+		warmup: { clientFiles: ["./app/root.tsx"] }, // https://github.com/remix-run/react-router/issues/12786#issuecomment-2634033513
 	},
 	preview: {
 		port: 1800, // prod server port

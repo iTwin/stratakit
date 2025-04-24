@@ -62,7 +62,9 @@
 		border-end-start-radius: var(--🥝error-region-header-border-end-radius, var(--✨border-radius));
 		border-end-end-radius: var(--🥝error-region-header-border-end-radius, var(--✨border-radius));
 
-		transition: var(--🥝error-region-header-transition);
+		@media (prefers-reduced-motion: no-preference) {
+			transition: var(--🥝error-region-header-transition);
+		}
 	}
 }
 
@@ -87,8 +89,10 @@
 		interpolate-size: allow-keywords;
 		max-block-size: 0px;
 		opacity: 0;
-		transition: all 150ms linear;
-		transition-property: max-block-size, opacity;
+		@media (prefers-reduced-motion: no-preference) {
+			transition: all 150ms linear;
+			transition-property: max-block-size, opacity;
+		}
 	}
 
 	@layer states {

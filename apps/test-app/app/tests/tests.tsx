@@ -15,18 +15,13 @@ import {
 
 import chevronLeftIcon from "@stratakit/icons/chevron-left.svg";
 
-import globalStyles from "./tests.css?url";
 import styles from "./tests.module.css";
 
-import type { LinksFunction, MetaFunction } from "react-router";
+import type { MetaFunction } from "react-router";
 
 export const meta: MetaFunction = () => {
 	return [{ title: "Stratakit tests" }];
 };
-
-export const links: LinksFunction = () => [
-	{ rel: "stylesheet", href: globalStyles },
-];
 
 export default function Page() {
 	const matches = useMatches();
@@ -40,7 +35,7 @@ export default function Page() {
 
 	return (
 		<div className={styles.page}>
-			<main>
+			<main className={styles.main}>
 				<VisuallyHidden render={(props) => <h1 {...props} />}>
 					{title}
 				</VisuallyHidden>
@@ -54,6 +49,7 @@ export default function Page() {
 
 			{showRightSidebar ? (
 				<RightSidebar
+					className={styles.sidebar}
 					header={
 						<>
 							<IconButton

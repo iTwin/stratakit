@@ -45,16 +45,17 @@ interface ProgressBarProps extends Omit<BaseProps, "aria-labelledby"> {
  * This component maps to the [ARIA `progressbar` role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/progressbar_role)
  * and must be labelled using `aria-labelledby`.
  *
+ * Note: A progress bar is indeterminate if no `value` is passed.
+ *
  * Example:
  * ```tsx
- * <ProgressBar aria-labelledby={…} />
+ * <ProgressBar aria-labelledby={…} /> // indeterminate
+ * <ProgressBar aria-labelledby={…} value={50} /> // determinate
  * ```
  *
  * Supports a `tone` prop to change the tone (color) of the progress bar.
  * Supports a `size` prop to change the size of the progress bar.
  *
- * Note: Indeterminate progress bars (`value` not passed) should only be used for indicating the progress of short
- * operations (i.e. less than 5 seconds).
  */
 export const ProgressBar = forwardRef<"div", ProgressBarProps>(
 	(props, forwardedRef) => {

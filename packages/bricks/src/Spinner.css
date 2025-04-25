@@ -113,4 +113,8 @@
 	.🥝-spinner-svg-track {
 		stroke-width: 2;
 	}
+
+	.🥝-spinner-svg-fill {
+		stroke-dashoffset: 0;
+	}
 }

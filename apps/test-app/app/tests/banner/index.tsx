@@ -11,6 +11,8 @@ export const handle = { title: "Banner" };
 
 const loremIpsum =
 	"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris";
+const dummyLongLabel =
+	"This is a long label that goes on and on and on and on and on and on and on and on and on and on";
 
 export default definePage(
 	function Page() {
@@ -122,9 +124,6 @@ function ActionsTest() {
 		</div>
 	);
 }
-
-const dummyLongLabel =
-	"This is a long label that goes on and on and on and on and on and on and on and on and on and on";
 
 function AllStyleCases() {
 	const labelPermutations = ["visual", "visually-hidden"];

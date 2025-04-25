@@ -124,22 +124,14 @@ export const Banner = forwardRef<"div", BannerProps>((props, forwardedRef) => {
 					/>
 				) : null}
 
-				{typeof label === "string" ? (
-					<Text
-						id={labelId}
-						variant="body-sm"
-						className="🥝-banner-label"
-						data-kiwi-label-type="visual"
-					>
-						{label}
-					</Text>
-				) : (
-					React.cloneElement(label, {
-						id: labelId,
-						className: cx("🥝-banner-label", label?.props.className),
-						"data-kiwi-label-type": "visually-hidden",
-					})
-				)}
+				<Text
+					className="🥝-banner-label"
+					id={labelId}
+					variant="body-sm"
+					render={React.isValidElement(label) ? label : <span />}
+				>
+					{!React.isValidElement(label) ? label : undefined}
+				</Text>
 
 				{message != null ? (
 					<Text

@@ -218,7 +218,7 @@
 			}
 		}
 
-		&:where([disabled], :disabled, [aria-disabled="true"]) {
+		&:where(:disabled, [aria-disabled="true"]) {
 			--🌀button-state: var(--🌀button-state--disabled);
 			color: var(--ids-color-text-neutral-disabled);
 			cursor: not-allowed;

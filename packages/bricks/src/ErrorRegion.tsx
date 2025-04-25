@@ -4,11 +4,17 @@
  *--------------------------------------------------------------------------------------------*/
 
 import {
+	Collection,
+	CollectionItem,
+	useCollectionStore,
+} from "@ariakit/react/collection";
+import {
 	Dialog,
 	DialogDisclosure,
 	DialogProvider,
 } from "@ariakit/react/dialog";
 import { Role } from "@ariakit/react/role";
+import { useStoreState } from "@ariakit/react/store";
 import cx from "classnames";
 import * as React from "react";
 import { Button } from "./Button.js";
@@ -80,6 +86,53 @@ const ErrorRegionRoot = forwardRef<"div", ErrorRegionRootProps>(
 			expanded,
 			onExpandedChange as React.Dispatch<React.SetStateAction<boolean>>,
 		);
+
+		const containerRef = React.useRef<HTMLDivElement>(null);
+		const pulse = () => {
+			const el = containerRef.current;
+			if (!el) return;
+
+			const id = "--🥝error-region-pulse";
+			const animations = el.getAnimations({ subtree: true });
+			if (animations.find((animation) => animation.id === id)) return;
+
+			el.animate(
+				[
+					{
+						boxShadow: "0 0 0 0 var(--ids-color-border-attention-base)",
+						opacity: 1,
+					},
+					{
+						boxShadow: "0 0 15px 2px var(--ids-color-border-attention-base)",
+						opacity: 0.7,
+						offset: 0.5,
+					},
+					{
+						boxShadow: "0 0 0 0 var(--ids-color-border-attention-base)",
+						opacity: 1,
+					},
+				],
+				{
+					id,
+					duration: 600,
+					easing: "cubic-bezier(0.4, 0, 0.2, 1)",
+					pseudoElement: "::before",
+				},
+			);
+		};
+
+		const store = useCollectionStore({
+			setItems: (newItems) => {
+				const prevItemsSet = new Set(prevItems.map((item) => item.id));
+				const addedItems = newItems.filter(
+					(item) => !prevItemsSet.has(item.id),
+				);
+				if (addedItems.length === 0) return;
+
+				pulse();
+			},
+		});
+		const prevItems = useStoreState(store, "items");
 		return (
 			<>
 				<VisuallyHidden aria-live="polite" aria-atomic={true}>
@@ -94,7 +147,7 @@ const ErrorRegionRoot = forwardRef<"div", ErrorRegionRootProps>(
 						data-kiwi-expanded={open}
 						ref={forwardedRef}
 					>
-						<div className="🥝-error-region-container">
+						<div className="🥝-error-region-container" ref={containerRef}>
 							<DialogDisclosure
 								className="🥝-error-region-header"
 								render={<Button variant="ghost" />}
@@ -119,9 +172,13 @@ const ErrorRegionRoot = forwardRef<"div", ErrorRegionRootProps>(
 								autoFocusOnShow={false}
 								aria-labelledby={labelId}
 							>
-								<div className="🥝-error-region-items" role="list">
+								<Collection
+									store={store}
+									className="🥝-error-region-items"
+									role="list"
+								>
 									{items}
-								</div>
+								</Collection>
 							</Dialog>
 						</div>
 					</Role.section>
@@ -181,7 +238,7 @@ const ErrorRegionItem = forwardRef<"div", ErrorRegionItemProps>(
 		} = props;
 
 		return (
-			<Role.div
+			<CollectionItem
 				{...rest}
 				role="listitem"
 				className={cx("🥝-error-region-item", props.className)}
@@ -191,7 +248,7 @@ const ErrorRegionItem = forwardRef<"div", ErrorRegionItemProps>(
 					{message}
 				</Text>
 				<div className="🥝-error-region-item-actions">{actions}</div>
-			</Role.div>
+			</CollectionItem>
 		);
 	},
 );

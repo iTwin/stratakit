@@ -85,6 +85,8 @@
 	@layer base {
 		flex: 1;
 		text-align: start;
+		max-inline-size: 100%;
+		overflow-wrap: break-word;
 	}
 }
 

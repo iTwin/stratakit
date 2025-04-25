@@ -62,6 +62,7 @@
 	--✨border-radius: calc(var(--✨container-border-radius) - var(--✨container-border-width));
 
 	@layer base {
+		white-space: normal;
 		min-block-size: 2rem;
 		padding-inline-start: 8px;
 		padding-inline-end: 4px;

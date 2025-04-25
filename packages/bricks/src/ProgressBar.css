@@ -94,8 +94,16 @@
 
 @media (forced-colors: active) {
 	.🥝-progress-bar {
-		--🥝progress-bar-fill-color: CanvasText;
-		--🥝progress-bar-track-color: Canvas;
-		outline: calc(var(--🥝progress-bar-size) * 0.5) solid CanvasText;
+		forced-color-adjust: none;
+
+		&:where([data-kiwi-tone="neutral"]) {
+			--🥝progress-bar-fill-color: CanvasText;
+			--🥝progress-bar-track-color: oklch(from CanvasText l c h / 25%);
+		}
+
+		&:where([data-kiwi-tone="accent"]) {
+			--🥝progress-bar-fill-color: Highlight;
+			--🥝progress-bar-track-color: oklch(from Highlight l c h / 25%);
+		}
 	}
 }

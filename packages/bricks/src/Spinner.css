@@ -102,19 +102,14 @@
 
 @media (forced-colors: active) {
 	.🥝-spinner {
-		--🥝spinner-fill-color: Canvas;
-		--🥝spinner-track-color: CanvasText;
-
-		&:where([data-kiwi-variant="indeterminate"]) {
-			--🥝spinner-dash-array: 75 25;
+		&:where([data-kiwi-tone="neutral"]) {
+			--🥝spinner-fill-color: CanvasText;
+			--🥝spinner-track-color: oklch(from CanvasText l c h / 25%);
 		}
-	}
 
-	.🥝-spinner-svg-track {
-		stroke-width: 2;
-	}
-
-	.🥝-spinner-svg-fill {
-		stroke-dashoffset: 0;
+		&:where([data-kiwi-tone="accent"]) {
+			--🥝spinner-fill-color: Highlight;
+			--🥝spinner-track-color: oklch(from Highlight l c h / 25%);
+		}
 	}
 }

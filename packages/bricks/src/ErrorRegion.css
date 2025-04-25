@@ -87,7 +87,6 @@
 	@layer base {
 		@media (prefers-reduced-motion: no-preference) {
 			overflow: hidden;
-			max-block-size: 0px;
 			opacity: 0;
 			transition: all 150ms linear;
 			transition-property: max-block-size, opacity;
@@ -96,6 +95,10 @@
 
 	@layer states {
 		@media (prefers-reduced-motion: no-preference) {
+			&:where(:not([data-enter])) {
+				max-block-size: 0px;
+			}
+
 			&:where([data-enter]) {
 				max-block-size: calc(
 					var(--✨container-max-size) -

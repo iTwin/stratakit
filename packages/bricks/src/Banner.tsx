@@ -84,8 +84,10 @@ type BannerProps = Omit<BaseProps, "children"> & {
 };
 
 /**
- * A banner used to alert the user of something.
+ * A banner to highlight information and also optionally provide actions.
+ * The information could be very important (like a call to action) or reasonably import (like a status message).
  *
+ * Example:
  * ```tsx
  * <Banner label="Title" message="Message" icon={placeholderIcon} onDismiss={() => {}} />
  * ```

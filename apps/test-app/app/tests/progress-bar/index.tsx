@@ -3,7 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import { ProgressBar, VisuallyHidden } from "@stratakit/bricks";
+import { Button, ProgressBar, VisuallyHidden } from "@stratakit/bricks";
 import * as React from "react";
 import { definePage } from "~/~utils.tsx";
 
@@ -31,7 +31,7 @@ export default definePage(
 	{
 		visual: VisualTest,
 		determinate: DeterminateTest,
-		changing: ChangingText,
+		animated: AnimatedTest,
 	},
 );
 
@@ -116,13 +116,25 @@ function DeterminateTest({
 	);
 }
 
-function ChangingText() {
+function AnimatedTest() {
 	const [value, setValue] = React.useState(0);
+	// const intervalRef = React.useRef<ReturnType<typeof setInterval>>(null);
+	const [progressInterval, setProgressInterval] = React.useState<ReturnType<
+		typeof setInterval
+	> | null>(null);
+
 	const labelledBy = React.useId();
 
-	// Simulate progress bar value changing over time
 	React.useEffect(() => {
-		const interval = setInterval(() => {
+		return () => {
+			if (progressInterval) {
+				clearInterval(progressInterval);
+			}
+		};
+	}, [progressInterval]);
+
+	const onStartClick = React.useCallback(() => {
+		const newInterval = setInterval(() => {
 			setValue((prev) => {
 				if (prev === 100) {
 					return 0;
@@ -135,13 +147,41 @@ function ChangingText() {
 			});
 		}, 1000);
 
-		return () => clearInterval(interval);
+		setProgressInterval(newInterval);
 	}, []);
+
+	const onStopClick = React.useCallback(() => {
+		if (progressInterval) {
+			clearInterval(progressInterval);
+			setProgressInterval(null);
+		}
+	}, [progressInterval]);
+
+	const onResetClick = React.useCallback(() => {
+		onStopClick();
+		setValue(0);
+	}, [onStopClick]);
 
 	return (
 		<>
-			<ProgressBar value={value} aria-labelledby={labelledBy} />
-			<VisuallyHidden id={labelledBy}>Loading…</VisuallyHidden>
+			<div style={{ display: "grid", gap: 10 }}>
+				<div style={{ display: "flex", gap: 4 }}>
+					<Button onClick={onStartClick} disabled={!!progressInterval}>
+						Start
+					</Button>
+					<Button onClick={onStopClick} disabled={!progressInterval}>
+						Stop
+					</Button>
+					<Button
+						onClick={onResetClick}
+						disabled={!progressInterval && value === 0}
+					>
+						Reset
+					</Button>
+				</div>
+				<ProgressBar value={value} aria-labelledby={labelledBy} />
+				<VisuallyHidden id={labelledBy}>Loading…</VisuallyHidden>
+			</div>
 		</>
 	);
 }

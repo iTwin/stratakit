@@ -114,7 +114,6 @@
 	@layer base {
 		grid-area: dismiss;
 		align-self: start;
-		margin-inline: 16px -4px;
-		margin-block: -4px 0;
+		margin-inline-start: 16px;
 	}
 }

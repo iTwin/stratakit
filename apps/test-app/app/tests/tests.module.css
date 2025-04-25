@@ -3,8 +3,28 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 .page {
-	display: grid;
-	grid-template-columns: 1fr auto;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 16px;
+	container-type: inline-size;
+}
+
+.main {
+	padding: 1rem;
+	flex: 999;
+	min-inline-size: 50%; /* never less than half the screen */
+}
+
+.sidebar {
+	flex-grow: 1;
+	position: sticky;
+	inset-block-start: -1px; /* hide the border off screen */
+	inset-inline-end: 0;
+	align-self: flex-start;
+
+	@container (inline-size >= 542px) {
+		block-size: 100dvb; /* TODO: move this to page and update visual test selectors. */
+	}
 }
 
 .pushRight {

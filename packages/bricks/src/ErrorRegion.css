@@ -31,6 +31,9 @@
 
 .🥝-error-region-container {
 	@layer base {
+		isolation: isolate;
+
+		position: relative;
 		display: var(--🥝error-region-container-display, flex);
 		flex-direction: column;
 
@@ -38,6 +41,16 @@
 		border-radius: 8px;
 		background-color: var(--ids-color-bg-elevation-base);
 		box-shadow: var(--ids-shadow-surface-sm);
+
+		@media (prefers-reduced-motion: no-preference) {
+			&::before {
+				content: "";
+				position: absolute;
+				inset: 0;
+				border-radius: inherit;
+				z-index: -1;
+			}
+		}
 	}
 }
 

@@ -2,6 +2,7 @@ packages:
   - packages/*
   - apps/*
   - internal
+  - examples
 
 catalog:
   react: ^19.1.0

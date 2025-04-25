@@ -144,6 +144,15 @@ importers:
         specifier: ^5.1.4
         version: 5.1.4(typescript@5.8.3)(vite@6.3.3(@types/node@22.14.1)(lightningcss@1.29.3)(tsx@4.19.3)(yaml@2.6.1))
 
+  examples:
+    dependencies:
+      "@stratakit/bricks":
+        specifier: workspace:*
+        version: link:../packages/bricks
+      "@stratakit/icons":
+        specifier: workspace:*
+        version: link:../packages/icons
+
   internal:
     dependencies:
       colorjs.io:

@@ -104,6 +104,10 @@
 	.🥝-spinner {
 		--🥝spinner-fill-color: Canvas;
 		--🥝spinner-track-color: CanvasText;
+
+		&:where([data-kiwi-variant="indeterminate"]) {
+			--🥝spinner-dash-array: 75 25;
+		}
 	}
 
 	.🥝-spinner-svg-track {

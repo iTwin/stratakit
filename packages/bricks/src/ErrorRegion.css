@@ -80,6 +80,10 @@
 }
 
 .🥝-error-region-dialog {
+	--✨container-max-size: 350px;
+	--✨container-border-size: 2px;
+	--✨header-size: 2rem;
+
 	@layer base {
 		@media (prefers-reduced-motion: no-preference) {
 			overflow: hidden;
@@ -93,7 +97,11 @@
 	@layer states {
 		@media (prefers-reduced-motion: no-preference) {
 			&:where([data-enter]) {
-				max-block-size: calc(350px - 2rem - 2px);
+				max-block-size: calc(
+					var(--✨container-max-size) -
+					var(--✨container-border-size) -
+					var(--✨header-size)
+				);
 				opacity: 1;
 
 				@supports (interpolate-size: allow-keywords) {
@@ -105,11 +113,19 @@
 }
 
 .🥝-error-region-items {
+	--✨container-max-size: 350px;
+	--✨container-border-size: 2px;
+	--✨header-size: 2rem;
+
 	@layer base {
 		border-block-start: 1px solid var(--ids-color-border-page-base);
 
 		overflow: auto;
-		max-block-size: calc(350px - 2rem - 2px);
+		max-block-size: calc(
+			var(--✨container-max-size) -
+			var(--✨container-border-size) -
+			var(--✨header-size)
+		);
 	}
 }
 

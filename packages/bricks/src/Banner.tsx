@@ -10,6 +10,7 @@ import { Dismiss, Icon, StatusIcon } from "./Icon.js";
 import { IconButton } from "./IconButton.js";
 import { Text } from "./Text.js";
 
+import { GhostAligner } from "./~utils.GhostAligner.js";
 import { type BaseProps, forwardRef } from "./~utils.js";
 
 type BannerProps = Omit<BaseProps, "children"> & {
@@ -150,7 +151,7 @@ export const Banner = forwardRef<"div", BannerProps>((props, forwardedRef) => {
 				) : null}
 
 				{onDismiss ? (
-					<>
+					<GhostAligner align="block">
 						<IconButton
 							id={dismissId}
 							className="🥝-banner-dismiss-button"
@@ -160,7 +161,7 @@ export const Banner = forwardRef<"div", BannerProps>((props, forwardedRef) => {
 							icon={<Dismiss />}
 							onClick={onDismiss}
 						/>
-					</>
+					</GhostAligner>
 				) : null}
 			</div>
 		</Role>

@@ -57,7 +57,7 @@
 		position: relative;
 		box-shadow: var(--ids-shadow-button-base-inset), var(--✨shadow-border),
 			var(--ids-shadow-button-base-drop);
-		-webkit-tap-highlight-color: var(--ids-color-bg-accent-transparent);
+		-webkit-tap-highlight-color: var(--ids-color-bg-glow-on-surface-accent-pressed);
 
 		--🥝checkbox-border-color: var(--🌀checkbox-visual-state--default, var(--✨border--default))
 			var(--🌀checkbox-visual-state--hover, var(--✨border--hover))

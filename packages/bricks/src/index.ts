@@ -32,3 +32,12 @@ export * as unstable_Toolbar from "./Toolbar.js";
 export { Tooltip } from "./Tooltip.js";
 export * as Tree from "./Tree.js";
 export { VisuallyHidden } from "./VisuallyHidden.js";
+
+import { Icon, Root } from "@stratakit/foundations";
+
+/** @deprecated Please import `Root` from `"@stratakit/foundations"` instead. */
+const RootDeprecated = Root as typeof Root;
+/** @deprecated Please import `Icon` from `"@stratakit/foundations"` instead. */
+const IconDeprecated = Icon as typeof Icon;
+
+export { RootDeprecated as Root, IconDeprecated as Icon };

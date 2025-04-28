@@ -95,7 +95,6 @@
 	@layer base {
 		text-decoration: none;
 		line-height: 1.2;
-		white-space: nowrap;
 		user-select: none;
 		cursor: pointer;
 		font-size: var(--ids-font-size-12);
@@ -219,7 +218,7 @@
 			}
 		}
 
-		&:where([disabled], :disabled, [aria-disabled="true"]) {
+		&:where(:disabled, [aria-disabled="true"]) {
 			--🌀button-state: var(--🌀button-state--disabled);
 			color: var(--ids-color-text-neutral-disabled);
 			cursor: not-allowed;

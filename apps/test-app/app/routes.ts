@@ -5,7 +5,6 @@
 
 import { index, route } from "@react-router/dev/routes";
 import { components } from "./components.ts";
-import { toKebabCase } from "./~utils.tsx";
 
 import type { RouteConfig } from "@react-router/dev/routes";
 
@@ -26,3 +25,9 @@ export default [
 		),
 	),
 ] satisfies RouteConfig;
+
+// ----------------------------------------------------------------------------
+
+function toKebabCase(str: string) {
+	return str.replace(/([a-z])([A-Z])/g, "$1-$2").toLowerCase();
+}

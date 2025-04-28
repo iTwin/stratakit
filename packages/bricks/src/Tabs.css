@@ -135,7 +135,7 @@
 			}
 		}
 
-		&:where([disabled], :disabled, [aria-disabled="true"]) {
+		&:where(:disabled, [aria-disabled="true"]) {
 			--🌀tab-state: var(--🌀tab-state--disabled);
 			--🥝tab-active-stripe-color: var(--ids-color-border-neutral-disabled);
 			cursor: not-allowed;
@@ -179,7 +179,7 @@
 			--🥝tab-color: SelectedItemText;
 		}
 
-		&:where([disabled], :disabled, [aria-disabled="true"]) {
+		&:where(:disabled, [aria-disabled="true"]) {
 			--🥝tab-color: GrayText;
 		}
 	}

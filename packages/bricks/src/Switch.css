@@ -122,7 +122,7 @@
 			--🥝switch-thumb-aspect-ratio: 1.75;
 		}
 
-		&:where([disabled], :disabled, [aria-disabled="true"]) {
+		&:where(:disabled, [aria-disabled="true"]) {
 			--🌀switch-state: var(--🌀switch-state--disabled);
 			--🥝switch-thumb-color: var(--ids-color-icon-neutral-disabled);
 			cursor: not-allowed;
@@ -156,7 +156,7 @@
 			--🥝switch-thumb-color: SelectedItemText;
 		}
 
-		&:where([disabled], :disabled, [aria-disabled="true"]) {
+		&:where(:disabled, [aria-disabled="true"]) {
 			background-color: Canvas;
 			border-color: GrayText;
 			--🥝switch-thumb-color: GrayText;

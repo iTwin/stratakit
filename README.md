@@ -10,8 +10,9 @@ This monorepo is a [pnpm workspace](https://pnpm.io/workspaces) which can be con
 
 These are the packages of the Strata design system:
 
-- [`@stratakit/bricks`](./packages/bricks/): A React component library.
-- [`@stratakit/icons`](./packages/icons/): A standalone SVG icon library.
+- [`@stratakit/icons`](./packages/icons): A standalone SVG icon library.
+- [`@stratakit/bricks`](./packages/bricks): Small, modular components that can be assembled to create larger, more functional experiences.
+- [`@stratakit/react`](./packages/compat/): A React compatibility layer for using iTwinUI v3 APIs.
 
 ### Apps
 

@@ -78,7 +78,7 @@
 			--🥝focus-outline-offset: 2px;
 		}
 
-		&:where([disabled], :disabled, [aria-disabled="true"]) {
+		&:where(:disabled, [aria-disabled="true"]) {
 			--🥝anchor-color: var(--✨color--disabled);
 			cursor: not-allowed;
 			text-decoration: none;

@@ -1,0 +1,51 @@
+{
+	"name": "@stratakit/react",
+	"private": true,
+	"type": "module",
+	"version": "0.1.0",
+	"license": "MIT",
+	"sideEffects": false,
+	"exports": {
+		".": "./src/index.ts",
+		"./*": "./*"
+	},
+	"files": ["CHANGELOG.md", "LICENSE.md"],
+	"description": "A React component library for the Strata design system",
+	"author": "Bentley Systems",
+	"homepage": "https://github.com/iTwin/design-system",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/iTwin/design-system.git",
+		"directory": "packages/compat"
+	},
+	"keywords": [
+		"component",
+		"components",
+		"design-system",
+		"design",
+		"frontend",
+		"itwin",
+		"itwinui",
+		"strata",
+		"stratakit",
+		"react",
+		"ui"
+	],
+	"scripts": {},
+	"dependencies": {
+		"@itwin/itwinui-react": "^3.18.0",
+		"@stratakit/bricks": "^0.1.0"
+	},
+	"devDependencies": {
+		"@types/node": "catalog:",
+		"@types/react": "catalog:",
+		"@types/react-dom": "catalog:",
+		"react": "catalog:",
+		"react-dom": "catalog:",
+		"typescript": "catalog:"
+	},
+	"peerDependencies": {
+		"react": ">=18.0.0",
+		"react-dom": ">=18.0.0"
+	}
+}

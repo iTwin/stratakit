@@ -15,7 +15,7 @@
 	}
 
 	@layer states {
-		&:has(+ :where(:disabled, [disabled], [aria-disabled="true"])) {
+		&:has(+ :where(:disabled, [aria-disabled="true"])) {
 			color: var(--ids-color-text-neutral-disabled);
 
 			&:is(label) {

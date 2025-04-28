@@ -14,7 +14,7 @@
 		"./package.json": "./package.json"
 	},
 	"files": ["dist", "CHANGELOG.md", "LICENSE.md"],
-	"description": "A React component library for the Strata design system",
+	"description": "Small, modular components for the Strata design system",
 	"author": "Bentley Systems",
 	"homepage": "https://github.com/iTwin/design-system",
 	"repository": {
@@ -36,13 +36,11 @@
 		"ui"
 	],
 	"scripts": {
-		"build": "rimraf dist && node scripts/build.js && pnpm run build:dev && pnpm run build:types",
-		"build:dev": "NODE_ENV=development node scripts/build.js",
-		"build:types": "tsc --outDir dist",
-		"dev": "tsc --watch --outDir dist"
+		"build": "wireit",
+		"dev": "wireit"
 	},
 	"dependencies": {
-		"@ariakit/react": "^0.4.15",
+		"@ariakit/react": "^0.4.17",
 		"classnames": "^2.5.1"
 	},
 	"devDependencies": {
@@ -54,11 +52,38 @@
 		"lightningcss": "catalog:",
 		"react": "catalog:",
 		"react-dom": "catalog:",
-		"rimraf": "^6.0.1",
 		"typescript": "catalog:"
 	},
 	"peerDependencies": {
 		"react": ">=18.0.0",
 		"react-dom": ">=18.0.0"
+	},
+	"wireit": {
+		"build": {
+			"dependencies": ["build:js", "build:DEV", "build:types"]
+		},
+		"build:js": {
+			"command": "node scripts/build.js",
+			"files": ["src", "scripts", "../../internal"],
+			"output": ["dist/**/*.js", "!dist/DEV"]
+		},
+		"build:DEV": {
+			"command": "node scripts/build.js",
+			"files": ["src", "scripts", "../../internal"],
+			"output": ["dist/DEV/**/*.js"],
+			"env": {
+				"NODE_ENV": "development"
+			}
+		},
+		"build:types": {
+			"command": "tsc --outDir dist",
+			"files": ["src"],
+			"output": ["dist/**/*.d.ts"]
+		},
+		"dev": {
+			"command": "tsc --watch --outDir dist",
+			"files": ["src"],
+			"service": true
+		}
 	}
 }

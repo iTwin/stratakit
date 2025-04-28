@@ -15,6 +15,8 @@ export default defineConfig({
 	forbidOnly: !!process.env.CI,
 	/* Retry on CI only */
 	retries: process.env.CI ? 2 : 0,
+	/* Fail fast in CI */
+	maxFailures: process.env.CI ? 3 : undefined,
 	/* Opt out of parallel tests on CI. */
 	workers: process.env.CI ? 1 : undefined,
 	/* Reporter to use. See https://playwright.dev/docs/test-reporters */
@@ -70,7 +72,7 @@ export default defineConfig({
 	webServer: {
 		command: "pnpm preview",
 		url: "http://localhost:1800",
-		reuseExistingServer: !process.env.CI,
+		reuseExistingServer: true,
 	},
 
 	expect: {

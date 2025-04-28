@@ -26,8 +26,6 @@
 	/* Dynamically adjust the padding to avoid issues with baseline alignment */
 	--✨padding-block: max(0px, (var(--✨height) - 2px - 1lh) / 2);
 	--✨gap: 4px;
-	--✨outline: 2px solid var(--ids-color-border-accent-base);
-	--✨outline-offset: 1px;
 
 	@layer base {
 		cursor: var(--🥝text-box-cursor);
@@ -43,6 +41,7 @@
 		color: var(--✨color--default);
 		transition: all 150ms ease-out;
 		transition-property: background-color, border-color;
+		-webkit-tap-highlight-color: transparent;
 
 		--🥝text-box-cursor: text;
 		--🥝text-box-background-color: var(--🌀text-box-state--default, var(--✨bg--default))
@@ -114,27 +113,26 @@
 		}
 
 		&:where(:has(:is(input, textarea):focus-visible), :is(input, textarea):focus-visible) {
-			outline: var(--✨outline);
-			outline-offset: var(--✨outline-offset);
+			outline: var(--🥝focus-outline);
+			outline-offset: var(--🥝focus-outline-offset);
 			--🥝text-box-border-color: var(--✨border--focus);
 			--🥝icon-color: var(--ids-color-icon-accent-strong);
 		}
 
 		@supports not selector(:has(+ *)) {
 			&:where(:not(input, textarea):focus-within) {
-				outline: var(--✨outline);
-				outline-offset: var(--✨outline-offset);
+				outline: var(--🥝focus-outline);
+				outline-offset: var(--🥝focus-outline-offset);
 				--🥝text-box-border-color: var(--✨border--focus);
 				--🥝icon-color: var(--ids-color-icon-accent-strong);
 			}
 		}
 
 		&:where(
-				[disabled],
 				:disabled,
 				[aria-disabled="true"],
 				[data-kiwi-disabled="true"],
-				:has(:is(input, textarea):disabled)
+				:has(:is(input, textarea):is(:disabled, [aria-disabled="true"]))
 			) {
 			--🌀text-box-state: var(--🌀text-box-state--disabled);
 			box-shadow: none;
@@ -155,5 +153,23 @@
 .🥝-text-box-decoration {
 	@layer base {
 		flex-shrink: 0;
+	}
+}
+
+@media (forced-colors: active) {
+	.🥝-text-box {
+		--🥝text-box-background-color: Field;
+		--🥝text-box-border-color: CanvasText;
+		color: FieldText;
+
+		&:where(
+				:disabled,
+				[aria-disabled="true"],
+				[data-kiwi-disabled="true"],
+				:has(:is(input, textarea):is(:disabled, [aria-disabled="true"]))
+			) {
+			--🥝text-box-border-color: GrayText;
+			color: GrayText;
+		}
 	}
 }

@@ -14,6 +14,7 @@ packages/icons/icons-list.json
 
 # Caches
 .cache
+.wireit
 
 # debug
 *.log

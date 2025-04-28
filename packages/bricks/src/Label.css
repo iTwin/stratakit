@@ -10,15 +10,17 @@
 
 		&:is(label) {
 			cursor: pointer;
+			-webkit-tap-highlight-color: var(--ids-color-bg-glow-on-surface-neutral-pressed);
 		}
 	}
 
 	@layer states {
-		&:has(+ :where(:disabled, [disabled], [aria-disabled="true"])) {
+		&:has(+ :where(:disabled, [aria-disabled="true"])) {
 			color: var(--ids-color-text-neutral-disabled);
 
 			&:is(label) {
 				cursor: not-allowed;
+				-webkit-tap-highlight-color: transparent;
 			}
 		}
 	}

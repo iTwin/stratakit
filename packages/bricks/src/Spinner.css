@@ -102,19 +102,20 @@
 
 @media (forced-colors: active) {
 	.🥝-spinner {
+		/* Fill is used as track, track is used as fill. */
 		--🥝spinner-fill-color: Canvas;
 		--🥝spinner-track-color: CanvasText;
 
 		&:where([data-kiwi-variant="indeterminate"]) {
-			--🥝spinner-dash-array: 75 25;
+			--🥝spinner-dash-array: 75 25; /* Inverts the sizes of fill & track. */
 		}
 	}
 
 	.🥝-spinner-svg-track {
-		stroke-width: 2;
+		stroke-width: 2; /* Makes the track twice as thick to create an outline around the spinner. */
 	}
 
 	.🥝-spinner-svg-fill {
-		stroke-dashoffset: 0;
+		stroke-dashoffset: 0; /* Makes the fill start in the same location as non-forced-colors mode. */
 	}
 }

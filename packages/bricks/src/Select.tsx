@@ -4,13 +4,16 @@
  *--------------------------------------------------------------------------------------------*/
 
 import { Role } from "@ariakit/react/role";
+import { forwardRef, isBrowser } from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
 import * as React from "react";
 import { useFieldControlType } from "./Field.internal.js";
-import { DisclosureArrow } from "./Icon.js";
-import { forwardRef, isBrowser } from "./~utils.js";
+import { DisclosureArrow } from "./~utils.icons.js";
 
-import type { BaseProps, FocusableProps } from "./~utils.js";
+import type {
+	BaseProps,
+	FocusableProps,
+} from "@stratakit/foundations/secret-internals";
 
 const supportsHas = isBrowser && CSS?.supports?.("selector(:has(+ *))");
 

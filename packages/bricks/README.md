@@ -15,7 +15,7 @@ npm add @stratakit/bricks
 To use components from the Strata design system in your app, you’ll need to wrap your app’s UI with Stratakit's `<Root>` component, and specify the required `colorScheme` and `density` props:
 
 ```jsx
-import { Root } from "@stratakit/bricks";
+import { Root } from "@stratakit/foundations";
 
 export function App() {
 	return (

@@ -5,11 +5,11 @@
 
 import { Role } from "@ariakit/react/role";
 import { Separator } from "@ariakit/react/separator";
+import { forwardRef } from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
-import { forwardRef } from "./~utils.js";
 
 import type { SeparatorProps } from "@ariakit/react/separator";
-import type { BaseProps } from "./~utils.js";
+import type { BaseProps } from "@stratakit/foundations/secret-internals";
 
 interface DividerProps
 	extends BaseProps<"hr">,

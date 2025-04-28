@@ -55,12 +55,18 @@
 		"typescript": "catalog:"
 	},
 	"peerDependencies": {
+		"@stratakit/foundations": "^0.1.0",
 		"react": ">=18.0.0",
 		"react-dom": ">=18.0.0"
 	},
 	"wireit": {
 		"build": {
-			"dependencies": ["build:js", "build:DEV", "build:types"]
+			"dependencies": [
+				"build:js",
+				"build:DEV",
+				"build:types",
+				"../foundations:build"
+			]
 		},
 		"build:js": {
 			"command": "node scripts/build.js",
@@ -78,7 +84,8 @@
 		"build:types": {
 			"command": "tsc --outDir dist",
 			"files": ["src"],
-			"output": ["dist/**/*.d.ts"]
+			"output": ["dist/**/*.d.ts"],
+			"dependencies": ["../foundations:build:types"]
 		},
 		"dev": {
 			"command": "tsc --watch --outDir dist",

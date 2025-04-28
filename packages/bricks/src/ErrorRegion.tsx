@@ -130,13 +130,16 @@ const ErrorRegionRoot = forwardRef<"div", ErrorRegionRootProps>(
 				if (addedItems.length === 0) return;
 
 				pulse();
+				setLiveLabel(label);
 			},
 		});
 		const prevItems = useStoreState(store, "items");
+
+		const [liveLabel, setLiveLabel] = React.useState(label);
 		return (
 			<>
 				<VisuallyHidden aria-live="polite" aria-atomic={true}>
-					{label}
+					{liveLabel}
 				</VisuallyHidden>
 				<DialogProvider open={open} setOpen={setOpen}>
 					<Role.section

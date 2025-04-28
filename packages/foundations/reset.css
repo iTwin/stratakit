@@ -16,6 +16,7 @@
 
 :where(html) {
 	-webkit-text-size-adjust: none;
+	interpolate-size: allow-keywords;
 }
 
 :where(html:has(dialog:modal[open])) {

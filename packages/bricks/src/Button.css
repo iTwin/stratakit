@@ -95,7 +95,6 @@
 	@layer base {
 		text-decoration: none;
 		line-height: 1.2;
-		white-space: nowrap;
 		user-select: none;
 		cursor: pointer;
 		font-size: var(--ids-font-size-12);
@@ -119,7 +118,7 @@
 		background-color: var(--🥝button-background-color);
 		color: var(--🥝button-color, var(--✨color--default));
 		transition: background-color 150ms ease-out;
-		-webkit-tap-highlight-color: var(--✨bg--solid-pressed);
+		-webkit-tap-highlight-color: var(--ids-color-bg-glow-on-surface-neutral-pressed);
 		--🥝icon-color: var(--🌀button-state--default, var(--ids-color-icon-neutral-base))
 			var(--🌀button-state--hover, var(--ids-color-icon-neutral-hover))
 			var(--🌀button-state--pressed, var(--ids-color-icon-neutral-hover))
@@ -169,6 +168,7 @@
 					var(--🌀button-state--hover, var(--ids-color-icon-neutral-emphasis))
 					var(--🌀button-state--pressed, var(--ids-color-icon-neutral-emphasis))
 					var(--🌀button-state--disabled, var(--ids-color-icon-neutral-disabled));
+				-webkit-tap-highlight-color: var(--ids-color-bg-glow-on-surface-accent-pressed);
 			}
 		}
 
@@ -222,6 +222,7 @@
 			--🌀button-state: var(--🌀button-state--disabled);
 			color: var(--ids-color-text-neutral-disabled);
 			cursor: not-allowed;
+			-webkit-tap-highlight-color: transparent;
 
 			@media (forced-colors: active) {
 				border-color: GrayText;

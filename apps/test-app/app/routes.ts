@@ -4,7 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 
 import { index, route } from "@react-router/dev/routes";
-import { components } from "./components.ts";
+import { compatComponents, components } from "./components.ts";
 
 import type { RouteConfig } from "@react-router/dev/routes";
 
@@ -22,6 +22,15 @@ export default [
 				toKebabCase(component),
 				`./tests/${toKebabCase(component)}/index.tsx`,
 			),
+		),
+	),
+
+	route("compat", "./compat/index.tsx"),
+	route(
+		"compat",
+		"./compat/compat.tsx",
+		compatComponents.map((component) =>
+			route(toKebabCase(component), `./compat/${toKebabCase(component)}.tsx`),
 		),
 	),
 ] satisfies RouteConfig;

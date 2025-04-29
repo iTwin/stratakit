@@ -60,6 +60,8 @@ type Merge<P1, P2> = Omit<P1, keyof P2> & P2;
 
 /**
  * Converts the `as` prop used in `@itwin/itwinui-react` components to `render` prop used in Strata components.
+ *
+ * @private
  */
 export function useCompatProps<P extends { as?: React.ElementType }>(props: P) {
 	const { as, ...rest } = props;

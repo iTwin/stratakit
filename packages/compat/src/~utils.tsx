@@ -3,7 +3,6 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import type { Anchor } from "@stratakit/bricks";
 import * as React from "react";
 
 // ----------------------------------------------------------------------------
@@ -59,20 +58,18 @@ type Merge<P1, P2> = Omit<P1, keyof P2> & P2;
 
 // ----------------------------------------------------------------------------
 
-type AnchorProps = React.ComponentProps<typeof Anchor>;
-type RenderProp = AnchorProps["render"];
-
-export function createCompatComponent<T, P extends { as?: React.ElementType }>(
-	renderFn: React.ForwardRefRenderFunction<
-		T,
-		React.PropsWithoutRef<Omit<P, "as"> & { render?: RenderProp }>
-	>,
-) {
-	return React.forwardRef<T, P>((props, forwardedRef) => {
-		const { as, ...rest } = props;
-		const render = as ? React.createElement(as) : undefined;
-		return renderFn({ ...rest, render }, forwardedRef);
-	});
+/**
+ * Converts the `as` prop used in `@itwin/itwinui-react` components to `render` prop used in Strata components.
+ */
+export function useCompatProps<P extends { as?: React.ElementType }>(props: P) {
+	const { as, ...rest } = props;
+	const render = React.useMemo(() => {
+		return as ? React.createElement(as) : undefined;
+	}, [as]);
+	return {
+		...rest,
+		render,
+	};
 }
 
 // ----------------------------------------------------------------------------

@@ -13,7 +13,7 @@ const sizes = ["small", "medium", "large"] as const;
 const tones = ["neutral", "accent"] as const;
 
 export default definePage(
-	function Page({ size = "medium", tone = "neutral", ...rest }) {
+	function Page({ size = "medium", tone = "neutral", value }) {
 		const labelledBy = React.useId();
 
 		return (
@@ -21,7 +21,7 @@ export default definePage(
 				<ProgressBar
 					size={size as (typeof sizes)[number]}
 					tone={tone as (typeof tones)[number]}
-					{...rest}
+					value={value != null ? Number(value) : undefined}
 					aria-labelledby={labelledBy}
 				/>
 				<VisuallyHidden id={labelledBy}>Loading…</VisuallyHidden>
@@ -94,12 +94,7 @@ function VisualTest() {
 	);
 }
 
-function DeterminateTest({
-	size = "medium",
-	tone = "neutral",
-	value = 50,
-	...rest
-}) {
+function DeterminateTest({ size = "medium", tone = "neutral", value = 50 }) {
 	const labelledBy = React.useId();
 
 	return (
@@ -108,7 +103,6 @@ function DeterminateTest({
 				size={size as (typeof sizes)[number]}
 				tone={tone as (typeof tones)[number]}
 				value={value}
-				{...rest}
 				aria-labelledby={labelledBy}
 			/>
 			<VisuallyHidden id={labelledBy}>Loading…</VisuallyHidden>

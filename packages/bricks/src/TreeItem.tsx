@@ -14,6 +14,7 @@ import { ChevronDown, Icon, MoreHorizontal, StatusIcon } from "./Icon.js";
 import { IconButtonPresentation } from "./IconButton.internal.js";
 import { IconButton } from "./IconButton.js";
 import { useEventHandlers } from "./~hooks.js";
+import { GhostAligner } from "./~utils.GhostAligner.js";
 import * as ListItem from "./~utils.ListItem.js";
 import { forwardRef } from "./~utils.js";
 
@@ -745,21 +746,18 @@ const TreeItemExpander = forwardRef<"button", TreeItemExpanderProps>(
 	(props, forwardedRef) => {
 		const descriptionId = React.useContext(TreeItemDescriptionIdContext);
 		return (
-			<IconButtonPresentation
-				aria-hidden="true"
-				{...props}
-				onClick={useEventHandlers(props.onClick, (e) => e.stopPropagation())}
-				className={cx(
-					"🥝-ghost-aligner",
-					"🥝-tree-item-expander",
-					props.className,
-				)}
-				variant="ghost"
-				data-kiwi-ghost-align={descriptionId ? "block" : undefined}
-				ref={forwardedRef}
-			>
-				<ChevronDown />
-			</IconButtonPresentation>
+			<GhostAligner align={descriptionId ? "block" : undefined}>
+				<IconButtonPresentation
+					aria-hidden="true"
+					{...props}
+					onClick={useEventHandlers(props.onClick, (e) => e.stopPropagation())}
+					className={cx("🥝-tree-item-expander", props.className)}
+					variant="ghost"
+					ref={forwardedRef}
+				>
+					<ChevronDown />
+				</IconButtonPresentation>
+			</GhostAligner>
 		);
 	},
 );

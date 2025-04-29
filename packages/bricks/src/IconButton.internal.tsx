@@ -6,6 +6,7 @@
 import { Role } from "@ariakit/react/role";
 import cx from "classnames";
 import * as React from "react";
+import { useGhostAlignment } from "./~utils.GhostAligner.js";
 import { forwardRef } from "./~utils.js";
 
 import type { Button } from "./Button.js";
@@ -28,11 +29,20 @@ export const IconButtonPresentation = forwardRef<
 	IconButtonPresentationProps
 >((props, forwardedRef) => {
 	const { variant, ...rest } = props;
+
+	const ghostAlignment = useGhostAlignment();
+
 	return (
 		<Role.span
 			{...rest}
-			className={cx("🥝-icon-button", "🥝-button", props.className)}
+			className={cx(
+				"🥝-icon-button",
+				"🥝-button",
+				{ "🥝-ghost-aligner": variant === "ghost" },
+				props.className,
+			)}
 			data-kiwi-variant={variant}
+			data-kiwi-ghost-align={variant === "ghost" ? ghostAlignment : undefined}
 			ref={forwardedRef}
 		/>
 	);

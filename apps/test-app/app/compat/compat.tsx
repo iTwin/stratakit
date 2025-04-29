@@ -7,7 +7,7 @@ import { VisuallyHidden } from "@ariakit/react/visually-hidden";
 import { ThemeProvider } from "@itwin/itwinui-react";
 import { Outlet, useMatches } from "react-router";
 import type { MetaFunction } from "react-router";
-import styles from "./index.module.css";
+import styles from "./compat.module.css";
 
 export const meta: MetaFunction = () => {
 	return [{ title: "Stratakit compat" }];

@@ -41,6 +41,7 @@
 		color: var(--✨color--default);
 		transition: all 150ms ease-out;
 		transition-property: background-color, border-color;
+		-webkit-tap-highlight-color: transparent;
 
 		--🥝text-box-cursor: text;
 		--🥝text-box-background-color: var(--🌀text-box-state--default, var(--✨bg--default))

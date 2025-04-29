@@ -139,7 +139,7 @@ const ErrorRegionRoot = forwardRef<"div", ErrorRegionRootProps>(
 		return (
 			<>
 				<VisuallyHidden aria-live="polite" aria-atomic={true}>
-					{liveLabel}
+					{liveLabel === label ? liveLabel : undefined}
 				</VisuallyHidden>
 				<DialogProvider open={open} setOpen={setOpen}>
 					<Role.section

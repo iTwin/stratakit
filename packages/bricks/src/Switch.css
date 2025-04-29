@@ -60,6 +60,7 @@
 			var(--🌀switch-state--disabled, var(--✨border--disabled));
 		transition: all 150ms ease-out;
 		transition-property: background-color, border-color;
+		-webkit-tap-highlight-color: var(--ids-color-bg-glow-on-surface-accent-pressed);
 
 		&::before,
 		&::after {
@@ -125,6 +126,7 @@
 			--🌀switch-state: var(--🌀switch-state--disabled);
 			--🥝switch-thumb-color: var(--ids-color-icon-neutral-disabled);
 			cursor: not-allowed;
+			-webkit-tap-highlight-color: transparent;
 
 			&::after {
 				box-shadow: none;

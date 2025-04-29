@@ -29,7 +29,7 @@ interface ProgressBarProps extends Omit<BaseProps, "aria-labelledby"> {
 	 */
 	tone?: "neutral" | "accent";
 	/**
-	 * The value of the progress bar between 0 and 100 (inclusive).
+	 * The value of the progress bar between 0 and 100 (inclusive). This value is rounded to 3 decimal places.
 	 *
 	 * - If passed, the progress bar will be determinate.
 	 * - If not passed, the progress bar will be indeterminate.
@@ -71,9 +71,10 @@ export const ProgressBar = forwardRef<"div", ProgressBarProps>(
 		 * `valueProp` between 0 and 100.
 		 */
 		const value = React.useMemo(() => {
-			return valueProp != null
-				? Math.min(Math.max(valueProp, 0), 100)
-				: undefined;
+			if (valueProp == null) return undefined;
+
+			const clampedValue = Math.min(Math.max(valueProp, 0), 100);
+			return Math.round(clampedValue * 1000) / 1000; // Round to 3 decimal places
 		}, [valueProp]);
 
 		const style = React.useMemo(() => {
@@ -88,6 +89,9 @@ export const ProgressBar = forwardRef<"div", ProgressBarProps>(
 		return (
 			<Role
 				role="progressbar"
+				aria-valuenow={value}
+				aria-valuemin={value != null ? 0 : undefined}
+				aria-valuemax={value != null ? 100 : undefined}
 				{...rest}
 				data-kiwi-size={size}
 				data-kiwi-tone={tone}
@@ -95,9 +99,6 @@ export const ProgressBar = forwardRef<"div", ProgressBarProps>(
 				className={cx("🥝-progress-bar", props.className)}
 				style={style}
 				ref={forwardedRef}
-				aria-valuenow={value}
-				aria-valuemin={value != null ? 0 : undefined}
-				aria-valuemax={value != null ? 100 : undefined}
 			/>
 		);
 	},

@@ -6,28 +6,36 @@
 import type { Anchor as IuiAnchor } from "@itwin/itwinui-react";
 import { Anchor as SkAnchor } from "@stratakit/bricks";
 import * as React from "react";
+import type { PolymorphicForwardRefComponent } from "./~utils.tsx";
 
 type IuiAnchorProps = React.ComponentProps<typeof IuiAnchor>;
 
-interface AnchorProps extends Omit<IuiAnchorProps, "underline" | "isExternal"> {
-	/** This prop is ignored. */
-	underline?: IuiAnchorProps["underline"];
-	/** This prop is ignored. */
+interface AnchorProps {
+	/**
+	 * This prop is ignored.
+	 *
+	 * Whether the anchor links to an external site.
+	 *
+	 * When true, there will be an icon added at the end of the anchor text. This is useful
+	 * to indicate that the link will open in a new tab.
+	 *
+	 * Not all external links should open in a new tab, so this prop should be used with caution.
+	 */
 	isExternal?: IuiAnchorProps["isExternal"];
+	/**
+	 * This prop is ignored.
+	 *
+	 * Whether the anchor should be underlined in its idle state.
+	 *
+	 * By default, the anchor is underlined only on hover, or when using a high-contrast theme.
+	 */
+	underline?: IuiAnchorProps["underline"];
 }
 
-export const Anchor = React.forwardRef<"a", AnchorProps>(
-	(props, forwardedRef) => {
-		const { underline, isExternal, as, ...rest } = props;
-		const render = as ? React.createElement(as) : undefined;
+export const Anchor = React.forwardRef((props, forwardedRef) => {
+	const { underline, isExternal, as, ...rest } = props;
+	const render = as ? React.createElement(as) : undefined;
 
-		return (
-			<SkAnchor
-				{...rest}
-				render={render}
-				ref={forwardedRef as IuiAnchorProps["ref"]}
-			/>
-		);
-	},
-) as typeof IuiAnchor;
+	return <SkAnchor {...rest} render={render} ref={forwardedRef} />;
+}) as PolymorphicForwardRefComponent<"a", AnchorProps>;
 DEV: Anchor.displayName = "CompatAnchor";

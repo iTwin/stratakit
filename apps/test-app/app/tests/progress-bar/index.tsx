@@ -137,7 +137,8 @@ function AnimatedTest() {
 		const newInterval = setInterval(() => {
 			setValue((prev) => {
 				if (prev === 100) {
-					return 0;
+					onStopClick();
+					return prev;
 				}
 
 				const randomProgress = Math.random() * 25;
@@ -145,7 +146,7 @@ function AnimatedTest() {
 
 				return newValue;
 			});
-		}, 1000);
+		}, 500);
 
 		setProgressInterval(newInterval);
 	}, []);
@@ -153,8 +154,8 @@ function AnimatedTest() {
 	const onStopClick = React.useCallback(() => {
 		if (progressInterval) {
 			clearInterval(progressInterval);
-			setProgressInterval(null);
 		}
+		setProgressInterval(null);
 	}, [progressInterval]);
 
 	const onResetClick = React.useCallback(() => {

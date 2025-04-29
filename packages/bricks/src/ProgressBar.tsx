@@ -74,7 +74,7 @@ export const ProgressBar = forwardRef<"div", ProgressBarProps>(
 			if (valueProp == null) return undefined;
 
 			const clampedValue = Math.min(Math.max(valueProp, 0), 100);
-			return Math.round(clampedValue * 1000) / 1000; // Round to 3 decimal places
+			return Number(clampedValue.toFixed(3));
 		}, [valueProp]);
 
 		const style = React.useMemo(() => {

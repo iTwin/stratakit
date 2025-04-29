@@ -73,11 +73,6 @@
 					var(--✨animation--indeterminate-slow);
 			}
 		}
-
-		@media (forced-colors: active) {
-			--🥝progress-bar-fill-color: CanvasText;
-			--🥝progress-bar-track-color: Canvas;
-		}
 	}
 }
 
@@ -100,5 +95,15 @@
 	}
 	100% {
 		transform: translateX(400%); /* The fill is 25% width of the container, multiplied by 4 moves the fill out of view on the right side. */
+	}
+}
+
+@media (forced-colors: active) {
+	.🥝-progress-bar {
+		--🥝progress-bar-fill-color: CanvasText;
+		--🥝progress-bar-track-color: Canvas;
+		outline: 1px solid;
+		outline-color: oklch(from CanvasText l c h / 50%);
+		forced-color-adjust: none;
 	}
 }

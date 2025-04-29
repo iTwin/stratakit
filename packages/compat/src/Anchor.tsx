@@ -5,8 +5,10 @@
 
 import type { Anchor as IuiAnchor } from "@itwin/itwinui-react";
 import { Anchor as SkAnchor } from "@stratakit/bricks";
-import * as React from "react";
-import type { PolymorphicForwardRefComponent } from "./~utils.tsx";
+import {
+	type PolymorphicForwardRefComponent,
+	createCompatComponent,
+} from "./~utils.tsx";
 
 type IuiAnchorProps = React.ComponentProps<typeof IuiAnchor>;
 
@@ -32,10 +34,8 @@ interface AnchorProps {
 	underline?: IuiAnchorProps["underline"];
 }
 
-export const Anchor = React.forwardRef((props, forwardedRef) => {
-	const { underline, isExternal, as, ...rest } = props;
-	const render = as ? React.createElement(as) : undefined;
-
-	return <SkAnchor {...rest} render={render} ref={forwardedRef} />;
+export const Anchor = createCompatComponent((props, forwardedRef) => {
+	const { underline, isExternal, render, ...rest } = props;
+	return <SkAnchor {...rest} ref={forwardedRef} />;
 }) as PolymorphicForwardRefComponent<"a", AnchorProps>;
 DEV: Anchor.displayName = "CompatAnchor";

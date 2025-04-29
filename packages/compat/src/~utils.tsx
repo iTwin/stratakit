@@ -2,7 +2,11 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-import type * as React from "react";
+
+import type { Anchor } from "@stratakit/bricks";
+import * as React from "react";
+
+// ----------------------------------------------------------------------------
 
 /**
  * As defined in `@itwin/itwinui-react`.
@@ -52,3 +56,23 @@ export interface PolymorphicForwardRefComponent<DefaultAs, OwnProps = {}>
 	): React.ReactElement<any> | null;
 }
 type Merge<P1, P2> = Omit<P1, keyof P2> & P2;
+
+// ----------------------------------------------------------------------------
+
+type AnchorProps = React.ComponentProps<typeof Anchor>;
+type RenderProp = AnchorProps["render"];
+
+export function createCompatComponent<T, P extends { as?: React.ElementType }>(
+	renderFn: React.ForwardRefRenderFunction<
+		T,
+		React.PropsWithoutRef<Omit<P, "as"> & { render?: RenderProp }>
+	>,
+) {
+	return React.forwardRef<T, P>((props, forwardedRef) => {
+		const { as, ...rest } = props;
+		const render = as ? React.createElement(as) : undefined;
+		return renderFn({ ...rest, render }, forwardedRef);
+	});
+}
+
+// ----------------------------------------------------------------------------

@@ -54,10 +54,6 @@
 		align-items: center;
 		inline-size: 100%;
 		padding: 4px;
-
-		.🥝-banner-label:not(.🥝-visually-hidden) {
-			margin-block-end: 4px;
-		}
 	}
 }
 
@@ -75,6 +71,10 @@
 		grid-column: 2;
 		font-weight: 500;
 		align-self: start;
+
+		&:not(:has(.🥝-visually-hidden)) {
+			margin-block-end: 4px;
+		}
 	}
 }
 

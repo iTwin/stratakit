@@ -33,7 +33,6 @@
 	],
 	"scripts": {},
 	"dependencies": {
-		"@itwin/itwinui-react": "^3.18.1",
 		"@stratakit/bricks": "^0.1.0"
 	},
 	"devDependencies": {

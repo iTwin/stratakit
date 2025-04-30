@@ -15,7 +15,7 @@
 	},
 	"dependencies": {
 		"@ariakit/react": "^0.4.17",
-		"@itwin/itwinui-react": "^3.18.0",
+		"@itwin/itwinui-react": "^3.18.1",
 		"@react-router/node": "^7.5.2",
 		"@stratakit/bricks": "workspace:*",
 		"@stratakit/icons": "workspace:*",

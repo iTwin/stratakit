@@ -77,8 +77,8 @@ importers:
         specifier: ^0.4.17
         version: 0.4.17(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       "@itwin/itwinui-react":
-        specifier: ^3.18.0
-        version: 3.18.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+        specifier: ^3.18.1
+        version: 3.18.1(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       "@react-router/node":
         specifier: ^7.5.2
         version: 7.5.2(react-router@7.5.2(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(typescript@5.8.3)
@@ -206,8 +206,8 @@ importers:
   packages/compat:
     dependencies:
       "@itwin/itwinui-react":
-        specifier: ^3.18.0
-        version: 3.18.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+        specifier: ^3.18.1
+        version: 3.18.1(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       "@stratakit/bricks":
         specifier: ^0.1.0
         version: link:../bricks
@@ -847,10 +847,10 @@ packages:
       react: ">=16.8.6"
       react-dom: ">=16.8.6"
 
-  "@itwin/itwinui-react@3.18.0":
+  "@itwin/itwinui-react@3.18.1":
     resolution:
       {
-        integrity: sha512-zmri5oB406Qc6M2YAPtvoNcqDZ+r+ZuE2pczlIgYxTCvBB7rDCh91ng0wroyZYLgQLuYnarcnjLLSRaicy1Rrw==,
+        integrity: sha512-6v3QaWD7i3N4/eOIELpPU3REKByujH4BYaaHlxlE824+gfwV8V8dUfqSPH8jNMgFVKJpIzxEdksSq1a38maUlg==,
       }
     peerDependencies:
       react: ">=17.0.0"
@@ -2961,7 +2961,7 @@ snapshots:
       react: 19.1.0
       react-dom: 19.1.0(react@19.1.0)
 
-  "@itwin/itwinui-react@3.18.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0)":
+  "@itwin/itwinui-react@3.18.1(react-dom@19.1.0(react@19.1.0))(react@19.1.0)":
     dependencies:
       "@floating-ui/react": 0.27.8(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       "@itwin/itwinui-illustrations-react": 2.1.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0)

@@ -10,7 +10,7 @@ import {
 	themeTransform,
 	typographyTokensTransform,
 	typographyTransform,
-} from "internal/visitors.js";
+} from "internal/lightningcss-visitors.js";
 import * as lightningcss from "lightningcss";
 import {
 	defaultClientConditions,

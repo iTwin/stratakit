@@ -5,14 +5,20 @@
 
 import { Focusable } from "@ariakit/react/focusable";
 import { Role } from "@ariakit/react/role";
+import { Icon } from "@stratakit/foundations";
+import { forwardRef } from "@stratakit/foundations/secret-internals";
+import {
+	useEventHandlers,
+	useMergedRefs,
+} from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
 import * as React from "react";
 import { useFieldControlType } from "./Field.internal.js";
-import { Icon } from "./Icon.js";
-import { useEventHandlers, useMergedRefs } from "./~hooks.js";
-import { forwardRef } from "./~utils.js";
 
-import type { BaseProps, FocusableProps } from "./~utils.js";
+import type {
+	BaseProps,
+	FocusableProps,
+} from "@stratakit/foundations/secret-internals";
 
 // ----------------------------------------------------------------------------
 

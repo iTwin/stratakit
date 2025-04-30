@@ -15,17 +15,19 @@ import {
 } from "@ariakit/react/dialog";
 import { Role } from "@ariakit/react/role";
 import { useStoreState } from "@ariakit/react/store";
+import {
+	forwardRef,
+	useControlledState,
+} from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
 import * as React from "react";
 import { Button } from "./Button.js";
-import { ChevronDown, StatusIcon } from "./Icon.js";
 import { IconButtonPresentation } from "./IconButton.internal.js";
 import { Text } from "./Text.js";
 import { VisuallyHidden } from "./VisuallyHidden.js";
-import { useControlledState } from "./~hooks.js";
-import { forwardRef } from "./~utils.js";
+import { ChevronDown, StatusIcon } from "./~utils.icons.js";
 
-import type { BaseProps } from "./~utils.js";
+import type { BaseProps } from "@stratakit/foundations/secret-internals";
 
 // ----------------------------------------------------------------------------
 

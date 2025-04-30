@@ -23,7 +23,7 @@ Preferred usage is with the `Icon` component from `@stratakit/bricks`:
 2. Render the `Icon` component.
 
    ```tsx
-   import { Icon } from "@stratakit/bricks";
+   import { Icon } from "@stratakit/foundations";
 
    <Icon href={placeholderIcon} />
 

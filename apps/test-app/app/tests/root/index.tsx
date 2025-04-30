@@ -3,7 +3,8 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import { Button, DropdownMenu, Root } from "@stratakit/bricks";
+import { Button, DropdownMenu } from "@stratakit/bricks";
+import { Root } from "@stratakit/foundations";
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { definePage, useColorScheme } from "~/~utils.tsx";

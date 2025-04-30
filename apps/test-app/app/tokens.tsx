@@ -4,11 +4,12 @@
  *--------------------------------------------------------------------------------------------*/
 
 import * as Disclosure from "@ariakit/react/disclosure";
-import { Button, Divider, Icon, Text } from "@stratakit/bricks";
+import { Button, Divider, Text } from "@stratakit/bricks";
+import { Icon } from "@stratakit/foundations";
+import { parseTokens } from "internal/lightningcss-visitors.js";
 import rawDarkTokens from "internal/theme-dark.json";
 import rawLightTokens from "internal/theme-light.json";
 import rawTypographyTokens from "internal/typography.json";
-import { parseTokens } from "internal/visitors.js";
 import { useColorScheme } from "~/~utils.tsx";
 import globalStyles from "./tokens.css?url";
 import styles from "./tokens.module.css";

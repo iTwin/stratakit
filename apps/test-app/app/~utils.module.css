@@ -77,9 +77,12 @@
 		background-color: var(--ids-color-bg-glow-on-surface-accent-pressed);
 
 		@media (forced-colors: active) {
-			--🥝anchor-color: SelectedItemText;
-			background-color: SelectedItem;
 			forced-color-adjust: none;
+			background-color: SelectedItem;
+
+			.listItemLink {
+				color: SelectedItemText;
+			}
 		}
 
 		/* Current page line */

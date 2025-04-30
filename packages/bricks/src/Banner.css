@@ -50,6 +50,7 @@
 .🥝-banner-grid {
 	@layer base {
 		display: grid;
+		grid-template-columns: auto minmax(0, 1fr) auto;
 		align-items: center;
 		inline-size: 100%;
 		padding: 4px;
@@ -57,24 +58,13 @@
 		.🥝-banner-label:not(.🥝-visually-hidden) {
 			margin-block-end: 4px;
 		}
-
-		grid-template-areas:
-			"icon label dismiss"
-			"icon message dismiss"
-			". actions dismiss";
-		grid-template-columns: auto minmax(0, 1fr) auto;
-
-		&:has(.🥝-banner-label.🥝-visually-hidden) {
-			grid-template-areas:
-				"icon message dismiss"
-				". actions dismiss";
-		}
 	}
 }
 
 .🥝-banner-icon {
 	@layer base {
-		grid-area: icon;
+		grid-column: 1;
+		grid-row: 1;
 		align-self: start;
 		margin-inline-end: 8px;
 	}
@@ -82,7 +72,7 @@
 
 .🥝-banner-label {
 	@layer base {
-		grid-area: label;
+		grid-column: 2;
 		font-weight: 500;
 		align-self: start;
 	}
@@ -90,8 +80,7 @@
 
 .🥝-banner-message {
 	@layer base {
-		grid-area: message;
-
+		grid-column: 2;
 		overflow: hidden;
 		overflow-wrap: break-word;
 		hyphens: auto;
@@ -100,7 +89,7 @@
 
 .🥝-banner-actions {
 	@layer base {
-		grid-area: actions;
+		grid-column: 2;
 		justify-self: start;
 		display: flex;
 		flex-wrap: wrap;
@@ -112,7 +101,8 @@
 
 .🥝-banner-dismiss-button {
 	@layer base {
-		grid-area: dismiss;
+		grid-column: 3;
+		grid-row: 1;
 		align-self: start;
 		margin-inline-start: 16px;
 	}

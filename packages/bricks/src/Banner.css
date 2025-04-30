@@ -5,11 +5,14 @@
 
 .🥝-banner {
 	@layer base {
+		display: grid;
+		grid-template-columns: auto minmax(0, 1fr) auto;
 		background-color: var(--🥝banner-color-background);
 		border: 1px solid var(--🥝banner-color-border);
 		border-radius: 8px;
-		padding: 12px;
-		display: flex;
+		padding: 16px;
+		align-items: center;
+		inline-size: 100%;
 	}
 
 	@layer modifiers {
@@ -47,16 +50,6 @@
 	}
 }
 
-.🥝-banner-grid {
-	@layer base {
-		display: grid;
-		grid-template-columns: auto minmax(0, 1fr) auto;
-		align-items: center;
-		inline-size: 100%;
-		padding: 4px;
-	}
-}
-
 .🥝-banner-icon {
 	@layer base {
 		grid-column: 1;
@@ -72,7 +65,8 @@
 		font-weight: 500;
 		align-self: start;
 
-		&:not(:has(.🥝-visually-hidden)) {
+		/* Visual label with a sibling message */
+		&:not(:has(.🥝-visually-hidden)):has(~ .🥝-banner-message) {
 			margin-block-end: 4px;
 		}
 	}

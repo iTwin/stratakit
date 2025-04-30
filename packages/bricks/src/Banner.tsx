@@ -118,52 +118,46 @@ export const Banner = forwardRef<"div", BannerProps>((props, forwardedRef) => {
 			className={cx("🥝-banner", className)}
 			ref={forwardedRef}
 		>
-			<div className="🥝-banner-grid">
-				{icon ? (
-					<Icon
-						className="🥝-banner-icon"
-						href={typeof icon === "string" ? icon : undefined}
-						render={React.isValidElement(icon) ? icon : undefined}
-					/>
-				) : null}
+			{icon ? (
+				<Icon
+					className="🥝-banner-icon"
+					href={typeof icon === "string" ? icon : undefined}
+					render={React.isValidElement(icon) ? icon : undefined}
+				/>
+			) : null}
 
-				<Text
-					className="🥝-banner-label"
-					id={labelId}
-					variant="body-sm"
-					render={React.isValidElement(label) ? label : <span />}
-				>
-					{!React.isValidElement(label) ? label : undefined}
+			<Text
+				className="🥝-banner-label"
+				id={labelId}
+				variant="body-sm"
+				render={React.isValidElement(label) ? label : <span />}
+			>
+				{!React.isValidElement(label) ? label : undefined}
+			</Text>
+
+			{message != null ? (
+				<Text render={<span />} variant="body-sm" className="🥝-banner-message">
+					{message}
 				</Text>
+			) : null}
 
-				{message != null ? (
-					<Text
-						render={<span />}
-						variant="body-sm"
-						className="🥝-banner-message"
-					>
-						{message}
-					</Text>
-				) : null}
+			{actions != null ? (
+				<div className="🥝-banner-actions">{actions}</div>
+			) : null}
 
-				{actions != null ? (
-					<div className="🥝-banner-actions">{actions}</div>
-				) : null}
-
-				{onDismiss ? (
-					<GhostAligner align="block">
-						<IconButton
-							id={dismissId}
-							className="🥝-banner-dismiss-button"
-							variant="ghost"
-							label="Dismiss"
-							aria-labelledby={`${dismissId} ${labelId}`}
-							icon={<Dismiss />}
-							onClick={onDismiss}
-						/>
-					</GhostAligner>
-				) : null}
-			</div>
+			{onDismiss ? (
+				<GhostAligner align="block">
+					<IconButton
+						id={dismissId}
+						className="🥝-banner-dismiss-button"
+						variant="ghost"
+						label="Dismiss"
+						aria-labelledby={`${dismissId} ${labelId}`}
+						icon={<Dismiss />}
+						onClick={onDismiss}
+					/>
+				</GhostAligner>
+			) : null}
 		</Role>
 	);
 });

@@ -4,7 +4,6 @@
  *--------------------------------------------------------------------------------------------*/
 "use client";
 
-export { Root } from "./Root.js";
 export { Anchor } from "./Anchor.js";
 export { Avatar } from "./Avatar.js";
 export { AvatarGroup } from "./AvatarGroup.js";
@@ -16,7 +15,6 @@ export { Description } from "./Description.js";
 export * as DropdownMenu from "./DropdownMenu.js";
 export * as unstable_ErrorRegion from "./ErrorRegion.js";
 export { Divider } from "./Divider.js";
-export { Icon } from "./Icon.js";
 export { IconButton } from "./IconButton.js";
 export * as Field from "./Field.js";
 export { Kbd } from "./Kbd.js";
@@ -35,3 +33,12 @@ export * as unstable_Toolbar from "./Toolbar.js";
 export { Tooltip } from "./Tooltip.js";
 export * as Tree from "./Tree.js";
 export { VisuallyHidden } from "./VisuallyHidden.js";
+
+import { Icon, Root } from "@stratakit/foundations";
+
+/** @deprecated Please import `Root` from `"@stratakit/foundations"` instead. */
+const RootDeprecated = Root as typeof Root;
+/** @deprecated Please import `Icon` from `"@stratakit/foundations"` instead. */
+const IconDeprecated = Icon as typeof Icon;
+
+export { RootDeprecated as Root, IconDeprecated as Icon };

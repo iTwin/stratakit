@@ -18,6 +18,7 @@
 		"@react-router/node": "^7.5.2",
 		"@stratakit/bricks": "workspace:*",
 		"@stratakit/icons": "workspace:*",
+		"@stratakit/foundations": "workspace:*",
 		"@stratakit/react": "workspace:*",
 		"@tanstack/react-query": "^5.74.4",
 		"classnames": "^2.5.1",
@@ -37,13 +38,14 @@
 		"esbuild": "catalog:",
 		"lightningcss": "catalog:",
 		"typescript": "catalog:",
-		"vite": "^6.3.3",
+		"vite": "^6.3.4",
 		"vite-tsconfig-paths": "^5.1.4"
 	},
 	"wireit": {
 		"build": {
 			"command": "react-router build",
 			"dependencies": [
+				"../../packages/foundations:build",
 				"../../packages/bricks:build",
 				"../../packages/icons:build"
 			],
@@ -57,6 +59,7 @@
 			"command": "react-router dev",
 			"dependencies": [
 				"../../packages/icons:build",
+				"../../packages/foundations:dev",
 				"../../packages/bricks:dev"
 			],
 			"service": true

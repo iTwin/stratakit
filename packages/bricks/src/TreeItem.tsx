@@ -7,18 +7,21 @@ import { CompositeItem } from "@ariakit/react/composite";
 import { PopoverProvider } from "@ariakit/react/popover";
 import { Role } from "@ariakit/react/role";
 import { Toolbar, ToolbarItem } from "@ariakit/react/toolbar";
+import { Icon } from "@stratakit/foundations";
+import {
+	forwardRef,
+	useEventHandlers,
+} from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
 import * as React from "react";
 import * as DropdownMenu from "./DropdownMenu.js";
-import { ChevronDown, Icon, MoreHorizontal, StatusIcon } from "./Icon.js";
 import { IconButtonPresentation } from "./IconButton.internal.js";
 import { IconButton } from "./IconButton.js";
-import { useEventHandlers } from "./~hooks.js";
 import { GhostAligner } from "./~utils.GhostAligner.js";
 import * as ListItem from "./~utils.ListItem.js";
-import { forwardRef } from "./~utils.js";
+import { ChevronDown, MoreHorizontal, StatusIcon } from "./~utils.icons.js";
 
-import type { BaseProps } from "./~utils.js";
+import type { BaseProps } from "@stratakit/foundations/secret-internals";
 
 // ----------------------------------------------------------------------------
 

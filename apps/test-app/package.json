@@ -38,7 +38,7 @@
 		"esbuild": "catalog:",
 		"lightningcss": "catalog:",
 		"typescript": "catalog:",
-		"vite": "^6.3.3",
+		"vite": "^6.3.4",
 		"vite-tsconfig-paths": "^5.1.4"
 	},
 	"wireit": {

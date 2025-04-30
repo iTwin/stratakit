@@ -3,13 +3,12 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import type { Anchor as IuiAnchor } from "@itwin/itwinui-react";
 import { Anchor as SkAnchor } from "@stratakit/bricks";
 import * as React from "react";
-import {
-	type PolymorphicForwardRefComponent,
-	useCompatProps,
-} from "./~utils.tsx";
+import { useCompatProps } from "./~utils.tsx";
+
+import type { Anchor as IuiAnchor } from "@itwin/itwinui-react";
+import type { PolymorphicForwardRefComponent } from "./~utils.tsx";
 
 type IuiAnchorProps = React.ComponentProps<typeof IuiAnchor>;
 

@@ -37,6 +37,7 @@
 		"@stratakit/bricks": "^0.1.0"
 	},
 	"devDependencies": {
+		"@stratakit/foundations": "workspace:*",
 		"@types/node": "catalog:",
 		"@types/react": "catalog:",
 		"@types/react-dom": "catalog:",
@@ -45,6 +46,7 @@
 		"typescript": "catalog:"
 	},
 	"peerDependencies": {
+		"@stratakit/foundations": "^0.1.0",
 		"react": ">=18.0.0",
 		"react-dom": ">=18.0.0"
 	}

@@ -1,11 +1,96 @@
 {
 	"name": "@stratakit/foundations",
-	"private": true,
 	"type": "module",
 	"version": "0.1.0",
 	"license": "MIT",
 	"sideEffects": false,
 	"exports": {
-		"./styles.css": "./styles.css"
+		".": {
+			"@stratakit/source": "./src/index.ts",
+			"types": "./dist/index.d.ts",
+			"development": "./dist/DEV/index.js",
+			"default": "./dist/index.js"
+		},
+		"./secret-internals": {
+			"@stratakit/source": "./src/secret-internals.ts",
+			"types": "./dist/secret-internals.d.ts",
+			"development": "./dist/DEV/secret-internals.js",
+			"default": "./dist/secret-internals.js"
+		},
+		"./package.json": "./package.json"
+	},
+	"files": ["dist", "CHANGELOG.md", "LICENSE.md"],
+	"description": "Foundational pieces of the Strata design system",
+	"author": "Bentley Systems",
+	"homepage": "https://github.com/iTwin/design-system",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/iTwin/design-system.git",
+		"directory": "packages/foundations"
+	},
+	"keywords": [
+		"component",
+		"components",
+		"design-system",
+		"design",
+		"frontend",
+		"itwin",
+		"itwinui",
+		"strata",
+		"stratakit",
+		"react",
+		"ui",
+		"tokens"
+	],
+	"scripts": {
+		"build": "wireit",
+		"dev": "wireit"
+	},
+	"dependencies": {
+		"@ariakit/react": "^0.4.17",
+		"classnames": "^2.5.1"
+	},
+	"devDependencies": {
+		"@stratakit/bricks": "workspace:*",
+		"@types/node": "catalog:",
+		"@types/react": "catalog:",
+		"@types/react-dom": "catalog:",
+		"esbuild": "catalog:",
+		"lightningcss": "catalog:",
+		"react": "catalog:",
+		"react-dom": "catalog:",
+		"typescript": "catalog:"
+	},
+	"peerDependencies": {
+		"react": ">=18.0.0",
+		"react-dom": ">=18.0.0"
+	},
+	"wireit": {
+		"build": {
+			"dependencies": ["build:js", "build:DEV", "build:types"]
+		},
+		"build:js": {
+			"command": "node scripts/build.js",
+			"files": ["src", "scripts", "../../internal"],
+			"output": ["dist/**/*.js", "!dist/DEV"]
+		},
+		"build:DEV": {
+			"command": "node scripts/build.js",
+			"files": ["src", "scripts", "../../internal"],
+			"output": ["dist/DEV/**/*.js"],
+			"env": {
+				"NODE_ENV": "development"
+			}
+		},
+		"build:types": {
+			"command": "tsc --outDir dist",
+			"files": ["src"],
+			"output": ["dist/**/*.d.ts"]
+		},
+		"dev": {
+			"command": "tsc --watch --outDir dist",
+			"files": ["src"],
+			"service": true
+		}
 	}
 }

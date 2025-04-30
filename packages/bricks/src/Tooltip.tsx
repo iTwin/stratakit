@@ -5,12 +5,12 @@
 
 import { useStoreState } from "@ariakit/react/store";
 import * as AkTooltip from "@ariakit/react/tooltip";
+import { forwardRef } from "@stratakit/foundations/secret-internals";
+import { usePopoverApi } from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
 import * as React from "react";
-import { usePopoverApi } from "./~hooks.js";
-import { forwardRef } from "./~utils.js";
 
-import type { FocusableProps } from "./~utils.js";
+import type { FocusableProps } from "@stratakit/foundations/secret-internals";
 
 interface TooltipProps
 	extends Omit<FocusableProps<"div">, "content">,

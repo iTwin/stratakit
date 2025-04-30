@@ -76,15 +76,6 @@
 	&:has([aria-current="page"]) {
 		background-color: var(--ids-color-bg-glow-on-surface-accent-pressed);
 
-		@media (forced-colors: active) {
-			forced-color-adjust: none;
-			background-color: SelectedItem;
-
-			.listItemLink {
-				color: SelectedItemText;
-			}
-		}
-
 		/* Current page line */
 		&::before {
 			content: "";
@@ -94,8 +85,17 @@
 			border-radius: 9999px;
 			position: absolute;
 			inset-inline-start: calc(var(--indent-guide-left-inset) - 1px); /* Indent guide inset - 1px for centering */
+		}
 
-			@media (forced-colors: active) {
+		@media (forced-colors: active) {
+			forced-color-adjust: none;
+			background-color: SelectedItem;
+
+			.listItemLink {
+				color: SelectedItemText;
+			}
+
+			&::before {
 				background-color: SelectedItemText;
 			}
 		}

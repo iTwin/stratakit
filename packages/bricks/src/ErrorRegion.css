@@ -4,6 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 .🥝-error-region {
 	--✨padding: 4px;
+	--🥝selection-color-bg: var(--ids-color-bg-attention-transparent);
 
 	@layer base {
 		position: relative;

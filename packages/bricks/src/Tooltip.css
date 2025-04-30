@@ -12,6 +12,8 @@
 	@layer base {
 		@apply --typography("body-sm");
 
+		--🥝selection-color-bg: oklch(1 0 0 / 0.16);
+
 		background-color: var(--✨bg);
 		box-shadow: var(--ids-shadow-tooltip-base);
 		color: var(--✨color);

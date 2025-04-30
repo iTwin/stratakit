@@ -9,6 +9,7 @@
 		}
 
 		&:where([data-kiwi-tone="critical"]) {
+			--🥝selection-color-bg: var(--ids-color-bg-critical-transparent);
 			color: var(--ids-color-text-critical-base);
 		}
 	}

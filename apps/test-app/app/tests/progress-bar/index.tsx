@@ -112,7 +112,6 @@ function DeterminateTest({ size = "medium", tone = "neutral", value = 50 }) {
 
 function AnimatedTest() {
 	const [value, setValue] = React.useState(0);
-	// const intervalRef = React.useRef<ReturnType<typeof setInterval>>(null);
 	const [progressInterval, setProgressInterval] = React.useState<ReturnType<
 		typeof setInterval
 	> | null>(null);

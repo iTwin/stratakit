@@ -68,7 +68,7 @@ export const ProgressBar = forwardRef<"div", ProgressBarProps>(
 		} = props;
 
 		/**
-		 * `valueProp` between 0 and 100.
+		 * `valueProp` between 0 and 100 rounded to 3 decimal places.
 		 */
 		const value = React.useMemo(() => {
 			if (valueProp == null) return undefined;

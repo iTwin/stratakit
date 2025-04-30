@@ -76,7 +76,7 @@ async function fetchModelsData(
 
 // ----------------------------------------------------------------------------
 
-const title = "Stratakit sandbox";
+const title = "StrataKit sandbox";
 export const meta: MetaFunction = () => {
 	return [{ title }];
 };

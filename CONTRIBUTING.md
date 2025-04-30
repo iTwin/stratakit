@@ -1,6 +1,6 @@
 # Contributing
 
-Welcome to the contribution guide for the Strata design system! In here you will find all the information you need to get started.
+Welcome to the contribution guide for the Strata Design System! In here you will find all the information you need to get started.
 
 ---
 
@@ -60,8 +60,9 @@ This repo uses [Pnpm workspaces](https://pnpm.io/workspaces) to allow multiple p
 
 Packages:
 
-- [`@stratakit/icons`](./packages/icons): A standalone SVG icon library.
-- [`@stratakit/bricks`](./packages/bricks): Small, modular components that can be assembled to create larger, more functional experiences.
+- [`@stratakit/foundations`](./packages/foundations/): Foundational pieces of StrataKit.
+- [`@stratakit/icons`](./packages/icons/): A standalone SVG icon library.
+- [`@stratakit/bricks`](./packages/bricks/): Small, modular components that can be assembled to create larger, more functional experiences.
 - [`@stratakit/react`](./packages/compat/): A React compatibility layer for using iTwinUI v3 APIs.
 
 Apps:

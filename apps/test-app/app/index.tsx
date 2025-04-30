@@ -11,7 +11,7 @@ import styles from "./index.module.css";
 import { toKebabCase } from "./~utils.tsx";
 
 export const meta: MetaFunction = () => {
-	return [{ title: "Stratakit test app" }];
+	return [{ title: "StrataKit test app" }];
 };
 
 export const links: LinksFunction = () => [
@@ -21,7 +21,7 @@ export const links: LinksFunction = () => [
 export default function Index() {
 	return (
 		<main className={styles.main}>
-			<h1>Stratakit</h1>
+			<h1>StrataKit</h1>
 			<Divider />
 
 			<ul className={styles.list}>

@@ -37,7 +37,7 @@ const categories = {
 } as const;
 
 export const meta: MetaFunction = () => {
-	return [{ title: "Stratakit tokens" }];
+	return [{ title: "StrataKit tokens" }];
 };
 
 export const links: LinksFunction = () => [

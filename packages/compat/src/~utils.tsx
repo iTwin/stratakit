@@ -8,7 +8,7 @@ import * as React from "react";
 // ----------------------------------------------------------------------------
 
 /**
- * As defined in `@itwin/itwinui-react`.
+ * As defined in {@link https://github.com/iTwin/iTwinUI/blob/b73924dc9db9e460772798162369789384f65133/packages/itwinui-react/src/utils/props.ts#L25 iTwinUI}.
  *
  * Makes `as` prop available and merges original OwnProps and the inferred props from `as` element.
  * Extends ForwardRefExoticComponent so ref gets the correct type.

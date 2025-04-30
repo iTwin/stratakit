@@ -1,1 +1,0 @@
-import{q as i}from"./index-DNgUlSqO.js";import{j as o,m}from"./~utils-Dyo9fdrU.js";import{c as n}from"./floating-ui.dom-DE9R-LdA.js";const x=o((a,e)=>{const{variant:t="text",size:r="medium",...s}=a;return i.jsx(m.div,{...s,ref:e,className:n("🥝-skeleton",a.className),"data-kiwi-variant":t,"data-kiwi-size":r,"aria-hidden":!0})});export{x as S};

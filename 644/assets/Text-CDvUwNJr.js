@@ -1,1 +1,0 @@
-import{q as e}from"./index-DNgUlSqO.js";import{j as o,m}from"./~utils-Dyo9fdrU.js";import{c as i}from"./floating-ui.dom-DE9R-LdA.js";const n=o((t,a)=>{const{variant:r,...s}=t;return e.jsx(m,{...s,className:i("🥝-text",t.className),"data-kiwi-text-variant":r,ref:a})});export{n as T};

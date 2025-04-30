@@ -1,1 +1,0 @@
-import{d as l,e as i}from"./RZ4GPYOB-CvXiGrMp.js";import{f as c,d as m,e as u,_ as d,y as p,r as f}from"./floating-ui.dom-DE9R-LdA.js";import{q as v}from"./index-DNgUlSqO.js";var C="div",x=m(function(r){var e=r,{store:o}=e,t=d(e,["store"]);const n=l();return o=o||n,t=p(t,a=>v.jsx(i,{value:o,children:a}),[o]),f(t)}),P=c(function(r){const e=x(r);return u(C,e)});export{P as C};

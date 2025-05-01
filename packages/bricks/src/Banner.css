@@ -19,6 +19,7 @@
 		padding: 16px;
 		align-items: center;
 		inline-size: 100%;
+		margin-trim: block;
 	}
 
 	@layer modifiers {

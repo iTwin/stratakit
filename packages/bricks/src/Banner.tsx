@@ -5,17 +5,15 @@
 
 import { Role } from "@ariakit/react/role";
 import { Icon } from "@stratakit/foundations";
+import { forwardRef } from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
 import * as React from "react";
 import { IconButton } from "./IconButton.js";
 import { Text } from "./Text.js";
+import { GhostAligner } from "./~utils.GhostAligner.js";
 import { Dismiss, StatusIcon } from "./~utils.icons.js";
 
-import {
-	type BaseProps,
-	forwardRef,
-} from "@stratakit/foundations/secret-internals";
-import { GhostAligner } from "./~utils.GhostAligner.js";
+import type { BaseProps } from "@stratakit/foundations/secret-internals";
 
 type BannerProps = Omit<BaseProps, "children"> & {
 	/**
@@ -139,7 +137,7 @@ export const Banner = forwardRef<"div", BannerProps>((props, forwardedRef) => {
 				{!React.isValidElement(label) ? label : undefined}
 			</Text>
 
-			<Text render={<span />} variant="body-sm" className="🥝-banner-message">
+			<Text render={<div />} variant="body-sm" className="🥝-banner-message">
 				{message}
 			</Text>
 

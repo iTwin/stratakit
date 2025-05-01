@@ -97,7 +97,6 @@ type BannerProps = Omit<BaseProps, "children"> & {
  */
 export const Banner = forwardRef<"div", BannerProps>((props, forwardedRef) => {
 	const {
-		className,
 		message,
 		label,
 		actions,
@@ -117,7 +116,7 @@ export const Banner = forwardRef<"div", BannerProps>((props, forwardedRef) => {
 			{...rest}
 			data-kiwi-tone={tone}
 			data-kiwi-variant={variant}
-			className={cx("🥝-banner", className)}
+			className={cx("🥝-banner", props.className)}
 			ref={forwardedRef}
 		>
 			{icon ? (

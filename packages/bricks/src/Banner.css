@@ -6,7 +6,12 @@
 .🥝-banner {
 	@layer base {
 		display: grid;
-		grid-template-columns: [left] auto [center] minmax(0, 1fr) [right] auto;
+
+		grid-template-columns: [center] minmax(0, 1fr) [right] auto;
+		&:has(.🥝-banner-icon) {
+			grid-template-columns: [left] auto [center] minmax(0, 1fr) [right] auto;
+		}
+
 		column-gap: 8px;
 		background-color: var(--🥝banner-color-background);
 		border: 1px solid var(--🥝banner-color-border);

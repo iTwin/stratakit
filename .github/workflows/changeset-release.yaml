@@ -4,9 +4,8 @@ on:
   push:
     branches:
       - main
-
-env:
-  NPM_CONFIG_PROVENANCE: true
+      - mayank/changesets-fix
+  workflow_dispatch:
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
@@ -14,8 +13,6 @@ jobs:
   release:
     name: Release
     if: github.repository == 'iTwin/design-system'
-    permissions:
-      id-token: write
     runs-on: ubuntu-latest
 
     steps:
@@ -39,12 +36,12 @@ jobs:
       - name: Create release PR or publish to npm
         uses: changesets/action@06245a4e0a36c064a573d4150030f5ec548e4fcc # v1.4.10
         with:
-          version: pnpm changeset version && pnpm format --write
-          publish: pnpm run build && pnpm changeset publish
+          version: pnpm run changeset:version
+          publish: pnpm run changeset:publish
           title: Release packages
           commit: Release packages
         env:
-          # GITHUB_TOKEN: ${{ secrets.IMJS_ADMIN_GH_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPMJS_PUBLISH_ITWIN }}
           GIT_AUTHOR_NAME: github-actions[bot]
           GIT_AUTHOR_EMAIL: github-actions[bot]@users.noreply.github.com

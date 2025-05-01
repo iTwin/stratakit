@@ -28,7 +28,7 @@
 		&:where([data-kiwi-variant="solid"]) {
 			--🥝badge-border-color: var(--ids-color-border-glow-strong-default);
 			--🥝badge-text-color: var(--ids-color-text-neutral-emphasis);
-			--🥝selection-color-bg: oklch(1 0 0 / 0.16);
+			--🥝selection-color-bg: oklch(1 0 0 / 0.24);
 
 			&:where([data-kiwi-tone="neutral"]) {
 				--🥝badge-background-color: var(--ids-color-bg-mono-base);

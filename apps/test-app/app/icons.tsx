@@ -24,7 +24,7 @@ function getIconHref(icon: string) {
 }
 
 export const meta: MetaFunction = () => {
-	return [{ title: "Stratakit icons" }];
+	return [{ title: "StrataKit icons" }];
 };
 
 export const links: LinksFunction = () => [

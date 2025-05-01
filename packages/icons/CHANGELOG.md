@@ -1,9 +1,8 @@
 # Changelog
 
-## 0.1.1
+## @stratakit/icons@0.1.0
 
-### Patch Changes
-
+- Package name changed to `@stratakit/icons`.
 - [#649](https://github.com/iTwin/design-system/pull/649): **breaking**: Fixed typo in `visibility-invert.svg`.
 
 ## @itwin/itwinui-icons@5.0.0-alpha.7

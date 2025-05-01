@@ -1,1 +1,0 @@
-import{q as e}from"./index-BoeBPSKS.js";import{l as o,o as x,d as i}from"./~utils-BZ3L9p9T.js";const c=o((t,a)=>{const{variant:s,...r}=t;return e.jsx(x,{...r,className:i("🥝-text",t.className),"data-kiwi-text-variant":s,ref:a})});export{c as T};

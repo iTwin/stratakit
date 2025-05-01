@@ -25,7 +25,6 @@ body {
 
 *::selection {
 	background-color: var(--🥝selection-color-bg);
-	color: var(--🥝selection-color-text);
 }
 
 *:focus-visible {

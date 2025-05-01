@@ -4,13 +4,13 @@
  *--------------------------------------------------------------------------------------------*/
 
 import { Role } from "@ariakit/react/role";
+import { forwardRef } from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
 import * as React from "react";
 import { useGhostAlignment } from "./~utils.GhostAligner.js";
-import { forwardRef } from "./~utils.js";
 
+import type { BaseProps } from "@stratakit/foundations/secret-internals";
 import type { Button } from "./Button.js";
-import type { BaseProps } from "./~utils.js";
 
 // ----------------------------------------------------------------------------
 

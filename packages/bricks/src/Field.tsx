@@ -9,19 +9,19 @@ import {
 } from "@ariakit/react/collection";
 import { Role } from "@ariakit/react/role";
 import { useStoreState } from "@ariakit/react/store";
+import { forwardRef } from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
 import * as React from "react";
 import { Description } from "./Description.js";
 import { FieldCollection, FieldControlTypeContext } from "./Field.internal.js";
 import { Label } from "./Label.js";
-import { forwardRef } from "./~utils.js";
 
 import type { CollectionItemProps } from "@ariakit/react/collection";
+import type { BaseProps } from "@stratakit/foundations/secret-internals";
 import type {
 	CollectionStoreItem,
 	FieldCollectionStoreItem,
 } from "./Field.internal.js";
-import type { BaseProps } from "./~utils.js";
 
 // ----------------------------------------------------------------------------
 

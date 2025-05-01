@@ -21,7 +21,7 @@ const dummyLongLabel =
 
 export default definePage(
 	function Page() {
-		return <Banner label="Label" />;
+		return <Banner label="Label" message="Message" />;
 	},
 	{
 		visual: VisualTest,

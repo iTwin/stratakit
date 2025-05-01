@@ -7,6 +7,7 @@
 	@layer base {
 		display: grid;
 		grid-template-columns: auto minmax(0, 1fr) auto;
+		column-gap: 8px;
 		background-color: var(--🥝banner-color-background);
 		border: 1px solid var(--🥝banner-color-border);
 		border-radius: 8px;
@@ -43,10 +44,6 @@
 			--🥝banner-color-border: var(--ids-color-border-critical-base);
 			--🥝icon-color: var(--ids-color-icon-critical-base);
 		}
-
-		@media (forced-colors: active) {
-			--🥝icon-color: CanvasText;
-		}
 	}
 }
 
@@ -55,7 +52,6 @@
 		grid-column: 1;
 		grid-row: 1;
 		align-self: start;
-		margin-inline-end: 8px;
 	}
 }
 
@@ -64,11 +60,7 @@
 		grid-column: 2;
 		font-weight: 500;
 		align-self: start;
-
-		/* Visual label with a sibling message */
-		&:not(:has(.🥝-visually-hidden)):has(~ .🥝-banner-message) {
-			margin-block-end: 4px;
-		}
+		margin-block-end: 4px;
 	}
 }
 
@@ -98,6 +90,12 @@
 		grid-column: 3;
 		grid-row: 1;
 		align-self: start;
-		margin-inline-start: 16px;
+		margin-inline-start: 4px;
+	}
+}
+
+@media (forced-colors: active) {
+	.🥝-banner {
+		--🥝icon-color: CanvasText;
 	}
 }

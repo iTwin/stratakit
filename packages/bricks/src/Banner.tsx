@@ -4,14 +4,18 @@
  *--------------------------------------------------------------------------------------------*/
 
 import { Role } from "@ariakit/react/role";
+import { Icon } from "@stratakit/foundations";
 import cx from "classnames";
 import * as React from "react";
-import { Dismiss, Icon, StatusIcon } from "./Icon.js";
 import { IconButton } from "./IconButton.js";
 import { Text } from "./Text.js";
+import { Dismiss, StatusIcon } from "./~utils.icons.js";
 
+import {
+	type BaseProps,
+	forwardRef,
+} from "@stratakit/foundations/secret-internals";
 import { GhostAligner } from "./~utils.GhostAligner.js";
-import { type BaseProps, forwardRef } from "./~utils.js";
 
 type BannerProps = Omit<BaseProps, "children"> & {
 	/**
@@ -33,7 +37,7 @@ type BannerProps = Omit<BaseProps, "children"> & {
 	/**
 	 * The content of the banner.
 	 */
-	message?: React.ReactNode;
+	message: React.ReactNode;
 	/**
 	 * Callback invoked when the dismiss ("❌") button is clicked.
 	 *
@@ -135,11 +139,9 @@ export const Banner = forwardRef<"div", BannerProps>((props, forwardedRef) => {
 				{!React.isValidElement(label) ? label : undefined}
 			</Text>
 
-			{message != null ? (
-				<Text render={<span />} variant="body-sm" className="🥝-banner-message">
-					{message}
-				</Text>
-			) : null}
+			<Text render={<span />} variant="body-sm" className="🥝-banner-message">
+				{message}
+			</Text>
 
 			{actions != null ? (
 				<div className="🥝-banner-actions">{actions}</div>

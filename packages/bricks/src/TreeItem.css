@@ -60,7 +60,7 @@
 		&:where([data-kiwi-error="true"]) {
 			--🥝icon-color: var(--ids-color-icon-attention-base);
 			--🥝tree-item-color: var(--ids-color-text-attention-base);
-			--🥝selection-color-bg: var(--ids-color-bg-attention-transparent);
+			--🥝selection-color-bg: var(--ids-color-bg-attention-base);
 		}
 	}
 

@@ -28,7 +28,7 @@
 		&:where([data-kiwi-variant="solid"]) {
 			--🥝badge-border-color: var(--ids-color-border-glow-strong-default);
 			--🥝badge-text-color: var(--ids-color-text-neutral-emphasis);
-			--🥝selection-color-bg: oklch(1 0 0 / 0.24);
+			--🥝selection-color-bg: white;
 
 			&:where([data-kiwi-tone="neutral"]) {
 				--🥝badge-background-color: var(--ids-color-bg-mono-base);
@@ -129,19 +129,19 @@
 
 		&:where([data-kiwi-variant="muted"], [data-kiwi-variant="outline"]) {
 			&:where([data-kiwi-tone="info"]) {
-				--🥝selection-color-bg: var(--ids-color-bg-info-transparent);
+				--🥝selection-color-bg: var(--ids-color-bg-info-base);
 			}
 
 			&:where([data-kiwi-tone="positive"]) {
-				--🥝selection-color-bg: var(--ids-color-bg-positive-transparent);
+				--🥝selection-color-bg: var(--ids-color-bg-positive-base);
 			}
 
 			&:where([data-kiwi-tone="attention"]) {
-				--🥝selection-color-bg: var(--ids-color-bg-attention-transparent);
+				--🥝selection-color-bg: var(--ids-color-bg-attention-base);
 			}
 
 			&:where([data-kiwi-tone="critical"]) {
-				--🥝selection-color-bg: var(--ids-color-bg-critical-transparent);
+				--🥝selection-color-bg: var(--ids-color-bg-critical-base);
 			}
 		}
 	}

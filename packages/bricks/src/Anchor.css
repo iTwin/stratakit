@@ -59,7 +59,7 @@
 			--🥝anchor-color: var(--🌀anchor-state--default, var(--✨color--critical))
 				var(--🌀anchor-state--hover, var(--✨color--critical-hover))
 				var(--🌀anchor-state--pressed, var(--✨color--critical-pressed));
-			--🥝selection-color-bg: var(--ids-color-bg-critical-transparent);
+			--🥝selection-color-bg: var(--ids-color-bg-critical-base);
 			-webkit-tap-highlight-color: var(--ids-color-bg-glow-on-surface-critical-pressed);
 		}
 	}

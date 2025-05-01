@@ -16,7 +16,7 @@ body {
 	color: var(--ids-color-text-neutral-primary);
 	--🥝focus-outline: 2px solid var(--ids-color-border-accent-strong);
 	--🥝focus-outline-offset: 1px;
-	--🥝selection-color-bg: var(--ids-color-bg-accent-transparent);
+	--🥝selection-color-bg: var(--ids-color-bg-accent-base);
 
 	@media (forced-colors: active) {
 		--🥝focus-outline: 2px solid Highlight;
@@ -24,7 +24,7 @@ body {
 }
 
 *::selection {
-	background-color: var(--🥝selection-color-bg);
+	background-color: oklch(from var(--🥝selection-color-bg) l c h / 0.24);
 }
 
 *:focus-visible {

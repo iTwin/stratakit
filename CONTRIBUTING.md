@@ -144,6 +144,6 @@ export const Button = forwardRef<"button", ButtonProps>((props, forwardedRef) =>
 
 ## Pull Requests
 
-Before creating a pull request, make sure your changes address a specific issue. Do a search to see if there are any existing issues that are still open. If you don't find one, you can create one.
+Before creating a pull request, make sure your changes address a specific issue. Do a search to see if there are any existing issues that are still open. If you don't find one, you can create one. For user-facing changes, add a [changeset](https://github.com/changesets/changesets/blob/main/docs/adding-a-changeset.md) by running the `pnpm changeset` command.
 
 To enable us to quickly review and accept your pull requests, always create one pull request per issue. Never merge multiple requests in one unless they have the same root cause. Be sure to follow best practices and keep code changes as small as possible. Avoid pure formatting changes or random "fixes" that are unrelated to the linked issue.

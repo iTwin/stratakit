@@ -137,6 +137,7 @@ const ErrorRegionRoot = forwardRef<"div", ErrorRegionRootProps>(
 		});
 		const prevItems = useStoreState(store, "items");
 
+		// This label should be updated only when a new item is added.
 		const [liveLabel, setLiveLabel] = React.useState(label);
 		return (
 			<>

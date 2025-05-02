@@ -1,6 +1,13 @@
 # @stratakit/icons
 
-Icons for the Strata design system. Each icon is available as an SVG symbol sprite and contains multiple resolutions of the same icon using [`<symbol>`](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/symbol) elements. This allows the icon to be used at different sizes with increasing detail and quality. Currently supported symbols as identified by their `id` attribute values are: `icon`, `icon-large`.
+Standalone `.svg` icons for the Strata Design System.
+
+Each icon is available as an SVG symbol sprite and contains multiple resolutions of the same icon using [`<symbol>`](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/symbol) elements. This allows the icon to be used at different sizes with increasing detail and quality.
+
+Currently supported symbols as identified by their `id` attribute values are:
+
+- `icon`
+- `icon-large`
 
 ## Usage
 
@@ -20,7 +27,7 @@ Preferred usage is with the `Icon` component from `@stratakit/bricks`:
    import placeholderIcon from "@stratakit/icons/placeholder.svg";
    ```
 
-2. Render the `Icon` component.
+2. Render the `Icon` component from [`@stratakit/foundations`](https://www.npmjs.com/package/@stratakit/foundations).
 
    ```tsx
    import { Icon } from "@stratakit/foundations";
@@ -99,6 +106,6 @@ esbuild.build({
 
 ## Contributing
 
-Are you interested in helping Stratakit grow and expand? You can submit feature requests or bugs by creating [issues](https://github.com/iTwin/design-system/issues).
+Are you interested in helping StrataKit grow? You can submit feature requests or bugs by creating [issues](https://github.com/iTwin/design-system/issues).
 
 If you're interested in contributing code, please read [`CONTRIBUTING.md`](https://github.com/iTwin/design-system/blob/main/CONTRIBUTING.md) for more information.

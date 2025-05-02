@@ -8,6 +8,7 @@ export const components = [
 	"Avatar",
 	"AvatarGroup",
 	"Badge",
+	"Banner",
 	"Button",
 	"Checkbox",
 	"Chip",

@@ -42,24 +42,22 @@ function VisualTest({ customIcons = false }: { customIcons?: boolean }) {
 
 	return (
 		<div style={{ display: "grid", gap: 4 }}>
-			<div style={{ display: "grid", gap: 4 }}>
-				{tones.map((tone) => {
-					const sentenceCaseTone =
-						tone.charAt(0).toUpperCase() + tone.slice(1).toLowerCase();
-					return (
-						<Banner
-							icon={customIcons ? placeholderIcon : undefined}
-							label={sentenceCaseTone}
-							message={loremIpsum}
-							key={tone}
-							tone={tone}
-							variant="outline"
-							onDismiss={() => {}}
-							actions={<Button>Action</Button>}
-						/>
-					);
-				})}
-			</div>
+			{tones.map((tone) => {
+				const sentenceCaseTone =
+					tone.charAt(0).toUpperCase() + tone.slice(1).toLowerCase();
+				return (
+					<Banner
+						icon={customIcons ? placeholderIcon : undefined}
+						label={sentenceCaseTone}
+						message={loremIpsum}
+						key={tone}
+						tone={tone}
+						variant="outline"
+						onDismiss={() => {}}
+						actions={<Button>Action</Button>}
+					/>
+				);
+			})}
 		</div>
 	);
 }

@@ -12,7 +12,7 @@ export default definePage(function Page() {
 	return (
 		<div style={{ display: "grid", gap: 4, justifyItems: "start" }}>
 			<Kbd>A</Kbd>
-			<Kbd title="Enter">{KbdKeys.Enter}</Kbd>
+			<Kbd>{KbdKeys.Enter}</Kbd>
 			<p>
 				Press <Kbd>{KbdKeys.Command}</Kbd> + <Kbd>K</Kbd> to search.
 			</p>

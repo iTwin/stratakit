@@ -6,7 +6,7 @@
 .🥝-banner {
 	@layer base {
 		display: grid;
-		grid-template-columns: [left] auto [center] minmax(0, 1fr) [right] auto;
+		grid-template-columns: [start] auto [content] minmax(0, 1fr) [end] auto;
 
 		background-color: var(--🥝banner-color-background);
 		border: 1px solid var(--🥝banner-color-border);
@@ -49,7 +49,7 @@
 
 .🥝-banner-icon {
 	@layer base {
-		grid-column: left;
+		grid-column: start;
 		grid-row: 1;
 		align-self: start;
 		margin-inline-end: 8px;
@@ -58,7 +58,7 @@
 
 .🥝-banner-label {
 	@layer base {
-		grid-column: center;
+		grid-column: content;
 		font-weight: 500;
 		align-self: start;
 		margin-block-end: 4px;
@@ -67,7 +67,7 @@
 
 .🥝-banner-message {
 	@layer base {
-		grid-column: center;
+		grid-column: content;
 		overflow: hidden;
 		overflow-wrap: break-word;
 		hyphens: auto;
@@ -76,7 +76,7 @@
 
 .🥝-banner-actions {
 	@layer base {
-		grid-column: center;
+		grid-column: content;
 		justify-self: start;
 		display: flex;
 		flex-wrap: wrap;
@@ -88,7 +88,7 @@
 
 .🥝-banner-dismiss-button {
 	@layer base {
-		grid-column: right;
+		grid-column: end;
 		grid-row: 1;
 		align-self: start;
 		margin-inline-start: 12px;

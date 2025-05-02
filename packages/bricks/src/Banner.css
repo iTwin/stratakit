@@ -7,7 +7,6 @@
 	@layer base {
 		display: grid;
 		grid-template-columns: [start] auto [content] minmax(0, 1fr) [end] auto;
-
 		background-color: var(--🥝banner-color-background);
 		border: 1px solid var(--🥝banner-color-border);
 		border-radius: 8px;

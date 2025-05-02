@@ -132,13 +132,17 @@ const ErrorRegionRoot = forwardRef<"div", ErrorRegionRootProps>(
 				if (addedItems.length === 0) return;
 
 				pulse();
+				setLiveLabel(label);
 			},
 		});
 		const prevItems = useStoreState(store, "items");
+
+		// This label should be updated only when a new item is added.
+		const [liveLabel, setLiveLabel] = React.useState(label);
 		return (
 			<>
 				<VisuallyHidden aria-live="polite" aria-atomic={true}>
-					{label}
+					{liveLabel === label ? liveLabel : undefined}
 				</VisuallyHidden>
 				<DialogProvider open={open} setOpen={setOpen}>
 					<Role.section

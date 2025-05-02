@@ -1,7 +1,7 @@
 {
 	"name": "StrataKit",
 	"start_url": "/",
-	"display": "standalone",
+	"display": "minimal-ui",
 	"background_color": "#231f20",
 	"theme_color": "#231f20",
 	"icons": [

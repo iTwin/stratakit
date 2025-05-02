@@ -3,8 +3,10 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 import { Role } from "@ariakit/react/role";
+import { forwardRef } from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
-import { type BaseProps, forwardRef } from "./~utils.js";
+
+import type { BaseProps } from "@stratakit/foundations/secret-internals";
 
 interface AvatarGroupProps extends BaseProps<"div"> {
 	/**

@@ -3,7 +3,8 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import { Button, Icon } from "@stratakit/bricks";
+import { Button } from "@stratakit/bricks";
+import { Icon } from "@stratakit/foundations";
 import { definePage } from "~/~utils.tsx";
 
 import placeholderIconHref from "@stratakit/icons/placeholder.svg";

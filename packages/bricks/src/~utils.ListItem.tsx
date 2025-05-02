@@ -4,9 +4,9 @@
  *--------------------------------------------------------------------------------------------*/
 
 import { Role } from "@ariakit/react/role";
+import { forwardRef } from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
 import { Text } from "./Text.js";
-import { forwardRef } from "./~utils.js";
 
 import type { RoleProps } from "@ariakit/react/role";
 

@@ -28,10 +28,17 @@
 		&::before {
 			content: "";
 			block-size: inherit;
-			inline-size: var(--🥝progress-bar-fill-size);
+			inline-size: 100%;
+			transform: translateX(calc(-100% + var(--🥝progress-bar-fill-size)));
 			border-radius: inherit;
 			background-color: var(--🥝progress-bar-fill-color);
 			animation: var(--🥝progress-bar-animation);
+		}
+
+		&:where([data-kiwi-variant="determinate"])::before {
+			@media (prefers-reduced-motion: no-preference) {
+				transition: transform 150ms ease-in-out;
+			}
 		}
 	}
 
@@ -67,11 +74,6 @@
 					var(--✨animation--indeterminate-slow);
 			}
 		}
-
-		@media (forced-colors: active) {
-			--🥝progress-bar-fill-color: CanvasText;
-			--🥝progress-bar-track-color: Canvas;
-		}
 	}
 }
 
@@ -94,5 +96,15 @@
 	}
 	100% {
 		transform: translateX(400%); /* The fill is 25% width of the container, multiplied by 4 moves the fill out of view on the right side. */
+	}
+}
+
+@media (forced-colors: active) {
+	.🥝-progress-bar {
+		--🥝progress-bar-fill-color: CanvasText;
+		--🥝progress-bar-track-color: Canvas;
+		outline: 1px solid;
+		outline-color: oklch(from CanvasText l c h / 50%);
+		forced-color-adjust: none;
 	}
 }

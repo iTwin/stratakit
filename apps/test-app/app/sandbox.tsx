@@ -8,7 +8,6 @@ import {
 	DropdownMenu,
 	unstable_ErrorRegion as ErrorRegion,
 	Field,
-	Icon,
 	IconButton,
 	Select,
 	Skeleton,
@@ -19,6 +18,7 @@ import {
 	Tree,
 	VisuallyHidden,
 } from "@stratakit/bricks";
+import { Icon } from "@stratakit/foundations";
 import { useQuery } from "@tanstack/react-query";
 import cx from "classnames";
 import { produce } from "immer";
@@ -77,7 +77,7 @@ async function fetchModelsData(
 
 // ----------------------------------------------------------------------------
 
-const title = "Stratakit sandbox";
+const title = "StrataKit sandbox";
 export const meta: MetaFunction = () => {
 	return [{ title }];
 };

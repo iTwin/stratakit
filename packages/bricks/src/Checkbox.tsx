@@ -4,12 +4,12 @@
  *--------------------------------------------------------------------------------------------*/
 
 import { Checkbox as AkCheckbox } from "@ariakit/react/checkbox";
+import { forwardRef } from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
 import { useFieldControlType } from "./Field.internal.js";
-import { forwardRef } from "./~utils.js";
 
 import type { CheckboxProps as AkCheckboxProps } from "@ariakit/react/checkbox";
-import type { FocusableProps } from "./~utils.js";
+import type { FocusableProps } from "@stratakit/foundations/secret-internals";
 
 type InputBaseProps = Omit<
 	FocusableProps<"input">,

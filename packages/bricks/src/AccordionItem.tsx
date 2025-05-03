@@ -188,6 +188,16 @@ DEV: AccordionItemDecoration.displayName = "AccordionItem.Decoration";
  *   <AccordionItem.Marker />
  * </AccordionItem.Trigger>
  * ```
+ *
+ * Pass an icon as a child to override the default chevron icon:
+ * ```tsx
+ * <AccordionItem.Trigger>
+ *   <AccordionItem.Label>Label</AccordionItem.Label>
+ *   <AccordionItem.Marker>
+ *     <Icon href={placeholder} />
+ *   </AccordionItem.Marker>
+ * </AccordionItem.Trigger>
+ * ```
  */
 const AccordionItemMarker = forwardRef<"div", BaseProps>(
 	(props, forwardedRef) => (
@@ -197,7 +207,7 @@ const AccordionItemMarker = forwardRef<"div", BaseProps>(
 			className={cx("🥝-accordion-item-marker", props.className)}
 			ref={forwardedRef}
 		>
-			<ChevronDown aria-hidden="true" />
+			{props.children ?? <ChevronDown aria-hidden="true" />}
 		</IconButtonPresentation>
 	),
 );

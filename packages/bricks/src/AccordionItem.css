@@ -85,7 +85,7 @@
 	@layer base {
 		grid-column: content;
 		hyphens: auto;
-		word-break: break-word;
+		overflow-wrap: break-word;
 		text-box: cap alphabetic;
 	}
 }

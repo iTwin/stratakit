@@ -81,7 +81,7 @@ test.describe("@visual", () => {
 
 test.describe("@a11y", () => {
 	test("Axe Page Scan", async ({ page }) => {
-		await page.goto("/tests/accordion-item");
+		await page.goto("/tests/accordion-item?visual");
 
 		const axe = new AxeBuilder({ page });
 		const accessibilityScan = await axe.analyze();

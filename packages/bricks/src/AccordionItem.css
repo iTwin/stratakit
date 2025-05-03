@@ -98,15 +98,11 @@
 	}
 
 	@layer states {
-		&:where(:not([data-enter])) {
-			padding-block-end: 0;
-		}
-
 		@media (prefers-reduced-motion: no-preference) {
 			@supports (interpolate-size: allow-keywords) and (transition-behavior: allow-discrete) {
 				/* Exit transition */
 				&:where(:not([data-enter])) {
-					color: transparent;
+					opacity: 0;
 					block-size: 0;
 					padding-block-end: 0;
 					/* biome-ignore format: improve readability */
@@ -114,7 +110,7 @@
 							display 0s var(--✨total-duration) allow-discrete,
 							block-size var(--✨total-duration) allow-discrete,
 							padding var(--✨total-duration),
-							color calc(var(--✨total-duration) * 1 / 3);
+							opacity calc(var(--✨total-duration) * 1 / 3);
 					transition-timing-function: var(--🥝accordion-item-transition-timing-function);
 				}
 
@@ -124,7 +120,7 @@
 					transition:
 						padding var(--✨total-duration),
 						block-size var(--✨total-duration) allow-discrete,
-						color calc(var(--✨total-duration) * 2 / 3) calc(var(--✨total-duration) * 2 / 3);
+						opacity calc(var(--✨total-duration) * 2 / 3) calc(var(--✨total-duration) * 2 / 3);
 					transition-timing-function: var(--🥝accordion-item-transition-timing-function);
 				}
 			}

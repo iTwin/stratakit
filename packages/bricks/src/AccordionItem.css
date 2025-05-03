@@ -63,7 +63,7 @@
 		grid-row: 1;
 		grid-column: decoration-after;
 		margin-inline-start: var(--🥝accordion-item-gap);
-		/* We can only use GhostAligner to apply alignment to block or inline, so we’re manually applying it here. */
+		/* TODO: We can only use GhostAligner to apply alignment to block or inline, so we’re manually applying it here. */
 		margin-inline-end: calc(-1 * var(--🥝ghost-inline-offset));
 
 		transition: background-color var(--🥝-accordion-item-transition-duration)

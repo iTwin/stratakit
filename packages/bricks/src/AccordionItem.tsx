@@ -207,7 +207,12 @@ const AccordionItemMarker = forwardRef<"div", BaseProps>(
 			className={cx("🥝-accordion-item-marker", props.className)}
 			ref={forwardedRef}
 		>
-			{props.children ?? <ChevronDown aria-hidden="true" />}
+			{props.children ?? (
+				<ChevronDown
+					aria-hidden="true"
+					className="🥝-accordion-item-marker-chevron"
+				/>
+			)}
 		</IconButtonPresentation>
 	),
 );

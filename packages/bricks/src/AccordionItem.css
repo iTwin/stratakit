@@ -46,12 +46,6 @@
 	}
 
 	@layer states {
-		@media (any-hover: hover) {
-			&:hover .🥝-button {
-				--🌀button-state: var(--🌀button-state--hover);
-			}
-		}
-
 		&:where([aria-expanded="true"]) {
 			--🥝chevron-down-rotate: -0.5turn;
 		}
@@ -68,12 +62,22 @@
 
 		transition: background-color var(--🥝-accordion-item-transition-duration)
 			var(--🥝accordion-item-transition-timing-function);
+	}
 
-		.🥝-chevron-down {
-			transition-property: rotate, color;
-			transition-duration: var(--🥝accordion-item-transition-duration);
-			transition-timing-function: var(--🥝accordion-item-transition-timing-function);
+	@layer states {
+		@media (any-hover: hover) {
+			:where(.🥝-accordion-item-trigger:hover) & {
+				--🌀button-state: var(--🌀button-state--hover);
+			}
 		}
+	}
+}
+
+.🥝-accordion-item-marker-chevron {
+	@layer base {
+		transition-property: rotate, color;
+		transition-duration: var(--🥝accordion-item-transition-duration);
+		transition-timing-function: var(--🥝accordion-item-transition-timing-function);
 	}
 }
 

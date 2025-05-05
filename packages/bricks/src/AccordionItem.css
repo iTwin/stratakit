@@ -4,8 +4,6 @@
  *--------------------------------------------------------------------------------------------*/
 
 .🥝-accordion-item {
-	--✨focus-outline: 2px solid var(--ids-color-border-accent-strong);
-
 	--🥝accordion-item-gap: 12px;
 	--🥝accordion-item-padding: 12px;
 	--🥝accordion-item-transition-duration: 150ms;

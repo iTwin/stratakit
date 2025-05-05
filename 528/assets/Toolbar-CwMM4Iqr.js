@@ -1,0 +1,1 @@
+import{o as r,a as e}from"./chunk-BAXFHI7N-CFnR9__p.js";import{i as s,an as t,c as m}from"./~utils-ByH4ad1v.js";import{T as n,a as c}from"./IWEFDH56-DIfya1oQ.js";const u=s((o,a)=>r.jsx(t,{value:e.useMemo(()=>({iconSize:"large"}),[]),children:r.jsx(n,{...o,className:m("🥝-toolbar",o.className),ref:a})})),f=s((o,a)=>r.jsx(c,{...o,ref:a}));export{u as T,f as a};

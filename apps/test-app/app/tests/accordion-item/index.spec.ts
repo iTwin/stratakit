@@ -81,10 +81,16 @@ test.describe("@visual", () => {
 
 test.describe("@a11y", () => {
 	test("Axe Page Scan", async ({ page }) => {
-		await page.goto("/tests/accordion-item?visual");
+		await page.goto("/tests/accordion-item");
 
 		const axe = new AxeBuilder({ page });
-		const accessibilityScan = await axe.analyze();
-		expect(accessibilityScan.violations).toEqual([]);
+		let accessibilityScan = await axe.analyze();
+		await expect(accessibilityScan.violations).toEqual([]);
+
+		const trigger = page.getByRole("button", { name: "Label" });
+		await trigger.click();
+
+		accessibilityScan = await axe.analyze();
+		await expect(accessibilityScan.violations).toEqual([]);
 	});
 });

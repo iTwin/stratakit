@@ -20,7 +20,11 @@ interface AnchorProps extends Pick<IuiAnchorProps, "isExternal" | "underline"> {
 }
 
 export const Anchor = React.forwardRef((props, forwardedRef) => {
-	const { underline, isExternal, ...rest } = useCompatProps(props);
+	const {
+		underline, // NOT IMPLEMENTED
+		isExternal, // NOT IMPLEMENTED
+		...rest
+	} = useCompatProps(props);
 	return <SkAnchor {...rest} ref={forwardedRef} />;
 }) as PolymorphicForwardRefComponent<"a", AnchorProps>;
 DEV: Anchor.displayName = "Anchor";

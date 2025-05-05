@@ -2,6 +2,6 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-"use client";
-
-export { Anchor } from "./Anchor.js";
+.main {
+	padding: 2rem;
+}

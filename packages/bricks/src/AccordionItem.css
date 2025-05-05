@@ -94,8 +94,6 @@
 		grid-row: content;
 		grid-column: content;
 		padding-block-end: var(--🥝accordion-item-padding);
-		text-box: cap alphabetic;
-		color: var(--ids-color-text-neutral-secondary);
 	}
 
 	@layer states {

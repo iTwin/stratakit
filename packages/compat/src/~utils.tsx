@@ -64,10 +64,10 @@ type Merge<P1, P2> = Omit<P1, keyof P2> & P2;
  * @private
  */
 export function useCompatProps<P extends { as?: React.ElementType }>(props: P) {
-	const { as: As, ...rest } = props;
+	const { as: Element, ...rest } = props;
 	const render = React.useMemo(() => {
-		return As ? <As /> : undefined;
-	}, [As]);
+		return Element ? <Element /> : undefined;
+	}, [Element]);
 	return {
 		...rest,
 		render,

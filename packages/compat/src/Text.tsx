@@ -10,6 +10,7 @@ import { useCompatProps } from "./~utils.tsx";
 import type { Text as IuiText } from "@itwin/itwinui-react";
 import type { PolymorphicForwardRefComponent } from "./~utils.tsx";
 
+type SkTextProps = React.ComponentProps<typeof SkText>;
 type IuiTextProps = React.ComponentProps<typeof IuiText>;
 
 interface TextProps
@@ -28,7 +29,7 @@ export const Text = React.forwardRef((props, forwardedRef) => {
 		...rest
 	} = useCompatProps(props);
 
-	const variant = React.useMemo(() => {
+	const variant: SkTextProps["variant"] = React.useMemo(() => {
 		switch (variantProp) {
 			case "headline":
 				return "display-md";

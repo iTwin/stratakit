@@ -20,7 +20,7 @@ import styles from "./tests.module.css";
 import type { MetaFunction } from "react-router";
 
 export const meta: MetaFunction = () => {
-	return [{ title: "Stratakit tests" }];
+	return [{ title: "StrataKit tests" }];
 };
 
 export default function Page() {

@@ -4,12 +4,12 @@
  *--------------------------------------------------------------------------------------------*/
 
 import * as Toolbar from "@ariakit/react/toolbar";
+import { forwardRef } from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
 import * as React from "react";
 import { IconButtonContext } from "./IconButton.internal.js";
-import { forwardRef } from "./~utils.js";
 
-import type { BaseProps } from "./~utils.js";
+import type { BaseProps } from "@stratakit/foundations/secret-internals";
 
 // ----------------------------------------------------------------------------
 

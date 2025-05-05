@@ -2,8 +2,7 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-@import "./reset.css" layer(reset);
+"use client";
 
-@import "./theme.css" layer(itwinui.foundations);
-@import "./typography.css" layer(itwinui.foundations);
-@import "./global.css" layer(itwinui.foundations);
+export { Root } from "./Root.js";
+export { Icon } from "./Icon.js";

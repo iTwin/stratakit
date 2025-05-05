@@ -5,3 +5,4 @@
 "use client";
 
 export { Anchor } from "./Anchor.js";
+export { Divider } from "./Divider.js";

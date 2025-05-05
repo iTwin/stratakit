@@ -1,0 +1,30 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+
+import { Anchor as SkAnchor } from "@stratakit/bricks";
+import * as React from "react";
+import { useCompatProps } from "./~utils.tsx";
+
+import type { Anchor as IuiAnchor } from "@itwin/itwinui-react";
+import type { PolymorphicForwardRefComponent } from "./~utils.tsx";
+
+type IuiAnchorProps = React.ComponentProps<typeof IuiAnchor>;
+
+interface AnchorProps extends Pick<IuiAnchorProps, "isExternal" | "underline"> {
+	/** NOT IMPLEMENTED. */
+	isExternal?: IuiAnchorProps["isExternal"];
+	/** NOT IMPLEMENTED. */
+	underline?: IuiAnchorProps["underline"];
+}
+
+export const Anchor = React.forwardRef((props, forwardedRef) => {
+	const {
+		underline, // NOT IMPLEMENTED
+		isExternal, // NOT IMPLEMENTED
+		...rest
+	} = useCompatProps(props);
+	return <SkAnchor {...rest} ref={forwardedRef} />;
+}) as PolymorphicForwardRefComponent<"a", AnchorProps>;
+DEV: Anchor.displayName = "Anchor";

@@ -33,3 +33,5 @@ export const components = [
 	"Tooltip",
 	"Tree",
 ];
+
+export const compatComponents = ["Anchor", "Text"];

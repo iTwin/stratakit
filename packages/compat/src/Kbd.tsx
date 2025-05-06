@@ -3,8 +3,8 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import { KbdKeys as IuiKbdKeys } from "@itwin/itwinui-react";
-import { Kbd as SkKbd } from "@stratakit/bricks";
+import type { KbdKeys as IuiKbdKeys } from "@itwin/itwinui-react";
+import { Kbd as SkKbd, VisuallyHidden } from "@stratakit/bricks";
 import * as React from "react";
 import { useCompatProps } from "./~utils.tsx";
 
@@ -13,44 +13,86 @@ import type { PolymorphicForwardRefComponent } from "./~utils.tsx";
 export const Kbd = React.forwardRef((props, forwardedRef) => {
 	const { children, ...rest } = useCompatProps(props);
 
-	const mapping =
-		typeof children === "string" && children in IuiKbdKeysToSkKbdSymbols
-			? IuiKbdKeysToSkKbdSymbols[
-					children as keyof typeof IuiKbdKeysToSkKbdSymbols
-				]
-			: undefined;
-
 	return (
-		<SkKbd {...rest} symbol={mapping?.symbol} ref={forwardedRef}>
-			{mapping != null ? mapping.text : children}
+		<SkKbd {...rest} ref={forwardedRef}>
+			{children}
 		</SkKbd>
 	);
 }) as PolymorphicForwardRefComponent<"kbd">;
 DEV: Kbd.displayName = "Kbd";
 
-export { IuiKbdKeys as KbdKeys };
-
-/**
- * Maps Iui's key values to SkKbd symbols (if exists) and string texts.
- */
-const IuiKbdKeysToSkKbdSymbols: Record<
-	(typeof IuiKbdKeys)[keyof typeof IuiKbdKeys],
-	{
-		symbol: React.ComponentProps<typeof SkKbd>["symbol"];
-		text: string | undefined;
-	}
-> = {
-	"\u2318 Cmd": { symbol: "Command", text: "Cmd" },
-	"\u21e7 Shift": { symbol: "Shift", text: "Shift" },
-	"\u232b Backspace": { symbol: "Backspace", text: "Backspace" },
-	"\u21b5 Enter": { symbol: "Enter", text: "Enter" },
-	"\u23cf Eject": { symbol: "Eject", text: "Eject" },
-	Ctrl: { symbol: "Control", text: undefined },
-	"\u229e Win": { symbol: undefined, text: "\u229e Win" },
-	"\uf8ff": { symbol: undefined, text: "\uf8ff" }, // Apple
-	"\u2325 Option": { symbol: "Option", text: "Option" },
-	"\u2190": { symbol: "Left", text: undefined },
-	"\u2191": { symbol: "Up", text: undefined },
-	"\u2192": { symbol: "Right", text: undefined },
-	"\u2193": { symbol: "Down", text: undefined },
+export const KbdKeys: Record<keyof typeof IuiKbdKeys, React.ReactNode> = {
+	Command: (
+		<>
+			<span aria-hidden="true">{"\u2318 Cmd"}</span>
+			<VisuallyHidden>Command</VisuallyHidden>
+		</>
+	),
+	Shift: (
+		<>
+			<span aria-hidden="true">{"\u21e7"}</span> Shift
+		</>
+	),
+	Backspace: (
+		<>
+			<span aria-hidden="true">{"\u232b"}</span> Backspace
+		</>
+	),
+	Enter: (
+		<>
+			<span aria-hidden="true">{"\u21b5"}</span> Enter
+		</>
+	),
+	Eject: (
+		<>
+			<span aria-hidden="true">{"\u23cf"}</span> Eject
+		</>
+	),
+	Control: (
+		<>
+			<span aria-hidden="true">Ctrl</span>
+			<VisuallyHidden>Control</VisuallyHidden>
+		</>
+	),
+	Windows: (
+		<>
+			<span aria-hidden="true">{"\u229e Win"}</span>
+			<VisuallyHidden>Windows</VisuallyHidden>
+		</>
+	),
+	Apple: (
+		<>
+			<span aria-hidden="true">{"\uf8ff"}</span>
+			<VisuallyHidden>Apple</VisuallyHidden>
+		</>
+	),
+	Option: (
+		<>
+			<span aria-hidden="true">{"\u2325"}</span> Option
+		</>
+	),
+	Left: (
+		<>
+			<span aria-hidden="true">{"\u2190"}</span>
+			<VisuallyHidden>Left</VisuallyHidden>
+		</>
+	),
+	Up: (
+		<>
+			<span aria-hidden="true">{"\u2191"}</span>
+			<VisuallyHidden>Up</VisuallyHidden>
+		</>
+	),
+	Right: (
+		<>
+			<span aria-hidden="true">{"\u2192"}</span>
+			<VisuallyHidden>Right</VisuallyHidden>
+		</>
+	),
+	Down: (
+		<>
+			<span aria-hidden="true">{"\u2193"}</span>
+			<VisuallyHidden>Down</VisuallyHidden>
+		</>
+	),
 };

@@ -12,10 +12,10 @@ import type { PolymorphicForwardRefComponent } from "./~utils.tsx";
 
 type IuiDividerProps = React.ComponentProps<typeof IuiDivider>;
 
-interface DividerProps extends IuiDividerProps {}
+interface DividerProps extends Pick<IuiDividerProps, "orientation"> {}
 
 export const Divider = React.forwardRef((props, forwardedRef) => {
-	const { ...rest } = useCompatProps(props);
-	return <SkDivider {...rest} ref={forwardedRef} />;
+	const { orientation, ...rest } = useCompatProps(props);
+	return <SkDivider {...rest} orientation={orientation} ref={forwardedRef} />;
 }) as PolymorphicForwardRefComponent<"hr", DividerProps>;
 DEV: Divider.displayName = "Divider";

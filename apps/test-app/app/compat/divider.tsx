@@ -6,7 +6,7 @@
 import { Divider } from "@stratakit/react";
 import { definePage } from "~/~utils.tsx";
 
-export const handle = { title: "Anchor" };
+export const handle = { title: "Divider" };
 
 export default definePage(function Page() {
 	return (

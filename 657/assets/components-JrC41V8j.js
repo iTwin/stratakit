@@ -1,1 +1,0 @@
-const o=["Root","Anchor","Avatar","Badge","Button","Checkbox","Chip","Divider","DropdownMenu","ErrorRegion","Field","Icon","IconButton","Kbd","List","ProgressBar","Radio","Select","Skeleton","Spinner","Switch","Table","Tabs","Text","TextBox","Toolbar","Tooltip","Tree"],e=["Anchor","Kbd"];export{e as a,o as c};

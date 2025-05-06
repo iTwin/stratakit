@@ -19,9 +19,9 @@ jobs:
         # with:
         #   token: ${{ secrets.IMJS_ADMIN_GH_TOKEN }}
 
-      - uses: pnpm/action-setup@v3
+      - uses: pnpm/action-setup@v4
         with:
-          version: 9
+          version: 9.15.4
 
       - name: Use Node 22.x
         uses: actions/setup-node@v4

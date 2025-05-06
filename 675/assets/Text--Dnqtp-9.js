@@ -1,0 +1,1 @@
+import{o as e}from"./chunk-BAXFHI7N-CFnR9__p.js";import{f as o,R as x,c as i}from"./sun-CYMOe14K.js";const f=o((t,a)=>{const{variant:s,...r}=t;return e.jsx(x,{...r,className:i("🥝-text",t.className),"data-kiwi-text-variant":s,ref:a})});export{f as T};

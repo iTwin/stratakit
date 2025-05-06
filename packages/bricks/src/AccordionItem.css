@@ -6,8 +6,6 @@
 .🥝-accordion-item {
 	--🥝accordion-item-gap: 12px;
 	--🥝accordion-item-padding: 12px;
-	--🥝accordion-item-transition-duration: 150ms;
-	--🥝accordion-item-transition-timing-function: linear;
 
 	@layer base {
 		contain: paint;
@@ -56,9 +54,6 @@
 		margin-inline-start: var(--🥝accordion-item-gap);
 		/* TODO: We can only use GhostAligner to apply alignment to block or inline, so we’re manually applying it here. */
 		margin-inline-end: calc(-1 * var(--🥝ghost-inline-offset));
-
-		transition: background-color var(--🥝-accordion-item-transition-duration)
-			var(--🥝accordion-item-transition-timing-function);
 	}
 
 	@layer states {
@@ -67,14 +62,6 @@
 				--🌀button-state: var(--🌀button-state--hover);
 			}
 		}
-	}
-}
-
-.🥝-accordion-item-marker-chevron {
-	@layer base {
-		transition-property: rotate, color;
-		transition-duration: var(--🥝accordion-item-transition-duration);
-		transition-timing-function: var(--🥝accordion-item-transition-timing-function);
 	}
 }
 
@@ -88,44 +75,12 @@
 }
 
 .🥝-accordion-item-content {
-	--✨total-duration: var(--🥝accordion-item-transition-duration);
-
 	@layer base {
 		grid-row: content;
 		grid-column: content;
 		padding-block-end: var(--🥝accordion-item-padding);
 		text-box: cap alphabetic;
 		color: var(--ids-color-text-neutral-secondary);
-	}
-
-	@layer states {
-		@media (prefers-reduced-motion: no-preference) {
-			@supports (interpolate-size: allow-keywords) and (transition-behavior: allow-discrete) {
-				/* Exit transition */
-				&:where(:not([data-enter])) {
-					opacity: 0;
-					block-size: 0;
-					padding-block-end: 0;
-					/* biome-ignore format: improve readability */
-					transition:
-							display 0s var(--✨total-duration) allow-discrete,
-							block-size var(--✨total-duration) allow-discrete,
-							padding var(--✨total-duration),
-							opacity calc(var(--✨total-duration) * 1 / 3);
-					transition-timing-function: var(--🥝accordion-item-transition-timing-function);
-				}
-
-				/* Entrance transition */
-				&:where([data-enter]) {
-					/* biome-ignore format: improve readability */
-					transition:
-						padding var(--✨total-duration),
-						block-size var(--✨total-duration) allow-discrete,
-						opacity calc(var(--✨total-duration) * 2 / 3) calc(var(--✨total-duration) * 2 / 3);
-					transition-timing-function: var(--🥝accordion-item-transition-timing-function);
-				}
-			}
-		}
 	}
 }
 

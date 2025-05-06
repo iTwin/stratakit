@@ -2,14 +2,13 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-
-import unlockIcon from "@itwin/itwinui-icons/lock-unlocked.svg";
-import placeholderIcon from "@itwin/itwinui-icons/placeholder.svg";
-import refreshIcon from "@itwin/itwinui-icons/refresh.svg";
-import showIcon from "@itwin/itwinui-icons/visibility-show.svg";
-import { Icon, Tree } from "@itwin/itwinui-react/bricks";
-import * as React from "react";
 import { definePage } from "~/~utils.tsx";
+import * as React from "react";
+import { Tree, Icon } from "@itwin/itwinui-react/bricks";
+import placeholderIcon from "@itwin/itwinui-icons/placeholder.svg";
+import unlockIcon from "@itwin/itwinui-icons/lock-unlocked.svg";
+import showIcon from "@itwin/itwinui-icons/visibility-show.svg";
+import refreshIcon from "@itwin/itwinui-icons/refresh.svg";
 
 export const handle = { title: "Tree" };
 

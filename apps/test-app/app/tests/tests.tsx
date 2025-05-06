@@ -2,26 +2,29 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-
-import chevronLeftIcon from "@itwin/itwinui-icons/chevron-left.svg";
+import globalStyles from "./tests.css?url";
 import {
 	Anchor,
 	IconButton,
 	Text,
 	VisuallyHidden,
 } from "@itwin/itwinui-react/bricks";
-import * as React from "react";
-import { Link, Outlet, useMatches } from "react-router";
+import chevronLeftIcon from "@itwin/itwinui-icons/chevron-left.svg";
+import {
+	Outlet,
+	useMatches,
+	type MetaFunction,
+	type LinksFunction,
+	Link,
+} from "react-router";
 import {
 	RightSidebar,
 	ThemeSwitcher,
-	VariantsListContext,
 	useLocalStorage,
+	VariantsListContext,
 } from "~/~utils.tsx";
-import globalStyles from "./tests.css?url";
 import styles from "./tests.module.css";
-
-import type { LinksFunction, MetaFunction } from "react-router";
+import * as React from "react";
 
 export const meta: MetaFunction = () => {
 	return [{ title: "Kiwi tests" }];

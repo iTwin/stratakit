@@ -2,14 +2,11 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-
-import * as Toolbar from "@ariakit/react/toolbar";
-import cx from "classnames";
 import * as React from "react";
+import cx from "classnames";
+import * as Toolbar from "@ariakit/react/toolbar";
+import { forwardRef, type BaseProps } from "./~utils.js";
 import { IconButtonContext } from "./IconButton.internal.js";
-import { forwardRef } from "./~utils.js";
-
-import type { BaseProps } from "./~utils.js";
 
 // ----------------------------------------------------------------------------
 

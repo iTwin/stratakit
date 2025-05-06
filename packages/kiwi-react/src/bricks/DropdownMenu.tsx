@@ -2,35 +2,34 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-
+import * as React from "react";
+import cx from "classnames";
+import * as ListItem from "./~utils.ListItem.js";
+import { Button } from "./Button.js";
 import { Button as ButtonAk } from "@ariakit/react/button";
+import { Kbd } from "./Kbd.js";
+import { Checkmark, DisclosureArrow, Icon } from "./Icon.js";
 import {
+	forwardRef,
+	type AnyString,
+	type BaseProps,
+	type FocusableProps,
+} from "./~utils.js";
+import { usePopoverApi } from "./~hooks.js";
+import {
+	MenuProvider,
+	useMenuContext,
 	Menu,
 	MenuButton,
 	MenuItem,
 	MenuItemCheckbox,
-	MenuProvider,
-	useMenuContext,
+	type MenuItemCheckboxProps,
+	type MenuProviderProps,
 } from "@ariakit/react/menu";
-import { usePopoverContext } from "@ariakit/react/popover";
 import { useStoreState } from "@ariakit/react/store";
-import cx from "classnames";
-import * as React from "react";
-import { Button } from "./Button.js";
-import { Checkmark, DisclosureArrow, Icon } from "./Icon.js";
-import { predefinedSymbols } from "./Kbd.internal.js";
-import { Kbd } from "./Kbd.js";
-import { usePopoverApi } from "./~hooks.js";
+import { predefinedSymbols, type PredefinedSymbol } from "./Kbd.internal.js";
+import { usePopoverContext } from "@ariakit/react/popover";
 import { Dot } from "./~utils.Dot.js";
-import * as ListItem from "./~utils.ListItem.js";
-import { forwardRef } from "./~utils.js";
-
-import type {
-	MenuItemCheckboxProps,
-	MenuProviderProps,
-} from "@ariakit/react/menu";
-import type { PredefinedSymbol } from "./Kbd.internal.js";
-import type { AnyString, BaseProps, FocusableProps } from "./~utils.js";
 
 // ----------------------------------------------------------------------------
 

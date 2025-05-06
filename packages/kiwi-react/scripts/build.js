@@ -2,18 +2,17 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-
 import * as path from "node:path";
 import * as esbuild from "esbuild";
+import * as lightningcss from "lightningcss";
 import fg from "fast-glob";
 import {
 	primitivesTransform,
-	staticVariablesTransform,
 	themeTransform,
-	typographyTokensTransform,
+	staticVariablesTransform,
 	typographyTransform,
+	typographyTokensTransform,
 } from "internal/visitors.js";
-import * as lightningcss from "lightningcss";
 
 const isDev = process.env.NODE_ENV === "development";
 

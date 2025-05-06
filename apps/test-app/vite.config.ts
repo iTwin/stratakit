@@ -2,22 +2,19 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-
-import { createRequire } from "node:module";
 import { reactRouter } from "@react-router/dev/vite";
+import { defineConfig, type Plugin, defaultClientConditions } from "vite";
+import type { Config as ReactRouterConfig } from "@react-router/dev/config";
+import tsconfigPaths from "vite-tsconfig-paths";
+import * as lightningcss from "lightningcss";
 import {
 	primitivesTransform,
-	staticVariablesTransform,
 	themeTransform,
 	typographyTokensTransform,
+	staticVariablesTransform,
 	typographyTransform,
 } from "internal/visitors.js";
-import * as lightningcss from "lightningcss";
-import { defaultClientConditions, defineConfig } from "vite";
-import tsconfigPaths from "vite-tsconfig-paths";
-
-import type { Config as ReactRouterConfig } from "@react-router/dev/config";
-import type { Plugin } from "vite";
+import { createRequire } from "node:module";
 
 const isDev = process.env.NODE_ENV === "development";
 

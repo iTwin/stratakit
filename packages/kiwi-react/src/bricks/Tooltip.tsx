@@ -2,15 +2,12 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-
-import { useStoreState } from "@ariakit/react/store";
-import * as AkTooltip from "@ariakit/react/tooltip";
-import cx from "classnames";
 import * as React from "react";
+import cx from "classnames";
+import * as AkTooltip from "@ariakit/react/tooltip";
+import { useStoreState } from "@ariakit/react/store";
+import { forwardRef, type FocusableProps } from "./~utils.js";
 import { usePopoverApi } from "./~hooks.js";
-import { forwardRef } from "./~utils.js";
-
-import type { FocusableProps } from "./~utils.js";
 
 interface TooltipProps
 	extends Omit<FocusableProps<"div">, "content">,

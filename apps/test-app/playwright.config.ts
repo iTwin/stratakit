@@ -2,10 +2,12 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-
-import { test as base, defineConfig, devices } from "@playwright/test";
-
-import type { Page } from "@playwright/test";
+import {
+	defineConfig,
+	devices,
+	test as base,
+	type Page,
+} from "@playwright/test";
 
 /** See https://playwright.dev/docs/test-configuration. */
 export default defineConfig({

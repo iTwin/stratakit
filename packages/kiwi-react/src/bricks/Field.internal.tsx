@@ -2,12 +2,13 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-
-import { Collection, useCollectionStore } from "@ariakit/react/collection";
-import { useStoreState } from "@ariakit/react/store";
 import * as React from "react";
-
-import type { CollectionProps } from "@ariakit/react/collection";
+import {
+	useCollectionStore,
+	Collection,
+	type CollectionProps,
+} from "@ariakit/react/collection";
+import { useStoreState } from "@ariakit/react/store";
 
 // ----------------------------------------------------------------------------
 

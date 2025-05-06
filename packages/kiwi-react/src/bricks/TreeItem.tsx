@@ -2,24 +2,23 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-
-import { CompositeItem } from "@ariakit/react/composite";
-import { PopoverProvider } from "@ariakit/react/popover";
-import { Role } from "@ariakit/react/role";
-import { Toolbar, ToolbarItem } from "@ariakit/react/toolbar";
-import cx from "classnames";
 import * as React from "react";
-import * as DropdownMenu from "./DropdownMenu.js";
-import { ChevronDown, Icon, MoreHorizontal, StatusWarning } from "./Icon.js";
-import { IconButtonPresentation } from "./IconButton.internal.js";
+import cx from "classnames";
+import { Role } from "@ariakit/react/role";
+import { PopoverProvider } from "@ariakit/react/popover";
+import {
+	CompositeItem,
+	type CompositeItemProps,
+} from "@ariakit/react/composite";
+import { Toolbar, ToolbarItem } from "@ariakit/react/toolbar";
+import * as ListItem from "./~utils.ListItem.js";
 import { IconButton } from "./IconButton.js";
+import * as DropdownMenu from "./DropdownMenu.js";
+import { ChevronDown, Icon, StatusWarning, MoreHorizontal } from "./Icon.js";
+import { forwardRef, type BaseProps } from "./~utils.js";
 import { useEventHandlers, useSafeContext } from "./~hooks.js";
 import { GhostAligner, useGhostAlignment } from "./~utils.GhostAligner.js";
-import * as ListItem from "./~utils.ListItem.js";
-import { forwardRef } from "./~utils.js";
-
-import type { CompositeItemProps } from "@ariakit/react/composite";
-import type { BaseProps } from "./~utils.js";
+import { IconButtonPresentation } from "./IconButton.internal.js";
 
 // ----------------------------------------------------------------------------
 

@@ -2,30 +2,28 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-
-import { PortalContext } from "@ariakit/react/portal";
-import { Role } from "@ariakit/react/role";
-import cx from "classnames";
 import * as React from "react";
 import * as ReactDOM from "react-dom";
+import { Role } from "@ariakit/react/role";
+import { PortalContext } from "@ariakit/react/portal";
+import cx from "classnames";
 import foundationsCss from "../foundations/styles.css.js";
-import {
-	HtmlSanitizerContext,
-	RootNodeContext,
-	spriteSheetId,
-	useRootNode,
-} from "./Root.internal.js";
 import bricksCss from "./styles.css.js";
-import { useLayoutEffect, useMergedRefs } from "./~hooks.js";
 import {
 	forwardRef,
 	getOwnerDocument,
 	identity,
 	isBrowser,
 	isDocument,
+	type BaseProps,
 } from "./~utils.js";
-
-import type { BaseProps } from "./~utils.js";
+import { useLayoutEffect, useMergedRefs } from "./~hooks.js";
+import {
+	HtmlSanitizerContext,
+	RootNodeContext,
+	spriteSheetId,
+	useRootNode,
+} from "./Root.internal.js";
 
 const css = foundationsCss + bricksCss;
 

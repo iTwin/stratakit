@@ -2,26 +2,24 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-
-import {
-	CollectionItem,
-	useCollectionContext,
-} from "@ariakit/react/collection";
-import { Role } from "@ariakit/react/role";
-import { useStoreState } from "@ariakit/react/store";
-import cx from "classnames";
 import * as React from "react";
-import { Description } from "./Description.js";
-import { FieldCollection, FieldControlTypeContext } from "./Field.internal.js";
-import { Label } from "./Label.js";
-import { forwardRef } from "./~utils.js";
-
-import type { CollectionItemProps } from "@ariakit/react/collection";
-import type {
-	CollectionStoreItem,
-	FieldCollectionStoreItem,
+import cx from "classnames";
+import { Role } from "@ariakit/react/role";
+import {
+	useCollectionContext,
+	CollectionItem,
+	type CollectionItemProps,
+} from "@ariakit/react/collection";
+import { useStoreState } from "@ariakit/react/store";
+import { forwardRef, type BaseProps } from "./~utils.js";
+import {
+	FieldCollection,
+	FieldControlTypeContext,
+	type CollectionStoreItem,
+	type FieldCollectionStoreItem,
 } from "./Field.internal.js";
-import type { BaseProps } from "./~utils.js";
+import { Label } from "./Label.js";
+import { Description } from "./Description.js";
 
 // ----------------------------------------------------------------------------
 

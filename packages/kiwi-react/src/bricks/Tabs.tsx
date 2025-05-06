@@ -2,12 +2,9 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-
-import * as AkTab from "@ariakit/react/tab";
 import cx from "classnames";
-import { forwardRef } from "./~utils.js";
-
-import type { BaseProps, FocusableProps } from "./~utils.js";
+import * as AkTab from "@ariakit/react/tab";
+import { type FocusableProps, type BaseProps, forwardRef } from "./~utils.js";
 
 // ----------------------------------------------------------------------------
 

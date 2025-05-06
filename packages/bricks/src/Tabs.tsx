@@ -4,10 +4,13 @@
  *--------------------------------------------------------------------------------------------*/
 
 import * as AkTab from "@ariakit/react/tab";
+import { forwardRef } from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
-import { forwardRef } from "./~utils.js";
 
-import type { BaseProps, FocusableProps } from "./~utils.js";
+import type {
+	BaseProps,
+	FocusableProps,
+} from "@stratakit/foundations/secret-internals";
 
 // ----------------------------------------------------------------------------
 

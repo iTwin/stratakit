@@ -4,13 +4,13 @@
  *--------------------------------------------------------------------------------------------*/
 
 import { Role } from "@ariakit/react/role";
+import { forwardRef } from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
 import * as React from "react";
-import { Dismiss } from "./Icon.js";
 import { IconButton } from "./IconButton.js";
-import { forwardRef } from "./~utils.js";
+import { Dismiss } from "./~utils.icons.js";
 
-import type { BaseProps } from "./~utils.js";
+import type { BaseProps } from "@stratakit/foundations/secret-internals";
 
 interface ChipProps extends Omit<BaseProps<"div">, "children"> {
 	/**
@@ -28,6 +28,10 @@ interface ChipProps extends Omit<BaseProps<"div">, "children"> {
 
 	/**
 	 * Callback invoked when the dismiss ("❌") button is clicked.
+	 *
+	 * If `undefined`, the dismiss button will not be rendered.
+	 *
+	 * @default undefined
 	 */
 	onDismiss?: () => void;
 }

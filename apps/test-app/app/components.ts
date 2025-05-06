@@ -7,6 +7,7 @@ export const components = [
 	"Anchor",
 	"Avatar",
 	"Badge",
+	"Banner",
 	"Button",
 	"Checkbox",
 	"Chip",
@@ -33,4 +34,4 @@ export const components = [
 	"Tree",
 ];
 
-export const compatComponents = ["Anchor", "Divider"];
+export const compatComponents = ["Anchor", "Text", "Divider"];

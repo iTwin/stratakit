@@ -28,10 +28,17 @@
 		&::before {
 			content: "";
 			block-size: inherit;
-			inline-size: var(--🥝progress-bar-fill-size);
+			inline-size: 100%;
+			transform: translateX(calc(-100% + var(--🥝progress-bar-fill-size)));
 			border-radius: inherit;
 			background-color: var(--🥝progress-bar-fill-color);
 			animation: var(--🥝progress-bar-animation);
+		}
+
+		&:where([data-kiwi-variant="determinate"])::before {
+			@media (prefers-reduced-motion: no-preference) {
+				transition: transform 150ms ease-in-out;
+			}
 		}
 	}
 

@@ -6,7 +6,7 @@
 import { Kbd, KbdKeys } from "@stratakit/react";
 import { definePage } from "~/~utils.tsx";
 
-export const handle = { title: "Anchor" };
+export const handle = { title: "Kbd" };
 
 export default definePage(function Page() {
 	const iuiKbdKeys = [

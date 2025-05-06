@@ -25,7 +25,7 @@ export const Kbd = React.forwardRef((props, forwardedRef) => {
 			{mapping != null ? mapping.text : children}
 		</SkKbd>
 	);
-}) as PolymorphicForwardRefComponent<"a">;
+}) as PolymorphicForwardRefComponent<"kbd">;
 DEV: Kbd.displayName = "Kbd";
 
 export { IuiKbdKeys as KbdKeys };

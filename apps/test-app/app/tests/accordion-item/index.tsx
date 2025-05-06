@@ -28,7 +28,7 @@ export default definePage(
 						<AccordionItem.Marker />
 					</AccordionItem.Trigger>
 					<AccordionItem.Content data-testid="content">
-						<Content>{content}</Content>
+						{content}
 					</AccordionItem.Content>
 				</AccordionItem.Root>
 			</>
@@ -47,18 +47,14 @@ export function VisualTest() {
 					<AccordionItem.Label>Label</AccordionItem.Label>
 					<AccordionItem.Marker />
 				</AccordionItem.Trigger>
-				<AccordionItem.Content>
-					<Content />
-				</AccordionItem.Content>
+				<AccordionItem.Content>Body</AccordionItem.Content>
 			</AccordionItem.Root>
 			<AccordionItem.Root defaultOpen>
 				<AccordionItem.Trigger>
 					<AccordionItem.Label>Label</AccordionItem.Label>
 					<AccordionItem.Marker />
 				</AccordionItem.Trigger>
-				<AccordionItem.Content>
-					<Content />
-				</AccordionItem.Content>
+				<AccordionItem.Content>Body</AccordionItem.Content>
 			</AccordionItem.Root>
 			<AccordionItem.Root>
 				<AccordionItem.Trigger>
@@ -66,9 +62,7 @@ export function VisualTest() {
 					<AccordionItem.Label>Label</AccordionItem.Label>
 					<AccordionItem.Marker />
 				</AccordionItem.Trigger>
-				<AccordionItem.Content>
-					<Content />
-				</AccordionItem.Content>
+				<AccordionItem.Content>Body</AccordionItem.Content>
 			</AccordionItem.Root>
 			<AccordionItem.Root defaultOpen>
 				<AccordionItem.Trigger>
@@ -76,25 +70,8 @@ export function VisualTest() {
 					<AccordionItem.Label>Label</AccordionItem.Label>
 					<AccordionItem.Marker />
 				</AccordionItem.Trigger>
-				<AccordionItem.Content>
-					<Content />
-				</AccordionItem.Content>
+				<AccordionItem.Content>Body</AccordionItem.Content>
 			</AccordionItem.Root>
 		</>
-	);
-}
-
-function Content(props: React.PropsWithChildren) {
-	return (
-		<div
-			style={
-				{
-					textBox: "cap alphabetic",
-					color: "var(--ids-color-text-neutral-secondary)",
-				} as React.CSSProperties
-			}
-		>
-			{props.children ?? "Body"}
-		</div>
 	);
 }

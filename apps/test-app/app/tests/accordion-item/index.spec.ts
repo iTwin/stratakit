@@ -80,17 +80,28 @@ test.describe("@visual", () => {
 });
 
 test.describe("@a11y", () => {
-	test("Axe Page Scan", async ({ page }) => {
-		await page.goto("/tests/accordion-item");
+	const paramsSet = new Set([
+		new URLSearchParams(),
+		new URLSearchParams("?visual"),
+		new URLSearchParams("?defaultOpen"),
+	]);
 
-		const axe = new AxeBuilder({ page });
-		let accessibilityScan = await axe.analyze();
-		await expect(accessibilityScan.violations).toEqual([]);
+	for (const params of paramsSet) {
+		test(`Axe Page Scan: ?${params}`, async ({ page }) => {
+			await page.goto(`/tests/accordion-item?${params}`);
 
-		const trigger = page.getByRole("button", { name: "Label" });
-		await trigger.click();
+			const axe = new AxeBuilder({ page });
+			let accessibilityScan = await axe.analyze();
+			await expect(accessibilityScan.violations).toEqual([]);
 
-		accessibilityScan = await axe.analyze();
-		await expect(accessibilityScan.violations).toEqual([]);
-	});
+			// Skip the trigger test for the visual route
+			if (params.has("visual")) return;
+
+			const trigger = page.getByRole("button", { name: "Label" });
+			await trigger.click();
+
+			accessibilityScan = await axe.analyze();
+			await expect(accessibilityScan.violations).toEqual([]);
+		});
+	}
 });

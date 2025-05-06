@@ -34,4 +34,4 @@ export const components = [
 	"Tree",
 ];
 
-export const compatComponents = ["Anchor", "Text", "Divider"];
+export const compatComponents = ["Anchor", "Divider", "Text"];

@@ -3,11 +3,11 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
+import { forwardRef } from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
 import { Text } from "./Text.js";
-import { forwardRef } from "./~utils.js";
 
-import type { BaseProps } from "./~utils.js";
+import type { BaseProps } from "@stratakit/foundations/secret-internals";
 
 interface DescriptionProps extends BaseProps {
 	/**

@@ -8,7 +8,6 @@ import {
 	DropdownMenu,
 	unstable_ErrorRegion as ErrorRegion,
 	Field,
-	Icon,
 	IconButton,
 	Select,
 	Skeleton,
@@ -19,6 +18,7 @@ import {
 	Tree,
 	VisuallyHidden,
 } from "@stratakit/bricks";
+import { Icon } from "@stratakit/foundations";
 import { useQuery } from "@tanstack/react-query";
 import cx from "classnames";
 import { produce } from "immer";
@@ -43,6 +43,7 @@ import lockIcon from "@stratakit/icons/lock.svg";
 import measureIcon from "@stratakit/icons/measure.svg";
 import panelCollapseLeftIcon from "@stratakit/icons/panel-collapse-left.svg";
 import placeholderIcon from "@stratakit/icons/placeholder.svg";
+import retryIcon from "@stratakit/icons/retry.svg";
 import searchIcon from "@stratakit/icons/search.svg";
 import hideIcon from "@stratakit/icons/visibility-hide.svg";
 import showIcon from "@stratakit/icons/visibility-show.svg";
@@ -76,7 +77,7 @@ async function fetchModelsData(
 
 // ----------------------------------------------------------------------------
 
-const title = "Stratakit sandbox";
+const title = "StrataKit sandbox";
 export const meta: MetaFunction = () => {
 	return [{ title }];
 };
@@ -965,6 +966,18 @@ function SandboxTree({
 								</>
 							}
 							actions={[
+								hasError ? (
+									<Tree.ItemAction
+										key="retry"
+										icon={retryIcon}
+										label="Retry"
+										onClick={() => {
+											setFailingIds((prev) => {
+												return prev.filter((id) => id !== item.id);
+											});
+										}}
+									/>
+								) : null,
 								<Tree.ItemAction key="lock" icon={lockIcon} label="Lock" />,
 								<VisibilityAction
 									key="visibility"

@@ -85,9 +85,18 @@
 			border-radius: 9999px;
 			position: absolute;
 			inset-inline-start: calc(var(--indent-guide-left-inset) - 1px); /* Indent guide inset - 1px for centering */
+		}
 
-			@media (forced-colors: active) {
-				background-color: CanvasText;
+		@media (forced-colors: active) {
+			forced-color-adjust: none;
+			background-color: SelectedItem;
+
+			.listItemLink {
+				color: SelectedItemText;
+			}
+
+			&::before {
+				background-color: SelectedItemText;
 			}
 		}
 	}

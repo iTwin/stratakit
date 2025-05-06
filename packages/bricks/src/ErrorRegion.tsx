@@ -15,17 +15,19 @@ import {
 } from "@ariakit/react/dialog";
 import { Role } from "@ariakit/react/role";
 import { useStoreState } from "@ariakit/react/store";
+import {
+	forwardRef,
+	useControlledState,
+} from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
 import * as React from "react";
 import { Button } from "./Button.js";
-import { ChevronDown, StatusIcon } from "./Icon.js";
 import { IconButtonPresentation } from "./IconButton.internal.js";
 import { Text } from "./Text.js";
 import { VisuallyHidden } from "./VisuallyHidden.js";
-import { useControlledState } from "./~hooks.js";
-import { forwardRef } from "./~utils.js";
+import { ChevronDown, StatusIcon } from "./~utils.icons.js";
 
-import type { BaseProps } from "./~utils.js";
+import type { BaseProps } from "@stratakit/foundations/secret-internals";
 
 // ----------------------------------------------------------------------------
 
@@ -130,13 +132,17 @@ const ErrorRegionRoot = forwardRef<"div", ErrorRegionRootProps>(
 				if (addedItems.length === 0) return;
 
 				pulse();
+				setLiveLabel(label);
 			},
 		});
 		const prevItems = useStoreState(store, "items");
+
+		// This label should be updated only when a new item is added.
+		const [liveLabel, setLiveLabel] = React.useState(label);
 		return (
 			<>
 				<VisuallyHidden aria-live="polite" aria-atomic={true}>
-					{label}
+					{liveLabel === label ? liveLabel : undefined}
 				</VisuallyHidden>
 				<DialogProvider open={open} setOpen={setOpen}>
 					<Role.section

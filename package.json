@@ -1,0 +1,37 @@
+{
+	"name": "design-system",
+	"private": true,
+	"type": "module",
+	"version": "0.0.0",
+	"description": "Monorepo for the iTwinUI design system",
+	"scripts": {
+		"build": "pnpm --filter=\"./packages/**\" --filter=\"./apps/**\" build",
+		"build:icons": "pnpm --filter=@itwin/itwinui-icons build",
+		"dev": "npm run build:icons && npm run dev:app &",
+		"dev:app": "pnpm --filter=@itwin/test-app dev",
+		"format": "biome format .",
+		"lint": "biome check --formatter-enabled=false --linter-enabled=true --organize-imports-enabled=true .",
+		"lint:copyright": "tsx internal/copyright-linter.ts",
+		"prettier": "prettier . '!**/*.{js,jsx,ts,tsx,cjs,cts,mjs,mts,css,json,jsonc}' --check",
+		"test": "pnpm --filter=@itwin/test-app test"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "1.9.4",
+		"@playwright/test": "catalog:",
+		"@types/node": "catalog:",
+		"colorjs.io": "^0.5.2",
+		"fast-glob": "^3.3.3",
+		"internal": "workspace:*",
+		"lefthook": "^1.11.3",
+		"prettier": "3.3.3",
+		"tsx": "^4.19.3",
+		"typescript": "catalog:"
+	},
+	"engines": {
+		"node": ">=22.11.0"
+	},
+	"packageManager": "pnpm@9.15.4",
+	"pnpm": {
+		"overrides": {}
+	}
+}

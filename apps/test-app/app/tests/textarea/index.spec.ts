@@ -1,0 +1,67 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+
+import AxeBuilder from "@axe-core/playwright";
+import { expect, test } from "#playwright";
+
+test("default", async ({ page }) => {
+	await page.goto("/tests/textarea");
+
+	const textarea = page.locator("textarea");
+	const label = page.getByText("Fruit");
+
+	await expect(textarea).toHaveAccessibleName("Fruit");
+
+	await label.click();
+	await expect(textarea).toBeFocused();
+
+	await page.keyboard.type("apple");
+	await expect(textarea).toHaveValue("apple");
+});
+
+test("disabled", async ({ page }) => {
+	await page.goto("/tests/textarea?disabled=true");
+
+	const textarea = page.locator("textarea");
+	await expect(textarea).toHaveAccessibleName("Fruit");
+	await expect(textarea).toBeDisabled();
+
+	await page.keyboard.press("Tab");
+	await expect(textarea).toBeFocused();
+
+	// should not be able to type in a disabled textarea
+	await page.keyboard.type("apple");
+	await expect(textarea).toHaveValue("");
+});
+
+test.describe("@visual", () => {
+	test("default", async ({ page }) => {
+		await page.goto("/tests/textarea?visual=true");
+		await expect(page.locator("body")).toHaveScreenshot();
+	});
+
+	test("forced-colors", async ({ page, browserName }) => {
+		test.skip(
+			browserName === "webkit",
+			"Webkit does not support forced-colors",
+		);
+		await page.goto("/tests/textarea?visual=true");
+		await page.emulateMedia({ forcedColors: "active" });
+		await expect(page.locator("body")).toHaveScreenshot();
+	});
+});
+
+test.describe("@a11y", () => {
+	test("Axe Page Scan", async ({ page }) => {
+		await page.goto("/tests/textarea");
+
+		const textarea = page.locator("textarea");
+		await expect(textarea).toBeVisible();
+
+		const axe = new AxeBuilder({ page });
+		const accessibilityScan = await axe.analyze();
+		expect(accessibilityScan.violations).toEqual([]);
+	});
+});

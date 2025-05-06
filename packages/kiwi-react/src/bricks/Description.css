@@ -1,0 +1,15 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+.🥝-description:is(.🥝-text) {
+	@layer modifiers {
+		&:where([data-kiwi-tone="neutral"]) {
+			color: var(--ids-color-text-neutral-tertiary);
+		}
+
+		&:where([data-kiwi-tone="critical"]) {
+			color: var(--ids-color-text-critical-base);
+		}
+	}
+}

@@ -1,0 +1,93 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+
+.🥝-table {
+	@layer base {
+		&:where(table) {
+			table-layout: fixed;
+			inline-size: 100%;
+		}
+	}
+}
+
+.🥝-table-header {
+	@layer base {
+		color: var(--ids-color-text-neutral-secondary);
+	}
+}
+
+.🥝-table-row {
+	@layer base {
+		&:where([role="row"]) {
+			display: flex;
+		}
+	}
+}
+
+.🥝-table-caption,
+.🥝-table-cell {
+	--✨cell-padding-block: 0.5rem;
+	--✨cell-padding-inline-start: 1rem;
+	--✨cell-padding-inline-end: 0.75rem;
+	--✨cell-height-min: 3rem;
+
+	@layer base {
+		min-block-size: var(--✨cell-height-min);
+		padding-block: var(--✨cell-padding-block);
+		padding-inline-start: var(--✨cell-padding-inline-start);
+		padding-inline-end: var(--✨cell-padding-inline-end);
+		overflow-wrap: anywhere;
+		hyphens: auto;
+		align-content: center;
+
+		&:where(th, td) {
+			block-size: var(--✨cell-height-min);
+		}
+	}
+}
+
+.🥝-table-cell {
+	--✨glow--bg-hover: var(--ids-color-glow-hue) var(--ids-color-bg-glow-base-hover-\%);
+	--✨cell-bg--default: var(--ids-color-bg-page-base);
+	--✨cell-bg--hover: color-mix(in oklch, var(--✨cell-bg--default) 100%, var(--✨glow--bg-hover));
+
+	@layer base {
+		min-inline-size: 4rem;
+		background-color: var(--🌀table-cell-state--default, var(--✨cell-bg--default))
+			var(--🌀table-cell-state--hover, var(--✨cell-bg--hover));
+		border-block-end: 1px solid var(--ids-color-border-neutral-muted);
+
+		&:where(:not(th, td)) {
+			column-gap: 0.5rem;
+			flex-grow: 1;
+			flex-basis: 4rem;
+		}
+
+		&:where(th) {
+			font-weight: inherit;
+		}
+	}
+
+	@layer states {
+		@media (any-hover: hover) {
+			&:where(:hover) {
+				--🌀table-cell-state: var(--🌀table-cell-state--hover);
+			}
+
+			&:where([role="cell"], td) {
+				:where(.🥝-table-row:hover) & {
+					--🌀table-cell-state: var(--🌀table-cell-state--hover);
+				}
+			}
+		}
+	}
+
+	@layer base.🌀 {
+		/* Cyclic toggles for default/hover states. See https://kizu.dev/cyclic-toggles/ */
+		--🌀table-cell-state: var(--🌀table-cell-state--default);
+		--🌀table-cell-state--default: var(--🌀table-cell-state,);
+		--🌀table-cell-state--hover: var(--🌀table-cell-state,);
+	}
+}

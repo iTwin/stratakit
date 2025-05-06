@@ -1,0 +1,99 @@
+name: Deploy test-app to gh-pages
+
+on:
+  workflow_dispatch:
+    inputs:
+      base:
+        description: "Base path under which to deploy (defaults to `commit/<SHA>`)"
+        type: string
+        required: false
+
+  workflow_call:
+    inputs:
+      base:
+        description: "Base path under which to deploy (defaults to `commit/<SHA>`)"
+        type: string
+        required: false
+
+jobs:
+  paths:
+    name: Calculate paths
+    runs-on: ubuntu-latest
+
+    outputs:
+      BASE_FOLDER: ${{ steps.base_path.outputs.base_path || '' }}
+      PRESERVE_FOLDERS: ${{ steps.preserve_folders.outputs.result }}
+
+    steps:
+      - name: Print base path # (<inputs.base> or commit/<short_sha>)
+        if: github.ref != 'refs/heads/main'
+        id: base_path
+        run: |
+          echo "base_path=${{ inputs.base || 'commit/${GITHUB_SHA::7}' }}" >> "$GITHUB_OUTPUT"
+
+      - name: Print folders to preserve # (open PRs and "commit/" folder)
+        id: preserve_folders
+        uses: actions/github-script@v7
+        with:
+          result-encoding: string
+          script: |
+            return ['commit', ...((await github.rest.pulls.list({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open'
+            })).data.map(pr => pr.number))].join('\n')
+
+  deploy:
+    name: Deploy to GitHub Pages
+    runs-on: ubuntu-latest
+    needs: paths
+
+    env:
+      BASE_FOLDER: ${{ needs.paths.outputs.BASE_FOLDER }}
+      CLEAN_EXCLUDE: ${{ needs.paths.outputs.PRESERVE_FOLDERS }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v3
+        with:
+          version: 9
+
+      - name: Use Node 22.x
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22.x
+          cache: "pnpm"
+
+      - run: pnpm install
+
+      - name: Build test-app
+        run: pnpm run build
+
+      - name: Deploy build output to gh-pages branch
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages
+          folder: ${{ github.workspace }}/apps/test-app/build/client/${{ env.BASE_FOLDER }}
+          target-folder: ${{ env.BASE_FOLDER }}
+          clean-exclude: ${{ env.CLEAN_EXCLUDE }}
+          git-config-name: github-actions[bot]
+          git-config-email: github-actions[bot]@users.noreply.github.com
+
+      - name: Add deploy preview link under Checks
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.repos.createCommitStatus({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              sha: '${{ github.sha }}',
+              state: 'success',
+              context: 'Deploy preview',
+              description: 'Live preview of the current branch',
+              target_url: '${{ vars.GH_PAGES_URL }}/${{ env.BASE_FOLDER }}/',
+            })
+
+      - name: Print job summary
+        run: echo "Deployed to ${{ vars.GH_PAGES_URL }}/${{ env.BASE_FOLDER }}/" >> "$GITHUB_STEP_SUMMARY"

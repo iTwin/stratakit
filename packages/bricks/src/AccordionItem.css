@@ -29,7 +29,7 @@
 		align-items: center;
 		padding: var(--🥝accordion-item-padding);
 		border-radius: 12px;
-		outline-offset: -4px;
+		--🥝focus-outline-offset: -4px;
 		cursor: pointer;
 
 		/* TODO: improve the layout for the fallback (i.e. content doesn’t align with the label if there’s a decoration) */

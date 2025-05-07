@@ -1,0 +1,1 @@
+import{d as l,e as i}from"./RZ4GPYOB-QZCRIUK7.js";import{f as c,c as m,b as u,_ as p,x as d,r as f}from"./XX67R432-DZtFFR5P.js";import{o as v}from"./chunk-AYJ5UCUI-FV08vo--.js";var C="div",x=m(function(r){var e=r,{store:o}=e,t=p(e,["store"]);const n=l();return o=o||n,t=d(t,a=>v.jsx(i,{value:o,children:a}),[o]),f(t)}),E=c(function(r){const e=x(r);return u(C,e)});export{E as C};

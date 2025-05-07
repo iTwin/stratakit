@@ -7,6 +7,7 @@ export const components = [
 	"Anchor",
 	"Avatar",
 	"Badge",
+	"Banner",
 	"Button",
 	"Checkbox",
 	"Chip",
@@ -27,9 +28,10 @@ export const components = [
 	"Table",
 	"Tabs",
 	"Text",
-	"Textarea",
 	"TextBox",
 	"Toolbar",
 	"Tooltip",
 	"Tree",
 ];
+
+export const compatComponents = ["Anchor", "Text"];

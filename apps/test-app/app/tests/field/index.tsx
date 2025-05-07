@@ -2,14 +2,9 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
+
+import { Checkbox, Field, Radio, Switch, TextBox } from "@stratakit/bricks";
 import { definePage } from "~/~utils.tsx";
-import {
-	Checkbox,
-	Field,
-	TextBox,
-	Radio,
-	Switch,
-} from "@itwin/itwinui-react/bricks";
 
 export const handle = { title: "Field" };
 
@@ -71,7 +66,7 @@ export default definePage(
 
 function VisualTestForTextlikeControls() {
 	return (
-		<div style={{ display: "grid", gap: 16 }}>
+		<div style={{ display: "grid", gap: 16, justifyItems: "start" }}>
 			{/* Default layout for text controls (block) */}
 			<Field.Root>
 				<Field.Label>Text control</Field.Label>
@@ -104,7 +99,7 @@ function VisualTestForTextlikeControls() {
 
 function VisualTestForCheckableControls() {
 	return (
-		<div style={{ display: "grid", gap: 16 }}>
+		<div style={{ display: "grid", gap: 16, justifyItems: "start" }}>
 			{/* Label before control */}
 			<Field.Root>
 				<Field.Label>Checkbox control</Field.Label>

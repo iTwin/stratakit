@@ -2,14 +2,15 @@ packages:
   - packages/*
   - apps/*
   - internal
+  - examples
 
 catalog:
-  react: ^19.0.0
-  react-dom: ^19.0.0
-  typescript: ~5.8.2
-  esbuild: ^0.25.1
-  lightningcss: ^1.29.2
-  "@playwright/test": ~1.51.0
-  "@types/node": ^22.13.10
-  "@types/react": ^19.0.10
-  "@types/react-dom": ^19.0.4
+  react: ^19.1.0
+  react-dom: ^19.1.0
+  typescript: ~5.8.3
+  esbuild: ^0.25.3
+  lightningcss: ^1.29.3
+  "@playwright/test": ~1.52.0
+  "@types/node": ^22.14.1
+  "@types/react": ^19.1.2
+  "@types/react-dom": ^19.1.2

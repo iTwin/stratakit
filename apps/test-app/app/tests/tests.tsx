@@ -2,37 +2,26 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-import globalStyles from "./tests.css?url";
-import {
-	Anchor,
-	IconButton,
-	Text,
-	VisuallyHidden,
-} from "@itwin/itwinui-react/bricks";
-import chevronLeftIcon from "@itwin/itwinui-icons/chevron-left.svg";
-import {
-	Outlet,
-	useMatches,
-	type MetaFunction,
-	type LinksFunction,
-	Link,
-} from "react-router";
+
+import { Anchor, IconButton, Text, VisuallyHidden } from "@stratakit/bricks";
+import * as React from "react";
+import { Link, Outlet, useMatches } from "react-router";
 import {
 	RightSidebar,
 	ThemeSwitcher,
-	useLocalStorage,
 	VariantsListContext,
+	useLocalStorage,
 } from "~/~utils.tsx";
+
+import chevronLeftIcon from "@stratakit/icons/chevron-left.svg";
+
 import styles from "./tests.module.css";
-import * as React from "react";
+
+import type { MetaFunction } from "react-router";
 
 export const meta: MetaFunction = () => {
-	return [{ title: "Kiwi tests" }];
+	return [{ title: "StrataKit tests" }];
 };
-
-export const links: LinksFunction = () => [
-	{ rel: "stylesheet", href: globalStyles },
-];
 
 export default function Page() {
 	const matches = useMatches();
@@ -46,7 +35,7 @@ export default function Page() {
 
 	return (
 		<div className={styles.page}>
-			<main>
+			<main className={styles.main}>
 				<VisuallyHidden render={(props) => <h1 {...props} />}>
 					{title}
 				</VisuallyHidden>
@@ -60,6 +49,7 @@ export default function Page() {
 
 			{showRightSidebar ? (
 				<RightSidebar
+					className={styles.sidebar}
 					header={
 						<>
 							<IconButton

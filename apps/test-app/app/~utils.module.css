@@ -85,9 +85,18 @@
 			border-radius: 9999px;
 			position: absolute;
 			inset-inline-start: calc(var(--indent-guide-left-inset) - 1px); /* Indent guide inset - 1px for centering */
+		}
 
-			@media (forced-colors: active) {
-				background-color: CanvasText;
+		@media (forced-colors: active) {
+			forced-color-adjust: none;
+			background-color: SelectedItem;
+
+			.listItemLink {
+				color: SelectedItemText;
+			}
+
+			&::before {
+				background-color: SelectedItemText;
 			}
 		}
 	}
@@ -95,14 +104,18 @@
 
 .rightSidebar {
 	background-color: var(--ids-color-bg-page-depth);
-	inline-size: min(100vi, 256px);
-	block-size: max(100vb, 100%);
-	overflow-y: auto;
-	border-inline-start: 1px solid var(--ids-color-border-neutral-muted);
+	min-inline-size: min(100vi, 256px);
+	overflow: auto;
 	padding: 8px;
 	display: flex;
 	flex-direction: column;
 	row-gap: 8px;
+	border-inline-start: 1px solid var(--ids-color-border-neutral-muted);
+	border-block-start: 1px solid var(--ids-color-border-neutral-muted);
+
+	/* Hide the border off screen */
+	margin-inline-start: -1px;
+	margin-block-start: -1px;
 }
 
 .rightSidebarHeader {

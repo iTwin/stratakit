@@ -2,28 +2,33 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
+
 import { reactRouter } from "@react-router/dev/vite";
-import { defineConfig, type Plugin, defaultClientConditions } from "vite";
-import type { Config as ReactRouterConfig } from "@react-router/dev/config";
-import tsconfigPaths from "vite-tsconfig-paths";
-import * as lightningcss from "lightningcss";
 import {
 	primitivesTransform,
+	staticVariablesTransform,
 	themeTransform,
 	typographyTokensTransform,
-	staticVariablesTransform,
 	typographyTransform,
-} from "internal/visitors.js";
-import { createRequire } from "node:module";
+} from "internal/lightningcss-visitors.js";
+import * as lightningcss from "lightningcss";
+import {
+	defaultClientConditions,
+	defaultServerConditions,
+	defineConfig,
+} from "vite";
+import tsconfigPaths from "vite-tsconfig-paths";
+
+import type { Config as ReactRouterConfig } from "@react-router/dev/config";
+import type { Plugin } from "vite";
 
 const isDev = process.env.NODE_ENV === "development";
-
-const require = createRequire(import.meta.url);
-const bricksPath = require.resolve("@itwin/itwinui-react/bricks");
 
 const basename = process.env.BASE_FOLDER
 	? `/${process.env.BASE_FOLDER}/`
 	: undefined;
+
+const customConditions = isDev ? ["@stratakit/source"] : [];
 
 // https://reactrouter.com/explanation/special-files#react-routerconfigts
 export const reactRouterConfig = {
@@ -37,7 +42,7 @@ export default defineConfig({
 	plugins: [reactRouter(), tsconfigPaths(), bundleCssPlugin()],
 	build: {
 		assetsInlineLimit: (filePath) => {
-			if (filePath.includes("kiwi-icons/icons")) return false;
+			if (filePath.endsWith(".svg")) return false;
 			return undefined;
 		},
 		assetsDir: process.env.BASE_FOLDER
@@ -46,13 +51,18 @@ export default defineConfig({
 	},
 	server: {
 		port: 1800, // dev server port
+		warmup: { clientFiles: ["./app/root.tsx"] }, // https://github.com/remix-run/react-router/issues/12786#issuecomment-2634033513
 	},
 	preview: {
 		port: 1800, // prod server port
 	},
 	resolve: {
-		alias: { "@itwin/itwinui-react/bricks": bricksPath },
-		conditions: [isDev ? ["@kiwi/source"] : [], defaultClientConditions].flat(),
+		conditions: [customConditions, defaultClientConditions].flat(),
+	},
+	ssr: {
+		resolve: {
+			conditions: [customConditions, defaultServerConditions].flat(),
+		},
 	},
 });
 
@@ -60,7 +70,7 @@ export default defineConfig({
 function bundleCssPlugin() {
 	let isDev = false;
 
-	return <Plugin>{
+	return {
 		name: "bundle-css",
 
 		configResolved({ command }) {
@@ -105,5 +115,5 @@ function bundleCssPlugin() {
 			}
 			return modules;
 		},
-	};
+	} satisfies Plugin;
 }

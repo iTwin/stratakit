@@ -1,6 +1,6 @@
 # Contributing
 
-Welcome to the contribution guide for the iTwinUI design system! In here you will find all the information you need to get started.
+Welcome to the contribution guide for the Strata Design System! In here you will find all the information you need to get started.
 
 ---
 
@@ -60,12 +60,18 @@ This repo uses [Pnpm workspaces](https://pnpm.io/workspaces) to allow multiple p
 
 Packages:
 
-- [`@itwin/itwinui-icons`](./packages/kiwi-icons): A standalone SVG icon library.
-- [`@itwin/itwinui-react`](./packages/kiwi-react): A React component library.
+- [`@stratakit/foundations`](./packages/foundations/): Foundational pieces of StrataKit.
+- [`@stratakit/icons`](./packages/icons/): A standalone SVG icon library.
+- [`@stratakit/bricks`](./packages/bricks/): Small, modular components that can be assembled to create larger, more functional experiences.
+- [`@stratakit/react`](./packages/compat/): A React compatibility layer for using iTwinUI v3 APIs.
 
 Apps:
 
 - [`test-app`](./apps/test-app): A [React Router](https://reactrouter.com/) app for automated and manual testing.
+
+Examples:
+
+- [`examples`](./examples): A private package for storing examples of StrataKit in action.
 
 Also, there’s [an internal package](./internal) which is used for configuration files and common variables for the workspace at large.
 
@@ -101,7 +107,7 @@ If a script is not available in the root package.json or if you need to pass wor
 
 ```
 # passing button as a cli arg to the `test` command in test-app
-pnpm --filter=@itwin/test-app run test button
+pnpm --filter=@stratakit/test-app run test button
 ```
 
 ...or you can simply run the command normally from inside the workspace folder instead of the monorepo root.
@@ -138,6 +144,6 @@ export const Button = forwardRef<"button", ButtonProps>((props, forwardedRef) =>
 
 ## Pull Requests
 
-Before creating a pull request, make sure your changes address a specific issue. Do a search to see if there are any existing issues that are still open. If you don't find one, you can create one.
+Before creating a pull request, make sure your changes address a specific issue. Do a search to see if there are any existing issues that are still open. If you don't find one, you can create one. For user-facing changes, add a [changeset](https://github.com/changesets/changesets/blob/main/docs/adding-a-changeset.md) by running the `pnpm changeset` command.
 
 To enable us to quickly review and accept your pull requests, always create one pull request per issue. Never merge multiple requests in one unless they have the same root cause. Be sure to follow best practices and keep code changes as small as possible. Avoid pure formatting changes or random "fixes" that are unrelated to the linked issue.

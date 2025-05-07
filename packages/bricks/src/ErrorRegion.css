@@ -1,0 +1,171 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+.🥝-error-region {
+	--✨padding: 4px;
+
+	@layer base {
+		position: relative;
+		z-index: 1;
+	}
+
+	@layer states {
+		&:where([data-kiwi-expanded="true"]) {
+			--🥝chevron-down-rotate: -0.5turn;
+			--🥝error-region-header-border-end-radius: 0;
+		}
+
+		&:where([data-kiwi-visible="true"]) {
+			padding-inline: var(--✨padding);
+			padding-block: var(--✨padding);
+
+			block-size: 2.625rem;
+		}
+
+		&:where([data-kiwi-visible="false"]) {
+			--🥝error-region-container-display: none;
+		}
+	}
+}
+
+.🥝-error-region-container {
+	@layer base {
+		isolation: isolate;
+
+		position: relative;
+		display: var(--🥝error-region-container-display, flex);
+		flex-direction: column;
+
+		border: 1px solid var(--ids-color-border-attention-base);
+		border-radius: 8px;
+		background-color: var(--ids-color-bg-elevation-base);
+		box-shadow: var(--ids-shadow-surface-sm);
+
+		@media (prefers-reduced-motion: no-preference) {
+			&::before {
+				content: "";
+				position: absolute;
+				inset: 0;
+				border-radius: inherit;
+				z-index: -1;
+			}
+		}
+	}
+}
+
+.🥝-error-region-header {
+	--✨container-border-radius: 8px;
+	--✨container-border-width: 1px;
+	--✨border-radius: calc(var(--✨container-border-radius) - var(--✨container-border-width));
+
+	@layer base {
+		flex-wrap: wrap;
+		min-block-size: 2rem;
+		padding-inline-start: 8px;
+		padding-inline-end: 4px;
+		font-weight: 400;
+		border-start-start-radius: var(--✨border-radius);
+		border-start-end-radius: var(--✨border-radius);
+		border-end-start-radius: var(--🥝error-region-header-border-end-radius, var(--✨border-radius));
+		border-end-end-radius: var(--🥝error-region-header-border-end-radius, var(--✨border-radius));
+		transition: border-radius 0s linear 150ms; /* Delay border-radius to match dialog transition. */
+	}
+}
+
+.🥝-error-region-icon {
+	@layer base {
+		--🥝icon-color: var(--ids-color-icon-attention-base);
+	}
+}
+
+.🥝-error-region-label {
+	@layer base {
+		flex: 1;
+		text-align: start;
+		max-inline-size: 100%;
+		overflow-wrap: break-word;
+	}
+}
+
+.🥝-error-region-dialog {
+	--✨container-max-size: 350px;
+	--✨container-border-size: 2px;
+	--✨header-size: 2rem;
+
+	@layer base {
+		overflow: hidden;
+		transition: all 150ms linear;
+		transition-property: max-block-size, opacity;
+	}
+
+	@layer states {
+		&:where(:not([data-enter])) {
+			opacity: 0;
+
+			@media (prefers-reduced-motion: no-preference) {
+				max-block-size: 0px;
+			}
+		}
+
+		&:where([data-enter]) {
+			opacity: 1;
+
+			@media (prefers-reduced-motion: no-preference) {
+				max-block-size: calc(
+					var(--✨container-max-size) -
+					var(--✨container-border-size) -
+					var(--✨header-size)
+				);
+
+				@supports (interpolate-size: allow-keywords) {
+					max-block-size: max-content;
+				}
+			}
+		}
+	}
+}
+
+.🥝-error-region-items {
+	--✨container-max-size: 350px;
+	--✨container-border-size: 2px;
+	--✨header-size: 2rem;
+
+	@layer base {
+		border-block-start: 1px solid var(--ids-color-border-page-base);
+
+		overflow: auto;
+		max-block-size: calc(
+			var(--✨container-max-size) -
+			var(--✨container-border-size) -
+			var(--✨header-size)
+		);
+	}
+}
+
+.🥝-error-region-item {
+	--✨container-padding: 8px;
+	--✨icon-size: 1rem;
+	--✨gap: 4px;
+	--✨padding-inline-start: calc(var(--✨container-padding) + var(--✨icon-size) + var(--✨gap));
+	--✨padding-block: calc(4px + 8px);
+
+	@layer base {
+		display: flex;
+		flex-direction: column;
+
+		padding-block: var(--✨padding-block);
+		padding-inline-start: var(--✨padding-inline-start);
+		padding-inline-end: 4px;
+
+		&:where(:not(:nth-child(1 of &))) {
+			border-block-start: 1px solid var(--ids-color-border-page-base);
+		}
+	}
+}
+
+.🥝-error-region-item-actions {
+	@layer base {
+		margin-block-start: 8px;
+	}
+}

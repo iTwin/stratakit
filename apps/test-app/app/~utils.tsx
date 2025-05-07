@@ -2,17 +2,17 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-import styles from "./~utils.module.css";
+
+import { Anchor, IconButton } from "@stratakit/bricks";
+import cx from "classnames";
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import cx from "classnames";
-import { useSearchParams, Link } from "react-router";
-import { Anchor, IconButton } from "@itwin/itwinui-react/bricks";
-import * as ListItem from "../node_modules/@itwin/itwinui-react/src/bricks/~utils.ListItem.tsx";
-import { Role } from "@ariakit/react/role";
+import { Link, useSearchParams } from "react-router";
+import * as ListItem from "../node_modules/@stratakit/bricks/src/~utils.ListItem.tsx";
+import styles from "./~utils.module.css";
 
-import sun from "@itwin/itwinui-icons/sun.svg";
-import moon from "@itwin/itwinui-icons/moon.svg";
+import moon from "@stratakit/icons/moon.svg";
+import sun from "@stratakit/icons/sun.svg";
 
 // ----------------------------------------------------------------------------
 
@@ -265,19 +265,17 @@ export function VariantsList({
 					{...listItemProps}
 				>
 					<ListItem.Content>
-						<Role.span
+						<Anchor
 							render={
 								!variant.isCurrent ? (
-									<Anchor
-										render={<Link to={variant.url} />}
-										className={styles.listItemLink}
-									/>
+									<Link to={variant.url} replace />
 								) : undefined
 							}
 							aria-current={variant.isCurrent ? "page" : "false"}
+							className={styles.listItemLink}
 						>
 							{variant.name}
-						</Role.span>
+						</Anchor>
 					</ListItem.Content>
 				</ListItem.Root>
 			))}

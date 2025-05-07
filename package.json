@@ -3,17 +3,18 @@
 	"private": true,
 	"type": "module",
 	"version": "0.0.0",
-	"description": "Monorepo for the iTwinUI design system",
+	"description": "Monorepo for the Strata Design System",
 	"scripts": {
-		"build": "pnpm --filter=\"./packages/**\" --filter=\"./apps/**\" build",
-		"build:icons": "pnpm --filter=@itwin/itwinui-icons build",
-		"dev": "npm run build:icons && npm run dev:app &",
-		"dev:app": "pnpm --filter=@itwin/test-app dev",
+		"build": "WIREIT_LOGGER=metrics pnpm --filter=\"./apps/**\" build",
+		"dev": "WIREIT_LOGGER=simple pnpm --filter=@stratakit/test-app dev",
 		"format": "biome format .",
-		"lint": "biome lint .",
+		"lint": "biome check --formatter-enabled=false --linter-enabled=true --organize-imports-enabled=true .",
 		"lint:copyright": "tsx internal/copyright-linter.ts",
 		"prettier": "prettier . '!**/*.{js,jsx,ts,tsx,cjs,cts,mjs,mts,css,json,jsonc}' --check",
-		"test": "pnpm --filter=@itwin/test-app test"
+		"test": "pnpm --filter=@stratakit/test-app test --",
+		"changeset": "pnpx @changesets/cli@2.29.2",
+		"changeset:version": "pnpm run changeset version && pnpm format --write",
+		"changeset:publish": "pnpm run build && pnpm run changeset publish"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "1.9.4",
@@ -22,10 +23,11 @@
 		"colorjs.io": "^0.5.2",
 		"fast-glob": "^3.3.3",
 		"internal": "workspace:*",
-		"lefthook": "^1.11.3",
+		"lefthook": "^1.11.11",
 		"prettier": "3.3.3",
 		"tsx": "^4.19.3",
-		"typescript": "catalog:"
+		"typescript": "catalog:",
+		"wireit": "^0.14.12"
 	},
 	"engines": {
 		"node": ">=22.11.0"

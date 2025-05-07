@@ -4,6 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 "use client";
 
+export * as unstable_AccordionItem from "./AccordionItem.js";
 export { Anchor } from "./Anchor.js";
 export { Avatar } from "./Avatar.js";
 export { Badge } from "./Badge.js";

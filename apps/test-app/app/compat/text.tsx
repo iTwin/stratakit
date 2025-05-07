@@ -17,6 +17,8 @@ export default definePage(function Page() {
 			<Text variant="leading">This is a leading</Text>
 			<Text>This is a body</Text>
 			<Text variant="small">This is a small text</Text>
+
+			<Text isSkeleton>This is some skeleton text</Text>
 		</div>
 	);
 });

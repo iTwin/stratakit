@@ -3,7 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import { Text as SkText } from "@stratakit/bricks";
+import { Skeleton as SkSkeleton, Text as SkText } from "@stratakit/bricks";
 import * as React from "react";
 import { useCompatProps } from "./~utils.tsx";
 
@@ -17,15 +17,13 @@ interface TextProps
 	extends Pick<IuiTextProps, "variant" | "isMuted" | "isSkeleton"> {
 	/** NOT IMPLEMENTED. */
 	isMuted?: IuiTextProps["isMuted"];
-	/** NOT IMPLEMENTED. */
-	isSkeleton?: IuiTextProps["isSkeleton"];
 }
 
 export const Text = React.forwardRef((props, forwardedRef) => {
 	const {
 		variant: variantProp,
 		isMuted, // NOT IMPLEMENTED
-		isSkeleton, // NOT IMPLEMENTED
+		isSkeleton,
 		...rest
 	} = useCompatProps(props);
 
@@ -48,6 +46,47 @@ export const Text = React.forwardRef((props, forwardedRef) => {
 		}
 	}, [variantProp]);
 
+	if (isSkeleton) {
+		return <SkeletonText {...rest} variant={variantProp} ref={forwardedRef} />;
+	}
+
 	return <SkText {...rest} variant={variant} ref={forwardedRef} />;
 }) as PolymorphicForwardRefComponent<"div", TextProps>;
 DEV: Text.displayName = "Text";
+
+// ----------------------------------------------------------------------------
+
+const SkeletonText = React.forwardRef((props, forwardedRef) => {
+	const { variant, ...rest } = props;
+
+	const size = React.useMemo(() => {
+		switch (variant) {
+			case "headline":
+				return "xlarge";
+			case "title":
+				return "large";
+			case "subheading":
+				return "medium";
+			case "leading":
+				return "medium";
+			case "body":
+				return "medium";
+			case "small":
+				return "small";
+			default:
+				return "medium";
+		}
+	}, [variant]);
+
+	return (
+		<SkSkeleton
+			aria-hidden="true"
+			inert
+			{...rest}
+			size={size}
+			style={{ width: "fit-content", color: "transparent", ...props.style }}
+			ref={forwardedRef}
+		/>
+	);
+}) as PolymorphicForwardRefComponent<"div", Pick<IuiTextProps, "variant">>;
+DEV: SkeletonText.displayName = "SkeletonText";

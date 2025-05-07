@@ -3,7 +3,7 @@
 	"private": true,
 	"type": "module",
 	"version": "0.0.0",
-	"description": "Monorepo for the Strata Design System",
+	"description": "Monorepo for StrataKit",
 	"scripts": {
 		"build": "WIREIT_LOGGER=metrics pnpm --filter=\"./apps/**\" build",
 		"dev": "WIREIT_LOGGER=simple pnpm --filter=@stratakit/test-app dev",

@@ -20,7 +20,7 @@
 		"./package.json": "./package.json"
 	},
 	"files": ["dist", "CHANGELOG.md", "LICENSE.md"],
-	"description": "Foundational pieces of the Strata Design System",
+	"description": "Foundational pieces of StrataKit",
 	"author": "Bentley Systems",
 	"homepage": "https://github.com/iTwin/design-system",
 	"repository": {

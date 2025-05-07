@@ -1,6 +1,6 @@
 # Contributing
 
-Welcome to the contribution guide for the Strata Design System! In here you will find all the information you need to get started.
+Welcome to the contribution guide for StrataKit! In here you will find all the information you need to get started.
 
 ---
 

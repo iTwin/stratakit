@@ -40,5 +40,6 @@ export const components = {
 		"Divider",
 		"Kbd",
 		"Text",
+		"Tooltip",
 	],
 };

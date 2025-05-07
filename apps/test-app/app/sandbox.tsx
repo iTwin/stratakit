@@ -1078,13 +1078,15 @@ function Subheader({ tabs }: { tabs?: React.ReactNode }) {
 	React.useEffect(() => {
 		const subHeaderContent = subHeaderContentRef.current;
 		if (!subHeaderContent) return;
+		const tabs = tabsRef.current;
+		if (!tabs) return;
 		const ro = new ResizeObserver(() => {
 			setIsOverflowing(
-				!isSearchboxVisible &&
-					subHeaderContent.scrollWidth > subHeaderContent.clientWidth,
+				!isSearchboxVisible && tabs.clientWidth > subHeaderContent.clientWidth,
 			);
 		});
 		ro.observe(subHeaderContent);
+		ro.observe(tabs);
 		return () => {
 			ro.disconnect();
 		};
@@ -1093,6 +1095,7 @@ function Subheader({ tabs }: { tabs?: React.ReactNode }) {
 	return (
 		<div
 			className={styles.subheader}
+			ref={subHeaderContentRef}
 			data-overflow={isOverflowing && !isSearchboxVisible}
 		>
 			<VisuallyHidden aria-live="polite" aria-atomic={true}>
@@ -1100,7 +1103,7 @@ function Subheader({ tabs }: { tabs?: React.ReactNode }) {
 			</VisuallyHidden>
 
 			{tabs && !isSearchboxVisible ? (
-				<div className={styles.subheaderXYZ} ref={subHeaderContentRef}>
+				<div className={styles.subheaderXYZ}>
 					<Tabs.TabList className={styles.tabList} tone="accent" ref={tabsRef}>
 						{tabs}
 					</Tabs.TabList>

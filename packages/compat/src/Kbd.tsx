@@ -10,6 +10,7 @@ import { useCompatProps } from "./~utils.tsx";
 
 import type { PolymorphicForwardRefComponent } from "./~utils.tsx";
 
+/** @see https://itwinui.bentley.com/docs/kbd */
 export const Kbd = React.forwardRef((props, forwardedRef) => {
 	const { children, ...rest } = useCompatProps(props);
 

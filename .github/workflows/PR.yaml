@@ -48,10 +48,12 @@ jobs:
   fix-formatting:
     name: Fix formatting
     runs-on: ubuntu-latest
-    if: github.event.pull_request.user.login == 'dependabot[bot]'
+    if: contains(github.ref_name, 'dependabot/')
 
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref || github.ref_name }}
 
       - uses: pnpm/action-setup@v4
         with:

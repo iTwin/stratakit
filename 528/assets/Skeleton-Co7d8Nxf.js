@@ -1,1 +1,0 @@
-import{o as r}from"./chunk-BAXFHI7N-CFnR9__p.js";import{i as o,l as m,c as n}from"./~utils-ByH4ad1v.js";const l=o((a,e)=>{const{variant:t="text",size:s="medium",...i}=a;return r.jsx(m.div,{...i,ref:e,className:n("🥝-skeleton",a.className),"data-kiwi-variant":t,"data-kiwi-size":s,"aria-hidden":!0})});export{l as S};

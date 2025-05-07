@@ -54,17 +54,6 @@ interface AccordionItemProps extends BaseProps {
  * </AccordionItem.Root>
  * ```
  *
- * Example with a description:
- * ```tsx
- * <AccordionItem.Root>
- * 	 <AccordionItem.Trigger>
- *     <AccordionItem.Label>Label</AccordionItem.Label>
- *     <AccordionItem.Marker />
- *   </AccordionItem.Trigger>
- *   <AccordionItem.Content>Body</AccordionItem.Content>
- * </AccordionItem.Root>
- * ```
- *
  * Example with a decoration:
  * ```tsx
  * <AccordionItem.Root>

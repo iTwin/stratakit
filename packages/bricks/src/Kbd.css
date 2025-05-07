@@ -13,6 +13,7 @@
 		color: var(--ids-color-text-neutral-secondary);
 
 		display: inline-flex;
+		column-gap: 0.25rem;
 		align-items: center;
 		justify-content: center;
 		flex-shrink: 0;

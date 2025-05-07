@@ -2,6 +2,9 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
+
+import { Root } from "@stratakit/foundations";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import * as React from "react";
 import {
 	Links,
@@ -10,11 +13,10 @@ import {
 	Scripts,
 	ScrollRestoration,
 	useMatches,
-	type LinksFunction,
 } from "react-router";
-import { Root } from "@itwin/itwinui-react/bricks";
 import { ColorSchemeProvider, useColorScheme } from "./~utils.tsx";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
+import type { LinksFunction } from "react-router";
 
 const queryClient = new QueryClient({
 	defaultOptions: { queries: { experimental_prefetchInRender: true } }, // https://tanstack.com/query/latest/docs/framework/react/guides/suspense#using-usequerypromise-and-reactuse-experimental
@@ -41,9 +43,11 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 function LayoutInner({ children }: { children: React.ReactNode }) {
+	const preferredColorScheme = useColorScheme();
+
 	// Normally we want the return value of `useColorScheme` which adapts to the system preference,
 	// However, we want to set a static value when testing the `/tests/root/` route.
-	const colorScheme = useIsRootTest() ? "dark light" : useColorScheme();
+	const colorScheme = useIsRootTest() ? "dark light" : preferredColorScheme;
 
 	return (
 		<html lang="en" data-color-scheme={colorScheme}>

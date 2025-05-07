@@ -16,9 +16,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: pnpm/action-setup@v3
+      - uses: pnpm/action-setup@v4
         with:
-          version: 9
+          version: 9.15.4
 
       - name: Use Node 22.x
         uses: actions/setup-node@v4
@@ -36,9 +36,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: pnpm/action-setup@v3
+      - uses: pnpm/action-setup@v4
         with:
-          version: 9
+          version: 9.15.4
 
       - name: Use Node 22.x
         uses: actions/setup-node@v4
@@ -57,9 +57,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: pnpm/action-setup@v3
+      - uses: pnpm/action-setup@v4
         with:
-          version: 9
+          version: 9.15.4
 
       - uses: biomejs/setup-biome@v2
 
@@ -80,6 +80,9 @@ jobs:
       - run: pnpm prettier
         if: ${{ !cancelled() }}
 
+      - run: pnpm --filter=@stratakit/test-app run typecheck
+        if: ${{ !cancelled() }}
+
   build:
     name: Build test app
     needs: install
@@ -91,9 +94,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: pnpm/action-setup@v3
+      - uses: pnpm/action-setup@v4
         with:
-          version: 9
+          version: 9.15.4
 
       - name: Use Node 22.x
         uses: actions/setup-node@v4
@@ -115,7 +118,7 @@ jobs:
     needs: install
     runs-on: ubuntu-latest
     container:
-      image: mcr.microsoft.com/playwright:v1.51.0-noble
+      image: mcr.microsoft.com/playwright:v1.52.0-noble
     strategy:
       fail-fast: false
       matrix:
@@ -124,13 +127,19 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: pnpm/action-setup@v3
+      - uses: pnpm/action-setup@v4
         with:
-          version: 9
+          version: 9.15.4
 
       - run: pnpm install
       - run: pnpm run build
-      - run: pnpm --filter=@itwin/test-app exec playwright test --shard=${{ matrix.shard }}
+
+      - name: Run playwright tests (${{ matrix.shard }})
+        uses: nick-fields/retry@v3
+        with:
+          timeout_minutes: 10
+          max_attempts: 2
+          command: pnpm --filter=@stratakit/test-app exec playwright test --shard=${{ matrix.shard }}
         env:
           HOME: /root
 

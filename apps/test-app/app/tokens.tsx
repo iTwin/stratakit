@@ -2,18 +2,21 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-import globalStyles from "./tokens.css?url";
+
 import * as Disclosure from "@ariakit/react/disclosure";
-import type * as React from "react";
-import type { MetaFunction, LinksFunction } from "react-router";
-import { Button, Divider, Icon, Text } from "@itwin/itwinui-react/bricks";
-import { parseTokens } from "internal/visitors.js";
-import rawLightTokens from "internal/theme-light.json";
+import { Button, Divider, Text } from "@stratakit/bricks";
+import { Icon } from "@stratakit/foundations";
+import { parseTokens } from "internal/lightningcss-visitors.js";
 import rawDarkTokens from "internal/theme-dark.json";
+import rawLightTokens from "internal/theme-light.json";
 import rawTypographyTokens from "internal/typography.json";
-import styles from "./tokens.module.css";
 import { useColorScheme } from "~/~utils.tsx";
+import globalStyles from "./tokens.css?url";
+import styles from "./tokens.module.css";
 import { Table } from "./~utils.tsx";
+
+import type * as React from "react";
+import type { LinksFunction, MetaFunction } from "react-router";
 
 const lightColorTokens = parseTokens(rawLightTokens.color);
 const lightShadowTokens = parseTokens(rawLightTokens.shadow);
@@ -34,7 +37,7 @@ const categories = {
 } as const;
 
 export const meta: MetaFunction = () => {
-	return [{ title: "Kiwi tokens" }];
+	return [{ title: "StrataKit tokens" }];
 };
 
 export const links: LinksFunction = () => [

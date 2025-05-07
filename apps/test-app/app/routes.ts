@@ -2,9 +2,11 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-import { type RouteConfig, route, index } from "@react-router/dev/routes";
-import { components } from "./components.ts";
-import { toKebabCase } from "./~utils.tsx";
+
+import { index, layout, prefix, route } from "@react-router/dev/routes";
+import { compatComponents, components } from "./components.ts";
+
+import type { RouteConfig } from "@react-router/dev/routes";
 
 export default [
 	index("./index.tsx"),
@@ -22,4 +24,20 @@ export default [
 			),
 		),
 	),
+
+	...prefix("compat", [
+		index("./compat/index.tsx"),
+		layout(
+			"./compat/compat.tsx",
+			compatComponents.map((component) =>
+				route(toKebabCase(component), `./compat/${toKebabCase(component)}.tsx`),
+			),
+		),
+	]),
 ] satisfies RouteConfig;
+
+// ----------------------------------------------------------------------------
+
+function toKebabCase(str: string) {
+	return str.replace(/([a-z])([A-Z])/g, "$1-$2").toLowerCase();
+}

@@ -2,12 +2,10 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-import {
-	defineConfig,
-	devices,
-	test as base,
-	type Page,
-} from "@playwright/test";
+
+import { test as base, defineConfig, devices } from "@playwright/test";
+
+import type { Page } from "@playwright/test";
 
 /** See https://playwright.dev/docs/test-configuration. */
 export default defineConfig({
@@ -17,6 +15,8 @@ export default defineConfig({
 	forbidOnly: !!process.env.CI,
 	/* Retry on CI only */
 	retries: process.env.CI ? 2 : 0,
+	/* Fail fast in CI */
+	maxFailures: process.env.CI ? 3 : undefined,
 	/* Opt out of parallel tests on CI. */
 	workers: process.env.CI ? 1 : undefined,
 	/* Reporter to use. See https://playwright.dev/docs/test-reporters */
@@ -72,7 +72,7 @@ export default defineConfig({
 	webServer: {
 		command: "pnpm preview",
 		url: "http://localhost:1800",
-		reuseExistingServer: !process.env.CI,
+		reuseExistingServer: true,
 	},
 
 	expect: {

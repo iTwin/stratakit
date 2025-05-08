@@ -14,6 +14,7 @@ import {
 	ScrollRestoration,
 	useMatches,
 } from "react-router";
+import manifestUrl from "./manifest.json?url";
 import { ColorSchemeProvider, useColorScheme } from "./~utils.tsx";
 
 import type { LinksFunction } from "react-router";
@@ -31,6 +32,7 @@ export const links: LinksFunction = () => {
 		},
 		{ rel: "preconnect", href: "https://rsms.me/" },
 		{ rel: "stylesheet", href: "https://rsms.me/inter/inter.css" },
+		{ rel: "manifest", href: manifestUrl },
 	];
 };
 

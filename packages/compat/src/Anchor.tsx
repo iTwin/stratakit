@@ -19,6 +19,7 @@ interface AnchorProps extends Pick<IuiAnchorProps, "isExternal" | "underline"> {
 	underline?: IuiAnchorProps["underline"];
 }
 
+/** @see https://itwinui.bentley.com/docs/anchor */
 export const Anchor = React.forwardRef((props, forwardedRef) => {
 	const {
 		underline, // NOT IMPLEMENTED

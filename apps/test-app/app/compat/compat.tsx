@@ -9,7 +9,7 @@ import type { MetaFunction } from "react-router";
 import styles from "./compat.module.css";
 
 export const meta: MetaFunction = () => {
-	return [{ title: "Stratakit compat" }];
+	return [{ title: "StrataKit compat" }];
 };
 
 export default function Page() {

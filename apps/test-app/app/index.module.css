@@ -8,6 +8,7 @@
 
 .list {
 	padding-block: 0.5rem;
+	list-style-type: "";
 }
 
 .hgroup {

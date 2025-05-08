@@ -7,8 +7,10 @@
 export { Anchor } from "./Anchor.js";
 export { Checkbox } from "./Checkbox.js";
 export { Divider } from "./Divider.js";
+export { Input } from "./Input.js";
 export { Kbd, KbdKeys } from "./Kbd.js";
 export { Label } from "./Label.js";
+export { LabeledInput } from "./LabeledInput.js";
 export { MenuItem } from "./MenuItem.js";
 export { ProgressLinear } from "./ProgressLinear.js";
 export { ProgressRadial } from "./ProgressRadial.js";

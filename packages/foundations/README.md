@@ -1,6 +1,6 @@
 # @stratakit/foundations
 
-Foundational pieces of the Strata Design System.
+Foundational pieces of StrataKit.
 
 This package includes:
 

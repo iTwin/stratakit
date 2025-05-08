@@ -1,6 +1,6 @@
 # @stratakit/icons
 
-Standalone `.svg` icons for the Strata Design System.
+Standalone `.svg` icons for StrataKit.
 
 Each icon is available as an SVG symbol sprite and contains multiple resolutions of the same icon using [`<symbol>`](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/symbol) elements. This allows the icon to be used at different sizes with increasing detail and quality.
 
@@ -8,6 +8,18 @@ Currently supported symbols as identified by their `id` attribute values are:
 
 - `icon`
 - `icon-large`
+
+## Installation
+
+Using your package manager of choice, install the latest version of [`@stratakit/icons`](https://www.npmjs.com/package/@stratakit/icons?activeTab=versions).
+
+```console
+npm add @stratakit/icons
+```
+
+> [!NOTE]
+>
+> As `@stratakit/icons` requires [bundler configuration](#bundler-configuration), consider making it a _peer_ dependency if you're building a package that uses `@stratakit/icons`.
 
 ## Usage
 

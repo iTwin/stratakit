@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.1.1
+
+- [#528](https://github.com/iTwin/design-system/pull/528): Added new `unstable_AccordionItem` component for showing/hiding content.
+- [#484](https://github.com/iTwin/design-system/pull/484): Added new `unstable_Banner` component for highlighting information.
+- [#678](https://github.com/iTwin/design-system/pull/678): Added new `placement` prop to `Tooltip`.
+- [#639](https://github.com/iTwin/design-system/pull/639): Improved live regions in `unstable_ErrorRegion` component. Live region announcements will only be made when a new item is added.
+- Styling changes
+  - [#676](https://github.com/iTwin/design-system/pull/676): Added a small gap between `Kbd`'s children for better spacing.
+  - [#659](https://github.com/iTwin/design-system/pull/659): Fixed responsive design issues in `unstable_ErrorRegion` (again).
+- Updated dependencies:
+  - @stratakit/foundations@0.1.1
+
 ## @stratakit/bricks@0.1.0
 
 - **breaking**: Package name changed to `@stratakit/bricks`.

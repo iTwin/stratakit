@@ -60,7 +60,7 @@ interface RootProps extends BaseProps {
 	 *
 	 * Example:
 	 * ```tsx
-	 * unstablized_htmlSanitizer={DOMPurify.sanitize}
+	 * unstable_htmlSanitizer={DOMPurify.sanitize}
 	 * ```
 	 */
 	unstable_htmlSanitizer?: (html: string) => string;

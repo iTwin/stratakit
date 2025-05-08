@@ -21,6 +21,7 @@ interface TextProps
 	isSkeleton?: IuiTextProps["isSkeleton"];
 }
 
+/** @see https://itwinui.bentley.com/docs/text  */
 export const Text = React.forwardRef((props, forwardedRef) => {
 	const {
 		variant: variantProp,

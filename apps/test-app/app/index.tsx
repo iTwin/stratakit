@@ -79,7 +79,7 @@ export default function Index() {
 			<ul className={styles.list}>
 				{components.compat.map((component) => (
 					<li key={component}>
-						<Anchor render={<Link to={`/tests/${toKebabCase(component)}`} />}>
+						<Anchor render={<Link to={`/compat/${toKebabCase(component)}`} />}>
 							{component}
 						</Anchor>
 					</li>

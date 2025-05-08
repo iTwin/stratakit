@@ -341,6 +341,14 @@ function PanelContent(props: {
 		[data],
 	);
 
+	const tabs = trees.map((tree) => (
+		<Tabs.Tab key={tree.name} id={tree.name}>
+			{toUpperCamelCase(tree.name)}
+		</Tabs.Tab>
+	));
+
+	const [isSearchboxVisible, setIsSearchboxVisible] = React.useState(!tabs);
+
 	const [selectedTreeId, setSelectedTreeId] = React.useState<
 		string | undefined | null
 	>(trees[0]?.name);
@@ -353,7 +361,10 @@ function PanelContent(props: {
 	if (trees.length === 1)
 		return (
 			<TreeFilteringProvider allFilters={allFilters}>
-				<Subheader />
+				<Subheader
+					isSearchboxVisible={isSearchboxVisible}
+					setIsSearchboxVisible={setIsSearchboxVisible}
+				/>
 				{trees[0].content}
 			</TreeFilteringProvider>
 		);
@@ -362,15 +373,14 @@ function PanelContent(props: {
 		<TreeFilteringProvider allFilters={allFilters}>
 			<Tabs.Root selectOnMove={false} setSelectedId={setSelectedTreeId}>
 				<Subheader
-					tabs={trees.map((tree) => (
-						<Tabs.Tab key={tree.name} id={tree.name}>
-							{toUpperCamelCase(tree.name)}
-						</Tabs.Tab>
-					))}
+					isSearchboxVisible={isSearchboxVisible}
+					setIsSearchboxVisible={setIsSearchboxVisible}
+					tabs={tabs}
 				/>
 				{trees.map((tree) => {
 					return (
 						<Tabs.TabPanel
+							role={isSearchboxVisible ? "group" : "tabpanel"}
 							key={tree.name}
 							tabId={tree.name}
 							className={styles.tabPanel}
@@ -1026,14 +1036,21 @@ function VisibilityAction({ item, onClick }: VisibilityActionProps) {
 	);
 }
 
-function Subheader({ tabs }: { tabs?: React.ReactNode }) {
+function Subheader({
+	isSearchboxVisible,
+	setIsSearchboxVisible,
+	tabs,
+}: {
+	isSearchboxVisible: boolean;
+	setIsSearchboxVisible: (isSearchboxVisible: boolean) => void;
+	tabs?: React.ReactNode;
+}) {
 	const { itemCount, isFiltered, search, setSearch } =
 		React.useContext(TreeFilteringContext);
 
 	const searchInputRef = React.useRef<HTMLInputElement>(null);
 	const tabsRef = React.useRef<HTMLHeadingElement>(null);
 
-	const [isSearchboxVisible, setIsSearchboxVisible] = React.useState(!tabs);
 	const filterOrSearchActive = isFiltered || !!search;
 
 	const actions = isSearchboxVisible ? (

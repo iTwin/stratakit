@@ -91,7 +91,7 @@ export default function Page() {
 
 			<h2>Shadows</h2>
 
-			<AccordionItem.Root defaultOpen={true}>
+			<AccordionItem.Root defaultOpen>
 				<AccordionItem.Trigger>
 					<AccordionItem.Label>All shadows</AccordionItem.Label>
 					<AccordionItem.Marker />
@@ -106,7 +106,7 @@ export default function Page() {
 
 			<h2>Typography</h2>
 
-			<AccordionItem.Root defaultOpen={true}>
+			<AccordionItem.Root defaultOpen>
 				<AccordionItem.Trigger>
 					<AccordionItem.Label>All typography variants</AccordionItem.Label>
 					<AccordionItem.Marker />

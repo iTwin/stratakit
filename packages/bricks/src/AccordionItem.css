@@ -17,6 +17,7 @@
 			decoration-after-start] auto [decoration-after-end];
 		grid-template-rows: [trigger-start] auto [trigger-end content-start] auto [content-end];
 		border-block-end: 1px solid var(--ids-color-border-neutral-muted);
+		scrollbar-gutter: stable;
 	}
 }
 

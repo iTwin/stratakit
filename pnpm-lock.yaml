@@ -209,7 +209,7 @@ importers:
         specifier: ^3.18.1
         version: 3.18.1(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       "@stratakit/bricks":
-        specifier: ^0.1.0
+        specifier: ^0.1.1
         version: link:../bricks
     devDependencies:
       "@stratakit/foundations":

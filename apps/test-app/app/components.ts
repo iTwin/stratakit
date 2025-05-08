@@ -4,6 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 export const components = [
 	"Root",
+	"AccordionItem",
 	"Anchor",
 	"Avatar",
 	"Badge",

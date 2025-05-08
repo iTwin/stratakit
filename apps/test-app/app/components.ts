@@ -6,6 +6,7 @@ export const components = {
 	foundations: ["Root", "Icon"],
 	bricks: [
 		"Anchor",
+		"AccordionItem",
 		"Avatar",
 		"Badge",
 		"Banner",
@@ -37,7 +38,7 @@ export const components = {
 		"Anchor",
 
 		"Divider",
-    "Kbd",
+		"Kbd",
 		"Text",
 	],
 };

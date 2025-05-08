@@ -68,6 +68,7 @@
 .🥝-accordion-item-label:is(.🥝-text) {
 	@layer base {
 		grid-column: content;
+		font-weight: 500;
 		hyphens: auto;
 		overflow-wrap: break-word;
 		text-box: cap alphabetic;

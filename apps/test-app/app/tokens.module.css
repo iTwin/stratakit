@@ -2,27 +2,6 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-.disclosureWrapper {
-	display: flex;
-	flex-direction: column;
-	align-items: flex-start;
-	gap: 0.25rem;
-	padding-block: 0.5rem;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-	.disclosureIcon {
-		transition-property: transform, color;
-	}
-}
-
-.disclosureButton {
-	font-size: var(--ids-font-size-16);
-}
-
-.disclosureButton[aria-expanded="false"] .disclosureIcon {
-	transform: rotate(-90deg);
-}
 
 .swatch {
 	--_swatch-size: 3rem;

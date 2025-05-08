@@ -3,9 +3,12 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import * as Disclosure from "@ariakit/react/disclosure";
-import { Button, Divider, Table, Text } from "@stratakit/bricks";
-import { Icon } from "@stratakit/foundations";
+import {
+	unstable_AccordionItem as AccordionItem,
+	Divider,
+	Table,
+	Text,
+} from "@stratakit/bricks";
 import { parseTokens } from "internal/lightningcss-visitors.js";
 import rawDarkTokens from "internal/theme-dark.json";
 import rawLightTokens from "internal/theme-light.json";
@@ -71,24 +74,16 @@ export default function Page() {
 				});
 
 				return (
-					<Disclosure.DisclosureProvider key={key} defaultOpen={true}>
-						<div className={styles.disclosureWrapper}>
-							<Disclosure.Disclosure
-								render={<Button variant="ghost" />}
-								className={styles.disclosureButton}
-							>
-								<Icon
-									render={<ArrowIcon />}
-									className={styles.disclosureIcon}
-								/>
-								{value}
-							</Disclosure.Disclosure>
+					<AccordionItem.Root key={key} defaultOpen={true}>
+						<AccordionItem.Trigger>
+							<AccordionItem.Label>{value}</AccordionItem.Label>
+							<AccordionItem.Marker />
+						</AccordionItem.Trigger>
 
-							<Disclosure.DisclosureContent>
-								<Tokens tokens={relevantTokens} kind="color" />
-							</Disclosure.DisclosureContent>
-						</div>
-					</Disclosure.DisclosureProvider>
+						<AccordionItem.Content>
+							<Tokens tokens={relevantTokens} kind="color" />
+						</AccordionItem.Content>
+					</AccordionItem.Root>
 				);
 			})}
 
@@ -96,41 +91,31 @@ export default function Page() {
 
 			<h2>Shadows</h2>
 
-			<Disclosure.DisclosureProvider defaultOpen={true}>
-				<div className={styles.disclosureWrapper}>
-					<Disclosure.Disclosure
-						render={<Button variant="ghost" />}
-						className={styles.disclosureButton}
-					>
-						<Icon render={<ArrowIcon />} className={styles.disclosureIcon} />
-						All shadows
-					</Disclosure.Disclosure>
+			<AccordionItem.Root defaultOpen={true}>
+				<AccordionItem.Trigger>
+					<AccordionItem.Label>All shadows</AccordionItem.Label>
+					<AccordionItem.Marker />
+				</AccordionItem.Trigger>
 
-					<Disclosure.DisclosureContent>
-						<Tokens tokens={[...shadowTokens.keys()]} kind="shadow" />
-					</Disclosure.DisclosureContent>
-				</div>
-			</Disclosure.DisclosureProvider>
+				<AccordionItem.Content>
+					<Tokens tokens={[...shadowTokens.keys()]} kind="shadow" />
+				</AccordionItem.Content>
+			</AccordionItem.Root>
 
 			<Divider />
 
 			<h2>Typography</h2>
 
-			<Disclosure.DisclosureProvider defaultOpen={true}>
-				<div className={styles.disclosureWrapper}>
-					<Disclosure.Disclosure
-						render={<Button variant="ghost" />}
-						className={styles.disclosureButton}
-					>
-						<Icon render={<ArrowIcon />} className={styles.disclosureIcon} />
-						All typography variants
-					</Disclosure.Disclosure>
+			<AccordionItem.Root defaultOpen={true}>
+				<AccordionItem.Trigger>
+					<AccordionItem.Label>All typography variants</AccordionItem.Label>
+					<AccordionItem.Marker />
+				</AccordionItem.Trigger>
 
-					<Disclosure.DisclosureContent>
-						<TypographyVariants variants={typographyVariants} />
-					</Disclosure.DisclosureContent>
-				</div>
-			</Disclosure.DisclosureProvider>
+				<AccordionItem.Content>
+					<TypographyVariants variants={typographyVariants} />
+				</AccordionItem.Content>
+			</AccordionItem.Root>
 		</>
 	);
 }
@@ -217,17 +202,4 @@ function Swatch({
 	};
 
 	return <div className={styles.swatch} style={style as React.CSSProperties} />;
-}
-
-function ArrowIcon(props: React.ComponentProps<"svg">) {
-	return (
-		<svg viewBox="0 0 16 16" fill="none" aria-hidden="true" {...props}>
-			<path
-				fill="currentColor"
-				fillRule="evenodd"
-				d="M4.646 6.646a.5.5 0 0 1 .708 0L8 9.293l2.646-2.647a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 0 1 0-.708Z"
-				clipRule="evenodd"
-			/>
-		</svg>
-	);
 }

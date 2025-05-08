@@ -74,7 +74,7 @@ export default function Page() {
 				});
 
 				return (
-					<AccordionItem.Root key={key} defaultOpen={true}>
+					<AccordionItem.Root key={key} defaultOpen>
 						<AccordionItem.Trigger>
 							<AccordionItem.Label>{value}</AccordionItem.Label>
 							<AccordionItem.Marker />

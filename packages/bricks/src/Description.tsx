@@ -29,7 +29,7 @@ export const Description = forwardRef<"div", DescriptionProps>(
 		return (
 			<Text
 				{...rest}
-				variant="caption-md"
+				variant="caption-lg"
 				data-kiwi-tone={tone ?? "neutral"}
 				className={cx("🥝-description", props.className)}
 				ref={forwardedRef}

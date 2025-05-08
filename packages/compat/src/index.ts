@@ -2,4 +2,9 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-export const greet = () => "Hello, world!";
+"use client";
+
+export { Anchor } from "./Anchor.js";
+export { Divider } from "./Divider.js";
+export { Kbd, KbdKeys } from "./Kbd.js";
+export { Text } from "./Text.js";

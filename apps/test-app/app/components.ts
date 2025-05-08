@@ -4,9 +4,11 @@
  *--------------------------------------------------------------------------------------------*/
 export const components = [
 	"Root",
+	"AccordionItem",
 	"Anchor",
 	"Avatar",
 	"Badge",
+	"Banner",
 	"Button",
 	"Checkbox",
 	"Chip",
@@ -32,3 +34,5 @@ export const components = [
 	"Tooltip",
 	"Tree",
 ];
+
+export const compatComponents = ["Anchor", "Divider", "Kbd", "Text"];

@@ -10,7 +10,7 @@
 		"./*": "./*"
 	},
 	"files": ["CHANGELOG.md", "LICENSE.md"],
-	"description": "A React component library for the Strata Design System",
+	"description": "A React component library for StrataKit",
 	"author": "Bentley Systems",
 	"homepage": "https://github.com/iTwin/design-system",
 	"repository": {
@@ -33,7 +33,7 @@
 	],
 	"scripts": {},
 	"dependencies": {
-		"@itwin/itwinui-react": "^3.18.0",
+		"@itwin/itwinui-react": "^3.18.1",
 		"@stratakit/bricks": "^0.1.0"
 	},
 	"devDependencies": {

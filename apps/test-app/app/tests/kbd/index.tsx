@@ -12,18 +12,39 @@ export default definePage(
 	function Page() {
 		return <Kbd variant={"muted"}>Ctrl</Kbd>;
 	},
-	{ visual: VisualTest, symbols: SymbolsTest },
+	{
+		visual: VisualTest,
+		symbols: SymbolsTest,
+		symbolWithChildren: SymbolWithChildrenTest,
+	},
 );
 
 function VisualTest() {
 	const variants = ["solid", "muted", "ghost"] as const;
 
 	return (
-		<div style={{ display: "grid", gap: 4 }}>
+		<div style={{ display: "grid", gap: 4, justifyItems: "start" }}>
+			{/* symbol */}
 			{variants.map((variant) => (
-				<div key={variant} style={{ display: "flex", gap: 4 }}>
-					<Kbd variant={variant}>Ctrl</Kbd>
-				</div>
+				<Kbd key={variant} variant={variant} symbol="Shift" />
+			))}
+
+			<br />
+
+			{/* children */}
+			{variants.map((variant) => (
+				<Kbd key={variant} variant={variant}>
+					A
+				</Kbd>
+			))}
+
+			<br />
+
+			{/* symbol + children */}
+			{variants.map((variant) => (
+				<Kbd key={variant} symbol="Shift" variant={variant}>
+					Shift
+				</Kbd>
 			))}
 		</div>
 	);
@@ -52,6 +73,19 @@ function SymbolsTest() {
 			{symbols.map((symbol) => (
 				<Kbd key={symbol} symbol={symbol} variant="ghost" />
 			))}
+		</div>
+	);
+}
+
+function SymbolWithChildrenTest() {
+	return (
+		<div style={{ display: "inline-grid", justifyItems: "start", gap: 4 }}>
+			<Kbd symbol="Command">Command</Kbd>
+			<Kbd symbol="Shift">Shift</Kbd>
+			<Kbd symbol="Backspace">Backspace</Kbd>
+			<Kbd symbol="Enter">Enter</Kbd>
+			<Kbd symbol="Eject">Eject</Kbd>
+			<Kbd symbol="Option">Option</Kbd>
 		</div>
 	);
 }

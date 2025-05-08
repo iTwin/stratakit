@@ -1,6 +1,6 @@
 # @stratakit/bricks
 
-Small, modular components the Strata Design System.
+Small, modular components for StrataKit.
 
 Bricks can be assembled to create larger, more functional experiences.
 

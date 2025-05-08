@@ -34,6 +34,9 @@ export default function Index() {
 				<li>
 					<Anchor render={<Link to="/icons" />}>Icons</Anchor>
 				</li>
+				<li>
+					<Anchor render={<Link to="/compat" />}>Compatibility</Anchor>
+				</li>
 			</ul>
 
 			<ul className={styles.list}>

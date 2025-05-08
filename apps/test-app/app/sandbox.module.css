@@ -232,10 +232,6 @@
 
 	display: flex;
 	flex-direction: column;
-
-	&:not([data-open]) {
-		display: none !important;
-	}
 }
 
 .tree {

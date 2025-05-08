@@ -329,11 +329,7 @@ function PanelContent(props: {
 					filters,
 					content:
 						treeData.length > 0 ? (
-							<TabPanelContainer
-								name={treeName}
-								data={treeData}
-								length={Object.entries(data).length}
-							/>
+							<SandboxTree data={treeData} />
 						) : (
 							<EmptyState>
 								<Text variant="body-sm">No layers</Text>
@@ -374,7 +370,15 @@ function PanelContent(props: {
 				/>
 				{trees.map((tree) => {
 					return (
-						<React.Fragment key={tree.name}>{tree.content}</React.Fragment>
+						<Tabs.TabPanel
+							key={tree.name}
+							tabId={tree.name}
+							className={styles.tabPanel}
+							focusable={false}
+							unmountOnHide
+						>
+							{tree.content}
+						</Tabs.TabPanel>
 					);
 				})}
 			</Tabs.Root>
@@ -826,26 +830,64 @@ function findTreeItem<T extends Pick<TreeItem, "id"> & { items: T[] }>(
 }
 
 function SandboxTree({
-	deferredItems,
-	selected,
-	errorMessage,
-	errorItems,
-	setSelected,
-	toggleFailingIds,
-	onExpandedChange,
-	toggleHidden,
+	data: treeData,
 }: {
-	deferredItems: FlatTreeItem[];
-	selected: string | undefined;
-	errorMessage: string | undefined;
-	errorItems: TreeItem[];
-	setSelected: (selected: string | undefined) => void;
-	toggleFailingIds: (item: TreeItem) => void;
-	onExpandedChange: (expanded: boolean, item: FlatTreeItem) => void;
-	toggleHidden: (id: string) => void;
+	data: TreeItemData[];
 }) {
+	const {
+		appliedFilters: filters,
+		search,
+		setItemCount,
+	} = React.useContext(TreeFilteringContext);
 	const treeId = React.useId();
+	const [selected, setSelected] = React.useState<string | undefined>();
+	const [hidden, setHidden] = React.useState<string[]>([]);
+	const toggleHidden = React.useCallback((id: string) => {
+		setHidden((prev) => {
+			if (prev.includes(id)) {
+				return prev.filter((i) => i !== id);
+			}
+			return [...prev, id];
+		});
+	}, []);
+
+	const [items, setItems] = React.useState(() =>
+		treeData.map((item) => createTreeItem(item)),
+	);
+
+	const [failingIds, setFailingIds] = React.useState(["benstr", "benroad"]);
+	const failingItems = useTreeItems(items, failingIds);
+	const errorItems = React.useMemo(() => {
+		return failingItems.filter((item) => item.expanded);
+	}, [failingItems]);
+	const errorIds = React.useMemo(
+		() => errorItems.map((item) => item.id),
+		[errorItems],
+	);
+
+	const { filteredTree, itemCount } = useFilteredTree({
+		items,
+		filters,
+		search,
+		errorIds,
+	});
+
+	const flatItems = useFlatTreeItems(filteredTree, selected, hidden);
+
+	React.useEffect(() => {
+		setItemCount(itemCount);
+	}, [setItemCount, itemCount]);
+
+	const errorLength = errorItems.length;
+	const errorMessage = React.useMemo(() => {
+		if (errorLength === 0) return undefined;
+		if (errorLength === 1) return "1 issue found";
+		return `${errorLength} issues found`;
+	}, [errorLength]);
+
+	const deferredItems = React.useDeferredValue(flatItems);
 	if (deferredItems.length === 0) return <NoResultsState />;
+
 	return (
 		<React.Suspense fallback="Loading...">
 			<ErrorRegion.Root
@@ -868,7 +910,9 @@ function SandboxTree({
 									render={<button />}
 									key="retry"
 									onClick={() => {
-										toggleFailingIds(item);
+										setFailingIds((prev) => {
+											return prev.filter((id) => id !== item.id);
+										});
 									}}
 								>
 									Retry
@@ -905,7 +949,13 @@ function SandboxTree({
 								item.items.length === 0 && !hasError ? undefined : item.expanded
 							}
 							onExpandedChange={(expanded) => {
-								onExpandedChange(expanded, item);
+								setItems(
+									produce((prev) => {
+										const treeItem = findTreeItem(prev, item.id);
+										if (!treeItem) return;
+										treeItem.expanded = expanded;
+									}),
+								);
 							}}
 							unstable_decorations={
 								<>
@@ -922,7 +972,9 @@ function SandboxTree({
 										icon={retryIcon}
 										label="Retry"
 										onClick={() => {
-											toggleFailingIds(item);
+											setFailingIds((prev) => {
+												return prev.filter((id) => id !== item.id);
+											});
 										}}
 									/>
 								) : null,
@@ -954,126 +1006,6 @@ function SandboxTree({
 	);
 }
 
-function TabPanelContainer({
-	name: treeName,
-	data: treeData,
-	length,
-}: {
-	name: string;
-	data: TreeItemData[];
-	length: number;
-}) {
-	const {
-		appliedFilters: filters,
-		search,
-		setItemCount,
-		isSearchboxVisible,
-	} = React.useContext(TreeFilteringContext);
-	const [selected, setSelected] = React.useState<string | undefined>();
-	const [hidden, setHidden] = React.useState<string[]>([]);
-	const toggleHidden = React.useCallback((id: string) => {
-		setHidden((prev) => {
-			if (prev.includes(id)) {
-				return prev.filter((i) => i !== id);
-			}
-			return [...prev, id];
-		});
-	}, []);
-
-	const [items, setItems] = React.useState(() =>
-		treeData.map((item) => createTreeItem(item)),
-	);
-
-	const onExpandedChange = React.useCallback(
-		(expanded: boolean, item: FlatTreeItem) => {
-			setItems(
-				produce((prev) => {
-					const treeItem = findTreeItem(prev, item.id);
-					if (!treeItem) return;
-					treeItem.expanded = expanded;
-				}),
-			);
-		},
-		[],
-	);
-
-	const [failingIds, setFailingIds] = React.useState(["benstr", "benroad"]);
-	const failingItems = useTreeItems(items, failingIds);
-	const errorItems = React.useMemo(() => {
-		return failingItems.filter((item) => item.expanded);
-	}, [failingItems]);
-	const errorIds = React.useMemo(
-		() => errorItems.map((item) => item.id),
-		[errorItems],
-	);
-
-	const toggleFailingIds = React.useCallback((item: TreeItem) => {
-		setFailingIds((prev) => {
-			return prev.filter((id) => id !== item.id);
-		});
-	}, []);
-
-	const { filteredTree, itemCount } = useFilteredTree({
-		items,
-		filters,
-		search,
-		errorIds,
-	});
-
-	const flatItems = useFlatTreeItems(filteredTree, selected, hidden);
-
-	React.useEffect(() => {
-		setItemCount(itemCount);
-	}, [setItemCount, itemCount]);
-
-	const errorLength = errorItems.length;
-	const errorMessage = React.useMemo(() => {
-		if (errorLength === 0) return undefined;
-		if (errorLength === 1) return "1 issue found";
-		return `${errorLength} issues found`;
-	}, [errorLength]);
-
-	const panelRef = React.useRef<HTMLDivElement>(null);
-	const deferredItems = React.useDeferredValue(flatItems);
-	const Element = !isSearchboxVisible && length > 1 ? Tabs.TabPanel : "div";
-
-	const tabPanelProps = React.useMemo(
-		() => ({ tabId: treeName, unmountOnHide: true }),
-		[treeName],
-	);
-
-	const nonTabPanelProps = React.useMemo(
-		() => ({
-			...(((isSearchboxVisible && panelRef?.current?.dataset.open) ||
-				length === 1) && {
-				"data-open": true,
-			}),
-		}),
-		[length, isSearchboxVisible],
-	);
-
-	return (
-		<Element
-			key={treeName}
-			className={styles.tabPanel}
-			focusable={false}
-			ref={panelRef}
-			{...(Element === "div" ? nonTabPanelProps : tabPanelProps)}
-		>
-			<SandboxTree
-				deferredItems={deferredItems}
-				selected={selected}
-				errorMessage={errorMessage}
-				errorItems={errorItems}
-				setSelected={setSelected}
-				toggleFailingIds={toggleFailingIds}
-				onExpandedChange={onExpandedChange}
-				toggleHidden={toggleHidden}
-			/>
-		</Element>
-	);
-}
-
 interface VisibilityActionProps {
 	item: FlatTreeItem;
 	onClick: (id: string) => void;
@@ -1094,23 +1026,14 @@ function VisibilityAction({ item, onClick }: VisibilityActionProps) {
 	);
 }
 
-function Subheader({
-	tabs,
-}: {
-	tabs?: React.ReactNode;
-}) {
-	const {
-		itemCount,
-		isFiltered,
-		search,
-		setSearch,
-		isSearchboxVisible,
-		setIsSearchboxVisible,
-	} = React.useContext(TreeFilteringContext);
+function Subheader({ tabs }: { tabs?: React.ReactNode }) {
+	const { itemCount, isFiltered, search, setSearch } =
+		React.useContext(TreeFilteringContext);
 
 	const searchInputRef = React.useRef<HTMLInputElement>(null);
 	const tabsRef = React.useRef<HTMLHeadingElement>(null);
 
+	const [isSearchboxVisible, setIsSearchboxVisible] = React.useState(!tabs);
 	const filterOrSearchActive = isFiltered || !!search;
 
 	const actions = isSearchboxVisible ? (
@@ -1221,7 +1144,6 @@ function TreeFilteringProvider(
 	const [isFiltered, setIsFiltered] = React.useState(false);
 	const [appliedFilters, setAppliedFilters] = React.useState<string[]>([]);
 	const [search, setSearchState] = React.useState("");
-	const [isSearchboxVisible, setIsSearchboxVisible] = React.useState(false);
 	const [itemCount, setItemCount] = React.useState<number | undefined>(
 		undefined,
 	);
@@ -1256,8 +1178,6 @@ function TreeFilteringProvider(
 					clearFilters,
 					search,
 					setSearch,
-					isSearchboxVisible,
-					setIsSearchboxVisible,
 					itemCount,
 					setItemCount,
 				}),
@@ -1269,7 +1189,6 @@ function TreeFilteringProvider(
 					clearFilters,
 					search,
 					setSearch,
-					isSearchboxVisible,
 					itemCount,
 				],
 			)}
@@ -1287,8 +1206,6 @@ const TreeFilteringContext = React.createContext<{
 	clearFilters: () => void;
 	search: string;
 	setSearch: (search: string) => void;
-	isSearchboxVisible: boolean;
-	setIsSearchboxVisible: (isSearchboxVisible: boolean) => void;
 	itemCount: number | undefined;
 	setItemCount: (count: number | undefined) => void;
 }>({
@@ -1299,8 +1216,6 @@ const TreeFilteringContext = React.createContext<{
 	clearFilters: () => {},
 	search: "",
 	setSearch: () => {},
-	isSearchboxVisible: false,
-	setIsSearchboxVisible: () => {},
 	itemCount: undefined,
 	setItemCount: () => {},
 });

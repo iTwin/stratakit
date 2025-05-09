@@ -341,14 +341,6 @@ function PanelContent(props: {
 		[data],
 	);
 
-	const tabs = trees.map((tree) => (
-		<Tabs.Tab key={tree.name} id={tree.name}>
-			{toUpperCamelCase(tree.name)}
-		</Tabs.Tab>
-	));
-
-	const [isSearchboxVisible, setIsSearchboxVisible] = React.useState(!tabs);
-
 	const [selectedTreeId, setSelectedTreeId] = React.useState<
 		string | undefined | null
 	>(trees[0]?.name);
@@ -361,10 +353,7 @@ function PanelContent(props: {
 	if (trees.length === 1)
 		return (
 			<TreeFilteringProvider allFilters={allFilters}>
-				<Subheader
-					isSearchboxVisible={isSearchboxVisible}
-					setIsSearchboxVisible={setIsSearchboxVisible}
-				/>
+				<Subheader />
 				{trees[0].content}
 			</TreeFilteringProvider>
 		);
@@ -373,26 +362,46 @@ function PanelContent(props: {
 		<TreeFilteringProvider allFilters={allFilters}>
 			<Tabs.Root selectOnMove={false} setSelectedId={setSelectedTreeId}>
 				<Subheader
-					isSearchboxVisible={isSearchboxVisible}
-					setIsSearchboxVisible={setIsSearchboxVisible}
-					tabs={tabs}
+					tabs={trees.map((tree) => (
+						<Tabs.Tab key={tree.name} id={tree.name}>
+							{toUpperCamelCase(tree.name)}
+						</Tabs.Tab>
+					))}
 				/>
 				{trees.map((tree) => {
 					return (
-						<Tabs.TabPanel
-							role={isSearchboxVisible ? "group" : "tabpanel"}
+						<TreeContent
 							key={tree.name}
-							tabId={tree.name}
-							className={styles.tabPanel}
-							focusable={false}
-							unmountOnHide
-						>
-							{tree.content}
-						</Tabs.TabPanel>
+							treeName={tree.name}
+							treeContent={tree.content}
+						/>
 					);
 				})}
 			</Tabs.Root>
 		</TreeFilteringProvider>
+	);
+}
+
+function TreeContent({
+	treeName,
+	treeContent,
+}: {
+	treeName: string;
+	treeContent: React.ReactNode;
+}) {
+	const { isSearchboxVisible } = React.useContext(TreeFilteringContext);
+
+	return (
+		<Tabs.TabPanel
+			role={isSearchboxVisible ? "group" : "tabpanel"}
+			aria-label={isSearchboxVisible ? treeName : undefined}
+			tabId={treeName}
+			className={styles.tabPanel}
+			focusable={false}
+			unmountOnHide
+		>
+			{treeContent}
+		</Tabs.TabPanel>
 	);
 }
 
@@ -1037,16 +1046,18 @@ function VisibilityAction({ item, onClick }: VisibilityActionProps) {
 }
 
 function Subheader({
-	isSearchboxVisible,
-	setIsSearchboxVisible,
 	tabs,
 }: {
-	isSearchboxVisible: boolean;
-	setIsSearchboxVisible: (isSearchboxVisible: boolean) => void;
 	tabs?: React.ReactNode;
 }) {
-	const { itemCount, isFiltered, search, setSearch } =
-		React.useContext(TreeFilteringContext);
+	const {
+		itemCount,
+		isFiltered,
+		search,
+		setSearch,
+		isSearchboxVisible,
+		setIsSearchboxVisible,
+	} = React.useContext(TreeFilteringContext);
 
 	const searchInputRef = React.useRef<HTMLInputElement>(null);
 	const tabsRef = React.useRef<HTMLHeadingElement>(null);
@@ -1161,6 +1172,7 @@ function TreeFilteringProvider(
 	const [isFiltered, setIsFiltered] = React.useState(false);
 	const [appliedFilters, setAppliedFilters] = React.useState<string[]>([]);
 	const [search, setSearchState] = React.useState("");
+	const [isSearchboxVisible, setIsSearchboxVisible] = React.useState(false);
 	const [itemCount, setItemCount] = React.useState<number | undefined>(
 		undefined,
 	);
@@ -1195,6 +1207,8 @@ function TreeFilteringProvider(
 					clearFilters,
 					search,
 					setSearch,
+					isSearchboxVisible,
+					setIsSearchboxVisible,
 					itemCount,
 					setItemCount,
 				}),
@@ -1206,6 +1220,7 @@ function TreeFilteringProvider(
 					clearFilters,
 					search,
 					setSearch,
+					isSearchboxVisible,
 					itemCount,
 				],
 			)}
@@ -1223,6 +1238,8 @@ const TreeFilteringContext = React.createContext<{
 	clearFilters: () => void;
 	search: string;
 	setSearch: (search: string) => void;
+	isSearchboxVisible: boolean;
+	setIsSearchboxVisible: (visible: boolean) => void;
 	itemCount: number | undefined;
 	setItemCount: (count: number | undefined) => void;
 }>({
@@ -1233,6 +1250,8 @@ const TreeFilteringContext = React.createContext<{
 	clearFilters: () => {},
 	search: "",
 	setSearch: () => {},
+	isSearchboxVisible: false,
+	setIsSearchboxVisible: () => {},
 	itemCount: undefined,
 	setItemCount: () => {},
 });

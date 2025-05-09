@@ -34,12 +34,5 @@ export const components = {
 		"Tooltip",
 		"Tree",
 	],
-	compat: [
-		"Anchor",
-
-		"Divider",
-		"Kbd",
-		"Text",
-		"Tooltip",
-	],
+	compat: ["Anchor", "Divider", "Kbd", "Text", "ToggleSwitch", "Tooltip"],
 };

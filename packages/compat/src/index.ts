@@ -8,4 +8,5 @@ export { Anchor } from "./Anchor.js";
 export { Divider } from "./Divider.js";
 export { Kbd, KbdKeys } from "./Kbd.js";
 export { Text } from "./Text.js";
+export { ToggleSwitch } from "./ToggleSwitch.js";
 export { Tooltip } from "./Tooltip.js";

@@ -35,10 +35,11 @@ export const components = {
 		"Tree",
 	],
 	compat: [
+		// force newline to improve mergability (remove when unnecessary)
 		"Anchor",
-
 		"Divider",
 		"Kbd",
+		"Label",
 		"Text",
 		"ToggleSwitch",
 		"Tooltip",

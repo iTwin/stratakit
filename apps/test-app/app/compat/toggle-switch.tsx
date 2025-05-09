@@ -6,7 +6,7 @@
 import { ToggleSwitch } from "@stratakit/react";
 import { definePage } from "~/~utils.tsx";
 
-export const handle = { title: "Switch" };
+export const handle = { title: "ToggleSwitch" };
 
 export default definePage(function Page() {
 	return (

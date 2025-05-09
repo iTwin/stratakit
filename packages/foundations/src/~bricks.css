@@ -2,14 +2,4 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-.table {
-	td {
-		&:not(:first-child) {
-			text-align: center;
-
-			svg {
-				display: inline;
-			}
-		}
-	}
-}
+@import "../../bricks/src/styles.css";

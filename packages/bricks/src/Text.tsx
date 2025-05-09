@@ -4,10 +4,10 @@
  *--------------------------------------------------------------------------------------------*/
 
 import { Role } from "@ariakit/react/role";
+import { forwardRef } from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
-import { forwardRef } from "./~utils.js";
 
-import type { BaseProps } from "./~utils.js";
+import type { BaseProps } from "@stratakit/foundations/secret-internals";
 
 interface TextProps extends BaseProps {
 	/**

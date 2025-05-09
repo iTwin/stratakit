@@ -4,12 +4,12 @@
  *--------------------------------------------------------------------------------------------*/
 
 import { Radio as AkRadio } from "@ariakit/react/radio";
+import { forwardRef } from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
 import { useFieldControlType } from "./Field.internal.js";
-import { forwardRef } from "./~utils.js";
 
 import type { RadioProps as AkRadioProps } from "@ariakit/react/radio";
-import type { FocusableProps } from "./~utils.js";
+import type { FocusableProps } from "@stratakit/foundations/secret-internals";
 
 type InputBaseProps = Omit<FocusableProps<"input">, "defaultValue" | "value">;
 

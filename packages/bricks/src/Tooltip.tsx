@@ -5,17 +5,20 @@
 
 import { useStoreState } from "@ariakit/react/store";
 import * as AkTooltip from "@ariakit/react/tooltip";
+import { forwardRef } from "@stratakit/foundations/secret-internals";
+import { usePopoverApi } from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
 import * as React from "react";
-import { usePopoverApi } from "./~hooks.js";
-import { forwardRef } from "./~utils.js";
 
-import type { FocusableProps } from "./~utils.js";
+import type { FocusableProps } from "@stratakit/foundations/secret-internals";
 
 interface TooltipProps
 	extends Omit<FocusableProps<"div">, "content">,
 		Pick<AkTooltip.TooltipProps, "open" | "unmountOnHide">,
-		Pick<AkTooltip.TooltipProviderProps, "defaultOpen" | "setOpen"> {
+		Pick<
+			AkTooltip.TooltipProviderProps,
+			"defaultOpen" | "setOpen" | "placement"
+		> {
 	/**
 	 * The content to be displayed inside the tooltip when the trigger element is hovered or focused.
 	 */
@@ -41,6 +44,14 @@ interface TooltipProps
 	 * @default "description"
 	 */
 	type?: "description" | "label" | "none";
+
+	/**
+	 * The placement of the tooltip.
+	 *
+	 * When not enough space is available to satisfy the specified placement, the tooltip will
+	 * automatically flip to the opposite side.
+	 */
+	placement?: AkTooltip.TooltipProviderProps["placement"];
 }
 
 /**
@@ -71,6 +82,7 @@ export const Tooltip = forwardRef<"div", TooltipProps>(
 			open: openProp,
 			setOpen: setOpenProp,
 			unmountOnHide = type === "none",
+			placement,
 			...rest
 		} = props;
 
@@ -85,6 +97,7 @@ export const Tooltip = forwardRef<"div", TooltipProps>(
 					defaultOpen={defaultOpenProp}
 					open={openProp}
 					setOpen={setOpenProp}
+					placement={placement}
 				>
 					<AkTooltip.TooltipAnchor
 						render={children}

@@ -3,10 +3,9 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import { Divider, Icon } from "@stratakit/bricks";
+import { Divider, Table } from "@stratakit/bricks";
+import { Icon } from "@stratakit/foundations";
 import globalStyles from "./icons.css?url";
-import styles from "./icons.module.css";
-import { Table } from "./~utils.tsx";
 
 import iconsListJson from "@stratakit/icons/icons-list.json";
 
@@ -23,7 +22,7 @@ function getIconHref(icon: string) {
 }
 
 export const meta: MetaFunction = () => {
-	return [{ title: "Stratakit icons" }];
+	return [{ title: "StrataKit icons" }];
 };
 
 export const links: LinksFunction = () => [
@@ -35,31 +34,31 @@ export default function Page() {
 		<>
 			<h1>Icons</h1>
 			<Divider />
-			<Table className={styles.table} style={{ marginBlockStart: "1rem" }}>
-				<thead>
-					<tr>
-						<th>Name</th>
-						<th>Default</th>
-						<th>Large</th>
-					</tr>
-				</thead>
-				<tbody>
+			<Table.HtmlTable>
+				<Table.Header>
+					<Table.Row>
+						<Table.Cell>Name</Table.Cell>
+						<Table.Cell>Default</Table.Cell>
+						<Table.Cell>Large</Table.Cell>
+					</Table.Row>
+				</Table.Header>
+				<Table.Body>
 					{iconsListJson.map((icon) => {
 						const iconHref = getIconHref(icon);
 						return (
-							<tr key={icon}>
-								<td>{icon}</td>
-								<td>
+							<Table.Row key={icon}>
+								<Table.Cell>{icon}</Table.Cell>
+								<Table.Cell>
 									<Icon href={iconHref} />
-								</td>
-								<td>
+								</Table.Cell>
+								<Table.Cell>
 									<Icon size="large" href={iconHref} />
-								</td>
-							</tr>
+								</Table.Cell>
+							</Table.Row>
 						);
 					})}
-				</tbody>
-			</Table>
+				</Table.Body>
+			</Table.HtmlTable>
 		</>
 	);
 }

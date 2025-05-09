@@ -3,7 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import { Root } from "@stratakit/bricks";
+import { Root } from "@stratakit/foundations";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import * as React from "react";
 import {
@@ -14,6 +14,7 @@ import {
 	ScrollRestoration,
 	useMatches,
 } from "react-router";
+import manifestUrl from "./manifest.json?url";
 import { ColorSchemeProvider, useColorScheme } from "./~utils.tsx";
 
 import type { LinksFunction } from "react-router";
@@ -31,6 +32,7 @@ export const links: LinksFunction = () => {
 		},
 		{ rel: "preconnect", href: "https://rsms.me/" },
 		{ rel: "stylesheet", href: "https://rsms.me/inter/inter.css" },
+		{ rel: "manifest", href: manifestUrl },
 	];
 };
 

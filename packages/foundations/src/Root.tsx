@@ -14,7 +14,6 @@ import {
 	spriteSheetId,
 	useRootNode,
 } from "./Root.internal.js";
-import bricksCss from "./styles.css.js";
 import { useLayoutEffect, useMergedRefs } from "./~hooks.js";
 import {
 	forwardRef,
@@ -24,7 +23,8 @@ import {
 	isDocument,
 } from "./~utils.js";
 
-import foundationsCss from "./foundations.css.js";
+import foundationsCss from "./styles.css.js";
+import bricksCss from "./~bricks.css.js"; // TODO: remove this implicit dependency on bricks
 
 import type { BaseProps } from "./~utils.js";
 
@@ -60,7 +60,7 @@ interface RootProps extends BaseProps {
 	 *
 	 * Example:
 	 * ```tsx
-	 * unstablized_htmlSanitizer={DOMPurify.sanitize}
+	 * unstable_htmlSanitizer={DOMPurify.sanitize}
 	 * ```
 	 */
 	unstable_htmlSanitizer?: (html: string) => string;

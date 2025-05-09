@@ -36,6 +36,7 @@ export const components = {
 	],
 	compat: [
 		"Anchor",
+
 		"Divider",
 		"Kbd",
 		"Text",

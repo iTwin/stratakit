@@ -34,9 +34,7 @@ export const ToggleSwitch = React.forwardRef((props, forwardedRef) => {
 		...rest
 	} = useCompatProps(props);
 
-	const labelComponent = React.useMemo(() => {
-		return <Field.Label {...labelProps}>{label}</Field.Label>;
-	}, [label, labelProps]);
+	const labelComponent = <Field.Label {...labelProps}>{label}</Field.Label>;
 
 	if (label) {
 		return (

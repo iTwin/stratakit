@@ -151,7 +151,9 @@ export default function Page() {
 					</div>
 
 					<React.Suspense key={selectedModel} fallback={<PanelLoading />}>
-						<PanelContent query={query} />
+						<SearchboxProvider>
+							<PanelContent query={query} />
+						</SearchboxProvider>
 					</React.Suspense>
 				</>
 			}
@@ -317,6 +319,7 @@ function PanelContent(props: {
 	query: UseQueryResult<Awaited<ReturnType<typeof fetchModelsData>>>;
 }) {
 	const { data } = React.use(props.query.promise);
+	const { isSearchboxVisible } = React.useContext(SearchboxContext);
 
 	const trees = React.useMemo(
 		() =>
@@ -370,38 +373,21 @@ function PanelContent(props: {
 				/>
 				{trees.map((tree) => {
 					return (
-						<TreeContent
+						<Tabs.TabPanel
 							key={tree.name}
-							treeName={tree.name}
-							treeContent={tree.content}
-						/>
+							role={isSearchboxVisible ? "group" : "tabpanel"}
+							aria-label={isSearchboxVisible ? tree.name : undefined}
+							tabId={tree.name}
+							className={styles.tabPanel}
+							focusable={false}
+							unmountOnHide
+						>
+							{tree.content}
+						</Tabs.TabPanel>
 					);
 				})}
 			</Tabs.Root>
 		</TreeFilteringProvider>
-	);
-}
-
-function TreeContent({
-	treeName,
-	treeContent,
-}: {
-	treeName: string;
-	treeContent: React.ReactNode;
-}) {
-	const { isSearchboxVisible } = React.useContext(TreeFilteringContext);
-
-	return (
-		<Tabs.TabPanel
-			role={isSearchboxVisible ? "group" : "tabpanel"}
-			aria-label={isSearchboxVisible ? treeName : undefined}
-			tabId={treeName}
-			className={styles.tabPanel}
-			focusable={false}
-			unmountOnHide
-		>
-			{treeContent}
-		</Tabs.TabPanel>
 	);
 }
 
@@ -1050,14 +1036,11 @@ function Subheader({
 }: {
 	tabs?: React.ReactNode;
 }) {
-	const {
-		itemCount,
-		isFiltered,
-		search,
-		setSearch,
-		isSearchboxVisible,
-		setIsSearchboxVisible,
-	} = React.useContext(TreeFilteringContext);
+	const { itemCount, isFiltered, search, setSearch } =
+		React.useContext(TreeFilteringContext);
+
+	const { isSearchboxVisible, setIsSearchboxVisible } =
+		React.useContext(SearchboxContext);
 
 	const searchInputRef = React.useRef<HTMLInputElement>(null);
 	const tabsRef = React.useRef<HTMLHeadingElement>(null);
@@ -1172,7 +1155,6 @@ function TreeFilteringProvider(
 	const [isFiltered, setIsFiltered] = React.useState(false);
 	const [appliedFilters, setAppliedFilters] = React.useState<string[]>([]);
 	const [search, setSearchState] = React.useState("");
-	const [isSearchboxVisible, setIsSearchboxVisible] = React.useState(false);
 	const [itemCount, setItemCount] = React.useState<number | undefined>(
 		undefined,
 	);
@@ -1207,8 +1189,6 @@ function TreeFilteringProvider(
 					clearFilters,
 					search,
 					setSearch,
-					isSearchboxVisible,
-					setIsSearchboxVisible,
 					itemCount,
 					setItemCount,
 				}),
@@ -1220,7 +1200,6 @@ function TreeFilteringProvider(
 					clearFilters,
 					search,
 					setSearch,
-					isSearchboxVisible,
 					itemCount,
 				],
 			)}
@@ -1238,8 +1217,6 @@ const TreeFilteringContext = React.createContext<{
 	clearFilters: () => void;
 	search: string;
 	setSearch: (search: string) => void;
-	isSearchboxVisible: boolean;
-	setIsSearchboxVisible: (visible: boolean) => void;
 	itemCount: number | undefined;
 	setItemCount: (count: number | undefined) => void;
 }>({
@@ -1250,10 +1227,34 @@ const TreeFilteringContext = React.createContext<{
 	clearFilters: () => {},
 	search: "",
 	setSearch: () => {},
-	isSearchboxVisible: false,
-	setIsSearchboxVisible: () => {},
 	itemCount: undefined,
 	setItemCount: () => {},
+});
+
+function SearchboxProvider(props: React.PropsWithChildren) {
+	const [isSearchboxVisible, setIsSearchboxVisible] = React.useState(false);
+
+	return (
+		<SearchboxContext.Provider
+			value={React.useMemo(
+				() => ({
+					isSearchboxVisible,
+					setIsSearchboxVisible,
+				}),
+				[isSearchboxVisible],
+			)}
+		>
+			{props.children}
+		</SearchboxContext.Provider>
+	);
+}
+
+const SearchboxContext = React.createContext<{
+	isSearchboxVisible: boolean;
+	setIsSearchboxVisible: (visible: boolean) => void;
+}>({
+	isSearchboxVisible: false,
+	setIsSearchboxVisible: () => {},
 });
 
 function ColorSwatch(props: { color: string; alt?: string }) {

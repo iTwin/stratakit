@@ -26,6 +26,8 @@ interface ToggleSwitchProps
 /** @see https://itwinui.bentley.com/docs/toggleswitch */
 export const ToggleSwitch = React.forwardRef((props, forwardedRef) => {
 	const {
+		className,
+		style,
 		label,
 		labelPosition = "right",
 		labelProps,
@@ -38,14 +40,18 @@ export const ToggleSwitch = React.forwardRef((props, forwardedRef) => {
 
 	if (label) {
 		return (
-			<Field.Root render={<Field.Label />}>
+			<Field.Root render={<Field.Label />} className={className} style={style}>
 				{labelPosition === "left" ? labelComponent : null}
-				<Field.Control render={<SkSwitch {...rest} />} />
+				<Field.Control ref={forwardedRef} render={<SkSwitch {...rest} />} />
 				{labelPosition === "right" ? labelComponent : null}
 			</Field.Root>
 		);
 	}
 
-	return <SkSwitch ref={forwardedRef} {...rest} />;
+	return (
+		<div className={className} style={style}>
+			<SkSwitch ref={forwardedRef} {...rest} />
+		</div>
+	);
 }) as PolymorphicForwardRefComponent<"input", ToggleSwitchProps>;
 DEV: ToggleSwitch.displayName = "ToggleSwitch";

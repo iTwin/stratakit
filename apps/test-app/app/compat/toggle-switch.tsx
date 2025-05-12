@@ -10,7 +10,14 @@ export const handle = { title: "ToggleSwitch" };
 
 export default definePage(function Page() {
 	return (
-		<div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+		<div
+			style={{
+				display: "flex",
+				flexDirection: "column",
+				gap: 8,
+				alignItems: "flex-start",
+			}}
+		>
 			<ToggleSwitch />
 			<ToggleSwitch checked />
 			<ToggleSwitch defaultChecked />
@@ -23,6 +30,16 @@ export default definePage(function Page() {
 			<ToggleSwitch label="Option" labelPosition="left" />
 			<ToggleSwitch label={<div>Option</div>} />
 			<ToggleSwitch label={<div>Option</div>} labelPosition="left" />
+
+			<br />
+
+			{/* className and style have to be added to the wrapper. */}
+			{/* Other rest props should go to the input. */}
+			<ToggleSwitch
+				className="my-toggle-switch"
+				style={{ color: "red" }}
+				data-dummy-attribute="dummy-value"
+			/>
 		</div>
 	);
 });

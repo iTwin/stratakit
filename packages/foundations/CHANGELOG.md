@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.2
+
+Updated styling for `@stratakit/bricks@0.1.2`.
+
 ## 0.1.1
 
 Updated styling for `@stratakit/bricks@0.1.1`.

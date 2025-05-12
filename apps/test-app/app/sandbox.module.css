@@ -138,6 +138,7 @@
 	grid-template-rows: subgrid;
 	scrollbar-gutter: stable;
 	overflow-x: auto;
+	overflow-y: hidden;
 }
 
 .tabList {

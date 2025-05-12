@@ -2,13 +2,11 @@
 
 ## 0.1.2
 
-### Patch Changes
-
 - [#686](https://github.com/iTwin/design-system/pull/686): Corrected font weight of `AccordionItem.Label` to 500/medium.
 - [#689](https://github.com/iTwin/design-system/pull/689): Corrected the text size of `Description`, `Field.Description`, and `Field.ErrorMessage` to use `caption-lg`.
-- [#694](https://github.com/iTwin/design-system/pull/694): Fixed `<Switch>` animation so it plays correctly on Android.
+- [#694](https://github.com/iTwin/design-system/pull/694): Fixed `<Switch>` animation so it plays smoothly on all platforms.
 - Updated dependencies:
-  - @stratakit/foundations@0.1.1
+  - @stratakit/foundations@0.1.2
 
 ## 0.1.1
 

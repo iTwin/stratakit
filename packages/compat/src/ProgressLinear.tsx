@@ -31,7 +31,7 @@ interface ProgressBarProps
 	 * - If `labels` is passed, it now replaces the visually hidden "Loading…" text as a string of `labels` joined with spaces.
 	 * Thus, the previously *visual* `labels` are now *visually hidden*.
 	 *
-	 * - If `labels` is not passed, the fallback text "Loading…" is continued to be used.
+	 * - Else, the visually hidden "Loading…" text is continued to be used when `value!==100`.
 	 */
 	labels?: IuiProgressBarProps["labels"];
 	/** NO-OP: Always animated. */

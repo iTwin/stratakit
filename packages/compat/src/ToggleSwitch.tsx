@@ -34,13 +34,13 @@ export const ToggleSwitch = React.forwardRef((props, forwardedRef) => {
 		...rest
 	} = useCompatProps(props);
 
-	const labelComponent = <Field.Label {...labelProps}>{label}</Field.Label>;
+	const labelComponent = <span {...labelProps}>{label}</span>;
 
 	if (label) {
 		return (
-			<Field.Root>
+			<Field.Root render={<Field.Label />}>
 				{labelPosition === "left" ? labelComponent : null}
-				<Field.Control render={<SkSwitch />} />
+				<Field.Control render={<SkSwitch {...rest} />} />
 				{labelPosition === "right" ? labelComponent : null}
 			</Field.Root>
 		);

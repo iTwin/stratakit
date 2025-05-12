@@ -28,9 +28,10 @@ export default definePage(function Page() {
 
 			<br />
 
-			{/* Not implemented props */}
+			{/* Not implemented / no-op props */}
 			<ProgressLinear
 				status="positive"
+				isAnimated={false}
 				labels={["Loading...", "50%"]}
 				labelGroupProps={{
 					style: {

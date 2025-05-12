@@ -25,9 +25,12 @@ interface ProgressBarProps
 		| "status"
 		| "labelGroupProps"
 	> {
-	/** NOT IMPLEMENTED. */
+	/**
+	 * PARTIALLY IMPLEMENTED: `labels` now replace the visually hidden "Loading…" text as a string of `labels` joined spaces.
+	 * Thus, the previously visual `labels` are now *visually hidden*.
+	 */
 	labels?: IuiProgressBarProps["labels"];
-	/** NOT IMPLEMENTED. */
+	/** NO-OP: Always animated. */
 	isAnimated?: IuiProgressBarProps["isAnimated"];
 	/** NOT IMPLEMENTED. */
 	status?: IuiProgressBarProps["status"];
@@ -40,8 +43,8 @@ export const ProgressLinear = React.forwardRef((props, forwardedRef) => {
 	const {
 		value,
 		indeterminate,
-		labels, // NOT IMPLEMENTED
-		isAnimated, // NOT IMPLEMENTED
+		labels,
+		isAnimated, // NO-OP
 		status, // NOT IMPLEMENTED
 		labelGroupProps, // NOT IMPLEMENTED
 		...rest
@@ -58,7 +61,7 @@ export const ProgressLinear = React.forwardRef((props, forwardedRef) => {
 				aria-labelledby={labelledBy}
 			>
 				<VisuallyHidden id={labelledBy}>
-					{value !== 100 ? "Loading…" : undefined}
+					{value !== 100 ? labels?.join(" ") : undefined}
 				</VisuallyHidden>
 			</SkProgressBar>
 		</>

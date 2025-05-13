@@ -4,7 +4,10 @@
  *--------------------------------------------------------------------------------------------*/
 
 import { Icon } from "@stratakit/foundations";
-import { forwardRef } from "@stratakit/foundations/secret-internals";
+import {
+	forwardRef,
+	useEventHandlers,
+} from "@stratakit/foundations/secret-internals";
 import * as React from "react";
 import { Button } from "./Button.js";
 import {
@@ -124,6 +127,10 @@ export const IconButton = forwardRef<"button", IconButtonProps>(
 
 		const { iconSize } = React.useContext(IconButtonContext);
 
+		const [tooltipOpen, setTooltipOpen] = React.useState(false);
+		const hasTooltip = labelVariant !== "tooltip";
+		const isMouseEvent = React.useRef(false);
+
 		const button = (
 			<IconButtonPresentation
 				render={
@@ -132,6 +139,17 @@ export const IconButton = forwardRef<"button", IconButtonProps>(
 						aria-labelledby={labelId}
 						aria-describedby={dot ? dotId : undefined}
 						{...rest}
+						onMouseDown={useEventHandlers(props.onMouseDown, () => {
+							isMouseEvent.current = true;
+							queueMicrotask(() => {
+								isMouseEvent.current = false;
+							});
+						})}
+						onContextMenu={useEventHandlers(props.onContextMenu, (e) => {
+							if (!hasTooltip || isMouseEvent.current) return;
+							e.preventDefault();
+							setTooltipOpen(true);
+						})}
 						ref={forwardedRef}
 					>
 						<VisuallyHidden id={labelId}>{label}</VisuallyHidden>
@@ -152,12 +170,17 @@ export const IconButton = forwardRef<"button", IconButtonProps>(
 			/>
 		);
 
-		if (labelVariant === "visually-hidden") {
+		if (!hasTooltip) {
 			return button;
 		}
 
 		return (
-			<Tooltip content={label} type="none">
+			<Tooltip
+				content={label}
+				type="none"
+				open={tooltipOpen}
+				setOpen={setTooltipOpen}
+			>
 				{button}
 			</Tooltip>
 		);

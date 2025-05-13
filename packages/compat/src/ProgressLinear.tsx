@@ -58,18 +58,16 @@ export const ProgressLinear = React.forwardRef((props, forwardedRef) => {
 	const fallbackLoadingText = value !== 100 ? "Loading…" : undefined;
 
 	return (
-		<>
-			<SkProgressBar
-				{...rest}
-				value={indeterminate === true ? undefined : value}
-				ref={forwardedRef}
-				aria-labelledby={labelledBy}
-			>
-				<VisuallyHidden id={labelledBy}>
-					{labels?.join(" ") ?? fallbackLoadingText}
-				</VisuallyHidden>
-			</SkProgressBar>
-		</>
+		<SkProgressBar
+			{...rest}
+			value={indeterminate === true ? undefined : value}
+			ref={forwardedRef}
+			aria-labelledby={labelledBy}
+		>
+			<VisuallyHidden id={labelledBy}>
+				{labels?.join(" ") ?? fallbackLoadingText}
+			</VisuallyHidden>
+		</SkProgressBar>
 	);
 }) as PolymorphicForwardRefComponent<"div", ProgressBarProps>;
 DEV: ProgressLinear.displayName = "ProgressLinear";

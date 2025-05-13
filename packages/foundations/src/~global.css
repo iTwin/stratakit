@@ -24,7 +24,8 @@ body {
 }
 
 *::selection {
-	background-color: oklch(from var(--🥝selection-color-bg) l c h / 0.24);
+	background-color: var(--🥝selection-color-bg);
+	color: white;
 }
 
 *:focus-visible {

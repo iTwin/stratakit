@@ -15,23 +15,23 @@
 	},
 	"dependencies": {
 		"@ariakit/react": "^0.4.17",
-		"@react-router/node": "^7.5.3",
+		"@react-router/node": "^7.6.0",
 		"@stratakit/bricks": "workspace:*",
-		"@stratakit/icons": "workspace:*",
 		"@stratakit/foundations": "workspace:*",
+		"@stratakit/icons": "workspace:*",
 		"@stratakit/react": "workspace:*",
-		"@tanstack/react-query": "^5.75.5",
+		"@tanstack/react-query": "^5.76.0",
 		"classnames": "^2.5.1",
 		"immer": "^10.1.1",
-		"isbot": "^5.1.27",
+		"isbot": "^5.1.28",
 		"react": "catalog:",
 		"react-dom": "catalog:",
-		"react-router": "^7.5.3"
+		"react-router": "^7.6.0"
 	},
 	"devDependencies": {
 		"@axe-core/playwright": "^4.10.1",
 		"@playwright/test": "catalog:",
-		"@react-router/dev": "^7.5.3",
+		"@react-router/dev": "^7.6.0",
 		"@types/node": "catalog:",
 		"@types/react": "catalog:",
 		"@types/react-dom": "catalog:",
@@ -39,6 +39,7 @@
 		"lightningcss": "catalog:",
 		"typescript": "catalog:",
 		"vite": "^6.3.5",
+		"vite-plugin-devtools-json": "^0.1.0",
 		"vite-tsconfig-paths": "^5.1.4"
 	},
 	"wireit": {

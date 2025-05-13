@@ -17,6 +17,7 @@ body {
 	--🥝focus-outline: 2px solid var(--ids-color-border-accent-strong);
 	--🥝focus-outline-offset: 1px;
 	--🥝selection-color-bg: var(--ids-color-bg-accent-base);
+	--🥝selection-color-text: white;
 
 	@media (forced-colors: active) {
 		--🥝focus-outline: 2px solid Highlight;
@@ -25,7 +26,7 @@ body {
 
 *::selection {
 	background-color: var(--🥝selection-color-bg);
-	color: white;
+	color: var(--🥝selection-color-text);
 }
 
 *:focus-visible {

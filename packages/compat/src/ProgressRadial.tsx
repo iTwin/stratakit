@@ -29,7 +29,7 @@ interface ProgressRadialProps
 	 *
 	 * - If `children` is passed and it is a string, it now replaces the visually hidden "Loading…" text.
 	 * Thus, the previously *visual* `children` are now *visually hidden*.
-	 * - Else, the visually hidden "Loading…" text is continued to be used when `value!==100`.
+	 * - Else, the visually hidden "Loading…" text is continued to be used.
 	 */
 	children?: IuiSpinnerProps["children"];
 }

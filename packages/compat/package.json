@@ -34,7 +34,7 @@
 	"scripts": {},
 	"dependencies": {
 		"@itwin/itwinui-react": "^3.18.1",
-		"@stratakit/bricks": "^0.1.1"
+		"@stratakit/bricks": "^0.1.2"
 	},
 	"devDependencies": {
 		"@stratakit/foundations": "workspace:*",
@@ -46,7 +46,7 @@
 		"typescript": "catalog:"
 	},
 	"peerDependencies": {
-		"@stratakit/foundations": "^0.1.0",
+		"@stratakit/foundations": "^0.1.2",
 		"react": ">=18.0.0",
 		"react-dom": ">=18.0.0"
 	}

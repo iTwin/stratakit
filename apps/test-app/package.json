@@ -17,8 +17,8 @@
 		"@ariakit/react": "^0.4.17",
 		"@react-router/node": "^7.6.0",
 		"@stratakit/bricks": "workspace:*",
-		"@stratakit/icons": "workspace:*",
 		"@stratakit/foundations": "workspace:*",
+		"@stratakit/icons": "workspace:*",
 		"@stratakit/react": "workspace:*",
 		"@tanstack/react-query": "^5.76.0",
 		"classnames": "^2.5.1",
@@ -39,6 +39,7 @@
 		"lightningcss": "catalog:",
 		"typescript": "catalog:",
 		"vite": "^6.3.5",
+		"vite-plugin-devtools-json": "^0.1.0",
 		"vite-tsconfig-paths": "^5.1.4"
 	},
 	"wireit": {

@@ -6,6 +6,10 @@
 	--✨width: 2rem;
 	--✨thumb-size: 1rem;
 
+	--✨radius: 9999px;
+	--✨checked-translateX: 75%;
+	--✨pressed-scaleX: 1.75;
+
 	--✨shadow-border: 0px 0px 0px 1px var(--ids-color-border-shadow-base) inset;
 
 	--✨glow--border-hover: var(--ids-color-glow-hue) var(--ids-color-border-glow-base-hover-\%);
@@ -42,7 +46,7 @@
 		align-items: center;
 
 		position: relative;
-		border-radius: 9999px;
+		border-radius: var(--✨radius);
 		inline-size: var(--✨width);
 		block-size: auto; /* Necessary to override iOS Safari UA styles */
 
@@ -79,26 +83,26 @@
 
 		/* This pseudo-element creates the "thumb" */
 		&::after {
-			aspect-ratio: var(--🥝switch-thumb-aspect-ratio);
 			block-size: var(--✨thumb-size);
-			border-radius: 9999px;
+			inline-size: var(--✨thumb-size);
 			margin: calc(0.125rem - 1px) /* spacing-2 - 1px to account for border */;
 			background-color: var(--🥝switch-thumb-color);
 			box-shadow: var(--ids-shadow-button-base-inset), var(--✨shadow-border),
 				var(--ids-shadow-button-base-drop);
-			justify-self: var(--🥝switch-thumb-placement);
+			border-radius: var(--🥝switch-thumb-radius, var(--✨radius));
+			transform-origin: left;
+			transform: var(--🥝switch-thumb-transform);
 
 			@media (prefers-reduced-motion: no-preference) {
-				transition: aspect-ratio 150ms ease-out;
-				will-change: aspect-ratio;
+				transition: all 150ms ease-out;
+				transition-property: transform, border-radius;
+				will-change: transform, border-radius;
 			}
 		}
 	}
 
 	@layer states {
 		--🥝switch-thumb-color: var(--ids-color-bg-neutral-inverse);
-		--🥝switch-thumb-placement: start;
-		--🥝switch-thumb-aspect-ratio: 1 / 1;
 
 		@media (any-hover: hover) {
 			&:where(:hover) {
@@ -108,7 +112,7 @@
 
 		&:where(:checked, [aria-checked="true"]) {
 			--🌀switch-state: var(--🌀switch-state--checked);
-			--🥝switch-thumb-placement: end;
+			--🥝switch-thumb-transform: translateX(var(--✨checked-translateX));
 
 			@media (any-hover: hover) {
 				&:where(:hover) {
@@ -119,7 +123,10 @@
 
 		&:where(:active) {
 			--🌀switch-state: var(--🌀switch-state--pressed);
-			--🥝switch-thumb-aspect-ratio: 1.75;
+
+			/* https://css-tricks.com/various-methods-for-expanding-a-box-while-preserving-the-border-radius/#aa-changing-scale */
+			--🥝switch-thumb-transform: scaleX(var(--✨pressed-scaleX));
+			--🥝switch-thumb-radius: calc(var(--✨radius) / var(--✨pressed-scaleX)) / var(--✨radius);
 		}
 
 		&:where(:disabled, [aria-disabled="true"]) {

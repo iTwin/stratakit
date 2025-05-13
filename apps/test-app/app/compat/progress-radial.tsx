@@ -17,13 +17,24 @@ export default definePage(function Page() {
 				))}
 			</div>
 
-			<br style={{ margin: "10px 0" }} />
+			<br />
+
+			{/* Partially implemented props: children */}
+			<ProgressRadial>50</ProgressRadial>
+
+			<br style={{ margin: "20px 0" }} />
+
+			{/* No-op props */}
+			<ProgressRadial indeterminate={true} />
+
+			<br style={{ margin: "20px 0" }} />
 
 			{/* Not implemented props */}
-			<ProgressRadial value={50} />
-			<ProgressRadial indeterminate />
-			<ProgressRadial status={"positive"} value={50} />
-			<ProgressRadial value={50}>50</ProgressRadial>
+			<div style={{ display: "flex", gap: 4, alignItems: "center" }}>
+				<ProgressRadial value={50} />
+				<ProgressRadial indeterminate />
+				<ProgressRadial status={"positive"} value={50} />
+			</div>
 		</div>
 	);
 });

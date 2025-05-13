@@ -23,7 +23,30 @@ interface ToggleSwitchProps
 	icon?: IuiSwitchProps["icon"];
 }
 
-/** @see https://itwinui.bentley.com/docs/toggleswitch */
+/**
+ * @see https://itwinui.bentley.com/docs/toggleswitch
+ *
+ * **Requirement**: Must enable iTwinUI `ThemeProvider`'s `future.consistentPropsSpread` flag before using this compat component.
+ * This is because `className` and `style` are passed to the `input` instead of the wrapper, similar to when the `future.consistentPropsSpread` flag is enabled.
+ *
+ * Example iTwinUI code before using this compat component:
+ *
+ * @example
+ * import { ThemeProvider, ToggleSwitch } from "@itwin/itwinui-react";
+ *
+ * <ThemeProvider
+ *   future={{
+ *     consistentPropsSpread: true // 👈 Must be enabled
+ *   }}
+ * >
+ *   <ToggleSwitch
+ *     label={…}
+ *     className="…" // applied on the `<input />`
+ *     style={{ … }} // applied on the `<input />`
+ *   />
+ * </ThemeProvider>
+ *
+ */
 export const ToggleSwitch = React.forwardRef((props, forwardedRef) => {
 	const {
 		label,

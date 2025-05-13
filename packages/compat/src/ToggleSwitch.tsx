@@ -26,26 +26,11 @@ interface ToggleSwitchProps
 /**
  * @see https://itwinui.bentley.com/docs/toggleswitch
  *
- * **Requirement**: Must enable iTwinUI `ThemeProvider`'s `future.consistentPropsSpread` flag before using this compat component.
- * This is because `className` and `style` are passed to the `input` instead of the wrapper, similar to when the `future.consistentPropsSpread` flag is enabled.
+ * In `@itwinui-react`, `ToggleSwitch`'s `className` and `style` are passed to the `<input>`. But in `@stratakit/react`,
+ * they are passed to the wrapper instead.
  *
- * Example iTwinUI code before using this compat component:
- *
- * @example
- * import { ThemeProvider, ToggleSwitch } from "@itwin/itwinui-react";
- *
- * <ThemeProvider
- *   future={{
- *     consistentPropsSpread: true // 👈 Must be enabled
- *   }}
- * >
- *   <ToggleSwitch
- *     label={…}
- *     className="…" // applied on the `<input />`
- *     style={{ … }} // applied on the `<input />`
- *   />
- * </ThemeProvider>
- *
+ * Thus, for a smooth transition, the `future.consistentPropsSpread` flag should be enabled in an ancestral
+ * `ThemeProvider` *before* moving to `@stratakit/react`. Once in `@stratakit/react`, the flag can be removed.
  */
 export const ToggleSwitch = React.forwardRef((props, forwardedRef) => {
 	const {

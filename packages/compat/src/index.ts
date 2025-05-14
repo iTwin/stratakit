@@ -8,6 +8,7 @@ export { Anchor } from "./Anchor.js";
 export { Divider } from "./Divider.js";
 export { Kbd, KbdKeys } from "./Kbd.js";
 export { Label } from "./Label.js";
+export { ProgressLinear } from "./ProgressLinear.js";
 export { ProgressRadial } from "./ProgressRadial.js";
 export { Text } from "./Text.js";
 export { Tooltip } from "./Tooltip.js";

@@ -39,6 +39,7 @@ export const components = {
 		"Divider",
 		"Kbd",
 		"Label",
+		"ProgressLinear",
 		"ProgressRadial",
 		"Text",
 		"Tooltip",

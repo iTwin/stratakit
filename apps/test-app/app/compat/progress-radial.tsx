@@ -19,19 +19,15 @@ export default definePage(function Page() {
 
 			<br />
 
-			{/* Partially implemented props: children */}
-			<ProgressRadial>50</ProgressRadial>
-
-			<br style={{ margin: "20px 0" }} />
-
 			{/* No-op props */}
-			<ProgressRadial indeterminate={true} />
+			<ProgressRadial indeterminate={false} />
 
 			<br style={{ margin: "20px 0" }} />
 
 			{/* Not implemented props */}
 			<div style={{ display: "flex", gap: 4, alignItems: "center" }}>
 				<ProgressRadial value={50} />
+				<ProgressRadial>50</ProgressRadial>
 				<ProgressRadial indeterminate />
 				<ProgressRadial status={"positive"} value={50} />
 			</div>

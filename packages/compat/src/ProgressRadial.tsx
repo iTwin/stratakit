@@ -24,13 +24,7 @@ interface ProgressRadialProps
 	indeterminate?: IuiSpinnerProps["indeterminate"];
 	/** NOT IMPLEMENTED */
 	status?: IuiSpinnerProps["status"];
-	/**
-	 * PARTIALLY IMPLEMENTED.
-	 *
-	 * - If `children` is passed and it is a string, it now replaces the visually hidden "Loading…" text.
-	 * Thus, the previously *visual* `children` are now *visually hidden*.
-	 * - Else, the visually hidden "Loading…" text is continued to be used.
-	 */
+	/** NOT IMPLEMENTED */
 	children?: IuiSpinnerProps["children"];
 }
 
@@ -40,7 +34,7 @@ export const ProgressRadial = React.forwardRef((props, forwardedRef) => {
 		value, // NOT IMPLEMENTED
 		indeterminate, // NO-OP
 		status, // NOT IMPLEMENTED
-		children, // PARTIALLY IMPLEMENTED
+		children, // NOT IMPLEMENTED
 		size: sizeProp,
 		...rest
 	} = useCompatProps(props);
@@ -60,14 +54,6 @@ export const ProgressRadial = React.forwardRef((props, forwardedRef) => {
 		return undefined;
 	}, [sizeProp]);
 
-	const alt = React.useMemo(() => {
-		if (children && typeof children === "string") {
-			return children;
-		}
-
-		return undefined;
-	}, [children]);
-
-	return <SkSpinner {...rest} ref={forwardedRef} size={size} alt={alt} />;
+	return <SkSpinner {...rest} ref={forwardedRef} size={size} />;
 }) as PolymorphicForwardRefComponent<"div", ProgressRadialProps>;
 DEV: ProgressRadial.displayName = "ProgressRadial";

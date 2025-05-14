@@ -1032,6 +1032,7 @@ function Subheader({ tabs }: { tabs?: React.ReactNode }) {
 
 	const searchInputRef = React.useRef<HTMLInputElement>(null);
 	const tabsRef = React.useRef<HTMLHeadingElement>(null);
+	const subHeaderRef = React.useRef<HTMLDivElement>(null);
 	const subHeaderContentRef = React.useRef<HTMLDivElement>(null);
 
 	const [isSearchboxVisible, setIsSearchboxVisible] = React.useState(!tabs);
@@ -1076,15 +1077,31 @@ function Subheader({ tabs }: { tabs?: React.ReactNode }) {
 	const [isOverflowing, setIsOverflowing] = React.useState(false);
 
 	React.useEffect(() => {
+		const subHeader = subHeaderRef.current;
+		if (!subHeader) return;
 		const subHeaderContent = subHeaderContentRef.current;
 		if (!subHeaderContent) return;
 		const tabs = tabsRef.current;
 		if (!tabs) return;
+
 		const ro = new ResizeObserver(() => {
-			setIsOverflowing(
-				!isSearchboxVisible && tabs.clientWidth > subHeaderContent.clientWidth,
-			);
+			const overflow =
+				!isSearchboxVisible && tabs.clientWidth > subHeader.clientWidth;
+
+			const subHeaderHeight = subHeader.getBoundingClientRect().height;
+			// const subHeaderHeightAdjusted = Number.isInteger(subHeaderHeight)
+			// 	? subHeaderHeight - 1
+			// 	: Math.floor(subHeaderHeight);
+
+			const scrollbarHeight = overflow
+				? `${Math.floor(subHeaderHeight) - subHeaderContent.clientHeight}px`
+				: "auto";
+
+			subHeader.style.setProperty("--ids-scrollbar-height", scrollbarHeight);
+
+			setIsOverflowing(overflow);
 		});
+		ro.observe(subHeader);
 		ro.observe(subHeaderContent);
 		ro.observe(tabs);
 		return () => {
@@ -1092,18 +1109,27 @@ function Subheader({ tabs }: { tabs?: React.ReactNode }) {
 		};
 	}, [isSearchboxVisible]);
 
+	React.useEffect(() => {
+		const subHeader = subHeaderRef.current;
+		if (!subHeader) return;
+
+		if (isSearchboxVisible) {
+			subHeader.style.setProperty("--ids-scrollbar-height", "auto");
+		}
+	}, [isSearchboxVisible]);
+
 	return (
-		<div
-			className={styles.subheader}
-			ref={subHeaderContentRef}
-			data-overflow={isOverflowing && !isSearchboxVisible}
-		>
+		<div className={styles.subheader} ref={subHeaderRef}>
 			<VisuallyHidden aria-live="polite" aria-atomic={true}>
 				{filteredNotification}
 			</VisuallyHidden>
 
 			{tabs && !isSearchboxVisible ? (
-				<div className={styles.subheaderXYZ}>
+				<div
+					className={styles.subheaderContent}
+					data-overflow={isOverflowing && !isSearchboxVisible}
+					ref={subHeaderContentRef}
+				>
 					<Tabs.TabList className={styles.tabList} tone="accent" ref={tabsRef}>
 						{tabs}
 					</Tabs.TabList>

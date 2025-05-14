@@ -97,11 +97,7 @@
 	align-items: center;
 	grid-template-columns: [full-width-start] 1fr [actions-start] auto [full-width-end];
 	/* grid-template-rows: [full-height-start] calc(1rem + 24px) [tabs-height-end] 8px [full-height-end]; */
-	grid-template-rows: [full-height-start] 1fr [tabs-height-end] auto [full-height-end];
-
-	&:where([data-overflow="true"]) {
-		grid-template-rows: [full-height-start] 1fr [tabs-height-end] 17px [full-height-end]; /* 17px as placeholder for scrollbar height */
-	}
+	grid-template-rows: [full-height-start] 1fr [tabs-height-end] var(--ids-scrollbar-height) [full-height-end];
 }
 
 .subheaderTitle {
@@ -129,20 +125,26 @@
 	align-items: center;
 	z-index: 1;
 	padding-inline-end: 12px;
+	min-height: inherit;
 }
 
-.subheaderXYZ {
+.subheaderContent {
 	display: grid;
 	grid-column: full-width-start / full-width-end;
 	grid-row: full-height-start / full-height-end;
 	grid-template-rows: subgrid;
 	scrollbar-gutter: stable;
-	overflow-x: auto;
+	overflow-x: hidden;
 	overflow-y: hidden;
+	align-items: baseline;
+
+	&:where([data-overflow="true"]) {
+		overflow-x: scroll;
+	}
 }
 
 .tabList {
-	align-self: end;
+	/* align-self: end; */
 	margin-block-end: -1px;
 	grid-row: full-height-start / tabs-height-end;
 	padding-inline-start: 8px;

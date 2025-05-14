@@ -17,6 +17,7 @@ import {
 	defaultServerConditions,
 	defineConfig,
 } from "vite";
+import devtoolsJson from "vite-plugin-devtools-json";
 import tsconfigPaths from "vite-tsconfig-paths";
 
 import type { Config as ReactRouterConfig } from "@react-router/dev/config";
@@ -39,7 +40,7 @@ export const reactRouterConfig = {
 
 // https://vite.dev/config/
 export default defineConfig({
-	plugins: [reactRouter(), tsconfigPaths(), bundleCssPlugin()],
+	plugins: [reactRouter(), tsconfigPaths(), bundleCssPlugin(), devtoolsJson()],
 	build: {
 		assetsInlineLimit: (filePath) => {
 			if (filePath.endsWith(".svg")) return false;

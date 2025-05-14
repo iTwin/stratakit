@@ -17,7 +17,7 @@ body {
 	--🥝focus-outline: 2px solid var(--ids-color-border-accent-strong);
 	--🥝focus-outline-offset: 1px;
 	--🥝selection-color-bg: var(--ids-color-bg-accent-base);
-	--🥝selection-color-text: white;
+	--🥝selection-color-text: var(--ids-color-text-neutral-emphasis);
 
 	@media (forced-colors: active) {
 		--🥝focus-outline: 2px solid Highlight;

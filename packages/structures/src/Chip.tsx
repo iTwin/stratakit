@@ -4,10 +4,10 @@
  *--------------------------------------------------------------------------------------------*/
 
 import { Role } from "@ariakit/react/role";
+import { IconButton } from "@stratakit/bricks";
 import { forwardRef } from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
 import * as React from "react";
-import { IconButton } from "./IconButton.js";
 import { Dismiss } from "./~utils.icons.js";
 
 import type { BaseProps } from "@stratakit/foundations/secret-internals";

@@ -2,10 +2,11 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-import { unstable_AccordionItem as AccordionItem } from "@stratakit/bricks";
 import { Icon } from "@stratakit/foundations";
-import placeholderIcon from "@stratakit/icons/placeholder.svg";
+import { unstable_AccordionItem as AccordionItem } from "@stratakit/structures";
 import { definePage } from "~/~utils.tsx";
+
+import placeholderIcon from "@stratakit/icons/placeholder.svg";
 
 export default definePage(
 	function Page({

@@ -4,8 +4,9 @@
  *--------------------------------------------------------------------------------------------*/
 
 import * as Disclosure from "@ariakit/react/disclosure";
-import { Button, Divider, Table, Text } from "@stratakit/bricks";
+import { Button, Divider, Text } from "@stratakit/bricks";
 import { Icon } from "@stratakit/foundations";
+import { Table } from "@stratakit/structures";
 import { parseTokens } from "internal/lightningcss-visitors.js";
 import rawDarkTokens from "internal/theme-dark.json";
 import rawLightTokens from "internal/theme-light.json";

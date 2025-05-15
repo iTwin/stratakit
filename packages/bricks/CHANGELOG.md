@@ -2,7 +2,7 @@
 
 ## 0.2.0
 
-### Minor Changes
+### Breaking changes
 
 - [#704](https://github.com/iTwin/design-system/pull/704): The following components have been moved from `@stratakit/bricks` into `@stratakit/structures`.
 
@@ -18,10 +18,10 @@
 
 - [#708](https://github.com/iTwin/design-system/pull/708): The previously-deprecated `Root` and `Icon` components have been removed from `@stratakit/bricks`, since they were moved to `@stratakit/foundations`.
 
-### Patch Changes
+### Non-breaking changes
 
 - Updated dependencies:
-  - @stratakit/foundations@0.1.2
+  - @stratakit/foundations@0.1.3
 
 ## 0.1.2
 

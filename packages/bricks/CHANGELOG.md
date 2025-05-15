@@ -1,5 +1,28 @@
 # Changelog
 
+## 0.2.0
+
+### Minor Changes
+
+- [#704](https://github.com/iTwin/design-system/pull/704): The following components have been moved from `@stratakit/bricks` into `@stratakit/structures`.
+
+  - `unstable_AccordionItem`
+  - `unstable_Banner`
+  - `Chip`
+  - `DropdownMenu`
+  - `unstable_ErrorRegion`
+  - `Table`
+  - `Tabs`
+  - `unstable_Toolbar`
+  - `Tree`
+
+- [#708](https://github.com/iTwin/design-system/pull/708): The previously-deprecated `Root` and `Icon` components have been removed from `@stratakit/bricks`, since they were moved to `@stratakit/foundations`.
+
+### Patch Changes
+
+- Updated dependencies:
+  - @stratakit/foundations@0.1.2
+
 ## 0.1.2
 
 - [#686](https://github.com/iTwin/design-system/pull/686): Corrected font weight of `AccordionItem.Label` to 500/medium.

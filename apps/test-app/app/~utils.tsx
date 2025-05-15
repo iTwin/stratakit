@@ -8,7 +8,7 @@ import cx from "classnames";
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { Link, useSearchParams } from "react-router";
-import * as ListItem from "../node_modules/@stratakit/bricks/src/~utils.ListItem.tsx";
+import * as ListItem from "../node_modules/@stratakit/structures/src/~utils.ListItem.tsx";
 import styles from "./~utils.module.css";
 
 import moon from "@stratakit/icons/moon.svg";

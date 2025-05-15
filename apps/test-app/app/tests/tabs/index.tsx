@@ -3,7 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import { Tabs } from "@stratakit/bricks";
+import { Tabs } from "@stratakit/structures";
 import { definePage } from "~/~utils.tsx";
 
 export const handle = { title: "Tabs" };

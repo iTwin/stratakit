@@ -4,17 +4,12 @@
  *--------------------------------------------------------------------------------------------*/
 "use client";
 
-export * as unstable_AccordionItem from "./AccordionItem.js";
 export { Anchor } from "./Anchor.js";
 export { Avatar } from "./Avatar.js";
 export { Badge } from "./Badge.js";
-export { Banner as unstable_Banner } from "./Banner.js";
 export { Button } from "./Button.js";
 export { Checkbox } from "./Checkbox.js";
-export { Chip } from "./Chip.js";
 export { Description } from "./Description.js";
-export * as DropdownMenu from "./DropdownMenu.js";
-export * as unstable_ErrorRegion from "./ErrorRegion.js";
 export { Divider } from "./Divider.js";
 export { IconButton } from "./IconButton.js";
 export * as Field from "./Field.js";
@@ -26,13 +21,9 @@ export * as Select from "./Select.js";
 export { Spinner } from "./Spinner.js";
 export { Skeleton } from "./Skeleton.js";
 export { Switch } from "./Switch.js";
-export * as Table from "./Table.js";
-export * as Tabs from "./Tabs.js";
 export { Text } from "./Text.js";
 export * as TextBox from "./TextBox.js";
-export * as unstable_Toolbar from "./Toolbar.js";
 export { Tooltip } from "./Tooltip.js";
-export * as Tree from "./Tree.js";
 export { VisuallyHidden } from "./VisuallyHidden.js";
 
 import { Icon, Root } from "@stratakit/foundations";

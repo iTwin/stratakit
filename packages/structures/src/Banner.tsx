@@ -4,13 +4,12 @@
  *--------------------------------------------------------------------------------------------*/
 
 import { Role } from "@ariakit/react/role";
+import { IconButton, Text } from "@stratakit/bricks";
+import { GhostAligner } from "@stratakit/bricks/secret-internals";
 import { Icon } from "@stratakit/foundations";
 import { forwardRef } from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
 import * as React from "react";
-import { IconButton } from "./IconButton.js";
-import { Text } from "./Text.js";
-import { GhostAligner } from "./~utils.GhostAligner.js";
 import { Dismiss, StatusIcon } from "./~utils.icons.js";
 
 import type { BaseProps } from "@stratakit/foundations/secret-internals";

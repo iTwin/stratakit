@@ -11,6 +11,12 @@
 			"development": "./dist/DEV/index.js",
 			"default": "./dist/index.js"
 		},
+		"./secret-internals": {
+			"@stratakit/source": "./src/secret-internals.ts",
+			"types": "./dist/secret-internals.d.ts",
+			"development": "./dist/DEV/secret-internals.js",
+			"default": "./dist/secret-internals.js"
+		},
 		"./package.json": "./package.json"
 	},
 	"files": ["dist", "CHANGELOG.md", "LICENSE.md"],

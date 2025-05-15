@@ -3,3 +3,15 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
+@import "./~utils.ListItem.css" layer(itwinui.components);
+
+@import "./AccordionItem.css" layer(itwinui.components);
+@import "./Banner.css" layer(itwinui.components);
+@import "./Chip.css" layer(itwinui.components);
+@import "./DropdownMenu.css" layer(itwinui.components);
+@import "./ErrorRegion.css" layer(itwinui.components);
+@import "./Table.css" layer(itwinui.components);
+@import "./Tabs.css" layer(itwinui.components);
+@import "./Toolbar.css" layer(itwinui.components);
+@import "./Tree.css" layer(itwinui.components);
+@import "./TreeItem.css" layer(itwinui.components);

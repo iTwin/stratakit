@@ -1,7 +1,7 @@
 {
-	"name": "@stratakit/bricks",
+	"name": "@stratakit/structures",
 	"type": "module",
-	"version": "0.1.2",
+	"version": "0.1.0",
 	"license": "MIT",
 	"sideEffects": false,
 	"exports": {
@@ -14,13 +14,13 @@
 		"./package.json": "./package.json"
 	},
 	"files": ["dist", "CHANGELOG.md", "LICENSE.md"],
-	"description": "Small, modular components for StrataKit",
+	"description": "Medium-sized component structures for the Strata design system",
 	"author": "Bentley Systems",
 	"homepage": "https://github.com/iTwin/design-system",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/iTwin/design-system.git",
-		"directory": "packages/bricks"
+		"directory": "packages/structures"
 	},
 	"keywords": [
 		"component",
@@ -41,6 +41,7 @@
 	},
 	"dependencies": {
 		"@ariakit/react": "^0.4.17",
+		"@stratakit/bricks": "^0.1.2",
 		"classnames": "^2.5.1"
 	},
 	"devDependencies": {
@@ -61,10 +62,11 @@
 	"wireit": {
 		"build": {
 			"dependencies": [
+				"../foundations:build",
+				"../bricks:build",
 				"build:js",
 				"build:DEV",
-				"build:types",
-				"../foundations:build"
+				"build:types"
 			]
 		},
 		"build:js": {
@@ -82,9 +84,9 @@
 		},
 		"build:types": {
 			"command": "tsc --outDir dist",
+			"dependencies": ["../foundations:build:types", "../bricks:build:types"],
 			"files": ["src"],
-			"output": ["dist/**/*.d.ts"],
-			"dependencies": ["../foundations:build:types"]
+			"output": ["dist/**/*.d.ts"]
 		},
 		"dev": {
 			"command": "tsc --watch --outDir dist",

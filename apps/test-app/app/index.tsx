@@ -73,6 +73,20 @@ export default function Index() {
 			</ul>
 
 			<Text variant="headline-md" render={<h2 />} className={styles.h2}>
+				Structures
+			</Text>
+
+			<ul className={styles.list}>
+				{components.structures.map((component) => (
+					<li key={component}>
+						<Anchor render={<Link to={`/tests/${toKebabCase(component)}`} />}>
+							{component}
+						</Anchor>
+					</li>
+				))}
+			</ul>
+
+			<Text variant="headline-md" render={<h2 />} className={styles.h2}>
 				Compat
 			</Text>
 

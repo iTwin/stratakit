@@ -17,7 +17,11 @@ export default [
 	route(
 		"tests",
 		"./tests/tests.tsx",
-		[...components.foundations, ...components.bricks].map((component) =>
+		[
+			...components.foundations,
+			...components.bricks,
+			...components.structures,
+		].map((component) =>
 			route(
 				toKebabCase(component),
 				`./tests/${toKebabCase(component)}/index.tsx`,

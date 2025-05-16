@@ -3,8 +3,8 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import { Tree } from "@stratakit/bricks";
 import { Icon } from "@stratakit/foundations";
+import { Tree } from "@stratakit/structures";
 import { produce } from "immer";
 import * as React from "react";
 import { definePage } from "~/~utils.tsx";

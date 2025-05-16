@@ -8,11 +8,13 @@ import {
 	DisclosureProvider,
 } from "@ariakit/react/disclosure";
 import { Role } from "@ariakit/react/role";
+import { Text } from "@stratakit/bricks";
+import {
+	GhostAligner,
+	IconButtonPresentation,
+} from "@stratakit/bricks/secret-internals";
 import { forwardRef } from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
-import { IconButtonPresentation } from "./IconButton.internal.js";
-import { Text } from "./Text.js";
-import { GhostAligner } from "./~utils.GhostAligner.js";
 import { ChevronDown } from "./~utils.icons.js";
 
 import type { BaseProps } from "@stratakit/foundations/secret-internals";

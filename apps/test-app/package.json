@@ -20,7 +20,8 @@
 		"@stratakit/foundations": "workspace:*",
 		"@stratakit/icons": "workspace:*",
 		"@stratakit/react": "workspace:*",
-		"@tanstack/react-query": "^5.76.0",
+		"@stratakit/structures": "workspace:*",
+		"@tanstack/react-query": "^5.76.1",
 		"classnames": "^2.5.1",
 		"immer": "^10.1.1",
 		"isbot": "^5.1.28",
@@ -48,6 +49,7 @@
 			"dependencies": [
 				"../../packages/foundations:build",
 				"../../packages/bricks:build",
+				"../../packages/structures:build",
 				"../../packages/icons:build"
 			],
 			"files": ["app", "vite.config.ts", "react-router.config.ts"],
@@ -61,7 +63,8 @@
 			"dependencies": [
 				"../../packages/icons:build",
 				"../../packages/foundations:dev",
-				"../../packages/bricks:dev"
+				"../../packages/bricks:dev",
+				"../../packages/structures:dev"
 			],
 			"service": true
 		},

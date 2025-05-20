@@ -5,20 +5,22 @@
 import {
 	Anchor,
 	Button,
-	DropdownMenu,
-	unstable_ErrorRegion as ErrorRegion,
 	Field,
 	IconButton,
 	Select,
 	Skeleton,
-	Tabs,
 	Text,
 	TextBox,
-	unstable_Toolbar as Toolbar,
-	Tree,
 	VisuallyHidden,
 } from "@stratakit/bricks";
 import { Icon } from "@stratakit/foundations";
+import {
+	DropdownMenu,
+	unstable_ErrorRegion as ErrorRegion,
+	Tabs,
+	unstable_Toolbar as Toolbar,
+	Tree,
+} from "@stratakit/structures";
 import { useQuery } from "@tanstack/react-query";
 import cx from "classnames";
 import { produce } from "immer";

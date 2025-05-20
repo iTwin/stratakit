@@ -23,7 +23,7 @@
 		"colorjs.io": "^0.5.2",
 		"fast-glob": "^3.3.3",
 		"internal": "workspace:*",
-		"lefthook": "^1.11.12",
+		"lefthook": "^1.11.13",
 		"prettier": "3.5.3",
 		"tsx": "^4.19.4",
 		"typescript": "catalog:",

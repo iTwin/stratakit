@@ -2,4 +2,4 @@
 "@stratakit/foundations": patch
 ---
 
-Add global `::selection` styling.
+Added global `::selection` styling.

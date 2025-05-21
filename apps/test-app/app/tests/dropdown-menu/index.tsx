@@ -3,7 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import { DropdownMenu } from "@stratakit/bricks";
+import { DropdownMenu } from "@stratakit/structures";
 import { definePage } from "~/~utils.tsx";
 
 import placeholderIcon from "@stratakit/icons/placeholder.svg";

@@ -14,8 +14,7 @@
 
 		"baseUrl": ".",
 		"paths": {
-			"~/*": ["./app/*"],
-			"@stratakit/bricks-internal/*": ["./node_modules/@stratakit/bricks/*"]
+			"~/*": ["./app/*"]
 		},
 		"rootDirs": [".", "./.react-router/types"],
 

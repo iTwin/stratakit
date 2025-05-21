@@ -3,8 +3,9 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import { Divider, Table } from "@stratakit/bricks";
+import { Divider } from "@stratakit/bricks";
 import { Icon } from "@stratakit/foundations";
+import { Table } from "@stratakit/structures";
 import globalStyles from "./icons.css?url";
 
 import iconsListJson from "@stratakit/icons/icons-list.json";

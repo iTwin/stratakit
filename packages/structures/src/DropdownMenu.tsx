@@ -14,6 +14,12 @@ import {
 } from "@ariakit/react/menu";
 import { usePopoverContext } from "@ariakit/react/popover";
 import { useStoreState } from "@ariakit/react/store";
+import { Button, Kbd } from "@stratakit/bricks";
+import {
+	DisclosureArrow,
+	Dot,
+	predefinedSymbols,
+} from "@stratakit/bricks/secret-internals";
 import { Icon } from "@stratakit/foundations";
 import {
 	forwardRef,
@@ -21,23 +27,19 @@ import {
 } from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
 import * as React from "react";
-import { Button } from "./Button.js";
-import { predefinedSymbols } from "./Kbd.internal.js";
-import { Kbd } from "./Kbd.js";
-import { Dot } from "./~utils.Dot.js";
 import * as ListItem from "./~utils.ListItem.js";
-import { Checkmark, DisclosureArrow } from "./~utils.icons.js";
+import { Checkmark } from "./~utils.icons.js";
 
 import type {
 	MenuItemCheckboxProps,
 	MenuProviderProps,
 } from "@ariakit/react/menu";
+import type { PredefinedSymbol } from "@stratakit/bricks/secret-internals";
 import type {
 	AnyString,
 	BaseProps,
 	FocusableProps,
 } from "@stratakit/foundations/secret-internals";
-import type { PredefinedSymbol } from "./Kbd.internal.js";
 
 // ----------------------------------------------------------------------------
 

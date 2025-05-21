@@ -12,9 +12,11 @@
 		display: grid;
 		/* biome-ignore format: improve readability */
 		grid-template-columns:
-			[decoration-before-start] auto [decoration-before-end
+			[marker-before-start] auto [marker-before-end
+			decoration-before-start] auto [decoration-before-end
 			content-start] minmax(0, 1fr) [content-end
-			decoration-after-start] auto [decoration-after-end];
+			decoration-after-start] auto [decoration-after-end
+			marker-after-start] auto [marker-after-end];
 		grid-template-rows: [header-start] auto [header-end content-start] auto [content-end];
 		border-block-end: 1px solid var(--ids-color-border-neutral-muted);
 	}
@@ -29,7 +31,7 @@
 .🥝-accordion-item-header {
 	@layer base {
 		grid-row: header;
-		grid-column: decoration-before-start / decoration-after-end;
+		grid-column: marker-before-start / marker-after-end;
 
 		position: relative;
 		display: grid;
@@ -48,11 +50,17 @@
 .🥝-accordion-item-marker {
 	@layer base {
 		grid-row: 1;
-		grid-column: decoration-after;
-		margin-inline-start: var(--🥝accordion-item-gap);
+		grid-column: marker-before;
+		margin-inline-end: var(--🥝accordion-item-gap);
 		/* TODO: We can only use GhostAligner to apply alignment to block or inline, so we’re manually applying it here. */
-		margin-inline-end: calc(-1 * var(--🥝ghost-inline-offset));
+		margin-inline-start: calc(-1 * var(--🥝ghost-inline-offset));
 		pointer-events: none;
+
+		:where(.🥝-accordion-item-heading, .🥝-accordion-item-button) ~ & {
+			grid-column: marker-after;
+			margin-inline-start: var(--🥝accordion-item-gap);
+			margin-inline-end: calc(-1 * var(--🥝ghost-inline-offset));
+		}
 	}
 
 	@layer states {
@@ -115,6 +123,12 @@
 	@layer base {
 		grid-column: decoration-before;
 		margin-inline-end: var(--🥝accordion-item-gap);
+
+		:where(.🥝-accordion-item-heading, .🥝-accordion-item-button) ~ & {
+			grid-column: decoration-after;
+			margin-inline-start: var(--🥝accordion-item-gap);
+			margin-inline-end: 0;
+		}
 	}
 }
 

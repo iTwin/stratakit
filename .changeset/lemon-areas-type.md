@@ -1,5 +1,5 @@
 ---
-"@stratakit/foundations": minor
+"@stratakit/foundations": patch
 ---
 
-Add global `::selection` styling for `background-color` and `color`.
+Add global `::selection` styling.

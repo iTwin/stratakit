@@ -21,27 +21,32 @@
 
 			&:where([data-kiwi-tone="neutral"]) {
 				--🥝banner-color-border: var(--ids-color-border-neutral-base);
+				--🥝selection-color-bg: var(--ids-color-bg-mono-base);
 			}
 		}
 
 		&:where([data-kiwi-tone="info"]) {
 			--🥝banner-color-border: var(--ids-color-border-info-base);
 			--🥝icon-color: var(--ids-color-icon-info-base);
+			--🥝selection-color-bg: var(--ids-color-bg-info-base);
 		}
 
 		&:where([data-kiwi-tone="positive"]) {
 			--🥝banner-color-border: var(--ids-color-border-positive-base);
 			--🥝icon-color: var(--ids-color-icon-positive-base);
+			--🥝selection-color-bg: var(--ids-color-bg-positive-base);
 		}
 
 		&:where([data-kiwi-tone="attention"]) {
 			--🥝banner-color-border: var(--ids-color-border-attention-base);
 			--🥝icon-color: var(--ids-color-icon-attention-base);
+			--🥝selection-color-bg: var(--ids-color-bg-attention-base);
 		}
 
 		&:where([data-kiwi-tone="critical"]) {
 			--🥝banner-color-border: var(--ids-color-border-critical-base);
 			--🥝icon-color: var(--ids-color-icon-critical-base);
+			--🥝selection-color-bg: var(--ids-color-bg-critical-base);
 		}
 	}
 }

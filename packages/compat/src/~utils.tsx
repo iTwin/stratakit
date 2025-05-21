@@ -75,3 +75,5 @@ export function useCompatProps<P extends { as?: React.ElementType }>(props: P) {
 }
 
 // ----------------------------------------------------------------------------
+
+export { getUserColor } from "@itwin/itwinui-react";

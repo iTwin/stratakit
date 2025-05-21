@@ -22,7 +22,7 @@ catalogs:
       specifier: ^0.25.3
       version: 0.25.4
     lightningcss:
-      specifier: ^1.30.1
+      specifier: ^1.29.3
       version: 1.30.1
     react:
       specifier: ^19.1.0
@@ -76,6 +76,9 @@ importers:
       "@ariakit/react":
         specifier: ^0.4.17
         version: 0.4.17(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+      "@itwin/itwinui-icons-react":
+        specifier: ^2.10.0
+        version: 2.10.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       "@react-router/node":
         specifier: ^7.6.0
         version: 7.6.0(react-router@7.6.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(typescript@5.8.3)
@@ -927,6 +930,15 @@ packages:
         integrity: sha512-O8jcjabXaleOG9DQ0+ARXWZBTfnP4WNAqzuiJK7ll44AmxGKv/J2M4TPjxjY3znBCfvBXFzucm1twdyFybFqEA==,
       }
     engines: { node: ">=12" }
+
+  "@itwin/itwinui-icons-react@2.10.0":
+    resolution:
+      {
+        integrity: sha512-yTaVxal/DAT0Y+MVo92q+2iiJG/IL9c9MDt+TcK6HHzudZlnLVZ9RAwmvL0K747Oq6UzCsBw8ykNzTfa+U69qA==,
+      }
+    peerDependencies:
+      react: ">=16.8.6"
+      react-dom: ">=16.8.6"
 
   "@itwin/itwinui-illustrations-react@2.1.0":
     resolution:
@@ -3063,6 +3075,11 @@ snapshots:
       strip-ansi-cjs: strip-ansi@6.0.1
       wrap-ansi: 8.1.0
       wrap-ansi-cjs: wrap-ansi@7.0.0
+
+  "@itwin/itwinui-icons-react@2.10.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0)":
+    dependencies:
+      react: 19.1.0
+      react-dom: 19.1.0(react@19.1.0)
 
   "@itwin/itwinui-illustrations-react@2.1.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0)":
     dependencies:

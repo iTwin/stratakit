@@ -29,8 +29,6 @@
 			--🥝badge-border-color: var(--ids-color-border-glow-strong-default);
 			--🥝badge-text-color: var(--ids-color-text-neutral-emphasis);
 
-			--🥝selection-color-text: var(--ids-color-text-neutral-primary);
-
 			&:where([data-kiwi-tone="neutral"]) {
 				--🥝badge-background-color: var(--ids-color-bg-mono-base);
 			}

@@ -39,19 +39,17 @@ export const ProgressRadial = React.forwardRef((props, forwardedRef) => {
 		...rest
 	} = useCompatProps(props);
 
-	const size: SkSpinnerProps["size"] = React.useMemo(() => {
+	const size = React.useMemo<SkSpinnerProps["size"]>(() => {
 		switch (sizeProp) {
 			case "x-small":
 				return "small";
 			case "small":
 				return "medium";
-			case "":
-				return "large";
 			case "large":
 				return "xlarge";
 		}
 
-		return undefined;
+		return "large";
 	}, [sizeProp]);
 
 	return <SkSpinner {...rest} ref={forwardedRef} size={size} />;

@@ -12,7 +12,7 @@ export default definePage(function Page() {
 	return (
 		<div style={{ padding: "1rem" }}>
 			<div style={{ display: "flex", gap: 4, alignItems: "center" }}>
-				{(["x-small", "small", undefined, "large"] as const).map((size) => (
+				{(["x-small", "small", "", undefined, "large"] as const).map((size) => (
 					<ProgressRadial key={size} size={size} />
 				))}
 			</div>

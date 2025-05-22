@@ -55,11 +55,11 @@ type TagProps = {
 /** @see https://itwinui.bentley.com/docs/tag */
 export const Tag = React.forwardRef((props, forwardedRef) => {
 	const {
+		render = <span />,
 		children,
 		onRemove,
-		render = <span />,
-		variant, // NOT IMPLEMENTED
 		removeButtonProps, // NOT IMPLEMENTED
+		variant, // NOT IMPLEMENTED
 		labelProps, // NOT IMPLEMENTED
 		...rest
 	} = useCompatProps(props);

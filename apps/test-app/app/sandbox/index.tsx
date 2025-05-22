@@ -27,11 +27,12 @@ import { produce } from "immer";
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { useSearchParams } from "react-router";
+import { toUpperCamelCase } from "~/~utils.tsx";
+
+import styles from "./index.module.css";
 import model1Url from "./sandbox.model1.json?url";
 import model2Url from "./sandbox.model2.json?url";
 import model3Url from "./sandbox.model3.json?url";
-import styles from "./sandbox.module.css";
-import { toUpperCamelCase } from "./~utils.tsx";
 
 import type { UseQueryResult } from "@tanstack/react-query";
 import type { MetaFunction } from "react-router";

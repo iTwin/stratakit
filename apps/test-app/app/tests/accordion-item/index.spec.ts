@@ -8,17 +8,17 @@ import { expect, test } from "#playwright";
 test("default", async ({ page }) => {
 	await page.goto("/tests/accordion-item");
 
-	const trigger = page.getByTestId("trigger");
+	const button = page.getByTestId("button");
 	const content = page.getByTestId("content");
 
-	await expect(trigger).toMatchAriaSnapshot(`
+	await expect(button).toMatchAriaSnapshot(`
 		- button "Label" [expanded=false]
 	`);
 	await expect(content).not.toBeVisible();
 
-	trigger.click();
+	button.click();
 
-	await expect(trigger).toMatchAriaSnapshot(`
+	await expect(button).toMatchAriaSnapshot(`
 		- button "Label" [expanded=true]
 	`);
 	await expect(content).toBeVisible();
@@ -97,8 +97,8 @@ test.describe("@a11y", () => {
 			// Skip the trigger test for the visual route
 			if (params.has("visual")) return;
 
-			const trigger = page.getByRole("button", { name: "Label" });
-			await trigger.click();
+			const button = page.getByRole("button", { name: "Label" });
+			await button.click();
 
 			accessibilityScan = await axe.analyze();
 			await expect(accessibilityScan.violations).toEqual([]);

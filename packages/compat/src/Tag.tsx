@@ -77,6 +77,7 @@ export const Tag = React.forwardRef((props, forwardedRef) => {
 
 	const onDismiss = React.useMemo(() => {
 		if (!onRemove) return undefined;
+		// Workaround that relies on the internal implementation of the `Chip` component, until composition API is implemented.
 		return (event?: React.MouseEvent) => {
 			if (!event) return;
 			onRemove(event);

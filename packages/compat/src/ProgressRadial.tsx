@@ -20,7 +20,7 @@ interface ProgressRadialProps
 	> {
 	/** NOT IMPLEMENTED */
 	value?: IuiSpinnerProps["value"];
-	/** NO-OP. Always in indeterminate mode. */
+	/** NOT IMPLEMENTED. At the moment, always will be in indeterminate mode regardless of this prop's value. */
 	indeterminate?: IuiSpinnerProps["indeterminate"];
 	/** NOT IMPLEMENTED */
 	status?: IuiSpinnerProps["status"];
@@ -32,7 +32,7 @@ interface ProgressRadialProps
 export const ProgressRadial = React.forwardRef((props, forwardedRef) => {
 	const {
 		value, // NOT IMPLEMENTED
-		indeterminate, // NO-OP
+		indeterminate, // NOT IMPLEMENTED
 		status, // NOT IMPLEMENTED
 		children, // NOT IMPLEMENTED
 		size: sizeProp,

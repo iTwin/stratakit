@@ -42,15 +42,15 @@ interface ErrorRegionRootProps extends Omit<BaseProps, "children"> {
 	 */
 	items?: React.ReactNode;
 	/**
-	 * The controlled expanded state of the error.
+	 * The controlled open state of the region.
 	 */
-	expanded?: boolean;
+	open?: boolean;
 	/**
-	 * Callback fired when the error is expanded.
+	 * Callback fired when the region is open.
 	 *
-	 * Should be used with the `expanded` prop.
+	 * Should be used with the `open` prop.
 	 */
-	onExpandedChange?: (expanded: boolean) => void;
+	setOpen?: (open: boolean) => void;
 }
 
 /**
@@ -76,15 +76,21 @@ interface ErrorRegionRootProps extends Omit<BaseProps, "children"> {
  */
 const ErrorRegionRoot = forwardRef<"div", ErrorRegionRootProps>(
 	(props, forwardedRef) => {
-		const { label, items, expanded, onExpandedChange, ...rest } = props;
+		const {
+			label,
+			items,
+			open: openProp,
+			setOpen: setOpenProp,
+			...rest
+		} = props;
 		const labelId = React.useId();
 		const sectionLabelledBy =
 			props["aria-labelledby"] ?? (props["aria-label"] ? undefined : labelId);
 
 		const [open, setOpen] = useControlledState(
 			false,
-			expanded,
-			onExpandedChange as React.Dispatch<React.SetStateAction<boolean>>,
+			openProp,
+			setOpenProp as React.Dispatch<React.SetStateAction<boolean>>,
 		);
 
 		const containerRef = React.useRef<HTMLDivElement>(null);

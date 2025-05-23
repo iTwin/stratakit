@@ -3,7 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import { Tabs } from "@stratakit/react";
+import { Tab, Tabs } from "@stratakit/react";
 import * as React from "react";
 import { definePage } from "~/~utils.tsx";
 
@@ -28,6 +28,15 @@ export default definePage(function Page() {
 				contentClassName="contentClassName"
 			>
 				classNames
+			</Tabs>
+			<Tabs
+				labels={[
+					<Tab key={1} label="Tab 1" />,
+					<Tab key={2} label="Tab 2" disabled />,
+					<Tab key={3} label="Tab3" />,
+				]}
+			>
+				Using legacy Tab component
 			</Tabs>
 		</div>
 	);

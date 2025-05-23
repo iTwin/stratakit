@@ -9,7 +9,7 @@ import { useCompatProps } from "./~utils.tsx";
 
 import type { Divider as IuiDivider } from "@itwin/itwinui-react";
 import type { PolymorphicForwardRefComponent } from "./~utils.tsx";
-
+// changed file test
 type IuiDividerProps = React.ComponentProps<typeof IuiDivider>;
 
 interface DividerProps extends Pick<IuiDividerProps, "orientation"> {}

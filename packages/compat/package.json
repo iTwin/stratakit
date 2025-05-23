@@ -34,7 +34,8 @@
 	"scripts": {},
 	"dependencies": {
 		"@itwin/itwinui-react": "^3.18.2",
-		"@stratakit/bricks": "^0.2.0"
+		"@stratakit/bricks": "^0.2.0",
+		"@stratakit/structures": "^0.1.1"
 	},
 	"devDependencies": {
 		"@stratakit/foundations": "workspace:*",

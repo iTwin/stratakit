@@ -26,7 +26,7 @@ export const components = {
 	],
 	structures: [
 		"AccordionItem",
-    "AvatarGroup",
+		"AvatarGroup",
 		"Banner",
 		"Chip",
 		"DropdownMenu",

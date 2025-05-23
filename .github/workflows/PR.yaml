@@ -61,8 +61,6 @@ jobs:
 
             const prNumber = pr.number;
             const prAuthor = context.actor;
-            const prBody = pr.body || "";
-            console.log('body', prBody);
 
             try {
 

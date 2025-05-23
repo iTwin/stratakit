@@ -11,10 +11,7 @@ import type { Tag as IuiTag } from "@itwin/itwinui-react";
 import type { PolymorphicForwardRefComponent } from "./~utils.tsx";
 
 type IuiTagProps = React.ComponentProps<typeof IuiTag>;
-
-type IuiVariant<T extends IuiTagProps["variant"]> = T;
-type IuiDefaultVariant = IuiVariant<"default">;
-type IuiBasicVariant = IuiVariant<"basic">;
+type IuiTagVariant<T extends IuiTagProps["variant"]> = T;
 
 type TagProps = {
 	/**
@@ -40,13 +37,13 @@ type TagProps = {
 } & (
 	| {
 			/** NOT IMPLEMENTED. */
-			variant?: IuiDefaultVariant;
+			variant?: IuiTagVariant<"default">;
 			/** NOT IMPLEMENTED. */
 			labelProps?: IuiTagProps["labelProps"];
 	  }
 	| {
 			/** NOT IMPLEMENTED. */
-			variant?: IuiBasicVariant;
+			variant?: IuiTagVariant<"basic">;
 			/** NOT IMPLEMENTED. */
 			labelProps?: never;
 	  }

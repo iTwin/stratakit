@@ -2,5 +2,5 @@
 "@stratakit/structures": minor
 ---
 
-Renamed `onExpandedChange` prop to `setOpen` for `ErrorRegion`.
-Renamed `expanded` prop to `open` for `ErrorRegion`.
+Renamed `onExpandedChange` prop for `unstable_ErrorRegion.Root` to `setOpen`.
+Renamed `expanded` prop for `unstable_ErrorRegion.Root` to `open`.

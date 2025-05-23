@@ -133,17 +133,22 @@ jobs:
 
             const prNumber = pr.number;
             const prAuthor = context.actor;
-            const headBranch = pr.head.ref;
 
             const labelsToAdd = new Set();
 
             // helper function to add label
-            function addLabel(label, labelNames) {
+            function addLabel(path, label, labelNames) {
 
               // get component label
               const componentLabel = `component: ${label}`;
               if (labelNames.has(componentLabel)) {
                 labelsToAdd.add(componentLabel);
+              }
+
+              // add API bridge label if under compat
+              if (path.startsWith('compat/')) {
+                console.log('part of compat, add API bridge');
+                labelsToAdd.add('API bridge');
               }
             }
 
@@ -185,16 +190,10 @@ jobs:
 
                   if (relativePath.startsWith('bricks/src') || relativePath.startsWith('compat/') || relativePath.startsWith('structures/src')) {
 
-                    // add API bridge label if under compat
-                    if (relativePath.startsWith('compat/')) {
-                      console.log('part of compat, add API bridge');
-                      labelsToAdd.add('API bridge');
-                    }
-
                     // isolate name of file changed
                     const changedFile = relativePath.split('/').pop().split('.')[0];
                     console.log('isolated component name', changedFile);
-                    addLabel(changedFile, labelNames);
+                    addLabel(relativePath, changedFile, labelNames);
                   }
                 } else if (fileName.startsWith('apps/test-app/app/')) {
                   console.log('part of test app');
@@ -203,12 +202,6 @@ jobs:
                   console.log('relative path', relativePath);
 
                   if (relativePath.startsWith('tests/') || relativePath.startsWith('compat/')) {
-
-                    // add API bridge label if under compat
-                    if (relativePath.startsWith('compat/')) {
-                      console.log('part of compat, add API bridge');
-                      labelsToAdd.add('API bridge');
-                    }
 
                     // isolate component changed
                     const componentChanged = relativePath.startsWith('tests/') ? relativePath.split('/')[1] : relativePath.split('/').pop().split('.')[0];
@@ -221,7 +214,7 @@ jobs:
                       .join('');
                     console.log('converted to camel case', componentName);
 
-                    addLabel(componentName, labelNames);
+                    addLabel(relativePath, componentName, labelNames);
                   }
                 } else if (fileName.startsWith('.github')) {
                   console.log('part of github');

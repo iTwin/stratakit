@@ -20,7 +20,7 @@ interface BadgeProps
 	 * `undefined`, `"primary"`, `"informational"`, `"positive"`, `"negative"`, `"warning"`.
 	 */
 	backgroundColor?: IuiBadgeProps["backgroundColor"];
-	/** PARTIALLY IMPLEMENTED: No longer gets converted to uppercase and no longer gets truncated if too long. */
+	/** No longer gets converted to uppercase and no longer gets truncated if too long. */
 	children: IuiBadgeProps["children"];
 }
 

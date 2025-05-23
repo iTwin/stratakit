@@ -19,7 +19,11 @@ type IuiTabsType<T extends IuiTabsLegacyProps["type"]> = T;
 
 type TabsProps = Pick<
 	IuiTabsLegacyProps,
-	"labels" | "onTabSelected" | "activeIndex" | "children"
+	| "labels"
+	| "onTabSelected"
+	| "activeIndex"
+	| "focusActivationMode"
+	| "children"
 > & {
 	/**
 	 * Content displayed to the right/bottom of the horizontal/vertical tabs
@@ -30,11 +34,6 @@ type TabsProps = Pick<
 	labels?: IuiTabsLegacyProps["labels"];
 	onTabSelected?: IuiTabsLegacyProps["onTabSelected"];
 	activeIndex?: IuiTabsLegacyProps["activeIndex"];
-	/**
-	 * Control whether focusing tabs (using arrow keys) should automatically select them.
-	 * Use 'manual' if tab panel content is not preloaded.
-	 * @default 'auto'
-	 */
 	focusActivationMode?: IuiTabsLegacyProps["focusActivationMode"];
 	/**
 	 * Color of the bar on the active tab.
@@ -83,8 +82,14 @@ type TabsProps = Pick<
 
 /** @see https://itwinui.bentley.com/docs/tabs */
 export const Tabs = React.forwardRef((props, forwardedRef) => {
-	const { labels, onTabSelected, activeIndex, children, ...rest } =
-		useCompatProps(props);
+	const {
+		labels,
+		onTabSelected,
+		activeIndex,
+		focusActivationMode,
+		children,
+		...rest
+	} = useCompatProps(props);
 
 	const id = React.useId();
 	const tabIds = React.useMemo(() => {
@@ -110,7 +115,11 @@ export const Tabs = React.forwardRef((props, forwardedRef) => {
 		>,
 	);
 	return (
-		<SkTabs.Root setSelectedId={setSelectedId} selectedId={selectedId}>
+		<SkTabs.Root
+			setSelectedId={setSelectedId}
+			selectedId={selectedId}
+			selectOnMove={focusActivationMode === "manual" ? false : undefined}
+		>
 			<SkTabs.TabList ref={forwardedRef}>
 				{labels.map((label, index) => {
 					const tabId = tabIds[index];

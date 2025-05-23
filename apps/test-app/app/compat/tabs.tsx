@@ -16,6 +16,11 @@ export default definePage(function Page() {
 				<Tabs labels={["Tab 1", "Tab 2"]}>Tabs content</Tabs>
 			</div>
 			<ControlledActiveIndex />
+			<div>
+				<Tabs labels={["Tab 1", "Tab 2"]} focusActivationMode="manual">
+					focusActivationMode="manual"
+				</Tabs>
+			</div>
 		</div>
 	);
 });

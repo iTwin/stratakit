@@ -11,7 +11,7 @@ import type { Divider as IuiDivider } from "@itwin/itwinui-react";
 import type { PolymorphicForwardRefComponent } from "./~utils.tsx";
 
 type IuiDividerProps = React.ComponentProps<typeof IuiDivider>;
-// changed file test
+
 interface DividerProps extends Pick<IuiDividerProps, "orientation"> {}
 
 /** @see https://itwinui.bentley.com/docs/divider */

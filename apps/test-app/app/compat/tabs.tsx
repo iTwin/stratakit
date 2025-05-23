@@ -7,7 +7,7 @@ import { Tabs } from "@stratakit/react";
 import * as React from "react";
 import { definePage } from "~/~utils.tsx";
 
-export const handle = { title: "Text" };
+export const handle = { title: "Tabs" };
 
 export default definePage(function Page() {
 	return (

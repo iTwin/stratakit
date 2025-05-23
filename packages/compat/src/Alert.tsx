@@ -19,7 +19,7 @@ interface AlertProps
 		IuiBannerProps,
 		"type" | "isSticky" | "clickableText" | "clickableTextProps" | "onClose"
 	> {
-	/** PARTIALLY IMPLEMENTED: If `undefined`, a mew "neutral" type is used (no longer defaults to "informational"). */
+	/** PARTIALLY IMPLEMENTED: If `undefined`, a new "neutral" type is used (no longer defaults to "informational"). */
 	type?: IuiBannerProps["type"];
 	/** NOT IMPLEMENTED */
 	isSticky?: IuiBannerProps["isSticky"];
@@ -29,7 +29,7 @@ interface AlertProps
 export const Alert = React.forwardRef((props, forwardedRef) => {
 	const {
 		isSticky, // NOT IMPLEMENTED
-		type,
+		type, // PARTIALLY IMPLEMENTED
 		children,
 		clickableText,
 		clickableTextProps,

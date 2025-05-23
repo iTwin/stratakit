@@ -38,6 +38,7 @@ export const components = {
 	],
 	compat: [
 		"Anchor",
+		"Badge",
 		"Divider",
 		"Kbd",
 		"Label",

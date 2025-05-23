@@ -196,7 +196,7 @@ jobs:
                   const relativePath = fileName.slice('packages/'.length);
                   console.log('relative path', relativePath);
 
-                  if (relativePath.startsWith('bricks/src') || relativePath.startsWith('compat/src') || || relativePath.startsWith('structures/src')) {
+                  if (relativePath.startsWith('bricks/src') || relativePath.startsWith('compat/src') || relativePath.startsWith('structures/src')) {
 
                     // add API bridge label if under compat
                     if (relativePath.startsWith('compat/')) {

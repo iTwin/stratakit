@@ -28,11 +28,7 @@ type TabsProps = Pick<
 	| "wrapperClassName"
 	| "children"
 > & {
-	/**
-	 * Content displayed to the right/bottom of the horizontal/vertical tabs
-	 *
-	 * If `type = 'pill'`, `actions` is not applicable.
-	 */
+	/** NOT IMPLEMENTED. */
 	actions?: IuiTabsLegacyProps["actions"];
 	labels?: IuiTabsLegacyProps["labels"];
 	onTabSelected?: IuiTabsLegacyProps["onTabSelected"];
@@ -79,6 +75,7 @@ type TabsProps = Pick<
 /** @see https://itwinui.bentley.com/docs/tabs */
 export const Tabs = React.forwardRef((props, forwardedRef) => {
 	const {
+		actions,
 		labels,
 		onTabSelected,
 		activeIndex,

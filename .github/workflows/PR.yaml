@@ -45,90 +45,100 @@ jobs:
               console.error(error);
             }
 
-  # assign-milestones:
-  #   name: Assign PR milestones
-  #   runs-on: ubuntu-latest
-  #   if: github.event_name == 'pull_request' && (github.event.action == 'opened' || github.event.action == 'synchronize')
+  assign-milestones:
+    name: Assign PR milestones
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request' && (github.event.action == 'opened' || github.event.action == 'synchronize')
 
-  #   steps:
-  #     - name: Auto-assign milestones using github-script
-  #       uses: actions/github-script@v7
-  #       with:
-  #         script: |
-  #           const owner = context.repo.owner;
-  #           const repo = context.repo.repo;
-  #           const pr = context.payload.pull_request;
+    steps:
+      - name: Auto-assign milestones using github-script
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+            const pr = context.payload.pull_request;
 
-  #           const prNumber = pr.number;
-  #           const prAuthor = context.actor;
-  #           const prBody = pr.body || "";
+            const prNumber = pr.number;
+            const prAuthor = context.actor;
+            const prBody = pr.body || "";
+            console.log('body', prBody);
 
-  #           try {
+            try {
 
-  #             let targetMilestone = null;
+              let targetMilestone = null;
 
-  #             // if issue is linked in PR description, find if already defined under a milestone
-  #             const issueMatch = prBody.match(/\b(Closes|Fixes|Resolves)\s+#(\d+)\b/i);
+              // if issue is linked in PR description, find if already defined under a milestone
+              const issueMatch = prBody.match(/\b(Closes|Fixes|Resolves)\s+#(\d+)\b/i);
+              console.log('issue match', issueMatch);
 
-  #             if (issueMatch) {
-  #               // if linked issue was found
+              if (issueMatch) {
+                // if linked issue was found
 
-  #               const issueNum = parseInt(issueMatch[2]);
-  #               const { data: issue } = await github.rest.issues.get({
-  #                 owner: owner,
-  #                 repo: repo,
-  #                 issue_number: issueNum
-  #               });
+                const issueNum = parseInt(issueMatch[2]);
+                console.log('issue num', issueNum);
+                const { data: issue } = await github.rest.issues.get({
+                  owner: owner,
+                  repo: repo,
+                  issue_number: issueNum
+                });
+                console.log('issue retrieved', issue);
+                if (issue.milestone) {
+                  targetMilestone = issue.milestone.title;
+                  console.log('found existing milestone', targetMilestone);
+                }
+              } else {
+                // otherwise, look at files changed
 
-  #               if (issue.milestone) {
-  #                 targetMilestone = issue.milestone.title;
-  #               }
-  #             } else {
-  #               // otherwise, look at files changed
+                const files = await github.paginate(
+                  github.rest.pulls.listFiles,
+                  {
+                    owner: owner,
+                    repo: repo,
+                    pull_number: prNumber
+                  }
+                );
 
-  #               const files = await github.paginate(
-  #                 github.rest.pulls.listFiles,
-  #                 {
-  #                   owner: owner,
-  #                   repo: repo,
-  #                   pull_number: prNumber
-  #                 }
-  #               );
+                for (const file of files) {
+                  const fileName = file.filename;
+                  console.log('current file', fileName);
 
-  #               for (const file of files) {
-  #                 const fileName = file.filename;
+                  if (fileName.startsWith('packages/compat') || fileName.startsWith('apps/test-app/app/compat')) {
+                    console.log('part of compat, add API bridge');
+                    targetMilestone = 'API bridge';
+                    break;
+                  }
+                }
+              }
 
-  #                 if (fileName.startsWith('packages/compat')) {
-  #                   targetMilestone = 'API bridge';
-  #                   break;
-  #                 }
-  #               }
-  #             }
+              // if synchronizing, update milestone appropriately (only if new milestone is different)
+              const oldMilestone = pr.milestone ? pr.milestone.title : null;
+              console.log('old milestone', oldMilestone);
 
-  #             // if synchronizing, update milestone appropriately (only if new milestone is different)
-  #             const oldMilestone = pr.milestone ? pr.milestone.title : null;
+              if (oldMilestone !== targetMilestone) {
+                console.log('changing because new milestone is different');
+                // find milestone to apply
+                const milestones = await github.rest.issues.listMilestones({
+                  owner: owner,
+                  repo: repo,
+                  state: 'open'
+                });
+                console.log('existing milestones', milestones);
+                const milestone = milestones.data.find(m => m.title === targetMilestone);
+                console.log('found target milestone', milestone);
 
-  #             if (oldMilestone !== targetMilestone) {
-  #               // find milestone to apply
-  #               const milestones = await github.rest.issues.listMilestones({
-  #                 owner: owner,
-  #                 repo: repo,
-  #                 state: 'open'
-  #               });
-  #               const milestone = milestones.data.find(m => m.title === targetMilestone);
-
-  #               // apply milestone to the PR
-  #               await github.rest.issues.update({
-  #                 owner: owner,
-  #                 repo: repo,
-  #                 issue_number: prNumber,
-  #                 milestone: milestone ? milestone.number : null
-  #               });
-  #             }
-  #           } catch (error) {
-  #             console.log("Failed assigning milestones");
-  #             console.error(error);
-  #           }
+                // apply milestone to the PR
+                await github.rest.issues.update({
+                  owner: owner,
+                  repo: repo,
+                  issue_number: prNumber,
+                  milestone: milestone ? milestone.number : null
+                });
+              }
+            } catch (error) {
+              console.log("Failed assigning milestones");
+              console.error(error);
+            }
 
   assign-labels:
     name: Assign PR labels
@@ -196,7 +206,7 @@ jobs:
                   const relativePath = fileName.slice('packages/'.length);
                   console.log('relative path', relativePath);
 
-                  if (relativePath.startsWith('bricks/src') || relativePath.startsWith('compat/src') || relativePath.startsWith('structures/src')) {
+                  if (relativePath.startsWith('bricks/src') || relativePath.startsWith('compat/') || relativePath.startsWith('structures/src')) {
 
                     // add API bridge label if under compat
                     if (relativePath.startsWith('compat/')) {

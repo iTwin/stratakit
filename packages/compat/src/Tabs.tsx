@@ -36,8 +36,10 @@ type TabsProps = Pick<
 	activeIndex?: IuiTabsLegacyProps["activeIndex"];
 	focusActivationMode?: IuiTabsLegacyProps["focusActivationMode"];
 	/**
-	 * Color of the bar on the active tab.
-	 * @default 'blue'
+	 * PARTIALLY IMPLEMENTED.
+	 *
+	 * - `blue` is mapped to the `neutral` tone of StrataKit.
+	 * - `green` is mapped to the `accent` tone of StrataKit.
 	 */
 	color?: IuiTabsLegacyProps["color"];
 	/**
@@ -87,6 +89,7 @@ export const Tabs = React.forwardRef((props, forwardedRef) => {
 		onTabSelected,
 		activeIndex,
 		focusActivationMode,
+		color,
 		children,
 		...rest
 	} = useCompatProps(props);
@@ -120,7 +123,10 @@ export const Tabs = React.forwardRef((props, forwardedRef) => {
 			selectedId={selectedId}
 			selectOnMove={focusActivationMode === "manual" ? false : undefined}
 		>
-			<SkTabs.TabList ref={forwardedRef}>
+			<SkTabs.TabList
+				ref={forwardedRef}
+				tone={color === "green" ? "accent" : undefined}
+			>
 				{labels.map((label, index) => {
 					const tabId = tabIds[index];
 					return (

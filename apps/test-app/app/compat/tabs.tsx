@@ -11,7 +11,7 @@ export const handle = { title: "Text" };
 
 export default definePage(function Page() {
 	return (
-		<div style={{ display: "grid", gap: 12 }}>
+		<div style={{ display: "grid", gap: 16 }}>
 			<div>
 				<Tabs labels={["Tab 1", "Tab 2"]}>Tabs content</Tabs>
 			</div>
@@ -19,6 +19,11 @@ export default definePage(function Page() {
 			<div>
 				<Tabs labels={["Tab 1", "Tab 2"]} focusActivationMode="manual">
 					focusActivationMode="manual"
+				</Tabs>
+			</div>
+			<div>
+				<Tabs labels={["Tab 1", "Tab 2"]} color="green">
+					color="green"
 				</Tabs>
 			</div>
 		</div>

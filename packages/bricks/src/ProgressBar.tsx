@@ -9,7 +9,7 @@ import cx from "classnames";
 import * as React from "react";
 
 import type { BaseProps } from "@stratakit/foundations/secret-internals";
-
+// changed file test
 interface ProgressBarProps extends Omit<BaseProps, "aria-labelledby"> {
 	/**
 	 * Label for the progress bar.

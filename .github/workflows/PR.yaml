@@ -205,19 +205,17 @@ jobs:
                     }
 
                     // isolate name of file changed
-                    const changedFile = fileName.split('/').pop().split('.')[0];
+                    const changedFile = relativePath.split('/').pop().split('.')[0];
                     console.log('isolated component name', changedFile);
                     addLabel(changedFile, labelNames);
                   }
-                }
-
-                if (fileName.startsWith('apps/test-app/app/')) {
+                } else if (fileName.startsWith('apps/test-app/app/')) {
                   console.log('part of test app');
 
                   const relativePath = fileName.slice('apps/test-app/app/'.length);
                   console.log('relative path', relativePath);
 
-                  if (relativePath.startsWith('tests/') || relativePath.startsWith('compat/tests/')) {
+                  if (relativePath.startsWith('tests/') || relativePath.startsWith('compat/')) {
 
                     // add API bridge label if under compat
                     if (relativePath.startsWith('compat/')) {
@@ -226,11 +224,11 @@ jobs:
                     }
 
                     // isolate component changed
-                    const componentTest = relativePath.startsWith('compat/') ? fileName.split('/')[5] : fileName.split('/')[4];
-                    console.log('isolated component name', componentTest);
+                    const componentChanged = relativePath.startsWith('tests/') ? relativePath.split('/')[1] : relativePath.split('/').pop().split('.')[0];
+                    console.log('isolated component name', componentChanged);
 
                     // convert to camel case
-                    const componentName = componentTest
+                    const componentName = componentChanged
                       .split('-')
                       .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
                       .join('');
@@ -238,9 +236,7 @@ jobs:
 
                     addLabel(componentName, labelNames);
                   }
-                }
-
-                if (fileName.startsWith('.github')) {
+                } else if (fileName.startsWith('.github')) {
                   console.log('part of github');
                   labelsToAdd.add('github_actions');
                 }

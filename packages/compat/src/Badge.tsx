@@ -15,8 +15,10 @@ type SkBadgeProps = React.ComponentProps<typeof SkBadge>;
 
 interface BadgeProps
 	extends Pick<IuiBadgeProps, "backgroundColor" | "children"> {
-	/** PARTIALLY IMPLEMENTED: Only supports the following:
-	 * `undefined`, `"primary"`, `"informational"`, `"positive"`, `"negative"`, `"warning"` */
+	/**
+	 * PARTIALLY IMPLEMENTED: Only supports
+	 * `undefined`, `"primary"`, `"informational"`, `"positive"`, `"negative"`, `"warning"`.
+	 */
 	backgroundColor?: IuiBadgeProps["backgroundColor"];
 	/** PARTIALLY IMPLEMENTED: No longer gets converted to uppercase and no longer gets truncated if too long. */
 	children: IuiBadgeProps["children"];

@@ -52,8 +52,8 @@ export default definePage(function Page() {
 			<Badge backgroundColor="red">Red</Badge>
 
 			{/* Long label don't get truncated anymore. */}
-			<Badge backgroundColor="skyblue" title="Long label that gets truncated">
-				Very very very very very very very very long label that gets truncated
+			<Badge backgroundColor="skyblue">
+				Very very very very very very very very long label
 			</Badge>
 		</div>
 	);

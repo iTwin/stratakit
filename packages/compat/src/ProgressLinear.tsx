@@ -12,7 +12,7 @@ import { useCompatProps } from "./~utils.tsx";
 
 import type { ProgressLinear as IuiProgressBar } from "@itwin/itwinui-react";
 import type { PolymorphicForwardRefComponent } from "./~utils.tsx";
-// changed file test
+
 type IuiProgressBarProps = React.ComponentProps<typeof IuiProgressBar>;
 
 interface ProgressBarProps

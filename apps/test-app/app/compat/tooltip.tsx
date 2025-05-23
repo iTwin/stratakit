@@ -8,7 +8,7 @@ import { Tooltip } from "@stratakit/react";
 import { definePage } from "~/~utils.tsx";
 
 export const handle = { title: "Tooltip" };
-// changed file test
+
 export default definePage(function Page() {
 	return (
 		<Tooltip content="Here's your tooltip. Was it worth it?">

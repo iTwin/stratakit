@@ -13,7 +13,7 @@ import type {
 } from "@stratakit/foundations/secret-internals";
 
 // ----------------------------------------------------------------------------
-// changed file test
+
 interface TabsProps
 	extends Pick<
 		AkTab.TabProviderProps,

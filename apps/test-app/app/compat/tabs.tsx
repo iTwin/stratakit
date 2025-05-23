@@ -10,12 +10,27 @@ import { definePage } from "~/~utils.tsx";
 export const handle = { title: "Text" };
 
 export default definePage(function Page() {
-	const [tabIndex, setTabIndex] = React.useState(0);
 	return (
-		<div style={{ display: "grid", gap: 4 }}>
-			<Tabs labels={["Tab 1", "Tab 2"]} onTabSelected={setTabIndex}>
-				Tabs content {tabIndex + 1}
-			</Tabs>
+		<div style={{ display: "grid", gap: 12 }}>
+			<div>
+				<Tabs labels={["Tab 1", "Tab 2"]}>Tabs content</Tabs>
+			</div>
+			<ControlledActiveIndex />
 		</div>
 	);
 });
+
+function ControlledActiveIndex() {
+	const [activeIndex, setActiveIndex] = React.useState(1);
+	return (
+		<div>
+			<Tabs
+				labels={["Tab 1", "Tab 2"]}
+				activeIndex={activeIndex}
+				onTabSelected={setActiveIndex}
+			>
+				Controlled tabs {activeIndex + 1}
+			</Tabs>
+		</div>
+	);
+}

@@ -27,13 +27,12 @@ type TabsProps = Pick<
 	| "contentClassName"
 	| "wrapperClassName"
 	| "children"
+	| "overflowOptions"
+	| "defaultValue"
+	| "defaultChecked"
 > & {
 	/** NOT IMPLEMENTED. */
 	actions?: IuiTabsLegacyProps["actions"];
-	labels?: IuiTabsLegacyProps["labels"];
-	onTabSelected?: IuiTabsLegacyProps["onTabSelected"];
-	activeIndex?: IuiTabsLegacyProps["activeIndex"];
-	focusActivationMode?: IuiTabsLegacyProps["focusActivationMode"];
 	/**
 	 * PARTIALLY IMPLEMENTED.
 	 *
@@ -41,33 +40,17 @@ type TabsProps = Pick<
 	 * - `green` is mapped to the `accent` tone of StrataKit.
 	 */
 	color?: IuiTabsLegacyProps["color"];
-	tabsClassName?: IuiTabsLegacyProps["tabsClassName"];
-	contentClassName?: IuiTabsLegacyProps["contentClassName"];
-	wrapperClassName?: IuiTabsLegacyProps["wrapperClassName"];
-	children?: IuiTabsLegacyProps["children"];
-	/**
-	 * @deprecated Tabs will now overflow by default, so this prop does nothing.
-	 */
-	overflowOptions?: IuiTabsLegacyProps["overflowOptions"];
-	defaultValue?: IuiTabsLegacyProps["defaultValue"];
-	defaultChecked?: IuiTabsLegacyProps["defaultChecked"];
 } & (
 		| {
-				/**
-				 * Orientation of the tabs.
-				 * @default 'horizontal'
-				 */
+				/** NOT IMPLEMENTED. */
 				orientation?: IuiTabsOrientation<"horizontal">;
-				/**
-				 * Type of the tabs.
-				 *
-				 * If `orientation = 'vertical'`, `pill` is not applicable.
-				 * @default 'default'
-				 */
+				/** NOT IMPLEMENTED. */
 				type?: IuiTabsType<"default" | "borderless" | "pill">;
 		  }
 		| {
+				/** NOT IMPLEMENTED. */
 				orientation: IuiTabsOrientation<"vertical">;
+				/** NOT IMPLEMENTED. */
 				type?: IuiTabsType<"default" | "borderless">;
 		  }
 	);
@@ -85,6 +68,9 @@ export const Tabs = React.forwardRef((props, forwardedRef) => {
 		contentClassName,
 		wrapperClassName,
 		children,
+		overflowOptions, // ignored by iTwinUI
+		orientation, // NOT IMPLEMENTED
+		type, // NOT IMPLEMENTED
 		...rest
 	} = useCompatProps(props);
 

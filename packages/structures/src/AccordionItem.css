@@ -1,0 +1,127 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+
+.🥝-accordion-item {
+	--🥝accordion-item-gap: 12px;
+	--🥝accordion-item-padding: 12px;
+
+	@layer base {
+		contain: paint;
+		display: grid;
+		/* biome-ignore format: improve readability */
+		grid-template-columns:
+			[decoration-before-start] auto [decoration-before-end
+			content-start] minmax(0, 1fr) [content-end
+			decoration-after-start] auto [decoration-after-end];
+		grid-template-rows: [header-start] auto [header-end content-start] auto [content-end];
+		border-block-end: 1px solid var(--ids-color-border-neutral-muted);
+	}
+
+	@layer states {
+		&:where([data-kiwi-open="true"]) {
+			--🥝chevron-down-rotate: -0.5turn;
+		}
+	}
+}
+
+.🥝-accordion-item-header {
+	@layer base {
+		grid-row: header;
+		grid-column: decoration-before-start / decoration-after-end;
+
+		position: relative;
+		display: grid;
+		align-items: center;
+		padding: var(--🥝accordion-item-padding);
+
+		/* TODO: improve the layout for the fallback (i.e. content doesn’t align with the label if there’s a decoration) */
+		grid-template-columns: inherit;
+
+		@supports (grid-template-columns: subgrid) {
+			grid-template-columns: subgrid;
+		}
+	}
+}
+
+.🥝-accordion-item-marker {
+	@layer base {
+		grid-row: 1;
+		grid-column: decoration-after;
+		margin-inline-start: var(--🥝accordion-item-gap);
+		/* TODO: We can only use GhostAligner to apply alignment to block or inline, so we’re manually applying it here. */
+		margin-inline-end: calc(-1 * var(--🥝ghost-inline-offset));
+		pointer-events: none;
+	}
+
+	@layer states {
+		@media (any-hover: hover) {
+			:where(.🥝-accordion-item-header:hover) & {
+				--🌀button-state: var(--🌀button-state--hover);
+			}
+		}
+	}
+}
+
+.🥝-accordion-item-label:is(.🥝-text) {
+	@layer base {
+		display: inline-block;
+		hyphens: auto;
+		overflow-wrap: break-word;
+		text-box: cap alphabetic;
+		font-weight: 500;
+	}
+}
+
+.🥝-accordion-item-button {
+	@layer base {
+		grid-column: content;
+		cursor: pointer;
+		border-radius: 12px;
+		--🥝focus-outline-offset: -4px;
+
+		&::after {
+			content: "";
+			position: absolute;
+			inset: 0;
+			border-radius: inherit;
+		}
+	}
+
+	@layer states {
+		&:focus-visible {
+			outline: 0;
+
+			&::after {
+				outline: var(--🥝focus-outline);
+				outline-offset: var(--🥝focus-outline-offset);
+			}
+		}
+	}
+}
+
+.🥝-accordion-item-content {
+	@layer base {
+		grid-row: content;
+		grid-column: content;
+		padding-block-end: var(--🥝accordion-item-padding);
+		text-box: cap alphabetic;
+		color: var(--ids-color-text-neutral-secondary);
+	}
+}
+
+.🥝-accordion-item-decoration {
+	@layer base {
+		grid-column: decoration-before;
+		margin-inline-end: var(--🥝accordion-item-gap);
+	}
+}
+
+.🥝-accordion-item-heading {
+	@layer base {
+		grid-column: content;
+		margin-block: 0;
+		text-box: cap alphabetic;
+	}
+}

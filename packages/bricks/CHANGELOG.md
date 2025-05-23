@@ -1,5 +1,48 @@
 # Changelog
 
+## 0.2.0
+
+### Breaking changes
+
+- [#704](https://github.com/iTwin/design-system/pull/704): The following components have been moved from `@stratakit/bricks` into `@stratakit/structures`.
+
+  - `unstable_AccordionItem`
+  - `unstable_Banner`
+  - `Chip`
+  - `DropdownMenu`
+  - `unstable_ErrorRegion`
+  - `Table`
+  - `Tabs`
+  - `unstable_Toolbar`
+  - `Tree`
+
+- [#708](https://github.com/iTwin/design-system/pull/708): The previously-deprecated `Root` and `Icon` components have been removed from `@stratakit/bricks`, since they were moved to `@stratakit/foundations`.
+
+### Non-breaking changes
+
+- Updated dependencies:
+  - @stratakit/foundations@0.1.3
+
+## 0.1.2
+
+- [#686](https://github.com/iTwin/design-system/pull/686): Corrected font weight of `AccordionItem.Label` to 500/medium.
+- [#689](https://github.com/iTwin/design-system/pull/689): Corrected the text size of `Description`, `Field.Description`, and `Field.ErrorMessage` to use `caption-lg`.
+- [#694](https://github.com/iTwin/design-system/pull/694): Fixed `<Switch>` animation so it plays smoothly on all platforms.
+- Updated dependencies:
+  - @stratakit/foundations@0.1.2
+
+## 0.1.1
+
+- [#528](https://github.com/iTwin/design-system/pull/528): Added new `unstable_AccordionItem` component for showing/hiding content.
+- [#484](https://github.com/iTwin/design-system/pull/484): Added new `unstable_Banner` component for highlighting information.
+- [#678](https://github.com/iTwin/design-system/pull/678): Added new `placement` prop to `Tooltip`.
+- [#639](https://github.com/iTwin/design-system/pull/639): Improved live regions in `unstable_ErrorRegion` component. Live region announcements will only be made when a new item is added.
+- Styling changes
+  - [#676](https://github.com/iTwin/design-system/pull/676): Added a small gap between `Kbd`'s children for better spacing.
+  - [#659](https://github.com/iTwin/design-system/pull/659): Fixed responsive design issues in `unstable_ErrorRegion` (again).
+- Updated dependencies:
+  - @stratakit/foundations@0.1.1
+
 ## @stratakit/bricks@0.1.0
 
 - **breaking**: Package name changed to `@stratakit/bricks`.
@@ -14,159 +57,6 @@
   - Added `-webkit-tap-highlight-color` to interactive controls.
   - Improved forced colors styling for `TextBox`.
 
-## @itwin/itwinui-react@5.0.0-alpha.14
+## @itwin/itwinui-react@​5.0.0-alpha.X
 
-- Improved the performance of `<Tree.Item>`.
-- Removed dismiss button from `<ErrorRegion.Item>`.
-- **breaking**: Added and renamed some CSS variables. See [#571](https://github.com/iTwin/design-system/pull/571).
-- Styling changes:
-  - Enabled some disambiguation character variants for `InterVariable` font.
-  - Improved forced-colors mode styling for `Tabs`.
-  - Updated some color values in light mode to match the latest design.
-- Bug fixes:
-  - Fixed an `undefined` check for `document.fonts`.
-  - Fixed a Safari issue where `<Switch>` was not using the correct height.
-  - Fixed an issue in `Tabs` where the active stripe was incorrectly changing with viewport width.
-
-## 5.0.0-alpha.13
-
-- Added new `unstable_ErrorRegion` component for displaying errors originating from `Tree`. See [#454](https://github.com/iTwin/design-system/pull/454).
-- Added initial `unstable_Toolbar` component. See [#529](https://github.com/iTwin/design-system/pull/529).
-- Added `dot` prop to `<Tree.ItemAction>`, matching the `dot` prop from `<IconButton>`.
-  - Also added `unstable_dot` prop to `<DropdownMenu.Item>`, although it's not meant to be used currently.
-- Styling changes:
-  - Improved forced-colors mode styling for `<Icon>`, `<Button>` as anchor, and `<Tree.Item>`.
-  - Updated the color of `dot` used in `<IconButton>`.
-
-## 5.0.0-alpha.12
-
-- **breaking**: Introduce composition API for `Field`. See [#449](https://github.com/iTwin/design-system/pull/449).
-  - Includes `<Field.Root>`, `<Field.Label>`, `<Field.Control>`, `<Field.Description>`.
-  - Added a new `<Field.ErrorMessage>` subcomponent.
-- `Tree.Item`: Added automatic overflow handling for `actions`.
-  - **breaking**: `DropdownMenu` is no longer allowed to be passed into `actions`. See [#404](https://github.com/iTwin/design-system/pull/404).
-- Added a new `Table` component, usable as `<Table.HtmlTable>` or `<Table.CustomTable>`.
-- `DropdownMenu`: menuitems will now be rendered as `<button>`.
-- Styling changes:
-  - Reset `<button>` styles.
-  - Added popover-open state styles to `<Button>` and `<IconButton>`.
-  - Improved forced-colors mode styling for `<Checkbox>`, `<Radio>` and `<Switch>`.
-- Bug fixes:
-  - Fixed `<Select.HtmlSelect>` overflowing beyond its container.
-  - Fixed `<Select.HtmlSelect>` options text not appearing in Windows in certain cases.
-  - Added missing `border-radius` to `<Skeleton>`.
-
-## 5.0.0-alpha.11
-
-- Added `error` prop to `<Tree.Item>`.
-- Implemented fallback strategy for `<Icon>`, so that non-HTTP URLs are fetched at runtime.
-- Added `unstable_htmlSanitizer` prop to `<Root>`.
-- Added `tone="accent"` support to `<Badge>`.
-- Adjusted `DropdownMenu` and `Tooltip` to be portaled by default.
-- Styling changes:
-  - Added shimmer animation to `<Skeleton>`.
-  - Updated `<Spinner>` visuals and animation to match `<ProgressBar>`.
-- Bug fixes:
-  - Fixed styles not unloading when `<Root>` is unmounted.
-  - Fixed `<Anchor>` underline not showing when rendered as a `<button>`.
-  - Fixed `<Tree.ItemAction visible>` affecting the visibility of all actions.
-  - Fixed vertical centering in `<Tab.TabList>`.
-  - Fixed `Tab` active stripe positioning and animation.
-  - Fixed `<Button variant="solid" tone="accent">` icon fill in pressed state.
-
-## 5.0.0-alpha.10
-
-- Added initial `<Skeleton>` component.
-- Added initial `<ProgressBar>` component.
-- Fixed various UX and accessibility issues related to `<Tree.Item>` actions visibility.
-  - Actions no longer get stuck.
-  - Tooltips can now be hovered.
-  - Focus correctly returns to actions after menu closes.
-  - Keyboard events no longer affect the main treeitem.
-- Reduced `<Field>` spacing.
-- Experimental changes in `<Icon>` component's `href` handling.
-
-## 5.0.0-alpha.9
-
-- Added `dot` prop to `<IconButton>` for showing a small "dot" next to the icon.
-- Added `unstable_decorations` prop to `<Tree.Item>` for showing multiple decorations (e.g. icons).
-- **breaking**: Replaced `<DropdownMenu.Item>` children with new `label` prop (see [#423](https://github.com/iTwin/design-system/pull/423)).
-- Added `icon` prop to `<DropdownMenu.Item>` and `<DropdownMenu.CheckboxItem>`.
-- Updated the `shortcuts` prop of `<DropdownMenu.Item>` to recognize predefined "symbols" (e.g. modifier keys).
-- Updated `<Anchor>` and `<Badge>` visuals to match the latest design.
-- Fixed forced-colors mode styling for `DropdownMenu`.
-
-## 5.0.0-alpha.8
-
-- Added `description` prop to `<Tree.Item>` component for showing "sublabels".
-- **breaking**: Updated `<Text>` component to require `variant` prop.
-- (soft breaking) Removed `children` from `<Tree.Item>` prop types.
-- Updated `DropdownMenu` padding.
-
-## 5.0.0-alpha.7
-
-- Added new `<Avatar>` component.
-- Added new `<Badge>` component.
-- Added `alt` prop to `<Icon>` component.
-- Fixed all color tokens to use the correct `oklch` values.
-- Fixed an issue where `<Tree.Item>` was not respecting its `style` prop.
-
-## 5.0.0-alpha.6
-
-- **breaking**: All CSS variables have been renamed to use the `--ids` prefix. See [#369](https://github.com/iTwin/kiwi/pull/369).
-- **breaking**: Some CSS variables were renamed further. See [#368](https://github.com/iTwin/kiwi/pull/368).
-  - Notably, the "surface" backgrounds have been split into two different "page" and "elevation" scales.
-- Background colors have been updated to match the latest design.
-- All styles are now loaded into `@layer itwinui`. The one exception is the CSS reset which remains in `@layer reset`.
-- `<Field>` now respects the order of `<Description>`s when creating associations.
-
-## 5.0.0-alpha.5
-
-- **breaking**: `Tree` API has changed to require flat structure, with explicit ARIA props (see [#300](https://github.com/iTwin/kiwi/pull/300)). `<Tree.Item>` no longer allows passing `children`.
-- **breaking**: `Tree.Item`s `action` prop now requires a list of `<Tree.ItemAction>` components (see [#355](https://github.com/iTwin/kiwi/pull/355) and [#362](https://github.com/iTwin/kiwi/pull/362)).
-- **breaking**: Replaced `<Chip>` children with new `label` prop (see [#349](https://github.com/iTwin/kiwi/pull/349)).
-- Added `<Tree.ItemAction>` component with `visible` prop for more granular control over action visibility.
-- Updated the layout of `<Field>` so that `<Description>` is placed in the best spot according on the label position and control type.
-- `<Field>` now considers the presence of explicit control `id`s when creating associations.
-
-## 5.0.0-alpha.4
-
-- Added `onDismiss` prop and dismiss button to `<Chip>`.
-- Fixed a rare issue where `TextBox` was still editable when `disabled`.
-- Fixed "forced colors" mode styling for `<Button>` and `<IconButton>`.
-- Explicitly set typography styles on `<Root>` to improve compatibility with iTwinUI theme bridge.
-- Updated `DropdownMenu` visuals.
-
-## 5.0.0-alpha.3
-
-- Added `<DropdownMenu.CheckboxItem>` component for rendering menu items with a checkable state.
-- Added `variant` prop to `<Select.HtmlSelect>` component for displaying different visual variants of the component.
-- Updated event handling of `Tree` components to avoid firing `onClick` event of the `<Tree.Item>` component when the expander or one of the actions is clicked.
-- Updated `Tree` components to implement a tree view pattern instead of the previously used nested list approach.
-- Updated size and spacing of `<Tree.Item>`, `<DropdownMenu.Item>` and `<Select>` components.
-- Fixed `<Label>` component alignment with `TextBox` components.
-- Fixed action rendering of `<Tree.Item>` component.
-- Fixed `<Checkbox>` component styling, which caused the mixed checkbox to be displayed as unchecked in the light theme.
-
-## 5.0.0-alpha.2
-
-- Added initial `Tree` component, exposed as `<Tree.Root>` and `<Tree.Item>` subcomponents.
-- Added initial `<Spinner>` component for indicating quick, indeterminate progress.
-- Added `<Description>` component to be used within a `<Field>`.
-- Added initial `<Chip>` component.
-- Added `symbol` prop to `<Kbd>` for displaying predefined symbols.
-- Added `focusable` prop to `<Tabs.TabPanel>` component.
-- Fixed a visual issue where light color-scheme was using dark shadows.
-
-## 5.0.0-alpha.1
-
-- Added `<Text>` component with a `variant` prop to support all text styles from Figma.
-- Added `Select` component built on top of the HTML `<select>` element. Exposed as `<Select.Root>` and `<Select.HtmlSelect>`.
-- Added `shortcuts` prop to `<DropdownMenu.Item>`.
-- Added JSDoc comments to all components for inline IDE hints.
-- Fixed `<Kbd>` component using the wrong font.
-- Fixed some visual issues.
-
-## 5.0.0-alpha.0
-
-Initial release 🥳
+Changelog entries for `@itwin/itwinui-react@5.0.0-alpha.14` and older can be found in the [`CHANGELOG.md` for `@stratakit/bricks@0.1.0`](https://github.com/iTwin/design-system/blob/%40stratakit/bricks%400.1.0/packages/bricks/CHANGELOG.md).

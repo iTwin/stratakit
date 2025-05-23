@@ -3,7 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import { index, route } from "@react-router/dev/routes";
+import { index, layout, prefix, route } from "@react-router/dev/routes";
 import { components } from "./components.ts";
 
 import type { RouteConfig } from "@react-router/dev/routes";
@@ -17,13 +17,26 @@ export default [
 	route(
 		"tests",
 		"./tests/tests.tsx",
-		components.map((component) =>
+		[
+			...components.foundations,
+			...components.bricks,
+			...components.structures,
+		].map((component) =>
 			route(
 				toKebabCase(component),
 				`./tests/${toKebabCase(component)}/index.tsx`,
 			),
 		),
 	),
+
+	...prefix("compat", [
+		layout(
+			"./compat/compat.tsx",
+			components.compat.map((component) =>
+				route(toKebabCase(component), `./compat/${toKebabCase(component)}.tsx`),
+			),
+		),
+	]),
 ] satisfies RouteConfig;
 
 // ----------------------------------------------------------------------------

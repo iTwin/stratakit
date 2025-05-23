@@ -24,11 +24,11 @@ import {
 } from "./~utils.js";
 
 import foundationsCss from "./styles.css.js";
-import bricksCss from "./~bricks.css.js"; // TODO: remove this implicit dependency on bricks
+import componentsCss from "./~components.css.js"; // TODO: remove this implicit dependency on bricks and structures
 
 import type { BaseProps } from "./~utils.js";
 
-const css = foundationsCss + bricksCss;
+const css = foundationsCss + componentsCss;
 
 // ----------------------------------------------------------------------------
 
@@ -60,7 +60,7 @@ interface RootProps extends BaseProps {
 	 *
 	 * Example:
 	 * ```tsx
-	 * unstablized_htmlSanitizer={DOMPurify.sanitize}
+	 * unstable_htmlSanitizer={DOMPurify.sanitize}
 	 * ```
 	 */
 	unstable_htmlSanitizer?: (html: string) => string;

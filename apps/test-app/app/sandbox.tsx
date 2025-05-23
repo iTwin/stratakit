@@ -5,20 +5,22 @@
 import {
 	Anchor,
 	Button,
-	DropdownMenu,
-	unstable_ErrorRegion as ErrorRegion,
 	Field,
 	IconButton,
 	Select,
 	Skeleton,
-	Tabs,
 	Text,
 	TextBox,
-	unstable_Toolbar as Toolbar,
-	Tree,
 	VisuallyHidden,
 } from "@stratakit/bricks";
 import { Icon } from "@stratakit/foundations";
+import {
+	DropdownMenu,
+	unstable_ErrorRegion as ErrorRegion,
+	Tabs,
+	unstable_Toolbar as Toolbar,
+	Tree,
+} from "@stratakit/structures";
 import { useQuery } from "@tanstack/react-query";
 import cx from "classnames";
 import { produce } from "immer";
@@ -151,7 +153,9 @@ export default function Page() {
 					</div>
 
 					<React.Suspense key={selectedModel} fallback={<PanelLoading />}>
-						<PanelContent query={query} />
+						<SearchboxProvider>
+							<PanelContent query={query} />
+						</SearchboxProvider>
 					</React.Suspense>
 				</>
 			}
@@ -317,6 +321,7 @@ function PanelContent(props: {
 	query: UseQueryResult<Awaited<ReturnType<typeof fetchModelsData>>>;
 }) {
 	const { data } = React.use(props.query.promise);
+	const { isSearchboxVisible } = React.useContext(SearchboxContext);
 
 	const trees = React.useMemo(
 		() =>
@@ -372,6 +377,8 @@ function PanelContent(props: {
 					return (
 						<Tabs.TabPanel
 							key={tree.name}
+							role={isSearchboxVisible ? "group" : "tabpanel"}
+							aria-label={isSearchboxVisible ? tree.name : undefined}
 							tabId={tree.name}
 							className={styles.tabPanel}
 							focusable={false}
@@ -1026,14 +1033,20 @@ function VisibilityAction({ item, onClick }: VisibilityActionProps) {
 	);
 }
 
-function Subheader({ tabs }: { tabs?: React.ReactNode }) {
+function Subheader({
+	tabs,
+}: {
+	tabs?: React.ReactNode;
+}) {
 	const { itemCount, isFiltered, search, setSearch } =
 		React.useContext(TreeFilteringContext);
+
+	const { isSearchboxVisible, setIsSearchboxVisible } =
+		React.useContext(SearchboxContext);
 
 	const searchInputRef = React.useRef<HTMLInputElement>(null);
 	const tabsRef = React.useRef<HTMLHeadingElement>(null);
 
-	const [isSearchboxVisible, setIsSearchboxVisible] = React.useState(!tabs);
 	const filterOrSearchActive = isFiltered || !!search;
 
 	const actions = isSearchboxVisible ? (
@@ -1218,6 +1231,32 @@ const TreeFilteringContext = React.createContext<{
 	setSearch: () => {},
 	itemCount: undefined,
 	setItemCount: () => {},
+});
+
+function SearchboxProvider(props: React.PropsWithChildren) {
+	const [isSearchboxVisible, setIsSearchboxVisible] = React.useState(false);
+
+	return (
+		<SearchboxContext.Provider
+			value={React.useMemo(
+				() => ({
+					isSearchboxVisible,
+					setIsSearchboxVisible,
+				}),
+				[isSearchboxVisible],
+			)}
+		>
+			{props.children}
+		</SearchboxContext.Provider>
+	);
+}
+
+const SearchboxContext = React.createContext<{
+	isSearchboxVisible: boolean;
+	setIsSearchboxVisible: (visible: boolean) => void;
+}>({
+	isSearchboxVisible: false,
+	setIsSearchboxVisible: () => {},
 });
 
 function ColorSwatch(props: { color: string; alt?: string }) {

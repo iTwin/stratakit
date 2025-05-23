@@ -23,6 +23,8 @@ type TabsProps = Pick<
 	| "onTabSelected"
 	| "activeIndex"
 	| "focusActivationMode"
+	| "tabsClassName"
+	| "contentClassName"
 	| "children"
 > & {
 	/**
@@ -42,13 +44,7 @@ type TabsProps = Pick<
 	 * - `green` is mapped to the `accent` tone of StrataKit.
 	 */
 	color?: IuiTabsLegacyProps["color"];
-	/**
-	 * Custom CSS class name for tabs.
-	 */
 	tabsClassName?: IuiTabsLegacyProps["tabsClassName"];
-	/**
-	 * Custom CSS class name for tab panel.
-	 */
 	contentClassName?: IuiTabsLegacyProps["contentClassName"];
 	/**
 	 * Custom CSS class name for the tabs wrapper.
@@ -90,6 +86,8 @@ export const Tabs = React.forwardRef((props, forwardedRef) => {
 		activeIndex,
 		focusActivationMode,
 		color,
+		tabsClassName,
+		contentClassName,
 		children,
 		...rest
 	} = useCompatProps(props);
@@ -124,6 +122,7 @@ export const Tabs = React.forwardRef((props, forwardedRef) => {
 			selectOnMove={focusActivationMode === "manual" ? false : undefined}
 		>
 			<SkTabs.TabList
+				className={tabsClassName}
 				ref={forwardedRef}
 				tone={color === "green" ? "accent" : undefined}
 			>
@@ -136,7 +135,9 @@ export const Tabs = React.forwardRef((props, forwardedRef) => {
 					);
 				})}
 			</SkTabs.TabList>
-			<SkTabs.TabPanel tabId={selectedId}>{children}</SkTabs.TabPanel>
+			<SkTabs.TabPanel tabId={selectedId} className={contentClassName}>
+				{children}
+			</SkTabs.TabPanel>
 		</SkTabs.Root>
 	);
 }) as PolymorphicForwardRefComponent<"div", TabsProps>;

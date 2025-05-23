@@ -2,13 +2,16 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-"use client";
 
-export { Anchor } from "./Anchor.js";
-export { Divider } from "./Divider.js";
-export { Kbd, KbdKeys } from "./Kbd.js";
-export { Label } from "./Label.js";
-export { ProgressLinear } from "./ProgressLinear.js";
-export { Tabs } from "./Tabs.js";
-export { Text } from "./Text.js";
-export { Tooltip } from "./Tooltip.js";
+import { Tabs } from "@stratakit/react";
+import { definePage } from "~/~utils.tsx";
+
+export const handle = { title: "Text" };
+
+export default definePage(function Page() {
+	return (
+		<div style={{ display: "grid", gap: 4 }}>
+			<Tabs labels={["Tab 1", "Tab 2"]}>Tabs with string labels</Tabs>
+		</div>
+	);
+});

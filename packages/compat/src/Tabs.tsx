@@ -1,0 +1,116 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+
+import { Tabs as SkTabs } from "@stratakit/structures";
+import * as React from "react";
+import { useCompatProps } from "./~utils.tsx";
+
+import type { Tabs as IuiTabs } from "@itwin/itwinui-react";
+import type { PolymorphicForwardRefComponent } from "./~utils.tsx";
+
+type SkTabsProps = React.ComponentProps<typeof SkTabs.Root>;
+
+type IuiTabsLegacyProps = React.ComponentProps<typeof IuiTabs>;
+type IuiTabsOrientation<T extends IuiTabsLegacyProps["orientation"]> = T;
+type IuiTabsType<T extends IuiTabsLegacyProps["type"]> = T;
+
+type TabsProps = {
+	/**
+	 * Content displayed to the right/bottom of the horizontal/vertical tabs
+	 *
+	 * If `type = 'pill'`, `actions` is not applicable.
+	 */
+	actions?: IuiTabsLegacyProps["actions"];
+	/**
+	 * Elements shown for each tab.
+	 * Recommended to pass an array of `Tab` components.
+	 */
+	labels: IuiTabsLegacyProps["labels"];
+	/**
+	 * Handler for activating a tab.
+	 */
+	onTabSelected?: IuiTabsLegacyProps["onTabSelected"];
+	/**
+	 * Index of the active tab.
+	 */
+	activeIndex?: IuiTabsLegacyProps["activeIndex"];
+	/**
+	 * Control whether focusing tabs (using arrow keys) should automatically select them.
+	 * Use 'manual' if tab panel content is not preloaded.
+	 * @default 'auto'
+	 */
+	focusActivationMode?: IuiTabsLegacyProps["focusActivationMode"];
+	/**
+	 * Color of the bar on the active tab.
+	 * @default 'blue'
+	 */
+	color?: IuiTabsLegacyProps["color"];
+	/**
+	 * Custom CSS class name for tabs.
+	 */
+	tabsClassName?: IuiTabsLegacyProps["tabsClassName"];
+	/**
+	 * Custom CSS class name for tab panel.
+	 */
+	contentClassName?: IuiTabsLegacyProps["contentClassName"];
+	/**
+	 * Custom CSS class name for the tabs wrapper.
+	 */
+	wrapperClassName?: IuiTabsLegacyProps["wrapperClassName"];
+	/**
+	 * Content inside the tab panel.
+	 */
+	children?: IuiTabsLegacyProps["children"];
+	/**
+	 * @deprecated Tabs will now overflow by default, so this prop does nothing.
+	 */
+	overflowOptions?: IuiTabsLegacyProps["overflowOptions"];
+	defaultValue?: IuiTabsLegacyProps["defaultValue"];
+	defaultChecked?: IuiTabsLegacyProps["defaultChecked"];
+} & (
+	| {
+			/**
+			 * Orientation of the tabs.
+			 * @default 'horizontal'
+			 */
+			orientation?: IuiTabsOrientation<"horizontal">;
+			/**
+			 * Type of the tabs.
+			 *
+			 * If `orientation = 'vertical'`, `pill` is not applicable.
+			 * @default 'default'
+			 */
+			type?: IuiTabsType<"default" | "borderless" | "pill">;
+	  }
+	| {
+			orientation: IuiTabsOrientation<"vertical">;
+			type?: IuiTabsType<"default" | "borderless">;
+	  }
+);
+
+/** @see https://itwinui.bentley.com/docs/tabs */
+export const Tabs = React.forwardRef((props, forwardedRef) => {
+	const { labels, children, ...rest } = useCompatProps(props);
+
+	const id = React.useId();
+	const [selectedId, setSelectedId] =
+		React.useState<SkTabsProps["selectedId"]>();
+	return (
+		<SkTabs.Root setSelectedId={setSelectedId}>
+			<SkTabs.TabList ref={forwardedRef}>
+				{labels.map((label, index) => {
+					const tabId = `${id}-${index}`;
+					return (
+						<SkTabs.Tab key={tabId} id={tabId}>
+							{label}
+						</SkTabs.Tab>
+					);
+				})}
+			</SkTabs.TabList>
+			<SkTabs.TabPanel tabId={selectedId}>{children}</SkTabs.TabPanel>
+		</SkTabs.Root>
+	);
+}) as PolymorphicForwardRefComponent<"div", TabsProps>;
+DEV: Tabs.displayName = "Tabs";

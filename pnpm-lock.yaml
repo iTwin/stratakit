@@ -214,6 +214,9 @@ importers:
       "@stratakit/bricks":
         specifier: ^0.2.0
         version: link:../bricks
+      "@stratakit/structures":
+        specifier: ^0.1.1
+        version: link:../structures
     devDependencies:
       "@stratakit/foundations":
         specifier: workspace:*

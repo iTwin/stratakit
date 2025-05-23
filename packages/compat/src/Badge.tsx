@@ -18,13 +18,15 @@ interface BadgeProps
 	/** PARTIALLY IMPLEMENTED: Only supports the following:
 	 * `undefined`, `"primary"`, `"informational"`, `"positive"`, `"negative"`, `"warning"` */
 	backgroundColor?: IuiBadgeProps["backgroundColor"];
+	/** PARTIALLY IMPLEMENTED: No longer gets converted to uppercase and no longer gets truncated if too long. */
+	children: IuiBadgeProps["children"];
 }
 
 /** @see https://itwinui.bentley.com/docs/badge */
 export const Badge = React.forwardRef((props, forwardedRef) => {
 	const {
 		backgroundColor, // PARTIALLY IMPLEMENTED
-		children,
+		children, // PARTIALLY IMPLEMENTED
 		...rest
 	} = useCompatProps(props);
 

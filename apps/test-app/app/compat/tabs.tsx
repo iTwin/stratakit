@@ -12,20 +12,23 @@ export const handle = { title: "Text" };
 export default definePage(function Page() {
 	return (
 		<div style={{ display: "grid", gap: 16 }}>
-			<div>
-				<Tabs labels={["Tab 1", "Tab 2"]}>Tabs content</Tabs>
-			</div>
+			<Tabs labels={["Tab 1", "Tab 2"]}>Tabs content</Tabs>
 			<ControlledActiveIndex />
-			<div>
-				<Tabs labels={["Tab 1", "Tab 2"]} focusActivationMode="manual">
-					focusActivationMode="manual"
-				</Tabs>
-			</div>
-			<div>
-				<Tabs labels={["Tab 1", "Tab 2"]} color="green">
-					color="green"
-				</Tabs>
-			</div>
+			<Tabs labels={["Tab 1", "Tab 2"]} focusActivationMode="manual">
+				focusActivationMode="manual"
+			</Tabs>
+			<Tabs labels={["Tab 1", "Tab 2"]} color="green">
+				color="green"
+			</Tabs>
+			<Tabs
+				labels={["Tab 1", "Tab 2"]}
+				wrapperClassName="wrapperClassName" // this is overridden by className
+				className="className"
+				tabsClassName="tabsClassName"
+				contentClassName="contentClassName"
+			>
+				classNames
+			</Tabs>
 		</div>
 	);
 });
@@ -33,14 +36,12 @@ export default definePage(function Page() {
 function ControlledActiveIndex() {
 	const [activeIndex, setActiveIndex] = React.useState(1);
 	return (
-		<div>
-			<Tabs
-				labels={["Tab 1", "Tab 2"]}
-				activeIndex={activeIndex}
-				onTabSelected={setActiveIndex}
-			>
-				Controlled tabs {activeIndex + 1}
-			</Tabs>
-		</div>
+		<Tabs
+			labels={["Tab 1", "Tab 2"]}
+			activeIndex={activeIndex}
+			onTabSelected={setActiveIndex}
+		>
+			Controlled tabs {activeIndex + 1}
+		</Tabs>
 	);
 }

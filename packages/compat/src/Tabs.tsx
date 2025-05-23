@@ -25,6 +25,7 @@ type TabsProps = Pick<
 	| "focusActivationMode"
 	| "tabsClassName"
 	| "contentClassName"
+	| "wrapperClassName"
 	| "children"
 > & {
 	/**
@@ -46,9 +47,6 @@ type TabsProps = Pick<
 	color?: IuiTabsLegacyProps["color"];
 	tabsClassName?: IuiTabsLegacyProps["tabsClassName"];
 	contentClassName?: IuiTabsLegacyProps["contentClassName"];
-	/**
-	 * Custom CSS class name for the tabs wrapper.
-	 */
 	wrapperClassName?: IuiTabsLegacyProps["wrapperClassName"];
 	children?: IuiTabsLegacyProps["children"];
 	/**
@@ -88,6 +86,7 @@ export const Tabs = React.forwardRef((props, forwardedRef) => {
 		color,
 		tabsClassName,
 		contentClassName,
+		wrapperClassName,
 		children,
 		...rest
 	} = useCompatProps(props);
@@ -121,23 +120,25 @@ export const Tabs = React.forwardRef((props, forwardedRef) => {
 			selectedId={selectedId}
 			selectOnMove={focusActivationMode === "manual" ? false : undefined}
 		>
-			<SkTabs.TabList
-				className={tabsClassName}
-				ref={forwardedRef}
-				tone={color === "green" ? "accent" : undefined}
-			>
-				{labels.map((label, index) => {
-					const tabId = tabIds[index];
-					return (
-						<SkTabs.Tab key={tabId} id={tabId}>
-							{label}
-						</SkTabs.Tab>
-					);
-				})}
-			</SkTabs.TabList>
-			<SkTabs.TabPanel tabId={selectedId} className={contentClassName}>
-				{children}
-			</SkTabs.TabPanel>
+			<div className={wrapperClassName} {...rest}>
+				<SkTabs.TabList
+					className={tabsClassName}
+					ref={forwardedRef}
+					tone={color === "green" ? "accent" : undefined}
+				>
+					{labels.map((label, index) => {
+						const tabId = tabIds[index];
+						return (
+							<SkTabs.Tab key={tabId} id={tabId}>
+								{label}
+							</SkTabs.Tab>
+						);
+					})}
+				</SkTabs.TabList>
+				<SkTabs.TabPanel tabId={selectedId} className={contentClassName}>
+					{children}
+				</SkTabs.TabPanel>
+			</div>
 		</SkTabs.Root>
 	);
 }) as PolymorphicForwardRefComponent<"div", TabsProps>;

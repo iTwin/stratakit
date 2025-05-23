@@ -130,145 +130,160 @@ jobs:
   #             console.error(error);
   #           }
 
-  # assign-labels:
-  #   name: Assign PR labels
-  #   runs-on: ubuntu-latest
-  #   if: github.event_name == 'pull_request' && (github.event.action == 'opened' || github.event.action == 'synchronize')
+  assign-labels:
+    name: Assign PR labels
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request' && (github.event.action == 'opened' || github.event.action == 'synchronize')
 
-  #   steps:
-  #     - name: Auto-assign labels using github-script
-  #       uses: actions/github-script@v7
-  #       with:
-  #         script: |
-  #           const owner = context.repo.owner;
-  #           const repo = context.repo.repo;
-  #           const pr = context.payload.pull_request;
+    steps:
+      - name: Auto-assign labels using github-script
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+            const pr = context.payload.pull_request;
 
-  #           const prNumber = pr.number;
-  #           const prAuthor = context.actor;
-  #           const headBranch = pr.head.ref;
+            const prNumber = pr.number;
+            const prAuthor = context.actor;
+            const headBranch = pr.head.ref;
 
-  #           const labelsToAdd = new Set();
+            const labelsToAdd = new Set();
 
-  #           // helper function to add label
-  #           function addLabel(label, labelNames) {
+            // helper function to add label
+            function addLabel(label, labelNames) {
 
-  #             // get component label
-  #             const componentLabel = `component: ${label}`;
-  #             if (labelNames.has(componentLabel)) {
-  #               labelsToAdd.add(componentLabel);
-  #             }
-  #           }
+              // get component label
+              const componentLabel = `component: ${label}`;
+              if (labelNames.has(componentLabel)) {
+                labelsToAdd.add(componentLabel);
+              }
+            }
 
-  #           try {
-  #             // add labels based on paths of files changed
+            try {
+              // add labels based on paths of files changed
 
-  #             // get existing labels
-  #             const labels = await github.paginate(
-  #               github.rest.issues.listLabelsForRepo,
-  #               {
-  #                 owner: owner,
-  #                 repo: repo,
-  #                 per_page: 100
-  #               }
-  #             );
-  #             const labelNames = new Set(labels.map(label => label.name));
+              // get existing labels
+              const labels = await github.paginate(
+                github.rest.issues.listLabelsForRepo,
+                {
+                  owner: owner,
+                  repo: repo,
+                  per_page: 100
+                }
+              );
+              const labelNames = new Set(labels.map(label => label.name));
+              console.log('labelNames',labelNames);
 
-  #             // get files changed
-  #             const files = await github.paginate(
-  #               github.rest.pulls.listFiles,
-  #               {
-  #                 owner: owner,
-  #                 repo: repo,
-  #                 pull_number: prNumber
-  #               }
-  #             );
+              // get files changed
+              const files = await github.paginate(
+                github.rest.pulls.listFiles,
+                {
+                  owner: owner,
+                  repo: repo,
+                  pull_number: prNumber
+                }
+              );
 
-  #             // determine labels based on files changed
-  #             for (const file of files) {
-  #               const fileName = file.filename;
+              // determine labels based on files changed
+              for (const file of files) {
+                const fileName = file.filename;
+                console.log('current file', fileName);
 
-  #               if (fileName.startsWith('packages/')) {
+                if (fileName.startsWith('packages/')) {
+                  console.log('part of packages');
 
-  #                 const relativePath = fileName.slice('packages/'.length);
+                  const relativePath = fileName.slice('packages/'.length);
+                  console.log('relative path', relativePath);
 
-  #                 if (relativePath.startsWith('bricks/src') || relativePath.startsWith('compat/src')) {
+                  if (relativePath.startsWith('bricks/src') || relativePath.startsWith('compat/src') || || relativePath.startsWith('structures/src')) {
 
-  #                   // add API bridge label if under compat
-  #                   if (relativePath.startsWith('compat/')) {
-  #                     labelsToAdd.add('API bridge');
-  #                   }
+                    // add API bridge label if under compat
+                    if (relativePath.startsWith('compat/')) {
+                      console.log('part of compat, add API bridge');
+                      labelsToAdd.add('API bridge');
+                    }
 
-  #                   // isolate name of file changed
-  #                   const changedFile = fileName.split('/').pop().split('.')[0];
+                    // isolate name of file changed
+                    const changedFile = fileName.split('/').pop().split('.')[0];
+                    console.log('isolated component name', changedFile);
+                    addLabel(changedFile, labelNames);
+                  }
+                }
 
-  #                   addLabel(changedFile, labelNames);
-  #                 }
-  #               }
+                if (fileName.startsWith('apps/test-app/app/')) {
+                  console.log('part of test app');
 
-  #               if (fileName.startsWith('apps/test-app/app/')) {
+                  const relativePath = fileName.slice('apps/test-app/app/'.length);
+                  console.log('relative path', relativePath);
 
-  #                 const relativePath = fileName.slice('apps/test-app/app/'.length);
+                  if (relativePath.startsWith('tests/') || relativePath.startsWith('compat/tests/')) {
 
-  #                 if (relativePath.startsWith('tests/') || relativePath.startsWith('compat/tests/')) {
+                    // add API bridge label if under compat
+                    if (relativePath.startsWith('compat/')) {
+                      console.log('part of compat, add API bridge');
+                      labelsToAdd.add('API bridge');
+                    }
 
-  #                   // add API bridge label if under compat
-  #                   if (relativePath.startsWith('compat/')) {
-  #                     labelsToAdd.add('API bridge');
-  #                   }
+                    // isolate component changed
+                    const componentTest = relativePath.startsWith('compat/') ? fileName.split('/')[5] : fileName.split('/')[4];
+                    console.log('isolated component name', componentTest);
 
-  #                   // isolate component changed
-  #                   const componentTest = relativePath.startsWith('compat/') ? fileName.split('/')[5] : fileName.split('/')[4];
+                    // convert to camel case
+                    const componentName = componentTest
+                      .split('-')
+                      .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+                      .join('');
+                    console.log('converted to camel case', componentName);
 
-  #                   // convert to camel case
-  #                   const componentName = componentTest
-  #                     .split('-')
-  #                     .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
-  #                     .join('');
+                    addLabel(componentName, labelNames);
+                  }
+                }
 
-  #                   addLabel(componentName, labelNames);
-  #                 }
-  #               }
+                if (fileName.startsWith('.github')) {
+                  console.log('part of github');
+                  labelsToAdd.add('github_actions');
+                }
+              }
 
-  #               if (fileName.startsWith('.github')) {
-  #                 labelsToAdd.add('github_actions');
-  #               }
-  #             }
+              // if synchronizing, remove any outdated labels
+              const currentLabels = await github.rest.issues.listLabelsOnIssue({
+                owner: owner,
+                repo: repo,
+                issue_number: prNumber
+              });
+              const currentLabelNames = new Set(currentLabels.data.map(label => label.name));
+              console.log('current labels', currentLabelNames);
 
-  #             // if synchronizing, remove any outdated labels
-  #             const currentLabels = await github.rest.issues.listLabelsOnIssue({
-  #               owner: owner,
-  #               repo: repo,
-  #               issue_number: prNumber
-  #             });
-  #             const currentLabelNames = new Set(currentLabels.data.map(label => label.name));
+              const finalLabelsAdd = [...labelsToAdd].filter(label => !currentLabelNames.has(label));
+              const finalLabelsRemove = [...currentLabelNames].filter(label => !labelsToAdd.has(label));
 
-  #             const finalLabelsAdd = [...labelsToAdd].filter(label => !currentLabelNames.has(label));
-  #             const finalLabelsRemove = [...currentLabelNames].filter(label => !labelsToAdd.has(label));
+              console.log('to remove', finalLabelsRemove);
+              console.log('to add', finalLabelsAdd);
 
-  #             // remove irrelevant labels from the PR
-  #             for (const label of finalLabelsRemove) {
-  #               await github.rest.issues.removeLabel({
-  #                 owner: owner,
-  #                 repo: repo,
-  #                 issue_number: prNumber,
-  #                 name: label
-  #               });
-  #             }
+              // remove irrelevant labels from the PR
+              for (const label of finalLabelsRemove) {
+                await github.rest.issues.removeLabel({
+                  owner: owner,
+                  repo: repo,
+                  issue_number: prNumber,
+                  name: label
+                });
+              }
 
-  #             // add relevant labels to the PR
-  #             if (finalLabelsAdd.length > 0) {
-  #               await github.rest.issues.addLabels({
-  #                 owner: owner,
-  #                 repo: repo,
-  #                 issue_number: prNumber,
-  #                 labels: finalLabelsAdd
-  #               });
-  #             }
-  #           } catch (error) {
-  #             console.log("Failed assigning labels");
-  #             console.error(error);
-  #           }
+              // add relevant labels to the PR
+              if (finalLabelsAdd.length > 0) {
+                await github.rest.issues.addLabels({
+                  owner: owner,
+                  repo: repo,
+                  issue_number: prNumber,
+                  labels: finalLabelsAdd
+                });
+              }
+            } catch (error) {
+              console.log("Failed assigning labels");
+              console.error(error);
+            }
 
   fix-formatting:
     name: Fix formatting

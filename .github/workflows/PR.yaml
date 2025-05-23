@@ -66,48 +66,27 @@ jobs:
 
             try {
 
-              let targetMilestone = null;
+              // hard code default milestone
+              let targetMilestone = "2025 Q2";
 
-              // if issue is linked in PR description, find if already defined under a milestone
-              const issueMatch = prBody.match(/\b(Closes|Fixes|Resolves)\s+#(\d+)\b/i);
-              console.log('issue match', issueMatch);
-
-              if (issueMatch) {
-                // if linked issue was found
-
-                const issueNum = parseInt(issueMatch[2]);
-                console.log('issue num', issueNum);
-                const { data: issue } = await github.rest.issues.get({
+              // look at files changed
+              const files = await github.paginate(
+                github.rest.pulls.listFiles,
+                {
                   owner: owner,
                   repo: repo,
-                  issue_number: issueNum
-                });
-                console.log('issue retrieved', issue);
-                if (issue.milestone) {
-                  targetMilestone = issue.milestone.title;
-                  console.log('found existing milestone', targetMilestone);
+                  pull_number: prNumber
                 }
-              } else {
-                // otherwise, look at files changed
+              );
 
-                const files = await github.paginate(
-                  github.rest.pulls.listFiles,
-                  {
-                    owner: owner,
-                    repo: repo,
-                    pull_number: prNumber
-                  }
-                );
+              for (const file of files) {
+                const fileName = file.filename;
+                console.log('current file', fileName);
 
-                for (const file of files) {
-                  const fileName = file.filename;
-                  console.log('current file', fileName);
-
-                  if (fileName.startsWith('packages/compat') || fileName.startsWith('apps/test-app/app/compat')) {
-                    console.log('part of compat, add API bridge');
-                    targetMilestone = 'API bridge';
-                    break;
-                  }
+                if (fileName.startsWith('packages/compat') || fileName.startsWith('apps/test-app/app/compat')) {
+                  console.log('part of compat, add API bridge');
+                  targetMilestone = 'API bridge';
+                  break;
                 }
               }
 

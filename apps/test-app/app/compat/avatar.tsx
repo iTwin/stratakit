@@ -27,16 +27,27 @@ export default definePage(function Page() {
 				))}
 			</div>
 
-			{/* abbreviation & image combinations */}
+			{/* abbreviation, image, icon, title combinations */}
 			<div style={{ display: "flex", gap: 4, placeItems: "center" }}>
 				{/* abbreviation */}
 				<Avatar abbreviation="TR" />
+				<Avatar title="Terry Rivers" abbreviation="TR" />
 				{/* image */}
 				<Avatar
 					image={
 						<img src="https://itwinplatformcdn.azureedge.net/iTwinUI/user-placeholder.png" />
 					}
 				/>
+				<Avatar
+					title="Terry Rivers"
+					image={
+						<img src="https://itwinplatformcdn.azureedge.net/iTwinUI/user-placeholder.png" />
+					}
+				/>
+				{/* icon */}
+				<Avatar image={<SvgUser />} />
+				<Avatar title="Terry Rivers" image={<SvgUser />} />
+
 				{/* abbreviation + image */}
 				<Avatar
 					abbreviation="TR"
@@ -44,19 +55,16 @@ export default definePage(function Page() {
 						<img src="https://itwinplatformcdn.azureedge.net/iTwinUI/user-placeholder.png" />
 					}
 				/>
-			</div>
-
-			{/* img or icon */}
-			<div style={{ display: "flex", gap: 4, placeItems: "center" }}>
-				{/* img */}
 				<Avatar
+					title="Terry Rivers"
 					abbreviation="TR"
 					image={
 						<img src="https://itwinplatformcdn.azureedge.net/iTwinUI/user-placeholder.png" />
 					}
 				/>
-				{/* icon */}
-				<Avatar image={<SvgUser />} />
+				{/* abbreviation + icon */}
+				<Avatar abbreviation="TR" image={<SvgUser />} />
+				<Avatar title="Terry Rivers" abbreviation="TR" image={<SvgUser />} />
 			</div>
 
 			{/* Not-implemented props */}

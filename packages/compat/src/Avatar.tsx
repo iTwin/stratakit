@@ -13,8 +13,6 @@ import type { PolymorphicForwardRefComponent } from "./~utils.tsx";
 
 type IuiAvatarProps = React.ComponentProps<typeof IuiAvatar>;
 
-export type AvatarStatus = "online" | "busy" | "away" | "offline";
-
 interface AvatarProps
 	extends Pick<
 		IuiAvatarProps,

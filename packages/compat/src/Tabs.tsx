@@ -16,21 +16,17 @@ type IuiTabsLegacyProps = React.ComponentProps<typeof IuiTabs>;
 type IuiTabsOrientation<T extends IuiTabsLegacyProps["orientation"]> = T;
 type IuiTabsType<T extends IuiTabsLegacyProps["type"]> = T;
 
-type TabsProps = {
+type TabsProps = Pick<
+	IuiTabsLegacyProps,
+	"labels" | "onTabSelected" | "children"
+> & {
 	/**
 	 * Content displayed to the right/bottom of the horizontal/vertical tabs
 	 *
 	 * If `type = 'pill'`, `actions` is not applicable.
 	 */
 	actions?: IuiTabsLegacyProps["actions"];
-	/**
-	 * Elements shown for each tab.
-	 * Recommended to pass an array of `Tab` components.
-	 */
-	labels: IuiTabsLegacyProps["labels"];
-	/**
-	 * Handler for activating a tab.
-	 */
+	labels?: IuiTabsLegacyProps["labels"];
 	onTabSelected?: IuiTabsLegacyProps["onTabSelected"];
 	/**
 	 * Index of the active tab.
@@ -59,9 +55,6 @@ type TabsProps = {
 	 * Custom CSS class name for the tabs wrapper.
 	 */
 	wrapperClassName?: IuiTabsLegacyProps["wrapperClassName"];
-	/**
-	 * Content inside the tab panel.
-	 */
 	children?: IuiTabsLegacyProps["children"];
 	/**
 	 * @deprecated Tabs will now overflow by default, so this prop does nothing.
@@ -70,38 +63,51 @@ type TabsProps = {
 	defaultValue?: IuiTabsLegacyProps["defaultValue"];
 	defaultChecked?: IuiTabsLegacyProps["defaultChecked"];
 } & (
-	| {
-			/**
-			 * Orientation of the tabs.
-			 * @default 'horizontal'
-			 */
-			orientation?: IuiTabsOrientation<"horizontal">;
-			/**
-			 * Type of the tabs.
-			 *
-			 * If `orientation = 'vertical'`, `pill` is not applicable.
-			 * @default 'default'
-			 */
-			type?: IuiTabsType<"default" | "borderless" | "pill">;
-	  }
-	| {
-			orientation: IuiTabsOrientation<"vertical">;
-			type?: IuiTabsType<"default" | "borderless">;
-	  }
-);
+		| {
+				/**
+				 * Orientation of the tabs.
+				 * @default 'horizontal'
+				 */
+				orientation?: IuiTabsOrientation<"horizontal">;
+				/**
+				 * Type of the tabs.
+				 *
+				 * If `orientation = 'vertical'`, `pill` is not applicable.
+				 * @default 'default'
+				 */
+				type?: IuiTabsType<"default" | "borderless" | "pill">;
+		  }
+		| {
+				orientation: IuiTabsOrientation<"vertical">;
+				type?: IuiTabsType<"default" | "borderless">;
+		  }
+	);
 
 /** @see https://itwinui.bentley.com/docs/tabs */
 export const Tabs = React.forwardRef((props, forwardedRef) => {
-	const { labels, children, ...rest } = useCompatProps(props);
+	const { labels, onTabSelected, children, ...rest } = useCompatProps(props);
 
 	const id = React.useId();
 	const [selectedId, setSelectedId] =
 		React.useState<SkTabsProps["selectedId"]>();
+	const tabIds = React.useMemo(() => {
+		return labels.map((_, index) => `${id}-${index}`);
+	}, [labels, id]);
+	const handleSetSelectedId = React.useCallback(
+		(newId: SkTabsProps["selectedId"]) => {
+			setSelectedId(newId);
+
+			const tabIndex = typeof newId === "string" ? tabIds.indexOf(newId) : -1;
+			if (tabIndex === -1) return;
+			onTabSelected?.(tabIndex);
+		},
+		[tabIds, onTabSelected],
+	);
 	return (
-		<SkTabs.Root setSelectedId={setSelectedId}>
+		<SkTabs.Root setSelectedId={handleSetSelectedId}>
 			<SkTabs.TabList ref={forwardedRef}>
 				{labels.map((label, index) => {
-					const tabId = `${id}-${index}`;
+					const tabId = tabIds[index];
 					return (
 						<SkTabs.Tab key={tabId} id={tabId}>
 							{label}

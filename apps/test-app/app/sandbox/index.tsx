@@ -97,7 +97,11 @@ export default function Page() {
 		<div className={styles.appLayout}>
 			<Header />
 			<PlatformBar />
-			<PanelGroup direction="horizontal" className={styles.content}>
+			<PanelGroup
+				direction="horizontal"
+				className={styles.content}
+				keyboardResizeBy={2.5}
+			>
 				<Panel
 					defaultSize={20}
 					minSize={15}

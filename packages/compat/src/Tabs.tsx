@@ -69,8 +69,19 @@ export const Tabs = React.forwardRef((props, forwardedRef) => {
 	} = useCompatProps(props);
 
 	const id = React.useId();
+
 	const tabIds = React.useMemo(() => {
-		return labels.map((_, index) => `${id}-${index}`);
+		return labels.map((label, index) => {
+			if (typeof label === "string") {
+				return `${id}-${index}-${label}`;
+			}
+
+			if (React.isValidElement(label) && label.key) {
+				return `${id}-${index}-${label.key}`;
+			}
+
+			return `${id}-${index}`;
+		});
 	}, [labels, id]);
 	const handleSetSelectedId = React.useCallback(
 		(newId: SkTabsProps["selectedId"]) => {

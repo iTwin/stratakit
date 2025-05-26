@@ -349,11 +349,16 @@ function PanelContent(props: {
 	const [selectedTreeId, setSelectedTreeId] = React.useState<
 		string | undefined | null
 	>(trees[0]?.name);
+	const deferredTreeId = React.useDeferredValue(selectedTreeId);
 
 	const allFilters = React.useMemo(() => {
-		if (!selectedTreeId) return trees[0].filters;
-		return trees.find((tree) => tree.name === selectedTreeId)?.filters || [];
-	}, [trees, selectedTreeId]);
+		if (!deferredTreeId) return trees[0].filters;
+		return trees.find((tree) => tree.name === deferredTreeId)?.filters || [];
+	}, [trees, deferredTreeId]);
+
+	const treeItems = React.useMemo(() => {
+		return trees.find((tree) => tree.name === deferredTreeId)?.content;
+	}, [trees, deferredTreeId]);
 
 	if (trees.length === 1)
 		return (
@@ -384,7 +389,9 @@ function PanelContent(props: {
 							focusable={false}
 							unmountOnHide
 						>
-							{tree.content}
+							{tree.name === deferredTreeId &&
+								selectedTreeId === deferredTreeId &&
+								treeItems}
 						</Tabs.TabPanel>
 					);
 				})}

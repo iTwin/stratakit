@@ -29,10 +29,10 @@ import * as ReactDOM from "react-dom";
 import { useSearchParams } from "react-router";
 import { toUpperCamelCase } from "~/~utils.tsx";
 
+import model1Url from "./_data/sandbox.model1.json?url";
+import model2Url from "./_data/sandbox.model2.json?url";
+import model3Url from "./_data/sandbox.model3.json?url";
 import styles from "./index.module.css";
-import model1Url from "./sandbox.model1.json?url";
-import model2Url from "./sandbox.model2.json?url";
-import model3Url from "./sandbox.model3.json?url";
 
 import type { UseQueryResult } from "@tanstack/react-query";
 import type { MetaFunction } from "react-router";
@@ -61,7 +61,7 @@ const models = {
 
 async function fetchModelsData(
 	model: keyof typeof models,
-): Promise<typeof import("./sandbox.model3.json")> {
+): Promise<typeof import("./_data/sandbox.model3.json")> {
 	if (model in models) {
 		const data = await fetch(models[model].url).then((res) => res.json());
 		// Simulate network delay for models marked as "slow"

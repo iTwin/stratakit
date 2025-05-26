@@ -3,12 +3,12 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
+import { useControlledState } from "@stratakit/foundations/secret-internals";
 import { Tabs as SkTabs } from "@stratakit/structures";
 import * as React from "react";
 import { useCompatProps } from "./~utils.tsx";
 
 import type { Tabs as IuiTabs } from "@itwin/itwinui-react";
-import { useControlledState } from "@stratakit/foundations/secret-internals";
 import type { PolymorphicForwardRefComponent } from "./~utils.tsx";
 
 type SkTabsProps = React.ComponentProps<typeof SkTabs.Root>;

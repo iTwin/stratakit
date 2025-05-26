@@ -39,6 +39,7 @@ export const components = {
 	compat: [
 		"Anchor",
 		"Divider",
+		"ExpandableBlock",
 		"Kbd",
 		"Label",
 		"ProgressLinear",

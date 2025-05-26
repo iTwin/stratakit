@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg">
+  <symbol id="icon" fill="none" viewBox="0 0 16 16"><path fill="currentColor" fill-rule="evenodd" d="M1.5 2a.5.5 0 0 0 0 1H2v7.5A1.5 1.5 0 0 0 3.5 12h3.202l-1.146 1.146a.5.5 0 0 0 .707.708l1.646-1.647 1.647 1.647a.5.5 0 0 0 .707-.708L9.116 12H12.5a1.5 1.5 0 0 0 1.5-1.5V3h.5a.5.5 0 0 0 0-1h-13Zm11 9h-9a.5.5 0 0 1-.5-.5V3h10v7.5a.5.5 0 0 1-.5.5ZM6 7.5a.5.5 0 0 0-1 0v2a.5.5 0 0 0 1 0v-2ZM10.5 6a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5Zm-2-1a.5.5 0 0 0-1 0v4.5a.5.5 0 0 0 1 0V5Z" clip-rule="evenodd"/></symbol>
+  <symbol id="icon-large" fill="none" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M1.5 3a.5.5 0 0 0 0 1H3v12.5A1.5 1.5 0 0 0 4.5 18h6.566l-1.482 2.223a.5.5 0 1 0 .832.554L12 18.401l1.584 2.376a.5.5 0 1 0 .832-.554L12.934 18H19.5a1.5 1.5 0 0 0 1.5-1.5V4h1.5a.5.5 0 0 0 0-1h-21Zm18 14h-15a.5.5 0 0 1-.5-.5V4h16v12.5a.5.5 0 0 1-.5.5ZM9 11.5a.5.5 0 0 0-1 0v2a.5.5 0 0 0 1 0v-2ZM12 7a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0v-6A.5.5 0 0 1 12 7Zm4 2.5a.5.5 0 0 0-1 0v4a.5.5 0 0 0 1 0v-4Z" clip-rule="evenodd"/></symbol>
+  <use href="#icon"/>
+</svg>

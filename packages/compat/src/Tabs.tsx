@@ -52,7 +52,7 @@ type TabsProps = Pick<
 /** @see https://itwinui.bentley.com/docs/tabs */
 export const Tabs = React.forwardRef((props, forwardedRef) => {
 	const {
-		actions,
+		actions, // NOT IMPLEMENTED
 		labels,
 		onTabSelected,
 		activeIndex,

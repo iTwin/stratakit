@@ -9,58 +9,22 @@ import * as React from "react";
 import type { Select as IuiSelect } from "@itwin/itwinui-react";
 
 type IuiSelectProps<T> = React.ComponentProps<typeof IuiSelect<T>>;
-type IuiSelectPropsWithNativeSetToTrueToTriggerTheDiscriminatedUnion<T> =
-	React.ComponentProps<typeof IuiSelect<T>> & {
-		/** Set to true to trigger the discriminated union. */
-		native: true;
-	};
+type IuiNativeSelectProps<T> = IuiSelectProps<T> & {
+	native: true;
+};
+type IuiCustomSelectProps<T> = IuiSelectProps<T> & {
+	native?: false;
+};
 
-type IuiSelectPropsWithNativeSetToFalseToTriggerTheDiscriminatedUnion<T> =
-	React.ComponentProps<typeof IuiSelect<T>> & {
-		/** Set to false to trigger the discriminated union. */
-		native?: false;
-	};
-
-type IuiSelectPropsWithoutNative<T> = Omit<
-	React.ComponentProps<typeof IuiSelect<T>>,
-	"native"
->;
-
-// type IuiSelectProps = Omit<_IuiSelectProps, "native"> & {
-// 	native: true;
-// };
-
-// type SelectProps<T> = Omit<
-// 	IuiSelectProps<T>,
-// 	keyof React.ComponentPropsWithoutRef<"div">
-// > &
-// 	React.ComponentPropsWithoutRef<"select">;
-
-// type SelectProps<T> = IuiSelectProps<T>;
-
-interface TypeA<T>
+interface IuiCustomSelectTransformedProps<T>
 	extends Pick<
-		IuiSelectPropsWithNativeSetToFalseToTriggerTheDiscriminatedUnion<T>,
+		IuiCustomSelectProps<T>,
 		| "native"
 
 		// SelectCommonProps
 		| "disabled"
 		| "size"
 		| "status"
-
-		// // NativeSelectProps
-		// | "value"
-		// | "onChange"
-		// | "options"
-		// | "defaultValue"
-		// | "triggerProps"
-		// | "native"
-		// // | "required"
-		// | "multiple"
-
-		// NativeSelectStyleTypeProps
-		// | "styleType"
-		// | "placeholder"
 
 		// CustomSelectProps
 		| "placeholder"
@@ -74,41 +38,82 @@ interface TypeA<T>
 		| "selectedItemRenderer"
 		| "value"
 		| "onChange"
-		// TODO: Maybe need to handle div props for this and for the other type (TypeB).
 	> {
-	/** NOT IMPLEMENTED: Always in native mode. */
-	disabled?: IuiSelectPropsWithNativeSetToFalseToTriggerTheDiscriminatedUnion<T>["disabled"];
-	/** NOT IMPLEMENTED: Always in native mode. */
-	size?: IuiSelectPropsWithNativeSetToFalseToTriggerTheDiscriminatedUnion<T>["size"];
-	/** NOT IMPLEMENTED: Always in native mode. */
-	status?: IuiSelectPropsWithNativeSetToFalseToTriggerTheDiscriminatedUnion<T>["status"];
-	/** NOT IMPLEMENTED: Always in native mode. */
-	placeholder?: IuiSelectPropsWithNativeSetToFalseToTriggerTheDiscriminatedUnion<T>["placeholder"];
-	/** NOT IMPLEMENTED: Always in native mode. */
-	options: IuiSelectPropsWithNativeSetToFalseToTriggerTheDiscriminatedUnion<T>["options"];
-	/** NOT IMPLEMENTED: Always in native mode. */
-	itemRenderer?: IuiSelectPropsWithNativeSetToFalseToTriggerTheDiscriminatedUnion<T>["itemRenderer"];
-	/** NOT IMPLEMENTED: Always in native mode. */
-	menuClassName?: IuiSelectPropsWithNativeSetToFalseToTriggerTheDiscriminatedUnion<T>["menuClassName"];
-	/** NOT IMPLEMENTED: Always in native mode. */
-	menuStyle?: IuiSelectPropsWithNativeSetToFalseToTriggerTheDiscriminatedUnion<T>["menuStyle"];
-	/** NOT IMPLEMENTED: Always in native mode. */
-	popoverProps?: IuiSelectPropsWithNativeSetToFalseToTriggerTheDiscriminatedUnion<T>["popoverProps"];
-	/** NOT IMPLEMENTED: Always in native mode. */
-	triggerProps?: IuiSelectPropsWithNativeSetToFalseToTriggerTheDiscriminatedUnion<T>["triggerProps"];
-	/** NOT IMPLEMENTED: Always in native mode. */
-	multiple?: IuiSelectPropsWithNativeSetToFalseToTriggerTheDiscriminatedUnion<T>["multiple"];
-	/** NOT IMPLEMENTED: Always in native mode. */
-	selectedItemRenderer?: IuiSelectPropsWithNativeSetToFalseToTriggerTheDiscriminatedUnion<T>["selectedItemRenderer"];
-	/** NOT IMPLEMENTED: Always in native mode. */
-	value?: IuiSelectPropsWithNativeSetToFalseToTriggerTheDiscriminatedUnion<T>["value"];
-	/** NOT IMPLEMENTED: Always in native mode. */
-	onChange?: IuiSelectPropsWithNativeSetToFalseToTriggerTheDiscriminatedUnion<T>["onChange"];
+	/**
+	 * NOT IMPLEMENTED:
+	 * Only native mode `Select` is implemented. If in custom mode (`native`=false/undefined), this prop may not work.
+	 */
+	disabled?: IuiCustomSelectProps<T>["disabled"];
+	/**
+	 * NOT IMPLEMENTED:
+	 * Only native mode `Select` is implemented. If in custom mode (`native`=false/undefined), this prop may not work.
+	 */
+	size?: IuiCustomSelectProps<T>["size"];
+	/**
+	 * NOT IMPLEMENTED:
+	 * Only native mode `Select` is implemented. If in custom mode (`native`=false/undefined), this prop may not work.
+	 */
+	status?: IuiCustomSelectProps<T>["status"];
+	/**
+	 * NOT IMPLEMENTED:
+	 * Only native mode `Select` is implemented. If in custom mode (`native`=false/undefined), this prop may not work.
+	 */
+	placeholder?: IuiCustomSelectProps<T>["placeholder"];
+	/**
+	 * NOT IMPLEMENTED:
+	 * Only native mode `Select` is implemented. If in custom mode (`native`=false/undefined), this prop may not work.
+	 */
+	options: IuiCustomSelectProps<T>["options"];
+	/**
+	 * NOT IMPLEMENTED:
+	 * Only native mode `Select` is implemented. If in custom mode (`native`=false/undefined), this prop may not work.
+	 */
+	itemRenderer?: IuiCustomSelectProps<T>["itemRenderer"];
+	/**
+	 * NOT IMPLEMENTED:
+	 * Only native mode `Select` is implemented. If in custom mode (`native`=false/undefined), this prop may not work.
+	 */
+	menuClassName?: IuiCustomSelectProps<T>["menuClassName"];
+	/**
+	 * NOT IMPLEMENTED:
+	 * Only native mode `Select` is implemented. If in custom mode (`native`=false/undefined), this prop may not work.
+	 */
+	menuStyle?: IuiCustomSelectProps<T>["menuStyle"];
+	/**
+	 * NOT IMPLEMENTED:
+	 * Only native mode `Select` is implemented. If in custom mode (`native`=false/undefined), this prop may not work.
+	 */
+	popoverProps?: IuiCustomSelectProps<T>["popoverProps"];
+	/**
+	 * NOT IMPLEMENTED:
+	 * Only native mode `Select` is implemented. If in custom mode (`native`=false/undefined), this prop may not work.
+	 */
+	triggerProps?: IuiCustomSelectProps<T>["triggerProps"];
+	/**
+	 * NOT IMPLEMENTED:
+	 * Only native mode `Select` is implemented. If in custom mode (`native`=false/undefined), this prop may not work.
+	 */
+	multiple?: IuiCustomSelectProps<T>["multiple"];
+	/**
+	 * NOT IMPLEMENTED:
+	 * Only native mode `Select` is implemented. If in custom mode (`native`=false/undefined), this prop may not work.
+	 */
+	selectedItemRenderer?: IuiCustomSelectProps<T>["selectedItemRenderer"];
+	/**
+	 * NOT IMPLEMENTED:
+	 * Only native mode `Select` is implemented. If in custom mode (`native`=false/undefined), this prop may not work.
+	 */
+	value?: IuiCustomSelectProps<T>["value"];
+	/**
+	 * NOT IMPLEMENTED:
+	 * Only native mode `Select` is implemented. If in custom mode (`native`=false/undefined), this prop may not work.
+	 */
+	onChange?: IuiCustomSelectProps<T>["onChange"];
 }
 
-interface TypeB<T>
+interface IuiNativeSelectTransformedProps<T>
 	extends Pick<
-		IuiSelectPropsWithNativeSetToTrueToTriggerTheDiscriminatedUnion<T>,
+		IuiNativeSelectProps<T>,
 		| "native"
 
 		// SelectCommonProps
@@ -122,103 +127,124 @@ interface TypeB<T>
 		| "options"
 		| "defaultValue"
 		| "triggerProps"
-		// | "native" // TODO: May not exist. May need to delete.
-		// | "required" // TODO: Why this is giving error even though it should exist?
+		| "required"
 		| "multiple"
 
 		// NativeSelectStyleTypeProps
 		| "styleType"
 		| "placeholder"
+	> {
+	/** NOT IMPLEMENTED */
+	size?: IuiNativeSelectProps<T>["size"];
+	/** NOT IMPLEMENTED */
+	status?: IuiNativeSelectProps<T>["status"];
+	/** NOT IMPLEMENTED */
+	styleType?: IuiNativeSelectProps<T>["styleType"];
+	/** NOT IMPLEMENTED */
+	placeholder?: IuiNativeSelectProps<T>["placeholder"];
+}
 
-		// CustomSelectProps
-		// | "itemRenderer"
-		// | "menuClassName"
-		// | "menuStyle"
-		// | "popoverProps"
-		// | "triggerProps"
-		// | "multiple"
-		// | "selectedItemRenderer"
-		// | "value"
-		// | "onChange"
-	> {}
+type SelectProps<T> = (
+	| IuiNativeSelectTransformedProps<T>
+	| IuiCustomSelectTransformedProps<T>
+) &
+	Omit<
+		React.ComponentPropsWithoutRef<"div">,
+		"onChange" | "placeholder" | "value" | "defaultValue"
+	>;
 
-// type TypeAorTypeB<T> =
-// 	| IuiSelectPropsWithNativeSetToFalseToTriggerTheDiscriminatedUnion<T>
-// | IuiSelectPropsWithNativeSetToTrueToTriggerTheDiscriminatedUnion<T>;
+/**
+ * @see https://itwinui.bentley.com/docs/Select
+ *
+ * **IMPORTANT**: Only native mode `Select` is implemented.
+ * If in custom mode (`native`=false/undefined), some of the passed props may not work.
+ */
+export const Select = React.forwardRef(
+	<T,>(
+		props: SelectProps<T>,
+		forwardedRef: React.ForwardedRef<HTMLSelectElement>,
+	) => {
+		const {
+			native,
 
-type TypeAorTypeB<T> = TypeA<T> | TypeB<T>;
+			// NativeSelect related props
+			disabled,
+			size,
+			status,
+			value,
+			onChange: onChangeProp,
+			options,
+			// @ts-ignore: Exists on NativeSelect
+			defaultValue,
+			triggerProps,
+			// @ts-ignore: Remove non-DOM props
+			required,
+			multiple,
+			// @ts-ignore: Remove non-DOM props
+			styleType,
+			placeholder,
 
-// interface SelectProps<T>
-// 	extends TypeAorTypeB<T>, "about">
+			// CustomSelect related props
+			// @ts-ignore: Remove non-DOM props
+			itemRenderer,
+			// @ts-ignore: Remove non-DOM props
+			menuClassName,
+			// @ts-ignore: Remove non-DOM props
+			menuStyle,
+			// @ts-ignore: Remove non-DOM props
+			popoverProps,
+			// @ts-ignore: Remove non-DOM props
+			selectedItemRenderer,
 
-type SelectProps<T> = TypeAorTypeB<T>;
+			...rest
+		} = props;
 
-// {
-// 	/** NOT IMPLEMENTED: Always in native mode. */
-// 	// native?: boolean;
-// }
+		const onChange: React.ChangeEventHandler<HTMLSelectElement> =
+			React.useCallback(
+				(event) => {
+					if (!native) {
+						return;
+					}
 
-// const q: React.Key | undefined = undefined;
+					onChangeProp?.(event.target.value, event);
+				},
+				[onChangeProp, native],
+			);
 
-// const qq: SelectProps<string> = {
-// 	placeholder,
-// };
+		const RenderedOptions = React.useCallback(() => {
+			if (!options || !native) {
+				return null;
+			}
 
-/** @see https://itwinui.bentley.com/docs/Select */
-export const Select = React.forwardRef((props, forwardedRef) => {
-	const {
-		disabled,
-		size,
-		status,
-		value,
-		onChange,
-		options,
-		// defaultValue,
-		triggerProps,
-		// native,
-		// required,
-		multiple,
-		// styleType,
-		placeholder,
-		...rest
-	} = props;
+			return options.map((option) => {
+				return (
+					<option key={option.value} {...option}>
+						{option.label}
+					</option>
+				);
+			});
+		}, [native, options]);
 
-	return (
-		<SkSelect.Root>
-			<SkSelect.HtmlSelect
-				{...(rest as React.ComponentPropsWithoutRef<"select">)} // TODO: Try to avoid
-				ref={forwardedRef}
-			>
-				{(
-					options as {
-						label: string;
-						value: string;
-						disabled?: boolean;
-					}[]
-				).map((option) => {
-					// TODO: Try to avoid
-					// if (
-					// 	typeof option.value !== "string" ||
-					// 	typeof option.value !== "number" ||
-					// 	typeof option.value !== "bigint"
-					// ) {
-					// 	return;
-					// }
-
-					return (
-						<option key={option.value} {...option}>
-							{option.label}
-						</option>
-					);
-				})}
-			</SkSelect.HtmlSelect>
-		</SkSelect.Root>
-	);
-}) as <T>(
+		return (
+			<SkSelect.Root {...rest}>
+				<SkSelect.HtmlSelect
+					{...(native ? triggerProps : {})}
+					disabled={disabled}
+					ref={forwardedRef}
+					value={native ? (value ?? undefined) : undefined}
+					defaultValue={native ? defaultValue : undefined}
+					onChange={onChange}
+				>
+					<RenderedOptions />
+				</SkSelect.HtmlSelect>
+			</SkSelect.Root>
+		);
+	},
+) as <T>(
 	props: SelectProps<T> & { ref?: React.ForwardedRef<HTMLSelectElement> },
 ) => React.JSX.Element;
-// biome-ignore lint/suspicious/noExplicitAny: TODO Try to avoid
-DEV: (Select as any).displayName = "Select";
+DEV: (Select as React.ForwardRefExoticComponent<unknown>).displayName =
+	"Select";
 
 export type {
 	SelectOption,

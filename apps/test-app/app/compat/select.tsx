@@ -19,6 +19,47 @@ export const handle = { title: "Select" };
 export default definePage(function Page() {
 	return (
 		<div style={{ display: "grid", gap: 4 }}>
+			{/* All implemented props */}
+			<Select
+				native
+				options={[
+					{ value: "1", label: "Item #1" },
+					{ value: "2", label: "Item #2", disabled: true },
+					{ value: "3", label: "Item #3" },
+					{ value: "4", label: "Item #4" },
+				]}
+				value={"4"}
+				onChange={(value) => {
+					console.log("Selected value:", value);
+				}}
+				data-dummy-attribute="dummy-value"
+			/>
+			<Select
+				native
+				options={[
+					{ value: "1", label: "Item #1" },
+					{ value: "2", label: "Item #2", disabled: true },
+					{ value: "3", label: "Item #3" },
+					{ value: "4", label: "Item #4" },
+				]}
+				defaultValue={"4"}
+				onChange={(value) => {
+					console.log("Selected value:", value);
+				}}
+				triggerProps={{
+					style: {
+						backgroundColor: "hotpink",
+					},
+				}}
+			/>
+
+			<br
+				style={{
+					margin: "16px 0",
+				}}
+			/>
+
+			{/* iTwinUI Stories */}
 			<Basic />
 			<WithIcons />
 			<WithSelectedValue />

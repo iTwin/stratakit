@@ -23,6 +23,7 @@ type TabsProps = Pick<
 	| "onTabSelected"
 	| "activeIndex"
 	| "focusActivationMode"
+	| "color"
 	| "tabsClassName"
 	| "contentClassName"
 	| "wrapperClassName"
@@ -33,13 +34,6 @@ type TabsProps = Pick<
 > & {
 	/** NOT IMPLEMENTED. */
 	actions?: IuiTabsLegacyProps["actions"];
-	/**
-	 * PARTIALLY IMPLEMENTED.
-	 *
-	 * - `blue` is mapped to the `neutral` tone of StrataKit.
-	 * - `green` is mapped to the `accent` tone of StrataKit.
-	 */
-	color?: IuiTabsLegacyProps["color"];
 } & (
 		| {
 				/** NOT IMPLEMENTED. */

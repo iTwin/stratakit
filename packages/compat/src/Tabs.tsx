@@ -80,9 +80,9 @@ export const Tabs = React.forwardRef((props, forwardedRef) => {
 	}, [labels, id]);
 	const handleSetSelectedId = React.useCallback(
 		(newId: SkTabsProps["selectedId"]) => {
-			const tabIndex = typeof newId === "string" ? tabIds.indexOf(newId) : -1;
-			if (tabIndex === -1) return;
-			onTabSelected?.(tabIndex);
+			const indexOfTab = typeof newId === "string" ? tabIds.indexOf(newId) : -1;
+			if (indexOfTab === -1) return;
+			onTabSelected?.(indexOfTab);
 		},
 		[tabIds, onTabSelected],
 	);

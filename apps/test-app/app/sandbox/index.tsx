@@ -27,11 +27,12 @@ import { produce } from "immer";
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { useSearchParams } from "react-router";
-import model1Url from "./sandbox.model1.json?url";
-import model2Url from "./sandbox.model2.json?url";
-import model3Url from "./sandbox.model3.json?url";
-import styles from "./sandbox.module.css";
-import { toUpperCamelCase } from "./~utils.tsx";
+import { toUpperCamelCase } from "~/~utils.tsx";
+
+import model1Url from "./_data/sandbox.model1.json?url";
+import model2Url from "./_data/sandbox.model2.json?url";
+import model3Url from "./_data/sandbox.model3.json?url";
+import styles from "./index.module.css";
 
 import type { UseQueryResult } from "@tanstack/react-query";
 import type { MetaFunction } from "react-router";
@@ -60,7 +61,7 @@ const models = {
 
 async function fetchModelsData(
 	model: keyof typeof models,
-): Promise<typeof import("./sandbox.model3.json")> {
+): Promise<typeof import("./_data/sandbox.model3.json")> {
 	if (model in models) {
 		const data = await fetch(models[model].url).then((res) => res.json());
 		// Simulate network delay for models marked as "slow"
@@ -80,11 +81,82 @@ async function fetchModelsData(
 // ----------------------------------------------------------------------------
 
 const title = "StrataKit sandbox";
+
 export const meta: MetaFunction = () => {
 	return [{ title }];
 };
 
 export default function Page() {
+	return (
+		<Layout panelContent={<LeftPanel />}>
+			<Header />
+			<PlatformBar />
+			<Canvas />
+		</Layout>
+	);
+}
+
+// ----------------------------------------------------------------------------
+
+function Header() {
+	return (
+		<header className={styles.header}>
+			<div className={styles.logo}>
+				<Icon href={placeholderIcon} size="large" />
+			</div>
+			<Text render={<h1 />} variant="body-md">
+				{title}
+			</Text>
+		</header>
+	);
+}
+
+function PlatformBar() {
+	return (
+		<div className={styles.platformBar}>
+			<div className={styles.tools}>
+				<Icon href={placeholderIcon} size="large" />
+				<Icon href={placeholderIcon} size="large" />
+				<Icon href={placeholderIcon} size="large" />
+			</div>
+		</div>
+	);
+}
+
+function Canvas() {
+	return (
+		<div className={styles.canvasWrapper}>
+			<div className={styles.canvas}>
+				<Toolbar.Group variant="solid">
+					<Toolbar.Item
+						render={
+							<IconButton label="Select" icon={cursorIcon} variant="ghost" />
+						}
+					/>
+					<Toolbar.Item
+						render={
+							<IconButton
+								label="Move"
+								icon={cursorSelectIcon}
+								variant="ghost"
+							/>
+						}
+					/>
+					<Toolbar.Item
+						render={<IconButton label="Draw" icon={drawIcon} variant="ghost" />}
+					/>
+					<Toolbar.Item
+						render={
+							<IconButton label="Measure" icon={measureIcon} variant="ghost" />
+						}
+					/>
+				</Toolbar.Group>
+			</div>
+		</div>
+	);
+}
+
+function LeftPanel() {
 	const [searchParams, setSearchParams] = useSearchParams();
 	const selectedModel =
 		(searchParams.get("model") as keyof typeof models) || "model1";
@@ -95,121 +167,67 @@ export default function Page() {
 	});
 
 	return (
-		<Layout
-			panelContent={
-				<>
-					<div className={styles.panelHeader}>
-						<div>
-							<Field.Root>
-								<VisuallyHidden render={<Field.Label />}>
-									Choose Model
-								</VisuallyHidden>
+		<>
+			<div className={styles.panelHeader}>
+				<div>
+					<Field.Root>
+						<VisuallyHidden render={<Field.Label />}>
+							Choose Model
+						</VisuallyHidden>
 
-								<Field.Control
-									render={(controlProps) => (
-										<Select.Root className={styles.panelTitleWrapper}>
-											<Select.HtmlSelect
-												{...controlProps}
-												variant="ghost"
-												defaultValue={selectedModel}
-												onChange={(e) =>
-													setSearchParams({ model: e.currentTarget.value })
-												}
-											>
-												{Object.entries(models).map(([id, { name }]) => (
-													<option key={id} value={id}>
-														{name}
-													</option>
-												))}
-											</Select.HtmlSelect>
-										</Select.Root>
-									)}
-								/>
-							</Field.Root>
+						<Field.Control
+							render={(controlProps) => (
+								<Select.Root className={styles.panelTitleWrapper}>
+									<Select.HtmlSelect
+										{...controlProps}
+										variant="ghost"
+										defaultValue={selectedModel}
+										onChange={(e) =>
+											setSearchParams({ model: e.currentTarget.value })
+										}
+									>
+										{Object.entries(models).map(([id, { name }]) => (
+											<option key={id} value={id}>
+												{name}
+											</option>
+										))}
+									</Select.HtmlSelect>
+								</Select.Root>
+							)}
+						/>
+					</Field.Root>
 
-							<hgroup role="group">
-								<VisuallyHidden render={<h2 />}>
-									{models[selectedModel]?.name}
-								</VisuallyHidden>
+					<hgroup role="group">
+						<VisuallyHidden render={<h2 />}>
+							{models[selectedModel]?.name}
+						</VisuallyHidden>
 
-								<React.Suspense
-									key={selectedModel}
-									fallback={<Skeleton variant="text" />}
-								>
-									<VersionContent query={query} />
-								</React.Suspense>
-							</hgroup>
-						</div>
-
-						<div>
-							<IconButton
-								className={styles.shiftIconRight}
-								icon={panelCollapseLeftIcon}
-								label="Dock panel"
-								variant="ghost"
-								disabled
-							/>
-						</div>
-					</div>
-
-					<React.Suspense key={selectedModel} fallback={<PanelLoading />}>
-						<SearchboxProvider>
-							<PanelContent query={query} />
-						</SearchboxProvider>
-					</React.Suspense>
-				</>
-			}
-		>
-			<header className={styles.header}>
-				<div className={styles.logo}>
-					<Icon href={placeholderIcon} size="large" />
+						<React.Suspense
+							key={selectedModel}
+							fallback={<Skeleton variant="text" />}
+						>
+							<VersionContent query={query} />
+						</React.Suspense>
+					</hgroup>
 				</div>
-				<Text render={(props) => <h1 {...props} />} variant="body-md">
-					{title}
-				</Text>
-			</header>
-			<div className={styles.platformBar}>
-				<div className={styles.tools}>
-					<Icon href={placeholderIcon} size="large" />
-					<Icon href={placeholderIcon} size="large" />
-					<Icon href={placeholderIcon} size="large" />
+
+				<div>
+					<IconButton
+						className={styles.shiftIconRight}
+						icon={panelCollapseLeftIcon}
+						label="Dock panel"
+						variant="ghost"
+						disabled
+					/>
 				</div>
 			</div>
-			<div className={styles.canvasWrapper}>
-				<div className={styles.canvas}>
-					<Toolbar.Group variant="solid">
-						<Toolbar.Item
-							render={
-								<IconButton label="Select" icon={cursorIcon} variant="ghost" />
-							}
-						/>
-						<Toolbar.Item
-							render={
-								<IconButton
-									label="Move"
-									icon={cursorSelectIcon}
-									variant="ghost"
-								/>
-							}
-						/>
-						<Toolbar.Item
-							render={
-								<IconButton label="Draw" icon={drawIcon} variant="ghost" />
-							}
-						/>
-						<Toolbar.Item
-							render={
-								<IconButton
-									label="Measure"
-									icon={measureIcon}
-									variant="ghost"
-								/>
-							}
-						/>
-					</Toolbar.Group>
-				</div>
-			</div>
-		</Layout>
+
+			<React.Suspense key={selectedModel} fallback={<PanelLoading />}>
+				<SearchboxProvider>
+					<PanelContent query={query} />
+				</SearchboxProvider>
+			</React.Suspense>
+		</>
 	);
 }
 

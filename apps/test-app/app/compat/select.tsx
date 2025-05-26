@@ -12,6 +12,8 @@ import { MenuItem, Select } from "@stratakit/react";
 import * as React from "react";
 import { definePage } from "~/~utils.tsx";
 
+import type { SelectOption } from "@stratakit/react";
+
 export const handle = { title: "Select" };
 
 export default definePage(function Page() {
@@ -163,12 +165,12 @@ export const Custom = () => {
 		<Select
 			options={options}
 			value={selectedValue}
-			onChange={(value) => setSelectedValue(value)}
+			onChange={(value: string) => setSelectedValue(value)}
 			placeholder="Placeholder text"
 			itemRenderer={(option) => (
 				<MenuItem style={{ color: option.value }}>{option.label}</MenuItem>
 			)}
-			selectedItemRenderer={(option) => (
+			selectedItemRenderer={(option: SelectOption<string>) => (
 				<span style={{ backgroundColor: option.value }}>{option.label}</span>
 			)}
 		/>
@@ -196,13 +198,13 @@ export const TruncateMiddleText = () => {
 			value={selectedValue}
 			onChange={setSelectedValue}
 			placeholder="Placeholder text"
-			itemRenderer={(option) => (
+			itemRenderer={(option: SelectOption<string>) => (
 				<MenuItem>
 					{/* <MiddleTextTruncation text={option.label} /> */}
 					{option.label}
 				</MenuItem>
 			)}
-			selectedItemRenderer={(option) => (
+			selectedItemRenderer={(option: SelectOption<string>) => (
 				// <MiddleTextTruncation text={option.label} />
 				<span>{option.label}</span>
 			)}
@@ -254,7 +256,7 @@ export const MultiCustomRenderer = () => {
 				}
 				placeholder="Placeholder text"
 				multiple
-				selectedItemRenderer={(options) => (
+				selectedItemRenderer={(options: SelectOption<number>[]) => (
 					<>{options.map((option) => option.label).join(", ")}</>
 				)}
 			/>

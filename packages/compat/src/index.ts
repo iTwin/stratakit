@@ -11,5 +11,6 @@ export { Label } from "./Label.js";
 export { MenuItem } from "./MenuItem.js";
 export { ProgressLinear } from "./ProgressLinear.js";
 export { Select } from "./Select.js";
+export type { SelectOption, SelectValueChangeEvent } from "./Select.js";
 export { Text } from "./Text.js";
 export { Tooltip } from "./Tooltip.js";

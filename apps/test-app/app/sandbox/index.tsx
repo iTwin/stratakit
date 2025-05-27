@@ -290,27 +290,33 @@ function Layout(
 }
 
 function PanelLoading() {
-	const levels = [1, 1, 2, 2, 3, 2, 3, 2, 1, 1, 2, 3, 4, 5, 2, 3, 4, 5];
-
 	return (
 		<>
 			<div className={styles.subheader}>
 				<Skeleton variant="text" />
 			</div>
 
-			<div className={styles.skeletonTree}>
-				{levels.map((level, i) => {
-					return (
-						<SkeletonTreeItem
-							key={`${i}-${level}`}
-							style={{ "--level": level } as React.CSSProperties}
-						/>
-					);
-				})}
-
-				<VisuallyHidden>Loading…</VisuallyHidden>
-			</div>
+			<TreeLoading />
 		</>
+	);
+}
+
+function TreeLoading() {
+	const levels = [1, 1, 2, 2, 3, 2, 3, 2, 1, 1, 2, 3, 4, 5, 2, 3, 4, 5];
+
+	return (
+		<div className={styles.skeletonTree}>
+			{levels.map((level, i) => {
+				return (
+					<SkeletonTreeItem
+						key={`${i}-${level}`}
+						style={{ "--level": level } as React.CSSProperties}
+					/>
+				);
+			})}
+
+			<VisuallyHidden>Loading…</VisuallyHidden>
+		</div>
 	);
 }
 
@@ -374,10 +380,6 @@ function PanelContent(props: {
 		return trees.find((tree) => tree.name === deferredTreeId)?.filters || [];
 	}, [trees, deferredTreeId]);
 
-	const treeItems = React.useMemo(() => {
-		return trees.find((tree) => tree.name === deferredTreeId)?.content;
-	}, [trees, deferredTreeId]);
-
 	if (trees.length === 1)
 		return (
 			<TreeFilteringProvider allFilters={allFilters}>
@@ -408,8 +410,11 @@ function PanelContent(props: {
 							unmountOnHide
 						>
 							{tree.name === deferredTreeId &&
-								selectedTreeId === deferredTreeId &&
-								treeItems}
+							selectedTreeId === deferredTreeId ? (
+								tree.content
+							) : (
+								<TreeLoading />
+							)}
 						</Tabs.TabPanel>
 					);
 				})}

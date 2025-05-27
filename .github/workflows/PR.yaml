@@ -78,19 +78,16 @@ jobs:
 
               for (const file of files) {
                 const fileName = file.filename;
-                console.log('current file', fileName);
 
                 if (fileName.startsWith('packages/')) {
 
                   if (fileName.startsWith('packages/compat/')) {
                     // assign API bridge if part of compat/
 
-                    console.log('part of compat, add API bridge');
                     targetMilestone = 'API bridge';
                   } else {
                     // assign default milestone if part of packages/
 
-                    console.log('part of packages, add default');
                     targetMilestone = '2025 Q2';
                   }
                   break;
@@ -99,19 +96,15 @@ jobs:
 
               // if synchronizing, update milestone appropriately (only if new milestone is different)
               const oldMilestone = pr.milestone ? pr.milestone.title : null;
-              console.log('old milestone', oldMilestone);
 
               if (oldMilestone !== targetMilestone) {
-                console.log('changing because new milestone is different');
                 // find milestone to apply
                 const milestones = await github.rest.issues.listMilestones({
                   owner: owner,
                   repo: repo,
                   state: 'open'
                 });
-                console.log('existing milestones', milestones);
                 const milestone = milestones.data.find(m => m.title === targetMilestone);
-                console.log('found target milestone', milestone);
 
                 // apply milestone to the PR
                 await github.rest.issues.update({
@@ -166,7 +159,6 @@ jobs:
                 }
               );
               const labelNames = new Set(labels.map(label => label.name));
-              console.log('labelNames',labelNames);
 
               // get files changed
               const files = await github.paginate(
@@ -181,26 +173,21 @@ jobs:
               // determine labels based on files changed
               for (const file of files) {
                 const fileName = file.filename;
-                console.log('current file', fileName);
 
                 if (fileName.startsWith('packages/')) {
-                  console.log('part of packages');
 
                   const relativePath = fileName.slice('packages/'.length);
-                  console.log('relative path', relativePath);
 
                   // add component label for any components changed
                   if (relativePath.startsWith('bricks/src/') || relativePath.startsWith('compat/src/') || relativePath.startsWith('structures/src/')) {
 
                     // add API bridge label if under compat/
                     if (relativePath.startsWith('compat/')) {
-                      console.log('part of compat, add API bridge');
                       labelsToAdd.add('API bridge');
                     }
 
                     // isolate name of file changed
                     const changedFile = relativePath.split('/').pop().split('.')[0];
-                    console.log('isolated component name', changedFile);
                     addComponentLabel(changedFile, labelNames);
                   }
                 } else if (fileName.startsWith('apps/test-app/app/tests/')) {
@@ -208,18 +195,15 @@ jobs:
 
                   // isolate component changed by component test folder name
                   const componentChanged = fileName.split('/')[4];
-                  console.log('isolated component name', componentChanged);
 
                   // convert to camel case
                   const componentName = componentChanged
                     .split('-')
                     .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
                     .join('');
-                  console.log('converted to camel case', componentName);
 
                   addComponentLabel(componentName, labelNames);
                 } else if (fileName.startsWith('.github')) {
-                  console.log('part of github');
                   labelsToAdd.add('github_actions');
                 }
               }
@@ -231,13 +215,9 @@ jobs:
                 issue_number: prNumber
               });
               const currentLabelNames = new Set(currentLabels.data.map(label => label.name));
-              console.log('current labels', currentLabelNames);
 
               const finalLabelsAdd = [...labelsToAdd].filter(label => !currentLabelNames.has(label));
               const finalLabelsRemove = [...currentLabelNames].filter(label => !labelsToAdd.has(label));
-
-              console.log('to remove', finalLabelsRemove);
-              console.log('to add', finalLabelsAdd);
 
               // remove irrelevant labels from the PR
               for (const label of finalLabelsRemove) {

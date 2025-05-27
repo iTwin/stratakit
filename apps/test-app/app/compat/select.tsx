@@ -244,14 +244,8 @@ export const TruncateMiddleText = () => {
 			value={selectedValue}
 			onChange={setSelectedValue}
 			placeholder="Placeholder text"
-			itemRenderer={(option: SelectOption<string>) => (
-				<MenuItem>
-					{/* <MiddleTextTruncation text={option.label} /> */}
-					{option.label}
-				</MenuItem>
-			)}
+			itemRenderer={(option) => <MenuItem>{option.label}</MenuItem>}
 			selectedItemRenderer={(option: SelectOption<string>) => (
-				// <MiddleTextTruncation text={option.label} />
 				<span>{option.label}</span>
 			)}
 		/>

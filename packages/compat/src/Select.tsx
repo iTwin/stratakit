@@ -139,6 +139,8 @@ interface IuiNativeSelectTransformedProps<T>
 	/** NOT IMPLEMENTED */
 	status?: IuiNativeSelectProps<T>["status"];
 	/** NOT IMPLEMENTED */
+	required?: IuiNativeSelectProps<T>["required"];
+	/** NOT IMPLEMENTED */
 	styleType?: IuiNativeSelectProps<T>["styleType"];
 	/** NOT IMPLEMENTED */
 	placeholder?: IuiNativeSelectProps<T>["placeholder"];
@@ -169,31 +171,31 @@ export const Select = React.forwardRef(
 
 			// NativeSelect related props
 			disabled,
-			size,
-			status,
+			size, // NOT IMPLEMENTED
+			status, // NOT IMPLEMENTED
 			value,
 			onChange: onChangeProp,
 			options,
-			// @ts-ignore: Exists on NativeSelect
+			// @ts-ignore: Exists only in NativeSelect
 			defaultValue,
 			triggerProps,
-			// @ts-ignore: Remove non-DOM props
+			// @ts-ignore: NOT IMPLEMENTED
 			required,
 			multiple,
-			// @ts-ignore: Remove non-DOM props
+			// @ts-ignore: NOT IMPLEMENTED
 			styleType,
 			placeholder,
 
 			// CustomSelect related props
-			// @ts-ignore: Remove non-DOM props
+			// @ts-ignore: NOT IMPLEMENTED
 			itemRenderer,
-			// @ts-ignore: Remove non-DOM props
+			// @ts-ignore: NOT IMPLEMENTED
 			menuClassName,
-			// @ts-ignore: Remove non-DOM props
+			// @ts-ignore: NOT IMPLEMENTED
 			menuStyle,
-			// @ts-ignore: Remove non-DOM props
+			// @ts-ignore: NOT IMPLEMENTED
 			popoverProps,
-			// @ts-ignore: Remove non-DOM props
+			// @ts-ignore: NOT IMPLEMENTED
 			selectedItemRenderer,
 
 			...rest

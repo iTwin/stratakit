@@ -143,6 +143,8 @@ jobs:
 
               // get component label
               const componentLabel = `component: ${label}`;
+
+              // add labels if they exist
               if (labelNames.has(componentLabel)) {
                 labelsToAdd.add(componentLabel);
               }

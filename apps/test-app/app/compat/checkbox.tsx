@@ -19,7 +19,7 @@ export default definePage(function Page() {
 
 			{/* Other implemented props */}
 			<Checkbox
-				label="Cannot choose me!"
+				label="Choose me!"
 				labelProps={{ className: "label-class" }}
 				wrapperProps={{ className: "wrapper-class" }}
 			/>

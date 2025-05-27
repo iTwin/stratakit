@@ -13,7 +13,7 @@ import * as React from "react";
 import { Dismiss, StatusIcon } from "./~utils.icons.js";
 
 import type { BaseProps } from "@stratakit/foundations/secret-internals";
-// changed file test
+
 type BannerProps = Omit<BaseProps, "children"> & {
 	/**
 	 * Icon to be displayed inside the banner.

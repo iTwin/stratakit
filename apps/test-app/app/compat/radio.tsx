@@ -26,7 +26,7 @@ export default definePage(function Page() {
 
 			{/* Other implemented props */}
 			<Radio
-				label="Cannot choose me!"
+				label="Choose me!"
 				labelProps={{ className: "label-class" }}
 				wrapperProps={{ className: "wrapper-class" }}
 			/>

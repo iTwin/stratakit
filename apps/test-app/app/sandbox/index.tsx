@@ -26,12 +26,19 @@ import cx from "classnames";
 import { produce } from "immer";
 import * as React from "react";
 import * as ReactDOM from "react-dom";
+import {
+	Panel,
+	PanelGroup,
+	PanelResizeHandle,
+	getResizeHandleElement,
+} from "react-resizable-panels";
 import { useSearchParams } from "react-router";
-import model1Url from "./sandbox.model1.json?url";
-import model2Url from "./sandbox.model2.json?url";
-import model3Url from "./sandbox.model3.json?url";
-import styles from "./sandbox.module.css";
-import { toUpperCamelCase } from "./~utils.tsx";
+import { toUpperCamelCase } from "~/~utils.tsx";
+
+import model1Url from "./_data/sandbox.model1.json?url";
+import model2Url from "./_data/sandbox.model2.json?url";
+import model3Url from "./_data/sandbox.model3.json?url";
+import styles from "./index.module.css";
 
 import type { UseQueryResult } from "@tanstack/react-query";
 import type { MetaFunction } from "react-router";
@@ -60,7 +67,7 @@ const models = {
 
 async function fetchModelsData(
 	model: keyof typeof models,
-): Promise<typeof import("./sandbox.model3.json")> {
+): Promise<typeof import("./_data/sandbox.model3.json")> {
 	if (model in models) {
 		const data = await fetch(models[model].url).then((res) => res.json());
 		// Simulate network delay for models marked as "slow"
@@ -80,11 +87,93 @@ async function fetchModelsData(
 // ----------------------------------------------------------------------------
 
 const title = "StrataKit sandbox";
+
 export const meta: MetaFunction = () => {
 	return [{ title }];
 };
 
 export default function Page() {
+	return (
+		<div className={styles.appLayout}>
+			<Header />
+			<PlatformBar />
+			<PanelGroup
+				direction="horizontal"
+				className={styles.content}
+				keyboardResizeBy={2.5}
+			>
+				<Panel
+					defaultSize={20}
+					minSize={15}
+					maxSize={35}
+					className={styles.leftPanel}
+				>
+					<LeftPanel />
+				</Panel>
+				<PanelSplitter />
+				<Panel className={styles.canvasWrapper}>
+					<Canvas />
+				</Panel>
+			</PanelGroup>
+		</div>
+	);
+}
+
+// ----------------------------------------------------------------------------
+
+function Header() {
+	return (
+		<header className={styles.header}>
+			<div className={styles.logo}>
+				<Icon href={placeholderIcon} size="large" />
+			</div>
+			<Text render={<h1 />} variant="body-md">
+				{title}
+			</Text>
+		</header>
+	);
+}
+
+function PlatformBar() {
+	return (
+		<div className={styles.platformBar}>
+			<div className={styles.tools}>
+				<Icon href={placeholderIcon} size="large" />
+				<Icon href={placeholderIcon} size="large" />
+				<Icon href={placeholderIcon} size="large" />
+			</div>
+		</div>
+	);
+}
+
+function Canvas() {
+	return (
+		<div className={styles.canvas}>
+			<Toolbar.Group variant="solid">
+				<Toolbar.Item
+					render={
+						<IconButton label="Select" icon={cursorIcon} variant="ghost" />
+					}
+				/>
+				<Toolbar.Item
+					render={
+						<IconButton label="Move" icon={cursorSelectIcon} variant="ghost" />
+					}
+				/>
+				<Toolbar.Item
+					render={<IconButton label="Draw" icon={drawIcon} variant="ghost" />}
+				/>
+				<Toolbar.Item
+					render={
+						<IconButton label="Measure" icon={measureIcon} variant="ghost" />
+					}
+				/>
+			</Toolbar.Group>
+		</div>
+	);
+}
+
+function LeftPanel() {
 	const [searchParams, setSearchParams] = useSearchParams();
 	const selectedModel =
 		(searchParams.get("model") as keyof typeof models) || "model1";
@@ -95,181 +184,94 @@ export default function Page() {
 	});
 
 	return (
-		<Layout
-			panelContent={
-				<>
-					<div className={styles.panelHeader}>
-						<div>
-							<Field.Root>
-								<VisuallyHidden render={<Field.Label />}>
-									Choose Model
-								</VisuallyHidden>
+		<>
+			<div className={styles.panelHeader}>
+				<div>
+					<Field.Root>
+						<VisuallyHidden render={<Field.Label />}>
+							Choose Model
+						</VisuallyHidden>
 
-								<Field.Control
-									render={(controlProps) => (
-										<Select.Root className={styles.panelTitleWrapper}>
-											<Select.HtmlSelect
-												{...controlProps}
-												variant="ghost"
-												defaultValue={selectedModel}
-												onChange={(e) =>
-													setSearchParams({ model: e.currentTarget.value })
-												}
-											>
-												{Object.entries(models).map(([id, { name }]) => (
-													<option key={id} value={id}>
-														{name}
-													</option>
-												))}
-											</Select.HtmlSelect>
-										</Select.Root>
-									)}
-								/>
-							</Field.Root>
+						<Field.Control
+							render={(controlProps) => (
+								<Select.Root className={styles.panelTitleWrapper}>
+									<Select.HtmlSelect
+										{...controlProps}
+										variant="ghost"
+										defaultValue={selectedModel}
+										onChange={(e) =>
+											setSearchParams({ model: e.currentTarget.value })
+										}
+									>
+										{Object.entries(models).map(([id, { name }]) => (
+											<option key={id} value={id}>
+												{name}
+											</option>
+										))}
+									</Select.HtmlSelect>
+								</Select.Root>
+							)}
+						/>
+					</Field.Root>
 
-							<hgroup role="group">
-								<VisuallyHidden render={<h2 />}>
-									{models[selectedModel]?.name}
-								</VisuallyHidden>
+					<hgroup role="group">
+						<VisuallyHidden render={<h2 />}>
+							{models[selectedModel]?.name}
+						</VisuallyHidden>
 
-								<React.Suspense
-									key={selectedModel}
-									fallback={<Skeleton variant="text" />}
-								>
-									<VersionContent query={query} />
-								</React.Suspense>
-							</hgroup>
-						</div>
-
-						<div>
-							<IconButton
-								className={styles.shiftIconRight}
-								icon={panelCollapseLeftIcon}
-								label="Dock panel"
-								variant="ghost"
-								disabled
-							/>
-						</div>
-					</div>
-
-					<React.Suspense key={selectedModel} fallback={<PanelLoading />}>
-						<SearchboxProvider>
-							<PanelContent query={query} />
-						</SearchboxProvider>
-					</React.Suspense>
-				</>
-			}
-		>
-			<header className={styles.header}>
-				<div className={styles.logo}>
-					<Icon href={placeholderIcon} size="large" />
+						<React.Suspense
+							key={selectedModel}
+							fallback={<Skeleton variant="text" />}
+						>
+							<VersionContent query={query} />
+						</React.Suspense>
+					</hgroup>
 				</div>
-				<Text render={(props) => <h1 {...props} />} variant="body-md">
-					{title}
-				</Text>
-			</header>
-			<div className={styles.platformBar}>
-				<div className={styles.tools}>
-					<Icon href={placeholderIcon} size="large" />
-					<Icon href={placeholderIcon} size="large" />
-					<Icon href={placeholderIcon} size="large" />
+
+				<div>
+					<IconButton
+						className={styles.shiftIconRight}
+						icon={panelCollapseLeftIcon}
+						label="Dock panel"
+						variant="ghost"
+						disabled
+					/>
 				</div>
 			</div>
-			<div className={styles.canvasWrapper}>
-				<div className={styles.canvas}>
-					<Toolbar.Group variant="solid">
-						<Toolbar.Item
-							render={
-								<IconButton label="Select" icon={cursorIcon} variant="ghost" />
-							}
-						/>
-						<Toolbar.Item
-							render={
-								<IconButton
-									label="Move"
-									icon={cursorSelectIcon}
-									variant="ghost"
-								/>
-							}
-						/>
-						<Toolbar.Item
-							render={
-								<IconButton label="Draw" icon={drawIcon} variant="ghost" />
-							}
-						/>
-						<Toolbar.Item
-							render={
-								<IconButton
-									label="Measure"
-									icon={measureIcon}
-									variant="ghost"
-								/>
-							}
-						/>
-					</Toolbar.Group>
-				</div>
-			</div>
-		</Layout>
+
+			<React.Suspense key={selectedModel} fallback={<PanelLoading />}>
+				<SearchboxProvider>
+					<PanelContent query={query} />
+				</SearchboxProvider>
+			</React.Suspense>
+		</>
+	);
+}
+
+function PanelSplitter() {
+	const resizerId = React.useId();
+
+	React.useEffect(() => {
+		const resizer = getResizeHandleElement(resizerId);
+
+		// We override the `role` from "separator" to "slider" for better support in NVDA
+		// (and perhaps other desktop screen-readers).
+		// This still doesn't work in TalkBack (and perhaps other mobile screen-readers),
+		// for which we will likely need a hidden range input. (TODO)
+		resizer?.setAttribute("role", "slider");
+	}, [resizerId]);
+
+	return (
+		<PanelResizeHandle
+			id={resizerId}
+			hitAreaMargins={{ fine: 2, coarse: 12 }}
+			className={styles.splitter}
+			aria-label="Resize left panel"
+		/>
 	);
 }
 
 // ----------------------------------------------------------------------------
-
-function Layout(
-	props: React.PropsWithChildren<{
-		panelContent: React.ReactNode;
-	}>,
-) {
-	const { sliderProps, panelProps, panelMinSize, panelMaxSize, resizing } =
-		useSplitter<HTMLDivElement>({
-			minSize: { px: 256, pct: 20 },
-			maxSize: { pct: 30 },
-		});
-
-	const resizerId = React.useId();
-
-	return (
-		<div
-			className={styles.appLayout}
-			style={
-				{
-					"--_panel-min-size": panelMinSize,
-					"--_panel-max-size": panelMaxSize,
-				} as React.CSSProperties
-			}
-		>
-			<div
-				{...panelProps}
-				className={styles.leftPanel}
-				style={{ position: "relative", ...panelProps.style }}
-			>
-				{props.panelContent}
-			</div>
-			<div
-				className={styles.splitter}
-				data-resizing={resizing ? "true" : undefined}
-			>
-				<VisuallyHidden
-					render={(props) => (
-						<label {...props} htmlFor={resizerId}>
-							Resize layers panel
-						</label>
-					)}
-				>
-					Resize layers panel
-				</VisuallyHidden>
-
-				<input
-					id={resizerId}
-					type="range"
-					className={styles.slider}
-					{...sliderProps}
-				/>
-			</div>
-			{props.children}
-		</div>
-	);
-}
 
 function PanelLoading() {
 	const levels = [1, 1, 2, 2, 3, 2, 3, 2, 1, 1, 2, 3, 4, 5, 2, 3, 4, 5];
@@ -405,251 +407,6 @@ function NoResultsState() {
 			<Text variant="body-sm">No results found</Text>
 		</div>
 	);
-}
-
-// ----------------------------------------------------------------------------
-
-function clamp(value: number, min: number, max: number) {
-	return Math.min(Math.max(value, min), max);
-}
-
-interface UseSplitterArgs {
-	onCollapse?: () => void;
-	minSize?: { px: number; pct: number }; // same as `min(px, pct)`
-	maxSize?: { pct: number };
-}
-
-// https://www.w3.org/WAI/ARIA/apg/patterns/windowsplitter/
-function useSplitter<TPanel extends Element>(args?: UseSplitterArgs) {
-	const { minSize: minSizeSpec, maxSize: maxSizeSpec, onCollapse } = args ?? {};
-	const id = React.useId();
-	const panelRef = React.useRef<TPanel>(null);
-	const [panelSize, setPanelSize] = React.useState<number | undefined>(
-		undefined,
-	);
-	const [containerSize, setContainerSize] = React.useState<number | undefined>(
-		undefined,
-	);
-	const [mode, setMode] = React.useState<"smallest" | "largest" | undefined>(
-		undefined,
-	);
-
-	const [resizing, setResizing] = React.useState(false);
-	const [preferredSize, setPreferredSize] = React.useState<number | undefined>(
-		undefined,
-	);
-
-	const minSize = React.useMemo(() => {
-		if (!minSizeSpec) return undefined;
-		if (!containerSize) return undefined;
-		return Math.min(minSizeSpec.px, (minSizeSpec.pct / 100) * containerSize);
-	}, [minSizeSpec, containerSize]);
-	const maxSize = React.useMemo(() => {
-		if (!minSize) return undefined;
-		if (!maxSizeSpec) return undefined;
-		if (!containerSize) return undefined;
-		return Math.max(minSize, (maxSizeSpec.pct / 100) * containerSize);
-	}, [maxSizeSpec, containerSize, minSize]);
-	const size = React.useMemo(() => {
-		if (mode === "smallest") return minSize ?? 0;
-		if (mode === "largest") return maxSize ?? 0;
-		if (!panelSize) return undefined;
-		if (!minSize) return undefined;
-		if (!maxSize) return undefined;
-		return clamp(panelSize, minSize, maxSize);
-	}, [panelSize, minSize, maxSize, mode]);
-
-	React.useEffect(() => {
-		const panel = panelRef.current;
-		if (!panel) return;
-		const container = panel.parentElement;
-		if (!container) return;
-
-		const ro = new ResizeObserver(() => {
-			const containerRect = container.getBoundingClientRect();
-			const panelRect = panel.getBoundingClientRect();
-
-			setContainerSize(containerRect.width);
-			setPanelSize(panelRect.width);
-		});
-		ro.observe(container);
-		ro.observe(panel);
-		return () => {
-			ro.disconnect();
-		};
-	}, []);
-	const onMove = React.useCallback((moveBy: number) => {
-		const panel = panelRef.current;
-		if (!panel) return;
-
-		const panelRect = panel.getBoundingClientRect();
-		setPreferredSize(panelRect.width + moveBy);
-		setMode(undefined);
-		setResizing(true);
-	}, []);
-	const onKeyMove = React.useCallback((direction: 1 | -1) => {
-		const panel = panelRef.current;
-		if (!panel) return;
-		const container = panel.parentElement;
-		if (!container) return;
-
-		const containerRect = container.getBoundingClientRect();
-		const moveBy = direction * (containerRect.width * 0.005);
-
-		const panelRect = panel.getBoundingClientRect();
-		setPreferredSize(panelRect.width + moveBy);
-		setMode(undefined);
-	}, []);
-	const onMoveEnd = React.useCallback(() => {
-		const panel = panelRef.current;
-		if (!panel) return;
-
-		setPreferredSize(undefined);
-		setResizing(false);
-	}, []);
-	const { moveableProps } = useMoveable<HTMLInputElement>({
-		onMove,
-		onMoveEnd,
-		onKeyMove,
-	});
-	const sliderProps = React.useMemo<
-		Partial<React.InputHTMLAttributes<HTMLInputElement>>
-	>(() => {
-		return {
-			...moveableProps,
-			onKeyDown: (e) => {
-				moveableProps.onKeyDown?.(e);
-				if (e.defaultPrevented) return;
-				switch (e.key) {
-					case "Enter":
-						e.preventDefault();
-						onCollapse?.();
-						break;
-					case "Home":
-						e.preventDefault();
-						setMode("smallest");
-						break;
-					case "End":
-						e.preventDefault();
-						setMode("largest");
-						break;
-					// case "F6": // TODO: cycle through window panes
-				}
-			},
-			onChange: (e) => {
-				if (resizing) return;
-				const newValue = Number(e.target.value);
-				setPreferredSize(newValue);
-			},
-			value: size === undefined ? 0 : Math.floor(size),
-			min: minSize === undefined ? undefined : Math.floor(minSize),
-			max: maxSize === undefined ? undefined : Math.floor(maxSize),
-		};
-	}, [moveableProps, size, minSize, maxSize, onCollapse, resizing]);
-	const panelProps = React.useMemo<
-		Partial<React.HTMLAttributes<TPanel>>
-	>(() => {
-		return {
-			style: {
-				WebkitUserSelect: preferredSize === undefined ? undefined : "none",
-			},
-			id,
-			ref: panelRef,
-		};
-	}, [id, preferredSize]);
-
-	const panelMinSize =
-		minSize === undefined ? undefined : `${Math.floor(minSize)}px`;
-	const panelMaxSize = React.useMemo(() => {
-		if (
-			preferredSize !== undefined &&
-			maxSizeSpec !== undefined &&
-			mode === undefined
-		) {
-			return `min(${Math.floor(preferredSize)}px, ${maxSizeSpec.pct}%)`;
-		}
-
-		if (size === undefined) return undefined;
-		return `${Math.floor(size)}px`;
-	}, [maxSizeSpec, preferredSize, size, mode]);
-
-	return { sliderProps, panelProps, panelMinSize, panelMaxSize, resizing };
-}
-
-interface UseMoveableArgs {
-	onMove?: (moveBy: number) => void;
-	onMoveEnd?: () => void;
-	onKeyMove?: (direction: 1 | -1) => void;
-}
-
-function useMoveable<T extends HTMLElement>(args?: UseMoveableArgs) {
-	const { onMove, onMoveEnd, onKeyMove } = args ?? {};
-	const ref = React.useRef<T | null>(null);
-	const removeTouchStart = React.useRef<(() => void) | undefined>(undefined);
-	const relativePositionRef = React.useRef<number | undefined>(undefined);
-	const handleMoveEnd = React.useCallback(() => {
-		if (relativePositionRef.current === undefined) return;
-		relativePositionRef.current = undefined;
-		onMoveEnd?.();
-	}, [onMoveEnd]);
-	const moveableProps = React.useMemo<Partial<React.HTMLAttributes<T>>>(() => {
-		return {
-			onPointerDown: (e) => {
-				if (e.button !== 0) return; // left button only
-				if (e.ctrlKey) return; // ignore ctrl+click
-				const el = ref.current;
-				if (!el) return;
-				const rect = el.getBoundingClientRect();
-				const relativeX = e.clientX - rect.left;
-				relativePositionRef.current = relativeX;
-
-				e.preventDefault();
-				el.setPointerCapture(e.pointerId);
-			},
-			onPointerMove: (e) => {
-				const relativePosition = relativePositionRef.current;
-				if (relativePosition === undefined) return;
-				const el = ref.current;
-				if (!el) return;
-				const rect = el.getBoundingClientRect();
-				const moveBy = e.clientX - relativePosition - rect.left;
-
-				e.preventDefault();
-				onMove?.(moveBy);
-			},
-			onPointerUp: handleMoveEnd,
-			onPointerCancel: handleMoveEnd,
-			onKeyDown: (e) => {
-				if (e.defaultPrevented) return;
-				switch (e.key) {
-					case "ArrowLeft":
-						e.preventDefault();
-						onKeyMove?.(-1);
-						break;
-					case "ArrowRight":
-						e.preventDefault();
-						onKeyMove?.(1);
-						break;
-				}
-			},
-			ref: (el: T | null) => {
-				ref.current = el;
-				removeTouchStart.current?.();
-				removeTouchStart.current = undefined;
-				if (!el) return;
-
-				const onTouchStart = (e: TouchEvent) => {
-					// onTouchStart prop doesn't prevent scrolling.
-					e.preventDefault();
-				};
-				el.addEventListener("touchstart", onTouchStart);
-				removeTouchStart.current = () => {
-					el.removeEventListener("touchstart", onTouchStart);
-				};
-			},
-		};
-	}, [onKeyMove, onMove, handleMoveEnd]);
-	return { moveableProps };
 }
 
 // ----------------------------------------------------------------------------

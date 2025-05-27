@@ -3,15 +3,12 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import {
-	SvgSmileyHappy,
-	SvgSmileyNeutral,
-	SvgSmileySad,
-} from "@itwin/itwinui-icons-react";
+import placeholderIcon from "@stratakit/icons/placeholder.svg";
 import { MenuItem, Select } from "@stratakit/react";
 import * as React from "react";
 import { definePage } from "~/~utils.tsx";
 
+import { Icon } from "@stratakit/foundations";
 import type { SelectOption } from "@stratakit/react";
 
 export const handle = { title: "Select" };
@@ -88,9 +85,21 @@ export const Basic = () => {
 
 export const WithIcons = () => {
 	const options = [
-		{ value: "happy", label: "Happy", startIcon: <SvgSmileyHappy /> },
-		{ value: "neutral", label: "Neutral", startIcon: <SvgSmileyNeutral /> },
-		{ value: "sad", label: "Sad", startIcon: <SvgSmileySad /> },
+		{
+			value: "happy",
+			label: "Happy",
+			startIcon: <Icon href={placeholderIcon} />,
+		},
+		{
+			value: "neutral",
+			label: "Neutral",
+			startIcon: <Icon href={placeholderIcon} />,
+		},
+		{
+			value: "sad",
+			label: "Sad",
+			startIcon: <Icon href={placeholderIcon} />,
+		},
 	];
 	const [value, setValue] = React.useState<string | undefined>(undefined);
 	return (

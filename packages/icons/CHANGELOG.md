@@ -2,8 +2,6 @@
 
 ## 0.1.1
 
-### Patch Changes
-
 - [#733](https://github.com/iTwin/design-system/pull/733): Added snapping related icons:
 
   - `snap-bisector.svg`

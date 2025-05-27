@@ -218,7 +218,7 @@ importers:
         specifier: ^0.2.0
         version: link:../bricks
       "@stratakit/structures":
-        specifier: ^0.1.1
+        specifier: ^0.2.0
         version: link:../structures
     devDependencies:
       "@stratakit/foundations":

@@ -2,7 +2,7 @@
 
 ## 0.2.0
 
-### Minor Changes
+### Breaking changes
 
 - [#720](https://github.com/iTwin/design-system/pull/720): Renamed `onExpandedChange` prop for `unstable_ErrorRegion.Root` to `setOpen`.
   Renamed `expanded` prop for `unstable_ErrorRegion.Root` to `open`.
@@ -27,7 +27,7 @@
 
 - [#720](https://github.com/iTwin/design-system/pull/720): Renamed `onOpenChange` prop for `unstable_AccordionItem.Root` to `setOpen`.
 
-### Patch Changes
+### Non-breaking changes
 
 - [#709](https://github.com/iTwin/design-system/pull/709): Introduce `unstable_AccordionItem.Heading` component for wrapping `unstable_AccordionItem.Button` and `unstable_AccordionItem.Button` which represents the underlying `<button>` element.
 - Updated dependencies:

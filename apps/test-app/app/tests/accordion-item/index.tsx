@@ -2,10 +2,11 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-import { unstable_AccordionItem as AccordionItem } from "@stratakit/bricks";
 import { Icon } from "@stratakit/foundations";
-import placeholderIcon from "@stratakit/icons/placeholder.svg";
+import { unstable_AccordionItem as AccordionItem } from "@stratakit/structures";
 import { definePage } from "~/~utils.tsx";
+
+import placeholderIcon from "@stratakit/icons/placeholder.svg";
 
 export default definePage(
 	function Page({
@@ -18,15 +19,17 @@ export default definePage(
 		return (
 			<>
 				<AccordionItem.Root defaultOpen={defaultOpen}>
-					<AccordionItem.Trigger data-testid="trigger">
+					<AccordionItem.Header>
 						{withDecoration ? (
 							<AccordionItem.Decoration
 								render={<Icon href={placeholderIcon} />}
 							/>
 						) : null}
-						<AccordionItem.Label>{label}</AccordionItem.Label>
+						<AccordionItem.Button data-testid="button">
+							<AccordionItem.Label>{label}</AccordionItem.Label>
+						</AccordionItem.Button>
 						<AccordionItem.Marker />
-					</AccordionItem.Trigger>
+					</AccordionItem.Header>
 					<AccordionItem.Content data-testid="content">
 						{content}
 					</AccordionItem.Content>
@@ -36,40 +39,65 @@ export default definePage(
 	},
 	{
 		visual: VisualTest,
+		heading: HeadingTest,
 	},
 );
+
+export function HeadingTest() {
+	return (
+		<AccordionItem.Root>
+			<AccordionItem.Header>
+				<AccordionItem.Heading render={<h2 />}>
+					<AccordionItem.Button>
+						<AccordionItem.Label>Label</AccordionItem.Label>
+					</AccordionItem.Button>
+				</AccordionItem.Heading>
+				<AccordionItem.Marker />
+			</AccordionItem.Header>
+			<AccordionItem.Content>Body</AccordionItem.Content>
+		</AccordionItem.Root>
+	);
+}
 
 export function VisualTest() {
 	return (
 		<>
 			<AccordionItem.Root>
-				<AccordionItem.Trigger>
-					<AccordionItem.Label>Label</AccordionItem.Label>
+				<AccordionItem.Header>
+					<AccordionItem.Button>
+						<AccordionItem.Label>Label</AccordionItem.Label>
+					</AccordionItem.Button>
 					<AccordionItem.Marker />
-				</AccordionItem.Trigger>
+				</AccordionItem.Header>
 				<AccordionItem.Content>Body</AccordionItem.Content>
 			</AccordionItem.Root>
 			<AccordionItem.Root defaultOpen>
-				<AccordionItem.Trigger>
-					<AccordionItem.Label>Label</AccordionItem.Label>
+				<AccordionItem.Header>
+					<AccordionItem.Button>
+						<AccordionItem.Label>Label</AccordionItem.Label>
+					</AccordionItem.Button>
 					<AccordionItem.Marker />
-				</AccordionItem.Trigger>
+				</AccordionItem.Header>
 				<AccordionItem.Content>Body</AccordionItem.Content>
 			</AccordionItem.Root>
 			<AccordionItem.Root>
-				<AccordionItem.Trigger>
+				<AccordionItem.Header>
 					<AccordionItem.Decoration render={<Icon href={placeholderIcon} />} />
-					<AccordionItem.Label>Label</AccordionItem.Label>
+					<AccordionItem.Button>
+						<AccordionItem.Label>Label</AccordionItem.Label>
+					</AccordionItem.Button>
 					<AccordionItem.Marker />
-				</AccordionItem.Trigger>
+				</AccordionItem.Header>
 				<AccordionItem.Content>Body</AccordionItem.Content>
 			</AccordionItem.Root>
 			<AccordionItem.Root defaultOpen>
-				<AccordionItem.Trigger>
+				<AccordionItem.Header>
 					<AccordionItem.Decoration render={<Icon href={placeholderIcon} />} />
-					<AccordionItem.Label>Label</AccordionItem.Label>
+					<AccordionItem.Button>
+						<AccordionItem.Label>Label</AccordionItem.Label>
+					</AccordionItem.Button>
 					<AccordionItem.Marker />
-				</AccordionItem.Trigger>
+				</AccordionItem.Header>
 				<AccordionItem.Content>Body</AccordionItem.Content>
 			</AccordionItem.Root>
 		</>

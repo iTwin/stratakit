@@ -63,6 +63,7 @@ Packages:
 - [`@stratakit/foundations`](./packages/foundations/): Foundational pieces of StrataKit.
 - [`@stratakit/icons`](./packages/icons/): A standalone SVG icon library.
 - [`@stratakit/bricks`](./packages/bricks/): Small, modular components that can be assembled to create larger, more functional experiences.
+- [`@stratakit/structures`](./packages/structures): Medium-sized component structures built on top of `@stratakit/bricks`.
 - [`@stratakit/react`](./packages/compat/): A React compatibility layer for using iTwinUI v3 APIs.
 
 Apps:

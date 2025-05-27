@@ -3,11 +3,8 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import {
-	Anchor,
-	Button,
-	unstable_ErrorRegion as ErrorRegion,
-} from "@stratakit/bricks";
+import { Anchor, Button } from "@stratakit/bricks";
+import { unstable_ErrorRegion as ErrorRegion } from "@stratakit/structures";
 import * as React from "react";
 import { definePage } from "~/~utils.tsx";
 

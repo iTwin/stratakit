@@ -165,25 +165,30 @@ function useNormalizedHrefBase(rawHref: string | undefined) {
 
 			// Make a network request
 			(async () => {
-				const response = await fetch(rawHref, { signal });
-				if (!response.ok) throw new Error(`Failed to fetch ${rawHref}`);
+				try {
+					const response = await fetch(rawHref, { signal });
+					if (!response.ok) throw new Error(`Failed to fetch ${rawHref}`);
 
-				// Find all `<symbol>` elements from the response.
-				const fetchedSvgString = sanitizeHtml.current(await response.text());
-				const parsedSvgContent = parseDOM(fetchedSvgString, {
-					ownerDocument,
-				});
-				const symbols = parsedSvgContent.querySelectorAll("symbol");
+					// Find all `<symbol>` elements from the response.
+					const fetchedSvgString = sanitizeHtml.current(await response.text());
+					const parsedSvgContent = parseDOM(fetchedSvgString, {
+						ownerDocument,
+					});
+					const symbols = parsedSvgContent.querySelectorAll("symbol");
 
-				for (const symbol of symbols) {
-					symbol.id = `${prefix}--${symbol.id}`; // unique ID
-					if (ownerDocument.getElementById(symbol.id)) continue; // Skip if already present.
-					spriteSheet.appendChild(symbol.cloneNode(true)); // Store symbols in the spritesheet renderered by `<Root>`.
+					for (const symbol of symbols) {
+						symbol.id = `${prefix}--${symbol.id}`; // unique ID
+						if (ownerDocument.getElementById(symbol.id)) continue; // Skip if already present.
+						spriteSheet.appendChild(symbol.cloneNode(true)); // Store symbols in the spritesheet renderered by `<Root>`.
+					}
+
+					inlineHref.current = `#${prefix}`;
+					cache.set(rawHref, inlineHref.current); // Cache for future use.
+					if (!signal.aborted) notify();
+				} catch (error) {
+					if (signal.aborted) return; // Ignore if aborted.
+					console.error(error);
 				}
-
-				inlineHref.current = `#${prefix}`;
-				cache.set(rawHref, inlineHref.current); // Cache for future use.
-				if (!signal.aborted) notify();
 			})();
 
 			return () => abortController.abort(); // Cancel ongoing fetch.

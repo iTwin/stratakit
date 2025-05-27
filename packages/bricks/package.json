@@ -1,7 +1,7 @@
 {
 	"name": "@stratakit/bricks",
 	"type": "module",
-	"version": "0.1.2",
+	"version": "0.2.0",
 	"license": "MIT",
 	"sideEffects": false,
 	"exports": {
@@ -10,6 +10,12 @@
 			"types": "./dist/index.d.ts",
 			"development": "./dist/DEV/index.js",
 			"default": "./dist/index.js"
+		},
+		"./secret-internals": {
+			"@stratakit/source": "./src/secret-internals.ts",
+			"types": "./dist/secret-internals.d.ts",
+			"development": "./dist/DEV/secret-internals.js",
+			"default": "./dist/secret-internals.js"
 		},
 		"./package.json": "./package.json"
 	},
@@ -49,13 +55,12 @@
 		"@types/react": "catalog:",
 		"@types/react-dom": "catalog:",
 		"esbuild": "catalog:",
-		"lightningcss": "catalog:",
 		"react": "catalog:",
 		"react-dom": "catalog:",
 		"typescript": "catalog:"
 	},
 	"peerDependencies": {
-		"@stratakit/foundations": "^0.1.2",
+		"@stratakit/foundations": "^0.1.4",
 		"react": ">=18.0.0",
 		"react-dom": ">=18.0.0"
 	},

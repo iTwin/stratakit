@@ -5,9 +5,10 @@
 
 import { Anchor, Text } from "@stratakit/bricks";
 import { Link, type MetaFunction } from "react-router";
-import { components } from "./components.ts";
-import styles from "./index.module.css";
+import { components } from "./~meta.ts";
 import { toKebabCase } from "./~utils.tsx";
+
+import styles from "./index.module.css";
 
 export const meta: MetaFunction = () => {
 	return [{ title: "StrataKit test app" }];
@@ -64,6 +65,20 @@ export default function Index() {
 
 			<ul className={styles.list}>
 				{components.bricks.map((component) => (
+					<li key={component}>
+						<Anchor render={<Link to={`/tests/${toKebabCase(component)}`} />}>
+							{component}
+						</Anchor>
+					</li>
+				))}
+			</ul>
+
+			<Text variant="headline-md" render={<h2 />} className={styles.h2}>
+				Structures
+			</Text>
+
+			<ul className={styles.list}>
+				{components.structures.map((component) => (
 					<li key={component}>
 						<Anchor render={<Link to={`/tests/${toKebabCase(component)}`} />}>
 							{component}

@@ -9,7 +9,7 @@ import { ExpandableBlock } from "@stratakit/react";
 import * as React from "react";
 import { definePage } from "~/~utils.tsx";
 
-export const handle = { title: "Anchor" };
+export const handle = { title: "ExpandableBlock" };
 
 export default definePage(function Page() {
 	const [isExpanded, setIsExpanded] = React.useState(false);

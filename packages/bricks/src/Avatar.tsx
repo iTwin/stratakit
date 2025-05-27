@@ -8,7 +8,7 @@ import { forwardRef } from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
 
 import type { BaseProps } from "@stratakit/foundations/secret-internals";
-
+// changed file test
 interface AvatarProps extends BaseProps<"span"> {
 	/**
 	 * The size of the avatar.

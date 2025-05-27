@@ -3,7 +3,6 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import { getUserColor } from "@itwin/itwinui-react";
 import { Avatar as SkAvatar } from "@stratakit/bricks";
 import * as React from "react";
 import { useCompatProps } from "./~utils.tsx";
@@ -18,7 +17,6 @@ interface AvatarProps
 		IuiAvatarProps,
 		| "size"
 		| "status"
-		| "title"
 		| "abbreviation"
 		| "image"
 		| "backgroundColor"
@@ -56,5 +54,3 @@ export const Avatar = React.forwardRef((props, forwardedRef) => {
 	);
 }) as PolymorphicForwardRefComponent<"span", AvatarProps>;
 DEV: Avatar.displayName = "Avatar";
-
-export { getUserColor };

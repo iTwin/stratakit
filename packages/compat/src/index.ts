@@ -13,5 +13,3 @@ export { MenuItem } from "./MenuItem.js";
 export { ProgressLinear } from "./ProgressLinear.js";
 export { Text } from "./Text.js";
 export { Tooltip } from "./Tooltip.js";
-
-export { getUserColor } from "./~utils.js";

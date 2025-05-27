@@ -15,8 +15,11 @@ export default definePage(function Page() {
 
 	return (
 		<div style={{ display: "grid", gap: 4 }}>
-			{/* Implemented props */}
-			<ExpandableBlock title="Basic Block" endIcon={<SvgPlaceholder />}>
+			{/* Basic */}
+			<ExpandableBlock title="Basic Block">Content in block!</ExpandableBlock>
+
+			{/* Custom endIcon */}
+			<ExpandableBlock title="Custom endIcon" endIcon={<SvgPlaceholder />}>
 				Content in block!
 			</ExpandableBlock>
 
@@ -27,7 +30,7 @@ export default definePage(function Page() {
 				onToggle={() => setIsExpanded((prev) => !prev)}
 				size="small" // NOT IMPLEMENTED
 				styleType="borderless" // NOT IMPLEMENTED
-				disabled={false} // NOT IMPLEMENTED
+				disabled={true} // NOT IMPLEMENTED
 				title="Non-implemented props"
 				caption="This is a caption." // NOT IMPLEMENTED
 				endIcon={<SvgPlaceholder />}

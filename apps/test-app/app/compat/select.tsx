@@ -43,11 +43,7 @@ export default definePage(function Page() {
 				onChange={(value) => {
 					console.log("Selected value:", value);
 				}}
-				triggerProps={{
-					style: {
-						backgroundColor: "hotpink",
-					},
-				}}
+				triggerProps={{ className: "trigger-class" }}
 			/>
 
 			<br

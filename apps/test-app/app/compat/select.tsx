@@ -3,13 +3,14 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import placeholderIcon from "@stratakit/icons/placeholder.svg";
+import {
+	SvgSmileyHappy,
+	SvgSmileyNeutral,
+	SvgSmileySad,
+} from "@itwin/itwinui-icons-react";
 import { MenuItem, Select } from "@stratakit/react";
 import * as React from "react";
 import { definePage } from "~/~utils.tsx";
-
-import { Icon } from "@stratakit/foundations";
-import type { SelectOption } from "@stratakit/react";
 
 export const handle = { title: "Select" };
 
@@ -81,21 +82,9 @@ export const Basic = () => {
 
 export const WithIcons = () => {
 	const options = [
-		{
-			value: "happy",
-			label: "Happy",
-			startIcon: <Icon href={placeholderIcon} />,
-		},
-		{
-			value: "neutral",
-			label: "Neutral",
-			startIcon: <Icon href={placeholderIcon} />,
-		},
-		{
-			value: "sad",
-			label: "Sad",
-			startIcon: <Icon href={placeholderIcon} />,
-		},
+		{ value: "happy", label: "Happy", startIcon: <SvgSmileyHappy /> },
+		{ value: "neutral", label: "Neutral", startIcon: <SvgSmileyNeutral /> },
+		{ value: "sad", label: "Sad", startIcon: <SvgSmileySad /> },
 	];
 	const [value, setValue] = React.useState<string | undefined>(undefined);
 	return (
@@ -134,7 +123,7 @@ export const Disabled = () => {
 	];
 	const [value, setValue] = React.useState<number | undefined>(undefined);
 	return (
-		<div>
+		<div style={{ minHeight: 350 }}>
 			<Select
 				disabled
 				options={options}
@@ -154,7 +143,7 @@ export const DisabledWithSelectedValue = () => {
 	];
 	const [value, setValue] = React.useState<number>(2);
 	return (
-		<div>
+		<div style={{ minHeight: 350 }}>
 			<Select
 				options={options}
 				value={value}
@@ -211,12 +200,12 @@ export const Custom = () => {
 		<Select
 			options={options}
 			value={selectedValue}
-			onChange={(value: string) => setSelectedValue(value)}
+			onChange={(value) => setSelectedValue(value)}
 			placeholder="Placeholder text"
 			itemRenderer={(option) => (
 				<MenuItem style={{ color: option.value }}>{option.label}</MenuItem>
 			)}
-			selectedItemRenderer={(option: SelectOption<string>) => (
+			selectedItemRenderer={(option) => (
 				<span style={{ backgroundColor: option.value }}>{option.label}</span>
 			)}
 		/>
@@ -244,9 +233,13 @@ export const TruncateMiddleText = () => {
 			value={selectedValue}
 			onChange={setSelectedValue}
 			placeholder="Placeholder text"
-			itemRenderer={(option) => <MenuItem>{option.label}</MenuItem>}
-			selectedItemRenderer={(option: SelectOption<string>) => (
-				<span>{option.label}</span>
+			itemRenderer={(option) => (
+				<MenuItem>
+					<MiddleTextTruncation text={option.label} />
+				</MenuItem>
+			)}
+			selectedItemRenderer={(option) => (
+				<MiddleTextTruncation text={option.label} />
 			)}
 		/>
 	);
@@ -255,7 +248,7 @@ export const TruncateMiddleText = () => {
 export const Multi = () => {
 	const [value, setValue] = React.useState<number[]>([]);
 	return (
-		<div>
+		<div style={{ minHeight: 350 }}>
 			<Select
 				options={[...Array(20).fill(null)].map((_, index) => ({
 					label: `Item #${index}`,
@@ -280,7 +273,7 @@ export const MultiCustomRenderer = () => {
 	const [value, setValue] = React.useState<number[]>([]);
 
 	return (
-		<div>
+		<div style={{ minHeight: 350 }}>
 			<Select
 				options={[...Array(20).fill(null)].map((_, index) => ({
 					label: `Item #${index}`,
@@ -296,7 +289,7 @@ export const MultiCustomRenderer = () => {
 				}
 				placeholder="Placeholder text"
 				multiple
-				selectedItemRenderer={(options: SelectOption<number>[]) => (
+				selectedItemRenderer={(options) => (
 					<>{options.map((option) => option.label).join(", ")}</>
 				)}
 			/>

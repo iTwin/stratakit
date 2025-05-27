@@ -3,7 +3,8 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import { SvgPlaceholder } from "@itwin/itwinui-icons-react";
+import { Icon } from "@stratakit/foundations";
+import placeholderIcon from "@stratakit/icons/placeholder.svg";
 import { ExpandableBlock } from "@stratakit/react";
 import * as React from "react";
 import { definePage } from "~/~utils.tsx";
@@ -19,7 +20,10 @@ export default definePage(function Page() {
 			<ExpandableBlock title="Basic Block">Content in block!</ExpandableBlock>
 
 			{/* Custom endIcon */}
-			<ExpandableBlock title="Custom endIcon" endIcon={<SvgPlaceholder />}>
+			<ExpandableBlock
+				title="Custom endIcon"
+				endIcon={<Icon href={placeholderIcon} />}
+			>
 				Content in block!
 			</ExpandableBlock>
 
@@ -33,7 +37,7 @@ export default definePage(function Page() {
 				disabled={true} // NOT IMPLEMENTED
 				title="Non-implemented props"
 				caption="This is a caption." // NOT IMPLEMENTED
-				endIcon={<SvgPlaceholder />}
+				endIcon={<Icon href={placeholderIcon} />}
 			>
 				Content in block with non-implemented props!
 			</ExpandableBlock>

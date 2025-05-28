@@ -3,11 +3,9 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 export default async function prLabels() {
-	const owner = context.repo.owner;
-	const repo = context.repo.repo;
-	const pr = context.payload.pull_request;
-
-	const prNumber = pr.number;
+	const repo = process.env.REPO;
+	const owner = process.env.REPO_OWNER;
+	const prNumber = process.env.PR_NUMBER;
 
 	const labelsToAdd = new Set();
 

@@ -85,12 +85,12 @@ jobs:
                     // assign API bridge if part of compat/
 
                     targetMilestone = 'API bridge';
+                    break;
                   } else {
                     // assign default milestone if part of packages/
 
                     targetMilestone = '2025 Q2';
                   }
-                  break;
                 }
               }
 

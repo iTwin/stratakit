@@ -55,69 +55,9 @@ jobs:
         uses: actions/github-script@v7
         with:
           script: |
-            const owner = context.repo.owner;
-            const repo = context.repo.repo;
-            const pr = context.payload.pull_request;
+            const { default: prMilestone } = await import('${{ github.workspace }}/.github/workflows/pr-milestone.js');
 
-            const prNumber = pr.number;
-            const prAuthor = context.actor;
-
-            try {
-
-              let targetMilestone = null;
-
-              // look at files changed
-              const files = await github.paginate(
-                github.rest.pulls.listFiles,
-                {
-                  owner: owner,
-                  repo: repo,
-                  pull_number: prNumber
-                }
-              );
-
-              for (const file of files) {
-                const fileName = file.filename;
-
-                if (fileName.startsWith('packages/')) {
-
-                  if (fileName.startsWith('packages/compat/')) {
-                    // assign API bridge if part of compat/
-
-                    targetMilestone = 'API bridge';
-                    break;
-                  } else {
-                    // assign default milestone if part of packages/
-
-                    targetMilestone = '2025 Q2';
-                  }
-                }
-              }
-
-              // if synchronizing, update milestone appropriately (only if new milestone is different)
-              const oldMilestone = pr.milestone ? pr.milestone.title : null;
-
-              if (oldMilestone !== targetMilestone) {
-                // find milestone to apply
-                const milestones = await github.rest.issues.listMilestones({
-                  owner: owner,
-                  repo: repo,
-                  state: 'open'
-                });
-                const milestone = milestones.data.find(m => m.title === targetMilestone);
-
-                // apply milestone to the PR
-                await github.rest.issues.update({
-                  owner: owner,
-                  repo: repo,
-                  issue_number: prNumber,
-                  milestone: milestone ? milestone.number : null
-                });
-              }
-            } catch (error) {
-              console.log("Failed assigning milestones");
-              console.error(error);
-            }
+            await prMilestone();
 
   assign-labels:
     name: Assign PR labels
@@ -129,121 +69,9 @@ jobs:
         uses: actions/github-script@v7
         with:
           script: |
-            const owner = context.repo.owner;
-            const repo = context.repo.repo;
-            const pr = context.payload.pull_request;
+            const { default: prLabels } = await import('${{ github.workspace }}/.github/workflows/pr-labels.js');
 
-            const prNumber = pr.number;
-            const prAuthor = context.actor;
-
-            const labelsToAdd = new Set();
-
-            // helper function to add component label
-            function addComponentLabel(label, labelNames) {
-
-              // get component label
-              const componentLabel = `component: ${label}`;
-
-              // add labels if they exist
-              if (labelNames.has(componentLabel)) {
-                labelsToAdd.add(componentLabel);
-              }
-            }
-
-            try {
-              // get existing labels
-              const labels = await github.paginate(
-                github.rest.issues.listLabelsForRepo,
-                {
-                  owner: owner,
-                  repo: repo,
-                  per_page: 100
-                }
-              );
-              const labelNames = new Set(labels.map(label => label.name));
-
-              // get files changed
-              const files = await github.paginate(
-                github.rest.pulls.listFiles,
-                {
-                  owner: owner,
-                  repo: repo,
-                  pull_number: prNumber
-                }
-              );
-
-              // determine labels based on files changed
-              for (const file of files) {
-                const fileName = file.filename;
-
-                if (fileName.startsWith('packages/')) {
-
-                  const relativePath = fileName.slice('packages/'.length);
-
-                  // add component label for any components changed
-                  if (relativePath.startsWith('bricks/src/') || relativePath.startsWith('compat/src/') || relativePath.startsWith('structures/src/')) {
-
-                    // add API bridge label if under compat/
-                    if (relativePath.startsWith('compat/')) {
-                      labelsToAdd.add('API bridge');
-                    }
-
-                    // isolate name of file changed
-                    const changedFile = relativePath.split('/').pop().split('.')[0];
-                    addComponentLabel(changedFile, labelNames);
-                  }
-                } else if (fileName.startsWith('apps/test-app/app/tests/')) {
-                  // add component label for tests changed
-
-                  // isolate component changed by component test folder name
-                  const componentChanged = fileName.split('/')[4];
-
-                  // convert to camel case
-                  const componentName = componentChanged
-                    .split('-')
-                    .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
-                    .join('');
-
-                  addComponentLabel(componentName, labelNames);
-                } else if (fileName.startsWith('.github')) {
-                  labelsToAdd.add('github_actions');
-                }
-              }
-
-              // if synchronizing, remove any outdated labels
-              const currentLabels = await github.rest.issues.listLabelsOnIssue({
-                owner: owner,
-                repo: repo,
-                issue_number: prNumber
-              });
-              const currentLabelNames = new Set(currentLabels.data.map(label => label.name));
-
-              const finalLabelsAdd = [...labelsToAdd].filter(label => !currentLabelNames.has(label));
-              const finalLabelsRemove = [...currentLabelNames].filter(label => !labelsToAdd.has(label));
-
-              // remove irrelevant labels from the PR
-              for (const label of finalLabelsRemove) {
-                await github.rest.issues.removeLabel({
-                  owner: owner,
-                  repo: repo,
-                  issue_number: prNumber,
-                  name: label
-                });
-              }
-
-              // add relevant labels to the PR
-              if (finalLabelsAdd.length > 0) {
-                await github.rest.issues.addLabels({
-                  owner: owner,
-                  repo: repo,
-                  issue_number: prNumber,
-                  labels: finalLabelsAdd
-                });
-              }
-            } catch (error) {
-              console.log("Failed assigning labels");
-              console.error(error);
-            }
+            await prLabels();
 
   fix-formatting:
     name: Fix formatting

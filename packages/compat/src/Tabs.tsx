@@ -14,40 +14,33 @@ import type { PolymorphicForwardRefComponent } from "./~utils.tsx";
 type SkTabsProps = React.ComponentProps<typeof SkTabs.Root>;
 
 type IuiTabsLegacyProps = React.ComponentProps<typeof IuiTabs>;
-type IuiTabsOrientation<T extends IuiTabsLegacyProps["orientation"]> = T;
-type IuiTabsType<T extends IuiTabsLegacyProps["type"]> = T;
 
-type TabsProps = Pick<
-	IuiTabsLegacyProps,
-	| "labels"
-	| "onTabSelected"
-	| "activeIndex"
-	| "focusActivationMode"
-	| "color"
-	| "tabsClassName"
-	| "contentClassName"
-	| "wrapperClassName"
-	| "children"
-	| "overflowOptions"
-	| "defaultValue"
-	| "defaultChecked"
-> & {
+interface TabsProps
+	extends Pick<
+		IuiTabsLegacyProps,
+		| "actions"
+		| "labels"
+		| "onTabSelected"
+		| "activeIndex"
+		| "focusActivationMode"
+		| "color"
+		| "tabsClassName"
+		| "contentClassName"
+		| "wrapperClassName"
+		| "children"
+		| "overflowOptions"
+		| "defaultValue"
+		| "defaultChecked"
+		| "orientation"
+		| "type"
+	> {
 	/** NOT IMPLEMENTED. */
 	actions?: IuiTabsLegacyProps["actions"];
-} & (
-		| {
-				/** NOT IMPLEMENTED. */
-				orientation?: IuiTabsOrientation<"horizontal">;
-				/** NOT IMPLEMENTED. */
-				type?: IuiTabsType<"default" | "borderless" | "pill">;
-		  }
-		| {
-				/** NOT IMPLEMENTED. */
-				orientation: IuiTabsOrientation<"vertical">;
-				/** NOT IMPLEMENTED. */
-				type?: IuiTabsType<"default" | "borderless">;
-		  }
-	);
+	/** NOT IMPLEMENTED. */
+	orientation?: IuiTabsLegacyProps["orientation"];
+	/** NOT IMPLEMENTED. */
+	type?: IuiTabsLegacyProps["type"];
+}
 
 /** @see https://itwinui.bentley.com/docs/tabs */
 export const Tabs = React.forwardRef((props, forwardedRef) => {

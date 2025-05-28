@@ -3,11 +3,8 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import { Octokit } from "@octokit/rest";
-
-export default async function prMilestone() {
-	const octokit = new Octokit({ auth: process.env.GITHUB_TOKEN });
-
+export default async function prMilestone(context, github) {
+	console.log("repo", context.repo.repo);
 	const repo = process.env.REPO;
 	const owner = process.env.REPO_OWNER;
 	const prNumber = process.env.PR_NUMBER;
@@ -28,7 +25,7 @@ export default async function prMilestone() {
 		let targetMilestone = null;
 
 		// look at files changed
-		const files = await octokit.paginate(octokit.rest.pulls.listFiles, {
+		const files = await github.paginate(github.rest.pulls.listFiles, {
 			owner: owner,
 			repo: repo,
 			pull_number: prNumber,
@@ -50,7 +47,7 @@ export default async function prMilestone() {
 		}
 
 		// find milestone to apply
-		const milestones = await octokit.rest.issues.listMilestones({
+		const milestones = await github.rest.issues.listMilestones({
 			owner: owner,
 			repo: repo,
 			state: "open",
@@ -58,7 +55,7 @@ export default async function prMilestone() {
 		const milestone = milestones.data.find((m) => m.title === targetMilestone);
 
 		// apply milestone to the PR
-		await octokit.rest.issues.update({
+		await github.rest.issues.update({
 			owner: owner,
 			repo: repo,
 			issue_number: prNumber,

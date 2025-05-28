@@ -11,9 +11,17 @@ import type { Tag as IuiTag } from "@itwin/itwinui-react";
 import type { PolymorphicForwardRefComponent } from "./~utils.tsx";
 
 type IuiTagProps = React.ComponentProps<typeof IuiTag>;
-type IuiTagVariant<T extends IuiTagProps["variant"]> = T;
 
-type TagProps = {
+interface TagProps
+	extends Pick<
+		IuiTagProps,
+		| "children"
+		| "onClick"
+		| "onRemove"
+		| "removeButtonProps"
+		| "variant"
+		| "labelProps"
+	> {
 	/**
 	 * PARTIALLY IMPLEMENTED.
 	 *
@@ -34,20 +42,11 @@ type TagProps = {
 	onRemove?: IuiTagProps["onRemove"];
 	/** NOT IMPLEMENTED. */
 	removeButtonProps?: IuiTagProps["removeButtonProps"];
-} & (
-	| {
-			/** NOT IMPLEMENTED. */
-			variant?: IuiTagVariant<"default">;
-			/** NOT IMPLEMENTED. */
-			labelProps?: IuiTagProps["labelProps"];
-	  }
-	| {
-			/** NOT IMPLEMENTED. */
-			variant?: IuiTagVariant<"basic">;
-			/** NOT IMPLEMENTED. */
-			labelProps?: never;
-	  }
-);
+	/** NOT IMPLEMENTED. */
+	variant?: IuiTagProps["variant"];
+	/** NOT IMPLEMENTED. */
+	labelProps?: IuiTagProps["labelProps"];
+}
 
 /** @see https://itwinui.bentley.com/docs/tag */
 export const Tag = React.forwardRef((props, forwardedRef) => {

@@ -2,7 +2,12 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
+
+import { Octokit } from "@octokit/rest";
+
 export default async function prLabels() {
+	const octokit = new Octokit({ auth: process.env.GITHUB_TOKEN });
+
 	const repo = process.env.REPO;
 	const owner = process.env.REPO_OWNER;
 	const prNumber = process.env.PR_NUMBER;
@@ -226,7 +231,7 @@ export default async function prLabels() {
 
 	try {
 		// get files changed
-		const files = await github.paginate(github.rest.pulls.listFiles, {
+		const files = await octokit.paginate(octokit.rest.pulls.listFiles, {
 			owner: owner,
 			repo: repo,
 			pull_number: prNumber,
@@ -245,7 +250,7 @@ export default async function prLabels() {
 		}
 
 		// if synchronizing, remove any outdated labels
-		const currentLabels = await github.rest.issues.listLabelsOnIssue({
+		const currentLabels = await octokit.rest.issues.listLabelsOnIssue({
 			owner: owner,
 			repo: repo,
 			issue_number: prNumber,
@@ -263,7 +268,7 @@ export default async function prLabels() {
 
 		// remove irrelevant labels from the PR
 		for (const label of finalLabelsRemove) {
-			await github.rest.issues.removeLabel({
+			await octokit.rest.issues.removeLabel({
 				owner: owner,
 				repo: repo,
 				issue_number: prNumber,
@@ -273,7 +278,7 @@ export default async function prLabels() {
 
 		// add relevant labels to the PR
 		if (finalLabelsAdd.length > 0) {
-			await github.rest.issues.addLabels({
+			await octokit.rest.issues.addLabels({
 				owner: owner,
 				repo: repo,
 				issue_number: prNumber,

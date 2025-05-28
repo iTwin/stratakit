@@ -51,10 +51,14 @@ jobs:
     if: github.event_name == 'pull_request' && (github.event.action == 'opened' || github.event.action == 'synchronize')
 
     steps:
+      - run: pnpm install @octokit/rest
+
       - uses: actions/checkout@v4
+
       - name: Auto-assign milestones using github-script
         uses: actions/github-script@v7
         env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           REPO: ${{ github.repository }}
           REPO_OWNER: ${{ github.repository_owner }}
           PR_NUMBER: ${{ github.event.pull_request.number }}
@@ -70,10 +74,14 @@ jobs:
     if: github.event_name == 'pull_request' && (github.event.action == 'opened' || github.event.action == 'synchronize')
 
     steps:
+      - run: pnpm install @octokit/rest
+
       - uses: actions/checkout@v4
+
       - name: Auto-assign labels using github-script
         uses: actions/github-script@v7
         env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           REPO: ${{ github.repository }}
           REPO_OWNER: ${{ github.repository_owner }}
           PR_NUMBER: ${{ github.event.pull_request.number }}

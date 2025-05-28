@@ -13,7 +13,7 @@ interface BadgeProps extends Omit<BaseProps<"span">, "children"> {
 	/**
 	 * The label displayed inside the badge.
 	 */
-	label: string;
+	label: React.ReactNode;
 
 	/**
 	 * The tone of the badge.

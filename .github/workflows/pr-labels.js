@@ -241,7 +241,6 @@ export default async function prLabels(context, github) {
 			for (const [label, paths] of Object.entries(LABEL_MAP)) {
 				// check that the current changed file is part of any accepted path for the label
 				if (paths.some((path) => fileName.startsWith(path))) {
-					console.log(fileName, "add label", label);
 					labelsToAdd.add(label);
 				}
 			}
@@ -263,9 +262,6 @@ export default async function prLabels(context, github) {
 		const finalLabelsRemove = [...currentLabelNames].filter(
 			(label) => !labelsToAdd.has(label),
 		);
-
-		console.log("to add", finalLabelsAdd);
-		console.log("to remove", finalLabelsRemove);
 
 		// remove irrelevant labels from the PR
 		for (const label of finalLabelsRemove) {

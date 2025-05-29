@@ -39,7 +39,9 @@ export default async function prMilestone(context, github) {
 				// check that the current changed file is part of accepted path for the milestone
 				if (fileName.startsWith(path)) {
 					targetMilestone = milestone;
+					console.log(fileName, "add milestone", milestone);
 					if (targetMilestone === MILESTONES.API_BRIDGE) {
+						console.log("api bridge so break");
 						break;
 					}
 				}
@@ -59,6 +61,7 @@ export default async function prMilestone(context, github) {
 			const milestone = milestones.data.find(
 				(m) => m.title === targetMilestone,
 			);
+			console.log("milestone to apply", milestone.title);
 			// apply milestone to the PR
 			await github.rest.issues.update({
 				owner: owner,

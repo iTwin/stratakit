@@ -5,6 +5,7 @@
 "use client";
 
 export { Anchor } from "./Anchor.js";
+export { Checkbox } from "./Checkbox.js";
 export { Divider } from "./Divider.js";
 export { Kbd, KbdKeys } from "./Kbd.js";
 export { Label } from "./Label.js";

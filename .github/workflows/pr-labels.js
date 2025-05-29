@@ -264,6 +264,9 @@ export default async function prLabels(context, github) {
 			(label) => !labelsToAdd.has(label),
 		);
 
+		console.log("to add", finalLabelsAdd);
+		console.log("to remove", finalLabelsRemove);
+
 		// remove irrelevant labels from the PR
 		for (const label of finalLabelsRemove) {
 			await github.rest.issues.removeLabel({

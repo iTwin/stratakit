@@ -35,6 +35,7 @@ export const Radio = React.forwardRef((props, forwardedRef) => {
 		labelProps,
 		wrapperProps,
 		value = "on",
+		status, // NOT IMPLEMENTED
 		...rest
 	} = useCompatProps(props);
 

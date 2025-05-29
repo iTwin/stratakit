@@ -61,7 +61,7 @@ export default async function prMilestone(context, github) {
 			const milestone = milestones.data.find(
 				(m) => m.title === targetMilestone,
 			);
-			console.log("milestone to apply", milestone.title);
+			console.log("milestone to apply", milestone);
 			// apply milestone to the PR
 			await github.rest.issues.update({
 				owner: owner,

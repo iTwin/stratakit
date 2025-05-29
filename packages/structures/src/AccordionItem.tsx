@@ -21,7 +21,7 @@ import cx from "classnames";
 import { ChevronDown } from "./~utils.icons.js";
 
 import type { BaseProps } from "@stratakit/foundations/secret-internals";
-// changed file test
+
 interface AccordionItemProps extends BaseProps {
 	/**
 	 * The accordion item’s initial open state.

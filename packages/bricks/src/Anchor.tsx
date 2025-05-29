@@ -9,7 +9,7 @@ import { forwardRef } from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
 
 import type { FocusableProps } from "@stratakit/foundations/secret-internals";
-// changed file test
+
 interface AnchorProps extends FocusableProps<"a"> {
 	/** @default "neutral" */
 	tone?: "neutral" | "accent" | "critical";

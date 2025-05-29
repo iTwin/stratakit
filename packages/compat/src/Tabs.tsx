@@ -92,7 +92,7 @@ export const Tabs = React.forwardRef((props, forwardedRef) => {
 		[tabIds, onTabSelected],
 	);
 
-	const activeId = activeIndex ? tabIds[activeIndex] : undefined;
+	const activeId = activeIndex === undefined ? undefined : tabIds[activeIndex];
 	const [selectedId, setSelectedId] = useControlledState<
 		SkTabsProps["selectedId"]
 	>(

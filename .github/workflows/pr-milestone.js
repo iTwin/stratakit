@@ -40,11 +40,11 @@ export default async function prMilestone(context, github) {
 				if (fileName.startsWith(path)) {
 					targetMilestone = milestone;
 					console.log(fileName, "add milestone", milestone);
-					if (targetMilestone === MILESTONES.API_BRIDGE) {
-						console.log("api bridge so break");
-						break;
-					}
 				}
+			}
+			if (targetMilestone === MILESTONES.API_BRIDGE) {
+				console.log("api bridge so break");
+				break;
 			}
 		}
 

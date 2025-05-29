@@ -4,10 +4,9 @@
  *--------------------------------------------------------------------------------------------*/
 
 export default async function prMilestone(context, github) {
-	console.log("repo", context.repo.repo);
-	const repo = process.env.REPO;
-	const owner = process.env.REPO_OWNER;
-	const prNumber = process.env.PR_NUMBER;
+	const repo = context.repo.repo;
+	const owner = context.repo.owner;
+	const prNumber = context.payload.pull_request.number;
 
 	// milestone title constants
 	const MILESTONES = {

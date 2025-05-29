@@ -56,9 +56,7 @@ jobs:
       - name: Auto-assign milestones using github-script
         uses: actions/github-script@v7
         env:
-          REPO: ${{ github.repository }}
-          REPO_OWNER: ${{ github.repository_owner }}
-          PR_NUMBER: ${{ github.event.pull_request.number }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           script: |
             const { default: prMilestone } = await import('${{ github.workspace }}/.github/workflows/pr-milestone.js');

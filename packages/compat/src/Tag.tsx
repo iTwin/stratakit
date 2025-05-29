@@ -25,12 +25,6 @@ interface TagProps
 	/**
 	 * PARTIALLY IMPLEMENTED.
 	 *
-	 * Only a string value will be rendered as a tag label.
-	 */
-	children: IuiTagProps["children"];
-	/**
-	 * PARTIALLY IMPLEMENTED.
-	 *
 	 * Tag is not rendered as a `button`, since it is not an interactive component.
 	 */
 	onClick?: IuiTagProps["onClick"];
@@ -60,17 +54,6 @@ export const Tag = React.forwardRef((props, forwardedRef) => {
 		...rest
 	} = useCompatProps(props);
 
-	const label = React.useMemo(() => {
-		if (typeof children === "string") {
-			return children;
-		}
-
-		DEV: {
-			console.warn("Expected a string in `children` prop of a `Tag` component");
-		}
-		return "";
-	}, [children]);
-
 	const onDismiss = React.useMemo(() => {
 		if (!onRemove) return undefined;
 		// Workaround that relies on the internal implementation of the `Chip` component, until composition API is implemented.
@@ -82,7 +65,7 @@ export const Tag = React.forwardRef((props, forwardedRef) => {
 	return (
 		<Chip
 			{...rest}
-			label={label}
+			label={children}
 			onDismiss={onDismiss}
 			render={render}
 			ref={forwardedRef}

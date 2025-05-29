@@ -14,9 +14,6 @@ export default definePage(function Page() {
 			<Tag>Simple tag</Tag>
 			<Tag onClick={(e) => console.log(e)}>Tag with onClick</Tag>
 			<Tag onRemove={(e) => console.log(e)}>Tag with onRemove</Tag>
-			<Tag>
-				<span>React.Node tag</span>
-			</Tag>
 		</div>
 	);
 });

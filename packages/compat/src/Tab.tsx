@@ -19,13 +19,13 @@ interface TabProps
 		"label" | "sublabel" | "startIcon" | "disabled" | "children" | "value"
 	> {
 	/** NOT IMPLEMENTED. */
-	sublabel?: React.ReactNode;
+	sublabel?: IuiTabLegacyProps["sublabel"];
 	/** NOT IMPLEMENTED. */
-	startIcon?: React.JSX.Element;
+	startIcon?: IuiTabLegacyProps["startIcon"];
 	/** NOT IMPLEMENTED. */
-	children?: React.ReactNode;
+	children?: IuiTabLegacyProps["children"];
 	/** NOT IMPLEMENTED. */
-	value?: string;
+	value?: IuiTabLegacyProps["value"];
 }
 
 /** @see https://itwinui.bentley.com/docs/tabs */

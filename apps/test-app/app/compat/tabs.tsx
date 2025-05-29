@@ -62,7 +62,10 @@ function ControlledLegacyTab() {
 		<Tabs
 			labels={[
 				<Tab key={1} label="Tab 1" />,
-				<Tab key={2} label="Tab 2" id="controlled-legacy-tab-2" />,
+				<>
+					{/* Test nesting via fragment or a wrapper component. */}
+					<Tab key={2} label="Tab 2" id="controlled-legacy-tab-2" />,
+				</>,
 			]}
 			activeIndex={activeIndex}
 			onTabSelected={setActiveIndex}

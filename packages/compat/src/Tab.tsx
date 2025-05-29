@@ -3,6 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
+import { useSafeContext } from "@stratakit/foundations/secret-internals";
 import { Tabs as SkTabs } from "@stratakit/structures";
 import * as React from "react";
 import { useCompatProps } from "./~utils.tsx";
@@ -39,9 +40,9 @@ export const Tab = React.forwardRef((props, forwardedRef) => {
 		...rest
 	} = useCompatProps(props);
 
-	const { id } = React.useContext(TabContext) ?? {};
+	const { id } = useSafeContext(TabContext);
 	return (
-		<SkTabs.Tab id={id} {...rest} disabled={disabled} ref={forwardedRef}>
+		<SkTabs.Tab {...rest} id={id} disabled={disabled} ref={forwardedRef}>
 			{label}
 		</SkTabs.Tab>
 	);

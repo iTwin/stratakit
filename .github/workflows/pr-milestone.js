@@ -7,6 +7,7 @@ export default async function prMilestone(context, github) {
 	const repo = context.repo.repo;
 	const owner = context.repo.owner;
 	const prNumber = context.payload.pull_request.number;
+	console.log("info", repo, owner, prNumber);
 
 	// milestone title constants
 	const MILESTONES = {
@@ -29,6 +30,7 @@ export default async function prMilestone(context, github) {
 			repo: repo,
 			pull_number: prNumber,
 		});
+		console.log("files changed", files);
 
 		// determine milestone based on files changed
 		for (const file of files) {
@@ -51,8 +53,9 @@ export default async function prMilestone(context, github) {
 			repo: repo,
 			state: "open",
 		});
+		console.log("milestones", milestones);
 		const milestone = milestones.data.find((m) => m.title === targetMilestone);
-
+		console.log("milestone found", milestone);
 		// apply milestone to the PR
 		await github.rest.issues.update({
 			owner: owner,
@@ -60,6 +63,7 @@ export default async function prMilestone(context, github) {
 			issue_number: prNumber,
 			milestone: milestone ? milestone.number : null,
 		});
+		console.log("assigned milestone");
 	} catch (error) {
 		console.log("Failed assigning milestones");
 		console.error(error);

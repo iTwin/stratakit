@@ -731,7 +731,8 @@ const TreeItemAction = React.memo(
 					<IconButton
 						label={label}
 						icon={icon}
-						inert={visible === false ? true : undefined}
+						// @ts-expect-error: Using string value as a workaround for React 18
+						inert={visible === false ? "true" : undefined}
 						{...rest}
 						dot={dot}
 						variant="ghost"

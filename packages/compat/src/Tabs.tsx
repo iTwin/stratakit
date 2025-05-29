@@ -6,14 +6,17 @@
 import { useControlledState } from "@stratakit/foundations/secret-internals";
 import { Tabs as SkTabs } from "@stratakit/structures";
 import * as React from "react";
+import { TabProvider } from "./Tab.tsx";
 import { useCompatProps } from "./~utils.tsx";
 
 import type { Tabs as IuiTabs } from "@itwin/itwinui-react";
+import type { Tab } from "./Tab.tsx";
 import type { PolymorphicForwardRefComponent } from "./~utils.tsx";
 
 type SkTabsProps = React.ComponentProps<typeof SkTabs.Root>;
-
 type IuiTabsLegacyProps = React.ComponentProps<typeof IuiTabs>;
+
+type TabProps = React.ComponentProps<typeof Tab>;
 
 interface TabsProps
 	extends Pick<
@@ -69,6 +72,10 @@ export const Tabs = React.forwardRef((props, forwardedRef) => {
 				return `${id}-${index}-${label}`;
 			}
 
+			if (React.isValidElement<TabProps>(label) && label.props.id) {
+				return label.props.id;
+			}
+
 			if (React.isValidElement(label) && label.key) {
 				return `${id}-${index}-${label.key}`;
 			}
@@ -109,10 +116,17 @@ export const Tabs = React.forwardRef((props, forwardedRef) => {
 				>
 					{labels.map((label, index) => {
 						const tabId = tabIds[index];
+						if (typeof label === "string") {
+							return (
+								<SkTabs.Tab key={tabId} id={tabId}>
+									{label}
+								</SkTabs.Tab>
+							);
+						}
 						return (
-							<SkTabs.Tab key={tabId} id={tabId}>
+							<TabProvider key={tabId} id={tabId}>
 								{label}
-							</SkTabs.Tab>
+							</TabProvider>
 						);
 					})}
 				</SkTabs.TabList>

@@ -39,10 +39,43 @@ export const Tab = React.forwardRef((props, forwardedRef) => {
 		...rest
 	} = useCompatProps(props);
 
+	const { id } = React.useContext(TabContext) ?? {};
 	return (
-		<SkTabs.Tab {...rest} disabled={disabled} ref={forwardedRef}>
+		<SkTabs.Tab id={id} {...rest} disabled={disabled} ref={forwardedRef}>
 			{label}
 		</SkTabs.Tab>
 	);
 }) as PolymorphicForwardRefComponent<"button", TabProps>;
 DEV: Tab.displayName = "Tab";
+
+// ----------------------------------------------------------------------------
+
+const TabContext = React.createContext<
+	| {
+			id: string;
+	  }
+	| undefined
+>(undefined);
+
+type TabContextType = NonNullable<React.ContextType<typeof TabContext>>;
+
+/**
+ * @private
+ */
+export function TabProvider({
+	children,
+	id,
+}: React.PropsWithChildren<TabContextType>) {
+	return (
+		<TabContext.Provider
+			value={React.useMemo(
+				() => ({
+					id,
+				}),
+				[id],
+			)}
+		>
+			{children}
+		</TabContext.Provider>
+	);
+}

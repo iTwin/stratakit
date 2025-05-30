@@ -242,11 +242,50 @@ function LeftPanel() {
 			</div>
 
 			<React.Suspense key={selectedModel} fallback={<PanelLoading />}>
-				<SearchboxProvider>
-					<PanelContent query={query} />
-				</SearchboxProvider>
+				<PanelContentContainer query={query} />
 			</React.Suspense>
 		</>
+	);
+}
+
+interface TreesDataItem {
+	readonly name: string;
+	readonly filters: string[];
+	readonly content: React.ReactNode;
+}
+
+function PanelContentContainer(props: {
+	query: UseQueryResult<Awaited<ReturnType<typeof fetchModelsData>>>;
+}) {
+	const { data } = React.use(props.query.promise);
+
+	const trees: TreesDataItem[] = React.useMemo(
+		() =>
+			Object.entries(data).map(([treeName, treeData]) => {
+				const filters =
+					treeData.length <= 1 ? [] : treeData.map(({ label }) => label); // top-level items are used as filters
+
+				return {
+					name: treeName,
+					filters,
+					content:
+						treeData.length > 0 ? (
+							<SandboxTree data={treeData} />
+						) : (
+							<EmptyState>
+								<Text variant="body-sm">No layers</Text>
+								<Button>Create a layer</Button>
+							</EmptyState>
+						),
+				} as const;
+			}),
+		[data],
+	);
+
+	return (
+		<SearchboxProvider tabs={trees.length !== 1}>
+			<PanelContent trees={trees} />
+		</SearchboxProvider>
 	);
 }
 
@@ -322,33 +361,10 @@ function VersionContent(props: {
 }
 
 function PanelContent(props: {
-	query: UseQueryResult<Awaited<ReturnType<typeof fetchModelsData>>>;
+	trees: TreesDataItem[];
 }) {
-	const { data } = React.use(props.query.promise);
+	const { trees } = props;
 	const { isSearchboxVisible } = React.useContext(SearchboxContext);
-
-	const trees = React.useMemo(
-		() =>
-			Object.entries(data).map(([treeName, treeData]) => {
-				const filters =
-					treeData.length <= 1 ? [] : treeData.map(({ label }) => label); // top-level items are used as filters
-
-				return {
-					name: treeName,
-					filters,
-					content:
-						treeData.length > 0 ? (
-							<SandboxTree data={treeData} />
-						) : (
-							<EmptyState>
-								<Text variant="body-sm">No layers</Text>
-								<Button>Create a layer</Button>
-							</EmptyState>
-						),
-				} as const;
-			}),
-		[data],
-	);
 
 	const [selectedTreeId, setSelectedTreeId] = React.useState<
 		string | undefined | null
@@ -992,8 +1008,10 @@ const TreeFilteringContext = React.createContext<{
 	setItemCount: () => {},
 });
 
-function SearchboxProvider(props: React.PropsWithChildren) {
-	const [isSearchboxVisible, setIsSearchboxVisible] = React.useState(false);
+function SearchboxProvider(props: React.PropsWithChildren<{ tabs: boolean }>) {
+	const [isSearchboxVisible, setIsSearchboxVisible] = React.useState(
+		!props.tabs,
+	);
 
 	return (
 		<SearchboxContext.Provider

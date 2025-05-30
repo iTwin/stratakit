@@ -4,6 +4,7 @@
 	"version": "0.1.4",
 	"license": "MIT",
 	"sideEffects": false,
+	"types": "./dist/index.d.ts",
 	"exports": {
 		".": {
 			"@stratakit/source": "./src/index.ts",

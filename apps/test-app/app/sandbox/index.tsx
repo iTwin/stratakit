@@ -95,23 +95,25 @@ export const meta: MetaFunction = () => {
 export default function Page() {
 	return (
 		<div className={styles.appLayout}>
-			<Header />
 			<PlatformBar />
+			<Header />
 			<PanelGroup
 				direction="horizontal"
 				className={styles.content}
 				keyboardResizeBy={2.5}
 			>
-				<Panel
-					defaultSize={20}
-					minSize={15}
-					maxSize={35}
-					className={styles.leftPanel}
-				>
-					<LeftPanel />
-				</Panel>
-				<PanelSplitter />
-				<Panel className={styles.canvasWrapper}>
+				<nav aria-label="Left panel" style={{ display: "contents" }}>
+					<Panel
+						defaultSize={20}
+						minSize={15}
+						maxSize={35}
+						className={styles.leftPanel}
+					>
+						<LeftPanel />
+					</Panel>
+					<PanelSplitter />
+				</nav>
+				<Panel className={styles.canvasWrapper} tagName="main">
 					<Canvas />
 				</Panel>
 			</PanelGroup>
@@ -136,13 +138,13 @@ function Header() {
 
 function PlatformBar() {
 	return (
-		<div className={styles.platformBar}>
+		<nav className={styles.platformBar}>
 			<div className={styles.tools}>
 				<Icon href={placeholderIcon} size="large" />
 				<Icon href={placeholderIcon} size="large" />
 				<Icon href={placeholderIcon} size="large" />
 			</div>
-		</div>
+		</nav>
 	);
 }
 

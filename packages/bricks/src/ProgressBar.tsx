@@ -21,7 +21,7 @@ interface ProgressBarProps extends Omit<BaseProps, "aria-labelledby"> {
 	 * The size of the progress bar.
 	 * @default "medium"
 	 */
-	size?: "small" | "medium" | "large";
+	size?: "medium" | "large";
 
 	/**
 	 * The tone of the progress bar.

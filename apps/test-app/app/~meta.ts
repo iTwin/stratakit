@@ -38,6 +38,7 @@ export const components = {
 	],
 	compat: [
 		"Anchor",
+		"Checkbox",
 		"Divider",
 		"ExpandableBlock",
 		"Kbd",

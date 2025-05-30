@@ -39,7 +39,22 @@ export default definePage(function Page() {
 				<Avatar title="Terry Rivers" image={<img src={imgSrc} />} />
 				{/* icon */}
 				<Avatar image={<Icon href={userIcon} />} />
+				<Avatar
+					image={
+						<svg aria-hidden={true}>
+							<use href={`${userIcon}#icon`} />
+						</svg>
+					}
+				/>
 				<Avatar title="Terry Rivers" image={<Icon href={userIcon} />} />
+				<Avatar
+					title="Terry Rivers"
+					image={
+						<svg aria-hidden={true}>
+							<use href={`${userIcon}#icon`} />
+						</svg>
+					}
+				/>
 
 				{/* abbreviation + image */}
 				<Avatar abbreviation="TR" image={<img src={imgSrc} />} />
@@ -51,9 +66,26 @@ export default definePage(function Page() {
 				{/* abbreviation + icon */}
 				<Avatar abbreviation="TR" image={<Icon href={userIcon} />} />
 				<Avatar
+					abbreviation="TR"
+					image={
+						<svg aria-hidden={true}>
+							<use href={`${userIcon}#icon`} />
+						</svg>
+					}
+				/>
+				<Avatar
 					title="Terry Rivers"
 					abbreviation="TR"
 					image={<Icon href={userIcon} />}
+				/>
+				<Avatar
+					title="Terry Rivers"
+					abbreviation="TR"
+					image={
+						<svg aria-hidden={true}>
+							<use href={`${userIcon}#icon`} />
+						</svg>
+					}
 				/>
 			</div>
 

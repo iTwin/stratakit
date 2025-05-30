@@ -2,8 +2,6 @@
 
 ## 0.1.5
 
-### Patch Changes
-
 - [#740](https://github.com/iTwin/design-system/pull/740): Added `types` field to `package.json` file for better TypeScript support and TS icon on `npm`.
 
 ## 0.1.4

@@ -2,10 +2,8 @@
 
 ## 0.2.1
 
-### Patch Changes
-
-- [#740](https://github.com/iTwin/design-system/pull/740): Added `types` field to `package.json` file for better TypeScript support and TS icon on `npm`.
 - [#736](https://github.com/iTwin/design-system/pull/736): Updated the `label` prop type in the `<Badge />` component from `string` to `ReactNode`.
+- [#740](https://github.com/iTwin/design-system/pull/740): Added `types` field to `package.json` file for better TypeScript support and TS icon on `npm`.
 - Updated dependencies:
   - @stratakit/foundations@0.1.5
 

@@ -1,7 +1,7 @@
 {
 	"name": "@stratakit/structures",
 	"type": "module",
-	"version": "0.2.0",
+	"version": "0.2.1",
 	"license": "MIT",
 	"sideEffects": false,
 	"types": "./dist/index.d.ts",
@@ -42,7 +42,7 @@
 	},
 	"dependencies": {
 		"@ariakit/react": "^0.4.17",
-		"@stratakit/bricks": "^0.2.0",
+		"@stratakit/bricks": "^0.2.1",
 		"classnames": "^2.5.1"
 	},
 	"devDependencies": {
@@ -56,7 +56,7 @@
 		"typescript": "catalog:"
 	},
 	"peerDependencies": {
-		"@stratakit/foundations": "^0.1.4",
+		"@stratakit/foundations": "^0.1.5",
 		"react": ">=18.0.0",
 		"react-dom": ">=18.0.0"
 	},

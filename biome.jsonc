@@ -1,5 +1,5 @@
 {
-	"$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
+	"$schema": "https://biomejs.dev/schemas/2.0.0-beta.5/schema.json",
 	"files": {
 		"ignoreUnknown": true
 	},
@@ -16,8 +16,22 @@
 			"enabled": true
 		}
 	},
-	"organizeImports": {
-		"enabled": true
+	"assist": {
+		"actions": {
+			"source": {
+				"organizeImports": {
+					"level": "on",
+					"options": {
+						"groups": [
+							{ "type": false, "source": "!@stratakit/icons/**" },
+							":BLANK_LINE:",
+							{ "type": true },
+							":BLANK_LINE:"
+						]
+					}
+				}
+			}
+		}
 	},
 	"linter": {
 		"rules": {
@@ -29,8 +43,19 @@
 			"suspicious": {
 				"noConfusingLabels": "off"
 			},
-			"a11y": { "all": false },
-			"nursery": {
+			"a11y": "off",
+			"nursery": {},
+			"style": {
+				"noParameterAssign": "error",
+				"useAsConstAssertion": "error",
+				"useDefaultParameterLast": "error",
+				"useEnumInitializers": "error",
+				"useSelfClosingElements": "error",
+				"useSingleVarDeclarator": "error",
+				"noUnusedTemplateLiteral": "error",
+				"useNumberNamespace": "error",
+				"noInferrableTypes": "error",
+				"noUselessElse": "error",
 				"noRestrictedImports": {
 					"level": "warn",
 					"options": {

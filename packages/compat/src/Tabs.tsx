@@ -5,6 +5,7 @@
 
 import { useControlledState } from "@stratakit/foundations/secret-internals";
 import { Tabs as SkTabs } from "@stratakit/structures";
+import cx from "classnames";
 import * as React from "react";
 import { useCompatProps } from "./~utils.tsx";
 
@@ -101,7 +102,7 @@ export const Tabs = React.forwardRef((props, forwardedRef) => {
 			selectedId={selectedId}
 			selectOnMove={focusActivationMode === "manual" ? false : undefined}
 		>
-			<div className={wrapperClassName} {...rest}>
+			<div {...rest} className={cx(wrapperClassName, props.className)}>
 				<SkTabs.TabList
 					className={tabsClassName}
 					ref={forwardedRef}

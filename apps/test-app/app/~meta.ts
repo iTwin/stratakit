@@ -43,6 +43,7 @@ export const components = {
 		"Kbd",
 		"Label",
 		"ProgressLinear",
+		"Tag",
 		"Text",
 		"Tooltip",
 	],

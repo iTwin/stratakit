@@ -3,7 +3,6 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import { Icon } from "@stratakit/foundations";
 import userIcon from "@stratakit/icons/user.svg";
 import { Avatar } from "@stratakit/react";
 import { definePage } from "~/~utils.tsx";
@@ -38,19 +37,17 @@ export default definePage(function Page() {
 				<Avatar image={<img src={imgSrc} />} />
 				<Avatar title="Terry Rivers" image={<img src={imgSrc} />} />
 				{/* icon */}
-				<Avatar image={<Icon href={userIcon} />} />
 				<Avatar
 					image={
-						<svg aria-hidden={true}>
+						<svg aria-hidden="true">
 							<use href={`${userIcon}#icon`} />
 						</svg>
 					}
 				/>
-				<Avatar title="Terry Rivers" image={<Icon href={userIcon} />} />
 				<Avatar
 					title="Terry Rivers"
 					image={
-						<svg aria-hidden={true}>
+						<svg aria-hidden="true">
 							<use href={`${userIcon}#icon`} />
 						</svg>
 					}
@@ -64,11 +61,10 @@ export default definePage(function Page() {
 					image={<img src={imgSrc} />}
 				/>
 				{/* abbreviation + icon */}
-				<Avatar abbreviation="TR" image={<Icon href={userIcon} />} />
 				<Avatar
 					abbreviation="TR"
 					image={
-						<svg aria-hidden={true}>
+						<svg aria-hidden="true">
 							<use href={`${userIcon}#icon`} />
 						</svg>
 					}
@@ -76,13 +72,8 @@ export default definePage(function Page() {
 				<Avatar
 					title="Terry Rivers"
 					abbreviation="TR"
-					image={<Icon href={userIcon} />}
-				/>
-				<Avatar
-					title="Terry Rivers"
-					abbreviation="TR"
 					image={
-						<svg aria-hidden={true}>
+						<svg aria-hidden="true">
 							<use href={`${userIcon}#icon`} />
 						</svg>
 					}

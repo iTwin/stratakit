@@ -79,7 +79,7 @@ DEV: FieldRoot.displayName = "Field";
  * A label for the field’s control element. This is automatically associated
  * with the control’s `id`.
  */
-const FieldLabel = forwardRef<"div", BaseProps<"label">>(
+const FieldLabel = forwardRef<"label", BaseProps<"label">>(
 	(props, forwardedRef) => {
 		const store = useCollectionContext();
 		const renderedItems = useStoreState(
@@ -103,7 +103,7 @@ const FieldLabel = forwardRef<"div", BaseProps<"label">>(
 			<CollectionItem
 				getItem={getData}
 				render={<Label {...props} htmlFor={fieldId} />}
-				ref={forwardedRef}
+				ref={forwardedRef as CollectionItemProps["ref"]}
 			/>
 		);
 	},

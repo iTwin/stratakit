@@ -1,0 +1,1 @@
+import{o as a}from"./chunk-DQRVZFIR-DEPAh8lq.js";import{f as n,c as m}from"./sun-MX_2_DTf.js";import{c as r}from"./~utils.icons-C1dHFIzh.js";const i={down:r("M8 10 5 7h6l-3 3Z"),right:r("M7 11V5l3 3-3 3Z")},u=n((o,s)=>{const{direction:t="down",...c}=o,e=i[t];return a.jsx(e,{...c,className:m("🥝-disclosure-arrow",o.className),ref:s})});export{u as D};

@@ -33,7 +33,7 @@
 	],
 	"scripts": {},
 	"dependencies": {
-		"@itwin/itwinui-react": "^3.18.2",
+		"@itwin/itwinui-react": "^3.18.3",
 		"@stratakit/bricks": "^0.2.1",
 		"@stratakit/structures": "^0.2.1"
 	},

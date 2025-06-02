@@ -2,4 +2,4 @@
 "@stratakit/bricks": minor
 ---
 
-Removed small size progress bar.
+Removed `size="small"` from `ProgressBar`.

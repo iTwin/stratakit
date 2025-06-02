@@ -254,7 +254,7 @@ function PanelContentContainer(props: {
 	const { data } = React.use(props.query.promise);
 
 	return (
-		<SearchboxProvider tabs={Object.keys(data).length !== 1}>
+		<SearchboxProvider defaultVisible={Object.keys(data).length !== 1}>
 			<PanelContent data={data} />
 		</SearchboxProvider>
 	);
@@ -1001,9 +1001,11 @@ const TreeFilteringContext = React.createContext<{
 	setItemCount: () => {},
 });
 
-function SearchboxProvider(props: React.PropsWithChildren<{ tabs: boolean }>) {
+function SearchboxProvider(
+	props: React.PropsWithChildren<{ defaultVisible: boolean }>,
+) {
 	const [isSearchboxVisible, setIsSearchboxVisible] = React.useState(
-		!props.tabs,
+		!props.defaultVisible,
 	);
 
 	return (

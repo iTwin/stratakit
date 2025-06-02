@@ -39,10 +39,13 @@ export const components = {
 	compat: [
 		"Anchor",
 		"Badge",
+		"Checkbox",
 		"Divider",
 		"Kbd",
 		"Label",
 		"ProgressLinear",
+		"Tabs",
+		"Tag",
 		"Text",
 		"Tooltip",
 	],

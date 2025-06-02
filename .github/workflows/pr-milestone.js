@@ -2,18 +2,16 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
+const MILESTONES = {
+	DEFAULT: "2025 Q2",
+	API_BRIDGE: "API bridge",
+};
 
 export default async function prMilestone(context, github) {
 	const repo = context.repo.repo;
 	const owner = context.repo.owner;
 	const pr = context.payload.pull_request;
 	const prNumber = pr.number;
-
-	// milestone title constants
-	const MILESTONES = {
-		DEFAULT: "2025 Q2",
-		API_BRIDGE: "API bridge",
-	};
 
 	// map milestones to paths
 	const MILESTONE_MAP = {

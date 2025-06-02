@@ -54,7 +54,7 @@ export const Badge = React.forwardRef((props, forwardedRef) => {
 			ref={forwardedRef}
 			label={children}
 			tone={tone}
-			variant={tone != null ? "outline" : undefined}
+			variant={tone !== undefined ? "outline" : undefined}
 		/>
 	);
 }) as PolymorphicForwardRefComponent<"span", BadgeProps>;

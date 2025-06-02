@@ -248,43 +248,14 @@ function LeftPanel() {
 	);
 }
 
-interface TreesDataItem {
-	readonly name: string;
-	readonly filters: string[];
-	readonly content: React.ReactNode;
-}
-
 function PanelContentContainer(props: {
 	query: UseQueryResult<Awaited<ReturnType<typeof fetchModelsData>>>;
 }) {
 	const { data } = React.use(props.query.promise);
 
-	const trees: TreesDataItem[] = React.useMemo(
-		() =>
-			Object.entries(data).map(([treeName, treeData]) => {
-				const filters =
-					treeData.length <= 1 ? [] : treeData.map(({ label }) => label); // top-level items are used as filters
-
-				return {
-					name: treeName,
-					filters,
-					content:
-						treeData.length > 0 ? (
-							<SandboxTree data={treeData} />
-						) : (
-							<EmptyState>
-								<Text variant="body-sm">No layers</Text>
-								<Button>Create a layer</Button>
-							</EmptyState>
-						),
-				} as const;
-			}),
-		[data],
-	);
-
 	return (
-		<SearchboxProvider tabs={trees.length !== 1}>
-			<PanelContent trees={trees} />
+		<SearchboxProvider tabs={Object.keys(data).length !== 1}>
+			<PanelContent data={data} />
 		</SearchboxProvider>
 	);
 }
@@ -361,10 +332,32 @@ function VersionContent(props: {
 }
 
 function PanelContent(props: {
-	trees: TreesDataItem[];
+	data: { [key: string]: TreeItemData[] };
 }) {
-	const { trees } = props;
 	const { isSearchboxVisible } = React.useContext(SearchboxContext);
+
+	const trees = React.useMemo(
+		() =>
+			Object.entries(props.data).map(([treeName, treeData]) => {
+				const filters =
+					treeData.length <= 1 ? [] : treeData.map(({ label }) => label); // top-level items are used as filters
+
+				return {
+					name: treeName,
+					filters,
+					content:
+						treeData.length > 0 ? (
+							<SandboxTree data={treeData} />
+						) : (
+							<EmptyState>
+								<Text variant="body-sm">No layers</Text>
+								<Button>Create a layer</Button>
+							</EmptyState>
+						),
+				} as const;
+			}),
+		[props.data],
+	);
 
 	const [selectedTreeId, setSelectedTreeId] = React.useState<
 		string | undefined | null

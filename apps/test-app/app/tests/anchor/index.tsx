@@ -44,6 +44,16 @@ function VisualTest() {
 						>
 							Example
 						</Anchor>
+						<Anchor
+							key={tone}
+							tone={tone}
+							href="https://example.com"
+							isExternal={true}
+							referrerPolicy="no-referrer"
+							target="_blank"
+						>
+							External
+						</Anchor>
 					</div>
 				);
 			})}

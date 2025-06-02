@@ -94,6 +94,16 @@
 	}
 }
 
+.🥝-anchor-icon {
+	@layer base {
+		--🥝icon-color: currentColor;
+		--🥝icon-size: 1.5ch;
+		display: inline-block;
+		margin-inline-start: 0.25ch;
+		vertical-align: -0.2ch;
+	}
+}
+
 @media (forced-colors: active) {
 	.🥝-anchor:where(button) {
 		color: LinkText;

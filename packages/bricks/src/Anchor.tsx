@@ -7,12 +7,20 @@ import { Focusable } from "@ariakit/react/focusable";
 import { Role } from "@ariakit/react/role";
 import { forwardRef } from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
+import { WindowPopout } from "./~utils.icons.js";
 
 import type { FocusableProps } from "@stratakit/foundations/secret-internals";
 
 interface AnchorProps extends FocusableProps<"a"> {
 	/** @default "neutral" */
 	tone?: "neutral" | "accent" | "critical";
+
+	/**
+	 * If true, the anchor will append the `window-popout` icon.
+	 *
+	 * @default false
+	 */
+	isExternal?: boolean;
 }
 
 /**
@@ -26,7 +34,8 @@ interface AnchorProps extends FocusableProps<"a"> {
  * Supports a `tone` prop to change the tone (color) of the anchor.
  */
 export const Anchor = forwardRef<"a", AnchorProps>((props, forwardedRef) => {
-	const { tone = "neutral", ...rest } = props;
+	const { tone = "neutral", isExternal, ...rest } = props;
+
 	return (
 		<Role.a
 			{...rest}
@@ -36,7 +45,10 @@ export const Anchor = forwardRef<"a", AnchorProps>((props, forwardedRef) => {
 				<Focusable accessibleWhenDisabled render={props.render || <a />} />
 			}
 			ref={forwardedRef}
-		/>
+		>
+			{props.children}
+			{isExternal && <WindowPopout className="🥝-anchor-icon" />}
+		</Role.a>
 	);
 });
 DEV: Anchor.displayName = "Anchor";

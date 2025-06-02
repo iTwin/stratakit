@@ -3,12 +3,12 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
+import { Anchor, VisuallyHidden } from "@stratakit/bricks";
 import { unstable_Banner as SkBanner } from "@stratakit/structures";
 import * as React from "react";
 import { useCompatProps } from "./~utils.tsx";
 
 import type { Alert as IuiBanner } from "@itwin/itwinui-react";
-import { Anchor, VisuallyHidden } from "@stratakit/bricks";
 import type { PolymorphicForwardRefComponent } from "./~utils.tsx";
 
 type SkBannerProps = React.ComponentProps<typeof SkBanner>;
@@ -19,8 +19,6 @@ interface AlertProps
 		IuiBannerProps,
 		"type" | "isSticky" | "clickableText" | "clickableTextProps" | "onClose"
 	> {
-	/** PARTIALLY IMPLEMENTED: If `undefined`, a new "neutral" type is used (no longer defaults to "informational"). */
-	type?: IuiBannerProps["type"];
 	/** NOT IMPLEMENTED */
 	isSticky?: IuiBannerProps["isSticky"];
 }
@@ -29,7 +27,7 @@ interface AlertProps
 export const Alert = React.forwardRef((props, forwardedRef) => {
 	const {
 		isSticky, // NOT IMPLEMENTED
-		type, // PARTIALLY IMPLEMENTED
+		type,
 		children,
 		clickableText,
 		clickableTextProps,
@@ -37,7 +35,7 @@ export const Alert = React.forwardRef((props, forwardedRef) => {
 		...rest
 	} = useCompatProps(props);
 
-	const tone = React.useMemo<SkBannerProps["tone"]>(() => {
+	const tone = React.useMemo<NonNullable<SkBannerProps["tone"]>>(() => {
 		switch (type) {
 			case "informational":
 				return "info";
@@ -47,9 +45,9 @@ export const Alert = React.forwardRef((props, forwardedRef) => {
 				return "critical";
 			case "warning":
 				return "attention";
-			default:
-				return "neutral";
 		}
+
+		return "info";
 	}, [type]);
 
 	return (

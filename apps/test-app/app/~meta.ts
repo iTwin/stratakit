@@ -44,6 +44,7 @@ export const components = {
 		"Label",
 		"ProgressLinear",
 		"Tabs",
+		"Tag",
 		"Text",
 		"Tooltip",
 	],

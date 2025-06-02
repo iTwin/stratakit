@@ -55,81 +55,40 @@ export default async function prLabels(context, github) {
 	const labelsToAdd = new Set();
 
 	const LABEL_MAP = {
-		[LABELS.ACCORDION]: [
-			"packages/structures/src/AccordionItem",
-			// "packages/structures/src/AccordionItem.css",
-		],
+		[LABELS.ACCORDION]: ["packages/structures/src/AccordionItem"],
 		[LABELS.ANCHOR]: [
 			"packages/bricks/src/Anchor",
-			// "packages/bricks/src/Anchor.css",
 			"packages/compat/src/Anchor.tsx",
 		],
-		[LABELS.AVATAR]: [
-			"packages/bricks/src/Avatar",
-			// "packages/bricks/src/Avatar.css",
-		],
-		[LABELS.BADGE]: [
-			"packages/bricks/src/Badge",
-			// "packages/bricks/src/Badge.css",
-		],
-		[LABELS.BANNER]: [
-			"packages/structures/src/Banner",
-			// "packages/structures/src/Banner.css",
-		],
+		[LABELS.AVATAR]: ["packages/bricks/src/Avatar"],
+		[LABELS.BADGE]: ["packages/bricks/src/Badge"],
+		[LABELS.BANNER]: ["packages/structures/src/Banner"],
 		[LABELS.BREADCRUMB]: [],
-		[LABELS.BUTTON]: [
-			"packages/bricks/src/Button",
-			// "packages/bricks/src/Button.css",
-		],
+		[LABELS.BUTTON]: ["packages/bricks/src/Button"],
 		[LABELS.CARD]: [],
 		[LABELS.CHECKBOX]: [
 			"packages/bricks/src/Checkbox",
-			// "packages/bricks/src/Checkbox.css",
+			"packages/compat/src/Checkbox.tsx",
 		],
-		[LABELS.CHIP]: [
-			"packages/structures/src/Chip",
-			// "packages/structures/src/Chip.css",
-		],
+		[LABELS.CHIP]: ["packages/structures/src/Chip"],
 		[LABELS.CODE_SNIPPET]: [],
-		[LABELS.DESCRIPTION]: [
-			"packages/bricks/src/Description",
-			// "packages/bricks/src/Description.css",
-		],
+		[LABELS.DESCRIPTION]: ["packages/bricks/src/Description"],
 		[LABELS.DIALOG]: [],
 		[LABELS.DIVIDER]: [
 			"packages/bricks/src/Divider",
-			// "packages/bricks/src/Divider.css",
 			"packages/compat/src/Divider.tsx",
 		],
 		[LABELS.DROPDOWN_MENU]: [
 			"packages/structures/src/DropdownMenu",
-			// "packages/structures/src/DropdownMenu.css",
 			"packages/compat/src/MenuItem.tsx",
 		],
-		[LABELS.ERROR_REGION]: [
-			"packages/structures/src/ErrorRegion",
-			// "packages/structures/src/ErrorRegion.css",
-		],
-		[LABELS.FIELD]: [
-			"packages/bricks/src/Field",
-			// "packages/bricks/src/Field.css",
-			// "packages/bricks/src/Field.internal.tsx",
-		],
+		[LABELS.ERROR_REGION]: ["packages/structures/src/ErrorRegion"],
+		[LABELS.FIELD]: ["packages/bricks/src/Field"],
 		[LABELS.ICON]: [],
-		[LABELS.ICON_BUTTON]: [
-			"packages/bricks/src/IconButton",
-			// "packages/bricks/src/IconButton.css",
-			// "packages/bricks/src/IconButton.internal.tsx",
-		],
-		[LABELS.KBD]: [
-			"packages/bricks/src/Kbd",
-			// "packages/bricks/src/Kbd.css",
-			// "packages/bricks/src/Kbd.internal.ts",
-			"packages/compat/src/Kbd.tsx",
-		],
+		[LABELS.ICON_BUTTON]: ["packages/bricks/src/IconButton"],
+		[LABELS.KBD]: ["packages/bricks/src/Kbd", "packages/compat/src/Kbd.tsx"],
 		[LABELS.LABEL]: [
 			"packages/bricks/src/Label",
-			// "packages/bricks/src/Label.css",
 			"packages/compat/src/Label.tsx",
 		],
 		[LABELS.LIST]: [],
@@ -138,61 +97,26 @@ export default async function prLabels(context, github) {
 		[LABELS.POPOVER]: [],
 		[LABELS.PROGRESS_BAR]: [
 			"packages/bricks/src/ProgressBar",
-			// "packages/bricks/src/ProgressBar.css",
 			"packages/compat/src/ProgressLinear.tsx",
 		],
-		[LABELS.RADIO]: [
-			"packages/bricks/src/Radio",
-			// "packages/bricks/src/Radio.css",
-		],
-		[LABELS.SELECT]: [
-			"packages/bricks/src/Select",
-			// "packages/bricks/src/Select.css",
-		],
-		[LABELS.SKELETON]: [
-			"packages/bricks/src/Skeleton",
-			// "packages/bricks/src/Skeleton.css",
-		],
-		[LABELS.SPINNER]: [
-			"packages/bricks/src/Spinner",
-			// "packages/bricks/src/Spinner.css",
-		],
-		[LABELS.SWITCH]: [
-			"packages/bricks/src/Switch",
-			// "packages/bricks/src/Switch.css",
-		],
-		[LABELS.TABLE]: [
-			"packages/structures/src/Table",
-			// "packages/structures/src/Table.css",
-		],
-		[LABELS.TABS]: [
-			"packages/structures/src/Tabs",
-			// "packages/structures/src/Tabs.css",
-		],
-		[LABELS.TEXT]: [
-			"packages/bricks/src/Text",
-			// "packages/bricks/src/Text.css",
-			"packages/compat/src/Text.tsx",
-		],
-		[LABELS.TEXT_BOX]: [
-			"packages/bricks/src/TextBox",
-			// "packages/bricks/src/TextBox.css",
-		],
+		[LABELS.RADIO]: ["packages/bricks/src/Radio"],
+		[LABELS.SELECT]: ["packages/bricks/src/Select"],
+		[LABELS.SKELETON]: ["packages/bricks/src/Skeleton"],
+		[LABELS.SPINNER]: ["packages/bricks/src/Spinner"],
+		[LABELS.SWITCH]: ["packages/bricks/src/Switch"],
+		[LABELS.TABLE]: ["packages/structures/src/Table"],
+		[LABELS.TABS]: ["packages/structures/src/Tabs"],
+		[LABELS.TEXT]: ["packages/bricks/src/Text", "packages/compat/src/Text.tsx"],
+		[LABELS.TEXT_BOX]: ["packages/bricks/src/TextBox"],
 		[LABELS.TOAST]: [],
-		[LABELS.TOOLBAR]: [
-			"packages/structures/src/Toolbar",
-			// "packages/structures/src/Toolbar.css",
-		],
+		[LABELS.TOOLBAR]: ["packages/structures/src/Toolbar"],
 		[LABELS.TOOLTIP]: [
 			"packages/bricks/src/Tooltip",
-			// "packages/bricks/src/Tooltip.css",
 			"packages/compat/src/Tooltip.tsx",
 		],
 		[LABELS.TREE]: [
 			"packages/structures/src/Tree",
-			// "packages/structures/src/Tree.css",
 			"packages/structures/src/TreeItem",
-			// "packages/structures/src/TreeItem.css",
 		],
 		[LABELS.API_BRIDGE]: ["packages/compat/"],
 		[LABELS.GITHUB_ACTIONS]: [".github/"],

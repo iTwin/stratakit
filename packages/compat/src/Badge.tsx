@@ -20,7 +20,7 @@ interface BadgeProps
 	 * `undefined`, `"primary"`, `"informational"`, `"positive"`, `"negative"`, `"warning"`.
 	 */
 	backgroundColor?: IuiBadgeProps["backgroundColor"];
-	/** No longer gets converted to uppercase and no longer gets truncated if too long. */
+	/** No longer gets truncated if too long. */
 	children: IuiBadgeProps["children"];
 }
 
@@ -43,6 +43,8 @@ export const Badge = React.forwardRef((props, forwardedRef) => {
 				return "critical";
 			case "warning":
 				return "attention";
+			default:
+				return undefined;
 		}
 	}, [backgroundColor]);
 

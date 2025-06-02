@@ -17,15 +17,17 @@ export default definePage(function Page() {
 		<div style={{ display: "grid", gap: 4 }}>
 			{/* All implemented props */}
 			<div style={{ display: "flex", gap: 4, placeItems: "center" }}>
-				{(["small", "medium", "large", "x-large"] as const).map((size) => (
-					<Avatar
-						key={size}
-						size={size}
-						abbreviation="TR"
-						title="Terry Rivers"
-						image={<img src={imgSrc} />}
-					/>
-				))}
+				{([undefined, "small", "medium", "large", "x-large"] as const).map(
+					(size) => (
+						<Avatar
+							key={size}
+							size={size}
+							abbreviation="TR"
+							title="Terry Rivers"
+							image={<img src={imgSrc} />}
+						/>
+					),
+				)}
 			</div>
 
 			{/* abbreviation, image, icon, title combinations */}

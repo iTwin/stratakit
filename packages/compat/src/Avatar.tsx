@@ -11,6 +11,7 @@ import type { Avatar as IuiAvatar } from "@itwin/itwinui-react";
 import type { PolymorphicForwardRefComponent } from "./~utils.tsx";
 
 type IuiAvatarProps = React.ComponentProps<typeof IuiAvatar>;
+type SkAvatarProps = React.ComponentProps<typeof SkAvatar>;
 
 interface AvatarProps
 	extends Pick<
@@ -33,7 +34,7 @@ interface AvatarProps
 /** @see https://itwinui.bentley.com/docs/avatar */
 export const Avatar = React.forwardRef((props, forwardedRef) => {
 	const {
-		size,
+		size: sizeProp,
 		abbreviation,
 		title,
 		image,
@@ -42,13 +43,22 @@ export const Avatar = React.forwardRef((props, forwardedRef) => {
 		translatedStatusTitles, // NOT IMPLEMENTED
 		...rest
 	} = useCompatProps(props);
+
+	const size = React.useMemo<SkAvatarProps["size"]>(() => {
+		if (sizeProp == null) {
+			return "small";
+		}
+
+		return sizeProp === "x-large" ? "xlarge" : sizeProp;
+	}, [sizeProp]);
+
 	return (
 		<SkAvatar
 			{...rest}
 			ref={forwardedRef}
 			initials={abbreviation}
 			alt={title}
-			size={size === "x-large" ? "xlarge" : size}
+			size={size}
 			image={image}
 		/>
 	);

@@ -48,14 +48,6 @@ export const Badge = React.forwardRef((props, forwardedRef) => {
 		}
 	}, [backgroundColor]);
 
-	return (
-		<SkBadge
-			{...rest}
-			ref={forwardedRef}
-			label={children}
-			tone={tone}
-			variant={tone !== undefined ? "outline" : undefined}
-		/>
-	);
+	return <SkBadge {...rest} ref={forwardedRef} label={children} tone={tone} />;
 }) as PolymorphicForwardRefComponent<"span", BadgeProps>;
 DEV: Badge.displayName = "Badge";

@@ -38,11 +38,13 @@ export const components = {
 	],
 	compat: [
 		"Anchor",
+		"Checkbox",
 		"Divider",
 		"Kbd",
 		"Label",
 		"ProgressLinear",
 		"Tabs",
+		"Tag",
 		"Text",
 		"Tooltip",
 	],

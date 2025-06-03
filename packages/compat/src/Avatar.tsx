@@ -34,7 +34,7 @@ interface AvatarProps
 /** @see https://itwinui.bentley.com/docs/avatar */
 export const Avatar = React.forwardRef((props, forwardedRef) => {
 	const {
-		size: sizeProp,
+		size: sizeProp = "small",
 		abbreviation,
 		title,
 		image,
@@ -44,13 +44,7 @@ export const Avatar = React.forwardRef((props, forwardedRef) => {
 		...rest
 	} = useCompatProps(props);
 
-	const size = React.useMemo<SkAvatarProps["size"]>(() => {
-		if (sizeProp == null) {
-			return "small";
-		}
-
-		return sizeProp === "x-large" ? "xlarge" : sizeProp;
-	}, [sizeProp]);
+	const size = sizeProp === "x-large" ? "xlarge" : sizeProp;
 
 	return (
 		<SkAvatar

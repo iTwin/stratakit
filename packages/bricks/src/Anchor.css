@@ -99,7 +99,7 @@
 		--🥝icon-color: currentColor;
 		--🥝icon-size: 1.5ch;
 		display: inline-block;
-		margin-inline-start: 0.25ch;
+		margin-inline-start: 4px;
 		vertical-align: -0.2ch;
 	}
 }

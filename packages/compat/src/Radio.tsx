@@ -19,8 +19,11 @@ interface RadioProps
 		"label" | "status" | "labelProps" | "wrapperProps"
 	> {
 	/**
+	 * The value of the radio input.
+	 *
 	 * Only supports `string`, `number`, and `undefined`.
 	 * `readonly string[]` is no longer supported.
+	 *
 	 * @default "on"
 	 */
 	value?: SkRadioProps["value"];

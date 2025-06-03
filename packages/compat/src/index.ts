@@ -4,8 +4,8 @@
  *--------------------------------------------------------------------------------------------*/
 "use client";
 
-export { Avatar } from "./Avatar.js";
 export { Anchor } from "./Anchor.js";
+export { Avatar } from "./Avatar.js";
 export { Checkbox } from "./Checkbox.js";
 export { Divider } from "./Divider.js";
 export { Kbd, KbdKeys } from "./Kbd.js";

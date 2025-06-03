@@ -37,8 +37,8 @@ export const components = {
 		"Tree",
 	],
 	compat: [
-		"Avatar",
 		"Anchor",
+		"Avatar",
 		"Checkbox",
 		"Divider",
 		"Kbd",

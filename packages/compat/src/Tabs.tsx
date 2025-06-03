@@ -114,9 +114,9 @@ export const Tabs = React.forwardRef((props, forwardedRef) => {
 					{labels.map((label, index) => {
 						const tabId = tabIds[index];
 						return (
-							<TabProvider key={tabId} id={tabId}>
+							<TabContext.Provider key={tabId} value={{ id: tabId }}>
 								{typeof label === "string" ? <Tab label={label} /> : label}
-							</TabProvider>
+							</TabContext.Provider>
 						);
 					})}
 				</SkTabs.TabList>
@@ -177,23 +177,3 @@ const TabContext = React.createContext<
 	  }
 	| undefined
 >(undefined);
-
-type TabContextType = NonNullable<React.ContextType<typeof TabContext>>;
-
-function TabProvider({
-	children,
-	id,
-}: React.PropsWithChildren<TabContextType>) {
-	return (
-		<TabContext.Provider
-			value={React.useMemo(
-				() => ({
-					id,
-				}),
-				[id],
-			)}
-		>
-			{children}
-		</TabContext.Provider>
-	);
-}

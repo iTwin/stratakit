@@ -12,7 +12,9 @@ export default definePage(function Page() {
 	return (
 		<div style={{ display: "grid", gap: 4 }}>
 			<Anchor href="https://example.com">Example</Anchor>
-			<Anchor href='https://example.com' isExternal target='_blank'>External</Anchor>
+			<Anchor href="https://example.com" isExternal target="_blank">
+				External
+			</Anchor>
 			<Anchor as="button">Example (as button)</Anchor>
 		</div>
 	);

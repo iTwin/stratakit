@@ -13,6 +13,7 @@ export { Label } from "./Label.js";
 export { MenuItem } from "./MenuItem.js";
 export { ProgressLinear } from "./ProgressLinear.js";
 export { ProgressRadial } from "./ProgressRadial.js";
+export { Radio } from "./Radio.js";
 export { Tabs } from "./Tabs.js";
 export { Tag } from "./Tag.js";
 export { Text } from "./Text.js";

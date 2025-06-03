@@ -183,6 +183,7 @@ function LeftPanel() {
 	const query = useQuery({
 		queryKey: ["sandbox-data", selectedModel],
 		queryFn: () => fetchModelsData(selectedModel),
+		staleTime: Number.POSITIVE_INFINITY,
 	});
 
 	return (

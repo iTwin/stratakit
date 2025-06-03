@@ -11,7 +11,6 @@ import type { Avatar as IuiAvatar } from "@itwin/itwinui-react";
 import type { PolymorphicForwardRefComponent } from "./~utils.tsx";
 
 type IuiAvatarProps = React.ComponentProps<typeof IuiAvatar>;
-type SkAvatarProps = React.ComponentProps<typeof SkAvatar>;
 
 interface AvatarProps
 	extends Pick<

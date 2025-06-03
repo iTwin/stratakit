@@ -53,10 +53,6 @@
 			--🥝progress-bar-track-color: var(--ids-color-bg-accent-muted);
 		}
 
-		&:where([data-kiwi-size="small"]) {
-			--🥝progress-bar-size: 0.063rem;
-		}
-
 		&:where([data-kiwi-size="medium"]) {
 			--🥝progress-bar-size: 0.125rem;
 		}

@@ -29,6 +29,8 @@ export default definePage(function Page() {
 			>
 				classNames
 			</Tabs>
+			<Compositional />
+			<CompositionalGreen />
 		</div>
 	);
 });
@@ -43,5 +45,31 @@ function ControlledActiveIndex() {
 		>
 			Controlled tabs {activeIndex + 1}
 		</Tabs>
+	);
+}
+
+function Compositional() {
+	return (
+		<Tabs.Wrapper>
+			<Tabs.TabList>
+				<Tabs.Tab value="1">Tab 1</Tabs.Tab>
+				<Tabs.Tab value="2">Tab 2</Tabs.Tab>
+			</Tabs.TabList>
+			<Tabs.Panel value="1">Compositional tabs 1</Tabs.Panel>
+			<Tabs.Panel value="2">Compositional tabs 2</Tabs.Panel>
+		</Tabs.Wrapper>
+	);
+}
+
+function CompositionalGreen() {
+	return (
+		<Tabs.Wrapper color="green">
+			<Tabs.TabList>
+				<Tabs.Tab value="1">Tab 1</Tabs.Tab>
+				<Tabs.Tab value="2">Tab 2</Tabs.Tab>
+			</Tabs.TabList>
+			<Tabs.Panel value="1">Compositional color="green" 1</Tabs.Panel>
+			<Tabs.Panel value="2">Compositional color="green" 2</Tabs.Panel>
+		</Tabs.Wrapper>
 	);
 }

@@ -13,7 +13,6 @@ import type { PolymorphicForwardRefComponent } from "./~utils.tsx";
 type IuiAnchorProps = React.ComponentProps<typeof IuiAnchor>;
 
 interface AnchorProps extends Pick<IuiAnchorProps, "isExternal" | "underline"> {
-	/** NOT IMPLEMENTED. */
 	isExternal?: IuiAnchorProps["isExternal"];
 	/** NOT IMPLEMENTED. */
 	underline?: IuiAnchorProps["underline"];
@@ -23,9 +22,9 @@ interface AnchorProps extends Pick<IuiAnchorProps, "isExternal" | "underline"> {
 export const Anchor = React.forwardRef((props, forwardedRef) => {
 	const {
 		underline, // NOT IMPLEMENTED
-		isExternal, // NOT IMPLEMENTED
+		isExternal,
 		...rest
 	} = useCompatProps(props);
-	return <SkAnchor {...rest} ref={forwardedRef} />;
+	return <SkAnchor {...rest} isExternal={isExternal} ref={forwardedRef} />;
 }) as PolymorphicForwardRefComponent<"a", AnchorProps>;
 DEV: Anchor.displayName = "Anchor";

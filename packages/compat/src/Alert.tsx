@@ -8,19 +8,19 @@ import { unstable_Banner as SkBanner } from "@stratakit/structures";
 import * as React from "react";
 import { useCompatProps } from "./~utils.tsx";
 
-import type { Alert as IuiBanner } from "@itwin/itwinui-react";
+import type { Alert as IuiAlert } from "@itwin/itwinui-react";
 import type { PolymorphicForwardRefComponent } from "./~utils.tsx";
 
 type SkBannerProps = React.ComponentProps<typeof SkBanner>;
-type IuiBannerProps = React.ComponentProps<typeof IuiBanner>;
+type IuiAlertProps = React.ComponentProps<typeof IuiAlert>;
 
 interface AlertProps
 	extends Pick<
-		IuiBannerProps,
+		IuiAlertProps,
 		"type" | "isSticky" | "clickableText" | "clickableTextProps" | "onClose"
 	> {
 	/** NOT IMPLEMENTED */
-	isSticky?: IuiBannerProps["isSticky"];
+	isSticky?: IuiAlertProps["isSticky"];
 }
 
 /** @see https://itwinui.bentley.com/docs/alert */

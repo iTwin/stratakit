@@ -1,5 +1,5 @@
 ---
-"@stratakit/bricks": minor
+"@stratakit/bricks": patch
 ---
 
 Added `isExternal` prop to `Anchor`.

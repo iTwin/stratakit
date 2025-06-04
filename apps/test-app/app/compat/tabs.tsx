@@ -13,12 +13,11 @@ export default definePage(function Page() {
 	return (
 		<div style={{ display: "grid", gap: 16 }}>
 			<Tabs labels={["Tab 1", "Tab 2"]}>Content</Tabs>
-			<Controlled />
-			<Tabs labels={["Tab 1", "Tab 2"]} focusActivationMode="manual">
-				focusActivationMode="manual"
-			</Tabs>
 			<Tabs labels={["Tab 1", "Tab 2"]} color="green">
 				color="green"
+			</Tabs>
+			<Tabs labels={["Tab 1", "Tab 2"]} focusActivationMode="manual">
+				focusActivationMode="manual"
 			</Tabs>
 			<Tabs
 				labels={["Tab 1", "Tab 2"]}
@@ -29,6 +28,8 @@ export default definePage(function Page() {
 			>
 				classNames
 			</Tabs>
+			<Controlled />
+
 			<Tabs
 				labels={[
 					<Tab key={1} label="Tab 1" />,
@@ -36,15 +37,17 @@ export default definePage(function Page() {
 					<Tab key={3} label="Tab3" id="legacy-tab-3" />,
 				]}
 			>
-				Legacy Tab component
+				Legacy Tab
 			</Tabs>
 			<ControlledLegacyTab />
+
 			<Compositional />
 			<CompositionalGreen />
 			<CompositionalManual />
+			<CompositionalClassNames />
 			<CompositionalDefaultValue />
 			<CompositionalControlled />
-			{/* Not implemented components. */}
+
 			<Tabs.TabIcon />
 			<Tabs.TabLabel />
 			<Tabs.TabDescription />
@@ -83,7 +86,7 @@ function ControlledLegacyTab() {
 				setActiveIndex(newIndex);
 			}}
 		>
-			Controlled legacy Tab component {activeIndex + 1}
+			Controlled legacy Tab {activeIndex + 1}
 		</Tabs>
 	);
 }
@@ -126,6 +129,27 @@ function CompositionalManual() {
 			</Tabs.Panel>
 			<Tabs.Panel value="2">
 				Compositional focusActivationMode="manual" 2
+			</Tabs.Panel>
+		</Tabs.Wrapper>
+	);
+}
+
+function CompositionalClassNames() {
+	return (
+		<Tabs.Wrapper className="my-wrapper">
+			<Tabs.TabList className="my-tab-list">
+				<Tabs.Tab value="1" className="my-tab-1">
+					Tab 1
+				</Tabs.Tab>
+				<Tabs.Tab value="2" className="my-tab-2">
+					Tab 2
+				</Tabs.Tab>
+			</Tabs.TabList>
+			<Tabs.Panel value="1" className="my-panel-1">
+				Compositional classNames 1
+			</Tabs.Panel>
+			<Tabs.Panel value="2" className="my-panel-2">
+				Compositional classNames 2
 			</Tabs.Panel>
 		</Tabs.Wrapper>
 	);

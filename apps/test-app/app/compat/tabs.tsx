@@ -3,7 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import { Tabs } from "@stratakit/react";
+import { Tab, Tabs } from "@stratakit/react";
 import * as React from "react";
 import { definePage } from "~/~utils.tsx";
 
@@ -13,7 +13,7 @@ export default definePage(function Page() {
 	return (
 		<div style={{ display: "grid", gap: 16 }}>
 			<Tabs labels={["Tab 1", "Tab 2"]}>Tabs content</Tabs>
-			<ControlledActiveIndex />
+			<Controlled />
 			<Tabs labels={["Tab 1", "Tab 2"]} focusActivationMode="manual">
 				focusActivationMode="manual"
 			</Tabs>
@@ -29,13 +29,23 @@ export default definePage(function Page() {
 			>
 				classNames
 			</Tabs>
+			<Tabs
+				labels={[
+					<Tab key={1} label="Tab 1" />,
+					<Tab key={2} label="Tab 2" disabled />,
+					<Tab key={3} label="Tab3" id="legacy-tab-3" />,
+				]}
+			>
+				Using legacy Tab component
+			</Tabs>
+			<ControlledLegacyTab />
 			<Compositional />
 			<CompositionalGreen />
 		</div>
 	);
 });
 
-function ControlledActiveIndex() {
+function Controlled() {
 	const [activeIndex, setActiveIndex] = React.useState(1);
 	return (
 		<Tabs
@@ -44,6 +54,22 @@ function ControlledActiveIndex() {
 			onTabSelected={setActiveIndex}
 		>
 			Controlled tabs {activeIndex + 1}
+		</Tabs>
+	);
+}
+
+function ControlledLegacyTab() {
+	const [activeIndex, setActiveIndex] = React.useState(1);
+	return (
+		<Tabs
+			labels={[
+				<Tab key={1} label="Tab 1" />,
+				<Tab key={2} label="Tab 2" id="controlled-legacy-tab-2" />,
+			]}
+			activeIndex={activeIndex}
+			onTabSelected={setActiveIndex}
+		>
+			Controlled tabs using legacy Tab component {activeIndex + 1}
 		</Tabs>
 	);
 }

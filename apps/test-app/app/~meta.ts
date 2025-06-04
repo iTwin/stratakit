@@ -38,10 +38,13 @@ export const components = {
 	],
 	compat: [
 		"Anchor",
+		"Avatar",
 		"Checkbox",
 		"Divider",
+		"Input",
 		"Kbd",
 		"Label",
+		"LabeledInput",
 		"ProgressLinear",
 		"ProgressRadial",
 		"Radio",

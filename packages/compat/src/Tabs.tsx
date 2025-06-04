@@ -3,12 +3,15 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import { useControlledState } from "@stratakit/foundations/secret-internals";
+import {
+	useControlledState,
+	useSafeContext,
+} from "@stratakit/foundations/secret-internals";
 import { Tabs as SkTabs } from "@stratakit/structures";
 import * as React from "react";
 import { useCompatProps } from "./~utils.tsx";
 
-import type { Tabs as IuiTabs } from "@itwin/itwinui-react";
+import type { Tab as IuiTab, Tabs as IuiTabs } from "@itwin/itwinui-react";
 import type { PolymorphicForwardRefComponent } from "./~utils.tsx";
 
 type SkTabsProps = React.ComponentProps<typeof SkTabs.Root>;
@@ -70,8 +73,10 @@ const LegacyTabs = React.forwardRef((props, forwardedRef) => {
 				return `${id}-${index}-${label}`;
 			}
 
-			if (React.isValidElement(label) && label.key) {
-				return `${id}-${index}-${label.key}`;
+			if (React.isValidElement<React.ComponentProps<typeof Tab>>(label)) {
+				// Re-use `id` prop, if available.
+				if (label.props.id) return label.props.id;
+				if (label.key) return `${id}-${index}-${label.key}`;
 			}
 
 			return `${id}-${index}`;
@@ -86,7 +91,7 @@ const LegacyTabs = React.forwardRef((props, forwardedRef) => {
 		[tabIds, onTabSelected],
 	);
 
-	const activeId = activeIndex ? tabIds[activeIndex] : undefined;
+	const activeId = activeIndex === undefined ? undefined : tabIds[activeIndex];
 	const [selectedId, setSelectedId] = useControlledState<
 		SkTabsProps["selectedId"]
 	>(
@@ -111,9 +116,13 @@ const LegacyTabs = React.forwardRef((props, forwardedRef) => {
 					{labels.map((label, index) => {
 						const tabId = tabIds[index];
 						return (
-							<SkTabs.Tab key={tabId} id={tabId}>
-								{label}
-							</SkTabs.Tab>
+							<TabContext.Provider key={tabId} value={{ id: tabId }}>
+								{typeof label === "string" ? (
+									<LegacyTab label={label} />
+								) : (
+									label
+								)}
+							</TabContext.Provider>
 						);
 					})}
 				</SkTabs.TabList>
@@ -125,6 +134,57 @@ const LegacyTabs = React.forwardRef((props, forwardedRef) => {
 	);
 }) as PolymorphicForwardRefComponent<"div", LegacyTabsProps>;
 DEV: LegacyTabs.displayName = "Tabs";
+
+// ----------------------------------------------------------------------------
+
+type IuiTabLegacyProps = React.ComponentProps<typeof IuiTab>;
+
+interface LegacyTabProps
+	extends Pick<
+		IuiTabLegacyProps,
+		"label" | "sublabel" | "startIcon" | "disabled" | "children" | "value"
+	> {
+	/** NOT IMPLEMENTED. */
+	sublabel?: IuiTabLegacyProps["sublabel"];
+	/** NOT IMPLEMENTED. */
+	startIcon?: IuiTabLegacyProps["startIcon"];
+	/** NOT IMPLEMENTED. */
+	children?: IuiTabLegacyProps["children"];
+	/** NOT IMPLEMENTED. */
+	value?: IuiTabLegacyProps["value"];
+}
+
+/** @see https://itwinui.bentley.com/docs/tabs */
+const LegacyTab = React.forwardRef((props, forwardedRef) => {
+	const {
+		label,
+		sublabel, // NOT IMPLEMENTED
+		startIcon, // NOT IMPLEMENTED
+		disabled,
+		children, // NOT IMPLEMENTED
+		value, // NOT IMPLEMENTED
+		...rest
+	} = useCompatProps(props);
+
+	const { id } = useSafeContext(TabContext);
+	return (
+		<SkTabs.Tab {...rest} id={id} disabled={disabled} ref={forwardedRef}>
+			{label}
+		</SkTabs.Tab>
+	);
+}) as PolymorphicForwardRefComponent<"button", LegacyTabProps>;
+DEV: LegacyTab.displayName = "Tab";
+
+export { LegacyTab as Tab };
+
+// ----------------------------------------------------------------------------
+
+const TabContext = React.createContext<
+	| {
+			id: string;
+	  }
+	| undefined
+>(undefined);
 
 // ----------------------------------------------------------------------------
 
@@ -149,7 +209,7 @@ interface TabsWrapperProps
 }
 
 /** @see https://itwinui.bentley.com/docs/tabs#composition-api */
-export const TabsWrapper = React.forwardRef((props, forwardedRef) => {
+const TabsWrapper = React.forwardRef((props, forwardedRef) => {
 	const {
 		children,
 		color,
@@ -196,7 +256,7 @@ type IuiTabListProps = React.ComponentProps<typeof IuiTabs.TabList>;
 interface TabListProps extends Pick<IuiTabListProps, "children"> {}
 
 /** @see https://itwinui.bentley.com/docs/tabs#composition-api */
-export const TabList = React.forwardRef((props, forwardedRef) => {
+const TabList = React.forwardRef((props, forwardedRef) => {
 	const { children, ...rest } = useCompatProps(props);
 
 	const { tone } = React.useContext(TabsWrapperContext);
@@ -215,7 +275,7 @@ type IuiTabProps = React.ComponentProps<typeof IuiTabs.Tab>;
 interface TabProps extends Pick<IuiTabProps, "value" | "label" | "id"> {}
 
 /** @see https://itwinui.bentley.com/docs/tabs#composition-api */
-export const Tab = React.forwardRef((props, forwardedRef) => {
+const Tab = React.forwardRef((props, forwardedRef) => {
 	const { children, value, label, id, ...rest } = useCompatProps(props);
 
 	id;
@@ -235,7 +295,7 @@ type IuiTabsPanelProps = React.ComponentProps<typeof IuiTabs.Panel>;
 interface TabsPanelProps extends Pick<IuiTabsPanelProps, "value" | "id"> {}
 
 /** @see https://itwinui.bentley.com/docs/tabs#composition-api */
-export const TabsPanel = React.forwardRef((props, forwardedRef) => {
+const TabsPanel = React.forwardRef((props, forwardedRef) => {
 	const { children, value, id, ...rest } = useCompatProps(props);
 
 	id;

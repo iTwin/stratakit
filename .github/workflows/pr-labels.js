@@ -46,6 +46,74 @@ const LABELS = {
 	GITHUB_ACTIONS: "github_actions",
 };
 
+const LABEL_MAP = {
+	[LABELS.ACCORDION]: ["packages/structures/src/AccordionItem"],
+	[LABELS.ANCHOR]: [
+		"packages/bricks/src/Anchor",
+		"packages/compat/src/Anchor.tsx",
+	],
+	[LABELS.AVATAR]: ["packages/bricks/src/Avatar"],
+	[LABELS.BADGE]: ["packages/bricks/src/Badge"],
+	[LABELS.BANNER]: ["packages/structures/src/Banner"],
+	[LABELS.BREADCRUMB]: [],
+	[LABELS.BUTTON]: ["packages/bricks/src/Button"],
+	[LABELS.CARD]: [],
+	[LABELS.CHECKBOX]: [
+		"packages/bricks/src/Checkbox",
+		"packages/compat/src/Checkbox.tsx",
+	],
+	[LABELS.CHIP]: ["packages/structures/src/Chip"],
+	[LABELS.CODE_SNIPPET]: [],
+	[LABELS.DESCRIPTION]: ["packages/bricks/src/Description"],
+	[LABELS.DIALOG]: [],
+	[LABELS.DIVIDER]: [
+		"packages/bricks/src/Divider",
+		"packages/compat/src/Divider.tsx",
+	],
+	[LABELS.DROPDOWN_MENU]: [
+		"packages/structures/src/DropdownMenu",
+		"packages/compat/src/MenuItem.tsx",
+	],
+	[LABELS.ERROR_REGION]: ["packages/structures/src/ErrorRegion"],
+	[LABELS.FIELD]: ["packages/bricks/src/Field"],
+	[LABELS.ICON]: [],
+	[LABELS.ICON_BUTTON]: ["packages/bricks/src/IconButton"],
+	[LABELS.KBD]: ["packages/bricks/src/Kbd", "packages/compat/src/Kbd.tsx"],
+	[LABELS.LABEL]: [
+		"packages/bricks/src/Label",
+		"packages/compat/src/Label.tsx",
+	],
+	[LABELS.LIST]: [],
+	[LABELS.PAGINATION]: [],
+	[LABELS.PLATFORM_BAR]: [],
+	[LABELS.POPOVER]: [],
+	[LABELS.PROGRESS_BAR]: [
+		"packages/bricks/src/ProgressBar",
+		"packages/compat/src/ProgressLinear.tsx",
+	],
+	[LABELS.RADIO]: ["packages/bricks/src/Radio"],
+	[LABELS.SELECT]: ["packages/bricks/src/Select"],
+	[LABELS.SKELETON]: ["packages/bricks/src/Skeleton"],
+	[LABELS.SPINNER]: ["packages/bricks/src/Spinner"],
+	[LABELS.SWITCH]: ["packages/bricks/src/Switch"],
+	[LABELS.TABLE]: ["packages/structures/src/Table"],
+	[LABELS.TABS]: ["packages/structures/src/Tabs"],
+	[LABELS.TEXT]: ["packages/bricks/src/Text", "packages/compat/src/Text.tsx"],
+	[LABELS.TEXT_BOX]: ["packages/bricks/src/TextBox"],
+	[LABELS.TOAST]: [],
+	[LABELS.TOOLBAR]: ["packages/structures/src/Toolbar"],
+	[LABELS.TOOLTIP]: [
+		"packages/bricks/src/Tooltip",
+		"packages/compat/src/Tooltip.tsx",
+	],
+	[LABELS.TREE]: [
+		"packages/structures/src/Tree",
+		"packages/structures/src/TreeItem",
+	],
+	[LABELS.API_BRIDGE]: ["packages/compat/"],
+	[LABELS.GITHUB_ACTIONS]: [".github/workflows"],
+};
+
 export default async function prLabels(context, github) {
 	const repo = context.repo.repo;
 	const owner = context.repo.owner;
@@ -53,74 +121,6 @@ export default async function prLabels(context, github) {
 	const prNumber = pr.number;
 
 	const labelsToAdd = new Set();
-
-	const LABEL_MAP = {
-		[LABELS.ACCORDION]: ["packages/structures/src/AccordionItem"],
-		[LABELS.ANCHOR]: [
-			"packages/bricks/src/Anchor",
-			"packages/compat/src/Anchor.tsx",
-		],
-		[LABELS.AVATAR]: ["packages/bricks/src/Avatar"],
-		[LABELS.BADGE]: ["packages/bricks/src/Badge"],
-		[LABELS.BANNER]: ["packages/structures/src/Banner"],
-		[LABELS.BREADCRUMB]: [],
-		[LABELS.BUTTON]: ["packages/bricks/src/Button"],
-		[LABELS.CARD]: [],
-		[LABELS.CHECKBOX]: [
-			"packages/bricks/src/Checkbox",
-			"packages/compat/src/Checkbox.tsx",
-		],
-		[LABELS.CHIP]: ["packages/structures/src/Chip"],
-		[LABELS.CODE_SNIPPET]: [],
-		[LABELS.DESCRIPTION]: ["packages/bricks/src/Description"],
-		[LABELS.DIALOG]: [],
-		[LABELS.DIVIDER]: [
-			"packages/bricks/src/Divider",
-			"packages/compat/src/Divider.tsx",
-		],
-		[LABELS.DROPDOWN_MENU]: [
-			"packages/structures/src/DropdownMenu",
-			"packages/compat/src/MenuItem.tsx",
-		],
-		[LABELS.ERROR_REGION]: ["packages/structures/src/ErrorRegion"],
-		[LABELS.FIELD]: ["packages/bricks/src/Field"],
-		[LABELS.ICON]: [],
-		[LABELS.ICON_BUTTON]: ["packages/bricks/src/IconButton"],
-		[LABELS.KBD]: ["packages/bricks/src/Kbd", "packages/compat/src/Kbd.tsx"],
-		[LABELS.LABEL]: [
-			"packages/bricks/src/Label",
-			"packages/compat/src/Label.tsx",
-		],
-		[LABELS.LIST]: [],
-		[LABELS.PAGINATION]: [],
-		[LABELS.PLATFORM_BAR]: [],
-		[LABELS.POPOVER]: [],
-		[LABELS.PROGRESS_BAR]: [
-			"packages/bricks/src/ProgressBar",
-			"packages/compat/src/ProgressLinear.tsx",
-		],
-		[LABELS.RADIO]: ["packages/bricks/src/Radio"],
-		[LABELS.SELECT]: ["packages/bricks/src/Select"],
-		[LABELS.SKELETON]: ["packages/bricks/src/Skeleton"],
-		[LABELS.SPINNER]: ["packages/bricks/src/Spinner"],
-		[LABELS.SWITCH]: ["packages/bricks/src/Switch"],
-		[LABELS.TABLE]: ["packages/structures/src/Table"],
-		[LABELS.TABS]: ["packages/structures/src/Tabs"],
-		[LABELS.TEXT]: ["packages/bricks/src/Text", "packages/compat/src/Text.tsx"],
-		[LABELS.TEXT_BOX]: ["packages/bricks/src/TextBox"],
-		[LABELS.TOAST]: [],
-		[LABELS.TOOLBAR]: ["packages/structures/src/Toolbar"],
-		[LABELS.TOOLTIP]: [
-			"packages/bricks/src/Tooltip",
-			"packages/compat/src/Tooltip.tsx",
-		],
-		[LABELS.TREE]: [
-			"packages/structures/src/Tree",
-			"packages/structures/src/TreeItem",
-		],
-		[LABELS.API_BRIDGE]: ["packages/compat/"],
-		[LABELS.GITHUB_ACTIONS]: [".github/"],
-	};
 
 	try {
 		// get files changed
@@ -155,19 +155,6 @@ export default async function prLabels(context, github) {
 		const finalLabelsAdd = [...labelsToAdd].filter(
 			(label) => !currentLabelNames.has(label),
 		);
-		const finalLabelsRemove = [...currentLabelNames].filter(
-			(label) => !labelsToAdd.has(label),
-		);
-
-		// remove irrelevant labels from the PR
-		for (const label of finalLabelsRemove) {
-			await github.rest.issues.removeLabel({
-				owner: owner,
-				repo: repo,
-				issue_number: prNumber,
-				name: label,
-			});
-		}
 
 		// add relevant labels to the PR
 		if (finalLabelsAdd.length > 0) {

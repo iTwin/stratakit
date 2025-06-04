@@ -7,17 +7,16 @@ const MILESTONES = {
 	API_BRIDGE: "API bridge",
 };
 
+const MILESTONE_MAP = {
+	[MILESTONES.DEFAULT]: "packages/",
+	[MILESTONES.API_BRIDGE]: "packages/compat/",
+};
+
 export default async function prMilestone(context, github) {
 	const repo = context.repo.repo;
 	const owner = context.repo.owner;
 	const pr = context.payload.pull_request;
 	const prNumber = pr.number;
-
-	// map milestones to paths
-	const MILESTONE_MAP = {
-		[MILESTONES.DEFAULT]: "packages/",
-		[MILESTONES.API_BRIDGE]: "packages/compat/",
-	};
 
 	try {
 		let targetMilestone = null;

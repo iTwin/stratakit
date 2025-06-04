@@ -59,7 +59,7 @@ jobs:
           script: |
             const { default: prMilestone } = await import('${{ github.workspace }}/.github/workflows/pr-milestone.js');
 
-            await prMilestone(context, github);
+            await prMilestone({context, github});
 
   assign-labels:
     name: Assign PR labels
@@ -75,7 +75,7 @@ jobs:
           script: |
             const { default: prLabels } = await import('${{ github.workspace }}/.github/workflows/pr-labels.js');
 
-            await prLabels(context, github);
+            await prLabels({context, github});
 
   fix-formatting:
     name: Fix formatting

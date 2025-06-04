@@ -12,7 +12,9 @@ const MILESTONE_MAP = {
 	[MILESTONES.API_BRIDGE]: "packages/compat/",
 };
 
-export default async function prMilestone(context, github) {
+// @ts-check
+/** @param {import('@actions/github-script').AsyncFunctionArguments} AsyncFunctionArguments */
+export default async function prMilestone({ context, github }) {
 	const repo = context.repo.repo;
 	const owner = context.repo.owner;
 	const pr = context.payload.pull_request;

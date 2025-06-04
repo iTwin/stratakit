@@ -19,4 +19,5 @@ export { Radio } from "./Radio.js";
 export { Tab, Tabs } from "./Tabs.js";
 export { Tag } from "./Tag.js";
 export { Text } from "./Text.js";
+export { ThemeProvider } from "./ThemeProvider.js";
 export { Tooltip } from "./Tooltip.js";

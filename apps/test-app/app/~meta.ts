@@ -51,6 +51,7 @@ export const components = {
 		"Tabs",
 		"Tag",
 		"Text",
+		"ThemeProvider",
 		"Tooltip",
 	],
 };

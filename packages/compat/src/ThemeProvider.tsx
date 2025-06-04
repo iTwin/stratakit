@@ -19,7 +19,14 @@ interface ThemeProviderProps
 		| "children"
 		| "portalContainer"
 		| "includeCss"
-	> {}
+	> {
+	/**
+	 * NOT IMPLEMENTED.
+	 *
+	 * Theme is controlled via the `Root` component from the `@stratakit/foundations` package when the `themeBridge` is enabled.
+	 */
+	theme?: IuiThemeProviderProps["theme"];
+}
 
 /** @see https://itwinui.bentley.com/docs/themeprovider */
 export const ThemeProvider = React.forwardRef((props, forwardedRef) => {
@@ -27,9 +34,9 @@ export const ThemeProvider = React.forwardRef((props, forwardedRef) => {
 	const future = React.useMemo(
 		() => ({
 			themeBridge: true,
-			...props.future,
+			...futureProp,
 		}),
-		[props.future],
+		[futureProp],
 	);
 	return <IuiThemeProvider {...rest} future={future} ref={forwardedRef} />;
 }) as PolymorphicForwardRefComponent<"div", ThemeProviderProps>;

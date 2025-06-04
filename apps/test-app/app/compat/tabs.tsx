@@ -44,6 +44,11 @@ export default definePage(function Page() {
 			<CompositionalManual />
 			<CompositionalDefaultValue />
 			<CompositionalControlled />
+			{/* Not implemented components. */}
+			<Tabs.TabIcon />
+			<Tabs.TabLabel />
+			<Tabs.TabDescription />
+			<Tabs.Actions />
 		</div>
 	);
 });

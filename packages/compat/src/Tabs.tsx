@@ -338,15 +338,55 @@ DEV: TabsPanel.displayName = "Tabs.Panel";
 
 // ----------------------------------------------------------------------------
 
+/** NOT IMPLEMENTED. */
+const TabIcon = React.forwardRef((_props, _forwardedRef) => {
+	return null;
+}) as PolymorphicForwardRefComponent<
+	"span",
+	React.ComponentProps<typeof IuiTabs.TabIcon>
+>;
+
+// ----------------------------------------------------------------------------
+
+/** NOT IMPLEMENTED. */
+const TabLabel = React.forwardRef((_props, _forwardedRef) => {
+	return null;
+}) as PolymorphicForwardRefComponent<
+	"span",
+	React.ComponentProps<typeof IuiTabs.TabLabel>
+>;
+
+// ----------------------------------------------------------------------------
+
+/** NOT IMPLEMENTED. */
+const TabDescription = React.forwardRef((_props, _forwardedRef) => {
+	return null;
+}) as PolymorphicForwardRefComponent<
+	"span",
+	React.ComponentProps<typeof IuiTabs.TabDescription>
+>;
+
+// ----------------------------------------------------------------------------
+
+/** NOT IMPLEMENTED. */
+const Actions = React.forwardRef((_props, _forwardedRef) => {
+	return null;
+}) as PolymorphicForwardRefComponent<
+	"div",
+	React.ComponentProps<typeof IuiTabs.Actions>
+>;
+
+// ----------------------------------------------------------------------------
+
 /** @see https://itwinui.bentley.com/docs/tabs */
 export const Tabs = Object.assign(LegacyTabs, {
 	Wrapper: TabsWrapper,
-	TabList: TabList,
-	Tab: Tab,
-	// TabIcon,
-	// TabLabel,
-	// TabDescription,
-	// Actions,
+	TabList,
+	Tab,
+	TabIcon,
+	TabLabel,
+	TabDescription,
+	Actions,
 	Panel: TabsPanel,
 });
 

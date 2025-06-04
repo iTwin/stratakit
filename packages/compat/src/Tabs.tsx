@@ -188,11 +188,11 @@ const LegacyTabContext = React.createContext<
 
 // ----------------------------------------------------------------------------
 
-type IuiTabsWrapperProps = React.ComponentProps<typeof IuiTabs.Wrapper>;
+type IuiWrapperProps = React.ComponentProps<typeof IuiTabs.Wrapper>;
 
-interface TabsWrapperProps
+interface WrapperProps
 	extends Pick<
-		IuiTabsWrapperProps,
+		IuiWrapperProps,
 		| "color"
 		| "focusActivationMode"
 		| "defaultValue"
@@ -203,13 +203,13 @@ interface TabsWrapperProps
 		| "type"
 	> {
 	/** NOT IMPLEMENTED. */
-	orientation?: IuiTabsWrapperProps["orientation"];
+	orientation?: IuiWrapperProps["orientation"];
 	/** NOT IMPLEMENTED. */
-	type?: IuiTabsWrapperProps["type"];
+	type?: IuiWrapperProps["type"];
 }
 
 /** @see https://itwinui.bentley.com/docs/tabs#composition-api */
-const TabsWrapper = React.forwardRef((props, forwardedRef) => {
+const Wrapper = React.forwardRef((props, forwardedRef) => {
 	const {
 		children,
 		color,
@@ -255,8 +255,8 @@ const TabsWrapper = React.forwardRef((props, forwardedRef) => {
 			</TabsWrapperContext.Provider>
 		</SkTabs.Root>
 	);
-}) as PolymorphicForwardRefComponent<"div", TabsWrapperProps>;
-DEV: TabsWrapper.displayName = "Tabs.Wrapper";
+}) as PolymorphicForwardRefComponent<"div", WrapperProps>;
+DEV: Wrapper.displayName = "Tabs.Wrapper";
 
 // ----------------------------------------------------------------------------
 
@@ -314,12 +314,12 @@ DEV: Tab.displayName = "Tabs.Tab";
 
 // ----------------------------------------------------------------------------
 
-type IuiTabsPanelProps = React.ComponentProps<typeof IuiTabs.Panel>;
+type IuiPanelProps = React.ComponentProps<typeof IuiTabs.Panel>;
 
-interface TabsPanelProps extends Pick<IuiTabsPanelProps, "value" | "id"> {}
+interface PanelProps extends Pick<IuiPanelProps, "value" | "id"> {}
 
 /** @see https://itwinui.bentley.com/docs/tabs#composition-api */
-const TabsPanel = React.forwardRef((props, forwardedRef) => {
+const Panel = React.forwardRef((props, forwardedRef) => {
 	const {
 		children,
 		value,
@@ -333,8 +333,8 @@ const TabsPanel = React.forwardRef((props, forwardedRef) => {
 			{children}
 		</SkTabs.TabPanel>
 	);
-}) as PolymorphicForwardRefComponent<"div", TabsPanelProps>;
-DEV: TabsPanel.displayName = "Tabs.Panel";
+}) as PolymorphicForwardRefComponent<"div", PanelProps>;
+DEV: Panel.displayName = "Tabs.Panel";
 
 // ----------------------------------------------------------------------------
 
@@ -380,14 +380,18 @@ const Actions = React.forwardRef((_props, _forwardedRef) => {
 
 /** @see https://itwinui.bentley.com/docs/tabs */
 export const Tabs = Object.assign(LegacyTabs, {
-	Wrapper: TabsWrapper,
+	Wrapper,
 	TabList,
 	Tab,
+	/** NOT IMPLEMENTED. */
 	TabIcon,
+	/** NOT IMPLEMENTED. */
 	TabLabel,
+	/** NOT IMPLEMENTED. */
 	TabDescription,
+	/** NOT IMPLEMENTED. */
 	Actions,
-	Panel: TabsPanel,
+	Panel,
 });
 
 // ----------------------------------------------------------------------------

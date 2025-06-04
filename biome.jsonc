@@ -19,17 +19,7 @@
 	"assist": {
 		"actions": {
 			"source": {
-				"organizeImports": {
-					"level": "on",
-					"options": {
-						"groups": [
-							{ "type": false, "source": "!@stratakit/icons/**" },
-							":BLANK_LINE:",
-							{ "type": true },
-							":BLANK_LINE:"
-						]
-					}
-				}
+				"organizeImports": "off"
 			}
 		}
 	},

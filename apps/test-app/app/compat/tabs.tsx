@@ -12,7 +12,7 @@ export const handle = { title: "Tabs" };
 export default definePage(function Page() {
 	return (
 		<div style={{ display: "grid", gap: 16 }}>
-			<Tabs labels={["Tab 1", "Tab 2"]}>Tabs content</Tabs>
+			<Tabs labels={["Tab 1", "Tab 2"]}>Content</Tabs>
 			<Controlled />
 			<Tabs labels={["Tab 1", "Tab 2"]} focusActivationMode="manual">
 				focusActivationMode="manual"
@@ -36,11 +36,14 @@ export default definePage(function Page() {
 					<Tab key={3} label="Tab3" id="legacy-tab-3" />,
 				]}
 			>
-				Using legacy Tab component
+				Legacy Tab component
 			</Tabs>
 			<ControlledLegacyTab />
 			<Compositional />
 			<CompositionalGreen />
+			<CompositionalManual />
+			<CompositionalDefaultValue />
+			<CompositionalControlled />
 		</div>
 	);
 });
@@ -51,9 +54,12 @@ function Controlled() {
 		<Tabs
 			labels={["Tab 1", "Tab 2"]}
 			activeIndex={activeIndex}
-			onTabSelected={setActiveIndex}
+			onTabSelected={(newIndex) => {
+				console.log(`onTabSelected(${newIndex})`);
+				setActiveIndex(newIndex);
+			}}
 		>
-			Controlled tabs {activeIndex + 1}
+			Controlled {activeIndex + 1}
 		</Tabs>
 	);
 }
@@ -67,9 +73,12 @@ function ControlledLegacyTab() {
 				<Tab key={2} label="Tab 2" id="controlled-legacy-tab-2" />,
 			]}
 			activeIndex={activeIndex}
-			onTabSelected={setActiveIndex}
+			onTabSelected={(newIndex) => {
+				console.log(`onTabSelected(${newIndex})`);
+				setActiveIndex(newIndex);
+			}}
 		>
-			Controlled tabs using legacy Tab component {activeIndex + 1}
+			Controlled legacy Tab component {activeIndex + 1}
 		</Tabs>
 	);
 }
@@ -81,8 +90,8 @@ function Compositional() {
 				<Tabs.Tab value="1">Tab 1</Tabs.Tab>
 				<Tabs.Tab value="2">Tab 2</Tabs.Tab>
 			</Tabs.TabList>
-			<Tabs.Panel value="1">Compositional tabs 1</Tabs.Panel>
-			<Tabs.Panel value="2">Compositional tabs 2</Tabs.Panel>
+			<Tabs.Panel value="1">Compositional 1</Tabs.Panel>
+			<Tabs.Panel value="2">Compositional 2</Tabs.Panel>
 		</Tabs.Wrapper>
 	);
 }
@@ -96,6 +105,56 @@ function CompositionalGreen() {
 			</Tabs.TabList>
 			<Tabs.Panel value="1">Compositional color="green" 1</Tabs.Panel>
 			<Tabs.Panel value="2">Compositional color="green" 2</Tabs.Panel>
+		</Tabs.Wrapper>
+	);
+}
+
+function CompositionalManual() {
+	return (
+		<Tabs.Wrapper focusActivationMode="manual">
+			<Tabs.TabList>
+				<Tabs.Tab value="1">Tab 1</Tabs.Tab>
+				<Tabs.Tab value="2">Tab 2</Tabs.Tab>
+			</Tabs.TabList>
+			<Tabs.Panel value="1">
+				Compositional focusActivationMode="manual" 1
+			</Tabs.Panel>
+			<Tabs.Panel value="2">
+				Compositional focusActivationMode="manual" 2
+			</Tabs.Panel>
+		</Tabs.Wrapper>
+	);
+}
+
+function CompositionalDefaultValue() {
+	return (
+		<Tabs.Wrapper defaultValue="2">
+			<Tabs.TabList>
+				<Tabs.Tab value="1">Tab 1</Tabs.Tab>
+				<Tabs.Tab value="2">Tab 2</Tabs.Tab>
+			</Tabs.TabList>
+			<Tabs.Panel value="1">Compositional defaultValue="2" 1</Tabs.Panel>
+			<Tabs.Panel value="2">Compositional defaultValue="2" 2</Tabs.Panel>
+		</Tabs.Wrapper>
+	);
+}
+
+function CompositionalControlled() {
+	const [value, setValue] = React.useState("2");
+	return (
+		<Tabs.Wrapper
+			value={value}
+			onValueChange={(newValue) => {
+				console.log(`onValueChange(${newValue})`);
+				setValue(newValue);
+			}}
+		>
+			<Tabs.TabList>
+				<Tabs.Tab value="1">Tab 1</Tabs.Tab>
+				<Tabs.Tab value="2">Tab 2</Tabs.Tab>
+			</Tabs.TabList>
+			<Tabs.Panel value="1">Compositional controlled 1</Tabs.Panel>
+			<Tabs.Panel value="2">Compositional controlled 2</Tabs.Panel>
 		</Tabs.Wrapper>
 	);
 }

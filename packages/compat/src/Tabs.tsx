@@ -116,13 +116,13 @@ const LegacyTabs = React.forwardRef((props, forwardedRef) => {
 					{labels.map((label, index) => {
 						const tabId = tabIds[index];
 						return (
-							<TabContext.Provider key={tabId} value={{ id: tabId }}>
+							<LegacyTabContext.Provider key={tabId} value={{ id: tabId }}>
 								{typeof label === "string" ? (
 									<LegacyTab label={label} />
 								) : (
 									label
 								)}
-							</TabContext.Provider>
+							</LegacyTabContext.Provider>
 						);
 					})}
 				</SkTabs.TabList>
@@ -154,7 +154,7 @@ interface LegacyTabProps
 	value?: IuiTabLegacyProps["value"];
 }
 
-/** @see https://itwinui.bentley.com/docs/tabs */
+/** @see https://itwinui.bentley.com/docs/tabs#legacy-api */
 const LegacyTab = React.forwardRef((props, forwardedRef) => {
 	const {
 		label,
@@ -166,7 +166,7 @@ const LegacyTab = React.forwardRef((props, forwardedRef) => {
 		...rest
 	} = useCompatProps(props);
 
-	const { id } = useSafeContext(TabContext);
+	const { id } = useSafeContext(LegacyTabContext);
 	return (
 		<SkTabs.Tab {...rest} id={id} disabled={disabled} ref={forwardedRef}>
 			{label}
@@ -179,7 +179,7 @@ export { LegacyTab as Tab };
 
 // ----------------------------------------------------------------------------
 
-const TabContext = React.createContext<
+const LegacyTabContext = React.createContext<
 	| {
 			id: string;
 	  }
@@ -222,14 +222,33 @@ const TabsWrapper = React.forwardRef((props, forwardedRef) => {
 		type, // NOT IMPLEMENTED
 		...rest
 	} = useCompatProps(props);
-	const tabsId = React.useId();
+	const wrapperId = React.useId();
 	const tone = toTone(color);
-	defaultValue;
-	value;
-	onValueChange;
+	const defaultSelectedId = defaultValue
+		? toIdFromValue(defaultValue, wrapperId)
+		: undefined;
+	const selectedId = value ? toIdFromValue(value, wrapperId) : undefined;
+	const setSelectedId = React.useCallback<
+		NonNullable<SkTabsProps["setSelectedId"]>
+	>(
+		(newSelectedId) => {
+			if (!onValueChange || !newSelectedId) return;
+
+			const newSelectedValue = toValueFromId(newSelectedId, wrapperId);
+			if (!newSelectedValue) return;
+
+			onValueChange?.(newSelectedValue);
+		},
+		[onValueChange, wrapperId],
+	);
 	return (
-		<SkTabs.Root selectOnMove={toSelectOnMove(focusActivationMode)}>
-			<TabsWrapperContext.Provider value={{ tone, tabsId }}>
+		<SkTabs.Root
+			defaultSelectedId={defaultSelectedId}
+			selectedId={selectedId}
+			selectOnMove={toSelectOnMove(focusActivationMode)}
+			setSelectedId={setSelectedId}
+		>
+			<TabsWrapperContext.Provider value={{ tone, wrapperId }}>
 				<div {...rest} ref={forwardedRef}>
 					{children}
 				</div>
@@ -244,7 +263,7 @@ DEV: TabsWrapper.displayName = "Tabs.Wrapper";
 const TabsWrapperContext = React.createContext<
 	| {
 			tone: SkTabListProps["tone"];
-			tabsId: string;
+			wrapperId: string;
 	  }
 	| undefined
 >(undefined);
@@ -276,12 +295,17 @@ interface TabProps extends Pick<IuiTabProps, "value" | "label" | "id"> {}
 
 /** @see https://itwinui.bentley.com/docs/tabs#composition-api */
 const Tab = React.forwardRef((props, forwardedRef) => {
-	const { children, value, label, id, ...rest } = useCompatProps(props);
-
-	id;
-	value;
+	const {
+		children,
+		value,
+		label,
+		id: idProp, // ignored by iTwinUI
+		...rest
+	} = useCompatProps(props);
+	const { wrapperId } = useSafeContext(TabsWrapperContext);
+	const id = toIdFromValue(value, wrapperId);
 	return (
-		<SkTabs.Tab {...rest} id={value} ref={forwardedRef}>
+		<SkTabs.Tab {...rest} id={id} ref={forwardedRef}>
 			{label ?? children}
 		</SkTabs.Tab>
 	);
@@ -296,12 +320,16 @@ interface TabsPanelProps extends Pick<IuiTabsPanelProps, "value" | "id"> {}
 
 /** @see https://itwinui.bentley.com/docs/tabs#composition-api */
 const TabsPanel = React.forwardRef((props, forwardedRef) => {
-	const { children, value, id, ...rest } = useCompatProps(props);
-
-	id;
-	value;
+	const {
+		children,
+		value,
+		id, // ignored by iTwinUI
+		...rest
+	} = useCompatProps(props);
+	const { wrapperId } = useSafeContext(TabsWrapperContext);
+	const tabId = toIdFromValue(value, wrapperId);
 	return (
-		<SkTabs.TabPanel {...rest} tabId={value} id={id} ref={forwardedRef}>
+		<SkTabs.TabPanel {...rest} tabId={tabId} ref={forwardedRef}>
 			{children}
 		</SkTabs.TabPanel>
 	);
@@ -332,4 +360,13 @@ function toSelectOnMove(
 	focusActivationMode: IuiTabsLegacyProps["focusActivationMode"],
 ): SkTabsProps["selectOnMove"] {
 	return focusActivationMode === "manual" ? false : undefined;
+}
+
+function toIdFromValue(value: string, wrapperId: string) {
+	return `${wrapperId}-${value}`;
+}
+
+function toValueFromId(id: string, wrapperId: string) {
+	if (!id.startsWith(`${wrapperId}-`)) return undefined;
+	return id.slice(wrapperId.length + 1); // +1 for the hyphen
 }

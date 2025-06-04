@@ -13,7 +13,6 @@ import type { PolymorphicForwardRefComponent } from "./~utils.tsx";
 type IuiAnchorProps = React.ComponentProps<typeof IuiAnchor>;
 
 interface AnchorProps extends Pick<IuiAnchorProps, "isExternal" | "underline"> {
-	isExternal?: IuiAnchorProps["isExternal"];
 	/** NOT IMPLEMENTED. */
 	underline?: IuiAnchorProps["underline"];
 }

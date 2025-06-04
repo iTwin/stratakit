@@ -43,7 +43,7 @@ interface LegacyTabsProps
 	type?: IuiTabsLegacyProps["type"];
 }
 
-/** @see https://itwinui.bentley.com/docs/tabs */
+/** @see https://itwinui.bentley.com/docs/tabs#legacy-api */
 const LegacyTabs = React.forwardRef((props, forwardedRef) => {
 	const {
 		actions, // NOT IMPLEMENTED
@@ -250,54 +250,15 @@ DEV: TabsPanel.displayName = "Tabs.Panel";
 
 // ----------------------------------------------------------------------------
 
+/** @see https://itwinui.bentley.com/docs/tabs */
 export const Tabs = Object.assign(LegacyTabs, {
-	/**
-	 * A wrapper component for Tabs
-	 */
 	Wrapper: TabsWrapper,
-	/**
-	 * Tablist subcomponent which contains all of the tab subcomponents.
-	 * @example
-	 * <Tabs.TabList>
-	 *   <Tabs.Tab value='tab1' label='Label 1' />
-	 *   <Tabs.Tab value='tab2' label='Label 2' />
-	 *   <Tabs.Tab value='tab3' label='Label 3' />
-	 * </Tabs.TabList>
-	 *
-	 * @example
-	 * <Tabs.TabList>
-	 *   <Tabs.Tab value='tab1' label='Green Tab' />
-	 * </Tabs.TabList>
-	 *
-	 * @example
-	 * <Tabs.TabList focusActivationMode='manual'>
-	 *   <Tabs.Tab value='tab1' label='Manual Focus Tab' />
-	 * </Tabs.TabList>
-	 */
 	TabList: TabList,
-	/**
-	 * Tab subcomponent which is used for each of the tabs.
-	 * @example
-	 * <Tabs.Tab value='tab1' label='Label 1' />
-	 *
-	 * @example
-	 * <Tabs.Tab value='sample'>
-	 *   <Tabs.TabIcon>
-	 *     <SvgPlaceholder />
-	 *   </Tabs.TabIcon>
-	 *   <Tabs.TabLabel>Sample Label</Tabs.TabLabel>
-	 *   <Tabs.TabDescription>Sample Description</Tabs.TabDescription>
-	 * </Tabs.Tab>
-	 *
-	 */
 	Tab: Tab,
-	/**
-	 * Tab panel subcomponent which contains the tab's content.
-	 * @example
-	 * <Tabs.Panel value='tab1'>
-	 *   Sample Panel
-	 * </Tabs.Panel>
-	 */
+	// TabIcon,
+	// TabLabel,
+	// TabDescription,
+	// Actions,
 	Panel: TabsPanel,
 });
 

@@ -241,13 +241,13 @@ DEV: TabsWrapper.displayName = "Tabs.Wrapper";
 
 // ----------------------------------------------------------------------------
 
-const TabsWrapperContext = React.createContext<{
-	tone: SkTabListProps["tone"];
-	tabsId: string;
-}>({
-	tone: undefined,
-	tabsId: "",
-});
+const TabsWrapperContext = React.createContext<
+	| {
+			tone: SkTabListProps["tone"];
+			tabsId: string;
+	  }
+	| undefined
+>(undefined);
 
 // ----------------------------------------------------------------------------
 
@@ -258,8 +258,8 @@ interface TabListProps extends Pick<IuiTabListProps, "children"> {}
 /** @see https://itwinui.bentley.com/docs/tabs#composition-api */
 const TabList = React.forwardRef((props, forwardedRef) => {
 	const { children, ...rest } = useCompatProps(props);
+	const { tone } = useSafeContext(TabsWrapperContext);
 
-	const { tone } = React.useContext(TabsWrapperContext);
 	return (
 		<SkTabs.TabList {...rest} tone={tone} ref={forwardedRef}>
 			{children}

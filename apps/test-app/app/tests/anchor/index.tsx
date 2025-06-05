@@ -3,7 +3,8 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import { Anchor } from "@stratakit/bricks";
+import { Anchor as AnchorComposition } from "@stratakit/bricks";
+import Anchor from "@stratakit/bricks/anchor";
 import { Icon } from "@stratakit/foundations";
 import placeholderHref from "@stratakit/icons/placeholder.svg";
 import windowPopoutIconHref from "@stratakit/icons/window-popout.svg";
@@ -54,12 +55,12 @@ function VisualTest() {
 							referrerPolicy="no-referrer"
 							target="_blank"
 						>
-							<Anchor.Icon
+							<AnchorComposition.Icon
 								alt="External link"
 								icon={<Icon href={windowPopoutIconHref} />}
 							/>
 							External
-							<Anchor.Icon
+							<AnchorComposition.Icon
 								alt="External link"
 								icon={<Icon href={windowPopoutIconHref} />}
 							/>
@@ -67,41 +68,41 @@ function VisualTest() {
 
 						{/* TODO: Testing */}
 						{/* TODO: Is Anchor.Root even needed since it even works with Anchor? i.e. We can just pass Anchor.Icon within the children of Anchor itself. Thus, no need for Anchor.Root? */}
-						<Anchor.Root
+						<AnchorComposition.Root
 							key={tone}
 							tone={tone}
 							href="https://example.com"
 							referrerPolicy="no-referrer"
 							target="_blank"
 						>
-							<Anchor.Icon
+							<AnchorComposition.Icon
 								alt="External link"
 								icon={<Icon href={windowPopoutIconHref} />}
 							/>
 							External
-							<Anchor.Icon
+							<AnchorComposition.Icon
 								alt="External link"
 								icon={<Icon href={windowPopoutIconHref} />}
 							/>
-						</Anchor.Root>
+						</AnchorComposition.Root>
 
-						<Anchor.Root
+						<AnchorComposition.Root
 							key={tone}
 							tone={tone}
 							href="https://example.com"
 							referrerPolicy="no-referrer"
 							target="_blank"
 						>
-							<Anchor.Icon
+							<AnchorComposition.Icon
 								alt="External link"
 								icon={<Icon href={placeholderHref} />}
 							/>
 							External
-							<Anchor.Icon
+							<AnchorComposition.Icon
 								alt="External link"
 								icon={<Icon href={placeholderHref} />}
 							/>
-						</Anchor.Root>
+						</AnchorComposition.Root>
 					</div>
 				);
 			})}

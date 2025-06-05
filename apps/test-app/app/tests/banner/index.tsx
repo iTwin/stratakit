@@ -3,7 +3,8 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import { Anchor, Button, VisuallyHidden } from "@stratakit/bricks";
+import { Button, VisuallyHidden } from "@stratakit/bricks";
+import Anchor from "@stratakit/bricks/anchor";
 import { unstable_Banner as Banner } from "@stratakit/structures";
 import { definePage } from "~/~utils.tsx";
 

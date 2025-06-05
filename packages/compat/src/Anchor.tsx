@@ -4,7 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 
 import { Anchor as SkAnchor } from "@stratakit/bricks";
-// import windowPopoutIconHref from "@stratakit/icons/window-popout.svg";
+import windowPopoutIconHref from "@stratakit/icons/window-popout.svg";
 import * as React from "react";
 import { useCompatProps } from "./~utils.tsx";
 
@@ -26,12 +26,12 @@ export const Anchor = React.forwardRef((props, forwardedRef) => {
 		...rest
 	} = useCompatProps(props);
 	return (
-		<SkAnchor {...rest} ref={forwardedRef}>
+		<SkAnchor.Root {...rest} ref={forwardedRef}>
 			{props.children}
-			{/* {isExternal ? (
+			{isExternal ? (
 				<SkAnchor.Icon alt="External link" href={windowPopoutIconHref} />
-			) : null} */}
-		</SkAnchor>
+			) : null}
+		</SkAnchor.Root>
 	);
 }) as PolymorphicForwardRefComponent<"a", AnchorProps>;
 DEV: Anchor.displayName = "Anchor";

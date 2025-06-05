@@ -15,7 +15,7 @@ import type {
 	FocusableProps,
 } from "@stratakit/foundations/secret-internals";
 
-interface AnchorComponentProps extends FocusableProps<"a"> {
+interface AnchorRootProps extends FocusableProps<"a"> {
 	/** @default "neutral" */
 	tone?: "neutral" | "accent" | "critical";
 }
@@ -23,35 +23,49 @@ interface AnchorComponentProps extends FocusableProps<"a"> {
 /**
  * A styled anchor element, typically used for navigating to a different location.
  *
+ * Supports the convenience API and the composition API.
+ *
  * Example:
  * ```tsx
+ * import Anchor from "@stratakit/bricks/anchor"; // Convenience API
+ * import { Anchor as AnchorComposition } from "@stratakit/bricks"; // Composition API
+ *
  * <Anchor href="https://www.example.com">Example</Anchor>
+ * <AnchorComposition.Root href="https://www.example.com">Example</AnchorComposition.Root>
+ * ```
+ *
+ * Example of using icons:
+ * ```tsx
+ * import { Anchor } from "@stratakit/bricks";
+ * import windowPopoutIconHref from "@stratakit/icons/window-popout.svg";
+ *
+ * <Anchor.Root
+ *   href="https://www.example.com"
+ * >
+ *   Click here
+ *   <Anchor.Icon icon={windowPopoutIconHref} />
+ * </Anchor.Root>
  * ```
  *
  * Supports a `tone` prop to change the tone (color) of the anchor.
  */
-const AnchorComponent = forwardRef<"a", AnchorComponentProps>(
-	(props, forwardedRef) => {
-		const { tone = "neutral", ...rest } = props;
+const AnchorRoot = forwardRef<"a", AnchorRootProps>((props, forwardedRef) => {
+	const { tone = "neutral", ...rest } = props;
+	return (
+		<Role.a
+			{...rest}
+			data-kiwi-tone={tone}
+			className={cx("🥝-anchor", props.className)}
+			render={
+				<Focusable accessibleWhenDisabled render={props.render || <a />} />
+			}
+			ref={forwardedRef}
+		/>
+	);
+});
+DEV: AnchorRoot.displayName = "Anchor.Root";
 
-		return (
-			<Role.a
-				{...rest}
-				data-kiwi-tone={tone}
-				className={cx("🥝-anchor", props.className)}
-				render={
-					<Focusable accessibleWhenDisabled render={props.render || <a />} />
-				}
-				ref={forwardedRef}
-			>
-				{props.children}
-			</Role.a>
-		);
-	},
-);
-DEV: AnchorComponent.displayName = "Anchor";
-
-interface AnchorIconProps extends BaseProps<"svg"> {
+export interface AnchorIconProps extends BaseProps<"svg"> {
 	/**
 	 * Alternative text describing the icon.
 	 */
@@ -63,67 +77,39 @@ interface AnchorIconProps extends BaseProps<"svg"> {
 	icon?: string | React.JSX.Element | undefined;
 }
 
-export const AnchorIcon = forwardRef<"svg", AnchorIconProps>(
-	(props, forwardedRef) => {
-		const { alt, icon, ...rest } = props;
+/** Icon component for external links. */
+const AnchorIcon = forwardRef<"svg", AnchorIconProps>((props, forwardedRef) => {
+	const fallbackId = React.useId();
+	const { id = fallbackId, alt, icon, ...rest } = props;
 
-		return icon ? (
-			<Role
-				className="🥝-anchor-icon"
-				// id={decorationId} // TODO: What id to give? Do we even need it?
-				render={
-					React.isValidElement(icon) ? (
-						icon
-					) : typeof icon === "string" ? (
-						<Icon href={icon} ref={forwardedRef} {...rest} />
-					) : undefined
-				}
-				// TODO: Should we deconstruct rest here? Maybe no since the types don't work?
-			/>
-		) : null;
-
-		// <Icon
-		// 	alt={alt}
-		// 	render={icon}
-		// 	{...rest}
-		// 	className={cx("🥝-anchor-icon", props.className)}
-		// 	ref={forwardedRef}
-		// />
-		// );
-	},
-);
+	return icon ? (
+		<Role
+			className="🥝-anchor-icon"
+			id={id}
+			render={
+				React.isValidElement(icon) ? (
+					icon
+				) : typeof icon === "string" ? (
+					<Icon href={icon} ref={forwardedRef} {...rest} />
+				) : undefined
+			}
+		/>
+	) : null;
+});
 DEV: AnchorIcon.displayName = "Anchor.Icon";
 
-// /**
-//  * Displays an icon or multiple decorations of a `<Tree.Item>`.
-//  * @private
-//  */
-// function TreeItemDecoration() {
-// 	const decorationId = React.useContext(TreeItemDecorationIdContext);
-// 	const decorations = React.useContext(TreeItemDecorationsContext);
-// 	const icon = React.useContext(TreeItemIconContext);
-// 	return icon || decorations ? (
-// 		<Role
-// 			className="🥝-tree-item-decoration"
-// 			id={decorationId}
-// 			render={
-// 				React.isValidElement(icon) ? (
-// 					icon
-// 				) : typeof icon === "string" ? (
-// 					<Icon href={icon} />
-// 				) : undefined
-// 			}
-// 		>
-// 			{!icon ? decorations : null}
-// 		</Role>
-// 	) : null;
-// }
-// DEV: TreeItemDecoration.displayName = "TreeItemDecoration";
+/**
+ * A styled anchor element, typically used for navigating to a different location.
+ *
+ * Example:
+ * ```tsx
+ * <Anchor href="https://www.example.com">Example</Anchor>
+ * ```
+ *
+ * Supports a `tone` prop to change the tone (color) of the anchor.
+ */
+const Anchor = AnchorRoot;
+DEV: Anchor.displayName = "Anchor";
 
-export const Anchor = Object.assign(AnchorComponent, {
-	Root: AnchorComponent,
-	/**
-	 * Icon component for external links.
-	 */
-	Icon: AnchorIcon,
-});
+export default Anchor;
+export { AnchorRoot as Root, AnchorIcon as Icon };

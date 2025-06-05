@@ -16,6 +16,9 @@ export default definePage(function Page() {
 				External
 			</Anchor>
 			<Anchor as="button">Example (as button)</Anchor>
+			<Anchor as="button" isExternal>
+				Example (as button)
+			</Anchor>
 		</div>
 	);
 });

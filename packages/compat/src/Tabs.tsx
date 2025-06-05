@@ -67,26 +67,41 @@ const LegacyTabs = React.forwardRef((props, forwardedRef) => {
 		...rest
 	} = useCompatProps(props);
 
-	const tabValues = React.useMemo(() => {
-		return labels.map((label, index) => {
-			if (typeof label === "string") {
-				return `${index}-${label}`;
-			}
+	const { tabValues, uniqueValues } = React.useMemo(() => {
+		return labels.reduce(
+			(acc, label, index) => {
+				if (typeof label === "string") {
+					acc.tabValues.push(`${index}-${label}`);
+					return acc;
+				}
 
-			if (React.isValidElement<React.ComponentProps<typeof Tab>>(label)) {
-				// Re-use `id` prop, if available.
-				if (label.props.id) return label.props.id;
-				if (label.key) return `${index}-${label.key}`;
-			}
+				if (React.isValidElement<React.ComponentProps<typeof Tab>>(label)) {
+					// Re-use `id` prop, if available.
+					if (label.props.id) {
+						acc.tabValues.push(label.props.id);
+						acc.uniqueValues.push(label.props.id);
+						return acc;
+					}
 
-			return `${index}`;
-		});
+					if (label.key) {
+						acc.tabValues.push(`${index}-${label.key}`);
+						return acc;
+					}
+				}
+
+				acc.tabValues.push(`${index}`);
+				return acc;
+			},
+			{
+				tabValues: [] as string[],
+				uniqueValues: [] as string[],
+			},
+		);
 	}, [labels]);
 	const handleSetValue = React.useCallback<
 		NonNullable<WrapperProps["onValueChange"]>
 	>(
 		(newId) => {
-			console.log("handleSetValue", newId);
 			const indexOfTab =
 				typeof newId === "string" ? tabValues.indexOf(newId) : -1;
 			if (indexOfTab === -1) return;
@@ -104,28 +119,34 @@ const LegacyTabs = React.forwardRef((props, forwardedRef) => {
 	);
 
 	return (
-		<Wrapper
-			{...rest}
-			className={wrapperClassName}
-			onValueChange={setValue}
-			value={value}
-			color={color}
-			focusActivationMode={focusActivationMode}
-		>
-			<TabList className={tabsClassName} ref={forwardedRef}>
-				{labels.map((label, index) => {
-					const tabValue = tabValues[index];
-					return (
-						<LegacyTabContext.Provider key={tabValue} value={{ tabValue }}>
-							{typeof label === "string" ? <LegacyTab label={label} /> : label}
-						</LegacyTabContext.Provider>
-					);
-				})}
-			</TabList>
-			<Panel value={value} className={contentClassName}>
-				{children}
-			</Panel>
-		</Wrapper>
+		<UniqueValuesContext.Provider value={uniqueValues}>
+			<Wrapper
+				{...rest}
+				className={wrapperClassName}
+				onValueChange={setValue}
+				value={value}
+				color={color}
+				focusActivationMode={focusActivationMode}
+			>
+				<TabList className={tabsClassName} ref={forwardedRef}>
+					{labels.map((label, index) => {
+						const tabValue = tabValues[index];
+						return (
+							<LegacyTabContext.Provider key={tabValue} value={{ tabValue }}>
+								{typeof label === "string" ? (
+									<LegacyTab label={label} />
+								) : (
+									label
+								)}
+							</LegacyTabContext.Provider>
+						);
+					})}
+				</TabList>
+				<Panel value={value} className={contentClassName}>
+					{children}
+				</Panel>
+			</Wrapper>
+		</UniqueValuesContext.Provider>
 	);
 }) as PolymorphicForwardRefComponent<"div", LegacyTabsProps>;
 DEV: LegacyTabs.displayName = "Tabs";
@@ -152,6 +173,7 @@ interface LegacyTabProps
 /** @see https://itwinui.bentley.com/docs/tabs#legacy-api */
 const LegacyTab = React.forwardRef((props, forwardedRef) => {
 	const {
+		id,
 		label,
 		sublabel, // NOT IMPLEMENTED
 		startIcon, // NOT IMPLEMENTED
@@ -215,24 +237,32 @@ const Wrapper = React.forwardRef((props, forwardedRef) => {
 		type, // NOT IMPLEMENTED
 		...rest
 	} = useCompatProps(props);
+	const uniqueValues = React.useContext(UniqueValuesContext);
 	const wrapperId = React.useId();
 	const tone = color === "green" ? "accent" : undefined;
+
 	const defaultSelectedId = defaultValue
-		? toIdFromValue(defaultValue, wrapperId)
+		? toIdFromValue(defaultValue, wrapperId, uniqueValues)
 		: undefined;
-	const selectedId = value ? toIdFromValue(value, wrapperId) : undefined;
+	const selectedId = value
+		? toIdFromValue(value, wrapperId, uniqueValues)
+		: undefined;
 	const setSelectedId = React.useCallback<
 		NonNullable<SkTabsProps["setSelectedId"]>
 	>(
 		(newSelectedId) => {
 			if (!onValueChange || !newSelectedId) return;
 
-			const newSelectedValue = toValueFromId(newSelectedId, wrapperId);
+			const newSelectedValue = toValueFromId(
+				newSelectedId,
+				wrapperId,
+				uniqueValues,
+			);
 			if (!newSelectedValue) return;
 
 			onValueChange?.(newSelectedValue);
 		},
-		[onValueChange, wrapperId],
+		[onValueChange, wrapperId, uniqueValues],
 	);
 	return (
 		<SkTabs.Root
@@ -241,11 +271,11 @@ const Wrapper = React.forwardRef((props, forwardedRef) => {
 			selectOnMove={focusActivationMode === "manual" ? false : undefined}
 			setSelectedId={setSelectedId}
 		>
-			<TabsWrapperContext.Provider value={{ tone, wrapperId }}>
+			<WrapperContext.Provider value={{ tone, wrapperId }}>
 				<div {...rest} ref={forwardedRef}>
 					{children}
 				</div>
-			</TabsWrapperContext.Provider>
+			</WrapperContext.Provider>
 		</SkTabs.Root>
 	);
 }) as PolymorphicForwardRefComponent<"div", WrapperProps>;
@@ -253,7 +283,7 @@ DEV: Wrapper.displayName = "Tabs.Wrapper";
 
 // ----------------------------------------------------------------------------
 
-const TabsWrapperContext = React.createContext<
+const WrapperContext = React.createContext<
 	| {
 			tone: SkTabListProps["tone"];
 			wrapperId: string;
@@ -270,7 +300,7 @@ interface TabListProps extends Pick<IuiTabListProps, "children"> {}
 /** @see https://itwinui.bentley.com/docs/tabs#composition-api */
 const TabList = React.forwardRef((props, forwardedRef) => {
 	const { children, ...rest } = useCompatProps(props);
-	const { tone } = useSafeContext(TabsWrapperContext);
+	const { tone } = useSafeContext(WrapperContext);
 
 	return (
 		<SkTabs.TabList {...rest} tone={tone} ref={forwardedRef}>
@@ -295,8 +325,9 @@ const Tab = React.forwardRef((props, forwardedRef) => {
 		id: idProp, // ignored by iTwinUI
 		...rest
 	} = useCompatProps(props);
-	const { wrapperId } = useSafeContext(TabsWrapperContext);
-	const id = toIdFromValue(value, wrapperId);
+	const { wrapperId } = useSafeContext(WrapperContext);
+	const uniqueValues = React.useContext(UniqueValuesContext);
+	const id = toIdFromValue(value, wrapperId, uniqueValues);
 	return (
 		<SkTabs.Tab {...rest} id={id} ref={forwardedRef}>
 			{label ?? children}
@@ -319,8 +350,9 @@ const Panel = React.forwardRef((props, forwardedRef) => {
 		id, // ignored by iTwinUI
 		...rest
 	} = useCompatProps(props);
-	const { wrapperId } = useSafeContext(TabsWrapperContext);
-	const tabId = toIdFromValue(value, wrapperId);
+	const { wrapperId } = useSafeContext(WrapperContext);
+	const uniqueValues = React.useContext(UniqueValuesContext);
+	const tabId = toIdFromValue(value, wrapperId, uniqueValues);
 	return (
 		<SkTabs.TabPanel {...rest} tabId={tabId} ref={forwardedRef}>
 			{children}
@@ -389,14 +421,31 @@ const Tabs = Object.assign(LegacyTabs, {
 
 // ----------------------------------------------------------------------------
 
-function toIdFromValue(value: string, wrapperId: string) {
-	return `${wrapperId}-${value}`;
+function toIdFromValue(
+	value: string,
+	uniquePrefix: string,
+	uniqueValues: string[],
+) {
+	// If the value is unique, use as is.
+	if (uniqueValues.indexOf(value) !== -1) return value;
+
+	return `${uniquePrefix}-${value}`;
 }
 
-function toValueFromId(id: string, wrapperId: string) {
-	if (!id.startsWith(`${wrapperId}-`)) return undefined;
-	return id.slice(wrapperId.length + 1); // +1 for the hyphen
+function toValueFromId(
+	id: string,
+	uniquePrefix: string,
+	uniqueValues: string[],
+) {
+	// The unique value was not prefixed.
+	if (uniqueValues.indexOf(id) !== -1) return id;
+
+	if (!id.startsWith(`${uniquePrefix}-`)) return undefined;
+	return id.slice(uniquePrefix.length + 1); // +1 for the hyphen
 }
+
+// Values are mapped to unique IDs. This allows consumers to set custom IDs via `LegacyTab`.
+const UniqueValuesContext = React.createContext<string[]>([]);
 
 // ----------------------------------------------------------------------------
 

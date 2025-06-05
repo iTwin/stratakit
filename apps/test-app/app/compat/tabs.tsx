@@ -34,7 +34,7 @@ export default definePage(function Page() {
 				labels={[
 					<Tab key={1} label="Tab 1" />,
 					<Tab key={2} label="Tab 2" disabled />,
-					<Tab key={3} label="Tab3" id="legacy-tab-3" />,
+					<Tab key={3} label="Tab 3" id="legacy-tab-3" />,
 				]}
 			>
 				Legacy Tab
@@ -96,10 +96,14 @@ function Compositional() {
 		<Tabs.Wrapper>
 			<Tabs.TabList>
 				<Tabs.Tab value="1">Tab 1</Tabs.Tab>
-				<Tabs.Tab value="2">Tab 2</Tabs.Tab>
+				<Tabs.Tab value="2" disabled>
+					Tab 2
+				</Tabs.Tab>
+				<Tabs.Tab value="3">Tab 3</Tabs.Tab>
 			</Tabs.TabList>
 			<Tabs.Panel value="1">Compositional 1</Tabs.Panel>
 			<Tabs.Panel value="2">Compositional 2</Tabs.Panel>
+			<Tabs.Panel value="3">Compositional 3</Tabs.Panel>
 		</Tabs.Wrapper>
 	);
 }

@@ -60,77 +60,72 @@ const LegacyTabs = React.forwardRef((props, forwardedRef) => {
 		wrapperClassName,
 		children,
 		overflowOptions, // ignored by iTwinUI
+		defaultValue, // ignored by iTwinUI
+		defaultChecked, // ignored by iTwinUI
 		orientation, // NOT IMPLEMENTED
 		type, // NOT IMPLEMENTED
 		...rest
 	} = useCompatProps(props);
 
-	const id = React.useId();
-
-	const tabIds = React.useMemo(() => {
+	const tabValues = React.useMemo(() => {
 		return labels.map((label, index) => {
 			if (typeof label === "string") {
-				return `${id}-${index}-${label}`;
+				return `${index}-${label}`;
 			}
 
 			if (React.isValidElement<React.ComponentProps<typeof Tab>>(label)) {
 				// Re-use `id` prop, if available.
 				if (label.props.id) return label.props.id;
-				if (label.key) return `${id}-${index}-${label.key}`;
+				if (label.key) return `${index}-${label.key}`;
 			}
 
-			return `${id}-${index}`;
+			return `${index}`;
 		});
-	}, [labels, id]);
-	const handleSetSelectedId = React.useCallback(
-		(newId: SkTabsProps["selectedId"]) => {
-			const indexOfTab = typeof newId === "string" ? tabIds.indexOf(newId) : -1;
+	}, [labels]);
+	const handleSetValue = React.useCallback<
+		NonNullable<WrapperProps["onValueChange"]>
+	>(
+		(newId) => {
+			console.log("handleSetValue", newId);
+			const indexOfTab =
+				typeof newId === "string" ? tabValues.indexOf(newId) : -1;
 			if (indexOfTab === -1) return;
 			onTabSelected?.(indexOfTab);
 		},
-		[tabIds, onTabSelected],
+		[tabValues, onTabSelected],
 	);
 
-	const activeId = activeIndex === undefined ? undefined : tabIds[activeIndex];
-	const [selectedId, setSelectedId] = useControlledState<
-		SkTabsProps["selectedId"]
-	>(
-		undefined,
-		activeId,
-		handleSetSelectedId as React.Dispatch<
-			React.SetStateAction<SkTabsProps["selectedId"]>
-		>,
+	const activeValue =
+		activeIndex === undefined ? undefined : tabValues[activeIndex];
+	const [value, setValue] = useControlledState<string>(
+		"",
+		activeValue,
+		handleSetValue as React.Dispatch<React.SetStateAction<string>>,
 	);
+
 	return (
-		<SkTabs.Root
-			setSelectedId={setSelectedId}
-			selectedId={selectedId}
-			selectOnMove={toSelectOnMove(focusActivationMode)}
+		<Wrapper
+			{...rest}
+			className={wrapperClassName}
+			onValueChange={setValue}
+			value={value}
+			color={color}
+			focusActivationMode={focusActivationMode}
 		>
-			<div className={wrapperClassName} {...rest}>
-				<SkTabs.TabList
-					className={tabsClassName}
-					ref={forwardedRef}
-					tone={toTone(color)}
-				>
-					{labels.map((label, index) => {
-						const tabId = tabIds[index];
-						return (
-							<LegacyTabContext.Provider key={tabId} value={{ id: tabId }}>
-								{typeof label === "string" ? (
-									<LegacyTab label={label} />
-								) : (
-									label
-								)}
-							</LegacyTabContext.Provider>
-						);
-					})}
-				</SkTabs.TabList>
-				<SkTabs.TabPanel tabId={selectedId} className={contentClassName}>
-					{children}
-				</SkTabs.TabPanel>
-			</div>
-		</SkTabs.Root>
+			<TabList className={tabsClassName} ref={forwardedRef}>
+				{labels.map((label, index) => {
+					const tabValue = tabValues[index];
+					return (
+						<LegacyTabContext.Provider key={tabValue} value={{ tabValue }}>
+							{typeof label === "string" ? <LegacyTab label={label} /> : label}
+						</LegacyTabContext.Provider>
+					);
+				})}
+			</TabList>
+			<Panel value={value} className={contentClassName}>
+				{children}
+			</Panel>
+		</Wrapper>
 	);
 }) as PolymorphicForwardRefComponent<"div", LegacyTabsProps>;
 DEV: LegacyTabs.displayName = "Tabs";
@@ -162,15 +157,15 @@ const LegacyTab = React.forwardRef((props, forwardedRef) => {
 		startIcon, // NOT IMPLEMENTED
 		disabled,
 		children, // NOT IMPLEMENTED
-		value, // NOT IMPLEMENTED
+		value: valueProp, // NOT IMPLEMENTED
 		...rest
 	} = useCompatProps(props);
 
-	const { id } = useSafeContext(LegacyTabContext);
+	const { tabValue } = useSafeContext(LegacyTabContext);
 	return (
-		<SkTabs.Tab {...rest} id={id} disabled={disabled} ref={forwardedRef}>
+		<Tab {...rest} value={tabValue} disabled={disabled} ref={forwardedRef}>
 			{label}
-		</SkTabs.Tab>
+		</Tab>
 	);
 }) as PolymorphicForwardRefComponent<"button", LegacyTabProps>;
 DEV: LegacyTab.displayName = "Tab";
@@ -179,7 +174,7 @@ DEV: LegacyTab.displayName = "Tab";
 
 const LegacyTabContext = React.createContext<
 	| {
-			id: string;
+			tabValue: string;
 	  }
 	| undefined
 >(undefined);
@@ -221,7 +216,7 @@ const Wrapper = React.forwardRef((props, forwardedRef) => {
 		...rest
 	} = useCompatProps(props);
 	const wrapperId = React.useId();
-	const tone = toTone(color);
+	const tone = color === "green" ? "accent" : undefined;
 	const defaultSelectedId = defaultValue
 		? toIdFromValue(defaultValue, wrapperId)
 		: undefined;
@@ -243,7 +238,7 @@ const Wrapper = React.forwardRef((props, forwardedRef) => {
 		<SkTabs.Root
 			defaultSelectedId={defaultSelectedId}
 			selectedId={selectedId}
-			selectOnMove={toSelectOnMove(focusActivationMode)}
+			selectOnMove={focusActivationMode === "manual" ? false : undefined}
 			setSelectedId={setSelectedId}
 		>
 			<TabsWrapperContext.Provider value={{ tone, wrapperId }}>
@@ -393,16 +388,6 @@ const Tabs = Object.assign(LegacyTabs, {
 });
 
 // ----------------------------------------------------------------------------
-
-function toTone(color: IuiTabsLegacyProps["color"]): SkTabListProps["tone"] {
-	return color === "green" ? "accent" : undefined;
-}
-
-function toSelectOnMove(
-	focusActivationMode: IuiTabsLegacyProps["focusActivationMode"],
-): SkTabsProps["selectOnMove"] {
-	return focusActivationMode === "manual" ? false : undefined;
-}
 
 function toIdFromValue(value: string, wrapperId: string) {
 	return `${wrapperId}-${value}`;

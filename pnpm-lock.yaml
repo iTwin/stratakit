@@ -220,6 +220,9 @@ importers:
       "@stratakit/structures":
         specifier: ^0.2.1
         version: link:../structures
+      classnames:
+        specifier: ^2.5.1
+        version: 2.5.1
     devDependencies:
       "@stratakit/foundations":
         specifier: workspace:*

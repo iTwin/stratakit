@@ -76,7 +76,7 @@ const LABEL_MAP = {
 	],
 	[LABELS.ERROR_REGION]: ["packages/structures/src/ErrorRegion"],
 	[LABELS.FIELD]: ["packages/bricks/src/Field"],
-	[LABELS.ICON]: [],
+	[LABELS.ICON]: ["packages/foundations/src/Icon"],
 	[LABELS.ICON_BUTTON]: ["packages/bricks/src/IconButton"],
 	[LABELS.KBD]: ["packages/bricks/src/Kbd", "packages/compat/src/Kbd.tsx"],
 	[LABELS.LABEL]: [

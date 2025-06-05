@@ -114,7 +114,12 @@ const LABEL_MAP = {
 	[LABELS.GITHUB_ACTIONS]: [".github/workflows"],
 };
 
-export default async function prLabels(context, github) {
+/**
+ * @import {Context} from "@actions/github/lib/context"
+ * @import {GitHub} from "@actions/github/lib/utils"
+ * @param {{ context: Context, github: InstanceType<GitHub> }} args
+ */
+export default async function prLabels({ context, github }) {
 	const repo = context.repo.repo;
 	const owner = context.repo.owner;
 	const pr = context.payload.pull_request;
@@ -129,6 +134,8 @@ export default async function prLabels(context, github) {
 			repo: repo,
 			pull_number: prNumber,
 		});
+
+		console.log("debugging", repo, files);
 
 		// determine labels based on files changed
 		for (const file of files) {

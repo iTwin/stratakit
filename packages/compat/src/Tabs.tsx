@@ -175,8 +175,6 @@ const LegacyTab = React.forwardRef((props, forwardedRef) => {
 }) as PolymorphicForwardRefComponent<"button", LegacyTabProps>;
 DEV: LegacyTab.displayName = "Tab";
 
-export { LegacyTab as Tab };
-
 // ----------------------------------------------------------------------------
 
 const LegacyTabContext = React.createContext<
@@ -379,7 +377,7 @@ const Actions = React.forwardRef((_props, _forwardedRef) => {
 // ----------------------------------------------------------------------------
 
 /** @see https://itwinui.bentley.com/docs/tabs */
-export const Tabs = Object.assign(LegacyTabs, {
+const Tabs = Object.assign(LegacyTabs, {
 	Wrapper,
 	TabList,
 	Tab,
@@ -414,3 +412,7 @@ function toValueFromId(id: string, wrapperId: string) {
 	if (!id.startsWith(`${wrapperId}-`)) return undefined;
 	return id.slice(wrapperId.length + 1); // +1 for the hyphen
 }
+
+// ----------------------------------------------------------------------------
+
+export { LegacyTab as Tab, Tabs };

@@ -4,6 +4,9 @@
  *--------------------------------------------------------------------------------------------*/
 
 import { Anchor } from "@stratakit/bricks";
+import { Icon } from "@stratakit/foundations";
+import placeholderHref from "@stratakit/icons/placeholder.svg";
+import windowPopoutIconHref from "@stratakit/icons/window-popout.svg";
 import { definePage } from "~/~utils.tsx";
 
 export const handle = { title: "Anchor" };
@@ -48,12 +51,57 @@ function VisualTest() {
 							key={tone}
 							tone={tone}
 							href="https://example.com"
-							isExternal={true}
 							referrerPolicy="no-referrer"
 							target="_blank"
 						>
+							<Anchor.Icon
+								alt="External link"
+								icon={<Icon href={windowPopoutIconHref} />}
+							/>
 							External
+							<Anchor.Icon
+								alt="External link"
+								icon={<Icon href={windowPopoutIconHref} />}
+							/>
 						</Anchor>
+
+						{/* TODO: Testing */}
+						{/* TODO: Is Anchor.Root even needed since it even works with Anchor? i.e. We can just pass Anchor.Icon within the children of Anchor itself. Thus, no need for Anchor.Root? */}
+						<Anchor.Root
+							key={tone}
+							tone={tone}
+							href="https://example.com"
+							referrerPolicy="no-referrer"
+							target="_blank"
+						>
+							<Anchor.Icon
+								alt="External link"
+								icon={<Icon href={windowPopoutIconHref} />}
+							/>
+							External
+							<Anchor.Icon
+								alt="External link"
+								icon={<Icon href={windowPopoutIconHref} />}
+							/>
+						</Anchor.Root>
+
+						<Anchor.Root
+							key={tone}
+							tone={tone}
+							href="https://example.com"
+							referrerPolicy="no-referrer"
+							target="_blank"
+						>
+							<Anchor.Icon
+								alt="External link"
+								icon={<Icon href={placeholderHref} />}
+							/>
+							External
+							<Anchor.Icon
+								alt="External link"
+								icon={<Icon href={placeholderHref} />}
+							/>
+						</Anchor.Root>
 					</div>
 				);
 			})}

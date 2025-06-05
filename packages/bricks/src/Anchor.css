@@ -95,12 +95,21 @@
 }
 
 .🥝-anchor-icon {
+	--✨gap: 4px;
+
 	@layer base {
 		--🥝icon-color: currentColor;
 		--🥝icon-size: 1.5ch;
 		display: inline-block;
-		margin-inline-start: 4px;
 		vertical-align: middle;
+
+		&:where(:first-child) {
+			margin-inline-end: var(--✨gap);
+		}
+
+		&:where(:last-child) {
+			margin-inline-start: var(--✨gap);
+		}
 	}
 }
 

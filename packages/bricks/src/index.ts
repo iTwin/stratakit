@@ -4,7 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 "use client";
 
-export { Anchor } from "./Anchor.js";
+export * as Anchor from "./Anchor.js";
 export { Avatar } from "./Avatar.js";
 export { Badge } from "./Badge.js";
 export { Button } from "./Button.js";

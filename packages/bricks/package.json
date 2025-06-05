@@ -18,7 +18,12 @@
 			"development": "./dist/DEV/secret-internals.js",
 			"default": "./dist/secret-internals.js"
 		},
-		"./package.json": "./package.json"
+		"./package.json": "./package.json",
+		"./anchor": {
+			"default": "./dist/Anchor.js",
+			"types": "./dist/Anchor.d.ts",
+			"development": "./dist/DEV/Anchor.js"
+		}
 	},
 	"files": ["dist", "CHANGELOG.md", "LICENSE.md"],
 	"description": "Small, modular components for StrataKit",

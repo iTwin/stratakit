@@ -114,9 +114,7 @@ const LABEL_MAP = {
 	[LABELS.GITHUB_ACTIONS]: [".github/workflows"],
 };
 
-// @ts-check
-/** @param {import('@actions/github-script').AsyncFunctionArguments} AsyncFunctionArguments */
-export default async function prLabels({ context, github }) {
+export default async function prLabels(context, github) {
 	const repo = context.repo.repo;
 	const owner = context.repo.owner;
 	const pr = context.payload.pull_request;

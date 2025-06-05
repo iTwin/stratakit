@@ -17,7 +17,6 @@
 		"changeset:publish": "pnpm run build && pnpm run changeset publish"
 	},
 	"devDependencies": {
-		"@actions/github-script": "github:actions/github-script",
 		"@biomejs/biome": "1.9.4",
 		"@playwright/test": "catalog:",
 		"@types/node": "catalog:",

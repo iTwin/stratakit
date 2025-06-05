@@ -135,8 +135,6 @@ export default async function prLabels({ context, github }) {
 			pull_number: prNumber,
 		});
 
-		console.log("debugging", repo, files);
-
 		// determine labels based on files changed
 		for (const file of files) {
 			const fileName = file.filename;

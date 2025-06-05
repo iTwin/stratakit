@@ -12,6 +12,11 @@ const MILESTONE_MAP = {
 	[MILESTONES.API_BRIDGE]: "packages/compat/",
 };
 
+/**
+ * @import {Context} from "@actions/github/lib/context"
+ * @import {GitHub} from "@actions/github/lib/utils"
+ * @param {{ context: Context, github: InstanceType<GitHub> }} args
+ */
 export default async function prMilestone({ context, github }) {
 	const repo = context.repo.repo;
 	const owner = context.repo.owner;

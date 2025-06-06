@@ -39,7 +39,6 @@
 				"noConfusingLabels": "off"
 			},
 			"a11y": "off",
-			"nursery": {},
 			"style": {
 				"noDescendingSpecificity": "off",
 				"noRestrictedImports": {

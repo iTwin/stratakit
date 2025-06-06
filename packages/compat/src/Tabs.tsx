@@ -271,7 +271,9 @@ const Wrapper = React.forwardRef((props, forwardedRef) => {
 			selectOnMove={focusActivationMode === "manual" ? false : undefined}
 			setSelectedId={setSelectedId}
 		>
-			<WrapperContext.Provider value={{ tone, wrapperId }}>
+			<WrapperContext.Provider
+				value={React.useMemo(() => ({ tone, wrapperId }), [tone, wrapperId])}
+			>
 				<div {...rest} ref={forwardedRef}>
 					{children}
 				</div>

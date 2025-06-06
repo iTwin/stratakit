@@ -3,7 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 const LABELS = {
-	ACCORDION: "component: Accordion",
+	ACCORDION: "component: AccordionItem",
 	ANCHOR: "component: Anchor",
 	AVATAR: "component: Avatar",
 	BADGE: "component: Badge",

@@ -171,11 +171,7 @@ function Tokens({
 	);
 }
 
-function TypographyVariants({
-	variants,
-}: {
-	variants: readonly string[];
-}) {
+function TypographyVariants({ variants }: { variants: readonly string[] }) {
 	return (
 		<Table.HtmlTable>
 			<Table.Header>

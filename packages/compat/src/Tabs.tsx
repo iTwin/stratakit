@@ -79,7 +79,7 @@ const LegacyTabs = React.forwardRef((props, forwardedRef) => {
 					// Re-use `id` prop, if available.
 					if (label.props.id) {
 						acc.tabValues.push(label.props.id);
-						acc.uniqueValues.push(label.props.id);
+						acc.uniqueValues.add(label.props.id);
 						return acc;
 					}
 
@@ -94,7 +94,7 @@ const LegacyTabs = React.forwardRef((props, forwardedRef) => {
 			},
 			{
 				tabValues: [] as string[],
-				uniqueValues: [] as string[],
+				uniqueValues: new Set<string>(),
 			},
 		);
 	}, [labels]);
@@ -424,10 +424,10 @@ const Tabs = Object.assign(LegacyTabs, {
 function toIdFromValue(
 	value: string,
 	uniquePrefix: string,
-	uniqueValues: string[],
+	uniqueValues: Set<string>,
 ) {
 	// If the value is unique, use as is.
-	if (uniqueValues.indexOf(value) !== -1) return value;
+	if (uniqueValues.has(value)) return value;
 
 	return `${uniquePrefix}-${value}`;
 }
@@ -435,17 +435,17 @@ function toIdFromValue(
 function toValueFromId(
 	id: string,
 	uniquePrefix: string,
-	uniqueValues: string[],
+	uniqueValues: Set<string>,
 ) {
 	// The unique value was not prefixed.
-	if (uniqueValues.indexOf(id) !== -1) return id;
+	if (uniqueValues.has(id)) return id;
 
 	if (!id.startsWith(`${uniquePrefix}-`)) return undefined;
 	return id.slice(uniquePrefix.length + 1); // +1 for the hyphen
 }
 
 // Values are mapped to unique IDs. This allows consumers to set custom IDs via `LegacyTab`.
-const UniqueValuesContext = React.createContext<string[]>([]);
+const UniqueValuesContext = React.createContext(new Set<string>());
 
 // ----------------------------------------------------------------------------
 

@@ -8,6 +8,7 @@
 		"clientKind": "git",
 		"useIgnoreFile": true
 	},
+	"formatter": { "expand": "auto" },
 	"css": {
 		"formatter": {
 			"lineWidth": 100
@@ -26,26 +27,21 @@
 	"linter": {
 		"rules": {
 			"correctness": {
+				"noUnusedFunctionParameters": "off",
+				"noUnusedVariables": "off",
 				"noUnknownProperty": "off",
 				"noUnusedImports": "info",
 				"noUnusedLabels": "off"
 			},
 			"suspicious": {
+				"noDuplicateCustomProperties": "off",
+				"noDuplicateProperties": "off",
 				"noConfusingLabels": "off"
 			},
 			"a11y": "off",
 			"nursery": {},
 			"style": {
-				"noParameterAssign": "error",
-				"useAsConstAssertion": "error",
-				"useDefaultParameterLast": "error",
-				"useEnumInitializers": "error",
-				"useSelfClosingElements": "error",
-				"useSingleVarDeclarator": "error",
-				"noUnusedTemplateLiteral": "error",
-				"useNumberNamespace": "error",
-				"noInferrableTypes": "error",
-				"noUselessElse": "error",
+				"noDescendingSpecificity": "off",
 				"noRestrictedImports": {
 					"level": "warn",
 					"options": {

@@ -8,6 +8,7 @@ import {
 	useSafeContext,
 } from "@stratakit/foundations/secret-internals";
 import { Tabs as SkTabs } from "@stratakit/structures";
+import cx from "classnames";
 import * as React from "react";
 import { useCompatProps } from "./~utils.tsx";
 
@@ -122,7 +123,7 @@ const LegacyTabs = React.forwardRef((props, forwardedRef) => {
 		<UniqueValuesContext.Provider value={uniqueValues}>
 			<Wrapper
 				{...rest}
-				className={wrapperClassName}
+				className={cx(wrapperClassName, props.className)}
 				onValueChange={setValue}
 				value={value}
 				color={color}

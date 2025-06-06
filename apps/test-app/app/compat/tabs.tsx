@@ -21,7 +21,7 @@ export default definePage(function Page() {
 			</Tabs>
 			<Tabs
 				labels={["Tab 1", "Tab 2"]}
-				wrapperClassName="wrapperClassName" // this is overridden by className
+				wrapperClassName="wrapperClassName"
 				className="className"
 				tabsClassName="tabsClassName"
 				contentClassName="contentClassName"

@@ -3,7 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 const LABELS = {
-	ACCORDION: "component: Accordion",
+	ACCORDION: "component: AccordionItem",
 	ANCHOR: "component: Anchor",
 	AVATAR: "component: Avatar",
 	BADGE: "component: Badge",
@@ -95,7 +95,7 @@ const LABEL_MAP = {
 		"packages/bricks/src/Field",
 		"packages/compat/src/InputGrid.tsx",
 	],
-	[LABELS.ICON]: [],
+	[LABELS.ICON]: ["packages/foundations/src/Icon"],
 	[LABELS.ICON_BUTTON]: ["packages/bricks/src/IconButton"],
 	[LABELS.KBD]: ["packages/bricks/src/Kbd", "packages/compat/src/Kbd.tsx"],
 	[LABELS.LABEL]: [

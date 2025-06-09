@@ -17,7 +17,7 @@
 		"changeset:publish": "pnpm run build && pnpm run changeset publish"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "2.0.0-beta.5",
+		"@biomejs/biome": "2.0.0-beta.6",
 		"@playwright/test": "catalog:",
 		"@types/node": "catalog:",
 		"colorjs.io": "^0.5.2",

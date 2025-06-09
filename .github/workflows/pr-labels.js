@@ -47,14 +47,26 @@ const LABELS = {
 };
 
 const LABEL_MAP = {
-	[LABELS.ACCORDION]: ["packages/structures/src/AccordionItem"],
+	[LABELS.ACCORDION]: [
+		"packages/structures/src/AccordionItem",
+		"packages/compat/src/ExpandableBlock.tsx",
+	],
 	[LABELS.ANCHOR]: [
 		"packages/bricks/src/Anchor",
 		"packages/compat/src/Anchor.tsx",
 	],
-	[LABELS.AVATAR]: ["packages/bricks/src/Avatar"],
-	[LABELS.BADGE]: ["packages/bricks/src/Badge"],
-	[LABELS.BANNER]: ["packages/structures/src/Banner"],
+	[LABELS.AVATAR]: [
+		"packages/bricks/src/Avatar",
+		"packages/compat/src/Avatar.tsx",
+	],
+	[LABELS.BADGE]: [
+		"packages/bricks/src/Badge",
+		"packages/compat/src/Badge.tsx",
+	],
+	[LABELS.BANNER]: [
+		"packages/structures/src/Banner",
+		"packages/compat/src/Alert.tsx",
+	],
 	[LABELS.BREADCRUMB]: [],
 	[LABELS.BUTTON]: ["packages/bricks/src/Button"],
 	[LABELS.CARD]: [],
@@ -62,7 +74,10 @@ const LABEL_MAP = {
 		"packages/bricks/src/Checkbox",
 		"packages/compat/src/Checkbox.tsx",
 	],
-	[LABELS.CHIP]: ["packages/structures/src/Chip"],
+	[LABELS.CHIP]: [
+		"packages/structures/src/Chip",
+		"packages/compat/src/Tag.tsx",
+	],
 	[LABELS.CODE_SNIPPET]: [],
 	[LABELS.DESCRIPTION]: ["packages/bricks/src/Description"],
 	[LABELS.DIALOG]: [],
@@ -73,9 +88,13 @@ const LABEL_MAP = {
 	[LABELS.DROPDOWN_MENU]: [
 		"packages/structures/src/DropdownMenu",
 		"packages/compat/src/MenuItem.tsx",
+		"packages/compat/src/DropdownMenu.tsx",
 	],
 	[LABELS.ERROR_REGION]: ["packages/structures/src/ErrorRegion"],
-	[LABELS.FIELD]: ["packages/bricks/src/Field"],
+	[LABELS.FIELD]: [
+		"packages/bricks/src/Field",
+		"packages/compat/src/InputGrid.tsx",
+	],
 	[LABELS.ICON]: [],
 	[LABELS.ICON_BUTTON]: ["packages/bricks/src/IconButton"],
 	[LABELS.KBD]: ["packages/bricks/src/Kbd", "packages/compat/src/Kbd.tsx"],
@@ -91,15 +110,34 @@ const LABEL_MAP = {
 		"packages/bricks/src/ProgressBar",
 		"packages/compat/src/ProgressLinear.tsx",
 	],
-	[LABELS.RADIO]: ["packages/bricks/src/Radio"],
-	[LABELS.SELECT]: ["packages/bricks/src/Select"],
+	[LABELS.RADIO]: [
+		"packages/bricks/src/Radio",
+		"packages/compat/src/Radio.tsx",
+	],
+	[LABELS.SELECT]: [
+		"packages/bricks/src/Select",
+		"packages/compat/src/Select.tsx",
+	],
 	[LABELS.SKELETON]: ["packages/bricks/src/Skeleton"],
-	[LABELS.SPINNER]: ["packages/bricks/src/Spinner"],
-	[LABELS.SWITCH]: ["packages/bricks/src/Switch"],
+	[LABELS.SPINNER]: [
+		"packages/bricks/src/Spinner",
+		"packages/compat/src/ProgressRadial.tsx",
+	],
+	[LABELS.SWITCH]: [
+		"packages/bricks/src/Switch",
+		"packages/compat/src/ToggleSwitch.tsx",
+	],
 	[LABELS.TABLE]: ["packages/structures/src/Table"],
-	[LABELS.TABS]: ["packages/structures/src/Tabs"],
+	[LABELS.TABS]: [
+		"packages/structures/src/Tabs",
+		"packages/compat/src/Tabs.tsx",
+	],
 	[LABELS.TEXT]: ["packages/bricks/src/Text", "packages/compat/src/Text.tsx"],
-	[LABELS.TEXT_BOX]: ["packages/bricks/src/TextBox"],
+	[LABELS.TEXT_BOX]: [
+		"packages/bricks/src/TextBox",
+		"packages/compat/src/Input.tsx",
+		"packages/compat/src/LabeledInput.tsx",
+	],
 	[LABELS.TOAST]: [],
 	[LABELS.TOOLBAR]: ["packages/structures/src/Toolbar"],
 	[LABELS.TOOLTIP]: [

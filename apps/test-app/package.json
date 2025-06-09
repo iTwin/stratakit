@@ -53,8 +53,15 @@
 				"../../packages/structures:build",
 				"../../packages/icons:build"
 			],
-			"files": ["app", "vite.config.ts", "react-router.config.ts"],
-			"output": ["build", ".react-router"],
+			"files": [
+				"app",
+				"vite.config.ts",
+				"react-router.config.ts"
+			],
+			"output": [
+				"build",
+				".react-router"
+			],
 			"env": {
 				"NODE_ENV": "production"
 			}
@@ -71,19 +78,34 @@
 		},
 		"preview": {
 			"command": "pnpx serve build/client -L -p 1800",
-			"dependencies": ["build"],
+			"dependencies": [
+				"build"
+			],
 			"service": true
 		},
 		"test": {
 			"command": "tsx ./scripts/run-tests.ts pnpm exec playwright test",
-			"dependencies": ["build", "typecheck"],
-			"files": ["app", "playwright.config.ts"],
-			"output": ["test-results"]
+			"dependencies": [
+				"build",
+				"typecheck"
+			],
+			"files": [
+				"app",
+				"playwright.config.ts"
+			],
+			"output": [
+				"test-results"
+			]
 		},
 		"typecheck": {
 			"command": "react-router typegen && tsc -p tsconfig.build.json",
-			"dependencies": ["build"],
-			"files": ["app", "tsconfig.build.json"],
+			"dependencies": [
+				"build"
+			],
+			"files": [
+				"app",
+				"tsconfig.build.json"
+			],
 			"output": []
 		}
 	}

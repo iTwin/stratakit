@@ -8,7 +8,6 @@
 		"clientKind": "git",
 		"useIgnoreFile": true
 	},
-	"formatter": { "expand": "auto" },
 	"css": {
 		"formatter": {
 			"lineWidth": 100

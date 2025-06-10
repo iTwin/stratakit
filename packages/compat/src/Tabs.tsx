@@ -48,7 +48,7 @@ interface TabsProps
 /** @see https://itwinui.bentley.com/docs/tabs */
 export const Tabs = React.forwardRef((props, forwardedRef) => {
 	const {
-		// biome-ignore lint/correctness/noUnusedVariables: <NOT IMPLEMENTED>
+		// biome-ignore-start lint/correctness/noUnusedVariables: <NOT IMPLEMENTED>
 		actions, // NOT IMPLEMENTED
 		labels,
 		onTabSelected,
@@ -59,12 +59,10 @@ export const Tabs = React.forwardRef((props, forwardedRef) => {
 		contentClassName,
 		wrapperClassName,
 		children,
-		// biome-ignore lint/correctness/noUnusedVariables: <NOT IMPLEMENTED>
 		overflowOptions, // ignored by iTwinUI
-		// biome-ignore lint/correctness/noUnusedVariables: <NOT IMPLEMENTED>
 		orientation, // NOT IMPLEMENTED
-		// biome-ignore lint/correctness/noUnusedVariables: <NOT IMPLEMENTED>
 		type, // NOT IMPLEMENTED
+		// biome-ignore-end lint/correctness/noUnusedVariables: <NOT IMPLEMENTED>
 		...rest
 	} = useCompatProps(props);
 

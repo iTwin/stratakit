@@ -4,7 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 
 import type { Tag as IuiTag } from "@itwin/itwinui-react";
-import { Chip } from "@stratakit/structures";
+import * as Chip from "@stratakit/structures/chip";
 import * as React from "react";
 import type { PolymorphicForwardRefComponent } from "./~utils.tsx";
 import { useCompatProps } from "./~utils.tsx";
@@ -20,55 +20,43 @@ interface TagProps
 		| "removeButtonProps"
 		| "variant"
 		| "labelProps"
-	> {
-	/**
-	 * PARTIALLY IMPLEMENTED.
-	 *
-	 * Tag is not rendered as a `button`, since it is not an interactive component.
-	 */
-	onClick?: IuiTagProps["onClick"];
-	/**
-	 * PARTIALLY IMPLEMENTED.
-	 *
-	 * Tag label is not rendered as a `button`.
-	 */
-	onRemove?: IuiTagProps["onRemove"];
-	/** NOT IMPLEMENTED. */
-	removeButtonProps?: IuiTagProps["removeButtonProps"];
-	/** NOT IMPLEMENTED. */
-	variant?: IuiTagProps["variant"];
-	/** NOT IMPLEMENTED. */
-	labelProps?: IuiTagProps["labelProps"];
-}
+	> {}
 
 /** @see https://itwinui.bentley.com/docs/tag */
 export const Tag = React.forwardRef((props, forwardedRef) => {
 	const {
-		render = <span />,
+		render: renderProp,
+		onClick,
 		children,
 		onRemove,
-		removeButtonProps, // NOT IMPLEMENTED
-		variant, // NOT IMPLEMENTED
-		labelProps, // NOT IMPLEMENTED
+		removeButtonProps,
+		variant: variantProp,
+		labelProps,
 		...rest
 	} = useCompatProps(props);
 
-	const onDismiss = React.useMemo(() => {
-		if (!onRemove) return undefined;
-		// Workaround that relies on the internal implementation of the `Chip` component, until composition API is implemented.
-		return (event?: React.MouseEvent) => {
-			if (!event) return;
-			onRemove(event);
-		};
-	}, [onRemove]);
+	const labelButton = !!onClick && !!onRemove;
+	const tagButton = !labelButton && !!onClick;
+	const render = renderProp ?? (tagButton ? <button /> : <span />);
 	return (
-		<Chip
+		<Chip.Root
 			{...rest}
-			label={children}
-			onDismiss={onDismiss}
+			onClick={tagButton ? onClick : undefined}
+			variant={variantProp === "basic" ? "outline" : undefined}
 			render={render}
 			ref={forwardedRef}
-		/>
+		>
+			<Chip.Label
+				onClick={labelButton ? onClick : undefined}
+				{...labelProps}
+				render={labelButton ? <button /> : undefined}
+			>
+				{children}
+			</Chip.Label>
+			{onRemove && (
+				<Chip.DismissButton onClick={onRemove} {...removeButtonProps} />
+			)}
+		</Chip.Root>
 	);
 }) as PolymorphicForwardRefComponent<"span", TagProps>;
 DEV: Tag.displayName = "Tag";

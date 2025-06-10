@@ -14,9 +14,10 @@
 		},
 		"./package.json": "./package.json",
 		"./chip": {
-			"default": "./dist/Chip.js",
+			"@stratakit/source": "./src/Chip.ts",
 			"types": "./dist/Chip.d.ts",
-			"development": "./dist/DEV/Chip.js"
+			"development": "./dist/DEV/Chip.js",
+			"default": "./dist/Chip.js"
 		}
 	},
 	"files": ["dist", "CHANGELOG.md", "LICENSE.md"],

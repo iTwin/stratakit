@@ -12,8 +12,19 @@ export default definePage(function Page() {
 	return (
 		<div style={{ display: "flex", gap: 4 }}>
 			<Tag>Simple tag</Tag>
-			<Tag onClick={(e) => console.log(e)}>Tag with onClick</Tag>
-			<Tag onRemove={(e) => console.log(e)}>Tag with onRemove</Tag>
+			<Tag variant="basic">Basic tag</Tag>
+			<Tag onClick={(e) => console.log("onClick", e)}>With onClick</Tag>
+			<Tag onRemove={(e) => console.log("onRemove", e)}>With onRemove</Tag>
+			<Tag
+				onClick={(e) => console.log("onClick", e)}
+				labelProps={{
+					className: "my-label",
+				}}
+				onRemove={(e) => console.log("onRemove", e)}
+				removeButtonProps={{ className: "my-dismiss" }}
+			>
+				With onClick and onRemove
+			</Tag>
 		</div>
 	);
 });

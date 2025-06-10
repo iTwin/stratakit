@@ -157,13 +157,13 @@ export const Tab = React.forwardRef((props, forwardedRef) => {
 	const {
 		label,
 
-		// biome-ignore-start lint/correctness/noUnusedVariables: <NOT IMPLEMENTED>
-		sublabel, // NOT IMPLEMENTED
-		startIcon, // NOT IMPLEMENTED
+		// biome-ignore-start lint/correctness/noUnusedVariables: NOT IMPLEMENTED
+		sublabel,
+		startIcon,
 		disabled,
-		children, // NOT IMPLEMENTED
-		value, // NOT IMPLEMENTED
-		// biome-ignore-end lint/correctness/noUnusedVariables: <NOT IMPLEMENTED>
+		children,
+		value,
+		// biome-ignore-end lint/correctness/noUnusedVariables: NOT IMPLEMENTED
 
 		...rest
 	} = useCompatProps(props);

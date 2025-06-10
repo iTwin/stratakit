@@ -28,12 +28,12 @@ interface InputProps
 /** @see https://itwinui.bentley.com/docs/input */
 export const Input = React.forwardRef((props, forwardedRef) => {
 	const {
-		// biome-ignore-start lint/correctness/noUnusedVariables: <NOT IMPLEMENTED>
-		children, // NOT IMPLEMENTED
+		// biome-ignore-start lint/correctness/noUnusedVariables: NOT IMPLEMENTED
+		children,
 		htmlSize,
-		size, // NOT IMPLEMENTED
-		status, // NOT IMPLEMENTED
-		// biome-ignore-end lint/correctness/noUnusedVariables: <NOT IMPLEMENTED>
+		size,
+		status,
+		// biome-ignore-end lint/correctness/noUnusedVariables: NOT IMPLEMENTED
 
 		type: inputType,
 		...rest

@@ -40,12 +40,12 @@ export const Checkbox = React.forwardRef((props, forwardedRef) => {
 		wrapperProps,
 		labelProps,
 
-		// biome-ignore-start lint/correctness/noUnusedVariables: <NOT IMPLEMENTED>
-		indeterminate, // NOT IMPLEMENTED
-		status, // NOT IMPLEMENTED
-		variant, // NOT IMPLEMENTED
-		isLoading, // NOT IMPLEMENTED
-		// biome-ignore-end lint/correctness/noUnusedVariables: <NOT IMPLEMENTED>
+		// biome-ignore-start lint/correctness/noUnusedVariables: NOT IMPLEMENTED
+		indeterminate,
+		status,
+		variant,
+		isLoading,
+		// biome-ignore-end lint/correctness/noUnusedVariables: NOT IMPLEMENTED
 
 		...rest
 	} = useCompatProps(props);

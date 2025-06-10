@@ -31,12 +31,12 @@ interface ProgressRadialProps
 /** @see https://itwinui.bentley.com/docs/progressindicator */
 export const ProgressRadial = React.forwardRef((props, forwardedRef) => {
 	const {
-		// biome-ignore-start lint/correctness/noUnusedVariables: <NOT IMPLEMENTED>
-		value, // NOT IMPLEMENTED
-		indeterminate, // NOT IMPLEMENTED
-		status, // NOT IMPLEMENTED
-		children, // NOT IMPLEMENTED
-		// biome-ignore-end lint/correctness/noUnusedVariables: <NOT IMPLEMENTED>
+		// biome-ignore-start lint/correctness/noUnusedVariables: NOT IMPLEMENTED
+		value,
+		indeterminate,
+		status,
+		children,
+		// biome-ignore-end lint/correctness/noUnusedVariables: NOT IMPLEMENTED
 
 		size: sizeProp,
 		...rest

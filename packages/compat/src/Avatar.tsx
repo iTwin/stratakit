@@ -3,6 +3,8 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
+/** biome-ignore-all lint/correctness/noUnusedVariables: <not all variables are implemented> */
+
 import { Avatar as SkAvatar } from "@stratakit/bricks";
 import * as React from "react";
 import { useCompatProps } from "./~utils.tsx";

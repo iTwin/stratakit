@@ -58,7 +58,7 @@ interface AvatarProps extends BaseProps<"span"> {
  * ```
  */
 export const Avatar = forwardRef<"span", AvatarProps>((props, forwardedRef) => {
-	const { size = "medium", initials, alt, image, children, ...rest } = props;
+	const { size = "medium", initials, alt, image, ...rest } = props;
 
 	const isDecorative = !alt;
 

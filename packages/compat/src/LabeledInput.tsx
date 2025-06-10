@@ -2,6 +2,9 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
+
+/** biome-ignore-all lint/correctness/noUnusedVariables: <not all variables are implemented> */
+
 import { Field, TextBox } from "@stratakit/bricks";
 import * as React from "react";
 import { useCompatProps } from "./~utils.tsx";

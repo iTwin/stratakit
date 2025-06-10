@@ -17,7 +17,7 @@ import { Dismiss } from "./~utils.icons.js";
 // ----------------------------------------------------------------------------
 
 const ChipRootContext = React.createContext<
-	{ labelId: string; dismissIconId: string } | undefined
+	{ labelId: string; setLabelId: (id: string) => void } | undefined
 >(undefined);
 
 // ----------------------------------------------------------------------------
@@ -35,16 +35,11 @@ interface ChipRootProps extends BaseProps<"div"> {
 const ChipRoot = forwardRef<"div", ChipRootProps>((props, forwardedRef) => {
 	const { variant = "solid", ...rest } = props;
 
-	const baseId = React.useId();
-	const labelId = `${baseId}-label`;
-	const dismissIconId = `${baseId}-dismiss`;
+	const [labelId, setLabelId] = React.useState("");
 
 	return (
 		<ChipRootContext.Provider
-			value={React.useMemo(
-				() => ({ labelId, dismissIconId }),
-				[labelId, dismissIconId],
-			)}
+			value={React.useMemo(() => ({ labelId, setLabelId }), [labelId])}
 		>
 			<Role.div
 				data-kiwi-variant={variant}
@@ -62,8 +57,15 @@ DEV: ChipRoot.displayName = "Chip.Root";
 interface ChipLabelProps extends BaseProps<"span"> {}
 
 const ChipLabel = forwardRef<"span", ChipLabelProps>((props, forwardedRef) => {
-	const { labelId } = useSafeContext(ChipRootContext);
-	return <Role.span id={labelId} {...props} ref={forwardedRef} />;
+	const { setLabelId } = useSafeContext(ChipRootContext);
+
+	const newId = React.useId();
+	const id = props.id ?? newId;
+	React.useEffect(() => {
+		setLabelId(id);
+	}, [setLabelId, id]);
+
+	return <Role.span {...props} id={id} ref={forwardedRef} />;
 });
 DEV: ChipLabel.displayName = "Chip.Label";
 
@@ -74,11 +76,14 @@ interface ChipDismissButtonProps
 
 const ChipDismissButton = forwardRef<"button", ChipDismissButtonProps>(
 	(props, forwardedRef) => {
-		const { dismissIconId, labelId } = useSafeContext(ChipRootContext);
+		const { labelId } = useSafeContext(ChipRootContext);
+
+		const newId = React.useId();
+		const id = props.id ?? newId;
 		return (
 			<IconButton
-				id={dismissIconId}
-				aria-labelledby={`${dismissIconId} ${labelId}`}
+				id={id}
+				aria-labelledby={`${id} ${labelId}`}
 				{...props}
 				className={cx("🥝-chip-dismiss-button", props.className)}
 				variant="ghost"

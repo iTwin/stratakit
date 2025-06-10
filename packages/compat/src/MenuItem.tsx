@@ -57,6 +57,7 @@ export const MenuItem = React.forwardRef((props, forwardedRef) => {
 		icon,
 		startIcon = icon,
 		disabled,
+
 		// biome-ignore-start lint/correctness/noUnusedVariables: <NOT IMPLEMENTED>
 		endIcon, // NOT IMPLEMENTED
 		value, // NOT IMPLEMENTED
@@ -67,6 +68,7 @@ export const MenuItem = React.forwardRef((props, forwardedRef) => {
 		size, // NOT IMPLEMENTED
 		badge, // NOT IMPLEMENTED
 		// biome-ignore-end lint/correctness/noUnusedVariables: <NOT IMPLEMENTED>
+
 		...rest
 	} = useCompatProps(props);
 

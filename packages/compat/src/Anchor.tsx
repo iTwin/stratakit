@@ -26,6 +26,7 @@ export const Anchor = React.forwardRef((props, forwardedRef) => {
 		underline, // NOT IMPLEMENTED
 		isExternal, // NOT IMPLEMENTED
 		// biome-ignore-end lint/correctness/noUnusedVariables: <NOT IMPLEMENTED>
+
 		...rest
 	} = useCompatProps(props);
 	return <SkAnchor {...rest} ref={forwardedRef} />;

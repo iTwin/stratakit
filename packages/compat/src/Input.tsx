@@ -34,6 +34,7 @@ export const Input = React.forwardRef((props, forwardedRef) => {
 		size, // NOT IMPLEMENTED
 		status, // NOT IMPLEMENTED
 		// biome-ignore-end lint/correctness/noUnusedVariables: <NOT IMPLEMENTED>
+
 		type: inputType,
 		...rest
 	} = useCompatProps(props);

@@ -30,6 +30,7 @@ export const Label = React.forwardRef((props, forwardedRef) => {
 		disabled, // NOT IMPLEMENTED
 		required, // NOT IMPLEMENTED
 		// biome-ignore-end lint/correctness/noUnusedVariables: <NOT IMPLEMENTED>
+
 		...rest
 	} = useCompatProps(props);
 	return <SkLabel {...rest} ref={forwardedRef} />;

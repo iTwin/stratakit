@@ -37,6 +37,7 @@ export const ProgressRadial = React.forwardRef((props, forwardedRef) => {
 		status, // NOT IMPLEMENTED
 		children, // NOT IMPLEMENTED
 		// biome-ignore-end lint/correctness/noUnusedVariables: <NOT IMPLEMENTED>
+
 		size: sizeProp,
 		...rest
 	} = useCompatProps(props);

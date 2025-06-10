@@ -47,11 +47,13 @@ export const ProgressLinear = React.forwardRef((props, forwardedRef) => {
 		value,
 		indeterminate,
 		labels,
+
 		// biome-ignore-start lint/correctness/noUnusedVariables: <NOT IMPLEMENTED>
 		isAnimated, // NO-OP
 		status, // NOT IMPLEMENTED
 		labelGroupProps, // NOT IMPLEMENTED
 		// biome-ignore-end lint/correctness/noUnusedVariables: <NOT IMPLEMENTED>
+
 		...rest
 	} = useCompatProps(props);
 

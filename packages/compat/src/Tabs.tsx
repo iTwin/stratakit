@@ -63,6 +63,7 @@ export const Tabs = React.forwardRef((props, forwardedRef) => {
 		orientation, // NOT IMPLEMENTED
 		type, // NOT IMPLEMENTED
 		// biome-ignore-end lint/correctness/noUnusedVariables: <NOT IMPLEMENTED>
+
 		...rest
 	} = useCompatProps(props);
 
@@ -155,6 +156,7 @@ interface TabProps
 export const Tab = React.forwardRef((props, forwardedRef) => {
 	const {
 		label,
+
 		// biome-ignore-start lint/correctness/noUnusedVariables: <NOT IMPLEMENTED>
 		sublabel, // NOT IMPLEMENTED
 		startIcon, // NOT IMPLEMENTED
@@ -162,6 +164,7 @@ export const Tab = React.forwardRef((props, forwardedRef) => {
 		children, // NOT IMPLEMENTED
 		value, // NOT IMPLEMENTED
 		// biome-ignore-end lint/correctness/noUnusedVariables: <NOT IMPLEMENTED>
+
 		...rest
 	} = useCompatProps(props);
 

@@ -38,9 +38,11 @@ export const Radio = React.forwardRef((props, forwardedRef) => {
 		labelProps,
 		wrapperProps,
 		value = "on",
+
 		// biome-ignore-start lint/correctness/noUnusedVariables: <NOT IMPLEMENTED>
 		status, // NOT IMPLEMENTED
 		// biome-ignore-end lint/correctness/noUnusedVariables: <NOT IMPLEMENTED>
+
 		...rest
 	} = useCompatProps(props);
 

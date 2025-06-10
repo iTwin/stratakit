@@ -37,11 +37,13 @@ export const Avatar = React.forwardRef((props, forwardedRef) => {
 		abbreviation,
 		title,
 		image,
+
 		// biome-ignore-start lint/correctness/noUnusedVariables: <NOT IMPLEMENTED>
 		status, // NOT IMPLEMENTED
 		backgroundColor, // NOT IMPLEMENTED
 		translatedStatusTitles, // NOT IMPLEMENTED
 		// biome-ignore-end lint/correctness/noUnusedVariables: <NOT IMPLEMENTED>
+
 		...rest
 	} = useCompatProps(props);
 

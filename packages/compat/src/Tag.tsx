@@ -48,11 +48,13 @@ export const Tag = React.forwardRef((props, forwardedRef) => {
 		render = <span />,
 		children,
 		onRemove,
+
 		// biome-ignore-start lint/correctness/noUnusedVariables: <NOT IMPLEMENTED>
 		removeButtonProps, // NOT IMPLEMENTED
 		variant, // NOT IMPLEMENTED
 		labelProps, // NOT IMPLEMENTED
 		// biome-ignore-end lint/correctness/noUnusedVariables: <NOT IMPLEMENTED>
+
 		...rest
 	} = useCompatProps(props);
 

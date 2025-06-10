@@ -332,9 +332,7 @@ function VersionContent(props: {
 	);
 }
 
-function PanelContent(props: {
-	data: { [key: string]: TreeItemData[] };
-}) {
+function PanelContent(props: { data: { [key: string]: TreeItemData[] } }) {
 	const { isSearchboxVisible } = React.useContext(SearchboxContext);
 
 	const trees = React.useMemo(
@@ -605,11 +603,7 @@ function findTreeItem<T extends Pick<TreeItem, "id"> & { items: T[] }>(
 	}
 }
 
-function SandboxTree({
-	data: treeData,
-}: {
-	data: TreeItemData[];
-}) {
+function SandboxTree({ data: treeData }: { data: TreeItemData[] }) {
 	const {
 		appliedFilters: filters,
 		search,
@@ -802,11 +796,7 @@ function VisibilityAction({ item, onClick }: VisibilityActionProps) {
 	);
 }
 
-function Subheader({
-	tabs,
-}: {
-	tabs?: React.ReactNode;
-}) {
+function Subheader({ tabs }: { tabs?: React.ReactNode }) {
 	const { itemCount, isFiltered, search, setSearch } =
 		React.useContext(TreeFilteringContext);
 

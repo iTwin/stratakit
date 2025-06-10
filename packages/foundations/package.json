@@ -20,7 +20,11 @@
 		},
 		"./package.json": "./package.json"
 	},
-	"files": ["dist", "CHANGELOG.md", "LICENSE.md"],
+	"files": [
+		"dist",
+		"CHANGELOG.md",
+		"LICENSE.md"
+	],
 	"description": "Foundational pieces of StrataKit",
 	"author": "Bentley Systems",
 	"homepage": "https://github.com/iTwin/design-system",
@@ -68,29 +72,52 @@
 	},
 	"wireit": {
 		"build": {
-			"dependencies": ["build:js", "build:DEV", "build:types"]
+			"dependencies": [
+				"build:js",
+				"build:DEV",
+				"build:types"
+			]
 		},
 		"build:js": {
 			"command": "node scripts/build.js",
-			"files": ["src", "scripts", "../../internal"],
-			"output": ["dist/**/*.js", "!dist/DEV"]
+			"files": [
+				"src",
+				"scripts",
+				"../../internal"
+			],
+			"output": [
+				"dist/**/*.js",
+				"!dist/DEV"
+			]
 		},
 		"build:DEV": {
 			"command": "node scripts/build.js",
-			"files": ["src", "scripts", "../../internal"],
-			"output": ["dist/DEV/**/*.js"],
+			"files": [
+				"src",
+				"scripts",
+				"../../internal"
+			],
+			"output": [
+				"dist/DEV/**/*.js"
+			],
 			"env": {
 				"NODE_ENV": "development"
 			}
 		},
 		"build:types": {
 			"command": "tsc --outDir dist",
-			"files": ["src"],
-			"output": ["dist/**/*.d.ts"]
+			"files": [
+				"src"
+			],
+			"output": [
+				"dist/**/*.d.ts"
+			]
 		},
 		"dev": {
 			"command": "tsc --watch --outDir dist",
-			"files": ["src"],
+			"files": [
+				"src"
+			],
 			"service": true
 		}
 	}

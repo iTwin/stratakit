@@ -57,22 +57,16 @@ export const MenuItem = React.forwardRef((props, forwardedRef) => {
 		icon,
 		startIcon = icon,
 		disabled,
-		// biome-ignore lint/correctness/noUnusedVariables: <NOT IMPLEMENTED>
+		// biome-ignore-start lint/correctness/noUnusedVariables: <NOT IMPLEMENTED>
 		endIcon, // NOT IMPLEMENTED
-		// biome-ignore lint/correctness/noUnusedVariables: <NOT IMPLEMENTED>
 		value, // NOT IMPLEMENTED
-		// biome-ignore lint/correctness/noUnusedVariables: <NOT IMPLEMENTED>
 		sublabel, // NOT IMPLEMENTED
-		// biome-ignore lint/correctness/noUnusedVariables: <NOT IMPLEMENTED>
 		isSelected, // NOT IMPLEMENTED
-		// biome-ignore lint/correctness/noUnusedVariables: <NOT IMPLEMENTED>
 		focused, // NOT IMPLEMENTED
-		// biome-ignore lint/correctness/noUnusedVariables: <NOT IMPLEMENTED>
 		subMenuItems, // NOT IMPLEMENTED
-		// biome-ignore lint/correctness/noUnusedVariables: <NOT IMPLEMENTED>
 		size, // NOT IMPLEMENTED
-		// biome-ignore lint/correctness/noUnusedVariables: <NOT IMPLEMENTED>
 		badge, // NOT IMPLEMENTED
+		// biome-ignore-end lint/correctness/noUnusedVariables: <NOT IMPLEMENTED>
 		...rest
 	} = useCompatProps(props);
 

@@ -198,7 +198,7 @@ const TreeItem = React.memo(
 			label: _label,
 			description: _description,
 			actions: _actions,
-			error: _,
+			error: _error,
 			onClick: onClickProp,
 			onKeyDown: onKeyDownProp,
 			...rest

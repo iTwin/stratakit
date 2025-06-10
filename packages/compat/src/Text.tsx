@@ -25,10 +25,10 @@ interface TextProps
 export const Text = React.forwardRef((props, forwardedRef) => {
 	const {
 		variant: variantProp,
-		// biome-ignore lint/correctness/noUnusedVariables: <NOT IMPLEMENTED>
+		// biome-ignore-start lint/correctness/noUnusedVariables: <NOT IMPLEMENTED>
 		isMuted, // NOT IMPLEMENTED
-		// biome-ignore lint/correctness/noUnusedVariables: <NOT IMPLEMENTED>
 		isSkeleton, // NOT IMPLEMENTED
+		// biome-ignore-end lint/correctness/noUnusedVariables: <NOT IMPLEMENTED>
 		...rest
 	} = useCompatProps(props);
 

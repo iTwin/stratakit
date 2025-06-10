@@ -42,11 +42,10 @@ interface LabeledInputProps
 /** @see https://itwinui.bentley.com/docs/input */
 export const LabeledInput = React.forwardRef((props, forwardedRef) => {
 	const {
-		// biome-ignore lint/correctness/noUnusedVariables: <NOT IMPLEMENTED>
+		// biome-ignore-start lint/correctness/noUnusedVariables: <NOT IMPLEMENTED>
 		children, // NOT IMPLEMENTED
 		label,
 		message,
-		// biome-ignore lint/correctness/noUnusedVariables: <NOT IMPLEMENTED>
 		status, // NOT IMPLEMENTED
 		wrapperProps = {},
 		labelProps,
@@ -54,7 +53,6 @@ export const LabeledInput = React.forwardRef((props, forwardedRef) => {
 		inputWrapperProps,
 		displayStyle,
 		htmlSize,
-		// biome-ignore lint/correctness/noUnusedVariables: <NOT IMPLEMENTED>
 		size, // NOT IMPLEMENTED
 		svgIcon,
 		iconProps = {},
@@ -63,17 +61,15 @@ export const LabeledInput = React.forwardRef((props, forwardedRef) => {
 	} = useCompatProps(props);
 
 	const {
-		// biome-ignore lint/correctness/noUnusedVariables: <NOT IMPLEMENTED>
 		labelPlacement, // NOT IMPLEMENTED
 		...restWrapperProps
 	} = useCompatProps(wrapperProps);
 
 	const {
 		size: iconSize, // PARTIALLY IMPLEMENTED: only supports large as an override
-		// biome-ignore lint/correctness/noUnusedVariables: <NOT IMPLEMENTED>
 		fill: iconFill, // NOT IMPLEMENTED
-		// biome-ignore lint/correctness/noUnusedVariables: <NOT IMPLEMENTED>
 		padded: iconPadded, // NOT IMPLEMENTED
+		// biome-ignore-end lint/correctness/noUnusedVariables: <NOT IMPLEMENTED>
 		...restIconProps
 	} = useCompatProps(iconProps);
 

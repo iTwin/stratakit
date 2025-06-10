@@ -22,10 +22,10 @@ interface AnchorProps extends Pick<IuiAnchorProps, "isExternal" | "underline"> {
 /** @see https://itwinui.bentley.com/docs/anchor */
 export const Anchor = React.forwardRef((props, forwardedRef) => {
 	const {
-		// biome-ignore lint/correctness/noUnusedVariables: <NOT IMPLEMENTED>
+		// biome-ignore-start lint/correctness/noUnusedVariables: <NOT IMPLEMENTED>
 		underline, // NOT IMPLEMENTED
-		// biome-ignore lint/correctness/noUnusedVariables: <NOT IMPLEMENTED>
 		isExternal, // NOT IMPLEMENTED
+		// biome-ignore-end lint/correctness/noUnusedVariables: <NOT IMPLEMENTED>
 		...rest
 	} = useCompatProps(props);
 	return <SkAnchor {...rest} ref={forwardedRef} />;

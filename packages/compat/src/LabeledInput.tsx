@@ -72,8 +72,9 @@ export const LabeledInput = React.forwardRef((props, forwardedRef) => {
 	} = useCompatProps(wrapperProps);
 
 	const {
-		// biome-ignore-start lint/correctness/noUnusedVariables: NOT IMPLEMENTED
 		size: iconSize, // PARTIALLY IMPLEMENTED: only supports large as an override
+
+		// biome-ignore-start lint/correctness/noUnusedVariables: NOT IMPLEMENTED
 		fill: iconFill,
 		padded: iconPadded,
 		// biome-ignore-end lint/correctness/noUnusedVariables: NOT IMPLEMENTED

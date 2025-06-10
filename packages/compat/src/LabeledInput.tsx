@@ -54,6 +54,7 @@ export const LabeledInput = React.forwardRef((props, forwardedRef) => {
 		displayStyle,
 		htmlSize,
 		size, // NOT IMPLEMENTED
+		// biome-ignore-end lint/correctness/noUnusedVariables: <NOT IMPLEMENTED>
 		svgIcon,
 		iconProps = {},
 		type: inputType,
@@ -61,11 +62,14 @@ export const LabeledInput = React.forwardRef((props, forwardedRef) => {
 	} = useCompatProps(props);
 
 	const {
+		// biome-ignore-start lint/correctness/noUnusedVariables: <NOT IMPLEMENTED>
 		labelPlacement, // NOT IMPLEMENTED
+		// biome-ignore-end lint/correctness/noUnusedVariables: <NOT IMPLEMENTED>
 		...restWrapperProps
 	} = useCompatProps(wrapperProps);
 
 	const {
+		// biome-ignore-start lint/correctness/noUnusedVariables: <NOT IMPLEMENTED>
 		size: iconSize, // PARTIALLY IMPLEMENTED: only supports large as an override
 		fill: iconFill, // NOT IMPLEMENTED
 		padded: iconPadded, // NOT IMPLEMENTED

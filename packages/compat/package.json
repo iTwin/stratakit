@@ -9,7 +9,10 @@
 		".": "./src/index.ts",
 		"./*": "./*"
 	},
-	"files": ["CHANGELOG.md", "LICENSE.md"],
+	"files": [
+		"CHANGELOG.md",
+		"LICENSE.md"
+	],
 	"description": "A React component library for StrataKit",
 	"author": "Bentley Systems",
 	"homepage": "https://github.com/iTwin/design-system",

@@ -14,7 +14,11 @@
 		},
 		"./package.json": "./package.json"
 	},
-	"files": ["dist", "CHANGELOG.md", "LICENSE.md"],
+	"files": [
+		"dist",
+		"CHANGELOG.md",
+		"LICENSE.md"
+	],
 	"description": "Medium-sized component structures for the Strata design system",
 	"author": "Bentley Systems",
 	"homepage": "https://github.com/iTwin/design-system",
@@ -72,26 +76,48 @@
 		},
 		"build:js": {
 			"command": "node scripts/build.js",
-			"files": ["src", "scripts", "../../internal"],
-			"output": ["dist/**/*.js", "!dist/DEV"]
+			"files": [
+				"src",
+				"scripts",
+				"../../internal"
+			],
+			"output": [
+				"dist/**/*.js",
+				"!dist/DEV"
+			]
 		},
 		"build:DEV": {
 			"command": "node scripts/build.js",
-			"files": ["src", "scripts", "../../internal"],
-			"output": ["dist/DEV/**/*.js"],
+			"files": [
+				"src",
+				"scripts",
+				"../../internal"
+			],
+			"output": [
+				"dist/DEV/**/*.js"
+			],
 			"env": {
 				"NODE_ENV": "development"
 			}
 		},
 		"build:types": {
 			"command": "tsc --outDir dist",
-			"dependencies": ["../foundations:build:types", "../bricks:build:types"],
-			"files": ["src"],
-			"output": ["dist/**/*.d.ts"]
+			"dependencies": [
+				"../foundations:build:types",
+				"../bricks:build:types"
+			],
+			"files": [
+				"src"
+			],
+			"output": [
+				"dist/**/*.d.ts"
+			]
 		},
 		"dev": {
 			"command": "tsc --watch --outDir dist",
-			"files": ["src"],
+			"files": [
+				"src"
+			],
 			"service": true
 		}
 	}

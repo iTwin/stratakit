@@ -59,10 +59,10 @@ export const Tabs = React.forwardRef((props, forwardedRef) => {
 		children,
 
 		// biome-ignore-start lint/correctness/noUnusedVariables: NOT IMPLEMENTED
-		actions, // NOT IMPLEMENTED
+		actions,
 		overflowOptions, // ignored by iTwinUI
-		orientation, // NOT IMPLEMENTED
-		type, // NOT IMPLEMENTED
+		orientation,
+		type,
 		// biome-ignore-end lint/correctness/noUnusedVariables: NOT IMPLEMENTED
 
 		...rest

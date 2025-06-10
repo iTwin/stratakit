@@ -32,6 +32,17 @@ interface ChipRootProps extends BaseProps<"div"> {
 	variant?: "solid" | "outline";
 }
 
+/**
+ * Root component of the compositional Chip component.
+ *
+ * Example:
+ * ```tsx
+ * <Chip.Root>
+ *   <Chip.Label>Label</Chip.Label>
+ *   <Chip.DismissButton onClick={onClick} />
+ * </Chip.Root>
+ * ```
+ */
 const ChipRoot = forwardRef<"div", ChipRootProps>((props, forwardedRef) => {
 	const { variant = "solid", ...rest } = props;
 
@@ -56,6 +67,9 @@ DEV: ChipRoot.displayName = "Chip.Root";
 
 interface ChipLabelProps extends BaseProps<"span"> {}
 
+/**
+ * Label component that should be used with the compositional Chip component.
+ */
 const ChipLabel = forwardRef<"span", ChipLabelProps>((props, forwardedRef) => {
 	const { setLabelId } = useSafeContext(ChipRootContext);
 
@@ -74,6 +88,9 @@ DEV: ChipLabel.displayName = "Chip.Label";
 interface ChipDismissButtonProps
 	extends Omit<BaseProps<"button">, "children"> {}
 
+/**
+ * Dismiss button component that should be used with the compositional Chip component.
+ */
 const ChipDismissButton = forwardRef<"button", ChipDismissButtonProps>(
 	(props, forwardedRef) => {
 		const { labelId } = useSafeContext(ChipRootContext);

@@ -5,7 +5,7 @@
 
 // See https://github.com/changesets/changesets/blob/main/docs/modifying-changelog-format.md
 
-export async function getReleaseLine({ commit, summary }, options) {
+export async function getReleaseLine({ commit, summary }, _type, options) {
 	if (!options.repo) {
 		throw new Error(
 			'Please provide a repo to this changelog generator like this:\n"changelog": ["./changelog-github.mjs", { "repo": "org/repo" }]',
@@ -45,7 +45,10 @@ export async function getReleaseLine({ commit, summary }, options) {
 	return returnVal;
 }
 
-export async function getDependencyReleaseLine(dependenciesUpdated) {
+export async function getDependencyReleaseLine(
+	_changesets,
+	dependenciesUpdated,
+) {
 	if (dependenciesUpdated.length === 0) return "";
 
 	const updatedDependenciesList = dependenciesUpdated.map(

@@ -3,8 +3,6 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-/** biome-ignore-all lint/correctness/noUnusedVariables: <not all variables are implemented> */
-
 import { Tooltip as SkTooltip } from "@stratakit/bricks";
 import * as React from "react";
 import { useCompatProps } from "./~utils.tsx";
@@ -47,8 +45,11 @@ export const Tooltip = React.forwardRef((props, forwardedRef) => {
 		onVisibleChange,
 		ariaStrategy = "description",
 		placement,
+		// biome-ignore lint/correctness/noUnusedVariables: <NOT IMPLEMENTED>
 		autoUpdateOptions, // NOT IMPLEMENTED
+		// biome-ignore lint/correctness/noUnusedVariables: <NOT IMPLEMENTED>
 		middleware, // NOT IMPLEMENTED
+		// biome-ignore lint/correctness/noUnusedVariables: <NOT IMPLEMENTED>
 		reference, // NOT IMPLEMENTED
 		...rest
 	} = useCompatProps(props);

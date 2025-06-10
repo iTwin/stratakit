@@ -3,8 +3,6 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-/** biome-ignore-all lint/correctness/noUnusedVariables: <not all variables are implemented> */
-
 import { TextBox } from "@stratakit/bricks";
 import * as React from "react";
 import { useCompatProps } from "./~utils.tsx";
@@ -30,9 +28,12 @@ interface InputProps
 /** @see https://itwinui.bentley.com/docs/input */
 export const Input = React.forwardRef((props, forwardedRef) => {
 	const {
+		// biome-ignore lint/correctness/noUnusedVariables: <NOT IMPLEMENTED>
 		children, // NOT IMPLEMENTED
 		htmlSize,
+		// biome-ignore lint/correctness/noUnusedVariables: <NOT IMPLEMENTED>
 		size, // NOT IMPLEMENTED
+		// biome-ignore lint/correctness/noUnusedVariables: <NOT IMPLEMENTED>
 		status, // NOT IMPLEMENTED
 		type: inputType,
 		...rest

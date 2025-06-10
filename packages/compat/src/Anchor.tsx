@@ -3,8 +3,6 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-/** biome-ignore-all lint/correctness/noUnusedVariables: <not all variables are implemented> */
-
 import { Anchor as SkAnchor } from "@stratakit/bricks";
 import * as React from "react";
 import { useCompatProps } from "./~utils.tsx";
@@ -24,7 +22,9 @@ interface AnchorProps extends Pick<IuiAnchorProps, "isExternal" | "underline"> {
 /** @see https://itwinui.bentley.com/docs/anchor */
 export const Anchor = React.forwardRef((props, forwardedRef) => {
 	const {
+		// biome-ignore lint/correctness/noUnusedVariables: <NOT IMPLEMENTED>
 		underline, // NOT IMPLEMENTED
+		// biome-ignore lint/correctness/noUnusedVariables: <NOT IMPLEMENTED>
 		isExternal, // NOT IMPLEMENTED
 		...rest
 	} = useCompatProps(props);

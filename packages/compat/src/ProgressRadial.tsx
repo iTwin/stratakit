@@ -3,8 +3,6 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-/** biome-ignore-all lint/correctness/noUnusedVariables: <not all variables are implemented> */
-
 import { Spinner as SkSpinner } from "@stratakit/bricks";
 import * as React from "react";
 import { useCompatProps } from "./~utils.tsx";
@@ -33,9 +31,13 @@ interface ProgressRadialProps
 /** @see https://itwinui.bentley.com/docs/progressindicator */
 export const ProgressRadial = React.forwardRef((props, forwardedRef) => {
 	const {
+		// biome-ignore lint/correctness/noUnusedVariables: <NOT IMPLEMENTED>
 		value, // NOT IMPLEMENTED
+		// biome-ignore lint/correctness/noUnusedVariables: <NOT IMPLEMENTED>
 		indeterminate, // NOT IMPLEMENTED
+		// biome-ignore lint/correctness/noUnusedVariables: <NOT IMPLEMENTED>
 		status, // NOT IMPLEMENTED
+		// biome-ignore lint/correctness/noUnusedVariables: <NOT IMPLEMENTED>
 		children, // NOT IMPLEMENTED
 		size: sizeProp,
 		...rest

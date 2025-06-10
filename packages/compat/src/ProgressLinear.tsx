@@ -3,8 +3,6 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-/** biome-ignore-all lint/correctness/noUnusedVariables: <not all variables are implemented> */
-
 import {
 	ProgressBar as SkProgressBar,
 	VisuallyHidden,
@@ -49,8 +47,11 @@ export const ProgressLinear = React.forwardRef((props, forwardedRef) => {
 		value,
 		indeterminate,
 		labels,
+		// biome-ignore lint/correctness/noUnusedVariables: <NOT IMPLEMENTED>
 		isAnimated, // NO-OP
+		// biome-ignore lint/correctness/noUnusedVariables: <NOT IMPLEMENTED>
 		status, // NOT IMPLEMENTED
+		// biome-ignore lint/correctness/noUnusedVariables: <NOT IMPLEMENTED>
 		labelGroupProps, // NOT IMPLEMENTED
 		...rest
 	} = useCompatProps(props);

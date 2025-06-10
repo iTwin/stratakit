@@ -3,8 +3,6 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-/** biome-ignore-all lint/correctness/noUnusedVariables: <not all variables are implemented> */
-
 import { Text as SkText } from "@stratakit/bricks";
 import * as React from "react";
 import { useCompatProps } from "./~utils.tsx";
@@ -27,7 +25,9 @@ interface TextProps
 export const Text = React.forwardRef((props, forwardedRef) => {
 	const {
 		variant: variantProp,
+		// biome-ignore lint/correctness/noUnusedVariables: <NOT IMPLEMENTED>
 		isMuted, // NOT IMPLEMENTED
+		// biome-ignore lint/correctness/noUnusedVariables: <NOT IMPLEMENTED>
 		isSkeleton, // NOT IMPLEMENTED
 		...rest
 	} = useCompatProps(props);

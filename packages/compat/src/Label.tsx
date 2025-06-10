@@ -3,8 +3,6 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-/** biome-ignore-all lint/correctness/noUnusedVariables: <not all variables are implemented> */
-
 import { Label as SkLabel } from "@stratakit/bricks";
 import * as React from "react";
 import { useCompatProps } from "./~utils.tsx";
@@ -27,8 +25,11 @@ interface LabelProps
 /** @see https://itwinui.bentley.com/docs/label */
 export const Label = React.forwardRef((props, forwardedRef) => {
 	const {
+		// biome-ignore lint/correctness/noUnusedVariables: <NOT IMPLEMENTED>
 		displayStyle, // NOT IMPLEMENTED
+		// biome-ignore lint/correctness/noUnusedVariables: <NOT IMPLEMENTED>
 		disabled, // NOT IMPLEMENTED
+		// biome-ignore lint/correctness/noUnusedVariables: <NOT IMPLEMENTED>
 		required, // NOT IMPLEMENTED
 		...rest
 	} = useCompatProps(props);

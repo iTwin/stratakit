@@ -3,8 +3,6 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-/** biome-ignore-all lint/correctness/noUnusedVariables: <not all variables are implemented> */
-
 import { Icon as SkIcon } from "@stratakit/foundations";
 import { DropdownMenu as SkDropdownMenu } from "@stratakit/structures";
 import * as React from "react";
@@ -59,13 +57,21 @@ export const MenuItem = React.forwardRef((props, forwardedRef) => {
 		icon,
 		startIcon = icon,
 		disabled,
+		// biome-ignore lint/correctness/noUnusedVariables: <NOT IMPLEMENTED>
 		endIcon, // NOT IMPLEMENTED
+		// biome-ignore lint/correctness/noUnusedVariables: <NOT IMPLEMENTED>
 		value, // NOT IMPLEMENTED
+		// biome-ignore lint/correctness/noUnusedVariables: <NOT IMPLEMENTED>
 		sublabel, // NOT IMPLEMENTED
+		// biome-ignore lint/correctness/noUnusedVariables: <NOT IMPLEMENTED>
 		isSelected, // NOT IMPLEMENTED
+		// biome-ignore lint/correctness/noUnusedVariables: <NOT IMPLEMENTED>
 		focused, // NOT IMPLEMENTED
+		// biome-ignore lint/correctness/noUnusedVariables: <NOT IMPLEMENTED>
 		subMenuItems, // NOT IMPLEMENTED
+		// biome-ignore lint/correctness/noUnusedVariables: <NOT IMPLEMENTED>
 		size, // NOT IMPLEMENTED
+		// biome-ignore lint/correctness/noUnusedVariables: <NOT IMPLEMENTED>
 		badge, // NOT IMPLEMENTED
 		...rest
 	} = useCompatProps(props);

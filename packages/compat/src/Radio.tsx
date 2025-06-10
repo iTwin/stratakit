@@ -3,8 +3,6 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-/** biome-ignore-all lint/correctness/noUnusedVariables: <not all variables are implemented> */
-
 import { Field, Radio as SkRadio } from "@stratakit/bricks";
 import * as React from "react";
 import { useCompatProps } from "./~utils.tsx";
@@ -40,6 +38,7 @@ export const Radio = React.forwardRef((props, forwardedRef) => {
 		labelProps,
 		wrapperProps,
 		value = "on",
+		// biome-ignore lint/correctness/noUnusedVariables: <NOT IMPLEMENTED>
 		status, // NOT IMPLEMENTED
 		...rest
 	} = useCompatProps(props);

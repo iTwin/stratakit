@@ -3,8 +3,6 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-/** biome-ignore-all lint/correctness/noUnusedVariables: <not all variables are implemented> */
-
 import { Field, Checkbox as SkCheckbox } from "@stratakit/bricks";
 import * as React from "react";
 import { useCompatProps } from "./~utils.tsx";
@@ -41,9 +39,13 @@ export const Checkbox = React.forwardRef((props, forwardedRef) => {
 		label,
 		wrapperProps,
 		labelProps,
+		// biome-ignore lint/correctness/noUnusedVariables: <NOT IMPLEMENTED>
 		indeterminate, // NOT IMPLEMENTED
+		// biome-ignore lint/correctness/noUnusedVariables: <NOT IMPLEMENTED>
 		status, // NOT IMPLEMENTED
+		// biome-ignore lint/correctness/noUnusedVariables: <NOT IMPLEMENTED>
 		variant, // NOT IMPLEMENTED
+		// biome-ignore lint/correctness/noUnusedVariables: <NOT IMPLEMENTED>
 		isLoading, // NOT IMPLEMENTED
 		...rest
 	} = useCompatProps(props);

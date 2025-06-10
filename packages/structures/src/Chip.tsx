@@ -5,19 +5,24 @@
 
 import { Role } from "@ariakit/react/role";
 import { IconButton } from "@stratakit/bricks";
-import { forwardRef } from "@stratakit/foundations/secret-internals";
+import type { BaseProps } from "@stratakit/foundations/secret-internals";
+import {
+	forwardRef,
+	useSafeContext,
+} from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
 import * as React from "react";
 import { Dismiss } from "./~utils.icons.js";
 
-import type { BaseProps } from "@stratakit/foundations/secret-internals";
+// ----------------------------------------------------------------------------
 
-interface ChipProps extends Omit<BaseProps<"div">, "children"> {
-	/**
-	 * The label displayed inside the chip.
-	 */
-	label: React.ReactNode;
+const ChipRootContext = React.createContext<
+	{ labelId: string; dismissIconId: string } | undefined
+>(undefined);
 
+// ----------------------------------------------------------------------------
+
+interface ChipRootProps extends BaseProps<"div"> {
 	/**
 	 * The variant style of the Chip.
 	 * Use "solid" for primary states and "outline" for less prominent states.
@@ -25,6 +30,77 @@ interface ChipProps extends Omit<BaseProps<"div">, "children"> {
 	 * @default "solid"
 	 */
 	variant?: "solid" | "outline";
+}
+
+const ChipRoot = forwardRef<"div", ChipRootProps>((props, forwardedRef) => {
+	const { variant = "solid", ...rest } = props;
+
+	const baseId = React.useId();
+	const labelId = `${baseId}-label`;
+	const dismissIconId = `${baseId}-dismiss`;
+
+	return (
+		<ChipRootContext.Provider
+			value={React.useMemo(
+				() => ({ labelId, dismissIconId }),
+				[labelId, dismissIconId],
+			)}
+		>
+			<Role.div
+				data-kiwi-variant={variant}
+				{...rest}
+				className={cx("🥝-chip", props.className)}
+				ref={forwardedRef}
+			/>
+		</ChipRootContext.Provider>
+	);
+});
+DEV: ChipRoot.displayName = "Chip.Root";
+
+// ----------------------------------------------------------------------------
+
+interface ChipLabelProps extends BaseProps<"span"> {}
+
+const ChipLabel = forwardRef<"span", ChipLabelProps>((props, forwardedRef) => {
+	const { labelId } = useSafeContext(ChipRootContext);
+	return <Role.span id={labelId} {...props} ref={forwardedRef} />;
+});
+DEV: ChipLabel.displayName = "Chip.Label";
+
+// ----------------------------------------------------------------------------
+
+interface ChipDismissButtonProps
+	extends Omit<BaseProps<"button">, "children"> {}
+
+const ChipDismissButton = forwardRef<"button", ChipDismissButtonProps>(
+	(props, forwardedRef) => {
+		const { dismissIconId, labelId } = useSafeContext(ChipRootContext);
+		return (
+			<IconButton
+				id={dismissIconId}
+				aria-labelledby={`${dismissIconId} ${labelId}`}
+				{...props}
+				className={cx("🥝-chip-dismiss-button", props.className)}
+				variant="ghost"
+				label="Dismiss"
+				labelVariant="visually-hidden"
+				icon={<Dismiss />}
+				ref={forwardedRef}
+			/>
+		);
+	},
+);
+DEV: ChipDismissButton.displayName = "Chip.DismissButton";
+
+// ----------------------------------------------------------------------------
+
+interface ChipProps
+	extends Omit<BaseProps<"div">, "children">,
+		Pick<ChipRootProps, "variant"> {
+	/**
+	 * The label displayed inside the chip.
+	 */
+	label: React.ReactNode;
 
 	/**
 	 * Callback invoked when the dismiss ("❌") button is clicked.
@@ -46,34 +122,23 @@ interface ChipProps extends Omit<BaseProps<"div">, "children"> {
  * <Chip label="Value" variant="outline" />
  * ```
  */
-export const Chip = forwardRef<"div", ChipProps>((props, forwardedRef) => {
-	const { variant = "solid", onDismiss, label, ...rest } = props;
-
-	const baseId = React.useId();
-	const labelId = `${baseId}-label`;
-	const dismissIconId = `${baseId}-dismiss`;
+const Chip = forwardRef<"div", ChipProps>((props, forwardedRef) => {
+	const { onDismiss, label, ...rest } = props;
 
 	return (
-		<Role.div
-			data-kiwi-variant={variant}
-			{...rest}
-			className={cx("🥝-chip", props.className)}
-			ref={forwardedRef}
-		>
-			<span id={labelId}>{label}</span>
-			{onDismiss && (
-				<IconButton
-					id={dismissIconId}
-					className="🥝-chip-dismiss-button"
-					variant="ghost"
-					aria-labelledby={`${dismissIconId} ${labelId}`}
-					label="Dismiss"
-					labelVariant="visually-hidden"
-					icon={<Dismiss />}
-					onClick={onDismiss}
-				/>
-			)}
-		</Role.div>
+		<ChipRoot {...rest} ref={forwardedRef}>
+			<ChipLabel>{label}</ChipLabel>
+			{onDismiss && <ChipDismissButton onClick={onDismiss} />}
+		</ChipRoot>
 	);
 });
 DEV: Chip.displayName = "Chip";
+
+// ----------------------------------------------------------------------------
+
+export default Chip;
+export {
+	ChipRoot as Root,
+	ChipLabel as Label,
+	ChipDismissButton as DismissButton,
+};

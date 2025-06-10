@@ -12,7 +12,12 @@
 			"development": "./dist/DEV/index.js",
 			"default": "./dist/index.js"
 		},
-		"./package.json": "./package.json"
+		"./package.json": "./package.json",
+		"./chip": {
+			"default": "./dist/Chip.js",
+			"types": "./dist/Chip.d.ts",
+			"development": "./dist/DEV/Chip.js"
+		}
 	},
 	"files": ["dist", "CHANGELOG.md", "LICENSE.md"],
 	"description": "Medium-sized component structures for the Strata design system",

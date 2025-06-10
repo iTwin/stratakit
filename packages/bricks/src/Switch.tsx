@@ -11,7 +11,10 @@ import { useFieldControlType } from "./Field.internal.js";
 import type { CheckboxProps as AkCheckboxProps } from "@ariakit/react/checkbox";
 import type { FocusableProps } from "@stratakit/foundations/secret-internals";
 
-type InputBaseProps = Omit<FocusableProps<"input">, "defaultValue" | "value">;
+type InputBaseProps = Omit<
+	FocusableProps<"input">,
+	"defaultValue" | "value" | "onToggle"
+>;
 
 type CheckboxOwnProps = Pick<
 	AkCheckboxProps,

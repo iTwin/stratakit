@@ -48,6 +48,7 @@ export const components = {
 		"ProgressLinear",
 		"ProgressRadial",
 		"Radio",
+		"StatusMessage",
 		"Tabs",
 		"Tag",
 		"Text",

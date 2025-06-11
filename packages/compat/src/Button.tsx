@@ -59,18 +59,18 @@ export const Button = React.forwardRef((props, forwardedRef) => {
 		...rest
 	} = useCompatProps(props);
 
-	const variantAndTone = React.useMemo<
-		Pick<SkButtonProps, "variant" | "tone">
-	>(() => {
+	const variantAndTone = React.useMemo(() => {
 		switch (styleType) {
 			case "borderless":
-				return { variant: "ghost", tone: "neutral" };
+				return { variant: "ghost" satisfies SkButtonProps["variant"] } as const;
 			case "high-visibility":
 			case "cta":
-				return { variant: "solid", tone: "accent" };
-			case "default":
-				return { variant: "outline", tone: "neutral" };
+				return {
+					variant: "solid" satisfies SkButtonProps["variant"],
+					tone: "accent" satisfies SkButtonProps["tone"],
+				} as const;
 		}
+		return { variant: "outline" satisfies SkButtonProps["variant"] } as const;
 	}, [styleType]);
 
 	// When `htmlDisabled` is set, we don't want to use `aria-disabled`.
@@ -82,8 +82,7 @@ export const Button = React.forwardRef((props, forwardedRef) => {
 			accessibleWhenDisabled={accessibleWhenDisabled}
 			disabled={props.disabled || htmlDisabled}
 			ref={forwardedRef}
-			// biome-ignore lint/suspicious/noExplicitAny: thisisfine.jpg
-			{...(variantAndTone as any)}
+			{...variantAndTone}
 		>
 			{startIcon ? (
 				<Icon

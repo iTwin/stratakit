@@ -70,7 +70,7 @@ export const Button = React.forwardRef((props, forwardedRef) => {
 					tone: "accent" satisfies SkButtonProps["tone"],
 				} as const;
 		}
-		return { variant: "outline" satisfies SkButtonProps["variant"] } as const;
+		return { variant: "solid" satisfies SkButtonProps["variant"] } as const;
 	}, [styleType]);
 
 	// When `htmlDisabled` is set, we don't want to use `aria-disabled`.

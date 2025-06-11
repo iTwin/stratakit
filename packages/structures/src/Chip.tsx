@@ -89,6 +89,10 @@ DEV: ChipLabel.displayName = "Chip.Label";
 interface ChipDismissButtonProps extends Omit<BaseProps<"button">, "children"> {
 	/**
 	 * Label for the dismiss button.
+	 *
+	 * The final accessible name of the dismiss button is a combination of this `label` and the text content of `Chip.Label`.
+	 *
+	 * @default "Dismiss"
 	 */
 	label?: string;
 }

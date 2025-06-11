@@ -112,9 +112,10 @@ const LegacyTabs = React.forwardRef((props, forwardedRef) => {
 			>
 				<TabList className={tabsClassName} ref={forwardedRef}>
 					{labels.map((label, index) => {
+						const key = getLabelKey(label, index);
 						const tabValue = `${index}`;
 						return (
-							<LegacyTabContext.Provider key={tabValue} value={{ tabValue }}>
+							<LegacyTabContext.Provider key={key} value={{ tabValue }}>
 								{typeof label === "string" ? (
 									<LegacyTab label={label} />
 								) : (
@@ -132,6 +133,24 @@ const LegacyTabs = React.forwardRef((props, forwardedRef) => {
 	);
 }) as PolymorphicForwardRefComponent<"div", LegacyTabsProps>;
 DEV: LegacyTabs.displayName = "Tabs";
+
+function getLabelKey(label: React.ReactNode, index: number) {
+	if (typeof label === "string") {
+		return `${index}-${label}`;
+	}
+
+	if (React.isValidElement<React.ComponentProps<typeof Tab>>(label)) {
+		if (label.props.id) {
+			return label.props.id;
+		}
+
+		if (label.key) {
+			return `${index}-${label.key}`;
+		}
+	}
+
+	return `${index}`;
+}
 
 // ----------------------------------------------------------------------------
 

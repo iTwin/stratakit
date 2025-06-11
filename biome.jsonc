@@ -26,8 +26,6 @@
 	"linter": {
 		"rules": {
 			"correctness": {
-				"noUnusedFunctionParameters": "error",
-				"noUnusedVariables": "error",
 				"noUnknownProperty": "off",
 				"noUnusedImports": "info",
 				"noUnusedLabels": "off"

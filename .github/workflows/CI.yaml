@@ -71,7 +71,7 @@ jobs:
 
       - run: pnpm install
 
-      - run: biome ci . --reporter=github
+      - run: biome ci --formatter-enabled=true --linter-enabled=true --assist-enabled=true . --reporter=github
         if: ${{ !cancelled() }}
 
       - run: pnpm lint:copyright

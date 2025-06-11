@@ -5,7 +5,6 @@
 
 import { Role } from "@ariakit/react/role";
 import { IconButton } from "@stratakit/bricks";
-import type { BaseProps } from "@stratakit/foundations/secret-internals";
 import {
 	forwardRef,
 	useSafeContext,
@@ -13,6 +12,8 @@ import {
 import cx from "classnames";
 import * as React from "react";
 import { Dismiss } from "./~utils.icons.js";
+
+import type { BaseProps } from "@stratakit/foundations/secret-internals";
 
 // ----------------------------------------------------------------------------
 

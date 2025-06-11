@@ -14,8 +14,14 @@ import type { BaseProps } from "@stratakit/foundations/secret-internals";
 // ----------------------------------------------------------------------------
 
 const disclosureIcons = {
-	down: createIconFromPath("M8 10 5 7h6l-3 3Z"),
-	right: createIconFromPath("M7 11V5l3 3-3 3Z"),
+	/** caret-down.svg */
+	down: createIconFromPath(
+		"M9.646 6.896a.5.5 0 0 1 .707.707l-2 2a.5.5 0 0 1-.707 0l-2-2-.064-.078a.5.5 0 0 1 .693-.693l.078.064L8 8.543l1.646-1.647Z",
+	),
+	/** caret-right.svg */
+	right: createIconFromPath(
+		"M6.896 5.646a.501.501 0 0 1 .629-.064l.078.064 2 2a.5.5 0 0 1 0 .707l-2 2a.5.5 0 1 1-.707-.707L8.543 8 6.896 6.353l-.064-.078a.501.501 0 0 1 .064-.629Z",
+	),
 };
 
 interface DisclosureArrowProps extends Omit<BaseProps<"svg">, "children"> {

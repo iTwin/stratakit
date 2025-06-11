@@ -85,8 +85,12 @@ DEV: ChipLabel.displayName = "Chip.Label";
 
 // ----------------------------------------------------------------------------
 
-interface ChipDismissButtonProps
-	extends Omit<BaseProps<"button">, "children"> {}
+interface ChipDismissButtonProps extends Omit<BaseProps<"button">, "children"> {
+	/**
+	 * Label for the dismiss button.
+	 */
+	label?: string;
+}
 
 /**
  * Dismiss button component that should be used with the compositional Chip component.
@@ -101,10 +105,10 @@ const ChipDismissButton = forwardRef<"button", ChipDismissButtonProps>(
 			<IconButton
 				id={id}
 				aria-labelledby={`${id} ${labelId}`}
+				label="Dismiss"
 				{...props}
 				className={cx("🥝-chip-dismiss-button", props.className)}
 				variant="ghost"
-				label="Dismiss"
 				labelVariant="visually-hidden"
 				icon={<Dismiss />}
 				ref={forwardedRef}

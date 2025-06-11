@@ -53,7 +53,7 @@ const LegacyTabs = React.forwardRef((props, forwardedRef) => {
 		actions, // NOT IMPLEMENTED
 		labels,
 		onTabSelected,
-		activeIndex,
+		activeIndex: activeIndexProp,
 		focusActivationMode,
 		color,
 		tabsClassName,
@@ -68,70 +68,55 @@ const LegacyTabs = React.forwardRef((props, forwardedRef) => {
 		...rest
 	} = useCompatProps(props);
 
-	const { tabValues, uniqueValues } = React.useMemo(() => {
-		return labels.reduce(
-			(acc, label, index) => {
-				if (typeof label === "string") {
-					acc.tabValues.push(`${index}-${label}`);
-					return acc;
-				}
-
-				if (React.isValidElement<React.ComponentProps<typeof Tab>>(label)) {
-					// Re-use `id` prop, if available.
-					if (label.props.id) {
-						acc.tabValues.push(label.props.id);
-						acc.uniqueValues.add(label.props.id);
-						return acc;
-					}
-
-					if (label.key) {
-						acc.tabValues.push(`${index}-${label.key}`);
-						return acc;
-					}
-				}
-
-				acc.tabValues.push(`${index}`);
-				return acc;
-			},
-			{
-				tabValues: [] as string[],
-				uniqueValues: new Set<string>(),
-			},
-		);
+	const labelIds = React.useMemo(() => {
+		return labels.map((label) => {
+			if (
+				React.isValidElement<React.ComponentProps<typeof Tab>>(label) &&
+				label.props.id
+			) {
+				// Re-use `id` prop, if available.
+				return label.props.id;
+			}
+			return undefined;
+		});
 	}, [labels]);
-	const handleSetValue = React.useCallback<
+	const uniqueValues = React.useMemo(() => {
+		return new Set(labelIds.filter((id): id is string => id !== undefined));
+	}, [labelIds]);
+
+	const [activeIndex, setActiveIndex] = useControlledState<number>(
+		0,
+		activeIndexProp,
+		onTabSelected as React.Dispatch<React.SetStateAction<number>>,
+	);
+
+	const onValueChange = React.useCallback<
 		NonNullable<WrapperProps["onValueChange"]>
 	>(
-		(newId) => {
-			const indexOfTab =
-				typeof newId === "string" ? tabValues.indexOf(newId) : -1;
-			if (indexOfTab === -1) return;
-			onTabSelected?.(indexOfTab);
+		(newValue) => {
+			const indexOfLabel = labelIds.indexOf(newValue);
+			const indexOfTab = indexOfLabel === -1 ? Number(newValue) : indexOfLabel;
+			setActiveIndex(indexOfTab);
 		},
-		[tabValues, onTabSelected],
+		[setActiveIndex, labelIds],
 	);
 
-	const activeValue =
-		activeIndex === undefined ? undefined : tabValues[activeIndex];
-	const [value, setValue] = useControlledState<string>(
-		"",
-		activeValue,
-		handleSetValue as React.Dispatch<React.SetStateAction<string>>,
-	);
-
+	const labelId = labelIds[activeIndex];
+	const value = labelId ?? `${activeIndex}`;
 	return (
 		<UniqueValuesContext.Provider value={uniqueValues}>
 			<Wrapper
 				{...rest}
 				className={cx(wrapperClassName, props.className)}
-				onValueChange={setValue}
 				value={value}
+				onValueChange={onValueChange}
 				color={color}
 				focusActivationMode={focusActivationMode}
 			>
 				<TabList className={tabsClassName} ref={forwardedRef}>
 					{labels.map((label, index) => {
-						const tabValue = tabValues[index];
+						const uniqueValue = labelIds[index];
+						const tabValue = uniqueValue ?? `${index}`;
 						return (
 							<LegacyTabContext.Provider key={tabValue} value={{ tabValue }}>
 								{typeof label === "string" ? (

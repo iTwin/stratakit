@@ -328,9 +328,7 @@ const Tab = React.forwardRef((props, forwardedRef) => {
 		id: idProp, // ignored by iTwinUI
 		...rest
 	} = useCompatProps(props);
-	const { wrapperId } = useSafeContext(WrapperContext);
-	const valueToId = React.useContext(TabValueToIdContext);
-	const id = toIdFromValue(value, wrapperId, valueToId);
+	const id = useIdFromValue(value);
 	return (
 		<SkTabs.Tab {...rest} id={id} ref={forwardedRef}>
 			{label ?? children}
@@ -353,9 +351,7 @@ const Panel = React.forwardRef((props, forwardedRef) => {
 		id, // ignored by iTwinUI
 		...rest
 	} = useCompatProps(props);
-	const { wrapperId } = useSafeContext(WrapperContext);
-	const valueToId = React.useContext(TabValueToIdContext);
-	const tabId = toIdFromValue(value, wrapperId, valueToId);
+	const tabId = useIdFromValue(value);
 	return (
 		<SkTabs.TabPanel {...rest} tabId={tabId} ref={forwardedRef}>
 			{children}
@@ -426,18 +422,18 @@ const Tabs = Object.assign(LegacyTabs, {
 
 function toIdFromValue(
 	value: string,
-	uniquePrefix: string,
+	wrapperId: string,
 	valueToId: Map<string, string>,
 ) {
 	const id = valueToId.get(value);
 	if (id) return id;
 
-	return `${uniquePrefix}-${value}`;
+	return `${wrapperId}-${value}`;
 }
 
 function toValueFromId(
 	id: string,
-	uniquePrefix: string,
+	wrapperId: string,
 	valueToId: Map<string, string>,
 ) {
 	for (const [value, uniqueId] of valueToId.entries()) {
@@ -446,9 +442,17 @@ function toValueFromId(
 		}
 	}
 
-	if (!id.startsWith(`${uniquePrefix}-`)) return undefined;
-	return id.slice(uniquePrefix.length + 1); // +1 for the hyphen
+	if (!id.startsWith(`${wrapperId}-`)) return undefined;
+	return id.slice(wrapperId.length + 1); // +1 for the hyphen
 }
+
+function useIdFromValue(value: string) {
+	const { wrapperId } = useSafeContext(WrapperContext);
+	const valueToId = React.useContext(TabValueToIdContext);
+	return toIdFromValue(value, wrapperId, valueToId);
+}
+
+// ----------------------------------------------------------------------------
 
 // Values that are mapped to unique IDs. This allows consumers to set custom IDs via `LegacyTab`.
 const TabValueToIdContext = React.createContext(new Map<string, string>());

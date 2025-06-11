@@ -68,21 +68,20 @@ const LegacyTabs = React.forwardRef((props, forwardedRef) => {
 		...rest
 	} = useCompatProps(props);
 
-	const labelIds = React.useMemo(() => {
-		return labels.map((label) => {
+	const valueToIdMap = React.useMemo(() => {
+		const idMap = new Map<string, string>();
+		for (let i = 0; i < labels.length; i++) {
+			const label = labels[i];
 			if (
 				React.isValidElement<React.ComponentProps<typeof Tab>>(label) &&
 				label.props.id
 			) {
 				// Re-use `id` prop, if available.
-				return label.props.id;
+				idMap.set(`${i}`, label.props.id);
 			}
-			return undefined;
-		});
+		}
+		return idMap;
 	}, [labels]);
-	const uniqueValues = React.useMemo(() => {
-		return new Set(labelIds.filter((id): id is string => id !== undefined));
-	}, [labelIds]);
 
 	const [activeIndex, setActiveIndex] = useControlledState<number>(
 		0,
@@ -94,17 +93,15 @@ const LegacyTabs = React.forwardRef((props, forwardedRef) => {
 		NonNullable<WrapperProps["onValueChange"]>
 	>(
 		(newValue) => {
-			const indexOfLabel = labelIds.indexOf(newValue);
-			const indexOfTab = indexOfLabel === -1 ? Number(newValue) : indexOfLabel;
-			setActiveIndex(indexOfTab);
+			const newActiveIndex = Number(newValue);
+			setActiveIndex(newActiveIndex);
 		},
-		[setActiveIndex, labelIds],
+		[setActiveIndex],
 	);
 
-	const labelId = labelIds[activeIndex];
-	const value = labelId ?? `${activeIndex}`;
+	const value = `${activeIndex}`;
 	return (
-		<UniqueValuesContext.Provider value={uniqueValues}>
+		<TabValueToIdContext.Provider value={valueToIdMap}>
 			<Wrapper
 				{...rest}
 				className={cx(wrapperClassName, props.className)}
@@ -115,8 +112,7 @@ const LegacyTabs = React.forwardRef((props, forwardedRef) => {
 			>
 				<TabList className={tabsClassName} ref={forwardedRef}>
 					{labels.map((label, index) => {
-						const uniqueValue = labelIds[index];
-						const tabValue = uniqueValue ?? `${index}`;
+						const tabValue = `${index}`;
 						return (
 							<LegacyTabContext.Provider key={tabValue} value={{ tabValue }}>
 								{typeof label === "string" ? (
@@ -132,7 +128,7 @@ const LegacyTabs = React.forwardRef((props, forwardedRef) => {
 					{children}
 				</Panel>
 			</Wrapper>
-		</UniqueValuesContext.Provider>
+		</TabValueToIdContext.Provider>
 	);
 }) as PolymorphicForwardRefComponent<"div", LegacyTabsProps>;
 DEV: LegacyTabs.displayName = "Tabs";
@@ -223,15 +219,15 @@ const Wrapper = React.forwardRef((props, forwardedRef) => {
 		type, // NOT IMPLEMENTED
 		...rest
 	} = useCompatProps(props);
-	const uniqueValues = React.useContext(UniqueValuesContext);
+	const valueToId = React.useContext(TabValueToIdContext);
 	const wrapperId = React.useId();
 	const tone = color === "green" ? "accent" : undefined;
 
 	const defaultSelectedId = defaultValue
-		? toIdFromValue(defaultValue, wrapperId, uniqueValues)
+		? toIdFromValue(defaultValue, wrapperId, valueToId)
 		: undefined;
 	const selectedId = value
-		? toIdFromValue(value, wrapperId, uniqueValues)
+		? toIdFromValue(value, wrapperId, valueToId)
 		: undefined;
 	const setSelectedId = React.useCallback<
 		NonNullable<SkTabsProps["setSelectedId"]>
@@ -242,13 +238,13 @@ const Wrapper = React.forwardRef((props, forwardedRef) => {
 			const newSelectedValue = toValueFromId(
 				newSelectedId,
 				wrapperId,
-				uniqueValues,
+				valueToId,
 			);
 			if (!newSelectedValue) return;
 
 			onValueChange?.(newSelectedValue);
 		},
-		[onValueChange, wrapperId, uniqueValues],
+		[onValueChange, wrapperId, valueToId],
 	);
 	return (
 		<SkTabs.Root
@@ -314,8 +310,8 @@ const Tab = React.forwardRef((props, forwardedRef) => {
 		...rest
 	} = useCompatProps(props);
 	const { wrapperId } = useSafeContext(WrapperContext);
-	const uniqueValues = React.useContext(UniqueValuesContext);
-	const id = toIdFromValue(value, wrapperId, uniqueValues);
+	const valueToId = React.useContext(TabValueToIdContext);
+	const id = toIdFromValue(value, wrapperId, valueToId);
 	return (
 		<SkTabs.Tab {...rest} id={id} ref={forwardedRef}>
 			{label ?? children}
@@ -339,8 +335,8 @@ const Panel = React.forwardRef((props, forwardedRef) => {
 		...rest
 	} = useCompatProps(props);
 	const { wrapperId } = useSafeContext(WrapperContext);
-	const uniqueValues = React.useContext(UniqueValuesContext);
-	const tabId = toIdFromValue(value, wrapperId, uniqueValues);
+	const valueToId = React.useContext(TabValueToIdContext);
+	const tabId = toIdFromValue(value, wrapperId, valueToId);
 	return (
 		<SkTabs.TabPanel {...rest} tabId={tabId} ref={forwardedRef}>
 			{children}
@@ -412,10 +408,10 @@ const Tabs = Object.assign(LegacyTabs, {
 function toIdFromValue(
 	value: string,
 	uniquePrefix: string,
-	uniqueValues: Set<string>,
+	valueToId: Map<string, string>,
 ) {
-	// If the value is unique, use as is.
-	if (uniqueValues.has(value)) return value;
+	const id = valueToId.get(value);
+	if (id) return id;
 
 	return `${uniquePrefix}-${value}`;
 }
@@ -423,17 +419,20 @@ function toIdFromValue(
 function toValueFromId(
 	id: string,
 	uniquePrefix: string,
-	uniqueValues: Set<string>,
+	valueToId: Map<string, string>,
 ) {
-	// The unique value was not prefixed.
-	if (uniqueValues.has(id)) return id;
+	for (const [value, uniqueId] of valueToId.entries()) {
+		if (id === uniqueId) {
+			return value;
+		}
+	}
 
 	if (!id.startsWith(`${uniquePrefix}-`)) return undefined;
 	return id.slice(uniquePrefix.length + 1); // +1 for the hyphen
 }
 
-// Values are mapped to unique IDs. This allows consumers to set custom IDs via `LegacyTab`.
-const UniqueValuesContext = React.createContext(new Set<string>());
+// Values that are mapped to unique IDs. This allows consumers to set custom IDs via `LegacyTab`.
+const TabValueToIdContext = React.createContext(new Map<string, string>());
 
 // ----------------------------------------------------------------------------
 

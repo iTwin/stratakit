@@ -50,7 +50,6 @@ interface LegacyTabsProps
 /** @see https://itwinui.bentley.com/docs/tabs#legacy-api */
 const LegacyTabs = React.forwardRef((props, forwardedRef) => {
 	const {
-		actions, // NOT IMPLEMENTED
 		labels,
 		onTabSelected,
 		activeIndex: activeIndexProp,
@@ -60,11 +59,16 @@ const LegacyTabs = React.forwardRef((props, forwardedRef) => {
 		contentClassName,
 		wrapperClassName,
 		children,
-		overflowOptions, // ignored by iTwinUI
-		defaultValue, // ignored by iTwinUI
-		defaultChecked, // ignored by iTwinUI
-		orientation, // NOT IMPLEMENTED
-		type, // NOT IMPLEMENTED
+		overflowOptions: _overflowOptions, // ignored by iTwinUI
+		defaultValue: _defaultValue, // ignored by iTwinUI
+		defaultChecked: _defaultChecked, // ignored by iTwinUI
+
+		// biome-ignore-start lint/correctness/noUnusedVariables: NOT IMPLEMENTED
+		actions,
+		orientation,
+		type,
+		// biome-ignore-end lint/correctness/noUnusedVariables: NOT IMPLEMENTED
+
 		...rest
 	} = useCompatProps(props);
 
@@ -174,13 +178,17 @@ interface LegacyTabProps
 /** @see https://itwinui.bentley.com/docs/tabs#legacy-api */
 const LegacyTab = React.forwardRef((props, forwardedRef) => {
 	const {
-		id,
+		id: _id, // ignored by iTwinUI
 		label,
-		sublabel, // NOT IMPLEMENTED
-		startIcon, // NOT IMPLEMENTED
 		disabled,
-		children, // NOT IMPLEMENTED
-		value: valueProp, // NOT IMPLEMENTED
+
+		// biome-ignore-start lint/correctness/noUnusedVariables: NOT IMPLEMENTED
+		sublabel,
+		startIcon,
+		children,
+		value,
+		// biome-ignore-end lint/correctness/noUnusedVariables: NOT IMPLEMENTED
+
 		...rest
 	} = useCompatProps(props);
 
@@ -233,9 +241,13 @@ const Wrapper = React.forwardRef((props, forwardedRef) => {
 		defaultValue,
 		value,
 		onValueChange,
-		defaultChecked,
-		orientation, // NOT IMPLEMENTED
-		type, // NOT IMPLEMENTED
+		defaultChecked: _defaultChecked, // ignored by iTwinUI
+
+		// biome-ignore-start lint/correctness/noUnusedVariables: NOT IMPLEMENTED
+		orientation,
+		type,
+		// biome-ignore-end lint/correctness/noUnusedVariables: NOT IMPLEMENTED
+
 		...rest
 	} = useCompatProps(props);
 	const valueToId = React.useContext(TabValueToIdContext);
@@ -325,7 +337,7 @@ const Tab = React.forwardRef((props, forwardedRef) => {
 		children,
 		value,
 		label,
-		id: idProp, // ignored by iTwinUI
+		id: _id, // ignored by iTwinUI
 		...rest
 	} = useCompatProps(props);
 	const id = useIdFromValue(value);
@@ -348,7 +360,7 @@ const Panel = React.forwardRef((props, forwardedRef) => {
 	const {
 		children,
 		value,
-		id, // ignored by iTwinUI
+		id: _id, // ignored by iTwinUI
 		...rest
 	} = useCompatProps(props);
 	const tabId = useIdFromValue(value);

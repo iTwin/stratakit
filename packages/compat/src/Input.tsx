@@ -28,10 +28,14 @@ interface InputProps
 /** @see https://itwinui.bentley.com/docs/input */
 export const Input = React.forwardRef((props, forwardedRef) => {
 	const {
-		children, // NOT IMPLEMENTED
 		htmlSize,
-		size, // NOT IMPLEMENTED
-		status, // NOT IMPLEMENTED
+
+		// biome-ignore-start lint/correctness/noUnusedVariables: NOT IMPLEMENTED
+		children,
+		size,
+		status,
+		// biome-ignore-end lint/correctness/noUnusedVariables: NOT IMPLEMENTED
+
 		type: inputType,
 		...rest
 	} = useCompatProps(props);

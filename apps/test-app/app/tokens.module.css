@@ -31,7 +31,9 @@
 	block-size: var(--_swatch-size);
 	border-radius: 4px;
 	position: relative;
-	background-position: 0 0, calc(var(--_swatch-size) * 0.25) calc(var(--_swatch-size) * 0.25);
+	background-position:
+		0 0,
+		calc(var(--_swatch-size) * 0.25) calc(var(--_swatch-size) * 0.25);
 	background-size: calc(var(--_swatch-size) * 0.5) calc(var(--_swatch-size) * 0.5);
 	background-image: repeating-linear-gradient(
 			45deg,

@@ -164,7 +164,9 @@ const RootInternal = forwardRef<"div", RootInternalProps>(
  */
 function SynchronizeColorScheme({
 	colorScheme,
-}: { colorScheme: RootProps["colorScheme"] }) {
+}: {
+	colorScheme: RootProps["colorScheme"];
+}) {
 	const rootNode = useRootNode();
 
 	useLayoutEffect(() => {

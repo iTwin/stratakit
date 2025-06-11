@@ -97,6 +97,7 @@ interface ChipDismissButtonProps extends Omit<BaseProps<"button">, "children"> {
  */
 const ChipDismissButton = forwardRef<"button", ChipDismissButtonProps>(
 	(props, forwardedRef) => {
+		const { label = "Dismiss", ...rest } = props;
 		const { labelId } = useSafeContext(ChipRootContext);
 
 		const newId = React.useId();
@@ -105,8 +106,8 @@ const ChipDismissButton = forwardRef<"button", ChipDismissButtonProps>(
 			<IconButton
 				id={id}
 				aria-labelledby={`${id} ${labelId}`}
-				label="Dismiss"
-				{...props}
+				{...rest}
+				label={label}
 				className={cx("🥝-chip-dismiss-button", props.className)}
 				variant="ghost"
 				labelVariant="visually-hidden"

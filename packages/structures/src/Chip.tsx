@@ -17,7 +17,7 @@ import { Dismiss } from "./~utils.icons.js";
 // ----------------------------------------------------------------------------
 
 const ChipRootContext = React.createContext<
-	{ labelId: string; setLabelId: (id: string) => void } | undefined
+	{ labelId: string; setLabelId: (id: string | undefined) => void } | undefined
 >(undefined);
 
 // ----------------------------------------------------------------------------
@@ -46,7 +46,9 @@ interface ChipRootProps extends BaseProps<"div"> {
 const ChipRoot = forwardRef<"div", ChipRootProps>((props, forwardedRef) => {
 	const { variant = "solid", ...rest } = props;
 
-	const [labelId, setLabelId] = React.useState("");
+	const defaultLabelId = React.useId();
+	const [_labelId, setLabelId] = React.useState<string | undefined>();
+	const labelId = _labelId || defaultLabelId;
 
 	return (
 		<ChipRootContext.Provider
@@ -71,14 +73,13 @@ interface ChipLabelProps extends BaseProps<"span"> {}
  * Label component that should be used with the compositional Chip component.
  */
 const ChipLabel = forwardRef<"span", ChipLabelProps>((props, forwardedRef) => {
-	const { setLabelId } = useSafeContext(ChipRootContext);
+	const { labelId, setLabelId } = useSafeContext(ChipRootContext);
 
-	const newId = React.useId();
-	const id = props.id ?? newId;
 	React.useEffect(() => {
-		setLabelId(id);
-	}, [setLabelId, id]);
+		setLabelId(props.id);
+	}, [setLabelId, props.id]);
 
+	const id = props.id ?? labelId;
 	return <Role.span {...props} id={id} ref={forwardedRef} />;
 });
 DEV: ChipLabel.displayName = "Chip.Label";

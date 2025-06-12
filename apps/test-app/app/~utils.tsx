@@ -127,7 +127,9 @@ const ColorSchemeContext = React.createContext<{
 /** Makes the color-scheme available to descendants (via `useColorScheme` and `useSetColorScheme`). */
 export function ColorSchemeProvider({
 	children,
-}: { children: React.ReactNode }) {
+}: {
+	children: React.ReactNode;
+}) {
 	const [colorScheme, setColorScheme] = React.useState<ColorScheme>(undefined);
 
 	return (

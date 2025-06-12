@@ -7,6 +7,6 @@
 		display: grid;
 		align-content: start;
 		overflow: auto;
-		background-color: var(--ids-color-bg-page-base);
+		background-color: var(--stratakit-color-bg-page-base);
 	}
 }

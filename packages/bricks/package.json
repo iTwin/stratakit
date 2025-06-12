@@ -1,7 +1,7 @@
 {
 	"name": "@stratakit/bricks",
 	"type": "module",
-	"version": "0.2.1",
+	"version": "0.3.0",
 	"license": "MIT",
 	"sideEffects": false,
 	"types": "./dist/index.d.ts",
@@ -25,7 +25,11 @@
 			"development": "./dist/DEV/Anchor.js"
 		}
 	},
-	"files": ["dist", "CHANGELOG.md", "LICENSE.md"],
+	"files": [
+		"dist",
+		"CHANGELOG.md",
+		"LICENSE.md"
+	],
 	"description": "Small, modular components for StrataKit",
 	"author": "Bentley Systems",
 	"homepage": "https://github.com/iTwin/design-system",
@@ -66,7 +70,7 @@
 		"typescript": "catalog:"
 	},
 	"peerDependencies": {
-		"@stratakit/foundations": "^0.1.5",
+		"@stratakit/foundations": "^0.1.6",
 		"react": ">=18.0.0",
 		"react-dom": ">=18.0.0"
 	},
@@ -81,26 +85,47 @@
 		},
 		"build:js": {
 			"command": "node scripts/build.js",
-			"files": ["src", "scripts", "../../internal"],
-			"output": ["dist/**/*.js", "!dist/DEV"]
+			"files": [
+				"src",
+				"scripts",
+				"../../internal"
+			],
+			"output": [
+				"dist/**/*.js",
+				"!dist/DEV"
+			]
 		},
 		"build:DEV": {
 			"command": "node scripts/build.js",
-			"files": ["src", "scripts", "../../internal"],
-			"output": ["dist/DEV/**/*.js"],
+			"files": [
+				"src",
+				"scripts",
+				"../../internal"
+			],
+			"output": [
+				"dist/DEV/**/*.js"
+			],
 			"env": {
 				"NODE_ENV": "development"
 			}
 		},
 		"build:types": {
 			"command": "tsc --outDir dist",
-			"files": ["src"],
-			"output": ["dist/**/*.d.ts"],
-			"dependencies": ["../foundations:build:types"]
+			"files": [
+				"src"
+			],
+			"output": [
+				"dist/**/*.d.ts"
+			],
+			"dependencies": [
+				"../foundations:build:types"
+			]
 		},
 		"dev": {
 			"command": "tsc --watch --outDir dist",
-			"files": ["src"],
+			"files": [
+				"src"
+			],
 			"service": true
 		}
 	}

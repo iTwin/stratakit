@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.6
+
+### Patch Changes
+
+- [#770](https://github.com/iTwin/design-system/pull/770): An error will now be thrown when multiple instances of `@stratakit/foundations` are detected.
+
 ## 0.1.5
 
 - [#740](https://github.com/iTwin/design-system/pull/740): Added `types` field to `package.json` file for better TypeScript support and TS icon on `npm`.

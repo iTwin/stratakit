@@ -22,7 +22,6 @@ import type { PolymorphicForwardRefComponent } from "./~utils.tsx";
 // ----------------------------------------------------------------------------
 
 type IuiDropdownMenuProps = React.ComponentProps<typeof IuiDropdownMenu>;
-type IuiDropdownButtonProps = React.ComponentProps<typeof IuiDropdownButton>;
 
 interface DropdownMenuProps
 	extends Pick<
@@ -38,8 +37,8 @@ interface DropdownMenuProps
 		| "positionReference"
 		| "portal"
 	> {
-	children: React.JSX.Element; // iTwinUI type is incorrectly more loose
 	menuItems: IuiDropdownButtonProps["menuItems"]; // These types don't match in iTwinUI
+	children: React.JSX.Element; // iTwinUI type is incorrectly more loose
 	/** NOT IMPLEMENTED. */
 	middleware?: IuiDropdownMenuProps["middleware"];
 	/** NOT IMPLEMENTED. Always true. */
@@ -54,46 +53,11 @@ interface DropdownMenuProps
 	portal?: IuiDropdownMenuProps["portal"];
 }
 
-interface DropdownButtonProps
-	extends Pick<
-		IuiDropdownButtonProps,
-		| "menuItems"
-		| "dropdownMenuProps"
-		| "styleType"
-		| "size"
-		| "stretched"
-		| "loading"
-		| "htmlDisabled"
-		| "startIcon"
-		| "startIconProps"
-		| "labelProps"
-		| "endIconProps"
-	> {
-	/** NOT IMPLEMENTED. */
-	dropdownMenuProps?: IuiDropdownButtonProps["dropdownMenuProps"];
-	/** NOT IMPLEMENTED. */
-	styleType?: IuiDropdownButtonProps["styleType"];
-	/** NOT IMPLEMENTED. */
-	size?: IuiDropdownButtonProps["size"];
-	/** NOT IMPLEMENTED. */
-	stretched?: IuiDropdownButtonProps["stretched"];
-	/** NOT IMPLEMENTED. */
-	loading?: IuiDropdownButtonProps["loading"];
-	/** NOT IMPLEMENTED. */
-	htmlDisabled?: IuiDropdownButtonProps["htmlDisabled"];
-	/** NOT IMPLEMENTED. */
-	labelProps?: IuiDropdownButtonProps["labelProps"];
-}
-
-// ----------------------------------------------------------------------------
-
 /** @see https://itwinui.bentley.com/docs/dropdownmenu */
 export const DropdownMenu = React.forwardRef((props, forwardedRef) => {
 	const {
 		children,
 		menuItems,
-		middleware, // NOT IMPLEMENTED
-		closeOnItemClick, // NOT IMPLEMENTED
 		visible,
 		onVisibleChange,
 
@@ -130,6 +94,39 @@ export const DropdownMenu = React.forwardRef((props, forwardedRef) => {
 DEV: DropdownMenu.displayName = "DropdownMenu";
 
 // ----------------------------------------------------------------------------
+
+type IuiDropdownButtonProps = React.ComponentProps<typeof IuiDropdownButton>;
+
+interface DropdownButtonProps
+	extends Pick<
+		IuiDropdownButtonProps,
+		| "menuItems"
+		| "styleType"
+		| "dropdownMenuProps"
+		| "size"
+		| "startIcon"
+		| "labelProps"
+		| "startIconProps"
+		| "endIconProps"
+		| "stretched"
+		| "loading"
+		| "htmlDisabled"
+	> {
+	/** NOT IMPLEMENTED. */
+	styleType?: IuiDropdownButtonProps["styleType"];
+	/** NOT IMPLEMENTED. */
+	dropdownMenuProps?: IuiDropdownButtonProps["dropdownMenuProps"];
+	/** NOT IMPLEMENTED. */
+	size?: IuiDropdownButtonProps["size"];
+	/** NOT IMPLEMENTED. */
+	labelProps?: IuiDropdownButtonProps["labelProps"];
+	/** NOT IMPLEMENTED. */
+	stretched?: IuiDropdownButtonProps["stretched"];
+	/** NOT IMPLEMENTED. */
+	loading?: IuiDropdownButtonProps["loading"];
+	/** NOT IMPLEMENTED. */
+	htmlDisabled?: IuiDropdownButtonProps["htmlDisabled"];
+}
 
 /** @see https://itwinui.bentley.com/docs/button#dropdownbutton */
 export const DropdownButton = React.forwardRef((props, forwardedRef) => {

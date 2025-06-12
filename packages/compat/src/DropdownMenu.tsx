@@ -3,7 +3,6 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import { Button as SkButton } from "@stratakit/bricks";
 import { DisclosureArrow as SkDisclosureArrow } from "@stratakit/bricks/secret-internals";
 import {
 	useControlledState,
@@ -11,6 +10,7 @@ import {
 } from "@stratakit/foundations/secret-internals";
 import { DropdownMenu as SkDropdownMenu } from "@stratakit/structures";
 import * as React from "react";
+import { Button } from "./Button.js";
 import { useCompatProps } from "./~utils.tsx";
 
 import type {
@@ -118,10 +118,6 @@ interface DropdownButtonProps
 		| "htmlDisabled"
 	> {
 	/** NOT IMPLEMENTED. */
-	styleType?: IuiDropdownButtonProps["styleType"];
-	/** NOT IMPLEMENTED. */
-	dropdownMenuProps?: IuiDropdownButtonProps["dropdownMenuProps"];
-	/** NOT IMPLEMENTED. */
 	size?: IuiDropdownButtonProps["size"];
 	/** NOT IMPLEMENTED. */
 	labelProps?: IuiDropdownButtonProps["labelProps"];
@@ -129,41 +125,18 @@ interface DropdownButtonProps
 	stretched?: IuiDropdownButtonProps["stretched"];
 	/** NOT IMPLEMENTED. */
 	loading?: IuiDropdownButtonProps["loading"];
-	/** NOT IMPLEMENTED. */
-	htmlDisabled?: IuiDropdownButtonProps["htmlDisabled"];
 }
 
 /** @see https://itwinui.bentley.com/docs/button#dropdownbutton */
 export const DropdownButton = React.forwardRef((props, forwardedRef) => {
-	const {
-		children,
-		menuItems,
-		dropdownMenuProps,
-
-		// biome-ignore-start lint/correctness/noUnusedVariables: NOT IMPLEMENTED
-		styleType,
-		size,
-		stretched,
-		loading,
-		htmlDisabled,
-		startIcon,
-		startIconProps,
-		labelProps,
-		// biome-ignore-end lint/correctness/noUnusedVariables: NOT IMPLEMENTED
-
-		endIconProps,
-		...rest
-	} = useCompatProps(props);
+	const { children, menuItems, dropdownMenuProps, ...rest } =
+		useCompatProps(props);
 
 	return (
 		<DropdownMenu menuItems={menuItems} {...dropdownMenuProps}>
-			<SkButton {...rest} ref={forwardedRef}>
+			<Button {...rest} endIcon={<SkDisclosureArrow />} ref={forwardedRef}>
 				{children}
-				<SkDisclosureArrow
-					{...(endIconProps as React.ComponentProps<"svg">)}
-					direction={undefined}
-				/>
-			</SkButton>
+			</Button>
 		</DropdownMenu>
 	);
 }) as PolymorphicForwardRefComponent<"button", DropdownButtonProps>;

@@ -3,15 +3,15 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 .🥝-avatar {
-	--✨shadow-border: 0px 0px 0px 1px var(--ids-color-border-glow-strong-default) inset;
+	--✨shadow-border: 0px 0px 0px 1px var(--stratakit-color-border-glow-strong-default) inset;
 
 	@layer base {
-		--🥝avatar-background-color: var(--ids-color-bg-mono-base);
+		--🥝avatar-background-color: var(--stratakit-color-bg-mono-base);
 
 		block-size: var(--🥝avatar-size);
 		inline-size: var(--🥝avatar-size);
 		background-color: var(--🥝avatar-background-color);
-		color: var(--ids-color-text-neutral-emphasis);
+		color: var(--stratakit-color-text-neutral-emphasis);
 		display: inline-grid;
 		place-items: center;
 		border-radius: 50%;
@@ -43,25 +43,25 @@
 	@layer modifiers {
 		&:where([data-kiwi-size="small"]) {
 			--🥝avatar-size: 1rem;
-			--🥝avatar-font-size: var(--ids-font-size-8);
+			--🥝avatar-font-size: var(--stratakit-font-size-8);
 			--🥝icon-size: 0.75rem;
 		}
 
 		&:where([data-kiwi-size="medium"]) {
 			--🥝avatar-size: 1.5rem;
-			--🥝avatar-font-size: var(--ids-font-size-10);
+			--🥝avatar-font-size: var(--stratakit-font-size-10);
 			--🥝icon-size: 1rem;
 		}
 
 		&:where([data-kiwi-size="large"]) {
 			--🥝avatar-size: 2rem;
-			--🥝avatar-font-size: var(--ids-font-size-12);
+			--🥝avatar-font-size: var(--stratakit-font-size-12);
 			--🥝icon-size: 1rem;
 		}
 
 		&:where([data-kiwi-size="xlarge"]) {
 			--🥝avatar-size: 3rem;
-			--🥝avatar-font-size: var(--ids-font-size-16);
+			--🥝avatar-font-size: var(--stratakit-font-size-16);
 			--🥝icon-size: 1.5rem;
 		}
 	}

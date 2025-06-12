@@ -37,10 +37,10 @@
 		display: var(--🥝error-region-container-display, flex);
 		flex-direction: column;
 
-		border: 1px solid var(--ids-color-border-attention-base);
+		border: 1px solid var(--stratakit-color-border-attention-base);
 		border-radius: 8px;
-		background-color: var(--ids-color-bg-elevation-base);
-		box-shadow: var(--ids-shadow-surface-sm);
+		background-color: var(--stratakit-color-bg-elevation-base);
+		box-shadow: var(--stratakit-shadow-surface-sm);
 
 		@media (prefers-reduced-motion: no-preference) {
 			&::before {
@@ -75,7 +75,7 @@
 
 .🥝-error-region-icon {
 	@layer base {
-		--🥝icon-color: var(--ids-color-icon-attention-base);
+		--🥝icon-color: var(--stratakit-color-icon-attention-base);
 	}
 }
 
@@ -132,7 +132,7 @@
 	--✨header-size: 2rem;
 
 	@layer base {
-		border-block-start: 1px solid var(--ids-color-border-page-base);
+		border-block-start: 1px solid var(--stratakit-color-border-page-base);
 
 		overflow: auto;
 		max-block-size: calc(
@@ -159,7 +159,7 @@
 		padding-inline-end: 4px;
 
 		&:where(:not(:nth-child(1 of &))) {
-			border-block-start: 1px solid var(--ids-color-border-page-base);
+			border-block-start: 1px solid var(--stratakit-color-border-page-base);
 		}
 	}
 }

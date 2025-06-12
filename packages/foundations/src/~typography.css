@@ -4,9 +4,9 @@
  *--------------------------------------------------------------------------------------------*/
 :root,
 :host {
-	--ids-font-family-sans: "InterVariable", "Noto Sans", "Open Sans", sans-serif;
-	--ids-font-family-mono: "Geist Mono", "Noto Sans Mono", ui-monospace, "Segoe UI Mono", Consolas,
-		monospace;
+	--stratakit-font-family-sans: "InterVariable", "Noto Sans", "Open Sans", sans-serif;
+	--stratakit-font-family-mono: "Geist Mono", "Noto Sans Mono", ui-monospace, "Segoe UI Mono",
+		Consolas, monospace;
 
 	@apply --typography-tokens;
 }

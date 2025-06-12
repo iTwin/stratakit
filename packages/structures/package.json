@@ -13,7 +13,7 @@
 			"default": "./dist/index.js"
 		},
 		"./package.json": "./package.json",
-		"./chip": {
+		"./Chip": {
 			"@stratakit/source": "./src/Chip.tsx",
 			"types": "./dist/Chip.d.ts",
 			"development": "./dist/DEV/Chip.js",

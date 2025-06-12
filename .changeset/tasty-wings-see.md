@@ -20,26 +20,6 @@ import * as Chip from "@stratakit/structures/Chip";
 	<Chip.Label>Label</Chip.Label>
 	<Chip.DismissButton />
 </Chip.Root>;
-
-// Compositional using named import
-import {
-	Root as ChipRoot,
-	Label as ChipLabel,
-	DismissButton as ChipDismissButton,
-} from "@stratakit/structures/Chip";
-
-<ChipRoot>
-	<ChipLabel>Label</ChipLabel>
-	<ChipDismissButton />
-</ChipRoot>;
-
-// Importing both compositional and convenience components
-import Chip, {
-	default as Chip,
-	Root as ChipRoot,
-	Label as ChipLabel,
-	DismissButton as ChipDismissButton,
-} from "@stratakit/structures/Chip";
 ```
 
 Compositional components are useful for building custom components that require more control over the structure and behavior, while convenience components provide a ready-to-use solution for common use cases.

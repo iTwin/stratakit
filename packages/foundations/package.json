@@ -18,19 +18,7 @@
 			"development": "./dist/DEV/secret-internals.js",
 			"default": "./dist/secret-internals.js"
 		},
-		"./package.json": "./package.json",
-		"./Icon": {
-			"@stratakit/source": "./src/Icon.tsx",
-			"types": "./dist/Icon.d.ts",
-			"development": "./dist/DEV/Icon.js",
-			"default": "./dist/Icon.js"
-		},
-		"./Root": {
-			"@stratakit/source": "./src/Root.tsx",
-			"types": "./dist/Root.d.ts",
-			"development": "./dist/DEV/Root.js",
-			"default": "./dist/Root.js"
-		}
+		"./package.json": "./package.json"
 	},
 	"files": [
 		"dist",

@@ -70,7 +70,7 @@ interface IconProps extends Omit<BaseProps<"svg">, "children"> {
  * <Icon href={…} alt="Help" />
  * ```
  */
-const Icon = forwardRef<"svg", IconProps>((props, forwardedRef) => {
+export const Icon = forwardRef<"svg", IconProps>((props, forwardedRef) => {
 	const { href: hrefProp, size, alt, ...rest } = props;
 
 	const isDecorative = !alt;
@@ -210,7 +210,3 @@ function isHttpProtocol(url: string, ownerDocument: Document) {
 	const { protocol } = new URL(url, ownerDocument.baseURI);
 	return ["http:", "https:"].includes(protocol);
 }
-
-// ----------------------------------------------------------------------------
-
-export default Icon;

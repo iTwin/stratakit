@@ -79,7 +79,7 @@ interface RootProps extends BaseProps {
  * </Root>
  * ```
  */
-const Root = forwardRef<"div", RootProps>((props, forwardedRef) => {
+export const Root = forwardRef<"div", RootProps>((props, forwardedRef) => {
 	const {
 		children,
 		synchronizeColorScheme = false,
@@ -401,7 +401,3 @@ function getWindow(node: Node) {
 	const ownerDocument = getOwnerDocument(node);
 	return ownerDocument?.defaultView || null;
 }
-
-// ----------------------------------------------------------------------------
-
-export default Root;

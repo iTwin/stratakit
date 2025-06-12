@@ -3,9 +3,8 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import { Anchor as AnchorComposition } from "@stratakit/bricks";
-import Anchor from "@stratakit/bricks/anchor";
-import { Icon } from "@stratakit/foundations";
+import { Anchor } from "@stratakit/bricks";
+import * as AnchorComposition from "@stratakit/bricks/Anchor";
 import placeholderHref from "@stratakit/icons/placeholder.svg";
 import windowPopoutIconHref from "@stratakit/icons/window-popout.svg";
 import { definePage } from "~/~utils.tsx";
@@ -17,9 +16,19 @@ export default definePage(
 		const render = renderParam ? <button /> : undefined;
 		return (
 			<>
-				<Anchor href="#main" disabled={!!disabled} render={render}>
-					Hello
-				</Anchor>
+				<div style={{ display: "flex", gap: 4 }}>
+					<Anchor href="#main" disabled={!!disabled} render={render}>
+						Hello (convenience API)
+					</Anchor>
+
+					<AnchorComposition.Root
+						href="#main"
+						disabled={!!disabled}
+						render={render}
+					>
+						Hello (compositional API)
+					</AnchorComposition.Root>
+				</div>
 
 				<article id="main" tabIndex={-1}>
 					Main content
@@ -57,12 +66,12 @@ function VisualTest() {
 						>
 							<AnchorComposition.Icon
 								alt="External link"
-								icon={<Icon href={windowPopoutIconHref} />}
+								href={windowPopoutIconHref}
 							/>
 							External
 							<AnchorComposition.Icon
 								alt="External link"
-								icon={<Icon href={windowPopoutIconHref} />}
+								href={windowPopoutIconHref}
 							/>
 						</Anchor>
 
@@ -77,12 +86,12 @@ function VisualTest() {
 						>
 							<AnchorComposition.Icon
 								alt="External link"
-								icon={<Icon href={windowPopoutIconHref} />}
+								href={windowPopoutIconHref}
 							/>
 							External
 							<AnchorComposition.Icon
 								alt="External link"
-								icon={<Icon href={windowPopoutIconHref} />}
+								href={windowPopoutIconHref}
 							/>
 						</AnchorComposition.Root>
 
@@ -95,12 +104,12 @@ function VisualTest() {
 						>
 							<AnchorComposition.Icon
 								alt="External link"
-								icon={<Icon href={placeholderHref} />}
+								href={placeholderHref}
 							/>
 							External
 							<AnchorComposition.Icon
 								alt="External link"
-								icon={<Icon href={placeholderHref} />}
+								href={placeholderHref}
 							/>
 						</AnchorComposition.Root>
 					</div>

@@ -10,14 +10,14 @@ export const handle = { title: "Anchor" };
 
 export default definePage(function Page() {
 	return (
-		<div style={{ display: "grid", gap: 4 }}>
+		<div style={{ display: "grid", gap: 4, justifyItems: "flex-start" }}>
 			<Anchor href="https://example.com">Example</Anchor>
 			<Anchor href="https://example.com" isExternal target="_blank">
 				External
 			</Anchor>
 			<Anchor as="button">Example (as button)</Anchor>
 			<Anchor as="button" isExternal>
-				Example (as button)
+				External (as button)
 			</Anchor>
 		</div>
 	);

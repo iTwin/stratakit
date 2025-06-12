@@ -19,10 +19,11 @@
 			"default": "./dist/secret-internals.js"
 		},
 		"./package.json": "./package.json",
-		"./anchor": {
-			"default": "./dist/Anchor.js",
+		"./Anchor": {
+			"@stratakit/source": "./src/Anchor.tsx",
 			"types": "./dist/Anchor.d.ts",
-			"development": "./dist/DEV/Anchor.js"
+			"development": "./dist/DEV/Anchor.js",
+			"default": "./dist/Anchor.js"
 		}
 	},
 	"files": [

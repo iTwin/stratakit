@@ -8,12 +8,9 @@ import { Role } from "@ariakit/react/role";
 import { Icon } from "@stratakit/foundations";
 import { forwardRef } from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
-import * as React from "react";
 
-import type {
-	BaseProps,
-	FocusableProps,
-} from "@stratakit/foundations/secret-internals";
+import type * as React from "react";
+import type { FocusableProps } from "@stratakit/foundations/secret-internals";
 
 interface AnchorRootProps extends FocusableProps<"a"> {
 	/** @default "neutral" */
@@ -23,27 +20,27 @@ interface AnchorRootProps extends FocusableProps<"a"> {
 /**
  * A styled anchor element, typically used for navigating to a different location.
  *
- * Supports the convenience API and the composition API.
+ * Supports the convenience API (lesser code) and the composition API (more customization).
  *
  * Example:
  * ```tsx
- * import Anchor from "@stratakit/bricks/anchor"; // Convenience API
- * import { Anchor as AnchorComposition } from "@stratakit/bricks"; // Composition API
+ * import { Anchor } from "@stratakit/bricks"; // Convenience API
+ * import * as AnchorComposition from "@stratakit/bricks/Anchor"; // Composition API
  *
  * <Anchor href="https://www.example.com">Example</Anchor>
  * <AnchorComposition.Root href="https://www.example.com">Example</AnchorComposition.Root>
  * ```
  *
- * Example of using icons:
+ * Example (using icons):
  * ```tsx
- * import { Anchor } from "@stratakit/bricks";
+ * import * as Anchor from "@stratakit/bricks/Anchor";
  * import windowPopoutIconHref from "@stratakit/icons/window-popout.svg";
  *
  * <Anchor.Root
  *   href="https://www.example.com"
  * >
- *   Click here
- *   <Anchor.Icon icon={windowPopoutIconHref} />
+ *   Open in new window
+ *   <Anchor.Icon href={windowPopoutIconHref} alt="External link" />
  * </Anchor.Root>
  * ```
  *
@@ -65,45 +62,61 @@ const AnchorRoot = forwardRef<"a", AnchorRootProps>((props, forwardedRef) => {
 });
 DEV: AnchorRoot.displayName = "Anchor.Root";
 
-export interface AnchorIconProps extends BaseProps<"svg"> {
-	/**
-	 * Alternative text describing the icon.
-	 */
-	alt?: string;
+interface AnchorIconProps extends React.ComponentProps<typeof Icon> {}
 
-	/**
-	 * Icon to be displayed.
-	 */
-	icon?: string | React.JSX.Element | undefined;
-}
-
-/** Icon component for external links. */
+/**
+ * Component for icons in the `Anchor`.
+ * A static icon decoration for the `Anchor.Root` component. Can be added before or after the main anchor content.
+ *
+ * Example:
+ * ```tsx
+ * import * as Anchor from "@stratakit/bricks/Anchor";
+ * import windowPopoutIconHref from "@stratakit/icons/window-popout.svg";
+ *
+ * <Anchor.Root
+ *   href="https://www.example.com"
+ * >
+ *   Open in new window
+ *   <Anchor.Icon href={windowPopoutIconHref} alt="External link" />
+ * </Anchor.Root>
+ * ```
+ */
 const AnchorIcon = forwardRef<"svg", AnchorIconProps>((props, forwardedRef) => {
-	const fallbackId = React.useId();
-	const { id = fallbackId, alt, icon, ...rest } = props;
-
-	return icon ? (
-		<Role
-			className="🥝-anchor-icon"
-			id={id}
-			render={
-				React.isValidElement(icon) ? (
-					icon
-				) : typeof icon === "string" ? (
-					<Icon href={icon} ref={forwardedRef} {...rest} />
-				) : undefined
-			}
+	return (
+		<Icon
+			{...props}
+			className={cx("🥝-anchor-icon", props.className)}
+			ref={forwardedRef}
 		/>
-	) : null;
+	);
 });
 DEV: AnchorIcon.displayName = "Anchor.Icon";
 
 /**
  * A styled anchor element, typically used for navigating to a different location.
  *
+ * Supports the convenience API (lesser code) and the composition API (more customization).
+ *
  * Example:
  * ```tsx
+ * import { Anchor } from "@stratakit/bricks"; // Convenience API
+ * import * as AnchorComposition from "@stratakit/bricks/Anchor"; // Composition API
+ *
  * <Anchor href="https://www.example.com">Example</Anchor>
+ * <AnchorComposition.Root href="https://www.example.com">Example</AnchorComposition.Root>
+ * ```
+ *
+ * Example (using icons):
+ * ```tsx
+ * import * as Anchor from "@stratakit/bricks/Anchor";
+ * import windowPopoutIconHref from "@stratakit/icons/window-popout.svg";
+ *
+ * <Anchor.Root
+ *   href="https://www.example.com"
+ * >
+ *   Open in new window
+ *   <Anchor.Icon href={windowPopoutIconHref} alt="External link" />
+ * </Anchor.Root>
  * ```
  *
  * Supports a `tone` prop to change the tone (color) of the anchor.

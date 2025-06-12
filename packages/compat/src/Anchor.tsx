@@ -3,7 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import { Anchor as SkAnchor } from "@stratakit/bricks";
+import * as SkAnchor from "@stratakit/bricks/Anchor";
 import windowPopoutIcon from "@stratakit/icons/window-popout.svg";
 import * as React from "react";
 import { useCompatProps } from "./~utils.tsx";

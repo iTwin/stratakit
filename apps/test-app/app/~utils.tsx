@@ -3,8 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import { IconButton } from "@stratakit/bricks";
-import Anchor from "@stratakit/bricks/anchor";
+import { Anchor, IconButton } from "@stratakit/bricks";
 import cx from "classnames";
 import * as React from "react";
 import * as ReactDOM from "react-dom";

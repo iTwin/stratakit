@@ -24,7 +24,7 @@ import * as Chip from "@stratakit/structures/Chip";
 </Chip.Root>;
 ```
 
-Compositional components are useful for building custom components that require more control over the structure and behavior, while convenience components provide a ready-to-use solution for common use cases.
+Compositional components are useful for building custom components that require more control over the structure and behavior, while convenience components provide a ready-to-use solution for common use cases. See [#405](https://github.com/iTwin/design-system/discussions/405) for more details.
 
 APIs exported from the barrel file are not changed in this release. Some exported components are compositional, while others are convenience components.
 

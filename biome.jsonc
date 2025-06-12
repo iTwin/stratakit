@@ -35,9 +35,7 @@
 				"noDuplicateProperties": "off",
 				"noConfusingLabels": "off"
 			},
-			"nursery": {
-				"noImportCycles": "info"
-			},
+			"nursery": "off",
 			"a11y": "off",
 			"style": {
 				"noDescendingSpecificity": "off",

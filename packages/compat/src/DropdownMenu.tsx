@@ -37,7 +37,6 @@ interface DropdownMenuProps
 		| "positionReference"
 		| "portal"
 	> {
-	menuItems: IuiDropdownButtonProps["menuItems"]; // These types don't match in iTwinUI
 	children: React.JSX.Element; // iTwinUI type is incorrectly more loose
 	/** NOT IMPLEMENTED. */
 	middleware?: IuiDropdownMenuProps["middleware"];

@@ -7,7 +7,12 @@
 		"./*.svg": "./icons/*.svg",
 		"./icons-list.json": "./icons-list.json"
 	},
-	"files": ["icons/*.svg", "icons-list.json", "LICENSE.md", "CHANGELOG.md"],
+	"files": [
+		"icons/*.svg",
+		"icons-list.json",
+		"LICENSE.md",
+		"CHANGELOG.md"
+	],
 	"description": "A standalone SVG icon library for StrataKit",
 	"author": "Bentley Systems",
 	"homepage": "https://github.com/iTwin/design-system",
@@ -16,15 +21,26 @@
 		"url": "https://github.com/iTwin/design-system.git",
 		"directory": "packages/icons"
 	},
-	"keywords": ["itwinui", "strata", "stratakit", "svg", "icons"],
+	"keywords": [
+		"itwinui",
+		"strata",
+		"stratakit",
+		"svg",
+		"icons"
+	],
 	"scripts": {
 		"build": "wireit"
 	},
 	"wireit": {
 		"build": {
 			"command": "tsx scripts/icons-list.cts",
-			"files": ["icons", "scripts"],
-			"output": ["icons-list.json"]
+			"files": [
+				"icons",
+				"scripts"
+			],
+			"output": [
+				"icons-list.json"
+			]
 		}
 	}
 }

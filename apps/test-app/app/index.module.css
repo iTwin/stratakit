@@ -12,7 +12,7 @@
 }
 
 .hgroup {
-	border-block-end: 1px solid var(--ids-color-border-neutral-base);
+	border-block-end: 1px solid var(--stratakit-color-border-neutral-base);
 
 	> * {
 		margin-block-end: 0.5rem;

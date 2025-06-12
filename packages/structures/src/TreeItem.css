@@ -58,8 +58,8 @@
 
 	@layer modifiers {
 		&:where([data-kiwi-error="true"]) {
-			--🥝icon-color: var(--ids-color-icon-attention-base);
-			--🥝tree-item-color: var(--ids-color-text-attention-base);
+			--🥝icon-color: var(--stratakit-color-icon-attention-base);
+			--🥝tree-item-color: var(--stratakit-color-text-attention-base);
 		}
 	}
 
@@ -88,7 +88,7 @@
 	@layer base {
 		color: var(
 			--🥝tree-item-color,
-			var(--🌀list-item-state--default, var(--ids-color-text-neutral-secondary))
+			var(--🌀list-item-state--default, var(--stratakit-color-text-neutral-secondary))
 		);
 	}
 }
@@ -99,7 +99,7 @@
 		position: sticky;
 		inset-inline-end: 0;
 		padding-inline-end: 4px;
-		background-color: var(--ids-color-bg-page-base);
+		background-color: var(--stratakit-color-bg-page-base);
 		display: inline-flex;
 		/** If actions are made visible (by a parent), the actions container should also become visible. */
 		visibility: var(

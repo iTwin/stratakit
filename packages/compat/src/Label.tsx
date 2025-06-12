@@ -3,7 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import { Label as SkLabel } from "@stratakit/bricks";
+import { Field as SkField } from "@stratakit/bricks";
 import * as React from "react";
 import { useCompatProps } from "./~utils.tsx";
 
@@ -25,11 +25,15 @@ interface LabelProps
 /** @see https://itwinui.bentley.com/docs/label */
 export const Label = React.forwardRef((props, forwardedRef) => {
 	const {
-		displayStyle, // NOT IMPLEMENTED
-		disabled, // NOT IMPLEMENTED
-		required, // NOT IMPLEMENTED
+		// biome-ignore-start lint/correctness/noUnusedVariables: NOT IMPLEMENTED
+		displayStyle,
+		disabled,
+		required,
+		// biome-ignore-end lint/correctness/noUnusedVariables: NOT IMPLEMENTED
+
 		...rest
 	} = useCompatProps(props);
-	return <SkLabel {...rest} ref={forwardedRef} />;
+
+	return <SkField.Label {...rest} ref={forwardedRef} />;
 }) as PolymorphicForwardRefComponent<"label", LabelProps>;
 DEV: Label.displayName = "Label";

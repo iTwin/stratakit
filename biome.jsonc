@@ -1,5 +1,5 @@
 {
-	"$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
+	"$schema": "https://biomejs.dev/schemas/2.0.0-beta.6/schema.json",
 	"files": {
 		"ignoreUnknown": true
 	},
@@ -16,8 +16,12 @@
 			"enabled": true
 		}
 	},
-	"organizeImports": {
-		"enabled": true
+	"assist": {
+		"actions": {
+			"source": {
+				"organizeImports": "off"
+			}
+		}
 	},
 	"linter": {
 		"rules": {
@@ -27,10 +31,13 @@
 				"noUnusedLabels": "off"
 			},
 			"suspicious": {
+				"noDuplicateCustomProperties": "off",
+				"noDuplicateProperties": "off",
 				"noConfusingLabels": "off"
 			},
-			"a11y": { "all": false },
-			"nursery": {
+			"a11y": "off",
+			"style": {
+				"noDescendingSpecificity": "off",
 				"noRestrictedImports": {
 					"level": "warn",
 					"options": {

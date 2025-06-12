@@ -3,7 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import { Label as SkLabel } from "@stratakit/bricks";
+import { Field as SkField } from "@stratakit/bricks";
 import * as React from "react";
 import { useCompatProps } from "./~utils.tsx";
 
@@ -33,6 +33,7 @@ export const Label = React.forwardRef((props, forwardedRef) => {
 
 		...rest
 	} = useCompatProps(props);
-	return <SkLabel {...rest} ref={forwardedRef} />;
+
+	return <SkField.Label {...rest} ref={forwardedRef} />;
 }) as PolymorphicForwardRefComponent<"label", LabelProps>;
 DEV: Label.displayName = "Label";

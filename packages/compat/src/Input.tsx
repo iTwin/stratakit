@@ -28,6 +28,7 @@ interface InputProps
 /** @see https://itwinui.bentley.com/docs/input */
 export const Input = React.forwardRef((props, forwardedRef) => {
 	const {
+		id,
 		htmlSize,
 
 		// biome-ignore-start lint/correctness/noUnusedVariables: NOT IMPLEMENTED
@@ -42,6 +43,7 @@ export const Input = React.forwardRef((props, forwardedRef) => {
 
 	return (
 		<Field.Control
+			id={id}
 			render={
 				<TextBox.Input
 					{...rest}

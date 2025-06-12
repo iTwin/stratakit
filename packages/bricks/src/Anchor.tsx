@@ -18,12 +18,12 @@ interface AnchorRootProps extends FocusableProps<"a"> {
 /**
  * A styled anchor element, typically used for navigating to a different location.
  *
- * Supports the convenience API and the composition API.
+ * Supports the convenience API (lesser code) and the composition API (more customization).
  *
  * Example:
  * ```tsx
- * import Anchor from "@stratakit/bricks/anchor"; // Convenience API
- * import { Anchor as AnchorComposition } from "@stratakit/bricks"; // Composition API
+ * import { Anchor } from "@stratakit/bricks"; // Convenience API
+ * import * as AnchorComposition from "@stratakit/bricks/Anchor"; // Composition API
  *
  * <Anchor href="https://www.example.com">Example</Anchor>
  * <AnchorComposition.Root href="https://www.example.com">Example</AnchorComposition.Root>
@@ -50,9 +50,15 @@ DEV: AnchorRoot.displayName = "Anchor.Root";
 /**
  * A styled anchor element, typically used for navigating to a different location.
  *
+ * Supports the convenience API (lesser code) and the composition API (more customization).
+ *
  * Example:
  * ```tsx
+ * import { Anchor } from "@stratakit/bricks"; // Convenience API
+ * import * as AnchorComposition from "@stratakit/bricks/Anchor"; // Composition API
+ *
  * <Anchor href="https://www.example.com">Example</Anchor>
+ * <AnchorComposition.Root href="https://www.example.com">Example</AnchorComposition.Root>
  * ```
  *
  * Supports a `tone` prop to change the tone (color) of the anchor.

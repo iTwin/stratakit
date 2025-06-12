@@ -57,7 +57,7 @@ interface DropdownMenuProps
 export const DropdownMenu = React.forwardRef((props, forwardedRef) => {
 	const {
 		children,
-		menuItems,
+		menuItems: menuItemsProp,
 		visible,
 		onVisibleChange,
 
@@ -81,12 +81,17 @@ export const DropdownMenu = React.forwardRef((props, forwardedRef) => {
 
 	const close = useUnreactiveCallback(() => setOpen(false));
 
+	const menuItems = React.useMemo(() => {
+		if (typeof menuItemsProp === "function") return menuItemsProp(close);
+		return menuItemsProp;
+	}, [menuItemsProp, close]);
+
 	return (
 		<SkDropdownMenu.Root open={open} setOpen={setOpen}>
 			<SkDropdownMenu.Button render={children} />
 
 			<SkDropdownMenu.Content {...rest} ref={forwardedRef}>
-				{typeof menuItems === "function" ? menuItems(close) : menuItems}
+				{menuItems}
 			</SkDropdownMenu.Content>
 		</SkDropdownMenu.Root>
 	);

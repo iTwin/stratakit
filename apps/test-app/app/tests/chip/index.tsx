@@ -8,7 +8,7 @@ import {
 	DismissButton as ChipDismiss,
 	Label as ChipLabel,
 	Root as ChipRoot,
-} from "@stratakit/structures/chip";
+} from "@stratakit/structures/Chip";
 import * as React from "react";
 import { definePage } from "~/~utils.tsx";
 

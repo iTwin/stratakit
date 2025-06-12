@@ -26,10 +26,28 @@
 							{ "type": false, "source": "react*" }, // framework (react)
 							{
 								"type": false,
-								"source": [":PACKAGE:", "!@stratakit/icons/*.svg"]
+								"source": [
+									":PACKAGE_WITH_PROTOCOL:",
+									":PACKAGE:",
+									"!**/*.css*",
+									"!**/*.svg"
+								]
 							}, // libraries
-							{ "type": false, "source": [":PATH:", ":ALIAS:", "!**/*.css*"] }, // relative and absolute paths
-							// { "type": false, "source": "~/**" }, // tilde paths
+							{
+								"type": false,
+								"source": [":PATH:", "!**/*.css*", "!**/*.svg"]
+							}, // relative and absolute paths
+							{
+								"type": false,
+								"source": [
+									":BUN:",
+									":ALIAS:",
+									":NODE:",
+									":URL:",
+									"!**/*.css*",
+									"!**/*.svg"
+								]
+							}, // all other unmatched imports
 							":BLANK_LINE:",
 							{ "type": true }, // type imports
 							":BLANK_LINE:",

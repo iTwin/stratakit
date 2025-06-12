@@ -1,1 +1,0 @@
-import{o as r}from"./chunk-NL6KNZEE-Bu0nOl7T.js";import{f as n,I as s,R as a}from"./sun-CoFXKeEw.js";function l(e){return n((o,t)=>r.jsx(s,{render:r.jsx(a.svg,{width:"16",height:"16",fill:"none",viewBox:"0 0 16 16",...o,ref:t,children:r.jsx("path",{fill:"currentColor",d:e})})}))}export{l as c};

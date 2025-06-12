@@ -4,5 +4,5 @@
  *--------------------------------------------------------------------------------------------*/
 "use client";
 
-export { Root } from "./Root.js";
-export { Icon } from "./Icon.js";
+export { default as Root } from "./Root.js";
+export { default as Icon } from "./Icon.js";

@@ -46,3 +46,10 @@ import Chip, {
 Compositional components are useful for building custom components that require more control over the structure and behavior, while convenience components provide a ready-to-use solution for common use cases.
 
 APIs exported from the barrel files are not changed. Some exported components are compositional, while others are convenience components.
+
+```tsx
+// Chip is exported as a convenience API in the barrel file:
+import { Chip } from "@stratakit/structures";
+
+<Chip />;
+```

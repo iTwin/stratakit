@@ -2,8 +2,6 @@
 
 ## 0.2.2
 
-### Patch Changes
-
 - [#756](https://github.com/iTwin/design-system/pull/756): `DropdownMenu.Button` will now ignore `render={undefined}`.
 - [#755](https://github.com/iTwin/design-system/pull/755): Updated the code for icons used internally by components.
 - Updated dependencies:

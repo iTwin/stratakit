@@ -2,12 +2,12 @@
 
 ## 0.3.0
 
-### Minor Changes
+### Breaking changes
 
 - [#758](https://github.com/iTwin/design-system/pull/758): Removed `onToggle` prop from `Switch` types to prevent misuse of unapplicable props.
 - [#742](https://github.com/iTwin/design-system/pull/742): Removed `size="small"` from `ProgressBar`.
 
-### Patch Changes
+### Non-breaking changes
 
 - [#755](https://github.com/iTwin/design-system/pull/755): Updated the code for icons used internally by components.
 - [#767](https://github.com/iTwin/design-system/pull/767): Removed unused `children` prop from 'AvatarProps` type.

@@ -2,8 +2,6 @@
 
 ## 0.1.2
 
-### Patch Changes
-
 - [#754](https://github.com/iTwin/design-system/pull/754): Added icons:
 
   - `inspection.svg`

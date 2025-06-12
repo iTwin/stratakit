@@ -2,8 +2,6 @@
 
 ## 0.1.6
 
-### Patch Changes
-
 - [#770](https://github.com/iTwin/design-system/pull/770): An error will now be thrown when multiple instances of `@stratakit/foundations` are detected.
 
 ## 0.1.5

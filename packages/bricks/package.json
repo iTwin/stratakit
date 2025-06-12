@@ -1,7 +1,7 @@
 {
 	"name": "@stratakit/bricks",
 	"type": "module",
-	"version": "0.2.1",
+	"version": "0.3.0",
 	"license": "MIT",
 	"sideEffects": false,
 	"types": "./dist/index.d.ts",
@@ -65,7 +65,7 @@
 		"typescript": "catalog:"
 	},
 	"peerDependencies": {
-		"@stratakit/foundations": "^0.1.5",
+		"@stratakit/foundations": "^0.1.6",
 		"react": ">=18.0.0",
 		"react-dom": ">=18.0.0"
 	},

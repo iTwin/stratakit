@@ -52,9 +52,9 @@ export const Button = React.forwardRef((props, forwardedRef) => {
 		startIconProps,
 		endIconProps,
 		htmlDisabled,
+		size,
 
 		// biome-ignore-start lint/correctness/noUnusedVariables: NOT IMPLEMENTED
-		size,
 		labelProps,
 		stretched,
 		loading,

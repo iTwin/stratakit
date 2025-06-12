@@ -3,8 +3,8 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import { Anchor as AnchorComposition } from "@stratakit/bricks";
-import Anchor from "@stratakit/bricks/anchor";
+import { Anchor } from "@stratakit/bricks";
+import * as AnchorComposition from "@stratakit/bricks/Anchor";
 import { definePage } from "~/~utils.tsx";
 
 export const handle = { title: "Anchor" };
@@ -14,17 +14,19 @@ export default definePage(
 		const render = renderParam ? <button /> : undefined;
 		return (
 			<>
-				<Anchor href="#main" disabled={!!disabled} render={render}>
-					Hello
-				</Anchor>
+				<div style={{ display: "flex", gap: 4 }}>
+					<Anchor href="#main" disabled={!!disabled} render={render}>
+						Hello (convenience API)
+					</Anchor>
 
-				<AnchorComposition.Root
-					href="#main"
-					disabled={!!disabled}
-					render={render}
-				>
-					Hello
-				</AnchorComposition.Root>
+					<AnchorComposition.Root
+						href="#main"
+						disabled={!!disabled}
+						render={render}
+					>
+						Hello (compositional API)
+					</AnchorComposition.Root>
+				</div>
 
 				<article id="main" tabIndex={-1}>
 					Main content

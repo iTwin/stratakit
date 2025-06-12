@@ -1,21 +1,19 @@
 ---
-"@stratakit/bricks": minor
+"@stratakit/bricks": patch
 ---
 
-`Anchor` now also supports a composition API. This addition requires either updating the imports to continue using the convenience API or to switch to the new composition API.
+Added a compositional `Anchor.Root` component. These new components should be preferred over the existing convenience `Anchor` component by consumers that need fine grained configuration. To use the compositional components, use the subpath import:
 
-Continue using the convenience API:
+```tsx
+import * as Anchor from "@stratakit/bricks/Anchor";
 
-```diff
-- import { Anchor } from '@stratakit/bricks';
-+ import Anchor from '@stratakit/bricks/anchor';
+<Anchor.Root href="https://www.example.com">Example</Anchor.Root>;
 ```
 
-Switch to the new composition API:
+To continue using the convenience `Anchor` component:
 
-```diff
-import { Anchor } from '@stratakit/bricks';
+```tsx
+import { Anchor } from "@stratakit/bricks";
 
-- <Anchor>…</Anchor>
-+ <Anchor.Root>…</Anchor.Root>
+<Anchor.Root href="https://www.example.com">Example</Anchor.Root>;
 ```

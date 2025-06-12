@@ -13,13 +13,13 @@
 			"default": "./dist/index.js"
 		},
 		"./package.json": "./package.json",
-		"./AccordionItem": {
+		"./unstable_AccordionItem": {
 			"@stratakit/source": "./src/AccordionItem.tsx",
 			"types": "./dist/AccordionItem.d.ts",
 			"development": "./dist/DEV/AccordionItem.js",
 			"default": "./dist/AccordionItem.js"
 		},
-		"./Banner": {
+		"./unstable_Banner": {
 			"@stratakit/source": "./src/Banner.tsx",
 			"types": "./dist/Banner.d.ts",
 			"development": "./dist/DEV/Banner.js",
@@ -37,7 +37,7 @@
 			"development": "./dist/DEV/DropdownMenu.js",
 			"default": "./dist/DropdownMenu.js"
 		},
-		"./ErrorRegion": {
+		"./unstable_ErrorRegion": {
 			"@stratakit/source": "./src/ErrorRegion.tsx",
 			"types": "./dist/ErrorRegion.d.ts",
 			"development": "./dist/DEV/ErrorRegion.js",
@@ -55,7 +55,7 @@
 			"development": "./dist/DEV/Tabs.js",
 			"default": "./dist/Tabs.js"
 		},
-		"./Toolbar": {
+		"./unstable_Toolbar": {
 			"@stratakit/source": "./src/Toolbar.tsx",
 			"types": "./dist/Toolbar.d.ts",
 			"development": "./dist/DEV/Toolbar.js",

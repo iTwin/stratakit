@@ -3,7 +3,7 @@
 "@stratakit/bricks": patch
 ---
 
-Added [subpath exports](https://nodejs.org/api/packages.html#subpath-exports) to StrataKit packages. These new exports should be preferred over an existing barrel file to improve the performance of build tools. Additionally, subpath exports allow StrataKit to expose both convenience and compositional components.
+Added [subpath exports](https://nodejs.org/api/packages.html#subpath-exports) for individual components. These new exports allow StrataKit to expose both convenience and compositional APIs of the same component.
 
 ```tsx
 // Convenience import

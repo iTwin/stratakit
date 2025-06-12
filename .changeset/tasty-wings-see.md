@@ -12,7 +12,9 @@ import Chip from "@stratakit/structures/Chip";
 import { default as Chip } from "@stratakit/structures/Chip";
 
 <Chip />;
+```
 
+```tsx
 // Compositional import
 import * as Chip from "@stratakit/structures/Chip";
 

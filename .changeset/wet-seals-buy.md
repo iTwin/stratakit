@@ -11,18 +11,6 @@ import * as Chip from "@stratakit/structures/Chip";
 	<Chip.Label>Label</Chip.Label>
 	<Chip.DismissButton onClick={onDismiss} />
 </Chip.Root>;
-
-// Alternatively you can import each component individually:
-import {
-	DismissButton as ChipDismiss,
-	Label as ChipLabel,
-	Root as ChipRoot,
-} from "@stratakit/structures/Chip";
-
-<ChipRoot>
-	<ChipLabel>Label</ChipLabel>
-	<ChipDismissButton onClick={onDismiss} />
-</ChipRoot>;
 ```
 
 To continue using the convenience `Chip` component:
@@ -31,7 +19,4 @@ To continue using the convenience `Chip` component:
 import { Chip } from "@stratakit/structures";
 
 <Chip label="Value" />;
-
-// Alternatively, you can import the default export from the subpath:
-import { default as Chip } from "@stratakit/structures/Chip";
 ```

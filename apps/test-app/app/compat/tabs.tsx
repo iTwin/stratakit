@@ -34,7 +34,7 @@ export default definePage(function Page() {
 				labels={[
 					<Tab key={1} label="Tab 1" />,
 					<Tab key={2} label="Tab 2" disabled />,
-					<Tab key={3} label="Tab 3" id="legacy-tab-3" />,
+					<Tab key={3} label="Tab 3" />,
 				]}
 			>
 				Legacy Tab
@@ -76,10 +76,7 @@ function ControlledLegacyTab() {
 	const [activeIndex, setActiveIndex] = React.useState(1);
 	return (
 		<Tabs
-			labels={[
-				<Tab key={1} label="Tab 1" />,
-				<Tab key={2} label="Tab 2" id="controlled-legacy-tab-2" />,
-			]}
+			labels={[<Tab key={1} label="Tab 1" />, <Tab key={2} label="Tab 2" />]}
 			activeIndex={activeIndex}
 			onTabSelected={(newIndex) => {
 				console.log(`onTabSelected(${newIndex})`);

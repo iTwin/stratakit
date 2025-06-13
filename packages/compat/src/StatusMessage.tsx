@@ -31,7 +31,7 @@ interface StatusMessageProps
 export const StatusMessage = React.forwardRef((props, forwardedRef) => {
 	const {
 		// biome-ignore-start lint/correctness/noUnusedVariables: NOT IMPLEMENTED
-		startIcon, 
+		startIcon,
 		iconProps,
 		contentProps,
 		// biome-ignore-end lint/correctness/noUnusedVariables: NOT IMPLEMENTED

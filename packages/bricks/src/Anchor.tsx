@@ -20,16 +20,19 @@ interface AnchorRootProps extends FocusableProps<"a"> {
  *
  * Supports the convenience API (lesser code) and the composition API (more customization).
  *
- * Example:
+ * Example of convenience API:
  * ```tsx
- * import { Anchor } from "@stratakit/bricks"; // Convenience API
- * import * as AnchorComposition from "@stratakit/bricks/Anchor"; // Composition API
+ * import { Anchor } from "@stratakit/bricks";
  *
  * <Anchor href="https://www.example.com">Example</Anchor>
- * <AnchorComposition.Root href="https://www.example.com">Example</AnchorComposition.Root>
  * ```
  *
- * Supports a `tone` prop to change the tone (color) of the anchor.
+ * Example of composition API:
+ * ```tsx
+ * import * as Anchor from "@stratakit/bricks/Anchor";
+ *
+ * <Anchor.Root href="https://www.example.com">Example</Anchor.Root>
+ * ```
  */
 const AnchorRoot = forwardRef<"a", AnchorRootProps>((props, forwardedRef) => {
 	const { tone = "neutral", ...rest } = props;
@@ -52,16 +55,19 @@ DEV: AnchorRoot.displayName = "Anchor.Root";
  *
  * Supports the convenience API (lesser code) and the composition API (more customization).
  *
- * Example:
+ * Example of convenience API:
  * ```tsx
- * import { Anchor } from "@stratakit/bricks"; // Convenience API
- * import * as AnchorComposition from "@stratakit/bricks/Anchor"; // Composition API
+ * import { Anchor } from "@stratakit/bricks";
  *
  * <Anchor href="https://www.example.com">Example</Anchor>
- * <AnchorComposition.Root href="https://www.example.com">Example</AnchorComposition.Root>
  * ```
  *
- * Supports a `tone` prop to change the tone (color) of the anchor.
+ * Example of composition API:
+ * ```tsx
+ * import * as Anchor from "@stratakit/bricks/Anchor";
+ *
+ * <Anchor.Root href="https://www.example.com">Example</Anchor.Root>
+ * ```
  */
 const Anchor = AnchorRoot;
 DEV: Anchor.displayName = "Anchor";

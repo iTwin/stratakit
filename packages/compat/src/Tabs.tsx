@@ -119,13 +119,13 @@ const LegacyTabs = React.forwardRef((props, forwardedRef) => {
 						const key = getLabelKey(label, index);
 						const tabValue = `${index}`;
 						return (
-							<LegacyTabContext.Provider key={key} value={{ tabValue }}>
+							<LegacyTabProvider key={key} tabValue={tabValue}>
 								{typeof label === "string" ? (
 									<LegacyTab label={label} />
 								) : (
 									label
 								)}
-							</LegacyTabContext.Provider>
+							</LegacyTabProvider>
 						);
 					})}
 				</TabList>
@@ -209,6 +209,21 @@ const LegacyTabContext = React.createContext<
 	  }
 	| undefined
 >(undefined);
+
+type LegacyTabContextType = React.ContextType<typeof LegacyTabContext>;
+
+function LegacyTabProvider({
+	children,
+	tabValue,
+}: React.PropsWithChildren<LegacyTabContextType>) {
+	return (
+		<LegacyTabContext.Provider
+			value={React.useMemo(() => ({ tabValue }), [tabValue])}
+		>
+			{children}
+		</LegacyTabContext.Provider>
+	);
+}
 
 // ----------------------------------------------------------------------------
 

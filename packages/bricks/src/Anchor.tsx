@@ -124,5 +124,7 @@ DEV: AnchorIcon.displayName = "Anchor.Icon";
 const Anchor = AnchorRoot;
 DEV: Anchor.displayName = "Anchor";
 
+// ----------------------------------------------------------------------------
+
 export default Anchor;
-export { AnchorRoot as Root, AnchorIcon as Icon };
+export { AnchorRoot as Root, type AnchorIcon as Icon };

@@ -5,7 +5,6 @@
 
 import { Anchor } from "@stratakit/bricks";
 import * as AnchorComposition from "@stratakit/bricks/Anchor";
-import placeholderHref from "@stratakit/icons/placeholder.svg";
 import windowPopoutIconHref from "@stratakit/icons/window-popout.svg";
 import { definePage } from "~/~utils.tsx";
 
@@ -57,59 +56,22 @@ function VisualTest() {
 						>
 							Example
 						</Anchor>
-						<Anchor
-							key={tone}
-							tone={tone}
-							href="https://example.com"
-							referrerPolicy="no-referrer"
-							target="_blank"
-						>
-							<AnchorComposition.Icon
-								alt="External link"
-								href={windowPopoutIconHref}
-							/>
-							External
-							<AnchorComposition.Icon
-								alt="External link"
-								href={windowPopoutIconHref}
-							/>
-						</Anchor>
-
-						{/* TODO: Testing */}
-						{/* TODO: Is Anchor.Root even needed since it even works with Anchor? i.e. We can just pass Anchor.Icon within the children of Anchor itself. Thus, no need for Anchor.Root? */}
-						<AnchorComposition.Root
-							key={tone}
-							tone={tone}
-							href="https://example.com"
-							referrerPolicy="no-referrer"
-							target="_blank"
-						>
-							<AnchorComposition.Icon
-								alt="External link"
-								href={windowPopoutIconHref}
-							/>
-							External
-							<AnchorComposition.Icon
-								alt="External link"
-								href={windowPopoutIconHref}
-							/>
-						</AnchorComposition.Root>
 
 						<AnchorComposition.Root
 							key={tone}
 							tone={tone}
 							href="https://example.com"
-							referrerPolicy="no-referrer"
 							target="_blank"
+							rel="noopener noreferrer"
 						>
 							<AnchorComposition.Icon
 								alt="External link"
-								href={placeholderHref}
+								href={windowPopoutIconHref}
 							/>
 							External
 							<AnchorComposition.Icon
 								alt="External link"
-								href={placeholderHref}
+								href={windowPopoutIconHref}
 							/>
 						</AnchorComposition.Root>
 					</div>

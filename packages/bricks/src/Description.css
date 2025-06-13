@@ -13,11 +13,11 @@
 		}
 
 		&:where([data-kiwi-tone="attention"]) {
-			color: var(--ids-color-text-attention-base);
+			color: var(--stratakit-color-text-attention-base);
 		}
 
 		&:where([data-kiwi-tone="positive"]) {
-			color: var(--ids-color-text-positive-base);
+			color: var(--stratakit-color-text-positive-base);
 		}
 	}
 }

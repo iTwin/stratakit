@@ -30,11 +30,14 @@ interface StatusMessageProps
 /** @see https://itwinui.bentley.com/docs/statusmessage */
 export const StatusMessage = React.forwardRef((props, forwardedRef) => {
 	const {
-		startIcon, // NOT IMPLEMENTED
-		children,
+		// biome-ignore-start lint/correctness/noUnusedVariables: NOT IMPLEMENTED
+		startIcon, 
+		iconProps,
+		contentProps,
+		// biome-ignore-end lint/correctness/noUnusedVariables: NOT IMPLEMENTED
+
 		status, // PARTIALLY IMPLEMENTED. MISSING STATUS ICON
-		iconProps, // NOT IMPLEMENTED
-		contentProps, // NOT IMPLEMENTED
+		children,
 		...rest
 	} = useCompatProps(props);
 

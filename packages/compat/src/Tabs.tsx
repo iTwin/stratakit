@@ -144,13 +144,7 @@ function getLabelKey(label: React.ReactNode, index: number) {
 	}
 
 	if (React.isValidElement<React.ComponentProps<typeof Tab>>(label)) {
-		if (label.props.id) {
-			return label.props.id;
-		}
-
-		if (label.key) {
-			return `${index}-${label.key}`;
-		}
+		return `${index}-${label.key || ""}-${label.props.id || ""}`;
 	}
 
 	return `${index}`;

@@ -5,7 +5,7 @@
 
 import { forwardRef } from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
-import { Text } from "./Text.js";
+import Text from "./Text.js";
 
 import type { BaseProps } from "@stratakit/foundations/secret-internals";
 
@@ -22,7 +22,7 @@ interface DescriptionProps extends BaseProps {
  *
  * See `Field.Description` for convenient usage with form controls.
  */
-export const Description = forwardRef<"div", DescriptionProps>(
+const Description = forwardRef<"div", DescriptionProps>(
 	(props, forwardedRef) => {
 		const { tone, ...rest } = props;
 
@@ -37,3 +37,7 @@ export const Description = forwardRef<"div", DescriptionProps>(
 		);
 	},
 );
+
+// ----------------------------------------------------------------------------
+
+export default Description;

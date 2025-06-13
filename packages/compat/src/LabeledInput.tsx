@@ -2,6 +2,7 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
+
 import { Field, TextBox } from "@stratakit/bricks";
 import { StatusMessage } from "./StatusMessage.tsx";
 import * as React from "react";
@@ -45,17 +46,21 @@ interface LabeledInputProps
 /** @see https://itwinui.bentley.com/docs/input */
 export const LabeledInput = React.forwardRef((props, forwardedRef) => {
 	const {
-		children, // NOT IMPLEMENTED
 		label,
 		message,
-		status, // NOT IMPLEMENTED
 		wrapperProps = {},
 		labelProps,
 		messageContentProps, // NOT IMPLEMENTED
 		inputWrapperProps,
 		displayStyle,
 		htmlSize,
-		size, // NOT IMPLEMENTED
+
+		// biome-ignore-start lint/correctness/noUnusedVariables: NOT IMPLEMENTED
+		children,
+		status,
+		size,
+		// biome-ignore-end lint/correctness/noUnusedVariables: NOT IMPLEMENTED
+
 		svgIcon,
 		iconProps = {},
 		type: inputType,
@@ -63,14 +68,21 @@ export const LabeledInput = React.forwardRef((props, forwardedRef) => {
 	} = useCompatProps(props);
 
 	const {
-		labelPlacement, // NOT IMPLEMENTED
+		// biome-ignore-start lint/correctness/noUnusedVariables: NOT IMPLEMENTED
+		labelPlacement,
+		// biome-ignore-end lint/correctness/noUnusedVariables: NOT IMPLEMENTED
+
 		...restWrapperProps
 	} = useCompatProps(wrapperProps);
 
 	const {
 		size: iconSize, // PARTIALLY IMPLEMENTED: only supports large as an override
-		fill: iconFill, // NOT IMPLEMENTED
-		padded: iconPadded, // NOT IMPLEMENTED
+
+		// biome-ignore-start lint/correctness/noUnusedVariables: NOT IMPLEMENTED
+		fill: iconFill,
+		padded: iconPadded,
+		// biome-ignore-end lint/correctness/noUnusedVariables: NOT IMPLEMENTED
+
 		...restIconProps
 	} = useCompatProps(iconProps);
 

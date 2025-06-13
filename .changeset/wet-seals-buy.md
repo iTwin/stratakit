@@ -14,11 +14,3 @@ import * as Chip from "@stratakit/structures/Chip";
 	<Chip.DismissButton onClick={onDismiss} />
 </Chip.Root>;
 ```
-
-To continue using the convenience `Chip` component:
-
-```tsx
-import { Chip } from "@stratakit/structures";
-
-<Chip label="Value" />;
-```

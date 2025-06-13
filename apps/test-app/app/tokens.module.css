@@ -17,7 +17,7 @@
 }
 
 .disclosureButton {
-	font-size: var(--ids-font-size-16);
+	font-size: var(--stratakit-font-size-16);
 }
 
 .disclosureButton[aria-expanded="false"] .disclosureIcon {
@@ -37,19 +37,19 @@
 	background-size: calc(var(--_swatch-size) * 0.5) calc(var(--_swatch-size) * 0.5);
 	background-image: repeating-linear-gradient(
 			45deg,
-			var(--ids-color-bg-neutral-base) 25%,
+			var(--stratakit-color-bg-neutral-base) 25%,
 			transparent 25%,
 			transparent 75%,
-			var(--ids-color-bg-neutral-base) 75%,
-			var(--ids-color-bg-neutral-base)
+			var(--stratakit-color-bg-neutral-base) 75%,
+			var(--stratakit-color-bg-neutral-base)
 		),
 		repeating-linear-gradient(
 			45deg,
-			var(--ids-color-bg-neutral-base) 25%,
-			var(--ids-color-bg-neutral-faded) 25%,
-			var(--ids-color-bg-neutral-faded) 75%,
-			var(--ids-color-bg-neutral-base) 75%,
-			var(--ids-color-bg-neutral-base)
+			var(--stratakit-color-bg-neutral-base) 25%,
+			var(--stratakit-color-bg-neutral-faded) 25%,
+			var(--stratakit-color-bg-neutral-faded) 75%,
+			var(--stratakit-color-bg-neutral-base) 75%,
+			var(--stratakit-color-bg-neutral-base)
 		);
 	forced-color-adjust: none;
 
@@ -58,7 +58,7 @@
 		position: absolute;
 		inset: 0;
 		border-radius: inherit;
-		background-color: var(--_swatch-color, var(--ids-color-bg-neutral-base));
-		box-shadow: var(--_swatch-shadow, var(--ids-shadow-surface-xs));
+		background-color: var(--_swatch-color, var(--stratakit-color-bg-neutral-base));
+		box-shadow: var(--_swatch-shadow, var(--stratakit-shadow-surface-xs));
 	}
 }

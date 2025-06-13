@@ -3,7 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 .🥝-dropdown-menu {
-	--✨bg: var(--ids-color-bg-elevation-level-1);
+	--✨bg: var(--stratakit-color-bg-elevation-level-1);
 	--✨padding: 4px; /* space(in progress)/x1 */
 
 	@layer base {
@@ -15,7 +15,7 @@
 		min-inline-size: min(95vi, 164px);
 		border-radius: 8px /* radius(in progress)/medium */;
 		padding: var(--✨padding);
-		box-shadow: var(--ids-shadow-surface-xl);
+		box-shadow: var(--stratakit-shadow-surface-xl);
 
 		@media (forced-colors: active) {
 			border: 1px solid CanvasText;

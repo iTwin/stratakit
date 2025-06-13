@@ -50,29 +50,7 @@ const AnchorRoot = forwardRef<"a", AnchorRootProps>((props, forwardedRef) => {
 });
 DEV: AnchorRoot.displayName = "Anchor.Root";
 
-/**
- * A styled anchor element, typically used for navigating to a different location.
- *
- * Supports the convenience API (lesser code) and the composition API (more customization).
- *
- * Example of convenience API:
- * ```tsx
- * import { Anchor } from "@stratakit/bricks";
- *
- * <Anchor href="https://www.example.com">Example</Anchor>
- * ```
- *
- * Example of composition API:
- * ```tsx
- * import * as Anchor from "@stratakit/bricks/Anchor";
- *
- * <Anchor.Root href="https://www.example.com">Example</Anchor.Root>
- * ```
- */
-const Anchor = AnchorRoot;
-DEV: Anchor.displayName = "Anchor";
-
 // ----------------------------------------------------------------------------
 
-export default Anchor;
+export default AnchorRoot;
 export { AnchorRoot as Root };

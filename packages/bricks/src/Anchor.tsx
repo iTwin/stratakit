@@ -22,29 +22,23 @@ interface AnchorRootProps extends FocusableProps<"a"> {
  *
  * Supports the convenience API (lesser code) and the composition API (more customization).
  *
- * Example:
+ * Example of convenience API:
  * ```tsx
- * import { Anchor } from "@stratakit/bricks"; // Convenience API
- * import * as AnchorComposition from "@stratakit/bricks/Anchor"; // Composition API
+ * import { Anchor } from "@stratakit/bricks";
  *
  * <Anchor href="https://www.example.com">Example</Anchor>
- * <AnchorComposition.Root href="https://www.example.com">Example</AnchorComposition.Root>
  * ```
  *
- * Example (using icons):
+ * Example of composition API:
  * ```tsx
  * import * as Anchor from "@stratakit/bricks/Anchor";
  * import windowPopoutIconHref from "@stratakit/icons/window-popout.svg";
  *
- * <Anchor.Root
- *   href="https://www.example.com"
- * >
+ * <Anchor.Root href="https://www.example.com">
  *   Open in new window
  *   <Anchor.Icon href={windowPopoutIconHref} alt="External link" />
  * </Anchor.Root>
  * ```
- *
- * Supports a `tone` prop to change the tone (color) of the anchor.
  */
 const AnchorRoot = forwardRef<"a", AnchorRootProps>((props, forwardedRef) => {
 	const { tone = "neutral", ...rest } = props;
@@ -73,9 +67,7 @@ interface AnchorIconProps extends React.ComponentProps<typeof Icon> {}
  * import * as Anchor from "@stratakit/bricks/Anchor";
  * import windowPopoutIconHref from "@stratakit/icons/window-popout.svg";
  *
- * <Anchor.Root
- *   href="https://www.example.com"
- * >
+ * <Anchor.Root href="https://www.example.com">
  *   Open in new window
  *   <Anchor.Icon href={windowPopoutIconHref} alt="External link" />
  * </Anchor.Root>
@@ -97,29 +89,23 @@ DEV: AnchorIcon.displayName = "Anchor.Icon";
  *
  * Supports the convenience API (lesser code) and the composition API (more customization).
  *
- * Example:
+ * Example of convenience API:
  * ```tsx
- * import { Anchor } from "@stratakit/bricks"; // Convenience API
- * import * as AnchorComposition from "@stratakit/bricks/Anchor"; // Composition API
+ * import { Anchor } from "@stratakit/bricks";
  *
  * <Anchor href="https://www.example.com">Example</Anchor>
- * <AnchorComposition.Root href="https://www.example.com">Example</AnchorComposition.Root>
  * ```
  *
- * Example (using icons):
+ * Example of composition API:
  * ```tsx
  * import * as Anchor from "@stratakit/bricks/Anchor";
  * import windowPopoutIconHref from "@stratakit/icons/window-popout.svg";
  *
- * <Anchor.Root
- *   href="https://www.example.com"
- * >
+ * <Anchor.Root href="https://www.example.com">
  *   Open in new window
  *   <Anchor.Icon href={windowPopoutIconHref} alt="External link" />
  * </Anchor.Root>
  * ```
- *
- * Supports a `tone` prop to change the tone (color) of the anchor.
  */
 const Anchor = AnchorRoot;
 DEV: Anchor.displayName = "Anchor";

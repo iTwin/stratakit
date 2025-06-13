@@ -59,8 +59,10 @@ DEV: AnchorRoot.displayName = "Anchor.Root";
 interface AnchorIconProps extends React.ComponentProps<typeof Icon> {}
 
 /**
- * Component for icons in the `Anchor`.
- * A static icon decoration for the `Anchor.Root` component. Can be added before or after the main anchor content.
+ * An icon in the `Anchor.Root` component.
+ *
+ * By default, this icon is decorative.
+ * If the icon is semantically meaningful, pass the `alt` prop with alternative text.
  *
  * Example:
  * ```tsx

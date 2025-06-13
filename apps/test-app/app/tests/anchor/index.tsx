@@ -6,6 +6,7 @@
 import { Anchor } from "@stratakit/bricks";
 import * as AnchorComposition from "@stratakit/bricks/Anchor";
 import windowPopoutIconHref from "@stratakit/icons/window-popout.svg";
+import placeholderIconHref from "@stratakit/icons/placeholder.svg";
 import { definePage } from "~/~utils.tsx";
 
 export const handle = { title: "Anchor" };
@@ -64,15 +65,23 @@ function VisualTest() {
 							target="_blank"
 							rel="noopener noreferrer"
 						>
-							<AnchorComposition.Icon
-								alt="External link"
-								href={windowPopoutIconHref}
-							/>
 							External
 							<AnchorComposition.Icon
 								alt="External link"
 								href={windowPopoutIconHref}
 							/>
+						</AnchorComposition.Root>
+
+						<AnchorComposition.Root
+							key={tone}
+							tone={tone}
+							href="https://example.com"
+							target="_blank"
+							rel="noopener noreferrer"
+						>
+							<AnchorComposition.Icon href={placeholderIconHref} />
+							Decorative icons
+							<AnchorComposition.Icon href={placeholderIconHref} />
 						</AnchorComposition.Root>
 					</div>
 				);

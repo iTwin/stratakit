@@ -16,19 +16,9 @@ export default definePage(
 		const render = renderParam ? <button /> : undefined;
 		return (
 			<>
-				<div style={{ display: "flex", gap: 4 }}>
-					<Anchor href="#main" disabled={!!disabled} render={render}>
-						Hello (convenience API)
-					</Anchor>
-
-					<AnchorComposition.Root
-						href="#main"
-						disabled={!!disabled}
-						render={render}
-					>
-						Hello (compositional API)
-					</AnchorComposition.Root>
-				</div>
+				<Anchor href="#main" disabled={!!disabled} render={render}>
+					Hello
+				</Anchor>
 
 				<article id="main" tabIndex={-1}>
 					Main content
@@ -36,7 +26,7 @@ export default definePage(
 			</>
 		);
 	},
-	{ visual: VisualTest },
+	{ visual: VisualTest, composition: CompositionTest },
 );
 
 function VisualTest() {
@@ -87,5 +77,13 @@ function VisualTest() {
 				);
 			})}
 		</div>
+	);
+}
+
+function CompositionTest() {
+	return (
+		<AnchorComposition.Root href="https://example.com">
+			Hello
+		</AnchorComposition.Root>
 	);
 }

@@ -13,7 +13,7 @@ pre-commit:
 
     lint:
       glob: "*.{js,ts,jsx,tsx}"
-      run: pnpm biome lint --write {staged_files}
+      run: pnpm biome lint --error-on-warnings --write {staged_files}
       stage_fixed: true
 
     fix-imports:

@@ -43,6 +43,7 @@ export const components = {
 		"Checkbox",
 		"Divider",
 		"Input",
+		"InputGrid",
 		"Kbd",
 		"Label",
 		"LabeledInput",

@@ -57,7 +57,7 @@ interface AvatarProps extends Omit<BaseProps<"span">, "children"> {
  * <Avatar initials="JD" alt="John Doe" size="small" image={<Icon href="…">} />
  * ```
  */
-export const Avatar = forwardRef<"span", AvatarProps>((props, forwardedRef) => {
+const Avatar = forwardRef<"span", AvatarProps>((props, forwardedRef) => {
 	const { size = "medium", initials, alt, image, ...rest } = props;
 
 	const isDecorative = !alt;
@@ -80,3 +80,7 @@ export const Avatar = forwardRef<"span", AvatarProps>((props, forwardedRef) => {
 	);
 });
 DEV: Avatar.displayName = "Avatar";
+
+// ----------------------------------------------------------------------------
+
+export default Avatar;

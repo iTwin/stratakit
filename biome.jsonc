@@ -39,14 +39,7 @@
 							}, // relative and absolute paths
 							{
 								"type": false,
-								"source": [
-									":BUN:",
-									":ALIAS:",
-									":NODE:",
-									":URL:",
-									"!**/*.css*",
-									"!**/*.svg"
-								]
+								"source": ["**", "!**/*.css*", "!**/*.svg"]
 							}, // all other unmatched imports
 							":BLANK_LINE:",
 							{ "type": true }, // type imports

@@ -14,7 +14,7 @@ interface DescriptionProps extends BaseProps {
 	 * The tone of the description.
 	 * @default "neutral"
 	 */
-	tone?: "neutral" | "critical";
+	tone?: "neutral" | "critical" | "attention" | "positive";
 }
 
 /**

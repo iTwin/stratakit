@@ -3,6 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
+import placeholderIcon from "@stratakit/icons/placeholder.svg";
 import { StatusMessage } from "@stratakit/react";
 import { definePage } from "~/~utils.tsx";
 
@@ -13,17 +14,39 @@ export default definePage(function Page() {
 		<div style={{ display: "grid", gap: 16 }}>
 			<StatusMessage>Message</StatusMessage>
 			<StatusMessage as="span">Message (as span)</StatusMessage>
+
+			{/* Not implemented props */}
 			<StatusMessage
-				as="span"
 				contentProps={{ style: { outline: "1px solid DeepPink" } }}
 			>
 				Message with contentProps
 			</StatusMessage>
+			<StatusMessage
+				startIcon={
+					<svg>
+						<use href={`${placeholderIcon}#icon`} />
+					</svg>
+				}
+			>
+				Message with icon
+			</StatusMessage>
+			<StatusMessage
+				startIcon={
+					<svg>
+						<use href={`${placeholderIcon}#icon`} />
+					</svg>
+				}
+				iconProps={{ style: { outline: "1px solid DeepPink" } }}
+			>
+				Message with iconProps
+			</StatusMessage>
 
-			{/* Not implemented props */}
-			<StatusMessage status="positive">Message with status</StatusMessage>
+			{/* Partially implemented props (missing status icon) */}
+			<StatusMessage status="positive">Positive status</StatusMessage>
+			<StatusMessage status="warning">Warning status</StatusMessage>
+			<StatusMessage status="negative">Negative status</StatusMessage>
 			<StatusMessage status="positive" startIcon={null}>
-				Message with status and without status icon
+				Positive status without icon
 			</StatusMessage>
 		</div>
 	);

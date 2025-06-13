@@ -3,7 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import { Field as SkField } from "@stratakit/bricks";
+import { Field, Description } from "@stratakit/bricks";
 import * as React from "react";
 import { useCompatProps } from "./~utils.tsx";
 
@@ -19,10 +19,12 @@ interface StatusMessageProps
 	> {
 	/** NOT IMPLEMENTED. */
 	startIcon?: IuiStatusMessageProps["startIcon"];
-	/** NOT IMPLEMENTED. */
+	/** PARTIALLY IMPLEMENTED. MISSING STATUS ICON */
 	status?: IuiStatusMessageProps["status"];
 	/** NOT IMPLEMENTED. */
 	iconProps?: IuiStatusMessageProps["iconProps"];
+	/** NOT IMPLEMENTED. */
+	contentProps?: IuiStatusMessageProps["contentProps"];
 }
 
 /** @see https://itwinui.bentley.com/docs/statusmessage */
@@ -30,16 +32,24 @@ export const StatusMessage = React.forwardRef((props, forwardedRef) => {
 	const {
 		startIcon, // NOT IMPLEMENTED
 		children,
-		status, // NOT IMPLEMENTED
+		status, // PARTIALLY IMPLEMENTED. MISSING STATUS ICON
 		iconProps, // NOT IMPLEMENTED
-		contentProps,
+		contentProps, // NOT IMPLEMENTED
 		...rest
 	} = useCompatProps(props);
 
-	return (
-		<SkField.Description {...contentProps} {...rest} ref={forwardedRef}>
+	return status === "negative" ? (
+		<Field.ErrorMessage {...rest} ref={forwardedRef}>
 			{children}
-		</SkField.Description>
+		</Field.ErrorMessage>
+	) : (
+		<Description
+			tone={status === "warning" ? "attention" : status}
+			{...rest}
+			ref={forwardedRef}
+		>
+			{children}
+		</Description>
 	);
 }) as PolymorphicForwardRefComponent<"div", StatusMessageProps>;
 DEV: StatusMessage.displayName = "StatusMessage";

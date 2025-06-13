@@ -3,11 +3,12 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import type { Tag as IuiTag } from "@itwin/itwinui-react";
-import * as Chip from "@stratakit/structures/chip";
 import * as React from "react";
-import type { PolymorphicForwardRefComponent } from "./~utils.tsx";
+import * as Chip from "@stratakit/structures/Chip";
 import { useCompatProps } from "./~utils.tsx";
+
+import type { Tag as IuiTag } from "@itwin/itwinui-react";
+import type { PolymorphicForwardRefComponent } from "./~utils.tsx";
 
 type IuiTagProps = React.ComponentProps<typeof IuiTag>;
 
@@ -30,7 +31,7 @@ export const Tag = React.forwardRef((props, forwardedRef) => {
 		children,
 		onRemove,
 		removeButtonProps,
-		variant: variantProp,
+		variant,
 		labelProps,
 		...rest
 	} = useCompatProps(props);
@@ -42,7 +43,7 @@ export const Tag = React.forwardRef((props, forwardedRef) => {
 		<Chip.Root
 			{...rest}
 			onClick={tagButton ? onClick : undefined}
-			variant={variantProp === "basic" ? "outline" : undefined}
+			variant={variant === "basic" ? "outline" : undefined}
 			render={render}
 			ref={forwardedRef}
 		>

@@ -6,9 +6,9 @@
 import { Role } from "@ariakit/react/role";
 import { forwardRef } from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
-import { VisuallyHidden } from "./VisuallyHidden.js";
 
 import type { BaseProps } from "@stratakit/foundations/secret-internals";
+import VisuallyHidden from "./VisuallyHidden.js";
 
 interface SpinnerProps extends BaseProps {
 	/**
@@ -41,43 +41,45 @@ interface SpinnerProps extends BaseProps {
  * Supports a `tone` prop to change the tone (color) of the spinner.
  * Supports a `size` prop to change the size of the spinner.
  */
-export const Spinner = forwardRef<"div", SpinnerProps>(
-	(props, forwardedRef) => {
-		const {
-			alt = "Loading…",
-			size = "medium",
-			tone = "neutral",
-			...rest
-		} = props;
+const Spinner = forwardRef<"div", SpinnerProps>((props, forwardedRef) => {
+	const {
+		alt = "Loading…",
+		size = "medium",
+		tone = "neutral",
+		...rest
+	} = props;
 
-		return (
-			<Role
-				{...rest}
-				data-kiwi-size={size}
-				data-kiwi-tone={tone}
-				data-kiwi-variant="indeterminate"
-				className={cx("🥝-spinner", props.className)}
-				ref={forwardedRef}
-			>
-				<svg aria-hidden="true" className="🥝-spinner-svg" viewBox="0 0 16 16">
-					<circle
-						pathLength="100"
-						className="🥝-spinner-svg-track"
-						cx="8"
-						cy="8"
-						r="6.5"
-					/>
-					<circle
-						pathLength="100"
-						className="🥝-spinner-svg-fill"
-						cx="8"
-						cy="8"
-						r="6.5"
-					/>
-				</svg>
-				<VisuallyHidden>{alt}</VisuallyHidden>
-			</Role>
-		);
-	},
-);
+	return (
+		<Role
+			{...rest}
+			data-kiwi-size={size}
+			data-kiwi-tone={tone}
+			data-kiwi-variant="indeterminate"
+			className={cx("🥝-spinner", props.className)}
+			ref={forwardedRef}
+		>
+			<svg aria-hidden="true" className="🥝-spinner-svg" viewBox="0 0 16 16">
+				<circle
+					pathLength="100"
+					className="🥝-spinner-svg-track"
+					cx="8"
+					cy="8"
+					r="6.5"
+				/>
+				<circle
+					pathLength="100"
+					className="🥝-spinner-svg-fill"
+					cx="8"
+					cy="8"
+					r="6.5"
+				/>
+			</svg>
+			<VisuallyHidden>{alt}</VisuallyHidden>
+		</Role>
+	);
+});
 DEV: Spinner.displayName = "Spinner";
+
+// ----------------------------------------------------------------------------
+
+export default Spinner;

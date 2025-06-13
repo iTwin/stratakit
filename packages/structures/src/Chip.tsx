@@ -5,7 +5,6 @@
 
 import { Role } from "@ariakit/react/role";
 import { IconButton } from "@stratakit/bricks";
-import type { BaseProps } from "@stratakit/foundations/secret-internals";
 import {
 	forwardRef,
 	useSafeContext,
@@ -14,10 +13,12 @@ import cx from "classnames";
 import * as React from "react";
 import { Dismiss } from "./~utils.icons.js";
 
+import type { BaseProps } from "@stratakit/foundations/secret-internals";
+
 // ----------------------------------------------------------------------------
 
 const ChipRootContext = React.createContext<
-	{ labelId: string; setLabelId: (id: string) => void } | undefined
+	{ labelId: string; setLabelId: (id: string | undefined) => void } | undefined
 >(undefined);
 
 // ----------------------------------------------------------------------------
@@ -46,7 +47,9 @@ interface ChipRootProps extends BaseProps<"div"> {
 const ChipRoot = forwardRef<"div", ChipRootProps>((props, forwardedRef) => {
 	const { variant = "solid", ...rest } = props;
 
-	const [labelId, setLabelId] = React.useState("");
+	const defaultLabelId = React.useId();
+	const [_labelId, setLabelId] = React.useState<string | undefined>();
+	const labelId = _labelId || defaultLabelId;
 
 	return (
 		<ChipRootContext.Provider
@@ -71,28 +74,36 @@ interface ChipLabelProps extends BaseProps<"span"> {}
  * Label component that should be used with the compositional Chip component.
  */
 const ChipLabel = forwardRef<"span", ChipLabelProps>((props, forwardedRef) => {
-	const { setLabelId } = useSafeContext(ChipRootContext);
+	const { labelId, setLabelId } = useSafeContext(ChipRootContext);
 
-	const newId = React.useId();
-	const id = props.id ?? newId;
 	React.useEffect(() => {
-		setLabelId(id);
-	}, [setLabelId, id]);
+		setLabelId(props.id);
+	}, [setLabelId, props.id]);
 
+	const id = props.id ?? labelId;
 	return <Role.span {...props} id={id} ref={forwardedRef} />;
 });
 DEV: ChipLabel.displayName = "Chip.Label";
 
 // ----------------------------------------------------------------------------
 
-interface ChipDismissButtonProps
-	extends Omit<BaseProps<"button">, "children"> {}
+interface ChipDismissButtonProps extends Omit<BaseProps<"button">, "children"> {
+	/**
+	 * Label for the dismiss button.
+	 *
+	 * The final accessible name of the dismiss button is a combination of this `label` and the text content of `Chip.Label`.
+	 *
+	 * @default "Dismiss"
+	 */
+	label?: string;
+}
 
 /**
  * Dismiss button component that should be used with the compositional Chip component.
  */
 const ChipDismissButton = forwardRef<"button", ChipDismissButtonProps>(
 	(props, forwardedRef) => {
+		const { label = "Dismiss", ...rest } = props;
 		const { labelId } = useSafeContext(ChipRootContext);
 
 		const newId = React.useId();
@@ -101,10 +112,10 @@ const ChipDismissButton = forwardRef<"button", ChipDismissButtonProps>(
 			<IconButton
 				id={id}
 				aria-labelledby={`${id} ${labelId}`}
-				{...props}
+				{...rest}
+				label={label}
 				className={cx("🥝-chip-dismiss-button", props.className)}
 				variant="ghost"
-				label="Dismiss"
 				labelVariant="visually-hidden"
 				icon={<Dismiss />}
 				ref={forwardedRef}

@@ -1,7 +1,7 @@
 {
 	"name": "@stratakit/structures",
 	"type": "module",
-	"version": "0.2.1",
+	"version": "0.2.2",
 	"license": "MIT",
 	"sideEffects": false,
 	"types": "./dist/index.d.ts",
@@ -13,14 +13,72 @@
 			"default": "./dist/index.js"
 		},
 		"./package.json": "./package.json",
-		"./chip": {
+		"./unstable_AccordionItem": {
+			"@stratakit/source": "./src/AccordionItem.tsx",
+			"types": "./dist/AccordionItem.d.ts",
+			"development": "./dist/DEV/AccordionItem.js",
+			"default": "./dist/AccordionItem.js"
+		},
+		"./unstable_Banner": {
+			"@stratakit/source": "./src/Banner.tsx",
+			"types": "./dist/Banner.d.ts",
+			"development": "./dist/DEV/Banner.js",
+			"default": "./dist/Banner.js"
+		},
+		"./Chip": {
 			"@stratakit/source": "./src/Chip.tsx",
 			"types": "./dist/Chip.d.ts",
 			"development": "./dist/DEV/Chip.js",
 			"default": "./dist/Chip.js"
+		},
+		"./DropdownMenu": {
+			"@stratakit/source": "./src/DropdownMenu.tsx",
+			"types": "./dist/DropdownMenu.d.ts",
+			"development": "./dist/DEV/DropdownMenu.js",
+			"default": "./dist/DropdownMenu.js"
+		},
+		"./unstable_ErrorRegion": {
+			"@stratakit/source": "./src/ErrorRegion.tsx",
+			"types": "./dist/ErrorRegion.d.ts",
+			"development": "./dist/DEV/ErrorRegion.js",
+			"default": "./dist/ErrorRegion.js"
+		},
+		"./Table": {
+			"@stratakit/source": "./src/Table.tsx",
+			"types": "./dist/Table.d.ts",
+			"development": "./dist/DEV/Table.js",
+			"default": "./dist/Table.js"
+		},
+		"./Tabs": {
+			"@stratakit/source": "./src/Tabs.tsx",
+			"types": "./dist/Tabs.d.ts",
+			"development": "./dist/DEV/Tabs.js",
+			"default": "./dist/Tabs.js"
+		},
+		"./unstable_Toolbar": {
+			"@stratakit/source": "./src/Toolbar.tsx",
+			"types": "./dist/Toolbar.d.ts",
+			"development": "./dist/DEV/Toolbar.js",
+			"default": "./dist/Toolbar.js"
+		},
+		"./Tree": {
+			"@stratakit/source": "./src/Tree.tsx",
+			"types": "./dist/Tree.d.ts",
+			"development": "./dist/DEV/Tree.js",
+			"default": "./dist/Tree.js"
+		},
+		"./TreeItem": {
+			"@stratakit/source": "./src/TreeItem.tsx",
+			"types": "./dist/TreeItem.d.ts",
+			"development": "./dist/DEV/TreeItem.js",
+			"default": "./dist/TreeItem.js"
 		}
 	},
-	"files": ["dist", "CHANGELOG.md", "LICENSE.md"],
+	"files": [
+		"dist",
+		"CHANGELOG.md",
+		"LICENSE.md"
+	],
 	"description": "Medium-sized component structures for the Strata design system",
 	"author": "Bentley Systems",
 	"homepage": "https://github.com/iTwin/design-system",
@@ -48,7 +106,7 @@
 	},
 	"dependencies": {
 		"@ariakit/react": "^0.4.17",
-		"@stratakit/bricks": "^0.2.1",
+		"@stratakit/bricks": "^0.3.0",
 		"classnames": "^2.5.1"
 	},
 	"devDependencies": {
@@ -62,7 +120,7 @@
 		"typescript": "catalog:"
 	},
 	"peerDependencies": {
-		"@stratakit/foundations": "^0.1.5",
+		"@stratakit/foundations": "^0.1.6",
 		"react": ">=18.0.0",
 		"react-dom": ">=18.0.0"
 	},
@@ -78,26 +136,48 @@
 		},
 		"build:js": {
 			"command": "node scripts/build.js",
-			"files": ["src", "scripts", "../../internal"],
-			"output": ["dist/**/*.js", "!dist/DEV"]
+			"files": [
+				"src",
+				"scripts",
+				"../../internal"
+			],
+			"output": [
+				"dist/**/*.js",
+				"!dist/DEV"
+			]
 		},
 		"build:DEV": {
 			"command": "node scripts/build.js",
-			"files": ["src", "scripts", "../../internal"],
-			"output": ["dist/DEV/**/*.js"],
+			"files": [
+				"src",
+				"scripts",
+				"../../internal"
+			],
+			"output": [
+				"dist/DEV/**/*.js"
+			],
 			"env": {
 				"NODE_ENV": "development"
 			}
 		},
 		"build:types": {
 			"command": "tsc --outDir dist",
-			"dependencies": ["../foundations:build:types", "../bricks:build:types"],
-			"files": ["src"],
-			"output": ["dist/**/*.d.ts"]
+			"dependencies": [
+				"../foundations:build:types",
+				"../bricks:build:types"
+			],
+			"files": [
+				"src"
+			],
+			"output": [
+				"dist/**/*.d.ts"
+			]
 		},
 		"dev": {
 			"command": "tsc --watch --outDir dist",
-			"files": ["src"],
+			"files": [
+				"src"
+			],
 			"service": true
 		}
 	}

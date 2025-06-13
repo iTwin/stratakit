@@ -9,7 +9,7 @@ import cx from "classnames";
 
 import type { BaseProps } from "@stratakit/foundations/secret-internals";
 
-interface AvatarProps extends BaseProps<"span"> {
+interface AvatarProps extends Omit<BaseProps<"span">, "children"> {
 	/**
 	 * The size of the avatar.
 	 * @default "medium"
@@ -57,8 +57,8 @@ interface AvatarProps extends BaseProps<"span"> {
  * <Avatar initials="JD" alt="John Doe" size="small" image={<Icon href="…">} />
  * ```
  */
-export const Avatar = forwardRef<"span", AvatarProps>((props, forwardedRef) => {
-	const { size = "medium", initials, alt, image, children, ...rest } = props;
+const Avatar = forwardRef<"span", AvatarProps>((props, forwardedRef) => {
+	const { size = "medium", initials, alt, image, ...rest } = props;
 
 	const isDecorative = !alt;
 
@@ -80,3 +80,7 @@ export const Avatar = forwardRef<"span", AvatarProps>((props, forwardedRef) => {
 	);
 });
 DEV: Avatar.displayName = "Avatar";
+
+// ----------------------------------------------------------------------------
+
+export default Avatar;

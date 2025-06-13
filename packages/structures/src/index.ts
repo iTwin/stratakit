@@ -5,8 +5,8 @@
 "use client";
 
 export * as unstable_AccordionItem from "./AccordionItem.js";
-export { Banner as unstable_Banner } from "./Banner.js";
-export { Chip } from "./Chip.js";
+export { default as unstable_Banner } from "./Banner.js";
+export { default as Chip } from "./Chip.js";
 export * as DropdownMenu from "./DropdownMenu.js";
 export * as unstable_ErrorRegion from "./ErrorRegion.js";
 export * as Table from "./Table.js";

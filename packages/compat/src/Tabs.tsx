@@ -8,6 +8,7 @@ import {
 	useSafeContext,
 } from "@stratakit/foundations/secret-internals";
 import { Tabs as SkTabs } from "@stratakit/structures";
+import cx from "classnames";
 import * as React from "react";
 import { useCompatProps } from "./~utils.tsx";
 
@@ -47,7 +48,6 @@ interface TabsProps
 /** @see https://itwinui.bentley.com/docs/tabs */
 export const Tabs = React.forwardRef((props, forwardedRef) => {
 	const {
-		actions, // NOT IMPLEMENTED
 		labels,
 		onTabSelected,
 		activeIndex,
@@ -57,9 +57,14 @@ export const Tabs = React.forwardRef((props, forwardedRef) => {
 		contentClassName,
 		wrapperClassName,
 		children,
+
+		// biome-ignore-start lint/correctness/noUnusedVariables: NOT IMPLEMENTED
+		actions,
 		overflowOptions, // ignored by iTwinUI
-		orientation, // NOT IMPLEMENTED
-		type, // NOT IMPLEMENTED
+		orientation,
+		type,
+		// biome-ignore-end lint/correctness/noUnusedVariables: NOT IMPLEMENTED
+
 		...rest
 	} = useCompatProps(props);
 
@@ -105,7 +110,7 @@ export const Tabs = React.forwardRef((props, forwardedRef) => {
 			selectedId={selectedId}
 			selectOnMove={focusActivationMode === "manual" ? false : undefined}
 		>
-			<div className={wrapperClassName} {...rest}>
+			<div {...rest} className={cx(wrapperClassName, props.className)}>
 				<SkTabs.TabList
 					className={tabsClassName}
 					ref={forwardedRef}
@@ -152,11 +157,15 @@ interface TabProps
 export const Tab = React.forwardRef((props, forwardedRef) => {
 	const {
 		label,
-		sublabel, // NOT IMPLEMENTED
-		startIcon, // NOT IMPLEMENTED
 		disabled,
-		children, // NOT IMPLEMENTED
-		value, // NOT IMPLEMENTED
+
+		// biome-ignore-start lint/correctness/noUnusedVariables: NOT IMPLEMENTED
+		sublabel,
+		startIcon,
+		children,
+		value,
+		// biome-ignore-end lint/correctness/noUnusedVariables: NOT IMPLEMENTED
+
 		...rest
 	} = useCompatProps(props);
 

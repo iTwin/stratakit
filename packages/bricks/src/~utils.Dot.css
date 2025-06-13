@@ -9,8 +9,8 @@
 		block-size: var(--🥝dot-size, 4px);
 
 		border-radius: 9999px;
-		background-color: var(--ids-color-bg-accent-base);
-		border: 1px solid var(--ids-color-border-glow-strong-default);
+		background-color: var(--stratakit-color-bg-accent-base);
+		border: 1px solid var(--stratakit-color-border-glow-strong-default);
 	}
 }
 

@@ -7,14 +7,14 @@ import { unstable_AccordionItem as SkAccordionItem } from "@stratakit/structures
 import * as React from "react";
 import { useCompatProps } from "./~utils.tsx";
 
-import type { ExpandableBlock as IuiAccordion } from "@itwin/itwinui-react";
+import type { ExpandableBlock as IuiExpandableBlock } from "@itwin/itwinui-react";
 import type { PolymorphicForwardRefComponent } from "./~utils.tsx";
 
-type IuiAccordionProps = React.ComponentProps<typeof IuiAccordion>;
+type IuiExpandableBlockProps = React.ComponentProps<typeof IuiExpandableBlock>;
 
 interface AccordionProps
 	extends Pick<
-		IuiAccordionProps,
+		IuiExpandableBlockProps,
 		// ExpandableBlockOwnProps
 		| "status"
 		| "isExpanded"
@@ -30,15 +30,15 @@ interface AccordionProps
 		| "endIcon"
 	> {
 	/** NOT IMPLEMENTED. */
-	status?: IuiAccordionProps["status"];
+	status?: IuiExpandableBlockProps["status"];
 	/** NOT IMPLEMENTED. */
-	size?: IuiAccordionProps["size"];
+	size?: IuiExpandableBlockProps["size"];
 	/** NOT IMPLEMENTED. */
-	styleType?: IuiAccordionProps["styleType"];
+	styleType?: IuiExpandableBlockProps["styleType"];
 	/** NOT IMPLEMENTED. */
-	disabled?: IuiAccordionProps["disabled"];
+	disabled?: IuiExpandableBlockProps["disabled"];
 	/** NOT IMPLEMENTED. */
-	caption?: IuiAccordionProps["caption"];
+	caption?: IuiExpandableBlockProps["caption"];
 }
 
 /** @see https://itwinui.bentley.com/docs/expandableblock */
@@ -49,11 +49,15 @@ export const ExpandableBlock = React.forwardRef((props, forwardedRef) => {
 		children,
 		title,
 		endIcon,
-		status, // NOT IMPLEMENTED
-		size, // NOT IMPLEMENTED
-		styleType, // NOT IMPLEMENTED
-		disabled, // NOT IMPLEMENTED
-		caption, // NOT IMPLEMENTED
+
+		// biome-ignore-start lint/correctness/noUnusedVariables: NOT IMPLEMENTED
+		status,
+		size,
+		styleType,
+		disabled,
+		caption,
+		// biome-ignore-end lint/correctness/noUnusedVariables: NOT IMPLEMENTED
+
 		...rest
 	} = useCompatProps(props);
 

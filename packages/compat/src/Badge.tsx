@@ -43,9 +43,8 @@ export const Badge = React.forwardRef((props, forwardedRef) => {
 				return "critical";
 			case "warning":
 				return "attention";
-			default:
-				return undefined;
 		}
+		return undefined;
 	}, [backgroundColor]);
 
 	return <SkBadge {...rest} ref={forwardedRef} label={children} tone={tone} />;

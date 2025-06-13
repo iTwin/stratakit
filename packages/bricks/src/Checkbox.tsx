@@ -46,17 +46,19 @@ interface CheckboxProps extends InputBaseProps, CheckboxOwnProps {}
  * Underneath, it's an HTML checkbox, i.e. `<input type="checkbox">`, so it supports the same props,
  * including `value`, `defaultChecked`, `checked`, and `onChange`.
  */
-export const Checkbox = forwardRef<"input", CheckboxProps>(
-	(props, forwardedRef) => {
-		useFieldControlType("checkable");
-		return (
-			<AkCheckbox
-				accessibleWhenDisabled
-				{...props}
-				className={cx("🥝-checkbox", props.className)}
-				ref={forwardedRef}
-			/>
-		);
-	},
-);
+const Checkbox = forwardRef<"input", CheckboxProps>((props, forwardedRef) => {
+	useFieldControlType("checkable");
+	return (
+		<AkCheckbox
+			accessibleWhenDisabled
+			{...props}
+			className={cx("🥝-checkbox", props.className)}
+			ref={forwardedRef}
+		/>
+	);
+});
 DEV: Checkbox.displayName = "Checkbox";
+
+// ----------------------------------------------------------------------------
+
+export default Checkbox;

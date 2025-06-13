@@ -4,16 +4,16 @@
  *--------------------------------------------------------------------------------------------*/
 
 .🥝-tooltip {
-	--✨bg: var(--ids-color-bg-elevation-emphasis);
-	--✨color: var(--ids-color-text-neutral-emphasis);
-	--✨border: var(--ids-color-border-elevation-base);
+	--✨bg: var(--stratakit-color-bg-elevation-emphasis);
+	--✨color: var(--stratakit-color-text-neutral-emphasis);
+	--✨border: var(--stratakit-color-border-elevation-base);
 	--✨border-width: 1px;
 
 	@layer base {
 		@apply --typography("body-sm");
 
 		background-color: var(--✨bg);
-		box-shadow: var(--ids-shadow-tooltip-base);
+		box-shadow: var(--stratakit-shadow-tooltip-base);
 		color: var(--✨color);
 
 		display: flex;

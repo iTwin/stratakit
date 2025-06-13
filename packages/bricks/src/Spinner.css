@@ -25,13 +25,13 @@
 
 	@layer modifiers {
 		&:where([data-kiwi-tone="neutral"]) {
-			--🥝spinner-fill-color: var(--ids-color-icon-neutral-base);
-			--🥝spinner-track-color: var(--ids-color-border-page-base);
+			--🥝spinner-fill-color: var(--stratakit-color-icon-neutral-base);
+			--🥝spinner-track-color: var(--stratakit-color-border-page-base);
 		}
 
 		&:where([data-kiwi-tone="accent"]) {
-			--🥝spinner-fill-color: var(--ids-color-icon-accent-strong);
-			--🥝spinner-track-color: var(--ids-color-bg-accent-muted);
+			--🥝spinner-fill-color: var(--stratakit-color-icon-accent-strong);
+			--🥝spinner-track-color: var(--stratakit-color-bg-accent-muted);
 		}
 
 		&:where([data-kiwi-size="small"]) {

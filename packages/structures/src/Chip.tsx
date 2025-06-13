@@ -46,7 +46,7 @@ interface ChipProps extends Omit<BaseProps<"div">, "children"> {
  * <Chip label="Value" variant="outline" />
  * ```
  */
-export const Chip = forwardRef<"div", ChipProps>((props, forwardedRef) => {
+const Chip = forwardRef<"div", ChipProps>((props, forwardedRef) => {
 	const { variant = "solid", onDismiss, label, ...rest } = props;
 
 	const baseId = React.useId();
@@ -77,3 +77,7 @@ export const Chip = forwardRef<"div", ChipProps>((props, forwardedRef) => {
 	);
 });
 DEV: Chip.displayName = "Chip";
+
+// ----------------------------------------------------------------------------
+
+export default Chip;

@@ -12,9 +12,9 @@ import { useStoreState } from "@ariakit/react/store";
 import { forwardRef } from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
 import * as React from "react";
-import { Description } from "./Description.js";
+import Description from "./Description.js";
 import { FieldCollection, FieldControlTypeContext } from "./Field.internal.js";
-import { Label } from "./Label.js";
+import Label from "./Label.js";
 
 import type { CollectionItemProps } from "@ariakit/react/collection";
 import type { BaseProps } from "@stratakit/foundations/secret-internals";
@@ -82,10 +82,9 @@ DEV: FieldRoot.displayName = "Field";
 const FieldLabel = forwardRef<"label", BaseProps<"label">>(
 	(props, forwardedRef) => {
 		const store = useCollectionContext();
-		const renderedItems = useStoreState(
-			store,
-			"renderedItems",
-		) as FieldCollectionStoreItem[];
+		const renderedItems = useStoreState(store, "renderedItems") as
+			| FieldCollectionStoreItem[]
+			| undefined;
 		const fieldId = React.useMemo(
 			() => renderedItems?.find((item) => item.elementType === "control")?.id,
 			[renderedItems],
@@ -182,10 +181,9 @@ const FieldControl = forwardRef<"div", FieldCollectionItemControlProps>(
 		const store = useCollectionContext();
 		const generatedId = React.useId();
 		const { id = store ? generatedId : undefined, ...rest } = props;
-		const renderedItems = useStoreState(
-			store,
-			"renderedItems",
-		) as FieldCollectionStoreItem[];
+		const renderedItems = useStoreState(store, "renderedItems") as
+			| FieldCollectionStoreItem[]
+			| undefined;
 
 		const describedBy = React.useMemo(() => {
 			// Create a space separated list of description IDs

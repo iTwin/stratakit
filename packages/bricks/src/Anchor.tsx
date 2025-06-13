@@ -25,7 +25,7 @@ interface AnchorProps extends FocusableProps<"a"> {
  *
  * Supports a `tone` prop to change the tone (color) of the anchor.
  */
-export const Anchor = forwardRef<"a", AnchorProps>((props, forwardedRef) => {
+const Anchor = forwardRef<"a", AnchorProps>((props, forwardedRef) => {
 	const { tone = "neutral", ...rest } = props;
 	return (
 		<Role.a
@@ -40,3 +40,7 @@ export const Anchor = forwardRef<"a", AnchorProps>((props, forwardedRef) => {
 	);
 });
 DEV: Anchor.displayName = "Anchor";
+
+// ----------------------------------------------------------------------------
+
+export default Anchor;

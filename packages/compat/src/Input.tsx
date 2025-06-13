@@ -3,7 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import { TextBox } from "@stratakit/bricks";
+import { Field, TextBox } from "@stratakit/bricks";
 import * as React from "react";
 import { useCompatProps } from "./~utils.tsx";
 
@@ -28,6 +28,7 @@ interface InputProps
 /** @see https://itwinui.bentley.com/docs/input */
 export const Input = React.forwardRef((props, forwardedRef) => {
 	const {
+		id,
 		htmlSize,
 
 		// biome-ignore-start lint/correctness/noUnusedVariables: NOT IMPLEMENTED
@@ -41,10 +42,15 @@ export const Input = React.forwardRef((props, forwardedRef) => {
 	} = useCompatProps(props);
 
 	return (
-		<TextBox.Input
-			{...rest}
-			type={inputType as SkTextBoxInputProps["type"]}
-			size={htmlSize}
+		<Field.Control
+			id={id}
+			render={
+				<TextBox.Input
+					{...rest}
+					type={inputType as SkTextBoxInputProps["type"]}
+					size={htmlSize}
+				/>
+			}
 			ref={forwardedRef}
 		/>
 	);

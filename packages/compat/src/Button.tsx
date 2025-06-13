@@ -52,10 +52,14 @@ export const Button = React.forwardRef((props, forwardedRef) => {
 		startIconProps,
 		endIconProps,
 		htmlDisabled,
-		size, // NOT IMPLEMENTED
-		labelProps, // NOT IMPLEMENTED
-		stretched, // NOT IMPLEMENTED
-		loading, // NOT IMPLEMENTED
+
+		// biome-ignore-start lint/correctness/noUnusedVariables: NOT IMPLEMENTED
+		size,
+		labelProps,
+		stretched,
+		loading,
+		// biome-ignore-end lint/correctness/noUnusedVariables: NOT IMPLEMENTED
+
 		...rest
 	} = useCompatProps(props);
 

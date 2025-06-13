@@ -217,9 +217,6 @@ importers:
       "@stratakit/bricks":
         specifier: ^0.3.0
         version: link:../bricks
-      "@stratakit/icons":
-        specifier: ^0.1.2
-        version: link:../icons
       "@stratakit/structures":
         specifier: ^0.2.2
         version: link:../structures

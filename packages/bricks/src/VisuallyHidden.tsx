@@ -24,7 +24,7 @@ interface VisuallyHiddenProps extends BaseProps<"span"> {}
  *
  * **Note**: The `IconButton` component utilizes `VisuallyHidden` internally when the `label` prop is set.
  */
-export const VisuallyHidden = forwardRef<"span", VisuallyHiddenProps>(
+const VisuallyHidden = forwardRef<"span", VisuallyHiddenProps>(
 	(props, forwardedRef) => {
 		return (
 			<Role.span
@@ -36,3 +36,7 @@ export const VisuallyHidden = forwardRef<"span", VisuallyHiddenProps>(
 	},
 );
 DEV: VisuallyHidden.displayName = "VisuallyHidden";
+
+// ----------------------------------------------------------------------------
+
+export default VisuallyHidden;

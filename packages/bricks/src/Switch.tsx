@@ -50,18 +50,20 @@ interface SwitchProps extends InputBaseProps, CheckboxOwnProps {
  * Underneath, it's an HTML checkbox, i.e. `<input type="checkbox">`, so it supports the same props,
  * including `value`, `defaultChecked`, `checked`, and `onChange`.
  */
-export const Switch = forwardRef<"input", SwitchProps>(
-	(props, forwardedRef) => {
-		useFieldControlType("checkable");
-		return (
-			<AkCheckbox
-				accessibleWhenDisabled
-				{...props}
-				className={cx("🥝-switch", props.className)}
-				role="switch"
-				ref={forwardedRef}
-			/>
-		);
-	},
-);
+const Switch = forwardRef<"input", SwitchProps>((props, forwardedRef) => {
+	useFieldControlType("checkable");
+	return (
+		<AkCheckbox
+			accessibleWhenDisabled
+			{...props}
+			className={cx("🥝-switch", props.className)}
+			role="switch"
+			ref={forwardedRef}
+		/>
+	);
+});
 DEV: Switch.displayName = "Switch";
+
+// ----------------------------------------------------------------------------
+
+export default Switch;

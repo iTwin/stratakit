@@ -66,5 +66,7 @@ DEV: AnchorRoot.displayName = "Anchor.Root";
 const Anchor = AnchorRoot;
 DEV: Anchor.displayName = "Anchor";
 
+// ----------------------------------------------------------------------------
+
 export default Anchor;
 export { AnchorRoot as Root };

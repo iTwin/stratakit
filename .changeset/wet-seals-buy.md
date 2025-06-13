@@ -2,7 +2,9 @@
 "@stratakit/structures": patch
 ---
 
-Added compositional `Chip.Root`, `Chip.Label` and `Chip.DismissButton` components to the `@stratakit/structures` package. These new components should be preferred over an existing convenience `Chip` component by consumers that need a fine grained configuration. To use the compositional components, use the subpath import:
+Added compositional `Chip.Root`, `Chip.Label` and `Chip.DismissButton` components. These new components can be used when you need fine grained configuration.
+
+To use the compositional components, import them from the `/Chip` subpath:
 
 ```tsx
 import * as Chip from "@stratakit/structures/Chip";

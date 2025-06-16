@@ -9,7 +9,7 @@ import { definePage } from "~/~utils.tsx";
 
 export const handle = { title: "ProgressBar" };
 
-const sizes = ["small", "medium", "large"] as const;
+const sizes = ["medium", "large"] as const;
 const tones = ["neutral", "accent"] as const;
 
 export default definePage(

@@ -154,7 +154,7 @@ function Tokens({
 
 			<Table.Body>
 				{tokens.map((token) => {
-					const variableName = `--ids-${kind}-${token}`;
+					const variableName = `--stratakit-${kind}-${token}`;
 					return (
 						<Table.Row key={token}>
 							<Table.Cell>
@@ -171,11 +171,7 @@ function Tokens({
 	);
 }
 
-function TypographyVariants({
-	variants,
-}: {
-	variants: readonly string[];
-}) {
+function TypographyVariants({ variants }: { variants: readonly string[] }) {
 	return (
 		<Table.HtmlTable>
 			<Table.Header>

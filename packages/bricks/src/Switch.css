@@ -10,24 +10,28 @@
 	--✨checked-translateX: 75%;
 	--✨pressed-scaleX: 1.75;
 
-	--✨shadow-border: 0px 0px 0px 1px var(--ids-color-border-shadow-base) inset;
+	--✨shadow-border: 0px 0px 0px 1px var(--stratakit-color-border-shadow-base) inset;
 
-	--✨glow--border-hover: var(--ids-color-glow-hue) var(--ids-color-border-glow-base-hover-\%);
-	--✨glow--border-press: var(--ids-color-glow-hue) var(--ids-color-border-glow-base-pressed-\%);
-	--✨glow--border-checked: var(--ids-color-glow-hue) var(--ids-color-border-glow-strong-hover-\%);
-	--✨glow--bg-hover: var(--ids-color-glow-hue) var(--ids-color-bg-glow-base-hover-\%);
-	--✨glow--bg-checked-hover: var(--ids-color-glow-hue) var(--ids-color-bg-glow-strong-hover-\%);
+	--✨glow--border-hover: var(--stratakit-color-glow-hue)
+		var(--stratakit-color-border-glow-base-hover-\%);
+	--✨glow--border-press: var(--stratakit-color-glow-hue)
+		var(--stratakit-color-border-glow-base-pressed-\%);
+	--✨glow--border-checked: var(--stratakit-color-glow-hue)
+		var(--stratakit-color-border-glow-strong-hover-\%);
+	--✨glow--bg-hover: var(--stratakit-color-glow-hue) var(--stratakit-color-bg-glow-base-hover-\%);
+	--✨glow--bg-checked-hover: var(--stratakit-color-glow-hue)
+		var(--stratakit-color-bg-glow-strong-hover-\%);
 
-	--✨bg--default: var(--ids-color-bg-page-base);
+	--✨bg--default: var(--stratakit-color-bg-page-base);
 	--✨bg--hover: color-mix(in oklch, var(--✨bg--default) 100%, var(--✨glow--bg-hover));
-	--✨bg--checked: var(--ids-color-bg-accent-base);
+	--✨bg--checked: var(--stratakit-color-bg-accent-base);
 	--✨bg--checked-hover: color-mix(
 		in oklch,
 		var(--✨bg--checked) 100%,
 		var(--✨glow--bg-checked-hover)
 	);
 
-	--✨border--default: var(--ids-color-border-neutral-base);
+	--✨border--default: var(--stratakit-color-border-neutral-base);
 	--✨border--hover: color-mix(in oklch, var(--✨border--default) 100%, var(--✨glow--border-hover));
 	--✨border--pressed: color-mix(
 		in oklch,
@@ -35,7 +39,7 @@
 		var(--✨glow--border-press)
 	);
 	--✨border--checked: color-mix(in oklch, var(--✨bg--checked) 100%, var(--✨glow--border-checked));
-	--✨border--disabled: var(--ids-color-border-glow-on-surface-disabled);
+	--✨border--disabled: var(--stratakit-color-border-glow-on-surface-disabled);
 
 	@layer base {
 		appearance: none;
@@ -64,7 +68,7 @@
 			var(--🌀switch-state--disabled, var(--✨border--disabled));
 		transition: all 150ms ease-out;
 		transition-property: background-color, border-color;
-		-webkit-tap-highlight-color: var(--ids-color-bg-glow-on-surface-accent-pressed);
+		-webkit-tap-highlight-color: var(--stratakit-color-bg-glow-on-surface-accent-pressed);
 
 		&::before,
 		&::after {
@@ -87,8 +91,8 @@
 			inline-size: var(--✨thumb-size);
 			margin: calc(0.125rem - 1px) /* spacing-2 - 1px to account for border */;
 			background-color: var(--🥝switch-thumb-color);
-			box-shadow: var(--ids-shadow-button-base-inset), var(--✨shadow-border),
-				var(--ids-shadow-button-base-drop);
+			box-shadow: var(--stratakit-shadow-button-base-inset), var(--✨shadow-border),
+				var(--stratakit-shadow-button-base-drop);
 			border-radius: var(--🥝switch-thumb-radius, var(--✨radius));
 			transform-origin: left;
 			transform: var(--🥝switch-thumb-transform);
@@ -102,7 +106,7 @@
 	}
 
 	@layer states {
-		--🥝switch-thumb-color: var(--ids-color-bg-neutral-inverse);
+		--🥝switch-thumb-color: var(--stratakit-color-bg-neutral-inverse);
 
 		@media (any-hover: hover) {
 			&:where(:hover) {
@@ -131,7 +135,7 @@
 
 		&:where(:disabled, [aria-disabled="true"]) {
 			--🌀switch-state: var(--🌀switch-state--disabled);
-			--🥝switch-thumb-color: var(--ids-color-icon-neutral-disabled);
+			--🥝switch-thumb-color: var(--stratakit-color-icon-neutral-disabled);
 			cursor: not-allowed;
 			-webkit-tap-highlight-color: transparent;
 

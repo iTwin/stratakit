@@ -95,23 +95,25 @@ export const meta: MetaFunction = () => {
 export default function Page() {
 	return (
 		<div className={styles.appLayout}>
-			<Header />
 			<PlatformBar />
+			<Header />
 			<PanelGroup
 				direction="horizontal"
 				className={styles.content}
 				keyboardResizeBy={2.5}
 			>
-				<Panel
-					defaultSize={20}
-					minSize={15}
-					maxSize={35}
-					className={styles.leftPanel}
-				>
-					<LeftPanel />
-				</Panel>
-				<PanelSplitter />
-				<Panel className={styles.canvasWrapper}>
+				<nav aria-label="Left panel" style={{ display: "contents" }}>
+					<Panel
+						defaultSize={20}
+						minSize={15}
+						maxSize={35}
+						className={styles.leftPanel}
+					>
+						<LeftPanel />
+					</Panel>
+					<PanelSplitter />
+				</nav>
+				<Panel className={styles.canvasWrapper} tagName="main">
 					<Canvas />
 				</Panel>
 			</PanelGroup>
@@ -124,9 +126,6 @@ export default function Page() {
 function Header() {
 	return (
 		<header className={styles.header}>
-			<div className={styles.logo}>
-				<Icon href={placeholderIcon} size="large" />
-			</div>
 			<Text render={<h1 />} variant="body-md">
 				{title}
 			</Text>
@@ -136,13 +135,16 @@ function Header() {
 
 function PlatformBar() {
 	return (
-		<div className={styles.platformBar}>
+		<nav className={styles.platformBar}>
+			<div className={styles.logo}>
+				<Icon href={placeholderIcon} size="large" />
+			</div>
 			<div className={styles.tools}>
 				<Icon href={placeholderIcon} size="large" />
 				<Icon href={placeholderIcon} size="large" />
 				<Icon href={placeholderIcon} size="large" />
 			</div>
-		</div>
+		</nav>
 	);
 }
 
@@ -181,6 +183,7 @@ function LeftPanel() {
 	const query = useQuery({
 		queryKey: ["sandbox-data", selectedModel],
 		queryFn: () => fetchModelsData(selectedModel),
+		staleTime: Number.POSITIVE_INFINITY,
 	});
 
 	return (
@@ -240,11 +243,21 @@ function LeftPanel() {
 			</div>
 
 			<React.Suspense key={selectedModel} fallback={<PanelLoading />}>
-				<SearchboxProvider>
-					<PanelContent query={query} />
-				</SearchboxProvider>
+				<PanelContentContainer query={query} />
 			</React.Suspense>
 		</>
+	);
+}
+
+function PanelContentContainer(props: {
+	query: UseQueryResult<Awaited<ReturnType<typeof fetchModelsData>>>;
+}) {
+	const { data } = React.use(props.query.promise);
+
+	return (
+		<SearchboxProvider defaultVisible={Object.keys(data).length !== 1}>
+			<PanelContent data={data} />
+		</SearchboxProvider>
 	);
 }
 
@@ -319,15 +332,12 @@ function VersionContent(props: {
 	);
 }
 
-function PanelContent(props: {
-	query: UseQueryResult<Awaited<ReturnType<typeof fetchModelsData>>>;
-}) {
-	const { data } = React.use(props.query.promise);
+function PanelContent(props: { data: { [key: string]: TreeItemData[] } }) {
 	const { isSearchboxVisible } = React.useContext(SearchboxContext);
 
 	const trees = React.useMemo(
 		() =>
-			Object.entries(data).map(([treeName, treeData]) => {
+			Object.entries(props.data).map(([treeName, treeData]) => {
 				const filters =
 					treeData.length <= 1 ? [] : treeData.map(({ label }) => label); // top-level items are used as filters
 
@@ -345,7 +355,7 @@ function PanelContent(props: {
 						),
 				} as const;
 			}),
-		[data],
+		[props.data],
 	);
 
 	const [selectedTreeId, setSelectedTreeId] = React.useState<
@@ -593,11 +603,7 @@ function findTreeItem<T extends Pick<TreeItem, "id"> & { items: T[] }>(
 	}
 }
 
-function SandboxTree({
-	data: treeData,
-}: {
-	data: TreeItemData[];
-}) {
+function SandboxTree({ data: treeData }: { data: TreeItemData[] }) {
 	const {
 		appliedFilters: filters,
 		search,
@@ -790,11 +796,7 @@ function VisibilityAction({ item, onClick }: VisibilityActionProps) {
 	);
 }
 
-function Subheader({
-	tabs,
-}: {
-	tabs?: React.ReactNode;
-}) {
+function Subheader({ tabs }: { tabs?: React.ReactNode }) {
 	const { itemCount, isFiltered, search, setSearch } =
 		React.useContext(TreeFilteringContext);
 
@@ -990,8 +992,12 @@ const TreeFilteringContext = React.createContext<{
 	setItemCount: () => {},
 });
 
-function SearchboxProvider(props: React.PropsWithChildren) {
-	const [isSearchboxVisible, setIsSearchboxVisible] = React.useState(false);
+function SearchboxProvider(
+	props: React.PropsWithChildren<{ defaultVisible: boolean }>,
+) {
+	const [isSearchboxVisible, setIsSearchboxVisible] = React.useState(
+		!props.defaultVisible,
+	);
 
 	return (
 		<SearchboxContext.Provider

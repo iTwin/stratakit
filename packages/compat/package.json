@@ -9,7 +9,10 @@
 		".": "./src/index.ts",
 		"./*": "./*"
 	},
-	"files": ["CHANGELOG.md", "LICENSE.md"],
+	"files": [
+		"CHANGELOG.md",
+		"LICENSE.md"
+	],
 	"description": "A React component library for StrataKit",
 	"author": "Bentley Systems",
 	"homepage": "https://github.com/iTwin/design-system",
@@ -33,9 +36,10 @@
 	],
 	"scripts": {},
 	"dependencies": {
-		"@itwin/itwinui-react": "^3.18.2",
-		"@stratakit/bricks": "^0.2.0",
-		"@stratakit/structures": "^0.2.0"
+		"@itwin/itwinui-react": "^3.18.3",
+		"@stratakit/bricks": "^0.3.0",
+		"@stratakit/structures": "^0.2.2",
+		"classnames": "^2.5.1"
 	},
 	"devDependencies": {
 		"@stratakit/foundations": "workspace:*",
@@ -47,7 +51,7 @@
 		"typescript": "catalog:"
 	},
 	"peerDependencies": {
-		"@stratakit/foundations": "^0.1.4",
+		"@stratakit/foundations": "^0.1.6",
 		"react": ">=18.0.0",
 		"react-dom": ">=18.0.0"
 	}

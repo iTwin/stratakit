@@ -3,7 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import { Field, Description } from "@stratakit/bricks";
+import { Field } from "@stratakit/bricks";
 import * as React from "react";
 import { useCompatProps } from "./~utils.tsx";
 
@@ -36,23 +36,19 @@ export const StatusMessage = React.forwardRef((props, forwardedRef) => {
 		contentProps,
 		// biome-ignore-end lint/correctness/noUnusedVariables: NOT IMPLEMENTED
 
-		status, // PARTIALLY IMPLEMENTED. MISSING STATUS ICON
+		status, // PARTIALLY IMPLEMENTED. COLOR MISMATCH AND MISSING STATUS ICON
 		children,
 		...rest
 	} = useCompatProps(props);
 
-	return status === "negative" ? (
+	return status === "negative" || status === "warning" ? (
 		<Field.ErrorMessage {...rest} ref={forwardedRef}>
 			{children}
 		</Field.ErrorMessage>
 	) : (
-		<Description
-			tone={status === "warning" ? "attention" : status}
-			{...rest}
-			ref={forwardedRef}
-		>
+		<Field.Description {...rest} ref={forwardedRef}>
 			{children}
-		</Description>
+		</Field.Description>
 	);
 }) as PolymorphicForwardRefComponent<"div", StatusMessageProps>;
 DEV: StatusMessage.displayName = "StatusMessage";

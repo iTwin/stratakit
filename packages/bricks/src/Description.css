@@ -11,13 +11,5 @@
 		&:where([data-kiwi-tone="critical"]) {
 			color: var(--stratakit-color-text-critical-base);
 		}
-
-		&:where([data-kiwi-tone="attention"]) {
-			color: var(--stratakit-color-text-attention-base);
-		}
-
-		&:where([data-kiwi-tone="positive"]) {
-			color: var(--stratakit-color-text-positive-base);
-		}
 	}
 }

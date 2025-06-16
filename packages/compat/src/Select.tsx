@@ -218,6 +218,20 @@ export const Select = React.forwardRef(
 				[onChangeProp, native],
 			);
 
+		const renderedOptions = React.useMemo(() => {
+			if (!native) {
+				return null;
+			}
+
+			return options.map((option) => {
+				return (
+					<option key={option.value} {...option}>
+						{option.label}
+					</option>
+				);
+			});
+		}, [native, options]);
+
 		return (
 			<SkSelect.Root {...rest}>
 				<SkSelect.HtmlSelect
@@ -228,7 +242,7 @@ export const Select = React.forwardRef(
 					defaultValue={native ? defaultValue : undefined}
 					onChange={onChange}
 				>
-					{native ? <RenderedOptions options={options} /> : null}
+					{renderedOptions}
 				</SkSelect.HtmlSelect>
 			</SkSelect.Root>
 		);
@@ -238,24 +252,6 @@ export const Select = React.forwardRef(
 ) => React.JSX.Element;
 DEV: (Select as React.ForwardRefExoticComponent<unknown>).displayName =
 	"Select";
-
-const RenderedOptions = ({
-	options,
-}: {
-	options: {
-		label: string;
-		value: string;
-		disabled?: boolean;
-	}[];
-}) => {
-	return options.map((option) => {
-		return (
-			<option key={option.value} {...option}>
-				{option.label}
-			</option>
-		);
-	});
-};
 
 export type {
 	SelectOption,

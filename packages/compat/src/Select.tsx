@@ -171,32 +171,37 @@ export const Select = React.forwardRef(
 
 			// NativeSelect related props
 			disabled,
-			size, // NOT IMPLEMENTED
-			status, // NOT IMPLEMENTED
 			value,
 			onChange: onChangeProp,
 			options,
 			// @ts-ignore: Exists only in NativeSelect
 			defaultValue,
 			triggerProps,
-			// @ts-ignore: NOT IMPLEMENTED
+
+			// biome-ignore-start lint/correctness/noUnusedVariables: NOT IMPLEMENTED
+			size,
+			status,
+			// @ts-ignore: Exists only in NativeSelect
 			required,
 			multiple,
-			// @ts-ignore: NOT IMPLEMENTED
+			// @ts-ignore: Exists only in NativeSelect
 			styleType,
 			placeholder,
+			// biome-ignore-end lint/correctness/noUnusedVariables: NOT IMPLEMENTED
 
 			// CustomSelect related props
-			// @ts-ignore: NOT IMPLEMENTED
+			// biome-ignore-start lint/correctness/noUnusedVariables: NOT IMPLEMENTED
+			// @ts-ignore: Exists only in CustomSelect
 			itemRenderer,
-			// @ts-ignore: NOT IMPLEMENTED
+			// @ts-ignore: Exists only in CustomSelect
 			menuClassName,
-			// @ts-ignore: NOT IMPLEMENTED
+			// @ts-ignore: Exists only in CustomSelect
 			menuStyle,
-			// @ts-ignore: NOT IMPLEMENTED
+			// @ts-ignore: Exists only in CustomSelect
 			popoverProps,
-			// @ts-ignore: NOT IMPLEMENTED
+			// @ts-ignore: Exists only in CustomSelect
 			selectedItemRenderer,
+			// biome-ignore-end lint/correctness/noUnusedVariables: NOT IMPLEMENTED
 
 			...rest
 		} = props;

@@ -7,113 +7,16 @@ import { Select as SkSelect } from "@stratakit/bricks";
 import * as React from "react";
 
 import type { Select as IuiSelect } from "@itwin/itwinui-react";
+import type { PolymorphicForwardRefComponent } from "./~utils.tsx";
 
-type IuiSelectProps<T> = React.ComponentProps<typeof IuiSelect<T>>;
-type IuiNativeSelectProps<T> = IuiSelectProps<T> & {
+type IuiSelectProps = React.ComponentProps<typeof IuiSelect>;
+type IuiNativeSelectProps = IuiSelectProps & {
 	native: true;
 };
-type IuiCustomSelectProps<T> = IuiSelectProps<T> & {
-	native?: false;
-};
 
-interface IuiCustomSelectTransformedProps<T>
+interface IuiNativeSelectTransformedProps
 	extends Pick<
-		IuiCustomSelectProps<T>,
-		| "native"
-
-		// SelectCommonProps
-		| "disabled"
-		| "size"
-		| "status"
-
-		// CustomSelectProps
-		| "placeholder"
-		| "options"
-		| "itemRenderer"
-		| "menuClassName"
-		| "menuStyle"
-		| "popoverProps"
-		| "triggerProps"
-		| "multiple"
-		| "selectedItemRenderer"
-		| "value"
-		| "onChange"
-	> {
-	/**
-	 * NOT IMPLEMENTED:
-	 * Only native mode `Select` is implemented. If in custom mode (`native`=false/undefined), this prop may not work.
-	 */
-	disabled?: IuiCustomSelectProps<T>["disabled"];
-	/**
-	 * NOT IMPLEMENTED:
-	 * Only native mode `Select` is implemented. If in custom mode (`native`=false/undefined), this prop may not work.
-	 */
-	size?: IuiCustomSelectProps<T>["size"];
-	/**
-	 * NOT IMPLEMENTED:
-	 * Only native mode `Select` is implemented. If in custom mode (`native`=false/undefined), this prop may not work.
-	 */
-	status?: IuiCustomSelectProps<T>["status"];
-	/**
-	 * NOT IMPLEMENTED:
-	 * Only native mode `Select` is implemented. If in custom mode (`native`=false/undefined), this prop may not work.
-	 */
-	placeholder?: IuiCustomSelectProps<T>["placeholder"];
-	/**
-	 * NOT IMPLEMENTED:
-	 * Only native mode `Select` is implemented. If in custom mode (`native`=false/undefined), this prop may not work.
-	 */
-	options: IuiCustomSelectProps<T>["options"];
-	/**
-	 * NOT IMPLEMENTED:
-	 * Only native mode `Select` is implemented. If in custom mode (`native`=false/undefined), this prop may not work.
-	 */
-	itemRenderer?: IuiCustomSelectProps<T>["itemRenderer"];
-	/**
-	 * NOT IMPLEMENTED:
-	 * Only native mode `Select` is implemented. If in custom mode (`native`=false/undefined), this prop may not work.
-	 */
-	menuClassName?: IuiCustomSelectProps<T>["menuClassName"];
-	/**
-	 * NOT IMPLEMENTED:
-	 * Only native mode `Select` is implemented. If in custom mode (`native`=false/undefined), this prop may not work.
-	 */
-	menuStyle?: IuiCustomSelectProps<T>["menuStyle"];
-	/**
-	 * NOT IMPLEMENTED:
-	 * Only native mode `Select` is implemented. If in custom mode (`native`=false/undefined), this prop may not work.
-	 */
-	popoverProps?: IuiCustomSelectProps<T>["popoverProps"];
-	/**
-	 * NOT IMPLEMENTED:
-	 * Only native mode `Select` is implemented. If in custom mode (`native`=false/undefined), this prop may not work.
-	 */
-	triggerProps?: IuiCustomSelectProps<T>["triggerProps"];
-	/**
-	 * NOT IMPLEMENTED:
-	 * Only native mode `Select` is implemented. If in custom mode (`native`=false/undefined), this prop may not work.
-	 */
-	multiple?: IuiCustomSelectProps<T>["multiple"];
-	/**
-	 * NOT IMPLEMENTED:
-	 * Only native mode `Select` is implemented. If in custom mode (`native`=false/undefined), this prop may not work.
-	 */
-	selectedItemRenderer?: IuiCustomSelectProps<T>["selectedItemRenderer"];
-	/**
-	 * NOT IMPLEMENTED:
-	 * Only native mode `Select` is implemented. If in custom mode (`native`=false/undefined), this prop may not work.
-	 */
-	value?: IuiCustomSelectProps<T>["value"];
-	/**
-	 * NOT IMPLEMENTED:
-	 * Only native mode `Select` is implemented. If in custom mode (`native`=false/undefined), this prop may not work.
-	 */
-	onChange?: IuiCustomSelectProps<T>["onChange"];
-}
-
-interface IuiNativeSelectTransformedProps<T>
-	extends Pick<
-		IuiNativeSelectProps<T>,
+		IuiNativeSelectProps,
 		| "native"
 
 		// SelectCommonProps
@@ -135,22 +38,21 @@ interface IuiNativeSelectTransformedProps<T>
 		| "placeholder"
 	> {
 	/** NOT IMPLEMENTED */
-	size?: IuiNativeSelectProps<T>["size"];
+	size?: IuiNativeSelectProps["size"];
 	/** NOT IMPLEMENTED */
-	status?: IuiNativeSelectProps<T>["status"];
+	status?: IuiNativeSelectProps["status"];
 	/** NOT IMPLEMENTED */
-	required?: IuiNativeSelectProps<T>["required"];
+	required?: IuiNativeSelectProps["required"];
 	/** NOT IMPLEMENTED */
-	styleType?: IuiNativeSelectProps<T>["styleType"];
+	styleType?: IuiNativeSelectProps["styleType"];
 	/** NOT IMPLEMENTED */
-	placeholder?: IuiNativeSelectProps<T>["placeholder"];
+	placeholder?: IuiNativeSelectProps["placeholder"];
 }
 
-type SelectProps<T> = (
-	| IuiNativeSelectTransformedProps<T>
-	| IuiCustomSelectTransformedProps<T>
-) &
-	Omit<
+type SelectProps = Omit<IuiNativeSelectTransformedProps, "native"> & {
+	/** NO-OP: Will always be in native mode. */
+	native?: boolean;
+} & Omit<
 		React.ComponentPropsWithoutRef<"div">,
 		"onChange" | "placeholder" | "value" | "defaultValue"
 	>;
@@ -158,49 +60,30 @@ type SelectProps<T> = (
 /**
  * @see https://itwinui.bentley.com/docs/Select
  *
- * **IMPORTANT**: Only native mode `Select` is implemented.
- * If in custom mode (`native`=false/undefined), some of the passed props may not work.
+ * **IMPORTANT**: Regardless of the `native` prop, the `Select` will always be in native mode.
+ * Thus, all other props have to be updated, added, or removed to match native `Select`'s props.
+ * E.g. `value` must be a string, no `multiple` support, etc.
  */
 export const Select = React.forwardRef(
-	<T,>(
-		props: SelectProps<T>,
-		forwardedRef: React.ForwardedRef<HTMLSelectElement>,
-	) => {
+	(props: SelectProps, forwardedRef: React.ForwardedRef<HTMLSelectElement>) => {
 		const {
-			native,
-
-			// NativeSelect related props
 			disabled,
 			value,
 			onChange: onChangeProp,
 			options,
-			// @ts-ignore: Exists only in NativeSelect
 			defaultValue,
 			triggerProps,
+
+			// biome-ignore lint/correctness/noUnusedVariables: NO-OP
+			native,
 
 			// biome-ignore-start lint/correctness/noUnusedVariables: NOT IMPLEMENTED
 			size,
 			status,
-			// @ts-ignore: Exists only in NativeSelect
 			required,
 			multiple,
-			// @ts-ignore: Exists only in NativeSelect
 			styleType,
 			placeholder,
-			// biome-ignore-end lint/correctness/noUnusedVariables: NOT IMPLEMENTED
-
-			// CustomSelect related props
-			// biome-ignore-start lint/correctness/noUnusedVariables: NOT IMPLEMENTED
-			// @ts-ignore: Exists only in CustomSelect
-			itemRenderer,
-			// @ts-ignore: Exists only in CustomSelect
-			menuClassName,
-			// @ts-ignore: Exists only in CustomSelect
-			menuStyle,
-			// @ts-ignore: Exists only in CustomSelect
-			popoverProps,
-			// @ts-ignore: Exists only in CustomSelect
-			selectedItemRenderer,
 			// biome-ignore-end lint/correctness/noUnusedVariables: NOT IMPLEMENTED
 
 			...rest
@@ -209,20 +92,12 @@ export const Select = React.forwardRef(
 		const onChange: React.ChangeEventHandler<HTMLSelectElement> =
 			React.useCallback(
 				(event) => {
-					if (!native) {
-						return;
-					}
-
 					onChangeProp?.(event.target.value, event);
 				},
-				[onChangeProp, native],
+				[onChangeProp],
 			);
 
 		const renderedOptions = React.useMemo(() => {
-			if (!native) {
-				return null;
-			}
-
 			return options.map((option) => {
 				return (
 					<option key={option.value} {...option}>
@@ -230,16 +105,16 @@ export const Select = React.forwardRef(
 					</option>
 				);
 			});
-		}, [native, options]);
+		}, [options]);
 
 		return (
 			<SkSelect.Root {...rest}>
 				<SkSelect.HtmlSelect
-					{...(native ? triggerProps : {})}
+					{...triggerProps}
 					disabled={disabled}
 					ref={forwardedRef}
-					value={native ? (value ?? undefined) : undefined}
-					defaultValue={native ? defaultValue : undefined}
+					value={value ?? undefined}
+					defaultValue={defaultValue}
 					onChange={onChange}
 				>
 					{renderedOptions}
@@ -247,9 +122,7 @@ export const Select = React.forwardRef(
 			</SkSelect.Root>
 		);
 	},
-) as <T>(
-	props: SelectProps<T> & { ref?: React.ForwardedRef<HTMLSelectElement> },
-) => React.JSX.Element;
+) as PolymorphicForwardRefComponent<"div", SelectProps>;
 DEV: (Select as React.ForwardRefExoticComponent<unknown>).displayName =
 	"Select";
 

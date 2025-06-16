@@ -4,12 +4,10 @@
  *--------------------------------------------------------------------------------------------*/
 
 import placeholderIcon from "@stratakit/icons/placeholder.svg";
-import { MenuItem, Select } from "@stratakit/react";
+import { Select } from "@stratakit/react";
 import * as React from "react";
 import { definePage } from "~/~utils.tsx";
-
 import { Icon } from "@stratakit/foundations";
-import type { SelectOption } from "@stratakit/react";
 
 export const handle = { title: "Select" };
 
@@ -110,29 +108,28 @@ export const WithIcons = () => {
 
 export const WithSelectedValue = () => {
 	const options = [
-		{ value: 1, label: "Item #1" },
-		{ value: 2, label: "Item #2" },
-		{ value: 3, label: "Item #3" },
+		{ value: "1", label: "Item #1" },
+		{ value: "2", label: "Item #2" },
+		{ value: "3", label: "Item #3" },
 	];
-	const [value, setValue] = React.useState<number>(2);
+	const [value, setValue] = React.useState("2");
 	return (
 		<Select
 			options={options}
 			value={value}
 			onChange={setValue}
 			placeholder="Placeholder text"
-			popoverProps={{ visible: true }}
 		/>
 	);
 };
 
 export const Disabled = () => {
 	const options = [
-		{ value: 1, label: "Item #1" },
-		{ value: 2, label: "Item #2" },
-		{ value: 3, label: "Item #3" },
+		{ value: "1", label: "Item #1" },
+		{ value: "2", label: "Item #2" },
+		{ value: "3", label: "Item #3" },
 	];
-	const [value, setValue] = React.useState<number | undefined>(undefined);
+	const [value, setValue] = React.useState<string | undefined>(undefined);
 	return (
 		<div>
 			<Select
@@ -148,11 +145,11 @@ export const Disabled = () => {
 
 export const DisabledWithSelectedValue = () => {
 	const options = [
-		{ value: 1, label: "Item #1" },
-		{ value: 2, label: "Item #2" },
-		{ value: 3, label: "Item #3" },
+		{ value: "1", label: "Item #1" },
+		{ value: "2", label: "Item #2" },
+		{ value: "3", label: "Item #3" },
 	];
-	const [value, setValue] = React.useState<number>(2);
+	const [value, setValue] = React.useState("2");
 	return (
 		<div>
 			<Select
@@ -167,12 +164,12 @@ export const DisabledWithSelectedValue = () => {
 };
 
 export const ManyItems = () => {
-	const [value, setValue] = React.useState<number | undefined>(undefined);
+	const [value, setValue] = React.useState<string | undefined>(undefined);
 	return (
 		<Select
 			options={[...Array(20).fill(null)].map((_, index) => ({
 				label: `Item #${index}`,
-				value: index,
+				value: `${index}`,
 			}))}
 			value={value}
 			onChange={setValue}
@@ -182,11 +179,11 @@ export const ManyItems = () => {
 };
 export const Sublabels = () => {
 	const options = [
-		{ value: 1, label: "Item #1", sublabel: "Sublabel #1" },
-		{ value: 2, label: "Item #2", sublabel: "Sublabel #2" },
-		{ value: 3, label: "Item #3", sublabel: "Sublabel #3" },
+		{ value: "1", label: "Item #1", sublabel: "Sublabel #1" },
+		{ value: "2", label: "Item #2", sublabel: "Sublabel #2" },
+		{ value: "3", label: "Item #3", sublabel: "Sublabel #3" },
 	];
-	const [value, setValue] = React.useState<number | undefined>(undefined);
+	const [value, setValue] = React.useState<string | undefined>(undefined);
 	return (
 		<Select
 			options={options}
@@ -213,12 +210,6 @@ export const Custom = () => {
 			value={selectedValue}
 			onChange={(value: string) => setSelectedValue(value)}
 			placeholder="Placeholder text"
-			itemRenderer={(option) => (
-				<MenuItem style={{ color: option.value }}>{option.label}</MenuItem>
-			)}
-			selectedItemRenderer={(option: SelectOption<string>) => (
-				<span style={{ backgroundColor: option.value }}>{option.label}</span>
-			)}
 		/>
 	);
 };
@@ -244,61 +235,40 @@ export const TruncateMiddleText = () => {
 			value={selectedValue}
 			onChange={setSelectedValue}
 			placeholder="Placeholder text"
-			itemRenderer={(option) => <MenuItem>{option.label}</MenuItem>}
-			selectedItemRenderer={(option: SelectOption<string>) => (
-				<span>{option.label}</span>
-			)}
 		/>
 	);
 };
 
 export const Multi = () => {
-	const [value, setValue] = React.useState<number[]>([]);
+	const [value, setValue] = React.useState("0");
 	return (
 		<div>
 			<Select
 				options={[...Array(20).fill(null)].map((_, index) => ({
 					label: `Item #${index}`,
-					value: index,
+					value: `${index}`,
 				}))}
 				value={value}
-				onChange={(val, event) =>
-					setValue((prev) =>
-						event === "removed"
-							? prev.filter((value) => val !== value)
-							: [...prev, val],
-					)
-				}
+				onChange={setValue}
 				placeholder="Placeholder text"
-				multiple
 			/>
 		</div>
 	);
 };
 
 export const MultiCustomRenderer = () => {
-	const [value, setValue] = React.useState<number[]>([]);
+	const [value, setValue] = React.useState("0");
 
 	return (
 		<div>
 			<Select
 				options={[...Array(20).fill(null)].map((_, index) => ({
 					label: `Item #${index}`,
-					value: index,
+					value: `${index}`,
 				}))}
 				value={value}
-				onChange={(val, event) =>
-					setValue((prev) =>
-						event === "removed"
-							? prev.filter((value) => val !== value)
-							: [...(prev ?? []), val],
-					)
-				}
+				onChange={setValue}
 				placeholder="Placeholder text"
-				multiple
-				selectedItemRenderer={(options: SelectOption<number>[]) => (
-					<>{options.map((option) => option.label).join(", ")}</>
-				)}
 			/>
 		</div>
 	);

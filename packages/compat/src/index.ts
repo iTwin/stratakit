@@ -20,7 +20,6 @@ export { ProgressLinear } from "./ProgressLinear.js";
 export { ProgressRadial } from "./ProgressRadial.js";
 export { Radio } from "./Radio.js";
 export { Select } from "./Select.js";
-export type { SelectOption, SelectValueChangeEvent } from "./Select.js";
 export { Tab, Tabs } from "./Tabs.js";
 export { Tag } from "./Tag.js";
 export { Text } from "./Text.js";

@@ -108,11 +108,10 @@ export const Select = React.forwardRef(
 		}, [options]);
 
 		return (
-			<SkSelect.Root {...rest}>
+			<SkSelect.Root ref={forwardedRef} {...rest}>
 				<SkSelect.HtmlSelect
 					{...triggerProps}
 					disabled={disabled}
-					ref={forwardedRef}
 					value={value ?? undefined}
 					defaultValue={defaultValue}
 					onChange={onChange}

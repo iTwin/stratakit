@@ -40,6 +40,21 @@
 	}
 }
 
+.🥝-chip-label {
+	@layer base {
+		&:where(button) {
+			border-radius: inherit;
+			
+			&::after {
+				content: "";
+				position: absolute;
+				inset: 0;
+				border-radius: inherit;
+			}
+		}
+	}
+}
+
 .🥝-chip-dismiss-button:is(.🥝-icon-button) {
 	@layer base {
 		position: relative;

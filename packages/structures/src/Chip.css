@@ -44,6 +44,7 @@
 	@layer base {
 		&:where(button) {
 			border-radius: inherit;
+			cursor: pointer;
 			
 			&::after {
 				content: "";

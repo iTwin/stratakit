@@ -21,7 +21,10 @@ interface TagProps
 		| "removeButtonProps"
 		| "variant"
 		| "labelProps"
-	> {}
+	> {
+	/** NOT IMPLEMENTED. */
+	variant?: IuiTagProps["variant"];
+}
 
 /** @see https://itwinui.bentley.com/docs/tag */
 export const Tag = React.forwardRef((props, forwardedRef) => {
@@ -31,6 +34,7 @@ export const Tag = React.forwardRef((props, forwardedRef) => {
 		children,
 		onRemove,
 		removeButtonProps,
+		// biome-ignore lint/correctness/noUnusedVariables: NOT IMPLEMENTED
 		variant,
 		labelProps,
 		...rest
@@ -43,7 +47,6 @@ export const Tag = React.forwardRef((props, forwardedRef) => {
 		<Chip.Root
 			{...rest}
 			onClick={tagButton ? onClick : undefined}
-			variant={variant === "basic" ? "outline" : undefined}
 			render={render}
 			ref={forwardedRef}
 		>

@@ -24,9 +24,9 @@
 		"colorjs.io": "^0.5.2",
 		"fast-glob": "^3.3.3",
 		"internal": "workspace:*",
-		"lefthook": "^1.11.13",
+		"lefthook": "^1.11.14",
 		"prettier": "3.5.3",
-		"tsx": "^4.19.4",
+		"tsx": "^4.20.3",
 		"typescript": "catalog:",
 		"wireit": "^0.14.12"
 	},

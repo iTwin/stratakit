@@ -29,14 +29,19 @@
 								"source": [
 									":PACKAGE_WITH_PROTOCOL:",
 									":PACKAGE:",
-									"!**/*.css*",
-									"!**/*.svg"
+									"!@*/**",
+									"!*.*",
+									"!**/*.*"
 								]
-							}, // libraries
+							}, // unscoped libraries (exclude absolute paths ending with file type)
 							{
 								"type": false,
-								"source": [":PATH:", "!**/*.css*", "!**/*.svg"]
-							}, // relative and absolute paths
+								"source": ["@*/**", "!**/*.css*", "!**/*.svg"]
+							}, // scoped libraries
+							{
+								"type": false,
+								"source": [".*/**", "!**/*.css*", "!**/*.svg"]
+							}, // relative paths
 							{
 								"type": false,
 								"source": ["**", "!**/*.css*", "!**/*.svg"]

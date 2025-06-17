@@ -29,7 +29,6 @@ interface TagProps
 /** @see https://itwinui.bentley.com/docs/tag */
 export const Tag = React.forwardRef((props, forwardedRef) => {
 	const {
-		render: renderProp,
 		onClick,
 		children,
 		onRemove,
@@ -40,26 +39,29 @@ export const Tag = React.forwardRef((props, forwardedRef) => {
 		...rest
 	} = useCompatProps(props);
 
-	const labelButton = !!onClick && !!onRemove;
-	const tagButton = !labelButton && !!onClick;
-	const render = renderProp ?? (tagButton ? <button /> : <span />);
+	if (onRemove) {
+		return (
+			<Chip.Root render={<span />} {...rest} ref={forwardedRef}>
+				<Chip.Label
+					render={onClick ? <button /> : undefined}
+					onClick={onClick}
+					{...labelProps}
+				>
+					{children}
+				</Chip.Label>
+				<Chip.DismissButton onClick={onRemove} {...removeButtonProps} />
+			</Chip.Root>
+		);
+	}
+
 	return (
 		<Chip.Root
+			render={onClick ? <button /> : <span />}
 			{...rest}
-			onClick={tagButton ? onClick : undefined}
-			render={render}
+			onClick={onClick}
 			ref={forwardedRef}
 		>
-			<Chip.Label
-				onClick={labelButton ? onClick : undefined}
-				{...labelProps}
-				render={labelButton ? <button /> : undefined}
-			>
-				{children}
-			</Chip.Label>
-			{onRemove && (
-				<Chip.DismissButton onClick={onRemove} {...removeButtonProps} />
-			)}
+			<Chip.Label {...labelProps}>{children}</Chip.Label>
 		</Chip.Root>
 	);
 }) as PolymorphicForwardRefComponent<"span", TagProps>;

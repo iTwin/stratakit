@@ -9,20 +9,23 @@
 	block-size: 100dvb;
 	display: grid;
 	grid-template-areas:
-		"header header"
+		"platformBar header"
 		"platformBar content";
 	grid-template-rows: auto 1fr;
 	grid-template-columns: auto 1fr;
 }
 
 .header {
+	--_header-height: 40px;
 	grid-area: header;
 	background-color: var(--stratakit-color-bg-page-base);
 	border-block-end: 1px solid var(--stratakit-color-border-neutral-base);
 
+	min-block-size: var(--_header-height);
 	display: flex;
 	align-items: center;
 	gap: 12px;
+	padding-inline: 12px;
 }
 
 .platformBar {

@@ -35,20 +35,22 @@ type SkeletonProps = SkeletonPropsBase & {
  * <Skeleton variant="text" size="medium" />
  * ```
  */
-export const Skeleton = forwardRef<"div", SkeletonProps>(
-	(props, forwardedRef) => {
-		const { variant = "text", size = "medium", ...rest } = props;
+const Skeleton = forwardRef<"div", SkeletonProps>((props, forwardedRef) => {
+	const { variant = "text", size = "medium", ...rest } = props;
 
-		return (
-			<Role.div
-				{...rest}
-				ref={forwardedRef}
-				className={cx("🥝-skeleton", props.className)}
-				data-kiwi-variant={variant}
-				data-kiwi-size={size}
-				aria-hidden
-			/>
-		);
-	},
-);
+	return (
+		<Role.div
+			{...rest}
+			ref={forwardedRef}
+			className={cx("🥝-skeleton", props.className)}
+			data-kiwi-variant={variant}
+			data-kiwi-size={size}
+			aria-hidden
+		/>
+	);
+});
 DEV: Skeleton.displayName = "Skeleton";
+
+// ----------------------------------------------------------------------------
+
+export default Skeleton;

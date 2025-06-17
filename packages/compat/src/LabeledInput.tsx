@@ -4,6 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 
 import { Field, TextBox } from "@stratakit/bricks";
+import { StatusMessage } from "./StatusMessage.tsx";
 import * as React from "react";
 import { useCompatProps } from "./~utils.tsx";
 
@@ -35,6 +36,9 @@ interface LabeledInputProps
 	/** NOT IMPLEMENTED. */
 	size?: IuiLabeledInputProps["size"];
 
+	/** NOT IMPLEMENTED */
+	messageContentProps?: IuiLabeledInputProps["messageContentProps"];
+
 	/** NOT IMPLEMENTED. */
 	status?: IuiLabeledInputProps["status"];
 }
@@ -46,7 +50,7 @@ export const LabeledInput = React.forwardRef((props, forwardedRef) => {
 		message,
 		wrapperProps = {},
 		labelProps,
-		messageContentProps,
+		messageContentProps, // NOT IMPLEMENTED
 		inputWrapperProps,
 		displayStyle,
 		htmlSize,
@@ -108,9 +112,9 @@ export const LabeledInput = React.forwardRef((props, forwardedRef) => {
 				}
 			/>
 			{message ? (
-				<Field.Description {...messageContentProps}>
+				<StatusMessage contentProps={messageContentProps}>
 					{message}
-				</Field.Description>
+				</StatusMessage>
 			) : null}
 		</Field.Root>
 	);

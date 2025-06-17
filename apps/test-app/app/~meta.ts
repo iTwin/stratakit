@@ -39,6 +39,7 @@ export const components = {
 	compat: [
 		"Anchor",
 		"Avatar",
+		"Badge",
 		"Button",
 		"Checkbox",
 		"Divider",
@@ -52,6 +53,7 @@ export const components = {
 		"ProgressLinear",
 		"ProgressRadial",
 		"Radio",
+		"StatusMessage",
 		"Tabs",
 		"Tag",
 		"Text",

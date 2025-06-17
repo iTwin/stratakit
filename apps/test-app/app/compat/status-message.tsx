@@ -40,8 +40,6 @@ export default definePage(function Page() {
 			>
 				Message with iconProps
 			</StatusMessage>
-
-			{/* Partially implemented props (color mismatch and missing status icon) */}
 			<StatusMessage status="positive">Positive status</StatusMessage>
 			<StatusMessage status="warning">Warning status</StatusMessage>
 			<StatusMessage status="negative">Negative status</StatusMessage>

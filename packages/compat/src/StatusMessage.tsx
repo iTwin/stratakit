@@ -19,7 +19,7 @@ interface StatusMessageProps
 	> {
 	/** NOT IMPLEMENTED. */
 	startIcon?: IuiStatusMessageProps["startIcon"];
-	/** PARTIALLY IMPLEMENTED. MISSING STATUS ICON */
+	/** PARTIALLY IMPLEMENTED. Color mismatch and missing status icon. */
 	status?: IuiStatusMessageProps["status"];
 	/** NOT IMPLEMENTED. */
 	iconProps?: IuiStatusMessageProps["iconProps"];
@@ -30,22 +30,26 @@ interface StatusMessageProps
 /** @see https://itwinui.bentley.com/docs/statusmessage */
 export const StatusMessage = React.forwardRef((props, forwardedRef) => {
 	const {
-		// biome-ignore-start lint/correctness/noUnusedVariables: NOT IMPLEMENTED
+		// biome-ignore-start lint/correctness/noUnusedVariables: NOT IMPLEMENTED.
 		startIcon,
 		iconProps,
 		contentProps,
-		// biome-ignore-end lint/correctness/noUnusedVariables: NOT IMPLEMENTED
+		// biome-ignore-end lint/correctness/noUnusedVariables: NOT IMPLEMENTED.
 
-		status, // PARTIALLY IMPLEMENTED. COLOR MISMATCH AND MISSING STATUS ICON
+		status, // PARTIALLY IMPLEMENTED. Color mismatch and missing status icon.
 		children,
 		...rest
 	} = useCompatProps(props);
 
-	return status === "negative" || status === "warning" ? (
-		<Field.ErrorMessage {...rest} ref={forwardedRef}>
-			{children}
-		</Field.ErrorMessage>
-	) : (
+	if (status === "negative" || status === "warning") {
+		return (
+			<Field.ErrorMessage {...rest} ref={forwardedRef}>
+				{children}
+			</Field.ErrorMessage>
+		);
+	}
+
+	return (
 		<Field.Description {...rest} ref={forwardedRef}>
 			{children}
 		</Field.Description>

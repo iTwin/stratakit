@@ -15,6 +15,11 @@ export default definePage(function Page() {
 			<StatusMessage>Message</StatusMessage>
 			<StatusMessage as="span">Message (as span)</StatusMessage>
 
+			{/* Partially implemented props (color mismatch and missing status icon) */}
+			<StatusMessage status="positive">Positive status</StatusMessage>
+			<StatusMessage status="warning">Warning status</StatusMessage>
+			<StatusMessage status="negative">Negative status</StatusMessage>
+
 			{/* Not implemented props */}
 			<StatusMessage
 				contentProps={{ style: { outline: "1px solid DeepPink" } }}
@@ -40,9 +45,6 @@ export default definePage(function Page() {
 			>
 				Message with iconProps
 			</StatusMessage>
-			<StatusMessage status="positive">Positive status</StatusMessage>
-			<StatusMessage status="warning">Warning status</StatusMessage>
-			<StatusMessage status="negative">Negative status</StatusMessage>
 			<StatusMessage status="positive" startIcon={null}>
 				Positive status without icon
 			</StatusMessage>

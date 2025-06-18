@@ -106,8 +106,8 @@ const ChipDismissButton = forwardRef<"button", ChipDismissButtonProps>(
 		const { label = "Dismiss", ...rest } = props;
 		const { labelId } = useSafeContext(ChipRootContext);
 
-		const newId = React.useId();
-		const id = props.id ?? newId;
+		const defaultId = React.useId();
+		const id = props.id ?? defaultId;
 		return (
 			<IconButton
 				id={id}

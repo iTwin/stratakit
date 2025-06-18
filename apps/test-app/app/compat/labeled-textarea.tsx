@@ -115,6 +115,8 @@ export default definePage(function Page() {
 
 			<LabeledTextarea
 				label="With messageContentProps"
+				message="Message"
+				status="negative"
 				messageContentProps={{ style: { outline: "1px solid DeepPink" } }}
 			/>
 		</div>

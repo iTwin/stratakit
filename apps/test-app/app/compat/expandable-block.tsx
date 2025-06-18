@@ -22,6 +22,7 @@ export default definePage(function Page() {
 			{/* Custom endIcon */}
 			<ExpandableBlock
 				title="Custom endIcon"
+				// Using Icon component
 				endIcon={<Icon href={placeholderIcon} />}
 			>
 				Content in block!
@@ -37,7 +38,12 @@ export default definePage(function Page() {
 				disabled={true} // NOT IMPLEMENTED
 				title="Non-implemented props"
 				caption="This is a caption." // NOT IMPLEMENTED
-				endIcon={<Icon href={placeholderIcon} />}
+				// Using SVG sprite directly
+				endIcon={
+					<svg aria-hidden={true}>
+						<use href={`${placeholderIcon}#icon`} />
+					</svg>
+				}
 			>
 				Content in block with non-implemented props!
 			</ExpandableBlock>

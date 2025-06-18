@@ -3,6 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
+import { Icon } from "@stratakit/foundations";
 import { unstable_AccordionItem as SkAccordionItem } from "@stratakit/structures";
 import * as React from "react";
 import { useCompatProps } from "./~utils.tsx";
@@ -72,7 +73,9 @@ export const ExpandableBlock = React.forwardRef((props, forwardedRef) => {
 				<SkAccordionItem.Button>
 					<SkAccordionItem.Label>{title}</SkAccordionItem.Label>
 				</SkAccordionItem.Button>
-				<SkAccordionItem.Marker>{endIcon}</SkAccordionItem.Marker>
+				<SkAccordionItem.Marker>
+					{endIcon ? <Icon render={endIcon as React.JSX.Element} /> : null}
+				</SkAccordionItem.Marker>
 			</SkAccordionItem.Header>
 			<SkAccordionItem.Content>{children}</SkAccordionItem.Content>
 		</SkAccordionItem.Root>

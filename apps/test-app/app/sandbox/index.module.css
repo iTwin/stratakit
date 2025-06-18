@@ -96,8 +96,8 @@
 	column-gap: 4px;
 	align-items: center;
 	grid-template-columns: [full-width-start] 1fr [actions-start] auto [full-width-end];
-	/* grid-template-rows: [full-height-start] calc(1rem + 24px) [tabs-height-end] 8px [full-height-end]; */
 	grid-template-rows: [full-height-start] 1fr [tabs-height-end] var(--ids-scrollbar-height) [full-height-end];
+	/* padding-block-end: 0.5vh; */
 }
 
 .subheaderTitle {
@@ -134,8 +134,7 @@
 	grid-row: full-height-start / full-height-end;
 	grid-template-rows: subgrid;
 	scrollbar-gutter: stable;
-	overflow-x: hidden;
-	overflow-y: hidden;
+	overflow: hidden;
 	align-items: baseline;
 
 	&:where([data-overflow="true"]) {

@@ -858,15 +858,20 @@ function Subheader({
 			const overflow =
 				!isSearchboxVisible && tabs.clientWidth > subHeader.clientWidth;
 
-			const subHeaderHeight = subHeader.getBoundingClientRect().height;
-			// const subHeaderHeightAdjusted = Number.isInteger(subHeaderHeight)
-			// 	? subHeaderHeight - 1
-			// 	: Math.floor(subHeaderHeight);
+			const tabsBorderWidth = Number.parseFloat(
+				getComputedStyle(tabs).borderBlockEndWidth,
+			);
 
-			const scrollbarHeight = overflow
-				? `${Math.floor(subHeaderHeight) - subHeaderContent.clientHeight}px`
-				: "auto";
+			const subHeaderHeightDiff =
+				subHeaderContent.offsetHeight - subHeaderContent.clientHeight;
 
+			const scrollbarHeightVal =
+				subHeaderContent.offsetHeight - subHeaderContent.clientHeight === 0
+					? `${1.75}vh`
+					: `${subHeaderHeightDiff + tabsBorderWidth}px`;
+
+			const scrollbarHeight = overflow ? `${scrollbarHeightVal}` : "auto";
+			// const scrollbarHeight = overflow ? "2vh" : "auto";
 			subHeader.style.setProperty("--ids-scrollbar-height", scrollbarHeight);
 
 			setIsOverflowing(overflow);

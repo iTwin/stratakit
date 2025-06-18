@@ -8,17 +8,17 @@ import { expect, test } from "#playwright";
 test("default", async ({ page }) => {
 	await page.goto("/tests/accordion-item");
 
-	const trigger = page.getByTestId("trigger");
+	const button = page.getByTestId("button");
 	const content = page.getByTestId("content");
 
-	await expect(trigger).toMatchAriaSnapshot(`
+	await expect(button).toMatchAriaSnapshot(`
 		- button "Label" [expanded=false]
 	`);
 	await expect(content).not.toBeVisible();
 
-	trigger.click();
+	button.click();
 
-	await expect(trigger).toMatchAriaSnapshot(`
+	await expect(button).toMatchAriaSnapshot(`
 		- button "Label" [expanded=true]
 	`);
 	await expect(content).toBeVisible();
@@ -30,7 +30,7 @@ test.describe("@visual", () => {
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
 
-	test("hovered collapsed item", async ({ page }) => {
+	test("hovered closed item", async ({ page }) => {
 		await page.goto("/tests/accordion-item");
 
 		const item = page.getByRole("button", { name: "Label" });
@@ -39,7 +39,7 @@ test.describe("@visual", () => {
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
 
-	test("hovered expanded item", async ({ page }) => {
+	test("hovered open item", async ({ page }) => {
 		await page.goto("/tests/accordion-item?defaultOpen");
 
 		const item = page.getByRole("button", { name: "Label" });
@@ -48,7 +48,7 @@ test.describe("@visual", () => {
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
 
-	test("focused collapsed item", async ({ page }) => {
+	test("focused closed item", async ({ page }) => {
 		await page.goto("/tests/accordion-item");
 
 		const item = page.getByRole("button", { name: "Label" });
@@ -57,7 +57,7 @@ test.describe("@visual", () => {
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
 
-	test("focused expanded item", async ({ page }) => {
+	test("focused open item", async ({ page }) => {
 		await page.goto("/tests/accordion-item?defaultOpen");
 
 		const item = page.getByRole("button", { name: "Label" });
@@ -97,8 +97,8 @@ test.describe("@a11y", () => {
 			// Skip the trigger test for the visual route
 			if (params.has("visual")) return;
 
-			const trigger = page.getByRole("button", { name: "Label" });
-			await trigger.click();
+			const button = page.getByRole("button", { name: "Label" });
+			await button.click();
 
 			accessibilityScan = await axe.analyze();
 			await expect(accessibilityScan.violations).toEqual([]);

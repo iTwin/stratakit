@@ -13,7 +13,7 @@ interface BadgeProps extends Omit<BaseProps<"span">, "children"> {
 	/**
 	 * The label displayed inside the badge.
 	 */
-	label: string;
+	label: React.ReactNode;
 
 	/**
 	 * The tone of the badge.
@@ -37,7 +37,7 @@ interface BadgeProps extends Omit<BaseProps<"span">, "children"> {
  * <Badge label="Value" tone="info" variant="outline" />
  * ```
  */
-export const Badge = forwardRef<"span", BadgeProps>((props, forwardedRef) => {
+const Badge = forwardRef<"span", BadgeProps>((props, forwardedRef) => {
 	const { tone = "neutral", variant = "solid", label, ...rest } = props;
 
 	return (
@@ -53,3 +53,7 @@ export const Badge = forwardRef<"span", BadgeProps>((props, forwardedRef) => {
 	);
 });
 DEV: Badge.displayName = "Badge";
+
+// ----------------------------------------------------------------------------
+
+export default Badge;

@@ -4,42 +4,24 @@
  *--------------------------------------------------------------------------------------------*/
 "use client";
 
-export * as unstable_AccordionItem from "./AccordionItem.js";
-export { Anchor } from "./Anchor.js";
-export { Avatar } from "./Avatar.js";
-export { Badge } from "./Badge.js";
-export { Banner as unstable_Banner } from "./Banner.js";
-export { Button } from "./Button.js";
-export { Checkbox } from "./Checkbox.js";
-export { Chip } from "./Chip.js";
-export { Description } from "./Description.js";
-export * as DropdownMenu from "./DropdownMenu.js";
-export * as unstable_ErrorRegion from "./ErrorRegion.js";
-export { Divider } from "./Divider.js";
-export { IconButton } from "./IconButton.js";
+export { default as Anchor } from "./Anchor.js";
+export { default as Avatar } from "./Avatar.js";
+export { default as Badge } from "./Badge.js";
+export { default as Button } from "./Button.js";
+export { default as Checkbox } from "./Checkbox.js";
+export { default as Description } from "./Description.js";
+export { default as Divider } from "./Divider.js";
 export * as Field from "./Field.js";
-export { Kbd } from "./Kbd.js";
-export { Label } from "./Label.js";
-export { ProgressBar } from "./ProgressBar.js";
-export { Radio } from "./Radio.js";
+export { default as IconButton } from "./IconButton.js";
+export { default as Kbd } from "./Kbd.js";
+export { default as Label } from "./Label.js";
+export { default as ProgressBar } from "./ProgressBar.js";
+export { default as Radio } from "./Radio.js";
 export * as Select from "./Select.js";
-export { Spinner } from "./Spinner.js";
-export { Skeleton } from "./Skeleton.js";
-export { Switch } from "./Switch.js";
-export * as Table from "./Table.js";
-export * as Tabs from "./Tabs.js";
-export { Text } from "./Text.js";
+export { default as Skeleton } from "./Skeleton.js";
+export { default as Spinner } from "./Spinner.js";
+export { default as Switch } from "./Switch.js";
+export { default as Text } from "./Text.js";
 export * as TextBox from "./TextBox.js";
-export * as unstable_Toolbar from "./Toolbar.js";
-export { Tooltip } from "./Tooltip.js";
-export * as Tree from "./Tree.js";
-export { VisuallyHidden } from "./VisuallyHidden.js";
-
-import { Icon, Root } from "@stratakit/foundations";
-
-/** @deprecated Please import `Root` from `"@stratakit/foundations"` instead. */
-const RootDeprecated = Root as typeof Root;
-/** @deprecated Please import `Icon` from `"@stratakit/foundations"` instead. */
-const IconDeprecated = Icon as typeof Icon;
-
-export { RootDeprecated as Root, IconDeprecated as Icon };
+export { default as Tooltip } from "./Tooltip.js";
+export { default as VisuallyHidden } from "./VisuallyHidden.js";

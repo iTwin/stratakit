@@ -11,7 +11,10 @@ import { useFieldControlType } from "./Field.internal.js";
 import type { CheckboxProps as AkCheckboxProps } from "@ariakit/react/checkbox";
 import type { FocusableProps } from "@stratakit/foundations/secret-internals";
 
-type InputBaseProps = Omit<FocusableProps<"input">, "defaultValue" | "value">;
+type InputBaseProps = Omit<
+	FocusableProps<"input">,
+	"defaultValue" | "value" | "onToggle"
+>;
 
 type CheckboxOwnProps = Pick<
 	AkCheckboxProps,
@@ -47,18 +50,20 @@ interface SwitchProps extends InputBaseProps, CheckboxOwnProps {
  * Underneath, it's an HTML checkbox, i.e. `<input type="checkbox">`, so it supports the same props,
  * including `value`, `defaultChecked`, `checked`, and `onChange`.
  */
-export const Switch = forwardRef<"input", SwitchProps>(
-	(props, forwardedRef) => {
-		useFieldControlType("checkable");
-		return (
-			<AkCheckbox
-				accessibleWhenDisabled
-				{...props}
-				className={cx("🥝-switch", props.className)}
-				role="switch"
-				ref={forwardedRef}
-			/>
-		);
-	},
-);
+const Switch = forwardRef<"input", SwitchProps>((props, forwardedRef) => {
+	useFieldControlType("checkable");
+	return (
+		<AkCheckbox
+			accessibleWhenDisabled
+			{...props}
+			className={cx("🥝-switch", props.className)}
+			role="switch"
+			ref={forwardedRef}
+		/>
+	);
+});
 DEV: Switch.displayName = "Switch";
+
+// ----------------------------------------------------------------------------
+
+export default Switch;

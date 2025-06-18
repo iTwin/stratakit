@@ -3,12 +3,11 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
+import { Divider, Text } from "@stratakit/bricks";
 import {
-	unstable_AccordionItem as AccordionItem,
-	Divider,
 	Table,
-	Text,
-} from "@stratakit/bricks";
+	unstable_AccordionItem as AccordionItem,
+} from "@stratakit/structures";
 import { parseTokens } from "internal/lightningcss-visitors.js";
 import rawDarkTokens from "internal/theme-dark.json";
 import rawLightTokens from "internal/theme-light.json";
@@ -75,10 +74,12 @@ export default function Page() {
 
 				return (
 					<AccordionItem.Root key={key} defaultOpen>
-						<AccordionItem.Trigger>
-							<AccordionItem.Label>{value}</AccordionItem.Label>
+						<AccordionItem.Header>
+							<AccordionItem.Button>
+								<AccordionItem.Label>{value}</AccordionItem.Label>
+							</AccordionItem.Button>
 							<AccordionItem.Marker />
-						</AccordionItem.Trigger>
+						</AccordionItem.Header>
 
 						<AccordionItem.Content>
 							<Tokens tokens={relevantTokens} kind="color" />
@@ -92,10 +93,12 @@ export default function Page() {
 			<h2>Shadows</h2>
 
 			<AccordionItem.Root defaultOpen>
-				<AccordionItem.Trigger>
-					<AccordionItem.Label>All shadows</AccordionItem.Label>
+				<AccordionItem.Header>
+					<AccordionItem.Button>
+						<AccordionItem.Label>All shadows</AccordionItem.Label>
+					</AccordionItem.Button>
 					<AccordionItem.Marker />
-				</AccordionItem.Trigger>
+				</AccordionItem.Header>
 
 				<AccordionItem.Content>
 					<Tokens tokens={[...shadowTokens.keys()]} kind="shadow" />
@@ -107,10 +110,12 @@ export default function Page() {
 			<h2>Typography</h2>
 
 			<AccordionItem.Root defaultOpen>
-				<AccordionItem.Trigger>
-					<AccordionItem.Label>All typography variants</AccordionItem.Label>
+				<AccordionItem.Header>
+					<AccordionItem.Button>
+						<AccordionItem.Label>All typography variants</AccordionItem.Label>
+					</AccordionItem.Button>
 					<AccordionItem.Marker />
-				</AccordionItem.Trigger>
+				</AccordionItem.Header>
 
 				<AccordionItem.Content>
 					<TypographyVariants variants={typographyVariants} />
@@ -138,7 +143,7 @@ function Tokens({
 
 			<Table.Body>
 				{tokens.map((token) => {
-					const variableName = `--ids-${kind}-${token}`;
+					const variableName = `--stratakit-${kind}-${token}`;
 					return (
 						<Table.Row key={token}>
 							<Table.Cell>
@@ -155,11 +160,7 @@ function Tokens({
 	);
 }
 
-function TypographyVariants({
-	variants,
-}: {
-	variants: readonly string[];
-}) {
+function TypographyVariants({ variants }: { variants: readonly string[] }) {
 	return (
 		<Table.HtmlTable>
 			<Table.Header>

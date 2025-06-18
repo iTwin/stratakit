@@ -4,19 +4,19 @@
  *--------------------------------------------------------------------------------------------*/
 .🥝-label {
 	@layer base {
-		color: var(--ids-color-text-neutral-secondary);
+		color: var(--stratakit-color-text-neutral-secondary);
 		cursor: default;
-		font-size: var(--ids-font-size-12);
+		font-size: var(--stratakit-font-size-12);
 
 		&:is(label) {
 			cursor: pointer;
-			-webkit-tap-highlight-color: var(--ids-color-bg-glow-on-surface-neutral-pressed);
+			-webkit-tap-highlight-color: var(--stratakit-color-bg-glow-on-surface-neutral-pressed);
 		}
 	}
 
 	@layer states {
 		&:has(+ :where(:disabled, [aria-disabled="true"])) {
-			color: var(--ids-color-text-neutral-disabled);
+			color: var(--stratakit-color-text-neutral-disabled);
 
 			&:is(label) {
 				cursor: not-allowed;

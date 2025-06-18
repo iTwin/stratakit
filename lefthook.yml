@@ -13,16 +13,16 @@ pre-commit:
 
     lint:
       glob: "*.{js,ts,jsx,tsx}"
-      run: pnpm biome lint --write {staged_files}
+      run: pnpm biome lint --error-on-warnings --write {staged_files}
       stage_fixed: true
 
     fix-imports:
       glob: "*.{js,ts,jsx,tsx,cts}"
-      run: pnpm biome check --formatter-enabled=false --linter-enabled=false --organize-imports-enabled=true --write {staged_files}
+      run: pnpm biome check --formatter-enabled=false --linter-enabled=false --write {staged_files}
       stage_fixed: true
 
     prettier:
       exclude:
         - "*.{js,ts,jsx,tsx,cjs,cts,mjs,mts,css,json,jsonc}"
-      run: pnpm exec prettier {staged_files} --ignore-unknown --write
+      run: echo {staged_files} | xargs -n 50 pnpm exec prettier --ignore-unknown --write
       stage_fixed: true

@@ -82,8 +82,8 @@ export function primitivesTransform() {
  * Output:
  * ```css
  * :root {
- *   --ids-color-bg-neutral-base: --primitive("color.gray.800");
- *   --ids-color-text-neutral-primary: --primitive("color.gray.5");
+ *   --stratakit-color-bg-neutral-base: --primitive("color.gray.800");
+ *   --stratakit-color-text-neutral-primary: --primitive("color.gray.5");
  *   …
  * }
  * ```
@@ -144,7 +144,7 @@ export function themeTransform() {
 					}
 
 					declarations.push(
-						cssCustomProperty(name, $value, { prefix: "ids-color" }),
+						cssCustomProperty(name, $value, { prefix: "stratakit-color" }),
 					);
 				}
 
@@ -158,7 +158,7 @@ export function themeTransform() {
 					$value = cssFunction("_raw", $value);
 
 					declarations.push(
-						cssCustomProperty(name, $value, { prefix: "ids-shadow" }),
+						cssCustomProperty(name, $value, { prefix: "stratakit-shadow" }),
 					);
 				}
 
@@ -205,7 +205,7 @@ export function themeTransform() {
  * Output:
  * ```css
  * .foo {
- * 	 font-size: var(--ids-font-size-32);
+ * 	 font-size: var(--stratakit-font-size-32);
  * 	 line-height: 1.25;
  * }
  * ```
@@ -240,7 +240,7 @@ export function typographyTransform() {
 				if (fontFamily === "{family.mono}") {
 					declarations.push({
 						property: "font-family",
-						raw: "var(--ids-font-family-mono)",
+						raw: "var(--stratakit-font-family-mono)",
 					});
 				}
 
@@ -248,7 +248,7 @@ export function typographyTransform() {
 				const { step } = fontSize.match(/{size.(?<step>\d+)}/).groups;
 				declarations.push({
 					property: "font-size",
-					raw: `var(--ids-font-size-${step})`,
+					raw: `var(--stratakit-font-size-${step})`,
 				});
 
 				// TODO: leverage inheritance when this token matches the root line-height
@@ -296,7 +296,7 @@ export function typographyTransform() {
  * ```css
  * :root {
  * 	 …
- * 	 --ids-font-size-32: 2rem;
+ * 	 --stratakit-font-size-32: 2rem;
  * 	 …
  * }
  * ```
@@ -326,7 +326,7 @@ export function typographyTokensTransform() {
 								// This shape of this object coincidentally matches what Lightning expects
 								value: token.$value,
 							},
-							{ prefix: "ids-font-size" },
+							{ prefix: "stratakit-font-size" },
 						),
 					);
 				}

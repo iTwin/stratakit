@@ -15,23 +15,25 @@
 	},
 	"dependencies": {
 		"@ariakit/react": "^0.4.17",
-		"@react-router/node": "^7.5.3",
+		"@react-router/node": "^7.6.2",
 		"@stratakit/bricks": "workspace:*",
-		"@stratakit/icons": "workspace:*",
 		"@stratakit/foundations": "workspace:*",
+		"@stratakit/icons": "workspace:*",
 		"@stratakit/react": "workspace:*",
-		"@tanstack/react-query": "^5.75.5",
+		"@stratakit/structures": "workspace:*",
+		"@tanstack/react-query": "^5.80.7",
 		"classnames": "^2.5.1",
 		"immer": "^10.1.1",
-		"isbot": "^5.1.27",
+		"isbot": "^5.1.28",
 		"react": "catalog:",
 		"react-dom": "catalog:",
-		"react-router": "^7.5.3"
+		"react-resizable-panels": "^3.0.3",
+		"react-router": "^7.6.2"
 	},
 	"devDependencies": {
-		"@axe-core/playwright": "^4.10.1",
+		"@axe-core/playwright": "^4.10.2",
 		"@playwright/test": "catalog:",
-		"@react-router/dev": "^7.5.3",
+		"@react-router/dev": "^7.6.2",
 		"@types/node": "catalog:",
 		"@types/react": "catalog:",
 		"@types/react-dom": "catalog:",
@@ -39,6 +41,7 @@
 		"lightningcss": "catalog:",
 		"typescript": "catalog:",
 		"vite": "^6.3.5",
+		"vite-plugin-devtools-json": "^0.2.0",
 		"vite-tsconfig-paths": "^5.1.4"
 	},
 	"wireit": {
@@ -47,10 +50,18 @@
 			"dependencies": [
 				"../../packages/foundations:build",
 				"../../packages/bricks:build",
+				"../../packages/structures:build",
 				"../../packages/icons:build"
 			],
-			"files": ["app", "vite.config.ts", "react-router.config.ts"],
-			"output": ["build", ".react-router"],
+			"files": [
+				"app",
+				"vite.config.ts",
+				"react-router.config.ts"
+			],
+			"output": [
+				"build",
+				".react-router"
+			],
 			"env": {
 				"NODE_ENV": "production"
 			}
@@ -60,25 +71,41 @@
 			"dependencies": [
 				"../../packages/icons:build",
 				"../../packages/foundations:dev",
-				"../../packages/bricks:dev"
+				"../../packages/bricks:dev",
+				"../../packages/structures:dev"
 			],
 			"service": true
 		},
 		"preview": {
 			"command": "pnpx serve build/client -L -p 1800",
-			"dependencies": ["build"],
+			"dependencies": [
+				"build"
+			],
 			"service": true
 		},
 		"test": {
 			"command": "tsx ./scripts/run-tests.ts pnpm exec playwright test",
-			"dependencies": ["build", "typecheck"],
-			"files": ["app", "playwright.config.ts"],
-			"output": ["test-results"]
+			"dependencies": [
+				"build",
+				"typecheck"
+			],
+			"files": [
+				"app",
+				"playwright.config.ts"
+			],
+			"output": [
+				"test-results"
+			]
 		},
 		"typecheck": {
 			"command": "react-router typegen && tsc -p tsconfig.build.json",
-			"dependencies": ["build"],
-			"files": ["app", "tsconfig.build.json"],
+			"dependencies": [
+				"build"
+			],
+			"files": [
+				"app",
+				"tsconfig.build.json"
+			],
 			"output": []
 		}
 	}

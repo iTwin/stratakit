@@ -1,5 +1,22 @@
 # Changelog
 
+## 0.2.2
+
+- [#756](https://github.com/iTwin/design-system/pull/756): `DropdownMenu.Button` will now ignore `render={undefined}`.
+- [#755](https://github.com/iTwin/design-system/pull/755): Updated the code for icons used internally by components.
+- Updated dependencies:
+  - @stratakit/bricks@0.3.0
+  - @stratakit/foundations@0.1.6
+
+## 0.2.1
+
+- [#736](https://github.com/iTwin/design-system/pull/736): Updated the `label` prop type in the `<Chip />` component from `string` to `ReactNode`.
+- [#740](https://github.com/iTwin/design-system/pull/740): Added `types` field to `package.json` file for better TypeScript support and TS icon on `npm`.
+- [#737](https://github.com/iTwin/design-system/pull/737): Fixed console warnings raised from `<Tree.Item>` component.
+- Updated dependencies:
+  - @stratakit/foundations@0.1.5
+  - @stratakit/bricks@0.2.1
+
 ## 0.2.0
 
 ### Breaking changes

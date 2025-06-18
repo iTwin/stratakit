@@ -24,7 +24,7 @@ interface LabelProps extends BaseProps<"label"> {}
  * See `Field.Label` for convenient usage with form controls (e.g. automatic
  * association with adjacent form control).
  */
-export const Label = forwardRef<"label", LabelProps>((props, forwardedRef) => {
+const Label = forwardRef<"label", LabelProps>((props, forwardedRef) => {
 	return (
 		<Role.label
 			{...props}
@@ -34,3 +34,7 @@ export const Label = forwardRef<"label", LabelProps>((props, forwardedRef) => {
 	);
 });
 DEV: Label.displayName = "Label";
+
+// ----------------------------------------------------------------------------
+
+export default Label;

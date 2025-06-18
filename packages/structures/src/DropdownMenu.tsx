@@ -151,13 +151,15 @@ const DropdownMenuButton = forwardRef<"button", DropdownMenuButtonProps>(
 		return (
 			<MenuButton
 				accessibleWhenDisabled
-				render={
-					<Button accessibleWhenDisabled={accessibleWhenDisabled}>
-						{children}
-						<DisclosureArrow />
-					</Button>
-				}
 				{...rest}
+				render={
+					props.render ?? (
+						<Button accessibleWhenDisabled={accessibleWhenDisabled}>
+							{children}
+							<DisclosureArrow />
+						</Button>
+					)
+				}
 				className={cx("🥝-dropdown-menu-button", props.className)}
 				data-has-popover-open={open || undefined}
 				ref={forwardedRef}

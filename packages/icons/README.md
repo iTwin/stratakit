@@ -23,7 +23,7 @@ npm add @stratakit/icons
 
 ## Usage
 
-Preferred usage is with the `Icon` component from `@stratakit/bricks`:
+Preferred usage is with the `Icon` component from `@stratakit/foundations`:
 
 1. Import the icon you want to use.
 

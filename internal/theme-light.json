@@ -705,6 +705,22 @@
 				"switch": {
 					"$type": "color",
 					"$value": "{p-color.gray.50}"
+				},
+				"checkbox": {
+					"$type": "color",
+					"$value": "{p-color.gray.100}"
+				},
+				"radio": {
+					"$type": "color",
+					"$value": "{p-color.gray.100}"
+				},
+				"textbox": {
+					"$type": "color",
+					"$value": "{p-color.gray.100}"
+				},
+				"select": {
+					"$type": "color",
+					"$value": "{p-color.gray.100}"
 				}
 			}
 		},

@@ -3,7 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import { TextBox } from "@stratakit/bricks";
+import { Field, TextBox } from "@stratakit/bricks";
 import * as React from "react";
 import { useCompatProps } from "./~utils.tsx";
 
@@ -25,6 +25,8 @@ export const Textarea = React.forwardRef((props, forwardedRef) => {
 		...rest
 	} = useCompatProps(props);
 
-	return <TextBox.Textarea {...rest} ref={forwardedRef} />;
+	return (
+		<Field.Control render={<TextBox.Textarea {...rest} ref={forwardedRef} />} />
+	);
 }) as PolymorphicForwardRefComponent<"textarea", TextareaProps>;
 DEV: Textarea.displayName = "Textarea";

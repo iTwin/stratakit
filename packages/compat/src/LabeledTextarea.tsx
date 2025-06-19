@@ -9,10 +9,9 @@ import { useCompatProps } from "./~utils.tsx";
 
 import type { LabeledTextarea as IuiLabeledTextarea } from "@itwin/itwinui-react";
 import type { PolymorphicForwardRefComponent } from "./~utils.tsx";
-import { StatusMessage } from "./StatusMessage.tsx";
 import { InputGrid } from "./InputGrid.tsx";
-import { Textarea } from "./Textarea.tsx";
 import { Label } from "./Label.tsx";
+import { StatusMessage } from "./StatusMessage.tsx";
 
 type IuiLabeledTextareaProps = React.ComponentProps<typeof IuiLabeledTextarea>;
 
@@ -29,7 +28,7 @@ interface LabeledTextareaProps
 		| "svgIcon"
 		| "displayStyle"
 	> {
-	/** PARTIALLY IMPLEMENTED. Missing status icon and color mismatch for message and textbox. Doesn't change svgIcon color. */
+	/** PARTIALLY IMPLEMENTED. Missing status icon and color mismatch for message and textarea. Doesn't change svgIcon color. */
 	status?: IuiLabeledTextareaProps["status"];
 	/** PARTIALLY IMPLEMENTED. Only supports one large icon size and svg props.  */
 	iconProps?: IuiLabeledTextareaProps["iconProps"];
@@ -40,7 +39,7 @@ interface LabeledTextareaProps
 /** @see https://itwinui.bentley.com/docs/textarea */
 export const LabeledTextarea = React.forwardRef((props, forwardedRef) => {
 	const {
-		status, // PARTIALLY IMPLEMENTED. Missing status icon and color mismatch for message and textbox. Doesn't change svgIcon color.
+		status, // PARTIALLY IMPLEMENTED. Missing status icon and color mismatch for message and textarea. Doesn't change svgIcon color.
 		iconProps = {}, // PARTIALLY IMPLEMENTED. Only supports one large icon size and svg props.
 		messageContentProps, // NOT IMPLEMENTED.
 		label,
@@ -69,7 +68,7 @@ export const LabeledTextarea = React.forwardRef((props, forwardedRef) => {
 			<Field.Control
 				render={
 					<TextBox.Root>
-						<Textarea {...rest} status={status} ref={forwardedRef} />
+						<TextBox.Textarea {...rest} ref={forwardedRef} />
 						{svgIcon ? (
 							<TextBox.Icon
 								{...(restIconProps as React.ComponentProps<"svg">)}

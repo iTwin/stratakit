@@ -1,1 +1,0 @@
-import{a as s,o as a}from"./chunk-NL6KNZEE-Bu0nOl7T.js";import{u as i}from"./~utils-C9x3zIVV.js";import{F as n}from"./Field-DjQ-AVFH.js";const p=s.forwardRef((o,r)=>{const{labelPlacement:t,...e}=i(o);return a.jsx(n,{...e,layout:t==="inline"?"inline":void 0,ref:r})});p.displayName="InputGrid";export{p as I};

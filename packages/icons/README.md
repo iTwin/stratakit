@@ -54,12 +54,12 @@ Preferred usage is with the `Icon` component from `@stratakit/bricks`:
 
    ```tsx
    <svg>
-   	<use href={`${placeholderIcon}#icon`}>
+   	<use href={`${placeholderIcon}#icon`} />
    </svg>
 
    // To display the large icon:
    <svg>
-   	<use href={`${placeholderIcon}#icon-large`}>
+   	<use href={`${placeholderIcon}#icon-large`} />
    </svg>
    ```
 

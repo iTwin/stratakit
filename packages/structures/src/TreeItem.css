@@ -156,6 +156,83 @@
 	}
 }
 
+.🥝-tree-item-drag-preview {
+	@layer base {
+		padding-block: 4px;
+		padding-inline: 6px;
+		border: 1px solid var(--stratakit-color-border-neutral-base);
+		border-radius: 4px;
+		background-color: hsl(from var(--stratakit-color-border-neutral-base) h s l / 0.56); /* Don’t do this */
+		backdrop-filter: blur(2px);
+		color: var(--stratakit-color-text-neutral-primary);
+	}
+}
+
+.🥝-tree-item-drop-indicator {
+	--✨first-level-indent: 24px;
+	--✨subsequent-level-indent: 6px;
+
+	@layer base {
+		position: absolute;
+		pointer-events: none;
+		touch-action: none;
+	}
+
+	@layer modifiers {
+		&:where([data-kiwi-instruction="combine"]) {
+			--indent: calc(
+				var(--✨first-level-indent) +
+				var(--✨subsequent-level-indent) *
+				(var(--🥝tree-item-level) - 1)
+			);
+
+			inset-block: 0;
+			inset-inline-end: 0;
+			inset-inline-start: var(--indent);
+			inline-size: calc(100% - var(--indent));
+			block-size: 100%;
+			border-radius: 6px;
+			border: 1px solid var(--stratakit-color-border-accent-base);
+		}
+
+		&:where([data-kiwi-instruction^="reorder-"]) {
+			--✨first-level-indent: 28px;
+			--✨subsequent-level-indent: 6px;
+
+			--indent: calc(
+				var(--✨first-level-indent) +
+				var(--✨subsequent-level-indent) *
+				(var(--🥝tree-item-level) - 1) +
+				4px
+			);
+
+			inset-inline-start: var(--indent);
+			block-size: 1px;
+			inline-size: calc(100% - var(--indent));
+			background-color: var(--stratakit-color-border-neutral-inverse);
+
+			&::before {
+				content: "";
+				position: absolute;
+				block-size: 4px;
+				aspect-ratio: 1;
+				border: 1px solid var(--stratakit-color-border-neutral-inverse);
+				border-radius: 9999px;
+				inset-inline-start: -4px;
+				inset-block-start: -1.5px;
+			}
+		}
+
+		&:where([data-kiwi-instruction="reorder-before"]) {
+			inset-block-start: -0.5px;
+		}
+
+		&:where([data-kiwi-instruction="reorder-after"]) {
+			inset-block-end: -0.5px;
+		}
+	}
+}
+
 @media (forced-colors: active) {
 	.🥝-tree-item-node:is(.🥝-list-item) {
 		--🥝list-item-background-color: Canvas;

@@ -293,6 +293,12 @@ importers:
       "@ariakit/react":
         specifier: ^0.4.17
         version: 0.4.17(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+      "@atlaskit/pragmatic-drag-and-drop":
+        specifier: ^1.7.2
+        version: 1.7.2
+      "@atlaskit/pragmatic-drag-and-drop-hitbox":
+        specifier: ^1.1.0
+        version: 1.1.0
       "@stratakit/bricks":
         specifier: ^0.3.0
         version: link:../bricks
@@ -368,6 +374,18 @@ packages:
     peerDependencies:
       react: ^17.0.0 || ^18.0.0 || ^19.0.0
       react-dom: ^17.0.0 || ^18.0.0 || ^19.0.0
+
+  "@atlaskit/pragmatic-drag-and-drop-hitbox@1.1.0":
+    resolution:
+      {
+        integrity: sha512-JWt6eVp6Br2FPHRM8s0dUIHQk/jFInGP1f3ti5CdtM1Ji5/pt8Akm44wDC063Gv2i5RGseixtbW0z/t6RYtbdg==,
+      }
+
+  "@atlaskit/pragmatic-drag-and-drop@1.7.2":
+    resolution:
+      {
+        integrity: sha512-GFlFVusm+PpzNwpk4ju8+w9a9pWD5NIGi4DoJ9g6CXTUMlQ4BCsivvmUk+azsV31luEKZtf2J0tg1y3vdltrTQ==,
+      }
 
   "@axe-core/playwright@4.10.2":
     resolution:
@@ -570,6 +588,13 @@ packages:
     engines: { node: ">=6.9.0" }
     peerDependencies:
       "@babel/core": ^7.0.0-0
+
+  "@babel/runtime@7.27.6":
+    resolution:
+      {
+        integrity: sha512-vbavdySgbTTrmFE+EsiqUTzlOr5bzlnJtUv9PynGCAKvfQqjIXbvFdumPM/GxMDfyuGMJaJAU6TO4zc1Jf1i8Q==,
+      }
+    engines: { node: ">=6.9.0" }
 
   "@babel/template@7.27.2":
     resolution:
@@ -1492,6 +1517,12 @@ packages:
       }
     engines: { node: ">=8" }
 
+  bind-event-listener@3.0.0:
+    resolution:
+      {
+        integrity: sha512-PJvH288AWQhKs2v9zyfYdPzlPqf5bXbGMmhmUIY9x4dAUGIWgomO771oBQNwJnMQSnUIXhKu6sgzpBRXTlvb8Q==,
+      }
+
   brace-expansion@2.0.2:
     resolution:
       {
@@ -2378,6 +2409,12 @@ packages:
         integrity: sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==,
       }
 
+  raf-schd@4.0.3:
+    resolution:
+      {
+        integrity: sha512-tQkJl2GRWh83ui2DiPTJz9wEiMN20syf+5oKfB03yYP7ioZcJwsIK8FjrtLwH1m7C7e+Tt2yYBlrOpdT+dyeIQ==,
+      }
+
   react-dom@19.1.0:
     resolution:
       {
@@ -2918,6 +2955,17 @@ snapshots:
       react: 19.1.0
       react-dom: 19.1.0(react@19.1.0)
 
+  "@atlaskit/pragmatic-drag-and-drop-hitbox@1.1.0":
+    dependencies:
+      "@atlaskit/pragmatic-drag-and-drop": 1.7.2
+      "@babel/runtime": 7.27.6
+
+  "@atlaskit/pragmatic-drag-and-drop@1.7.2":
+    dependencies:
+      "@babel/runtime": 7.27.6
+      bind-event-listener: 3.0.0
+      raf-schd: 4.0.3
+
   "@axe-core/playwright@4.10.2(playwright-core@1.53.0)":
     dependencies:
       axe-core: 4.10.3
@@ -3088,6 +3136,8 @@ snapshots:
       "@babel/plugin-transform-typescript": 7.27.1(@babel/core@7.27.4)
     transitivePeerDependencies:
       - supports-color
+
+  "@babel/runtime@7.27.6": {}
 
   "@babel/template@7.27.2":
     dependencies:
@@ -3596,6 +3646,8 @@ snapshots:
 
   binary-extensions@2.3.0: {}
 
+  bind-event-listener@3.0.0: {}
+
   brace-expansion@2.0.2:
     dependencies:
       balanced-match: 1.0.2
@@ -4038,6 +4090,8 @@ snapshots:
       signal-exit: 3.0.7
 
   queue-microtask@1.2.3: {}
+
+  raf-schd@4.0.3: {}
 
   react-dom@19.1.0(react@19.1.0):
     dependencies:

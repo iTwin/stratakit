@@ -7,6 +7,17 @@ import { CompositeItem } from "@ariakit/react/composite";
 import { PopoverProvider } from "@ariakit/react/popover";
 import { Role } from "@ariakit/react/role";
 import { Toolbar, ToolbarItem } from "@ariakit/react/toolbar";
+import {
+	draggable,
+	dropTargetForElements,
+} from "@atlaskit/pragmatic-drag-and-drop/element/adapter";
+import { disableNativeDragPreview } from "@atlaskit/pragmatic-drag-and-drop/element/disable-native-drag-preview";
+import { preventUnhandled } from "@atlaskit/pragmatic-drag-and-drop/prevent-unhandled";
+import { combine } from "@atlaskit/pragmatic-drag-and-drop/combine";
+import {
+	attachInstruction,
+	extractInstruction,
+} from "@atlaskit/pragmatic-drag-and-drop-hitbox/list-item";
 import { IconButton } from "@stratakit/bricks";
 import {
 	GhostAligner,
@@ -16,6 +27,7 @@ import { Icon } from "@stratakit/foundations";
 import {
 	forwardRef,
 	useEventHandlers,
+	useMergedRefs,
 } from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
 import * as React from "react";
@@ -158,6 +170,16 @@ interface TreeItemProps extends Omit<BaseProps, "content" | "children"> {
 	 * @default false
 	 */
 	error?: boolean | string;
+
+	onMove?: ({
+		startId,
+		destinationId,
+		operation,
+	}: {
+		startId: string;
+		destinationId: string;
+		operation: "reorder-before" | "reorder-after" | "combine";
+	}) => void;
 }
 
 /**
@@ -201,8 +223,96 @@ const TreeItem = React.memo(
 			error: _error,
 			onClick: onClickProp,
 			onKeyDown: onKeyDownProp,
+			onMove,
 			...rest
 		} = props;
+
+		const [dropInstruction, setDropInstruction] = React.useState<
+			"reorder-before" | "reorder-after" | "combine" | undefined
+		>();
+		const draggableRef = React.useRef<HTMLElement | null>(null);
+		const dragPreviewRef = React.useRef<HTMLDivElement | null>(null);
+
+		React.useEffect(() => {
+			const element = draggableRef?.current;
+			const dragPreview = dragPreviewRef?.current;
+			if (!onMove || !element || !dragPreview) return;
+
+			return combine(
+				draggable({
+					element,
+					getInitialData() {
+						return { id: props.id };
+					},
+					onGenerateDragPreview({ nativeSetDragImage }) {
+						disableNativeDragPreview({ nativeSetDragImage });
+					},
+					onDragStart({ location }) {
+						// Avoid delay after unsuccessful drop (i.e. native drag preview animates back to the original position)
+						preventUnhandled.start();
+
+						const { input } = location.current;
+						// Set the initial position to avoid a jump
+						dragPreview.style.translate = `${12 + input.clientX}px ${12 + input.clientY}px`;
+						// Show the drag preview
+						dragPreview.showPopover();
+					},
+					// Update the popover’s position when dragging
+					onDrag({ location }) {
+						const { input } = location.current;
+						requestAnimationFrame(() => {
+							dragPreview.style.translate = `${12 + input.clientX}px ${12 + input.clientY}px`;
+						});
+					},
+					// Hide the drag preview popover when dropped
+					onDrop() {
+						dragPreview.hidePopover();
+					},
+				}),
+				dropTargetForElements({
+					element,
+					getData({ input, element }) {
+						return attachInstruction(
+							{
+								id: props.id,
+							},
+							{
+								input,
+								element,
+								// TODO: we need a way of making some of these “blocked”
+								operations: {
+									"reorder-before": "available",
+									"reorder-after": "available",
+									combine: "available",
+								},
+							},
+						);
+					},
+					// Update the drop instruction for the element
+					onDrag({ self }) {
+						setDropInstruction(extractInstruction(self.data)?.operation);
+					},
+					// Clear the drop instruction for the element when changed
+					onDropTargetChange() {
+						setDropInstruction(undefined);
+					},
+					// Call the move callback when drop is successful
+					onDrop({ self, source }) {
+						const instruction = extractInstruction(self.data);
+
+						if (instruction?.operation) {
+							onMove({
+								startId: source.data.id as string,
+								destinationId: self.data.id as string,
+								operation: instruction.operation,
+							});
+						}
+
+						setDropInstruction(undefined);
+					},
+				}),
+			);
+		}, [onMove, props.id]);
 
 		const onExpanderClick = useEventHandlers(() => {
 			if (expanded === undefined) return;
@@ -238,7 +348,7 @@ const TreeItem = React.memo(
 					selected={selected}
 					onClick={useEventHandlers(onClickProp, handleClick)}
 					onKeyDown={useEventHandlers(onKeyDownProp, handleKeyDown)}
-					ref={forwardedRef}
+					ref={useMergedRefs(draggableRef, forwardedRef)}
 				>
 					{React.useMemo(
 						() => (
@@ -250,6 +360,14 @@ const TreeItem = React.memo(
 						),
 						[onExpanderClick, expanded, selected],
 					)}
+					{dropInstruction ? (
+						<TreeItemDropIndicator instruction={dropInstruction} />
+					) : null}
+					{onMove ? (
+						<TreeItemDragPreview ref={dragPreviewRef}>
+							{props.label}
+						</TreeItemDragPreview>
+					) : null}
 				</TreeItemRoot>
 			</TreeItemRootProvider>
 		);
@@ -774,4 +892,42 @@ DEV: TreeItemExpander.displayName = "TreeItemExpander";
 
 // ----------------------------------------------------------------------------
 
-export { TreeItem as Root, TreeItemAction as Action };
+interface TreeItemDropIndicatorProps extends BaseProps {
+	instruction?: "reorder-before" | "reorder-after" | "combine" | null;
+}
+
+const TreeItemDropIndicator = forwardRef<"div", TreeItemDropIndicatorProps>(
+	(props, forwardedRef) => {
+		const { instruction, ...rest } = props;
+		return (
+			<Role
+				{...rest}
+				className={cx("🥝-tree-item-drop-indicator", props.className)}
+				data-kiwi-instruction={instruction}
+				ref={forwardedRef}
+			/>
+		);
+	},
+);
+DEV: TreeItemDropIndicator.displayName = "TreeItemDropIndicator";
+
+// ----------------------------------------------------------------------------
+
+const TreeItemDragPreview = forwardRef<"div", BaseProps>(
+	(props, forwardedRef) => (
+		<Role
+			{...props}
+			className={cx("🥝-tree-item-drag-preview")}
+			popover="manual"
+			ref={forwardedRef}
+		/>
+	),
+);
+
+// ----------------------------------------------------------------------------
+
+export {
+	TreeItem as Root,
+	TreeItemAction as Action,
+	TreeItemDropIndicator as DropIndicator,
+};

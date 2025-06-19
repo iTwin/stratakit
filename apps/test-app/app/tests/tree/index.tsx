@@ -37,6 +37,7 @@ export default definePage(
 		description: descriptionParam,
 		error: errorParam,
 		items: itemsParam,
+		draggable,
 	}) {
 		const [_, startTransition] = React.useTransition();
 		const overflowPostfix = overflow
@@ -118,6 +119,7 @@ export default definePage(
 							expanded={item.expanded}
 							selected={item.selected}
 							error={error}
+							onMove={draggable ? (data) => console.log(data) : undefined}
 							onSelectedChange={() => {
 								setData(
 									produce((prev) => {

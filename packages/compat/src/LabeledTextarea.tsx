@@ -12,6 +12,7 @@ import type { PolymorphicForwardRefComponent } from "./~utils.tsx";
 import { StatusMessage } from "./StatusMessage.tsx";
 import { InputGrid } from "./InputGrid.tsx";
 import { Textarea } from "./Textarea.tsx";
+import { Label } from "./Label.tsx";
 
 type IuiLabeledTextareaProps = React.ComponentProps<typeof IuiLabeledTextarea>;
 
@@ -64,7 +65,7 @@ export const LabeledTextarea = React.forwardRef((props, forwardedRef) => {
 
 	return (
 		<InputGrid labelPlacement={displayStyle} {...wrapperProps}>
-			<Field.Label {...labelProps}>{label}</Field.Label>
+			<Label {...labelProps}>{label}</Label>
 			<Field.Control
 				render={
 					<TextBox.Root>

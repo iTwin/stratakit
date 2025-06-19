@@ -292,7 +292,7 @@
 				},
 				"scrollbar-surface": {
 					"$type": "color",
-					"$value": "{p-color.black.32}"
+					"$value": "{p-color.black.48}"
 				},
 				"scrollbar-canvas": {
 					"$type": "color",

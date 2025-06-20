@@ -81,7 +81,14 @@ const ChipLabel = forwardRef<"span", ChipLabelProps>((props, forwardedRef) => {
 	}, [setLabelId, props.id]);
 
 	const id = props.id ?? labelId;
-	return <Role.span {...props} id={id} ref={forwardedRef} />;
+	return (
+		<Role.span
+			{...props}
+			className={cx("🥝-chip-label", props.className)}
+			id={id}
+			ref={forwardedRef}
+		/>
+	);
 });
 DEV: ChipLabel.displayName = "Chip.Label";
 

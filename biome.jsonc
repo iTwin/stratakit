@@ -23,21 +23,28 @@
 					"level": "on",
 					"options": {
 						"groups": [
-							{ "type": false, "source": ":PACKAGE_WITH_PROTOCOL:" }, // protocol
+							{
+								"type": false,
+								"source": [":PACKAGE_WITH_PROTOCOL:", ":BUN:", ":NODE:"]
+							}, // protocol
 							":BLANK_LINE:",
 							{ "type": false, "source": "react*" }, // framework (react)
 							{
 								"type": false,
-								"source": [":PACKAGE:", "!**/*.{json*,svg,css*}"]
-							}, // libraries
-							":BLANK_LINE:",
+								"source": ["**", "!**/*.*", "!*.*"]
+							}, // imports without file extensions
 							{
 								"type": false,
-								"source": ["**", "!**/*.{json*,svg,css*}"]
-							}, // all other unmatched imports
+								"source": ["**/*.{js,jsx,ts,tsx}", "*.{js,jsx,ts,tsx}"]
+							}, // imports with js,jsx,ts,tsx file extension
+							{
+								"type": false,
+								"source": [":URL:"]
+							}, // unmatched imports
 							":BLANK_LINE:",
 							{ "type": true }, // type imports
 							":BLANK_LINE:"
+							// asset imports (unmatched by all other groups) are placed last automatically
 						]
 					}
 				}

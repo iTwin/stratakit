@@ -6,7 +6,7 @@
 import { Textarea } from "@stratakit/react";
 import { definePage } from "~/~utils.tsx";
 
-export const handle = { title: "Label" };
+export const handle = { title: "Textarea" };
 
 export default definePage(function Page() {
 	return (

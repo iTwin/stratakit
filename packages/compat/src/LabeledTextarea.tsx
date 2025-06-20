@@ -5,13 +5,13 @@
 
 import { Field, TextBox } from "@stratakit/bricks";
 import * as React from "react";
-import { useCompatProps } from "./~utils.tsx";
+import { useCompatProps } from "./~utils.js";
+import { InputGrid } from "./InputGrid.js";
+import { Label } from "./Label.js";
+import { StatusMessage } from "./StatusMessage.js";
 
 import type { LabeledTextarea as IuiLabeledTextarea } from "@itwin/itwinui-react";
-import type { PolymorphicForwardRefComponent } from "./~utils.tsx";
-import { InputGrid } from "./InputGrid.tsx";
-import { Label } from "./Label.tsx";
-import { StatusMessage } from "./StatusMessage.tsx";
+import type { PolymorphicForwardRefComponent } from "./~utils.js";
 
 type IuiLabeledTextareaProps = React.ComponentProps<typeof IuiLabeledTextarea>;
 
@@ -67,20 +67,18 @@ export const LabeledTextarea = React.forwardRef((props, forwardedRef) => {
 		<InputGrid labelPlacement={displayStyle} {...wrapperProps}>
 			<Label {...labelProps}>{label}</Label>
 			<Field.Control
-				render={(controlProps) => {
-					return (
-						<TextBox.Root>
-							<TextBox.Textarea {...controlProps} {...rest} />
-							{svgIcon ? (
-								<TextBox.Icon
-									{...(restIconProps as React.ComponentProps<"svg">)}
-									render={svgIcon}
-									size={iconSize === "large" ? "large" : undefined}
-								/>
-							) : null}
-						</TextBox.Root>
-					);
-				}}
+				render={
+					<TextBox.Root>
+						<TextBox.Textarea {...rest} />
+						{svgIcon ? (
+							<TextBox.Icon
+								{...(restIconProps as React.ComponentProps<"svg">)}
+								render={svgIcon}
+								size={iconSize === "large" ? "large" : undefined}
+							/>
+						) : null}
+					</TextBox.Root>
+				}
 				id={id}
 				ref={forwardedRef}
 			/>

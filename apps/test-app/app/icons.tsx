@@ -3,7 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import { Divider } from "@stratakit/bricks";
+import { Divider, Text } from "@stratakit/bricks";
 import { Icon } from "@stratakit/foundations";
 import { Table } from "@stratakit/structures";
 import globalStyles from "./icons.css?url";
@@ -33,7 +33,9 @@ export const links: LinksFunction = () => [
 export default function Page() {
 	return (
 		<>
-			<h1>Icons</h1>
+			<Text variant="headline-md" render={<h1 />}>
+				Icons
+			</Text>
 			<Divider />
 			<Table.HtmlTable>
 				<Table.Header>

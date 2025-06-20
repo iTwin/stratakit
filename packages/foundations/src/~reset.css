@@ -27,12 +27,17 @@
 	appearance: none;
 	background-color: unset;
 	border: unset;
+	cursor: pointer;
 	text-align: unset;
 }
 
 :where(input, button, textarea, select) {
 	font: inherit;
 	color: inherit;
+}
+
+:where(fieldset) {
+	border: none;
 }
 
 :where(img, picture, svg, video) {
@@ -43,6 +48,9 @@
 
 :where(p, h1, h2, h3, h4, h5, h6) {
 	overflow-wrap: break-word;
+	text-wrap: pretty;
+	font-weight: unset;
+	font-size: unset;
 }
 
 :where(table) {

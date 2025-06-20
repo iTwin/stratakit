@@ -48,6 +48,7 @@ export const LabeledTextarea = React.forwardRef((props, forwardedRef) => {
 		labelProps,
 		svgIcon,
 		displayStyle,
+		id,
 		...rest
 	} = useCompatProps(props);
 
@@ -80,6 +81,7 @@ export const LabeledTextarea = React.forwardRef((props, forwardedRef) => {
 						</TextBox.Root>
 					);
 				}}
+				id={id}
 				ref={forwardedRef}
 			/>
 			{message && (

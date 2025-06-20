@@ -16,6 +16,7 @@ export default definePage(function Page() {
 				label="Example labeled textarea"
 				message="Message"
 				placeholder="Placeholder"
+				id="custom-id"
 			/>
 			<LabeledTextarea label="Disabled" disabled />
 

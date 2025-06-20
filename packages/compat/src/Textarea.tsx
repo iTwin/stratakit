@@ -22,11 +22,16 @@ export const Textarea = React.forwardRef((props, forwardedRef) => {
 	const {
 		// biome-ignore lint/correctness/noUnusedVariables: NOT IMPLEMENTED.
 		status,
+		id,
 		...rest
 	} = useCompatProps(props);
 
 	return (
-		<Field.Control render={<TextBox.Textarea {...rest} ref={forwardedRef} />} />
+		<Field.Control
+			render={<TextBox.Textarea {...rest} />}
+			ref={forwardedRef}
+			id={id}
+		/>
 	);
 }) as PolymorphicForwardRefComponent<"textarea", TextareaProps>;
 DEV: Textarea.displayName = "Textarea";

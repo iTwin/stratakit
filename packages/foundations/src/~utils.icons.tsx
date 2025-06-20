@@ -27,12 +27,7 @@ export function createIconFromPath(d: string) {
 							{...props}
 							ref={forwardedRef}
 						>
-							<path
-								fill="currentColor"
-								fillRule="evenodd"
-								d={d}
-								clipRule="evenodd"
-							/>
+							<path fill="currentColor" d={d} />
 						</Role.svg>
 					}
 				/>

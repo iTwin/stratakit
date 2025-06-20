@@ -56,27 +56,29 @@ type ButtonProps = FocusableProps<"button"> &
  *
  * The button's appearance can be customized using the `variant` and `tone` props.
  */
-export const Button = forwardRef<"button", ButtonProps>(
-	(props, forwardedRef) => {
-		const { variant = "solid", tone = "neutral", ...rest } = props;
+const Button = forwardRef<"button", ButtonProps>((props, forwardedRef) => {
+	const { variant = "solid", tone = "neutral", ...rest } = props;
 
-		const ghostAlignment = useGhostAlignment();
+	const ghostAlignment = useGhostAlignment();
 
-		return (
-			<AkButton
-				accessibleWhenDisabled
-				{...rest}
-				data-kiwi-variant={variant}
-				data-kiwi-tone={tone}
-				data-kiwi-ghost-align={variant === "ghost" ? ghostAlignment : undefined}
-				className={cx(
-					"🥝-button",
-					{ "🥝-ghost-aligner": variant === "ghost" },
-					props.className,
-				)}
-				ref={forwardedRef}
-			/>
-		);
-	},
-);
+	return (
+		<AkButton
+			accessibleWhenDisabled
+			{...rest}
+			data-kiwi-variant={variant}
+			data-kiwi-tone={tone}
+			data-kiwi-ghost-align={variant === "ghost" ? ghostAlignment : undefined}
+			className={cx(
+				"🥝-button",
+				{ "🥝-ghost-aligner": variant === "ghost" },
+				props.className,
+			)}
+			ref={forwardedRef}
+		/>
+	);
+});
 DEV: Button.displayName = "Button";
+
+// ----------------------------------------------------------------------------
+
+export default Button;

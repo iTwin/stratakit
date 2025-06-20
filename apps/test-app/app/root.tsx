@@ -93,7 +93,7 @@ export async function clientLoader() {
 
 export function HydrateFallback() {
 	const fallbackCss =
-		"html { background-color: var(--ids-color-bg-page-base, #1F2023); }";
+		"html { background-color: var(--stratakit-color-bg-page-base, #1F2023); }";
 
 	return (
 		<>

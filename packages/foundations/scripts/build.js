@@ -23,7 +23,7 @@ await esbuild.build({
 	format: "esm",
 	jsx: "automatic",
 	target: "es2021",
-	...(!isDev && { dropLabels: ["DEV"] }),
+	dropLabels: ["DROP", ...(isDev ? ["DEV"] : [])],
 });
 
 // Run esbuild again, only to inline bundled CSS inside `.css.ts` files

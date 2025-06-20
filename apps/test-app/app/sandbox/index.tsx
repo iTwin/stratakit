@@ -127,9 +127,6 @@ export default function Page() {
 function Header() {
 	return (
 		<header className={styles.header}>
-			<div className={styles.logo}>
-				<Icon href={placeholderIcon} size="large" />
-			</div>
 			<Text render={<h1 />} variant="body-md">
 				{title}
 			</Text>
@@ -140,6 +137,9 @@ function Header() {
 function PlatformBar() {
 	return (
 		<nav className={styles.platformBar}>
+			<div className={styles.logo}>
+				<Icon href={placeholderIcon} size="large" />
+			</div>
 			<div className={styles.tools}>
 				<Icon href={placeholderIcon} size="large" />
 				<Icon href={placeholderIcon} size="large" />

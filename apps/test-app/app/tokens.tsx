@@ -56,11 +56,15 @@ export default function Page() {
 
 	return (
 		<>
-			<h1>Tokens</h1>
+			<Text variant="headline-md" render={<h1 />}>
+				Tokens
+			</Text>
 
 			<Divider />
 
-			<h2>Colors</h2>
+			<Text variant="body-lg" render={<h2 />}>
+				Colors
+			</Text>
 
 			{Object.entries(categories).map(([key, value]) => {
 				const relevantTokens = [...colorTokens.keys()].filter((token) => {
@@ -97,7 +101,9 @@ export default function Page() {
 
 			<Divider />
 
-			<h2>Shadows</h2>
+			<Text variant="body-lg" render={<h2 />}>
+				Shadows
+			</Text>
 
 			<Disclosure.DisclosureProvider defaultOpen={true}>
 				<div className={styles.disclosureWrapper}>
@@ -117,7 +123,9 @@ export default function Page() {
 
 			<Divider />
 
-			<h2>Typography</h2>
+			<Text variant="body-lg" render={<h2 />}>
+				Typography
+			</Text>
 
 			<Disclosure.DisclosureProvider defaultOpen={true}>
 				<div className={styles.disclosureWrapper}>
@@ -156,7 +164,7 @@ function Tokens({
 
 			<Table.Body>
 				{tokens.map((token) => {
-					const variableName = `--ids-${kind}-${token}`;
+					const variableName = `--stratakit-${kind}-${token}`;
 					return (
 						<Table.Row key={token}>
 							<Table.Cell>

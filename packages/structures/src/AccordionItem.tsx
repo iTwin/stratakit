@@ -342,6 +342,8 @@ const AccordionItemHeading = forwardRef<"div", AccordionItemHeadingProps>(
 );
 DEV: AccordionItemHeading.displayName = "AccordionItem.Heading";
 
+// ----------------------------------------------------------------------------
+
 export {
 	AccordionItemRoot as Root,
 	AccordionItemContent as Content,

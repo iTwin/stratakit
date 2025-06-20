@@ -11,7 +11,7 @@ import cx from "classnames";
 import { useGhostAlignment } from "./~utils.GhostAligner.js";
 
 import type { BaseProps } from "@stratakit/foundations/secret-internals";
-import type { Button } from "./Button.js";
+import type Button from "./Button.js";
 
 // ----------------------------------------------------------------------------
 

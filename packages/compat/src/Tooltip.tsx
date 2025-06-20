@@ -46,9 +46,13 @@ export const Tooltip = React.forwardRef((props, forwardedRef) => {
 		onVisibleChange,
 		ariaStrategy = "description",
 		placement,
-		autoUpdateOptions, // NOT IMPLEMENTED
-		middleware, // NOT IMPLEMENTED
-		reference, // NOT IMPLEMENTED
+
+		// biome-ignore-start lint/correctness/noUnusedVariables: NOT IMPLEMENTED
+		autoUpdateOptions,
+		middleware,
+		reference,
+		// biome-ignore-end lint/correctness/noUnusedVariables: NOT IMPLEMENTED
+
 		...rest
 	} = useCompatProps(props);
 

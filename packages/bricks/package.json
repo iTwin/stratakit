@@ -1,7 +1,7 @@
 {
 	"name": "@stratakit/bricks",
 	"type": "module",
-	"version": "0.2.1",
+	"version": "0.3.0",
 	"license": "MIT",
 	"sideEffects": false,
 	"types": "./dist/index.d.ts",
@@ -18,7 +18,133 @@
 			"development": "./dist/DEV/secret-internals.js",
 			"default": "./dist/secret-internals.js"
 		},
-		"./package.json": "./package.json"
+		"./package.json": "./package.json",
+		"./Anchor": {
+			"@stratakit/source": "./src/Anchor.tsx",
+			"types": "./dist/Anchor.d.ts",
+			"development": "./dist/DEV/Anchor.js",
+			"default": "./dist/Anchor.js"
+		},
+		"./Avatar": {
+			"@stratakit/source": "./src/Avatar.tsx",
+			"types": "./dist/Avatar.d.ts",
+			"development": "./dist/DEV/Avatar.js",
+			"default": "./dist/Avatar.js"
+		},
+		"./Badge": {
+			"@stratakit/source": "./src/Badge.tsx",
+			"types": "./dist/Badge.d.ts",
+			"development": "./dist/DEV/Badge.js",
+			"default": "./dist/Badge.js"
+		},
+		"./Button": {
+			"@stratakit/source": "./src/Button.tsx",
+			"types": "./dist/Button.d.ts",
+			"development": "./dist/DEV/Button.js",
+			"default": "./dist/Button.js"
+		},
+		"./Checkbox": {
+			"@stratakit/source": "./src/Checkbox.tsx",
+			"types": "./dist/Checkbox.d.ts",
+			"development": "./dist/DEV/Checkbox.js",
+			"default": "./dist/Checkbox.js"
+		},
+		"./Description": {
+			"@stratakit/source": "./src/Description.tsx",
+			"types": "./dist/Description.d.ts",
+			"development": "./dist/DEV/Description.js",
+			"default": "./dist/Description.js"
+		},
+		"./Divider": {
+			"@stratakit/source": "./src/Divider.tsx",
+			"types": "./dist/Divider.d.ts",
+			"development": "./dist/DEV/Divider.js",
+			"default": "./dist/Divider.js"
+		},
+		"./Field": {
+			"@stratakit/source": "./src/Field.tsx",
+			"types": "./dist/Field.d.ts",
+			"development": "./dist/DEV/Field.js",
+			"default": "./dist/Field.js"
+		},
+		"./IconButton": {
+			"@stratakit/source": "./src/IconButton.tsx",
+			"types": "./dist/IconButton.d.ts",
+			"development": "./dist/DEV/IconButton.js",
+			"default": "./dist/IconButton.js"
+		},
+		"./Kbd": {
+			"@stratakit/source": "./src/Kbd.tsx",
+			"types": "./dist/Kbd.d.ts",
+			"development": "./dist/DEV/Kbd.js",
+			"default": "./dist/Kbd.js"
+		},
+		"./Label": {
+			"@stratakit/source": "./src/Label.tsx",
+			"types": "./dist/Label.d.ts",
+			"development": "./dist/DEV/Label.js",
+			"default": "./dist/Label.js"
+		},
+		"./Progress": {
+			"@stratakit/source": "./src/Progress.tsx",
+			"types": "./dist/Progress.d.ts",
+			"development": "./dist/DEV/Progress.js",
+			"default": "./dist/Progress.js"
+		},
+		"./Radio": {
+			"@stratakit/source": "./src/Radio.tsx",
+			"types": "./dist/Radio.d.ts",
+			"development": "./dist/DEV/Radio.js",
+			"default": "./dist/Radio.js"
+		},
+		"./Select": {
+			"@stratakit/source": "./src/Select.tsx",
+			"types": "./dist/Select.d.ts",
+			"development": "./dist/DEV/Select.js",
+			"default": "./dist/Select.js"
+		},
+		"./Skeleton": {
+			"@stratakit/source": "./src/Skeleton.tsx",
+			"types": "./dist/Skeleton.d.ts",
+			"development": "./dist/DEV/Skeleton.js",
+			"default": "./dist/Skeleton.js"
+		},
+		"./Spinner": {
+			"@stratakit/source": "./src/Spinner.tsx",
+			"types": "./dist/Spinner.d.ts",
+			"development": "./dist/DEV/Spinner.js",
+			"default": "./dist/Spinner.js"
+		},
+		"./Switch": {
+			"@stratakit/source": "./src/Switch.tsx",
+			"types": "./dist/Switch.d.ts",
+			"development": "./dist/DEV/Switch.js",
+			"default": "./dist/Switch.js"
+		},
+		"./Text": {
+			"@stratakit/source": "./src/Text.tsx",
+			"types": "./dist/Text.d.ts",
+			"development": "./dist/DEV/Text.js",
+			"default": "./dist/Text.js"
+		},
+		"./TextBox": {
+			"@stratakit/source": "./src/TextBox.tsx",
+			"types": "./dist/TextBox.d.ts",
+			"development": "./dist/DEV/TextBox.js",
+			"default": "./dist/TextBox.js"
+		},
+		"./Tooltip": {
+			"@stratakit/source": "./src/Tooltip.tsx",
+			"types": "./dist/Tooltip.d.ts",
+			"development": "./dist/DEV/Tooltip.js",
+			"default": "./dist/Tooltip.js"
+		},
+		"./VisuallyHidden": {
+			"@stratakit/source": "./src/VisuallyHidden.tsx",
+			"types": "./dist/VisuallyHidden.d.ts",
+			"development": "./dist/DEV/VisuallyHidden.js",
+			"default": "./dist/VisuallyHidden.js"
+		}
 	},
 	"files": [
 		"dist",
@@ -65,7 +191,7 @@
 		"typescript": "catalog:"
 	},
 	"peerDependencies": {
-		"@stratakit/foundations": "^0.1.5",
+		"@stratakit/foundations": "^0.1.6",
 		"react": ">=18.0.0",
 		"react-dom": ">=18.0.0"
 	},

@@ -8,7 +8,7 @@ import { forwardRef } from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
 
 import { predefinedSymbols } from "./Kbd.internal.js";
-import { VisuallyHidden } from "./VisuallyHidden.js";
+import VisuallyHidden from "./VisuallyHidden.js";
 
 import type { RoleProps } from "@ariakit/react/role";
 import type { BaseProps } from "@stratakit/foundations/secret-internals";
@@ -42,7 +42,7 @@ interface KbdProps extends BaseProps<"kbd"> {
  * <Kbd symbol="Control" />
  * ```
  */
-export const Kbd = forwardRef<"kbd", KbdProps>((props, forwardedRef) => {
+const Kbd = forwardRef<"kbd", KbdProps>((props, forwardedRef) => {
 	const { variant = "solid", symbol, children, ...rest } = props;
 
 	DEV: {
@@ -77,3 +77,7 @@ export const Kbd = forwardRef<"kbd", KbdProps>((props, forwardedRef) => {
 	);
 });
 DEV: Kbd.displayName = "Kbd";
+
+// ----------------------------------------------------------------------------
+
+export default Kbd;

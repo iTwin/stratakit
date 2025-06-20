@@ -4,7 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 
 import * as React from "react";
-import { TextBox } from "@stratakit/bricks";
+import { Field, TextBox } from "@stratakit/bricks";
 
 import { useCompatProps } from "./~utils.tsx";
 
@@ -29,19 +29,29 @@ interface InputProps
 /** @see https://itwinui.bentley.com/docs/input */
 export const Input = React.forwardRef((props, forwardedRef) => {
 	const {
-		children, // NOT IMPLEMENTED
+		id,
 		htmlSize,
-		size, // NOT IMPLEMENTED
-		status, // NOT IMPLEMENTED
+
+		// biome-ignore-start lint/correctness/noUnusedVariables: NOT IMPLEMENTED
+		children,
+		size,
+		status,
+		// biome-ignore-end lint/correctness/noUnusedVariables: NOT IMPLEMENTED
+
 		type: inputType,
 		...rest
 	} = useCompatProps(props);
 
 	return (
-		<TextBox.Input
-			{...rest}
-			type={inputType as SkTextBoxInputProps["type"]}
-			size={htmlSize}
+		<Field.Control
+			id={id}
+			render={
+				<TextBox.Input
+					{...rest}
+					type={inputType as SkTextBoxInputProps["type"]}
+					size={htmlSize}
+				/>
+			}
 			ref={forwardedRef}
 		/>
 	);

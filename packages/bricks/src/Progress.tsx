@@ -57,7 +57,7 @@ interface ProgressBarProps extends Omit<BaseProps, "aria-labelledby"> {
  * Supports a `size` prop to change the size of the progress bar.
  *
  */
-export const ProgressBar = forwardRef<"div", ProgressBarProps>(
+const ProgressBar = forwardRef<"div", ProgressBarProps>(
 	(props, forwardedRef) => {
 		const {
 			size = "medium",
@@ -104,3 +104,7 @@ export const ProgressBar = forwardRef<"div", ProgressBarProps>(
 	},
 );
 DEV: ProgressBar.displayName = "ProgressBar";
+
+// ----------------------------------------------------------------------------
+
+export { ProgressBar };

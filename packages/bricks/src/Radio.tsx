@@ -42,7 +42,7 @@ interface RadioProps extends InputBaseProps, RadioOwnProps {}
  * Underneath, it's an HTML radio input, i.e. `<input type="radio">`, so it supports the same props,
  * including `value`, `defaultChecked`, `checked`, and `onChange`.
  */
-export const Radio = forwardRef<"input", RadioProps>((props, forwardedRef) => {
+const Radio = forwardRef<"input", RadioProps>((props, forwardedRef) => {
 	useFieldControlType("checkable");
 	return (
 		<AkRadio
@@ -54,3 +54,7 @@ export const Radio = forwardRef<"input", RadioProps>((props, forwardedRef) => {
 	);
 });
 DEV: Radio.displayName = "Radio";
+
+// ----------------------------------------------------------------------------
+
+export default Radio;

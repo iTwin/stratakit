@@ -31,6 +31,9 @@ import foundationsCss from "./styles.css.js";
 
 const css = foundationsCss + componentsCss;
 
+/** This helps pinpoint the location where this module is imported from. */
+const stack = new Error()?.stack?.split("Error")?.at(-1)?.trim() || "";
+
 // ----------------------------------------------------------------------------
 
 interface RootProps extends BaseProps {
@@ -81,6 +84,8 @@ interface RootProps extends BaseProps {
  * ```
  */
 export const Root = forwardRef<"div", RootProps>((props, forwardedRef) => {
+	throwIfNotSingleton();
+
 	const {
 		children,
 		synchronizeColorScheme = false,
@@ -382,6 +387,36 @@ function loadFonts(rootNode: Document | ShadowRoot) {
 			},
 		);
 		ownerWindow.document.fonts.add(font);
+	}
+}
+
+// ----------------------------------------------------------------------------
+
+/**
+ * This function injects the location of this file into `globalThis`, and throws an error
+ * if more than one location is detected.
+ */
+function throwIfNotSingleton() {
+	DROP: return;
+
+	// biome-ignore lint/correctness/noUnreachable: The early return will be removed by build script.
+	const symbol = Symbol.for("@stratakit/foundations");
+
+	const _globalThis = globalThis as typeof globalThis & {
+		[symbol]: { versions?: Set<string> };
+	};
+	_globalThis[symbol] ??= { versions: new Set() };
+
+	if (stack) _globalThis[symbol].versions?.add(stack);
+	if ((_globalThis[symbol].versions?.size || 0) > 1) {
+		console.table(
+			Array.from(_globalThis[symbol].versions || []).map((stack) => ({
+				"@stratakit/foundations location": stack,
+			})),
+		);
+		throw new Error(
+			`Multiple instances of @stratakit/foundations detected. This can lead to unexpected behavior.`,
+		);
 	}
 }
 

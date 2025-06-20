@@ -67,18 +67,20 @@ export const LabeledTextarea = React.forwardRef((props, forwardedRef) => {
 		<InputGrid labelPlacement={displayStyle} {...wrapperProps}>
 			<Label {...labelProps}>{label}</Label>
 			<Field.Control
-				render={
-					<TextBox.Root>
-						<TextBox.Textarea {...rest} />
-						{svgIcon ? (
-							<TextBox.Icon
-								{...(restIconProps as React.ComponentProps<"svg">)}
-								render={svgIcon}
-								size={iconSize === "large" ? "large" : undefined}
-							/>
-						) : null}
-					</TextBox.Root>
-				}
+				render={(controlProps) => {
+					return (
+						<TextBox.Root>
+							<TextBox.Textarea {...controlProps} {...rest} />
+							{svgIcon ? (
+								<TextBox.Icon
+									{...(restIconProps as React.ComponentProps<"svg">)}
+									render={svgIcon}
+									size={iconSize === "large" ? "large" : undefined}
+								/>
+							) : null}
+						</TextBox.Root>
+					);
+				}}
 				id={id}
 				ref={forwardedRef}
 			/>

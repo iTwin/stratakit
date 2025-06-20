@@ -3,8 +3,9 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import { Checkbox, Field, Label, VisuallyHidden } from "@stratakit/bricks";
 import * as React from "react";
+import { Checkbox, Field, Label, VisuallyHidden } from "@stratakit/bricks";
+
 import { definePage } from "~/~utils.tsx";
 
 import type { VariantProps } from "~/~utils.tsx";

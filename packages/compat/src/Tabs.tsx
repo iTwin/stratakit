@@ -3,13 +3,14 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
+import * as React from "react";
 import {
 	useControlledState,
 	useSafeContext,
 } from "@stratakit/foundations/secret-internals";
 import { Tabs as SkTabs } from "@stratakit/structures";
 import cx from "classnames";
-import * as React from "react";
+
 import { useCompatProps } from "./~utils.tsx";
 
 import type { Tab as IuiTab, Tabs as IuiTabs } from "@itwin/itwinui-react";

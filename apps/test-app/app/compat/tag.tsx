@@ -4,6 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 
 import { Tag } from "@stratakit/react";
+
 import { definePage } from "~/~utils.tsx";
 
 export const handle = { title: "Tag" };

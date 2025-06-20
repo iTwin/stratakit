@@ -4,6 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 
 import { Spinner } from "@stratakit/bricks";
+
 import { definePage } from "~/~utils.tsx";
 
 export const handle = { title: "Spinner" };

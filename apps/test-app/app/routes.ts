@@ -4,6 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 
 import { index, layout, prefix, route } from "@react-router/dev/routes";
+
 import { components } from "./~meta.ts";
 
 import type { RouteConfig } from "@react-router/dev/routes";

@@ -3,9 +3,11 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
+import * as React from "react";
 import { Icon } from "@stratakit/foundations";
 import { forwardRef } from "@stratakit/foundations/secret-internals";
-import * as React from "react";
+
+import { Dot } from "./~utils.Dot.js";
 import { Button } from "./Button.js";
 import {
 	IconButtonContext,
@@ -13,7 +15,6 @@ import {
 } from "./IconButton.internal.js";
 import { Tooltip } from "./Tooltip.js";
 import { VisuallyHidden } from "./VisuallyHidden.js";
-import { Dot } from "./~utils.Dot.js";
 
 interface IconButtonBaseProps
 	extends Omit<React.ComponentProps<typeof Button>, "children" | "tone"> {

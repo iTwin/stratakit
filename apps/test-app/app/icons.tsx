@@ -6,11 +6,11 @@
 import { Divider } from "@stratakit/bricks";
 import { Icon } from "@stratakit/foundations";
 import { Table } from "@stratakit/structures";
-import globalStyles from "./icons.css?url";
-
-import iconsListJson from "@stratakit/icons/icons-list.json";
 
 import type { LinksFunction, MetaFunction } from "react-router";
+
+import iconsListJson from "@stratakit/icons/icons-list.json";
+import globalStyles from "./icons.css?url";
 
 const allIcons = import.meta.glob(
 	"../node_modules/@stratakit/icons/icons/*.svg",

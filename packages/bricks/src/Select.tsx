@@ -3,12 +3,13 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
+import * as React from "react";
 import { Role } from "@ariakit/react/role";
 import { forwardRef, isBrowser } from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
-import * as React from "react";
-import { useFieldControlType } from "./Field.internal.js";
+
 import { DisclosureArrow } from "./~utils.icons.js";
+import { useFieldControlType } from "./Field.internal.js";
 
 import type {
 	BaseProps,

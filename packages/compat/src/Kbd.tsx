@@ -3,11 +3,12 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import type { KbdKeys as IuiKbdKeys } from "@itwin/itwinui-react";
-import { Kbd as SkKbd, VisuallyHidden } from "@stratakit/bricks";
 import * as React from "react";
+import { Kbd as SkKbd, VisuallyHidden } from "@stratakit/bricks";
+
 import { useCompatProps } from "./~utils.tsx";
 
+import type { KbdKeys as IuiKbdKeys } from "@itwin/itwinui-react";
 import type { PolymorphicForwardRefComponent } from "./~utils.tsx";
 
 /** @see https://itwinui.bentley.com/docs/kbd */

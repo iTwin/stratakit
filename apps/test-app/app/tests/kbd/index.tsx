@@ -4,6 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 
 import { Kbd } from "@stratakit/bricks";
+
 import { definePage } from "~/~utils.tsx";
 
 export const handle = { title: "Kbd" };

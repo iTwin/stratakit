@@ -5,6 +5,7 @@
 
 import { Button } from "@stratakit/bricks";
 import { Tooltip } from "@stratakit/react";
+
 import { definePage } from "~/~utils.tsx";
 
 export const handle = { title: "Tooltip" };

@@ -2,6 +2,7 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
+
 import {
 	Disclosure,
 	DisclosureContent,
@@ -18,6 +19,7 @@ import {
 	useControlledState,
 } from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
+
 import { ChevronDown } from "./~utils.icons.js";
 
 import type { BaseProps } from "@stratakit/foundations/secret-internals";

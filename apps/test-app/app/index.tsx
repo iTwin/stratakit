@@ -3,8 +3,9 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import { Anchor, Text } from "@stratakit/bricks";
 import { Link, type MetaFunction } from "react-router";
+import { Anchor, Text } from "@stratakit/bricks";
+
 import { components } from "./~meta.ts";
 import { toKebabCase } from "./~utils.tsx";
 

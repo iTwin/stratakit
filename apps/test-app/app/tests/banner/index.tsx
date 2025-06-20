@@ -5,6 +5,7 @@
 
 import { Anchor, Button, VisuallyHidden } from "@stratakit/bricks";
 import { unstable_Banner as Banner } from "@stratakit/structures";
+
 import { definePage } from "~/~utils.tsx";
 
 import placeholderIcon from "@stratakit/icons/placeholder.svg";

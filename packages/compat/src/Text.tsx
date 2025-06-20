@@ -3,8 +3,9 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import { Text as SkText } from "@stratakit/bricks";
 import * as React from "react";
+import { Text as SkText } from "@stratakit/bricks";
+
 import { useCompatProps } from "./~utils.tsx";
 
 import type { Text as IuiText } from "@itwin/itwinui-react";

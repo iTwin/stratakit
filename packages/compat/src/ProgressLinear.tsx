@@ -3,11 +3,12 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
+import * as React from "react";
 import {
 	ProgressBar as SkProgressBar,
 	VisuallyHidden,
 } from "@stratakit/bricks";
-import * as React from "react";
+
 import { useCompatProps } from "./~utils.tsx";
 
 import type { ProgressLinear as IuiProgressBar } from "@itwin/itwinui-react";

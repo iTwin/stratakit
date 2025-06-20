@@ -3,16 +3,17 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
+import * as React from "react";
 import { Role } from "@ariakit/react/role";
 import cx from "classnames";
-import * as React from "react";
+
+import { useLatestRef, useSafeContext } from "./~hooks.js";
+import { forwardRef, getOwnerDocument, parseDOM } from "./~utils.js";
 import {
 	HtmlSanitizerContext,
 	spriteSheetId,
 	useRootNode,
 } from "./Root.internal.js";
-import { useLatestRef, useSafeContext } from "./~hooks.js";
-import { forwardRef, getOwnerDocument, parseDOM } from "./~utils.js";
 
 import type { BaseProps } from "./~utils.js";
 

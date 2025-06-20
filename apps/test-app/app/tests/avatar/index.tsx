@@ -5,6 +5,7 @@
 
 import { Avatar } from "@stratakit/bricks";
 import { Icon } from "@stratakit/foundations";
+
 import { definePage } from "~/~utils.tsx";
 
 import userIconHref from "@stratakit/icons/user.svg";

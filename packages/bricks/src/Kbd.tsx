@@ -6,6 +6,7 @@
 import { Role } from "@ariakit/react/role";
 import { forwardRef } from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
+
 import { predefinedSymbols } from "./Kbd.internal.js";
 import { VisuallyHidden } from "./VisuallyHidden.js";
 

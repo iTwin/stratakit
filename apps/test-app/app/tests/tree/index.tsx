@@ -3,10 +3,11 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
+import * as React from "react";
 import { Icon } from "@stratakit/foundations";
 import { Tree } from "@stratakit/structures";
 import { produce } from "immer";
-import * as React from "react";
+
 import { definePage } from "~/~utils.tsx";
 
 import unlockIcon from "@stratakit/icons/lock-unlocked.svg";

@@ -3,9 +3,11 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import placeholderIcon from "@stratakit/icons/placeholder.svg";
 import { LabeledInput } from "@stratakit/react";
+
 import { definePage } from "~/~utils.tsx";
+
+import placeholderIcon from "@stratakit/icons/placeholder.svg";
 
 export const handle = { title: "LabeledInput" };
 

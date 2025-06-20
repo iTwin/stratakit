@@ -3,8 +3,9 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import { TextBox } from "@stratakit/bricks";
 import * as React from "react";
+import { TextBox } from "@stratakit/bricks";
+
 import { useCompatProps } from "./~utils.tsx";
 
 import type { Input as IuiInput } from "@itwin/itwinui-react";

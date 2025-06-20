@@ -3,8 +3,9 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import { Label as SkLabel } from "@stratakit/bricks";
 import * as React from "react";
+import { Label as SkLabel } from "@stratakit/bricks";
+
 import { useCompatProps } from "./~utils.tsx";
 
 import type { Label as IuiLabel } from "@itwin/itwinui-react";

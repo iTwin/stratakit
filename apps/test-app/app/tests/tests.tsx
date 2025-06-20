@@ -3,21 +3,21 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import { Anchor, IconButton, Text, VisuallyHidden } from "@stratakit/bricks";
 import * as React from "react";
 import { Link, Outlet, useMatches } from "react-router";
+import { Anchor, IconButton, Text, VisuallyHidden } from "@stratakit/bricks";
+
 import {
 	RightSidebar,
 	ThemeSwitcher,
-	VariantsListContext,
 	useLocalStorage,
+	VariantsListContext,
 } from "~/~utils.tsx";
 
-import chevronLeftIcon from "@stratakit/icons/chevron-left.svg";
-
-import styles from "./tests.module.css";
-
 import type { MetaFunction } from "react-router";
+
+import chevronLeftIcon from "@stratakit/icons/chevron-left.svg";
+import styles from "./tests.module.css";
 
 export const meta: MetaFunction = () => {
 	return [{ title: "StrataKit tests" }];

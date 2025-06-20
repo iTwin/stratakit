@@ -3,8 +3,9 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import { Chip } from "@stratakit/structures";
 import * as React from "react";
+import { Chip } from "@stratakit/structures";
+
 import { definePage } from "~/~utils.tsx";
 
 export const handle = { title: "Chip" };

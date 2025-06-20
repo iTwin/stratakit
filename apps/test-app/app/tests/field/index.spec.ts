@@ -4,6 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 
 import AxeBuilder from "@axe-core/playwright";
+
 import { expect, test } from "#playwright";
 
 import type { Page } from "@playwright/test";

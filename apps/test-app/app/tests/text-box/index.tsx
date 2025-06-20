@@ -3,13 +3,14 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import { Field, Label, TextBox } from "@stratakit/bricks";
 import * as React from "react";
+import { Field, Label, TextBox } from "@stratakit/bricks";
+
 import { definePage } from "~/~utils.tsx";
 
-import placeholderIcon from "@stratakit/icons/placeholder.svg";
-
 import type { VariantProps } from "~/~utils.tsx";
+
+import placeholderIcon from "@stratakit/icons/placeholder.svg";
 
 export const handle = { title: "TextBox" };
 

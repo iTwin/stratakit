@@ -3,8 +3,9 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import { Avatar as SkAvatar } from "@stratakit/bricks";
 import * as React from "react";
+import { Avatar as SkAvatar } from "@stratakit/bricks";
+
 import { useCompatProps } from "./~utils.tsx";
 
 import type { Avatar as IuiAvatar } from "@itwin/itwinui-react";

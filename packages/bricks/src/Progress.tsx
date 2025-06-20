@@ -107,4 +107,4 @@ DEV: ProgressBar.displayName = "ProgressBar";
 
 // ----------------------------------------------------------------------------
 
-export default ProgressBar;
+export { ProgressBar };

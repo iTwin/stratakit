@@ -23,30 +23,21 @@
 					"level": "on",
 					"options": {
 						"groups": [
+							{ "type": false, "source": ":PACKAGE_WITH_PROTOCOL:" }, // protocol
+							":BLANK_LINE:",
 							{ "type": false, "source": "react*" }, // framework (react)
 							{
 								"type": false,
-								"source": [
-									":PACKAGE_WITH_PROTOCOL:",
-									":PACKAGE:",
-									"!**/*.css*",
-									"!**/*.svg"
-								]
+								"source": [":PACKAGE:", "!**/*.{json*,svg,css*}"]
 							}, // libraries
+							":BLANK_LINE:",
 							{
 								"type": false,
-								"source": [".*/**", "!**/*.css*", "!**/*.svg"]
-							}, // relative paths
-							{
-								"type": false,
-								"source": ["**", "!**/*.css*", "!**/*.svg"]
+								"source": ["**", "!**/*.{json*,svg,css*}"]
 							}, // all other unmatched imports
 							":BLANK_LINE:",
 							{ "type": true }, // type imports
-							":BLANK_LINE:",
-							"**/*.css*", // .css imports
-							":BLANK_LINE:",
-							"**/*.svg" // .svg imports
+							":BLANK_LINE:"
 						]
 					}
 				}

@@ -31,21 +31,20 @@
 							":BLANK_LINE:",
 							// framework (react)
 							{ "type": false, "source": "react*" },
-							// libraries
+							// imports without file extensions
 							{
 								"type": false,
-								"source": [":PACKAGE:", "!**/*.{json*,svg,css*}"]
+								"source": ["**", "!**/*.*", "!*.*"]
 							},
-							":BLANK_LINE:",
-							// alias, relative paths
+							// imports with js,jsx,ts,tsx extension
 							{
 								"type": false,
-								"source": [":ALIAS:", ".*/**", "!**/*.{json*,svg,css*}"]
+								"source": ["**/*.{js,jsx,ts,tsx}", "*.{js,jsx,ts,tsx}"]
 							},
-							// all other unmatched imports
+							// unmatched imports
 							{
 								"type": false,
-								"source": ["**", "!**/*.{json*,svg,css*}"]
+								"source": ":URL:"
 							},
 							":BLANK_LINE:",
 							// type imports

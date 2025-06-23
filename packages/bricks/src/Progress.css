@@ -66,8 +66,8 @@
 			--🥝progress-bar-fill-size: 25%;
 
 			@media (prefers-reduced-motion: no-preference) {
-				--🥝progress-bar-animation: var(--✨animation--indeterminate),
-					var(--✨animation--indeterminate-slow);
+				--🥝progress-bar-animation:
+					var(--✨animation--indeterminate), var(--✨animation--indeterminate-slow);
 			}
 		}
 	}

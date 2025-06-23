@@ -6,9 +6,9 @@
 import { DropdownMenu } from "@stratakit/structures";
 import { definePage } from "~/~utils.tsx";
 
-import placeholderIcon from "@stratakit/icons/placeholder.svg";
-
 import type { VariantProps } from "~/~utils.tsx";
+
+import placeholderIcon from "@stratakit/icons/placeholder.svg";
 
 export const handle = { title: "DropdownMenu" };
 

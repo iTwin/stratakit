@@ -3,8 +3,8 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import { Field, Checkbox as SkCheckbox } from "@stratakit/bricks";
 import * as React from "react";
+import { Field, Checkbox as SkCheckbox } from "@stratakit/bricks";
 import { useCompatProps } from "./~utils.tsx";
 
 import type { Checkbox as IuiCheckbox } from "@itwin/itwinui-react";

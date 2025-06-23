@@ -3,8 +3,8 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import { Table } from "@stratakit/structures";
 import * as React from "react";
+import { Table } from "@stratakit/structures";
 import { definePage } from "~/~utils.tsx";
 
 export const handle = { title: "Table" };

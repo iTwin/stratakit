@@ -70,7 +70,7 @@ export function useCompatProps<P extends { as?: React.ElementType }>(props: P) {
 	}, [Element]);
 	return {
 		...rest,
-		render,
+		...(render && { render }),
 	};
 }
 

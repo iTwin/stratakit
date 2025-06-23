@@ -14,7 +14,7 @@ type IuiInputGridProps = React.ComponentProps<typeof IuiInputGrid>;
 
 interface InputGridProps extends Pick<IuiInputGridProps, "labelPlacement"> {}
 
-/** @see https://itwinui.bentley.com/docs/input-grid */
+/** @see https://itwinui.bentley.com/docs/inputgrid/ */
 export const InputGrid = React.forwardRef((props, forwardedRef) => {
 	const { labelPlacement, ...rest } = useCompatProps(props);
 	return (

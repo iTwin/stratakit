@@ -6,7 +6,6 @@
 import { Button as AkButton } from "@ariakit/react/button";
 import { forwardRef } from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
-
 import { useGhostAlignment } from "./~utils.GhostAligner.js";
 
 import type { FocusableProps } from "@stratakit/foundations/secret-internals";

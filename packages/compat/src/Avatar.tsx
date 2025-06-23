@@ -5,7 +5,6 @@
 
 import * as React from "react";
 import { Avatar as SkAvatar } from "@stratakit/bricks";
-
 import { useCompatProps } from "./~utils.tsx";
 
 import type { Avatar as IuiAvatar } from "@itwin/itwinui-react";

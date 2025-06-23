@@ -10,7 +10,6 @@ import {
 	Label as ChipLabel,
 	Root as ChipRoot,
 } from "@stratakit/structures/Chip";
-
 import { definePage } from "~/~utils.tsx";
 
 export const handle = { title: "Chip" };

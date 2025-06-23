@@ -8,7 +8,6 @@ import {
 	ProgressBar as SkProgressBar,
 	VisuallyHidden,
 } from "@stratakit/bricks";
-
 import { useCompatProps } from "./~utils.tsx";
 
 import type { ProgressLinear as IuiProgressBar } from "@itwin/itwinui-react";

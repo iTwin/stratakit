@@ -4,7 +4,6 @@
  *--------------------------------------------------------------------------------------------*/
 
 import AxeBuilder from "@axe-core/playwright";
-
 import { expect, test } from "#playwright";
 
 for (const type of ["input", "textarea", "composition"] as const) {

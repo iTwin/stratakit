@@ -7,7 +7,6 @@ import * as React from "react";
 import { Role } from "@ariakit/react/role";
 import { forwardRef, isBrowser } from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
-
 import { DisclosureArrow } from "./~utils.icons.js";
 import { useFieldControlType } from "./Field.internal.js";
 

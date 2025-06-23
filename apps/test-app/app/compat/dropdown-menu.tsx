@@ -5,7 +5,6 @@
 
 import { Button } from "@stratakit/bricks";
 import { DropdownMenu, MenuItem } from "@stratakit/react";
-
 import { definePage } from "~/~utils.tsx";
 
 export const handle = { title: "DropdownMenu" };

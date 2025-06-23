@@ -5,7 +5,6 @@
 
 import * as React from "react";
 import { Tooltip as SkTooltip } from "@stratakit/bricks";
-
 import { useCompatProps } from "./~utils.tsx";
 
 import type { Tooltip as IuiTooltip } from "@itwin/itwinui-react";

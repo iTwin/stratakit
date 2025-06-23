@@ -10,7 +10,6 @@ import { GhostAligner } from "@stratakit/bricks/secret-internals";
 import { Icon } from "@stratakit/foundations";
 import { forwardRef } from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
-
 import { Dismiss, StatusIcon } from "./~utils.icons.js";
 
 import type { BaseProps } from "@stratakit/foundations/secret-internals";

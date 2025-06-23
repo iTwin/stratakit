@@ -5,7 +5,6 @@
 
 import * as React from "react";
 import { Table } from "@stratakit/structures";
-
 import { definePage } from "~/~utils.tsx";
 
 export const handle = { title: "Table" };

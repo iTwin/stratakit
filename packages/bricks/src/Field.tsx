@@ -12,7 +12,6 @@ import { Role } from "@ariakit/react/role";
 import { useStoreState } from "@ariakit/react/store";
 import { forwardRef } from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
-
 import Description from "./Description.js";
 import { FieldCollection, FieldControlTypeContext } from "./Field.internal.js";
 import Label from "./Label.js";

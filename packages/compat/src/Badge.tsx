@@ -5,7 +5,6 @@
 
 import * as React from "react";
 import { Badge as SkBadge } from "@stratakit/bricks";
-
 import { useCompatProps } from "./~utils.tsx";
 
 import type { Badge as IuiBadge } from "@itwin/itwinui-react";

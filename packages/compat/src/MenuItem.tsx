@@ -6,7 +6,6 @@
 import * as React from "react";
 import { Icon as SkIcon } from "@stratakit/foundations";
 import { DropdownMenu as SkDropdownMenu } from "@stratakit/structures";
-
 import { useCompatProps } from "./~utils.tsx";
 
 import type { MenuItem as IuiMenuItem } from "@itwin/itwinui-react";

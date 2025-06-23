@@ -4,7 +4,6 @@
  *--------------------------------------------------------------------------------------------*/
 
 import { Button } from "@stratakit/react";
-
 import { definePage } from "~/~utils.tsx";
 
 import placeholderIcon from "@stratakit/icons/placeholder.svg";

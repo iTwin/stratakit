@@ -6,7 +6,6 @@
 import * as React from "react";
 import { useEventHandlers } from "@stratakit/foundations/secret-internals";
 import * as Chip from "@stratakit/structures/Chip";
-
 import { useCompatProps } from "./~utils.tsx";
 
 import type { Tag as IuiTag } from "@itwin/itwinui-react";

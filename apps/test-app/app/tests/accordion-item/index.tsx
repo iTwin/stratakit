@@ -5,7 +5,6 @@
 
 import { Icon } from "@stratakit/foundations";
 import { unstable_AccordionItem as AccordionItem } from "@stratakit/structures";
-
 import { definePage } from "~/~utils.tsx";
 
 import placeholderIcon from "@stratakit/icons/placeholder.svg";

@@ -4,7 +4,6 @@
  *--------------------------------------------------------------------------------------------*/
 
 import { Tabs } from "@stratakit/structures";
-
 import { definePage } from "~/~utils.tsx";
 
 export const handle = { title: "Tabs" };

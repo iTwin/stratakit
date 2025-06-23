@@ -8,7 +8,7 @@ import * as ReactDOM from "react-dom";
 import { PortalContext } from "@ariakit/react/portal";
 import { Role } from "@ariakit/react/role";
 import cx from "classnames";
-
+import componentsCss from "./~components.css.js"; // TODO: remove this implicit dependency on bricks and structures
 import { useLayoutEffect, useMergedRefs } from "./~hooks.js";
 import {
 	forwardRef,
@@ -23,11 +23,9 @@ import {
 	spriteSheetId,
 	useRootNode,
 } from "./Root.internal.js";
+import foundationsCss from "./styles.css.js";
 
 import type { BaseProps } from "./~utils.js";
-
-import componentsCss from "./~components.css.js"; // TODO: remove this implicit dependency on bricks and structures
-import foundationsCss from "./styles.css.js";
 
 const css = foundationsCss + componentsCss;
 

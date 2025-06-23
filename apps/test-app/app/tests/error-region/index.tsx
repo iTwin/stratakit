@@ -6,7 +6,6 @@
 import * as React from "react";
 import { Anchor, Button } from "@stratakit/bricks";
 import { unstable_ErrorRegion as ErrorRegion } from "@stratakit/structures";
-
 import { definePage } from "~/~utils.tsx";
 
 export const handle = { title: "Error Region" };

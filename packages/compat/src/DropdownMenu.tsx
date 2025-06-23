@@ -10,7 +10,6 @@ import {
 	useUnreactiveCallback,
 } from "@stratakit/foundations/secret-internals";
 import { DropdownMenu as SkDropdownMenu } from "@stratakit/structures";
-
 import { useCompatProps } from "./~utils.tsx";
 import { Button } from "./Button.js";
 

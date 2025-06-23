@@ -5,7 +5,6 @@
 
 import * as React from "react";
 import { Kbd as SkKbd, VisuallyHidden } from "@stratakit/bricks";
-
 import { useCompatProps } from "./~utils.tsx";
 
 import type { KbdKeys as IuiKbdKeys } from "@itwin/itwinui-react";

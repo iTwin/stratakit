@@ -5,7 +5,6 @@
 
 import { IconButton } from "@stratakit/bricks";
 import { unstable_Toolbar as Toolbar } from "@stratakit/structures";
-
 import { definePage } from "~/~utils.tsx";
 
 import placeholderIcon from "@stratakit/icons/placeholder.svg";

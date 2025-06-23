@@ -34,7 +34,6 @@ import {
 import { useQuery } from "@tanstack/react-query";
 import cx from "classnames";
 import { produce } from "immer";
-
 import { toUpperCamelCase } from "~/~utils.tsx";
 
 import type { UseQueryResult } from "@tanstack/react-query";

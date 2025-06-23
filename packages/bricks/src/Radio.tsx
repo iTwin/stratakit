@@ -6,7 +6,6 @@
 import { Radio as AkRadio } from "@ariakit/react/radio";
 import { forwardRef } from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
-
 import { useFieldControlType } from "./Field.internal.js";
 
 import type { RadioProps as AkRadioProps } from "@ariakit/react/radio";

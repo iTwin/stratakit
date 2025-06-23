@@ -19,7 +19,6 @@ import {
 	useEventHandlers,
 } from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
-
 import { ChevronDown, MoreHorizontal, StatusIcon } from "./~utils.icons.js";
 import * as ListItem from "./~utils.ListItem.js";
 import * as DropdownMenu from "./DropdownMenu.js";

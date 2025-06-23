@@ -5,7 +5,6 @@
 
 import * as React from "react";
 import { Field as SkField } from "@stratakit/bricks";
-
 import { useCompatProps } from "./~utils.tsx";
 
 import type { Label as IuiLabel } from "@itwin/itwinui-react";

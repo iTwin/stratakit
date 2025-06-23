@@ -4,7 +4,6 @@
  *--------------------------------------------------------------------------------------------*/
 
 import { DropdownMenu } from "@stratakit/structures";
-
 import { definePage } from "~/~utils.tsx";
 
 import type { VariantProps } from "~/~utils.tsx";

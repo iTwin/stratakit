@@ -5,7 +5,6 @@
 
 import * as React from "react";
 import { Field, TextBox } from "@stratakit/bricks";
-
 import { useCompatProps } from "./~utils.tsx";
 import { StatusMessage } from "./StatusMessage.tsx";
 

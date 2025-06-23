@@ -8,7 +8,6 @@ import * as ReactDOM from "react-dom";
 import { Button } from "@stratakit/bricks";
 import { Root } from "@stratakit/foundations";
 import { DropdownMenu } from "@stratakit/structures";
-
 import { definePage, useColorScheme } from "~/~utils.tsx";
 
 export const handle = { title: "Root", rootTest: true };

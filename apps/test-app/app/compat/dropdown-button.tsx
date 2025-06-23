@@ -4,7 +4,6 @@
  *--------------------------------------------------------------------------------------------*/
 
 import { DropdownButton, MenuItem } from "@stratakit/react";
-
 import { definePage } from "~/~utils.tsx";
 
 export const handle = { title: "DropdownButton" };

@@ -5,7 +5,6 @@
 
 import * as React from "react";
 import { useStoreState } from "@ariakit/react/store";
-
 import { isBrowser, supportsPopover } from "./~utils.js";
 
 import type { PopoverStore } from "@ariakit/react/popover";

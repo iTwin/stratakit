@@ -5,7 +5,6 @@
 
 import * as React from "react";
 import { Tab, Tabs } from "@stratakit/react";
-
 import { definePage } from "~/~utils.tsx";
 
 export const handle = { title: "Tabs" };

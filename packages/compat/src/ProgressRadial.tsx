@@ -5,7 +5,6 @@
 
 import * as React from "react";
 import { Spinner as SkSpinner } from "@stratakit/bricks";
-
 import { useCompatProps } from "./~utils.tsx";
 
 import type { ProgressRadial as IuiSpinner } from "@itwin/itwinui-react";

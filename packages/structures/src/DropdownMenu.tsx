@@ -27,7 +27,6 @@ import {
 	usePopoverApi,
 } from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
-
 import { Checkmark } from "./~utils.icons.js";
 import * as ListItem from "./~utils.ListItem.js";
 

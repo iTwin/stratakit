@@ -8,7 +8,6 @@ import { Button, Divider, Text } from "@stratakit/bricks";
 import { Icon } from "@stratakit/foundations";
 import { Table } from "@stratakit/structures";
 import { parseTokens } from "internal/lightningcss-visitors.js";
-
 import { useColorScheme } from "~/~utils.tsx";
 
 import type * as React from "react";

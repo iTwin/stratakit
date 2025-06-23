@@ -4,7 +4,6 @@
  *--------------------------------------------------------------------------------------------*/
 
 import { Avatar } from "@stratakit/react";
-
 import { definePage } from "~/~utils.tsx";
 
 import userIcon from "@stratakit/icons/user.svg";

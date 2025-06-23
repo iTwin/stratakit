@@ -4,7 +4,6 @@
  *--------------------------------------------------------------------------------------------*/
 
 import { Text } from "@stratakit/bricks";
-
 import { definePage } from "~/~utils.tsx";
 
 const variants = [

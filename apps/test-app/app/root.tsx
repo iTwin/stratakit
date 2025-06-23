@@ -14,7 +14,6 @@ import {
 } from "react-router";
 import { Root } from "@stratakit/foundations";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-
 import { ColorSchemeProvider, useColorScheme } from "./~utils.tsx";
 
 import type { LinksFunction } from "react-router";

@@ -8,7 +8,6 @@ import * as ReactDOM from "react-dom";
 import { Link, useSearchParams } from "react-router";
 import { Anchor, IconButton } from "@stratakit/bricks";
 import cx from "classnames";
-
 import * as ListItem from "../node_modules/@stratakit/structures/src/~utils.ListItem.tsx";
 
 import moon from "@stratakit/icons/moon.svg";

@@ -5,7 +5,6 @@
 
 import * as React from "react";
 import { Button, ProgressBar, VisuallyHidden } from "@stratakit/bricks";
-
 import { definePage } from "~/~utils.tsx";
 
 export const handle = { title: "ProgressBar" };

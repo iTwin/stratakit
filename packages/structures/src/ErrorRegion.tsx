@@ -23,7 +23,6 @@ import {
 	useControlledState,
 } from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
-
 import { ChevronDown, StatusIcon } from "./~utils.icons.js";
 
 import type { BaseProps } from "@stratakit/foundations/secret-internals";

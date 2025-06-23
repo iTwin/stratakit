@@ -5,7 +5,6 @@
 
 import * as React from "react";
 import { Anchor as SkAnchor } from "@stratakit/bricks";
-
 import { useCompatProps } from "./~utils.tsx";
 
 import type { Anchor as IuiAnchor } from "@itwin/itwinui-react";

@@ -4,7 +4,6 @@
  *--------------------------------------------------------------------------------------------*/
 
 import { Badge } from "@stratakit/bricks";
-
 import { definePage } from "~/~utils.tsx";
 
 export const handle = { title: "Badge" };

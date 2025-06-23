@@ -6,7 +6,6 @@
 import * as React from "react";
 import { Link, Outlet, useMatches } from "react-router";
 import { Anchor, IconButton, Text, VisuallyHidden } from "@stratakit/bricks";
-
 import {
 	RightSidebar,
 	ThemeSwitcher,

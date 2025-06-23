@@ -4,7 +4,6 @@
  *--------------------------------------------------------------------------------------------*/
 
 import { Icon } from "@stratakit/foundations";
-
 import { definePage } from "~/~utils.tsx";
 import * as ListItem from "../../../node_modules/@stratakit/structures/src/~utils.ListItem.tsx";
 

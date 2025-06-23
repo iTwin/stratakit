@@ -5,7 +5,6 @@
 
 import * as React from "react";
 import { Divider as SkDivider } from "@stratakit/bricks";
-
 import { useCompatProps } from "./~utils.tsx";
 
 import type { Divider as IuiDivider } from "@itwin/itwinui-react";

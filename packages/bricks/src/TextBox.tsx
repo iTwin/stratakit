@@ -13,7 +13,6 @@ import {
 	useMergedRefs,
 } from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
-
 import { useFieldControlType } from "./Field.internal.js";
 
 import type {

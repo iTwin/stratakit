@@ -10,7 +10,6 @@ import {
 } from "@stratakit/foundations/secret-internals";
 import { Tabs as SkTabs } from "@stratakit/structures";
 import cx from "classnames";
-
 import { useCompatProps } from "./~utils.tsx";
 
 import type { Tab as IuiTab, Tabs as IuiTabs } from "@itwin/itwinui-react";

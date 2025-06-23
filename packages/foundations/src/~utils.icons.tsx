@@ -5,7 +5,6 @@
 
 import { Role } from "@ariakit/react/role";
 import { Icon } from "@stratakit/foundations";
-
 import { forwardRef } from "./~utils.js";
 
 import type { BaseProps } from "./~utils.js";

@@ -5,7 +5,6 @@
 
 import * as React from "react";
 import { Field } from "@stratakit/bricks";
-
 import { useCompatProps } from "./~utils.tsx";
 
 import type { StatusMessage as IuiStatusMessage } from "@itwin/itwinui-react";

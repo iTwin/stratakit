@@ -19,15 +19,19 @@ export default definePage(function Page() {
 			</div>
 
 			{/* Not implemented props */}
-			<div style={{ display: "flex", alignItems: "center", minHeight: 40 }}>
-				Focus to unhide!{" "}
+			<div
+				style={{ display: "flex", gap: 8, alignItems: "center", minHeight: 30 }}
+			>
+				<div>Focus to unhide!</div>
 				<VisuallyHidden>
 					<Button>Unhidden</Button>
 				</VisuallyHidden>
 			</div>
 
-			<div style={{ display: "flex", alignItems: "center", minHeight: 40 }}>
-				Focus to remain hidden!{" "}
+			<div
+				style={{ display: "flex", gap: 8, alignItems: "center", minHeight: 30 }}
+			>
+				<div>Focus to remain hidden!</div>
 				<VisuallyHidden unhideOnFocus={false}>
 					<Button>Hidden</Button>
 				</VisuallyHidden>

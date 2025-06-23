@@ -3,7 +3,6 @@
 ## 0.1.2
 
 - [#754](https://github.com/iTwin/design-system/pull/754): Added icons:
-
   - `inspection.svg`
   - `power-bi.svg`
   - `document-pdf.svg`
@@ -60,12 +59,10 @@
   - `bis-item-generic.svg`
 
   Updated icons:
-
   - `document.svg`
   - `retry.svg`
 
 - [#755](https://github.com/iTwin/design-system/pull/755): All icons have been updated.
-
   - Small adjustments to size and negative space for better visual alignment.
   - Some icons redrawn using new shapes.
   - Simplified attributes on the `<path>` elements.
@@ -73,7 +70,6 @@
 ## 0.1.1
 
 - [#733](https://github.com/iTwin/design-system/pull/733): Added snapping related icons:
-
   - `snap-bisector.svg`
   - `snap-endpoint.svg`
   - `snap-center.svg`

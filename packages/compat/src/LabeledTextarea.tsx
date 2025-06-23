@@ -43,8 +43,7 @@ interface LabeledTextareaProps
 	/** PARTIALLY IMPLEMENTED. Missing status icon and color mismatch for message and textarea. Doesn't change svgIcon color. */
 	status?: IuiLabeledTextareaProps["status"];
 	/** PARTIALLY IMPLEMENTED. Only supports one large icon size and svg props.  */
-	iconProps?: IconProps &
-		Omit<React.ComponentProps<typeof TextBox.Icon>, "size" | "fill">;
+	iconProps?: IconProps & Omit<React.ComponentProps<"svg">, "fill">;
 	/** NOT IMPLEMENTED. */
 	messageContentProps?: IuiLabeledTextareaProps["messageContentProps"];
 }

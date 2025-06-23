@@ -64,6 +64,7 @@ export const LabeledInput = React.forwardRef((props, forwardedRef) => {
 		svgIcon,
 		iconProps = {},
 		type: inputType,
+		id,
 		...rest
 	} = useCompatProps(props);
 
@@ -93,23 +94,27 @@ export const LabeledInput = React.forwardRef((props, forwardedRef) => {
 		>
 			{label ? <Field.Label {...labelProps}>{label}</Field.Label> : null}
 			<Field.Control
-				render={
-					<TextBox.Root {...inputWrapperProps}>
-						<TextBox.Input
-							{...rest}
-							type={inputType as SkTextBoxInputProps["type"]}
-							size={htmlSize}
-							ref={forwardedRef}
-						/>
-						{svgIcon ? (
-							<TextBox.Icon
-								{...(restIconProps as React.ComponentProps<"svg">)}
-								render={svgIcon}
-								size={iconSize === "large" ? "large" : undefined}
+				render={(controlProps) => {
+					return (
+						<TextBox.Root {...inputWrapperProps}>
+							<TextBox.Input
+								{...(controlProps as SkTextBoxInputProps)}
+								{...rest}
+								type={inputType as SkTextBoxInputProps["type"]}
+								size={htmlSize}
 							/>
-						) : null}
-					</TextBox.Root>
-				}
+							{svgIcon ? (
+								<TextBox.Icon
+									{...(restIconProps as React.ComponentProps<"svg">)}
+									render={svgIcon}
+									size={iconSize === "large" ? "large" : undefined}
+								/>
+							) : null}
+						</TextBox.Root>
+					);
+				}}
+				ref={forwardedRef}
+				id={id}
 			/>
 			{message ? (
 				<StatusMessage contentProps={messageContentProps}>

@@ -3,12 +3,13 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import { Chip } from "@stratakit/structures";
 import * as React from "react";
+import * as Chip from "@stratakit/structures/Chip";
 import { useCompatProps } from "./~utils.tsx";
 
 import type { Tag as IuiTag } from "@itwin/itwinui-react";
 import type { PolymorphicForwardRefComponent } from "./~utils.tsx";
+import { useEventHandlers } from "@stratakit/foundations/secret-internals";
 
 type IuiTagProps = React.ComponentProps<typeof IuiTag>;
 
@@ -22,58 +23,50 @@ interface TagProps
 		| "variant"
 		| "labelProps"
 	> {
-	/**
-	 * PARTIALLY IMPLEMENTED.
-	 *
-	 * Tag is not rendered as a `button`, since it is not an interactive component.
-	 */
-	onClick?: IuiTagProps["onClick"];
-	/**
-	 * PARTIALLY IMPLEMENTED.
-	 *
-	 * Tag label is not rendered as a `button`.
-	 */
-	onRemove?: IuiTagProps["onRemove"];
-	/** NOT IMPLEMENTED. */
-	removeButtonProps?: IuiTagProps["removeButtonProps"];
 	/** NOT IMPLEMENTED. */
 	variant?: IuiTagProps["variant"];
-	/** NOT IMPLEMENTED. */
-	labelProps?: IuiTagProps["labelProps"];
 }
 
 /** @see https://itwinui.bentley.com/docs/tag */
 export const Tag = React.forwardRef((props, forwardedRef) => {
 	const {
-		render = <span />,
+		onClick,
 		children,
 		onRemove,
-
-		// biome-ignore-start lint/correctness/noUnusedVariables: NOT IMPLEMENTED
 		removeButtonProps,
+		// biome-ignore lint/correctness/noUnusedVariables: NOT IMPLEMENTED
 		variant,
 		labelProps,
-		// biome-ignore-end lint/correctness/noUnusedVariables: NOT IMPLEMENTED
-
 		...rest
 	} = useCompatProps(props);
 
-	const onDismiss = React.useMemo(() => {
-		if (!onRemove) return undefined;
-		// Workaround that relies on the internal implementation of the `Chip` component, until composition API is implemented.
-		return (event?: React.MouseEvent) => {
-			if (!event) return;
-			onRemove(event);
-		};
-	}, [onRemove]);
+	const onDismissClick = useEventHandlers(removeButtonProps?.onClick, onRemove);
+	const onLabelClick = useEventHandlers(labelProps?.onClick, onClick);
+
+	if (onRemove) {
+		return (
+			<Chip.Root render={<span />} {...rest} ref={forwardedRef}>
+				<Chip.Label
+					render={onClick ? <button /> : undefined}
+					{...labelProps}
+					onClick={onLabelClick}
+				>
+					{children}
+				</Chip.Label>
+				<Chip.DismissButton {...removeButtonProps} onClick={onDismissClick} />
+			</Chip.Root>
+		);
+	}
+
 	return (
-		<Chip
+		<Chip.Root
+			render={onClick ? <button /> : <span />}
 			{...rest}
-			label={children}
-			onDismiss={onDismiss}
-			render={render}
+			onClick={onClick}
 			ref={forwardedRef}
-		/>
+		>
+			<Chip.Label {...labelProps}>{children}</Chip.Label>
+		</Chip.Root>
 	);
 }) as PolymorphicForwardRefComponent<"span", TagProps>;
 DEV: Tag.displayName = "Tag";

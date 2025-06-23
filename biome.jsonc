@@ -30,7 +30,10 @@
 							},
 							":BLANK_LINE:",
 							// framework (react)
-							{ "type": false, "source": "react*" },
+							{
+								"type": false,
+								"source": ["react", "react-dom", "react-router"]
+							},
 							// imports without file extensions
 							{
 								"type": false,

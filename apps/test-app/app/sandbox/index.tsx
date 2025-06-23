@@ -5,12 +5,6 @@
 
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import {
-	getResizeHandleElement,
-	Panel,
-	PanelGroup,
-	PanelResizeHandle,
-} from "react-resizable-panels";
 import { useSearchParams } from "react-router";
 import {
 	Anchor,
@@ -34,6 +28,12 @@ import {
 import { useQuery } from "@tanstack/react-query";
 import cx from "classnames";
 import { produce } from "immer";
+import {
+	getResizeHandleElement,
+	Panel,
+	PanelGroup,
+	PanelResizeHandle,
+} from "react-resizable-panels";
 import { toUpperCamelCase } from "~/~utils.tsx";
 
 import type { UseQueryResult } from "@tanstack/react-query";

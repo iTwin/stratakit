@@ -11,13 +11,13 @@ import {
 import { DropdownMenu as SkDropdownMenu } from "@stratakit/structures";
 import * as React from "react";
 import { Button } from "./Button.js";
-import { useCompatProps } from "./~utils.tsx";
+import { useCompatProps } from "./~utils.js";
 
 import type {
 	DropdownButton as IuiDropdownButton,
 	DropdownMenu as IuiDropdownMenu,
 } from "@itwin/itwinui-react";
-import type { PolymorphicForwardRefComponent } from "./~utils.tsx";
+import type { PolymorphicForwardRefComponent } from "./~utils.js";
 
 // ----------------------------------------------------------------------------
 

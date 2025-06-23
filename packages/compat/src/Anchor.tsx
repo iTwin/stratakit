@@ -5,10 +5,10 @@
 
 import { Anchor as SkAnchor } from "@stratakit/bricks";
 import * as React from "react";
-import { useCompatProps } from "./~utils.tsx";
+import { useCompatProps } from "./~utils.js";
 
 import type { Anchor as IuiAnchor } from "@itwin/itwinui-react";
-import type { PolymorphicForwardRefComponent } from "./~utils.tsx";
+import type { PolymorphicForwardRefComponent } from "./~utils.js";
 
 type IuiAnchorProps = React.ComponentProps<typeof IuiAnchor>;
 

@@ -5,10 +5,10 @@
 
 import { Field as SkField } from "@stratakit/bricks";
 import * as React from "react";
-import { useCompatProps } from "./~utils.tsx";
+import { useCompatProps } from "./~utils.js";
 
 import type { InputGrid as IuiInputGrid } from "@itwin/itwinui-react";
-import type { PolymorphicForwardRefComponent } from "./~utils.tsx";
+import type { PolymorphicForwardRefComponent } from "./~utils.js";
 
 type IuiInputGridProps = React.ComponentProps<typeof IuiInputGrid>;
 

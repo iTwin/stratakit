@@ -5,10 +5,10 @@
 
 import { Badge as SkBadge } from "@stratakit/bricks";
 import * as React from "react";
-import { useCompatProps } from "./~utils.tsx";
+import { useCompatProps } from "./~utils.js";
 
 import type { Badge as IuiBadge } from "@itwin/itwinui-react";
-import type { PolymorphicForwardRefComponent } from "./~utils.tsx";
+import type { PolymorphicForwardRefComponent } from "./~utils.js";
 
 type IuiBadgeProps = React.ComponentProps<typeof IuiBadge>;
 type SkBadgeProps = React.ComponentProps<typeof SkBadge>;

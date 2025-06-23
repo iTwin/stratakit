@@ -10,10 +10,23 @@ import { InputGrid } from "./InputGrid.js";
 import { Label } from "./Label.js";
 import { StatusMessage } from "./StatusMessage.js";
 
-import type { LabeledTextarea as IuiLabeledTextarea } from "@itwin/itwinui-react";
+import type {
+	LabeledTextarea as IuiLabeledTextarea,
+	Icon as IuiIcon,
+} from "@itwin/itwinui-react";
 import type { PolymorphicForwardRefComponent } from "./~utils.js";
 
 type IuiLabeledTextareaProps = React.ComponentProps<typeof IuiLabeledTextarea>;
+type IuiIconProps = React.ComponentProps<typeof IuiIcon>;
+
+interface IconProps extends Pick<IuiIconProps, "size" | "fill" | "padded"> {
+	/** PARTIALLY IMPLEMENTED. Only supports large as an override. */
+	size?: IuiIconProps["size"];
+	/** NOT IMPLEMENTED. */
+	fill?: IuiIconProps["fill"];
+	/** NOT IMPLEMENTED. */
+	padded?: IuiIconProps["padded"];
+}
 
 interface LabeledTextareaProps
 	extends Pick<
@@ -24,14 +37,14 @@ interface LabeledTextareaProps
 		| "wrapperProps"
 		| "labelProps"
 		| "messageContentProps"
-		| "iconProps"
 		| "svgIcon"
 		| "displayStyle"
 	> {
 	/** PARTIALLY IMPLEMENTED. Missing status icon and color mismatch for message and textarea. Doesn't change svgIcon color. */
 	status?: IuiLabeledTextareaProps["status"];
 	/** PARTIALLY IMPLEMENTED. Only supports one large icon size and svg props.  */
-	iconProps?: IuiLabeledTextareaProps["iconProps"];
+	iconProps?: IconProps &
+		Omit<React.ComponentProps<typeof TextBox.Icon>, "size" | "fill">;
 	/** NOT IMPLEMENTED. */
 	messageContentProps?: IuiLabeledTextareaProps["messageContentProps"];
 }
@@ -39,8 +52,8 @@ interface LabeledTextareaProps
 /** @see https://itwinui.bentley.com/docs/textarea */
 export const LabeledTextarea = React.forwardRef((props, forwardedRef) => {
 	const {
-		status, // PARTIALLY IMPLEMENTED. Missing status icon and color mismatch for message and textarea. Doesn't change svgIcon color.
-		iconProps = {}, // PARTIALLY IMPLEMENTED. Only supports one large icon size and svg props.
+		status, // PARTIALLY IMPLEMENTED.
+		iconProps = {}, // PARTIALLY IMPLEMENTED.
 		messageContentProps, // NOT IMPLEMENTED.
 		label,
 		message,
@@ -53,7 +66,7 @@ export const LabeledTextarea = React.forwardRef((props, forwardedRef) => {
 	} = useCompatProps(props);
 
 	const {
-		size: iconSize, // PARTIALLY IMPLEMENTED: only supports large as an override
+		size: iconSize, // PARTIALLY IMPLEMENTED
 
 		// biome-ignore-start lint/correctness/noUnusedVariables: NOT IMPLEMENTED
 		fill: iconFill,
@@ -61,7 +74,7 @@ export const LabeledTextarea = React.forwardRef((props, forwardedRef) => {
 		// biome-ignore-end lint/correctness/noUnusedVariables: NOT IMPLEMENTED
 
 		...restIconProps
-	} = useCompatProps(iconProps);
+	} = iconProps;
 
 	return (
 		<InputGrid labelPlacement={displayStyle} {...wrapperProps}>
@@ -73,7 +86,7 @@ export const LabeledTextarea = React.forwardRef((props, forwardedRef) => {
 							<TextBox.Textarea {...controlProps} {...rest} />
 							{svgIcon ? (
 								<TextBox.Icon
-									{...(restIconProps as React.ComponentProps<"svg">)}
+									{...restIconProps}
 									render={svgIcon}
 									size={iconSize === "large" ? "large" : undefined}
 								/>

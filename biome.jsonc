@@ -44,7 +44,7 @@
 								"type": false,
 								"source": ["**/*.{js,jsx,ts,tsx}", "*.{js,jsx,ts,tsx}"]
 							},
-							// unmatched imports
+							// URLs
 							{
 								"type": false,
 								"source": ":URL:"

@@ -107,7 +107,6 @@ const Tooltip = forwardRef<"div", TooltipProps>((props, forwardedRef) => {
 					{...(type === "label" && { "aria-labelledby": id })}
 				/>
 				<AkTooltip.Tooltip
-					aria-hidden="true"
 					portal
 					{...rest}
 					unmountOnHide={unmountOnHide}

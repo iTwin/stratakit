@@ -3,8 +3,8 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import { Field, Label, Switch, VisuallyHidden } from "@stratakit/bricks";
 import * as React from "react";
+import { Field, Label, Switch, VisuallyHidden } from "@stratakit/bricks";
 import { definePage } from "~/~utils.tsx";
 
 import type { VariantProps } from "~/~utils.tsx";

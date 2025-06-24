@@ -28,7 +28,8 @@
 		}
 
 		&:where([data-kiwi-variant="solid"]) {
-			box-shadow: var(--stratakit-shadow-button-base-inset), var(--✨shadow-border),
+			box-shadow:
+				var(--stratakit-shadow-button-base-inset), var(--✨shadow-border),
 				var(--stratakit-shadow-button-base-drop);
 		}
 

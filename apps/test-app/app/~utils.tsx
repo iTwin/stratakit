@@ -3,16 +3,16 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import { Anchor, IconButton } from "@stratakit/bricks";
-import cx from "classnames";
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { Link, useSearchParams } from "react-router";
+import { Anchor, IconButton } from "@stratakit/bricks";
+import cx from "classnames";
 import * as ListItem from "../node_modules/@stratakit/structures/src/~utils.ListItem.tsx";
-import styles from "./~utils.module.css";
 
 import moon from "@stratakit/icons/moon.svg";
 import sun from "@stratakit/icons/sun.svg";
+import styles from "./~utils.module.css";
 
 // ----------------------------------------------------------------------------
 

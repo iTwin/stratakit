@@ -3,13 +3,13 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import { Field, TextBox } from "@stratakit/bricks";
-import { StatusMessage } from "./StatusMessage.tsx";
 import * as React from "react";
-import { useCompatProps } from "./~utils.tsx";
+import { Field, TextBox } from "@stratakit/bricks";
+import { useCompatProps } from "./~utils.js";
+import { StatusMessage } from "./StatusMessage.js";
 
 import type { LabeledInput as IuiLabeledInput } from "@itwin/itwinui-react";
-import type { PolymorphicForwardRefComponent } from "./~utils.tsx";
+import type { PolymorphicForwardRefComponent } from "./~utils.js";
 
 type IuiLabeledInputProps = React.ComponentProps<typeof IuiLabeledInput>;
 type SkTextBoxInputProps = React.ComponentProps<typeof TextBox.Input>;

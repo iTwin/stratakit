@@ -3,16 +3,16 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
+import * as React from "react";
 import { Focusable } from "@ariakit/react/focusable";
 import { Role } from "@ariakit/react/role";
 import { Icon } from "@stratakit/foundations";
-import { forwardRef } from "@stratakit/foundations/secret-internals";
 import {
+	forwardRef,
 	useEventHandlers,
 	useMergedRefs,
 } from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
-import * as React from "react";
 import { useFieldControlType } from "./Field.internal.js";
 
 import type {

@@ -10,14 +10,14 @@ import {
 	useUnreactiveCallback,
 } from "@stratakit/foundations/secret-internals";
 import { DropdownMenu as SkDropdownMenu } from "@stratakit/structures";
-import { useCompatProps } from "./~utils.tsx";
+import { useCompatProps } from "./~utils.js";
 import { Button } from "./Button.js";
 
 import type {
 	DropdownButton as IuiDropdownButton,
 	DropdownMenu as IuiDropdownMenu,
 } from "@itwin/itwinui-react";
-import type { PolymorphicForwardRefComponent } from "./~utils.tsx";
+import type { PolymorphicForwardRefComponent } from "./~utils.js";
 
 // ----------------------------------------------------------------------------
 

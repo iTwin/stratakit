@@ -5,10 +5,10 @@
 
 import * as React from "react";
 import { Divider as SkDivider } from "@stratakit/bricks";
-import { useCompatProps } from "./~utils.tsx";
+import { useCompatProps } from "./~utils.js";
 
 import type { Divider as IuiDivider } from "@itwin/itwinui-react";
-import type { PolymorphicForwardRefComponent } from "./~utils.tsx";
+import type { PolymorphicForwardRefComponent } from "./~utils.js";
 
 type IuiDividerProps = React.ComponentProps<typeof IuiDivider>;
 

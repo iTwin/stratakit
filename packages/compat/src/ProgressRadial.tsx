@@ -5,10 +5,10 @@
 
 import * as React from "react";
 import { Spinner as SkSpinner } from "@stratakit/bricks";
-import { useCompatProps } from "./~utils.tsx";
+import { useCompatProps } from "./~utils.js";
 
 import type { ProgressRadial as IuiSpinner } from "@itwin/itwinui-react";
-import type { PolymorphicForwardRefComponent } from "./~utils.tsx";
+import type { PolymorphicForwardRefComponent } from "./~utils.js";
 
 type SkSpinnerProps = React.ComponentProps<typeof SkSpinner>;
 type IuiSpinnerProps = React.ComponentProps<typeof IuiSpinner>;

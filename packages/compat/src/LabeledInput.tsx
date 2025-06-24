@@ -5,11 +5,11 @@
 
 import * as React from "react";
 import { Field, TextBox } from "@stratakit/bricks";
-import { useCompatProps } from "./~utils.tsx";
-import { StatusMessage } from "./StatusMessage.tsx";
+import { useCompatProps } from "./~utils.js";
+import { StatusMessage } from "./StatusMessage.js";
 
 import type { LabeledInput as IuiLabeledInput } from "@itwin/itwinui-react";
-import type { PolymorphicForwardRefComponent } from "./~utils.tsx";
+import type { PolymorphicForwardRefComponent } from "./~utils.js";
 
 type IuiLabeledInputProps = React.ComponentProps<typeof IuiLabeledInput>;
 type SkTextBoxInputProps = React.ComponentProps<typeof TextBox.Input>;

@@ -5,10 +5,10 @@
 
 import * as React from "react";
 import { Field, TextBox } from "@stratakit/bricks";
-import { useCompatProps } from "./~utils.tsx";
+import { useCompatProps } from "./~utils.js";
 
 import type { Input as IuiInput } from "@itwin/itwinui-react";
-import type { PolymorphicForwardRefComponent } from "./~utils.tsx";
+import type { PolymorphicForwardRefComponent } from "./~utils.js";
 
 type IuiInputProps = React.ComponentProps<typeof IuiInput>;
 type SkTextBoxInputProps = React.ComponentProps<typeof TextBox.Input>;

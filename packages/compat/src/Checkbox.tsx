@@ -5,10 +5,10 @@
 
 import * as React from "react";
 import { Field, Checkbox as SkCheckbox } from "@stratakit/bricks";
-import { useCompatProps } from "./~utils.tsx";
+import { useCompatProps } from "./~utils.js";
 
 import type { Checkbox as IuiCheckbox } from "@itwin/itwinui-react";
-import type { PolymorphicForwardRefComponent } from "./~utils.tsx";
+import type { PolymorphicForwardRefComponent } from "./~utils.js";
 
 type IuiCheckboxProps = React.ComponentProps<typeof IuiCheckbox>;
 

@@ -6,10 +6,10 @@
 import * as React from "react";
 import { Button as SkButton } from "@stratakit/bricks";
 import { Icon } from "@stratakit/foundations";
-import { useCompatProps } from "./~utils.tsx";
+import { useCompatProps } from "./~utils.js";
 
 import type { Button as IuiButton } from "@itwin/itwinui-react";
-import type { PolymorphicForwardRefComponent } from "./~utils.tsx";
+import type { PolymorphicForwardRefComponent } from "./~utils.js";
 
 // ----------------------------------------------------------------------------
 

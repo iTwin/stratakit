@@ -5,10 +5,10 @@
 
 import * as React from "react";
 import { Field as SkField } from "@stratakit/bricks";
-import { useCompatProps } from "./~utils.tsx";
+import { useCompatProps } from "./~utils.js";
 
 import type { Label as IuiLabel } from "@itwin/itwinui-react";
-import type { PolymorphicForwardRefComponent } from "./~utils.tsx";
+import type { PolymorphicForwardRefComponent } from "./~utils.js";
 
 type IuiLabelProps = React.ComponentProps<typeof IuiLabel>;
 

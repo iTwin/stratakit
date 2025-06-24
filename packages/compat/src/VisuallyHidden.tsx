@@ -3,12 +3,12 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import { VisuallyHidden as SkVisuallyHidden } from "@stratakit/bricks";
 import * as React from "react";
-import { useCompatProps } from "./~utils.tsx";
+import { VisuallyHidden as SkVisuallyHidden } from "@stratakit/bricks";
+import { useCompatProps } from "./~utils.js";
 
 import type { VisuallyHidden as IuiVisuallyHidden } from "@itwin/itwinui-react";
-import type { PolymorphicForwardRefComponent } from "./~utils.tsx";
+import type { PolymorphicForwardRefComponent } from "./~utils.js";
 
 type IuiVisuallyHiddenProps = React.ComponentProps<typeof IuiVisuallyHidden>;
 

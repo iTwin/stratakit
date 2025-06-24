@@ -14,7 +14,7 @@ export default definePage(function Page() {
 		<div style={{ display: "grid", gap: 16 }}>
 			{/* No props */}
 			<div>
-				<div aria-hidden="true">★★★☆☆</div>
+				<span aria-hidden="true">★★★☆☆</span>
 				<VisuallyHidden>3 stars out of 5</VisuallyHidden>
 			</div>
 
@@ -22,7 +22,7 @@ export default definePage(function Page() {
 			<div
 				style={{ display: "flex", gap: 8, alignItems: "center", minHeight: 30 }}
 			>
-				<div>Focus to unhide!</div>
+				<span>Focus to unhide!</span>
 				<VisuallyHidden>
 					<Button>Unhidden</Button>
 				</VisuallyHidden>
@@ -31,7 +31,7 @@ export default definePage(function Page() {
 			<div
 				style={{ display: "flex", gap: 8, alignItems: "center", minHeight: 30 }}
 			>
-				<div>Focus to remain hidden!</div>
+				<span>Focus to remain hidden!</span>
 				<VisuallyHidden unhideOnFocus={false}>
 					<Button>Hidden</Button>
 				</VisuallyHidden>

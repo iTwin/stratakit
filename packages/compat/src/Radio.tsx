@@ -3,8 +3,8 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import { Field, Radio as SkRadio } from "@stratakit/bricks";
 import * as React from "react";
+import { Field, Radio as SkRadio } from "@stratakit/bricks";
 import { useCompatProps } from "./~utils.js";
 
 import type { Radio as IuiRadio } from "@itwin/itwinui-react";

@@ -3,15 +3,15 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
+import * as React from "react";
 import { DisclosureArrow as SkDisclosureArrow } from "@stratakit/bricks/secret-internals";
 import {
 	useControlledState,
 	useUnreactiveCallback,
 } from "@stratakit/foundations/secret-internals";
 import { DropdownMenu as SkDropdownMenu } from "@stratakit/structures";
-import * as React from "react";
-import { Button } from "./Button.js";
 import { useCompatProps } from "./~utils.js";
+import { Button } from "./Button.js";
 
 import type {
 	DropdownButton as IuiDropdownButton,

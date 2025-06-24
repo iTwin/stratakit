@@ -3,8 +3,8 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import { Field } from "@stratakit/bricks";
 import * as React from "react";
+import { Field } from "@stratakit/bricks";
 import { useCompatProps } from "./~utils.js";
 
 import type { StatusMessage as IuiStatusMessage } from "@itwin/itwinui-react";

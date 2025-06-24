@@ -3,8 +3,8 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import { Badge as SkBadge } from "@stratakit/bricks";
 import * as React from "react";
+import { Badge as SkBadge } from "@stratakit/bricks";
 import { useCompatProps } from "./~utils.js";
 
 import type { Badge as IuiBadge } from "@itwin/itwinui-react";

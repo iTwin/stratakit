@@ -55,8 +55,8 @@
 			--🥝spinner-dash-array: 25 75;
 
 			@media (prefers-reduced-motion: no-preference) {
-				--🥝spinner-animation: var(--✨animation--indeterminate),
-					var(--✨animation--indeterminate-slow);
+				--🥝spinner-animation:
+					var(--✨animation--indeterminate), var(--✨animation--indeterminate-slow);
 			}
 		}
 	}

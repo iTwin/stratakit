@@ -2,6 +2,10 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
+
+import * as React from "react";
+import * as ReactDOM from "react-dom";
+import { useSearchParams } from "react-router";
 import {
 	Anchor,
 	Button,
@@ -24,28 +28,20 @@ import {
 import { useQuery } from "@tanstack/react-query";
 import cx from "classnames";
 import { produce } from "immer";
-import * as React from "react";
-import * as ReactDOM from "react-dom";
 import {
+	getResizeHandleElement,
 	Panel,
 	PanelGroup,
 	PanelResizeHandle,
-	getResizeHandleElement,
 } from "react-resizable-panels";
-import { useSearchParams } from "react-router";
 import { toUpperCamelCase } from "~/~utils.tsx";
-
-import model1Url from "./_data/sandbox.model1.json?url";
-import model2Url from "./_data/sandbox.model2.json?url";
-import model3Url from "./_data/sandbox.model3.json?url";
-import styles from "./index.module.css";
 
 import type { UseQueryResult } from "@tanstack/react-query";
 import type { MetaFunction } from "react-router";
 
 import closeIcon from "@stratakit/icons/close.svg";
-import cursorSelectIcon from "@stratakit/icons/cursor-select.svg";
 import cursorIcon from "@stratakit/icons/cursor.svg";
+import cursorSelectIcon from "@stratakit/icons/cursor-select.svg";
 import drawIcon from "@stratakit/icons/draw.svg";
 import filterIcon from "@stratakit/icons/filter.svg";
 import lockIcon from "@stratakit/icons/lock.svg";
@@ -56,6 +52,10 @@ import retryIcon from "@stratakit/icons/retry.svg";
 import searchIcon from "@stratakit/icons/search.svg";
 import hideIcon from "@stratakit/icons/visibility-hide.svg";
 import showIcon from "@stratakit/icons/visibility-show.svg";
+import model1Url from "./_data/sandbox.model1.json?url";
+import model2Url from "./_data/sandbox.model2.json?url";
+import model3Url from "./_data/sandbox.model3.json?url";
+import styles from "./index.module.css";
 
 // ----------------------------------------------------------------------------
 

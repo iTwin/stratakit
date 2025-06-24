@@ -3,8 +3,8 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import { Spinner as SkSpinner } from "@stratakit/bricks";
 import * as React from "react";
+import { Spinner as SkSpinner } from "@stratakit/bricks";
 import { useCompatProps } from "./~utils.js";
 
 import type { ProgressRadial as IuiSpinner } from "@itwin/itwinui-react";

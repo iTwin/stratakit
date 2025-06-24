@@ -3,8 +3,8 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import { Tooltip as SkTooltip } from "@stratakit/bricks";
 import * as React from "react";
+import { Tooltip as SkTooltip } from "@stratakit/bricks";
 import { useCompatProps } from "./~utils.js";
 
 import type { Tooltip as IuiTooltip } from "@itwin/itwinui-react";

@@ -3,17 +3,12 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
+import * as React from "react";
+import * as ReactDOM from "react-dom";
 import { PortalContext } from "@ariakit/react/portal";
 import { Role } from "@ariakit/react/role";
 import cx from "classnames";
-import * as React from "react";
-import * as ReactDOM from "react-dom";
-import {
-	HtmlSanitizerContext,
-	RootNodeContext,
-	spriteSheetId,
-	useRootNode,
-} from "./Root.internal.js";
+import componentsCss from "./~components.css.js"; // TODO: remove this implicit dependency on bricks and structures
 import { useLayoutEffect, useMergedRefs } from "./~hooks.js";
 import {
 	forwardRef,
@@ -22,9 +17,13 @@ import {
 	isBrowser,
 	isDocument,
 } from "./~utils.js";
-
+import {
+	HtmlSanitizerContext,
+	RootNodeContext,
+	spriteSheetId,
+	useRootNode,
+} from "./Root.internal.js";
 import foundationsCss from "./styles.css.js";
-import componentsCss from "./~components.css.js"; // TODO: remove this implicit dependency on bricks and structures
 
 import type { BaseProps } from "./~utils.js";
 

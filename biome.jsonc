@@ -19,7 +19,44 @@
 	"assist": {
 		"actions": {
 			"source": {
-				"organizeImports": "off"
+				"organizeImports": {
+					"level": "on",
+					"options": {
+						"groups": [
+							// protocol
+							{
+								"type": false,
+								"source": [":PACKAGE_WITH_PROTOCOL:", ":BUN:", ":NODE:"]
+							},
+							":BLANK_LINE:",
+							// framework (react)
+							{
+								"type": false,
+								"source": ["react", "react-dom", "react-router"]
+							},
+							// imports without file extensions
+							{
+								"type": false,
+								"source": ["**", "!**/*.*", "!*.*"]
+							},
+							// imports with js,jsx,ts,tsx extension
+							{
+								"type": false,
+								"source": ["**/*.{js,jsx,ts,tsx}", "*.{js,jsx,ts,tsx}"]
+							},
+							// URLs
+							{
+								"type": false,
+								"source": ":URL:"
+							},
+							":BLANK_LINE:",
+							// type imports
+							{ "type": true },
+							":BLANK_LINE:"
+							// asset imports (unmatched by all other groups) are placed last automatically
+						]
+					}
+				}
 			}
 		}
 	},

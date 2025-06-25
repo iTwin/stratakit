@@ -4,11 +4,12 @@
  *--------------------------------------------------------------------------------------------*/
 
 import * as React from "react";
+import { useEventHandlers } from "@stratakit/foundations/secret-internals";
 import * as Chip from "@stratakit/structures/Chip";
-import { useCompatProps } from "./~utils.tsx";
+import { useCompatProps } from "./~utils.js";
 
 import type { Tag as IuiTag } from "@itwin/itwinui-react";
-import type { PolymorphicForwardRefComponent } from "./~utils.tsx";
+import type { PolymorphicForwardRefComponent } from "./~utils.js";
 
 type IuiTagProps = React.ComponentProps<typeof IuiTag>;
 
@@ -39,17 +40,20 @@ export const Tag = React.forwardRef((props, forwardedRef) => {
 		...rest
 	} = useCompatProps(props);
 
+	const onDismissClick = useEventHandlers(removeButtonProps?.onClick, onRemove);
+	const onLabelClick = useEventHandlers(labelProps?.onClick, onClick);
+
 	if (onRemove) {
 		return (
 			<Chip.Root render={<span />} {...rest} ref={forwardedRef}>
 				<Chip.Label
 					render={onClick ? <button /> : undefined}
-					onClick={onClick}
 					{...labelProps}
+					onClick={onLabelClick}
 				>
 					{children}
 				</Chip.Label>
-				<Chip.DismissButton onClick={onRemove} {...removeButtonProps} />
+				<Chip.DismissButton {...removeButtonProps} onClick={onDismissClick} />
 			</Chip.Root>
 		);
 	}

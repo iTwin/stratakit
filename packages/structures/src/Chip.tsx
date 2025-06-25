@@ -22,7 +22,7 @@ import type { ExtractState } from "zustand";
 
 type ChipState = ExtractState<ReturnType<typeof createChipStore>>;
 
-function createChipStore(initialState: { labelId?: string }) {
+function createChipStore(initialState: { labelId: string }) {
 	return createStore(
 		combine(initialState, (set, _, store) => ({
 			setLabelId: (labelId?: string) => {

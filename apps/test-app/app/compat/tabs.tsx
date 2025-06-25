@@ -3,8 +3,8 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import { Tab, Tabs } from "@stratakit/react";
 import * as React from "react";
+import { Tab, Tabs } from "@stratakit/react";
 import { definePage } from "~/~utils.tsx";
 
 export const handle = { title: "Tabs" };

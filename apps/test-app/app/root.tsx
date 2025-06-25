@@ -3,8 +3,6 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import { Root } from "@stratakit/foundations";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import * as React from "react";
 import {
 	Links,
@@ -14,10 +12,13 @@ import {
 	ScrollRestoration,
 	useMatches,
 } from "react-router";
-import manifestUrl from "./manifest.json?url";
+import { Root } from "@stratakit/foundations";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ColorSchemeProvider, useColorScheme } from "./~utils.tsx";
 
 import type { LinksFunction } from "react-router";
+
+import manifestUrl from "./manifest.json?url";
 
 const queryClient = new QueryClient({
 	defaultOptions: { queries: { experimental_prefetchInRender: true } }, // https://tanstack.com/query/latest/docs/framework/react/guides/suspense#using-usequerypromise-and-reactuse-experimental

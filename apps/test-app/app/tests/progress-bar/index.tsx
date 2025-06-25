@@ -3,8 +3,8 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import { Button, ProgressBar, VisuallyHidden } from "@stratakit/bricks";
 import * as React from "react";
+import { Button, ProgressBar, VisuallyHidden } from "@stratakit/bricks";
 import { definePage } from "~/~utils.tsx";
 
 export const handle = { title: "ProgressBar" };

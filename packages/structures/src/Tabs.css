@@ -50,6 +50,7 @@
 
 .🥝-tab {
 	--✨height: 1.25rem;
+	--✨gap: 4px;
 
 	--✨bg--default: transparent;
 	--✨bg--hover-neutral: var(--stratakit-color-bg-glow-on-surface-neutral-hover);
@@ -79,6 +80,10 @@
 			background-color 150ms ease-out,
 			color 150ms ease-out;
 		cursor: pointer;
+
+		display: inline-flex;
+		align-items: center;
+		gap: var(--✨gap);
 
 		/* This pseudo-element increases tap target size */
 		&::before {

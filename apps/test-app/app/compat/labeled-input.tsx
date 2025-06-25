@@ -13,7 +13,7 @@ export const handle = { title: "LabeledInput" };
 export default definePage(function Page() {
 	return (
 		<div style={{ display: "grid", gap: 16 }}>
-			<LabeledInput label="Label" displayStyle="inline" />
+			<LabeledInput label="Label" id="custom-id" displayStyle="inline" />
 			<LabeledInput label="Label" message="Description" />
 			<LabeledInput required label="Label" message="Description" />
 			<LabeledInput disabled label="Label" message="Description" />

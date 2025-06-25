@@ -58,5 +58,6 @@ export const components = {
 		"Tag",
 		"Text",
 		"Tooltip",
+		"VisuallyHidden",
 	],
 };

@@ -25,3 +25,4 @@ export { Tab, Tabs } from "./Tabs.js";
 export { Tag } from "./Tag.js";
 export { Text } from "./Text.js";
 export { Tooltip } from "./Tooltip.js";
+export { VisuallyHidden } from "./VisuallyHidden.js";

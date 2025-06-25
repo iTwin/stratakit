@@ -4,12 +4,12 @@
  *--------------------------------------------------------------------------------------------*/
 
 import * as React from "react";
+import { useEventHandlers } from "@stratakit/foundations/secret-internals";
 import * as Chip from "@stratakit/structures/Chip";
-import { useCompatProps } from "./~utils.tsx";
+import { useCompatProps } from "./~utils.js";
 
 import type { Tag as IuiTag } from "@itwin/itwinui-react";
-import type { PolymorphicForwardRefComponent } from "./~utils.tsx";
-import { useEventHandlers } from "@stratakit/foundations/secret-internals";
+import type { PolymorphicForwardRefComponent } from "./~utils.js";
 
 type IuiTagProps = React.ComponentProps<typeof IuiTag>;
 

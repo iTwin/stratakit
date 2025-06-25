@@ -3,9 +3,9 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
+import * as React from "react";
 import { Collection, useCollectionStore } from "@ariakit/react/collection";
 import { useStoreState } from "@ariakit/react/store";
-import * as React from "react";
 
 import type { CollectionProps } from "@ariakit/react/collection";
 

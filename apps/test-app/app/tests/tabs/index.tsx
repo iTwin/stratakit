@@ -3,9 +3,9 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
+import { Icon } from "@stratakit/foundations";
 import { Tabs } from "@stratakit/structures";
 import { definePage } from "~/~utils.tsx";
-import { Icon } from "@stratakit/foundations";
 
 import placeholderIcon from "@stratakit/icons/placeholder.svg";
 

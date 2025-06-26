@@ -97,7 +97,6 @@ const AnchorExternalMarker = forwardRef<"span", AnchorExternalMarkerProps>(
 	(props, forwardedRef) => {
 		return (
 			<>
-				<VisuallyHidden> (opens in new tab)</VisuallyHidden>
 				<Role.span
 					aria-hidden="true"
 					{...props}
@@ -106,6 +105,7 @@ const AnchorExternalMarker = forwardRef<"span", AnchorExternalMarkerProps>(
 				>
 					&nbsp;↗
 				</Role.span>
+				<VisuallyHidden> (opens in new tab)</VisuallyHidden>
 			</>
 		);
 	},

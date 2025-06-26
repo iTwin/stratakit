@@ -60,5 +60,6 @@ export const components = {
 		"Text",
 		"Textarea",
 		"Tooltip",
+		"VisuallyHidden",
 	],
 };

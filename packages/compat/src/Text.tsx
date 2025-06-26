@@ -3,12 +3,12 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import { Text as SkText } from "@stratakit/bricks";
 import * as React from "react";
-import { useCompatProps } from "./~utils.tsx";
+import { Text as SkText } from "@stratakit/bricks";
+import { useCompatProps } from "./~utils.js";
 
 import type { Text as IuiText } from "@itwin/itwinui-react";
-import type { PolymorphicForwardRefComponent } from "./~utils.tsx";
+import type { PolymorphicForwardRefComponent } from "./~utils.js";
 
 type SkTextProps = React.ComponentProps<typeof SkText>;
 type IuiTextProps = React.ComponentProps<typeof IuiText>;

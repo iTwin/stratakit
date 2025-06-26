@@ -3,9 +3,10 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import userIcon from "@stratakit/icons/user.svg";
 import { Avatar } from "@stratakit/react";
 import { definePage } from "~/~utils.tsx";
+
+import userIcon from "@stratakit/icons/user.svg";
 
 export const handle = { title: "Avatar" };
 

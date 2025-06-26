@@ -68,15 +68,13 @@ interface AnchorTextProps extends BaseProps<"span"> {
  */
 const AnchorText = forwardRef<"span", AnchorTextProps>(
 	(props, forwardedRef) => {
-		const { children, ...rest } = props;
-
 		return (
 			<Role.span
-				{...rest}
+				{...props}
 				className={cx("🥝-anchor-text", props.className)}
 				ref={forwardedRef}
 			>
-				{children}
+				{props.children}
 			</Role.span>
 		);
 	},
@@ -97,14 +95,12 @@ interface AnchorExternalMarkerProps extends BaseProps<"span"> {
  */
 const AnchorExternalMarker = forwardRef<"span", AnchorExternalMarkerProps>(
 	(props, forwardedRef) => {
-		const { ...rest } = props;
-
 		return (
 			<>
 				<VisuallyHidden> (opens in new tab)</VisuallyHidden>
 				<Role.span
 					aria-hidden="true"
-					{...rest}
+					{...props}
 					className={cx("🥝-anchor-external-marker", props.className)}
 					ref={forwardedRef}
 				>

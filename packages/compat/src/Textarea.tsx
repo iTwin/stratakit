@@ -3,8 +3,8 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import { Field, TextBox } from "@stratakit/bricks";
 import * as React from "react";
+import { Field, TextBox } from "@stratakit/bricks";
 import { useCompatProps } from "./~utils.js";
 
 import type { Textarea as IuiTextarea } from "@itwin/itwinui-react";

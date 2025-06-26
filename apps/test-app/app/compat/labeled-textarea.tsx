@@ -5,6 +5,7 @@
 
 import { LabeledTextarea } from "@stratakit/react";
 import { definePage } from "~/~utils.tsx";
+
 import placeholderIcon from "@stratakit/icons/placeholder.svg";
 
 export const handle = { title: "LabeledTextarea" };

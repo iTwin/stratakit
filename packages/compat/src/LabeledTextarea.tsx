@@ -3,16 +3,16 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import { Field, TextBox } from "@stratakit/bricks";
 import * as React from "react";
+import { Field, TextBox } from "@stratakit/bricks";
 import { useCompatProps } from "./~utils.js";
 import { InputGrid } from "./InputGrid.js";
 import { Label } from "./Label.js";
 import { StatusMessage } from "./StatusMessage.js";
 
 import type {
-	LabeledTextarea as IuiLabeledTextarea,
 	Icon as IuiIcon,
+	LabeledTextarea as IuiLabeledTextarea,
 } from "@itwin/itwinui-react";
 import type { PolymorphicForwardRefComponent } from "./~utils.js";
 

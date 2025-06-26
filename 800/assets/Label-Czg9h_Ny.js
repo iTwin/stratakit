@@ -1,0 +1,1 @@
+import{a as s,o}from"./chunk-NL6KNZEE-Bu0nOl7T.js";import{u as t}from"./~utils-C9x3zIVV.js";import{a as p}from"./Field-CyD-yD44.js";const i=s.forwardRef((r,a)=>{const{displayStyle:m,disabled:l,required:d,...e}=t(r);return o.jsx(p,{...e,ref:a})});i.displayName="Label";export{i as L};

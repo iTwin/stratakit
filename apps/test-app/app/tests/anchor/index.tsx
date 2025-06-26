@@ -48,8 +48,9 @@ function VisualTest() {
 						<Anchor
 							key={tone}
 							tone={tone}
-							href="https://example.com"
 							isExternal
+							href="https://example.com"
+							target="_blank"
 						>
 							External
 						</Anchor>
@@ -63,7 +64,7 @@ function VisualTest() {
 function CompositionTest() {
 	return (
 		<AnchorComposition.Root href="https://example.com">
-			<AnchorComposition.Text label="Hello" />
+			<AnchorComposition.Text>Hello</AnchorComposition.Text>
 			<AnchorComposition.ExternalMarker />
 		</AnchorComposition.Root>
 	);

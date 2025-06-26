@@ -6,6 +6,7 @@
 import { Focusable } from "@ariakit/react/focusable";
 import { Role } from "@ariakit/react/role";
 import { forwardRef } from "@stratakit/foundations/secret-internals";
+import { VisuallyHidden } from "@stratakit/bricks";
 import cx from "classnames";
 
 import type {
@@ -55,19 +56,19 @@ DEV: AnchorRoot.displayName = "Anchor.Root";
 
 // ----------------------------------------------------------------------------
 
-interface AnchorTextProps extends Omit<BaseProps<"span">, "children"> {
+interface AnchorTextProps extends BaseProps<"span"> {
 	/**
-	 * The label displayed inside the anchor.
+	 * The content displayed inside the anchor.
 	 */
-	label: React.ReactNode;
+	children: React.ReactNode;
 }
 
 /**
- * Lorem ipsum
+ * Displays the anchor text.
  */
 const AnchorText = forwardRef<"span", AnchorTextProps>(
 	(props, forwardedRef) => {
-		const { label, ...rest } = props;
+		const { children, ...rest } = props;
 
 		return (
 			<Role.span
@@ -75,7 +76,7 @@ const AnchorText = forwardRef<"span", AnchorTextProps>(
 				className={cx("🥝-anchor-text", props.className)}
 				ref={forwardedRef}
 			>
-				{label}
+				{children}
 			</Role.span>
 		);
 	},
@@ -84,25 +85,32 @@ DEV: AnchorText.displayName = "Anchor.Text";
 
 // ----------------------------------------------------------------------------
 
-interface AnchorExternalMarkerProps
-	extends Omit<BaseProps<"span">, "children"> {}
+interface AnchorExternalMarkerProps extends BaseProps<"span"> {
+	/**
+	 * The content displayed inside the marker.
+	 */
+	children?: React.ReactNode;
+}
 
 /**
- * Lorem ipsum
+ * Displays an external link marker, with visually hidden text for screen readers.
  */
 const AnchorExternalMarker = forwardRef<"span", AnchorExternalMarkerProps>(
 	(props, forwardedRef) => {
 		const { ...rest } = props;
 
 		return (
-			<Role.span
-				aria-hidden="true"
-				{...rest}
-				className={cx("🥝-anchor-external-marker", props.className)}
-				ref={forwardedRef}
-			>
-				&nbsp;↗
-			</Role.span>
+			<>
+				<VisuallyHidden> (opens in new tab)</VisuallyHidden>
+				<Role.span
+					aria-hidden="true"
+					{...rest}
+					className={cx("🥝-anchor-external-marker", props.className)}
+					ref={forwardedRef}
+				>
+					&nbsp;↗
+				</Role.span>
+			</>
 		);
 	},
 );
@@ -113,23 +121,22 @@ DEV: AnchorExternalMarker.displayName = "Anchor.ExternalMarker";
 interface AnchorProps extends FocusableProps<"a"> {
 	/** @default "neutral" */
 	tone?: "neutral" | "accent" | "critical";
-
 	/**
-	 * Lorem ipsum.
-	 *
+	 * If true, shows an external link marker and adds visually hidden text for screen readers.
 	 * @default false
 	 */
 	isExternal?: boolean;
 }
 
 /**
- * Lorem ipsum
+ * A styled anchor element, typically used for navigating to a different location.
+ * If `isExternal` is true, an external marker is shown.
  */
 const Anchor = forwardRef<"a", AnchorProps>((props, forwardedRef) => {
 	const { children, tone = "neutral", isExternal = false, ...rest } = props;
 	return (
 		<AnchorRoot {...rest} tone={tone} ref={forwardedRef}>
-			<AnchorText label={children} />
+			<AnchorText>{children}</AnchorText>
 			{isExternal && <AnchorExternalMarker />}
 		</AnchorRoot>
 	);

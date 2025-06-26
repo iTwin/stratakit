@@ -45,6 +45,14 @@ function VisualTest() {
 						>
 							Example
 						</Anchor>
+						<Anchor
+							key={tone}
+							tone={tone}
+							href="https://example.com"
+							isExternal
+						>
+							External
+						</Anchor>
 					</div>
 				);
 			})}
@@ -55,7 +63,8 @@ function VisualTest() {
 function CompositionTest() {
 	return (
 		<AnchorComposition.Root href="https://example.com">
-			Hello
+			<AnchorComposition.Text label="Hello" />
+			<AnchorComposition.ExternalMarker />
 		</AnchorComposition.Root>
 	);
 }

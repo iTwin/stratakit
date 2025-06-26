@@ -36,7 +36,7 @@
 			var(--🌀anchor-state--pressed, 3px);
 		text-decoration-color: var(--🌀anchor-state--default, currentColor)
 			var(--🌀anchor-state--hover, currentColor) var(--🌀anchor-state--pressed, transparent);
-		text-decoration-line: underline;
+		text-decoration-line: none;
 
 		border-radius: 4px;
 
@@ -91,6 +91,19 @@
 		--🌀anchor-state--default: var(--🌀anchor-state,);
 		--🌀anchor-state--hover: var(--🌀anchor-state,);
 		--🌀anchor-state--pressed: var(--🌀anchor-state,);
+	}
+}
+
+.🥝-anchor-text {
+	@layer base {
+		text-decoration-line: underline;
+		unicode-bidi: bidi-override;
+	}
+}
+
+.🥝-anchor-external-marker {
+	@layer base {
+		user-select: none;
 	}
 }
 

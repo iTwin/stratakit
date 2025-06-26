@@ -8,7 +8,10 @@ import { Role } from "@ariakit/react/role";
 import { forwardRef } from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
 
-import type { FocusableProps } from "@stratakit/foundations/secret-internals";
+import type {
+	BaseProps,
+	FocusableProps,
+} from "@stratakit/foundations/secret-internals";
 
 interface AnchorRootProps extends FocusableProps<"a"> {
 	/** @default "neutral" */
@@ -52,5 +55,92 @@ DEV: AnchorRoot.displayName = "Anchor.Root";
 
 // ----------------------------------------------------------------------------
 
-export default AnchorRoot;
-export { AnchorRoot as Root };
+interface AnchorTextProps extends Omit<BaseProps<"span">, "children"> {
+	/**
+	 * The label displayed inside the anchor.
+	 */
+	label: React.ReactNode;
+}
+
+/**
+ * Lorem ipsum
+ */
+const AnchorText = forwardRef<"span", AnchorTextProps>(
+	(props, forwardedRef) => {
+		const { label, ...rest } = props;
+
+		return (
+			<Role.span
+				{...rest}
+				className={cx("🥝-anchor-text", props.className)}
+				ref={forwardedRef}
+			>
+				{label}
+			</Role.span>
+		);
+	},
+);
+DEV: AnchorText.displayName = "Anchor.Text";
+
+// ----------------------------------------------------------------------------
+
+interface AnchorExternalMarkerProps
+	extends Omit<BaseProps<"span">, "children"> {}
+
+/**
+ * Lorem ipsum
+ */
+const AnchorExternalMarker = forwardRef<"span", AnchorExternalMarkerProps>(
+	(props, forwardedRef) => {
+		const { ...rest } = props;
+
+		return (
+			<Role.span
+				aria-hidden="true"
+				{...rest}
+				className={cx("🥝-anchor-external-marker", props.className)}
+				ref={forwardedRef}
+			>
+				&nbsp;↗
+			</Role.span>
+		);
+	},
+);
+DEV: AnchorExternalMarker.displayName = "Anchor.ExternalMarker";
+
+// ----------------------------------------------------------------------------
+
+interface AnchorProps extends FocusableProps<"a"> {
+	/** @default "neutral" */
+	tone?: "neutral" | "accent" | "critical";
+
+	/**
+	 * Lorem ipsum.
+	 *
+	 * @default false
+	 */
+	isExternal?: boolean;
+}
+
+/**
+ * Lorem ipsum
+ */
+const Anchor = forwardRef<"a", AnchorProps>((props, forwardedRef) => {
+	const { children, tone = "neutral", isExternal = false, ...rest } = props;
+	return (
+		<AnchorRoot {...rest} tone={tone} ref={forwardedRef}>
+			<AnchorText label={children} />
+			{isExternal && <AnchorExternalMarker />}
+		</AnchorRoot>
+	);
+});
+DEV: Anchor.displayName = "Anchor";
+
+// ----------------------------------------------------------------------------
+
+export default Anchor;
+export {
+	AnchorRoot as Root,
+	AnchorText as Text,
+	AnchorExternalMarker as ExternalMarker,
+};

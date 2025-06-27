@@ -88,6 +88,11 @@ interface AnchorExternalMarkerProps extends BaseProps<"span"> {
 	 * The content displayed inside the marker.
 	 */
 	children?: React.ReactNode;
+	/**
+	 * Visually hidden text for screen readers.
+	 * @default "external"
+	 */
+	alt?: string;
 }
 
 /**
@@ -95,17 +100,18 @@ interface AnchorExternalMarkerProps extends BaseProps<"span"> {
  */
 const AnchorExternalMarker = forwardRef<"span", AnchorExternalMarkerProps>(
 	(props, forwardedRef) => {
+		const { alt = "external", ...rest } = props;
 		return (
 			<>
 				<Role.span
 					aria-hidden="true"
-					{...props}
+					{...rest}
 					className={cx("🥝-anchor-external-marker", props.className)}
 					ref={forwardedRef}
 				>
 					&nbsp;↗
 				</Role.span>
-				<VisuallyHidden> (external)</VisuallyHidden>
+				<VisuallyHidden>&nbsp;({alt})</VisuallyHidden>
 			</>
 		);
 	},

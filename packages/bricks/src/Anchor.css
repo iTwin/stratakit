@@ -38,7 +38,7 @@
 			var(--🌀anchor-state--hover, currentColor) var(--🌀anchor-state--pressed, transparent);
 		text-decoration-line: underline;
 
-		&:has(.🥝-anchor-text) {
+		&:where(:has(.🥝-anchor-text)) {
 			text-decoration-line: none;
 		}
 

@@ -36,7 +36,11 @@
 			var(--🌀anchor-state--pressed, 3px);
 		text-decoration-color: var(--🌀anchor-state--default, currentColor)
 			var(--🌀anchor-state--hover, currentColor) var(--🌀anchor-state--pressed, transparent);
-		text-decoration-line: none;
+		text-decoration-line: underline;
+
+		&:has(.🥝-anchor-text) {
+			text-decoration-line: none;
+		}
 
 		border-radius: 4px;
 

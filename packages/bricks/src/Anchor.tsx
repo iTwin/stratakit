@@ -126,7 +126,7 @@ const Anchor = forwardRef<"a", AnchorProps>((props, forwardedRef) => {
 	const { children, tone = "neutral", ...rest } = props;
 	return (
 		<AnchorRoot {...rest} tone={tone} ref={forwardedRef}>
-			<AnchorText>{children}</AnchorText>
+			{children}
 		</AnchorRoot>
 	);
 });

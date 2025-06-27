@@ -3,7 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import { Anchor as SkAnchor } from "@stratakit/bricks";
+import * as SkAnchor from "@stratakit/bricks/Anchor";
 import * as React from "react";
 import { useCompatProps } from "./~utils.tsx";
 
@@ -24,10 +24,16 @@ export const Anchor = React.forwardRef((props, forwardedRef) => {
 		// biome-ignore-start lint/correctness/noUnusedVariables: NOT IMPLEMENTED
 		underline,
 		// biome-ignore-end lint/correctness/noUnusedVariables: NOT IMPLEMENTED
+		children,
 		isExternal,
 
 		...rest
 	} = useCompatProps(props);
-	return <SkAnchor {...rest} isExternal={isExternal} ref={forwardedRef} />;
+	return (
+		<SkAnchor.Root {...rest} ref={forwardedRef}>
+			<SkAnchor.Text>{children}</SkAnchor.Text>
+			{isExternal && <SkAnchor.ExternalMarker />}
+		</SkAnchor.Root>
+	);
 }) as PolymorphicForwardRefComponent<"a", AnchorProps>;
 DEV: Anchor.displayName = "Anchor";

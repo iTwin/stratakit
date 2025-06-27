@@ -117,23 +117,16 @@ DEV: AnchorExternalMarker.displayName = "Anchor.ExternalMarker";
 interface AnchorProps extends FocusableProps<"a"> {
 	/** @default "neutral" */
 	tone?: "neutral" | "accent" | "critical";
-	/**
-	 * If true, shows an external link marker and adds visually hidden text for screen readers.
-	 * @default false
-	 */
-	isExternal?: boolean;
 }
 
 /**
  * A styled anchor element, typically used for navigating to a different location.
- * If `isExternal` is true, an external marker is shown.
  */
 const Anchor = forwardRef<"a", AnchorProps>((props, forwardedRef) => {
-	const { children, tone = "neutral", isExternal = false, ...rest } = props;
+	const { children, tone = "neutral", ...rest } = props;
 	return (
 		<AnchorRoot {...rest} tone={tone} ref={forwardedRef}>
 			<AnchorText>{children}</AnchorText>
-			{isExternal && <AnchorExternalMarker />}
 		</AnchorRoot>
 	);
 });

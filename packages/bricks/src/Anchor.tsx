@@ -111,7 +111,7 @@ const AnchorExternalMarker = forwardRef<"span", AnchorExternalMarkerProps>(
 				>
 					&nbsp;↗
 				</Role.span>
-				<VisuallyHidden>&nbsp;({alt})</VisuallyHidden>
+				<VisuallyHidden> ({alt})</VisuallyHidden>
 			</>
 		);
 	},

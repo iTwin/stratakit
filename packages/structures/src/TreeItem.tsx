@@ -3,6 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
+import * as React from "react";
 import { CompositeItem } from "@ariakit/react/composite";
 import { PopoverProvider } from "@ariakit/react/popover";
 import { Role } from "@ariakit/react/role";
@@ -18,10 +19,9 @@ import {
 	useEventHandlers,
 } from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
-import * as React from "react";
-import * as DropdownMenu from "./DropdownMenu.js";
-import * as ListItem from "./~utils.ListItem.js";
 import { ChevronDown, MoreHorizontal, StatusIcon } from "./~utils.icons.js";
+import * as ListItem from "./~utils.ListItem.js";
+import * as DropdownMenu from "./DropdownMenu.js";
 
 import type { BaseProps } from "@stratakit/foundations/secret-internals";
 
@@ -188,15 +188,17 @@ interface TreeItemProps extends Omit<BaseProps, "content" | "children"> {
  */
 const TreeItem = React.memo(
 	forwardRef<"div", TreeItemProps>((props, forwardedRef) => {
-		const { expanded, selected } = props;
 		const {
+			selected,
 			onSelectedChange,
+			expanded,
 			onExpandedChange,
-			icon,
-			unstable_decorations,
-			label,
-			description,
-			actions,
+			icon: _icon,
+			unstable_decorations: _unstable_decorations,
+			label: _label,
+			description: _description,
+			actions: _actions,
+			error: _error,
 			onClick: onClickProp,
 			onKeyDown: onKeyDownProp,
 			...rest
@@ -232,6 +234,8 @@ const TreeItem = React.memo(
 			<TreeItemRootProvider {...props}>
 				<TreeItemRoot
 					{...rest}
+					expanded={expanded}
+					selected={selected}
 					onClick={useEventHandlers(onClickProp, handleClick)}
 					onKeyDown={useEventHandlers(onKeyDownProp, handleKeyDown)}
 					ref={forwardedRef}
@@ -581,23 +585,22 @@ const TreeItemActionsOverflowMenuContext = React.createContext(false);
  */
 function TreeItemActionsOverflowMenu() {
 	const overflow = React.useContext(TreeItemHasOverflowActionsContext);
-	const [open, setOpen] = React.useState(false);
+	const [open, _setOpen] = React.useState(false);
 	const isArrowKeyPressed = React.useRef(false);
+
+	const setOpen = React.useCallback((value: boolean) => {
+		// Do not open the menu using arrow keys because it conflicts with the toolbar's arrow key navigation
+		if (value && !isArrowKeyPressed.current) {
+			_setOpen(true);
+		} else {
+			_setOpen(false);
+		}
+	}, []);
 
 	if (!overflow) return null;
 	return (
 		<PopoverProvider placement="right-start">
-			<DropdownMenu.Root
-				open={open}
-				setOpen={React.useCallback((value: boolean) => {
-					// Do not open the menu using arrow keys because it conflicts with the toolbar's arrow key navigation
-					if (value && !isArrowKeyPressed.current) {
-						setOpen(true);
-					} else {
-						setOpen(false);
-					}
-				}, [])}
-			>
+			<DropdownMenu.Root open={open} setOpen={setOpen}>
 				<DropdownMenu.Button
 					onKeyDown={(e) => {
 						if (arrowKeys.includes(e.key)) {
@@ -728,7 +731,8 @@ const TreeItemAction = React.memo(
 					<IconButton
 						label={label}
 						icon={icon}
-						inert={visible === false ? true : undefined}
+						// @ts-expect-error: Using string value as a workaround for React 18
+						inert={visible === false ? "true" : undefined}
 						{...rest}
 						dot={dot}
 						variant="ghost"

@@ -3,7 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 .🥝-button {
-	--✨color--default: var(--ids-color-text-neutral-primary);
+	--✨color--default: var(--stratakit-color-text-neutral-primary);
 	--✨gap: 4px;
 	--✨height: 1.5rem;
 	--✨padding-inline: 12px;
@@ -11,11 +11,11 @@
 
 	--✨shadow-border: 0px 0px 0px 1px var(--🥝button-border-color) inset;
 
-	--✨glow--bg-hover: var(--ids-color-glow-hue) var(--ids-color-bg-glow-base-hover-\%);
-	--✨glow--bg-press: var(--ids-color-glow-hue) var(--ids-color-bg-glow-base-pressed-\%);
+	--✨glow--bg-hover: var(--stratakit-color-glow-hue) var(--stratakit-color-bg-glow-base-hover-\%);
+	--✨glow--bg-press: var(--stratakit-color-glow-hue) var(--stratakit-color-bg-glow-base-pressed-\%);
 
-	--✨bg--solid-neutral-default: var(--ids-color-bg-neutral-base);
-	--✨bg--solid-accent-default: var(--ids-color-bg-accent-base);
+	--✨bg--solid-neutral-default: var(--stratakit-color-bg-neutral-base);
+	--✨bg--solid-accent-default: var(--stratakit-color-bg-accent-base);
 	--✨bg--solid-hover: color-mix(
 		in oklch,
 		var(--🥝button-bg--solid-default) 100%,
@@ -26,34 +26,35 @@
 		var(--🥝button-bg--solid-default) 100%,
 		var(--✨glow--bg-press)
 	);
-	--✨bg--solid-disabled: var(--ids-color-bg-glow-on-surface-disabled);
+	--✨bg--solid-disabled: var(--stratakit-color-bg-glow-on-surface-disabled);
 
-	--✨shadow--solid: var(--ids-shadow-button-base-inset), var(--✨shadow-border),
-		var(--ids-shadow-button-base-drop);
+	--✨shadow--solid:
+		var(--stratakit-shadow-button-base-inset), var(--✨shadow-border),
+		var(--stratakit-shadow-button-base-drop);
 
-	--✨border--solid-neutral-default: var(--ids-color-border-shadow-base);
+	--✨border--solid-neutral-default: var(--stratakit-color-border-shadow-base);
 	--✨border--solid-neutral-hover: color-mix(
 		in oklch,
 		var(--✨border--solid-neutral-default) 100%,
-		var(--ids-color-glow-hue) var(--ids-color-border-glow-base-hover-\%)
+		var(--stratakit-color-glow-hue) var(--stratakit-color-border-glow-base-hover-\%)
 	);
 	--✨border--solid-neutral-pressed: color-mix(
 		in oklch,
 		var(--✨border--solid-neutral-default) 100%,
-		var(--ids-color-glow-hue) var(--ids-color-border-glow-base-pressed-\%)
+		var(--stratakit-color-glow-hue) var(--stratakit-color-border-glow-base-pressed-\%)
 	);
 	--✨border--solid-neutral-disabled: transparent;
 
-	--✨border--solid-accent-default: var(--ids-color-border-shadow-strong);
+	--✨border--solid-accent-default: var(--stratakit-color-border-shadow-strong);
 	--✨border--solid-accent-hover: color-mix(
 		in oklch,
 		var(--✨border--solid-accent-default) 100%,
-		var(--ids-color-glow-hue) var(--ids-color-border-glow-strong-hover-\%)
+		var(--stratakit-color-glow-hue) var(--stratakit-color-border-glow-strong-hover-\%)
 	);
 	--✨border--solid-accent-pressed: color-mix(
 		in oklch,
 		var(--✨border--solid-accent-default) 100%,
-		var(--ids-color-glow-hue) var(--ids-color-border-glow-strong-pressed-\%)
+		var(--stratakit-color-glow-hue) var(--stratakit-color-border-glow-strong-pressed-\%)
 	);
 	--✨border--solid-accent-disabled: transparent;
 
@@ -69,18 +70,18 @@
 		var(--✨glow--bg-press)
 	);
 	--✨bg--outline-disabled: transparent;
-	--✨border--outline-default: var(--ids-color-border-neutral-base);
+	--✨border--outline-default: var(--stratakit-color-border-neutral-base);
 	--✨border--outline-hover: color-mix(
 		in oklch,
 		var(--✨border--outline-default) 100%,
-		var(--ids-color-glow-hue) var(--ids-color-border-glow-base-hover-\%)
+		var(--stratakit-color-glow-hue) var(--stratakit-color-border-glow-base-hover-\%)
 	);
 	--✨border--outline-pressed: color-mix(
 		in oklch,
 		var(--✨border--outline-default) 100%,
-		var(--ids-color-glow-hue) var(--ids-color-border-glow-base-pressed-\%)
+		var(--stratakit-color-glow-hue) var(--stratakit-color-border-glow-base-pressed-\%)
 	);
-	--✨border--outline-disabled: var(--ids-color-border-glow-on-surface-disabled);
+	--✨border--outline-disabled: var(--stratakit-color-border-glow-on-surface-disabled);
 
 	--✨bg--ghost-default: transparent;
 	--✨bg--ghost-hover: color-mix(in oklch, var(--✨bg--ghost-default) 100%, var(--✨glow--bg-hover));
@@ -89,7 +90,7 @@
 		var(--✨bg--ghost-default) 100%,
 		var(--✨glow--bg-press)
 	);
-	--✨bg--ghost-active: var(--ids-color-bg-glow-on-surface-accent-pressed);
+	--✨bg--ghost-active: var(--stratakit-color-bg-glow-on-surface-accent-pressed);
 	--✨bg--ghost-disabled: transparent;
 
 	@layer base {
@@ -97,7 +98,7 @@
 		line-height: 1.2;
 		user-select: none;
 		cursor: pointer;
-		font-size: var(--ids-font-size-12);
+		font-size: var(--stratakit-font-size-12);
 		font-weight: 500;
 		border: none;
 		position: relative;
@@ -118,12 +119,12 @@
 		background-color: var(--🥝button-background-color);
 		color: var(--🥝button-color, var(--✨color--default));
 		transition: background-color 150ms ease-out;
-		-webkit-tap-highlight-color: var(--ids-color-bg-glow-on-surface-neutral-pressed);
-		--🥝icon-color: var(--🌀button-state--default, var(--ids-color-icon-neutral-base))
-			var(--🌀button-state--hover, var(--ids-color-icon-neutral-hover))
-			var(--🌀button-state--pressed, var(--ids-color-icon-neutral-hover))
-			var(--🌀button-state--active, var(--ids-color-icon-accent-strong))
-			var(--🌀button-state--disabled, var(--ids-color-icon-neutral-disabled));
+		-webkit-tap-highlight-color: var(--stratakit-color-bg-glow-on-surface-neutral-pressed);
+		--🥝icon-color: var(--🌀button-state--default, var(--stratakit-color-icon-neutral-base))
+			var(--🌀button-state--hover, var(--stratakit-color-icon-neutral-hover))
+			var(--🌀button-state--pressed, var(--stratakit-color-icon-neutral-hover))
+			var(--🌀button-state--active, var(--stratakit-color-icon-accent-strong))
+			var(--🌀button-state--disabled, var(--stratakit-color-icon-neutral-disabled));
 
 		@media (forced-colors: active) {
 			background-color: ButtonFace;
@@ -163,12 +164,12 @@
 					var(--🌀button-state--pressed, var(--✨border--solid-accent-pressed))
 					var(--🌀button-state--disabled, var(--✨border--solid-accent-disabled));
 
-				--🥝button-color: var(--ids-color-text-neutral-emphasis);
-				--🥝icon-color: var(--🌀button-state--default, var(--ids-color-icon-neutral-emphasis))
-					var(--🌀button-state--hover, var(--ids-color-icon-neutral-emphasis))
-					var(--🌀button-state--pressed, var(--ids-color-icon-neutral-emphasis))
-					var(--🌀button-state--disabled, var(--ids-color-icon-neutral-disabled));
-				-webkit-tap-highlight-color: var(--ids-color-bg-glow-on-surface-accent-pressed);
+				--🥝button-color: var(--stratakit-color-text-neutral-emphasis);
+				--🥝icon-color: var(--🌀button-state--default, var(--stratakit-color-icon-neutral-emphasis))
+					var(--🌀button-state--hover, var(--stratakit-color-icon-neutral-emphasis))
+					var(--🌀button-state--pressed, var(--stratakit-color-icon-neutral-emphasis))
+					var(--🌀button-state--disabled, var(--stratakit-color-icon-neutral-disabled));
+				-webkit-tap-highlight-color: var(--stratakit-color-bg-glow-on-surface-accent-pressed);
 			}
 		}
 
@@ -220,7 +221,7 @@
 
 		&:where(:disabled, [aria-disabled="true"]) {
 			--🌀button-state: var(--🌀button-state--disabled);
-			color: var(--ids-color-text-neutral-disabled);
+			color: var(--stratakit-color-text-neutral-disabled);
 			cursor: not-allowed;
 			-webkit-tap-highlight-color: transparent;
 

@@ -2,6 +2,7 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
+
 import {
 	Disclosure,
 	DisclosureContent,
@@ -42,7 +43,7 @@ interface AccordionItemProps extends BaseProps {
 	 *
 	 * Should be used with the `open` prop.
 	 */
-	onOpenChange?: (open: boolean) => void;
+	setOpen?: (open: boolean) => void;
 }
 
 /**
@@ -96,12 +97,17 @@ interface AccordionItemProps extends BaseProps {
  */
 const AccordionItemRoot = forwardRef<"div", AccordionItemProps>(
 	(props, forwardedRef) => {
-		const { defaultOpen, open: openProp, onOpenChange, ...rest } = props;
+		const {
+			defaultOpen,
+			open: openProp,
+			setOpen: setOpenProp,
+			...rest
+		} = props;
 
 		const [open, setOpen] = useControlledState(
 			defaultOpen ?? false,
 			openProp,
-			onOpenChange as React.Dispatch<React.SetStateAction<boolean>>,
+			setOpenProp as React.Dispatch<React.SetStateAction<boolean>>,
 		);
 
 		return (
@@ -334,6 +340,8 @@ const AccordionItemHeading = forwardRef<"div", AccordionItemHeadingProps>(
 	),
 );
 DEV: AccordionItemHeading.displayName = "AccordionItem.Heading";
+
+// ----------------------------------------------------------------------------
 
 export {
 	AccordionItemRoot as Root,

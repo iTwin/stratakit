@@ -3,11 +3,12 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import { useStoreState } from "@ariakit/react/store";
 import * as React from "react";
+import { useStoreState } from "@ariakit/react/store";
 import { isBrowser, supportsPopover } from "./~utils.js";
 
 import type { PopoverStore } from "@ariakit/react/popover";
+import type { AnyFunction } from "./~utils.js";
 
 /**
  * SSR-safe wrapper over `React.useLayoutEffect`.
@@ -120,12 +121,26 @@ export function useMergedRefs<T>(
 }
 
 /**
- * Hook that accepts a list of event handlers and returns a single memoized handler
- * that ensures `defaultPrevented` is respected for each handler.
+ * Hook that "memoizes" a function by skipping reactivity, similar to `React.useEffectEvent`.
  *
- * The memoization technique used by this hook ensures that only the "latest" handlers are ever called.
- * The "latest" handlers are stored in a ref and updated on each render in an insertion effect. The result
- * is that the handlers passed to this hook do not always need to be memoized.
+ * The memoization technique used by this hook ensures that only the "latest" callback is ever called,
+ * regardless of its dependencies. The "latest" callback is stored in a ref and updated on each render
+ * in an Effect. The result is that the callback passed to this hook does not need to be memoized.
+ *
+ * @private
+ */
+export function useUnreactiveCallback<T extends AnyFunction>(callback: T) {
+	const latestCallback = useLatestRef(callback);
+
+	return React.useCallback<AnyFunction>(
+		(...args) => latestCallback.current?.(...args),
+		[latestCallback],
+	) as T;
+}
+
+/**
+ * Hook that accepts a list of event handlers and returns a single memoized (unreactive)
+ * handler that ensures `defaultPrevented` is respected for each handler.
  *
  * Example:
  * ```tsx

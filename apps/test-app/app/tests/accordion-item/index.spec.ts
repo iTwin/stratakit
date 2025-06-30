@@ -2,6 +2,7 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
+
 import AxeBuilder from "@axe-core/playwright";
 import { expect, test } from "#playwright";
 
@@ -30,7 +31,7 @@ test.describe("@visual", () => {
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
 
-	test("hovered collapsed item", async ({ page }) => {
+	test("hovered closed item", async ({ page }) => {
 		await page.goto("/tests/accordion-item");
 
 		const item = page.getByRole("button", { name: "Label" });
@@ -39,7 +40,7 @@ test.describe("@visual", () => {
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
 
-	test("hovered expanded item", async ({ page }) => {
+	test("hovered open item", async ({ page }) => {
 		await page.goto("/tests/accordion-item?defaultOpen");
 
 		const item = page.getByRole("button", { name: "Label" });
@@ -48,7 +49,7 @@ test.describe("@visual", () => {
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
 
-	test("focused collapsed item", async ({ page }) => {
+	test("focused closed item", async ({ page }) => {
 		await page.goto("/tests/accordion-item");
 
 		const item = page.getByRole("button", { name: "Label" });
@@ -57,7 +58,7 @@ test.describe("@visual", () => {
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
 
-	test("focused expanded item", async ({ page }) => {
+	test("focused open item", async ({ page }) => {
 		await page.goto("/tests/accordion-item?defaultOpen");
 
 		const item = page.getByRole("button", { name: "Label" });

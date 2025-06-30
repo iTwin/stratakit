@@ -90,6 +90,9 @@ export type FocusableProps<ElementType extends React.ElementType = "div"> =
 /** See https://github.com/Microsoft/TypeScript/issues/29729 */
 export type AnyString = string & {};
 
+// biome-ignore lint/suspicious/noExplicitAny: allow any type of function
+export type AnyFunction = (...args: any) => any;
+
 // ----------------------------------------------------------------------------
 
 /** Returns the value unchanged. */

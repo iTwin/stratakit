@@ -3,13 +3,13 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
+import * as React from "react";
 import { Role } from "@ariakit/react/role";
 import { IconButton, Text } from "@stratakit/bricks";
 import { GhostAligner } from "@stratakit/bricks/secret-internals";
 import { Icon } from "@stratakit/foundations";
 import { forwardRef } from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
-import * as React from "react";
 import { Dismiss, StatusIcon } from "./~utils.icons.js";
 
 import type { BaseProps } from "@stratakit/foundations/secret-internals";
@@ -94,7 +94,7 @@ type BannerProps = Omit<BaseProps, "children"> & {
  * <Banner label="Title" message="Message" icon={placeholderIcon} onDismiss={() => {}} />
  * ```
  */
-export const Banner = forwardRef<"div", BannerProps>((props, forwardedRef) => {
+const Banner = forwardRef<"div", BannerProps>((props, forwardedRef) => {
 	const {
 		message,
 		label,
@@ -160,3 +160,7 @@ export const Banner = forwardRef<"div", BannerProps>((props, forwardedRef) => {
 	);
 });
 DEV: Banner.displayName = "Banner";
+
+// ----------------------------------------------------------------------------
+
+export default Banner;

@@ -3,6 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
+import * as React from "react";
 import {
 	Collection,
 	CollectionItem,
@@ -22,7 +23,6 @@ import {
 	useControlledState,
 } from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
-import * as React from "react";
 import { ChevronDown, StatusIcon } from "./~utils.icons.js";
 
 import type { BaseProps } from "@stratakit/foundations/secret-internals";
@@ -42,15 +42,15 @@ interface ErrorRegionRootProps extends Omit<BaseProps, "children"> {
 	 */
 	items?: React.ReactNode;
 	/**
-	 * The controlled expanded state of the error.
+	 * The controlled open state of the region.
 	 */
-	expanded?: boolean;
+	open?: boolean;
 	/**
-	 * Callback fired when the error is expanded.
+	 * Callback fired when the region is open.
 	 *
-	 * Should be used with the `expanded` prop.
+	 * Should be used with the `open` prop.
 	 */
-	onExpandedChange?: (expanded: boolean) => void;
+	setOpen?: (open: boolean) => void;
 }
 
 /**
@@ -76,15 +76,21 @@ interface ErrorRegionRootProps extends Omit<BaseProps, "children"> {
  */
 const ErrorRegionRoot = forwardRef<"div", ErrorRegionRootProps>(
 	(props, forwardedRef) => {
-		const { label, items, expanded, onExpandedChange, ...rest } = props;
+		const {
+			label,
+			items,
+			open: openProp,
+			setOpen: setOpenProp,
+			...rest
+		} = props;
 		const labelId = React.useId();
 		const sectionLabelledBy =
 			props["aria-labelledby"] ?? (props["aria-label"] ? undefined : labelId);
 
 		const [open, setOpen] = useControlledState(
 			false,
-			expanded,
-			onExpandedChange as React.Dispatch<React.SetStateAction<boolean>>,
+			openProp,
+			setOpenProp as React.Dispatch<React.SetStateAction<boolean>>,
 		);
 
 		const containerRef = React.useRef<HTMLDivElement>(null);
@@ -99,16 +105,17 @@ const ErrorRegionRoot = forwardRef<"div", ErrorRegionRootProps>(
 			el.animate(
 				[
 					{
-						boxShadow: "0 0 0 0 var(--ids-color-border-attention-base)",
+						boxShadow: "0 0 0 0 var(--stratakit-color-border-attention-base)",
 						opacity: 1,
 					},
 					{
-						boxShadow: "0 0 15px 2px var(--ids-color-border-attention-base)",
+						boxShadow:
+							"0 0 15px 2px var(--stratakit-color-border-attention-base)",
 						opacity: 0.7,
 						offset: 0.5,
 					},
 					{
-						boxShadow: "0 0 0 0 var(--ids-color-border-attention-base)",
+						boxShadow: "0 0 0 0 var(--stratakit-color-border-attention-base)",
 						opacity: 1,
 					},
 				],

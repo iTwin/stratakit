@@ -3,6 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
+import * as React from "react";
 import {
 	CollectionItem,
 	useCollectionContext,
@@ -11,10 +12,9 @@ import { Role } from "@ariakit/react/role";
 import { useStoreState } from "@ariakit/react/store";
 import { forwardRef } from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
-import * as React from "react";
-import { Description } from "./Description.js";
+import Description from "./Description.js";
 import { FieldCollection, FieldControlTypeContext } from "./Field.internal.js";
-import { Label } from "./Label.js";
+import Label from "./Label.js";
 
 import type { CollectionItemProps } from "@ariakit/react/collection";
 import type { BaseProps } from "@stratakit/foundations/secret-internals";
@@ -79,13 +79,12 @@ DEV: FieldRoot.displayName = "Field";
  * A label for the field’s control element. This is automatically associated
  * with the control’s `id`.
  */
-const FieldLabel = forwardRef<"div", BaseProps<"label">>(
+const FieldLabel = forwardRef<"label", BaseProps<"label">>(
 	(props, forwardedRef) => {
 		const store = useCollectionContext();
-		const renderedItems = useStoreState(
-			store,
-			"renderedItems",
-		) as FieldCollectionStoreItem[];
+		const renderedItems = useStoreState(store, "renderedItems") as
+			| FieldCollectionStoreItem[]
+			| undefined;
 		const fieldId = React.useMemo(
 			() => renderedItems?.find((item) => item.elementType === "control")?.id,
 			[renderedItems],
@@ -103,7 +102,7 @@ const FieldLabel = forwardRef<"div", BaseProps<"label">>(
 			<CollectionItem
 				getItem={getData}
 				render={<Label {...props} htmlFor={fieldId} />}
-				ref={forwardedRef}
+				ref={forwardedRef as CollectionItemProps["ref"]}
 			/>
 		);
 	},
@@ -182,10 +181,9 @@ const FieldControl = forwardRef<"div", FieldCollectionItemControlProps>(
 		const store = useCollectionContext();
 		const generatedId = React.useId();
 		const { id = store ? generatedId : undefined, ...rest } = props;
-		const renderedItems = useStoreState(
-			store,
-			"renderedItems",
-		) as FieldCollectionStoreItem[];
+		const renderedItems = useStoreState(store, "renderedItems") as
+			| FieldCollectionStoreItem[]
+			| undefined;
 
 		const describedBy = React.useMemo(() => {
 			// Create a space separated list of description IDs

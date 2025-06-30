@@ -42,7 +42,7 @@ interface TextProps extends BaseProps {
  * <Text render={<h1 />} variant="headline-lg">Hello, World!</Text>
  * ```
  */
-export const Text = forwardRef<"div", TextProps>((props, forwardedRef) => {
+const Text = forwardRef<"div", TextProps>((props, forwardedRef) => {
 	const { variant, ...rest } = props;
 
 	return (
@@ -55,3 +55,7 @@ export const Text = forwardRef<"div", TextProps>((props, forwardedRef) => {
 	);
 });
 DEV: Text.displayName = "Text";
+
+// ----------------------------------------------------------------------------
+
+export default Text;

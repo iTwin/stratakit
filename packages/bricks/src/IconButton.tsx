@@ -3,17 +3,17 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
+import * as React from "react";
 import { Icon } from "@stratakit/foundations";
 import { forwardRef } from "@stratakit/foundations/secret-internals";
-import * as React from "react";
-import { Button } from "./Button.js";
+import { Dot } from "./~utils.Dot.js";
+import Button from "./Button.js";
 import {
 	IconButtonContext,
 	IconButtonPresentation,
 } from "./IconButton.internal.js";
-import { Tooltip } from "./Tooltip.js";
-import { VisuallyHidden } from "./VisuallyHidden.js";
-import { Dot } from "./~utils.Dot.js";
+import Tooltip from "./Tooltip.js";
+import VisuallyHidden from "./VisuallyHidden.js";
 
 interface IconButtonBaseProps
 	extends Omit<React.ComponentProps<typeof Button>, "children" | "tone"> {
@@ -114,7 +114,7 @@ type IconButtonProps = IconButtonBaseProps & IconButtonExtraProps;
  * />
  * ```
  */
-export const IconButton = forwardRef<"button", IconButtonProps>(
+const IconButton = forwardRef<"button", IconButtonProps>(
 	(props, forwardedRef) => {
 		const { label, icon, isActive, labelVariant, dot, ...rest } = props;
 
@@ -164,3 +164,7 @@ export const IconButton = forwardRef<"button", IconButtonProps>(
 	},
 );
 DEV: IconButton.displayName = "IconButton";
+
+// ----------------------------------------------------------------------------
+
+export default IconButton;

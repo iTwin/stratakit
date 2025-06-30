@@ -28,7 +28,7 @@ interface DividerProps
  * A `Divider` can be oriented horizontally or vertically (using the `orientation` prop),
  * and can be a semantic divider or a purely presentational one (using the `presentational` prop).
  */
-export const Divider = forwardRef<"hr", DividerProps>((props, forwardedRef) => {
+const Divider = forwardRef<"hr", DividerProps>((props, forwardedRef) => {
 	const { presentational, ...rest } = props;
 
 	const Comp = presentational ? Role : Separator;
@@ -43,3 +43,7 @@ export const Divider = forwardRef<"hr", DividerProps>((props, forwardedRef) => {
 	);
 });
 DEV: Divider.displayName = "Divider";
+
+// ----------------------------------------------------------------------------
+
+export default Divider;

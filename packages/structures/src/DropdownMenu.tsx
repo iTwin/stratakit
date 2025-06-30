@@ -3,6 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
+import * as React from "react";
 import { Button as ButtonAk } from "@ariakit/react/button";
 import {
 	Menu,
@@ -26,9 +27,8 @@ import {
 	usePopoverApi,
 } from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
-import * as React from "react";
-import * as ListItem from "./~utils.ListItem.js";
 import { Checkmark } from "./~utils.icons.js";
+import * as ListItem from "./~utils.ListItem.js";
 
 import type {
 	MenuItemCheckboxProps,
@@ -151,13 +151,15 @@ const DropdownMenuButton = forwardRef<"button", DropdownMenuButtonProps>(
 		return (
 			<MenuButton
 				accessibleWhenDisabled
-				render={
-					<Button accessibleWhenDisabled={accessibleWhenDisabled}>
-						{children}
-						<DisclosureArrow />
-					</Button>
-				}
 				{...rest}
+				render={
+					props.render ?? (
+						<Button accessibleWhenDisabled={accessibleWhenDisabled}>
+							{children}
+							<DisclosureArrow />
+						</Button>
+					)
+				}
 				className={cx("🥝-dropdown-menu-button", props.className)}
 				data-has-popover-open={open || undefined}
 				ref={forwardedRef}

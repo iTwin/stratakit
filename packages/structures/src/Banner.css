@@ -17,31 +17,31 @@
 
 	@layer modifiers {
 		&:where([data-kiwi-variant="outline"]) {
-			--🥝banner-color-background: var(--ids-color-bg-elevation-base);
+			--🥝banner-color-background: var(--stratakit-color-bg-elevation-base);
 
 			&:where([data-kiwi-tone="neutral"]) {
-				--🥝banner-color-border: var(--ids-color-border-neutral-base);
+				--🥝banner-color-border: var(--stratakit-color-border-neutral-base);
 			}
 		}
 
 		&:where([data-kiwi-tone="info"]) {
-			--🥝banner-color-border: var(--ids-color-border-info-base);
-			--🥝icon-color: var(--ids-color-icon-info-base);
+			--🥝banner-color-border: var(--stratakit-color-border-info-base);
+			--🥝icon-color: var(--stratakit-color-icon-info-base);
 		}
 
 		&:where([data-kiwi-tone="positive"]) {
-			--🥝banner-color-border: var(--ids-color-border-positive-base);
-			--🥝icon-color: var(--ids-color-icon-positive-base);
+			--🥝banner-color-border: var(--stratakit-color-border-positive-base);
+			--🥝icon-color: var(--stratakit-color-icon-positive-base);
 		}
 
 		&:where([data-kiwi-tone="attention"]) {
-			--🥝banner-color-border: var(--ids-color-border-attention-base);
-			--🥝icon-color: var(--ids-color-icon-attention-base);
+			--🥝banner-color-border: var(--stratakit-color-border-attention-base);
+			--🥝icon-color: var(--stratakit-color-icon-attention-base);
 		}
 
 		&:where([data-kiwi-tone="critical"]) {
-			--🥝banner-color-border: var(--ids-color-border-critical-base);
-			--🥝icon-color: var(--ids-color-icon-critical-base);
+			--🥝banner-color-border: var(--stratakit-color-border-critical-base);
+			--🥝icon-color: var(--stratakit-color-icon-critical-base);
 		}
 	}
 }

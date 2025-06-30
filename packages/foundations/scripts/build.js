@@ -2,6 +2,7 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
+
 import * as esbuild from "esbuild";
 import fg from "fast-glob";
 import { inlineCssPlugin } from "internal/esbuild-plugins.js";
@@ -22,7 +23,7 @@ await esbuild.build({
 	format: "esm",
 	jsx: "automatic",
 	target: "es2021",
-	...(!isDev && { dropLabels: ["DEV"] }),
+	dropLabels: ["DROP", ...(isDev ? ["DEV"] : [])],
 });
 
 // Run esbuild again, only to inline bundled CSS inside `.css.ts` files

@@ -1,0 +1,142 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+
+import * as React from "react";
+import { DisclosureArrow as SkDisclosureArrow } from "@stratakit/bricks/secret-internals";
+import {
+	useControlledState,
+	useUnreactiveCallback,
+} from "@stratakit/foundations/secret-internals";
+import { DropdownMenu as SkDropdownMenu } from "@stratakit/structures";
+import { useCompatProps } from "./~utils.js";
+import { Button } from "./Button.js";
+
+import type {
+	DropdownButton as IuiDropdownButton,
+	DropdownMenu as IuiDropdownMenu,
+} from "@itwin/itwinui-react";
+import type { PolymorphicForwardRefComponent } from "./~utils.js";
+
+// ----------------------------------------------------------------------------
+
+type IuiDropdownMenuProps = React.ComponentProps<typeof IuiDropdownMenu>;
+
+interface DropdownMenuProps
+	extends Pick<
+		IuiDropdownMenuProps,
+		| "menuItems"
+		| "children"
+		| "middleware"
+		| "closeOnItemClick"
+		| "visible"
+		| "onVisibleChange"
+		| "placement"
+		| "matchWidth"
+		| "positionReference"
+		| "portal"
+	> {
+	children: React.JSX.Element; // iTwinUI type is incorrectly more loose
+	/** NOT IMPLEMENTED. */
+	middleware?: IuiDropdownMenuProps["middleware"];
+	/** NOT IMPLEMENTED. Always true. */
+	closeOnItemClick?: IuiDropdownMenuProps["closeOnItemClick"];
+	/** NOT IMPLEMENTED. */
+	placement?: IuiDropdownMenuProps["placement"];
+	/** NOT IMPLEMENTED. */
+	matchWidth?: IuiDropdownMenuProps["matchWidth"];
+	/** NOT IMPLEMENTED. */
+	positionReference?: IuiDropdownMenuProps["positionReference"];
+	/** NOT IMPLEMENTED. */
+	portal?: IuiDropdownMenuProps["portal"];
+}
+
+/** @see https://itwinui.bentley.com/docs/dropdownmenu */
+export const DropdownMenu = React.forwardRef((props, forwardedRef) => {
+	const {
+		children,
+		menuItems: menuItemsProp,
+		visible,
+		onVisibleChange,
+
+		// biome-ignore-start lint/correctness/noUnusedVariables: NOT IMPLEMENTED
+		middleware,
+		closeOnItemClick,
+		placement,
+		matchWidth,
+		positionReference,
+		portal,
+		// biome-ignore-end lint/correctness/noUnusedVariables: NOT IMPLEMENTED
+
+		...rest
+	} = props;
+
+	const [open, setOpen] = useControlledState(
+		false,
+		visible,
+		onVisibleChange as React.Dispatch<React.SetStateAction<boolean>>,
+	);
+
+	const close = useUnreactiveCallback(() => setOpen(false));
+
+	const menuItems = React.useMemo(() => {
+		if (typeof menuItemsProp === "function") return menuItemsProp(close);
+		return menuItemsProp;
+	}, [menuItemsProp, close]);
+
+	return (
+		<SkDropdownMenu.Root open={open} setOpen={setOpen}>
+			<SkDropdownMenu.Button render={children} />
+
+			<SkDropdownMenu.Content {...rest} ref={forwardedRef}>
+				{menuItems}
+			</SkDropdownMenu.Content>
+		</SkDropdownMenu.Root>
+	);
+}) as PolymorphicForwardRefComponent<"div", DropdownMenuProps>;
+DEV: DropdownMenu.displayName = "DropdownMenu";
+
+// ----------------------------------------------------------------------------
+
+type IuiDropdownButtonProps = React.ComponentProps<typeof IuiDropdownButton>;
+
+interface DropdownButtonProps
+	extends Pick<
+		IuiDropdownButtonProps,
+		| "menuItems"
+		| "styleType"
+		| "dropdownMenuProps"
+		| "size"
+		| "startIcon"
+		| "labelProps"
+		| "startIconProps"
+		| "endIconProps"
+		| "stretched"
+		| "loading"
+		| "htmlDisabled"
+	> {
+	/** NOT IMPLEMENTED. */
+	size?: IuiDropdownButtonProps["size"];
+	/** NOT IMPLEMENTED. */
+	labelProps?: IuiDropdownButtonProps["labelProps"];
+	/** NOT IMPLEMENTED. */
+	stretched?: IuiDropdownButtonProps["stretched"];
+	/** NOT IMPLEMENTED. */
+	loading?: IuiDropdownButtonProps["loading"];
+}
+
+/** @see https://itwinui.bentley.com/docs/button#dropdownbutton */
+export const DropdownButton = React.forwardRef((props, forwardedRef) => {
+	const { children, menuItems, dropdownMenuProps, ...rest } =
+		useCompatProps(props);
+
+	return (
+		<DropdownMenu menuItems={menuItems} {...dropdownMenuProps}>
+			<Button {...rest} endIcon={<SkDisclosureArrow />} ref={forwardedRef}>
+				{children}
+			</Button>
+		</DropdownMenu>
+	);
+}) as PolymorphicForwardRefComponent<"button", DropdownButtonProps>;
+DEV: DropdownButton.displayName = "DropdownButton";

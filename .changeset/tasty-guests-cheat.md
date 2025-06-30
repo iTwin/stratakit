@@ -2,4 +2,4 @@
 "@stratakit/foundations": patch
 ---
 
-Added global `::selection` styling.
+Added a global `scrollbar-color` style.

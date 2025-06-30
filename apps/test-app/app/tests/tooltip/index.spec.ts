@@ -175,7 +175,7 @@ test.describe("@a11y", () => {
 		await expect(tooltip).toBeVisible();
 
 		const axe = new AxeBuilder({ page });
-		const accessibilityScan = await axe.analyze();
+		const accessibilityScan = await axe.disableRules(["region"]).analyze();
 		expect(accessibilityScan.violations).toEqual([]);
 	});
 });

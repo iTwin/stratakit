@@ -18,7 +18,7 @@
 			decoration-after-start] auto [decoration-after-end
 			marker-after-start] auto [marker-after-end];
 		grid-template-rows: [header-start] auto [header-end content-start] auto [content-end];
-		border-block-end: 1px solid var(--ids-color-border-neutral-muted);
+		border-block-end: 1px solid var(--stratakit-color-border-neutral-muted);
 	}
 
 	@layer states {
@@ -115,7 +115,7 @@
 		grid-column: content;
 		padding-block-end: var(--🥝accordion-item-padding);
 		text-box: cap alphabetic;
-		color: var(--ids-color-text-neutral-secondary);
+		color: var(--stratakit-color-text-neutral-secondary);
 	}
 }
 

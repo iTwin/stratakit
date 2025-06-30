@@ -3,15 +3,15 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
+import * as React from "react";
 import {
 	ProgressBar as SkProgressBar,
 	VisuallyHidden,
 } from "@stratakit/bricks";
-import * as React from "react";
-import { useCompatProps } from "./~utils.tsx";
+import { useCompatProps } from "./~utils.js";
 
 import type { ProgressLinear as IuiProgressBar } from "@itwin/itwinui-react";
-import type { PolymorphicForwardRefComponent } from "./~utils.tsx";
+import type { PolymorphicForwardRefComponent } from "./~utils.js";
 
 type IuiProgressBarProps = React.ComponentProps<typeof IuiProgressBar>;
 
@@ -47,9 +47,13 @@ export const ProgressLinear = React.forwardRef((props, forwardedRef) => {
 		value,
 		indeterminate,
 		labels,
+
+		// biome-ignore-start lint/correctness/noUnusedVariables: NOT IMPLEMENTED
 		isAnimated, // NO-OP
-		status, // NOT IMPLEMENTED
-		labelGroupProps, // NOT IMPLEMENTED
+		status,
+		labelGroupProps,
+		// biome-ignore-end lint/correctness/noUnusedVariables: NOT IMPLEMENTED
+
 		...rest
 	} = useCompatProps(props);
 

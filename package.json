@@ -18,14 +18,14 @@
 	},
 	"devDependencies": {
 		"@actions/github": "^6.0.1",
-		"@biomejs/biome": "2.0.5",
+		"@biomejs/biome": "2.0.6",
 		"@playwright/test": "catalog:",
 		"@types/node": "catalog:",
 		"colorjs.io": "^0.5.2",
 		"fast-glob": "^3.3.3",
 		"internal": "workspace:*",
 		"lefthook": "^1.11.14",
-		"prettier": "3.6.0",
+		"prettier": "3.6.2",
 		"tsx": "^4.20.3",
 		"typescript": "catalog:",
 		"wireit": "^0.14.12"

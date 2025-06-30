@@ -3,6 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
+import * as React from "react";
 import { Role } from "@ariakit/react/role";
 import { IconButton } from "@stratakit/bricks";
 import {
@@ -10,7 +11,6 @@ import {
 	useSafeContext,
 } from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
-import * as React from "react";
 import { Dismiss } from "./~utils.icons.js";
 
 import type { BaseProps } from "@stratakit/foundations/secret-internals";
@@ -81,7 +81,14 @@ const ChipLabel = forwardRef<"span", ChipLabelProps>((props, forwardedRef) => {
 	}, [setLabelId, props.id]);
 
 	const id = props.id ?? labelId;
-	return <Role.span {...props} id={id} ref={forwardedRef} />;
+	return (
+		<Role.span
+			{...props}
+			className={cx("🥝-chip-label", props.className)}
+			id={id}
+			ref={forwardedRef}
+		/>
+	);
 });
 DEV: ChipLabel.displayName = "Chip.Label";
 

@@ -50,6 +50,7 @@ export const components = {
 		"Kbd",
 		"Label",
 		"LabeledInput",
+		"LabeledTextarea",
 		"ProgressLinear",
 		"ProgressRadial",
 		"Radio",
@@ -57,6 +58,8 @@ export const components = {
 		"Tabs",
 		"Tag",
 		"Text",
+		"Textarea",
 		"Tooltip",
+		"VisuallyHidden",
 	],
 };

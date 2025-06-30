@@ -4,13 +4,6 @@
  *--------------------------------------------------------------------------------------------*/
 
 import { reactRouter } from "@react-router/dev/vite";
-import {
-	primitivesTransform,
-	staticVariablesTransform,
-	themeTransform,
-	typographyTokensTransform,
-	typographyTransform,
-} from "internal/lightningcss-visitors.js";
 import * as lightningcss from "lightningcss";
 import {
 	defaultClientConditions,
@@ -19,6 +12,13 @@ import {
 } from "vite";
 import devtoolsJson from "vite-plugin-devtools-json";
 import tsconfigPaths from "vite-tsconfig-paths";
+import {
+	primitivesTransform,
+	staticVariablesTransform,
+	themeTransform,
+	typographyTokensTransform,
+	typographyTransform,
+} from "internal/lightningcss-visitors.js";
 
 import type { Config as ReactRouterConfig } from "@react-router/dev/config";
 import type { Plugin } from "vite";

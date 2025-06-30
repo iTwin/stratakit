@@ -2,7 +2,7 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-import { Input, InputGrid, Label } from "@stratakit/react";
+import { Input, InputGrid, Label, Textarea } from "@stratakit/react";
 import { definePage } from "~/~utils.tsx";
 
 export const handle = { title: "InputGrid" };
@@ -23,6 +23,16 @@ export default definePage(function Page() {
 					Label (inline alignment and manual label-control association)
 				</Label>
 				<Input id="control" />
+			</InputGrid>
+			<InputGrid>
+				<Label>Textarea label (default alignment)</Label>
+				<Textarea />
+			</InputGrid>
+			<InputGrid labelPlacement="inline">
+				<Label htmlFor="textarea-control">
+					Textarea label (inline alignment and manual label-control association)
+				</Label>
+				<Textarea id="textarea-control" />
 			</InputGrid>
 		</div>
 	);

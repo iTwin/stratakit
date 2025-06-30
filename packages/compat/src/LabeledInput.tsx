@@ -3,12 +3,13 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import { Field, TextBox } from "@stratakit/bricks";
 import * as React from "react";
-import { useCompatProps } from "./~utils.tsx";
+import { Field, TextBox } from "@stratakit/bricks";
+import { useCompatProps } from "./~utils.js";
+import { StatusMessage } from "./StatusMessage.js";
 
 import type { LabeledInput as IuiLabeledInput } from "@itwin/itwinui-react";
-import type { PolymorphicForwardRefComponent } from "./~utils.tsx";
+import type { PolymorphicForwardRefComponent } from "./~utils.js";
 
 type IuiLabeledInputProps = React.ComponentProps<typeof IuiLabeledInput>;
 type SkTextBoxInputProps = React.ComponentProps<typeof TextBox.Input>;
@@ -35,6 +36,9 @@ interface LabeledInputProps
 	/** NOT IMPLEMENTED. */
 	size?: IuiLabeledInputProps["size"];
 
+	/** NOT IMPLEMENTED */
+	messageContentProps?: IuiLabeledInputProps["messageContentProps"];
+
 	/** NOT IMPLEMENTED. */
 	status?: IuiLabeledInputProps["status"];
 }
@@ -46,7 +50,7 @@ export const LabeledInput = React.forwardRef((props, forwardedRef) => {
 		message,
 		wrapperProps = {},
 		labelProps,
-		messageContentProps,
+		messageContentProps, // NOT IMPLEMENTED
 		inputWrapperProps,
 		displayStyle,
 		htmlSize,
@@ -60,6 +64,7 @@ export const LabeledInput = React.forwardRef((props, forwardedRef) => {
 		svgIcon,
 		iconProps = {},
 		type: inputType,
+		id,
 		...rest
 	} = useCompatProps(props);
 
@@ -89,28 +94,32 @@ export const LabeledInput = React.forwardRef((props, forwardedRef) => {
 		>
 			{label ? <Field.Label {...labelProps}>{label}</Field.Label> : null}
 			<Field.Control
-				render={
-					<TextBox.Root {...inputWrapperProps}>
-						<TextBox.Input
-							{...rest}
-							type={inputType as SkTextBoxInputProps["type"]}
-							size={htmlSize}
-							ref={forwardedRef}
-						/>
-						{svgIcon ? (
-							<TextBox.Icon
-								{...(restIconProps as React.ComponentProps<"svg">)}
-								render={svgIcon}
-								size={iconSize === "large" ? "large" : undefined}
+				render={(controlProps) => {
+					return (
+						<TextBox.Root {...inputWrapperProps}>
+							<TextBox.Input
+								{...(controlProps as SkTextBoxInputProps)}
+								{...rest}
+								type={inputType as SkTextBoxInputProps["type"]}
+								size={htmlSize}
 							/>
-						) : null}
-					</TextBox.Root>
-				}
+							{svgIcon ? (
+								<TextBox.Icon
+									{...(restIconProps as React.ComponentProps<"svg">)}
+									render={svgIcon}
+									size={iconSize === "large" ? "large" : undefined}
+								/>
+							) : null}
+						</TextBox.Root>
+					);
+				}}
+				ref={forwardedRef}
+				id={id}
 			/>
 			{message ? (
-				<Field.Description {...messageContentProps}>
+				<StatusMessage contentProps={messageContentProps}>
 					{message}
-				</Field.Description>
+				</StatusMessage>
 			) : null}
 		</Field.Root>
 	);

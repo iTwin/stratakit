@@ -3,12 +3,12 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import { Kbd as SkKbd, VisuallyHidden } from "@stratakit/bricks";
 import * as React from "react";
-import { useCompatProps } from "./~utils.tsx";
+import { Kbd as SkKbd, VisuallyHidden } from "@stratakit/bricks";
+import { useCompatProps } from "./~utils.js";
 
 import type { KbdKeys as IuiKbdKeys } from "@itwin/itwinui-react";
-import type { PolymorphicForwardRefComponent } from "./~utils.tsx";
+import type { PolymorphicForwardRefComponent } from "./~utils.js";
 
 /** @see https://itwinui.bentley.com/docs/kbd */
 export const Kbd = React.forwardRef((props, forwardedRef) => {

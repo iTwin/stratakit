@@ -3,8 +3,13 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import { Chip } from "@stratakit/structures";
 import * as React from "react";
+import { Chip } from "@stratakit/structures";
+import {
+	DismissButton as ChipDismiss,
+	Label as ChipLabel,
+	Root as ChipRoot,
+} from "@stratakit/structures/Chip";
 import { definePage } from "~/~utils.tsx";
 
 export const handle = { title: "Chip" };
@@ -17,7 +22,7 @@ export default definePage(
 			</>
 		);
 	},
-	{ visual: VisualTest, dismiss: DismissTest },
+	{ visual: VisualTest, dismiss: DismissTest, composition: CompositionTest },
 );
 
 function VisualTest() {
@@ -61,5 +66,14 @@ function DismissTest() {
 				);
 			})}
 		</div>
+	);
+}
+
+function CompositionTest() {
+	return (
+		<ChipRoot>
+			<ChipLabel id="my-label">Label</ChipLabel>
+			<ChipDismiss />
+		</ChipRoot>
 	);
 }

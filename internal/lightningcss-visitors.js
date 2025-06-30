@@ -4,7 +4,6 @@
  *--------------------------------------------------------------------------------------------*/
 
 import Color from "colorjs.io";
-
 import primitives from "./primitives.json" with { type: "json" };
 import darkTheme from "./theme-dark.json" with { type: "json" };
 import lightTheme from "./theme-light.json" with { type: "json" };

@@ -269,7 +269,7 @@ DEV: AccordionItemDecoration.displayName = "AccordionItem.Decoration";
  * Example:
  * ```tsx
  * <AccordionItem.Header>
- * 	 <AccordionItem.Marker />
+ *   <AccordionItem.Marker />
  *   <AccordionItem.Button>
  *     <AccordionItem.Label>Label</AccordionItem.Label>
  *   </AccordionItem.Button>

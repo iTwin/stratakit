@@ -124,6 +124,16 @@ interface TabProps
  * ```tsx
  * <Tabs.Tab id="tab-1">Tab 1</Tabs.Tab>
  * ```
+ *
+ * Start and end icons can be added by passing `Icon` as children.
+ *
+ * ```tsx
+ * <Tabs.Tab id="tab-1">
+ *   <Icon href={…} />
+ *   Tab 1
+ *   <Icon href={…} />
+ * </Tabs.Tab>
+ * ```
  */
 const Tab = forwardRef<"button", TabProps>((props, forwardedRef) => {
 	return (

@@ -3,10 +3,10 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
+import * as React from "react";
 import { Role } from "@ariakit/react/role";
 import { forwardRef } from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
-import * as React from "react";
 
 import type { BaseProps } from "@stratakit/foundations/secret-internals";
 
@@ -107,4 +107,4 @@ DEV: ProgressBar.displayName = "ProgressBar";
 
 // ----------------------------------------------------------------------------
 
-export default ProgressBar;
+export { ProgressBar };

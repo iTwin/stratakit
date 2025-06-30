@@ -3,13 +3,13 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import { Icon } from "@stratakit/foundations";
-import { Button as SkButton } from "@stratakit/bricks";
 import * as React from "react";
-import { useCompatProps } from "./~utils.tsx";
+import { Button as SkButton } from "@stratakit/bricks";
+import { Icon } from "@stratakit/foundations";
+import { useCompatProps } from "./~utils.js";
 
 import type { Button as IuiButton } from "@itwin/itwinui-react";
-import type { PolymorphicForwardRefComponent } from "./~utils.tsx";
+import type { PolymorphicForwardRefComponent } from "./~utils.js";
 
 // ----------------------------------------------------------------------------
 

@@ -65,7 +65,10 @@ export const Alert = React.forwardRef((props, forwardedRef) => {
 			message={children}
 			actions={
 				clickableText != null ? (
-					<Anchor render={<button />} {...clickableTextProps}>
+					<Anchor
+						render={clickableTextProps?.href ? undefined : <button />}
+						{...clickableTextProps}
+					>
 						{clickableText}
 					</Anchor>
 				) : undefined

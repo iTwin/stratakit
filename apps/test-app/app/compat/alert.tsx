@@ -30,6 +30,14 @@ export default definePage(function Page() {
 				Alert with deprecated props
 			</Alert>
 
+			{/* clickableText anchor vs. button */}
+			<Alert clickableText="Learn more" clickableTextProps={{ href: "#" }}>
+				Alert with clickableText as anchor
+			</Alert>
+			<Alert clickableText="Learn more">
+				Alert with clickableText as button
+			</Alert>
+
 			{/* Not implemented props */}
 			<Alert isSticky>Alert with not implemented props</Alert>
 		</div>

@@ -3,9 +3,9 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
+import * as React from "react";
 import { Icon } from "@stratakit/foundations";
 import { unstable_AccordionItem as SkAccordionItem } from "@stratakit/structures";
-import * as React from "react";
 import { useCompatProps } from "./~utils.tsx";
 
 import type { ExpandableBlock as IuiExpandableBlock } from "@itwin/itwinui-react";
@@ -40,6 +40,8 @@ interface AccordionProps
 	disabled?: IuiExpandableBlockProps["disabled"];
 	/** NOT IMPLEMENTED. */
 	caption?: IuiExpandableBlockProps["caption"];
+	/** PARTIALLY IMPLEMENTED: Now accepts `React.JSX.Element` instead of `React.ReactNode` */
+	endIcon?: React.JSX.Element;
 }
 
 /** @see https://itwinui.bentley.com/docs/expandableblock */
@@ -74,7 +76,7 @@ export const ExpandableBlock = React.forwardRef((props, forwardedRef) => {
 					<SkAccordionItem.Label>{title}</SkAccordionItem.Label>
 				</SkAccordionItem.Button>
 				<SkAccordionItem.Marker>
-					{endIcon ? <Icon render={endIcon as React.JSX.Element} /> : null}
+					{endIcon ? <Icon render={endIcon} /> : null}
 				</SkAccordionItem.Marker>
 			</SkAccordionItem.Header>
 			<SkAccordionItem.Content>{children}</SkAccordionItem.Content>

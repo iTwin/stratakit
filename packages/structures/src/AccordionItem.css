@@ -14,8 +14,8 @@
 		grid-template-columns:
 			[marker-before-start] auto [marker-before-end
 			decoration-before-start] auto [decoration-before-end
-			content-start] minmax(0, 1fr) [content-end
-			decoration-after-start] auto [decoration-after-end
+			content-start] auto [content-end
+			decoration-after-start] minmax(0, 1fr) [decoration-after-end
 			marker-after-start] auto [marker-after-end];
 		grid-template-rows: [header-start] auto [header-end content-start] auto [content-end];
 		border-block-end: 1px solid var(--stratakit-color-border-neutral-muted);

@@ -226,6 +226,19 @@ DEV: AccordionItemLabel.displayName = "AccordionItem.Label";
  *   <AccordionItem.Marker />
  * </AccordionItem.Header>
  * ```
+ *
+ * The decoration can also be placed after the button's label.
+ *
+ * Example:
+ * ```tsx
+ * <AccordionItem.Header>
+ *   <AccordionItem.Button>
+ *     <AccordionItem.Label>Label</AccordionItem.Label>
+ *   </AccordionItem.Button>
+ *   <AccordionItem.Decoration render={<Icon href={placeholder} />} />
+ *   <AccordionItem.Marker />
+ * </AccordionItem.Header>
+ * ```
  */
 const AccordionItemDecoration = forwardRef<"div", BaseProps>(
 	(props, forwardedRef) => (
@@ -248,6 +261,18 @@ DEV: AccordionItemDecoration.displayName = "AccordionItem.Decoration";
  *     <AccordionItem.Label>Label</AccordionItem.Label>
  *   </AccordionItem.Button>
  *   <AccordionItem.Marker />
+ * </AccordionItem.Header>
+ * ```
+ *
+ * The marker can also be placed before the button's label.
+ *
+ * Example:
+ * ```tsx
+ * <AccordionItem.Header>
+ * 	 <AccordionItem.Marker />
+ *   <AccordionItem.Button>
+ *     <AccordionItem.Label>Label</AccordionItem.Label>
+ *   </AccordionItem.Button>
  * </AccordionItem.Header>
  * ```
  *

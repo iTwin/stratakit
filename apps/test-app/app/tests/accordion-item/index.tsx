@@ -15,14 +15,16 @@ export default definePage(
 		content = "Body",
 		withDecoration,
 		defaultOpen: defaultOpenProp,
+		markerBefore,
+		decorationBefore,
 	}) {
 		const defaultOpen = Boolean(defaultOpenProp);
 		return (
 			<>
 				<AccordionItem.Root defaultOpen={defaultOpen}>
 					<AccordionItem.Header>
-						<AccordionItem.Marker />
-						{withDecoration ? (
+						{markerBefore ? <AccordionItem.Marker /> : null}
+						{withDecoration && decorationBefore ? (
 							<AccordionItem.Decoration
 								render={<Icon href={placeholderIcon} />}
 							/>
@@ -30,6 +32,12 @@ export default definePage(
 						<AccordionItem.Button data-testid="button">
 							<AccordionItem.Label>{label}</AccordionItem.Label>
 						</AccordionItem.Button>
+						{withDecoration && !decorationBefore ? (
+							<AccordionItem.Decoration
+								render={<Icon href={placeholderIcon} />}
+							/>
+						) : null}
+						{!markerBefore ? <AccordionItem.Marker /> : null}
 					</AccordionItem.Header>
 					<AccordionItem.Content data-testid="content">
 						{content}

@@ -14,19 +14,24 @@ export default definePage(function Page() {
 			{(
 				[undefined, "positive", "warning", "negative", "informational"] as const
 			).map((type) => (
-				<Alert
-					key={type}
-					type={type}
-					clickableText="Learn more"
-					clickableTextProps={{ onClick: () => console.log("Clicked!") }}
-					onClose={() => {}}
-				>
+				<Alert key={type ?? "undefined"} type={type}>
 					{type} Alert
 				</Alert>
 			))}
 
+			{/* Deprecated but supported props */}
+			<Alert
+				clickableText="Learn more"
+				clickableTextProps={{ className: "clickable-text" }}
+				onClose={() => {
+					console.log("onClose clicked");
+				}}
+			>
+				Alert with deprecated props
+			</Alert>
+
 			{/* Not implemented props */}
-			<Alert isSticky>Alert</Alert>
+			<Alert isSticky>Alert with not implemented props</Alert>
 		</div>
 	);
 });

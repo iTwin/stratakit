@@ -698,6 +698,27 @@ function SandboxTree({ data: treeData }: { data: TreeItemData[] }) {
 						(errorItem) => errorItem.id === item.id,
 					);
 					const id = hasError ? `${treeId}-${item.id}` : undefined;
+					const actions = [
+						<Tree.ItemAction key="lock" icon={lockIcon} label="Lock" />,
+						<VisibilityAction
+							key="visibility"
+							item={item}
+							onClick={toggleHidden}
+						/>,
+						<Tree.ItemAction key="copy" label="Copy" />,
+						<Tree.ItemAction key="paste" label="Paste" />,
+						<Tree.ItemAction key="copy-paste" label="Copy/Paste as" />,
+						<Tree.ItemAction key="move" label="Move to" />,
+						<Tree.ItemAction key="bring-to-front" label="Bring to front" />,
+						<Tree.ItemAction key="send-to-back" label="Send to back" />,
+						<Tree.ItemAction key="group" label="Group selection" />,
+						<Tree.ItemAction key="ungroup" label="Ungroup" />,
+						<Tree.ItemAction key="rename" label="Rename" />,
+						<Tree.ItemAction key="show-hide" label="Show/hide" />,
+						<Tree.ItemAction key="lock-unlock" label="Lock/unlock" />,
+						<Tree.ItemAction key="isolate" label="Isolate object" />,
+					];
+					const inlineActions = actions.splice(0, 2);
 					return (
 						<Tree.Item
 							key={item.id}
@@ -735,38 +756,32 @@ function SandboxTree({ data: treeData }: { data: TreeItemData[] }) {
 									<Icon href={placeholderIcon} />
 								</>
 							}
-							actions={[
-								hasError ? (
-									<Tree.ItemAction
-										key="retry"
-										icon={retryIcon}
-										label="Retry"
-										onClick={() => {
-											setFailingIds((prev) => {
-												return prev.filter((id) => id !== item.id);
-											});
-										}}
-									/>
-								) : null,
-								<Tree.ItemAction key="lock" icon={lockIcon} label="Lock" />,
-								<VisibilityAction
-									key="visibility"
-									item={item}
-									onClick={toggleHidden}
-								/>,
-								<Tree.ItemAction key="copy" label="Copy" />,
-								<Tree.ItemAction key="paste" label="Paste" />,
-								<Tree.ItemAction key="copy-paste" label="Copy/Paste as" />,
-								<Tree.ItemAction key="move" label="Move to" />,
-								<Tree.ItemAction key="bring-to-front" label="Bring to front" />,
-								<Tree.ItemAction key="send-to-back" label="Send to back" />,
-								<Tree.ItemAction key="group" label="Group selection" />,
-								<Tree.ItemAction key="ungroup" label="Ungroup" />,
-								<Tree.ItemAction key="rename" label="Rename" />,
-								<Tree.ItemAction key="show-hide" label="Show/hide" />,
-								<Tree.ItemAction key="lock-unlock" label="Lock/unlock" />,
-								<Tree.ItemAction key="isolate" label="Isolate object" />,
-							]}
+							actions={
+								hasError
+									? [
+											<Tree.ItemAction
+												key="retry"
+												icon={retryIcon}
+												label="Retry"
+												onClick={() => {
+													setFailingIds((prev) => {
+														return prev.filter((id) => id !== item.id);
+													});
+												}}
+											/>,
+											<Tree.ItemOverflowAction
+												key="overflow"
+												actions={actions}
+											/>,
+										]
+									: [
+											...inlineActions,
+											<Tree.ItemOverflowAction
+												key="overflow"
+												actions={actions}
+											/>,
+										]
+							}
 							error={hasError ? `${id}-message` : undefined}
 						/>
 					);

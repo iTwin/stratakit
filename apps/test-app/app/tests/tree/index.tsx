@@ -107,6 +107,11 @@ export default definePage(
 					const error = renderError && index === 0 && childIndex === undefined;
 					const hasDescription =
 						(index === 0 && childIndex === undefined) || childIndex === 0;
+
+					const actions = [
+						<Tree.ItemAction key="unlock" icon={unlockIcon} label="Unlock" />,
+						<Tree.ItemAction key="show" icon={showIcon} label="Show" />,
+					];
 					return (
 						<Tree.Item
 							key={item.label}
@@ -157,22 +162,22 @@ export default definePage(
 									<Icon href={placeholderIcon} />
 								)
 							}
-							actions={[
-								error && (
-									<Tree.ItemAction
-										key="retry"
-										icon={refreshIcon}
-										label="Retry"
-										onClick={handleRetry}
-									/>
-								),
-								<Tree.ItemAction
-									key="unlock"
-									icon={unlockIcon}
-									label="Unlock"
-								/>,
-								<Tree.ItemAction key="show" icon={showIcon} label="Show" />,
-							]}
+							actions={
+								error
+									? [
+											<Tree.ItemAction
+												key="retry"
+												icon={refreshIcon}
+												label="Retry"
+												onClick={handleRetry}
+											/>,
+											<Tree.ItemOverflowAction
+												key="overflow"
+												actions={actions}
+											/>,
+										]
+									: actions
+							}
 						/>
 					);
 				})}
@@ -191,6 +196,7 @@ function ActionsOverflowTest({ count = 5, dot = false }) {
 			dot={dot ? "Something's going on" : undefined}
 		/>
 	));
+	const inlineActions = actions.slice(0, 2);
 
 	return (
 		<Tree.Root>
@@ -199,7 +205,10 @@ function ActionsOverflowTest({ count = 5, dot = false }) {
 				aria-level={1}
 				aria-posinset={1}
 				aria-setsize={1}
-				actions={actions}
+				actions={[
+					...inlineActions,
+					<Tree.ItemOverflowAction key="menu" actions={actions} />,
+				]}
 			/>
 		</Tree.Root>
 	);

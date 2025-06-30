@@ -3,13 +3,15 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
+import * as React from "react";
 import { Anchor, VisuallyHidden } from "@stratakit/bricks";
 import { unstable_Banner as SkBanner } from "@stratakit/structures";
-import * as React from "react";
-import { useCompatProps } from "./~utils.tsx";
+import {
+	type PolymorphicForwardRefComponent,
+	useCompatProps,
+} from "./~utils.js";
 
 import type { Alert as IuiAlert } from "@itwin/itwinui-react";
-import type { PolymorphicForwardRefComponent } from "./~utils.tsx";
 
 type SkBannerProps = React.ComponentProps<typeof SkBanner>;
 type IuiAlertProps = React.ComponentProps<typeof IuiAlert>;
@@ -26,12 +28,16 @@ interface AlertProps
 /** @see https://itwinui.bentley.com/docs/alert */
 export const Alert = React.forwardRef((props, forwardedRef) => {
 	const {
-		isSticky, // NOT IMPLEMENTED
 		type,
 		children,
 		clickableText,
 		clickableTextProps,
 		onClose,
+
+		// biome-ignore-start lint/correctness/noUnusedVariables: NOT IMPLEMENTED
+		isSticky,
+		// biome-ignore-end lint/correctness/noUnusedVariables: NOT IMPLEMENTED
+
 		...rest
 	} = useCompatProps(props);
 

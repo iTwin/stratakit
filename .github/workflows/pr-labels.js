@@ -107,7 +107,7 @@ const LABEL_MAP = {
 	[LABELS.PLATFORM_BAR]: [],
 	[LABELS.POPOVER]: [],
 	[LABELS.PROGRESS_BAR]: [
-		"packages/bricks/src/ProgressBar",
+		"packages/bricks/src/Progress",
 		"packages/compat/src/ProgressLinear.tsx",
 	],
 	[LABELS.RADIO]: [

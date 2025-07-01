@@ -4,6 +4,8 @@
  *--------------------------------------------------------------------------------------------*/
 html {
 	background-color: var(--stratakit-color-bg-page-base);
+	scrollbar-color: var(--stratakit-color-bg-control-scrollbar-surface)
+		var(--stratakit-color-bg-page-base);
 }
 
 body {

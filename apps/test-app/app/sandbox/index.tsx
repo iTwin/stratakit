@@ -846,7 +846,7 @@ function Subheader({ tabs }: { tabs?: React.ReactNode }) {
 		return `Showing ${itemCount} tree items`;
 	}, [isFiltered, itemCount]);
 
-	const [isOverflowing, setIsOverflowing] = React.useState(false);
+	// const [isOverflowing, setIsOverflowing] = React.useState(false);
 
 	React.useEffect(() => {
 		const subHeader = subHeaderRef.current;
@@ -874,9 +874,13 @@ function Subheader({ tabs }: { tabs?: React.ReactNode }) {
 
 			const scrollbarHeight = overflow ? `${scrollbarHeightVal}` : "auto";
 			// const scrollbarHeight = overflow ? "2vh" : "auto";
-			subHeader.style.setProperty("--ids-scrollbar-height", scrollbarHeight);
+			subHeader.style.setProperty("--scrollbar-height", scrollbarHeight);
+			subHeaderContent.style.setProperty(
+				"overflow-x",
+				overflow ? "scroll" : "hidden",
+			);
 
-			setIsOverflowing(overflow);
+			// setIsOverflowing(overflow);
 		});
 		ro.observe(subHeader);
 		ro.observe(subHeaderContent);
@@ -891,7 +895,7 @@ function Subheader({ tabs }: { tabs?: React.ReactNode }) {
 		if (!subHeader) return;
 
 		if (isSearchboxVisible) {
-			subHeader.style.setProperty("--ids-scrollbar-height", "auto");
+			subHeader.style.setProperty("--scrollbar-height", "auto");
 		}
 	}, [isSearchboxVisible]);
 
@@ -904,7 +908,7 @@ function Subheader({ tabs }: { tabs?: React.ReactNode }) {
 			{tabs && !isSearchboxVisible ? (
 				<div
 					className={styles.subheaderContent}
-					data-overflow={isOverflowing && !isSearchboxVisible}
+					// data-overflow={isOverflowing}
 					ref={subHeaderContentRef}
 				>
 					<Tabs.TabList className={styles.tabList} tone="accent" ref={tabsRef}>

@@ -137,15 +137,7 @@ interface TreeItemProps extends Omit<BaseProps, "content" | "children"> {
 	 *
 	 * The actions are normally hidden until the treeitem is hovered or focused.
 	 * When the `error` prop is set, the actions will be made visible by default. The first
-	 * action slot can be used to display an error-related action.
-	 *
-	 * ```tsx
-	 * actions={[
-	 *   error && <Tree.ItemAction key={…} icon={…} label={…} />,
-	 *   <Tree.ItemAction key={…} icon={…} label={…} />,
-	 *   <Tree.ItemAction key={…} icon={…} label={…} />,
-	 * ]}
-	 * ```
+	 * action slot should usually be used to display an error-related action.
 	 *
 	 * @experimental
 	 */

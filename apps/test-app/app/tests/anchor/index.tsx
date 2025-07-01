@@ -4,6 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 
 import { Anchor } from "@stratakit/bricks";
+import * as AnchorComposition from "@stratakit/bricks/Anchor";
 import { definePage } from "~/~utils.tsx";
 
 export const handle = { title: "Anchor" };

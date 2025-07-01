@@ -1,0 +1,1 @@
+import{a as s,o as r}from"./chunk-NL6KNZEE-8DIhkDRG.js";import{u as m}from"./~utils-CF5lzy44.js";import{b as x}from"./Field-DWE9ECEP.js";import{c as p}from"./TextBox-B4AzHtNM.js";const i=s.forwardRef((t,o)=>{const{status:f,id:a,...e}=m(t);return r.jsx(x,{render:r.jsx(p,{...e}),ref:o,id:a})});i.displayName="Textarea";export{i as T};

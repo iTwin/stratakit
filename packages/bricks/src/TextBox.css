@@ -33,6 +33,7 @@
 		min-inline-size: 0;
 
 		min-block-size: var(--✨height);
+		padding-inline: var(--✨padding-inline);
 		border-radius: 4px;
 
 		background-color: var(--🥝text-box-background-color);
@@ -68,25 +69,22 @@
 				transition: border-color 150ms ease-out;
 			}
 
-			/* Conditional inline padding needed for textarea resizing element (located at bottom right corner) to appear in correct position */
-			&:has(textarea:first-child) {
-				:where(textarea) {
+			/* Propagate padding-inline-start to the nested input/textarea when there is no decoration _before_ it. */
+			&:where(:not(:has(.🥝-text-box-decoration ~ :is(input, textarea)))) {
+				padding-inline-start: 0;
+
+				:where(input, textarea) {
 					padding-inline-start: var(--✨padding-inline);
 				}
 			}
 
-			&:has(textarea:last-child) {
-				:where(textarea) {
+			/* Propagate padding-inline-end to the nested input/textarea when there is no decoration _after_ it. */
+			&:where(:not(:has(:is(input, textarea) ~ .🥝-text-box-decoration))) {
+				padding-inline-end: 0;
+
+				:where(input, textarea) {
 					padding-inline-end: var(--✨padding-inline);
 				}
-			}
-
-			&:not(:has(textarea:first-child)) {
-				padding-inline-start: var(--✨padding-inline);
-			}
-
-			&:not(:has(textarea:last-child)) {
-				padding-inline-end: var(--✨padding-inline);
 			}
 		}
 
@@ -112,11 +110,6 @@
 		:where(textarea) {
 			resize: vertical;
 			resize: block;
-		}
-
-		/* Styles specific to input/textarea (self only) */
-		&:where(input, textarea) {
-			padding-inline: var(--✨padding-inline);
 		}
 
 		/* Styles specific to input/textarea (nested only, "invisible") */

@@ -59,25 +59,3 @@ function VisualTest() {
 		</div>
 	);
 }
-
-function CompositionTest() {
-	const tones = ["neutral", "accent", "critical"] as const;
-
-	return (
-		<div style={{ display: "grid", gap: 4, justifyContent: "start" }}>
-			{tones.map((tone) => {
-				return (
-					<AnchorComposition.Root
-						href="https://example.com"
-						target="_blank"
-						key={tone}
-						tone={tone}
-					>
-						<AnchorComposition.Text>Hello</AnchorComposition.Text>
-						<AnchorComposition.ExternalMarker />
-					</AnchorComposition.Root>
-				);
-			})}
-		</div>
-	);
-}

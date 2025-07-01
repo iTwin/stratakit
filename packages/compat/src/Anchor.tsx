@@ -3,9 +3,8 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import * as SkAnchor from "@stratakit/bricks/Anchor";
 import * as React from "react";
-import { Anchor as SkAnchor } from "@stratakit/bricks";
+import * as SkAnchor from "@stratakit/bricks/Anchor";
 import { useCompatProps } from "./~utils.js";
 
 import type { Anchor as IuiAnchor } from "@itwin/itwinui-react";

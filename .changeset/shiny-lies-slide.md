@@ -6,8 +6,8 @@ Added `Tree.ItemOverflowAction` component to display the tree item actions in th
 
 ```tsx
 <Tree.ItemOverflowAction label={…} actions={[
-   <Tree.ItemAction key={…} icon={…} label={…} />,
-	 <Tree.ItemAction key={…} icon={…} label={…} />,
+  <Tree.ItemAction key={…} icon={…} label={…} />,
+  <Tree.ItemAction key={…} icon={…} label={…} />,
 ]} />
 ```
 

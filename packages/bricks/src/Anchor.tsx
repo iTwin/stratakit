@@ -5,8 +5,8 @@
 
 import { Focusable } from "@ariakit/react/focusable";
 import { Role } from "@ariakit/react/role";
-import { forwardRef } from "@stratakit/foundations/secret-internals";
 import { VisuallyHidden } from "@stratakit/bricks";
+import { forwardRef } from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
 
 import type {

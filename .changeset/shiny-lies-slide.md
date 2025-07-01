@@ -11,7 +11,7 @@ Added `Tree.ItemOverflowAction` component to display the tree item actions in th
 ]} />
 ```
 
-Updated `Tree.Item` component to no longer handle the overflow of specified actions. Instead, consumers can now use the `Tree.ItemOverflowAction` component to render the overflow actions manually.
+Updated `Tree.Item` component to no longer handle the overflow of specified actions. Instead, consumers can now use the `Tree.ItemOverflowAction` component to render the actions in the overflow menu manually.
 
 ```tsx
 actions={[

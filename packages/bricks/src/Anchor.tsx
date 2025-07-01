@@ -73,9 +73,7 @@ const AnchorText = forwardRef<"span", AnchorTextProps>(
 				{...props}
 				className={cx("🥝-anchor-text", props.className)}
 				ref={forwardedRef}
-			>
-				{props.children}
-			</Role.span>
+			/>
 		);
 	},
 );
@@ -129,12 +127,8 @@ interface AnchorProps extends FocusableProps<"a"> {
  * A styled anchor element, typically used for navigating to a different location.
  */
 const Anchor = forwardRef<"a", AnchorProps>((props, forwardedRef) => {
-	const { children, tone = "neutral", ...rest } = props;
-	return (
-		<AnchorRoot {...rest} tone={tone} ref={forwardedRef}>
-			{children}
-		</AnchorRoot>
-	);
+	const { tone = "neutral", ...rest } = props;
+	return <AnchorRoot {...rest} tone={tone} ref={forwardedRef} />;
 });
 DEV: Anchor.displayName = "Anchor";
 

@@ -120,6 +120,7 @@
 			flex: 999;
 			align-self: stretch;
 			transition: background-color 150ms ease-out;
+			min-height: inherit;
 		}
 	}
 

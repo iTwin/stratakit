@@ -3,12 +3,12 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import { Field, Radio as SkRadio } from "@stratakit/bricks";
 import * as React from "react";
-import { useCompatProps } from "./~utils.tsx";
+import { Field, Radio as SkRadio } from "@stratakit/bricks";
+import { useCompatProps } from "./~utils.js";
 
 import type { Radio as IuiRadio } from "@itwin/itwinui-react";
-import type { PolymorphicForwardRefComponent } from "./~utils.tsx";
+import type { PolymorphicForwardRefComponent } from "./~utils.js";
 
 type SkRadioProps = React.ComponentProps<typeof SkRadio>;
 type IuiRadioProps = React.ComponentProps<typeof IuiRadio>;

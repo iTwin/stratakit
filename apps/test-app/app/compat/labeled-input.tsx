@@ -3,16 +3,17 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import placeholderIcon from "@stratakit/icons/placeholder.svg";
 import { LabeledInput } from "@stratakit/react";
 import { definePage } from "~/~utils.tsx";
+
+import placeholderIcon from "@stratakit/icons/placeholder.svg";
 
 export const handle = { title: "LabeledInput" };
 
 export default definePage(function Page() {
 	return (
 		<div style={{ display: "grid", gap: 16 }}>
-			<LabeledInput label="Label" displayStyle="inline" />
+			<LabeledInput label="Label" id="custom-id" displayStyle="inline" />
 			<LabeledInput label="Label" message="Description" />
 			<LabeledInput required label="Label" message="Description" />
 			<LabeledInput disabled label="Label" message="Description" />

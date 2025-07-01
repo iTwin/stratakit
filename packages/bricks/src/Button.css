@@ -28,7 +28,8 @@
 	);
 	--✨bg--solid-disabled: var(--stratakit-color-bg-glow-on-surface-disabled);
 
-	--✨shadow--solid: var(--stratakit-shadow-button-base-inset), var(--✨shadow-border),
+	--✨shadow--solid:
+		var(--stratakit-shadow-button-base-inset), var(--✨shadow-border),
 		var(--stratakit-shadow-button-base-drop);
 
 	--✨border--solid-neutral-default: var(--stratakit-color-border-shadow-base);

@@ -3,9 +3,11 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import { VisuallyHidden } from "@ariakit/react/visually-hidden";
 import { Outlet, useMatches } from "react-router";
+import { VisuallyHidden } from "@ariakit/react/visually-hidden";
+
 import type { MetaFunction } from "react-router";
+
 import styles from "./compat.module.css";
 
 export const meta: MetaFunction = () => {

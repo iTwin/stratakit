@@ -6,9 +6,9 @@
 import { Role } from "@ariakit/react/role";
 import { forwardRef } from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
+import VisuallyHidden from "./VisuallyHidden.js";
 
 import type { BaseProps } from "@stratakit/foundations/secret-internals";
-import VisuallyHidden from "./VisuallyHidden.js";
 
 interface SpinnerProps extends BaseProps {
 	/**

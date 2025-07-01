@@ -85,11 +85,11 @@
 			"development": "./dist/DEV/Label.js",
 			"default": "./dist/Label.js"
 		},
-		"./ProgressBar": {
-			"@stratakit/source": "./src/ProgressBar.tsx",
-			"types": "./dist/ProgressBar.d.ts",
-			"development": "./dist/DEV/ProgressBar.js",
-			"default": "./dist/ProgressBar.js"
+		"./Progress": {
+			"@stratakit/source": "./src/Progress.tsx",
+			"types": "./dist/Progress.d.ts",
+			"development": "./dist/DEV/Progress.js",
+			"default": "./dist/Progress.js"
 		},
 		"./Radio": {
 			"@stratakit/source": "./src/Radio.tsx",

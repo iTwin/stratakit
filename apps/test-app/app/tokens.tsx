@@ -8,15 +8,16 @@ import { Button, Divider, Text } from "@stratakit/bricks";
 import { Icon } from "@stratakit/foundations";
 import { Table } from "@stratakit/structures";
 import { parseTokens } from "internal/lightningcss-visitors.js";
-import rawDarkTokens from "internal/theme-dark.json";
-import rawLightTokens from "internal/theme-light.json";
-import rawTypographyTokens from "internal/typography.json";
 import { useColorScheme } from "~/~utils.tsx";
-import globalStyles from "./tokens.css?url";
-import styles from "./tokens.module.css";
 
 import type * as React from "react";
 import type { LinksFunction, MetaFunction } from "react-router";
+
+import rawDarkTokens from "internal/theme-dark.json";
+import rawLightTokens from "internal/theme-light.json";
+import rawTypographyTokens from "internal/typography.json";
+import globalStyles from "./tokens.css?url";
+import styles from "./tokens.module.css";
 
 const lightColorTokens = parseTokens(rawLightTokens.color);
 const lightShadowTokens = parseTokens(rawLightTokens.shadow);
@@ -54,11 +55,15 @@ export default function Page() {
 
 	return (
 		<>
-			<h1>Tokens</h1>
+			<Text variant="headline-md" render={<h1 />}>
+				Tokens
+			</Text>
 
 			<Divider />
 
-			<h2>Colors</h2>
+			<Text variant="body-lg" render={<h2 />}>
+				Colors
+			</Text>
 
 			{Object.entries(categories).map(([key, value]) => {
 				const relevantTokens = [...colorTokens.keys()].filter((token) => {
@@ -95,7 +100,9 @@ export default function Page() {
 
 			<Divider />
 
-			<h2>Shadows</h2>
+			<Text variant="body-lg" render={<h2 />}>
+				Shadows
+			</Text>
 
 			<Disclosure.DisclosureProvider defaultOpen={true}>
 				<div className={styles.disclosureWrapper}>
@@ -115,7 +122,9 @@ export default function Page() {
 
 			<Divider />
 
-			<h2>Typography</h2>
+			<Text variant="body-lg" render={<h2 />}>
+				Typography
+			</Text>
 
 			<Disclosure.DisclosureProvider defaultOpen={true}>
 				<div className={styles.disclosureWrapper}>

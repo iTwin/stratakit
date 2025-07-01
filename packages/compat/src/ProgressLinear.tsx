@@ -3,15 +3,15 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
+import * as React from "react";
 import {
 	ProgressBar as SkProgressBar,
 	VisuallyHidden,
 } from "@stratakit/bricks";
-import * as React from "react";
-import { useCompatProps } from "./~utils.tsx";
+import { useCompatProps } from "./~utils.js";
 
 import type { ProgressLinear as IuiProgressBar } from "@itwin/itwinui-react";
-import type { PolymorphicForwardRefComponent } from "./~utils.tsx";
+import type { PolymorphicForwardRefComponent } from "./~utils.js";
 
 type IuiProgressBarProps = React.ComponentProps<typeof IuiProgressBar>;
 

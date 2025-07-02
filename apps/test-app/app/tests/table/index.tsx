@@ -68,7 +68,7 @@ function CustomTableTest() {
 					<Table.Cell>Orange</Table.Cell>
 					<Table.Cell>Orange</Table.Cell>
 				</Table.Row>
-				<Table.Row>
+				<Table.Row aria-selected>
 					<Table.Cell>Kiwi</Table.Cell>
 					<Table.Cell>Golden brown</Table.Cell>
 				</Table.Row>
@@ -100,7 +100,7 @@ function HtmlTableTest() {
 					<Table.Cell>Orange</Table.Cell>
 					<Table.Cell>Orange</Table.Cell>
 				</Table.Row>
-				<Table.Row>
+				<Table.Row aria-selected>
 					<Table.Cell>Kiwi</Table.Cell>
 					<Table.Cell>Golden brown</Table.Cell>
 				</Table.Row>

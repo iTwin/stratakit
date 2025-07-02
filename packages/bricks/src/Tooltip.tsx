@@ -3,12 +3,14 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
+import * as React from "react";
 import { useStoreState } from "@ariakit/react/store";
 import * as AkTooltip from "@ariakit/react/tooltip";
-import { forwardRef } from "@stratakit/foundations/secret-internals";
-import { usePopoverApi } from "@stratakit/foundations/secret-internals";
+import {
+	forwardRef,
+	usePopoverApi,
+} from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
-import * as React from "react";
 
 import type { FocusableProps } from "@stratakit/foundations/secret-internals";
 
@@ -105,7 +107,6 @@ const Tooltip = forwardRef<"div", TooltipProps>((props, forwardedRef) => {
 					{...(type === "label" && { "aria-labelledby": id })}
 				/>
 				<AkTooltip.Tooltip
-					aria-hidden="true"
 					portal
 					{...rest}
 					unmountOnHide={unmountOnHide}

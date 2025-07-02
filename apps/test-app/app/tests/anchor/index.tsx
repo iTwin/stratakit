@@ -50,6 +50,7 @@ function VisualTest() {
 							target="_blank"
 							key={tone}
 							tone={tone}
+							data-testid="root"
 						>
 							<AnchorComposition.Text>External</AnchorComposition.Text>
 							<AnchorComposition.ExternalMarker />

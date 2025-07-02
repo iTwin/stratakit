@@ -42,6 +42,13 @@ test("disabled", async ({ page }) => {
 	await expect(anchor).toBeFocused();
 });
 
+test("alt text", async ({ page }) => {
+	await page.goto("/tests/anchor?visual=true");
+
+	const anchor = page.getByTestId("root").first();
+	await expect(anchor).toHaveAccessibleName("External (external)");
+});
+
 test.describe("@visual", () => {
 	test("default", async ({ page }) => {
 		await page.goto("/tests/anchor?visual=true");
@@ -60,14 +67,20 @@ test.describe("@visual", () => {
 });
 
 test.describe("@a11y", () => {
-	test("Axe Page Scan", async ({ page }) => {
-		await page.goto("/tests/anchor");
+	const paramsSet = new Set([
+		new URLSearchParams(),
+		new URLSearchParams("?visual"),
+	]);
+	for (const params of paramsSet) {
+		test(`Axe Page Scan: ?${params}`, async ({ page }) => {
+			await page.goto(`/tests/anchor?${params}`);
 
-		const anchor = page.getByRole("link");
-		await expect(anchor).toBeVisible();
+			const anchor = page.getByRole("link").first();
+			await expect(anchor).toBeVisible();
 
-		const axe = new AxeBuilder({ page });
-		const accessibilityScan = await axe.analyze();
-		expect(accessibilityScan.violations).toEqual([]);
-	});
+			const axe = new AxeBuilder({ page });
+			const accessibilityScan = await axe.analyze();
+			expect(accessibilityScan.violations).toEqual([]);
+		});
+	}
 });

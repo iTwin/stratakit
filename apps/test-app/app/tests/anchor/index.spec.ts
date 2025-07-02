@@ -42,13 +42,6 @@ test("disabled", async ({ page }) => {
 	await expect(anchor).toBeFocused();
 });
 
-test("alt text", async ({ page }) => {
-	await page.goto("/tests/anchor?visual=true");
-
-	const anchor = page.getByTestId("root").first();
-	await expect(anchor).toHaveAccessibleName("External (external)");
-});
-
 test.describe("@visual", () => {
 	test("default", async ({ page }) => {
 		await page.goto("/tests/anchor?visual=true");
@@ -83,4 +76,11 @@ test.describe("@a11y", () => {
 			expect(accessibilityScan.violations).toEqual([]);
 		});
 	}
+
+	test("alt text", async ({ page }) => {
+		await page.goto("/tests/anchor?visual=true");
+
+		const anchor = page.getByRole("link", { name: "External" }).first();
+		await expect(anchor).toHaveAccessibleName("External (external)");
+	});
 });

@@ -2,8 +2,13 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
 
 import * as React from "react";
+import { Checkbox, VisuallyHidden } from "@stratakit/bricks";
 import { Table } from "@stratakit/structures";
 import { definePage } from "~/~utils.tsx";
 
@@ -46,6 +51,7 @@ export default definePage(
 		scroll: ScrollTest,
 		customTable: CustomTableTest,
 		htmlTable: HtmlTableTest,
+		selection: SelectionTest,
 	},
 );
 
@@ -144,7 +150,7 @@ function ScrollTest() {
 			<Table.Caption>Table caption</Table.Caption>
 			<Table.Header>
 				<Table.Row>
-					{Object.keys(data[0]).map((columnName: string) => (
+					{Object.keys(data[0]).map((columnName) => (
 						<Table.Cell key={columnName}>
 							{capitalizeFirstLetter(columnName)}
 						</Table.Cell>
@@ -159,6 +165,125 @@ function ScrollTest() {
 						))}
 					</Table.Row>
 				))}
+			</Table.Body>
+		</Table.CustomTable>
+	);
+}
+
+const selectionData = Array(5)
+	.fill(null)
+	.map((_, index) => ({
+		id: index,
+		name: `Name ${index}`,
+		description: `Description ${index}`,
+	}));
+
+function SelectionTest() {
+	return (
+		<div style={{ display: "grid", gap: 20 }}>
+			<SingleSelection />
+			<MultiSelection />
+		</div>
+	);
+}
+
+function SingleSelection() {
+	const [selected, setSelected] = React.useState<number | undefined>(undefined);
+	const tableId = React.useId();
+	return (
+		<Table.CustomTable>
+			<Table.Caption>Single Selection</Table.Caption>
+			<Table.Header>
+				<Table.Row>
+					<Table.Cell>
+						<VisuallyHidden>Select</VisuallyHidden>
+					</Table.Cell>
+					<Table.Cell>Name</Table.Cell>
+					<Table.Cell>Description</Table.Cell>
+				</Table.Row>
+			</Table.Header>
+			<Table.Body>
+				{selectionData.map((row) => {
+					const rowSelected = row.id === selected;
+					const nameId = `${tableId}-${row.id}-name`;
+					return (
+						<Table.Row key={row.id} aria-selected={rowSelected}>
+							<Table.Cell>
+								<Checkbox
+									checked={rowSelected}
+									onChange={(e) =>
+										setSelected(e.currentTarget.checked ? row.id : undefined)
+									}
+									aria-labelledby={nameId}
+								/>
+							</Table.Cell>
+							<Table.Cell id={nameId}>{row.name}</Table.Cell>
+							<Table.Cell>{row.description}</Table.Cell>
+						</Table.Row>
+					);
+				})}
+			</Table.Body>
+		</Table.CustomTable>
+	);
+}
+
+function MultiSelection() {
+	const [selected, setSelected] = React.useState<number[]>([]);
+	const tableId = React.useId();
+	return (
+		<Table.CustomTable>
+			<Table.Caption>Multi Selection</Table.Caption>
+			<Table.Header>
+				<Table.Row>
+					<Table.Cell>
+						<Checkbox
+							aria-label="Select"
+							checked={
+								selected.length === 0
+									? false
+									: selected.length === selectionData.length
+										? true
+										: "mixed"
+							}
+							onChange={(e) => {
+								setSelected(
+									e.currentTarget.checked
+										? selectionData.map((row) => row.id)
+										: [],
+								);
+							}}
+						/>
+					</Table.Cell>
+					<Table.Cell>Name</Table.Cell>
+					<Table.Cell>Description</Table.Cell>
+				</Table.Row>
+			</Table.Header>
+			<Table.Body>
+				{selectionData.map((row) => {
+					const rowSelected = selected.includes(row.id);
+					const nameId = `${tableId}-${row.id}-name`;
+					return (
+						<Table.Row key={row.id} aria-selected={rowSelected}>
+							<Table.Cell>
+								<Checkbox
+									checked={rowSelected}
+									onChange={(e) => {
+										const newChecked = e.currentTarget.checked;
+										setSelected((prev) => {
+											if (newChecked) {
+												return [...prev, row.id];
+											}
+											return prev.filter((id) => id !== row.id);
+										});
+									}}
+									aria-labelledby={nameId}
+								/>
+							</Table.Cell>
+							<Table.Cell id={nameId}>{row.name}</Table.Cell>
+							<Table.Cell>{row.description}</Table.Cell>
+						</Table.Row>
+					);
+				})}
 			</Table.Body>
 		</Table.CustomTable>
 	);

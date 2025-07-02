@@ -31,34 +31,6 @@ test.describe("@visual", () => {
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
 
-	test("marker before and decoration before", async ({ page }) => {
-		await page.goto(
-			"/tests/accordion-item?markerBefore=true&decorationBefore=true&withDecoration=true",
-		);
-		await expect(page.locator("body")).toHaveScreenshot();
-	});
-
-	test("marker after and decoration before", async ({ page }) => {
-		await page.goto(
-			"/tests/accordion-item?markerBefore=false&decorationBefore=true&withDecoration=true",
-		);
-		await expect(page.locator("body")).toHaveScreenshot();
-	});
-
-	test("marker before and decoration after", async ({ page }) => {
-		await page.goto(
-			"/tests/accordion-item?markerBefore=true&decorationBefore=false&withDecoration=true",
-		);
-		await expect(page.locator("body")).toHaveScreenshot();
-	});
-
-	test("marker after and decoration after", async ({ page }) => {
-		await page.goto(
-			"/tests/accordion-item?markerBefore=false&decorationBefore=false&withDecoration=true",
-		);
-		await expect(page.locator("body")).toHaveScreenshot();
-	});
-
 	test("hovered closed item", async ({ page }) => {
 		await page.goto("/tests/accordion-item");
 

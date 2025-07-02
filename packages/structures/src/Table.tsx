@@ -235,7 +235,13 @@ DEV: TableBody.displayName = "Table.Body";
 
 // ----------------------------------------------------------------------------
 
-interface TableRowProps extends BaseProps<"div"> {}
+interface TableRowProps extends BaseProps<"div"> {
+	/**
+	 * Describes if the row is selected.
+	 * To add selection functionality for the table rows, consumers are encouraged to display the `Checkbox` component in the first column of the table.
+	 */
+	"aria-selected"?: BaseProps<"div">["aria-selected"];
+}
 
 /**
  * `Table.Row` is a component that contains the cells of a table row.

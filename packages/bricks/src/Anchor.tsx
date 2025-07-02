@@ -81,11 +81,8 @@ DEV: AnchorText.displayName = "Anchor.Text";
 
 // ----------------------------------------------------------------------------
 
-interface AnchorExternalMarkerProps extends BaseProps<"span"> {
-	/**
-	 * The content displayed inside the marker.
-	 */
-	children?: React.ReactNode;
+interface AnchorExternalMarkerProps
+	extends Omit<BaseProps<"span">, "children"> {
 	/**
 	 * Visually hidden text for screen readers.
 	 * @default "external"

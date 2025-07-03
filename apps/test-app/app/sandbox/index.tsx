@@ -718,7 +718,21 @@ function SandboxTree({ data: treeData }: { data: TreeItemData[] }) {
 						<Tree.ItemAction key="lock-unlock" label="Lock/unlock" />,
 						<Tree.ItemAction key="isolate" label="Isolate object" />,
 					];
-					const inlineActions = actions.splice(0, 2);
+					const inlineActions = hasError
+						? [
+								<Tree.ItemAction
+									key="retry"
+									icon={retryIcon}
+									label="Retry"
+									onClick={() => {
+										setFailingIds((prev) => {
+											return prev.filter((id) => id !== item.id);
+										});
+									}}
+								/>,
+							]
+						: actions.slice(0, 2);
+					const menuActions = hasError ? actions : actions.slice(2);
 					return (
 						<Tree.Item
 							key={item.id}
@@ -756,32 +770,8 @@ function SandboxTree({ data: treeData }: { data: TreeItemData[] }) {
 									<Icon href={placeholderIcon} />
 								</>
 							}
-							actions={
-								hasError
-									? [
-											<Tree.ItemAction
-												key="retry"
-												icon={retryIcon}
-												label="Retry"
-												onClick={() => {
-													setFailingIds((prev) => {
-														return prev.filter((id) => id !== item.id);
-													});
-												}}
-											/>,
-											<Tree.ItemOverflowAction
-												key="overflow"
-												actions={actions}
-											/>,
-										]
-									: [
-											...inlineActions,
-											<Tree.ItemOverflowAction
-												key="overflow"
-												actions={actions}
-											/>,
-										]
-							}
+							menuActions={menuActions}
+							inlineActions={inlineActions}
 							error={hasError ? `${id}-message` : undefined}
 						/>
 					);

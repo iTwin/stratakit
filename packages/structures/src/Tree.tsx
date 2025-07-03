@@ -7,11 +7,7 @@ import { Composite, useCompositeStore } from "@ariakit/react/composite";
 import { Role } from "@ariakit/react/role";
 import { forwardRef } from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
-import {
-	Action as TreeItemAction,
-	OverflowAction as TreeItemOverflowAction,
-	Root as TreeItemRoot,
-} from "./TreeItem.js";
+import { Action as TreeItemAction, Root as TreeItemRoot } from "./TreeItem.js";
 
 import type { BaseProps } from "@stratakit/foundations/secret-internals";
 
@@ -54,9 +50,4 @@ DEV: Tree.displayName = "Tree.Root";
 
 // ----------------------------------------------------------------------------
 
-export {
-	Tree as Root,
-	TreeItemRoot as Item,
-	TreeItemAction as ItemAction,
-	TreeItemOverflowAction as ItemOverflowAction,
-};
+export { Tree as Root, TreeItemRoot as Item, TreeItemAction as ItemAction };

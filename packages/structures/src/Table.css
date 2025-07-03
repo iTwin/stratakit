@@ -125,3 +125,17 @@
 		--🌀table-cell-state--active-hover: var(--🌀table-cell-state,);
 	}
 }
+
+@media (forced-colors: active) {
+	@layer base {
+		.🥝-table-cell {
+			&:where([role="cell"], td) {
+				:where(.🥝-table-row[aria-selected="true"]) & {
+					background-color: SelectedItem;
+					color: SelectedItemText;
+					forced-color-adjust: none;
+				}
+			}
+		}
+	}
+}

@@ -62,6 +62,7 @@ test.describe("@visual", () => {
 test.describe("@a11y", () => {
 	const paramsSet = new Set([
 		new URLSearchParams(),
+		new URLSearchParams("?visual"),
 		new URLSearchParams("?external"),
 	]);
 	for (const params of paramsSet) {

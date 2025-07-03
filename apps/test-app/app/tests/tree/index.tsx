@@ -163,26 +163,28 @@ export default definePage(
 									<Icon href={placeholderIcon} />
 								)
 							}
-							menuActions={error ? actions : undefined}
-							inlineActions={
-								error
-									? [
-											<Tree.ItemAction
-												key="retry"
-												icon={refreshIcon}
-												label="Retry"
-												onClick={handleRetry}
-											/>,
-										]
-									: actions
-							}
+							actions={[
+								error && (
+									<Tree.ItemAction
+										key="retry"
+										icon={refreshIcon}
+										label="Retry"
+										onClick={handleRetry}
+									/>
+								),
+
+								...actions,
+							]}
 						/>
 					);
 				})}
 			</Tree.Root>
 		);
 	},
-	{ _actionsOverflow: ActionsOverflowTest },
+	{
+		wrapperItemAction: WrapperItemAction,
+		_actionsOverflow: ActionsOverflowTest,
+	},
 );
 
 function ActionsOverflowTest({ count = 5, dot = false }) {
@@ -194,8 +196,6 @@ function ActionsOverflowTest({ count = 5, dot = false }) {
 			dot={dot ? "Something's going on" : undefined}
 		/>
 	));
-	const inlineActions = actions.slice(0, 2);
-	const menuActions = actions.slice(2);
 	return (
 		<Tree.Root>
 			<Tree.Item
@@ -203,8 +203,37 @@ function ActionsOverflowTest({ count = 5, dot = false }) {
 				aria-level={1}
 				aria-posinset={1}
 				aria-setsize={1}
-				inlineActions={inlineActions}
-				menuActions={menuActions}
+				actions={actions}
+			/>
+		</Tree.Root>
+	);
+}
+
+interface ItemActionProps extends React.ComponentProps<typeof Tree.ItemAction> {
+	hidden?: boolean;
+}
+
+function ItemAction(props: ItemActionProps) {
+	const { hidden, ...rest } = props;
+	if (hidden) return null;
+	return <Tree.ItemAction icon={placeholderIcon} {...rest} />;
+}
+
+function WrapperItemAction() {
+	return (
+		<Tree.Root>
+			<Tree.Item
+				label="Foo"
+				aria-level={1}
+				aria-posinset={1}
+				aria-setsize={1}
+				actions={[
+					<ItemAction key="1" label="Action 1" />,
+					<ItemAction key="2" label="Action 2" hidden />,
+					<ItemAction key="3" label="Action 3" />,
+					<ItemAction key="4" label="Action 4" />,
+					<ItemAction key="5" label="Action 5" inline />,
+				]}
 			/>
 		</Tree.Root>
 	);

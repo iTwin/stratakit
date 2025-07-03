@@ -4,11 +4,18 @@
  *--------------------------------------------------------------------------------------------*/
 
 import * as React from "react";
+import {
+	Collection,
+	CollectionItem,
+	type CollectionStore,
+	useCollectionStore,
+} from "@ariakit/react/collection";
 import { CompositeItem } from "@ariakit/react/composite";
 import { PopoverProvider } from "@ariakit/react/popover";
 import { Role } from "@ariakit/react/role";
+import { useStoreState } from "@ariakit/react/store";
 import { Toolbar, ToolbarItem } from "@ariakit/react/toolbar";
-import { IconButton } from "@stratakit/bricks";
+import { IconButton, VisuallyHidden } from "@stratakit/bricks";
 import {
 	GhostAligner,
 	IconButtonPresentation,
@@ -29,10 +36,8 @@ import type { BaseProps } from "@stratakit/foundations/secret-internals";
 
 const TreeItemErrorContext =
 	React.createContext<TreeItemProps["error"]>(undefined);
-const TreeItemInlineActionsContext =
-	React.createContext<TreeItemProps["inlineActions"]>(undefined);
-const TreeItemMenuActionsContext =
-	React.createContext<TreeItemProps["menuActions"]>(undefined);
+const TreeItemActionsContext =
+	React.createContext<TreeItemProps["actions"]>(undefined);
 const TreeItemDecorationsContext =
 	React.createContext<TreeItemProps["unstable_decorations"]>(undefined);
 const TreeItemIconContext =
@@ -143,8 +148,7 @@ interface TreeItemProps extends Omit<BaseProps, "content" | "children"> {
 	 *
 	 * @experimental
 	 */
-	menuActions?: React.ReactNode[];
-	inlineActions?: React.ReactNode[];
+	actions?: React.ReactNode[];
 	/**
 	 * Specifies if the tree item is in an error state.
 	 * The id for an associated error message (e.g. `<ErrorRegion.Item>`) can be passed as a string.
@@ -194,8 +198,7 @@ const TreeItem = React.memo(
 			unstable_decorations: _unstable_decorations,
 			label: _label,
 			description: _description,
-			menuActions: _menuActions,
-			inlineActions: _inlineActions,
+			actions: _actions,
 			error: _error,
 			onClick: onClickProp,
 			onKeyDown: onKeyDownProp,
@@ -267,8 +270,7 @@ interface TreeItemRootProviderProps extends TreeItemProps {
  */
 function TreeItemRootProvider(props: TreeItemRootProviderProps) {
 	const {
-		inlineActions,
-		menuActions,
+		actions,
 		label,
 		description,
 		icon: iconProp,
@@ -284,29 +286,27 @@ function TreeItemRootProvider(props: TreeItemRootProviderProps) {
 	const hasDecoration = icon || decorations;
 	return (
 		<TreeItemErrorContext.Provider value={error}>
-			<TreeItemInlineActionsContext.Provider value={inlineActions}>
-				<TreeItemMenuActionsContext.Provider value={menuActions}>
-					<TreeItemDecorationIdContext.Provider
-						value={hasDecoration ? decorationId : undefined}
-					>
-						<TreeItemDecorationsContext.Provider value={decorations}>
-							<TreeItemIconContext.Provider value={icon}>
-								<TreeItemLabelIdContext.Provider value={labelId}>
-									<TreeItemLabelContext.Provider value={label}>
-										<TreeItemDescriptionContext.Provider value={description}>
-											<TreeItemDescriptionIdContext.Provider
-												value={description ? descriptionId : undefined}
-											>
-												{props.children}
-											</TreeItemDescriptionIdContext.Provider>
-										</TreeItemDescriptionContext.Provider>
-									</TreeItemLabelContext.Provider>
-								</TreeItemLabelIdContext.Provider>
-							</TreeItemIconContext.Provider>
-						</TreeItemDecorationsContext.Provider>
-					</TreeItemDecorationIdContext.Provider>
-				</TreeItemMenuActionsContext.Provider>
-			</TreeItemInlineActionsContext.Provider>
+			<TreeItemActionsContext.Provider value={actions}>
+				<TreeItemDecorationIdContext.Provider
+					value={hasDecoration ? decorationId : undefined}
+				>
+					<TreeItemDecorationsContext.Provider value={decorations}>
+						<TreeItemIconContext.Provider value={icon}>
+							<TreeItemLabelIdContext.Provider value={labelId}>
+								<TreeItemLabelContext.Provider value={label}>
+									<TreeItemDescriptionContext.Provider value={description}>
+										<TreeItemDescriptionIdContext.Provider
+											value={description ? descriptionId : undefined}
+										>
+											{props.children}
+										</TreeItemDescriptionIdContext.Provider>
+									</TreeItemDescriptionContext.Provider>
+								</TreeItemLabelContext.Provider>
+							</TreeItemLabelIdContext.Provider>
+						</TreeItemIconContext.Provider>
+					</TreeItemDecorationsContext.Provider>
+				</TreeItemDecorationIdContext.Provider>
+			</TreeItemActionsContext.Provider>
 		</TreeItemErrorContext.Provider>
 	);
 }
@@ -512,8 +512,7 @@ const TreeItemActions = React.memo(
 				ref={forwardedRef}
 				render={<Toolbar focusLoop={false} />}
 			>
-				<TreeItemInlineActions />
-				<TreeItemMenuActions />
+				<TreeItemActionCollection />
 			</ListItem.Decoration>
 		);
 	}),
@@ -522,17 +521,75 @@ DEV: TreeItemActions.displayName = "TreeItemActions";
 
 // ----------------------------------------------------------------------------
 
-function TreeItemInlineActions() {
-	const actions = React.useContext(TreeItemInlineActionsContext);
-	return actions;
+const TreeItemActionStoreContext = React.createContext<
+	| {
+			store: CollectionStore;
+			itemIndex: number;
+	  }
+	| undefined
+>(undefined);
+
+function TreeItemActionCollection() {
+	const actions = React.useContext(TreeItemActionsContext);
+	const error = React.useContext(TreeItemErrorContext);
+	const actionsLimit = error ? 2 : 3;
+
+	const store = useCollectionStore<TreeItemActionCollectionStoreItem>({
+		defaultItems: [],
+	});
+	const items = useStoreState(store, "items");
+	const { inlineItems, menuItems } = React.useMemo(() => {
+		const sorted = items.sort((a, b) => {
+			if (a.inline && !b.inline) return -1;
+			if (!a.inline && b.inline) return 1;
+			return 0;
+		});
+		const inlineItems = sorted.slice(0, actionsLimit - 1);
+		const menuItems = sorted.slice(actionsLimit - 1);
+		return { inlineItems, menuItems };
+	}, [items, actionsLimit]);
+	return (
+		<>
+			<Collection store={store} render={<VisuallyHidden />}>
+				{actions?.map((action, itemIndex) => {
+					return (
+						<TreeItemActionStoreContext.Provider
+							key={itemIndex.toString()}
+							value={{ store, itemIndex }}
+						>
+							{action}
+						</TreeItemActionStoreContext.Provider>
+					);
+				})}
+			</Collection>
+			{inlineItems.map((item) => {
+				const el = actions?.[item.itemIndex];
+				if (!el) return;
+				return el;
+			})}
+			{menuItems.length > 0 && (
+				<TreeItemMenuActionsContext.Provider
+					value={menuItems.map((item) => {
+						const el = actions?.[item.itemIndex];
+						if (!el) return;
+						return el;
+					})}
+				>
+					<TreeItemActionMenu />
+				</TreeItemMenuActionsContext.Provider>
+			)}
+		</>
+	);
 }
-DEV: TreeItemInlineActions.displayName = "TreeItemInlineActions";
 
 // ----------------------------------------------------------------------------
 
 const arrowKeys = ["ArrowDown", "ArrowUp", "ArrowLeft", "ArrowRight"];
 
 const TreeItemMenuActionsContentContext = React.createContext(false);
+
+const TreeItemMenuActionsContext =
+	React.createContext<TreeItemProps["actions"]>(undefined);
 
 function TreeItemMenuActions() {
 	const actions = React.useContext(TreeItemMenuActionsContext);
@@ -598,6 +655,15 @@ DEV: TreeItemMenuActionsContent.displayName = "TreeItemMenuActionsContent";
 
 // ----------------------------------------------------------------------------
 
+type CollectionStoreItem = NonNullable<
+	ReturnType<ReturnType<typeof useCollectionStore>["item"]>
+>;
+
+interface TreeItemActionCollectionStoreItem extends CollectionStoreItem {
+	inline: boolean;
+	itemIndex: number;
+}
+
 interface TreeItemActionProps extends Omit<BaseProps<"button">, "children"> {
 	/**
 	 * Label for the action.
@@ -643,6 +709,8 @@ interface TreeItemActionProps extends Omit<BaseProps<"button">, "children"> {
 	 * ```
 	 */
 	dot?: string;
+
+	inline?: boolean;
 }
 
 /**
@@ -656,6 +724,7 @@ const TreeItemAction = React.memo(
 	forwardRef<"button", TreeItemActionProps>((props, forwardedRef) => {
 		const error = React.useContext(TreeItemErrorContext);
 		const {
+			inline = false,
 			visible = error ? true : undefined, // visible by default during error state
 			label,
 			icon,
@@ -663,8 +732,29 @@ const TreeItemAction = React.memo(
 			...rest
 		} = props;
 
+		const menuActionsContext = React.useContext(
+			TreeItemMenuActionsContentContext,
+		);
+
+		const ctx = React.useContext(TreeItemActionStoreContext);
+		const itemIndex = ctx?.itemIndex ?? 0;
+		const getItem = React.useCallback(
+			(item: CollectionStoreItem): TreeItemActionCollectionStoreItem => {
+				return {
+					...item,
+					inline,
+					itemIndex,
+				};
+			},
+			[itemIndex, inline],
+		);
+
+		if (ctx) {
+			return <CollectionItem store={ctx.store} getItem={getItem} />;
+		}
+
 		// return a MenuItem if inside a Menu
-		if (React.useContext(TreeItemMenuActionsContentContext)) {
+		if (menuActionsContext) {
 			return (
 				<DropdownMenu.Item
 					{...rest}

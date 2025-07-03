@@ -69,7 +69,7 @@ test.describe("@a11y", () => {
 		test(`Axe Page Scan: ?${params}`, async ({ page }) => {
 			await page.goto(`/tests/anchor?${params}`);
 
-			const anchor = page.getByRole("link");
+			const anchor = page.getByRole("link").first();
 			await expect(anchor).toBeVisible();
 
 			const axe = new AxeBuilder({ page });

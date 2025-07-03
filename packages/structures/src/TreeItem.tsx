@@ -3,6 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
+import * as React from "react";
 import { CompositeItem } from "@ariakit/react/composite";
 import { PopoverProvider } from "@ariakit/react/popover";
 import { Role } from "@ariakit/react/role";
@@ -18,10 +19,9 @@ import {
 	useEventHandlers,
 } from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
-import * as React from "react";
-import * as DropdownMenu from "./DropdownMenu.js";
-import * as ListItem from "./~utils.ListItem.js";
 import { ChevronDown, MoreHorizontal, StatusIcon } from "./~utils.icons.js";
+import * as ListItem from "./~utils.ListItem.js";
+import * as DropdownMenu from "./DropdownMenu.js";
 
 import type { BaseProps } from "@stratakit/foundations/secret-internals";
 
@@ -193,12 +193,12 @@ const TreeItem = React.memo(
 			onSelectedChange,
 			expanded,
 			onExpandedChange,
-			icon,
-			unstable_decorations,
-			label,
-			description,
-			actions,
-			error: _,
+			icon: _icon,
+			unstable_decorations: _unstable_decorations,
+			label: _label,
+			description: _description,
+			actions: _actions,
+			error: _error,
 			onClick: onClickProp,
 			onKeyDown: onKeyDownProp,
 			...rest

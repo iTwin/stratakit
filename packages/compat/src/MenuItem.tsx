@@ -3,13 +3,13 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
+import * as React from "react";
 import { Icon as SkIcon } from "@stratakit/foundations";
 import { DropdownMenu as SkDropdownMenu } from "@stratakit/structures";
-import * as React from "react";
-import { useCompatProps } from "./~utils.tsx";
+import { useCompatProps } from "./~utils.js";
 
 import type { MenuItem as IuiMenuItem } from "@itwin/itwinui-react";
-import type { PolymorphicForwardRefComponent } from "./~utils.tsx";
+import type { PolymorphicForwardRefComponent } from "./~utils.js";
 
 // ----------------------------------------------------------------------------
 
@@ -57,14 +57,18 @@ export const MenuItem = React.forwardRef((props, forwardedRef) => {
 		icon,
 		startIcon = icon,
 		disabled,
-		endIcon, // NOT IMPLEMENTED
-		value, // NOT IMPLEMENTED
-		sublabel, // NOT IMPLEMENTED
-		isSelected, // NOT IMPLEMENTED
-		focused, // NOT IMPLEMENTED
-		subMenuItems, // NOT IMPLEMENTED
-		size, // NOT IMPLEMENTED
-		badge, // NOT IMPLEMENTED
+
+		// biome-ignore-start lint/correctness/noUnusedVariables: NOT IMPLEMENTED
+		endIcon,
+		value,
+		sublabel,
+		isSelected,
+		focused,
+		subMenuItems,
+		size,
+		badge,
+		// biome-ignore-end lint/correctness/noUnusedVariables: NOT IMPLEMENTED
+
 		...rest
 	} = useCompatProps(props);
 

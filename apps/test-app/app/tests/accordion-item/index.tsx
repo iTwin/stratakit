@@ -2,6 +2,7 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
+
 import { Icon } from "@stratakit/foundations";
 import { unstable_AccordionItem as AccordionItem } from "@stratakit/structures";
 import { definePage } from "~/~utils.tsx";
@@ -17,24 +18,22 @@ export default definePage(
 	}) {
 		const defaultOpen = Boolean(defaultOpenProp);
 		return (
-			<>
-				<AccordionItem.Root defaultOpen={defaultOpen}>
-					<AccordionItem.Header>
-						{withDecoration ? (
-							<AccordionItem.Decoration
-								render={<Icon href={placeholderIcon} />}
-							/>
-						) : null}
-						<AccordionItem.Button data-testid="button">
-							<AccordionItem.Label>{label}</AccordionItem.Label>
-						</AccordionItem.Button>
-						<AccordionItem.Marker />
-					</AccordionItem.Header>
-					<AccordionItem.Content data-testid="content">
-						{content}
-					</AccordionItem.Content>
-				</AccordionItem.Root>
-			</>
+			<AccordionItem.Root defaultOpen={defaultOpen}>
+				<AccordionItem.Header>
+					{withDecoration ? (
+						<AccordionItem.Decoration
+							render={<Icon href={placeholderIcon} />}
+						/>
+					) : null}
+					<AccordionItem.Button data-testid="button">
+						<AccordionItem.Label>{label}</AccordionItem.Label>
+					</AccordionItem.Button>
+					<AccordionItem.Marker />
+				</AccordionItem.Header>
+				<AccordionItem.Content data-testid="content">
+					{content}
+				</AccordionItem.Content>
+			</AccordionItem.Root>
 		);
 	},
 	{

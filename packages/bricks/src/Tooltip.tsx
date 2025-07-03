@@ -3,12 +3,14 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
+import * as React from "react";
 import { useStoreState } from "@ariakit/react/store";
 import * as AkTooltip from "@ariakit/react/tooltip";
-import { forwardRef } from "@stratakit/foundations/secret-internals";
-import { usePopoverApi } from "@stratakit/foundations/secret-internals";
+import {
+	forwardRef,
+	usePopoverApi,
+} from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
-import * as React from "react";
 
 import type { FocusableProps } from "@stratakit/foundations/secret-internals";
 
@@ -70,60 +72,59 @@ interface TooltipProps
  *
  * **Note**: If `type` is set to `"none"`, the tooltip will not use ARIA attributes.
  */
-export const Tooltip = forwardRef<"div", TooltipProps>(
-	(props, forwardedRef) => {
-		const generatedId = React.useId();
-		const {
-			content,
-			children,
-			type = "description",
-			id = generatedId,
-			defaultOpen: defaultOpenProp,
-			open: openProp,
-			setOpen: setOpenProp,
-			unmountOnHide = type === "none",
-			placement,
-			...rest
-		} = props;
+const Tooltip = forwardRef<"div", TooltipProps>((props, forwardedRef) => {
+	const generatedId = React.useId();
+	const {
+		content,
+		children,
+		type = "description",
+		id = generatedId,
+		defaultOpen: defaultOpenProp,
+		open: openProp,
+		setOpen: setOpenProp,
+		unmountOnHide = type === "none",
+		placement,
+		...rest
+	} = props;
 
-		const store = AkTooltip.useTooltipStore();
-		const open = useStoreState(store, (store) => store.open);
-		const popover = usePopoverApi(store);
+	const store = AkTooltip.useTooltipStore();
+	const open = useStoreState(store, (store) => store.open);
+	const popover = usePopoverApi(store);
 
-		return (
-			<>
-				<AkTooltip.TooltipProvider
-					store={store}
-					defaultOpen={defaultOpenProp}
-					open={openProp}
-					setOpen={setOpenProp}
-					placement={placement}
-				>
-					<AkTooltip.TooltipAnchor
-						render={children}
-						data-has-popover-open={open || undefined}
-						{...(type === "description" && { "aria-describedby": id })}
-						{...(type === "label" && { "aria-labelledby": id })}
-					/>
-					<AkTooltip.Tooltip
-						aria-hidden="true"
-						portal
-						{...rest}
-						unmountOnHide={unmountOnHide}
-						className={cx("🥝-tooltip", props.className)}
-						ref={forwardedRef}
-						id={id}
-						style={{
-							...popover.style,
-							...props.style,
-						}}
-						wrapperProps={popover.wrapperProps}
-					>
-						{content}
-					</AkTooltip.Tooltip>
-				</AkTooltip.TooltipProvider>
-			</>
-		);
-	},
-);
+	return (
+		<AkTooltip.TooltipProvider
+			store={store}
+			defaultOpen={defaultOpenProp}
+			open={openProp}
+			setOpen={setOpenProp}
+			placement={placement}
+		>
+			<AkTooltip.TooltipAnchor
+				render={children}
+				data-has-popover-open={open || undefined}
+				{...(type === "description" && { "aria-describedby": id })}
+				{...(type === "label" && { "aria-labelledby": id })}
+			/>
+			<AkTooltip.Tooltip
+				portal
+				{...rest}
+				unmountOnHide={unmountOnHide}
+				className={cx("🥝-tooltip", props.className)}
+				ref={forwardedRef}
+				id={id}
+				style={{
+					...popover.style,
+					...props.style,
+				}}
+				wrapperProps={popover.wrapperProps}
+			>
+				{content}
+			</AkTooltip.Tooltip>
+		</AkTooltip.TooltipProvider>
+	);
+});
 DEV: Tooltip.displayName = "Tooltip";
+
+// ----------------------------------------------------------------------------
+
+export default Tooltip;

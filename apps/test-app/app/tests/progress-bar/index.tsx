@@ -3,13 +3,13 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import { Button, ProgressBar, VisuallyHidden } from "@stratakit/bricks";
 import * as React from "react";
+import { Button, ProgressBar, VisuallyHidden } from "@stratakit/bricks";
 import { definePage } from "~/~utils.tsx";
 
 export const handle = { title: "ProgressBar" };
 
-const sizes = ["small", "medium", "large"] as const;
+const sizes = ["medium", "large"] as const;
 const tones = ["neutral", "accent"] as const;
 
 export default definePage(
@@ -157,25 +157,23 @@ function AnimatedTest() {
 	}, [onStopClick]);
 
 	return (
-		<>
-			<div style={{ display: "grid", gap: 10 }}>
-				<div style={{ display: "flex", gap: 4 }}>
-					<Button onClick={onStartClick} disabled={!!progressInterval}>
-						Start
-					</Button>
-					<Button onClick={onStopClick} disabled={!progressInterval}>
-						Stop
-					</Button>
-					<Button
-						onClick={onResetClick}
-						disabled={!progressInterval && value === 0}
-					>
-						Reset
-					</Button>
-				</div>
-				<ProgressBar value={value} aria-labelledby={labelledBy} />
-				<VisuallyHidden id={labelledBy}>Loading…</VisuallyHidden>
+		<div style={{ display: "grid", gap: 10 }}>
+			<div style={{ display: "flex", gap: 4 }}>
+				<Button onClick={onStartClick} disabled={!!progressInterval}>
+					Start
+				</Button>
+				<Button onClick={onStopClick} disabled={!progressInterval}>
+					Stop
+				</Button>
+				<Button
+					onClick={onResetClick}
+					disabled={!progressInterval && value === 0}
+				>
+					Reset
+				</Button>
 			</div>
-		</>
+			<ProgressBar value={value} aria-labelledby={labelledBy} />
+			<VisuallyHidden id={labelledBy}>Loading…</VisuallyHidden>
+		</div>
 	);
 }

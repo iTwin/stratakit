@@ -3,12 +3,12 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import { Field, Checkbox as SkCheckbox } from "@stratakit/bricks";
 import * as React from "react";
-import { useCompatProps } from "./~utils.tsx";
+import { Field, Checkbox as SkCheckbox } from "@stratakit/bricks";
+import { useCompatProps } from "./~utils.js";
 
 import type { Checkbox as IuiCheckbox } from "@itwin/itwinui-react";
-import type { PolymorphicForwardRefComponent } from "./~utils.tsx";
+import type { PolymorphicForwardRefComponent } from "./~utils.js";
 
 type IuiCheckboxProps = React.ComponentProps<typeof IuiCheckbox>;
 
@@ -39,10 +39,14 @@ export const Checkbox = React.forwardRef((props, forwardedRef) => {
 		label,
 		wrapperProps,
 		labelProps,
-		indeterminate, // NOT IMPLEMENTED
-		status, // NOT IMPLEMENTED
-		variant, // NOT IMPLEMENTED
-		isLoading, // NOT IMPLEMENTED
+
+		// biome-ignore-start lint/correctness/noUnusedVariables: NOT IMPLEMENTED
+		indeterminate,
+		status,
+		variant,
+		isLoading,
+		// biome-ignore-end lint/correctness/noUnusedVariables: NOT IMPLEMENTED
+
 		...rest
 	} = useCompatProps(props);
 

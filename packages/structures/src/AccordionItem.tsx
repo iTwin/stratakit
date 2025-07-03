@@ -2,6 +2,7 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
+
 import {
 	Disclosure,
 	DisclosureContent,
@@ -339,6 +340,8 @@ const AccordionItemHeading = forwardRef<"div", AccordionItemHeadingProps>(
 	),
 );
 DEV: AccordionItemHeading.displayName = "AccordionItem.Heading";
+
+// ----------------------------------------------------------------------------
 
 export {
 	AccordionItemRoot as Root,

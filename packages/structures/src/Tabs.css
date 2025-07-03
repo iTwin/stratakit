@@ -25,7 +25,9 @@
 				background-color: var(--🥝tab-active-stripe-color);
 
 				@media (prefers-reduced-motion: no-preference) {
-					transition: inset-inline-start 150ms ease-in-out, inline-size 150ms ease-in-out;
+					transition:
+						inset-inline-start 150ms ease-in-out,
+						inline-size 150ms ease-in-out;
 				}
 			}
 		}
@@ -37,33 +39,34 @@
 		}
 
 		&:where([data-kiwi-tone="neutral"]) {
-			--🥝tab-active-stripe-color: var(--ids-color-border-neutral-inverse);
+			--🥝tab-active-stripe-color: var(--stratakit-color-border-neutral-inverse);
 		}
 
 		&:where([data-kiwi-tone="accent"]) {
-			--🥝tab-active-stripe-color: var(--ids-color-border-accent-strong);
+			--🥝tab-active-stripe-color: var(--stratakit-color-border-accent-strong);
 		}
 	}
 }
 
 .🥝-tab {
 	--✨height: 1.25rem;
+	--✨gap: 4px;
 
 	--✨bg--default: transparent;
-	--✨bg--hover-neutral: var(--ids-color-bg-glow-on-surface-neutral-hover);
-	--✨bg--hover-accent: var(--ids-color-bg-glow-on-surface-accent-hover);
+	--✨bg--hover-neutral: var(--stratakit-color-bg-glow-on-surface-neutral-hover);
+	--✨bg--hover-accent: var(--stratakit-color-bg-glow-on-surface-accent-hover);
 	--✨bg--selected: transparent;
 	--✨bg--disabled: transparent;
 
-	--✨color--default: var(--ids-color-text-neutral-tertiary);
-	--✨color--hover-neutral: var(--ids-color-text-neutral-primary);
-	--✨color--hover-accent: var(--ids-color-text-accent-strong);
-	--✨color--selected-neutral: var(--ids-color-text-neutral-primary);
-	--✨color--selected-accent: var(--ids-color-text-accent-strong);
-	--✨color--disabled: var(--ids-color-text-neutral-disabled);
+	--✨color--default: var(--stratakit-color-text-neutral-tertiary);
+	--✨color--hover-neutral: var(--stratakit-color-text-neutral-primary);
+	--✨color--hover-accent: var(--stratakit-color-text-accent-strong);
+	--✨color--selected-neutral: var(--stratakit-color-text-neutral-primary);
+	--✨color--selected-accent: var(--stratakit-color-text-accent-strong);
+	--✨color--disabled: var(--stratakit-color-text-neutral-disabled);
 
 	@layer base {
-		font-size: var(--ids-font-size-12);
+		font-size: var(--stratakit-font-size-12);
 		color: var(--🥝tab-color);
 		background-color: var(--🥝tab-bg);
 		border: none;
@@ -73,8 +76,14 @@
 		position: relative;
 		user-select: none;
 		white-space: nowrap;
-		transition: background-color 150ms ease-out, color 150ms ease-out;
+		transition:
+			background-color 150ms ease-out,
+			color 150ms ease-out;
 		cursor: pointer;
+
+		display: inline-flex;
+		align-items: center;
+		gap: var(--✨gap);
 
 		/* This pseudo-element increases tap target size */
 		&::before {
@@ -95,7 +104,7 @@
 				var(--🌀tab-state--hover, var(--✨color--hover-neutral))
 				var(--🌀tab-state--selected, var(--✨color--selected-neutral))
 				var(--🌀tab-state--disabled, var(--✨color--disabled));
-			-webkit-tap-highlight-color: var(--ids-color-bg-glow-on-surface-neutral-pressed);
+			-webkit-tap-highlight-color: var(--stratakit-color-bg-glow-on-surface-neutral-pressed);
 		}
 
 		:where(.🥝-tab-list[data-kiwi-tone="accent"]) & {
@@ -107,7 +116,7 @@
 				var(--🌀tab-state--hover, var(--✨color--hover-accent))
 				var(--🌀tab-state--selected, var(--✨color--selected-accent))
 				var(--🌀tab-state--disabled, var(--✨color--disabled));
-			-webkit-tap-highlight-color: var(--ids-color-bg-glow-on-surface-accent-pressed);
+			-webkit-tap-highlight-color: var(--stratakit-color-bg-glow-on-surface-accent-pressed);
 		}
 	}
 
@@ -137,7 +146,7 @@
 
 		&:where(:disabled, [aria-disabled="true"]) {
 			--🌀tab-state: var(--🌀tab-state--disabled);
-			--🥝tab-active-stripe-color: var(--ids-color-border-neutral-disabled);
+			--🥝tab-active-stripe-color: var(--stratakit-color-border-neutral-disabled);
 			cursor: not-allowed;
 			-webkit-tap-highlight-color: transparent;
 		}

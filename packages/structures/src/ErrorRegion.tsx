@@ -3,6 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
+import * as React from "react";
 import {
 	Collection,
 	CollectionItem,
@@ -22,7 +23,6 @@ import {
 	useControlledState,
 } from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
-import * as React from "react";
 import { ChevronDown, StatusIcon } from "./~utils.icons.js";
 
 import type { BaseProps } from "@stratakit/foundations/secret-internals";
@@ -105,16 +105,17 @@ const ErrorRegionRoot = forwardRef<"div", ErrorRegionRootProps>(
 			el.animate(
 				[
 					{
-						boxShadow: "0 0 0 0 var(--ids-color-border-attention-base)",
+						boxShadow: "0 0 0 0 var(--stratakit-color-border-attention-base)",
 						opacity: 1,
 					},
 					{
-						boxShadow: "0 0 15px 2px var(--ids-color-border-attention-base)",
+						boxShadow:
+							"0 0 15px 2px var(--stratakit-color-border-attention-base)",
 						opacity: 0.7,
 						offset: 0.5,
 					},
 					{
-						boxShadow: "0 0 0 0 var(--ids-color-border-attention-base)",
+						boxShadow: "0 0 0 0 var(--stratakit-color-border-attention-base)",
 						opacity: 1,
 					},
 				],

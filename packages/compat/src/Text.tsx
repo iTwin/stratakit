@@ -3,12 +3,12 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import { Text as SkText } from "@stratakit/bricks";
 import * as React from "react";
-import { useCompatProps } from "./~utils.tsx";
+import { Text as SkText } from "@stratakit/bricks";
+import { useCompatProps } from "./~utils.js";
 
 import type { Text as IuiText } from "@itwin/itwinui-react";
-import type { PolymorphicForwardRefComponent } from "./~utils.tsx";
+import type { PolymorphicForwardRefComponent } from "./~utils.js";
 
 type SkTextProps = React.ComponentProps<typeof SkText>;
 type IuiTextProps = React.ComponentProps<typeof IuiText>;
@@ -25,8 +25,12 @@ interface TextProps
 export const Text = React.forwardRef((props, forwardedRef) => {
 	const {
 		variant: variantProp,
-		isMuted, // NOT IMPLEMENTED
-		isSkeleton, // NOT IMPLEMENTED
+
+		// biome-ignore-start lint/correctness/noUnusedVariables: NOT IMPLEMENTED
+		isMuted,
+		isSkeleton,
+		// biome-ignore-end lint/correctness/noUnusedVariables: NOT IMPLEMENTED
+
 		...rest
 	} = useCompatProps(props);
 

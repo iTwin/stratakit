@@ -3,10 +3,10 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
+import * as React from "react";
 import { Role } from "@ariakit/react/role";
 import { forwardRef } from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
-import * as React from "react";
 
 import type { BaseProps } from "@stratakit/foundations/secret-internals";
 
@@ -21,7 +21,7 @@ interface ProgressBarProps extends Omit<BaseProps, "aria-labelledby"> {
 	 * The size of the progress bar.
 	 * @default "medium"
 	 */
-	size?: "small" | "medium" | "large";
+	size?: "medium" | "large";
 
 	/**
 	 * The tone of the progress bar.
@@ -57,7 +57,7 @@ interface ProgressBarProps extends Omit<BaseProps, "aria-labelledby"> {
  * Supports a `size` prop to change the size of the progress bar.
  *
  */
-export const ProgressBar = forwardRef<"div", ProgressBarProps>(
+const ProgressBar = forwardRef<"div", ProgressBarProps>(
 	(props, forwardedRef) => {
 		const {
 			size = "medium",
@@ -104,3 +104,7 @@ export const ProgressBar = forwardRef<"div", ProgressBarProps>(
 	},
 );
 DEV: ProgressBar.displayName = "ProgressBar";
+
+// ----------------------------------------------------------------------------
+
+export { ProgressBar };

@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.3.0
+
+### Breaking changes
+
+- [#758](https://github.com/iTwin/design-system/pull/758): Removed `onToggle` prop from `Switch` types to prevent misuse of unapplicable props.
+- [#742](https://github.com/iTwin/design-system/pull/742): Removed `size="small"` from `ProgressBar`.
+
+### Non-breaking changes
+
+- [#755](https://github.com/iTwin/design-system/pull/755): Updated the code for icons used internally by components.
+- [#767](https://github.com/iTwin/design-system/pull/767): Removed unused `children` prop from 'AvatarProps` type.
+- [#745](https://github.com/iTwin/design-system/pull/745): Fixed a `ref` type of `Field.Label` component to use the `HTMLLabelElement` instead of `HTMLDivElement`.
+- Updated dependencies:
+  - @stratakit/foundations@0.1.6
+
 ## 0.2.1
 
 - [#736](https://github.com/iTwin/design-system/pull/736): Updated the `label` prop type in the `<Badge />` component from `string` to `ReactNode`.

@@ -62,13 +62,13 @@ test.describe("@visual", () => {
 test.describe("@a11y", () => {
 	const paramsSet = new Set([
 		new URLSearchParams(),
-		new URLSearchParams("?visual"),
+		new URLSearchParams("?external"),
 	]);
 	for (const params of paramsSet) {
 		test(`Axe Page Scan: ?${params}`, async ({ page }) => {
 			await page.goto(`/tests/anchor?${params}`);
 
-			const anchor = page.getByRole("link").first();
+			const anchor = page.getByRole("link");
 			await expect(anchor).toBeVisible();
 
 			const axe = new AxeBuilder({ page });
@@ -78,9 +78,9 @@ test.describe("@a11y", () => {
 	}
 
 	test("alt text", async ({ page }) => {
-		await page.goto("/tests/anchor?visual=true");
+		await page.goto("/tests/anchor?external=true");
 
-		const anchor = page.getByRole("link", { name: "External" }).first();
+		const anchor = page.getByRole("link");
 		await expect(anchor).toHaveAccessibleName("External (external)");
 	});
 });

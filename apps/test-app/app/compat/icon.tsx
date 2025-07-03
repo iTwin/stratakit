@@ -3,7 +3,6 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import * as React from "react";
 import { Icon } from "@stratakit/react";
 import { definePage } from "~/~utils.tsx";
 
@@ -16,8 +15,6 @@ import warningStatusIcon from "@stratakit/icons/status-warning.svg";
 export const handle = { title: "Icon" };
 
 export default definePage(function Page() {
-	const [size, setSize] = React.useState(() => 14 / 16);
-
 	return (
 		<div style={{ display: "grid", gap: 16 }}>
 			<Icon>
@@ -64,31 +61,18 @@ export default definePage(function Page() {
 				</svg>
 			</Icon>
 
-			<div style={{ display: "flex", gap: 16, alignItems: "start" }}>
-				<p
-					style={{
-						width: "min(400px, 90%)",
-						fontSize: `${size}rem`,
-					}}
-				>
-					<Icon size="auto" style={{ display: "inline" }}>
-						<svg>
-							<use href={`${placeholderIcon}#icon`} />
-						</svg>
-					</Icon>
-					This icon will scale with text. Try adjusting the slider.
-				</p>
-
-				<input
-					type="range"
-					style={{ writingMode: "vertical-lr", direction: "rtl" }}
-					min="0.5"
-					max="2.5"
-					step="0.05"
-					value={size}
-					onChange={(e) => setSize(e.target.valueAsNumber)}
-				></input>
-			</div>
+			<p
+				style={{
+					fontSize: "1.5rem",
+				}}
+			>
+				<Icon size="auto" style={{ display: "inline" }}>
+					<svg>
+						<use href={`${placeholderIcon}#icon`} />
+					</svg>
+				</Icon>
+				Autoscale
+			</p>
 		</div>
 	);
 });

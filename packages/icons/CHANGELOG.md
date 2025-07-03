@@ -3,7 +3,6 @@
 ## 0.1.2
 
 - [#754](https://github.com/iTwin/design-system/pull/754): Added icons:
-
   - `inspection.svg`
   - `power-bi.svg`
   - `document-pdf.svg`
@@ -60,7 +59,6 @@
   - `bis-item-generic.svg`
 
   Updated icons:
-
   - `document.svg`
   - `retry.svg`
 

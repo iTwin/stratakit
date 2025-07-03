@@ -53,3 +53,4 @@ DEV: AnchorRoot.displayName = "Anchor.Root";
 // ----------------------------------------------------------------------------
 
 export default AnchorRoot;
+export { AnchorRoot as Root };

@@ -92,37 +92,35 @@ const Tooltip = forwardRef<"div", TooltipProps>((props, forwardedRef) => {
 	const popover = usePopoverApi(store);
 
 	return (
-		<>
-			<AkTooltip.TooltipProvider
-				store={store}
-				defaultOpen={defaultOpenProp}
-				open={openProp}
-				setOpen={setOpenProp}
-				placement={placement}
+		<AkTooltip.TooltipProvider
+			store={store}
+			defaultOpen={defaultOpenProp}
+			open={openProp}
+			setOpen={setOpenProp}
+			placement={placement}
+		>
+			<AkTooltip.TooltipAnchor
+				render={children}
+				data-has-popover-open={open || undefined}
+				{...(type === "description" && { "aria-describedby": id })}
+				{...(type === "label" && { "aria-labelledby": id })}
+			/>
+			<AkTooltip.Tooltip
+				portal
+				{...rest}
+				unmountOnHide={unmountOnHide}
+				className={cx("🥝-tooltip", props.className)}
+				ref={forwardedRef}
+				id={id}
+				style={{
+					...popover.style,
+					...props.style,
+				}}
+				wrapperProps={popover.wrapperProps}
 			>
-				<AkTooltip.TooltipAnchor
-					render={children}
-					data-has-popover-open={open || undefined}
-					{...(type === "description" && { "aria-describedby": id })}
-					{...(type === "label" && { "aria-labelledby": id })}
-				/>
-				<AkTooltip.Tooltip
-					portal
-					{...rest}
-					unmountOnHide={unmountOnHide}
-					className={cx("🥝-tooltip", props.className)}
-					ref={forwardedRef}
-					id={id}
-					style={{
-						...popover.style,
-						...props.style,
-					}}
-					wrapperProps={popover.wrapperProps}
-				>
-					{content}
-				</AkTooltip.Tooltip>
-			</AkTooltip.TooltipProvider>
-		</>
+				{content}
+			</AkTooltip.Tooltip>
+		</AkTooltip.TooltipProvider>
 	);
 });
 DEV: Tooltip.displayName = "Tooltip";

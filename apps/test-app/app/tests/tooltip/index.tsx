@@ -14,17 +14,15 @@ export default definePage(function Page({ "multi-line": multiLine, type }) {
 		: "This is the tooltip";
 
 	return (
-		<>
-			<div style={{ minHeight: 75 }}>
-				<Tooltip
-					content={testContent}
-					type={type as "description" | "label" | "none" | undefined}
-				>
-					<Button>Hover/focus me</Button>
-				</Tooltip>
+		<div style={{ minHeight: 75 }}>
+			<Tooltip
+				content={testContent}
+				type={type as "description" | "label" | "none" | undefined}
+			>
+				<Button>Hover/focus me</Button>
+			</Tooltip>
 
-				<VisuallyHidden tabIndex={0}>Tab stop for focus</VisuallyHidden>
-			</div>
-		</>
+			<VisuallyHidden tabIndex={0}>Tab stop for focus</VisuallyHidden>
+		</div>
 	);
 });

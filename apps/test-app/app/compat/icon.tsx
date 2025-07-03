@@ -3,6 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
+import * as React from "react";
 import { Icon } from "@stratakit/react";
 import { definePage } from "~/~utils.tsx";
 
@@ -15,10 +16,7 @@ import warningStatusIcon from "@stratakit/icons/status-warning.svg";
 export const handle = { title: "Icon" };
 
 export default definePage(function Page() {
-	const placeholderIconHref = new URL(
-		"@stratakit/icons/placeholder.svg",
-		import.meta.url,
-	).href;
+	const [size, setSize] = React.useState(() => 14 / 16);
 
 	return (
 		<div style={{ display: "grid", gap: 16 }}>
@@ -27,7 +25,6 @@ export default definePage(function Page() {
 					<use href={`${placeholderIcon}#icon`} />
 				</svg>
 			</Icon>
-			<Icon>{placeholderIconHref}</Icon>
 			<Icon style={{ outline: "1px solid DeepPink" }}>
 				<svg>
 					<use href={`${placeholderIcon}#icon`} />
@@ -36,45 +33,29 @@ export default definePage(function Page() {
 
 			{/* Partially implemented props */}
 			<div>
-				<Icon size="small" style={{ display: "inline" }}>
-					<svg>
-						<use href={`${placeholderIcon}#icon`} />
-					</svg>
-				</Icon>
-				<Icon size="medium" style={{ display: "inline" }}>
-					<svg>
-						<use href={`${placeholderIcon}#icon`} />
-					</svg>
-				</Icon>
-				<Icon size="large" style={{ display: "inline" }}>
-					<svg>
-						<use href={`${placeholderIcon}#icon`} />
-					</svg>
-				</Icon>
+				{(["small", "medium", "large"] as const).map((iconSize) => (
+					<Icon size={iconSize} style={{ display: "inline" }}>
+						<svg>
+							<use href={`${placeholderIcon}#icon`} />
+						</svg>
+					</Icon>
+				))}
 			</div>
 
 			{/* Not implemented props */}
 			<div>
-				<Icon fill="informational" style={{ display: "inline" }}>
-					<svg>
-						<use href={`${infoIcon}#icon`} />
-					</svg>
-				</Icon>
-				<Icon fill="positive" style={{ display: "inline" }}>
-					<svg>
-						<use href={`${successStatusIcon}#icon`} />
-					</svg>
-				</Icon>
-				<Icon fill="warning" style={{ display: "inline" }}>
-					<svg>
-						<use href={`${warningStatusIcon}#icon`} />
-					</svg>
-				</Icon>
-				<Icon fill="negative" style={{ display: "inline" }}>
-					<svg>
-						<use href={`${errorStatusIcon}#icon`} />
-					</svg>
-				</Icon>
+				{Object.entries({
+					informational: infoIcon,
+					positive: successStatusIcon,
+					warning: warningStatusIcon,
+					negative: errorStatusIcon,
+				}).map(([fill, icon]) => (
+					<Icon fill={fill} style={{ display: "inline" }}>
+						<svg>
+							<use href={`${icon}#icon`} />
+						</svg>
+					</Icon>
+				))}
 			</div>
 
 			<Icon padded>
@@ -82,6 +63,32 @@ export default definePage(function Page() {
 					<use href={`${placeholderIcon}#icon`} />
 				</svg>
 			</Icon>
+
+			<div style={{ display: "flex", gap: 16, alignItems: "start" }}>
+				<p
+					style={{
+						width: "min(400px, 90%)",
+						fontSize: `${size}rem`,
+					}}
+				>
+					<Icon size="auto" style={{ display: "inline" }}>
+						<svg>
+							<use href={`${placeholderIcon}#icon`} />
+						</svg>
+					</Icon>
+					This icon will scale with text. Try adjusting the slider.
+				</p>
+
+				<input
+					type="range"
+					style={{ writingMode: "vertical-lr", direction: "rtl" }}
+					min="0.5"
+					max="2.5"
+					step="0.05"
+					value={size}
+					onChange={(e) => setSize(e.target.valueAsNumber)}
+				></input>
+			</div>
 		</div>
 	);
 });

@@ -11,11 +11,11 @@ import type { Icon as IuiIcon } from "@itwin/itwinui-react";
 import type { PolymorphicForwardRefComponent } from "./~utils.js";
 
 type IuiIconProps = React.ComponentProps<typeof IuiIcon>;
-type SkIconProps = React.ComponentProps<typeof SkIcon>;
 
 interface IconProps extends Pick<IuiIconProps, "size" | "fill" | "padded"> {
-	children?: SkIconProps["render"] | SkIconProps["href"];
-	/** PARTIALLY IMPLEMENTED. Only supports large as an override. */
+	/** BREAKING CHANGE. Overridden with `React.JSX.Element`. */
+	children?: React.JSX.Element;
+	/** PARTIALLY IMPLEMENTED. Only supports `large` and `medium` size. Other values are mapped to `medium`. */
 	size?: IuiIconProps["size"];
 	/** NOT IMPLEMENTED. */
 	fill?: IuiIconProps["fill"];
@@ -37,12 +37,11 @@ export const Icon = React.forwardRef((props, forwardedRef) => {
 
 	return (
 		<SkIcon
-			href={typeof children === "string" ? children : undefined}
-			render={React.isValidElement(children) ? children : undefined}
+			render={children}
 			size={size === "large" ? "large" : undefined}
-			{...rest}
+			{...(rest as React.ComponentProps<"svg">)}
 			ref={forwardedRef}
 		/>
 	);
-}) as PolymorphicForwardRefComponent<"svg", IconProps>;
+}) as PolymorphicForwardRefComponent<"span", IconProps>;
 DEV: Icon.displayName = "Icon";

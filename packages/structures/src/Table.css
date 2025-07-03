@@ -8,6 +8,8 @@
 		&:where(table) {
 			table-layout: fixed;
 			inline-size: 100%;
+			border-collapse: separate;
+			border-spacing: 0;
 		}
 	}
 }

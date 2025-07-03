@@ -20,6 +20,7 @@ export default definePage(
 		return (
 			<AccordionItem.Root defaultOpen={defaultOpen}>
 				<AccordionItem.Header>
+					<AccordionItem.Marker />
 					{withDecoration ? (
 						<AccordionItem.Decoration
 							render={<Icon href={placeholderIcon} />}
@@ -28,7 +29,6 @@ export default definePage(
 					<AccordionItem.Button data-testid="button">
 						<AccordionItem.Label>{label}</AccordionItem.Label>
 					</AccordionItem.Button>
-					<AccordionItem.Marker />
 				</AccordionItem.Header>
 				<AccordionItem.Content data-testid="content">
 					{content}

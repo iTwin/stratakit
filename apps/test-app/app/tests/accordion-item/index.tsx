@@ -61,52 +61,135 @@ export function HeadingTest() {
 }
 
 export function VisualTest() {
-	const bools = [true, false] as const;
-	const permutations = bools.flatMap((markerBefore) =>
-		bools.flatMap((decorationBefore) =>
-			bools.flatMap((withDecoration) =>
-				bools.flatMap((defaultOpen) =>
-					// account for duplicate permutations where withDecoration = false
-					!withDecoration && !decorationBefore
-						? []
-						: {
-								markerBefore,
-								decorationBefore,
-								withDecoration,
-								defaultOpen,
-							},
-				),
-			),
-		),
-	);
 	return (
 		<>
-			{permutations.map(
-				({ markerBefore, decorationBefore, withDecoration, defaultOpen }) => {
-					return (
-						<AccordionItem.Root defaultOpen={defaultOpen}>
-							<AccordionItem.Header>
-								{markerBefore ? <AccordionItem.Marker /> : null}
-								{withDecoration && decorationBefore ? (
-									<AccordionItem.Decoration
-										render={<Icon href={placeholderIcon} />}
-									/>
-								) : null}
-								<AccordionItem.Button>
-									<AccordionItem.Label>Label</AccordionItem.Label>
-								</AccordionItem.Button>
-								{withDecoration && !decorationBefore ? (
-									<AccordionItem.Decoration
-										render={<Icon href={placeholderIcon} />}
-									/>
-								) : null}
-								{!markerBefore ? <AccordionItem.Marker /> : null}
-							</AccordionItem.Header>
-							<AccordionItem.Content>Body</AccordionItem.Content>
-						</AccordionItem.Root>
-					);
-				},
-			)}
+			<AccordionItem.Root>
+				<AccordionItem.Header>
+					<AccordionItem.Button>
+						<AccordionItem.Label>Label</AccordionItem.Label>
+					</AccordionItem.Button>
+					<AccordionItem.Marker />
+				</AccordionItem.Header>
+				<AccordionItem.Content>Body</AccordionItem.Content>
+			</AccordionItem.Root>
+
+			<AccordionItem.Root defaultOpen>
+				<AccordionItem.Header>
+					<AccordionItem.Button>
+						<AccordionItem.Label>Label</AccordionItem.Label>
+					</AccordionItem.Button>
+					<AccordionItem.Marker />
+				</AccordionItem.Header>
+				<AccordionItem.Content>Body</AccordionItem.Content>
+			</AccordionItem.Root>
+
+			<AccordionItem.Root>
+				<AccordionItem.Header>
+					<AccordionItem.Marker />
+					<AccordionItem.Button>
+						<AccordionItem.Label>Label</AccordionItem.Label>
+					</AccordionItem.Button>
+				</AccordionItem.Header>
+				<AccordionItem.Content>Body</AccordionItem.Content>
+			</AccordionItem.Root>
+
+			<AccordionItem.Root defaultOpen>
+				<AccordionItem.Header>
+					<AccordionItem.Marker />
+					<AccordionItem.Button>
+						<AccordionItem.Label>Label</AccordionItem.Label>
+					</AccordionItem.Button>
+				</AccordionItem.Header>
+				<AccordionItem.Content>Body</AccordionItem.Content>
+			</AccordionItem.Root>
+
+			<AccordionItem.Root>
+				<AccordionItem.Header>
+					<AccordionItem.Decoration render={<Icon href={placeholderIcon} />} />
+					<AccordionItem.Button>
+						<AccordionItem.Label>Label</AccordionItem.Label>
+					</AccordionItem.Button>
+					<AccordionItem.Marker />
+				</AccordionItem.Header>
+				<AccordionItem.Content>Body</AccordionItem.Content>
+			</AccordionItem.Root>
+
+			<AccordionItem.Root defaultOpen>
+				<AccordionItem.Header>
+					<AccordionItem.Decoration render={<Icon href={placeholderIcon} />} />
+					<AccordionItem.Button>
+						<AccordionItem.Label>Label</AccordionItem.Label>
+					</AccordionItem.Button>
+					<AccordionItem.Marker />
+				</AccordionItem.Header>
+				<AccordionItem.Content>Body</AccordionItem.Content>
+			</AccordionItem.Root>
+
+			<AccordionItem.Root>
+				<AccordionItem.Header>
+					<AccordionItem.Marker />
+					<AccordionItem.Decoration render={<Icon href={placeholderIcon} />} />
+					<AccordionItem.Button>
+						<AccordionItem.Label>Label</AccordionItem.Label>
+					</AccordionItem.Button>
+				</AccordionItem.Header>
+				<AccordionItem.Content>Body</AccordionItem.Content>
+			</AccordionItem.Root>
+
+			<AccordionItem.Root defaultOpen>
+				<AccordionItem.Header>
+					<AccordionItem.Marker />
+					<AccordionItem.Decoration render={<Icon href={placeholderIcon} />} />
+					<AccordionItem.Button>
+						<AccordionItem.Label>Label</AccordionItem.Label>
+					</AccordionItem.Button>
+				</AccordionItem.Header>
+				<AccordionItem.Content>Body</AccordionItem.Content>
+			</AccordionItem.Root>
+
+			<AccordionItem.Root>
+				<AccordionItem.Header>
+					<AccordionItem.Button>
+						<AccordionItem.Label>Label</AccordionItem.Label>
+					</AccordionItem.Button>
+					<AccordionItem.Decoration render={<Icon href={placeholderIcon} />} />
+					<AccordionItem.Marker />
+				</AccordionItem.Header>
+				<AccordionItem.Content>Body</AccordionItem.Content>
+			</AccordionItem.Root>
+
+			<AccordionItem.Root defaultOpen>
+				<AccordionItem.Header>
+					<AccordionItem.Button>
+						<AccordionItem.Label>Label</AccordionItem.Label>
+					</AccordionItem.Button>
+					<AccordionItem.Decoration render={<Icon href={placeholderIcon} />} />
+					<AccordionItem.Marker />
+				</AccordionItem.Header>
+				<AccordionItem.Content>Body</AccordionItem.Content>
+			</AccordionItem.Root>
+
+			<AccordionItem.Root>
+				<AccordionItem.Header>
+					<AccordionItem.Marker />
+					<AccordionItem.Button>
+						<AccordionItem.Label>Label</AccordionItem.Label>
+					</AccordionItem.Button>
+					<AccordionItem.Decoration render={<Icon href={placeholderIcon} />} />
+				</AccordionItem.Header>
+				<AccordionItem.Content>Body</AccordionItem.Content>
+			</AccordionItem.Root>
+
+			<AccordionItem.Root defaultOpen>
+				<AccordionItem.Header>
+					<AccordionItem.Marker />
+					<AccordionItem.Button>
+						<AccordionItem.Label>Label</AccordionItem.Label>
+					</AccordionItem.Button>
+					<AccordionItem.Decoration render={<Icon href={placeholderIcon} />} />
+				</AccordionItem.Header>
+				<AccordionItem.Content>Body</AccordionItem.Content>
+			</AccordionItem.Root>
 		</>
 	);
 }

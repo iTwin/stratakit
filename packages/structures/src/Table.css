@@ -60,9 +60,11 @@
 		var(--✨cell-bg--active) 100%,
 		var(--stratakit-color-glow-hue) var(--stratakit-color-bg-glow-strong-hover-\%)
 	);
-	--✨cell-box-shadow--active: 0px -1px 0px 0px var(--stratakit-color-border-accent-strong); /* shadow/table/strong */
+	--✨cell-box-shadow--active: 0px -1px 0px 0px var(--🥝table-cell-box-shadow-color); /* shadow/table/strong */
 
 	@layer base {
+		--🥝table-cell-box-shadow-color: var(--stratakit-color-border-accent-strong);
+
 		min-inline-size: 4rem;
 		background-color: var(--🌀table-cell-state--default, var(--✨cell-bg--default))
 			var(--🌀table-cell-state--hover, var(--✨cell-bg--hover))
@@ -133,6 +135,8 @@
 				:where(.🥝-table-row[aria-selected="true"]) & {
 					background-color: SelectedItem;
 					color: SelectedItemText;
+					border-color: SelectedItemText;
+					--🥝table-cell-box-shadow-color: SelectedItemText;
 					forced-color-adjust: none;
 				}
 			}

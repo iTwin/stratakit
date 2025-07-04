@@ -239,6 +239,9 @@ importers:
       "@types/react-dom":
         specifier: "catalog:"
         version: 19.1.6(@types/react@19.1.8)
+      esbuild:
+        specifier: "catalog:"
+        version: 0.25.5
       react:
         specifier: "catalog:"
         version: 19.1.0

@@ -14,7 +14,7 @@ These are the packages of StrataKit:
 - [`@stratakit/icons`](./packages/icons/): A standalone SVG icon library.
 - [`@stratakit/bricks`](./packages/bricks/): Small, modular components that can be assembled to create larger, more functional experiences.
 - [`@stratakit/structures`](./packages/structures): Medium-sized component structures built on top of `@stratakit/bricks`.
-- [`@stratakit/react`](./packages/compat/): A React compatibility layer for using iTwinUI v3 APIs. (🚧 Not published)
+- [`@stratakit/react`](./packages/compat/): A React compatibility layer for using iTwinUI v3 APIs.
 
 > [!NOTE]
 > StrataKit packages are currently published as `0.X` versions. StrataKit follows [semantic versioning](https://semver.org/), and breaking changes will only be published in _minor_ version bumps. It is therefore safe to use the `^` syntax to specify version ranges in your `package.json`.

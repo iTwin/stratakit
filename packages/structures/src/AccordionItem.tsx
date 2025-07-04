@@ -251,6 +251,18 @@ const AccordionItemDecoration = forwardRef<"div", BaseProps>(
 );
 DEV: AccordionItemDecoration.displayName = "AccordionItem.Decoration";
 
+const AccordionItemDecorationWrapper = forwardRef<"div", BaseProps>(
+	(props, forwardedRef) => (
+		<Role.div
+			{...props}
+			className={cx("🥝-accordion-item-decoration-wrapper", props.className)}
+			ref={forwardedRef}
+		/>
+	),
+);
+DEV: AccordionItemDecorationWrapper.displayName =
+	"AccordionItem.DecorationWrapper";
+
 /**
  * The visual marker of an accordion item’s button.
  *
@@ -375,6 +387,7 @@ export {
 	AccordionItemButton as Button,
 	AccordionItemLabel as Label,
 	AccordionItemDecoration as Decoration,
+	AccordionItemDecorationWrapper as DecorationWrapper,
 	AccordionItemMarker as Marker,
 	AccordionItemHeading as Heading,
 };

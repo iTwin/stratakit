@@ -1,0 +1,1 @@
+import{o as r}from"./chunk-QMGIS6GS-BaJhsRKI.js";import{f as n,I as s,R as i}from"./sun-THEhysx6.js";function c(o){return n((e,t)=>r.jsx(s,{render:r.jsx(i.svg,{width:"16",height:"16",fill:"none",viewBox:"0 0 16 16",...e,ref:t,children:r.jsx("path",{fill:"currentColor",d:o})})}))}export{c};

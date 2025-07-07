@@ -121,33 +121,14 @@
 
 .🥝-accordion-item-decoration {
 	@layer base {
-		/* grid-column: decoration-before; */
+		grid-column: decoration-before;
 		margin-inline-end: var(--🥝accordion-item-gap);
-
-		/* .🥝-accordion-item-decoration-wrapper & {
-			grid-column: auto;
-		} */
+		display: flex;
+		align-items: center;
+		gap: 0.25rem;
 
 		:where(.🥝-accordion-item-heading, .🥝-accordion-item-button) ~ & {
-			/* grid-column: decoration-after; */
-			margin-inline-start: var(--🥝accordion-item-gap);
-			margin-inline-end: 0;
-
-			/* .🥝-accordion-item-decoration-wrapper & {
-				grid-column: auto;
-			} */
-		}
-	}
-}
-
-.🥝-accordion-item-decoration-wrapper {
-	grid-column: decoration-before;
-	display: grid;
-	grid-auto-flow: column;
-
-	:where(.🥝-accordion-item-heading, .🥝-accordion-item-button) ~ & {
-		grid-column: decoration-after;
-		.🥝-accordion-item-decoration {
+			grid-column: decoration-after;
 			margin-inline-start: var(--🥝accordion-item-gap);
 			margin-inline-end: 0;
 		}

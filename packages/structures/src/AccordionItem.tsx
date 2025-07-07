@@ -239,6 +239,23 @@ DEV: AccordionItemLabel.displayName = "AccordionItem.Label";
  *   <AccordionItem.Marker />
  * </AccordionItem.Header>
  * ```
+ *
+ * There can also be multiple decorations if passed as children under
+ * `AccordionItem.Decoration`.
+ *
+ * Example:
+ * ```tsx
+ * <AccordionItem.Header>
+ *   <AccordionItem.Button>
+ *     <AccordionItem.Label>Label</AccordionItem.Label>
+ *   </AccordionItem.Button>
+ *   <AccordionItem.Decoration>
+ *     <Icon href={placeholder} />
+ *     <Icon href={placeholder} />
+ *   </AccordionItem.Decoration>
+ *   <AccordionItem.Marker />
+ * </AccordionItem.Header>
+ * ```
  */
 const AccordionItemDecoration = forwardRef<"div", BaseProps>(
 	(props, forwardedRef) => (
@@ -250,18 +267,6 @@ const AccordionItemDecoration = forwardRef<"div", BaseProps>(
 	),
 );
 DEV: AccordionItemDecoration.displayName = "AccordionItem.Decoration";
-
-const AccordionItemDecorationWrapper = forwardRef<"div", BaseProps>(
-	(props, forwardedRef) => (
-		<Role.div
-			{...props}
-			className={cx("🥝-accordion-item-decoration-wrapper", props.className)}
-			ref={forwardedRef}
-		/>
-	),
-);
-DEV: AccordionItemDecorationWrapper.displayName =
-	"AccordionItem.DecorationWrapper";
 
 /**
  * The visual marker of an accordion item’s button.
@@ -387,7 +392,6 @@ export {
 	AccordionItemButton as Button,
 	AccordionItemLabel as Label,
 	AccordionItemDecoration as Decoration,
-	AccordionItemDecorationWrapper as DecorationWrapper,
 	AccordionItemMarker as Marker,
 	AccordionItemHeading as Heading,
 };

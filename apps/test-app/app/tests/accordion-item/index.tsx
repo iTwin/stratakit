@@ -192,25 +192,17 @@ export function VisualTest() {
 			<AccordionItem.Root>
 				<AccordionItem.Header>
 					<AccordionItem.Marker />
-					<AccordionItem.DecorationWrapper>
-						<AccordionItem.Decoration
-							render={<Icon href={placeholderIcon} />}
-						/>
-						<AccordionItem.Decoration
-							render={<Icon href={placeholderIcon} />}
-						/>
-					</AccordionItem.DecorationWrapper>
+					<AccordionItem.Decoration>
+						<Icon href={placeholderIcon} />
+						<Icon href={placeholderIcon} />
+					</AccordionItem.Decoration>
 					<AccordionItem.Button>
 						<AccordionItem.Label>Label</AccordionItem.Label>
 					</AccordionItem.Button>
-					<AccordionItem.DecorationWrapper>
-						<AccordionItem.Decoration
-							render={<Icon href={placeholderIcon} />}
-						/>
-						<AccordionItem.Decoration
-							render={<Icon href={placeholderIcon} />}
-						/>
-					</AccordionItem.DecorationWrapper>
+					<AccordionItem.Decoration>
+						<Icon href={placeholderIcon} />
+						<Icon href={placeholderIcon} />
+					</AccordionItem.Decoration>
 				</AccordionItem.Header>
 				<AccordionItem.Content>Body</AccordionItem.Content>
 			</AccordionItem.Root>
@@ -218,50 +210,34 @@ export function VisualTest() {
 			<AccordionItem.Root defaultOpen>
 				<AccordionItem.Header>
 					<AccordionItem.Marker />
-					<AccordionItem.DecorationWrapper>
-						<AccordionItem.Decoration
-							render={<Icon href={placeholderIcon} />}
-						/>
-						<AccordionItem.Decoration
-							render={<Icon href={placeholderIcon} />}
-						/>
-					</AccordionItem.DecorationWrapper>
+					<AccordionItem.Decoration>
+						<Icon href={placeholderIcon} />
+						<Icon href={placeholderIcon} />
+					</AccordionItem.Decoration>
 					<AccordionItem.Button>
 						<AccordionItem.Label>Label</AccordionItem.Label>
 					</AccordionItem.Button>
-					<AccordionItem.DecorationWrapper>
-						<AccordionItem.Decoration
-							render={<Icon href={placeholderIcon} />}
-						/>
-						<AccordionItem.Decoration
-							render={<Icon href={placeholderIcon} />}
-						/>
-					</AccordionItem.DecorationWrapper>
+					<AccordionItem.Decoration>
+						<Icon href={placeholderIcon} />
+						<Icon href={placeholderIcon} />
+					</AccordionItem.Decoration>
 				</AccordionItem.Header>
 				<AccordionItem.Content>Body</AccordionItem.Content>
 			</AccordionItem.Root>
 
 			<AccordionItem.Root>
 				<AccordionItem.Header>
-					<AccordionItem.DecorationWrapper>
-						<AccordionItem.Decoration
-							render={<Icon href={placeholderIcon} />}
-						/>
-						<AccordionItem.Decoration
-							render={<Icon href={placeholderIcon} />}
-						/>
-					</AccordionItem.DecorationWrapper>
+					<AccordionItem.Decoration>
+						<Icon href={placeholderIcon} />
+						<Icon href={placeholderIcon} />
+					</AccordionItem.Decoration>
 					<AccordionItem.Button>
 						<AccordionItem.Label>Label</AccordionItem.Label>
 					</AccordionItem.Button>
-					<AccordionItem.DecorationWrapper>
-						<AccordionItem.Decoration
-							render={<Icon href={placeholderIcon} />}
-						/>
-						<AccordionItem.Decoration
-							render={<Icon href={placeholderIcon} />}
-						/>
-					</AccordionItem.DecorationWrapper>
+					<AccordionItem.Decoration>
+						<Icon href={placeholderIcon} />
+						<Icon href={placeholderIcon} />
+					</AccordionItem.Decoration>
 					<AccordionItem.Marker />
 				</AccordionItem.Header>
 				<AccordionItem.Content>Body</AccordionItem.Content>
@@ -269,25 +245,17 @@ export function VisualTest() {
 
 			<AccordionItem.Root defaultOpen>
 				<AccordionItem.Header>
-					<AccordionItem.DecorationWrapper>
-						<AccordionItem.Decoration
-							render={<Icon href={placeholderIcon} />}
-						/>
-						<AccordionItem.Decoration
-							render={<Icon href={placeholderIcon} />}
-						/>
-					</AccordionItem.DecorationWrapper>
+					<AccordionItem.Decoration>
+						<Icon href={placeholderIcon} />
+						<Icon href={placeholderIcon} />
+					</AccordionItem.Decoration>
 					<AccordionItem.Button>
 						<AccordionItem.Label>Label</AccordionItem.Label>
 					</AccordionItem.Button>
-					<AccordionItem.DecorationWrapper>
-						<AccordionItem.Decoration
-							render={<Icon href={placeholderIcon} />}
-						/>
-						<AccordionItem.Decoration
-							render={<Icon href={placeholderIcon} />}
-						/>
-					</AccordionItem.DecorationWrapper>
+					<AccordionItem.Decoration>
+						<Icon href={placeholderIcon} />
+						<Icon href={placeholderIcon} />
+					</AccordionItem.Decoration>
 					<AccordionItem.Marker />
 				</AccordionItem.Header>
 				<AccordionItem.Content>Body</AccordionItem.Content>

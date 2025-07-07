@@ -25,15 +25,7 @@ interface ToggleSwitchProps
 	icon?: IuiSwitchProps["icon"];
 }
 
-/**
- * @see https://itwinui.bentley.com/docs/toggleswitch
- *
- * In `@itwinui-react`, `ToggleSwitch`'s `className` and `style` are passed to the `<input>`. But in `@stratakit/react`,
- * they are passed to the wrapper instead.
- *
- * Thus, for a smooth transition, the `ToggleSwitch.consistentPropsSpread` future flag can be enabled in an ancestral
- * `ThemeProvider` *before* moving to `@stratakit/react`.
- */
+/** @see https://itwinui.bentley.com/docs/toggleswitch */
 export const ToggleSwitch = React.forwardRef((props, forwardedRef) => {
 	const {
 		label,

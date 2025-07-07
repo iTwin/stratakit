@@ -32,6 +32,8 @@ import * as ListItem from "./~utils.ListItem.js";
 
 import type {
 	MenuItemCheckboxProps,
+	MenuItemProps,
+	MenuProps,
 	MenuProviderProps,
 } from "@ariakit/react/menu";
 import type { PredefinedSymbol } from "@stratakit/bricks/secret-internals";
@@ -46,7 +48,7 @@ import type {
 interface DropdownMenuProps
 	extends Pick<
 		MenuProviderProps,
-		"children" | "placement" | "open" | "setOpen" | "defaultOpen"
+		"children" | "placement" | "open" | "setOpen" | "defaultOpen" | "store"
 	> {}
 
 /**
@@ -70,31 +72,15 @@ interface DropdownMenuProps
  * **Note**: `DropdownMenu` should not be used for navigation; it is only intended for actions.
  */
 function DropdownMenuRoot(props: DropdownMenuProps) {
-	const {
-		children,
-		placement,
-		open: openProp,
-		setOpen: setOpenProp,
-		defaultOpen: defaultOpenProp,
-	} = props;
-
-	return (
-		<MenuProvider
-			placement={placement}
-			defaultOpen={defaultOpenProp}
-			open={openProp}
-			setOpen={setOpenProp}
-			popover={usePopoverContext()}
-		>
-			{children}
-		</MenuProvider>
-	);
+	return <MenuProvider popover={usePopoverContext()} {...props} />;
 }
 DEV: DropdownMenuRoot.displayName = "DropdownMenu.Root";
 
 // ----------------------------------------------------------------------------
 
-interface DropdownMenuContentProps extends FocusableProps {}
+interface DropdownMenuContentProps
+	extends FocusableProps,
+		Pick<MenuProps, "unmountOnHide"> {}
 
 /**
  * The actual "menu" portion containing the items shown within the dropdown.
@@ -175,7 +161,8 @@ interface DropdownMenuItemProps
 	extends Omit<FocusableProps<"button">, "children">,
 		Partial<
 			Pick<DropdownMenuItemShortcutsProps, "shortcuts"> &
-				Pick<DropdownMenuIconProps, "icon">
+				Pick<DropdownMenuIconProps, "icon"> &
+				Pick<MenuItemProps, "getItem">
 		> {
 	/** The primary text label for the menu-item. */
 	label: React.ReactNode;
@@ -195,12 +182,13 @@ interface DropdownMenuItemProps
  */
 const DropdownMenuItem = forwardRef<"button", DropdownMenuItemProps>(
 	(props, forwardedRef) => {
-		const { label, shortcuts, icon, unstable_dot, ...rest } = props;
+		const { label, shortcuts, icon, unstable_dot, getItem, ...rest } = props;
 
 		const dotId = React.useId();
 
 		return (
 			<MenuItem
+				getItem={getItem}
 				accessibleWhenDisabled
 				render={
 					<ListItem.Root

@@ -99,11 +99,6 @@ export default definePage(
 		const handleRetry = React.useCallback(() => {
 			setRenderError(false);
 		}, []);
-
-		const actions = [
-			<Tree.ItemAction key="unlock" icon={unlockIcon} label="Unlock" />,
-			<Tree.ItemAction key="show" icon={showIcon} label="Show" />,
-		];
 		return (
 			<Tree.Root style={{ maxInlineSize: overflow ? 300 : undefined }}>
 				{flatData.map((item) => {
@@ -112,7 +107,6 @@ export default definePage(
 					const error = renderError && index === 0 && childIndex === undefined;
 					const hasDescription =
 						(index === 0 && childIndex === undefined) || childIndex === 0;
-
 					return (
 						<Tree.Item
 							key={item.label}
@@ -163,18 +157,42 @@ export default definePage(
 									<Icon href={placeholderIcon} />
 								)
 							}
-							actions={[
-								error && (
-									<Tree.ItemAction
-										key="retry"
-										icon={refreshIcon}
-										label="Retry"
-										onClick={handleRetry}
-									/>
-								),
-
-								...actions,
-							]}
+							actions={
+								error
+									? [
+											<Tree.ItemAction
+												key="retry"
+												icon={refreshIcon}
+												label="Retry"
+												onClick={handleRetry}
+												inline
+											/>,
+											<Tree.ItemAction
+												key="unlock"
+												icon={unlockIcon}
+												label="Unlock"
+											/>,
+											<Tree.ItemAction
+												key="show"
+												icon={showIcon}
+												label="Show"
+											/>,
+										]
+									: [
+											<Tree.ItemAction
+												key="unlock"
+												icon={unlockIcon}
+												label="Unlock"
+												inline
+											/>,
+											<Tree.ItemAction
+												key="show"
+												icon={showIcon}
+												label="Show"
+												inline
+											/>,
+										]
+							}
 						/>
 					);
 				})}
@@ -220,20 +238,73 @@ function ItemAction(props: ItemActionProps) {
 }
 
 function WrapperItemAction() {
+	const setSize = 6;
+	let posInset = 1;
 	return (
 		<Tree.Root>
 			<Tree.Item
-				label="Foo"
+				label="4 inline actions"
 				aria-level={1}
-				aria-posinset={1}
-				aria-setsize={1}
+				aria-posinset={posInset++}
+				aria-setsize={setSize}
+				actions={[
+					<ItemAction key="1" label="Action 1" inline />,
+					<ItemAction key="2" label="Action 2" inline />,
+					<ItemAction key="3" label="Action 3" inline />,
+					<ItemAction key="4" label="Action 4" inline />,
+				]}
+			/>
+			<Tree.Item
+				label="Actions menu"
+				aria-level={1}
+				aria-posinset={posInset++}
+				aria-setsize={setSize}
 				actions={[
 					<ItemAction key="1" label="Action 1" />,
-					<ItemAction key="2" label="Action 2" hidden />,
+					<ItemAction key="2" label="Action 2" />,
 					<ItemAction key="3" label="Action 3" />,
 					<ItemAction key="4" label="Action 4" />,
-					<ItemAction key="5" label="Action 5" inline />,
 				]}
+			/>
+			<Tree.Item
+				label="Hidden menu actions"
+				aria-level={1}
+				aria-posinset={posInset++}
+				aria-setsize={setSize}
+				actions={[
+					<ItemAction key="1" label="Action 1" hidden />,
+					<ItemAction key="2" label="Action 2" hidden />,
+					<ItemAction key="2" label="Action 3" inline />,
+				]}
+			/>
+			<Tree.Item
+				label="Aligned actions #1"
+				aria-level={1}
+				aria-posinset={posInset++}
+				aria-setsize={setSize}
+				actions={[
+					<ItemAction key="1" label="Action 1" inline />,
+					<ItemAction key="2" label="Action 2" inline />,
+					<ItemAction key="2" label="Action 3" />,
+				]}
+			/>
+			<Tree.Item
+				label="Aligned actions #2"
+				aria-level={1}
+				aria-posinset={posInset++}
+				aria-setsize={setSize}
+				actions={[
+					<ItemAction key="1" label="Action 1" inline />,
+					<ItemAction key="2" label="Action 2" inline visible={false} />,
+					<ItemAction key="2" label="Action 3" />,
+				]}
+			/>
+			<Tree.Item
+				label="Single menu action"
+				aria-level={1}
+				aria-posinset={posInset++}
+				aria-setsize={setSize}
+				actions={[<ItemAction key="1" label="Action 1" />]}
 			/>
 		</Tree.Root>
 	);

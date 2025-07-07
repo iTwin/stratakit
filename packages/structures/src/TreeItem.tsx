@@ -4,18 +4,13 @@
  *--------------------------------------------------------------------------------------------*/
 
 import * as React from "react";
-import {
-	Collection,
-	CollectionItem,
-	type CollectionStore,
-	useCollectionStore,
-} from "@ariakit/react/collection";
 import { CompositeItem } from "@ariakit/react/composite";
+import { useMenuStore } from "@ariakit/react/menu";
 import { PopoverProvider } from "@ariakit/react/popover";
 import { Role } from "@ariakit/react/role";
 import { useStoreState } from "@ariakit/react/store";
 import { Toolbar, ToolbarItem } from "@ariakit/react/toolbar";
-import { IconButton, VisuallyHidden } from "@stratakit/bricks";
+import { IconButton } from "@stratakit/bricks";
 import {
 	GhostAligner,
 	IconButtonPresentation,
@@ -30,6 +25,10 @@ import { ChevronDown, MoreHorizontal, StatusIcon } from "./~utils.icons.js";
 import * as ListItem from "./~utils.ListItem.js";
 import * as DropdownMenu from "./DropdownMenu.js";
 
+import type {
+	CollectionStore,
+	useCollectionStore,
+} from "@ariakit/react/collection";
 import type { BaseProps } from "@stratakit/foundations/secret-internals";
 
 // ----------------------------------------------------------------------------
@@ -512,7 +511,7 @@ const TreeItemActions = React.memo(
 				ref={forwardedRef}
 				render={<Toolbar focusLoop={false} />}
 			>
-				<TreeItemActionCollection />
+				<TreeItemActionsContent />
 			</ListItem.Decoration>
 		);
 	}),
@@ -521,64 +520,39 @@ DEV: TreeItemActions.displayName = "TreeItemActions";
 
 // ----------------------------------------------------------------------------
 
-const TreeItemActionStoreContext = React.createContext<
-	| {
-			store: CollectionStore;
-			itemIndex: number;
-	  }
-	| undefined
+const TreeItemActionsStoreContext = React.createContext<
+	CollectionStore | undefined
 >(undefined);
 
-function TreeItemActionCollection() {
-	const actions = React.useContext(TreeItemActionsContext);
+function TreeItemActionsContent() {
 	const error = React.useContext(TreeItemErrorContext);
-	const actionsLimit = error ? 2 : 3;
+	const actions = React.useContext(TreeItemActionsContext);
 
-	const store = useCollectionStore<TreeItemActionCollectionStoreItem>({
-		defaultItems: [],
-	});
-	const items = useStoreState(store, "items");
-	const { inlineItems, menuItems } = React.useMemo(() => {
-		const sorted = items.sort((a, b) => {
-			if (a.inline && !b.inline) return -1;
-			if (!a.inline && b.inline) return 1;
-			return 0;
-		});
-		const inlineItems = sorted.slice(0, actionsLimit - 1);
-		const menuItems = sorted.slice(actionsLimit - 1);
-		return { inlineItems, menuItems };
-	}, [items, actionsLimit]);
+	const store = useMenuStore();
+	const items = useStoreState(
+		store,
+		"items",
+	) as TreeItemActionCollectionStoreItem[];
+	const allInlineItems = React.useMemo(() => {
+		return items.filter((item) => item.inline);
+	}, [items]);
+	const hasMenu = items.length > allInlineItems.length;
+	const inlineItems = React.useMemo(() => {
+		if (error) return allInlineItems.slice(0, 1);
+		if (hasMenu) return allInlineItems.slice(0, 2);
+		return allInlineItems.slice(0, 3);
+	}, [error, hasMenu, allInlineItems]);
+
+	const style = React.useMemo(() => {
+		return hasMenu ? undefined : { display: "none" };
+	}, [hasMenu]);
 	return (
-		<>
-			<Collection store={store} render={<VisuallyHidden />}>
-				{actions?.map((action, itemIndex) => {
-					return (
-						<TreeItemActionStoreContext.Provider
-							key={itemIndex.toString()}
-							value={{ store, itemIndex }}
-						>
-							{action}
-						</TreeItemActionStoreContext.Provider>
-					);
-				})}
-			</Collection>
+		<TreeItemActionsStoreContext.Provider value={store}>
 			{inlineItems.map((item) => {
-				const el = actions?.[item.itemIndex];
-				if (!el) return;
-				return el;
+				return actions?.[item.itemIndex];
 			})}
-			{menuItems.length > 0 && (
-				<TreeItemMenuActionsContext.Provider
-					value={menuItems.map((item) => {
-						const el = actions?.[item.itemIndex];
-						if (!el) return;
-						return el;
-					})}
-				>
-					<TreeItemActionMenu />
-				</TreeItemMenuActionsContext.Provider>
-			)}
-		</>
+			<TreeItemActionMenu style={style} />
+		</TreeItemActionsStoreContext.Provider>
 	);
 }
 
@@ -586,25 +560,15 @@ function TreeItemActionCollection() {
 
 const arrowKeys = ["ArrowDown", "ArrowUp", "ArrowLeft", "ArrowRight"];
 
-const TreeItemMenuActionsContentContext = React.createContext(false);
-
-const TreeItemMenuActionsContext =
-	React.createContext<TreeItemProps["actions"]>(undefined);
-
-function TreeItemMenuActions() {
-	const actions = React.useContext(TreeItemMenuActionsContext);
-	if (!actions || actions.length === 0) return null;
-	return <TreeItemActionMenu />;
-}
-DEV: TreeItemMenuActions.displayName = "TreeItemMenuActions";
-
-// ----------------------------------------------------------------------------
+const TreeItemActionsMenuContext = React.createContext(false);
 
 interface TreeItemActionMenuProps
 	extends Omit<BaseProps<"button">, "children"> {}
 
 const TreeItemActionMenu = React.memo(
 	forwardRef<"button", TreeItemActionMenuProps>((props, forwardedRef) => {
+		const store = React.useContext(TreeItemActionsStoreContext);
+
 		const [open, _setOpen] = React.useState(false);
 		const isArrowKeyPressed = React.useRef(false);
 
@@ -619,7 +583,7 @@ const TreeItemActionMenu = React.memo(
 
 		return (
 			<PopoverProvider placement="right-start">
-				<DropdownMenu.Root open={open} setOpen={setOpen}>
+				<DropdownMenu.Root open={open} setOpen={setOpen} {...{ store }}>
 					<DropdownMenu.Button
 						{...props}
 						onKeyDown={(e) => {
@@ -644,22 +608,51 @@ DEV: TreeItemActionMenu.displayName = "TreeItemActionMenu";
 // ----------------------------------------------------------------------------
 
 function TreeItemMenuActionsContent() {
-	const actions = React.useContext(TreeItemMenuActionsContext);
 	return (
-		<TreeItemMenuActionsContentContext.Provider value={true}>
-			<DropdownMenu.Content>{actions}</DropdownMenu.Content>
-		</TreeItemMenuActionsContentContext.Provider>
+		<TreeItemActionsMenuContext.Provider value={true}>
+			<DropdownMenu.Content unmountOnHide={false}>
+				<TreeItemMenuActionsRenderer />
+			</DropdownMenu.Content>
+		</TreeItemActionsMenuContext.Provider>
 	);
 }
 DEV: TreeItemMenuActionsContent.displayName = "TreeItemMenuActionsContent";
 
 // ----------------------------------------------------------------------------
 
+const TreeItemActionIdContext = React.createContext<number | undefined>(
+	undefined,
+);
+
+function TreeItemMenuActionsRenderer() {
+	const actions = React.useContext(TreeItemActionsContext) ?? [];
+	return (
+		<>
+			{actions.map((action, itemIndex) => {
+				return (
+					<TreeItemActionIdContext.Provider
+						key={itemIndex.toString()}
+						value={itemIndex}
+					>
+						{action}
+					</TreeItemActionIdContext.Provider>
+				);
+			})}
+		</>
+	);
+}
+DEV: TreeItemMenuActionsRenderer.displayName = "TreeItemMenuActionsRenderer";
+
+// ----------------------------------------------------------------------------
+
 type CollectionStoreItem = NonNullable<
 	ReturnType<ReturnType<typeof useCollectionStore>["item"]>
 >;
+type CompositeStoreItem = NonNullable<
+	ReturnType<ReturnType<typeof useMenuStore>["item"]>
+>;
 
-interface TreeItemActionCollectionStoreItem extends CollectionStoreItem {
+interface TreeItemActionCollectionStoreItem extends CompositeStoreItem {
 	inline: boolean;
 	itemIndex: number;
 }
@@ -732,12 +725,9 @@ const TreeItemAction = React.memo(
 			...rest
 		} = props;
 
-		const menuActionsContext = React.useContext(
-			TreeItemMenuActionsContentContext,
-		);
+		const menuActionsContext = React.useContext(TreeItemActionsMenuContext);
 
-		const ctx = React.useContext(TreeItemActionStoreContext);
-		const itemIndex = ctx?.itemIndex ?? 0;
+		const itemIndex = React.useContext(TreeItemActionIdContext) ?? -1;
 		const getItem = React.useCallback(
 			(item: CollectionStoreItem): TreeItemActionCollectionStoreItem => {
 				return {
@@ -749,14 +739,12 @@ const TreeItemAction = React.memo(
 			[itemIndex, inline],
 		);
 
-		if (ctx) {
-			return <CollectionItem store={ctx.store} getItem={getItem} />;
-		}
-
 		// return a MenuItem if inside a Menu
 		if (menuActionsContext) {
 			return (
 				<DropdownMenu.Item
+					style={inline ? { display: "none" } : undefined}
+					getItem={getItem}
 					{...rest}
 					label={label}
 					icon={icon}
@@ -765,7 +753,6 @@ const TreeItemAction = React.memo(
 				/>
 			);
 		}
-
 		DEV: {
 			if (!icon)
 				throw new Error(
@@ -774,21 +761,18 @@ const TreeItemAction = React.memo(
 		}
 
 		return (
-			<ToolbarItem
-				render={
-					<IconButton
-						label={label}
-						icon={icon}
-						// @ts-expect-error: Using string value as a workaround for React 18
-						inert={visible === false ? "true" : undefined}
-						{...rest}
-						dot={dot}
-						variant="ghost"
-						className={cx("🥝-tree-item-action", props.className)}
-						data-kiwi-visible={visible}
-						ref={forwardedRef}
-					/>
-				}
+			<IconButton
+				label={label}
+				icon={icon}
+				// @ts-expect-error: Using string value as a workaround for React 18
+				inert={visible === false ? "true" : undefined}
+				{...rest}
+				render={<ToolbarItem render={props.render} />}
+				dot={dot}
+				variant="ghost"
+				className={cx("🥝-tree-item-action", props.className)}
+				data-kiwi-visible={visible}
+				ref={forwardedRef}
 			/>
 		);
 	}),

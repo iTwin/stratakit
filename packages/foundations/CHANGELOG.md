@@ -2,7 +2,7 @@
 
 ## 0.2.0
 
-### Minor Changes
+### Breaking changes
 
 - [#762](https://github.com/iTwin/design-system/pull/762): The prefix for all CSS variables has changed to `--stratakit`.
 
@@ -13,7 +13,7 @@
   + background-color: var(--stratakit-color-bg-page-base);
   ```
 
-### Patch Changes
+### Non-breaking changes
 
 - [#783](https://github.com/iTwin/design-system/pull/783): Several changes to the CSS reset, affecting `<button>`, `<fieldset>`, `<p>` and heading (`<h1>`, `<h2>`, etc) elements.
 - [#811](https://github.com/iTwin/design-system/pull/811): Added a global `color-scheme` style, matching the `colorScheme` passed to `<Root>`.

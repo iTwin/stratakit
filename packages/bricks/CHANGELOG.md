@@ -2,9 +2,6 @@
 
 ## 0.3.1
 
-### Patch Changes
-
-- [#792](https://github.com/iTwin/design-system/pull/792): Removed `aria-hidden` from the `Tooltip` element.
 - [#773](https://github.com/iTwin/design-system/pull/773): Added [subpath exports](https://nodejs.org/api/packages.html#subpath-exports) for individual components. These new exports allow StrataKit to expose both convenience and compositional APIs of the same component.
 
   ```tsx
@@ -36,6 +33,9 @@
 
   <Chip />;
   ```
+
+- [#792](https://github.com/iTwin/design-system/pull/792): Removed `aria-hidden` from the `Tooltip` element.
+- [#801](https://github.com/iTwin/design-system/pull/801): Fixed padding for `Textbox.Textarea` when used with an icon.
 
 - Updated dependencies:
   - @stratakit/foundations@0.2.0

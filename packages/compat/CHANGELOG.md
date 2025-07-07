@@ -2,8 +2,6 @@
 
 ## 0.0.2
 
-### Patch Changes
-
 - Updated dependencies:
   - @stratakit/structures@0.2.3
   - @stratakit/foundations@0.2.0

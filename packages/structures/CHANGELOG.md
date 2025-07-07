@@ -2,8 +2,6 @@
 
 ## 0.2.3
 
-### Patch Changes
-
 - [#788](https://github.com/iTwin/design-system/pull/788): Updated `Tabs.Tab` component to support optional start and end icons.
 
   ```tsx
@@ -14,9 +12,6 @@
   </Tabs.Tab>
   ```
 
-- [#793](https://github.com/iTwin/design-system/pull/793): Added `zustand` as a dependency.
-- [#815](https://github.com/iTwin/design-system/pull/815): Fixed an issue where Toolbar was using Context as a component which doesn't work in React 18.
-- [#781](https://github.com/iTwin/design-system/pull/781): Updated `Chip.Label` component styling when rendered as a button.
 - [#773](https://github.com/iTwin/design-system/pull/773): Added [subpath exports](https://nodejs.org/api/packages.html#subpath-exports) for individual components. These new exports allow StrataKit to expose both convenience and compositional APIs of the same component.
 
   ```tsx
@@ -61,6 +56,10 @@
   	<Chip.DismissButton onClick={onDismiss} />
   </Chip.Root>;
   ```
+
+- [#815](https://github.com/iTwin/design-system/pull/815): Fixed an issue where Toolbar was using Context as a component which doesn't work in React 18.
+- [#781](https://github.com/iTwin/design-system/pull/781): Updated `Chip.Label` component styling when rendered as a button.
+- [#793](https://github.com/iTwin/design-system/pull/793): Added `zustand` as a dependency.
 
 - Updated dependencies:
   - @stratakit/foundations@0.2.0

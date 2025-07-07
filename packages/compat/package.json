@@ -1,15 +1,21 @@
 {
 	"name": "@stratakit/react",
-	"private": true,
 	"type": "module",
-	"version": "0.1.0",
+	"version": "0.0.1",
 	"license": "MIT",
 	"sideEffects": false,
+	"types": "./dist/index.d.ts",
 	"exports": {
-		".": "./src/index.ts",
-		"./*": "./*"
+		".": {
+			"@stratakit/source": "./src/index.ts",
+			"types": "./dist/index.d.ts",
+			"development": "./dist/DEV/index.js",
+			"default": "./dist/index.js"
+		},
+		"./package.json": "./package.json"
 	},
 	"files": [
+		"dist",
 		"CHANGELOG.md",
 		"LICENSE.md"
 	],
@@ -34,7 +40,10 @@
 		"react",
 		"ui"
 	],
-	"scripts": {},
+	"scripts": {
+		"build": "wireit",
+		"dev": "wireit"
+	},
 	"dependencies": {
 		"@itwin/itwinui-react": "^3.18.3",
 		"@stratakit/bricks": "^0.3.0",
@@ -46,6 +55,7 @@
 		"@types/node": "catalog:",
 		"@types/react": "catalog:",
 		"@types/react-dom": "catalog:",
+		"esbuild": "catalog:",
 		"react": "catalog:",
 		"react-dom": "catalog:",
 		"typescript": "catalog:"
@@ -54,5 +64,64 @@
 		"@stratakit/foundations": "^0.1.6",
 		"react": ">=18.0.0",
 		"react-dom": ">=18.0.0"
+	},
+	"wireit": {
+		"build": {
+			"dependencies": [
+				"../foundations:build",
+				"../bricks:build",
+				"../structures:build",
+				"build:js",
+				"build:DEV",
+				"build:types"
+			]
+		},
+		"build:js": {
+			"command": "node scripts/build.js",
+			"files": [
+				"src",
+				"scripts",
+				"../../internal"
+			],
+			"output": [
+				"dist/**/*.js",
+				"!dist/DEV"
+			]
+		},
+		"build:DEV": {
+			"command": "node scripts/build.js",
+			"files": [
+				"src",
+				"scripts",
+				"../../internal"
+			],
+			"output": [
+				"dist/DEV/**/*.js"
+			],
+			"env": {
+				"NODE_ENV": "development"
+			}
+		},
+		"build:types": {
+			"command": "tsc --outDir dist",
+			"files": [
+				"src"
+			],
+			"output": [
+				"dist/**/*.d.ts"
+			],
+			"dependencies": [
+				"../foundations:build:types",
+				"../bricks:build:types",
+				"../structures:build:types"
+			]
+		},
+		"dev": {
+			"command": "tsc --watch --outDir dist",
+			"files": [
+				"src"
+			],
+			"service": true
+		}
 	}
 }

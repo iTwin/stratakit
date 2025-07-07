@@ -24,7 +24,7 @@ export default definePage(
 			</>
 		);
 	},
-	{ visual: VisualTest, external: ExternalTest },
+	{ visual: VisualTest, external: ExternalTest, composition: CompositionTest },
 );
 
 function VisualTest() {
@@ -66,6 +66,14 @@ function ExternalTest() {
 		<AnchorComposition.Root href="https://example.com" target="_blank">
 			<AnchorComposition.Text>External</AnchorComposition.Text>
 			<AnchorComposition.ExternalMarker />
+		</AnchorComposition.Root>
+	);
+}
+
+function CompositionTest() {
+	return (
+		<AnchorComposition.Root href="https://example.com">
+			Hello
 		</AnchorComposition.Root>
 	);
 }

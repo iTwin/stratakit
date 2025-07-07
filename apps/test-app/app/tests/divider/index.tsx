@@ -11,13 +11,11 @@ export const handle = { title: "Divider" };
 export default definePage(
 	function Page({ orientation, presentational }) {
 		return (
-			<>
-				<Divider
-					orientation={orientation as "horizontal" | "vertical" | undefined}
-					presentational={presentational ? true : undefined}
-					data-testid="divider"
-				/>
-			</>
+			<Divider
+				orientation={orientation as "horizontal" | "vertical" | undefined}
+				presentational={presentational ? true : undefined}
+				data-testid="divider"
+			/>
 		);
 	},
 	{ visual: VisualTest },
@@ -25,18 +23,16 @@ export default definePage(
 
 function VisualTest() {
 	return (
-		<>
-			<div
-				style={{
-					display: "grid",
-					gridTemplateColumns: "repeat(2, 50%)",
-					gap: "1rem",
-					blockSize: "10rem",
-				}}
-			>
-				<Divider orientation="horizontal" />
-				<Divider orientation="vertical" />
-			</div>
-		</>
+		<div
+			style={{
+				display: "grid",
+				gridTemplateColumns: "repeat(2, 50%)",
+				gap: "1rem",
+				blockSize: "10rem",
+			}}
+		>
+			<Divider orientation="horizontal" />
+			<Divider orientation="vertical" />
+		</div>
 	);
 }

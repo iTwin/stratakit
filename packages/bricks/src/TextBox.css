@@ -68,6 +68,24 @@
 				border: 1px solid var(--🥝text-box-border-color);
 				transition: border-color 150ms ease-out;
 			}
+
+			/* Propagate padding-inline-start to the nested input/textarea when there is no decoration _before_ it. */
+			&:where(:not(:has(.🥝-text-box-decoration ~ :is(input, textarea)))) {
+				padding-inline-start: 0;
+
+				:where(input, textarea) {
+					padding-inline-start: var(--✨padding-inline);
+				}
+			}
+
+			/* Propagate padding-inline-end to the nested input/textarea when there is no decoration _after_ it. */
+			&:where(:not(:has(:is(input, textarea) ~ .🥝-text-box-decoration))) {
+				padding-inline-end: 0;
+
+				:where(input, textarea) {
+					padding-inline-end: var(--✨padding-inline);
+				}
+			}
 		}
 
 		/* Styles specific to input/textarea (self and nested) */
@@ -102,6 +120,7 @@
 			flex: 999;
 			align-self: stretch;
 			transition: background-color 150ms ease-out;
+			min-height: inherit;
 		}
 	}
 

@@ -51,7 +51,8 @@
 				"../../packages/foundations:build",
 				"../../packages/bricks:build",
 				"../../packages/structures:build",
-				"../../packages/icons:build"
+				"../../packages/icons:build",
+				"../../packages/compat:build"
 			],
 			"files": [
 				"app",
@@ -72,7 +73,8 @@
 				"../../packages/icons:build",
 				"../../packages/foundations:dev",
 				"../../packages/bricks:dev",
-				"../../packages/structures:dev"
+				"../../packages/structures:dev",
+				"../../packages/compat:dev"
 			],
 			"service": true
 		},

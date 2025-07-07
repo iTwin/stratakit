@@ -16,11 +16,7 @@ export const handle = { title: "Chip" };
 
 export default definePage(
 	function Page() {
-		return (
-			<>
-				<Chip label="Value" />
-			</>
-		);
+		return <Chip label="Value" />;
 	},
 	{ visual: VisualTest, dismiss: DismissTest, composition: CompositionTest },
 );

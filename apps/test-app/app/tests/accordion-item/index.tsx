@@ -18,24 +18,22 @@ export default definePage(
 	}) {
 		const defaultOpen = Boolean(defaultOpenProp);
 		return (
-			<>
-				<AccordionItem.Root defaultOpen={defaultOpen}>
-					<AccordionItem.Header>
-						{withDecoration ? (
-							<AccordionItem.Decoration
-								render={<Icon href={placeholderIcon} />}
-							/>
-						) : null}
-						<AccordionItem.Button data-testid="button">
-							<AccordionItem.Label>{label}</AccordionItem.Label>
-						</AccordionItem.Button>
-						<AccordionItem.Marker />
-					</AccordionItem.Header>
-					<AccordionItem.Content data-testid="content">
-						{content}
-					</AccordionItem.Content>
-				</AccordionItem.Root>
-			</>
+			<AccordionItem.Root defaultOpen={defaultOpen}>
+				<AccordionItem.Header>
+					{withDecoration ? (
+						<AccordionItem.Decoration
+							render={<Icon href={placeholderIcon} />}
+						/>
+					) : null}
+					<AccordionItem.Button data-testid="button">
+						<AccordionItem.Label>{label}</AccordionItem.Label>
+					</AccordionItem.Button>
+					<AccordionItem.Marker />
+				</AccordionItem.Header>
+				<AccordionItem.Content data-testid="content">
+					{content}
+				</AccordionItem.Content>
+			</AccordionItem.Root>
 		);
 	},
 	{

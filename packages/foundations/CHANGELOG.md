@@ -1,5 +1,29 @@
 # Changelog
 
+## 0.2.0
+
+### Minor Changes
+
+- [#762](https://github.com/iTwin/design-system/pull/762): The prefix for all CSS variables has changed to `--stratakit`.
+
+  To handle this breaking change, replace all instances of "--ids" with "--stratakit". For example:
+
+  ```diff
+  - background-color: var(--ids-color-bg-page-base);
+  + background-color: var(--stratakit-color-bg-page-base);
+  ```
+
+### Patch Changes
+
+- [#783](https://github.com/iTwin/design-system/pull/783): Several changes to the CSS reset, affecting `<button>`, `<fieldset>`, `<p>` and heading (`<h1>`, `<h2>`, etc) elements.
+- [#811](https://github.com/iTwin/design-system/pull/811): Added a global `color-scheme` style, matching the `colorScheme` passed to `<Root>`.
+- [#568](https://github.com/iTwin/design-system/pull/568): Added a global `scrollbar-color` style.
+- [#784](https://github.com/iTwin/design-system/pull/784): Added new CSS variables:
+  - `--stratakit-color-border-control-checkbox`
+  - `--stratakit-color-border-control-radio`
+  - `--stratakit-color-border-control-textbox`
+  - `--stratakit-color-border-control-select`
+
 ## 0.1.6
 
 - [#770](https://github.com/iTwin/design-system/pull/770): An error will now be thrown when multiple instances of `@stratakit/foundations` are detected.

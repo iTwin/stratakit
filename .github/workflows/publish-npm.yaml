@@ -9,15 +9,19 @@ on:
         type: choice
         default: bricks
         options:
-          - bricks
+          - foundations
           - icons
+          - bricks
+          - structures
+          - compat
       tag:
         description: "Which npm tag to publish to?"
         required: true
         type: choice
-        default: alpha
+        default: dev
         options:
-          - alpha
+          - dev
+          - latest
 
   workflow_call:
     inputs:

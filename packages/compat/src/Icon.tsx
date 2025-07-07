@@ -39,9 +39,9 @@ export const Icon = React.forwardRef((props, forwardedRef) => {
 		<SkIcon
 			render={children}
 			size={size === "large" ? "large" : undefined}
-			{...(rest as React.ComponentProps<"svg">)}
+			{...rest}
 			ref={forwardedRef}
 		/>
 	);
-}) as PolymorphicForwardRefComponent<"span", IconProps>;
+}) as PolymorphicForwardRefComponent<"svg", IconProps>;
 DEV: Icon.displayName = "Icon";

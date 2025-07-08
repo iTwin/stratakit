@@ -9,6 +9,8 @@ import { Tree } from "@stratakit/structures";
 import { produce } from "immer";
 import { definePage } from "~/~utils.tsx";
 
+import type { VariantProps } from "~/~utils.tsx";
+
 import unlockIcon from "@stratakit/icons/lock-unlocked.svg";
 import placeholderIcon from "@stratakit/icons/placeholder.svg";
 import refreshIcon from "@stratakit/icons/refresh.svg";
@@ -203,34 +205,9 @@ export default definePage(
 		);
 	},
 	{
-		wrapperItemAction: WrapperItemAction,
-		_actionsOverflow: ActionsOverflowTest,
+		actions: ActionsTest,
 	},
 );
-
-function ActionsOverflowTest({ count = 5, dot = false }) {
-	const actions = Array.from({ length: Number(count) }).map((_, index) => (
-		<Tree.ItemAction
-			key={`${index + 1}`}
-			label={`Action ${index + 1}`}
-			icon={placeholderIcon}
-			dot={dot ? "Something's going on" : undefined}
-		/>
-	));
-	return (
-		<Tree.Root>
-			<Tree.Item
-				label="Foo"
-				aria-level={1}
-				aria-posinset={1}
-				aria-setsize={1}
-				inlineActions={actions}
-				menuActions={actions}
-			/>
-		</Tree.Root>
-	);
-}
-
 interface ItemActionProps extends React.ComponentProps<typeof Tree.ItemAction> {
 	hidden?: boolean;
 }
@@ -241,80 +218,43 @@ function ItemAction(props: ItemActionProps) {
 	return <Tree.ItemAction icon={placeholderIcon} {...rest} />;
 }
 
-function WrapperItemAction() {
-	const setSize = 6;
-	let posInset = 1;
+function ActionsTest({
+	inline: inlineParam,
+	menu: menuParam,
+	dot,
+	error: errorParam,
+	hiddenIds: hiddenIdsParam,
+}: VariantProps) {
+	const inline = inlineParam ? Number(inlineParam) : 2;
+	const menu = menuParam ? Number(menuParam) : 3;
+	const error = errorParam ? Boolean(errorParam) : undefined;
+	const hiddenIds = hiddenIdsParam
+		? hiddenIdsParam.split(";").map((id) => Number(id))
+		: [];
+
+	const actions = Array.from({ length: inline + menu }, (_, index) => {
+		const id = index + 1;
+		return (
+			<ItemAction
+				key={id}
+				label={`Action ${id}`}
+				dot={dot ? "Something's going on" : undefined}
+				hidden={hiddenIds.includes(id)}
+			/>
+		);
+	});
+	const inlineActions = actions.slice(0, inline);
+	const menuActions = actions.slice(inline);
 	return (
 		<Tree.Root>
 			<Tree.Item
-				label="4 inline actions"
+				label="Item 1"
 				aria-level={1}
-				aria-posinset={posInset++}
-				aria-setsize={setSize}
-				inlineActions={[
-					<ItemAction key="1" label="Action 1" />,
-					<ItemAction key="2" label="Action 2" />,
-					<ItemAction key="3" label="Action 3" />,
-					<ItemAction key="4" label="Action 4" />,
-				]}
-			/>
-			<Tree.Item
-				label="Actions menu"
-				aria-level={1}
-				aria-posinset={posInset++}
-				aria-setsize={setSize}
-				menuActions={[
-					<ItemAction key="1" label="Action 1" />,
-					<ItemAction key="2" label="Action 2" />,
-					<ItemAction key="3" label="Action 3" />,
-					<ItemAction key="4" label="Action 4" />,
-				]}
-			/>
-			<Tree.Item
-				label="Hidden menu actions"
-				aria-level={1}
-				aria-posinset={posInset++}
-				aria-setsize={setSize}
-				inlineActions={[<ItemAction key="3" label="Action 3" />]}
-				menuActions={[
-					<ItemAction key="1" label="Action 1" hidden />,
-					<ItemAction key="2" label="Action 2" hidden />,
-				]}
-			/>
-			<Tree.Item
-				label="Aligned actions #1"
-				aria-level={1}
-				aria-posinset={posInset++}
-				aria-setsize={setSize}
-				inlineActions={[
-					<ItemAction key="1" label="Action 1" />,
-					<ItemAction key="2" label="Action 2" />,
-				]}
-				menuActions={[
-					<ItemAction key="3" label="Action 3" />,
-					<ItemAction key="4" label="Action 4" />,
-				]}
-			/>
-			<Tree.Item
-				label="Aligned actions #2"
-				aria-level={1}
-				aria-posinset={posInset++}
-				aria-setsize={setSize}
-				inlineActions={[
-					<ItemAction key="1" label="Action 1" />,
-					<ItemAction key="2" label="Action 2" visible={false} />,
-				]}
-				menuActions={[
-					<ItemAction key="3" label="Action 3" />,
-					<ItemAction key="4" label="Action 4" />,
-				]}
-			/>
-			<Tree.Item
-				label="Single menu action"
-				aria-level={1}
-				aria-posinset={posInset++}
-				aria-setsize={setSize}
-				menuActions={[<ItemAction key="1" label="Action 1" />]}
+				aria-posinset={1}
+				aria-setsize={1}
+				inlineActions={inlineActions}
+				menuActions={menuActions}
+				error={error}
 			/>
 		</Tree.Root>
 	);

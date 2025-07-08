@@ -32,8 +32,6 @@ import * as ListItem from "./~utils.ListItem.js";
 
 import type {
 	MenuItemCheckboxProps,
-	MenuItemProps,
-	MenuProps,
 	MenuProviderProps,
 } from "@ariakit/react/menu";
 import type { PredefinedSymbol } from "@stratakit/bricks/secret-internals";
@@ -48,7 +46,7 @@ import type {
 interface DropdownMenuProps
 	extends Pick<
 		MenuProviderProps,
-		"children" | "placement" | "open" | "setOpen" | "defaultOpen" | "store"
+		"children" | "placement" | "open" | "setOpen" | "defaultOpen"
 	> {}
 
 /**
@@ -78,9 +76,7 @@ DEV: DropdownMenuRoot.displayName = "DropdownMenu.Root";
 
 // ----------------------------------------------------------------------------
 
-interface DropdownMenuContentProps
-	extends FocusableProps,
-		Pick<MenuProps, "unmountOnHide"> {}
+interface DropdownMenuContentProps extends FocusableProps {}
 
 /**
  * The actual "menu" portion containing the items shown within the dropdown.
@@ -161,8 +157,7 @@ interface DropdownMenuItemProps
 	extends Omit<FocusableProps<"button">, "children">,
 		Partial<
 			Pick<DropdownMenuItemShortcutsProps, "shortcuts"> &
-				Pick<DropdownMenuIconProps, "icon"> &
-				Pick<MenuItemProps, "getItem">
+				Pick<DropdownMenuIconProps, "icon">
 		> {
 	/** The primary text label for the menu-item. */
 	label: React.ReactNode;
@@ -182,13 +177,12 @@ interface DropdownMenuItemProps
  */
 const DropdownMenuItem = forwardRef<"button", DropdownMenuItemProps>(
 	(props, forwardedRef) => {
-		const { label, shortcuts, icon, unstable_dot, getItem, ...rest } = props;
+		const { label, shortcuts, icon, unstable_dot, ...rest } = props;
 
 		const dotId = React.useId();
 
 		return (
 			<MenuItem
-				getItem={getItem}
 				accessibleWhenDisabled
 				render={
 					<ListItem.Root

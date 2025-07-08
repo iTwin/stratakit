@@ -157,7 +157,7 @@ export default definePage(
 									<Icon href={placeholderIcon} />
 								)
 							}
-							actions={
+							inlineActions={
 								error
 									? [
 											<Tree.ItemAction
@@ -165,17 +165,6 @@ export default definePage(
 												icon={refreshIcon}
 												label="Retry"
 												onClick={handleRetry}
-												inline
-											/>,
-											<Tree.ItemAction
-												key="unlock"
-												icon={unlockIcon}
-												label="Unlock"
-											/>,
-											<Tree.ItemAction
-												key="show"
-												icon={showIcon}
-												label="Show"
 											/>,
 										]
 									: [
@@ -183,15 +172,29 @@ export default definePage(
 												key="unlock"
 												icon={unlockIcon}
 												label="Unlock"
-												inline
 											/>,
 											<Tree.ItemAction
 												key="show"
 												icon={showIcon}
 												label="Show"
-												inline
 											/>,
 										]
+							}
+							menuActions={
+								error
+									? [
+											<Tree.ItemAction
+												key="unlock"
+												icon={unlockIcon}
+												label="Unlock"
+											/>,
+											<Tree.ItemAction
+												key="show"
+												icon={showIcon}
+												label="Show"
+											/>,
+										]
+									: undefined
 							}
 						/>
 					);
@@ -221,7 +224,8 @@ function ActionsOverflowTest({ count = 5, dot = false }) {
 				aria-level={1}
 				aria-posinset={1}
 				aria-setsize={1}
-				actions={actions}
+				inlineActions={actions}
+				menuActions={actions}
 			/>
 		</Tree.Root>
 	);
@@ -247,11 +251,11 @@ function WrapperItemAction() {
 				aria-level={1}
 				aria-posinset={posInset++}
 				aria-setsize={setSize}
-				actions={[
-					<ItemAction key="1" label="Action 1" inline />,
-					<ItemAction key="2" label="Action 2" inline />,
-					<ItemAction key="3" label="Action 3" inline />,
-					<ItemAction key="4" label="Action 4" inline />,
+				inlineActions={[
+					<ItemAction key="1" label="Action 1" />,
+					<ItemAction key="2" label="Action 2" />,
+					<ItemAction key="3" label="Action 3" />,
+					<ItemAction key="4" label="Action 4" />,
 				]}
 			/>
 			<Tree.Item
@@ -259,7 +263,7 @@ function WrapperItemAction() {
 				aria-level={1}
 				aria-posinset={posInset++}
 				aria-setsize={setSize}
-				actions={[
+				menuActions={[
 					<ItemAction key="1" label="Action 1" />,
 					<ItemAction key="2" label="Action 2" />,
 					<ItemAction key="3" label="Action 3" />,
@@ -271,10 +275,10 @@ function WrapperItemAction() {
 				aria-level={1}
 				aria-posinset={posInset++}
 				aria-setsize={setSize}
-				actions={[
+				inlineActions={[<ItemAction key="3" label="Action 3" />]}
+				menuActions={[
 					<ItemAction key="1" label="Action 1" hidden />,
 					<ItemAction key="2" label="Action 2" hidden />,
-					<ItemAction key="2" label="Action 3" inline />,
 				]}
 			/>
 			<Tree.Item
@@ -282,10 +286,13 @@ function WrapperItemAction() {
 				aria-level={1}
 				aria-posinset={posInset++}
 				aria-setsize={setSize}
-				actions={[
-					<ItemAction key="1" label="Action 1" inline />,
-					<ItemAction key="2" label="Action 2" inline />,
-					<ItemAction key="2" label="Action 3" />,
+				inlineActions={[
+					<ItemAction key="1" label="Action 1" />,
+					<ItemAction key="2" label="Action 2" />,
+				]}
+				menuActions={[
+					<ItemAction key="3" label="Action 3" />,
+					<ItemAction key="4" label="Action 4" />,
 				]}
 			/>
 			<Tree.Item
@@ -293,10 +300,13 @@ function WrapperItemAction() {
 				aria-level={1}
 				aria-posinset={posInset++}
 				aria-setsize={setSize}
-				actions={[
-					<ItemAction key="1" label="Action 1" inline />,
-					<ItemAction key="2" label="Action 2" inline visible={false} />,
-					<ItemAction key="2" label="Action 3" />,
+				inlineActions={[
+					<ItemAction key="1" label="Action 1" />,
+					<ItemAction key="2" label="Action 2" visible={false} />,
+				]}
+				menuActions={[
+					<ItemAction key="3" label="Action 3" />,
+					<ItemAction key="4" label="Action 4" />,
 				]}
 			/>
 			<Tree.Item
@@ -304,7 +314,7 @@ function WrapperItemAction() {
 				aria-level={1}
 				aria-posinset={posInset++}
 				aria-setsize={setSize}
-				actions={[<ItemAction key="1" label="Action 1" />]}
+				menuActions={[<ItemAction key="1" label="Action 1" />]}
 			/>
 		</Tree.Root>
 	);

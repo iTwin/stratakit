@@ -29,9 +29,9 @@ export default definePage(function Page() {
 			</Icon>
 
 			{/* Partially implemented props */}
-			<div>
+			<div style={{ display: "flex" }}>
 				{(["small", "medium", "large"] as const).map((iconSize) => (
-					<Icon size={iconSize} style={{ display: "inline" }}>
+					<Icon size={iconSize}>
 						<svg>
 							<use href={`${placeholderIcon}#icon`} />
 						</svg>
@@ -40,14 +40,14 @@ export default definePage(function Page() {
 			</div>
 
 			{/* Not implemented props */}
-			<div>
+			<div style={{ display: "flex" }}>
 				{Object.entries({
 					informational: infoIcon,
 					positive: successStatusIcon,
 					warning: warningStatusIcon,
 					negative: errorStatusIcon,
 				}).map(([fill, icon]) => (
-					<Icon fill={fill} style={{ display: "inline" }}>
+					<Icon fill={fill}>
 						<svg>
 							<use href={`${icon}#icon`} />
 						</svg>
@@ -64,9 +64,10 @@ export default definePage(function Page() {
 			<p
 				style={{
 					fontSize: "1.5rem",
+					display: "flex",
 				}}
 			>
-				<Icon size="auto" style={{ display: "inline" }}>
+				<Icon size="auto">
 					<svg>
 						<use href={`${placeholderIcon}#icon`} />
 					</svg>

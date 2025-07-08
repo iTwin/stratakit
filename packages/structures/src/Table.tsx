@@ -235,13 +235,7 @@ DEV: TableBody.displayName = "Table.Body";
 
 // ----------------------------------------------------------------------------
 
-interface TableRowProps extends BaseProps<"div"> {
-	/**
-	 * Describes if the row is selected.
-	 * To add selection functionality for the table rows, consumers are encouraged to display the `Checkbox` component in the first column of the table.
-	 */
-	"aria-selected"?: BaseProps<"div">["aria-selected"];
-}
+interface TableRowProps extends BaseProps<"div"> {}
 
 /**
  * `Table.Row` is a component that contains the cells of a table row.
@@ -255,6 +249,18 @@ interface TableRowProps extends BaseProps<"div"> {
  *		<Table.Cell>Cell 1.1</Table.Cell>
  *		<Table.Cell>Cell 1.2</Table.Cell>
  *	</Table.Row>
+ * ```
+ *
+ * Rows that contain checked checkboxes are considered selected.
+ * Consumers should render the `Checkbox` component to add selection functionality for the table rows.
+ *
+ * Example:
+ * ```tsx
+ * <Table.Row>
+ *   <Table.Cell><Checkbox /><Table.Cell>
+ *   <Table.Cell>Cell 1.1</Table.Cell>
+ *   <Table.Cell>Cell 1.2</Table.Cell>
+ * </Table.Row
  * ```
  */
 const TableRow = forwardRef<"div", TableRowProps>((props, forwardedRef) => {

@@ -71,7 +71,13 @@ function CustomTableTest() {
 					<Table.Cell>Orange</Table.Cell>
 				</Table.Row>
 				<Table.Row aria-selected>
-					<Table.Cell>Kiwi</Table.Cell>
+					<Table.Cell aria-selected>
+						Kiwi
+						<VisuallyHidden>
+							(Selected)
+							<Checkbox checked aria-hidden tabIndex={-1} />
+						</VisuallyHidden>
+					</Table.Cell>
 					<Table.Cell>Golden brown</Table.Cell>
 				</Table.Row>
 				<Table.Row>
@@ -102,8 +108,14 @@ function HtmlTableTest() {
 					<Table.Cell>Orange</Table.Cell>
 					<Table.Cell>Orange</Table.Cell>
 				</Table.Row>
-				<Table.Row aria-selected>
-					<Table.Cell>Kiwi</Table.Cell>
+				<Table.Row>
+					<Table.Cell>
+						Kiwi
+						<VisuallyHidden>
+							(Selected)
+							<Checkbox checked aria-hidden tabIndex={-1} />
+						</VisuallyHidden>
+					</Table.Cell>
 					<Table.Cell>Golden brown</Table.Cell>
 				</Table.Row>
 				<Table.Row>
@@ -203,7 +215,7 @@ function SingleSelection() {
 					const rowSelected = row.id === selected;
 					const nameId = `${tableId}-${row.id}-name`;
 					return (
-						<Table.Row key={row.id} aria-selected={rowSelected}>
+						<Table.Row key={row.id}>
 							<Table.Cell>
 								<Checkbox
 									checked={rowSelected}
@@ -259,7 +271,7 @@ function MultiSelection() {
 					const rowSelected = selected.includes(row.id);
 					const nameId = `${tableId}-${row.id}-name`;
 					return (
-						<Table.Row key={row.id} aria-selected={rowSelected}>
+						<Table.Row key={row.id}>
 							<Table.Cell>
 								<Checkbox
 									checked={rowSelected}

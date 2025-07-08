@@ -2,9 +2,13 @@
 "@stratakit/structures": patch
 ---
 
-Added active and active-hover states to the `Table.Row` component. Use `aria-selected` prop to indicate the active state of a row. The active-hover state is applied when the row is hovered while it is active.
+Added active and active-hover states to the `Table.Row` component for styling selected rows. To enable selection, consumers should render a `Checkbox` component within the row. A row is considered selected when its checkbox is checked. The active-hover state is applied when a selected row is hovered.
 
 ```tsx
-<Table.Row aria-selected={true}>{row1}</Table.Row> // displayed as active
-<Table.Row aria-selected={false}>{row2}</Table.Row>
+<Table.Row>
+	<Table.Cell>
+		<Checkbox checked />
+	</Table.Cell>
+	<Table.Cell>Item 1</Table.Cell>
+</Table.Row>
 ```

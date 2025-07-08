@@ -104,14 +104,23 @@
 		}
 
 		&:where([role="cell"], td) {
-			:where(.🥝-table-row[aria-selected="true"]) & {
+			:where(
+					.🥝-table-row:has(input[type="checkbox"]:checked, [role="checkbox"][aria-checked="true"])
+				)
+				& {
 				--🌀table-cell-state: var(--🌀table-cell-state--active);
 			}
 		}
 
 		@media (any-hover: hover) {
 			&:where([role="cell"], td) {
-				:where(.🥝-table-row:hover[aria-selected="true"]) & {
+				:where(
+						.🥝-table-row:hover:has(
+								input[type="checkbox"]:checked,
+								[role="checkbox"][aria-checked="true"]
+							)
+					)
+					& {
 					--🌀table-cell-state: var(--🌀table-cell-state--active-hover);
 				}
 			}
@@ -132,7 +141,13 @@
 	@layer base {
 		.🥝-table-cell {
 			&:where([role="cell"], td) {
-				:where(.🥝-table-row[aria-selected="true"]) & {
+				:where(
+						.🥝-table-row:has(
+								input[type="checkbox"]:checked,
+								[role="checkbox"][aria-checked="true"]
+							)
+					)
+					& {
 					background-color: SelectedItem;
 					color: SelectedItemText;
 					border-color: SelectedItemText;

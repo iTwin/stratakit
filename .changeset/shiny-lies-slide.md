@@ -2,24 +2,44 @@
 "@stratakit/structures": minor
 ---
 
-Added `Tree.ItemOverflowAction` component to display the tree item actions in the overflow menu.
+Replaced `actions` prop of `Tree.Item` component with `inlineActions` and `menuActions` props.
+
+At most 3 inline actions will be displayed:
+
+- First two inline actions are displayed when action menu is displayed.
+- First action is displayed when tree item has an error.
 
 ```tsx
-<Tree.ItemOverflowAction label={…} actions={[
-  <Tree.ItemAction key={…} icon={…} label={…} />,
-  <Tree.ItemAction key={…} icon={…} label={…} />,
-]} />
+<Tree.Item
+  inlineActions={[
+    <Tree.ItemAction key={…} icon={…} label={…} />,
+    <Tree.ItemAction key={…} icon={…} label={…} />,
+  ]}
+  menuActions={[
+    <Tree.ItemAction key={…} label={…} />,
+    <Tree.ItemAction key={…} label={…} />,
+  ]}
+/>
 ```
 
-Updated `Tree.Item` component to no longer handle the overflow of specified actions. Instead, consumers can now use the `Tree.ItemOverflowAction` component to render the actions in the overflow menu manually.
+Additionally, consumers can now conditionally render the `Tree.ItemAction` in a wrapper component.
 
 ```tsx
-actions={[
-  <Tree.ItemAction key={…} icon={…} label={…} />,
-  <Tree.ItemAction key={…} icon={…} label={…} />,
-  <Tree.ItemOverflowAction key={…} actions={[
+function MyAction() {
+  const enabled = useMyActionEnabled();
+  if (!enabled) return null;
+  return <Tree.ItemAction label={…} />;
+}
+
+// This will correctly render 3 inline actions w/o a menu button OR 2 inline actions with a menu button.
+<Tree.Item
+  inlineActions={[
     <Tree.ItemAction key={…} icon={…} label={…} />,
     <Tree.ItemAction key={…} icon={…} label={…} />,
-  ]} />,
-]}
+    <Tree.ItemAction key={…} icon={…} label={…} />,
+  ]}
+  menuActions={[
+    <MyAction />,
+  ]}
+/>
 ```

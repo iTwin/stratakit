@@ -190,6 +190,55 @@ DEV: BannerMessage.displayName = "Banner.Message";
 
 // ----------------------------------------------------------------------------
 
+interface BannerActionsProps extends BaseProps<"div"> {}
+
+/**
+ * The actions available for the banner.
+ *
+ * Example with one action:
+ * ```tsx
+ * <Banner.Root>
+ *   <Banner.Actions>
+ *     <Button key={…} onClick={…}>Action</Button>
+ *   </Banner.Actions>
+ * </Banner.Root>
+ * ```
+ *
+ * Example with two `Button`s:
+ * ```tsx
+ * <Banner.Root>
+ *   <Banner.Actions>
+ *     <Button key={…} onClick={…}>Action 1</Button>
+ *     <Button key={…} onClick={…}>Action 2</Button>
+ *   </Banner.Actions>
+ * </Banner.Root>
+ * ```
+ *
+ * Example with two `Anchor`s as `Button`:
+ * ```tsx
+ * <Banner.Root>
+ *   <Banner.Actions>
+ *     <Anchor key={…} render={<button />} onClick={…}>Action 1</Anchor>,
+ *     <Anchor key={…} render={<button />} onClick={…}>Action 2</Anchor>,
+ *   </Banner.Actions>
+ * </Banner.Root>
+ * ```
+ */
+const BannerActions = forwardRef<"div", BannerActionsProps>(
+	(props, forwardedRef) => {
+		return (
+			<Role.div
+				{...props}
+				className={cx("🥝-banner-actions", props.className)}
+				ref={forwardedRef}
+			/>
+		);
+	},
+);
+DEV: BannerActions.displayName = "Banner.Actions";
+
+// ----------------------------------------------------------------------------
+
 interface BannerDismissButtonProps
 	extends Omit<BaseProps<"button">, "children"> {
 	/**
@@ -296,6 +345,7 @@ type BannerProps = Omit<BaseProps, "children"> &
 		 *     <Anchor key={…} render={<button />} onClick={…}>Action 2</Anchor>,
 		 *   </>
 		 * }
+		 * ```
 		 */
 		actions?: React.ReactNode;
 	};
@@ -335,9 +385,7 @@ const Banner = forwardRef<"div", BannerProps>((props, forwardedRef) => {
 
 			<BannerMessage>{message}</BannerMessage>
 
-			{actions != null ? (
-				<div className="🥝-banner-actions">{actions}</div>
-			) : null}
+			{actions != null ? <BannerActions>{actions}</BannerActions> : null}
 
 			{onDismiss ? <BannerDismissButton onClick={onDismiss} /> : null}
 		</BannerRoot>

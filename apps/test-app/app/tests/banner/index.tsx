@@ -186,11 +186,11 @@ function AllStyleCases() {
 function CompositionTest() {
 	return (
 		<BannerRoot tone="info" variant="outline">
+			<BannerIcon href={placeholderIcon} />
 			<BannerLabel id="my-label">Label</BannerLabel>
 			<BannerMessage>
 				This is a message that can be very long and will wrap to the next line.
 			</BannerMessage>
-			<BannerIcon href={placeholderIcon} />
 			<BannerActions>
 				<Button>Action</Button>
 			</BannerActions>

@@ -143,7 +143,7 @@ body:
     attributes:
       label: Forced colors mode
       description: | 
-        To activate Windows High Contrast Mode, go to **Settings > Ease Of Access > High Contrast** and choose a theme.
+        To activate forced colors mode in Windows, go to **Settings > Accessibility > Contrast themes** and choose a theme.
       options:
         - label: No content, imagery, or functionality is invisible or otherwise missing.
         - label: The demarcation of elements remains clear. Buttons retain borders; dividers between sections are intact, etc.

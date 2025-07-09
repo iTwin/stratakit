@@ -193,7 +193,7 @@ const Chip = forwardRef<"div", ChipProps>((props, forwardedRef) => {
 	return (
 		<ChipRoot {...rest} ref={forwardedRef}>
 			<ChipLabel>{label}</ChipLabel>
-			{onDismiss && <ChipDismissButton onClick={onDismiss} />}
+			{onDismiss ? <ChipDismissButton onClick={onDismiss} /> : null}
 		</ChipRoot>
 	);
 });

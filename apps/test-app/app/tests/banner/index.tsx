@@ -53,6 +53,7 @@ function VisualTest({ customIcons = false }: { customIcons?: boolean }) {
 					tone.charAt(0).toUpperCase() + tone.slice(1).toLowerCase();
 				return (
 					<Banner
+						data-testid={`banner-${tone}`}
 						icon={customIcons ? placeholderIcon : undefined}
 						label={sentenceCaseTone}
 						message={loremIpsum}
@@ -185,16 +186,29 @@ function AllStyleCases() {
 
 function CompositionTest() {
 	return (
-		<BannerRoot tone="info" variant="outline">
-			<BannerIcon href={placeholderIcon} />
-			<BannerLabel id="my-label">Label</BannerLabel>
-			<BannerMessage>
-				This is a message that can be very long and will wrap to the next line.
-			</BannerMessage>
-			<BannerActions>
-				<Button>Action</Button>
-			</BannerActions>
-			<BannerDismiss onClick={() => console.log("Dismissed")} />
-		</BannerRoot>
+		<div style={{ display: "grid", gap: 4 }}>
+			<BannerRoot tone="info" variant="outline">
+				<BannerIcon href={placeholderIcon} />
+				<BannerLabel id="my-label">Label</BannerLabel>
+				<BannerMessage>
+					This is a message that can be very long and will wrap to the next
+					line.
+				</BannerMessage>
+				<BannerActions>
+					<Button>Action</Button>
+				</BannerActions>
+				<BannerDismiss onClick={() => console.log("Dismissed")} />
+			</BannerRoot>
+
+			{/* If no icon is passed and tone is non-neutral, should show a status icon */}
+			<BannerRoot tone="info" data-testid="banner-info">
+				<BannerLabel>Label</BannerLabel>
+				<BannerMessage>Message</BannerMessage>
+			</BannerRoot>
+			<BannerRoot data-testid="banner-neutral">
+				<BannerLabel>Label</BannerLabel>
+				<BannerMessage>Message</BannerMessage>
+			</BannerRoot>
+		</div>
 	);
 }

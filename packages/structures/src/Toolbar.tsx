@@ -34,13 +34,15 @@ interface ToolbarProps extends BaseProps {
  */
 const ToolbarGroup = forwardRef<"div", ToolbarProps>((props, forwardedRef) => {
 	return (
-		<IconButtonContext value={React.useMemo(() => ({ iconSize: "large" }), [])}>
+		<IconButtonContext.Provider
+			value={React.useMemo(() => ({ iconSize: "large" }), [])}
+		>
 			<Toolbar.Toolbar
 				{...props}
 				className={cx("🥝-toolbar", props.className)}
 				ref={forwardedRef}
 			/>
-		</IconButtonContext>
+		</IconButtonContext.Provider>
 	);
 });
 DEV: ToolbarGroup.displayName = "Toolbar.Group";

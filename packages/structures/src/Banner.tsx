@@ -73,16 +73,23 @@ interface BannerRootProps extends BaseProps<"div"> {
 	variant?: "outline";
 }
 
+/**
+ * Root component of the compositional Banner component.
+ *
+ * Example:
+ * ```tsx
+ * <Banner.Root tone="info" variant="outline">
+ *   <Banner.Icon href={placeholderIcon} />
+ *   <Banner.Label>Label</Banner.Label>
+ *   <Banner.Message>Message</Banner.Message>
+ *   <Banner.DismissButton onClick={onDismiss} />
+ * </Banner.Root>
+ * ```
+ */
 const BannerRoot = forwardRef<"div", BannerRootProps>((props, forwardedRef) => {
 	const { tone = "neutral", variant = "outline", ...rest } = props;
 
 	return (
-		// <Role.div
-		// 	data-kiwi-variant={variant}
-		// 	{...rest}
-		// 	className={cx("🥝-chip", props.className)}
-		// 	ref={forwardedRef}
-		// />
 		<BannerProvider>
 			<Role
 				{...rest}
@@ -120,6 +127,15 @@ interface BannerLabelProps extends RoleProps<"span"> {}
 
 /**
  * Label component that should be used with the compositional Banner component.
+ *
+ * A `Banner.Root`'s label.
+ *
+ * Example:
+ * ```tsx
+ * <Banner.Root>
+ *   <Banner.Label>Label</Banner.Label>
+ * </Banner.Root>
+ * ```
  */
 const BannerLabel = forwardRef<"span", BannerLabelProps>(
 	(props, forwardedRef) => {
@@ -149,8 +165,14 @@ DEV: BannerLabel.displayName = "Banner.Label";
 interface BannerMessageProps extends RoleProps<"div"> {}
 
 /**
- * TODO: All JSDocs
- * Label component that should be used with the compositional Banner component.
+ * The message content of the `Banner.Root`.
+ *
+ * Example:
+ * ```tsx
+ * <Banner.Root>
+ *   <Banner.Message>Message content goes here.</Banner.Message>
+ * </Banner.Root>
+ * ```
  */
 const BannerMessage = forwardRef<"span", BannerMessageProps>(
 	(props, forwardedRef) => {
@@ -181,7 +203,14 @@ interface BannerDismissButtonProps
 }
 
 /**
- * Dismiss button component that should be used with the compositional Chip component.
+ * Button to dismiss the banner. Handle the `onClick` event to remove the banner from the UI.
+ *
+ * Example:
+ * ```tsx
+ * <Banner.Root>
+ *   <Banner.DismissButton onClick={() => {}} />
+ * </Banner.Root>
+ * ```
  */
 const BannerDismissButton = forwardRef<"button", BannerDismissButtonProps>(
 	(props, forwardedRef) => {
@@ -292,57 +321,25 @@ const Banner = forwardRef<"div", BannerProps>((props, forwardedRef) => {
 	} = props;
 
 	return (
-		// <Role
-		// 	{...rest}
-		// 	data-kiwi-tone={tone}
-		// 	data-kiwi-variant={variant}
-		// 	className={cx("🥝-banner", props.className)}
-		// 	ref={forwardedRef}
-		// >
 		<BannerRoot tone={tone} {...rest} ref={forwardedRef}>
 			{icon ? (
-				<Icon
-					className="🥝-banner-icon"
+				<BannerIcon
 					href={typeof icon === "string" ? icon : undefined}
 					render={React.isValidElement(icon) ? icon : undefined}
 				/>
 			) : null}
 
-			{/* <Text
-				className="🥝-banner-label"
-				id={labelId}
-				variant="body-sm"
-				render={React.isValidElement(label) ? label : <span />}
-			>
-				{!React.isValidElement(label) ? label : undefined}
-			</Text> */}
 			<BannerLabel render={React.isValidElement(label) ? label : undefined}>
 				{label}
 			</BannerLabel>
 
-			{/* <Text render={<div />} variant="body-sm" className="🥝-banner-message">
-				{message}
-			</Text> */}
 			<BannerMessage>{message}</BannerMessage>
 
 			{actions != null ? (
 				<div className="🥝-banner-actions">{actions}</div>
 			) : null}
 
-			{onDismiss ? (
-				// <GhostAligner align="block">
-				// 	<IconButton
-				// 		id={dismissId}
-				// 		className="🥝-banner-dismiss-button"
-				// 		variant="ghost"
-				// 		label="Dismiss"
-				// 		aria-labelledby={`${dismissId} ${labelId}`}
-				// 		icon={<Dismiss />}
-				// 		onClick={onDismiss}
-				// 	/>
-				// </GhostAligner>
-				<BannerDismissButton onClick={onDismiss} />
-			) : null}
+			{onDismiss ? <BannerDismissButton onClick={onDismiss} /> : null}
 		</BannerRoot>
 	);
 });
@@ -351,3 +348,10 @@ DEV: Banner.displayName = "Banner";
 // ----------------------------------------------------------------------------
 
 export default Banner;
+export {
+	BannerRoot as Root,
+	BannerIcon as Icon,
+	BannerLabel as Label,
+	BannerMessage as Message,
+	BannerDismissButton as DismissButton,
+};

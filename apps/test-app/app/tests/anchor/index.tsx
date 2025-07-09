@@ -4,6 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 
 import { Anchor } from "@stratakit/bricks";
+import * as AnchorComposition from "@stratakit/bricks/Anchor";
 import { definePage } from "~/~utils.tsx";
 
 export const handle = { title: "Anchor" };
@@ -23,7 +24,7 @@ export default definePage(
 			</>
 		);
 	},
-	{ visual: VisualTest },
+	{ visual: VisualTest, composition: CompositionTest },
 );
 
 function VisualTest() {
@@ -48,5 +49,13 @@ function VisualTest() {
 				);
 			})}
 		</div>
+	);
+}
+
+function CompositionTest() {
+	return (
+		<AnchorComposition.Root href="https://example.com">
+			Hello
+		</AnchorComposition.Root>
 	);
 }

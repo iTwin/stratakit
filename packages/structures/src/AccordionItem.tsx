@@ -212,9 +212,10 @@ DEV: AccordionItemLabel.displayName = "AccordionItem.Label";
 
 /**
  * The always-visible, optional decoration of an accordion item’s button.
+ * This can be placed before or after the button.
  *
- * Use as a direct descendant of `AccordionItem.Header`. This will be visually
- * presented before the button’s label.
+ * Use as a direct descendant of `AccordionItem.Header`. The decoration
+ * can be placed before the button.
  *
  * Example:
  * ```tsx
@@ -227,7 +228,7 @@ DEV: AccordionItemLabel.displayName = "AccordionItem.Label";
  * </AccordionItem.Header>
  * ```
  *
- * The decoration can also be placed after the button's label.
+ * The decoration can also be placed after the button.
  *
  * Example:
  * ```tsx
@@ -269,7 +270,10 @@ const AccordionItemDecoration = forwardRef<"div", BaseProps>(
 DEV: AccordionItemDecoration.displayName = "AccordionItem.Decoration";
 
 /**
- * The visual marker of an accordion item’s button.
+ * The visual marker of an accordion item’s button. This can be
+ * placed before or after the button.
+ *
+ * The marker can be placed after the button.
  *
  * Example:
  * ```tsx
@@ -281,7 +285,7 @@ DEV: AccordionItemDecoration.displayName = "AccordionItem.Decoration";
  * </AccordionItem.Header>
  * ```
  *
- * The marker can also be placed before the button's label.
+ * The marker can also be placed before the button.
  *
  * Example:
  * ```tsx

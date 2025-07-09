@@ -20,10 +20,8 @@
 		--🥝field-description-column: label-start / label-end;
 
 		/* With checkable fields, when the label is not first, switch to control-first layout */
-		&:where([data-kiwi-control-type="checkable"]) {
-			&:where([data-kiwi-label-placement="after"]) {
-				grid-template-columns: var(--✨layout-inline-control-first);
-			}
+		&:where([data-kiwi-control-type="checkable"][data-kiwi-label-placement="after"]) {
+			grid-template-columns: var(--✨layout-inline-control-first);
 		}
 
 		&:where([data-kiwi-control-type="textlike"]) {

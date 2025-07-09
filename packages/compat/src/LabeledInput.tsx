@@ -77,7 +77,7 @@ export const LabeledInput = React.forwardRef((props, forwardedRef) => {
 	} = useCompatProps(wrapperProps);
 
 	const {
-		size: iconSize, // PARTIALLY IMPLEMENTED: only supports large as an override
+		size: iconSize, // PARTIALLY IMPLEMENTED: Only supports `large` and `medium` size. Other values are mapped to `medium`.
 
 		// biome-ignore-start lint/correctness/noUnusedVariables: NOT IMPLEMENTED
 		fill: iconFill,

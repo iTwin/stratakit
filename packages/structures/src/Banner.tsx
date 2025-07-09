@@ -401,5 +401,6 @@ export {
 	BannerIcon as Icon,
 	BannerLabel as Label,
 	BannerMessage as Message,
+	BannerActions as Actions,
 	BannerDismissButton as DismissButton,
 };

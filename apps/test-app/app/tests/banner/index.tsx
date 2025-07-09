@@ -5,6 +5,14 @@
 
 import { Anchor, Button, VisuallyHidden } from "@stratakit/bricks";
 import { unstable_Banner as Banner } from "@stratakit/structures";
+import {
+	Actions as BannerActions,
+	DismissButton as BannerDismiss,
+	Icon as BannerIcon,
+	Label as BannerLabel,
+	Message as BannerMessage,
+	Root as BannerRoot,
+} from "@stratakit/structures/unstable_Banner";
 import { definePage } from "~/~utils.tsx";
 
 import placeholderIcon from "@stratakit/icons/placeholder.svg";
@@ -25,6 +33,7 @@ export default definePage(
 		dismiss: DismissibleTest,
 		actions: ActionsTest,
 		allStyleCases: AllStyleCases,
+		composition: CompositionTest,
 	},
 );
 
@@ -171,5 +180,21 @@ function AllStyleCases() {
 				});
 			})}
 		</div>
+	);
+}
+
+function CompositionTest() {
+	return (
+		<BannerRoot tone="info" variant="outline">
+			<BannerLabel id="my-label">Label</BannerLabel>
+			<BannerMessage>
+				This is a message that can be very long and will wrap to the next line.
+			</BannerMessage>
+			<BannerIcon href={placeholderIcon} />
+			<BannerActions>
+				<Button>Action</Button>
+			</BannerActions>
+			<BannerDismiss onClick={() => console.log("Dismissed")} />
+		</BannerRoot>
 	);
 }

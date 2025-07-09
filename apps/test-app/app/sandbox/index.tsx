@@ -735,7 +735,7 @@ function SandboxTree({ data: treeData }: { data: TreeItemData[] }) {
 									<Icon href={placeholderIcon} />
 								</>
 							}
-							actions={[
+							inlineActions={[
 								hasError ? (
 									<Tree.ItemAction
 										key="retry"
@@ -748,18 +748,14 @@ function SandboxTree({ data: treeData }: { data: TreeItemData[] }) {
 										}}
 									/>
 								) : undefined,
-								<Tree.ItemAction
-									key="lock"
-									icon={lockIcon}
-									label="Lock"
-									inline
-								/>,
+								<Tree.ItemAction key="lock" icon={lockIcon} label="Lock" />,
 								<VisibilityAction
 									key="visibility"
 									item={item}
 									onClick={toggleHidden}
-									inline
 								/>,
+							]}
+							menuActions={[
 								<Tree.ItemAction key="copy" label="Copy" />,
 								<Tree.ItemAction key="paste" label="Paste" />,
 								<Tree.ItemAction key="copy-paste" label="Copy/Paste as" />,
@@ -783,12 +779,11 @@ function SandboxTree({ data: treeData }: { data: TreeItemData[] }) {
 }
 
 interface VisibilityActionProps {
-	inline?: boolean;
 	item: FlatTreeItem;
 	onClick: (id: string) => void;
 }
 
-function VisibilityAction({ item, onClick, inline }: VisibilityActionProps) {
+function VisibilityAction({ item, onClick }: VisibilityActionProps) {
 	return (
 		<Tree.ItemAction
 			key="visibility"
@@ -799,7 +794,6 @@ function VisibilityAction({ item, onClick, inline }: VisibilityActionProps) {
 				onClick(item.id);
 			}, [onClick, item.id])}
 			dot={item.hidden ? "Hidden" : undefined}
-			inline={inline}
 		/>
 	);
 }

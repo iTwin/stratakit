@@ -548,7 +548,7 @@ function TreeItemActionsContent() {
 				"TreeItemActionsContent must be used inside a Toolbar context",
 			);
 	}
-	const items = useStoreState(store, "items");
+	const renderedItems = useStoreState(store, "renderedItems");
 
 	const menuStore = useMenuStore();
 	const displayMenu = useStoreState(menuStore, (state) => {
@@ -556,11 +556,11 @@ function TreeItemActionsContent() {
 	});
 
 	const displayedInlineActions = React.useMemo(() => {
-		const itemIds = items.map((item) => item.id);
+		const itemIds = renderedItems.map((item) => item.id);
 		if (error) return itemIds.slice(0, 1);
 		if (displayMenu) return itemIds.slice(0, 2);
 		return itemIds.slice(0, 3);
-	}, [items, displayMenu, error]);
+	}, [renderedItems, displayMenu, error]);
 
 	return (
 		<TreeItemDisplayActionsMenuContext.Provider value={displayMenu}>

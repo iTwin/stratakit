@@ -10,7 +10,7 @@ import cx from "classnames";
 
 import type { FocusableProps } from "@stratakit/foundations/secret-internals";
 
-interface AnchorProps extends FocusableProps<"a"> {
+interface AnchorRootProps extends FocusableProps<"a"> {
 	/** @default "neutral" */
 	tone?: "neutral" | "accent" | "critical";
 }
@@ -18,14 +18,23 @@ interface AnchorProps extends FocusableProps<"a"> {
 /**
  * A styled anchor element, typically used for navigating to a different location.
  *
- * Example:
+ * Supports the convenience API (lesser code) and the composition API (more customization).
+ *
+ * Example of convenience API:
  * ```tsx
+ * import { Anchor } from "@stratakit/bricks";
+ *
  * <Anchor href="https://www.example.com">Example</Anchor>
  * ```
  *
- * Supports a `tone` prop to change the tone (color) of the anchor.
+ * Example of composition API:
+ * ```tsx
+ * import * as Anchor from "@stratakit/bricks/Anchor";
+ *
+ * <Anchor.Root href="https://www.example.com">Example</Anchor.Root>
+ * ```
  */
-const Anchor = forwardRef<"a", AnchorProps>((props, forwardedRef) => {
+const AnchorRoot = forwardRef<"a", AnchorRootProps>((props, forwardedRef) => {
 	const { tone = "neutral", ...rest } = props;
 	return (
 		<Role.a
@@ -39,8 +48,9 @@ const Anchor = forwardRef<"a", AnchorProps>((props, forwardedRef) => {
 		/>
 	);
 });
-DEV: Anchor.displayName = "Anchor";
+DEV: AnchorRoot.displayName = "Anchor.Root";
 
 // ----------------------------------------------------------------------------
 
-export default Anchor;
+export default AnchorRoot;
+export { AnchorRoot as Root };

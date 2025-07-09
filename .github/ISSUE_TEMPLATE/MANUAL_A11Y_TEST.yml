@@ -150,7 +150,7 @@ body:
   - type: textarea
     id: hcm-notes
     attributes:
-      label: High Contrast Mode test notes
-      description: Observations and suggestions for addressing High COntrast Mode failures...
+      label: Forced colors mode test notes
+      description: Observations and suggestions for addressing forced colors mode failures...
     validations:
       required: true

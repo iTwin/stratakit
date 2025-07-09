@@ -24,11 +24,33 @@ import type { ExtractState } from "zustand";
 
 type BannerState = ExtractState<ReturnType<typeof createBannerStore>>;
 
-function createBannerStore(initialState: { labelId: string }) {
+function createBannerStore(initialState: {
+	labelId: string;
+	iconSubComponentsDescendants?: string[];
+}) {
 	return createStore(
 		combine(initialState, (set, _, store) => ({
 			setLabelId: (labelId?: string) => {
 				set({ labelId: labelId || store.getInitialState().labelId });
+			},
+			addIconSubComponentsDescendants: (iconId: string) => {
+				set({
+					iconSubComponentsDescendants: (
+						store.getState().iconSubComponentsDescendants || []
+					).includes(iconId)
+						? store.getState().iconSubComponentsDescendants
+						: [
+								...(store.getState().iconSubComponentsDescendants || []),
+								iconId,
+							],
+				});
+			},
+			removeIconSubComponentsDescendants: (iconId: string) => {
+				set({
+					iconSubComponentsDescendants: (
+						store.getState().iconSubComponentsDescendants || []
+					).filter((id) => id !== iconId),
+				});
 			},
 		})),
 	);
@@ -40,8 +62,13 @@ const BannerContext = React.createContext<
 
 function BannerProvider(props: React.PropsWithChildren) {
 	const defaultLabelId = React.useId();
+	const defaultIconSubComponentsDescendants: string[] = [];
+
 	const [store] = React.useState(() =>
-		createBannerStore({ labelId: defaultLabelId }),
+		createBannerStore({
+			labelId: defaultLabelId,
+			iconSubComponentsDescendants: defaultIconSubComponentsDescendants,
+		}),
 	);
 
 	return (
@@ -74,7 +101,8 @@ interface BannerRootProps extends BaseProps<"div"> {
 }
 
 /**
- * Root component of the compositional Banner component.
+ * A banner to highlight information and also optionally provide actions.
+ * The information could be very important (like a call to action) or reasonably import (like a status message).
  *
  * Example:
  * ```tsx
@@ -87,7 +115,7 @@ interface BannerRootProps extends BaseProps<"div"> {
  * ```
  */
 const BannerRoot = forwardRef<"div", BannerRootProps>((props, forwardedRef) => {
-	const { tone = "neutral", variant = "outline", ...rest } = props;
+	const { tone = "neutral", variant = "outline", children, ...rest } = props;
 
 	return (
 		<BannerProvider>
@@ -97,27 +125,101 @@ const BannerRoot = forwardRef<"div", BannerRootProps>((props, forwardedRef) => {
 				data-kiwi-variant={variant}
 				className={cx("🥝-banner", props.className)}
 				ref={forwardedRef}
-			/>
+			>
+				<ConditionalBannerStatusIcon tone={tone} />
+
+				{children}
+			</Role>
 		</BannerProvider>
 	);
 });
 DEV: BannerRoot.displayName = "Banner.Root";
+
+/**
+ * If no `Banner.Icon` descendant is found and if the tone is not-neutral, shows a banner status icon.
+ * Else, returns `null`.
+ *
+ * @private
+ */
+const ConditionalBannerStatusIcon = ({
+	tone,
+}: {
+	tone: NonNullable<BannerRootProps["tone"]>;
+}) => {
+	const iconSubComponentsDescendants = useBannerState(
+		(state) => state.iconSubComponentsDescendants,
+	);
+
+	if (tone !== "neutral" && iconSubComponentsDescendants?.length === 0) {
+		return (
+			<BannerIconBase
+				render={(props) => <StatusIcon tone={tone} {...props} />}
+			/>
+		);
+	}
+
+	return null;
+};
+DEV: ConditionalBannerStatusIcon.displayName = "ConditionalBannerStatusIcon";
 
 // ----------------------------------------------------------------------------
 
 interface BannerIconProps extends React.ComponentProps<typeof Icon> {}
 
 /**
+ * Only the main part of the `Banner.Icon` component.
+ * Does not register itself in the `Banner` store, unlike `Banner.Icon`.
+ *
+ * @private
+ */
+const BannerIconBase = forwardRef<"svg", BannerIconProps>(
+	(props, forwardedRef) => {
+		return (
+			<Icon
+				{...props}
+				className={cx("🥝-banner-icon", props.className)}
+				ref={forwardedRef}
+			/>
+		);
+	},
+);
+DEV: BannerIconBase.displayName = "Banner.IconBase";
+
+/**
  * A static icon decoration for the `Banner.Root` component.
+ *
+ * - If no `<Banner.Icon>` is passed and the `tone` is `"neutral"`, no icon is shown.
+ * - If no `<Banner.Icon>` is passed and the `tone` is not`"neutral"`, the status icon is shown.
+ *
+ * Example:
+ * ```tsx
+ * import placeholderIcon from "@stratakit/icons/placeholder.svg";
+ *
+ * <Banner.Root>
+ *   <Banner.Icon href={placeholderIcon} />
+ * </Banner.Root>
  */
 const BannerIcon = forwardRef<"svg", BannerIconProps>((props, forwardedRef) => {
-	return (
-		<Icon
-			{...props}
-			className={cx("🥝-banner-icon", props.className)}
-			ref={forwardedRef}
-		/>
+	const defaultId = React.useId();
+	const id = props.id ?? defaultId;
+
+	const addIconSubComponentsDescendants = useBannerState(
+		(state) => state.addIconSubComponentsDescendants,
 	);
+	const removeIconSubComponentsDescendants = useBannerState(
+		(state) => state.removeIconSubComponentsDescendants,
+	);
+
+	// Register and de-register the icon sub-component in the store.
+	React.useEffect(() => {
+		addIconSubComponentsDescendants(id);
+
+		return () => {
+			removeIconSubComponentsDescendants(id);
+		};
+	}, [addIconSubComponentsDescendants, removeIconSubComponentsDescendants, id]);
+
+	return <BannerIconBase {...props} ref={forwardedRef} />;
 });
 DEV: BannerIcon.displayName = "Banner.Icon";
 
@@ -126,14 +228,21 @@ DEV: BannerIcon.displayName = "Banner.Icon";
 interface BannerLabelProps extends RoleProps<"span"> {}
 
 /**
- * Label component that should be used with the compositional Banner component.
+ * The label of the `Banner.Root`.
  *
- * A `Banner.Root`'s label.
+ * Pass `render={<VisuallyHidden />}` if you don't want the label to be visible.
  *
  * Example:
  * ```tsx
  * <Banner.Root>
  *   <Banner.Label>Label</Banner.Label>
+ * </Banner.Root>
+ * ```
+ *
+ * Example with a visually hidden label:
+ * ```tsx
+ * <Banner.Root>
+ *   <Banner.Label render={<VisuallyHidden />}>Label</Banner.Label>
  * </Banner.Root>
  * ```
  */
@@ -193,7 +302,7 @@ DEV: BannerMessage.displayName = "Banner.Message";
 interface BannerActionsProps extends BaseProps<"div"> {}
 
 /**
- * The actions available for the banner.
+ * The actions available for the `Banner.Root`.
  *
  * Example with one action:
  * ```tsx
@@ -242,9 +351,9 @@ DEV: BannerActions.displayName = "Banner.Actions";
 interface BannerDismissButtonProps
 	extends Omit<BaseProps<"button">, "children"> {
 	/**
-	 * Label for the dismiss button.
+	 * Label for the `Banner.DismissButton`.
 	 *
-	 * The final accessible name of the dismiss button is a combination of this `label` and the text content of `Chip.Label`.
+	 * The final accessible name of the dismiss button is a combination of this `label` and the text content of `Banner.Label`.
 	 *
 	 * @default "Dismiss"
 	 */
@@ -252,7 +361,8 @@ interface BannerDismissButtonProps
 }
 
 /**
- * Button to dismiss the banner. Handle the `onClick` event to remove the banner from the UI.
+ * Dismiss ("❌") button for the `Banner.Root`.
+ * Handle the `onClick` callback to dismiss the `Banner.Root`.
  *
  * Example:
  * ```tsx
@@ -292,23 +402,22 @@ DEV: BannerDismissButton.displayName = "Banner.DismissButton";
 type BannerProps = Omit<BaseProps, "children"> &
 	Pick<BannerRootProps, "tone" | "variant"> & {
 		/**
-		 * Icon to be displayed inside the banner.
+		 * A static icon decoration for the `Banner.Root` component.
 		 *
-		 * Can be a URL of an SVG from the `@stratakit/icons` package,
-		 * or a custom JSX icon.
+		 * Can be a URL of an SVG from the `@stratakit/icons` package, or a custom JSX icon.
 		 *
-		 * - If `icon=undefined` and `tone="neutral"`, no icon is shown.
-		 * - If `icon=undefined` and `tone!="neutral"`, the status icon will be shown.
+		 * - If no `icon` is passed and the `tone` is `"neutral"`, no icon is shown.
+		 * - If no `icon` is passed and the `tone` is not `"neutral"`, the status icon is shown.
 		 */
 		icon?: string | React.JSX.Element;
 		/**
-		 * The label displayed inside the banner.
+		 * The label of the `Banner`.
 		 *
 		 * Either pass a string or a `<VisuallyHidden>` component if you don't want the label to be visible.
 		 */
 		label: string | React.JSX.Element;
 		/**
-		 * The content of the banner.
+		 * The message content of the `Banner`.
 		 */
 		message: React.ReactNode;
 		/**
@@ -320,7 +429,7 @@ type BannerProps = Omit<BaseProps, "children"> &
 		 */
 		onDismiss?: () => void;
 		/**
-		 * The actions available for the banner.
+		 * The actions available for the `Banner`.
 		 *
 		 * Example with one action:
 		 * ```tsx
@@ -356,22 +465,14 @@ type BannerProps = Omit<BaseProps, "children"> &
  *
  * Example:
  * ```tsx
- * <Banner label="Title" message="Message" icon={placeholderIcon} onDismiss={() => {}} />
+ * <Banner label="Label" message="Message" icon={placeholderIcon} onDismiss={() => {}} />
  * ```
  */
 const Banner = forwardRef<"div", BannerProps>((props, forwardedRef) => {
-	const {
-		message,
-		label,
-		actions,
-		onDismiss,
-		tone = "neutral",
-		icon = tone !== "neutral" ? <StatusIcon tone={tone} /> : undefined,
-		...rest
-	} = props;
+	const { message, label, actions, onDismiss, icon, ...rest } = props;
 
 	return (
-		<BannerRoot tone={tone} {...rest} ref={forwardedRef}>
+		<BannerRoot {...rest} ref={forwardedRef}>
 			{icon ? (
 				<BannerIcon
 					href={typeof icon === "string" ? icon : undefined}

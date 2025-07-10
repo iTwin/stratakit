@@ -2,7 +2,7 @@
 "@stratakit/structures": minor
 ---
 
-Replaced `actions` prop of `Tree.Item` component with `inlineActions` and `menuActions` props.
+Changed `actions` prop of the `Tree.Item` component to no longer automatically inline some of the actions. Instead consumers can now use newly added `inlineActions` prop to render the inline actions and `actions` prop to render the menu actions.
 
 At most 3 inline actions will be displayed:
 
@@ -15,7 +15,7 @@ At most 3 inline actions will be displayed:
     <Tree.ItemAction key={…} icon={…} label={…} />,
     <Tree.ItemAction key={…} icon={…} label={…} />,
   ]}
-  menuActions={[
+  actions={[
     <Tree.ItemAction key={…} label={…} />,
     <Tree.ItemAction key={…} label={…} />,
   ]}
@@ -38,7 +38,7 @@ function MyAction() {
     <Tree.ItemAction key={…} icon={…} label={…} />,
     <Tree.ItemAction key={…} icon={…} label={…} />,
   ]}
-  menuActions={[
+  actions={[
     <MyAction />,
   ]}
 />

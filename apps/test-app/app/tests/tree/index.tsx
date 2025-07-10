@@ -182,7 +182,7 @@ export default definePage(
 											/>,
 										]
 							}
-							menuActions={
+							actions={
 								error
 									? [
 											<Tree.ItemAction
@@ -232,7 +232,7 @@ function ActionsTest({
 		? hiddenIdsParam.split(";").map((id) => Number(id))
 		: [];
 
-	const actions = Array.from({ length: inline + menu }, (_, index) => {
+	const allActions = Array.from({ length: inline + menu }, (_, index) => {
 		const id = index + 1;
 		return (
 			<ItemAction
@@ -243,8 +243,8 @@ function ActionsTest({
 			/>
 		);
 	});
-	const inlineActions = actions.slice(0, inline);
-	const menuActions = actions.slice(inline);
+	const inlineActions = allActions.slice(0, inline);
+	const actions = allActions.slice(inline);
 	return (
 		<Tree.Root>
 			<Tree.Item
@@ -253,7 +253,7 @@ function ActionsTest({
 				aria-posinset={1}
 				aria-setsize={1}
 				inlineActions={inlineActions}
-				menuActions={menuActions}
+				actions={actions}
 				error={error}
 			/>
 		</Tree.Root>

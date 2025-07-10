@@ -41,8 +41,8 @@ const TreeItemErrorContext =
 	React.createContext<TreeItemProps["error"]>(undefined);
 const TreeItemInlineActionsContext =
 	React.createContext<TreeItemProps["inlineActions"]>(undefined);
-const TreeItemMenuActionsContext =
-	React.createContext<TreeItemProps["menuActions"]>(undefined);
+const TreeItemActionsContext =
+	React.createContext<TreeItemProps["actions"]>(undefined);
 const TreeItemDecorationsContext =
 	React.createContext<TreeItemProps["unstable_decorations"]>(undefined);
 const TreeItemIconContext =
@@ -151,7 +151,7 @@ interface TreeItemProps extends Omit<BaseProps, "content" | "children"> {
 	 * The secondary actions available for the tree item displayed in a dropdown menu. Must be a list of `Tree.ItemAction` components.
 	 *
 	 * ```tsx
-	 * menuActions={[
+	 * actions={[
 	 *   <Tree.ItemAction key={…} icon={…} label={…} />,
 	 *   <Tree.ItemAction key={…} icon={…} label={…} />,
 	 * ]}
@@ -159,7 +159,7 @@ interface TreeItemProps extends Omit<BaseProps, "content" | "children"> {
 	 *
 	 * @experimental
 	 */
-	menuActions?: React.ReactNode[];
+	actions?: React.ReactNode[];
 	/**
 	 * Specifies if the tree item is in an error state.
 	 * The id for an associated error message (e.g. `<ErrorRegion.Item>`) can be passed as a string.
@@ -210,7 +210,7 @@ const TreeItem = React.memo(
 			label: _label,
 			description: _description,
 			inlineActions: _inlineActions,
-			menuActions: _menuActions,
+			actions: _actions,
 			error: _error,
 			onClick: onClickProp,
 			onKeyDown: onKeyDownProp,
@@ -283,7 +283,7 @@ interface TreeItemRootProviderProps extends TreeItemProps {
 function TreeItemRootProvider(props: TreeItemRootProviderProps) {
 	const {
 		inlineActions,
-		menuActions,
+		actions,
 		label,
 		description,
 		icon: iconProp,
@@ -300,7 +300,7 @@ function TreeItemRootProvider(props: TreeItemRootProviderProps) {
 	return (
 		<TreeItemErrorContext.Provider value={error}>
 			<TreeItemInlineActionsContext.Provider value={inlineActions}>
-				<TreeItemMenuActionsContext.Provider value={menuActions}>
+				<TreeItemActionsContext.Provider value={actions}>
 					<TreeItemDecorationIdContext.Provider
 						value={hasDecoration ? decorationId : undefined}
 					>
@@ -320,7 +320,7 @@ function TreeItemRootProvider(props: TreeItemRootProviderProps) {
 							</TreeItemIconContext.Provider>
 						</TreeItemDecorationsContext.Provider>
 					</TreeItemDecorationIdContext.Provider>
-				</TreeItemMenuActionsContext.Provider>
+				</TreeItemActionsContext.Provider>
 			</TreeItemInlineActionsContext.Provider>
 		</TreeItemErrorContext.Provider>
 	);
@@ -643,7 +643,7 @@ function TreeItemMenuActionsContent() {
 	return (
 		<TreeItemActionsMenuContext.Provider value={true}>
 			<DropdownMenu.Content {...{ unmountOnHide: false }}>
-				<TreeItemMenuActionsRenderer />
+				<TreeItemActionsRenderer />
 			</DropdownMenu.Content>
 		</TreeItemActionsMenuContext.Provider>
 	);
@@ -652,11 +652,11 @@ DEV: TreeItemMenuActionsContent.displayName = "TreeItemMenuActionsContent";
 
 // ----------------------------------------------------------------------------
 
-function TreeItemMenuActionsRenderer() {
-	const actions = React.useContext(TreeItemMenuActionsContext) ?? [];
+function TreeItemActionsRenderer() {
+	const actions = React.useContext(TreeItemActionsContext) ?? [];
 	return actions;
 }
-DEV: TreeItemMenuActionsRenderer.displayName = "TreeItemMenuActionsRenderer";
+DEV: TreeItemActionsRenderer.displayName = "TreeItemActionsRenderer";
 
 // ----------------------------------------------------------------------------
 

@@ -755,7 +755,7 @@ function SandboxTree({ data: treeData }: { data: TreeItemData[] }) {
 									onClick={toggleHidden}
 								/>,
 							]}
-							menuActions={[
+							actions={[
 								<Tree.ItemAction key="copy" label="Copy" />,
 								<Tree.ItemAction key="paste" label="Paste" />,
 								<Tree.ItemAction key="copy-paste" label="Copy/Paste as" />,

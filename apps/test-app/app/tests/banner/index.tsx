@@ -200,12 +200,14 @@ function CompositionTest() {
 				<BannerDismiss onClick={() => console.log("Dismissed")} />
 			</BannerRoot>
 
-			{/* If no icon is passed and tone is non-neutral, should show a status icon */}
+			{/* If no href is passed to Banner.Icon and tone is non-neutral, should show a status icon */}
 			<BannerRoot tone="info" data-testid="banner-info">
+				<BannerIcon />
 				<BannerLabel>Label</BannerLabel>
 				<BannerMessage>Message</BannerMessage>
 			</BannerRoot>
 			<BannerRoot data-testid="banner-neutral">
+				<BannerIcon />
 				<BannerLabel>Label</BannerLabel>
 				<BannerMessage>Message</BannerMessage>
 			</BannerRoot>

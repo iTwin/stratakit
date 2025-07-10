@@ -4,6 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 
 import * as React from "react";
+import { Icon as SkIcon } from "@stratakit/foundations";
 import {
 	useControlledState,
 	useSafeContext,
@@ -138,10 +139,9 @@ interface LegacyTabProps
 		IuiTabLegacyProps,
 		"label" | "sublabel" | "startIcon" | "disabled" | "children" | "value"
 	> {
+	startIcon?: IuiTabLegacyProps["startIcon"];
 	/** NOT IMPLEMENTED. */
 	sublabel?: IuiTabLegacyProps["sublabel"];
-	/** NOT IMPLEMENTED. */
-	startIcon?: IuiTabLegacyProps["startIcon"];
 	/** NOT IMPLEMENTED. */
 	children?: IuiTabLegacyProps["children"];
 	/** NOT IMPLEMENTED. */
@@ -154,10 +154,10 @@ const LegacyTab = React.forwardRef((props, forwardedRef) => {
 		id: _id, // ignored by iTwinUI
 		label,
 		disabled,
+		startIcon,
 
 		// biome-ignore-start lint/correctness/noUnusedVariables: NOT IMPLEMENTED
 		sublabel,
-		startIcon,
 		children,
 		value,
 		// biome-ignore-end lint/correctness/noUnusedVariables: NOT IMPLEMENTED
@@ -168,6 +168,7 @@ const LegacyTab = React.forwardRef((props, forwardedRef) => {
 	const { tabValue } = useSafeContext(LegacyTabContext);
 	return (
 		<Tab {...rest} value={tabValue} disabled={disabled} ref={forwardedRef}>
+			{startIcon ? <SkIcon render={startIcon} /> : null}
 			{label}
 		</Tab>
 	);

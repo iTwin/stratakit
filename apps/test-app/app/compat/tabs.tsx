@@ -7,6 +7,8 @@ import * as React from "react";
 import { Tab, Tabs } from "@stratakit/react";
 import { definePage } from "~/~utils.tsx";
 
+import placeholderIcon from "@stratakit/icons/placeholder.svg";
+
 export const handle = { title: "Tabs" };
 
 export default definePage(function Page() {
@@ -38,6 +40,40 @@ export default definePage(function Page() {
 				]}
 			>
 				Legacy Tab
+			</Tabs>
+			<Tabs
+				labels={[
+					<Tab
+						key={1}
+						label="Tab 1"
+						startIcon={
+							<svg>
+								<use href={`${placeholderIcon}#icon`} />
+							</svg>
+						}
+					/>,
+					<Tab
+						key={2}
+						label="Tab 2"
+						startIcon={
+							<svg>
+								<use href={`${placeholderIcon}#icon`} />
+							</svg>
+						}
+						disabled
+					/>,
+					<Tab
+						key={3}
+						label="Tab 3"
+						startIcon={
+							<svg>
+								<use href={`${placeholderIcon}#icon`} />
+							</svg>
+						}
+					/>,
+				]}
+			>
+				Legacy Tab with start icon
 			</Tabs>
 			<ControlledLegacyTab />
 

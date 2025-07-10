@@ -66,7 +66,7 @@ export default definePage(
 
 function VisualTestForTextlikeControls() {
 	return (
-		<div style={{ display: "grid", gap: 16, justifyItems: "start" }}>
+		<div style={{ display: "grid", gap: 16 }}>
 			{/* Default layout for text controls (block) */}
 			<Field.Root>
 				<Field.Label>Text control</Field.Label>

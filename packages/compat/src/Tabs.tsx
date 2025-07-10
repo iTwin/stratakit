@@ -139,7 +139,6 @@ interface LegacyTabProps
 		IuiTabLegacyProps,
 		"label" | "sublabel" | "startIcon" | "disabled" | "children" | "value"
 	> {
-	startIcon?: IuiTabLegacyProps["startIcon"];
 	/** NOT IMPLEMENTED. */
 	sublabel?: IuiTabLegacyProps["sublabel"];
 	/** NOT IMPLEMENTED. */

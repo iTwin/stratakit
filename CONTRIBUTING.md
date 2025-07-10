@@ -117,7 +117,7 @@ pnpm --filter=@stratakit/test-app run test -- button
 cd apps/test-app
 
 # run this from inside apps/test-app for the same result
-pnpm run test -- -- button
+pnpm run test -- button
 ```
 
 ---

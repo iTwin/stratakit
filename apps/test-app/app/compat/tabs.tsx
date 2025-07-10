@@ -78,13 +78,13 @@ export default definePage(function Page() {
 			<ControlledLegacyTab />
 
 			<Compositional />
+			<CompositionalWithIcon />
 			<CompositionalGreen />
 			<CompositionalManual />
 			<CompositionalClassNames />
 			<CompositionalDefaultValue />
 			<CompositionalControlled />
 
-			<Tabs.TabIcon />
 			<Tabs.TabLabel />
 			<Tabs.TabDescription />
 			<Tabs.Actions />
@@ -137,6 +137,42 @@ function Compositional() {
 			<Tabs.Panel value="1">Compositional 1</Tabs.Panel>
 			<Tabs.Panel value="2">Compositional 2</Tabs.Panel>
 			<Tabs.Panel value="3">Compositional 3</Tabs.Panel>
+		</Tabs.Wrapper>
+	);
+}
+
+function CompositionalWithIcon() {
+	return (
+		<Tabs.Wrapper>
+			<Tabs.TabList>
+				<Tabs.Tab value="1">
+					<Tabs.TabIcon>
+						<svg>
+							<use href={`${placeholderIcon}#icon`} />
+						</svg>
+					</Tabs.TabIcon>
+					Tab 1
+				</Tabs.Tab>
+				<Tabs.Tab value="2" disabled>
+					<Tabs.TabIcon>
+						<svg>
+							<use href={`${placeholderIcon}#icon`} />
+						</svg>
+					</Tabs.TabIcon>
+					Tab 2
+				</Tabs.Tab>
+				<Tabs.Tab value="3">
+					<Tabs.TabIcon>
+						<svg>
+							<use href={`${placeholderIcon}#icon`} />
+						</svg>
+					</Tabs.TabIcon>
+					Tab 3
+				</Tabs.Tab>
+			</Tabs.TabList>
+			<Tabs.Panel value="1">Compositional with icon 1</Tabs.Panel>
+			<Tabs.Panel value="2">Compositional with icon 2</Tabs.Panel>
+			<Tabs.Panel value="3">Compositional with icon 3</Tabs.Panel>
 		</Tabs.Wrapper>
 	);
 }

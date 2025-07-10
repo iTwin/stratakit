@@ -4,7 +4,6 @@
  *--------------------------------------------------------------------------------------------*/
 
 import * as React from "react";
-import { Icon as SkIcon } from "@stratakit/foundations";
 import {
 	useControlledState,
 	useSafeContext,
@@ -167,7 +166,7 @@ const LegacyTab = React.forwardRef((props, forwardedRef) => {
 	const { tabValue } = useSafeContext(LegacyTabContext);
 	return (
 		<Tab {...rest} value={tabValue} disabled={disabled} ref={forwardedRef}>
-			{startIcon ? <SkIcon render={startIcon} /> : null}
+			{startIcon ? <TabIcon>{startIcon}</TabIcon> : null}
 			{label}
 		</Tab>
 	);
@@ -355,13 +354,14 @@ DEV: Panel.displayName = "Tabs.Panel";
 
 // ----------------------------------------------------------------------------
 
-/** NOT IMPLEMENTED. */
-const TabIcon = React.forwardRef((_props, _forwardedRef) => {
-	return null;
-}) as PolymorphicForwardRefComponent<
-	"span",
-	React.ComponentProps<typeof IuiTabs.TabIcon>
->;
+type IuiTabIconProps = React.ComponentProps<typeof IuiTabs.TabIcon>;
+
+/** @see https://itwinui.bentley.com/docs/tabs#composition-api */
+const TabIcon = React.forwardRef((props, forwardedRef) => {
+	const compatProps = useCompatProps(props);
+	return <SkTabs.TabIcon {...compatProps} ref={forwardedRef} />;
+}) as PolymorphicForwardRefComponent<"span", IuiTabIconProps>;
+DEV: TabIcon.displayName = "Tabs.TabIcon";
 
 // ----------------------------------------------------------------------------
 

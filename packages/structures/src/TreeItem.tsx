@@ -708,7 +708,7 @@ interface TreeItemActionProps extends Omit<BaseProps<"button">, "children"> {
 }
 
 /**
- * A secondary action for `<Tree.Item>` and `<Tree.ItemOverflowAction>`, to be passed into the `actions` prop. The action is typically
+ * A secondary action for `<Tree.Item>`, to be passed into the `actions` prop. The action is typically
  * displayed as an icon-button or a menu-item (e.g. when overflowing).
  *
  * By default, the action appears only when the treeitem has hover/focus or an error. This behavior can

@@ -67,7 +67,6 @@
 ### Breaking changes
 
 - [#704](https://github.com/iTwin/design-system/pull/704): The following components have been moved from `@stratakit/bricks` into `@stratakit/structures`.
-
   - `unstable_AccordionItem`
   - `unstable_Banner`
   - `Chip`

@@ -89,7 +89,6 @@
 - [#720](https://github.com/iTwin/design-system/pull/720): Renamed `onExpandedChange` prop for `unstable_ErrorRegion.Root` to `setOpen`.
   Renamed `expanded` prop for `unstable_ErrorRegion.Root` to `open`.
 - [#709](https://github.com/iTwin/design-system/pull/709): `unstable_AccordionItem` breaking changes:
-
   - `AccordionItem.Trigger` renamed to `AccordionItem.Header` and no longer represents the underlying `<button>` element (see `AccordionItem.Label`).
   - `AccordionItem.Label` must be wrapped with the new `AccordionItem.Button`.
 
@@ -118,7 +117,6 @@
 ## 0.1.1
 
 - [#704](https://github.com/iTwin/design-system/pull/704): The following components have been moved from `@stratakit/bricks` into `@stratakit/structures`.
-
   - `unstable_AccordionItem`
   - `unstable_Banner`
   - `Chip`

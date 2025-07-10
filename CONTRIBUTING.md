@@ -108,7 +108,7 @@ If a script is not available in the root package.json or if you need to pass wor
 
 ```
 # passing button as a cli arg to the `test` command in test-app
-pnpm --filter=@stratakit/test-app run test button
+pnpm --filter=@stratakit/test-app run test -- button
 ```
 
 ...or you can simply run the command normally from inside the workspace folder instead of the monorepo root.
@@ -117,7 +117,7 @@ pnpm --filter=@stratakit/test-app run test button
 cd apps/test-app
 
 # run this from inside apps/test-app for the same result
-pnpm run test button
+pnpm run test -- -- button
 ```
 
 ---

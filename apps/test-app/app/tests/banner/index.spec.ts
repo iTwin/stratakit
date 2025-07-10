@@ -38,6 +38,45 @@ test.describe("@visual", () => {
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
 
+	(
+		[
+			{ api: "convenience", tone: "neutral", result: "no icon is shown" },
+			{ api: "composition", tone: "neutral", result: "no icon is shown" },
+			{
+				api: "convenience",
+				tone: "non-neutral",
+				result: "status icon is shown",
+			},
+			{
+				api: "composition",
+				tone: "non-neutral",
+				result: "status icon is shown",
+			},
+		] as const
+	).forEach(({ tone, result, api }) => {
+		test(`if no icon is passed and tone is ${tone}, ${result}. (${api} API})`, async ({
+			page,
+		}) => {
+			if (api === "convenience") {
+				await page.goto(`/tests/banner?visual=true`);
+			} else {
+				await page.goto(`/tests/banner?composition=true`);
+			}
+			const banner =
+				tone === "neutral"
+					? page.getByTestId("banner-neutral")
+					: page.getByTestId("banner-info");
+
+			await expect(banner).toBeVisible();
+
+			if (result === "no icon is shown") {
+				await expect(banner.locator(".🥝-banner-icon")).not.toBeVisible();
+			} else {
+				await expect(banner.locator(".🥝-banner-icon")).toBeVisible();
+			}
+		});
+	});
+
 	test("forced-colors", async ({ page, browserName }) => {
 		test.skip(
 			browserName === "webkit",

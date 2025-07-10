@@ -58,6 +58,8 @@ export const Alert = React.forwardRef((props, forwardedRef) => {
 
 	return (
 		<SkBanner.Root {...rest} ref={forwardedRef} tone={tone}>
+			<SkBanner.Icon />
+
 			<SkBanner.Message>{children}</SkBanner.Message>
 
 			{clickableText != null ? (

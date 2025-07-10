@@ -24,7 +24,7 @@ export default definePage(
 			</>
 		);
 	},
-	{ visual: VisualTest, composition: CompositionTest },
+	{ visual: VisualTest, external: ExternalTest, composition: CompositionTest },
 );
 
 function VisualTest() {
@@ -45,10 +45,28 @@ function VisualTest() {
 						>
 							Example
 						</Anchor>
+						<AnchorComposition.Root
+							href="https://example.com"
+							target="_blank"
+							key={tone}
+							tone={tone}
+						>
+							<AnchorComposition.Text>External</AnchorComposition.Text>
+							<AnchorComposition.ExternalMarker />
+						</AnchorComposition.Root>
 					</div>
 				);
 			})}
 		</div>
+	);
+}
+
+function ExternalTest() {
+	return (
+		<AnchorComposition.Root href="https://example.com" target="_blank">
+			<AnchorComposition.Text>External</AnchorComposition.Text>
+			<AnchorComposition.ExternalMarker />
+		</AnchorComposition.Root>
 	);
 }
 

@@ -60,7 +60,7 @@ test.describe("@visual", () => {
 			if (api === "convenience") {
 				await page.goto(`/tests/banner?visual=true`);
 			} else {
-				await page.goto(`/tests/banner?composition=true&tone=${tone}`);
+				await page.goto(`/tests/banner?composition=true`);
 			}
 			const banner =
 				tone === "neutral"
@@ -69,10 +69,10 @@ test.describe("@visual", () => {
 
 			await expect(banner).toBeVisible();
 
-			if (tone === "neutral") {
-				await expect(banner.locator("🥝-banner-icon")).not.toBeVisible();
+			if (result === "no icon is shown") {
+				await expect(banner.locator(".🥝-banner-icon")).not.toBeVisible();
 			} else {
-				await expect(banner.locator("🥝-banner-icon")).toBeVisible();
+				await expect(banner.locator(".🥝-banner-icon")).toBeVisible();
 			}
 		});
 	});

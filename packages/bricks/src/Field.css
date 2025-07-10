@@ -34,6 +34,7 @@
 			/* Default to stacked layout unless inline has been specified */
 			&:where(:not([data-kiwi-layout="inline"])) {
 				grid-template-columns: var(--✨layout-stacked);
+				justify-content: stretch; /* Stretch the entire width in stacked layout. */
 			}
 		}
 

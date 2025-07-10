@@ -125,31 +125,24 @@ const IconButton = forwardRef<"button", IconButtonProps>(
 		const { iconSize } = React.useContext(IconButtonContext);
 
 		const button = (
-			<IconButtonPresentation
-				render={
-					<Button
-						aria-pressed={isActive}
-						aria-labelledby={labelId}
-						aria-describedby={dot ? dotId : undefined}
-						{...rest}
-						ref={forwardedRef}
-					>
-						<VisuallyHidden id={labelId}>{label}</VisuallyHidden>
+			<Button
+				aria-pressed={isActive}
+				aria-labelledby={labelId}
+				aria-describedby={dot ? dotId : undefined}
+				{...rest}
+				render={<IconButtonPresentation render={props.render ?? <button />} />}
+				ref={forwardedRef}
+			>
+				<VisuallyHidden id={labelId}>{label}</VisuallyHidden>
 
-						{typeof icon === "string" ? (
-							<Icon href={icon} size={iconSize} />
-						) : (
-							icon
-						)}
+				{typeof icon === "string" ? <Icon href={icon} size={iconSize} /> : icon}
 
-						{dot ? (
-							<Dot id={dotId} className="🥝-icon-button-dot">
-								{dot}
-							</Dot>
-						) : null}
-					</Button>
-				}
-			/>
+				{dot ? (
+					<Dot id={dotId} className="🥝-icon-button-dot">
+						{dot}
+					</Dot>
+				) : null}
+			</Button>
 		);
 
 		if (labelVariant === "visually-hidden") {

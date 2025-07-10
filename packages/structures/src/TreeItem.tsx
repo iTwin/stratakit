@@ -352,24 +352,21 @@ const TreeItemRoot = React.memo(
 			[styleProp, level],
 		);
 		return (
-			<CompositeItem
-				render={
-					<Role
-						{...rest}
-						role="treeitem"
-						aria-expanded={expanded}
-						aria-selected={selected}
-						aria-labelledby={labelId}
-						aria-describedby={describedBy}
-						aria-level={level}
-						className={cx("🥝-tree-item", props.className)}
-						style={style}
-						ref={forwardedRef}
-					/>
-				}
+			<Role
+				{...rest}
+				render={<CompositeItem render={props.render ?? <div />} />}
+				role="treeitem"
+				aria-expanded={expanded}
+				aria-selected={selected}
+				aria-labelledby={labelId}
+				aria-describedby={describedBy}
+				aria-level={level}
+				className={cx("🥝-tree-item", props.className)}
+				style={style}
+				ref={forwardedRef}
 			>
 				{props.children}
-			</CompositeItem>
+			</Role>
 		);
 	}),
 );
@@ -388,6 +385,23 @@ interface TreeItemNodeProps
 const TreeItemNode = React.memo((props: TreeItemNodeProps) => {
 	const { expanded, selected, onExpanderClick } = props;
 	const error = React.useContext(TreeItemErrorContext);
+	const ref = React.useRef<HTMLElement>(null);
+	const [, startTransition] = React.useTransition();
+	const [renderActions, setRenderActions] = React.useState(false);
+	React.useEffect(() => {
+		const el = ref.current;
+		if (!el || renderActions) return;
+		const observer = new IntersectionObserver(([entry]) => {
+			if (!entry.isIntersecting) return;
+			startTransition(() => {
+				setRenderActions(true);
+			});
+		});
+		observer.observe(el);
+		return () => {
+			observer.disconnect();
+		};
+	}, [renderActions]);
 	return (
 		<ListItem.Root
 			data-kiwi-expanded={expanded}
@@ -395,13 +409,14 @@ const TreeItemNode = React.memo((props: TreeItemNodeProps) => {
 			data-kiwi-error={error ? true : undefined}
 			className="🥝-tree-item-node"
 			role={undefined}
+			ref={ref}
 		>
 			<TreeItemDecorations onExpanderClick={onExpanderClick} />
 
 			<TreeItemContent />
 			<TreeItemDescription />
 
-			<TreeItemActions />
+			{renderActions && <TreeItemActions />}
 		</ListItem.Root>
 	);
 });
@@ -726,21 +741,18 @@ const TreeItemAction = React.memo(
 		}
 
 		return (
-			<ToolbarItem
-				render={
-					<IconButton
-						label={label}
-						icon={icon}
-						// @ts-expect-error: Using string value as a workaround for React 18
-						inert={visible === false ? "true" : undefined}
-						{...rest}
-						dot={dot}
-						variant="ghost"
-						className={cx("🥝-tree-item-action", props.className)}
-						data-kiwi-visible={visible}
-						ref={forwardedRef}
-					/>
-				}
+			<IconButton
+				label={label}
+				icon={icon}
+				// @ts-expect-error: Using string value as a workaround for React 18
+				inert={visible === false ? "true" : undefined}
+				{...rest}
+				render={<ToolbarItem render={props.render} />}
+				dot={dot}
+				variant="ghost"
+				className={cx("🥝-tree-item-action", props.className)}
+				data-kiwi-visible={visible}
+				ref={forwardedRef}
 			/>
 		);
 	}),

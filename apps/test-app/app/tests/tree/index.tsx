@@ -37,11 +37,13 @@ export default definePage(
 		description: descriptionParam,
 		error: errorParam,
 		items: itemsParam,
+		visible: visibleParam,
 	}) {
 		const [_, startTransition] = React.useTransition();
 		const overflowPostfix = overflow
 			? " with a super long label that is overflown"
 			: "";
+		const visible = visibleParam ? Boolean(visibleParam) : undefined;
 		const description = descriptionParam ? "Additional description" : undefined;
 		const [renderError, setRenderError] = React.useState(!!errorParam);
 		const items = itemsParam ? Number(itemsParam) : 0;
@@ -170,8 +172,14 @@ export default definePage(
 									key="unlock"
 									icon={unlockIcon}
 									label="Unlock"
+									visible={visible}
 								/>,
-								<Tree.ItemAction key="show" icon={showIcon} label="Show" />,
+								<Tree.ItemAction
+									key="show"
+									icon={showIcon}
+									label="Show"
+									visible={visible}
+								/>,
 							]}
 						/>
 					);

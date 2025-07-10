@@ -4,8 +4,8 @@
  *--------------------------------------------------------------------------------------------*/
 
 import * as React from "react";
-import { Anchor, VisuallyHidden } from "@stratakit/bricks";
-import { unstable_Banner as SkBanner } from "@stratakit/structures";
+import { Anchor } from "@stratakit/bricks";
+import * as SkBanner from "@stratakit/structures/unstable_Banner";
 import {
 	type PolymorphicForwardRefComponent,
 	useCompatProps,
@@ -13,7 +13,7 @@ import {
 
 import type { Alert as IuiAlert } from "@itwin/itwinui-react";
 
-type SkBannerProps = React.ComponentProps<typeof SkBanner>;
+type SkBannerRootProps = React.ComponentProps<typeof SkBanner.Root>;
 type IuiAlertProps = React.ComponentProps<typeof IuiAlert>;
 
 interface AlertProps
@@ -41,7 +41,7 @@ export const Alert = React.forwardRef((props, forwardedRef) => {
 		...rest
 	} = useCompatProps(props);
 
-	const tone = React.useMemo<NonNullable<SkBannerProps["tone"]>>(() => {
+	const tone = React.useMemo<NonNullable<SkBannerRootProps["tone"]>>(() => {
 		switch (type) {
 			case "informational":
 				return "info";
@@ -57,24 +57,22 @@ export const Alert = React.forwardRef((props, forwardedRef) => {
 	}, [type]);
 
 	return (
-		<SkBanner
-			{...rest}
-			ref={forwardedRef}
-			tone={tone}
-			label={<VisuallyHidden>Alert</VisuallyHidden>}
-			message={children}
-			actions={
-				clickableText != null ? (
+		<SkBanner.Root {...rest} ref={forwardedRef} tone={tone}>
+			<SkBanner.Message>{children}</SkBanner.Message>
+
+			{clickableText != null ? (
+				<SkBanner.Actions>
 					<Anchor
 						render={clickableTextProps?.href ? undefined : <button />}
 						{...clickableTextProps}
 					>
 						{clickableText}
 					</Anchor>
-				) : undefined
-			}
-			onDismiss={onClose}
-		/>
+				</SkBanner.Actions>
+			) : null}
+
+			{onClose != null ? <SkBanner.DismissButton onClick={onClose} /> : null}
+		</SkBanner.Root>
 	);
 }) as PolymorphicForwardRefComponent<"div", AlertProps>;
 DEV: Alert.displayName = "Alert";

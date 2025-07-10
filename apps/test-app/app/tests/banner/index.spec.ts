@@ -32,49 +32,52 @@ test("dismiss", async ({ page }) => {
 	}
 });
 
+test.describe("default icon", () => {
+	test("if no href is passed to Banner.Icon and tone is non-neutral, status icon is shown", async ({
+		page,
+	}) => {
+		await page.goto("/tests/banner?composition=true");
+		const banner = page.getByTestId("banner-info");
+
+		await expect(banner).toBeVisible();
+		await expect(banner.locator(".🥝-banner-icon")).toBeVisible();
+	});
+
+	test("if no href is passed to Banner.Icon and tone is neutral, no icon is shown", async ({
+		page,
+	}) => {
+		await page.goto("/tests/banner?composition=true");
+		const banner = page.getByTestId("banner-neutral");
+
+		await expect(banner).toBeVisible();
+		await expect(banner.locator(".🥝-banner-icon")).not.toBeVisible();
+	});
+
+	test("if no icon is passed to Banner and tone is non-neutral, status icon is shown", async ({
+		page,
+	}) => {
+		await page.goto("/tests/banner?visual=true");
+		const banner = page.getByTestId("banner-info");
+
+		await expect(banner).toBeVisible();
+		await expect(banner.locator(".🥝-banner-icon")).toBeVisible();
+	});
+
+	test("if no icon is passed to Banner and tone is neutral, no icon is shown", async ({
+		page,
+	}) => {
+		await page.goto("/tests/banner?visual=true");
+		const banner = page.getByTestId("banner-neutral");
+
+		await expect(banner).toBeVisible();
+		await expect(banner.locator(".🥝-banner-icon")).not.toBeVisible();
+	});
+});
+
 test.describe("@visual", () => {
 	test("default", async ({ page }) => {
 		await page.goto("/tests/banner?visual=true");
 		await expect(page.locator("body")).toHaveScreenshot();
-	});
-
-	(
-		[
-			{ api: "convenience", tone: "neutral", result: "no icon is shown" },
-			{ api: "composition", tone: "neutral", result: "no icon is shown" },
-			{
-				api: "convenience",
-				tone: "non-neutral",
-				result: "status icon is shown",
-			},
-			{
-				api: "composition",
-				tone: "non-neutral",
-				result: "status icon is shown",
-			},
-		] as const
-	).forEach(({ tone, result, api }) => {
-		test(`if no icon is passed and tone is ${tone}, ${result}. (${api} API})`, async ({
-			page,
-		}) => {
-			if (api === "convenience") {
-				await page.goto(`/tests/banner?visual=true`);
-			} else {
-				await page.goto(`/tests/banner?composition=true`);
-			}
-			const banner =
-				tone === "neutral"
-					? page.getByTestId("banner-neutral")
-					: page.getByTestId("banner-info");
-
-			await expect(banner).toBeVisible();
-
-			if (result === "no icon is shown") {
-				await expect(banner.locator(".🥝-banner-icon")).not.toBeVisible();
-			} else {
-				await expect(banner.locator(".🥝-banner-icon")).toBeVisible();
-			}
-		});
 	});
 
 	test("forced-colors", async ({ page, browserName }) => {

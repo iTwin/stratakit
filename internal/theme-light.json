@@ -22,19 +22,19 @@
 			"accent": {
 				"base": {
 					"$type": "color",
-					"$value": "{p-color.aurora.500}"
+					"$value": "{p-color.blue.500}"
 				},
 				"muted": {
 					"$type": "color",
-					"$value": "{p-color.aurora.50}"
+					"$value": "{p-color.blue.50}"
 				},
 				"faded": {
 					"$type": "color",
-					"$value": "{p-color.aurora.800}"
+					"$value": "{p-color.blue.800}"
 				},
 				"transparent": {
 					"$type": "color",
-					"$value": "{p-color.aurora.16}"
+					"$value": "{p-color.blue.16}"
 				}
 			},
 			"info": {
@@ -239,11 +239,11 @@
 				"on-surface": {
 					"accent-hover": {
 						"$type": "color",
-						"$value": "{p-color.aurora.12}"
+						"$value": "{p-color.blue.12}"
 					},
 					"accent-pressed": {
 						"$type": "color",
-						"$value": "{p-color.aurora.16}"
+						"$value": "{p-color.blue.16}"
 					},
 					"neutral-hover": {
 						"$type": "color",
@@ -342,15 +342,15 @@
 			"accent": {
 				"base": {
 					"$type": "color",
-					"$value": "{p-color.aurora.600}"
+					"$value": "{p-color.blue.600}"
 				},
 				"strong": {
 					"$type": "color",
-					"$value": "{p-color.aurora.600}"
+					"$value": "{p-color.blue.600}"
 				},
 				"faded": {
 					"$type": "color",
-					"$value": "{p-color.aurora.700}"
+					"$value": "{p-color.blue.700}"
 				}
 			},
 			"info": {
@@ -490,19 +490,19 @@
 			"accent": {
 				"base": {
 					"$type": "color",
-					"$value": "{p-color.aurora.500}"
+					"$value": "{p-color.blue.500}"
 				},
 				"faded": {
 					"$type": "color",
-					"$value": "{p-color.aurora.700}"
+					"$value": "{p-color.blue.700}"
 				},
 				"muted": {
 					"$type": "color",
-					"$value": "{p-color.aurora.100}"
+					"$value": "{p-color.blue.100}"
 				},
 				"strong": {
 					"$type": "color",
-					"$value": "{p-color.aurora.600}"
+					"$value": "{p-color.blue.600}"
 				}
 			},
 			"info": {
@@ -738,15 +738,15 @@
 			"accent": {
 				"base": {
 					"$type": "color",
-					"$value": "{p-color.aurora.600}"
+					"$value": "{p-color.blue.600}"
 				},
 				"faded": {
 					"$type": "color",
-					"$value": "{p-color.aurora.700}"
+					"$value": "{p-color.blue.700}"
 				},
 				"strong": {
 					"$type": "color",
-					"$value": "{p-color.aurora.600}"
+					"$value": "{p-color.blue.600}"
 				}
 			},
 			"info": {
@@ -891,7 +891,7 @@
 			},
 			"accent": {
 				"$type": "color",
-				"$value": "{p-color.aurora.500}"
+				"$value": "{p-color.blue.500}"
 			}
 		},
 		"glow-hue": {

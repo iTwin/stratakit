@@ -38,23 +38,37 @@ function VisualTest({ tooltip: showTooltip = false }) {
 		);
 	}
 
+	const variants = ["solid", "outline", "ghost"] as const;
+
 	return (
-		<div style={{ display: "flex", gap: 4 }}>
-			<IconButton label="Click me" icon={placeholderIcon} />
-			<IconButton variant="outline" label="Click me" icon={placeholderIcon} />
-			<IconButton variant="ghost" label="Click me" icon={placeholderIcon} />
-			<IconButton
-				variant="ghost"
-				label="Click me"
-				icon={placeholderIcon}
-				isActive
-			/>
-			<IconButton
-				variant="ghost"
-				label="Notifications"
-				dot="You have unread notifications"
-				icon={placeholderIcon}
-			/>
+		<div style={{ display: "grid", gap: 4 }}>
+			{variants.map((variant) => (
+				<div style={{ display: "flex", gap: 4 }}>
+					<IconButton
+						variant={variant}
+						label="Click me"
+						icon={placeholderIcon}
+					/>
+					<IconButton
+						variant={variant}
+						disabled
+						label="Click me not"
+						icon={placeholderIcon}
+					/>
+					<IconButton
+						variant={variant}
+						label="Click me"
+						icon={placeholderIcon}
+						isActive
+					/>
+					<IconButton
+						variant={variant}
+						label="Notifications"
+						dot="You have unread notifications"
+						icon={placeholderIcon}
+					/>
+				</div>
+			))}
 		</div>
 	);
 }

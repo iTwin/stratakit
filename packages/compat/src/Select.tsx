@@ -4,7 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 
 import * as React from "react";
-import { Select as SkSelect } from "@stratakit/bricks";
+import { Field, Select as SkSelect } from "@stratakit/bricks";
 
 import type { Select as IuiSelect } from "@itwin/itwinui-react";
 import type { PolymorphicForwardRefComponent } from "./~utils.tsx";
@@ -66,6 +66,8 @@ type SelectProps = Omit<IuiNativeSelectTransformedProps, "native"> & {
  */
 export const Select = React.forwardRef((props, forwardedRef) => {
 	const {
+		id,
+
 		disabled,
 		value,
 		onChange: onChangeProp,
@@ -107,17 +109,23 @@ export const Select = React.forwardRef((props, forwardedRef) => {
 	}, [options]);
 
 	return (
-		<SkSelect.Root ref={forwardedRef} {...rest}>
-			<SkSelect.HtmlSelect
-				{...triggerProps}
-				disabled={disabled}
-				value={value ?? undefined}
-				defaultValue={defaultValue}
-				onChange={onChange}
-			>
-				{renderedOptions}
-			</SkSelect.HtmlSelect>
-		</SkSelect.Root>
+		<Field.Control
+			id={id}
+			render={
+				<SkSelect.Root {...rest}>
+					<SkSelect.HtmlSelect
+						{...triggerProps}
+						disabled={disabled}
+						value={value ?? undefined}
+						defaultValue={defaultValue}
+						onChange={onChange}
+					>
+						{renderedOptions}
+					</SkSelect.HtmlSelect>
+				</SkSelect.Root>
+			}
+			ref={forwardedRef}
+		/>
 	);
 }) as PolymorphicForwardRefComponent<"div", SelectProps>;
 DEV: (Select as React.ForwardRefExoticComponent<unknown>).displayName =

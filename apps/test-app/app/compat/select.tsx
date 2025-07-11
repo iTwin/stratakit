@@ -3,11 +3,12 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import placeholderIcon from "@stratakit/icons/placeholder.svg";
-import { Select } from "@stratakit/react";
 import * as React from "react";
-import { definePage } from "~/~utils.tsx";
 import { Icon } from "@stratakit/foundations";
+import { Select } from "@stratakit/react";
+import { definePage } from "~/~utils.tsx";
+
+import placeholderIcon from "@stratakit/icons/placeholder.svg";
 
 export const handle = { title: "Select" };
 
@@ -16,6 +17,7 @@ export default definePage(function Page() {
 		<div style={{ display: "grid", gap: 4 }}>
 			{/* All implemented props */}
 			<Select
+				id="my-select"
 				native
 				options={[
 					{ value: "1", label: "Item #1" },

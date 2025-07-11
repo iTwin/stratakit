@@ -3,8 +3,8 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import { Select as SkSelect } from "@stratakit/bricks";
 import * as React from "react";
+import { Select as SkSelect } from "@stratakit/bricks";
 
 import type { Select as IuiSelect } from "@itwin/itwinui-react";
 import type { PolymorphicForwardRefComponent } from "./~utils.tsx";
@@ -64,64 +64,62 @@ type SelectProps = Omit<IuiNativeSelectTransformedProps, "native"> & {
  * Thus, all other props have to be updated, added, or removed to match native `Select`'s props.
  * E.g. `value` must be a string, no `multiple` support, etc.
  */
-export const Select = React.forwardRef(
-	(props: SelectProps, forwardedRef: React.ForwardedRef<HTMLSelectElement>) => {
-		const {
-			disabled,
-			value,
-			onChange: onChangeProp,
-			options,
-			defaultValue,
-			triggerProps,
+export const Select = React.forwardRef((props, forwardedRef) => {
+	const {
+		disabled,
+		value,
+		onChange: onChangeProp,
+		options,
+		defaultValue,
+		triggerProps,
 
-			// biome-ignore lint/correctness/noUnusedVariables: NO-OP
-			native,
+		// biome-ignore lint/correctness/noUnusedVariables: NO-OP
+		native,
 
-			// biome-ignore-start lint/correctness/noUnusedVariables: NOT IMPLEMENTED
-			size,
-			status,
-			required,
-			multiple,
-			styleType,
-			placeholder,
-			// biome-ignore-end lint/correctness/noUnusedVariables: NOT IMPLEMENTED
+		// biome-ignore-start lint/correctness/noUnusedVariables: NOT IMPLEMENTED
+		size,
+		status,
+		required,
+		multiple,
+		styleType,
+		placeholder,
+		// biome-ignore-end lint/correctness/noUnusedVariables: NOT IMPLEMENTED
 
-			...rest
-		} = props;
+		...rest
+	} = props;
 
-		const onChange: React.ChangeEventHandler<HTMLSelectElement> =
-			React.useCallback(
-				(event) => {
-					onChangeProp?.(event.target.value, event);
-				},
-				[onChangeProp],
-			);
-
-		const renderedOptions = React.useMemo(() => {
-			return options.map((option) => {
-				return (
-					<option key={option.value} {...option}>
-						{option.label}
-					</option>
-				);
-			});
-		}, [options]);
-
-		return (
-			<SkSelect.Root ref={forwardedRef} {...rest}>
-				<SkSelect.HtmlSelect
-					{...triggerProps}
-					disabled={disabled}
-					value={value ?? undefined}
-					defaultValue={defaultValue}
-					onChange={onChange}
-				>
-					{renderedOptions}
-				</SkSelect.HtmlSelect>
-			</SkSelect.Root>
+	const onChange: React.ChangeEventHandler<HTMLSelectElement> =
+		React.useCallback(
+			(event) => {
+				onChangeProp?.(event.target.value, event);
+			},
+			[onChangeProp],
 		);
-	},
-) as PolymorphicForwardRefComponent<"div", SelectProps>;
+
+	const renderedOptions = React.useMemo(() => {
+		return options.map((option) => {
+			return (
+				<option key={option.value} {...option}>
+					{option.label}
+				</option>
+			);
+		});
+	}, [options]);
+
+	return (
+		<SkSelect.Root ref={forwardedRef} {...rest}>
+			<SkSelect.HtmlSelect
+				{...triggerProps}
+				disabled={disabled}
+				value={value ?? undefined}
+				defaultValue={defaultValue}
+				onChange={onChange}
+			>
+				{renderedOptions}
+			</SkSelect.HtmlSelect>
+		</SkSelect.Root>
+	);
+}) as PolymorphicForwardRefComponent<"div", SelectProps>;
 DEV: (Select as React.ForwardRefExoticComponent<unknown>).displayName =
 	"Select";
 

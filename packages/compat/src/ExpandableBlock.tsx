@@ -6,10 +6,10 @@
 import * as React from "react";
 import { Icon } from "@stratakit/foundations";
 import { unstable_AccordionItem as SkAccordionItem } from "@stratakit/structures";
-import { useCompatProps } from "./~utils.tsx";
+import { useCompatProps } from "./~utils.js";
 
 import type { ExpandableBlock as IuiExpandableBlock } from "@itwin/itwinui-react";
-import type { PolymorphicForwardRefComponent } from "./~utils.tsx";
+import type { PolymorphicForwardRefComponent } from "./~utils.js";
 
 type IuiExpandableBlockProps = React.ComponentProps<typeof IuiExpandableBlock>;
 

@@ -3,10 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import * as React from "react";
-import { Role } from "@ariakit/react/role";
 import * as AkTab from "@ariakit/react/tab";
-import { Icon } from "@stratakit/foundations";
 import { forwardRef } from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
 
@@ -178,22 +175,4 @@ DEV: TabPanel.displayName = "Tabs.TabPanel";
 
 // ----------------------------------------------------------------------------
 
-interface TabIconProps extends BaseProps<"span"> {}
-
-const TabIcon = forwardRef<"span", TabIconProps>((props, forwardedRef) => {
-	const { children, ...rest } = props;
-	return (
-		<Role.span
-			{...rest}
-			className={cx("🥝-tab-icon", props.className)}
-			ref={forwardedRef}
-		>
-			{React.isValidElement(children) ? <Icon render={children} /> : null}
-		</Role.span>
-	);
-});
-DEV: TabIcon.displayName = "Tabs.TabIcon";
-
-// ----------------------------------------------------------------------------
-
-export { Tabs as Root, TabList, Tab, TabPanel, TabIcon };
+export { Tabs as Root, TabList, Tab, TabPanel };

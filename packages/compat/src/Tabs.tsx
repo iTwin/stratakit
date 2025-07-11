@@ -357,20 +357,19 @@ DEV: Panel.displayName = "Tabs.Panel";
 
 type IuiTabIconProps = React.ComponentProps<typeof IuiTabs.TabIcon>;
 
+interface TabIconProps extends IuiTabIconProps {}
+
 /** @see https://itwinui.bentley.com/docs/tabs#composition-api */
 const TabIcon = React.forwardRef((props, forwardedRef) => {
 	const { children, ...rest } = useCompatProps(props);
 	return (
-		<span {...rest} ref={forwardedRef}>
-			<SkIcon render={React.isValidElement(children) ? children : undefined} />
-		</span>
-		// <SkIcon
-		// 	// {...rest}
-		// 	ref={forwardedRef}
-		// 	render={React.isValidElement(children) ? children : undefined}
-		// />
+		<SkIcon
+			{...(rest as React.ComponentProps<"svg">)}
+			ref={forwardedRef}
+			render={React.isValidElement(children) ? children : undefined}
+		/>
 	);
-}) as PolymorphicForwardRefComponent<"span", IuiTabIconProps>;
+}) as PolymorphicForwardRefComponent<"svg", TabIconProps>;
 DEV: TabIcon.displayName = "Tabs.TabIcon";
 
 // ----------------------------------------------------------------------------

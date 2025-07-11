@@ -51,77 +51,96 @@ export default definePage(
 	},
 );
 
+const fruitsData = [
+	{
+		name: "Apple",
+		color: "Red",
+	},
+	{
+		name: "Orange",
+		color: "Orange",
+	},
+	{
+		name: "Kiwi",
+		color: "Golden brown",
+	},
+	{
+		name: "Watermelon",
+		color: "Green",
+	},
+];
+
+// Workaround for the first column of the table that contains checkboxes.
+const checkboxCellStyle = {
+	flex: "0 0 2.75rem",
+	minInlineSize: "auto",
+} satisfies React.CSSProperties;
+
 function CustomTableTest() {
+	const tableId = React.useId();
 	return (
 		<Table.CustomTable>
 			<Table.Caption>Fruits and their colors (Table.CustomTable)</Table.Caption>
 			<Table.Header>
 				<Table.Row>
+					<Table.Cell style={checkboxCellStyle}>
+						<VisuallyHidden>Select</VisuallyHidden>
+					</Table.Cell>
 					<Table.Cell>Fruit</Table.Cell>
 					<Table.Cell>Color</Table.Cell>
 				</Table.Row>
 			</Table.Header>
 			<Table.Body>
-				<Table.Row>
-					<Table.Cell>Apple</Table.Cell>
-					<Table.Cell>Red</Table.Cell>
-				</Table.Row>
-				<Table.Row>
-					<Table.Cell>Orange</Table.Cell>
-					<Table.Cell>Orange</Table.Cell>
-				</Table.Row>
-				<Table.Row aria-selected>
-					<Table.Cell aria-selected>
-						Kiwi
-						<VisuallyHidden>
-							(Selected)
-							<Checkbox checked aria-hidden tabIndex={-1} />
-						</VisuallyHidden>
-					</Table.Cell>
-					<Table.Cell>Golden brown</Table.Cell>
-				</Table.Row>
-				<Table.Row>
-					<Table.Cell>Watermelon</Table.Cell>
-					<Table.Cell>Green</Table.Cell>
-				</Table.Row>
+				{fruitsData.map((fruit) => {
+					const nameId = `${tableId}-${fruit.name}-name`;
+					return (
+						<Table.Row key={fruit.name}>
+							<Table.Cell style={checkboxCellStyle}>
+								<Checkbox
+									defaultChecked={fruit.name === "Kiwi" ? true : undefined}
+									aria-labelledby={nameId}
+								/>
+							</Table.Cell>
+							<Table.Cell id={nameId}>{fruit.name}</Table.Cell>
+							<Table.Cell>{fruit.color}</Table.Cell>
+						</Table.Row>
+					);
+				})}
 			</Table.Body>
 		</Table.CustomTable>
 	);
 }
 
 function HtmlTableTest() {
+	const tableId = React.useId();
 	return (
 		<Table.HtmlTable>
 			<Table.Caption>Fruits and their colors (Table.HtmlTable)</Table.Caption>
 			<Table.Header>
 				<Table.Row>
+					<Table.Cell style={checkboxCellStyle}>
+						<VisuallyHidden>Select</VisuallyHidden>
+					</Table.Cell>
 					<Table.Cell>Fruit</Table.Cell>
 					<Table.Cell>Color</Table.Cell>
 				</Table.Row>
 			</Table.Header>
 			<Table.Body>
-				<Table.Row>
-					<Table.Cell>Apple</Table.Cell>
-					<Table.Cell>Red</Table.Cell>
-				</Table.Row>
-				<Table.Row>
-					<Table.Cell>Orange</Table.Cell>
-					<Table.Cell>Orange</Table.Cell>
-				</Table.Row>
-				<Table.Row>
-					<Table.Cell>
-						Kiwi
-						<VisuallyHidden>
-							(Selected)
-							<Checkbox checked aria-hidden tabIndex={-1} />
-						</VisuallyHidden>
-					</Table.Cell>
-					<Table.Cell>Golden brown</Table.Cell>
-				</Table.Row>
-				<Table.Row>
-					<Table.Cell>Watermelon</Table.Cell>
-					<Table.Cell>Green</Table.Cell>
-				</Table.Row>
+				{fruitsData.map((fruit) => {
+					const nameId = `${tableId}-${fruit.name}-name`;
+					return (
+						<Table.Row key={fruit.name}>
+							<Table.Cell style={checkboxCellStyle}>
+								<Checkbox
+									defaultChecked={fruit.name === "Kiwi" ? true : undefined}
+									aria-labelledby={nameId}
+								/>
+							</Table.Cell>
+							<Table.Cell id={nameId}>{fruit.name}</Table.Cell>
+							<Table.Cell>{fruit.color}</Table.Cell>
+						</Table.Row>
+					);
+				})}
 			</Table.Body>
 		</Table.HtmlTable>
 	);

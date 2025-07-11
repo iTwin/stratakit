@@ -94,8 +94,12 @@ const LABEL_MAP = {
 	[LABELS.FIELD]: [
 		"packages/bricks/src/Field",
 		"packages/compat/src/InputGrid.tsx",
+		"packages/compat/src/StatusMessage.tsx",
 	],
-	[LABELS.ICON]: ["packages/foundations/src/Icon"],
+	[LABELS.ICON]: [
+		"packages/foundations/src/Icon",
+		"packages/compat/src/Icon.tsx",
+	],
 	[LABELS.ICON_BUTTON]: ["packages/bricks/src/IconButton"],
 	[LABELS.KBD]: ["packages/bricks/src/Kbd", "packages/compat/src/Kbd.tsx"],
 	[LABELS.LABEL]: [
@@ -107,7 +111,7 @@ const LABEL_MAP = {
 	[LABELS.PLATFORM_BAR]: [],
 	[LABELS.POPOVER]: [],
 	[LABELS.PROGRESS_BAR]: [
-		"packages/bricks/src/ProgressBar",
+		"packages/bricks/src/Progress",
 		"packages/compat/src/ProgressLinear.tsx",
 	],
 	[LABELS.RADIO]: [
@@ -137,6 +141,8 @@ const LABEL_MAP = {
 		"packages/bricks/src/TextBox",
 		"packages/compat/src/Input.tsx",
 		"packages/compat/src/LabeledInput.tsx",
+		"packages/compat/src/Textarea.tsx",
+		"packages/compat/src/LabeledTextarea.tsx",
 	],
 	[LABELS.TOAST]: [],
 	[LABELS.TOOLBAR]: ["packages/structures/src/Toolbar"],

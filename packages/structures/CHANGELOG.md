@@ -1,5 +1,70 @@
 # Changelog
 
+## 0.2.3
+
+- [#788](https://github.com/iTwin/design-system/pull/788): Updated `Tabs.Tab` component to support optional start and end icons.
+
+  ```tsx
+  // Add end icon to a tab.
+  <Tabs.Tab id="tab-1">
+    Tab 1
+    <Icon href={…} />
+  </Tabs.Tab>
+  ```
+
+- [#773](https://github.com/iTwin/design-system/pull/773): Added [subpath exports](https://nodejs.org/api/packages.html#subpath-exports) for individual components. These new exports allow StrataKit to expose both convenience and compositional APIs of the same component.
+
+  ```tsx
+  // Convenience import
+  import Chip from "@stratakit/structures/Chip";
+  // Alternative
+  import { default as Chip } from "@stratakit/structures/Chip";
+
+  <Chip />;
+  ```
+
+  ```tsx
+  // Compositional import
+  import * as Chip from "@stratakit/structures/Chip";
+
+  <Chip.Root>
+  	<Chip.Label>Label</Chip.Label>
+  	<Chip.DismissButton />
+  </Chip.Root>;
+  ```
+
+  Compositional components are useful for building custom components that require more control over the structure and behavior, while convenience components provide a ready-to-use solution for common use cases. See [#405](https://github.com/iTwin/design-system/discussions/405) for more details.
+
+  APIs exported from the barrel file are not changed in this release. Some exported components are compositional, while others are convenience components.
+
+  ```tsx
+  // Chip is exported as a convenience API in the barrel file:
+  import { Chip } from "@stratakit/structures";
+
+  <Chip />;
+  ```
+
+- [#763](https://github.com/iTwin/design-system/pull/763): Added compositional `Chip.Root`, `Chip.Label` and `Chip.DismissButton` components. These new components can be used when you need fine grained configuration.
+
+  To use the compositional components, import them from the `/Chip` subpath:
+
+  ```tsx
+  import * as Chip from "@stratakit/structures/Chip";
+
+  <Chip.Root>
+  	<Chip.Label>Label</Chip.Label>
+  	<Chip.DismissButton onClick={onDismiss} />
+  </Chip.Root>;
+  ```
+
+- [#815](https://github.com/iTwin/design-system/pull/815): Fixed an issue where Toolbar was using Context as a component which doesn't work in React 18.
+- [#781](https://github.com/iTwin/design-system/pull/781): Updated `Chip.Label` component styling when rendered as a button.
+- [#793](https://github.com/iTwin/design-system/pull/793): Added `zustand` as a dependency.
+
+- Updated dependencies:
+  - @stratakit/foundations@0.2.0
+  - @stratakit/bricks@0.3.1
+
 ## 0.2.2
 
 - [#756](https://github.com/iTwin/design-system/pull/756): `DropdownMenu.Button` will now ignore `render={undefined}`.
@@ -24,7 +89,6 @@
 - [#720](https://github.com/iTwin/design-system/pull/720): Renamed `onExpandedChange` prop for `unstable_ErrorRegion.Root` to `setOpen`.
   Renamed `expanded` prop for `unstable_ErrorRegion.Root` to `open`.
 - [#709](https://github.com/iTwin/design-system/pull/709): `unstable_AccordionItem` breaking changes:
-
   - `AccordionItem.Trigger` renamed to `AccordionItem.Header` and no longer represents the underlying `<button>` element (see `AccordionItem.Label`).
   - `AccordionItem.Label` must be wrapped with the new `AccordionItem.Button`.
 
@@ -53,7 +117,6 @@
 ## 0.1.1
 
 - [#704](https://github.com/iTwin/design-system/pull/704): The following components have been moved from `@stratakit/bricks` into `@stratakit/structures`.
-
   - `unstable_AccordionItem`
   - `unstable_Banner`
   - `Chip`

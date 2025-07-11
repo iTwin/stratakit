@@ -3,24 +3,20 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
+import * as React from "react";
 import { Chip } from "@stratakit/structures";
 import {
 	DismissButton as ChipDismiss,
 	Label as ChipLabel,
 	Root as ChipRoot,
 } from "@stratakit/structures/Chip";
-import * as React from "react";
 import { definePage } from "~/~utils.tsx";
 
 export const handle = { title: "Chip" };
 
 export default definePage(
 	function Page() {
-		return (
-			<>
-				<Chip label="Value" />
-			</>
-		);
+		return <Chip label="Value" />;
 	},
 	{ visual: VisualTest, dismiss: DismissTest, composition: CompositionTest },
 );

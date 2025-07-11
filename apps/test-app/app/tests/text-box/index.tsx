@@ -3,13 +3,13 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import { Field, Label, TextBox } from "@stratakit/bricks";
 import * as React from "react";
+import { Field, Label, TextBox } from "@stratakit/bricks";
 import { definePage } from "~/~utils.tsx";
 
-import placeholderIcon from "@stratakit/icons/placeholder.svg";
-
 import type { VariantProps } from "~/~utils.tsx";
+
+import placeholderIcon from "@stratakit/icons/placeholder.svg";
 
 export const handle = { title: "TextBox" };
 
@@ -79,6 +79,8 @@ function VisualTest() {
 			<TextBox.Input defaultValue="Value" />
 			<TextBox.Textarea defaultValue="Value" />
 			<TextBox.Input disabled defaultValue="Disabled value" />
+
+			{/* TextBox.Input */}
 			<TextBox.Root>
 				<TextBox.Input defaultValue="Value" />
 			</TextBox.Root>
@@ -106,6 +108,38 @@ function VisualTest() {
 				<TextBox.Icon href={placeholderIcon} />
 				<TextAffix>%</TextAffix>
 				<TextBox.Input disabled defaultValue="Disabled value" />
+				<TextAffix>%</TextAffix>
+				<TextBox.Icon href={placeholderIcon} />
+			</TextBox.Root>
+
+			{/* TextBox.Textarea */}
+			<TextBox.Root>
+				<TextBox.Textarea defaultValue="Value" />
+			</TextBox.Root>
+			<TextBox.Root>
+				<TextBox.Icon href={placeholderIcon} />
+				<TextBox.Textarea defaultValue="Value" />
+			</TextBox.Root>
+			<TextBox.Root>
+				<TextBox.Textarea defaultValue="Value" />
+				<TextBox.Icon href={placeholderIcon} />
+			</TextBox.Root>
+			<TextBox.Root>
+				<TextBox.Icon href={placeholderIcon} />
+				<TextBox.Textarea defaultValue="Value" />
+				<TextBox.Icon href={placeholderIcon} />
+			</TextBox.Root>
+			<TextBox.Root>
+				<TextBox.Icon href={placeholderIcon} />
+				<TextAffix>%</TextAffix>
+				<TextBox.Textarea defaultValue="Value" />
+				<TextAffix>%</TextAffix>
+				<TextBox.Icon href={placeholderIcon} />
+			</TextBox.Root>
+			<TextBox.Root>
+				<TextBox.Icon href={placeholderIcon} />
+				<TextAffix>%</TextAffix>
+				<TextBox.Textarea disabled defaultValue="Disabled value" />
 				<TextAffix>%</TextAffix>
 				<TextBox.Icon href={placeholderIcon} />
 			</TextBox.Root>

@@ -4,7 +4,6 @@
  *--------------------------------------------------------------------------------------------*/
 
 import * as React from "react";
-import { Icon as SkIcon } from "@stratakit/foundations";
 import {
 	useControlledState,
 	useSafeContext,
@@ -12,6 +11,7 @@ import {
 import { Tabs as SkTabs } from "@stratakit/structures";
 import cx from "classnames";
 import { useCompatProps } from "./~utils.js";
+import { Icon } from "./Icon.js";
 
 import type { Tab as IuiTab, Tabs as IuiTabs } from "@itwin/itwinui-react";
 import type { PolymorphicForwardRefComponent } from "./~utils.js";
@@ -355,20 +355,14 @@ DEV: Panel.displayName = "Tabs.Panel";
 
 // ----------------------------------------------------------------------------
 
-type IuiTabIconProps = React.ComponentProps<typeof IuiTabs.TabIcon>;
+type IconProps = React.ComponentProps<typeof Icon>;
 
-interface TabIconProps extends IuiTabIconProps {}
+interface TabIconProps extends IconProps {}
 
 /** @see https://itwinui.bentley.com/docs/tabs#composition-api */
 const TabIcon = React.forwardRef((props, forwardedRef) => {
-	const { children, ...rest } = useCompatProps(props);
-	return (
-		<SkIcon
-			{...(rest as React.ComponentProps<"svg">)}
-			ref={forwardedRef}
-			render={React.isValidElement(children) ? children : undefined}
-		/>
-	);
+	const compatProps = useCompatProps(props);
+	return <Icon {...compatProps} ref={forwardedRef} />;
 }) as PolymorphicForwardRefComponent<"svg", TabIconProps>;
 DEV: TabIcon.displayName = "Tabs.TabIcon";
 

@@ -361,8 +361,7 @@ interface TabIconProps extends IconProps {}
 
 /** @see https://itwinui.bentley.com/docs/tabs#composition-api */
 const TabIcon = React.forwardRef((props, forwardedRef) => {
-	const compatProps = useCompatProps(props);
-	return <Icon {...compatProps} ref={forwardedRef} />;
+	return <Icon {...props} ref={forwardedRef} />;
 }) as PolymorphicForwardRefComponent<"svg", TabIconProps>;
 DEV: TabIcon.displayName = "Tabs.TabIcon";
 

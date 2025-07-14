@@ -31,7 +31,8 @@ function VisualTest() {
 	const permutations = [
 		["solid", "neutral"],
 		["solid", "accent"],
-		["outline"],
+		["outline", "neutral"],
+		["outline", "accent"],
 		["ghost", "neutral"],
 		["ghost", "accent"],
 	] as const;

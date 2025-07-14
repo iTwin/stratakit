@@ -15,7 +15,7 @@ body:
     attributes:
       label: Keyboard tests
       description: | 
-        **Instructions:** Navigate the component using the keyboard (Tab to move to the next focusable element; `Shift` + `Tab` to move to the previous one). For each press of the Tab key, ensure the following criteria are true.
+        Navigate the component using the keyboard (Tab to move to the next focusable element; `Shift` + `Tab` to move to the previous one). For each press of the Tab key, ensure the following criteria are true.
       options:
         - label: No elements interactive by other means (like a mouse/pointer) do not receive focus (WCAG 2.1.1 A)
         - label: No elements that are not intended to be interactive can be focused by the user (WCAG 2.4.3 A)
@@ -35,7 +35,7 @@ body:
     attributes:
       label: Screen reader tests
       description: | 
-        **Instructions:** Read through the component using a screen reader. If you are unfamiliar, see [this guide on browsing with screen reader software](https://tetralogical.com/blog/2021/09/29/browsing-with-a-desktop-screen-reader/).
+        Read through the component using a screen reader. If you are unfamiliar, see [this guide on browsing with screen reader software](https://tetralogical.com/blog/2021/09/29/browsing-with-a-desktop-screen-reader/).
       options:
         - label: For images, choose an appropriate alt value. Consult the (https://www.w3.org/WAI/tutorials/images/decision-tree/) for guidance (WCAG 1.1.1 A)
         - label: The visual characteristics of interface elements are not the only means of identifying them. Programmatically determinable text labels are also available (WCAG 1.3.3 A)
@@ -57,7 +57,7 @@ body:
     attributes:
       label: Magnification
       description: | 
-        **Instructions:** There are three tests to carry out:
+        There are three tests to carry out:
         1. **Full page zoom**: For example, in Chrome, **View > Zoom** (or **Command/CTRL** and **+** by keyboard) to the maximum level. Alternatively, create a viewport that is `320px` wide and `256px` high.
         2. **Font default size**: For example, in Firefox, up the font size under **Preferences > General > Font**.
         3. **Pinch zoom**: Zoom using the pinch gesture on a touchscreen device.
@@ -142,6 +142,6 @@ body:
     id: hcm-notes
     attributes:
       label: Forced Colors Mode test notes
-      description: Observations and suggestions for addressing forced colors mode failures...
+      description: Observations and suggestions for addressing Forced Colors Mode failures...
     validations:
       required: true

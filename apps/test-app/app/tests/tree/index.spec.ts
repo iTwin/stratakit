@@ -93,7 +93,7 @@ test("actions overflow", async ({ page }) => {
 	// Should show at most 3 inline actions
 	await page.goto("/tests/tree?actions&inline=5&menu=0");
 	await treeitem.hover();
-	await expect(actions).toHaveCount(3);
+	await expect(actions).toHaveCount(2);
 	await expect(more).not.toBeVisible();
 
 	// Should show at most 2 inline actions and a menu.
@@ -105,7 +105,7 @@ test("actions overflow", async ({ page }) => {
 	// Should not render a menu, when all menu items are hidden.
 	await page.goto("/tests/tree?actions&inline=5&menu=2&hiddenIds=6;7");
 	await treeitem.hover();
-	await expect(actions).toHaveCount(3);
+	await expect(actions).toHaveCount(2);
 	await expect(more).not.toBeVisible();
 });
 

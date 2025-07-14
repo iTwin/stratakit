@@ -128,17 +128,20 @@ interface TreeItemProps extends Omit<BaseProps, "content" | "children"> {
 	 *
 	 * Example:
 	 * ```tsx
-	 * inlineActions={[
-	 *   error && <Tree.ItemAction key={…} icon={…} label={…} />,
-	 *   <Tree.ItemAction key={…} icon={…} label={…} />,
-	 *   <Tree.ItemAction key={…} icon={…} label={…} />,
-	 * ]}
+	 * inlineActions={
+	 *   error
+	 *     ? [
+	 *         <Tree.ItemAction key={…} icon={…} label={…} />
+	 *       ]
+	 *     : [
+	 *         <Tree.ItemAction key={…} icon={…} label={…} />,
+	 *         <Tree.ItemAction key={…} icon={…} label={…} />,
+	 *        ]
+	 * }
 	 * ```
 	 *
 	 * Inline actions should only be used for frequently used and quickly accessible actions.
-	 * At most three inline actions are displayed:
-	 * - First two inline actions are displayed when action menu is displayed.
-	 * - First action is displayed when tree item has an error.
+	 * At most two inline actions are displayed. Consumers should render a single action when tree item has an error.
 	 *
 	 * The inline actions are normally hidden until the treeitem is hovered or focused.
 	 * When the `error` prop is set, the actions will be made visible by default. The first
@@ -540,7 +543,6 @@ const TreeItemDisplayedInlineActionsContext = React.createContext<string[]>([]);
 const TreeItemDisplayActionsMenuContext = React.createContext<boolean>(false);
 
 function TreeItemActionsContent() {
-	const error = React.useContext(TreeItemErrorContext);
 	const store = useToolbarContext();
 	DEV: {
 		if (!store)
@@ -557,10 +559,8 @@ function TreeItemActionsContent() {
 
 	const displayedInlineActions = React.useMemo(() => {
 		const itemIds = renderedItems.map((item) => item.id);
-		if (error) return itemIds.slice(0, 1);
-		if (displayMenu) return itemIds.slice(0, 2);
-		return itemIds.slice(0, 3);
-	}, [renderedItems, displayMenu, error]);
+		return itemIds.slice(0, 2);
+	}, [renderedItems]);
 
 	return (
 		<TreeItemDisplayActionsMenuContext.Provider value={displayMenu}>

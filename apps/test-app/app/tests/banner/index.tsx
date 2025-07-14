@@ -23,10 +23,19 @@ const loremIpsum =
 	"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris";
 const dummyLongLabel =
 	"This is a long label that goes on and on and on and on and on and on and on and on and on and on";
+const tones = ["neutral", "info", "positive", "attention", "critical"] as const;
 
 export default definePage(
-	function Page() {
-		return <Banner label="Label" message="Message" />;
+	function Page({ icon, tone }) {
+		return (
+			<Banner
+				className="my-banner"
+				label="Label"
+				message="Message"
+				icon={icon ? placeholderIcon : undefined}
+				tone={tone as (typeof tones)[number]}
+			/>
+		);
 	},
 	{
 		visual: VisualTest,
@@ -38,14 +47,6 @@ export default definePage(
 );
 
 function VisualTest({ customIcons = false }: { customIcons?: boolean }) {
-	const tones = [
-		"neutral",
-		"info",
-		"positive",
-		"attention",
-		"critical",
-	] as const;
-
 	return (
 		<div style={{ display: "grid", gap: 4 }}>
 			{tones.map((tone) => {
@@ -187,8 +188,12 @@ function AllStyleCases() {
 function CompositionTest() {
 	return (
 		<div style={{ display: "grid", gap: 4 }}>
-			<BannerRoot tone="info" variant="outline">
-				<BannerIcon href={placeholderIcon} />
+			<BannerRoot
+				tone="info"
+				variant="outline"
+				data-testid="banner-info-custom-icon"
+			>
+				<BannerIcon href={placeholderIcon} className="my-banner-icon" />
 				<BannerLabel id="my-label">Label</BannerLabel>
 				<BannerMessage>
 					This is a message that can be very long and will wrap to the next
@@ -200,14 +205,14 @@ function CompositionTest() {
 				<BannerDismiss onClick={() => console.log("Dismissed")} />
 			</BannerRoot>
 
-			{/* If no href is passed to Banner.Icon and tone is non-neutral, should show a status icon */}
-			<BannerRoot tone="info" data-testid="banner-info">
-				<BannerIcon />
+			<BannerRoot tone="info" data-testid="banner-info-no-custom-icon">
+				<BannerIcon className="my-banner-icon" />
 				<BannerLabel>Label</BannerLabel>
 				<BannerMessage>Message</BannerMessage>
 			</BannerRoot>
-			<BannerRoot data-testid="banner-neutral">
-				<BannerIcon />
+
+			<BannerRoot data-testid="banner-neutral-no-custom-icon">
+				<BannerIcon className="my-banner-icon" />
 				<BannerLabel>Label</BannerLabel>
 				<BannerMessage>Message</BannerMessage>
 			</BannerRoot>

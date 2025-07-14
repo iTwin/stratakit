@@ -25,7 +25,7 @@ import type { ExtractState } from "zustand";
 type BannerState = ExtractState<ReturnType<typeof createBannerStore>>;
 
 function createBannerStore(initialState: {
-	labelId: string;
+	labelId?: string;
 	tone: NonNullable<BannerRootProps["tone"]>;
 }) {
 	return createStore(
@@ -46,11 +46,8 @@ function BannerProvider(
 		tone: NonNullable<BannerRootProps["tone"]>;
 	},
 ) {
-	const defaultLabelId = React.useId();
-
 	const [store] = React.useState(() =>
 		createBannerStore({
-			labelId: defaultLabelId,
 			tone: props.tone,
 		}),
 	);
@@ -142,24 +139,22 @@ interface BannerIconProps extends React.ComponentProps<typeof Icon> {}
  */
 const BannerIcon = forwardRef<"svg", BannerIconProps>((props, forwardedRef) => {
 	const tone = useBannerState((state) => state.tone);
+	const hasDefaultIcon = props.href === undefined && tone !== "neutral";
+	const shouldDisplayAnIcon = props.href != null || hasDefaultIcon;
 
-	const commonProps = React.useMemo(() => {
-		return {
-			...props,
-			className: cx("🥝-banner-icon", props.className),
-			ref: forwardedRef,
-		};
-	}, [props, forwardedRef]);
+	const {
+		render = hasDefaultIcon ? <StatusIcon tone={tone} /> : undefined,
+		...rest
+	} = props;
 
-	if (props.href != null) {
-		return <Icon {...commonProps} />;
-	}
-
-	if (tone !== "neutral") {
-		return <StatusIcon {...commonProps} tone={tone} />;
-	}
-
-	return null;
+	return shouldDisplayAnIcon ? (
+		<Icon
+			{...rest}
+			render={render}
+			className={cx("🥝-banner-icon", props.className)}
+			ref={forwardedRef}
+		/>
+	) : null;
 });
 DEV: BannerIcon.displayName = "Banner.Icon";
 
@@ -188,12 +183,17 @@ interface BannerLabelProps extends RoleProps<"span"> {}
  */
 const BannerLabel = forwardRef<"span", BannerLabelProps>(
 	(props, forwardedRef) => {
+		const defaultLabelId = React.useId();
+
 		const labelId = useBannerState((state) => state.labelId);
 		const setLabelId = useBannerState((state) => state.setLabelId);
 
+		const id = props.id ?? defaultLabelId;
+
 		React.useEffect(() => {
-			setLabelId(props.id);
-		}, [setLabelId, props.id]);
+			setLabelId(id);
+			return () => setLabelId(undefined);
+		}, [setLabelId, id]);
 
 		return (
 			<Text

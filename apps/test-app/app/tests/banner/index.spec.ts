@@ -32,45 +32,80 @@ test("dismiss", async ({ page }) => {
 	}
 });
 
-test.describe("default icon", () => {
-	test("if no href is passed to Banner.Icon and tone is non-neutral, status icon is shown", async ({
+test.describe("appropriately show custom or default icon", () => {
+	test("Composition API: if no href is passed to Banner.Icon and tone is non-neutral, default status icon is shown. Else the custom icon is shown", async ({
 		page,
 	}) => {
 		await page.goto("/tests/banner?composition=true");
-		const banner = page.getByTestId("banner-info");
 
-		await expect(banner).toBeVisible();
-		await expect(banner.locator(".🥝-banner-icon")).toBeVisible();
+		// If custom icon is passed, it is shown
+		const bannerInfoWithCustomIcon = page.getByTestId(
+			"banner-info-custom-icon",
+		);
+
+		await expect(bannerInfoWithCustomIcon).toBeVisible();
+		await expect(
+			bannerInfoWithCustomIcon.locator(".my-banner-icon use"),
+		).toBeVisible();
+		await expect(
+			bannerInfoWithCustomIcon.locator(".my-banner-icon path"),
+		).not.toBeVisible();
+
+		// When no custom icon but non-neutral status, default status icon is shown
+		const bannerInfoWithNoCustomIcon = page.getByTestId(
+			"banner-info-no-custom-icon",
+		);
+
+		await expect(bannerInfoWithNoCustomIcon).toBeVisible();
+		await expect(
+			bannerInfoWithNoCustomIcon.locator(".my-banner-icon use"),
+		).not.toBeVisible();
+		await expect(
+			bannerInfoWithNoCustomIcon.locator(".my-banner-icon path"),
+		).toBeVisible();
+
+		// When no custom icon and neutral status, no icon is shown
+		const bannerNeutralWithNoCustomIcon = page.getByTestId(
+			"banner-neutral-no-custom-icon",
+		);
+
+		await expect(bannerNeutralWithNoCustomIcon).toBeVisible();
+		await expect(
+			bannerNeutralWithNoCustomIcon.locator(".my-banner-icon"),
+		).not.toBeVisible();
 	});
 
-	test("if no href is passed to Banner.Icon and tone is neutral, no icon is shown", async ({
+	test("Convenience API: if no icon is passed to Banner and tone is non-neutral, default status icon is shown. Else the custom icon is shown", async ({
 		page,
 	}) => {
-		await page.goto("/tests/banner?composition=true");
-		const banner = page.getByTestId("banner-neutral");
+		// If custom icon is passed, it is shown
+		await page.goto("/tests/banner?tone=info&icon=true");
+		const bannerInfoWithCustomIcon = page.locator(".my-banner");
 
-		await expect(banner).toBeVisible();
-		await expect(banner.locator(".🥝-banner-icon")).not.toBeVisible();
-	});
+		await expect(bannerInfoWithCustomIcon).toBeVisible();
+		await expect(bannerInfoWithCustomIcon.locator("svg use")).toBeVisible();
+		await expect(
+			bannerInfoWithCustomIcon.locator("svg path"),
+		).not.toBeVisible();
 
-	test("if no icon is passed to Banner and tone is non-neutral, status icon is shown", async ({
-		page,
-	}) => {
-		await page.goto("/tests/banner?visual=true");
-		const banner = page.getByTestId("banner-info");
+		// When no custom icon but non-neutral status, default status icon is shown
+		await page.goto("/tests/banner?tone=info");
+		const bannerInfoWithNoCustomIcon = page.locator(".🥝-banner");
 
-		await expect(banner).toBeVisible();
-		await expect(banner.locator(".🥝-banner-icon")).toBeVisible();
-	});
+		await expect(bannerInfoWithNoCustomIcon).toBeVisible();
+		await expect(
+			bannerInfoWithNoCustomIcon.locator("svg use"),
+		).not.toBeVisible();
+		await expect(bannerInfoWithNoCustomIcon.locator("svg path")).toBeVisible();
 
-	test("if no icon is passed to Banner and tone is neutral, no icon is shown", async ({
-		page,
-	}) => {
-		await page.goto("/tests/banner?visual=true");
-		const banner = page.getByTestId("banner-neutral");
+		// When no custom icon and neutral status, no icon is shown
+		await page.goto("/tests/banner");
+		const bannerNeutralWithNoCustomIcon = page.locator(".🥝-banner");
 
-		await expect(banner).toBeVisible();
-		await expect(banner.locator(".🥝-banner-icon")).not.toBeVisible();
+		await expect(bannerNeutralWithNoCustomIcon).toBeVisible();
+		await expect(
+			bannerNeutralWithNoCustomIcon.locator("svg"),
+		).not.toBeVisible();
 	});
 });
 

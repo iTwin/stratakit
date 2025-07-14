@@ -15,7 +15,7 @@ import {
 import Tooltip from "./Tooltip.js";
 import VisuallyHidden from "./VisuallyHidden.js";
 
-interface IconButtonBaseProps
+interface IconButtonProps
 	extends Omit<React.ComponentProps<typeof Button>, "children" | "tone"> {
 	/**
 	 * Accessible name for the button.
@@ -55,32 +55,19 @@ interface IconButtonBaseProps
 	 * ```
 	 */
 	dot?: string;
+	/**
+	 * Whether the button is in a toggled state and currently "active" (toggled on).
+	 *
+	 * Setting this prop to `true` or `false` will turn this button into a toggle button.
+	 * The button will have an `aria-pressed` attribute and extra styling for the "active" state.
+	 * When this prop is `undefined`, the button will be a regular button (no `aria-pressed` attribute).
+	 *
+	 * @see https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-pressed
+	 *
+	 * @default undefined
+	 */
+	isActive?: boolean;
 }
-
-type IconButtonExtraProps =
-	| {
-			variant: "ghost";
-			/**
-			 * Whether the button is in a toggled state and currently "active" (toggled on).
-			 *
-			 * Setting this prop to `true` or `false` will turn this button into a toggle button.
-			 * The button will have an `aria-pressed` attribute and extra styling for the "active" state.
-			 * When this prop is `undefined`, the button will be a regular button (no `aria-pressed` attribute).
-			 *
-			 * **Note:** This prop is only available with `variant="ghost"`.
-			 *
-			 * @see https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-pressed
-			 *
-			 * @default undefined
-			 */
-			isActive?: boolean;
-	  }
-	| {
-			variant?: Omit<React.ComponentProps<typeof Button>["variant"], "ghost">;
-			isActive?: never;
-	  };
-
-type IconButtonProps = IconButtonBaseProps & IconButtonExtraProps;
 
 /**
  * An icon-only button, with a required accessible name.

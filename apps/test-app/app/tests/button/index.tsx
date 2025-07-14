@@ -32,7 +32,8 @@ function VisualTest() {
 		["solid", "neutral"],
 		["solid", "accent"],
 		["outline"],
-		["ghost"],
+		["ghost", "neutral"],
+		["ghost", "accent"],
 	] as const;
 
 	return (

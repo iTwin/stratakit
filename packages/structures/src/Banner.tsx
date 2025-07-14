@@ -25,7 +25,7 @@ import type { ExtractState } from "zustand";
 type BannerState = ExtractState<ReturnType<typeof createBannerStore>>;
 
 function createBannerStore(initialState: {
-	labelId: string;
+	labelId?: string;
 	tone: NonNullable<BannerRootProps["tone"]>;
 }) {
 	return createStore(
@@ -46,11 +46,8 @@ function BannerProvider(
 		tone: NonNullable<BannerRootProps["tone"]>;
 	},
 ) {
-	const defaultLabelId = React.useId();
-
 	const [store] = React.useState(() =>
 		createBannerStore({
-			labelId: defaultLabelId,
 			tone: props.tone,
 		}),
 	);
@@ -188,12 +185,15 @@ interface BannerLabelProps extends RoleProps<"span"> {}
  */
 const BannerLabel = forwardRef<"span", BannerLabelProps>(
 	(props, forwardedRef) => {
+		const defaultLabelId = React.useId();
+
 		const labelId = useBannerState((state) => state.labelId);
 		const setLabelId = useBannerState((state) => state.setLabelId);
 
 		React.useEffect(() => {
-			setLabelId(props.id);
-		}, [setLabelId, props.id]);
+			setLabelId(props.id ?? defaultLabelId);
+			return () => setLabelId(undefined);
+		}, [setLabelId, props.id, defaultLabelId]);
 
 		return (
 			<Text

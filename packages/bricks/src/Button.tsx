@@ -10,7 +10,7 @@ import { useGhostAlignment } from "./~utils.GhostAligner.js";
 
 import type { FocusableProps } from "@stratakit/foundations/secret-internals";
 
-type ButtonProps = FocusableProps<"button"> & {
+interface ButtonProps extends FocusableProps<"button"> {
 	/**
 	 * The variant of the button, i.e. solid, outline, or ghost.
 	 *

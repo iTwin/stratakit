@@ -1,7 +1,7 @@
 name: Manual Accessibility Test
 description: A form for testing individual component accessibility
 title: "[Component Name] Manual A11y Test"
-labels: ["accessibility", "manual test"]
+labels: ["a11y", "manual test"]
 body: 
   - type: input
     id: component-name
@@ -30,14 +30,12 @@ body:
     attributes:
       label: Keyboard test notes
       description: Observations and suggestions for addressing keyboard failures...
-    validations:
-      required: true
   - type: checkboxes
     id: screen-reader
     attributes:
       label: Screen reader tests
       description: | 
-        **Instructions:** Read through the component using a screen reader. All elements, not just focusable elements, need to traversed. In Voiceover, this means holding `Control` + `Option` and using the arrow keys.
+        **Instructions:** Read through the component using a screen reader. If you are unfamiliar, see [this guide on browsing with screen reader software](https://tetralogical.com/blog/2021/09/29/browsing-with-a-desktop-screen-reader/).
       options:
         - label: For images, choose an appropriate alt value. Consult the (https://www.w3.org/WAI/tutorials/images/decision-tree/) for guidance (WCAG 1.1.1 A)
         - label: The visual characteristics of interface elements are not the only means of identifying them. Programmatically determinable text labels are also available (WCAG 1.3.3 A)
@@ -54,8 +52,6 @@ body:
     attributes:
       label: Screen reader test notes
       description: Observations and suggestions for addressing screen reader failures...
-    validations:
-      required: true
   - type: checkboxes
     id: magnification-test
     attributes:
@@ -76,8 +72,6 @@ body:
     attributes:
       label: Magnification test notes
       description: Observations and suggestions for addressing magnification failures...
-    validations:
-      required: true
   - type: checkboxes
     id: readability-test
     attributes:
@@ -96,8 +90,6 @@ body:
     attributes:
       label: Readability test notes
       description: Observations and suggestions for addressing readability failures...
-    validations:
-      required: true
   - type: checkboxes
     id: color-test
     attributes:
@@ -106,11 +98,12 @@ body:
         For testing contrast, use a desktop tool like [Colour Contrast Analyser](https://www.tpgi.com/color-contrast-checker/) or an online service like [colourcontrast.cc](https://colourcontrast.cc/). The contrast ratios expected are:
 
         * Text versus background: `4.5:1`^
-        * Non-text interface elements versus background: `3:1`
+        * Non-text interface elements versus background: `3:1` ^^
 
         If text is superimposed over multiple colors (such as those in a raster image) use the combination with the least contrast. Some [tools](https://www.brandwood.com/a11y/) may help with this.
 
-        ^ Aim for 4.5:1 for all text, not just smaller/body text. This mitigates issues with thinner and less legible fonts.
+        ^ Aim for 4.5:1 for _all_ text, not just smaller/body text. This mitigates issues with thinner and less legible fonts.
+        ^^ Non-text interface elements include icon buttons and other non-textual controls. For buttons/controls using a border to delineate their shape, the border must have at least a `3:1` contrast against the color outside of the borders.
       options:
         - label: All text in the component has at least a 4.5:1 contrast ratio against the colors or imagery behind it. (WCAG 1.4.3 AA)
         - label: All non-textual interface components that are interactive or otherwise convey meaning (icons, form controls, state indicators, etc) have at least a 3:1 contrast ratio with the colors or imagery behind them (WCAG 1.4.11 AA)
@@ -120,8 +113,6 @@ body:
     attributes:
       label: Color test notes
       description: Observations and suggestions for addressing color failures...
-    validations:
-      required: true
   - type: checkboxes
     id: pointer-test
     attributes:
@@ -136,8 +127,6 @@ body:
     attributes:
       label: Pointer test notes
       description: Observations and suggestions for addressing pointer failures...
-    validations:
-      required: true
   - type: checkboxes
     id: hcm-test
     attributes:
@@ -152,5 +141,3 @@ body:
     attributes:
       label: High Contrast Mode test notes
       description: Observations and suggestions for addressing High COntrast Mode failures...
-    validations:
-      required: true

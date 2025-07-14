@@ -15,16 +15,16 @@ body:
     attributes:
       label: Keyboard tests
       description: |
-        Navigate and operate the component using the keyboard (`Tab` to move to the next focusable element; `Shift` + `Tab` to move to the previous one; `Enter` or `Space` to activate controls).
+        Navigate the component using the keyboard (Tab to move to the next focusable element; `Shift` + `Tab` to move to the previous one). For each press of the Tab key, ensure the following criteria are true.
       options:
-        - label: No elements interactive by other means (like a mouse/pointer) do not receive focus (WCAG 2.1.1 A)
-        - label: No elements that are not intended to be interactive can be focused by the user (WCAG 2.4.3 A)
-        - label: No elements that should be interactive do nothing when activated (Enter and/or Space activation as appropriate) (WCAG 2.1.1 A)
-        - label: All visible and focusable controls indicate when they are focused with a focus CSS style (WCAG 2.4.7 AA)
-        - label: No controls that receive focus are hidden from view. This includes elements for which the focus style is visible but nothing else (WCAG 2.4.11 AA)
-        - label: It is possible to move focus outside the component, in both directions, and at all times (WCAG 2.1.2 A)
-        - label: Elements receive focus in an order that corresponds logically to their visual position within the component. A closed dialog moves focus back to the element the user was on before the dialog was opened (WCAG 2.4.3 A)
-        - label: When focus is moved programmatically (by a script) it is to an element with a role and label, such as a button or labeled landmark region (WCAG 4.1.2 A)
+        - label: No elements interactive by other means (like a mouse/pointer) do not receive focus ([WCAG 2.1.1 A](https://www.w3.org/WAI/WCAG22/Understanding/keyboard.html))
+        - label: No elements that are not intended to be interactive can be focused by the user ([WCAG 2.4.3 A](https://www.w3.org/WAI/WCAG22/Understanding/focus-order.html))
+        - label: No elements that should be interactive do nothing when activated (Enter and/or Space activation as appropriate) ([WCAG 2.1.1 A](https://www.w3.org/WAI/WCAG22/Understanding/keyboard.html))
+        - label: All visible and focusable controls indicate when they are focused with a focus CSS style ([WCAG 2.4.7 AA](https://www.w3.org/WAI/WCAG22/Understanding/focus-visible.html))
+        - label: No controls that receive focus are hidden from view. This includes elements for which the focus style is visible but nothing else ([WCAG 2.4.11 AA](https://www.w3.org/WAI/WCAG22/Understanding/focus-not-obscured-minimum.html))
+        - label: It is possible to move focus outside the component, in both directions, and at all times ([WCAG 2.1.2 A](https://www.w3.org/WAI/WCAG22/Understanding/no-keyboard-trap.html))
+        - label: Elements receive focus in an order that corresponds logically to their visual position within the component. A closed dialog moves focus back to the element the user was on before the dialog was opened ([WCAG 2.4.3 A](https://www.w3.org/WAI/WCAG22/Understanding/focus-order.html))
+        - label: When focus is moved programmatically (by a script) it is to an element with a role and label, such as a button or labeled landmark region ([WCAG 4.1.2 A](https://www.w3.org/WAI/WCAG22/Understanding/name-role-value.html))
   - type: textarea
     id: keyboard-notes
     attributes:
@@ -37,16 +37,16 @@ body:
       description: |
         Read through the component using a screen reader. If you are unfamiliar, see [this guide on browsing with screen reader software](https://tetralogical.com/blog/2021/09/29/browsing-with-a-desktop-screen-reader/).
       options:
-        - label: For images, choose an appropriate alt value. Consult the (https://www.w3.org/WAI/tutorials/images/decision-tree/) for guidance (WCAG 1.1.1 A)
-        - label: The visual characteristics of interface elements are not the only means of identifying them. Programmatically determinable text labels are also available (WCAG 1.3.3 A)
-        - label: A screen reader announces elements in an expected order. The order is as logical non-visually as it is visually. (WCAG 1.3.2 A)
-        - label: For interactive element, expected labels, roles, states, and values are announced (WCAG 4.1.2 A)
-        - label: Document structure is programmatically conveyed. What appear as lists, headings, regions/landmarks, tables, and other components of the page/screen have appropriate roles and labels (WCAG 1.3.1 A)
-        - label: Heading levels describe structural relationships accurately. For example, an immediate subsection inside a section introduced with an h2 is introduced with an h3 (WCAG 1.3.1 A)
-        - label: When there is a change in application state that does not move focus, the screen reader user is notified of that change. For example, the content of a new status message should be announced using a live region (WCAG 4.1.3 AA)
-        - label: Inputs have programmatically associated labels. The label is announced when the input is focused (WCAG 1.3.5 AA)
+        - label: For images, choose an appropriate alt value. Consult the [alt decision tree](https://www.w3.org/WAI/tutorials/images/decision-tree/) for guidance ([WCAG 1.1.1 A](https://www.w3.org/WAI/WCAG22/Understanding/text-alternatives.html))
+        - label: The visual characteristics of interface elements are not the only means of identifying them. Programmatically determinable text labels are also available ([WCAG 1.3.3 A](https://www.w3.org/TR/WCAG22/#sensory-characteristics))
+        - label: A screen reader announces elements in an expected order. The order is as logical non-visually as it is visually. ([WCAG 1.3.2 A](https://www.w3.org/WAI/WCAG22/Understanding/meaningful-sequence.html))
+        - label: For interactive elements, expected labels, roles, states, and values are announced ([WCAG 4.1.2 A](https://www.w3.org/WAI/WCAG22/Understanding/name-role-value.html))
+        - label: Document structure is programmatically conveyed. What appear as lists, headings, regions/landmarks, tables, and other components of the page/screen have appropriate roles and labels ([WCAG 1.3.1 A](https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships.html))
+        - label: Heading levels describe structural relationships accurately. For example, an immediate subsection inside a section introduced with an h2 is introduced with an h3 ([WCAG 1.3.1 A](https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships.html))
+        - label: When there is a change in application state that does not move focus, the screen reader user is notified of that change. For example, the content of a new status message should be announced using a live region ([WCAG 4.1.3 AA](https://www.w3.org/WAI/WCAG22/Understanding/status-messages.html))
+        - label: Inputs have programmatically associated labels. The label is announced when the input is focused ([WCAG 1.3.5 AA](https://www.w3.org/WAI/WCAG22/Understanding/identify-input-purpose.html))
         - label: Where an input shows an error message, the message is announced by the screen reader when the input is focused (WCAG 3.3.2 A)
-        - label: When focus is moved programmatically (by a script) it is to an element with a role and label, such as a button or labeled landmark region (WCAG 4.1.2 A)
+        - label: When focus is moved programmatically (by a script) it is to an element with a role and label, such as a button or labeled landmark region ([WCAG 4.1.2 A](https://www.w3.org/WAI/WCAG22/Understanding/name-role-value.html))
   - type: textarea
     id: screen-reader-notes
     attributes:
@@ -62,11 +62,11 @@ body:
         2. **Font default size**: For example, in Firefox, up the font size under **Preferences > General > Font**.
         3. **Pinch zoom**: Zoom using the pinch gesture on a touchscreen device.
       options:
-        - label: The interface does not restrict use to a vertical (portrait) or horizontal (landscape) orientation. The is no message imploring the user to switch orientation (WCAG 1.3.4 AA)
-        - label: After zooming using full-page zoom (CTRL/CMD and +), it is not possible to scroll any part of the component in vertical and horizontal directions simultaneously (1.4.10 AA)
-        - label: After zooming using full-page zoom (CTRL/CMD and +), no previously visible content is partially or fully obscured with no way to reveal it (WCAG 1.4.4 AA)
-        - label: Pinch zoom (or, alternatively, the double-tap zoom gesture) is not suppressed (where testing by mobile is inconvenient, simply look for user-scalable=no in the viewport meta tag) (WCAG 1.4.10 AA)
-        - label: Images are not used to represent text, since their properties cannot be adjusted for legibility and—if raster images—degrade when magnified (WCAG 1.4.9 AA)
+        - label: The interface does not restrict use to a vertical (portrait) or horizontal (landscape) orientation. The is no message imploring the user to switch orientation ([WCAG 1.3.4 AA](https://www.w3.org/WAI/WCAG22/Understanding/orientation.html))
+        - label: After zooming using full-page zoom (CTRL/CMD and +), it is not possible to scroll any part of the component in vertical and horizontal directions simultaneously ([1.4.10 AA](https://www.w3.org/WAI/WCAG22/Understanding/reflow.html))
+        - label: After zooming using full-page zoom (CTRL/CMD and +), no previously visible content is partially or fully obscured with no way to reveal it ([WCAG 1.4.4 AA](https://www.w3.org/WAI/WCAG22/Understanding/resize-text.html))
+        - label: Pinch zoom (or, alternatively, the double-tap zoom gesture) is not suppressed (where testing by mobile is inconvenient, simply look for user-scalable=no in the viewport meta tag) ([1.4.10 AA](https://www.w3.org/WAI/WCAG22/Understanding/reflow.html))
+        - label: Images are not used to represent text, since their properties cannot be adjusted for legibility and—if they are raster images—degrade when magnified ([WCAG 1.4.5 AA](https://www.w3.org/WAI/WCAG22/Understanding/images-of-text.html))
   - type: textarea
     id: magnification-notes
     attributes:
@@ -79,12 +79,12 @@ body:
       description: |
         Automated accessibility testing cannot tell you if writing is any good (no, not even using AI). Which means you need to assess you labels and descriptions manually. Good writing is subjective; there’s no right or wrong, but there is better or worse.
       options:
-        - label: Make sure each error message actually helps the user overcome the error. Use instructions and examples as appropriate (WCAG 3.3.3 AA)
-        - label: Headings are labels for the sections they introduce. Ensure they adequately set out what is to follow (1.4.10 AA)
-        - label: Links adequately describe where they will take the user. This description can be the link’s label alone or the link’s label combined with adjacent text (WCAG 2.4.4 A)
-        - label: Headings are labels for the sections they introduce. Ensure they adequately set out what is to follow (WCAG 2.4.6 AA)
-        - label: Form fields have descriptive labels, helping users to avoid errors, supplemented by help text where it assists comprehension (WCAG 3.3.2 A)
-        - label: Using voice activation, ensure controls with visible labels are selectable/focusable by vocalizing the wording in that label (WCAG 2.5.3 A)
+        - label: Make sure each error message actually helps the user overcome the error. Use instructions and examples as appropriate ([WCAG 3.3.3 AA](https://www.w3.org/TR/WCAG22/#error-suggestion))
+        - label: Headings are labels for the sections they introduce. Ensure they adequately set out what is to follow ([2.4.6 AA](https://www.w3.org/WAI/WCAG22/Understanding/headings-and-labels.html))
+        - label: Links adequately describe where they will take the user. This description can be the link’s label alone or the link’s label combined with adjacent text ([WCAG 2.4.4 A](https://www.w3.org/TR/WCAG22/#link-purpose-in-context))
+        - label: Headings are labels for the sections they introduce. Ensure they adequately set out what is to follow ([2.4.6 AA](https://www.w3.org/WAI/WCAG22/Understanding/headings-and-labels.html))
+        - label: Form fields have descriptive labels, helping users to avoid errors, supplemented by help text where it assists comprehension ([WCAG 3.3.2 A](https://www.w3.org/WAI/WCAG22/Understanding/labels-or-instructions.html))
+        - label: Using voice activation, ensure controls with visible labels are selectable/focusable by vocalizing the wording in that label (the programmatic label must include wording from the visible label) ([WCAG 2.5.3 A](https://www.w3.org/WAI/WCAG22/Understanding/label-in-name.html))
   - type: textarea
     id: readability-notes
     attributes:
@@ -105,9 +105,9 @@ body:
         ^ Aim for 4.5:1 for _all_ text, not just smaller/body text. This mitigates issues with thinner and less legible fonts.
         ^^ Non-text interface elements include icon buttons and other non-textual controls. For buttons/controls using a border to delineate their shape, the border must have at least a `3:1` contrast against the color outside of the borders.
       options:
-        - label: All text in the component has at least a 4.5:1 contrast ratio against the colors or imagery behind it. (WCAG 1.4.3 AA)
-        - label: All non-textual interface components that are interactive or otherwise convey meaning (icons, form controls, state indicators, etc) have at least a 3:1 contrast ratio with the colors or imagery behind them (WCAG 1.4.11 AA)
-        - label: Color is not the only way of distinguishing meaningful parts of the interface. For example, red to distinguish an error state, but only as an input border—not as the color of a warning icon (WCAG 1.4.1 A)
+        - label: All text in the component has at least a 4.5:1 contrast ratio against the colors or imagery behind it. ([WCAG 1.4.3 AA](https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html))
+        - label: All non-textual interface components that are interactive or otherwise convey meaning (icons, form controls, state indicators, etc) have at least a `3:1` contrast ratio with the colors or imagery behind them ([WCAG 1.4.11 AA](https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast.html))
+        - label: Color is not the only way of distinguishing meaningful parts of the interface. For example, red to distinguish an error state, but only as an input border—not as the color of a warning icon ([WCAG 1.4.1 A](https://www.w3.org/WAI/WCAG22/Understanding/use-of-color.html))
   - type: textarea
     id: color-notes
     attributes:
@@ -120,8 +120,8 @@ body:
       description: |
         All elements must be easily operable by touch and mouse pointer
       options:
-        - label: All controls must have at least a 24px² space alloted to them. No other interactive elements must enter within this designated space (WCAG 2.5.8)
-        - label: All actions should be operable without complex gestures. Uses should be able to operate everything with a single finger (WCAG 2.5.1)
+        - label: All controls must have at least a 24px² space alloted to them. No other interactive elements must enter within this designated space ([WCAG 2.5.8](https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html))
+        - label: All actions should be operable without complex gestures. Users should be able to operate everything with a single finger ([WCAG 2.5.1](https://www.w3.org/WAI/WCAG22/Understanding/pointer-gestures.html))
   - type: textarea
     id: pointer-notes
     attributes:
@@ -134,7 +134,7 @@ body:
       description: |
         To activate Forced Colors Mode in Windows, go to **Settings > Accessibility > Contrast themes** and choose a theme. 
 
-        To emulated Forced Colors Mode on macOS, install [MS Edge for macOS](https://www.microsoft.com/en-gb/edge/download?form=MA13FJ) and activate a theme from **Settings > Accessibility > Page Colors**.
+        To emulate Forced Colors Mode on macOS, install [MS Edge for macOS](https://www.microsoft.com/en-gb/edge/download?form=MA13FJ) and activate a theme from **Settings > Accessibility > Page Colors**.
       options:
         - label: No content, imagery, or functionality is invisible or otherwise missing.
         - label: The demarcation of elements remains clear. Buttons retain borders; dividers between sections are intact, etc.
@@ -143,3 +143,5 @@ body:
     attributes:
       label: Forced Colors Mode test notes
       description: Observations and suggestions for addressing Forced Colors Mode failures...
+    validations:
+      required: true

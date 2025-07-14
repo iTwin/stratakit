@@ -15,7 +15,7 @@ body:
     attributes:
       label: Keyboard tests
       description: |
-        Navigate the component using the keyboard (Tab to move to the next focusable element; `Shift` + `Tab` to move to the previous one). For each press of the Tab key, ensure the following criteria are true.
+        Navigate and operate the component using the keyboard (Tab to move to the next focusable element; `Shift` + `Tab` to move to the previous one; `Enter` or `Space` to activate a control). Ensure the following are true:
       options:
         - label: No elements interactive by other means (like a mouse/pointer) do not receive focus ([WCAG 2.1.1 A](https://www.w3.org/WAI/WCAG22/Understanding/keyboard.html))
         - label: No elements that are not intended to be interactive can be focused by the user ([WCAG 2.4.3 A](https://www.w3.org/WAI/WCAG22/Understanding/focus-order.html))
@@ -143,5 +143,3 @@ body:
     attributes:
       label: Forced Colors Mode test notes
       description: Observations and suggestions for addressing Forced Colors Mode failures...
-    validations:
-      required: true

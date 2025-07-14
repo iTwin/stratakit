@@ -24,7 +24,7 @@ interface ButtonProps extends FocusableProps<"button"> {
 	 * @default "neutral"
 	 */
 	tone?: "neutral" | "accent";
-};
+}
 
 /**
  * A styled button element which allows the user to perform an action when clicked.

@@ -130,14 +130,18 @@ body:
   - type: checkboxes
     id: hcm-test
     attributes:
-      label: High Contrast Mode
+      label: Forced colors mode
       description: | 
-        To activate Windows High Contrast Mode, go to **Settings > Ease Of Access > High Contrast** and choose a theme.
+        To activate Forced Colors Mode in Windows, go to **Settings > Accessibility > Contrast themes** and choose a theme. 
+        
+        To emulated Forced Colors Mode on macOS, install [MS Edge for macOS](https://www.microsoft.com/en-gb/edge/download?form=MA13FJ) and activate a theme from **Settings > Accessibility > Page Colors**.
       options:
         - label: No content, imagery, or functionality is invisible or otherwise missing.
         - label: The demarcation of elements remains clear. Buttons retain borders; dividers between sections are intact, etc.
   - type: textarea
     id: hcm-notes
     attributes:
-      label: High Contrast Mode test notes
-      description: Observations and suggestions for addressing High COntrast Mode failures...
+      label: Forced Colors Mode test notes
+      description: Observations and suggestions for addressing forced colors mode failures...
+    validations:
+      required: true

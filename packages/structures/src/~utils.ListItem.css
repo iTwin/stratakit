@@ -14,7 +14,7 @@
 	--✨bg--active-hover: color-mix(
 		in oklch,
 		var(--✨bg--active) 100%,
-		var(--stratakit-color-glow-hue) var(--stratakit-color-bg-glow-base-hover-\%)
+		var(--stratakit-color-glow-hue) var(--stratakit-color-bg-glow-strong-hover-\%)
 	);
 	--✨bg--disabled: var(--stratakit-color-text-neutral-disabled);
 

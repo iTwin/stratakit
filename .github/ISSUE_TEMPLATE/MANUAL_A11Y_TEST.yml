@@ -2,7 +2,7 @@ name: Manual Accessibility Test
 description: A form for testing individual component accessibility
 title: "[Component Name] Manual A11y Test"
 labels: ["a11y", "manual test"]
-body: 
+body:
   - type: input
     id: component-name
     attributes:
@@ -14,8 +14,8 @@ body:
     id: keyboard
     attributes:
       label: Keyboard tests
-      description: | 
-        Navigate the component using the keyboard (Tab to move to the next focusable element; `Shift` + `Tab` to move to the previous one). For each press of the Tab key, ensure the following criteria are true.
+      description: |
+        Navigate the component using the keyboard (`Tab` to move to the next focusable element; `Shift` + `Tab` to move to the previous one). For each press of the `Tab` key, ensure the following criteria are true.
       options:
         - label: No elements interactive by other means (like a mouse/pointer) do not receive focus (WCAG 2.1.1 A)
         - label: No elements that are not intended to be interactive can be focused by the user (WCAG 2.4.3 A)
@@ -34,7 +34,7 @@ body:
     id: screen-reader
     attributes:
       label: Screen reader tests
-      description: | 
+      description: |
         Read through the component using a screen reader. If you are unfamiliar, see [this guide on browsing with screen reader software](https://tetralogical.com/blog/2021/09/29/browsing-with-a-desktop-screen-reader/).
       options:
         - label: For images, choose an appropriate alt value. Consult the (https://www.w3.org/WAI/tutorials/images/decision-tree/) for guidance (WCAG 1.1.1 A)
@@ -56,7 +56,7 @@ body:
     id: magnification-test
     attributes:
       label: Magnification
-      description: | 
+      description: |
         There are three tests to carry out:
         1. **Full page zoom**: For example, in Chrome, **View > Zoom** (or **Command/CTRL** and **+** by keyboard) to the maximum level. Alternatively, create a viewport that is `320px` wide and `256px` high.
         2. **Font default size**: For example, in Firefox, up the font size under **Preferences > General > Font**.
@@ -76,7 +76,7 @@ body:
     id: readability-test
     attributes:
       label: Readability
-      description: | 
+      description: |
         Automated accessibility testing cannot tell you if writing is any good (no, not even using AI). Which means you need to assess you labels and descriptions manually. Good writing is subjective; there’s no right or wrong, but there is better or worse.
       options:
         - label: Make sure each error message actually helps the user overcome the error. Use instructions and examples as appropriate (WCAG 3.3.3 AA)
@@ -94,7 +94,7 @@ body:
     id: color-test
     attributes:
       label: Color
-      description: | 
+      description: |
         For testing contrast, use a desktop tool like [Colour Contrast Analyser](https://www.tpgi.com/color-contrast-checker/) or an online service like [colourcontrast.cc](https://colourcontrast.cc/). The contrast ratios expected are:
 
         * Text versus background: `4.5:1`^
@@ -117,7 +117,7 @@ body:
     id: pointer-test
     attributes:
       label: Pointer interaction
-      description: | 
+      description: |
         All elements must be easily operable by touch and mouse pointer
       options:
         - label: All controls must have at least a 24px² space alloted to them. No other interactive elements must enter within this designated space (WCAG 2.5.8)
@@ -131,9 +131,9 @@ body:
     id: hcm-test
     attributes:
       label: Forced colors mode
-      description: | 
+      description: |
         To activate Forced Colors Mode in Windows, go to **Settings > Accessibility > Contrast themes** and choose a theme. 
-        
+
         To emulated Forced Colors Mode on macOS, install [MS Edge for macOS](https://www.microsoft.com/en-gb/edge/download?form=MA13FJ) and activate a theme from **Settings > Accessibility > Page Colors**.
       options:
         - label: No content, imagery, or functionality is invisible or otherwise missing.
@@ -143,5 +143,3 @@ body:
     attributes:
       label: Forced Colors Mode test notes
       description: Observations and suggestions for addressing Forced Colors Mode failures...
-    validations:
-      required: true

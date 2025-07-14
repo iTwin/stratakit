@@ -3,8 +3,13 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
+import * as React from "react";
+import { useStoreState } from "@ariakit/react/store";
 import * as AkTab from "@ariakit/react/tab";
-import { forwardRef } from "@stratakit/foundations/secret-internals";
+import {
+	forwardRef,
+	useMergedRefs,
+} from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
 
 import type {
@@ -65,7 +70,7 @@ function Tabs(props: TabsProps) {
 		<AkTab.TabProvider
 			defaultSelectedId={defaultSelectedId}
 			selectedId={selectedId}
-			setSelectedId={setSelectedId}
+			setSelectedId={(id) => React.startTransition(() => setSelectedId?.(id))} // TODO: Should this be `useDeferredValue`?
 			selectOnMove={selectOnMove}
 		>
 			{children}
@@ -97,9 +102,16 @@ interface TabListProps extends BaseProps {
 const TabList = forwardRef<"div", TabListProps>((props, forwardedRef) => {
 	const { tone = "neutral", ...rest } = props;
 
+	// TODO: Synchronize/colocate this with where the CSS variables are set.
+	const [initialized, setInitialized] = React.useState(false);
+	React.useEffect(() => {
+		setInitialized(true);
+	}, []);
+
 	return (
 		<AkTab.TabList
 			{...rest}
+			data-initialized={initialized ? "true" : undefined}
 			data-kiwi-tone={tone}
 			className={cx("🥝-tab-list", props.className)}
 			ref={forwardedRef}
@@ -136,12 +148,59 @@ interface TabProps
  * ```
  */
 const Tab = forwardRef<"button", TabProps>((props, forwardedRef) => {
+	const context = AkTab.useTabContext();
+	const selectedId = useStoreState(context, "selectedId");
+	const tablist = useStoreState(context, "baseElement");
+
+	const updateStripePosition = React.useCallback(
+		({ tab }: { tab: HTMLElement }) => {
+			if (!tablist) return;
+			const { left, width } = tab.getBoundingClientRect();
+			const position = left - tablist.getBoundingClientRect().left;
+
+			tablist.style.setProperty(
+				"--🥝tab-active-stripe-position",
+				`${Math.round(position)}px`,
+			);
+			tablist.style.setProperty(
+				"--🥝tab-active-stripe-width",
+				`${Math.round(width)}px`,
+			);
+
+			// TODO: test horizontal scrolling
+		},
+		[tablist],
+	);
+
+	const revalidateStripePosition = React.useCallback(
+		(tab: HTMLElement | null) => {
+			if (!tab || !tablist) return;
+
+			if (selectedId === props.id) {
+				updateStripePosition({ tab });
+			}
+		},
+		[updateStripePosition, tablist, props.id, selectedId],
+	);
+
 	return (
 		<AkTab.Tab
 			accessibleWhenDisabled
 			{...props}
 			className={cx("🥝-tab", props.className)}
-			ref={forwardedRef}
+			data-selected={selectedId === props.id ? "true" : undefined}
+			onPointerDown={(e) => {
+				const tab = e.currentTarget;
+				const tablist = e.currentTarget.parentElement;
+				if (props.disabled || !tab || !tablist) return;
+
+				// We set `data-selected` before click completes, to start the animation earlier.
+				// This helps make the UI feel more responsive when the render takes too long.
+				tab.dataset.selected = "true";
+
+				updateStripePosition({ tab });
+			}}
+			ref={useMergedRefs(forwardedRef, revalidateStripePosition)}
 		/>
 	);
 });

@@ -188,10 +188,12 @@ const BannerLabel = forwardRef<"span", BannerLabelProps>(
 		const labelId = useBannerState((state) => state.labelId);
 		const setLabelId = useBannerState((state) => state.setLabelId);
 
+		const id = props.id ?? defaultLabelId;
+
 		React.useEffect(() => {
-			setLabelId(props.id ?? defaultLabelId);
+			setLabelId(id);
 			return () => setLabelId(undefined);
-		}, [setLabelId, props.id, defaultLabelId]);
+		}, [setLabelId, id]);
 
 		return (
 			<Text

@@ -106,6 +106,18 @@
 		var(--stratakit-color-glow-hue) var(--stratakit-color-text-glow-strong-pressed-\%)
 	);
 
+	--✨icon--outline-accent-default: var(--stratakit-color-icon-accent-strong);
+	--✨icon--outline-accent-hover: color-mix(
+		in oklch,
+		var(--✨icon--outline-accent-default) 100%,
+		var(--stratakit-color-glow-hue) var(--stratakit-color-icon-glow-strong-hover-\%)
+	);
+	--✨icon--outline-accent-pressed: color-mix(
+		in oklch,
+		var(--✨icon--outline-accent-default) 100%,
+		var(--stratakit-color-glow-hue) var(--stratakit-color-icon-glow-strong-pressed-\%)
+	);
+
 	--✨border--outline-accent-default: var(--stratakit-color-border-accent-base);
 	--✨border--outline-accent-hover: color-mix(
 		in oklch,
@@ -146,6 +158,17 @@
 		var(--✨color--ghost-accent-default) 100%,
 		var(--stratakit-color-glow-hue) var(--stratakit-color-text-glow-strong-pressed-\%)
 	);
+	--✨icon--ghost-accent-default: var(--stratakit-color-icon-accent-strong);
+	--✨icon--ghost-accent-hover: color-mix(
+		in oklch,
+		var(--✨icon--ghost-accent-default) 100%,
+		var(--stratakit-color-glow-hue) var(--stratakit-color-icon-glow-strong-hover-\%)
+	);
+	--✨icon--ghost-accent-pressed: color-mix(
+		in oklch,
+		var(--✨icon--ghost-accent-default) 100%,
+		var(--stratakit-color-glow-hue) var(--stratakit-color-icon-glow-strong-pressed-\%)
+	);
 	/* #endregion */
 
 	@layer base {
@@ -179,8 +202,7 @@
 		--🥝icon-color: var(--🌀button-state--default, var(--stratakit-color-icon-neutral-base))
 			var(--🌀button-state--hover, var(--stratakit-color-icon-neutral-hover))
 			var(--🌀button-state--pressed, var(--stratakit-color-icon-neutral-hover))
-			var(--🌀button-state--active, var(--stratakit-color-icon-accent-strong))
-			var(--🌀button-state--disabled, var(--stratakit-color-icon-neutral-disabled));
+			var(--🌀button-state--active, var(--stratakit-color-icon-accent-strong));
 
 		@media (forced-colors: active) {
 			background-color: ButtonFace;
@@ -223,10 +245,7 @@
 					var(--🌀button-state--disabled, var(--✨border--solid-accent-disabled));
 
 				--🥝button-color: var(--stratakit-color-text-neutral-emphasis);
-				--🥝icon-color: var(--🌀button-state--default, var(--stratakit-color-icon-neutral-emphasis))
-					var(--🌀button-state--hover, var(--stratakit-color-icon-neutral-emphasis))
-					var(--🌀button-state--pressed, var(--stratakit-color-icon-neutral-emphasis))
-					var(--🌀button-state--disabled, var(--stratakit-color-icon-neutral-disabled));
+				--🥝icon-color: var(--stratakit-color-icon-neutral-emphasis);
 				-webkit-tap-highlight-color: var(--stratakit-color-bg-glow-on-surface-accent-pressed);
 			}
 		}
@@ -263,10 +282,9 @@
 				--🥝button-color: var(--🌀button-state--default, var(--✨color--outline-accent-default))
 					var(--🌀button-state--hover, var(--✨color--outline-accent-hover))
 					var(--🌀button-state--pressed, var(--✨color--outline-accent-pressed));
-				--🥝icon-color: var(--🌀button-state--default, var(--stratakit-color-icon-accent-strong))
-					var(--🌀button-state--hover, var(--stratakit-color-icon-accent-strong))
-					var(--🌀button-state--pressed, var(--stratakit-color-icon-accent-strong))
-					var(--🌀button-state--disabled, var(--stratakit-color-icon-neutral-disabled));
+				--🥝icon-color: var(--🌀button-state--default, var(--✨icon--outline-accent-default))
+					var(--🌀button-state--hover, var(--✨icon--outline-accent-hover))
+					var(--🌀button-state--pressed, var(--✨icon--outline-accent-pressed));
 			}
 		}
 
@@ -293,10 +311,9 @@
 				--🥝button-color: var(--🌀button-state--default, var(--✨color--ghost-accent-default))
 					var(--🌀button-state--hover, var(--✨color--ghost-accent-hover))
 					var(--🌀button-state--pressed, var(--✨color--ghost-accent-pressed));
-				--🥝icon-color: var(--🌀button-state--default, var(--stratakit-color-icon-accent-strong))
-					var(--🌀button-state--hover, var(--stratakit-color-icon-accent-strong))
-					var(--🌀button-state--pressed, var(--stratakit-color-icon-accent-strong))
-					var(--🌀button-state--disabled, var(--stratakit-color-icon-neutral-disabled));
+				--🥝icon-color: var(--🌀button-state--default, var(--✨icon--ghost-accent-default))
+					var(--🌀button-state--hover, var(--✨icon--ghost-accent-hover))
+					var(--🌀button-state--pressed, var(--✨icon--ghost-accent-pressed));
 			}
 		}
 	}
@@ -332,6 +349,7 @@
 			color: var(--stratakit-color-text-neutral-disabled);
 			cursor: not-allowed;
 			-webkit-tap-highlight-color: transparent;
+			--🥝icon-color: var(--stratakit-color-icon-neutral-disabled);
 
 			@media (forced-colors: active) {
 				border-color: GrayText;

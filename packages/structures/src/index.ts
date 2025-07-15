@@ -7,6 +7,7 @@
 export * as unstable_AccordionItem from "./AccordionItem.js";
 export { default as unstable_Banner } from "./Banner.js";
 export { default as Chip } from "./Chip.js";
+export { default as Dialog } from "./Dialog.js";
 export * as DropdownMenu from "./DropdownMenu.js";
 export * as unstable_ErrorRegion from "./ErrorRegion.js";
 export * as Table from "./Table.js";

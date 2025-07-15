@@ -3,7 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 const MILESTONES = {
-	DEFAULT: "2025 Q2",
+	DEFAULT: "2025 Q3",
 	API_BRIDGE: "API bridge",
 };
 

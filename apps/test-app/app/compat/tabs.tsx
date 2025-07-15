@@ -7,6 +7,8 @@ import * as React from "react";
 import { Tab, Tabs } from "@stratakit/react";
 import { definePage } from "~/~utils.tsx";
 
+import placeholderIcon from "@stratakit/icons/placeholder.svg";
+
 export const handle = { title: "Tabs" };
 
 export default definePage(function Page() {
@@ -39,16 +41,50 @@ export default definePage(function Page() {
 			>
 				Legacy Tab
 			</Tabs>
+			<Tabs
+				labels={[
+					<Tab
+						key={1}
+						label="Tab 1"
+						startIcon={
+							<svg>
+								<use href={`${placeholderIcon}#icon`} />
+							</svg>
+						}
+					/>,
+					<Tab
+						key={2}
+						label="Tab 2"
+						startIcon={
+							<svg>
+								<use href={`${placeholderIcon}#icon`} />
+							</svg>
+						}
+						disabled
+					/>,
+					<Tab
+						key={3}
+						label="Tab 3"
+						startIcon={
+							<svg>
+								<use href={`${placeholderIcon}#icon`} />
+							</svg>
+						}
+					/>,
+				]}
+			>
+				Legacy Tab with start icon
+			</Tabs>
 			<ControlledLegacyTab />
 
 			<Compositional />
+			<CompositionalWithIcon />
 			<CompositionalGreen />
 			<CompositionalManual />
 			<CompositionalClassNames />
 			<CompositionalDefaultValue />
 			<CompositionalControlled />
 
-			<Tabs.TabIcon />
 			<Tabs.TabLabel />
 			<Tabs.TabDescription />
 			<Tabs.Actions />
@@ -101,6 +137,42 @@ function Compositional() {
 			<Tabs.Panel value="1">Compositional 1</Tabs.Panel>
 			<Tabs.Panel value="2">Compositional 2</Tabs.Panel>
 			<Tabs.Panel value="3">Compositional 3</Tabs.Panel>
+		</Tabs.Wrapper>
+	);
+}
+
+function CompositionalWithIcon() {
+	return (
+		<Tabs.Wrapper>
+			<Tabs.TabList>
+				<Tabs.Tab value="1">
+					<Tabs.TabIcon>
+						<svg>
+							<use href={`${placeholderIcon}#icon`} />
+						</svg>
+					</Tabs.TabIcon>
+					Tab 1
+				</Tabs.Tab>
+				<Tabs.Tab value="2" disabled>
+					<Tabs.TabIcon>
+						<svg>
+							<use href={`${placeholderIcon}#icon`} />
+						</svg>
+					</Tabs.TabIcon>
+					Tab 2
+				</Tabs.Tab>
+				<Tabs.Tab value="3">
+					<Tabs.TabIcon>
+						<svg>
+							<use href={`${placeholderIcon}#icon`} />
+						</svg>
+					</Tabs.TabIcon>
+					Tab 3
+				</Tabs.Tab>
+			</Tabs.TabList>
+			<Tabs.Panel value="1">Compositional with icon 1</Tabs.Panel>
+			<Tabs.Panel value="2">Compositional with icon 2</Tabs.Panel>
+			<Tabs.Panel value="3">Compositional with icon 3</Tabs.Panel>
 		</Tabs.Wrapper>
 	);
 }

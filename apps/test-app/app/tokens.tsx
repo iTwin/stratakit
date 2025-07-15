@@ -5,8 +5,8 @@
 
 import { Divider, Text } from "@stratakit/bricks";
 import {
-	Table,
 	unstable_AccordionItem as AccordionItem,
+	Table,
 } from "@stratakit/structures";
 import { parseTokens } from "internal/lightningcss-visitors.js";
 import { useColorScheme } from "~/~utils.tsx";
@@ -80,10 +80,10 @@ export default function Page() {
 				return (
 					<AccordionItem.Root key={key} defaultOpen>
 						<AccordionItem.Header>
+							<AccordionItem.Marker />
 							<AccordionItem.Button>
 								<AccordionItem.Label>{value}</AccordionItem.Label>
 							</AccordionItem.Button>
-							<AccordionItem.Marker />
 						</AccordionItem.Header>
 
 						<AccordionItem.Content>
@@ -93,18 +93,16 @@ export default function Page() {
 				);
 			})}
 
-			<Divider />
-
 			<Text variant="body-lg" render={<h2 />}>
 				Shadows
 			</Text>
 
 			<AccordionItem.Root defaultOpen>
 				<AccordionItem.Header>
+					<AccordionItem.Marker />
 					<AccordionItem.Button>
 						<AccordionItem.Label>All shadows</AccordionItem.Label>
 					</AccordionItem.Button>
-					<AccordionItem.Marker />
 				</AccordionItem.Header>
 
 				<AccordionItem.Content>
@@ -112,18 +110,16 @@ export default function Page() {
 				</AccordionItem.Content>
 			</AccordionItem.Root>
 
-			<Divider />
-
 			<Text variant="body-lg" render={<h2 />}>
 				Typography
 			</Text>
 
 			<AccordionItem.Root defaultOpen>
 				<AccordionItem.Header>
+					<AccordionItem.Marker />
 					<AccordionItem.Button>
 						<AccordionItem.Label>All typography variants</AccordionItem.Label>
 					</AccordionItem.Button>
-					<AccordionItem.Marker />
 				</AccordionItem.Header>
 
 				<AccordionItem.Content>

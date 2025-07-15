@@ -137,7 +137,7 @@ DEV: AccordionItemRoot.displayName = "AccordionItem.Root";
  * Example:
  * ```tsx
  * <AccordionItem.Root>
- * 	 <AccordionItem.Header>
+ *   <AccordionItem.Header>
  *     <AccordionItem.Marker />
  *     <AccordionItem.Button>
  *       <AccordionItem.Label>Label</AccordionItem.Label>
@@ -337,7 +337,7 @@ DEV: AccordionItemMarker.displayName = "AccordionItem.Marker";
  * Example:
  * ```tsx
  * <AccordionItem.Root>
- * 	 <AccordionItem.Header>
+ *   <AccordionItem.Header>
  *     <AccordionItem.Marker />
  *     <AccordionItem.Button>
  *       <AccordionItem.Label>Label</AccordionItem.Label>

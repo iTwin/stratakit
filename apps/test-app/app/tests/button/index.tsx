@@ -14,16 +14,14 @@ export const handle = { title: "Button" };
 export default definePage(
 	function Page({ disabled }) {
 		return (
-			<>
-				<Button
-					disabled={!!disabled}
-					onClick={(e) => {
-						e.currentTarget.textContent = "Clicked";
-					}}
-				>
-					Hello
-				</Button>
-			</>
+			<Button
+				disabled={!!disabled}
+				onClick={(e) => {
+					e.currentTarget.textContent = "Clicked";
+				}}
+			>
+				Hello
+			</Button>
 		);
 	},
 	{ visual: VisualTest },
@@ -34,7 +32,8 @@ function VisualTest() {
 		["solid", "neutral"],
 		["solid", "accent"],
 		["outline"],
-		["ghost"],
+		["ghost", "neutral"],
+		["ghost", "accent"],
 	] as const;
 
 	return (

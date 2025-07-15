@@ -137,11 +137,12 @@ interface TextareaProps extends FocusableProps<"textarea"> {}
 const TextBoxTextarea = forwardRef<"textarea", TextareaProps>(
 	(props, forwardedRef) => {
 		useFieldControlType("textlike");
+		const rootContext = React.useContext(TextBoxRootContext);
 		return (
 			<Role.textarea
 				readOnly={props.disabled}
 				{...props}
-				className={cx("🥝-text-box", props.className)}
+				className={cx({ "🥝-text-box": !rootContext }, props.className)}
 				/**
 				 * Use an empty string as a placeholder to fix baseline alignment in Safari.
 				 * @see https://bugs.webkit.org/show_bug.cgi?id=142968

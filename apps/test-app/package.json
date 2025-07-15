@@ -21,7 +21,7 @@
 		"@stratakit/icons": "workspace:*",
 		"@stratakit/react": "workspace:*",
 		"@stratakit/structures": "workspace:*",
-		"@tanstack/react-query": "^5.81.5",
+		"@tanstack/react-query": "^5.83.0",
 		"classnames": "^2.5.1",
 		"immer": "^10.1.1",
 		"isbot": "^5.1.28",
@@ -40,7 +40,7 @@
 		"esbuild": "catalog:",
 		"lightningcss": "catalog:",
 		"typescript": "catalog:",
-		"vite": "^7.0.0",
+		"vite": "^7.0.4",
 		"vite-plugin-devtools-json": "^0.2.1",
 		"vite-tsconfig-paths": "^5.1.4"
 	},
@@ -51,7 +51,8 @@
 				"../../packages/foundations:build",
 				"../../packages/bricks:build",
 				"../../packages/structures:build",
-				"../../packages/icons:build"
+				"../../packages/icons:build",
+				"../../packages/compat:build"
 			],
 			"files": [
 				"app",
@@ -72,7 +73,8 @@
 				"../../packages/icons:build",
 				"../../packages/foundations:dev",
 				"../../packages/bricks:dev",
-				"../../packages/structures:dev"
+				"../../packages/structures:dev",
+				"../../packages/compat:dev"
 			],
 			"service": true
 		},

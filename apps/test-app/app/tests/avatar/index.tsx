@@ -13,11 +13,7 @@ export const handle = { title: "Avatar" };
 
 export default definePage(
 	function Page() {
-		return (
-			<>
-				<Avatar initials="WW" alt="Willow Winters" data-testid="avatar" />
-			</>
-		);
+		return <Avatar initials="WW" alt="Willow Winters" data-testid="avatar" />;
 	},
 	{ visual: VisualTest },
 );

@@ -1,5 +1,27 @@
 # Changelog
 
+## 0.3.2
+
+- [#757](https://github.com/iTwin/design-system/pull/757): Added compositional `Anchor.Root` component. This new component can be used when you need fine grained configuration.
+
+  To use the compositional components, import them from the `/Anchor` subpath:
+
+  ```tsx
+  import * as Anchor from "@stratakit/bricks/Anchor";
+
+  <Anchor.Root href="https://www.example.com">Example</Anchor.Root>;
+  ```
+
+- [#800](https://github.com/iTwin/design-system/pull/800): Added `<Anchor.Text>` and `<Anchor.ExternalMarker />` for composition API.
+- [#836](https://github.com/iTwin/design-system/pull/836): Added `tone="accent"` to `<Button variant="ghost">`.
+- [#837](https://github.com/iTwin/design-system/pull/837): Added `tone="accent"` to `<Button variant="outline">`.
+- [#831](https://github.com/iTwin/design-system/pull/831): Updated `isActive` state styling for `IconButton`.
+- [#831](https://github.com/iTwin/design-system/pull/831): Made `isActive` prop available to all variants of `IconButton`.
+- [#798](https://github.com/iTwin/design-system/pull/798): Adjusted `Field` styling to use `justify-content: stretch` for textlike controls in stacked layout.
+
+- Updated dependencies:
+  - @stratakit/foundations@0.2.1
+
 ## 0.3.1
 
 - [#773](https://github.com/iTwin/design-system/pull/773): Added [subpath exports](https://nodejs.org/api/packages.html#subpath-exports) for individual components. These new exports allow StrataKit to expose both convenience and compositional APIs of the same component.

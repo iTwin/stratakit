@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.2.1
+
+### Patch Changes
+
+- [#824](https://github.com/iTwin/design-system/pull/824): Turned `react` and `react-dom` into _optional_ peer dependencies.
+- [#824](https://github.com/iTwin/design-system/pull/824): Added a new `unstable_loadStyles` function for loading all foundations CSS without using React.
+
 ## 0.2.0
 
 ### Breaking changes

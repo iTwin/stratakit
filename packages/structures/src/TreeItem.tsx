@@ -5,11 +5,7 @@
 
 import * as React from "react";
 import { CompositeItem } from "@ariakit/react/composite";
-import {
-	type MenuProvider,
-	useMenuContext,
-	useMenuStore,
-} from "@ariakit/react/menu";
+import { useMenuContext } from "@ariakit/react/menu";
 import { PopoverProvider } from "@ariakit/react/popover";
 import { Role } from "@ariakit/react/role";
 import { useStoreState } from "@ariakit/react/store";
@@ -304,25 +300,29 @@ function TreeItemRootProvider(props: TreeItemRootProviderProps) {
 		<TreeItemErrorContext.Provider value={error}>
 			<TreeItemInlineActionsContext.Provider value={inlineActions}>
 				<TreeItemActionsContext.Provider value={actions}>
-					<TreeItemDecorationIdContext.Provider
-						value={hasDecoration ? decorationId : undefined}
+					<TreeItemDisplayActionsMenuContext
+						value={actions ? actions.length > 0 : false}
 					>
-						<TreeItemDecorationsContext.Provider value={decorations}>
-							<TreeItemIconContext.Provider value={icon}>
-								<TreeItemLabelIdContext.Provider value={labelId}>
-									<TreeItemLabelContext.Provider value={label}>
-										<TreeItemDescriptionContext.Provider value={description}>
-											<TreeItemDescriptionIdContext.Provider
-												value={description ? descriptionId : undefined}
-											>
-												{props.children}
-											</TreeItemDescriptionIdContext.Provider>
-										</TreeItemDescriptionContext.Provider>
-									</TreeItemLabelContext.Provider>
-								</TreeItemLabelIdContext.Provider>
-							</TreeItemIconContext.Provider>
-						</TreeItemDecorationsContext.Provider>
-					</TreeItemDecorationIdContext.Provider>
+						<TreeItemDecorationIdContext.Provider
+							value={hasDecoration ? decorationId : undefined}
+						>
+							<TreeItemDecorationsContext.Provider value={decorations}>
+								<TreeItemIconContext.Provider value={icon}>
+									<TreeItemLabelIdContext.Provider value={labelId}>
+										<TreeItemLabelContext.Provider value={label}>
+											<TreeItemDescriptionContext.Provider value={description}>
+												<TreeItemDescriptionIdContext.Provider
+													value={description ? descriptionId : undefined}
+												>
+													{props.children}
+												</TreeItemDescriptionIdContext.Provider>
+											</TreeItemDescriptionContext.Provider>
+										</TreeItemLabelContext.Provider>
+									</TreeItemLabelIdContext.Provider>
+								</TreeItemIconContext.Provider>
+							</TreeItemDecorationsContext.Provider>
+						</TreeItemDecorationIdContext.Provider>
+					</TreeItemDisplayActionsMenuContext>
 				</TreeItemActionsContext.Provider>
 			</TreeItemInlineActionsContext.Provider>
 		</TreeItemErrorContext.Provider>
@@ -552,25 +552,18 @@ function TreeItemActionsContent() {
 	}
 	const renderedItems = useStoreState(store, "renderedItems");
 
-	const menuStore = useMenuStore();
-	const displayMenu = useStoreState(menuStore, (state) => {
-		return state.items.length > 0;
-	});
-
 	const displayedInlineActions = React.useMemo(() => {
 		const itemIds = renderedItems.map((item) => item.id);
 		return itemIds.slice(0, 2);
 	}, [renderedItems]);
 
 	return (
-		<TreeItemDisplayActionsMenuContext.Provider value={displayMenu}>
-			<TreeItemDisplayedInlineActionsContext.Provider
-				value={displayedInlineActions}
-			>
-				<TreeItemInlineActionsRenderer />
-				<TreeItemActionMenu store={menuStore} />
-			</TreeItemDisplayedInlineActionsContext.Provider>
-		</TreeItemDisplayActionsMenuContext.Provider>
+		<TreeItemDisplayedInlineActionsContext.Provider
+			value={displayedInlineActions}
+		>
+			<TreeItemInlineActionsRenderer />
+			<TreeItemActionMenu />
+		</TreeItemDisplayedInlineActionsContext.Provider>
 	);
 }
 DEV: TreeItemActionsContent.displayName = "TreeItemActionsContent";
@@ -588,19 +581,17 @@ DEV: TreeItemInlineActionsRenderer.displayName =
 
 const arrowKeys = ["ArrowDown", "ArrowUp", "ArrowLeft", "ArrowRight"];
 
-type MenuProviderProps = NonNullable<React.ComponentProps<typeof MenuProvider>>;
 const TreeItemActionsMenuContext = React.createContext(false);
 
 interface TreeItemActionMenuProps
-	extends Omit<BaseProps<"button">, "children"> {
-	store: MenuProviderProps["store"];
-}
+	extends Omit<BaseProps<"button">, "children"> {}
 
 const TreeItemActionMenu = React.memo(
 	forwardRef<"button", TreeItemActionMenuProps>((props, forwardedRef) => {
-		const { store, ...rest } = props;
+		const { ...rest } = props;
 		const [open, _setOpen] = React.useState(false);
 		const isArrowKeyPressed = React.useRef(false);
+		const displayMenu = React.useContext(TreeItemDisplayActionsMenuContext);
 
 		const setOpen = React.useCallback((value: boolean) => {
 			// Do not open the menu using arrow keys because it conflicts with the toolbar's arrow key navigation
@@ -611,9 +602,10 @@ const TreeItemActionMenu = React.memo(
 			}
 		}, []);
 
+		if (!displayMenu) return null;
 		return (
 			<PopoverProvider placement="right-start">
-				<DropdownMenu.Root open={open} setOpen={setOpen} {...{ store }}>
+				<DropdownMenu.Root open={open} setOpen={setOpen}>
 					<DropdownMenu.Button
 						{...rest}
 						onKeyDown={(e) => {
@@ -642,7 +634,7 @@ DEV: TreeItemActionMenu.displayName = "TreeItemActionMenu";
 function TreeItemMenuActionsContent() {
 	return (
 		<TreeItemActionsMenuContext.Provider value={true}>
-			<DropdownMenu.Content {...{ unmountOnHide: false }}>
+			<DropdownMenu.Content>
 				<TreeItemActionsRenderer />
 			</DropdownMenu.Content>
 		</TreeItemActionsMenuContext.Provider>
@@ -747,7 +739,6 @@ const TreeItemInlineAction = React.memo(
 			TreeItemDisplayedInlineActionsContext,
 		);
 		const isMenuButton = !!useMenuContext();
-		const displayMenu = React.useContext(TreeItemDisplayActionsMenuContext);
 
 		const generatedId = React.useId();
 		const {
@@ -767,9 +758,9 @@ const TreeItemInlineAction = React.memo(
 		}
 
 		const displayed = React.useMemo(() => {
-			if (isMenuButton) return displayMenu;
+			if (isMenuButton) return true;
 			return displayedActions.includes(id);
-		}, [isMenuButton, displayMenu, displayedActions, id]);
+		}, [isMenuButton, displayedActions, id]);
 		return (
 			<IconButton
 				id={id}

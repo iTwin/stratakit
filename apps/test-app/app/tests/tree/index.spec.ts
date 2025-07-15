@@ -101,12 +101,6 @@ test("actions overflow", async ({ page }) => {
 	await treeitem.hover();
 	await expect(actions).toHaveCount(2);
 	await expect(more).toBeVisible();
-
-	// Should not render a menu, when all menu items are hidden.
-	await page.goto("/tests/tree?actions&inline=5&menu=2&hiddenIds=6;7");
-	await treeitem.hover();
-	await expect(actions).toHaveCount(2);
-	await expect(more).not.toBeVisible();
 });
 
 test("description", async ({ page }) => {

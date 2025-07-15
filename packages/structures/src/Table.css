@@ -62,7 +62,6 @@
 		var(--✨cell-bg--active) 100%,
 		var(--✨glow--bg-active-hover)
 	);
-	--✨cell-box-shadow--active: 0px -1px 0px 0px var(--🥝table-cell-box-shadow-color); /* shadow/table/strong */
 
 	@layer base {
 		--🥝table-cell-box-shadow-color: var(--stratakit-color-border-accent-strong);
@@ -77,9 +76,7 @@
 			var(--🌀table-cell-state--hover, var(--stratakit-color-border-neutral-muted))
 			var(--🌀table-cell-state--active, var(--stratakit-color-border-accent-strong))
 			var(--🌀table-cell-state--active-hover, var(--stratakit-color-border-accent-strong));
-		box-shadow: var(--🌀table-cell-state--default, none) var(--🌀table-cell-state--hover, none)
-			var(--🌀table-cell-state--active, var(--✨cell-box-shadow--active))
-			var(--🌀table-cell-state--active-hover, var(--✨cell-box-shadow--active));
+		position: relative;
 
 		&:where(:not(th, td)) {
 			column-gap: 0.5rem;
@@ -89,6 +86,17 @@
 
 		&:where(th) {
 			font-weight: inherit;
+		}
+
+		&::before {
+			content: "";
+			position: absolute;
+			inset: -1px 0 0 0;
+			pointer-events: none;
+			border-top: 1px solid var(--🌀table-cell-state--default, transparent)
+				var(--🌀table-cell-state--hover, transparent)
+				var(--🌀table-cell-state--active, var(--🥝table-cell-box-shadow-color))
+				var(--🌀table-cell-state--active-hover, var(--🥝table-cell-box-shadow-color));
 		}
 	}
 

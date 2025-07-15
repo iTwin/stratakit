@@ -72,8 +72,9 @@ const fruitsData = [
 
 // Workaround for the first column of the table that contains checkboxes.
 const checkboxCellStyle = {
-	flex: "0 0 2.75rem",
+	flex: "0 0 auto",
 	minInlineSize: "auto",
+	inlineSize: "2.75rem",
 } satisfies React.CSSProperties;
 
 function CustomTableTest() {

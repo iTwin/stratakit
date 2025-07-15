@@ -588,7 +588,6 @@ interface TreeItemActionMenuProps
 
 const TreeItemActionMenu = React.memo(
 	forwardRef<"button", TreeItemActionMenuProps>((props, forwardedRef) => {
-		const { ...rest } = props;
 		const [open, _setOpen] = React.useState(false);
 		const isArrowKeyPressed = React.useRef(false);
 		const displayMenu = React.useContext(TreeItemDisplayActionsMenuContext);
@@ -607,7 +606,7 @@ const TreeItemActionMenu = React.memo(
 			<PopoverProvider placement="right-start">
 				<DropdownMenu.Root open={open} setOpen={setOpen}>
 					<DropdownMenu.Button
-						{...rest}
+						{...props}
 						onKeyDown={(e) => {
 							if (arrowKeys.includes(e.key)) {
 								isArrowKeyPressed.current = true;

@@ -14,7 +14,3 @@ body {
 h2 {
 	margin-block-start: 1rem;
 }
-
-.🥝-accordion-item-content {
-	grid-column: marker-before-start / content-end;
-}

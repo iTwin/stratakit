@@ -3,12 +3,12 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import { Tooltip as SkTooltip } from "@stratakit/bricks";
 import * as React from "react";
-import { useCompatProps } from "./~utils.tsx";
+import { Tooltip as SkTooltip } from "@stratakit/bricks";
+import { useCompatProps } from "./~utils.js";
 
 import type { Tooltip as IuiTooltip } from "@itwin/itwinui-react";
-import type { PolymorphicForwardRefComponent } from "./~utils.tsx";
+import type { PolymorphicForwardRefComponent } from "./~utils.js";
 
 type SkTooltipProps = React.ComponentProps<typeof SkTooltip>;
 type IuiTooltipProps = React.ComponentProps<typeof IuiTooltip>;

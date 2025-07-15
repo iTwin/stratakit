@@ -3,28 +3,28 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
+import * as React from "react";
+import * as ReactDOM from "react-dom";
 import { PortalContext } from "@ariakit/react/portal";
 import { Role } from "@ariakit/react/role";
 import cx from "classnames";
-import * as React from "react";
-import * as ReactDOM from "react-dom";
+import componentsCss from "./~components.css.js"; // TODO: remove this implicit dependency on bricks and structures
+import { useLayoutEffect, useMergedRefs } from "./~hooks.js";
+import foundationsCss from "./~styles.css.js";
+import {
+	forwardRef,
+	getOwnerDocument,
+	getWindow,
+	identity,
+	isDocument,
+} from "./~utils.js";
 import {
 	HtmlSanitizerContext,
 	RootNodeContext,
 	spriteSheetId,
 	useRootNode,
 } from "./Root.internal.js";
-import { useLayoutEffect, useMergedRefs } from "./~hooks.js";
-import {
-	forwardRef,
-	getOwnerDocument,
-	identity,
-	isBrowser,
-	isDocument,
-} from "./~utils.js";
-
-import foundationsCss from "./styles.css.js";
-import componentsCss from "./~components.css.js"; // TODO: remove this implicit dependency on bricks and structures
+import { loadStyles } from "./styles.internal.js";
 
 import type { BaseProps } from "./~utils.js";
 
@@ -230,76 +230,6 @@ function Styles() {
 
 // ----------------------------------------------------------------------------
 
-/**
- * A Map of WeakMaps containing information for all stylesheets.
- *
- * The outer Map expects string keys (unique per set of CSS contents).
- * The inner WeakMap maintains a single CSSStyleSheet object per window (to enable reuse).
- */
-const styleSheets = new Map<string, WeakMap<Window, CSSStyleSheet>>(
-	Object.entries({ default: new WeakMap() }),
-);
-
-/**
- * Adds css to the root node using `adoptedStyleSheets` in modern browsers
- * and falls back to using a `<style>` element in older browsers.
- *
- * Pass an optional key to distinguish multiple stylesheets from each other.
- *
- * Returns a cleanup function to remove the styles.
- */
-function loadStyles(
-	rootNode: Document | ShadowRoot,
-	{ css, key = "default" }: { css: string; key?: string },
-) {
-	let cleanup = () => {};
-
-	const loaded = (() => {
-		if (!isBrowser) return false;
-
-		const ownerDocument = getOwnerDocument(rootNode);
-		const _window = getWindow(rootNode);
-
-		if (!ownerDocument || !_window) return false;
-
-		// Inject <style> elements if `adoptedStyleSheets` is not supported.
-		if (
-			!supportsAdoptedStylesheets &&
-			!rootNode.querySelector(`style[data-kiwi="${key}"]`)
-		) {
-			const styleElement = ownerDocument.createElement("style");
-			styleElement.dataset.kiwi = key;
-			styleElement.textContent = css;
-			((rootNode as Document).head || rootNode).appendChild(styleElement);
-			cleanup = () => styleElement.remove();
-			return true;
-		}
-
-		const styleSheet =
-			styleSheets.get(key)?.get(_window) || new _window.CSSStyleSheet();
-		if (!styleSheets.get(key)?.has(_window)) {
-			styleSheets.get(key)?.set(_window, styleSheet);
-		}
-		styleSheet.replaceSync(css);
-
-		if (!rootNode.adoptedStyleSheets.includes(styleSheet)) {
-			rootNode.adoptedStyleSheets.push(styleSheet);
-
-			cleanup = () => {
-				rootNode.adoptedStyleSheets = rootNode.adoptedStyleSheets.filter(
-					(sheet) => sheet !== styleSheet,
-				);
-			};
-		}
-
-		return true;
-	})();
-
-	return { loaded, cleanup };
-}
-
-// ----------------------------------------------------------------------------
-
 function Fonts() {
 	const rootNode = useRootNode();
 
@@ -421,18 +351,10 @@ function throwIfNotSingleton() {
 
 // ----------------------------------------------------------------------------
 
-const supportsAdoptedStylesheets =
-	isBrowser && "adoptedStyleSheets" in Document.prototype;
-
 function isShadow(node?: Node): node is ShadowRoot {
 	return (
 		node instanceof ShadowRoot ||
 		(node?.nodeType === Node.DOCUMENT_FRAGMENT_NODE &&
 			!!(node as ShadowRoot)?.host)
 	);
-}
-
-function getWindow(node: Node) {
-	const ownerDocument = getOwnerDocument(node);
-	return ownerDocument?.defaultView || null;
 }

@@ -4,5 +4,6 @@
  *--------------------------------------------------------------------------------------------*/
 "use client";
 
-export { Root } from "./Root.js";
 export { Icon } from "./Icon.js";
+export { Root } from "./Root.js";
+export { unstable_loadStyles } from "./styles.js";

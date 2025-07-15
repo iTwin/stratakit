@@ -14,7 +14,8 @@
 		0 0,
 		calc(var(--_swatch-size) * 0.25) calc(var(--_swatch-size) * 0.25);
 	background-size: calc(var(--_swatch-size) * 0.5) calc(var(--_swatch-size) * 0.5);
-	background-image: repeating-linear-gradient(
+	background-image:
+		repeating-linear-gradient(
 			45deg,
 			var(--stratakit-color-bg-neutral-base) 25%,
 			transparent 25%,

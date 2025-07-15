@@ -2,7 +2,9 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
+
 import { readFileSync, writeFileSync } from "node:fs";
+
 import fg from "fast-glob";
 
 let pattern: string | string[] = process.argv

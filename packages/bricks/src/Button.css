@@ -14,6 +14,10 @@
 	--✨glow--bg-hover: var(--stratakit-color-glow-hue) var(--stratakit-color-bg-glow-base-hover-\%);
 	--✨glow--bg-press: var(--stratakit-color-glow-hue) var(--stratakit-color-bg-glow-base-pressed-\%);
 
+	--✨border--active: var(--stratakit-color-border-accent-strong);
+	--✨bg--active: var(--stratakit-color-bg-glow-on-surface-accent-pressed);
+
+	/* #region Variant: solid */
 	--✨bg--solid-neutral-default: var(--stratakit-color-bg-neutral-base);
 	--✨bg--solid-accent-default: var(--stratakit-color-bg-accent-base);
 	--✨bg--solid-hover: color-mix(
@@ -28,7 +32,8 @@
 	);
 	--✨bg--solid-disabled: var(--stratakit-color-bg-glow-on-surface-disabled);
 
-	--✨shadow--solid: var(--stratakit-shadow-button-base-inset), var(--✨shadow-border),
+	--✨shadow--solid:
+		var(--stratakit-shadow-button-base-inset), var(--✨shadow-border),
 		var(--stratakit-shadow-button-base-drop);
 
 	--✨border--solid-neutral-default: var(--stratakit-color-border-shadow-base);
@@ -56,7 +61,9 @@
 		var(--stratakit-color-glow-hue) var(--stratakit-color-border-glow-strong-pressed-\%)
 	);
 	--✨border--solid-accent-disabled: transparent;
+	/* #endregion */
 
+	/* #region Variant: outline */
 	--✨bg--outline-default: transparent;
 	--✨bg--outline-hover: color-mix(
 		in oklch,
@@ -81,7 +88,9 @@
 		var(--stratakit-color-glow-hue) var(--stratakit-color-border-glow-base-pressed-\%)
 	);
 	--✨border--outline-disabled: var(--stratakit-color-border-glow-on-surface-disabled);
+	/* #endregion */
 
+	/* #region Variant: ghost */
 	--✨bg--ghost-default: transparent;
 	--✨bg--ghost-hover: color-mix(in oklch, var(--✨bg--ghost-default) 100%, var(--✨glow--bg-hover));
 	--✨bg--ghost-pressed: color-mix(
@@ -89,8 +98,13 @@
 		var(--✨bg--ghost-default) 100%,
 		var(--✨glow--bg-press)
 	);
-	--✨bg--ghost-active: var(--stratakit-color-bg-glow-on-surface-accent-pressed);
 	--✨bg--ghost-disabled: transparent;
+
+	--✨bg--ghost-accent-default: transparent;
+	--✨bg--ghost-accent-hover: var(--stratakit-color-bg-glow-on-surface-accent-hover);
+	--✨bg--ghost-accent-pressed: var(--stratakit-color-bg-glow-on-surface-accent-pressed);
+	--✨bg--ghost-accent-disabled: transparent;
+	/* #endregion */
 
 	@layer base {
 		text-decoration: none;
@@ -116,6 +130,7 @@
 		--🥝ghost-block-offset: var(--✨padding-block);
 
 		background-color: var(--🥝button-background-color);
+		box-shadow: var(--✨shadow-border);
 		color: var(--🥝button-color, var(--✨color--default));
 		transition: background-color 150ms ease-out;
 		-webkit-tap-highlight-color: var(--stratakit-color-bg-glow-on-surface-neutral-pressed);
@@ -137,10 +152,12 @@
 			--🥝button-background-color: var(--🌀button-state--default, var(--🥝button-bg--solid-default))
 				var(--🌀button-state--hover, var(--✨bg--solid-hover))
 				var(--🌀button-state--pressed, var(--✨bg--solid-pressed))
+				var(--🌀button-state--active, var(--✨bg--active))
 				var(--🌀button-state--disabled, var(--✨bg--solid-disabled));
 			box-shadow: var(--🌀button-state--default, var(--✨shadow--solid))
 				var(--🌀button-state--hover, var(--✨shadow--solid))
-				var(--🌀button-state--pressed, var(--✨shadow-border)) var(--🌀button-state--disabled, none);
+				var(--🌀button-state--pressed, var(--✨shadow-border))
+				var(--🌀button-state--active, var(--✨shadow-border)) var(--🌀button-state--disabled, none);
 
 			&:where([data-kiwi-tone="neutral"]) {
 				--🥝button-bg--solid-default: var(--✨bg--solid-neutral-default);
@@ -176,20 +193,41 @@
 			--🥝button-background-color: var(--🌀button-state--default, var(--✨bg--outline-default))
 				var(--🌀button-state--hover, var(--✨bg--outline-hover))
 				var(--🌀button-state--pressed, var(--✨bg--outline-pressed))
+				var(--🌀button-state--active, var(--✨bg--active))
 				var(--🌀button-state--disabled, var(--✨bg--outline-disabled));
 			--🥝button-border-color: var(--🌀button-state--default, var(--✨border--outline-default))
 				var(--🌀button-state--hover, var(--✨border--outline-hover))
 				var(--🌀button-state--pressed, var(--✨border--outline-pressed))
 				var(--🌀button-state--disabled, var(--✨border--outline-disabled));
-			box-shadow: var(--✨shadow-border);
 		}
 
 		&:where([data-kiwi-variant="ghost"]) {
-			--🥝button-background-color: var(--🌀button-state--default, var(--✨bg--ghost-default))
-				var(--🌀button-state--hover, var(--✨bg--ghost-hover))
-				var(--🌀button-state--pressed, var(--✨bg--ghost-pressed))
-				var(--🌀button-state--active, var(--✨bg--ghost-active))
-				var(--🌀button-state--disabled, var(--✨bg--ghost-disabled));
+			--🥝button-border-color: transparent;
+
+			&:where([data-kiwi-tone="neutral"]) {
+				--🥝button-background-color: var(--🌀button-state--default, var(--✨bg--ghost-default))
+					var(--🌀button-state--hover, var(--✨bg--ghost-hover))
+					var(--🌀button-state--pressed, var(--✨bg--ghost-pressed))
+					var(--🌀button-state--active, var(--✨bg--active))
+					var(--🌀button-state--disabled, var(--✨bg--ghost-disabled));
+			}
+
+			&:where([data-kiwi-tone="accent"]) {
+				--🥝button-background-color: var(
+						--🌀button-state--default,
+						var(--✨bg--ghost-accent-default)
+					)
+					var(--🌀button-state--hover, var(--✨bg--ghost-accent-hover))
+					var(--🌀button-state--pressed, var(--✨bg--ghost-accent-pressed))
+					var(--🌀button-state--active, var(--✨bg--active))
+					var(--🌀button-state--disabled, var(--✨bg--ghost-accent-disabled));
+
+				--🥝button-color: var(--stratakit-color-text-accent-strong);
+				--🥝icon-color: var(--🌀button-state--default, var(--stratakit-color-icon-accent-strong))
+					var(--🌀button-state--hover, var(--stratakit-color-icon-accent-strong))
+					var(--🌀button-state--pressed, var(--stratakit-color-icon-accent-strong))
+					var(--🌀button-state--disabled, var(--stratakit-color-icon-neutral-disabled));
+			}
 		}
 	}
 
@@ -209,8 +247,9 @@
 			--🌀button-state: var(--🌀button-state--pressed);
 		}
 
-		&:where([data-kiwi-variant="ghost"][aria-pressed="true"]) {
+		&:where([aria-pressed="true"]) {
 			--🌀button-state: var(--🌀button-state--active);
+			--🥝button-border-color: var(--✨border--active);
 
 			@media (forced-colors: active) {
 				background-color: SelectedItem;
@@ -237,7 +276,7 @@
 		--🌀button-state--default: var(--🌀button-state,);
 		--🌀button-state--hover: var(--🌀button-state,);
 		--🌀button-state--pressed: var(--🌀button-state,);
-		--🌀button-state--active: var(--🌀button-state,); /* "active" state is only supported in ghost variant */
+		--🌀button-state--active: var(--🌀button-state,);
 		--🌀button-state--disabled: var(--🌀button-state,);
 	}
 }

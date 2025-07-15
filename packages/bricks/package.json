@@ -1,7 +1,7 @@
 {
 	"name": "@stratakit/bricks",
 	"type": "module",
-	"version": "0.3.0",
+	"version": "0.3.1",
 	"license": "MIT",
 	"sideEffects": false,
 	"types": "./dist/index.d.ts",
@@ -85,11 +85,11 @@
 			"development": "./dist/DEV/Label.js",
 			"default": "./dist/Label.js"
 		},
-		"./ProgressBar": {
-			"@stratakit/source": "./src/ProgressBar.tsx",
-			"types": "./dist/ProgressBar.d.ts",
-			"development": "./dist/DEV/ProgressBar.js",
-			"default": "./dist/ProgressBar.js"
+		"./Progress": {
+			"@stratakit/source": "./src/Progress.tsx",
+			"types": "./dist/Progress.d.ts",
+			"development": "./dist/DEV/Progress.js",
+			"default": "./dist/Progress.js"
 		},
 		"./Radio": {
 			"@stratakit/source": "./src/Radio.tsx",
@@ -191,7 +191,7 @@
 		"typescript": "catalog:"
 	},
 	"peerDependencies": {
-		"@stratakit/foundations": "^0.1.6",
+		"@stratakit/foundations": "^0.2.0",
 		"react": ">=18.0.0",
 		"react-dom": ">=18.0.0"
 	},

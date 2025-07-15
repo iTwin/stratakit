@@ -3,6 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
+import * as React from "react";
 import { Role } from "@ariakit/react/role";
 import { IconButton } from "@stratakit/bricks";
 import {
@@ -10,16 +11,46 @@ import {
 	useSafeContext,
 } from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
-import * as React from "react";
+import { createStore, useStore } from "zustand";
+import { combine } from "zustand/middleware";
 import { Dismiss } from "./~utils.icons.js";
 
 import type { BaseProps } from "@stratakit/foundations/secret-internals";
+import type { ExtractState } from "zustand";
 
 // ----------------------------------------------------------------------------
 
-const ChipRootContext = React.createContext<
-	{ labelId: string; setLabelId: (id: string | undefined) => void } | undefined
+type ChipState = ExtractState<ReturnType<typeof createChipStore>>;
+
+function createChipStore(initialState: { labelId: string }) {
+	return createStore(
+		combine(initialState, (set, _, store) => ({
+			setLabelId: (labelId?: string) => {
+				set({ labelId: labelId || store.getInitialState().labelId });
+			},
+		})),
+	);
+}
+
+const ChipContext = React.createContext<
+	ReturnType<typeof createChipStore> | undefined
 >(undefined);
+
+function ChipProvider(props: React.PropsWithChildren) {
+	const defaultLabelId = React.useId();
+	const [store] = React.useState(() =>
+		createChipStore({ labelId: defaultLabelId }),
+	);
+
+	return (
+		<ChipContext.Provider value={store}>{props.children}</ChipContext.Provider>
+	);
+}
+
+function useChipState<P>(selectorFn: (state: ChipState) => P): P {
+	const store = useSafeContext(ChipContext);
+	return useStore(store, selectorFn);
+}
 
 // ----------------------------------------------------------------------------
 
@@ -47,21 +78,15 @@ interface ChipRootProps extends BaseProps<"div"> {
 const ChipRoot = forwardRef<"div", ChipRootProps>((props, forwardedRef) => {
 	const { variant = "solid", ...rest } = props;
 
-	const defaultLabelId = React.useId();
-	const [_labelId, setLabelId] = React.useState<string | undefined>();
-	const labelId = _labelId || defaultLabelId;
-
 	return (
-		<ChipRootContext.Provider
-			value={React.useMemo(() => ({ labelId, setLabelId }), [labelId])}
-		>
+		<ChipProvider>
 			<Role.div
 				data-kiwi-variant={variant}
 				{...rest}
 				className={cx("🥝-chip", props.className)}
 				ref={forwardedRef}
 			/>
-		</ChipRootContext.Provider>
+		</ChipProvider>
 	);
 });
 DEV: ChipRoot.displayName = "Chip.Root";
@@ -74,14 +99,21 @@ interface ChipLabelProps extends BaseProps<"span"> {}
  * Label component that should be used with the compositional Chip component.
  */
 const ChipLabel = forwardRef<"span", ChipLabelProps>((props, forwardedRef) => {
-	const { labelId, setLabelId } = useSafeContext(ChipRootContext);
+	const labelId = useChipState((state) => state.labelId);
+	const setLabelId = useChipState((state) => state.setLabelId);
 
 	React.useEffect(() => {
 		setLabelId(props.id);
 	}, [setLabelId, props.id]);
 
-	const id = props.id ?? labelId;
-	return <Role.span {...props} id={id} ref={forwardedRef} />;
+	return (
+		<Role.span
+			id={labelId}
+			{...props}
+			className={cx("🥝-chip-label", props.className)}
+			ref={forwardedRef}
+		/>
+	);
 });
 DEV: ChipLabel.displayName = "Chip.Label";
 
@@ -104,7 +136,7 @@ interface ChipDismissButtonProps extends Omit<BaseProps<"button">, "children"> {
 const ChipDismissButton = forwardRef<"button", ChipDismissButtonProps>(
 	(props, forwardedRef) => {
 		const { label = "Dismiss", ...rest } = props;
-		const { labelId } = useSafeContext(ChipRootContext);
+		const labelId = useChipState((state) => state.labelId);
 
 		const defaultId = React.useId();
 		const id = props.id ?? defaultId;

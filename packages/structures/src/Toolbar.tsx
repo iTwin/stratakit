@@ -3,11 +3,11 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
+import * as React from "react";
 import * as Toolbar from "@ariakit/react/toolbar";
 import { IconButtonContext } from "@stratakit/bricks/secret-internals";
 import { forwardRef } from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
-import * as React from "react";
 
 import type { BaseProps } from "@stratakit/foundations/secret-internals";
 
@@ -34,13 +34,15 @@ interface ToolbarProps extends BaseProps {
  */
 const ToolbarGroup = forwardRef<"div", ToolbarProps>((props, forwardedRef) => {
 	return (
-		<IconButtonContext value={React.useMemo(() => ({ iconSize: "large" }), [])}>
+		<IconButtonContext.Provider
+			value={React.useMemo(() => ({ iconSize: "large" }), [])}
+		>
 			<Toolbar.Toolbar
 				{...props}
 				className={cx("🥝-toolbar", props.className)}
 				ref={forwardedRef}
 			/>
-		</IconButtonContext>
+		</IconButtonContext.Provider>
 	);
 });
 DEV: ToolbarGroup.displayName = "Toolbar.Group";

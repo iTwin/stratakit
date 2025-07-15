@@ -2,8 +2,6 @@
 
 ## 0.0.3
 
-### Patch Changes
-
 - [#794](https://github.com/iTwin/design-system/pull/794): Added `IconButton` component.
 - Updated dependencies:
   - @stratakit/structures@0.2.4

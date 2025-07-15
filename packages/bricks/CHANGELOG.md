@@ -2,14 +2,6 @@
 
 ## 0.3.2
 
-### Patch Changes
-
-- [#831](https://github.com/iTwin/design-system/pull/831): Updated `isActive` state styling for `IconButton`.
-- [#836](https://github.com/iTwin/design-system/pull/836): Add `tone="accent"` to `<Button variant="ghost">`.
-- [#831](https://github.com/iTwin/design-system/pull/831): Made `isActive` prop available to all variants of `IconButton`.
-- [#798](https://github.com/iTwin/design-system/pull/798): Adjusted `Field` styling to use `justify-content: stretch` for textlike controls in stacked layout.
-- [#800](https://github.com/iTwin/design-system/pull/800): Added `<Anchor.Text>` and `<Anchor.ExternalMarker />` for composition API.
-- [#837](https://github.com/iTwin/design-system/pull/837): Add `tone="accent"` to `<Button variant="outline">`.
 - [#757](https://github.com/iTwin/design-system/pull/757): Added compositional `Anchor.Root` component. This new component can be used when you need fine grained configuration.
 
   To use the compositional components, import them from the `/Anchor` subpath:
@@ -19,6 +11,13 @@
 
   <Anchor.Root href="https://www.example.com">Example</Anchor.Root>;
   ```
+
+- [#800](https://github.com/iTwin/design-system/pull/800): Added `<Anchor.Text>` and `<Anchor.ExternalMarker />` for composition API.
+- [#836](https://github.com/iTwin/design-system/pull/836): Added `tone="accent"` to `<Button variant="ghost">`.
+- [#837](https://github.com/iTwin/design-system/pull/837): Added `tone="accent"` to `<Button variant="outline">`.
+- [#831](https://github.com/iTwin/design-system/pull/831): Updated `isActive` state styling for `IconButton`.
+- [#831](https://github.com/iTwin/design-system/pull/831): Made `isActive` prop available to all variants of `IconButton`.
+- [#798](https://github.com/iTwin/design-system/pull/798): Adjusted `Field` styling to use `justify-content: stretch` for textlike controls in stacked layout.
 
 - Updated dependencies:
   - @stratakit/foundations@0.2.1

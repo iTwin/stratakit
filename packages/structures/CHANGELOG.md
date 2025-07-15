@@ -2,9 +2,7 @@
 
 ## 0.2.4
 
-### Patch Changes
-
-- [#835](https://github.com/iTwin/design-system/pull/835): Added active-hover state to the `Tree.Item` component.
+- [#835](https://github.com/iTwin/design-system/pull/835): Added active-hover state styles to the `Tree.Item` component.
 - Updated dependencies:
   - @stratakit/bricks@0.3.2
   - @stratakit/foundations@0.2.1

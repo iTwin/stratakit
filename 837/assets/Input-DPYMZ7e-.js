@@ -1,1 +1,0 @@
-import{a,o as t}from"./chunk-QMGIS6GS-BaJhsRKI.js";import{u as m}from"./~utils-C6JqJogS.js";import{b as n}from"./Field-DKrHd3ie.js";import{b as u}from"./TextBox-B9SV9Zkp.js";const z=a.forwardRef((r,o)=>{const{id:s,htmlSize:e,children:x,size:f,status:d,type:p,...i}=m(r);return t.jsx(n,{id:s,render:t.jsx(u,{...i,type:p,size:e}),ref:o})});export{z as I};

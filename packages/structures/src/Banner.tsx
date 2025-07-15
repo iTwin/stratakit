@@ -408,14 +408,29 @@ type BannerProps = Omit<BaseProps, "children"> &
  * ```
  */
 const Banner = forwardRef<"div", BannerProps>((props, forwardedRef) => {
-	const { message, label, actions, onDismiss, icon, ...rest } = props;
+	const {
+		message,
+		label,
+		actions,
+		onDismiss,
+		icon,
+		tone = "neutral",
+		...rest
+	} = props;
+
+	const shouldRenderIcon = React.useMemo(
+		() => icon !== undefined || tone !== "neutral",
+		[icon, tone],
+	);
 
 	return (
-		<BannerRoot {...rest} ref={forwardedRef}>
-			<BannerIcon
-				href={typeof icon === "string" ? icon : undefined}
-				render={React.isValidElement(icon) ? icon : undefined}
-			/>
+		<BannerRoot tone={tone} {...rest} ref={forwardedRef}>
+			{shouldRenderIcon ? (
+				<BannerIcon
+					href={typeof icon === "string" ? icon : undefined}
+					render={React.isValidElement(icon) ? icon : undefined}
+				/>
+			) : null}
 
 			<BannerLabel render={React.isValidElement(label) ? label : undefined}>
 				{label}

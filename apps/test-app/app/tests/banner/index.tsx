@@ -74,15 +74,18 @@ function DismissibleTest() {
 	return (
 		<div style={{ display: "grid", gap: 4 }}>
 			<Banner
+				className="my-banner"
 				label="Label"
 				message="Banner with visual label and with no dismiss button"
 			/>
 			<Banner
-				label={"Label"}
+				className="my-banner"
+				label="Label"
 				message="Banner with visual label and with dismiss button"
 				onDismiss={() => {}}
 			/>
 			<Banner
+				className="my-banner"
 				label={<VisuallyHidden>Label</VisuallyHidden>}
 				message="Banner with visually hidden label and with dismiss button"
 				onDismiss={() => {}}
@@ -212,7 +215,6 @@ function CompositionTest() {
 			</BannerRoot>
 
 			<BannerRoot data-testid="banner-neutral-no-custom-icon">
-				<BannerIcon className="my-banner-icon" />
 				<BannerLabel>Label</BannerLabel>
 				<BannerMessage>Message</BannerMessage>
 			</BannerRoot>

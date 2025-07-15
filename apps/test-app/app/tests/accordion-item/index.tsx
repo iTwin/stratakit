@@ -46,12 +46,12 @@ export function HeadingTest() {
 	return (
 		<AccordionItem.Root>
 			<AccordionItem.Header>
+				<AccordionItem.Marker />
 				<AccordionItem.Heading render={<h2 />}>
 					<AccordionItem.Button>
 						<AccordionItem.Label>Label</AccordionItem.Label>
 					</AccordionItem.Button>
 				</AccordionItem.Heading>
-				<AccordionItem.Marker />
 			</AccordionItem.Header>
 			<AccordionItem.Content>Body</AccordionItem.Content>
 		</AccordionItem.Root>
@@ -63,26 +63,6 @@ export function VisualTest() {
 		<>
 			<AccordionItem.Root>
 				<AccordionItem.Header>
-					<AccordionItem.Button>
-						<AccordionItem.Label>Label</AccordionItem.Label>
-					</AccordionItem.Button>
-					<AccordionItem.Marker />
-				</AccordionItem.Header>
-				<AccordionItem.Content>Body</AccordionItem.Content>
-			</AccordionItem.Root>
-
-			<AccordionItem.Root defaultOpen>
-				<AccordionItem.Header>
-					<AccordionItem.Button>
-						<AccordionItem.Label>Label</AccordionItem.Label>
-					</AccordionItem.Button>
-					<AccordionItem.Marker />
-				</AccordionItem.Header>
-				<AccordionItem.Content>Body</AccordionItem.Content>
-			</AccordionItem.Root>
-
-			<AccordionItem.Root>
-				<AccordionItem.Header>
 					<AccordionItem.Marker />
 					<AccordionItem.Button>
 						<AccordionItem.Label>Label</AccordionItem.Label>
@@ -103,7 +83,6 @@ export function VisualTest() {
 
 			<AccordionItem.Root>
 				<AccordionItem.Header>
-					<AccordionItem.Decoration render={<Icon href={placeholderIcon} />} />
 					<AccordionItem.Button>
 						<AccordionItem.Label>Label</AccordionItem.Label>
 					</AccordionItem.Button>
@@ -114,7 +93,6 @@ export function VisualTest() {
 
 			<AccordionItem.Root defaultOpen>
 				<AccordionItem.Header>
-					<AccordionItem.Decoration render={<Icon href={placeholderIcon} />} />
 					<AccordionItem.Button>
 						<AccordionItem.Label>Label</AccordionItem.Label>
 					</AccordionItem.Button>
@@ -147,10 +125,10 @@ export function VisualTest() {
 
 			<AccordionItem.Root>
 				<AccordionItem.Header>
+					<AccordionItem.Decoration render={<Icon href={placeholderIcon} />} />
 					<AccordionItem.Button>
 						<AccordionItem.Label>Label</AccordionItem.Label>
 					</AccordionItem.Button>
-					<AccordionItem.Decoration render={<Icon href={placeholderIcon} />} />
 					<AccordionItem.Marker />
 				</AccordionItem.Header>
 				<AccordionItem.Content>Body</AccordionItem.Content>
@@ -158,10 +136,10 @@ export function VisualTest() {
 
 			<AccordionItem.Root defaultOpen>
 				<AccordionItem.Header>
+					<AccordionItem.Decoration render={<Icon href={placeholderIcon} />} />
 					<AccordionItem.Button>
 						<AccordionItem.Label>Label</AccordionItem.Label>
 					</AccordionItem.Button>
-					<AccordionItem.Decoration render={<Icon href={placeholderIcon} />} />
 					<AccordionItem.Marker />
 				</AccordionItem.Header>
 				<AccordionItem.Content>Body</AccordionItem.Content>
@@ -185,6 +163,28 @@ export function VisualTest() {
 						<AccordionItem.Label>Label</AccordionItem.Label>
 					</AccordionItem.Button>
 					<AccordionItem.Decoration render={<Icon href={placeholderIcon} />} />
+				</AccordionItem.Header>
+				<AccordionItem.Content>Body</AccordionItem.Content>
+			</AccordionItem.Root>
+
+			<AccordionItem.Root>
+				<AccordionItem.Header>
+					<AccordionItem.Button>
+						<AccordionItem.Label>Label</AccordionItem.Label>
+					</AccordionItem.Button>
+					<AccordionItem.Decoration render={<Icon href={placeholderIcon} />} />
+					<AccordionItem.Marker />
+				</AccordionItem.Header>
+				<AccordionItem.Content>Body</AccordionItem.Content>
+			</AccordionItem.Root>
+
+			<AccordionItem.Root defaultOpen>
+				<AccordionItem.Header>
+					<AccordionItem.Button>
+						<AccordionItem.Label>Label</AccordionItem.Label>
+					</AccordionItem.Button>
+					<AccordionItem.Decoration render={<Icon href={placeholderIcon} />} />
+					<AccordionItem.Marker />
 				</AccordionItem.Header>
 				<AccordionItem.Content>Body</AccordionItem.Content>
 			</AccordionItem.Root>

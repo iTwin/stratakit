@@ -1,0 +1,1 @@
+import{o as i}from"./chunk-QMGIS6GS-BaJhsRKI.js";import{f as n,R as d,c as l}from"./sun-8k817k5P.js";const c=n((a,e)=>{const{tone:t="neutral",variant:r="solid",label:s,...o}=a;return i.jsx(d.span,{...o,"data-kiwi-tone":t,"data-kiwi-variant":r,className:l("🥝-badge",a.className),ref:e,children:s})});var u=c;export{u as B};

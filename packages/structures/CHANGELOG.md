@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.2.4
+
+- [#835](https://github.com/iTwin/design-system/pull/835): Added active-hover state styles to the `Tree.Item` component.
+- Updated dependencies:
+  - @stratakit/bricks@0.3.2
+  - @stratakit/foundations@0.2.1
+
 ## 0.2.3
 
 - [#788](https://github.com/iTwin/design-system/pull/788): Updated `Tabs.Tab` component to support optional start and end icons.

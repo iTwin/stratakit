@@ -140,21 +140,20 @@ interface BannerIconProps extends React.ComponentProps<typeof Icon> {}
 const BannerIcon = forwardRef<"svg", BannerIconProps>((props, forwardedRef) => {
 	const tone = useBannerState((state) => state.tone);
 	const hasDefaultIcon = props.href === undefined && tone !== "neutral";
-	const shouldDisplayAnIcon = props.href != null || hasDefaultIcon;
 
 	const {
 		render = hasDefaultIcon ? <StatusIcon tone={tone} /> : undefined,
 		...rest
 	} = props;
 
-	return shouldDisplayAnIcon ? (
+	return (
 		<Icon
 			{...rest}
 			render={render}
 			className={cx("🥝-banner-icon", props.className)}
 			ref={forwardedRef}
 		/>
-	) : null;
+	);
 });
 DEV: BannerIcon.displayName = "Banner.Icon";
 

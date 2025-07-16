@@ -131,7 +131,7 @@ interface TreeItemProps extends Omit<BaseProps, "content" | "children"> {
 	 * ```
 	 *
 	 * Inline actions should only be used for frequently used and quickly accessible actions.
-	 * At most two inline actions are displayed. Consumers should render a single action when tree item has an error.
+	 * At most two inline actions are displayed. A single action should be specified when tree item has an error.
 	 *
 	 * The inline actions are normally hidden until the treeitem is hovered or focused.
 	 * When the `error` prop is set, the actions will be made visible by default. The first

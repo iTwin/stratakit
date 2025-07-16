@@ -115,7 +115,7 @@
 			+ .🥝-table-row
 			& {
 			/* Applies color to the "bottom border" of an active row. */
-			border-top-color: var(--🥝table-cell-border-color--active);
+			border-block-start-color: var(--🥝table-cell-border-color--active);
 		}
 	}
 

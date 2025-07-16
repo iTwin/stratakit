@@ -188,18 +188,6 @@ const Tab = forwardRef<"button", TabProps>((props, forwardedRef) => {
 			accessibleWhenDisabled
 			{...props}
 			className={cx("🥝-tab", props.className)}
-			data-selected={selectedId === props.id ? "true" : undefined}
-			onPointerDown={(e) => {
-				const tab = e.currentTarget;
-				const tablist = e.currentTarget.parentElement;
-				if (props.disabled || !tab || !tablist) return;
-
-				// We set `data-selected` before click completes, to start the animation earlier.
-				// This helps make the UI feel more responsive when the render takes too long.
-				tab.dataset.selected = "true";
-
-				updateStripePosition({ tab });
-			}}
 			ref={useMergedRefs(forwardedRef, revalidateStripePosition)}
 		/>
 	);

@@ -375,6 +375,12 @@ function PanelContent(props: { data: { [key: string]: TreeItemData[] } }) {
 			</TreeFilteringProvider>
 		);
 
+	const deferredSelectedTreeId = React.useDeferredValue(selectedTreeId);
+	const selectedTree = trees.find(
+		(tree) => tree.name === deferredSelectedTreeId,
+	);
+	if (!selectedTree) return null;
+
 	return (
 		<TreeFilteringProvider allFilters={allFilters}>
 			<Tabs.Root selectOnMove={false} setSelectedId={setSelectedTreeId}>
@@ -385,21 +391,17 @@ function PanelContent(props: { data: { [key: string]: TreeItemData[] } }) {
 						</Tabs.Tab>
 					))}
 				/>
-				{trees.map((tree) => {
-					return (
-						<Tabs.TabPanel
-							key={tree.name}
-							role={isSearchboxVisible ? "group" : "tabpanel"}
-							aria-label={isSearchboxVisible ? tree.name : undefined}
-							tabId={tree.name}
-							className={styles.tabPanel}
-							focusable={false}
-							unmountOnHide
-						>
-							{tree.content}
-						</Tabs.TabPanel>
-					);
-				})}
+				<Tabs.TabPanel
+					key={selectedTree.name}
+					role={isSearchboxVisible ? "group" : "tabpanel"}
+					aria-label={isSearchboxVisible ? selectedTree.name : undefined}
+					tabId={selectedTree.name}
+					className={styles.tabPanel}
+					focusable={false}
+					unmountOnHide
+				>
+					{selectedTree.content}
+				</Tabs.TabPanel>
 			</Tabs.Root>
 		</TreeFilteringProvider>
 	);

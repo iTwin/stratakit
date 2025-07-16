@@ -119,8 +119,7 @@
 	}
 
 	@layer states {
-		/* TODO: Decide whether to keep previous tab in "half" active state. */
-		&:where([aria-selected="true"], [data-selected="true"]) {
+		&:where([aria-selected="true"]) {
 			--🌀tab-state: var(--🌀tab-state--selected);
 
 			:where(.🥝tab-list:not([data-initialized="true"])) & {

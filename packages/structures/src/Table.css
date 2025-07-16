@@ -93,6 +93,7 @@
 			font-weight: inherit;
 		}
 
+		/* This pseudo-element emulates a top "border" without occupying space. */
 		&::before {
 			content: "";
 			position: absolute;

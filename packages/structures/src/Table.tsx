@@ -252,7 +252,7 @@ interface TableRowProps extends BaseProps<"div"> {}
  * ```
  *
  * Rows that contain checked checkboxes are considered selected.
- * Consumers should render the `Checkbox` component to add selection functionality for the table rows.
+ * The `Checkbox` component can be rendered to add selection functionality for the table rows.
  *
  * Example:
  * ```tsx

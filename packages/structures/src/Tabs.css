@@ -13,19 +13,21 @@
 		gap: 8px;
 		position: relative;
 
-		&:where([data-initialized="true"]) {
+		@supports (position-anchor: --foo) {
 			&::after {
 				content: "";
 				position: absolute;
-				inset-inline-start: 0;
-				inset-block-end: 0;
-				inline-size: calc(var(--🥝tab-active-stripe-width) - 2 * var(--🥝tab-padding-inline));
-				translate: calc(var(--🥝tab-active-stripe-position) + var(--🥝tab-padding-inline));
+				position-anchor: --🥝active-tab;
+				inset-inline-start: calc(anchor(start) + var(--🥝tab-padding-inline));
+				inset-block-end: calc(anchor(end) - var(--🥝tab-active-stripe-gap));
+				inline-size: calc(anchor-size(inline) - 2 * var(--🥝tab-padding-inline));
 				block-size: var(--🥝tab-active-stripe-size);
 				background-color: var(--🥝tab-active-stripe-color);
 
 				@media (prefers-reduced-motion: no-preference) {
-					transition: translate 150ms ease-in-out;
+					transition:
+						inset-inline-start 150ms ease-in-out,
+						inline-size 150ms ease-in-out;
 				}
 			}
 		}
@@ -119,11 +121,12 @@
 	}
 
 	@layer states {
-		/* TODO: Decide whether to keep previous tab in "half" active state. */
-		&:where([aria-selected="true"], [data-selected="true"]) {
+		&:where([aria-selected="true"]) {
 			--🌀tab-state: var(--🌀tab-state--selected);
 
-			:where(.🥝tab-list:not([data-initialized="true"])) & {
+			anchor-name: --🥝active-tab;
+
+			@supports not (anchor-name: --foo) {
 				&::after {
 					content: "";
 					position: absolute;

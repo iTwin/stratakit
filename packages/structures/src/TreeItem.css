@@ -138,10 +138,6 @@
 		&:where([data-kiwi-visible="true"]) {
 			--🥝tree-item-action-visibility: visible;
 		}
-
-		&:where([data-kiwi-displayed="false"]) {
-			display: none;
-		}
 	}
 }
 

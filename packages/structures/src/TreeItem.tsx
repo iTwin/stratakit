@@ -5,15 +5,9 @@
 
 import * as React from "react";
 import { CompositeItem } from "@ariakit/react/composite";
-import { useMenuContext } from "@ariakit/react/menu";
 import { PopoverProvider } from "@ariakit/react/popover";
 import { Role } from "@ariakit/react/role";
-import { useStoreState } from "@ariakit/react/store";
-import {
-	Toolbar,
-	ToolbarItem,
-	useToolbarContext,
-} from "@ariakit/react/toolbar";
+import { Toolbar, ToolbarItem } from "@ariakit/react/toolbar";
 import { IconButton } from "@stratakit/bricks";
 import {
 	GhostAligner,
@@ -530,7 +524,8 @@ const TreeItemActions = React.memo(
 				ref={forwardedRef}
 				render={<Toolbar focusLoop={false} />}
 			>
-				<TreeItemActionsContent />
+				<TreeItemInlineActionsRenderer />
+				<TreeItemActionMenu />
 			</ListItem.Decoration>
 		);
 	}),
@@ -539,40 +534,10 @@ DEV: TreeItemActions.displayName = "TreeItemActions";
 
 // ----------------------------------------------------------------------------
 
-const TreeItemDisplayedInlineActionsContext = React.createContext<string[]>([]);
-const TreeItemDisplayActionsMenuContext = React.createContext<boolean>(false);
-
-function TreeItemActionsContent() {
-	const store = useToolbarContext();
-	DEV: {
-		if (!store)
-			throw new Error(
-				"TreeItemActionsContent must be used inside a Toolbar context",
-			);
-	}
-	const renderedItems = useStoreState(store, "renderedItems");
-
-	const displayedInlineActions = React.useMemo(() => {
-		const itemIds = renderedItems.map((item) => item.id);
-		return itemIds.slice(0, 2);
-	}, [renderedItems]);
-
-	return (
-		<TreeItemDisplayedInlineActionsContext.Provider
-			value={displayedInlineActions}
-		>
-			<TreeItemInlineActionsRenderer />
-			<TreeItemActionMenu />
-		</TreeItemDisplayedInlineActionsContext.Provider>
-	);
-}
-DEV: TreeItemActionsContent.displayName = "TreeItemActionsContent";
-
-// ----------------------------------------------------------------------------
-
 function TreeItemInlineActionsRenderer() {
-	const actions = React.useContext(TreeItemInlineActionsContext);
-	return actions;
+	const actions = React.useContext(TreeItemInlineActionsContext) ?? [];
+	const actionsToDisplay = actions.slice(0, 2);
+	return actionsToDisplay;
 }
 DEV: TreeItemInlineActionsRenderer.displayName =
 	"TreeItemInlineActionsRenderer";
@@ -582,6 +547,7 @@ DEV: TreeItemInlineActionsRenderer.displayName =
 const arrowKeys = ["ArrowDown", "ArrowUp", "ArrowLeft", "ArrowRight"];
 
 const TreeItemActionsMenuContext = React.createContext(false);
+const TreeItemDisplayActionsMenuContext = React.createContext<boolean>(false);
 
 interface TreeItemActionMenuProps
 	extends Omit<BaseProps<"button">, "children"> {}
@@ -734,10 +700,6 @@ DEV: TreeItemAction.displayName = "Tree.ItemAction";
 const TreeItemInlineAction = React.memo(
 	forwardRef<"button", TreeItemActionProps>((props, forwardedRef) => {
 		const error = React.useContext(TreeItemErrorContext);
-		const displayedActions = React.useContext(
-			TreeItemDisplayedInlineActionsContext,
-		);
-		const isMenuButton = !!useMenuContext();
 
 		const generatedId = React.useId();
 		const {
@@ -756,10 +718,6 @@ const TreeItemInlineAction = React.memo(
 				);
 		}
 
-		const displayed = React.useMemo(() => {
-			if (isMenuButton) return true;
-			return displayedActions.includes(id);
-		}, [isMenuButton, displayedActions, id]);
 		return (
 			<IconButton
 				id={id}
@@ -773,7 +731,6 @@ const TreeItemInlineAction = React.memo(
 				variant="ghost"
 				className={cx("🥝-tree-item-action", props.className)}
 				data-kiwi-visible={visible}
-				data-kiwi-displayed={displayed}
 				ref={forwardedRef}
 			/>
 		);

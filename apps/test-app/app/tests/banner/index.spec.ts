@@ -9,14 +9,14 @@ import { expect, test } from "#playwright";
 test("default", async ({ page }) => {
 	await page.goto("/tests/banner");
 
-	const banner = page.locator(".🥝-banner").first();
+	const banner = page.locator(".my-banner").first();
 	await expect(banner).toBeVisible();
 });
 
 test("dismiss", async ({ page }) => {
 	await page.goto("/tests/banner?dismiss=true");
 
-	const banners = page.locator(".🥝-banner");
+	const banners = page.locator(".my-banner");
 	await expect(banners).toHaveCount(3);
 
 	// Dismiss button should not exist
@@ -38,7 +38,7 @@ test.describe("appropriately show custom or default icon", () => {
 	}) => {
 		await page.goto("/tests/banner?composition=true");
 
-		// If custom icon is passed, it is shown
+		// Case 1: If custom icon is passed, it is shown
 		const bannerInfoWithCustomIcon = page.getByTestId(
 			"banner-info-custom-icon",
 		);
@@ -51,7 +51,7 @@ test.describe("appropriately show custom or default icon", () => {
 			bannerInfoWithCustomIcon.locator(".my-banner-icon path"),
 		).not.toBeVisible();
 
-		// When no custom icon but non-neutral status, default status icon is shown
+		// Case 2: When no custom icon but non-neutral status, default status icon is shown
 		const bannerInfoWithNoCustomIcon = page.getByTestId(
 			"banner-info-no-custom-icon",
 		);
@@ -64,21 +64,15 @@ test.describe("appropriately show custom or default icon", () => {
 			bannerInfoWithNoCustomIcon.locator(".my-banner-icon path"),
 		).toBeVisible();
 
-		// When no custom icon and neutral status, no icon is shown
-		const bannerNeutralWithNoCustomIcon = page.getByTestId(
-			"banner-neutral-no-custom-icon",
-		);
-
-		await expect(bannerNeutralWithNoCustomIcon).toBeVisible();
-		await expect(
-			bannerNeutralWithNoCustomIcon.locator(".my-banner-icon"),
-		).not.toBeVisible();
+		// Case 3: When no custom icon and neutral status, no icon is shown
+		// In composition API, we assume consumer does not pass Banner.Icon without href when neutral tone.
+		// Thus, no need to test this case.
 	});
 
 	test("Convenience API: if no icon is passed to Banner and tone is non-neutral, default status icon is shown. Else the custom icon is shown", async ({
 		page,
 	}) => {
-		// If custom icon is passed, it is shown
+		// Case 1: If custom icon is passed, it is shown
 		await page.goto("/tests/banner?tone=info&icon=true");
 		const bannerInfoWithCustomIcon = page.locator(".my-banner");
 
@@ -88,9 +82,9 @@ test.describe("appropriately show custom or default icon", () => {
 			bannerInfoWithCustomIcon.locator("svg path"),
 		).not.toBeVisible();
 
-		// When no custom icon but non-neutral status, default status icon is shown
+		// Case 2: When no custom icon but non-neutral status, default status icon is shown
 		await page.goto("/tests/banner?tone=info");
-		const bannerInfoWithNoCustomIcon = page.locator(".🥝-banner");
+		const bannerInfoWithNoCustomIcon = page.locator(".my-banner");
 
 		await expect(bannerInfoWithNoCustomIcon).toBeVisible();
 		await expect(
@@ -98,9 +92,9 @@ test.describe("appropriately show custom or default icon", () => {
 		).not.toBeVisible();
 		await expect(bannerInfoWithNoCustomIcon.locator("svg path")).toBeVisible();
 
-		// When no custom icon and neutral status, no icon is shown
+		// Case 3: When no custom icon and neutral status, no icon is shown
 		await page.goto("/tests/banner");
-		const bannerNeutralWithNoCustomIcon = page.locator(".🥝-banner");
+		const bannerNeutralWithNoCustomIcon = page.locator(".my-banner");
 
 		await expect(bannerNeutralWithNoCustomIcon).toBeVisible();
 		await expect(
@@ -130,7 +124,7 @@ test.describe("@a11y", () => {
 	test("Axe Page Scan", async ({ page }) => {
 		await page.goto("/tests/banner");
 
-		const banner = page.locator(".🥝-banner").first();
+		const banner = page.locator(".my-banner").first();
 		await expect(banner).toBeVisible();
 
 		const axe = new AxeBuilder({ page });

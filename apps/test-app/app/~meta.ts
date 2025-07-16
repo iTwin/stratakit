@@ -47,6 +47,7 @@ export const components = {
 		"DropdownButton",
 		"DropdownMenu",
 		"Icon",
+		"IconButton",
 		"Input",
 		"InputGrid",
 		"Kbd",

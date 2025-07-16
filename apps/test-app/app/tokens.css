@@ -16,5 +16,5 @@ h2 {
 }
 
 .🥝-accordion-item-content {
-	grid-column: marker-before-start / content-end;
+	grid-column-start: marker-before-start;
 }

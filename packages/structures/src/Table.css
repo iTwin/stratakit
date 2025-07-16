@@ -8,6 +8,8 @@
 		&:where(table) {
 			table-layout: fixed;
 			inline-size: 100%;
+			border-collapse: separate;
+			border-spacing: 0;
 		}
 	}
 }
@@ -61,6 +63,7 @@
 		var(--✨glow--bg-active-hover)
 	);
 	--✨cell-border-width: 1px;
+	--✨cell-border--default: var(--stratakit-color-border-neutral-muted);
 	--✨cell-border--active: var(--stratakit-color-border-accent-strong);
 
 	@layer base {
@@ -69,16 +72,16 @@
 			var(--🌀table-cell-state--hover, var(--✨cell-bg--hover))
 			var(--🌀table-cell-state--active, var(--✨cell-bg--active))
 			var(--🌀table-cell-state--active-hover, var(--✨cell-bg--active-hover));
-		margin-block-start: calc(-1 * var(--✨cell-border-width));
 
 		--🥝table-cell-border-color--active: var(--✨cell-border--active);
-		border-color: var(--🌀table-cell-state--default, var(--stratakit-color-border-neutral-muted))
-			var(--🌀table-cell-state--hover, var(--stratakit-color-border-neutral-muted))
+		border-block-end: var(--✨cell-border-width) solid
+			var(--🌀table-cell-state--default, var(--✨cell-border--default))
+			var(--🌀table-cell-state--hover, var(--✨cell-border--default))
 			var(--🌀table-cell-state--active, var(--🥝table-cell-border-color--active))
 			var(--🌀table-cell-state--active-hover, var(--🥝table-cell-border-color--active));
-		border-block-style: solid;
-		border-block-start-width: 0;
-		border-block-end-width: var(--✨cell-border-width);
+
+		/* Would be great to remove. Needed by ::before pseudo-element to support row selection visuals. */
+		position: relative;
 
 		&:where(:not(th, td)) {
 			column-gap: 0.5rem;
@@ -90,32 +93,16 @@
 			font-weight: inherit;
 		}
 
-		&:where([role="cell"]) {
-			border-block-start-width: var(--✨cell-border-width);
-		}
-
-		&:where(td) {
-			/* Use only top border for HTML table cells: https://drafts.csswg.org/css2/#border-conflict-resolution */
-			border-block-start-width: var(--✨cell-border-width);
-			border-block-end-width: 0;
-
-			:where(.🥝-table-row:not(:has(+ .🥝-table-row))) & {
-				/* Bottom border for the last row. */
-				border-block-end-width: var(--✨cell-border-width);
-			}
-		}
-
-		&:where(th) {
-			border-block-end-width: 0;
-		}
-
-		:where(
-				.🥝-table-row:has(input[type="checkbox"]:checked, [role="checkbox"][aria-checked="true"])
-			)
-			+ .🥝-table-row
-			& {
-			/* Applies color to the "bottom border" of an active row. */
-			border-block-start-color: var(--🥝table-cell-border-color--active);
+		&::before {
+			content: "";
+			position: absolute;
+			inset: calc(-1 * var(--✨cell-border-width)) 0 0 0;
+			pointer-events: none;
+			border-block-start: var(--✨cell-border-width) solid
+				var(--🌀table-cell-state--default, transparent)
+				var(--🌀table-cell-state--hover, transparent)
+				var(--🌀table-cell-state--active, var(--🥝table-cell-border-color--active))
+				var(--🌀table-cell-state--active-hover, var(--🥝table-cell-border-color--active));
 		}
 	}
 

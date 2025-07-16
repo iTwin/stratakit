@@ -8,8 +8,6 @@
 		&:where(table) {
 			table-layout: fixed;
 			inline-size: 100%;
-			border-collapse: separate;
-			border-spacing: 0;
 		}
 	}
 }
@@ -62,21 +60,26 @@
 		var(--✨cell-bg--active) 100%,
 		var(--✨glow--bg-active-hover)
 	);
+	--✨cell-border-width: 1px;
+	--✨cell-border--active: var(--stratakit-color-border-accent-strong);
 
 	@layer base {
-		--🥝table-cell-box-shadow-color: var(--stratakit-color-border-accent-strong);
-
 		min-inline-size: 4rem;
 		background-color: var(--🌀table-cell-state--default, var(--✨cell-bg--default))
 			var(--🌀table-cell-state--hover, var(--✨cell-bg--hover))
 			var(--🌀table-cell-state--active, var(--✨cell-bg--active))
 			var(--🌀table-cell-state--active-hover, var(--✨cell-bg--active-hover));
-		border-block-end: 1px solid transparent;
+		margin-block-start: calc(-1 * var(--✨cell-border-width));
+
+		--🥝table-cell-border-color--active: var(--✨cell-border--active);
 		border-color: var(--🌀table-cell-state--default, var(--stratakit-color-border-neutral-muted))
 			var(--🌀table-cell-state--hover, var(--stratakit-color-border-neutral-muted))
-			var(--🌀table-cell-state--active, var(--stratakit-color-border-accent-strong))
-			var(--🌀table-cell-state--active-hover, var(--stratakit-color-border-accent-strong));
-		position: relative;
+			var(--🌀table-cell-state--active, var(--🥝table-cell-border-color--active))
+			var(--🌀table-cell-state--active-hover, var(--🥝table-cell-border-color--active));
+		border-block-style: solid;
+		border-block-start-width: var(--✨cell-border-width);
+		/* Keep narrow since bottom border wins over top border of the next row: https://drafts.csswg.org/css2/#border-conflict-resolution */
+		border-block-end-width: 0;
 
 		&:where(:not(th, td)) {
 			column-gap: 0.5rem;
@@ -88,15 +91,20 @@
 			font-weight: inherit;
 		}
 
-		&::before {
-			content: "";
-			position: absolute;
-			inset: -1px 0 0 0;
-			pointer-events: none;
-			border-top: 1px solid var(--🌀table-cell-state--default, transparent)
-				var(--🌀table-cell-state--hover, transparent)
-				var(--🌀table-cell-state--active, var(--🥝table-cell-box-shadow-color))
-				var(--🌀table-cell-state--active-hover, var(--🥝table-cell-box-shadow-color));
+		&:where([role="cell"], td) {
+			:where(.🥝-table-row:not(:has(+ .🥝-table-row))) & {
+				/* Bottom border of the last row. */
+				border-block-end-width: var(--✨cell-border-width);
+			}
+		}
+
+		:where(
+				.🥝-table-row:has(input[type="checkbox"]:checked, [role="checkbox"][aria-checked="true"])
+			)
+			+ .🥝-table-row
+			& {
+			/* Applies color to the "bottom border" of an active row. */
+			border-top-color: var(--🥝table-cell-border-color--active);
 		}
 	}
 
@@ -157,7 +165,7 @@
 				background-color: SelectedItem;
 				color: SelectedItemText;
 				border-color: SelectedItemText;
-				--🥝table-cell-box-shadow-color: SelectedItemText;
+				--🥝table-cell-border-color--active: SelectedItemText;
 				forced-color-adjust: none;
 			}
 		}

@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.2.1
+
+- [#824](https://github.com/iTwin/design-system/pull/824): Added a new `unstable_loadStyles` function for loading all foundations CSS without using React.
+- [#824](https://github.com/iTwin/design-system/pull/824): Turned `react` and `react-dom` into _optional_ peer dependencies.
+- Updated internal code for `@stratakit/bricks@0.3.2` and `@stratakit/structures@0.2.4`.
+
 ## 0.2.0
 
 ### Breaking changes

@@ -53,10 +53,10 @@ interface AccordionItemProps extends BaseProps {
  * ```tsx
  * <AccordionItem.Root>
  *   <AccordionItem.Header>
+ *     <AccordionItem.Marker />
  *     <AccordionItem.Button>
  *       <AccordionItem.Label>Label</AccordionItem.Label>
  *     </AccordionItem.Button>
- *     <AccordionItem.Marker />
  *   </AccordionItem.Header>
  *   <AccordionItem.Content>Body</AccordionItem.Content>
  * </AccordionItem.Root>
@@ -70,12 +70,12 @@ interface AccordionItemProps extends BaseProps {
  * ```tsx
  * <AccordionItem.Root>
  *   <AccordionItem.Header>
+ *     <AccordionItem.Marker />
  *     <AccordionItem.Heading render={<h2 />}>
  *       <AccordionItem.Button>
  *         <AccordionItem.Label>Label</AccordionItem.Label>
  *       </AccordionItem.Button>
  *     </AccordionItem.Heading>
- *     <AccordionItem.Marker />
  *   </AccordionItem.Header>
  *   <AccordionItem.Content>Body</AccordionItem.Content>
  * </AccordionItem.Root>
@@ -85,11 +85,11 @@ interface AccordionItemProps extends BaseProps {
  * ```tsx
  * <AccordionItem.Root>
  *   <AccordionItem.Header>
+ *     <AccordionItem.Marker />
  *     <AccordionItem.Decoration render={<Icon href={placeholder} />} />
  *     <AccordionItem.Button>
  *       <AccordionItem.Label>Label</AccordionItem.Label>
  *     </AccordionItem.Button>
- *     <AccordionItem.Marker />
  *   </AccordionItem.Header>
  *   <AccordionItem.Content>Body</AccordionItem.Content>
  * </AccordionItem.Root>
@@ -137,11 +137,11 @@ DEV: AccordionItemRoot.displayName = "AccordionItem.Root";
  * Example:
  * ```tsx
  * <AccordionItem.Root>
- * 	 <AccordionItem.Header>
+ *   <AccordionItem.Header>
+ *     <AccordionItem.Marker />
  *     <AccordionItem.Button>
  *       <AccordionItem.Label>Label</AccordionItem.Label>
  *     </AccordionItem.Button>
- *     <AccordionItem.Marker />
  *   </AccordionItem.Header>
  *   <AccordionItem.Content>Body</AccordionItem.Content>
  * </AccordionItem.Root>
@@ -168,10 +168,10 @@ DEV: AccordionItemHeader.displayName = "AccordionItem.Header";
  * Example:
  * ```tsx
  * <AccordionItem.Header>
+ *   <AccordionItem.Marker />
  *   <AccordionItem.Button>
  *     <AccordionItem.Label>Label</AccordionItem.Label>
  *   </AccordionItem.Button>
- *   <AccordionItem.Marker />
  * </AccordionItem.Header>
  * ```
  */
@@ -211,19 +211,53 @@ const AccordionItemLabel = forwardRef<"div", BaseProps>(
 DEV: AccordionItemLabel.displayName = "AccordionItem.Label";
 
 /**
- * The always-visible, optional decoration of an accordion item’s button.
+ * The always-visible, optional decoration of the `AccordionItem.Header` content.
+ * It can be placed before or after the rest of the content in
+ * `AccordionItem.Header`. However, the `AccordionItem.Marker` must always be
+ * placed at either edge (beginning or end) of the header.
  *
- * Use as a direct descendant of `AccordionItem.Header`. This will be visually
- * presented before the button’s label.
+ * Use as a direct descendant of `AccordionItem.Header`. The decoration
+ * can be placed before the rest of the header content.
  *
  * Example:
  * ```tsx
  * <AccordionItem.Header>
+ *   <AccordionItem.Marker />
  *   <AccordionItem.Decoration render={<Icon href={placeholder} />} />
  *   <AccordionItem.Button>
  *     <AccordionItem.Label>Label</AccordionItem.Label>
  *   </AccordionItem.Button>
+ * </AccordionItem.Header>
+ * ```
+ *
+ * Alternatively, the decoration can also be placed after the rest of the
+ * header content.
+ *
+ * Example:
+ * ```tsx
+ * <AccordionItem.Header>
  *   <AccordionItem.Marker />
+ *   <AccordionItem.Button>
+ *     <AccordionItem.Label>Label</AccordionItem.Label>
+ *   </AccordionItem.Button>
+ *   <AccordionItem.Decoration render={<Icon href={placeholder} />} />
+ * </AccordionItem.Header>
+ * ```
+ *
+ * There can also be multiple decorations if passed as children under
+ * `AccordionItem.Decoration`.
+ *
+ * Example:
+ * ```tsx
+ * <AccordionItem.Header>
+ *   <AccordionItem.Marker />
+ *   <AccordionItem.Decoration>
+ *     <Icon href={placeholder} />
+ *     <Icon href={placeholder} />
+ *   </AccordionItem.Decoration>
+ *   <AccordionItem.Button>
+ *     <AccordionItem.Label>Label</AccordionItem.Label>
+ *   </AccordionItem.Button>
  * </AccordionItem.Header>
  * ```
  */
@@ -239,7 +273,22 @@ const AccordionItemDecoration = forwardRef<"div", BaseProps>(
 DEV: AccordionItemDecoration.displayName = "AccordionItem.Decoration";
 
 /**
- * The visual marker of an accordion item’s button.
+ * The visual marker of the `AccordionItem.Header` content. While it can be
+ * placed before or after the rest of the content in `AccordionItem.Header`,
+ * it is recommended to place the marker before.
+ *
+ * Example:
+ * ```tsx
+ * <AccordionItem.Header>
+ *   <AccordionItem.Marker />
+ *   <AccordionItem.Button>
+ *     <AccordionItem.Label>Label</AccordionItem.Label>
+ *   </AccordionItem.Button>
+ * </AccordionItem.Header>
+ * ```
+ *
+ * Alternatively, the marker can also be placed after the rest of the header
+ * content.
  *
  * Example:
  * ```tsx
@@ -254,12 +303,12 @@ DEV: AccordionItemDecoration.displayName = "AccordionItem.Decoration";
  * Pass an icon as a child to override the default chevron icon:
  * ```tsx
  * <AccordionItem.Header>
- *   <AccordionItem.Button>
- *     <AccordionItem.Label>Label</AccordionItem.Label>
- *   </AccordionItem.Button>
  *   <AccordionItem.Marker>
  *     <Icon href={placeholder} />
  *   </AccordionItem.Marker>
+ *   <AccordionItem.Button>
+ *     <AccordionItem.Label>Label</AccordionItem.Label>
+ *   </AccordionItem.Button>
  * </AccordionItem.Header>
  * ```
  */
@@ -288,11 +337,11 @@ DEV: AccordionItemMarker.displayName = "AccordionItem.Marker";
  * Example:
  * ```tsx
  * <AccordionItem.Root>
- * 	 <AccordionItem.Header>
+ *   <AccordionItem.Header>
+ *     <AccordionItem.Marker />
  *     <AccordionItem.Button>
  *       <AccordionItem.Label>Label</AccordionItem.Label>
  *     </AccordionItem.Button>
- *     <AccordionItem.Marker />
  *   </AccordionItem.Header>
  *   <AccordionItem.Content>Body</AccordionItem.Content>
  * </AccordionItem.Root>
@@ -321,12 +370,12 @@ interface AccordionItemHeadingProps extends BaseProps {
  * Example:
  * ```tsx
  * <AccordionItem.Header>
+ *   <AccordionItem.Marker />
  *   <AccordionItem.Heading render={<h2 />}>
  *     <AccordionItem.Button>
  *       <AccordionItem.Label>Label</AccordionItem.Label>
  *     </AccordionItem.Button>
  *   </AccordionItem.Heading>
- *   <AccordionItem.Marker />
  * </AccordionItem.Header>
  */
 const AccordionItemHeading = forwardRef<"div", AccordionItemHeadingProps>(

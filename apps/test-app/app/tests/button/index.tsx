@@ -31,7 +31,8 @@ function VisualTest() {
 	const permutations = [
 		["solid", "neutral"],
 		["solid", "accent"],
-		["outline"],
+		["outline", "neutral"],
+		["outline", "accent"],
 		["ghost", "neutral"],
 		["ghost", "accent"],
 	] as const;
@@ -42,7 +43,7 @@ function VisualTest() {
 				const props = { variant, tone } as React.ComponentProps<typeof Button>;
 
 				return (
-					<div key={variant} style={{ display: "flex", gap: 4 }}>
+					<div key={`${variant}-${tone}`} style={{ display: "flex", gap: 4 }}>
 						<Button {...props}>Click me</Button>
 
 						<Button {...props}>

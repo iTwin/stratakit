@@ -23,6 +23,11 @@ export function getOwnerDocument(node?: Node | null) {
 	return (isDocument(node) ? node : node.ownerDocument) || null;
 }
 
+export function getWindow(node: Node) {
+	const ownerDocument = getOwnerDocument(node);
+	return ownerDocument?.defaultView || null;
+}
+
 /** "Parses" a string of HTML into a DocumentFragment. */
 export function parseDOM(
 	htmlString: string,

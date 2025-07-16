@@ -126,7 +126,7 @@ interface TreeItemProps extends Omit<BaseProps, "content" | "children"> {
 	 *     : [
 	 *         <Tree.ItemAction key={…} icon={…} label={…} />,
 	 *         <Tree.ItemAction key={…} icon={…} label={…} />,
-	 *        ]
+	 *       ]
 	 * }
 	 * ```
 	 *

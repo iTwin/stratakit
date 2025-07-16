@@ -173,8 +173,6 @@
 					.🥝-table-row:has(input[type="checkbox"]:checked, [role="checkbox"][aria-checked="true"])
 				)
 				& {
-				background-color: SelectedItem;
-				color: SelectedItemText;
 				border-color: SelectedItemText;
 				--🥝table-cell-border-color--active: SelectedItemText;
 				forced-color-adjust: none;

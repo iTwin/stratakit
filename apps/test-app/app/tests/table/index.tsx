@@ -223,7 +223,7 @@ function SingleSelection() {
 			<Table.Caption>Single Selection</Table.Caption>
 			<Table.Header>
 				<Table.Row>
-					<Table.Cell>
+					<Table.Cell style={checkboxCellStyle}>
 						<VisuallyHidden>Select</VisuallyHidden>
 					</Table.Cell>
 					<Table.Cell>Name</Table.Cell>
@@ -236,7 +236,7 @@ function SingleSelection() {
 					const nameId = `${tableId}-${row.id}-name`;
 					return (
 						<Table.Row key={row.id}>
-							<Table.Cell>
+							<Table.Cell style={checkboxCellStyle}>
 								<Checkbox
 									checked={rowSelected}
 									onChange={(e) =>
@@ -263,7 +263,7 @@ function MultiSelection() {
 			<Table.Caption>Multi Selection</Table.Caption>
 			<Table.Header>
 				<Table.Row>
-					<Table.Cell>
+					<Table.Cell style={checkboxCellStyle}>
 						<Checkbox
 							aria-label="Select"
 							checked={
@@ -292,7 +292,7 @@ function MultiSelection() {
 					const nameId = `${tableId}-${row.id}-name`;
 					return (
 						<Table.Row key={row.id}>
-							<Table.Cell>
+							<Table.Cell style={checkboxCellStyle}>
 								<Checkbox
 									checked={rowSelected}
 									onChange={(e) => {

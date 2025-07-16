@@ -86,7 +86,7 @@ export default function Page() {
 							</AccordionItem.Button>
 						</AccordionItem.Header>
 
-						<AccordionItem.Content>
+						<AccordionItem.Content className={styles.accordionItemContent}>
 							<Tokens tokens={relevantTokens} kind="color" />
 						</AccordionItem.Content>
 					</AccordionItem.Root>
@@ -105,7 +105,7 @@ export default function Page() {
 					</AccordionItem.Button>
 				</AccordionItem.Header>
 
-				<AccordionItem.Content>
+				<AccordionItem.Content className={styles.accordionItemContent}>
 					<Tokens tokens={[...shadowTokens.keys()]} kind="shadow" />
 				</AccordionItem.Content>
 			</AccordionItem.Root>
@@ -122,7 +122,7 @@ export default function Page() {
 					</AccordionItem.Button>
 				</AccordionItem.Header>
 
-				<AccordionItem.Content>
+				<AccordionItem.Content className={styles.accordionItemContent}>
 					<TypographyVariants variants={typographyVariants} />
 				</AccordionItem.Content>
 			</AccordionItem.Root>

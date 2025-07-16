@@ -3,7 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-:root {
+html {
 	scrollbar-gutter: stable;
 }
 
@@ -13,8 +13,4 @@ body {
 
 h2 {
 	margin-block-start: 1rem;
-}
-
-.🥝-accordion-item-content {
-	grid-column-start: marker-before-start;
 }

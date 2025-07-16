@@ -42,3 +42,7 @@
 		box-shadow: var(--_swatch-shadow, var(--stratakit-shadow-surface-xs));
 	}
 }
+
+.accordionItemContent {
+	grid-column: 1 / -1;
+}

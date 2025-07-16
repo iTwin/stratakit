@@ -1,0 +1,1 @@
+import{o as i}from"./chunk-QMGIS6GS-BaJhsRKI.js";import{f as o,R as n,c as m}from"./sun-B3JSrGQq.js";const d=o((a,e)=>{const{variant:t="text",size:s="medium",...r}=a;return i.jsx(n.div,{...r,ref:e,className:m("🥝-skeleton",a.className),"data-kiwi-variant":t,"data-kiwi-size":s,"aria-hidden":!0})});var c=d;export{c as S};

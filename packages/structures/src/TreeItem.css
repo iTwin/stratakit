@@ -68,6 +68,12 @@
 			--🌀list-item-state: var(--🌀list-item-state--active);
 		}
 
+		@media (any-hover: hover) {
+			&:where(:hover[data-kiwi-selected="true"]) {
+				--🌀list-item-state: var(--🌀list-item-state--active-hover);
+			}
+		}
+
 		&:where([data-kiwi-expanded="false"]) {
 			--🥝chevron-down-rotate: -0.25turn;
 		}

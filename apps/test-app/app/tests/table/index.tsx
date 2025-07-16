@@ -47,7 +47,7 @@ export default definePage(
 		scroll: ScrollTest,
 		customTable: CustomTableTest,
 		htmlTable: HtmlTableTest,
-		selection: SelectionTest,
+		_selection: SelectionTest,
 	},
 );
 

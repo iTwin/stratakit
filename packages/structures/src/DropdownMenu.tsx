@@ -70,7 +70,25 @@ interface DropdownMenuProps
  * **Note**: `DropdownMenu` should not be used for navigation; it is only intended for actions.
  */
 function DropdownMenuRoot(props: DropdownMenuProps) {
-	return <MenuProvider popover={usePopoverContext()} {...props} />;
+	const {
+		children,
+		placement,
+		open: openProp,
+		setOpen: setOpenProp,
+		defaultOpen: defaultOpenProp,
+	} = props;
+
+	return (
+		<MenuProvider
+			placement={placement}
+			defaultOpen={defaultOpenProp}
+			open={openProp}
+			setOpen={setOpenProp}
+			popover={usePopoverContext()}
+		>
+			{children}
+		</MenuProvider>
+	);
 }
 DEV: DropdownMenuRoot.displayName = "DropdownMenu.Root";
 

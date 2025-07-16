@@ -152,18 +152,3 @@
 		--🌀table-cell-state--active-hover: var(--🌀table-cell-state,);
 	}
 }
-
-@media (forced-colors: active) {
-	.🥝-table-cell {
-		&:where([role="cell"], td) {
-			:where(
-					.🥝-table-row:has(input[type="checkbox"]:checked, [role="checkbox"][aria-checked="true"])
-				)
-				& {
-				border-color: SelectedItemText;
-				--🥝table-cell-border-color--active: SelectedItemText;
-				forced-color-adjust: none;
-			}
-		}
-	}
-}

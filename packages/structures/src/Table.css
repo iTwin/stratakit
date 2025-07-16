@@ -77,9 +77,8 @@
 			var(--🌀table-cell-state--active, var(--🥝table-cell-border-color--active))
 			var(--🌀table-cell-state--active-hover, var(--🥝table-cell-border-color--active));
 		border-block-style: solid;
-		border-block-start-width: var(--✨cell-border-width);
-		/* Keep narrow since bottom border wins over top border of the next row: https://drafts.csswg.org/css2/#border-conflict-resolution */
-		border-block-end-width: 0;
+		border-block-start-width: 0;
+		border-block-end-width: var(--✨cell-border-width);
 
 		&:where(:not(th, td)) {
 			column-gap: 0.5rem;
@@ -91,11 +90,23 @@
 			font-weight: inherit;
 		}
 
-		&:where([role="cell"], td) {
+		&:where([role="cell"]) {
+			border-block-start-width: var(--✨cell-border-width);
+		}
+
+		&:where(td) {
+			/* Use only top border for HTML table cells: https://drafts.csswg.org/css2/#border-conflict-resolution */
+			border-block-start-width: var(--✨cell-border-width);
+			border-block-end-width: 0;
+
 			:where(.🥝-table-row:not(:has(+ .🥝-table-row))) & {
-				/* Bottom border of the last row. */
+				/* Bottom border for the last row. */
 				border-block-end-width: var(--✨cell-border-width);
 			}
+		}
+
+		&:where(th) {
+			border-block-end-width: 0;
 		}
 
 		:where(

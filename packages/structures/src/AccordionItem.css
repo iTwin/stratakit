@@ -29,14 +29,27 @@
 }
 
 .🥝-accordion-item-header {
+	--✨glow--bg-hover: var(--stratakit-color-glow-hue) var(--stratakit-color-bg-glow-base-hover-\%);
+	--✨header-bg--default: var(--stratakit-color-bg-page-base);
+	--✨header-bg--hover: color-mix(
+		in oklch,
+		var(--✨header-bg--default) 100%,
+		var(--✨glow--bg-hover)
+	);
+
 	@layer base {
 		grid-row: header;
 		grid-column: marker-before-start / marker-after-end;
 
+		background-color: var(--🥝header-bg);
+		transition: background-color 150ms ease-out;
 		position: relative;
 		display: grid;
 		align-items: center;
 		padding: var(--🥝accordion-item-padding);
+
+		--🥝header-bg: var(--🌀accordion-item-header-state--default, var(--✨header-bg--default))
+			var(--🌀accordion-item-header-state--hover, var(--✨header-bg--hover));
 
 		/* TODO: improve the layout for the fallback (i.e. content doesn’t align with the label if there’s a decoration) */
 		grid-template-columns: inherit;
@@ -44,6 +57,21 @@
 		@supports (grid-template-columns: subgrid) {
 			grid-template-columns: subgrid;
 		}
+	}
+
+	@layer states {
+		@media (any-hover: hover) {
+			&:where(:hover) {
+				--🌀accordion-item-header-state: var(--🌀accordion-item-header-state--hover);
+			}
+		}
+	}
+
+	@layer base.🌀 {
+		/* Cyclic toggles for default/hover/pressed/active/disabled states. See https://kizu.dev/cyclic-toggles/ */
+		--🌀accordion-item-header-state: var(--🌀accordion-item-header-state--default);
+		--🌀accordion-item-header-state--default: var(--🌀accordion-item-header-state,);
+		--🌀accordion-item-header-state--hover: var(--🌀accordion-item-header-state,);
 	}
 }
 
@@ -60,14 +88,6 @@
 			grid-column: marker-after;
 			margin-inline-start: var(--🥝accordion-item-gap);
 			margin-inline-end: calc(-1 * var(--🥝ghost-inline-offset));
-		}
-	}
-
-	@layer states {
-		@media (any-hover: hover) {
-			:where(.🥝-accordion-item-header:hover) & {
-				--🌀button-state: var(--🌀button-state--hover);
-			}
 		}
 	}
 }
@@ -113,7 +133,7 @@
 	@layer base {
 		grid-row: content;
 		grid-column: content;
-		padding-block-end: var(--🥝accordion-item-padding);
+		padding-block: var(--🥝accordion-item-padding);
 		text-box: cap alphabetic;
 		color: var(--stratakit-color-text-neutral-secondary);
 	}

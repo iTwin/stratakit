@@ -90,7 +90,7 @@ test("actions overflow", async ({ page }) => {
 	await expect(firstAction).toHaveAccessibleDescription("Something's going on");
 	await expect(menuitem).toHaveAccessibleDescription("Something's going on");
 
-	// Should show at most 3 inline actions
+	// Should show at most 2 inline actions
 	await page.goto("/tests/tree?actions&inline=5&menu=0");
 	await treeitem.hover();
 	await expect(actions).toHaveCount(2);

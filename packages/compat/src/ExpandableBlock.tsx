@@ -72,12 +72,13 @@ export const ExpandableBlock = React.forwardRef((props, forwardedRef) => {
 			setOpen={onToggle}
 		>
 			<SkAccordionItem.Header>
-				<SkAccordionItem.Marker>
-					{endIcon ? <Icon render={endIcon} /> : null}
-				</SkAccordionItem.Marker>
+				<SkAccordionItem.Marker />
 				<SkAccordionItem.Button>
 					<SkAccordionItem.Label>{title}</SkAccordionItem.Label>
 				</SkAccordionItem.Button>
+				<SkAccordionItem.Decoration>
+					{endIcon ? <Icon render={endIcon} /> : null}
+				</SkAccordionItem.Decoration>
 			</SkAccordionItem.Header>
 			<SkAccordionItem.Content>{children}</SkAccordionItem.Content>
 		</SkAccordionItem.Root>

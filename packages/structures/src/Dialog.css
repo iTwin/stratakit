@@ -27,8 +27,7 @@
 		padding: 1px;
 
 		display: grid;
-		grid-template-columns: [content] minmax(0, 1fr) [close] auto;
-		/* row-gap: 16px; */
+		grid-template-columns: [content] minmax(0, 1fr) [dismiss] auto;
 	}
 }
 
@@ -42,9 +41,9 @@
 	}
 }
 
-.🥝-dialog-close {
+.🥝-dialog-dismiss {
 	@layer base {
-		grid-column: close;
+		grid-column: dismiss;
 		grid-row: 1;
 
 		margin-block: 16px;

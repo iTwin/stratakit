@@ -380,14 +380,13 @@ DEV: TreeItemRoot.displayName = "TreeItemRoot";
 /** Optimizes performance by delaying the rendering of actions until the tree item becomes visible. */
 function useRenderActions() {
 	const ref = React.useRef<HTMLElement>(null);
-	const [, startTransition] = React.useTransition();
 	const [renderActions, setRenderActions] = React.useState(false);
 	React.useEffect(() => {
 		const el = ref.current;
 		if (!el || renderActions) return;
 		const observer = new IntersectionObserver(([entry]) => {
 			if (!entry.isIntersecting) return;
-			startTransition(() => {
+			React.startTransition(() => {
 				setRenderActions(true);
 			});
 		});

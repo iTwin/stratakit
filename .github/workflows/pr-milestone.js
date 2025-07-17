@@ -9,7 +9,7 @@ const MILESTONES = {
 
 const MILESTONE_MAP = {
 	[MILESTONES.DEFAULT]: "packages/",
-	[MILESTONES.API_BRIDGE]: "packages/compat/",
+	[MILESTONES.API_BRIDGE]: "packages/compat/src",
 };
 
 /**

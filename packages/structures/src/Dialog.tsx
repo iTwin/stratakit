@@ -4,6 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 
 import * as AkDialog from "@ariakit/react/dialog";
+import { Role } from "@ariakit/react/role";
 import { IconButton, Text } from "@stratakit/bricks";
 import { forwardRef } from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
@@ -18,11 +19,10 @@ interface DialogProps
 		Pick<AkDialog.DialogProps, "open" | "onClose"> {
 	primaryContent: React.ReactNode;
 	secondaryContent?: React.ReactNode;
-	actions?: React.ReactNode;
 }
 
 const DialogRoot = forwardRef<"div", DialogProps>((props, forwardedRef) => {
-	const { actions, primaryContent, secondaryContent, onClose, ...rest } = props;
+	const { primaryContent, secondaryContent, onClose, ...rest } = props;
 	return (
 		<AkDialog.Dialog
 			{...rest}
@@ -41,7 +41,6 @@ const DialogRoot = forwardRef<"div", DialogProps>((props, forwardedRef) => {
 					{secondaryContent}
 				</Text>
 			)}
-			{actions && <div className="🥝-dialog-footer">{actions}</div>}
 		</AkDialog.Dialog>
 	);
 });
@@ -102,8 +101,28 @@ DEV: DialogDismissButton.displayName = "Dialog.DismissButton";
 
 // -------------------------------------------------------------------------
 
+interface DialogActionsProps extends BaseProps {}
+
+const DialogActions = forwardRef<"div", DialogActionsProps>(
+	(props, forwardedRef) => {
+		return (
+			<Role
+				{...props}
+				className={cx("🥝-dialog-actions", props.className)}
+				ref={forwardedRef}
+			>
+				{props.children}
+			</Role>
+		);
+	},
+);
+DEV: DialogActions.displayName = "Dialog.Actions";
+
+// -------------------------------------------------------------------------
+
 export {
 	DialogRoot as Root,
 	DialogHeading as Heading,
 	DialogDismissButton as DismissButton,
+	DialogActions as Actions,
 };

@@ -44,17 +44,15 @@ function VisualTest() {
 				onClose={() => setOpen(false)}
 				primaryContent="Primary content."
 				secondaryContent="Additional information about the success message can go here."
-				actions={
-					<>
-						<Button onClick={() => setOpen(false)}>Cancel</Button>
-						<Button tone="accent" onClick={() => setOpen(false)}>
-							Ok
-						</Button>
-					</>
-				}
 			>
 				<Dialog.Heading>Heading</Dialog.Heading>
 				<Dialog.DismissButton />
+				<Dialog.Actions>
+					<Button onClick={() => setOpen(false)}>Cancel</Button>
+					<Button tone="accent" onClick={() => setOpen(false)}>
+						Ok
+					</Button>
+				</Dialog.Actions>
 			</Dialog.Root>
 		</>
 	);
@@ -103,16 +101,14 @@ function Actions() {
 				open={open}
 				onClose={() => setOpen(false)}
 				primaryContent="Primary content."
-				actions={
-					<>
-						<Button onClick={() => setOpen(false)}>Cancel</Button>
-						<Button tone="accent" onClick={() => setOpen(false)}>
-							Ok
-						</Button>
-					</>
-				}
 			>
 				<Dialog.Heading>Heading</Dialog.Heading>
+				<Dialog.Actions>
+					<Button onClick={() => setOpen(false)}>Cancel</Button>
+					<Button tone="accent" onClick={() => setOpen(false)}>
+						Ok
+					</Button>
+				</Dialog.Actions>
 			</Dialog.Root>
 		</>
 	);

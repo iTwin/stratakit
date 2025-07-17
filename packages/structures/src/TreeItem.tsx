@@ -377,17 +377,8 @@ DEV: TreeItemRoot.displayName = "TreeItemRoot";
 
 // ----------------------------------------------------------------------------
 
-interface TreeItemNodeProps
-	extends Pick<TreeItemProps, "expanded" | "selected">,
-		Pick<TreeItemDecorationsProps, "onExpanderClick"> {}
-
-/**
- * Displays the styled tree item node.
- * @private
- */
-const TreeItemNode = React.memo((props: TreeItemNodeProps) => {
-	const { expanded, selected, onExpanderClick } = props;
-	const error = React.useContext(TreeItemErrorContext);
+/** Optimizes performance by delaying the rendering of actions until the tree item becomes visible. */
+function useRenderActions() {
 	const ref = React.useRef<HTMLElement>(null);
 	const [, startTransition] = React.useTransition();
 	const [renderActions, setRenderActions] = React.useState(false);
@@ -405,6 +396,24 @@ const TreeItemNode = React.memo((props: TreeItemNodeProps) => {
 			observer.disconnect();
 		};
 	}, [renderActions]);
+	return [ref, renderActions] as const;
+}
+
+// ----------------------------------------------------------------------------
+
+interface TreeItemNodeProps
+	extends Pick<TreeItemProps, "expanded" | "selected">,
+		Pick<TreeItemDecorationsProps, "onExpanderClick"> {}
+
+/**
+ * Displays the styled tree item node.
+ * @private
+ */
+const TreeItemNode = React.memo((props: TreeItemNodeProps) => {
+	const { expanded, selected, onExpanderClick } = props;
+	const error = React.useContext(TreeItemErrorContext);
+
+	const [ref, renderActions] = useRenderActions();
 	return (
 		<ListItem.Root
 			data-kiwi-expanded={expanded}

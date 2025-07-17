@@ -4,7 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 
 import * as React from "react";
-import { Role, type RoleProps } from "@ariakit/react/role";
+import { Role } from "@ariakit/react/role";
 import { IconButton, Text } from "@stratakit/bricks";
 import { GhostAligner } from "@stratakit/bricks/secret-internals";
 import { Icon } from "@stratakit/foundations";
@@ -42,9 +42,9 @@ const BannerContext = React.createContext<
 >(undefined);
 
 function BannerProvider(
-	props: React.PropsWithChildren & {
+	props: React.PropsWithChildren<{
 		tone: NonNullable<BannerRootProps["tone"]>;
-	},
+	}>,
 ) {
 	const [store] = React.useState(() =>
 		createBannerStore({
@@ -159,7 +159,7 @@ DEV: BannerIcon.displayName = "Banner.Icon";
 
 // ----------------------------------------------------------------------------
 
-interface BannerLabelProps extends RoleProps<"span"> {}
+interface BannerLabelProps extends BaseProps<"span"> {}
 
 /**
  * The label of the banner.
@@ -210,7 +210,7 @@ DEV: BannerLabel.displayName = "Banner.Label";
 
 // ----------------------------------------------------------------------------
 
-interface BannerMessageProps extends RoleProps<"div"> {}
+interface BannerMessageProps extends BaseProps<"div"> {}
 
 /**
  * The message content of the banner.
@@ -326,7 +326,7 @@ const BannerDismissButton = forwardRef<"button", BannerDismissButtonProps>(
 					className={cx("🥝-banner-dismiss-button", props.className)}
 					variant="ghost"
 					label={label}
-					aria-labelledby={`${id} ${labelId}`}
+					aria-labelledby={`${id} ${labelId || ""}`}
 					icon={<Dismiss />}
 					ref={forwardedRef}
 				/>

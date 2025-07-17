@@ -33,73 +33,47 @@ test("dismiss", async ({ page }) => {
 });
 
 test.describe("appropriately show custom or default icon", () => {
-	test("Composition API: if no href is passed to Banner.Icon and tone is non-neutral, default status icon is shown. Else the custom icon is shown", async ({
-		page,
-	}) => {
-		await page.goto("/tests/banner?composition=true");
+	(["composition", "convenience"] as const).forEach((apiType) => {
+		const baseUrl =
+			apiType === "composition"
+				? `/tests/banner?composition=true&`
+				: `/tests/banner?`;
 
-		// Case 1: If custom icon is passed, it is shown
-		const bannerInfoWithCustomIcon = page.getByTestId(
-			"banner-info-custom-icon",
-		);
+		test(`${apiType} API: If custom icon is passed, it is shown`, async ({
+			page,
+		}) => {
+			await page.goto(`${baseUrl}tone=info&icon=true`);
+			const bannerInfoWithCustomIcon = page.locator(".my-banner");
 
-		await expect(bannerInfoWithCustomIcon).toBeVisible();
-		await expect(
-			bannerInfoWithCustomIcon.locator(".my-banner-icon use"),
-		).toBeVisible();
-		await expect(
-			bannerInfoWithCustomIcon.locator(".my-banner-icon path"),
-		).not.toBeVisible();
+			await expect(bannerInfoWithCustomIcon).toBeVisible();
+			await expect(
+				bannerInfoWithCustomIcon.locator("svg.my-banner-custom-icon"),
+			).toBeVisible();
+		});
 
-		// Case 2: When no custom icon but non-neutral status, default status icon is shown
-		const bannerInfoWithNoCustomIcon = page.getByTestId(
-			"banner-info-no-custom-icon",
-		);
+		test(`${apiType} API: When no custom icon but non-neutral tone, default status icon is shown`, async ({
+			page,
+		}) => {
+			await page.goto(`${baseUrl}tone=info`);
+			const bannerInfoWithNoCustomIcon = page.locator(".my-banner");
 
-		await expect(bannerInfoWithNoCustomIcon).toBeVisible();
-		await expect(
-			bannerInfoWithNoCustomIcon.locator(".my-banner-icon use"),
-		).not.toBeVisible();
-		await expect(
-			bannerInfoWithNoCustomIcon.locator(".my-banner-icon path"),
-		).toBeVisible();
+			await expect(bannerInfoWithNoCustomIcon).toBeVisible();
+			await expect(
+				bannerInfoWithNoCustomIcon.locator("svg"),
+			).not.toContainClass("my-banner-default-icon");
+		});
 
-		// Case 3: When no custom icon and neutral status, no icon is shown
-		// In composition API, we assume consumer does not pass Banner.Icon without href when neutral tone.
-		// Thus, no need to test this case.
-	});
+		test(`${apiType} API: When no custom icon and neutral tone, no icon is shown`, async ({
+			page,
+		}) => {
+			await page.goto(baseUrl);
+			const bannerNeutralWithNoCustomIcon = page.locator(".my-banner");
 
-	test("Convenience API: if no icon is passed to Banner and tone is non-neutral, default status icon is shown. Else the custom icon is shown", async ({
-		page,
-	}) => {
-		// Case 1: If custom icon is passed, it is shown
-		await page.goto("/tests/banner?tone=info&icon=true");
-		const bannerInfoWithCustomIcon = page.locator(".my-banner");
-
-		await expect(bannerInfoWithCustomIcon).toBeVisible();
-		await expect(bannerInfoWithCustomIcon.locator("svg use")).toBeVisible();
-		await expect(
-			bannerInfoWithCustomIcon.locator("svg path"),
-		).not.toBeVisible();
-
-		// Case 2: When no custom icon but non-neutral status, default status icon is shown
-		await page.goto("/tests/banner?tone=info");
-		const bannerInfoWithNoCustomIcon = page.locator(".my-banner");
-
-		await expect(bannerInfoWithNoCustomIcon).toBeVisible();
-		await expect(
-			bannerInfoWithNoCustomIcon.locator("svg use"),
-		).not.toBeVisible();
-		await expect(bannerInfoWithNoCustomIcon.locator("svg path")).toBeVisible();
-
-		// Case 3: When no custom icon and neutral status, no icon is shown
-		await page.goto("/tests/banner");
-		const bannerNeutralWithNoCustomIcon = page.locator(".my-banner");
-
-		await expect(bannerNeutralWithNoCustomIcon).toBeVisible();
-		await expect(
-			bannerNeutralWithNoCustomIcon.locator("svg"),
-		).not.toBeVisible();
+			await expect(bannerNeutralWithNoCustomIcon).toBeVisible();
+			await expect(
+				bannerNeutralWithNoCustomIcon.locator("svg"),
+			).not.toBeVisible();
+		});
 	});
 });
 

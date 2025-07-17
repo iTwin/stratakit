@@ -9,6 +9,8 @@ import { Tree } from "@stratakit/structures";
 import { produce } from "immer";
 import { definePage } from "~/~utils.tsx";
 
+import type { VariantProps } from "~/~utils.tsx";
+
 import unlockIcon from "@stratakit/icons/lock-unlocked.svg";
 import placeholderIcon from "@stratakit/icons/placeholder.svg";
 import refreshIcon from "@stratakit/icons/refresh.svg";
@@ -159,55 +161,104 @@ export default definePage(
 									<Icon href={placeholderIcon} />
 								)
 							}
-							actions={[
-								error && (
-									<Tree.ItemAction
-										key="retry"
-										icon={refreshIcon}
-										label="Retry"
-										onClick={handleRetry}
-									/>
-								),
-								<Tree.ItemAction
-									key="unlock"
-									icon={unlockIcon}
-									label="Unlock"
-									visible={visible}
-								/>,
-								<Tree.ItemAction
-									key="show"
-									icon={showIcon}
-									label="Show"
-									visible={visible}
-								/>,
-							]}
+							inlineActions={
+								error
+									? [
+											<Tree.ItemAction
+												key="retry"
+												icon={refreshIcon}
+												label="Retry"
+												onClick={handleRetry}
+											/>,
+										]
+									: [
+											<Tree.ItemAction
+												key="unlock"
+												icon={unlockIcon}
+												label="Unlock"
+												visible={visible}
+											/>,
+											<Tree.ItemAction
+												key="show"
+												icon={showIcon}
+												label="Show"
+												visible={visible}
+											/>,
+										]
+							}
+							actions={
+								error
+									? [
+											<Tree.ItemAction
+												key="unlock"
+												icon={unlockIcon}
+												label="Unlock"
+											/>,
+											<Tree.ItemAction
+												key="show"
+												icon={showIcon}
+												label="Show"
+											/>,
+										]
+									: undefined
+							}
 						/>
 					);
 				})}
 			</Tree.Root>
 		);
 	},
-	{ _actionsOverflow: ActionsOverflowTest },
+	{
+		actions: ActionsTest,
+	},
 );
+interface ItemActionProps extends React.ComponentProps<typeof Tree.ItemAction> {
+	hidden?: boolean;
+}
 
-function ActionsOverflowTest({ count = 5, dot = false }) {
-	const actions = Array.from({ length: Number(count) }).map((_, index) => (
-		<Tree.ItemAction
-			key={`${index + 1}`}
-			label={`Action ${index + 1}`}
-			icon={placeholderIcon}
-			dot={dot ? "Something's going on" : undefined}
-		/>
-	));
+function ItemAction(props: ItemActionProps) {
+	const { hidden, ...rest } = props;
+	if (hidden) return null;
+	return <Tree.ItemAction icon={placeholderIcon} {...rest} />;
+}
 
+function ActionsTest({
+	inline: inlineParam,
+	menu: menuParam,
+	dot,
+	error: errorParam,
+	hiddenIds: hiddenIdsParam,
+}: VariantProps) {
+	const inline = inlineParam ? Number(inlineParam) : 2;
+	const menu = menuParam ? Number(menuParam) : 3;
+	const error = errorParam ? Boolean(errorParam) : undefined;
+	const hiddenIds = hiddenIdsParam
+		? hiddenIdsParam.split(";").map((id) => Number(id))
+		: [];
+
+	const allActions = Array.from({ length: inline + menu }, (_, index) => {
+		const id = index + 1;
+		return (
+			<ItemAction
+				key={id}
+				label={`Action ${id}`}
+				dot={dot ? "Something's going on" : undefined}
+				hidden={hiddenIds.includes(id)}
+			/>
+		);
+	});
+	const inlineActions = allActions.slice(0, inline);
+	const actions = allActions.slice(inline);
 	return (
 		<Tree.Root>
 			<Tree.Item
-				label="Foo"
+				label="Item 1"
 				aria-level={1}
 				aria-posinset={1}
 				aria-setsize={1}
+				inlineActions={inlineActions}
 				actions={actions}
+				error={error}
 			/>
 		</Tree.Root>
 	);

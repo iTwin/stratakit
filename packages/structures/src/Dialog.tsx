@@ -16,16 +16,14 @@ import type { BaseProps } from "@stratakit/foundations/secret-internals";
 
 interface DialogProps
 	extends BaseProps,
-		Pick<AkDialog.DialogProps, "open" | "onClose"> {
-	backdrop?: React.ReactElement<React.ComponentPropsWithRef<"div">>;
-}
+		Pick<AkDialog.DialogProps, "open" | "onClose" | "backdrop"> {}
 
 const DialogRoot = forwardRef<"div", DialogProps>((props, forwardedRef) => {
 	const { backdrop, ...rest } = props;
 	return (
 		<AkDialog.Dialog
 			{...rest}
-			backdrop={backdrop}
+			backdrop={backdrop === true ? DialogBackdrop : backdrop}
 			className={cx("🥝-dialog", props.className)}
 			ref={forwardedRef}
 		>

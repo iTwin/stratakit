@@ -36,11 +36,7 @@ function VisualTest() {
 	return (
 		<>
 			<Button onClick={() => setOpen(true)}>Open</Button>
-			<Dialog.Root
-				open={open}
-				onClose={() => setOpen(false)}
-				backdrop={<Dialog.Backdrop />}
-			>
+			<Dialog.Root open={open} onClose={() => setOpen(false)} backdrop>
 				<Dialog.Heading>Heading</Dialog.Heading>
 				<Dialog.DismissButton />
 				<Dialog.Content

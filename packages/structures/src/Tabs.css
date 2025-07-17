@@ -121,7 +121,10 @@
 	}
 
 	@layer states {
-		&:where([aria-selected="true"]) {
+		&:where(
+				[aria-selected="true"]:not([data-selected="true"] ~ &, :has(~ [data-selected="true"])),
+				[data-selected="true"]:not([aria-selected="true"])
+			) {
 			--🌀tab-state: var(--🌀tab-state--selected);
 
 			anchor-name: --🥝active-tab;

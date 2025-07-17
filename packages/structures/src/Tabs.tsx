@@ -3,8 +3,12 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
+import { useStoreState } from "@ariakit/react/store";
 import * as AkTab from "@ariakit/react/tab";
-import { forwardRef } from "@stratakit/foundations/secret-internals";
+import {
+	forwardRef,
+	useEventHandlers,
+} from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
 
 import type {
@@ -136,11 +140,24 @@ interface TabProps
  * ```
  */
 const Tab = forwardRef<"button", TabProps>((props, forwardedRef) => {
+	const context = AkTab.useTabContext();
+	const selectedId = useStoreState(context, "selectedId");
+	const tablist = useStoreState(context, "baseElement");
+
 	return (
 		<AkTab.Tab
 			accessibleWhenDisabled
 			{...props}
 			className={cx("🥝-tab", props.className)}
+			onPointerDown={useEventHandlers(props.onPointerDown, (event) => {
+				const tab = event.currentTarget;
+				if (props.disabled || !tab || !tablist) return;
+
+				// We set `data-selected` before click completes, to start the animation earlier.
+				// This helps make the UI feel more responsive when the render takes too long.
+				tab.dataset.selected = "true";
+			})}
+			data-selected={selectedId !== props.id ? "false" : undefined} // Reset the attribute on next re-render
 			ref={forwardedRef}
 		/>
 	);

@@ -352,21 +352,24 @@ const TreeItemRoot = React.memo(
 			[styleProp, level],
 		);
 		return (
-			<Role
-				{...rest}
-				render={<CompositeItem render={props.render ?? <div />} />}
-				role="treeitem"
-				aria-expanded={expanded}
-				aria-selected={selected}
-				aria-labelledby={labelId}
-				aria-describedby={describedBy}
-				aria-level={level}
-				className={cx("🥝-tree-item", props.className)}
-				style={style}
-				ref={forwardedRef}
+			<CompositeItem
+				render={
+					<Role
+						{...rest}
+						role="treeitem"
+						aria-expanded={expanded}
+						aria-selected={selected}
+						aria-labelledby={labelId}
+						aria-describedby={describedBy}
+						aria-level={level}
+						className={cx("🥝-tree-item", props.className)}
+						style={style}
+						ref={forwardedRef}
+					/>
+				}
 			>
 				{props.children}
-			</Role>
+			</CompositeItem>
 		);
 	}),
 );
@@ -741,18 +744,21 @@ const TreeItemAction = React.memo(
 		}
 
 		return (
-			<IconButton
-				label={label}
-				icon={icon}
-				// @ts-expect-error: Using string value as a workaround for React 18
-				inert={visible === false ? "true" : undefined}
-				{...rest}
-				render={<ToolbarItem render={props.render} />}
-				dot={dot}
-				variant="ghost"
-				className={cx("🥝-tree-item-action", props.className)}
-				data-kiwi-visible={visible}
-				ref={forwardedRef}
+			<ToolbarItem
+				render={
+					<IconButton
+						label={label}
+						icon={icon}
+						// @ts-expect-error: Using string value as a workaround for React 18
+						inert={visible === false ? "true" : undefined}
+						{...rest}
+						dot={dot}
+						variant="ghost"
+						className={cx("🥝-tree-item-action", props.className)}
+						data-kiwi-visible={visible}
+						ref={forwardedRef}
+					/>
+				}
 			/>
 		);
 	}),

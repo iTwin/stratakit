@@ -3,10 +3,11 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import * as Disclosure from "@ariakit/react/disclosure";
-import { Button, Divider, Text } from "@stratakit/bricks";
-import { Icon } from "@stratakit/foundations";
-import { Table } from "@stratakit/structures";
+import { Divider, Text } from "@stratakit/bricks";
+import {
+	unstable_AccordionItem as AccordionItem,
+	Table,
+} from "@stratakit/structures";
 import { parseTokens } from "internal/lightningcss-visitors.js";
 import { useColorScheme } from "~/~utils.tsx";
 
@@ -77,70 +78,54 @@ export default function Page() {
 				});
 
 				return (
-					<Disclosure.DisclosureProvider key={key} defaultOpen={true}>
-						<div className={styles.disclosureWrapper}>
-							<Disclosure.Disclosure
-								render={<Button variant="ghost" />}
-								className={styles.disclosureButton}
-							>
-								<Icon
-									render={<ArrowIcon />}
-									className={styles.disclosureIcon}
-								/>
-								{value}
-							</Disclosure.Disclosure>
+					<AccordionItem.Root key={key} defaultOpen>
+						<AccordionItem.Header>
+							<AccordionItem.Marker />
+							<AccordionItem.Button>
+								<AccordionItem.Label>{value}</AccordionItem.Label>
+							</AccordionItem.Button>
+						</AccordionItem.Header>
 
-							<Disclosure.DisclosureContent>
-								<Tokens tokens={relevantTokens} kind="color" />
-							</Disclosure.DisclosureContent>
-						</div>
-					</Disclosure.DisclosureProvider>
+						<AccordionItem.Content className={styles.accordionItemContent}>
+							<Tokens tokens={relevantTokens} kind="color" />
+						</AccordionItem.Content>
+					</AccordionItem.Root>
 				);
 			})}
-
-			<Divider />
 
 			<Text variant="body-lg" render={<h2 />}>
 				Shadows
 			</Text>
 
-			<Disclosure.DisclosureProvider defaultOpen={true}>
-				<div className={styles.disclosureWrapper}>
-					<Disclosure.Disclosure
-						render={<Button variant="ghost" />}
-						className={styles.disclosureButton}
-					>
-						<Icon render={<ArrowIcon />} className={styles.disclosureIcon} />
-						All shadows
-					</Disclosure.Disclosure>
+			<AccordionItem.Root defaultOpen>
+				<AccordionItem.Header>
+					<AccordionItem.Marker />
+					<AccordionItem.Button>
+						<AccordionItem.Label>All shadows</AccordionItem.Label>
+					</AccordionItem.Button>
+				</AccordionItem.Header>
 
-					<Disclosure.DisclosureContent>
-						<Tokens tokens={[...shadowTokens.keys()]} kind="shadow" />
-					</Disclosure.DisclosureContent>
-				</div>
-			</Disclosure.DisclosureProvider>
-
-			<Divider />
+				<AccordionItem.Content className={styles.accordionItemContent}>
+					<Tokens tokens={[...shadowTokens.keys()]} kind="shadow" />
+				</AccordionItem.Content>
+			</AccordionItem.Root>
 
 			<Text variant="body-lg" render={<h2 />}>
 				Typography
 			</Text>
 
-			<Disclosure.DisclosureProvider defaultOpen={true}>
-				<div className={styles.disclosureWrapper}>
-					<Disclosure.Disclosure
-						render={<Button variant="ghost" />}
-						className={styles.disclosureButton}
-					>
-						<Icon render={<ArrowIcon />} className={styles.disclosureIcon} />
-						All typography variants
-					</Disclosure.Disclosure>
+			<AccordionItem.Root defaultOpen>
+				<AccordionItem.Header>
+					<AccordionItem.Marker />
+					<AccordionItem.Button>
+						<AccordionItem.Label>All typography variants</AccordionItem.Label>
+					</AccordionItem.Button>
+				</AccordionItem.Header>
 
-					<Disclosure.DisclosureContent>
-						<TypographyVariants variants={typographyVariants} />
-					</Disclosure.DisclosureContent>
-				</div>
-			</Disclosure.DisclosureProvider>
+				<AccordionItem.Content className={styles.accordionItemContent}>
+					<TypographyVariants variants={typographyVariants} />
+				</AccordionItem.Content>
+			</AccordionItem.Root>
 		</>
 	);
 }
@@ -223,17 +208,4 @@ function Swatch({
 	};
 
 	return <div className={styles.swatch} style={style as React.CSSProperties} />;
-}
-
-function ArrowIcon(props: React.ComponentProps<"svg">) {
-	return (
-		<svg viewBox="0 0 16 16" fill="none" aria-hidden="true" {...props}>
-			<path
-				fill="currentColor"
-				fillRule="evenodd"
-				d="M4.646 6.646a.5.5 0 0 1 .708 0L8 9.293l2.646-2.647a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 0 1 0-.708Z"
-				clipRule="evenodd"
-			/>
-		</svg>
-	);
 }

@@ -11,6 +11,8 @@ export { Button } from "./Button.js";
 export { Checkbox } from "./Checkbox.js";
 export { Divider } from "./Divider.js";
 export { DropdownButton, DropdownMenu } from "./DropdownMenu.js";
+export { Icon } from "./Icon.js";
+export { IconButton } from "./IconButton.js";
 export { Input } from "./Input.js";
 export { InputGrid } from "./InputGrid.js";
 export { Kbd, KbdKeys } from "./Kbd.js";

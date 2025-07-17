@@ -11,6 +11,7 @@ import {
 import { Tabs as SkTabs } from "@stratakit/structures";
 import cx from "classnames";
 import { useCompatProps } from "./~utils.js";
+import { Icon } from "./Icon.js";
 
 import type { Tab as IuiTab, Tabs as IuiTabs } from "@itwin/itwinui-react";
 import type { PolymorphicForwardRefComponent } from "./~utils.js";
@@ -141,8 +142,6 @@ interface LegacyTabProps
 	/** NOT IMPLEMENTED. */
 	sublabel?: IuiTabLegacyProps["sublabel"];
 	/** NOT IMPLEMENTED. */
-	startIcon?: IuiTabLegacyProps["startIcon"];
-	/** NOT IMPLEMENTED. */
 	children?: IuiTabLegacyProps["children"];
 	/** NOT IMPLEMENTED. */
 	value?: IuiTabLegacyProps["value"];
@@ -154,10 +153,10 @@ const LegacyTab = React.forwardRef((props, forwardedRef) => {
 		id: _id, // ignored by iTwinUI
 		label,
 		disabled,
+		startIcon,
 
 		// biome-ignore-start lint/correctness/noUnusedVariables: NOT IMPLEMENTED
 		sublabel,
-		startIcon,
 		children,
 		value,
 		// biome-ignore-end lint/correctness/noUnusedVariables: NOT IMPLEMENTED
@@ -168,6 +167,7 @@ const LegacyTab = React.forwardRef((props, forwardedRef) => {
 	const { tabValue } = useSafeContext(LegacyTabContext);
 	return (
 		<Tab {...rest} value={tabValue} disabled={disabled} ref={forwardedRef}>
+			{startIcon ? <TabIcon>{startIcon}</TabIcon> : null}
 			{label}
 		</Tab>
 	);
@@ -355,13 +355,15 @@ DEV: Panel.displayName = "Tabs.Panel";
 
 // ----------------------------------------------------------------------------
 
-/** NOT IMPLEMENTED. */
-const TabIcon = React.forwardRef((_props, _forwardedRef) => {
-	return null;
-}) as PolymorphicForwardRefComponent<
-	"span",
-	React.ComponentProps<typeof IuiTabs.TabIcon>
->;
+type IconProps = React.ComponentProps<typeof Icon>;
+
+interface TabIconProps extends IconProps {}
+
+/** @see https://itwinui.bentley.com/docs/tabs#composition-api */
+const TabIcon = React.forwardRef((props, forwardedRef) => {
+	return <Icon {...props} ref={forwardedRef} />;
+}) as PolymorphicForwardRefComponent<"svg", TabIconProps>;
+DEV: TabIcon.displayName = "Tabs.TabIcon";
 
 // ----------------------------------------------------------------------------
 
@@ -400,7 +402,6 @@ const Tabs = Object.assign(LegacyTabs, {
 	Wrapper,
 	TabList,
 	Tab,
-	/** NOT IMPLEMENTED. */
 	TabIcon,
 	/** NOT IMPLEMENTED. */
 	TabLabel,

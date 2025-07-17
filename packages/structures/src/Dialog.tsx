@@ -16,21 +16,13 @@ import type { BaseProps } from "@stratakit/foundations/secret-internals";
 interface DialogProps
 	extends BaseProps,
 		Pick<AkDialog.DialogProps, "open" | "onClose"> {
-	heading: React.ReactNode;
 	primaryContent: React.ReactNode;
 	secondaryContent?: React.ReactNode;
 	actions?: React.ReactNode;
 }
 
-const Dialog = forwardRef<"div", DialogProps>((props, forwardedRef) => {
-	const {
-		heading,
-		actions,
-		primaryContent,
-		secondaryContent,
-		onClose,
-		...rest
-	} = props;
+const DialogRoot = forwardRef<"div", DialogProps>((props, forwardedRef) => {
+	const { actions, primaryContent, secondaryContent, onClose, ...rest } = props;
 	return (
 		<AkDialog.Dialog
 			{...rest}
@@ -38,13 +30,7 @@ const Dialog = forwardRef<"div", DialogProps>((props, forwardedRef) => {
 			className={cx("🥝-dialog", props.className)}
 			ref={forwardedRef}
 		>
-			<Text
-				variant="body-lg"
-				className="🥝-dialog-heading"
-				render={<AkDialog.DialogHeading />}
-			>
-				{heading}
-			</Text>
+			{props.children}
 			{onClose && (
 				<IconButton
 					className="🥝-dialog-close"
@@ -68,7 +54,28 @@ const Dialog = forwardRef<"div", DialogProps>((props, forwardedRef) => {
 		</AkDialog.Dialog>
 	);
 });
+DEV: DialogRoot.displayName = "Dialog.Root";
 
 // -------------------------------------------------------------------------
 
-export default Dialog;
+interface DialogHeadingProps extends BaseProps<"h1"> {}
+
+const DialogHeading = forwardRef<"h1", DialogHeadingProps>(
+	(props, forwardedRef) => {
+		return (
+			<AkDialog.DialogHeading
+				{...props}
+				render={<Text variant="body-lg" render={props.render ?? <h1 />} />}
+				className={cx("🥝-dialog-heading", props.className)}
+				ref={forwardedRef}
+			>
+				{props.children}
+			</AkDialog.DialogHeading>
+		);
+	},
+);
+DEV: DialogHeading.displayName = "Dialog.Heading";
+
+// -------------------------------------------------------------------------
+
+export { DialogRoot as Root, DialogHeading as Heading };

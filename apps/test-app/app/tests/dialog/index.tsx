@@ -5,7 +5,7 @@
 
 import * as React from "react";
 import { Button } from "@stratakit/bricks";
-import { Dialog } from "@stratakit/structures";
+import * as Dialog from "@stratakit/structures/Dialog";
 import { definePage } from "~/~utils.tsx";
 
 export const handle = { title: "Dialog" };
@@ -27,10 +27,9 @@ function VisualTest() {
 	return (
 		<>
 			<Button onClick={() => setOpen(true)}>Open</Button>
-			<Dialog
+			<Dialog.Root
 				open={open}
 				onClose={() => setOpen(false)}
-				heading="Heading"
 				primaryContent="Primary content."
 				secondaryContent="Additional information about the success message can go here."
 				actions={
@@ -41,7 +40,9 @@ function VisualTest() {
 						</Button>
 					</>
 				}
-			/>
+			>
+				<Dialog.Heading>Heading</Dialog.Heading>
+			</Dialog.Root>
 		</>
 	);
 }
@@ -51,12 +52,13 @@ function CloseableTest() {
 	return (
 		<>
 			<Button onClick={() => setOpen(true)}>Open</Button>
-			<Dialog
+			<Dialog.Root
 				open={open}
 				onClose={() => setOpen(false)}
-				heading="Heading"
 				primaryContent="Primary content."
-			/>
+			>
+				<Dialog.Heading>Heading</Dialog.Heading>
+			</Dialog.Root>
 		</>
 	);
 }
@@ -66,13 +68,14 @@ function SecondaryContent() {
 	return (
 		<>
 			<Button onClick={() => setOpen(true)}>Open</Button>
-			<Dialog
+			<Dialog.Root
 				open={open}
 				onClose={() => setOpen(false)}
-				heading="Heading"
 				primaryContent="Primary content."
 				secondaryContent="Additional information about the success message can go here."
-			/>
+			>
+				<Dialog.Heading>Heading</Dialog.Heading>
+			</Dialog.Root>
 		</>
 	);
 }
@@ -82,10 +85,9 @@ function Actions() {
 	return (
 		<>
 			<Button onClick={() => setOpen(true)}>Open</Button>
-			<Dialog
+			<Dialog.Root
 				open={open}
 				onClose={() => setOpen(false)}
-				heading="Heading"
 				primaryContent="Primary content."
 				actions={
 					<>
@@ -95,7 +97,9 @@ function Actions() {
 						</Button>
 					</>
 				}
-			/>
+			>
+				<Dialog.Heading>Heading</Dialog.Heading>
+			</Dialog.Root>
 		</>
 	);
 }

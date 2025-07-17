@@ -12,11 +12,23 @@ export const handle = { title: "Dialog" };
 
 export default definePage(
 	function Page() {
-		return <VisualTest />;
+		const [open, setOpen] = React.useState(false);
+		return (
+			<>
+				<Button onClick={() => setOpen(true)}>Open</Button>
+				<Dialog.Root
+					open={open}
+					onClose={() => setOpen(false)}
+					primaryContent="Primary content."
+				>
+					<Dialog.Heading>Heading</Dialog.Heading>
+				</Dialog.Root>
+			</>
+		);
 	},
 	{
 		visual: VisualTest,
-		close: CloseableTest,
+		dismissButton: DismissButtonTest,
 		secondaryContent: SecondaryContent,
 		actions: Actions,
 	},
@@ -42,12 +54,13 @@ function VisualTest() {
 				}
 			>
 				<Dialog.Heading>Heading</Dialog.Heading>
+				<Dialog.DismissButton />
 			</Dialog.Root>
 		</>
 	);
 }
 
-function CloseableTest() {
+function DismissButtonTest() {
 	const [open, setOpen] = React.useState(false);
 	return (
 		<>
@@ -58,6 +71,7 @@ function CloseableTest() {
 				primaryContent="Primary content."
 			>
 				<Dialog.Heading>Heading</Dialog.Heading>
+				<Dialog.DismissButton />
 			</Dialog.Root>
 		</>
 	);

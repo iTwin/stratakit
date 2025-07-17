@@ -31,15 +31,6 @@ const DialogRoot = forwardRef<"div", DialogProps>((props, forwardedRef) => {
 			ref={forwardedRef}
 		>
 			{props.children}
-			{onClose && (
-				<IconButton
-					className="🥝-dialog-close"
-					variant="ghost"
-					label="Close"
-					icon={<Dismiss />}
-					render={<AkDialog.DialogDismiss />}
-				/>
-			)}
 			{primaryContent && (
 				<Text variant="body-sm" className="🥝-dialog-primary">
 					{primaryContent}
@@ -78,4 +69,33 @@ DEV: DialogHeading.displayName = "Dialog.Heading";
 
 // -------------------------------------------------------------------------
 
-export { DialogRoot as Root, DialogHeading as Heading };
+interface DialogDismissButtonProps extends BaseProps<"button"> {}
+
+const DialogDismissButton = forwardRef<"button", DialogDismissButtonProps>(
+	(props, forwardedRef) => {
+		return (
+			<AkDialog.DialogDismiss
+				{...props}
+				render={
+					<IconButton
+						render={props.render}
+						variant="ghost"
+						label="Close"
+						icon={<Dismiss />}
+					/>
+				}
+				className="🥝-dialog-close"
+				ref={forwardedRef}
+			/>
+		);
+	},
+);
+DEV: DialogDismissButton.displayName = "Dialog.DismissButton";
+
+// -------------------------------------------------------------------------
+
+export {
+	DialogRoot as Root,
+	DialogHeading as Heading,
+	DialogDismissButton as DismissButton,
+};

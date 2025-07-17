@@ -29,6 +29,8 @@ import type { BaseProps } from "@stratakit/foundations/secret-internals";
 
 const TreeItemErrorContext =
 	React.createContext<TreeItemProps["error"]>(undefined);
+const TreeItemInlineActionsContext =
+	React.createContext<TreeItemProps["inlineActions"]>(undefined);
 const TreeItemActionsContext =
 	React.createContext<TreeItemProps["actions"]>(undefined);
 const TreeItemDecorationsContext =
@@ -48,12 +50,6 @@ const TreeItemDescriptionContext =
 const TreeItemDescriptionIdContext = React.createContext<string | undefined>(
 	undefined,
 );
-
-const TreeItemInlineActionsContext =
-	React.createContext<React.ReactNode>(undefined);
-const TreeItemOverflowActionsContext =
-	React.createContext<React.ReactNode>(undefined);
-const TreeItemHasOverflowActionsContext = React.createContext(false);
 
 // ----------------------------------------------------------------------------
 
@@ -118,28 +114,37 @@ interface TreeItemProps extends Omit<BaseProps, "content" | "children"> {
 	/** Secondary line of text to display additional information about the tree item. */
 	description?: React.ReactNode;
 	/**
-	 * The secondary actions available for the tree item. Must be a list of `Tree.ItemAction` components.
+	 * The secondary actions available for the tree item displayed as icon buttons in a toolbar. Must be a list of `Tree.ItemAction` components.
 	 *
 	 * Example:
 	 * ```tsx
-	 * actions={[
-	 *   error && <Tree.ItemAction key={…} icon={…} label={…} />,
-	 *   <Tree.ItemAction key={…} icon={…} label={…} />,
-	 *   <Tree.ItemAction key={…} icon={…} label={…} />,
-	 * ]}
+	 * inlineActions={
+	 *   error
+	 *     ? [
+	 *         <Tree.ItemAction key={…} icon={…} label={…} />
+	 *       ]
+	 *     : [
+	 *         <Tree.ItemAction key={…} icon={…} label={…} />,
+	 *         <Tree.ItemAction key={…} icon={…} label={…} />,
+	 *       ]
+	 * }
 	 * ```
 	 *
-	 * Excess actions will automatically get collapsed into an overflow menu.
-	 * - Normally, the third action and onwards will overflow.
-	 * - When the `error` prop is set, the _second_ action and onwards will overflow.
+	 * Inline actions should only be used for frequently used and quickly accessible actions.
+	 * At most two inline actions are displayed. A single action should be specified when tree item has an error.
 	 *
-	 * The actions are normally hidden until the treeitem is hovered or focused.
+	 * The inline actions are normally hidden until the treeitem is hovered or focused.
 	 * When the `error` prop is set, the actions will be made visible by default. The first
-	 * action slot can be used to display an error-related action.
+	 * action slot should usually be used to display an error-related action.
+	 *
+	 * @experimental
+	 */
+	inlineActions?: React.ReactNode[];
+	/**
+	 * The secondary actions available for the tree item displayed in a dropdown menu. Must be a list of `Tree.ItemAction` components.
 	 *
 	 * ```tsx
 	 * actions={[
-	 *   error && <Tree.ItemAction key={…} icon={…} label={…} />,
 	 *   <Tree.ItemAction key={…} icon={…} label={…} />,
 	 *   <Tree.ItemAction key={…} icon={…} label={…} />,
 	 * ]}
@@ -197,6 +202,7 @@ const TreeItem = React.memo(
 			unstable_decorations: _unstable_decorations,
 			label: _label,
 			description: _description,
+			inlineActions: _inlineActions,
 			actions: _actions,
 			error: _error,
 			onClick: onClickProp,
@@ -269,6 +275,7 @@ interface TreeItemRootProviderProps extends TreeItemProps {
  */
 function TreeItemRootProvider(props: TreeItemRootProviderProps) {
 	const {
+		inlineActions,
 		actions,
 		label,
 		description,
@@ -285,27 +292,33 @@ function TreeItemRootProvider(props: TreeItemRootProviderProps) {
 	const hasDecoration = icon || decorations;
 	return (
 		<TreeItemErrorContext.Provider value={error}>
-			<TreeItemActionsContext.Provider value={actions}>
-				<TreeItemDecorationIdContext.Provider
-					value={hasDecoration ? decorationId : undefined}
-				>
-					<TreeItemDecorationsContext.Provider value={decorations}>
-						<TreeItemIconContext.Provider value={icon}>
-							<TreeItemLabelIdContext.Provider value={labelId}>
-								<TreeItemLabelContext.Provider value={label}>
-									<TreeItemDescriptionContext.Provider value={description}>
-										<TreeItemDescriptionIdContext.Provider
-											value={description ? descriptionId : undefined}
-										>
-											{props.children}
-										</TreeItemDescriptionIdContext.Provider>
-									</TreeItemDescriptionContext.Provider>
-								</TreeItemLabelContext.Provider>
-							</TreeItemLabelIdContext.Provider>
-						</TreeItemIconContext.Provider>
-					</TreeItemDecorationsContext.Provider>
-				</TreeItemDecorationIdContext.Provider>
-			</TreeItemActionsContext.Provider>
+			<TreeItemInlineActionsContext.Provider value={inlineActions}>
+				<TreeItemActionsContext.Provider value={actions}>
+					<TreeItemDisplayActionsMenuContext
+						value={actions ? actions.length > 0 : false}
+					>
+						<TreeItemDecorationIdContext.Provider
+							value={hasDecoration ? decorationId : undefined}
+						>
+							<TreeItemDecorationsContext.Provider value={decorations}>
+								<TreeItemIconContext.Provider value={icon}>
+									<TreeItemLabelIdContext.Provider value={labelId}>
+										<TreeItemLabelContext.Provider value={label}>
+											<TreeItemDescriptionContext.Provider value={description}>
+												<TreeItemDescriptionIdContext.Provider
+													value={description ? descriptionId : undefined}
+												>
+													{props.children}
+												</TreeItemDescriptionIdContext.Provider>
+											</TreeItemDescriptionContext.Provider>
+										</TreeItemLabelContext.Provider>
+									</TreeItemLabelIdContext.Provider>
+								</TreeItemIconContext.Provider>
+							</TreeItemDecorationsContext.Provider>
+						</TreeItemDecorationIdContext.Provider>
+					</TreeItemDisplayActionsMenuContext>
+				</TreeItemActionsContext.Provider>
+			</TreeItemInlineActionsContext.Provider>
 		</TreeItemErrorContext.Provider>
 	);
 }
@@ -501,23 +514,19 @@ DEV: TreeItemDescription.displayName = "TreeItemDescription";
 const TreeItemActions = React.memo(
 	forwardRef<"div", Omit<BaseProps, "children">>((props, forwardedRef) => {
 		return (
-			<TreeItemActionsProvider>
-				<ListItem.Decoration
-					{...props}
-					onClick={useEventHandlers(props.onClick, (e) => e.stopPropagation())}
-					onKeyDown={useEventHandlers(props.onKeyDown, (e) =>
-						e.stopPropagation(),
-					)}
-					className={cx("🥝-tree-item-actions-container", props.className)}
-					ref={forwardedRef}
-					render={
-						<Toolbar focusLoop={false}>
-							<TreeItemInlineActions />
-							<TreeItemActionsOverflowMenu />
-						</Toolbar>
-					}
-				/>
-			</TreeItemActionsProvider>
+			<ListItem.Decoration
+				{...props}
+				onClick={useEventHandlers(props.onClick, (e) => e.stopPropagation())}
+				onKeyDown={useEventHandlers(props.onKeyDown, (e) =>
+					e.stopPropagation(),
+				)}
+				className={cx("🥝-tree-item-actions-container", props.className)}
+				ref={forwardedRef}
+				render={<Toolbar focusLoop={false} />}
+			>
+				<TreeItemInlineActionsRenderer />
+				<TreeItemActionMenu />
+			</ListItem.Decoration>
 		);
 	}),
 );
@@ -525,113 +534,86 @@ DEV: TreeItemActions.displayName = "TreeItemActions";
 
 // ----------------------------------------------------------------------------
 
-/**
- * Provides the overflow menu and the inline actions.
- * @private
- */
-function TreeItemActionsProvider(props: React.PropsWithChildren) {
-	const actionsProp = React.useContext(TreeItemActionsContext);
-	const error = React.useContext(TreeItemErrorContext);
-	const actionsLimit = error ? 2 : 3;
-
-	const { inline, overflow } = React.useMemo(() => {
-		const actions = React.Children.toArray(actionsProp).filter(Boolean);
-		const inline = (
-			<>
-				{actions.slice(0, actionsLimit - 1)}
-				{actions.length === actionsLimit ? actions[actionsLimit - 1] : null}
-			</>
-		);
-		const overflow =
-			actions.length > actionsLimit
-				? actions.slice(actionsLimit - 1)
-				: undefined;
-		return { inline, overflow };
-	}, [actionsProp, actionsLimit]);
-
-	return (
-		<TreeItemInlineActionsContext.Provider value={inline}>
-			<TreeItemOverflowActionsContext.Provider value={overflow}>
-				<TreeItemHasOverflowActionsContext.Provider value={!!overflow}>
-					{props.children}
-				</TreeItemHasOverflowActionsContext.Provider>
-			</TreeItemOverflowActionsContext.Provider>
-		</TreeItemInlineActionsContext.Provider>
-	);
+function TreeItemInlineActionsRenderer() {
+	const actions = React.useContext(TreeItemInlineActionsContext) ?? [];
+	const actionsToDisplay = actions.slice(0, 2);
+	return actionsToDisplay;
 }
-DEV: TreeItemActionsProvider.displayName = "TreeItemActionsProvider";
-
-// ----------------------------------------------------------------------------
-
-/**
- * Displays the tree item actions that are rendered outside of the overflow menu.
- * @private
- */
-function TreeItemInlineActions() {
-	const actions = React.useContext(TreeItemInlineActionsContext);
-	return actions;
-}
-DEV: TreeItemInlineActions.displayName = "TreeItemInlineActions";
+DEV: TreeItemInlineActionsRenderer.displayName =
+	"TreeItemInlineActionsRenderer";
 
 // ----------------------------------------------------------------------------
 
 const arrowKeys = ["ArrowDown", "ArrowUp", "ArrowLeft", "ArrowRight"];
 
-const TreeItemActionsOverflowMenuContext = React.createContext(false);
+const TreeItemActionsMenuContext = React.createContext(false);
+const TreeItemDisplayActionsMenuContext = React.createContext(false);
 
-/**
- * Displays overflowing actions inside a dropdown menu.
- * @private
- */
-function TreeItemActionsOverflowMenu() {
-	const overflow = React.useContext(TreeItemHasOverflowActionsContext);
-	const [open, _setOpen] = React.useState(false);
-	const isArrowKeyPressed = React.useRef(false);
+interface TreeItemActionMenuProps
+	extends Omit<BaseProps<"button">, "children"> {}
 
-	const setOpen = React.useCallback((value: boolean) => {
-		// Do not open the menu using arrow keys because it conflicts with the toolbar's arrow key navigation
-		if (value && !isArrowKeyPressed.current) {
-			_setOpen(true);
-		} else {
-			_setOpen(false);
-		}
-	}, []);
+const TreeItemActionMenu = React.memo(
+	forwardRef<"button", TreeItemActionMenuProps>((props, forwardedRef) => {
+		const [open, _setOpen] = React.useState(false);
+		const isArrowKeyPressed = React.useRef(false);
+		const displayMenu = React.useContext(TreeItemDisplayActionsMenuContext);
 
-	if (!overflow) return null;
-	return (
-		<PopoverProvider placement="right-start">
-			<DropdownMenu.Root open={open} setOpen={setOpen}>
-				<DropdownMenu.Button
-					onKeyDown={(e) => {
-						if (arrowKeys.includes(e.key)) {
-							isArrowKeyPressed.current = true;
+		const setOpen = React.useCallback((value: boolean) => {
+			// Do not open the menu using arrow keys because it conflicts with the toolbar's arrow key navigation
+			if (value && !isArrowKeyPressed.current) {
+				_setOpen(true);
+			} else {
+				_setOpen(false);
+			}
+		}, []);
+
+		if (!displayMenu) return null;
+		return (
+			<PopoverProvider placement="right-start">
+				<DropdownMenu.Root open={open} setOpen={setOpen}>
+					<DropdownMenu.Button
+						{...props}
+						onKeyDown={(e) => {
+							if (arrowKeys.includes(e.key)) {
+								isArrowKeyPressed.current = true;
+							}
+							queueMicrotask(() => {
+								isArrowKeyPressed.current = false;
+							});
+						}}
+						render={
+							<TreeItemInlineAction label="More" icon={<MoreHorizontal />} />
 						}
-						queueMicrotask(() => {
-							isArrowKeyPressed.current = false;
-						});
-					}}
-					render={<TreeItemAction label="More" icon={<MoreHorizontal />} />}
-				/>
-				<TreeItemActionsOverflowMenuContext.Provider value={true}>
-					<TreeItemActionsOverflowMenuContent />
-				</TreeItemActionsOverflowMenuContext.Provider>
-			</DropdownMenu.Root>
-		</PopoverProvider>
-	);
-}
-DEV: TreeItemActionsOverflowMenu.displayName = "TreeItemActionsOverflowMenu";
+						ref={forwardedRef}
+					/>
+					<TreeItemMenuActionsContent />
+				</DropdownMenu.Root>
+			</PopoverProvider>
+		);
+	}),
+);
+DEV: TreeItemActionMenu.displayName = "TreeItemActionMenu";
 
 // ----------------------------------------------------------------------------
 
-/**
- * Displays the overflowing actions inside a dropdown menu.
- * @private
- */
-function TreeItemActionsOverflowMenuContent() {
-	const actions = React.useContext(TreeItemOverflowActionsContext);
-	return <DropdownMenu.Content>{actions}</DropdownMenu.Content>;
+function TreeItemMenuActionsContent() {
+	return (
+		<TreeItemActionsMenuContext.Provider value={true}>
+			<DropdownMenu.Content>
+				<TreeItemActionsRenderer />
+			</DropdownMenu.Content>
+		</TreeItemActionsMenuContext.Provider>
+	);
 }
-DEV: TreeItemActionsOverflowMenu.displayName = "TreeItemActionsOverflowMenu";
+DEV: TreeItemMenuActionsContent.displayName = "TreeItemMenuActionsContent";
+
+// ----------------------------------------------------------------------------
+
+function TreeItemActionsRenderer() {
+	const actions = React.useContext(TreeItemActionsContext) ?? [];
+	return actions;
+}
+DEV: TreeItemActionsRenderer.displayName = "TreeItemActionsRenderer";
 
 // ----------------------------------------------------------------------------
 
@@ -691,22 +673,12 @@ interface TreeItemActionProps extends Omit<BaseProps<"button">, "children"> {
  */
 const TreeItemAction = React.memo(
 	forwardRef<"button", TreeItemActionProps>((props, forwardedRef) => {
-		const error = React.useContext(TreeItemErrorContext);
-		const {
-			visible = error ? true : undefined, // visible by default during error state
-			label,
-			icon,
-			dot,
-			...rest
-		} = props;
+		const { label, icon, dot, ...rest } = props;
+
+		const actionsMenuContext = React.useContext(TreeItemActionsMenuContext);
 
 		// return a MenuItem if inside a Menu
-		if (React.useContext(TreeItemActionsOverflowMenuContext)) {
-			DEV: {
-				if (visible !== undefined)
-					console.warn("overflowing actions should not use `visible` prop");
-			}
-
+		if (actionsMenuContext) {
 			return (
 				<DropdownMenu.Item
 					{...rest}
@@ -718,6 +690,27 @@ const TreeItemAction = React.memo(
 			);
 		}
 
+		return <TreeItemInlineAction {...props} ref={forwardedRef} />;
+	}),
+);
+DEV: TreeItemAction.displayName = "Tree.ItemAction";
+
+// ----------------------------------------------------------------------------
+
+const TreeItemInlineAction = React.memo(
+	forwardRef<"button", TreeItemActionProps>((props, forwardedRef) => {
+		const error = React.useContext(TreeItemErrorContext);
+
+		const generatedId = React.useId();
+		const {
+			id = generatedId,
+			visible = error ? true : undefined, // visible by default during error state
+			label,
+			icon,
+			dot,
+			...rest
+		} = props;
+
 		DEV: {
 			if (!icon)
 				throw new Error(
@@ -726,26 +719,24 @@ const TreeItemAction = React.memo(
 		}
 
 		return (
-			<ToolbarItem
-				render={
-					<IconButton
-						label={label}
-						icon={icon}
-						// @ts-expect-error: Using string value as a workaround for React 18
-						inert={visible === false ? "true" : undefined}
-						{...rest}
-						dot={dot}
-						variant="ghost"
-						className={cx("🥝-tree-item-action", props.className)}
-						data-kiwi-visible={visible}
-						ref={forwardedRef}
-					/>
-				}
+			<IconButton
+				id={id}
+				label={label}
+				icon={icon}
+				// @ts-expect-error: Using string value as a workaround for React 18
+				inert={visible === false ? "true" : undefined}
+				{...rest}
+				render={<ToolbarItem render={props.render} />}
+				dot={dot}
+				variant="ghost"
+				className={cx("🥝-tree-item-action", props.className)}
+				data-kiwi-visible={visible}
+				ref={forwardedRef}
 			/>
 		);
 	}),
 );
-DEV: TreeItemAction.displayName = "TreeItem.Action";
+DEV: TreeItemInlineAction.displayName = "TreeItemInlineAction";
 
 // ----------------------------------------------------------------------------
 

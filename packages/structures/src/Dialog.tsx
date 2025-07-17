@@ -16,12 +16,16 @@ import type { BaseProps } from "@stratakit/foundations/secret-internals";
 
 interface DialogProps
 	extends BaseProps,
-		Pick<AkDialog.DialogProps, "open" | "onClose"> {}
+		Pick<AkDialog.DialogProps, "open" | "onClose"> {
+	backdrop?: React.ReactElement<React.ComponentPropsWithRef<"div">>;
+}
 
 const DialogRoot = forwardRef<"div", DialogProps>((props, forwardedRef) => {
+	const { backdrop, ...rest } = props;
 	return (
 		<AkDialog.Dialog
-			{...props}
+			{...rest}
+			backdrop={backdrop}
 			className={cx("🥝-dialog", props.className)}
 			ref={forwardedRef}
 		>
@@ -125,10 +129,30 @@ DEV: DialogActions.displayName = "Dialog.Actions";
 
 // -------------------------------------------------------------------------
 
+interface DialogBackdropProps extends BaseProps {}
+
+const DialogBackdrop = forwardRef<"div", DialogBackdropProps>(
+	(props, forwardedRef) => {
+		return (
+			<Role
+				{...props}
+				className={cx("🥝-dialog-backdrop", props.className)}
+				ref={forwardedRef}
+			>
+				{props.children}
+			</Role>
+		);
+	},
+);
+DEV: DialogBackdrop.displayName = "Dialog.Backdrop";
+
+// -------------------------------------------------------------------------
+
 export {
 	DialogRoot as Root,
 	DialogHeading as Heading,
 	DialogDismissButton as DismissButton,
 	DialogContent as Content,
 	DialogActions as Actions,
+	DialogBackdrop as Backdrop,
 };

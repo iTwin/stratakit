@@ -26,7 +26,8 @@ export default definePage(
 	{
 		visual: VisualTest,
 		dismissButton: DismissButtonTest,
-		actions: Actions,
+		actions: ActionsTest,
+		backdrop: BackdropTest,
 	},
 );
 
@@ -35,7 +36,11 @@ function VisualTest() {
 	return (
 		<>
 			<Button onClick={() => setOpen(true)}>Open</Button>
-			<Dialog.Root open={open} onClose={() => setOpen(false)}>
+			<Dialog.Root
+				open={open}
+				onClose={() => setOpen(false)}
+				backdrop={<Dialog.Backdrop />}
+			>
 				<Dialog.Heading>Heading</Dialog.Heading>
 				<Dialog.DismissButton />
 				<Dialog.Content
@@ -74,7 +79,7 @@ function DismissButtonTest() {
 	);
 }
 
-function Actions() {
+function ActionsTest() {
 	const [open, setOpen] = React.useState(false);
 	return (
 		<>
@@ -88,6 +93,23 @@ function Actions() {
 						Ok
 					</Button>
 				</Dialog.Actions>
+			</Dialog.Root>
+		</>
+	);
+}
+
+function BackdropTest() {
+	const [open, setOpen] = React.useState(false);
+	return (
+		<>
+			<Button onClick={() => setOpen(true)}>Open</Button>
+			<Dialog.Root
+				open={open}
+				onClose={() => setOpen(false)}
+				backdrop={<Dialog.Backdrop />}
+			>
+				<Dialog.Heading>Heading</Dialog.Heading>
+				<Dialog.Content>Content</Dialog.Content>
 			</Dialog.Root>
 		</>
 	);

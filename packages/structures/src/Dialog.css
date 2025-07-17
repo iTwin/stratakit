@@ -3,6 +3,9 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 .🥝-dialog {
+	--✨padding-block: 16px;
+	--✨padding-inline: 20px;
+
 	@layer base {
 		position: fixed;
 		inset-block-start: round(33%, 1px);
@@ -16,12 +19,12 @@
 		box-shadow:
 			0px 1px 0px 0px rgba(0, 0, 0, 0.08),
 			0px 0px 0px 1px rgba(0, 0, 0, 0.8),
-			0px 0 0 1 rgba(255, 255, 255, 0.12) inset,
-			0 1 1 -0.5 rgba(0, 0, 0, 0.16),
-			0 3 3 -1.5 rgba(0, 0, 0, 0.16),
-			0 6 6 -3 rgba(0, 0, 0, 0.16),
-			0 12 12 -6 rgba(0, 0, 0, 0.16),
-			0 24 24 -12 rgba(0, 0, 0, 0.16);
+			0px 0px 0px 1px rgba(255, 255, 255, 0.12) inset,
+			0px 1px 1px -0.5px rgba(0, 0, 0, 0.16),
+			0px 3px 3px -1.5px rgba(0, 0, 0, 0.16),
+			0px 6px 6px -3px rgba(0, 0, 0, 0.16),
+			0px 12px 12px -6px rgba(0, 0, 0, 0.16),
+			0px 24px 24px -12px rgba(0, 0, 0, 0.16);
 
 		/* Prevents actions container from overlapping the box-shadow */
 		padding: 1px;
@@ -32,44 +35,42 @@
 }
 
 .🥝-dialog-heading {
+	--✨padding-block: 16px;
+	--✨padding-inline: 20px;
+
 	@layer base {
 		grid-column: content;
 		grid-row: 1;
 
-		padding-block: 16px;
-		padding-inline: 20px;
+		padding-block: var(--✨padding-block);
+		padding-inline: var(--✨padding-inline);
 	}
 }
 
 .🥝-dialog-dismiss {
+	--✨padding-block: 16px;
+	--✨padding-inline: 20px;
+
 	@layer base {
 		grid-column: dismiss;
 		grid-row: 1;
 
-		margin-block: 16px;
-		margin-inline-end: calc(20px - var(--🥝ghost-inline-offset));
+		margin-block: var(--✨padding-block);
+		margin-inline-end: calc(var(--✨padding-inline) - var(--🥝ghost-inline-offset));
 	}
 }
 
-.🥝-dialog-primary {
+.🥝-dialog-content {
+	--✨padding: 20px;
+
 	@layer base {
 		color: var(--stratakit-color-text-neutral-primary);
 
 		grid-column: content / -1;
+		grid-row: 2;
 
-		padding-block-end: 16px;
-		padding-inline: 20px;
-	}
-}
-
-.🥝-dialog-secondary {
-	@layer base {
-		color: var(--stratakit-color-text-neutral-secondary);
-
-		grid-column: content / -1;
-
-		padding-block-end: 16px;
-		padding-inline: 20px;
+		padding-block-end: var(--✨padding);
+		padding-inline: var(--✨padding);
 	}
 }
 
@@ -79,6 +80,7 @@
 
 	@layer base {
 		grid-column: content / -1;
+		grid-row: 3;
 
 		border-block-start: 1px solid var(--stratakit-color-border-page-base);
 		border-end-start-radius: var(--✨border-radius);
@@ -87,7 +89,6 @@
 
 		padding-inline: var(--✨padding);
 		padding-block: var(--✨padding);
-		margin-block-start: 4px;
 
 		display: flex;
 		justify-content: end;

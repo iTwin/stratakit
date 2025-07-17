@@ -16,31 +16,16 @@ import type { BaseProps } from "@stratakit/foundations/secret-internals";
 
 interface DialogProps
 	extends BaseProps,
-		Pick<AkDialog.DialogProps, "open" | "onClose"> {
-	primaryContent: React.ReactNode;
-	secondaryContent?: React.ReactNode;
-}
+		Pick<AkDialog.DialogProps, "open" | "onClose"> {}
 
 const DialogRoot = forwardRef<"div", DialogProps>((props, forwardedRef) => {
-	const { primaryContent, secondaryContent, onClose, ...rest } = props;
 	return (
 		<AkDialog.Dialog
-			{...rest}
-			onClose={onClose}
+			{...props}
 			className={cx("🥝-dialog", props.className)}
 			ref={forwardedRef}
 		>
 			{props.children}
-			{primaryContent && (
-				<Text variant="body-sm" className="🥝-dialog-primary">
-					{primaryContent}
-				</Text>
-			)}
-			{secondaryContent && (
-				<Text variant="body-sm" className="🥝-dialog-secondary">
-					{secondaryContent}
-				</Text>
-			)}
 		</AkDialog.Dialog>
 	);
 });
@@ -101,6 +86,26 @@ DEV: DialogDismissButton.displayName = "Dialog.DismissButton";
 
 // -------------------------------------------------------------------------
 
+interface DialogContentProps extends BaseProps {}
+
+const DialogContent = forwardRef<"div", DialogContentProps>(
+	(props, forwardedRef) => {
+		return (
+			<Text
+				variant="body-sm"
+				{...props}
+				className={cx("🥝-dialog-content", props.className)}
+				ref={forwardedRef}
+			>
+				{props.children}
+			</Text>
+		);
+	},
+);
+DEV: DialogContent.displayName = "Dialog.Content";
+
+// -------------------------------------------------------------------------
+
 interface DialogActionsProps extends BaseProps {}
 
 const DialogActions = forwardRef<"div", DialogActionsProps>(
@@ -124,5 +129,6 @@ export {
 	DialogRoot as Root,
 	DialogHeading as Heading,
 	DialogDismissButton as DismissButton,
+	DialogContent as Content,
 	DialogActions as Actions,
 };

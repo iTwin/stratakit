@@ -4,7 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 
 import * as React from "react";
-import { Button } from "@stratakit/bricks";
+import { Button, Text } from "@stratakit/bricks";
 import * as Dialog from "@stratakit/structures/Dialog";
 import { definePage } from "~/~utils.tsx";
 
@@ -16,12 +16,9 @@ export default definePage(
 		return (
 			<>
 				<Button onClick={() => setOpen(true)}>Open</Button>
-				<Dialog.Root
-					open={open}
-					onClose={() => setOpen(false)}
-					primaryContent="Primary content."
-				>
+				<Dialog.Root open={open} onClose={() => setOpen(false)}>
 					<Dialog.Heading>Heading</Dialog.Heading>
+					<Dialog.Content>Content</Dialog.Content>
 				</Dialog.Root>
 			</>
 		);
@@ -29,7 +26,6 @@ export default definePage(
 	{
 		visual: VisualTest,
 		dismissButton: DismissButtonTest,
-		secondaryContent: SecondaryContent,
 		actions: Actions,
 	},
 );
@@ -39,14 +35,20 @@ function VisualTest() {
 	return (
 		<>
 			<Button onClick={() => setOpen(true)}>Open</Button>
-			<Dialog.Root
-				open={open}
-				onClose={() => setOpen(false)}
-				primaryContent="Primary content."
-				secondaryContent="Additional information about the success message can go here."
-			>
+			<Dialog.Root open={open} onClose={() => setOpen(false)}>
 				<Dialog.Heading>Heading</Dialog.Heading>
 				<Dialog.DismissButton />
+				<Dialog.Content
+					style={{ display: "flex", flexDirection: "column", gap: 16 }}
+				>
+					Primary content
+					<Text
+						variant="body-sm"
+						style={{ color: "var(--stratakit-color-text-neutral-secondary)" }}
+					>
+						Secondary content
+					</Text>
+				</Dialog.Content>
 				<Dialog.Actions>
 					<Button onClick={() => setOpen(false)}>Cancel</Button>
 					<Button tone="accent" onClick={() => setOpen(false)}>
@@ -63,30 +65,10 @@ function DismissButtonTest() {
 	return (
 		<>
 			<Button onClick={() => setOpen(true)}>Open</Button>
-			<Dialog.Root
-				open={open}
-				onClose={() => setOpen(false)}
-				primaryContent="Primary content."
-			>
+			<Dialog.Root open={open} onClose={() => setOpen(false)}>
 				<Dialog.Heading>Heading</Dialog.Heading>
 				<Dialog.DismissButton />
-			</Dialog.Root>
-		</>
-	);
-}
-
-function SecondaryContent() {
-	const [open, setOpen] = React.useState(false);
-	return (
-		<>
-			<Button onClick={() => setOpen(true)}>Open</Button>
-			<Dialog.Root
-				open={open}
-				onClose={() => setOpen(false)}
-				primaryContent="Primary content."
-				secondaryContent="Additional information about the success message can go here."
-			>
-				<Dialog.Heading>Heading</Dialog.Heading>
+				<Dialog.Content>Content</Dialog.Content>
 			</Dialog.Root>
 		</>
 	);
@@ -97,12 +79,9 @@ function Actions() {
 	return (
 		<>
 			<Button onClick={() => setOpen(true)}>Open</Button>
-			<Dialog.Root
-				open={open}
-				onClose={() => setOpen(false)}
-				primaryContent="Primary content."
-			>
+			<Dialog.Root open={open} onClose={() => setOpen(false)}>
 				<Dialog.Heading>Heading</Dialog.Heading>
+				<Dialog.Content>Content</Dialog.Content>
 				<Dialog.Actions>
 					<Button onClick={() => setOpen(false)}>Cancel</Button>
 					<Button tone="accent" onClick={() => setOpen(false)}>

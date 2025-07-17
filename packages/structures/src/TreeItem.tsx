@@ -547,7 +547,7 @@ DEV: TreeItemInlineActionsRenderer.displayName =
 const arrowKeys = ["ArrowDown", "ArrowUp", "ArrowLeft", "ArrowRight"];
 
 const TreeItemActionsMenuContext = React.createContext(false);
-const TreeItemDisplayActionsMenuContext = React.createContext<boolean>(false);
+const TreeItemDisplayActionsMenuContext = React.createContext(false);
 
 interface TreeItemActionMenuProps
 	extends Omit<BaseProps<"button">, "children"> {}

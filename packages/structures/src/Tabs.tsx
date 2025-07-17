@@ -111,8 +111,8 @@ DEV: TabList.displayName = "Tabs.TabList";
 // ----------------------------------------------------------------------------
 
 interface TabProps
-	extends FocusableProps<"button">,
-		Pick<AkTab.TabProps, "id"> {}
+	extends Omit<FocusableProps<"button">, "id">,
+		Required<Pick<AkTab.TabProps, "id">> {}
 
 /**
  * An individual tab button that switches the selected tab panel when clicked.
@@ -151,7 +151,8 @@ DEV: Tab.displayName = "Tabs.Tab";
 
 interface TabPanelProps
 	extends FocusableProps<"div">,
-		Pick<AkTab.TabPanelProps, "tabId" | "unmountOnHide" | "focusable"> {}
+		Pick<AkTab.TabPanelProps, "unmountOnHide" | "focusable">,
+		Required<Pick<AkTab.TabPanelProps, "tabId">> {}
 
 /**
  * The actual content of a tab, shown when the tab is selected. Should be used as a child of `Tabs.Root`.

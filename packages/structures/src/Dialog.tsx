@@ -146,6 +146,21 @@ DEV: DialogBackdrop.displayName = "Dialog.Backdrop";
 
 // -------------------------------------------------------------------------
 
+interface DialogDescriptionProps extends BaseProps<"p"> {}
+
+const DialogDescription = forwardRef<"p", DialogDescriptionProps>(
+	(props, forwardedRef) => {
+		return (
+			<AkDialog.DialogDescription {...props} ref={forwardedRef}>
+				{props.children}
+			</AkDialog.DialogDescription>
+		);
+	},
+);
+DEV: DialogDescription.displayName = "Dialog.Description";
+
+// -------------------------------------------------------------------------
+
 export {
 	DialogRoot as Root,
 	DialogHeading as Heading,
@@ -153,4 +168,5 @@ export {
 	DialogContent as Content,
 	DialogActions as Actions,
 	DialogBackdrop as Backdrop,
+	DialogDescription as Description,
 };

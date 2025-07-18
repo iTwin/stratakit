@@ -30,6 +30,7 @@ export default definePage(
 		backdrop: BackdropTest,
 		nonModal: NonModalTest,
 		nested: NestedTest,
+		description: DescriptionTest,
 	},
 );
 
@@ -162,6 +163,24 @@ function NestedTest() {
 					<Dialog.Heading>Heading</Dialog.Heading>
 					<Dialog.Content>Content of nested non-modal dialog</Dialog.Content>
 				</Dialog.Root>
+			</Dialog.Root>
+		</>
+	);
+}
+
+function DescriptionTest() {
+	const [open, setOpen] = React.useState(false);
+	return (
+		<>
+			<Button onClick={() => setOpen(true)}>Open</Button>
+			<Dialog.Root open={open}>
+				<Dialog.Heading>Heading</Dialog.Heading>
+				<Dialog.Content render={<Dialog.Description />}>
+					Description
+				</Dialog.Content>
+				<Dialog.Actions>
+					<Button onClick={() => setOpen(false)}>Close</Button>
+				</Dialog.Actions>
 			</Dialog.Root>
 		</>
 	);

@@ -3,6 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
+import * as React from "react";
 import { Button, Text } from "@stratakit/bricks";
 import * as Dialog from "@stratakit/structures/Dialog";
 import { definePage } from "~/~utils.tsx";
@@ -23,6 +24,7 @@ export default definePage(
 	},
 	{
 		visual: VisualTest,
+		controlled: ControlledTest,
 		closeButton: CloseButtonTest,
 		actions: ActionsTest,
 		backdrop: BackdropTest,
@@ -58,6 +60,21 @@ function VisualTest() {
 				</Dialog.Actions>
 			</Dialog.Root>
 		</Dialog.Provider>
+	);
+}
+
+function ControlledTest() {
+	const [open, setOpen] = React.useState(false);
+	return (
+		<>
+			<Button onClick={() => setOpen(true)}>Open</Button>
+			<Dialog.Provider open={open} setOpen={setOpen}>
+				<Dialog.Root>
+					<Dialog.Heading>Controlled Dialog</Dialog.Heading>
+					<Dialog.Content>Content</Dialog.Content>
+				</Dialog.Root>
+			</Dialog.Provider>
+		</>
 	);
 }
 

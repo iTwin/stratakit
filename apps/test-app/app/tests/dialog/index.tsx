@@ -28,6 +28,7 @@ export default definePage(
 		dismissButton: DismissButtonTest,
 		actions: ActionsTest,
 		backdrop: BackdropTest,
+		nonModal: NonModalTest,
 	},
 );
 
@@ -104,6 +105,19 @@ function BackdropTest() {
 				onClose={() => setOpen(false)}
 				backdrop={<Dialog.Backdrop />}
 			>
+				<Dialog.Heading>Heading</Dialog.Heading>
+				<Dialog.Content>Content</Dialog.Content>
+			</Dialog.Root>
+		</>
+	);
+}
+
+function NonModalTest() {
+	const [open, setOpen] = React.useState(false);
+	return (
+		<>
+			<Button onClick={() => setOpen(true)}>Open</Button>
+			<Dialog.Root open={open} onClose={() => setOpen(false)} modal={false}>
 				<Dialog.Heading>Heading</Dialog.Heading>
 				<Dialog.Content>Content</Dialog.Content>
 			</Dialog.Root>

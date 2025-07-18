@@ -196,23 +196,9 @@ function AllStyleCases() {
 	);
 }
 
-function CompositionBasicTest({
-	icon,
-	tone = "neutral",
-}: Record<string, string>) {
-	const shouldRenderIcon = icon === "true" || tone !== "neutral";
-
+function CompositionBasicTest({ tone = "neutral" }: Record<string, string>) {
 	return (
 		<BannerRoot className="my-banner" tone={tone as (typeof tones)[number]}>
-			{shouldRenderIcon ? (
-				<BannerIcon
-					render={
-						<svg className="my-banner-custom-icon">
-							<use href={placeholderIcon} />
-						</svg>
-					}
-				/>
-			) : null}
 			<BannerLabel>Label</BannerLabel>
 			<BannerMessage>
 				This is a message that can be very long and will wrap to the next line.

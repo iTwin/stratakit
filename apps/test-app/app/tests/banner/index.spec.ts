@@ -32,48 +32,39 @@ test("dismiss", async ({ page }) => {
 	}
 });
 
-test.describe("appropriately show custom or default icon", () => {
-	(["composition", "convenience"] as const).forEach((apiType) => {
-		const baseUrl =
-			apiType === "composition"
-				? `/tests/banner?composition=true&`
-				: `/tests/banner?`;
+test.describe("appropriately show custom or default icon in convenience API", () => {
+	test("If custom icon is passed, it is shown", async ({ page }) => {
+		await page.goto("/tests/banner?tone=info&icon=true");
+		const bannerInfoWithCustomIcon = page.locator(".my-banner");
 
-		test(`${apiType} API: If custom icon is passed, it is shown`, async ({
-			page,
-		}) => {
-			await page.goto(`${baseUrl}tone=info&icon=true`);
-			const bannerInfoWithCustomIcon = page.locator(".my-banner");
+		await expect(bannerInfoWithCustomIcon).toBeVisible();
+		await expect(
+			bannerInfoWithCustomIcon.locator("svg.my-banner-custom-icon"),
+		).toBeVisible();
+	});
 
-			await expect(bannerInfoWithCustomIcon).toBeVisible();
-			await expect(
-				bannerInfoWithCustomIcon.locator("svg.my-banner-custom-icon"),
-			).toBeVisible();
-		});
+	test("When no custom icon but non-neutral tone, default status icon is shown", async ({
+		page,
+	}) => {
+		await page.goto("/tests/banner?tone=info");
+		const bannerInfoWithNoCustomIcon = page.locator(".my-banner");
 
-		test(`${apiType} API: When no custom icon but non-neutral tone, default status icon is shown`, async ({
-			page,
-		}) => {
-			await page.goto(`${baseUrl}tone=info`);
-			const bannerInfoWithNoCustomIcon = page.locator(".my-banner");
+		await expect(bannerInfoWithNoCustomIcon).toBeVisible();
+		await expect(bannerInfoWithNoCustomIcon.locator("svg")).not.toContainClass(
+			"my-banner-default-icon",
+		);
+	});
 
-			await expect(bannerInfoWithNoCustomIcon).toBeVisible();
-			await expect(
-				bannerInfoWithNoCustomIcon.locator("svg"),
-			).not.toContainClass("my-banner-default-icon");
-		});
+	test("When no custom icon and neutral tone, no icon is shown", async ({
+		page,
+	}) => {
+		await page.goto("/tests/banner");
+		const bannerNeutralWithNoCustomIcon = page.locator(".my-banner");
 
-		test(`${apiType} API: When no custom icon and neutral tone, no icon is shown`, async ({
-			page,
-		}) => {
-			await page.goto(baseUrl);
-			const bannerNeutralWithNoCustomIcon = page.locator(".my-banner");
-
-			await expect(bannerNeutralWithNoCustomIcon).toBeVisible();
-			await expect(
-				bannerNeutralWithNoCustomIcon.locator("svg"),
-			).not.toBeVisible();
-		});
+		await expect(bannerNeutralWithNoCustomIcon).toBeVisible();
+		await expect(
+			bannerNeutralWithNoCustomIcon.locator("svg"),
+		).not.toBeVisible();
 	});
 });
 

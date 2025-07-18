@@ -14,9 +14,24 @@ import type { BaseProps } from "@stratakit/foundations/secret-internals";
 
 // ----------------------------------------------------------------------------
 
+interface DialogProviderProps
+	extends BaseProps,
+		Pick<AkDialog.DialogProviderProps, "children" | "open" | "setOpen"> {}
+
+function DialogProvider(props: DialogProviderProps) {
+	return (
+		<AkDialog.DialogProvider {...props}>
+			{props.children}
+		</AkDialog.DialogProvider>
+	);
+}
+DEV: DialogProvider.displayName = "Dialog.Provider";
+
+// ----------------------------------------------------------------------------
+
 interface DialogProps
 	extends BaseProps,
-		Pick<AkDialog.DialogProps, "open" | "onClose" | "modal" | "backdrop"> {}
+		Pick<AkDialog.DialogProps, "onClose" | "modal" | "backdrop"> {}
 
 const DialogRoot = forwardRef<"div", DialogProps>((props, forwardedRef) => {
 	const { backdrop, ...rest } = props;
@@ -161,7 +176,8 @@ DEV: DialogDescription.displayName = "Dialog.Description";
 
 // -------------------------------------------------------------------------
 
-export {
+export type {
+	DialogProvider as Provider,
 	DialogRoot as Root,
 	DialogHeading as Heading,
 	DialogDismissButton as DismissButton,

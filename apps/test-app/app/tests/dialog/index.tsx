@@ -3,7 +3,6 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import * as React from "react";
 import { Button, Text } from "@stratakit/bricks";
 import * as Dialog from "@stratakit/structures/Dialog";
 import { definePage } from "~/~utils.tsx";
@@ -24,7 +23,7 @@ export default definePage(
 	},
 	{
 		visual: VisualTest,
-		dismissButton: DismissButtonTest,
+		closeButton: CloseButtonTest,
 		actions: ActionsTest,
 		backdrop: BackdropTest,
 		nonModal: NonModalTest,
@@ -34,13 +33,12 @@ export default definePage(
 );
 
 function VisualTest() {
-	const [open, setOpen] = React.useState(false);
 	return (
-		<Dialog.Provider open={open} setOpen={setOpen}>
+		<Dialog.Provider>
 			<Dialog.Disclosure>Open</Dialog.Disclosure>
 			<Dialog.Root backdrop>
 				<Dialog.Heading>Heading</Dialog.Heading>
-				<Dialog.DismissButton />
+				<Dialog.CloseButton />
 				<Dialog.Content
 					style={{ display: "flex", flexDirection: "column", gap: 16 }}
 				>
@@ -53,23 +51,23 @@ function VisualTest() {
 					</Text>
 				</Dialog.Content>
 				<Dialog.Actions>
-					<Button onClick={() => setOpen(false)}>Cancel</Button>
-					<Button tone="accent" onClick={() => setOpen(false)}>
+					<Dialog.DismissButton>Cancel</Dialog.DismissButton>
+					<Dialog.DismissButton render={<Button tone="accent" />}>
 						Ok
-					</Button>
+					</Dialog.DismissButton>
 				</Dialog.Actions>
 			</Dialog.Root>
 		</Dialog.Provider>
 	);
 }
 
-function DismissButtonTest() {
+function CloseButtonTest() {
 	return (
 		<Dialog.Provider>
 			<Dialog.Disclosure>Open</Dialog.Disclosure>
 			<Dialog.Root>
 				<Dialog.Heading>Heading</Dialog.Heading>
-				<Dialog.DismissButton />
+				<Dialog.CloseButton />
 				<Dialog.Content>Content</Dialog.Content>
 			</Dialog.Root>
 		</Dialog.Provider>
@@ -77,18 +75,17 @@ function DismissButtonTest() {
 }
 
 function ActionsTest() {
-	const [open, setOpen] = React.useState(false);
 	return (
-		<Dialog.Provider open={open} setOpen={setOpen}>
+		<Dialog.Provider>
 			<Dialog.Disclosure>Open</Dialog.Disclosure>
 			<Dialog.Root>
 				<Dialog.Heading>Heading</Dialog.Heading>
 				<Dialog.Content>Content</Dialog.Content>
 				<Dialog.Actions>
-					<Button onClick={() => setOpen(false)}>Cancel</Button>
-					<Button tone="accent" onClick={() => setOpen(false)}>
+					<Dialog.DismissButton>Cancel</Dialog.DismissButton>
+					<Dialog.DismissButton render={<Button tone="accent" />}>
 						Ok
-					</Button>
+					</Dialog.DismissButton>
 				</Dialog.Actions>
 			</Dialog.Root>
 		</Dialog.Provider>
@@ -120,11 +117,8 @@ function NonModalTest() {
 }
 
 function NestedTest() {
-	const [open, setOpen] = React.useState(false);
-	const [nestedOpen, setNestedOpen] = React.useState(false);
-	const [nestedModalOpen, setNestedModalOpen] = React.useState(false);
 	return (
-		<Dialog.Provider open={open} setOpen={setOpen}>
+		<Dialog.Provider>
 			<Dialog.Disclosure>Open</Dialog.Disclosure>
 			<Dialog.Root>
 				<Dialog.Heading>Heading</Dialog.Heading>
@@ -137,14 +131,14 @@ function NestedTest() {
 					}}
 				>
 					<span>Nest dialogs in the React element tree</span>
-					<Dialog.Provider open={nestedModalOpen} setOpen={setNestedModalOpen}>
+					<Dialog.Provider>
 						<Dialog.Disclosure>Open modal</Dialog.Disclosure>
 						<Dialog.Root>
 							<Dialog.Heading>Heading</Dialog.Heading>
 							<Dialog.Content>Content of nested modal dialog</Dialog.Content>
 						</Dialog.Root>
 					</Dialog.Provider>
-					<Dialog.Provider open={nestedOpen} setOpen={setNestedOpen}>
+					<Dialog.Provider>
 						<Dialog.Disclosure>Open non-modal</Dialog.Disclosure>
 						<Dialog.Root modal={false}>
 							<Dialog.Heading>Heading</Dialog.Heading>
@@ -160,18 +154,14 @@ function NestedTest() {
 }
 
 function DescriptionTest() {
-	const [open, setOpen] = React.useState(false);
 	return (
-		<Dialog.Provider open={open} setOpen={setOpen}>
+		<Dialog.Provider>
 			<Dialog.Disclosure>Open</Dialog.Disclosure>
 			<Dialog.Root>
 				<Dialog.Heading>Heading</Dialog.Heading>
 				<Dialog.Content render={<Dialog.Description />}>
 					Description
 				</Dialog.Content>
-				<Dialog.Actions>
-					<Button onClick={() => setOpen(false)}>Close</Button>
-				</Dialog.Actions>
 			</Dialog.Root>
 		</Dialog.Provider>
 	);

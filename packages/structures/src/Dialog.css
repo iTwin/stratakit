@@ -30,7 +30,7 @@
 		padding: 1px;
 
 		display: grid;
-		grid-template-columns: [content] minmax(0, 1fr) [dismiss] auto;
+		grid-template-columns: [content] minmax(0, 1fr) [close] auto;
 	}
 }
 
@@ -47,12 +47,12 @@
 	}
 }
 
-.🥝-dialog-dismiss {
+.🥝-dialog-close {
 	--✨padding-block: 16px;
 	--✨padding-inline: 20px;
 
 	@layer base {
-		grid-column: dismiss;
+		grid-column: close;
 		grid-row: 1;
 
 		margin-block: var(--✨padding-block);

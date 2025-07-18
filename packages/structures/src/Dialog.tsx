@@ -89,16 +89,16 @@ DEV: DialogHeading.displayName = "Dialog.Heading";
 
 // -------------------------------------------------------------------------
 
-interface DialogDismissButtonProps extends BaseProps<"button"> {
+interface DialogCloseButtonProps extends Omit<BaseProps<"button">, "children"> {
 	/**
-	 * Label for the dismiss button.
+	 * Label for the close button.
 	 *
 	 * @default "Dismiss"
 	 */
 	label?: string;
 }
 
-const DialogDismissButton = forwardRef<"button", DialogDismissButtonProps>(
+const DialogCloseButton = forwardRef<"button", DialogCloseButtonProps>(
 	(props, forwardedRef) => {
 		const { label = "Dismiss", ...rest } = props;
 		return (
@@ -107,12 +107,29 @@ const DialogDismissButton = forwardRef<"button", DialogDismissButtonProps>(
 				render={
 					<IconButton
 						render={props.render}
+						className={cx("🥝-dialog-close", props.className)}
 						variant="ghost"
 						label={label}
 						icon={<Dismiss />}
 					/>
 				}
-				className={cx("🥝-dialog-dismiss", props.className)}
+				ref={forwardedRef}
+			/>
+		);
+	},
+);
+DEV: DialogCloseButton.displayName = "Dialog.CloseButton";
+
+// -------------------------------------------------------------------------
+
+interface DialogDismissButtonProps extends BaseProps<"button"> {}
+
+const DialogDismissButton = forwardRef<"button", DialogDismissButtonProps>(
+	(props, forwardedRef) => {
+		return (
+			<AkDialog.DialogDismiss
+				{...props}
+				render={props.render ?? <Button />}
 				ref={forwardedRef}
 			/>
 		);
@@ -200,9 +217,10 @@ export {
 	DialogDisclosure as Disclosure,
 	DialogRoot as Root,
 	DialogHeading as Heading,
-	DialogDismissButton as DismissButton,
+	DialogCloseButton as CloseButton,
 	DialogContent as Content,
 	DialogActions as Actions,
+	DialogDismissButton as DismissButton,
 	DialogBackdrop as Backdrop,
 	DialogDescription as Description,
 };

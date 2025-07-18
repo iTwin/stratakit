@@ -29,6 +29,7 @@ export default definePage(
 		actions: ActionsTest,
 		backdrop: BackdropTest,
 		nonModal: NonModalTest,
+		nested: NestedTest,
 	},
 );
 
@@ -120,6 +121,47 @@ function NonModalTest() {
 			<Dialog.Root open={open} onClose={() => setOpen(false)} modal={false}>
 				<Dialog.Heading>Heading</Dialog.Heading>
 				<Dialog.Content>Content</Dialog.Content>
+			</Dialog.Root>
+		</>
+	);
+}
+
+function NestedTest() {
+	const [open, setOpen] = React.useState(false);
+	const [nestedOpen, setNestedOpen] = React.useState(false);
+	const [nestedModalOpen, setNestedModalOpen] = React.useState(false);
+	return (
+		<>
+			<Button onClick={() => setOpen(true)}>Open</Button>
+			<Dialog.Root open={open} onClose={() => setOpen(false)}>
+				<Dialog.Heading>Heading</Dialog.Heading>
+				<Dialog.Content
+					style={{
+						display: "flex",
+						flexDirection: "column",
+						alignItems: "flex-start",
+						gap: 16,
+					}}
+				>
+					<span>Nest dialogs in the React element tree</span>
+					<Button onClick={() => setNestedModalOpen(true)}>Open modal</Button>
+					<Button onClick={() => setNestedOpen(true)}>Open non-modal</Button>
+				</Dialog.Content>
+				<Dialog.Root
+					open={nestedModalOpen}
+					onClose={() => setNestedModalOpen(false)}
+				>
+					<Dialog.Heading>Heading</Dialog.Heading>
+					<Dialog.Content>Content of nested modal dialog</Dialog.Content>
+				</Dialog.Root>
+				<Dialog.Root
+					open={nestedOpen}
+					onClose={() => setNestedOpen(false)}
+					modal={false}
+				>
+					<Dialog.Heading>Heading</Dialog.Heading>
+					<Dialog.Content>Content of nested non-modal dialog</Dialog.Content>
+				</Dialog.Root>
 			</Dialog.Root>
 		</>
 	);

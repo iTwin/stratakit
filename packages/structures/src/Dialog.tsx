@@ -5,7 +5,7 @@
 
 import * as AkDialog from "@ariakit/react/dialog";
 import { Role } from "@ariakit/react/role";
-import { IconButton, Text } from "@stratakit/bricks";
+import { Button, IconButton, Text } from "@stratakit/bricks";
 import { forwardRef } from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
 import { Dismiss } from "./~utils.icons.js";
@@ -29,9 +29,28 @@ DEV: DialogProvider.displayName = "Dialog.Provider";
 
 // ----------------------------------------------------------------------------
 
+interface DialogDisclosureProps extends BaseProps<"button"> {}
+
+const DialogDisclosure = forwardRef<"button", DialogDisclosureProps>(
+	(props, forwardedRef) => {
+		return (
+			<AkDialog.DialogDisclosure
+				{...props}
+				render={props.render ?? <Button />}
+				ref={forwardedRef}
+			>
+				{props.children}
+			</AkDialog.DialogDisclosure>
+		);
+	},
+);
+DEV: DialogDisclosure.displayName = "Dialog.Disclosure";
+
+// ----------------------------------------------------------------------------
+
 interface DialogProps
 	extends BaseProps,
-		Pick<AkDialog.DialogProps, "onClose" | "modal" | "backdrop"> {}
+		Pick<AkDialog.DialogProps, "modal" | "backdrop"> {}
 
 const DialogRoot = forwardRef<"div", DialogProps>((props, forwardedRef) => {
 	const { backdrop, ...rest } = props;
@@ -176,8 +195,9 @@ DEV: DialogDescription.displayName = "Dialog.Description";
 
 // -------------------------------------------------------------------------
 
-export type {
+export {
 	DialogProvider as Provider,
+	DialogDisclosure as Disclosure,
 	DialogRoot as Root,
 	DialogHeading as Heading,
 	DialogDismissButton as DismissButton,

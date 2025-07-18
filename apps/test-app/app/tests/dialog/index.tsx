@@ -12,15 +12,14 @@ export const handle = { title: "Dialog" };
 
 export default definePage(
 	function Page() {
-		const [open, setOpen] = React.useState(false);
 		return (
-			<>
-				<Button onClick={() => setOpen(true)}>Open</Button>
-				<Dialog.Root open={open} onClose={() => setOpen(false)}>
+			<Dialog.Provider>
+				<Dialog.Disclosure>Open</Dialog.Disclosure>
+				<Dialog.Root>
 					<Dialog.Heading>Heading</Dialog.Heading>
 					<Dialog.Content>Content</Dialog.Content>
 				</Dialog.Root>
-			</>
+			</Dialog.Provider>
 		);
 	},
 	{
@@ -37,9 +36,9 @@ export default definePage(
 function VisualTest() {
 	const [open, setOpen] = React.useState(false);
 	return (
-		<>
-			<Button onClick={() => setOpen(true)}>Open</Button>
-			<Dialog.Root open={open} onClose={() => setOpen(false)} backdrop>
+		<Dialog.Provider open={open} setOpen={setOpen}>
+			<Dialog.Disclosure>Open</Dialog.Disclosure>
+			<Dialog.Root backdrop>
 				<Dialog.Heading>Heading</Dialog.Heading>
 				<Dialog.DismissButton />
 				<Dialog.Content
@@ -60,30 +59,29 @@ function VisualTest() {
 					</Button>
 				</Dialog.Actions>
 			</Dialog.Root>
-		</>
+		</Dialog.Provider>
 	);
 }
 
 function DismissButtonTest() {
-	const [open, setOpen] = React.useState(false);
 	return (
-		<>
-			<Button onClick={() => setOpen(true)}>Open</Button>
-			<Dialog.Root open={open} onClose={() => setOpen(false)}>
+		<Dialog.Provider>
+			<Dialog.Disclosure>Open</Dialog.Disclosure>
+			<Dialog.Root>
 				<Dialog.Heading>Heading</Dialog.Heading>
 				<Dialog.DismissButton />
 				<Dialog.Content>Content</Dialog.Content>
 			</Dialog.Root>
-		</>
+		</Dialog.Provider>
 	);
 }
 
 function ActionsTest() {
 	const [open, setOpen] = React.useState(false);
 	return (
-		<>
-			<Button onClick={() => setOpen(true)}>Open</Button>
-			<Dialog.Root open={open} onClose={() => setOpen(false)}>
+		<Dialog.Provider open={open} setOpen={setOpen}>
+			<Dialog.Disclosure>Open</Dialog.Disclosure>
+			<Dialog.Root>
 				<Dialog.Heading>Heading</Dialog.Heading>
 				<Dialog.Content>Content</Dialog.Content>
 				<Dialog.Actions>
@@ -93,37 +91,31 @@ function ActionsTest() {
 					</Button>
 				</Dialog.Actions>
 			</Dialog.Root>
-		</>
+		</Dialog.Provider>
 	);
 }
 
 function BackdropTest() {
-	const [open, setOpen] = React.useState(false);
 	return (
-		<>
-			<Button onClick={() => setOpen(true)}>Open</Button>
-			<Dialog.Root
-				open={open}
-				onClose={() => setOpen(false)}
-				backdrop={<Dialog.Backdrop />}
-			>
+		<Dialog.Provider>
+			<Dialog.Disclosure>Open</Dialog.Disclosure>
+			<Dialog.Root backdrop={<Dialog.Backdrop />}>
 				<Dialog.Heading>Heading</Dialog.Heading>
 				<Dialog.Content>Content</Dialog.Content>
 			</Dialog.Root>
-		</>
+		</Dialog.Provider>
 	);
 }
 
 function NonModalTest() {
-	const [open, setOpen] = React.useState(false);
 	return (
-		<>
-			<Button onClick={() => setOpen(true)}>Open</Button>
-			<Dialog.Root open={open} onClose={() => setOpen(false)} modal={false}>
+		<Dialog.Provider>
+			<Dialog.Disclosure>Open</Dialog.Disclosure>
+			<Dialog.Root modal={false}>
 				<Dialog.Heading>Heading</Dialog.Heading>
 				<Dialog.Content>Content</Dialog.Content>
 			</Dialog.Root>
-		</>
+		</Dialog.Provider>
 	);
 }
 
@@ -132,9 +124,9 @@ function NestedTest() {
 	const [nestedOpen, setNestedOpen] = React.useState(false);
 	const [nestedModalOpen, setNestedModalOpen] = React.useState(false);
 	return (
-		<>
-			<Button onClick={() => setOpen(true)}>Open</Button>
-			<Dialog.Root open={open} onClose={() => setOpen(false)}>
+		<Dialog.Provider open={open} setOpen={setOpen}>
+			<Dialog.Disclosure>Open</Dialog.Disclosure>
+			<Dialog.Root>
 				<Dialog.Heading>Heading</Dialog.Heading>
 				<Dialog.Content
 					style={{
@@ -145,35 +137,34 @@ function NestedTest() {
 					}}
 				>
 					<span>Nest dialogs in the React element tree</span>
-					<Button onClick={() => setNestedModalOpen(true)}>Open modal</Button>
-					<Button onClick={() => setNestedOpen(true)}>Open non-modal</Button>
+					<Dialog.Provider open={nestedModalOpen} setOpen={setNestedModalOpen}>
+						<Dialog.Disclosure>Open modal</Dialog.Disclosure>
+						<Dialog.Root>
+							<Dialog.Heading>Heading</Dialog.Heading>
+							<Dialog.Content>Content of nested modal dialog</Dialog.Content>
+						</Dialog.Root>
+					</Dialog.Provider>
+					<Dialog.Provider open={nestedOpen} setOpen={setNestedOpen}>
+						<Dialog.Disclosure>Open non-modal</Dialog.Disclosure>
+						<Dialog.Root modal={false}>
+							<Dialog.Heading>Heading</Dialog.Heading>
+							<Dialog.Content>
+								Content of nested non-modal dialog
+							</Dialog.Content>
+						</Dialog.Root>
+					</Dialog.Provider>
 				</Dialog.Content>
-				<Dialog.Root
-					open={nestedModalOpen}
-					onClose={() => setNestedModalOpen(false)}
-				>
-					<Dialog.Heading>Heading</Dialog.Heading>
-					<Dialog.Content>Content of nested modal dialog</Dialog.Content>
-				</Dialog.Root>
-				<Dialog.Root
-					open={nestedOpen}
-					onClose={() => setNestedOpen(false)}
-					modal={false}
-				>
-					<Dialog.Heading>Heading</Dialog.Heading>
-					<Dialog.Content>Content of nested non-modal dialog</Dialog.Content>
-				</Dialog.Root>
 			</Dialog.Root>
-		</>
+		</Dialog.Provider>
 	);
 }
 
 function DescriptionTest() {
 	const [open, setOpen] = React.useState(false);
 	return (
-		<>
-			<Button onClick={() => setOpen(true)}>Open</Button>
-			<Dialog.Root open={open}>
+		<Dialog.Provider open={open} setOpen={setOpen}>
+			<Dialog.Disclosure>Open</Dialog.Disclosure>
+			<Dialog.Root>
 				<Dialog.Heading>Heading</Dialog.Heading>
 				<Dialog.Content render={<Dialog.Description />}>
 					Description
@@ -182,6 +173,6 @@ function DescriptionTest() {
 					<Button onClick={() => setOpen(false)}>Close</Button>
 				</Dialog.Actions>
 			</Dialog.Root>
-		</>
+		</Dialog.Provider>
 	);
 }

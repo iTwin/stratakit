@@ -5,7 +5,7 @@
 
 import * as React from "react";
 import { Button, Text } from "@stratakit/bricks";
-import * as Dialog from "@stratakit/structures/Dialog";
+import * as Dialog from "@stratakit/structures/unstable_Dialog";
 import { definePage } from "~/~utils.tsx";
 
 export const handle = { title: "Dialog" };

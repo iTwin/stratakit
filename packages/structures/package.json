@@ -31,7 +31,7 @@
 			"development": "./dist/DEV/Chip.js",
 			"default": "./dist/Chip.js"
 		},
-		"./Dialog": {
+		"./unstable_Dialog": {
 			"@stratakit/source": "./src/Dialog.tsx",
 			"types": "./dist/Dialog.d.ts",
 			"development": "./dist/DEV/Dialog.js",

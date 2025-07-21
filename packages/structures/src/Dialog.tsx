@@ -85,10 +85,10 @@ DEV: DialogDisclosure.displayName = "Dialog.Disclosure";
 
 interface DialogRootProps
 	extends BaseProps,
-		Pick<AkDialog.DialogProps, "modal" | "backdrop" | "unmountOnHide"> {}
+		Pick<AkDialog.DialogProps, "backdrop" | "unmountOnHide"> {}
 
 /**
- * A dialog component used to display content in a window overlay. Should be used as a child of `Dialog.Provider`.
+ * A modal dialog component used to display content in a window overlay. Should be used as a child of `Dialog.Provider`.
  *
  * Example:
  * ```tsx

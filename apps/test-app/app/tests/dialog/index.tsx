@@ -28,7 +28,6 @@ export default definePage(
 		closeButton: CloseButtonTest,
 		actions: ActionsTest,
 		backdrop: BackdropTest,
-		nonModal: NonModalTest,
 		nested: NestedTest,
 		unmountOnHide: UnmountOnHideTest,
 		description: DescriptionTest,
@@ -122,18 +121,6 @@ function BackdropTest() {
 	);
 }
 
-function NonModalTest() {
-	return (
-		<Dialog.Provider>
-			<Dialog.Disclosure>Open</Dialog.Disclosure>
-			<Dialog.Root modal={false}>
-				<Dialog.Heading>Heading</Dialog.Heading>
-				<Dialog.Content>Content</Dialog.Content>
-			</Dialog.Root>
-		</Dialog.Provider>
-	);
-}
-
 function NestedTest() {
 	return (
 		<Dialog.Provider>
@@ -150,19 +137,10 @@ function NestedTest() {
 				>
 					<span>Nest dialogs in the React element tree</span>
 					<Dialog.Provider>
-						<Dialog.Disclosure>Open modal</Dialog.Disclosure>
+						<Dialog.Disclosure>Open nested</Dialog.Disclosure>
 						<Dialog.Root>
 							<Dialog.Heading>Heading</Dialog.Heading>
-							<Dialog.Content>Content of nested modal dialog</Dialog.Content>
-						</Dialog.Root>
-					</Dialog.Provider>
-					<Dialog.Provider>
-						<Dialog.Disclosure>Open non-modal</Dialog.Disclosure>
-						<Dialog.Root modal={false}>
-							<Dialog.Heading>Heading</Dialog.Heading>
-							<Dialog.Content>
-								Content of nested non-modal dialog
-							</Dialog.Content>
+							<Dialog.Content>Content of nested dialog</Dialog.Content>
 						</Dialog.Root>
 					</Dialog.Provider>
 				</Dialog.Content>

@@ -2,7 +2,7 @@
 "@stratakit/structures": patch
 ---
 
-Added `Dialog` component that displays custom content in a window overlay over the primary window or another dialog window.
+Added `Dialog` component that displays custom content in a window overlay over the primary window or another dialog window. Currently only modal dialog type is supported.
 
 ```tsx
 <Dialog.Provider>

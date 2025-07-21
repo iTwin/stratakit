@@ -22,7 +22,8 @@ interface DialogProviderProps
 		Pick<AkDialog.DialogProviderProps, "children" | "open" | "setOpen"> {}
 
 /**
- * Provider for `Dialog` components.
+ * Provider for `Dialog` components. Must include a `Dialog.Root` as a direct
+ * descendant. Additionally, `Dialog.Disclosure` can be used as a direct descendant to trigger the dialog to open.
  *
  * Example:
  * ```tsx
@@ -87,7 +88,7 @@ interface DialogRootProps
 		Pick<AkDialog.DialogProps, "modal" | "backdrop" | "unmountOnHide"> {}
 
 /**
- * A dialog component used to display content in a new window. Should be used as a child of `Dialog.Provider`.
+ * A dialog component used to display content in a window overlay. Should be used as a child of `Dialog.Provider`.
  *
  * Example:
  * ```tsx

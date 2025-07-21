@@ -80,7 +80,7 @@ const LABEL_MAP = {
 	],
 	[LABELS.CODE_SNIPPET]: [],
 	[LABELS.DESCRIPTION]: ["packages/bricks/src/Description"],
-	[LABELS.DIALOG]: [],
+	[LABELS.DIALOG]: ["packages/structures/src/Dialog"],
 	[LABELS.DIVIDER]: [
 		"packages/bricks/src/Divider",
 		"packages/compat/src/Divider.tsx",

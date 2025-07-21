@@ -10,7 +10,10 @@ import { forwardRef } from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
 import { Dismiss } from "./~utils.icons.js";
 
-import type { BaseProps } from "@stratakit/foundations/secret-internals";
+import type {
+	BaseProps,
+	FocusableProps,
+} from "@stratakit/foundations/secret-internals";
 
 // ----------------------------------------------------------------------------
 
@@ -44,7 +47,7 @@ DEV: DialogProvider.displayName = "Dialog.Provider";
 
 // ----------------------------------------------------------------------------
 
-interface DialogDisclosureProps extends BaseProps<"button"> {}
+interface DialogDisclosureProps extends FocusableProps<"button"> {}
 
 /**
  * The button that triggers the dialog to open. Should be used as a child of `Dialog.Provider`.
@@ -139,7 +142,8 @@ DEV: DialogHeading.displayName = "Dialog.Heading";
 
 // -------------------------------------------------------------------------
 
-interface DialogCloseButtonProps extends Omit<BaseProps<"button">, "children"> {
+interface DialogCloseButtonProps
+	extends Omit<FocusableProps<"button">, "children"> {
 	/**
 	 * Label for the close button.
 	 *
@@ -181,7 +185,7 @@ DEV: DialogCloseButton.displayName = "Dialog.CloseButton";
 
 // -------------------------------------------------------------------------
 
-interface DialogDismissButtonProps extends BaseProps<"button"> {}
+interface DialogDismissButtonProps extends FocusableProps<"button"> {}
 
 /**
  * An action button that hides a dialog when clicked. Should be used as a child of `Dialog.Actions`.

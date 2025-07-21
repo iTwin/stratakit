@@ -312,7 +312,7 @@ interface DialogDescriptionProps extends BaseProps<"p"> {}
  * <Dialog.Description>Content</Dialog.Description>
  * ```
  *
- * Alternatively, should be passed passed into the `render` prop of `Dialog.Content` if the dialog content contains only text.
+ * Alternatively, should be passed passed into the `render` prop of `Dialog.Content` if the dialog content contains only description.
  *
  * ```tsx
  * <Dialog.Content render={<Dialog.Description />}>Content</Dialog.Content>

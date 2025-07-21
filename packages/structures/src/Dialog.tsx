@@ -18,6 +18,21 @@ interface DialogProviderProps
 	extends BaseProps,
 		Pick<AkDialog.DialogProviderProps, "children" | "open" | "setOpen"> {}
 
+/**
+ * Provider for `Dialog` components.
+ *
+ * Example:
+ * ```tsx
+ * <Dialog.Provider>
+ *   <Dialog.Disclosure>Open</Dialog.Disclosure>
+ *
+ *   <Dialog.Root>
+ *     <Dialog.Heading>Heading</Dialog.Heading>
+ *     <Dialog.Content>Content</Dialog.Content>
+ *   </Dialog.Root>
+ * </Dialog.Provider>
+ * ```
+ */
 function DialogProvider(props: DialogProviderProps) {
 	return (
 		<AkDialog.DialogProvider {...props}>
@@ -31,6 +46,22 @@ DEV: DialogProvider.displayName = "Dialog.Provider";
 
 interface DialogDisclosureProps extends BaseProps<"button"> {}
 
+/**
+ * The button that triggers the dialog to open. Should be used as a child of `Dialog.Provider`.
+ *
+ * Example:
+ * ```tsx
+ * <Dialog.Disclosure>Open</Dialog.Disclosure>
+ * ```
+ *
+ * By default it will render a solid `Button`. This can be customized by passing a `render` prop.
+ *
+ * ```tsx
+ * <Dialog.Disclosure
+ *   render={<IconButton label="Open" icon={<Icon href={…} />}  />}
+ * />
+ * ```
+ */
 const DialogDisclosure = forwardRef<"button", DialogDisclosureProps>(
 	(props, forwardedRef) => {
 		return (
@@ -52,6 +83,17 @@ interface DialogProps
 	extends BaseProps,
 		Pick<AkDialog.DialogProps, "modal" | "backdrop"> {}
 
+/**
+ * A dialog component used to display content in a new window. Should be used as a child of `Dialog.Provider`.
+ *
+ * Example:
+ * ```tsx
+ * <Dialog.Root>
+ *   <Dialog.Heading>Heading</Dialog.Heading>
+ *   <Dialog.Content>Content</Dialog.Content>
+ * </Dialog.Root>
+ * ```
+ */
 const DialogRoot = forwardRef<"div", DialogProps>((props, forwardedRef) => {
 	const { backdrop, ...rest } = props;
 	return (
@@ -71,6 +113,14 @@ DEV: DialogRoot.displayName = "Dialog.Root";
 
 interface DialogHeadingProps extends BaseProps<"h1"> {}
 
+/**
+ * The heading of a dialog. Should be used as a child of `Dialog.Root`.
+ *
+ * Example:
+ * ```tsx
+ * <Dialog.Heading>Heading</Dialog.Heading>
+ * ```
+ */
 const DialogHeading = forwardRef<"h1", DialogHeadingProps>(
 	(props, forwardedRef) => {
 		return (
@@ -98,6 +148,15 @@ interface DialogCloseButtonProps extends Omit<BaseProps<"button">, "children"> {
 	label?: string;
 }
 
+/**
+ * A button that closes the dialog. Displayed as an icon button in the top-right corner of the dialog.
+ * Should be used as a child of `Dialog.Root`.
+ *
+ * Example:
+ * ```tsx
+ * <Dialog.CloseButton />
+ * ```
+ */
 const DialogCloseButton = forwardRef<"button", DialogCloseButtonProps>(
 	(props, forwardedRef) => {
 		const { label = "Dismiss", ...rest } = props;
@@ -124,6 +183,21 @@ DEV: DialogCloseButton.displayName = "Dialog.CloseButton";
 
 interface DialogDismissButtonProps extends BaseProps<"button"> {}
 
+/**
+ * An action button that hides a dialog when clicked. Should be used as a child of `Dialog.Actions`.
+ *
+ * Example:
+ * ```tsx
+ * <Dialog.DismissButton>Cancel</Dialog.DismissButton>
+ * ```
+ *
+ * By default it will render a solid `Button`. This can be customized by passing a `render` prop.
+ *
+ * ```tsx
+ * <Dialog.DismissButton render={<Button tone="accent" />}>
+ *   Ok
+ * </Dialog.DismissButton>
+ */
 const DialogDismissButton = forwardRef<"button", DialogDismissButtonProps>(
 	(props, forwardedRef) => {
 		return (
@@ -141,6 +215,14 @@ DEV: DialogDismissButton.displayName = "Dialog.DismissButton";
 
 interface DialogContentProps extends BaseProps {}
 
+/**
+ * The content of a dialog. Should be used as a child of `Dialog.Root`.
+ *
+ * Example:
+ * ```tsx
+ * <Dialog.Content>Content</Dialog.Content>
+ * ```
+ */
 const DialogContent = forwardRef<"div", DialogContentProps>(
 	(props, forwardedRef) => {
 		return (
@@ -161,6 +243,17 @@ DEV: DialogContent.displayName = "Dialog.Content";
 
 interface DialogActionsProps extends BaseProps {}
 
+/**
+ * A container for action buttons in a dialog. Should be used as a child of `Dialog.Root`.
+ *
+ * Example:
+ * ```tsx
+ * <Dialog.Actions>
+ *   <Dialog.DismissButton>Cancel</Dialog.DismissButton>
+ *   <Dialog.DismissButton render={<Button tone="accent" />}>Ok</Dialog.DismissButton>
+ * </Dialog.Actions>
+ * ```
+ */
 const DialogActions = forwardRef<"div", DialogActionsProps>(
 	(props, forwardedRef) => {
 		return (
@@ -180,6 +273,14 @@ DEV: DialogActions.displayName = "Dialog.Actions";
 
 interface DialogBackdropProps extends BaseProps {}
 
+/**
+ * The backdrop of a dialog. Should be passed into the `backdrop` prop of `Dialog.Root`.
+ *
+ * Example:
+ * ```tsx
+ * <Dialog.Root backdrop={<Dialog.Backdrop />} />
+ * ```
+ */
 const DialogBackdrop = forwardRef<"div", DialogBackdropProps>(
 	(props, forwardedRef) => {
 		return (
@@ -199,6 +300,20 @@ DEV: DialogBackdrop.displayName = "Dialog.Backdrop";
 
 interface DialogDescriptionProps extends BaseProps<"p"> {}
 
+/**
+ * The description of a dialog. Should be used as a child of `Dialog.Content`.
+ *
+ * Example:
+ * ```tsx
+ * <Dialog.Description>Content</Dialog.Description>
+ * ```
+ *
+ * Alternatively, should be passed passed into the `render` prop of `Dialog.Content` if the dialog content contains only text.
+ *
+ * ```tsx
+ * <Dialog.Content render={<Dialog.Description />}>Content</Dialog.Content>
+ * ```
+ */
 const DialogDescription = forwardRef<"p", DialogDescriptionProps>(
 	(props, forwardedRef) => {
 		return (

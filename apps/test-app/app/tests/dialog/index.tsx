@@ -30,6 +30,7 @@ export default definePage(
 		backdrop: BackdropTest,
 		nonModal: NonModalTest,
 		nested: NestedTest,
+		unmountOnHide: UnmountOnHideTest,
 		description: DescriptionTest,
 	},
 );
@@ -167,6 +168,37 @@ function NestedTest() {
 				</Dialog.Content>
 			</Dialog.Root>
 		</Dialog.Provider>
+	);
+}
+
+function UnmountOnHideTest() {
+	const [open, setOpen] = React.useState(false);
+	return (
+		<>
+			<Dialog.Provider>
+				<Dialog.Disclosure>Open</Dialog.Disclosure>
+				<Dialog.Root>
+					<Dialog.Heading>Heading</Dialog.Heading>
+					<Dialog.Content
+						style={{
+							display: "flex",
+							flexDirection: "column",
+							alignItems: "flex-start",
+							gap: 16,
+						}}
+					>
+						<span>Nest dialogs by using unmountOnHide</span>
+						<Button onClick={() => setOpen(true)}>Open nested</Button>
+					</Dialog.Content>
+				</Dialog.Root>
+			</Dialog.Provider>
+			<Dialog.Provider open={open} setOpen={setOpen}>
+				<Dialog.Root unmountOnHide>
+					<Dialog.Heading>Heading</Dialog.Heading>
+					<Dialog.Content>Content of nested dialog</Dialog.Content>
+				</Dialog.Root>
+			</Dialog.Provider>
+		</>
 	);
 }
 

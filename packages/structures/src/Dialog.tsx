@@ -82,9 +82,9 @@ DEV: DialogDisclosure.displayName = "Dialog.Disclosure";
 
 // ----------------------------------------------------------------------------
 
-interface DialogProps
+interface DialogRootProps
 	extends BaseProps,
-		Pick<AkDialog.DialogProps, "modal" | "backdrop"> {}
+		Pick<AkDialog.DialogProps, "modal" | "backdrop" | "unmountOnHide"> {}
 
 /**
  * A dialog component used to display content in a new window. Should be used as a child of `Dialog.Provider`.
@@ -97,7 +97,7 @@ interface DialogProps
  * </Dialog.Root>
  * ```
  */
-const DialogRoot = forwardRef<"div", DialogProps>((props, forwardedRef) => {
+const DialogRoot = forwardRef<"div", DialogRootProps>((props, forwardedRef) => {
 	const { backdrop, ...rest } = props;
 	return (
 		<AkDialog.Dialog

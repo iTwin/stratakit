@@ -12,6 +12,11 @@
 		inset-inline-start: round(50%, 1px);
 		transform: translate(round(-50%, 1px), round(-33%, 1px));
 
+		min-block-size: 124px;
+		min-inline-size: min(100%, 380px);
+		max-block-size: 100dvh;
+		max-inline-size: max(50%, 380px);
+
 		border-radius: 12px; /* radius/large */
 		background-color: var(--stratakit-color-bg-elevation-base);
 
@@ -31,6 +36,7 @@
 
 		display: grid;
 		grid-template-columns: [content] minmax(0, 1fr) [close] auto;
+		grid-template-rows: auto 1fr auto;
 	}
 }
 

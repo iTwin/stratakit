@@ -12,19 +12,19 @@ export const handle = { title: "Dialog" };
 
 export default definePage(
 	function Page() {
+		const [open, setOpen] = React.useState(false);
 		return (
-			<Dialog.Provider>
-				<Dialog.Disclosure>Open</Dialog.Disclosure>
-				<Dialog.Root>
+			<>
+				<Button onClick={() => setOpen(true)}>Open</Button>
+				<Dialog.Root open={open} onClose={() => setOpen(false)}>
 					<Dialog.Heading>Heading</Dialog.Heading>
 					<Dialog.Content>Content</Dialog.Content>
 				</Dialog.Root>
-			</Dialog.Provider>
+			</>
 		);
 	},
 	{
 		visual: VisualTest,
-		controlled: ControlledTest,
 		closeButton: CloseButtonTest,
 		actions: ActionsTest,
 		nested: NestedTest,
@@ -35,10 +35,11 @@ export default definePage(
 );
 
 function VisualTest() {
+	const [open, setOpen] = React.useState(false);
 	return (
-		<Dialog.Provider>
-			<Dialog.Disclosure>Open</Dialog.Disclosure>
-			<Dialog.Root>
+		<>
+			<Button onClick={() => setOpen(true)}>Open</Button>
+			<Dialog.Root open={open} onClose={() => setOpen(false)}>
 				<Dialog.Heading>Heading</Dialog.Heading>
 				<Dialog.CloseButton />
 				<Dialog.Content
@@ -59,43 +60,30 @@ function VisualTest() {
 					</Dialog.DismissButton>
 				</Dialog.Actions>
 			</Dialog.Root>
-		</Dialog.Provider>
-	);
-}
-
-function ControlledTest() {
-	const [open, setOpen] = React.useState(false);
-	return (
-		<>
-			<Button onClick={() => setOpen(true)}>Open</Button>
-			<Dialog.Provider open={open} setOpen={setOpen}>
-				<Dialog.Root>
-					<Dialog.Heading>Controlled Dialog</Dialog.Heading>
-					<Dialog.Content>Content</Dialog.Content>
-				</Dialog.Root>
-			</Dialog.Provider>
 		</>
 	);
 }
 
 function CloseButtonTest() {
+	const [open, setOpen] = React.useState(false);
 	return (
-		<Dialog.Provider>
-			<Dialog.Disclosure>Open</Dialog.Disclosure>
-			<Dialog.Root>
+		<>
+			<Button onClick={() => setOpen(true)}>Open</Button>
+			<Dialog.Root open={open} onClose={() => setOpen(false)}>
 				<Dialog.Heading>Heading</Dialog.Heading>
 				<Dialog.CloseButton />
 				<Dialog.Content>Content</Dialog.Content>
 			</Dialog.Root>
-		</Dialog.Provider>
+		</>
 	);
 }
 
 function ActionsTest() {
+	const [open, setOpen] = React.useState(false);
 	return (
-		<Dialog.Provider>
-			<Dialog.Disclosure>Open</Dialog.Disclosure>
-			<Dialog.Root>
+		<>
+			<Button onClick={() => setOpen(true)}>Open</Button>
+			<Dialog.Root open={open} onClose={() => setOpen(false)}>
 				<Dialog.Heading>Heading</Dialog.Heading>
 				<Dialog.Content>Content</Dialog.Content>
 				<Dialog.Actions>
@@ -105,15 +93,17 @@ function ActionsTest() {
 					</Dialog.DismissButton>
 				</Dialog.Actions>
 			</Dialog.Root>
-		</Dialog.Provider>
+		</>
 	);
 }
 
 function NestedTest() {
+	const [open, setOpen] = React.useState(false);
+	const [nestedOpen, setNestedOpen] = React.useState(false);
 	return (
-		<Dialog.Provider>
-			<Dialog.Disclosure>Open</Dialog.Disclosure>
-			<Dialog.Root>
+		<>
+			<Button onClick={() => setOpen(true)}>Open</Button>
+			<Dialog.Root open={open} onClose={() => setOpen(false)}>
 				<Dialog.Heading>Heading</Dialog.Heading>
 				<Dialog.Content
 					style={{
@@ -124,73 +114,78 @@ function NestedTest() {
 					}}
 				>
 					<span>Nest dialogs in the React element tree</span>
-					<Dialog.Provider>
-						<Dialog.Disclosure>Open nested</Dialog.Disclosure>
-						<Dialog.Root>
-							<Dialog.Heading>Heading</Dialog.Heading>
-							<Dialog.Content>Content of nested dialog</Dialog.Content>
-						</Dialog.Root>
-					</Dialog.Provider>
+					<Button onClick={() => setNestedOpen(true)}>Open nested</Button>
+					<Dialog.Root open={nestedOpen} onClose={() => setNestedOpen(false)}>
+						<Dialog.Heading>Heading</Dialog.Heading>
+						<Dialog.Content>Content of nested dialog</Dialog.Content>
+					</Dialog.Root>
 				</Dialog.Content>
 			</Dialog.Root>
-		</Dialog.Provider>
+		</>
 	);
 }
 
 function UnmountOnHideTest() {
 	const [open, setOpen] = React.useState(false);
+	const [nestedOpen, setNestedOpen] = React.useState(false);
 	return (
 		<>
-			<Dialog.Provider>
-				<Dialog.Disclosure>Open</Dialog.Disclosure>
-				<Dialog.Root>
-					<Dialog.Heading>Heading</Dialog.Heading>
-					<Dialog.Content
-						style={{
-							display: "flex",
-							flexDirection: "column",
-							alignItems: "flex-start",
-							gap: 16,
-						}}
-					>
-						<span>Nest dialogs by using unmountOnHide</span>
-						<Button onClick={() => setOpen(true)}>Open nested</Button>
-					</Dialog.Content>
-				</Dialog.Root>
-			</Dialog.Provider>
-			<Dialog.Provider open={open} setOpen={setOpen}>
-				<Dialog.Root unmountOnHide>
-					<Dialog.Heading>Heading</Dialog.Heading>
-					<Dialog.Content>Content of nested dialog</Dialog.Content>
-				</Dialog.Root>
-			</Dialog.Provider>
+			<Button onClick={() => setOpen(true)}>Open</Button>
+			<Dialog.Root open={open} onClose={() => setOpen(false)}>
+				<Dialog.Heading>Heading</Dialog.Heading>
+				<Dialog.Content
+					style={{
+						display: "flex",
+						flexDirection: "column",
+						alignItems: "flex-start",
+						gap: 16,
+					}}
+				>
+					<span>Nest dialogs by using unmountOnHide</span>
+					<Button onClick={() => setNestedOpen(true)}>Open nested</Button>
+				</Dialog.Content>
+			</Dialog.Root>
+			<Dialog.Root
+				unmountOnHide
+				open={nestedOpen}
+				onClose={() => setNestedOpen(false)}
+			>
+				<Dialog.Heading>Heading</Dialog.Heading>
+				<Dialog.Content>Content of nested dialog</Dialog.Content>
+			</Dialog.Root>
 		</>
 	);
 }
 
 function DescriptionTest() {
+	const [open, setOpen] = React.useState(false);
 	return (
-		<Dialog.Provider>
-			<Dialog.Disclosure>Open</Dialog.Disclosure>
-			<Dialog.Root>
+		<>
+			<Button onClick={() => setOpen(true)}>Open</Button>
+			<Dialog.Root open={open} onClose={() => setOpen(false)}>
 				<Dialog.Heading>Heading</Dialog.Heading>
 				<Dialog.Content render={<Dialog.Description />}>
 					Description
 				</Dialog.Content>
 			</Dialog.Root>
-		</Dialog.Provider>
+		</>
 	);
 }
 
 function NonDismissibleTest() {
+	const [open, setOpen] = React.useState(false);
 	return (
-		<Dialog.Provider>
-			<Dialog.Disclosure>Open</Dialog.Disclosure>
-			<Dialog.Root hideOnInteractOutside={false}>
+		<>
+			<Button onClick={() => setOpen(true)}>Open</Button>
+			<Dialog.Root
+				open={open}
+				onClose={() => setOpen(false)}
+				hideOnInteractOutside={false}
+			>
 				<Dialog.Heading>Heading</Dialog.Heading>
 				<Dialog.CloseButton />
 				<Dialog.Content>Description</Dialog.Content>
 			</Dialog.Root>
-		</Dialog.Provider>
+		</>
 	);
 }

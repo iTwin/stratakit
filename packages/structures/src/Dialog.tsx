@@ -17,82 +17,21 @@ import type {
 
 // ----------------------------------------------------------------------------
 
-interface DialogProviderProps
-	extends BaseProps,
-		Pick<AkDialog.DialogProviderProps, "children" | "open" | "setOpen"> {}
-
-/**
- * Provider for `Dialog` components. Must include a `Dialog.Root` as a direct
- * descendant. Additionally, `Dialog.Disclosure` can be used as a direct descendant to trigger the dialog to open.
- *
- * Example:
- * ```tsx
- * <Dialog.Provider>
- *   <Dialog.Disclosure>Open</Dialog.Disclosure>
- *
- *   <Dialog.Root>
- *     <Dialog.Heading>Heading</Dialog.Heading>
- *     <Dialog.Content>Content</Dialog.Content>
- *   </Dialog.Root>
- * </Dialog.Provider>
- * ```
- */
-function DialogProvider(props: DialogProviderProps) {
-	return (
-		<AkDialog.DialogProvider {...props}>
-			{props.children}
-		</AkDialog.DialogProvider>
-	);
-}
-DEV: DialogProvider.displayName = "Dialog.Provider";
-
-// ----------------------------------------------------------------------------
-
-interface DialogDisclosureProps extends FocusableProps<"button"> {}
-
-/**
- * The button that triggers the dialog to open. Should be used as a child of `Dialog.Provider`.
- *
- * Example:
- * ```tsx
- * <Dialog.Disclosure>Open</Dialog.Disclosure>
- * ```
- *
- * By default it will render a solid `Button`. This can be customized by passing a `render` prop.
- *
- * ```tsx
- * <Dialog.Disclosure
- *   render={<IconButton label="Open" icon={<Icon href={…} />}  />}
- * />
- * ```
- */
-const DialogDisclosure = forwardRef<"button", DialogDisclosureProps>(
-	(props, forwardedRef) => {
-		return (
-			<AkDialog.DialogDisclosure
-				{...props}
-				render={props.render ?? <Button />}
-				ref={forwardedRef}
-			>
-				{props.children}
-			</AkDialog.DialogDisclosure>
-		);
-	},
-);
-DEV: DialogDisclosure.displayName = "Dialog.Disclosure";
-
-// ----------------------------------------------------------------------------
-
 interface DialogRootProps
 	extends BaseProps,
-		Pick<AkDialog.DialogProps, "unmountOnHide" | "hideOnInteractOutside"> {}
+		Pick<
+			AkDialog.DialogProps,
+			"open" | "onClose" | "unmountOnHide" | "hideOnInteractOutside"
+		> {}
 
 /**
- * A modal dialog component used to display content in a window overlay. Should be used as a child of `Dialog.Provider`.
+ * A modal dialog component used to display content in a window overlay.
  *
  * Example:
  * ```tsx
- * <Dialog.Root>
+ * const [open, setOpen] = useState(false);
+ *
+ * <Dialog.Root open={open} onClose={() => setOpen(false)}>
  *   <Dialog.Heading>Heading</Dialog.Heading>
  *   <Dialog.Content>Content</Dialog.Content>
  * </Dialog.Root>
@@ -324,8 +263,6 @@ DEV: DialogDescription.displayName = "Dialog.Description";
 // -------------------------------------------------------------------------
 
 export {
-	DialogProvider as Provider,
-	DialogDisclosure as Disclosure,
 	DialogRoot as Root,
 	DialogHeading as Heading,
 	DialogCloseButton as CloseButton,

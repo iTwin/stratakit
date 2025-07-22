@@ -68,7 +68,7 @@
 	@layer base {
 		font-size: var(--stratakit-font-size-12);
 		color: var(--🥝tab-color);
-		background-color: var(--🥝tab-bg);
+		background-color: var(--🥝tab-background-color);
 		border: none;
 		border-radius: 4px;
 		block-size: var(--✨height);
@@ -96,7 +96,7 @@
 
 	@layer modifiers {
 		:where(.🥝-tab-list[data-kiwi-tone="neutral"]) & {
-			--🥝tab-bg: var(--🌀tab-state--default, var(--✨bg--default))
+			--🥝tab-background-color: var(--🌀tab-state--default, var(--✨bg--default))
 				var(--🌀tab-state--hover, var(--✨bg--hover-neutral))
 				var(--🌀tab-state--selected, var(--✨bg--selected))
 				var(--🌀tab-state--disabled, var(--✨bg--disabled));
@@ -108,7 +108,7 @@
 		}
 
 		:where(.🥝-tab-list[data-kiwi-tone="accent"]) & {
-			--🥝tab-bg: var(--🌀tab-state--default, var(--✨bg--default))
+			--🥝tab-background-color: var(--🌀tab-state--default, var(--✨bg--default))
 				var(--🌀tab-state--hover, var(--✨bg--hover-accent))
 				var(--🌀tab-state--selected, var(--✨bg--selected))
 				var(--🌀tab-state--disabled, var(--✨bg--disabled));
@@ -184,7 +184,7 @@
 
 		&:where([aria-selected="true"]) {
 			forced-color-adjust: none;
-			--🥝tab-bg: SelectedItem;
+			--🥝tab-background-color: SelectedItem;
 			--🥝tab-color: SelectedItemText;
 		}
 

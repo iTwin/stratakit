@@ -5,6 +5,7 @@
 
 import * as React from "react";
 import { Button, Text } from "@stratakit/bricks";
+import { DropdownMenu } from "@stratakit/structures";
 import * as Dialog from "@stratakit/structures/unstable_Dialog";
 import { definePage } from "~/~utils.tsx";
 
@@ -46,7 +47,24 @@ function VisualTest() {
 				<Dialog.Content
 					style={{ display: "flex", flexDirection: "column", gap: 16 }}
 				>
-					Primary content
+					<span
+						style={{
+							display: "flex",
+							alignItems: "center",
+							justifyContent: "space-between",
+						}}
+					>
+						Primary content
+						<DropdownMenu.Root>
+							<DropdownMenu.Button>Actions</DropdownMenu.Button>
+
+							<DropdownMenu.Content>
+								<DropdownMenu.Item label="Add" />
+								<DropdownMenu.Item label="Edit" />
+								<DropdownMenu.Item label="Delete" />
+							</DropdownMenu.Content>
+						</DropdownMenu.Root>
+					</span>
 					<Text
 						variant="body-sm"
 						style={{ color: "var(--stratakit-color-text-neutral-secondary)" }}

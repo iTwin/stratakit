@@ -14,8 +14,8 @@
 
 		min-block-size: 92px;
 		min-inline-size: min(100%, 296px);
-		max-block-size: calc(100dvh - 64px);
-		max-inline-size: calc(100dvw - 64px);
+		max-block-size: calc(100dvb - 64px);
+		max-inline-size: calc(100dvi - 64px);
 
 		border-radius: 12px; /* radius/large */
 		background-color: var(--stratakit-color-bg-elevation-base);

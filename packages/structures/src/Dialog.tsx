@@ -6,6 +6,7 @@
 import * as AkDialog from "@ariakit/react/dialog";
 import { Role } from "@ariakit/react/role";
 import { Button, IconButton, Text } from "@stratakit/bricks";
+import { GhostAligner } from "@stratakit/bricks/secret-internals";
 import { forwardRef } from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
 import { Dismiss } from "./~utils.icons.js";
@@ -25,7 +26,8 @@ interface DialogRootProps
 		> {}
 
 /**
- * A modal dialog component used to display content in a window overlay.
+ * A modal dialog component used to display content in a window overlay. Must include `Dialog.Header` and `Dialog.Content` as direct
+ * descendants. Additionally, `Dialog.Footer` can be optionally used as a direct descendant.
  *
  * Example:
  * ```tsx
@@ -34,6 +36,9 @@ interface DialogRootProps
  * <Dialog.Root open={open} onClose={() => setOpen(false)}>
  *   <Dialog.Heading>Heading</Dialog.Heading>
  *   <Dialog.Content>Content</Dialog.Content>
+ *   <Dialog.Footer>
+ *     <Dialog.DismissButton>Ok</Dialog.DismissButton>
+ *   </Dialog.Footer>
  * </Dialog.Root>
  * ```
  */
@@ -53,10 +58,48 @@ DEV: DialogRoot.displayName = "Dialog.Root";
 
 // -------------------------------------------------------------------------
 
+interface DialogHeaderProps extends BaseProps {}
+
+/**
+ * The header of a dialog. Should be used as a child of `Dialog.Root`. Must include `Dialog.Heading` as a direct
+ * descendant. Additionally, `Dialog.CloseButton` can be optionally used as a direct descendant.
+ *
+ * Example:
+ * ```tsx
+ * <Dialog.Header>
+ *   <Dialog.Heading>Heading</Dialog.Heading>
+ *   <Dialog.CloseButton />
+ * </Dialog.Header>
+ * ```
+ *
+ * Use `render` prop when only a heading is displayed in a header.
+ *
+ * ```tsx
+ * <Dialog.Header render={<Dialog.Heading />}>Heading</Dialog.Header>
+ * ```
+ *
+ */
+const DialogHeader = forwardRef<"div", DialogHeaderProps>(
+	(props, forwardedRef) => {
+		return (
+			<Role
+				{...props}
+				className={cx("🥝-dialog-header", props.className)}
+				ref={forwardedRef}
+			>
+				{props.children}
+			</Role>
+		);
+	},
+);
+DEV: DialogHeader.displayName = "Dialog.Header";
+
+// -------------------------------------------------------------------------
+
 interface DialogHeadingProps extends BaseProps<"h1"> {}
 
 /**
- * The heading of a dialog. Should be used as a child of `Dialog.Root`.
+ * The heading of a dialog. Should be used as a child of `Dialog.DialogHeader`.
  *
  * Example:
  * ```tsx
@@ -69,7 +112,6 @@ const DialogHeading = forwardRef<"h1", DialogHeadingProps>(
 			<AkDialog.DialogHeading
 				{...props}
 				render={<Text variant="body-lg" render={props.render ?? <h1 />} />}
-				className={cx("🥝-dialog-heading", props.className)}
 				ref={forwardedRef}
 			>
 				{props.children}
@@ -93,7 +135,7 @@ interface DialogCloseButtonProps
 
 /**
  * A button that closes the dialog. Displayed as an icon button in the top-right corner of the dialog.
- * Should be used as a child of `Dialog.Root`.
+ * Should be used as a child of `Dialog.DialogHeader`.
  *
  * Example:
  * ```tsx
@@ -104,19 +146,20 @@ const DialogCloseButton = forwardRef<"button", DialogCloseButtonProps>(
 	(props, forwardedRef) => {
 		const { label = "Dismiss", ...rest } = props;
 		return (
-			<AkDialog.DialogDismiss
-				{...rest}
-				render={
-					<IconButton
-						render={props.render}
-						className={cx("🥝-dialog-close", props.className)}
-						variant="ghost"
-						label={label}
-						icon={<Dismiss />}
-					/>
-				}
-				ref={forwardedRef}
-			/>
+			<GhostAligner align="inline">
+				<AkDialog.DialogDismiss
+					{...rest}
+					render={
+						<IconButton
+							render={props.render}
+							variant="ghost"
+							label={label}
+							icon={<Dismiss />}
+						/>
+					}
+					ref={forwardedRef}
+				/>
+			</GhostAligner>
 		);
 	},
 );
@@ -235,6 +278,7 @@ DEV: DialogBackdrop.displayName = "DialogBackdrop";
 
 export {
 	DialogRoot as Root,
+	DialogHeader as Header,
 	DialogHeading as Heading,
 	DialogCloseButton as CloseButton,
 	DialogContent as Content,

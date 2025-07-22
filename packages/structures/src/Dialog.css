@@ -34,36 +34,22 @@
 		/* Prevents footer from overlapping the box-shadow */
 		padding: 1px;
 
-		display: grid;
-		grid-template-columns: [content] minmax(0, 1fr) [close] auto;
-		grid-template-rows: auto 1fr auto;
+		display: flex;
+		flex-direction: column;
 	}
 }
 
-.🥝-dialog-heading {
+.🥝-dialog-header {
 	--✨padding-block: 16px;
 	--✨padding-inline: 20px;
 
 	@layer base {
-		grid-column: content;
-		grid-row: 1;
-
 		padding-block: var(--✨padding-block);
 		padding-inline: var(--✨padding-inline);
-	}
-}
 
-.🥝-dialog-close {
-	--✨padding-block: 16px;
-	--✨padding-inline: 20px;
-
-	@layer base {
-		grid-column: close;
-		grid-row: 1;
-		align-self: start;
-
-		margin-block: var(--✨padding-block);
-		margin-inline-end: calc(var(--✨padding-inline) - var(--🥝ghost-inline-offset));
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
 	}
 }
 
@@ -72,9 +58,6 @@
 
 	@layer base {
 		color: var(--stratakit-color-text-neutral-primary);
-
-		grid-column: content / -1;
-		grid-row: 2;
 
 		padding-block-end: var(--✨padding);
 		padding-inline: var(--✨padding);
@@ -86,9 +69,6 @@
 	--✨border-radius: 12px; /* radius/large */
 
 	@layer base {
-		grid-column: content / -1;
-		grid-row: 3;
-
 		border-block-start: 1px solid var(--stratakit-color-border-page-base);
 		border-end-start-radius: var(--✨border-radius);
 		border-end-end-radius: var(--✨border-radius);

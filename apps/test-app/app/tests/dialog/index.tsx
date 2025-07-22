@@ -27,10 +27,10 @@ export default definePage(
 		controlled: ControlledTest,
 		closeButton: CloseButtonTest,
 		actions: ActionsTest,
-		backdrop: BackdropTest,
 		nested: NestedTest,
 		unmountOnHide: UnmountOnHideTest,
 		description: DescriptionTest,
+		nonDismissible: NonDismissibleTest,
 	},
 );
 
@@ -38,7 +38,7 @@ function VisualTest() {
 	return (
 		<Dialog.Provider>
 			<Dialog.Disclosure>Open</Dialog.Disclosure>
-			<Dialog.Root backdrop>
+			<Dialog.Root>
 				<Dialog.Heading>Heading</Dialog.Heading>
 				<Dialog.CloseButton />
 				<Dialog.Content
@@ -104,18 +104,6 @@ function ActionsTest() {
 						Ok
 					</Dialog.DismissButton>
 				</Dialog.Actions>
-			</Dialog.Root>
-		</Dialog.Provider>
-	);
-}
-
-function BackdropTest() {
-	return (
-		<Dialog.Provider>
-			<Dialog.Disclosure>Open</Dialog.Disclosure>
-			<Dialog.Root backdrop={<Dialog.Backdrop />}>
-				<Dialog.Heading>Heading</Dialog.Heading>
-				<Dialog.Content>Content</Dialog.Content>
 			</Dialog.Root>
 		</Dialog.Provider>
 	);
@@ -189,6 +177,19 @@ function DescriptionTest() {
 				<Dialog.Content render={<Dialog.Description />}>
 					Description
 				</Dialog.Content>
+			</Dialog.Root>
+		</Dialog.Provider>
+	);
+}
+
+function NonDismissibleTest() {
+	return (
+		<Dialog.Provider>
+			<Dialog.Disclosure>Open</Dialog.Disclosure>
+			<Dialog.Root hideOnInteractOutside={false}>
+				<Dialog.Heading>Heading</Dialog.Heading>
+				<Dialog.CloseButton />
+				<Dialog.Content>Description</Dialog.Content>
 			</Dialog.Root>
 		</Dialog.Provider>
 	);

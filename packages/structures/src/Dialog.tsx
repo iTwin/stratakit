@@ -85,7 +85,7 @@ DEV: DialogDisclosure.displayName = "Dialog.Disclosure";
 
 interface DialogRootProps
 	extends BaseProps,
-		Pick<AkDialog.DialogProps, "backdrop" | "unmountOnHide"> {}
+		Pick<AkDialog.DialogProps, "unmountOnHide" | "hideOnInteractOutside"> {}
 
 /**
  * A modal dialog component used to display content in a window overlay. Should be used as a child of `Dialog.Provider`.
@@ -99,11 +99,10 @@ interface DialogRootProps
  * ```
  */
 const DialogRoot = forwardRef<"div", DialogRootProps>((props, forwardedRef) => {
-	const { backdrop, ...rest } = props;
 	return (
 		<AkDialog.Dialog
-			{...rest}
-			backdrop={backdrop === true ? DialogBackdrop : backdrop}
+			backdrop={DialogBackdrop}
+			{...props}
 			className={cx("🥝-dialog", props.className)}
 			ref={forwardedRef}
 		>
@@ -278,14 +277,6 @@ DEV: DialogActions.displayName = "Dialog.Actions";
 
 interface DialogBackdropProps extends BaseProps {}
 
-/**
- * The backdrop of a dialog. Should be passed into the `backdrop` prop of `Dialog.Root`.
- *
- * Example:
- * ```tsx
- * <Dialog.Root backdrop={<Dialog.Backdrop />} />
- * ```
- */
 const DialogBackdrop = forwardRef<"div", DialogBackdropProps>(
 	(props, forwardedRef) => {
 		return (
@@ -299,7 +290,7 @@ const DialogBackdrop = forwardRef<"div", DialogBackdropProps>(
 		);
 	},
 );
-DEV: DialogBackdrop.displayName = "Dialog.Backdrop";
+DEV: DialogBackdrop.displayName = "DialogBackdrop";
 
 // -------------------------------------------------------------------------
 
@@ -341,6 +332,5 @@ export {
 	DialogContent as Content,
 	DialogActions as Actions,
 	DialogDismissButton as DismissButton,
-	DialogBackdrop as Backdrop,
 	DialogDescription as Description,
 };

@@ -86,9 +86,7 @@ const DialogRoot = forwardRef<"div", DialogRootProps>((props, forwardedRef) => {
 				{...popover.dialogProps}
 				className={cx("🥝-dialog", props.className)}
 				ref={forwardedRef}
-			>
-				{props.children}
-			</AkDialog.Dialog>
+			/>
 		</AkDialog.DialogProvider>
 	);
 });
@@ -124,9 +122,7 @@ const DialogHeader = forwardRef<"div", DialogHeaderProps>(
 				{...props}
 				className={cx("🥝-dialog-header", props.className)}
 				ref={forwardedRef}
-			>
-				{props.children}
-			</Role>
+			/>
 		);
 	},
 );
@@ -151,9 +147,7 @@ const DialogHeading = forwardRef<"h1", DialogHeadingProps>(
 				{...props}
 				render={<Text variant="body-lg" render={props.render ?? <h1 />} />}
 				ref={forwardedRef}
-			>
-				{props.children}
-			</AkDialog.DialogHeading>
+			/>
 		);
 	},
 );
@@ -255,9 +249,7 @@ const DialogContent = forwardRef<"div", DialogContentProps>(
 				{...props}
 				className={cx("🥝-dialog-content", props.className)}
 				ref={forwardedRef}
-			>
-				{props.children}
-			</Text>
+			/>
 		);
 	},
 );
@@ -285,9 +277,7 @@ const DialogFooter = forwardRef<"div", DialogFooterProps>(
 				{...props}
 				className={cx("🥝-dialog-footer", props.className)}
 				ref={forwardedRef}
-			>
-				{props.children}
-			</Role>
+			/>
 		);
 	},
 );
@@ -304,9 +294,7 @@ const DialogBackdrop = forwardRef<"div", DialogBackdropProps>(
 				{...props}
 				className={cx("🥝-dialog-backdrop", props.className)}
 				ref={forwardedRef}
-			>
-				{props.children}
-			</Role>
+			/>
 		);
 	},
 );

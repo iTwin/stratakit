@@ -233,35 +233,6 @@ DEV: DialogBackdrop.displayName = "DialogBackdrop";
 
 // -------------------------------------------------------------------------
 
-interface DialogDescriptionProps extends BaseProps<"p"> {}
-
-/**
- * The description of a dialog. Should be used as a child of `Dialog.Content`.
- *
- * Example:
- * ```tsx
- * <Dialog.Description>Content</Dialog.Description>
- * ```
- *
- * Alternatively, should be passed passed into the `render` prop of `Dialog.Content` if the dialog content contains only description.
- *
- * ```tsx
- * <Dialog.Content render={<Dialog.Description />}>Content</Dialog.Content>
- * ```
- */
-const DialogDescription = forwardRef<"p", DialogDescriptionProps>(
-	(props, forwardedRef) => {
-		return (
-			<AkDialog.DialogDescription {...props} ref={forwardedRef}>
-				{props.children}
-			</AkDialog.DialogDescription>
-		);
-	},
-);
-DEV: DialogDescription.displayName = "Dialog.Description";
-
-// -------------------------------------------------------------------------
-
 export {
 	DialogRoot as Root,
 	DialogHeading as Heading,
@@ -269,5 +240,4 @@ export {
 	DialogContent as Content,
 	DialogActions as Actions,
 	DialogDismissButton as DismissButton,
-	DialogDescription as Description,
 };

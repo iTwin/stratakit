@@ -29,7 +29,6 @@ export default definePage(
 		actions: ActionsTest,
 		nested: NestedTest,
 		unmountOnHide: UnmountOnHideTest,
-		description: DescriptionTest,
 		nonDismissible: NonDismissibleTest,
 	},
 );
@@ -152,21 +151,6 @@ function UnmountOnHideTest() {
 			>
 				<Dialog.Heading>Heading</Dialog.Heading>
 				<Dialog.Content>Content of nested dialog</Dialog.Content>
-			</Dialog.Root>
-		</>
-	);
-}
-
-function DescriptionTest() {
-	const [open, setOpen] = React.useState(false);
-	return (
-		<>
-			<Button onClick={() => setOpen(true)}>Open</Button>
-			<Dialog.Root open={open} onClose={() => setOpen(false)}>
-				<Dialog.Heading>Heading</Dialog.Heading>
-				<Dialog.Content render={<Dialog.Description />}>
-					Description
-				</Dialog.Content>
 			</Dialog.Root>
 		</>
 	);

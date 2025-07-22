@@ -31,7 +31,7 @@
 			0px 12px 12px -6px rgba(0, 0, 0, 0.16),
 			0px 24px 24px -12px rgba(0, 0, 0, 0.16);
 
-		/* Prevents actions container from overlapping the box-shadow */
+		/* Prevents footer from overlapping the box-shadow */
 		padding: 1px;
 
 		display: grid;
@@ -81,7 +81,7 @@
 	}
 }
 
-.🥝-dialog-actions {
+.🥝-dialog-footer {
 	--✨padding: 20px;
 	--✨border-radius: 12px; /* radius/large */
 

@@ -52,12 +52,12 @@ function VisualTest() {
 						Secondary content
 					</Text>
 				</Dialog.Content>
-				<Dialog.Actions>
+				<Dialog.Footer>
 					<Dialog.DismissButton>Cancel</Dialog.DismissButton>
 					<Dialog.DismissButton render={<Button tone="accent" />}>
 						Ok
 					</Dialog.DismissButton>
-				</Dialog.Actions>
+				</Dialog.Footer>
 			</Dialog.Root>
 		</>
 	);
@@ -85,12 +85,12 @@ function ActionsTest() {
 			<Dialog.Root open={open} onClose={() => setOpen(false)}>
 				<Dialog.Heading>Heading</Dialog.Heading>
 				<Dialog.Content>Content</Dialog.Content>
-				<Dialog.Actions>
+				<Dialog.Footer>
 					<Dialog.DismissButton>Cancel</Dialog.DismissButton>
 					<Dialog.DismissButton render={<Button tone="accent" />}>
 						Ok
 					</Dialog.DismissButton>
-				</Dialog.Actions>
+				</Dialog.Footer>
 			</Dialog.Root>
 		</>
 	);
@@ -167,8 +167,12 @@ function NonDismissibleTest() {
 				hideOnInteractOutside={false}
 			>
 				<Dialog.Heading>Heading</Dialog.Heading>
-				<Dialog.CloseButton />
 				<Dialog.Content>Description</Dialog.Content>
+				<Dialog.Footer>
+					<Dialog.DismissButton render={<Button tone="accent" />}>
+						Ok
+					</Dialog.DismissButton>
+				</Dialog.Footer>
 			</Dialog.Root>
 		</>
 	);

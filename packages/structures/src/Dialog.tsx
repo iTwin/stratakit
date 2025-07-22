@@ -127,7 +127,7 @@ DEV: DialogCloseButton.displayName = "Dialog.CloseButton";
 interface DialogDismissButtonProps extends FocusableProps<"button"> {}
 
 /**
- * An action button that hides a dialog when clicked. Should be used as a child of `Dialog.Actions`.
+ * An action button that hides a dialog when clicked. Should be used as a child of `Dialog.Footer`.
  *
  * Example:
  * ```tsx
@@ -184,25 +184,25 @@ DEV: DialogContent.displayName = "Dialog.Content";
 
 // -------------------------------------------------------------------------
 
-interface DialogActionsProps extends BaseProps {}
+interface DialogFooterProps extends BaseProps {}
 
 /**
  * A container for action buttons in a dialog. Should be used as a child of `Dialog.Root`.
  *
  * Example:
  * ```tsx
- * <Dialog.Actions>
+ * <Dialog.Footer>
  *   <Dialog.DismissButton>Cancel</Dialog.DismissButton>
  *   <Dialog.DismissButton render={<Button tone="accent" />}>Ok</Dialog.DismissButton>
- * </Dialog.Actions>
+ * </Dialog.Footer>
  * ```
  */
-const DialogActions = forwardRef<"div", DialogActionsProps>(
+const DialogFooter = forwardRef<"div", DialogFooterProps>(
 	(props, forwardedRef) => {
 		return (
 			<Role
 				{...props}
-				className={cx("🥝-dialog-actions", props.className)}
+				className={cx("🥝-dialog-footer", props.className)}
 				ref={forwardedRef}
 			>
 				{props.children}
@@ -210,7 +210,7 @@ const DialogActions = forwardRef<"div", DialogActionsProps>(
 		);
 	},
 );
-DEV: DialogActions.displayName = "Dialog.Actions";
+DEV: DialogFooter.displayName = "Dialog.Footer";
 
 // -------------------------------------------------------------------------
 
@@ -238,6 +238,6 @@ export {
 	DialogHeading as Heading,
 	DialogCloseButton as CloseButton,
 	DialogContent as Content,
-	DialogActions as Actions,
+	DialogFooter as Footer,
 	DialogDismissButton as DismissButton,
 };

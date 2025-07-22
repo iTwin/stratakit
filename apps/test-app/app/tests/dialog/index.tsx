@@ -31,6 +31,8 @@ export default definePage(
 		nested: NestedTest,
 		unmountOnHide: UnmountOnHideTest,
 		nonDismissible: NonDismissibleTest,
+		noBackdrop: NoBackdropTest,
+		customBackdrop: CustomBackdropTest,
 	},
 );
 
@@ -195,6 +197,36 @@ function NonDismissibleTest() {
 						Ok
 					</Dialog.DismissButton>
 				</Dialog.Footer>
+			</Dialog.Root>
+		</>
+	);
+}
+
+function NoBackdropTest() {
+	const [open, setOpen] = React.useState(false);
+	return (
+		<>
+			<Button onClick={() => setOpen(true)}>Open</Button>
+			<Dialog.Root open={open} onClose={() => setOpen(false)} backdrop={false}>
+				<Dialog.Header render={<Dialog.Heading />}>Heading</Dialog.Header>
+				<Dialog.Content>Description</Dialog.Content>
+			</Dialog.Root>
+		</>
+	);
+}
+
+function CustomBackdropTest() {
+	const [open, setOpen] = React.useState(false);
+	return (
+		<>
+			<Button onClick={() => setOpen(true)}>Open</Button>
+			<Dialog.Root
+				open={open}
+				onClose={() => setOpen(false)}
+				backdrop={<Dialog.Backdrop style={{ border: "2px solid red" }} />}
+			>
+				<Dialog.Header render={<Dialog.Heading />}>Heading</Dialog.Header>
+				<Dialog.Content>Description</Dialog.Content>
 			</Dialog.Root>
 		</>
 	);

@@ -52,7 +52,11 @@ interface DialogRootProps
 	extends BaseProps,
 		Pick<
 			AkDialog.DialogProps,
-			"open" | "onClose" | "unmountOnHide" | "hideOnInteractOutside"
+			| "open"
+			| "onClose"
+			| "backdrop"
+			| "unmountOnHide"
+			| "hideOnInteractOutside"
 		> {}
 
 /**
@@ -73,16 +77,32 @@ interface DialogRootProps
  * ```
  */
 const DialogRoot = forwardRef<"div", DialogRootProps>((props, forwardedRef) => {
+	const { backdrop, ...rest } = props;
+
 	const store = AkDialog.useDialogStore();
 	const [popover, setBackdropElement] = usePopoverApi(store);
-
+	const renderBackdrop = React.useMemo(() => {
+		if (!backdrop) return undefined;
+		if (typeof backdrop === "boolean") return undefined;
+		if (React.isValidElement(backdrop)) return backdrop;
+		const Component = backdrop;
+		return <Component />;
+	}, [backdrop]);
 	return (
 		<AkDialog.DialogProvider store={store}>
 			<AkDialog.Dialog
+				{...rest}
 				backdrop={
-					<DialogBackdrop ref={setBackdropElement} {...popover.backdropProps} />
+					backdrop === false ? (
+						backdrop
+					) : (
+						<DialogBackdrop
+							ref={setBackdropElement}
+							{...popover.backdropProps}
+							render={renderBackdrop}
+						/>
+					)
 				}
-				{...props}
 				{...popover.dialogProps}
 				className={cx("🥝-dialog", props.className)}
 				ref={forwardedRef}
@@ -287,6 +307,14 @@ DEV: DialogFooter.displayName = "Dialog.Footer";
 
 interface DialogBackdropProps extends BaseProps {}
 
+/**
+ * The backdrop of a dialog. Should be passed into the `backdrop` prop of `Dialog.Root`.
+ *
+ * Example:
+ * ```tsx
+ * <Dialog.Root backdrop={<Dialog.Backdrop />} />
+ * ```
+ */
 const DialogBackdrop = forwardRef<"div", DialogBackdropProps>(
 	(props, forwardedRef) => {
 		return (
@@ -298,7 +326,7 @@ const DialogBackdrop = forwardRef<"div", DialogBackdropProps>(
 		);
 	},
 );
-DEV: DialogBackdrop.displayName = "DialogBackdrop";
+DEV: DialogBackdrop.displayName = "Dialog.Backdrop";
 
 // -------------------------------------------------------------------------
 
@@ -310,4 +338,5 @@ export {
 	DialogContent as Content,
 	DialogFooter as Footer,
 	DialogDismissButton as DismissButton,
+	DialogBackdrop as Backdrop,
 };

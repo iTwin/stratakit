@@ -5,7 +5,7 @@
 
 .🥝-accordion-item {
 	--🥝accordion-item-gap: 12px;
-	--🥝accordion-item-padding: 12px;
+	--🥝accordion-item-padding: 8px;
 
 	@layer base {
 		contain: paint;
@@ -29,8 +29,8 @@
 }
 
 .🥝-accordion-item-header {
-	--✨header-bg-hover: var(--stratakit-color-bg-glow-on-surface-neutral-hover);
-	--✨header-bg-press: var(--stratakit-color-bg-glow-on-surface-neutral-pressed);
+	--✨header-bg--hover: var(--stratakit-color-bg-glow-on-surface-neutral-hover);
+	--✨header-bg--pressed: var(--stratakit-color-bg-glow-on-surface-neutral-pressed);
 	--✨header-bg--default: transparent;
 
 	@layer base {
@@ -48,8 +48,8 @@
 				--🌀accordion-item-header-state--default,
 				var(--✨header-bg--default)
 			)
-			var(--🌀accordion-item-header-state--hover, var(--✨header-bg-hover))
-			var(--🌀accordion-item-header-state--pressed, var(--✨header-bg-press));
+			var(--🌀accordion-item-header-state--hover, var(--✨header-bg--hover))
+			var(--🌀accordion-item-header-state--pressed, var(--✨header-bg--pressed));
 
 		/* TODO: improve the layout for the fallback (i.e. content doesn’t align with the label if there’s a decoration) */
 		grid-template-columns: inherit;

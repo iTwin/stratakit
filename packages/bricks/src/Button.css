@@ -134,12 +134,8 @@
 
 	/* #region Variant: ghost */
 	--✨bg--ghost-default: transparent;
-	--✨bg--ghost-hover: color-mix(in oklch, var(--✨bg--ghost-default) 100%, var(--✨glow--bg-hover));
-	--✨bg--ghost-pressed: color-mix(
-		in oklch,
-		var(--✨bg--ghost-default) 100%,
-		var(--✨glow--bg-press)
-	);
+	--✨bg--ghost-hover: var(--stratakit-color-bg-glow-on-surface-neutral-hover);
+	--✨bg--ghost-pressed: var(--stratakit-color-bg-glow-on-surface-neutral-pressed);
 	--✨bg--ghost-disabled: transparent;
 
 	--✨bg--ghost-accent-default: transparent;

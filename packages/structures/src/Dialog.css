@@ -60,6 +60,7 @@
 	@layer base {
 		grid-column: close;
 		grid-row: 1;
+		align-self: start;
 
 		margin-block: var(--✨padding-block);
 		margin-inline-end: calc(var(--✨padding-inline) - var(--🥝ghost-inline-offset));

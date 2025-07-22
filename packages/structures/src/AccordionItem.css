@@ -5,7 +5,7 @@
 
 .🥝-accordion-item {
 	--🥝accordion-item-gap: 12px;
-	--🥝accordion-item-padding: 8px;
+	--🥝accordion-item-padding: 12px;
 
 	@layer base {
 		contain: paint;

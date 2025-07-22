@@ -87,5 +87,8 @@
 	@layer base {
 		opacity: 0.8;
 		background: var(--stratakit-color-bg-elevation-overlay);
+
+		block-size: 100dvb;
+		inline-size: 100dvi;
 	}
 }

@@ -3,8 +3,10 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
+import * as React from "react";
 import * as AkDialog from "@ariakit/react/dialog";
 import { Role } from "@ariakit/react/role";
+import { useStoreState } from "@ariakit/react/store";
 import { Button, IconButton, Text } from "@stratakit/bricks";
 import { GhostAligner } from "@stratakit/bricks/secret-internals";
 import { forwardRef } from "@stratakit/foundations/secret-internals";
@@ -15,6 +17,34 @@ import type {
 	BaseProps,
 	FocusableProps,
 } from "@stratakit/foundations/secret-internals";
+
+// ----------------------------------------------------------------------------
+
+function usePopoverApi(store: AkDialog.DialogStore) {
+	const open = useStoreState(store, (state) => state.open);
+	const contentElement = useStoreState(store, (state) => state.contentElement);
+	const [backdropElement, setBackdropElement] =
+		React.useState<HTMLElement | null>(null);
+
+	React.useEffect(() => {
+		if (backdropElement?.isConnected) {
+			backdropElement?.togglePopover?.(open);
+		}
+		if (contentElement?.isConnected) {
+			contentElement?.togglePopover?.(open);
+		}
+	}, [open, backdropElement, contentElement]);
+
+	const popover = React.useMemo(
+		() =>
+			({
+				dialogProps: { popover: "manual" },
+				backdropProps: { popover: "manual" },
+			}) as const,
+		[],
+	);
+	return [popover, setBackdropElement] as const;
+}
 
 // ----------------------------------------------------------------------------
 
@@ -43,15 +73,23 @@ interface DialogRootProps
  * ```
  */
 const DialogRoot = forwardRef<"div", DialogRootProps>((props, forwardedRef) => {
+	const store = AkDialog.useDialogStore();
+	const [popover, setBackdropElement] = usePopoverApi(store);
+
 	return (
-		<AkDialog.Dialog
-			backdrop={DialogBackdrop}
-			{...props}
-			className={cx("🥝-dialog", props.className)}
-			ref={forwardedRef}
-		>
-			{props.children}
-		</AkDialog.Dialog>
+		<AkDialog.DialogProvider store={store}>
+			<AkDialog.Dialog
+				backdrop={
+					<DialogBackdrop ref={setBackdropElement} {...popover.backdropProps} />
+				}
+				{...props}
+				{...popover.dialogProps}
+				className={cx("🥝-dialog", props.className)}
+				ref={forwardedRef}
+			>
+				{props.children}
+			</AkDialog.Dialog>
+		</AkDialog.DialogProvider>
 	);
 });
 DEV: DialogRoot.displayName = "Dialog.Root";

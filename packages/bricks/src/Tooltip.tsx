@@ -88,8 +88,9 @@ const Tooltip = forwardRef<"div", TooltipProps>((props, forwardedRef) => {
 	} = props;
 
 	const store = AkTooltip.useTooltipStore();
-	const open = useStoreState(store, (store) => store.open);
-	const popover = usePopoverApi(store);
+	const open = useStoreState(store, "open");
+	const popoverElement = useStoreState(store, "popoverElement");
+	const popoverProps = usePopoverApi({ element: popoverElement, open });
 
 	return (
 		<AkTooltip.TooltipProvider
@@ -112,11 +113,8 @@ const Tooltip = forwardRef<"div", TooltipProps>((props, forwardedRef) => {
 				className={cx("🥝-tooltip", props.className)}
 				ref={forwardedRef}
 				id={id}
-				style={{
-					...popover.style,
-					...props.style,
-				}}
-				wrapperProps={popover.wrapperProps}
+				style={{ ...popoverProps.style, ...props.style }}
+				wrapperProps={{ popover: popoverProps.popover }}
 			>
 				{content}
 			</AkTooltip.Tooltip>

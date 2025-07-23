@@ -36,7 +36,7 @@ interface AccordionProps
 	size?: IuiExpandableBlockProps["size"];
 	/** NOT IMPLEMENTED. */
 	styleType?: IuiExpandableBlockProps["styleType"];
-	/** NOT IMPLEMENTED. */
+	/** PARTIALLY IMPLEMENTED: Trigger is disabled but disabled styling is not yet implemented. */
 	disabled?: IuiExpandableBlockProps["disabled"];
 	/** NOT IMPLEMENTED. */
 	caption?: IuiExpandableBlockProps["caption"];
@@ -51,13 +51,13 @@ export const ExpandableBlock = React.forwardRef((props, forwardedRef) => {
 		onToggle,
 		children,
 		title,
-		endIcon,
+		endIcon, // PARTIALLY IMPLEMENTED
+		disabled, // PARTIALLY IMPLEMENTED
 
 		// biome-ignore-start lint/correctness/noUnusedVariables: NOT IMPLEMENTED
 		status,
 		size,
 		styleType,
-		disabled,
 		caption,
 		// biome-ignore-end lint/correctness/noUnusedVariables: NOT IMPLEMENTED
 
@@ -73,12 +73,14 @@ export const ExpandableBlock = React.forwardRef((props, forwardedRef) => {
 		>
 			<SkAccordionItem.Header>
 				<SkAccordionItem.Marker />
-				<SkAccordionItem.Button>
+				<SkAccordionItem.Button disabled={disabled}>
 					<SkAccordionItem.Label>{title}</SkAccordionItem.Label>
 				</SkAccordionItem.Button>
-				<SkAccordionItem.Decoration>
-					{endIcon ? <Icon render={endIcon} /> : null}
-				</SkAccordionItem.Decoration>
+				{endIcon ? (
+					<SkAccordionItem.Decoration>
+						<Icon render={endIcon} />
+					</SkAccordionItem.Decoration>
+				) : null}
 			</SkAccordionItem.Header>
 			<SkAccordionItem.Content>{children}</SkAccordionItem.Content>
 		</SkAccordionItem.Root>

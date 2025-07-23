@@ -8,7 +8,7 @@
 	--✨easing: linear;
 	--✨steps: 4;
 
-	--✨animation--indeterminate-steps: calc(var(--✨steps) * var(--✨duration))
+	--✨animation--indeterminate-steps: calc(var(--✨steps) * var(--✨duration) * 2)
 		--🥝spinner-animation-indeterminate steps(var(--✨steps), end) infinite;
 	--✨animation--indeterminate: var(--✨duration) --🥝spinner-animation-indeterminate
 		var(--✨easing) infinite;

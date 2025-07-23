@@ -81,7 +81,7 @@ const ProgressBar = forwardRef<"div", ProgressBarProps>(
 			return value != null
 				? {
 						...styleProp,
-						"--🥝progress-bar-fill-size": `${value}%`,
+						"--🥝progress-bar-fill-portion-shown": `${value}%`,
 					}
 				: styleProp;
 		}, [styleProp, value]);

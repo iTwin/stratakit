@@ -9,7 +9,7 @@
 	--✨easing: cubic-bezier(0.5, 0, 0.5, 1);
 	--✨steps: 4;
 
-	--✨animation--indeterminate-steps: calc(var(--✨steps) * var(--✨duration))
+	--✨animation--indeterminate-steps: calc(var(--✨steps) * var(--✨duration) * 2)
 		--🥝progress-bar-animation-indeterminate steps(var(--✨steps), end) infinite;
 	--✨animation--indeterminate: var(--✨duration) --🥝progress-bar-animation-indeterminate
 		var(--✨easing) var(--✨count);
@@ -28,8 +28,8 @@
 		&::before {
 			content: "";
 			block-size: inherit;
-			inline-size: 100%;
-			transform: translateX(calc(-100% + var(--🥝progress-bar-fill-size)));
+			inline-size: var(--🥝progress-bar-fill-size);
+			transform: translateX(calc(-100% + var(--🥝progress-bar-fill-portion-shown)));
 			border-radius: inherit;
 			background-color: var(--🥝progress-bar-fill-color);
 			animation: var(--🥝progress-bar-animation);
@@ -69,6 +69,10 @@
 				--🥝progress-bar-animation:
 					var(--✨animation--indeterminate), var(--✨animation--indeterminate-slow);
 			}
+		}
+
+		&:where([data-kiwi-variant="determinate"]) {
+			--🥝progress-bar-fill-size: 100%;
 		}
 	}
 }

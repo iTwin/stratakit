@@ -10,7 +10,10 @@ import { Role } from "@ariakit/react/role";
 import { useStoreState } from "@ariakit/react/store";
 import { Button, IconButton, Text } from "@stratakit/bricks";
 import { GhostAligner } from "@stratakit/bricks/secret-internals";
-import { forwardRef } from "@stratakit/foundations/secret-internals";
+import {
+	forwardRef,
+	useEventHandlers,
+} from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
 import { Dismiss } from "./~utils.icons.js";
 
@@ -21,30 +24,60 @@ import type {
 
 // ----------------------------------------------------------------------------
 
-function usePopoverApi(store: AkDialog.DialogStore) {
+function usePopoverApi(store: AkDialog.DialogStore | undefined) {
 	const open = useStoreState(store, "open");
 	const contentElement = useStoreState(store, "contentElement");
 	const [backdropElement, setBackdropElement] =
 		React.useState<HTMLElement | null>(null);
 
 	React.useEffect(() => {
+		if (!store) return;
+
 		if (backdropElement?.isConnected) {
 			backdropElement?.togglePopover?.(open);
 		}
 		if (contentElement?.isConnected) {
 			contentElement?.togglePopover?.(open);
 		}
-	}, [open, backdropElement, contentElement]);
+	}, [store, open, backdropElement, contentElement]);
 
-	const popover = React.useMemo(
-		() =>
-			({
-				dialogProps: { popover: "manual" },
-				backdropProps: { popover: "manual" },
-			}) as const,
-		[],
-	);
+	const popover = React.useMemo(() => {
+		if (!store) return undefined;
+		return {
+			dialogProps: { popover: "manual" },
+			backdropProps: { popover: "manual" },
+		} as const;
+	}, [store]);
 	return [popover, setBackdropElement] as const;
+}
+
+// ----------------------------------------------------------------------------
+
+function useDialogApi(store: AkDialog.DialogStore | undefined) {
+	const open = useStoreState(store, "open");
+	const contentElement = useStoreState(store, "contentElement");
+	const dialogElement =
+		contentElement instanceof HTMLDialogElement ? contentElement : undefined;
+	React.useEffect(() => {
+		if (!dialogElement) return;
+
+		if (open) {
+			dialogElement.showModal();
+		} else {
+			dialogElement.close();
+		}
+	}, [open, dialogElement]);
+
+	return dialogElement
+		? {
+				backdrop: false,
+				onClick: (e: React.MouseEvent<HTMLElement, MouseEvent>) => {
+					if (e.target === e.currentTarget) {
+						store?.setOpen(false);
+					}
+				},
+			}
+		: undefined;
 }
 
 // ----------------------------------------------------------------------------
@@ -76,12 +109,25 @@ interface DialogRootProps
  *   </Dialog.Footer>
  * </Dialog.Root>
  * ```
+ *
+ * Optionally the dialog component can be used as the native [`<dialog>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/dialog) element.
+ *
+ * ```tsx
+ * <Dialog.Root render={<dialog />}>
+ *   <Dialog.Heading>Heading</Dialog.Heading>
+ *   <Dialog.Content>Content</Dialog.Content>
+ * </Dialog.Root>
+ * ```
  */
 const DialogRoot = forwardRef<"div", DialogRootProps>((props, forwardedRef) => {
 	const { backdrop, ...rest } = props;
 
 	const store = AkDialog.useDialogStore();
-	const [popover, setBackdropElement] = usePopoverApi(store);
+	const contentElement = useStoreState(store, "contentElement");
+	const dialog = useDialogApi(store);
+	const [popover, setBackdropElement] = usePopoverApi(
+		dialog ? undefined : store,
+	);
 	const renderBackdrop = React.useMemo(() => {
 		if (!backdrop) return undefined;
 		if (typeof backdrop === "boolean") return undefined;
@@ -89,7 +135,7 @@ const DialogRoot = forwardRef<"div", DialogRootProps>((props, forwardedRef) => {
 		const Component = backdrop;
 		return <Component />;
 	}, [backdrop]);
-	const contentElement = useStoreState(store, "contentElement");
+
 	return (
 		<AkDialog.DialogProvider store={store}>
 			<AkDialog.Dialog
@@ -100,12 +146,14 @@ const DialogRoot = forwardRef<"div", DialogRootProps>((props, forwardedRef) => {
 					) : (
 						<DialogBackdrop
 							ref={setBackdropElement}
-							{...popover.backdropProps}
+							{...popover?.backdropProps}
 							render={renderBackdrop}
 						/>
 					)
 				}
-				{...popover.dialogProps}
+				{...popover?.dialogProps}
+				{...dialog}
+				onClick={useEventHandlers(props.onClick, dialog?.onClick)}
 				className={cx("🥝-dialog", props.className)}
 				ref={forwardedRef}
 			>

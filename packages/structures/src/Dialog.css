@@ -85,6 +85,7 @@
 	}
 }
 
+:where(.🥝-dialog):where(dialog)::backdrop,
 .🥝-dialog-backdrop {
 	@layer base {
 		opacity: 0.8;

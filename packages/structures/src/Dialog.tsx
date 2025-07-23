@@ -5,6 +5,7 @@
 
 import * as React from "react";
 import * as AkDialog from "@ariakit/react/dialog";
+import { PortalContext } from "@ariakit/react/portal";
 import { Role } from "@ariakit/react/role";
 import { useStoreState } from "@ariakit/react/store";
 import { Button, IconButton, Text } from "@stratakit/bricks";
@@ -21,8 +22,8 @@ import type {
 // ----------------------------------------------------------------------------
 
 function usePopoverApi(store: AkDialog.DialogStore) {
-	const open = useStoreState(store, (state) => state.open);
-	const contentElement = useStoreState(store, (state) => state.contentElement);
+	const open = useStoreState(store, "open");
+	const contentElement = useStoreState(store, "contentElement");
 	const [backdropElement, setBackdropElement] =
 		React.useState<HTMLElement | null>(null);
 
@@ -88,6 +89,7 @@ const DialogRoot = forwardRef<"div", DialogRootProps>((props, forwardedRef) => {
 		const Component = backdrop;
 		return <Component />;
 	}, [backdrop]);
+	const contentElement = useStoreState(store, "contentElement");
 	return (
 		<AkDialog.DialogProvider store={store}>
 			<AkDialog.Dialog
@@ -106,7 +108,11 @@ const DialogRoot = forwardRef<"div", DialogRootProps>((props, forwardedRef) => {
 				{...popover.dialogProps}
 				className={cx("🥝-dialog", props.className)}
 				ref={forwardedRef}
-			/>
+			>
+				<PortalContext.Provider value={contentElement}>
+					{props.children}
+				</PortalContext.Provider>
+			</AkDialog.Dialog>
 		</AkDialog.DialogProvider>
 	);
 });

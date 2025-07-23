@@ -8,14 +8,15 @@
 
 	@layer base {
 		position: fixed;
-		inset-block-start: round(33%, 1px);
-		inset-inline-start: round(50%, 1px);
-		transform: translate(round(-50%, 1px), round(-33%, 1px));
+		margin: auto;
+		inset: 0;
 
 		min-block-size: 92px;
 		min-inline-size: min(100%, 296px);
 		max-block-size: calc(100dvb - 64px);
 		max-inline-size: calc(100dvi - 64px);
+		inline-size: fit-content;
+		block-size: fit-content;
 
 		border-radius: 12px; /* radius/large */
 		background-color: var(--stratakit-color-bg-elevation-base);

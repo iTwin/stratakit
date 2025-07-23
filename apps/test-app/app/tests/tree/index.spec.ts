@@ -58,21 +58,22 @@ test("actions", async ({ page, browserName }) => {
 });
 
 test("actions overflow", async ({ page }) => {
-	await page.goto("/tests/tree?_actionsOverflow&dot");
+	await page.goto("/tests/tree?actions&dot");
 
 	const treeitem = page.getByRole("treeitem");
 	const toolbar = treeitem.getByRole("toolbar");
-	const actions = toolbar.getByRole("button");
+	const actions = toolbar.getByRole("button", { name: /Action \d/ });
+	const more = toolbar.getByRole("button", { name: "More" });
 	const menu = page.getByRole("menu");
-	const menuitem = menu.getByRole("menuitem").first();
+	const menuitems = menu.getByRole("menuitem");
+	const menuitem = menuitems.first();
 
 	// Hover to show actions
 	await treeitem.hover();
 	await expect(toolbar).toBeVisible();
 
 	// 3rd action and onwards should overflow
-	await expect(actions).toHaveCount(3);
-	const more = actions.nth(2);
+	await expect(actions).toHaveCount(2);
 	await expect(more).toHaveAccessibleName("More");
 
 	// Overflow menu
@@ -88,6 +89,18 @@ test("actions overflow", async ({ page }) => {
 	const firstAction = actions.first();
 	await expect(firstAction).toHaveAccessibleDescription("Something's going on");
 	await expect(menuitem).toHaveAccessibleDescription("Something's going on");
+
+	// Should show at most 2 inline actions
+	await page.goto("/tests/tree?actions&inline=5&menu=0");
+	await treeitem.hover();
+	await expect(actions).toHaveCount(2);
+	await expect(more).not.toBeVisible();
+
+	// Should show at most 2 inline actions and a menu.
+	await page.goto("/tests/tree?actions&inline=5&menu=2");
+	await treeitem.hover();
+	await expect(actions).toHaveCount(2);
+	await expect(more).toBeVisible();
 });
 
 test("description", async ({ page }) => {

@@ -68,7 +68,10 @@ const LABEL_MAP = {
 		"packages/compat/src/Alert.tsx",
 	],
 	[LABELS.BREADCRUMB]: [],
-	[LABELS.BUTTON]: ["packages/bricks/src/Button"],
+	[LABELS.BUTTON]: [
+		"packages/bricks/src/Button",
+		"packages/compat/src/Button.tsx",
+	],
 	[LABELS.CARD]: [],
 	[LABELS.CHECKBOX]: [
 		"packages/bricks/src/Checkbox",
@@ -100,7 +103,10 @@ const LABEL_MAP = {
 		"packages/foundations/src/Icon",
 		"packages/compat/src/Icon.tsx",
 	],
-	[LABELS.ICON_BUTTON]: ["packages/bricks/src/IconButton"],
+	[LABELS.ICON_BUTTON]: [
+		"packages/bricks/src/IconButton",
+		"packages/compat/src/IconButton.tsx",
+	],
 	[LABELS.KBD]: ["packages/bricks/src/Kbd", "packages/compat/src/Kbd.tsx"],
 	[LABELS.LABEL]: [
 		"packages/bricks/src/Label",
@@ -136,7 +142,7 @@ const LABEL_MAP = {
 		"packages/structures/src/Tabs",
 		"packages/compat/src/Tabs.tsx",
 	],
-	[LABELS.TEXT]: ["packages/bricks/src/Text", "packages/compat/src/Text.tsx"],
+	[LABELS.TEXT]: ["packages/bricks/src/Text.", "packages/compat/src/Text.tsx"],
 	[LABELS.TEXT_BOX]: [
 		"packages/bricks/src/TextBox",
 		"packages/compat/src/Input.tsx",
@@ -154,7 +160,7 @@ const LABEL_MAP = {
 		"packages/structures/src/Tree",
 		"packages/structures/src/TreeItem",
 	],
-	[LABELS.API_BRIDGE]: ["packages/compat/"],
+	[LABELS.API_BRIDGE]: ["packages/compat/src"],
 	[LABELS.GITHUB_ACTIONS]: [".github/workflows"],
 };
 

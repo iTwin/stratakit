@@ -110,9 +110,15 @@ DEV: TabList.displayName = "Tabs.TabList";
 
 // ----------------------------------------------------------------------------
 
-interface TabProps
-	extends Omit<FocusableProps<"button">, "id">,
-		Required<Pick<AkTab.TabProps, "id">> {}
+interface TabProps extends Omit<FocusableProps<"button">, "id"> {
+	/**
+	 * The globally unique id of the tab. This will be used to identify the tab
+	 * and connect it to the corresponding `Tabs.TabPanel` via the `tabId`.
+	 *
+	 * The `selectedId` state of `Tabs.Root` will also be based on this id.
+	 */
+	id: string;
+}
 
 /**
  * An individual tab button that switches the selected tab panel when clicked.

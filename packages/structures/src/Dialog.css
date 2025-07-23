@@ -11,7 +11,7 @@
 		margin: auto;
 		inset: 0;
 
-		min-block-size: 92px;
+		min-block-size: var(--🥝dialog-min-block-size, 94px);
 		min-inline-size: min(100%, 296px);
 		max-block-size: calc(100dvb - 64px);
 		max-inline-size: calc(100dvi - 64px);
@@ -37,6 +37,10 @@
 
 		display: flex;
 		flex-direction: column;
+
+		&:where(:has(.🥝-dialog-footer)) {
+			--🥝dialog-min-block-size: 156px;
+		}
 	}
 }
 

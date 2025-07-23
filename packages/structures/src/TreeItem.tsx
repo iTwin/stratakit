@@ -390,6 +390,29 @@ DEV: TreeItemRoot.displayName = "TreeItemRoot";
 
 // ----------------------------------------------------------------------------
 
+/** Optimizes performance by delaying the rendering of actions until the tree item becomes visible. */
+function useRenderActions() {
+	const ref = React.useRef<HTMLElement>(null);
+	const [renderActions, setRenderActions] = React.useState(false);
+	React.useEffect(() => {
+		const el = ref.current;
+		if (!el || renderActions) return;
+		const observer = new IntersectionObserver(([entry]) => {
+			if (!entry.isIntersecting) return;
+			React.startTransition(() => {
+				setRenderActions(true);
+			});
+		});
+		observer.observe(el);
+		return () => {
+			observer.disconnect();
+		};
+	}, [renderActions]);
+	return [ref, renderActions] as const;
+}
+
+// ----------------------------------------------------------------------------
+
 interface TreeItemNodeProps
 	extends Pick<TreeItemProps, "expanded" | "selected">,
 		Pick<TreeItemDecorationsProps, "onExpanderClick"> {}
@@ -401,6 +424,8 @@ interface TreeItemNodeProps
 const TreeItemNode = React.memo((props: TreeItemNodeProps) => {
 	const { expanded, selected, onExpanderClick } = props;
 	const error = React.useContext(TreeItemErrorContext);
+
+	const [ref, renderActions] = useRenderActions();
 	return (
 		<ListItem.Root
 			data-kiwi-expanded={expanded}
@@ -408,13 +433,14 @@ const TreeItemNode = React.memo((props: TreeItemNodeProps) => {
 			data-kiwi-error={error ? true : undefined}
 			className="🥝-tree-item-node"
 			role={undefined}
+			ref={ref}
 		>
 			<TreeItemDecorations onExpanderClick={onExpanderClick} />
 
 			<TreeItemContent />
 			<TreeItemDescription />
 
-			<TreeItemActions />
+			{renderActions && <TreeItemActions />}
 		</ListItem.Root>
 	);
 });

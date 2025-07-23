@@ -1,0 +1,1 @@
+import{f as i,c as t,b as d,d as a,a as n}from"./LMDWO4NN-ClcTly79.js";var l="span",o=t(function(e){return e=d(a({},e),{style:a({border:0,clip:"rect(0 0 0 0)",height:"1px",margin:"-1px",overflow:"hidden",padding:0,position:"absolute",whiteSpace:"nowrap",width:"1px"},e.style)}),e}),c=i(function(e){const s=o(e);return n(l,s)});export{c as V,o as u};

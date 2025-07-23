@@ -735,25 +735,34 @@ function SandboxTree({ data: treeData }: { data: TreeItemData[] }) {
 									<Icon href={placeholderIcon} />
 								</>
 							}
+							inlineActions={
+								hasError
+									? [
+											<Tree.ItemAction
+												key="retry"
+												icon={retryIcon}
+												label="Retry"
+												onClick={() => {
+													setFailingIds((prev) => {
+														return prev.filter((id) => id !== item.id);
+													});
+												}}
+											/>,
+										]
+									: [
+											<Tree.ItemAction
+												key="lock"
+												icon={lockIcon}
+												label="Lock"
+											/>,
+											<VisibilityAction
+												key="visibility"
+												item={item}
+												onClick={toggleHidden}
+											/>,
+										]
+							}
 							actions={[
-								hasError ? (
-									<Tree.ItemAction
-										key="retry"
-										icon={retryIcon}
-										label="Retry"
-										onClick={() => {
-											setFailingIds((prev) => {
-												return prev.filter((id) => id !== item.id);
-											});
-										}}
-									/>
-								) : null,
-								<Tree.ItemAction key="lock" icon={lockIcon} label="Lock" />,
-								<VisibilityAction
-									key="visibility"
-									item={item}
-									onClick={toggleHidden}
-								/>,
 								<Tree.ItemAction key="copy" label="Copy" />,
 								<Tree.ItemAction key="paste" label="Paste" />,
 								<Tree.ItemAction key="copy-paste" label="Copy/Paste as" />,

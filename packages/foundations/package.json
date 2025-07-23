@@ -91,7 +91,9 @@
 			"files": [
 				"src",
 				"scripts",
-				"../../internal"
+				"../../internal",
+				"../bricks/src/*.css",
+				"../structures/src/*.css"
 			],
 			"output": [
 				"dist/**/*.js",
@@ -103,7 +105,9 @@
 			"files": [
 				"src",
 				"scripts",
-				"../../internal"
+				"../../internal",
+				"../bricks/src/*.css",
+				"../structures/src/*.css"
 			],
 			"output": [
 				"dist/DEV/**/*.js"

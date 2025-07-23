@@ -3,14 +3,27 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
+import { useStoreState } from "@ariakit/react/store";
 import * as AkTab from "@ariakit/react/tab";
-import { forwardRef } from "@stratakit/foundations/secret-internals";
+import {
+	forwardRef,
+	isBrowser,
+	useUnreactiveCallback,
+} from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
 
 import type {
 	BaseProps,
 	FocusableProps,
 } from "@stratakit/foundations/secret-internals";
+
+// ----------------------------------------------------------------------------
+
+const supportsAnchorPositioning =
+	isBrowser && CSS?.supports("anchor-name: --foo");
+
+const prefersReducedMotion = () =>
+	isBrowser && window.matchMedia("(prefers-reduced-motion)").matches;
 
 // ----------------------------------------------------------------------------
 
@@ -61,11 +74,55 @@ function Tabs(props: TabsProps) {
 		children,
 	} = props;
 
+	const store = AkTab.useTabStore({ defaultSelectedId });
+	const tablist = useStoreState(store, "baseElement");
+	const selectedIdFromStore = useStoreState(store, "selectedId");
+
+	const flipAnimateStripe = (newSelectedId: string | null | undefined) => {
+		// Bail if anchor positioning is not supported because the pseudo-element does not exist.
+		if (!supportsAnchorPositioning) return;
+
+		const ownerDocument = tablist?.ownerDocument;
+		if (!ownerDocument || !selectedIdFromStore || !newSelectedId) return;
+
+		// Read layout of the previous ("First") and next ("Last") tabs
+		const previousTabRect = ownerDocument
+			.getElementById(selectedIdFromStore)
+			?.getBoundingClientRect();
+		const nextTabRect = ownerDocument
+			.getElementById(newSelectedId)
+			?.getBoundingClientRect();
+
+		if (!previousTabRect || !nextTabRect) return;
+
+		// Calculate deltas ("Invert")
+		const deltaX = previousTabRect.left - nextTabRect.left;
+		const deltaWidth = previousTabRect.width / nextTabRect.width;
+
+		// Animate the active stripe pseudo-element's `transform` property. ("Play")
+		tablist.animate(
+			[
+				{ transform: `translateX(${deltaX}px) scaleX(${deltaWidth})` },
+				{ transform: "none" },
+			],
+			{
+				pseudoElement: "::after",
+				duration: 150,
+				easing: "ease-in-out",
+			},
+		);
+	};
+
 	return (
 		<AkTab.TabProvider
-			defaultSelectedId={defaultSelectedId}
+			store={store}
 			selectedId={selectedId}
-			setSelectedId={setSelectedId}
+			setSelectedId={useUnreactiveCallback(
+				(newSelectedId: string | null | undefined) => {
+					if (!prefersReducedMotion()) flipAnimateStripe(newSelectedId);
+					setSelectedId?.(newSelectedId);
+				},
+			)}
 			selectOnMove={selectOnMove}
 		>
 			{children}

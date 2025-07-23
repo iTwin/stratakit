@@ -4,10 +4,8 @@
  *--------------------------------------------------------------------------------------------*/
 
 import * as React from "react";
-import { useStoreState } from "@ariakit/react/store";
 import { isBrowser, supportsPopover } from "./~utils.js";
 
-import type { PopoverStore } from "@ariakit/react/popover";
 import type { AnyFunction } from "./~utils.js";
 
 /**
@@ -184,35 +182,35 @@ export function useSafeContext<C>(context: React.Context<C>) {
 }
 
 /**
- * Hook that makes it easy to use the [Popover API](https://developer.mozilla.org/en-US/docs/Web/API/Popover_API).
+ * Hook that makes it easy to use the [Popover API](https://developer.mozilla.org/en-US/docs/Web/API/Popover_API) consistently.
  *
- * Accepts an Ariakit store of a popover-like component, and returns a
- * set of props that should be passed back to the component.
+ * Internally, this hook will sync the `open` state with the `element`'s "popover-open" state.
  *
- * Internally, this hook will sync the `open` state of the store with the
- * DOM element.
+ * Returns a set of DOM props that should be passed back to the element.
  *
  * @private
  */
-export function usePopoverApi(store: PopoverStore | undefined) {
-	const open = useStoreState(store, (state) => state?.open);
-	const popover = useStoreState(store, (state) => state?.popoverElement);
-
+export function usePopoverApi({
+	element,
+	open,
+}: {
+	element: HTMLElement | null | undefined;
+	open: boolean | undefined;
+}) {
 	React.useEffect(
 		function syncPopoverWithOpenState() {
-			if (popover?.isConnected) {
-				popover?.togglePopover?.(open);
+			if (element?.popover && element?.isConnected) {
+				element?.togglePopover?.(open);
 			}
 		},
-		[open, popover],
+		[open, element],
 	);
 
 	return React.useMemo(
 		() =>
 			({
-				portal: !supportsPopover,
 				style: { zIndex: supportsPopover ? undefined : 9999 },
-				wrapperProps: { popover: "manual" },
+				popover: "manual",
 			}) as const,
 		[],
 	);

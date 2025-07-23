@@ -235,13 +235,28 @@ function CustomBackdropTest() {
 
 function DialogElementTest() {
 	const [open, setOpen] = React.useState(false);
+	const dialogElementRef = React.useRef<HTMLDialogElement>(null);
+	React.useEffect(() => {
+		const dialogElement = dialogElementRef.current;
+		if (!dialogElement) return;
+		if (open) {
+			dialogElement.showModal();
+		} else {
+			dialogElement.close();
+		}
+	}, [open]);
 	return (
 		<>
 			<Button onClick={() => setOpen(true)}>Open</Button>
 			<Dialog.Root
 				open={open}
 				onClose={() => setOpen(false)}
-				render={<dialog />}
+				render={<dialog ref={dialogElementRef} />}
+				onClick={(e) => {
+					if (e.target === e.currentTarget) {
+						setOpen(false);
+					}
+				}}
 			>
 				<Dialog.Header>
 					<Dialog.Heading>Heading</Dialog.Heading>

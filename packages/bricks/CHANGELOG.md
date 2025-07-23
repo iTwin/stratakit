@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.3.3
+
+### Patch Changes
+
+- [#863](https://github.com/iTwin/design-system/pull/863): Update the `background-color` for the "hover" and "pressed" states of `<Button variant="ghost">` and `<Button variant="outline">`.
+- [#852](https://github.com/iTwin/design-system/pull/852): Removed spinner slowed down animation after 4 counts.
+- Updated dependencies:
+  - @stratakit/foundations@0.2.2
+
 ## 0.3.2
 
 - [#757](https://github.com/iTwin/design-system/pull/757): Added compositional `Anchor.Root` component. This new component can be used when you need fine grained configuration.

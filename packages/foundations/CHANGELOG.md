@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.2.2
+
+### Patch Changes
+
+- [#861](https://github.com/iTwin/design-system/pull/861): Small changes to some colors in light theme.
+- [#861](https://github.com/iTwin/design-system/pull/861): Added new CSS variable: `--stratakit-color-bg-control-select`.
+
 ## 0.2.1
 
 - [#824](https://github.com/iTwin/design-system/pull/824): Added a new `unstable_loadStyles` function for loading all foundations CSS without using React.

@@ -1,5 +1,21 @@
 # Changelog
 
+## 0.1.3
+
+### Patch Changes
+
+- [#850](https://github.com/iTwin/design-system/pull/850): Added icons:
+  - `drone.svg`
+  - `error.svg`
+  - `regenerate.svg`
+  - `reschedule.svg`
+  - `warning.svg`
+
+  Updated icons:
+  - `filter.svg`
+  - `important.svg`
+  - `merge.svg`
+
 ## 0.1.2
 
 - [#754](https://github.com/iTwin/design-system/pull/754): Added icons:

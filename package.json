@@ -18,7 +18,7 @@
 	},
 	"devDependencies": {
 		"@actions/github": "^6.0.1",
-		"@biomejs/biome": "2.1.1",
+		"@biomejs/biome": "2.1.2",
 		"@playwright/test": "catalog:",
 		"@types/node": "catalog:",
 		"colorjs.io": "^0.5.2",

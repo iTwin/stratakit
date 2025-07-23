@@ -86,8 +86,8 @@
 	}
 }
 
-:where(.🥝-dialog):where(dialog)::backdrop,
-.🥝-dialog-backdrop {
+.🥝-dialog-backdrop,
+.🥝-dialog:where(dialog:modal)::backdrop {
 	@layer base {
 		opacity: 0.8;
 		background: var(--stratakit-color-bg-elevation-overlay);

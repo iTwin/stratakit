@@ -6,6 +6,7 @@
 
 - [#861](https://github.com/iTwin/design-system/pull/861): Small changes to some colors in light theme.
 - [#861](https://github.com/iTwin/design-system/pull/861): Added new CSS variable: `--stratakit-color-bg-control-select`.
+- Updated internal code for `@stratakit/bricks@0.3.3` and `@stratakit/structures@0.3.0`.
 
 ## 0.2.1
 

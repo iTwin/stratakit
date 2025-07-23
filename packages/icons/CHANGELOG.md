@@ -2,8 +2,6 @@
 
 ## 0.1.3
 
-### Patch Changes
-
 - [#850](https://github.com/iTwin/design-system/pull/850): Added icons:
   - `drone.svg`
   - `error.svg`

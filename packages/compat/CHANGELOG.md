@@ -2,8 +2,6 @@
 
 ## 0.0.4
 
-### Patch Changes
-
 - Updated dependencies:
   - @stratakit/bricks@0.3.3
   - @stratakit/structures@0.3.0

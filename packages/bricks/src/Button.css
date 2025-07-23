@@ -88,6 +88,48 @@
 		var(--stratakit-color-glow-hue) var(--stratakit-color-border-glow-base-pressed-\%)
 	);
 	--✨border--outline-disabled: var(--stratakit-color-border-glow-on-surface-disabled);
+
+	--✨bg--outline-accent-default: transparent;
+	--✨bg--outline-accent-hover: var(--stratakit-color-bg-glow-on-surface-accent-hover);
+	--✨bg--outline-accent-pressed: var(--stratakit-color-bg-glow-on-surface-accent-pressed);
+	--✨bg--outline-accent-disabled: transparent;
+
+	--✨color--outline-accent-default: var(--stratakit-color-text-accent-strong);
+	--✨color--outline-accent-hover: color-mix(
+		in oklch,
+		var(--✨color--outline-accent-default) 100%,
+		var(--stratakit-color-glow-hue) var(--stratakit-color-text-glow-strong-hover-\%)
+	);
+	--✨color--outline-accent-pressed: color-mix(
+		in oklch,
+		var(--✨color--outline-accent-default) 100%,
+		var(--stratakit-color-glow-hue) var(--stratakit-color-text-glow-strong-pressed-\%)
+	);
+
+	--✨icon--outline-accent-default: var(--stratakit-color-icon-accent-strong);
+	--✨icon--outline-accent-hover: color-mix(
+		in oklch,
+		var(--✨icon--outline-accent-default) 100%,
+		var(--stratakit-color-glow-hue) var(--stratakit-color-icon-glow-strong-hover-\%)
+	);
+	--✨icon--outline-accent-pressed: color-mix(
+		in oklch,
+		var(--✨icon--outline-accent-default) 100%,
+		var(--stratakit-color-glow-hue) var(--stratakit-color-icon-glow-strong-pressed-\%)
+	);
+
+	--✨border--outline-accent-default: var(--stratakit-color-border-accent-base);
+	--✨border--outline-accent-hover: color-mix(
+		in oklch,
+		var(--✨border--outline-accent-default) 100%,
+		var(--stratakit-color-glow-hue) var(--stratakit-color-border-glow-strong-hover-\%)
+	);
+	--✨border--outline-accent-pressed: color-mix(
+		in oklch,
+		var(--✨border--outline-accent-default) 100%,
+		var(--stratakit-color-glow-hue) var(--stratakit-color-border-glow-strong-pressed-\%)
+	);
+	--✨border--outline-accent-disabled: var(--stratakit-color-border-glow-on-surface-disabled);
 	/* #endregion */
 
 	/* #region Variant: ghost */
@@ -104,6 +146,29 @@
 	--✨bg--ghost-accent-hover: var(--stratakit-color-bg-glow-on-surface-accent-hover);
 	--✨bg--ghost-accent-pressed: var(--stratakit-color-bg-glow-on-surface-accent-pressed);
 	--✨bg--ghost-accent-disabled: transparent;
+
+	--✨color--ghost-accent-default: var(--stratakit-color-text-accent-strong);
+	--✨color--ghost-accent-hover: color-mix(
+		in oklch,
+		var(--✨color--ghost-accent-default) 100%,
+		var(--stratakit-color-glow-hue) var(--stratakit-color-text-glow-strong-hover-\%)
+	);
+	--✨color--ghost-accent-pressed: color-mix(
+		in oklch,
+		var(--✨color--ghost-accent-default) 100%,
+		var(--stratakit-color-glow-hue) var(--stratakit-color-text-glow-strong-pressed-\%)
+	);
+	--✨icon--ghost-accent-default: var(--stratakit-color-icon-accent-strong);
+	--✨icon--ghost-accent-hover: color-mix(
+		in oklch,
+		var(--✨icon--ghost-accent-default) 100%,
+		var(--stratakit-color-glow-hue) var(--stratakit-color-icon-glow-strong-hover-\%)
+	);
+	--✨icon--ghost-accent-pressed: color-mix(
+		in oklch,
+		var(--✨icon--ghost-accent-default) 100%,
+		var(--stratakit-color-glow-hue) var(--stratakit-color-icon-glow-strong-pressed-\%)
+	);
 	/* #endregion */
 
 	@layer base {
@@ -137,8 +202,7 @@
 		--🥝icon-color: var(--🌀button-state--default, var(--stratakit-color-icon-neutral-base))
 			var(--🌀button-state--hover, var(--stratakit-color-icon-neutral-hover))
 			var(--🌀button-state--pressed, var(--stratakit-color-icon-neutral-hover))
-			var(--🌀button-state--active, var(--stratakit-color-icon-accent-strong))
-			var(--🌀button-state--disabled, var(--stratakit-color-icon-neutral-disabled));
+			var(--🌀button-state--active, var(--stratakit-color-icon-accent-strong));
 
 		@media (forced-colors: active) {
 			background-color: ButtonFace;
@@ -181,24 +245,47 @@
 					var(--🌀button-state--disabled, var(--✨border--solid-accent-disabled));
 
 				--🥝button-color: var(--stratakit-color-text-neutral-emphasis);
-				--🥝icon-color: var(--🌀button-state--default, var(--stratakit-color-icon-neutral-emphasis))
-					var(--🌀button-state--hover, var(--stratakit-color-icon-neutral-emphasis))
-					var(--🌀button-state--pressed, var(--stratakit-color-icon-neutral-emphasis))
-					var(--🌀button-state--disabled, var(--stratakit-color-icon-neutral-disabled));
+				--🥝icon-color: var(--stratakit-color-icon-neutral-emphasis);
 				-webkit-tap-highlight-color: var(--stratakit-color-bg-glow-on-surface-accent-pressed);
 			}
 		}
 
 		&:where([data-kiwi-variant="outline"]) {
-			--🥝button-background-color: var(--🌀button-state--default, var(--✨bg--outline-default))
-				var(--🌀button-state--hover, var(--✨bg--outline-hover))
-				var(--🌀button-state--pressed, var(--✨bg--outline-pressed))
-				var(--🌀button-state--active, var(--✨bg--active))
-				var(--🌀button-state--disabled, var(--✨bg--outline-disabled));
-			--🥝button-border-color: var(--🌀button-state--default, var(--✨border--outline-default))
-				var(--🌀button-state--hover, var(--✨border--outline-hover))
-				var(--🌀button-state--pressed, var(--✨border--outline-pressed))
-				var(--🌀button-state--disabled, var(--✨border--outline-disabled));
+			&:where([data-kiwi-tone="neutral"]) {
+				--🥝button-background-color: var(--🌀button-state--default, var(--✨bg--outline-default))
+					var(--🌀button-state--hover, var(--✨bg--outline-hover))
+					var(--🌀button-state--pressed, var(--✨bg--outline-pressed))
+					var(--🌀button-state--active, var(--✨bg--active))
+					var(--🌀button-state--disabled, var(--✨bg--outline-disabled));
+				--🥝button-border-color: var(--🌀button-state--default, var(--✨border--outline-default))
+					var(--🌀button-state--hover, var(--✨border--outline-hover))
+					var(--🌀button-state--pressed, var(--✨border--outline-pressed))
+					var(--🌀button-state--disabled, var(--✨border--outline-disabled));
+			}
+
+			&:where([data-kiwi-tone="accent"]) {
+				--🥝button-background-color: var(
+						--🌀button-state--default,
+						var(--✨bg--outline-accent-default)
+					)
+					var(--🌀button-state--hover, var(--✨bg--outline-accent-hover))
+					var(--🌀button-state--pressed, var(--✨bg--outline-accent-pressed))
+					var(--🌀button-state--active, var(--✨bg--active))
+					var(--🌀button-state--disabled, var(--✨bg--outline-accent-disabled));
+				--🥝button-border-color: var(
+						--🌀button-state--default,
+						var(--✨border--outline-accent-default)
+					)
+					var(--🌀button-state--hover, var(--✨border--outline-accent-hover))
+					var(--🌀button-state--pressed, var(--✨border--outline-accent-pressed))
+					var(--🌀button-state--disabled, var(--✨border--outline-accent-disabled));
+				--🥝button-color: var(--🌀button-state--default, var(--✨color--outline-accent-default))
+					var(--🌀button-state--hover, var(--✨color--outline-accent-hover))
+					var(--🌀button-state--pressed, var(--✨color--outline-accent-pressed));
+				--🥝icon-color: var(--🌀button-state--default, var(--✨icon--outline-accent-default))
+					var(--🌀button-state--hover, var(--✨icon--outline-accent-hover))
+					var(--🌀button-state--pressed, var(--✨icon--outline-accent-pressed));
+			}
 		}
 
 		&:where([data-kiwi-variant="ghost"]) {
@@ -221,12 +308,12 @@
 					var(--🌀button-state--pressed, var(--✨bg--ghost-accent-pressed))
 					var(--🌀button-state--active, var(--✨bg--active))
 					var(--🌀button-state--disabled, var(--✨bg--ghost-accent-disabled));
-
-				--🥝button-color: var(--stratakit-color-text-accent-strong);
-				--🥝icon-color: var(--🌀button-state--default, var(--stratakit-color-icon-accent-strong))
-					var(--🌀button-state--hover, var(--stratakit-color-icon-accent-strong))
-					var(--🌀button-state--pressed, var(--stratakit-color-icon-accent-strong))
-					var(--🌀button-state--disabled, var(--stratakit-color-icon-neutral-disabled));
+				--🥝button-color: var(--🌀button-state--default, var(--✨color--ghost-accent-default))
+					var(--🌀button-state--hover, var(--✨color--ghost-accent-hover))
+					var(--🌀button-state--pressed, var(--✨color--ghost-accent-pressed));
+				--🥝icon-color: var(--🌀button-state--default, var(--✨icon--ghost-accent-default))
+					var(--🌀button-state--hover, var(--✨icon--ghost-accent-hover))
+					var(--🌀button-state--pressed, var(--✨icon--ghost-accent-pressed));
 			}
 		}
 	}
@@ -262,6 +349,7 @@
 			color: var(--stratakit-color-text-neutral-disabled);
 			cursor: not-allowed;
 			-webkit-tap-highlight-color: transparent;
+			--🥝icon-color: var(--stratakit-color-icon-neutral-disabled);
 
 			@media (forced-colors: active) {
 				border-color: GrayText;

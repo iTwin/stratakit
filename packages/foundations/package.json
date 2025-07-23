@@ -1,7 +1,7 @@
 {
 	"name": "@stratakit/foundations",
 	"type": "module",
-	"version": "0.2.0",
+	"version": "0.2.1",
 	"license": "MIT",
 	"sideEffects": false,
 	"types": "./dist/index.d.ts",
@@ -70,6 +70,14 @@
 		"react": ">=18.0.0",
 		"react-dom": ">=18.0.0"
 	},
+	"peerDependenciesMeta": {
+		"react": {
+			"optional": true
+		},
+		"react-dom": {
+			"optional": true
+		}
+	},
 	"wireit": {
 		"build": {
 			"dependencies": [
@@ -83,7 +91,9 @@
 			"files": [
 				"src",
 				"scripts",
-				"../../internal"
+				"../../internal",
+				"../bricks/src/*.css",
+				"../structures/src/*.css"
 			],
 			"output": [
 				"dist/**/*.js",
@@ -95,7 +105,9 @@
 			"files": [
 				"src",
 				"scripts",
-				"../../internal"
+				"../../internal",
+				"../bricks/src/*.css",
+				"../structures/src/*.css"
 			],
 			"output": [
 				"dist/DEV/**/*.js"

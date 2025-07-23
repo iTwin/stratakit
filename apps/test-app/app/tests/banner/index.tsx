@@ -32,7 +32,13 @@ export default definePage(
 				className="my-banner"
 				label="Label"
 				message="Message"
-				icon={icon ? placeholderIcon : undefined}
+				icon={
+					icon ? (
+						<svg className="my-banner-custom-icon">
+							<use href={placeholderIcon} />
+						</svg>
+					) : undefined
+				}
 				tone={tone as (typeof tones)[number]}
 			/>
 		);
@@ -42,7 +48,7 @@ export default definePage(
 		dismiss: DismissibleTest,
 		actions: ActionsTest,
 		allStyleCases: AllStyleCases,
-		composition: CompositionTest,
+		composition: CompositionBasicTest,
 	},
 );
 
@@ -66,6 +72,8 @@ function VisualTest({ customIcons = false }: { customIcons?: boolean }) {
 					/>
 				);
 			})}
+
+			<CompositionTestPermutations />
 		</div>
 	);
 }
@@ -188,7 +196,21 @@ function AllStyleCases() {
 	);
 }
 
-function CompositionTest() {
+function CompositionBasicTest({ tone = "neutral" }: Record<string, string>) {
+	return (
+		<BannerRoot className="my-banner" tone={tone as (typeof tones)[number]}>
+			<BannerLabel>Label</BannerLabel>
+			<BannerMessage>
+				This is a message that can be very long and will wrap to the next line.
+			</BannerMessage>
+			<BannerActions>
+				<Button>Action</Button>
+			</BannerActions>
+		</BannerRoot>
+	);
+}
+
+function CompositionTestPermutations() {
 	return (
 		<div style={{ display: "grid", gap: 4 }}>
 			<BannerRoot
@@ -196,7 +218,7 @@ function CompositionTest() {
 				variant="outline"
 				data-testid="banner-info-custom-icon"
 			>
-				<BannerIcon href={placeholderIcon} className="my-banner-icon" />
+				<BannerIcon href={placeholderIcon} />
 				<BannerLabel id="my-label">Label</BannerLabel>
 				<BannerMessage>
 					This is a message that can be very long and will wrap to the next
@@ -209,7 +231,7 @@ function CompositionTest() {
 			</BannerRoot>
 
 			<BannerRoot tone="info" data-testid="banner-info-no-custom-icon">
-				<BannerIcon className="my-banner-icon" />
+				<BannerIcon />
 				<BannerLabel>Label</BannerLabel>
 				<BannerMessage>Message</BannerMessage>
 			</BannerRoot>

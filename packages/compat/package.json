@@ -1,7 +1,7 @@
 {
 	"name": "@stratakit/react",
 	"type": "module",
-	"version": "0.0.2",
+	"version": "0.0.3",
 	"license": "MIT",
 	"sideEffects": false,
 	"types": "./dist/index.d.ts",
@@ -45,9 +45,9 @@
 		"dev": "wireit"
 	},
 	"dependencies": {
-		"@itwin/itwinui-react": "^3.19.0",
-		"@stratakit/bricks": "^0.3.1",
-		"@stratakit/structures": "^0.2.3",
+		"@itwin/itwinui-react": "^3.19.1",
+		"@stratakit/bricks": "^0.3.2",
+		"@stratakit/structures": "^0.2.4",
 		"classnames": "^2.5.1"
 	},
 	"devDependencies": {
@@ -61,7 +61,7 @@
 		"typescript": "catalog:"
 	},
 	"peerDependencies": {
-		"@stratakit/foundations": "^0.2.0",
+		"@stratakit/foundations": "^0.2.1",
 		"react": ">=18.0.0",
 		"react-dom": ">=18.0.0"
 	},

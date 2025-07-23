@@ -250,6 +250,18 @@ interface TableRowProps extends BaseProps<"div"> {}
  *		<Table.Cell>Cell 1.2</Table.Cell>
  *	</Table.Row>
  * ```
+ *
+ * Rows that contain checked checkboxes are considered selected.
+ * The `Checkbox` component can be rendered to add selection functionality for the table rows.
+ *
+ * Example:
+ * ```tsx
+ * <Table.Row>
+ *   <Table.Cell><Checkbox /><Table.Cell>
+ *   <Table.Cell>Cell 1.1</Table.Cell>
+ *   <Table.Cell>Cell 1.2</Table.Cell>
+ * </Table.Row
+ * ```
  */
 const TableRow = forwardRef<"div", TableRowProps>((props, forwardedRef) => {
 	const { mode } = useSafeContext(TableContext);

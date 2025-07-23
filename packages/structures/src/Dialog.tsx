@@ -80,7 +80,6 @@ const DialogRoot = forwardRef<"div", DialogRootProps>((props, forwardedRef) => {
 
 	const store = AkDialog.useDialogStore();
 	const contentElement = useStoreState(store, "contentElement");
-	const isDialog = contentElement instanceof HTMLDialogElement;
 	const [popover, setBackdropElement] = usePopoverApi(store);
 	const renderBackdrop = React.useMemo(() => {
 		if (!backdrop) return undefined;
@@ -93,19 +92,19 @@ const DialogRoot = forwardRef<"div", DialogRootProps>((props, forwardedRef) => {
 	return (
 		<AkDialog.DialogProvider store={store}>
 			<AkDialog.Dialog
+				{...popover.dialogProps}
 				{...rest}
 				backdrop={
-					backdrop === false || isDialog ? (
-						false
+					backdrop === false ? (
+						backdrop
 					) : (
 						<DialogBackdrop
 							ref={setBackdropElement}
-							{...(isDialog ? {} : popover?.backdropProps)}
+							{...popover.backdropProps}
 							render={renderBackdrop}
 						/>
 					)
 				}
-				{...(isDialog ? {} : popover.dialogProps)}
 				className={cx("🥝-dialog", props.className)}
 				ref={forwardedRef}
 			>

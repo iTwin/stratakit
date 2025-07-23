@@ -252,6 +252,8 @@ function DialogElementTest() {
 				open={open}
 				onClose={() => setOpen(false)}
 				render={<dialog ref={dialogElementRef} />}
+				backdrop={false}
+				popover={undefined}
 				onClick={(e) => {
 					if (e.target === e.currentTarget) {
 						setOpen(false);

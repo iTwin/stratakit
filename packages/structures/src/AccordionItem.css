@@ -29,14 +29,27 @@
 }
 
 .🥝-accordion-item-header {
+	--✨header-bg--hover: var(--stratakit-color-bg-glow-on-surface-neutral-hover);
+	--✨header-bg--pressed: var(--stratakit-color-bg-glow-on-surface-neutral-pressed);
+	--✨header-bg--default: transparent;
+
 	@layer base {
 		grid-row: header;
 		grid-column: marker-before-start / marker-after-end;
 
+		background-color: var(--🥝accordion-item-header-background-color);
+		transition: background-color 150ms ease-out;
 		position: relative;
 		display: grid;
 		align-items: center;
 		padding: var(--🥝accordion-item-padding);
+
+		--🥝accordion-item-header-background-color: var(
+				--🌀accordion-item-header-state--default,
+				var(--✨header-bg--default)
+			)
+			var(--🌀accordion-item-header-state--hover, var(--✨header-bg--hover))
+			var(--🌀accordion-item-header-state--pressed, var(--✨header-bg--pressed));
 
 		/* TODO: improve the layout for the fallback (i.e. content doesn’t align with the label if there’s a decoration) */
 		grid-template-columns: inherit;
@@ -44,6 +57,26 @@
 		@supports (grid-template-columns: subgrid) {
 			grid-template-columns: subgrid;
 		}
+	}
+
+	@layer states {
+		@media (any-hover: hover) {
+			&:where(:hover) {
+				--🌀accordion-item-header-state: var(--🌀accordion-item-header-state--hover);
+			}
+		}
+
+		&:where(:active) {
+			--🌀accordion-item-header-state: var(--🌀accordion-item-header-state--pressed);
+		}
+	}
+
+	@layer base.🌀 {
+		/* Cyclic toggles for default/hover/pressed states. See https://kizu.dev/cyclic-toggles/ */
+		--🌀accordion-item-header-state: var(--🌀accordion-item-header-state--default);
+		--🌀accordion-item-header-state--default: var(--🌀accordion-item-header-state,);
+		--🌀accordion-item-header-state--hover: var(--🌀accordion-item-header-state,);
+		--🌀accordion-item-header-state--pressed: var(--🌀accordion-item-header-state,);
 	}
 }
 
@@ -60,14 +93,6 @@
 			grid-column: marker-after;
 			margin-inline-start: var(--🥝accordion-item-gap);
 			margin-inline-end: calc(-1 * var(--🥝ghost-inline-offset));
-		}
-	}
-
-	@layer states {
-		@media (any-hover: hover) {
-			:where(.🥝-accordion-item-header:hover) & {
-				--🌀button-state: var(--🌀button-state--hover);
-			}
 		}
 	}
 }
@@ -113,7 +138,7 @@
 	@layer base {
 		grid-row: content;
 		grid-column: content;
-		padding-block-end: var(--🥝accordion-item-padding);
+		padding-block: var(--🥝accordion-item-padding);
 		text-box: cap alphabetic;
 		color: var(--stratakit-color-text-neutral-secondary);
 	}

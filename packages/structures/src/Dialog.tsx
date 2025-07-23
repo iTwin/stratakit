@@ -78,7 +78,6 @@ const DialogRoot = forwardRef<"div", DialogRootProps>((props, forwardedRef) => {
 		const Component = backdrop;
 		return <Component />;
 	}, [backdrop]);
-
 	return (
 		<AkDialog.DialogProvider store={store}>
 			<AkDialog.Dialog

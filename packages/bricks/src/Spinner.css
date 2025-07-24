@@ -5,13 +5,9 @@
 
 .🥝-spinner {
 	--✨duration: 1s;
-	--✨easing: linear;
-	--✨steps: 4;
+	--✨duration-slow: 2s;
 
-	--✨animation--indeterminate-steps: calc(var(--✨steps) * var(--✨duration) * 2)
-		--🥝spinner-animation-indeterminate steps(var(--✨steps), end) infinite;
-	--✨animation--indeterminate: var(--✨duration) --🥝spinner-animation-indeterminate
-		var(--✨easing) infinite;
+	--✨animation--indeterminate: --🥝spinner-animation-indeterminate linear infinite;
 
 	@layer base {
 		display: inline-block;
@@ -47,11 +43,12 @@
 		}
 
 		&:where([data-kiwi-variant="indeterminate"]) {
-			--🥝spinner-animation: var(--✨animation--indeterminate-steps);
+			--🥝spinner-animation: var(--✨animation--indeterminate);
+			--🥝spinner-animation-duration: var(--✨duration);
 			--🥝spinner-dash-array: 25 75;
-
-			@media (prefers-reduced-motion: no-preference) {
-				--🥝spinner-animation: var(--✨animation--indeterminate);
+			
+			@media (prefers-reduced-motion) {
+				--🥝spinner-animation-duration: var(--✨duration-slow);
 			}
 		}
 	}
@@ -71,6 +68,7 @@
 
 .🥝-spinner-svg-fill {
 	animation: var(--🥝spinner-animation);
+	animation-duration: var(--🥝spinner-animation-duration);
 	stroke: var(--🥝spinner-fill-color);
 	stroke-dasharray: var(--🥝spinner-dash-array);
 	stroke-dashoffset: 25;

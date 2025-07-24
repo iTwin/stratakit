@@ -82,15 +82,15 @@ function Tabs(props: TabsProps) {
 		// Bail if anchor positioning is not supported because the pseudo-element does not exist.
 		if (!supportsAnchorPositioning) return;
 
-		const ownerDocument = tablist?.ownerDocument;
-		if (!ownerDocument || !selectedIdFromStore || !newSelectedId) return;
+		const rootNode = tablist?.getRootNode() as Document | ShadowRoot;
+		if (!rootNode || !selectedIdFromStore || !newSelectedId) return;
 
 		// Read layout of the previous ("First") and next ("Last") tabs
-		const previousTabRect = ownerDocument
-			.getElementById(selectedIdFromStore)
+		const previousTabRect = rootNode
+			.getElementById?.(selectedIdFromStore)
 			?.getBoundingClientRect();
-		const nextTabRect = ownerDocument
-			.getElementById(newSelectedId)
+		const nextTabRect = rootNode
+			.getElementById?.(newSelectedId)
 			?.getBoundingClientRect();
 
 		if (!previousTabRect || !nextTabRect) return;
@@ -100,7 +100,7 @@ function Tabs(props: TabsProps) {
 		const deltaWidth = previousTabRect.width / nextTabRect.width;
 
 		// Animate the active stripe pseudo-element's `transform` property. ("Play")
-		tablist.animate(
+		tablist?.animate(
 			[
 				{ transform: `translateX(${deltaX}px) scaleX(${deltaWidth})` },
 				{ transform: "none" },

@@ -1,0 +1,106 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+
+.🥝-spinner {
+	--✨duration: 1s;
+	--✨easing: linear;
+	--✨steps: 4;
+
+	--✨animation--indeterminate-steps: calc(var(--✨steps) * var(--✨duration))
+		--🥝spinner-animation-indeterminate steps(var(--✨steps), end) infinite;
+	--✨animation--indeterminate: var(--✨duration) --🥝spinner-animation-indeterminate
+		var(--✨easing) infinite;
+
+	@layer base {
+		display: inline-block;
+		block-size: var(--🥝spinner-size);
+		inline-size: var(--🥝spinner-size);
+	}
+
+	@layer modifiers {
+		&:where([data-kiwi-tone="neutral"]) {
+			--🥝spinner-fill-color: var(--stratakit-color-icon-neutral-base);
+			--🥝spinner-track-color: var(--stratakit-color-border-page-base);
+		}
+
+		&:where([data-kiwi-tone="accent"]) {
+			--🥝spinner-fill-color: var(--stratakit-color-icon-accent-strong);
+			--🥝spinner-track-color: var(--stratakit-color-bg-accent-muted);
+		}
+
+		&:where([data-kiwi-size="small"]) {
+			--🥝spinner-size: 1rem;
+		}
+
+		&:where([data-kiwi-size="medium"]) {
+			--🥝spinner-size: 1.5rem;
+		}
+
+		&:where([data-kiwi-size="large"]) {
+			--🥝spinner-size: 2rem;
+		}
+
+		&:where([data-kiwi-size="xlarge"]) {
+			--🥝spinner-size: 3rem;
+		}
+
+		&:where([data-kiwi-variant="indeterminate"]) {
+			--🥝spinner-animation: var(--✨animation--indeterminate-steps);
+			--🥝spinner-dash-array: 25 75;
+
+			@media (prefers-reduced-motion: no-preference) {
+				--🥝spinner-animation: var(--✨animation--indeterminate);
+			}
+		}
+	}
+}
+
+.🥝-spinner-svg {
+	@layer base {
+		block-size: inherit;
+		inline-size: inherit;
+		fill: none;
+	}
+}
+
+.🥝-spinner-svg-track {
+	stroke: var(--🥝spinner-track-color);
+}
+
+.🥝-spinner-svg-fill {
+	animation: var(--🥝spinner-animation);
+	stroke: var(--🥝spinner-fill-color);
+	stroke-dasharray: var(--🥝spinner-dash-array);
+	stroke-dashoffset: 25;
+	stroke-linecap: round;
+	transform-box: fill-box;
+	transform-origin: center;
+}
+
+@keyframes --🥝spinner-animation-indeterminate {
+	to {
+		rotate: 360deg;
+	}
+}
+
+@media (forced-colors: active) {
+	.🥝-spinner {
+		/* Fill is used as track, track is used as fill. */
+		--🥝spinner-fill-color: Canvas;
+		--🥝spinner-track-color: CanvasText;
+
+		&:where([data-kiwi-variant="indeterminate"]) {
+			--🥝spinner-dash-array: 75 25; /* Inverts the sizes of fill & track. */
+		}
+	}
+
+	.🥝-spinner-svg-track {
+		stroke-width: 2; /* Makes the track twice as thick to create an outline around the spinner. */
+	}
+
+	.🥝-spinner-svg-fill {
+		stroke-dashoffset: 0; /* Makes the fill start in the same location as non-forced-colors mode. */
+	}
+}

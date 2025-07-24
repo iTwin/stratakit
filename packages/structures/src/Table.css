@@ -1,0 +1,155 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+
+.🥝-table {
+	@layer base {
+		&:where(table) {
+			table-layout: fixed;
+			inline-size: 100%;
+			border-collapse: separate;
+			border-spacing: 0;
+		}
+	}
+}
+
+.🥝-table-header {
+	@layer base {
+		color: var(--stratakit-color-text-neutral-secondary);
+	}
+}
+
+.🥝-table-row {
+	@layer base {
+		&:where([role="row"]) {
+			display: flex;
+		}
+	}
+}
+
+.🥝-table-caption,
+.🥝-table-cell {
+	--✨cell-padding-block: 0.5rem;
+	--✨cell-padding-inline-start: 1rem;
+	--✨cell-padding-inline-end: 0.75rem;
+	--✨cell-height-min: 3rem;
+
+	@layer base {
+		min-block-size: var(--✨cell-height-min);
+		padding-block: var(--✨cell-padding-block);
+		padding-inline-start: var(--✨cell-padding-inline-start);
+		padding-inline-end: var(--✨cell-padding-inline-end);
+		overflow-wrap: anywhere;
+		hyphens: auto;
+		align-content: center;
+
+		&:where(th, td) {
+			block-size: var(--✨cell-height-min);
+		}
+	}
+}
+
+.🥝-table-cell {
+	--✨glow--bg-hover: var(--stratakit-color-glow-hue) var(--stratakit-color-bg-glow-base-hover-\%);
+	--✨glow--bg-active-hover: var(--stratakit-color-glow-hue)
+		var(--stratakit-color-bg-glow-strong-hover-\%);
+	--✨cell-bg--default: var(--stratakit-color-bg-page-base);
+	--✨cell-bg--hover: color-mix(in oklch, var(--✨cell-bg--default) 100%, var(--✨glow--bg-hover));
+	--✨cell-bg--active: var(--stratakit-color-bg-glow-on-surface-accent-pressed);
+	--✨cell-bg--active-hover: color-mix(
+		in oklch,
+		var(--✨cell-bg--active) 100%,
+		var(--✨glow--bg-active-hover)
+	);
+	--✨cell-border-width: 1px;
+	--✨cell-border--default: var(--stratakit-color-border-neutral-muted);
+	--✨cell-border--active: var(--stratakit-color-border-accent-strong);
+
+	@layer base {
+		min-inline-size: 4rem;
+		background-color: var(--🌀table-cell-state--default, var(--✨cell-bg--default))
+			var(--🌀table-cell-state--hover, var(--✨cell-bg--hover))
+			var(--🌀table-cell-state--active, var(--✨cell-bg--active))
+			var(--🌀table-cell-state--active-hover, var(--✨cell-bg--active-hover));
+
+		--🥝table-cell-border-color--active: var(--✨cell-border--active);
+		border-block-end: var(--✨cell-border-width) solid
+			var(--🌀table-cell-state--default, var(--✨cell-border--default))
+			var(--🌀table-cell-state--hover, var(--✨cell-border--default))
+			var(--🌀table-cell-state--active, var(--🥝table-cell-border-color--active))
+			var(--🌀table-cell-state--active-hover, var(--🥝table-cell-border-color--active));
+
+		/* Would be great to remove. Needed by ::before pseudo-element to support row selection visuals. */
+		position: relative;
+
+		&:where(:not(th, td)) {
+			column-gap: 0.5rem;
+			flex-grow: 1;
+			flex-basis: 4rem;
+		}
+
+		&:where(th) {
+			font-weight: inherit;
+		}
+
+		/* This pseudo-element emulates a top "border" without occupying space. */
+		&::before {
+			content: "";
+			position: absolute;
+			inset: calc(-1 * var(--✨cell-border-width)) 0 0 0;
+			pointer-events: none;
+			border-block-start: var(--✨cell-border-width) solid
+				var(--🌀table-cell-state--default, transparent)
+				var(--🌀table-cell-state--hover, transparent)
+				var(--🌀table-cell-state--active, var(--🥝table-cell-border-color--active))
+				var(--🌀table-cell-state--active-hover, var(--🥝table-cell-border-color--active));
+		}
+	}
+
+	@layer states {
+		@media (any-hover: hover) {
+			&:where(:hover) {
+				--🌀table-cell-state: var(--🌀table-cell-state--hover);
+			}
+
+			&:where([role="cell"], td) {
+				:where(.🥝-table-row:hover) & {
+					--🌀table-cell-state: var(--🌀table-cell-state--hover);
+				}
+			}
+		}
+
+		&:where([role="cell"], td) {
+			:where(
+					.🥝-table-row:has(input[type="checkbox"]:checked, [role="checkbox"][aria-checked="true"])
+				)
+				& {
+				--🌀table-cell-state: var(--🌀table-cell-state--active);
+			}
+		}
+
+		@media (any-hover: hover) {
+			&:where([role="cell"], td) {
+				:where(
+						.🥝-table-row:hover:has(
+								input[type="checkbox"]:checked,
+								[role="checkbox"][aria-checked="true"]
+							)
+					)
+					& {
+					--🌀table-cell-state: var(--🌀table-cell-state--active-hover);
+				}
+			}
+		}
+	}
+
+	@layer base.🌀 {
+		/* Cyclic toggles for default/hover states. See https://kizu.dev/cyclic-toggles/ */
+		--🌀table-cell-state: var(--🌀table-cell-state--default);
+		--🌀table-cell-state--default: var(--🌀table-cell-state,);
+		--🌀table-cell-state--hover: var(--🌀table-cell-state,);
+		--🌀table-cell-state--active: var(--🌀table-cell-state,);
+		--🌀table-cell-state--active-hover: var(--🌀table-cell-state,);
+	}
+}

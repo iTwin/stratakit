@@ -1,0 +1,110 @@
+name: PR
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+  push:
+    branches:
+      - dependabot/**
+
+jobs:
+  assign-author:
+    name: Assign PR author
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request' && github.event.action == 'opened'
+
+    steps:
+      - name: Auto-assign author using github-script
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+            const prNumber = context.payload.pull_request.number;
+            const prAuthor = context.actor;
+
+            try {
+              const permissionInfo = await github.rest.repos.getCollaboratorPermissionLevel({
+                owner: owner,
+                repo: repo,
+                username: prAuthor,
+              });
+
+              if (permissionInfo.data.permission === "admin" || permissionInfo.data.permission === "write") {
+                github.rest.issues.addAssignees({
+                  owner: owner,
+                  repo: repo,
+                  issue_number: prNumber,
+                  assignees: [prAuthor]
+                });
+              } else {
+                console.log("Author does not have write access to the repository.");
+              }
+            } catch (error) {
+              console.log("Failed checking permissions or assigning author");
+              console.error(error);
+            }
+
+  assign-milestones:
+    name: Assign PR milestones
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request' && (github.event.action == 'opened' || github.event.action == 'synchronize')
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Auto-assign milestones using github-script
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { default: prMilestone } = await import('${{ github.workspace }}/.github/workflows/pr-milestone.js');
+
+            await prMilestone({context, github});
+
+  assign-labels:
+    name: Assign PR labels
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request' && (github.event.action == 'opened' || github.event.action == 'synchronize')
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Auto-assign labels using github-script
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { default: prLabels } = await import('${{ github.workspace }}/.github/workflows/pr-labels.js');
+
+            await prLabels({context, github});
+
+  fix-formatting:
+    name: Fix formatting
+    runs-on: ubuntu-latest
+    if: contains(github.ref_name, 'dependabot/')
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref || github.ref_name }}
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9.15.4
+
+      - name: Use Node 22.x
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22.x
+          cache: "pnpm"
+
+      - run: pnpm install
+
+      - name: Format code
+        run: pnpm prettier --write && pnpm format --write
+
+      - name: Commit changes
+        run: |
+          git config --local user.name "github-actions[bot]"
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git commit -am "format code" || echo "No changes to commit"
+          git push

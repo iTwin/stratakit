@@ -1,0 +1,17 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+.🥝-visually-hidden {
+	@layer base {
+		&:where(:not(:active, :focus-within)) {
+			clip-path: inset(50%) !important;
+			overflow: hidden !important;
+			position: absolute !important;
+			white-space: nowrap !important;
+			block-size: 1px !important;
+			inline-size: 1px !important;
+			user-select: none !important;
+		}
+	}
+}

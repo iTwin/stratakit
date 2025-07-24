@@ -1,0 +1,31 @@
+# Node
+node_modules
+.pnpm-store
+
+# OS
+.DS_Store
+
+# Build outputs
+dist
+build
+.react-router
+
+packages/icons/icons-list.json
+
+# Caches
+.cache
+.wireit
+
+# debug
+*.log
+
+# env files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Playwright
+test-results
+playwright-report

@@ -46,7 +46,7 @@
 			--🥝spinner-animation: var(--✨animation--indeterminate);
 			--🥝spinner-animation-duration: var(--✨duration);
 			--🥝spinner-dash-array: 25 75;
-			
+
 			@media (prefers-reduced-motion) {
 				--🥝spinner-animation-duration: var(--✨duration-slow);
 			}

@@ -2,11 +2,9 @@
 
 ## 0.3.1
 
-### Patch Changes
-
 - [#870](https://github.com/iTwin/design-system/pull/870): Fixed an issue where `AccordionItem.Content` was being offset by decorations placed at the end of `AccordionItem.Header`. The content will now only include start indentation, and correctly stretch all the way up to the right edge.
-- [#872](https://github.com/iTwin/design-system/pull/872): Improved the `Tabs` active stripe animation to make it smoother and more performant.
 - [#869](https://github.com/iTwin/design-system/pull/869): Fixed an issue where `Tree` was using Context as a component which doesn't work in React 18.
+- [#872](https://github.com/iTwin/design-system/pull/872): Improved the `Tabs` active stripe animation to make it smoother and more performant.
 
 ## 0.3.0
 

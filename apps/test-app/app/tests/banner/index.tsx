@@ -5,6 +5,14 @@
 
 import { Anchor, Button, VisuallyHidden } from "@stratakit/bricks";
 import { unstable_Banner as Banner } from "@stratakit/structures";
+import {
+	Actions as BannerActions,
+	DismissButton as BannerDismiss,
+	Icon as BannerIcon,
+	Label as BannerLabel,
+	Message as BannerMessage,
+	Root as BannerRoot,
+} from "@stratakit/structures/unstable_Banner";
 import { definePage } from "~/~utils.tsx";
 
 import placeholderIcon from "@stratakit/icons/placeholder.svg";
@@ -15,28 +23,36 @@ const loremIpsum =
 	"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris";
 const dummyLongLabel =
 	"This is a long label that goes on and on and on and on and on and on and on and on and on and on";
+const tones = ["neutral", "info", "positive", "attention", "critical"] as const;
 
 export default definePage(
-	function Page() {
-		return <Banner label="Label" message="Message" />;
+	function Page({ icon, tone }) {
+		return (
+			<Banner
+				className="my-banner"
+				label="Label"
+				message="Message"
+				icon={
+					icon ? (
+						<svg className="my-banner-custom-icon">
+							<use href={placeholderIcon} />
+						</svg>
+					) : undefined
+				}
+				tone={tone as (typeof tones)[number]}
+			/>
+		);
 	},
 	{
 		visual: VisualTest,
 		dismiss: DismissibleTest,
 		actions: ActionsTest,
 		allStyleCases: AllStyleCases,
+		composition: CompositionBasicTest,
 	},
 );
 
 function VisualTest({ customIcons = false }: { customIcons?: boolean }) {
-	const tones = [
-		"neutral",
-		"info",
-		"positive",
-		"attention",
-		"critical",
-	] as const;
-
 	return (
 		<div style={{ display: "grid", gap: 4 }}>
 			{tones.map((tone) => {
@@ -44,6 +60,7 @@ function VisualTest({ customIcons = false }: { customIcons?: boolean }) {
 					tone.charAt(0).toUpperCase() + tone.slice(1).toLowerCase();
 				return (
 					<Banner
+						data-testid={`banner-${tone}`}
 						icon={customIcons ? placeholderIcon : undefined}
 						label={sentenceCaseTone}
 						message={loremIpsum}
@@ -55,6 +72,8 @@ function VisualTest({ customIcons = false }: { customIcons?: boolean }) {
 					/>
 				);
 			})}
+
+			<CompositionTestPermutations />
 		</div>
 	);
 }
@@ -63,15 +82,18 @@ function DismissibleTest() {
 	return (
 		<div style={{ display: "grid", gap: 4 }}>
 			<Banner
+				className="my-banner"
 				label="Label"
 				message="Banner with visual label and with no dismiss button"
 			/>
 			<Banner
-				label={"Label"}
+				className="my-banner"
+				label="Label"
 				message="Banner with visual label and with dismiss button"
 				onDismiss={() => {}}
 			/>
 			<Banner
+				className="my-banner"
 				label={<VisuallyHidden>Label</VisuallyHidden>}
 				message="Banner with visually hidden label and with dismiss button"
 				onDismiss={() => {}}
@@ -170,6 +192,54 @@ function AllStyleCases() {
 					});
 				});
 			})}
+		</div>
+	);
+}
+
+function CompositionBasicTest({ tone = "neutral" }: Record<string, string>) {
+	return (
+		<BannerRoot className="my-banner" tone={tone as (typeof tones)[number]}>
+			<BannerLabel>Label</BannerLabel>
+			<BannerMessage>
+				This is a message that can be very long and will wrap to the next line.
+			</BannerMessage>
+			<BannerActions>
+				<Button>Action</Button>
+			</BannerActions>
+		</BannerRoot>
+	);
+}
+
+function CompositionTestPermutations() {
+	return (
+		<div style={{ display: "grid", gap: 4 }}>
+			<BannerRoot
+				tone="info"
+				variant="outline"
+				data-testid="banner-info-custom-icon"
+			>
+				<BannerIcon href={placeholderIcon} />
+				<BannerLabel id="my-label">Label</BannerLabel>
+				<BannerMessage>
+					This is a message that can be very long and will wrap to the next
+					line.
+				</BannerMessage>
+				<BannerActions>
+					<Button>Action</Button>
+				</BannerActions>
+				<BannerDismiss onClick={() => console.log("Dismissed")} />
+			</BannerRoot>
+
+			<BannerRoot tone="info" data-testid="banner-info-no-custom-icon">
+				<BannerIcon />
+				<BannerLabel>Label</BannerLabel>
+				<BannerMessage>Message</BannerMessage>
+			</BannerRoot>
+
+			<BannerRoot data-testid="banner-neutral-no-custom-icon">
+				<BannerLabel>Label</BannerLabel>
+				<BannerMessage>Message</BannerMessage>
+			</BannerRoot>
 		</div>
 	);
 }

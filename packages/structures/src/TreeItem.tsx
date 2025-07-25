@@ -294,7 +294,7 @@ function TreeItemRootProvider(props: TreeItemRootProviderProps) {
 		<TreeItemErrorContext.Provider value={error}>
 			<TreeItemInlineActionsContext.Provider value={inlineActions}>
 				<TreeItemActionsContext.Provider value={actions}>
-					<TreeItemDisplayActionsMenuContext
+					<TreeItemDisplayActionsMenuContext.Provider
 						value={actions ? actions.length > 0 : false}
 					>
 						<TreeItemDecorationIdContext.Provider
@@ -316,7 +316,7 @@ function TreeItemRootProvider(props: TreeItemRootProviderProps) {
 								</TreeItemIconContext.Provider>
 							</TreeItemDecorationsContext.Provider>
 						</TreeItemDecorationIdContext.Provider>
-					</TreeItemDisplayActionsMenuContext>
+					</TreeItemDisplayActionsMenuContext.Provider>
 				</TreeItemActionsContext.Provider>
 			</TreeItemInlineActionsContext.Provider>
 		</TreeItemErrorContext.Provider>

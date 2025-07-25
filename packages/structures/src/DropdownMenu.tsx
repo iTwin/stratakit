@@ -103,7 +103,10 @@ interface DropdownMenuContentProps extends FocusableProps {}
  */
 const DropdownMenuContent = forwardRef<"div", DropdownMenuContentProps>(
 	(props, forwardedRef) => {
-		const popover = usePopoverApi(useMenuContext());
+		const context = useMenuContext();
+		const open = useStoreState(context, "open");
+		const popoverElement = useStoreState(context, "popoverElement");
+		const popoverProps = usePopoverApi({ element: popoverElement, open });
 
 		return (
 			<Menu
@@ -111,8 +114,8 @@ const DropdownMenuContent = forwardRef<"div", DropdownMenuContentProps>(
 				unmountOnHide
 				{...props}
 				gutter={4}
-				style={{ ...popover.style, ...props.style }}
-				wrapperProps={popover.wrapperProps}
+				style={{ ...popoverProps.style, ...props.style }}
+				wrapperProps={{ popover: popoverProps.popover }}
 				className={cx("🥝-dropdown-menu", props.className)}
 				ref={forwardedRef}
 			/>

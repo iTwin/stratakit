@@ -43,8 +43,6 @@ export const Alert = React.forwardRef((props, forwardedRef) => {
 
 	const tone = React.useMemo<NonNullable<SkBannerRootProps["tone"]>>(() => {
 		switch (type) {
-			case "informational":
-				return "info";
 			case "positive":
 				return "positive";
 			case "negative":

@@ -29,7 +29,7 @@ body:
     id: keyboard-notes
     attributes:
       label: Keyboard test notes
-      description: Observations and suggestions for addressing keyboard failures...
+      description: Observations and suggestions for addressing keyboard failures…
   - type: checkboxes
     id: screen-reader
     attributes:
@@ -37,7 +37,7 @@ body:
       description: |
         Read through the component using a screen reader. If you are unfamiliar, see [this guide on browsing with screen reader software](https://tetralogical.com/blog/2021/09/29/browsing-with-a-desktop-screen-reader/).
       options:
-        - label: For images, choose an appropriate alt value. Consult the (https://www.w3.org/WAI/tutorials/images/decision-tree/) for guidance (WCAG 1.1.1 A)
+        - label: For images, choose an appropriate alt value. Consult the WAI alt decision tree for guidance. (WCAG 1.1.1 A)
         - label: The visual characteristics of interface elements are not the only means of identifying them. Programmatically determinable text labels are also available (WCAG 1.3.3 A)
         - label: A screen reader announces elements in an expected order. The order is as logical non-visually as it is visually. (WCAG 1.3.2 A)
         - label: For interactive element, expected labels, roles, states, and values are announced (WCAG 4.1.2 A)
@@ -51,7 +51,7 @@ body:
     id: screen-reader-notes
     attributes:
       label: Screen reader test notes
-      description: Observations and suggestions for addressing screen reader failures...
+      description: Observations and suggestions for addressing screen reader failures…
   - type: checkboxes
     id: magnification-test
     attributes:
@@ -71,7 +71,7 @@ body:
     id: magnification-notes
     attributes:
       label: Magnification test notes
-      description: Observations and suggestions for addressing magnification failures...
+      description: Observations and suggestions for addressing magnification failures…
   - type: checkboxes
     id: readability-test
     attributes:
@@ -80,7 +80,7 @@ body:
         Automated accessibility testing cannot tell you if writing is any good (no, not even using AI). Which means you need to assess you labels and descriptions manually. Good writing is subjective; there’s no right or wrong, but there is better or worse.
       options:
         - label: Make sure each error message actually helps the user overcome the error. Use instructions and examples as appropriate (WCAG 3.3.3 AA)
-        - label: Headings are labels for the sections they introduce. Ensure they adequately set out what is to follow (1.4.10 AA)
+        - label: Headings are labels for the sections they introduce. Ensure they adequately set out what is to follow (WCAG 1.4.10 AA)
         - label: Links adequately describe where they will take the user. This description can be the link’s label alone or the link’s label combined with adjacent text (WCAG 2.4.4 A)
         - label: Headings are labels for the sections they introduce. Ensure they adequately set out what is to follow (WCAG 2.4.6 AA)
         - label: Form fields have descriptive labels, helping users to avoid errors, supplemented by help text where it assists comprehension (WCAG 3.3.2 A)
@@ -89,7 +89,7 @@ body:
     id: readability-notes
     attributes:
       label: Readability test notes
-      description: Observations and suggestions for addressing readability failures...
+      description: Observations and suggestions for addressing readability failures…
   - type: checkboxes
     id: color-test
     attributes:
@@ -106,13 +106,13 @@ body:
         ^^ Non-text interface elements include icon buttons and other non-textual controls. For buttons/controls using a border to delineate their shape, the border must have at least a `3:1` contrast against the color outside of the borders.
       options:
         - label: All text in the component has at least a 4.5:1 contrast ratio against the colors or imagery behind it. (WCAG 1.4.3 AA)
-        - label: All non-textual interface components that are interactive or otherwise convey meaning (icons, form controls, state indicators, etc) have at least a 3:1 contrast ratio with the colors or imagery behind them (WCAG 1.4.11 AA)
-        - label: Color is not the only way of distinguishing meaningful parts of the interface. For example, red to distinguish an error state, but only as an input border—not as the color of a warning icon (WCAG 1.4.1 A)
+        - label: All non-textual interface components that are interactive or otherwise convey meaning (icons, form controls, state indicators, etc) have at least a 3:1 contrast ratio with the colors or imagery behind them. (WCAG 1.4.11 AA)
+        - label: "Color is not the only way of distinguishing meaningful parts of the interface. For example: red to distinguish an error state, but only as an input border, not as the color of a warning icon. (WCAG 1.4.1 A)"
   - type: textarea
     id: color-notes
     attributes:
       label: Color test notes
-      description: Observations and suggestions for addressing color failures...
+      description: Observations and suggestions for addressing color failures…
   - type: checkboxes
     id: pointer-test
     attributes:
@@ -120,13 +120,13 @@ body:
       description: |
         All elements must be easily operable by touch and mouse pointer
       options:
-        - label: All controls must have at least a 24px² space alloted to them. No other interactive elements must enter within this designated space (WCAG 2.5.8)
-        - label: All actions should be operable without complex gestures. Uses should be able to operate everything with a single finger (WCAG 2.5.1)
+        - label: All controls must have at least a 24px² space alloted to them. No other interactive elements must enter within this designated space. (WCAG 2.5.8 AA)
+        - label: All actions should be operable without complex gestures. Users should be able to operate everything with a single finger. (WCAG 2.5.1 A)
   - type: textarea
     id: pointer-notes
     attributes:
       label: Pointer test notes
-      description: Observations and suggestions for addressing pointer failures...
+      description: Observations and suggestions for addressing pointer failures…
   - type: checkboxes
     id: hcm-test
     attributes:
@@ -134,7 +134,7 @@ body:
       description: |
         To activate Forced Colors Mode in Windows, go to **Settings > Accessibility > Contrast themes** and choose a theme. 
 
-        To emulated Forced Colors Mode on macOS, install [MS Edge for macOS](https://www.microsoft.com/en-gb/edge/download?form=MA13FJ) and activate a theme from **Settings > Accessibility > Page Colors**.
+        To activate Forced Colors Mode on macOS, install [MS Edge for macOS](https://www.microsoft.com/edge/download) and activate a theme from **Settings > Accessibility > Page Colors**.
       options:
         - label: No content, imagery, or functionality is invisible or otherwise missing.
         - label: The demarcation of elements remains clear. Buttons retain borders; dividers between sections are intact, etc.
@@ -142,4 +142,4 @@ body:
     id: hcm-notes
     attributes:
       label: Forced Colors Mode test notes
-      description: Observations and suggestions for addressing Forced Colors Mode failures...
+      description: Observations and suggestions for addressing Forced Colors Mode failures…

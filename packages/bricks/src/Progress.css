@@ -64,12 +64,12 @@
 		&:where([data-kiwi-variant="indeterminate"]) {
 			--🥝progress-bar-animation: var(--✨animation--indeterminate-steps);
 			--🥝progress-bar-fill-size: 25%;
-			--🥝progress-bar-fill-start-point: 0%;
+			--🥝progress-bar-fill-start-point: 0%; /* 0% keeps the fill in view. */
 
 			@media (prefers-reduced-motion: no-preference) {
 				--🥝progress-bar-animation:
 					var(--✨animation--indeterminate), var(--✨animation--indeterminate-slow);
-				--🥝progress-bar-fill-start-point: -100%;
+				--🥝progress-bar-fill-start-point: -100%; /* -100% moves the fill out of view on the left side. */
 			}
 		}
 
@@ -81,7 +81,7 @@
 
 @keyframes --🥝progress-bar-animation-indeterminate {
 	from {
-		transform: translateX(var(--🥝progress-bar-fill-start-point)); /* -100% moves the fill out of view on the left side. */
+		transform: translateX(var(--🥝progress-bar-fill-start-point));
 	}
 
 	to {

@@ -3,11 +3,5 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-@import "./~reset.css" layer(reset);
-
-@import "./~theme.css" layer(itwinui.foundations);
-@import "./~typography.css" layer(itwinui.foundations);
-@import "./~global.css" layer(itwinui.foundations);
-
-@import "./~sublayers.css" layer(itwinui.components);
-@import "./Icon.css" layer(itwinui.components);
+import rawStyles from "./~styles.css?inline";
+export default rawStyles;

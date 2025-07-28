@@ -3,14 +3,27 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
+import { useStoreState } from "@ariakit/react/store";
 import * as AkTab from "@ariakit/react/tab";
-import { forwardRef } from "@stratakit/foundations/secret-internals";
+import {
+	forwardRef,
+	isBrowser,
+	useUnreactiveCallback,
+} from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
 
 import type {
 	BaseProps,
 	FocusableProps,
 } from "@stratakit/foundations/secret-internals";
+
+// ----------------------------------------------------------------------------
+
+const supportsAnchorPositioning =
+	isBrowser && CSS?.supports("anchor-name: --foo");
+
+const prefersReducedMotion = () =>
+	isBrowser && window.matchMedia("(prefers-reduced-motion)").matches;
 
 // ----------------------------------------------------------------------------
 
@@ -61,11 +74,55 @@ function Tabs(props: TabsProps) {
 		children,
 	} = props;
 
+	const store = AkTab.useTabStore({ defaultSelectedId });
+	const tablist = useStoreState(store, "baseElement");
+	const selectedIdFromStore = useStoreState(store, "selectedId");
+
+	const flipAnimateStripe = (newSelectedId: string | null | undefined) => {
+		// Bail if anchor positioning is not supported because the pseudo-element does not exist.
+		if (!supportsAnchorPositioning) return;
+
+		const rootNode = tablist?.getRootNode() as Document | ShadowRoot;
+		if (!rootNode || !selectedIdFromStore || !newSelectedId) return;
+
+		// Read layout of the previous ("First") and next ("Last") tabs
+		const previousTabRect = rootNode
+			.getElementById?.(selectedIdFromStore)
+			?.getBoundingClientRect();
+		const nextTabRect = rootNode
+			.getElementById?.(newSelectedId)
+			?.getBoundingClientRect();
+
+		if (!previousTabRect || !nextTabRect) return;
+
+		// Calculate deltas ("Invert")
+		const deltaX = previousTabRect.left - nextTabRect.left;
+		const deltaWidth = previousTabRect.width / nextTabRect.width;
+
+		// Animate the active stripe pseudo-element's `transform` property. ("Play")
+		tablist?.animate(
+			[
+				{ transform: `translateX(${deltaX}px) scaleX(${deltaWidth})` },
+				{ transform: "none" },
+			],
+			{
+				pseudoElement: "::after",
+				duration: 150,
+				easing: "ease-in-out",
+			},
+		);
+	};
+
 	return (
 		<AkTab.TabProvider
-			defaultSelectedId={defaultSelectedId}
+			store={store}
 			selectedId={selectedId}
-			setSelectedId={setSelectedId}
+			setSelectedId={useUnreactiveCallback(
+				(newSelectedId: string | null | undefined) => {
+					if (!prefersReducedMotion()) flipAnimateStripe(newSelectedId);
+					setSelectedId?.(newSelectedId);
+				},
+			)}
 			selectOnMove={selectOnMove}
 		>
 			{children}
@@ -110,9 +167,15 @@ DEV: TabList.displayName = "Tabs.TabList";
 
 // ----------------------------------------------------------------------------
 
-interface TabProps
-	extends FocusableProps<"button">,
-		Pick<AkTab.TabProps, "id"> {}
+interface TabProps extends Omit<FocusableProps<"button">, "id"> {
+	/**
+	 * The globally unique id of the tab. This will be used to identify the tab
+	 * and connect it to the corresponding `Tabs.TabPanel` via the `tabId`.
+	 *
+	 * The `selectedId` state of `Tabs.Root` will also be based on this id.
+	 */
+	id: string;
+}
 
 /**
  * An individual tab button that switches the selected tab panel when clicked.
@@ -151,7 +214,8 @@ DEV: Tab.displayName = "Tabs.Tab";
 
 interface TabPanelProps
 	extends FocusableProps<"div">,
-		Pick<AkTab.TabPanelProps, "tabId" | "unmountOnHide" | "focusable"> {}
+		Pick<AkTab.TabPanelProps, "unmountOnHide" | "focusable">,
+		Required<Pick<AkTab.TabPanelProps, "tabId">> {}
 
 /**
  * The actual content of a tab, shown when the tab is selected. Should be used as a child of `Tabs.Root`.

@@ -25,6 +25,7 @@
 		"1000": "oklch(14.4% 0.003 247.09)"
 	},
 	"white": {
+		"2": "oklch(100% none none / 2%)",
 		"4": "oklch(100% none none / 4%)",
 		"8": "oklch(100% none none / 8%)",
 		"12": "oklch(100% none none / 12%)",

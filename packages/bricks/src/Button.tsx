@@ -10,30 +10,21 @@ import { useGhostAlignment } from "./~utils.GhostAligner.js";
 
 import type { FocusableProps } from "@stratakit/foundations/secret-internals";
 
-type ButtonProps = FocusableProps<"button"> &
-	(
-		| {
-				/**
-				 * The variant of the button, i.e. solid, outline, or ghost.
-				 *
-				 * @default "solid"
-				 */
-				variant?: "solid";
-				/**
-				 * The tone of the button. Most buttons should be neutral.
-				 * Accent buttons can be used to draw attention to the primary action.
-				 *
-				 * **Note:** The `"accent"` tone is only supported for the `"solid"` variant.
-				 *
-				 * @default "neutral"
-				 */
-				tone?: "neutral" | "accent";
-		  }
-		| {
-				variant: "outline" | "ghost";
-				tone?: never;
-		  }
-	);
+interface ButtonProps extends FocusableProps<"button"> {
+	/**
+	 * The variant of the button, i.e. solid, outline, or ghost.
+	 *
+	 * @default "solid"
+	 */
+	variant?: "solid" | "outline" | "ghost";
+	/**
+	 * The tone of the button. Most buttons should be neutral.
+	 * Accent buttons can be used to draw attention to the primary action.
+	 *
+	 * @default "neutral"
+	 */
+	tone?: "neutral" | "accent";
+}
 
 /**
  * A styled button element which allows the user to perform an action when clicked.

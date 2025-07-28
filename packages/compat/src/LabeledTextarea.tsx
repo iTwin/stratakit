@@ -20,7 +20,7 @@ type IuiLabeledTextareaProps = React.ComponentProps<typeof IuiLabeledTextarea>;
 type IuiIconProps = React.ComponentProps<typeof IuiIcon>;
 
 interface IconProps extends Pick<IuiIconProps, "size" | "fill" | "padded"> {
-	/** PARTIALLY IMPLEMENTED. Only supports large as an override. */
+	/** PARTIALLY IMPLEMENTED. Only supports `large` and `medium` size. Other values are mapped to `medium`. */
 	size?: IuiIconProps["size"];
 	/** NOT IMPLEMENTED. */
 	fill?: IuiIconProps["fill"];

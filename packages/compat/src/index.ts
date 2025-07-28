@@ -4,6 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 "use client";
 
+export { Alert } from "./Alert.js";
 export { Anchor } from "./Anchor.js";
 export { Avatar } from "./Avatar.js";
 export { Badge } from "./Badge.js";

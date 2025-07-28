@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.2.3
+
+- [#873](https://github.com/iTwin/design-system/pull/873): Added initial set of spacing tokens (e.g. `--stratakit-space-x1`, `--stratakit-space-x2`, etc).
+- Updated internal code for `@stratakit/structures@0.3.1`.
+
 ## 0.2.2
 
 ### Patch Changes

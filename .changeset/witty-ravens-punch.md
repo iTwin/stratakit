@@ -2,4 +2,4 @@
 "@stratakit/bricks": patch
 ---
 
-Use `space` variables instead of hardcoded values.
+In `Tooltip`, replace hardcoded `rem` spacing values with new `space` variables.

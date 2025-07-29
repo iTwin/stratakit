@@ -18,12 +18,12 @@
 
 		display: flex;
 		justify-content: center;
-		gap: 0.25rem;
+		gap: var(--stratakit-space-x1);
 
 		border: var(--✨border-width) solid var(--✨border);
-		border-radius: 0.25rem;
-		padding-block: calc(0.25rem - var(--✨border-width));
-		padding-inline: calc(0.625rem - var(--✨border-width));
+		border-radius: 4px;
+		padding-block: calc(var(--stratakit-space-x1) - var(--✨border-width));
+		padding-inline: calc(var(--stratakit-space-x2) - var(--✨border-width));
 		min-block-size: 1rem;
 		max-inline-size: 12.25rem;
 	}

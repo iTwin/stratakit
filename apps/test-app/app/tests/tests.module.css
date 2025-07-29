@@ -5,7 +5,7 @@
 .page {
 	display: flex;
 	flex-wrap: wrap;
-	gap: 16px;
+	gap: var(--stratakit-space-x4);
 	container-type: inline-size;
 }
 

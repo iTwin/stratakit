@@ -32,8 +32,8 @@
 		cursor: pointer;
 		font-size: var(--stratakit-font-size-12);
 		font-weight: 500;
-		text-underline-offset: var(--🌀anchor-state--default, 2px) var(--🌀anchor-state--hover, 3px)
-			var(--🌀anchor-state--pressed, 3px);
+		text-underline-offset: var(--🌀anchor-state--default, var(--stratakit-space-x05))
+			var(--🌀anchor-state--hover, 3px) var(--🌀anchor-state--pressed, 3px); /* TODO: What to do about 3px? */
 		text-decoration-color: var(--🌀anchor-state--default, currentColor)
 			var(--🌀anchor-state--hover, currentColor) var(--🌀anchor-state--pressed, transparent);
 		text-decoration-line: underline;
@@ -79,7 +79,7 @@
 		}
 
 		&:where(:focus-visible) {
-			--🥝focus-outline-offset: 2px;
+			--🥝focus-outline-offset: var(--stratakit-space-x05);
 		}
 
 		&:where(:disabled, [aria-disabled="true"]) {

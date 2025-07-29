@@ -17,7 +17,7 @@
 		color: var(--🥝badge-text-color);
 		font-weight: 500;
 		block-size: 1.25rem;
-		padding-inline: 8px;
+		padding-inline: var(--stratakit-space-x2);
 
 		@media (forced-colors: active) {
 			border: 1px solid;

@@ -4,8 +4,8 @@
  *--------------------------------------------------------------------------------------------*/
 
 .🥝-accordion-item {
-	--🥝accordion-item-gap: 12px;
-	--🥝accordion-item-padding: 12px;
+	--🥝accordion-item-gap: var(--stratakit-space-x3);
+	--🥝accordion-item-padding: var(--stratakit-space-x3);
 
 	@layer base {
 		contain: paint;
@@ -111,8 +111,8 @@
 	@layer base {
 		grid-column: header-content;
 		cursor: pointer;
-		border-radius: 12px;
-		--🥝focus-outline-offset: -4px;
+		border-radius: var(--stratakit-space-x3);
+		--🥝focus-outline-offset: calc(var(--stratakit-space-x1) * -1);
 
 		&::after {
 			content: "";

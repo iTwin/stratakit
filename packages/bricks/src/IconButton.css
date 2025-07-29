@@ -3,7 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 .🥝-icon-button:is(.🥝-button) {
-	--✨padding-inline: 4px;
+	--✨padding-inline: var(--stratakit-space-x1);
 
 	@layer base {
 		aspect-ratio: 1;
@@ -15,8 +15,8 @@
 .🥝-icon-button-dot:is(.🥝-dot) {
 	@layer base {
 		position: absolute;
-		inset-block-start: 2px;
-		inset-inline-end: 2px;
+		inset-block-start: var(--stratakit-space-x05);
+		inset-inline-end: var(--stratakit-space-x05);
 	}
 }
 

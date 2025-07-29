@@ -3,8 +3,8 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 .appLayout {
-	--_platformBar-width: 40px;
-	--_splitter-width: 12px;
+	--_platformBar-width: var(--stratakit-space-x10);
+	--_splitter-width: var(--stratakit-space-x3);
 
 	block-size: 100dvb;
 	display: grid;
@@ -16,7 +16,7 @@
 }
 
 .header {
-	--_header-height: 40px;
+	--_header-height: var(--stratakit-space-x10);
 	grid-area: header;
 	background-color: var(--stratakit-color-bg-page-base);
 	border-block-end: 1px solid var(--stratakit-color-border-neutral-base);
@@ -24,8 +24,8 @@
 	min-block-size: var(--_header-height);
 	display: flex;
 	align-items: center;
-	gap: 12px;
-	padding-inline: 12px;
+	gap: var(--stratakit-space-x3);
+	padding-inline: var(--stratakit-space-x3);
 }
 
 .platformBar {
@@ -46,13 +46,13 @@
 }
 
 .tools {
-	padding-block: 12px;
+	padding-block: var(--stratakit-space-x3);
 
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	gap: 12px;
+	gap: var(--stratakit-space-x3);
 }
 
 .content {
@@ -60,26 +60,26 @@
 }
 
 .leftPanel {
-	padding-block-start: 12px;
+	padding-block-start: var(--stratakit-space-x3);
 	background-color: var(--stratakit-color-bg-page-base);
 	min-block-size: 0;
 
 	contain: size layout; /* prevent unnecessary overflow */
 	display: flex;
 	flex-direction: column;
-	gap: 12px;
+	gap: var(--stratakit-space-x3);
 }
 
 .panelHeader {
 	display: flex;
-	padding-inline: 12px;
+	padding-inline: var(--stratakit-space-x3);
 	justify-content: space-between;
 
 	font-size: var(--stratakit-font-size-12);
 }
 
 .panelTitleWrapper {
-	margin-inline-start: -8px;
+	margin-inline-start: calc(var(--stratakit-space-x2) * -1);
 }
 
 .panelCaption {
@@ -87,17 +87,17 @@
 }
 
 .shiftIconRight {
-	margin-inline-end: -4px;
+	margin-inline-end: calc(var(--stratakit-space-x1) * -1);
 }
 
 .subheader {
 	min-block-size: 2.5rem;
-	padding-inline: 12px;
+	padding-inline: var(--stratakit-space-x3);
 	border-block: 1px solid var(--stratakit-color-border-neutral-base);
 	border-inline: none;
 
 	display: flex;
-	gap: 4px;
+	gap: var(--stratakit-space-x1);
 	align-items: center;
 }
 
@@ -131,22 +131,22 @@
 .skeletonTree {
 	display: flex;
 	flex-direction: column;
-	gap: 8px;
+	gap: var(--stratakit-space-x2);
 	overflow: auto;
 }
 
 .skeletonTreeItem {
 	display: flex;
 	align-items: center;
-	gap: 8px;
+	gap: var(--stratakit-space-x2);
 	width: 100%;
-	padding-inline-start: calc(12px + 6px * (var(--level) - 1));
-	padding-inline-end: 8px;
+	padding-inline-start: calc(var(--stratakit-space-x3) + 6px * (var(--level) - 1)); /* TODO: What to do about 6px? */
+	padding-inline-end: var(--stratakit-space-x2);
 }
 
 .canvasWrapper {
-	padding-block: 8px;
-	padding-inline-end: 8px;
+	padding-block: var(--stratakit-space-x2);
+	padding-inline-end: var(--stratakit-space-x2);
 }
 
 .canvas {
@@ -155,7 +155,7 @@
 	box-shadow: var(--stratakit-shadow-surface-xl);
 	border: 1px solid var(--stratakit-color-border-neutral-muted);
 	position: relative;
-	padding: 8px;
+	padding: var(--stratakit-space-x2);
 
 	&::before {
 		content: "";
@@ -188,7 +188,7 @@
 	&::before {
 		content: "";
 		position: absolute;
-		inline-size: 2px;
+		inline-size: var(--stratakit-space-x05);
 		inset-inline-start: calc(var(--_splitter-width) / 2);
 		inset-block: 0;
 		background-color: var(--_bg);
@@ -203,14 +203,14 @@
 	}
 
 	&:focus-visible {
-		outline-offset: -2px;
+		outline-offset: calc(var(--stratakit-space-x05) * -1);
 	}
 }
 
 .tabPanel {
 	min-block-size: 0;
 	flex-grow: 1;
-	padding-block-end: 12px;
+	padding-block-end: var(--stratakit-space-x3);
 
 	display: flex;
 	flex-direction: column;

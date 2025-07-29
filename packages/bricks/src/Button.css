@@ -4,10 +4,10 @@
  *--------------------------------------------------------------------------------------------*/
 .🥝-button {
 	--✨color--default: var(--stratakit-color-text-neutral-primary);
-	--✨gap: 4px;
+	--✨gap: var(--stratakit-space-x1);
 	--✨height: 1.5rem;
-	--✨padding-inline: 12px;
-	--✨padding-block: 4px;
+	--✨padding-inline: var(--stratakit-space-x3);
+	--✨padding-block: var(--stratakit-space-x1);
 
 	--✨shadow-border: 0px 0px 0px 1px var(--🥝button-border-color) inset;
 

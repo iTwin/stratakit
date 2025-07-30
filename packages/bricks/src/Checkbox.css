@@ -144,7 +144,7 @@
 
 @media (forced-colors: active) {
 	.🥝-checkbox {
-		border: 1px solid;
+		border: 1px solid CanvasText;
 
 		&:where(
 				:checked,

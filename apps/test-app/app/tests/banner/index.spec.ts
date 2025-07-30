@@ -9,14 +9,14 @@ import { expect, test } from "#playwright";
 test("default", async ({ page }) => {
 	await page.goto("/tests/banner");
 
-	const banner = page.locator(".🥝-banner").first();
+	const banner = page.locator(".my-banner").first();
 	await expect(banner).toBeVisible();
 });
 
 test("dismiss", async ({ page }) => {
 	await page.goto("/tests/banner?dismiss=true");
 
-	const banners = page.locator(".🥝-banner");
+	const banners = page.locator(".my-banner");
 	await expect(banners).toHaveCount(3);
 
 	// Dismiss button should not exist
@@ -30,6 +30,42 @@ test("dismiss", async ({ page }) => {
 			"Dismiss Label",
 		);
 	}
+});
+
+test.describe("appropriately show custom or default icon in convenience API", () => {
+	test("If custom icon is passed, it is shown", async ({ page }) => {
+		await page.goto("/tests/banner?tone=info&icon=true");
+		const bannerInfoWithCustomIcon = page.locator(".my-banner");
+
+		await expect(bannerInfoWithCustomIcon).toBeVisible();
+		await expect(
+			bannerInfoWithCustomIcon.locator("svg.my-banner-custom-icon"),
+		).toBeVisible();
+	});
+
+	test("When no custom icon but non-neutral tone, default status icon is shown", async ({
+		page,
+	}) => {
+		await page.goto("/tests/banner?tone=info");
+		const bannerInfoWithNoCustomIcon = page.locator(".my-banner");
+
+		await expect(bannerInfoWithNoCustomIcon).toBeVisible();
+		await expect(bannerInfoWithNoCustomIcon.locator("svg")).not.toContainClass(
+			"my-banner-default-icon",
+		);
+	});
+
+	test("When no custom icon and neutral tone, no icon is shown", async ({
+		page,
+	}) => {
+		await page.goto("/tests/banner");
+		const bannerNeutralWithNoCustomIcon = page.locator(".my-banner");
+
+		await expect(bannerNeutralWithNoCustomIcon).toBeVisible();
+		await expect(
+			bannerNeutralWithNoCustomIcon.locator("svg"),
+		).not.toBeVisible();
+	});
 });
 
 test.describe("@visual", () => {
@@ -53,7 +89,7 @@ test.describe("@a11y", () => {
 	test("Axe Page Scan", async ({ page }) => {
 		await page.goto("/tests/banner");
 
-		const banner = page.locator(".🥝-banner").first();
+		const banner = page.locator(".my-banner").first();
 		await expect(banner).toBeVisible();
 
 		const axe = new AxeBuilder({ page });

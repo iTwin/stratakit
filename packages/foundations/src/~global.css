@@ -20,6 +20,10 @@ body {
 	--🥝focus-outline-offset: 1px;
 	--🥝selection-color-bg: var(--stratakit-color-bg-accent-base);
 	--🥝selection-color-text: var(--stratakit-color-text-neutral-emphasis);
+
+	@media (forced-colors: active) {
+		--🥝focus-outline: 2px solid Highlight;
+	}
 }
 
 *::selection {
@@ -30,10 +34,4 @@ body {
 *:focus-visible {
 	outline: var(--🥝focus-outline);
 	outline-offset: var(--🥝focus-outline-offset);
-}
-
-@media (forced-colors: active) {
-	:is(body, .🥝-root) {
-		--🥝focus-outline: 2px solid Highlight;
-	}
 }

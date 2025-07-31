@@ -3,8 +3,8 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 .🥝-dialog {
-	--✨padding-block: 16px;
-	--✨padding-inline: 20px;
+	--✨padding-block: var(--stratakit-space-x4);
+	--✨padding-inline: var(--stratakit-space-x5);
 
 	@layer base {
 		position: fixed;
@@ -45,8 +45,8 @@
 }
 
 .🥝-dialog-header {
-	--✨padding-block: 16px;
-	--✨padding-inline: 20px;
+	--✨padding-block: var(--stratakit-space-x4);
+	--✨padding-inline: var(--stratakit-space-x5);
 
 	@layer base {
 		padding-block: var(--✨padding-block);
@@ -59,7 +59,7 @@
 }
 
 .🥝-dialog-content {
-	--✨padding: 20px;
+	--✨padding: var(--stratakit-space-x5);
 
 	@layer base {
 		color: var(--stratakit-color-text-neutral-primary);
@@ -72,7 +72,7 @@
 }
 
 .🥝-dialog-footer {
-	--✨padding: 20px;
+	--✨padding: var(--stratakit-space-x5);
 	--✨border-radius: 12px; /* radius/large */
 
 	@layer base {
@@ -86,7 +86,7 @@
 
 		display: flex;
 		justify-content: end;
-		gap: 12px;
+		gap: var(--stratakit-space-x3);
 	}
 }
 

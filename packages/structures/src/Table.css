@@ -84,7 +84,7 @@
 		position: relative;
 
 		&:where(:not(th, td)) {
-			column-gap: 0.5rem;
+			column-gap: var(--stratakit-space-x2);
 			flex-grow: 1;
 			flex-basis: 4rem;
 		}

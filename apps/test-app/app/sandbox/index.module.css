@@ -125,7 +125,7 @@
 	justify-content: center;
 	flex-direction: column;
 	block-size: 100%;
-	gap: 0.5rem;
+	gap: var(--stratakit-space-x2);
 }
 
 .skeletonTree {

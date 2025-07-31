@@ -10,7 +10,7 @@
 }
 
 .main {
-	padding: 1rem;
+	padding: var(--stratakit-space-x4);
 	flex: 999;
 	min-inline-size: 50%; /* never less than half the screen */
 }

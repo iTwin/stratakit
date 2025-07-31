@@ -158,7 +158,7 @@
 	@layer base {
 		display: flex;
 		align-items: center;
-		gap: 0.25rem;
+		gap: var(--stratakit-space-x1);
 	}
 }
 

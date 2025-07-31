@@ -16,10 +16,6 @@
 		border-radius: 8px /* radius(in progress)/medium */;
 		padding: var(--✨padding);
 		box-shadow: var(--stratakit-shadow-dropdown-base);
-
-		@media (forced-colors: active) {
-			border: 1px solid CanvasText;
-		}
 	}
 }
 
@@ -58,5 +54,11 @@
 .🥝-dropdown-menu-item-shortcuts {
 	@layer base {
 		margin-inline-start: 0.5rem;
+	}
+}
+
+@media (forced-colors: active) {
+	.🥝-dropdown-menu {
+		border: 1px solid;
 	}
 }

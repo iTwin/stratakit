@@ -3,8 +3,8 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 .appLayout {
-	--_platformBar-width: var(--stratakit-space-x10);
-	--_splitter-width: var(--stratakit-space-x3);
+	--_platformBar-width: 40px;
+	--_splitter-width: 12px;
 
 	block-size: 100dvb;
 	display: grid;
@@ -16,7 +16,7 @@
 }
 
 .header {
-	--_header-height: var(--stratakit-space-x10);
+	--_header-height: 40px;
 	grid-area: header;
 	background-color: var(--stratakit-color-bg-page-base);
 	border-block-end: 1px solid var(--stratakit-color-border-neutral-base);
@@ -193,7 +193,7 @@
 	&::before {
 		content: "";
 		position: absolute;
-		inline-size: var(--stratakit-space-x05);
+		inline-size: 2px;
 		inset-inline-start: calc(var(--_splitter-width) / 2);
 		inset-block: 0;
 		background-color: var(--_bg);

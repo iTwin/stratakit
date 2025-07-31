@@ -5,12 +5,12 @@
 .page {
 	display: flex;
 	flex-wrap: wrap;
-	gap: 16px;
+	gap: var(--stratakit-space-x4);
 	container-type: inline-size;
 }
 
 .main {
-	padding: 1rem;
+	padding: var(--stratakit-space-x4);
 	flex: 999;
 	min-inline-size: 50%; /* never less than half the screen */
 }

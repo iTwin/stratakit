@@ -81,7 +81,7 @@
 		&::before {
 			position: absolute;
 			inline-size: var(--✨width);
-			block-size: 24px;
+			block-size: var(--stratakit-space-x6);
 			margin: -1px; /* account for border */
 		}
 
@@ -89,7 +89,7 @@
 		&::after {
 			block-size: var(--✨thumb-size);
 			inline-size: var(--✨thumb-size);
-			margin: calc(0.125rem - 1px) /* spacing-2 - 1px to account for border */;
+			margin: calc(0.125rem - 1px) /* sizing-2 - 1px to account for border */;
 			background-color: var(--🥝switch-thumb-color);
 			box-shadow:
 				var(--stratakit-shadow-button-base-inset), var(--✨shadow-border),

@@ -8,9 +8,9 @@ html {
 }
 
 body {
-	padding: 1rem;
+	padding: var(--stratakit-space-x4);
 }
 
 h2 {
-	margin-block-start: 1rem;
+	margin-block-start: var(--stratakit-space-x4);
 }

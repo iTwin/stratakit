@@ -148,7 +148,7 @@
 	--✨icon-size: 1rem;
 	--✨gap: var(--stratakit-space-x1);
 	--✨padding-inline-start: calc(var(--✨container-padding) + var(--✨icon-size) + var(--✨gap));
-	--✨padding-block: calc(var(--stratakit-space-x1) + var(--stratakit-space-x2)); /* TODO: Why? */
+	--✨padding-block: calc(var(--stratakit-space-x1) + var(--stratakit-space-x2));
 
 	@layer base {
 		display: flex;

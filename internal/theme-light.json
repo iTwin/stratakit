@@ -305,6 +305,10 @@
 				"slider-track": {
 					"$type": "color",
 					"$value": "{p-color.gray.25}"
+				},
+				"select": {
+					"$type": "color",
+					"$value": "{p-color.white.100}"
 				}
 			}
 		},
@@ -320,11 +324,11 @@
 				},
 				"secondary": {
 					"$type": "color",
-					"$value": "{p-color.gray.300}"
+					"$value": "{p-color.gray.400}"
 				},
 				"tertiary": {
 					"$type": "color",
-					"$value": "{p-color.gray.200}"
+					"$value": "{p-color.gray.300}"
 				},
 				"disabled": {
 					"$type": "color",
@@ -834,7 +838,7 @@
 				},
 				"tertiary": {
 					"$type": "color",
-					"$value": "{p-color.gray.600}"
+					"$value": "{p-color.gray.500}"
 				},
 				"disabled": {
 					"$type": "color",
@@ -972,11 +976,54 @@
 			"$type": "shadow",
 			"$value": ["inset 0px -1px 0px 0px --primitive('color.black.8')"]
 		},
+		"dialog-base": {
+			"$type": "shadow",
+			"$value": [
+				"0px 1px 0px 0px --primitive('color.black.8')",
+				"0px 0px 0px 1px --primitive('color.black.12')",
+				"inset 0px 0px 0px 1px --primitive('color.white.2')",
+				"0px 1px 1px -0.5px --primitive('color.black.8')",
+				"0px 3px 3px -1.5px --primitive('color.black.8')",
+				"0px 6px 6px -3px --primitive('color.black.8')",
+				"0px 12px 12px -6px --primitive('color.black.8')",
+				"0px 24px 24px -12px --primitive('color.black.8')"
+			]
+		},
+		"dropdown-base": {
+			"$type": "shadow",
+			"$value": [
+				"0px 1px 0px 0px --primitive('color.black.4')",
+				"0px 0px 0px 1px --primitive('color.black.12')",
+				"inset 0px 0px 0px 1px --primitive('color.white.2')",
+				"0px 1px 1px -0.5px --primitive('color.black.4')",
+				"0px 3px 3px -1.5px --primitive('color.black.4')",
+				"0px 6px 6px -3px --primitive('color.black.4')",
+				"0px 12px 12px -6px --primitive('color.black.4')",
+				"0px 24px 24px -12px --primitive('color.black.4')"
+			]
+		},
 		"input-base": {
 			"$type": "shadow",
 			"$value": [
 				"inset 0px 1px 2px 0px --primitive('color.black.4')",
 				"inset 0px 2px 4px 0px --primitive('color.black.4')"
+			]
+		},
+		"table-strong": {
+			"$type": "shadow",
+			"$value": ["0px -1px 0px 0px --primitive('color.aurora.500')"]
+		},
+		"toolbar-base": {
+			"$type": "shadow",
+			"$value": [
+				"0px 1px 0px 0px --primitive('color.black.8')",
+				"0px 0px 0px 1px --primitive('color.black.24')",
+				"inset 0px 0px 0px 1px --primitive('color.white.80')",
+				"0px 1px 1px -0.5px --primitive('color.black.8')",
+				"0px 3px 3px -1.5px --primitive('color.black.8')",
+				"0px 6px 6px -3px --primitive('color.black.8')",
+				"0px 12px 12px -6px --primitive('color.black.8')",
+				"0px 24px 24px -12px --primitive('color.black.8')"
 			]
 		},
 		"tooltip-base": {
@@ -987,19 +1034,6 @@
 				"0px 3px 3px -1.5px --primitive('color.black.4')",
 				"0px 6px 6px -3px --primitive('color.black.4')",
 				"0px 12px 12px -6px --primitive('color.black.4')"
-			]
-		},
-		"toolbar-base": {
-			"$type": "shadow",
-			"$value": [
-				"0px 1px 0px 0px --primitive('color.black.4')",
-				"0px 0px 0px 1px --primitive('color.black.80')",
-				"inset 0px 0px 0px 1px --primitive('color.white.8')",
-				"0px 1px 1px -0.5px --primitive('color.black.4')",
-				"0px 3px 3px -1.5px --primitive('color.black.4')",
-				"0px 6px 6px -3px --primitive('color.black.4')",
-				"0px 12px 12px -6px --primitive('color.black.4')",
-				"0px 24px 24px -12px --primitive('color.black.4')"
 			]
 		}
 	}

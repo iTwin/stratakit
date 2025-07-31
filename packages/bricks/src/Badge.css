@@ -17,11 +17,7 @@
 		color: var(--🥝badge-text-color);
 		font-weight: 500;
 		block-size: 1.25rem;
-		padding-inline: 8px;
-
-		@media (forced-colors: active) {
-			border: 1px solid;
-		}
+		padding-inline: var(--stratakit-space-x2);
 	}
 
 	@layer modifiers {
@@ -125,5 +121,11 @@
 				--🥝badge-border-color: var(--stratakit-color-border-accent-base);
 			}
 		}
+	}
+}
+
+@media (forced-colors: active) {
+	.🥝-badge {
+		border: 1px solid;
 	}
 }

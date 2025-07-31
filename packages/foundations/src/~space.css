@@ -2,23 +2,18 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-.main {
-	padding: var(--stratakit-space-x8);
-}
-
-.list {
-	padding-block: var(--stratakit-space-x2);
-	list-style-type: "";
-}
-
-.hgroup {
-	border-block-end: 1px solid var(--stratakit-color-border-neutral-base);
-
-	> * {
-		margin-block-end: var(--stratakit-space-x2);
-	}
-}
-
-.h2 {
-	margin-block-start: var(--stratakit-space-x4);
+html,
+:host,
+.🥝-root {
+	--stratakit-space-x05: 2px;
+	--stratakit-space-x1: 4px;
+	--stratakit-space-x2: 8px;
+	--stratakit-space-x3: 12px;
+	--stratakit-space-x4: 16px;
+	--stratakit-space-x5: 20px;
+	--stratakit-space-x6: 24px;
+	--stratakit-space-x7: 28px;
+	--stratakit-space-x8: 32px;
+	--stratakit-space-x9: 36px;
+	--stratakit-space-x10: 40px;
 }

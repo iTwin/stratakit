@@ -38,6 +38,7 @@ export const components = {
 		"Tree",
 	],
 	compat: [
+		"Alert",
 		"Anchor",
 		"Avatar",
 		"Badge",
@@ -46,6 +47,7 @@ export const components = {
 		"Divider",
 		"DropdownButton",
 		"DropdownMenu",
+		"ExpandableBlock",
 		"Icon",
 		"IconButton",
 		"Input",

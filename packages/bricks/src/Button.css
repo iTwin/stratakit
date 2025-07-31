@@ -4,10 +4,10 @@
  *--------------------------------------------------------------------------------------------*/
 .🥝-button {
 	--✨color--default: var(--stratakit-color-text-neutral-primary);
-	--✨gap: 4px;
+	--✨gap: var(--stratakit-space-x1);
 	--✨height: 1.5rem;
-	--✨padding-inline: 12px;
-	--✨padding-block: 4px;
+	--✨padding-inline: var(--stratakit-space-x3);
+	--✨padding-block: var(--stratakit-space-x1);
 
 	--✨shadow-border: 0px 0px 0px 1px var(--🥝button-border-color) inset;
 
@@ -65,16 +65,8 @@
 
 	/* #region Variant: outline */
 	--✨bg--outline-default: transparent;
-	--✨bg--outline-hover: color-mix(
-		in oklch,
-		var(--✨bg--outline-default) 100%,
-		var(--✨glow--bg-hover)
-	);
-	--✨bg--outline-pressed: color-mix(
-		in oklch,
-		var(--✨bg--outline-default) 100%,
-		var(--✨glow--bg-press)
-	);
+	--✨bg--outline-hover: var(--stratakit-color-bg-glow-on-surface-neutral-hover);
+	--✨bg--outline-pressed: var(--stratakit-color-bg-glow-on-surface-neutral-pressed);
 	--✨bg--outline-disabled: transparent;
 	--✨border--outline-default: var(--stratakit-color-border-neutral-base);
 	--✨border--outline-hover: color-mix(
@@ -134,12 +126,8 @@
 
 	/* #region Variant: ghost */
 	--✨bg--ghost-default: transparent;
-	--✨bg--ghost-hover: color-mix(in oklch, var(--✨bg--ghost-default) 100%, var(--✨glow--bg-hover));
-	--✨bg--ghost-pressed: color-mix(
-		in oklch,
-		var(--✨bg--ghost-default) 100%,
-		var(--✨glow--bg-press)
-	);
+	--✨bg--ghost-hover: var(--stratakit-color-bg-glow-on-surface-neutral-hover);
+	--✨bg--ghost-pressed: var(--stratakit-color-bg-glow-on-surface-neutral-pressed);
 	--✨bg--ghost-disabled: transparent;
 
 	--✨bg--ghost-accent-default: transparent;
@@ -203,12 +191,6 @@
 			var(--🌀button-state--hover, var(--stratakit-color-icon-neutral-hover))
 			var(--🌀button-state--pressed, var(--stratakit-color-icon-neutral-hover))
 			var(--🌀button-state--active, var(--stratakit-color-icon-accent-strong));
-
-		@media (forced-colors: active) {
-			background-color: ButtonFace;
-			border: 1px solid ButtonBorder;
-			color: ButtonText;
-		}
 	}
 
 	@layer modifiers {
@@ -337,11 +319,6 @@
 		&:where([aria-pressed="true"]) {
 			--🌀button-state: var(--🌀button-state--active);
 			--🥝button-border-color: var(--✨border--active);
-
-			@media (forced-colors: active) {
-				background-color: SelectedItem;
-				color: SelectedItemText;
-			}
 		}
 
 		&:where(:disabled, [aria-disabled="true"]) {
@@ -350,11 +327,6 @@
 			cursor: not-allowed;
 			-webkit-tap-highlight-color: transparent;
 			--🥝icon-color: var(--stratakit-color-icon-neutral-disabled);
-
-			@media (forced-colors: active) {
-				border-color: GrayText;
-				color: GrayText;
-			}
 		}
 	}
 
@@ -366,5 +338,23 @@
 		--🌀button-state--pressed: var(--🌀button-state,);
 		--🌀button-state--active: var(--🌀button-state,);
 		--🌀button-state--disabled: var(--🌀button-state,);
+	}
+}
+
+@media (forced-colors: active) {
+	.🥝-button {
+		background-color: ButtonFace;
+		border: 1px solid ButtonBorder;
+		color: ButtonText;
+
+		&:where([aria-pressed="true"]) {
+			background-color: SelectedItem;
+			color: SelectedItemText;
+		}
+
+		&:where(:disabled, [aria-disabled="true"]) {
+			border-color: GrayText;
+			color: GrayText;
+		}
 	}
 }

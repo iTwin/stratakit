@@ -26,11 +26,6 @@
 			background-attachment: fixed;
 			animation: --🥝skeleton-shimmer var(--✨duration) var(--✨easing) infinite;
 		}
-
-		@media (forced-colors: active) {
-			border: 1px solid CanvasText;
-			background-color: transparent;
-		}
 	}
 
 	@layer modifiers {
@@ -96,5 +91,12 @@
 @keyframes --🥝skeleton-shimmer {
 	to {
 		background-position-x: 0%;
+	}
+}
+
+@media (forced-colors: active) {
+	.🥝-skeleton {
+		border: 1px solid;
+		background-color: transparent;
 	}
 }

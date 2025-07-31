@@ -81,7 +81,7 @@
 
 		/* This pseudo-element increases tap target size to 24x24 */
 		&::before {
-			inset: calc((var(--✨size) - 24px) / 2);
+			inset: calc((var(--✨size) - var(--stratakit-space-x6)) / 2);
 		}
 
 		/* This pseudo-element adds the actual checkmark SVG via --🥝checkbox-mask-image */

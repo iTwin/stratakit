@@ -19,15 +19,10 @@
 .🥝-select:is(.🥝-button) {
 	--✨padding-inline-start: var(--stratakit-space-x2);
 	--✨padding-inline-end: calc(
-		var(--stratakit-space-x1) +
-		var(--stratakit-space-x4) +
-		var(--stratakit-space-x1)
+		var(--stratakit-space-x1) /* Gap */ +
+		var(--stratakit-space-x4) /* Arrow size */ +
+		var(--stratakit-space-x1) /* Padding - disclosure arrow offset */
 	);
-	/* padding-inline-end:
-	(gap) +
-	(arrow size) +
-	(padding-inline - disclosure arrow offset)
-	*/
 
 	@layer base {
 		min-inline-size: calc(var(--✨padding-inline-start) + 1ch + var(--✨padding-inline-end));

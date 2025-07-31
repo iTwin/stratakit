@@ -5,7 +5,7 @@
 .🥝-list-item {
 	--✨height--default: 1.75rem;
 	--✨height--large: 2.75rem;
-	--✨padding-inline: 0.5rem;
+	--✨padding-inline: var(--stratakit-space-x2);
 
 	--✨bg--default: transparent;
 	--✨bg--hover: var(--stratakit-color-bg-glow-on-surface-neutral-hover);

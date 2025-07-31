@@ -53,7 +53,7 @@
 
 .🥝-dropdown-menu-item-shortcuts {
 	@layer base {
-		margin-inline-start: 0.5rem;
+		margin-inline-start: var(--stratakit-space-x2);
 	}
 }
 

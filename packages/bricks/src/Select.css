@@ -22,7 +22,12 @@
 		var(--stratakit-space-x1) +
 		var(--stratakit-space-x4) +
 		var(--stratakit-space-x1)
-	); /* (gap) + (arrow size) + (padding-inline - disclosure arrow offset) */
+	);
+	/* padding-inline-end:
+	(gap) +
+	(arrow size) +
+	(padding-inline - disclosure arrow offset)
+	*/
 
 	@layer base {
 		min-inline-size: calc(var(--✨padding-inline-start) + 1ch + var(--✨padding-inline-end));

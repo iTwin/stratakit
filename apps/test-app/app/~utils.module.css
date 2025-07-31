@@ -22,7 +22,7 @@
 	min-block-size: 2rem;
 	position: relative;
 	border-radius: 4px;
-	padding-inline-start: calc(8px + 1rem); /* 8px padding + 1rem back icon size */
+	padding-inline-start: calc(var(--stratakit-space-x2) + 1rem); /* 8px padding + 1rem back icon size */
 
 	/* Outline listItem when the listItemLink has focus */
 	&:has(.listItemLink:focus-visible) {

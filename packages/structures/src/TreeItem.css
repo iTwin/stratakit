@@ -40,7 +40,7 @@
 
 .🥝-tree-item-node:is(.🥝-list-item) {
 	--✨first-level-indent: var(--stratakit-space-x2);
-	--✨subsequent-level-indent: 6px; /* TODO: What to do about 6px? */
+	--✨subsequent-level-indent: calc(var(--stratakit-space-x1) + var(--stratakit-space-x05));
 
 	@layer base {
 		position: relative;

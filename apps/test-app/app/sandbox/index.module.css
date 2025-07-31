@@ -140,7 +140,12 @@
 	align-items: center;
 	gap: var(--stratakit-space-x2);
 	width: 100%;
-	padding-inline-start: calc(var(--stratakit-space-x3) + 6px * (var(--level) - 1)); /* TODO: What to do about 6px? */
+	padding-inline-start: calc(
+		var(--stratakit-space-x3) +
+		var(--stratakit-space-x1) +
+		var(--stratakit-space-x05) *
+		(var(--level) - 1)
+	);
 	padding-inline-end: var(--stratakit-space-x2);
 }
 

@@ -2,11 +2,8 @@
 
 ## 0.3.2
 
-### Patch Changes
-
-- [#881](https://github.com/iTwin/design-system/pull/881): - Use `space` variables instead of hardcoded values in all components.
-  - In `Tooltip`, replace hardcoded `rem` spacing values with new `space` variables.
-  - In `Anchor`, change hover state's `text-underline-offset` from `3px` to `4px`.
+- [#881](https://github.com/iTwin/design-system/pull/881): Updated CSS to use `--stratakit-space-` variables instead of hardcoded values in all components.
+  - Replaced hardcoded `rem` spacing values with new `px`-based variables in many components.
 - [#889](https://github.com/iTwin/design-system/pull/889): Fixed vertical centering of `Toolbar.Item`.
 - Updated dependencies:
   - @stratakit/bricks@0.3.4

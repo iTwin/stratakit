@@ -2,9 +2,8 @@
 
 ## 0.0.5
 
-### Patch Changes
-
 - [#726](https://github.com/iTwin/design-system/pull/726): Added `Alert` component.
+- [#730](https://github.com/iTwin/design-system/pull/730): Added `ExpandableBlock` component.
 - Updated dependencies:
   - @stratakit/bricks@0.3.4
   - @stratakit/structures@0.3.2

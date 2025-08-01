@@ -2,13 +2,11 @@
 
 ## 0.3.4
 
-### Patch Changes
-
-- [#866](https://github.com/iTwin/design-system/pull/866): Slowed down `reduced-motion` animation in `Spinner` and `ProgressBar`.
-- [#881](https://github.com/iTwin/design-system/pull/881): - Use `space` variables instead of hardcoded values in all components.
-  - In `Tooltip`, replace hardcoded `rem` spacing values with new `space` variables.
-  - In `Anchor`, change hover state's `text-underline-offset` from `3px` to `4px`.
+- [#881](https://github.com/iTwin/design-system/pull/881): Updated CSS to use `--stratakit-space-` variables instead of hardcoded values in all components.
+  - Replaced hardcoded `rem` spacing values with new `px`-based variables in many components.
+- [#881](https://github.com/iTwin/design-system/pull/881): In `Anchor`, changed hover state's `text-underline-offset` from `3px` to `4px`.
 - [#866](https://github.com/iTwin/design-system/pull/866): Fixed regression in `ProgressBar`'s `reduced-motion` animation.
+- [#866](https://github.com/iTwin/design-system/pull/866): Slowed down `reduced-motion` animation in `Spinner` and `ProgressBar`.
 - Updated dependencies:
   - @stratakit/foundations@0.2.3
 

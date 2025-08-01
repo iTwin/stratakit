@@ -5,12 +5,12 @@
 
 .🥝-tab-list {
 	@layer base {
-		--🥝tab-active-stripe-gap: 8px;
-		--🥝tab-active-stripe-size: 2px;
-		--🥝tab-padding-inline: 4px;
+		--🥝tab-active-stripe-gap: var(--stratakit-space-x2);
+		--🥝tab-active-stripe-size: var(--stratakit-space-x05);
+		--🥝tab-padding-inline: var(--stratakit-space-x1);
 
 		display: flex;
-		gap: 8px;
+		gap: var(--stratakit-space-x2);
 		position: relative;
 
 		@supports (position-anchor: --foo) {
@@ -23,12 +23,7 @@
 				inline-size: calc(anchor-size(inline) - 2 * var(--🥝tab-padding-inline));
 				block-size: var(--🥝tab-active-stripe-size);
 				background-color: var(--🥝tab-active-stripe-color);
-
-				@media (prefers-reduced-motion: no-preference) {
-					transition:
-						inset-inline-start 150ms ease-in-out,
-						inline-size 150ms ease-in-out;
-				}
+				will-change: transform;
 			}
 		}
 	}
@@ -50,7 +45,7 @@
 
 .🥝-tab {
 	--✨height: 1.25rem;
-	--✨gap: 4px;
+	--✨gap: var(--stratakit-space-x1);
 
 	--✨bg--default: transparent;
 	--✨bg--hover-neutral: var(--stratakit-color-bg-glow-on-surface-neutral-hover);
@@ -164,7 +159,7 @@
 
 .🥝-tab-panel {
 	@layer base {
-		--🥝focus-outline-offset: -2px;
+		--🥝focus-outline-offset: calc(var(--stratakit-space-x05) * -1);
 
 		/* Prevents stacking when multiple panels are mounted (during animation) */
 		&:not([data-open]) {

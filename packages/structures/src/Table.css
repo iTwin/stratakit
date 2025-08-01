@@ -30,9 +30,9 @@
 
 .🥝-table-caption,
 .🥝-table-cell {
-	--✨cell-padding-block: 0.5rem;
-	--✨cell-padding-inline-start: 1rem;
-	--✨cell-padding-inline-end: 0.75rem;
+	--✨cell-padding-block: var(--stratakit-space-x2);
+	--✨cell-padding-inline-start: var(--stratakit-space-x4);
+	--✨cell-padding-inline-end: var(--stratakit-space-x3);
 	--✨cell-height-min: 3rem;
 
 	@layer base {
@@ -84,7 +84,7 @@
 		position: relative;
 
 		&:where(:not(th, td)) {
-			column-gap: 0.5rem;
+			column-gap: var(--stratakit-space-x2);
 			flex-grow: 1;
 			flex-basis: 4rem;
 		}

@@ -4,8 +4,8 @@
  *--------------------------------------------------------------------------------------------*/
 
 .🥝-accordion-item {
-	--🥝accordion-item-gap: 12px;
-	--🥝accordion-item-padding: 12px;
+	--🥝accordion-item-gap: var(--stratakit-space-x3);
+	--🥝accordion-item-padding: var(--stratakit-space-x3);
 
 	@layer base {
 		contain: paint;
@@ -14,9 +14,9 @@
 		grid-template-columns:
 			[marker-before-start] auto [marker-before-end
 			decoration-before-start] auto [decoration-before-end
-			content-start] minmax(0, 1fr) [content-end
+			header-content-start body-content-start] minmax(0, 1fr) [header-content-end
 			decoration-after-start] auto [decoration-after-end
-			marker-after-start] auto [marker-after-end];
+			marker-after-start] auto [marker-after-end body-content-end];
 		grid-template-rows: [header-start] auto [header-end content-start] auto [content-end];
 		border-block-end: 1px solid var(--stratakit-color-border-neutral-muted);
 	}
@@ -109,10 +109,10 @@
 
 .🥝-accordion-item-button {
 	@layer base {
-		grid-column: content;
+		grid-column: header-content;
 		cursor: pointer;
-		border-radius: 12px;
-		--🥝focus-outline-offset: -4px;
+		border-radius: var(--stratakit-space-x3);
+		--🥝focus-outline-offset: calc(var(--stratakit-space-x1) * -1);
 
 		&::after {
 			content: "";
@@ -137,7 +137,7 @@
 .🥝-accordion-item-content {
 	@layer base {
 		grid-row: content;
-		grid-column: content;
+		grid-column: body-content;
 		padding-block: var(--🥝accordion-item-padding);
 		text-box: cap alphabetic;
 		color: var(--stratakit-color-text-neutral-secondary);
@@ -150,7 +150,7 @@
 		margin-inline-end: var(--🥝accordion-item-gap);
 		display: flex;
 		align-items: center;
-		gap: 0.25rem;
+		gap: var(--stratakit-space-x1);
 
 		:where(.🥝-accordion-item-heading, .🥝-accordion-item-button) ~ & {
 			grid-column: decoration-after;
@@ -162,7 +162,7 @@
 
 .🥝-accordion-item-heading {
 	@layer base {
-		grid-column: content;
+		grid-column: header-content;
 		margin-block: 0;
 		text-box: cap alphabetic;
 	}

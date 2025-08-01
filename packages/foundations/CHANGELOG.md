@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.2.3
+
+- [#873](https://github.com/iTwin/design-system/pull/873): Added initial set of spacing tokens (e.g. `--stratakit-space-x1`, `--stratakit-space-x2`, etc).
+- Updated internal code for `@stratakit/structures@0.3.1`.
+
+## 0.2.2
+
+### Patch Changes
+
+- [#861](https://github.com/iTwin/design-system/pull/861): Small changes to some colors in light theme.
+- [#861](https://github.com/iTwin/design-system/pull/861): Added new CSS variable: `--stratakit-color-bg-control-select`.
+- Updated internal code for `@stratakit/bricks@0.3.3` and `@stratakit/structures@0.3.0`.
+
 ## 0.2.1
 
 - [#824](https://github.com/iTwin/design-system/pull/824): Added a new `unstable_loadStyles` function for loading all foundations CSS without using React.

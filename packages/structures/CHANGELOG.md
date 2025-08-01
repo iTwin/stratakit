@@ -1,5 +1,118 @@
 # Changelog
 
+## 0.3.1
+
+- [#870](https://github.com/iTwin/design-system/pull/870): Fixed an issue where `AccordionItem.Content` was being offset by decorations placed at the end of `AccordionItem.Header`. The content will now only include start indentation, and correctly stretch all the way up to the right edge.
+- [#869](https://github.com/iTwin/design-system/pull/869): Fixed an issue where `Tree` was using Context as a component which doesn't work in React 18.
+- [#872](https://github.com/iTwin/design-system/pull/872): Improved the `Tabs` active stripe animation to make it smoother and more performant.
+
+## 0.3.0
+
+### Breaking changes
+
+- [#847](https://github.com/iTwin/design-system/pull/847): The `id` prop in `Tabs.Tab` and `tabId` prop in `Tabs.TabPanel` have been made required.
+- [#805](https://github.com/iTwin/design-system/pull/805): Changed `actions` prop of the `Tree.Item` component to no longer automatically inline some of the actions. Instead, newly added `inlineActions` prop can be used to display up to two inline actions. All actions specified in a `actions` prop will be rendered in the action menu.
+
+  ```tsx
+  <Tree.Item
+    inlineActions={[
+      <Tree.ItemAction key={…} icon={…} label={…} />,
+      <Tree.ItemAction key={…} icon={…} label={…} />,
+    ]}
+    actions={[
+      <Tree.ItemAction key={…} label={…} />,
+      <Tree.ItemAction key={…} label={…} />,
+    ]}
+  />
+  ```
+
+  A single error-related action should be specified when the tree item has an error.
+
+  ```tsx
+  <Tree.Item
+    error={error}
+    inlineActions={
+  	  error
+  	    ? [
+  	        <Tree.ItemAction key={…} icon={…} label={…} />
+  	      ]
+  	    : [
+  	        <Tree.ItemAction key={…} icon={…} label={…} />,
+  	        <Tree.ItemAction key={…} icon={…} label={…} />,
+  	      ]
+  	}
+  />
+  ```
+
+### Non-breaking changes
+
+- [#821](https://github.com/iTwin/design-system/pull/821): Added compositional `Banner.Root`, `Banner.Icon`, `Banner.Label`, `Banner.Message`, `Banner.Actions`, and `Banner.DismissButton` components. These new components can be used when you need fine grained configuration.
+
+  To use the compositional components, import them from the `/unstable_Banner` subpath:
+
+  ```tsx
+  import * as Banner from "@stratakit/structures/unstable_Banner";
+
+  <Banner.Root>
+  	<Banner.Icon href={placeholderIcon} />
+  	<Banner.Label>Label</Banner.Label>
+  	<Banner.Message>Message</Banner.Message>
+  	<Banner.Actions>
+  		<Button>Action</Button>
+  	</Banner.Actions>
+  	<Banner.DismissButton onClick={onDismiss} />
+  </Banner.Root>;
+  ```
+
+- [#716](https://github.com/iTwin/design-system/pull/716): Added support for placing `<AccordionItem.Marker>` before and `<AccordionItem.Decoration>` after the rest of the content in `<AccordionItem.Header>`.
+
+  The `<AccordionItem.Marker>` is now recommended to be placed _before_ the rest of the header content.
+
+  ```tsx
+  <AccordionItem.Header>
+  	<AccordionItem.Marker />
+  	<AccordionItem.Button>
+  		<AccordionItem.Label>Label</AccordionItem.Label>
+  	</AccordionItem.Button>
+  </AccordionItem.Header>
+  ```
+
+- [#716](https://github.com/iTwin/design-system/pull/716): Added support for multiple decorations for `AccordionItem` when passed as children in `<AccordionItem.Decoration>`.
+
+  ```tsx
+  <AccordionItem.Header>
+  	<AccordionItem.Marker />
+  	<AccordionItem.Decoration>
+  		<Icon href={placeholder} />
+  		<Icon href={placeholder} />
+  	</AccordionItem.Decoration>
+  	<AccordionItem.Button>
+  		<AccordionItem.Label>Label</AccordionItem.Label>
+  	</AccordionItem.Button>
+  </AccordionItem.Header>
+  ```
+
+- [#849](https://github.com/iTwin/design-system/pull/849): Add `background-color` change for the `<AccordionItem.Header>` instead of just the `<AccordionItem.Marker>` for the "hover" and "pressed" states of `<AccordionItem.Header>`.
+
+- [#829](https://github.com/iTwin/design-system/pull/829): Improved the performance of the `Tree.Item` component by deferring the rendering of actions until the tree item becomes visible on the screen.
+
+- [#809](https://github.com/iTwin/design-system/pull/809): Added active and active-hover states to the `Table.Row` component for styling selected rows. To enable selection, render a `Checkbox` component within the row. A row is considered selected when its checkbox is checked.
+
+  ```tsx
+  <Table.Row>
+  	<Table.Cell>
+  		<Checkbox checked />
+  	</Table.Cell>
+  	<Table.Cell>Item 1</Table.Cell>
+  </Table.Row>
+  ```
+
+- [#854](https://github.com/iTwin/design-system/pull/854): Updated the status icons used internally by various components: `unstable_Banner`, and `unstable_ErrorRegion` and `Tree.Item`.
+
+- Updated dependencies:
+  - @stratakit/bricks@0.3.3
+  - @stratakit/foundations@0.2.2
+
 ## 0.2.4
 
 - [#835](https://github.com/iTwin/design-system/pull/835): Added active-hover state styles to the `Tree.Item` component.

@@ -19,10 +19,6 @@
 		position: relative;
 		overflow: hidden;
 
-		@media (forced-colors: active) {
-			border: 1px solid CanvasText;
-		}
-
 		&::after {
 			content: "";
 			position: absolute;
@@ -73,5 +69,11 @@
 		font-weight: 600;
 		text-align: center;
 		text-transform: uppercase;
+	}
+}
+
+@media (forced-colors: active) {
+	.🥝-avatar {
+		border: 1px solid;
 	}
 }

@@ -3,5 +3,5 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 .main {
-	padding: 2rem;
+	padding: var(--stratakit-space-x8);
 }

@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.3.2
+
+### Patch Changes
+
+- [#881](https://github.com/iTwin/design-system/pull/881): - Use `space` variables instead of hardcoded values in all components.
+  - In `Tooltip`, replace hardcoded `rem` spacing values with new `space` variables.
+  - In `Anchor`, change hover state's `text-underline-offset` from `3px` to `4px`.
+- [#889](https://github.com/iTwin/design-system/pull/889): Fixed vertical centering of `Toolbar.Item`.
+- Updated dependencies:
+  - @stratakit/bricks@0.3.4
+  - @stratakit/foundations@0.2.3
+
 ## 0.3.1
 
 - [#870](https://github.com/iTwin/design-system/pull/870): Fixed an issue where `AccordionItem.Content` was being offset by decorations placed at the end of `AccordionItem.Header`. The content will now only include start indentation, and correctly stretch all the way up to the right edge.

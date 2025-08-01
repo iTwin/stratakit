@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.0.5
+
+### Patch Changes
+
+- [#726](https://github.com/iTwin/design-system/pull/726): Added `Alert` component.
+- Updated dependencies:
+  - @stratakit/bricks@0.3.4
+  - @stratakit/structures@0.3.2
+  - @stratakit/foundations@0.2.3
+
 ## 0.0.4
 
 - Updated dependencies:

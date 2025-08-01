@@ -17,12 +17,14 @@ type IuiSwitchProps = React.ComponentProps<typeof IuiSwitch>;
 interface ToggleSwitchProps
 	extends Pick<
 		IuiSwitchProps,
-		"label" | "labelPosition" | "labelProps" | "size" | "icon"
+		"label" | "labelPosition" | "labelProps" | "size" | "icon" | "wrapperProps"
 	> {
 	/** NOT IMPLEMENTED. */
 	size?: IuiSwitchProps["size"];
 	/** NOT IMPLEMENTED. */
 	icon?: IuiSwitchProps["icon"];
+	/** NOT IMPLEMENTED: No wrapper is rendered around the switch. */
+	wrapperProps?: IuiSwitchProps["wrapperProps"];
 }
 
 /** @see https://itwinui.bentley.com/docs/toggleswitch */
@@ -51,10 +53,6 @@ export const ToggleSwitch = React.forwardRef((props, forwardedRef) => {
 		);
 	}
 
-	return (
-		<div>
-			<SkSwitch ref={forwardedRef} {...rest} />
-		</div>
-	);
+	return <SkSwitch ref={forwardedRef} {...rest} />;
 }) as PolymorphicForwardRefComponent<"input", ToggleSwitchProps>;
 DEV: ToggleSwitch.displayName = "ToggleSwitch";

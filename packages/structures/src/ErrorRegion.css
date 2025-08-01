@@ -3,7 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 .🥝-error-region {
-	--✨padding: 4px;
+	--✨padding: var(--stratakit-space-x1);
 
 	@layer base {
 		position: relative;
@@ -62,8 +62,8 @@
 	@layer base {
 		flex-wrap: wrap;
 		min-block-size: 2rem;
-		padding-inline-start: 8px;
-		padding-inline-end: 4px;
+		padding-inline-start: var(--stratakit-space-x2);
+		padding-inline-end: var(--stratakit-space-x1);
 		font-weight: 400;
 		border-start-start-radius: var(--✨border-radius);
 		border-start-end-radius: var(--✨border-radius);
@@ -144,11 +144,11 @@
 }
 
 .🥝-error-region-item {
-	--✨container-padding: 8px;
+	--✨container-padding: var(--stratakit-space-x2);
 	--✨icon-size: 1rem;
-	--✨gap: 4px;
+	--✨gap: var(--stratakit-space-x1);
 	--✨padding-inline-start: calc(var(--✨container-padding) + var(--✨icon-size) + var(--✨gap));
-	--✨padding-block: calc(4px + 8px);
+	--✨padding-block: calc(var(--stratakit-space-x1) + var(--stratakit-space-x2));
 
 	@layer base {
 		display: flex;
@@ -156,7 +156,7 @@
 
 		padding-block: var(--✨padding-block);
 		padding-inline-start: var(--✨padding-inline-start);
-		padding-inline-end: 4px;
+		padding-inline-end: var(--stratakit-space-x1);
 
 		&:where(:not(:nth-child(1 of &))) {
 			border-block-start: 1px solid var(--stratakit-color-border-page-base);
@@ -166,6 +166,6 @@
 
 .🥝-error-region-item-actions {
 	@layer base {
-		margin-block-start: 8px;
+		margin-block-start: var(--stratakit-space-x2);
 	}
 }

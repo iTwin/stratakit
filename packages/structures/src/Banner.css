@@ -10,7 +10,7 @@
 		background-color: var(--🥝banner-color-background);
 		border: 1px solid var(--🥝banner-color-border);
 		border-radius: 8px;
-		padding: 12px;
+		padding: var(--stratakit-space-x3);
 		align-items: center;
 		inline-size: 100%;
 	}
@@ -51,7 +51,7 @@
 		grid-column: start;
 		grid-row: 1;
 		align-self: start;
-		margin-inline-end: 8px;
+		margin-inline-end: var(--stratakit-space-x2);
 	}
 }
 
@@ -60,7 +60,7 @@
 		grid-column: content;
 		font-weight: 500;
 		align-self: start;
-		margin-block-end: 4px;
+		margin-block-end: var(--stratakit-space-x1);
 	}
 }
 
@@ -80,8 +80,8 @@
 		display: flex;
 		flex-wrap: wrap;
 		align-items: baseline;
-		gap: 8px;
-		margin-block-start: 12px;
+		gap: var(--stratakit-space-x2);
+		margin-block-start: var(--stratakit-space-x3);
 	}
 }
 
@@ -90,7 +90,7 @@
 		grid-column: end;
 		grid-row: 1;
 		align-self: start;
-		margin-inline-start: 12px;
+		margin-inline-start: var(--stratakit-space-x3);
 	}
 }
 

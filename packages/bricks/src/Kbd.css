@@ -13,18 +13,18 @@
 		color: var(--stratakit-color-text-neutral-secondary);
 
 		display: inline-flex;
-		column-gap: 4px;
+		column-gap: var(--stratakit-space-x1);
 		align-items: center;
 		justify-content: center;
 		flex-shrink: 0;
-		min-block-size: 16px;
+		min-block-size: var(--stratakit-space-x4);
 	}
 
 	@layer modifiers {
 		&:where([data-kiwi-variant="solid"], [data-kiwi-variant="muted"]) {
 			border-radius: 4px;
 			background-color: var(--stratakit-color-bg-neutral-base);
-			padding-inline: 4px;
+			padding-inline: var(--stratakit-space-x1);
 		}
 
 		&:where([data-kiwi-variant="solid"]) {
@@ -41,6 +41,6 @@
 
 @media (forced-colors: active) {
 	.🥝-kbd:where([data-kiwi-variant="solid"]) {
-		border: 1px solid CanvasText;
+		border: 1px solid;
 	}
 }

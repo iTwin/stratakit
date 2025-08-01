@@ -22,10 +22,10 @@
 	--✨color--placeholder: var(--stratakit-color-text-neutral-secondary);
 	--✨color--disabled: var(--stratakit-color-text-neutral-disabled);
 	--✨height: 1.5rem;
-	--✨padding-inline: 8px;
+	--✨padding-inline: var(--stratakit-space-x2);
 	/* Dynamically adjust the padding to avoid issues with baseline alignment */
-	--✨padding-block: max(0px, (var(--✨height) - 2px - 1lh) / 2);
-	--✨gap: 4px;
+	--✨padding-block: max(0px, (var(--✨height) - var(--stratakit-space-x05) - 1lh) / 2);
+	--✨gap: var(--stratakit-space-x1);
 
 	@layer base {
 		cursor: var(--🥝text-box-cursor);

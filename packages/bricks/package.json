@@ -191,7 +191,7 @@
 		"typescript": "catalog:"
 	},
 	"peerDependencies": {
-		"@stratakit/foundations": "^0.2.3",
+		"@stratakit/foundations": "^0.2.4",
 		"react": ">=18.0.0",
 		"react-dom": ">=18.0.0"
 	},

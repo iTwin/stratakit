@@ -6,6 +6,7 @@
 	@layer base {
 		display: inline-flex;
 		gap: var(--stratakit-space-x1);
+		align-items: center;
 
 		background-color: var(--stratakit-color-bg-page-base);
 		box-shadow: var(--stratakit-shadow-toolbar-base);

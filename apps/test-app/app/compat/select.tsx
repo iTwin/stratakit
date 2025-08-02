@@ -55,8 +55,8 @@ export default definePage(function Page() {
 			{/* iTwinUI Stories */}
 			<Basic />
 			<WithIcons />
+			<WithSelectedValue />
 			<Disabled />
-			<DisabledWithSelectedValue />
 			<Sublabels />
 			<Multi />
 			<Native />

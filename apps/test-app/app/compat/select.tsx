@@ -55,15 +55,10 @@ export default definePage(function Page() {
 			{/* iTwinUI Stories */}
 			<Basic />
 			<WithIcons />
-			<WithSelectedValue />
 			<Disabled />
 			<DisabledWithSelectedValue />
-			<ManyItems />
 			<Sublabels />
-			<Custom />
-			<TruncateMiddleText />
 			<Multi />
-			<MultiCustomRenderer />
 			<Native />
 			<Borderless />
 		</div>
@@ -133,52 +128,16 @@ export const Disabled = () => {
 	];
 	const [value, setValue] = React.useState<string | undefined>(undefined);
 	return (
-		<div>
-			<Select
-				disabled
-				options={options}
-				value={value}
-				onChange={setValue}
-				placeholder="Placeholder text"
-			/>
-		</div>
-	);
-};
-
-export const DisabledWithSelectedValue = () => {
-	const options = [
-		{ value: "1", label: "Item #1" },
-		{ value: "2", label: "Item #2" },
-		{ value: "3", label: "Item #3" },
-	];
-	const [value, setValue] = React.useState("2");
-	return (
-		<div>
-			<Select
-				options={options}
-				value={value}
-				onChange={setValue}
-				placeholder="Placeholder text"
-				disabled
-			/>
-		</div>
-	);
-};
-
-export const ManyItems = () => {
-	const [value, setValue] = React.useState<string | undefined>(undefined);
-	return (
 		<Select
-			options={[...Array(20).fill(null)].map((_, index) => ({
-				label: `Item #${index}`,
-				value: `${index}`,
-			}))}
+			disabled
+			options={options}
 			value={value}
 			onChange={setValue}
 			placeholder="Placeholder text"
 		/>
 	);
 };
+
 export const Sublabels = () => {
 	const options = [
 		{ value: "1", label: "Item #1", sublabel: "Sublabel #1" },
@@ -197,82 +156,18 @@ export const Sublabels = () => {
 	);
 };
 
-export const Custom = () => {
-	const options = [
-		{ value: "yellow", label: "Yellow" },
-		{ value: "green", label: "Green" },
-		{ value: "red", label: "Red" },
-	];
-	const [selectedValue, setSelectedValue] = React.useState<string | undefined>(
-		undefined,
-	);
-	return (
-		<Select
-			options={options}
-			value={selectedValue}
-			onChange={(value: string) => setSelectedValue(value)}
-			placeholder="Placeholder text"
-		/>
-	);
-};
-
-export const TruncateMiddleText = () => {
-	const options = [
-		{
-			value:
-				"MyFileWithAReallyLongNameThatWillBeTruncatedBecauseItIsReallyThatLongSoHardToBelieve_FinalVersion_V2.html",
-			label:
-				"MyFileWithAReallyLongNameThatWillBeTruncatedBecauseItIsReallyThatLongSoHardToBelieve_FinalVersion_V2.html",
-		},
-		{ value: "ShortNameFile.jpg", label: "ShortNameFile.jpg" },
-		{ value: "SomeOtherFile.dgn", label: "SomeOtherFile.dgn" },
-	];
-	const [selectedValue, setSelectedValue] = React.useState<string | undefined>(
-		options[0].value,
-	);
-
-	return (
-		<Select
-			options={options}
-			value={selectedValue}
-			onChange={setSelectedValue}
-			placeholder="Placeholder text"
-		/>
-	);
-};
-
 export const Multi = () => {
 	const [value, setValue] = React.useState("0");
 	return (
-		<div>
-			<Select
-				options={[...Array(20).fill(null)].map((_, index) => ({
-					label: `Item #${index}`,
-					value: `${index}`,
-				}))}
-				value={value}
-				onChange={setValue}
-				placeholder="Placeholder text"
-			/>
-		</div>
-	);
-};
-
-export const MultiCustomRenderer = () => {
-	const [value, setValue] = React.useState("0");
-
-	return (
-		<div>
-			<Select
-				options={[...Array(20).fill(null)].map((_, index) => ({
-					label: `Item #${index}`,
-					value: `${index}`,
-				}))}
-				value={value}
-				onChange={setValue}
-				placeholder="Placeholder text"
-			/>
-		</div>
+		<Select
+			options={[...Array(20).fill(null)].map((_, index) => ({
+				label: `Item #${index}`,
+				value: `${index}`,
+			}))}
+			value={value}
+			onChange={setValue}
+			placeholder="Placeholder text"
+		/>
 	);
 };
 

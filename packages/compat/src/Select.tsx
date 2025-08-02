@@ -5,6 +5,7 @@
 
 import * as React from "react";
 import { Field, Select as SkSelect } from "@stratakit/bricks";
+import { useEventHandlers } from "@stratakit/foundations/secret-internals";
 
 import type { Select as IuiSelect } from "@itwin/itwinui-react";
 import type { PolymorphicForwardRefComponent } from "./~utils.tsx";
@@ -98,6 +99,8 @@ export const Select = React.forwardRef((props, forwardedRef) => {
 			[onChangeProp],
 		);
 
+	const mergedOnChange = useEventHandlers(onChange, triggerProps?.onChange);
+
 	const renderedOptions = React.useMemo(() => {
 		return options.map((option) => {
 			return (
@@ -111,25 +114,25 @@ export const Select = React.forwardRef((props, forwardedRef) => {
 	return (
 		<Field.Control
 			id={id}
-			render={
+			render={(controlProps) => (
 				<SkSelect.Root {...rest}>
 					<SkSelect.HtmlSelect
+						{...controlProps}
 						{...triggerProps}
 						disabled={disabled}
 						value={value ?? undefined}
 						defaultValue={defaultValue}
-						onChange={onChange}
+						onChange={mergedOnChange}
 					>
 						{renderedOptions}
 					</SkSelect.HtmlSelect>
 				</SkSelect.Root>
-			}
+			)}
 			ref={forwardedRef}
 		/>
 	);
 }) as PolymorphicForwardRefComponent<"div", SelectProps>;
-DEV: (Select as React.ForwardRefExoticComponent<unknown>).displayName =
-	"Select";
+DEV: Select.displayName = "Select";
 
 export type {
 	SelectOption,

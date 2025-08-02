@@ -99,7 +99,7 @@ export const Select = React.forwardRef((props, forwardedRef) => {
 			[onChangeProp],
 		);
 
-	const mergedOnChange = useEventHandlers(onChange, triggerProps?.onChange);
+	const mergedOnChange = useEventHandlers(triggerProps?.onChange, onChange);
 
 	const renderedOptions = React.useMemo(() => {
 		return options.map((option) => {

@@ -43,8 +43,6 @@ interface IuiNativeSelectTransformedProps
 	/** NOT IMPLEMENTED */
 	status?: IuiNativeSelectProps["status"];
 	/** NOT IMPLEMENTED */
-	required?: IuiNativeSelectProps["required"];
-	/** NOT IMPLEMENTED */
 	styleType?: IuiNativeSelectProps["styleType"];
 	/** NOT IMPLEMENTED */
 	placeholder?: IuiNativeSelectProps["placeholder"];
@@ -75,6 +73,7 @@ export const Select = React.forwardRef((props, forwardedRef) => {
 		options,
 		defaultValue,
 		triggerProps,
+		required,
 
 		// biome-ignore lint/correctness/noUnusedVariables: NO-OP
 		native,
@@ -82,7 +81,6 @@ export const Select = React.forwardRef((props, forwardedRef) => {
 		// biome-ignore-start lint/correctness/noUnusedVariables: NOT IMPLEMENTED
 		size,
 		status,
-		required,
 		multiple,
 		styleType,
 		placeholder,
@@ -91,15 +89,9 @@ export const Select = React.forwardRef((props, forwardedRef) => {
 		...rest
 	} = props;
 
-	const onChange: React.ChangeEventHandler<HTMLSelectElement> =
-		React.useCallback(
-			(event) => {
-				onChangeProp?.(event.target.value, event);
-			},
-			[onChangeProp],
-		);
-
-	const mergedOnChange = useEventHandlers(triggerProps?.onChange, onChange);
+	const mergedOnChange = useEventHandlers(triggerProps?.onChange, (event) => {
+		onChangeProp?.(event.target.value, event);
+	});
 
 	const renderedOptions = React.useMemo(() => {
 		return options.map((option) => {
@@ -119,6 +111,7 @@ export const Select = React.forwardRef((props, forwardedRef) => {
 					<SkSelect.HtmlSelect
 						{...controlProps}
 						{...triggerProps}
+						required={required}
 						disabled={disabled}
 						value={value ?? undefined}
 						defaultValue={defaultValue}

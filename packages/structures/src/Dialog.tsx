@@ -12,6 +12,7 @@ import { Button, IconButton, Text } from "@stratakit/bricks";
 import { GhostAligner } from "@stratakit/bricks/secret-internals";
 import {
 	forwardRef,
+	useMergedRefs,
 	usePopoverApi,
 } from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
@@ -53,17 +54,10 @@ interface DialogRootProps
  * ```
  */
 const DialogRoot = forwardRef<"div", DialogRootProps>((props, forwardedRef) => {
-	const { backdrop, ...rest } = props;
+	const { backdrop = true, ...rest } = props;
 
 	const store = AkDialog.useDialogStore();
 	const open = useStoreState(store, "open");
-
-	const [backdropElement, setBackdropElement] =
-		React.useState<HTMLElement | null>(null);
-	const backdropPopoverProps = usePopoverApi({
-		element: backdropElement,
-		open,
-	});
 
 	const contentElement = useStoreState(store, "contentElement");
 	const popoverProps = usePopoverApi({
@@ -71,29 +65,12 @@ const DialogRoot = forwardRef<"div", DialogRootProps>((props, forwardedRef) => {
 		open,
 	});
 
-	const renderBackdrop = React.useMemo(() => {
-		if (!backdrop) return undefined;
-		if (typeof backdrop === "boolean") return undefined;
-		if (React.isValidElement(backdrop)) return backdrop;
-		const Component = backdrop;
-		return <Component />;
-	}, [backdrop]);
 	return (
 		<AkDialog.DialogProvider store={store}>
 			<AkDialog.Dialog
 				popover={popoverProps.popover}
 				{...rest}
-				backdrop={
-					backdrop === false ? (
-						backdrop
-					) : (
-						<DialogBackdrop
-							{...backdropPopoverProps}
-							render={renderBackdrop}
-							ref={setBackdropElement}
-						/>
-					)
-				}
+				backdrop={backdrop === true ? <DialogBackdrop /> : backdrop}
 				style={{
 					...popoverProps.style,
 					...props.style,
@@ -315,11 +292,21 @@ interface DialogBackdropProps extends BaseProps {}
  */
 const DialogBackdrop = forwardRef<"div", DialogBackdropProps>(
 	(props, forwardedRef) => {
+		const store = AkDialog.useDialogContext();
+		const open = useStoreState(store, "open");
+
+		const [element, setElement] = React.useState<HTMLElement | null>(null);
+		const popoverProps = usePopoverApi({
+			element,
+			open,
+		});
+
 		return (
 			<Role
+				{...popoverProps}
 				{...props}
 				className={cx("🥝-dialog-backdrop", props.className)}
-				ref={forwardedRef}
+				ref={useMergedRefs(forwardedRef, setElement)}
 			/>
 		);
 	},

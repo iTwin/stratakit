@@ -17,6 +17,7 @@
 		var(--stratakit-color-glow-hue) var(--stratakit-color-border-glow-base-hover-\%)
 	);
 	--✨border--focus: var(--stratakit-color-border-accent-strong);
+	--✨border--invalid: var(--stratakit-color-border-critical-base);
 	--✨border--disabled: var(--stratakit-color-border-glow-on-surface-disabled);
 	--✨color--default: var(--stratakit-color-text-neutral-primary);
 	--✨color--placeholder: var(--stratakit-color-text-neutral-secondary);
@@ -138,12 +139,30 @@
 			--🥝icon-color: var(--stratakit-color-icon-accent-strong);
 		}
 
+		/* Invalid state */
+		&:where(:has(:is(input, textarea):is([aria-invalid="true"], :user-invalid))),
+		&:where(:is(input, textarea):is([aria-invalid="true"], :user-invalid)) {
+			--🥝text-box-border-color: var(--✨border--invalid);
+			outline-color: var(--✨border--invalid);
+		}
+
+		/* Invalid state when focused */
+		&:where(:has(:is(input, textarea):is([aria-invalid="true"], :user-invalid):focus-visible)),
+		&:where(:is(input, textarea):is([aria-invalid="true"], :user-invalid):focus-visible) {
+			--🥝icon-color: var(--stratakit-color-icon-critical-base);
+		}
+
 		@supports not selector(:has(+ *)) {
 			&:where(:not(input, textarea):focus-within) {
 				outline: var(--🥝focus-outline);
 				outline-offset: var(--🥝focus-outline-offset);
 				--🥝text-box-border-color: var(--✨border--focus);
 				--🥝icon-color: var(--stratakit-color-icon-accent-strong);
+			}
+
+			&:where(:not(input, textarea) :is(input, textarea):is([aria-invalid="true"], :user-invalid)) {
+				--🥝text-box-border-color: var(--✨border--invalid);
+				outline-color: var(--✨border--invalid);
 			}
 		}
 

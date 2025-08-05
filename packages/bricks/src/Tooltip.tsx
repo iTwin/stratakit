@@ -11,6 +11,7 @@ import {
 	usePopoverApi,
 } from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
+import { TooltipContext } from "./Tooltip.internal.js";
 
 import type { FocusableProps } from "@stratakit/foundations/secret-internals";
 
@@ -74,6 +75,8 @@ interface TooltipProps
  */
 const Tooltip = forwardRef<"div", TooltipProps>((props, forwardedRef) => {
 	const generatedId = React.useId();
+	const context = React.useContext(TooltipContext);
+
 	const {
 		content,
 		children,
@@ -83,7 +86,7 @@ const Tooltip = forwardRef<"div", TooltipProps>((props, forwardedRef) => {
 		open: openProp,
 		setOpen: setOpenProp,
 		unmountOnHide = type === "none",
-		placement,
+		placement = context.placement,
 		...rest
 	} = props;
 

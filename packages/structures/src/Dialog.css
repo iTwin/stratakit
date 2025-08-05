@@ -99,3 +99,9 @@
 		inline-size: 100dvi;
 	}
 }
+
+@media (forced-colors: active) {
+	.🥝-dialog {
+		border: 1px solid;
+	}
+}

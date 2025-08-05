@@ -116,7 +116,7 @@
 		:where(input, textarea) {
 			border: none;
 			background-color: var(--🥝text-box-background-color);
-			outline: unset;
+			outline: unset !important;
 			flex: 999;
 			align-self: stretch;
 			transition: background-color 150ms ease-out;

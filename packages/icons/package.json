@@ -33,7 +33,7 @@
 	},
 	"wireit": {
 		"build": {
-			"command": "tsx scripts/icons-list.cts",
+			"command": "tsx scripts/icons-list.ts",
 			"files": [
 				"icons",
 				"scripts"

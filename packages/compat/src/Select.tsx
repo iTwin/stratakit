@@ -126,8 +126,3 @@ export const Select = React.forwardRef((props, forwardedRef) => {
 	);
 }) as PolymorphicForwardRefComponent<"div", SelectProps>;
 DEV: Select.displayName = "Select";
-
-export type {
-	SelectOption,
-	SelectValueChangeEvent,
-} from "@itwin/itwinui-react";

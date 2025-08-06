@@ -2,8 +2,6 @@
 
 ## 0.0.6
 
-### Patch Changes
-
 - [#729](https://github.com/iTwin/design-system/pull/729): Added `Select` component.
 
 ## 0.0.5

@@ -2,15 +2,26 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
+.🥝-dialog-wrapper {
+	@layer base {
+		position: fixed;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		block-size: 100dvb;
+		inline-size: 100dvi;
+		inset-block-start: 0;
+		inset-inline-start: 0;
+	}
+}
+
 .🥝-dialog {
 	--✨padding-block: var(--stratakit-space-x4);
 	--✨padding-inline: var(--stratakit-space-x5);
 
 	@layer base {
-		position: fixed;
-		margin: auto;
-		inset: 0;
-
+		position: relative;
 		min-block-size: var(--🥝dialog-min-block-size, 94px);
 		min-inline-size: min(100%, 296px);
 		max-block-size: calc(100dvb - 64px);
@@ -84,9 +95,6 @@
 	@layer base {
 		opacity: 0.8;
 		background: var(--stratakit-color-bg-elevation-overlay);
-
-		block-size: 100dvb;
-		inline-size: 100dvi;
 	}
 }
 

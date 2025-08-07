@@ -154,20 +154,38 @@ function Canvas() {
 			<Toolbar.Group variant="solid">
 				<Toolbar.Item
 					render={
-						<IconButton label="Select" icon={cursorIcon} variant="ghost" />
+						<IconButton
+							label="Select"
+							icon={`${cursorIcon}#icon-large`}
+							variant="ghost"
+						/>
 					}
 				/>
 				<Toolbar.Item
 					render={
-						<IconButton label="Move" icon={cursorSelectIcon} variant="ghost" />
+						<IconButton
+							label="Move"
+							icon={`${cursorSelectIcon}#icon-large`}
+							variant="ghost"
+						/>
 					}
 				/>
 				<Toolbar.Item
-					render={<IconButton label="Draw" icon={drawIcon} variant="ghost" />}
+					render={
+						<IconButton
+							label="Draw"
+							icon={`${drawIcon}#icon-large`}
+							variant="ghost"
+						/>
+					}
 				/>
 				<Toolbar.Item
 					render={
-						<IconButton label="Measure" icon={measureIcon} variant="ghost" />
+						<IconButton
+							label="Measure"
+							icon={`${measureIcon}#icon-large`}
+							variant="ghost"
+						/>
 					}
 				/>
 			</Toolbar.Group>

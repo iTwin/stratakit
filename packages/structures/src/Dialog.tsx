@@ -196,6 +196,7 @@ const DialogCloseButton = forwardRef<"button", DialogCloseButtonProps>(
 			<GhostAligner align="inline">
 				<AkDialog.DialogDismiss
 					{...rest}
+					className={cx("🥝-dialog-close-button", props.className)}
 					render={
 						<IconButton
 							render={props.render}

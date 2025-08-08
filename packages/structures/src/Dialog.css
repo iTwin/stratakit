@@ -54,8 +54,13 @@
 		padding-inline: var(--✨padding-inline);
 
 		display: flex;
-		justify-content: space-between;
 		align-items: center;
+	}
+}
+
+.🥝-dialog-close-button {
+	@layer base {
+		margin-inline-start: auto;
 	}
 }
 

@@ -27,6 +27,7 @@ interface IconProps extends Omit<BaseProps<"svg">, "children"> {
 	 * URL of the `.svg` file (e.g. from `@stratakit/icons`).
 	 *
 	 * The URL can contain a hash pointing to a specific symbol within the SVG (e.g. `#icon`, `#icon-large`).
+	 * By default, the `#icon` symbol is used if no hash is provided.
 	 *
 	 * Note: The `.svg` must be an external HTTP resource for it to be processed by
 	 * the `<use>` element. As a fallback, JS will be used to `fetch` the SVG from

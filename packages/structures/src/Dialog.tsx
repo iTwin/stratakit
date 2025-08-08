@@ -48,7 +48,7 @@ interface DialogRootProps
  *   <Dialog.Heading>Heading</Dialog.Heading>
  *   <Dialog.Content>Content</Dialog.Content>
  *   <Dialog.Footer>
- *     <Dialog.DismissButton>Ok</Dialog.DismissButton>
+ *     <Dialog.Action>Ok</Dialog.Action>
  *   </Dialog.Footer>
  * </Dialog.Root>
  * ```
@@ -215,36 +215,36 @@ DEV: DialogCloseButton.displayName = "Dialog.CloseButton";
 
 // -------------------------------------------------------------------------
 
-interface DialogDismissButtonProps extends FocusableProps<"button"> {}
+interface DialogActionProps extends FocusableProps<"button"> {}
 
 /**
  * An action button that hides a dialog when clicked. Should be used as a child of `Dialog.Footer`.
  *
  * Example:
  * ```tsx
- * <Dialog.DismissButton>Cancel</Dialog.DismissButton>
+ * <Dialog.Action>Cancel</Dialog.Action>
  * ```
  *
  * By default it will render a solid `Button`. This can be customized by passing a `render` prop.
  *
  * ```tsx
- * <Dialog.DismissButton render={<Button tone="accent" />}>
+ * <Dialog.Action render={<Button tone="accent" />}>
  *   Ok
- * </Dialog.DismissButton>
+ * </Dialog.Action>
  */
-const DialogDismissButton = forwardRef<"button", DialogDismissButtonProps>(
+const DialogAction = forwardRef<"button", DialogActionProps>(
 	(props, forwardedRef) => {
 		return (
 			<AkDialog.DialogDismiss
 				{...props}
-				className={cx("🥝-dialog-dismiss-button", props.className)}
+				className={cx("🥝-dialog-action", props.className)}
 				render={props.render ?? <Button />}
 				ref={forwardedRef}
 			/>
 		);
 	},
 );
-DEV: DialogDismissButton.displayName = "Dialog.DismissButton";
+DEV: DialogAction.displayName = "Dialog.Action";
 
 // -------------------------------------------------------------------------
 
@@ -282,8 +282,8 @@ interface DialogFooterProps extends BaseProps {}
  * Example:
  * ```tsx
  * <Dialog.Footer>
- *   <Dialog.DismissButton>Cancel</Dialog.DismissButton>
- *   <Dialog.DismissButton render={<Button tone="accent" />}>Ok</Dialog.DismissButton>
+ *   <Dialog.Action>Cancel</Dialog.Action>
+ *   <Dialog.Action render={<Button tone="accent" />}>Ok</Dialog.Action>
  * </Dialog.Footer>
  * ```
  */
@@ -334,6 +334,6 @@ export {
 	DialogCloseButton as CloseButton,
 	DialogContent as Content,
 	DialogFooter as Footer,
-	DialogDismissButton as DismissButton,
+	DialogAction as Action,
 	DialogBackdrop as Backdrop,
 };

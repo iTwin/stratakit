@@ -63,7 +63,7 @@
 	}
 }
 
-.🥝-dialog-dismiss-button {
+.🥝-dialog-action {
 	@layer base {
 		&:where(:nth-child(1 of &)) {
 			margin-inline-start: auto;

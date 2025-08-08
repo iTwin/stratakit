@@ -4,9 +4,8 @@
  *--------------------------------------------------------------------------------------------*/
 
 import * as React from "react";
-import ReactDOM from "react-dom";
 import * as AkDialog from "@ariakit/react/dialog";
-import { PortalContext } from "@ariakit/react/portal";
+import { Portal, PortalContext } from "@ariakit/react/portal";
 import { Role } from "@ariakit/react/role";
 import { useStoreState } from "@ariakit/react/store";
 import { Button, IconButton, Text } from "@stratakit/bricks";
@@ -22,10 +21,6 @@ import type {
 	BaseProps,
 	FocusableProps,
 } from "@stratakit/foundations/secret-internals";
-
-// ----------------------------------------------------------------------------
-
-const BackdropContainerContext = React.createContext<HTMLElement | null>(null);
 
 // ----------------------------------------------------------------------------
 
@@ -65,8 +60,6 @@ const DialogRoot = forwardRef<"div", DialogRootProps>((props, forwardedRef) => {
 	const open = useStoreState(store, "open");
 
 	const [wrapper, setWrapper] = React.useState<HTMLElement | null>(null);
-	const [backdropContainer, setBackdropContainer] =
-		React.useState<HTMLElement | null>(null);
 
 	const contentElement = useStoreState(store, "contentElement");
 	const popoverProps = usePopoverApi({
@@ -75,37 +68,29 @@ const DialogRoot = forwardRef<"div", DialogRootProps>((props, forwardedRef) => {
 	});
 
 	return (
-		<BackdropContainerContext.Provider value={backdropContainer}>
-			<AkDialog.DialogProvider store={store}>
+		<AkDialog.DialogProvider store={store}>
+			<Portal
+				className="🥝-dialog-wrapper"
+				ref={setWrapper}
+				{...popoverProps}
+				style={{
+					...(open ? undefined : { display: "none" }),
+					...popoverProps.style,
+				}}
+			>
 				<AkDialog.Dialog
+					portal={false}
 					{...rest}
 					backdrop={backdrop === true ? <DialogBackdrop /> : backdrop}
 					className={cx("🥝-dialog", props.className)}
 					ref={forwardedRef}
-					wrapElement={(el) => (
-						<div
-							className="🥝-dialog-wrapper"
-							ref={setWrapper}
-							{...popoverProps}
-							style={{
-								...(open ? undefined : { display: "none" }),
-								...popoverProps.style,
-							}}
-						>
-							<div ref={setBackdropContainer} />
-							{el}
-						</div>
-					)}
-					getPersistentElements={() =>
-						backdropContainer ? [backdropContainer] : []
-					}
 				>
 					<PortalContext.Provider value={contentElement}>
 						{props.children}
 					</PortalContext.Provider>
 				</AkDialog.Dialog>
-			</AkDialog.DialogProvider>
-		</BackdropContainerContext.Provider>
+			</Portal>
+		</AkDialog.DialogProvider>
 	);
 });
 DEV: DialogRoot.displayName = "Dialog.Root";
@@ -315,16 +300,12 @@ interface DialogBackdropProps extends BaseProps {}
  */
 const DialogBackdrop = forwardRef<"div", DialogBackdropProps>(
 	(props, forwardedRef) => {
-		const backdropContainer = React.useContext(BackdropContainerContext);
-
-		if (!backdropContainer) return null;
-		return ReactDOM.createPortal(
+		return (
 			<Role
 				{...props}
 				className={cx("🥝-dialog-backdrop", props.className)}
 				ref={forwardedRef}
-			/>,
-			backdropContainer,
+			/>
 		);
 	},
 );

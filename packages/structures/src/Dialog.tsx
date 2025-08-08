@@ -237,6 +237,7 @@ const DialogDismissButton = forwardRef<"button", DialogDismissButtonProps>(
 		return (
 			<AkDialog.DialogDismiss
 				{...props}
+				className={cx("🥝-dialog-dismiss-button", props.className)}
 				render={props.render ?? <Button />}
 				ref={forwardedRef}
 			/>

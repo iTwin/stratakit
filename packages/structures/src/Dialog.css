@@ -64,6 +64,14 @@
 	}
 }
 
+.🥝-dialog-dismiss-button {
+	@layer base {
+		&:where(:nth-child(1 of &)) {
+			margin-inline-start: auto;
+		}
+	}
+}
+
 .🥝-dialog-content {
 	--✨padding: var(--stratakit-space-x5);
 
@@ -91,7 +99,6 @@
 		padding-block: var(--✨padding);
 
 		display: flex;
-		justify-content: end;
 		gap: var(--stratakit-space-x3);
 	}
 }

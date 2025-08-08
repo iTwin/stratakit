@@ -57,27 +57,11 @@ const DialogRoot = forwardRef<"div", DialogRootProps>((props, forwardedRef) => {
 	const { backdrop = true, ...rest } = props;
 
 	const store = AkDialog.useDialogStore();
-	const open = useStoreState(store, "open");
-
-	const [wrapper, setWrapper] = React.useState<HTMLElement | null>(null);
-
 	const contentElement = useStoreState(store, "contentElement");
-	const popoverProps = usePopoverApi({
-		element: wrapper,
-		open,
-	});
 
 	return (
 		<AkDialog.DialogProvider store={store}>
-			<Portal
-				className="🥝-dialog-wrapper"
-				ref={setWrapper}
-				{...popoverProps}
-				style={{
-					...(open ? undefined : { display: "none" }),
-					...popoverProps.style,
-				}}
-			>
+			<DialogWrapper>
 				<AkDialog.Dialog
 					portal={false}
 					{...rest}
@@ -89,11 +73,39 @@ const DialogRoot = forwardRef<"div", DialogRootProps>((props, forwardedRef) => {
 						{props.children}
 					</PortalContext.Provider>
 				</AkDialog.Dialog>
-			</Portal>
+			</DialogWrapper>
 		</AkDialog.DialogProvider>
 	);
 });
 DEV: DialogRoot.displayName = "Dialog.Root";
+
+// -------------------------------------------------------------------------
+
+function DialogWrapper(props: React.PropsWithChildren) {
+	const [wrapper, setWrapper] = React.useState<HTMLElement | null>(null);
+
+	const store = AkDialog.useDialogContext();
+	const open = useStoreState(store, "open");
+	const popoverProps = usePopoverApi({
+		element: wrapper,
+		open,
+	});
+
+	return (
+		<Portal
+			className="🥝-dialog-wrapper"
+			ref={setWrapper}
+			{...popoverProps}
+			style={{
+				...(open ? undefined : { display: "none" }),
+				...popoverProps.style,
+			}}
+		>
+			{props.children}
+		</Portal>
+	);
+}
+DEV: DialogWrapper.displayName = "DialogWrapper";
 
 // -------------------------------------------------------------------------
 

@@ -253,7 +253,6 @@ function DialogElementTest() {
 						setOpen(false);
 					}
 				}}
-				style={{ inset: 0 }}
 			>
 				<Dialog.Header>
 					<Dialog.Heading>Heading</Dialog.Heading>

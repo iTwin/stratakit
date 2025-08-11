@@ -41,6 +41,10 @@
 		&:where(:has(.🥝-dialog-footer)) {
 			--🥝dialog-min-block-size: 156px;
 		}
+
+		&:where(dialog:modal)::backdrop {
+			background-color: transparent;
+		}
 	}
 }
 
@@ -102,8 +106,7 @@
 	}
 }
 
-.🥝-dialog-backdrop,
-.🥝-dialog:where(dialog:modal)::backdrop {
+.🥝-dialog-backdrop {
 	@layer base {
 		opacity: 0.8;
 		background: var(--stratakit-color-bg-elevation-overlay);

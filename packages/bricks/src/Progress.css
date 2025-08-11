@@ -9,7 +9,7 @@
 	--✨easing: cubic-bezier(0.5, 0, 0.5, 1);
 	--✨steps: 4;
 
-	--✨animation--indeterminate-steps: calc(var(--✨steps) * var(--✨duration))
+	--✨animation--indeterminate-steps: calc(var(--✨steps) * var(--✨duration) * 2)
 		--🥝progress-bar-animation-indeterminate steps(var(--✨steps), end) infinite;
 	--✨animation--indeterminate: var(--✨duration) --🥝progress-bar-animation-indeterminate
 		var(--✨easing) var(--✨count);
@@ -28,8 +28,8 @@
 		&::before {
 			content: "";
 			block-size: inherit;
-			inline-size: 100%;
-			transform: translateX(calc(-100% + var(--🥝progress-bar-fill-size)));
+			inline-size: var(--🥝progress-bar-fill-size);
+			transform: translateX(calc(-100% + var(--🥝progress-bar-fill-portion-shown)));
 			border-radius: inherit;
 			background-color: var(--🥝progress-bar-fill-color);
 			animation: var(--🥝progress-bar-animation);
@@ -64,18 +64,24 @@
 		&:where([data-kiwi-variant="indeterminate"]) {
 			--🥝progress-bar-animation: var(--✨animation--indeterminate-steps);
 			--🥝progress-bar-fill-size: 25%;
+			--🥝progress-bar-fill-start-point: 0%; /* 0% keeps the fill in view. */
 
 			@media (prefers-reduced-motion: no-preference) {
 				--🥝progress-bar-animation:
 					var(--✨animation--indeterminate), var(--✨animation--indeterminate-slow);
+				--🥝progress-bar-fill-start-point: -100%; /* -100% moves the fill out of view on the left side. */
 			}
+		}
+
+		&:where([data-kiwi-variant="determinate"]) {
+			--🥝progress-bar-fill-size: 100%;
 		}
 	}
 }
 
 @keyframes --🥝progress-bar-animation-indeterminate {
 	from {
-		transform: translateX(-100%); /* -100% moves the fill out of view on the left side. */
+		transform: translateX(var(--🥝progress-bar-fill-start-point));
 	}
 
 	to {

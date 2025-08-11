@@ -5,7 +5,7 @@
 
 import * as React from "react";
 import * as AkDialog from "@ariakit/react/dialog";
-import { PortalContext } from "@ariakit/react/portal";
+import { Portal, PortalContext } from "@ariakit/react/portal";
 import { Role } from "@ariakit/react/role";
 import { useStoreState } from "@ariakit/react/store";
 import { Button, IconButton, Text } from "@stratakit/bricks";
@@ -32,6 +32,7 @@ interface DialogRootProps
 			| "onClose"
 			| "backdrop"
 			| "unmountOnHide"
+			| "hideOnEscape"
 			| "hideOnInteractOutside"
 		> {}
 
@@ -47,68 +48,71 @@ interface DialogRootProps
  *   <Dialog.Heading>Heading</Dialog.Heading>
  *   <Dialog.Content>Content</Dialog.Content>
  *   <Dialog.Footer>
- *     <Dialog.DismissButton>Ok</Dialog.DismissButton>
+ *     <Dialog.Action>Ok</Dialog.Action>
  *   </Dialog.Footer>
  * </Dialog.Root>
  * ```
  */
 const DialogRoot = forwardRef<"div", DialogRootProps>((props, forwardedRef) => {
-	const { backdrop, ...rest } = props;
+	const { backdrop = true, unmountOnHide = false, ...rest } = props;
 
 	const store = AkDialog.useDialogStore();
-	const open = useStoreState(store, "open");
-
-	const [backdropElement, setBackdropElement] =
-		React.useState<HTMLElement | null>(null);
-	const backdropPopoverProps = usePopoverApi({
-		element: backdropElement,
-		open,
-	});
-
 	const contentElement = useStoreState(store, "contentElement");
-	const popoverProps = usePopoverApi({
-		element: contentElement,
-		open,
+
+	const mounted = useStoreState(store, (state) => {
+		return !unmountOnHide || state?.mounted || !!props.open;
 	});
 
-	const renderBackdrop = React.useMemo(() => {
-		if (!backdrop) return undefined;
-		if (typeof backdrop === "boolean") return undefined;
-		if (React.isValidElement(backdrop)) return backdrop;
-		const Component = backdrop;
-		return <Component />;
-	}, [backdrop]);
+	if (!mounted) return null;
 	return (
 		<AkDialog.DialogProvider store={store}>
-			<AkDialog.Dialog
-				popover={popoverProps.popover}
-				{...rest}
-				backdrop={
-					backdrop === false ? (
-						backdrop
-					) : (
-						<DialogBackdrop
-							{...backdropPopoverProps}
-							render={renderBackdrop}
-							ref={setBackdropElement}
-						/>
-					)
-				}
-				style={{
-					...popoverProps.style,
-					...props.style,
-				}}
-				className={cx("🥝-dialog", props.className)}
-				ref={forwardedRef}
-			>
-				<PortalContext.Provider value={contentElement}>
-					{props.children}
-				</PortalContext.Provider>
-			</AkDialog.Dialog>
+			<DialogWrapper>
+				<AkDialog.Dialog
+					unmountOnHide={unmountOnHide}
+					portal={false}
+					{...rest}
+					backdrop={backdrop === true ? <DialogBackdrop /> : backdrop}
+					className={cx("🥝-dialog", props.className)}
+					ref={forwardedRef}
+				>
+					<PortalContext.Provider value={contentElement}>
+						{props.children}
+					</PortalContext.Provider>
+				</AkDialog.Dialog>
+			</DialogWrapper>
 		</AkDialog.DialogProvider>
 	);
 });
 DEV: DialogRoot.displayName = "Dialog.Root";
+
+// -------------------------------------------------------------------------
+
+function DialogWrapper(props: React.PropsWithChildren) {
+	const [wrapper, setWrapper] = React.useState<HTMLElement | null>(null);
+
+	const store = AkDialog.useDialogContext();
+	const open = useStoreState(store, "open");
+	const popoverProps = usePopoverApi({
+		element: wrapper,
+		open,
+	});
+
+	const mounted = useStoreState(store, "mounted");
+	return (
+		<Portal
+			className="🥝-dialog-wrapper"
+			ref={setWrapper}
+			{...popoverProps}
+			style={{
+				display: mounted ? undefined : "none",
+				...popoverProps.style,
+			}}
+		>
+			{props.children}
+		</Portal>
+	);
+}
+DEV: DialogWrapper.displayName = "DialogWrapper";
 
 // -------------------------------------------------------------------------
 
@@ -199,6 +203,7 @@ const DialogCloseButton = forwardRef<"button", DialogCloseButtonProps>(
 			<GhostAligner align="inline">
 				<AkDialog.DialogDismiss
 					{...rest}
+					className={cx("🥝-dialog-close-button", props.className)}
 					render={
 						<IconButton
 							render={props.render}
@@ -217,35 +222,36 @@ DEV: DialogCloseButton.displayName = "Dialog.CloseButton";
 
 // -------------------------------------------------------------------------
 
-interface DialogDismissButtonProps extends FocusableProps<"button"> {}
+interface DialogActionProps extends FocusableProps<"button"> {}
 
 /**
  * An action button that hides a dialog when clicked. Should be used as a child of `Dialog.Footer`.
  *
  * Example:
  * ```tsx
- * <Dialog.DismissButton>Cancel</Dialog.DismissButton>
+ * <Dialog.Action>Cancel</Dialog.Action>
  * ```
  *
  * By default it will render a solid `Button`. This can be customized by passing a `render` prop.
  *
  * ```tsx
- * <Dialog.DismissButton render={<Button tone="accent" />}>
+ * <Dialog.Action render={<Button tone="accent" />}>
  *   Ok
- * </Dialog.DismissButton>
+ * </Dialog.Action>
  */
-const DialogDismissButton = forwardRef<"button", DialogDismissButtonProps>(
+const DialogAction = forwardRef<"button", DialogActionProps>(
 	(props, forwardedRef) => {
 		return (
 			<AkDialog.DialogDismiss
 				{...props}
+				className={cx("🥝-dialog-action", props.className)}
 				render={props.render ?? <Button />}
 				ref={forwardedRef}
 			/>
 		);
 	},
 );
-DEV: DialogDismissButton.displayName = "Dialog.DismissButton";
+DEV: DialogAction.displayName = "Dialog.Action";
 
 // -------------------------------------------------------------------------
 
@@ -283,8 +289,8 @@ interface DialogFooterProps extends BaseProps {}
  * Example:
  * ```tsx
  * <Dialog.Footer>
- *   <Dialog.DismissButton>Cancel</Dialog.DismissButton>
- *   <Dialog.DismissButton render={<Button tone="accent" />}>Ok</Dialog.DismissButton>
+ *   <Dialog.Action>Cancel</Dialog.Action>
+ *   <Dialog.Action render={<Button tone="accent" />}>Ok</Dialog.Action>
  * </Dialog.Footer>
  * ```
  */
@@ -335,6 +341,6 @@ export {
 	DialogCloseButton as CloseButton,
 	DialogContent as Content,
 	DialogFooter as Footer,
-	DialogDismissButton as DismissButton,
+	DialogAction as Action,
 	DialogBackdrop as Backdrop,
 };

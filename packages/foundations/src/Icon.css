@@ -24,7 +24,7 @@
 
 .🥝-disclosure-arrow {
 	@layer base {
-		margin-inline-end: -8px; /* space/x2 */
+		margin-inline-end: calc(var(--stratakit-space-x2) * -1);
 		rotate: var(--🥝disclosure-arrow-rotate);
 
 		@media (prefers-reduced-motion: no-preference) {

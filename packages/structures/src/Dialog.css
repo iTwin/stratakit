@@ -2,16 +2,26 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-.🥝-dialog {
-	--✨padding-block: 16px;
-	--✨padding-inline: 20px;
-
+.🥝-dialog-wrapper {
 	@layer base {
 		position: fixed;
-		margin: auto;
-		inset: 0;
+		display: grid;
 
-		min-block-size: 92px;
+		block-size: 100dvb;
+		inline-size: 100dvi;
+		inset: 0;
+	}
+}
+
+.🥝-dialog {
+	--✨padding-block: var(--stratakit-space-x4);
+	--✨padding-inline: var(--stratakit-space-x5);
+
+	@layer base {
+		position: relative;
+		place-self: center;
+
+		min-block-size: var(--🥝dialog-min-block-size, 94px);
 		min-inline-size: min(100%, 296px);
 		max-block-size: calc(100dvb - 64px);
 		max-inline-size: calc(100dvi - 64px);
@@ -20,42 +30,49 @@
 
 		border-radius: 12px; /* radius/large */
 		background-color: var(--stratakit-color-bg-elevation-base);
-
-		/* shadow/dialog/base */
-		box-shadow:
-			0px 1px 0px 0px rgba(0, 0, 0, 0.08),
-			0px 0px 0px 1px rgba(0, 0, 0, 0.8),
-			0px 0px 0px 1px rgba(255, 255, 255, 0.12) inset,
-			0px 1px 1px -0.5px rgba(0, 0, 0, 0.16),
-			0px 3px 3px -1.5px rgba(0, 0, 0, 0.16),
-			0px 6px 6px -3px rgba(0, 0, 0, 0.16),
-			0px 12px 12px -6px rgba(0, 0, 0, 0.16),
-			0px 24px 24px -12px rgba(0, 0, 0, 0.16);
+		box-shadow: var(--stratakit-shadow-dialog-base);
 
 		/* Prevents footer from overlapping the box-shadow */
 		padding: 1px;
 
 		display: flex;
 		flex-direction: column;
+
+		&:where(:has(.🥝-dialog-footer)) {
+			--🥝dialog-min-block-size: 156px;
+		}
 	}
 }
 
 .🥝-dialog-header {
-	--✨padding-block: 16px;
-	--✨padding-inline: 20px;
+	--✨padding-block: var(--stratakit-space-x4);
+	--✨padding-inline: var(--stratakit-space-x5);
 
 	@layer base {
 		padding-block: var(--✨padding-block);
 		padding-inline: var(--✨padding-inline);
 
 		display: flex;
-		justify-content: space-between;
 		align-items: center;
 	}
 }
 
+.🥝-dialog-close-button {
+	@layer base {
+		margin-inline-start: auto;
+	}
+}
+
+.🥝-dialog-action {
+	@layer base {
+		&:where(:nth-child(1 of &)) {
+			margin-inline-start: auto;
+		}
+	}
+}
+
 .🥝-dialog-content {
-	--✨padding: 20px;
+	--✨padding: var(--stratakit-space-x5);
 
 	@layer base {
 		color: var(--stratakit-color-text-neutral-primary);
@@ -68,7 +85,7 @@
 }
 
 .🥝-dialog-footer {
-	--✨padding: 20px;
+	--✨padding: var(--stratakit-space-x5);
 	--✨border-radius: 12px; /* radius/large */
 
 	@layer base {
@@ -81,8 +98,7 @@
 		padding-block: var(--✨padding);
 
 		display: flex;
-		justify-content: end;
-		gap: 12px;
+		gap: var(--stratakit-space-x3);
 	}
 }
 
@@ -91,8 +107,11 @@
 	@layer base {
 		opacity: 0.8;
 		background: var(--stratakit-color-bg-elevation-overlay);
+	}
+}
 
-		block-size: 100dvb;
-		inline-size: 100dvi;
+@media (forced-colors: active) {
+	.🥝-dialog {
+		border: 1px solid;
 	}
 }

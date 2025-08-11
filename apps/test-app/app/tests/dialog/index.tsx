@@ -76,10 +76,8 @@ function VisualTest() {
 					</Text>
 				</Dialog.Content>
 				<Dialog.Footer>
-					<Dialog.DismissButton>Cancel</Dialog.DismissButton>
-					<Dialog.DismissButton render={<Button tone="accent" />}>
-						Ok
-					</Dialog.DismissButton>
+					<Dialog.Action>Cancel</Dialog.Action>
+					<Dialog.Action render={<Button tone="accent" />}>Ok</Dialog.Action>
 				</Dialog.Footer>
 			</Dialog.Root>
 		</>
@@ -111,10 +109,8 @@ function ActionsTest() {
 				<Dialog.Header render={<Dialog.Heading />}>Heading</Dialog.Header>
 				<Dialog.Content>Content</Dialog.Content>
 				<Dialog.Footer>
-					<Dialog.DismissButton>Cancel</Dialog.DismissButton>
-					<Dialog.DismissButton render={<Button tone="accent" />}>
-						Ok
-					</Dialog.DismissButton>
+					<Dialog.Action>Cancel</Dialog.Action>
+					<Dialog.Action render={<Button tone="accent" />}>Ok</Dialog.Action>
 				</Dialog.Footer>
 			</Dialog.Root>
 		</>
@@ -189,14 +185,13 @@ function NonDismissibleTest() {
 			<Dialog.Root
 				open={open}
 				onClose={() => setOpen(false)}
+				hideOnEscape={false}
 				hideOnInteractOutside={false}
 			>
 				<Dialog.Header render={<Dialog.Heading />}>Heading</Dialog.Header>
 				<Dialog.Content>Description</Dialog.Content>
 				<Dialog.Footer>
-					<Dialog.DismissButton render={<Button tone="accent" />}>
-						Ok
-					</Dialog.DismissButton>
+					<Dialog.Action render={<Button tone="accent" />}>Ok</Dialog.Action>
 				</Dialog.Footer>
 			</Dialog.Root>
 		</>

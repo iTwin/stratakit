@@ -4,7 +4,10 @@
  *--------------------------------------------------------------------------------------------*/
 
 import { Field, Select } from "@stratakit/bricks";
+import { Icon } from "@stratakit/foundations";
 import { definePage } from "~/~utils.tsx";
+
+import placeholderIconHref from "@stratakit/icons/placeholder.svg";
 
 export const handle = { title: "Select" };
 
@@ -40,9 +43,21 @@ function VisualTest() {
 						render={(controlProps) => (
 							<Select.Root>
 								<Select.HtmlSelect variant={variant} {...controlProps}>
-									<option value="apple">Apple</option>
-									<option value="orange">Orange</option>
-									<option value="kiwi">Kiwi</option>
+									<button>
+										<selectedcontent />
+									</button>
+									<option value="apple">
+										<Icon href={placeholderIconHref} />
+										Apple
+									</option>
+									<option value="orange">
+										<Icon href={placeholderIconHref} />
+										Orange
+									</option>
+									<option value="kiwi" disabled>
+										<Icon href={placeholderIconHref} />
+										Kiwi
+									</option>
 								</Select.HtmlSelect>
 							</Select.Root>
 						)}

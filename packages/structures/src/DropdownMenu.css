@@ -2,20 +2,32 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-.🥝-dropdown-menu {
+.🥝-dropdown-menu,
+::picker(select) {
 	--✨bg: var(--stratakit-color-bg-elevation-level-1);
 	--✨padding: var(--stratakit-space-x1);
 
 	@layer base {
 		background-color: var(--✨bg);
 
-		display: flex;
-		flex-direction: column;
-
 		min-inline-size: min(95vi, 164px);
 		border-radius: 8px /* radius(in progress)/medium */;
 		padding: var(--✨padding);
 		box-shadow: var(--stratakit-shadow-dropdown-base);
+	}
+}
+
+.🥝-dropdown-menu {
+	@layer base {
+		display: flex;
+		flex-direction: column;
+	}
+}
+
+::picker(select) {
+	@layer base {
+		appearance: base-select;
+		border: none;
 	}
 }
 
@@ -58,7 +70,8 @@
 }
 
 @media (forced-colors: active) {
-	.🥝-dropdown-menu {
+	.🥝-dropdown-menu,
+	::picker(select) {
 		border: 1px solid;
 	}
 }

@@ -13,6 +13,10 @@
 				grid-area: 1 / 1 / -1 / -1;
 			}
 		}
+
+		&:has(.🥝-select:open) {
+			--🥝disclosure-arrow-rotate: 0.5turn;
+		}
 	}
 }
 
@@ -33,8 +37,16 @@
 			--🥝button-padding-inline: var(--✨padding-inline-start) var(--✨padding-inline-end);
 			--🥝ghost-inline-offset: var(--✨padding-inline-start);
 
-			> option {
+			/* > option {
 				background-color: var(--stratakit-color-bg-neutral-base);
+			} */
+		}
+
+		&:where(select) {
+			appearance: base-select;
+
+			&::picker-icon {
+				display: none;
 			}
 		}
 	}
@@ -69,5 +81,97 @@
 		--🌀select-arrow-state--default: var(--🌀select-arrow-state,);
 		--🌀select-arrow-state--hover: var(--🌀select-arrow-state,);
 		--🌀select-arrow-state--disabled: var(--🌀select-arrow-state,);
+	}
+}
+
+selectedcontent {
+	@layer base {
+		display: inline-flex;
+		align-items: center;
+		flex-shrink: 0;
+		gap: var(--stratakit-space-x1);
+	}
+}
+
+option {
+	/* --✨bg--default: var(--stratakit-color-bg-neutral-base); */
+	--✨bg--default: transparent;
+	--✨bg--hover: var(--stratakit-color-bg-glow-on-surface-neutral-hover);
+	--✨bg--pressed: var(--stratakit-color-bg-glow-on-surface-neutral-pressed);
+	--✨bg--disabled: transparent;
+
+	--✨color--default: var(--stratakit-color-text-neutral-primary);
+	--✨color--active: var(--stratakit-color-text-accent-strong);
+	--✨color--disabled: var(--✨bg--disabled);
+
+	@layer base {
+		border-radius: 4px;
+		padding-inline: 4px;
+
+		background-color: var(--🥝select-option-background-color);
+
+		--🥝select-option-background-color: var(--🌀select-option-state--default, var(--✨bg--default))
+			var(--🌀select-option-state--hover, var(--✨bg--hover))
+			var(--🌀select-option-state--pressed, var(--✨bg--pressed))
+			var(--🌀select-option-state--disabled, var(--✨bg--default));
+
+		color: var(--stratakit-color-text-neutral-primary);
+
+		--🥝icon-color: var(--🌀select-option-state--default, var(--stratakit-color-icon-neutral-base))
+			var(--🌀select-option-state--hover, var(--stratakit-color-icon-neutral-hover))
+			var(--🌀select-option-state--pressed, var(--stratakit-color-icon-neutral-hover))
+			var(--🌀select-option-state--active, var(--stratakit-color-icon-accent-strong))
+			var(--🌀select-option-state--active-hover, var(--stratakit-color-icon-accent-strong))
+			var(--🌀select-option-state--disabled, var(--stratakit-color-icon-neutral-disabled));
+
+		&::checkmark {
+			order: 1;
+			margin-left: auto;
+			content: "✓";
+			color: var(--stratakit-color-icon-neutral-base);
+		}
+	}
+
+	@layer states {
+		@media (any-hover: hover) {
+			&:where(:hover) {
+				--🌀select-option-state: var(--🌀select-option-state--hover);
+			}
+		}
+
+		&:where(:active) {
+			--🌀select-option-state: var(--🌀select-option-state--pressed);
+		}
+
+		&:where(:disabled, [aria-disabled="true"]) {
+			--🌀select-option-state: var(--🌀select-option-state--disabled);
+			cursor: not-allowed;
+			color: var(--stratakit-color-text-neutral-disabled);
+		}
+	}
+
+	@layer base.🌀 {
+		/* See https://kizu.dev/cyclic-toggles/ */
+		--🌀select-option-state: var(--🌀select-option-state--default);
+		--🌀select-option-state--default: var(--🌀select-option-state,);
+		--🌀select-option-state--hover: var(--🌀select-option-state,);
+		--🌀select-option-state--pressed: var(--🌀select-option-state,);
+		--🌀select-option-state--active: var(--🌀select-option-state,);
+		--🌀select-option-state--active-hover: var(--🌀select-option-state,);
+		--🌀select-option-state--disabled: var(--🌀select-option-state,);
+	}
+}
+
+@media (forced-colors: active) {
+	option {
+		&:where(:checked) {
+			forced-color-adjust: none;
+			background-color: SelectedItem;
+			color: SelectedItemText;
+		}
+
+		&:where(:disabled, [aria-disabled="true"]) {
+			color: GrayText;
+		}
 	}
 }

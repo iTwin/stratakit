@@ -5,9 +5,7 @@
 .🥝-dialog-wrapper {
 	@layer base {
 		position: fixed;
-		display: flex;
-		align-items: center;
-		justify-content: center;
+		display: grid;
 
 		block-size: 100dvb;
 		inline-size: 100dvi;
@@ -21,6 +19,8 @@
 
 	@layer base {
 		position: relative;
+		place-self: center;
+
 		min-block-size: var(--🥝dialog-min-block-size, 94px);
 		min-inline-size: min(100%, 296px);
 		max-block-size: calc(100dvb - 64px);

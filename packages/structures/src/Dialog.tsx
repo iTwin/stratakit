@@ -54,15 +54,21 @@ interface DialogRootProps
  * ```
  */
 const DialogRoot = forwardRef<"div", DialogRootProps>((props, forwardedRef) => {
-	const { backdrop = true, ...rest } = props;
+	const { backdrop = true, unmountOnHide = false, ...rest } = props;
 
 	const store = AkDialog.useDialogStore();
 	const contentElement = useStoreState(store, "contentElement");
 
+	const mounted = useStoreState(store, (state) => {
+		return !unmountOnHide || state?.mounted || !!props.open;
+	});
+
+	if (!mounted) return null;
 	return (
 		<AkDialog.DialogProvider store={store}>
 			<DialogWrapper>
 				<AkDialog.Dialog
+					unmountOnHide={unmountOnHide}
 					portal={false}
 					{...rest}
 					backdrop={backdrop === true ? <DialogBackdrop /> : backdrop}
@@ -91,13 +97,14 @@ function DialogWrapper(props: React.PropsWithChildren) {
 		open,
 	});
 
+	const mounted = useStoreState(store, "mounted");
 	return (
 		<Portal
 			className="🥝-dialog-wrapper"
 			ref={setWrapper}
 			{...popoverProps}
 			style={{
-				...(open ? undefined : { display: "none" }),
+				display: mounted ? undefined : "none",
 				...popoverProps.style,
 			}}
 		>

@@ -905,7 +905,7 @@ function FiltersMenu() {
 	const filtersApplied = context.appliedFilters.length > 0;
 
 	return (
-		<DropdownMenu.Root>
+		<DropdownMenu.Provider>
 			<DropdownMenu.Button
 				render={
 					<IconButton
@@ -933,7 +933,7 @@ function FiltersMenu() {
 					);
 				})}
 			</DropdownMenu.Content>
-		</DropdownMenu.Root>
+		</DropdownMenu.Provider>
 	);
 }
 

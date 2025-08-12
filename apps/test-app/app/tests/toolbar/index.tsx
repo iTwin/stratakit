@@ -64,6 +64,7 @@ function VisualTest() {
 						icon={`${placeholderIcon}#icon-large`}
 						label="Click me"
 						variant="ghost"
+						isActive
 					/>
 				}
 			/>

@@ -272,12 +272,13 @@
 
 		&:where([data-kiwi-variant="ghost"]) {
 			--🥝button-border-color: transparent;
+			--🥝button-bg--ghost-active: var(--✨bg--active);
 
 			&:where([data-kiwi-tone="neutral"]) {
 				--🥝button-background-color: var(--🌀button-state--default, var(--✨bg--ghost-default))
 					var(--🌀button-state--hover, var(--✨bg--ghost-hover))
 					var(--🌀button-state--pressed, var(--✨bg--ghost-pressed))
-					var(--🌀button-state--active, var(--✨bg--active))
+					var(--🌀button-state--active, var(--🥝button-bg--ghost-active))
 					var(--🌀button-state--disabled, var(--✨bg--ghost-disabled));
 			}
 
@@ -288,7 +289,7 @@
 					)
 					var(--🌀button-state--hover, var(--✨bg--ghost-accent-hover))
 					var(--🌀button-state--pressed, var(--✨bg--ghost-accent-pressed))
-					var(--🌀button-state--active, var(--✨bg--active))
+					var(--🌀button-state--active, var(--🥝button-bg--ghost-active))
 					var(--🌀button-state--disabled, var(--✨bg--ghost-accent-disabled));
 				--🥝button-color: var(--🌀button-state--default, var(--✨color--ghost-accent-default))
 					var(--🌀button-state--hover, var(--✨color--ghost-accent-hover))

@@ -15,6 +15,24 @@
 	}
 }
 
+.🥝-toolbar-item:is(.🥝-icon-button) {
+	@layer modifiers {
+		&:where([data-kiwi-variant="ghost"]) {
+			--🥝button-bg--ghost-active: var(--stratakit-color-bg-accent-base);
+			--🥝icon-color: var(--🌀button-state--default, var(--stratakit-color-icon-neutral-base))
+				var(--🌀button-state--hover, var(--stratakit-color-icon-neutral-hover))
+				var(--🌀button-state--pressed, var(--stratakit-color-icon-neutral-hover))
+				var(--🌀button-state--active, var(--stratakit-color-icon-neutral-emphasis));
+		}
+	}
+
+	@layer states {
+		&:where([aria-pressed="true"]) {
+			--🥝button-border-color: var(--stratakit-color-border-accent-base);
+		}
+	}
+}
+
 @media (forced-colors: active) {
 	.🥝-toolbar {
 		border: 1px solid;

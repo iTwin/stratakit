@@ -16,11 +16,18 @@ import {
 
 import type { BaseProps } from "./~utils.js";
 
+// ----------------------------------------------------------------------------
+
+const DEFAULT_ICON_HASH = "#icon";
+
+// ----------------------------------------------------------------------------
+
 interface IconProps extends Omit<BaseProps<"svg">, "children"> {
 	/**
-	 * URL of the symbol sprite.
+	 * URL of the `.svg` file (e.g. from `@stratakit/icons`).
 	 *
-	 * Should be a URL to an `.svg` file from `@stratakit/icons`.
+	 * The URL can contain a hash pointing to a specific symbol within the SVG (e.g. `#icon`, `#icon-large`).
+	 * By default, the `#icon` symbol is used if no hash is provided.
 	 *
 	 * Note: The `.svg` must be an external HTTP resource for it to be processed by
 	 * the `<use>` element. As a fallback, JS will be used to `fetch` the SVG from
@@ -29,8 +36,7 @@ interface IconProps extends Omit<BaseProps<"svg">, "children"> {
 	 */
 	href?: string;
 	/**
-	 * Size of the icon. This affects the icon's physical dimensions, as well as the
-	 * actual SVG contents (different sizes might have different fidelity).
+	 * Size of the icon. This only affects the icon's physical dimensions (not the SVG contents).
 	 *
 	 * Defaults to `"regular"` (16px) and can be optionally set to `"large"` (24px).
 	 */
@@ -47,13 +53,20 @@ interface IconProps extends Omit<BaseProps<"svg">, "children"> {
 	alt?: string;
 }
 
+// ----------------------------------------------------------------------------
+
 /**
  * Icon component that provides fill and sizing to the SVGs from `@stratakit/icons`.
- * It renders the correct symbol sprite based on the specified `size`.
  *
  * ```tsx
  * const arrowIcon = new URL("@stratakit/icons/arrow.svg", import.meta.url).href;
  * <Icon href={arrowIcon} />
+ * ```
+ *
+ * The `href` can point to a specific symbol (e.g. `#icon`, `#icon-large`) within the SVG file:
+ *
+ * ```tsx
+ * <Icon href={`${arrowIcon}#icon-large`} />
  * ```
  *
  * It also accepts a custom SVG, via the `render `prop:
@@ -86,7 +99,7 @@ export const Icon = forwardRef<"svg", IconProps>((props, forwardedRef) => {
 			className={cx("🥝-icon", props.className)}
 			ref={forwardedRef}
 		>
-			{hrefBase ? <use href={toIconHref(hrefBase, size)} /> : null}
+			{hrefBase ? <use href={toIconHref(hrefBase)} /> : null}
 		</Role.svg>
 	);
 });
@@ -95,21 +108,12 @@ DEV: Icon.displayName = "Icon";
 // ----------------------------------------------------------------------------
 
 /**
- * Constructs a final URL from the base and "size".
- *
- * For external URLs, we use a regular URL hash (e.g. `placeholder.svg#${id}`).
- * For same-document URLs, we append `--${id}` (e.g. `#placeholder--${id}`).
+ * Constructs a final URL from the base.
+ * Adds default hash (`#icon`) if the URL does not already contain a hash.
  */
-function toIconHref(hrefBase: string, size: IconProps["size"]) {
-	const separator = hrefBase.includes("#") ? "--" : "#";
-	const suffix = toIconId(size);
-	return `${hrefBase}${separator}${suffix}`;
-}
-
-/** Returns a symbol ID matching the conventions used in `@stratakit/icons`. */
-function toIconId(size: IconProps["size"]) {
-	if (size === "large") return "icon-large";
-	return "icon";
+function toIconHref(hrefBase: string) {
+	if (!hrefBase.includes("#")) return `${hrefBase}${DEFAULT_ICON_HASH}`;
+	return hrefBase;
 }
 
 // ----------------------------------------------------------------------------
@@ -169,6 +173,8 @@ function useNormalizedHrefBase(rawHref: string | undefined) {
 					const response = await fetch(rawHref, { signal });
 					if (!response.ok) throw new Error(`Failed to fetch ${rawHref}`);
 
+					const hash = new URL(rawHref).hash || DEFAULT_ICON_HASH;
+
 					// Find all `<symbol>` elements from the response.
 					const fetchedSvgString = sanitizeHtml.current(await response.text());
 					const parsedSvgContent = parseDOM(fetchedSvgString, {
@@ -177,12 +183,12 @@ function useNormalizedHrefBase(rawHref: string | undefined) {
 					const symbols = parsedSvgContent.querySelectorAll("symbol");
 
 					for (const symbol of symbols) {
-						symbol.id = `${prefix}--${symbol.id}`; // unique ID
+						symbol.id = `${prefix}--${symbol.id}`; // unique ID, using `--` instead as the delimiter for icon-specific symbols.
 						if (ownerDocument.getElementById(symbol.id)) continue; // Skip if already present.
-						spriteSheet.appendChild(symbol.cloneNode(true)); // Store symbols in the spritesheet renderered by `<Root>`.
+						spriteSheet.appendChild(symbol.cloneNode(true)); // Store symbols in the spritesheet rendered by `<Root>`.
 					}
 
-					inlineHref.current = `#${prefix}`;
+					inlineHref.current = `#${prefix}--${hash.slice(1)}`; // Replacing `#` with `--`, per convention above.
 					cache.set(rawHref, inlineHref.current); // Cache for future use.
 					if (!signal.aborted) notify();
 				} catch (error) {

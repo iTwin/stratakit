@@ -16,7 +16,7 @@ export default definePage(
 				<Toolbar.Item
 					render={
 						<IconButton
-							icon={placeholderIcon}
+							icon={`${placeholderIcon}#icon-large`}
 							label="Click me"
 							variant="ghost"
 						/>
@@ -25,7 +25,7 @@ export default definePage(
 				<Toolbar.Item
 					render={
 						<IconButton
-							icon={placeholderIcon}
+							icon={`${placeholderIcon}#icon-large`}
 							label="Click me"
 							variant="ghost"
 						/>
@@ -34,7 +34,7 @@ export default definePage(
 				<Toolbar.Item
 					render={
 						<IconButton
-							icon={placeholderIcon}
+							icon={`${placeholderIcon}#icon-large`}
 							label="Click me"
 							variant="ghost"
 						/>
@@ -51,17 +51,29 @@ function VisualTest() {
 		<Toolbar.Group variant="solid">
 			<Toolbar.Item
 				render={
-					<IconButton icon={placeholderIcon} label="Click me" variant="ghost" />
+					<IconButton
+						icon={`${placeholderIcon}#icon-large`}
+						label="Click me"
+						variant="ghost"
+					/>
 				}
 			/>
 			<Toolbar.Item
 				render={
-					<IconButton icon={placeholderIcon} label="Click me" variant="ghost" />
+					<IconButton
+						icon={`${placeholderIcon}#icon-large`}
+						label="Click me"
+						variant="ghost"
+					/>
 				}
 			/>
 			<Toolbar.Item
 				render={
-					<IconButton icon={placeholderIcon} label="Click me" variant="ghost" />
+					<IconButton
+						icon={`${placeholderIcon}#icon-large`}
+						label="Click me"
+						variant="ghost"
+					/>
 				}
 			/>
 		</Toolbar.Group>

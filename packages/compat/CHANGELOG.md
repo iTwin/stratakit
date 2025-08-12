@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.0.6
+
+- [#729](https://github.com/iTwin/design-system/pull/729): Added `Select` component.
+
 ## 0.0.5
 
 - [#726](https://github.com/iTwin/design-system/pull/726): Added `Alert` component.

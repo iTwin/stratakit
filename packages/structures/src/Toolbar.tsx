@@ -57,10 +57,12 @@ interface ToolbarItemProps
  * An item within the toolbar.
  * Should be used with the `render` prop.
  *
+ * If rendering an `IconButton`, be sure to append `#icon-large` to the icon URL.
+ *
  * Example:
  * ```jsx
  * <Toolbar.Item
- *   render={<IconButton variant="ghost" … />}
+ *   render={<IconButton variant="ghost" icon={`${placeholderIcon}#icon-large`} />}
  * />
  * ```
  */

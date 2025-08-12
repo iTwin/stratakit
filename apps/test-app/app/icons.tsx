@@ -52,10 +52,10 @@ export default function Page() {
 							<Table.Row key={icon}>
 								<Table.Cell>{icon}</Table.Cell>
 								<Table.Cell>
-									<Icon href={iconHref} />
+									<Icon href={`${iconHref}#icon`} />
 								</Table.Cell>
 								<Table.Cell>
-									<Icon size="large" href={iconHref} />
+									<Icon size="large" href={`${iconHref}#icon-large`} />
 								</Table.Cell>
 							</Table.Row>
 						);

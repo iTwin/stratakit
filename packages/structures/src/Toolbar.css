@@ -27,7 +27,7 @@
 	}
 
 	@layer states {
-		&:where([aria-pressed="true"]) {
+		&:where([data-kiwi-variant="ghost"][aria-pressed="true"]) {
 			--🥝button-border-color: var(--stratakit-color-border-accent-base);
 		}
 	}

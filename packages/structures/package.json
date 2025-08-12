@@ -114,7 +114,7 @@
 		"@ariakit/react": "^0.4.17",
 		"@stratakit/bricks": "^0.3.4",
 		"classnames": "^2.5.1",
-		"zustand": "^5.0.6"
+		"zustand": "^5.0.7"
 	},
 	"devDependencies": {
 		"@stratakit/foundations": "workspace:*",

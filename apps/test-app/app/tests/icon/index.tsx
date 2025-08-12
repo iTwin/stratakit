@@ -16,7 +16,7 @@ export default definePage(
 			<Icon
 				alt={alt}
 				size={size as "regular" | "large"}
-				href={placeholderIcon}
+				href={`${placeholderIcon}#${size === "large" ? "icon-large" : "icon"}`}
 			/>
 		);
 	},

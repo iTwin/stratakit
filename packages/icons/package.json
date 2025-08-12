@@ -1,7 +1,7 @@
 {
 	"name": "@stratakit/icons",
 	"type": "module",
-	"version": "0.1.3",
+	"version": "0.1.4",
 	"license": "MIT",
 	"exports": {
 		"./*.svg": "./icons/*.svg",
@@ -33,7 +33,7 @@
 	},
 	"wireit": {
 		"build": {
-			"command": "tsx scripts/icons-list.cts",
+			"command": "tsx scripts/icons-list.ts",
 			"files": [
 				"icons",
 				"scripts"

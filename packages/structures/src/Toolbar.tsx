@@ -5,7 +5,10 @@
 
 import * as React from "react";
 import * as Toolbar from "@ariakit/react/toolbar";
-import { IconButtonContext } from "@stratakit/bricks/secret-internals";
+import {
+	IconButtonContext,
+	TooltipContext,
+} from "@stratakit/bricks/secret-internals";
 import { forwardRef } from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
 
@@ -43,11 +46,20 @@ const ToolbarGroup = forwardRef<"div", ToolbarGroupProps>(
 			<IconButtonContext.Provider
 				value={React.useMemo(() => ({ iconSize: "large" }), [])}
 			>
-				<Toolbar.Toolbar
-					{...props}
-					className={cx("🥝-toolbar", props.className)}
-					ref={forwardedRef}
-				/>
+				<TooltipContext.Provider
+					value={React.useMemo(
+						() => ({
+							placement: props.orientation === "vertical" ? "right" : "top",
+						}),
+						[props.orientation],
+					)}
+				>
+					<Toolbar.Toolbar
+						{...props}
+						className={cx("🥝-toolbar", props.className)}
+						ref={forwardedRef}
+					/>
+				</TooltipContext.Provider>
 			</IconButtonContext.Provider>
 		);
 	},

@@ -23,12 +23,10 @@
 				var(--🌀button-state--hover, var(--stratakit-color-icon-neutral-hover))
 				var(--🌀button-state--pressed, var(--stratakit-color-icon-neutral-hover))
 				var(--🌀button-state--active, var(--stratakit-color-icon-neutral-emphasis));
-		}
-	}
-
-	@layer states {
-		&:where([data-kiwi-variant="ghost"][aria-pressed="true"]) {
-			--🥝button-border-color: var(--stratakit-color-border-accent-base);
+			--🥝button-border-color: var(--🌀button-state--default, transparent)
+				var(--🌀button-state--hover, transparent) var(--🌀button-state--pressed, transparent)
+				var(--🌀button-state--active, var(--stratakit-color-border-accent-base))
+				var(--🌀button-state--disabled, transparent);
 		}
 	}
 }

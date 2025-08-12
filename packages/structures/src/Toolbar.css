@@ -12,6 +12,9 @@
 		box-shadow: var(--stratakit-shadow-toolbar-base);
 		border-radius: 8px;
 		padding: var(--stratakit-space-x1);
+
+		--🥝divider-size: 16px;
+		--🥝divider-align-self: center;
 	}
 }
 

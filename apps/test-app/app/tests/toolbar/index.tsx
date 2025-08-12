@@ -3,7 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import { IconButton } from "@stratakit/bricks";
+import { Divider, IconButton } from "@stratakit/bricks";
 import { unstable_Toolbar as Toolbar } from "@stratakit/structures";
 import { definePage } from "~/~utils.tsx";
 
@@ -58,6 +58,7 @@ function VisualTest() {
 					/>
 				}
 			/>
+			<Divider orientation="vertical" />
 			<Toolbar.Item
 				render={
 					<IconButton

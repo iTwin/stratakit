@@ -5,7 +5,7 @@
 .🥝-divider {
 	@layer base {
 		flex: 0 0 auto;
-		align-self: stretch;
+		align-self: var(--🥝divider-align-self, stretch);
 		background-color: var(--stratakit-color-border-neutral-muted);
 
 		&:where(hr) {
@@ -17,11 +17,13 @@
 	@layer modifiers {
 		&:where(:not([aria-orientation="vertical"], [data-kiwi-orientation="vertical"])) {
 			block-size: 1px;
+			inline-size: var(--🥝divider-size);
 		}
 
 		&:where([aria-orientation="vertical"], [data-kiwi-orientation="vertical"]) {
 			inline-size: 1px;
 			min-block-size: 100%;
+			block-size: var(--🥝divider-size);
 		}
 	}
 }

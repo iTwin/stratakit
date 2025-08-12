@@ -13,6 +13,12 @@
 		border-radius: 8px;
 		padding: var(--stratakit-space-x1);
 	}
+
+	@layer modifiers {
+		&:where([aria-orientation="vertical"]) {
+			flex-direction: column;
+		}
+	}
 }
 
 @media (forced-colors: active) {

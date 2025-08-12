@@ -13,9 +13,14 @@ import type { BaseProps } from "@stratakit/foundations/secret-internals";
 
 // ----------------------------------------------------------------------------
 
-interface ToolbarProps extends BaseProps {
+interface ToolbarGroupProps extends BaseProps {
 	/** Must be set to `"solid"` for now. */
 	variant: "solid";
+	/**
+	 * The orientation of the toolbar.
+	 * @default "horizontal"
+	 */
+	orientation?: "horizontal" | "vertical";
 }
 
 /**
@@ -32,19 +37,21 @@ interface ToolbarProps extends BaseProps {
  * </Toolbar.Group>
  * ```
  */
-const ToolbarGroup = forwardRef<"div", ToolbarProps>((props, forwardedRef) => {
-	return (
-		<IconButtonContext.Provider
-			value={React.useMemo(() => ({ iconSize: "large" }), [])}
-		>
-			<Toolbar.Toolbar
-				{...props}
-				className={cx("🥝-toolbar", props.className)}
-				ref={forwardedRef}
-			/>
-		</IconButtonContext.Provider>
-	);
-});
+const ToolbarGroup = forwardRef<"div", ToolbarGroupProps>(
+	(props, forwardedRef) => {
+		return (
+			<IconButtonContext.Provider
+				value={React.useMemo(() => ({ iconSize: "large" }), [])}
+			>
+				<Toolbar.Toolbar
+					{...props}
+					className={cx("🥝-toolbar", props.className)}
+					ref={forwardedRef}
+				/>
+			</IconButtonContext.Provider>
+		);
+	},
+);
 DEV: ToolbarGroup.displayName = "Toolbar.Group";
 
 // ----------------------------------------------------------------------------

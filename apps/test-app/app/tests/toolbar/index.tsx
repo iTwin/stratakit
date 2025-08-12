@@ -11,44 +11,21 @@ import placeholderIcon from "@stratakit/icons/placeholder.svg";
 
 export default definePage(
 	function Page() {
-		return (
-			<Toolbar.Group variant="solid">
-				<Toolbar.Item
-					render={
-						<IconButton
-							icon={`${placeholderIcon}#icon-large`}
-							label="Click me"
-							variant="ghost"
-						/>
-					}
-				/>
-				<Toolbar.Item
-					render={
-						<IconButton
-							icon={`${placeholderIcon}#icon-large`}
-							label="Click me"
-							variant="ghost"
-						/>
-					}
-				/>
-				<Toolbar.Item
-					render={
-						<IconButton
-							icon={`${placeholderIcon}#icon-large`}
-							label="Click me"
-							variant="ghost"
-						/>
-					}
-				/>
-			</Toolbar.Group>
-		);
+		return <TestToolbar orientation="horizontal" />;
 	},
-	{ visual: VisualTest },
+	{
+		visual: VisualTest,
+		vertical: () => <TestToolbar orientation="vertical" />,
+	},
 );
 
-function VisualTest() {
+interface TestToolbarProps {
+	orientation: "horizontal" | "vertical";
+}
+
+function TestToolbar({ orientation }: TestToolbarProps) {
 	return (
-		<Toolbar.Group variant="solid">
+		<Toolbar.Group variant="solid" orientation={orientation}>
 			<Toolbar.Item
 				render={
 					<IconButton
@@ -77,5 +54,21 @@ function VisualTest() {
 				}
 			/>
 		</Toolbar.Group>
+	);
+}
+
+function VisualTest() {
+	return (
+		<div
+			style={{
+				display: "flex",
+				gap: "var(--stratakit-space-x2)",
+				flexDirection: "column",
+				alignItems: "flex-start",
+			}}
+		>
+			<TestToolbar orientation="horizontal" />
+			<TestToolbar orientation="vertical" />
+		</div>
 	);
 }

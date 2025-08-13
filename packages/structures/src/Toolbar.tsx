@@ -39,6 +39,17 @@ interface ToolbarGroupProps extends BaseProps {
  *   <Toolbar.Item render={…} />
  * </Toolbar.Group>
  * ```
+ *
+ * A divider can be displayed between items by rendering the `Divider` component.
+ *
+ * ```jsx
+ * <Toolbar.Group variant="solid">
+ *   <Toolbar.Item render={…} />
+ *   <Divider orientation="vertical" />
+ *   <Toolbar.Item render={…} />
+ *   <Toolbar.Item render={…} />
+ * </Toolbar.Group>
+ * ```
  */
 const ToolbarGroup = forwardRef<"div", ToolbarGroupProps>(
 	(props, forwardedRef) => {

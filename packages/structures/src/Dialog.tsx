@@ -69,7 +69,7 @@ const DialogRoot = forwardRef<"div", DialogRootProps>((props, forwardedRef) => {
 			<DialogWrapper>
 				<AkDialog.Dialog
 					unmountOnHide={unmountOnHide}
-					portal={false}
+					portal={false} // Portaling will be done by DialogWrapper
 					{...rest}
 					backdrop={backdrop === true ? <DialogBackdrop /> : backdrop}
 					className={cx("🥝-dialog", props.className)}

@@ -34,7 +34,15 @@ interface DialogRootProps
 			| "unmountOnHide"
 			| "hideOnEscape"
 			| "hideOnInteractOutside"
-		> {}
+		> {
+	/**
+	 * When set to `true`, the content element will be unmounted and removed from
+	 * the DOM when it's hidden.
+	 *
+	 * @default true
+	 */
+	unmountOnHide?: boolean;
+}
 
 /**
  * A modal dialog component used to display content in a window overlay. Must include `Dialog.Header` and `Dialog.Content` as direct
@@ -54,7 +62,7 @@ interface DialogRootProps
  * ```
  */
 const DialogRoot = forwardRef<"div", DialogRootProps>((props, forwardedRef) => {
-	const { backdrop = true, unmountOnHide = false, ...rest } = props;
+	const { backdrop = true, unmountOnHide = true, ...rest } = props;
 
 	const store = AkDialog.useDialogStore();
 	const contentElement = useStoreState(store, "contentElement");

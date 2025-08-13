@@ -12,6 +12,15 @@
 		box-shadow: var(--stratakit-shadow-toolbar-base);
 		border-radius: 8px;
 		padding: var(--stratakit-space-x1);
+
+		--🥝divider-main-axis-margin: var(--stratakit-space-x2);
+		--🥝divider-cross-axis-margin: var(--stratakit-space-x1);
+	}
+
+	@layer modifiers {
+		&:where([aria-orientation="vertical"]) {
+			flex-direction: column;
+		}
 	}
 }
 

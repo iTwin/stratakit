@@ -16,7 +16,7 @@ import { Icon } from "./Icon.js";
 import type { Tab as IuiTab, Tabs as IuiTabs } from "@itwin/itwinui-react";
 import type { PolymorphicForwardRefComponent } from "./~utils.js";
 
-type SkTabsProps = React.ComponentProps<typeof SkTabs.Root>;
+type SkTabsProviderProps = React.ComponentProps<typeof SkTabs.Provider>;
 type SkTabListProps = React.ComponentProps<typeof SkTabs.TabList>;
 
 type IuiTabsLegacyProps = React.ComponentProps<typeof IuiTabs>;
@@ -246,7 +246,7 @@ const Wrapper = React.forwardRef((props, forwardedRef) => {
 		: undefined;
 	const selectedId = value ? toIdFromValue(value, wrapperId) : undefined;
 	const setSelectedId = React.useCallback<
-		NonNullable<SkTabsProps["setSelectedId"]>
+		NonNullable<SkTabsProviderProps["setSelectedId"]>
 	>(
 		(newSelectedId) => {
 			if (!onValueChange || !newSelectedId) return;
@@ -259,7 +259,7 @@ const Wrapper = React.forwardRef((props, forwardedRef) => {
 		[onValueChange, wrapperId],
 	);
 	return (
-		<SkTabs.Root
+		<SkTabs.Provider
 			defaultSelectedId={defaultSelectedId}
 			selectedId={selectedId}
 			selectOnMove={focusActivationMode === "manual" ? false : undefined}
@@ -272,7 +272,7 @@ const Wrapper = React.forwardRef((props, forwardedRef) => {
 					{children}
 				</div>
 			</WrapperContext.Provider>
-		</SkTabs.Root>
+		</SkTabs.Provider>
 	);
 }) as PolymorphicForwardRefComponent<"div", WrapperProps>;
 DEV: Wrapper.displayName = "Tabs.Wrapper";

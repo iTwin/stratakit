@@ -6,7 +6,7 @@
 	@layer base {
 		flex: 0 0 auto;
 		align-self: stretch;
-		background-color: var(--stratakit-color-border-neutral-muted);
+		background-color: var(--stratakit-color-border-page-base);
 
 		&:where(hr) {
 			border: none;
@@ -17,11 +17,15 @@
 	@layer modifiers {
 		&:where(:not([aria-orientation="vertical"], [data-kiwi-orientation="vertical"])) {
 			block-size: 1px;
+			margin-inline: var(--🥝divider-main-axis-margin);
+			margin-block: var(--🥝divider-cross-axis-margin);
 		}
 
 		&:where([aria-orientation="vertical"], [data-kiwi-orientation="vertical"]) {
 			inline-size: 1px;
 			min-block-size: 100%;
+			margin-inline: var(--🥝divider-cross-axis-margin);
+			margin-block: var(--🥝divider-main-axis-margin);
 		}
 	}
 }

@@ -68,7 +68,8 @@ const DialogRoot = forwardRef<"div", DialogRootProps>((props, forwardedRef) => {
 	const contentElement = useStoreState(store, "contentElement");
 
 	const mounted = useStoreState(store, (state) => {
-		return !unmountOnHide || state?.mounted || !!props.open;
+		if (!unmountOnHide) return true;
+		return props.open ?? state?.mounted;
 	});
 
 	if (!mounted) return null;

@@ -95,7 +95,7 @@ function DialogWrapper(props: DialogWrapperProps) {
 
 	const store = AkDialog.useDialogContext();
 	const open = useStoreState(store, (state) => {
-		return state?.open || !!props.open;
+		return props.open ?? state?.open;
 	});
 
 	const popoverProps = usePopoverApi({

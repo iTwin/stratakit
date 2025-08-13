@@ -16,6 +16,12 @@
 		--🥝divider-main-axis-margin: var(--stratakit-space-x2);
 		--🥝divider-cross-axis-margin: var(--stratakit-space-x1);
 	}
+
+	@layer modifiers {
+		&:where([aria-orientation="vertical"]) {
+			flex-direction: column;
+		}
+	}
 }
 
 @media (forced-colors: active) {

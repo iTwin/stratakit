@@ -56,7 +56,7 @@ interface DropdownMenuProps
  *
  * Example:
  * ```tsx
- * <DropdownMenu.Root>
+ * <DropdownMenu.Provider>
  *   <DropdownMenu.Button>Actions</DropdownMenu.Button>
  *
  *   <DropdownMenu.Content>
@@ -64,12 +64,12 @@ interface DropdownMenuProps
  *     <DropdownMenu.Item label="Edit" />
  *     <DropdownMenu.Item label="Delete" />
  *   </DropdownMenu.Content>
- * </DropdownMenu.Root>
+ * </DropdownMenu.Provider>
  * ```
  *
  * **Note**: `DropdownMenu` should not be used for navigation; it is only intended for actions.
  */
-function DropdownMenuRoot(props: DropdownMenuProps) {
+function DropdownMenuProvider(props: DropdownMenuProps) {
 	const {
 		children,
 		placement,
@@ -90,7 +90,7 @@ function DropdownMenuRoot(props: DropdownMenuProps) {
 		</MenuProvider>
 	);
 }
-DEV: DropdownMenuRoot.displayName = "DropdownMenu.Root";
+DEV: DropdownMenuProvider.displayName = "DropdownMenu.Provider";
 
 // ----------------------------------------------------------------------------
 
@@ -99,7 +99,7 @@ interface DropdownMenuContentProps extends FocusableProps {}
 /**
  * The actual "menu" portion containing the items shown within the dropdown.
  *
- * Should be used as a child of `DropdownMenu.Root`.
+ * Should be used as a child of `DropdownMenu.Provider`.
  */
 const DropdownMenuContent = forwardRef<"div", DropdownMenuContentProps>(
 	(props, forwardedRef) => {
@@ -129,7 +129,7 @@ DEV: DropdownMenuContent.displayName = "DropdownMenu.Content";
 interface DropdownMenuButtonProps extends FocusableProps<"button"> {}
 
 /**
- * The button that triggers the dropdown menu to open.  Should be used as a child of `DropdownMenu.Root`.
+ * The button that triggers the dropdown menu to open. Should be used as a child of `DropdownMenu.Provider`.
  *
  * Example:
  * ```tsx
@@ -141,7 +141,7 @@ interface DropdownMenuButtonProps extends FocusableProps<"button"> {}
  *
  * ```tsx
  * <DropdownMenu.Button
- *   render={<IconButton variant="ghost" label="More" icon={<Icon href={…} />}  />}
+ *   render={<IconButton variant="ghost" label="More" icon={<Icon href={…} />} />}
  * />
  * ```
  */
@@ -400,7 +400,7 @@ DEV: DropdownMenuCheckboxItem.displayName = "DropdownMenu.CheckboxItem";
 // ----------------------------------------------------------------------------
 
 export {
-	DropdownMenuRoot as Root,
+	DropdownMenuProvider as Provider,
 	DropdownMenuButton as Button,
 	DropdownMenuContent as Content,
 	DropdownMenuItem as Item,

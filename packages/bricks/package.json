@@ -177,7 +177,7 @@
 		"dev": "wireit"
 	},
 	"dependencies": {
-		"@ariakit/react": "^0.4.17",
+		"@ariakit/react": "^0.4.18",
 		"classnames": "^2.5.1"
 	},
 	"devDependencies": {

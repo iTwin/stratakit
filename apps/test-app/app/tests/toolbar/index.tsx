@@ -11,7 +11,37 @@ import placeholderIcon from "@stratakit/icons/placeholder.svg";
 
 export default definePage(
 	function Page() {
-		return <TestToolbar orientation="horizontal" />;
+		return (
+			<Toolbar.Group variant="solid">
+				<Toolbar.Item
+					render={
+						<IconButton
+							icon={`${placeholderIcon}#icon-large`}
+							label="Click me"
+							variant="ghost"
+						/>
+					}
+				/>
+				<Toolbar.Item
+					render={
+						<IconButton
+							icon={`${placeholderIcon}#icon-large`}
+							label="Click me"
+							variant="ghost"
+						/>
+					}
+				/>
+				<Toolbar.Item
+					render={
+						<IconButton
+							icon={`${placeholderIcon}#icon-large`}
+							label="Click me"
+							variant="ghost"
+						/>
+					}
+				/>
+			</Toolbar.Group>
+		);
 	},
 	{
 		visual: VisualTest,

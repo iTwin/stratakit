@@ -7,8 +7,8 @@
 		position: fixed;
 		display: grid;
 
-		block-size: 100dvb;
-		inline-size: 100dvi;
+		block-size: 100%;
+		inline-size: 100%;
 		inset: 0;
 	}
 }
@@ -23,10 +23,8 @@
 
 		min-block-size: var(--🥝dialog-min-block-size, 94px);
 		min-inline-size: min(100%, 296px);
-		max-block-size: calc(100dvb - 64px);
-		max-inline-size: calc(100dvi - 64px);
-		inline-size: fit-content;
-		block-size: fit-content;
+		max-block-size: calc(100% - 64px);
+		max-inline-size: calc(100% - 64px);
 
 		border-radius: 12px; /* radius/large */
 		background-color: var(--stratakit-color-bg-elevation-base);

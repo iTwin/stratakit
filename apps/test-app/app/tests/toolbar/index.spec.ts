@@ -84,6 +84,15 @@ test.describe("vertical", () => {
 		await page.keyboard.press("Home");
 		await expect(items.first()).toBeFocused();
 	});
+
+	test.describe("@a11y", () => {
+		test("Axe Page Scan", async ({ page }) => {
+			await page.goto("/tests/toolbar?vertical");
+			const axe = new AxeBuilder({ page });
+			const accessibilityScan = await axe.analyze();
+			expect(accessibilityScan.violations).toEqual([]);
+		});
+	});
 });
 
 test.describe("@visual", () => {

@@ -98,7 +98,13 @@ interface ToolbarItemProps
  */
 const ToolbarItem = forwardRef<"button", ToolbarItemProps>(
 	(props, forwardedRef) => {
-		return <Toolbar.ToolbarItem {...props} ref={forwardedRef} />;
+		return (
+			<Toolbar.ToolbarItem
+				{...props}
+				className={cx("🥝-toolbar-item", props.className)}
+				ref={forwardedRef}
+			/>
+		);
 	},
 );
 DEV: ToolbarItem.displayName = "Toolbar.Item";

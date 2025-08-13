@@ -13,8 +13,8 @@
 		border-radius: 8px;
 		padding: var(--stratakit-space-x1);
 
-		--🥝divider-size: 16px;
-		--🥝divider-align-self: center;
+		--🥝divider-main-axis-margin: var(--stratakit-space-x2);
+		--🥝divider-cross-axis-margin: var(--stratakit-space-x1);
 	}
 }
 

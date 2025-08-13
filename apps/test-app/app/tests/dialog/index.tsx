@@ -28,8 +28,9 @@ export default definePage(
 		visual: VisualTest,
 		closeButton: CloseButtonTest,
 		actions: ActionsTest,
+		mountedOnHideTest: MountedOnHideTest,
 		nested: NestedTest,
-		unmountOnHide: UnmountOnHideTest,
+		nestedUnmountOnHide: NestedUnmountOnHideTest,
 		nonDismissible: NonDismissibleTest,
 		noBackdrop: NoBackdropTest,
 		customBackdrop: CustomBackdropTest,
@@ -58,7 +59,7 @@ function VisualTest() {
 						}}
 					>
 						Primary content
-						<DropdownMenu.Root>
+						<DropdownMenu.Provider>
 							<DropdownMenu.Button>Actions</DropdownMenu.Button>
 
 							<DropdownMenu.Content>
@@ -66,7 +67,7 @@ function VisualTest() {
 								<DropdownMenu.Item label="Edit" />
 								<DropdownMenu.Item label="Delete" />
 							</DropdownMenu.Content>
-						</DropdownMenu.Root>
+						</DropdownMenu.Provider>
 					</span>
 					<Text
 						variant="body-sm"
@@ -117,6 +118,23 @@ function ActionsTest() {
 	);
 }
 
+function MountedOnHideTest() {
+	const [open, setOpen] = React.useState(false);
+	return (
+		<>
+			<Button onClick={() => setOpen(true)}>Open</Button>
+			<Dialog.Root
+				open={open}
+				onClose={() => setOpen(false)}
+				unmountOnHide={false}
+			>
+				<Dialog.Header render={<Dialog.Heading />}>Heading</Dialog.Header>
+				<Dialog.Content>Content</Dialog.Content>
+			</Dialog.Root>
+		</>
+	);
+}
+
 function NestedTest() {
 	const [open, setOpen] = React.useState(false);
 	const [nestedOpen, setNestedOpen] = React.useState(false);
@@ -145,7 +163,7 @@ function NestedTest() {
 	);
 }
 
-function UnmountOnHideTest() {
+function NestedUnmountOnHideTest() {
 	const [open, setOpen] = React.useState(false);
 	const [nestedOpen, setNestedOpen] = React.useState(false);
 	return (

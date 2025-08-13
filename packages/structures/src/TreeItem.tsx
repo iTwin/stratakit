@@ -596,7 +596,7 @@ const TreeItemActionMenu = React.memo(
 		if (!displayMenu) return null;
 		return (
 			<PopoverProvider placement="right-start">
-				<DropdownMenu.Root open={open} setOpen={setOpen}>
+				<DropdownMenu.Provider open={open} setOpen={setOpen}>
 					<DropdownMenu.Button
 						{...props}
 						onKeyDown={(e) => {
@@ -613,7 +613,7 @@ const TreeItemActionMenu = React.memo(
 						ref={forwardedRef}
 					/>
 					<TreeItemMenuActionsContent />
-				</DropdownMenu.Root>
+				</DropdownMenu.Provider>
 			</PopoverProvider>
 		);
 	}),

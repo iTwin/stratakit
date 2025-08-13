@@ -395,7 +395,7 @@ function PanelContent(props: { data: { [key: string]: TreeItemData[] } }) {
 
 	return (
 		<TreeFilteringProvider allFilters={allFilters}>
-			<Tabs.Root selectOnMove={false} setSelectedId={setSelectedTreeId}>
+			<Tabs.Provider selectOnMove={false} setSelectedId={setSelectedTreeId}>
 				<Subheader
 					tabs={trees.map((tree) => (
 						<Tabs.Tab key={tree.name} id={tree.name}>
@@ -418,7 +418,7 @@ function PanelContent(props: { data: { [key: string]: TreeItemData[] } }) {
 						</Tabs.TabPanel>
 					);
 				})}
-			</Tabs.Root>
+			</Tabs.Provider>
 		</TreeFilteringProvider>
 	);
 }
@@ -905,7 +905,7 @@ function FiltersMenu() {
 	const filtersApplied = context.appliedFilters.length > 0;
 
 	return (
-		<DropdownMenu.Root>
+		<DropdownMenu.Provider>
 			<DropdownMenu.Button
 				render={
 					<IconButton
@@ -933,7 +933,7 @@ function FiltersMenu() {
 					);
 				})}
 			</DropdownMenu.Content>
-		</DropdownMenu.Root>
+		</DropdownMenu.Provider>
 	);
 }
 

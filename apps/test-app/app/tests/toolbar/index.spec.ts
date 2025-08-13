@@ -39,15 +39,6 @@ test.describe("horizontal", () => {
 		await page.keyboard.press("Home");
 		await expect(items.first()).toBeFocused();
 	});
-
-	test.describe("@a11y", () => {
-		test("Axe Page Scan", async ({ page }) => {
-			await page.goto("/tests/toolbar");
-			const axe = new AxeBuilder({ page });
-			const accessibilityScan = await axe.analyze();
-			expect(accessibilityScan.violations).toEqual([]);
-		});
-	});
 });
 
 test.describe("vertical", () => {
@@ -110,4 +101,20 @@ test.describe("@visual", () => {
 		await page.emulateMedia({ forcedColors: "active" });
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
+});
+
+test.describe("@a11y", () => {
+	const paramsSet = new Set([
+		new URLSearchParams(),
+		new URLSearchParams("?vertical"),
+	]);
+
+	for (const params of paramsSet) {
+		test(`Axe Page Scan: ?${params}`, async ({ page }) => {
+			await page.goto(`/tests/toolbar?${params}`);
+			const axe = new AxeBuilder({ page });
+			const accessibilityScan = await axe.analyze();
+			expect(accessibilityScan.violations).toEqual([]);
+		});
+	}
 });

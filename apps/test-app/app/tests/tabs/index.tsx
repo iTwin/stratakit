@@ -14,7 +14,7 @@ export const handle = { title: "Tabs" };
 export default definePage(
 	function Page({ defaultSelectedId, disabled }) {
 		return (
-			<Tabs.Root defaultSelectedId={defaultSelectedId}>
+			<Tabs.Provider defaultSelectedId={defaultSelectedId}>
 				<Tabs.TabList>
 					<Tabs.Tab id="tab1">Tab 1</Tabs.Tab>
 					<Tabs.Tab id="tab2" disabled={!!disabled}>
@@ -26,7 +26,7 @@ export default definePage(
 				<Tabs.TabPanel tabId="tab1">Tab 1 content</Tabs.TabPanel>
 				<Tabs.TabPanel tabId="tab2">Tab 2 content</Tabs.TabPanel>
 				<Tabs.TabPanel tabId="tab3">Tab 3 content</Tabs.TabPanel>
-			</Tabs.Root>
+			</Tabs.Provider>
 		);
 	},
 	{ visual: VisualTest },
@@ -38,7 +38,7 @@ function VisualTest() {
 	return (
 		<div style={{ display: "grid", gap: 4 }}>
 			{tones.map((tone) => (
-				<Tabs.Root key={tone}>
+				<Tabs.Provider key={tone}>
 					<Tabs.TabList tone={tone}>
 						<Tabs.Tab id="tab1">Tab 1</Tabs.Tab>
 						<Tabs.Tab id="tab2">
@@ -66,7 +66,7 @@ function VisualTest() {
 					<Tabs.TabPanel tabId="tab4">Tab 4 content</Tabs.TabPanel>
 					<Tabs.TabPanel tabId="tab5">Tab 5 content</Tabs.TabPanel>
 					<Tabs.TabPanel tabId="tab6">Tab 6 content</Tabs.TabPanel>
-				</Tabs.Root>
+				</Tabs.Provider>
 			))}
 		</div>
 	);

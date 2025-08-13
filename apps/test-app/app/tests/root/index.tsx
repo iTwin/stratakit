@@ -54,14 +54,14 @@ function LightAndShadowComponents() {
 	return (
 		<div style={{ display: "flex", gap: 4, flexWrap: "wrap" }} ref={setHost}>
 			<Button>Button (light)</Button>
-			<DropdownMenu.Root>
+			<DropdownMenu.Provider>
 				<DropdownMenu.Button>Menu (light)</DropdownMenu.Button>
 
 				<DropdownMenu.Content>
 					<DropdownMenu.Item label="Item 1" />
 					<DropdownMenu.Item label="Item 2" />
 				</DropdownMenu.Content>
-			</DropdownMenu.Root>
+			</DropdownMenu.Provider>
 
 			{shadow &&
 				ReactDOM.createPortal(
@@ -72,14 +72,14 @@ function LightAndShadowComponents() {
 					>
 						<Button>Button (shadow)</Button>
 
-						<DropdownMenu.Root>
+						<DropdownMenu.Provider>
 							<DropdownMenu.Button>Menu (shadow)</DropdownMenu.Button>
 
 							<DropdownMenu.Content>
 								<DropdownMenu.Item label="Item 1" />
 								<DropdownMenu.Item label="Item 2" />
 							</DropdownMenu.Content>
-						</DropdownMenu.Root>
+						</DropdownMenu.Provider>
 					</Root>,
 					shadow,
 				)}

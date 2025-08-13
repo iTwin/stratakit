@@ -27,7 +27,7 @@ const prefersReducedMotion = () =>
 
 // ----------------------------------------------------------------------------
 
-interface TabsProps
+interface TabsProviderProps
 	extends Pick<
 		AkTab.TabProviderProps,
 		| "defaultSelectedId"
@@ -44,7 +44,7 @@ interface TabsProps
  *
  * Example:
  * ```tsx
- * <Tabs.Root>
+ * <Tabs.Provider>
  *   <Tabs.TabList>
  *     <Tabs.Tab id="tab-1">Tab 1</Tabs.Tab>
  *     <Tabs.Tab id="tab-2">Tab 2</Tabs.Tab>
@@ -54,7 +54,7 @@ interface TabsProps
  *   <Tabs.TabPanel tabId="tab-1">Tab 1 content</Tabs.TabPanel>
  *   <Tabs.TabPanel tabId="tab-2">Tab 2 content</Tabs.TabPanel>
  *   <Tabs.TabPanel tabId="tab-3">Tab 3 content</Tabs.TabPanel>
- * </Tabs.Root>
+ * </Tabs.Provider>
  * ```
  *
  * The tabs and their panels are connected by matching the `id` prop on the `Tabs.Tab` component with
@@ -65,7 +65,7 @@ interface TabsProps
  *
  * **Note**: `Tabs` should _not_ be used for navigation; it is only intended for switching smaller views within an existing page.
  */
-function Tabs(props: TabsProps) {
+function TabsProvider(props: TabsProviderProps) {
 	const {
 		defaultSelectedId,
 		selectedId,
@@ -129,7 +129,7 @@ function Tabs(props: TabsProps) {
 		</AkTab.TabProvider>
 	);
 }
-DEV: Tabs.displayName = "Tabs.Root";
+DEV: TabsProvider.displayName = "Tabs.Provider";
 
 // ----------------------------------------------------------------------------
 
@@ -140,7 +140,7 @@ interface TabListProps extends BaseProps {
 
 /**
  * A simple container for the tab buttons.
- * Should be used as a child of `Tabs.Root` and consist of the individual `Tabs.Tab` components.
+ * Should be used as a child of `Tabs.Provider` and consist of the individual `Tabs.Tab` components.
  *
  * Example:
  * ```tsx
@@ -172,7 +172,7 @@ interface TabProps extends Omit<FocusableProps<"button">, "id"> {
 	 * The globally unique id of the tab. This will be used to identify the tab
 	 * and connect it to the corresponding `Tabs.TabPanel` via the `tabId`.
 	 *
-	 * The `selectedId` state of `Tabs.Root` will also be based on this id.
+	 * The `selectedId` state of `Tabs.Provider` will also be based on this id.
 	 */
 	id: string;
 }
@@ -218,7 +218,7 @@ interface TabPanelProps
 		Required<Pick<AkTab.TabPanelProps, "tabId">> {}
 
 /**
- * The actual content of a tab, shown when the tab is selected. Should be used as a child of `Tabs.Root`.
+ * The actual content of a tab, shown when the tab is selected. Should be used as a child of `Tabs.Provider`.
  * The `tabId` prop should match the `id` prop of the corresponding `Tabs.Tab` component.
  *
  * Example:
@@ -239,4 +239,4 @@ DEV: TabPanel.displayName = "Tabs.TabPanel";
 
 // ----------------------------------------------------------------------------
 
-export { Tabs as Root, TabList, Tab, TabPanel };
+export { TabsProvider as Provider, TabList, Tab, TabPanel };

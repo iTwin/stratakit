@@ -6,7 +6,7 @@
 	@layer base {
 		flex: 0 0 auto;
 		align-self: stretch;
-		background-color: var(--stratakit-color-border-neutral-muted);
+		background-color: var(--stratakit-color-border-page-base);
 
 		&:where(hr) {
 			border: none;

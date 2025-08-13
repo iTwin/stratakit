@@ -15,7 +15,7 @@ export const handle = { title: "DropdownMenu" };
 export default definePage(
 	function Page({ disabled }) {
 		return (
-			<DropdownMenu.Root>
+			<DropdownMenu.Provider>
 				<DropdownMenu.Button disabled={!!disabled}>Actions</DropdownMenu.Button>
 
 				<DropdownMenu.Content>
@@ -28,7 +28,7 @@ export default definePage(
 						unstable_dot="Some filters applied"
 					/>
 				</DropdownMenu.Content>
-			</DropdownMenu.Root>
+			</DropdownMenu.Provider>
 		);
 	},
 	{
@@ -41,7 +41,7 @@ function CheckboxTest({ defaultChecked: defaultCheckedParam }: VariantProps) {
 	const defaultChecked = defaultCheckedParam ? true : undefined;
 	return (
 		<div style={{ minHeight: 150 }}>
-			<DropdownMenu.Root>
+			<DropdownMenu.Provider>
 				<DropdownMenu.Button>Settings</DropdownMenu.Button>
 
 				<DropdownMenu.Content>
@@ -53,7 +53,7 @@ function CheckboxTest({ defaultChecked: defaultCheckedParam }: VariantProps) {
 						defaultChecked={defaultChecked}
 					/>
 				</DropdownMenu.Content>
-			</DropdownMenu.Root>
+			</DropdownMenu.Provider>
 		</div>
 	);
 }
@@ -61,7 +61,7 @@ function CheckboxTest({ defaultChecked: defaultCheckedParam }: VariantProps) {
 function VisualTest({ disabled }: VariantProps) {
 	return (
 		<div style={{ minHeight: 200 }}>
-			<DropdownMenu.Root defaultOpen>
+			<DropdownMenu.Provider defaultOpen>
 				<DropdownMenu.Button disabled={!!disabled}>Actions</DropdownMenu.Button>
 
 				<DropdownMenu.Content>
@@ -82,7 +82,7 @@ function VisualTest({ disabled }: VariantProps) {
 						unstable_dot="Some filters applied"
 					/>
 				</DropdownMenu.Content>
-			</DropdownMenu.Root>
+			</DropdownMenu.Provider>
 		</div>
 	);
 }

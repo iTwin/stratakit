@@ -22,7 +22,7 @@
 				var(--🌀button-state--hover, var(--stratakit-color-bg-glow-on-surface-neutral-hover))
 				var(--🌀button-state--pressed, var(--stratakit-color-bg-glow-on-surface-neutral-pressed))
 				var(--🌀button-state--active, var(--stratakit-color-bg-accent-base))
-				var(--🌀button-state--disabled, transparent);
+				var(--🌀button-state--disabled, var(--stratakit-color-bg-glow-on-surface-disabled));
 			--🥝icon-color: var(--🌀button-state--default, var(--stratakit-color-icon-neutral-base))
 				var(--🌀button-state--hover, var(--stratakit-color-icon-neutral-hover))
 				var(--🌀button-state--pressed, var(--stratakit-color-icon-neutral-hover))

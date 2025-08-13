@@ -111,10 +111,7 @@ function DialogWrapper(props: React.PropsWithChildren) {
 			className="🥝-dialog-wrapper"
 			ref={setWrapper}
 			{...popoverProps}
-			style={{
-				display: mounted ? undefined : "none",
-				...popoverProps.style,
-			}}
+			hidden={mounted ? undefined : true}
 		>
 			{props.children}
 		</Portal>

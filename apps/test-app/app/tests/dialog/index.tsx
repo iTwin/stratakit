@@ -58,7 +58,7 @@ function VisualTest() {
 						}}
 					>
 						Primary content
-						<DropdownMenu.Root>
+						<DropdownMenu.Provider>
 							<DropdownMenu.Button>Actions</DropdownMenu.Button>
 
 							<DropdownMenu.Content>
@@ -66,7 +66,7 @@ function VisualTest() {
 								<DropdownMenu.Item label="Edit" />
 								<DropdownMenu.Item label="Delete" />
 							</DropdownMenu.Content>
-						</DropdownMenu.Root>
+						</DropdownMenu.Provider>
 					</span>
 					<Text
 						variant="body-sm"

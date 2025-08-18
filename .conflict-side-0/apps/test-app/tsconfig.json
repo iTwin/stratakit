@@ -1,0 +1,24 @@
+{
+	"include": [
+		"**/*.ts",
+		"**/*.tsx",
+		"**/.server/**/*.ts",
+		"**/.server/**/*.tsx",
+		"**/.client/**/*.ts",
+		"**/.client/**/*.tsx",
+		".react-router/types/**/*"
+	],
+	"extends": "internal/tsconfig.json",
+	"compilerOptions": {
+		"types": ["@react-router/node", "vite/client"],
+
+		"baseUrl": ".",
+		"paths": {
+			"~/*": ["./app/*"]
+		},
+		"rootDirs": [".", "./.react-router/types"],
+
+		// Use TSX source directly for better IDE experience.
+		"customConditions": ["@stratakit/source"]
+	}
+}

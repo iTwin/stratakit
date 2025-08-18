@@ -1,0 +1,37 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+.🥝Divider {
+	@layer base {
+		flex: 0 0 auto;
+		align-self: stretch;
+		background-color: var(--stratakit-color-border-page-base);
+
+		&:where(hr) {
+			border: none;
+			margin: 0;
+		}
+	}
+
+	@layer modifiers {
+		&:where(:not([aria-orientation="vertical"], [data-_sk-orientation="vertical"])) {
+			block-size: 1px;
+			margin-inline: var(--🥝Divider-main-axis-margin);
+			margin-block: var(--🥝Divider-cross-axis-margin);
+		}
+
+		&:where([aria-orientation="vertical"], [data-_sk-orientation="vertical"]) {
+			inline-size: 1px;
+			min-block-size: 100%;
+			margin-inline: var(--🥝Divider-cross-axis-margin);
+			margin-block: var(--🥝Divider-main-axis-margin);
+		}
+	}
+}
+
+@media (forced-colors: active) {
+	.🥝Divider {
+		background-color: CanvasText;
+	}
+}

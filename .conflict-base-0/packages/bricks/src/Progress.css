@@ -1,0 +1,112 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+
+.🥝-progress-bar {
+	--✨count: 4;
+	--✨duration: 1.5s;
+	--✨easing: cubic-bezier(0.5, 0, 0.5, 1);
+	--✨steps: 4;
+
+	--✨animation--indeterminate-steps: calc(var(--✨steps) * var(--✨duration) * 2)
+		--🥝progress-bar-animation-indeterminate steps(var(--✨steps), end) infinite;
+	--✨animation--indeterminate: var(--✨duration) --🥝progress-bar-animation-indeterminate
+		var(--✨easing) var(--✨count);
+	--✨animation--indeterminate-slow: calc(var(--✨duration) * 2)
+		--🥝progress-bar-animation-indeterminate-slow var(--✨easing)
+		calc(var(--✨count) * var(--✨duration)) infinite;
+
+	@layer base {
+		block-size: var(--🥝progress-bar-size);
+		inline-size: 100%;
+		border-radius: 9999px;
+		contain: strict;
+		display: grid;
+		background-color: var(--🥝progress-bar-track-color);
+
+		&::before {
+			content: "";
+			block-size: inherit;
+			inline-size: var(--🥝progress-bar-fill-size);
+			transform: translateX(calc(-100% + var(--🥝progress-bar-fill-portion-shown)));
+			border-radius: inherit;
+			background-color: var(--🥝progress-bar-fill-color);
+			animation: var(--🥝progress-bar-animation);
+		}
+
+		&:where([data-kiwi-variant="determinate"])::before {
+			@media (prefers-reduced-motion: no-preference) {
+				transition: transform 150ms ease-in-out;
+			}
+		}
+	}
+
+	@layer modifiers {
+		&:where([data-kiwi-tone="neutral"]) {
+			--🥝progress-bar-fill-color: var(--stratakit-color-icon-neutral-base);
+			--🥝progress-bar-track-color: var(--stratakit-color-border-page-base);
+		}
+
+		&:where([data-kiwi-tone="accent"]) {
+			--🥝progress-bar-fill-color: var(--stratakit-color-icon-accent-strong);
+			--🥝progress-bar-track-color: var(--stratakit-color-bg-accent-muted);
+		}
+
+		&:where([data-kiwi-size="medium"]) {
+			--🥝progress-bar-size: 0.125rem;
+		}
+
+		&:where([data-kiwi-size="large"]) {
+			--🥝progress-bar-size: 0.25rem;
+		}
+
+		&:where([data-kiwi-variant="indeterminate"]) {
+			--🥝progress-bar-animation: var(--✨animation--indeterminate-steps);
+			--🥝progress-bar-fill-size: 25%;
+			--🥝progress-bar-fill-start-point: 0%; /* 0% keeps the fill in view. */
+
+			@media (prefers-reduced-motion: no-preference) {
+				--🥝progress-bar-animation:
+					var(--✨animation--indeterminate), var(--✨animation--indeterminate-slow);
+				--🥝progress-bar-fill-start-point: -100%; /* -100% moves the fill out of view on the left side. */
+			}
+		}
+
+		&:where([data-kiwi-variant="determinate"]) {
+			--🥝progress-bar-fill-size: 100%;
+		}
+	}
+}
+
+@keyframes --🥝progress-bar-animation-indeterminate {
+	from {
+		transform: translateX(var(--🥝progress-bar-fill-start-point));
+	}
+
+	to {
+		transform: translateX(400%); /* The fill is 25% width of the container, multiplied by 4 moves the fill out of view on the right side. */
+	}
+}
+
+@keyframes --🥝progress-bar-animation-indeterminate-slow {
+	0% {
+		transform: translateX(-100%); /* -100% moves the fill out of view on the left side. */
+	}
+	50% {
+		transform: translateX(-95%); /* Simulate a short slowdown between each cycle to help with WCAG SC 2.2.2. */
+	}
+	100% {
+		transform: translateX(400%); /* The fill is 25% width of the container, multiplied by 4 moves the fill out of view on the right side. */
+	}
+}
+
+@media (forced-colors: active) {
+	.🥝-progress-bar {
+		--🥝progress-bar-fill-color: CanvasText;
+		--🥝progress-bar-track-color: Canvas;
+		outline: 1px solid;
+		outline-color: oklch(from CanvasText l c h / 50%);
+		forced-color-adjust: none;
+	}
+}

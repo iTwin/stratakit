@@ -1,0 +1,119 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+.🥝Anchor {
+	--✨color--default: var(--stratakit-color-text-neutral-primary);
+	--✨color--accent: var(--stratakit-color-text-accent-strong);
+	--✨color--accent-hover: color-mix(
+		in oklch,
+		var(--✨color--accent) 100%,
+		var(--stratakit-color-glow-hue) var(--stratakit-color-text-glow-strong-hover-\%)
+	);
+	--✨color--accent-pressed: color-mix(
+		in oklch,
+		var(--✨color--accent) 100%,
+		var(--stratakit-color-glow-hue) var(--stratakit-color-text-glow-strong-pressed-\%)
+	);
+	--✨color--critical: var(--stratakit-color-text-critical-base);
+	--✨color--critical-hover: color-mix(
+		in oklch,
+		var(--✨color--critical) 100%,
+		var(--stratakit-color-glow-hue) var(--stratakit-color-text-glow-strong-hover-\%)
+	);
+	--✨color--critical-pressed: color-mix(
+		in oklch,
+		var(--✨color--critical) 100%,
+		var(--stratakit-color-glow-hue) var(--stratakit-color-text-glow-strong-pressed-\%)
+	);
+	--✨color--disabled: var(--stratakit-color-text-neutral-disabled);
+
+	@layer base {
+		cursor: pointer;
+		font-size: var(--stratakit-font-size-12);
+		font-weight: 500;
+		text-underline-offset: var(--🌀Anchor-state--default, var(--stratakit-space-x05))
+			var(--🌀Anchor-state--hover, var(--stratakit-space-x1))
+			var(--🌀Anchor-state--pressed, var(--stratakit-space-x1));
+		text-decoration-color: var(--🌀Anchor-state--default, currentColor)
+			var(--🌀Anchor-state--hover, currentColor) var(--🌀Anchor-state--pressed, transparent);
+		text-decoration-line: underline;
+
+		&:where(:has(.🥝AnchorText)) {
+			text-decoration-line: none;
+		}
+
+		border-radius: 4px;
+
+		color: var(--🥝Anchor-color, var(--✨color--default));
+		-webkit-tap-highlight-color: var(--stratakit-color-bg-glow-on-surface-neutral-pressed);
+
+		transition: all 150ms ease-out;
+		transition-property: color, text-decoration-color, text-underline-offset;
+	}
+
+	@layer modifiers {
+		&:where([data-_sk-tone="accent"]) {
+			--🥝Anchor-color: var(--🌀Anchor-state--default, var(--✨color--accent))
+				var(--🌀Anchor-state--hover, var(--✨color--accent-hover))
+				var(--🌀Anchor-state--pressed, var(--✨color--accent-pressed));
+			-webkit-tap-highlight-color: var(--stratakit-color-bg-glow-on-surface-accent-pressed);
+		}
+
+		&:where([data-_sk-tone="critical"]) {
+			--🥝Anchor-color: var(--🌀Anchor-state--default, var(--✨color--critical))
+				var(--🌀Anchor-state--hover, var(--✨color--critical-hover))
+				var(--🌀Anchor-state--pressed, var(--✨color--critical-pressed));
+			-webkit-tap-highlight-color: var(--stratakit-color-bg-glow-on-surface-critical-pressed);
+		}
+	}
+
+	@layer states {
+		@media (any-hover: hover) {
+			&:where(:hover) {
+				--🌀Anchor-state: var(--🌀Anchor-state--hover);
+			}
+		}
+
+		&:where(:active) {
+			--🌀Anchor-state: var(--🌀Anchor-state--pressed);
+		}
+
+		&:where(:focus-visible) {
+			--🥝focus-outline-offset: var(--stratakit-space-x05);
+		}
+
+		&:where(:disabled, [aria-disabled="true"]) {
+			--🥝Anchor-color: var(--✨color--disabled);
+			cursor: not-allowed;
+			text-decoration: none;
+		}
+	}
+
+	@layer base.🌀 {
+		/* https://kizu.dev/cyclic-toggles/ */
+		--🌀Anchor-state: var(--🌀Anchor-state--default);
+		--🌀Anchor-state--default: var(--🌀Anchor-state,);
+		--🌀Anchor-state--hover: var(--🌀Anchor-state,);
+		--🌀Anchor-state--pressed: var(--🌀Anchor-state,);
+	}
+}
+
+.🥝AnchorText {
+	@layer base {
+		text-decoration-line: underline;
+		unicode-bidi: bidi-override;
+	}
+}
+
+.🥝AnchorExternalMarker {
+	@layer base {
+		user-select: none;
+	}
+}
+
+@media (forced-colors: active) {
+	.🥝Anchor:where(button) {
+		color: LinkText;
+	}
+}

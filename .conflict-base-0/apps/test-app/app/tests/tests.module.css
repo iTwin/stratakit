@@ -1,0 +1,32 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+.page {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--stratakit-space-x4);
+	container-type: inline-size;
+}
+
+.main {
+	padding: var(--stratakit-space-x4);
+	flex: 999;
+	min-inline-size: 50%; /* never less than half the screen */
+}
+
+.sidebar {
+	flex-grow: 1;
+	position: sticky;
+	inset-block-start: -1px; /* hide the border off screen */
+	inset-inline-end: 0;
+	align-self: flex-start;
+
+	@container (inline-size >= 542px) {
+		block-size: 100dvb; /* TODO: move this to page and update visual test selectors. */
+	}
+}
+
+.pushRight {
+	margin-inline-start: auto;
+}

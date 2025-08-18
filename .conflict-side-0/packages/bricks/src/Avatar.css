@@ -1,0 +1,79 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+.🥝Avatar {
+	--✨shadow-border: 0px 0px 0px 1px var(--stratakit-color-border-glow-strong-default) inset;
+
+	@layer base {
+		--🥝Avatar-background-color: var(--stratakit-color-bg-mono-base);
+
+		block-size: var(--🥝Avatar-size);
+		inline-size: var(--🥝Avatar-size);
+		background-color: var(--🥝Avatar-background-color);
+		color: var(--stratakit-color-text-neutral-emphasis);
+		display: inline-grid;
+		place-items: center;
+		border-radius: 50%;
+		user-select: none;
+		position: relative;
+		overflow: hidden;
+
+		&::after {
+			content: "";
+			position: absolute;
+			inset: 0;
+			border-radius: inherit;
+			box-shadow: var(--✨shadow-border);
+		}
+
+		> img {
+			background-color: inherit;
+			block-size: inherit;
+			inline-size: inherit;
+			object-fit: cover;
+			object-position: center;
+		}
+	}
+
+	@layer modifiers {
+		&:where([data-_sk-size="small"]) {
+			--🥝Avatar-size: 1rem;
+			--🥝Avatar-font-size: var(--stratakit-font-size-8);
+			--🥝Icon-size: 0.75rem;
+		}
+
+		&:where([data-_sk-size="medium"]) {
+			--🥝Avatar-size: 1.5rem;
+			--🥝Avatar-font-size: var(--stratakit-font-size-10);
+			--🥝Icon-size: 1rem;
+		}
+
+		&:where([data-_sk-size="large"]) {
+			--🥝Avatar-size: 2rem;
+			--🥝Avatar-font-size: var(--stratakit-font-size-12);
+			--🥝Icon-size: 1rem;
+		}
+
+		&:where([data-_sk-size="xlarge"]) {
+			--🥝Avatar-size: 3rem;
+			--🥝Avatar-font-size: var(--stratakit-font-size-16);
+			--🥝Icon-size: 1.5rem;
+		}
+	}
+}
+
+.🥝AvatarInitials {
+	@layer base {
+		font-size: var(--🥝Avatar-font-size);
+		font-weight: 600;
+		text-align: center;
+		text-transform: uppercase;
+	}
+}
+
+@media (forced-colors: active) {
+	.🥝Avatar {
+		border: 1px solid;
+	}
+}

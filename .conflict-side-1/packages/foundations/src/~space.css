@@ -1,0 +1,19 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+html,
+:host,
+.🥝Root {
+	--stratakit-space-x05: 2px;
+	--stratakit-space-x1: 4px;
+	--stratakit-space-x2: 8px;
+	--stratakit-space-x3: 12px;
+	--stratakit-space-x4: 16px;
+	--stratakit-space-x5: 20px;
+	--stratakit-space-x6: 24px;
+	--stratakit-space-x7: 28px;
+	--stratakit-space-x8: 32px;
+	--stratakit-space-x9: 36px;
+	--stratakit-space-x10: 40px;
+}

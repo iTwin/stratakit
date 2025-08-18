@@ -1,0 +1,190 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+
+.🥝TabList {
+	@layer base {
+		--🥝Tab-active-stripe-gap: var(--stratakit-space-x2);
+		--🥝Tab-active-stripe-size: var(--stratakit-space-x05);
+		--🥝Tab-padding-inline: var(--stratakit-space-x1);
+
+		display: flex;
+		gap: var(--stratakit-space-x2);
+		position: relative;
+
+		@supports (position-anchor: --foo) {
+			&::after {
+				content: "";
+				position: absolute;
+				position-anchor: --🥝Tab-active-tab;
+				inset-inline-start: calc(anchor(start) + var(--🥝Tab-padding-inline));
+				inset-block-end: calc(anchor(end) - var(--🥝Tab-active-stripe-gap));
+				inline-size: calc(anchor-size(inline) - 2 * var(--🥝Tab-padding-inline));
+				block-size: var(--🥝Tab-active-stripe-size);
+				background-color: var(--🥝Tab-active-stripe-color);
+				will-change: transform;
+			}
+		}
+	}
+
+	@layer modifiers {
+		&[aria-orientation="horizontal"] {
+			padding-block-end: var(--🥝Tab-active-stripe-gap);
+		}
+
+		&:where([data-_sk-tone="neutral"]) {
+			--🥝Tab-active-stripe-color: var(--stratakit-color-border-neutral-inverse);
+		}
+
+		&:where([data-_sk-tone="accent"]) {
+			--🥝Tab-active-stripe-color: var(--stratakit-color-border-accent-strong);
+		}
+	}
+}
+
+.🥝Tab {
+	--✨height: 1.25rem;
+	--✨gap: var(--stratakit-space-x1);
+
+	--✨bg--default: transparent;
+	--✨bg--hover-neutral: var(--stratakit-color-bg-glow-on-surface-neutral-hover);
+	--✨bg--hover-accent: var(--stratakit-color-bg-glow-on-surface-accent-hover);
+	--✨bg--selected: transparent;
+	--✨bg--disabled: transparent;
+
+	--✨color--default: var(--stratakit-color-text-neutral-tertiary);
+	--✨color--hover-neutral: var(--stratakit-color-text-neutral-primary);
+	--✨color--hover-accent: var(--stratakit-color-text-accent-strong);
+	--✨color--selected-neutral: var(--stratakit-color-text-neutral-primary);
+	--✨color--selected-accent: var(--stratakit-color-text-accent-strong);
+	--✨color--disabled: var(--stratakit-color-text-neutral-disabled);
+
+	@layer base {
+		font-size: var(--stratakit-font-size-12);
+		color: var(--🥝Tab-color);
+		background-color: var(--🥝Tab-background-color);
+		border: none;
+		border-radius: 4px;
+		block-size: var(--✨height);
+		padding-inline: var(--🥝Tab-padding-inline);
+		position: relative;
+		user-select: none;
+		white-space: nowrap;
+		transition:
+			background-color 150ms ease-out,
+			color 150ms ease-out;
+		cursor: pointer;
+
+		display: inline-flex;
+		align-items: center;
+		gap: var(--✨gap);
+
+		/* This pseudo-element increases tap target size */
+		&::before {
+			content: "";
+			position: absolute;
+			inset-inline: 0;
+			inset-block: 0 calc(var(--🥝Tab-active-stripe-gap) * -1);
+		}
+	}
+
+	@layer modifiers {
+		:where(.🥝TabList[data-_sk-tone="neutral"]) & {
+			--🥝Tab-background-color: var(--🌀Tab-state--default, var(--✨bg--default))
+				var(--🌀Tab-state--hover, var(--✨bg--hover-neutral))
+				var(--🌀Tab-state--selected, var(--✨bg--selected))
+				var(--🌀Tab-state--disabled, var(--✨bg--disabled));
+			--🥝Tab-color: var(--🌀Tab-state--default, var(--✨color--default))
+				var(--🌀Tab-state--hover, var(--✨color--hover-neutral))
+				var(--🌀Tab-state--selected, var(--✨color--selected-neutral))
+				var(--🌀Tab-state--disabled, var(--✨color--disabled));
+			-webkit-tap-highlight-color: var(--stratakit-color-bg-glow-on-surface-neutral-pressed);
+		}
+
+		:where(.🥝TabList[data-_sk-tone="accent"]) & {
+			--🥝Tab-background-color: var(--🌀Tab-state--default, var(--✨bg--default))
+				var(--🌀Tab-state--hover, var(--✨bg--hover-accent))
+				var(--🌀Tab-state--selected, var(--✨bg--selected))
+				var(--🌀Tab-state--disabled, var(--✨bg--disabled));
+			--🥝Tab-color: var(--🌀Tab-state--default, var(--✨color--default))
+				var(--🌀Tab-state--hover, var(--✨color--hover-accent))
+				var(--🌀Tab-state--selected, var(--✨color--selected-accent))
+				var(--🌀Tab-state--disabled, var(--✨color--disabled));
+			-webkit-tap-highlight-color: var(--stratakit-color-bg-glow-on-surface-accent-pressed);
+		}
+	}
+
+	@layer states {
+		&:where([aria-selected="true"]) {
+			--🌀Tab-state: var(--🌀Tab-state--selected);
+
+			anchor-name: --🥝Tab-active-tab;
+
+			@supports not (anchor-name: --foo) {
+				&::after {
+					content: "";
+					position: absolute;
+					background-color: var(--🥝Tab-active-stripe-color);
+					block-size: var(--🥝Tab-active-stripe-size);
+					inset-inline: var(--🥝Tab-padding-inline);
+					inset-block: auto calc(var(--🥝Tab-active-stripe-gap) * -1);
+				}
+			}
+		}
+
+		@media (any-hover: hover) {
+			&:where(:hover) {
+				--🌀Tab-state: var(--🌀Tab-state--hover);
+			}
+		}
+
+		&:where(:disabled, [aria-disabled="true"]) {
+			--🌀Tab-state: var(--🌀Tab-state--disabled);
+			--🥝Tab-active-stripe-color: var(--stratakit-color-border-neutral-disabled);
+			cursor: not-allowed;
+			-webkit-tap-highlight-color: transparent;
+		}
+	}
+
+	@layer base.🌀 {
+		/* Cyclic toggles for default/hover/selected/disabled states. See https://kizu.dev/cyclic-toggles/ */
+		--🌀Tab-state: var(--🌀Tab-state--default);
+		--🌀Tab-state--default: var(--🌀Tab-state,);
+		--🌀Tab-state--hover: var(--🌀Tab-state,);
+		--🌀Tab-state--selected: var(--🌀Tab-state,);
+		--🌀Tab-state--disabled: var(--🌀Tab-state,);
+	}
+}
+
+.🥝TabPanel {
+	@layer base {
+		--🥝focus-outline-offset: calc(var(--stratakit-space-x05) * -1);
+
+		/* Prevents stacking when multiple panels are mounted (during animation) */
+		&:not([data-open]) {
+			display: none !important;
+		}
+	}
+}
+
+@media (forced-colors: active) {
+	.🥝TabList,
+	.🥝Tab {
+		--🥝Tab-active-stripe-color: CanvasText;
+	}
+
+	.🥝Tab {
+		--🥝Tab-color: CanvasText;
+
+		&:where([aria-selected="true"]) {
+			forced-color-adjust: none;
+			--🥝Tab-background-color: SelectedItem;
+			--🥝Tab-color: SelectedItemText;
+		}
+
+		&:where(:disabled, [aria-disabled="true"]) {
+			--🥝Tab-color: GrayText;
+		}
+	}
+}

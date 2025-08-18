@@ -1,0 +1,66 @@
+name: Publish to npm
+
+on:
+  workflow_dispatch:
+    inputs:
+      package:
+        description: "Which package to publish?"
+        required: true
+        type: choice
+        default: bricks
+        options:
+          - foundations
+          - icons
+          - bricks
+          - structures
+          - compat
+      tag:
+        description: "Which npm tag to publish to?"
+        required: true
+        type: choice
+        default: dev
+        options:
+          - dev
+          - latest
+
+  workflow_call:
+    inputs:
+      package:
+        required: true
+        type: string
+        default: bricks
+      tag:
+        required: true
+        type: string
+        default: alpha
+    secrets:
+      NPMJS_PUBLISH_ITWIN:
+        required: true
+
+jobs:
+  publish:
+    name: Build and publish output to npm
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9.15.4
+
+      - name: Use Node 22.x
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22.x
+          cache: "pnpm"
+          registry-url: https://registry.npmjs.org/
+
+      - run: pnpm install
+
+      - run: pnpm --filter="./packages/**" run build
+
+      - run: npm publish --access public --tag ${{ inputs.tag }}
+        working-directory: "./packages/${{ inputs.package }}/"
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPMJS_PUBLISH_ITWIN }}

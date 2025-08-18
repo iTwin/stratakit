@@ -1,0 +1,102 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+
+.🥝Skeleton {
+	--✨duration: 1.6s;
+	--✨easing: cubic-bezier(0.32, 1, 0.64, 1);
+	--✨gradient: linear-gradient(
+		to right,
+		oklch(from var(--stratakit-color-glow-hue) l c h / 0.04) 40%,
+		oklch(from var(--stratakit-color-glow-hue) l c h / 0.08) 50%,
+		oklch(from var(--stratakit-color-glow-hue) l c h / 0.04) 60%
+	);
+
+	@layer base {
+		background-color: var(--stratakit-color-bg-glow-on-surface-disabled);
+		border-radius: var(--🥝Skeleton-border-radius);
+		block-size: var(--🥝Skeleton-height);
+		inline-size: var(--🥝Skeleton-width);
+
+		@media (prefers-reduced-motion: no-preference) {
+			background: var(--✨gradient);
+			background-size: 300%;
+			background-position-x: 100%;
+			background-attachment: fixed;
+			animation: --🥝Skeleton-shimmer var(--✨duration) var(--✨easing) infinite;
+		}
+	}
+
+	@layer modifiers {
+		&:where([data-_sk-variant="text"]) {
+			--🥝Skeleton-width: 100%;
+			--🥝Skeleton-border-radius: 2px /* radius(in progress)/xsmall */;
+
+			&:where([data-_sk-size="xsmall"]) {
+				--🥝Skeleton-height: 0.75rem;
+			}
+
+			&:where([data-_sk-size="small"]) {
+				--🥝Skeleton-height: 0.875rem;
+			}
+
+			&:where([data-_sk-size="medium"]) {
+				--🥝Skeleton-height: 1rem;
+			}
+
+			&:where([data-_sk-size="large"]) {
+				--🥝Skeleton-height: 1.25rem;
+			}
+
+			&:where([data-_sk-size="xlarge"]) {
+				--🥝Skeleton-height: 1.5rem;
+			}
+		}
+
+		&:where([data-_sk-variant="object"]) {
+			&:where([data-_sk-size="xsmall"]) {
+				--🥝Skeleton-border-radius: 2px /* radius(in progress)/xsmall */;
+				--🥝Skeleton-height: 0.75rem;
+				--🥝Skeleton-width: 0.75rem;
+			}
+
+			&:where([data-_sk-size="small"]) {
+				--🥝Skeleton-border-radius: 2px /* radius(in progress)/xsmall */;
+				--🥝Skeleton-height: 1rem;
+				--🥝Skeleton-width: 1rem;
+			}
+
+			&:where([data-_sk-size="medium"]) {
+				--🥝Skeleton-border-radius: 4px /* radius(in progress)/small */;
+				--🥝Skeleton-height: 1.5rem;
+				--🥝Skeleton-width: 1.5rem;
+			}
+
+			&:where([data-_sk-size="large"]) {
+				--🥝Skeleton-border-radius: 4px /* radius(in progress)/small */;
+				--🥝Skeleton-height: 2rem;
+				--🥝Skeleton-width: 2rem;
+			}
+
+			&:where([data-_sk-size="xlarge"]) {
+				--🥝Skeleton-border-radius: 4px /* radius(in progress)/small */;
+				--🥝Skeleton-height: 3rem;
+				--🥝Skeleton-width: 3rem;
+			}
+		}
+	}
+}
+
+@keyframes --🥝Skeleton-shimmer {
+	to {
+		background-position-x: 0%;
+	}
+}
+
+@media (forced-colors: active) {
+	.🥝Skeleton {
+		border: 1px solid;
+		background-color: transparent;
+	}
+}

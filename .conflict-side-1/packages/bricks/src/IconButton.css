@@ -1,0 +1,35 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+.🥝IconButton:is(.🥝Button) {
+	--✨padding-inline: var(--stratakit-space-x1);
+
+	@layer base {
+		aspect-ratio: 1;
+		--🥝button-padding-inline: var(--✨padding-inline);
+		--🥝ghost-inline-offset: var(--✨padding-inline);
+	}
+}
+
+.🥝IconButtonDot:is(.🥝Dot) {
+	@layer base {
+		position: absolute;
+		inset-block-start: var(--stratakit-space-x05);
+		inset-inline-end: var(--stratakit-space-x05);
+	}
+}
+
+@media (forced-colors: active) {
+	.🥝IconButton {
+		&:where([inert]) {
+			border: none;
+		}
+	}
+
+	.🥝IconButtonDot:is(.🥝Dot) {
+		:where(.🥝IconButton[aria-pressed="true"]) & {
+			background-color: SelectedItemText;
+		}
+	}
+}

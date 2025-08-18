@@ -1,0 +1,104 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+
+.🥝Spinner {
+	--✨duration: 1s;
+	--✨duration-slow: 2s;
+
+	--✨animation--indeterminate: --🥝Spinner-animation-indeterminate linear infinite;
+
+	@layer base {
+		display: inline-block;
+		block-size: var(--🥝Spinner-size);
+		inline-size: var(--🥝Spinner-size);
+	}
+
+	@layer modifiers {
+		&:where([data-_sk-tone="neutral"]) {
+			--🥝Spinner-fill-color: var(--stratakit-color-icon-neutral-base);
+			--🥝Spinner-track-color: var(--stratakit-color-border-page-base);
+		}
+
+		&:where([data-_sk-tone="accent"]) {
+			--🥝Spinner-fill-color: var(--stratakit-color-icon-accent-strong);
+			--🥝Spinner-track-color: var(--stratakit-color-bg-accent-muted);
+		}
+
+		&:where([data-_sk-size="small"]) {
+			--🥝Spinner-size: 1rem;
+		}
+
+		&:where([data-_sk-size="medium"]) {
+			--🥝Spinner-size: 1.5rem;
+		}
+
+		&:where([data-_sk-size="large"]) {
+			--🥝Spinner-size: 2rem;
+		}
+
+		&:where([data-_sk-size="xlarge"]) {
+			--🥝Spinner-size: 3rem;
+		}
+
+		&:where([data-_sk-variant="indeterminate"]) {
+			--🥝Spinner-animation: var(--✨animation--indeterminate);
+			--🥝Spinner-animation-duration: var(--✨duration);
+			--🥝Spinner-dash-array: 25 75;
+
+			@media (prefers-reduced-motion) {
+				--🥝Spinner-animation-duration: var(--✨duration-slow);
+			}
+		}
+	}
+}
+
+.🥝SpinnerSvg {
+	@layer base {
+		block-size: inherit;
+		inline-size: inherit;
+		fill: none;
+	}
+}
+
+.🥝SpinnerSvgTrack {
+	stroke: var(--🥝Spinner-track-color);
+}
+
+.🥝SpinnerSvgFill {
+	animation: var(--🥝Spinner-animation);
+	animation-duration: var(--🥝Spinner-animation-duration);
+	stroke: var(--🥝Spinner-fill-color);
+	stroke-dasharray: var(--🥝Spinner-dash-array);
+	stroke-dashoffset: 25;
+	stroke-linecap: round;
+	transform-box: fill-box;
+	transform-origin: center;
+}
+
+@keyframes --🥝Spinner-animation-indeterminate {
+	to {
+		rotate: 360deg;
+	}
+}
+
+@media (forced-colors: active) {
+	.🥝Spinner {
+		/* Fill is used as track, track is used as fill. */
+		--🥝Spinner-fill-color: Canvas;
+		--🥝Spinner-track-color: CanvasText;
+
+		&:where([data-_sk-variant="indeterminate"]) {
+			--🥝Spinner-dash-array: 75 25; /* Inverts the sizes of fill & track. */
+		}
+	}
+
+	.🥝SpinnerSvgTrack {
+		stroke-width: 2; /* Makes the track twice as thick to create an outline around the spinner. */
+	}
+
+	.🥝SpinnerSvgFill {
+		stroke-dashoffset: 0; /* Makes the fill start in the same location as non-forced-colors mode. */
+	}
+}

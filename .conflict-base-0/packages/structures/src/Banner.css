@@ -1,0 +1,101 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+
+.🥝-banner {
+	@layer base {
+		display: grid;
+		grid-template-columns: [start] auto [content] minmax(0, 1fr) [end] auto;
+		background-color: var(--🥝banner-color-background);
+		border: 1px solid var(--🥝banner-color-border);
+		border-radius: 8px;
+		padding: var(--stratakit-space-x3);
+		align-items: center;
+		inline-size: 100%;
+	}
+
+	@layer modifiers {
+		&:where([data-kiwi-variant="outline"]) {
+			--🥝banner-color-background: var(--stratakit-color-bg-elevation-base);
+
+			&:where([data-kiwi-tone="neutral"]) {
+				--🥝banner-color-border: var(--stratakit-color-border-neutral-base);
+			}
+		}
+
+		&:where([data-kiwi-tone="info"]) {
+			--🥝banner-color-border: var(--stratakit-color-border-info-base);
+			--🥝icon-color: var(--stratakit-color-icon-info-base);
+		}
+
+		&:where([data-kiwi-tone="positive"]) {
+			--🥝banner-color-border: var(--stratakit-color-border-positive-base);
+			--🥝icon-color: var(--stratakit-color-icon-positive-base);
+		}
+
+		&:where([data-kiwi-tone="attention"]) {
+			--🥝banner-color-border: var(--stratakit-color-border-attention-base);
+			--🥝icon-color: var(--stratakit-color-icon-attention-base);
+		}
+
+		&:where([data-kiwi-tone="critical"]) {
+			--🥝banner-color-border: var(--stratakit-color-border-critical-base);
+			--🥝icon-color: var(--stratakit-color-icon-critical-base);
+		}
+	}
+}
+
+.🥝-banner-icon {
+	@layer base {
+		grid-column: start;
+		grid-row: 1;
+		align-self: start;
+		margin-inline-end: var(--stratakit-space-x2);
+	}
+}
+
+.🥝-banner-label {
+	@layer base {
+		grid-column: content;
+		font-weight: 500;
+		align-self: start;
+		margin-block-end: var(--stratakit-space-x1);
+	}
+}
+
+.🥝-banner-message {
+	@layer base {
+		grid-column: content;
+		overflow: hidden;
+		overflow-wrap: break-word;
+		hyphens: auto;
+	}
+}
+
+.🥝-banner-actions {
+	@layer base {
+		grid-column: content;
+		justify-self: start;
+		display: flex;
+		flex-wrap: wrap;
+		align-items: baseline;
+		gap: var(--stratakit-space-x2);
+		margin-block-start: var(--stratakit-space-x3);
+	}
+}
+
+.🥝-banner-dismiss-button {
+	@layer base {
+		grid-column: end;
+		grid-row: 1;
+		align-self: start;
+		margin-inline-start: var(--stratakit-space-x3);
+	}
+}
+
+@media (forced-colors: active) {
+	.🥝-banner {
+		--🥝icon-color: CanvasText;
+	}
+}

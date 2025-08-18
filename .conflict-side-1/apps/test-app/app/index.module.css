@@ -1,0 +1,24 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+.main {
+	padding: var(--stratakit-space-x8);
+}
+
+.list {
+	padding-block: var(--stratakit-space-x2);
+	list-style-type: "";
+}
+
+.hgroup {
+	border-block-end: 1px solid var(--stratakit-color-border-neutral-base);
+
+	> * {
+		margin-block-end: var(--stratakit-space-x2);
+	}
+}
+
+.h2 {
+	margin-block-start: var(--stratakit-space-x4);
+}

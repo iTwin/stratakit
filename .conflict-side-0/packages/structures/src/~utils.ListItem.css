@@ -1,0 +1,131 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+.🥝ListItem {
+	--✨height--default: 1.75rem;
+	--✨height--large: 2.75rem;
+	--✨padding-inline: var(--stratakit-space-x2);
+
+	--✨bg--default: transparent;
+	--✨bg--hover: var(--stratakit-color-bg-glow-on-surface-neutral-hover);
+	--✨bg--pressed: var(--stratakit-color-bg-glow-on-surface-neutral-pressed);
+	--✨bg--active: var(--stratakit-color-bg-glow-on-surface-accent-pressed);
+	--✨bg--active-hover: color-mix(
+		in oklch,
+		var(--✨bg--active) 100%,
+		var(--stratakit-color-glow-hue) var(--stratakit-color-bg-glow-strong-hover-\%)
+	);
+	--✨bg--disabled: var(--stratakit-color-text-neutral-disabled);
+
+	--✨color--default: var(--stratakit-color-text-neutral-primary);
+	--✨color--active: var(--stratakit-color-text-accent-strong);
+	--✨color--disabled: var(--✨bg--disabled);
+
+	@layer base {
+		cursor: pointer;
+		line-height: 1.2;
+		font-size: var(--stratakit-font-size-12);
+
+		display: grid;
+		align-items: center;
+		align-content: center;
+		/* biome-ignore format: improve readability */
+		grid-template-columns:
+			[decoration-before-start] auto [decoration-before-end
+			content-start] minmax(0, 1fr) [content-end
+			decoration-after-start] auto [decoration-after-end];
+
+		min-block-size: var(--🥝ListItem-height, var(--✨height--default));
+		padding-inline: var(--✨padding-inline);
+		background-color: var(--🥝ListItem-background-color);
+
+		--🥝ListItem-background-color: var(--🌀ListItem-state--default, var(--✨bg--default))
+			var(--🌀ListItem-state--hover, var(--✨bg--hover))
+			var(--🌀ListItem-state--pressed, var(--✨bg--pressed))
+			var(--🌀ListItem-state--active, var(--✨bg--active))
+			var(--🌀ListItem-state--active-hover, var(--✨bg--active-hover))
+			var(--🌀ListItem-state--disabled, var(--✨bg--default));
+		color: var(
+			--🥝ListItem-color,
+			var(--🌀ListItem-state--default, var(--✨color--default))
+				var(--🌀ListItem-state--hover, var(--✨color--default))
+				var(--🌀ListItem-state--pressed, var(--✨color--default))
+				var(--🌀ListItem-state--active, var(--✨color--active))
+				var(--🌀ListItem-state--active-hover, var(--✨color--active))
+				var(--🌀ListItem-state--disabled, var(--✨color--disabled))
+		);
+		--🥝Icon-color: var(--🌀ListItem-state--default, var(--stratakit-color-icon-neutral-base))
+			var(--🌀ListItem-state--hover, var(--stratakit-color-icon-neutral-hover))
+			var(--🌀ListItem-state--pressed, var(--stratakit-color-icon-neutral-hover))
+			var(--🌀ListItem-state--active, var(--stratakit-color-icon-accent-strong))
+			var(--🌀ListItem-state--active-hover, var(--stratakit-color-icon-accent-strong))
+			var(--🌀ListItem-state--disabled, var(--stratakit-color-icon-neutral-disabled));
+	}
+
+	@layer states {
+		@media (any-hover: hover) {
+			&:where(:hover) {
+				--🌀ListItem-state: var(--🌀ListItem-state--hover);
+			}
+		}
+
+		&:where(:active) {
+			--🌀ListItem-state: var(--🌀ListItem-state--pressed);
+		}
+
+		&:where(:disabled, [aria-disabled="true"]) {
+			--🌀ListItem-state: var(--🌀ListItem-state--disabled);
+			cursor: not-allowed;
+		}
+	}
+
+	@layer modifiers {
+		&:where(:has(> :nth-child(2 of .🥝ListItemContent))) {
+			--🥝ListItem-height: var(--✨height--large);
+			grid-template-rows: repeat(auto-fit, minmax(0, auto));
+		}
+	}
+
+	@layer base.🌀 {
+		/* See https://kizu.dev/cyclic-toggles/ */
+		--🌀ListItem-state: var(--🌀ListItem-state--default);
+		--🌀ListItem-state--default: var(--🌀ListItem-state,);
+		--🌀ListItem-state--hover: var(--🌀ListItem-state,);
+		--🌀ListItem-state--pressed: var(--🌀ListItem-state,);
+		--🌀ListItem-state--active: var(--🌀ListItem-state,);
+		--🌀ListItem-state--active-hover: var(--🌀ListItem-state,);
+		--🌀ListItem-state--disabled: var(--🌀ListItem-state,);
+	}
+}
+
+.🥝ListItemContent {
+	@layer base {
+		grid-column: content;
+	}
+}
+
+.🥝ListItemDecoration {
+	--✨gap: var(--stratakit-space-x1);
+
+	@layer base {
+		grid-column: decoration-before;
+		grid-row: 1 / -1;
+		align-self: start;
+
+		display: flex;
+		align-items: center;
+		margin-inline-end: var(--✨gap);
+
+		:where(.🥝ListItemContent) ~ & {
+			grid-column: decoration-after;
+			margin-inline: var(--✨gap) 0;
+		}
+	}
+}
+
+@media (forced-colors: active) {
+	.🥝ListItem:where(:disabled, [aria-disabled="true"]) {
+		color: GrayText;
+	}
+}

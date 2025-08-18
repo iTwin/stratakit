@@ -1,0 +1,33 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+html:where([data-color-scheme="light"]),
+:host([data-color-scheme="light"]),
+.🥝Root:where([data-_sk-theme="light"]) {
+	@apply --theme("light");
+	color-scheme: light;
+
+	/* TODO: Replace with tokens from Figma when available */
+	--stratakit-color-border-shadow-base: var(--stratakit-color-border-neutral-base);
+	--stratakit-color-border-shadow-strong: --primitive("color.black.12");
+
+	@supports not (color: oklch(0% 0 0)) {
+		@apply --theme-fallback("light");
+	}
+}
+
+html:where([data-color-scheme="dark"]),
+:host([data-color-scheme="dark"]),
+.🥝Root:where([data-_sk-theme="dark"]) {
+	@apply --theme("dark");
+	color-scheme: dark;
+
+	/* TODO: Replace with tokens from Figma when available */
+	--stratakit-color-border-shadow-base: --primitive("color.white.8");
+	--stratakit-color-border-shadow-strong: --primitive("color.white.16");
+
+	@supports not (color: oklch(0% 0 0)) {
+		@apply --theme-fallback("dark");
+	}
+}

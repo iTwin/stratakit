@@ -1,0 +1,184 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+.🥝TreeItem {
+	@layer base {
+		position: relative;
+		min-inline-size: max-content;
+	}
+
+	@layer states {
+		&:focus-visible {
+			outline: none;
+			isolation: isolate;
+
+			&::before {
+				content: "";
+				position: absolute;
+				inset: 0;
+				z-index: 1; /* Ensure the outline appears above the actions */
+				pointer-events: none;
+				outline: var(--🥝focus-outline);
+				outline-offset: -1px;
+			}
+		}
+
+		@media (any-hover: hover) {
+			&:where(:not(:hover, :focus-visible, :has(:focus-visible), :has([data-has-popover-open]))) {
+				/** Hide every action unless one of these conditions match. */
+				--🥝TreeItem-action-visibility: hidden;
+			}
+
+			/* Without :has, we can't easily detect complex conditions, so unconditionally show actions. */
+			@supports not selector(:has(+ *)) {
+				--🥝TreeItem-action-visibility: visible;
+			}
+		}
+	}
+}
+
+.🥝TreeItemNode:is(.🥝ListItem) {
+	--✨first-level-indent: var(--stratakit-space-x2);
+	--✨subsequent-level-indent: calc(var(--stratakit-space-x1) + var(--stratakit-space-x05));
+
+	@layer base {
+		position: relative;
+		isolation: isolate;
+
+		padding-inline-start: calc(
+			var(--✨first-level-indent) +
+			var(--✨subsequent-level-indent) *
+			(var(--🥝TreeItem-level) - 1)
+		);
+		padding-inline-end: 0;
+
+		--🥝ListItem-color: var(--🥝TreeItem-color);
+	}
+
+	@layer modifiers {
+		&:where([data-_sk-error="true"]) {
+			--🥝Icon-color: var(--stratakit-color-icon-attention-base);
+			--🥝TreeItem-color: var(--stratakit-color-text-attention-base);
+		}
+	}
+
+	@layer states {
+		&:where([data-_sk-selected="true"]) {
+			--🌀ListItem-state: var(--🌀ListItem-state--active);
+		}
+
+		@media (any-hover: hover) {
+			&:where(:hover[data-_sk-selected="true"]) {
+				--🌀ListItem-state: var(--🌀ListItem-state--active-hover);
+			}
+		}
+
+		&:where([data-_sk-expanded="false"]) {
+			--🥝ChevronDown-rotate: -0.25turn;
+		}
+
+		&:where(:not([data-_sk-expanded])) {
+			--🥝TreeItem-expander-visibility: hidden;
+		}
+	}
+}
+
+.🥝TreeItemContent:is(.🥝ListItemContent) {
+	@layer base {
+		white-space: nowrap;
+	}
+}
+
+.🥝TreeItemDescription:is(.🥝ListItemContent) {
+	@layer base {
+		color: var(
+			--🥝TreeItem-color,
+			var(--🌀ListItem-state--default, var(--stratakit-color-text-neutral-secondary))
+		);
+	}
+}
+
+.🥝TreeItemActionsContainer:is(.🥝ListItemDecoration) {
+	@layer base {
+		align-self: stretch;
+		position: sticky;
+		inset-inline-end: 0;
+		padding-inline-end: var(--stratakit-space-x1);
+		background-color: var(--stratakit-color-bg-page-base);
+		display: inline-flex;
+		/** If actions are made visible (by a parent), the actions container should also become visible. */
+		visibility: var(--🥝TreeItem-actions-container-visibility, var(--🥝TreeItem-action-visibility));
+
+		&::before {
+			position: absolute;
+			content: "";
+			inset: 0;
+			background-color: var(--🥝ListItem-background-color);
+			z-index: -1;
+		}
+	}
+
+	@layer modifiers {
+		/* Actions container should be additionally made visible when any individual action is forcibly visible. */
+		&:where(:has(.🥝TreeItemAction[data-_sk-visible="true"])) {
+			--🥝TreeItem-actions-container-visibility: visible;
+		}
+	}
+}
+
+.🥝TreeItemAction:is(.🥝IconButton) {
+	@layer base {
+		visibility: var(--🥝TreeItem-action-visibility);
+		transition: visibility 16ms; /* This allows some time focus to "settle" before determining final visibility. */
+	}
+
+	@layer modifiers {
+		&:where([data-_sk-visible="false"]) {
+			--🥝TreeItem-action-visibility: hidden;
+		}
+
+		&:where([data-_sk-visible="true"]) {
+			--🥝TreeItem-action-visibility: visible;
+		}
+	}
+}
+
+.🥝TreeItemExpander:is(.🥝IconButton) {
+	@layer base {
+		visibility: var(--🥝TreeItem-expander-visibility);
+		z-index: 1; /* Ensure the expander is above the invisible content button */
+	}
+}
+
+.🥝TreeItemDecoration {
+	@layer base {
+		display: flex;
+		align-items: center;
+		gap: var(--stratakit-space-x1);
+	}
+}
+
+@media (forced-colors: active) {
+	.🥝TreeItemNode:is(.🥝ListItem) {
+		--🥝ListItem-background-color: Canvas;
+		--🥝TreeItem-color: CanvasText;
+
+		&:where([data-_sk-error="true"], [data-_sk-selected="true"]) {
+			forced-color-adjust: none;
+		}
+
+		&:where([data-_sk-error="true"]) {
+			.🥝TreeItemContent,
+			.🥝TreeItemDecoration {
+				background-color: Mark;
+				color: MarkText;
+			}
+		}
+
+		&:where([data-_sk-selected="true"]) {
+			--🥝ListItem-background-color: SelectedItem;
+			--🥝TreeItem-color: SelectedItemText;
+		}
+	}
+}

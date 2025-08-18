@@ -1,0 +1,64 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+.🥝DropdownMenu {
+	--✨bg: var(--stratakit-color-bg-elevation-level-1);
+	--✨padding: var(--stratakit-space-x1);
+
+	@layer base {
+		background-color: var(--✨bg);
+
+		display: flex;
+		flex-direction: column;
+
+		min-inline-size: min(95vi, 164px);
+		border-radius: 8px /* radius(in progress)/medium */;
+		padding: var(--✨padding);
+		box-shadow: var(--stratakit-shadow-dropdown-base);
+	}
+}
+
+.🥝DropdownMenuButton {
+	@layer states {
+		&:where([aria-expanded="true"]) {
+			--🥝disclosure-arrow-rotate: 0.5turn;
+		}
+	}
+}
+
+.🥝DropdownMenuItem:is(.🥝ListItem) {
+	@layer base {
+		border-radius: 4px;
+	}
+
+	@layer states {
+		&:where([role="menuitemcheckbox"]:not([aria-checked="true"])) {
+			--🥝dropdown-menu-checkmark-visibility: hidden;
+		}
+	}
+}
+
+.🥝DropdownMenuItemDot:is(.🥝Dot) {
+	@layer base {
+		align-self: center;
+	}
+}
+
+.🥝DropdownMenuCheckmark {
+	@layer base {
+		visibility: var(--🥝dropdown-menu-checkmark-visibility);
+	}
+}
+
+.🥝DropdownMenuItemShortcuts {
+	@layer base {
+		margin-inline-start: var(--stratakit-space-x2);
+	}
+}
+
+@media (forced-colors: active) {
+	.🥝DropdownMenu {
+		border: 1px solid;
+	}
+}

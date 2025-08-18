@@ -1,0 +1,13 @@
+{
+	"name": "examples",
+	"private": true,
+	"type": "module",
+	"version": "0.0.1",
+	"exports": {
+		"./*": "./*"
+	},
+	"dependencies": {
+		"@stratakit/icons": "workspace:*",
+		"@stratakit/bricks": "workspace:*"
+	}
+}

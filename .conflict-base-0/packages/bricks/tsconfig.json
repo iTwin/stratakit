@@ -1,0 +1,10 @@
+{
+	"$schema": "https://json.schemastore.org/tsconfig",
+	"extends": "internal/tsconfig.library.json",
+	"compilerOptions": {
+		"rootDir": "src",
+		"baseUrl": "."
+	},
+	"include": ["src", "types.d.ts"],
+	"exclude": ["node_modules", "dist/**/*"]
+}

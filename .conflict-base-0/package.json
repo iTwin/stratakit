@@ -1,0 +1,40 @@
+{
+	"name": "design-system",
+	"private": true,
+	"type": "module",
+	"version": "0.0.0",
+	"description": "Monorepo for StrataKit",
+	"scripts": {
+		"build": "WIREIT_LOGGER=metrics pnpm --filter=\"./apps/**\" build",
+		"dev": "WIREIT_LOGGER=simple pnpm --filter=@stratakit/test-app dev",
+		"format": "biome format .",
+		"lint": "biome check --error-on-warnings --formatter-enabled=false --linter-enabled=true .",
+		"lint:copyright": "tsx internal/copyright-linter.ts",
+		"prettier": "prettier . '!**/*.{js,jsx,ts,tsx,cjs,cts,mjs,mts,css,json,jsonc}' --check",
+		"test": "pnpm --filter=@stratakit/test-app test --",
+		"changeset": "pnpx @changesets/cli@2.29.4",
+		"changeset:version": "pnpm run changeset version && pnpm format --write",
+		"changeset:publish": "pnpm run build && pnpm run changeset publish"
+	},
+	"devDependencies": {
+		"@actions/github": "^6.0.1",
+		"@biomejs/biome": "2.2.0",
+		"@playwright/test": "catalog:",
+		"@types/node": "catalog:",
+		"colorjs.io": "^0.5.2",
+		"fast-glob": "^3.3.3",
+		"internal": "workspace:*",
+		"lefthook": "^1.12.3",
+		"prettier": "3.6.2",
+		"tsx": "^4.20.4",
+		"typescript": "catalog:",
+		"wireit": "^0.14.12"
+	},
+	"engines": {
+		"node": ">=22.11.0"
+	},
+	"packageManager": "pnpm@9.15.4",
+	"pnpm": {
+		"overrides": {}
+	}
+}

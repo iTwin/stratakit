@@ -1,0 +1,37 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+html {
+	background-color: var(--stratakit-color-bg-page-base);
+	scrollbar-color: var(--stratakit-color-bg-control-scrollbar-surface)
+		var(--stratakit-color-bg-page-base);
+}
+
+body {
+	@apply --typography("body-md");
+}
+
+:is(body, .🥝Root) {
+	font-family: var(--stratakit-font-family-sans);
+	font-variant-alternates: character-variant(alt-1, alt-3, lc-l-with-tail, uc-i-with-serif);
+	color: var(--stratakit-color-text-neutral-primary);
+	--🥝focus-outline: 2px solid var(--stratakit-color-border-accent-strong);
+	--🥝focus-outline-offset: 1px;
+	--🥝selection-color-bg: var(--stratakit-color-bg-accent-base);
+	--🥝selection-color-text: var(--stratakit-color-text-neutral-emphasis);
+
+	@media (forced-colors: active) {
+		--🥝focus-outline: 2px solid Highlight;
+	}
+}
+
+*::selection {
+	background-color: var(--🥝selection-color-bg);
+	color: var(--🥝selection-color-text);
+}
+
+*:focus-visible {
+	outline: var(--🥝focus-outline);
+	outline-offset: var(--🥝focus-outline-offset);
+}

@@ -47,7 +47,7 @@ const Radio = forwardRef<"input", RadioProps>((props, forwardedRef) => {
 		<AkRadio
 			accessibleWhenDisabled
 			{...props}
-			className={cx("🥝-checkbox", "🥝-radio", props.className)}
+			className={cx("🥝Checkbox", "🥝Radio", props.className)}
 			ref={forwardedRef}
 		/>
 	);

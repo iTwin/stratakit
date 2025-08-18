@@ -2,9 +2,9 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-.🥝-select-root {
+.🥝SelectRoot {
 	@layer base {
-		&:where(:has(select.🥝-select), [data-kiwi-has-select="true"]) {
+		&:where(:has(select.🥝Select), [data-kiwi-has-select="true"]) {
 			display: inline-grid;
 			align-items: center;
 			isolation: isolate;
@@ -16,7 +16,7 @@
 	}
 }
 
-.🥝-select:is(.🥝-button) {
+.🥝Select:is(.🥝Button) {
 	--✨padding-inline-start: var(--stratakit-space-x2);
 	--✨padding-inline-end: calc(
 		var(--stratakit-space-x1) /* Gap */ +
@@ -40,7 +40,7 @@
 	}
 }
 
-.🥝-select-arrow:is(.🥝-disclosure-arrow) {
+.🥝SelectArrow:is(.🥝DisclosureArrow) {
 	@layer base {
 		justify-self: end;
 		margin-inline-end: var(--stratakit-space-x1); /* (padding - disclosure offset) */
@@ -54,12 +54,12 @@
 
 	@layer states {
 		@media (any-hover: hover) {
-			:where(.🥝-select:hover) + & {
+			:where(.🥝Select:hover) + & {
 				--🌀select-arrow-state: var(--🌀select-arrow-state--hover);
 			}
 		}
 
-		:where(.🥝-select:disabled) + & {
+		:where(.🥝Select:disabled) + & {
 			--🌀select-arrow-state: var(--🌀select-arrow-state--disabled);
 		}
 	}

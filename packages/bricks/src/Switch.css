@@ -2,7 +2,7 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-.🥝-switch {
+.🥝Switch {
 	--✨width: 2rem;
 	--✨thumb-size: 1rem;
 
@@ -159,7 +159,7 @@
 }
 
 @media (forced-colors: active) {
-	.🥝-switch {
+	.🥝Switch {
 		border-color: CanvasText;
 		--🥝switch-thumb-color: CanvasText;
 

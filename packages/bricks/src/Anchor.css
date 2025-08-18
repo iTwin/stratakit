@@ -2,7 +2,7 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-.🥝-anchor {
+.🥝Anchor {
 	--✨color--default: var(--stratakit-color-text-neutral-primary);
 	--✨color--accent: var(--stratakit-color-text-accent-strong);
 	--✨color--accent-hover: color-mix(
@@ -39,7 +39,7 @@
 			var(--🌀anchor-state--hover, currentColor) var(--🌀anchor-state--pressed, transparent);
 		text-decoration-line: underline;
 
-		&:where(:has(.🥝-anchor-text)) {
+		&:where(:has(.🥝AnchorText)) {
 			text-decoration-line: none;
 		}
 
@@ -99,21 +99,21 @@
 	}
 }
 
-.🥝-anchor-text {
+.🥝AnchorText {
 	@layer base {
 		text-decoration-line: underline;
 		unicode-bidi: bidi-override;
 	}
 }
 
-.🥝-anchor-external-marker {
+.🥝AnchorExternalMarker {
 	@layer base {
 		user-select: none;
 	}
 }
 
 @media (forced-colors: active) {
-	.🥝-anchor:where(button) {
+	.🥝Anchor:where(button) {
 		color: LinkText;
 	}
 }

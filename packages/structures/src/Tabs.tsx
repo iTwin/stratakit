@@ -158,7 +158,7 @@ const TabList = forwardRef<"div", TabListProps>((props, forwardedRef) => {
 		<AkTab.TabList
 			{...rest}
 			data-kiwi-tone={tone}
-			className={cx("🥝-tab-list", props.className)}
+			className={cx("🥝TabList", props.className)}
 			ref={forwardedRef}
 		/>
 	);
@@ -203,7 +203,7 @@ const Tab = forwardRef<"button", TabProps>((props, forwardedRef) => {
 		<AkTab.Tab
 			accessibleWhenDisabled
 			{...props}
-			className={cx("🥝-tab", props.className)}
+			className={cx("🥝Tab", props.className)}
 			ref={forwardedRef}
 		/>
 	);
@@ -230,7 +230,7 @@ const TabPanel = forwardRef<"div", TabPanelProps>((props, forwardedRef) => {
 	return (
 		<AkTab.TabPanel
 			{...props}
-			className={cx("🥝-tab-panel", props.className)}
+			className={cx("🥝TabPanel", props.className)}
 			ref={forwardedRef}
 		/>
 	);

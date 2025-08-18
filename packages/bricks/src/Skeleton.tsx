@@ -42,7 +42,7 @@ const Skeleton = forwardRef<"div", SkeletonProps>((props, forwardedRef) => {
 		<Role.div
 			{...rest}
 			ref={forwardedRef}
-			className={cx("🥝-skeleton", props.className)}
+			className={cx("🥝Skeleton", props.className)}
 			data-kiwi-variant={variant}
 			data-kiwi-size={size}
 			aria-hidden

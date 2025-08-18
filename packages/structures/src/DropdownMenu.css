@@ -2,7 +2,7 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-.🥝-dropdown-menu {
+.🥝DropdownMenu {
 	--✨bg: var(--stratakit-color-bg-elevation-level-1);
 	--✨padding: var(--stratakit-space-x1);
 
@@ -19,7 +19,7 @@
 	}
 }
 
-.🥝-dropdown-menu-button {
+.🥝DropdownMenuButton {
 	@layer states {
 		&:where([aria-expanded="true"]) {
 			--🥝disclosure-arrow-rotate: 0.5turn;
@@ -27,7 +27,7 @@
 	}
 }
 
-.🥝-dropdown-menu-item:is(.🥝-list-item) {
+.🥝DropdownMenuItem:is(.🥝ListItem) {
 	@layer base {
 		border-radius: 4px;
 	}
@@ -39,26 +39,26 @@
 	}
 }
 
-.🥝-dropdown-menu-item-dot:is(.🥝-dot) {
+.🥝DropdownMenuItemDot:is(.🥝Dot) {
 	@layer base {
 		align-self: center;
 	}
 }
 
-.🥝-dropdown-menu-checkmark {
+.🥝DropdownMenuCheckmark {
 	@layer base {
 		visibility: var(--🥝dropdown-menu-checkmark-visibility);
 	}
 }
 
-.🥝-dropdown-menu-item-shortcuts {
+.🥝DropdownMenuItemShortcuts {
 	@layer base {
 		margin-inline-start: var(--stratakit-space-x2);
 	}
 }
 
 @media (forced-colors: active) {
-	.🥝-dropdown-menu {
+	.🥝DropdownMenu {
 		border: 1px solid;
 	}
 }

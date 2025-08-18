@@ -2,7 +2,7 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-.🥝-toolbar {
+.🥝Toolbar {
 	@layer base {
 		display: inline-flex;
 		gap: var(--stratakit-space-x1);
@@ -24,7 +24,7 @@
 	}
 }
 
-.🥝-toolbar-item:is(.🥝-icon-button) {
+.🥝ToolbarItem:is(.🥝IconButton) {
 	@layer modifiers {
 		&:where([data-kiwi-variant="ghost"]) {
 			--🥝button-background-color: var(--🌀button-state--default, transparent)
@@ -45,7 +45,7 @@
 }
 
 @media (forced-colors: active) {
-	.🥝-toolbar {
+	.🥝Toolbar {
 		border: 1px solid;
 	}
 }

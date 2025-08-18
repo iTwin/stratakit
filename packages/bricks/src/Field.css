@@ -2,7 +2,7 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-.🥝-field {
+.🥝Field {
 	--✨layout-inline-label-first: [label-start] auto [label-end control-start] auto [control-end];
 	--✨layout-inline-control-first: [control-start] auto [control-end label-start] auto [label-end];
 	--✨layout-stacked: [label-start control-start] auto [label-end control-end];
@@ -38,7 +38,7 @@
 			}
 		}
 
-		:where(.🥝-description) {
+		:where(.🥝Description) {
 			grid-column: var(--🥝field-description-column);
 		}
 	}

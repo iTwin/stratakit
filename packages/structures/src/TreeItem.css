@@ -2,7 +2,7 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-.🥝-tree-item {
+.🥝TreeItem {
 	@layer base {
 		position: relative;
 		min-inline-size: max-content;
@@ -38,7 +38,7 @@
 	}
 }
 
-.🥝-tree-item-node:is(.🥝-list-item) {
+.🥝TreeItemNode:is(.🥝ListItem) {
 	--✨first-level-indent: var(--stratakit-space-x2);
 	--✨subsequent-level-indent: calc(var(--stratakit-space-x1) + var(--stratakit-space-x05));
 
@@ -84,13 +84,13 @@
 	}
 }
 
-.🥝-tree-item-content:is(.🥝-list-item-content) {
+.🥝TreeItemContent:is(.🥝ListItemContent) {
 	@layer base {
 		white-space: nowrap;
 	}
 }
 
-.🥝-tree-item-description:is(.🥝-list-item-content) {
+.🥝TreeItemDescription:is(.🥝ListItemContent) {
 	@layer base {
 		color: var(
 			--🥝tree-item-color,
@@ -99,7 +99,7 @@
 	}
 }
 
-.🥝-tree-item-actions-container:is(.🥝-list-item-decoration) {
+.🥝TreeItemActionsContainer:is(.🥝ListItemDecoration) {
 	@layer base {
 		align-self: stretch;
 		position: sticky;
@@ -124,13 +124,13 @@
 
 	@layer modifiers {
 		/* Actions container should be additionally made visible when any individual action is forcibly visible. */
-		&:where(:has(.🥝-tree-item-action[data-kiwi-visible="true"])) {
+		&:where(:has(.🥝TreeItemAction[data-kiwi-visible="true"])) {
 			--🥝tree-item-actions-container-visibility: visible;
 		}
 	}
 }
 
-.🥝-tree-item-action:is(.🥝-icon-button) {
+.🥝TreeItemAction:is(.🥝IconButton) {
 	@layer base {
 		visibility: var(--🥝tree-item-action-visibility);
 		transition: visibility 16ms; /* This allows some time focus to "settle" before determining final visibility. */
@@ -147,14 +147,14 @@
 	}
 }
 
-.🥝-tree-item-expander:is(.🥝-icon-button) {
+.🥝TreeItemExpander:is(.🥝IconButton) {
 	@layer base {
 		visibility: var(--🥝tree-item-expander-visibility);
 		z-index: 1; /* Ensure the expander is above the invisible content button */
 	}
 }
 
-.🥝-tree-item-decoration {
+.🥝TreeItemDecoration {
 	@layer base {
 		display: flex;
 		align-items: center;
@@ -163,7 +163,7 @@
 }
 
 @media (forced-colors: active) {
-	.🥝-tree-item-node:is(.🥝-list-item) {
+	.🥝TreeItemNode:is(.🥝ListItem) {
 		--🥝list-item-background-color: Canvas;
 		--🥝tree-item-color: CanvasText;
 
@@ -172,8 +172,8 @@
 		}
 
 		&:where([data-kiwi-error="true"]) {
-			.🥝-tree-item-content,
-			.🥝-tree-item-decoration {
+			.🥝TreeItemContent,
+			.🥝TreeItemDecoration {
 				background-color: Mark;
 				color: MarkText;
 			}

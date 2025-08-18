@@ -2,7 +2,7 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-.🥝-icon {
+.🥝Icon {
 	@layer base {
 		width: var(--🥝icon-size, 1rem);
 		height: var(--🥝icon-size, 1rem);
@@ -22,7 +22,7 @@
 	}
 }
 
-.🥝-disclosure-arrow {
+.🥝DisclosureArrow {
 	@layer base {
 		margin-inline-end: calc(var(--stratakit-space-x2) * -1);
 		rotate: var(--🥝disclosure-arrow-rotate);
@@ -33,7 +33,7 @@
 	}
 }
 
-.🥝-chevron-down {
+.🥝ChevronDown {
 	@layer base {
 		rotate: var(--🥝chevron-down-rotate);
 
@@ -44,7 +44,7 @@
 }
 
 @media (forced-colors: active) {
-	.🥝-icon {
+	.🥝Icon {
 		--🥝icon-color: currentColor;
 	}
 }

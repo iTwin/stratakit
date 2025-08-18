@@ -59,8 +59,8 @@ const Button = forwardRef<"button", ButtonProps>((props, forwardedRef) => {
 			data-kiwi-tone={tone}
 			data-kiwi-ghost-align={variant === "ghost" ? ghostAlignment : undefined}
 			className={cx(
-				"🥝-button",
-				{ "🥝-ghost-aligner": variant === "ghost" },
+				"🥝Button",
+				{ "🥝GhostAligner": variant === "ghost" },
 				props.className,
 			)}
 			ref={forwardedRef}

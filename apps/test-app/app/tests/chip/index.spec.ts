@@ -21,7 +21,7 @@ test.describe("@visual", () => {
 test("onDismiss prop", async ({ page }) => {
 	await page.goto("/tests/chip?dismiss=true");
 
-	const chip = page.locator(".🥝-chip").first();
+	const chip = page.locator("[data-dismissed]").first();
 	const dismissButton = chip.getByRole("button", { name: "Dismiss" }).first();
 
 	await dismissButton.click();

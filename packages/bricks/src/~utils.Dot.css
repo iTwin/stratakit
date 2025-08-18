@@ -2,7 +2,7 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-.🥝-dot {
+.🥝Dot {
 	@layer base {
 		display: inline-block;
 		inline-size: var(--🥝dot-size, 4px);
@@ -15,7 +15,7 @@
 }
 
 @media (forced-colors: active) {
-	.🥝-dot {
+	.🥝Dot {
 		background-color: CanvasText;
 	}
 }

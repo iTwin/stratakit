@@ -96,7 +96,7 @@ export const Icon = forwardRef<"svg", IconProps>((props, forwardedRef) => {
 			aria-label={isDecorative ? undefined : alt}
 			{...rest}
 			data-kiwi-size={size}
-			className={cx("🥝-icon", props.className)}
+			className={cx("🥝Icon", props.className)}
 			ref={forwardedRef}
 		>
 			{hrefBase ? <use href={toIconHref(hrefBase)} /> : null}

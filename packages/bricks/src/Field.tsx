@@ -63,7 +63,7 @@ const FieldRoot = forwardRef<"div", FieldRootProps>((props, forwardedRef) => {
 			render={
 				<Role.div
 					{...rest}
-					className={cx("🥝-field", props.className)}
+					className={cx("🥝Field", props.className)}
 					data-kiwi-layout={layout}
 					ref={forwardedRef}
 				/>

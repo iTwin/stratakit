@@ -67,7 +67,7 @@ const Avatar = forwardRef<"span", AvatarProps>((props, forwardedRef) => {
 			role={isDecorative ? undefined : "img"}
 			aria-label={isDecorative ? undefined : alt}
 			{...rest}
-			data-kiwi-size={size}
+			data-_sk-size={size}
 			className={cx("🥝Avatar", props.className)}
 			ref={forwardedRef}
 		>

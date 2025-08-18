@@ -202,7 +202,7 @@ const TextBoxRoot = forwardRef<"div", TextBoxRootProps>(
 			>
 				<Role.div
 					{...props}
-					data-kiwi-disabled={disabled}
+					data-_sk-disabled={disabled}
 					className={cx("🥝TextBox", props.className)}
 					onPointerDown={useEventHandlers(props.onPointerDown, (e) => {
 						if (disabled) return;

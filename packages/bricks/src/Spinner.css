@@ -16,33 +16,33 @@
 	}
 
 	@layer modifiers {
-		&:where([data-kiwi-tone="neutral"]) {
+		&:where([data-_sk-tone="neutral"]) {
 			--🥝Spinner-fill-color: var(--stratakit-color-icon-neutral-base);
 			--🥝Spinner-track-color: var(--stratakit-color-border-page-base);
 		}
 
-		&:where([data-kiwi-tone="accent"]) {
+		&:where([data-_sk-tone="accent"]) {
 			--🥝Spinner-fill-color: var(--stratakit-color-icon-accent-strong);
 			--🥝Spinner-track-color: var(--stratakit-color-bg-accent-muted);
 		}
 
-		&:where([data-kiwi-size="small"]) {
+		&:where([data-_sk-size="small"]) {
 			--🥝Spinner-size: 1rem;
 		}
 
-		&:where([data-kiwi-size="medium"]) {
+		&:where([data-_sk-size="medium"]) {
 			--🥝Spinner-size: 1.5rem;
 		}
 
-		&:where([data-kiwi-size="large"]) {
+		&:where([data-_sk-size="large"]) {
 			--🥝Spinner-size: 2rem;
 		}
 
-		&:where([data-kiwi-size="xlarge"]) {
+		&:where([data-_sk-size="xlarge"]) {
 			--🥝Spinner-size: 3rem;
 		}
 
-		&:where([data-kiwi-variant="indeterminate"]) {
+		&:where([data-_sk-variant="indeterminate"]) {
 			--🥝Spinner-animation: var(--✨animation--indeterminate);
 			--🥝Spinner-animation-duration: var(--✨duration);
 			--🥝Spinner-dash-array: 25 75;
@@ -89,7 +89,7 @@
 		--🥝Spinner-fill-color: Canvas;
 		--🥝Spinner-track-color: CanvasText;
 
-		&:where([data-kiwi-variant="indeterminate"]) {
+		&:where([data-_sk-variant="indeterminate"]) {
 			--🥝Spinner-dash-array: 75 25; /* Inverts the sizes of fill & track. */
 		}
 	}

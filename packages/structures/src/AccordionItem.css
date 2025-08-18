@@ -22,7 +22,7 @@
 	}
 
 	@layer states {
-		&:where([data-kiwi-open="true"]) {
+		&:where([data-_sk-open="true"]) {
 			--🥝ChevronDown-rotate: -0.5turn;
 		}
 	}

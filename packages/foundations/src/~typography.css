@@ -11,7 +11,7 @@
 	@apply --typography-tokens;
 }
 
-.🥝Root:where([data-kiwi-density="dense"]) {
+.🥝Root:where([data-_sk-density="dense"]) {
 	@apply --typography("body-sm");
 }
 

@@ -37,25 +37,25 @@
 	}
 
 	@layer modifiers {
-		&:where([data-kiwi-size="small"]) {
+		&:where([data-_sk-size="small"]) {
 			--🥝Avatar-size: 1rem;
 			--🥝Avatar-font-size: var(--stratakit-font-size-8);
 			--🥝Icon-size: 0.75rem;
 		}
 
-		&:where([data-kiwi-size="medium"]) {
+		&:where([data-_sk-size="medium"]) {
 			--🥝Avatar-size: 1.5rem;
 			--🥝Avatar-font-size: var(--stratakit-font-size-10);
 			--🥝Icon-size: 1rem;
 		}
 
-		&:where([data-kiwi-size="large"]) {
+		&:where([data-_sk-size="large"]) {
 			--🥝Avatar-size: 2rem;
 			--🥝Avatar-font-size: var(--stratakit-font-size-12);
 			--🥝Icon-size: 1rem;
 		}
 
-		&:where([data-kiwi-size="xlarge"]) {
+		&:where([data-_sk-size="xlarge"]) {
 			--🥝Avatar-size: 3rem;
 			--🥝Avatar-font-size: var(--stratakit-font-size-16);
 			--🥝Icon-size: 1.5rem;

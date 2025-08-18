@@ -30,7 +30,7 @@ const Description = forwardRef<"div", DescriptionProps>(
 			<Text
 				{...rest}
 				variant="caption-lg"
-				data-kiwi-tone={tone ?? "neutral"}
+				data-_sk-tone={tone ?? "neutral"}
 				className={cx("🥝Description", props.className)}
 				ref={forwardedRef}
 			/>

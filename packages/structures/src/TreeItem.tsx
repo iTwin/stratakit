@@ -428,9 +428,9 @@ const TreeItemNode = React.memo((props: TreeItemNodeProps) => {
 	const [ref, renderActions] = useRenderActions();
 	return (
 		<ListItem.Root
-			data-kiwi-expanded={expanded}
-			data-kiwi-selected={selected}
-			data-kiwi-error={error ? true : undefined}
+			data-_sk-expanded={expanded}
+			data-_sk-selected={selected}
+			data-_sk-error={error ? true : undefined}
 			className="🥝TreeItemNode"
 			role={undefined}
 			ref={ref}
@@ -756,7 +756,7 @@ const TreeItemInlineAction = React.memo(
 				dot={dot}
 				variant="ghost"
 				className={cx("🥝TreeItemAction", props.className)}
-				data-kiwi-visible={visible}
+				data-_sk-visible={visible}
 				ref={forwardedRef}
 			/>
 		);

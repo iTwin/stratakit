@@ -93,9 +93,9 @@ const ProgressBar = forwardRef<"div", ProgressBarProps>(
 				aria-valuemin={value != null ? 0 : undefined}
 				aria-valuemax={value != null ? 100 : undefined}
 				{...rest}
-				data-kiwi-size={size}
-				data-kiwi-tone={tone}
-				data-kiwi-variant={value != null ? "determinate" : "indeterminate"}
+				data-_sk-size={size}
+				data-_sk-tone={tone}
+				data-_sk-variant={value != null ? "determinate" : "indeterminate"}
 				className={cx("🥝ProgressBar", props.className)}
 				style={style}
 				ref={forwardedRef}

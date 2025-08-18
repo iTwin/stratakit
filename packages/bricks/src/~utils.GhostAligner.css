@@ -4,27 +4,27 @@
  *--------------------------------------------------------------------------------------------*/
 .🥝GhostAligner {
 	@layer base {
-		&:where([data-kiwi-ghost-align="inline"]) {
+		&:where([data-_sk-ghost-align="inline"]) {
 			margin-inline: calc(-1 * var(--🥝GhostAligner-inline-offset));
 		}
 
-		&:where([data-kiwi-ghost-align="inline-start"]) {
+		&:where([data-_sk-ghost-align="inline-start"]) {
 			margin-inline-start: calc(-1 * var(--🥝GhostAligner-inline-offset));
 		}
 
-		&:where([data-kiwi-ghost-align="inline-end"]) {
+		&:where([data-_sk-ghost-align="inline-end"]) {
 			margin-inline-end: calc(-1 * var(--🥝GhostAligner-inline-offset));
 		}
 
-		&:where([data-kiwi-ghost-align="block"]) {
+		&:where([data-_sk-ghost-align="block"]) {
 			margin-block: calc(-1 * var(--🥝GhostAligner-block-offset));
 		}
 
-		&:where([data-kiwi-ghost-align="block-start"]) {
+		&:where([data-_sk-ghost-align="block-start"]) {
 			margin-block-start: calc(-1 * var(--🥝GhostAligner-block-offset));
 		}
 
-		&:where([data-kiwi-ghost-align="block-end"]) {
+		&:where([data-_sk-ghost-align="block-end"]) {
 			margin-block-end: calc(-1 * var(--🥝GhostAligner-block-offset));
 		}
 	}

@@ -37,7 +37,7 @@ const Divider = forwardRef<"hr", DividerProps>((props, forwardedRef) => {
 		<Comp
 			{...rest}
 			className={cx("🥝Divider", props.className)}
-			data-kiwi-orientation={props.orientation}
+			data-_sk-orientation={props.orientation}
 			ref={forwardedRef}
 		/>
 	);

@@ -119,7 +119,7 @@ const AccordionItemRoot = forwardRef<"div", AccordionItemProps>(
 				<Role
 					{...rest}
 					className={cx("🥝AccordionItem", props.className)}
-					data-kiwi-open={open}
+					data-_sk-open={open}
 					ref={forwardedRef}
 				/>
 			</DisclosureProvider>

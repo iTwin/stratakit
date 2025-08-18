@@ -57,28 +57,28 @@
 	}
 
 	@layer modifiers {
-		&:where([data-kiwi-error="true"]) {
+		&:where([data-_sk-error="true"]) {
 			--🥝Icon-color: var(--stratakit-color-icon-attention-base);
 			--🥝TreeItem-color: var(--stratakit-color-text-attention-base);
 		}
 	}
 
 	@layer states {
-		&:where([data-kiwi-selected="true"]) {
+		&:where([data-_sk-selected="true"]) {
 			--🌀ListItem-state: var(--🌀ListItem-state--active);
 		}
 
 		@media (any-hover: hover) {
-			&:where(:hover[data-kiwi-selected="true"]) {
+			&:where(:hover[data-_sk-selected="true"]) {
 				--🌀ListItem-state: var(--🌀ListItem-state--active-hover);
 			}
 		}
 
-		&:where([data-kiwi-expanded="false"]) {
+		&:where([data-_sk-expanded="false"]) {
 			--🥝ChevronDown-rotate: -0.25turn;
 		}
 
-		&:where(:not([data-kiwi-expanded])) {
+		&:where(:not([data-_sk-expanded])) {
 			--🥝TreeItem-expander-visibility: hidden;
 		}
 	}
@@ -121,7 +121,7 @@
 
 	@layer modifiers {
 		/* Actions container should be additionally made visible when any individual action is forcibly visible. */
-		&:where(:has(.🥝TreeItemAction[data-kiwi-visible="true"])) {
+		&:where(:has(.🥝TreeItemAction[data-_sk-visible="true"])) {
 			--🥝TreeItem-actions-container-visibility: visible;
 		}
 	}
@@ -134,11 +134,11 @@
 	}
 
 	@layer modifiers {
-		&:where([data-kiwi-visible="false"]) {
+		&:where([data-_sk-visible="false"]) {
 			--🥝TreeItem-action-visibility: hidden;
 		}
 
-		&:where([data-kiwi-visible="true"]) {
+		&:where([data-_sk-visible="true"]) {
 			--🥝TreeItem-action-visibility: visible;
 		}
 	}
@@ -164,11 +164,11 @@
 		--🥝ListItem-background-color: Canvas;
 		--🥝TreeItem-color: CanvasText;
 
-		&:where([data-kiwi-error="true"], [data-kiwi-selected="true"]) {
+		&:where([data-_sk-error="true"], [data-_sk-selected="true"]) {
 			forced-color-adjust: none;
 		}
 
-		&:where([data-kiwi-error="true"]) {
+		&:where([data-_sk-error="true"]) {
 			.🥝TreeItemContent,
 			.🥝TreeItemDecoration {
 				background-color: Mark;
@@ -176,7 +176,7 @@
 			}
 		}
 
-		&:where([data-kiwi-selected="true"]) {
+		&:where([data-_sk-selected="true"]) {
 			--🥝ListItem-background-color: SelectedItem;
 			--🥝TreeItem-color: SelectedItemText;
 		}

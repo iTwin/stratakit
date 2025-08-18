@@ -20,11 +20,11 @@
 		--🥝FieldDescription-column: label-start / label-end;
 
 		/* With checkable fields, when the label is not first, switch to control-first layout */
-		&:where([data-kiwi-control-type="checkable"][data-kiwi-label-placement="after"]) {
+		&:where([data-_sk-control-type="checkable"][data-_sk-label-placement="after"]) {
 			grid-template-columns: var(--✨layout-inline-control-first);
 		}
 
-		&:where([data-kiwi-control-type="textlike"]) {
+		&:where([data-_sk-control-type="textlike"]) {
 			/* Descriptions should be aligned with the control for text and combobox controls */
 			--🥝FieldDescription-column: control-start / control-end;
 
@@ -32,7 +32,7 @@
 			align-items: baseline;
 
 			/* Default to stacked layout unless inline has been specified */
-			&:where(:not([data-kiwi-layout="inline"])) {
+			&:where(:not([data-_sk-layout="inline"])) {
 				grid-template-columns: var(--✨layout-stacked);
 				justify-content: stretch; /* Stretch the entire width in stacked layout. */
 			}

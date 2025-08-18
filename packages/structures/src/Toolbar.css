@@ -26,7 +26,7 @@
 
 .🥝ToolbarItem:is(.🥝IconButton) {
 	@layer modifiers {
-		&:where([data-kiwi-variant="ghost"]) {
+		&:where([data-_sk-variant="ghost"]) {
 			--🥝Button-background-color: var(--🌀Button-state--default, transparent)
 				var(--🌀Button-state--hover, var(--stratakit-color-bg-glow-on-surface-neutral-hover))
 				var(--🌀Button-state--pressed, var(--stratakit-color-bg-glow-on-surface-neutral-pressed))

@@ -41,9 +41,9 @@ export const IconButtonPresentation = forwardRef<
 				{ "🥝GhostAligner": variant === "ghost" },
 				props.className,
 			)}
-			data-kiwi-tone="neutral"
-			data-kiwi-variant={variant}
-			data-kiwi-ghost-align={variant === "ghost" ? ghostAlignment : undefined}
+			data-_sk-tone="neutral"
+			data-_sk-variant={variant}
+			data-_sk-ghost-align={variant === "ghost" ? ghostAlignment : undefined}
 			ref={forwardedRef}
 		/>
 	);

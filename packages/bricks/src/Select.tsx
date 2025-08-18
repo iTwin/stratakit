@@ -68,7 +68,7 @@ const SelectRoot = forwardRef<"div", BaseProps>((props, forwardedRef) => {
 			<Role.div
 				{...props}
 				className={cx("🥝SelectRoot", props.className)}
-				data-kiwi-has-select={!supportsHas && isHtmlSelect ? "true" : undefined}
+				data-_sk-has-select={!supportsHas && isHtmlSelect ? "true" : undefined}
 				ref={forwardedRef}
 			/>
 		</HtmlSelectContext.Provider>
@@ -124,8 +124,8 @@ const HtmlSelect = forwardRef<"select", HtmlSelectProps>(
 				<Role.select
 					{...rest}
 					className={cx("🥝Button", "🥝Select", props.className)}
-					data-kiwi-tone="neutral"
-					data-kiwi-variant={variant}
+					data-_sk-tone="neutral"
+					data-_sk-variant={variant}
 					ref={forwardedRef}
 				/>
 				<DisclosureArrow className="🥝SelectArrow" />

@@ -4,7 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 .🥝SelectRoot {
 	@layer base {
-		&:where(:has(select.🥝Select), [data-kiwi-has-select="true"]) {
+		&:where(:has(select.🥝Select), [data-_sk-has-select="true"]) {
 			display: inline-grid;
 			align-items: center;
 			isolation: isolate;

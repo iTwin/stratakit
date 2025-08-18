@@ -12,11 +12,11 @@
 	}
 
 	@layer modifiers {
-		&:where([data-kiwi-size="regular"]) {
+		&:where([data-_sk-size="regular"]) {
 			--🥝Icon-size: 1rem;
 		}
 
-		&:where([data-kiwi-size="large"]) {
+		&:where([data-_sk-size="large"]) {
 			--🥝Icon-size: 1.5rem;
 		}
 	}

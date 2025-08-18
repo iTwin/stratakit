@@ -33,11 +33,11 @@
 			padding-block-end: var(--🥝Tab-active-stripe-gap);
 		}
 
-		&:where([data-kiwi-tone="neutral"]) {
+		&:where([data-_sk-tone="neutral"]) {
 			--🥝Tab-active-stripe-color: var(--stratakit-color-border-neutral-inverse);
 		}
 
-		&:where([data-kiwi-tone="accent"]) {
+		&:where([data-_sk-tone="accent"]) {
 			--🥝Tab-active-stripe-color: var(--stratakit-color-border-accent-strong);
 		}
 	}
@@ -90,7 +90,7 @@
 	}
 
 	@layer modifiers {
-		:where(.🥝TabList[data-kiwi-tone="neutral"]) & {
+		:where(.🥝TabList[data-_sk-tone="neutral"]) & {
 			--🥝Tab-background-color: var(--🌀Tab-state--default, var(--✨bg--default))
 				var(--🌀Tab-state--hover, var(--✨bg--hover-neutral))
 				var(--🌀Tab-state--selected, var(--✨bg--selected))
@@ -102,7 +102,7 @@
 			-webkit-tap-highlight-color: var(--stratakit-color-bg-glow-on-surface-neutral-pressed);
 		}
 
-		:where(.🥝TabList[data-kiwi-tone="accent"]) & {
+		:where(.🥝TabList[data-_sk-tone="accent"]) & {
 			--🥝Tab-background-color: var(--🌀Tab-state--default, var(--✨bg--default))
 				var(--🌀Tab-state--hover, var(--✨bg--hover-accent))
 				var(--🌀Tab-state--selected, var(--✨bg--selected))

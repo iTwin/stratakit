@@ -43,7 +43,7 @@ const AnchorRoot = forwardRef<"a", AnchorRootProps>((props, forwardedRef) => {
 	return (
 		<Role.a
 			{...rest}
-			data-kiwi-tone={tone}
+			data-_sk-tone={tone}
 			className={cx("🥝Anchor", props.className)}
 			render={
 				<Focusable accessibleWhenDisabled render={props.render || <a />} />

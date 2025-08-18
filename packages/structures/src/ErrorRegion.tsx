@@ -154,8 +154,8 @@ const ErrorRegionRoot = forwardRef<"div", ErrorRegionRootProps>(
 						{...rest}
 						aria-labelledby={sectionLabelledBy}
 						className={cx("🥝ErrorRegion", props.className)}
-						data-kiwi-visible={!!label}
-						data-kiwi-expanded={open}
+						data-_sk-visible={!!label}
+						data-_sk-expanded={open}
 						ref={forwardedRef}
 					>
 						<div className="🥝ErrorRegionContainer" ref={containerRef}>

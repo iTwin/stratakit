@@ -16,30 +16,30 @@
 	}
 
 	@layer modifiers {
-		&:where([data-kiwi-variant="outline"]) {
+		&:where([data-_sk-variant="outline"]) {
 			--🥝Banner-color-background: var(--stratakit-color-bg-elevation-base);
 
-			&:where([data-kiwi-tone="neutral"]) {
+			&:where([data-_sk-tone="neutral"]) {
 				--🥝Banner-color-border: var(--stratakit-color-border-neutral-base);
 			}
 		}
 
-		&:where([data-kiwi-tone="info"]) {
+		&:where([data-_sk-tone="info"]) {
 			--🥝Banner-color-border: var(--stratakit-color-border-info-base);
 			--🥝Icon-color: var(--stratakit-color-icon-info-base);
 		}
 
-		&:where([data-kiwi-tone="positive"]) {
+		&:where([data-_sk-tone="positive"]) {
 			--🥝Banner-color-border: var(--stratakit-color-border-positive-base);
 			--🥝Icon-color: var(--stratakit-color-icon-positive-base);
 		}
 
-		&:where([data-kiwi-tone="attention"]) {
+		&:where([data-_sk-tone="attention"]) {
 			--🥝Banner-color-border: var(--stratakit-color-border-attention-base);
 			--🥝Icon-color: var(--stratakit-color-icon-attention-base);
 		}
 
-		&:where([data-kiwi-tone="critical"]) {
+		&:where([data-_sk-tone="critical"]) {
 			--🥝Banner-color-border: var(--stratakit-color-border-critical-base);
 			--🥝Icon-color: var(--stratakit-color-icon-critical-base);
 		}

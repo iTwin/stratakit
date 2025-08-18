@@ -52,9 +52,9 @@ const Spinner = forwardRef<"div", SpinnerProps>((props, forwardedRef) => {
 	return (
 		<Role
 			{...rest}
-			data-kiwi-size={size}
-			data-kiwi-tone={tone}
-			data-kiwi-variant="indeterminate"
+			data-_sk-size={size}
+			data-_sk-tone={tone}
+			data-_sk-variant="indeterminate"
 			className={cx("🥝Spinner", props.className)}
 			ref={forwardedRef}
 		>

@@ -53,14 +53,14 @@
 	}
 
 	@layer modifiers {
-		&:where([data-kiwi-tone="accent"]) {
+		&:where([data-_sk-tone="accent"]) {
 			--🥝Anchor-color: var(--🌀Anchor-state--default, var(--✨color--accent))
 				var(--🌀Anchor-state--hover, var(--✨color--accent-hover))
 				var(--🌀Anchor-state--pressed, var(--✨color--accent-pressed));
 			-webkit-tap-highlight-color: var(--stratakit-color-bg-glow-on-surface-accent-pressed);
 		}
 
-		&:where([data-kiwi-tone="critical"]) {
+		&:where([data-_sk-tone="critical"]) {
 			--🥝Anchor-color: var(--🌀Anchor-state--default, var(--✨color--critical))
 				var(--🌀Anchor-state--hover, var(--✨color--critical-hover))
 				var(--🌀Anchor-state--pressed, var(--✨color--critical-pressed));

@@ -102,8 +102,8 @@ const BannerRoot = forwardRef<"div", BannerRootProps>((props, forwardedRef) => {
 		<BannerProvider tone={tone}>
 			<Role
 				{...rest}
-				data-kiwi-tone={tone}
-				data-kiwi-variant={variant}
+				data-_sk-tone={tone}
+				data-_sk-variant={variant}
 				className={cx("🥝Banner", props.className)}
 				ref={forwardedRef}
 			/>

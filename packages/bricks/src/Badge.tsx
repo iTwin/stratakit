@@ -43,8 +43,8 @@ const Badge = forwardRef<"span", BadgeProps>((props, forwardedRef) => {
 	return (
 		<Role.span
 			{...rest}
-			data-kiwi-tone={tone}
-			data-kiwi-variant={variant}
+			data-_sk-tone={tone}
+			data-_sk-variant={variant}
 			className={cx("🥝Badge", props.className)}
 			ref={forwardedRef}
 		>

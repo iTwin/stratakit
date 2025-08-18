@@ -81,7 +81,7 @@ const ChipRoot = forwardRef<"div", ChipRootProps>((props, forwardedRef) => {
 	return (
 		<ChipProvider>
 			<Role.div
-				data-kiwi-variant={variant}
+				data-_sk-variant={variant}
 				{...rest}
 				className={cx("🥝Chip", props.className)}
 				ref={forwardedRef}

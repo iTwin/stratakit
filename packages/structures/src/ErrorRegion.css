@@ -11,19 +11,19 @@
 	}
 
 	@layer states {
-		&:where([data-kiwi-expanded="true"]) {
+		&:where([data-_sk-expanded="true"]) {
 			--🥝ChevronDown-rotate: -0.5turn;
 			--🥝ErrorRegionHeader-border-end-radius: 0;
 		}
 
-		&:where([data-kiwi-visible="true"]) {
+		&:where([data-_sk-visible="true"]) {
 			padding-inline: var(--✨padding);
 			padding-block: var(--✨padding);
 
 			block-size: 2.625rem;
 		}
 
-		&:where([data-kiwi-visible="false"]) {
+		&:where([data-_sk-visible="false"]) {
 			--🥝ErrorRegionContainer-display: none;
 		}
 	}

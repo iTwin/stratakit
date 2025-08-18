@@ -150,7 +150,7 @@
 		&:where(
 				:disabled,
 				[aria-disabled="true"],
-				[data-kiwi-disabled="true"],
+				[data-_sk-disabled="true"],
 				:has(:is(input, textarea):is(:disabled, [aria-disabled="true"]))
 			) {
 			--🌀TextBox-state: var(--🌀TextBox-state--disabled);
@@ -184,7 +184,7 @@
 		&:where(
 				:disabled,
 				[aria-disabled="true"],
-				[data-kiwi-disabled="true"],
+				[data-_sk-disabled="true"],
 				:has(:is(input, textarea):is(:disabled, [aria-disabled="true"]))
 			) {
 			--🥝TextBox-border-color: GrayText;

@@ -70,7 +70,7 @@ interface RootProps extends BaseProps {
 }
 
 /**
- * Component to be used at the root of your application. It ensures that kiwi styles and fonts are loaded
+ * Component to be used at the root of your application. It ensures that StrataKit styles and fonts are loaded
  * and automatically applied to the current page or the encompassing shadow-root.
  *
  * Make sure to specify the `colorScheme` and `density` props.
@@ -147,8 +147,8 @@ const RootInternal = forwardRef<"div", RootInternalProps>(
 			<Role
 				{...rest}
 				className={cx("🥝Root", props.className)}
-				data-kiwi-theme={colorScheme}
-				data-kiwi-density={density}
+				data-_sk-theme={colorScheme}
+				data-_sk-density={density}
 				ref={useMergedRefs(forwardedRef, findRootNodeFromRef)}
 			>
 				<RootNodeContext.Provider value={rootNode}>
@@ -205,8 +205,8 @@ const PortalContainer = forwardRef<
 	return ReactDOM.createPortal(
 		<div
 			className="🥝Root"
-			data-kiwi-theme={props.colorScheme}
-			data-kiwi-density={props.density}
+			data-_sk-theme={props.colorScheme}
+			data-_sk-density={props.density}
 			style={{ display: "contents" }}
 			ref={forwardedRef}
 		/>,

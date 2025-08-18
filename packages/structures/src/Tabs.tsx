@@ -157,7 +157,7 @@ const TabList = forwardRef<"div", TabListProps>((props, forwardedRef) => {
 	return (
 		<AkTab.TabList
 			{...rest}
-			data-kiwi-tone={tone}
+			data-_sk-tone={tone}
 			className={cx("🥝TabList", props.className)}
 			ref={forwardedRef}
 		/>

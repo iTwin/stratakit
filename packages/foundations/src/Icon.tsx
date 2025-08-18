@@ -95,7 +95,7 @@ export const Icon = forwardRef<"svg", IconProps>((props, forwardedRef) => {
 			role={isDecorative ? undefined : "img"}
 			aria-label={isDecorative ? undefined : alt}
 			{...rest}
-			data-kiwi-size={size}
+			data-_sk-size={size}
 			className={cx("🥝Icon", props.className)}
 			ref={forwardedRef}
 		>

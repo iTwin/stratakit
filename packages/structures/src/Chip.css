@@ -30,11 +30,11 @@
 	}
 
 	@layer modifiers {
-		&:where([data-kiwi-variant="solid"]) {
+		&:where([data-_sk-variant="solid"]) {
 			background-color: var(--stratakit-color-bg-neutral-base);
 		}
 
-		&:where([data-kiwi-variant="outline"]) {
+		&:where([data-_sk-variant="outline"]) {
 			background-color: var(--stratakit-color-bg-page-base);
 		}
 	}

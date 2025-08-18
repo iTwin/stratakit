@@ -15,13 +15,13 @@
 	}
 
 	@layer modifiers {
-		&:where(:not([aria-orientation="vertical"], [data-kiwi-orientation="vertical"])) {
+		&:where(:not([aria-orientation="vertical"], [data-_sk-orientation="vertical"])) {
 			block-size: 1px;
 			margin-inline: var(--🥝Divider-main-axis-margin);
 			margin-block: var(--🥝Divider-cross-axis-margin);
 		}
 
-		&:where([aria-orientation="vertical"], [data-kiwi-orientation="vertical"]) {
+		&:where([aria-orientation="vertical"], [data-_sk-orientation="vertical"]) {
 			inline-size: 1px;
 			min-block-size: 100%;
 			margin-inline: var(--🥝Divider-cross-axis-margin);

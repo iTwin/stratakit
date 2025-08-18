@@ -2,7 +2,7 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-.🥝-avatar {
+.🥝Avatar {
 	--✨shadow-border: 0px 0px 0px 1px var(--stratakit-color-border-glow-strong-default) inset;
 
 	@layer base {
@@ -63,7 +63,7 @@
 	}
 }
 
-.🥝-avatar-initials {
+.🥝AvatarInitials {
 	@layer base {
 		font-size: var(--🥝avatar-font-size);
 		font-weight: 600;
@@ -73,7 +73,7 @@
 }
 
 @media (forced-colors: active) {
-	.🥝-avatar {
+	.🥝Avatar {
 		border: 1px solid;
 	}
 }

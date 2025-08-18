@@ -36,9 +36,9 @@ export const IconButtonPresentation = forwardRef<
 		<Role.span
 			{...rest}
 			className={cx(
-				"🥝-icon-button",
-				"🥝-button",
-				{ "🥝-ghost-aligner": variant === "ghost" },
+				"🥝IconButton",
+				"🥝Button",
+				{ "🥝GhostAligner": variant === "ghost" },
 				props.className,
 			)}
 			data-kiwi-tone="neutral"

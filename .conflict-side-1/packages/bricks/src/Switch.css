@@ -54,18 +54,18 @@
 		inline-size: var(--✨width);
 		block-size: auto; /* Necessary to override iOS Safari UA styles */
 
-		background-color: var(--🌀switch-state--default, var(--✨bg--default))
-			var(--🌀switch-state--hover, var(--✨bg--hover))
-			var(--🌀switch-state--pressed, var(--✨bg--hover))
-			var(--🌀switch-state--checked, var(--✨bg--checked))
-			var(--🌀switch-state--checked-hover, var(--✨bg--checked-hover))
-			var(--🌀switch-state--disabled, var(--✨bg--default));
-		border-color: var(--🌀switch-state--default, var(--✨border--default))
-			var(--🌀switch-state--hover, var(--✨border--hover))
-			var(--🌀switch-state--pressed, var(--✨border--pressed))
-			var(--🌀switch-state--checked, var(--✨border--checked))
-			var(--🌀switch-state--checked-hover, var(--✨border--checked))
-			var(--🌀switch-state--disabled, var(--✨border--disabled));
+		background-color: var(--🌀Switch-state--default, var(--✨bg--default))
+			var(--🌀Switch-state--hover, var(--✨bg--hover))
+			var(--🌀Switch-state--pressed, var(--✨bg--hover))
+			var(--🌀Switch-state--checked, var(--✨bg--checked))
+			var(--🌀Switch-state--checked-hover, var(--✨bg--checked-hover))
+			var(--🌀Switch-state--disabled, var(--✨bg--default));
+		border-color: var(--🌀Switch-state--default, var(--✨border--default))
+			var(--🌀Switch-state--hover, var(--✨border--hover))
+			var(--🌀Switch-state--pressed, var(--✨border--pressed))
+			var(--🌀Switch-state--checked, var(--✨border--checked))
+			var(--🌀Switch-state--checked-hover, var(--✨border--checked))
+			var(--🌀Switch-state--disabled, var(--✨border--disabled));
 		transition: all 150ms ease-out;
 		transition-property: background-color, border-color;
 		-webkit-tap-highlight-color: var(--stratakit-color-bg-glow-on-surface-accent-pressed);
@@ -90,13 +90,13 @@
 			block-size: var(--✨thumb-size);
 			inline-size: var(--✨thumb-size);
 			margin: calc(0.125rem - 1px) /* sizing-2 - 1px to account for border */;
-			background-color: var(--🥝switch-thumb-color);
+			background-color: var(--🥝Switch-thumb-color);
 			box-shadow:
 				var(--stratakit-shadow-button-base-inset), var(--✨shadow-border),
 				var(--stratakit-shadow-button-base-drop);
-			border-radius: var(--🥝switch-thumb-radius, var(--✨radius));
+			border-radius: var(--🥝Switch-thumb-radius, var(--✨radius));
 			transform-origin: left;
-			transform: var(--🥝switch-thumb-transform);
+			transform: var(--🥝Switch-thumb-transform);
 
 			@media (prefers-reduced-motion: no-preference) {
 				transition: all 150ms ease-out;
@@ -107,36 +107,36 @@
 	}
 
 	@layer states {
-		--🥝switch-thumb-color: var(--stratakit-color-bg-neutral-inverse);
+		--🥝Switch-thumb-color: var(--stratakit-color-bg-neutral-inverse);
 
 		@media (any-hover: hover) {
 			&:where(:hover) {
-				--🌀switch-state: var(--🌀switch-state--hover);
+				--🌀Switch-state: var(--🌀Switch-state--hover);
 			}
 		}
 
 		&:where(:checked, [aria-checked="true"]) {
-			--🌀switch-state: var(--🌀switch-state--checked);
-			--🥝switch-thumb-transform: translateX(var(--✨checked-translateX));
+			--🌀Switch-state: var(--🌀Switch-state--checked);
+			--🥝Switch-thumb-transform: translateX(var(--✨checked-translateX));
 
 			@media (any-hover: hover) {
 				&:where(:hover) {
-					--🌀switch-state: var(--🌀switch-state--checked-hover);
+					--🌀Switch-state: var(--🌀Switch-state--checked-hover);
 				}
 			}
 		}
 
 		&:where(:active) {
-			--🌀switch-state: var(--🌀switch-state--pressed);
+			--🌀Switch-state: var(--🌀Switch-state--pressed);
 
 			/* https://css-tricks.com/various-methods-for-expanding-a-box-while-preserving-the-border-radius/#aa-changing-scale */
-			--🥝switch-thumb-transform: scaleX(var(--✨pressed-scaleX));
-			--🥝switch-thumb-radius: calc(var(--✨radius) / var(--✨pressed-scaleX)) / var(--✨radius);
+			--🥝Switch-thumb-transform: scaleX(var(--✨pressed-scaleX));
+			--🥝Switch-thumb-radius: calc(var(--✨radius) / var(--✨pressed-scaleX)) / var(--✨radius);
 		}
 
 		&:where(:disabled, [aria-disabled="true"]) {
-			--🌀switch-state: var(--🌀switch-state--disabled);
-			--🥝switch-thumb-color: var(--stratakit-color-icon-neutral-disabled);
+			--🌀Switch-state: var(--🌀Switch-state--disabled);
+			--🥝Switch-thumb-color: var(--stratakit-color-icon-neutral-disabled);
 			cursor: not-allowed;
 			-webkit-tap-highlight-color: transparent;
 
@@ -148,30 +148,30 @@
 
 	@layer base.🌀 {
 		/* Cyclic toggles for default/hover/pressed/checked/checked+hover states. See https://kizu.dev/cyclic-toggles/ */
-		--🌀switch-state: var(--🌀switch-state--default);
-		--🌀switch-state--default: var(--🌀switch-state,);
-		--🌀switch-state--hover: var(--🌀switch-state,);
-		--🌀switch-state--pressed: var(--🌀switch-state,);
-		--🌀switch-state--checked: var(--🌀switch-state,);
-		--🌀switch-state--checked-hover: var(--🌀switch-state,);
-		--🌀switch-state--disabled: var(--🌀switch-state,);
+		--🌀Switch-state: var(--🌀Switch-state--default);
+		--🌀Switch-state--default: var(--🌀Switch-state,);
+		--🌀Switch-state--hover: var(--🌀Switch-state,);
+		--🌀Switch-state--pressed: var(--🌀Switch-state,);
+		--🌀Switch-state--checked: var(--🌀Switch-state,);
+		--🌀Switch-state--checked-hover: var(--🌀Switch-state,);
+		--🌀Switch-state--disabled: var(--🌀Switch-state,);
 	}
 }
 
 @media (forced-colors: active) {
 	.🥝Switch {
 		border-color: CanvasText;
-		--🥝switch-thumb-color: CanvasText;
+		--🥝Switch-thumb-color: CanvasText;
 
 		&:where(:checked, [aria-checked="true"]) {
 			background-color: SelectedItem;
-			--🥝switch-thumb-color: SelectedItemText;
+			--🥝Switch-thumb-color: SelectedItemText;
 		}
 
 		&:where(:disabled, [aria-disabled="true"]) {
 			background-color: Canvas;
 			border-color: GrayText;
-			--🥝switch-thumb-color: GrayText;
+			--🥝Switch-thumb-color: GrayText;
 		}
 	}
 }

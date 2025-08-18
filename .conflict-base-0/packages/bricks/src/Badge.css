@@ -2,7 +2,7 @@
  * Copyright (c) Bentley Systems: Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-.🥝-badge {
+.🥝Badge {
 	@layer base {
 		@apply --typography("body-sm");
 
@@ -125,7 +125,7 @@
 }
 
 @media (forced-colors: active) {
-	.🥝-badge {
+	.🥝Badge {
 		border: 1px solid;
 	}
 }

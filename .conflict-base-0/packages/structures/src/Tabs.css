@@ -3,7 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-.🥝-tab-list {
+.🥝TabList {
 	@layer base {
 		--🥝tab-active-stripe-gap: var(--stratakit-space-x2);
 		--🥝tab-active-stripe-size: var(--stratakit-space-x05);
@@ -43,7 +43,7 @@
 	}
 }
 
-.🥝-tab {
+.🥝Tab {
 	--✨height: 1.25rem;
 	--✨gap: var(--stratakit-space-x1);
 
@@ -90,7 +90,7 @@
 	}
 
 	@layer modifiers {
-		:where(.🥝-tab-list[data-kiwi-tone="neutral"]) & {
+		:where(.🥝TabList[data-kiwi-tone="neutral"]) & {
 			--🥝tab-background-color: var(--🌀tab-state--default, var(--✨bg--default))
 				var(--🌀tab-state--hover, var(--✨bg--hover-neutral))
 				var(--🌀tab-state--selected, var(--✨bg--selected))
@@ -102,7 +102,7 @@
 			-webkit-tap-highlight-color: var(--stratakit-color-bg-glow-on-surface-neutral-pressed);
 		}
 
-		:where(.🥝-tab-list[data-kiwi-tone="accent"]) & {
+		:where(.🥝TabList[data-kiwi-tone="accent"]) & {
 			--🥝tab-background-color: var(--🌀tab-state--default, var(--✨bg--default))
 				var(--🌀tab-state--hover, var(--✨bg--hover-accent))
 				var(--🌀tab-state--selected, var(--✨bg--selected))
@@ -157,7 +157,7 @@
 	}
 }
 
-.🥝-tab-panel {
+.🥝TabPanel {
 	@layer base {
 		--🥝focus-outline-offset: calc(var(--stratakit-space-x05) * -1);
 
@@ -169,12 +169,12 @@
 }
 
 @media (forced-colors: active) {
-	.🥝-tab-list,
-	.🥝-tab {
+	.🥝TabList,
+	.🥝Tab {
 		--🥝tab-active-stripe-color: CanvasText;
 	}
 
-	.🥝-tab {
+	.🥝Tab {
 		--🥝tab-color: CanvasText;
 
 		&:where([aria-selected="true"]) {

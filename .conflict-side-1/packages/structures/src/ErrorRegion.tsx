@@ -98,7 +98,7 @@ const ErrorRegionRoot = forwardRef<"div", ErrorRegionRootProps>(
 			const el = containerRef.current;
 			if (!el) return;
 
-			const id = "--🥝error-region-pulse";
+			const id = "--🥝ErrorRegion-pulse";
 			const animations = el.getAnimations({ subtree: true });
 			if (animations.find((animation) => animation.id === id)) return;
 

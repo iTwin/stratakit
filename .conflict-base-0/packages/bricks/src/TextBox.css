@@ -2,7 +2,7 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-.🥝-text-box {
+.🥝TextBox {
 	--✨bg--default: var(--stratakit-color-bg-page-base);
 	--✨bg--hover: color-mix(
 		in oklch,
@@ -70,7 +70,7 @@
 			}
 
 			/* Propagate padding-inline-start to the nested input/textarea when there is no decoration _before_ it. */
-			&:where(:not(:has(.🥝-text-box-decoration ~ :is(input, textarea)))) {
+			&:where(:not(:has(.🥝TextBoxDecoration ~ :is(input, textarea)))) {
 				padding-inline-start: 0;
 
 				:where(input, textarea) {
@@ -79,7 +79,7 @@
 			}
 
 			/* Propagate padding-inline-end to the nested input/textarea when there is no decoration _after_ it. */
-			&:where(:not(:has(:is(input, textarea) ~ .🥝-text-box-decoration))) {
+			&:where(:not(:has(:is(input, textarea) ~ .🥝TextBoxDecoration))) {
 				padding-inline-end: 0;
 
 				:where(input, textarea) {
@@ -169,14 +169,14 @@
 	}
 }
 
-.🥝-text-box-decoration {
+.🥝TextBoxDecoration {
 	@layer base {
 		flex-shrink: 0;
 	}
 }
 
 @media (forced-colors: active) {
-	.🥝-text-box {
+	.🥝TextBox {
 		--🥝text-box-background-color: Field;
 		--🥝text-box-border-color: CanvasText;
 		color: FieldText;

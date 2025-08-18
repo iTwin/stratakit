@@ -3,7 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-.🥝-accordion-item {
+.🥝AccordionItem {
 	--🥝accordion-item-gap: var(--stratakit-space-x3);
 	--🥝accordion-item-padding: var(--stratakit-space-x3);
 
@@ -28,7 +28,7 @@
 	}
 }
 
-.🥝-accordion-item-header {
+.🥝AccordionItemHeader {
 	--✨header-bg--hover: var(--stratakit-color-bg-glow-on-surface-neutral-hover);
 	--✨header-bg--pressed: var(--stratakit-color-bg-glow-on-surface-neutral-pressed);
 	--✨header-bg--default: transparent;
@@ -80,7 +80,7 @@
 	}
 }
 
-.🥝-accordion-item-marker {
+.🥝AccordionItemMarker {
 	@layer base {
 		grid-row: 1;
 		grid-column: marker-before;
@@ -89,7 +89,7 @@
 		margin-inline-start: calc(-1 * var(--🥝ghost-inline-offset));
 		pointer-events: none;
 
-		:where(.🥝-accordion-item-heading, .🥝-accordion-item-button) ~ & {
+		:where(.🥝AccordionItemHeading, .🥝AccordionItemButton) ~ & {
 			grid-column: marker-after;
 			margin-inline-start: var(--🥝accordion-item-gap);
 			margin-inline-end: calc(-1 * var(--🥝ghost-inline-offset));
@@ -97,7 +97,7 @@
 	}
 }
 
-.🥝-accordion-item-label:is(.🥝-text) {
+.🥝AccordionItemLabel:is(.🥝Text) {
 	@layer base {
 		display: inline-block;
 		hyphens: auto;
@@ -107,7 +107,7 @@
 	}
 }
 
-.🥝-accordion-item-button {
+.🥝AccordionItemButton {
 	@layer base {
 		grid-column: header-content;
 		cursor: pointer;
@@ -134,7 +134,7 @@
 	}
 }
 
-.🥝-accordion-item-content {
+.🥝AccordionItemContent {
 	@layer base {
 		grid-row: content;
 		grid-column: body-content;
@@ -144,7 +144,7 @@
 	}
 }
 
-.🥝-accordion-item-decoration {
+.🥝AccordionItemDecoration {
 	@layer base {
 		grid-column: decoration-before;
 		margin-inline-end: var(--🥝accordion-item-gap);
@@ -152,7 +152,7 @@
 		align-items: center;
 		gap: var(--stratakit-space-x1);
 
-		:where(.🥝-accordion-item-heading, .🥝-accordion-item-button) ~ & {
+		:where(.🥝AccordionItemHeading, .🥝AccordionItemButton) ~ & {
 			grid-column: decoration-after;
 			margin-inline-start: var(--🥝accordion-item-gap);
 			margin-inline-end: 0;
@@ -160,7 +160,7 @@
 	}
 }
 
-.🥝-accordion-item-heading {
+.🥝AccordionItemHeading {
 	@layer base {
 		grid-column: header-content;
 		margin-block: 0;

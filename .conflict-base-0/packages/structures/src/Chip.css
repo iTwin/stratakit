@@ -2,7 +2,7 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-.🥝-chip {
+.🥝Chip {
 	@layer base {
 		isolation: isolate;
 
@@ -40,7 +40,7 @@
 	}
 }
 
-.🥝-chip-label {
+.🥝ChipLabel {
 	@layer base {
 		&:where(button) {
 			border-radius: inherit;
@@ -55,7 +55,7 @@
 	}
 }
 
-.🥝-chip-dismiss-button:is(.🥝-icon-button) {
+.🥝ChipDismissButton:is(.🥝IconButton) {
 	@layer base {
 		position: relative;
 		border-radius: inherit;

@@ -38,8 +38,8 @@ export function GhostAligner(
  * Returns the value of the nearest `GhostAligner`.
  *
  * This should be used together with the CSS API:
- * - `🥝-ghost-aligner` class.
- * - `data-kiwi-ghost-align` attribute.
+ * - `🥝GhostAligner` class.
+ * - `data-_sk-ghost-align` attribute.
  * - `--🥝ghost-block-offset` and `--🥝ghost-inline-offset` variables.
  *
  * @private

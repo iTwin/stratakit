@@ -2,7 +2,7 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-.🥝-list-item {
+.🥝ListItem {
 	--✨height--default: 1.75rem;
 	--✨height--large: 2.75rem;
 	--✨padding-inline: var(--stratakit-space-x2);
@@ -81,7 +81,7 @@
 	}
 
 	@layer modifiers {
-		&:where(:has(> :nth-child(2 of .🥝-list-item-content))) {
+		&:where(:has(> :nth-child(2 of .🥝ListItemContent))) {
 			--🥝list-item-height: var(--✨height--large);
 			grid-template-rows: repeat(auto-fit, minmax(0, auto));
 		}
@@ -99,13 +99,13 @@
 	}
 }
 
-.🥝-list-item-content {
+.🥝ListItemContent {
 	@layer base {
 		grid-column: content;
 	}
 }
 
-.🥝-list-item-decoration {
+.🥝ListItemDecoration {
 	--✨gap: var(--stratakit-space-x1);
 
 	@layer base {
@@ -117,7 +117,7 @@
 		align-items: center;
 		margin-inline-end: var(--✨gap);
 
-		:where(.🥝-list-item-content) ~ & {
+		:where(.🥝ListItemContent) ~ & {
 			grid-column: decoration-after;
 			margin-inline: var(--✨gap) 0;
 		}
@@ -125,7 +125,7 @@
 }
 
 @media (forced-colors: active) {
-	.🥝-list-item:where(:disabled, [aria-disabled="true"]) {
+	.🥝ListItem:where(:disabled, [aria-disabled="true"]) {
 		color: GrayText;
 	}
 }

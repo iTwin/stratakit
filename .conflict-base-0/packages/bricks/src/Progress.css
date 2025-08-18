@@ -3,7 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-.🥝-progress-bar {
+.🥝ProgressBar {
 	--✨count: 4;
 	--✨duration: 1.5s;
 	--✨easing: cubic-bezier(0.5, 0, 0.5, 1);
@@ -102,7 +102,7 @@
 }
 
 @media (forced-colors: active) {
-	.🥝-progress-bar {
+	.🥝ProgressBar {
 		--🥝progress-bar-fill-color: CanvasText;
 		--🥝progress-bar-track-color: Canvas;
 		outline: 1px solid;

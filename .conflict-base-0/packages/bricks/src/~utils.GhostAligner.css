@@ -2,7 +2,7 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-.🥝-ghost-aligner {
+.🥝GhostAligner {
 	@layer base {
 		&:where([data-kiwi-ghost-align="inline"]) {
 			margin-inline: calc(-1 * var(--🥝ghost-inline-offset));

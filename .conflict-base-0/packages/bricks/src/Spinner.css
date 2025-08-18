@@ -3,7 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-.🥝-spinner {
+.🥝Spinner {
 	--✨duration: 1s;
 	--✨duration-slow: 2s;
 
@@ -54,7 +54,7 @@
 	}
 }
 
-.🥝-spinner-svg {
+.🥝SpinnerSvg {
 	@layer base {
 		block-size: inherit;
 		inline-size: inherit;
@@ -62,11 +62,11 @@
 	}
 }
 
-.🥝-spinner-svg-track {
+.🥝SpinnerSvgTrack {
 	stroke: var(--🥝spinner-track-color);
 }
 
-.🥝-spinner-svg-fill {
+.🥝SpinnerSvgFill {
 	animation: var(--🥝spinner-animation);
 	animation-duration: var(--🥝spinner-animation-duration);
 	stroke: var(--🥝spinner-fill-color);
@@ -84,7 +84,7 @@
 }
 
 @media (forced-colors: active) {
-	.🥝-spinner {
+	.🥝Spinner {
 		/* Fill is used as track, track is used as fill. */
 		--🥝spinner-fill-color: Canvas;
 		--🥝spinner-track-color: CanvasText;
@@ -94,11 +94,11 @@
 		}
 	}
 
-	.🥝-spinner-svg-track {
+	.🥝SpinnerSvgTrack {
 		stroke-width: 2; /* Makes the track twice as thick to create an outline around the spinner. */
 	}
 
-	.🥝-spinner-svg-fill {
+	.🥝SpinnerSvgFill {
 		stroke-dashoffset: 0; /* Makes the fill start in the same location as non-forced-colors mode. */
 	}
 }

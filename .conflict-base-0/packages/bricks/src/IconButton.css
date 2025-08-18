@@ -2,7 +2,7 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-.🥝-icon-button:is(.🥝-button) {
+.🥝IconButton:is(.🥝Button) {
 	--✨padding-inline: var(--stratakit-space-x1);
 
 	@layer base {
@@ -12,7 +12,7 @@
 	}
 }
 
-.🥝-icon-button-dot:is(.🥝-dot) {
+.🥝IconButtonDot:is(.🥝Dot) {
 	@layer base {
 		position: absolute;
 		inset-block-start: var(--stratakit-space-x05);
@@ -21,14 +21,14 @@
 }
 
 @media (forced-colors: active) {
-	.🥝-icon-button {
+	.🥝IconButton {
 		&:where([inert]) {
 			border: none;
 		}
 	}
 
-	.🥝-icon-button-dot:is(.🥝-dot) {
-		:where(.🥝-icon-button[aria-pressed="true"]) & {
+	.🥝IconButtonDot:is(.🥝Dot) {
+		:where(.🥝IconButton[aria-pressed="true"]) & {
 			background-color: SelectedItemText;
 		}
 	}

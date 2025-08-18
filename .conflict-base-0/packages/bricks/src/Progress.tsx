@@ -96,7 +96,7 @@ const ProgressBar = forwardRef<"div", ProgressBarProps>(
 				data-kiwi-size={size}
 				data-kiwi-tone={tone}
 				data-kiwi-variant={value != null ? "determinate" : "indeterminate"}
-				className={cx("🥝-progress-bar", props.className)}
+				className={cx("🥝ProgressBar", props.className)}
 				style={style}
 				ref={forwardedRef}
 			/>

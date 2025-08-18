@@ -146,7 +146,7 @@ const RootInternal = forwardRef<"div", RootInternalProps>(
 		return (
 			<Role
 				{...rest}
-				className={cx("🥝-root", props.className)}
+				className={cx("🥝Root", props.className)}
 				data-kiwi-theme={colorScheme}
 				data-kiwi-density={density}
 				ref={useMergedRefs(forwardedRef, findRootNodeFromRef)}
@@ -204,7 +204,7 @@ const PortalContainer = forwardRef<
 
 	return ReactDOM.createPortal(
 		<div
-			className="🥝-root"
+			className="🥝Root"
 			data-kiwi-theme={props.colorScheme}
 			data-kiwi-density={props.density}
 			style={{ display: "contents" }}

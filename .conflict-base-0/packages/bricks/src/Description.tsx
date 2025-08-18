@@ -31,7 +31,7 @@ const Description = forwardRef<"div", DescriptionProps>(
 				{...rest}
 				variant="caption-lg"
 				data-kiwi-tone={tone ?? "neutral"}
-				className={cx("🥝-description", props.className)}
+				className={cx("🥝Description", props.className)}
 				ref={forwardedRef}
 			/>
 		);

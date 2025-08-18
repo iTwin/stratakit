@@ -83,7 +83,7 @@ const ChipRoot = forwardRef<"div", ChipRootProps>((props, forwardedRef) => {
 			<Role.div
 				data-kiwi-variant={variant}
 				{...rest}
-				className={cx("🥝-chip", props.className)}
+				className={cx("🥝Chip", props.className)}
 				ref={forwardedRef}
 			/>
 		</ChipProvider>
@@ -110,7 +110,7 @@ const ChipLabel = forwardRef<"span", ChipLabelProps>((props, forwardedRef) => {
 		<Role.span
 			id={labelId}
 			{...props}
-			className={cx("🥝-chip-label", props.className)}
+			className={cx("🥝ChipLabel", props.className)}
 			ref={forwardedRef}
 		/>
 	);
@@ -146,7 +146,7 @@ const ChipDismissButton = forwardRef<"button", ChipDismissButtonProps>(
 				aria-labelledby={`${id} ${labelId}`}
 				{...rest}
 				label={label}
-				className={cx("🥝-chip-dismiss-button", props.className)}
+				className={cx("🥝ChipDismissButton", props.className)}
 				variant="ghost"
 				labelVariant="visually-hidden"
 				icon={<Dismiss />}

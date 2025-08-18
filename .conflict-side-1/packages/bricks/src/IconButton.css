@@ -7,8 +7,8 @@
 
 	@layer base {
 		aspect-ratio: 1;
-		--🥝button-padding-inline: var(--✨padding-inline);
-		--🥝ghost-inline-offset: var(--✨padding-inline);
+		--🥝Button-padding-inline: var(--✨padding-inline);
+		--🥝GhostAligner-inline-offset: var(--✨padding-inline);
 	}
 }
 

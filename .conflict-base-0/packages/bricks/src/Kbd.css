@@ -3,7 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-.🥝-kbd {
+.🥝Kbd {
 	--✨shadow-border: 0px 0px 0px 1px var(--stratakit-color-border-shadow-base) inset;
 
 	@layer base {
@@ -40,7 +40,7 @@
 }
 
 @media (forced-colors: active) {
-	.🥝-kbd:where([data-kiwi-variant="solid"]) {
+	.🥝Kbd:where([data-kiwi-variant="solid"]) {
 		border: 1px solid;
 	}
 }

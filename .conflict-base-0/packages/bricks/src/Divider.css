@@ -2,7 +2,7 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-.🥝-divider {
+.🥝Divider {
 	@layer base {
 		flex: 0 0 auto;
 		align-self: stretch;
@@ -31,7 +31,7 @@
 }
 
 @media (forced-colors: active) {
-	.🥝-divider {
+	.🥝Divider {
 		background-color: CanvasText;
 	}
 }

@@ -5,7 +5,7 @@
 .🥝Checkbox {
 	--✨size: 1rem;
 
-	--✨shadow-border: 0px 0px 0px 1px var(--🥝checkbox-border-color) inset;
+	--✨shadow-border: 0px 0px 0px 1px var(--🥝Checkbox-border-color) inset;
 
 	--✨glow--bg-hover: var(--stratakit-color-glow-hue) var(--stratakit-color-bg-glow-base-hover-\%);
 	--✨glow--bg-press: var(--stratakit-color-glow-hue) var(--stratakit-color-bg-glow-base-pressed-\%);
@@ -31,46 +31,46 @@
 	--✨border--disabled: transparent;
 
 	@layer base {
-		--🥝checkbox-color-svg: var(--stratakit-color-icon-neutral-emphasis);
-		--🥝checkbox-border-radius: 4px;
+		--🥝Checkbox-color-svg: var(--stratakit-color-icon-neutral-emphasis);
+		--🥝Checkbox-border-radius: 4px;
 
-		--🥝checkbox-unchecked-svg: url('data:image/svg+xml;utf8,<svg viewBox="0 0 16 16"></svg>');
-		--🥝checkbox-checkmark-svg: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 16"><path fill="currentColor" d="M11.73 5.47a.75.75 0 0 1 0 1.06l-4.4 4.4a.75.75 0 0 1-1.06 0l-2-2a.75.75 0 0 1 1.06-1.06L6.8 9.34l3.87-3.87a.75.75 0 0 1 1.06 0Z"/></svg>');
-		--🥝checkbox-indeterminate-svg: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 16"><path fill="currentColor" d="M4.25 8A.75.75 0 0 1 5 7.25h6.5a.75.75 0 0 1 0 1.5H5A.75.75 0 0 1 4.25 8Z"/></svg>');
+		--🥝Checkbox-unchecked-svg: url('data:image/svg+xml;utf8,<svg viewBox="0 0 16 16"></svg>');
+		--🥝Checkbox-checkmark-svg: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 16"><path fill="currentColor" d="M11.73 5.47a.75.75 0 0 1 0 1.06l-4.4 4.4a.75.75 0 0 1-1.06 0l-2-2a.75.75 0 0 1 1.06-1.06L6.8 9.34l3.87-3.87a.75.75 0 0 1 1.06 0Z"/></svg>');
+		--🥝Checkbox-indeterminate-svg: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 16"><path fill="currentColor" d="M4.25 8A.75.75 0 0 1 5 7.25h6.5a.75.75 0 0 1 0 1.5H5A.75.75 0 0 1 4.25 8Z"/></svg>');
 
 		appearance: none;
 		inline-size: var(--✨size);
 		block-size: var(--✨size);
 		cursor: pointer;
 
-		background-color: var(--🌀checkbox-visual-state--default, var(--✨bg--default))
-			var(--🌀checkbox-visual-state--hover, var(--✨bg--hover))
-			var(--🌀checkbox-visual-state--checked, var(--✨bg--checked))
-			var(--🌀checkbox-visual-state--checked-hover, var(--✨bg--checked-hover))
-			var(--🌀checkbox-visual-state--disabled, var(--✨bg--disabled));
-		border-radius: var(--🥝checkbox-border-radius);
-		color: var(--🌀checkbox-aria-state--unchecked, transparent)
-			var(--🌀checkbox-aria-state--checked, var(--🥝checkbox-color-svg))
-			var(--🌀checkbox-aria-state--indeterminate, var(--🥝checkbox-color-svg));
+		background-color: var(--🌀Checkbox-visual-state--default, var(--✨bg--default))
+			var(--🌀Checkbox-visual-state--hover, var(--✨bg--hover))
+			var(--🌀Checkbox-visual-state--checked, var(--✨bg--checked))
+			var(--🌀Checkbox-visual-state--checked-hover, var(--✨bg--checked-hover))
+			var(--🌀Checkbox-visual-state--disabled, var(--✨bg--disabled));
+		border-radius: var(--🥝Checkbox-border-radius);
+		color: var(--🌀Checkbox-aria-state--unchecked, transparent)
+			var(--🌀Checkbox-aria-state--checked, var(--🥝Checkbox-color-svg))
+			var(--🌀Checkbox-aria-state--indeterminate, var(--🥝Checkbox-color-svg));
 		transition: all 150ms ease-out;
-		transition-property: background-color, border-color, box-shadow, --🥝checkbox-border-color;
+		transition-property: background-color, border-color, box-shadow, --🥝Checkbox-border-color;
 		position: relative;
 		box-shadow:
 			var(--stratakit-shadow-button-base-inset), var(--✨shadow-border),
 			var(--stratakit-shadow-button-base-drop);
 		-webkit-tap-highlight-color: var(--stratakit-color-bg-glow-on-surface-accent-pressed);
 
-		--🥝checkbox-border-color: var(--🌀checkbox-visual-state--default, var(--✨border--default))
-			var(--🌀checkbox-visual-state--hover, var(--✨border--hover))
-			var(--🌀checkbox-visual-state--checked, var(--✨border--checked))
-			var(--🌀checkbox-visual-state--checked-hover, var(--✨border--checked-hover))
-			var(--🌀checkbox-visual-state--disabled, var(--✨border--disabled));
-		--🥝checkbox-mask-image: var(
-				--🌀checkbox-aria-state--unchecked,
-				var(--🥝checkbox-unchecked-svg)
+		--🥝Checkbox-border-color: var(--🌀Checkbox-visual-state--default, var(--✨border--default))
+			var(--🌀Checkbox-visual-state--hover, var(--✨border--hover))
+			var(--🌀Checkbox-visual-state--checked, var(--✨border--checked))
+			var(--🌀Checkbox-visual-state--checked-hover, var(--✨border--checked-hover))
+			var(--🌀Checkbox-visual-state--disabled, var(--✨border--disabled));
+		--🥝Checkbox-mask-image: var(
+				--🌀Checkbox-aria-state--unchecked,
+				var(--🥝Checkbox-unchecked-svg)
 			)
-			var(--🌀checkbox-aria-state--checked, var(--🥝checkbox-checkmark-svg))
-			var(--🌀checkbox-aria-state--indeterminate, var(--🥝checkbox-indeterminate-svg));
+			var(--🌀Checkbox-aria-state--checked, var(--🥝Checkbox-checkmark-svg))
+			var(--🌀Checkbox-aria-state--indeterminate, var(--🥝Checkbox-indeterminate-svg));
 
 		&::before,
 		&::after {
@@ -84,10 +84,10 @@
 			inset: calc((var(--✨size) - var(--stratakit-space-x6)) / 2);
 		}
 
-		/* This pseudo-element adds the actual checkmark SVG via --🥝checkbox-mask-image */
+		/* This pseudo-element adds the actual checkmark SVG via --🥝Checkbox-mask-image */
 		&::after {
 			background-color: currentColor;
-			mask-image: var(--🥝checkbox-mask-image, initial);
+			mask-image: var(--🥝Checkbox-mask-image, initial);
 			mask-repeat: no-repeat;
 			mask-position: center;
 		}
@@ -96,29 +96,29 @@
 	@layer states {
 		@media (any-hover: hover) {
 			&:where(:hover) {
-				--🌀checkbox-visual-state: var(--🌀checkbox-visual-state--hover);
+				--🌀Checkbox-visual-state: var(--🌀Checkbox-visual-state--hover);
 			}
 		}
 
 		&:where(:checked, [aria-checked="true"]) {
-			--🌀checkbox-visual-state: var(--🌀checkbox-visual-state--checked);
-			--🌀checkbox-aria-state: var(--🌀checkbox-aria-state--checked);
+			--🌀Checkbox-visual-state: var(--🌀Checkbox-visual-state--checked);
+			--🌀Checkbox-aria-state: var(--🌀Checkbox-aria-state--checked);
 
 			@media (any-hover: hover) {
 				&:where(:hover) {
-					--🌀checkbox-visual-state: var(--🌀checkbox-visual-state--checked-hover);
+					--🌀Checkbox-visual-state: var(--🌀Checkbox-visual-state--checked-hover);
 				}
 			}
 		}
 
 		&:where(:indeterminate, [aria-checked="mixed"]) {
-			--🌀checkbox-visual-state: var(--🌀checkbox-visual-state--checked);
-			--🌀checkbox-aria-state: var(--🌀checkbox-aria-state--indeterminate);
+			--🌀Checkbox-visual-state: var(--🌀Checkbox-visual-state--checked);
+			--🌀Checkbox-aria-state: var(--🌀Checkbox-aria-state--indeterminate);
 		}
 
 		&:where(:disabled, [aria-disabled="true"]) {
-			--🌀checkbox-visual-state: var(--🌀checkbox-visual-state--disabled);
-			--🥝checkbox-color-svg: var(--stratakit-color-icon-neutral-disabled);
+			--🌀Checkbox-visual-state: var(--🌀Checkbox-visual-state--disabled);
+			--🥝Checkbox-color-svg: var(--stratakit-color-icon-neutral-disabled);
 			cursor: not-allowed;
 			box-shadow: none;
 			-webkit-tap-highlight-color: transparent;
@@ -127,18 +127,18 @@
 
 	@layer base.🌀 {
 		/* Cyclic toggles for default/hover/checked/checked+hover/disabled states. See https://kizu.dev/cyclic-toggles/ */
-		--🌀checkbox-visual-state: var(--🌀checkbox-visual-state--default);
-		--🌀checkbox-visual-state--default: var(--🌀checkbox-visual-state,);
-		--🌀checkbox-visual-state--hover: var(--🌀checkbox-visual-state,);
-		--🌀checkbox-visual-state--checked: var(--🌀checkbox-visual-state,);
-		--🌀checkbox-visual-state--checked-hover: var(--🌀checkbox-visual-state,);
-		--🌀checkbox-visual-state--disabled: var(--🌀checkbox-visual-state,);
+		--🌀Checkbox-visual-state: var(--🌀Checkbox-visual-state--default);
+		--🌀Checkbox-visual-state--default: var(--🌀Checkbox-visual-state,);
+		--🌀Checkbox-visual-state--hover: var(--🌀Checkbox-visual-state,);
+		--🌀Checkbox-visual-state--checked: var(--🌀Checkbox-visual-state,);
+		--🌀Checkbox-visual-state--checked-hover: var(--🌀Checkbox-visual-state,);
+		--🌀Checkbox-visual-state--disabled: var(--🌀Checkbox-visual-state,);
 
 		/* Cyclic toggles for unchecked/checked/indeterminate states. */
-		--🌀checkbox-aria-state: var(--🌀checkbox-aria-state--unchecked);
-		--🌀checkbox-aria-state--unchecked: var(--🌀checkbox-aria-state,);
-		--🌀checkbox-aria-state--checked: var(--🌀checkbox-aria-state,);
-		--🌀checkbox-aria-state--indeterminate: var(--🌀checkbox-aria-state,);
+		--🌀Checkbox-aria-state: var(--🌀Checkbox-aria-state--unchecked);
+		--🌀Checkbox-aria-state--unchecked: var(--🌀Checkbox-aria-state,);
+		--🌀Checkbox-aria-state--checked: var(--🌀Checkbox-aria-state,);
+		--🌀Checkbox-aria-state--indeterminate: var(--🌀Checkbox-aria-state,);
 	}
 }
 

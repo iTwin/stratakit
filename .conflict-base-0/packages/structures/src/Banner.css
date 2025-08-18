@@ -3,7 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-.🥝-banner {
+.🥝Banner {
 	@layer base {
 		display: grid;
 		grid-template-columns: [start] auto [content] minmax(0, 1fr) [end] auto;
@@ -46,7 +46,7 @@
 	}
 }
 
-.🥝-banner-icon {
+.🥝BannerIcon {
 	@layer base {
 		grid-column: start;
 		grid-row: 1;
@@ -55,7 +55,7 @@
 	}
 }
 
-.🥝-banner-label {
+.🥝BannerLabel {
 	@layer base {
 		grid-column: content;
 		font-weight: 500;
@@ -64,7 +64,7 @@
 	}
 }
 
-.🥝-banner-message {
+.🥝BannerMessage {
 	@layer base {
 		grid-column: content;
 		overflow: hidden;
@@ -73,7 +73,7 @@
 	}
 }
 
-.🥝-banner-actions {
+.🥝BannerActions {
 	@layer base {
 		grid-column: content;
 		justify-self: start;
@@ -85,7 +85,7 @@
 	}
 }
 
-.🥝-banner-dismiss-button {
+.🥝BannerDismissButton {
 	@layer base {
 		grid-column: end;
 		grid-row: 1;
@@ -95,7 +95,7 @@
 }
 
 @media (forced-colors: active) {
-	.🥝-banner {
+	.🥝Banner {
 		--🥝icon-color: CanvasText;
 	}
 }

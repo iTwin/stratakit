@@ -2,7 +2,7 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-.🥝-button {
+.🥝Button {
 	--✨color--default: var(--stratakit-color-text-neutral-primary);
 	--✨gap: var(--stratakit-space-x1);
 	--✨height: 1.5rem;
@@ -348,7 +348,7 @@
 }
 
 @media (forced-colors: active) {
-	.🥝-button {
+	.🥝Button {
 		background-color: ButtonFace;
 		border: 1px solid ButtonBorder;
 		color: ButtonText;

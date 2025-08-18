@@ -2,7 +2,7 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-.🥝-label {
+.🥝Label {
 	@layer base {
 		color: var(--stratakit-color-text-neutral-secondary);
 		cursor: default;

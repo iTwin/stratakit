@@ -4,20 +4,20 @@
  *--------------------------------------------------------------------------------------------*/
 .🥝Icon {
 	@layer base {
-		width: var(--🥝icon-size, 1rem);
-		height: var(--🥝icon-size, 1rem);
+		width: var(--🥝Icon-size, 1rem);
+		height: var(--🥝Icon-size, 1rem);
 		flex-shrink: 0;
-		color: var(--🥝icon-color);
+		color: var(--🥝Icon-color);
 		transition: color 150ms ease-out;
 	}
 
 	@layer modifiers {
 		&:where([data-kiwi-size="regular"]) {
-			--🥝icon-size: 1rem;
+			--🥝Icon-size: 1rem;
 		}
 
 		&:where([data-kiwi-size="large"]) {
-			--🥝icon-size: 1.5rem;
+			--🥝Icon-size: 1.5rem;
 		}
 	}
 }
@@ -25,7 +25,7 @@
 .🥝DisclosureArrow {
 	@layer base {
 		margin-inline-end: calc(var(--stratakit-space-x2) * -1);
-		rotate: var(--🥝disclosure-arrow-rotate);
+		rotate: var(--🥝DisclosureArrow-rotate);
 
 		@media (prefers-reduced-motion: no-preference) {
 			transition: rotate 150ms ease-in-out;
@@ -35,7 +35,7 @@
 
 .🥝ChevronDown {
 	@layer base {
-		rotate: var(--🥝chevron-down-rotate);
+		rotate: var(--🥝ChevronDown-rotate);
 
 		@media (prefers-reduced-motion: no-preference) {
 			transition: rotate 150ms ease-in-out;
@@ -45,6 +45,6 @@
 
 @media (forced-colors: active) {
 	.🥝Icon {
-		--🥝icon-color: currentColor;
+		--🥝Icon-color: currentColor;
 	}
 }

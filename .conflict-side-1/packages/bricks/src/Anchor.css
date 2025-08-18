@@ -32,11 +32,11 @@
 		cursor: pointer;
 		font-size: var(--stratakit-font-size-12);
 		font-weight: 500;
-		text-underline-offset: var(--🌀anchor-state--default, var(--stratakit-space-x05))
-			var(--🌀anchor-state--hover, var(--stratakit-space-x1))
-			var(--🌀anchor-state--pressed, var(--stratakit-space-x1));
-		text-decoration-color: var(--🌀anchor-state--default, currentColor)
-			var(--🌀anchor-state--hover, currentColor) var(--🌀anchor-state--pressed, transparent);
+		text-underline-offset: var(--🌀Anchor-state--default, var(--stratakit-space-x05))
+			var(--🌀Anchor-state--hover, var(--stratakit-space-x1))
+			var(--🌀Anchor-state--pressed, var(--stratakit-space-x1));
+		text-decoration-color: var(--🌀Anchor-state--default, currentColor)
+			var(--🌀Anchor-state--hover, currentColor) var(--🌀Anchor-state--pressed, transparent);
 		text-decoration-line: underline;
 
 		&:where(:has(.🥝AnchorText)) {
@@ -45,7 +45,7 @@
 
 		border-radius: 4px;
 
-		color: var(--🥝anchor-color, var(--✨color--default));
+		color: var(--🥝Anchor-color, var(--✨color--default));
 		-webkit-tap-highlight-color: var(--stratakit-color-bg-glow-on-surface-neutral-pressed);
 
 		transition: all 150ms ease-out;
@@ -54,16 +54,16 @@
 
 	@layer modifiers {
 		&:where([data-kiwi-tone="accent"]) {
-			--🥝anchor-color: var(--🌀anchor-state--default, var(--✨color--accent))
-				var(--🌀anchor-state--hover, var(--✨color--accent-hover))
-				var(--🌀anchor-state--pressed, var(--✨color--accent-pressed));
+			--🥝Anchor-color: var(--🌀Anchor-state--default, var(--✨color--accent))
+				var(--🌀Anchor-state--hover, var(--✨color--accent-hover))
+				var(--🌀Anchor-state--pressed, var(--✨color--accent-pressed));
 			-webkit-tap-highlight-color: var(--stratakit-color-bg-glow-on-surface-accent-pressed);
 		}
 
 		&:where([data-kiwi-tone="critical"]) {
-			--🥝anchor-color: var(--🌀anchor-state--default, var(--✨color--critical))
-				var(--🌀anchor-state--hover, var(--✨color--critical-hover))
-				var(--🌀anchor-state--pressed, var(--✨color--critical-pressed));
+			--🥝Anchor-color: var(--🌀Anchor-state--default, var(--✨color--critical))
+				var(--🌀Anchor-state--hover, var(--✨color--critical-hover))
+				var(--🌀Anchor-state--pressed, var(--✨color--critical-pressed));
 			-webkit-tap-highlight-color: var(--stratakit-color-bg-glow-on-surface-critical-pressed);
 		}
 	}
@@ -71,12 +71,12 @@
 	@layer states {
 		@media (any-hover: hover) {
 			&:where(:hover) {
-				--🌀anchor-state: var(--🌀anchor-state--hover);
+				--🌀Anchor-state: var(--🌀Anchor-state--hover);
 			}
 		}
 
 		&:where(:active) {
-			--🌀anchor-state: var(--🌀anchor-state--pressed);
+			--🌀Anchor-state: var(--🌀Anchor-state--pressed);
 		}
 
 		&:where(:focus-visible) {
@@ -84,7 +84,7 @@
 		}
 
 		&:where(:disabled, [aria-disabled="true"]) {
-			--🥝anchor-color: var(--✨color--disabled);
+			--🥝Anchor-color: var(--✨color--disabled);
 			cursor: not-allowed;
 			text-decoration: none;
 		}
@@ -92,10 +92,10 @@
 
 	@layer base.🌀 {
 		/* https://kizu.dev/cyclic-toggles/ */
-		--🌀anchor-state: var(--🌀anchor-state--default);
-		--🌀anchor-state--default: var(--🌀anchor-state,);
-		--🌀anchor-state--hover: var(--🌀anchor-state,);
-		--🌀anchor-state--pressed: var(--🌀anchor-state,);
+		--🌀Anchor-state: var(--🌀Anchor-state--default);
+		--🌀Anchor-state--default: var(--🌀Anchor-state,);
+		--🌀Anchor-state--hover: var(--🌀Anchor-state,);
+		--🌀Anchor-state--pressed: var(--🌀Anchor-state,);
 	}
 }
 

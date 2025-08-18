@@ -12,8 +12,8 @@
 
 	@layer states {
 		&:where([data-kiwi-expanded="true"]) {
-			--🥝chevron-down-rotate: -0.5turn;
-			--🥝error-region-header-border-end-radius: 0;
+			--🥝ChevronDown-rotate: -0.5turn;
+			--🥝ErrorRegionHeader-border-end-radius: 0;
 		}
 
 		&:where([data-kiwi-visible="true"]) {
@@ -24,7 +24,7 @@
 		}
 
 		&:where([data-kiwi-visible="false"]) {
-			--🥝error-region-container-display: none;
+			--🥝ErrorRegionContainer-display: none;
 		}
 	}
 }
@@ -34,7 +34,7 @@
 		isolation: isolate;
 
 		position: relative;
-		display: var(--🥝error-region-container-display, flex);
+		display: var(--🥝ErrorRegionContainer-display, flex);
 		flex-direction: column;
 
 		border: 1px solid var(--stratakit-color-border-attention-base);
@@ -67,15 +67,15 @@
 		font-weight: 400;
 		border-start-start-radius: var(--✨border-radius);
 		border-start-end-radius: var(--✨border-radius);
-		border-end-start-radius: var(--🥝error-region-header-border-end-radius, var(--✨border-radius));
-		border-end-end-radius: var(--🥝error-region-header-border-end-radius, var(--✨border-radius));
+		border-end-start-radius: var(--🥝ErrorRegionHeader-border-end-radius, var(--✨border-radius));
+		border-end-end-radius: var(--🥝ErrorRegionHeader-border-end-radius, var(--✨border-radius));
 		transition: border-radius 0s linear 150ms; /* Delay border-radius to match dialog transition. */
 	}
 }
 
 .🥝ErrorRegionIcon {
 	@layer base {
-		--🥝icon-color: var(--stratakit-color-icon-attention-base);
+		--🥝Icon-color: var(--stratakit-color-icon-attention-base);
 	}
 }
 

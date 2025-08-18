@@ -5,8 +5,8 @@
 .🥝Dot {
 	@layer base {
 		display: inline-block;
-		inline-size: var(--🥝dot-size, 4px);
-		block-size: var(--🥝dot-size, 4px);
+		inline-size: var(--🥝Dot-size, 4px);
+		block-size: var(--🥝Dot-size, 4px);
 
 		border-radius: 9999px;
 		background-color: var(--stratakit-color-bg-accent-base);

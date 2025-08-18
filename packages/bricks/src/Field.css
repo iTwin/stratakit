@@ -17,7 +17,7 @@
 		grid-template-columns: var(--✨layout-inline-label-first);
 
 		/* By default align the descriptions with the label */
-		--🥝field-description-column: label-start / label-end;
+		--🥝FieldDescription-column: label-start / label-end;
 
 		/* With checkable fields, when the label is not first, switch to control-first layout */
 		&:where([data-kiwi-control-type="checkable"][data-kiwi-label-placement="after"]) {
@@ -26,7 +26,7 @@
 
 		&:where([data-kiwi-control-type="textlike"]) {
 			/* Descriptions should be aligned with the control for text and combobox controls */
-			--🥝field-description-column: control-start / control-end;
+			--🥝FieldDescription-column: control-start / control-end;
 
 			/* Align labels with the control text (when inline) */
 			align-items: baseline;
@@ -39,7 +39,7 @@
 		}
 
 		:where(.🥝Description) {
-			grid-column: var(--🥝field-description-column);
+			grid-column: var(--🥝FieldDescription-column);
 		}
 	}
 }

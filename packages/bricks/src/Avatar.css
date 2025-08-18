@@ -6,11 +6,11 @@
 	--✨shadow-border: 0px 0px 0px 1px var(--stratakit-color-border-glow-strong-default) inset;
 
 	@layer base {
-		--🥝avatar-background-color: var(--stratakit-color-bg-mono-base);
+		--🥝Avatar-background-color: var(--stratakit-color-bg-mono-base);
 
-		block-size: var(--🥝avatar-size);
-		inline-size: var(--🥝avatar-size);
-		background-color: var(--🥝avatar-background-color);
+		block-size: var(--🥝Avatar-size);
+		inline-size: var(--🥝Avatar-size);
+		background-color: var(--🥝Avatar-background-color);
 		color: var(--stratakit-color-text-neutral-emphasis);
 		display: inline-grid;
 		place-items: center;
@@ -38,34 +38,34 @@
 
 	@layer modifiers {
 		&:where([data-kiwi-size="small"]) {
-			--🥝avatar-size: 1rem;
-			--🥝avatar-font-size: var(--stratakit-font-size-8);
-			--🥝icon-size: 0.75rem;
+			--🥝Avatar-size: 1rem;
+			--🥝Avatar-font-size: var(--stratakit-font-size-8);
+			--🥝Icon-size: 0.75rem;
 		}
 
 		&:where([data-kiwi-size="medium"]) {
-			--🥝avatar-size: 1.5rem;
-			--🥝avatar-font-size: var(--stratakit-font-size-10);
-			--🥝icon-size: 1rem;
+			--🥝Avatar-size: 1.5rem;
+			--🥝Avatar-font-size: var(--stratakit-font-size-10);
+			--🥝Icon-size: 1rem;
 		}
 
 		&:where([data-kiwi-size="large"]) {
-			--🥝avatar-size: 2rem;
-			--🥝avatar-font-size: var(--stratakit-font-size-12);
-			--🥝icon-size: 1rem;
+			--🥝Avatar-size: 2rem;
+			--🥝Avatar-font-size: var(--stratakit-font-size-12);
+			--🥝Icon-size: 1rem;
 		}
 
 		&:where([data-kiwi-size="xlarge"]) {
-			--🥝avatar-size: 3rem;
-			--🥝avatar-font-size: var(--stratakit-font-size-16);
-			--🥝icon-size: 1.5rem;
+			--🥝Avatar-size: 3rem;
+			--🥝Avatar-font-size: var(--stratakit-font-size-16);
+			--🥝Icon-size: 1.5rem;
 		}
 	}
 }
 
 .🥝AvatarInitials {
 	@layer base {
-		font-size: var(--🥝avatar-font-size);
+		font-size: var(--🥝Avatar-font-size);
 		font-weight: 600;
 		text-align: center;
 		text-transform: uppercase;

@@ -22,7 +22,7 @@
 .🥝DropdownMenuButton {
 	@layer states {
 		&:where([aria-expanded="true"]) {
-			--🥝disclosure-arrow-rotate: 0.5turn;
+			--🥝DisclosureArrow-rotate: 0.5turn;
 		}
 	}
 }
@@ -34,7 +34,7 @@
 
 	@layer states {
 		&:where([role="menuitemcheckbox"]:not([aria-checked="true"])) {
-			--🥝dropdown-menu-checkmark-visibility: hidden;
+			--🥝DropdownMenuCheckmark-visibility: hidden;
 		}
 	}
 }
@@ -47,7 +47,7 @@
 
 .🥝DropdownMenuCheckmark {
 	@layer base {
-		visibility: var(--🥝dropdown-menu-checkmark-visibility);
+		visibility: var(--🥝DropdownMenuCheckmark-visibility);
 	}
 }
 

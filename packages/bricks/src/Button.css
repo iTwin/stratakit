@@ -9,7 +9,7 @@
 	--✨padding-inline: var(--stratakit-space-x3);
 	--✨padding-block: var(--stratakit-space-x1);
 
-	--✨shadow-border: 0px 0px 0px 1px var(--🥝button-border-color) inset;
+	--✨shadow-border: 0px 0px 0px 1px var(--🥝Button-border-color) inset;
 
 	--✨glow--bg-hover: var(--stratakit-color-glow-hue) var(--stratakit-color-bg-glow-base-hover-\%);
 	--✨glow--bg-press: var(--stratakit-color-glow-hue) var(--stratakit-color-bg-glow-base-pressed-\%);
@@ -22,12 +22,12 @@
 	--✨bg--solid-accent-default: var(--stratakit-color-bg-accent-base);
 	--✨bg--solid-hover: color-mix(
 		in oklch,
-		var(--🥝button-bg--solid-default) 100%,
+		var(--🥝Button-bg--solid-default) 100%,
 		var(--✨glow--bg-hover)
 	);
 	--✨bg--solid-pressed: color-mix(
 		in oklch,
-		var(--🥝button-bg--solid-default) 100%,
+		var(--🥝Button-bg--solid-default) 100%,
 		var(--✨glow--bg-press)
 	);
 	--✨bg--solid-disabled: var(--stratakit-color-bg-glow-on-surface-disabled);
@@ -177,132 +177,132 @@
 
 		min-block-size: var(--✨height);
 		border-radius: 4px;
-		padding-inline: var(--🥝button-padding-inline, var(--✨padding-inline));
+		padding-inline: var(--🥝Button-padding-inline, var(--✨padding-inline));
 		padding-block: var(--✨padding-block);
-		--🥝ghost-inline-offset: var(--✨padding-inline);
-		--🥝ghost-block-offset: var(--✨padding-block);
+		--🥝GhostAligner-inline-offset: var(--✨padding-inline);
+		--🥝GhostAligner-block-offset: var(--✨padding-block);
 
-		background-color: var(--🥝button-background-color);
+		background-color: var(--🥝Button-background-color);
 		box-shadow: var(--✨shadow-border);
-		color: var(--🥝button-color, var(--✨color--default));
+		color: var(--🥝Button-color, var(--✨color--default));
 		transition: background-color 150ms ease-out;
 		-webkit-tap-highlight-color: var(--stratakit-color-bg-glow-on-surface-neutral-pressed);
-		--🥝icon-color: var(--🌀button-state--default, var(--stratakit-color-icon-neutral-base))
-			var(--🌀button-state--hover, var(--stratakit-color-icon-neutral-hover))
-			var(--🌀button-state--pressed, var(--stratakit-color-icon-neutral-hover))
-			var(--🌀button-state--active, var(--stratakit-color-icon-accent-strong));
+		--🥝Icon-color: var(--🌀Button-state--default, var(--stratakit-color-icon-neutral-base))
+			var(--🌀Button-state--hover, var(--stratakit-color-icon-neutral-hover))
+			var(--🌀Button-state--pressed, var(--stratakit-color-icon-neutral-hover))
+			var(--🌀Button-state--active, var(--stratakit-color-icon-accent-strong));
 	}
 
 	@layer modifiers {
 		&:where([data-kiwi-variant="solid"]) {
-			--🥝button-background-color: var(--🌀button-state--default, var(--🥝button-bg--solid-default))
-				var(--🌀button-state--hover, var(--✨bg--solid-hover))
-				var(--🌀button-state--pressed, var(--✨bg--solid-pressed))
-				var(--🌀button-state--active, var(--✨bg--active))
-				var(--🌀button-state--disabled, var(--✨bg--solid-disabled));
-			box-shadow: var(--🌀button-state--default, var(--✨shadow--solid))
-				var(--🌀button-state--hover, var(--✨shadow--solid))
-				var(--🌀button-state--pressed, var(--✨shadow-border))
-				var(--🌀button-state--active, var(--✨shadow-border)) var(--🌀button-state--disabled, none);
+			--🥝Button-background-color: var(--🌀Button-state--default, var(--🥝Button-bg--solid-default))
+				var(--🌀Button-state--hover, var(--✨bg--solid-hover))
+				var(--🌀Button-state--pressed, var(--✨bg--solid-pressed))
+				var(--🌀Button-state--active, var(--✨bg--active))
+				var(--🌀Button-state--disabled, var(--✨bg--solid-disabled));
+			box-shadow: var(--🌀Button-state--default, var(--✨shadow--solid))
+				var(--🌀Button-state--hover, var(--✨shadow--solid))
+				var(--🌀Button-state--pressed, var(--✨shadow-border))
+				var(--🌀Button-state--active, var(--✨shadow-border)) var(--🌀Button-state--disabled, none);
 
 			&:where([data-kiwi-tone="neutral"]) {
-				--🥝button-bg--solid-default: var(--✨bg--solid-neutral-default);
-				--🥝button-border-color: var(
-						--🌀button-state--default,
+				--🥝Button-bg--solid-default: var(--✨bg--solid-neutral-default);
+				--🥝Button-border-color: var(
+						--🌀Button-state--default,
 						var(--✨border--solid-neutral-default)
 					)
-					var(--🌀button-state--hover, var(--✨border--solid-neutral-hover))
-					var(--🌀button-state--pressed, var(--✨border--solid-neutral-pressed))
-					var(--🌀button-state--active, var(--✨border--active))
-					var(--🌀button-state--disabled, var(--✨border--solid-neutral-disabled));
+					var(--🌀Button-state--hover, var(--✨border--solid-neutral-hover))
+					var(--🌀Button-state--pressed, var(--✨border--solid-neutral-pressed))
+					var(--🌀Button-state--active, var(--✨border--active))
+					var(--🌀Button-state--disabled, var(--✨border--solid-neutral-disabled));
 			}
 
 			&:where([data-kiwi-tone="accent"]) {
-				--🥝button-bg--solid-default: var(--✨bg--solid-accent-default);
-				--🥝button-border-color: var(
-						--🌀button-state--default,
+				--🥝Button-bg--solid-default: var(--✨bg--solid-accent-default);
+				--🥝Button-border-color: var(
+						--🌀Button-state--default,
 						var(--✨border--solid-accent-default)
 					)
-					var(--🌀button-state--hover, var(--✨border--solid-accent-hover))
-					var(--🌀button-state--pressed, var(--✨border--solid-accent-pressed))
-					var(--🌀button-state--active, var(--✨border--active))
-					var(--🌀button-state--disabled, var(--✨border--solid-accent-disabled));
+					var(--🌀Button-state--hover, var(--✨border--solid-accent-hover))
+					var(--🌀Button-state--pressed, var(--✨border--solid-accent-pressed))
+					var(--🌀Button-state--active, var(--✨border--active))
+					var(--🌀Button-state--disabled, var(--✨border--solid-accent-disabled));
 
-				--🥝button-color: var(--stratakit-color-text-neutral-emphasis);
-				--🥝icon-color: var(--stratakit-color-icon-neutral-emphasis);
+				--🥝Button-color: var(--stratakit-color-text-neutral-emphasis);
+				--🥝Icon-color: var(--stratakit-color-icon-neutral-emphasis);
 				-webkit-tap-highlight-color: var(--stratakit-color-bg-glow-on-surface-accent-pressed);
 			}
 		}
 
 		&:where([data-kiwi-variant="outline"]) {
 			&:where([data-kiwi-tone="neutral"]) {
-				--🥝button-background-color: var(--🌀button-state--default, var(--✨bg--outline-default))
-					var(--🌀button-state--hover, var(--✨bg--outline-hover))
-					var(--🌀button-state--pressed, var(--✨bg--outline-pressed))
-					var(--🌀button-state--active, var(--✨bg--active))
-					var(--🌀button-state--disabled, var(--✨bg--outline-disabled));
-				--🥝button-border-color: var(--🌀button-state--default, var(--✨border--outline-default))
-					var(--🌀button-state--hover, var(--✨border--outline-hover))
-					var(--🌀button-state--pressed, var(--✨border--outline-pressed))
-					var(--🌀button-state--active, var(--✨border--active))
-					var(--🌀button-state--disabled, var(--✨border--outline-disabled));
+				--🥝Button-background-color: var(--🌀Button-state--default, var(--✨bg--outline-default))
+					var(--🌀Button-state--hover, var(--✨bg--outline-hover))
+					var(--🌀Button-state--pressed, var(--✨bg--outline-pressed))
+					var(--🌀Button-state--active, var(--✨bg--active))
+					var(--🌀Button-state--disabled, var(--✨bg--outline-disabled));
+				--🥝Button-border-color: var(--🌀Button-state--default, var(--✨border--outline-default))
+					var(--🌀Button-state--hover, var(--✨border--outline-hover))
+					var(--🌀Button-state--pressed, var(--✨border--outline-pressed))
+					var(--🌀Button-state--active, var(--✨border--active))
+					var(--🌀Button-state--disabled, var(--✨border--outline-disabled));
 			}
 
 			&:where([data-kiwi-tone="accent"]) {
-				--🥝button-background-color: var(
-						--🌀button-state--default,
+				--🥝Button-background-color: var(
+						--🌀Button-state--default,
 						var(--✨bg--outline-accent-default)
 					)
-					var(--🌀button-state--hover, var(--✨bg--outline-accent-hover))
-					var(--🌀button-state--pressed, var(--✨bg--outline-accent-pressed))
-					var(--🌀button-state--active, var(--✨bg--active))
-					var(--🌀button-state--disabled, var(--✨bg--outline-accent-disabled));
-				--🥝button-border-color: var(
-						--🌀button-state--default,
+					var(--🌀Button-state--hover, var(--✨bg--outline-accent-hover))
+					var(--🌀Button-state--pressed, var(--✨bg--outline-accent-pressed))
+					var(--🌀Button-state--active, var(--✨bg--active))
+					var(--🌀Button-state--disabled, var(--✨bg--outline-accent-disabled));
+				--🥝Button-border-color: var(
+						--🌀Button-state--default,
 						var(--✨border--outline-accent-default)
 					)
-					var(--🌀button-state--hover, var(--✨border--outline-accent-hover))
-					var(--🌀button-state--pressed, var(--✨border--outline-accent-pressed))
-					var(--🌀button-state--active, var(--✨border--active))
-					var(--🌀button-state--disabled, var(--✨border--outline-accent-disabled));
-				--🥝button-color: var(--🌀button-state--default, var(--✨color--outline-accent-default))
-					var(--🌀button-state--hover, var(--✨color--outline-accent-hover))
-					var(--🌀button-state--pressed, var(--✨color--outline-accent-pressed));
-				--🥝icon-color: var(--🌀button-state--default, var(--✨icon--outline-accent-default))
-					var(--🌀button-state--hover, var(--✨icon--outline-accent-hover))
-					var(--🌀button-state--pressed, var(--✨icon--outline-accent-pressed));
+					var(--🌀Button-state--hover, var(--✨border--outline-accent-hover))
+					var(--🌀Button-state--pressed, var(--✨border--outline-accent-pressed))
+					var(--🌀Button-state--active, var(--✨border--active))
+					var(--🌀Button-state--disabled, var(--✨border--outline-accent-disabled));
+				--🥝Button-color: var(--🌀Button-state--default, var(--✨color--outline-accent-default))
+					var(--🌀Button-state--hover, var(--✨color--outline-accent-hover))
+					var(--🌀Button-state--pressed, var(--✨color--outline-accent-pressed));
+				--🥝Icon-color: var(--🌀Button-state--default, var(--✨icon--outline-accent-default))
+					var(--🌀Button-state--hover, var(--✨icon--outline-accent-hover))
+					var(--🌀Button-state--pressed, var(--✨icon--outline-accent-pressed));
 			}
 		}
 
 		&:where([data-kiwi-variant="ghost"]) {
-			--🥝button-border-color: var(--🌀button-state--default, transparent)
-				var(--🌀button-state--hover, transparent) var(--🌀button-state--pressed, transparent)
-				var(--🌀button-state--active, var(--✨border--active))
-				var(--🌀button-state--disabled, transparent);
+			--🥝Button-border-color: var(--🌀Button-state--default, transparent)
+				var(--🌀Button-state--hover, transparent) var(--🌀Button-state--pressed, transparent)
+				var(--🌀Button-state--active, var(--✨border--active))
+				var(--🌀Button-state--disabled, transparent);
 
 			&:where([data-kiwi-tone="neutral"]) {
-				--🥝button-background-color: var(--🌀button-state--default, var(--✨bg--ghost-default))
-					var(--🌀button-state--hover, var(--✨bg--ghost-hover))
-					var(--🌀button-state--pressed, var(--✨bg--ghost-pressed))
-					var(--🌀button-state--active, var(--✨bg--active))
-					var(--🌀button-state--disabled, var(--✨bg--ghost-disabled));
+				--🥝Button-background-color: var(--🌀Button-state--default, var(--✨bg--ghost-default))
+					var(--🌀Button-state--hover, var(--✨bg--ghost-hover))
+					var(--🌀Button-state--pressed, var(--✨bg--ghost-pressed))
+					var(--🌀Button-state--active, var(--✨bg--active))
+					var(--🌀Button-state--disabled, var(--✨bg--ghost-disabled));
 			}
 
 			&:where([data-kiwi-tone="accent"]) {
-				--🥝button-background-color: var(
-						--🌀button-state--default,
+				--🥝Button-background-color: var(
+						--🌀Button-state--default,
 						var(--✨bg--ghost-accent-default)
 					)
-					var(--🌀button-state--hover, var(--✨bg--ghost-accent-hover))
-					var(--🌀button-state--pressed, var(--✨bg--ghost-accent-pressed))
-					var(--🌀button-state--active, var(--✨bg--active))
-					var(--🌀button-state--disabled, var(--✨bg--ghost-accent-disabled));
-				--🥝button-color: var(--🌀button-state--default, var(--✨color--ghost-accent-default))
-					var(--🌀button-state--hover, var(--✨color--ghost-accent-hover))
-					var(--🌀button-state--pressed, var(--✨color--ghost-accent-pressed));
-				--🥝icon-color: var(--🌀button-state--default, var(--✨icon--ghost-accent-default))
-					var(--🌀button-state--hover, var(--✨icon--ghost-accent-hover))
-					var(--🌀button-state--pressed, var(--✨icon--ghost-accent-pressed));
+					var(--🌀Button-state--hover, var(--✨bg--ghost-accent-hover))
+					var(--🌀Button-state--pressed, var(--✨bg--ghost-accent-pressed))
+					var(--🌀Button-state--active, var(--✨bg--active))
+					var(--🌀Button-state--disabled, var(--✨bg--ghost-accent-disabled));
+				--🥝Button-color: var(--🌀Button-state--default, var(--✨color--ghost-accent-default))
+					var(--🌀Button-state--hover, var(--✨color--ghost-accent-hover))
+					var(--🌀Button-state--pressed, var(--✨color--ghost-accent-pressed));
+				--🥝Icon-color: var(--🌀Button-state--default, var(--✨icon--ghost-accent-default))
+					var(--🌀Button-state--hover, var(--✨icon--ghost-accent-hover))
+					var(--🌀Button-state--pressed, var(--✨icon--ghost-accent-pressed));
 			}
 		}
 	}
@@ -310,40 +310,40 @@
 	@layer states {
 		@media (any-hover: hover) {
 			&:where(:hover) {
-				--🌀button-state: var(--🌀button-state--hover);
+				--🌀Button-state: var(--🌀Button-state--hover);
 			}
 		}
 
 		/* Reuse hover state when an associated popover is open. */
 		&:where([data-has-popover-open]) {
-			--🌀button-state: var(--🌀button-state--hover);
+			--🌀Button-state: var(--🌀Button-state--hover);
 		}
 
 		&:where(:active) {
-			--🌀button-state: var(--🌀button-state--pressed);
+			--🌀Button-state: var(--🌀Button-state--pressed);
 		}
 
 		&:where([aria-pressed="true"]) {
-			--🌀button-state: var(--🌀button-state--active);
+			--🌀Button-state: var(--🌀Button-state--active);
 		}
 
 		&:where(:disabled, [aria-disabled="true"]) {
-			--🌀button-state: var(--🌀button-state--disabled);
+			--🌀Button-state: var(--🌀Button-state--disabled);
 			color: var(--stratakit-color-text-neutral-disabled);
 			cursor: not-allowed;
 			-webkit-tap-highlight-color: transparent;
-			--🥝icon-color: var(--stratakit-color-icon-neutral-disabled);
+			--🥝Icon-color: var(--stratakit-color-icon-neutral-disabled);
 		}
 	}
 
 	@layer base.🌀 {
 		/* Cyclic toggles for default/hover/pressed/active/disabled states. See https://kizu.dev/cyclic-toggles/ */
-		--🌀button-state: var(--🌀button-state--default);
-		--🌀button-state--default: var(--🌀button-state,);
-		--🌀button-state--hover: var(--🌀button-state,);
-		--🌀button-state--pressed: var(--🌀button-state,);
-		--🌀button-state--active: var(--🌀button-state,);
-		--🌀button-state--disabled: var(--🌀button-state,);
+		--🌀Button-state: var(--🌀Button-state--default);
+		--🌀Button-state--default: var(--🌀Button-state,);
+		--🌀Button-state--hover: var(--🌀Button-state,);
+		--🌀Button-state--pressed: var(--🌀Button-state,);
+		--🌀Button-state--active: var(--🌀Button-state,);
+		--🌀Button-state--disabled: var(--🌀Button-state,);
 	}
 }
 

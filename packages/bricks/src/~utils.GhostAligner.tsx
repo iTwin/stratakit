@@ -40,7 +40,7 @@ export function GhostAligner(
  * This should be used together with the CSS API:
  * - `🥝GhostAligner` class.
  * - `data-_sk-ghost-align` attribute.
- * - `--🥝ghost-block-offset` and `--🥝ghost-inline-offset` variables.
+ * - `--🥝GhostAligner-block-offset` and `--🥝GhostAligner-inline-offset` variables.
  *
  * @private
  */

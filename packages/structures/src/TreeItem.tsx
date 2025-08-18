@@ -360,7 +360,7 @@ const TreeItemRoot = React.memo(
 			() =>
 				({
 					...styleProp,
-					"--🥝tree-item-level": level,
+					"--🥝TreeItem-level": level,
 				}) as React.CSSProperties,
 			[styleProp, level],
 		);

@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.0.0
+
+### Patch Changes
+
+- Updated dependencies:
+  - @stratakit/structures@1.0.0
+  - @stratakit/foundations@0.3.0
+  - @stratakit/bricks@1.0.0
+
 ## 0.0.6
 
 - [#729](https://github.com/iTwin/design-system/pull/729): Added `Select` component.

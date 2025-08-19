@@ -2,7 +2,7 @@
 
 ## 0.3.0
 
-### Minor Changes
+### Breaking changes
 
 - [#888](https://github.com/iTwin/design-system/pull/888): `Icon` component no longer automatically adjusts the URL based on `size`.
 
@@ -13,7 +13,7 @@
   + <Icon href={`${placeholderIcon}#icon-large`} size="large" />
   ```
 
-### Patch Changes
+### Non-breaking changes
 
 - [#888](https://github.com/iTwin/design-system/pull/888): `Icon` component now supports URLs containing an explicit hash.
 

@@ -2,8 +2,6 @@
 
 ## 0.1.5
 
-### Patch Changes
-
 - [#911](https://github.com/iTwin/design-system/pull/911): Added new icons:
   - `dimension-angle.svg`
   - `dimension-linear.svg`

@@ -2,7 +2,7 @@
 
 ## 0.4.0
 
-### Minor Changes
+### Breaking changes
 
 - [#888](https://github.com/iTwin/design-system/pull/888): `Toolbar.Item` component no longer automatically uses the large version of the icon.
 
@@ -41,7 +41,7 @@
 
   This change makes StrataKit's naming convention more consistent. `Root` components always render a DOM element whereas `Provider` components have no underlying DOM element.
 
-### Patch Changes
+### Non-breaking changes
 
 - [#903](https://github.com/iTwin/design-system/pull/903): Added proper styling for `Divider` rendered inside a `Toolbar.Group`.
 
@@ -59,7 +59,7 @@
 - [#902](https://github.com/iTwin/design-system/pull/902): Updated active style of a ghost `IconButton` when used in a `Toolbar` component.
 - Updated dependencies:
   - @stratakit/foundations@0.3.0
-  - @stratakit/bricks@1.0.0
+  - @stratakit/bricks@0.4.0
 
 ## 0.3.2
 

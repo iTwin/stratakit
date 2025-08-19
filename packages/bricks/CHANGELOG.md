@@ -2,8 +2,6 @@
 
 ## 0.4.0
 
-### Patch Changes
-
 - [#913](https://github.com/iTwin/design-system/pull/913): Updated internal CSS selectors in every component.
 - [#904](https://github.com/iTwin/design-system/pull/904): Updated color of `Divider` component to match the latest design specification.
 - Updated dependencies:

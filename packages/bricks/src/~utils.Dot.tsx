@@ -26,7 +26,7 @@ export const Dot = forwardRef<"span", DotProps>((props, forwardedRef) => {
 		<Role.span
 			aria-hidden="true"
 			{...rest}
-			className={cx("🥝-dot", props.className)}
+			className={cx("🥝Dot", props.className)}
 			ref={forwardedRef}
 		>
 			<VisuallyHidden>{children}</VisuallyHidden>

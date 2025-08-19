@@ -3,6 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
+import * as React from "react";
 import { Divider, IconButton } from "@stratakit/bricks";
 import { unstable_Toolbar as Toolbar } from "@stratakit/structures";
 import { definePage } from "~/~utils.tsx";
@@ -11,6 +12,10 @@ import placeholderIcon from "@stratakit/icons/placeholder.svg";
 
 export default definePage(
 	function Page() {
+		const [active, setActive_] = React.useState("");
+		const setActive = (id: string) => {
+			setActive_((prev) => (prev === id ? "" : id));
+		};
 		return (
 			<Toolbar.Group variant="solid">
 				<Toolbar.Item
@@ -19,6 +24,8 @@ export default definePage(
 							icon={`${placeholderIcon}#icon-large`}
 							label="Click me"
 							variant="ghost"
+							isActive={active === "1"}
+							onClick={() => setActive("1")}
 						/>
 					}
 				/>
@@ -28,6 +35,8 @@ export default definePage(
 							icon={`${placeholderIcon}#icon-large`}
 							label="Click me"
 							variant="ghost"
+							isActive={active === "2"}
+							onClick={() => setActive("2")}
 						/>
 					}
 				/>
@@ -37,6 +46,8 @@ export default definePage(
 							icon={`${placeholderIcon}#icon-large`}
 							label="Click me"
 							variant="ghost"
+							isActive={active === "3"}
+							onClick={() => setActive("3")}
 						/>
 					}
 				/>
@@ -74,6 +85,7 @@ function TestToolbar({ orientation }: TestToolbarProps) {
 						icon={`${placeholderIcon}#icon-large`}
 						label="Click me"
 						variant="ghost"
+						isActive
 					/>
 				}
 			/>

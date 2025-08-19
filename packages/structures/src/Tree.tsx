@@ -39,7 +39,7 @@ const Tree = forwardRef<"div", TreeProps>((props, forwardedRef) => {
 			role="tree"
 			{...props}
 			render={<Composite store={composite} />}
-			className={cx("🥝-tree", props.className)}
+			className={cx("🥝Tree", props.className)}
 			ref={forwardedRef}
 		>
 			{props.children}

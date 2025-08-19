@@ -43,8 +43,8 @@ const AnchorRoot = forwardRef<"a", AnchorRootProps>((props, forwardedRef) => {
 	return (
 		<Role.a
 			{...rest}
-			data-kiwi-tone={tone}
-			className={cx("🥝-anchor", props.className)}
+			data-_sk-tone={tone}
+			className={cx("🥝Anchor", props.className)}
 			render={
 				<Focusable accessibleWhenDisabled render={props.render || <a />} />
 			}
@@ -71,7 +71,7 @@ const AnchorText = forwardRef<"span", AnchorTextProps>(
 		return (
 			<Role.span
 				{...props}
-				className={cx("🥝-anchor-text", props.className)}
+				className={cx("🥝AnchorText", props.className)}
 				ref={forwardedRef}
 			/>
 		);
@@ -101,7 +101,7 @@ const AnchorExternalMarker = forwardRef<"span", AnchorExternalMarkerProps>(
 				<Role.span
 					aria-hidden="true"
 					{...rest}
-					className={cx("🥝-anchor-external-marker", props.className)}
+					className={cx("🥝AnchorExternalMarker", props.className)}
 					ref={forwardedRef}
 				>
 					&nbsp;↗

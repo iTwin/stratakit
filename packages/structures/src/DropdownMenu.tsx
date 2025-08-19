@@ -116,7 +116,7 @@ const DropdownMenuContent = forwardRef<"div", DropdownMenuContentProps>(
 				gutter={4}
 				style={{ ...popoverProps.style, ...props.style }}
 				wrapperProps={{ popover: popoverProps.popover }}
-				className={cx("🥝-dropdown-menu", props.className)}
+				className={cx("🥝DropdownMenu", props.className)}
 				ref={forwardedRef}
 			/>
 		);
@@ -163,7 +163,7 @@ const DropdownMenuButton = forwardRef<"button", DropdownMenuButtonProps>(
 						</Button>
 					)
 				}
-				className={cx("🥝-dropdown-menu-button", props.className)}
+				className={cx("🥝DropdownMenuButton", props.className)}
 				data-has-popover-open={open || undefined}
 				ref={forwardedRef}
 			/>
@@ -212,7 +212,7 @@ const DropdownMenuItem = forwardRef<"button", DropdownMenuItemProps>(
 								accessibleWhenDisabled
 								aria-describedby={dotId}
 								{...rest}
-								className={cx("🥝-dropdown-menu-item", props.className)}
+								className={cx("🥝DropdownMenuItem", props.className)}
 								ref={forwardedRef}
 							/>
 						}
@@ -225,7 +225,7 @@ const DropdownMenuItem = forwardRef<"button", DropdownMenuItemProps>(
 				{unstable_dot ? (
 					<ListItem.Decoration
 						render={
-							<Dot id={dotId} className="🥝-dropdown-menu-item-dot">
+							<Dot id={dotId} className="🥝DropdownMenuItemDot">
 								{unstable_dot}
 							</Dot>
 						}
@@ -275,7 +275,7 @@ const DropdownMenuItemShortcuts = forwardRef<
 		<ListItem.Decoration
 			render={<span />}
 			{...rest}
-			className={cx("🥝-dropdown-menu-item-shortcuts", props.className)}
+			className={cx("🥝DropdownMenuItemShortcuts", props.className)}
 			ref={forwardedRef}
 		>
 			{shortcutKeys.map(({ key, isSymbol }, index) => {
@@ -380,7 +380,7 @@ const DropdownMenuCheckboxItem = forwardRef<
 						<ButtonAk
 							accessibleWhenDisabled
 							{...rest}
-							className={cx("🥝-dropdown-menu-item", props.className)}
+							className={cx("🥝DropdownMenuItem", props.className)}
 							ref={forwardedRef}
 						/>
 					}
@@ -390,7 +390,7 @@ const DropdownMenuCheckboxItem = forwardRef<
 			{icon ? <DropdownMenuIcon icon={icon} /> : null}
 			<ListItem.Content render={<span />}>{label}</ListItem.Content>
 			<ListItem.Decoration
-				render={<Checkmark className="🥝-dropdown-menu-checkmark" />}
+				render={<Checkmark className="🥝DropdownMenuCheckmark" />}
 			/>
 		</MenuItemCheckbox>
 	);

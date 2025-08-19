@@ -3,58 +3,58 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-.🥝-spinner {
+.🥝Spinner {
 	--✨duration: 1s;
 	--✨duration-slow: 2s;
 
-	--✨animation--indeterminate: --🥝spinner-animation-indeterminate linear infinite;
+	--✨animation--indeterminate: --🥝Spinner-animation-indeterminate linear infinite;
 
 	@layer base {
 		display: inline-block;
-		block-size: var(--🥝spinner-size);
-		inline-size: var(--🥝spinner-size);
+		block-size: var(--🥝Spinner-size);
+		inline-size: var(--🥝Spinner-size);
 	}
 
 	@layer modifiers {
-		&:where([data-kiwi-tone="neutral"]) {
-			--🥝spinner-fill-color: var(--stratakit-color-icon-neutral-base);
-			--🥝spinner-track-color: var(--stratakit-color-border-page-base);
+		&:where([data-_sk-tone="neutral"]) {
+			--🥝Spinner-fill-color: var(--stratakit-color-icon-neutral-base);
+			--🥝Spinner-track-color: var(--stratakit-color-border-page-base);
 		}
 
-		&:where([data-kiwi-tone="accent"]) {
-			--🥝spinner-fill-color: var(--stratakit-color-icon-accent-strong);
-			--🥝spinner-track-color: var(--stratakit-color-bg-accent-muted);
+		&:where([data-_sk-tone="accent"]) {
+			--🥝Spinner-fill-color: var(--stratakit-color-icon-accent-strong);
+			--🥝Spinner-track-color: var(--stratakit-color-bg-accent-muted);
 		}
 
-		&:where([data-kiwi-size="small"]) {
-			--🥝spinner-size: 1rem;
+		&:where([data-_sk-size="small"]) {
+			--🥝Spinner-size: 1rem;
 		}
 
-		&:where([data-kiwi-size="medium"]) {
-			--🥝spinner-size: 1.5rem;
+		&:where([data-_sk-size="medium"]) {
+			--🥝Spinner-size: 1.5rem;
 		}
 
-		&:where([data-kiwi-size="large"]) {
-			--🥝spinner-size: 2rem;
+		&:where([data-_sk-size="large"]) {
+			--🥝Spinner-size: 2rem;
 		}
 
-		&:where([data-kiwi-size="xlarge"]) {
-			--🥝spinner-size: 3rem;
+		&:where([data-_sk-size="xlarge"]) {
+			--🥝Spinner-size: 3rem;
 		}
 
-		&:where([data-kiwi-variant="indeterminate"]) {
-			--🥝spinner-animation: var(--✨animation--indeterminate);
-			--🥝spinner-animation-duration: var(--✨duration);
-			--🥝spinner-dash-array: 25 75;
+		&:where([data-_sk-variant="indeterminate"]) {
+			--🥝Spinner-animation: var(--✨animation--indeterminate);
+			--🥝Spinner-animation-duration: var(--✨duration);
+			--🥝Spinner-dash-array: 25 75;
 
 			@media (prefers-reduced-motion) {
-				--🥝spinner-animation-duration: var(--✨duration-slow);
+				--🥝Spinner-animation-duration: var(--✨duration-slow);
 			}
 		}
 	}
 }
 
-.🥝-spinner-svg {
+.🥝SpinnerSvg {
 	@layer base {
 		block-size: inherit;
 		inline-size: inherit;
@@ -62,43 +62,43 @@
 	}
 }
 
-.🥝-spinner-svg-track {
-	stroke: var(--🥝spinner-track-color);
+.🥝SpinnerSvgTrack {
+	stroke: var(--🥝Spinner-track-color);
 }
 
-.🥝-spinner-svg-fill {
-	animation: var(--🥝spinner-animation);
-	animation-duration: var(--🥝spinner-animation-duration);
-	stroke: var(--🥝spinner-fill-color);
-	stroke-dasharray: var(--🥝spinner-dash-array);
+.🥝SpinnerSvgFill {
+	animation: var(--🥝Spinner-animation);
+	animation-duration: var(--🥝Spinner-animation-duration);
+	stroke: var(--🥝Spinner-fill-color);
+	stroke-dasharray: var(--🥝Spinner-dash-array);
 	stroke-dashoffset: 25;
 	stroke-linecap: round;
 	transform-box: fill-box;
 	transform-origin: center;
 }
 
-@keyframes --🥝spinner-animation-indeterminate {
+@keyframes --🥝Spinner-animation-indeterminate {
 	to {
 		rotate: 360deg;
 	}
 }
 
 @media (forced-colors: active) {
-	.🥝-spinner {
+	.🥝Spinner {
 		/* Fill is used as track, track is used as fill. */
-		--🥝spinner-fill-color: Canvas;
-		--🥝spinner-track-color: CanvasText;
+		--🥝Spinner-fill-color: Canvas;
+		--🥝Spinner-track-color: CanvasText;
 
-		&:where([data-kiwi-variant="indeterminate"]) {
-			--🥝spinner-dash-array: 75 25; /* Inverts the sizes of fill & track. */
+		&:where([data-_sk-variant="indeterminate"]) {
+			--🥝Spinner-dash-array: 75 25; /* Inverts the sizes of fill & track. */
 		}
 	}
 
-	.🥝-spinner-svg-track {
+	.🥝SpinnerSvgTrack {
 		stroke-width: 2; /* Makes the track twice as thick to create an outline around the spinner. */
 	}
 
-	.🥝-spinner-svg-fill {
+	.🥝SpinnerSvgFill {
 		stroke-dashoffset: 0; /* Makes the fill start in the same location as non-forced-colors mode. */
 	}
 }

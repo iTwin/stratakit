@@ -2,7 +2,7 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-.🥝-divider {
+.🥝Divider {
 	@layer base {
 		flex: 0 0 auto;
 		align-self: stretch;
@@ -15,23 +15,23 @@
 	}
 
 	@layer modifiers {
-		&:where(:not([aria-orientation="vertical"], [data-kiwi-orientation="vertical"])) {
+		&:where(:not([aria-orientation="vertical"], [data-_sk-orientation="vertical"])) {
 			block-size: 1px;
-			margin-inline: var(--🥝divider-main-axis-margin);
-			margin-block: var(--🥝divider-cross-axis-margin);
+			margin-inline: var(--🥝Divider-main-axis-margin);
+			margin-block: var(--🥝Divider-cross-axis-margin);
 		}
 
-		&:where([aria-orientation="vertical"], [data-kiwi-orientation="vertical"]) {
+		&:where([aria-orientation="vertical"], [data-_sk-orientation="vertical"]) {
 			inline-size: 1px;
 			min-block-size: 100%;
-			margin-inline: var(--🥝divider-cross-axis-margin);
-			margin-block: var(--🥝divider-main-axis-margin);
+			margin-inline: var(--🥝Divider-cross-axis-margin);
+			margin-block: var(--🥝Divider-main-axis-margin);
 		}
 	}
 }
 
 @media (forced-colors: active) {
-	.🥝-divider {
+	.🥝Divider {
 		background-color: CanvasText;
 	}
 }

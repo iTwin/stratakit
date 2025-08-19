@@ -130,7 +130,7 @@ const IconButton = forwardRef<"button", IconButtonProps>(
 						)}
 
 						{dot ? (
-							<Dot id={dotId} className="🥝-icon-button-dot">
+							<Dot id={dotId} className="🥝IconButtonDot">
 								{dot}
 							</Dot>
 						) : null}

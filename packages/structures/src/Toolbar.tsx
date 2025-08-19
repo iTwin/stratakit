@@ -67,7 +67,7 @@ const ToolbarGroup = forwardRef<"div", ToolbarGroupProps>(
 				>
 					<Toolbar.Toolbar
 						{...props}
-						className={cx("🥝-toolbar", props.className)}
+						className={cx("🥝Toolbar", props.className)}
 						ref={forwardedRef}
 					/>
 				</TooltipContext.Provider>
@@ -98,7 +98,13 @@ interface ToolbarItemProps
  */
 const ToolbarItem = forwardRef<"button", ToolbarItemProps>(
 	(props, forwardedRef) => {
-		return <Toolbar.ToolbarItem {...props} ref={forwardedRef} />;
+		return (
+			<Toolbar.ToolbarItem
+				{...props}
+				className={cx("🥝ToolbarItem", props.className)}
+				ref={forwardedRef}
+			/>
+		);
 	},
 );
 DEV: ToolbarItem.displayName = "Toolbar.Item";

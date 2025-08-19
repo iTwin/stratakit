@@ -52,23 +52,23 @@ const Spinner = forwardRef<"div", SpinnerProps>((props, forwardedRef) => {
 	return (
 		<Role
 			{...rest}
-			data-kiwi-size={size}
-			data-kiwi-tone={tone}
-			data-kiwi-variant="indeterminate"
-			className={cx("🥝-spinner", props.className)}
+			data-_sk-size={size}
+			data-_sk-tone={tone}
+			data-_sk-variant="indeterminate"
+			className={cx("🥝Spinner", props.className)}
 			ref={forwardedRef}
 		>
-			<svg aria-hidden="true" className="🥝-spinner-svg" viewBox="0 0 16 16">
+			<svg aria-hidden="true" className="🥝SpinnerSvg" viewBox="0 0 16 16">
 				<circle
 					pathLength="100"
-					className="🥝-spinner-svg-track"
+					className="🥝SpinnerSvgTrack"
 					cx="8"
 					cy="8"
 					r="6.5"
 				/>
 				<circle
 					pathLength="100"
-					className="🥝-spinner-svg-fill"
+					className="🥝SpinnerSvgFill"
 					cx="8"
 					cy="8"
 					r="6.5"

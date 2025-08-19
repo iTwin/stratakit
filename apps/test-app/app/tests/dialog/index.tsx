@@ -47,16 +47,7 @@ function VisualTest() {
 					<Dialog.Heading>Heading</Dialog.Heading>
 					<Dialog.CloseButton />
 				</Dialog.Header>
-				<Dialog.Content
-					style={{ display: "flex", flexDirection: "column", gap: 16 }}
-				>
-					<Text
-						variant="body-sm"
-						style={{ color: "var(--stratakit-color-text-neutral-secondary)" }}
-					>
-						Secondary content
-					</Text>
-				</Dialog.Content>
+				<Dialog.Content>Content</Dialog.Content>
 				<Dialog.Footer>
 					<Dialog.Action>Cancel</Dialog.Action>
 					<Dialog.Action render={<Button tone="accent" />}>Ok</Dialog.Action>

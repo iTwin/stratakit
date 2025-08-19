@@ -50,24 +50,6 @@ function VisualTest() {
 				<Dialog.Content
 					style={{ display: "flex", flexDirection: "column", gap: 16 }}
 				>
-					<span
-						style={{
-							display: "flex",
-							alignItems: "center",
-							justifyContent: "space-between",
-						}}
-					>
-						Primary content
-						<DropdownMenu.Provider>
-							<DropdownMenu.Button>Actions</DropdownMenu.Button>
-
-							<DropdownMenu.Content>
-								<DropdownMenu.Item label="Add" />
-								<DropdownMenu.Item label="Edit" />
-								<DropdownMenu.Item label="Delete" />
-							</DropdownMenu.Content>
-						</DropdownMenu.Provider>
-					</span>
 					<Text
 						variant="body-sm"
 						style={{ color: "var(--stratakit-color-text-neutral-secondary)" }}
@@ -154,7 +136,24 @@ function NestedTest() {
 					<Button onClick={() => setNestedOpen(true)}>Open nested</Button>
 					<Dialog.Root open={nestedOpen} onClose={() => setNestedOpen(false)}>
 						<Dialog.Header render={<Dialog.Heading />}>Heading</Dialog.Header>
-						<Dialog.Content>Content of nested dialog</Dialog.Content>
+						<Dialog.Content
+							style={{
+								display: "flex",
+								alignItems: "center",
+								justifyContent: "space-between",
+							}}
+						>
+							Content of nested dialog
+							<DropdownMenu.Provider>
+								<DropdownMenu.Button>Actions</DropdownMenu.Button>
+
+								<DropdownMenu.Content>
+									<DropdownMenu.Item label="Add" />
+									<DropdownMenu.Item label="Edit" />
+									<DropdownMenu.Item label="Delete" />
+								</DropdownMenu.Content>
+							</DropdownMenu.Provider>
+						</Dialog.Content>
 					</Dialog.Root>
 				</Dialog.Content>
 			</Dialog.Root>

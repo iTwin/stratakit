@@ -207,7 +207,7 @@ const DialogCloseButton = forwardRef<"button", DialogCloseButtonProps>(
 	(props, forwardedRef) => {
 		const { label = "Dismiss", ...rest } = props;
 		return (
-			<GhostAligner align="inline">
+			<GhostAligner align="inline-end">
 				<AkDialog.DialogDismiss
 					{...rest}
 					render={

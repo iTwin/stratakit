@@ -18,6 +18,8 @@ import { ColorSchemeProvider, useColorScheme } from "./~utils.tsx";
 
 import type { LinksFunction } from "react-router";
 
+import interVariable from "./fonts/InterVariable.woff2?url";
+import interVariableItalic from "./fonts/InterVariable-Italic.woff2?url";
 import manifestUrl from "./manifest.json?url";
 
 const queryClient = new QueryClient({
@@ -31,8 +33,6 @@ export const links: LinksFunction = () => {
 			href: "data:image/svg+xml,<svg viewBox='0 -16 20 20' xmlns='http://www.w3.org/2000/svg'><text>🥝</text></svg>",
 			type: "image/svg+xml",
 		},
-		{ rel: "preconnect", href: "https://rsms.me/" },
-		{ rel: "stylesheet", href: "https://rsms.me/inter/inter.css" },
 		{ rel: "manifest", href: manifestUrl },
 	];
 };
@@ -60,6 +60,7 @@ function LayoutInner({ children }: { children: React.ReactNode }) {
 				<meta name="color-scheme" content={colorScheme} />
 				<Meta />
 				<Links />
+				<Fonts />
 			</head>
 			<body>
 				{children}
@@ -105,4 +106,26 @@ export function HydrateFallback() {
 function useIsRootTest() {
 	type RootTestHandle = typeof import("~/tests/root/index.tsx").handle;
 	return !!(useMatches()?.at(-1)?.handle as RootTestHandle)?.rootTest;
+}
+
+function Fonts() {
+	return (
+		// Based on https://rsms.me/inter/inter.css
+		<style>{`
+@font-face {
+  font-family: InterVariable;
+  font-style: normal;
+  font-weight 100 900;
+  font-display: swap;
+  src: url(${interVariable}) format("woff2");
+}
+@font-face {
+  font-family: InterVariable;
+  font-style: italic;
+  font-weight 100 900;
+  font-display: swap;
+  src: url(${interVariableItalic}) format("woff2");
+}
+`}</style>
+	);
 }

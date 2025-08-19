@@ -110,22 +110,22 @@ function useIsRootTest() {
 
 function Fonts() {
 	return (
+		// Based on https://rsms.me/inter/inter.css
 		<style>{`
-	@font-face {
-		font-family: InterVariable;
-		font-style: normal;
-		font-weight 100 900;
-		font-display: swap;
-		src: url(${interVariable}) format("woff2");
-	}
-
-	@font-face {
-		font-family: InterVariable;
-		font-style: italic;
-		font-weight 100 900;
-		font-display: swap;
-		src: url(${interVariableItalic}) format("woff2");
-	}
+@font-face {
+  font-family: InterVariable;
+  font-style: normal;
+  font-weight 100 900;
+  font-display: swap;
+  src: url(${interVariable}) format("woff2");
+}
+@font-face {
+  font-family: InterVariable;
+  font-style: italic;
+  font-weight 100 900;
+  font-display: swap;
+  src: url(${interVariableItalic}) format("woff2");
+}
 `}</style>
 	);
 }

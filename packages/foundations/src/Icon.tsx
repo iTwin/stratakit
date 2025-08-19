@@ -150,7 +150,7 @@ function useNormalizedHrefBase(rawHref: string | undefined) {
 			// Browser will handle this.
 			if (isHttpProtocol(rawHref, ownerDocument)) return () => {};
 
-			// @ts-ignore -- This is initialized in `<InlineSpriteSheet>`.
+			// @ts-expect-error -- This is initialized in `<InlineSpriteSheet>`.
 			const cache = spriteSheet[Symbol.for("🥝")]?.icons as Map<string, string>;
 			if (!cache) return () => {};
 

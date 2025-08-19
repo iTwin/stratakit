@@ -173,6 +173,7 @@ const DialogHeading = forwardRef<"h1", DialogHeadingProps>(
 		return (
 			<AkDialog.DialogHeading
 				{...props}
+				className={cx("🥝-dialog-heading", props.className)}
 				render={<Text variant="body-lg" render={props.render ?? <h1 />} />}
 				ref={forwardedRef}
 			/>
@@ -209,7 +210,6 @@ const DialogCloseButton = forwardRef<"button", DialogCloseButtonProps>(
 			<GhostAligner align="inline">
 				<AkDialog.DialogDismiss
 					{...rest}
-					className={cx("🥝-dialog-close-button", props.className)}
 					render={
 						<IconButton
 							render={props.render}

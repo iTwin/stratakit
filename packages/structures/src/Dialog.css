@@ -55,9 +55,9 @@
 	}
 }
 
-.🥝-dialog-close-button {
+.🥝-dialog-heading {
 	@layer base {
-		margin-inline-start: auto;
+		margin-inline-end: auto;
 	}
 }
 

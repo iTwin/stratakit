@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.4.0
+
+- [#913](https://github.com/iTwin/design-system/pull/913): Updated internal CSS selectors in every component.
+- [#904](https://github.com/iTwin/design-system/pull/904): Updated color of `Divider` component to match the latest design specification.
+- Updated dependencies:
+  - @stratakit/foundations@0.3.0
+
 ## 0.3.4
 
 - [#881](https://github.com/iTwin/design-system/pull/881): Updated CSS to use `--stratakit-space-` variables instead of hardcoded values in all components.

@@ -67,7 +67,7 @@ const ToolbarGroup = forwardRef<"div", ToolbarGroupProps>(
 				>
 					<Toolbar.Toolbar
 						{...props}
-						className={cx("🥝-toolbar", props.className)}
+						className={cx("🥝Toolbar", props.className)}
 						ref={forwardedRef}
 					/>
 				</TooltipContext.Provider>
@@ -101,7 +101,7 @@ const ToolbarItem = forwardRef<"button", ToolbarItemProps>(
 		return (
 			<Toolbar.ToolbarItem
 				{...props}
-				className={cx("🥝-toolbar-item", props.className)}
+				className={cx("🥝ToolbarItem", props.className)}
 				ref={forwardedRef}
 			/>
 		);

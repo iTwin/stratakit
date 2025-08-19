@@ -4,7 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 html:where([data-color-scheme="light"]),
 :host([data-color-scheme="light"]),
-.🥝-root:where([data-kiwi-theme="light"]) {
+.🥝Root:where([data-_sk-theme="light"]) {
 	@apply --theme("light");
 	color-scheme: light;
 
@@ -19,7 +19,7 @@ html:where([data-color-scheme="light"]),
 
 html:where([data-color-scheme="dark"]),
 :host([data-color-scheme="dark"]),
-.🥝-root:where([data-kiwi-theme="dark"]) {
+.🥝Root:where([data-_sk-theme="dark"]) {
 	@apply --theme("dark");
 	color-scheme: dark;
 

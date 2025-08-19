@@ -76,7 +76,7 @@ export const ChevronDown = forwardRef<
 	return (
 		<ChevronDownBase
 			{...props}
-			className={cx("🥝-chevron-down", props.className)}
+			className={cx("🥝ChevronDown", props.className)}
 			ref={forwardedRef}
 		/>
 	);

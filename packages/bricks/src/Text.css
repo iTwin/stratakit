@@ -2,49 +2,49 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-.🥝-text {
+.🥝Text {
 	@layer modifiers {
-		&:where([data-kiwi-text-variant="display-lg"]) {
+		&:where([data-_sk-text-variant="display-lg"]) {
 			@apply --typography("display-lg");
 		}
-		&:where([data-kiwi-text-variant="display-md"]) {
+		&:where([data-_sk-text-variant="display-md"]) {
 			@apply --typography("display-md");
 		}
-		&:where([data-kiwi-text-variant="display-sm"]) {
+		&:where([data-_sk-text-variant="display-sm"]) {
 			@apply --typography("display-sm");
 		}
 
-		&:where([data-kiwi-text-variant="headline-lg"]) {
+		&:where([data-_sk-text-variant="headline-lg"]) {
 			@apply --typography("headline-lg");
 		}
-		&:where([data-kiwi-text-variant="headline-md"]) {
+		&:where([data-_sk-text-variant="headline-md"]) {
 			@apply --typography("headline-md");
 		}
-		&:where([data-kiwi-text-variant="headline-sm"]) {
+		&:where([data-_sk-text-variant="headline-sm"]) {
 			@apply --typography("headline-sm");
 		}
 
-		&:where([data-kiwi-text-variant="body-lg"]) {
+		&:where([data-_sk-text-variant="body-lg"]) {
 			@apply --typography("body-lg");
 		}
-		&:where([data-kiwi-text-variant="body-md"]) {
+		&:where([data-_sk-text-variant="body-md"]) {
 			@apply --typography("body-md");
 		}
-		&:where([data-kiwi-text-variant="body-sm"]) {
+		&:where([data-_sk-text-variant="body-sm"]) {
 			@apply --typography("body-sm");
 		}
 
-		&:where([data-kiwi-text-variant="caption-lg"]) {
+		&:where([data-_sk-text-variant="caption-lg"]) {
 			@apply --typography("caption-lg");
 		}
-		&:where([data-kiwi-text-variant="caption-md"]) {
+		&:where([data-_sk-text-variant="caption-md"]) {
 			@apply --typography("caption-md");
 		}
-		&:where([data-kiwi-text-variant="caption-sm"]) {
+		&:where([data-_sk-text-variant="caption-sm"]) {
 			@apply --typography("caption-sm");
 		}
 
-		&:where([data-kiwi-text-variant="mono-sm"]) {
+		&:where([data-_sk-text-variant="mono-sm"]) {
 			@apply --typography("mono-sm");
 		}
 	}

@@ -76,6 +76,7 @@
 		color: var(--stratakit-color-text-neutral-primary);
 
 		overflow-y: auto;
+		overflow-block: auto;
 
 		padding-block-end: var(--✨padding);
 		padding-inline: var(--✨padding);

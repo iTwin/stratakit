@@ -28,12 +28,12 @@ export default definePage(
 		visual: VisualTest,
 		closeButton: CloseButtonTest,
 		actions: ActionsTest,
-		mountedOnHideTest: MountedOnHideTest,
+		_mountedOnHideTest: MountedOnHideTest,
 		nested: NestedTest,
-		nestedUnmountOnHide: NestedUnmountOnHideTest,
+		_nestedUnmountOnHide: NestedUnmountOnHideTest,
 		nonDismissible: NonDismissibleTest,
 		noBackdrop: NoBackdropTest,
-		customBackdrop: CustomBackdropTest,
+		_customBackdrop: CustomBackdropTest,
 	},
 );
 

@@ -8,7 +8,7 @@ import * as AkDialog from "@ariakit/react/dialog";
 import { Portal, PortalContext } from "@ariakit/react/portal";
 import { Role } from "@ariakit/react/role";
 import { useStoreState } from "@ariakit/react/store";
-import { Button, IconButton, Text } from "@stratakit/bricks";
+import { Button, IconButton, Text, VisuallyHidden } from "@stratakit/bricks";
 import { GhostAligner } from "@stratakit/bricks/secret-internals";
 import {
 	forwardRef,
@@ -84,6 +84,8 @@ const DialogRoot = forwardRef<"div", DialogRootProps>((props, forwardedRef) => {
 					className={cx("🥝-dialog", props.className)}
 					ref={forwardedRef}
 				>
+					{/* Avoids rendering a visually hidden dismiss button for screen readers. */}
+					<VisuallyHidden inert render={<AkDialog.DialogDismiss />} />
 					<PortalContext.Provider value={contentElement}>
 						{props.children}
 					</PortalContext.Provider>

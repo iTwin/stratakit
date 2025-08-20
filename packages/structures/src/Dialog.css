@@ -30,6 +30,9 @@
 		background-color: var(--stratakit-color-bg-elevation-base);
 		box-shadow: var(--stratakit-shadow-dialog-base);
 
+		/* Prevents footer from overlapping the box-shadow */
+		padding: 1px;
+
 		display: flex;
 		flex-direction: column;
 

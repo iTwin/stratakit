@@ -19,7 +19,7 @@ test("default", async ({ page }) => {
 
 	await button.click();
 	await expect(dialog).toBeVisible();
-	await expect(dialog).toHaveAccessibleName("Heading");
+	await expect(dialog).toHaveAccessibleName("Title");
 	await expect(visuallyHiddenDismiss).toBeVisible();
 });
 

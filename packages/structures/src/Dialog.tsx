@@ -80,7 +80,7 @@ const DialogRoot = forwardRef<"div", DialogRootProps>((props, forwardedRef) => {
 					portal={false} // Portaling will be done by DialogWrapper
 					{...rest}
 					backdrop={backdrop === true ? <DialogBackdrop /> : backdrop}
-					className={cx("🥝-dialog", props.className)}
+					className={cx("🥝Dialog", props.className)}
 					ref={forwardedRef}
 				>
 					{/* Avoids rendering a visually hidden dismiss button for screen readers. */}
@@ -110,7 +110,7 @@ function DialogWrapper(props: React.PropsWithChildren) {
 	const mounted = useStoreState(store, "mounted");
 	return (
 		<Portal
-			className="🥝-dialog-wrapper"
+			className="🥝DialogWrapper"
 			ref={setWrapper}
 			{...popoverProps}
 			hidden={mounted ? undefined : true}
@@ -149,7 +149,7 @@ const DialogHeader = forwardRef<"div", DialogHeaderProps>(
 		return (
 			<Role
 				{...props}
-				className={cx("🥝-dialog-header", props.className)}
+				className={cx("🥝DialogHeader", props.className)}
 				ref={forwardedRef}
 			/>
 		);
@@ -174,7 +174,7 @@ const DialogHeading = forwardRef<"h1", DialogHeadingProps>(
 		return (
 			<AkDialog.DialogHeading
 				{...props}
-				className={cx("🥝-dialog-heading", props.className)}
+				className={cx("🥝DialogHeading", props.className)}
 				render={<Text variant="body-lg" render={props.render ?? <h1 />} />}
 				ref={forwardedRef}
 			/>
@@ -251,7 +251,7 @@ const DialogAction = forwardRef<"button", DialogActionProps>(
 		return (
 			<AkDialog.DialogDismiss
 				{...props}
-				className={cx("🥝-dialog-action", props.className)}
+				className={cx("🥝DialogAction", props.className)}
 				render={props.render ?? <Button />}
 				ref={forwardedRef}
 			/>
@@ -278,7 +278,7 @@ const DialogContent = forwardRef<"div", DialogContentProps>(
 			<Text
 				variant="body-sm"
 				{...props}
-				className={cx("🥝-dialog-content", props.className)}
+				className={cx("🥝DialogContent", props.className)}
 				ref={forwardedRef}
 			/>
 		);
@@ -306,7 +306,7 @@ const DialogFooter = forwardRef<"div", DialogFooterProps>(
 		return (
 			<Role
 				{...props}
-				className={cx("🥝-dialog-footer", props.className)}
+				className={cx("🥝DialogFooter", props.className)}
 				ref={forwardedRef}
 			/>
 		);
@@ -331,7 +331,7 @@ const DialogBackdrop = forwardRef<"div", DialogBackdropProps>(
 		return (
 			<Role
 				{...props}
-				className={cx("🥝-dialog-backdrop", props.className)}
+				className={cx("🥝DialogBackdrop", props.className)}
 				ref={forwardedRef}
 			/>
 		);

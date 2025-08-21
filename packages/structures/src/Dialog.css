@@ -2,7 +2,7 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-.🥝-dialog-wrapper {
+.🥝DialogWrapper {
 	@layer base {
 		position: fixed;
 		display: grid;
@@ -13,7 +13,7 @@
 	}
 }
 
-.🥝-dialog {
+.🥝Dialog {
 	--✨padding-block: var(--stratakit-space-x4);
 	--✨padding-inline: var(--stratakit-space-x5);
 
@@ -21,7 +21,7 @@
 		position: relative;
 		place-self: center;
 
-		min-block-size: var(--🥝dialog-min-block-size, 94px);
+		min-block-size: var(--🥝Dialog-min-block-size, 94px);
 		min-inline-size: min(100%, 296px);
 		max-block-size: calc(100% - 64px);
 		max-inline-size: calc(100% - 64px);
@@ -36,13 +36,13 @@
 		display: flex;
 		flex-direction: column;
 
-		&:where(:has(.🥝-dialog-footer)) {
-			--🥝dialog-min-block-size: 156px;
+		&:where(:has(.🥝DialogFooter)) {
+			--🥝Dialog-min-block-size: 156px;
 		}
 	}
 }
 
-.🥝-dialog-header {
+.🥝DialogHeader {
 	--✨padding-block: var(--stratakit-space-x4);
 	--✨padding-inline: var(--stratakit-space-x5);
 
@@ -55,13 +55,13 @@
 	}
 }
 
-.🥝-dialog-heading {
+.🥝DialogHeading {
 	@layer base {
 		margin-inline-end: auto;
 	}
 }
 
-.🥝-dialog-action {
+.🥝DialogAction {
 	@layer base {
 		&:where(:nth-child(1 of &)) {
 			margin-inline-start: auto;
@@ -69,7 +69,7 @@
 	}
 }
 
-.🥝-dialog-content {
+.🥝DialogContent {
 	--✨padding: var(--stratakit-space-x5);
 
 	@layer base {
@@ -83,7 +83,7 @@
 	}
 }
 
-.🥝-dialog-footer {
+.🥝DialogFooter {
 	--✨padding: var(--stratakit-space-x5);
 	--✨border-radius: 12px; /* radius/large */
 
@@ -101,7 +101,7 @@
 	}
 }
 
-.🥝-dialog-backdrop {
+.🥝DialogBackdrop {
 	@layer base {
 		opacity: 0.8;
 		background: var(--stratakit-color-bg-elevation-overlay);
@@ -109,7 +109,7 @@
 }
 
 @media (forced-colors: active) {
-	.🥝-dialog {
+	.🥝Dialog {
 		border: 1px solid;
 	}
 }

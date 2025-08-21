@@ -2,7 +2,7 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-.🥝-visually-hidden {
+.🥝VisuallyHidden {
 	@layer base {
 		&:where(:not(:active, :focus-within)) {
 			clip-path: inset(50%) !important;

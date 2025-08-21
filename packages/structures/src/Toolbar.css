@@ -2,7 +2,7 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-.🥝-toolbar {
+.🥝Toolbar {
 	@layer base {
 		display: inline-flex;
 		gap: var(--stratakit-space-x1);
@@ -12,11 +12,40 @@
 		box-shadow: var(--stratakit-shadow-toolbar-base);
 		border-radius: 8px;
 		padding: var(--stratakit-space-x1);
+
+		--🥝Divider-main-axis-margin: var(--stratakit-space-x2);
+		--🥝Divider-cross-axis-margin: var(--stratakit-space-x1);
+	}
+
+	@layer modifiers {
+		&:where([aria-orientation="vertical"]) {
+			flex-direction: column;
+		}
+	}
+}
+
+.🥝ToolbarItem:is(.🥝IconButton) {
+	@layer modifiers {
+		&:where([data-_sk-variant="ghost"]) {
+			--🥝Button-background-color: var(--🌀Button-state--default, transparent)
+				var(--🌀Button-state--hover, var(--stratakit-color-bg-glow-on-surface-neutral-hover))
+				var(--🌀Button-state--pressed, var(--stratakit-color-bg-glow-on-surface-neutral-pressed))
+				var(--🌀Button-state--active, var(--stratakit-color-bg-accent-base))
+				var(--🌀Button-state--disabled, var(--stratakit-color-bg-glow-on-surface-disabled));
+			--🥝Icon-color: var(--🌀Button-state--default, var(--stratakit-color-icon-neutral-base))
+				var(--🌀Button-state--hover, var(--stratakit-color-icon-neutral-hover))
+				var(--🌀Button-state--pressed, var(--stratakit-color-icon-neutral-hover))
+				var(--🌀Button-state--active, var(--stratakit-color-icon-neutral-emphasis));
+			--🥝Button-border-color: var(--🌀Button-state--default, transparent)
+				var(--🌀Button-state--hover, transparent) var(--🌀Button-state--pressed, transparent)
+				var(--🌀Button-state--active, var(--stratakit-color-border-accent-base))
+				var(--🌀Button-state--disabled, transparent);
+		}
 	}
 }
 
 @media (forced-colors: active) {
-	.🥝-toolbar {
+	.🥝Toolbar {
 		border: 1px solid;
 	}
 }

@@ -54,7 +54,9 @@ test.describe("default", () => {
 
 	test("rendering as a label", async ({ page }) => {
 		await page.goto("/tests/field?control=checkbox&asLabel");
-		await expect(page.locator(".🥝-label.🥝-field")).toBeVisible();
+		const label = page.locator("label");
+		const checkbox = label.getByRole("checkbox");
+		await expect(checkbox).toBeVisible();
 	});
 
 	test("with explicit id", async ({ page }) => {

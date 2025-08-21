@@ -67,8 +67,8 @@ export function FieldCollection(props: Pick<CollectionProps, "render">) {
 		<Collection
 			{...props}
 			store={fieldElementCollection}
-			data-kiwi-label-placement={labelPlacement}
-			data-kiwi-control-type={controlType}
+			data-_sk-label-placement={labelPlacement}
+			data-_sk-control-type={controlType}
 		/>
 	);
 }

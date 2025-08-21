@@ -2,13 +2,13 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-.🥝-description:is(.🥝-text) {
+.🥝Description:is(.🥝Text) {
 	@layer modifiers {
-		&:where([data-kiwi-tone="neutral"]) {
+		&:where([data-_sk-tone="neutral"]) {
 			color: var(--stratakit-color-text-neutral-tertiary);
 		}
 
-		&:where([data-kiwi-tone="critical"]) {
+		&:where([data-_sk-tone="critical"]) {
 			color: var(--stratakit-color-text-critical-base);
 		}
 	}

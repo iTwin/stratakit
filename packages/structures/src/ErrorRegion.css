@@ -2,7 +2,7 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-.🥝-error-region {
+.🥝ErrorRegion {
 	--✨padding: var(--stratakit-space-x1);
 
 	@layer base {
@@ -11,30 +11,30 @@
 	}
 
 	@layer states {
-		&:where([data-kiwi-expanded="true"]) {
-			--🥝chevron-down-rotate: -0.5turn;
-			--🥝error-region-header-border-end-radius: 0;
+		&:where([data-_sk-expanded="true"]) {
+			--🥝ChevronDown-rotate: -0.5turn;
+			--🥝ErrorRegionHeader-border-end-radius: 0;
 		}
 
-		&:where([data-kiwi-visible="true"]) {
+		&:where([data-_sk-visible="true"]) {
 			padding-inline: var(--✨padding);
 			padding-block: var(--✨padding);
 
 			block-size: 2.625rem;
 		}
 
-		&:where([data-kiwi-visible="false"]) {
-			--🥝error-region-container-display: none;
+		&:where([data-_sk-visible="false"]) {
+			--🥝ErrorRegionContainer-display: none;
 		}
 	}
 }
 
-.🥝-error-region-container {
+.🥝ErrorRegionContainer {
 	@layer base {
 		isolation: isolate;
 
 		position: relative;
-		display: var(--🥝error-region-container-display, flex);
+		display: var(--🥝ErrorRegionContainer-display, flex);
 		flex-direction: column;
 
 		border: 1px solid var(--stratakit-color-border-attention-base);
@@ -54,7 +54,7 @@
 	}
 }
 
-.🥝-error-region-header {
+.🥝ErrorRegionHeader {
 	--✨container-border-radius: 8px;
 	--✨container-border-width: 1px;
 	--✨border-radius: calc(var(--✨container-border-radius) - var(--✨container-border-width));
@@ -67,19 +67,19 @@
 		font-weight: 400;
 		border-start-start-radius: var(--✨border-radius);
 		border-start-end-radius: var(--✨border-radius);
-		border-end-start-radius: var(--🥝error-region-header-border-end-radius, var(--✨border-radius));
-		border-end-end-radius: var(--🥝error-region-header-border-end-radius, var(--✨border-radius));
+		border-end-start-radius: var(--🥝ErrorRegionHeader-border-end-radius, var(--✨border-radius));
+		border-end-end-radius: var(--🥝ErrorRegionHeader-border-end-radius, var(--✨border-radius));
 		transition: border-radius 0s linear 150ms; /* Delay border-radius to match dialog transition. */
 	}
 }
 
-.🥝-error-region-icon {
+.🥝ErrorRegionIcon {
 	@layer base {
-		--🥝icon-color: var(--stratakit-color-icon-attention-base);
+		--🥝Icon-color: var(--stratakit-color-icon-attention-base);
 	}
 }
 
-.🥝-error-region-label {
+.🥝ErrorRegionLabel {
 	@layer base {
 		flex: 1;
 		text-align: start;
@@ -88,7 +88,7 @@
 	}
 }
 
-.🥝-error-region-dialog {
+.🥝ErrorRegionDialog {
 	--✨container-max-size: 350px;
 	--✨container-border-size: 2px;
 	--✨header-size: 2rem;
@@ -126,7 +126,7 @@
 	}
 }
 
-.🥝-error-region-items {
+.🥝ErrorRegionItems {
 	--✨container-max-size: 350px;
 	--✨container-border-size: 2px;
 	--✨header-size: 2rem;
@@ -143,7 +143,7 @@
 	}
 }
 
-.🥝-error-region-item {
+.🥝ErrorRegionItem {
 	--✨container-padding: var(--stratakit-space-x2);
 	--✨icon-size: 1rem;
 	--✨gap: var(--stratakit-space-x1);
@@ -164,7 +164,7 @@
 	}
 }
 
-.🥝-error-region-item-actions {
+.🥝ErrorRegionItemActions {
 	@layer base {
 		margin-block-start: var(--stratakit-space-x2);
 	}

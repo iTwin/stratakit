@@ -1,5 +1,33 @@
 # Changelog
 
+## 0.3.0
+
+### Breaking changes
+
+- [#888](https://github.com/iTwin/design-system/pull/888): `Icon` component no longer automatically adjusts the URL based on `size`.
+
+  `#icon-large` must now be explicitly added to the URL to select the large icons from `@stratakit/icons`. For example:
+
+  ```diff
+  - <Icon href={placeholderIcon} size="large" />
+  + <Icon href={`${placeholderIcon}#icon-large`} size="large" />
+  ```
+
+### Non-breaking changes
+
+- [#888](https://github.com/iTwin/design-system/pull/888): `Icon` component now supports URLs containing an explicit hash.
+
+  ```tsx
+  import placeholderIcon from "@stratakit/icons/placeholder.svg";
+
+  <Icon href={`${placeholderIcon}#icon-large`} size="large" />;
+  ```
+
+- [#913](https://github.com/iTwin/design-system/pull/913): Updated internal CSS selectors in every component.
+- [#912](https://github.com/iTwin/design-system/pull/912): Token updates:
+  - Added new CSS variable: `--stratakit-color-bg-glow-on-surface-accent-active-hover`.
+  - Updated the value of `--stratakit-color-bg-page-base-depth` in light theme.
+
 ## 0.2.4
 
 - Updated internal code for `@stratakit/bricks@0.3.4` and `@stratakit/structures@0.3.2`.

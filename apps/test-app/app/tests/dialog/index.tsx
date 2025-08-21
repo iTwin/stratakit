@@ -209,7 +209,6 @@ function NonDismissibleTest() {
 			<Dialog.Root
 				open={open}
 				onClose={() => setOpen(false)}
-				hideOnEscape={false}
 				hideOnInteractOutside={false}
 			>
 				<Dialog.Header render={<Dialog.Heading />}>Heading</Dialog.Header>

@@ -18,8 +18,25 @@ export default definePage(
 			<>
 				<Button onClick={() => setOpen(true)}>Open</Button>
 				<Dialog.Root open={open} onClose={() => setOpen(false)}>
-					<Dialog.Header render={<Dialog.Heading />}>Heading</Dialog.Header>
-					<Dialog.Content>Content</Dialog.Content>
+					<Dialog.Header>
+						<Dialog.Heading>Title</Dialog.Heading>
+						<Dialog.CloseButton />
+					</Dialog.Header>
+					<Dialog.Content
+						style={{ display: "flex", flexDirection: "column", gap: 16 }}
+					>
+						Primary text
+						<Text
+							variant="body-sm"
+							style={{ color: "var(--stratakit-color-text-neutral-secondary)" }}
+						>
+							Secondary text
+						</Text>
+					</Dialog.Content>
+					<Dialog.Footer>
+						<Dialog.Action>Cancel</Dialog.Action>
+						<Dialog.Action render={<Button tone="accent" />}>Ok</Dialog.Action>
+					</Dialog.Footer>
 				</Dialog.Root>
 			</>
 		);

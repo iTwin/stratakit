@@ -32,7 +32,6 @@ interface DialogRootProps
 			| "onClose"
 			| "backdrop"
 			| "unmountOnHide"
-			| "hideOnEscape"
 			| "hideOnInteractOutside"
 		> {
 	/**

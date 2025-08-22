@@ -84,7 +84,7 @@ const DialogRoot = forwardRef<"div", DialogRootProps>((props, forwardedRef) => {
 					ref={forwardedRef}
 				>
 					{/* Avoids rendering a visually hidden dismiss button for screen readers. */}
-					<VisuallyHidden inert render={<AkDialog.DialogDismiss />} />
+					<AkDialog.DialogDismiss hidden />
 					<PortalContext.Provider value={contentElement}>
 						{props.children}
 					</PortalContext.Provider>

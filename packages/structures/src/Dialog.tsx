@@ -8,7 +8,7 @@ import * as AkDialog from "@ariakit/react/dialog";
 import { Portal, PortalContext } from "@ariakit/react/portal";
 import { Role } from "@ariakit/react/role";
 import { useStoreState } from "@ariakit/react/store";
-import { Button, IconButton, Text, VisuallyHidden } from "@stratakit/bricks";
+import { Button, IconButton, Text } from "@stratakit/bricks";
 import { GhostAligner } from "@stratakit/bricks/secret-internals";
 import {
 	forwardRef,

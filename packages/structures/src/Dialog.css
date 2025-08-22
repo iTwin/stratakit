@@ -21,7 +21,8 @@
 		position: relative;
 		place-self: center;
 
-		min-block-size: var(--🥝Dialog-min-block-size, 94px);
+		overflow: auto;
+		min-block-size: min(100%, var(--🥝Dialog-min-block-size, 94px));
 		min-inline-size: min(100%, 296px);
 		max-block-size: calc(100% - 64px);
 		max-inline-size: calc(100% - 64px);

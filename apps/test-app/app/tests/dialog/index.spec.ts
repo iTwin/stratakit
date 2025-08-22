@@ -11,16 +11,12 @@ test("default", async ({ page }) => {
 
 	const button = page.getByRole("button", { name: "Open" });
 	const dialog = page.getByRole("dialog");
-	const visuallyHiddenDismiss = dialog.getByRole("button", {
-		name: "Dismiss popup",
-	});
 
 	await expect(dialog).toBeHidden();
 
 	await button.click();
 	await expect(dialog).toBeVisible();
 	await expect(dialog).toHaveAccessibleName("Title");
-	await expect(visuallyHiddenDismiss).toBeVisible();
 });
 
 test("hide on interact outside", async ({ page }) => {

@@ -34,8 +34,14 @@ export default definePage(
 						</Text>
 					</Dialog.Content>
 					<Dialog.Footer>
-						<Dialog.Action>Cancel</Dialog.Action>
-						<Dialog.Action render={<Button tone="accent" />}>Ok</Dialog.Action>
+						<Dialog.ActionList
+							actions={[
+								<Dialog.Action key="cancel">Cancel</Dialog.Action>,
+								<Dialog.Action key="ok" render={<Button tone="accent" />}>
+									Ok
+								</Dialog.Action>,
+							]}
+						/>
 					</Dialog.Footer>
 				</Dialog.Root>
 			</>
@@ -66,8 +72,14 @@ function VisualTest() {
 				</Dialog.Header>
 				<Dialog.Content>Content</Dialog.Content>
 				<Dialog.Footer>
-					<Dialog.Action>Cancel</Dialog.Action>
-					<Dialog.Action render={<Button tone="accent" />}>Ok</Dialog.Action>
+					<Dialog.ActionList
+						actions={[
+							<Dialog.Action key="cancel">Cancel</Dialog.Action>,
+							<Dialog.Action key="ok" render={<Button tone="accent" />}>
+								Ok
+							</Dialog.Action>,
+						]}
+					/>
 				</Dialog.Footer>
 			</Dialog.Root>
 		</>
@@ -99,8 +111,14 @@ function ActionsTest() {
 				<Dialog.Header render={<Dialog.Heading />}>Heading</Dialog.Header>
 				<Dialog.Content>Content</Dialog.Content>
 				<Dialog.Footer>
-					<Dialog.Action>Cancel</Dialog.Action>
-					<Dialog.Action render={<Button tone="accent" />}>Ok</Dialog.Action>
+					<Dialog.ActionList
+						actions={[
+							<Dialog.Action key="cancel">Cancel</Dialog.Action>,
+							<Dialog.Action key="ok" render={<Button tone="accent" />}>
+								Ok
+							</Dialog.Action>,
+						]}
+					/>
 				</Dialog.Footer>
 			</Dialog.Root>
 		</>
@@ -214,7 +232,13 @@ function NonDismissibleTest() {
 				<Dialog.Header render={<Dialog.Heading />}>Heading</Dialog.Header>
 				<Dialog.Content>Description</Dialog.Content>
 				<Dialog.Footer>
-					<Dialog.Action render={<Button tone="accent" />}>Ok</Dialog.Action>
+					<Dialog.ActionList
+						actions={[
+							<Dialog.Action key="ok" render={<Button tone="accent" />}>
+								Ok
+							</Dialog.Action>,
+						]}
+					/>
 				</Dialog.Footer>
 			</Dialog.Root>
 		</>

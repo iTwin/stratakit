@@ -55,7 +55,12 @@ interface DialogRootProps
  *   <Dialog.Heading>Heading</Dialog.Heading>
  *   <Dialog.Content>Content</Dialog.Content>
  *   <Dialog.Footer>
- *     <Dialog.Action>Ok</Dialog.Action>
+ *     <Dialog.ActionList
+ *       actions={[
+ *         <Dialog.Action key="ok">Ok</Dialog.Action>,
+ *       ]}
+ *     />
+ *
  *   </Dialog.Footer>
  * </Dialog.Root>
  * ```
@@ -207,6 +212,7 @@ interface DialogCloseButtonProps
 const DialogCloseButton = forwardRef<"button", DialogCloseButtonProps>(
 	(props, forwardedRef) => {
 		const { label = "Dismiss", ...rest } = props;
+
 		return (
 			<GhostAligner align="inline-end">
 				<AkDialog.DialogDismiss
@@ -232,7 +238,7 @@ DEV: DialogCloseButton.displayName = "Dialog.CloseButton";
 interface DialogActionProps extends FocusableProps<"button"> {}
 
 /**
- * An action button that hides a dialog when clicked. Should be used as a child of `Dialog.Footer`.
+ * An action button that hides a dialog when clicked. Should be used in the `actions` prop of `Dialog.ActionList`.
  *
  * Example:
  * ```tsx
@@ -251,7 +257,6 @@ const DialogAction = forwardRef<"button", DialogActionProps>(
 		return (
 			<AkDialog.DialogDismiss
 				{...props}
-				className={cx("🥝DialogAction", props.className)}
 				render={props.render ?? <Button />}
 				ref={forwardedRef}
 			/>
@@ -291,13 +296,18 @@ DEV: DialogContent.displayName = "Dialog.Content";
 interface DialogFooterProps extends BaseProps {}
 
 /**
- * A container for action buttons in a dialog. Should be used as a child of `Dialog.Root`.
+ * The footer section of a dialog, typically used to display action buttons at the bottom of the dialog.
+ * Should be used as a child of `Dialog.Root`. Use `Dialog.ActionList` as a direct descendant to display a list of actions.
  *
  * Example:
  * ```tsx
  * <Dialog.Footer>
- *   <Dialog.Action>Cancel</Dialog.Action>
- *   <Dialog.Action render={<Button tone="accent" />}>Ok</Dialog.Action>
+ *   <Dialog.ActionList
+ *     actions={[
+ *       <Dialog.Action key="cancel">Cancel</Dialog.Action>,
+ *       <Dialog.Action key="ok" render={<Button tone="accent" />}>Ok</Dialog.Action>,
+ *     ]}
+ *   />
  * </Dialog.Footer>
  * ```
  */
@@ -313,6 +323,48 @@ const DialogFooter = forwardRef<"div", DialogFooterProps>(
 	},
 );
 DEV: DialogFooter.displayName = "Dialog.Footer";
+
+// -------------------------------------------------------------------------
+
+interface DialogActionListProps extends Omit<BaseProps, "children"> {
+	/**
+	 * The actions available for the dialog. Must be a list of `Dialog.Action` components.
+	 */
+	actions?: React.ReactNode[];
+}
+
+/**
+ * A container for action buttons in a dialog. Should be used as a child of `Dialog.Footer`.
+ *
+ * Example:
+ * ```tsx
+ * <Dialog.ActionList
+ *   actions={[
+ *     <Dialog.Action key="cancel">Cancel</Dialog.Action>,
+ *     <Dialog.Action key="ok" render={<Button tone="accent" />}>Ok</Dialog.Action>,
+ *   ]}
+ * />
+ * ```
+ */
+const DialogActionList = forwardRef<"div", DialogActionListProps>(
+	(props, forwardedRef) => {
+		const { actions, ...rest } = props;
+
+		return (
+			<Role
+				role="list"
+				{...rest}
+				className={cx("🥝DialogActionList", props.className)}
+				ref={forwardedRef}
+			>
+				{React.Children.map(actions, (action) => {
+					return <div role="listitem">{action}</div>;
+				})}
+			</Role>
+		);
+	},
+);
+DEV: DialogActionList.displayName = "Dialog.ActionList";
 
 // -------------------------------------------------------------------------
 
@@ -348,6 +400,7 @@ export {
 	DialogCloseButton as CloseButton,
 	DialogContent as Content,
 	DialogFooter as Footer,
+	DialogActionList as ActionList,
 	DialogAction as Action,
 	DialogBackdrop as Backdrop,
 };

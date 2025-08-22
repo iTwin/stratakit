@@ -14,8 +14,12 @@ const [open, setOpen] = useState(false);
     Content that describes the primary purpose of the dialog.
   </Dialog.Content>
   <Dialog.Footer>
-    <Dialog.Action>Cancel</Dialog.Action>
-    <Dialog.Action render={<Button tone="accent" />}>Ok</Dialog.Action>
+    <Dialog.ActionList
+      actions={[
+        <Dialog.Action key="cancel">Cancel</Dialog.Action>,
+        <Dialog.Action key="ok" render={<Button tone="accent" />}>Ok</Dialog.Action>,
+      ]}
+    />
   </Dialog.Footer>
 </Dialog.Root>
 ```

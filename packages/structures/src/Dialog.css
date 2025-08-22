@@ -62,14 +62,6 @@
 	}
 }
 
-.🥝DialogAction {
-	@layer base {
-		&:where(:nth-child(1 of &)) {
-			margin-inline-start: auto;
-		}
-	}
-}
-
 .🥝DialogContent {
 	--✨padding: var(--stratakit-space-x5);
 
@@ -98,7 +90,16 @@
 		padding-block: var(--✨padding);
 
 		display: flex;
+		align-items: center;
+	}
+}
+
+.🥝DialogActionList {
+	@layer base {
+		display: flex;
 		gap: var(--stratakit-space-x3);
+
+		margin-inline-start: auto;
 	}
 }
 

@@ -28,6 +28,7 @@ export const components = {
 		"AccordionItem",
 		"Banner",
 		"Chip",
+		"Dialog",
 		"DropdownMenu",
 		"ErrorRegion",
 		"List",

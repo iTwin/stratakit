@@ -31,6 +31,12 @@
 			"development": "./dist/DEV/Chip.js",
 			"default": "./dist/Chip.js"
 		},
+		"./unstable_Dialog": {
+			"@stratakit/source": "./src/Dialog.tsx",
+			"types": "./dist/Dialog.d.ts",
+			"development": "./dist/DEV/Dialog.js",
+			"default": "./dist/Dialog.js"
+		},
 		"./DropdownMenu": {
 			"@stratakit/source": "./src/DropdownMenu.tsx",
 			"types": "./dist/DropdownMenu.d.ts",

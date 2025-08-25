@@ -1,0 +1,127 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+.🥝DialogWrapper {
+	@layer base {
+		position: fixed;
+		display: grid;
+
+		block-size: 100%;
+		inline-size: 100%;
+		inset: 0;
+	}
+}
+
+.🥝Dialog {
+	--✨padding-block: var(--stratakit-space-x4);
+	--✨padding-inline: var(--stratakit-space-x5);
+
+	@layer base {
+		position: relative;
+		place-self: center;
+
+		overflow: auto;
+		min-block-size: min(100%, var(--🥝Dialog-min-block-size, 94px));
+		min-inline-size: min(100%, 296px);
+		max-block-size: calc(100% - 64px);
+		max-inline-size: calc(100% - 64px);
+
+		border-radius: 12px; /* radius/large */
+		background-color: var(--stratakit-color-bg-elevation-base);
+		box-shadow: var(--stratakit-shadow-dialog-base);
+
+		/* Prevents footer from overlapping the box-shadow */
+		padding: 1px;
+
+		display: flex;
+		flex-direction: column;
+
+		&:where(:has(.🥝DialogFooter)) {
+			--🥝Dialog-min-block-size: 156px;
+		}
+
+		&:where(dialog:modal) {
+			inset: 0;
+
+			&::backdrop {
+				background-color: transparent;
+			}
+		}
+	}
+}
+
+.🥝DialogHeader {
+	--✨padding-block: var(--stratakit-space-x4);
+	--✨padding-inline: var(--stratakit-space-x5);
+
+	@layer base {
+		padding-block: var(--✨padding-block);
+		padding-inline: var(--✨padding-inline);
+
+		display: flex;
+		align-items: center;
+	}
+}
+
+.🥝DialogHeading {
+	@layer base {
+		margin-inline-end: auto;
+	}
+}
+
+.🥝DialogContent {
+	--✨padding: var(--stratakit-space-x5);
+
+	@layer base {
+		@apply --typography("body-sm");
+
+		color: var(--stratakit-color-text-neutral-primary);
+
+		overflow-y: auto;
+		overflow-block: auto;
+
+		padding-block-end: var(--✨padding);
+		padding-inline: var(--✨padding);
+	}
+}
+
+.🥝DialogFooter {
+	--✨padding: var(--stratakit-space-x5);
+	--✨border-radius: 12px; /* radius/large */
+
+	@layer base {
+		border-block-start: 1px solid var(--stratakit-color-border-page-base);
+		border-end-start-radius: var(--✨border-radius);
+		border-end-end-radius: var(--✨border-radius);
+		background-color: var(--stratakit-color-bg-page-base);
+
+		padding-inline: var(--✨padding);
+		padding-block: var(--✨padding);
+
+		display: flex;
+		align-items: center;
+	}
+}
+
+.🥝DialogActionList {
+	@layer base {
+		display: flex;
+		gap: var(--stratakit-space-x3);
+
+		margin-inline-start: auto;
+	}
+}
+
+.🥝DialogBackdrop {
+	@layer base {
+		opacity: 0.8;
+		background: var(--stratakit-color-bg-elevation-overlay);
+	}
+}
+
+@media (forced-colors: active) {
+	.🥝Dialog {
+		border: 1px solid;
+	}
+}

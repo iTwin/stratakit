@@ -311,6 +311,7 @@ function DialogElementTest() {
 		<>
 			<Button onClick={() => setOpen(true)}>Open</Button>
 			<Dialog.Root
+				modal={true}
 				open={open}
 				onClose={() => setOpen(false)}
 				render={<dialog ref={dialogElementRef} />}

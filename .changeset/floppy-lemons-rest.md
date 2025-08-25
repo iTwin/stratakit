@@ -16,8 +16,8 @@ const [open, setOpen] = useState(false);
   <Dialog.Footer>
     <Dialog.ActionList
       actions={[
-        <Dialog.Action key="cancel">Cancel</Dialog.Action>,
-        <Dialog.Action key="ok" render={<Button tone="accent" />}>Ok</Dialog.Action>,
+        <Button key="cancel" onClick={() => setOpen(false)}>Cancel</Button>,
+				<Button key="ok" tone="accent" onClick={() => setOpen(false)}>Ok</Button>,
       ]}
     />
   </Dialog.Footer>

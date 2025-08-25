@@ -36,10 +36,12 @@ export default definePage(
 					<Dialog.Footer>
 						<Dialog.ActionList
 							actions={[
-								<Dialog.Action key="cancel">Cancel</Dialog.Action>,
-								<Dialog.Action key="ok" render={<Button tone="accent" />}>
+								<Button key="cancel" onClick={() => setOpen(false)}>
+									Cancel
+								</Button>,
+								<Button key="ok" tone="accent" onClick={() => setOpen(false)}>
 									Ok
-								</Dialog.Action>,
+								</Button>,
 							]}
 						/>
 					</Dialog.Footer>
@@ -74,10 +76,12 @@ function VisualTest() {
 				<Dialog.Footer>
 					<Dialog.ActionList
 						actions={[
-							<Dialog.Action key="cancel">Cancel</Dialog.Action>,
-							<Dialog.Action key="ok" render={<Button tone="accent" />}>
+							<Button key="cancel" onClick={() => setOpen(false)}>
+								Cancel
+							</Button>,
+							<Button key="ok" tone="accent" onClick={() => setOpen(false)}>
 								Ok
-							</Dialog.Action>,
+							</Button>,
 						]}
 					/>
 				</Dialog.Footer>
@@ -113,10 +117,12 @@ function ActionsTest() {
 				<Dialog.Footer>
 					<Dialog.ActionList
 						actions={[
-							<Dialog.Action key="cancel">Cancel</Dialog.Action>,
-							<Dialog.Action key="ok" render={<Button tone="accent" />}>
+							<Button key="cancel" onClick={() => setOpen(false)}>
+								Cancel
+							</Button>,
+							<Button key="ok" tone="accent" onClick={() => setOpen(false)}>
 								Ok
-							</Dialog.Action>,
+							</Button>,
 						]}
 					/>
 				</Dialog.Footer>
@@ -234,9 +240,9 @@ function NonDismissibleTest() {
 				<Dialog.Footer>
 					<Dialog.ActionList
 						actions={[
-							<Dialog.Action key="ok" render={<Button tone="accent" />}>
+							<Button key="ok" tone="accent" onClick={() => setOpen(false)}>
 								Ok
-							</Dialog.Action>,
+							</Button>,
 						]}
 					/>
 				</Dialog.Footer>

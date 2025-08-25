@@ -8,7 +8,7 @@ import * as AkDialog from "@ariakit/react/dialog";
 import { Portal, PortalContext } from "@ariakit/react/portal";
 import { Role } from "@ariakit/react/role";
 import { useStoreState } from "@ariakit/react/store";
-import { Button, IconButton, Text } from "@stratakit/bricks";
+import { IconButton, Text } from "@stratakit/bricks";
 import { GhostAligner } from "@stratakit/bricks/secret-internals";
 import {
 	forwardRef,
@@ -57,7 +57,7 @@ interface DialogRootProps
  *   <Dialog.Footer>
  *     <Dialog.ActionList
  *       actions={[
- *         <Dialog.Action key="ok">Ok</Dialog.Action>,
+ *         <Button key="ok" onClick={() => setOpen(false)}>Ok</Button>,
  *       ]}
  *     />
  *
@@ -235,38 +235,6 @@ DEV: DialogCloseButton.displayName = "Dialog.CloseButton";
 
 // -------------------------------------------------------------------------
 
-interface DialogActionProps extends FocusableProps<"button"> {}
-
-/**
- * An action button that hides a dialog when clicked. Should be used in the `actions` prop of `Dialog.ActionList`.
- *
- * Example:
- * ```tsx
- * <Dialog.Action>Cancel</Dialog.Action>
- * ```
- *
- * By default it will render a solid `Button`. This can be customized by passing a `render` prop.
- *
- * ```tsx
- * <Dialog.Action render={<Button tone="accent" />}>
- *   Ok
- * </Dialog.Action>
- */
-const DialogAction = forwardRef<"button", DialogActionProps>(
-	(props, forwardedRef) => {
-		return (
-			<AkDialog.DialogDismiss
-				{...props}
-				render={props.render ?? <Button />}
-				ref={forwardedRef}
-			/>
-		);
-	},
-);
-DEV: DialogAction.displayName = "Dialog.Action";
-
-// -------------------------------------------------------------------------
-
 interface DialogContentProps extends BaseProps {}
 
 /**
@@ -304,8 +272,8 @@ interface DialogFooterProps extends BaseProps {}
  * <Dialog.Footer>
  *   <Dialog.ActionList
  *     actions={[
- *       <Dialog.Action key="cancel">Cancel</Dialog.Action>,
- *       <Dialog.Action key="ok" render={<Button tone="accent" />}>Ok</Dialog.Action>,
+ *       <Button key="cancel" onClick={() => setOpen(false)}>Cancel</Button>,
+ *       <Button key="ok" tone="accent" onClick={() => setOpen(false)}>Ok</Button>,
  *     ]}
  *   />
  * </Dialog.Footer>
@@ -328,7 +296,7 @@ DEV: DialogFooter.displayName = "Dialog.Footer";
 
 interface DialogActionListProps extends Omit<BaseProps, "children"> {
 	/**
-	 * The actions available for the dialog. Must be a list of `Dialog.Action` components.
+	 * The actions available for the dialog. Must be a list of `Button` components.
 	 */
 	actions?: React.ReactNode[];
 }
@@ -340,8 +308,8 @@ interface DialogActionListProps extends Omit<BaseProps, "children"> {
  * ```tsx
  * <Dialog.ActionList
  *   actions={[
- *     <Dialog.Action key="cancel">Cancel</Dialog.Action>,
- *     <Dialog.Action key="ok" render={<Button tone="accent" />}>Ok</Dialog.Action>,
+ *     <Button key="cancel" onClick={() => setOpen(false)}>Cancel</Button>,
+ *     <Button key="ok" tone="accent" onClick={() => setOpen(false)}>Ok</Button>,
  *   ]}
  * />
  * ```
@@ -401,6 +369,5 @@ export {
 	DialogContent as Content,
 	DialogFooter as Footer,
 	DialogActionList as ActionList,
-	DialogAction as Action,
 	DialogBackdrop as Backdrop,
 };

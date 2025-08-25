@@ -297,16 +297,16 @@ function CustomBackdropTest() {
 
 function DialogElementTest() {
 	const [open, setOpen] = React.useState(false);
-	const dialogElementRef = React.useRef<HTMLDialogElement>(null);
+	const [dialogElement, setDialogElement] =
+		React.useState<HTMLDialogElement | null>(null);
 	React.useEffect(() => {
-		const dialogElement = dialogElementRef.current;
 		if (!dialogElement) return;
 		if (open) {
 			dialogElement.showModal();
 		} else {
 			dialogElement.close();
 		}
-	}, [open]);
+	}, [open, dialogElement]);
 	return (
 		<>
 			<Button onClick={() => setOpen(true)}>Open</Button>
@@ -314,7 +314,7 @@ function DialogElementTest() {
 				modal={true}
 				open={open}
 				onClose={() => setOpen(false)}
-				render={<dialog ref={dialogElementRef} />}
+				render={<dialog ref={setDialogElement} />}
 				onClick={(e) => {
 					if (e.target === e.currentTarget) {
 						setOpen(false);

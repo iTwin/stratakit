@@ -40,6 +40,14 @@
 		&:where(:has(.🥝DialogFooter)) {
 			--🥝Dialog-min-block-size: 156px;
 		}
+
+		&:where(dialog:modal) {
+			inset: 0;
+
+			&::backdrop {
+				background-color: transparent;
+			}
+		}
 	}
 }
 

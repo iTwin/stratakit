@@ -59,6 +59,7 @@ export default definePage(
 		nonDismissible: NonDismissibleTest,
 		noBackdrop: NoBackdropTest,
 		_customBackdrop: CustomBackdropTest,
+		_dialogElement: DialogElementTest,
 	},
 );
 
@@ -288,6 +289,42 @@ function CustomBackdropTest() {
 				backdrop={<Dialog.Backdrop style={{ border: "2px solid red" }} />}
 			>
 				<Dialog.Header render={<Dialog.Heading />}>Heading</Dialog.Header>
+				<Dialog.Content>Description</Dialog.Content>
+			</Dialog.Root>
+		</>
+	);
+}
+
+function DialogElementTest() {
+	const [open, setOpen] = React.useState(false);
+	const [dialogElement, setDialogElement] =
+		React.useState<HTMLDialogElement | null>(null);
+	React.useEffect(() => {
+		if (!dialogElement) return;
+		if (open) {
+			dialogElement.showModal();
+		} else {
+			dialogElement.close();
+		}
+	}, [open, dialogElement]);
+	return (
+		<>
+			<Button onClick={() => setOpen(true)}>Open</Button>
+			<Dialog.Root
+				modal={true}
+				open={open}
+				onClose={() => setOpen(false)}
+				render={<dialog ref={setDialogElement} />}
+				onClick={(e) => {
+					if (e.target === e.currentTarget) {
+						setOpen(false);
+					}
+				}}
+			>
+				<Dialog.Header>
+					<Dialog.Heading>Heading</Dialog.Heading>
+					<Dialog.CloseButton />
+				</Dialog.Header>
 				<Dialog.Content>Description</Dialog.Content>
 			</Dialog.Root>
 		</>

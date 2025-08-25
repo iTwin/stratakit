@@ -84,7 +84,7 @@ const DialogRoot = forwardRef<"div", DialogRootProps>((props, forwardedRef) => {
 	if (!mounted) return null;
 	return (
 		<AkDialog.DialogProvider store={store}>
-			<DialogWrapper>
+			<DialogWrapper open={props.open}>
 				<AkDialog.Dialog
 					unmountOnHide={unmountOnHide}
 					portal={false} // Portaling will be done by DialogWrapper
@@ -107,11 +107,17 @@ DEV: DialogRoot.displayName = "Dialog.Root";
 
 // -------------------------------------------------------------------------
 
-function DialogWrapper(props: React.PropsWithChildren) {
+interface DialogWrapperProps
+	extends Pick<DialogRootProps, "children" | "open"> {}
+
+function DialogWrapper(props: DialogWrapperProps) {
 	const [wrapper, setWrapper] = React.useState<HTMLElement | null>(null);
 
 	const store = AkDialog.useDialogContext();
-	const open = useStoreState(store, "open");
+	const open = useStoreState(store, (state) => {
+		return props.open ?? state?.open;
+	});
+
 	const popoverProps = usePopoverApi({
 		element: wrapper,
 		open,

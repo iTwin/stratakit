@@ -66,6 +66,8 @@
 	--✨padding: var(--stratakit-space-x5);
 
 	@layer base {
+		@apply --typography("body-sm");
+
 		color: var(--stratakit-color-text-neutral-primary);
 
 		overflow-y: auto;

@@ -253,8 +253,7 @@ interface DialogContentProps extends BaseProps {}
 const DialogContent = forwardRef<"div", DialogContentProps>(
 	(props, forwardedRef) => {
 		return (
-			<Text
-				variant="body-sm"
+			<Role
 				{...props}
 				className={cx("🥝DialogContent", props.className)}
 				ref={forwardedRef}

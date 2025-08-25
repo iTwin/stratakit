@@ -8,7 +8,7 @@ import * as AkDialog from "@ariakit/react/dialog";
 import { Portal, PortalContext } from "@ariakit/react/portal";
 import { Role } from "@ariakit/react/role";
 import { useStoreState } from "@ariakit/react/store";
-import { Button, IconButton, Text } from "@stratakit/bricks";
+import { IconButton, Text } from "@stratakit/bricks";
 import { GhostAligner } from "@stratakit/bricks/secret-internals";
 import {
 	forwardRef,
@@ -32,7 +32,6 @@ interface DialogRootProps
 			| "onClose"
 			| "backdrop"
 			| "unmountOnHide"
-			| "hideOnEscape"
 			| "hideOnInteractOutside"
 		> {
 	/**
@@ -42,6 +41,11 @@ interface DialogRootProps
 	 * @default true
 	 */
 	unmountOnHide?: boolean;
+	/**
+	 * Determines whether the dialog is modal.
+	 * Currently, only modal dialogs are supported.
+	 */
+	modal: true;
 }
 
 /**
@@ -52,11 +56,16 @@ interface DialogRootProps
  * ```tsx
  * const [open, setOpen] = useState(false);
  *
- * <Dialog.Root open={open} onClose={() => setOpen(false)}>
+ * <Dialog.Root modal={true} open={open} onClose={() => setOpen(false)}>
  *   <Dialog.Heading>Heading</Dialog.Heading>
  *   <Dialog.Content>Content</Dialog.Content>
  *   <Dialog.Footer>
- *     <Dialog.Action>Ok</Dialog.Action>
+ *     <Dialog.ActionList
+ *       actions={[
+ *         <Button key="ok" onClick={() => setOpen(false)}>Ok</Button>,
+ *       ]}
+ *     />
+ *
  *   </Dialog.Footer>
  * </Dialog.Root>
  * ```
@@ -81,9 +90,11 @@ const DialogRoot = forwardRef<"div", DialogRootProps>((props, forwardedRef) => {
 					portal={false} // Portaling will be done by DialogWrapper
 					{...rest}
 					backdrop={backdrop === true ? <DialogBackdrop /> : backdrop}
-					className={cx("🥝-dialog", props.className)}
+					className={cx("🥝Dialog", props.className)}
 					ref={forwardedRef}
 				>
+					{/* Avoids rendering a visually hidden dismiss button for screen readers. */}
+					<AkDialog.DialogDismiss hidden />
 					<PortalContext.Provider value={contentElement}>
 						{props.children}
 					</PortalContext.Provider>
@@ -115,7 +126,7 @@ function DialogWrapper(props: DialogWrapperProps) {
 	const mounted = useStoreState(store, "mounted");
 	return (
 		<Portal
-			className="🥝-dialog-wrapper"
+			className="🥝DialogWrapper"
 			ref={setWrapper}
 			{...popoverProps}
 			hidden={mounted ? undefined : true}
@@ -154,7 +165,7 @@ const DialogHeader = forwardRef<"div", DialogHeaderProps>(
 		return (
 			<Role
 				{...props}
-				className={cx("🥝-dialog-header", props.className)}
+				className={cx("🥝DialogHeader", props.className)}
 				ref={forwardedRef}
 			/>
 		);
@@ -179,6 +190,7 @@ const DialogHeading = forwardRef<"h1", DialogHeadingProps>(
 		return (
 			<AkDialog.DialogHeading
 				{...props}
+				className={cx("🥝DialogHeading", props.className)}
 				render={<Text variant="body-lg" render={props.render ?? <h1 />} />}
 				ref={forwardedRef}
 			/>
@@ -211,11 +223,11 @@ interface DialogCloseButtonProps
 const DialogCloseButton = forwardRef<"button", DialogCloseButtonProps>(
 	(props, forwardedRef) => {
 		const { label = "Dismiss", ...rest } = props;
+
 		return (
-			<GhostAligner align="inline">
+			<GhostAligner align="inline-end">
 				<AkDialog.DialogDismiss
 					{...rest}
-					className={cx("🥝-dialog-close-button", props.className)}
 					render={
 						<IconButton
 							render={props.render}
@@ -234,39 +246,6 @@ DEV: DialogCloseButton.displayName = "Dialog.CloseButton";
 
 // -------------------------------------------------------------------------
 
-interface DialogActionProps extends FocusableProps<"button"> {}
-
-/**
- * An action button that hides a dialog when clicked. Should be used as a child of `Dialog.Footer`.
- *
- * Example:
- * ```tsx
- * <Dialog.Action>Cancel</Dialog.Action>
- * ```
- *
- * By default it will render a solid `Button`. This can be customized by passing a `render` prop.
- *
- * ```tsx
- * <Dialog.Action render={<Button tone="accent" />}>
- *   Ok
- * </Dialog.Action>
- */
-const DialogAction = forwardRef<"button", DialogActionProps>(
-	(props, forwardedRef) => {
-		return (
-			<AkDialog.DialogDismiss
-				{...props}
-				className={cx("🥝-dialog-action", props.className)}
-				render={props.render ?? <Button />}
-				ref={forwardedRef}
-			/>
-		);
-	},
-);
-DEV: DialogAction.displayName = "Dialog.Action";
-
-// -------------------------------------------------------------------------
-
 interface DialogContentProps extends BaseProps {}
 
 /**
@@ -280,10 +259,9 @@ interface DialogContentProps extends BaseProps {}
 const DialogContent = forwardRef<"div", DialogContentProps>(
 	(props, forwardedRef) => {
 		return (
-			<Text
-				variant="body-sm"
+			<Role
 				{...props}
-				className={cx("🥝-dialog-content", props.className)}
+				className={cx("🥝DialogContent", props.className)}
 				ref={forwardedRef}
 			/>
 		);
@@ -296,13 +274,18 @@ DEV: DialogContent.displayName = "Dialog.Content";
 interface DialogFooterProps extends BaseProps {}
 
 /**
- * A container for action buttons in a dialog. Should be used as a child of `Dialog.Root`.
+ * The footer section of a dialog, typically used to display action buttons at the bottom of the dialog.
+ * Should be used as a child of `Dialog.Root`. Use `Dialog.ActionList` as a direct descendant to display a list of actions.
  *
  * Example:
  * ```tsx
  * <Dialog.Footer>
- *   <Dialog.Action>Cancel</Dialog.Action>
- *   <Dialog.Action render={<Button tone="accent" />}>Ok</Dialog.Action>
+ *   <Dialog.ActionList
+ *     actions={[
+ *       <Button key="cancel" onClick={() => setOpen(false)}>Cancel</Button>,
+ *       <Button key="ok" tone="accent" onClick={() => setOpen(false)}>Ok</Button>,
+ *     ]}
+ *   />
  * </Dialog.Footer>
  * ```
  */
@@ -311,13 +294,55 @@ const DialogFooter = forwardRef<"div", DialogFooterProps>(
 		return (
 			<Role
 				{...props}
-				className={cx("🥝-dialog-footer", props.className)}
+				className={cx("🥝DialogFooter", props.className)}
 				ref={forwardedRef}
 			/>
 		);
 	},
 );
 DEV: DialogFooter.displayName = "Dialog.Footer";
+
+// -------------------------------------------------------------------------
+
+interface DialogActionListProps extends Omit<BaseProps, "children"> {
+	/**
+	 * The actions available for the dialog. Must be a list of `Button` components.
+	 */
+	actions?: React.ReactNode[];
+}
+
+/**
+ * A container for action buttons in a dialog. Should be used as a child of `Dialog.Footer`.
+ *
+ * Example:
+ * ```tsx
+ * <Dialog.ActionList
+ *   actions={[
+ *     <Button key="cancel" onClick={() => setOpen(false)}>Cancel</Button>,
+ *     <Button key="ok" tone="accent" onClick={() => setOpen(false)}>Ok</Button>,
+ *   ]}
+ * />
+ * ```
+ */
+const DialogActionList = forwardRef<"div", DialogActionListProps>(
+	(props, forwardedRef) => {
+		const { actions, ...rest } = props;
+
+		return (
+			<Role
+				role="list"
+				{...rest}
+				className={cx("🥝DialogActionList", props.className)}
+				ref={forwardedRef}
+			>
+				{React.Children.map(actions, (action) => {
+					return <div role="listitem">{action}</div>;
+				})}
+			</Role>
+		);
+	},
+);
+DEV: DialogActionList.displayName = "Dialog.ActionList";
 
 // -------------------------------------------------------------------------
 
@@ -328,7 +353,7 @@ interface DialogBackdropProps extends BaseProps {}
  *
  * Example:
  * ```tsx
- * <Dialog.Root backdrop={<Dialog.Backdrop />} />
+ * <Dialog.Root modal={true} backdrop={<Dialog.Backdrop />} />
  * ```
  */
 const DialogBackdrop = forwardRef<"div", DialogBackdropProps>(
@@ -336,7 +361,7 @@ const DialogBackdrop = forwardRef<"div", DialogBackdropProps>(
 		return (
 			<Role
 				{...props}
-				className={cx("🥝-dialog-backdrop", props.className)}
+				className={cx("🥝DialogBackdrop", props.className)}
 				ref={forwardedRef}
 			/>
 		);
@@ -353,6 +378,6 @@ export {
 	DialogCloseButton as CloseButton,
 	DialogContent as Content,
 	DialogFooter as Footer,
-	DialogAction as Action,
+	DialogActionList as ActionList,
 	DialogBackdrop as Backdrop,
 };

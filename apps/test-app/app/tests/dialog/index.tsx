@@ -17,9 +17,34 @@ export default definePage(
 		return (
 			<>
 				<Button onClick={() => setOpen(true)}>Open</Button>
-				<Dialog.Root open={open} onClose={() => setOpen(false)}>
-					<Dialog.Header render={<Dialog.Heading />}>Heading</Dialog.Header>
-					<Dialog.Content>Content</Dialog.Content>
+				<Dialog.Root modal={true} open={open} onClose={() => setOpen(false)}>
+					<Dialog.Header>
+						<Dialog.Heading>Title</Dialog.Heading>
+						<Dialog.CloseButton />
+					</Dialog.Header>
+					<Dialog.Content
+						style={{ display: "flex", flexDirection: "column", gap: 16 }}
+					>
+						Primary text
+						<Text
+							variant="body-sm"
+							style={{ color: "var(--stratakit-color-text-neutral-secondary)" }}
+						>
+							Secondary text
+						</Text>
+					</Dialog.Content>
+					<Dialog.Footer>
+						<Dialog.ActionList
+							actions={[
+								<Button key="cancel" onClick={() => setOpen(false)}>
+									Cancel
+								</Button>,
+								<Button key="ok" tone="accent" onClick={() => setOpen(false)}>
+									Ok
+								</Button>,
+							]}
+						/>
+					</Dialog.Footer>
 				</Dialog.Root>
 			</>
 		);
@@ -28,13 +53,13 @@ export default definePage(
 		visual: VisualTest,
 		closeButton: CloseButtonTest,
 		actions: ActionsTest,
-		mountedOnHideTest: MountedOnHideTest,
+		_mountedOnHideTest: MountedOnHideTest,
 		nested: NestedTest,
-		nestedUnmountOnHide: NestedUnmountOnHideTest,
+		_nestedUnmountOnHide: NestedUnmountOnHideTest,
 		nonDismissible: NonDismissibleTest,
 		noBackdrop: NoBackdropTest,
-		customBackdrop: CustomBackdropTest,
-		dialogElement: DialogElementTest,
+		_customBackdrop: CustomBackdropTest,
+		_dialogElement: DialogElementTest,
 	},
 );
 
@@ -43,42 +68,23 @@ function VisualTest() {
 	return (
 		<>
 			<Button onClick={() => setOpen(true)}>Open</Button>
-			<Dialog.Root open={open} onClose={() => setOpen(false)}>
+			<Dialog.Root modal={true} open={open} onClose={() => setOpen(false)}>
 				<Dialog.Header>
 					<Dialog.Heading>Heading</Dialog.Heading>
 					<Dialog.CloseButton />
 				</Dialog.Header>
-				<Dialog.Content
-					style={{ display: "flex", flexDirection: "column", gap: 16 }}
-				>
-					<span
-						style={{
-							display: "flex",
-							alignItems: "center",
-							justifyContent: "space-between",
-						}}
-					>
-						Primary content
-						<DropdownMenu.Provider>
-							<DropdownMenu.Button>Actions</DropdownMenu.Button>
-
-							<DropdownMenu.Content>
-								<DropdownMenu.Item label="Add" />
-								<DropdownMenu.Item label="Edit" />
-								<DropdownMenu.Item label="Delete" />
-							</DropdownMenu.Content>
-						</DropdownMenu.Provider>
-					</span>
-					<Text
-						variant="body-sm"
-						style={{ color: "var(--stratakit-color-text-neutral-secondary)" }}
-					>
-						Secondary content
-					</Text>
-				</Dialog.Content>
+				<Dialog.Content>Content</Dialog.Content>
 				<Dialog.Footer>
-					<Dialog.Action>Cancel</Dialog.Action>
-					<Dialog.Action render={<Button tone="accent" />}>Ok</Dialog.Action>
+					<Dialog.ActionList
+						actions={[
+							<Button key="cancel" onClick={() => setOpen(false)}>
+								Cancel
+							</Button>,
+							<Button key="ok" tone="accent" onClick={() => setOpen(false)}>
+								Ok
+							</Button>,
+						]}
+					/>
 				</Dialog.Footer>
 			</Dialog.Root>
 		</>
@@ -90,7 +96,7 @@ function CloseButtonTest() {
 	return (
 		<>
 			<Button onClick={() => setOpen(true)}>Open</Button>
-			<Dialog.Root open={open} onClose={() => setOpen(false)}>
+			<Dialog.Root modal={true} open={open} onClose={() => setOpen(false)}>
 				<Dialog.Header>
 					<Dialog.Heading>Heading</Dialog.Heading>
 					<Dialog.CloseButton />
@@ -106,12 +112,20 @@ function ActionsTest() {
 	return (
 		<>
 			<Button onClick={() => setOpen(true)}>Open</Button>
-			<Dialog.Root open={open} onClose={() => setOpen(false)}>
+			<Dialog.Root modal={true} open={open} onClose={() => setOpen(false)}>
 				<Dialog.Header render={<Dialog.Heading />}>Heading</Dialog.Header>
 				<Dialog.Content>Content</Dialog.Content>
 				<Dialog.Footer>
-					<Dialog.Action>Cancel</Dialog.Action>
-					<Dialog.Action render={<Button tone="accent" />}>Ok</Dialog.Action>
+					<Dialog.ActionList
+						actions={[
+							<Button key="cancel" onClick={() => setOpen(false)}>
+								Cancel
+							</Button>,
+							<Button key="ok" tone="accent" onClick={() => setOpen(false)}>
+								Ok
+							</Button>,
+						]}
+					/>
 				</Dialog.Footer>
 			</Dialog.Root>
 		</>
@@ -124,6 +138,7 @@ function MountedOnHideTest() {
 		<>
 			<Button onClick={() => setOpen(true)}>Open</Button>
 			<Dialog.Root
+				modal={true}
 				open={open}
 				onClose={() => setOpen(false)}
 				unmountOnHide={false}
@@ -141,7 +156,7 @@ function NestedTest() {
 	return (
 		<>
 			<Button onClick={() => setOpen(true)}>Open</Button>
-			<Dialog.Root open={open} onClose={() => setOpen(false)}>
+			<Dialog.Root modal={true} open={open} onClose={() => setOpen(false)}>
 				<Dialog.Header render={<Dialog.Heading />}>Heading</Dialog.Header>
 				<Dialog.Content
 					style={{
@@ -153,9 +168,30 @@ function NestedTest() {
 				>
 					<span>Nest dialogs in the React element tree</span>
 					<Button onClick={() => setNestedOpen(true)}>Open nested</Button>
-					<Dialog.Root open={nestedOpen} onClose={() => setNestedOpen(false)}>
+					<Dialog.Root
+						modal={true}
+						open={nestedOpen}
+						onClose={() => setNestedOpen(false)}
+					>
 						<Dialog.Header render={<Dialog.Heading />}>Heading</Dialog.Header>
-						<Dialog.Content>Content of nested dialog</Dialog.Content>
+						<Dialog.Content
+							style={{
+								display: "flex",
+								alignItems: "center",
+								justifyContent: "space-between",
+							}}
+						>
+							Content of nested dialog
+							<DropdownMenu.Provider>
+								<DropdownMenu.Button>Actions</DropdownMenu.Button>
+
+								<DropdownMenu.Content>
+									<DropdownMenu.Item label="Add" />
+									<DropdownMenu.Item label="Edit" />
+									<DropdownMenu.Item label="Delete" />
+								</DropdownMenu.Content>
+							</DropdownMenu.Provider>
+						</Dialog.Content>
 					</Dialog.Root>
 				</Dialog.Content>
 			</Dialog.Root>
@@ -169,7 +205,7 @@ function NestedUnmountOnHideTest() {
 	return (
 		<>
 			<Button onClick={() => setOpen(true)}>Open</Button>
-			<Dialog.Root open={open} onClose={() => setOpen(false)}>
+			<Dialog.Root modal={true} open={open} onClose={() => setOpen(false)}>
 				<Dialog.Header render={<Dialog.Heading />}>Heading</Dialog.Header>
 				<Dialog.Content
 					style={{
@@ -184,6 +220,7 @@ function NestedUnmountOnHideTest() {
 				</Dialog.Content>
 			</Dialog.Root>
 			<Dialog.Root
+				modal={true}
 				unmountOnHide
 				open={nestedOpen}
 				onClose={() => setNestedOpen(false)}
@@ -201,15 +238,21 @@ function NonDismissibleTest() {
 		<>
 			<Button onClick={() => setOpen(true)}>Open</Button>
 			<Dialog.Root
+				modal={true}
 				open={open}
 				onClose={() => setOpen(false)}
-				hideOnEscape={false}
 				hideOnInteractOutside={false}
 			>
 				<Dialog.Header render={<Dialog.Heading />}>Heading</Dialog.Header>
 				<Dialog.Content>Description</Dialog.Content>
 				<Dialog.Footer>
-					<Dialog.Action render={<Button tone="accent" />}>Ok</Dialog.Action>
+					<Dialog.ActionList
+						actions={[
+							<Button key="ok" tone="accent" onClick={() => setOpen(false)}>
+								Ok
+							</Button>,
+						]}
+					/>
 				</Dialog.Footer>
 			</Dialog.Root>
 		</>
@@ -221,7 +264,12 @@ function NoBackdropTest() {
 	return (
 		<>
 			<Button onClick={() => setOpen(true)}>Open</Button>
-			<Dialog.Root open={open} onClose={() => setOpen(false)} backdrop={false}>
+			<Dialog.Root
+				modal={true}
+				open={open}
+				onClose={() => setOpen(false)}
+				backdrop={false}
+			>
 				<Dialog.Header render={<Dialog.Heading />}>Heading</Dialog.Header>
 				<Dialog.Content>Description</Dialog.Content>
 			</Dialog.Root>
@@ -235,6 +283,7 @@ function CustomBackdropTest() {
 		<>
 			<Button onClick={() => setOpen(true)}>Open</Button>
 			<Dialog.Root
+				modal={true}
 				open={open}
 				onClose={() => setOpen(false)}
 				backdrop={<Dialog.Backdrop style={{ border: "2px solid red" }} />}

@@ -55,12 +55,12 @@ const Button = forwardRef<"button", ButtonProps>((props, forwardedRef) => {
 		<AkButton
 			accessibleWhenDisabled
 			{...rest}
-			data-kiwi-variant={variant}
-			data-kiwi-tone={tone}
-			data-kiwi-ghost-align={variant === "ghost" ? ghostAlignment : undefined}
+			data-_sk-variant={variant}
+			data-_sk-tone={tone}
+			data-_sk-ghost-align={variant === "ghost" ? ghostAlignment : undefined}
 			className={cx(
-				"🥝-button",
-				{ "🥝-ghost-aligner": variant === "ghost" },
+				"🥝Button",
+				{ "🥝GhostAligner": variant === "ghost" },
 				props.className,
 			)}
 			ref={forwardedRef}

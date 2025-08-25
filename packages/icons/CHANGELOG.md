@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.1.5
+
+- [#911](https://github.com/iTwin/design-system/pull/911): Added new icons:
+  - `dimension-angle.svg`
+  - `dimension-linear.svg`
+  - `dimension-ordinate.svg`
+  - `dimension-radial.svg`
+  - `drawing-view-create.svg`
+  - `production-drawing.svg`
+  - `sheet.svg`
+  - `table-column-insert-right.svg`
+  - `table-row-insert-below.svg`
+
 ## 0.1.4
 
 - [#896](https://github.com/iTwin/design-system/pull/896): Added icons:

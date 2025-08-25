@@ -40,10 +40,10 @@ export function loadStyles(
 		// Inject <style> elements if `adoptedStyleSheets` is not supported.
 		if (
 			!supportsAdoptedStylesheets &&
-			!rootNode.querySelector(`style[data-kiwi="${key}"]`)
+			!rootNode.querySelector(`style[data-_sk="${key}"]`)
 		) {
 			const styleElement = ownerDocument.createElement("style");
-			styleElement.dataset.kiwi = key;
+			styleElement.dataset._sk = key;
 			styleElement.textContent = css;
 			((rootNode as Document).head || rootNode).appendChild(styleElement);
 			cleanup = () => styleElement.remove();

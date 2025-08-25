@@ -83,7 +83,7 @@ const TextBoxInput = forwardRef<"input", TextBoxInputProps>(
 			<Role.input
 				readOnly={props.disabled}
 				{...props}
-				className={cx({ "🥝-text-box": !rootContext }, props.className)}
+				className={cx({ "🥝TextBox": !rootContext }, props.className)}
 				/**
 				 * Use an empty string as a placeholder to fix baseline alignment in Safari.
 				 * @see https://bugs.webkit.org/show_bug.cgi?id=142968
@@ -142,7 +142,7 @@ const TextBoxTextarea = forwardRef<"textarea", TextareaProps>(
 			<Role.textarea
 				readOnly={props.disabled}
 				{...props}
-				className={cx({ "🥝-text-box": !rootContext }, props.className)}
+				className={cx({ "🥝TextBox": !rootContext }, props.className)}
 				/**
 				 * Use an empty string as a placeholder to fix baseline alignment in Safari.
 				 * @see https://bugs.webkit.org/show_bug.cgi?id=142968
@@ -202,8 +202,8 @@ const TextBoxRoot = forwardRef<"div", TextBoxRootProps>(
 			>
 				<Role.div
 					{...props}
-					data-kiwi-disabled={disabled}
-					className={cx("🥝-text-box", props.className)}
+					data-_sk-disabled={disabled}
+					className={cx("🥝TextBox", props.className)}
 					onPointerDown={useEventHandlers(props.onPointerDown, (e) => {
 						if (disabled) return;
 
@@ -232,7 +232,7 @@ const TextBoxIcon = forwardRef<"svg", TextBoxIconProps>(
 		return (
 			<Icon
 				{...props}
-				className={cx("🥝-text-box-decoration", props.className)}
+				className={cx("🥝TextBoxDecoration", props.className)}
 				ref={forwardedRef}
 			/>
 		);
@@ -252,7 +252,7 @@ const TextBoxText = forwardRef<"span", TextBoxTextProps>(
 		return (
 			<Role.span
 				{...props}
-				className={cx("🥝-text-box-decoration", props.className)}
+				className={cx("🥝TextBoxDecoration", props.className)}
 				ref={forwardedRef}
 			/>
 		);

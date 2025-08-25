@@ -2,7 +2,7 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-.🥝-list-item {
+.🥝ListItem {
 	--✨height--default: 1.75rem;
 	--✨height--large: 2.75rem;
 	--✨padding-inline: var(--stratakit-space-x2);
@@ -36,76 +36,76 @@
 			content-start] minmax(0, 1fr) [content-end
 			decoration-after-start] auto [decoration-after-end];
 
-		min-block-size: var(--🥝list-item-height, var(--✨height--default));
+		min-block-size: var(--🥝ListItem-height, var(--✨height--default));
 		padding-inline: var(--✨padding-inline);
-		background-color: var(--🥝list-item-background-color);
+		background-color: var(--🥝ListItem-background-color);
 
-		--🥝list-item-background-color: var(--🌀list-item-state--default, var(--✨bg--default))
-			var(--🌀list-item-state--hover, var(--✨bg--hover))
-			var(--🌀list-item-state--pressed, var(--✨bg--pressed))
-			var(--🌀list-item-state--active, var(--✨bg--active))
-			var(--🌀list-item-state--active-hover, var(--✨bg--active-hover))
-			var(--🌀list-item-state--disabled, var(--✨bg--default));
+		--🥝ListItem-background-color: var(--🌀ListItem-state--default, var(--✨bg--default))
+			var(--🌀ListItem-state--hover, var(--✨bg--hover))
+			var(--🌀ListItem-state--pressed, var(--✨bg--pressed))
+			var(--🌀ListItem-state--active, var(--✨bg--active))
+			var(--🌀ListItem-state--active-hover, var(--✨bg--active-hover))
+			var(--🌀ListItem-state--disabled, var(--✨bg--default));
 		color: var(
-			--🥝list-item-color,
-			var(--🌀list-item-state--default, var(--✨color--default))
-				var(--🌀list-item-state--hover, var(--✨color--default))
-				var(--🌀list-item-state--pressed, var(--✨color--default))
-				var(--🌀list-item-state--active, var(--✨color--active))
-				var(--🌀list-item-state--active-hover, var(--✨color--active))
-				var(--🌀list-item-state--disabled, var(--✨color--disabled))
+			--🥝ListItem-color,
+			var(--🌀ListItem-state--default, var(--✨color--default))
+				var(--🌀ListItem-state--hover, var(--✨color--default))
+				var(--🌀ListItem-state--pressed, var(--✨color--default))
+				var(--🌀ListItem-state--active, var(--✨color--active))
+				var(--🌀ListItem-state--active-hover, var(--✨color--active))
+				var(--🌀ListItem-state--disabled, var(--✨color--disabled))
 		);
-		--🥝icon-color: var(--🌀list-item-state--default, var(--stratakit-color-icon-neutral-base))
-			var(--🌀list-item-state--hover, var(--stratakit-color-icon-neutral-hover))
-			var(--🌀list-item-state--pressed, var(--stratakit-color-icon-neutral-hover))
-			var(--🌀list-item-state--active, var(--stratakit-color-icon-accent-strong))
-			var(--🌀list-item-state--active-hover, var(--stratakit-color-icon-accent-strong))
-			var(--🌀list-item-state--disabled, var(--stratakit-color-icon-neutral-disabled));
+		--🥝Icon-color: var(--🌀ListItem-state--default, var(--stratakit-color-icon-neutral-base))
+			var(--🌀ListItem-state--hover, var(--stratakit-color-icon-neutral-hover))
+			var(--🌀ListItem-state--pressed, var(--stratakit-color-icon-neutral-hover))
+			var(--🌀ListItem-state--active, var(--stratakit-color-icon-accent-strong))
+			var(--🌀ListItem-state--active-hover, var(--stratakit-color-icon-accent-strong))
+			var(--🌀ListItem-state--disabled, var(--stratakit-color-icon-neutral-disabled));
 	}
 
 	@layer states {
 		@media (any-hover: hover) {
 			&:where(:hover) {
-				--🌀list-item-state: var(--🌀list-item-state--hover);
+				--🌀ListItem-state: var(--🌀ListItem-state--hover);
 			}
 		}
 
 		&:where(:active) {
-			--🌀list-item-state: var(--🌀list-item-state--pressed);
+			--🌀ListItem-state: var(--🌀ListItem-state--pressed);
 		}
 
 		&:where(:disabled, [aria-disabled="true"]) {
-			--🌀list-item-state: var(--🌀list-item-state--disabled);
+			--🌀ListItem-state: var(--🌀ListItem-state--disabled);
 			cursor: not-allowed;
 		}
 	}
 
 	@layer modifiers {
-		&:where(:has(> :nth-child(2 of .🥝-list-item-content))) {
-			--🥝list-item-height: var(--✨height--large);
+		&:where(:has(> :nth-child(2 of .🥝ListItemContent))) {
+			--🥝ListItem-height: var(--✨height--large);
 			grid-template-rows: repeat(auto-fit, minmax(0, auto));
 		}
 	}
 
 	@layer base.🌀 {
 		/* See https://kizu.dev/cyclic-toggles/ */
-		--🌀list-item-state: var(--🌀list-item-state--default);
-		--🌀list-item-state--default: var(--🌀list-item-state,);
-		--🌀list-item-state--hover: var(--🌀list-item-state,);
-		--🌀list-item-state--pressed: var(--🌀list-item-state,);
-		--🌀list-item-state--active: var(--🌀list-item-state,);
-		--🌀list-item-state--active-hover: var(--🌀list-item-state,);
-		--🌀list-item-state--disabled: var(--🌀list-item-state,);
+		--🌀ListItem-state: var(--🌀ListItem-state--default);
+		--🌀ListItem-state--default: var(--🌀ListItem-state,);
+		--🌀ListItem-state--hover: var(--🌀ListItem-state,);
+		--🌀ListItem-state--pressed: var(--🌀ListItem-state,);
+		--🌀ListItem-state--active: var(--🌀ListItem-state,);
+		--🌀ListItem-state--active-hover: var(--🌀ListItem-state,);
+		--🌀ListItem-state--disabled: var(--🌀ListItem-state,);
 	}
 }
 
-.🥝-list-item-content {
+.🥝ListItemContent {
 	@layer base {
 		grid-column: content;
 	}
 }
 
-.🥝-list-item-decoration {
+.🥝ListItemDecoration {
 	--✨gap: var(--stratakit-space-x1);
 
 	@layer base {
@@ -117,7 +117,7 @@
 		align-items: center;
 		margin-inline-end: var(--✨gap);
 
-		:where(.🥝-list-item-content) ~ & {
+		:where(.🥝ListItemContent) ~ & {
 			grid-column: decoration-after;
 			margin-inline: var(--✨gap) 0;
 		}
@@ -125,7 +125,7 @@
 }
 
 @media (forced-colors: active) {
-	.🥝-list-item:where(:disabled, [aria-disabled="true"]) {
+	.🥝ListItem:where(:disabled, [aria-disabled="true"]) {
 		color: GrayText;
 	}
 }

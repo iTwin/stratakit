@@ -1,1 +1,0 @@
-import{a as n,p as e}from"./chunk-UH6JLGW7-Ur-KJ5UR.js";import{u as i}from"./~utils-B_Ngeihh.js";import{c as p,d as c}from"./Field-0r1TD3s0.js";const j=n.forwardRef((a,r)=>{const{startIcon:m,iconProps:u,contentProps:f,status:s,children:t,...o}=i(a);return s==="negative"||s==="warning"?e.jsx(p,{...o,ref:r,children:t}):e.jsx(c,{...o,ref:r,children:t})});export{j as S};

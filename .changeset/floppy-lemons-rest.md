@@ -8,7 +8,7 @@ Added `Dialog` component that displays custom content in a window overlay over t
 const [open, setOpen] = useState(false);
 
 <Button onClick={() => setOpen(true)}>Open dialog</Button>
-<Dialog.Root open={open} onClose={() => setOpen(false)}>
+<Dialog.Root modal={true} open={open} onClose={() => setOpen(false)}>
   <Dialog.Header render={<Dialog.Heading />}>Dialog title</Dialog.Header>
   <Dialog.Content>
     Content that describes the primary purpose of the dialog.

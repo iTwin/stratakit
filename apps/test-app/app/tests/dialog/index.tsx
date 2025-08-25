@@ -17,7 +17,7 @@ export default definePage(
 		return (
 			<>
 				<Button onClick={() => setOpen(true)}>Open</Button>
-				<Dialog.Root open={open} onClose={() => setOpen(false)}>
+				<Dialog.Root modal={true} open={open} onClose={() => setOpen(false)}>
 					<Dialog.Header>
 						<Dialog.Heading>Title</Dialog.Heading>
 						<Dialog.CloseButton />
@@ -67,7 +67,7 @@ function VisualTest() {
 	return (
 		<>
 			<Button onClick={() => setOpen(true)}>Open</Button>
-			<Dialog.Root open={open} onClose={() => setOpen(false)}>
+			<Dialog.Root modal={true} open={open} onClose={() => setOpen(false)}>
 				<Dialog.Header>
 					<Dialog.Heading>Heading</Dialog.Heading>
 					<Dialog.CloseButton />
@@ -95,7 +95,7 @@ function CloseButtonTest() {
 	return (
 		<>
 			<Button onClick={() => setOpen(true)}>Open</Button>
-			<Dialog.Root open={open} onClose={() => setOpen(false)}>
+			<Dialog.Root modal={true} open={open} onClose={() => setOpen(false)}>
 				<Dialog.Header>
 					<Dialog.Heading>Heading</Dialog.Heading>
 					<Dialog.CloseButton />
@@ -111,7 +111,7 @@ function ActionsTest() {
 	return (
 		<>
 			<Button onClick={() => setOpen(true)}>Open</Button>
-			<Dialog.Root open={open} onClose={() => setOpen(false)}>
+			<Dialog.Root modal={true} open={open} onClose={() => setOpen(false)}>
 				<Dialog.Header render={<Dialog.Heading />}>Heading</Dialog.Header>
 				<Dialog.Content>Content</Dialog.Content>
 				<Dialog.Footer>
@@ -137,6 +137,7 @@ function MountedOnHideTest() {
 		<>
 			<Button onClick={() => setOpen(true)}>Open</Button>
 			<Dialog.Root
+				modal={true}
 				open={open}
 				onClose={() => setOpen(false)}
 				unmountOnHide={false}
@@ -154,7 +155,7 @@ function NestedTest() {
 	return (
 		<>
 			<Button onClick={() => setOpen(true)}>Open</Button>
-			<Dialog.Root open={open} onClose={() => setOpen(false)}>
+			<Dialog.Root modal={true} open={open} onClose={() => setOpen(false)}>
 				<Dialog.Header render={<Dialog.Heading />}>Heading</Dialog.Header>
 				<Dialog.Content
 					style={{
@@ -166,7 +167,11 @@ function NestedTest() {
 				>
 					<span>Nest dialogs in the React element tree</span>
 					<Button onClick={() => setNestedOpen(true)}>Open nested</Button>
-					<Dialog.Root open={nestedOpen} onClose={() => setNestedOpen(false)}>
+					<Dialog.Root
+						modal={true}
+						open={nestedOpen}
+						onClose={() => setNestedOpen(false)}
+					>
 						<Dialog.Header render={<Dialog.Heading />}>Heading</Dialog.Header>
 						<Dialog.Content
 							style={{
@@ -199,7 +204,7 @@ function NestedUnmountOnHideTest() {
 	return (
 		<>
 			<Button onClick={() => setOpen(true)}>Open</Button>
-			<Dialog.Root open={open} onClose={() => setOpen(false)}>
+			<Dialog.Root modal={true} open={open} onClose={() => setOpen(false)}>
 				<Dialog.Header render={<Dialog.Heading />}>Heading</Dialog.Header>
 				<Dialog.Content
 					style={{
@@ -214,6 +219,7 @@ function NestedUnmountOnHideTest() {
 				</Dialog.Content>
 			</Dialog.Root>
 			<Dialog.Root
+				modal={true}
 				unmountOnHide
 				open={nestedOpen}
 				onClose={() => setNestedOpen(false)}
@@ -231,6 +237,7 @@ function NonDismissibleTest() {
 		<>
 			<Button onClick={() => setOpen(true)}>Open</Button>
 			<Dialog.Root
+				modal={true}
 				open={open}
 				onClose={() => setOpen(false)}
 				hideOnInteractOutside={false}
@@ -256,7 +263,12 @@ function NoBackdropTest() {
 	return (
 		<>
 			<Button onClick={() => setOpen(true)}>Open</Button>
-			<Dialog.Root open={open} onClose={() => setOpen(false)} backdrop={false}>
+			<Dialog.Root
+				modal={true}
+				open={open}
+				onClose={() => setOpen(false)}
+				backdrop={false}
+			>
 				<Dialog.Header render={<Dialog.Heading />}>Heading</Dialog.Header>
 				<Dialog.Content>Description</Dialog.Content>
 			</Dialog.Root>
@@ -270,6 +282,7 @@ function CustomBackdropTest() {
 		<>
 			<Button onClick={() => setOpen(true)}>Open</Button>
 			<Dialog.Root
+				modal={true}
 				open={open}
 				onClose={() => setOpen(false)}
 				backdrop={<Dialog.Backdrop style={{ border: "2px solid red" }} />}

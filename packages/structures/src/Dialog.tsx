@@ -41,6 +41,11 @@ interface DialogRootProps
 	 * @default true
 	 */
 	unmountOnHide?: boolean;
+	/**
+	 * Determines whether the dialog is modal.
+	 * Currently, only modal dialogs are supported.
+	 */
+	modal: true;
 }
 
 /**
@@ -51,7 +56,7 @@ interface DialogRootProps
  * ```tsx
  * const [open, setOpen] = useState(false);
  *
- * <Dialog.Root open={open} onClose={() => setOpen(false)}>
+ * <Dialog.Root modal={true} open={open} onClose={() => setOpen(false)}>
  *   <Dialog.Heading>Heading</Dialog.Heading>
  *   <Dialog.Content>Content</Dialog.Content>
  *   <Dialog.Footer>
@@ -343,7 +348,7 @@ interface DialogBackdropProps extends BaseProps {}
  *
  * Example:
  * ```tsx
- * <Dialog.Root backdrop={<Dialog.Backdrop />} />
+ * <Dialog.Root modal={true} backdrop={<Dialog.Backdrop />} />
  * ```
  */
 const DialogBackdrop = forwardRef<"div", DialogBackdropProps>(

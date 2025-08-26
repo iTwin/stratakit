@@ -13,7 +13,7 @@ import {
 	MenuProvider,
 	useMenuContext,
 } from "@ariakit/react/menu";
-import { usePopoverContext } from "@ariakit/react/popover";
+import { PopoverProvider, usePopoverContext } from "@ariakit/react/popover";
 import { useStoreState } from "@ariakit/react/store";
 import { Button, Kbd } from "@stratakit/bricks";
 import {
@@ -27,7 +27,7 @@ import {
 	usePopoverApi,
 } from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
-import { Checkmark } from "./~utils.icons.js";
+import { Checkmark, ChevronRight } from "./~utils.icons.js";
 import * as ListItem from "./~utils.ListItem.js";
 
 import type {
@@ -107,13 +107,14 @@ const DropdownMenuContent = forwardRef<"div", DropdownMenuContentProps>(
 		const open = useStoreState(context, "open");
 		const popoverElement = useStoreState(context, "popoverElement");
 		const popoverProps = usePopoverApi({ element: popoverElement, open });
+		const hasParentMenu = !!context?.parent;
 
 		return (
 			<Menu
-				portal
+				portal={!hasParentMenu} // Disable due to span created in a `role="menu"`
 				unmountOnHide
 				{...props}
-				gutter={4}
+				gutter={hasParentMenu ? 2 : 4}
 				style={{ ...popoverProps.style, ...props.style }}
 				wrapperProps={{ popover: popoverProps.popover }}
 				className={cx("🥝DropdownMenu", props.className)}
@@ -399,10 +400,54 @@ DEV: DropdownMenuCheckboxItem.displayName = "DropdownMenu.CheckboxItem";
 
 // ----------------------------------------------------------------------------
 
+interface DropdownMenuSubmenuItemProps
+	extends Omit<FocusableProps<"button">, "children">,
+		Pick<DropdownMenuItemProps, "label"> {
+	menu?: React.ReactNode;
+}
+
+const DropdownMenuSubmenuItem = forwardRef<
+	"button",
+	DropdownMenuSubmenuItemProps
+>((props, forwardedRef) => {
+	const { accessibleWhenDisabled = true, label, menu, ...rest } = props;
+
+	return (
+		<PopoverProvider>
+			<DropdownMenuProvider>
+				<MenuItem
+					accessibleWhenDisabled={accessibleWhenDisabled}
+					render={
+						<ListItem.Root
+							render={
+								<MenuButton
+									accessibleWhenDisabled={accessibleWhenDisabled}
+									render={<button />}
+									{...rest}
+									className={cx("🥝DropdownMenuItem", props.className)}
+									ref={forwardedRef}
+								/>
+							}
+						/>
+					}
+				>
+					<ListItem.Content render={<span />}>{label}</ListItem.Content>
+					<ListItem.Decoration render={<ChevronRight />} />
+				</MenuItem>
+				{menu}
+			</DropdownMenuProvider>
+		</PopoverProvider>
+	);
+});
+DEV: DropdownMenuSubmenuItem.displayName = "DropdownMenu.SubmenuItem";
+
+// ----------------------------------------------------------------------------
+
 export {
 	DropdownMenuProvider as Provider,
 	DropdownMenuButton as Button,
 	DropdownMenuContent as Content,
 	DropdownMenuItem as Item,
 	DropdownMenuCheckboxItem as CheckboxItem,
+	DropdownMenuSubmenuItem as SubmenuItem,
 };

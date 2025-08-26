@@ -34,6 +34,7 @@ export default definePage(
 	{
 		checkbox: CheckboxTest,
 		visual: VisualTest,
+		submenu: SubmenuTest,
 	},
 );
 
@@ -84,5 +85,51 @@ function VisualTest({ disabled }: VariantProps) {
 				</DropdownMenu.Content>
 			</DropdownMenu.Provider>
 		</div>
+	);
+}
+
+function SubmenuTest() {
+	return (
+		<DropdownMenu.Provider>
+			<DropdownMenu.Button>Actions</DropdownMenu.Button>
+
+			<DropdownMenu.Content id="root_1">
+				<DropdownMenu.Item shortcuts="Command+A" label="Add" />
+				<DropdownMenu.Item shortcuts="Shift+E" label="Edit" />
+				<DropdownMenu.Item disabled label="Delete" />
+				<DropdownMenu.Item label="Disable" />
+				<DropdownMenu.Item label="Filter" unstable_dot="Some filters applied" />
+				<DropdownMenu.SubmenuItem
+					label="More"
+					menu={
+						<DropdownMenu.Content id="2">
+							<DropdownMenu.Item shortcuts="Command+A" label="Add" />
+							<DropdownMenu.Item shortcuts="Shift+E" label="Edit" />
+							<DropdownMenu.Item disabled label="Delete" />
+							<DropdownMenu.Item label="Disable" />
+							<DropdownMenu.Item
+								label="Filter"
+								unstable_dot="Some filters applied"
+							/>
+							<DropdownMenu.SubmenuItem
+								label="More"
+								menu={
+									<DropdownMenu.Content id="3">
+										<DropdownMenu.Item shortcuts="Command+A" label="Add" />
+										<DropdownMenu.Item shortcuts="Shift+E" label="Edit" />
+										<DropdownMenu.Item disabled label="Delete" />
+										<DropdownMenu.Item label="Disable" />
+										<DropdownMenu.Item
+											label="Filter"
+											unstable_dot="Some filters applied"
+										/>
+									</DropdownMenu.Content>
+								}
+							/>
+						</DropdownMenu.Content>
+					}
+				/>
+			</DropdownMenu.Content>
+		</DropdownMenu.Provider>
 	);
 }

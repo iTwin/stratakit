@@ -82,3 +82,23 @@ export const ChevronDown = forwardRef<
 	);
 });
 DEV: ChevronDown.displayName = "ChevronDown";
+
+// ----------------------------------------------------------------------------
+
+const ChevronRightBase = createIconFromPath(
+	"M6.146 4.146a.5.5 0 0 1 .708 0l3.5 3.5a.5.5 0 0 1 0 .708l-3.5 3.5a.5.5 0 1 1-.708-.707L9.293 8 6.146 4.854a.5.5 0 0 1 0-.708Z",
+);
+
+export const ChevronRight = forwardRef<
+	"svg",
+	Omit<BaseProps<"svg">, "children">
+>((props, forwardedRef) => {
+	return (
+		<ChevronRightBase
+			{...props}
+			className={cx("🥝ChevronRight", props.className)}
+			ref={forwardedRef}
+		/>
+	);
+});
+DEV: ChevronRight.displayName = "ChevronRight";

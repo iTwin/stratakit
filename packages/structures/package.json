@@ -49,6 +49,12 @@
 			"development": "./dist/DEV/ErrorRegion.js",
 			"default": "./dist/ErrorRegion.js"
 		},
+		"./unstable_NavigationRail": {
+			"@stratakit/source": "./src/NavigationRail.tsx",
+			"types": "./dist/NavigationRail.d.ts",
+			"development": "./dist/DEV/NavigationRail.js",
+			"default": "./dist/NavigationRail.js"
+		},
 		"./Table": {
 			"@stratakit/source": "./src/Table.tsx",
 			"types": "./dist/Table.d.ts",

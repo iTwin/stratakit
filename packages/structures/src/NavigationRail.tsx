@@ -100,8 +100,6 @@ interface NavigationRailProps extends BaseProps<"nav"> {}
  *   </NavigationRail.Content>
  * </NavigationRail.Root>
  * ```
- *
- * The `collapsed` prop can be used to toggle between collapsed and expanded states.
  */
 const NavigationRailRoot = forwardRef<"nav", NavigationRailProps>(
 	(props, forwardedRef) => {
@@ -139,8 +137,7 @@ interface NavigationRailHeaderProps extends BaseProps<"header"> {}
  *
  * Can contain a logo and a `NavigationRail.ToggleButton` to collapse/expand the `NavigationRail`.
  *
- * **Note**: This component is expected to hug the top edge of the page. Do not use this
- * component if the page header is displayed above the `NavigationRail`.
+ * **Note**: This component is expected to hug the top edge of the page.
  */
 const NavigationRailHeader = forwardRef<"nav", NavigationRailHeaderProps>(
 	(props, forwardedRef) => {
@@ -255,7 +252,7 @@ interface NavigationRailListProps extends BaseProps<"div"> {}
  *
  * Multiple `NavigationRail.List` elements can be used together and be visually separated by a `NavigationRail.Spacer`.
  *
- * The `Divider` component can be used to separate groups of items within the same list.
+ * Groups of items within the same list can be visually separated using `<Divider presentational />`.
  */
 const NavigationRailList = forwardRef<"div", NavigationRailListProps>(
 	(props, forwardedRef) => {

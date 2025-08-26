@@ -18,7 +18,7 @@
 	},
 	"devDependencies": {
 		"@actions/github": "^6.0.1",
-		"@biomejs/biome": "2.2.0",
+		"@biomejs/biome": "2.2.2",
 		"@playwright/test": "catalog:",
 		"@types/node": "catalog:",
 		"colorjs.io": "^0.5.2",
@@ -26,7 +26,7 @@
 		"internal": "workspace:*",
 		"lefthook": "^1.12.3",
 		"prettier": "3.6.2",
-		"tsx": "^4.20.4",
+		"tsx": "^4.20.5",
 		"typescript": "catalog:",
 		"wireit": "^0.14.12"
 	},

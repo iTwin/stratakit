@@ -368,7 +368,7 @@ interface NavigationRailAnchorProps
 	/**
 	 * Whether the anchor is currently active (i.e. represents the current page).
 	 */
-	isActive?: boolean;
+	active?: boolean;
 }
 
 /**
@@ -386,13 +386,13 @@ interface NavigationRailAnchorProps
  */
 const NavigationRailAnchor = forwardRef<"a", NavigationRailAnchorProps>(
 	(props, forwardedRef) => {
-		const { label, icon, isActive, ...rest } = props;
+		const { label, icon, active, ...rest } = props;
 
 		return (
 			<NavigationRailItemAction
 				label={label}
 				icon={icon}
-				aria-current={isActive ? "true" : undefined}
+				aria-current={active ? "page" : undefined}
 				render={<Role.a {...rest} ref={forwardedRef} />}
 			/>
 		);

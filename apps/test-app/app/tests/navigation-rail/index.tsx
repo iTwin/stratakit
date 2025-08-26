@@ -78,7 +78,7 @@ export default definePage(
 										icon={`${item.icon}#icon-large`}
 										label={item.label}
 										href="#" // placeholder
-										isActive={active === key}
+										active={active === key}
 										onClick={() => setActive(key)}
 									/>
 								</NavigationRail.ListItem>
@@ -135,7 +135,7 @@ function VisualTest() {
 							href="#"
 							icon={placeholderIcon}
 							label="Item #1"
-							isActive
+							active
 						/>
 					</NavigationRail.ListItem>
 					<NavigationRail.ListItem>

@@ -27,33 +27,6 @@ const styles = `:is(
 	--stratakit-color-static-accent: oklch(53.32% 0.139 246.77);
 	--stratakit-shadow-table-strong: 0px -1px 0px 0px oklch(53.32% 0.139 246.77);
 }
-@supports not (color: oklch(0% 0 0)) {
-	:is(
-			html:where([data-color-scheme="light"]),
-			:host([data-color-scheme="light"]),
-			.🥝Root:where([data-_sk-theme="light"])
-		) {
-		--stratakit-color-bg-accent-base: #0171b8;
-		--stratakit-color-bg-accent-muted: #c8e6f8;
-		--stratakit-color-bg-accent-faded: #034670;
-		--stratakit-color-bg-accent-transparent: #0171b829;
-		--stratakit-color-bg-glow-on-surface-accent-hover: #0171b81f;
-		--stratakit-color-bg-glow-on-surface-accent-pressed: #0171b829;
-		--stratakit-color-bg-glow-on-surface-accent-active-hover: #0171b83d;
-		--stratakit-color-icon-accent-base: #0163a0;
-		--stratakit-color-icon-accent-strong: #0163a0;
-		--stratakit-color-icon-accent-faded: #0e5788;
-		--stratakit-color-border-accent-base: #0171b8;
-		--stratakit-color-border-accent-faded: #0e5788;
-		--stratakit-color-border-accent-muted: #a3d4f3;
-		--stratakit-color-border-accent-strong: #0163a0;
-		--stratakit-color-text-accent-base: #0163a0;
-		--stratakit-color-text-accent-faded: #0e5788;
-		--stratakit-color-text-accent-strong: #0163a0;
-		--stratakit-color-static-accent: #0171b8;
-		--stratakit-shadow-table-strong: 0px -1px 0px 0px #0171b8;
-	}
-}
 :is(
 		html:where([data-color-scheme="dark"]),
 		:host([data-color-scheme="dark"]),
@@ -78,32 +51,5 @@ const styles = `:is(
 	--stratakit-color-text-accent-strong: oklch(69.98% 0.118 238.51);
 	--stratakit-color-static-accent: oklch(53.32% 0.139 246.77);
 	--stratakit-shadow-table-strong: 0px -1px 0px 0px oklch(69.98% 0.118 238.51);
-}
-@supports not (color: oklch(0% 0 0)) {
-	:is(
-			html:where([data-color-scheme="dark"]),
-			:host([data-color-scheme="dark"]),
-			.🥝Root:where([data-_sk-theme="dark"])
-		) {
-		--stratakit-color-bg-accent-base: #0171b8;
-		--stratakit-color-bg-accent-muted: #034670;
-		--stratakit-color-bg-accent-faded: #4ea8df;
-		--stratakit-color-bg-accent-transparent: #0171b829;
-		--stratakit-color-bg-glow-on-surface-accent-hover: #0171b81f;
-		--stratakit-color-bg-glow-on-surface-accent-pressed: #0171b829;
-		--stratakit-color-bg-glow-on-surface-accent-active-hover: #0171b83d;
-		--stratakit-color-icon-accent-base: #4ea8df;
-		--stratakit-color-icon-accent-strong: #4ea8df;
-		--stratakit-color-icon-accent-faded: #7ec3ee;
-		--stratakit-color-border-accent-base: #1990d4;
-		--stratakit-color-border-accent-faded: #a3d4f3;
-		--stratakit-color-border-accent-muted: #0e5788;
-		--stratakit-color-border-accent-strong: #4ea8df;
-		--stratakit-color-text-accent-base: #4ea8df;
-		--stratakit-color-text-accent-faded: #7ec3ee;
-		--stratakit-color-text-accent-strong: #4ea8df;
-		--stratakit-color-static-accent: #0171b8;
-		--stratakit-shadow-table-strong: 0px -1px 0px 0px #4ea8df;
-	}
 }`;
 export default styles;

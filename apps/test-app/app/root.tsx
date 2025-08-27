@@ -14,6 +14,7 @@ import {
 } from "react-router";
 import { Root } from "@stratakit/foundations";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { loadBlueStyles } from "./~blue.ts";
 import { ColorSchemeProvider, useColorScheme } from "./~utils.tsx";
 
 import type { LinksFunction } from "react-router";
@@ -78,6 +79,9 @@ export default function App() {
 		document.body.dataset.loaded = "true";
 	}, []);
 
+	React.useEffect(() => {
+		return loadBlueStyles();
+	}, []);
 	return (
 		<QueryClientProvider client={queryClient}>
 			<Root colorScheme={colorScheme} density="dense">

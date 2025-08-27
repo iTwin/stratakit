@@ -32,32 +32,11 @@ export default definePage(
 		);
 	},
 	{
-		checkbox: CheckboxTest,
 		visual: VisualTest,
+		checkbox: CheckboxTest,
 		submenu: SubmenuTest,
 	},
 );
-
-function CheckboxTest({ defaultChecked: defaultCheckedParam }: VariantProps) {
-	const defaultChecked = defaultCheckedParam ? true : undefined;
-	return (
-		<div style={{ minHeight: 150 }}>
-			<DropdownMenu.Provider>
-				<DropdownMenu.Button>Settings</DropdownMenu.Button>
-
-				<DropdownMenu.Content>
-					<DropdownMenu.CheckboxItem name="item1" label="Item 1" />
-					<DropdownMenu.CheckboxItem name="item2" label="Item 2" />
-					<DropdownMenu.CheckboxItem
-						name="item3"
-						label="Item 3"
-						defaultChecked={defaultChecked}
-					/>
-				</DropdownMenu.Content>
-			</DropdownMenu.Provider>
-		</div>
-	);
-}
 
 function VisualTest({ disabled }: VariantProps) {
 	return (
@@ -81,6 +60,27 @@ function VisualTest({ disabled }: VariantProps) {
 					<DropdownMenu.Item
 						label="Filter"
 						unstable_dot="Some filters applied"
+					/>
+				</DropdownMenu.Content>
+			</DropdownMenu.Provider>
+		</div>
+	);
+}
+
+function CheckboxTest({ defaultChecked: defaultCheckedParam }: VariantProps) {
+	const defaultChecked = defaultCheckedParam ? true : undefined;
+	return (
+		<div style={{ minHeight: 150 }}>
+			<DropdownMenu.Provider>
+				<DropdownMenu.Button>Settings</DropdownMenu.Button>
+
+				<DropdownMenu.Content>
+					<DropdownMenu.CheckboxItem name="item1" label="Item 1" />
+					<DropdownMenu.CheckboxItem name="item2" label="Item 2" />
+					<DropdownMenu.CheckboxItem
+						name="item3"
+						label="Item 3"
+						defaultChecked={defaultChecked}
 					/>
 				</DropdownMenu.Content>
 			</DropdownMenu.Provider>

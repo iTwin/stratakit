@@ -97,7 +97,9 @@ interface DropdownMenuContentProps extends FocusableProps {}
 /**
  * The actual "menu" portion containing the items shown within the dropdown.
  *
- * Should be used as a child of `DropdownMenu.Provider`.
+ * Should be used as a child of `DropdownMenu.Provider` or be passed into the `menu` prop of `DropdownMenu.SubmenuItem` when used as a submenu.
+ *
+ * Should include one or more of `DropdownMenu.Item`, `DropdownMenu.CheckboxItem`, and `DropdownMenu.SubmenuItem` as direct descendants.
  */
 const DropdownMenuContent = forwardRef<"div", DropdownMenuContentProps>(
 	(props, forwardedRef) => {
@@ -342,7 +344,7 @@ interface DropdownMenuCheckboxItemProps
 		Pick<DropdownMenuItemProps, "label" | "icon"> {}
 
 /**
- * A single menu item within the dropdown menu. Should be used as a child of `DropdownMenu.Content`.
+ * A single checkbox menu item within the dropdown menu. Should be used as a child of `DropdownMenu.Content`.
  *
  * Example:
  * ```tsx
@@ -401,9 +403,27 @@ DEV: DropdownMenuCheckboxItem.displayName = "DropdownMenu.CheckboxItem";
 interface DropdownMenuSubmenuItemProps
 	extends Omit<FocusableProps<"button">, "children">,
 		Pick<DropdownMenuItemProps, "label"> {
+	/**
+	 * The submenu to display when the item is activated. Must be a `DropdownMenu.Content` component.
+	 */
 	menu?: React.ReactNode;
 }
 
+/**
+ * A single menu item within the dropdown menu that contains a submenu. Should be used as a child of `DropdownMenu.Content`.
+ *
+ * Example:
+ * ```tsx
+ * <DropdownMenu.SubmenuItem label="More"
+ *   menu={
+ *     <DropdownMenu.Content>
+ *       <DropdownMenu.Item label="Add" />
+ *       <DropdownMenu.Item label="Edit" />
+ *     </DropdownMenu.Content>
+ *   }
+ * />
+ * ```
+ */
 const DropdownMenuSubmenuItem = forwardRef<
 	"button",
 	DropdownMenuSubmenuItemProps

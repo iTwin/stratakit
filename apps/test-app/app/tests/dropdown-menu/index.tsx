@@ -27,6 +27,20 @@ export default definePage(
 						label="Filter"
 						unstable_dot="Some filters applied"
 					/>
+					<DropdownMenu.SubmenuItem
+						label="More"
+						menu={
+							<DropdownMenu.Content>
+								<DropdownMenu.Item shortcuts="Command+C" label="Clone" />
+								<DropdownMenu.Item disabled label="Archive" />
+								<DropdownMenu.Item label="Export" />
+								<DropdownMenu.Item
+									label="Import"
+									unstable_dot="Some filters applied"
+								/>
+							</DropdownMenu.Content>
+						}
+					/>
 				</DropdownMenu.Content>
 			</DropdownMenu.Provider>
 		);
@@ -93,39 +107,25 @@ function SubmenuTest() {
 		<DropdownMenu.Provider>
 			<DropdownMenu.Button>Actions</DropdownMenu.Button>
 
-			<DropdownMenu.Content id="root_1">
-				<DropdownMenu.Item shortcuts="Command+A" label="Add" />
-				<DropdownMenu.Item shortcuts="Shift+E" label="Edit" />
-				<DropdownMenu.Item disabled label="Delete" />
-				<DropdownMenu.Item label="Disable" />
-				<DropdownMenu.Item label="Filter" unstable_dot="Some filters applied" />
+			<DropdownMenu.Content>
+				<DropdownMenu.Item label="Item 1" />
+				<DropdownMenu.Item label="Item 2" />
 				<DropdownMenu.SubmenuItem
-					label="More"
+					label="Item 3"
 					menu={
-						<DropdownMenu.Content id="2">
-							<DropdownMenu.Item shortcuts="Command+A" label="Add" />
-							<DropdownMenu.Item shortcuts="Shift+E" label="Edit" />
-							<DropdownMenu.Item disabled label="Delete" />
-							<DropdownMenu.Item label="Disable" />
-							<DropdownMenu.Item
-								label="Filter"
-								unstable_dot="Some filters applied"
-							/>
+						<DropdownMenu.Content>
+							<DropdownMenu.Item label="Item 3_1" />
 							<DropdownMenu.SubmenuItem
-								label="More"
+								label="Item 3_2"
 								menu={
-									<DropdownMenu.Content id="3">
-										<DropdownMenu.Item shortcuts="Command+A" label="Add" />
-										<DropdownMenu.Item shortcuts="Shift+E" label="Edit" />
-										<DropdownMenu.Item disabled label="Delete" />
-										<DropdownMenu.Item label="Disable" />
-										<DropdownMenu.Item
-											label="Filter"
-											unstable_dot="Some filters applied"
-										/>
+									<DropdownMenu.Content>
+										<DropdownMenu.Item label="Item 3_2_1" />
+										<DropdownMenu.Item label="Item 3_2_2" />
+										<DropdownMenu.Item label="Item 3_2_3" />
 									</DropdownMenu.Content>
 								}
 							/>
+							<DropdownMenu.Item label="Item 3_3" />
 						</DropdownMenu.Content>
 					}
 				/>

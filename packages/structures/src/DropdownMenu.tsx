@@ -13,7 +13,6 @@ import {
 	MenuProvider,
 	useMenuContext,
 } from "@ariakit/react/menu";
-import { PopoverProvider, usePopoverContext } from "@ariakit/react/popover";
 import { useStoreState } from "@ariakit/react/store";
 import { Button, Kbd } from "@stratakit/bricks";
 import {
@@ -84,7 +83,6 @@ function DropdownMenuProvider(props: DropdownMenuProps) {
 			defaultOpen={defaultOpenProp}
 			open={openProp}
 			setOpen={setOpenProp}
-			popover={usePopoverContext()}
 		>
 			{children}
 		</MenuProvider>
@@ -413,30 +411,28 @@ const DropdownMenuSubmenuItem = forwardRef<
 	const { accessibleWhenDisabled = true, label, menu, ...rest } = props;
 
 	return (
-		<PopoverProvider>
-			<DropdownMenuProvider>
-				<MenuItem
-					accessibleWhenDisabled={accessibleWhenDisabled}
-					render={
-						<ListItem.Root
-							render={
-								<MenuButton
-									accessibleWhenDisabled={accessibleWhenDisabled}
-									render={<button />}
-									{...rest}
-									className={cx("🥝DropdownMenuItem", props.className)}
-									ref={forwardedRef}
-								/>
-							}
-						/>
-					}
-				>
-					<ListItem.Content render={<span />}>{label}</ListItem.Content>
-					<ListItem.Decoration render={<ChevronRight />} />
-				</MenuItem>
-				{menu}
-			</DropdownMenuProvider>
-		</PopoverProvider>
+		<DropdownMenuProvider>
+			<MenuItem
+				accessibleWhenDisabled={accessibleWhenDisabled}
+				render={
+					<ListItem.Root
+						render={
+							<MenuButton
+								accessibleWhenDisabled={accessibleWhenDisabled}
+								render={<button />}
+								{...rest}
+								className={cx("🥝DropdownMenuItem", props.className)}
+								ref={forwardedRef}
+							/>
+						}
+					/>
+				}
+			>
+				<ListItem.Content render={<span />}>{label}</ListItem.Content>
+				<ListItem.Decoration render={<ChevronRight />} />
+			</MenuItem>
+			{menu}
+		</DropdownMenuProvider>
 	);
 });
 DEV: DropdownMenuSubmenuItem.displayName = "DropdownMenu.SubmenuItem";

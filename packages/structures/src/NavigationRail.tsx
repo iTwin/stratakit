@@ -329,13 +329,7 @@ const NavigationRailItemAction = forwardRef<
 			className={cx("🥝NavigationRailItemAction", props.className)}
 			ref={forwardedRef}
 		>
-			{icon ? (
-				<Icon
-					href={typeof icon === "string" ? icon : undefined}
-					render={React.isValidElement(icon) ? icon : undefined}
-				/>
-			) : null}
-
+			{typeof icon === "string" ? <Icon href={icon} /> : icon}
 			<Role.span
 				className="🥝NavigationRailItemActionLabel"
 				render={collapsed ? <VisuallyHidden /> : undefined}

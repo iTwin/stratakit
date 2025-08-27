@@ -109,7 +109,7 @@ const DropdownMenuContent = forwardRef<"div", DropdownMenuContentProps>(
 
 		return (
 			<Menu
-				portal={!hasParentMenu} // Disable due to span created in a `role="menu"`
+				portal={!hasParentMenu} // Disable due to span created in a `role="menu"` (see `preserveTabOrder`)
 				unmountOnHide
 				{...props}
 				gutter={hasParentMenu ? 2 : 4}

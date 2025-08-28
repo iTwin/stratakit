@@ -12,17 +12,10 @@ type ColorScheme = keyof typeof cssOverrides;
 
 let loaded = false;
 
-function overrideAccentColors({
-	colorScheme,
-	selector,
-}: {
-	colorScheme: ColorScheme;
-	selector: string;
-}) {
+function overrideAccentColors(colorScheme: ColorScheme) {
 	if (loaded) return () => {};
 
-	const getCss = cssOverrides[colorScheme];
-	const css = getCss(selector);
+	const css = cssOverrides[colorScheme];
 	const styleSheet = new CSSStyleSheet();
 	styleSheet.replaceSync(css);
 	document.adoptedStyleSheets.push(styleSheet);

@@ -80,14 +80,11 @@ export default function App() {
 	}, []);
 
 	React.useEffect(() => {
-		return overrideAccentColors({
-			colorScheme,
-			selector: "[data-app-root], [data-app-root-portal]",
-		});
+		return overrideAccentColors(colorScheme);
 	}, [colorScheme]);
 	return (
 		<QueryClientProvider client={queryClient}>
-			<Root colorScheme={colorScheme} density="dense" data-app-root>
+			<Root colorScheme={colorScheme} density="dense">
 				<Outlet />
 			</Root>
 		</QueryClientProvider>

@@ -234,8 +234,8 @@
 	}
 }
 
-.🥝NavigationRailSpacer {
+.🥝NavigationRailFooter {
 	@layer base {
-		flex: 999;
+		margin-block-start: auto;
 	}
 }

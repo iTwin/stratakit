@@ -157,14 +157,14 @@ function PlatformBar() {
 					</NavigationRail.ListItem>
 				</NavigationRail.List>
 
-				<NavigationRail.Spacer />
-				<Divider />
-
-				<NavigationRail.List>
-					<NavigationRail.ListItem>
-						<NavigationRail.Button icon={placeholderIcon} label="Item #4" />
-					</NavigationRail.ListItem>
-				</NavigationRail.List>
+				<NavigationRail.Footer>
+					<Divider />
+					<NavigationRail.List>
+						<NavigationRail.ListItem>
+							<NavigationRail.Button icon={placeholderIcon} label="Item #4" />
+						</NavigationRail.ListItem>
+					</NavigationRail.List>
+				</NavigationRail.Footer>
 			</NavigationRail.Content>
 		</NavigationRail.Root>
 	);

@@ -84,19 +84,19 @@ interface NavigationRailProps extends BaseProps<"nav"> {}
  *       </NavigationRail.ListItem>
  *     </NavigationRail.List>
  *
- *     <NavigationRail.Spacer />
- *
- *     <NavigationRail.List>
- *       <NavigationRail.ListItem>
- *         <NavigationRail.Button label="Help" icon={helpIcon} onClick={…} />
- *       </NavigationRail.ListItem>
- *       <NavigationRail.ListItem>
- *         <NavigationRail.Button label="Settings" icon={settingsIcon} onClick={…} />
- *       </NavigationRail.ListItem>
- *       <NavigationRail.ListItem>
- *         <NavigationRail.Button label="Profile" icon={userIcon} onClick={…} />
- *       </NavigationRail.ListItem>
- *     </NavigationRail.List>
+ *     <NavigationRail.Footer>
+ *       <NavigationRail.List>
+ *         <NavigationRail.ListItem>
+ *           <NavigationRail.Button label="Help" icon={helpIcon} onClick={…} />
+ *         </NavigationRail.ListItem>
+ *         <NavigationRail.ListItem>
+ *           <NavigationRail.Button label="Settings" icon={settingsIcon} onClick={…} />
+ *         </NavigationRail.ListItem>
+ *         <NavigationRail.ListItem>
+ *           <NavigationRail.Button label="Profile" icon={userIcon} onClick={…} />
+ *         </NavigationRail.ListItem>
+ *       </NavigationRail.List>
+ *    </NavigationRail.Footer>
  *   </NavigationRail.Content>
  * </NavigationRail.Root>
  * ```
@@ -203,6 +203,21 @@ DEV: NavigationRailToggleButton.displayName = "NavigationRail.ToggleButton";
 
 interface NavigationRailContentProps extends BaseProps {}
 
+/**
+ * `NavigationRail.Content` is a wraps the main content of the `NavigationRail`, including
+ * the primary navigation list and an optional footer.
+ *
+ * Example:
+ * ```tsx
+ * <NavigationRail.Content>
+ *   <NavigationRail.List>…</NavigationRail.List>
+ *
+ *   <NavigationRail.Footer>
+ *     <NavigationRail.List>…</NavigationRail.List>
+ *   </NavigationRail.Footer>
+ * </NavigationRail.Content>
+ * ```
+ */
 const NavigationRailContent = forwardRef<"div", NavigationRailContentProps>(
 	(props, forwardedRef) => {
 		return (
@@ -250,9 +265,7 @@ interface NavigationRailListProps extends BaseProps<"div"> {}
  * </NavigationRail.List>
  * ```
  *
- * Multiple `NavigationRail.List` elements can be used together and be visually separated by a `NavigationRail.Spacer`.
- *
- * Groups of items within the same list can be visually separated using `<Divider presentational />`.
+ * Multiple `NavigationRail.List` elements can be used together and be separated by a `Divider`.
  */
 const NavigationRailList = forwardRef<"div", NavigationRailListProps>(
 	(props, forwardedRef) => {
@@ -428,34 +441,36 @@ DEV: NavigationRailButton.displayName = "NavigationRail.Button";
 
 // ----------------------------------------------------------------------------
 
-interface NavigationRailSpacerProps extends Omit<BaseProps, "children"> {}
+interface NavigationRailFooterProps extends BaseProps<"footer"> {}
 
 /**
- * This is a presentational component that expands to fill the available space. Typically used for
- * separating the main navigation list from the secondary actions list near the bottom.
+ * `NavigationRail.Footer` is typically used for grouping secondary actions list near the bottom
+ * of the `NavigationRail`, away from the main navigation items.
  *
  * Example:
  * ```tsx
- * <NavigationRail.List>…</NavigationRail.List>
- * <NavigationRail.Spacer />
- * <NavigationRail.List>…</NavigationRail.List>
- * ```
+ * <NavigationRail.Content>
+ *   <NavigationRail.List>…</NavigationRail.List>
  *
- * **Important**: This element is hidden from the accessibility tree and should not have any meaningful content.
+ *   <NavigationRail.Footer>
+ *     <NavigationRail.List>…</NavigationRail.List>
+ *   </NavigationRail.Footer>
+ * </NavigationRail.Content>
+ * ```
  */
-const NavigationRailSpacer = forwardRef<"div", NavigationRailSpacerProps>(
+const NavigationRailFooter = forwardRef<"footer", NavigationRailFooterProps>(
 	(props, forwardedRef) => {
 		return (
-			<Role.div
-				role="presentation"
+			<Role
+				render={<footer />}
 				{...props}
-				className={cx("🥝NavigationRailSpacer", props.className)}
-				ref={forwardedRef}
+				className={cx("🥝NavigationRailFooter", props.className)}
+				ref={forwardedRef as React.Ref<HTMLDivElement>}
 			/>
 		);
 	},
 );
-DEV: NavigationRailSpacer.displayName = "NavigationRail.Spacer";
+DEV: NavigationRailFooter.displayName = "NavigationRail.Footer";
 
 // ----------------------------------------------------------------------------
 
@@ -468,5 +483,5 @@ export {
 	NavigationRailListItem as ListItem,
 	NavigationRailButton as Button,
 	NavigationRailAnchor as Anchor,
-	NavigationRailSpacer as Spacer,
+	NavigationRailFooter as Footer,
 };

@@ -80,8 +80,8 @@ export default function App() {
 	}, []);
 
 	React.useEffect(() => {
-		return loadBlueStyles();
-	}, []);
+		return loadBlueStyles({ colorScheme });
+	}, [colorScheme]);
 	return (
 		<QueryClientProvider client={queryClient}>
 			<Root colorScheme={colorScheme} density="dense">

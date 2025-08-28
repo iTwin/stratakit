@@ -2,9 +2,9 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-const styles = `:is(
+const light = `:is(
 		html:where([data-color-scheme="light"]),
-		.🥝Root:where([data-_sk-theme="light"])
+		.🥝Root
 	) {
 	--stratakit-color-bg-accent-base: oklch(53.32% 0.139 246.77);
 	--stratakit-color-bg-accent-muted: oklch(90.88% 0.04 234.23);
@@ -25,10 +25,10 @@ const styles = `:is(
 	--stratakit-color-text-accent-strong: oklch(48.43% 0.124 245.93);
 	--stratakit-color-static-accent: oklch(53.32% 0.139 246.77);
 	--stratakit-shadow-table-strong: 0px -1px 0px 0px oklch(53.32% 0.139 246.77);
-}
-:is(
+}`;
+const dark = `:is(
 		html:where([data-color-scheme="dark"]),
-		.🥝Root:where([data-_sk-theme="dark"])
+		.🥝Root
 	) {
 	--stratakit-color-bg-accent-base: oklch(53.32% 0.139 246.77);
 	--stratakit-color-bg-accent-muted: oklch(38.03% 0.093 244.58);
@@ -50,4 +50,4 @@ const styles = `:is(
 	--stratakit-color-static-accent: oklch(53.32% 0.139 246.77);
 	--stratakit-shadow-table-strong: 0px -1px 0px 0px oklch(69.98% 0.118 238.51);
 }`;
-export default styles;
+export default { light, dark };

@@ -198,8 +198,7 @@ function SynchronizeColorScheme({
 // ----------------------------------------------------------------------------
 
 interface PortalContainerProps
-	extends Pick<RootProps, "colorScheme" | "density">,
-		Omit<BaseProps, "children"> {}
+	extends Pick<RootProps, "colorScheme" | "density" | "render"> {}
 
 /** A separate root rendered at the end of root node, to be used as the container for all portals. */
 const PortalContainer = forwardRef<"div", PortalContainerProps>(
@@ -212,11 +211,11 @@ const PortalContainer = forwardRef<"div", PortalContainerProps>(
 
 		return ReactDOM.createPortal(
 			<Role
-				{...props}
-				className={cx("🥝Root", props.className)}
+				render={props.render}
+				className="🥝Root"
 				data-_sk-theme={props.colorScheme}
 				data-_sk-density={props.density}
-				style={{ display: "contents", ...props.style }}
+				style={{ display: "contents" }}
 				ref={forwardedRef}
 			/>,
 			destination,

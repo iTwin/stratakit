@@ -4,7 +4,6 @@
  *--------------------------------------------------------------------------------------------*/
 const styles = `:is(
 		html:where([data-color-scheme="light"]),
-		:host([data-color-scheme="light"]),
 		.🥝Root:where([data-_sk-theme="light"])
 	) {
 	--stratakit-color-bg-accent-base: oklch(53.32% 0.139 246.77);
@@ -29,7 +28,6 @@ const styles = `:is(
 }
 :is(
 		html:where([data-color-scheme="dark"]),
-		:host([data-color-scheme="dark"]),
 		.🥝Root:where([data-_sk-theme="dark"])
 	) {
 	--stratakit-color-bg-accent-base: oklch(53.32% 0.139 246.77);

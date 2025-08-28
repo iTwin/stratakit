@@ -14,15 +14,15 @@ let loaded = false;
 
 function overrideAccentColors({
 	colorScheme,
-	selectors,
+	selector,
 }: {
 	colorScheme: ColorScheme;
-	selectors: string[];
+	selector: string;
 }) {
 	if (loaded) return () => {};
 
 	const getCss = cssOverrides[colorScheme];
-	const css = getCss(selectors);
+	const css = getCss(selector);
 	const styleSheet = new CSSStyleSheet();
 	styleSheet.replaceSync(css);
 	document.adoptedStyleSheets.push(styleSheet);

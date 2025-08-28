@@ -82,7 +82,7 @@ export default function App() {
 	React.useEffect(() => {
 		return overrideAccentColors({
 			colorScheme,
-			selectors: ["[data-app-root]", "[data-app-root-portal]"],
+			selector: "[data-app-root], [data-app-root-portal]",
 		});
 	}, [colorScheme]);
 	return (

@@ -2,9 +2,9 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-const light = (selectors: string[]) => `:is(
+const light = (selector: string) => `:is(
 		html:where([data-color-scheme="light"]),
-		${selectors.join(", ")}
+		${selector}
 	) {
 	--stratakit-color-bg-accent-base: oklch(53.32% 0.139 246.77);
 	--stratakit-color-bg-accent-muted: oklch(90.88% 0.04 234.23);
@@ -26,9 +26,9 @@ const light = (selectors: string[]) => `:is(
 	--stratakit-color-static-accent: oklch(53.32% 0.139 246.77);
 	--stratakit-shadow-table-strong: 0px -1px 0px 0px oklch(53.32% 0.139 246.77);
 }`;
-const dark = (selectors: string[]) => `:is(
+const dark = (selector: string) => `:is(
 		html:where([data-color-scheme="dark"]),
-		${selectors.join(", ")}
+		${selector}
 	) {
 	--stratakit-color-bg-accent-base: oklch(53.32% 0.139 246.77);
 	--stratakit-color-bg-accent-muted: oklch(38.03% 0.093 244.58);

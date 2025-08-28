@@ -12,7 +12,7 @@ import {
 	ScrollRestoration,
 	useMatches,
 } from "react-router";
-import { PortalContainer, Root } from "@stratakit/foundations";
+import { Root } from "@stratakit/foundations";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { overrideAccentColors } from "./~overrideAccentColors.ts";
 import { ColorSchemeProvider, useColorScheme } from "./~utils.tsx";
@@ -89,7 +89,6 @@ export default function App() {
 		<QueryClientProvider client={queryClient}>
 			<Root colorScheme={colorScheme} density="dense" data-app-root>
 				<Outlet />
-				<PortalContainer data-app-root-portal />
 			</Root>
 		</QueryClientProvider>
 	);

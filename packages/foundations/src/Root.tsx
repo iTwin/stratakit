@@ -9,7 +9,7 @@ import { PortalContext } from "@ariakit/react/portal";
 import { Role } from "@ariakit/react/role";
 import cx from "classnames";
 import componentsCss from "./~components.css.js"; // TODO: remove this implicit dependency on bricks and structures
-import { useLayoutEffect, useMergedRefs, useSafeContext } from "./~hooks.js";
+import { useLayoutEffect, useMergedRefs } from "./~hooks.js";
 import foundationsCss from "./~styles.css.js";
 import {
 	forwardRef,
@@ -32,16 +32,6 @@ const css = foundationsCss + componentsCss;
 
 /** This helps pinpoint the location where this module is imported from. */
 const stack = new Error()?.stack?.split("Error")?.at(-1)?.trim() || "";
-
-// ----------------------------------------------------------------------------
-
-const RootContext = React.createContext<
-	| (Pick<RootProps, "colorScheme" | "density"> & {
-			setHasCustomPortalContainer: (hasCustom: boolean) => void;
-			setPortalContainer: (container: HTMLElement | null) => void;
-	  })
-	| undefined
->(undefined);
 
 // ----------------------------------------------------------------------------
 
@@ -92,7 +82,7 @@ interface RootProps extends BaseProps {
  * </Root>
  * ```
  */
-const Root = forwardRef<"div", RootProps>((props, forwardedRef) => {
+export const Root = forwardRef<"div", RootProps>((props, forwardedRef) => {
 	throwIfNotSingleton();
 
 	const {
@@ -102,45 +92,31 @@ const Root = forwardRef<"div", RootProps>((props, forwardedRef) => {
 		...rest
 	} = props;
 
-	const [hasCustomPortalContainer, setHasCustomPortalContainer] =
-		React.useState(false);
 	const [portalContainer, setPortalContainer] =
 		React.useState<HTMLElement | null>(null);
 
 	return (
-		<RootContext.Provider
-			value={React.useMemo(
-				() => ({
-					colorScheme: props.colorScheme,
-					density: props.density,
-					setHasCustomPortalContainer,
-					setPortalContainer,
-				}),
-				[props.colorScheme, props.density],
-			)}
-		>
-			<RootInternal {...rest} ref={forwardedRef}>
-				<Styles />
-				<Fonts />
-				<InlineSpriteSheet />
+		<RootInternal {...rest} ref={forwardedRef}>
+			<Styles />
+			<Fonts />
+			<InlineSpriteSheet />
 
-				{synchronizeColorScheme ? (
-					<SynchronizeColorScheme colorScheme={props.colorScheme} />
-				) : null}
+			{synchronizeColorScheme ? (
+				<SynchronizeColorScheme colorScheme={props.colorScheme} />
+			) : null}
 
-				{hasCustomPortalContainer ? null : (
-					<CustomPortalContainerContext.Provider value={false}>
-						<PortalContainer />
-					</CustomPortalContainerContext.Provider>
-				)}
+			<PortalContainer
+				colorScheme={props.colorScheme}
+				density={props.density}
+				ref={setPortalContainer}
+			/>
 
-				<PortalContext.Provider value={portalContainer}>
-					<HtmlSanitizerContext.Provider value={unstable_htmlSanitizer}>
-						{children}
-					</HtmlSanitizerContext.Provider>
-				</PortalContext.Provider>
-			</RootInternal>
-		</RootContext.Provider>
+			<PortalContext.Provider value={portalContainer}>
+				<HtmlSanitizerContext.Provider value={unstable_htmlSanitizer}>
+					{children}
+				</HtmlSanitizerContext.Provider>
+			</PortalContext.Provider>
+		</RootInternal>
 	);
 });
 DEV: Root.displayName = "Root";
@@ -215,48 +191,28 @@ function SynchronizeColorScheme({
 
 // ----------------------------------------------------------------------------
 
-const CustomPortalContainerContext = React.createContext<boolean>(true);
-
-// ----------------------------------------------------------------------------
-
-interface PortalContainerProps extends BaseProps {}
-
 /** A separate root rendered at the end of root node, to be used as the container for all portals. */
-const PortalContainer = forwardRef<"div", PortalContainerProps>(
-	(props, forwardedRef) => {
-		const isCustom = React.useContext(CustomPortalContainerContext);
-		const rootContext = useSafeContext(RootContext);
+const PortalContainer = forwardRef<
+	"div",
+	Pick<RootProps, "colorScheme" | "density">
+>((props, forwardedRef) => {
+	const rootNode = useRootNode();
+	if (!rootNode) return null;
 
-		React.useEffect(() => {
-			if (!isCustom) return;
-			rootContext.setHasCustomPortalContainer(true);
-			return () => {
-				rootContext.setHasCustomPortalContainer(false);
-			};
-		}, [isCustom, rootContext.setHasCustomPortalContainer]);
+	const destination = isDocument(rootNode) ? rootNode.body : rootNode;
+	if (!destination) return null;
 
-		const ref = useMergedRefs(forwardedRef, rootContext.setPortalContainer);
-
-		const rootNode = useRootNode();
-		if (!rootNode) return null;
-
-		const destination = isDocument(rootNode) ? rootNode.body : rootNode;
-		if (!destination) return null;
-
-		return ReactDOM.createPortal(
-			<div
-				{...props}
-				data-_sk-theme={rootContext.colorScheme}
-				data-_sk-density={rootContext.density}
-				className={cx("🥝Root", props.className)}
-				style={{ display: "contents", ...props.style }}
-				ref={ref}
-			/>,
-			destination,
-		);
-	},
-);
-DEV: PortalContainer.displayName = "PortalContainer";
+	return ReactDOM.createPortal(
+		<div
+			className="🥝Root"
+			data-_sk-theme={props.colorScheme}
+			data-_sk-density={props.density}
+			style={{ display: "contents" }}
+			ref={forwardedRef}
+		/>,
+		destination,
+	);
+});
 
 // ----------------------------------------------------------------------------
 
@@ -402,7 +358,3 @@ function isShadow(node?: Node): node is ShadowRoot {
 			!!(node as ShadowRoot)?.host)
 	);
 }
-
-// ----------------------------------------------------------------------------
-
-export { Root, PortalContainer };

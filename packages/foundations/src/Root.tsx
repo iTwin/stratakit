@@ -94,6 +94,7 @@ export const Root = forwardRef<"div", RootProps>((props, forwardedRef) => {
 		children,
 		synchronizeColorScheme = false,
 		unstable_htmlSanitizer = identity,
+		portalContainer: portalContainerProp,
 		...rest
 	} = props;
 
@@ -114,7 +115,7 @@ export const Root = forwardRef<"div", RootProps>((props, forwardedRef) => {
 				colorScheme={props.colorScheme}
 				density={props.density}
 				ref={setPortalContainer}
-				render={props.portalContainer}
+				render={portalContainerProp}
 			/>
 
 			<PortalContext.Provider value={portalContainer}>

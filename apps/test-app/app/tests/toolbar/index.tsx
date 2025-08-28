@@ -24,7 +24,7 @@ export default definePage(
 							icon={`${placeholderIcon}#icon-large`}
 							label="Click me"
 							variant="ghost"
-							isActive={active === "1"}
+							active={active === "1"}
 							onClick={() => setActive("1")}
 						/>
 					}
@@ -35,7 +35,7 @@ export default definePage(
 							icon={`${placeholderIcon}#icon-large`}
 							label="Click me"
 							variant="ghost"
-							isActive={active === "2"}
+							active={active === "2"}
 							onClick={() => setActive("2")}
 						/>
 					}
@@ -46,7 +46,7 @@ export default definePage(
 							icon={`${placeholderIcon}#icon-large`}
 							label="Click me"
 							variant="ghost"
-							isActive={active === "3"}
+							active={active === "3"}
 							onClick={() => setActive("3")}
 						/>
 					}

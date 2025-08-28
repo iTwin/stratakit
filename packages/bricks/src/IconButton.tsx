@@ -66,6 +66,10 @@ interface IconButtonProps
 	 *
 	 * @default undefined
 	 */
+	active?: boolean;
+	/**
+	 * @deprecated Use `active` instead.
+	 */
 	isActive?: boolean;
 }
 
@@ -89,21 +93,29 @@ interface IconButtonProps
  * />
  * ```
  *
- * The `isActive` prop can be used to turn this button into a toggle button.
+ * The `active` prop can be used to turn this button into a toggle button.
  * ```tsx
- * const [isActive, setIsActive] = React.useState(false);
+ * const [active, setActive] = React.useState(false);
  *
  * <IconButton
  *   label={…}
  *   icon={…}
- *   isActive={isActive}
- *   onClick={() => setIsActive(!isActive)}
+ *   active={active}
+ *   onClick={() => setActive(!active)}
  * />
  * ```
  */
 const IconButton = forwardRef<"button", IconButtonProps>(
 	(props, forwardedRef) => {
-		const { label, icon, isActive, labelVariant, dot, ...rest } = props;
+		const {
+			label,
+			icon,
+			isActive,
+			active = isActive,
+			labelVariant,
+			dot,
+			...rest
+		} = props;
 
 		const baseId = React.useId();
 		const labelId = `${baseId}-label`;
@@ -115,7 +127,7 @@ const IconButton = forwardRef<"button", IconButtonProps>(
 			<IconButtonPresentation
 				render={
 					<Button
-						aria-pressed={isActive}
+						aria-pressed={active}
 						aria-labelledby={labelId}
 						aria-describedby={dot ? dotId : undefined}
 						{...rest}

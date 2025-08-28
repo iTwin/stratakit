@@ -67,6 +67,11 @@ interface RootProps extends BaseProps {
 	 * ```
 	 */
 	unstable_htmlSanitizer?: (html: string) => string;
+
+	/**
+	 * Allows to customize the root portal container element.
+	 */
+	portalContainer?: React.ReactElement;
 }
 
 /**
@@ -89,6 +94,7 @@ export const Root = forwardRef<"div", RootProps>((props, forwardedRef) => {
 		children,
 		synchronizeColorScheme = false,
 		unstable_htmlSanitizer = identity,
+		portalContainer: portalContainerProp,
 		...rest
 	} = props;
 
@@ -109,6 +115,7 @@ export const Root = forwardRef<"div", RootProps>((props, forwardedRef) => {
 				colorScheme={props.colorScheme}
 				density={props.density}
 				ref={setPortalContainer}
+				render={portalContainerProp}
 			/>
 
 			<PortalContext.Provider value={portalContainer}>
@@ -191,28 +198,31 @@ function SynchronizeColorScheme({
 
 // ----------------------------------------------------------------------------
 
+interface PortalContainerProps
+	extends Pick<RootProps, "colorScheme" | "density" | "render"> {}
+
 /** A separate root rendered at the end of root node, to be used as the container for all portals. */
-const PortalContainer = forwardRef<
-	"div",
-	Pick<RootProps, "colorScheme" | "density">
->((props, forwardedRef) => {
-	const rootNode = useRootNode();
-	if (!rootNode) return null;
+const PortalContainer = forwardRef<"div", PortalContainerProps>(
+	(props, forwardedRef) => {
+		const rootNode = useRootNode();
+		if (!rootNode) return null;
 
-	const destination = isDocument(rootNode) ? rootNode.body : rootNode;
-	if (!destination) return null;
+		const destination = isDocument(rootNode) ? rootNode.body : rootNode;
+		if (!destination) return null;
 
-	return ReactDOM.createPortal(
-		<div
-			className="🥝Root"
-			data-_sk-theme={props.colorScheme}
-			data-_sk-density={props.density}
-			style={{ display: "contents" }}
-			ref={forwardedRef}
-		/>,
-		destination,
-	);
-});
+		return ReactDOM.createPortal(
+			<Role
+				render={props.render}
+				className="🥝Root"
+				data-_sk-theme={props.colorScheme}
+				data-_sk-density={props.density}
+				style={{ display: "contents" }}
+				ref={forwardedRef}
+			/>,
+			destination,
+		);
+	},
+);
 
 // ----------------------------------------------------------------------------
 

@@ -149,6 +149,7 @@ const RootInternal = forwardRef<"div", RootInternalProps>(
 				className={cx("🥝Root", props.className)}
 				data-_sk-theme={colorScheme}
 				data-_sk-density={density}
+				data-stratakit-root
 				ref={useMergedRefs(forwardedRef, findRootNodeFromRef)}
 			>
 				<RootNodeContext.Provider value={rootNode}>
@@ -207,6 +208,7 @@ const PortalContainer = forwardRef<
 			className="🥝Root"
 			data-_sk-theme={props.colorScheme}
 			data-_sk-density={props.density}
+			data-stratakit-root
 			style={{ display: "contents" }}
 			ref={forwardedRef}
 		/>,

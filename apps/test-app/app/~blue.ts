@@ -12,10 +12,17 @@ type ColorScheme = keyof typeof cssOverrides;
 
 let loaded = false;
 
-function loadBlueStyles({ colorScheme }: { colorScheme: ColorScheme }) {
+function loadBlueStyles({
+	colorScheme,
+	selectors,
+}: {
+	colorScheme: ColorScheme;
+	selectors: string[];
+}) {
 	if (loaded) return () => {};
 
-	const css = cssOverrides[colorScheme];
+	const getCss = cssOverrides[colorScheme];
+	const css = getCss(selectors);
 	const styleSheet = new CSSStyleSheet();
 	styleSheet.replaceSync(css);
 	document.adoptedStyleSheets.push(styleSheet);

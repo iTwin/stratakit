@@ -12,7 +12,7 @@ import {
 	ScrollRestoration,
 	useMatches,
 } from "react-router";
-import { Root } from "@stratakit/foundations";
+import { PortalContainer, Root } from "@stratakit/foundations";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { loadBlueStyles } from "./~blue.ts";
 import { ColorSchemeProvider, useColorScheme } from "./~utils.tsx";
@@ -80,12 +80,16 @@ export default function App() {
 	}, []);
 
 	React.useEffect(() => {
-		return loadBlueStyles({ colorScheme, selectors: ["[data-app-root]"] });
+		return loadBlueStyles({
+			colorScheme,
+			selectors: ["[data-app-root]", "[data-app-root-portal]"],
+		});
 	}, [colorScheme]);
 	return (
 		<QueryClientProvider client={queryClient}>
 			<Root colorScheme={colorScheme} density="dense" data-app-root>
 				<Outlet />
+				<PortalContainer data-app-root-portal />
 			</Root>
 		</QueryClientProvider>
 	);

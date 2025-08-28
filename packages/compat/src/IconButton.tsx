@@ -79,7 +79,7 @@ export const IconButton = React.forwardRef((props, forwardedRef) => {
 			}
 			label={label as string}
 			variant={variant}
-			isActive={isActive}
+			active={isActive}
 			accessibleWhenDisabled={accessibleWhenDisabled}
 			disabled={props.disabled || htmlDisabled}
 			ref={forwardedRef}

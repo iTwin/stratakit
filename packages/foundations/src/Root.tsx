@@ -199,7 +199,7 @@ function SynchronizeColorScheme({
 
 interface PortalContainerProps
 	extends Pick<RootProps, "colorScheme" | "density">,
-		BaseProps {}
+		Omit<BaseProps, "children"> {}
 
 /** A separate root rendered at the end of root node, to be used as the container for all portals. */
 const PortalContainer = forwardRef<"div", PortalContainerProps>(

@@ -14,7 +14,7 @@ import {
 } from "react-router";
 import { PortalContainer, Root } from "@stratakit/foundations";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { loadBlueStyles } from "./~blue.ts";
+import { overrideAccentColors } from "./~overrideAccentColors.ts";
 import { ColorSchemeProvider, useColorScheme } from "./~utils.tsx";
 
 import type { LinksFunction } from "react-router";
@@ -80,7 +80,7 @@ export default function App() {
 	}, []);
 
 	React.useEffect(() => {
-		return loadBlueStyles({
+		return overrideAccentColors({
 			colorScheme,
 			selectors: ["[data-app-root]", "[data-app-root-portal]"],
 		});

@@ -2,7 +2,7 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-import cssOverrides from "./~blue.css.js";
+import cssOverrides from "./~overrideAccentColors.css.js";
 
 // ----------------------------------------------------------------------------
 
@@ -12,7 +12,7 @@ type ColorScheme = keyof typeof cssOverrides;
 
 let loaded = false;
 
-function loadBlueStyles({
+function overrideAccentColors({
 	colorScheme,
 	selectors,
 }: {
@@ -38,4 +38,4 @@ function loadBlueStyles({
 
 // ----------------------------------------------------------------------------
 
-export { loadBlueStyles };
+export { overrideAccentColors };

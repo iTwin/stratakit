@@ -7,6 +7,11 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { Button } from "@stratakit/bricks";
 import { Root } from "@stratakit/foundations";
+import {
+	Content as RootContent,
+	Portal as RootPortal,
+	Provider as RootProvider,
+} from "@stratakit/foundations/root";
 import { DropdownMenu } from "@stratakit/structures";
 import { definePage, useColorScheme } from "~/~utils.tsx";
 
@@ -41,7 +46,10 @@ export default definePage(
 			</Root>
 		);
 	},
-	{ _conditionalRendering: ConditionalRenderingTest },
+	{
+		_conditionalRendering: ConditionalRenderingTest,
+		composition: CompositionTest,
+	},
 );
 
 // ----------------------------------------------------------------------------
@@ -160,4 +168,67 @@ function usePopout() {
 	}, []);
 
 	return React.useMemo(() => ({ open, popout }), [open, popout]);
+}
+
+// ----------------------------------------------------------------------------
+
+function CompositionTest() {
+	const colorScheme = useColorScheme();
+
+	const [host, setHost] = React.useState<HTMLElement | null>(null);
+	const shadow = useShadow(React.useCallback(() => host, [host]));
+	return (
+		<div ref={setHost} style={{ display: "flex", gap: 4 }}>
+			<RootProvider
+				colorScheme={colorScheme}
+				density="dense"
+				synchronizeColorScheme
+			>
+				<RootPortal
+					style={
+						{
+							"--test-app-menu-border": "2px solid yellow",
+						} as React.CSSProperties
+					}
+				/>
+				<RootContent style={{ border: "2px solid red" }}>
+					<DropdownMenu.Provider>
+						<DropdownMenu.Button>Menu (light)</DropdownMenu.Button>
+
+						<DropdownMenu.Content
+							style={{ border: "var(--test-app-menu-border)" }}
+						>
+							<DropdownMenu.Item label="Item 1" />
+							<DropdownMenu.Item label="Item 2" />
+						</DropdownMenu.Content>
+					</DropdownMenu.Provider>
+				</RootContent>
+			</RootProvider>
+			{shadow &&
+				ReactDOM.createPortal(
+					<RootProvider colorScheme={colorScheme} density="dense">
+						<RootContent style={{ border: "2px solid green" }}>
+							<DropdownMenu.Provider>
+								<DropdownMenu.Button>Menu (shadow)</DropdownMenu.Button>
+
+								<DropdownMenu.Content
+									style={{ border: "var(--test-app-menu-border)" }}
+								>
+									<DropdownMenu.Item label="Item 1" />
+									<DropdownMenu.Item label="Item 2" />
+								</DropdownMenu.Content>
+							</DropdownMenu.Provider>
+						</RootContent>
+						<RootPortal
+							style={
+								{
+									"--test-app-menu-border": "2px solid yellow",
+								} as React.CSSProperties
+							}
+						/>
+					</RootProvider>,
+					shadow,
+				)}
+		</div>
+	);
 }

@@ -9,7 +9,7 @@ import { PortalContext } from "@ariakit/react/portal";
 import { Role } from "@ariakit/react/role";
 import cx from "classnames";
 import componentsCss from "./~components.css.js"; // TODO: remove this implicit dependency on bricks and structures
-import { useLayoutEffect, useMergedRefs } from "./~hooks.js";
+import { useLayoutEffect, useMergedRefs, useSafeContext } from "./~hooks.js";
 import foundationsCss from "./~styles.css.js";
 import {
 	forwardRef,
@@ -35,7 +35,18 @@ const stack = new Error()?.stack?.split("Error")?.at(-1)?.trim() || "";
 
 // ----------------------------------------------------------------------------
 
-interface RootProps extends BaseProps {
+const RootProviderContext = React.createContext<
+	| (RootProviderProps & {
+			portalContainer: HTMLElement | null;
+			setPortalContainer: (container: HTMLElement | null) => void;
+			setRootNode: (node: Document | ShadowRoot | null) => void;
+	  })
+	| undefined
+>(undefined);
+
+// ----------------------------------------------------------------------------
+
+interface RootProviderProps {
 	/**
 	 * The color scheme to use for all components under the Root.
 	 */
@@ -69,6 +80,93 @@ interface RootProps extends BaseProps {
 	unstable_htmlSanitizer?: (html: string) => string;
 }
 
+function RootProvider(props: React.PropsWithChildren<RootProviderProps>) {
+	const {
+		colorScheme,
+		synchronizeColorScheme = false,
+		density,
+		unstable_htmlSanitizer = identity,
+	} = props;
+
+	const [portalContainer, setPortalContainer] =
+		React.useState<HTMLElement | null>(null);
+	const [rootNode, setRootNode] = React.useState<Document | ShadowRoot | null>(
+		null,
+	);
+	return (
+		<RootProviderContext.Provider
+			value={React.useMemo(
+				() => ({
+					colorScheme,
+					synchronizeColorScheme,
+					density,
+					unstable_htmlSanitizer,
+					portalContainer,
+					setPortalContainer,
+					setRootNode,
+				}),
+				[
+					colorScheme,
+					synchronizeColorScheme,
+					density,
+					unstable_htmlSanitizer,
+					portalContainer,
+				],
+			)}
+		>
+			<RootNodeContext.Provider value={rootNode}>
+				{props.children}
+			</RootNodeContext.Provider>
+		</RootProviderContext.Provider>
+	);
+}
+DEV: RootProvider.displayName = "Root.Provider";
+
+// ----------------------------------------------------------------------------
+
+const RootContent = forwardRef<"div", BaseProps>((props, forwardedRef) => {
+	throwIfNotSingleton();
+
+	const {
+		colorScheme,
+		synchronizeColorScheme,
+		portalContainer,
+		unstable_htmlSanitizer,
+	} = useSafeContext(RootProviderContext);
+	const { children, ...rest } = props;
+
+	return (
+		<RootInternal {...rest} ref={forwardedRef}>
+			<Styles />
+			<Fonts />
+			<InlineSpriteSheet />
+
+			{synchronizeColorScheme ? (
+				<SynchronizeColorScheme colorScheme={colorScheme} />
+			) : null}
+
+			<PortalContext.Provider value={portalContainer}>
+				<HtmlSanitizerContext.Provider value={unstable_htmlSanitizer}>
+					{children}
+				</HtmlSanitizerContext.Provider>
+			</PortalContext.Provider>
+		</RootInternal>
+	);
+});
+DEV: RootContent.displayName = "Root";
+
+// ----------------------------------------------------------------------------
+
+interface RootProps
+	extends BaseProps,
+		Pick<
+			RootProviderProps,
+			| "colorScheme"
+			| "synchronizeColorScheme"
+			| "density"
+			| "unstable_htmlSanitizer"
+		> {}
+
 /**
  * Component to be used at the root of your application. It ensures that StrataKit styles and fonts are loaded
  * and automatically applied to the current page or the encompassing shadow-root.
@@ -82,66 +180,54 @@ interface RootProps extends BaseProps {
  * </Root>
  * ```
  */
-export const Root = forwardRef<"div", RootProps>((props, forwardedRef) => {
+const Root = forwardRef<"div", RootProps>((props, forwardedRef) => {
 	throwIfNotSingleton();
 
 	const {
 		children,
-		synchronizeColorScheme = false,
-		unstable_htmlSanitizer = identity,
+		colorScheme,
+		synchronizeColorScheme,
+		density,
+		unstable_htmlSanitizer,
 		...rest
 	} = props;
 
-	const [portalContainer, setPortalContainer] =
-		React.useState<HTMLElement | null>(null);
-
 	return (
-		<RootInternal {...rest} ref={forwardedRef}>
-			<Styles />
-			<Fonts />
-			<InlineSpriteSheet />
-
-			{synchronizeColorScheme ? (
-				<SynchronizeColorScheme colorScheme={props.colorScheme} />
-			) : null}
-
-			<PortalContainer
-				colorScheme={props.colorScheme}
-				density={props.density}
-				ref={setPortalContainer}
-			/>
-
-			<PortalContext.Provider value={portalContainer}>
-				<HtmlSanitizerContext.Provider value={unstable_htmlSanitizer}>
-					{children}
-				</HtmlSanitizerContext.Provider>
-			</PortalContext.Provider>
-		</RootInternal>
+		<RootProvider
+			colorScheme={colorScheme}
+			synchronizeColorScheme={synchronizeColorScheme}
+			density={density}
+			unstable_htmlSanitizer={unstable_htmlSanitizer}
+		>
+			<PortalContainer />
+			<RootContent {...rest} ref={forwardedRef}>
+				{children}
+			</RootContent>
+		</RootProvider>
 	);
 });
 DEV: Root.displayName = "Root";
 
 // ----------------------------------------------------------------------------
 
-interface RootInternalProps
-	extends BaseProps,
-		Pick<RootProps, "colorScheme" | "density"> {}
+interface RootInternalProps extends BaseProps {}
 
 const RootInternal = forwardRef<"div", RootInternalProps>(
 	(props, forwardedRef) => {
-		const { children, colorScheme, density, ...rest } = props;
+		const { colorScheme, density, setRootNode } =
+			useSafeContext(RootProviderContext);
+		const { children, ...rest } = props;
 
-		const [rootNode, setRootNode] = React.useState<
-			Document | ShadowRoot | null
-		>(null);
+		const findRootNodeFromRef = React.useCallback(
+			(element?: HTMLElement) => {
+				if (!element) return;
 
-		const findRootNodeFromRef = React.useCallback((element?: HTMLElement) => {
-			if (!element) return;
-
-			const rootNode = element.getRootNode();
-			if (!isDocument(rootNode) && !isShadow(rootNode)) return;
-			setRootNode(rootNode);
-		}, []);
+				const rootNode = element.getRootNode();
+				if (!isDocument(rootNode) && !isShadow(rootNode)) return;
+				setRootNode(rootNode);
+			},
+			[setRootNode],
+		);
 
 		return (
 			<Role
@@ -151,9 +237,7 @@ const RootInternal = forwardRef<"div", RootInternalProps>(
 				data-_sk-density={density}
 				ref={useMergedRefs(forwardedRef, findRootNodeFromRef)}
 			>
-				<RootNodeContext.Provider value={rootNode}>
-					{children}
-				</RootNodeContext.Provider>
+				{children}
 			</Role>
 		);
 	},
@@ -191,28 +275,37 @@ function SynchronizeColorScheme({
 
 // ----------------------------------------------------------------------------
 
+interface RootPortalProps extends Omit<BaseProps, "children"> {}
+
+const RootPortal = forwardRef<"div", RootPortalProps>((props, forwardedRef) => {
+	const { colorScheme, density, setPortalContainer } =
+		useSafeContext(RootProviderContext);
+
+	return (
+		<Role
+			{...props}
+			data-_sk-theme={colorScheme}
+			data-_sk-density={density}
+			className={cx("🥝Root", props.className)}
+			style={{ display: "contents", ...props.style }}
+			ref={useMergedRefs(forwardedRef, setPortalContainer)}
+		/>
+	);
+});
+DEV: RootPortal.displayName = "Root.Portal";
+
+// ----------------------------------------------------------------------------
+
 /** A separate root rendered at the end of root node, to be used as the container for all portals. */
-const PortalContainer = forwardRef<
-	"div",
-	Pick<RootProps, "colorScheme" | "density">
->((props, forwardedRef) => {
+function PortalContainer() {
 	const rootNode = useRootNode();
 	if (!rootNode) return null;
 
 	const destination = isDocument(rootNode) ? rootNode.body : rootNode;
 	if (!destination) return null;
 
-	return ReactDOM.createPortal(
-		<div
-			className="🥝Root"
-			data-_sk-theme={props.colorScheme}
-			data-_sk-density={props.density}
-			style={{ display: "contents" }}
-			ref={forwardedRef}
-		/>,
-		destination,
-	);
-});
+	return ReactDOM.createPortal(<RootPortal />, destination);
+}
 
 // ----------------------------------------------------------------------------
 
@@ -358,3 +451,12 @@ function isShadow(node?: Node): node is ShadowRoot {
 			!!(node as ShadowRoot)?.host)
 	);
 }
+
+// ----------------------------------------------------------------------------
+
+export default Root;
+export {
+	RootProvider as Provider,
+	RootContent as Content,
+	RootPortal as Portal,
+};

@@ -12,6 +12,12 @@
 			"development": "./dist/DEV/index.js",
 			"default": "./dist/index.js"
 		},
+		"./root": {
+			"@stratakit/source": "./src/Root.tsx",
+			"types": "./dist/Root.d.ts",
+			"development": "./dist/DEV/Root.js",
+			"default": "./dist/Root.js"
+		},
 		"./secret-internals": {
 			"@stratakit/source": "./src/secret-internals.ts",
 			"types": "./dist/secret-internals.d.ts",

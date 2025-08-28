@@ -67,6 +67,11 @@ interface RootProps extends BaseProps {
 	 * ```
 	 */
 	unstable_htmlSanitizer?: (html: string) => string;
+
+	/**
+	 * Allows to customize the root portal container element.
+	 */
+	portalContainer?: React.ReactElement;
 }
 
 /**
@@ -109,6 +114,7 @@ export const Root = forwardRef<"div", RootProps>((props, forwardedRef) => {
 				colorScheme={props.colorScheme}
 				density={props.density}
 				ref={setPortalContainer}
+				render={props.portalContainer}
 			/>
 
 			<PortalContext.Provider value={portalContainer}>
@@ -149,7 +155,6 @@ const RootInternal = forwardRef<"div", RootInternalProps>(
 				className={cx("🥝Root", props.className)}
 				data-_sk-theme={colorScheme}
 				data-_sk-density={density}
-				data-stratakit-root
 				ref={useMergedRefs(forwardedRef, findRootNodeFromRef)}
 			>
 				<RootNodeContext.Provider value={rootNode}>
@@ -192,29 +197,32 @@ function SynchronizeColorScheme({
 
 // ----------------------------------------------------------------------------
 
+interface PortalContainerProps
+	extends Pick<RootProps, "colorScheme" | "density">,
+		BaseProps {}
+
 /** A separate root rendered at the end of root node, to be used as the container for all portals. */
-const PortalContainer = forwardRef<
-	"div",
-	Pick<RootProps, "colorScheme" | "density">
->((props, forwardedRef) => {
-	const rootNode = useRootNode();
-	if (!rootNode) return null;
+const PortalContainer = forwardRef<"div", PortalContainerProps>(
+	(props, forwardedRef) => {
+		const rootNode = useRootNode();
+		if (!rootNode) return null;
 
-	const destination = isDocument(rootNode) ? rootNode.body : rootNode;
-	if (!destination) return null;
+		const destination = isDocument(rootNode) ? rootNode.body : rootNode;
+		if (!destination) return null;
 
-	return ReactDOM.createPortal(
-		<div
-			className="🥝Root"
-			data-_sk-theme={props.colorScheme}
-			data-_sk-density={props.density}
-			data-stratakit-root
-			style={{ display: "contents" }}
-			ref={forwardedRef}
-		/>,
-		destination,
-	);
-});
+		return ReactDOM.createPortal(
+			<Role
+				{...props}
+				className={cx("🥝Root", props.className)}
+				data-_sk-theme={props.colorScheme}
+				data-_sk-density={props.density}
+				style={{ display: "contents", ...props.style }}
+				ref={forwardedRef}
+			/>,
+			destination,
+		);
+	},
+);
 
 // ----------------------------------------------------------------------------
 

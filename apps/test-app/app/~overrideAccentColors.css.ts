@@ -4,7 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 const light = `:is(
 		html:where([data-color-scheme="light"]),
-		[data-stratakit-root]
+		[data-app-root]
 	) {
 	--stratakit-color-bg-accent-base: oklch(53.32% 0.139 246.77);
 	--stratakit-color-bg-accent-muted: oklch(90.88% 0.04 234.23);
@@ -28,7 +28,7 @@ const light = `:is(
 }`;
 const dark = `:is(
 		html:where([data-color-scheme="dark"]),
-		[data-stratakit-root]
+		[data-app-root]
 	) {
 	--stratakit-color-bg-accent-base: oklch(53.32% 0.139 246.77);
 	--stratakit-color-bg-accent-muted: oklch(38.03% 0.093 244.58);

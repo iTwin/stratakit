@@ -84,7 +84,12 @@ export default function App() {
 	}, [colorScheme]);
 	return (
 		<QueryClientProvider client={queryClient}>
-			<Root colorScheme={colorScheme} density="dense">
+			<Root
+				colorScheme={colorScheme}
+				density="dense"
+				data-app-root
+				portalContainer={<div data-app-root />}
+			>
 				<Outlet />
 			</Root>
 		</QueryClientProvider>

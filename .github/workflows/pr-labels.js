@@ -114,7 +114,7 @@ const LABEL_MAP = {
 	],
 	[LABELS.LIST]: [],
 	[LABELS.PAGINATION]: [],
-	[LABELS.PLATFORM_BAR]: [],
+	[LABELS.PLATFORM_BAR]: ["packages/structures/src/NavigationRail"],
 	[LABELS.POPOVER]: [],
 	[LABELS.PROGRESS_BAR]: [
 		"packages/bricks/src/Progress",

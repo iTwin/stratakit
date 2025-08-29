@@ -50,7 +50,12 @@ test.describe("@a11y", () => {
 		await page.goto("/tests/navigation-rail");
 
 		const axe = new AxeBuilder({ page });
-		const accessibilityScan = await axe.analyze();
+		let accessibilityScan = await axe.analyze();
+		expect(accessibilityScan.violations).toEqual([]);
+
+		const toggleButton = page.getByRole("button", { name: "Expand" });
+		await toggleButton.click();
+		accessibilityScan = await axe.analyze();
 		expect(accessibilityScan.violations).toEqual([]);
 	});
 });

@@ -4,7 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 
 import * as React from "react";
-import { Divider } from "@stratakit/bricks";
+import { Avatar, Divider } from "@stratakit/bricks";
 import { Icon } from "@stratakit/foundations";
 import { unstable_NavigationRail as NavigationRail } from "@stratakit/structures";
 import { definePage } from "~/~utils.tsx";
@@ -15,6 +15,7 @@ import notificationsIcon from "@stratakit/icons/notifications.svg";
 import placeholderIcon from "@stratakit/icons/placeholder.svg";
 import pluginsIcon from "@stratakit/icons/plugins.svg";
 import settingsIcon from "@stratakit/icons/settings.svg";
+import userIcon from "@stratakit/icons/user.svg";
 
 export const handle = { title: "NavigationRail" };
 
@@ -102,6 +103,12 @@ export default definePage(
 								<NavigationRail.Button
 									icon={`${settingsIcon}#icon-large`}
 									label="Settings"
+								/>
+							</NavigationRail.ListItem>
+							<NavigationRail.ListItem>
+								<NavigationRail.Button
+									icon={<Avatar image={<Icon href={userIcon} />} />}
+									label="Account"
 								/>
 							</NavigationRail.ListItem>
 						</NavigationRail.List>

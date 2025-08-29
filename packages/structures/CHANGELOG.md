@@ -1,5 +1,72 @@
 # Changelog
 
+## 0.4.1
+
+- [#851](https://github.com/iTwin/design-system/pull/851): Added `Dialog` component that displays custom content in a window overlay over the primary window or another dialog window. Currently only modal dialog type is supported.
+
+  ```tsx
+  const [open, setOpen] = useState(false);
+
+  <Button onClick={() => setOpen(true)}>Open dialog</Button>
+  <Dialog.Root modal={true} open={open} onClose={() => setOpen(false)}>
+    <Dialog.Header>
+      <Dialog.Heading>Dialog title</Dialog.Heading>
+      <Dialog.CloseButton />
+    </Dialog.Header>
+    <Dialog.Content>
+      <Text variant="body-sm">Content that describes the primary purpose of the dialog.</Text>
+    </Dialog.Content>
+    <Dialog.Footer>
+      <Dialog.ActionList
+        actions={[
+          <Button key="cancel" onClick={() => setOpen(false)}>Cancel</Button>,
+          <Button key="ok" tone="accent" onClick={() => setOpen(false)}>Ok</Button>,
+        ]}
+      />
+    </Dialog.Footer>
+  </Dialog.Root>
+  ```
+
+- [#884](https://github.com/iTwin/design-system/pull/884): Added new `unstable_NavigationRail` component intended to serve as the application's top-level navigation (e.g. for switching between pages).
+
+  ```jsx
+  <NavigationRail.Root>
+    <NavigationRail.Header>
+      <IconButton label="…" icon={…} href="/" />
+      <NavigationRail.ToggleButton />
+    </NavigationRail.Header>
+
+    <NavigationRail.Content>
+      <NavigationRail.List>
+        <NavigationRail.ListItem>
+          <NavigationRail.Anchor label="…" icon={…} href="/…" />
+        </NavigationRail.ListItem>
+        <NavigationRail.ListItem>
+          <NavigationRail.Anchor label="…" icon={…} href="/…" />
+        </NavigationRail.ListItem>
+        <NavigationRail.ListItem>
+          <NavigationRail.Anchor label="…" icon={…} href="/…" />
+        </NavigationRail.ListItem>
+      </NavigationRail.List>
+
+      <NavigationRail.Footer>
+        <NavigationRail.List>
+          <NavigationRail.ListItem>
+            <NavigationRail.Button label="…" icon={…} onClick={…} />
+          </NavigationRail.ListItem>
+          <NavigationRail.ListItem>
+            <NavigationRail.Button label="…" icon={…} onClick={…} />
+          </NavigationRail.ListItem>
+        </NavigationRail.List>
+     </NavigationRail.Footer>
+    </NavigationRail.Content>
+  </NavigationRail.Root>
+  ```
+
+- Updated dependencies:
+  - @stratakit/foundations@0.3.1
+  - @stratakit/bricks@0.4.1
+
 ## 0.4.0
 
 ### Breaking changes

@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.4.1
+
+- [#926](https://github.com/iTwin/design-system/pull/926): Added new `active` prop to `IconButton` and deprecated the existing `isActive` prop.
+
+  The `active` prop is consistent with the naming convention followed by other boolean props in StrataKit.
+
+- Updated dependencies:
+  - @stratakit/foundations@0.3.1
+
 ## 0.4.0
 
 - [#913](https://github.com/iTwin/design-system/pull/913): Updated internal CSS selectors in every component.

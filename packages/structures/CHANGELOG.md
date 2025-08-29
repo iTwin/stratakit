@@ -2,8 +2,6 @@
 
 ## 0.4.1
 
-### Patch Changes
-
 - [#851](https://github.com/iTwin/design-system/pull/851): Added `Dialog` component that displays custom content in a window overlay over the primary window or another dialog window. Currently only modal dialog type is supported.
 
   ```tsx
@@ -11,15 +9,18 @@
 
   <Button onClick={() => setOpen(true)}>Open dialog</Button>
   <Dialog.Root modal={true} open={open} onClose={() => setOpen(false)}>
-    <Dialog.Header render={<Dialog.Heading />}>Dialog title</Dialog.Header>
+    <Dialog.Header>
+      <Dialog.Heading>Dialog title</Dialog.Heading>
+      <Dialog.CloseButton />
+    </Dialog.Header>
     <Dialog.Content>
-      Content that describes the primary purpose of the dialog.
+      <Text variant="body-sm">Content that describes the primary purpose of the dialog.</Text>
     </Dialog.Content>
     <Dialog.Footer>
       <Dialog.ActionList
         actions={[
           <Button key="cancel" onClick={() => setOpen(false)}>Cancel</Button>,
-  				<Button key="ok" tone="accent" onClick={() => setOpen(false)}>Ok</Button>,
+          <Button key="ok" tone="accent" onClick={() => setOpen(false)}>Ok</Button>,
         ]}
       />
     </Dialog.Footer>

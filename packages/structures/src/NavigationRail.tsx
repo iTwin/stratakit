@@ -78,7 +78,6 @@ interface NavigationRailProps extends BaseProps<"nav"> {}
  *       <NavigationRail.ListItem>
  *         <NavigationRail.Anchor label="Projects" icon={projectsIcon} href="/projects" />
  *       </NavigationRail.ListItem>
- *       <Divider />
  *       <NavigationRail.ListItem>
  *         <NavigationRail.Anchor label="Reports" icon={reportsIcon} href="/reports" />
  *       </NavigationRail.ListItem>

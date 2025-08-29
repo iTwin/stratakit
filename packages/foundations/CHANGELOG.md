@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.3.1
+
+### Patch Changes
+
+- [#925](https://github.com/iTwin/design-system/pull/925): Added `portalContainer` prop to the `Root` component.
+
 ## 0.3.0
 
 ### Breaking changes

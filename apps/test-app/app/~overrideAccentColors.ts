@@ -10,22 +10,25 @@ type ColorScheme = keyof typeof cssOverrides;
 
 // ----------------------------------------------------------------------------
 
-let loaded = false;
+const styleSheets = new Map<ColorScheme, CSSStyleSheet>();
+function getStyleSheet(colorScheme: ColorScheme) {
+	let styleSheet = styleSheets.get(colorScheme);
+	if (!styleSheet) {
+		styleSheet = new CSSStyleSheet();
+		styleSheet.replaceSync(cssOverrides[colorScheme]);
+		styleSheets.set(colorScheme, styleSheet);
+	}
+	return styleSheet;
+}
 
 function overrideAccentColors(colorScheme: ColorScheme) {
-	if (loaded) return () => {};
-
-	const css = cssOverrides[colorScheme];
-	const styleSheet = new CSSStyleSheet();
-	styleSheet.replaceSync(css);
+	const styleSheet = getStyleSheet(colorScheme);
 	document.adoptedStyleSheets.push(styleSheet);
-	loaded = true;
 
 	return () => {
 		document.adoptedStyleSheets = document.adoptedStyleSheets.filter(
 			(sheet) => sheet !== styleSheet,
 		);
-		loaded = false;
 	};
 }
 

@@ -229,6 +229,17 @@ const PortalContainer = forwardRef<"div", PortalContainerProps>(
 function Styles() {
 	const rootNode = useRootNode();
 
+	useLayoutEffect(
+		/** Adds `@layer reset` _before_ all other styles to ensure correct layer order.  */
+		function addResetLayer() {
+			if (!rootNode) return;
+			const styleElement = document.createElement("style");
+			((rootNode as Document).head || rootNode).prepend(styleElement);
+			styleElement.textContent = "@layer reset;";
+		},
+		[rootNode],
+	);
+
 	useLayoutEffect(() => {
 		if (!rootNode) return;
 		const { cleanup } = loadStyles(rootNode, { css });

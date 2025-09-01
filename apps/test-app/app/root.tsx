@@ -14,7 +14,10 @@ import {
 } from "react-router";
 import { Root } from "@stratakit/foundations";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { overrideAccentColors } from "./~overrideAccentColors.ts";
+import {
+	overrideAccentColors,
+	rootClassName,
+} from "./~overrideAccentColors.ts";
 import { ColorSchemeProvider, useColorScheme } from "./~utils.tsx";
 
 import type { LinksFunction } from "react-router";
@@ -87,8 +90,8 @@ export default function App() {
 			<Root
 				colorScheme={colorScheme}
 				density="dense"
-				data-app-root
-				portalContainer={<div data-app-root />}
+				className={rootClassName}
+				portalContainer={<div className={rootClassName} />}
 			>
 				<Outlet />
 			</Root>

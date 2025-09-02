@@ -4,12 +4,14 @@
  *--------------------------------------------------------------------------------------------*/
 
 import * as React from "react";
+import { Button as AkButton } from "@ariakit/react/button";
 import { Role } from "@ariakit/react/role";
 import { Tooltip, VisuallyHidden } from "@stratakit/bricks";
 import { Icon } from "@stratakit/foundations";
 import {
 	forwardRef,
 	useEventHandlers,
+	useMergedRefs,
 	useSafeContext,
 } from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
@@ -19,6 +21,11 @@ import type {
 	BaseProps,
 	FocusableProps,
 } from "@stratakit/foundations/secret-internals";
+
+// ----------------------------------------------------------------------------
+
+const supportsCssAnchorPositioning =
+	typeof CSS !== "undefined" && CSS.supports("position-anchor: --foo");
 
 // ----------------------------------------------------------------------------
 
@@ -178,12 +185,22 @@ const NavigationRailToggleButton = forwardRef<
 	const collapsed = useNavigationRailState((state) => state.collapsed);
 	const setCollapsed = useNavigationRailState((state) => state.setCollapsed);
 
+	/** Callback ref that moves the element into the top layer. */
+	const topLayerRef = React.useCallback(
+		(element: HTMLElement | null) => {
+			if (!element?.isConnected || !element?.popover) return;
+			element.togglePopover(collapsed);
+		},
+		[collapsed],
+	);
+
 	return (
-		<Role.button
+		<AkButton
 			aria-expanded={collapsed ? "false" : "true"}
+			popover={supportsCssAnchorPositioning && collapsed ? "manual" : undefined}
 			{...rest}
 			className={cx("🥝NavigationRailToggleButton", props.className)}
-			ref={forwardedRef}
+			ref={useMergedRefs(topLayerRef, forwardedRef)}
 			onClick={useEventHandlers(props.onClick, () => setCollapsed(!collapsed))}
 		>
 			<svg width="12" height="12" fill="none" aria-hidden="true">
@@ -193,7 +210,7 @@ const NavigationRailToggleButton = forwardRef<
 				/>
 			</svg>
 			<VisuallyHidden>{label}</VisuallyHidden>
-		</Role.button>
+		</AkButton>
 	);
 });
 DEV: NavigationRailToggleButton.displayName = "NavigationRail.ToggleButton";

@@ -12,6 +12,10 @@
 		flex-direction: column;
 		gap: var(--stratakit-space-x1);
 
+		overflow: hidden;
+		overflow-y: auto;
+		overflow-block: auto;
+
 		block-size: 100%;
 		min-inline-size: var(--✨size--collapsed);
 		inline-size: var(--🥝NavigationRail-inline-size);
@@ -40,6 +44,9 @@
 		padding-block: var(--stratakit-space-x2);
 		padding-inline: var(--stratakit-space-x4);
 		min-block-size: var(--✨header-height);
+
+		anchor-scope: --🥝NavigationRailHeader;
+		anchor-name: --🥝NavigationRailHeader;
 	}
 }
 
@@ -83,9 +90,22 @@
 
 		/* Should be floating above the right edge of the header during collapsed state */
 		:where(.🥝NavigationRailHeader[data-_sk-collapsed="true"]) & {
-			position: absolute;
-			inset-inline-end: 0;
-			translate: 50%;
+			/* The `popover` attribute should be added when CSS anchor positioning is supported. */
+			&:where([popover]) {
+				position: fixed;
+				position-anchor: --🥝NavigationRailHeader;
+				position-visibility: no-overflow;
+
+				inset-inline-start: anchor(end);
+				inset-block-start: anchor(center);
+				translate: -50% -50%;
+			}
+
+			/* Fallback: Clamp to right edge instead of extending past it. */
+			&:where(:not([popover])) {
+				position: absolute;
+				inset-inline-end: 0;
+			}
 		}
 
 		&:where([aria-expanded="true"]) {
@@ -100,7 +120,6 @@
 		padding-inline: var(--stratakit-space-x2);
 
 		flex: 999;
-		overflow: auto;
 
 		display: flex;
 		flex-direction: column;
@@ -121,7 +140,7 @@
 }
 
 .🥝NavigationRailItemAction {
-	--✨height: calc(1.5rem + 2 * var(--stratakit-space-x2));
+	--✨size: calc(1.5rem + 2 * var(--stratakit-space-x2));
 
 	--✨bg--default: transparent;
 	--✨bg--hover: var(--stratakit-color-bg-glow-on-surface-neutral-hover);
@@ -157,7 +176,8 @@
 
 		border-radius: 4px;
 		inline-size: stretch;
-		min-block-size: var(--✨height);
+		min-block-size: var(--✨size);
+		min-inline-size: var(--✨size);
 		padding: var(--stratakit-space-x2);
 		--🥝Icon-size: 1.5rem;
 		border: 1px solid;

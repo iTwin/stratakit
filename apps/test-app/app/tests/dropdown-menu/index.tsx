@@ -54,7 +54,7 @@ export default definePage(
 
 function VisualTest({ disabled }: VariantProps) {
 	return (
-		<div style={{ minHeight: 200 }}>
+		<div style={{ minBlockSize: 200 }}>
 			<DropdownMenu.Provider defaultOpen>
 				<DropdownMenu.Button disabled={!!disabled}>Actions</DropdownMenu.Button>
 
@@ -84,7 +84,7 @@ function VisualTest({ disabled }: VariantProps) {
 function CheckboxTest({ defaultChecked: defaultCheckedParam }: VariantProps) {
 	const defaultChecked = defaultCheckedParam ? true : undefined;
 	return (
-		<div style={{ minHeight: 150 }}>
+		<div style={{ minBlockSize: 150 }}>
 			<DropdownMenu.Provider>
 				<DropdownMenu.Button>Settings</DropdownMenu.Button>
 
@@ -104,34 +104,36 @@ function CheckboxTest({ defaultChecked: defaultCheckedParam }: VariantProps) {
 
 function SubmenuTest({ defaultOpen }: VariantProps) {
 	return (
-		<DropdownMenu.Provider defaultOpen={!!defaultOpen}>
-			<DropdownMenu.Button>Actions</DropdownMenu.Button>
+		<div style={{ minBlockSize: 200 }}>
+			<DropdownMenu.Provider defaultOpen={!!defaultOpen}>
+				<DropdownMenu.Button>Actions</DropdownMenu.Button>
 
-			<DropdownMenu.Content>
-				<DropdownMenu.Item label="Item 1" />
-				<DropdownMenu.Item label="Item 2" />
-				<DropdownMenu.SubmenuItem
-					label="Item 3"
-					menu={
-						<DropdownMenu.Provider defaultOpen={!!defaultOpen}>
-							<DropdownMenu.Content>
-								<DropdownMenu.Item label="Item 3_1" />
-								<DropdownMenu.SubmenuItem
-									label="Item 3_2"
-									menu={
-										<DropdownMenu.Content>
-											<DropdownMenu.Item label="Item 3_2_1" />
-											<DropdownMenu.Item label="Item 3_2_2" />
-											<DropdownMenu.Item label="Item 3_2_3" />
-										</DropdownMenu.Content>
-									}
-								/>
-								<DropdownMenu.Item label="Item 3_3" />
-							</DropdownMenu.Content>
-						</DropdownMenu.Provider>
-					}
-				/>
-			</DropdownMenu.Content>
-		</DropdownMenu.Provider>
+				<DropdownMenu.Content>
+					<DropdownMenu.Item label="Item 1" />
+					<DropdownMenu.Item label="Item 2" />
+					<DropdownMenu.SubmenuItem
+						label="Item 3"
+						menu={
+							<DropdownMenu.Provider defaultOpen={!!defaultOpen}>
+								<DropdownMenu.Content>
+									<DropdownMenu.Item label="Item 3_1" />
+									<DropdownMenu.SubmenuItem
+										label="Item 3_2"
+										menu={
+											<DropdownMenu.Content>
+												<DropdownMenu.Item label="Item 3_2_1" />
+												<DropdownMenu.Item label="Item 3_2_2" />
+												<DropdownMenu.Item label="Item 3_2_3" />
+											</DropdownMenu.Content>
+										}
+									/>
+									<DropdownMenu.Item label="Item 3_3" />
+								</DropdownMenu.Content>
+							</DropdownMenu.Provider>
+						}
+					/>
+				</DropdownMenu.Content>
+			</DropdownMenu.Provider>
+		</div>
 	);
 }

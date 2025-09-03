@@ -1,0 +1,15 @@
+---
+// See https://starlight.astro.build/reference/overrides/#themeprovider
+
+import { Icon } from "@astrojs/starlight/components";
+---
+
+{/* This is intentionally inlined to avoid FOUC. */}
+<script is:inline>
+	const storedTheme =
+		typeof localStorage !== "undefined" && localStorage.getItem("starlight-theme");
+	const currentTheme =
+		storedTheme || (window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
+	document.documentElement.dataset.theme = currentTheme === "light" ? "light" : "dark";
+	document.documentElement.dataset.colorScheme = currentTheme === "light" ? "light" : "dark";
+</script>

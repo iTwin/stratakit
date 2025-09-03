@@ -11,6 +11,9 @@ importers:
       '@astrojs/starlight':
         specifier: ^0.35.2
         version: 0.35.2(astro@5.13.5(@types/node@24.3.0)(rollup@4.50.0)(typescript@5.9.2))
+      '@stratakit/foundations':
+        specifier: ^0.3.1
+        version: 0.3.1(@preact/compat@18.3.1(preact@10.27.1))(react-dom@19.1.1(@preact/compat@18.3.1(preact@10.27.1)))
       astro:
         specifier: ^5.13.5
         version: 5.13.5(@types/node@24.3.0)(rollup@4.50.0)(typescript@5.9.2)
@@ -26,6 +29,21 @@ importers:
         version: 3.6.2
 
 packages:
+
+  '@ariakit/core@0.4.15':
+    resolution: {integrity: sha512-vvxmZvkNhiisKM+Y1TbGMUfVVchV/sWu9F0xw0RYADXcimWPK31dd9JnIZs/OQ5pwAryAHmERHwuGQVESkSjwQ==}
+
+  '@ariakit/react-core@0.4.18':
+    resolution: {integrity: sha512-wHtojXF7KPRwGTSbPg50l203Qngg2aGYCzCut+mYEwe3S0ZzuYVpiY+2Yh15HssnQ/S5yiDGRL4q94UEXsyO+w==}
+    peerDependencies:
+      react: ^17.0.0 || ^18.0.0 || ^19.0.0
+      react-dom: ^17.0.0 || ^18.0.0 || ^19.0.0
+
+  '@ariakit/react@0.4.18':
+    resolution: {integrity: sha512-r38DFvdv6JzjC/8mHekTaJEXO6hmx+YPIiyjq9oL7DckLmqGkAKbFrmQd2CeKZZ1c372DDVw7lLhYjj/VYCBZQ==}
+    peerDependencies:
+      react: ^17.0.0 || ^18.0.0 || ^19.0.0
+      react-dom: ^17.0.0 || ^18.0.0 || ^19.0.0
 
   '@astrojs/compiler@2.12.2':
     resolution: {integrity: sha512-w2zfvhjNCkNMmMMOn5b0J8+OmUaBL1o40ipMvqcG6NRpdC+lKxmTi48DT8Xw0SzJ3AfmeFLB45zXZXtmbsjcgw==}
@@ -310,6 +328,15 @@ packages:
   '@expressive-code/plugin-text-markers@0.41.3':
     resolution: {integrity: sha512-SN8tkIzDpA0HLAscEYD2IVrfLiid6qEdE9QLlGVSxO1KEw7qYvjpbNBQjUjMr5/jvTJ7ys6zysU2vLPHE0sb2g==}
 
+  '@floating-ui/core@1.7.3':
+    resolution: {integrity: sha512-sGnvb5dmrJaKEZ+LDIpguvdX3bDlEllmv4/ClQ9awcmCZrlx5jQyyMWFM5kBI+EyNOCDDiKk8il0zeuX3Zlg/w==}
+
+  '@floating-ui/dom@1.7.4':
+    resolution: {integrity: sha512-OOchDgh4F2CchOX94cRVqhvy7b3AFb+/rQXyswmzmGakRfkMgoWVjfnLWkRirfLEfuD4ysVW16eXzwt3jHIzKA==}
+
+  '@floating-ui/utils@0.2.10':
+    resolution: {integrity: sha512-aGTxbpbg8/b5JfU1HXSrbH3wXZuLPJcNEcZQFMxLs3oSzgtVu6nFPkbbGGUvBcUjKV2YyB9Wxxabo+HEH9tcRQ==}
+
   '@img/sharp-darwin-arm64@0.33.5':
     resolution: {integrity: sha512-UT4p+iz/2H4twwAoLCqfA9UH5pI6DggwKEGuaPy7nCVQ8ZsiY5PIcrRvD1DzuY3qYL07NtIQcWnBSY/heikIFQ==}
     engines: {node: ^18.17.0 || ^20.3.0 || >=21.0.0}
@@ -579,6 +606,11 @@ packages:
     cpu: [x64]
     os: [win32]
 
+  '@preact/compat@18.3.1':
+    resolution: {integrity: sha512-Kog4PSRxtT4COtOXjsuQPV1vMXpUzREQfv+6Dmcy9/rMk0HOPK0HTE9fspFjAmY8R80T/T8gtgmZ68u5bOSngw==}
+    peerDependencies:
+      preact: '*'
+
   '@rollup/pluginutils@5.2.0':
     resolution: {integrity: sha512-qWJ2ZTbmumwiLFomfzTyt5Kng4hwPi9rwCYN4SHb6eaRU1KNO4ccxINHr/VhH4GgPlt1XfSTLX2LBTme8ne4Zw==}
     engines: {node: '>=14.0.0'}
@@ -713,6 +745,17 @@ packages:
 
   '@shikijs/vscode-textmate@10.0.2':
     resolution: {integrity: sha512-83yeghZ2xxin3Nj8z1NMd/NCuca+gsYXswywDy5bHvwlWL8tpTQmzGeUuHd9FC3E/SBEMvzJRwWEOz5gGes9Qg==}
+
+  '@stratakit/foundations@0.3.1':
+    resolution: {integrity: sha512-0WBMgEJGOO3x3DUuSnSgB4pXhnXf46o4Mx0cqWYO6G3FXc4FVoDAINHLy57fUTmL9ZxVCWqnl+l9xYgWge6yqg==}
+    peerDependencies:
+      react: '>=18.0.0'
+      react-dom: '>=18.0.0'
+    peerDependenciesMeta:
+      react:
+        optional: true
+      react-dom:
+        optional: true
 
   '@swc/helpers@0.5.17':
     resolution: {integrity: sha512-5IKx/Y13RsYd+sauPb2x+U/xZikHjolzfuDgTAl/Tdf3Q8rslRvC19NKDLgAJQ6wsqADk10ntlv08nPFw/gO/A==}
@@ -883,6 +926,9 @@ packages:
   ci-info@4.3.0:
     resolution: {integrity: sha512-l+2bNRMiQgcfILUi33labAZYIWlH1kWDp+ecNo5iisRKrbm0xcRyCww71/YU0Fkw0mAFpz9bJayXPjey6vkmaQ==}
     engines: {node: '>=8'}
+
+  classnames@2.5.1:
+    resolution: {integrity: sha512-saHYOzhIQs6wy2sVxTM6bUDsQO4F50V9RQ22qBpEdCW+I+/Wmke2HOl6lS6dTpdxVhb88/I6+Hs+438c3lfUow==}
 
   cli-boxes@3.0.0:
     resolution: {integrity: sha512-/lzGpEWL/8PfI0BmBOPRwp0c/wFNX1RdUML3jK/RcSBA9T8mZDdQpqYBKtCFTOfQbwPqWEOpjqW+Fnayc0969g==}
@@ -1526,6 +1572,9 @@ packages:
     resolution: {integrity: sha512-3Ybi1tAuwAP9s0r1UQ2J4n5Y0G05bJkpUIO0/bI9MhwmD70S5aTWbXGBwxHrelT+XM1k6dM0pk+SwNkpTRN7Pg==}
     engines: {node: ^10 || ^12 || >=14}
 
+  preact@10.27.1:
+    resolution: {integrity: sha512-V79raXEWch/rbqoNc7nT9E4ep7lu+mI3+sBmfRD4i1M73R3WLYcCtdI0ibxGVf4eQL8ZIz2nFacqEC+rmnOORQ==}
+
   prettier@3.6.2:
     resolution: {integrity: sha512-I7AIg5boAr5R0FFtJ6rCfD+LFsWHp81dolrFD8S79U9tb8Az2nGrJncnMSnys+bpQJfRUzqs9hnA81OAA3hCuQ==}
     engines: {node: '>=14'}
@@ -1547,6 +1596,11 @@ packages:
 
   radix3@1.1.2:
     resolution: {integrity: sha512-b484I/7b8rDEdSDKckSSBA8knMpcdsXudlE/LNL639wFoHKwLbEkQFZHWEYwDC0wa0FKUcCY+GAF73Z7wxNVFA==}
+
+  react-dom@19.1.1:
+    resolution: {integrity: sha512-Dlq/5LAZgF0Gaz6yiqZCf6VCcZs1ghAJyrsu84Q/GT0gV+mCxbfmKNoGRKBYMJ8IEdGPqu49YWXD02GCknEDkw==}
+    peerDependencies:
+      react: ^19.1.1
 
   readdirp@4.1.2:
     resolution: {integrity: sha512-GDhwkLfywWL2s6vEjyhri+eXmfH6j1L7JE27WhqLeYzoh/A3DBaYGEj2H/HFZCn/kMfim73FXxEJTw06WtxQwg==}
@@ -1640,6 +1694,9 @@ packages:
 
   sax@1.4.1:
     resolution: {integrity: sha512-+aWOz7yVScEGoKNd4PA10LZ8sk0A/z5+nXQG5giUO5rprX9jgYsTdov9qCchZiPIZezbZH+jRut8nPodFAX4Jg==}
+
+  scheduler@0.26.0:
+    resolution: {integrity: sha512-NlHwttCI/l5gCPR3D1nNXtWABUmBwvZpEQiD4IXSbIDq8BzLIK/7Ir5gTFSGZDUu37K5cMNp0hFtzO38sC7gWA==}
 
   semver@7.7.2:
     resolution: {integrity: sha512-RF0Fw+rO5AMf9MAyaRXI4AV0Ulj5lMHqVxxdSgiVbixSCXoEmmX/jk0CuJw4+3SqroYO9VoUh+HcuJivvtJemA==}
@@ -1868,6 +1925,11 @@ packages:
       uploadthing:
         optional: true
 
+  use-sync-external-store@1.5.0:
+    resolution: {integrity: sha512-Rb46I4cGGVBmjamjphe8L/UnvJD+uPPtTkNvX5mZgqdbavhI4EbgIWJiIHXJ8bc/i9EQGPRh4DwEURJ552Do0A==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
+
   util-deprecate@1.0.2:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
 
@@ -1986,6 +2048,22 @@ packages:
     resolution: {integrity: sha512-bXE4cR/kVZhKZX/RjPEflHaKVhUVl85noU3v6b8apfQEc1x4A+zBxjZ4lN8LqGd6WZ3dl98pY4o717VFmoPp+A==}
 
 snapshots:
+
+  '@ariakit/core@0.4.15': {}
+
+  '@ariakit/react-core@0.4.18(@preact/compat@18.3.1(preact@10.27.1))(react-dom@19.1.1(@preact/compat@18.3.1(preact@10.27.1)))':
+    dependencies:
+      '@ariakit/core': 0.4.15
+      '@floating-ui/dom': 1.7.4
+      react: '@preact/compat@18.3.1(preact@10.27.1)'
+      react-dom: 19.1.1(@preact/compat@18.3.1(preact@10.27.1))
+      use-sync-external-store: 1.5.0(@preact/compat@18.3.1(preact@10.27.1))
+
+  '@ariakit/react@0.4.18(@preact/compat@18.3.1(preact@10.27.1))(react-dom@19.1.1(@preact/compat@18.3.1(preact@10.27.1)))':
+    dependencies:
+      '@ariakit/react-core': 0.4.18(@preact/compat@18.3.1(preact@10.27.1))(react-dom@19.1.1(@preact/compat@18.3.1(preact@10.27.1)))
+      react: '@preact/compat@18.3.1(preact@10.27.1)'
+      react-dom: 19.1.1(@preact/compat@18.3.1(preact@10.27.1))
 
   '@astrojs/compiler@2.12.2': {}
 
@@ -2259,6 +2337,17 @@ snapshots:
     dependencies:
       '@expressive-code/core': 0.41.3
 
+  '@floating-ui/core@1.7.3':
+    dependencies:
+      '@floating-ui/utils': 0.2.10
+
+  '@floating-ui/dom@1.7.4':
+    dependencies:
+      '@floating-ui/core': 1.7.3
+      '@floating-ui/utils': 0.2.10
+
+  '@floating-ui/utils@0.2.10': {}
+
   '@img/sharp-darwin-arm64@0.33.5':
     optionalDependencies:
       '@img/sharp-libvips-darwin-arm64': 1.0.4
@@ -2474,6 +2563,10 @@ snapshots:
   '@pagefind/windows-x64@1.4.0':
     optional: true
 
+  '@preact/compat@18.3.1(preact@10.27.1)':
+    dependencies:
+      preact: 10.27.1
+
   '@rollup/pluginutils@5.2.0(rollup@4.50.0)':
     dependencies:
       '@types/estree': 1.0.8
@@ -2577,6 +2670,14 @@ snapshots:
       '@types/hast': 3.0.4
 
   '@shikijs/vscode-textmate@10.0.2': {}
+
+  '@stratakit/foundations@0.3.1(@preact/compat@18.3.1(preact@10.27.1))(react-dom@19.1.1(@preact/compat@18.3.1(preact@10.27.1)))':
+    dependencies:
+      '@ariakit/react': 0.4.18(@preact/compat@18.3.1(preact@10.27.1))(react-dom@19.1.1(@preact/compat@18.3.1(preact@10.27.1)))
+      classnames: 2.5.1
+    optionalDependencies:
+      react: '@preact/compat@18.3.1(preact@10.27.1)'
+      react-dom: 19.1.1(@preact/compat@18.3.1(preact@10.27.1))
 
   '@swc/helpers@0.5.17':
     dependencies:
@@ -2822,6 +2923,8 @@ snapshots:
       readdirp: 4.1.2
 
   ci-info@4.3.0: {}
+
+  classnames@2.5.1: {}
 
   cli-boxes@3.0.0: {}
 
@@ -3885,6 +3988,8 @@ snapshots:
       picocolors: 1.1.1
       source-map-js: 1.2.1
 
+  preact@10.27.1: {}
+
   prettier@3.6.2: {}
 
   prismjs@1.30.0: {}
@@ -3899,6 +4004,11 @@ snapshots:
   property-information@7.1.0: {}
 
   radix3@1.1.2: {}
+
+  react-dom@19.1.1(@preact/compat@18.3.1(preact@10.27.1)):
+    dependencies:
+      react: '@preact/compat@18.3.1(preact@10.27.1)'
+      scheduler: 0.26.0
 
   readdirp@4.1.2: {}
 
@@ -4095,6 +4205,8 @@ snapshots:
       fsevents: 2.3.3
 
   sax@1.4.1: {}
+
+  scheduler@0.26.0: {}
 
   semver@7.7.2: {}
 
@@ -4336,6 +4448,10 @@ snapshots:
       node-fetch-native: 1.6.7
       ofetch: 1.4.1
       ufo: 1.6.1
+
+  use-sync-external-store@1.5.0(@preact/compat@18.3.1(preact@10.27.1)):
+    dependencies:
+      react: '@preact/compat@18.3.1(preact@10.27.1)'
 
   util-deprecate@1.0.2: {}
 

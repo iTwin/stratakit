@@ -8,9 +8,14 @@ export default defineConfig({
 	integrations: [
 		starlight({
 			title: "StrataKit Docs",
+			titleDelimiter: " – ",
 			pagination: false,
 			components: {
 				PageTitle: "./src/components/PageTitle.astro",
+				Head: "./src/components/Head.astro",
+				ThemeProvider: "./src/components/ThemeProvider.astro",
+				ThemeSelect: "./src/components/ThemeSwitcher.astro",
+				SocialIcons: "./src/components/SocialIcons.astro",
 			},
 			social: [
 				{
@@ -29,6 +34,7 @@ export default defineConfig({
 			editLink: {
 				baseUrl: "https://github.com/iTwin/stratakit-docs/edit/main/",
 			},
+			customCss: ["./src/styles/overrides.css", "./src/styles/fonts.css"],
 		}),
 	],
 	devToolbar: { enabled: false },

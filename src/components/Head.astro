@@ -1,0 +1,9 @@
+---
+// See https://starlight.astro.build/reference/overrides/#head-1
+
+import stratakitStyles from "../styles/loadStratakitStyles.js?url";
+const { head } = Astro.locals.starlightRoute;
+---
+
+<script type="module" {...{ blocking: "render" }} src={stratakitStyles}></script>
+{head.map(({ tag: Tag, attrs, content }) => <Tag {...attrs} set:html={content} />)}

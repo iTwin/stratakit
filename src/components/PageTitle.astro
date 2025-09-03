@@ -14,9 +14,8 @@ const demoBase = "https://itwin.github.io/design-system/";
 {entry.data.demoSlug && <a href={demoBase + entry.data.demoSlug}>View demo page</a>}
 
 <style>
-	@layer starlight.core {
+	@layer overrides {
 		h1 {
-			margin-top: 1rem;
 			font-size: var(--sl-text-h1);
 			line-height: var(--sl-line-height-headings);
 			font-weight: 600;

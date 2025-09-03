@@ -1,0 +1,72 @@
+@layer reset, starlight, itwinui;
+
+@layer overrides {
+	:root {
+		--sl-color-accent: var(--stratakit-color-text-accent-base);
+		--sl-color-accent-high: var(--stratakit-color-text-accent-strong);
+		--sl-color-accent-low: var(--stratakit-color-bg-page-base); /* must contrast with text-accent */
+		--sl-color-text-accent: var(--stratakit-color-text-neutral-primary);
+
+		--sl-color-white: var(--stratakit-color-text-neutral-primary);
+		--sl-color-gray-1: var(--stratakit-color-text-neutral-primary);
+		--sl-color-gray-2: var(--stratakit-color-text-neutral-secondary);
+		--sl-color-gray-3: var(--stratakit-color-text-neutral-tertiary);
+		--sl-color-gray-4: var(--stratakit-color-border-neutral-base);
+		--sl-color-gray-5: var(--stratakit-color-border-neutral-base);
+		--sl-color-gray-6: var(--stratakit-color-bg-page-base);
+		--sl-color-black: var(--stratakit-color-bg-page-base);
+
+		--sl-color-hairline: var(--stratakit-color-border-neutral-muted);
+		--sl-color-hairline-shade: var(--stratakit-color-border-neutral-muted);
+
+		--sl-shadow-sm: var(--stratakit-shadow-surface-xs);
+		--sl-shadow-md: var(--stratakit-shadow-surface-sm);
+		--sl-shadow-lg: var(--stratakit-shadow-surface-md);
+
+		--sl-main-pad: var(--stratakit-space-x4);
+
+		--sl-font: "InterVariable", system-ui, sans-serif;
+	}
+
+	#starlight__sidebar {
+		border-right: 1px solid var(--stratakit-color-border-neutral-muted);
+	}
+
+	#starlight__sidebar sl-sidebar-state-persist a {
+		text-box: cap alphabetic;
+		padding: 8px;
+	}
+
+	.sl-markdown-content a:not(:where(.not-content *)) {
+		color: var(--stratakit-color-text-neutral-primary);
+		font-weight: 500;
+
+		&:not(:hover) {
+			text-decoration-color: var(--stratakit-color-text-neutral-tertiary);
+		}
+	}
+
+	.sl-markdown-content code:not(:where(.not-content *)) {
+		background-color: var(--stratakit-color-bg-neutral-base);
+		border: 1px solid var(--stratakit-color-border-neutral-base);
+		border-radius: 4px;
+	}
+
+	starlight-toc a[aria-current="true"] {
+		font-weight: 500;
+		color: var(--stratakit-color-text-neutral-primary);
+		position: relative;
+
+		&::before {
+			content: "";
+			position: absolute;
+			left: -4px;
+			height: 1lh;
+			border: 1px solid;
+		}
+	}
+
+	site-search dialog {
+		inset: 0;
+	}
+}

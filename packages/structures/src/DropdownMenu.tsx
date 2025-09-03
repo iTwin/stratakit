@@ -122,6 +122,7 @@ const DropdownMenuContent = forwardRef<"div", DropdownMenuContentProps>(
 				unmountOnHide
 				{...props}
 				gutter={hasParentMenu ? 2 : 4}
+				shift={hasParentMenu ? -4 : 0}
 				style={{ ...popoverProps.style, ...props.style }}
 				wrapperProps={{ popover: popoverProps.popover }}
 				className={cx("🥝DropdownMenu", props.className)}

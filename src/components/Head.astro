@@ -1,9 +1,28 @@
 ---
 // See https://starlight.astro.build/reference/overrides/#head-1
 
-import stratakitStyles from "../styles/loadStratakitStyles.js?url";
 const { head } = Astro.locals.starlightRoute;
 ---
 
-<script type="module" {...{ blocking: "render" }} src={stratakitStyles}></script>
+{/* This is a workaround to prevent FOUC when StrataKit styles are loading. */}
+<script type="module" is:inline>
+	document.documentElement.dataset.loading = "true";
+	await new Promise((r) => setTimeout(r, 2000));
+	delete document.documentElement.dataset.loading;
+</script>
+<style>
+	html[data-loading] {
+		opacity: 0;
+	}
+</style>
+<script>
+	import { unstable_loadStyles } from "@stratakit/foundations";
+
+	unstable_loadStyles();
+
+	if (document.documentElement.dataset.loading !== undefined) {
+		delete document.documentElement.dataset.loading;
+	}
+</script>
+
 {head.map(({ tag: Tag, attrs, content }) => <Tag {...attrs} set:html={content} />)}

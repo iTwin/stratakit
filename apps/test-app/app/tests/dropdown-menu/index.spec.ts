@@ -125,7 +125,7 @@ test("dot", async ({ page }) => {
 });
 
 test.describe("submenu", () => {
-	test("mouse", async ({ page }) => {
+	test("expand on hover", async ({ page }) => {
 		await page.goto("/tests/dropdown-menu?submenu");
 
 		const button = page.getByRole("button", { name: "Actions" });
@@ -137,15 +137,40 @@ test.describe("submenu", () => {
 		await expect(menu).toHaveCount(0);
 
 		await button.click();
+		await expect(menu).toHaveCount(1);
 		await expect(button).toHaveAttribute("data-has-popover-open");
 		await expect(item1).toBeVisible();
 
 		await item3.hover();
+		await expect(menu).toHaveCount(2);
+		await expect(item3).toHaveAttribute("data-has-popover-open");
+		await expect(item3_1).toBeVisible();
+	});
+
+	test("expand on click", async ({ page }) => {
+		await page.goto("/tests/dropdown-menu?submenu");
+
+		const button = page.getByRole("button", { name: "Actions" });
+		const menu = page.getByRole("menu", { includeHidden: true });
+		const item1 = page.getByRole("menuitem", { name: "Item 1" });
+		const item3 = page.getByRole("menuitem", { name: "Item 3", exact: true });
+		const item3_1 = page.getByRole("menuitem", { name: "Item 3_1" });
+
+		await expect(menu).toHaveCount(0);
+
+		await button.click();
+		await expect(menu).toHaveCount(1);
+		await expect(button).toHaveAttribute("data-has-popover-open");
+		await expect(item1).toBeVisible();
+
+		await item3.hover();
+		await expect(menu).toHaveCount(2);
 		await expect(item3).toHaveAttribute("data-has-popover-open");
 		await expect(item3_1).toBeVisible();
 
 		await item3_1.click();
-		await expect(item1).toBeHidden();
+		await expect(menu).toHaveCount(0);
+		await expect(button).toBeFocused();
 	});
 
 	test("keyboard", async ({ page }) => {
@@ -171,6 +196,7 @@ test.describe("submenu", () => {
 		await expect(button).toBeFocused();
 
 		await page.keyboard.press("Enter");
+		await expect(menu).toHaveCount(1);
 		await expect(button).toHaveAttribute("data-has-popover-open");
 		await expect(item1).toBeFocused();
 
@@ -181,6 +207,7 @@ test.describe("submenu", () => {
 		await expect(item3).toBeFocused();
 
 		await page.keyboard.press("ArrowRight");
+		await expect(menu).toHaveCount(2);
 		await expect(item3).toHaveAttribute("data-has-popover-open");
 		await expect(item3_1).toBeFocused();
 
@@ -188,6 +215,7 @@ test.describe("submenu", () => {
 		await expect(item3_2).toBeFocused();
 
 		await page.keyboard.press("ArrowRight");
+		await expect(menu).toHaveCount(3);
 		await expect(item3_2).toHaveAttribute("data-has-popover-open");
 		await expect(item3_2_1).toBeFocused();
 
@@ -195,12 +223,15 @@ test.describe("submenu", () => {
 		await expect(item3_2_2).toBeFocused();
 
 		await page.keyboard.press("ArrowLeft");
+		await expect(menu).toHaveCount(2);
+		await expect(item3_2_1).toBeHidden();
 		await expect(item3_2).toBeFocused();
 
 		await page.keyboard.press("ArrowDown");
 		await expect(item3_3).toBeFocused();
 
-		await page.keyboard.press("Enter");
+		await page.keyboard.press("Escape");
+		await expect(menu).toHaveCount(0);
 		await expect(item1).not.toBeVisible();
 		await expect(button).toBeFocused();
 	});

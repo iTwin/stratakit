@@ -158,7 +158,7 @@ const DropdownMenuButton = forwardRef<"button", DropdownMenuButtonProps>(
 		const { accessibleWhenDisabled = true, children, ...rest } = props;
 
 		const store = React.useContext(DropdownMenuContext);
-		const open = useStoreState(store, (state) => state?.open);
+		const open = useStoreState(store, "open");
 
 		return (
 			<MenuButton
@@ -454,6 +454,8 @@ const DropdownMenuSubmenuItem = forwardRef<
 	});
 	const [submenuStore, setSubmenuStore] = React.useState<MenuStore>();
 	const store = submenuStore ?? defaultSubmenuStore;
+
+	const open = useStoreState(store, "open");
 	return (
 		<>
 			<MenuButton
@@ -467,6 +469,7 @@ const DropdownMenuSubmenuItem = forwardRef<
 				}
 				store={store}
 				className={cx("🥝DropdownMenuItem", props.className)}
+				data-has-popover-open={open || undefined}
 				ref={forwardedRef}
 			>
 				<ListItem.Content render={<span />}>{label}</ListItem.Content>

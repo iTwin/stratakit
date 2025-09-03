@@ -124,9 +124,96 @@ test("dot", async ({ page }) => {
 	await expect(filterItem).toHaveAccessibleDescription("Some filters applied");
 });
 
+test.describe("submenu", () => {
+	test("mouse", async ({ page }) => {
+		await page.goto("/tests/dropdown-menu?submenu");
+
+		const button = page.getByRole("button", { name: "Actions" });
+		const menu = page.getByRole("menu", { includeHidden: true });
+		const item1 = page.getByRole("menuitem", { name: "Item 1" });
+		const item3 = page.getByRole("menuitem", { name: "Item 3", exact: true });
+		const item3_1 = page.getByRole("menuitem", { name: "Item 3_1" });
+
+		await expect(menu).toHaveCount(0);
+
+		await button.click();
+		await expect(button).toHaveAttribute("data-has-popover-open");
+		await expect(item1).toBeVisible();
+
+		await item3.hover();
+		await expect(item3).toHaveAttribute("data-has-popover-open");
+		await expect(item3_1).toBeVisible();
+
+		await item3_1.click();
+		await expect(item1).toBeHidden();
+	});
+
+	test("keyboard", async ({ page }) => {
+		await page.goto("/tests/dropdown-menu?submenu");
+
+		const button = page.getByRole("button", { name: "Actions" });
+		const menu = page.getByRole("menu", { includeHidden: true });
+		const item1 = page.getByRole("menuitem", { name: "Item 1" });
+		const item2 = page.getByRole("menuitem", { name: "Item 2" });
+		const item3 = page.getByRole("menuitem", { name: "Item 3", exact: true });
+		const item3_1 = page.getByRole("menuitem", { name: "Item 3_1" });
+		const item3_2 = page.getByRole("menuitem", {
+			name: "Item 3_2",
+			exact: true,
+		});
+		const item3_3 = page.getByRole("menuitem", { name: "Item 3_3" });
+		const item3_2_1 = page.getByRole("menuitem", { name: "Item 3_2_1" });
+		const item3_2_2 = page.getByRole("menuitem", { name: "Item 3_2_2" });
+
+		await expect(menu).toHaveCount(0);
+
+		await page.keyboard.press("Tab");
+		await expect(button).toBeFocused();
+
+		await page.keyboard.press("Enter");
+		await expect(button).toHaveAttribute("data-has-popover-open");
+		await expect(item1).toBeFocused();
+
+		await page.keyboard.press("ArrowDown");
+		await expect(item2).toBeFocused();
+
+		await page.keyboard.press("ArrowDown");
+		await expect(item3).toBeFocused();
+
+		await page.keyboard.press("ArrowRight");
+		await expect(item3).toHaveAttribute("data-has-popover-open");
+		await expect(item3_1).toBeFocused();
+
+		await page.keyboard.press("ArrowDown");
+		await expect(item3_2).toBeFocused();
+
+		await page.keyboard.press("ArrowRight");
+		await expect(item3_2).toHaveAttribute("data-has-popover-open");
+		await expect(item3_2_1).toBeFocused();
+
+		await page.keyboard.press("ArrowDown");
+		await expect(item3_2_2).toBeFocused();
+
+		await page.keyboard.press("ArrowLeft");
+		await expect(item3_2).toBeFocused();
+
+		await page.keyboard.press("ArrowDown");
+		await expect(item3_3).toBeFocused();
+
+		await page.keyboard.press("Enter");
+		await expect(item1).not.toBeVisible();
+		await expect(button).toBeFocused();
+	});
+});
+
 test.describe("@visual", () => {
 	test("default", async ({ page }) => {
 		await page.goto("/tests/dropdown-menu?visual=true");
+		await expect(page.locator("body")).toHaveScreenshot();
+	});
+
+	test("submenu", async ({ page }) => {
+		await page.goto("/tests/dropdown-menu?submenu&defaultOpen");
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
 

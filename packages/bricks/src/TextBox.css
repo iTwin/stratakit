@@ -37,7 +37,6 @@
 		border-radius: 4px;
 
 		background-color: var(--🥝TextBox-background-color);
-		box-shadow: var(--stratakit-shadow-input-base);
 		color: var(--✨color--default);
 		transition: all 150ms ease-out;
 		transition-property: background-color, border-color;
@@ -50,6 +49,9 @@
 		--🥝TextBox-border-color: var(--🌀TextBox-state--default, var(--✨border--default))
 			var(--🌀TextBox-state--hover, var(--✨border--hover))
 			var(--🌀TextBox-state--disabled, var(--✨border--disabled));
+		--🥝TextBox-box-shadow: var(--🌀TextBox-state--default, var(--stratakit-shadow-input-base))
+			var(--🌀TextBox-state--hover, var(--stratakit-shadow-input-base))
+			var(--🌀TextBox-state--disabled, none);
 
 		/* Styles specific to wrapper ("root") */
 		&:where(:not(input, textarea)) {
@@ -66,6 +68,7 @@
 				border-radius: inherit;
 				pointer-events: none;
 				border: 1px solid var(--🥝TextBox-border-color);
+				box-shadow: var(--🥝TextBox-box-shadow);
 				transition: border-color 150ms ease-out;
 			}
 
@@ -86,6 +89,11 @@
 					padding-inline-end: var(--✨padding-inline);
 				}
 			}
+		}
+
+		/* Styles specific to input/textarea (self) */
+		&:where(input, textarea) {
+			box-shadow: var(--🥝TextBox-box-shadow);
 		}
 
 		/* Styles specific to input/textarea (self and nested) */
@@ -115,7 +123,8 @@
 		/* Styles specific to input/textarea (nested only, "invisible") */
 		:where(input, textarea) {
 			border: none;
-			background-color: transparent;
+			background-color: var(--🥝TextBox-background-color);
+			border-radius: inherit;
 			outline: unset;
 			flex: 999;
 			align-self: stretch;
@@ -154,7 +163,6 @@
 				:has(:is(input, textarea):is(:disabled, [aria-disabled="true"]))
 			) {
 			--🌀TextBox-state: var(--🌀TextBox-state--disabled);
-			box-shadow: none;
 			color: var(--✨color--disabled);
 			--🥝TextBox-cursor: not-allowed;
 		}

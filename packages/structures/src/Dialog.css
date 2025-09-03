@@ -78,11 +78,15 @@
 
 		color: var(--stratakit-color-text-neutral-primary);
 
-		overflow-y: auto;
-		overflow-block: auto;
-
 		padding-block-end: var(--✨padding);
 		padding-inline: var(--✨padding);
+	}
+
+	@layer modifiers {
+		@media (min-height: 15em) {
+			overflow-y: auto;
+			overflow-block: auto;
+		}
 	}
 }
 

@@ -115,7 +115,7 @@
 		/* Styles specific to input/textarea (nested only, "invisible") */
 		:where(input, textarea) {
 			border: none;
-			background-color: var(--🥝TextBox-background-color);
+			background-color: transparent;
 			outline: unset;
 			flex: 999;
 			align-self: stretch;

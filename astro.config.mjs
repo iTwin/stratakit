@@ -8,6 +8,10 @@ export default defineConfig({
 	integrations: [
 		starlight({
 			title: "StrataKit Docs",
+			pagination: false,
+			components: {
+				PageTitle: "./src/components/PageTitle.astro",
+			},
 			social: [
 				{
 					icon: "github",
@@ -16,18 +20,15 @@ export default defineConfig({
 				},
 			],
 			sidebar: [
+				{ label: "Getting started", slug: "guides/getting-started" },
 				{
-					label: "Guides",
-					items: [
-						// Each item here is one entry in the navigation menu.
-						{ label: "Example Guide", slug: "guides/example" },
-					],
-				},
-				{
-					label: "Reference",
-					autogenerate: { directory: "reference" },
+					label: "Components",
+					autogenerate: { directory: "components" },
 				},
 			],
+			editLink: {
+				baseUrl: "https://github.com/iTwin/stratakit-docs/edit/main/",
+			},
 		}),
 	],
 	devToolbar: { enabled: false },

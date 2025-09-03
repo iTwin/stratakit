@@ -8,6 +8,7 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
+    "format": "prettier --write . && biome format . --fix",
     "astro": "astro"
   },
   "dependencies": {
@@ -16,7 +17,8 @@
     "sharp": "^0.34.2"
   },
   "devDependencies": {
-    "@biomejs/biome": "^2.2.2"
+    "@biomejs/biome": "~2.2.2",
+    "prettier": "~3.6.2"
   },
   "packageManager": "pnpm@10.15.1",
   "engines": {

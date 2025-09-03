@@ -5,6 +5,7 @@ import { defineConfig } from "astro/config";
 
 // https://astro.build/config
 export default defineConfig({
+	site: "https://super-adventure-prvgo4m.pages.github.io",
 	integrations: [
 		starlight({
 			title: "StrataKit Docs",

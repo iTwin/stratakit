@@ -36,6 +36,10 @@
 		&:where([role="menuitemcheckbox"]:not([aria-checked="true"])) {
 			--🥝DropdownMenuCheckmark-visibility: hidden;
 		}
+
+		&:where([data-has-popover-open]:not(:active)) {
+			--🌀ListItem-state: var(--🌀ListItem-state--hover);
+		}
 	}
 }
 

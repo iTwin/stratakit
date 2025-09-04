@@ -40,8 +40,12 @@ const links = config.social || [];
 			}
 		}
 
-		:global(.social-icons::after) {
-			content: none;
+		:global(.social-icons) {
+			margin-inline-start: auto;
+
+			&::after {
+				content: none;
+			}
 		}
 	}
 </style>

@@ -1,0 +1,17 @@
+@layer reset, starlight, itwinui, page, overrides;
+
+@layer page {
+	html {
+		background-color: var(--stratakit-color-bg-page-depth);
+		scrollbar-gutter: stable;
+	}
+
+	main a:where(:not(.not-content, .not-content *)) {
+		color: var(--stratakit-color-text-neutral-primary);
+		font-weight: 500;
+
+		&:not(:hover) {
+			text-decoration-color: var(--stratakit-color-text-neutral-tertiary);
+		}
+	}
+}

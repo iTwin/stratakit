@@ -1,4 +1,6 @@
 ---
+// See https://starlight.astro.build/reference/overrides/#socialicons
+
 import config from "virtual:starlight/user-config";
 import { Icon } from "@astrojs/starlight/components";
 
@@ -36,6 +38,10 @@ const links = config.social || [];
 					var(--stratakit-color-glow-hue) var(--stratakit-color-border-glow-base-hover-\%)
 				);
 			}
+		}
+
+		:global(.social-icons::after) {
+			content: none;
 		}
 	}
 </style>

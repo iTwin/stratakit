@@ -2,7 +2,7 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-.🥝-tree-item {
+.🥝TreeItem {
 	@layer base {
 		position: relative;
 		min-inline-size: max-content;
@@ -27,18 +27,18 @@
 		@media (any-hover: hover) {
 			&:where(:not(:hover, :focus-visible, :has(:focus-visible), :has([data-has-popover-open]))) {
 				/** Hide every action unless one of these conditions match. */
-				--🥝tree-item-action-visibility: hidden;
+				--🥝TreeItem-action-visibility: hidden;
 			}
 
 			/* Without :has, we can't easily detect complex conditions, so unconditionally show actions. */
 			@supports not selector(:has(+ *)) {
-				--🥝tree-item-action-visibility: visible;
+				--🥝TreeItem-action-visibility: visible;
 			}
 		}
 	}
 }
 
-.🥝-tree-item-node:is(.🥝-list-item) {
+.🥝TreeItemNode:is(.🥝ListItem) {
 	--✨first-level-indent: var(--stratakit-space-x2);
 	--✨subsequent-level-indent: calc(var(--stratakit-space-x1) + var(--stratakit-space-x05));
 
@@ -49,57 +49,57 @@
 		padding-inline-start: calc(
 			var(--✨first-level-indent) +
 			var(--✨subsequent-level-indent) *
-			(var(--🥝tree-item-level) - 1)
+			(var(--🥝TreeItem-level) - 1)
 		);
 		padding-inline-end: 0;
 
-		--🥝list-item-color: var(--🥝tree-item-color);
+		--🥝ListItem-color: var(--🥝TreeItem-color);
 	}
 
 	@layer modifiers {
-		&:where([data-kiwi-error="true"]) {
-			--🥝icon-color: var(--stratakit-color-icon-attention-base);
-			--🥝tree-item-color: var(--stratakit-color-text-attention-base);
+		&:where([data-_sk-error="true"]) {
+			--🥝Icon-color: var(--stratakit-color-icon-attention-base);
+			--🥝TreeItem-color: var(--stratakit-color-text-attention-base);
 		}
 	}
 
 	@layer states {
-		&:where([data-kiwi-selected="true"]) {
-			--🌀list-item-state: var(--🌀list-item-state--active);
+		&:where([data-_sk-selected="true"]) {
+			--🌀ListItem-state: var(--🌀ListItem-state--active);
 		}
 
 		@media (any-hover: hover) {
-			&:where(:hover[data-kiwi-selected="true"]) {
-				--🌀list-item-state: var(--🌀list-item-state--active-hover);
+			&:where(:hover[data-_sk-selected="true"]) {
+				--🌀ListItem-state: var(--🌀ListItem-state--active-hover);
 			}
 		}
 
-		&:where([data-kiwi-expanded="false"]) {
-			--🥝chevron-down-rotate: -0.25turn;
+		&:where([data-_sk-expanded="false"]) {
+			--🥝ChevronDown-rotate: -0.25turn;
 		}
 
-		&:where(:not([data-kiwi-expanded])) {
-			--🥝tree-item-expander-visibility: hidden;
+		&:where(:not([data-_sk-expanded])) {
+			--🥝TreeItem-expander-visibility: hidden;
 		}
 	}
 }
 
-.🥝-tree-item-content:is(.🥝-list-item-content) {
+.🥝TreeItemContent:is(.🥝ListItemContent) {
 	@layer base {
 		white-space: nowrap;
 	}
 }
 
-.🥝-tree-item-description:is(.🥝-list-item-content) {
+.🥝TreeItemDescription:is(.🥝ListItemContent) {
 	@layer base {
 		color: var(
-			--🥝tree-item-color,
-			var(--🌀list-item-state--default, var(--stratakit-color-text-neutral-secondary))
+			--🥝TreeItem-color,
+			var(--🌀ListItem-state--default, var(--stratakit-color-text-neutral-secondary))
 		);
 	}
 }
 
-.🥝-tree-item-actions-container:is(.🥝-list-item-decoration) {
+.🥝TreeItemActionsContainer:is(.🥝ListItemDecoration) {
 	@layer base {
 		align-self: stretch;
 		position: sticky;
@@ -108,53 +108,50 @@
 		background-color: var(--stratakit-color-bg-page-base);
 		display: inline-flex;
 		/** If actions are made visible (by a parent), the actions container should also become visible. */
-		visibility: var(
-			--🥝tree-item-actions-container-visibility,
-			var(--🥝tree-item-action-visibility)
-		);
+		visibility: var(--🥝TreeItem-actions-container-visibility, var(--🥝TreeItem-action-visibility));
 
 		&::before {
 			position: absolute;
 			content: "";
 			inset: 0;
-			background-color: var(--🥝list-item-background-color);
+			background-color: var(--🥝ListItem-background-color);
 			z-index: -1;
 		}
 	}
 
 	@layer modifiers {
 		/* Actions container should be additionally made visible when any individual action is forcibly visible. */
-		&:where(:has(.🥝-tree-item-action[data-kiwi-visible="true"])) {
-			--🥝tree-item-actions-container-visibility: visible;
+		&:where(:has(.🥝TreeItemAction[data-_sk-visible="true"])) {
+			--🥝TreeItem-actions-container-visibility: visible;
 		}
 	}
 }
 
-.🥝-tree-item-action:is(.🥝-icon-button) {
+.🥝TreeItemAction:is(.🥝IconButton) {
 	@layer base {
-		visibility: var(--🥝tree-item-action-visibility);
+		visibility: var(--🥝TreeItem-action-visibility);
 		transition: visibility 16ms; /* This allows some time focus to "settle" before determining final visibility. */
 	}
 
 	@layer modifiers {
-		&:where([data-kiwi-visible="false"]) {
-			--🥝tree-item-action-visibility: hidden;
+		&:where([data-_sk-visible="false"]) {
+			--🥝TreeItem-action-visibility: hidden;
 		}
 
-		&:where([data-kiwi-visible="true"]) {
-			--🥝tree-item-action-visibility: visible;
+		&:where([data-_sk-visible="true"]) {
+			--🥝TreeItem-action-visibility: visible;
 		}
 	}
 }
 
-.🥝-tree-item-expander:is(.🥝-icon-button) {
+.🥝TreeItemExpander:is(.🥝IconButton) {
 	@layer base {
-		visibility: var(--🥝tree-item-expander-visibility);
+		visibility: var(--🥝TreeItem-expander-visibility);
 		z-index: 1; /* Ensure the expander is above the invisible content button */
 	}
 }
 
-.🥝-tree-item-decoration {
+.🥝TreeItemDecoration {
 	@layer base {
 		display: flex;
 		align-items: center;
@@ -163,25 +160,25 @@
 }
 
 @media (forced-colors: active) {
-	.🥝-tree-item-node:is(.🥝-list-item) {
-		--🥝list-item-background-color: Canvas;
-		--🥝tree-item-color: CanvasText;
+	.🥝TreeItemNode:is(.🥝ListItem) {
+		--🥝ListItem-background-color: Canvas;
+		--🥝TreeItem-color: CanvasText;
 
-		&:where([data-kiwi-error="true"], [data-kiwi-selected="true"]) {
+		&:where([data-_sk-error="true"], [data-_sk-selected="true"]) {
 			forced-color-adjust: none;
 		}
 
-		&:where([data-kiwi-error="true"]) {
-			.🥝-tree-item-content,
-			.🥝-tree-item-decoration {
+		&:where([data-_sk-error="true"]) {
+			.🥝TreeItemContent,
+			.🥝TreeItemDecoration {
 				background-color: Mark;
 				color: MarkText;
 			}
 		}
 
-		&:where([data-kiwi-selected="true"]) {
-			--🥝list-item-background-color: SelectedItem;
-			--🥝tree-item-color: SelectedItemText;
+		&:where([data-_sk-selected="true"]) {
+			--🥝ListItem-background-color: SelectedItem;
+			--🥝TreeItem-color: SelectedItemText;
 		}
 	}
 }

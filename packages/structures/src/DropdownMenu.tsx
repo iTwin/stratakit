@@ -56,7 +56,7 @@ interface DropdownMenuProps
  *
  * Example:
  * ```tsx
- * <DropdownMenu.Root>
+ * <DropdownMenu.Provider>
  *   <DropdownMenu.Button>Actions</DropdownMenu.Button>
  *
  *   <DropdownMenu.Content>
@@ -64,12 +64,12 @@ interface DropdownMenuProps
  *     <DropdownMenu.Item label="Edit" />
  *     <DropdownMenu.Item label="Delete" />
  *   </DropdownMenu.Content>
- * </DropdownMenu.Root>
+ * </DropdownMenu.Provider>
  * ```
  *
  * **Note**: `DropdownMenu` should not be used for navigation; it is only intended for actions.
  */
-function DropdownMenuRoot(props: DropdownMenuProps) {
+function DropdownMenuProvider(props: DropdownMenuProps) {
 	const {
 		children,
 		placement,
@@ -90,7 +90,7 @@ function DropdownMenuRoot(props: DropdownMenuProps) {
 		</MenuProvider>
 	);
 }
-DEV: DropdownMenuRoot.displayName = "DropdownMenu.Root";
+DEV: DropdownMenuProvider.displayName = "DropdownMenu.Provider";
 
 // ----------------------------------------------------------------------------
 
@@ -99,7 +99,7 @@ interface DropdownMenuContentProps extends FocusableProps {}
 /**
  * The actual "menu" portion containing the items shown within the dropdown.
  *
- * Should be used as a child of `DropdownMenu.Root`.
+ * Should be used as a child of `DropdownMenu.Provider`.
  */
 const DropdownMenuContent = forwardRef<"div", DropdownMenuContentProps>(
 	(props, forwardedRef) => {
@@ -116,7 +116,7 @@ const DropdownMenuContent = forwardRef<"div", DropdownMenuContentProps>(
 				gutter={4}
 				style={{ ...popoverProps.style, ...props.style }}
 				wrapperProps={{ popover: popoverProps.popover }}
-				className={cx("🥝-dropdown-menu", props.className)}
+				className={cx("🥝DropdownMenu", props.className)}
 				ref={forwardedRef}
 			/>
 		);
@@ -129,7 +129,7 @@ DEV: DropdownMenuContent.displayName = "DropdownMenu.Content";
 interface DropdownMenuButtonProps extends FocusableProps<"button"> {}
 
 /**
- * The button that triggers the dropdown menu to open.  Should be used as a child of `DropdownMenu.Root`.
+ * The button that triggers the dropdown menu to open. Should be used as a child of `DropdownMenu.Provider`.
  *
  * Example:
  * ```tsx
@@ -141,7 +141,7 @@ interface DropdownMenuButtonProps extends FocusableProps<"button"> {}
  *
  * ```tsx
  * <DropdownMenu.Button
- *   render={<IconButton variant="ghost" label="More" icon={<Icon href={…} />}  />}
+ *   render={<IconButton variant="ghost" label="More" icon={<Icon href={…} />} />}
  * />
  * ```
  */
@@ -163,7 +163,7 @@ const DropdownMenuButton = forwardRef<"button", DropdownMenuButtonProps>(
 						</Button>
 					)
 				}
-				className={cx("🥝-dropdown-menu-button", props.className)}
+				className={cx("🥝DropdownMenuButton", props.className)}
 				data-has-popover-open={open || undefined}
 				ref={forwardedRef}
 			/>
@@ -212,7 +212,7 @@ const DropdownMenuItem = forwardRef<"button", DropdownMenuItemProps>(
 								accessibleWhenDisabled
 								aria-describedby={dotId}
 								{...rest}
-								className={cx("🥝-dropdown-menu-item", props.className)}
+								className={cx("🥝DropdownMenuItem", props.className)}
 								ref={forwardedRef}
 							/>
 						}
@@ -225,7 +225,7 @@ const DropdownMenuItem = forwardRef<"button", DropdownMenuItemProps>(
 				{unstable_dot ? (
 					<ListItem.Decoration
 						render={
-							<Dot id={dotId} className="🥝-dropdown-menu-item-dot">
+							<Dot id={dotId} className="🥝DropdownMenuItemDot">
 								{unstable_dot}
 							</Dot>
 						}
@@ -275,7 +275,7 @@ const DropdownMenuItemShortcuts = forwardRef<
 		<ListItem.Decoration
 			render={<span />}
 			{...rest}
-			className={cx("🥝-dropdown-menu-item-shortcuts", props.className)}
+			className={cx("🥝DropdownMenuItemShortcuts", props.className)}
 			ref={forwardedRef}
 		>
 			{shortcutKeys.map(({ key, isSymbol }, index) => {
@@ -380,7 +380,7 @@ const DropdownMenuCheckboxItem = forwardRef<
 						<ButtonAk
 							accessibleWhenDisabled
 							{...rest}
-							className={cx("🥝-dropdown-menu-item", props.className)}
+							className={cx("🥝DropdownMenuItem", props.className)}
 							ref={forwardedRef}
 						/>
 					}
@@ -390,7 +390,7 @@ const DropdownMenuCheckboxItem = forwardRef<
 			{icon ? <DropdownMenuIcon icon={icon} /> : null}
 			<ListItem.Content render={<span />}>{label}</ListItem.Content>
 			<ListItem.Decoration
-				render={<Checkmark className="🥝-dropdown-menu-checkmark" />}
+				render={<Checkmark className="🥝DropdownMenuCheckmark" />}
 			/>
 		</MenuItemCheckbox>
 	);
@@ -400,7 +400,7 @@ DEV: DropdownMenuCheckboxItem.displayName = "DropdownMenu.CheckboxItem";
 // ----------------------------------------------------------------------------
 
 export {
-	DropdownMenuRoot as Root,
+	DropdownMenuProvider as Provider,
 	DropdownMenuButton as Button,
 	DropdownMenuContent as Content,
 	DropdownMenuItem as Item,

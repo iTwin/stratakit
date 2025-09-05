@@ -2,12 +2,14 @@
 
 Standalone `.svg` icons for StrataKit.
 
-Each icon is available as an SVG symbol sprite and contains multiple resolutions of the same icon using [`<symbol>`](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/symbol) elements. This allows the icon to be used at different sizes with increasing detail and quality.
+Each icon is available as an SVG containing multiple resolutions of the same icon using [`<symbol>`](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/symbol) elements. This allows the icon to be used at different sizes with increasing detail and quality.
 
 Currently supported symbols as identified by their `id` attribute values are:
 
 - `icon`
 - `icon-large`
+
+These symbols can be accessed by appending a hash (e.g. `#icon`, `#icon-large`) to the `.svg` URL.
 
 ## Installation
 
@@ -44,22 +46,25 @@ Preferred usage is with the `Icon` component from `@stratakit/foundations`:
    ```tsx
    import { Icon } from "@stratakit/foundations";
 
-   <Icon href={placeholderIcon} />
-
-   // Specify `size` prop to render the large icon:
-   <Icon href={placeholderIcon} size="large" />
+   <Icon href={placeholderIcon} />;
    ```
 
-   Alternatively, you can use the SVG sprite directly:
+   An optional hash can be specified to select a specific symbol from the `.svg`:
+
+   ```tsx
+   <Icon href={`${placeholderIcon}#icon`} />
+   <Icon href={`${placeholderIcon}#icon-large`} size="large" />
+   ```
+
+   Alternatively, you can `<use>` the SVG sprite directly (without `Icon`):
 
    ```tsx
    <svg>
-   	<use href={`${placeholderIcon}#icon`} />
+   	 <use href={`${placeholderIcon}#icon`} />
    </svg>
 
-   // To display the large icon:
    <svg>
-   	<use href={`${placeholderIcon}#icon-large`} />
+   	 <use href={`${placeholderIcon}#icon-large`} />
    </svg>
    ```
 

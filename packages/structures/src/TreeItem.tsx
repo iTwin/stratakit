@@ -360,7 +360,7 @@ const TreeItemRoot = React.memo(
 			() =>
 				({
 					...styleProp,
-					"--🥝tree-item-level": level,
+					"--🥝TreeItem-level": level,
 				}) as React.CSSProperties,
 			[styleProp, level],
 		);
@@ -375,7 +375,7 @@ const TreeItemRoot = React.memo(
 						aria-labelledby={labelId}
 						aria-describedby={describedBy}
 						aria-level={level}
-						className={cx("🥝-tree-item", props.className)}
+						className={cx("🥝TreeItem", props.className)}
 						style={style}
 						ref={forwardedRef}
 					/>
@@ -428,10 +428,10 @@ const TreeItemNode = React.memo((props: TreeItemNodeProps) => {
 	const [ref, renderActions] = useRenderActions();
 	return (
 		<ListItem.Root
-			data-kiwi-expanded={expanded}
-			data-kiwi-selected={selected}
-			data-kiwi-error={error ? true : undefined}
-			className="🥝-tree-item-node"
+			data-_sk-expanded={expanded}
+			data-_sk-selected={selected}
+			data-_sk-error={error ? true : undefined}
+			className="🥝TreeItemNode"
 			role={undefined}
 			ref={ref}
 		>
@@ -478,7 +478,7 @@ function TreeItemDecoration() {
 	const icon = React.useContext(TreeItemIconContext);
 	return icon || decorations ? (
 		<Role
-			className="🥝-tree-item-decoration"
+			className="🥝TreeItemDecoration"
 			id={decorationId}
 			render={
 				React.isValidElement(icon) ? (
@@ -504,7 +504,7 @@ const TreeItemContent = React.memo(() => {
 	const labelId = React.useContext(TreeItemLabelIdContext);
 	const label = React.useContext(TreeItemLabelContext);
 	return (
-		<ListItem.Content id={labelId} className="🥝-tree-item-content">
+		<ListItem.Content id={labelId} className="🥝TreeItemContent">
 			{label}
 		</ListItem.Content>
 	);
@@ -521,7 +521,7 @@ const TreeItemDescription = React.memo(() => {
 	const description = React.useContext(TreeItemDescriptionContext);
 	const descriptionId = React.useContext(TreeItemDescriptionIdContext);
 	return description ? (
-		<ListItem.Content id={descriptionId} className="🥝-tree-item-description">
+		<ListItem.Content id={descriptionId} className="🥝TreeItemDescription">
 			{description}
 		</ListItem.Content>
 	) : undefined;
@@ -546,7 +546,7 @@ const TreeItemActions = React.memo(
 				onKeyDown={useEventHandlers(props.onKeyDown, (e) =>
 					e.stopPropagation(),
 				)}
-				className={cx("🥝-tree-item-actions-container", props.className)}
+				className={cx("🥝TreeItemActionsContainer", props.className)}
 				ref={forwardedRef}
 				render={<Toolbar focusLoop={false} />}
 			>
@@ -596,7 +596,7 @@ const TreeItemActionMenu = React.memo(
 		if (!displayMenu) return null;
 		return (
 			<PopoverProvider placement="right-start">
-				<DropdownMenu.Root open={open} setOpen={setOpen}>
+				<DropdownMenu.Provider open={open} setOpen={setOpen}>
 					<DropdownMenu.Button
 						{...props}
 						onKeyDown={(e) => {
@@ -613,7 +613,7 @@ const TreeItemActionMenu = React.memo(
 						ref={forwardedRef}
 					/>
 					<TreeItemMenuActionsContent />
-				</DropdownMenu.Root>
+				</DropdownMenu.Provider>
 			</PopoverProvider>
 		);
 	}),
@@ -755,8 +755,8 @@ const TreeItemInlineAction = React.memo(
 				render={<ToolbarItem render={props.render} />}
 				dot={dot}
 				variant="ghost"
-				className={cx("🥝-tree-item-action", props.className)}
-				data-kiwi-visible={visible}
+				className={cx("🥝TreeItemAction", props.className)}
+				data-_sk-visible={visible}
 				ref={forwardedRef}
 			/>
 		);
@@ -777,7 +777,7 @@ const TreeItemExpander = forwardRef<"button", TreeItemExpanderProps>(
 					aria-hidden="true"
 					{...props}
 					onClick={useEventHandlers(props.onClick, (e) => e.stopPropagation())}
-					className={cx("🥝-tree-item-expander", props.className)}
+					className={cx("🥝TreeItemExpander", props.className)}
 					variant="ghost"
 					ref={forwardedRef}
 				>

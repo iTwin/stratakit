@@ -3,9 +3,9 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-.🥝-accordion-item {
-	--🥝accordion-item-gap: var(--stratakit-space-x3);
-	--🥝accordion-item-padding: var(--stratakit-space-x3);
+.🥝AccordionItem {
+	--🥝AccordionItem-gap: var(--stratakit-space-x3);
+	--🥝AccordionItem-padding: var(--stratakit-space-x3);
 
 	@layer base {
 		contain: paint;
@@ -22,13 +22,13 @@
 	}
 
 	@layer states {
-		&:where([data-kiwi-open="true"]) {
-			--🥝chevron-down-rotate: -0.5turn;
+		&:where([data-_sk-open="true"]) {
+			--🥝ChevronDown-rotate: -0.5turn;
 		}
 	}
 }
 
-.🥝-accordion-item-header {
+.🥝AccordionItemHeader {
 	--✨header-bg--hover: var(--stratakit-color-bg-glow-on-surface-neutral-hover);
 	--✨header-bg--pressed: var(--stratakit-color-bg-glow-on-surface-neutral-pressed);
 	--✨header-bg--default: transparent;
@@ -37,19 +37,19 @@
 		grid-row: header;
 		grid-column: marker-before-start / marker-after-end;
 
-		background-color: var(--🥝accordion-item-header-background-color);
+		background-color: var(--🥝AccordionItemHeader-background-color);
 		transition: background-color 150ms ease-out;
 		position: relative;
 		display: grid;
 		align-items: center;
-		padding: var(--🥝accordion-item-padding);
+		padding: var(--🥝AccordionItem-padding);
 
-		--🥝accordion-item-header-background-color: var(
-				--🌀accordion-item-header-state--default,
+		--🥝AccordionItemHeader-background-color: var(
+				--🌀AccordionItemHeader-state--default,
 				var(--✨header-bg--default)
 			)
-			var(--🌀accordion-item-header-state--hover, var(--✨header-bg--hover))
-			var(--🌀accordion-item-header-state--pressed, var(--✨header-bg--pressed));
+			var(--🌀AccordionItemHeader-state--hover, var(--✨header-bg--hover))
+			var(--🌀AccordionItemHeader-state--pressed, var(--✨header-bg--pressed));
 
 		/* TODO: improve the layout for the fallback (i.e. content doesn’t align with the label if there’s a decoration) */
 		grid-template-columns: inherit;
@@ -62,42 +62,42 @@
 	@layer states {
 		@media (any-hover: hover) {
 			&:where(:hover) {
-				--🌀accordion-item-header-state: var(--🌀accordion-item-header-state--hover);
+				--🌀AccordionItemHeader-state: var(--🌀AccordionItemHeader-state--hover);
 			}
 		}
 
 		&:where(:active) {
-			--🌀accordion-item-header-state: var(--🌀accordion-item-header-state--pressed);
+			--🌀AccordionItemHeader-state: var(--🌀AccordionItemHeader-state--pressed);
 		}
 	}
 
 	@layer base.🌀 {
 		/* Cyclic toggles for default/hover/pressed states. See https://kizu.dev/cyclic-toggles/ */
-		--🌀accordion-item-header-state: var(--🌀accordion-item-header-state--default);
-		--🌀accordion-item-header-state--default: var(--🌀accordion-item-header-state,);
-		--🌀accordion-item-header-state--hover: var(--🌀accordion-item-header-state,);
-		--🌀accordion-item-header-state--pressed: var(--🌀accordion-item-header-state,);
+		--🌀AccordionItemHeader-state: var(--🌀AccordionItemHeader-state--default);
+		--🌀AccordionItemHeader-state--default: var(--🌀AccordionItemHeader-state,);
+		--🌀AccordionItemHeader-state--hover: var(--🌀AccordionItemHeader-state,);
+		--🌀AccordionItemHeader-state--pressed: var(--🌀AccordionItemHeader-state,);
 	}
 }
 
-.🥝-accordion-item-marker {
+.🥝AccordionItemMarker {
 	@layer base {
 		grid-row: 1;
 		grid-column: marker-before;
-		margin-inline-end: var(--🥝accordion-item-gap);
+		margin-inline-end: var(--🥝AccordionItem-gap);
 		/* TODO: We can only use GhostAligner to apply alignment to block or inline, so we’re manually applying it here. */
-		margin-inline-start: calc(-1 * var(--🥝ghost-inline-offset));
+		margin-inline-start: calc(-1 * var(--🥝GhostAligner-inline-offset));
 		pointer-events: none;
 
-		:where(.🥝-accordion-item-heading, .🥝-accordion-item-button) ~ & {
+		:where(.🥝AccordionItemHeading, .🥝AccordionItemButton) ~ & {
 			grid-column: marker-after;
-			margin-inline-start: var(--🥝accordion-item-gap);
-			margin-inline-end: calc(-1 * var(--🥝ghost-inline-offset));
+			margin-inline-start: var(--🥝AccordionItem-gap);
+			margin-inline-end: calc(-1 * var(--🥝GhostAligner-inline-offset));
 		}
 	}
 }
 
-.🥝-accordion-item-label:is(.🥝-text) {
+.🥝AccordionItemLabel:is(.🥝Text) {
 	@layer base {
 		display: inline-block;
 		hyphens: auto;
@@ -107,7 +107,7 @@
 	}
 }
 
-.🥝-accordion-item-button {
+.🥝AccordionItemButton {
 	@layer base {
 		grid-column: header-content;
 		cursor: pointer;
@@ -134,33 +134,33 @@
 	}
 }
 
-.🥝-accordion-item-content {
+.🥝AccordionItemContent {
 	@layer base {
 		grid-row: content;
 		grid-column: body-content;
-		padding-block: var(--🥝accordion-item-padding);
+		padding-block: var(--🥝AccordionItem-padding);
 		text-box: cap alphabetic;
 		color: var(--stratakit-color-text-neutral-secondary);
 	}
 }
 
-.🥝-accordion-item-decoration {
+.🥝AccordionItemDecoration {
 	@layer base {
 		grid-column: decoration-before;
-		margin-inline-end: var(--🥝accordion-item-gap);
+		margin-inline-end: var(--🥝AccordionItem-gap);
 		display: flex;
 		align-items: center;
 		gap: var(--stratakit-space-x1);
 
-		:where(.🥝-accordion-item-heading, .🥝-accordion-item-button) ~ & {
+		:where(.🥝AccordionItemHeading, .🥝AccordionItemButton) ~ & {
 			grid-column: decoration-after;
-			margin-inline-start: var(--🥝accordion-item-gap);
+			margin-inline-start: var(--🥝AccordionItem-gap);
 			margin-inline-end: 0;
 		}
 	}
 }
 
-.🥝-accordion-item-heading {
+.🥝AccordionItemHeading {
 	@layer base {
 		grid-column: header-content;
 		margin-block: 0;

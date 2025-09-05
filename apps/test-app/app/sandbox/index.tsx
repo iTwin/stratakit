@@ -9,6 +9,7 @@ import { useSearchParams } from "react-router";
 import {
 	Anchor,
 	Button,
+	Divider,
 	Field,
 	IconButton,
 	Select,
@@ -21,6 +22,7 @@ import { Icon } from "@stratakit/foundations";
 import {
 	DropdownMenu,
 	unstable_ErrorRegion as ErrorRegion,
+	unstable_NavigationRail as NavigationRail,
 	Tabs,
 	unstable_Toolbar as Toolbar,
 	Tree,
@@ -39,6 +41,7 @@ import { toUpperCamelCase } from "~/~utils.tsx";
 import type { UseQueryResult } from "@tanstack/react-query";
 import type { MetaFunction } from "react-router";
 
+import bentleyIcon from "@stratakit/icons/bentley-systems.svg";
 import closeIcon from "@stratakit/icons/close.svg";
 import cursorIcon from "@stratakit/icons/cursor.svg";
 import cursorSelectIcon from "@stratakit/icons/cursor-select.svg";
@@ -135,16 +138,35 @@ function Header() {
 
 function PlatformBar() {
 	return (
-		<nav className={styles.platformBar}>
-			<div className={styles.logo}>
-				<Icon href={placeholderIcon} size="large" />
-			</div>
-			<div className={styles.tools}>
-				<Icon href={placeholderIcon} size="large" />
-				<Icon href={placeholderIcon} size="large" />
-				<Icon href={placeholderIcon} size="large" />
-			</div>
-		</nav>
+		<NavigationRail.Root className={styles.platformBar}>
+			<NavigationRail.Header>
+				<Icon href={`${bentleyIcon}#icon-large`} size="large" />
+				<NavigationRail.ToggleButton />
+			</NavigationRail.Header>
+
+			<NavigationRail.Content>
+				<NavigationRail.List>
+					<NavigationRail.ListItem>
+						<NavigationRail.Button icon={placeholderIcon} label="Item #1" />
+					</NavigationRail.ListItem>
+					<NavigationRail.ListItem>
+						<NavigationRail.Button icon={placeholderIcon} label="Item #2" />
+					</NavigationRail.ListItem>
+					<NavigationRail.ListItem>
+						<NavigationRail.Button icon={placeholderIcon} label="Item #3" />
+					</NavigationRail.ListItem>
+				</NavigationRail.List>
+
+				<NavigationRail.Footer>
+					<Divider />
+					<NavigationRail.List>
+						<NavigationRail.ListItem>
+							<NavigationRail.Button icon={placeholderIcon} label="Item #4" />
+						</NavigationRail.ListItem>
+					</NavigationRail.List>
+				</NavigationRail.Footer>
+			</NavigationRail.Content>
+		</NavigationRail.Root>
 	);
 }
 
@@ -154,20 +176,38 @@ function Canvas() {
 			<Toolbar.Group variant="solid">
 				<Toolbar.Item
 					render={
-						<IconButton label="Select" icon={cursorIcon} variant="ghost" />
+						<IconButton
+							label="Select"
+							icon={`${cursorIcon}#icon-large`}
+							variant="ghost"
+						/>
 					}
 				/>
 				<Toolbar.Item
 					render={
-						<IconButton label="Move" icon={cursorSelectIcon} variant="ghost" />
+						<IconButton
+							label="Move"
+							icon={`${cursorSelectIcon}#icon-large`}
+							variant="ghost"
+						/>
 					}
 				/>
 				<Toolbar.Item
-					render={<IconButton label="Draw" icon={drawIcon} variant="ghost" />}
+					render={
+						<IconButton
+							label="Draw"
+							icon={`${drawIcon}#icon-large`}
+							variant="ghost"
+						/>
+					}
 				/>
 				<Toolbar.Item
 					render={
-						<IconButton label="Measure" icon={measureIcon} variant="ghost" />
+						<IconButton
+							label="Measure"
+							icon={`${measureIcon}#icon-large`}
+							variant="ghost"
+						/>
 					}
 				/>
 			</Toolbar.Group>
@@ -377,7 +417,7 @@ function PanelContent(props: { data: { [key: string]: TreeItemData[] } }) {
 
 	return (
 		<TreeFilteringProvider allFilters={allFilters}>
-			<Tabs.Root selectOnMove={false} setSelectedId={setSelectedTreeId}>
+			<Tabs.Provider selectOnMove={false} setSelectedId={setSelectedTreeId}>
 				<Subheader
 					tabs={trees.map((tree) => (
 						<Tabs.Tab key={tree.name} id={tree.name}>
@@ -400,7 +440,7 @@ function PanelContent(props: { data: { [key: string]: TreeItemData[] } }) {
 						</Tabs.TabPanel>
 					);
 				})}
-			</Tabs.Root>
+			</Tabs.Provider>
 		</TreeFilteringProvider>
 	);
 }
@@ -887,7 +927,7 @@ function FiltersMenu() {
 	const filtersApplied = context.appliedFilters.length > 0;
 
 	return (
-		<DropdownMenu.Root>
+		<DropdownMenu.Provider>
 			<DropdownMenu.Button
 				render={
 					<IconButton
@@ -915,7 +955,7 @@ function FiltersMenu() {
 					);
 				})}
 			</DropdownMenu.Content>
-		</DropdownMenu.Root>
+		</DropdownMenu.Provider>
 	);
 }
 

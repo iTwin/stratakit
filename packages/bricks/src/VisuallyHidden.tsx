@@ -29,7 +29,7 @@ const VisuallyHidden = forwardRef<"span", VisuallyHiddenProps>(
 		return (
 			<Role.span
 				{...props}
-				className={cx("🥝-visually-hidden", props.className)}
+				className={cx("🥝VisuallyHidden", props.className)}
 				ref={forwardedRef}
 			/>
 		);

@@ -199,7 +199,7 @@ export function usePopoverApi({
 }) {
 	React.useEffect(
 		function syncPopoverWithOpenState() {
-			if (element?.popover && element?.isConnected) {
+			if (element?.popover && element?.isConnected && open !== undefined) {
 				element?.togglePopover?.(open);
 			}
 		},

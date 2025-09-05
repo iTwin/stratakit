@@ -6,7 +6,9 @@
 import * as React from "react";
 import { Link, Outlet, useMatches } from "react-router";
 import { Anchor, IconButton, Text, VisuallyHidden } from "@stratakit/bricks";
+import cx from "classnames";
 import {
+	GitHubLink,
 	RightSidebar,
 	ThemeSwitcher,
 	useLocalStorage,
@@ -61,7 +63,10 @@ export default function Page() {
 
 							<Text variant="body-md">{title}</Text>
 
-							<ThemeSwitcher className={styles.pushRight} />
+							<div className={cx(styles.actions, styles.pushRight)}>
+								<GitHubLink path={matches.at(-1)?.id ?? ""} />
+								<ThemeSwitcher />
+							</div>
 						</>
 					}
 				>

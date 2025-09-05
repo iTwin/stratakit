@@ -83,7 +83,7 @@ const LABEL_MAP = {
 	],
 	[LABELS.CODE_SNIPPET]: [],
 	[LABELS.DESCRIPTION]: ["packages/bricks/src/Description"],
-	[LABELS.DIALOG]: [],
+	[LABELS.DIALOG]: ["packages/structures/src/Dialog"],
 	[LABELS.DIVIDER]: [
 		"packages/bricks/src/Divider",
 		"packages/compat/src/Divider.tsx",
@@ -114,7 +114,7 @@ const LABEL_MAP = {
 	],
 	[LABELS.LIST]: [],
 	[LABELS.PAGINATION]: [],
-	[LABELS.PLATFORM_BAR]: [],
+	[LABELS.PLATFORM_BAR]: ["packages/structures/src/NavigationRail"],
 	[LABELS.POPOVER]: [],
 	[LABELS.PROGRESS_BAR]: [
 		"packages/bricks/src/Progress",

@@ -166,7 +166,7 @@
 			"page": {
 				"depth": {
 					"$type": "color",
-					"$value": "{p-color.gray.15}"
+					"$value": "{p-color.gray.10}"
 				},
 				"base": {
 					"$type": "color",
@@ -264,6 +264,10 @@
 					"disabled": {
 						"$type": "color",
 						"$value": "{p-color.black.4}"
+					},
+					"accent-active-hover": {
+						"$type": "color",
+						"$value": "{p-color.aurora.24}"
 					}
 				},
 				"strong": {

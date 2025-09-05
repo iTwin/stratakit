@@ -86,13 +86,13 @@ export const DropdownMenu = React.forwardRef((props, forwardedRef) => {
 	}, [menuItemsProp, close]);
 
 	return (
-		<SkDropdownMenu.Root open={open} setOpen={setOpen}>
+		<SkDropdownMenu.Provider open={open} setOpen={setOpen}>
 			<SkDropdownMenu.Button render={children} />
 
 			<SkDropdownMenu.Content {...rest} ref={forwardedRef}>
 				{menuItems}
 			</SkDropdownMenu.Content>
-		</SkDropdownMenu.Root>
+		</SkDropdownMenu.Provider>
 	);
 }) as PolymorphicForwardRefComponent<"div", DropdownMenuProps>;
 DEV: DropdownMenu.displayName = "DropdownMenu";

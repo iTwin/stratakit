@@ -6,6 +6,10 @@
 		scrollbar-gutter: stable;
 	}
 
+	main {
+		container: main / inline-size;
+	}
+
 	main a:where(:not(.not-content, .not-content *)) {
 		color: var(--stratakit-color-text-neutral-primary);
 		font-weight: 500;
@@ -13,5 +17,29 @@
 		&:not(:hover) {
 			text-decoration-color: var(--stratakit-color-text-neutral-tertiary);
 		}
+	}
+
+	table {
+		position: relative;
+		animation: --_scroll-shadow linear;
+		animation-timeline: scroll(self inline);
+
+		&::after {
+			content: "";
+			position: absolute;
+			inset: 0;
+			pointer-events: none;
+			background: var(--_overlay-bg);
+		}
+	}
+}
+
+@keyframes --_scroll-shadow {
+	from {
+		--_overlay-bg: linear-gradient(
+			to left,
+			var(--stratakit-color-bg-page-depth) 0%,
+			transparent 20%
+		);
 	}
 }

@@ -117,3 +117,12 @@ site-search kbd:not(kbd kbd) {
 aside .right-sidebar {
 	border: none;
 }
+
+.sl-markdown-content td:first-of-type {
+	min-inline-size: min(60cqi, 20ch);
+
+	@container (max-inline-size: 600px) {
+		overflow-wrap: anywhere;
+		hyphens: auto;
+	}
+}

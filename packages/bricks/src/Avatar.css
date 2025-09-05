@@ -7,6 +7,7 @@
 
 	@layer base {
 		--🥝Avatar-background-color: var(--stratakit-color-bg-mono-base);
+		--🥝Icon-color: var(--stratakit-color-icon-neutral-emphasis);
 
 		block-size: var(--🥝Avatar-size);
 		inline-size: var(--🥝Avatar-size);

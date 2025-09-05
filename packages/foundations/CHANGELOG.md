@@ -2,9 +2,8 @@
 
 ## 0.3.2
 
-### Patch Changes
-
 - [#928](https://github.com/iTwin/design-system/pull/928): Added `@layer reset` fallback to the top of `<head>` element to ensure correct layer order.
+- Updated internal code for `@stratakit/bricks@0.4.2` and `@stratakit/structures@0.4.2`.
 
 ## 0.3.1
 

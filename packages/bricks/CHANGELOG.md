@@ -2,10 +2,8 @@
 
 ## 0.4.2
 
-### Patch Changes
-
-- [#938](https://github.com/iTwin/design-system/pull/938): Explicitly set the avatar's icon color to prevent accidentally inheritting the wrong color.
-- [#934](https://github.com/iTwin/design-system/pull/934): Fix visual inconsistencies between convenience and composition methods of textbox.
+- [#938](https://github.com/iTwin/design-system/pull/938): Explicitly set the `Avatar`'s icon color to prevent accidentally inheriting the wrong color.
+- [#934](https://github.com/iTwin/design-system/pull/934): Fixed visual inconsistencies between convenience and composition methods of `TextBox`.
 - Updated dependencies:
   - @stratakit/foundations@0.3.2
 

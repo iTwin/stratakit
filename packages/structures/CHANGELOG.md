@@ -2,8 +2,6 @@
 
 ## 0.4.2
 
-### Patch Changes
-
 - [#931](https://github.com/iTwin/design-system/pull/931): `Dialog.Content` will now only scroll past a certain viewport height. On smaller viewports, the `Dialog.Root` will be scrollable instead.
 - Updated dependencies:
   - @stratakit/bricks@0.4.2

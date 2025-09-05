@@ -123,13 +123,15 @@
 	}
 
 	@layer states {
+		&:focus-visible::after {
+			outline: var(--🥝focus-outline);
+			outline-offset: var(--🥝focus-outline-offset);
+		}
+	}
+
+	@layer important {
 		&:focus-visible {
 			outline: 0 !important;
-
-			&::after {
-				outline: var(--🥝focus-outline);
-				outline-offset: var(--🥝focus-outline-offset);
-			}
 		}
 	}
 }

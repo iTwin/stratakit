@@ -10,7 +10,6 @@
 
 	@layer states {
 		&:focus-visible {
-			outline: none !important;
 			isolation: isolate;
 
 			&::before {
@@ -34,6 +33,12 @@
 			@supports not selector(:has(+ *)) {
 				--🥝TreeItem-action-visibility: visible;
 			}
+		}
+	}
+
+	@layer important {
+		&:focus-visible {
+			outline: none !important;
 		}
 	}
 }

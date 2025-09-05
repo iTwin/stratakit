@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.3.2
+
+### Patch Changes
+
+- [#928](https://github.com/iTwin/design-system/pull/928): Added `@layer reset` fallback to the top of `<head>` element to ensure correct layer order.
+
 ## 0.3.1
 
 - [#925](https://github.com/iTwin/design-system/pull/925): Added `portalContainer` prop to the `Root` component.

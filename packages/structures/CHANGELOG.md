@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.4.2
+
+- [#931](https://github.com/iTwin/design-system/pull/931): `Dialog.Content` will now only scroll past a certain viewport height. On smaller viewports, the `Dialog.Root` will be scrollable instead.
+- Updated dependencies:
+  - @stratakit/bricks@0.4.2
+  - @stratakit/foundations@0.3.2
+
 ## 0.4.1
 
 - [#851](https://github.com/iTwin/design-system/pull/851): Added `Dialog` component that displays custom content in a window overlay over the primary window or another dialog window. Currently only modal dialog type is supported.

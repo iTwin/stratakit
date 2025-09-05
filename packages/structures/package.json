@@ -25,6 +25,12 @@
 			"development": "./dist/DEV/Banner.js",
 			"default": "./dist/Banner.js"
 		},
+		"./unstable_Card": {
+			"@stratakit/source": "./src/Card.tsx",
+			"types": "./dist/Card.d.ts",
+			"development": "./dist/DEV/Card.js",
+			"default": "./dist/Card.js"
+		},
 		"./Chip": {
 			"@stratakit/source": "./src/Chip.tsx",
 			"types": "./dist/Chip.d.ts",

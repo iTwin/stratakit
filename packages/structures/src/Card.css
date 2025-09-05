@@ -1,0 +1,44 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+
+.🥝Card {
+	@layer base {
+		display: grid;
+
+		min-inline-size: 256px;
+		max-inline-size: 334px;
+		border-radius: 8px;
+
+		background-color: var(--stratakit-color-bg-elevation-base);
+		box-shadow: var(--stratakit-shadow-surface-xs);
+	}
+}
+
+.🥝CardTitle {
+	@layer base {
+		@apply --typography("body-sm");
+		font-weight: 500;
+
+		display: grid;
+		align-items: center;
+
+		min-block-size: var(--stratakit-space-x10);
+		padding-inline: var(--stratakit-space-x4);
+
+		border-block-end: 1px solid var(--stratakit-color-border-neutral-muted);
+	}
+}
+
+.🥝CardBody {
+	@layer base {
+		padding: var(--stratakit-space-x4);
+	}
+}
+
+@media (forced-colors: active) {
+	.🥝Card {
+		border: 1px solid;
+	}
+}

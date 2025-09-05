@@ -6,6 +6,7 @@
 
 export * as unstable_AccordionItem from "./AccordionItem.js";
 export { default as unstable_Banner } from "./Banner.js";
+export * as unstable_Card from "./Card.js";
 export { default as Chip } from "./Chip.js";
 export * as unstable_Dialog from "./Dialog.js";
 export * as DropdownMenu from "./DropdownMenu.js";

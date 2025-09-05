@@ -27,6 +27,7 @@ export const components = {
 	structures: [
 		"AccordionItem",
 		"Banner",
+		"Card",
 		"Chip",
 		"Dialog",
 		"DropdownMenu",

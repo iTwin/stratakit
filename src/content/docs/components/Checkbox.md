@@ -1,5 +1,7 @@
 ---
 title: Checkbox
 description: Checkbox is a control for single and multiple selections.
-demoSlug: tests/checkbox
+links:
+  demo: tests/checkbox
+  github: packages/bricks/src/Checkbox.tsx
 ---

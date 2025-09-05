@@ -7,7 +7,14 @@ export const collections = {
 		loader: docsLoader(),
 		schema: docsSchema({
 			extend: z.object({
-				demoSlug: z.string().optional(),
+				status: z.enum(["ready", "not ready"]).optional(),
+				links: z
+					.object({
+						demo: z.string().optional(),
+						github: z.string().optional(),
+						figma: z.string().optional(),
+					})
+					.optional(),
 			}),
 		}),
 	}),

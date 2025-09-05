@@ -1,5 +1,7 @@
 ---
 title: Badge
 description: Badges show notifications, counts, or status information.
-demoSlug: tests/badge
+links:
+  demo: tests/badge
+  github: packages/bricks/src/Badge.tsx
 ---

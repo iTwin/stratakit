@@ -1,5 +1,7 @@
 ---
 title: Banner
 description: Banners are used to highlight important information in a prominent way.
-demoSlug: tests/banner
+links:
+  demo: tests/banner
+  github: packages/structures/src/Banner.tsx
 ---

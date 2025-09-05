@@ -1,5 +1,7 @@
 ---
 title: Divider
 description: Dividers are used to separate actions or information.
-demoSlug: tests/divider
+links:
+  demo: tests/divider
+  github: packages/bricks/src/Divider.tsx
 ---

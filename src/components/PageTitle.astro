@@ -3,7 +3,20 @@
 
 const { entry } = Astro.locals.starlightRoute;
 
+const status = entry.data.status;
+const links = entry.data.links || {};
+
 const demoBase = "https://itwin.github.io/design-system/";
+const demoUrl = links.demo ? demoBase + links.demo : null;
+
+const githubBase = "https://github.com/iTwin/design-system/blob/main/";
+const githubUrl = links.github?.startsWith("https://")
+	? links.github
+	: links.github
+		? githubBase + links.github
+		: null;
+
+const figmaUrl = links.figma;
 ---
 
 <hgroup>
@@ -11,7 +24,32 @@ const demoBase = "https://itwin.github.io/design-system/";
 	{entry.data.description && <p>{entry.data.description}</p>}
 </hgroup>
 
-{entry.data.demoSlug && <a href={demoBase + entry.data.demoSlug}>View demo page</a>}
+{
+	Object.keys(links).length > 0 && (
+		<ul role="list">
+			{status && (
+				<li>
+					Component status: <strong data-status={status}>{status}</strong>
+				</li>
+			)}
+			{demoUrl && (
+				<li>
+					<a href={demoUrl}>View demo page</a>
+				</li>
+			)}
+			{githubUrl && (
+				<li>
+					<a href={githubUrl}>View GitHub source</a>
+				</li>
+			)}
+			{figmaUrl && (
+				<li>
+					<a href={figmaUrl}>View Figma component</a>
+				</li>
+			)}
+		</ul>
+	)
+}
 
 <style>
 	@layer overrides {
@@ -28,9 +66,26 @@ const demoBase = "https://itwin.github.io/design-system/";
 			color: var(--stratakit-color-text-neutral-secondary);
 		}
 
-		a {
-			display: block;
-			color: var(--sl-color-text-accent);
+		ul {
+			list-style-type: none;
+			display: grid;
+			gap: var(--stratakit-space-x1);
+
+			a::after {
+				content: "↗";
+				content: "↗" / "External";
+				position: absolute;
+				margin-inline-start: 2px;
+			}
+		}
+
+		strong[data-status] {
+			display: inline-block;
+			padding-inline: 8px;
+			padding-block: 2px;
+			margin-block: -3px;
+			border-radius: 9999px;
+			border: 1px solid var(--stratakit-color-border-neutral-base);
 		}
 	}
 </style>

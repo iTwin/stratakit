@@ -1,5 +1,7 @@
 ---
 title: Toolbar
 description: Toolbars are used for grouping related tools in applications.
-demoSlug: tests/toolbar
+links:
+  demo: tests/toolbar
+  github: packages/structures/src/Toolbar.tsx
 ---

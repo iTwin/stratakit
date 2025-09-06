@@ -2,4 +2,4 @@
 "@stratakit/structures": patch
 ---
 
-Set `forced-colors` for `.🥝NavigationRailItemAction` when `aria-current="page"`.
+Fixed `forced-colors` styling for `NavigationRail.Anchor` in `active` state.

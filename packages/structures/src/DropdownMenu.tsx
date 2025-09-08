@@ -11,6 +11,7 @@ import {
 	MenuItem,
 	MenuItemCheckbox,
 	MenuProvider,
+	useMenuContext,
 	useMenuStore,
 } from "@ariakit/react/menu";
 import { useStoreState } from "@ariakit/react/store";
@@ -467,11 +468,15 @@ const DropdownMenuSubmenu = forwardRef<"div", DropdownMenuSubmenuProps>(
 			return () => setStore(undefined);
 		}, [store, setStore]);
 
+		const parent = useMenuContext();
+		const popoverElement = useStoreState(parent, "popoverElement");
 		return (
 			<MenuProvider store={store}>
 				<Menu
 					store={store}
-					portal={false} // Disable due to span created in a `role="menu"` (see `preserveTabOrder`)
+					portal={true}
+					portalElement={popoverElement}
+					preserveTabOrder={false}
 					unmountOnHide
 					{...props}
 					gutter={2}

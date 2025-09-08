@@ -35,6 +35,7 @@ export default defineConfig({
 			editLink: {
 				baseUrl: "https://github.com/iTwin/stratakit-docs/edit/main/",
 			},
+			lastUpdated: true,
 			customCss: ["./src/styles/index.css"],
 		}),
 	],

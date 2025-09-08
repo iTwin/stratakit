@@ -923,12 +923,6 @@ packages:
         integrity: sha512-sGnvb5dmrJaKEZ+LDIpguvdX3bDlEllmv4/ClQ9awcmCZrlx5jQyyMWFM5kBI+EyNOCDDiKk8il0zeuX3Zlg/w==,
       }
 
-  "@floating-ui/dom@1.7.3":
-    resolution:
-      {
-        integrity: sha512-uZA413QEpNuhtb3/iIKoYMSK07keHPYeXF02Zhd6e213j+d1NamLix/mCLxBUDW/Gx52sPH2m+chlUsyaBs/Ag==,
-      }
-
   "@floating-ui/dom@1.7.4":
     resolution:
       {
@@ -2603,13 +2597,6 @@ packages:
         integrity: sha512-Cat63mxsVJlzYvN51JmVXIgNoUokrIaT2zLclCXjRd8boZ0004U4KCs/sToJ75C6sdlByWxpYnb5Boif1VSFew==,
       }
 
-  tinyglobby@0.2.14:
-    resolution:
-      {
-        integrity: sha512-tX5e7OM1HnYr2+a2C/4V0htOcSQcoSTH9KgJnVvNm5zm/cyEWKJ7j7YutsH9CxMdtOkkLFy2AHrMci9IM8IPZQ==,
-      }
-    engines: { node: ">=12.0.0" }
-
   tinyglobby@0.2.15:
     resolution:
       {
@@ -2931,7 +2918,7 @@ snapshots:
   "@ariakit/react-core@0.4.18(react-dom@19.1.1(react@19.1.1))(react@19.1.1)":
     dependencies:
       "@ariakit/core": 0.4.15
-      "@floating-ui/dom": 1.7.3
+      "@floating-ui/dom": 1.7.4
       react: 19.1.1
       react-dom: 19.1.1(react@19.1.1)
       use-sync-external-store: 1.5.0(react@19.1.1)
@@ -3252,11 +3239,6 @@ snapshots:
     dependencies:
       "@floating-ui/utils": 0.2.10
 
-  "@floating-ui/dom@1.7.3":
-    dependencies:
-      "@floating-ui/core": 1.7.3
-      "@floating-ui/utils": 0.2.10
-
   "@floating-ui/dom@1.7.4":
     dependencies:
       "@floating-ui/core": 1.7.3
@@ -3457,7 +3439,7 @@ snapshots:
       react-router: 7.8.2(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
       semver: 7.7.2
       set-cookie-parser: 2.7.1
-      tinyglobby: 0.2.14
+      tinyglobby: 0.2.15
       valibot: 0.41.0(typescript@5.9.2)
       vite: 7.1.5(@types/node@22.18.1)(lightningcss@1.30.1)(tsx@4.20.5)(yaml@2.6.1)
       vite-node: 3.2.4(@types/node@22.18.1)(lightningcss@1.30.1)(tsx@4.20.5)(yaml@2.6.1)
@@ -4197,11 +4179,6 @@ snapshots:
       ansi-regex: 6.2.0
 
   tabbable@6.2.0: {}
-
-  tinyglobby@0.2.14:
-    dependencies:
-      fdir: 6.5.0(picomatch@4.0.3)
-      picomatch: 4.0.3
 
   tinyglobby@0.2.15:
     dependencies:

@@ -27,9 +27,9 @@ export default definePage(
 						label="Filter"
 						unstable_dot="Some filters applied"
 					/>
-					<DropdownMenu.SubmenuItem
+					<DropdownMenu.Item
 						label="More"
-						menu={
+						submenu={
 							<DropdownMenu.Content>
 								<DropdownMenu.Item shortcuts="Command+C" label="Clone" />
 								<DropdownMenu.Item disabled label="Archive" />
@@ -111,15 +111,15 @@ function SubmenuTest({ defaultOpen }: VariantProps) {
 				<DropdownMenu.Content>
 					<DropdownMenu.Item label="Item 1" />
 					<DropdownMenu.Item label="Item 2" />
-					<DropdownMenu.SubmenuItem
+					<DropdownMenu.Item
 						label="Item 3"
-						menu={
+						submenu={
 							<DropdownMenu.Provider defaultOpen={!!defaultOpen}>
 								<DropdownMenu.Content>
 									<DropdownMenu.Item label="Item 3_1" />
-									<DropdownMenu.SubmenuItem
+									<DropdownMenu.Item
 										label="Item 3_2"
-										menu={
+										submenu={
 											<DropdownMenu.Content>
 												<DropdownMenu.Item label="Item 3_2_1" />
 												<DropdownMenu.Item label="Item 3_2_2" />

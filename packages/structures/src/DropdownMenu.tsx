@@ -196,6 +196,13 @@ interface DropdownMenuItemProps
 
 	/** Dot shown on the right end of the menu-item. Value will be used as accessible description. */
 	unstable_dot?: string;
+
+	/**
+	 * The submenu to display when the item is activated. Must be a `DropdownMenu.Content` component.
+	 *
+	 * Wrap with `DropdownMenu.Provider` to control the state of a submenu.
+	 */
+	submenu?: React.ReactNode;
 }
 
 /**
@@ -206,43 +213,86 @@ interface DropdownMenuItemProps
  * <DropdownMenu.Item label="Add" />
  * <DropdownMenu.Item label="Edit" />
  * ```
+ *
+ * Use the `submenu` prop to display a submenu.
+ *
+ * Example:
+ * ```tsx
+ * <DropdownMenu.Item
+ *   label="More"
+ *   submenu={
+ *     <DropdownMenu.Content>
+ *       <DropdownMenu.Item label="Add" />
+ *       <DropdownMenu.Item label="Edit" />
+ *     </DropdownMenu.Content>
+ *   }
+ * />
+ * ```
  */
 const DropdownMenuItem = forwardRef<"button", DropdownMenuItemProps>(
 	(props, forwardedRef) => {
-		const { label, shortcuts, icon, unstable_dot, ...rest } = props;
+		const { label, shortcuts, icon, unstable_dot, submenu, ...rest } = props;
 
 		const dotId = React.useId();
 
+		const parent = React.useContext(DropdownMenuContext);
+		const defaultSubmenuStore = useMenuStore({
+			parent,
+		});
+		const [submenuStore, setSubmenuStore] = React.useState<MenuStore>();
+		const store = submenuStore ?? defaultSubmenuStore;
+		const open = useStoreState(store, "open");
+
 		return (
-			<MenuItem
-				accessibleWhenDisabled
-				render={
-					<ListItem.Root
-						render={
-							<ButtonAk
-								accessibleWhenDisabled
-								aria-describedby={dotId}
-								{...rest}
-								className={cx("🥝DropdownMenuItem", props.className)}
-								ref={forwardedRef}
-							/>
-						}
-					/>
-				}
-			>
-				{icon ? <DropdownMenuIcon icon={icon} /> : null}
-				<ListItem.Content render={<span />}>{label}</ListItem.Content>
-				{shortcuts ? <DropdownMenuItemShortcuts shortcuts={shortcuts} /> : null}
-				{unstable_dot ? (
-					<ListItem.Decoration
-						render={
-							<Dot id={dotId} className="🥝DropdownMenuItemDot">
-								{unstable_dot}
-							</Dot>
-						}
-					/>
-				) : null}
-			</MenuItem>
+			<>
+				<MenuItem
+					accessibleWhenDisabled
+					render={
+						<ListItem.Root
+							render={
+								<ButtonAk
+									accessibleWhenDisabled
+									aria-describedby={dotId}
+									{...rest}
+									render={
+										submenu ? (
+											<MenuButton render={props.render} store={store} />
+										) : (
+											props.render
+										)
+									}
+									className={cx("🥝DropdownMenuItem", props.className)}
+									data-has-popover-open={open || undefined}
+									ref={forwardedRef}
+								/>
+							}
+						/>
+					}
+				>
+					{icon ? <DropdownMenuIcon icon={icon} /> : null}
+					<ListItem.Content render={<span />}>{label}</ListItem.Content>
+					{shortcuts ? (
+						<DropdownMenuItemShortcuts shortcuts={shortcuts} />
+					) : null}
+					{unstable_dot ? (
+						<ListItem.Decoration
+							render={
+								<Dot id={dotId} className="🥝DropdownMenuItemDot">
+									{unstable_dot}
+								</Dot>
+							}
+						/>
+					) : null}
+					{submenu ? <ListItem.Decoration render={<ChevronRight />} /> : null}
+				</MenuItem>
+				<DropdownMenuSubmenuItemContext.Provider
+					value={React.useMemo(() => ({ setSubmenuStore }), [])}
+				>
+					<DropdownMenuContext.Provider value={store}>
+						{submenu}
+					</DropdownMenuContext.Provider>
+				</DropdownMenuSubmenuItemContext.Provider>
+			</>
 		);
 	},
 );
@@ -417,77 +467,6 @@ const DropdownMenuSubmenuItemContext = React.createContext<
 	| undefined
 >(undefined);
 
-interface DropdownMenuSubmenuItemProps
-	extends Omit<FocusableProps<"button">, "children">,
-		Pick<DropdownMenuItemProps, "label"> {
-	/**
-	 * The submenu to display when the item is activated. Must be a `DropdownMenu.Content` component.
-	 *
-	 * Wrap with `DropdownMenu.Provider` to control the state of a submenu.
-	 */
-	menu?: React.ReactNode;
-}
-
-/**
- * A single menu item within the dropdown menu that contains a submenu. Should be used as a child of `DropdownMenu.Content`.
- *
- * Example:
- * ```tsx
- * <DropdownMenu.SubmenuItem label="More"
- *   menu={
- *     <DropdownMenu.Content>
- *       <DropdownMenu.Item label="Add" />
- *       <DropdownMenu.Item label="Edit" />
- *     </DropdownMenu.Content>
- *   }
- * />
- * ```
- */
-const DropdownMenuSubmenuItem = forwardRef<
-	"button",
-	DropdownMenuSubmenuItemProps
->((props, forwardedRef) => {
-	const { accessibleWhenDisabled = true, label, menu, ...rest } = props;
-
-	const parent = React.useContext(DropdownMenuContext);
-	const defaultSubmenuStore = useMenuStore({
-		parent,
-	});
-	const [submenuStore, setSubmenuStore] = React.useState<MenuStore>();
-	const store = submenuStore ?? defaultSubmenuStore;
-
-	const open = useStoreState(store, "open");
-	return (
-		<>
-			<MenuButton
-				accessibleWhenDisabled={accessibleWhenDisabled}
-				{...rest}
-				render={
-					<MenuItem
-						accessibleWhenDisabled={accessibleWhenDisabled}
-						render={<ListItem.Root render={props.render ?? <button />} />}
-					/>
-				}
-				store={store}
-				className={cx("🥝DropdownMenuItem", props.className)}
-				data-has-popover-open={open || undefined}
-				ref={forwardedRef}
-			>
-				<ListItem.Content render={<span />}>{label}</ListItem.Content>
-				<ListItem.Decoration render={<ChevronRight />} />
-			</MenuButton>
-			<DropdownMenuSubmenuItemContext.Provider
-				value={React.useMemo(() => ({ setSubmenuStore }), [])}
-			>
-				<DropdownMenuContext.Provider value={store}>
-					{menu}
-				</DropdownMenuContext.Provider>
-			</DropdownMenuSubmenuItemContext.Provider>
-		</>
-	);
-});
-DEV: DropdownMenuSubmenuItem.displayName = "DropdownMenu.SubmenuItem";
-
 // ----------------------------------------------------------------------------
 
 export {
@@ -496,5 +475,4 @@ export {
 	DropdownMenuContent as Content,
 	DropdownMenuItem as Item,
 	DropdownMenuCheckboxItem as CheckboxItem,
-	DropdownMenuSubmenuItem as SubmenuItem,
 };

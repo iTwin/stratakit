@@ -114,22 +114,20 @@ function SubmenuTest({ defaultOpen }: VariantProps) {
 					<DropdownMenu.Item
 						label="Item 3"
 						submenu={
-							<DropdownMenu.Provider defaultOpen={!!defaultOpen}>
-								<DropdownMenu.Submenu>
-									<DropdownMenu.Item label="Item 3_1" />
-									<DropdownMenu.Item
-										label="Item 3_2"
-										submenu={
-											<DropdownMenu.Submenu>
-												<DropdownMenu.Item label="Item 3_2_1" />
-												<DropdownMenu.Item label="Item 3_2_2" />
-												<DropdownMenu.Item label="Item 3_2_3" />
-											</DropdownMenu.Submenu>
-										}
-									/>
-									<DropdownMenu.Item label="Item 3_3" />
-								</DropdownMenu.Submenu>
-							</DropdownMenu.Provider>
+							<DropdownMenu.Submenu>
+								<DropdownMenu.Item label="Item 3_1" />
+								<DropdownMenu.Item
+									label="Item 3_2"
+									submenu={
+										<DropdownMenu.Submenu>
+											<DropdownMenu.Item label="Item 3_2_1" />
+											<DropdownMenu.Item label="Item 3_2_2" />
+											<DropdownMenu.Item label="Item 3_2_3" />
+										</DropdownMenu.Submenu>
+									}
+								/>
+								<DropdownMenu.Item label="Item 3_3" />
+							</DropdownMenu.Submenu>
 						}
 					/>
 				</DropdownMenu.Content>

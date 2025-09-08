@@ -30,7 +30,7 @@ export default definePage(
 					<DropdownMenu.Item
 						label="More"
 						submenu={
-							<DropdownMenu.Content>
+							<DropdownMenu.Submenu>
 								<DropdownMenu.Item shortcuts="Command+C" label="Clone" />
 								<DropdownMenu.Item disabled label="Archive" />
 								<DropdownMenu.Item label="Export" />
@@ -38,7 +38,7 @@ export default definePage(
 									label="Import"
 									unstable_dot="Some filters applied"
 								/>
-							</DropdownMenu.Content>
+							</DropdownMenu.Submenu>
 						}
 					/>
 				</DropdownMenu.Content>
@@ -115,20 +115,20 @@ function SubmenuTest({ defaultOpen }: VariantProps) {
 						label="Item 3"
 						submenu={
 							<DropdownMenu.Provider defaultOpen={!!defaultOpen}>
-								<DropdownMenu.Content>
+								<DropdownMenu.Submenu>
 									<DropdownMenu.Item label="Item 3_1" />
 									<DropdownMenu.Item
 										label="Item 3_2"
 										submenu={
-											<DropdownMenu.Content>
+											<DropdownMenu.Submenu>
 												<DropdownMenu.Item label="Item 3_2_1" />
 												<DropdownMenu.Item label="Item 3_2_2" />
 												<DropdownMenu.Item label="Item 3_2_3" />
-											</DropdownMenu.Content>
+											</DropdownMenu.Submenu>
 										}
 									/>
 									<DropdownMenu.Item label="Item 3_3" />
-								</DropdownMenu.Content>
+								</DropdownMenu.Submenu>
 							</DropdownMenu.Provider>
 						}
 					/>

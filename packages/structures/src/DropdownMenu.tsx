@@ -99,9 +99,9 @@ interface DropdownMenuContentProps extends FocusableProps {}
 /**
  * The actual "menu" portion containing the items shown within the dropdown.
  *
- * Should be used as a child of `DropdownMenu.Provider` or be passed into the `menu` prop of `DropdownMenu.SubmenuItem` when used as a submenu.
+ * Should be used as a child of `DropdownMenu.Provider`.
  *
- * Should include one or more of `DropdownMenu.Item`, `DropdownMenu.CheckboxItem`, and `DropdownMenu.SubmenuItem` as direct descendants.
+ * Should include one or more of `DropdownMenu.Item`, `DropdownMenu.CheckboxItem` as direct descendants.
  */
 const DropdownMenuContent = forwardRef<"div", DropdownMenuContentProps>(
 	(props, forwardedRef) => {
@@ -109,20 +109,15 @@ const DropdownMenuContent = forwardRef<"div", DropdownMenuContentProps>(
 
 		const open = useStoreState(store, "open");
 		const popoverElement = useStoreState(store, "popoverElement");
-		const hasParentMenu = !!store?.parent;
-		const popoverProps = usePopoverApi({
-			element: hasParentMenu ? undefined : popoverElement,
-			open,
-		});
+		const popoverProps = usePopoverApi({ element: popoverElement, open });
 
 		return (
 			<Menu
 				store={store}
-				portal={!hasParentMenu} // Disable due to span created in a `role="menu"` (see `preserveTabOrder`)
+				portal={true}
 				unmountOnHide
 				{...props}
-				gutter={hasParentMenu ? 2 : 4}
-				shift={hasParentMenu ? -4 : 0}
+				gutter={4}
 				style={{ ...popoverProps.style, ...props.style }}
 				wrapperProps={{ popover: popoverProps.popover }}
 				className={cx("🥝DropdownMenu", props.className)}
@@ -198,9 +193,7 @@ interface DropdownMenuItemProps
 	unstable_dot?: string;
 
 	/**
-	 * The submenu to display when the item is activated. Must be a `DropdownMenu.Content` component.
-	 *
-	 * Wrap with `DropdownMenu.Provider` to control the state of a submenu.
+	 * The submenu to display when the item is activated. Must be a `DropdownMenu.Submenu` component.
 	 */
 	submenu?: React.ReactNode;
 }
@@ -221,10 +214,10 @@ interface DropdownMenuItemProps
  * <DropdownMenu.Item
  *   label="More"
  *   submenu={
- *     <DropdownMenu.Content>
+ *     <DropdownMenu.Submenu>
  *       <DropdownMenu.Item label="Add" />
  *       <DropdownMenu.Item label="Edit" />
- *     </DropdownMenu.Content>
+ *     </DropdownMenu.Submenu>
  *   }
  * />
  * ```
@@ -469,10 +462,42 @@ const DropdownMenuSubmenuItemContext = React.createContext<
 
 // ----------------------------------------------------------------------------
 
+interface DropdownMenuSubmenuProps extends FocusableProps {}
+
+/**
+ * The submenu portion containing the nested submenu items.
+ *
+ * Should be passed into the `submenu` prop of `DropdownMenu.Item`.
+ *
+ * Should include one or more of `DropdownMenu.Item`, `DropdownMenu.CheckboxItem` as direct descendants.
+ */
+const DropdownMenuSubmenu = forwardRef<"div", DropdownMenuSubmenuProps>(
+	(props, forwardedRef) => {
+		const store = React.useContext(DropdownMenuContext);
+
+		return (
+			<Menu
+				store={store}
+				portal={false} // Disable due to span created in a `role="menu"` (see `preserveTabOrder`)
+				unmountOnHide
+				{...props}
+				gutter={2}
+				shift={-4}
+				className={cx("🥝DropdownMenu", props.className)}
+				ref={forwardedRef}
+			/>
+		);
+	},
+);
+DEV: DropdownMenuSubmenu.displayName = "DropdownMenu.Submenu";
+
+// ----------------------------------------------------------------------------
+
 export {
 	DropdownMenuProvider as Provider,
 	DropdownMenuButton as Button,
 	DropdownMenuContent as Content,
 	DropdownMenuItem as Item,
 	DropdownMenuCheckboxItem as CheckboxItem,
+	DropdownMenuSubmenu as Submenu,
 };

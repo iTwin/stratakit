@@ -239,3 +239,14 @@
 		margin-block-start: auto;
 	}
 }
+
+@media (forced-colors: active) {
+	.🥝NavigationRailItemAction {
+		&:where([aria-current="page"]) {
+			forced-color-adjust: none;
+			background-color: SelectedItem;
+			border-color: LinkText;
+			color: SelectedItemText;
+		}
+	}
+}

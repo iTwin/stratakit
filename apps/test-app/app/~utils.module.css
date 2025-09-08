@@ -5,7 +5,10 @@
 
 .list {
 	position: relative;
-	--indent-guide-left-inset: calc(var(--stratakit-space-x1) + 0.5rem); /* 4px button left padding + 1/2 of SVG icon size */
+	--indent-guide-left-inset: calc(
+		var(--stratakit-space-x1) +
+		0.5rem
+	); /* 4px button left padding + 1/2 of SVG icon size */
 
 	/* Indent guide */
 	&::before {
@@ -22,7 +25,10 @@
 	min-block-size: 2rem;
 	position: relative;
 	border-radius: 4px;
-	padding-inline-start: calc(var(--stratakit-space-x2) + 1rem); /* 8px padding + 1rem back icon size */
+	padding-inline-start: calc(
+		var(--stratakit-space-x2) +
+		1rem
+	); /* 8px padding + 1rem back icon size */
 
 	/* Outline listItem when the listItemLink has focus */
 	&:has(.listItemLink:focus-visible) {
@@ -58,7 +64,10 @@
 			inline-size: 3px;
 			border-radius: 9999px;
 			position: absolute;
-			inset-inline-start: calc(var(--indent-guide-left-inset) - 1px); /* Indent guide inset - 1px for centering */
+			inset-inline-start: calc(
+				var(--indent-guide-left-inset) -
+				1px
+			); /* Indent guide inset - 1px for centering */
 		}
 
 		@media (forced-colors: active) {

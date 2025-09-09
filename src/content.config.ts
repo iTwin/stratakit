@@ -1,4 +1,4 @@
-import { defineCollection, z } from "astro:content";
+import { defineCollection, reference, z } from "astro:content";
 import { docsLoader } from "@astrojs/starlight/loaders";
 import { docsSchema } from "@astrojs/starlight/schema";
 
@@ -15,6 +15,7 @@ export const collections = {
 						figma: z.string().optional(),
 					})
 					.optional(),
+				related: z.array(reference("docs")).optional(),
 			}),
 		}),
 	}),

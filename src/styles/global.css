@@ -34,6 +34,19 @@
 			opacity: var(--_overlay-bg-opacity, 0);
 		}
 	}
+
+	dl {
+		display: grid;
+		gap: var(--stratakit-space-x4);
+	}
+
+	dt {
+		font-weight: 600;
+	}
+
+	dd {
+		margin-inline-start: var(--stratakit-space-x4);
+	}
 }
 
 @keyframes --_scroll-shadow {

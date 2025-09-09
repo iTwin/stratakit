@@ -2,7 +2,7 @@
 "@stratakit/structures": patch
 ---
 
-Added new `DropdownMenu.SubmenuItem` component that can be used to display a menu item that contains a nested submenu.
+Added `submenu` prop to `DropdownMenu.Item` component and a `DropdownMenu.Submenu` component to support nested dropdown menus.
 
 ```tsx
 <DropdownMenu.Provider>
@@ -11,13 +11,13 @@ Added new `DropdownMenu.SubmenuItem` component that can be used to display a men
 	<DropdownMenu.Content>
 		<DropdownMenu.Item label="Add" />
 		<DropdownMenu.Item label="Edit" />
-		<DropdownMenu.SubmenuItem
+		<DropdownMenu.Item
 			label="More"
-			menu={
-				<DropdownMenu.Content>
+			submenu={
+				<DropdownMenu.Submenu>
 					<DropdownMenu.Item label="Delete" />
 					<DropdownMenu.Item label="Disable" />
-				</DropdownMenu.Content>
+				</DropdownMenu.Submenu>
 			}
 		/>
 	</DropdownMenu.Content>

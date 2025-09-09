@@ -61,6 +61,13 @@
 	}
 }
 
+.🥝DropdownMenuItemChevron:is(.🥝ListItemDecoration) {
+	@layer base {
+		margin-inline-end: -5px;
+		min-inline-size: var(--🥝Icon-size, 1rem);
+	}
+}
+
 @media (forced-colors: active) {
 	.🥝DropdownMenu {
 		border: 1px solid;

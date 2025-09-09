@@ -264,7 +264,12 @@ const DropdownMenuItem = forwardRef<"button", DropdownMenuItemProps>(
 							}
 						/>
 					) : null}
-					{submenu ? <ListItem.Decoration render={<ChevronRight />} /> : null}
+					{submenu ? (
+						<ListItem.Decoration
+							className="🥝DropdownMenuItemChevron"
+							render={<ChevronRight />}
+						/>
+					) : null}
 				</MenuItem>
 				<DropdownMenuSubmenuContext.Provider
 					value={React.useMemo(() => ({ setStore: setSubmenuStore }), [])}

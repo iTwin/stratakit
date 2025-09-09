@@ -100,15 +100,14 @@ interface DropdownMenuContentProps extends FocusableProps {}
  */
 const DropdownMenuContent = forwardRef<"div", DropdownMenuContentProps>(
 	(props, forwardedRef) => {
-		const store = useMenuContext();
-
-		const open = useStoreState(store, "open");
-		const popoverElement = useStoreState(store, "popoverElement");
+		const context = useMenuContext();
+		const open = useStoreState(context, "open");
+		const popoverElement = useStoreState(context, "popoverElement");
 		const popoverProps = usePopoverApi({ element: popoverElement, open });
 
 		return (
 			<Menu
-				portal={true}
+				portal
 				unmountOnHide
 				{...props}
 				gutter={4}
@@ -147,8 +146,7 @@ const DropdownMenuButton = forwardRef<"button", DropdownMenuButtonProps>(
 	(props, forwardedRef) => {
 		const { accessibleWhenDisabled = true, children, ...rest } = props;
 
-		const store = useMenuContext();
-		const open = useStoreState(store, "open");
+		const open = useStoreState(useMenuContext(), "open");
 
 		return (
 			<MenuButton
@@ -474,7 +472,7 @@ const DropdownMenuSubmenu = forwardRef<"div", DropdownMenuSubmenuProps>(
 			<MenuProvider store={store}>
 				<Menu
 					store={store}
-					portal={true}
+					portal
 					portalElement={popoverElement}
 					preserveTabOrder={false}
 					unmountOnHide

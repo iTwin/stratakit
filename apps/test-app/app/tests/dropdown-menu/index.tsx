@@ -52,31 +52,34 @@ export default definePage(
 	},
 );
 
-function VisualTest({ disabled }: VariantProps) {
+function VisualTest() {
 	return (
-		<div style={{ minBlockSize: 200 }}>
-			<DropdownMenu.Provider defaultOpen>
-				<DropdownMenu.Button disabled={!!disabled}>Actions</DropdownMenu.Button>
+		<div>
+			<div style={{ minBlockSize: 200 }}>
+				<DropdownMenu.Provider open>
+					<DropdownMenu.Button>Actions</DropdownMenu.Button>
 
-				<DropdownMenu.Content>
-					<DropdownMenu.Item
-						shortcuts="Command+A"
-						label="Add"
-						icon={placeholderIcon}
-					/>
-					<DropdownMenu.Item
-						shortcuts="Shift+E"
-						label="Edit"
-						icon={placeholderIcon}
-					/>
-					<DropdownMenu.Item disabled label="Delete" icon={placeholderIcon} />
-					<DropdownMenu.Item label="Disable" icon={placeholderIcon} />
-					<DropdownMenu.Item
-						label="Filter"
-						unstable_dot="Some filters applied"
-					/>
-				</DropdownMenu.Content>
-			</DropdownMenu.Provider>
+					<DropdownMenu.Content>
+						<DropdownMenu.Item
+							shortcuts="Command+A"
+							label="Add"
+							icon={placeholderIcon}
+						/>
+						<DropdownMenu.Item
+							shortcuts="Shift+E"
+							label="Edit"
+							icon={placeholderIcon}
+						/>
+						<DropdownMenu.Item disabled label="Delete" icon={placeholderIcon} />
+						<DropdownMenu.Item label="Disable" icon={placeholderIcon} />
+						<DropdownMenu.Item
+							label="Filter"
+							unstable_dot="Some filters applied"
+						/>
+					</DropdownMenu.Content>
+				</DropdownMenu.Provider>
+			</div>
+			<SubmenuTest open="true" />
 		</div>
 	);
 }
@@ -102,10 +105,11 @@ function CheckboxTest({ defaultChecked: defaultCheckedParam }: VariantProps) {
 	);
 }
 
-function SubmenuTest({ defaultOpen }: VariantProps) {
+function SubmenuTest({ open: openProp }: VariantProps) {
+	const open = openProp === undefined ? undefined : !!openProp;
 	return (
 		<div style={{ minBlockSize: 200 }}>
-			<DropdownMenu.Provider defaultOpen={!!defaultOpen}>
+			<DropdownMenu.Provider open={open}>
 				<DropdownMenu.Button>Actions</DropdownMenu.Button>
 
 				<DropdownMenu.Content>

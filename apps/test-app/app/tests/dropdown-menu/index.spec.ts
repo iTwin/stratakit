@@ -240,11 +240,10 @@ test.describe("submenu", () => {
 test.describe("@visual", () => {
 	test("default", async ({ page }) => {
 		await page.goto("/tests/dropdown-menu?visual=true");
-		await expect(page.locator("body")).toHaveScreenshot();
-	});
 
-	test("submenu", async ({ page }) => {
-		await page.goto("/tests/dropdown-menu?submenu&defaultOpen");
+		const item3 = page.getByRole("menuitem", { name: "Item 3" });
+		await item3.click();
+
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
 

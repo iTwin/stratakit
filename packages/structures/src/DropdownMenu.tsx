@@ -147,7 +147,7 @@ const DropdownMenuButton = forwardRef<"button", DropdownMenuButtonProps>(
 	(props, forwardedRef) => {
 		const { accessibleWhenDisabled = true, children, ...rest } = props;
 
-		const store = useMenuStore();
+		const store = useMenuContext();
 		const open = useStoreState(store, "open");
 
 		return (

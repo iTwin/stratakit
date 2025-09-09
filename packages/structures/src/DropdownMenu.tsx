@@ -100,7 +100,7 @@ interface DropdownMenuContentProps extends FocusableProps {}
  */
 const DropdownMenuContent = forwardRef<"div", DropdownMenuContentProps>(
 	(props, forwardedRef) => {
-		const store = useMenuStore();
+		const store = useMenuContext();
 
 		const open = useStoreState(store, "open");
 		const popoverElement = useStoreState(store, "popoverElement");

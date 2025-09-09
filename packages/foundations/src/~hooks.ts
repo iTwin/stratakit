@@ -209,12 +209,10 @@ export function usePopoverApi({
 	return React.useMemo(
 		() =>
 			({
-				style: element
-					? { zIndex: supportsPopover ? undefined : 9999 }
-					: undefined,
-				popover: element ? "manual" : undefined,
+				style: { zIndex: supportsPopover ? undefined : 9999 },
+				popover: "manual",
 			}) as const,
-		[element],
+		[],
 	);
 }
 

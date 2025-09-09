@@ -32,13 +32,21 @@
 	);
 
 	--✨border--default: var(--stratakit-color-border-neutral-base);
-	--✨border--hover: color-mix(in oklch, var(--✨border--default) 100%, var(--✨glow--border-hover));
+	--✨border--hover: color-mix(
+		in oklch,
+		var(--✨border--default) 100%,
+		var(--✨glow--border-hover)
+	);
 	--✨border--pressed: color-mix(
 		in oklch,
 		var(--✨border--default) 100%,
 		var(--✨glow--border-press)
 	);
-	--✨border--checked: color-mix(in oklch, var(--✨bg--checked) 100%, var(--✨glow--border-checked));
+	--✨border--checked: color-mix(
+		in oklch,
+		var(--✨bg--checked) 100%,
+		var(--✨glow--border-checked)
+	);
 	--✨border--disabled: var(--stratakit-color-border-glow-on-surface-disabled);
 
 	@layer base {

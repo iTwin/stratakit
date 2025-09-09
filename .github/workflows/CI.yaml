@@ -21,7 +21,7 @@ jobs:
           version: 9.15.4
 
       - name: Use Node 22.x
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
           node-version: 22.x
           cache: "pnpm"
@@ -41,7 +41,7 @@ jobs:
           version: 9.15.4
 
       - name: Use Node 22.x
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
           node-version: 22.x
           cache: "pnpm"
@@ -64,7 +64,7 @@ jobs:
       - uses: biomejs/setup-biome@v2
 
       - name: Use Node 22.x
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
           node-version: 22.x
           cache: "pnpm"
@@ -99,7 +99,7 @@ jobs:
           version: 9.15.4
 
       - name: Use Node 22.x
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
           node-version: 22.x
           cache: "pnpm"

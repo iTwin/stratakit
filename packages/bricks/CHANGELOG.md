@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.4.2
+
+- [#938](https://github.com/iTwin/design-system/pull/938): Explicitly set the `Avatar`'s icon color to prevent accidentally inheriting the wrong color.
+- [#934](https://github.com/iTwin/design-system/pull/934): Fixed visual inconsistencies between convenience and composition methods of `TextBox`.
+- Updated dependencies:
+  - @stratakit/foundations@0.3.2
+
 ## 0.4.1
 
 - [#926](https://github.com/iTwin/design-system/pull/926): Added new `active` prop to `IconButton` and deprecated the existing `isActive` prop.

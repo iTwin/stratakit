@@ -55,31 +55,39 @@ starlight-toc ul {
 	&::before {
 		content: "";
 		position: absolute;
-		left: -4px;
+		left: 0;
 		height: 100%;
 		border: 0.5px solid var(--stratakit-color-border-neutral-muted);
 	}
 }
 
-starlight-toc a[aria-current="true"] {
-	font-weight: 500;
-	color: var(--stratakit-color-text-neutral-primary);
-	position: relative;
+starlight-toc :any-link {
+	--pad-inline: var(--stratakit-space-x3);
 
-	&::before {
-		content: "";
-		position: absolute;
-		left: -4px;
-		height: 1lh;
-		border: 1px solid;
+	&[aria-current="true"] {
+		font-weight: 500;
+		color: var(--stratakit-color-text-neutral-primary);
+		position: relative;
+
+		&::before {
+			content: "";
+			position: absolute;
+			left: 0;
+			height: 1lh;
+			border: 1px solid;
+		}
 	}
 }
 
-html[data-has-hero] header > .header {
-	display: flex;
+header > .header {
+	gap: var(--stratakit-space-x2);
 
-	> * {
-		flex: 1;
+	html[data-has-hero] & {
+		display: flex;
+
+		> * {
+			flex: 1;
+		}
 	}
 }
 
@@ -114,6 +122,10 @@ site-search kbd:not(kbd kbd) {
 	border: 1px solid var(--stratakit-color-border-neutral-muted);
 }
 
+.right-group {
+	gap: var(--stratakit-space-x2);
+}
+
 aside .right-sidebar {
 	border: none;
 }
@@ -125,4 +137,46 @@ aside .right-sidebar {
 		overflow-wrap: anywhere;
 		hyphens: auto;
 	}
+}
+
+.sl-markdown-content ul {
+	list-style-position: inside;
+	margin-inline-start: var(--stratakit-space-x2);
+
+	ul {
+		margin-inline-start: var(--stratakit-space-x4);
+	}
+}
+
+aside.starlight-aside {
+	margin-block-start: var(--stratakit-space-x6);
+	background-color: var(--stratakit-color-bg-elevation-base);
+	border: 1px solid var(--_aside-border, var(--stratakit-color-border-neutral-base));
+	border-radius: 8px;
+
+	.starlight-aside__title {
+		font-size: var(--stratakit-font-size-16);
+		font-weight: 500;
+		color: unset;
+	}
+
+	.starlight-aside__icon {
+		color: var(--_aside-icon);
+	}
+
+	&.starlight-aside--caution {
+		--_aside-border: var(--stratakit-color-border-attention-base);
+		--_aside-icon: var(--stratakit-color-icon-attention-base);
+	}
+
+	&.starlight-aside--danger {
+		--_aside-border: var(--stratakit-color-border-critical-base);
+		--_aside-icon: var(--stratakit-color-icon-critical-base);
+	}
+}
+
+.expressive-code pre {
+	border-color: var(--stratakit-color-border-neutral-base);
+	background-color: transparent;
+	border-radius: 4px;
 }

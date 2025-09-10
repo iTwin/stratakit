@@ -125,10 +125,10 @@ test("dot", async ({ page }) => {
 });
 
 test.describe("submenu", () => {
-	test("expand on hover", async ({ page, browserName }) => {
+	test("open on hover", async ({ page, browserName }) => {
 		test.skip(
 			browserName === "webkit",
-			"hover does not appear to open a menu Webkit tests",
+			"hover does not open a menu in Webkit tests",
 		);
 
 		await page.goto("/tests/dropdown-menu?submenu");
@@ -150,9 +150,34 @@ test.describe("submenu", () => {
 		await expect(menu).toHaveCount(2);
 		await expect(item3).toHaveAttribute("data-has-popover-open");
 		await expect(item3_1).toBeVisible();
+
+		await item3_1.hover();
+		await expect(item3_1).toBeVisible();
 	});
 
-	test("expand on click", async ({ page }) => {
+	test("close on hover away", async ({ page, browserName }) => {
+		test.skip(
+			browserName === "webkit",
+			"hover does not open a menu in Webkit tests",
+		);
+
+		await page.goto("/tests/dropdown-menu?submenu");
+
+		const button = page.getByRole("button", { name: "Actions" });
+		const menu = page.getByRole("menu", { includeHidden: true });
+		const item3 = page.getByRole("menuitem", { name: "Item 3", exact: true });
+
+		await button.click();
+		await item3.hover();
+		await expect(menu).toHaveCount(2);
+		await expect(item3).toHaveAttribute("data-has-popover-open");
+
+		await page.locator("body").hover();
+		await expect(menu).toHaveCount(1);
+		await expect(item3).not.toHaveAttribute("data-has-popover-open");
+	});
+
+	test("open on click", async ({ page }) => {
 		await page.goto("/tests/dropdown-menu?submenu");
 
 		const button = page.getByRole("button", { name: "Actions" });

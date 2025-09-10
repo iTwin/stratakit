@@ -37,6 +37,9 @@ export default defineConfig({
 			},
 			lastUpdated: true,
 			customCss: ["./src/styles/index.css"],
+			expressiveCode: {
+				themes: ["github-dark", "github-light"],
+			},
 		}),
 	],
 	devToolbar: { enabled: false },

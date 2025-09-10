@@ -130,6 +130,12 @@ const related = entry.data.related?.map(({ id }) => id) || [];
 			}
 		}
 
+		dl {
+			&:not(:has(> *)) {
+				display: none;
+			}
+		}
+
 		dt {
 			margin-block-end: var(--stratakit-space-x1);
 		}

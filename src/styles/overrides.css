@@ -144,12 +144,17 @@ aside .right-sidebar {
 	margin-inline-start: var(--stratakit-space-x2);
 
 	ul {
+		margin-block-start: var(--stratakit-space-x1);
 		margin-inline-start: var(--stratakit-space-x4);
+	}
+
+	li {
+		line-height: 1.5;
 	}
 }
 
 aside.starlight-aside {
-	margin-block-start: var(--stratakit-space-x6);
+	margin-block: var(--stratakit-space-x6);
 	background-color: var(--stratakit-color-bg-elevation-base);
 	border: 1px solid var(--_aside-border, var(--stratakit-color-border-neutral-base));
 	border-radius: 8px;
@@ -173,6 +178,10 @@ aside.starlight-aside {
 		--_aside-border: var(--stratakit-color-border-critical-base);
 		--_aside-icon: var(--stratakit-color-icon-critical-base);
 	}
+}
+
+.expressive-code figure {
+	box-shadow: none;
 }
 
 .expressive-code pre {

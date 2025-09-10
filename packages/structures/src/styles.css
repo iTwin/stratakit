@@ -4,6 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 
 @import "./~utils.ListItem.css" layer(itwinui.components);
+@import "./~utils.icons.css" layer(itwinui.components);
 
 @import "./AccordionItem.css" layer(itwinui.components);
 @import "./Banner.css" layer(itwinui.components);

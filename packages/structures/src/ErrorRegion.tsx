@@ -98,7 +98,7 @@ const ErrorRegionRoot = forwardRef<"div", ErrorRegionRootProps>(
 			const el = containerRef.current;
 			if (!el) return;
 
-			const id = "--🥝error-region-pulse";
+			const id = "--🥝ErrorRegion-pulse";
 			const animations = el.getAnimations({ subtree: true });
 			if (animations.find((animation) => animation.id === id)) return;
 
@@ -153,21 +153,21 @@ const ErrorRegionRoot = forwardRef<"div", ErrorRegionRootProps>(
 					<Role.section
 						{...rest}
 						aria-labelledby={sectionLabelledBy}
-						className={cx("🥝-error-region", props.className)}
-						data-kiwi-visible={!!label}
-						data-kiwi-expanded={open}
+						className={cx("🥝ErrorRegion", props.className)}
+						data-_sk-visible={!!label}
+						data-_sk-expanded={open}
 						ref={forwardedRef}
 					>
-						<div className="🥝-error-region-container" ref={containerRef}>
+						<div className="🥝ErrorRegionContainer" ref={containerRef}>
 							<DialogDisclosure
-								className="🥝-error-region-header"
+								className="🥝ErrorRegionHeader"
 								render={<Button variant="ghost" />}
 							>
-								<StatusIcon tone="attention" className="🥝-error-region-icon" />
+								<StatusIcon tone="attention" className="🥝ErrorRegionIcon" />
 								<Text
 									render={<span />}
 									id={labelId}
-									className="🥝-error-region-label"
+									className="🥝ErrorRegionLabel"
 									variant="body-sm"
 								>
 									{label}
@@ -177,7 +177,7 @@ const ErrorRegionRoot = forwardRef<"div", ErrorRegionRootProps>(
 								</IconButtonPresentation>
 							</DialogDisclosure>
 							<Dialog
-								className="🥝-error-region-dialog"
+								className="🥝ErrorRegionDialog"
 								portal={false}
 								modal={false}
 								autoFocusOnShow={false}
@@ -185,7 +185,7 @@ const ErrorRegionRoot = forwardRef<"div", ErrorRegionRootProps>(
 							>
 								<Collection
 									store={store}
-									className="🥝-error-region-items"
+									className="🥝ErrorRegionItems"
 									role="list"
 								>
 									{items}
@@ -252,13 +252,13 @@ const ErrorRegionItem = forwardRef<"div", ErrorRegionItemProps>(
 			<CollectionItem
 				{...rest}
 				role="listitem"
-				className={cx("🥝-error-region-item", props.className)}
+				className={cx("🥝ErrorRegionItem", props.className)}
 				ref={forwardedRef}
 			>
 				<Text id={messageId} variant="body-sm">
 					{message}
 				</Text>
-				<div className="🥝-error-region-item-actions">{actions}</div>
+				<div className="🥝ErrorRegionItemActions">{actions}</div>
 			</CollectionItem>
 		);
 	},

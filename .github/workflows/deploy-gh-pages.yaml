@@ -33,7 +33,7 @@ jobs:
 
       - name: Print folders to preserve # (open PRs and "commit/" folder)
         id: preserve_folders
-        uses: actions/github-script@v7
+        uses: actions/github-script@v8
         with:
           result-encoding: string
           script: |
@@ -53,14 +53,14 @@ jobs:
       CLEAN_EXCLUDE: ${{ needs.paths.outputs.PRESERVE_FOLDERS }}
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - uses: pnpm/action-setup@v4
         with:
           version: 9.15.4
 
       - name: Use Node 22.x
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
           node-version: 22.x
           cache: "pnpm"
@@ -82,7 +82,7 @@ jobs:
 
       - name: Add deploy preview link under Checks
         if: github.event_name == 'pull_request'
-        uses: actions/github-script@v7
+        uses: actions/github-script@v8
         with:
           script: |
             github.rest.repos.createCommitStatus({

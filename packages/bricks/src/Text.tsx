@@ -48,8 +48,8 @@ const Text = forwardRef<"div", TextProps>((props, forwardedRef) => {
 	return (
 		<Role
 			{...rest}
-			className={cx("🥝-text", props.className)}
-			data-kiwi-text-variant={variant}
+			className={cx("🥝Text", props.className)}
+			data-_sk-text-variant={variant}
 			ref={forwardedRef}
 		/>
 	);

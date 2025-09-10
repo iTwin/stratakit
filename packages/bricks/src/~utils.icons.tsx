@@ -40,7 +40,7 @@ export const DisclosureArrow = forwardRef<"svg", DisclosureArrowProps>(
 		return (
 			<Element
 				{...rest}
-				className={cx("🥝-disclosure-arrow", props.className)}
+				className={cx("🥝DisclosureArrow", props.className)}
 				ref={forwardedRef}
 			/>
 		);

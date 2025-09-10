@@ -3,7 +3,6 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 .appLayout {
-	--_platformBar-width: 40px;
 	--_splitter-width: 12px;
 
 	block-size: 100dvb;
@@ -16,7 +15,7 @@
 }
 
 .header {
-	--_header-height: 40px;
+	--_header-height: 56px;
 	grid-area: header;
 	background-color: var(--stratakit-color-bg-page-base);
 	border-block-end: 1px solid var(--stratakit-color-border-neutral-base);
@@ -30,29 +29,6 @@
 
 .platformBar {
 	grid-area: platformBar;
-	inline-size: var(--_platformBar-width);
-	background-color: var(--stratakit-color-bg-page-depth);
-	border-inline-end: 1px solid var(--stratakit-color-border-neutral-base);
-}
-
-.logo {
-	border-inline-end: 1px solid var(--stratakit-color-border-neutral-base);
-	block-size: var(--_platformBar-width);
-	inline-size: var(--_platformBar-width);
-
-	display: flex;
-	align-items: center;
-	justify-content: center;
-}
-
-.tools {
-	padding-block: var(--stratakit-space-x3);
-
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	gap: var(--stratakit-space-x3);
 }
 
 .content {

@@ -30,3 +30,8 @@
 .pushRight {
 	margin-inline-start: auto;
 }
+
+.actions {
+	display: flex;
+	gap: var(--stratakit-space-x1);
+}

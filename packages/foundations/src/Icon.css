@@ -22,27 +22,6 @@
 	}
 }
 
-.🥝DisclosureArrow {
-	@layer base {
-		margin-inline-end: calc(var(--stratakit-space-x2) * -1);
-		rotate: var(--🥝DisclosureArrow-rotate);
-
-		@media (prefers-reduced-motion: no-preference) {
-			transition: rotate 150ms ease-in-out;
-		}
-	}
-}
-
-.🥝ChevronDown {
-	@layer base {
-		rotate: var(--🥝ChevronDown-rotate);
-
-		@media (prefers-reduced-motion: no-preference) {
-			transition: rotate 150ms ease-in-out;
-		}
-	}
-}
-
 @media (forced-colors: active) {
 	.🥝Icon {
 		--🥝Icon-color: currentColor;

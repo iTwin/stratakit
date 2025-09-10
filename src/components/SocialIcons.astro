@@ -41,7 +41,11 @@ const links = config.social || [];
 		}
 
 		:global(.social-icons) {
-			margin-inline-start: auto;
+			padding-block: unset;
+
+			html[data-has-hero] & {
+				margin-inline-start: auto;
+			}
 
 			&::after {
 				content: none;

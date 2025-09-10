@@ -1,3 +1,2 @@
 @import "./global.css";
-@import "./fonts.css";
 @import "./overrides.css" layer(overrides);

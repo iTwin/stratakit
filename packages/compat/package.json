@@ -45,7 +45,7 @@
 		"dev": "wireit"
 	},
 	"dependencies": {
-		"@itwin/itwinui-react": "^3.19.3",
+		"@itwin/itwinui-react": "^3.19.4",
 		"@stratakit/bricks": "^0.4.2",
 		"@stratakit/structures": "^0.4.2",
 		"classnames": "^2.5.1"

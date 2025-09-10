@@ -16,7 +16,7 @@ import type {
 
 interface AnchorRootProps extends FocusableProps<"a"> {
 	/** @default "neutral" */
-	tone?: "neutral" | "accent" | "critical";
+	tone?: "neutral" | "accent" | (string & {});
 }
 
 /**
@@ -40,6 +40,12 @@ interface AnchorRootProps extends FocusableProps<"a"> {
  */
 const AnchorRoot = forwardRef<"a", AnchorRootProps>((props, forwardedRef) => {
 	const { tone = "neutral", ...rest } = props;
+
+	DEV: if (tone === "critical")
+		console.warn(
+			"The `critical` tone for `Anchor` has been deprecated and will be removed in a future release.",
+		);
+
 	return (
 		<Role.a
 			{...rest}
@@ -115,10 +121,9 @@ DEV: AnchorExternalMarker.displayName = "Anchor.ExternalMarker";
 
 // ----------------------------------------------------------------------------
 
-interface AnchorProps extends FocusableProps<"a"> {
-	/** @default "neutral" */
-	tone?: "neutral" | "accent" | "critical";
-}
+interface AnchorProps
+	extends FocusableProps<"a">,
+		Pick<AnchorRootProps, "tone"> {}
 
 /**
  * A styled anchor element, typically used for navigating to a different location.

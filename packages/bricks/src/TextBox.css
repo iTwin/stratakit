@@ -148,31 +148,14 @@
 			--🥝Icon-color: var(--stratakit-color-icon-accent-strong);
 		}
 
-		/* Invalid state */
-		&:where(:has(:is(input, textarea):is([aria-invalid="true"], :user-invalid))),
-		&:where(:is(input, textarea):is([aria-invalid="true"], :user-invalid)) {
-			--🥝TextBox-border-color: var(--✨border--invalid);
-			outline-color: var(--✨border--invalid);
-		}
-
-		/* Invalid state when focused */
-		&:where(:has(:is(input, textarea):is([aria-invalid="true"], :user-invalid):focus-visible)),
-		&:where(:is(input, textarea):is([aria-invalid="true"], :user-invalid):focus-visible) {
+		&:where(
+			:user-invalid,
+			[aria-invalid="true"],
+			[data-_sk-invalid="true"],
+			:has(:is(input, textarea):is(:user-invalid, [aria-invalid="true"]))
+		) {
 			--🥝Icon-color: var(--stratakit-color-icon-critical-base);
-		}
-
-		@supports not selector(:has(+ *)) {
-			&:where(:not(input, textarea):focus-within) {
-				outline: var(--🥝focus-outline);
-				outline-offset: var(--🥝focus-outline-offset);
-				--🥝TextBox-border-color: var(--✨border--focus);
-				--🥝Icon-color: var(--stratakit-color-icon-accent-strong);
-			}
-
-			&:where(:not(input, textarea) :is(input, textarea):is([aria-invalid="true"], :user-invalid)) {
-				--🥝TextBox-border-color: var(--✨border--invalid);
-				outline-color: var(--✨border--invalid);
-			}
+			--🥝TextBox-border-color: var(--✨border--invalid);
 		}
 
 		&:where(
@@ -207,6 +190,15 @@
 		--🥝TextBox-background-color: Field;
 		--🥝TextBox-border-color: CanvasText;
 		color: FieldText;
+
+		&:where(
+			:user-invalid,
+			[aria-invalid="true"],
+			[data-_sk-invalid="true"],
+			:has(:is(input, textarea):is(:user-invalid, [aria-invalid="true"]))
+		) {
+			--🥝TextBox-border-color: Mark;
+		}
 
 		&:where(
 				:disabled,

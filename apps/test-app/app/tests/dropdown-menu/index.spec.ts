@@ -296,18 +296,25 @@ test.describe("@a11y", () => {
 		await page.goto("/tests/dropdown-menu");
 
 		const button = page.getByRole("button", { name: "Actions" });
-		const add = page.getByRole("menuitem", { name: "Add" });
+		const more = page.getByRole("menuitem", { name: "More" });
+		const clone = page.getByRole("menuitem", { name: "Clone" });
 
 		await expect(button).toBeVisible();
 
 		await button.click();
-		await expect(add).toBeVisible();
+		await expect(more).toBeVisible();
 
 		const axe = new AxeBuilder({ page })
 			.disableRules(["region"])
 			.exclude("[data-focus-trap]");
 
-		const accessibilityScan = await axe.analyze();
+		let accessibilityScan = await axe.analyze();
+		expect(accessibilityScan.violations).toEqual([]);
+
+		await more.click();
+		await expect(clone).toBeVisible();
+
+		accessibilityScan = await axe.analyze();
 		expect(accessibilityScan.violations).toEqual([]);
 	});
 });

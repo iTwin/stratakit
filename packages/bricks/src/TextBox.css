@@ -151,14 +151,14 @@
 		/* Invalid state */
 		&:where(:has(:is(input, textarea):is([aria-invalid="true"], :user-invalid))),
 		&:where(:is(input, textarea):is([aria-invalid="true"], :user-invalid)) {
-			--🥝text-box-border-color: var(--✨border--invalid);
+			--🥝TextBox-border-color: var(--✨border--invalid);
 			outline-color: var(--✨border--invalid);
 		}
 
 		/* Invalid state when focused */
 		&:where(:has(:is(input, textarea):is([aria-invalid="true"], :user-invalid):focus-visible)),
 		&:where(:is(input, textarea):is([aria-invalid="true"], :user-invalid):focus-visible) {
-			--🥝icon-color: var(--stratakit-color-icon-critical-base);
+			--🥝Icon-color: var(--stratakit-color-icon-critical-base);
 		}
 
 		@supports not selector(:has(+ *)) {
@@ -170,7 +170,7 @@
 			}
 
 			&:where(:not(input, textarea) :is(input, textarea):is([aria-invalid="true"], :user-invalid)) {
-				--🥝text-box-border-color: var(--✨border--invalid);
+				--🥝TextBox-border-color: var(--✨border--invalid);
 				outline-color: var(--✨border--invalid);
 			}
 		}

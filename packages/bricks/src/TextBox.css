@@ -149,11 +149,11 @@
 		}
 
 		&:where(
-			:user-invalid,
-			[aria-invalid="true"],
-			[data-_sk-invalid="true"],
-			:has(:is(input, textarea):is(:user-invalid, [aria-invalid="true"]))
-		) {
+				:user-invalid,
+				[aria-invalid="true"],
+				[data-_sk-invalid="true"],
+				:has(:is(input, textarea):is(:user-invalid, [aria-invalid="true"]))
+			) {
 			--🥝Icon-color: var(--stratakit-color-icon-critical-base);
 			--🥝TextBox-border-color: var(--✨border--invalid);
 		}
@@ -192,11 +192,11 @@
 		color: FieldText;
 
 		&:where(
-			:user-invalid,
-			[aria-invalid="true"],
-			[data-_sk-invalid="true"],
-			:has(:is(input, textarea):is(:user-invalid, [aria-invalid="true"]))
-		) {
+				:user-invalid,
+				[aria-invalid="true"],
+				[data-_sk-invalid="true"],
+				:has(:is(input, textarea):is(:user-invalid, [aria-invalid="true"]))
+			) {
 			--🥝TextBox-border-color: Mark;
 		}
 

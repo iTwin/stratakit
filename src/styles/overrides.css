@@ -139,7 +139,7 @@ aside .right-sidebar {
 	}
 }
 
-.sl-markdown-content ul {
+.sl-markdown-content ul:where(:not(.not-content)) {
 	list-style-position: inside;
 	margin-inline-start: var(--stratakit-space-x2);
 

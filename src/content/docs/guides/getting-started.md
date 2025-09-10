@@ -17,7 +17,7 @@ To set up this package, see the detailed instructions in [`@stratakit/foundation
 
 All StrataKit icons are available as standalone `.svg` files in the [`@stratakit/icons`](https://www.npmjs.com/package/@stratakit/icons?activeTab=versions) package. This package also requires additional bundler configuration that is described in [`@stratakit/icons/README.md`](https://github.com/iTwin/design-system/tree/main/packages/icons#readme).
 
-See [full list of available icons](https://itwin.github.io/design-system/icons).
+See [full list of available icons](/icons#list-of-icons).
 
 ## Components
 

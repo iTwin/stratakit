@@ -31,6 +31,7 @@ export default defineConfig({
 					label: "Components",
 					autogenerate: { directory: "components" },
 				},
+				{ label: "Icons", slug: "icons" },
 			],
 			editLink: {
 				baseUrl: "https://github.com/iTwin/stratakit-docs/edit/main/",
@@ -43,4 +44,12 @@ export default defineConfig({
 		}),
 	],
 	devToolbar: { enabled: false },
+	vite: {
+		build: {
+			assetsInlineLimit: (filePath) => {
+				if (filePath.endsWith(".svg")) return false;
+				return undefined;
+			},
+		},
+	},
 });

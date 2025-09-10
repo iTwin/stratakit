@@ -13,7 +13,7 @@ importers:
         version: 0.35.2(astro@5.13.5(@types/node@24.3.0)(rollup@4.50.0)(typescript@5.9.2))
       '@stratakit/foundations':
         specifier: ^0.3.1
-        version: 0.3.1(@preact/compat@18.3.1(preact@10.27.1))(react-dom@19.1.1(@preact/compat@18.3.1(preact@10.27.1)))
+        version: 0.3.1(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
       astro:
         specifier: ^5.13.5
         version: 5.13.5(@types/node@24.3.0)(rollup@4.50.0)(typescript@5.9.2)
@@ -605,11 +605,6 @@ packages:
     resolution: {integrity: sha512-NkT+YAdgS2FPCn8mIA9bQhiBs+xmniMGq1LFPDhcFn0+2yIUEiIG06t7bsZlhdjknEQRTSdT7YitP6fC5qwP0g==}
     cpu: [x64]
     os: [win32]
-
-  '@preact/compat@18.3.1':
-    resolution: {integrity: sha512-Kog4PSRxtT4COtOXjsuQPV1vMXpUzREQfv+6Dmcy9/rMk0HOPK0HTE9fspFjAmY8R80T/T8gtgmZ68u5bOSngw==}
-    peerDependencies:
-      preact: '*'
 
   '@rollup/pluginutils@5.2.0':
     resolution: {integrity: sha512-qWJ2ZTbmumwiLFomfzTyt5Kng4hwPi9rwCYN4SHb6eaRU1KNO4ccxINHr/VhH4GgPlt1XfSTLX2LBTme8ne4Zw==}
@@ -1572,9 +1567,6 @@ packages:
     resolution: {integrity: sha512-3Ybi1tAuwAP9s0r1UQ2J4n5Y0G05bJkpUIO0/bI9MhwmD70S5aTWbXGBwxHrelT+XM1k6dM0pk+SwNkpTRN7Pg==}
     engines: {node: ^10 || ^12 || >=14}
 
-  preact@10.27.1:
-    resolution: {integrity: sha512-V79raXEWch/rbqoNc7nT9E4ep7lu+mI3+sBmfRD4i1M73R3WLYcCtdI0ibxGVf4eQL8ZIz2nFacqEC+rmnOORQ==}
-
   prettier@3.6.2:
     resolution: {integrity: sha512-I7AIg5boAr5R0FFtJ6rCfD+LFsWHp81dolrFD8S79U9tb8Az2nGrJncnMSnys+bpQJfRUzqs9hnA81OAA3hCuQ==}
     engines: {node: '>=14'}
@@ -1601,6 +1593,10 @@ packages:
     resolution: {integrity: sha512-Dlq/5LAZgF0Gaz6yiqZCf6VCcZs1ghAJyrsu84Q/GT0gV+mCxbfmKNoGRKBYMJ8IEdGPqu49YWXD02GCknEDkw==}
     peerDependencies:
       react: ^19.1.1
+
+  react@19.1.1:
+    resolution: {integrity: sha512-w8nqGImo45dmMIfljjMwOGtbmC/mk4CMYhWIicdSflH91J9TyCyczcPFXJzrZ/ZXcgGRFeP6BU0BEJTw6tZdfQ==}
+    engines: {node: '>=0.10.0'}
 
   readdirp@4.1.2:
     resolution: {integrity: sha512-GDhwkLfywWL2s6vEjyhri+eXmfH6j1L7JE27WhqLeYzoh/A3DBaYGEj2H/HFZCn/kMfim73FXxEJTw06WtxQwg==}
@@ -1774,8 +1770,8 @@ packages:
   tinyexec@0.3.2:
     resolution: {integrity: sha512-KQQR9yN7R5+OSwaK0XQoj22pwHoTlgYqmUscPYoknOoWCWfj/5/ABTMRi69FrKU5ffPVh5QcFikpWJI/P1ocHA==}
 
-  tinyglobby@0.2.14:
-    resolution: {integrity: sha512-tX5e7OM1HnYr2+a2C/4V0htOcSQcoSTH9KgJnVvNm5zm/cyEWKJ7j7YutsH9CxMdtOkkLFy2AHrMci9IM8IPZQ==}
+  tinyglobby@0.2.15:
+    resolution: {integrity: sha512-j2Zq4NyQYG5XMST4cbs02Ak8iJUdxRM0XI5QyxXuZOzKOINmWurp3smXu3y5wDcJrptwpSjgXHzIQxR0omXljQ==}
     engines: {node: '>=12.0.0'}
 
   tr46@0.0.3:
@@ -1942,8 +1938,8 @@ packages:
   vfile@6.0.3:
     resolution: {integrity: sha512-KzIbH/9tXat2u30jf+smMwFCsno4wHVdNmzFyL+T/L3UGqqk6JKfVqOFOZEpZSHADH1k40ab6NUIXZq422ov3Q==}
 
-  vite@6.3.5:
-    resolution: {integrity: sha512-cZn6NDFE7wdTpINgs++ZJ4N49W2vRp8LCKrn3Ob1kYNtOo21vfDoaV5GzBfLU4MovSAB8uNRm4jgzVQZ+mBzPQ==}
+  vite@6.3.6:
+    resolution: {integrity: sha512-0msEVHJEScQbhkbVTb/4iHZdJ6SXp/AvxL2sjwYQFfBqleHtnCqv1J3sa9zbWz/6kW1m9Tfzn92vW+kZ1WV6QA==}
     engines: {node: ^18.0.0 || ^20.0.0 || >=22.0.0}
     hasBin: true
     peerDependencies:
@@ -2051,19 +2047,19 @@ snapshots:
 
   '@ariakit/core@0.4.15': {}
 
-  '@ariakit/react-core@0.4.18(@preact/compat@18.3.1(preact@10.27.1))(react-dom@19.1.1(@preact/compat@18.3.1(preact@10.27.1)))':
+  '@ariakit/react-core@0.4.18(react-dom@19.1.1(react@19.1.1))(react@19.1.1)':
     dependencies:
       '@ariakit/core': 0.4.15
       '@floating-ui/dom': 1.7.4
-      react: '@preact/compat@18.3.1(preact@10.27.1)'
-      react-dom: 19.1.1(@preact/compat@18.3.1(preact@10.27.1))
-      use-sync-external-store: 1.5.0(@preact/compat@18.3.1(preact@10.27.1))
+      react: 19.1.1
+      react-dom: 19.1.1(react@19.1.1)
+      use-sync-external-store: 1.5.0(react@19.1.1)
 
-  '@ariakit/react@0.4.18(@preact/compat@18.3.1(preact@10.27.1))(react-dom@19.1.1(@preact/compat@18.3.1(preact@10.27.1)))':
+  '@ariakit/react@0.4.18(react-dom@19.1.1(react@19.1.1))(react@19.1.1)':
     dependencies:
-      '@ariakit/react-core': 0.4.18(@preact/compat@18.3.1(preact@10.27.1))(react-dom@19.1.1(@preact/compat@18.3.1(preact@10.27.1)))
-      react: '@preact/compat@18.3.1(preact@10.27.1)'
-      react-dom: 19.1.1(@preact/compat@18.3.1(preact@10.27.1))
+      '@ariakit/react-core': 0.4.18(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
+      react: 19.1.1
+      react-dom: 19.1.1(react@19.1.1)
 
   '@astrojs/compiler@2.12.2': {}
 
@@ -2563,10 +2559,6 @@ snapshots:
   '@pagefind/windows-x64@1.4.0':
     optional: true
 
-  '@preact/compat@18.3.1(preact@10.27.1)':
-    dependencies:
-      preact: 10.27.1
-
   '@rollup/pluginutils@5.2.0(rollup@4.50.0)':
     dependencies:
       '@types/estree': 1.0.8
@@ -2671,13 +2663,13 @@ snapshots:
 
   '@shikijs/vscode-textmate@10.0.2': {}
 
-  '@stratakit/foundations@0.3.1(@preact/compat@18.3.1(preact@10.27.1))(react-dom@19.1.1(@preact/compat@18.3.1(preact@10.27.1)))':
+  '@stratakit/foundations@0.3.1(react-dom@19.1.1(react@19.1.1))(react@19.1.1)':
     dependencies:
-      '@ariakit/react': 0.4.18(@preact/compat@18.3.1(preact@10.27.1))(react-dom@19.1.1(@preact/compat@18.3.1(preact@10.27.1)))
+      '@ariakit/react': 0.4.18(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
       classnames: 2.5.1
     optionalDependencies:
-      react: '@preact/compat@18.3.1(preact@10.27.1)'
-      react-dom: 19.1.1(@preact/compat@18.3.1(preact@10.27.1))
+      react: 19.1.1
+      react-dom: 19.1.1(react@19.1.1)
 
   '@swc/helpers@0.5.17':
     dependencies:
@@ -2723,7 +2715,7 @@ snapshots:
 
   '@types/sax@1.2.7':
     dependencies:
-      '@types/node': 17.0.45
+      '@types/node': 24.3.0
 
   '@types/unist@2.0.11': {}
 
@@ -2816,15 +2808,15 @@ snapshots:
       shiki: 3.12.2
       smol-toml: 1.4.2
       tinyexec: 0.3.2
-      tinyglobby: 0.2.14
+      tinyglobby: 0.2.15
       tsconfck: 3.1.6(typescript@5.9.2)
       ultrahtml: 1.6.0
       unifont: 0.5.2
       unist-util-visit: 5.0.0
       unstorage: 1.17.0
       vfile: 6.0.3
-      vite: 6.3.5(@types/node@24.3.0)
-      vitefu: 1.1.1(vite@6.3.5(@types/node@24.3.0))
+      vite: 6.3.6(@types/node@24.3.0)
+      vitefu: 1.1.1(vite@6.3.6(@types/node@24.3.0))
       xxhash-wasm: 1.1.0
       yargs-parser: 21.1.1
       yocto-spinner: 0.2.3
@@ -3988,8 +3980,6 @@ snapshots:
       picocolors: 1.1.1
       source-map-js: 1.2.1
 
-  preact@10.27.1: {}
-
   prettier@3.6.2: {}
 
   prismjs@1.30.0: {}
@@ -4005,10 +3995,12 @@ snapshots:
 
   radix3@1.1.2: {}
 
-  react-dom@19.1.1(@preact/compat@18.3.1(preact@10.27.1)):
+  react-dom@19.1.1(react@19.1.1):
     dependencies:
-      react: '@preact/compat@18.3.1(preact@10.27.1)'
+      react: 19.1.1
       scheduler: 0.26.0
+
+  react@19.1.1: {}
 
   readdirp@4.1.2: {}
 
@@ -4337,7 +4329,7 @@ snapshots:
 
   tinyexec@0.3.2: {}
 
-  tinyglobby@0.2.14:
+  tinyglobby@0.2.15:
     dependencies:
       fdir: 6.5.0(picomatch@4.0.3)
       picomatch: 4.0.3
@@ -4449,9 +4441,9 @@ snapshots:
       ofetch: 1.4.1
       ufo: 1.6.1
 
-  use-sync-external-store@1.5.0(@preact/compat@18.3.1(preact@10.27.1)):
+  use-sync-external-store@1.5.0(react@19.1.1):
     dependencies:
-      react: '@preact/compat@18.3.1(preact@10.27.1)'
+      react: 19.1.1
 
   util-deprecate@1.0.2: {}
 
@@ -4470,21 +4462,21 @@ snapshots:
       '@types/unist': 3.0.3
       vfile-message: 4.0.3
 
-  vite@6.3.5(@types/node@24.3.0):
+  vite@6.3.6(@types/node@24.3.0):
     dependencies:
       esbuild: 0.25.9
       fdir: 6.5.0(picomatch@4.0.3)
       picomatch: 4.0.3
       postcss: 8.5.6
       rollup: 4.50.0
-      tinyglobby: 0.2.14
+      tinyglobby: 0.2.15
     optionalDependencies:
       '@types/node': 24.3.0
       fsevents: 2.3.3
 
-  vitefu@1.1.1(vite@6.3.5(@types/node@24.3.0)):
+  vitefu@1.1.1(vite@6.3.6(@types/node@24.3.0)):
     optionalDependencies:
-      vite: 6.3.5(@types/node@24.3.0)
+      vite: 6.3.6(@types/node@24.3.0)
 
   web-namespaces@2.0.1: {}
 

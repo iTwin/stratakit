@@ -125,6 +125,7 @@
 			border: none;
 			background-color: var(--🥝TextBox-background-color);
 			border-radius: inherit;
+			outline: unset !important;
 			flex: 999;
 			align-self: stretch;
 			transition: background-color 150ms ease-out;
@@ -173,12 +174,6 @@
 		--🌀TextBox-state--default: var(--🌀TextBox-state,);
 		--🌀TextBox-state--hover: var(--🌀TextBox-state,);
 		--🌀TextBox-state--disabled: var(--🌀TextBox-state,);
-	}
-
-	@layer important {
-		:where(input, textarea) {
-			outline: none !important;
-		}
 	}
 }
 

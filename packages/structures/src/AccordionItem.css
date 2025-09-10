@@ -127,8 +127,8 @@
 			outline: 0 !important;
 
 			&::after {
-			outline: var(--🥝focus-outline);
-			outline-offset: var(--🥝focus-outline-offset);
+				outline: var(--🥝focus-outline);
+				outline-offset: var(--🥝focus-outline-offset);
 			}
 		}
 	}

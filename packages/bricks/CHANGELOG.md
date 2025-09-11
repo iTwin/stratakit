@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.4.3
+
+### Patch Changes
+
+- [#945](https://github.com/iTwin/design-system/pull/945): The `"critical"` tone value for `Anchor` has been deprecated and will be removed in a future release.
+- Updated dependencies:
+  - @stratakit/foundations@0.3.3
+
 ## 0.4.2
 
 - [#938](https://github.com/iTwin/design-system/pull/938): Explicitly set the `Avatar`'s icon color to prevent accidentally inheriting the wrong color.

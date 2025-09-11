@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.3.3
+
+### Patch Changes
+
+- [#944](https://github.com/iTwin/design-system/pull/944): The CSS reset has been updated to use `display: inline-block` for SVG elements.
+
 ## 0.3.2
 
 - [#928](https://github.com/iTwin/design-system/pull/928): Added `@layer reset` fallback to the top of `<head>` element to ensure correct layer order.

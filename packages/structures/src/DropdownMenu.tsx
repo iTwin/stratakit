@@ -237,7 +237,10 @@ const DropdownMenuItem = forwardRef<"button", DropdownMenuItemProps>(
 									{...rest}
 									render={
 										submenu ? (
-											<MenuButton render={props.render} store={store} />
+											<MenuButton
+												render={props.render ?? <button />}
+												store={store}
+											/>
 										) : (
 											props.render
 										)

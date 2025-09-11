@@ -1,5 +1,34 @@
 # Changelog
 
+## 0.4.3
+
+- [#933](https://github.com/iTwin/design-system/pull/933): Added `submenu` prop to `DropdownMenu.Item` component and a `DropdownMenu.Submenu` component to support nested dropdown menus.
+
+  ```tsx
+  <DropdownMenu.Provider>
+  	<DropdownMenu.Button>Actions</DropdownMenu.Button>
+
+  	<DropdownMenu.Content>
+  		<DropdownMenu.Item label="Add" />
+  		<DropdownMenu.Item label="Edit" />
+  		<DropdownMenu.Item
+  			label="More"
+  			submenu={
+  				<DropdownMenu.Submenu>
+  					<DropdownMenu.Item label="Delete" />
+  					<DropdownMenu.Item label="Disable" />
+  				</DropdownMenu.Submenu>
+  			}
+  		/>
+  	</DropdownMenu.Content>
+  </DropdownMenu.Provider>
+  ```
+
+- [#939](https://github.com/iTwin/design-system/pull/939): Fixed `forced-colors` styling for `NavigationRail.Anchor` in `active` state.
+- Updated dependencies:
+  - @stratakit/bricks@0.4.3
+  - @stratakit/foundations@0.3.3
+
 ## 0.4.2
 
 - [#931](https://github.com/iTwin/design-system/pull/931): `Dialog.Content` will now only scroll past a certain viewport height. On smaller viewports, the `Dialog.Root` will be scrollable instead.

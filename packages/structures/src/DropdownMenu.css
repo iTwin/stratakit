@@ -36,6 +36,10 @@
 		&:where([role="menuitemcheckbox"]:not([aria-checked="true"])) {
 			--🥝DropdownMenuCheckmark-visibility: hidden;
 		}
+
+		&:where([data-has-popover-open]:not(:active)) {
+			--🌀ListItem-state: var(--🌀ListItem-state--hover);
+		}
 	}
 }
 
@@ -54,6 +58,13 @@
 .🥝DropdownMenuItemShortcuts {
 	@layer base {
 		margin-inline-start: var(--stratakit-space-x2);
+	}
+}
+
+.🥝DropdownMenuItemChevron:is(.🥝ListItemDecoration) {
+	@layer base {
+		margin-inline-end: -4px;
+		min-inline-size: var(--🥝Icon-size, 1rem);
 	}
 }
 

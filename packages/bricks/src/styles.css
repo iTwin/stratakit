@@ -6,6 +6,7 @@
 @import "./VisuallyHidden.css" layer(itwinui.components);
 @import "./~utils.Dot.css" layer(itwinui.components);
 @import "./~utils.GhostAligner.css" layer(itwinui.components);
+@import "./~utils.icons.css" layer(itwinui.components);
 
 @import "./Anchor.css" layer(itwinui.components);
 @import "./Avatar.css" layer(itwinui.components);

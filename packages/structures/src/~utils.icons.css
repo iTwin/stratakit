@@ -1,0 +1,13 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+.🥝ChevronDown {
+	@layer base {
+		rotate: var(--🥝ChevronDown-rotate);
+
+		@media (prefers-reduced-motion: no-preference) {
+			transition: rotate 150ms ease-in-out;
+		}
+	}
+}

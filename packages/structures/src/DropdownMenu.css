@@ -63,7 +63,7 @@
 
 .🥝DropdownMenuItemChevron:is(.🥝ListItemDecoration) {
 	@layer base {
-		margin-inline-end: -5px;
+		margin-inline-end: -4px;
 		min-inline-size: var(--🥝Icon-size, 1rem);
 	}
 }

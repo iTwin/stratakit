@@ -37,6 +37,10 @@ interface TextBoxInputProps extends Omit<BaseInputProps, "children" | "type"> {
 		BaseInputProps["type"],
 		"text" | "email" | "password" | "search" | "tel" | "url" | "number" | "date"
 	>;
+	/**
+	 * If true, sets aria-invalid to true to indicate an error state (e.g. Field.ErrorMessage is present).
+	 */
+	invalid?: boolean;
 }
 
 /**
@@ -83,6 +87,7 @@ const TextBoxInput = forwardRef<"input", TextBoxInputProps>(
 			<Role.input
 				readOnly={props.disabled}
 				{...props}
+				aria-invalid={props.invalid ? true : undefined}
 				className={cx({ "🥝TextBox": !rootContext }, props.className)}
 				/**
 				 * Use an empty string as a placeholder to fix baseline alignment in Safari.
@@ -104,7 +109,12 @@ DEV: TextBoxInput.displayName = "TextBox.Input";
 
 // ----------------------------------------------------------------------------
 
-interface TextareaProps extends FocusableProps<"textarea"> {}
+interface TextareaProps extends FocusableProps<"textarea"> {
+	/**
+	 * If true, sets aria-invalid to true to indicate an error state (e.g. Field.ErrorMessage is present).
+	 */
+	invalid?: boolean;
+}
 
 /**
  * A styled textarea element that allows users to enter multiline text values.
@@ -142,6 +152,7 @@ const TextBoxTextarea = forwardRef<"textarea", TextareaProps>(
 			<Role.textarea
 				readOnly={props.disabled}
 				{...props}
+				aria-invalid={props.invalid ? true : undefined}
 				className={cx({ "🥝TextBox": !rootContext }, props.className)}
 				/**
 				 * Use an empty string as a placeholder to fix baseline alignment in Safari.

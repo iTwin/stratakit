@@ -2,8 +2,6 @@
 
 ## 0.4.3
 
-### Patch Changes
-
 - [#933](https://github.com/iTwin/design-system/pull/933): Added `submenu` prop to `DropdownMenu.Item` component and a `DropdownMenu.Submenu` component to support nested dropdown menus.
 
   ```tsx

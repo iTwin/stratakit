@@ -2,8 +2,6 @@
 
 ## 0.4.3
 
-### Patch Changes
-
 - [#945](https://github.com/iTwin/design-system/pull/945): The `"critical"` tone value for `Anchor` has been deprecated and will be removed in a future release.
 - Updated dependencies:
   - @stratakit/foundations@0.3.3

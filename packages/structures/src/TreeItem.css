@@ -10,7 +10,7 @@
 
 	@layer states {
 		&:focus-visible {
-			outline: none;
+			outline: none !important;
 			isolation: isolate;
 
 			&::before {

@@ -1,7 +1,5 @@
 ---
 "@stratakit/foundations": patch
-"@stratakit/structures": patch
-"@stratakit/bricks": patch
 ---
 
-Focus outline is now harder to disable by the consumer.
+The global focus outline is now given priority in the CSS cascade. This is a precautionary measure to prevent third party styles from removing the focus outline.

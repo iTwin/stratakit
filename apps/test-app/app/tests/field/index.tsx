@@ -83,7 +83,7 @@ function VisualTestForTextlikeControls() {
 			{/* Inline layout for text controls */}
 			<Field.Root layout="inline">
 				<Field.Label>Text control</Field.Label>
-				<Field.Control render={<TextBox.Input />} />
+				<Field.Control render={<TextBox.Input invalid />} />
 				<Field.ErrorMessage>Text error message</Field.ErrorMessage>
 				<Field.Description>Text description</Field.Description>
 			</Field.Root>

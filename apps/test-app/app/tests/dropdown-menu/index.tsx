@@ -27,20 +27,67 @@ export default definePage(
 						label="Filter"
 						unstable_dot="Some filters applied"
 					/>
+					<DropdownMenu.Item
+						label="More"
+						submenu={
+							<DropdownMenu.Submenu>
+								<DropdownMenu.Item shortcuts="Command+C" label="Clone" />
+								<DropdownMenu.Item disabled label="Archive" />
+								<DropdownMenu.Item label="Export" />
+								<DropdownMenu.Item
+									label="Import"
+									unstable_dot="Some filters applied"
+								/>
+							</DropdownMenu.Submenu>
+						}
+					/>
 				</DropdownMenu.Content>
 			</DropdownMenu.Provider>
 		);
 	},
 	{
-		checkbox: CheckboxTest,
 		visual: VisualTest,
+		checkbox: CheckboxTest,
+		submenu: SubmenuTest,
 	},
 );
+
+function VisualTest() {
+	return (
+		<div>
+			<div style={{ minBlockSize: 200 }}>
+				<DropdownMenu.Provider open>
+					<DropdownMenu.Button>Actions</DropdownMenu.Button>
+
+					<DropdownMenu.Content>
+						<DropdownMenu.Item
+							shortcuts="Command+A"
+							label="Add"
+							icon={placeholderIcon}
+						/>
+						<DropdownMenu.Item
+							shortcuts="Shift+E"
+							label="Edit"
+							icon={placeholderIcon}
+						/>
+						<DropdownMenu.Item disabled label="Delete" icon={placeholderIcon} />
+						<DropdownMenu.Item label="Disable" icon={placeholderIcon} />
+						<DropdownMenu.Item
+							label="Filter"
+							unstable_dot="Some filters applied"
+						/>
+					</DropdownMenu.Content>
+				</DropdownMenu.Provider>
+			</div>
+			<SubmenuTest open="true" />
+		</div>
+	);
+}
 
 function CheckboxTest({ defaultChecked: defaultCheckedParam }: VariantProps) {
 	const defaultChecked = defaultCheckedParam ? true : undefined;
 	return (
-		<div style={{ minHeight: 150 }}>
+		<div style={{ minBlockSize: 150 }}>
 			<DropdownMenu.Provider>
 				<DropdownMenu.Button>Settings</DropdownMenu.Button>
 
@@ -58,28 +105,34 @@ function CheckboxTest({ defaultChecked: defaultCheckedParam }: VariantProps) {
 	);
 }
 
-function VisualTest({ disabled }: VariantProps) {
+function SubmenuTest({ open: openProp }: VariantProps) {
+	const open = openProp === undefined ? undefined : !!openProp;
 	return (
-		<div style={{ minHeight: 200 }}>
-			<DropdownMenu.Provider defaultOpen>
-				<DropdownMenu.Button disabled={!!disabled}>Actions</DropdownMenu.Button>
+		<div style={{ minBlockSize: 200 }}>
+			<DropdownMenu.Provider open={open}>
+				<DropdownMenu.Button>Actions</DropdownMenu.Button>
 
 				<DropdownMenu.Content>
+					<DropdownMenu.Item label="Item 1" />
+					<DropdownMenu.Item label="Item 2" />
 					<DropdownMenu.Item
-						shortcuts="Command+A"
-						label="Add"
-						icon={placeholderIcon}
-					/>
-					<DropdownMenu.Item
-						shortcuts="Shift+E"
-						label="Edit"
-						icon={placeholderIcon}
-					/>
-					<DropdownMenu.Item disabled label="Delete" icon={placeholderIcon} />
-					<DropdownMenu.Item label="Disable" icon={placeholderIcon} />
-					<DropdownMenu.Item
-						label="Filter"
-						unstable_dot="Some filters applied"
+						label="Item 3"
+						submenu={
+							<DropdownMenu.Submenu>
+								<DropdownMenu.Item label="Item 3_1" />
+								<DropdownMenu.Item
+									label="Item 3_2"
+									submenu={
+										<DropdownMenu.Submenu>
+											<DropdownMenu.Item label="Item 3_2_1" />
+											<DropdownMenu.Item label="Item 3_2_2" />
+											<DropdownMenu.Item label="Item 3_2_3" />
+										</DropdownMenu.Submenu>
+									}
+								/>
+								<DropdownMenu.Item label="Item 3_3" />
+							</DropdownMenu.Submenu>
+						}
 					/>
 				</DropdownMenu.Content>
 			</DropdownMenu.Provider>

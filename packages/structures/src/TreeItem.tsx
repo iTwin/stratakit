@@ -5,7 +5,6 @@
 
 import * as React from "react";
 import { CompositeItem } from "@ariakit/react/composite";
-import { PopoverProvider } from "@ariakit/react/popover";
 import { Role } from "@ariakit/react/role";
 import { Toolbar, ToolbarItem } from "@ariakit/react/toolbar";
 import { IconButton } from "@stratakit/bricks";
@@ -595,26 +594,28 @@ const TreeItemActionMenu = React.memo(
 
 		if (!displayMenu) return null;
 		return (
-			<PopoverProvider placement="right-start">
-				<DropdownMenu.Provider open={open} setOpen={setOpen}>
-					<DropdownMenu.Button
-						{...props}
-						onKeyDown={(e) => {
-							if (arrowKeys.includes(e.key)) {
-								isArrowKeyPressed.current = true;
-							}
-							queueMicrotask(() => {
-								isArrowKeyPressed.current = false;
-							});
-						}}
-						render={
-							<TreeItemInlineAction label="More" icon={<MoreHorizontal />} />
+			<DropdownMenu.Provider
+				open={open}
+				setOpen={setOpen}
+				placement="right-start"
+			>
+				<DropdownMenu.Button
+					{...props}
+					onKeyDown={(e) => {
+						if (arrowKeys.includes(e.key)) {
+							isArrowKeyPressed.current = true;
 						}
-						ref={forwardedRef}
-					/>
-					<TreeItemMenuActionsContent />
-				</DropdownMenu.Provider>
-			</PopoverProvider>
+						queueMicrotask(() => {
+							isArrowKeyPressed.current = false;
+						});
+					}}
+					render={
+						<TreeItemInlineAction label="More" icon={<MoreHorizontal />} />
+					}
+					ref={forwardedRef}
+				/>
+				<TreeItemMenuActionsContent />
+			</DropdownMenu.Provider>
 		);
 	}),
 );

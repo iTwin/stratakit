@@ -126,7 +126,7 @@
 			border: none;
 			background-color: var(--🥝TextBox-background-color);
 			border-radius: inherit;
-			outline: unset;
+			outline: unset !important;
 			flex: 999;
 			align-self: stretch;
 			transition: background-color 150ms ease-out;

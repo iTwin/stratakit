@@ -1,5 +1,5 @@
 ---
-"@stratakit/bricks": minor
+"@stratakit/bricks": patch
 ---
 
-Add invalid state to TextBox and Textarea.
+Added invalid state styling to `TextBox`.

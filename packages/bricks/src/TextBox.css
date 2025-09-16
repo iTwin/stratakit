@@ -156,7 +156,7 @@
 				--🥝Icon-color: var(--stratakit-color-icon-accent-strong);
 			}
 		}
-	
+
 		&:where(
 				:is(:user-invalid, [aria-invalid="true"]),
 				:has(:is(input, textarea):is(:user-invalid, [aria-invalid="true"]))

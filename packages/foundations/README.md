@@ -57,7 +57,7 @@ To self-host `InterVariable`, download the [`InterVariable.woff2`](https://rsms.
 	@font-face {
 		font-family: InterVariable;
 		font-style: normal;
-		font-weight 100 900;
+		font-weight: 100 900;
 		font-display: swap;
 		src: url("/path/to/InterVariable.woff2") format("woff2");
 	}
@@ -65,7 +65,7 @@ To self-host `InterVariable`, download the [`InterVariable.woff2`](https://rsms.
 	@font-face {
 		font-family: InterVariable;
 		font-style: italic;
-		font-weight 100 900;
+		font-weight: 100 900;
 		font-display: swap;
 		src: url("/path/to/InterVariable-Italic.woff2") format("woff2");
 	}

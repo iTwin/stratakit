@@ -17,6 +17,7 @@
 		var(--stratakit-color-glow-hue) var(--stratakit-color-border-glow-base-hover-\%)
 	);
 	--✨border--focus: var(--stratakit-color-border-accent-strong);
+	--✨border--invalid: var(--stratakit-color-border-critical-base);
 	--✨border--disabled: var(--stratakit-color-border-glow-on-surface-disabled);
 	--✨color--default: var(--stratakit-color-text-neutral-primary);
 	--✨color--placeholder: var(--stratakit-color-text-neutral-secondary);
@@ -157,9 +158,15 @@
 		}
 
 		&:where(
-				:disabled,
-				[aria-disabled="true"],
-				[data-_sk-disabled="true"],
+				:is(:user-invalid, [aria-invalid="true"]),
+				:has(:is(input, textarea):is(:user-invalid, [aria-invalid="true"]))
+			) {
+			--🥝Icon-color: var(--stratakit-color-icon-critical-base);
+			--🥝TextBox-border-color: var(--✨border--invalid);
+		}
+
+		&:where(
+				:is(:disabled, [aria-disabled="true"], [data-_sk-disabled="true"]),
 				:has(:is(input, textarea):is(:disabled, [aria-disabled="true"]))
 			) {
 			--🌀TextBox-state: var(--🌀TextBox-state--disabled);
@@ -190,9 +197,14 @@
 		color: FieldText;
 
 		&:where(
-				:disabled,
-				[aria-disabled="true"],
-				[data-_sk-disabled="true"],
+				:is(:user-invalid, [aria-invalid="true"]),
+				:has(:is(input, textarea):is(:user-invalid, [aria-invalid="true"]))
+			) {
+			--🥝TextBox-border-color: Mark;
+		}
+
+		&:where(
+				:is(:disabled, [aria-disabled="true"], [data-_sk-disabled="true"]),
 				:has(:is(input, textarea):is(:disabled, [aria-disabled="true"]))
 			) {
 			--🥝TextBox-border-color: GrayText;

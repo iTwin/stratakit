@@ -41,7 +41,7 @@ This will ensure StrataKit's styles are loaded to either the document or the enc
 
 Once that’s in place, you can import and use components from `@stratakit/bricks` and other `@stratakit` packages.
 
-By default, StrataKit's CSS variables are only made available to the `<Root>` component and its descendants. The `synchronizeColorScheme` prop can be used to style the _entire page_ (including the `<html>` element, which will automatically use an appropriate background-color).
+By default, StrataKit's CSS variables are made available to the _entire page_ (including the `<html>` element, which will automatically use an appropriate background-color). The `synchronizeColorScheme` prop can be set to `false` to prevent this behavior, which can be useful if you want to isolate StrataKit's styles to only the parts of the page that are wrapped in `<Root>`.
 
 > [!NOTE]
 > If you are trying to use this package alongside the current stable version of iTwinUI, you will also need to set up the [theme bridge](https://github.com/iTwin/iTwinUI/wiki/StrataKit-theme-bridge).

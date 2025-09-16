@@ -148,6 +148,15 @@
 			--🥝Icon-color: var(--stratakit-color-icon-accent-strong);
 		}
 
+		@supports not selector(:has(+ *)) {
+			&:where(:not(input, textarea):focus-within) {
+				outline: var(--🥝focus-outline);
+				outline-offset: var(--🥝focus-outline-offset);
+				--🥝TextBox-border-color: var(--✨border--focus);
+				--🥝Icon-color: var(--stratakit-color-icon-accent-strong);
+			}
+		}
+	
 		&:where(
 				:is(:user-invalid, [aria-invalid="true"]),
 				:has(:is(input, textarea):is(:user-invalid, [aria-invalid="true"]))

@@ -190,9 +190,7 @@
 		color: FieldText;
 
 		&:where(
-				:user-invalid,
-				[aria-invalid="true"],
-				[data-_sk-invalid="true"],
+				:is(:user-invalid, [aria-invalid="true"]),
 				:has(:is(input, textarea):is(:user-invalid, [aria-invalid="true"]))
 			) {
 			--🥝TextBox-border-color: Mark;

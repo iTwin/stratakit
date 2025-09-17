@@ -353,7 +353,7 @@
 		border: 1px solid ButtonBorder;
 		color: ButtonText;
 
-		&:where([aria-pressed="true"]) {
+		&:where([aria-pressed="true"], [aria-current]:not([aria-current="false"])) {
 			background-color: SelectedItem;
 			color: SelectedItemText;
 		}

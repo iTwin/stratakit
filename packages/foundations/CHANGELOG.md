@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.3.4
+
+### Patch Changes
+
+- [#895](https://github.com/iTwin/design-system/pull/895): The global focus outline is now given priority in the CSS cascade. This is a precautionary measure to prevent third party styles from removing the focus outline.
+
 ## 0.3.3
 
 - [#944](https://github.com/iTwin/design-system/pull/944): The CSS reset has been updated to use `display: inline-block` for SVG elements.

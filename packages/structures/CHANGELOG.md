@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.4.4
+
+### Patch Changes
+
+- [#954](https://github.com/iTwin/design-system/pull/954): Added "popup indicator" styling to `Toolbar.Item`.
+- Updated dependencies:
+  - @stratakit/bricks@0.4.4
+  - @stratakit/foundations@0.3.4
+
 ## 0.4.3
 
 - [#933](https://github.com/iTwin/design-system/pull/933): Added `submenu` prop to `DropdownMenu.Item` component and a `DropdownMenu.Submenu` component to support nested dropdown menus.

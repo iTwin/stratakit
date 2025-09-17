@@ -18,7 +18,7 @@ jobs:
 
       - uses: pnpm/action-setup@v4
         with:
-          version: 10.15.1
+          version: 10.17.0
 
       - name: Use Node 22.x
         uses: actions/setup-node@v5
@@ -38,7 +38,7 @@ jobs:
 
       - uses: pnpm/action-setup@v4
         with:
-          version: 10.15.1
+          version: 10.17.0
 
       - name: Use Node 22.x
         uses: actions/setup-node@v5
@@ -59,7 +59,7 @@ jobs:
 
       - uses: pnpm/action-setup@v4
         with:
-          version: 10.15.1
+          version: 10.17.0
 
       - uses: biomejs/setup-biome@v2
 
@@ -96,7 +96,7 @@ jobs:
 
       - uses: pnpm/action-setup@v4
         with:
-          version: 10.15.1
+          version: 10.17.0
 
       - name: Use Node 22.x
         uses: actions/setup-node@v5
@@ -129,7 +129,7 @@ jobs:
 
       - uses: pnpm/action-setup@v4
         with:
-          version: 10.15.1
+          version: 10.17.0
 
       - run: pnpm install
       - run: pnpm run build

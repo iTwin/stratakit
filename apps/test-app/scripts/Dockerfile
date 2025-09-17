@@ -1,6 +1,6 @@
 FROM mcr.microsoft.com/playwright:v1.55.0-noble AS base
 RUN --mount=type=cache,target=/root/.npm \
-    npm install -g pnpm@10.15.1
+    npm install -g pnpm@10.17.0
 
 FROM base AS deps
 WORKDIR /kiwi

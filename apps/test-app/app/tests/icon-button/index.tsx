@@ -26,6 +26,7 @@ export default definePage(
 		visual: VisualTest,
 		customIcon: CustomIconTest,
 		dot: DotTest,
+		_activeLink: ActiveLinkTest,
 	},
 );
 
@@ -98,6 +99,17 @@ function DotTest() {
 			label="Notifications"
 			dot="You have unread notifications"
 			icon={notificationsIcon}
+		/>
+	);
+}
+
+function ActiveLinkTest() {
+	return (
+		<IconButton
+			icon={placeholderIcon}
+			label="Click me"
+			render={<a href="#" />}
+			active
 		/>
 	);
 }

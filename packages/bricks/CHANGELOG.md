@@ -2,8 +2,6 @@
 
 ## 0.4.4
 
-### Patch Changes
-
 - [#892](https://github.com/iTwin/design-system/pull/892): Added invalid state styling to `TextBox`.
 - [#955](https://github.com/iTwin/design-system/pull/955): Fixed `IconButton` active state semantics. It will now use `aria-current` instead of `aria-pressed` when rendered as an anchor.
 - Updated dependencies:

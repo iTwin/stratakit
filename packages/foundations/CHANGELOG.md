@@ -2,9 +2,7 @@
 
 ## 0.3.4
 
-### Patch Changes
-
-- [#895](https://github.com/iTwin/design-system/pull/895): The global focus outline is now given priority in the CSS cascade. This is a precautionary measure to prevent third party styles from removing the focus outline.
+- Updated internal code for `@stratakit/bricks@0.4.4` and `@stratakit/structures@0.4.4`.
 
 ## 0.3.3
 

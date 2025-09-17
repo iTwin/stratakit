@@ -2,8 +2,6 @@
 
 ## 0.4.4
 
-### Patch Changes
-
 - [#954](https://github.com/iTwin/design-system/pull/954): Added "popup indicator" styling to `Toolbar.Item`.
 - Updated dependencies:
   - @stratakit/bricks@0.4.4

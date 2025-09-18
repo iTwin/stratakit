@@ -262,7 +262,7 @@ const Wrapper = React.forwardRef((props, forwardedRef) => {
 		<SkTabs.Provider
 			defaultSelectedId={defaultSelectedId}
 			selectedId={selectedId}
-			selectOnMove={focusActivationMode === "manual" ? false : undefined}
+			selectOnMove={focusActivationMode !== "manual"}
 			setSelectedId={setSelectedId}
 		>
 			<WrapperContext.Provider

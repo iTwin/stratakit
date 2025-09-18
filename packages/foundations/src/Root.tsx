@@ -9,13 +9,13 @@ import { PortalContext } from "@ariakit/react/portal";
 import { Role } from "@ariakit/react/role";
 import cx from "classnames";
 import componentsCss from "./~components.css.js"; // TODO: remove this implicit dependency on bricks and structures
-import { useLayoutEffect, useMergedRefs } from "./~hooks.js";
 import foundationsCss from "./~styles.css.js";
 import {
 	forwardRef,
 	getOwnerDocument,
 	getWindow,
 	identity,
+	isBrowser,
 	isDocument,
 } from "./~utils.js";
 import {
@@ -72,6 +72,15 @@ interface RootProps extends BaseProps {
 	 * Allows to customize the root portal container element.
 	 */
 	portalContainer?: React.ReactElement;
+
+	/**
+	 * The root node to which this `Root` component is attached.
+	 *
+	 * This needs to be set when the `Root` is rendered within shadow DOM or a popout window.
+	 *
+	 * @default document
+	 */
+	rootNode?: Document | ShadowRoot;
 }
 
 /**
@@ -98,9 +107,6 @@ export const Root = forwardRef<"div", RootProps>((props, forwardedRef) => {
 		...rest
 	} = props;
 
-	const [portalContainer, setPortalContainer] =
-		React.useState<HTMLElement | null>(null);
-
 	return (
 		<RootInternal {...rest} ref={forwardedRef}>
 			<Styles />
@@ -111,18 +117,15 @@ export const Root = forwardRef<"div", RootProps>((props, forwardedRef) => {
 				<SynchronizeColorScheme colorScheme={props.colorScheme} />
 			) : null}
 
-			<PortalContainer
-				colorScheme={props.colorScheme}
-				density={props.density}
-				ref={setPortalContainer}
-				render={portalContainerProp}
-			/>
-
-			<PortalContext.Provider value={portalContainer}>
-				<HtmlSanitizerContext.Provider value={unstable_htmlSanitizer}>
+			<HtmlSanitizerContext.Provider value={unstable_htmlSanitizer}>
+				<PortalProvider
+					colorScheme={props.colorScheme}
+					density={props.density}
+					portalContainerProp={portalContainerProp}
+				>
 					{children}
-				</HtmlSanitizerContext.Provider>
-			</PortalContext.Provider>
+				</PortalProvider>
+			</HtmlSanitizerContext.Provider>
 		</RootInternal>
 	);
 });
@@ -132,23 +135,17 @@ DEV: Root.displayName = "Root";
 
 interface RootInternalProps
 	extends BaseProps,
-		Pick<RootProps, "colorScheme" | "density"> {}
+		Pick<RootProps, "colorScheme" | "density" | "rootNode"> {}
 
 const RootInternal = forwardRef<"div", RootInternalProps>(
 	(props, forwardedRef) => {
-		const { children, colorScheme, density, ...rest } = props;
-
-		const [rootNode, setRootNode] = React.useState<
-			Document | ShadowRoot | null
-		>(null);
-
-		const findRootNodeFromRef = React.useCallback((element?: HTMLElement) => {
-			if (!element) return;
-
-			const rootNode = element.getRootNode();
-			if (!isDocument(rootNode) && !isShadow(rootNode)) return;
-			setRootNode(rootNode);
-		}, []);
+		const {
+			children,
+			colorScheme,
+			density,
+			rootNode = isBrowser ? document : undefined,
+			...rest
+		} = props;
 
 		return (
 			<Role
@@ -156,7 +153,7 @@ const RootInternal = forwardRef<"div", RootInternalProps>(
 				className={cx("🥝Root", props.className)}
 				data-_sk-theme={colorScheme}
 				data-_sk-density={density}
-				ref={useMergedRefs(forwardedRef, findRootNodeFromRef)}
+				ref={forwardedRef}
 			>
 				<RootNodeContext.Provider value={rootNode}>
 					{children}
@@ -181,7 +178,7 @@ function SynchronizeColorScheme({
 }) {
 	const rootNode = useRootNode();
 
-	useLayoutEffect(() => {
+	React.useInsertionEffect(() => {
 		if (!rootNode) return;
 
 		if (isDocument(rootNode)) {
@@ -194,6 +191,30 @@ function SynchronizeColorScheme({
 	}, [rootNode, colorScheme]);
 
 	return null;
+}
+
+// ----------------------------------------------------------------------------
+
+interface PortalProviderProps
+	extends Pick<RootProps, "colorScheme" | "density"> {
+	portalContainerProp?: RootProps["portalContainer"];
+}
+
+function PortalProvider(props: React.PropsWithChildren<PortalProviderProps>) {
+	const [portalContainer, setPortalContainer] =
+		React.useState<HTMLElement | null>(null);
+
+	return (
+		<PortalContext.Provider value={portalContainer}>
+			{props.children}
+			<PortalContainer
+				colorScheme={props.colorScheme}
+				density={props.density}
+				ref={setPortalContainer}
+				render={props.portalContainerProp}
+			/>
+		</PortalContext.Provider>
+	);
 }
 
 // ----------------------------------------------------------------------------
@@ -229,7 +250,7 @@ const PortalContainer = forwardRef<"div", PortalContainerProps>(
 function Styles() {
 	const rootNode = useRootNode();
 
-	useLayoutEffect(
+	React.useInsertionEffect(
 		/** Adds `@layer reset` _before_ all other styles to ensure correct layer order.  */
 		function addResetLayer() {
 			if (!rootNode) return;
@@ -240,7 +261,7 @@ function Styles() {
 		[rootNode],
 	);
 
-	useLayoutEffect(() => {
+	React.useInsertionEffect(() => {
 		if (!rootNode) return;
 		const { cleanup } = loadStyles(rootNode, { css });
 		return cleanup;
@@ -254,7 +275,7 @@ function Styles() {
 function Fonts() {
 	const rootNode = useRootNode();
 
-	useLayoutEffect(() => {
+	React.useInsertionEffect(() => {
 		if (!rootNode) return;
 		loadFonts(rootNode);
 	}, [rootNode]);
@@ -271,7 +292,7 @@ function Fonts() {
 function InlineSpriteSheet() {
 	const rootNode = useRootNode();
 
-	React.useEffect(
+	React.useInsertionEffect(
 		function maybeCreateSpriteSheet() {
 			const ownerDocument = getOwnerDocument(rootNode);
 			if (!ownerDocument) return;

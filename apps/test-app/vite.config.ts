@@ -78,6 +78,9 @@ export default defineConfig({
 			conditions: [customConditions, defaultServerConditions].flat(),
 		},
 	},
+	define: {
+		__VERSION__: `"development"`,
+	},
 });
 
 /** Vite plugin that bundles "*.css?inline" files using lightningcss. Only used during dev. */

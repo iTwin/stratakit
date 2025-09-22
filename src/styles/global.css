@@ -21,7 +21,9 @@
 		}
 	}
 
-	table {
+	responsive-table {
+		display: block;
+		overflow: auto;
 		position: relative;
 		animation: --_scroll-shadow linear;
 		animation-timeline: scroll(self inline);
@@ -31,9 +33,18 @@
 			position: absolute;
 			inset: 0;
 			pointer-events: none;
-			background: linear-gradient(to left, var(--stratakit-color-bg-page-depth) 0%, transparent 20%);
+			background: linear-gradient(
+				to left,
+				var(--stratakit-color-bg-page-depth) 0%,
+				transparent 20%
+			);
 			opacity: var(--_overlay-bg-opacity, 0);
 		}
+	}
+
+	table {
+		display: table;
+		inline-size: 100%;
 	}
 
 	dl {

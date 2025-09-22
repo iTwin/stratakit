@@ -2,6 +2,7 @@
 
 import starlight from "@astrojs/starlight";
 import { defineConfig } from "astro/config";
+import { visit } from "unist-util-visit";
 
 // https://astro.build/config
 export default defineConfig({
@@ -41,6 +42,7 @@ export default defineConfig({
 			expressiveCode: {
 				themes: ["github-dark", "github-light"],
 			},
+			plugins: [starlightResponsiveTables()],
 		}),
 	],
 	devToolbar: { enabled: false },
@@ -53,3 +55,44 @@ export default defineConfig({
 		},
 	},
 });
+
+/**
+ * Starlight plugin that makes tables responsive by wrapping them in a `<responsive-table>` element.
+ * @returns {import("@astrojs/starlight/types").StarlightPlugin}
+ */
+function starlightResponsiveTables({ tagName = "responsive-table" } = {}) {
+	function rehypeWrapTables() {
+		return (/** @type {any} */ tree) => {
+			if (!tree?.children) return;
+			visit(tree, "element", (node, index, parent) => {
+				if (!parent || !node || index === undefined) return;
+
+				if (node.tagName === "table") {
+					parent.children[index] = {
+						type: "element",
+						tagName,
+						properties: {},
+						children: [node],
+					};
+				}
+			});
+		};
+	}
+
+	return {
+		name: "starlight-responsive-tables",
+		hooks: {
+			"config:setup": ({ addIntegration }) => {
+				addIntegration({
+					name: "starlight-responsive-tables-integration",
+					hooks: {
+						"astro:config:setup": ({ command, config }) => {
+							if (command !== "dev" && command !== "build") return;
+							config.markdown.rehypePlugins.push(rehypeWrapTables);
+						},
+					},
+				});
+			},
+		},
+	};
+}

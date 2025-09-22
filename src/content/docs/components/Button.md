@@ -7,7 +7,7 @@ related:
 links:
   demo: tests/button
   github: packages/bricks/src/Button.tsx
-  figma: https://www.figma.com/design/EfvaViHLAhb6v1ghEBXpSB/documentation--WIP-?node-id=1553-13991&t=lYI9n3rvhBkJwWph-1
+  figma: https://www.figma.com/design/EfvaViHLAhb6v1ghEBXpSB/documentation--WIP-?node-id=161-1161&t=fRRXvPQ4CL1HizqP-4
 ---
 
 ## Use cases
@@ -15,23 +15,23 @@ links:
 Make sure the **Button** is suitable for your use case. There may be other, more appropriate components available.
 
 | Use case                                                          | [Button](/components/button) | [IconButton](/components/iconbutton) | [Switch](/components/switch) | [Anchor](/components/anchor) |
-| ----------------------------------------------------------------- | ---------------------------- | ------------------------------------ | ---------------------------- | ---------------------------- |
-| Submit forms, confirm or cancel dialogs, create or delete content | ✅                           | ❌                                   | ❌                           | ❌                           |
-| Select an option within a toolbar                                 | ❌                           | ✅                                   | ❌                           | ❌                           |
-| Make a binary choice (switching a setting on or off)              | ❌                           | ❌                                   | ✅                           | ❌                           |
-| Navigate between interface screens or sections                    | ❌                           | ❌                                   | ❌                           | ✅                           |
+| ----------------------------------------------------------------- | :--------------------------: | :----------------------------------: | :--------------------------: | :--------------------------: |
+| Submit forms, confirm or cancel dialogs, create or delete content |              ✅              |                  ❌                  |              ❌              |              ❌              |
+| Select an option within a toolbar                                 |              ❌              |                  ✅                  |              ❌              |              ❌              |
+| Make a binary choice (switching a setting on or off)              |              ❌              |                  ❌                  |              ✅              |              ❌              |
+| Navigate between interface screens or sections                    |              ❌              |                  ❌                  |              ❌              |              ✅              |
 
 ## Anatomy
 
 ### Structure
 
 ```jsx
-<Button variant="outline" tone="accent" onClick={() => doSomething()}>
+<Button variant="outline" tone="accent" onClick={() => {}}>
 	Add new
 </Button>
 ```
 
-- `<Button>`: The Button component renders as an HTML <button>, which is implicitly keyboard and screen reader accessible.
+- `<Button>`: The Button component renders as an HTML `<button>`, which is implicitly keyboard and screen reader accessible.
   - `variant` (default: `"solid"`) : The chosen [variant](#variants).
   - `tone` (default: `"neutral"`) : The chosen [tone](#tones).
   - `onClick()`: Handler for the [`click` event](https://developer.mozilla.org/en-US/docs/Web/API/Element/click_event).
@@ -73,7 +73,7 @@ An [**Icon**](/components/icon) can be prepended or appended to the button’s t
 </Button>
 ```
 
-✅ Do
+### ✅ Do
 
 - Use **Button** for form submissions, modal confirmations, and other non-navigational calls-to-action.
 - Include a clear and concise label, describing the action the Button will take.
@@ -81,7 +81,7 @@ An [**Icon**](/components/icon) can be prepended or appended to the button’s t
 - Use two buttons together, defining alternative or opposing actions, such as “Confirm” and “Cancel”.
 - Accompany ghost variants with icons, to increase affordance. Otherwise, they are less likely to be perceived as interactive.
 
-🚫 Don’t
+### 🚫 Don’t
 
 - Use **Button** for navigation. Use an [**Anchor**](/components/anchor) or simple text link instead.
 - Include multiple **Buttons** with the same label.

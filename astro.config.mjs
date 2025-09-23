@@ -28,6 +28,7 @@ export default defineConfig({
 			],
 			sidebar: [
 				{ label: "Getting started", slug: "guides/getting-started" },
+				{ label: "Changelog", slug: "changelog" },
 				{
 					label: "Components",
 					autogenerate: { directory: "components" },

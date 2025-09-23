@@ -189,3 +189,8 @@ aside.starlight-aside {
 	background-color: transparent;
 	border-radius: 4px;
 }
+
+starlight-menu-button button {
+	justify-content: center;
+	align-items: center;
+}

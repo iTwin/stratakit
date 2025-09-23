@@ -2,7 +2,7 @@
 title: Switch
 description: Switches are toggles for Boolean values.
 status: ready
-related:
+associated:
   - Field
   - Label
 links:

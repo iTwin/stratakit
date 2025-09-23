@@ -18,7 +18,7 @@ const githubUrl = links.github?.startsWith("https://")
 
 const figmaUrl = links.figma;
 
-const related = entry.data.related?.map(({ id }) => id) || [];
+const associated = entry.data.associated?.map(({ id }) => id) || [];
 ---
 
 <hgroup>
@@ -64,12 +64,12 @@ const related = entry.data.related?.map(({ id }) => id) || [];
 		)
 	}
 	{
-		related.length > 0 && (
+		associated.length > 0 && (
 			<div>
-				<dt>Related components:</dt>
+				<dt>Associated components:</dt>
 				<dd>
 					<ul role="list">
-						{related.map((component) => (
+						{associated.map((component) => (
 							<li>
 								<a href={`/components/${component.toLowerCase()}`}>{component}</a>
 							</li>

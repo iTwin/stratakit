@@ -15,7 +15,7 @@ export const collections = {
 						figma: z.string().optional(),
 					})
 					.optional(),
-				related: z.array(reference("docs")).optional(),
+				associated: z.array(reference("docs")).optional(),
 			}),
 		}),
 	}),

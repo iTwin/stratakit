@@ -2,7 +2,7 @@
 title: Button
 description: Buttons are used to initiate actions.
 status: ready
-related:
+associated:
   - Icon
 links:
   demo: tests/button

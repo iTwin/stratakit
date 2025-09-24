@@ -84,8 +84,11 @@ const ErrorRegionRoot = forwardRef<"div", ErrorRegionRootProps>(
 			...rest
 		} = props;
 		const labelId = React.useId();
-		const sectionLabelledBy =
-			props["aria-labelledby"] ?? (props["aria-label"] ? undefined : labelId);
+		const sectionLabelledBy = props["aria-label"]
+			? undefined
+			: label
+				? labelId
+				: undefined;
 
 		const [open, setOpen] = useControlledState(
 			false,
@@ -151,8 +154,8 @@ const ErrorRegionRoot = forwardRef<"div", ErrorRegionRootProps>(
 				</VisuallyHidden>
 				<DialogProvider open={open} setOpen={setOpen}>
 					<Role.section
-						{...rest}
 						aria-labelledby={sectionLabelledBy}
+						{...rest}
 						className={cx("🥝ErrorRegion", props.className)}
 						data-_sk-visible={!!label}
 						data-_sk-expanded={open}

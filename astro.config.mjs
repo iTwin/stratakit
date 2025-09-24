@@ -1,5 +1,6 @@
 // @ts-check
 
+import react from "@astrojs/react";
 import starlight from "@astrojs/starlight";
 import { defineConfig } from "astro/config";
 import { visit } from "unist-util-visit";
@@ -34,6 +35,7 @@ export default defineConfig({
 					autogenerate: { directory: "components" },
 				},
 				{ label: "Icons", slug: "icons" },
+				{ label: "Examples", link: "/examples" },
 			],
 			editLink: {
 				baseUrl: "https://github.com/iTwin/stratakit-docs/edit/main/",
@@ -45,6 +47,7 @@ export default defineConfig({
 			},
 			plugins: [starlightResponsiveTables()],
 		}),
+		react(),
 	],
 	devToolbar: { enabled: false },
 	vite: {
@@ -54,6 +57,7 @@ export default defineConfig({
 				return undefined;
 			},
 		},
+		plugins: [vitePluginFixAstroSvg()],
 	},
 });
 
@@ -94,6 +98,23 @@ function starlightResponsiveTables({ tagName = "responsive-table" } = {}) {
 					},
 				});
 			},
+		},
+	};
+}
+
+/**
+ * Vite plugin that fixes Astro's SVG handling to ensure SVGs are treated as URLs when imported in JSX.
+ * @returns {NonNullable<import("astro").ViteUserConfig["plugins"]>[number]}
+ */
+function vitePluginFixAstroSvg() {
+	return {
+		name: "vite-fix-astro-svg",
+		enforce: "pre",
+		async resolveId(source, importer, options) {
+			if (!source.endsWith(".svg")) return;
+			if (!importer?.endsWith(".jsx") && !importer?.endsWith(".tsx")) return;
+			const resolved = await this.resolve(`${source}?url`, importer, options);
+			return resolved?.id;
 		},
 	};
 }

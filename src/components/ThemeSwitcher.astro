@@ -46,7 +46,7 @@ import { Icon } from "@astrojs/starlight/components";
 	type Theme = "dark" | "light";
 
 	/** Key in `localStorage` to store color theme preference at. */
-	const storageKey = "starlight-theme";
+	const storageKey = "color-scheme";
 
 	/** Load the user’s preference from `localStorage`. */
 	const loadTheme = (): Theme | undefined => {
@@ -99,6 +99,7 @@ import { Icon } from "@astrojs/starlight/components";
 				const currentTheme = loadTheme() || getPreferredColorScheme();
 				const nextTheme = currentTheme === "dark" ? "light" : "dark";
 				onThemeChange(nextTheme);
+				window.dispatchEvent(new Event("color-scheme:change"));
 			});
 		}
 	}

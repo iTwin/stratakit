@@ -1,0 +1,18 @@
+---
+import { getCollection } from "astro:content";
+import StarlightPage from "@astrojs/starlight/components/StarlightPage.astro";
+
+const examples = await getCollection("examples");
+---
+
+<StarlightPage frontmatter={{ title: "Examples" }}>
+	<ul>
+		{
+			examples.map((example) => (
+				<li>
+					<a href={`/examples/${example.id}`}>{example.data.displayName}</a>
+				</li>
+			))
+		}
+	</ul>
+</StarlightPage>

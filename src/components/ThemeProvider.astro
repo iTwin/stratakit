@@ -4,8 +4,7 @@
 
 {/* This is intentionally inlined to avoid FOUC. */}
 <script is:inline>
-	const storedTheme =
-		typeof localStorage !== "undefined" && localStorage.getItem("starlight-theme");
+	const storedTheme = typeof localStorage !== "undefined" && localStorage.getItem("color-scheme");
 	const currentTheme =
 		storedTheme || (window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
 	document.documentElement.dataset.theme = currentTheme === "light" ? "light" : "dark";

@@ -33,11 +33,12 @@ interface ErrorRegionRootProps extends Omit<BaseProps, "children"> {
 	/**
 	 * Label for the error header, usually indicating the number of errors displayed.
 	 * By default this is used as a name of the region navigational landmark, however an explicit `aria-label` or `aria-labelledby` is strongly suggested.
+	 *
+	 * Use `undefined` if you don't want to display errors rather than conditionally rendering the component.
 	 */
 	label?: React.ReactNode;
 	/**
 	 * A list of error items where each item describes an individual error. Must be a list of `ErrorRegion.Item` components.
-	 * Render no `ErrorRegion.Item` elements to hide the component.
 	 */
 	items?: React.ReactNode;
 	/**
@@ -60,8 +61,6 @@ interface ErrorRegionRootProps extends Omit<BaseProps, "children"> {
  * and should be labelled either using `label` or `aria-label`/`aria-labelledby`. Changes to the `label` prop will be
  * announced communicated using a [live region](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Guides/Live_regions).
  *
- * This component should not be rendered conditionally, instead use the `items` prop to control the visibility.
- *
  * Example:
  * ```tsx
  * <ErrorRegion.Root
@@ -79,7 +78,7 @@ const ErrorRegionRoot = forwardRef<"div", ErrorRegionRootProps>(
 	(props, forwardedRef) => {
 		const {
 			label,
-			items: itemsProp,
+			items,
 			open: openProp,
 			setOpen: setOpenProp,
 			...rest
@@ -134,16 +133,17 @@ const ErrorRegionRoot = forwardRef<"div", ErrorRegionRootProps>(
 
 		const store = useCollectionStore({
 			setItems: (newItems) => {
-				const itemsSet = new Set(items.map((item) => item.id));
-				const addedItems = newItems.filter((item) => !itemsSet.has(item.id));
+				const prevItemsSet = new Set(prevItems.map((item) => item.id));
+				const addedItems = newItems.filter(
+					(item) => !prevItemsSet.has(item.id),
+				);
 				if (addedItems.length === 0) return;
 
 				pulse();
 				setLiveLabel(label);
 			},
 		});
-		const items = useStoreState(store, "items");
-		const visible = items.length > 0;
+		const prevItems = useStoreState(store, "items");
 
 		// This label should be updated only when a new item is added.
 		const [liveLabel, setLiveLabel] = React.useState(label);
@@ -157,7 +157,7 @@ const ErrorRegionRoot = forwardRef<"div", ErrorRegionRootProps>(
 						aria-labelledby={sectionLabelledBy}
 						{...rest}
 						className={cx("🥝ErrorRegion", props.className)}
-						data-_sk-visible={visible}
+						data-_sk-visible={!!label}
 						data-_sk-expanded={open}
 						ref={forwardedRef}
 					>
@@ -191,7 +191,7 @@ const ErrorRegionRoot = forwardRef<"div", ErrorRegionRootProps>(
 									className="🥝ErrorRegionItems"
 									role="list"
 								>
-									{itemsProp}
+									{items}
 								</Collection>
 							</Dialog>
 						</div>

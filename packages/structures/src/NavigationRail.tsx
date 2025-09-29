@@ -4,6 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 
 import * as React from "react";
+import { Button } from "@ariakit/react/button";
 import { Role } from "@ariakit/react/role";
 import { Tooltip, VisuallyHidden } from "@stratakit/bricks";
 import { Icon } from "@stratakit/foundations";
@@ -14,6 +15,7 @@ import {
 } from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
 import { createStore, useStore } from "zustand";
+import { combine } from "zustand/middleware";
 
 import type {
 	BaseProps,
@@ -23,23 +25,52 @@ import type {
 // ----------------------------------------------------------------------------
 
 type NavigationRailState = {
-	collapsed: boolean;
-	setCollapsed: (collapsed: boolean) => void;
+	expanded: boolean;
+	setExpanded: (expanded: boolean) => void;
 };
 
-function createNavigationRailStore() {
-	return createStore<NavigationRailState>((set) => ({
-		collapsed: true,
-		setCollapsed: (collapsed) => set({ collapsed }),
-	}));
+function createNavigationRailStore(
+	initialState: Pick<NavigationRailState, "expanded">,
+) {
+	return createStore(
+		combine(initialState, (set) => ({
+			setExpanded: (expanded: boolean) => set({ expanded }),
+		})),
+	);
 }
 
 const NavigationRailContext = React.createContext<
 	ReturnType<typeof createNavigationRailStore> | undefined
 >(undefined);
 
-function NavigationRailProvider(props: React.PropsWithChildren) {
-	const [store] = React.useState(() => createNavigationRailStore());
+type NavigationRailProviderProps = React.PropsWithChildren<
+	Required<Pick<NavigationRailRootProps, "defaultExpanded">> &
+		Pick<NavigationRailRootProps, "expanded" | "setExpanded">
+>;
+
+function NavigationRailProvider(props: NavigationRailProviderProps) {
+	const { defaultExpanded, expanded, setExpanded } = props;
+
+	DEV: {
+		if (expanded !== undefined && !setExpanded) {
+			throw new Error(
+				"If you provide the `expanded` prop, you must also provide the `setExpanded` prop.",
+			);
+		}
+	}
+
+	const [store] = React.useState(() =>
+		createNavigationRailStore({ expanded: expanded ?? defaultExpanded }),
+	);
+
+	React.useEffect(
+		function synchronizeWithProps() {
+			if (expanded !== undefined) {
+				store.setState({ expanded });
+			}
+		},
+		[store, expanded],
+	);
 
 	return (
 		<NavigationRailContext.Provider value={store}>
@@ -57,7 +88,40 @@ function useNavigationRailState<P>(
 
 // ----------------------------------------------------------------------------
 
-interface NavigationRailProps extends BaseProps<"nav"> {}
+interface NavigationRailRootInnerProps extends BaseProps<"nav"> {}
+
+interface NavigationRailRootProps extends NavigationRailRootInnerProps {
+	/**
+	 * The initial expanded state of the `NavigationRail` when it is first rendered.
+	 *
+	 * This prop is recommended over `expanded` when you don't need to fully control the expanded
+	 * state from the outside.
+	 *
+	 * This prop will be ignored if the `expanded` prop is provided.
+	 *
+	 * @default false
+	 */
+	defaultExpanded?: boolean;
+
+	/**
+	 * Control whether the `NavigationRail` is expanded or collapsed.
+	 *
+	 * When `true`, the `NavigationRail` shows both icons and labels for its items.
+	 * When `false`, it shows only icons, with labels available as tooltips.
+	 *
+	 * This prop is optional; if not provided, the `NavigationRail` will manage its own state internally.
+	 *
+	 * This should be used in conjunction with the `setExpanded` prop to reflect internal state changes.
+	 */
+	expanded?: boolean;
+
+	/**
+	 * Callback that is called when the expanded state of the `NavigationRail` changes.
+	 *
+	 * This is useful for syncing the internal state of the `NavigationRail` with external state.
+	 */
+	setExpanded?: (expanded: boolean) => void;
+}
 
 /**
  * The `NavigationRail` presents top-level navigation items in a vertical orientation.
@@ -100,25 +164,31 @@ interface NavigationRailProps extends BaseProps<"nav"> {}
  * </NavigationRail.Root>
  * ```
  */
-const NavigationRailRoot = forwardRef<"nav", NavigationRailProps>(
+const NavigationRailRoot = forwardRef<"nav", NavigationRailRootProps>(
 	(props, forwardedRef) => {
+		const { defaultExpanded = false, expanded, setExpanded, ...rest } = props;
+
 		return (
-			<NavigationRailProvider>
-				<NavigationRailRootInner {...props} ref={forwardedRef} />
+			<NavigationRailProvider
+				defaultExpanded={defaultExpanded}
+				expanded={expanded}
+				setExpanded={setExpanded}
+			>
+				<NavigationRailRootInner {...rest} ref={forwardedRef} />
 			</NavigationRailProvider>
 		);
 	},
 );
 DEV: NavigationRailRoot.displayName = "NavigationRail.Root";
 
-const NavigationRailRootInner = forwardRef<"nav", NavigationRailProps>(
+const NavigationRailRootInner = forwardRef<"nav", NavigationRailRootInnerProps>(
 	(props, forwardedRef) => {
-		const collapsed = useNavigationRailState((state) => state.collapsed);
+		const expanded = useNavigationRailState((state) => state.expanded);
 		return (
 			<Role.nav
 				{...props}
 				className={cx("🥝NavigationRail", props.className)}
-				data-_sk-expanded={collapsed ? "false" : "true"}
+				data-_sk-expanded={expanded ? "true" : "false"}
 				ref={forwardedRef}
 			/>
 		);
@@ -140,12 +210,12 @@ interface NavigationRailHeaderProps extends BaseProps<"header"> {}
  */
 const NavigationRailHeader = forwardRef<"nav", NavigationRailHeaderProps>(
 	(props, forwardedRef) => {
-		const collapsed = useNavigationRailState((state) => state.collapsed);
+		const expanded = useNavigationRailState((state) => state.expanded);
 		return (
 			<Role.header
 				{...props}
 				className={cx("🥝NavigationRailHeader", props.className)}
-				data-_sk-collapsed={collapsed ? "true" : undefined}
+				data-_sk-collapsed={!expanded ? "true" : undefined}
 				ref={forwardedRef}
 			/>
 		);
@@ -166,8 +236,11 @@ interface NavigationRailToggleButtonProps
 }
 
 /**
- * `NavigationRail.ToggleButton` toggles the collapsed state of the `NavigationRail`.
+ * `NavigationRail.ToggleButton` toggles the expanded/collapsed state of the `NavigationRail`.
  * It is typically placed inside `NavigationRail.Header`, next to the logo.
+ *
+ * When this button is clicked, it toggles the internal expanded state of the `NavigationRail`,
+ * and also calls the `setExpanded` callback prop if provided, to allow syncing with external state.
  */
 const NavigationRailToggleButton = forwardRef<
 	"button",
@@ -175,16 +248,16 @@ const NavigationRailToggleButton = forwardRef<
 >((props, forwardedRef) => {
 	const { label = "Expand navigation", ...rest } = props;
 
-	const collapsed = useNavigationRailState((state) => state.collapsed);
-	const setCollapsed = useNavigationRailState((state) => state.setCollapsed);
+	const expanded = useNavigationRailState((state) => state.expanded);
+	const setExpanded = useNavigationRailState((state) => state.setExpanded);
 
 	return (
-		<Role.button
-			aria-expanded={collapsed ? "false" : "true"}
+		<Button
+			aria-expanded={expanded ? "true" : "false"}
 			{...rest}
 			className={cx("🥝NavigationRailToggleButton", props.className)}
 			ref={forwardedRef}
-			onClick={useEventHandlers(props.onClick, () => setCollapsed(!collapsed))}
+			onClick={useEventHandlers(props.onClick, () => setExpanded(!expanded))}
 		>
 			<svg width="12" height="12" fill="none" aria-hidden="true">
 				<path
@@ -193,7 +266,7 @@ const NavigationRailToggleButton = forwardRef<
 				/>
 			</svg>
 			<VisuallyHidden>{label}</VisuallyHidden>
-		</Role.button>
+		</Button>
 	);
 });
 DEV: NavigationRailToggleButton.displayName = "NavigationRail.ToggleButton";
@@ -330,7 +403,7 @@ const NavigationRailItemAction = forwardRef<
 	"div",
 	NavigationRailItemActionOwnProps & FocusableProps
 >((props, forwardedRef) => {
-	const collapsed = useNavigationRailState((state) => state.collapsed);
+	const expanded = useNavigationRailState((state) => state.expanded);
 
 	const { label, icon, ...rest } = props;
 	DEV: if (!label || !icon) throw new Error("label and icon are required");
@@ -344,14 +417,14 @@ const NavigationRailItemAction = forwardRef<
 			{typeof icon === "string" ? <Icon href={icon} /> : icon}
 			<Role.span
 				className="🥝NavigationRailItemActionLabel"
-				render={collapsed ? <VisuallyHidden /> : undefined}
+				render={!expanded ? <VisuallyHidden /> : undefined}
 			>
 				{label}
 			</Role.span>
 		</Role>
 	);
 
-	if (collapsed) {
+	if (!expanded) {
 		return (
 			<Tooltip content={label} placement="right" type="none">
 				{action}

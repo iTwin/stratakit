@@ -7,7 +7,7 @@ import * as React from "react";
 import { Avatar, Divider } from "@stratakit/bricks";
 import { Icon } from "@stratakit/foundations";
 import { unstable_NavigationRail as NavigationRail } from "@stratakit/structures";
-import { definePage } from "~/~utils.tsx";
+import { definePage, type VariantProps } from "~/~utils.tsx";
 
 import bentleyIcon from "@stratakit/icons/bentley-systems.svg";
 import helpIcon from "@stratakit/icons/help.svg";
@@ -47,11 +47,11 @@ const exampleNavItems = {
 // ----------------------------------------------------------------------------
 
 export default definePage(
-	function Page() {
+	function Page({ defaultExpanded }: VariantProps) {
 		const [active, setActive] = React.useState("administration");
 
 		return (
-			<NavigationRail.Root>
+			<NavigationRail.Root defaultExpanded={!!defaultExpanded}>
 				<NavigationRail.Header>
 					<Icon
 						alt="Acme app"
@@ -117,7 +117,7 @@ export default definePage(
 			</NavigationRail.Root>
 		);
 	},
-	{ visual: VisualTest },
+	{ visual: VisualTest, _controlled: ControlledState },
 );
 
 function VisualTest() {
@@ -165,6 +165,45 @@ function VisualTest() {
 						</NavigationRail.ListItem>
 					</NavigationRail.List>
 				</NavigationRail.Footer>
+			</NavigationRail.Content>
+		</NavigationRail.Root>
+	);
+}
+
+function ControlledState({ defaultExpanded }: VariantProps) {
+	const [expanded, setExpanded] = React.useState(!!defaultExpanded);
+
+	return (
+		<NavigationRail.Root expanded={expanded} setExpanded={setExpanded}>
+			<NavigationRail.Header>
+				<Icon alt="Acme app" href={`${bentleyIcon}#icon-large`} size="large" />
+				<NavigationRail.ToggleButton />
+			</NavigationRail.Header>
+			<NavigationRail.Content>
+				<NavigationRail.List>
+					<NavigationRail.ListItem>
+						<NavigationRail.Anchor
+							href="#"
+							icon={placeholderIcon}
+							label="Item #1"
+							active
+						/>
+					</NavigationRail.ListItem>
+					<NavigationRail.ListItem>
+						<NavigationRail.Anchor
+							href="#"
+							icon={placeholderIcon}
+							label="Item #2"
+						/>
+					</NavigationRail.ListItem>
+					<NavigationRail.ListItem>
+						<NavigationRail.Anchor
+							href="#"
+							icon={placeholderIcon}
+							label="Item #3"
+						/>
+					</NavigationRail.ListItem>
+				</NavigationRail.List>
 			</NavigationRail.Content>
 		</NavigationRail.Root>
 	);

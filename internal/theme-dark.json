@@ -268,6 +268,10 @@
 					"accent-active-hover": {
 						"$type": "color",
 						"$value": "{p-color.aurora.24}"
+					},
+					"neutral-active-hover": {
+						"$type": "color",
+						"$value": "{p-color.white.12}"
 					}
 				},
 				"strong": {
@@ -318,7 +322,7 @@
 		},
 		"icon": {
 			"neutral": {
-				"hover": {
+				"primary": {
 					"$type": "color",
 					"$value": "{p-color.gray.5}"
 				},
@@ -729,6 +733,10 @@
 				"select": {
 					"$type": "color",
 					"$value": "{p-color.gray.600}"
+				},
+				"navrail-item": {
+					"$type": "color",
+					"$value": "{p-color.gray.600}"
 				}
 			}
 		},
@@ -885,6 +893,12 @@
 						"$type": "number",
 						"$value": 24
 					}
+				}
+			},
+			"control": {
+				"placeholder": {
+					"$type": "color",
+					"$value": "{p-color.gray.400}"
 				}
 			}
 		},

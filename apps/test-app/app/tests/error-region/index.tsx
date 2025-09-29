@@ -32,7 +32,6 @@ export default definePage(function Page({ items = 2, controls }) {
 				</Button>
 			) : undefined}
 			<ErrorRegion.Root
-				aria-label="Issues"
 				label={label}
 				items={errors.map((error) => {
 					return (

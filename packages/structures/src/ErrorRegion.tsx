@@ -32,8 +32,7 @@ import type { BaseProps } from "@stratakit/foundations/secret-internals";
 interface ErrorRegionRootProps extends Omit<BaseProps, "children"> {
 	/**
 	 * Label for the error header, usually indicating the number of errors displayed.
-	 *
-	 * By default this is used as a name of the region navigational landmark (deprecated behavior that will be removed in a future release). `aria-label` or `aria-labelledby` prop should be provided to explicitly label the region instead.
+	 * By default this is used as a name of the region navigational landmark, however an explicit `aria-label` or `aria-labelledby` is strongly suggested.
 	 */
 	label?: React.ReactNode;
 	/**
@@ -58,10 +57,10 @@ interface ErrorRegionRootProps extends Omit<BaseProps, "children"> {
  * component, such as `Tree`.
  *
  * This component is rendered as a [region landmark](https://www.w3.org/WAI/ARIA/apg/patterns/landmarks/examples/region.html)
- * and should be labelled using `aria-label` or `aria-labelledby`. The component should not be rendered conditionally, instead use the `items` prop to control the visibility.
+ * and should be labelled either using `label` or `aria-label`/`aria-labelledby`. Changes to the `label` prop will be
+ * announced communicated using a [live region](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Guides/Live_regions).
  *
- * Changes to the `label` prop will be announced communicated using a [live region](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Guides/Live_regions).
- *
+ * This component should not be rendered conditionally, instead use the `items` prop to control the visibility.
  *
  * Example:
  * ```tsx
@@ -91,11 +90,6 @@ const ErrorRegionRoot = forwardRef<"div", ErrorRegionRootProps>(
 			: label
 				? labelId
 				: undefined;
-
-		DEV: if (!props["aria-label"] && !props["aria-labelledby"])
-			console.warn(
-				"`aria-label` or `aria-labelledby` prop is required for `ErrorRegion.Root` to set an accessible name of a region.",
-			);
 
 		const [open, setOpen] = useControlledState(
 			false,

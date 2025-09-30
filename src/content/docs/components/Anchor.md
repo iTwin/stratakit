@@ -22,12 +22,12 @@ Make sure the **Anchor** is suitable for your use case. There may be other, more
 ### Structure
 
 ```jsx
-<Anchor href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Rick Astley’s biggest hit</Anchor>
+<Anchor href="https://youtu.be/dQw4w9WgXcQ">Rick Astley’s biggest hit</Anchor>
 ```
 
 - `<Anchor>`: The `Anchor` component renders an HTML `<a>` element. All standard `<a>` attributes are supported.
   - [`href`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/a#href): If the `href` is omitted, the element will not behave correctly as an interactive element. For example, it will not be focusable by keyboard.
-  - `children`: The accessible, text label. The text must describe [the purpose of the link](https://www.w3.org/WAI/WCAG21/Understanding/link-purpose-in-context.html).
+  - `children`: The accessible, text label. The text must describe [the purpose of the link](https://www.w3.org/WAI/WCAG22/Understanding/link-purpose-in-context.html).
 
 ## Usage
 
@@ -35,7 +35,7 @@ Make sure the **Anchor** is suitable for your use case. There may be other, more
 The **Anchor** supports both the _convenience_ and _composition_ APIs. The _convenience_ API is less code and suitable for most use cases. Choose the composition API where customization is needed. The following example uses the composition API to include a marker for an external link.
 
 ```jsx
-<Anchor.Root href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank">
+<Anchor.Root href="https://youtu.be/dQw4w9WgXcQ" target="_blank">
 	<Anchor.Text>Rick Astley’s biggest hit<Anchor.Text>
 	<Anchor.ExternalMarker alt="opens in new tab" />
 </Anchor.Root>

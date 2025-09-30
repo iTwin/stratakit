@@ -45,6 +45,8 @@ Make sure the **Button** is suitable for your use case. There may be other, more
 - **Outline:** Reduce the visual weight. Use for secondary actions or to unclutter the UI.
 - **Ghost:** Minimal visual weight. Useful in tight spaces where other variants would create superfluous boxes. Commonly used for actionable icons, such as in table rows.
 
+::example{src="Button.variants"}
+
 | Use case               | Solid | Outline | Ghost                          |
 | ---------------------- | ----- | ------- | ------------------------------ |
 | Primary call-to-action | ✅    | ❌      | ❌                             |
@@ -56,6 +58,8 @@ Make sure the **Button** is suitable for your use case. There may be other, more
 
 - **Neutral:** The default tone. If unsure, use this.
 - **Accent:** Reserved for key actions, tools, and call-to-actions like form submissions or dialog confirmations. Use sparingly—one per page or section. Multiple accent-toned buttons dilute impact and create visual noise.
+
+::example{src="Button.tones"}
 
 | Use case                              | Neutral | Accent |
 | ------------------------------------- | ------- | ------ |

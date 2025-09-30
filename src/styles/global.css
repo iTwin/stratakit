@@ -59,6 +59,11 @@
 	dd {
 		margin-inline-start: var(--stratakit-space-x4);
 	}
+
+	iframe {
+		inline-size: 100%;
+		border: none;
+	}
 }
 
 @keyframes --_scroll-shadow {

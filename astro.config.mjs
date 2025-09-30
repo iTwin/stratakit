@@ -3,6 +3,7 @@
 import react from "@astrojs/react";
 import starlight from "@astrojs/starlight";
 import { defineConfig } from "astro/config";
+import remarkDirective from "remark-directive";
 import { visit } from "unist-util-visit";
 
 // https://astro.build/config
@@ -45,7 +46,7 @@ export default defineConfig({
 			expressiveCode: {
 				themes: ["github-dark", "github-light"],
 			},
-			plugins: [starlightResponsiveTables()],
+			plugins: [starlightResponsiveTables(), starlightLiveExamples()],
 		}),
 		react(),
 	],
@@ -94,6 +95,58 @@ function starlightResponsiveTables({ tagName = "responsive-table" } = {}) {
 						"astro:config:setup": ({ command, config }) => {
 							if (command !== "dev" && command !== "build") return;
 							config.markdown.rehypePlugins.push(rehypeWrapTables);
+						},
+					},
+				});
+			},
+		},
+	};
+}
+
+/**
+ * Starlight plugin that processes `::example{src="..."}` directives to embed live examples.
+ * @returns {import("@astrojs/starlight/types").StarlightPlugin}
+ */
+function starlightLiveExamples() {
+	function remarkLiveExamples() {
+		return (/** @type {any} */ tree, /** @type {any} */ file) => {
+			if (!tree?.children) return;
+
+			visit(tree, (node) => {
+				if (node.type === "leafDirective" && node.name === "example") {
+					const { src } = node.attributes || {};
+
+					if (!src) {
+						file.fail("`::example` directive requires a `src` attribute", node);
+						return;
+					}
+
+					node.data ||= {};
+					node.data.hName = "example-embed"; // see ExampleEmbed.astro
+
+					node.children = [
+						{
+							type: "html",
+							value: `<iframe src="/examples/${src}?preview" title="${src} example" height="150"></iframe>`,
+						},
+					];
+				}
+			});
+		};
+	}
+
+	return {
+		name: "starlight-live-examples",
+		hooks: {
+			"config:setup": ({ addIntegration }) => {
+				addIntegration({
+					name: "starlight-live-examples-integration",
+					hooks: {
+						"astro:config:setup": ({ command, config }) => {
+							if (command !== "dev" && command !== "build") return;
+
+							config.markdown.remarkPlugins.splice(0, 1, remarkDirective);
+							config.markdown.remarkPlugins.push(remarkLiveExamples);
 						},
 					},
 				});

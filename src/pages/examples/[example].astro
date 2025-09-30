@@ -19,6 +19,11 @@ const { example } = Astro.props;
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta name="color-scheme" content="dark light" />
 		<title>{example.data.displayName} – StrataKit examples</title>
+
+		<script is:inline>
+			const params = new URLSearchParams(location.search);
+			if (params.has("preview")) document.documentElement.dataset.centered = "true";
+		</script>
 	</head>
 	<body>
 		<ExamplePreview exampleId={example.id} client:only="react" />
@@ -31,5 +36,14 @@ const { example } = Astro.props;
 	}
 	body {
 		padding: 16px;
+	}
+	html[data-centered="true"] body {
+		min-block-size: 100dvb;
+		display: grid;
+		place-content: center;
+	}
+	:global(.flex) {
+		display: flex;
+		gap: 8px;
 	}
 </style>

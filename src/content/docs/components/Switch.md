@@ -32,9 +32,9 @@ Make sure the **Switch** is suitable for your use case. There may be other, more
 ```
 
 - `<Switch>`: The component itself renders as a native HTML [`<input type="checkbox">`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input/checkbox).
-  - `defaultChecked` (type: `boolean`): the default checked state, set on first render
-  - `checked` (type: `boolean`): the user-controlled checked state
-  - `onChange`: the correct event type for responding to checked state changes
+  - `defaultChecked` (type: `boolean`): the [initial](https://react.dev/reference/react-dom/components/input#providing-an-initial-value-for-an-input) checked state, set on first render.
+  - `checked` (type: `boolean`): the [controlled](https://react.dev/reference/react-dom/components/input#controlling-an-input-with-a-state-variable) checked state.
+  - `onChange`: Handler for responding to checked state changes ([`change` event](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event)).
 
 :::note[Composition]
 You must use the **Switch** in conjunction with a label. See [Usage](#usage).

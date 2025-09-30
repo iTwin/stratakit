@@ -31,9 +31,10 @@ Make sure the **TextBox** is suitable for your use case. There may be other, mor
 <TextBox.Input name="password" type="password" />
 ```
 
-- `<TextBox.Input>`: The `TextBox.Input` component renders as a standard [HTML `<input>` element](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input), and supports all `input` attributes/properties.
+- `<TextBox.Input>`: The `TextBox.Input` component renders as a standard HTML [`<input>` element](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input), and supports all `input` attributes/properties.
   - `name`: The standard `name` prop identifies the input in submission data.
   - `type`: Only a subset of input types are supported: `text`, `email`, `password`, `search`, `tel`, `url`, `number`, `date`.
+  - `onChange` or `onInput`: Handler for input value changes ([`input` event](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/input_event)).
 
 #### Textarea
 
@@ -41,8 +42,9 @@ Make sure the **TextBox** is suitable for your use case. There may be other, mor
 <TextBox.Textarea name="comment" disabled />
 ```
 
-- `<TextBox.Textarea>`: The `TextBox.Textarea` component renders as a standard [HTML `<textarea>` element](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/textarea), and supports all `textarea` attributes/properties.
+- `<TextBox.Textarea>`: The `TextBox.Textarea` component renders as a standard HTML [`<textarea>` element](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/textarea), and supports all `textarea` attributes/properties.
   - `name`: The standard `name` prop identifies the textarea in submission data.
+  - `onChange` or `onInput`: Handler for textarea value changes ([`input` event](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/input_event)).
 
 ## Usage
 

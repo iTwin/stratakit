@@ -27,14 +27,14 @@ Make sure the **Button** is suitable for your use case. There may be other, more
 
 ```jsx
 <Button variant="outline" tone="accent" onClick={() => {}}>
-	Add new
+	Create new
 </Button>
 ```
 
-- `<Button>`: The Button component renders as an HTML `<button>`, which is implicitly keyboard and screen reader accessible.
+- `<Button>`: The Button component renders as an HTML [`<button>` element](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/button), which is implicitly keyboard and screen reader accessible.
   - `variant` (default: `"solid"`) : The chosen [variant](#variants).
   - `tone` (default: `"neutral"`) : The chosen [tone](#tones).
-  - `onClick()`: Handler for the [`click` event](https://developer.mozilla.org/en-US/docs/Web/API/Element/click_event).
+  - `onClick`: Handler for the [`click` event](https://developer.mozilla.org/en-US/docs/Web/API/Element/click_event).
   - `children`: The accessible, text-based label.
 
 ## Usage
@@ -68,7 +68,7 @@ An [**Icon**](/components/icon) can be prepended or appended to the button’s t
 
 ```jsx
 <Button onClick={() => {}}>
-	Add new
+	Create new
 	<Icon href={addIcon} />
 </Button>
 ```

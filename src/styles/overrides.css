@@ -140,8 +140,7 @@ aside .right-sidebar {
 }
 
 .sl-markdown-content ul:where(:not(.not-content)) {
-	list-style-position: inside;
-	margin-inline-start: var(--stratakit-space-x2);
+	margin-inline-start: var(--stratakit-space-x4);
 
 	ul {
 		margin-block-start: var(--stratakit-space-x1);
@@ -150,6 +149,7 @@ aside .right-sidebar {
 
 	li {
 		line-height: 1.5;
+		text-indent: calc(-1 * var(--stratakit-space-x05));
 	}
 }
 

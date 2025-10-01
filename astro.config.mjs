@@ -20,6 +20,7 @@ export default defineConfig({
 				ThemeProvider: "./src/components/ThemeProvider.astro",
 				ThemeSelect: "./src/components/ThemeSwitcher.astro",
 				SocialIcons: "./src/components/SocialIcons.astro",
+				LastUpdated: "./src/components/LastUpdated.astro",
 			},
 			social: [
 				{

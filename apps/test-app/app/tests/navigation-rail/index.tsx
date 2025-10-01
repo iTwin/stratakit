@@ -174,7 +174,13 @@ function ControlledState({ defaultExpanded }: VariantProps) {
 	const [expanded, setExpanded] = React.useState(!!defaultExpanded);
 
 	return (
-		<NavigationRail.Root expanded={expanded} setExpanded={setExpanded}>
+		<NavigationRail.Root
+			expanded={expanded}
+			setExpanded={(expanded) => {
+				setExpanded(expanded);
+				console.log(`setExpanded: ${expanded}`);
+			}}
+		>
 			<NavigationRail.Header>
 				<Icon alt="Acme app" href={`${bentleyIcon}#icon-large`} size="large" />
 				<NavigationRail.ToggleButton />

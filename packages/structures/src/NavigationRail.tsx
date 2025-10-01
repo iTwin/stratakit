@@ -12,6 +12,7 @@ import {
 	forwardRef,
 	useEventHandlers,
 	useSafeContext,
+	useUnreactiveCallback,
 } from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
 import { createStore, useStore } from "zustand";
@@ -49,10 +50,10 @@ type NavigationRailProviderProps = React.PropsWithChildren<
 >;
 
 function NavigationRailProvider(props: NavigationRailProviderProps) {
-	const { defaultExpanded, expanded, setExpanded } = props;
+	const { defaultExpanded, expanded, setExpanded: setExpandedProp } = props;
 
 	DEV: {
-		if (expanded !== undefined && !setExpanded) {
+		if (expanded !== undefined && !setExpandedProp) {
 			throw new Error(
 				"If you provide the `expanded` prop, you must also provide the `setExpanded` prop.",
 			);
@@ -63,13 +64,14 @@ function NavigationRailProvider(props: NavigationRailProviderProps) {
 		createNavigationRailStore({ expanded: expanded ?? defaultExpanded }),
 	);
 
+	const setExpanded = useUnreactiveCallback(setExpandedProp ?? (() => {}));
+
 	React.useEffect(
 		function synchronizeWithProps() {
-			if (expanded !== undefined) {
-				store.setState({ expanded });
-			}
+			if (expanded === undefined) return; // Uncontrolled
+			store.setState({ expanded, setExpanded }); // Controlled
 		},
-		[store, expanded],
+		[store, expanded, setExpanded],
 	);
 
 	return (

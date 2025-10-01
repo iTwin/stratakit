@@ -46,10 +46,15 @@ function BannerProvider(
 		tone: NonNullable<BannerRootProps["tone"]>;
 	}>,
 ) {
-	const [store] = React.useState(() =>
-		createBannerStore({
-			tone: props.tone,
-		}),
+	const { tone } = props;
+
+	const [store] = React.useState(() => createBannerStore({ tone }));
+
+	React.useEffect(
+		function synchronizeWithProps() {
+			store.setState({ tone });
+		},
+		[store, tone],
 	);
 
 	return (

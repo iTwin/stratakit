@@ -4,7 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 
 import * as React from "react";
-import { Avatar, Divider } from "@stratakit/bricks";
+import { Avatar, Button, Divider, Text } from "@stratakit/bricks";
 import { Icon } from "@stratakit/foundations";
 import { unstable_NavigationRail as NavigationRail } from "@stratakit/structures";
 import { definePage, type VariantProps } from "~/~utils.tsx";
@@ -174,43 +174,69 @@ function ControlledState({ defaultExpanded }: VariantProps) {
 	const [expanded, setExpanded] = React.useState(!!defaultExpanded);
 
 	return (
-		<NavigationRail.Root
-			expanded={expanded}
-			setExpanded={(expanded) => {
-				setExpanded(expanded);
-				console.log(`setExpanded: ${expanded}`);
+		<div
+			style={{
+				display: "flex",
+				gap: 16,
+				alignItems: "stretch",
+				blockSize: "100%",
 			}}
 		>
-			<NavigationRail.Header>
-				<Icon alt="Acme app" href={`${bentleyIcon}#icon-large`} size="large" />
-				<NavigationRail.ToggleButton />
-			</NavigationRail.Header>
-			<NavigationRail.Content>
-				<NavigationRail.List>
-					<NavigationRail.ListItem>
-						<NavigationRail.Anchor
-							href="#"
-							icon={placeholderIcon}
-							label="Item #1"
-							active
-						/>
-					</NavigationRail.ListItem>
-					<NavigationRail.ListItem>
-						<NavigationRail.Anchor
-							href="#"
-							icon={placeholderIcon}
-							label="Item #2"
-						/>
-					</NavigationRail.ListItem>
-					<NavigationRail.ListItem>
-						<NavigationRail.Anchor
-							href="#"
-							icon={placeholderIcon}
-							label="Item #3"
-						/>
-					</NavigationRail.ListItem>
-				</NavigationRail.List>
-			</NavigationRail.Content>
-		</NavigationRail.Root>
+			<NavigationRail.Root
+				expanded={expanded}
+				setExpanded={(expanded) => {
+					setExpanded(expanded);
+					console.log(`setExpanded: ${expanded}`);
+				}}
+			>
+				<NavigationRail.Header>
+					<Icon
+						alt="Acme app"
+						href={`${bentleyIcon}#icon-large`}
+						size="large"
+					/>
+					<NavigationRail.ToggleButton />
+				</NavigationRail.Header>
+				<NavigationRail.Content>
+					<NavigationRail.List>
+						<NavigationRail.ListItem>
+							<NavigationRail.Anchor
+								href="#"
+								icon={placeholderIcon}
+								label="Item #1"
+								active
+							/>
+						</NavigationRail.ListItem>
+						<NavigationRail.ListItem>
+							<NavigationRail.Anchor
+								href="#"
+								icon={placeholderIcon}
+								label="Item #2"
+							/>
+						</NavigationRail.ListItem>
+						<NavigationRail.ListItem>
+							<NavigationRail.Anchor
+								href="#"
+								icon={placeholderIcon}
+								label="Item #3"
+							/>
+						</NavigationRail.ListItem>
+					</NavigationRail.List>
+				</NavigationRail.Content>
+			</NavigationRail.Root>
+
+			<article style={{ padding: 16 }}>
+				<Text variant="headline-sm" render={<h2 />}>
+					Control panel
+				</Text>
+
+				<div style={{ display: "grid", gap: 8, marginBlockStart: 8 }}>
+					<Button onClick={() => setExpanded(true)}>Controlled expand</Button>
+					<Button onClick={() => setExpanded(false)}>
+						Controlled collapse
+					</Button>
+				</div>
+			</article>
+		</div>
 	);
 }

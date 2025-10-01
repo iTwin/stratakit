@@ -19,12 +19,29 @@ test.describe("expansion", () => {
 			const params = type === "controlled" ? "?_controlled" : "";
 			await page.goto(`/tests/navigation-rail${params}`);
 
-			const toggleButton = page.getByRole("button", { name: "Expand" });
-			await expect(toggleButton).toHaveAccessibleName("Expand navigation");
+			let consoleText = "";
+			page.on("console", (msg) => {
+				consoleText += `${msg.text()}\n`;
+			});
+			expect(consoleText).not.toContain("setExpanded");
+
+			const toggleButton = page.getByRole("button", {
+				name: "Expand navigation",
+				exact: true,
+			});
 			await expect(toggleButton).toHaveAttribute("aria-expanded", "false");
 
+			// Expand
 			await toggleButton.click();
 			await expect(toggleButton).toHaveAttribute("aria-expanded", "true");
+			if (type === "controlled")
+				expect(consoleText).toContain("setExpanded: true");
+
+			// Collapse
+			await toggleButton.click();
+			await expect(toggleButton).toHaveAttribute("aria-expanded", "false");
+			if (type === "controlled")
+				expect(consoleText).toContain("setExpanded: false");
 		});
 
 		test(`defaultExpanded (${type})`, async ({ page }) => {
@@ -32,7 +49,10 @@ test.describe("expansion", () => {
 			if (type === "controlled") params += "&_controlled";
 			await page.goto(`/tests/navigation-rail${params}`);
 
-			const toggleButton = page.getByRole("button", { name: "Expand" });
+			const toggleButton = page.getByRole("button", {
+				name: "Expand navigation",
+				exact: true,
+			});
 			await expect(toggleButton).toHaveAttribute("aria-expanded", "true");
 		});
 	}

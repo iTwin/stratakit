@@ -190,7 +190,7 @@ const NavigationRailRootInner = forwardRef<"nav", NavigationRailRootInnerProps>(
 			<Role.nav
 				{...props}
 				className={cx("🥝NavigationRail", props.className)}
-				data-_sk-expanded={expanded ? "true" : "false"}
+				data-_sk-expanded={expanded ? "true" : undefined}
 				ref={forwardedRef}
 			/>
 		);
@@ -217,7 +217,7 @@ const NavigationRailHeader = forwardRef<"nav", NavigationRailHeaderProps>(
 			<Role.header
 				{...props}
 				className={cx("🥝NavigationRailHeader", props.className)}
-				data-_sk-collapsed={!expanded ? "true" : undefined}
+				data-_sk-expanded={expanded ? "true" : undefined}
 				ref={forwardedRef}
 			/>
 		);

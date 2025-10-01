@@ -118,8 +118,8 @@ const AccordionItemRoot = forwardRef<"div", AccordionItemProps>(
 			>
 				<Role
 					{...rest}
-					className={cx("🥝-accordion-item", props.className)}
-					data-kiwi-open={open}
+					className={cx("🥝AccordionItem", props.className)}
+					data-_sk-open={open}
 					ref={forwardedRef}
 				/>
 			</DisclosureProvider>
@@ -152,7 +152,7 @@ const AccordionItemHeader = forwardRef<"div", BaseProps>(
 		<GhostAligner align="block">
 			<Role
 				{...props}
-				className={cx("🥝-accordion-item-header", props.className)}
+				className={cx("🥝AccordionItemHeader", props.className)}
 				ref={forwardedRef}
 			/>
 		</GhostAligner>
@@ -179,7 +179,7 @@ const AccordionItemButton = forwardRef<"button", BaseProps<"button">>(
 	(props, forwardedRef) => (
 		<Disclosure
 			{...props}
-			className={cx("🥝-accordion-item-button", props.className)}
+			className={cx("🥝AccordionItemButton", props.className)}
 			ref={forwardedRef}
 		/>
 	),
@@ -203,7 +203,7 @@ const AccordionItemLabel = forwardRef<"div", BaseProps>(
 		<Text
 			{...props}
 			variant="body-sm"
-			className={cx("🥝-accordion-item-label", props.className)}
+			className={cx("🥝AccordionItemLabel", props.className)}
 			ref={forwardedRef}
 		/>
 	),
@@ -265,7 +265,7 @@ const AccordionItemDecoration = forwardRef<"div", BaseProps>(
 	(props, forwardedRef) => (
 		<Role
 			{...props}
-			className={cx("🥝-accordion-item-decoration", props.className)}
+			className={cx("🥝AccordionItemDecoration", props.className)}
 			ref={forwardedRef}
 		/>
 	),
@@ -317,13 +317,13 @@ const AccordionItemMarker = forwardRef<"div", BaseProps>(
 		<IconButtonPresentation
 			{...props}
 			variant="ghost"
-			className={cx("🥝-accordion-item-marker", props.className)}
+			className={cx("🥝AccordionItemMarker", props.className)}
 			ref={forwardedRef}
 		>
 			{props.children ?? (
 				<ChevronDown
 					aria-hidden="true"
-					className="🥝-accordion-item-marker-chevron"
+					className="🥝AccordionItemMarkerChevron"
 				/>
 			)}
 		</IconButtonPresentation>
@@ -351,7 +351,7 @@ const AccordionItemContent = forwardRef<"div", BaseProps>(
 	(props, forwardedRef) => (
 		<DisclosureContent
 			{...props}
-			className={cx("🥝-accordion-item-content", props.className)}
+			className={cx("🥝AccordionItemContent", props.className)}
 			ref={forwardedRef}
 		/>
 	),
@@ -383,7 +383,7 @@ const AccordionItemHeading = forwardRef<"div", AccordionItemHeadingProps>(
 		<Text
 			{...props}
 			variant="body-sm"
-			className={cx("🥝-accordion-item-heading", props.className)}
+			className={cx("🥝AccordionItemHeading", props.className)}
 			ref={forwardedRef}
 		/>
 	),

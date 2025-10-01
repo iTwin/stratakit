@@ -12,8 +12,8 @@ import {
 	MenuItemCheckbox,
 	MenuProvider,
 	useMenuContext,
+	useMenuStore,
 } from "@ariakit/react/menu";
-import { usePopoverContext } from "@ariakit/react/popover";
 import { useStoreState } from "@ariakit/react/store";
 import { Button, Kbd } from "@stratakit/bricks";
 import {
@@ -25,14 +25,16 @@ import { Icon } from "@stratakit/foundations";
 import {
 	forwardRef,
 	usePopoverApi,
+	useSafeContext,
 } from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
-import { Checkmark } from "./~utils.icons.js";
+import { Checkmark, ChevronRight } from "./~utils.icons.js";
 import * as ListItem from "./~utils.ListItem.js";
 
 import type {
 	MenuItemCheckboxProps,
 	MenuProviderProps,
+	MenuStore,
 } from "@ariakit/react/menu";
 import type { PredefinedSymbol } from "@stratakit/bricks/secret-internals";
 import type {
@@ -56,7 +58,7 @@ interface DropdownMenuProps
  *
  * Example:
  * ```tsx
- * <DropdownMenu.Root>
+ * <DropdownMenu.Provider>
  *   <DropdownMenu.Button>Actions</DropdownMenu.Button>
  *
  *   <DropdownMenu.Content>
@@ -64,33 +66,26 @@ interface DropdownMenuProps
  *     <DropdownMenu.Item label="Edit" />
  *     <DropdownMenu.Item label="Delete" />
  *   </DropdownMenu.Content>
- * </DropdownMenu.Root>
+ * </DropdownMenu.Provider>
  * ```
  *
  * **Note**: `DropdownMenu` should not be used for navigation; it is only intended for actions.
  */
-function DropdownMenuRoot(props: DropdownMenuProps) {
-	const {
-		children,
-		placement,
-		open: openProp,
-		setOpen: setOpenProp,
-		defaultOpen: defaultOpenProp,
-	} = props;
+function DropdownMenuProvider(props: DropdownMenuProps) {
+	const { children, placement, open, setOpen, defaultOpen } = props;
 
 	return (
 		<MenuProvider
+			defaultOpen={defaultOpen}
+			open={open}
 			placement={placement}
-			defaultOpen={defaultOpenProp}
-			open={openProp}
-			setOpen={setOpenProp}
-			popover={usePopoverContext()}
+			setOpen={setOpen}
 		>
 			{children}
 		</MenuProvider>
 	);
 }
-DEV: DropdownMenuRoot.displayName = "DropdownMenu.Root";
+DEV: DropdownMenuProvider.displayName = "DropdownMenu.Provider";
 
 // ----------------------------------------------------------------------------
 
@@ -99,7 +94,9 @@ interface DropdownMenuContentProps extends FocusableProps {}
 /**
  * The actual "menu" portion containing the items shown within the dropdown.
  *
- * Should be used as a child of `DropdownMenu.Root`.
+ * Should be used as a child of `DropdownMenu.Provider`.
+ *
+ * Should include one or more of `DropdownMenu.Item`, `DropdownMenu.CheckboxItem` as direct descendants.
  */
 const DropdownMenuContent = forwardRef<"div", DropdownMenuContentProps>(
 	(props, forwardedRef) => {
@@ -116,7 +113,7 @@ const DropdownMenuContent = forwardRef<"div", DropdownMenuContentProps>(
 				gutter={4}
 				style={{ ...popoverProps.style, ...props.style }}
 				wrapperProps={{ popover: popoverProps.popover }}
-				className={cx("🥝-dropdown-menu", props.className)}
+				className={cx("🥝DropdownMenu", props.className)}
 				ref={forwardedRef}
 			/>
 		);
@@ -129,7 +126,7 @@ DEV: DropdownMenuContent.displayName = "DropdownMenu.Content";
 interface DropdownMenuButtonProps extends FocusableProps<"button"> {}
 
 /**
- * The button that triggers the dropdown menu to open.  Should be used as a child of `DropdownMenu.Root`.
+ * The button that triggers the dropdown menu to open. Should be used as a child of `DropdownMenu.Provider`.
  *
  * Example:
  * ```tsx
@@ -141,7 +138,7 @@ interface DropdownMenuButtonProps extends FocusableProps<"button"> {}
  *
  * ```tsx
  * <DropdownMenu.Button
- *   render={<IconButton variant="ghost" label="More" icon={<Icon href={…} />}  />}
+ *   render={<IconButton variant="ghost" label="More" icon={<Icon href={…} />} />}
  * />
  * ```
  */
@@ -149,7 +146,7 @@ const DropdownMenuButton = forwardRef<"button", DropdownMenuButtonProps>(
 	(props, forwardedRef) => {
 		const { accessibleWhenDisabled = true, children, ...rest } = props;
 
-		const open = useStoreState(useMenuContext(), (state) => state?.open);
+		const open = useStoreState(useMenuContext(), "open");
 
 		return (
 			<MenuButton
@@ -163,7 +160,7 @@ const DropdownMenuButton = forwardRef<"button", DropdownMenuButtonProps>(
 						</Button>
 					)
 				}
-				className={cx("🥝-dropdown-menu-button", props.className)}
+				className={cx("🥝DropdownMenuButton", props.className)}
 				data-has-popover-open={open || undefined}
 				ref={forwardedRef}
 			/>
@@ -185,6 +182,11 @@ interface DropdownMenuItemProps
 
 	/** Dot shown on the right end of the menu-item. Value will be used as accessible description. */
 	unstable_dot?: string;
+
+	/**
+	 * The submenu to display when the item is activated. Must be a `DropdownMenu.Submenu` component.
+	 */
+	submenu?: React.ReactNode;
 }
 
 /**
@@ -195,43 +197,89 @@ interface DropdownMenuItemProps
  * <DropdownMenu.Item label="Add" />
  * <DropdownMenu.Item label="Edit" />
  * ```
+ *
+ * Use the `submenu` prop to display a submenu.
+ *
+ * Example:
+ * ```tsx
+ * <DropdownMenu.Item
+ *   label="More"
+ *   submenu={
+ *     <DropdownMenu.Submenu>
+ *       <DropdownMenu.Item label="Add" />
+ *       <DropdownMenu.Item label="Edit" />
+ *     </DropdownMenu.Submenu>
+ *   }
+ * />
+ * ```
  */
 const DropdownMenuItem = forwardRef<"button", DropdownMenuItemProps>(
 	(props, forwardedRef) => {
-		const { label, shortcuts, icon, unstable_dot, ...rest } = props;
+		const { label, shortcuts, icon, unstable_dot, submenu, ...rest } = props;
 
 		const dotId = React.useId();
 
+		const defaultSubmenuStore = useMenuStore();
+		const [submenuStore, setSubmenuStore] = React.useState<MenuStore>();
+		const store = submenuStore ?? defaultSubmenuStore;
+		const open = useStoreState(store, "open");
+
 		return (
-			<MenuItem
-				accessibleWhenDisabled
-				render={
-					<ListItem.Root
-						render={
-							<ButtonAk
-								accessibleWhenDisabled
-								aria-describedby={dotId}
-								{...rest}
-								className={cx("🥝-dropdown-menu-item", props.className)}
-								ref={forwardedRef}
-							/>
-						}
-					/>
-				}
-			>
-				{icon ? <DropdownMenuIcon icon={icon} /> : null}
-				<ListItem.Content render={<span />}>{label}</ListItem.Content>
-				{shortcuts ? <DropdownMenuItemShortcuts shortcuts={shortcuts} /> : null}
-				{unstable_dot ? (
-					<ListItem.Decoration
-						render={
-							<Dot id={dotId} className="🥝-dropdown-menu-item-dot">
-								{unstable_dot}
-							</Dot>
-						}
-					/>
-				) : null}
-			</MenuItem>
+			<>
+				<MenuItem
+					accessibleWhenDisabled
+					render={
+						<ListItem.Root
+							render={
+								<ButtonAk
+									accessibleWhenDisabled
+									aria-describedby={dotId}
+									{...rest}
+									render={
+										submenu ? (
+											<MenuButton
+												render={props.render ?? <button />}
+												store={store}
+											/>
+										) : (
+											props.render
+										)
+									}
+									className={cx("🥝DropdownMenuItem", props.className)}
+									data-has-popover-open={open || undefined}
+									ref={forwardedRef}
+								/>
+							}
+						/>
+					}
+				>
+					{icon ? <DropdownMenuIcon icon={icon} /> : null}
+					<ListItem.Content render={<span />}>{label}</ListItem.Content>
+					{shortcuts ? (
+						<DropdownMenuItemShortcuts shortcuts={shortcuts} />
+					) : null}
+					{unstable_dot ? (
+						<ListItem.Decoration
+							render={
+								<Dot id={dotId} className="🥝DropdownMenuItemDot">
+									{unstable_dot}
+								</Dot>
+							}
+						/>
+					) : null}
+					{submenu ? (
+						<ListItem.Decoration
+							className="🥝DropdownMenuItemChevron"
+							render={<ChevronRight />}
+						/>
+					) : null}
+				</MenuItem>
+				<DropdownMenuSubmenuContext.Provider
+					value={React.useMemo(() => ({ setStore: setSubmenuStore }), [])}
+				>
+					{submenu}
+				</DropdownMenuSubmenuContext.Provider>
+			</>
 		);
 	},
 );
@@ -275,7 +323,7 @@ const DropdownMenuItemShortcuts = forwardRef<
 		<ListItem.Decoration
 			render={<span />}
 			{...rest}
-			className={cx("🥝-dropdown-menu-item-shortcuts", props.className)}
+			className={cx("🥝DropdownMenuItemShortcuts", props.className)}
 			ref={forwardedRef}
 		>
 			{shortcutKeys.map(({ key, isSymbol }, index) => {
@@ -343,7 +391,7 @@ interface DropdownMenuCheckboxItemProps
 		Pick<DropdownMenuItemProps, "label" | "icon"> {}
 
 /**
- * A single menu item within the dropdown menu. Should be used as a child of `DropdownMenu.Content`.
+ * A single checkbox menu item within the dropdown menu. Should be used as a child of `DropdownMenu.Content`.
  *
  * Example:
  * ```tsx
@@ -380,7 +428,7 @@ const DropdownMenuCheckboxItem = forwardRef<
 						<ButtonAk
 							accessibleWhenDisabled
 							{...rest}
-							className={cx("🥝-dropdown-menu-item", props.className)}
+							className={cx("🥝DropdownMenuItem", props.className)}
 							ref={forwardedRef}
 						/>
 					}
@@ -390,7 +438,7 @@ const DropdownMenuCheckboxItem = forwardRef<
 			{icon ? <DropdownMenuIcon icon={icon} /> : null}
 			<ListItem.Content render={<span />}>{label}</ListItem.Content>
 			<ListItem.Decoration
-				render={<Checkmark className="🥝-dropdown-menu-checkmark" />}
+				render={<Checkmark className="🥝DropdownMenuCheckmark" />}
 			/>
 		</MenuItemCheckbox>
 	);
@@ -399,10 +447,62 @@ DEV: DropdownMenuCheckboxItem.displayName = "DropdownMenu.CheckboxItem";
 
 // ----------------------------------------------------------------------------
 
+const DropdownMenuSubmenuContext = React.createContext<
+	| {
+			setStore: (store: MenuStore | undefined) => void;
+	  }
+	| undefined
+>(undefined);
+
+interface DropdownMenuSubmenuProps extends FocusableProps {}
+
+/**
+ * The submenu portion containing the nested submenu items.
+ *
+ * Should be passed into the `submenu` prop of `DropdownMenu.Item`.
+ *
+ * Should include one or more of `DropdownMenu.Item`, `DropdownMenu.CheckboxItem` as direct descendants.
+ */
+const DropdownMenuSubmenu = forwardRef<"div", DropdownMenuSubmenuProps>(
+	(props, forwardedRef) => {
+		const { setStore } = useSafeContext(DropdownMenuSubmenuContext);
+
+		// Synchronize the submenu store with the submenu item.
+		const store = useMenuStore();
+		React.useEffect(() => {
+			setStore(store);
+			return () => setStore(undefined);
+		}, [store, setStore]);
+
+		const parent = useMenuContext();
+		const popoverElement = useStoreState(parent, "popoverElement");
+		return (
+			<MenuProvider store={store}>
+				<Menu
+					store={store}
+					portal
+					portalElement={popoverElement}
+					preserveTabOrder={false}
+					unmountOnHide
+					{...props}
+					gutter={2}
+					shift={-4}
+					className={cx("🥝DropdownMenu", props.className)}
+					ref={forwardedRef}
+				/>
+			</MenuProvider>
+		);
+	},
+);
+DEV: DropdownMenuSubmenu.displayName = "DropdownMenu.Submenu";
+
+// ----------------------------------------------------------------------------
+
 export {
-	DropdownMenuRoot as Root,
+	DropdownMenuProvider as Provider,
 	DropdownMenuButton as Button,
 	DropdownMenuContent as Content,
 	DropdownMenuItem as Item,
 	DropdownMenuCheckboxItem as CheckboxItem,
+	DropdownMenuSubmenu as Submenu,
 };

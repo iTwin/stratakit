@@ -66,8 +66,8 @@ const Kbd = forwardRef<"kbd", KbdProps>((props, forwardedRef) => {
 	return (
 		<Role
 			{...rest}
-			data-kiwi-variant={variant}
-			className={cx("🥝-kbd", props.className)}
+			data-_sk-variant={variant}
+			className={cx("🥝Kbd", props.className)}
 			render={props.render || <kbd />}
 			ref={forwardedRef as RoleProps["ref"]}
 		>

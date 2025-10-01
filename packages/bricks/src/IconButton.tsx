@@ -5,7 +5,10 @@
 
 import * as React from "react";
 import { Icon } from "@stratakit/foundations";
-import { forwardRef } from "@stratakit/foundations/secret-internals";
+import {
+	forwardRef,
+	useMergedRefs,
+} from "@stratakit/foundations/secret-internals";
 import { Dot } from "./~utils.Dot.js";
 import Button from "./Button.js";
 import {
@@ -58,13 +61,20 @@ interface IconButtonProps
 	/**
 	 * Whether the button is in a toggled state and currently "active" (toggled on).
 	 *
-	 * Setting this prop to `true` or `false` will turn this button into a toggle button.
+	 * For regular buttons, setting this prop to `true` or `false` will turn this button into a toggle button.
 	 * The button will have an `aria-pressed` attribute and extra styling for the "active" state.
 	 * When this prop is `undefined`, the button will be a regular button (no `aria-pressed` attribute).
 	 *
+	 * When the button is rendered as an anchor (`<a>`), this prop maps to `aria-current` instead of `aria-pressed`.
+	 *
 	 * @see https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-pressed
+	 * @see https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current
 	 *
 	 * @default undefined
+	 */
+	active?: boolean;
+	/**
+	 * @deprecated Use `active` instead.
 	 */
 	isActive?: boolean;
 }
@@ -89,21 +99,29 @@ interface IconButtonProps
  * />
  * ```
  *
- * The `isActive` prop can be used to turn this button into a toggle button.
+ * The `active` prop can be used to turn this button into a toggle button.
  * ```tsx
- * const [isActive, setIsActive] = React.useState(false);
+ * const [active, setActive] = React.useState(false);
  *
  * <IconButton
  *   label={…}
  *   icon={…}
- *   isActive={isActive}
- *   onClick={() => setIsActive(!isActive)}
+ *   active={active}
+ *   onClick={() => setActive(!active)}
  * />
  * ```
  */
 const IconButton = forwardRef<"button", IconButtonProps>(
 	(props, forwardedRef) => {
-		const { label, icon, isActive, labelVariant, dot, ...rest } = props;
+		const {
+			label,
+			icon,
+			isActive,
+			active = isActive,
+			labelVariant,
+			dot,
+			...rest
+		} = props;
 
 		const baseId = React.useId();
 		const labelId = `${baseId}-label`;
@@ -111,15 +129,28 @@ const IconButton = forwardRef<"button", IconButtonProps>(
 
 		const { iconSize } = React.useContext(IconButtonContext);
 
+		const [elementType, setElementType] = React.useState<
+			"button" | "a" | undefined
+		>(!props.render ? "button" : undefined);
+
+		const determineTagName = React.useCallback(
+			(element: HTMLElement | null) => {
+				if (!element) return;
+				setElementType(element.tagName.toLowerCase() === "a" ? "a" : "button");
+			},
+			[],
+		);
+
 		const button = (
 			<IconButtonPresentation
 				render={
 					<Button
-						aria-pressed={isActive}
+						aria-pressed={elementType === "button" ? active : undefined}
+						aria-current={elementType === "a" ? active : undefined}
 						aria-labelledby={labelId}
 						aria-describedby={dot ? dotId : undefined}
 						{...rest}
-						ref={forwardedRef}
+						ref={useMergedRefs(determineTagName, forwardedRef)}
 					>
 						<VisuallyHidden id={labelId}>{label}</VisuallyHidden>
 
@@ -130,7 +161,7 @@ const IconButton = forwardRef<"button", IconButtonProps>(
 						)}
 
 						{dot ? (
-							<Dot id={dotId} className="🥝-icon-button-dot">
+							<Dot id={dotId} className="🥝IconButtonDot">
 								{dot}
 							</Dot>
 						) : null}

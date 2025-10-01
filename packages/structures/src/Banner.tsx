@@ -46,10 +46,15 @@ function BannerProvider(
 		tone: NonNullable<BannerRootProps["tone"]>;
 	}>,
 ) {
-	const [store] = React.useState(() =>
-		createBannerStore({
-			tone: props.tone,
-		}),
+	const { tone } = props;
+
+	const [store] = React.useState(() => createBannerStore({ tone }));
+
+	React.useEffect(
+		function synchronizeWithProps() {
+			store.setState({ tone });
+		},
+		[store, tone],
 	);
 
 	return (
@@ -102,9 +107,9 @@ const BannerRoot = forwardRef<"div", BannerRootProps>((props, forwardedRef) => {
 		<BannerProvider tone={tone}>
 			<Role
 				{...rest}
-				data-kiwi-tone={tone}
-				data-kiwi-variant={variant}
-				className={cx("🥝-banner", props.className)}
+				data-_sk-tone={tone}
+				data-_sk-variant={variant}
+				className={cx("🥝Banner", props.className)}
 				ref={forwardedRef}
 			/>
 		</BannerProvider>
@@ -150,7 +155,7 @@ const BannerIcon = forwardRef<"svg", BannerIconProps>((props, forwardedRef) => {
 		<Icon
 			{...rest}
 			render={render}
-			className={cx("🥝-banner-icon", props.className)}
+			className={cx("🥝BannerIcon", props.className)}
 			ref={forwardedRef}
 		/>
 	);
@@ -199,7 +204,7 @@ const BannerLabel = forwardRef<"span", BannerLabelProps>(
 				id={labelId}
 				render={<span />}
 				{...props}
-				className={cx("🥝-banner-label", props.className)}
+				className={cx("🥝BannerLabel", props.className)}
 				variant="body-sm"
 				ref={forwardedRef}
 			/>
@@ -228,7 +233,7 @@ const BannerMessage = forwardRef<"span", BannerMessageProps>(
 			<Text
 				{...props}
 				variant="body-sm"
-				className={cx("🥝-banner-message", props.className)}
+				className={cx("🥝BannerMessage", props.className)}
 				ref={forwardedRef}
 			/>
 		);
@@ -277,7 +282,7 @@ const BannerActions = forwardRef<"div", BannerActionsProps>(
 		return (
 			<Role.div
 				{...props}
-				className={cx("🥝-banner-actions", props.className)}
+				className={cx("🥝BannerActions", props.className)}
 				ref={forwardedRef}
 			/>
 		);
@@ -323,7 +328,7 @@ const BannerDismissButton = forwardRef<"button", BannerDismissButtonProps>(
 				<IconButton
 					{...rest}
 					id={id}
-					className={cx("🥝-banner-dismiss-button", props.className)}
+					className={cx("🥝BannerDismissButton", props.className)}
 					variant="ghost"
 					label={label}
 					aria-labelledby={`${id} ${labelId || ""}`}

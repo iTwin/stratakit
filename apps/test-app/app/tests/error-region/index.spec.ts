@@ -61,4 +61,12 @@ test.describe("@a11y", () => {
 		const accessibilityScan = await axe.analyze();
 		expect(accessibilityScan.violations).toEqual([]);
 	});
+
+	test("Axe Page Scan: no label", async ({ page }) => {
+		await page.goto("/tests/error-region?items=0");
+
+		const axe = new AxeBuilder({ page });
+		const accessibilityScan = await axe.analyze();
+		expect(accessibilityScan.violations).toEqual([]);
+	});
 });

@@ -1,5 +1,41 @@
 # Changelog
 
+## 0.4.4
+
+- [#892](https://github.com/iTwin/design-system/pull/892): Added invalid state styling to `TextBox`.
+- [#955](https://github.com/iTwin/design-system/pull/955): Fixed `IconButton` active state semantics. It will now use `aria-current` instead of `aria-pressed` when rendered as an anchor.
+- Updated dependencies:
+  - @stratakit/foundations@0.3.4
+
+## 0.4.3
+
+- [#945](https://github.com/iTwin/design-system/pull/945): The `"critical"` tone value for `Anchor` has been deprecated and will be removed in a future release.
+- Updated dependencies:
+  - @stratakit/foundations@0.3.3
+
+## 0.4.2
+
+- [#938](https://github.com/iTwin/design-system/pull/938): Explicitly set the `Avatar`'s icon color to prevent accidentally inheriting the wrong color.
+- [#934](https://github.com/iTwin/design-system/pull/934): Fixed visual inconsistencies between convenience and composition methods of `TextBox`.
+- Updated dependencies:
+  - @stratakit/foundations@0.3.2
+
+## 0.4.1
+
+- [#926](https://github.com/iTwin/design-system/pull/926): Added new `active` prop to `IconButton` and deprecated the existing `isActive` prop.
+
+  The `active` prop is consistent with the naming convention followed by other boolean props in StrataKit.
+
+- Updated dependencies:
+  - @stratakit/foundations@0.3.1
+
+## 0.4.0
+
+- [#913](https://github.com/iTwin/design-system/pull/913): Updated internal CSS selectors in every component.
+- [#904](https://github.com/iTwin/design-system/pull/904): Updated color of `Divider` component to match the latest design specification.
+- Updated dependencies:
+  - @stratakit/foundations@0.3.0
+
 ## 0.3.4
 
 - [#881](https://github.com/iTwin/design-system/pull/881): Updated CSS to use `--stratakit-space-` variables instead of hardcoded values in all components.

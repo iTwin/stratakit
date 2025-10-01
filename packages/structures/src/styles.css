@@ -4,12 +4,15 @@
  *--------------------------------------------------------------------------------------------*/
 
 @import "./~utils.ListItem.css" layer(itwinui.components);
+@import "./~utils.icons.css" layer(itwinui.components);
 
 @import "./AccordionItem.css" layer(itwinui.components);
 @import "./Banner.css" layer(itwinui.components);
 @import "./Chip.css" layer(itwinui.components);
+@import "./Dialog.css" layer(itwinui.components);
 @import "./DropdownMenu.css" layer(itwinui.components);
 @import "./ErrorRegion.css" layer(itwinui.components);
+@import "./NavigationRail.css" layer(itwinui.components);
 @import "./Table.css" layer(itwinui.components);
 @import "./Tabs.css" layer(itwinui.components);
 @import "./Toolbar.css" layer(itwinui.components);

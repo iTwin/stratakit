@@ -113,7 +113,7 @@ const Tooltip = forwardRef<"div", TooltipProps>((props, forwardedRef) => {
 				portal
 				{...rest}
 				unmountOnHide={unmountOnHide}
-				className={cx("🥝-tooltip", props.className)}
+				className={cx("🥝Tooltip", props.className)}
 				ref={forwardedRef}
 				id={id}
 				style={{ ...popoverProps.style, ...props.style }}

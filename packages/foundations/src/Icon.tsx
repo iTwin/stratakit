@@ -95,8 +95,8 @@ export const Icon = forwardRef<"svg", IconProps>((props, forwardedRef) => {
 			role={isDecorative ? undefined : "img"}
 			aria-label={isDecorative ? undefined : alt}
 			{...rest}
-			data-kiwi-size={size}
-			className={cx("🥝-icon", props.className)}
+			data-_sk-size={size}
+			className={cx("🥝Icon", props.className)}
 			ref={forwardedRef}
 		>
 			{hrefBase ? <use href={toIconHref(hrefBase)} /> : null}
@@ -150,7 +150,7 @@ function useNormalizedHrefBase(rawHref: string | undefined) {
 			// Browser will handle this.
 			if (isHttpProtocol(rawHref, ownerDocument)) return () => {};
 
-			// @ts-ignore -- This is initialized in `<InlineSpriteSheet>`.
+			// @ts-expect-error -- This is initialized in `<InlineSpriteSheet>`.
 			const cache = spriteSheet[Symbol.for("🥝")]?.icons as Map<string, string>;
 			if (!cache) return () => {};
 

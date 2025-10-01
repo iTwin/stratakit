@@ -34,9 +34,9 @@ export default definePage(function Page() {
 
 			<Tabs
 				labels={[
-					<Tab key={1} label="Tab 1" />,
-					<Tab key={2} label="Tab 2" disabled />,
-					<Tab key={3} label="Tab 3" />,
+					<Tab key="tab-1" label="Tab 1" />,
+					<Tab key="tab-2" label="Tab 2" disabled />,
+					<Tab key="tab-3" label="Tab 3" />,
 				]}
 			>
 				Legacy Tab

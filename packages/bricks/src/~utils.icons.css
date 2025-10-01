@@ -1,0 +1,14 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+.🥝DisclosureArrow {
+	@layer base {
+		margin-inline-end: calc(var(--stratakit-space-x2) * -1);
+		rotate: var(--🥝DisclosureArrow-rotate);
+
+		@media (prefers-reduced-motion: no-preference) {
+			transition: rotate 150ms ease-in-out;
+		}
+	}
+}

@@ -12,7 +12,7 @@ body {
 	@apply --typography("body-md");
 }
 
-:is(body, .🥝-root) {
+:is(body, .🥝Root) {
 	font-family: var(--stratakit-font-family-sans);
 	font-variant-alternates: character-variant(alt-1, alt-3, lc-l-with-tail, uc-i-with-serif);
 	color: var(--stratakit-color-text-neutral-primary);
@@ -32,6 +32,8 @@ body {
 }
 
 *:focus-visible {
-	outline: var(--🥝focus-outline);
+	@layer important {
+		outline: var(--🥝focus-outline);
+	}
 	outline-offset: var(--🥝focus-outline-offset);
 }

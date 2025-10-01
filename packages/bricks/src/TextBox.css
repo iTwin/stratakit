@@ -2,7 +2,7 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-.🥝-text-box {
+.🥝TextBox {
 	--✨bg--default: var(--stratakit-color-bg-page-base);
 	--✨bg--hover: color-mix(
 		in oklch,
@@ -17,6 +17,7 @@
 		var(--stratakit-color-glow-hue) var(--stratakit-color-border-glow-base-hover-\%)
 	);
 	--✨border--focus: var(--stratakit-color-border-accent-strong);
+	--✨border--invalid: var(--stratakit-color-border-critical-base);
 	--✨border--disabled: var(--stratakit-color-border-glow-on-surface-disabled);
 	--✨color--default: var(--stratakit-color-text-neutral-primary);
 	--✨color--placeholder: var(--stratakit-color-text-neutral-secondary);
@@ -28,7 +29,7 @@
 	--✨gap: var(--stratakit-space-x1);
 
 	@layer base {
-		cursor: var(--🥝text-box-cursor);
+		cursor: var(--🥝TextBox-cursor);
 		font-size: var(--stratakit-font-size-12);
 		min-inline-size: 0;
 
@@ -36,20 +37,22 @@
 		padding-inline: var(--✨padding-inline);
 		border-radius: 4px;
 
-		background-color: var(--🥝text-box-background-color);
-		box-shadow: var(--stratakit-shadow-input-base);
+		background-color: var(--🥝TextBox-background-color);
 		color: var(--✨color--default);
 		transition: all 150ms ease-out;
 		transition-property: background-color, border-color;
 		-webkit-tap-highlight-color: transparent;
 
-		--🥝text-box-cursor: text;
-		--🥝text-box-background-color: var(--🌀text-box-state--default, var(--✨bg--default))
-			var(--🌀text-box-state--hover, var(--✨bg--hover))
-			var(--🌀text-box-state--disabled, var(--✨bg--disabled));
-		--🥝text-box-border-color: var(--🌀text-box-state--default, var(--✨border--default))
-			var(--🌀text-box-state--hover, var(--✨border--hover))
-			var(--🌀text-box-state--disabled, var(--✨border--disabled));
+		--🥝TextBox-cursor: text;
+		--🥝TextBox-background-color: var(--🌀TextBox-state--default, var(--✨bg--default))
+			var(--🌀TextBox-state--hover, var(--✨bg--hover))
+			var(--🌀TextBox-state--disabled, var(--✨bg--disabled));
+		--🥝TextBox-border-color: var(--🌀TextBox-state--default, var(--✨border--default))
+			var(--🌀TextBox-state--hover, var(--✨border--hover))
+			var(--🌀TextBox-state--disabled, var(--✨border--disabled));
+		--🥝TextBox-box-shadow: var(--🌀TextBox-state--default, var(--stratakit-shadow-input-base))
+			var(--🌀TextBox-state--hover, var(--stratakit-shadow-input-base))
+			var(--🌀TextBox-state--disabled, none);
 
 		/* Styles specific to wrapper ("root") */
 		&:where(:not(input, textarea)) {
@@ -65,12 +68,13 @@
 				inset: 0;
 				border-radius: inherit;
 				pointer-events: none;
-				border: 1px solid var(--🥝text-box-border-color);
+				border: 1px solid var(--🥝TextBox-border-color);
+				box-shadow: var(--🥝TextBox-box-shadow);
 				transition: border-color 150ms ease-out;
 			}
 
 			/* Propagate padding-inline-start to the nested input/textarea when there is no decoration _before_ it. */
-			&:where(:not(:has(.🥝-text-box-decoration ~ :is(input, textarea)))) {
+			&:where(:not(:has(.🥝TextBoxDecoration ~ :is(input, textarea)))) {
 				padding-inline-start: 0;
 
 				:where(input, textarea) {
@@ -79,7 +83,7 @@
 			}
 
 			/* Propagate padding-inline-end to the nested input/textarea when there is no decoration _after_ it. */
-			&:where(:not(:has(:is(input, textarea) ~ .🥝-text-box-decoration))) {
+			&:where(:not(:has(:is(input, textarea) ~ .🥝TextBoxDecoration))) {
 				padding-inline-end: 0;
 
 				:where(input, textarea) {
@@ -88,14 +92,19 @@
 			}
 		}
 
+		/* Styles specific to input/textarea (self) */
+		&:where(input, textarea) {
+			box-shadow: var(--🥝TextBox-box-shadow);
+		}
+
 		/* Styles specific to input/textarea (self and nested) */
 		&:where(input, textarea),
 		:where(input, textarea) {
 			appearance: none;
 			line-height: 1.3; /* This is a safe value for Inter — lower values will be ignored. */
 			min-inline-size: 0;
-			border: 1px solid var(--🥝text-box-border-color);
-			cursor: var(--🥝text-box-cursor);
+			border: 1px solid var(--🥝TextBox-border-color);
+			cursor: var(--🥝TextBox-cursor);
 			padding-block: var(--✨padding-block);
 
 			&::placeholder {
@@ -115,8 +124,9 @@
 		/* Styles specific to input/textarea (nested only, "invisible") */
 		:where(input, textarea) {
 			border: none;
-			background-color: var(--🥝text-box-background-color);
-			outline: unset;
+			background-color: var(--🥝TextBox-background-color);
+			border-radius: inherit;
+			outline: unset !important;
 			flex: 999;
 			align-self: stretch;
 			transition: background-color 150ms ease-out;
@@ -127,67 +137,77 @@
 	@layer states {
 		@media (any-hover: hover) {
 			&:where(:hover) {
-				--🌀text-box-state: var(--🌀text-box-state--hover);
+				--🌀TextBox-state: var(--🌀TextBox-state--hover);
 			}
 		}
 
 		&:where(:has(:is(input, textarea):focus-visible), :is(input, textarea):focus-visible) {
 			outline: var(--🥝focus-outline);
 			outline-offset: var(--🥝focus-outline-offset);
-			--🥝text-box-border-color: var(--✨border--focus);
-			--🥝icon-color: var(--stratakit-color-icon-accent-strong);
+			--🥝TextBox-border-color: var(--✨border--focus);
+			--🥝Icon-color: var(--stratakit-color-icon-accent-strong);
 		}
 
 		@supports not selector(:has(+ *)) {
 			&:where(:not(input, textarea):focus-within) {
 				outline: var(--🥝focus-outline);
 				outline-offset: var(--🥝focus-outline-offset);
-				--🥝text-box-border-color: var(--✨border--focus);
-				--🥝icon-color: var(--stratakit-color-icon-accent-strong);
+				--🥝TextBox-border-color: var(--✨border--focus);
+				--🥝Icon-color: var(--stratakit-color-icon-accent-strong);
 			}
 		}
 
 		&:where(
-				:disabled,
-				[aria-disabled="true"],
-				[data-kiwi-disabled="true"],
+				:is(:user-invalid, [aria-invalid="true"]),
+				:has(:is(input, textarea):is(:user-invalid, [aria-invalid="true"]))
+			) {
+			--🥝Icon-color: var(--stratakit-color-icon-critical-base);
+			--🥝TextBox-border-color: var(--✨border--invalid);
+		}
+
+		&:where(
+				:is(:disabled, [aria-disabled="true"], [data-_sk-disabled="true"]),
 				:has(:is(input, textarea):is(:disabled, [aria-disabled="true"]))
 			) {
-			--🌀text-box-state: var(--🌀text-box-state--disabled);
-			box-shadow: none;
+			--🌀TextBox-state: var(--🌀TextBox-state--disabled);
 			color: var(--✨color--disabled);
-			--🥝text-box-cursor: not-allowed;
+			--🥝TextBox-cursor: not-allowed;
 		}
 	}
 
 	@layer base.🌀 {
 		/* Cyclic toggles for default/hover/disabled states. See https://kizu.dev/cyclic-toggles/ */
-		--🌀text-box-state: var(--🌀text-box-state--default);
-		--🌀text-box-state--default: var(--🌀text-box-state,);
-		--🌀text-box-state--hover: var(--🌀text-box-state,);
-		--🌀text-box-state--disabled: var(--🌀text-box-state,);
+		--🌀TextBox-state: var(--🌀TextBox-state--default);
+		--🌀TextBox-state--default: var(--🌀TextBox-state,);
+		--🌀TextBox-state--hover: var(--🌀TextBox-state,);
+		--🌀TextBox-state--disabled: var(--🌀TextBox-state,);
 	}
 }
 
-.🥝-text-box-decoration {
+.🥝TextBoxDecoration {
 	@layer base {
 		flex-shrink: 0;
 	}
 }
 
 @media (forced-colors: active) {
-	.🥝-text-box {
-		--🥝text-box-background-color: Field;
-		--🥝text-box-border-color: CanvasText;
+	.🥝TextBox {
+		--🥝TextBox-background-color: Field;
+		--🥝TextBox-border-color: CanvasText;
 		color: FieldText;
 
 		&:where(
-				:disabled,
-				[aria-disabled="true"],
-				[data-kiwi-disabled="true"],
+				:is(:user-invalid, [aria-invalid="true"]),
+				:has(:is(input, textarea):is(:user-invalid, [aria-invalid="true"]))
+			) {
+			--🥝TextBox-border-color: Mark;
+		}
+
+		&:where(
+				:is(:disabled, [aria-disabled="true"], [data-_sk-disabled="true"]),
 				:has(:is(input, textarea):is(:disabled, [aria-disabled="true"]))
 			) {
-			--🥝text-box-border-color: GrayText;
+			--🥝TextBox-border-color: GrayText;
 			color: GrayText;
 		}
 	}

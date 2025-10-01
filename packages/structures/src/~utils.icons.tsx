@@ -76,9 +76,16 @@ export const ChevronDown = forwardRef<
 	return (
 		<ChevronDownBase
 			{...props}
-			className={cx("🥝-chevron-down", props.className)}
+			className={cx("🥝ChevronDown", props.className)}
 			ref={forwardedRef}
 		/>
 	);
 });
 DEV: ChevronDown.displayName = "ChevronDown";
+
+// ----------------------------------------------------------------------------
+
+export const ChevronRight = createIconFromPath(
+	"M6.146 4.146a.5.5 0 0 1 .708 0l3.5 3.5a.5.5 0 0 1 0 .708l-3.5 3.5a.5.5 0 1 1-.708-.707L9.293 8 6.146 4.854a.5.5 0 0 1 0-.708Z",
+);
+DEV: ChevronRight.displayName = "ChevronRight";

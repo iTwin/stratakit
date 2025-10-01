@@ -16,7 +16,7 @@ import type {
 
 interface AnchorRootProps extends FocusableProps<"a"> {
 	/** @default "neutral" */
-	tone?: "neutral" | "accent" | "critical";
+	tone?: "neutral" | "accent" | (string & {});
 }
 
 /**
@@ -40,11 +40,17 @@ interface AnchorRootProps extends FocusableProps<"a"> {
  */
 const AnchorRoot = forwardRef<"a", AnchorRootProps>((props, forwardedRef) => {
 	const { tone = "neutral", ...rest } = props;
+
+	DEV: if (tone === "critical")
+		console.warn(
+			"The `critical` tone for `Anchor` has been deprecated and will be removed in a future release.",
+		);
+
 	return (
 		<Role.a
 			{...rest}
-			data-kiwi-tone={tone}
-			className={cx("🥝-anchor", props.className)}
+			data-_sk-tone={tone}
+			className={cx("🥝Anchor", props.className)}
 			render={
 				<Focusable accessibleWhenDisabled render={props.render || <a />} />
 			}
@@ -71,7 +77,7 @@ const AnchorText = forwardRef<"span", AnchorTextProps>(
 		return (
 			<Role.span
 				{...props}
-				className={cx("🥝-anchor-text", props.className)}
+				className={cx("🥝AnchorText", props.className)}
 				ref={forwardedRef}
 			/>
 		);
@@ -101,7 +107,7 @@ const AnchorExternalMarker = forwardRef<"span", AnchorExternalMarkerProps>(
 				<Role.span
 					aria-hidden="true"
 					{...rest}
-					className={cx("🥝-anchor-external-marker", props.className)}
+					className={cx("🥝AnchorExternalMarker", props.className)}
 					ref={forwardedRef}
 				>
 					&nbsp;↗
@@ -115,10 +121,9 @@ DEV: AnchorExternalMarker.displayName = "Anchor.ExternalMarker";
 
 // ----------------------------------------------------------------------------
 
-interface AnchorProps extends FocusableProps<"a"> {
-	/** @default "neutral" */
-	tone?: "neutral" | "accent" | "critical";
-}
+interface AnchorProps
+	extends FocusableProps<"a">,
+		Pick<AnchorRootProps, "tone"> {}
 
 /**
  * A styled anchor element, typically used for navigating to a different location.

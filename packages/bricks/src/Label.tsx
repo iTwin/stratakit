@@ -28,7 +28,7 @@ const Label = forwardRef<"label", LabelProps>((props, forwardedRef) => {
 	return (
 		<Role.label
 			{...props}
-			className={cx("🥝-label", props.className)}
+			className={cx("🥝Label", props.className)}
 			ref={forwardedRef}
 		/>
 	);

@@ -20,7 +20,7 @@ const ListItem = forwardRef<"div", ListItemProps>((props, forwardedRef) => {
 		<Role.div
 			role="listitem"
 			{...props}
-			className={cx("🥝-list-item", props.className)}
+			className={cx("🥝ListItem", props.className)}
 			ref={forwardedRef}
 		/>
 	);
@@ -38,7 +38,7 @@ const ListItemContent = forwardRef<"div", ListItemContentProps>(
 			<Text
 				{...props}
 				variant="body-sm"
-				className={cx("🥝-list-item-content", props.className)}
+				className={cx("🥝ListItemContent", props.className)}
 				ref={forwardedRef}
 			/>
 		);
@@ -56,7 +56,7 @@ const ListItemDecoration = forwardRef<"div", ListItemDecorationProps>(
 		return (
 			<Role.div
 				{...props}
-				className={cx("🥝-list-item-decoration", props.className)}
+				className={cx("🥝ListItemDecoration", props.className)}
 				ref={forwardedRef}
 			/>
 		);

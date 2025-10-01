@@ -2,7 +2,7 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-.🥝-dropdown-menu,
+.🥝DropdownMenu,
 ::picker(select) {
 	--✨bg: var(--stratakit-color-bg-elevation-level-1);
 	--✨padding: var(--stratakit-space-x1);
@@ -17,7 +17,7 @@
 	}
 }
 
-.🥝-dropdown-menu {
+.🥝DropdownMenu {
 	@layer base {
 		display: flex;
 		flex-direction: column;
@@ -31,46 +31,57 @@
 	}
 }
 
-.🥝-dropdown-menu-button {
+.🥝DropdownMenuButton {
 	@layer states {
 		&:where([aria-expanded="true"]) {
-			--🥝disclosure-arrow-rotate: 0.5turn;
+			--🥝DisclosureArrow-rotate: 0.5turn;
 		}
 	}
 }
 
-.🥝-dropdown-menu-item:is(.🥝-list-item) {
+.🥝DropdownMenuItem:is(.🥝ListItem) {
 	@layer base {
 		border-radius: 4px;
 	}
 
 	@layer states {
 		&:where([role="menuitemcheckbox"]:not([aria-checked="true"])) {
-			--🥝dropdown-menu-checkmark-visibility: hidden;
+			--🥝DropdownMenuCheckmark-visibility: hidden;
+		}
+
+		&:where([data-has-popover-open]:not(:active)) {
+			--🌀ListItem-state: var(--🌀ListItem-state--hover);
 		}
 	}
 }
 
-.🥝-dropdown-menu-item-dot:is(.🥝-dot) {
+.🥝DropdownMenuItemDot:is(.🥝Dot) {
 	@layer base {
 		align-self: center;
 	}
 }
 
-.🥝-dropdown-menu-checkmark {
+.🥝DropdownMenuCheckmark {
 	@layer base {
-		visibility: var(--🥝dropdown-menu-checkmark-visibility);
+		visibility: var(--🥝DropdownMenuCheckmark-visibility);
 	}
 }
 
-.🥝-dropdown-menu-item-shortcuts {
+.🥝DropdownMenuItemShortcuts {
 	@layer base {
 		margin-inline-start: var(--stratakit-space-x2);
 	}
 }
 
+.🥝DropdownMenuItemChevron:is(.🥝ListItemDecoration) {
+	@layer base {
+		margin-inline-end: -4px;
+		min-inline-size: var(--🥝Icon-size, 1rem);
+	}
+}
+
 @media (forced-colors: active) {
-	.🥝-dropdown-menu,
+	.🥝DropdownMenu,
 	::picker(select) {
 		border: 1px solid;
 	}

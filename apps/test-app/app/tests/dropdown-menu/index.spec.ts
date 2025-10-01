@@ -124,9 +124,156 @@ test("dot", async ({ page }) => {
 	await expect(filterItem).toHaveAccessibleDescription("Some filters applied");
 });
 
+test.describe("submenu", () => {
+	test("open on hover", async ({ page, browserName }) => {
+		test.skip(
+			browserName === "webkit",
+			"hover does not open a menu in Webkit tests",
+		);
+
+		await page.goto("/tests/dropdown-menu?submenu");
+
+		const button = page.getByRole("button", { name: "Actions" });
+		const menu = page.getByRole("menu", { includeHidden: true });
+		const item1 = page.getByRole("menuitem", { name: "Item 1" });
+		const item3 = page.getByRole("menuitem", { name: "Item 3", exact: true });
+		const item3_1 = page.getByRole("menuitem", { name: "Item 3_1" });
+
+		await expect(menu).toHaveCount(0);
+
+		await button.click();
+		await expect(menu).toHaveCount(1);
+		await expect(button).toHaveAttribute("data-has-popover-open");
+		await expect(item1).toBeVisible();
+
+		await item3.hover();
+		await expect(menu).toHaveCount(2);
+		await expect(item3).toHaveAttribute("data-has-popover-open");
+		await expect(item3_1).toBeVisible();
+
+		await item3_1.hover();
+		await expect(item3_1).toBeVisible();
+	});
+
+	test("close on hover away", async ({ page, browserName }) => {
+		test.skip(
+			browserName === "webkit",
+			"hover does not open a menu in Webkit tests",
+		);
+
+		await page.goto("/tests/dropdown-menu?submenu");
+
+		const button = page.getByRole("button", { name: "Actions" });
+		const menu = page.getByRole("menu", { includeHidden: true });
+		const item3 = page.getByRole("menuitem", { name: "Item 3", exact: true });
+
+		await button.click();
+		await item3.hover();
+		await expect(menu).toHaveCount(2);
+		await expect(item3).toHaveAttribute("data-has-popover-open");
+
+		await page.locator("body").hover();
+		await expect(menu).toHaveCount(1);
+		await expect(item3).not.toHaveAttribute("data-has-popover-open");
+	});
+
+	test("open on click", async ({ page }) => {
+		await page.goto("/tests/dropdown-menu?submenu");
+
+		const button = page.getByRole("button", { name: "Actions" });
+		const menu = page.getByRole("menu", { includeHidden: true });
+		const item1 = page.getByRole("menuitem", { name: "Item 1" });
+		const item3 = page.getByRole("menuitem", { name: "Item 3", exact: true });
+		const item3_1 = page.getByRole("menuitem", { name: "Item 3_1" });
+
+		await expect(menu).toHaveCount(0);
+
+		await button.click();
+		await expect(menu).toHaveCount(1);
+		await expect(button).toHaveAttribute("data-has-popover-open");
+		await expect(item1).toBeVisible();
+
+		await item3.click();
+		await expect(menu).toHaveCount(2);
+		await expect(item3).toHaveAttribute("data-has-popover-open");
+		await expect(item3_1).toBeVisible();
+
+		await item3_1.click();
+		await expect(menu).toHaveCount(0);
+		await expect(button).toBeFocused();
+	});
+
+	test("keyboard", async ({ page }) => {
+		await page.goto("/tests/dropdown-menu?submenu");
+
+		const button = page.getByRole("button", { name: "Actions" });
+		const menu = page.getByRole("menu", { includeHidden: true });
+		const item1 = page.getByRole("menuitem", { name: "Item 1" });
+		const item2 = page.getByRole("menuitem", { name: "Item 2" });
+		const item3 = page.getByRole("menuitem", { name: "Item 3", exact: true });
+		const item3_1 = page.getByRole("menuitem", { name: "Item 3_1" });
+		const item3_2 = page.getByRole("menuitem", {
+			name: "Item 3_2",
+			exact: true,
+		});
+		const item3_3 = page.getByRole("menuitem", { name: "Item 3_3" });
+		const item3_2_1 = page.getByRole("menuitem", { name: "Item 3_2_1" });
+		const item3_2_2 = page.getByRole("menuitem", { name: "Item 3_2_2" });
+
+		await expect(menu).toHaveCount(0);
+
+		await page.keyboard.press("Tab");
+		await expect(button).toBeFocused();
+
+		await page.keyboard.press("Enter");
+		await expect(menu).toHaveCount(1);
+		await expect(button).toHaveAttribute("data-has-popover-open");
+		await expect(item1).toBeFocused();
+
+		await page.keyboard.press("ArrowDown");
+		await expect(item2).toBeFocused();
+
+		await page.keyboard.press("ArrowDown");
+		await expect(item3).toBeFocused();
+
+		await page.keyboard.press("ArrowRight");
+		await expect(menu).toHaveCount(2);
+		await expect(item3).toHaveAttribute("data-has-popover-open");
+		await expect(item3_1).toBeFocused();
+
+		await page.keyboard.press("ArrowDown");
+		await expect(item3_2).toBeFocused();
+
+		await page.keyboard.press("ArrowRight");
+		await expect(menu).toHaveCount(3);
+		await expect(item3_2).toHaveAttribute("data-has-popover-open");
+		await expect(item3_2_1).toBeFocused();
+
+		await page.keyboard.press("ArrowDown");
+		await expect(item3_2_2).toBeFocused();
+
+		await page.keyboard.press("ArrowLeft");
+		await expect(menu).toHaveCount(2);
+		await expect(item3_2_1).toBeHidden();
+		await expect(item3_2).toBeFocused();
+
+		await page.keyboard.press("ArrowDown");
+		await expect(item3_3).toBeFocused();
+
+		await page.keyboard.press("Escape");
+		await expect(menu).toHaveCount(0);
+		await expect(item1).not.toBeVisible();
+		await expect(button).toBeFocused();
+	});
+});
+
 test.describe("@visual", () => {
 	test("default", async ({ page }) => {
 		await page.goto("/tests/dropdown-menu?visual=true");
+
+		const item3 = page.getByRole("menuitem", { name: "Item 3" });
+		await item3.click();
+
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
 
@@ -137,6 +284,9 @@ test.describe("@visual", () => {
 		);
 		await page.goto("/tests/dropdown-menu?visual=true");
 		await page.emulateMedia({ forcedColors: "active" });
+
+		const item3 = page.getByRole("menuitem", { name: "Item 3" });
+		await item3.click();
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
 });
@@ -146,18 +296,25 @@ test.describe("@a11y", () => {
 		await page.goto("/tests/dropdown-menu");
 
 		const button = page.getByRole("button", { name: "Actions" });
-		const add = page.getByRole("menuitem", { name: "Add" });
+		const more = page.getByRole("menuitem", { name: "More" });
+		const clone = page.getByRole("menuitem", { name: "Clone" });
 
 		await expect(button).toBeVisible();
 
 		await button.click();
-		await expect(add).toBeVisible();
+		await expect(more).toBeVisible();
 
 		const axe = new AxeBuilder({ page })
 			.disableRules(["region"])
 			.exclude("[data-focus-trap]");
 
-		const accessibilityScan = await axe.analyze();
+		let accessibilityScan = await axe.analyze();
+		expect(accessibilityScan.violations).toEqual([]);
+
+		await more.click();
+		await expect(clone).toBeVisible();
+
+		accessibilityScan = await axe.analyze();
 		expect(accessibilityScan.violations).toEqual([]);
 	});
 });

@@ -77,7 +77,7 @@ const HtmlTable = forwardRef<"table", HtmlTableProps>((props, forwardedRef) => {
 				render={<table />}
 				{...props}
 				ref={forwardedRef}
-				className={cx("🥝-table", props.className)}
+				className={cx("🥝Table", props.className)}
 			/>
 		</TableContext.Provider>
 	);
@@ -140,7 +140,7 @@ const CustomTable = forwardRef<"div", CustomTableProps>(
 					aria-labelledby={captionId}
 					{...props}
 					ref={forwardedRef}
-					className={cx("🥝-table", props.className)}
+					className={cx("🥝Table", props.className)}
 				/>
 			</TableContext.Provider>
 		);
@@ -183,7 +183,7 @@ const TableHeader = forwardRef<"div", TableHeaderProps>(
 					role={role}
 					{...props}
 					ref={forwardedRef}
-					className={cx("🥝-table-header", props.className)}
+					className={cx("🥝TableHeader", props.className)}
 				/>
 			</TableHeaderContext.Provider>
 		);
@@ -227,7 +227,7 @@ const TableBody = forwardRef<"div", TableBodyProps>((props, forwardedRef) => {
 			role={undefined} // Intentionally not using "rowgroup" https://github.com/iTwin/design-system/pull/243#discussion_r1947045668
 			{...props}
 			ref={forwardedRef}
-			className={cx("🥝-table-body", props.className)}
+			className={cx("🥝TableBody", props.className)}
 		/>
 	);
 });
@@ -275,7 +275,7 @@ const TableRow = forwardRef<"div", TableRowProps>((props, forwardedRef) => {
 			role={role}
 			{...props}
 			ref={forwardedRef}
-			className={cx("🥝-table-row", props.className)}
+			className={cx("🥝TableRow", props.className)}
 		/>
 	);
 });
@@ -321,7 +321,7 @@ const TableCaption = forwardRef<"div", TableCaptionProps>(
 				{...rest}
 				id={id}
 				ref={useMergedRefs(forwardedRef, captionIdRef)}
-				className={cx("🥝-table-caption", props.className)}
+				className={cx("🥝TableCaption", props.className)}
 			/>
 		);
 	},
@@ -362,7 +362,7 @@ const TableCell = forwardRef<"div", TableCellProps>((props, forwardedRef) => {
 			role={role}
 			{...props}
 			ref={forwardedRef}
-			className={cx("🥝-table-cell", props.className)}
+			className={cx("🥝TableCell", props.className)}
 		/>
 	);
 });

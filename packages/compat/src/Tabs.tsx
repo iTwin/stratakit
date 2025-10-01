@@ -16,7 +16,7 @@ import { Icon } from "./Icon.js";
 import type { Tab as IuiTab, Tabs as IuiTabs } from "@itwin/itwinui-react";
 import type { PolymorphicForwardRefComponent } from "./~utils.js";
 
-type SkTabsProps = React.ComponentProps<typeof SkTabs.Root>;
+type SkTabsProviderProps = React.ComponentProps<typeof SkTabs.Provider>;
 type SkTabListProps = React.ComponentProps<typeof SkTabs.TabList>;
 
 type IuiTabsLegacyProps = React.ComponentProps<typeof IuiTabs>;
@@ -100,15 +100,14 @@ const LegacyTabs = React.forwardRef((props, forwardedRef) => {
 			focusActivationMode={focusActivationMode}
 		>
 			<TabList className={tabsClassName} ref={forwardedRef}>
-				{labels.map((label, index) => {
-					const key = getLabelKey(label, index);
+				{React.Children.map(labels, (label, index) => {
 					const tabValue = `${index}`;
 					return (
-						<LegacyTabProvider key={key} tabValue={tabValue}>
+						<LegacyTabProvider tabValue={tabValue}>
 							{typeof label === "string" ? <LegacyTab label={label} /> : label}
 						</LegacyTabProvider>
 					);
-				})}
+				}) ?? []}
 			</TabList>
 			<Panel value={value} className={contentClassName}>
 				{children}
@@ -117,18 +116,6 @@ const LegacyTabs = React.forwardRef((props, forwardedRef) => {
 	);
 }) as PolymorphicForwardRefComponent<"div", LegacyTabsProps>;
 DEV: LegacyTabs.displayName = "Tabs";
-
-function getLabelKey(label: React.ReactNode, index: number) {
-	if (typeof label === "string") {
-		return `${index}-${label}`;
-	}
-
-	if (React.isValidElement<React.ComponentProps<typeof Tab>>(label)) {
-		return `${index}-${label.key || ""}-${label.props.id || ""}`;
-	}
-
-	return `${index}`;
-}
 
 // ----------------------------------------------------------------------------
 
@@ -246,7 +233,7 @@ const Wrapper = React.forwardRef((props, forwardedRef) => {
 		: undefined;
 	const selectedId = value ? toIdFromValue(value, wrapperId) : undefined;
 	const setSelectedId = React.useCallback<
-		NonNullable<SkTabsProps["setSelectedId"]>
+		NonNullable<SkTabsProviderProps["setSelectedId"]>
 	>(
 		(newSelectedId) => {
 			if (!onValueChange || !newSelectedId) return;
@@ -259,10 +246,10 @@ const Wrapper = React.forwardRef((props, forwardedRef) => {
 		[onValueChange, wrapperId],
 	);
 	return (
-		<SkTabs.Root
+		<SkTabs.Provider
 			defaultSelectedId={defaultSelectedId}
 			selectedId={selectedId}
-			selectOnMove={focusActivationMode === "manual" ? false : undefined}
+			selectOnMove={focusActivationMode !== "manual"}
 			setSelectedId={setSelectedId}
 		>
 			<WrapperContext.Provider
@@ -272,7 +259,7 @@ const Wrapper = React.forwardRef((props, forwardedRef) => {
 					{children}
 				</div>
 			</WrapperContext.Provider>
-		</SkTabs.Root>
+		</SkTabs.Provider>
 	);
 }) as PolymorphicForwardRefComponent<"div", WrapperProps>;
 DEV: Wrapper.displayName = "Tabs.Wrapper";

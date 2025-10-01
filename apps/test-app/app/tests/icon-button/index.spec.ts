@@ -41,6 +41,14 @@ test("dot", async ({ page }) => {
 	);
 });
 
+test("active link", async ({ page }) => {
+	await page.goto("/tests/icon-button?_activeLink=true");
+
+	const link = page.getByRole("link", { name: "Click me" });
+	await expect(link).toHaveAttribute("aria-current", "true");
+	await expect(link).not.toHaveAttribute("aria-pressed");
+});
+
 test.describe("@visual", () => {
 	test("default", async ({ page }) => {
 		await page.goto("/tests/icon-button?visual=true");
@@ -65,14 +73,18 @@ test.describe("@visual", () => {
 });
 
 test.describe("@a11y", () => {
-	test("Axe Page Scan", async ({ page }) => {
-		await page.goto("/tests/icon-button");
+	const paramsSet = new Set([
+		new URLSearchParams(),
+		new URLSearchParams("?_activeLink"),
+	]);
 
-		const button = page.getByRole("button");
-		await expect(button).toBeVisible();
+	for (const params of paramsSet) {
+		test(`Axe Page Scan: ?${params}`, async ({ page }) => {
+			await page.goto(`/tests/icon-button?${params}`);
 
-		const axe = new AxeBuilder({ page });
-		const accessibilityScan = await axe.analyze();
-		expect(accessibilityScan.violations).toEqual([]);
-	});
+			const axe = new AxeBuilder({ page });
+			const accessibilityScan = await axe.analyze();
+			expect(accessibilityScan.violations).toEqual([]);
+		});
+	}
 });

@@ -52,7 +52,7 @@ const Checkbox = forwardRef<"input", CheckboxProps>((props, forwardedRef) => {
 		<AkCheckbox
 			accessibleWhenDisabled
 			{...props}
-			className={cx("🥝-checkbox", props.className)}
+			className={cx("🥝Checkbox", props.className)}
 			ref={forwardedRef}
 		/>
 	);

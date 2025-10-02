@@ -2,11 +2,9 @@
 
 ## 0.4.5
 
-### Patch Changes
-
 - [#975](https://github.com/iTwin/design-system/pull/975): Fixed an overflow issue in `Tooltip`. Long words will now correctly break across multiple lines.
 - Updated dependencies:
-  - @stratakit/foundations@0.3.4
+  - @stratakit/foundations@0.3.5
 
 ## 0.4.4
 

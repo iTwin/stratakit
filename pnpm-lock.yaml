@@ -297,7 +297,7 @@ importers:
         specifier: ^0.4.18
         version: 0.4.18(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
       "@stratakit/bricks":
-        specifier: ^0.4.4
+        specifier: ^0.4.5
         version: link:../bricks
       classnames:
         specifier: ^2.5.1

@@ -1,1 +1,0 @@
-import{p as n}from"./chunk-B7RQU5TL-DUAKKKk_.js";import{f as d,R as l,c}from"./sun-By4HmIgZ.js";const f=d((a,e)=>{const{tone:s="neutral",variant:t="solid",label:r,...o}=a;return n.jsx(l.span,{...o,"data-_sk-tone":s,"data-_sk-variant":t,className:c("🥝Badge",a.className),ref:e,children:r})});var u=f;export{u as B};

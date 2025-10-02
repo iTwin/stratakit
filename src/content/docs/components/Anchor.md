@@ -5,7 +5,7 @@ status: stable
 links:
   demo: tests/anchor
   github: packages/bricks/src/Anchor.tsx
-  figma: https://www.figma.com/design/EfvaViHLAhb6v1ghEBXpSB/documentation--WIP-?node-id=182-3159&t=DLMcPqK55Zv9ukbQ-4
+  figma: https://www.figma.com/design/VcGw3L2IIlboxNlOdsKdai/%F0%9F%A5%9D-Kiwi-Component-Library?node-id=12080-1966&t=FX2fZYZ93vfliX17-4
 ---
 
 ## Use cases

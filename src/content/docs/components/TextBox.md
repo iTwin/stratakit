@@ -5,6 +5,7 @@ status: stable
 links:
   demo: tests/text-box
   github: packages/bricks/src/TextBox.tsx
+  figma: https://www.figma.com/design/VcGw3L2IIlboxNlOdsKdai/%F0%9F%A5%9D-Kiwi-Component-Library?node-id=1436-49229&t=FX2fZYZ93vfliX17-4
 associated:
   - Field
 ---

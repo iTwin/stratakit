@@ -18,23 +18,27 @@
 	},
 	"devDependencies": {
 		"@actions/github": "^6.0.1",
-		"@biomejs/biome": "2.2.3",
+		"@biomejs/biome": "2.2.4",
 		"@playwright/test": "catalog:",
 		"@types/node": "catalog:",
 		"colorjs.io": "^0.5.2",
 		"fast-glob": "^3.3.3",
 		"internal": "workspace:*",
-		"lefthook": "^1.12.4",
+		"lefthook": "^1.13.0",
 		"prettier": "3.6.2",
 		"tsx": "^4.20.5",
 		"typescript": "catalog:",
 		"wireit": "^0.14.12"
 	},
 	"engines": {
-		"node": ">=22.11.0"
+		"node": ">=22.19.0"
 	},
-	"packageManager": "pnpm@9.15.4",
+	"packageManager": "pnpm@10.17.0",
 	"pnpm": {
-		"overrides": {}
+		"overrides": {},
+		"onlyBuiltDependencies": [
+			"esbuild",
+			"lefthook"
+		]
 	}
 }

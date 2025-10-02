@@ -35,7 +35,10 @@ interface TabsProviderProps
 		| "setSelectedId"
 		| "selectOnMove"
 		| "children"
-	> {}
+	> {
+	/** @default false */
+	selectOnMove?: AkTab.TabProviderProps["selectOnMove"];
+}
 
 /**
  * A set of tabs that can be used to switch between different views.
@@ -70,7 +73,7 @@ function TabsProvider(props: TabsProviderProps) {
 		defaultSelectedId,
 		selectedId,
 		setSelectedId,
-		selectOnMove,
+		selectOnMove = false,
 		children,
 	} = props;
 

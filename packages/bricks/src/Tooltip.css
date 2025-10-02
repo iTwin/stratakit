@@ -11,6 +11,8 @@
 
 	@layer base {
 		@apply --typography("body-sm");
+		overflow-wrap: anywhere;
+		hyphens: auto;
 
 		background-color: var(--✨bg);
 		box-shadow: var(--stratakit-shadow-tooltip-base);

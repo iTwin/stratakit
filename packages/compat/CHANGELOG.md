@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.0.8
+
+- Updated dependencies:
+  - @stratakit/structures@0.4.4
+  - @stratakit/foundations@0.3.4
+  - @stratakit/bricks@0.4.4
+
 ## 0.0.7
 
 - Updated dependencies:

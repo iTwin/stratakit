@@ -5,7 +5,10 @@
 
 import * as React from "react";
 import { Divider, IconButton } from "@stratakit/bricks";
-import { unstable_Toolbar as Toolbar } from "@stratakit/structures";
+import {
+	DropdownMenu,
+	unstable_Toolbar as Toolbar,
+} from "@stratakit/structures";
 import { definePage } from "~/~utils.tsx";
 
 import placeholderIcon from "@stratakit/icons/placeholder.svg";
@@ -30,15 +33,25 @@ export default definePage(
 					}
 				/>
 				<Toolbar.Item
-					render={
-						<IconButton
-							icon={`${placeholderIcon}#icon-large`}
-							label="Click me"
-							variant="ghost"
-							active={active === "2"}
-							onClick={() => setActive("2")}
-						/>
-					}
+					render={(itemProps) => (
+						<DropdownMenu.Provider>
+							<DropdownMenu.Button
+								render={
+									<IconButton
+										icon={`${placeholderIcon}#icon-large`}
+										label="Click me"
+										variant="ghost"
+										{...itemProps}
+									/>
+								}
+							/>
+							<DropdownMenu.Content>
+								<DropdownMenu.Item label="Action 1" />
+								<DropdownMenu.Item label="Action 2" />
+								<DropdownMenu.Item label="Action 3" />
+							</DropdownMenu.Content>
+						</DropdownMenu.Provider>
+					)}
 				/>
 				<Toolbar.Item
 					render={
@@ -62,9 +75,10 @@ export default definePage(
 
 interface TestToolbarProps {
 	orientation: "horizontal" | "vertical";
+	hasPopup?: boolean;
 }
 
-function TestToolbar({ orientation }: TestToolbarProps) {
+function TestToolbar({ orientation, hasPopup }: TestToolbarProps) {
 	return (
 		<Toolbar.Group variant="solid" orientation={orientation}>
 			<Toolbar.Item
@@ -85,7 +99,7 @@ function TestToolbar({ orientation }: TestToolbarProps) {
 						icon={`${placeholderIcon}#icon-large`}
 						label="Click me"
 						variant="ghost"
-						isActive
+						active
 					/>
 				}
 			/>
@@ -95,6 +109,7 @@ function TestToolbar({ orientation }: TestToolbarProps) {
 						icon={`${placeholderIcon}#icon-large`}
 						label="Click me"
 						variant="ghost"
+						aria-haspopup={hasPopup ? "true" : undefined} // Just for visual test. Do not do this in real code.
 					/>
 				}
 			/>
@@ -112,7 +127,7 @@ function VisualTest() {
 				alignItems: "flex-start",
 			}}
 		>
-			<TestToolbar orientation="horizontal" />
+			<TestToolbar orientation="horizontal" hasPopup />
 			<TestToolbar orientation="vertical" />
 		</div>
 	);

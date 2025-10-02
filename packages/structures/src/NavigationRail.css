@@ -82,7 +82,7 @@
 		}
 
 		/* Should be floating above the right edge of the header during collapsed state */
-		:where(.🥝NavigationRailHeader[data-_sk-collapsed="true"]) & {
+		:where(.🥝NavigationRailHeader:not([data-_sk-expanded="true"])) & {
 			position: absolute;
 			inset-inline-end: 0;
 			translate: 50%;

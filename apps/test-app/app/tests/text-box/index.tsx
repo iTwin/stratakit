@@ -78,6 +78,7 @@ function VisualTest() {
 			<TextBox.Input placeholder="Placeholder" />
 			<TextBox.Input defaultValue="Value" />
 			<TextBox.Textarea defaultValue="Value" />
+			<TextBox.Input aria-invalid="true" defaultValue="Invalid value" />
 			<TextBox.Input disabled defaultValue="Disabled value" />
 
 			{/* TextBox.Input */}
@@ -104,6 +105,15 @@ function VisualTest() {
 				<TextAffix>%</TextAffix>
 				<TextBox.Icon href={placeholderIcon} />
 			</TextBox.Root>
+
+			<TextBox.Root>
+				<TextBox.Icon href={placeholderIcon} />
+				<TextAffix>%</TextAffix>
+				<TextBox.Input aria-invalid="true" defaultValue="Invalid value" />
+				<TextAffix>%</TextAffix>
+				<TextBox.Icon href={placeholderIcon} />
+			</TextBox.Root>
+
 			<TextBox.Root>
 				<TextBox.Icon href={placeholderIcon} />
 				<TextAffix>%</TextAffix>

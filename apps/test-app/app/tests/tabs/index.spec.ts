@@ -36,6 +36,12 @@ test("default", async ({ page }) => {
 
 	await page.keyboard.press("ArrowRight");
 	await expect(tab1).toHaveAttribute("aria-selected", "false");
+	await expect(tab2).toHaveAttribute("aria-selected", "true");
+	await expect(tab3).toBeFocused(); // focus moves but selection does not change
+	await expect(tab3).toHaveAttribute("aria-selected", "false");
+
+	await page.keyboard.press("Enter");
+	await expect(tab1).toHaveAttribute("aria-selected", "false");
 	await expect(tab2).toHaveAttribute("aria-selected", "false");
 	await expect(tab3).toHaveAttribute("aria-selected", "true");
 

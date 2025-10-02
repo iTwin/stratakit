@@ -7,7 +7,7 @@ associated:
 links:
   demo: tests/button
   github: packages/bricks/src/Button.tsx
-  figma: https://www.figma.com/design/EfvaViHLAhb6v1ghEBXpSB/documentation--WIP-?node-id=161-1161&t=fRRXvPQ4CL1HizqP-4
+  figma: https://www.figma.com/design/VcGw3L2IIlboxNlOdsKdai/%F0%9F%A5%9D-Kiwi-Component-Library?node-id=1436-51507&t=FX2fZYZ93vfliX17-4
 ---
 
 ## Use cases

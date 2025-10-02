@@ -3,7 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 .🥝TextBox {
-	--✨bg--default: var(--stratakit-color-bg-page-base);
+	--✨bg--default: var(--stratakit-color-bg-control-textbox);
 	--✨bg--hover: color-mix(
 		in oklch,
 		var(--✨bg--default) 100%,

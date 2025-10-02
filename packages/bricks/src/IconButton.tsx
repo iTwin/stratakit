@@ -73,10 +73,6 @@ interface IconButtonProps
 	 * @default undefined
 	 */
 	active?: boolean;
-	/**
-	 * @deprecated Use `active` instead.
-	 */
-	isActive?: boolean;
 }
 
 /**
@@ -113,15 +109,7 @@ interface IconButtonProps
  */
 const IconButton = forwardRef<"button", IconButtonProps>(
 	(props, forwardedRef) => {
-		const {
-			label,
-			icon,
-			isActive,
-			active = isActive,
-			labelVariant,
-			dot,
-			...rest
-		} = props;
+		const { label, icon, active, labelVariant, dot, ...rest } = props;
 
 		const baseId = React.useId();
 		const labelId = `${baseId}-label`;

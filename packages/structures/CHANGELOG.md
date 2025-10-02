@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.4.5
+
+### Patch Changes
+
+- [#953](https://github.com/iTwin/design-system/pull/953): Changed the default value of `Tabs.Provider`'s `selectOnMove` prop to `false`.
+- [#969](https://github.com/iTwin/design-system/pull/969): Fixed an issue where `unstable_Banner` would not track changes to the `tone` prop.
+- [#978](https://github.com/iTwin/design-system/pull/978): Log a warning in the console if `aria-label` or `aria-labelledby` is not provided for `ErrorRegion.Root` component.
+- [#979](https://github.com/iTwin/design-system/pull/979): Added `ReactNode[]` type support for `items` prop of `ErrorRegion.Root` component which is used to determine error region visibility. Previously supported `ReactNode` type is now deprecated and will be removed in a future release.
+- [#963](https://github.com/iTwin/design-system/pull/963): Fixed `unstable_ErrorRegion` component to avoid setting the default accessible name of the [`section`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/section) when `label={undefined}`.
+- [#962](https://github.com/iTwin/design-system/pull/962): Added `expanded` and `setExpanded` props to `unstable_NavigationRail` for controlling the expanded/collapsed state.
+- [#962](https://github.com/iTwin/design-system/pull/962): Added `defaultExpanded` prop to `unstable_NavigationRail` for specifying the initial expanded/collapsed state.
+- Updated dependencies:
+  - @stratakit/bricks@0.4.5
+  - @stratakit/foundations@0.3.4
+
 ## 0.4.4
 
 - [#954](https://github.com/iTwin/design-system/pull/954): Added "popup indicator" styling to `Toolbar.Item`.

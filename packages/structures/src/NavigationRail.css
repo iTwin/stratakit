@@ -136,8 +136,8 @@
 	--✨color--disabled: var(--stratakit-color-text-neutral-disabled);
 
 	--✨icon--default: var(--stratakit-color-icon-neutral-base);
-	--✨icon--hover: var(--stratakit-color-icon-neutral-hover);
-	--✨icon--pressed: var(--stratakit-color-icon-neutral-hover);
+	--✨icon--hover: var(--stratakit-color-icon-neutral-primary);
+	--✨icon--pressed: var(--stratakit-color-icon-neutral-primary);
 	--✨icon--active: var(--stratakit-color-icon-accent-strong);
 	--✨icon--disabled: var(--stratakit-color-icon-neutral-disabled);
 

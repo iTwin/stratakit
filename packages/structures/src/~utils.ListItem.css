@@ -56,8 +56,8 @@
 				var(--🌀ListItem-state--disabled, var(--✨color--disabled))
 		);
 		--🥝Icon-color: var(--🌀ListItem-state--default, var(--stratakit-color-icon-neutral-base))
-			var(--🌀ListItem-state--hover, var(--stratakit-color-icon-neutral-hover))
-			var(--🌀ListItem-state--pressed, var(--stratakit-color-icon-neutral-hover))
+			var(--🌀ListItem-state--hover, var(--stratakit-color-icon-neutral-primary))
+			var(--🌀ListItem-state--pressed, var(--stratakit-color-icon-neutral-primary))
 			var(--🌀ListItem-state--active, var(--stratakit-color-icon-accent-strong))
 			var(--🌀ListItem-state--active-hover, var(--stratakit-color-icon-accent-strong))
 			var(--🌀ListItem-state--disabled, var(--stratakit-color-icon-neutral-disabled));

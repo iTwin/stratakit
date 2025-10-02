@@ -60,7 +60,7 @@ function VisualTest({ tooltip: showTooltip = false }) {
 						variant={variant}
 						label="Click me"
 						icon={placeholderIcon}
-						isActive
+						active
 					/>
 					<IconButton
 						variant={variant}

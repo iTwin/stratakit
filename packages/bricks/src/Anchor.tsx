@@ -16,7 +16,7 @@ import type {
 
 interface AnchorRootProps extends FocusableProps<"a"> {
 	/** @default "neutral" */
-	tone?: "neutral" | "accent" | (string & {});
+	tone?: "neutral" | "accent";
 }
 
 /**
@@ -40,11 +40,6 @@ interface AnchorRootProps extends FocusableProps<"a"> {
  */
 const AnchorRoot = forwardRef<"a", AnchorRootProps>((props, forwardedRef) => {
 	const { tone = "neutral", ...rest } = props;
-
-	DEV: if (tone === "critical")
-		console.warn(
-			"The `critical` tone for `Anchor` has been deprecated and will be removed in a future release.",
-		);
 
 	return (
 		<Role.a

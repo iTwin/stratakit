@@ -14,3 +14,8 @@ catalog:
   "@types/node": ^22.18.3
   "@types/react": ^19.1.13
   "@types/react-dom": ^19.1.9
+
+minimumReleaseAge: 1440
+minimumReleaseAgeExclude:
+  - "@stratakit/*"
+  - "@itwin/*"

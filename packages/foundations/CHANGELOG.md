@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.3.5
+
+- Updated internal code for `@stratakit/bricks@0.4.5` and `@stratakit/structures@0.4.5`.
+
+## 0.3.4
+
+- Updated internal code for `@stratakit/bricks@0.4.4` and `@stratakit/structures@0.4.4`.
+
 ## 0.3.3
 
 - [#944](https://github.com/iTwin/design-system/pull/944): The CSS reset has been updated to use `display: inline-block` for SVG elements.

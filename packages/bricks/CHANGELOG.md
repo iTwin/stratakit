@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.4.5
+
+- [#975](https://github.com/iTwin/design-system/pull/975): Fixed an overflow issue in `Tooltip`. Long words will now correctly break across multiple lines.
+- Updated dependencies:
+  - @stratakit/foundations@0.3.5
+
+## 0.4.4
+
+- [#892](https://github.com/iTwin/design-system/pull/892): Added invalid state styling to `TextBox`.
+- [#955](https://github.com/iTwin/design-system/pull/955): Fixed `IconButton` active state semantics. It will now use `aria-current` instead of `aria-pressed` when rendered as an anchor.
+- Updated dependencies:
+  - @stratakit/foundations@0.3.4
+
 ## 0.4.3
 
 - [#945](https://github.com/iTwin/design-system/pull/945): The `"critical"` tone value for `Anchor` has been deprecated and will be removed in a future release.

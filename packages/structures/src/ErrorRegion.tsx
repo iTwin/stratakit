@@ -48,7 +48,7 @@ interface ErrorRegionRootProps extends Omit<BaseProps, "children"> {
 	 *
 	 * Set to `undefined` or empty array if you don't want to display errors rather than conditionally rendering the component.
 	 */
-	items?: React.ReactNode | React.ReactNode[];
+	items?: React.ReactNode;
 	/**
 	 * The controlled open state of the region.
 	 */

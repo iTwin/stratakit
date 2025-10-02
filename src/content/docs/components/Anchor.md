@@ -1,7 +1,7 @@
 ---
 title: Anchor
 description: The Anchor creates a styled hyperlink between pages and sections within pages.
-status: ready
+status: stable
 links:
   demo: tests/anchor
   github: packages/bricks/src/Anchor.tsx

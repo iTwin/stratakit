@@ -139,10 +139,11 @@ aside .right-sidebar {
 	}
 }
 
-.sl-markdown-content ul:where(:not(.not-content)) {
+.sl-markdown-content :is(ul, ol):where(:not(.not-content)) {
 	margin-inline-start: var(--stratakit-space-x4);
 
-	ul {
+	ul,
+	ol {
 		margin-block-start: var(--stratakit-space-x1);
 		margin-inline-start: var(--stratakit-space-x4);
 	}
@@ -193,4 +194,16 @@ aside.starlight-aside {
 starlight-menu-button button {
 	justify-content: center;
 	align-items: center;
+}
+
+/* Status badge */
+
+strong[data-status] {
+	font-weight: 600;
+	display: inline-block;
+	padding-inline: 8px;
+	padding-block: 2px;
+	margin-block: -3px;
+	border-radius: 9999px;
+	border: 1px solid var(--stratakit-color-border-neutral-base);
 }

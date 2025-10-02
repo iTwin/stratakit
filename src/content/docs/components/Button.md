@@ -1,7 +1,7 @@
 ---
 title: Button
 description: Buttons are used to initiate actions.
-status: ready
+status: stable
 associated:
   - Icon
 links:

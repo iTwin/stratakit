@@ -1,7 +1,7 @@
 ---
 title: TextBox
 description: Text boxes are used to input single or multiple lines of text.
-status: ready
+status: stable
 links:
   demo: tests/text-box
   github: packages/bricks/src/TextBox.tsx

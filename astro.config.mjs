@@ -31,6 +31,7 @@ export default defineConfig({
 			],
 			sidebar: [
 				{ label: "Getting started", slug: "guides/getting-started" },
+				{ label: "Composition", slug: "guides/composition" },
 				{ label: "Changelog", slug: "changelog" },
 				{
 					label: "Components",

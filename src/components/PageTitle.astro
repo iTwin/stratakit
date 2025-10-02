@@ -30,7 +30,9 @@ const associated = entry.data.associated?.map(({ id }) => id) || [];
 	{
 		status && (
 			<div class="inline-item">
-				<dt>Component status:</dt>
+				<dt>
+					<a href="/guides/composition/#component-status">Component status</a>:
+				</dt>
 				<dd>
 					<strong data-status={status}>{status}</strong>
 				</dd>
@@ -66,7 +68,9 @@ const associated = entry.data.associated?.map(({ id }) => id) || [];
 	{
 		associated.length > 0 && (
 			<div>
-				<dt>Associated components:</dt>
+				<dt>
+					<a href="/guides/composition/#associated-components">Associated components</a>:
+				</dt>
 				<dd>
 					<ul role="list">
 						{associated.map((component) => (
@@ -110,16 +114,6 @@ const associated = entry.data.associated?.map(({ id }) => id) || [];
 			margin-inline-start: 2px;
 		}
 
-		strong[data-status] {
-			font-weight: 600;
-			display: inline-block;
-			padding-inline: 8px;
-			padding-block: 2px;
-			margin-block: -3px;
-			border-radius: 9999px;
-			border: 1px solid var(--stratakit-color-border-neutral-base);
-		}
-
 		.inline-item {
 			display: flex;
 			gap: var(--stratakit-space-x1);
@@ -138,6 +132,10 @@ const associated = entry.data.associated?.map(({ id }) => id) || [];
 
 		dt {
 			margin-block-end: var(--stratakit-space-x1);
+		}
+
+		dt a {
+			font-weight: 600;
 		}
 
 		dd a {

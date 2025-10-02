@@ -10,7 +10,9 @@ export const collections = {
 		loader: docsLoader(),
 		schema: docsSchema({
 			extend: z.object({
-				status: z.enum(["ready", "not ready"]).optional(),
+				status: z
+					.enum(["draft", "unstable", "stable", "deprecated", "unknown"])
+					.optional(),
 				links: z
 					.object({
 						demo: z.string().optional(),

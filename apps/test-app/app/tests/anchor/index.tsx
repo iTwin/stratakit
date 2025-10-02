@@ -28,7 +28,7 @@ export default definePage(
 );
 
 function VisualTest() {
-	const tones = ["neutral", "accent", "critical"] as const;
+	const tones = ["neutral", "accent"] as const;
 
 	return (
 		<div style={{ display: "grid", gap: 4, justifyContent: "start" }}>

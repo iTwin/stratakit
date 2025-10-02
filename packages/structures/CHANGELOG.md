@@ -1,5 +1,21 @@
 # Changelog
 
+## 0.4.5
+
+- `unstable_NavigationRail` changes:
+  - [#962](https://github.com/iTwin/design-system/pull/962): Added `expanded` and `setExpanded` props for controlling the expanded/collapsed state.
+  - [#962](https://github.com/iTwin/design-system/pull/962): Added `defaultExpanded` prop for specifying the _initial_ expanded/collapsed state.
+- `unstable_ErrorRegion` changes:
+  - [#963](https://github.com/iTwin/design-system/pull/963): Avoid attempting to set the default accessible name of the [`<section>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/section) when `label={undefined}`.
+  - [#979](https://github.com/iTwin/design-system/pull/979): Updated the visibility logic to be based on the `items` array. Previously recommended `label={undefined}` pattern is now deprecated.
+  - [#978](https://github.com/iTwin/design-system/pull/978): Log a console warning if `aria-label` or `aria-labelledby` is not provided to `ErrorRegion.Root`.
+  - [#979](https://github.com/iTwin/design-system/pull/979): Log a console warning if `items` prop is not an array. Previously supported `ReactNode` type is now deprecated.
+- [#953](https://github.com/iTwin/design-system/pull/953): Changed the default value of `Tabs.Provider`'s `selectOnMove` prop to `false`.
+- [#969](https://github.com/iTwin/design-system/pull/969): Fixed an issue where `unstable_Banner` would not track changes to the `tone` prop.
+- Updated dependencies:
+  - @stratakit/bricks@0.4.5
+  - @stratakit/foundations@0.3.5
+
 ## 0.4.4
 
 - [#954](https://github.com/iTwin/design-system/pull/954): Added "popup indicator" styling to `Toolbar.Item`.

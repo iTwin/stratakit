@@ -46,7 +46,9 @@ interface RootProps extends BaseProps {
 	 *
 	 * This is useful when you don't have explicit control over the color scheme of the host.
 	 *
-	 * @default false
+	 * It can be disabled if you want to isolate StrataKit's styles to `<Root>` and its descendants.
+	 *
+	 * @default true
 	 */
 	synchronizeColorScheme?: boolean;
 

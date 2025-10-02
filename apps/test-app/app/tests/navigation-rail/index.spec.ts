@@ -13,15 +13,49 @@ test("default", async ({ page }) => {
 	await expect(navigationRail).toBeVisible();
 });
 
-test("expansion", async ({ page }) => {
-	await page.goto("/tests/navigation-rail");
+test.describe("expansion", () => {
+	for (const type of ["uncontrolled", "controlled"] as const) {
+		test(`expansion (${type})`, async ({ page }) => {
+			const params = type === "controlled" ? "?_controlled" : "";
+			await page.goto(`/tests/navigation-rail${params}`);
 
-	const toggleButton = page.getByRole("button", { name: "Expand" });
-	await expect(toggleButton).toHaveAccessibleName("Expand navigation");
-	await expect(toggleButton).toHaveAttribute("aria-expanded", "false");
+			let consoleText = "";
+			page.on("console", (msg) => {
+				consoleText += `${msg.text()}\n`;
+			});
+			expect(consoleText).not.toContain("setExpanded");
 
-	await toggleButton.click();
-	await expect(toggleButton).toHaveAttribute("aria-expanded", "true");
+			const toggleButton = page.getByRole("button", {
+				name: "Expand navigation",
+				exact: true,
+			});
+			await expect(toggleButton).toHaveAttribute("aria-expanded", "false");
+
+			// Expand
+			await toggleButton.click();
+			await expect(toggleButton).toHaveAttribute("aria-expanded", "true");
+			if (type === "controlled")
+				expect(consoleText).toContain("setExpanded: true");
+
+			// Collapse
+			await toggleButton.click();
+			await expect(toggleButton).toHaveAttribute("aria-expanded", "false");
+			if (type === "controlled")
+				expect(consoleText).toContain("setExpanded: false");
+		});
+
+		test(`defaultExpanded (${type})`, async ({ page }) => {
+			let params = "?defaultExpanded";
+			if (type === "controlled") params += "&_controlled";
+			await page.goto(`/tests/navigation-rail${params}`);
+
+			const toggleButton = page.getByRole("button", {
+				name: "Expand navigation",
+				exact: true,
+			});
+			await expect(toggleButton).toHaveAttribute("aria-expanded", "true");
+		});
+	}
 });
 
 test.describe("@visual", () => {

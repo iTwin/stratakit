@@ -33,7 +33,7 @@ interface ErrorRegionRootProps extends Omit<BaseProps, "children"> {
 	/**
 	 * Label for the error header, usually indicating the number of errors displayed.
 	 *
-	 * Changes to the `label` prop will be announced communicated
+	 * Changes to the `label` prop will be communicated
 	 * using a [live region](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Guides/Live_regions).
 	 *
 	 * (deprecated behavior) By default this is used as a name of the region navigational landmark.

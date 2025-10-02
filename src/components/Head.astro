@@ -3,13 +3,14 @@
 
 import StrataKit from "./StrataKit.astro";
 import Fonts from "./Fonts.astro";
-import ExampleEmbed from "./ExampleEmbed.astro";
+import CustomElements from "./custom-elements.astro";
 
 const { head } = Astro.locals.starlightRoute;
 ---
 
 <StrataKit />
 <Fonts />
-<ExampleEmbed />
 
 {head.map(({ tag: Tag, attrs, content }) => <Tag {...attrs} set:html={content} />)}
+
+<CustomElements />

@@ -19,11 +19,11 @@ In terms of how many, in what order, and in what relationships you incorporate t
 
 Check the status before choosing to use a component in your product. You may be unwilling to undertake certain risks and uncertainties. You can find the status in the metadata at the top of each component’s documentation page. It will have one of the following values:
 
-- <strong data-status>Draft</strong>: The component is still being designed. Consider the documentation a specification for what is to come.
-- <strong data-status>Unstable</strong>: The component is available for consumption but is not comprehensively tested and may undergo breaking changes. As an early adopter, please provide feedback.
-- <strong data-status>Stable</strong>: The component is established and meets our compatibility and accessibility standards.
-- <strong data-status>Deprecated</strong>: The component is no longer supported or recommended. Remove or replace it at your earliest convenience.
-- <strong data-status>Unknown</strong>: The status is currently unsettled. You may be able to help settle it.
+- <status-badge>Draft</status-badge>: The component is still being designed. Consider the documentation a specification for what is to come.
+- <status-badge>Unstable</status-badge>: The component is available for consumption but is not comprehensively tested and may undergo breaking changes. As an early adopter, please provide feedback.
+- <status-badge>Stable</status-badge>: The component is established and meets our compatibility and accessibility standards.
+- <status-badge>Deprecated</status-badge>: The component is no longer supported or recommended. Remove or replace it at your earliest convenience.
+- <status-badge>Unknown</status-badge>: The status is currently unsettled. You may be able to help settle it.
 
 ## Use cases
 
@@ -41,14 +41,13 @@ As in the use cases table for [Anchor](/components/anchor), each component is li
 You are required to provide certain props (properties). For example, the [IconButton’s](/components/iconbutton) `label` prop is required.
 
 ```ts
-/\*\*
-
-- Accessible name for the button.
--
-- This label gets used by assistive technology to identify the button,
-- and also gets shown in a tooltip by default.
-  \*/
-  label: string;
+/**
+ * Accessible name for the button.
+ *
+ * This label gets used by assistive technology to identify the button,
+ * and also gets shown in a tooltip by default.
+ */
+label: string;
 ```
 
 Labels, even where invisible to some, are important for comprehension to others. You are asked not just to satisfy the requirement of providing a string, but to put consideration into its wording.
@@ -63,10 +62,6 @@ For example, a simple [TextBox](/components/textbox) might look like this:
 <TextBox.Input name="firstName" />
 ```
 
-:::caution[Accessible labels are required]
-The above example shows the `TextBox` alone. A real-world example would include an accessible label. See [**Associated components**](#associated-components).
-:::
-
 However, to incorporate an icon, the component has to be _decomposed_ first. In this case, the more complex composition uses the `TextBox.Root` and `TextBox.Icon` sub-components.
 
 ```jsx
@@ -75,6 +70,10 @@ However, to incorporate an icon, the component has to be _decomposed_ first. In 
   <TextBox.Icon href={…} />
 </TextBox.Root>
 ```
+
+:::caution[Accessible labels are required]
+The above examples show the `TextBox` alone. A real-world example would include an accessible label. See [**Associated components**](#associated-components).
+:::
 
 ## Associated components
 

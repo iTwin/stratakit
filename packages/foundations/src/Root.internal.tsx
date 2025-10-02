@@ -9,8 +9,8 @@ import { useIsClient } from "./~hooks.js";
 // ----------------------------------------------------------------------------
 
 export const RootNodeContext = React.createContext<
-	Document | ShadowRoot | null
->(null);
+	Document | ShadowRoot | undefined
+>(undefined);
 
 /** Returns the closest [rootNode](https://developer.mozilla.org/en-US/docs/Web/API/Node/getRootNode). */
 export function useRootNode() {

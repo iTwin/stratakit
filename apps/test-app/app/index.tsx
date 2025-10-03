@@ -21,7 +21,7 @@ export default function Index() {
 				<Text variant="display-md" render={<h1 />}>
 					StrataKit
 				</Text>
-				<Text variant="body-sm">
+				<Text variant="body-md">
 					The design system for building complex user interfaces.
 				</Text>
 			</hgroup>

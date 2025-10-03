@@ -19,7 +19,6 @@
 
 	@layer base {
 		cursor: pointer;
-		font-size: var(--stratakit-font-size-12);
 		font-weight: 500;
 		text-underline-offset: var(--🌀Anchor-state--default, var(--stratakit-space-x05))
 			var(--🌀Anchor-state--hover, var(--stratakit-space-x1))

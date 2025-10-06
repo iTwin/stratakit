@@ -66,8 +66,8 @@ const switchId = React.useId();
 - Group related switches (settings) into a `<fieldset>`, using a `<legend>` as a label for the group.
 - Use a **Switch** when the effect is instantaneous (no confirmation or submission is required).
 
-### ❌ Don’t
+### 🚫 Don’t
 
-- Use switches for mandatory actions. The checked state of a switch can never be _invalid_.
-- Use one switch to change multiple settings simultaneously.
-- Use switches inside a form that needs submission. Use [**Checkbox**](/components/checkbox) instead.
+- Don't use switches for mandatory actions. The checked state of a switch can never be _invalid_.
+- Don't use one switch to change multiple settings simultaneously.
+- Don't use switches inside a form that needs submission. Use [**Checkbox**](/components/checkbox) instead.

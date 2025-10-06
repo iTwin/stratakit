@@ -67,6 +67,6 @@ Create an accessible input field with the associated [**Field**](/components/fie
 
 ### 🚫 Don’t
 
-- Omit a label
-- Place the label below or to the right of the input
-- Resort to generic error messages
+- Don't omit a label
+- Don't place the label below or to the right of the input
+- Don't resort to generic error messages

@@ -33,6 +33,7 @@ export default definePage(
 							colorScheme={colorScheme}
 							synchronizeColorScheme
 							density="dense"
+							rootNode={popout.popout.document}
 						>
 							<LightAndShadowComponents />
 						</Root>,
@@ -69,6 +70,7 @@ function LightAndShadowComponents() {
 						colorScheme={colorScheme}
 						density="dense"
 						style={{ display: "flex", gap: 4 }}
+						rootNode={shadow}
 					>
 						<Button>Button (shadow)</Button>
 
@@ -105,7 +107,7 @@ function ConditionalRenderingTest() {
 			{shadow
 				? ReactDOM.createPortal(
 						shouldRenderRoot ? (
-							<Root colorScheme="dark" density="dense">
+							<Root colorScheme="dark" density="dense" rootNode={shadow}>
 								{button}
 							</Root>
 						) : (

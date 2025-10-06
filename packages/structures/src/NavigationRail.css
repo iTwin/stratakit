@@ -82,7 +82,7 @@
 		}
 
 		/* Should be floating above the right edge of the header during collapsed state */
-		:where(.🥝NavigationRailHeader[data-_sk-collapsed="true"]) & {
+		:where(.🥝NavigationRailHeader:not([data-_sk-expanded="true"])) & {
 			position: absolute;
 			inset-inline-end: 0;
 			translate: 50%;
@@ -136,8 +136,8 @@
 	--✨color--disabled: var(--stratakit-color-text-neutral-disabled);
 
 	--✨icon--default: var(--stratakit-color-icon-neutral-base);
-	--✨icon--hover: var(--stratakit-color-icon-neutral-hover);
-	--✨icon--pressed: var(--stratakit-color-icon-neutral-hover);
+	--✨icon--hover: var(--stratakit-color-icon-neutral-primary);
+	--✨icon--pressed: var(--stratakit-color-icon-neutral-primary);
 	--✨icon--active: var(--stratakit-color-icon-accent-strong);
 	--✨icon--disabled: var(--stratakit-color-icon-neutral-disabled);
 

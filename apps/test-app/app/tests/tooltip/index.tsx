@@ -10,11 +10,11 @@ export const handle = { title: "Tooltip" };
 
 export default definePage(function Page({ "multi-line": multiLine, type }) {
 	const testContent = multiLine
-		? "This is the tooltip content that is to display across multiple lines"
+		? "This is the tooltip. Long words such as antidisestablishmentarianism and pneumonoultramicroscopicsilicovolcanoconiosis should wrap across multiple lines."
 		: "This is the tooltip";
 
 	return (
-		<div style={{ minHeight: 75 }}>
+		<div style={{ minHeight: 150 }}>
 			<Tooltip
 				content={testContent}
 				type={type as "description" | "label" | "none" | undefined}

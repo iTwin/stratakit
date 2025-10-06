@@ -15,22 +15,10 @@
 		var(--✨color--accent) 100%,
 		var(--stratakit-color-glow-hue) var(--stratakit-color-text-glow-strong-pressed-\%)
 	);
-	--✨color--critical: var(--stratakit-color-text-critical-base);
-	--✨color--critical-hover: color-mix(
-		in oklch,
-		var(--✨color--critical) 100%,
-		var(--stratakit-color-glow-hue) var(--stratakit-color-text-glow-strong-hover-\%)
-	);
-	--✨color--critical-pressed: color-mix(
-		in oklch,
-		var(--✨color--critical) 100%,
-		var(--stratakit-color-glow-hue) var(--stratakit-color-text-glow-strong-pressed-\%)
-	);
 	--✨color--disabled: var(--stratakit-color-text-neutral-disabled);
 
 	@layer base {
 		cursor: pointer;
-		font-size: var(--stratakit-font-size-12);
 		font-weight: 500;
 		text-underline-offset: var(--🌀Anchor-state--default, var(--stratakit-space-x05))
 			var(--🌀Anchor-state--hover, var(--stratakit-space-x1))
@@ -58,13 +46,6 @@
 				var(--🌀Anchor-state--hover, var(--✨color--accent-hover))
 				var(--🌀Anchor-state--pressed, var(--✨color--accent-pressed));
 			-webkit-tap-highlight-color: var(--stratakit-color-bg-glow-on-surface-accent-pressed);
-		}
-
-		&:where([data-_sk-tone="critical"]) {
-			--🥝Anchor-color: var(--🌀Anchor-state--default, var(--✨color--critical))
-				var(--🌀Anchor-state--hover, var(--✨color--critical-hover))
-				var(--🌀Anchor-state--pressed, var(--✨color--critical-pressed));
-			-webkit-tap-highlight-color: var(--stratakit-color-bg-glow-on-surface-critical-pressed);
 		}
 	}
 

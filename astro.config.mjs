@@ -30,16 +30,15 @@ export default defineConfig({
 				},
 			],
 			sidebar: [
-				{ label: "Getting started", slug: "guides/getting-started" },
-				{ label: "Page structure", slug: "guides/page-structure" },
-				{ label: "Composition", slug: "guides/composition" },
-				{ label: "Changelog", slug: "changelog" },
+				{ label: "Getting started", slug: "getting-started" },
+				{ label: "Guides", autogenerate: { directory: "guides" } },
 				{
 					label: "Components",
 					autogenerate: { directory: "components" },
 				},
 				{ label: "Icons", slug: "icons" },
 				{ label: "Examples", link: "/examples" },
+				{ label: "Changelog", slug: "changelog" },
 			],
 			editLink: {
 				baseUrl: "https://github.com/iTwin/stratakit-docs/edit/main/",

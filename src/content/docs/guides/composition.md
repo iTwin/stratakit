@@ -9,7 +9,7 @@ StrataKit’s inventory is categorized according to complexity: foundations, bri
 2. **Bricks**: Small, simple components built on **Foundations**.
 3. **Structures**: Compound components built on **Foundations** and incorporating multiple **Bricks**.
 
-Wherever you are using StrataKit, you must install and configure **Foundations** first (see [Getting Started](/guides/getting-started/)).
+Wherever you are using StrataKit, you must install and configure **Foundations** first (see [Getting Started](/getting-started/)).
 
 In `@stratakit/foundations`, you’ll find the `Root` component. This creates a context for StrataKit theming and functionality. **Bricks** and **Structures** are added, as descendants, to `Root`, where applicable.
 

@@ -72,32 +72,32 @@ However, to incorporate an icon, the component has to be _decomposed_ first. In 
 ```
 
 :::caution[Accessible labels are required]
-The above examples show the `TextBox` alone. A real-world example would include an accessible label. See [**Associated components**](#associated-components).
+The above examples show the **TextBox** alone. A real-world example would include an accessible label. See [**Associated components**](#associated-components).
 :::
 
 ## Associated components
 
 The metadata for any one component’s documentation may include **associated components**. These are components that can be used in conjunction with the current component to build more complex patterns.
 
-For example, the [Field](/components/field) component is associated with [TextBox](/components/textbox). The `Field` automatically takes care of programmatic label association.
+For example, the [Field](/components/field) component is associated with [TextBox](/components/textbox). The **Field** automatically takes care of programmatic label association.
 
 ```jsx
 <Field.Root>
   <Field.Label>First name</Field.Label>
   <Field.Control
-     render={(controlProps) => (
-       <TextBox.Root>
-         <TextBox.Input name="firstName" {...controlProps} />
-         <TextBox.Icon href={…} />
-       </TextBox.Root>
-     )}
-   />
+    render={(controlProps) => (
+      <TextBox.Root>
+        <TextBox.Input name="firstName" {...controlProps} />
+        <TextBox.Icon href={…} />
+      </TextBox.Root>
+    )}
+  />
 </Field.Root>
 ```
 
 Were you not to use [Field](/components/field), label association would have to be implemented manually: the `htmlFor` and `id` values must match.
 
-```jsx
+```jsx 'htmlFor="firstName"' 'id="firstName"'
 <Label htmlFor="firstName">First name</Label>
 <TextBox.Root>
   <TextBox.Input name="firstName" id="firstName" />

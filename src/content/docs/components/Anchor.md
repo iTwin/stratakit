@@ -22,10 +22,13 @@ Make sure the **Anchor** is suitable for your use case. There may be other, more
 ### Structure
 
 ```jsx
-<Anchor href="https://youtu.be/dQw4w9WgXcQ">Rick Astley’s biggest hit</Anchor>
+<Anchor tone="accent" href="https://youtu.be/dQw4w9WgXcQ">
+	Rick Astley’s biggest hit
+</Anchor>
 ```
 
 - `<Anchor>`: The `Anchor` component renders an HTML `<a>` element. All standard `<a>` attributes are supported.
+  - `tone` (default: `"neutral"`) : The chosen [tone](#tones).
   - [`href`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/a#href): If the `href` is omitted, the element will not behave correctly as an interactive element. For example, it will not be focusable by keyboard.
   - `children`: The accessible, text label. The text must describe [the purpose of the link](https://www.w3.org/WAI/WCAG22/Understanding/link-purpose-in-context.html).
 
@@ -52,11 +55,7 @@ The **Anchor** supports both the _convenience_ and _composition_ APIs. The _conv
 - **Neutral:** The default tone. If unsure, use this.
 - **Accent:** Reserved for calls-to-action and other links of unusual significance
 
-```jsx
-<Anchor tone="accent" href="/path/to/cta/url">
-	Take the tour!
-</Anchor>
-```
+::example{src="Anchor.tones"}
 
 ### ✅ Do
 

@@ -2,4 +2,4 @@
 "@stratakit/foundations": patch
 ---
 
-Focus outline moved into `important.css` and unlayered. This is a precautionary measure to prevent third party styles from removing the focus outline.
+The global focus outline is now given priority in the CSS cascade. This is a precautionary measure to prevent third party styles from removing the focus outline.

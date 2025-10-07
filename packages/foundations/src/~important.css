@@ -3,8 +3,9 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 *:focus-visible {
+	/* artificially increasing specificity */
 	&:not(#a#b) {
-		/* specificity: 2-0-0 */
-		outline: var(--🥝focus-outline) !important;
+		outline-style: solid !important;
+		outline-width: 2px !important;
 	}
 }

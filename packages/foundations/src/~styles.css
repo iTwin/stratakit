@@ -13,4 +13,4 @@
 @import "./~sublayers.css" layer(itwinui.components);
 @import "./Icon.css" layer(itwinui.components);
 
-@import "./~important.css";
+@import "./~unlayered.css";

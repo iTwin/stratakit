@@ -2,4 +2,12 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-@layer base, modifiers, states;
+
+/* Guarding against focus outline being removed by third-party styles. */
+*:focus-visible {
+	/* artificially increasing specificity */
+	&:not(#a#b) {
+		outline-style: solid !important;
+		outline-width: 2px !important;
+	}
+}

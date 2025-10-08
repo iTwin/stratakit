@@ -32,13 +32,21 @@ import type { BaseProps } from "@stratakit/foundations/secret-internals";
 interface ErrorRegionRootProps extends Omit<BaseProps, "children"> {
 	/**
 	 * Label for the error header, usually indicating the number of errors displayed.
-	 * By default this is used as a name of the region navigational landmark, however an explicit `aria-label` or `aria-labelledby` is strongly suggested.
 	 *
-	 * Use `undefined` if you don't want to display errors rather than conditionally rendering the component.
+	 * Changes to the `label` prop will be communicated
+	 * using a [live region](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Guides/Live_regions).
+	 *
+	 * (deprecated behavior) By default this is used as a name of the region navigational landmark.
+	 * `aria-label` or `aria-labelledby` prop should be provided to explicitly label the region instead.
+	 *
+	 * (deprecated behavior) Use `undefined` if you don't want to display errors rather than conditionally rendering the component.
+	 * Use `items` prop instead.
 	 */
 	label?: React.ReactNode;
 	/**
 	 * A list of error items where each item describes an individual error. Must be a list of `ErrorRegion.Item` components.
+	 *
+	 * Set to `undefined` or empty array if you don't want to display errors rather than conditionally rendering the component.
 	 */
 	items?: React.ReactNode;
 	/**
@@ -58,27 +66,27 @@ interface ErrorRegionRootProps extends Omit<BaseProps, "children"> {
  * component, such as `Tree`.
  *
  * This component is rendered as a [region landmark](https://www.w3.org/WAI/ARIA/apg/patterns/landmarks/examples/region.html)
- * and should be labelled either using `label` or `aria-label`/`aria-labelledby`. Changes to the `label` prop will be
- * announced communicated using a [live region](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Guides/Live_regions).
+ * and should be labelled using `aria-label` or `aria-labelledby`.
+ *
+ * This component should not be rendered conditionally, instead use the `items` prop to control the visibility.
  *
  * Example:
  * ```tsx
  * <ErrorRegion.Root
+ *   aria-label="Issues"
  *   label="3 issues found"
- *   items={
- *     <>
- *       <ErrorRegion.Item message="…" />
- *       <ErrorRegion.Item message="…" />
- *       <ErrorRegion.Item message="…" />
- *     </>
- *   }
+ *   items={[
+ *     <ErrorRegion.Item key={…} message="…" />
+ *     <ErrorRegion.Item key={…} message="…" />
+ *     <ErrorRegion.Item key={…} message="…" />
+ *   ]}
  * />
  */
 const ErrorRegionRoot = forwardRef<"div", ErrorRegionRootProps>(
 	(props, forwardedRef) => {
 		const {
 			label,
-			items,
+			items: itemsProp = [],
 			open: openProp,
 			setOpen: setOpenProp,
 			...rest
@@ -89,6 +97,18 @@ const ErrorRegionRoot = forwardRef<"div", ErrorRegionRootProps>(
 			: label
 				? labelId
 				: undefined;
+
+		DEV: if (!Array.isArray(itemsProp))
+			console.warn(
+				"`items` prop of `ErrorRegion.Root` expects an array of React nodes. `ReactNode` support is deprecated and will be removed in a future release.",
+			);
+
+		DEV: if (!props["aria-label"] && !props["aria-labelledby"])
+			console.warn(
+				"`aria-label` or `aria-labelledby` prop is required for `ErrorRegion.Root` to set an accessible name of a region.",
+			);
+
+		const visible = Array.isArray(itemsProp) ? itemsProp.length > 0 : !!label;
 
 		const [open, setOpen] = useControlledState(
 			false,
@@ -157,7 +177,7 @@ const ErrorRegionRoot = forwardRef<"div", ErrorRegionRootProps>(
 						aria-labelledby={sectionLabelledBy}
 						{...rest}
 						className={cx("🥝ErrorRegion", props.className)}
-						data-_sk-visible={!!label}
+						data-_sk-visible={visible}
 						data-_sk-expanded={open}
 						ref={forwardedRef}
 					>
@@ -191,7 +211,7 @@ const ErrorRegionRoot = forwardRef<"div", ErrorRegionRootProps>(
 									className="🥝ErrorRegionItems"
 									role="list"
 								>
-									{items}
+									{itemsProp}
 								</Collection>
 							</Dialog>
 						</div>

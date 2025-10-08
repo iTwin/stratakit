@@ -188,8 +188,8 @@
 		transition: background-color 150ms ease-out;
 		-webkit-tap-highlight-color: var(--stratakit-color-bg-glow-on-surface-neutral-pressed);
 		--🥝Icon-color: var(--🌀Button-state--default, var(--stratakit-color-icon-neutral-base))
-			var(--🌀Button-state--hover, var(--stratakit-color-icon-neutral-hover))
-			var(--🌀Button-state--pressed, var(--stratakit-color-icon-neutral-hover))
+			var(--🌀Button-state--hover, var(--stratakit-color-icon-neutral-primary))
+			var(--🌀Button-state--pressed, var(--stratakit-color-icon-neutral-primary))
 			var(--🌀Button-state--active, var(--stratakit-color-icon-accent-strong));
 	}
 

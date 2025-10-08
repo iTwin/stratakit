@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.4.5
+
+- [#975](https://github.com/iTwin/design-system/pull/975): Fixed an overflow issue in `Tooltip`. Long words will now correctly break across multiple lines.
+- Updated dependencies:
+  - @stratakit/foundations@0.3.5
+
 ## 0.4.4
 
 - [#892](https://github.com/iTwin/design-system/pull/892): Added invalid state styling to `TextBox`.

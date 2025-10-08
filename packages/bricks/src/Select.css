@@ -60,7 +60,7 @@
 		z-index: 1; /* should be above the button */
 
 		--🥝Icon-color: var(--🌀SelectArrow-state--default, var(--stratakit-color-icon-neutral-base))
-			var(--🌀SelectArrow-state--hover, var(--stratakit-color-icon-neutral-hover))
+			var(--🌀SelectArrow-state--hover, var(--stratakit-color-icon-neutral-primary))
 			var(--🌀SelectArrow-state--disabled, var(--stratakit-color-icon-neutral-disabled));
 	}
 

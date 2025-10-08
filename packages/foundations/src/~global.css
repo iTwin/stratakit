@@ -32,8 +32,6 @@ body {
 }
 
 *:focus-visible {
-	@layer important {
-		outline: var(--🥝focus-outline);
-	}
+	outline: var(--🥝focus-outline);
 	outline-offset: var(--🥝focus-outline-offset);
 }

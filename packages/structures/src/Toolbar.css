@@ -33,8 +33,8 @@
 				var(--🌀Button-state--active, var(--stratakit-color-bg-accent-base))
 				var(--🌀Button-state--disabled, var(--stratakit-color-bg-glow-on-surface-disabled));
 			--🥝Icon-color: var(--🌀Button-state--default, var(--stratakit-color-icon-neutral-base))
-				var(--🌀Button-state--hover, var(--stratakit-color-icon-neutral-hover))
-				var(--🌀Button-state--pressed, var(--stratakit-color-icon-neutral-hover))
+				var(--🌀Button-state--hover, var(--stratakit-color-icon-neutral-primary))
+				var(--🌀Button-state--pressed, var(--stratakit-color-icon-neutral-primary))
 				var(--🌀Button-state--active, var(--stratakit-color-icon-neutral-emphasis));
 			--🥝Button-border-color: var(--🌀Button-state--default, transparent)
 				var(--🌀Button-state--hover, transparent) var(--🌀Button-state--pressed, transparent)

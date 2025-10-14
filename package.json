@@ -18,7 +18,7 @@
     "@stratakit/foundations": "^0.3.4",
     "@stratakit/icons": "^0.1.5",
     "@stratakit/structures": "^0.4.4",
-    "astro": "^5.13.10",
+    "astro": "^5.14.3",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "sharp": "^0.34.4"

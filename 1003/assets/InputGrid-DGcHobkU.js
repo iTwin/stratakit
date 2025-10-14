@@ -1,1 +1,0 @@
-import{a as s,p as a}from"./chunk-NISHYRIK-Di4HR2Ld.js";import{u as i}from"./~utils-CYlGiJVN.js";import{F as n}from"./Field-aCwwKdzg.js";const f=s.forwardRef((o,r)=>{const{labelPlacement:t,...e}=i(o);return a.jsx(n,{...e,layout:t==="inline"?"inline":void 0,ref:r})});export{f as I};

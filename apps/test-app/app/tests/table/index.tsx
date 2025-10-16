@@ -189,7 +189,9 @@ function ScrollTest() {
 				{data.map((row) => (
 					<Table.Row key={row.id}>
 						{Object.values(row).map((value) => (
-							<Table.Cell key={row.id}>{value}</Table.Cell>
+							<Table.Cell key={`${row.id + value.toString()}`}>
+								{value}
+							</Table.Cell>
 						))}
 					</Table.Row>
 				))}

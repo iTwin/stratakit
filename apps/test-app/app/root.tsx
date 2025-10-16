@@ -20,7 +20,6 @@ import type { LinksFunction } from "react-router";
 
 import interVariable from "./fonts/InterVariable.woff2?url";
 import interVariableItalic from "./fonts/InterVariable-Italic.woff2?url";
-import manifestUrl from "./manifest.json?url";
 
 const queryClient = new QueryClient({
 	defaultOptions: { queries: { experimental_prefetchInRender: true } }, // https://tanstack.com/query/latest/docs/framework/react/guides/suspense#using-usequerypromise-and-reactuse-experimental
@@ -33,7 +32,7 @@ export const links: LinksFunction = () => {
 			href: "data:image/svg+xml,<svg viewBox='0 -16 20 20' xmlns='http://www.w3.org/2000/svg'><text>🥝</text></svg>",
 			type: "image/svg+xml",
 		},
-		{ rel: "manifest", href: manifestUrl },
+		{ rel: "manifest", href: "/manifest.json", crossorigin: "use-credentials" },
 	];
 };
 

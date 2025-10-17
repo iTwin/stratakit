@@ -31,7 +31,6 @@ export const components = {
 		"Dialog",
 		"DropdownMenu",
 		"ErrorRegion",
-		"List",
 		"NavigationRail",
 		"Table",
 		"Tabs",
@@ -69,4 +68,5 @@ export const components = {
 		"Tooltip",
 		"VisuallyHidden",
 	],
+	private: ["List"],
 };

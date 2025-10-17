@@ -10,6 +10,10 @@ import { toKebabCase } from "./~utils.tsx";
 
 import styles from "./index.module.css";
 
+// ----------------------------------------------------------------------------
+
+const isDev = import.meta.env.DEV;
+
 export const meta: MetaFunction = () => {
 	return [{ title: "StrataKit test app" }];
 };
@@ -100,6 +104,26 @@ export default function Index() {
 					</li>
 				))}
 			</ul>
+
+			{isDev && (
+				<>
+					<Text variant="headline-md" render={<h2 />} className={styles.h2}>
+						Private
+					</Text>
+
+					<ul className={styles.list}>
+						{components.private.map((component) => (
+							<li key={component}>
+								<Anchor
+									render={<Link to={`/tests/${toKebabCase(component)}`} />}
+								>
+									{component}
+								</Anchor>
+							</li>
+						))}
+					</ul>
+				</>
+			)}
 		</main>
 	);
 }

@@ -3,7 +3,7 @@ title: Getting started
 description: Learn how to set up StrataKit in your project.
 ---
 
-This guide is geared towards **developers**.
+This guide is aimed towards **developers**.
 
 <!-- TODO: Add link to starter sandbox. -->
 

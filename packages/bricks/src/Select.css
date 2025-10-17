@@ -16,31 +16,201 @@
 	}
 }
 
-.🥝Select:is(.🥝Button) {
+.🥝Select {
+	--✨color--default: var(--stratakit-color-text-neutral-primary);
+	--✨color--placeholder: var(--stratakit-color-text-neutral-tertiary);
+	--✨color--disabled: var(--stratakit-color-text-neutral-disabled);
+
+	--✨height: 1.5rem;
 	--✨padding-inline-start: var(--stratakit-space-x2);
 	--✨padding-inline-end: calc(
-		var(--stratakit-space-x1) /* Gap */ +
+		var(--stratakit-space-x1) +
+		var(--stratakit-space-x05) /* Gap */ +
 		var(--stratakit-space-x4) /* Arrow size */ +
-		var(--stratakit-space-x1) /* Padding - disclosure arrow offset */
+		var(--stratakit-space-x1) /* Padding */
 	);
+
+	--✨shadow-border: 0px 0px 0px 1px var(--🥝Select-border-color) inset;
+
+	--✨glow--bg-hover: var(--stratakit-color-glow-hue) var(--stratakit-color-bg-glow-base-hover-\%);
+	--✨glow--bg-press: var(--stratakit-color-glow-hue) var(--stratakit-color-bg-glow-base-pressed-\%);
+
+	/* #region Variant: solid */
+	--✨bg--solid-default: var(--stratakit-color-bg-neutral-base);
+	--✨bg--solid-hover: color-mix(
+		in oklch,
+		var(--✨bg--solid-default) 100%,
+		var(--✨glow--bg-hover)
+	);
+	--✨bg--solid-pressed: color-mix(
+		in oklch,
+		var(--✨bg--solid-default) 100%,
+		var(--✨glow--bg-press)
+	);
+	--✨bg--solid-disabled: var(--stratakit-color-bg-glow-on-surface-disabled);
+
+	--✨shadow--solid:
+		var(--stratakit-shadow-button-base-inset), var(--✨shadow-border),
+		var(--stratakit-shadow-button-base-drop);
+
+	--✨border--solid-default: var(--stratakit-color-border-shadow-base);
+	--✨border--solid-hover: color-mix(
+		in oklch,
+		var(--✨border--solid-default) 100%,
+		var(--stratakit-color-glow-hue) var(--stratakit-color-border-glow-base-hover-\%)
+	);
+	--✨border--solid-pressed: color-mix(
+		in oklch,
+		var(--✨border--solid-default) 100%,
+		var(--stratakit-color-glow-hue) var(--stratakit-color-border-glow-base-pressed-\%)
+	);
+	--✨border--solid-disabled: transparent;
+	/* #endregion */
+
+	/* #region Variant: outline */
+	--✨bg--outline-default: var(--stratakit-color-bg-control-select);
+	--✨bg--outline-hover: color-mix(
+		in oklch,
+		var(--✨bg--outline-default) 100%,
+		var(--✨glow--bg-hover)
+	);
+	--✨bg--outline-pressed: color-mix(
+		in oklch,
+		var(--✨bg--outline-default) 100%,
+		var(--✨glow--bg-press)
+	);
+	--✨bg--outline-disabled: var(--stratakit-color-bg-control-select);
+
+	--✨border--outline-default: var(--stratakit-color-border-neutral-base);
+	--✨border--outline-hover: color-mix(
+		in oklch,
+		var(--✨border--outline-default) 100%,
+		var(--stratakit-color-glow-hue) var(--stratakit-color-border-glow-base-hover-\%)
+	);
+	--✨border--outline-pressed: color-mix(
+		in oklch,
+		var(--✨border--outline-default) 100%,
+		var(--stratakit-color-glow-hue) var(--stratakit-color-border-glow-base-pressed-\%)
+	);
+	--✨border--outline-disabled: var(--stratakit-color-border-glow-on-surface-disabled);
+	/* #endregion */
+
+	/* #region Variant: ghost */
+	--✨bg--ghost-default: transparent;
+	--✨bg--ghost-hover: var(--stratakit-color-bg-glow-on-surface-neutral-hover);
+	--✨bg--ghost-pressed: var(--stratakit-color-bg-glow-on-surface-neutral-pressed);
+	--✨bg--ghost-disabled: transparent;
+	/* #endregion */
 
 	@layer base {
 		min-inline-size: calc(var(--✨padding-inline-start) + 1ch + var(--✨padding-inline-end));
 		text-overflow: ellipsis;
+		text-decoration: none;
+		line-height: 1.2;
+		user-select: none;
+		cursor: pointer;
+		font-size: var(--stratakit-font-size-12);
+		border: none;
+		appearance: none;
+		border-radius: 4px;
+		background-color: var(--🥝Select-background-color);
+		box-shadow: var(--✨shadow-border);
+		color: var(--✨color--default);
+		transition: background-color 150ms ease-out;
 
 		&:where(select:not([multiple])) {
-			appearance: none;
-			--🥝Button-padding-inline: var(--✨padding-inline-start) var(--✨padding-inline-end);
-			--🥝GhostAligner-inline-offset: var(--✨padding-inline-start);
+			min-block-size: var(--✨height);
+			padding-inline-start: var(--✨padding-inline-start);
+			padding-inline-end: var(--✨padding-inline-end);
+
+			-webkit-tap-highlight-color: var(--stratakit-color-bg-glow-on-surface-neutral-pressed);
+			--🥝Icon-color: var(--🌀Select-state--default, var(--stratakit-color-icon-neutral-base))
+				var(--🌀Select-state--hover, var(--stratakit-color-icon-neutral-primary))
+				var(--🌀Select-state--pressed, var(--stratakit-color-icon-neutral-primary));
+
+			&:has(option[disabled]:checked) {
+				color: var(--✨color--placeholder);
+			}
 
 			> option {
 				background-color: var(--stratakit-color-bg-neutral-base);
 			}
 		}
 	}
+
+	@layer modifiers {
+		&:where([data-_sk-variant="solid"]) {
+			--🥝Select-background-color: var(--🌀Select-state--default, var(--✨bg--solid-default))
+				var(--🌀Select-state--hover, var(--✨bg--solid-hover))
+				var(--🌀Select-state--pressed, var(--✨bg--solid-pressed))
+				var(--🌀Select-state--disabled, var(--✨bg--solid-disabled));
+			--🥝Select-border-color: var(--🌀Select-state--default, var(--✨border--solid-default))
+				var(--🌀Select-state--hover, var(--✨border--solid-hover))
+				var(--🌀Select-state--pressed, var(--✨border--solid-pressed))
+				var(--🌀Select-state--disabled, var(--✨border--solid-disabled));
+			box-shadow: var(--🌀Select-state--default, var(--✨shadow--solid))
+				var(--🌀Select-state--hover, var(--✨shadow--solid))
+				var(--🌀Select-state--pressed, var(--✨shadow-border)) var(--🌀Select-state--disabled, none);
+		}
+
+		&:where([data-_sk-variant="outline"]) {
+			--🥝Select-background-color: var(--🌀Select-state--default, var(--✨bg--outline-default))
+				var(--🌀Select-state--hover, var(--✨bg--outline-hover))
+				var(--🌀Select-state--pressed, var(--✨bg--outline-pressed))
+				var(--🌀Select-state--disabled, var(--✨bg--outline-disabled));
+			--🥝Select-border-color: var(--🌀Select-state--default, var(--✨border--outline-default))
+				var(--🌀Select-state--hover, var(--✨border--outline-hover))
+				var(--🌀Select-state--pressed, var(--✨border--outline-pressed))
+				var(--🌀Select-state--disabled, var(--✨border--outline-disabled));
+		}
+
+		&:where([data-_sk-variant="ghost"]) {
+			--🥝Select-background-color: var(--🌀Select-state--default, var(--✨bg--ghost-default))
+				var(--🌀Select-state--hover, var(--✨bg--ghost-hover))
+				var(--🌀Select-state--pressed, var(--✨bg--ghost-pressed))
+				var(--🌀Select-state--disabled, var(--✨bg--ghost-disabled));
+			--🥝Select-border-color: var(--🌀Select-state--default, transparent)
+				var(--🌀Select-state--hover, transparent) var(--🌀Select-state--pressed, transparent)
+				var(--🌀Select-state--disabled, transparent);
+		}
+	}
+
+	@layer states {
+		@media (any-hover: hover) {
+			&:where(:hover) {
+				--🌀Select-state: var(--🌀Select-state--hover);
+			}
+		}
+
+		/* Reuse hover state when an associated popover is open. */
+		&:where([data-has-popover-open]) {
+			--🌀Select-state: var(--🌀Select-state--hover);
+		}
+
+		&:where(:active) {
+			--🌀Select-state: var(--🌀Select-state--pressed);
+		}
+
+		&:where(:disabled, [aria-disabled="true"]) {
+			--🌀Select-state: var(--🌀Select-state--disabled);
+			color: var(--✨color--disabled);
+			cursor: not-allowed;
+			-webkit-tap-highlight-color: transparent;
+			--🥝Icon-color: var(--stratakit-color-icon-neutral-disabled);
+		}
+	}
+
+	@layer base.🌀 {
+		/* Cyclic toggles for default/hover/pressed/active/disabled states. See https://kizu.dev/cyclic-toggles/ */
+		--🌀Select-state: var(--🌀Select-state--default);
+		--🌀Select-state--default: var(--🌀Select-state,);
+		--🌀Select-state--hover: var(--🌀Select-state,);
+		--🌀Select-state--pressed: var(--🌀Select-state,);
+		--🌀Select-state--disabled: var(--🌀Select-state,);
+	}
 }
 
-.🥝SelectArrow:is(.🥝DisclosureArrow) {
+.🥝SelectArrow {
 	@layer base {
 		justify-self: end;
 		margin-inline-end: var(--stratakit-space-x1); /* (padding - disclosure offset) */
@@ -69,5 +239,22 @@
 		--🌀SelectArrow-state--default: var(--🌀SelectArrow-state,);
 		--🌀SelectArrow-state--hover: var(--🌀SelectArrow-state,);
 		--🌀SelectArrow-state--disabled: var(--🌀SelectArrow-state,);
+	}
+}
+
+@media (forced-colors: active) {
+	.🥝Select {
+		background-color: ButtonFace;
+		border: 1px solid ButtonBorder;
+		color: ButtonText;
+
+		&:where(:disabled, [aria-disabled="true"]) {
+			border-color: GrayText;
+			color: GrayText;
+
+			+ .🥝SelectArrow {
+				--🥝Icon-color: GrayText;
+			}
+		}
 	}
 }

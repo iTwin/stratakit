@@ -34,20 +34,63 @@ function VisualTest() {
 	return (
 		<div style={{ display: "grid", gap: 4 }}>
 			{(["solid", "outline", "ghost"] as const).map((variant) => (
-				<Field.Root key={variant} layout="inline">
-					<Field.Label>Fruit</Field.Label>
-					<Field.Control
-						render={(controlProps) => (
-							<Select.Root>
-								<Select.HtmlSelect variant={variant} {...controlProps}>
-									<option value="apple">Apple</option>
-									<option value="orange">Orange</option>
-									<option value="kiwi">Kiwi</option>
-								</Select.HtmlSelect>
-							</Select.Root>
-						)}
-					/>
-				</Field.Root>
+				<div key={variant} style={{ display: "flex", gap: 4 }}>
+					<Field.Root layout="inline">
+						<Field.Label>Fruit</Field.Label>
+						<Field.Control
+							render={(controlProps) => (
+								<Select.Root>
+									<Select.HtmlSelect variant={variant} {...controlProps}>
+										<option value="" disabled selected hidden>
+											Select an option
+										</option>
+										<option value="apple">Apple</option>
+										<option value="orange" disabled>
+											Orange
+										</option>
+										<option value="kiwi">Kiwi</option>
+									</Select.HtmlSelect>
+								</Select.Root>
+							)}
+						/>
+					</Field.Root>
+
+					<Field.Root layout="inline">
+						<Field.Label>Fruit</Field.Label>
+						<Field.Control
+							render={(controlProps) => (
+								<Select.Root>
+									<Select.HtmlSelect variant={variant} {...controlProps}>
+										<option value="apple">Apple</option>
+										<option value="orange" disabled>
+											Orange
+										</option>
+										<option value="kiwi">Kiwi</option>
+									</Select.HtmlSelect>
+								</Select.Root>
+							)}
+						/>
+					</Field.Root>
+
+					<Field.Root layout="inline">
+						<Field.Label>Fruit</Field.Label>
+						<Field.Control
+							render={(controlProps) => (
+								<Select.Root>
+									<Select.HtmlSelect
+										variant={variant}
+										disabled
+										{...controlProps}
+									>
+										<option value="apple">Apple</option>
+										<option value="orange">Orange</option>
+										<option value="kiwi">Kiwi</option>
+									</Select.HtmlSelect>
+								</Select.Root>
+							)}
+						/>
+					</Field.Root>
+				</div>
 			))}
 		</div>
 	);

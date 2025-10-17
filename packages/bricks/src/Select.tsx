@@ -5,9 +5,9 @@
 
 import * as React from "react";
 import { Role } from "@ariakit/react/role";
+import { Icon } from "@stratakit/foundations";
 import { forwardRef, isBrowser } from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
-import { DisclosureArrow } from "./~utils.icons.js";
 import { useFieldControlType } from "./Field.internal.js";
 
 import type {
@@ -123,12 +123,23 @@ const HtmlSelect = forwardRef<"select", HtmlSelectProps>(
 			<>
 				<Role.select
 					{...rest}
-					className={cx("🥝Button", "🥝Select", props.className)}
+					className={cx("🥝Select", props.className)}
 					data-_sk-tone="neutral"
 					data-_sk-variant={variant}
 					ref={forwardedRef}
 				/>
-				<DisclosureArrow className="🥝SelectArrow" />
+
+				<Icon
+					className="🥝SelectArrow"
+					render={
+						<svg viewBox="0 0 16 16">
+							<path
+								fill="currentColor"
+								d="M9.646 9.646a.5.5 0 0 1 .707.707l-2 2a.5.5 0 0 1-.707 0l-2-2a.5.5 0 1 1 .707-.707L8 11.292l1.646-1.646ZM7.725 3.582a.501.501 0 0 1 .628.064l2 2a.5.5 0 0 1-.707.707L8 4.707 6.353 6.353a.5.5 0 1 1-.707-.707l2-2 .079-.064Z"
+							/>
+						</svg>
+					}
+				/>
 			</>
 		);
 	},

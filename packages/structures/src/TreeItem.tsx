@@ -17,10 +17,10 @@ import {
 	forwardRef,
 	useEventHandlers,
 } from "@stratakit/foundations/secret-internals";
+import * as DropdownMenu from "@stratakit/structures/DropdownMenu";
 import cx from "classnames";
 import { ChevronDown, MoreHorizontal, StatusIcon } from "./~utils.icons.js";
 import * as ListItem from "./~utils.ListItem.js";
-import * as DropdownMenu from "./DropdownMenu.js";
 
 import type { BaseProps } from "@stratakit/foundations/secret-internals";
 

@@ -10,11 +10,11 @@ import {
 } from "@ariakit/react/collection";
 import { Role } from "@ariakit/react/role";
 import { useStoreState } from "@ariakit/react/store";
+import Description from "@stratakit/bricks/Description";
+import Label from "@stratakit/bricks/Label";
 import { forwardRef } from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
-import Description from "./Description.js";
 import { FieldCollection, FieldControlTypeContext } from "./Field.internal.js";
-import Label from "./Label.js";
 
 import type { CollectionItemProps } from "@ariakit/react/collection";
 import type { BaseProps } from "@stratakit/foundations/secret-internals";

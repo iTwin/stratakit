@@ -4,19 +4,19 @@
  *--------------------------------------------------------------------------------------------*/
 
 import * as React from "react";
+import Button from "@stratakit/bricks/Button";
+import Tooltip from "@stratakit/bricks/Tooltip";
+import VisuallyHidden from "@stratakit/bricks/VisuallyHidden";
 import { Icon } from "@stratakit/foundations";
 import {
 	forwardRef,
 	useMergedRefs,
 } from "@stratakit/foundations/secret-internals";
 import { Dot } from "./~utils.Dot.js";
-import Button from "./Button.js";
 import {
 	IconButtonContext,
 	IconButtonPresentation,
 } from "./IconButton.internal.js";
-import Tooltip from "./Tooltip.js";
-import VisuallyHidden from "./VisuallyHidden.js";
 
 interface IconButtonProps
 	extends Omit<React.ComponentProps<typeof Button>, "children" | "tone"> {

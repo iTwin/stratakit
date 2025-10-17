@@ -4,14 +4,14 @@
  *--------------------------------------------------------------------------------------------*/
 "use client";
 
-export * as unstable_AccordionItem from "./AccordionItem.js";
-export { default as unstable_Banner } from "./Banner.js";
-export { default as Chip } from "./Chip.js";
-export * as unstable_Dialog from "./Dialog.js";
-export * as DropdownMenu from "./DropdownMenu.js";
-export * as unstable_ErrorRegion from "./ErrorRegion.js";
-export * as unstable_NavigationRail from "./NavigationRail.js";
-export * as Table from "./Table.js";
-export * as Tabs from "./Tabs.js";
-export * as unstable_Toolbar from "./Toolbar.js";
-export * as Tree from "./Tree.js";
+export { default as Chip } from "@stratakit/structures/Chip";
+export * as DropdownMenu from "@stratakit/structures/DropdownMenu";
+export * as Table from "@stratakit/structures/Table";
+export * as Tabs from "@stratakit/structures/Tabs";
+export * as Tree from "@stratakit/structures/Tree";
+export * as unstable_AccordionItem from "@stratakit/structures/unstable_AccordionItem";
+export { default as unstable_Banner } from "@stratakit/structures/unstable_Banner";
+export * as unstable_Dialog from "@stratakit/structures/unstable_Dialog";
+export * as unstable_ErrorRegion from "@stratakit/structures/unstable_ErrorRegion";
+export * as unstable_NavigationRail from "@stratakit/structures/unstable_NavigationRail";
+export * as unstable_Toolbar from "@stratakit/structures/unstable_Toolbar";

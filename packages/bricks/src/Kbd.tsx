@@ -4,10 +4,10 @@
  *--------------------------------------------------------------------------------------------*/
 
 import { Role } from "@ariakit/react/role";
+import VisuallyHidden from "@stratakit/bricks/VisuallyHidden";
 import { forwardRef } from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
 import { predefinedSymbols } from "./Kbd.internal.js";
-import VisuallyHidden from "./VisuallyHidden.js";
 
 import type { RoleProps } from "@ariakit/react/role";
 import type { BaseProps } from "@stratakit/foundations/secret-internals";

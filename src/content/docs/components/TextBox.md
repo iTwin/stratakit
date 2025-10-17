@@ -16,11 +16,11 @@ Make sure the **TextBox** is suitable for your use case. There may be other, mor
 
 | Use case                                                     | TextBox.Input | TextBox.Textarea | [Select](/components/select) | [Radios](/components/radio) | [Button](/components/button) |
 | ------------------------------------------------------------ | :-----------: | :--------------: | :--------------------------: | :-------------------------: | :--------------------------: |
-| Short text entry (name, email, phone, number, password, etc) |      ✅       |        🚫        |              🚫              |             🚫              |              🚫              |
-| Longer text entry (description, comment, note)               |      🚫       |        ✅        |              🚫              |             🚫              |              🚫              |
-| Predefined option selection (many options)                   |      🚫       |        🚫        |              ✅              |             🚫              |              🚫              |
-| Predefined option selection (few options)                    |      🚫       |        🚫        |              🚫              |             ✅              |              🚫              |
-| Changing application state                                   |      🚫       |        🚫        |              🚫              |             🚫              |              ✅              |
+| Short text entry (name, email, phone, number, password, etc) |      ✅       |        ❌        |              ❌              |             ❌              |              ❌              |
+| Longer text entry (description, comment, note)               |      ❌       |        ✅        |              ❌              |             ❌              |              ❌              |
+| Predefined option selection (many options)                   |      ❌       |        ❌        |              ✅              |             ❌              |              ❌              |
+| Predefined option selection (few options)                    |      ❌       |        ❌        |              ❌              |             ✅              |              ❌              |
+| Changing application state                                   |      ❌       |        ❌        |              ❌              |             ❌              |              ✅              |
 
 ## Anatomy
 

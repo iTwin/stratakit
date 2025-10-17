@@ -39,6 +39,7 @@ export default defineConfig({
 				{ label: "Icons", slug: "icons" },
 				{ label: "Examples", link: "/examples" },
 				{ label: "Changelog", slug: "changelog" },
+				{ label: "Contributing", slug: "contributing" },
 			],
 			editLink: {
 				baseUrl: "https://github.com/iTwin/stratakit-docs/edit/main/",

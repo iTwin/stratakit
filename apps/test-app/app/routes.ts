@@ -21,6 +21,7 @@ export default [
 			...components.foundations,
 			...components.bricks,
 			...components.structures,
+			...components.private,
 		].map((component) =>
 			route(
 				toKebabCase(component),

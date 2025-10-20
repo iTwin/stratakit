@@ -51,7 +51,7 @@ const HtmlSelectContext = React.createContext<
  * <Label htmlFor="fruit">Fruit</Label>
  * <Description id="fruit-description">Something to include in a fruit salad.</Description>
  * <Select.Root>
- *   <Select.HtmlSelect id="fruit" aria-labelledby="fruit-description">
+ *   <Select.HtmlSelect id="fruit" aria-describedby="fruit-description">
  *     <option value="kiwi">Kiwi</option>
  *     <option value="mango">Mango</option>
  *     <option value="papaya">Papaya</option>

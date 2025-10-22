@@ -111,7 +111,7 @@
 			}
 		}
 
-		&:where(:indeterminate, [aria-checked="mixed"]) {
+		&:where([type="checkbox"]:indeterminate, [aria-checked="mixed"]) {
 			--🌀Checkbox-visual-state: var(--🌀Checkbox-visual-state--checked);
 			--🌀Checkbox-aria-state: var(--🌀Checkbox-aria-state--indeterminate);
 		}

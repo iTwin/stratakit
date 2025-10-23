@@ -2,4 +2,4 @@
 "@stratakit/bricks": patch
 ---
 
-Fixed `Radio` bug where when indeterminate the hovered and disabled visual styling would not apply.
+Fixed indeterminate state styling for `Checkbox` and `Radio` components (hover and disabled visuals now apply correctly).

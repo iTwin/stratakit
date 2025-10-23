@@ -110,8 +110,8 @@
 
 		&:where(
 				:checked,
-				[aria-checked="true"],
 				[type="checkbox"]:indeterminate,
+				[aria-checked="true"],
 				[aria-checked="mixed"]
 			) {
 			--🌀Checkbox-visual-state: var(--🌀Checkbox-visual-state--checked);

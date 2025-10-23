@@ -4,19 +4,13 @@
 
 Removed unintentionally exposed `TreeItem` [subpath export](https://nodejs.org/api/packages.html#subpath-exports). Tree item components are available under the `Tree` subpath or the main entry point of the package.
 
-```tsx
-// Before
-import * as TreeItem from "@stratakit/structures/TreeItem";
-<TreeItem.Root />
-<TreeItem.Action />
+```diff
+- import * as TreeItem from "@stratakit/structures/TreeItem";
++ import * as Tree from "@stratakit/structures/Tree";
 
-// After
-import * as Tree from "@stratakit/structures/Tree";
-<Tree.Item />
-<Tree.ItemAction />
+- <TreeItem.Root />
++ <Tree.Item />
 
-// After (using main entry point)
-import { Tree } from "@stratakit/structures";
-<Tree.Item />
-<Tree.ItemAction />
+- <TreeItem.Action />
++ <Tree.ItemAction />
 ```

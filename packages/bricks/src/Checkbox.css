@@ -13,6 +13,8 @@
 	--✨bg--hover: color-mix(in oklch, var(--✨bg--default) 100%, var(--✨glow--bg-hover));
 	--✨bg--checked: var(--stratakit-color-bg-accent-base);
 	--✨bg--checked-hover: color-mix(in oklch, var(--✨bg--checked) 100%, var(--✨glow--bg-hover));
+	--✨bg--invalid: var(--stratakit-color-bg-neutral-base);
+	--✨bg--invalid-hover: color-mix(in oklch, var(--✨bg--invalid) 100%, var(--✨glow--bg-hover));
 	--✨bg--disabled: var(--stratakit-color-bg-glow-on-surface-disabled);
 
 	--✨border--default: var(--stratakit-color-border-shadow-base);
@@ -25,6 +27,12 @@
 	--✨border--checked-hover: color-mix(
 		in oklch,
 		var(--✨border--checked) 100%,
+		var(--stratakit-color-glow-hue) var(--stratakit-color-border-glow-base-hover-\%)
+	);
+	--✨border--invalid: var(--stratakit-color-border-critical-base);
+	--✨border--invalid-hover: color-mix(
+		in oklch,
+		var(--✨border--invalid) 100%,
 		var(--stratakit-color-glow-hue) var(--stratakit-color-border-glow-base-hover-\%)
 	);
 	--✨border--disabled: transparent;
@@ -46,6 +54,8 @@
 			var(--🌀Checkbox-visual-state--hover, var(--✨bg--hover))
 			var(--🌀Checkbox-visual-state--checked, var(--✨bg--checked))
 			var(--🌀Checkbox-visual-state--checked-hover, var(--✨bg--checked-hover))
+			var(--🌀Checkbox-visual-state--invalid, var(--✨bg--invalid))
+			var(--🌀Checkbox-visual-state--invalid-hover, var(--✨bg--invalid-hover))
 			var(--🌀Checkbox-visual-state--disabled, var(--✨bg--disabled));
 		border-radius: var(--🥝Checkbox-border-radius);
 		color: var(--🌀Checkbox-aria-state--unchecked, transparent)
@@ -63,6 +73,8 @@
 			var(--🌀Checkbox-visual-state--hover, var(--✨border--hover))
 			var(--🌀Checkbox-visual-state--checked, var(--✨border--checked))
 			var(--🌀Checkbox-visual-state--checked-hover, var(--✨border--checked-hover))
+			var(--🌀Checkbox-visual-state--invalid, var(--✨border--invalid))
+			var(--🌀Checkbox-visual-state--invalid-hover, var(--✨border--invalid-hover))
 			var(--🌀Checkbox-visual-state--disabled, var(--✨border--disabled));
 		--🥝Checkbox-mask-image: var(
 				--🌀Checkbox-aria-state--unchecked,
@@ -122,6 +134,17 @@
 			}
 		}
 
+		&:where(:invalid, [aria-invalid="true"]) {
+			--🌀Checkbox-visual-state: var(--🌀Checkbox-visual-state--invalid);
+			--🥝Checkbox-color-svg: var(--stratakit-color-icon-neutral-primary);
+
+			@media (any-hover: hover) {
+				&:where(:hover) {
+					--🌀Checkbox-visual-state: var(--🌀Checkbox-visual-state--invalid-hover);
+				}
+			}
+		}
+
 		&:where(:disabled, [aria-disabled="true"]) {
 			--🌀Checkbox-visual-state: var(--🌀Checkbox-visual-state--disabled);
 			--🥝Checkbox-color-svg: var(--stratakit-color-icon-neutral-disabled);
@@ -132,12 +155,14 @@
 	}
 
 	@layer base.🌀 {
-		/* Cyclic toggles for default/hover/checked/checked+hover/disabled states. See https://kizu.dev/cyclic-toggles/ */
+		/* Cyclic toggles for default/hover/checked/checked+hover/invalid/invalid+hover/disabled states. See https://kizu.dev/cyclic-toggles/ */
 		--🌀Checkbox-visual-state: var(--🌀Checkbox-visual-state--default);
 		--🌀Checkbox-visual-state--default: var(--🌀Checkbox-visual-state,);
 		--🌀Checkbox-visual-state--hover: var(--🌀Checkbox-visual-state,);
 		--🌀Checkbox-visual-state--checked: var(--🌀Checkbox-visual-state,);
 		--🌀Checkbox-visual-state--checked-hover: var(--🌀Checkbox-visual-state,);
+		--🌀Checkbox-visual-state--invalid: var(--🌀Checkbox-visual-state,);
+		--🌀Checkbox-visual-state--invalid-hover: var(--🌀Checkbox-visual-state,);
 		--🌀Checkbox-visual-state--disabled: var(--🌀Checkbox-visual-state,);
 
 		/* Cyclic toggles for unchecked/checked/indeterminate states. */
@@ -162,6 +187,15 @@
 
 			&::after {
 				background-color: SelectedItemText;
+			}
+		}
+
+		&:where(:invalid, [aria-invalid="true"]) {
+			background-color: Canvas;
+			border-color: Mark;
+
+			&::after {
+				background-color: CanvasText;
 			}
 		}
 

@@ -134,7 +134,7 @@
 			}
 		}
 
-		&:where(:invalid, [aria-invalid="true"]) {
+		&:where(:user-invalid, [aria-invalid="true"]) {
 			--🌀Checkbox-visual-state: var(--🌀Checkbox-visual-state--invalid);
 			--🥝Checkbox-color-svg: var(--stratakit-color-icon-neutral-primary);
 
@@ -190,7 +190,7 @@
 			}
 		}
 
-		&:where(:invalid, [aria-invalid="true"]) {
+		&:where(:user-invalid, [aria-invalid="true"]) {
 			background-color: Canvas;
 			border-color: Mark;
 

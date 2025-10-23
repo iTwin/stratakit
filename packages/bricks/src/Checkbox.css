@@ -101,19 +101,26 @@
 		}
 
 		&:where(:checked, [aria-checked="true"]) {
-			--🌀Checkbox-visual-state: var(--🌀Checkbox-visual-state--checked);
 			--🌀Checkbox-aria-state: var(--🌀Checkbox-aria-state--checked);
+		}
+
+		&:where([type="checkbox"]:indeterminate, [aria-checked="mixed"]) {
+			--🌀Checkbox-aria-state: var(--🌀Checkbox-aria-state--indeterminate);
+		}
+
+		&:where(
+				:checked,
+				[aria-checked="true"],
+				[type="checkbox"]:indeterminate,
+				[aria-checked="mixed"]
+			) {
+			--🌀Checkbox-visual-state: var(--🌀Checkbox-visual-state--checked);
 
 			@media (any-hover: hover) {
 				&:where(:hover) {
 					--🌀Checkbox-visual-state: var(--🌀Checkbox-visual-state--checked-hover);
 				}
 			}
-		}
-
-		&:where([type="checkbox"]:indeterminate, [aria-checked="mixed"]) {
-			--🌀Checkbox-visual-state: var(--🌀Checkbox-visual-state--checked);
-			--🌀Checkbox-aria-state: var(--🌀Checkbox-aria-state--indeterminate);
 		}
 
 		&:where(:disabled, [aria-disabled="true"]) {

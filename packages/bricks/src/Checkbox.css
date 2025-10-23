@@ -104,7 +104,7 @@
 			--🌀Checkbox-aria-state: var(--🌀Checkbox-aria-state--checked);
 		}
 
-		&:where([type="checkbox"]:indeterminate, [aria-checked="mixed"]) {
+		&:where(:indeterminate, [aria-checked="mixed"]) {
 			--🌀Checkbox-aria-state: var(--🌀Checkbox-aria-state--indeterminate);
 		}
 

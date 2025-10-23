@@ -70,6 +70,8 @@ type ErrorRegionRootExtraProps =
 	| {
 			/**
 			 * Identifies the element that labels the region navigational landmark.
+			 *
+			 * This label should remain stable throughout the lifetime of the region.
 			 */
 			"aria-labelledby": string | undefined;
 	  };

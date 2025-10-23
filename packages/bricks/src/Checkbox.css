@@ -8,12 +8,11 @@
 	--✨shadow-border: 0px 0px 0px 1px var(--🥝Checkbox-border-color) inset;
 
 	--✨glow--bg-hover: var(--stratakit-color-glow-hue) var(--stratakit-color-bg-glow-base-hover-\%);
-	--✨glow--bg-press: var(--stratakit-color-glow-hue) var(--stratakit-color-bg-glow-base-pressed-\%);
 
 	--✨bg--default: var(--stratakit-color-bg-neutral-base);
 	--✨bg--hover: color-mix(in oklch, var(--✨bg--default) 100%, var(--✨glow--bg-hover));
 	--✨bg--checked: var(--stratakit-color-bg-accent-base);
-	--✨bg--checked-hover: color-mix(in oklch, var(--✨bg--checked) 100%, var(--✨glow--bg-press));
+	--✨bg--checked-hover: color-mix(in oklch, var(--✨bg--checked) 100%, var(--✨glow--bg-hover));
 	--✨bg--disabled: var(--stratakit-color-bg-glow-on-surface-disabled);
 
 	--✨border--default: var(--stratakit-color-border-shadow-base);
@@ -26,7 +25,7 @@
 	--✨border--checked-hover: color-mix(
 		in oklch,
 		var(--✨border--checked) 100%,
-		var(--stratakit-color-glow-hue) var(--stratakit-color-border-glow-base-pressed-\%)
+		var(--stratakit-color-glow-hue) var(--stratakit-color-border-glow-base-hover-\%)
 	);
 	--✨border--disabled: transparent;
 

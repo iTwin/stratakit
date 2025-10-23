@@ -358,7 +358,7 @@ const AccordionItemContent = forwardRef<"div", BaseProps>(
 );
 DEV: AccordionItemContent.displayName = "AccordionItem.Content";
 
-interface AccordionItemHeadingProps extends BaseProps {
+interface AccordionItemHeadingProps extends Omit<BaseProps, "render"> {
 	render: NonNullable<BaseProps["render"]>;
 }
 

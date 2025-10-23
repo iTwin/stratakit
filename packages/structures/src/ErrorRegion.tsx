@@ -38,9 +38,6 @@ interface ErrorRegionRootProps extends Omit<BaseProps, "children"> {
 	 *
 	 * (deprecated behavior) By default this is used as a name of the region navigational landmark.
 	 * `aria-label` or `aria-labelledby` prop should be provided to explicitly label the region instead.
-	 *
-	 * (deprecated behavior) Use `undefined` if you don't want to display errors rather than conditionally rendering the component.
-	 * Use `items` prop instead.
 	 */
 	label?: React.ReactNode;
 	/**
@@ -48,7 +45,7 @@ interface ErrorRegionRootProps extends Omit<BaseProps, "children"> {
 	 *
 	 * Set to `undefined` or empty array if you don't want to display errors rather than conditionally rendering the component.
 	 */
-	items?: React.ReactNode;
+	items?: React.ReactNode[];
 	/**
 	 * The controlled open state of the region.
 	 */
@@ -86,7 +83,7 @@ const ErrorRegionRoot = forwardRef<"div", ErrorRegionRootProps>(
 	(props, forwardedRef) => {
 		const {
 			label,
-			items: itemsProp = [],
+			items = [],
 			open: openProp,
 			setOpen: setOpenProp,
 			...rest
@@ -98,17 +95,12 @@ const ErrorRegionRoot = forwardRef<"div", ErrorRegionRootProps>(
 				? labelId
 				: undefined;
 
-		DEV: if (!Array.isArray(itemsProp))
-			console.warn(
-				"`items` prop of `ErrorRegion.Root` expects an array of React nodes. `ReactNode` support is deprecated and will be removed in a future release.",
-			);
-
 		DEV: if (!props["aria-label"] && !props["aria-labelledby"])
 			console.warn(
 				"`aria-label` or `aria-labelledby` prop is required for `ErrorRegion.Root` to set an accessible name of a region.",
 			);
 
-		const visible = Array.isArray(itemsProp) ? itemsProp.length > 0 : !!label;
+		const visible = items.length > 0;
 
 		const [open, setOpen] = useControlledState(
 			false,
@@ -211,7 +203,7 @@ const ErrorRegionRoot = forwardRef<"div", ErrorRegionRootProps>(
 									className="🥝ErrorRegionItems"
 									role="list"
 								>
-									{itemsProp}
+									{items}
 								</Collection>
 							</Dialog>
 						</div>

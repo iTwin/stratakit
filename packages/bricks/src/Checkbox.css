@@ -30,11 +30,6 @@
 		var(--stratakit-color-glow-hue) var(--stratakit-color-border-glow-base-hover-\%)
 	);
 	--✨border--invalid: var(--stratakit-color-border-critical-base);
-	--✨border--invalid-hover: color-mix(
-		in oklch,
-		var(--✨border--invalid) 100%,
-		var(--stratakit-color-glow-hue) var(--stratakit-color-border-glow-base-hover-\%)
-	);
 	--✨border--disabled: transparent;
 
 	@layer base {
@@ -74,7 +69,7 @@
 			var(--🌀Checkbox-visual-state--checked, var(--✨border--checked))
 			var(--🌀Checkbox-visual-state--checked-hover, var(--✨border--checked-hover))
 			var(--🌀Checkbox-visual-state--invalid, var(--✨border--invalid))
-			var(--🌀Checkbox-visual-state--invalid-hover, var(--✨border--invalid-hover))
+			var(--🌀Checkbox-visual-state--invalid-hover, var(--✨border--invalid))
 			var(--🌀Checkbox-visual-state--disabled, var(--✨border--disabled));
 		--🥝Checkbox-mask-image: var(
 				--🌀Checkbox-aria-state--unchecked,

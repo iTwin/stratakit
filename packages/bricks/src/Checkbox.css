@@ -12,7 +12,11 @@
 	--✨bg--default: var(--stratakit-color-bg-neutral-base);
 	--✨bg--hover: color-mix(in oklch, var(--✨bg--default) 100%, var(--✨glow--bg-hover));
 	--✨bg--checked: var(--stratakit-color-bg-accent-base);
-	--✨bg--checked-hover: color-mix(in oklch, var(--✨bg--checked) 100%, var(--✨glow--bg-hover));
+	--✨bg--checked-hover: color-mix(
+		in oklch,
+		var(--✨bg--checked) 100%,
+		var(--stratakit-color-glow-hue) var(--stratakit-color-bg-glow-strong-hover-\%)
+	);
 	--✨bg--invalid: var(--stratakit-color-bg-neutral-base);
 	--✨bg--invalid-hover: color-mix(in oklch, var(--✨bg--invalid) 100%, var(--✨glow--bg-hover));
 	--✨bg--disabled: var(--stratakit-color-bg-glow-on-surface-disabled);
@@ -27,7 +31,7 @@
 	--✨border--checked-hover: color-mix(
 		in oklch,
 		var(--✨border--checked) 100%,
-		var(--stratakit-color-glow-hue) var(--stratakit-color-border-glow-base-hover-\%)
+		var(--stratakit-color-glow-hue) var(--stratakit-color-border-glow-strong-hover-\%)
 	);
 	--✨border--invalid: var(--stratakit-color-border-critical-base);
 	--✨border--disabled: transparent;

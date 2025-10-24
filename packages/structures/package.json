@@ -78,12 +78,6 @@
 			"types": "./dist/Tree.d.ts",
 			"development": "./dist/DEV/Tree.js",
 			"default": "./dist/Tree.js"
-		},
-		"./TreeItem": {
-			"@stratakit/source": "./src/TreeItem.tsx",
-			"types": "./dist/TreeItem.d.ts",
-			"development": "./dist/DEV/TreeItem.js",
-			"default": "./dist/TreeItem.js"
 		}
 	},
 	"files": [

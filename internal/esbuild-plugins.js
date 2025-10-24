@@ -3,8 +3,10 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
+import * as fs from "node:fs/promises";
 import * as path from "node:path";
 
+import * as babel from "@babel/core";
 import * as lightningcss from "lightningcss";
 import {
 	primitivesTransform,
@@ -90,6 +92,37 @@ export function inlineCssPlugin() {
 				return {
 					contents: `export default String.raw\`${css}\`;`,
 					loader: "js",
+				};
+			});
+		},
+	});
+}
+
+/**
+ * This plugin transforms React code using `babel-plugin-react-compiler`. Should be used in production builds for auto-memoization.
+ */
+export function reactCompilerPlugin() {
+	return /** @type {import("esbuild").Plugin} */ ({
+		name: "react-compiler",
+
+		setup({ onLoad }) {
+			onLoad({ filter: /\.js$/ }, async (args) => {
+				const source = await fs.readFile(args.path, "utf8");
+				const result = await babel.transformAsync(source, {
+					filename: args.path,
+					plugins: [["babel-plugin-react-compiler", { target: "18" }]],
+					sourceMaps: false,
+					configFile: false,
+					babelrc: false,
+				});
+				if (!result?.code)
+					throw new Error(`Babel transform failed for file: ${args.path}`, {
+						cause: result,
+					});
+
+				return {
+					contents: result.code,
+					loader: path.extname(args.path).slice(1),
 				};
 			});
 		},

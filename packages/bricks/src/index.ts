@@ -15,6 +15,7 @@ export * as Field from "./Field.js";
 export { default as IconButton } from "./IconButton.js";
 export { default as Kbd } from "./Kbd.js";
 export { default as Label } from "./Label.js";
+export { default as Popover } from "./Popover.js";
 export { ProgressBar } from "./Progress.js";
 export { default as Radio } from "./Radio.js";
 export * as Select from "./Select.js";

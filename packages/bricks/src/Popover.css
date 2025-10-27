@@ -3,15 +3,13 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import { Button, Popover } from "@stratakit/bricks";
-import { definePage } from "~/~utils.tsx";
+.🥝Popover {
+	@layer base {
+		border-radius: 8px /* radius/medium */;
+		background: var(--stratakit-color-bg-elevation-level-1);
+		box-shadow: var(--stratakit-shadow-dropdown-base);
 
-export const handle = { title: "Popover" };
-
-export default definePage(function Page() {
-	return (
-		<Popover content="This is the popover content">
-			<Button>Click me</Button>
-		</Popover>
-	);
-});
+		min-inline-size: min(95vi, 164px);
+		padding: var(--stratakit-space-x1);
+	}
+}

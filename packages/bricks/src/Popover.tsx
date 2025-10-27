@@ -4,7 +4,11 @@
  *--------------------------------------------------------------------------------------------*/
 
 import * as AkPopover from "@ariakit/react/popover";
-import { forwardRef } from "@stratakit/foundations/secret-internals";
+import { useStoreState } from "@ariakit/react/store";
+import {
+	forwardRef,
+	usePopoverApi,
+} from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
 
 import type { BaseProps } from "@stratakit/foundations/secret-internals";
@@ -31,17 +35,28 @@ interface PopoverProps
  * A component used to display content in a non-modal window overlay that is placed relative to a trigger element.
  */
 const Popover = forwardRef<"div", PopoverProps>((props, forwardedRef) => {
-	const { children, content, open, setOpen, ...rest } = props;
+	const { children, content, open: openProp, setOpen, ...rest } = props;
+
+	const store = AkPopover.usePopoverStore();
+	const open = useStoreState(store, "open");
+	const popoverElement = useStoreState(store, "popoverElement");
+	const popoverProps = usePopoverApi({
+		element: popoverElement,
+		open,
+	});
 	return (
 		<AkPopover.PopoverProvider
 			placement="bottom-start"
-			open={open}
+			open={openProp}
 			setOpen={setOpen}
+			store={store}
 		>
 			<AkPopover.PopoverDisclosure render={children} />
 			<AkPopover.Popover
-				gutter={7}
 				{...rest}
+				gutter={7}
+				style={{ ...popoverProps.style, ...props.style }}
+				wrapperProps={{ popover: popoverProps.popover }}
 				className={cx("🥝Popover", props.className)}
 				ref={forwardedRef}
 			>

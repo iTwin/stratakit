@@ -21,23 +21,30 @@ Make sure the **Button** is suitable for your use case. There may be other, more
 | Make a binary choice (switching a setting on or off)              |              ❌              |                  ❌                  |              ✅              |              ❌              |
 | Navigate between interface screens or sections                    |              ❌              |                  ❌                  |              ❌              |              ✅              |
 
-## Anatomy
+## Usage
 
-### Structure
+::example{src="Button.default"}
 
 ```jsx
-<Button variant="outline" tone="accent" onClick={() => {}}>
+<Button>Create new</Button>
+```
+
+The **Button** component renders as an HTML [`<button>` element](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/button). It supports the `<button>` element’s API, including all of its attributes.
+
+### Icons
+
+An [**Icon**](/components/icon) can be prepended or appended to the **Button’s** text label. It’s important the **Icon’s** `alt` is omitted, since the text already provides the accessible label. In the following example, a “+” icon is appended to the text “Add new”.
+
+::example{src="Button.icon"}
+
+```jsx
+<Button onClick={() => {}}>
 	Create new
+	<Icon href={`${arrowIcon}`} />
 </Button>
 ```
 
-- `<Button>`: The Button component renders as an HTML [`<button>` element](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/button), which is implicitly keyboard and screen reader accessible.
-  - `variant` (default: `"solid"`) : The chosen [variant](#variants).
-  - `tone` (default: `"neutral"`) : The chosen [tone](#tones).
-  - `onClick`: Handler for the [`click` event](https://developer.mozilla.org/en-US/docs/Web/API/Element/click_event).
-  - `children`: The accessible, text-based label.
-
-## Usage
+## Configurations
 
 ### Variants
 
@@ -65,17 +72,6 @@ Make sure the **Button** is suitable for your use case. There may be other, more
 | ------------------------------------- | ------- | ------ |
 | Primary call-to-action                | ✅      | ✅     |
 | Modal confirmation or form submission | ❌      | ✅     |
-
-### Icons
-
-An [**Icon**](/components/icon) can be prepended or appended to the button’s text label. It’s important the **Icon’s** `alt` is omitted, since the text already provides the accessible label. In the following example, a “+” icon is appended to the text “Add new”.
-
-```jsx
-<Button onClick={() => {}}>
-	Create new
-	<Icon href={addIcon} />
-</Button>
-```
 
 ### ✅ Do
 

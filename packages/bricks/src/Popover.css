@@ -4,12 +4,16 @@
  *--------------------------------------------------------------------------------------------*/
 
 .🥝Popover {
+	--✨padding: var(--stratakit-space-x1);
+
 	@layer base {
 		border-radius: 8px /* radius/medium */;
 		background: var(--stratakit-color-bg-elevation-level-1);
 		box-shadow: var(--stratakit-shadow-dropdown-base);
 
 		min-inline-size: min(95vi, 164px);
-		padding: var(--stratakit-space-x1);
+		padding: var(--✨padding);
+
+		--🥝Divider-main-axis-margin: calc(-1 * var(--✨padding));
 	}
 }

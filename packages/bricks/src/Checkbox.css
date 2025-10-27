@@ -183,7 +183,6 @@
 				[aria-checked="mixed"]
 			) {
 			background-color: SelectedItem;
-			border-color: SelectedItemText;
 
 			&::after {
 				background-color: SelectedItemText;
@@ -191,7 +190,6 @@
 
 			&:where(:user-invalid, [aria-invalid="true"]) {
 				background-color: Mark;
-				border-color: MarkText;
 
 				&::after {
 					background-color: MarkText;

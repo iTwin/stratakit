@@ -2,4 +2,4 @@
 "@stratakit/bricks": patch
 ---
 
-Add `forced-colors` styling to `Field.ErrorMessage`.
+Added `forced-colors` styling to `Field.ErrorMessage`.

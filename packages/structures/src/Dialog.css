@@ -29,7 +29,7 @@
 
 		border-radius: 12px; /* radius/large */
 		background-color: var(--stratakit-color-bg-elevation-base);
-		box-shadow: var(--stratakit-shadow-dialog-base);
+		box-shadow: var(--stratakit-shadow-control-dialog-base);
 
 		/* Prevents footer from overlapping the box-shadow */
 		padding: 1px;

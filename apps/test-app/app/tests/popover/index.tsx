@@ -15,9 +15,12 @@ import searchIconHref from "@stratakit/icons/search.svg";
 export const handle = { title: "Popover" };
 
 export default definePage(
-	function Page() {
+	function Page({ defaultOpen }: VariantProps) {
+		const [open, setOpen] = React.useState(!!defaultOpen);
 		return (
 			<Popover
+				open={open}
+				setOpen={setOpen}
 				content={
 					<>
 						<TextBox.Root>
@@ -39,7 +42,7 @@ export default definePage(
 							<li>Scene 5</li>
 						</ul>
 						<Divider />
-						<Button>
+						<Button onClick={() => setOpen(false)}>
 							<Icon href={addIconHref} />
 							Add scene
 						</Button>

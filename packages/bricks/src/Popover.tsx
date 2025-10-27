@@ -9,7 +9,9 @@ import cx from "classnames";
 
 import type { BaseProps } from "@stratakit/foundations/secret-internals";
 
-interface PopoverProps extends Omit<BaseProps, "content"> {
+interface PopoverProps
+	extends Omit<BaseProps, "content">,
+		Pick<AkPopover.PopoverProviderProps, "open" | "setOpen"> {
 	/**
 	 * The element that will trigger the popover when clicked.
 	 * Common examples include buttons, links, or form controls.
@@ -29,9 +31,13 @@ interface PopoverProps extends Omit<BaseProps, "content"> {
  * A component used to display content in a non-modal window overlay that is placed relative to a trigger element.
  */
 const Popover = forwardRef<"div", PopoverProps>((props, forwardedRef) => {
-	const { children, content, ...rest } = props;
+	const { children, content, open, setOpen, ...rest } = props;
 	return (
-		<AkPopover.PopoverProvider placement="bottom-start">
+		<AkPopover.PopoverProvider
+			placement="bottom-start"
+			open={open}
+			setOpen={setOpen}
+		>
 			<AkPopover.PopoverDisclosure render={children} />
 			<AkPopover.Popover
 				gutter={7}

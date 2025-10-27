@@ -187,14 +187,13 @@
 			&::after {
 				background-color: SelectedItemText;
 			}
-		}
 
-		&:where(:user-invalid, [aria-invalid="true"]) {
-			background-color: Canvas;
-			border-color: Mark;
+			&:where(:user-invalid, [aria-invalid="true"]) {
+				background-color: Mark;
 
-			&::after {
-				background-color: CanvasText;
+				&::after {
+					background-color: MarkText;
+				}
 			}
 		}
 

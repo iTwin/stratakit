@@ -23,9 +23,24 @@ At the foot of every page, you’ll find a link labeled **✎ Edit page**. Press
 6. Your pull request will need to be approved by a member of the **StrataKit** team. You may be asked questions in the comment stream of the pull request. Remember to check your Github notifications.
 7. Thank you!
 
+## Guidance structure
+
+Consistency supports both comprehension and navigation. Each component guide follows a common schema:
+
+- **Component name**
+  - **Use cases:** Is this, or another, component right for my use case? (compares similar components in a table)
+  - **Usage:** How should I implement this component? With which other components? (a basic example is followed by some other cases)
+  - **Configurations:** What options are there for changing the appearance and behavior of the component? (variants, tones, and other customization options)
+  - **Do:** A summary of best practices and opportunities.
+  - **Don’t:** Things to avoid for an error-free and accessible implementation.
+
+:::note[Headings]
+The major sections **Use cases** through to **Don’t** must each use a level 2 heading (`<h2>`). See [**Headings**](#headings) for the markdown syntax. Organize subsections under these headings using `<h3>` and `<h4>` as appropriate.
+:::
+
 ## Markdown help
 
-This site’s content is written in _markdown_: a minimal formatting syntax using special characters. In fact, it’s a special flavour of markdown with some additional options. Here is a brief guide:
+This site’s content is written in _markdown_: a minimal formatting syntax using special characters. In fact, in this case it’s a special flavour of markdown with some additional options. Here is a brief guide:
 
 ### Inline text styling
 

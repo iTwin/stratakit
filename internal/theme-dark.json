@@ -171,10 +171,6 @@
 				"base": {
 					"$type": "color",
 					"$value": "{p-color.gray.925}"
-				},
-				"zebra": {
-					"$type": "color",
-					"$value": "{p-color.black.8}"
 				}
 			},
 			"elevation": {
@@ -297,6 +293,10 @@
 				"textbox": {
 					"$type": "color",
 					"$value": "{p-color.gray.925}"
+				},
+				"table-zebra": {
+					"$type": "color",
+					"$value": "{p-color.black.8}"
 				},
 				"scrollbar-surface": {
 					"$type": "color",
@@ -921,9 +921,13 @@
 			"$value": "{p-color.white.100}"
 		},
 		"brand": {
-			"logo": {
+			"logo-fill": {
 				"$type": "color",
 				"$value": "{p-color.gray.15}"
+			},
+			"logo-stroke": {
+				"$type": "color",
+				"$value": "{p-color.gray.5}"
 			}
 		}
 	},
@@ -983,18 +987,18 @@
 				"0px 24px 24px -12px --primitive('color.black.16')"
 			]
 		},
-		"button-base-drop": {
+		"control-button-base-drop": {
 			"$type": "shadow",
 			"$value": [
 				"0px 1px 1px -0.5px --primitive('color.black.16')",
 				"0px 3px 3px -1.5px --primitive('color.black.16')"
 			]
 		},
-		"button-base-inset": {
+		"control-button-base-inset": {
 			"$type": "shadow",
 			"$value": ["inset 0px -1px 0px 0px --primitive('color.black.8')"]
 		},
-		"dialog-base": {
+		"control-dialog-base": {
 			"$type": "shadow",
 			"$value": [
 				"0px 1px 0px 0px --primitive('color.black.8')",
@@ -1007,7 +1011,7 @@
 				"0px 24px 24px -12px --primitive('color.black.16')"
 			]
 		},
-		"dropdown-base": {
+		"control-dropdown-base": {
 			"$type": "shadow",
 			"$value": [
 				"0px 1px 0px 0px --primitive('color.black.8')",
@@ -1020,18 +1024,18 @@
 				"0px 24px 24px -12px --primitive('color.black.12')"
 			]
 		},
-		"input-base": {
+		"control-input-base": {
 			"$type": "shadow",
 			"$value": [
 				"inset 0px 1px 2px 0px --primitive('color.black.16')",
 				"inset 0px 2px 4px 0px --primitive('color.black.16')"
 			]
 		},
-		"table-strong": {
+		"control-table-strong": {
 			"$type": "shadow",
 			"$value": ["0px -1px 0px 0px --primitive('color.aurora.0')"]
 		},
-		"toolbar-base": {
+		"control-toolbar-base": {
 			"$type": "shadow",
 			"$value": [
 				"0px 1px 0px 0px --primitive('color.black.8')",
@@ -1044,7 +1048,7 @@
 				"0px 24px 24px -12px --primitive('color.black.16')"
 			]
 		},
-		"tooltip-base": {
+		"control-tooltip-base": {
 			"$type": "shadow",
 			"$value": [
 				"inset 0px 0px 0px 1px --primitive('color.black.80')",
@@ -1052,6 +1056,13 @@
 				"0px 3px 3px -1.5px --primitive('color.black.16')",
 				"0px 6px 6px -3px --primitive('color.black.16')",
 				"0px 12px 12px -6px --primitive('color.black.16')"
+			]
+		},
+		"brand-logo-base": {
+			"$type": "shadow",
+			"$value": [
+				"0px 0.5px 0px 0px --primitive('color.black.56')",
+				"0px 1px 2px 0px --primitive('color.black.40')"
 			]
 		}
 	}

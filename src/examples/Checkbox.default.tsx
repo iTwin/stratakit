@@ -4,7 +4,7 @@ export default () => {
 	return (
 		<Field.Root>
 			<Field.Control render={<Checkbox />} />
-			<Field.Label>Keep me signed in</Field.Label>
+			<Field.Label>Enable experimental feature</Field.Label>
 		</Field.Root>
 	);
 };

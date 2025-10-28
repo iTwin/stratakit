@@ -48,7 +48,8 @@
 		"@itwin/itwinui-react": "^3.19.5",
 		"@stratakit/bricks": "^0.4.4",
 		"@stratakit/structures": "^0.4.4",
-		"classnames": "^2.5.1"
+		"classnames": "^2.5.1",
+		"react-compiler-runtime": "^1.0.0"
 	},
 	"devDependencies": {
 		"@stratakit/foundations": "workspace:*",

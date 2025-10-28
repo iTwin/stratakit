@@ -31,7 +31,7 @@ The **Checkbox** is rendered as an HTML `<input>` of `type="checkbox"` and suppo
 ```jsx
 <Field.Root>
 	<Field.Control render={<Checkbox />} />
-	<Field.Label>Enable experimental feature</Field.Label>
+	<Field.Label>Don’t show again</Field.Label>
 </Field.Root>
 ```
 
@@ -39,8 +39,8 @@ Without the [**Field**](/components/field) component, you will need to manually 
 
 ```jsx
 <Checkbox id="usage" name="usage" aria-describedby="usage-description" />
-<Label htmlFor="usage">Enable experimental feature</Label>
-<Description id="usage-description">You may experience some glitches</Description>
+<Label htmlFor="usage">Don’t show again</Label>
+<Description id="usage-description">You will no longer see these notifications</Description>
 ```
 
 ## ✅ Do

@@ -105,7 +105,6 @@
 	@layer base {
 		min-inline-size: calc(var(--✨padding-inline-start) + 1ch + var(--✨padding-inline-end));
 		text-overflow: ellipsis;
-		text-decoration: none;
 		line-height: 1.2;
 		user-select: none;
 		cursor: pointer;

@@ -178,7 +178,8 @@
 	},
 	"dependencies": {
 		"@ariakit/react": "^0.4.19",
-		"classnames": "^2.5.1"
+		"classnames": "^2.5.1",
+		"react-compiler-runtime": "^1.0.0"
 	},
 	"devDependencies": {
 		"@stratakit/foundations": "workspace:*",

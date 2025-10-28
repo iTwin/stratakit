@@ -50,8 +50,11 @@
 		--🥝TextBox-border-color: var(--🌀TextBox-state--default, var(--✨border--default))
 			var(--🌀TextBox-state--hover, var(--✨border--hover))
 			var(--🌀TextBox-state--disabled, var(--✨border--disabled));
-		--🥝TextBox-box-shadow: var(--🌀TextBox-state--default, var(--stratakit-shadow-input-base))
-			var(--🌀TextBox-state--hover, var(--stratakit-shadow-input-base))
+		--🥝TextBox-box-shadow: var(
+				--🌀TextBox-state--default,
+				var(--stratakit-shadow-control-input-base)
+			)
+			var(--🌀TextBox-state--hover, var(--stratakit-shadow-control-input-base))
 			var(--🌀TextBox-state--disabled, none);
 
 		/* Styles specific to wrapper ("root") */

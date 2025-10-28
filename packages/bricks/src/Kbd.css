@@ -29,8 +29,8 @@
 
 		&:where([data-_sk-variant="solid"]) {
 			box-shadow:
-				var(--stratakit-shadow-button-base-inset), var(--✨shadow-border),
-				var(--stratakit-shadow-button-base-drop);
+				var(--stratakit-shadow-control-button-base-inset), var(--✨shadow-border),
+				var(--stratakit-shadow-control-button-base-drop);
 		}
 
 		&:where([data-_sk-variant="ghost"]) {

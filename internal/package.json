@@ -7,9 +7,9 @@
 		"./*": "./*"
 	},
 	"dependencies": {
-		"colorjs.io": "^0.5.2"
-	},
-	"devDependencies": {
+		"@babel/core": "^7.28.4",
+		"babel-plugin-react-compiler": "~1.0.0",
+		"colorjs.io": "^0.5.2",
 		"lightningcss": "catalog:"
 	}
 }

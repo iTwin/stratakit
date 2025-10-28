@@ -126,7 +126,7 @@
 				var(--🌀Select-state--pressed, var(--stratakit-color-icon-neutral-primary))
 				var(--🌀Select-state--disabled, var(--stratakit-color-icon-neutral-disabled));
 
-			&:where(:has(option[disabled]:checked)) {
+			&:where(:has(> option[disabled]:checked)) {
 				color: var(--✨color--placeholder);
 			}
 

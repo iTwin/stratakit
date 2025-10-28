@@ -4,6 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 
 import * as AkPopover from "@ariakit/react/popover";
+import { PortalContext } from "@ariakit/react/portal";
 import { useStoreState } from "@ariakit/react/store";
 import {
 	forwardRef,
@@ -40,6 +41,7 @@ const Popover = forwardRef<"div", PopoverProps>((props, forwardedRef) => {
 	const store = AkPopover.usePopoverStore();
 	const open = useStoreState(store, "open");
 	const popoverElement = useStoreState(store, "popoverElement");
+	const contentElement = useStoreState(store, "contentElement");
 	const popoverProps = usePopoverApi({
 		element: popoverElement,
 		open,
@@ -61,7 +63,9 @@ const Popover = forwardRef<"div", PopoverProps>((props, forwardedRef) => {
 				className={cx("🥝Popover", props.className)}
 				ref={forwardedRef}
 			>
-				{content}
+				<PortalContext.Provider value={contentElement}>
+					{content}
+				</PortalContext.Provider>
 			</AkPopover.Popover>
 		</AkPopover.PopoverProvider>
 	);

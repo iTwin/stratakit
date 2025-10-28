@@ -125,7 +125,8 @@
 			-webkit-tap-highlight-color: var(--stratakit-color-bg-glow-on-surface-neutral-pressed);
 			--🥝Icon-color: var(--🌀Select-state--default, var(--stratakit-color-icon-neutral-base))
 				var(--🌀Select-state--hover, var(--stratakit-color-icon-neutral-primary))
-				var(--🌀Select-state--pressed, var(--stratakit-color-icon-neutral-primary));
+				var(--🌀Select-state--pressed, var(--stratakit-color-icon-neutral-primary))
+				var(--🌀Select-state--disabled, var(--stratakit-color-icon-neutral-disabled));
 
 			&:where(:has(option[disabled]:checked)) {
 				color: var(--✨color--placeholder);
@@ -193,7 +194,6 @@
 			color: var(--✨color--disabled);
 			cursor: not-allowed;
 			-webkit-tap-highlight-color: transparent;
-			--🥝Icon-color: var(--stratakit-color-icon-neutral-disabled);
 		}
 	}
 

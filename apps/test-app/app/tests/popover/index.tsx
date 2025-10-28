@@ -60,6 +60,7 @@ export default definePage(
 	},
 	{
 		_controlled: ControlledState,
+		nested: NestedTest,
 	},
 );
 
@@ -97,5 +98,28 @@ function ControlledState({ defaultOpen }: VariantProps) {
 				</div>
 			</article>
 		</div>
+	);
+}
+
+function NestedTest() {
+	return (
+		<Popover
+			content={
+				<div
+					style={{
+						display: "flex",
+						flexDirection: "column",
+						gap: 8,
+					}}
+				>
+					Popover content
+					<Popover content="Nested popover content">
+						<Button>Nested trigger</Button>
+					</Popover>
+				</div>
+			}
+		>
+			<Button>Click me</Button>
+		</Popover>
 	);
 }

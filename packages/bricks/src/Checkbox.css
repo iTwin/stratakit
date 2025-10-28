@@ -64,8 +64,8 @@
 		transition-property: background-color, border-color, box-shadow, --🥝Checkbox-border-color;
 		position: relative;
 		box-shadow:
-			var(--stratakit-shadow-button-base-inset), var(--✨shadow-border),
-			var(--stratakit-shadow-button-base-drop);
+			var(--stratakit-shadow-control-button-base-inset), var(--✨shadow-border),
+			var(--stratakit-shadow-control-button-base-drop);
 		-webkit-tap-highlight-color: var(--stratakit-color-bg-glow-on-surface-accent-pressed);
 
 		--🥝Checkbox-border-color: var(--🌀Checkbox-visual-state--default, var(--✨border--default))

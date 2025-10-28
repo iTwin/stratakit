@@ -5,7 +5,10 @@
 
 import * as esbuild from "esbuild";
 import fg from "fast-glob";
-import { inlineCssPlugin } from "internal/esbuild-plugins.js";
+import {
+	inlineCssPlugin,
+	reactCompilerPlugin,
+} from "internal/esbuild-plugins.js";
 
 const isDev = process.env.NODE_ENV === "development";
 
@@ -25,6 +28,24 @@ await esbuild.build({
 	target: "es2021",
 	...(!isDev && { dropLabels: ["DEV"] }),
 });
+
+// For production builds, run esbuild again with React Compiler.
+if (!isDev) {
+	await esbuild.build({
+		entryPoints: await fg("dist/**/*.js", {
+			onlyFiles: true,
+			ignore: ["dist/DEV"],
+		}),
+		entryNames: "[dir]/[name]",
+		outdir: "dist",
+		bundle: false,
+		format: "esm",
+		jsx: "automatic",
+		target: "es2021",
+		plugins: [reactCompilerPlugin()],
+		allowOverwrite: true,
+	});
+}
 
 // Run esbuild again, only to inline bundled CSS inside `.css.ts` files
 await esbuild.build({

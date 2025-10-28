@@ -168,9 +168,7 @@
 				var(--🌀Select-state--hover, var(--✨bg--ghost-hover))
 				var(--🌀Select-state--pressed, var(--✨bg--ghost-pressed))
 				var(--🌀Select-state--disabled, var(--✨bg--ghost-disabled));
-			--🥝Select-border-color: var(--🌀Select-state--default, transparent)
-				var(--🌀Select-state--hover, transparent) var(--🌀Select-state--pressed, transparent)
-				var(--🌀Select-state--disabled, transparent);
+			--🥝Select-border-color: transparent;
 		}
 	}
 

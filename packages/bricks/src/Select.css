@@ -32,20 +32,17 @@
 
 	--✨shadow-border: 0px 0px 0px 1px var(--🥝Select-border-color) inset;
 
-	--✨glow--bg-hover: var(--stratakit-color-glow-hue) var(--stratakit-color-bg-glow-base-hover-\%);
-	--✨glow--bg-press: var(--stratakit-color-glow-hue) var(--stratakit-color-bg-glow-base-pressed-\%);
-
 	/* #region Variant: solid */
 	--✨bg--solid-default: var(--stratakit-color-bg-neutral-base);
 	--✨bg--solid-hover: color-mix(
 		in oklch,
 		var(--✨bg--solid-default) 100%,
-		var(--✨glow--bg-hover)
+		var(--stratakit-color-glow-hue) var(--stratakit-color-bg-glow-base-hover-\%)
 	);
 	--✨bg--solid-pressed: color-mix(
 		in oklch,
 		var(--✨bg--solid-default) 100%,
-		var(--✨glow--bg-press)
+		var(--stratakit-color-glow-hue) var(--stratakit-color-bg-glow-base-pressed-\%)
 	);
 	--✨bg--solid-disabled: var(--stratakit-color-bg-glow-on-surface-disabled);
 
@@ -72,12 +69,12 @@
 	--✨bg--outline-hover: color-mix(
 		in oklch,
 		var(--✨bg--outline-default) 100%,
-		var(--✨glow--bg-hover)
+		var(--stratakit-color-glow-hue) var(--stratakit-color-bg-glow-base-hover-\%)
 	);
 	--✨bg--outline-pressed: color-mix(
 		in oklch,
 		var(--✨bg--outline-default) 100%,
-		var(--✨glow--bg-press)
+		var(--stratakit-color-glow-hue) var(--stratakit-color-bg-glow-base-pressed-\%)
 	);
 	--✨bg--outline-disabled: var(--stratakit-color-bg-control-select);
 

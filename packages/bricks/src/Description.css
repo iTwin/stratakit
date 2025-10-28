@@ -3,6 +3,11 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 .🥝Description:is(.🥝Text) {
+	@layer base {
+		display: flex;
+		gap: var(--stratakit-space-x1);
+	}
+
 	@layer modifiers {
 		&:where([data-_sk-tone="neutral"]) {
 			color: var(--stratakit-color-text-neutral-tertiary);

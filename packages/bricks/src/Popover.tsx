@@ -60,7 +60,10 @@ const Popover = forwardRef<"div", PopoverProps>((props, forwardedRef) => {
 			setOpen={setOpen}
 			store={store}
 		>
-			<AkPopover.PopoverDisclosure render={children} />
+			<AkPopover.PopoverDisclosure
+				data-has-popover-open={open || undefined}
+				render={children}
+			/>
 			<AkPopover.Popover
 				portal
 				{...rest}

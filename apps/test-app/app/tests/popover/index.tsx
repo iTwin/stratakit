@@ -3,7 +3,14 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 import * as React from "react";
-import { Button, Divider, Popover, Text, TextBox } from "@stratakit/bricks";
+import {
+	Anchor,
+	Button,
+	Divider,
+	Popover,
+	Text,
+	TextBox,
+} from "@stratakit/bricks";
 import { Icon } from "@stratakit/foundations";
 import { definePage } from "~/~utils.tsx";
 
@@ -61,6 +68,7 @@ export default definePage(
 	{
 		_controlled: ControlledState,
 		nested: NestedTest,
+		padded: PaddedTest,
 	},
 );
 
@@ -120,6 +128,47 @@ function NestedTest() {
 			}
 		>
 			<Button>Click me</Button>
+		</Popover>
+	);
+}
+
+function PaddedTest() {
+	return (
+		<Popover
+			content={
+				<>
+					<div
+						style={{
+							paddingInline: "var(--stratakit-space-x2)",
+							display: "flex",
+							gap: 58,
+							justifyContent: "space-between",
+						}}
+					>
+						<Text variant="body-sm">Warehouse Docks Building</Text>
+						<Anchor style={{ margin: "auto" }}>Copy link</Anchor>
+					</div>
+					<Divider />
+					<div
+						style={{
+							paddingInline: "var(--stratakit-space-x2)",
+							display: "flex",
+							gap: "var(--stratakit-space-x2)",
+						}}
+					>
+						<TextBox.Input style={{ flex: 1 }} placeholder="Add users" />
+						<Button disabled>Invite</Button>
+					</div>
+				</>
+			}
+			style={{
+				paddingBlock: "var(--stratakit-space-x3)",
+				display: "flex",
+				flexDirection: "column",
+				gap: 8,
+			}}
+		>
+			<Button>Manage access</Button>
 		</Popover>
 	);
 }

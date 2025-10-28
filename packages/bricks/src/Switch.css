@@ -100,8 +100,8 @@
 			margin: calc(0.125rem - 1px) /* sizing-2 - 1px to account for border */;
 			background-color: var(--🥝Switch-thumb-color);
 			box-shadow:
-				var(--stratakit-shadow-button-base-inset), var(--✨shadow-border),
-				var(--stratakit-shadow-button-base-drop);
+				var(--stratakit-shadow-control-button-base-inset), var(--✨shadow-border),
+				var(--stratakit-shadow-control-button-base-drop);
 			border-radius: var(--🥝Switch-thumb-radius, var(--✨radius));
 			transform-origin: left;
 			transform: var(--🥝Switch-thumb-transform);

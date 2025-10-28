@@ -114,6 +114,7 @@
 		"@ariakit/react": "^0.4.19",
 		"@stratakit/bricks": "^0.4.5",
 		"classnames": "^2.5.1",
+		"react-compiler-runtime": "^1.0.0",
 		"zustand": "^5.0.8"
 	},
 	"devDependencies": {

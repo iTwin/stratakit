@@ -1,5 +1,59 @@
 # Changelog
 
+## 0.2.0
+
+### Breaking changes
+
+- [#1015](https://github.com/iTwin/design-system/pull/1015): Some icons have been renamed for better clarity and consistency.
+
+  | Old name                       | New name                     |
+  | ------------------------------ | ---------------------------- |
+  | `close.svg`                    | `dismiss.svg`                |
+  | `remove.svg`                   | `minus.svg`                  |
+  | `remove-circular.svg`          | `minus-circle.svg`           |
+  | `remove-squared.svg`           | `minus-square.svg`           |
+  | `add-circular.svg`             | `add-circle.svg`             |
+  | `add-squared.svg`              | `add-square.svg`             |
+  | `more-horizontal-circular.svg` | `more-horizontal-circle.svg` |
+  | `more-vertical-circular.svg`   | `more-vertical-circle.svg`   |
+  | `pause-circular.svg`           | `pause-circle.svg`           |
+  | `play-circular.svg`            | `play-circle.svg`            |
+  | `stop-circular.svg`            | `stop-circle.svg`            |
+  | `zoom-in-circular.svg`         | `zoom-in-circle.svg`         |
+  | `zoom-out-circular.svg`        | `zoom-out-circle.svg`        |
+
+  ⚠️ This is a **breaking change**. Make sure to update all references/imports to the old icon names in your codebase.
+
+### Non-breaking changes
+
+- [#1042](https://github.com/iTwin/design-system/pull/1042): Added new icons:
+  - `ai-chat-add.svg`
+  - `ai-chat.svg`
+  - `area-island-traffic.svg`
+  - `area-pond.svg`
+  - `brain.svg`
+  - `carets-up-down.svg`
+  - `dashboard.svg`
+  - `dismiss-circle.svg`
+  - `dismiss-square.svg`
+  - `downloads-view.svg`
+  - `license-add.svg`
+  - `license-check-in.svg`
+  - `license-check-out.svg`
+  - `license-download.svg`
+  - `license-remove.svg`
+  - `parking-row.svg`
+  - `password-reset.svg`
+  - `portal-connect.svg`
+  - `products.svg`
+  - `subscriptions.svg`
+  - `support.svg`
+  - `table-rows-comfortable.svg`
+  - `table-rows-compact.svg`
+  - `user-active.svg`
+  - `user-edit.svg`
+  - `user-settings.svg`
+
 ## 0.1.5
 
 - [#911](https://github.com/iTwin/design-system/pull/911): Added new icons:

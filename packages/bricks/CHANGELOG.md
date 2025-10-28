@@ -1,5 +1,25 @@
 # Changelog
 
+## 0.5.0
+
+### Breaking changes
+
+- [#956](https://github.com/iTwin/design-system/pull/956): Removed `isActive` from `IconButton` component. This has been replaced by the `active` prop.
+- [#950](https://github.com/iTwin/design-system/pull/950): Removed `tone="critical"` from `Anchor` component.
+
+### Non-breaking changes
+
+- [#983](https://github.com/iTwin/design-system/pull/983): `Anchor` will now inherit the surrounding `font-size`.
+- [#1041](https://github.com/iTwin/design-system/pull/1041): Updated the type of `render` function for `Field.Control` to omit `children`, so that it no longer raises an error when used with `TextBox.Input`.
+- [#1040](https://github.com/iTwin/design-system/pull/1040): Added invalid state styling to `Checkbox` and `Radio`.
+- [#1035](https://github.com/iTwin/design-system/pull/1035): Fixed indeterminate state styling for `Checkbox` and `Radio` components (hover and disabled visuals now apply correctly).
+- [#1056](https://github.com/iTwin/design-system/pull/1056): Added `forced-colors` styling to `Field.ErrorMessage`.
+- [#1058](https://github.com/iTwin/design-system/pull/1058): Fixed improper `forced-colors` styling of `TextBox`.
+- [#982](https://github.com/iTwin/design-system/pull/982): Updated `background-color` variable used by `TextBox`.
+- [#1003](https://github.com/iTwin/design-system/pull/1003): Enabled React Compiler for production build. In React 18 apps, `react-compiler-runtime` dependency will be used.
+- Updated dependencies:
+  - @stratakit/foundations@0.4.0
+
 ## 0.4.5
 
 - [#975](https://github.com/iTwin/design-system/pull/975): Fixed an overflow issue in `Tooltip`. Long words will now correctly break across multiple lines.

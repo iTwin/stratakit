@@ -2,9 +2,10 @@
 
 ## 0.4.0
 
-### Minor Changes
+### Breaking changes
 
-- [#1057](https://github.com/iTwin/design-system/pull/1057): Renamed a few CSS variables:
+- [#973](https://github.com/iTwin/design-system/pull/973), [#1057](https://github.com/iTwin/design-system/pull/1057): Renamed a few CSS variables for better consistency and accuracy:
+  - `--stratakit-color-icon-neutral-hover` is now `--stratakit-color-icon-neutral-primary`.
   - `--stratakit-color-bg-page-zebra` is now `--stratakit-color-bg-control-table-zebra`.
   - `--stratakit-color-brand-logo` is now `--stratakit-color-brand-logo-fill`.
   - All component-specific shadow tokens are now prefixed with `control-`.
@@ -17,18 +18,15 @@
     - `--stratakit-shadow-toolbar-base` → `--stratakit-shadow-control-toolbar-base`
     - `--stratakit-shadow-tooltip-base` → `--stratakit-shadow-control-tooltip-base`
 
-  ⚠️ To handle these breaking changes, do a find-and-replace for all existing references in your code base.
-
-- [#960](https://github.com/iTwin/design-system/pull/960): The global focus outline is now given priority in the CSS cascade. This is a precautionary measure to prevent third party styles from removing the focus outline.
-- [#952](https://github.com/iTwin/design-system/pull/952): Changed the default value of `Root`'s `synchronizeColorScheme` prop to `true`.
-- [#973](https://github.com/iTwin/design-system/pull/973): Renamed `--stratakit-color-icon-neutral-hover` to `--stratakit-color-icon-neutral-primary` for consistency and accuracy.
-
-  To handle this breaking change, do a find-and-replace for all existing references in your codebase.
+  ⚠️ To handle these breaking changes, do a find-and-replace for all existing references in your code base. For example:
 
   ```diff
   - var(--stratakit-color-icon-neutral-hover)
   + var(--stratakit-color-icon-neutral-primary)
   ```
+
+- [#960](https://github.com/iTwin/design-system/pull/960): The global focus outline is now given priority in the CSS cascade. This is a precautionary measure to prevent third party styles from removing the focus outline.
+- [#952](https://github.com/iTwin/design-system/pull/952): Changed the default value of `Root`'s `synchronizeColorScheme` prop to `true`.
 
 - [#958](https://github.com/iTwin/design-system/pull/958): The `Root` component will no longer detect the [root node](https://developer.mozilla.org/en-US/docs/Web/API/Node/getRootNode) automatically. By default, it will use `document`. When rendering in shadow DOM or a popout window, you will need to pass the `rootNode` prop to the `Root` component.
 
@@ -36,15 +34,15 @@
   <Root rootNode={/* shadowRoot or popoutWindow.document */}>
   ```
 
-### Patch Changes
+### Non-breaking changes
 
-- [#973](https://github.com/iTwin/design-system/pull/973): Added new CSS variables:
+- [#973](https://github.com/iTwin/design-system/pull/973), [#1057](https://github.com/iTwin/design-system/pull/1057): Added new CSS variables:
   - `--stratakit-color-bg-on-surface-neutral-active-hover`
   - `--stratakit-color-border-control-navrail-item`
   - `--stratakit-color-text-control-placeholder`
-
+  - `--stratakit-color-bg-brand-logo-stroke`
+  - `--stratakit-shadow-brand-logo-base`
 - [#1027](https://github.com/iTwin/design-system/pull/1027): Updated the fallback logic of `Icon` component to correctly handle relative non-HTTP URLs.
-- [#1057](https://github.com/iTwin/design-system/pull/1057): Added new CSS variables: `--stratakit-color-bg-brand-logo-stroke` and `--stratakit-shadow-brand-logo-base`.
 - [#1003](https://github.com/iTwin/design-system/pull/1003): Enabled React Compiler for production build. In React 18 apps, `react-compiler-runtime` dependency will be used.
 
 ## 0.3.5
@@ -107,8 +105,6 @@
 - Updated internal code for `@stratakit/structures@0.3.1`.
 
 ## 0.2.2
-
-### Patch Changes
 
 - [#861](https://github.com/iTwin/design-system/pull/861): Small changes to some colors in light theme.
 - [#861](https://github.com/iTwin/design-system/pull/861): Added new CSS variable: `--stratakit-color-bg-control-select`.

@@ -2,7 +2,7 @@
 
 ## 0.2.0
 
-### Minor Changes
+### Breaking changes
 
 - [#1015](https://github.com/iTwin/design-system/pull/1015): Some icons have been renamed for better clarity and consistency.
 
@@ -24,7 +24,7 @@
 
   ⚠️ This is a **breaking change**. Make sure to update all references/imports to the old icon names in your codebase.
 
-### Patch Changes
+### Non-breaking changes
 
 - [#1042](https://github.com/iTwin/design-system/pull/1042): Added new icons:
   - `ai-chat-add.svg`

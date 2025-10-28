@@ -100,14 +100,15 @@
 	/* #endregion */
 
 	@layer base {
-		min-inline-size: calc(var(--✨padding-inline-start) + 1ch + var(--✨padding-inline-end));
-		text-overflow: ellipsis;
-		line-height: 1.2;
-		user-select: none;
-		cursor: pointer;
-		font-size: var(--stratakit-font-size-12);
 		border: none;
 		appearance: none;
+		user-select: none;
+		line-height: 1.2;
+		cursor: pointer;
+
+		min-inline-size: calc(var(--✨padding-inline-start) + 1ch + var(--✨padding-inline-end));
+		text-overflow: ellipsis;
+		font-size: var(--stratakit-font-size-12);
 		border-radius: 4px;
 		background-color: var(--🥝Select-background-color);
 		box-shadow: var(--✨shadow-border);

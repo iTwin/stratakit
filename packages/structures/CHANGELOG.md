@@ -1,5 +1,35 @@
 # Changelog
 
+## 1.0.0
+
+### Minor Changes
+
+- [#1036](https://github.com/iTwin/design-system/pull/1036): Changed `items` prop type of `ErrorRegion.Root` component from `ReactNode` to `ReactNode[]`.
+
+  `items` prop is used to determine error region visibility.
+
+- [#1038](https://github.com/iTwin/design-system/pull/1038): Removed unintentionally exposed `TreeItem` [subpath export](https://nodejs.org/api/packages.html#subpath-exports). Tree item components are available under the `Tree` subpath or the main entry point of the package.
+
+  ```diff
+  - import * as TreeItem from "@stratakit/structures/TreeItem";
+  + import * as Tree from "@stratakit/structures/Tree";
+
+  - <TreeItem.Root />
+  + <Tree.Item />
+
+  - <TreeItem.Action />
+  + <Tree.ItemAction />
+  ```
+
+- [#1037](https://github.com/iTwin/design-system/pull/1037): Require `aria-label` or `aria-labelledby` prop in `ErrorRegion.Root` component.
+
+### Patch Changes
+
+- [#1003](https://github.com/iTwin/design-system/pull/1003): Enabled React Compiler for production build. In React 18 apps, `react-compiler-runtime` dependency will be used.
+- Updated dependencies:
+  - @stratakit/bricks@1.0.0
+  - @stratakit/foundations@0.4.0
+
 ## 0.4.5
 
 - `unstable_NavigationRail` changes:

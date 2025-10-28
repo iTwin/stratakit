@@ -208,7 +208,7 @@
 .🥝SelectArrow {
 	@layer base {
 		justify-self: end;
-		margin-inline-end: var(--stratakit-space-x1); /* (padding - disclosure offset) */
+		margin-inline-end: var(--stratakit-space-x1);
 		pointer-events: none;
 		z-index: 1; /* should be above the button */
 

@@ -13,3 +13,11 @@
 		}
 	}
 }
+
+@media (forced-colors: active) {
+	.🥝Description:is(.🥝Text):where([data-_sk-tone="critical"]) {
+		forced-color-adjust: none;
+		background-color: Mark;
+		color: MarkText;
+	}
+}

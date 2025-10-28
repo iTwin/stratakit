@@ -53,6 +53,7 @@ const Popover = forwardRef<"div", PopoverProps>((props, forwardedRef) => {
 		>
 			<AkPopover.PopoverDisclosure render={children} />
 			<AkPopover.Popover
+				portal
 				{...rest}
 				gutter={7}
 				style={{ ...popoverProps.style, ...props.style }}

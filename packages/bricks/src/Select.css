@@ -22,10 +22,10 @@
 	--✨color--disabled: var(--stratakit-color-text-neutral-disabled);
 
 	--✨height: 1.5rem;
+	--✨gap: calc(var(--stratakit-space-x1) + var(--stratakit-space-x05));
 	--✨padding-inline-start: var(--stratakit-space-x2);
 	--✨padding-inline-end: calc(
-		var(--stratakit-space-x1) +
-		var(--stratakit-space-x05) /* Gap */ +
+		var(--✨gap) +
 		var(--stratakit-space-x4) /* Arrow size */ +
 		var(--stratakit-space-x1) /* Padding */
 	);

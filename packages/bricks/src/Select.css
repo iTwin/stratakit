@@ -27,7 +27,7 @@
 	--✨padding-inline-end: calc(
 		var(--✨gap) +
 		var(--stratakit-space-x4) /* Arrow size */ +
-		var(--stratakit-space-x1) /* Padding */
+		var(--stratakit-space-x1) /* Arrow padding */
 	);
 
 	--✨shadow-border: 0px 0px 0px 1px var(--🥝Select-border-color) inset;

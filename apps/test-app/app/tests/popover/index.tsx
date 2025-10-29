@@ -31,7 +31,6 @@ export default definePage(
 				placement={
 					placement as React.ComponentProps<typeof Popover>["placement"]
 				}
-				aria-label="Manage scenes"
 				content={
 					<>
 						<TextBox.Root>

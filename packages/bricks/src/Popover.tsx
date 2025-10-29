@@ -3,6 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
+import * as React from "react";
 import * as AkPopover from "@ariakit/react/popover";
 import { PortalContext } from "@ariakit/react/portal";
 import { useStoreState } from "@ariakit/react/store";
@@ -49,10 +50,14 @@ const Popover = forwardRef<"div", PopoverProps>((props, forwardedRef) => {
 	const open = useStoreState(store, "open");
 	const popoverElement = useStoreState(store, "popoverElement");
 	const contentElement = useStoreState(store, "contentElement");
+	const disclosureElement = useStoreState(store, "disclosureElement");
 	const popoverProps = usePopoverApi({
 		element: popoverElement,
 		open,
 	});
+	const defaultTriggerId = React.useId();
+	const triggerId = disclosureElement?.id ?? defaultTriggerId;
+	const labelledBy = props["aria-label"] ? undefined : triggerId;
 	return (
 		<AkPopover.PopoverProvider
 			placement={placement}
@@ -61,10 +66,12 @@ const Popover = forwardRef<"div", PopoverProps>((props, forwardedRef) => {
 			store={store}
 		>
 			<AkPopover.PopoverDisclosure
+				id={defaultTriggerId}
 				data-has-popover-open={open || undefined}
 				render={children}
 			/>
 			<AkPopover.Popover
+				aria-labelledby={labelledBy}
 				portal
 				{...rest}
 				gutter={7}

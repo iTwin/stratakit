@@ -138,6 +138,12 @@
 				display: none;
 			}
 		}
+
+		@supports not (appearance: base-select) {
+			> option {
+				background-color: var(--stratakit-color-bg-neutral-base);
+			}
+		}
 	}
 
 	@layer modifiers {

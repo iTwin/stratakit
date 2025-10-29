@@ -15,34 +15,45 @@ export const handle = { title: "DropdownMenu" };
 export default definePage(
 	function Page({ disabled }) {
 		return (
-			<DropdownMenu.Provider>
-				<DropdownMenu.Button disabled={!!disabled}>Actions</DropdownMenu.Button>
+			<>
+				<DropdownMenu.Provider>
+					<DropdownMenu.Button disabled={!!disabled}>
+						Actions
+					</DropdownMenu.Button>
 
-				<DropdownMenu.Content>
-					<DropdownMenu.Item shortcuts="Command+A" label="Add" />
-					<DropdownMenu.Item shortcuts="Shift+E" label="Edit" />
-					<DropdownMenu.Item disabled label="Delete" />
-					<DropdownMenu.Item label="Disable" />
-					<DropdownMenu.Item
-						label="Filter"
-						unstable_dot="Some filters applied"
-					/>
-					<DropdownMenu.Item
-						label="More"
-						submenu={
-							<DropdownMenu.Submenu>
-								<DropdownMenu.Item shortcuts="Command+C" label="Clone" />
-								<DropdownMenu.Item disabled label="Archive" />
-								<DropdownMenu.Item label="Export" />
-								<DropdownMenu.Item
-									label="Import"
-									unstable_dot="Some filters applied"
-								/>
-							</DropdownMenu.Submenu>
-						}
-					/>
-				</DropdownMenu.Content>
-			</DropdownMenu.Provider>
+					<DropdownMenu.Content>
+						<DropdownMenu.Item shortcuts="Command+A" label="Add" />
+						<DropdownMenu.Item shortcuts="Shift+E" label="Edit" />
+						<DropdownMenu.Item disabled label="Delete" />
+						<DropdownMenu.Item label="Disable" />
+						<DropdownMenu.Item
+							label="Filter"
+							unstable_dot="Some filters applied"
+						/>
+						<DropdownMenu.Item
+							label="More"
+							submenu={
+								<DropdownMenu.Submenu>
+									<DropdownMenu.Item shortcuts="Command+C" label="Clone" />
+									<DropdownMenu.Item disabled label="Archive" />
+									<DropdownMenu.Item label="Export" />
+									<DropdownMenu.Item
+										label="Import"
+										unstable_dot="Some filters applied"
+									/>
+								</DropdownMenu.Submenu>
+							}
+						/>
+					</DropdownMenu.Content>
+				</DropdownMenu.Provider>
+				<div
+					style={{
+						boxShadow: `var(--stratakit-shadow-dropdown-base)`,
+					}}
+				>
+					XYZ
+				</div>
+			</>
 		);
 	},
 	{

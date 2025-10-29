@@ -28,6 +28,7 @@
 	@layer base {
 		appearance: base-select;
 		border: none;
+		margin-block-start: var(--stratakit-space-x1);
 	}
 }
 

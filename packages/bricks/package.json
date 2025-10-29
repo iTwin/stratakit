@@ -85,7 +85,7 @@
 			"development": "./dist/DEV/Label.js",
 			"default": "./dist/Label.js"
 		},
-		"./Popover": {
+		"./unstable_Popover": {
 			"@stratakit/source": "./src/Popover.tsx",
 			"types": "./dist/Popover.d.ts",
 			"development": "./dist/DEV/Popover.js",

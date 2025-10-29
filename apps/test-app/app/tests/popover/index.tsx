@@ -7,7 +7,7 @@ import {
 	Anchor,
 	Button,
 	Divider,
-	Popover,
+	unstable_Popover as Popover,
 	Text,
 	TextBox,
 } from "@stratakit/bricks";

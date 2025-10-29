@@ -17,7 +17,8 @@ import type { BaseProps } from "@stratakit/foundations/secret-internals";
 
 interface PopoverProps
 	extends Omit<BaseProps, "content">,
-		Pick<AkPopover.PopoverProviderProps, "open" | "setOpen" | "placement"> {
+		Pick<AkPopover.PopoverProviderProps, "open" | "setOpen" | "placement">,
+		Pick<AkPopover.PopoverProps, "unmountOnHide"> {
 	/**
 	 * The element that will trigger the popover when clicked.
 	 * Common examples include buttons, links, or form controls.

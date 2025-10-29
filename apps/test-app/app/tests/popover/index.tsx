@@ -22,12 +22,13 @@ import searchIconHref from "@stratakit/icons/search.svg";
 export const handle = { title: "Popover" };
 
 export default definePage(
-	function Page({ defaultOpen, placement }: VariantProps) {
+	function Page({ defaultOpen, placement, unmountOnHide }: VariantProps) {
 		const [open, setOpen] = React.useState(!!defaultOpen);
 		return (
 			<Popover
 				open={open}
 				setOpen={setOpen}
+				unmountOnHide={!!unmountOnHide}
 				placement={
 					placement as React.ComponentProps<typeof Popover>["placement"]
 				}

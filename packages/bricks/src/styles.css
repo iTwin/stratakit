@@ -18,7 +18,6 @@
 @import "./IconButton.css" layer(itwinui.components);
 @import "./Kbd.css" layer(itwinui.components);
 @import "./Label.css" layer(itwinui.components);
-@import "./Popover.css" layer(itwinui.components);
 @import "./Progress.css" layer(itwinui.components);
 @import "./Radio.css" layer(itwinui.components);
 @import "./Spinner.css" layer(itwinui.components);

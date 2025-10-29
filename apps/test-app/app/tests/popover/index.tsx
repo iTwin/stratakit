@@ -3,15 +3,9 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 import * as React from "react";
-import {
-	Anchor,
-	Button,
-	Divider,
-	unstable_Popover as Popover,
-	Text,
-	TextBox,
-} from "@stratakit/bricks";
+import { Anchor, Button, Divider, Text, TextBox } from "@stratakit/bricks";
 import { Icon } from "@stratakit/foundations";
+import { unstable_Popover as Popover } from "@stratakit/structures";
 import { definePage } from "~/~utils.tsx";
 
 import type { VariantProps } from "~/~utils.tsx";

@@ -144,7 +144,9 @@ function PaddedTest() {
 						}}
 					>
 						<Text variant="body-sm">Warehouse Docks Building</Text>
-						<Anchor style={{ margin: "auto" }}>Copy link</Anchor>
+						<Anchor style={{ margin: "auto" }} render={<button />}>
+							Copy link
+						</Anchor>
 					</div>
 					<Divider />
 					<div

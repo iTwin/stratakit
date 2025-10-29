@@ -7,7 +7,7 @@ import * as React from "react";
 import { Role } from "@ariakit/react/role";
 import { forwardRef, isBrowser } from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
-import { SelectArrow } from "./~utils.icons.js";
+import { CaretsUpDown } from "./~utils.icons.js";
 import { useFieldControlType } from "./Field.internal.js";
 
 import type {
@@ -129,7 +129,7 @@ const HtmlSelect = forwardRef<"select", HtmlSelectProps>(
 					ref={forwardedRef}
 				/>
 
-				<SelectArrow className="🥝SelectArrow" />
+				<CaretsUpDown className="🥝SelectArrow" />
 			</>
 		);
 	},

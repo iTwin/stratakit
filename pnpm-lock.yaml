@@ -152,6 +152,9 @@ importers:
       vite:
         specifier: ^7.1.11
         version: 7.1.11(@types/node@22.18.11)(lightningcss@1.30.1)(tsx@4.20.6)(yaml@2.6.1)
+      vite-plugin-babel:
+        specifier: ^1.3.2
+        version: 1.3.2(@babel/core@7.28.4)(vite@7.1.11(@types/node@22.18.11)(lightningcss@1.30.1)(tsx@4.20.6)(yaml@2.6.1))
       vite-plugin-devtools-json:
         specifier: ^1.0.0
         version: 1.0.0(vite@7.1.11(@types/node@22.18.11)(lightningcss@1.30.1)(tsx@4.20.6)(yaml@2.6.1))
@@ -170,10 +173,15 @@ importers:
 
   internal:
     dependencies:
+      "@babel/core":
+        specifier: ^7.28.4
+        version: 7.28.4
+      babel-plugin-react-compiler:
+        specifier: ~1.0.0
+        version: 1.0.0
       colorjs.io:
         specifier: ^0.5.2
         version: 0.5.2
-    devDependencies:
       lightningcss:
         specifier: "catalog:"
         version: 1.30.1
@@ -186,6 +194,9 @@ importers:
       classnames:
         specifier: ^2.5.1
         version: 2.5.1
+      react-compiler-runtime:
+        specifier: ^1.0.0
+        version: 1.0.0(react@19.2.0)
     devDependencies:
       "@stratakit/foundations":
         specifier: workspace:*
@@ -215,17 +226,20 @@ importers:
   packages/compat:
     dependencies:
       "@itwin/itwinui-react":
-        specifier: ^3.19.5
-        version: 3.19.5(@stratakit/foundations@packages+foundations)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+        specifier: ^3.19.6
+        version: 3.19.6(@stratakit/foundations@packages+foundations)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       "@stratakit/bricks":
-        specifier: ^0.4.4
+        specifier: ^0.5.0
         version: link:../bricks
       "@stratakit/structures":
-        specifier: ^0.4.4
+        specifier: ^0.5.0
         version: link:../structures
       classnames:
         specifier: ^2.5.1
         version: 2.5.1
+      react-compiler-runtime:
+        specifier: ^1.0.0
+        version: 1.0.0(react@19.2.0)
     devDependencies:
       "@stratakit/foundations":
         specifier: workspace:*
@@ -260,6 +274,9 @@ importers:
       classnames:
         specifier: ^2.5.1
         version: 2.5.1
+      react-compiler-runtime:
+        specifier: ^1.0.0
+        version: 1.0.0(react@19.2.0)
     devDependencies:
       "@stratakit/bricks":
         specifier: workspace:*
@@ -297,11 +314,14 @@ importers:
         specifier: ^0.4.19
         version: 0.4.19(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       "@stratakit/bricks":
-        specifier: ^0.4.5
+        specifier: ^0.5.0
         version: link:../bricks
       classnames:
         specifier: ^2.5.1
         version: 2.5.1
+      react-compiler-runtime:
+        specifier: ^1.0.0
+        version: 1.0.0(react@19.2.0)
       zustand:
         specifier: ^5.0.8
         version: 5.0.8(@types/react@19.2.2)(immer@10.1.3)(react@19.2.0)(use-sync-external-store@1.6.0(react@19.2.0))
@@ -966,10 +986,10 @@ packages:
       react: ">=16.8.6"
       react-dom: ">=16.8.6"
 
-  "@itwin/itwinui-react@3.19.5":
+  "@itwin/itwinui-react@3.19.6":
     resolution:
       {
-        integrity: sha512-S7uR1fBwQrmEZmRphUN3/nYRDTp4M5iW9AGad6RClEMvvXOm8R9yKoDuGJxhIn9vzSOitcfwyUaJYAE56jaR9A==,
+        integrity: sha512-5jx4AgfrzdoO2Sqz0th9ZChYB/s5vanYuczFh+7XIxw0zHXJKuoGZcyMNNTIdmfoy5nDs4l+s2iw0889AHC65w==,
       }
     peerDependencies:
       "@stratakit/foundations": ">=0.2.0"
@@ -1516,6 +1536,12 @@ packages:
     resolution:
       {
         integrity: sha512-DV5bdJZTzZ0zn0DC24v3jD7Mnidh6xhKa4GfKCbq3sfW8kaWhDdZjP3i81geA8T33tdYqWKw4D3fVv0CwEgKVA==,
+      }
+
+  babel-plugin-react-compiler@1.0.0:
+    resolution:
+      {
+        integrity: sha512-Ixm8tFfoKKIPYdCCKYTsqv+Fd4IJ0DQqMyEimo+pxUOMUR9cVPlwTrFt9Avu+3cb6Zp3mAzl+t1MrG2fxxKsxw==,
       }
 
   balanced-match@1.0.2:
@@ -2420,6 +2446,14 @@ packages:
         integrity: sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==,
       }
 
+  react-compiler-runtime@1.0.0:
+    resolution:
+      {
+        integrity: sha512-rRfjYv66HlG8896yPUDONgKzG5BxZD1nV9U6rkm+7VCuvQc903C4MjcoZR4zPw53IKSOX9wMQVpA1IAbRtzQ7w==,
+      }
+    peerDependencies:
+      react: ^17.0.0 || ^18.0.0 || ^19.0.0 || ^0.0.0-experimental
+
   react-dom@19.2.0:
     resolution:
       {
@@ -2775,6 +2809,15 @@ packages:
       }
     engines: { node: ^18.0.0 || ^20.0.0 || >=22.0.0 }
     hasBin: true
+
+  vite-plugin-babel@1.3.2:
+    resolution:
+      {
+        integrity: sha512-mEld4OVyuNs5+ISN+U5XyTnNcDwln/s2oER2m0PQ32YYPqPR25E3mfnhAA/RkZJxPuwFkprKWV405aZArE6kzA==,
+      }
+    peerDependencies:
+      "@babel/core": ^7.0.0
+      vite: ^2.7.0 || ^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0
 
   vite-plugin-devtools-json@1.0.0:
     resolution:
@@ -3311,7 +3354,7 @@ snapshots:
       react: 19.2.0
       react-dom: 19.2.0(react@19.2.0)
 
-  "@itwin/itwinui-react@3.19.5(@stratakit/foundations@packages+foundations)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)":
+  "@itwin/itwinui-react@3.19.6(@stratakit/foundations@packages+foundations)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)":
     dependencies:
       "@floating-ui/react": 0.27.16(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       "@itwin/itwinui-illustrations-react": 2.1.0(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
@@ -3653,6 +3696,10 @@ snapshots:
       "@babel/types": 7.28.4
     transitivePeerDependencies:
       - supports-color
+
+  babel-plugin-react-compiler@1.0.0:
+    dependencies:
+      "@babel/types": 7.28.4
 
   balanced-match@1.0.2: {}
 
@@ -4109,6 +4156,10 @@ snapshots:
 
   queue-microtask@1.2.3: {}
 
+  react-compiler-runtime@1.0.0(react@19.2.0):
+    dependencies:
+      react: 19.2.0
+
   react-dom@19.2.0(react@19.2.0):
     dependencies:
       react: 19.2.0
@@ -4315,6 +4366,11 @@ snapshots:
       - terser
       - tsx
       - yaml
+
+  vite-plugin-babel@1.3.2(@babel/core@7.28.4)(vite@7.1.11(@types/node@22.18.11)(lightningcss@1.30.1)(tsx@4.20.6)(yaml@2.6.1)):
+    dependencies:
+      "@babel/core": 7.28.4
+      vite: 7.1.11(@types/node@22.18.11)(lightningcss@1.30.1)(tsx@4.20.6)(yaml@2.6.1)
 
   vite-plugin-devtools-json@1.0.0(vite@7.1.11(@types/node@22.18.11)(lightningcss@1.30.1)(tsx@4.20.6)(yaml@2.6.1)):
     dependencies:

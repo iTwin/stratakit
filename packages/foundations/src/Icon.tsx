@@ -167,13 +167,18 @@ function useNormalizedHrefBase(rawHref: string | undefined) {
 			const abortController = new AbortController();
 			const { signal } = abortController;
 
-			// Make a network request
 			(async () => {
 				try {
-					const response = await fetch(rawHref, { signal });
-					if (!response.ok) throw new Error(`Failed to fetch ${rawHref}`);
+					// Construct full normalized URL (with base) to support relative non-HTTP URLs.
+					const resourceUrl = new URL(rawHref, ownerDocument.baseURI);
+					const hash = resourceUrl.hash || DEFAULT_ICON_HASH; // Save hash for later.
+					resourceUrl.hash = ""; // Remove hash as it's not relevant for fetching the resource.
 
-					const hash = new URL(rawHref).hash || DEFAULT_ICON_HASH;
+					// Make a network request
+					const response = await fetch(resourceUrl.href, { signal });
+					if (!response.ok) {
+						throw new Error(`Failed to fetch ${resourceUrl.href}`);
+					}
 
 					// Find all `<symbol>` elements from the response.
 					const fetchedSvgString = sanitizeHtml.current(await response.text());

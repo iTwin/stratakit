@@ -17,3 +17,9 @@
 		--🥝Divider-main-axis-margin: calc(-1 * var(--✨padding));
 	}
 }
+
+@media (forced-colors: active) {
+	.🥝Popover {
+		border: 1px solid;
+	}
+}

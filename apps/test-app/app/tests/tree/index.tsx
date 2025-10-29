@@ -115,7 +115,9 @@ export default definePage(
 						<Tree.Item
 							key={item.label}
 							aria-level={item.level}
-							aria-posinset={index + 1}
+							aria-posinset={
+								childIndex !== undefined ? childIndex + 1 : index + 1
+							}
 							aria-setsize={item.setSize}
 							label={item.label}
 							description={hasDescription ? description : undefined}

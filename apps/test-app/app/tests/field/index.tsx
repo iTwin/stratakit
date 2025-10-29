@@ -83,7 +83,9 @@ function VisualTestForTextlikeControls() {
 			{/* Inline layout for text controls */}
 			<Field.Root layout="inline">
 				<Field.Label>Text control</Field.Label>
-				<Field.Control render={<TextBox.Input />} />
+				<Field.Control
+					render={(controlProps) => <TextBox.Input {...controlProps} />}
+				/>
 				<Field.ErrorMessage>Text error message</Field.ErrorMessage>
 				<Field.Description>Text description</Field.Description>
 			</Field.Root>
@@ -127,6 +129,7 @@ function VisualTestForCheckableControls() {
 			<Field.Root>
 				<Field.Control render={<Radio value="A" />} />
 				<Field.Label>Radio control</Field.Label>
+				<Field.ErrorMessage>Radio error message</Field.ErrorMessage>
 				<Field.Description>Radio description</Field.Description>
 			</Field.Root>
 			<Field.Root>

@@ -35,20 +35,15 @@ function VisualTest() {
 			{tones.map((tone) => {
 				return (
 					<div key={tone} style={{ display: "flex", gap: 4 }}>
-						<Anchor key={tone} tone={tone} href="https://example.com">
+						<Anchor tone={tone} href="https://example.com">
 							Example
 						</Anchor>
-						<Anchor
-							render={<button onClick={() => {}} />}
-							key={tone}
-							tone={tone}
-						>
+						<Anchor render={<button onClick={() => {}} />} tone={tone}>
 							Example
 						</Anchor>
 						<AnchorComposition.Root
 							href="https://example.com"
 							target="_blank"
-							key={tone}
 							tone={tone}
 						>
 							<AnchorComposition.Text>External</AnchorComposition.Text>

@@ -42,9 +42,9 @@ import type { UseQueryResult } from "@tanstack/react-query";
 import type { MetaFunction } from "react-router";
 
 import bentleyIcon from "@stratakit/icons/bentley-systems.svg";
-import closeIcon from "@stratakit/icons/close.svg";
 import cursorIcon from "@stratakit/icons/cursor.svg";
 import cursorSelectIcon from "@stratakit/icons/cursor-select.svg";
+import dismissIcon from "@stratakit/icons/dismiss.svg";
 import drawIcon from "@stratakit/icons/draw.svg";
 import filterIcon from "@stratakit/icons/filter.svg";
 import lockIcon from "@stratakit/icons/lock.svg";
@@ -863,7 +863,7 @@ function Subheader({ tabs }: { tabs?: React.ReactNode }) {
 			{tabs ? (
 				<IconButton
 					className={styles.shiftIconRight}
-					icon={closeIcon}
+					icon={dismissIcon}
 					label="Close"
 					variant="ghost"
 					onClick={() => {

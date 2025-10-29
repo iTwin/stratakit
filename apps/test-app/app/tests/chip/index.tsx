@@ -50,7 +50,6 @@ function DismissTest() {
 				return (
 					<div key={variant}>
 						<Chip
-							key={variant}
 							variant={variant}
 							label={variant}
 							onDismiss={() => {

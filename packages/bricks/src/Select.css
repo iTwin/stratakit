@@ -13,33 +13,122 @@
 				grid-area: 1 / 1 / -1 / -1;
 			}
 		}
-
-		&:has(.🥝-select:open) {
-			--🥝disclosure-arrow-rotate: 0.5turn;
-		}
 	}
 }
 
-.🥝Select:is(.🥝Button) {
+.🥝Select {
+	--✨color--default: var(--stratakit-color-text-neutral-primary);
+	--✨color--placeholder: var(--stratakit-color-text-neutral-tertiary);
+	--✨color--disabled: var(--stratakit-color-text-neutral-disabled);
+
+	--✨height: 1.5rem;
+	--✨gap: calc(var(--stratakit-space-x1) + var(--stratakit-space-x05));
 	--✨padding-inline-start: var(--stratakit-space-x2);
 	--✨padding-inline-end: calc(
-		var(--stratakit-space-x1) /* Gap */ +
+		var(--✨gap) +
 		var(--stratakit-space-x4) /* Arrow size */ +
-		var(--stratakit-space-x1) /* Padding - disclosure arrow offset */
+		var(--stratakit-space-x1) /* Arrow padding */
 	);
 
+	--✨shadow-border: 0px 0px 0px 1px var(--🥝Select-border-color) inset;
+
+	/* #region Variant: solid */
+	--✨bg--solid-default: var(--stratakit-color-bg-neutral-base);
+	--✨bg--solid-hover: color-mix(
+		in oklch,
+		var(--✨bg--solid-default) 100%,
+		var(--stratakit-color-glow-hue) var(--stratakit-color-bg-glow-base-hover-\%)
+	);
+	--✨bg--solid-pressed: color-mix(
+		in oklch,
+		var(--✨bg--solid-default) 100%,
+		var(--stratakit-color-glow-hue) var(--stratakit-color-bg-glow-base-pressed-\%)
+	);
+	--✨bg--solid-disabled: var(--stratakit-color-bg-glow-on-surface-disabled);
+
+	--✨shadow--solid:
+		var(--stratakit-shadow-control-button-base-inset), var(--✨shadow-border),
+		var(--stratakit-shadow-control-button-base-drop);
+
+	--✨border--solid-default: var(--stratakit-color-border-shadow-base);
+	--✨border--solid-hover: color-mix(
+		in oklch,
+		var(--✨border--solid-default) 100%,
+		var(--stratakit-color-glow-hue) var(--stratakit-color-border-glow-base-hover-\%)
+	);
+	--✨border--solid-pressed: color-mix(
+		in oklch,
+		var(--✨border--solid-default) 100%,
+		var(--stratakit-color-glow-hue) var(--stratakit-color-border-glow-base-pressed-\%)
+	);
+	--✨border--solid-disabled: transparent;
+	/* #endregion */
+
+	/* #region Variant: outline */
+	--✨bg--outline-default: var(--stratakit-color-bg-control-select);
+	--✨bg--outline-hover: color-mix(
+		in oklch,
+		var(--✨bg--outline-default) 100%,
+		var(--stratakit-color-glow-hue) var(--stratakit-color-bg-glow-base-hover-\%)
+	);
+	--✨bg--outline-pressed: color-mix(
+		in oklch,
+		var(--✨bg--outline-default) 100%,
+		var(--stratakit-color-glow-hue) var(--stratakit-color-bg-glow-base-pressed-\%)
+	);
+	--✨bg--outline-disabled: var(--stratakit-color-bg-control-select);
+
+	--✨border--outline-default: var(--stratakit-color-border-neutral-base);
+	--✨border--outline-hover: color-mix(
+		in oklch,
+		var(--✨border--outline-default) 100%,
+		var(--stratakit-color-glow-hue) var(--stratakit-color-border-glow-base-hover-\%)
+	);
+	--✨border--outline-pressed: color-mix(
+		in oklch,
+		var(--✨border--outline-default) 100%,
+		var(--stratakit-color-glow-hue) var(--stratakit-color-border-glow-base-pressed-\%)
+	);
+	--✨border--outline-disabled: var(--stratakit-color-border-glow-on-surface-disabled);
+	/* #endregion */
+
+	/* #region Variant: ghost */
+	--✨bg--ghost-default: transparent;
+	--✨bg--ghost-hover: var(--stratakit-color-bg-glow-on-surface-neutral-hover);
+	--✨bg--ghost-pressed: var(--stratakit-color-bg-glow-on-surface-neutral-pressed);
+	--✨bg--ghost-disabled: transparent;
+	/* #endregion */
+
 	@layer base {
+		border: none;
+		appearance: none;
+		user-select: none;
+		line-height: 1.2;
+		cursor: pointer;
+
 		min-inline-size: calc(var(--✨padding-inline-start) + 1ch + var(--✨padding-inline-end));
 		text-overflow: ellipsis;
+		font-size: var(--stratakit-font-size-12);
+		border-radius: 4px;
+		background-color: var(--🥝Select-background-color);
+		box-shadow: var(--✨shadow-border);
+		color: var(--✨color--default);
+		transition: background-color 150ms ease-out;
 
 		&:where(select:not([multiple])) {
-			appearance: none;
-			--🥝Button-padding-inline: var(--✨padding-inline-start) var(--✨padding-inline-end);
-			--🥝GhostAligner-inline-offset: var(--✨padding-inline-start);
+			min-block-size: var(--✨height);
+			padding-inline-start: var(--✨padding-inline-start);
+			padding-inline-end: var(--✨padding-inline-end);
 
-			/* > option {
-				background-color: var(--stratakit-color-bg-neutral-base);
-			} */
+			-webkit-tap-highlight-color: var(--stratakit-color-bg-glow-on-surface-neutral-pressed);
+			--🥝Icon-color: var(--🌀Select-state--default, var(--stratakit-color-icon-neutral-base))
+				var(--🌀Select-state--hover, var(--stratakit-color-icon-neutral-primary))
+				var(--🌀Select-state--pressed, var(--stratakit-color-icon-neutral-primary))
+				var(--🌀Select-state--disabled, var(--stratakit-color-icon-neutral-disabled));
+
+			&:where(:has(> option[disabled]:checked)) {
+				color: var(--✨color--placeholder);
+			}
 		}
 
 		&:where(select) {
@@ -50,12 +139,80 @@
 			}
 		}
 	}
+
+	@layer modifiers {
+		&:where([data-_sk-variant="solid"]) {
+			--🥝Select-background-color: var(--🌀Select-state--default, var(--✨bg--solid-default))
+				var(--🌀Select-state--hover, var(--✨bg--solid-hover))
+				var(--🌀Select-state--pressed, var(--✨bg--solid-pressed))
+				var(--🌀Select-state--disabled, var(--✨bg--solid-disabled));
+			--🥝Select-border-color: var(--🌀Select-state--default, var(--✨border--solid-default))
+				var(--🌀Select-state--hover, var(--✨border--solid-hover))
+				var(--🌀Select-state--pressed, var(--✨border--solid-pressed))
+				var(--🌀Select-state--disabled, var(--✨border--solid-disabled));
+			box-shadow: var(--🌀Select-state--default, var(--✨shadow--solid))
+				var(--🌀Select-state--hover, var(--✨shadow--solid))
+				var(--🌀Select-state--pressed, var(--✨shadow-border)) var(--🌀Select-state--disabled, none);
+		}
+
+		&:where([data-_sk-variant="outline"]) {
+			--🥝Select-background-color: var(--🌀Select-state--default, var(--✨bg--outline-default))
+				var(--🌀Select-state--hover, var(--✨bg--outline-hover))
+				var(--🌀Select-state--pressed, var(--✨bg--outline-pressed))
+				var(--🌀Select-state--disabled, var(--✨bg--outline-disabled));
+			--🥝Select-border-color: var(--🌀Select-state--default, var(--✨border--outline-default))
+				var(--🌀Select-state--hover, var(--✨border--outline-hover))
+				var(--🌀Select-state--pressed, var(--✨border--outline-pressed))
+				var(--🌀Select-state--disabled, var(--✨border--outline-disabled));
+		}
+
+		&:where([data-_sk-variant="ghost"]) {
+			--🥝Select-background-color: var(--🌀Select-state--default, var(--✨bg--ghost-default))
+				var(--🌀Select-state--hover, var(--✨bg--ghost-hover))
+				var(--🌀Select-state--pressed, var(--✨bg--ghost-pressed))
+				var(--🌀Select-state--disabled, var(--✨bg--ghost-disabled));
+			--🥝Select-border-color: transparent;
+		}
+	}
+
+	@layer states {
+		@media (any-hover: hover) {
+			&:where(:hover) {
+				--🌀Select-state: var(--🌀Select-state--hover);
+			}
+		}
+
+		/* Reuse hover state when an associated popover is open. */
+		&:where([data-has-popover-open]) {
+			--🌀Select-state: var(--🌀Select-state--hover);
+		}
+
+		&:where(:active) {
+			--🌀Select-state: var(--🌀Select-state--pressed);
+		}
+
+		&:where(:disabled, [aria-disabled="true"]) {
+			--🌀Select-state: var(--🌀Select-state--disabled);
+			color: var(--✨color--disabled);
+			cursor: not-allowed;
+			-webkit-tap-highlight-color: transparent;
+		}
+	}
+
+	@layer base.🌀 {
+		/* See https://kizu.dev/cyclic-toggles/ */
+		--🌀Select-state: var(--🌀Select-state--default);
+		--🌀Select-state--default: var(--🌀Select-state,);
+		--🌀Select-state--hover: var(--🌀Select-state,);
+		--🌀Select-state--pressed: var(--🌀Select-state,);
+		--🌀Select-state--disabled: var(--🌀Select-state,);
+	}
 }
 
-.🥝SelectArrow:is(.🥝DisclosureArrow) {
+.🥝SelectArrow {
 	@layer base {
 		justify-self: end;
-		margin-inline-end: var(--stratakit-space-x1); /* (padding - disclosure offset) */
+		margin-inline-end: var(--stratakit-space-x1);
 		pointer-events: none;
 		z-index: 1; /* should be above the button */
 
@@ -94,7 +251,6 @@ selectedcontent {
 }
 
 option {
-	/* --✨bg--default: var(--stratakit-color-bg-neutral-base); */
 	--✨bg--default: transparent;
 	--✨bg--hover: var(--stratakit-color-bg-glow-on-surface-neutral-hover);
 	--✨bg--pressed: var(--stratakit-color-bg-glow-on-surface-neutral-pressed);
@@ -108,16 +264,16 @@ option {
 		border-radius: 4px;
 		padding-inline: 4px;
 
-		background-color: var(--🥝select-option-background-color);
+		background-color: var(--🥝Select-option-background-color);
 
-		--🥝select-option-background-color: var(--🌀select-option-state--default, var(--✨bg--default))
+		--🥝Select-option-background-color: var(--🌀select-option-state--default, var(--✨bg--default))
 			var(--🌀select-option-state--hover, var(--✨bg--hover))
 			var(--🌀select-option-state--pressed, var(--✨bg--pressed))
 			var(--🌀select-option-state--disabled, var(--✨bg--default));
 
 		color: var(--stratakit-color-text-neutral-primary);
 
-		--🥝icon-color: var(--🌀select-option-state--default, var(--stratakit-color-icon-neutral-base))
+		--🥝Icon-color: var(--🌀select-option-state--default, var(--stratakit-color-icon-neutral-base))
 			var(--🌀select-option-state--hover, var(--stratakit-color-icon-neutral-hover))
 			var(--🌀select-option-state--pressed, var(--stratakit-color-icon-neutral-hover))
 			var(--🌀select-option-state--active, var(--stratakit-color-icon-accent-strong))
@@ -163,7 +319,30 @@ option {
 }
 
 @media (forced-colors: active) {
+	.🥝Select {
+		background-color: ButtonFace;
+		border: 1px solid ButtonBorder;
+		color: ButtonText;
+
+		&:where(:has(> option[disabled]:checked)) {
+			color: GrayText;
+		}
+
+		&:where(:disabled, [aria-disabled="true"]) {
+			border-color: GrayText;
+			color: GrayText;
+
+			+ .🥝SelectArrow {
+				--🥝Icon-color: GrayText;
+			}
+		}
+	}
+
 	option {
+		&::checkmark {
+			color: SelectedItemText;
+		}
+
 		&:where(:checked) {
 			forced-color-adjust: none;
 			background-color: SelectedItem;

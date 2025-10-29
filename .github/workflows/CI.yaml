@@ -21,7 +21,7 @@ jobs:
           version: 10.17.0
 
       - name: Use Node 22.x
-        uses: actions/setup-node@v5
+        uses: actions/setup-node@v6
         with:
           node-version: 22.x
           cache: "pnpm"
@@ -41,7 +41,7 @@ jobs:
           version: 10.17.0
 
       - name: Use Node 22.x
-        uses: actions/setup-node@v5
+        uses: actions/setup-node@v6
         with:
           node-version: 22.x
           cache: "pnpm"
@@ -64,7 +64,7 @@ jobs:
       - uses: biomejs/setup-biome@v2
 
       - name: Use Node 22.x
-        uses: actions/setup-node@v5
+        uses: actions/setup-node@v6
         with:
           node-version: 22.x
           cache: "pnpm"
@@ -99,7 +99,7 @@ jobs:
           version: 10.17.0
 
       - name: Use Node 22.x
-        uses: actions/setup-node@v5
+        uses: actions/setup-node@v6
         with:
           node-version: 22.x
           cache: "pnpm"
@@ -118,7 +118,7 @@ jobs:
     needs: install
     runs-on: ubuntu-latest
     container:
-      image: mcr.microsoft.com/playwright:v1.55.0-noble
+      image: mcr.microsoft.com/playwright:v1.56.1-noble
     strategy:
       fail-fast: false
       matrix:

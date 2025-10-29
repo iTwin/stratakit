@@ -142,7 +142,17 @@ DEV: FieldDescription.displayName = "Field.Description";
 // ----------------------------------------------------------------------------
 
 interface FieldCollectionItemControlProps
-	extends Pick<CollectionItemProps, "render" | "id"> {}
+	extends Pick<CollectionItemProps, "render" | "id"> {
+	render:
+		| React.JSX.Element
+		| ((
+				props: Omit<
+					// biome-ignore lint/suspicious/noExplicitAny: we don't know the element type here
+					React.HTMLAttributes<any> & { ref?: React.Ref<any> },
+					"children" // omit children to avoid errors with `<input>` elements
+				>,
+		  ) => React.ReactNode);
+}
 
 /**
  * The control component for the field.

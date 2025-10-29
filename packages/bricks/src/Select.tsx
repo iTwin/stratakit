@@ -7,7 +7,7 @@ import * as React from "react";
 import { Role } from "@ariakit/react/role";
 import { forwardRef, isBrowser } from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
-import { DisclosureArrow } from "./~utils.icons.js";
+import { CaretsUpDown } from "./~utils.icons.js";
 import { useFieldControlType } from "./Field.internal.js";
 
 import type {
@@ -51,7 +51,7 @@ const HtmlSelectContext = React.createContext<
  * <Label htmlFor="fruit">Fruit</Label>
  * <Description id="fruit-description">Something to include in a fruit salad.</Description>
  * <Select.Root>
- *   <Select.HtmlSelect id="fruit" aria-labelledby="fruit-description">
+ *   <Select.HtmlSelect id="fruit" aria-describedby="fruit-description">
  *     <option value="kiwi">Kiwi</option>
  *     <option value="mango">Mango</option>
  *     <option value="papaya">Papaya</option>
@@ -123,12 +123,13 @@ const HtmlSelect = forwardRef<"select", HtmlSelectProps>(
 			<>
 				<Role.select
 					{...rest}
-					className={cx("🥝Button", "🥝Select", props.className)}
+					className={cx("🥝Select", props.className)}
 					data-_sk-tone="neutral"
 					data-_sk-variant={variant}
 					ref={forwardedRef}
 				/>
-				<DisclosureArrow className="🥝SelectArrow" />
+
+				<CaretsUpDown className="🥝SelectArrow" />
 			</>
 		);
 	},

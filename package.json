@@ -9,7 +9,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "format": "prettier --write . && biome format . --fix",
-    "astro": "astro"
+    "astro": "astro",
+    "extract-api": "node --env-file-if-exists=.env api.ts"
   },
   "dependencies": {
     "@astrojs/react": "^4.3.1",
@@ -29,6 +30,7 @@
     "@types/react-dom": "^19.1.9",
     "prettier": "~3.6.2",
     "remark-directive": "^4.0.0",
+    "ts-morph": "^27.0.2",
     "unist-util-visit": "^5.0.0"
   },
   "packageManager": "pnpm@10.15.1",

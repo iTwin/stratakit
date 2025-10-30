@@ -1,0 +1,17 @@
+---
+// Displays an extracted JSDoc comment for a given ID.
+
+import { render } from "astro:content";
+import { getEntry, type CollectionEntry } from "astro:content";
+
+interface Props {
+	id: CollectionEntry<"jsdoc">["id"];
+}
+
+const { id } = Astro.props;
+
+const entry = await getEntry("jsdoc", id);
+const { Content } = entry ? await render(entry) : {};
+---
+
+{Content && <Content />}

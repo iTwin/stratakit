@@ -30,6 +30,7 @@
 		"package.json": "pnpm-lock.yaml, pnpm-workspace.yaml",
 		"astro.config.mjs": "tsconfig.json",
 		".gitignore": ".gitattributes",
-		"biome.json": ".prettierrc, .prettierignore"
+		"biome.json": ".prettierrc, .prettierignore",
+		"api.ts": "api.json"
 	}
 }

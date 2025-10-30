@@ -1,0 +1,17 @@
+---
+// See https://starlight.astro.build/reference/overrides/#sidebar
+
+import StarlightSidebar from "@astrojs/starlight/components/Sidebar.astro";
+
+const { id, sidebar } = Astro.locals.starlightRoute;
+
+if (id.startsWith("reference/")) {
+	for (const item of sidebar) {
+		if (item.type === "link" && item.href === "/reference") {
+			item.isCurrent = true;
+		}
+	}
+}
+---
+
+<StarlightSidebar items={sidebar} />

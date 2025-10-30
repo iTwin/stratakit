@@ -161,16 +161,13 @@
 			}
 		}
 
-		&:where(
-				:is(input, textarea):user-valid,
-				:has(:is(input, textarea):user-valid)
-			) {
+		&:where(:is(input, textarea):user-valid, :has(:is(input, textarea):user-valid)) {
 			--🥝Icon-color: var(--stratakit-color-icon-positive-base);
 			--🥝TextBox-border-color: var(--✨border--valid);
 		}
 
 		&:where(
-				:is(:user-invalid, [aria-invalid="true"]),
+				:is(input, textarea):is(:user-invalid, [aria-invalid="true"]),
 				:has(:is(input, textarea):is(:user-invalid, [aria-invalid="true"]))
 			) {
 			--🥝Icon-color: var(--stratakit-color-icon-critical-base);

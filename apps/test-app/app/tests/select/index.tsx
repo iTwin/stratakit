@@ -4,7 +4,6 @@
  *--------------------------------------------------------------------------------------------*/
 
 import { Field, Select } from "@stratakit/bricks";
-import { Icon } from "@stratakit/foundations";
 import { definePage } from "~/~utils.tsx";
 
 import placeholderIconHref from "@stratakit/icons/placeholder.svg";

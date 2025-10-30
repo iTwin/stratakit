@@ -17,6 +17,7 @@
 		var(--stratakit-color-glow-hue) var(--stratakit-color-border-glow-base-hover-\%)
 	);
 	--✨border--focus: var(--stratakit-color-border-accent-strong);
+	--✨border--valid: var(--stratakit-color-border-accent-strong);
 	--✨border--invalid: var(--stratakit-color-border-critical-base);
 	--✨border--disabled: var(--stratakit-color-border-glow-on-surface-disabled);
 	--✨color--default: var(--stratakit-color-text-neutral-primary);
@@ -158,6 +159,14 @@
 				--🥝TextBox-border-color: var(--✨border--focus);
 				--🥝Icon-color: var(--stratakit-color-icon-accent-strong);
 			}
+		}
+
+		&:where(
+				:is(:user-valid, [aria-invalid="false"]),
+				:has(:is(input, textarea):is(:user-valid, [aria-invalid="false"]))
+			) {
+			--🥝Icon-color: var(--stratakit-color-icon-positive-base);
+			--🥝TextBox-border-color: var(--✨border--valid);
 		}
 
 		&:where(

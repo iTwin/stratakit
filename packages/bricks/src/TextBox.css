@@ -17,6 +17,7 @@
 		var(--stratakit-color-glow-hue) var(--stratakit-color-border-glow-base-hover-\%)
 	);
 	--✨border--focus: var(--stratakit-color-border-accent-strong);
+	--✨border--valid: var(--stratakit-color-border-accent-strong);
 	--✨border--invalid: var(--stratakit-color-border-critical-base);
 	--✨border--disabled: var(--stratakit-color-border-glow-on-surface-disabled);
 	--✨color--default: var(--stratakit-color-text-neutral-primary);
@@ -160,8 +161,13 @@
 			}
 		}
 
+		&:where(:is(input, textarea):user-valid, :has(:is(input, textarea):user-valid)) {
+			--🥝Icon-color: var(--stratakit-color-icon-positive-base);
+			--🥝TextBox-border-color: var(--✨border--valid);
+		}
+
 		&:where(
-				:is(:user-invalid, [aria-invalid="true"]),
+				:is(input, textarea):is(:user-invalid, [aria-invalid="true"]),
 				:has(:is(input, textarea):is(:user-invalid, [aria-invalid="true"]))
 			) {
 			--🥝Icon-color: var(--stratakit-color-icon-critical-base);

@@ -249,88 +249,15 @@
 	}
 }
 
-@supports (appearance: base-select) {
-	selectedcontent {
-		@layer base {
-			display: inline-flex;
-			align-items: center;
-			flex-shrink: 0;
-			gap: var(--stratakit-space-x1);
-		}
-	}
+.🥝SelectSelectedContent:is(.🥝ListItem) {
+	@layer base {
+		--🥝Icon-color: inherit;
+		color: inherit;
+		min-block-size: unset;
+		padding-inline: unset;
 
-	option {
-		--✨bg--default: transparent;
-		--✨bg--hover: var(--stratakit-color-bg-glow-on-surface-neutral-hover);
-		--✨bg--pressed: var(--stratakit-color-bg-glow-on-surface-neutral-pressed);
-		--✨bg--disabled: transparent;
-
-		--✨color--default: var(--stratakit-color-text-neutral-primary);
-		--✨color--active: var(--stratakit-color-text-accent-strong);
-		--✨color--disabled: var(--✨bg--disabled);
-
-		@layer base {
-			border-radius: 4px;
-			padding-inline: 4px;
-
-			background-color: var(--🥝Select-option-background-color);
-
-			--🥝Select-option-background-color: var(
-					--🌀select-option-state--default,
-					var(--✨bg--default)
-				)
-				var(--🌀select-option-state--hover, var(--✨bg--hover))
-				var(--🌀select-option-state--pressed, var(--✨bg--pressed))
-				var(--🌀select-option-state--disabled, var(--✨bg--default));
-
-			color: var(--stratakit-color-text-neutral-primary);
-
-			--🥝Icon-color: var(
-					--🌀select-option-state--default,
-					var(--stratakit-color-icon-neutral-base)
-				)
-				var(--🌀select-option-state--hover, var(--stratakit-color-icon-neutral-hover))
-				var(--🌀select-option-state--pressed, var(--stratakit-color-icon-neutral-hover))
-				var(--🌀select-option-state--active, var(--stratakit-color-icon-accent-strong))
-				var(--🌀select-option-state--active-hover, var(--stratakit-color-icon-accent-strong))
-				var(--🌀select-option-state--disabled, var(--stratakit-color-icon-neutral-disabled));
-
-			&::checkmark {
-				order: 1;
-				margin-left: auto;
-				content: "✓";
-				color: var(--stratakit-color-icon-neutral-base);
-			}
-		}
-
-		@layer states {
-			@media (any-hover: hover) {
-				&:where(:hover) {
-					--🌀select-option-state: var(--🌀select-option-state--hover);
-				}
-			}
-
-			&:where(:active) {
-				--🌀select-option-state: var(--🌀select-option-state--pressed);
-			}
-
-			&:where(:disabled, [aria-disabled="true"]) {
-				--🌀select-option-state: var(--🌀select-option-state--disabled);
-				cursor: not-allowed;
-				color: var(--stratakit-color-text-neutral-disabled);
-			}
-		}
-
-		@layer base.🌀 {
-			/* See https://kizu.dev/cyclic-toggles/ */
-			--🌀select-option-state: var(--🌀select-option-state--default);
-			--🌀select-option-state--default: var(--🌀select-option-state,);
-			--🌀select-option-state--hover: var(--🌀select-option-state,);
-			--🌀select-option-state--pressed: var(--🌀select-option-state,);
-			--🌀select-option-state--active: var(--🌀select-option-state,);
-			--🌀select-option-state--active-hover: var(--🌀select-option-state,);
-			--🌀select-option-state--disabled: var(--🌀select-option-state,);
-		}
+		/* align-items: unset;
+		align-content: unset; */
 	}
 }
 

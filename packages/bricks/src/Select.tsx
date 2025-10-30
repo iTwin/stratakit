@@ -5,6 +5,8 @@
 
 import * as React from "react";
 import { Role } from "@ariakit/react/role";
+import { Text } from "@stratakit/bricks";
+import { Icon } from "@stratakit/foundations";
 import { forwardRef, isBrowser } from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
 import { CaretsUpDown } from "./~utils.icons.js";
@@ -137,4 +139,116 @@ const HtmlSelect = forwardRef<"select", HtmlSelectProps>(
 
 // ----------------------------------------------------------------------------
 
-export { SelectRoot as Root, HtmlSelect };
+interface OptionProps
+	extends Omit<React.OptionHTMLAttributes<HTMLOptionElement>, "label"> {
+	/**
+	 * The content to display for this option.
+	 * If `label` is provided, this becomes optional for backward compatibility.
+	 */
+	children?: React.ReactNode;
+
+	/**
+	 * The primary text label for the option. If provided, `children` becomes optional.
+	 */
+	label?: React.ReactNode;
+
+	/**
+	 * An optional icon displayed before the option label.
+	 * Can be a URL of an SVG from the `@stratakit/icons` package,
+	 * or a custom JSX icon.
+	 */
+	icon?: string | React.JSX.Element;
+}
+
+/**
+ * An option component to be used inside `Select.HtmlSelect`. This is a wrapper around the
+ * HTML `<option>` element that accepts children for the option content, or `label` and `icon` props.
+ *
+ * Example usage:
+ * ```tsx
+ * <Select.HtmlSelect>
+ *   <Select.Option value="1">Option 1</Select.Option>
+ *   <Select.Option value="2" label="Option 2" />
+ *   <Select.Option value="3" label="Option 3" icon="path/to/icon.svg" />
+ * </Select.HtmlSelect>
+ * ```
+ *
+ * The usage of this component largely mirrors how the `<option>` element would be used in React.
+ * You can use the same familiar props, including `value`, `disabled`, `selected`, etc.
+ *
+ * @see https://react.dev/reference/react-dom/components/option
+ */
+const Option = forwardRef<"option", OptionProps>((props, forwardedRef) => {
+	const { children, label, icon, ...rest } = props;
+
+	// Determine the content to display
+	const content = label ?? children;
+
+	return (
+		<option
+			{...rest}
+			className={cx("🥝ListItem 🥝DropdownMenuItem", props.className)}
+			ref={forwardedRef}
+		>
+			{icon && typeof icon === "string" ? (
+				<>
+					<Icon className="🥝ListItemDecoration" href={icon} />
+					<Text
+						render={<span />}
+						className="🥝ListItemContent"
+						variant="body-sm"
+					>
+						{content}
+					</Text>
+				</>
+			) : icon && React.isValidElement(icon) ? (
+				<>
+					{icon}
+					{content}
+				</>
+			) : (
+				content
+			)}
+		</option>
+	);
+});
+
+// ----------------------------------------------------------------------------
+
+interface SelectedContentProps
+	extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+	/**
+	 * The content to display in the selected content button.
+	 */
+	children: React.ReactNode;
+}
+
+/**
+ * Lorem ipsum.
+ *
+ * Example usage:
+ * ```tsx
+ * <Select.Root>
+ *   <Select.SelectedContent />
+ * </Select.Root>
+ * ```
+ */
+const SelectedContent = forwardRef<"button", SelectedContentProps>(
+	(props, forwardedRef) => {
+		const { ...rest } = props;
+
+		return (
+			<button>
+				<selectedcontent
+					{...rest}
+					className={cx("🥝ListItem 🥝SelectSelectedContent", props.className)}
+					ref={forwardedRef}
+				/>
+			</button>
+		);
+	},
+);
+
+// ----------------------------------------------------------------------------
+
+export { SelectRoot as Root, HtmlSelect, Option, SelectedContent };

@@ -3,7 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 .🥝DropdownMenu,
-::picker(select) {
+.🥝Select::picker(select) {
 	--✨bg: var(--stratakit-color-bg-elevation-level-1);
 	--✨padding: var(--stratakit-space-x1);
 
@@ -24,11 +24,11 @@
 	}
 }
 
-::picker(select) {
+.🥝Select::picker(select) {
 	@layer base {
 		appearance: base-select;
 		border: none;
-		margin-block-start: var(--stratakit-space-x1);
+		margin-block: var(--stratakit-space-x1);
 	}
 }
 
@@ -43,15 +43,24 @@
 .🥝DropdownMenuItem:is(.🥝ListItem) {
 	@layer base {
 		border-radius: 4px;
+
+		&:where(option)::checkmark {
+			order: 1;
+			margin-left: auto;
+			content: "✓";
+			color: var(--stratakit-color-icon-neutral-base);
+		}
 	}
 
 	@layer states {
-		&:where([role="menuitemcheckbox"]:not([aria-checked="true"])) {
-			--🥝DropdownMenuCheckmark-visibility: hidden;
-		}
+		&:where(:not(option)) {
+			&:where([role="menuitemcheckbox"]:not([aria-checked="true"])) {
+				--🥝DropdownMenuCheckmark-visibility: hidden;
+			}
 
-		&:where([data-has-popover-open]:not(:active)) {
-			--🌀ListItem-state: var(--🌀ListItem-state--hover);
+			&:where([data-has-popover-open]:not(:active)) {
+				--🌀ListItem-state: var(--🌀ListItem-state--hover);
+			}
 		}
 	}
 }
@@ -83,7 +92,7 @@
 
 @media (forced-colors: active) {
 	.🥝DropdownMenu,
-	::picker(select) {
+	.🥝Select::picker(select) {
 		border: 1px solid;
 	}
 }

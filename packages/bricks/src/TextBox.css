@@ -162,8 +162,8 @@
 		}
 
 		&:where(
-				:is(:user-valid, [aria-invalid="false"]),
-				:has(:is(input, textarea):is(:user-valid, [aria-invalid="false"]))
+				:is(input, textarea):user-valid,
+				:has(:is(input, textarea):user-valid)
 			) {
 			--🥝Icon-color: var(--stratakit-color-icon-positive-base);
 			--🥝TextBox-border-color: var(--✨border--valid);

@@ -6,6 +6,8 @@
 import { Badge } from "@stratakit/bricks";
 import { definePage } from "~/~utils.tsx";
 
+import placeholderIcon from "@stratakit/icons/placeholder.svg";
+
 export const handle = { title: "Badge" };
 
 const tones = [
@@ -46,6 +48,8 @@ function VisualTest() {
 							key={tone}
 							tone={tone}
 							variant={variant}
+							iconStart={placeholderIcon}
+							iconEnd={placeholderIcon}
 							style={{ textTransform: "capitalize" }}
 						/>
 					))}

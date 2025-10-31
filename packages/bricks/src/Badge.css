@@ -18,12 +18,14 @@
 		font-weight: 500;
 		block-size: 1.25rem;
 		padding-inline: var(--stratakit-space-x2);
+		column-gap: var(--stratakit-space-x1);
 	}
 
 	@layer modifiers {
 		&:where([data-_sk-variant="solid"]) {
 			--🥝Badge-border-color: var(--stratakit-color-border-glow-strong-default);
 			--🥝Badge-text-color: var(--stratakit-color-text-neutral-emphasis);
+			--🥝Icon-color: var(--stratakit-color-icon-neutral-emphasis);
 
 			&:where([data-_sk-tone="neutral"]) {
 				--🥝Badge-background-color: var(--stratakit-color-bg-mono-base);
@@ -55,36 +57,42 @@
 				--🥝Badge-background-color: var(--stratakit-color-bg-mono-muted);
 				--🥝Badge-border-color: var(--stratakit-color-border-mono-muted);
 				--🥝Badge-text-color: var(--stratakit-color-text-mono-faded);
+				--🥝Icon-color: var(--stratakit-color-icon-neutral-faded);
 			}
 
 			&:where([data-_sk-tone="info"]) {
 				--🥝Badge-background-color: var(--stratakit-color-bg-info-muted);
 				--🥝Badge-border-color: var(--stratakit-color-border-info-muted);
 				--🥝Badge-text-color: var(--stratakit-color-text-info-faded);
+				--🥝Icon-color: var(--stratakit-color-icon-info-faded);
 			}
 
 			&:where([data-_sk-tone="positive"]) {
 				--🥝Badge-background-color: var(--stratakit-color-bg-positive-muted);
 				--🥝Badge-border-color: var(--stratakit-color-border-positive-muted);
 				--🥝Badge-text-color: var(--stratakit-color-text-positive-faded);
+				--🥝Icon-color: var(--stratakit-color-icon-positive-faded);
 			}
 
 			&:where([data-_sk-tone="attention"]) {
 				--🥝Badge-background-color: var(--stratakit-color-bg-attention-muted);
 				--🥝Badge-border-color: var(--stratakit-color-border-attention-muted);
 				--🥝Badge-text-color: var(--stratakit-color-text-attention-faded);
+				--🥝Icon-color: var(--stratakit-color-icon-attention-faded);
 			}
 
 			&:where([data-_sk-tone="critical"]) {
 				--🥝Badge-background-color: var(--stratakit-color-bg-critical-muted);
 				--🥝Badge-border-color: var(--stratakit-color-border-critical-muted);
 				--🥝Badge-text-color: var(--stratakit-color-text-critical-faded);
+				--🥝Icon-color: var(--stratakit-color-icon-critical-faded);
 			}
 
 			&:where([data-_sk-tone="accent"]) {
 				--🥝Badge-background-color: var(--stratakit-color-bg-accent-muted);
 				--🥝Badge-border-color: var(--stratakit-color-border-accent-muted);
 				--🥝Badge-text-color: var(--stratakit-color-text-accent-faded);
+				--🥝Icon-color: var(--stratakit-color-icon-accent-faded);
 			}
 		}
 
@@ -94,31 +102,37 @@
 			&:where([data-_sk-tone="neutral"]) {
 				--🥝Badge-text-color: var(--stratakit-color-text-mono-base);
 				--🥝Badge-border-color: var(--stratakit-color-border-mono-base);
+				--🥝Icon-color: var(--stratakit-color-icon-neutral-base);
 			}
 
 			&:where([data-_sk-tone="info"]) {
 				--🥝Badge-text-color: var(--stratakit-color-text-info-base);
 				--🥝Badge-border-color: var(--stratakit-color-border-info-base);
+				--🥝Icon-color: var(--stratakit-color-icon-info-base);
 			}
 
 			&:where([data-_sk-tone="positive"]) {
 				--🥝Badge-text-color: var(--stratakit-color-text-positive-base);
 				--🥝Badge-border-color: var(--stratakit-color-border-positive-base);
+				--🥝Icon-color: var(--stratakit-color-icon-positive-base);
 			}
 
 			&:where([data-_sk-tone="attention"]) {
 				--🥝Badge-text-color: var(--stratakit-color-text-attention-base);
 				--🥝Badge-border-color: var(--stratakit-color-border-attention-base);
+				--🥝Icon-color: var(--stratakit-color-icon-attention-base);
 			}
 
 			&:where([data-_sk-tone="critical"]) {
 				--🥝Badge-text-color: var(--stratakit-color-text-critical-base);
 				--🥝Badge-border-color: var(--stratakit-color-border-critical-base);
+				--🥝Icon-color: var(--stratakit-color-icon-critical-base);
 			}
 
 			&:where([data-_sk-tone="accent"]) {
 				--🥝Badge-text-color: var(--stratakit-color-text-accent-base);
 				--🥝Badge-border-color: var(--stratakit-color-border-accent-base);
+				--🥝Icon-color: var(--stratakit-color-icon-accent-base);
 			}
 		}
 	}

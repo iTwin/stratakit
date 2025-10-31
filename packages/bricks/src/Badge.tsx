@@ -3,7 +3,9 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
+import * as React from "react";
 import { Role } from "@ariakit/react/role";
+import { Icon } from "@stratakit/foundations";
 import { forwardRef } from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
 
@@ -26,6 +28,22 @@ interface BadgeProps extends Omit<BaseProps<"span">, "children"> {
 	 * @default "solid"
 	 */
 	variant?: "solid" | "muted" | "outline";
+
+	/**
+	 * Icon to be displayed at the start of the badge.
+	 *
+	 * Can be a URL of an SVG from the `@stratakit/icons` package,
+	 * or a custom JSX icon.
+	 */
+	iconStart?: string | React.JSX.Element;
+
+	/**
+	 * Icon to be displayed at the end of the badge.
+	 *
+	 * Can be a URL of an SVG from the `@stratakit/icons` package,
+	 * or a custom JSX icon.
+	 */
+	iconEnd?: string | React.JSX.Element;
 }
 
 /**
@@ -34,22 +52,37 @@ interface BadgeProps extends Omit<BaseProps<"span">, "children"> {
  * Example:
  * ```tsx
  * <Badge label="Value" />
- * <Badge label="Value" tone="info" variant="outline" />
+ * <Badge label="Value" tone="info" variant="outline" iconStart={…} iconEnd={…} />
  * ```
  */
 const Badge = forwardRef<"span", BadgeProps>((props, forwardedRef) => {
-	const { tone = "neutral", variant = "solid", label, ...rest } = props;
+	const {
+		tone = "neutral",
+		variant = "solid",
+		label,
+		iconStart,
+		iconEnd,
+		...rest
+	} = props;
 
-	return (
-		<Role.span
-			{...rest}
-			data-_sk-tone={tone}
-			data-_sk-variant={variant}
-			className={cx("🥝Badge", props.className)}
-			ref={forwardedRef}
-		>
-			{label}
-		</Role.span>
+	return React.createElement(
+		Role.span,
+		{
+			...rest,
+			"data-_sk-tone": tone,
+			"data-_sk-variant": variant,
+			className: cx("🥝Badge", props.className),
+			ref: forwardedRef,
+		},
+		iconStart &&
+			(typeof iconStart === "string"
+				? React.createElement(Icon, { href: iconStart })
+				: iconStart),
+		label,
+		iconEnd &&
+			(typeof iconEnd === "string"
+				? React.createElement(Icon, { href: iconEnd })
+				: iconEnd),
 	);
 });
 DEV: Badge.displayName = "Badge";

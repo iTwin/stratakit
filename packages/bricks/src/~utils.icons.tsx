@@ -47,3 +47,10 @@ export const DisclosureArrow = forwardRef<"svg", DisclosureArrowProps>(
 	},
 );
 DEV: DisclosureArrow.displayName = "DisclosureArrow";
+
+// ----------------------------------------------------------------------------
+
+export const CaretsUpDown = createIconFromPath(
+	"M9.647 9.646a.5.5 0 0 1 .707.707l-2 2a.5.5 0 0 1-.707 0l-2-2a.5.5 0 1 1 .707-.707L8 11.292l1.647-1.646ZM7.725 3.582a.501.501 0 0 1 .629.064l2 2a.5.5 0 0 1-.707.707L8 4.707 6.354 6.353a.5.5 0 1 1-.707-.707l2-2 .078-.064Z",
+);
+DEV: CaretsUpDown.displayName = "CaretsUpDown";

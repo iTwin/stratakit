@@ -53,8 +53,6 @@ In some cases, the **Avatar** may be considered presentational, since text ident
 
 :::
 
-In some cases, the name of the individual or organization
-
 ## Configurations
 
 ### Sizes

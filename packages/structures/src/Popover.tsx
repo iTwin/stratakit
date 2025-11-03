@@ -131,6 +131,15 @@ interface PopoverProps
 
 /**
  * A component used to display content in a non-modal window overlay that is placed relative to a trigger element.
+ *
+ * Example:
+ * ```tsx
+ * <Popover
+ *   content={<>Content</>}
+ * >
+ *   <Button>Open</Button>
+ * </Popover>
+ * ```
  */
 const Popover = forwardRef<"div", PopoverProps>((props, forwardedRef) => {
 	const { children, content, open, setOpen, placement, ...rest } = props;

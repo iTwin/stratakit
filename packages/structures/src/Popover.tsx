@@ -7,13 +7,108 @@ import * as React from "react";
 import * as AkPopover from "@ariakit/react/popover";
 import { PortalContext } from "@ariakit/react/portal";
 import { useStoreState } from "@ariakit/react/store";
+import { Button } from "@stratakit/bricks";
 import {
 	forwardRef,
 	usePopoverApi,
 } from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
 
-import type { BaseProps } from "@stratakit/foundations/secret-internals";
+import type {
+	BaseProps,
+	FocusableProps,
+} from "@stratakit/foundations/secret-internals";
+
+// ----------------------------------------------------------------------------
+
+interface PopoverProviderProps
+	extends Pick<
+		AkPopover.PopoverProviderProps,
+		"children" | "open" | "setOpen" | "placement"
+	> {}
+
+function PopoverProvider(props: PopoverProviderProps) {
+	const { children, open, setOpen, placement = "bottom-start" } = props;
+
+	const store = AkPopover.usePopoverStore();
+	return (
+		<AkPopover.PopoverProvider
+			open={open}
+			setOpen={setOpen}
+			placement={placement}
+			store={store}
+		>
+			{children}
+		</AkPopover.PopoverProvider>
+	);
+}
+DEV: PopoverProvider.displayName = "Popover.Provider";
+
+// ----------------------------------------------------------------------------
+
+interface PopoverDisclosureProps extends FocusableProps<"button"> {}
+
+const PopoverDisclosure = forwardRef<"button", PopoverDisclosureProps>(
+	(props, forwardedRef) => {
+		const store = AkPopover.usePopoverContext();
+		const open = useStoreState(store, "open");
+		const defaultId = React.useId();
+		return (
+			<AkPopover.PopoverDisclosure
+				id={defaultId}
+				render={<Button />}
+				{...props}
+				data-has-popover-open={open || undefined}
+				ref={forwardedRef}
+			/>
+		);
+	},
+);
+DEV: PopoverDisclosure.displayName = "Popover.Disclosure";
+
+// ----------------------------------------------------------------------------
+
+interface PopoverRootProps
+	extends BaseProps,
+		Pick<AkPopover.PopoverProps, "unmountOnHide"> {}
+
+const PopoverRoot = forwardRef<"div", PopoverRootProps>(
+	(props, forwardedRef) => {
+		const { children, unmountOnHide, ...rest } = props;
+		const store = AkPopover.usePopoverContext();
+		const popoverElement = useStoreState(store, "popoverElement");
+		const open = useStoreState(store, "open");
+		const popoverProps = usePopoverApi({
+			element: popoverElement,
+			open,
+		});
+
+		const contentElement = useStoreState(store, "contentElement");
+		const disclosureElement = useStoreState(store, "disclosureElement");
+		const triggerId = disclosureElement?.id || undefined;
+		const labelledBy = props["aria-label"] ? undefined : triggerId;
+		return (
+			<AkPopover.Popover
+				aria-labelledby={labelledBy}
+				portal
+				unmountOnHide={unmountOnHide}
+				{...rest}
+				gutter={7}
+				style={{ ...popoverProps.style, ...props.style }}
+				wrapperProps={{ popover: popoverProps.popover }}
+				className={cx("🥝Popover", props.className)}
+				ref={forwardedRef}
+			>
+				<PortalContext.Provider value={contentElement ?? null}>
+					{children}
+				</PortalContext.Provider>
+			</AkPopover.Popover>
+		);
+	},
+);
+DEV: PopoverRoot.displayName = "Popover.Root";
+
+// ----------------------------------------------------------------------------
 
 interface PopoverProps
 	extends Omit<BaseProps, "content">,
@@ -38,54 +133,15 @@ interface PopoverProps
  * A component used to display content in a non-modal window overlay that is placed relative to a trigger element.
  */
 const Popover = forwardRef<"div", PopoverProps>((props, forwardedRef) => {
-	const {
-		children,
-		content,
-		open: openProp,
-		setOpen,
-		placement = "bottom-start",
-		...rest
-	} = props;
+	const { children, content, open, setOpen, placement, ...rest } = props;
 
-	const store = AkPopover.usePopoverStore();
-	const open = useStoreState(store, "open");
-	const popoverElement = useStoreState(store, "popoverElement");
-	const contentElement = useStoreState(store, "contentElement");
-	const disclosureElement = useStoreState(store, "disclosureElement");
-	const popoverProps = usePopoverApi({
-		element: popoverElement,
-		open,
-	});
-	const defaultTriggerId = React.useId();
-	const triggerId = disclosureElement?.id ?? defaultTriggerId;
-	const labelledBy = props["aria-label"] ? undefined : triggerId;
 	return (
-		<AkPopover.PopoverProvider
-			placement={placement}
-			open={openProp}
-			setOpen={setOpen}
-			store={store}
-		>
-			<AkPopover.PopoverDisclosure
-				id={defaultTriggerId}
-				data-has-popover-open={open || undefined}
-				render={children}
-			/>
-			<AkPopover.Popover
-				aria-labelledby={labelledBy}
-				portal
-				{...rest}
-				gutter={7}
-				style={{ ...popoverProps.style, ...props.style }}
-				wrapperProps={{ popover: popoverProps.popover }}
-				className={cx("🥝Popover", props.className)}
-				ref={forwardedRef}
-			>
-				<PortalContext.Provider value={contentElement}>
-					{content}
-				</PortalContext.Provider>
-			</AkPopover.Popover>
-		</AkPopover.PopoverProvider>
+		<PopoverProvider open={open} setOpen={setOpen} placement={placement}>
+			<PopoverDisclosure render={children} />
+			<PopoverRoot {...rest} ref={forwardedRef}>
+				{content}
+			</PopoverRoot>
+		</PopoverProvider>
 	);
 });
 DEV: Popover.displayName = "Popover";

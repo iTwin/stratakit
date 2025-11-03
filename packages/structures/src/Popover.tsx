@@ -52,8 +52,7 @@ const PopoverDisclosure = forwardRef<"button", PopoverDisclosureProps>(
 	(props, forwardedRef) => {
 		const store = AkPopover.usePopoverContext();
 		const open = useStoreState(store, "open");
-		// Used to label the popover.
-		const defaultId = React.useId();
+		const defaultId = React.useId(); // Used to label the popover.
 		return (
 			<AkPopover.PopoverDisclosure
 				id={defaultId}

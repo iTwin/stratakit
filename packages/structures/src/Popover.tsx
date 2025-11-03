@@ -94,7 +94,7 @@ const PopoverRoot = forwardRef<"div", PopoverRootProps>(
 				portal
 				unmountOnHide={unmountOnHide}
 				{...rest}
-				gutter={7}
+				gutter={8}
 				style={{ ...popoverProps.style, ...props.style }}
 				wrapperProps={{ popover: popoverProps.popover }}
 				className={cx("🥝Popover", props.className)}

@@ -35,15 +35,7 @@ interface BadgeProps extends Omit<BaseProps<"span">, "children"> {
 	 * Can be a URL of an SVG from the `@stratakit/icons` package,
 	 * or a custom JSX icon.
 	 */
-	iconStart?: string | React.JSX.Element;
-
-	/**
-	 * Icon to be displayed at the end of the badge.
-	 *
-	 * Can be a URL of an SVG from the `@stratakit/icons` package,
-	 * or a custom JSX icon.
-	 */
-	iconEnd?: string | React.JSX.Element;
+	icon?: string | React.JSX.Element;
 }
 
 /**
@@ -52,18 +44,11 @@ interface BadgeProps extends Omit<BaseProps<"span">, "children"> {
  * Example:
  * ```tsx
  * <Badge label="Value" />
- * <Badge label="Value" tone="info" variant="outline" iconStart={…} iconEnd={…} />
+ * <Badge label="Value" tone="info" variant="outline" icon={…} />
  * ```
  */
 const Badge = forwardRef<"span", BadgeProps>((props, forwardedRef) => {
-	const {
-		tone = "neutral",
-		variant = "solid",
-		label,
-		iconStart,
-		iconEnd,
-		...rest
-	} = props;
+	const { tone = "neutral", variant = "solid", label, icon, ...rest } = props;
 
 	return React.createElement(
 		Role.span,
@@ -74,15 +59,11 @@ const Badge = forwardRef<"span", BadgeProps>((props, forwardedRef) => {
 			className: cx("🥝Badge", props.className),
 			ref: forwardedRef,
 		},
-		iconStart &&
-			(typeof iconStart === "string"
-				? React.createElement(Icon, { href: iconStart })
-				: iconStart),
+		icon &&
+			(typeof icon === "string"
+				? React.createElement(Icon, { href: icon })
+				: icon),
 		label,
-		iconEnd &&
-			(typeof iconEnd === "string"
-				? React.createElement(Icon, { href: iconEnd })
-				: iconEnd),
 	);
 });
 DEV: Badge.displayName = "Badge";

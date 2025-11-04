@@ -45,11 +45,10 @@ function VisualTest() {
 					{tones.map((tone) => (
 						<Badge
 							label={tone}
+							icon={placeholderIcon}
 							key={tone}
 							tone={tone}
 							variant={variant}
-							iconStart={placeholderIcon}
-							iconEnd={placeholderIcon}
 							style={{ textTransform: "capitalize" }}
 						/>
 					))}

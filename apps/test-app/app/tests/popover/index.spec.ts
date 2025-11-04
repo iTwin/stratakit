@@ -9,7 +9,7 @@ import { expect, test } from "#playwright";
 test("default", async ({ page }) => {
 	await page.goto("/tests/popover");
 
-	const button = page.getByRole("button", { name: "Manage scenes" });
+	const button = page.getByRole("button", { name: "Toggle" });
 	const popover = page.getByRole("dialog");
 
 	await expect(button).not.toHaveAttribute("data-has-popover-open");
@@ -47,7 +47,7 @@ test("hide on interact outside", async ({ page }) => {
 test("hide on escape", async ({ page }) => {
 	await page.goto("/tests/popover");
 
-	const button = page.getByRole("button", { name: "Manage scenes" });
+	const button = page.getByRole("button", { name: "Toggle" });
 	const popover = page.getByRole("dialog");
 
 	await button.click();
@@ -59,7 +59,7 @@ test("hide on escape", async ({ page }) => {
 
 test.describe("@visual", () => {
 	test("default", async ({ page }) => {
-		await page.goto("/tests/popover");
+		await page.goto("/tests/popover?visual");
 
 		const button = page.getByRole("button", { name: "Manage scenes" });
 		await button.click();
@@ -72,7 +72,7 @@ test.describe("@visual", () => {
 			browserName === "webkit",
 			"Webkit does not support forced-colors",
 		);
-		await page.goto("/tests/popover");
+		await page.goto("/tests/popover?visual");
 		await page.emulateMedia({ forcedColors: "active" });
 
 		const button = page.getByRole("button", { name: "Manage scenes" });
@@ -98,20 +98,20 @@ test.describe("@a11y", () => {
 	});
 
 	test("focus management", async ({ page }) => {
-		await page.goto("/tests/popover");
+		await page.goto("/tests/popover?padded");
 
-		const button = page.getByRole("button", { name: "Manage scenes" });
-		const search = page.getByPlaceholder("Search");
-		const addScene = page.getByRole("button", { name: "Add scene" });
+		const button = page.getByRole("button", { name: "Manage access" });
+		const copyLink = page.getByRole("button", { name: "Copy link" });
+		const addUsers = page.getByPlaceholder("Add users");
 
 		await button.click();
-		await expect(search).toBeFocused();
+		await expect(copyLink).toBeFocused();
 
 		await page.keyboard.press("Tab");
-		await expect(addScene).toBeFocused();
+		await expect(addUsers).toBeFocused();
 
 		// Restore focus to the disclosure on close
-		await page.keyboard.press("Enter");
+		await page.keyboard.press("Escape");
 		await expect(button).toBeFocused();
 	});
 

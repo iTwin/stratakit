@@ -3,7 +3,14 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 import * as React from "react";
-import { Anchor, Button, Divider, Text, TextBox } from "@stratakit/bricks";
+import {
+	Anchor,
+	Button,
+	Divider,
+	Text,
+	TextBox,
+	VisuallyHidden,
+} from "@stratakit/bricks";
 import { Icon } from "@stratakit/foundations";
 import { unstable_Popover as Popover } from "@stratakit/structures";
 import { definePage } from "~/~utils.tsx";
@@ -18,9 +25,12 @@ export const handle = { title: "Popover" };
 export default definePage(
 	function Page() {
 		return (
-			<Popover content="Popover content">
-				<Button>Toggle</Button>
-			</Popover>
+			<>
+				<Popover content="Popover content">
+					<Button>Toggle</Button>
+				</Popover>
+				<VisuallyHidden tabIndex={0}>Tab stop for focus</VisuallyHidden>
+			</>
 		);
 	},
 	{

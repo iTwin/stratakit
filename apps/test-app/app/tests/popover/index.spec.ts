@@ -23,14 +23,25 @@ test("default", async ({ page }) => {
 test("hide on interact outside", async ({ page }) => {
 	await page.goto("/tests/popover");
 
-	const button = page.getByRole("button", { name: "Manage scenes" });
+	const button = page.getByRole("button", { name: "Toggle" });
 	const popover = page.getByRole("dialog");
 
-	await button.click();
-	await expect(popover).toBeVisible();
+	await test.step("outside click", async () => {
+		await button.click();
+		await expect(popover).toBeVisible();
 
-	await page.click("body");
-	await expect(popover).toBeHidden();
+		await page.click("body");
+		await expect(popover).toBeHidden();
+	});
+
+	await test.step("tab outside", async () => {
+		await button.click();
+		await expect(popover).toBeVisible();
+		await expect(popover).toBeFocused();
+
+		await page.keyboard.press("Tab");
+		await expect(popover).toBeHidden();
+	});
 });
 
 test("hide on escape", async ({ page }) => {

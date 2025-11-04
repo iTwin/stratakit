@@ -1,0 +1,1 @@
+import{p as e}from"./chunk-OIYGIGL5-B7Xv9q1c.js";import{f as d,R as f,c as i,I as l}from"./sun-BkAu19h-.js";const m=d((s,t)=>{const{tone:r="neutral",variant:o="solid",label:n,icon:a,...c}=s;return e.jsxs(f.span,{...c,"data-_sk-tone":r,"data-_sk-variant":o,className:i("🥝Badge",s.className),ref:t,children:[a&&(typeof a=="string"?e.jsx(l,{href:a}):a),n]})});var u=m;export{u as B};

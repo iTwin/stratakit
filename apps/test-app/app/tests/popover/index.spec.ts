@@ -103,4 +103,14 @@ test.describe("@a11y", () => {
 		await page.keyboard.press("Enter");
 		await expect(button).toBeFocused();
 	});
+
+	test("accessible name", async ({ page }) => {
+		await page.goto("/tests/popover?padded");
+
+		const button = page.getByRole("button", { name: "Manage access" });
+		const popover = page.getByRole("dialog");
+
+		await button.click();
+		await expect(popover).toHaveAccessibleName("Manage access");
+	});
 });

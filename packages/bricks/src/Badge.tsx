@@ -3,7 +3,6 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import * as React from "react";
 import { Role } from "@ariakit/react/role";
 import { Icon } from "@stratakit/foundations";
 import { forwardRef } from "@stratakit/foundations/secret-internals";
@@ -49,21 +48,17 @@ interface BadgeProps extends Omit<BaseProps<"span">, "children"> {
  */
 const Badge = forwardRef<"span", BadgeProps>((props, forwardedRef) => {
 	const { tone = "neutral", variant = "solid", label, icon, ...rest } = props;
-
-	return React.createElement(
-		Role.span,
-		{
-			...rest,
-			"data-_sk-tone": tone,
-			"data-_sk-variant": variant,
-			className: cx("🥝Badge", props.className),
-			ref: forwardedRef,
-		},
-		icon &&
-			(typeof icon === "string"
-				? React.createElement(Icon, { href: icon })
-				: icon),
-		label,
+	return (
+		<Role.span
+			{...rest}
+			data-_sk-tone={tone}
+			data-_sk-variant={variant}
+			className={cx("🥝Badge", props.className)}
+			ref={forwardedRef}
+		>
+			{icon && (typeof icon === "string" ? <Icon href={icon} /> : icon)}
+			{label}
+		</Role.span>
 	);
 });
 DEV: Badge.displayName = "Badge";

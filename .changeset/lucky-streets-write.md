@@ -2,4 +2,4 @@
 "@stratakit/bricks": patch
 ---
 
-Added `startIcon` and `endIcon` to `Badge`.
+Added `icon` to `Badge`.

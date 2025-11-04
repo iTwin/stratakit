@@ -6,6 +6,8 @@
 import AxeBuilder from "@axe-core/playwright";
 import { expect, test } from "#playwright";
 
+import type { Page } from "@playwright/test";
+
 test("default", async ({ page }) => {
 	await page.goto("/tests/popover");
 
@@ -107,19 +109,64 @@ test.describe("@visual", () => {
 });
 
 test.describe("@a11y", () => {
-	test("Axe Page Scan", async ({ page }) => {
-		await page.goto("/tests/popover?visual");
+	const axeScans = new Set([
+		{
+			params: new URLSearchParams(),
+			prepare: async (page: Page) => {
+				const button = page.getByRole("button", { name: "Toggle" });
+				await button.click();
 
-		const button = page.getByRole("button", { name: "Manage scenes" });
-		const popover = page.getByRole("dialog");
+				const popover = page.getByRole("dialog");
+				await expect(popover).toBeVisible();
+			},
+		},
+		{
+			params: new URLSearchParams("?visual"),
+			prepare: async (page: Page) => {
+				const button = page.getByRole("button", { name: "Manage scenes" });
+				await button.click();
 
-		await button.click();
-		await expect(popover).toBeVisible();
+				const popover = page.getByRole("dialog");
+				await expect(popover).toBeVisible();
+			},
+		},
+		{
+			params: new URLSearchParams("?nested"),
+			prepare: async (page: Page) => {
+				const button = page.getByRole("button", { name: "Click me" });
+				await button.click();
 
-		const axe = new AxeBuilder({ page });
-		const accessibilityScan = await axe.analyze();
-		expect(accessibilityScan.violations).toEqual([]);
-	});
+				const nestedButton = page.getByRole("button", {
+					name: "Nested trigger",
+				});
+				await nestedButton.click();
+
+				const popover = page.getByRole("dialog", { name: "Nested trigger" });
+				await expect(popover).toBeVisible();
+			},
+		},
+		{
+			params: new URLSearchParams("?padded"),
+			prepare: async (page: Page) => {
+				const button = page.getByRole("button", { name: "Manage access" });
+				await button.click();
+
+				const popover = page.getByRole("dialog");
+				await expect(popover).toBeVisible();
+			},
+		},
+	]);
+	for (const axeScan of axeScans) {
+		test(`Axe Page Scan: ?${axeScan.params}`, async ({ page }) => {
+			await page.goto(`/tests/popover?${axeScan.params}`);
+
+			await axeScan.prepare(page);
+
+			const axe = new AxeBuilder({ page });
+			const accessibilityScan = await axe.analyze();
+			expect(accessibilityScan.violations).toEqual([]);
+		});
+	}
 
 	test("focus management", async ({ page }) => {
 		await page.goto("/tests/popover?padded");

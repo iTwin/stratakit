@@ -16,50 +16,10 @@ import searchIconHref from "@stratakit/icons/search.svg";
 export const handle = { title: "Popover" };
 
 export default definePage(
-	function Page({ defaultOpen, placement, unmountOnHide }: VariantProps) {
-		const [open, setOpen] = React.useState(!!defaultOpen);
+	function Page() {
 		return (
-			<Popover
-				open={open}
-				setOpen={setOpen}
-				unmountOnHide={!!unmountOnHide}
-				placement={
-					placement as React.ComponentProps<typeof Popover>["placement"]
-				}
-				content={
-					<>
-						<TextBox.Root>
-							<TextBox.Icon href={searchIconHref} />
-							<TextBox.Input placeholder="Search" />
-						</TextBox.Root>
-						<ul
-							style={{
-								listStyleType: "none",
-								display: "flex",
-								flexDirection: "column",
-								gap: 8,
-							}}
-						>
-							<li>Scene 1</li>
-							<li>Scene 2</li>
-							<li>Scene 3</li>
-							<li>Scene 4</li>
-							<li>Scene 5</li>
-						</ul>
-						<Divider />
-						<Button onClick={() => setOpen(false)}>
-							<Icon href={addIconHref} />
-							Add scene
-						</Button>
-					</>
-				}
-				style={{
-					display: "flex",
-					flexDirection: "column",
-					gap: 8,
-				}}
-			>
-				<Button>Manage scenes</Button>
+			<Popover content="Popover content">
+				<Button>Toggle</Button>
 			</Popover>
 		);
 	},

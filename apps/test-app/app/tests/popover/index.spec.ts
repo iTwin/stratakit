@@ -20,6 +20,30 @@ test("default", async ({ page }) => {
 	await expect(popover).toBeVisible();
 });
 
+test("controlled", async ({ page }) => {
+	await page.goto("/tests/popover?_controlled");
+
+	const button = page.getByRole("button", { name: "Click me" });
+	const openButton = page.getByRole("button", { name: "Controlled open" });
+	const popover = page.getByRole("dialog");
+
+	let messageText = "";
+	page.on("console", (msg) => {
+		messageText = msg.text();
+	});
+
+	await button.click();
+	await expect(popover).toBeVisible();
+	expect(messageText).toEqual("setOpen(true)");
+
+	await button.click();
+	await expect(popover).toBeHidden();
+	expect(messageText).toEqual("setOpen(false)");
+
+	await openButton.click();
+	await expect(popover).toBeVisible();
+});
+
 test("hide on interact outside", async ({ page }) => {
 	await page.goto("/tests/popover");
 

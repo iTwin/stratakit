@@ -187,7 +187,7 @@ const Option = forwardRef<"option", OptionProps>((props, forwardedRef) => {
 	return (
 		<option
 			{...rest}
-			className={cx("🥝ListItem 🥝DropdownMenuItem", props.className)}
+			className={cx("🥝ListItem 🥝SelectOption", props.className)}
 			ref={forwardedRef}
 		>
 			{icon && typeof icon === "string" ? (

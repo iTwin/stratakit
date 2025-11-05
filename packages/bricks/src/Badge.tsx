@@ -67,7 +67,7 @@ const Badge = forwardRef<"span", BadgeProps>((props, forwardedRef) => {
 				) : (
 					icon
 				))}
-			{icon ? <Text variant="body-sm">{label}</Text> : label}
+			<Text variant="body-sm">{label}</Text>
 		</Role.span>
 	);
 });

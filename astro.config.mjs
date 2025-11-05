@@ -127,7 +127,7 @@ function starlightLiveExamples() {
 					}
 
 					node.data ||= {};
-					node.data.hName = "example-embed"; // see ExampleEmbed.astro
+					node.data.hName = "example-embed"; // see example-embed.astro
 
 					node.children = [
 						{

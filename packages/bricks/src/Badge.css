@@ -6,6 +6,8 @@
 	@layer base {
 		@apply --typography("body-sm");
 
+		--🥝GhostAligner-inline-offset: var(--stratakit-space-x1);
+
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;

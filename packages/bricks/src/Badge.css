@@ -6,8 +6,6 @@
 	@layer base {
 		@apply --typography("body-sm");
 
-		--🥝GhostAligner-inline-offset: var(--stratakit-space-x1);
-
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;
@@ -19,8 +17,7 @@
 		color: var(--🥝Badge-text-color);
 		font-weight: 500;
 		block-size: 1.25rem;
-		padding-inline: var(--stratakit-space-x2);
-		column-gap: var(--stratakit-space-x1);
+		padding-inline: var(--stratakit-space-x1);
 	}
 
 	@layer modifiers {
@@ -137,6 +134,12 @@
 				--🥝Icon-color: var(--stratakit-color-icon-accent-base);
 			}
 		}
+	}
+}
+
+.🥝BadgeLabel {
+	@layer base {
+		margin-inline: var(--stratakit-space-x1);
 	}
 }
 

@@ -57,17 +57,10 @@ const Badge = forwardRef<"span", BadgeProps>((props, forwardedRef) => {
 			className={cx("🥝Badge", props.className)}
 			ref={forwardedRef}
 		>
-			{icon &&
-				(typeof icon === "string" ? (
-					<Icon
-						href={icon}
-						data-_sk-ghost-align="inline-start"
-						className="🥝GhostAligner"
-					/>
-				) : (
-					icon
-				))}
-			<Text variant="body-sm">{label}</Text>
+			{icon && (typeof icon === "string" ? <Icon href={icon} /> : icon)}
+			<Text variant="body-sm" className="🥝BadgeLabel">
+				{label}
+			</Text>
 		</Role.span>
 	);
 });

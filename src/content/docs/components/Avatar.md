@@ -72,7 +72,7 @@ The accepted values for the `sizes` prop are:
 - Use a correctly sized image in a high performance format like `avif` or `webp`.
 - Supply a name as the `alt` if a label is not available by other means.
 
-## ❌ Don’t
+## 🚫 Don’t
 
 - Don‘t resort to displaying initials if an image is available.
 - Don’t omit an `alt` if there is no other label in place.

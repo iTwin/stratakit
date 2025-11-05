@@ -44,7 +44,7 @@ const inputId = React.useId();
 - Ensure each label’s wording clearly identifies the purpose of the control
 - Match the `htmlFor` and `id` values of the **Label** and
 
-## ❌ Don’t
+## 🚫 Don’t
 
 - Don’t omit a label. Provide one using either **Label** or [**Field**](/component/field).
 - Don’t place the **Label** at a distance from its subject form control (or it might not be perceived that they are associated).

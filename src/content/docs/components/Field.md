@@ -106,7 +106,7 @@ In these cases, `Field.Control` must come _after_ `Field.Label`:
 - Place descriptions alongside labels and error messages below controls.
 - Ensure color isn’t the only way the error state is identified. Use an icon or the prefix “Error:”
 
-## ❌ Don’t
+## 🚫 Don’t
 
 - Don’t omit a label. Provide one using either [**Label**](/components/label) or **Field**.
 - Don’t visually hide the `Field.Label`.

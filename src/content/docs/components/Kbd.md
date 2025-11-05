@@ -59,7 +59,7 @@ Each symbol includes a text alternative for accessibility.
 - Use `symbol` where the key is supported, especially if there’s limited space.
 - Use just one character, representing one key, per **Kbd** instance.
 
-## ❌ Don’t
+## 🚫 Don’t
 
 - Don’t use the `ghost` variant in a paragraph or other text element, since it may not be easily differentiated from surrounding text.
 - Don’t add multiple characters/keys inside a single **Kbd** instance.

@@ -111,7 +111,7 @@ A [**Toolbar**](/components/toolbar) with a horizontal orientation (default), mu
 - Use the **Divider** to break up flow content.
 - Use the **Divider** to indicate divisions between grouped content such as lists.
 
-## ❌ Don’t
+## 🚫 Don’t
 
 - Don’t use a **Divider** where a heading would better introduce a section of content.
 - Don’t omit [`presentational`](</reference/bricks/Divider/#Divider%20(default).presentational>) in cases where the semantics are superfluous, such as at the intersection between two unordered lists.

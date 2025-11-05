@@ -4,6 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 
 import { Role } from "@ariakit/react/role";
+import { Text } from "@stratakit/bricks";
 import { Icon } from "@stratakit/foundations";
 import { forwardRef } from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
@@ -66,7 +67,7 @@ const Badge = forwardRef<"span", BadgeProps>((props, forwardedRef) => {
 				) : (
 					icon
 				))}
-			{label}
+			{icon ? <Text variant="body-sm">{label}</Text> : label}
 		</Role.span>
 	);
 });

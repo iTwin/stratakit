@@ -30,13 +30,11 @@ interface PopoverProviderProps
 function PopoverProvider(props: PopoverProviderProps) {
 	const { children, open, setOpen, placement = "bottom-start" } = props;
 
-	const store = AkPopover.usePopoverStore();
 	return (
 		<AkPopover.PopoverProvider
 			open={open}
 			setOpen={setOpen}
 			placement={placement}
-			store={store}
 		>
 			{children}
 		</AkPopover.PopoverProvider>

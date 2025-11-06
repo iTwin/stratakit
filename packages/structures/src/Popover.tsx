@@ -124,7 +124,7 @@ interface PopoverProps
 	 */
 	children: React.ReactElement;
 	/**
-	 * The content to be displayed inside the tooltip when the trigger element is hovered or focused.
+	 * The content to be displayed inside the popover when the trigger element is hovered or focused.
 	 */
 	content: React.ReactNode;
 }

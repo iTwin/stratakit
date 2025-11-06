@@ -10,14 +10,10 @@ import {
 	TextBox,
 	VisuallyHidden,
 } from "@stratakit/bricks";
-import { Icon } from "@stratakit/foundations";
 import { unstable_Popover as Popover } from "@stratakit/structures";
 import { definePage } from "~/~utils.tsx";
 
 import type { VariantProps } from "~/~utils.tsx";
-
-import addIconHref from "@stratakit/icons/add.svg";
-import searchIconHref from "@stratakit/icons/search.svg";
 
 export const handle = { title: "Popover" };
 

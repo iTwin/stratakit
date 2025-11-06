@@ -11,7 +11,10 @@
 		background: var(--stratakit-color-bg-elevation-level-1);
 		box-shadow: var(--stratakit-shadow-control-dropdown-base);
 
+		overflow: auto;
 		min-inline-size: min(95vi, 164px);
+		max-inline-size: var(--popover-available-width);
+		max-block-size: var(--popover-available-height);
 		padding: var(--✨padding);
 	}
 }

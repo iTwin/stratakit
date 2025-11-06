@@ -161,7 +161,7 @@
 		}
 
 		&:where(
-				:is(:user-invalid, [aria-invalid="true"]),
+				:is(input, textarea):is(:user-invalid, [aria-invalid="true"]),
 				:has(:is(input, textarea):is(:user-invalid, [aria-invalid="true"]))
 			) {
 			--🥝Icon-color: var(--stratakit-color-icon-critical-base);

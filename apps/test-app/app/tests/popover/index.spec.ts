@@ -87,7 +87,7 @@ test.describe("@visual", () => {
 	test("default", async ({ page }) => {
 		await page.goto("/tests/popover?visual");
 
-		const button = page.getByRole("button", { name: "Manage scenes" });
+		const button = page.getByRole("button", { name: "Toggle" });
 		await button.click();
 
 		await expect(page).toHaveScreenshot();
@@ -101,7 +101,7 @@ test.describe("@visual", () => {
 		await page.goto("/tests/popover?visual");
 		await page.emulateMedia({ forcedColors: "active" });
 
-		const button = page.getByRole("button", { name: "Manage scenes" });
+		const button = page.getByRole("button", { name: "Toggle" });
 		await button.click();
 
 		await expect(page).toHaveScreenshot();
@@ -123,7 +123,7 @@ test.describe("@a11y", () => {
 		{
 			params: new URLSearchParams("?visual"),
 			prepare: async (page: Page) => {
-				const button = page.getByRole("button", { name: "Manage scenes" });
+				const button = page.getByRole("button", { name: "Toggle" });
 				await button.click();
 
 				const popover = page.getByRole("dialog");

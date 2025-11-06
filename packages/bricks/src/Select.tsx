@@ -37,9 +37,10 @@ const HtmlSelectContext = React.createContext<
  *     render={(controlProps) => (
  *       <Select.Root>
  *         <Select.HtmlSelect name="fruit" {...controlProps}>
- *           <option value="kiwi">Kiwi</option>
- *           <option value="mango">Mango</option>
- *           <option value="papaya">Papaya</option>
+ *           <Select.SelectedContent />
+ *           <Select.Option value="kiwi" label="Kiwi" />
+ *           <Select.Option value="mango" label="Mango" />
+ *           <Select.Option value="papaya" label="Papaya" />
  *         </Select.HtmlSelect>
  *       </Select.Root>
  *     )}
@@ -54,9 +55,10 @@ const HtmlSelectContext = React.createContext<
  * <Description id="fruit-description">Something to include in a fruit salad.</Description>
  * <Select.Root>
  *   <Select.HtmlSelect id="fruit" aria-describedby="fruit-description">
- *     <option value="kiwi">Kiwi</option>
- *     <option value="mango">Mango</option>
- *     <option value="papaya">Papaya</option>
+ *     <Select.SelectedContent />
+ *     <Select.Option value="kiwi" label="Kiwi" />
+ *     <Select.Option value="mango" label="Mango" />
+ *     <Select.Option value="papaya" label="Papaya" />
  *   </Select.HtmlSelect>
  * </Select.Root>
  * ```
@@ -97,9 +99,10 @@ interface HtmlSelectProps extends HtmlSelectBaseProps {
  * Example usage:
  * ```tsx
  * <Select.HtmlSelect>
- *   <option value="1">Option 1</option>
- *   <option value="2">Option 2</option>
- *   <option value="3">Option 3</option>
+ *   <Select.SelectedContent />
+ *   <Select.Option value="1" label="Option 1" />
+ *   <Select.Option value="2" label="Option 2" />
+ *   <Select.Option value="3" label="Option 3" />
  * </Select.HtmlSelect>
  * ```
  *
@@ -167,7 +170,8 @@ interface OptionProps
  * Example usage:
  * ```tsx
  * <Select.HtmlSelect>
- *   <Select.Option value="1">Option 1</Select.Option>
+ *   <Select.SelectedContent />
+ *   <Select.Option value="1" label="Option 1" />
  *   <Select.Option value="2" label="Option 2" />
  *   <Select.Option value="3" label="Option 3" icon="path/to/icon.svg" />
  * </Select.HtmlSelect>
@@ -217,7 +221,7 @@ interface SelectedContentProps
 }
 
 /**
- * Lorem ipsum.
+ * The location that displays the currently selected option's content.
  *
  * Example usage:
  * ```tsx

@@ -21,7 +21,7 @@ interface DividerProps
 	 */
 	presentational?: boolean;
 	/**
-	 * If true, the divider will extend to the edges of its first ancestor [query container](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_containment/Container_queries).
+	 * If true, the divider will extend to the edges of its first ancestor container.
 	 *
 	 * @default false
 	 */

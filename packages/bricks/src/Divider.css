@@ -3,10 +3,11 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 .🥝Divider {
+	--✨color: var(--stratakit-color-border-page-base);
+
 	@layer base {
 		flex: 0 0 auto;
 		align-self: stretch;
-		background-color: var(--stratakit-color-border-page-base);
 
 		&:where(hr) {
 			border: none;
@@ -26,6 +27,16 @@
 			min-block-size: 100%;
 			margin-inline: var(--🥝Divider-cross-axis-margin);
 			margin-block: var(--🥝Divider-main-axis-margin);
+		}
+
+		&:where(:not([data-_sk-bleed="true"])) {
+			background-color: var(--✨color);
+		}
+
+		&:where([data-_sk-bleed="true"]) {
+			border-image-source: linear-gradient(var(--✨color));
+			border-image-slice: 0 fill;
+			border-image-outset: 0 100cqi;
 		}
 	}
 }

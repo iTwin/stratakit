@@ -20,6 +20,12 @@ interface DividerProps
 	 * @default false
 	 */
 	presentational?: boolean;
+	/**
+	 * If true, the divider will extend to the edges of its first ancestor [query container](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_containment/Container_queries).
+	 *
+	 * @default false
+	 */
+	bleed?: boolean;
 }
 
 /**
@@ -29,7 +35,7 @@ interface DividerProps
  * and can be a semantic divider or a purely presentational one (using the `presentational` prop).
  */
 const Divider = forwardRef<"hr", DividerProps>((props, forwardedRef) => {
-	const { presentational, ...rest } = props;
+	const { presentational, bleed, ...rest } = props;
 
 	const Comp = presentational ? Role : Separator;
 
@@ -38,6 +44,7 @@ const Divider = forwardRef<"hr", DividerProps>((props, forwardedRef) => {
 			{...rest}
 			className={cx("🥝Divider", props.className)}
 			data-_sk-orientation={props.orientation}
+			data-_sk-bleed={bleed ? "true" : undefined}
 			ref={forwardedRef}
 		/>
 	);

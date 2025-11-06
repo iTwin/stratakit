@@ -45,6 +45,18 @@ function VisualTest() {
 					<Divider orientation="horizontal" bleed />
 				</div>
 			</div>
+			<div
+				style={{
+					padding: 12,
+					border: "1px solid black",
+					containerType: "size",
+					overflow: "auto",
+				}}
+			>
+				<div style={{ padding: 12 }}>
+					<Divider orientation="vertical" bleed />
+				</div>
+			</div>
 		</div>
 	);
 }

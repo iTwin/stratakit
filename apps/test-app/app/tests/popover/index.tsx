@@ -115,7 +115,6 @@ function PaddedTest() {
 				<>
 					<div
 						style={{
-							paddingInline: "var(--stratakit-space-x2)",
 							display: "flex",
 							gap: 58,
 							justifyContent: "space-between",
@@ -128,7 +127,6 @@ function PaddedTest() {
 					</div>
 					<div
 						style={{
-							paddingInline: "var(--stratakit-space-x2)",
 							display: "flex",
 							gap: "var(--stratakit-space-x2)",
 						}}
@@ -139,7 +137,7 @@ function PaddedTest() {
 				</>
 			}
 			style={{
-				paddingBlock: "var(--stratakit-space-x3)",
+				padding: "var(--stratakit-space-x3)",
 				display: "flex",
 				flexDirection: "column",
 				gap: 8,

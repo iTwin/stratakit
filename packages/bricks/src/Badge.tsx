@@ -57,8 +57,8 @@ const Badge = forwardRef<"span", BadgeProps>((props, forwardedRef) => {
 			className={cx("🥝Badge", props.className)}
 			ref={forwardedRef}
 		>
-			{icon && (typeof icon === "string" ? <Icon href={icon} /> : icon)}
-			<Text variant="body-sm" className="🥝BadgeLabel">
+			{typeof icon === "string" ? <Icon href={icon} /> : icon}
+			<Text variant="body-sm" className="🥝BadgeLabel" render={<span />}>
 				{label}
 			</Text>
 		</Role.span>

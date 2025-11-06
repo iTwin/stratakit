@@ -36,6 +36,10 @@
 	color: inherit;
 }
 
+:where(option) {
+	gap: unset;
+}
+
 :where(fieldset) {
 	border: none;
 }

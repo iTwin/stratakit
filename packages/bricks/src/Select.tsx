@@ -190,25 +190,18 @@ const Option = forwardRef<"option", OptionProps>((props, forwardedRef) => {
 			className={cx("🥝ListItem 🥝SelectOption", props.className)}
 			ref={forwardedRef}
 		>
-			{icon && typeof icon === "string" ? (
-				<>
-					<Icon className="🥝ListItemDecoration" href={icon} />
-					<Text
-						render={<span />}
-						className="🥝ListItemContent"
-						variant="body-sm"
-					>
-						{content}
-					</Text>
-				</>
-			) : icon && React.isValidElement(icon) ? (
-				<>
-					{icon}
-					{content}
-				</>
+			{typeof icon === "string" ? (
+				<Icon className="🥝ListItemDecoration" href={icon} />
 			) : (
-				content
+				icon
 			)}
+			<Text
+				render={<span />}
+				className="🥝ListItemContent 🥝SelectOptionLabel"
+				variant="body-sm"
+			>
+				{content}
+			</Text>
 		</option>
 	);
 });

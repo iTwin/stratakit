@@ -249,6 +249,16 @@
 	}
 }
 
+.🥝SelectSelectedContent:is(.🥝ListItem),
+.🥝SelectOption:is(.🥝ListItem) {
+	@layer base {
+		--🥝ListItemDecoration-gap: var(
+			--stratakit-space-x15,
+			calc(var(--stratakit-space-x05) + var(--stratakit-space-x1))
+		);
+	}
+}
+
 .🥝SelectSelectedContent:is(.🥝ListItem) {
 	@layer base {
 		--🥝Icon-color: inherit;
@@ -268,13 +278,13 @@
 	@layer base {
 		background-color: var(--✨bg);
 
+		appearance: base-select;
 		min-inline-size: min(95vi, 164px);
 		border-radius: 8px /* radius(in progress)/medium */;
+		margin-block: var(--stratakit-space-x1);
 		padding: var(--✨padding);
 		box-shadow: var(--stratakit-shadow-control-dropdown-base);
-		appearance: base-select;
 		border: none;
-		margin-block: var(--stratakit-space-x1);
 	}
 }
 
@@ -283,11 +293,26 @@
 		border-radius: 4px;
 
 		&::checkmark {
+			grid-column: checkmark-before;
+			grid-row: 1 / -1;
+			align-self: start;
+			background-color: var(--stratakit-color-icon-neutral-primary);
+			width: 1rem;
+			height: 1rem;
 			order: 1;
-			margin-left: auto;
-			content: "✓";
-			color: var(--stratakit-color-icon-neutral-base);
+			mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M11.606 4.191a.5.5 0 0 1 .787.617l-5.5 7a.502.502 0 0 1-.777.012l-2.5-3a.5.5 0 0 1 .768-.64l2.104 2.525 5.118-6.514Z'/%3E%3C/svg%3E");
+			mask-repeat: no-repeat;
+			mask-position: center;
+			margin-inline-end: var(--stratakit-space-x1);
 		}
+	}
+}
+
+.🥝SelectOptionLabel {
+	@layer base {
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
 	}
 }
 
@@ -311,20 +336,20 @@
 		}
 	}
 
-	.🥝Select::picker(select) {
-		border: 1px solid;
-	}
-
 	@supports (appearance: base-select) {
-		option {
-			&::checkmark {
-				color: SelectedItemText;
-			}
+		.🥝Select::picker(select) {
+			border: 1px solid;
+		}
 
+		.🥝SelectOption {
 			&:where(:checked) {
 				forced-color-adjust: none;
 				background-color: SelectedItem;
 				color: SelectedItemText;
+			}
+
+			&::checkmark {
+				background-color: SelectedItemText;
 			}
 
 			&:where(:disabled, [aria-disabled="true"]) {

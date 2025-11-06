@@ -20,22 +20,9 @@ export default definePage(
 						<Select.Root>
 							<Select.HtmlSelect {...controlProps}>
 								<Select.SelectedContent />
-								<Select.Option
-									value="apple"
-									label="Apple"
-									icon={placeholderIconHref}
-								/>
-								<Select.Option
-									value="orange"
-									label="Orange"
-									icon={placeholderIconHref}
-								/>
-								<Select.Option
-									value="kiwi"
-									label="Kiwi"
-									icon={placeholderIconHref}
-									disabled
-								/>
+								<Select.Option value="apple" label="Apple" />
+								<Select.Option value="orange" label="Orange" />
+								<Select.Option value="kiwi" label="Kiwi" />
 							</Select.HtmlSelect>
 						</Select.Root>
 					)}

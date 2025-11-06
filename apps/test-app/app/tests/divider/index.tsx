@@ -37,7 +37,6 @@ function VisualTest() {
 				style={{
 					padding: 12,
 					border: "1px solid black",
-					containerType: "inline-size",
 					overflow: "auto",
 				}}
 			>
@@ -49,7 +48,6 @@ function VisualTest() {
 				style={{
 					padding: 12,
 					border: "1px solid black",
-					containerType: "size",
 					overflow: "auto",
 				}}
 			>

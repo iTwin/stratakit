@@ -6,7 +6,6 @@ import * as React from "react";
 import {
 	Anchor,
 	Button,
-	Divider,
 	Text,
 	TextBox,
 	VisuallyHidden,
@@ -64,7 +63,6 @@ function VisualTest() {
 						<li>Scene 4</li>
 						<li>Scene 5</li>
 					</ul>
-					<Divider />
 					<Button>
 						<Icon href={addIconHref} />
 						Add scene
@@ -160,7 +158,6 @@ function PaddedTest() {
 							Copy link
 						</Anchor>
 					</div>
-					<Divider />
 					<div
 						style={{
 							paddingInline: "var(--stratakit-space-x2)",

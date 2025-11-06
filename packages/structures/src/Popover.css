@@ -13,8 +13,6 @@
 
 		min-inline-size: min(95vi, 164px);
 		padding: var(--✨padding);
-
-		--🥝Divider-main-axis-margin: calc(-1 * var(--✨padding));
 	}
 }
 

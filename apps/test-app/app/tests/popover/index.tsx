@@ -42,40 +42,8 @@ export default definePage(
 
 function VisualTest() {
 	return (
-		<Popover
-			content={
-				<>
-					<TextBox.Root>
-						<TextBox.Icon href={searchIconHref} />
-						<TextBox.Input placeholder="Search" />
-					</TextBox.Root>
-					<ul
-						style={{
-							listStyleType: "none",
-							display: "flex",
-							flexDirection: "column",
-							gap: 8,
-						}}
-					>
-						<li>Scene 1</li>
-						<li>Scene 2</li>
-						<li>Scene 3</li>
-						<li>Scene 4</li>
-						<li>Scene 5</li>
-					</ul>
-					<Button>
-						<Icon href={addIconHref} />
-						Add scene
-					</Button>
-				</>
-			}
-			style={{
-				display: "flex",
-				flexDirection: "column",
-				gap: 8,
-			}}
-		>
-			<Button>Manage scenes</Button>
+		<Popover content="Popover content">
+			<Button>Toggle</Button>
 		</Popover>
 	);
 }

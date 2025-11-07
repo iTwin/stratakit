@@ -18,10 +18,38 @@ export default definePage(
 			/>
 		);
 	},
-	{ visual: VisualTest },
+	{
+		visual: VisualTest,
+		bleed: BleedTest,
+	},
 );
 
 function VisualTest() {
+	return (
+		<div
+			style={{
+				display: "flex",
+				flexDirection: "column",
+				gap: "1rem",
+			}}
+		>
+			<div
+				style={{
+					display: "grid",
+					gridTemplateColumns: "repeat(2, 50%)",
+					gap: "1rem",
+					blockSize: "10rem",
+				}}
+			>
+				<Divider orientation="horizontal" />
+				<Divider orientation="vertical" />
+			</div>
+			<BleedTest />
+		</div>
+	);
+}
+
+function BleedTest() {
 	return (
 		<div
 			style={{
@@ -31,8 +59,6 @@ function VisualTest() {
 				blockSize: "10rem",
 			}}
 		>
-			<Divider orientation="horizontal" />
-			<Divider orientation="vertical" />
 			<div
 				style={{
 					padding: 12,

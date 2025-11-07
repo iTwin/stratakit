@@ -4,6 +4,8 @@
  *--------------------------------------------------------------------------------------------*/
 
 import { Role } from "@ariakit/react/role";
+import { Text } from "@stratakit/bricks";
+import { Icon } from "@stratakit/foundations";
 import { forwardRef } from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
 
@@ -26,6 +28,14 @@ interface BadgeProps extends Omit<BaseProps<"span">, "children"> {
 	 * @default "solid"
 	 */
 	variant?: "solid" | "muted" | "outline";
+
+	/**
+	 * Icon to be displayed at the start of the badge.
+	 *
+	 * Can be a URL of an SVG from the `@stratakit/icons` package,
+	 * or a custom JSX icon.
+	 */
+	icon?: string | React.JSX.Element;
 }
 
 /**
@@ -34,12 +44,11 @@ interface BadgeProps extends Omit<BaseProps<"span">, "children"> {
  * Example:
  * ```tsx
  * <Badge label="Value" />
- * <Badge label="Value" tone="info" variant="outline" />
+ * <Badge label="Value" tone="info" variant="outline" icon={…} />
  * ```
  */
 const Badge = forwardRef<"span", BadgeProps>((props, forwardedRef) => {
-	const { tone = "neutral", variant = "solid", label, ...rest } = props;
-
+	const { tone = "neutral", variant = "solid", label, icon, ...rest } = props;
 	return (
 		<Role.span
 			{...rest}
@@ -48,7 +57,10 @@ const Badge = forwardRef<"span", BadgeProps>((props, forwardedRef) => {
 			className={cx("🥝Badge", props.className)}
 			ref={forwardedRef}
 		>
-			{label}
+			{typeof icon === "string" ? <Icon href={icon} /> : icon}
+			<Text variant="body-sm" className="🥝BadgeLabel" render={<span />}>
+				{label}
+			</Text>
 		</Role.span>
 	);
 });

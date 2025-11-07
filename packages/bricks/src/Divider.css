@@ -38,7 +38,7 @@
 		}
 
 		&:where([data-_sk-bleed="true"]) {
-			border-image-source: linear-gradient(var(--🥝Divider-background-color));
+			border-image-source: linear-gradient(var(--🥝Divider-background-color) 0 0);
 			border-image-slice: 0 fill;
 			border-image-outset: var(--🥝Divider-border-image-outset);
 		}

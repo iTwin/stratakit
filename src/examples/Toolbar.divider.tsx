@@ -1,8 +1,7 @@
-import { IconButton, Divider } from "@stratakit/bricks";
+import { Divider, IconButton } from "@stratakit/bricks";
 import addIcon from "@stratakit/icons/add.svg";
 import deleteIcon from "@stratakit/icons/delete.svg";
 import editIcon from "@stratakit/icons/edit.svg";
-import undoIcon from "@stratakit/icons/undo.svg";
 import saveIcon from "@stratakit/icons/save.svg";
 import { unstable_Toolbar as Toolbar } from "@stratakit/structures";
 

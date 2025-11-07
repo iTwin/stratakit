@@ -1,4 +1,4 @@
-import { Field, Checkbox } from "@stratakit/bricks";
+import { Checkbox, Field } from "@stratakit/bricks";
 
 export default () => {
 	return (

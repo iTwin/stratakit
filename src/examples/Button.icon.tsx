@@ -6,7 +6,7 @@ export default () => {
 	return (
 		<Button onClick={() => {}}>
 			Create new
-			<Icon href={`${arrowIcon}`} />
+			<Icon href={arrowIcon} />
 		</Button>
 	);
 };

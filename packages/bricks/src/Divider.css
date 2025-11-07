@@ -3,11 +3,12 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 .🥝Divider {
-	--🥝Divider-background-color: var(--stratakit-color-border-page-base);
+	--✨color: var(--stratakit-color-border-page-base);
 
 	@layer base {
 		flex: 0 0 auto;
 		align-self: stretch;
+		color: var(--✨color);
 
 		&:where(hr) {
 			border: none;
@@ -34,11 +35,11 @@
 		}
 
 		&:where(:not([data-_sk-bleed="true"])) {
-			background-color: var(--🥝Divider-background-color);
+			background-color: currentColor;
 		}
 
 		&:where([data-_sk-bleed="true"]) {
-			border-image-source: linear-gradient(var(--🥝Divider-background-color) 0 0);
+			border-image-source: linear-gradient(currentColor 0 0);
 			border-image-slice: 0 fill;
 			border-image-outset: var(--🥝Divider-border-image-outset);
 		}
@@ -47,10 +48,7 @@
 
 @media (forced-colors: active) {
 	.🥝Divider {
-		--🥝Divider-background-color: CanvasText;
-
-		&:where([data-_sk-bleed="true"]) {
-			forced-color-adjust: none;
-		}
+		color: CanvasText;
+		forced-color-adjust: none;
 	}
 }

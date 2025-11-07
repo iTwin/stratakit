@@ -36,7 +36,7 @@ function VisualTest() {
 			<div
 				style={{
 					padding: 12,
-					border: "1px solid black",
+					border: "1px solid var(--stratakit-color-border-neutral-inverse)",
 					overflow: "auto",
 				}}
 			>
@@ -47,7 +47,7 @@ function VisualTest() {
 			<div
 				style={{
 					padding: 12,
-					border: "1px solid black",
+					border: "1px solid var(--stratakit-color-border-neutral-inverse)",
 					overflow: "auto",
 				}}
 			>

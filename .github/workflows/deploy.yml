@@ -15,12 +15,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           fetch-depth: 0
 
       - name: Install, build, and upload the static site
-        uses: withastro/action@v3
+        uses: withastro/action@v5
 
   deploy:
     needs: build

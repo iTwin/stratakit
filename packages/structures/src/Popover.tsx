@@ -82,8 +82,7 @@ const PopoverRoot = forwardRef<"div", PopoverRootProps>(
 		});
 
 		const contentElement = useStoreState(store, "contentElement");
-		const disclosureElement = useStoreState(store, "disclosureElement");
-		const triggerId = disclosureElement?.id || undefined;
+		const triggerId = useStoreState(store, (state) => state?.disclosureElement?.id);
 		const labelledBy = props["aria-label"] ? undefined : triggerId;
 		return (
 			<AkPopover.Popover

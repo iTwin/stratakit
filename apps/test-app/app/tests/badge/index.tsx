@@ -6,6 +6,8 @@
 import { Badge } from "@stratakit/bricks";
 import { definePage } from "~/~utils.tsx";
 
+import placeholderIcon from "@stratakit/icons/placeholder.svg";
+
 export const handle = { title: "Badge" };
 
 const tones = [
@@ -43,6 +45,7 @@ function VisualTest() {
 					{tones.map((tone) => (
 						<Badge
 							label={tone}
+							icon={placeholderIcon}
 							key={tone}
 							tone={tone}
 							variant={variant}

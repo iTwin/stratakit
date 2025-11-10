@@ -68,6 +68,23 @@
 	}
 }
 
+.🥝DropdownMenuGroupLabel {
+	--✨padding-inline: var(--stratakit-space-x2);
+	--✨padding-block: var(--stratakit-space-x1);
+	--✨color: var(--stratakit-color-text-neutral-secondary);
+	--✨height: 1.75rem;
+
+	@layer base {
+		padding-inline: var(--✨padding-inline);
+		padding-block: var(--✨padding-block);
+		color: var(--✨color);
+
+		min-block-size: var(--✨height);
+		display: flex;
+		align-items: center;
+	}
+}
+
 @media (forced-colors: active) {
 	.🥝DropdownMenu {
 		border: 1px solid;

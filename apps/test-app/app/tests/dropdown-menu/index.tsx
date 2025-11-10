@@ -49,12 +49,19 @@ export default definePage(
 		visual: VisualTest,
 		checkbox: CheckboxTest,
 		submenu: SubmenuTest,
+		group: GroupTest,
 	},
 );
 
 function VisualTest() {
 	return (
-		<div>
+		<div
+			style={{
+				display: "grid",
+				gridTemplateColumns: "repeat(2, 50%)",
+				gap: "1rem",
+			}}
+		>
 			<div style={{ minBlockSize: 200 }}>
 				<DropdownMenu.Provider open>
 					<DropdownMenu.Button>Actions</DropdownMenu.Button>
@@ -80,6 +87,7 @@ function VisualTest() {
 				</DropdownMenu.Provider>
 			</div>
 			<SubmenuTest open="true" />
+			<GroupTest open="true" />
 		</div>
 	);
 }
@@ -134,6 +142,27 @@ function SubmenuTest({ open: openProp }: VariantProps) {
 							</DropdownMenu.Submenu>
 						}
 					/>
+				</DropdownMenu.Content>
+			</DropdownMenu.Provider>
+		</div>
+	);
+}
+
+function GroupTest({ open: openProp }: VariantProps) {
+	const open = openProp === undefined ? undefined : !!openProp;
+	return (
+		<div style={{ minBlockSize: 210 }}>
+			<DropdownMenu.Provider open={open}>
+				<DropdownMenu.Button>Actions</DropdownMenu.Button>
+				<DropdownMenu.Content>
+					<DropdownMenu.Group label="Group 1">
+						<DropdownMenu.Item label="Item 1" />
+						<DropdownMenu.Item label="Item 2" />
+					</DropdownMenu.Group>
+					<DropdownMenu.Group label="Group 2">
+						<DropdownMenu.Item label="Item 3" />
+						<DropdownMenu.Item label="Item 4" />
+					</DropdownMenu.Group>
 				</DropdownMenu.Content>
 			</DropdownMenu.Provider>
 		</div>

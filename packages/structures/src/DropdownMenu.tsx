@@ -8,6 +8,8 @@ import { Button as ButtonAk } from "@ariakit/react/button";
 import {
 	Menu,
 	MenuButton,
+	MenuGroup,
+	MenuGroupLabel,
 	MenuItem,
 	MenuItemCheckbox,
 	MenuProvider,
@@ -15,7 +17,7 @@ import {
 	useMenuStore,
 } from "@ariakit/react/menu";
 import { useStoreState } from "@ariakit/react/store";
-import { Button, Kbd } from "@stratakit/bricks";
+import { Button, Kbd, Text } from "@stratakit/bricks";
 import {
 	DisclosureArrow,
 	Dot,
@@ -498,6 +500,30 @@ DEV: DropdownMenuSubmenu.displayName = "DropdownMenu.Submenu";
 
 // ----------------------------------------------------------------------------
 
+interface DropdownMenuGroupProps extends BaseProps {
+	label: string;
+}
+
+const DropdownMenuGroup = forwardRef<"div", DropdownMenuGroupProps>(
+	(props, forwardedRef) => {
+		const { label, ...rest } = props;
+		return (
+			<MenuGroup {...rest} ref={forwardedRef}>
+				<MenuGroupLabel
+					className="🥝DropdownMenuGroupLabel"
+					render={<Text variant="body-sm" />}
+				>
+					{label}
+				</MenuGroupLabel>
+				{props.children}
+			</MenuGroup>
+		);
+	},
+);
+DEV: DropdownMenuGroup.displayName = "DropdownMenu.Group";
+
+// ----------------------------------------------------------------------------
+
 export {
 	DropdownMenuProvider as Provider,
 	DropdownMenuButton as Button,
@@ -505,4 +531,5 @@ export {
 	DropdownMenuItem as Item,
 	DropdownMenuCheckboxItem as CheckboxItem,
 	DropdownMenuSubmenu as Submenu,
+	DropdownMenuGroup as Group,
 };

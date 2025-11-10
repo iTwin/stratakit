@@ -32,6 +32,7 @@ export const components = {
 		"DropdownMenu",
 		"ErrorRegion",
 		"NavigationRail",
+		"Popover",
 		"Table",
 		"Tabs",
 		"Toolbar",

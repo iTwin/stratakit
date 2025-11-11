@@ -3,10 +3,11 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import { Link, type MetaFunction } from "react-router";
 import { Anchor, Text } from "@stratakit/bricks";
 import { components } from "./~meta.ts";
 import { toKebabCase } from "./~utils.tsx";
+
+import type { MetaFunction } from "react-router";
 
 import styles from "./index.module.css";
 
@@ -37,7 +38,7 @@ export default function Index() {
 					</Anchor>
 				</li>
 				<li>
-					<Anchor render={<Link to="/sandbox" />}>Sandbox</Anchor>
+					<Anchor href="/sandbox">Sandbox</Anchor>
 				</li>
 			</ul>
 
@@ -47,19 +48,19 @@ export default function Index() {
 
 			<ul className={styles.list}>
 				<li>
-					<Anchor render={<Link to="/tokens" />}>Tokens list</Anchor>
+					<Anchor href="/tokens">Tokens list</Anchor>
 				</li>
 
 				<li>
-					<Anchor render={<Link to="/icons" />}>Icons list</Anchor>
+					<Anchor href="/icons">Icons list</Anchor>
 				</li>
 
 				<li>
-					<Anchor render={<Link to="/tests/root" />}>Root component</Anchor>
+					<Anchor href="/tests/root">Root component</Anchor>
 				</li>
 
 				<li>
-					<Anchor render={<Link to="/tests/icon" />}>Icon component</Anchor>
+					<Anchor href="/tests/icon">Icon component</Anchor>
 				</li>
 			</ul>
 
@@ -70,7 +71,7 @@ export default function Index() {
 			<ul className={styles.list}>
 				{components.bricks.map((component) => (
 					<li key={component}>
-						<Anchor render={<Link to={`/tests/${toKebabCase(component)}`} />}>
+						<Anchor href={`/tests/${toKebabCase(component)}`}>
 							{component}
 						</Anchor>
 					</li>
@@ -84,7 +85,7 @@ export default function Index() {
 			<ul className={styles.list}>
 				{components.structures.map((component) => (
 					<li key={component}>
-						<Anchor render={<Link to={`/tests/${toKebabCase(component)}`} />}>
+						<Anchor href={`/tests/${toKebabCase(component)}`}>
 							{component}
 						</Anchor>
 					</li>
@@ -98,7 +99,7 @@ export default function Index() {
 			<ul className={styles.list}>
 				{components.compat.map((component) => (
 					<li key={component}>
-						<Anchor render={<Link to={`/compat/${toKebabCase(component)}`} />}>
+						<Anchor href={`/compat/${toKebabCase(component)}`}>
 							{component}
 						</Anchor>
 					</li>
@@ -114,9 +115,7 @@ export default function Index() {
 					<ul className={styles.list}>
 						{components.private.map((component) => (
 							<li key={component}>
-								<Anchor
-									render={<Link to={`/tests/${toKebabCase(component)}`} />}
-								>
+								<Anchor href={`/tests/${toKebabCase(component)}`}>
 									{component}
 								</Anchor>
 							</li>

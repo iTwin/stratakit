@@ -98,7 +98,7 @@ interface DropdownMenuContentProps extends FocusableProps {}
  *
  * Should be used as a child of `DropdownMenu.Provider`.
  *
- * Should include one or more of `DropdownMenu.Item`, `DropdownMenu.CheckboxItem` as direct descendants.
+ * Should include one or more of `DropdownMenu.Item`, `DropdownMenu.CheckboxItem` and `DropdownMenu.Group` as direct descendants.
  */
 const DropdownMenuContent = forwardRef<"div", DropdownMenuContentProps>(
 	(props, forwardedRef) => {
@@ -192,7 +192,7 @@ interface DropdownMenuItemProps
 }
 
 /**
- * A single menu item within the dropdown menu. Should be used as a child of `DropdownMenu.Content`.
+ * A single menu item within the dropdown menu. Should be used as a child of `DropdownMenu.Content` and `DropdownMenu.Submenu`.
  *
  * Example:
  * ```tsx
@@ -393,7 +393,7 @@ interface DropdownMenuCheckboxItemProps
 		Pick<DropdownMenuItemProps, "label" | "icon"> {}
 
 /**
- * A single checkbox menu item within the dropdown menu. Should be used as a child of `DropdownMenu.Content`.
+ * A single checkbox menu item within the dropdown menu. Should be used as a child of `DropdownMenu.Content` and `DropdownMenu.Submenu`.
  *
  * Example:
  * ```tsx
@@ -463,7 +463,7 @@ interface DropdownMenuSubmenuProps extends FocusableProps {}
  *
  * Should be passed into the `submenu` prop of `DropdownMenu.Item`.
  *
- * Should include one or more of `DropdownMenu.Item`, `DropdownMenu.CheckboxItem` as direct descendants.
+ * Should include one or more of `DropdownMenu.Item`, `DropdownMenu.CheckboxItem` and `DropdownMenu.Group` as direct descendants.
  */
 const DropdownMenuSubmenu = forwardRef<"div", DropdownMenuSubmenuProps>(
 	(props, forwardedRef) => {
@@ -501,9 +501,23 @@ DEV: DropdownMenuSubmenu.displayName = "DropdownMenu.Submenu";
 // ----------------------------------------------------------------------------
 
 interface DropdownMenuGroupProps extends BaseProps {
+	/** The text label for the menu-group. */
 	label: string;
 }
 
+/**
+ * A group of menu items within the dropdown menu. Should be used as a child of `DropdownMenu.Content` and `DropdownMenu.Submenu`.
+ *
+ * Should include one or more of `DropdownMenu.Item`, `DropdownMenu.CheckboxItem` as direct descendants.
+ *
+ * Example:
+ * ```tsx
+ * <DropdownMenu.Group label="Manage">
+ *   <DropdownMenu.Item label="Add" />
+ *   <DropdownMenu.Item label="Edit" />
+ * </DropdownMenu.Group>
+ * ```
+ */
 const DropdownMenuGroup = forwardRef<"div", DropdownMenuGroupProps>(
 	(props, forwardedRef) => {
 		const { label, ...rest } = props;

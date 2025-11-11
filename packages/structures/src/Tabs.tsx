@@ -20,7 +20,7 @@ import type {
 // ----------------------------------------------------------------------------
 
 const supportsAnchorPositioning =
-	isBrowser && CSS?.supports("anchor-name: --foo");
+	isBrowser && CSS?.supports?.("anchor-name: --foo");
 
 const prefersReducedMotion = () =>
 	isBrowser && window.matchMedia("(prefers-reduced-motion)").matches;

@@ -55,6 +55,12 @@
 			"development": "./dist/DEV/NavigationRail.js",
 			"default": "./dist/NavigationRail.js"
 		},
+		"./unstable_Popover": {
+			"@stratakit/source": "./src/Popover.tsx",
+			"types": "./dist/Popover.d.ts",
+			"development": "./dist/DEV/Popover.js",
+			"default": "./dist/Popover.js"
+		},
 		"./Table": {
 			"@stratakit/source": "./src/Table.tsx",
 			"types": "./dist/Table.d.ts",

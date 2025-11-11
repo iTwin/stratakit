@@ -68,6 +68,13 @@
 	}
 }
 
+.🥝DropdownMenuGroup {
+	@layer base {
+		display: flex;
+		flex-direction: column;
+	}
+}
+
 .🥝DropdownMenuGroupLabel {
 	--✨padding-inline: var(--stratakit-space-x2);
 	--✨padding-block: var(--stratakit-space-x1);

@@ -508,7 +508,11 @@ const DropdownMenuGroup = forwardRef<"div", DropdownMenuGroupProps>(
 	(props, forwardedRef) => {
 		const { label, ...rest } = props;
 		return (
-			<MenuGroup {...rest} ref={forwardedRef}>
+			<MenuGroup
+				{...rest}
+				className={cx("🥝DropdownMenuGroup", props.className)}
+				ref={forwardedRef}
+			>
 				<MenuGroupLabel
 					className="🥝DropdownMenuGroupLabel"
 					render={<Text variant="body-sm" />}

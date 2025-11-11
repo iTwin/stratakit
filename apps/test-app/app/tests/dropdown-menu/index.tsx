@@ -86,17 +86,22 @@ function VisualTest() {
 					</DropdownMenu.Content>
 				</DropdownMenu.Provider>
 			</div>
+			<CheckboxTest open="true" defaultChecked="true" />
 			<SubmenuTest open="true" />
 			<GroupTest open="true" />
 		</div>
 	);
 }
 
-function CheckboxTest({ defaultChecked: defaultCheckedParam }: VariantProps) {
-	const defaultChecked = defaultCheckedParam ? true : undefined;
+function CheckboxTest({
+	defaultChecked: defaultCheckedProp,
+	open: openProp,
+}: VariantProps) {
+	const defaultChecked = defaultCheckedProp ? true : undefined;
+	const open = openProp === undefined ? undefined : !!openProp;
 	return (
 		<div style={{ minBlockSize: 150 }}>
-			<DropdownMenu.Provider>
+			<DropdownMenu.Provider open={open}>
 				<DropdownMenu.Button>Settings</DropdownMenu.Button>
 
 				<DropdownMenu.Content>

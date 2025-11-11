@@ -271,7 +271,9 @@ test.describe("@visual", () => {
 	test("default", async ({ page }) => {
 		await page.goto("/tests/dropdown-menu?visual=true");
 
-		const item3 = page.getByRole("menuitem", { name: "Item 3" });
+		const item3 = page
+			.getByRole("menuitem", { name: "Item 3" })
+			.and(page.locator(`[aria-haspopup="menu"]`));
 		await item3.click();
 
 		await expect(page.locator("body")).toHaveScreenshot();
@@ -350,15 +352,6 @@ test.describe("DropdownMenu.CheckboxItem", () => {
 
 		await item3.click();
 		await expect(item3).toHaveAttribute("aria-checked", "false");
-	});
-
-	test("@visual", async ({ page }) => {
-		await page.goto("/tests/dropdown-menu?checkbox&defaultChecked");
-
-		const button = page.getByRole("button", { name: "Settings" });
-		await button.click();
-
-		await expect(page.locator("body")).toHaveScreenshot();
 	});
 
 	test.describe("@a11y", () => {

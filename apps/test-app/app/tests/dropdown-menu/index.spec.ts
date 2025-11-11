@@ -287,7 +287,9 @@ test.describe("@visual", () => {
 		await page.goto("/tests/dropdown-menu?visual=true");
 		await page.emulateMedia({ forcedColors: "active" });
 
-		const item3 = page.getByRole("menuitem", { name: "Item 3" });
+		const item3 = page
+			.getByRole("menuitem", { name: "Item 3" })
+			.and(page.locator(`[aria-haspopup="menu"]`));
 		await item3.click();
 		await expect(page.locator("body")).toHaveScreenshot();
 	});

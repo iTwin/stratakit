@@ -21,7 +21,7 @@ interface DividerProps
 	 */
 	presentational?: boolean;
 	/**
-	 * If true, the divider will extend to the edges of its first ancestor container.
+	 * If true, the divider will extend to the edges of the nearest scrollable container.
 	 *
 	 * @default false
 	 */

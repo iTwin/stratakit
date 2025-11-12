@@ -46,7 +46,7 @@ export default definePage(
 		);
 	},
 	{
-		visual: VisualTest,
+		_visual: VisualTest,
 		checkbox: CheckboxTest,
 		submenu: SubmenuTest,
 		group: GroupTest,

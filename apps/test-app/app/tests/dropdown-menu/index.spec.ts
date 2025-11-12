@@ -269,7 +269,7 @@ test.describe("submenu", () => {
 
 test.describe("@visual", () => {
 	test("default", async ({ page }) => {
-		await page.goto("/tests/dropdown-menu?visual=true");
+		await page.goto("/tests/dropdown-menu?_visual");
 
 		const item3 = page
 			.getByRole("menuitem", { name: "Item 3" })
@@ -284,7 +284,7 @@ test.describe("@visual", () => {
 			browserName === "webkit",
 			"forced-colors does not appear correctly in Webkit",
 		);
-		await page.goto("/tests/dropdown-menu?visual=true");
+		await page.goto("/tests/dropdown-menu?_visual");
 		await page.emulateMedia({ forcedColors: "active" });
 
 		const item3 = page

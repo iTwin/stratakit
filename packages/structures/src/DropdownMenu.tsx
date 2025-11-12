@@ -503,8 +503,12 @@ DEV: DropdownMenuSubmenu.displayName = "DropdownMenu.Submenu";
 interface DropdownMenuGroupProps extends Omit<BaseProps, "children"> {
 	/** The text label for the menu-group. */
 	label: string;
-	/** The menu items within the group. Must be a list of `DropdownMenu.Item` and/or `DropdownMenu.CheckboxItem` components. */
-	items: React.ReactNode[];
+	/**
+	 * The menu items within the group.
+	 *
+	 * Should be an array of `DropdownMenu.Item` and/or `DropdownMenu.CheckboxItem` elements.
+	 */
+	items: React.ReactElement[];
 }
 
 /**

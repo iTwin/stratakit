@@ -500,27 +500,30 @@ DEV: DropdownMenuSubmenu.displayName = "DropdownMenu.Submenu";
 
 // ----------------------------------------------------------------------------
 
-interface DropdownMenuGroupProps extends BaseProps {
+interface DropdownMenuGroupProps extends Omit<BaseProps, "children"> {
 	/** The text label for the menu-group. */
 	label: string;
+	/** The menu items within the group. Must be a list of `DropdownMenu.Item` and/or `DropdownMenu.CheckboxItem` components. */
+	items: React.ReactNode[];
 }
 
 /**
  * A group of menu items within the dropdown menu. Should be used as a child of `DropdownMenu.Content` and `DropdownMenu.Submenu`.
  *
- * Should include one or more of `DropdownMenu.Item`, `DropdownMenu.CheckboxItem` as direct descendants.
- *
  * Example:
  * ```tsx
- * <DropdownMenu.Group label="Manage">
- *   <DropdownMenu.Item label="Add" />
- *   <DropdownMenu.Item label="Edit" />
- * </DropdownMenu.Group>
+ * <DropdownMenu.Group
+ * 	label="Manage"
+ * 	items={[
+ *   <DropdownMenu.Item key="add" label="Add" />,
+ *   <DropdownMenu.Item key="edit" label="Edit" />
+ * 	]}
+ * />
  * ```
  */
 const DropdownMenuGroup = forwardRef<"div", DropdownMenuGroupProps>(
 	(props, forwardedRef) => {
-		const { label, ...rest } = props;
+		const { label, items, ...rest } = props;
 		return (
 			<MenuGroup
 				{...rest}
@@ -533,7 +536,7 @@ const DropdownMenuGroup = forwardRef<"div", DropdownMenuGroupProps>(
 				>
 					{label}
 				</MenuGroupLabel>
-				{props.children}
+				{items}
 			</MenuGroup>
 		);
 	},

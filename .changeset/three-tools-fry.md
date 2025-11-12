@@ -10,10 +10,13 @@ Added `DropdownMenu.Group` component used to group menu items within a dropdown 
 
 	<DropdownMenu.Content>
 		<DropdownMenu.Item label="View" />
-		<DropdownMenu.Group label="Manage">
-			<DropdownMenu.Item label="Add" />
-			<DropdownMenu.Item label="Edit" />
-		</DropdownMenu.Group>
+		<DropdownMenu.Group
+			label="Manage"
+			items={[
+				<DropdownMenu.Item key="add" label="Add" />,
+				<DropdownMenu.Item key="edit" label="Edit" />,
+			]}
+		/>
 	</DropdownMenu.Content>
 </DropdownMenu.Provider>
 ```

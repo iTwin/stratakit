@@ -160,14 +160,20 @@ function GroupTest({ open: openProp }: VariantProps) {
 			<DropdownMenu.Provider open={open}>
 				<DropdownMenu.Button>Actions</DropdownMenu.Button>
 				<DropdownMenu.Content>
-					<DropdownMenu.Group label="Group 1">
-						<DropdownMenu.Item label="Item 1" />
-						<DropdownMenu.Item label="Item 2" />
-					</DropdownMenu.Group>
-					<DropdownMenu.Group label="Group 2">
-						<DropdownMenu.Item label="Item 3" />
-						<DropdownMenu.Item label="Item 4" />
-					</DropdownMenu.Group>
+					<DropdownMenu.Group
+						label="Group 1"
+						items={[
+							<DropdownMenu.Item key="1" label="Item 1" />,
+							<DropdownMenu.Item key="2" label="Item 2" />,
+						]}
+					/>
+					<DropdownMenu.Group
+						label="Group 2"
+						items={[
+							<DropdownMenu.Item key="3" label="Item 3" />,
+							<DropdownMenu.Item key="4" label="Item 4" />,
+						]}
+					/>
 				</DropdownMenu.Content>
 			</DropdownMenu.Provider>
 		</div>

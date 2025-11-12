@@ -3,6 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
+import { useHref } from "react-router";
 import { Anchor, Text } from "@stratakit/bricks";
 import { components } from "./~meta.ts";
 import { toKebabCase } from "./~utils.tsx";
@@ -38,7 +39,7 @@ export default function Index() {
 					</Anchor>
 				</li>
 				<li>
-					<Anchor href="/sandbox">Sandbox</Anchor>
+					<Anchor href={useHref("/sandbox")}>Sandbox</Anchor>
 				</li>
 			</ul>
 
@@ -48,19 +49,19 @@ export default function Index() {
 
 			<ul className={styles.list}>
 				<li>
-					<Anchor href="/tokens">Tokens list</Anchor>
+					<Anchor href={useHref("/tokens")}>Tokens list</Anchor>
 				</li>
 
 				<li>
-					<Anchor href="/icons">Icons list</Anchor>
+					<Anchor href={useHref("/icons")}>Icons list</Anchor>
 				</li>
 
 				<li>
-					<Anchor href="/tests/root">Root component</Anchor>
+					<Anchor href={useHref("/tests/root")}>Root component</Anchor>
 				</li>
 
 				<li>
-					<Anchor href="/tests/icon">Icon component</Anchor>
+					<Anchor href={useHref("/tests/icon")}>Icon component</Anchor>
 				</li>
 			</ul>
 
@@ -71,7 +72,7 @@ export default function Index() {
 			<ul className={styles.list}>
 				{components.bricks.map((component) => (
 					<li key={component}>
-						<Anchor href={`/tests/${toKebabCase(component)}`}>
+						<Anchor href={useHref(`/tests/${toKebabCase(component)}`)}>
 							{component}
 						</Anchor>
 					</li>
@@ -85,7 +86,7 @@ export default function Index() {
 			<ul className={styles.list}>
 				{components.structures.map((component) => (
 					<li key={component}>
-						<Anchor href={`/tests/${toKebabCase(component)}`}>
+						<Anchor href={useHref(`/tests/${toKebabCase(component)}`)}>
 							{component}
 						</Anchor>
 					</li>
@@ -99,7 +100,7 @@ export default function Index() {
 			<ul className={styles.list}>
 				{components.compat.map((component) => (
 					<li key={component}>
-						<Anchor href={`/compat/${toKebabCase(component)}`}>
+						<Anchor href={useHref(`/compat/${toKebabCase(component)}`)}>
 							{component}
 						</Anchor>
 					</li>
@@ -115,7 +116,7 @@ export default function Index() {
 					<ul className={styles.list}>
 						{components.private.map((component) => (
 							<li key={component}>
-								<Anchor href={`/tests/${toKebabCase(component)}`}>
+								<Anchor href={useHref(`/tests/${toKebabCase(component)}`)}>
 									{component}
 								</Anchor>
 							</li>

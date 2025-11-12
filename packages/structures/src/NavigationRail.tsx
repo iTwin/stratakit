@@ -470,7 +470,7 @@ const NavigationRailAnchor = forwardRef<"a", NavigationRailAnchorProps>(
 			<NavigationRailItemAction
 				label={label}
 				icon={icon}
-				aria-current={active ? "page" : undefined}
+				aria-current={active ? "true" : undefined}
 				render={<Role.a {...rest} ref={forwardedRef} />}
 			/>
 		);

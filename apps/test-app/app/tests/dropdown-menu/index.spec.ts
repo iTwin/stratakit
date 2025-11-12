@@ -375,3 +375,35 @@ test.describe("DropdownMenu.CheckboxItem", () => {
 		});
 	});
 });
+
+test.describe("DropdownMenu.Group", () => {
+	test("default", async ({ page }) => {
+		await page.goto("/tests/dropdown-menu?group");
+
+		const button = page.getByRole("button", { name: "Actions" });
+		const group1 = page.getByRole("group", { name: "Group 1" });
+		const group1Items = group1.getByRole("menuitem");
+		const item1 = group1.getByRole("menuitem", { name: "Item 1" });
+
+		await button.click();
+		await expect(group1).toBeVisible();
+		await expect(group1Items).toHaveCount(2);
+		await expect(item1).toBeVisible();
+	});
+
+	test.describe("@a11y", () => {
+		test("Axe Page Scan", async ({ page }) => {
+			await page.goto("/tests/dropdown-menu?group");
+
+			const button = page.getByRole("button", { name: "Actions" });
+			await button.click();
+
+			const axe = new AxeBuilder({ page });
+			const accessibilityScan = await axe
+				.disableRules(["region"])
+				.exclude("[data-focus-trap]")
+				.analyze();
+			expect(accessibilityScan.violations).toEqual([]);
+		});
+	});
+});

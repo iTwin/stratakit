@@ -242,7 +242,7 @@
 
 @media (forced-colors: active) {
 	.🥝NavigationRailItemAction {
-		&:where([aria-current="page"]) {
+		&:where([aria-current]:not([aria-current="false"])) {
 			forced-color-adjust: none;
 			background-color: SelectedItem;
 			border-color: LinkText;

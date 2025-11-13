@@ -14,7 +14,7 @@ import type { RoleProps } from "@ariakit/react/role";
 
 interface ListItemProps extends RoleProps<"div"> {}
 
-/** @internal */
+/** @private */
 const ListItem = forwardRef<"div", ListItemProps>((props, forwardedRef) => {
 	return (
 		<Role.div
@@ -31,7 +31,7 @@ DEV: ListItem.displayName = "ListItemRoot";
 
 interface ListItemContentProps extends RoleProps<"div"> {}
 
-/** @internal */
+/** @private */
 const ListItemContent = forwardRef<"div", ListItemContentProps>(
 	(props, forwardedRef) => {
 		return (
@@ -50,7 +50,7 @@ DEV: ListItemContent.displayName = "ListItemContent";
 
 interface ListItemDecorationProps extends RoleProps<"div"> {}
 
-/** @internal */
+/** @private */
 const ListItemDecoration = forwardRef<"div", ListItemDecorationProps>(
 	(props, forwardedRef) => {
 		return (

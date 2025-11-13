@@ -3,6 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
+// biome-ignore lint/style/noRestrictedImports: This is the only place we import `test` from `@playwright/test`.
 import { test as base, defineConfig, devices } from "@playwright/test";
 
 import type { Page } from "@playwright/test";
@@ -94,4 +95,5 @@ export const test = base.extend<{ page: Page }>({
 	},
 });
 
+// biome-ignore lint/style/noRestrictedImports: This is the only place we import `expect` from `@playwright/test`.
 export { expect } from "@playwright/test";

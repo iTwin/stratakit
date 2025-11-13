@@ -4,7 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 
 import AxeBuilder from "@axe-core/playwright";
-import { expect, test } from "@playwright/test";
+import { expect, test } from "#playwright";
 
 test("default", async ({ page }) => {
 	await page.goto("/tests/kbd");

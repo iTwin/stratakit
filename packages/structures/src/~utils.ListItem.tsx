@@ -25,7 +25,7 @@ const ListItem = forwardRef<"div", ListItemProps>((props, forwardedRef) => {
 		/>
 	);
 });
-DEV: ListItem.displayName = "ListItem.Root";
+DEV: ListItem.displayName = "ListItemRoot";
 
 // ----------------------------------------------------------------------------
 
@@ -44,7 +44,7 @@ const ListItemContent = forwardRef<"div", ListItemContentProps>(
 		);
 	},
 );
-DEV: ListItemContent.displayName = "ListItem.Content";
+DEV: ListItemContent.displayName = "ListItemContent";
 
 // ----------------------------------------------------------------------------
 
@@ -62,7 +62,7 @@ const ListItemDecoration = forwardRef<"div", ListItemDecorationProps>(
 		);
 	},
 );
-DEV: ListItemDecoration.displayName = "ListItem.Decoration";
+DEV: ListItemDecoration.displayName = "ListItemDecoration";
 
 // ----------------------------------------------------------------------------
 

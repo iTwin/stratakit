@@ -86,7 +86,11 @@
 					"level": "warn",
 					"options": {
 						"paths": {
-							"@ariakit/react": "Use of Ariakit's barrel is discouraged. Import Ariakit components from their individual entrypoints instead."
+							"@ariakit/react": "Use of Ariakit's barrel is discouraged. Import Ariakit components from their individual entrypoints instead.",
+							"@playwright/test": {
+								"importNames": ["expect", "test"],
+								"message": "Import `expect` and `test` from `#playwright` instead."
+							}
 						}
 					}
 				}

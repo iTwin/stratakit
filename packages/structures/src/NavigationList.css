@@ -159,3 +159,20 @@
 		}
 	}
 }
+
+@media (forced-colors: active) {
+	.🥝NavigationListItemAction {
+		&:where([aria-current]:not([aria-current="false"])) {
+			forced-color-adjust: none;
+			background-color: SelectedItem;
+			color: SelectedItemText;
+
+			&::after {
+				color: SelectedItemText;
+			}
+		}
+		&:where(:disabled, [aria-disabled="true"]) {
+			color: GrayText;
+		}
+	}
+}

@@ -14,6 +14,7 @@ import {
 	useMenuContext,
 	useMenuStore,
 } from "@ariakit/react/menu";
+import { PortalContext } from "@ariakit/react/portal";
 import { useStoreState } from "@ariakit/react/store";
 import { Button, Kbd } from "@stratakit/bricks";
 import {
@@ -115,7 +116,11 @@ const DropdownMenuContent = forwardRef<"div", DropdownMenuContentProps>(
 				wrapperProps={{ popover: popoverProps.popover }}
 				className={cx("🥝DropdownMenu", props.className)}
 				ref={forwardedRef}
-			/>
+			>
+				<PortalContext.Provider value={popoverElement ?? null}>
+					{props.children}
+				</PortalContext.Provider>
+			</Menu>
 		);
 	},
 );
@@ -224,6 +229,7 @@ const DropdownMenuItem = forwardRef<"button", DropdownMenuItemProps>(
 		const store = submenuStore ?? defaultSubmenuStore;
 		const open = useStoreState(store, "open");
 
+		const hasDialog = props["aria-haspopup"] === "dialog";
 		return (
 			<>
 				<MenuItem
@@ -252,6 +258,12 @@ const DropdownMenuItem = forwardRef<"button", DropdownMenuItemProps>(
 							}
 						/>
 					}
+					hideOnClick={hasDialog ? false : undefined}
+					blurOnHoverEnd={() => {
+						const expanded = props["aria-expanded"] === true;
+						if (hasDialog && expanded) return false; // Avoids closing the popover when hovering out of a menu item
+						return true;
+					}}
 				>
 					{icon ? <DropdownMenuIcon icon={icon} /> : null}
 					<ListItem.Content render={<span />}>{label}</ListItem.Content>

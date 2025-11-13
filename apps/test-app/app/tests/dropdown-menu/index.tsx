@@ -4,6 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 
 import { DropdownMenu } from "@stratakit/structures";
+import Popover from "@stratakit/structures/unstable_Popover";
 import { definePage } from "~/~utils.tsx";
 
 import type { VariantProps } from "~/~utils.tsx";
@@ -49,6 +50,7 @@ export default definePage(
 		visual: VisualTest,
 		checkbox: CheckboxTest,
 		submenu: SubmenuTest,
+		_popover: PopoverTest,
 	},
 );
 
@@ -137,5 +139,31 @@ function SubmenuTest({ open: openProp }: VariantProps) {
 				</DropdownMenu.Content>
 			</DropdownMenu.Provider>
 		</div>
+	);
+}
+
+function PopoverTest() {
+	return (
+		<DropdownMenu.Provider>
+			<DropdownMenu.Button>Actions</DropdownMenu.Button>
+
+			<DropdownMenu.Content>
+				<DropdownMenu.Item label="Item 1" />
+				<DropdownMenu.Item
+					label="Item 2"
+					submenu={
+						<DropdownMenu.Submenu>
+							<DropdownMenu.Item label="Item 2_1" />
+							<Popover content="Popover content" placement="right">
+								<DropdownMenu.Item label="Item 2_2" />
+							</Popover>
+						</DropdownMenu.Submenu>
+					}
+				/>
+				<Popover content="Popover content" placement="right">
+					<DropdownMenu.Item label="Item 3" />
+				</Popover>
+			</DropdownMenu.Content>
+		</DropdownMenu.Provider>
 	);
 }

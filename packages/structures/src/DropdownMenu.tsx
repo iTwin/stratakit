@@ -508,7 +508,7 @@ interface DropdownMenuGroupProps extends Omit<BaseProps, "children"> {
 	 *
 	 * Should be an array of `DropdownMenu.Item` and/or `DropdownMenu.CheckboxItem` elements.
 	 */
-	items: React.ReactElement[];
+	items: React.JSX.Element[];
 }
 
 /**

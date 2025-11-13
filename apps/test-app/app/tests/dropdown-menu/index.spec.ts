@@ -269,12 +269,10 @@ test.describe("submenu", () => {
 
 test.describe("@visual", () => {
 	test("default", async ({ page }) => {
-		await page.goto("/tests/dropdown-menu?_visual");
+		await page.goto("/tests/dropdown-menu?visual");
 
-		const item3 = page
-			.getByRole("menuitem", { name: "Item 3" })
-			.and(page.locator(`[aria-haspopup="menu"]`));
-		await item3.click();
+		const settings = page.getByRole("menuitem", { name: "Settings" });
+		await settings.click();
 
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
@@ -284,13 +282,12 @@ test.describe("@visual", () => {
 			browserName === "webkit",
 			"forced-colors does not appear correctly in Webkit",
 		);
-		await page.goto("/tests/dropdown-menu?_visual");
+		await page.goto("/tests/dropdown-menu?visual");
 		await page.emulateMedia({ forcedColors: "active" });
 
-		const item3 = page
-			.getByRole("menuitem", { name: "Item 3" })
-			.and(page.locator(`[aria-haspopup="menu"]`));
-		await item3.click();
+		const settings = page.getByRole("menuitem", { name: "Settings" });
+		await settings.click();
+
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
 });

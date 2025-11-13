@@ -46,7 +46,7 @@ export default definePage(
 		);
 	},
 	{
-		_visual: VisualTest,
+		visual: VisualTest,
 		checkbox: CheckboxTest,
 		submenu: SubmenuTest,
 		group: GroupTest,
@@ -55,53 +55,55 @@ export default definePage(
 
 function VisualTest() {
 	return (
-		<div
-			style={{
-				display: "grid",
-				gridTemplateColumns: "repeat(2, 50%)",
-				gap: "1rem",
-			}}
-		>
-			<div style={{ minBlockSize: 200 }}>
-				<DropdownMenu.Provider open>
-					<DropdownMenu.Button>Actions</DropdownMenu.Button>
+		<div style={{ minBlockSize: 300 }}>
+			<DropdownMenu.Provider defaultOpen>
+				<DropdownMenu.Button>Actions</DropdownMenu.Button>
 
-					<DropdownMenu.Content>
-						<DropdownMenu.Item
-							shortcuts="Command+A"
-							label="Add"
-							icon={placeholderIcon}
-						/>
-						<DropdownMenu.Item
-							shortcuts="Shift+E"
-							label="Edit"
-							icon={placeholderIcon}
-						/>
-						<DropdownMenu.Item disabled label="Delete" icon={placeholderIcon} />
-						<DropdownMenu.Item label="Disable" icon={placeholderIcon} />
-						<DropdownMenu.Item
-							label="Filter"
-							unstable_dot="Some filters applied"
-						/>
-					</DropdownMenu.Content>
-				</DropdownMenu.Provider>
-			</div>
-			<CheckboxTest open="true" defaultChecked="true" />
-			<SubmenuTest open="true" />
-			<GroupTest open="true" />
+				<DropdownMenu.Content>
+					<DropdownMenu.Item label="Add" />
+					<DropdownMenu.Item label="Edit" icon={placeholderIcon} />
+					<DropdownMenu.Item disabled label="Delete" icon={placeholderIcon} />
+					<DropdownMenu.Group
+						label="Decorations"
+						items={[
+							<DropdownMenu.Item
+								label="Filter"
+								unstable_dot="Some filters applied"
+							/>,
+							<DropdownMenu.Item shortcuts="Command+X" label="Clear" />,
+							<DropdownMenu.Item
+								label="Settings"
+								submenu={
+									<DropdownMenu.Submenu>
+										<DropdownMenu.CheckboxItem
+											name="setting1"
+											label="Setting 1"
+										/>
+										<DropdownMenu.CheckboxItem
+											name="setting2"
+											label="Setting 2"
+										/>
+										<DropdownMenu.CheckboxItem
+											name="setting3"
+											label="Setting 3"
+											defaultChecked
+										/>
+									</DropdownMenu.Submenu>
+								}
+							/>,
+						]}
+					/>
+				</DropdownMenu.Content>
+			</DropdownMenu.Provider>
 		</div>
 	);
 }
 
-function CheckboxTest({
-	defaultChecked: defaultCheckedProp,
-	open: openProp,
-}: VariantProps) {
+function CheckboxTest({ defaultChecked: defaultCheckedProp }: VariantProps) {
 	const defaultChecked = defaultCheckedProp ? true : undefined;
-	const open = openProp === undefined ? undefined : !!openProp;
 	return (
 		<div style={{ minBlockSize: 150 }}>
-			<DropdownMenu.Provider open={open}>
+			<DropdownMenu.Provider>
 				<DropdownMenu.Button>Settings</DropdownMenu.Button>
 
 				<DropdownMenu.Content>
@@ -118,11 +120,10 @@ function CheckboxTest({
 	);
 }
 
-function SubmenuTest({ open: openProp }: VariantProps) {
-	const open = openProp === undefined ? undefined : !!openProp;
+function SubmenuTest() {
 	return (
 		<div style={{ minBlockSize: 200 }}>
-			<DropdownMenu.Provider open={open}>
+			<DropdownMenu.Provider>
 				<DropdownMenu.Button>Actions</DropdownMenu.Button>
 
 				<DropdownMenu.Content>
@@ -153,11 +154,10 @@ function SubmenuTest({ open: openProp }: VariantProps) {
 	);
 }
 
-function GroupTest({ open: openProp }: VariantProps) {
-	const open = openProp === undefined ? undefined : !!openProp;
+function GroupTest() {
 	return (
 		<div style={{ minBlockSize: 210 }}>
-			<DropdownMenu.Provider open={open}>
+			<DropdownMenu.Provider>
 				<DropdownMenu.Button>Actions</DropdownMenu.Button>
 				<DropdownMenu.Content>
 					<DropdownMenu.Group

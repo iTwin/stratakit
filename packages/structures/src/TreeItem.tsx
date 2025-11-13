@@ -215,10 +215,16 @@ const TreeItem = React.memo(
 		});
 
 		const handleClick = (event: React.MouseEvent) => {
-			if (selected === undefined) return;
+			if (selected !== undefined) {
+				event.stopPropagation(); // Avoid selecting parent treeitem
+				onSelectedChange?.(!selected);
+				return;
+			}
 
-			event.stopPropagation(); // Avoid selecting parent treeitem
-			onSelectedChange?.(!selected);
+			// Expand on click if not selectable
+			if (expanded === undefined) return;
+			event.stopPropagation(); // Avoid expanding parent treeitem
+			onExpandedChange?.(!expanded);
 		};
 
 		const handleKeyDown = (event: React.KeyboardEvent) => {

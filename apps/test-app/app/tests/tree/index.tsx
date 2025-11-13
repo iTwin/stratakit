@@ -212,6 +212,7 @@ export default definePage(
 	},
 	{
 		actions: ActionsTest,
+		_expansion: ExpansionTest,
 	},
 );
 interface ItemActionProps extends React.ComponentProps<typeof Tree.ItemAction> {
@@ -262,6 +263,42 @@ function ActionsTest({
 				actions={actions}
 				error={error}
 			/>
+		</Tree.Root>
+	);
+}
+
+// ----------------------------------------------------------------------------
+
+function ExpansionTest({ selectable }: VariantProps) {
+	const [expanded, setExpanded] = React.useState(false);
+
+	return (
+		<Tree.Root>
+			<Tree.Item
+				label="Parent Item"
+				aria-level={1}
+				aria-posinset={1}
+				aria-setsize={1}
+				expanded={expanded}
+				onExpandedChange={setExpanded}
+				selected={selectable ? false : undefined}
+			/>
+			{expanded && (
+				<>
+					<Tree.Item
+						label="Child Item 1"
+						aria-level={2}
+						aria-posinset={1}
+						aria-setsize={2}
+					/>
+					<Tree.Item
+						label="Child Item 2"
+						aria-level={2}
+						aria-posinset={2}
+						aria-setsize={2}
+					/>
+				</>
+			)}
 		</Tree.Root>
 	);
 }

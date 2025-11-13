@@ -11,6 +11,11 @@ test("default", async ({ page }) => {
 
 	const navigationRail = page.getByRole("navigation");
 	await expect(navigationRail).toBeVisible();
+
+	const activeItem = navigationRail.getByRole("link", {
+		name: "Administration",
+	});
+	await expect(activeItem).toHaveAttribute("aria-current");
 });
 
 test.describe("expansion", () => {

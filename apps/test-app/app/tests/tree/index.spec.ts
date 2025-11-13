@@ -34,6 +34,53 @@ test("default", async ({ page }) => {
 	await expect(item1_1).toHaveAttribute("aria-setsize", "3");
 });
 
+test("expansion", async ({ page }) => {
+	const parent = page.getByRole("treeitem", { name: "Parent" });
+	const child = page.getByRole("treeitem", { name: "Child Item 1" });
+
+	await test.step("expansion is the default action when not selectable", async () => {
+		await page.goto("/tests/tree?_expansion");
+
+		// Initially collapsed
+		await expect(parent).toHaveAttribute("aria-expanded", "false");
+		await expect(child).not.toBeVisible();
+
+		// Expand when clicking the entire item
+		await parent.click();
+		await expect(parent).toHaveAttribute("aria-expanded", "true");
+		await expect(child).toBeVisible();
+
+		// Collapse when clicking the entire item again
+		await parent.click();
+		await expect(parent).toHaveAttribute("aria-expanded", "false");
+		await expect(child).not.toBeVisible();
+
+		// Similarly, expand/collapse when pressing Enter
+		await expect(parent).toBeFocused();
+		await page.keyboard.press("Enter");
+		await expect(parent).toHaveAttribute("aria-expanded", "true");
+		await expect(child).toBeVisible();
+		await page.keyboard.press("Enter");
+		await expect(parent).toHaveAttribute("aria-expanded", "false");
+		await expect(child).not.toBeVisible();
+	});
+
+	await test.step("expansion is not the default action when selectable", async () => {
+		await page.goto("/tests/tree?_expansion&selectable");
+
+		// Do not expand when clicking a selectable item
+		await parent.click();
+		await expect(parent).toHaveAttribute("aria-expanded", "false");
+		await expect(child).not.toBeVisible();
+
+		// Expand when clicking just the chevron
+		const chevron = parent.locator("svg");
+		await chevron.click();
+		await expect(parent).toHaveAttribute("aria-expanded", "true");
+		await expect(child).toBeVisible();
+	});
+});
+
 test("actions", async ({ page, browserName }) => {
 	test.fixme(
 		browserName === "firefox",

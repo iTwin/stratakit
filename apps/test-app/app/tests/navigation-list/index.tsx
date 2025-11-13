@@ -3,7 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import * as React from "react";
+import { Link, useLocation } from "react-router";
 import { unstable_NavigationList as NavigationList } from "@stratakit/structures";
 import { definePage, type VariantProps } from "~/~utils.tsx";
 
@@ -16,43 +16,31 @@ export const handle = { title: "NavigationList" };
 
 export default definePage(
 	function Page() {
-		const [currentPage, setCurrentPage] = React.useState("home");
+		const currentHash = useLocation().hash;
 
 		return (
 			<NavigationList.Root
 				items={[
 					<NavigationList.Anchor
 						key="home"
-						href="#home"
 						label="Home"
 						icon={homeIcon}
-						aria-current={currentPage === "home" ? "page" : undefined}
-						onClick={(e) => {
-							e.preventDefault();
-							setCurrentPage("home");
-						}}
+						active={currentHash === "#home"}
+						render={<Link to={{ hash: "#home" }} replace />}
 					/>,
 					<NavigationList.Anchor
 						key="profile"
-						href="#profile"
 						label="Profile"
 						icon={userIcon}
-						aria-current={currentPage === "profile" ? "page" : undefined}
-						onClick={(e) => {
-							e.preventDefault();
-							setCurrentPage("profile");
-						}}
+						active={currentHash === "#profile"}
+						render={<Link to={{ hash: "#profile" }} replace />}
 					/>,
 					<NavigationList.Anchor
 						key="settings"
-						href="#settings"
 						label="Settings"
 						icon={settingsIcon}
-						aria-current={currentPage === "settings" ? "page" : undefined}
-						onClick={(e) => {
-							e.preventDefault();
-							setCurrentPage("settings");
-						}}
+						active={currentHash === "#settings"}
+						render={<Link to={{ hash: "#settings" }} replace />}
 					/>,
 				]}
 			/>
@@ -66,54 +54,87 @@ export default definePage(
 
 function VisualTest() {
 	return (
-		<NavigationList.Root
-			items={[
-				<NavigationList.Anchor
-					key="item1"
-					href="#"
-					icon={placeholderIcon}
-					label="Item 1"
-				/>,
-				<NavigationList.Anchor
-					key="item2"
-					href="#"
-					active
-					icon={placeholderIcon}
-					label="Item 2"
-				/>,
-				<NavigationList.Anchor
-					key="item3"
-					href="#"
-					icon={placeholderIcon}
-					label="Item 3"
-				/>,
-				<NavigationList.Anchor
-					key="item4"
-					href="#"
-					icon={placeholderIcon}
-					label="Item 4"
-				/>,
-			]}
-		/>
+		<>
+			<NavigationList.Root
+				items={[
+					<NavigationList.Anchor
+						key="item1"
+						href="#"
+						icon={placeholderIcon}
+						label="Item 1"
+					/>,
+					<NavigationList.Anchor
+						key="item2"
+						href="#"
+						active
+						icon={placeholderIcon}
+						label="Item 2"
+					/>,
+					<NavigationList.Anchor
+						key="item3"
+						href="#"
+						icon={placeholderIcon}
+						label="Item 3"
+						disabled
+					/>,
+				]}
+			/>
+
+			<hr style={{ marginBlock: 8 }} />
+
+			<NavigationList.Root
+				items={[
+					<NavigationList.Anchor
+						key="item1"
+						href="#"
+						icon={placeholderIcon}
+						label="Item 1"
+					/>,
+					<NavigationList.Anchor
+						key="item2"
+						href="#"
+						icon={placeholderIcon}
+						label="Item 2"
+					/>,
+					<NavigationList.Subgroup
+						key="item3"
+						icon={placeholderIcon}
+						label="Item 3"
+						defaultOpen
+						items={[
+							<NavigationList.Anchor
+								key="item1"
+								href="#"
+								icon={placeholderIcon}
+								label="Item 3.1"
+							/>,
+							<NavigationList.Anchor
+								key="item2"
+								href="#"
+								active
+								icon={placeholderIcon}
+								label="Item 3.2"
+							/>,
+						]}
+					/>,
+				]}
+			/>
+		</>
 	);
 }
 
 function SubgroupExample({ defaultOpen }: VariantProps) {
-	const [currentPage, setCurrentPage] = React.useState("");
+	const currentHash = useLocation().hash;
 
 	return (
 		<NavigationList.Root
 			items={[
 				<NavigationList.Anchor
 					key="dashboard"
-					href="#"
+					href="#dashboard"
 					icon={placeholderIcon}
 					label="Dashboard"
-					active={currentPage === "dashboard"}
-					onClick={(e) => {
-						e.preventDefault();
-						setCurrentPage("dashboard");
-					}}
+					active={currentHash === "#dashboard"}
 				/>,
 				<NavigationList.Subgroup
 					key="management"
@@ -122,37 +143,25 @@ function SubgroupExample({ defaultOpen }: VariantProps) {
 					items={[
 						<NavigationList.Anchor
 							key="users"
-							href="#"
+							href="#users"
 							label="Users"
-							active={currentPage === "users"}
-							onClick={(e) => {
-								e.preventDefault();
-								setCurrentPage("users");
-							}}
+							active={currentHash === "#users"}
 						/>,
 						<NavigationList.Anchor
 							key="teams"
-							href="#"
+							href="#teams"
 							label="Teams"
-							active={currentPage === "teams"}
-							onClick={(e) => {
-								e.preventDefault();
-								setCurrentPage("teams");
-							}}
+							active={currentHash === "#teams"}
 						/>,
 					]}
 					defaultOpen={!!defaultOpen}
 				/>,
 				<NavigationList.Anchor
 					key="reports"
-					href="#"
+					href="#reports"
 					icon={placeholderIcon}
 					label="Reports"
-					active={currentPage === "reports"}
-					onClick={(e) => {
-						e.preventDefault();
-						setCurrentPage("reports");
-					}}
+					active={currentHash === "#reports"}
 				/>,
 			]}
 		/>

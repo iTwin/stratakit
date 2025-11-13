@@ -22,13 +22,13 @@
 	--✨color--disabled: var(--stratakit-color-text-neutral-disabled);
 
 	--✨height: 1.5rem;
-	--✨gap: calc(var(--stratakit-space-x1) + var(--stratakit-space-x05));
 	--✨padding-inline-start: var(--stratakit-space-x2);
 	--✨padding-inline-end: calc(
-		var(--✨gap) +
+		var(--🥝Select-gap) +
 		var(--stratakit-space-x4) /* Arrow size */ +
 		var(--stratakit-space-x1) /* Arrow padding */
 	);
+	--✨padding-inline-end-base-select: var(--stratakit-space-x1);
 
 	--✨shadow-border: 0px 0px 0px 1px var(--🥝Select-border-color) inset;
 
@@ -100,25 +100,26 @@
 	/* #endregion */
 
 	@layer base {
+		--🥝Select-gap: calc(var(--stratakit-space-x1) + var(--stratakit-space-x05));
+
 		border: none;
-		appearance: none;
 		user-select: none;
 		line-height: 1.2;
 		cursor: pointer;
 
-		min-inline-size: calc(var(--✨padding-inline-start) + 1ch + var(--✨padding-inline-end));
+		min-inline-size: calc(var(--✨padding-inline-start) + 1ch + var(--🥝Select-padding-inline-end));
 		text-overflow: ellipsis;
 		font-size: var(--stratakit-font-size-12);
 		border-radius: 4px;
-		background-color: var(--🥝Select-background-color);
 		box-shadow: var(--✨shadow-border);
 		color: var(--✨color--default);
 		transition: background-color 150ms ease-out;
 
 		&:where(select:not([multiple])) {
+			background-color: var(--🥝Select-background-color);
 			min-block-size: var(--✨height);
 			padding-inline-start: var(--✨padding-inline-start);
-			padding-inline-end: var(--✨padding-inline-end);
+			padding-inline-end: var(--🥝Select-padding-inline-end);
 
 			-webkit-tap-highlight-color: var(--stratakit-color-bg-glow-on-surface-neutral-pressed);
 			--🥝Icon-color: var(--🌀Select-state--default, var(--stratakit-color-icon-neutral-base))
@@ -128,20 +129,48 @@
 
 			&:where(:has(> option[disabled]:checked)) {
 				color: var(--✨color--placeholder);
+				--🥝Icon-color: var(--stratakit-color-icon-neutral-disabled);
 			}
 		}
 
 		@supports (appearance: base-select) {
-			&:where(select) {
-				appearance: base-select;
+			--🥝Select-padding-inline-end: var(--✨padding-inline-end-base-select);
 
-				&::picker-icon {
-					display: none;
-				}
+			appearance: base-select;
+			align-items: center;
+			column-gap: var(--🥝Select-gap);
+
+			> button {
+				display: block;
+				flex-shrink: 1;
+				min-width: 0;
+			}
+
+			&::picker-icon {
+				background-color: var(--🥝Select-picker-icon-color);
+				mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M10.354 9.647a.5.5 0 0 1 0 .707l-2 2a.5.5 0 0 1-.707 0l-2-2a.5.5 0 1 1 .707-.707L8 11.293l1.647-1.646a.5.5 0 0 1 .707 0Zm-4-3.293L8 4.707l1.646 1.647a.5.5 0 0 0 .707-.707l-2-2a.5.5 0 0 0-.707 0l-2 2a.5.5 0 0 0 .707.707Z'/%3E%3C/svg%3E");
+				mask-repeat: no-repeat;
+				mask-position: center;
+				width: 1rem;
+				height: 1rem;
+				flex-shrink: 0;
+				transition: background-color 150ms ease-out;
+
+				--🥝Select-picker-icon-color: var(
+						--🌀Select-state--default,
+						var(--stratakit-color-icon-neutral-base)
+					)
+					var(--🌀Select-state--hover, var(--stratakit-color-icon-neutral-primary))
+					var(--🌀Select-state--pressed, var(--stratakit-color-icon-neutral-primary))
+					var(--🌀Select-state--disabled, var(--stratakit-color-icon-neutral-disabled));
 			}
 		}
 
 		@supports not (appearance: base-select) {
+			--🥝Select-padding-inline-end: var(--✨padding-inline-end);
+
+			appearance: none;
+
 			> option {
 				background-color: var(--stratakit-color-bg-neutral-base);
 			}
@@ -249,25 +278,11 @@
 	}
 }
 
-.🥝SelectSelectedContent:is(.🥝ListItem),
-.🥝SelectOption:is(.🥝ListItem) {
+.🥝SelectSelectedContent {
 	@layer base {
-		--🥝ListItemDecoration-gap: var(
-			--stratakit-space-x15,
-			calc(var(--stratakit-space-x05) + var(--stratakit-space-x1))
-		);
-	}
-}
-
-.🥝SelectSelectedContent:is(.🥝ListItem) {
-	@layer base {
-		--🥝Icon-color: inherit;
-		color: inherit;
-		min-block-size: unset;
-		padding-inline: unset;
-
-		/* align-items: unset;
-		align-content: unset; */
+		display: flex;
+		align-items: center;
+		column-gap: var(--🥝Select-gap);
 	}
 }
 
@@ -276,35 +291,94 @@
 	--✨padding: var(--stratakit-space-x1);
 
 	@layer base {
-		background-color: var(--✨bg);
-
 		appearance: base-select;
-		min-inline-size: min(95vi, 164px);
-		border-radius: 8px /* radius(in progress)/medium */;
-		margin-block: var(--stratakit-space-x1);
-		padding: var(--✨padding);
-		box-shadow: var(--stratakit-shadow-control-dropdown-base);
+		background-color: var(--✨bg);
 		border: none;
+		border-radius: 8px /* radius(in progress)/medium */;
+		box-shadow: var(--stratakit-shadow-control-dropdown-base);
+		margin-block: var(--stratakit-space-x1);
+		min-inline-size: min(95vi, 164px);
+		padding: var(--✨padding);
 	}
 }
 
-.🥝SelectOption:is(.🥝ListItem) {
+.🥝SelectOption {
 	@layer base {
+		display: grid;
+		align-items: center;
+		align-content: center;
+		column-gap: var(--🥝Select-gap);
+
+		/* Default: no icon decoration column */
+		/* biome-ignore format: improve readability */
+		grid-template-columns:
+			[checkmark-before-start] calc(1rem + var(--stratakit-space-x05)) [checkmark-before-end
+			content-start] minmax(0, 1fr) [content-end];
+
+		/* When ANY option has an icon, all options get the decoration column */
+		:where(.🥝Select:has(.🥝Icon)) & {
+			/* biome-ignore format: improve readability */
+			grid-template-columns:
+				[checkmark-before-start] calc(1rem + var(--stratakit-space-x05)) [checkmark-before-end
+				decoration-before-start] 1rem [decoration-before-end
+				content-start] minmax(0, 1fr) [content-end];
+		}
+
 		border-radius: 4px;
+		padding-inline: var(--stratakit-space-x2);
+		block-size: 1.75rem;
+
+		background-color: var(--🌀SelectOption-state--default, transparent)
+			var(--🌀SelectOption-state--hover, var(--stratakit-color-bg-glow-on-surface-neutral-hover))
+			var(
+				--🌀SelectOption-state--pressed,
+				var(--stratakit-color-bg-glow-on-surface-neutral-pressed)
+			)
+			var(--🌀SelectOption-state--disabled, transparent);
+		--🥝Icon-color: var(--🌀SelectOption-state--default, var(--stratakit-color-icon-neutral-base))
+			var(--🌀SelectOption-state--hover, var(--stratakit-color-icon-neutral-primary))
+			var(--🌀SelectOption-state--disabled, var(--stratakit-color-icon-neutral-disabled));
+		--🥝Select-option-checkmark-color: var(--stratakit-color-icon-neutral-primary);
 
 		&::checkmark {
 			grid-column: checkmark-before;
-			grid-row: 1 / -1;
-			align-self: start;
 			background-color: var(--stratakit-color-icon-neutral-primary);
+			background-color: var(--🥝Select-option-checkmark-color);
 			width: 1rem;
 			height: 1rem;
-			order: 1;
 			mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M11.606 4.191a.5.5 0 0 1 .787.617l-5.5 7a.502.502 0 0 1-.777.012l-2.5-3a.5.5 0 0 1 .768-.64l2.104 2.525 5.118-6.514Z'/%3E%3C/svg%3E");
 			mask-repeat: no-repeat;
 			mask-position: center;
-			margin-inline-end: var(--stratakit-space-x1);
 		}
+	}
+
+	@layer states {
+		@media (any-hover: hover) {
+			&:where(:hover) {
+				--🌀SelectOption-state: var(--🌀SelectOption-state--hover);
+			}
+		}
+
+		&:where(:active) {
+			--🌀SelectOption-state: var(--🌀SelectOption-state--pressed);
+		}
+
+		&:where(:disabled, [aria-disabled="true"]) {
+			--🌀SelectOption-state: var(--🌀SelectOption-state--disabled);
+			--🥝Select-option-checkmark-color: var(--stratakit-color-icon-neutral-disabled);
+			color: var(--✨color--disabled);
+			cursor: not-allowed;
+			-webkit-tap-highlight-color: transparent;
+		}
+	}
+
+	@layer base.🌀 {
+		/* See https://kizu.dev/cyclic-toggles/ */
+		--🌀SelectOption-state: var(--🌀SelectOption-state--default);
+		--🌀SelectOption-state--default: var(--🌀SelectOption-state,);
+		--🌀SelectOption-state--hover: var(--🌀SelectOption-state,);
+		--🌀SelectOption-state--pressed: var(--🌀SelectOption-state,);
+		--🌀SelectOption-state--disabled: var(--🌀SelectOption-state,);
 	}
 }
 

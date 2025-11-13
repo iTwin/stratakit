@@ -17,6 +17,11 @@ import type {
 	FocusableProps,
 } from "@stratakit/foundations/secret-internals";
 
+// ----------------------------------------------------------------------------
+
+const supportsBaseSelect =
+	isBrowser && CSS?.supports("appearance: base-select");
+
 const supportsHas = isBrowser && CSS?.supports?.("selector(:has(+ *))");
 
 // ----------------------------------------------------------------------------
@@ -66,6 +71,14 @@ const HtmlSelectContext = React.createContext<
 const SelectRoot = forwardRef<"div", BaseProps>((props, forwardedRef) => {
 	useFieldControlType("textlike");
 	const [isHtmlSelect, setIsHtmlSelect] = React.useState(false);
+
+	if (supportsBaseSelect) {
+		return (
+			<HtmlSelectContext.Provider value={setIsHtmlSelect}>
+				{props.children}
+			</HtmlSelectContext.Provider>
+		);
+	}
 
 	return (
 		<HtmlSelectContext.Provider value={setIsHtmlSelect}>
@@ -134,7 +147,7 @@ const HtmlSelect = forwardRef<"select", HtmlSelectProps>(
 					ref={forwardedRef}
 				/>
 
-				<CaretsUpDown className="🥝SelectArrow" />
+				{!supportsBaseSelect && <CaretsUpDown className="🥝SelectArrow" />}
 			</>
 		);
 	},
@@ -191,21 +204,23 @@ const Option = forwardRef<"option", OptionProps>((props, forwardedRef) => {
 	return (
 		<option
 			{...rest}
-			className={cx("🥝ListItem 🥝SelectOption", props.className)}
+			className={cx(supportsBaseSelect && "🥝SelectOption", props.className)}
 			ref={forwardedRef}
 		>
-			{typeof icon === "string" ? (
-				<Icon className="🥝ListItemDecoration" href={icon} />
+			{supportsBaseSelect ? (
+				<>
+					{typeof icon === "string" ? <Icon href={icon} /> : icon}
+					<Text
+						render={<span />}
+						className="🥝SelectOptionLabel"
+						variant="body-sm"
+					>
+						{content}
+					</Text>
+				</>
 			) : (
-				icon
+				content
 			)}
-			<Text
-				render={<span />}
-				className="🥝ListItemContent 🥝SelectOptionLabel"
-				variant="body-sm"
-			>
-				{content}
-			</Text>
 		</option>
 	);
 });
@@ -238,7 +253,7 @@ const SelectedContent = forwardRef<"button", SelectedContentProps>(
 			<button>
 				<selectedcontent
 					{...rest}
-					className={cx("🥝ListItem 🥝SelectSelectedContent", props.className)}
+					className={cx("🥝SelectSelectedContent", props.className)}
 					ref={forwardedRef}
 				/>
 			</button>

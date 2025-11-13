@@ -416,18 +416,22 @@
 		}
 
 		.🥝SelectOption {
-			&:where(:checked) {
+			&:where(:checked:not(:disabled, [aria-disabled="true"])) {
 				forced-color-adjust: none;
 				background-color: SelectedItem;
 				color: SelectedItemText;
-			}
 
-			&::checkmark {
-				background-color: SelectedItemText;
+				&::checkmark {
+					background-color: SelectedItemText;
+				}
 			}
 
 			&:where(:disabled, [aria-disabled="true"]) {
 				color: GrayText;
+
+				&::checkmark {
+					background-color: GrayText;
+				}
 			}
 		}
 	}

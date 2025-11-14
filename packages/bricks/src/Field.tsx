@@ -71,7 +71,7 @@ const FieldRoot = forwardRef<"div", FieldRootProps>((props, forwardedRef) => {
 		/>
 	);
 });
-DEV: FieldRoot.displayName = "Field";
+DEV: FieldRoot.displayName = "Field.Root";
 
 // ----------------------------------------------------------------------------
 

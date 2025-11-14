@@ -196,7 +196,7 @@ const NavigationRailRootInner = forwardRef<"nav", NavigationRailRootInnerProps>(
 		);
 	},
 );
-DEV: NavigationRailRootInner.displayName = "NavigationRail.RootInner";
+DEV: NavigationRailRootInner.displayName = "NavigationRailRootInner";
 
 // ----------------------------------------------------------------------------
 
@@ -388,7 +388,7 @@ const NavigationRailListItem = forwardRef<"div", NavigationRailListItemProps>(
 		);
 	},
 );
-DEV: NavigationRailListItem.displayName = "NavigationRail.Item";
+DEV: NavigationRailListItem.displayName = "NavigationRail.ListItem";
 
 // ----------------------------------------------------------------------------
 
@@ -436,7 +436,7 @@ const NavigationRailItemAction = forwardRef<
 
 	return action;
 });
-DEV: NavigationRailItemAction.displayName = "NavigationRail.ItemAction";
+DEV: NavigationRailItemAction.displayName = "NavigationRailItemAction";
 
 // ----------------------------------------------------------------------------
 

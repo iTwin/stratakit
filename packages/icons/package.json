@@ -5,6 +5,7 @@
 	"license": "MIT",
 	"exports": {
 		"./*.svg": "./icons/*.svg",
+		"./license-remove.svg": "./icons/license-minus.svg",
 		"./icons-list.json": "./icons-list.json"
 	},
 	"files": [

@@ -8,6 +8,12 @@ import { useIsClient } from "./~hooks.js";
 
 // ----------------------------------------------------------------------------
 
+/** @private */
+export const RootContext = React.createContext({});
+DEV: RootContext.displayName = "RootContext";
+
+// ----------------------------------------------------------------------------
+
 export const RootNodeContext = React.createContext<
 	Document | ShadowRoot | undefined
 >(undefined);

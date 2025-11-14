@@ -11,6 +11,7 @@ import {
 	useSafeContext,
 } from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
+import { useInit } from "./~utils.useInit.js";
 
 import type { BaseProps } from "@stratakit/foundations/secret-internals";
 
@@ -66,6 +67,8 @@ interface HtmlTableProps extends BaseProps {}
  * ```
  */
 const HtmlTable = forwardRef<"table", HtmlTableProps>((props, forwardedRef) => {
+	useInit();
+
 	const tableContextValue = React.useMemo(
 		() => ({ mode: "html" as const }),
 		[],
@@ -125,6 +128,8 @@ interface CustomTableProps extends BaseProps {}
  */
 const CustomTable = forwardRef<"div", CustomTableProps>(
 	(props, forwardedRef) => {
+		useInit();
+
 		// const { captionId } = useSafeContext(TableContext);
 		const [captionId, setCaptionId] = React.useState<string | undefined>();
 

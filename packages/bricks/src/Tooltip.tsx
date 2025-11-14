@@ -11,6 +11,7 @@ import {
 	usePopoverApi,
 } from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
+import { useInit } from "./~utils.useInit.js";
 import { TooltipContext } from "./Tooltip.internal.js";
 
 import type { FocusableProps } from "@stratakit/foundations/secret-internals";
@@ -74,6 +75,8 @@ interface TooltipProps
  * **Note**: If `type` is set to `"none"`, the tooltip will not use ARIA attributes.
  */
 const Tooltip = forwardRef<"div", TooltipProps>((props, forwardedRef) => {
+	useInit();
+
 	const generatedId = React.useId();
 	const context = React.useContext(TooltipContext);
 

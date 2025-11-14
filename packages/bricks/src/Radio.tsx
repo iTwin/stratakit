@@ -6,6 +6,7 @@
 import { Radio as AkRadio } from "@ariakit/react/radio";
 import { forwardRef } from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
+import { useInit } from "./~utils.useInit.js";
 import { useFieldControlType } from "./Field.internal.js";
 
 import type { RadioProps as AkRadioProps } from "@ariakit/react/radio";
@@ -42,6 +43,7 @@ interface RadioProps extends InputBaseProps, RadioOwnProps {}
  * including `value`, `defaultChecked`, `checked`, and `onChange`.
  */
 const Radio = forwardRef<"input", RadioProps>((props, forwardedRef) => {
+	useInit();
 	useFieldControlType("checkable");
 	return (
 		<AkRadio

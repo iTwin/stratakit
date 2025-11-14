@@ -6,6 +6,7 @@
 import { Role } from "@ariakit/react/role";
 import { forwardRef } from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
+import { useInit } from "./~utils.useInit.js";
 
 import type { BaseProps } from "@stratakit/foundations/secret-internals";
 
@@ -43,6 +44,8 @@ interface TextProps extends BaseProps {
  * ```
  */
 const Text = forwardRef<"div", TextProps>((props, forwardedRef) => {
+	useInit();
+
 	const { variant, ...rest } = props;
 
 	return (

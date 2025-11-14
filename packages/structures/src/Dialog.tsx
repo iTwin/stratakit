@@ -16,6 +16,7 @@ import {
 } from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
 import { Dismiss } from "./~utils.icons.js";
+import { useInit } from "./~utils.useInit.js";
 
 import type {
 	BaseProps,
@@ -71,6 +72,8 @@ interface DialogRootProps
  * ```
  */
 const DialogRoot = forwardRef<"div", DialogRootProps>((props, forwardedRef) => {
+	useInit();
+
 	const { backdrop = true, unmountOnHide = true, ...rest } = props;
 
 	const store = AkDialog.useDialogStore();

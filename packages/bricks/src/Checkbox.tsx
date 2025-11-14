@@ -6,6 +6,7 @@
 import { Checkbox as AkCheckbox } from "@ariakit/react/checkbox";
 import { forwardRef } from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
+import { useInit } from "./~utils.useInit.js";
 import { useFieldControlType } from "./Field.internal.js";
 
 import type { CheckboxProps as AkCheckboxProps } from "@ariakit/react/checkbox";
@@ -47,6 +48,7 @@ interface CheckboxProps extends InputBaseProps, CheckboxOwnProps {}
  * including `value`, `defaultChecked`, `checked`, and `onChange`.
  */
 const Checkbox = forwardRef<"input", CheckboxProps>((props, forwardedRef) => {
+	useInit();
 	useFieldControlType("checkable");
 	return (
 		<AkCheckbox

@@ -16,6 +16,7 @@ import cx from "classnames";
 import { createStore, useStore } from "zustand";
 import { combine } from "zustand/middleware";
 import { Dismiss, StatusIcon } from "./~utils.icons.js";
+import { useInit } from "./~utils.useInit.js";
 
 import type { BaseProps } from "@stratakit/foundations/secret-internals";
 import type { ExtractState } from "zustand";
@@ -101,6 +102,8 @@ interface BannerRootProps extends BaseProps<"div"> {
  * ```
  */
 const BannerRoot = forwardRef<"div", BannerRootProps>((props, forwardedRef) => {
+	useInit();
+
 	const { tone = "neutral", variant = "outline", ...rest } = props;
 
 	return (
@@ -413,6 +416,8 @@ type BannerProps = Omit<BaseProps, "children"> &
  * ```
  */
 const Banner = forwardRef<"div", BannerProps>((props, forwardedRef) => {
+	useInit();
+
 	const {
 		message,
 		label,

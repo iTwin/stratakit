@@ -20,6 +20,7 @@ import {
 } from "./~utils.js";
 import {
 	HtmlSanitizerContext,
+	RootContext,
 	RootNodeContext,
 	spriteSheetId,
 	useRootNode,
@@ -110,25 +111,27 @@ export const Root = forwardRef<"div", RootProps>((props, forwardedRef) => {
 	} = props;
 
 	return (
-		<RootInternal {...rest} ref={forwardedRef}>
-			<Styles />
-			<Fonts />
-			<InlineSpriteSheet />
+		<RootContext.Provider value={true}>
+			<RootInternal {...rest} ref={forwardedRef}>
+				<Styles />
+				<Fonts />
+				<InlineSpriteSheet />
 
-			{synchronizeColorScheme ? (
-				<SynchronizeColorScheme colorScheme={props.colorScheme} />
-			) : null}
+				{synchronizeColorScheme ? (
+					<SynchronizeColorScheme colorScheme={props.colorScheme} />
+				) : null}
 
-			<HtmlSanitizerContext.Provider value={unstable_htmlSanitizer}>
-				<PortalProvider
-					colorScheme={props.colorScheme}
-					density={props.density}
-					portalContainerProp={portalContainerProp}
-				>
-					{children}
-				</PortalProvider>
-			</HtmlSanitizerContext.Provider>
-		</RootInternal>
+				<HtmlSanitizerContext.Provider value={unstable_htmlSanitizer}>
+					<PortalProvider
+						colorScheme={props.colorScheme}
+						density={props.density}
+						portalContainerProp={portalContainerProp}
+					>
+						{children}
+					</PortalProvider>
+				</HtmlSanitizerContext.Provider>
+			</RootInternal>
+		</RootContext.Provider>
 	);
 });
 DEV: Root.displayName = "Root";

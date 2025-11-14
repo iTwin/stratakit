@@ -11,6 +11,7 @@ import {
 } from "@stratakit/bricks/secret-internals";
 import { forwardRef } from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
+import { useInit } from "./~utils.useInit.js";
 
 import type { BaseProps } from "@stratakit/foundations/secret-internals";
 
@@ -53,6 +54,8 @@ interface ToolbarGroupProps extends BaseProps {
  */
 const ToolbarGroup = forwardRef<"div", ToolbarGroupProps>(
 	(props, forwardedRef) => {
+		useInit();
+
 		return (
 			<IconButtonContext.Provider
 				value={React.useMemo(() => ({ iconSize: "large" }), [])}

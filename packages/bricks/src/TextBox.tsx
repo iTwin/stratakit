@@ -13,6 +13,7 @@ import {
 	useMergedRefs,
 } from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
+import { useInit } from "./~utils.useInit.js";
 import { useFieldControlType } from "./Field.internal.js";
 
 import type {
@@ -73,6 +74,7 @@ interface TextBoxInputProps extends Omit<BaseInputProps, "children" | "type"> {
  */
 const TextBoxInput = forwardRef<"input", TextBoxInputProps>(
 	(props, forwardedRef) => {
+		useInit();
 		useFieldControlType("textlike");
 		const rootContext = React.useContext(TextBoxRootContext);
 		const setDisabled = rootContext?.setDisabled;

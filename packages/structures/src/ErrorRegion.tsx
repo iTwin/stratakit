@@ -24,6 +24,7 @@ import {
 } from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
 import { ChevronDown, StatusIcon } from "./~utils.icons.js";
+import { useInit } from "./~utils.useInit.js";
 
 import type { BaseProps } from "@stratakit/foundations/secret-internals";
 
@@ -99,6 +100,8 @@ type ErrorRegionRootProps = ErrorRegionRootBaseProps &
  */
 const ErrorRegionRoot = forwardRef<"div", ErrorRegionRootProps>(
 	(props, forwardedRef) => {
+		useInit();
+
 		const {
 			label,
 			items = [],

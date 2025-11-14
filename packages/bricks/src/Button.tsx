@@ -7,6 +7,7 @@ import { Button as AkButton } from "@ariakit/react/button";
 import { forwardRef } from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
 import { useGhostAlignment } from "./~utils.GhostAligner.js";
+import { useInit } from "./~utils.useInit.js";
 
 import type { FocusableProps } from "@stratakit/foundations/secret-internals";
 
@@ -47,6 +48,8 @@ interface ButtonProps extends FocusableProps<"button"> {
  * The button's appearance can be customized using the `variant` and `tone` props.
  */
 const Button = forwardRef<"button", ButtonProps>((props, forwardedRef) => {
+	useInit();
+
 	const { variant = "solid", tone = "neutral", ...rest } = props;
 
 	const ghostAlignment = useGhostAlignment();

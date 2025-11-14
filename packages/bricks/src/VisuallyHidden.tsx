@@ -6,6 +6,7 @@
 import { Role } from "@ariakit/react/role";
 import { forwardRef } from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
+import { useInit } from "./~utils.useInit.js";
 
 import type { BaseProps } from "@stratakit/foundations/secret-internals";
 
@@ -26,6 +27,7 @@ interface VisuallyHiddenProps extends BaseProps<"span"> {}
  */
 const VisuallyHidden = forwardRef<"span", VisuallyHiddenProps>(
 	(props, forwardedRef) => {
+		useInit();
 		return (
 			<Role.span
 				{...props}

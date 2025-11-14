@@ -17,6 +17,8 @@
 		border-radius: 8px /* radius(in progress)/medium */;
 		padding: var(--✨padding);
 		box-shadow: var(--stratakit-shadow-control-dropdown-base);
+
+		--🥝Divider-cross-axis-margin: var(--stratakit-space-x1);
 	}
 }
 

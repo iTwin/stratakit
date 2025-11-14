@@ -1,0 +1,161 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+
+.🥝NavigationListRoot {
+	@layer base {
+		position: relative;
+	}
+
+	@layer modifiers {
+		/* Faint indentation line that runs across all items */
+		&:where([data-_sk-indented]) {
+			&::before {
+				content: "";
+				position: absolute;
+				inset-inline-start: var(--stratakit-space-x4);
+				inset-block: 0;
+				border-inline-start: 1px solid var(--stratakit-color-border-page-base);
+				border-radius: 4px;
+			}
+		}
+	}
+}
+
+.🥝NavigationListItemAction {
+	--✨height--default: 2rem;
+	--✨padding-inline: var(--stratakit-space-x2);
+
+	--✨bg--default: transparent;
+	--✨bg--hover: var(--stratakit-color-bg-glow-on-surface-neutral-hover);
+	--✨bg--pressed: var(--stratakit-color-bg-glow-on-surface-neutral-pressed);
+	--✨bg--active: var(--stratakit-color-bg-glow-on-surface-accent-pressed);
+
+	--✨color--default: var(--stratakit-color-text-neutral-primary);
+	--✨color--active: var(--stratakit-color-text-accent-strong);
+	--✨color--disabled: var(--stratakit-color-text-neutral-disabled);
+
+	--✨icon--default: var(--stratakit-color-icon-neutral-secondary);
+	--✨icon--hover: var(--stratakit-color-icon-neutral-primary);
+	--✨icon--pressed: var(--stratakit-color-icon-neutral-primary);
+	--✨icon--active: var(--stratakit-color-icon-accent-strong);
+	--✨icon--disabled: var(--stratakit-color-icon-neutral-disabled);
+
+	@layer base {
+		position: relative;
+		display: flex;
+		align-items: center;
+		gap: var(--stratakit-space-x2);
+
+		inline-size: stretch;
+		min-block-size: var(--✨height--default);
+		padding-inline: var(--✨padding-inline);
+		border-radius: 4px;
+		padding-block: var(--stratakit-space-x1);
+
+		font-size: var(--stratakit-font-size-12);
+		line-height: 1.2;
+		text-decoration: none;
+		cursor: pointer;
+
+		color: var(--🌀NavigationListAnchor-state--default, var(--✨color--default))
+			var(--🌀NavigationListAnchor-state--hover, var(--✨color--default))
+			var(--🌀NavigationListAnchor-state--pressed, var(--✨color--default))
+			var(--🌀NavigationListAnchor-state--active, var(--✨color--active))
+			var(--🌀NavigationListAnchor-state--disabled, var(--✨color--disabled));
+
+		background-color: var(--🌀NavigationListAnchor-state--default, var(--✨bg--default))
+			var(--🌀NavigationListAnchor-state--hover, var(--✨bg--hover))
+			var(--🌀NavigationListAnchor-state--pressed, var(--✨bg--pressed))
+			var(--🌀NavigationListAnchor-state--active, var(--✨bg--active))
+			var(--🌀NavigationListAnchor-state--disabled, var(--✨bg--default));
+
+		--🥝Icon-color: var(--🌀NavigationListAnchor-state--default, var(--✨icon--default))
+			var(--🌀NavigationListAnchor-state--hover, var(---✨icon--hover))
+			var(--🌀NavigationListAnchor-state--pressed, var(--✨icon--pressed))
+			var(--🌀NavigationListAnchor-state--active, var(--✨icon--active))
+			var(--🌀NavigationListAnchor-state--disabled, var(--✨icon--disabled));
+
+		-webkit-tap-highlight-color: var(--stratakit-color-bg-glow-on-surface-neutral-pressed);
+	}
+
+	@layer modifiers {
+		/* Indentation (empty space at the start) */
+		:where(.🥝NavigationListItem[data-_sk-indented]) & {
+			&::before {
+				content: "";
+				display: inline-block;
+				inline-size: var(--stratakit-space-x4);
+			}
+		}
+	}
+
+	@layer states {
+		@media (any-hover: hover) {
+			&:where(:hover) {
+				--🌀NavigationListAnchor-state: var(--🌀NavigationListAnchor-state--hover);
+			}
+		}
+
+		&:where(:active) {
+			--🌀NavigationListAnchor-state: var(--🌀NavigationListAnchor-state--pressed);
+		}
+
+		&:where([aria-current]:not([aria-current="false"])) {
+			--🌀NavigationListAnchor-state: var(--🌀NavigationListAnchor-state--active);
+
+			/* Border around the entire item */
+			&::after {
+				content: "";
+				position: absolute;
+				inset: 0;
+				color: var(--stratakit-color-border-accent-strong);
+				border: 1px solid;
+				border-radius: inherit;
+				will-change: transform;
+			}
+
+			/* For indented listitems, use a stripe instead of border */
+			:where(.🥝NavigationListItem[data-_sk-indented]) & {
+				&::after {
+					inset: unset;
+					border: none;
+					inset-inline-start: var(--stratakit-space-x4);
+					transform: translateX(-0.5px); /* Place on top of the faint indentation line */
+					inline-size: 2px;
+					block-size: 1rem;
+					background-color: currentColor;
+				}
+			}
+		}
+
+		&:where(:disabled, [aria-disabled="true"]) {
+			--🌀NavigationListAnchor-state: var(--🌀NavigationListAnchor-state--disabled);
+
+			cursor: not-allowed;
+		}
+	}
+
+	@layer base.🌀 {
+		/* See https://kizu.dev/cyclic-toggles/ */
+		--🌀NavigationListAnchor-state: var(--🌀NavigationListAnchor-state--default);
+		--🌀NavigationListAnchor-state--default: var(--🌀NavigationListAnchor-state,);
+		--🌀NavigationListAnchor-state--hover: var(--🌀NavigationListAnchor-state,);
+		--🌀NavigationListAnchor-state--pressed: var(--🌀NavigationListAnchor-state,);
+		--🌀NavigationListAnchor-state--active: var(--🌀NavigationListAnchor-state,);
+		--🌀NavigationListAnchor-state--disabled: var(--🌀NavigationListAnchor-state,)
+	}
+}
+
+.🥝NavigationListSubgroupChevron {
+	@layer base {
+		margin-inline-start: auto;
+	}
+
+	@layer modifiers {
+		:where(.🥝NavigationListSubgroupButton[aria-expanded="true"]) & {
+			--🥝ChevronDown-rotate: 180deg;
+		}
+	}
+}

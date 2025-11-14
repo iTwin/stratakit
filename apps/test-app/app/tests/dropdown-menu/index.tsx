@@ -154,12 +154,13 @@ function SubmenuTest() {
 	);
 }
 
-function GroupTest() {
+function GroupTest({ before, after, between }: VariantProps) {
 	return (
 		<div style={{ minBlockSize: 210 }}>
 			<DropdownMenu.Provider>
 				<DropdownMenu.Button>Actions</DropdownMenu.Button>
 				<DropdownMenu.Content>
+					{before && <DropdownMenu.Item label="Item A" />}
 					<DropdownMenu.Group
 						label="Group 1"
 						items={[
@@ -167,6 +168,7 @@ function GroupTest() {
 							<DropdownMenu.Item key="2" label="Item 2" />,
 						]}
 					/>
+					{between && <DropdownMenu.Item label="Item B" />}
 					<DropdownMenu.Group
 						label="Group 2"
 						items={[
@@ -174,6 +176,7 @@ function GroupTest() {
 							<DropdownMenu.Item key="4" label="Item 4" />,
 						]}
 					/>
+					{after && <DropdownMenu.Item label="Item C" />}
 				</DropdownMenu.Content>
 			</DropdownMenu.Provider>
 		</div>

@@ -86,11 +86,7 @@ function VisualTest() {
 											label="Apple"
 											icon={placeholderIconHref}
 										/>
-										<Select.Option
-											value="orange"
-											label="Orange"
-											icon={placeholderIconHref}
-										/>
+										<Select.Option value="orange" label="Orange" />
 										<Select.Option
 											value="kiwi"
 											label="Kiwi"

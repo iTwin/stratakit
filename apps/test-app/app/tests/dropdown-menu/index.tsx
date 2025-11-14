@@ -173,7 +173,22 @@ function GroupTest({ before, after, between }: VariantProps) {
 						label="Group 2"
 						items={[
 							<DropdownMenu.Item key="3" label="Item 3" />,
-							<DropdownMenu.Item key="4" label="Item 4" />,
+							<DropdownMenu.Item
+								key="4"
+								label="Item 4"
+								submenu={
+									<DropdownMenu.Submenu>
+										<DropdownMenu.Group
+											label="Group 3"
+											items={[
+												<DropdownMenu.Item key="5" label="Item 5" />,
+												<DropdownMenu.Item key="6" label="Item 6" />,
+											]}
+										/>
+										<DropdownMenu.Item key="7" label="Item 7" />
+									</DropdownMenu.Submenu>
+								}
+							/>,
 						]}
 					/>
 					{after && <DropdownMenu.Item label="Item C" />}

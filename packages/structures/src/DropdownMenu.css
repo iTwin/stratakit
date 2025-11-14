@@ -8,6 +8,7 @@
 
 	@layer base {
 		background-color: var(--✨bg);
+		overflow: auto;
 
 		display: flex;
 		flex-direction: column;

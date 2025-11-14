@@ -102,98 +102,92 @@ function VisualTest() {
 function CheckboxTest({ defaultChecked: defaultCheckedProp }: VariantProps) {
 	const defaultChecked = defaultCheckedProp ? true : undefined;
 	return (
-		<div style={{ minBlockSize: 150 }}>
-			<DropdownMenu.Provider>
-				<DropdownMenu.Button>Settings</DropdownMenu.Button>
+		<DropdownMenu.Provider>
+			<DropdownMenu.Button>Settings</DropdownMenu.Button>
 
-				<DropdownMenu.Content>
-					<DropdownMenu.CheckboxItem name="item1" label="Item 1" />
-					<DropdownMenu.CheckboxItem name="item2" label="Item 2" />
-					<DropdownMenu.CheckboxItem
-						name="item3"
-						label="Item 3"
-						defaultChecked={defaultChecked}
-					/>
-				</DropdownMenu.Content>
-			</DropdownMenu.Provider>
-		</div>
+			<DropdownMenu.Content>
+				<DropdownMenu.CheckboxItem name="item1" label="Item 1" />
+				<DropdownMenu.CheckboxItem name="item2" label="Item 2" />
+				<DropdownMenu.CheckboxItem
+					name="item3"
+					label="Item 3"
+					defaultChecked={defaultChecked}
+				/>
+			</DropdownMenu.Content>
+		</DropdownMenu.Provider>
 	);
 }
 
 function SubmenuTest() {
 	return (
-		<div style={{ minBlockSize: 200 }}>
-			<DropdownMenu.Provider>
-				<DropdownMenu.Button>Actions</DropdownMenu.Button>
+		<DropdownMenu.Provider>
+			<DropdownMenu.Button>Actions</DropdownMenu.Button>
 
-				<DropdownMenu.Content>
-					<DropdownMenu.Item label="Item 1" />
-					<DropdownMenu.Item label="Item 2" />
-					<DropdownMenu.Item
-						label="Item 3"
-						submenu={
-							<DropdownMenu.Submenu>
-								<DropdownMenu.Item label="Item 3_1" />
-								<DropdownMenu.Item
-									label="Item 3_2"
-									submenu={
-										<DropdownMenu.Submenu>
-											<DropdownMenu.Item label="Item 3_2_1" />
-											<DropdownMenu.Item label="Item 3_2_2" />
-											<DropdownMenu.Item label="Item 3_2_3" />
-										</DropdownMenu.Submenu>
-									}
-								/>
-								<DropdownMenu.Item label="Item 3_3" />
-							</DropdownMenu.Submenu>
-						}
-					/>
-				</DropdownMenu.Content>
-			</DropdownMenu.Provider>
-		</div>
+			<DropdownMenu.Content>
+				<DropdownMenu.Item label="Item 1" />
+				<DropdownMenu.Item label="Item 2" />
+				<DropdownMenu.Item
+					label="Item 3"
+					submenu={
+						<DropdownMenu.Submenu>
+							<DropdownMenu.Item label="Item 3_1" />
+							<DropdownMenu.Item
+								label="Item 3_2"
+								submenu={
+									<DropdownMenu.Submenu>
+										<DropdownMenu.Item label="Item 3_2_1" />
+										<DropdownMenu.Item label="Item 3_2_2" />
+										<DropdownMenu.Item label="Item 3_2_3" />
+									</DropdownMenu.Submenu>
+								}
+							/>
+							<DropdownMenu.Item label="Item 3_3" />
+						</DropdownMenu.Submenu>
+					}
+				/>
+			</DropdownMenu.Content>
+		</DropdownMenu.Provider>
 	);
 }
 
 function GroupTest({ before, after, between }: VariantProps) {
 	return (
-		<div style={{ minBlockSize: 210 }}>
-			<DropdownMenu.Provider>
-				<DropdownMenu.Button>Actions</DropdownMenu.Button>
-				<DropdownMenu.Content>
-					{before && <DropdownMenu.Item label="Item A" />}
-					<DropdownMenu.Group
-						label="Group 1"
-						items={[
-							<DropdownMenu.Item key="1" label="Item 1" />,
-							<DropdownMenu.Item key="2" label="Item 2" />,
-						]}
-					/>
-					{between && <DropdownMenu.Item label="Item B" />}
-					<DropdownMenu.Group
-						label="Group 2"
-						items={[
-							<DropdownMenu.Item key="3" label="Item 3" />,
-							<DropdownMenu.Item
-								key="4"
-								label="Item 4"
-								submenu={
-									<DropdownMenu.Submenu>
-										<DropdownMenu.Group
-											label="Group 3"
-											items={[
-												<DropdownMenu.Item key="5" label="Item 5" />,
-												<DropdownMenu.Item key="6" label="Item 6" />,
-											]}
-										/>
-										<DropdownMenu.Item key="7" label="Item 7" />
-									</DropdownMenu.Submenu>
-								}
-							/>,
-						]}
-					/>
-					{after && <DropdownMenu.Item label="Item C" />}
-				</DropdownMenu.Content>
-			</DropdownMenu.Provider>
-		</div>
+		<DropdownMenu.Provider>
+			<DropdownMenu.Button>Actions</DropdownMenu.Button>
+			<DropdownMenu.Content>
+				{before && <DropdownMenu.Item label="Item A" />}
+				<DropdownMenu.Group
+					label="Group 1"
+					items={[
+						<DropdownMenu.Item key="1" label="Item 1" />,
+						<DropdownMenu.Item key="2" label="Item 2" />,
+					]}
+				/>
+				{between && <DropdownMenu.Item label="Item B" />}
+				<DropdownMenu.Group
+					label="Group 2"
+					items={[
+						<DropdownMenu.Item key="3" label="Item 3" />,
+						<DropdownMenu.Item
+							key="4"
+							label="Item 4"
+							submenu={
+								<DropdownMenu.Submenu>
+									<DropdownMenu.Group
+										label="Group 3"
+										items={[
+											<DropdownMenu.Item key="5" label="Item 5" />,
+											<DropdownMenu.Item key="6" label="Item 6" />,
+										]}
+									/>
+									<DropdownMenu.Item key="7" label="Item 7" />
+								</DropdownMenu.Submenu>
+							}
+						/>,
+					]}
+				/>
+				{after && <DropdownMenu.Item label="Item C" />}
+			</DropdownMenu.Content>
+		</DropdownMenu.Provider>
 	);
 }

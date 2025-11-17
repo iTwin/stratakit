@@ -34,6 +34,9 @@ const css = foundationsCss + componentsCss;
 /** This helps pinpoint the location where this module is imported from. */
 const stack = new Error()?.stack?.split("Error")?.at(-1)?.trim() || "";
 
+/** A map of all StrataKit packages and their versions. Will be expanded later (via Context). */
+const versions = new Map([["@stratakit/foundations", __VERSION__]]);
+
 // ----------------------------------------------------------------------------
 
 interface RootProps extends BaseProps {
@@ -111,7 +114,7 @@ export const Root = forwardRef<"div", RootProps>((props, forwardedRef) => {
 	} = props;
 
 	return (
-		<RootContext.Provider value={true}>
+		<RootContext.Provider value={{ versions }}>
 			<RootInternal {...rest} ref={forwardedRef}>
 				<Styles />
 				<Fonts />

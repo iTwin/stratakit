@@ -7,6 +7,7 @@ import { Focusable } from "@ariakit/react/focusable";
 import { Role } from "@ariakit/react/role";
 import { forwardRef } from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
+import { useInit } from "./~utils.useInit.js";
 import VisuallyHidden from "./VisuallyHidden.js";
 
 import type {
@@ -39,6 +40,8 @@ interface AnchorRootProps extends FocusableProps<"a"> {
  * ```
  */
 const AnchorRoot = forwardRef<"a", AnchorRootProps>((props, forwardedRef) => {
+	useInit();
+
 	const { tone = "neutral", ...rest } = props;
 
 	return (

@@ -115,7 +115,7 @@ const LABEL_MAP = {
 	[LABELS.LIST]: [],
 	[LABELS.PAGINATION]: [],
 	[LABELS.PLATFORM_BAR]: ["packages/structures/src/NavigationRail"],
-	[LABELS.POPOVER]: [],
+	[LABELS.POPOVER]: ["packages/structures/src/Popover"],
 	[LABELS.PROGRESS_BAR]: [
 		"packages/bricks/src/Progress",
 		"packages/compat/src/ProgressLinear.tsx",

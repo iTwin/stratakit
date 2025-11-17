@@ -17,6 +17,7 @@ import {
 import cx from "classnames";
 import { createStore, useStore } from "zustand";
 import { combine } from "zustand/middleware";
+import { useInit } from "./~utils.useInit.js";
 
 import type {
 	BaseProps,
@@ -168,6 +169,8 @@ interface NavigationRailRootProps extends NavigationRailRootInnerProps {
  */
 const NavigationRailRoot = forwardRef<"nav", NavigationRailRootProps>(
 	(props, forwardedRef) => {
+		useInit();
+
 		const { defaultExpanded = false, expanded, setExpanded, ...rest } = props;
 
 		return (
@@ -196,7 +199,7 @@ const NavigationRailRootInner = forwardRef<"nav", NavigationRailRootInnerProps>(
 		);
 	},
 );
-DEV: NavigationRailRootInner.displayName = "NavigationRail.RootInner";
+DEV: NavigationRailRootInner.displayName = "NavigationRailRootInner";
 
 // ----------------------------------------------------------------------------
 
@@ -388,7 +391,7 @@ const NavigationRailListItem = forwardRef<"div", NavigationRailListItemProps>(
 		);
 	},
 );
-DEV: NavigationRailListItem.displayName = "NavigationRail.Item";
+DEV: NavigationRailListItem.displayName = "NavigationRail.ListItem";
 
 // ----------------------------------------------------------------------------
 
@@ -436,7 +439,7 @@ const NavigationRailItemAction = forwardRef<
 
 	return action;
 });
-DEV: NavigationRailItemAction.displayName = "NavigationRail.ItemAction";
+DEV: NavigationRailItemAction.displayName = "NavigationRailItemAction";
 
 // ----------------------------------------------------------------------------
 
@@ -470,7 +473,7 @@ const NavigationRailAnchor = forwardRef<"a", NavigationRailAnchorProps>(
 			<NavigationRailItemAction
 				label={label}
 				icon={icon}
-				aria-current={active ? "page" : undefined}
+				aria-current={active ? "true" : undefined}
 				render={<Role.a {...rest} ref={forwardedRef} />}
 			/>
 		);

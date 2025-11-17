@@ -5,7 +5,6 @@
 
 import * as React from "react";
 import { Button as ButtonAk } from "@ariakit/react/button";
-import { useCollectionContext } from "@ariakit/react/collection";
 import {
 	Menu,
 	MenuButton,
@@ -18,7 +17,7 @@ import {
 	useMenuStore,
 } from "@ariakit/react/menu";
 import { useStoreState } from "@ariakit/react/store";
-import { Button, Divider, Kbd, Text } from "@stratakit/bricks";
+import { Button, Kbd, Text } from "@stratakit/bricks";
 import {
 	DisclosureArrow,
 	Dot,
@@ -227,11 +226,9 @@ const DropdownMenuItem = forwardRef<"button", DropdownMenuItemProps>(
 		const store = submenuStore ?? defaultSubmenuStore;
 		const open = useStoreState(store, "open");
 
-		const getItem = useGetItem();
 		return (
 			<>
 				<MenuItem
-					getItem={getItem}
 					accessibleWhenDisabled
 					render={
 						<ListItem.Root
@@ -419,10 +416,8 @@ const DropdownMenuCheckboxItem = forwardRef<
 		...rest
 	} = props;
 
-	const getItem = useGetItem();
 	return (
 		<MenuItemCheckbox
-			getItem={getItem}
 			accessibleWhenDisabled
 			defaultChecked={defaultChecked}
 			checked={checked}
@@ -505,10 +500,6 @@ DEV: DropdownMenuSubmenu.displayName = "DropdownMenu.Submenu";
 
 // ----------------------------------------------------------------------------
 
-const DropdownMenuGroupContext = React.createContext<string | undefined>(
-	undefined,
-);
-
 interface DropdownMenuGroupProps extends Omit<BaseProps, "children"> {
 	/** The text label for the menu-group. */
 	label: string;
@@ -537,78 +528,24 @@ interface DropdownMenuGroupProps extends Omit<BaseProps, "children"> {
 const DropdownMenuGroup = forwardRef<"div", DropdownMenuGroupProps>(
 	(props, forwardedRef) => {
 		const { label, items, ...rest } = props;
-		const defaultId = React.useId();
-		const id = props.id ?? defaultId;
-
-		const { renderBefore, renderAfter } = useGroupDividers(id);
 		return (
-			<DropdownMenuGroupContext.Provider value={id}>
-				{renderBefore && <Divider bleed />}
-				<MenuGroup
-					{...rest}
-					className={cx("🥝DropdownMenuGroup", props.className)}
-					ref={forwardedRef}
+			<MenuGroup
+				{...rest}
+				className={cx("🥝DropdownMenuGroup", props.className)}
+				ref={forwardedRef}
+			>
+				<MenuGroupLabel
+					className="🥝DropdownMenuGroupLabel"
+					render={<Text variant="body-sm" />}
 				>
-					<MenuGroupLabel
-						className="🥝DropdownMenuGroupLabel"
-						render={<Text variant="body-sm" />}
-					>
-						{label}
-					</MenuGroupLabel>
-					{items}
-				</MenuGroup>
-				{renderAfter && <Divider bleed />}
-			</DropdownMenuGroupContext.Provider>
+					{label}
+				</MenuGroupLabel>
+				{items}
+			</MenuGroup>
 		);
 	},
 );
 DEV: DropdownMenuGroup.displayName = "DropdownMenu.Group";
-
-// ----------------------------------------------------------------------------
-
-type MenuItemProps = React.ComponentProps<typeof MenuItem>;
-type CollectionStoreItem = ReturnType<NonNullable<MenuItemProps["getItem"]>>;
-
-interface DropdownMenuCollectionStoreItem extends CollectionStoreItem {
-	groupId?: string;
-}
-
-function useGetItem() {
-	const groupId = React.useContext(DropdownMenuGroupContext);
-	return React.useCallback(
-		(item: CollectionStoreItem): DropdownMenuCollectionStoreItem => {
-			return { ...item, groupId };
-		},
-		[groupId],
-	);
-}
-
-function useGroupDividers(groupId: string) {
-	const store = useCollectionContext();
-	const renderedItems: DropdownMenuCollectionStoreItem[] =
-		useStoreState(store, "renderedItems") ?? [];
-	const firstItemIndex = renderedItems.findIndex((item) => {
-		return item.groupId === groupId;
-	});
-	const lastItemIndex = React.useMemo(() => {
-		if (firstItemIndex === -1) return -1;
-		const idx = renderedItems.findIndex((item, index) => {
-			return index > firstItemIndex && item.groupId !== groupId;
-		});
-		return idx === -1 ? renderedItems.length - 1 : idx - 1;
-	}, [firstItemIndex, renderedItems, groupId]);
-	const renderBefore = React.useMemo(() => {
-		if (firstItemIndex === 0) return false; // First group in the menu
-		const previousItem = renderedItems[firstItemIndex - 1];
-		if (previousItem?.groupId) return false; // Previous group rendered a divider
-		return true;
-	}, [firstItemIndex, renderedItems]);
-	const renderAfter = React.useMemo(() => {
-		if (lastItemIndex === renderedItems.length - 1) return false; // Last group in the menu
-		return true;
-	}, [lastItemIndex, renderedItems]);
-	return { renderBefore, renderAfter };
-}
 
 // ----------------------------------------------------------------------------
 

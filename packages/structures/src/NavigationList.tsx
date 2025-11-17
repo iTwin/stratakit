@@ -13,6 +13,7 @@ import { Icon } from "@stratakit/foundations";
 import { forwardRef } from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
 import { ChevronDown } from "./~utils.icons.js";
+import { useInit } from "./~utils.useInit.js";
 
 import type {
 	BaseProps,
@@ -62,6 +63,8 @@ interface NavigationListRootProps extends Omit<BaseProps<"div">, "children"> {
  */
 const NavigationListRoot = forwardRef<"div", NavigationListRootProps>(
 	(props, forwardedRef) => {
+		useInit();
+
 		const { items, role = "list", ...rest } = props;
 
 		const itemRole = role === "list" ? "listitem" : undefined;

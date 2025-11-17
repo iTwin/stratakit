@@ -1,5 +1,7 @@
 # build output
 dist/
+.wireit
+
 # generated types
 .astro/
 
@@ -19,3 +21,7 @@ pnpm-debug.log*
 
 # macOS-specific files
 .DS_Store
+
+# Playwright
+/tests/test-results/
+playwright-report

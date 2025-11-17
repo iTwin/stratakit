@@ -10,6 +10,7 @@ export { default as Chip } from "./Chip.js";
 export * as unstable_Dialog from "./Dialog.js";
 export * as DropdownMenu from "./DropdownMenu.js";
 export * as unstable_ErrorRegion from "./ErrorRegion.js";
+export * as unstable_NavigationList from "./NavigationList.js";
 export * as unstable_NavigationRail from "./NavigationRail.js";
 export { default as unstable_Popover } from "./Popover.js";
 export * as Table from "./Table.js";

@@ -57,6 +57,10 @@
 	@layer base {
 		visibility: var(--🥝DropdownMenuCheckmark-visibility);
 		--🥝Icon-color: var(--stratakit-color-icon-neutral-primary);
+
+		&:where(.🥝ListItemDecoration) {
+			margin-inline-end: var(--stratakit-space-x2);
+		}
 	}
 }
 

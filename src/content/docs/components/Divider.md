@@ -10,13 +10,13 @@ links:
 
 ## Use cases
 
-The **Divider** comes in two forms: _semantic_ and _presentational_. By default, the **Divider** is semantic; it programmatically communicates a separation of content or functionality. However, in some cases, the semantics may be superfluous. In these cases, you should apply the [`presentational`](</reference/bricks/Divider/#Divider%20(default).presentational>) prop.
+The **Divider** comes in two forms: _semantic_ and _presentational_. By default, the **Divider** is semantic; it programmatically communicates a separation of content or functionality. However, in some cases, the semantics may be superfluous. In these cases, you should apply the `presentational` prop.
 
-| Use case                                                                                            | default | [`presentational`](</reference/bricks/Divider/#Divider%20(default).presentational>) |
-| --------------------------------------------------------------------------------------------------- | :-----: | :---------------------------------------------------------------------------------: |
-| As a horizontal rule, separating paragraphs and other flow content                                  |   ✅    |                                         ❌                                          |
-| As a separator, marking a division between options, such as in a [**Toolbar**](/components/toolbar) |   ✅    |                                         ❌                                          |
-| As a visual indicator marking the separation of two lists                                           |   ❌    |                                         ✅                                          |
+| Use case                                                                                            | default | `presentational` |
+| --------------------------------------------------------------------------------------------------- | :-----: | :--------------: |
+| As a horizontal rule, separating paragraphs and other flow content                                  |   ✅    |        ❌        |
+| As a separator, marking a division between options, such as in a [**Toolbar**](/components/toolbar) |   ✅    |        ❌        |
+| As a visual indicator marking the separation of two lists                                           |   ❌    |        ✅        |
 
 ## Usage
 

@@ -2,14 +2,12 @@
 
 ## 0.5.1
 
-### Patch Changes
-
 - [#1072](https://github.com/iTwin/design-system/pull/1072): Added `bleed` prop to `Divider` component to extend it to the edges of its first ancestor container.
-- [#1068](https://github.com/iTwin/design-system/pull/1068): Added `icon` to `Badge`.
-- [#1060](https://github.com/iTwin/design-system/pull/1060): Added icon to `Field.ErrorMessage`.
-- [#1018](https://github.com/iTwin/design-system/pull/1018): Visual updates to `Select` to match Figma.
+- [#1068](https://github.com/iTwin/design-system/pull/1068): Added `icon` prop to `Badge`.
+- [#1060](https://github.com/iTwin/design-system/pull/1060): Added error icon to `Field.ErrorMessage`.
+- [#1018](https://github.com/iTwin/design-system/pull/1018): Updated `Select` trigger styling to match the latest design from Figma.
 - Updated dependencies:
-  - @stratakit/foundations@0.4.0
+  - @stratakit/foundations@0.4.1
 
 ## 0.5.0
 

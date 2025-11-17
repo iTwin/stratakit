@@ -2,8 +2,6 @@
 
 ## 0.2.1
 
-### Patch Changes
-
 - [#1084](https://github.com/iTwin/design-system/pull/1084): Renamed `license-remove.svg` to `license-minus.svg`.
 
   `license-remove.svg` is now considered deprecated and will be removed in a future release.

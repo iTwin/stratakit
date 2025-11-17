@@ -2,14 +2,14 @@
 
 ## 0.5.1
 
-### Patch Changes
-
 - [#1075](https://github.com/iTwin/design-system/pull/1075): Added a new `unstable_NavigationList` component that displays a vertical list of links for secondary navigation.
 
   Includes the following subcomponents:
   - `<NavigationList.Root>`
   - `<NavigationList.Anchor>`
   - `<NavigationList.Subgroup>`
+
+  Example:
 
   ```tsx
   <NavigationList.Root
@@ -42,7 +42,7 @@
 
 - Updated dependencies:
   - @stratakit/bricks@0.5.1
-  - @stratakit/foundations@0.4.0
+  - @stratakit/foundations@0.4.1
 
 ## 0.5.0
 

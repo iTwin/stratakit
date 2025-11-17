@@ -438,10 +438,20 @@ const DropdownMenuCheckboxItem = forwardRef<
 				/>
 			}
 		>
-			{icon ? <DropdownMenuIcon icon={icon} /> : null}
-			<ListItem.Decoration
-				render={<Checkmark className="🥝DropdownMenuCheckmark" />}
-			/>
+			{icon ? (
+				<ListItem.Decoration className="🥝DropdownMenuDecorations">
+					<Checkmark className="🥝DropdownMenuCheckmark" />
+					<Icon
+						href={typeof icon === "string" ? icon : undefined}
+						render={React.isValidElement(icon) ? icon : undefined}
+					/>
+				</ListItem.Decoration>
+			) : (
+				<ListItem.Decoration
+					render={<Checkmark className="🥝DropdownMenuCheckmark" />}
+				/>
+			)}
+
 			<ListItem.Content render={<span />}>{label}</ListItem.Content>
 		</MenuItemCheckbox>
 	);

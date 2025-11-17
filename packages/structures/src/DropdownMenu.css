@@ -30,23 +30,15 @@
 .🥝DropdownMenuItem:is(.🥝ListItem) {
 	@layer base {
 		border-radius: 4px;
-		user-select: none;
+		--🥝ListItemDecoration-gap: var(
+			--stratakit-space-x15,
+			calc(var(--stratakit-space-x05) + var(--stratakit-space-x1))
+		);
 	}
 
 	@layer states {
-		&:where([role="menuitem"]) {
-			--🥝ListItemDecoration-gap: var(
-				--stratakit-space-x15,
-				calc(var(--stratakit-space-x05) + var(--stratakit-space-x1))
-			);
-		}
-
-		&:where([role="menuitemcheckbox"]) {
-			--🥝ListItemDecoration-gap: var(--stratakit-space-x2);
-
-			&:where(:not([aria-checked="true"])) {
-				--🥝DropdownMenuCheckmark-visibility: hidden;
-			}
+		&:where([role="menuitemcheckbox"]:not([aria-checked="true"])) {
+			--🥝DropdownMenuCheckmark-visibility: hidden;
 		}
 
 		&:where([data-has-popover-open]:not(:active)) {
@@ -65,6 +57,7 @@
 	@layer base {
 		visibility: var(--🥝DropdownMenuCheckmark-visibility);
 		--🥝Icon-color: var(--stratakit-color-icon-neutral-primary);
+		/* padding-inline-end: var(--stratakit-space-x05); */
 	}
 }
 
@@ -78,6 +71,12 @@
 	@layer base {
 		margin-inline-end: -4px;
 		min-inline-size: var(--🥝Icon-size, 1rem);
+	}
+}
+
+.🥝DropdownMenuDecorations {
+	@layer base {
+		column-gap: var(--stratakit-space-x2);
 	}
 }
 

@@ -57,7 +57,6 @@
 	@layer base {
 		visibility: var(--🥝DropdownMenuCheckmark-visibility);
 		--🥝Icon-color: var(--stratakit-color-icon-neutral-primary);
-		/* padding-inline-end: var(--stratakit-space-x05); */
 	}
 }
 

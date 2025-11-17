@@ -1,1 +1,0 @@
-import{a,p}from"./chunk-UIGDSWPH-C0dFpbf8.js";import{I as i}from"./sun-TJSm4u6w.js";import{u as m}from"./~utils-DYJYvJGZ.js";const x=a.forwardRef((r,o)=>{const{fill:n,padded:d,size:e,children:s,...t}=m(r);return p.jsx(i,{render:s,size:e==="large"?"large":void 0,...t,ref:o})});export{x as I};

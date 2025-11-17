@@ -230,6 +230,8 @@ const DropdownMenuItem = forwardRef<"button", DropdownMenuItemProps>(
 		const open = useStoreState(store, "open");
 
 		const hasDialog = props["aria-haspopup"] === "dialog";
+		const expanded = props["aria-expanded"] === true;
+		const dialogExpanded = hasDialog && expanded;
 		return (
 			<>
 				<MenuItem
@@ -252,7 +254,7 @@ const DropdownMenuItem = forwardRef<"button", DropdownMenuItemProps>(
 										)
 									}
 									className={cx("🥝DropdownMenuItem", props.className)}
-									data-has-popover-open={open || undefined}
+									data-has-popover-open={open || dialogExpanded || undefined}
 									ref={forwardedRef}
 								/>
 							}
@@ -260,8 +262,7 @@ const DropdownMenuItem = forwardRef<"button", DropdownMenuItemProps>(
 					}
 					hideOnClick={hasDialog ? false : undefined}
 					blurOnHoverEnd={() => {
-						const expanded = props["aria-expanded"] === true;
-						if (hasDialog && expanded) return false; // Avoids closing the popover when hovering out of a menu item
+						if (dialogExpanded) return false; // Avoids closing the popover when hovering out of a menu item
 						return true;
 					}}
 				>

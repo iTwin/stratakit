@@ -17,8 +17,6 @@
 		border-radius: 8px /* radius(in progress)/medium */;
 		padding: var(--✨padding);
 		box-shadow: var(--stratakit-shadow-control-dropdown-base);
-
-		--🥝Divider-cross-axis-margin: var(--stratakit-space-x1);
 	}
 }
 
@@ -72,9 +70,35 @@
 }
 
 .🥝DropdownMenuGroup {
+	--✨divider-size: 1px;
+	--✨divider-color: var(--stratakit-color-border-page-base);
+	--✨divider-spacing: var(--stratakit-space-x1);
+
 	@layer base {
 		display: flex;
 		flex-direction: column;
+
+		border-width: var(--✨divider-size);
+		border-image-source: linear-gradient(var(--✨divider-color) 0 0);
+		border-image-slice: 1;
+		border-image-outset: 0 100cqi;
+
+		/* Selects all groups except if it's first one in the menu. */
+		&:nth-child(n + 2 of :is(.🥝DropdownMenuGroup, .🥝DropdownMenuItem)) {
+			border-block-start-style: solid;
+			padding-block-start: var(--✨divider-spacing);
+			margin-block-start: var(--✨divider-spacing);
+		}
+
+		/* Selects all groups except if it's last one in the menu. */
+		&:has(~ :is(.🥝DropdownMenuGroup, .🥝DropdownMenuItem)) {
+			/* Skip those immediately followed by another group to avoid double divider. */
+			&:not(:has(+ :where(.🥝DropdownMenuGroup))) {
+				border-block-end-style: solid;
+				padding-block-end: var(--✨divider-spacing);
+				margin-block-end: var(--✨divider-spacing);
+			}
+		}
 	}
 }
 

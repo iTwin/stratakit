@@ -3,7 +3,7 @@ import { Skeleton, VisuallyHidden } from "@stratakit/bricks";
 export default () => {
 	return (
 		<>
-			<Skeleton />
+			<Skeleton variant="text" />
 			<VisuallyHidden>Loading…</VisuallyHidden>
 		</>
 	);

@@ -94,6 +94,15 @@
 		&:where(:not(:has(+ .🥝DropdownMenuItem)))::after {
 			content: unset;
 		}
+
+		@supports not selector(:has(+ *)) {
+			/* Remove dividers between adjacent groups for browsers that do not support :has() */
+			&:where(& + .🥝DropdownMenuGroup) {
+				&::before {
+					content: unset;
+				}
+			}
+		}
 	}
 }
 

@@ -1,5 +1,49 @@
 # Changelog
 
+## 0.5.1
+
+- [#1075](https://github.com/iTwin/design-system/pull/1075): Added a new `unstable_NavigationList` component that displays a vertical list of links for secondary navigation.
+
+  Includes the following subcomponents:
+  - `<NavigationList.Root>`
+  - `<NavigationList.Anchor>`
+  - `<NavigationList.Subgroup>`
+
+  Example:
+
+  ```tsx
+  <NavigationList.Root
+  	items={[
+  		<NavigationList.Anchor key={1} href="/page1" label="Page 1" />,
+  		<NavigationList.Anchor key={2} href="/page2" label="Page 2" />,
+  		<NavigationList.Subgroup
+  			key={3}
+  			label="Group of pages"
+  			items={[
+  				<NavigationList.Anchor key={1} href="/page3-1" label="Sub-page 1" active />,
+  				<NavigationList.Anchor key={2} href="/page3-2" label="Sub-page 2" />,
+  			]}
+  		/>,
+  	]}
+  />
+  ```
+
+- [#1079](https://github.com/iTwin/design-system/pull/1079): Increased the click target area of non-selectable `Tree.Item`s.
+  - If `selected` is undefined, the `Tree.Item` will expand/collapse when clicked.
+  - If `selected` is defined, the `Tree.Item` will continue to toggle selection when clicked.
+
+- [#1064](https://github.com/iTwin/design-system/pull/1064): Added new `unstable_Popover` component that displays custom content in a non-modal window overlay that is placed relative to a trigger element.
+
+  ```tsx
+  <Popover content={<>Popover content</>}>
+  	<Button>Open popover</Button>
+  </Popover>
+  ```
+
+- Updated dependencies:
+  - @stratakit/bricks@0.5.1
+  - @stratakit/foundations@0.4.1
+
 ## 0.5.0
 
 ### Breaking changes

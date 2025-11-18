@@ -7,6 +7,7 @@ import { Role } from "@ariakit/react/role";
 import { Separator } from "@ariakit/react/separator";
 import { forwardRef } from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
+import { useInit } from "./~utils.useInit.js";
 
 import type { SeparatorProps } from "@ariakit/react/separator";
 import type { BaseProps } from "@stratakit/foundations/secret-internals";
@@ -20,6 +21,12 @@ interface DividerProps
 	 * @default false
 	 */
 	presentational?: boolean;
+	/**
+	 * If true, the divider will extend to the edges of the nearest scrollable container.
+	 *
+	 * @default false
+	 */
+	bleed?: boolean;
 }
 
 /**
@@ -29,7 +36,9 @@ interface DividerProps
  * and can be a semantic divider or a purely presentational one (using the `presentational` prop).
  */
 const Divider = forwardRef<"hr", DividerProps>((props, forwardedRef) => {
-	const { presentational, ...rest } = props;
+	useInit();
+
+	const { presentational, bleed, ...rest } = props;
 
 	const Comp = presentational ? Role : Separator;
 
@@ -38,6 +47,7 @@ const Divider = forwardRef<"hr", DividerProps>((props, forwardedRef) => {
 			{...rest}
 			className={cx("🥝Divider", props.className)}
 			data-_sk-orientation={props.orientation}
+			data-_sk-bleed={bleed ? "true" : undefined}
 			ref={forwardedRef}
 		/>
 	);

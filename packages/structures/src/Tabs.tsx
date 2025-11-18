@@ -11,6 +11,7 @@ import {
 	useUnreactiveCallback,
 } from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
+import { useInit } from "./~utils.useInit.js";
 
 import type {
 	BaseProps,
@@ -69,6 +70,8 @@ interface TabsProviderProps
  * **Note**: `Tabs` should _not_ be used for navigation; it is only intended for switching smaller views within an existing page.
  */
 function TabsProvider(props: TabsProviderProps) {
+	useInit();
+
 	const {
 		defaultSelectedId,
 		selectedId,

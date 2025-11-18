@@ -10,6 +10,8 @@ import {
 	reactCompilerPlugin,
 } from "internal/esbuild-plugins.js";
 
+import meta from "../package.json" with { type: "json" };
+
 const isDev = process.env.NODE_ENV === "development";
 
 const entryPoints = await fg("src/**/*.{ts,tsx}", {
@@ -26,6 +28,9 @@ await esbuild.build({
 	format: "esm",
 	jsx: "automatic",
 	target: "es2021",
+	define: {
+		__VERSION__: `"${meta.version}"`,
+	},
 	dropLabels: ["DROP", ...(isDev ? ["DEV"] : [])],
 });
 

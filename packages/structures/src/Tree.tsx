@@ -7,6 +7,7 @@ import { Composite, useCompositeStore } from "@ariakit/react/composite";
 import { Role } from "@ariakit/react/role";
 import { forwardRef } from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
+import { useInit } from "./~utils.useInit.js";
 import { Action as TreeItemAction, Root as TreeItemRoot } from "./TreeItem.js";
 
 import type { BaseProps } from "@stratakit/foundations/secret-internals";
@@ -32,6 +33,8 @@ interface TreeProps extends BaseProps {}
  * ```
  */
 const Tree = forwardRef<"div", TreeProps>((props, forwardedRef) => {
+	useInit();
+
 	const composite = useCompositeStore({ orientation: "vertical" });
 
 	return (

@@ -8,6 +8,7 @@ import { Text } from "@stratakit/bricks";
 import { Icon } from "@stratakit/foundations";
 import { forwardRef } from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
+import { useInit } from "./~utils.useInit.js";
 
 import type { BaseProps } from "@stratakit/foundations/secret-internals";
 
@@ -48,6 +49,7 @@ interface BadgeProps extends Omit<BaseProps<"span">, "children"> {
  * ```
  */
 const Badge = forwardRef<"span", BadgeProps>((props, forwardedRef) => {
+	useInit();
 	const { tone = "neutral", variant = "solid", label, icon, ...rest } = props;
 	return (
 		<Role.span

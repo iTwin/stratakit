@@ -13,6 +13,7 @@ import {
 	usePopoverApi,
 } from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
+import { useInit } from "./~utils.useInit.js";
 
 import type {
 	BaseProps,
@@ -40,7 +41,7 @@ function PopoverProvider(props: PopoverProviderProps) {
 		</AkPopover.PopoverProvider>
 	);
 }
-DEV: PopoverProvider.displayName = "Popover.Provider";
+DEV: PopoverProvider.displayName = "PopoverProvider";
 
 // ----------------------------------------------------------------------------
 
@@ -62,7 +63,7 @@ const PopoverDisclosure = forwardRef<"button", PopoverDisclosureProps>(
 		);
 	},
 );
-DEV: PopoverDisclosure.displayName = "Popover.Disclosure";
+DEV: PopoverDisclosure.displayName = "PopoverDisclosure";
 
 // ----------------------------------------------------------------------------
 
@@ -106,7 +107,7 @@ const PopoverRoot = forwardRef<"div", PopoverRootProps>(
 		);
 	},
 );
-DEV: PopoverRoot.displayName = "Popover.Root";
+DEV: PopoverRoot.displayName = "PopoverRoot";
 
 // ----------------------------------------------------------------------------
 
@@ -142,6 +143,8 @@ interface PopoverProps
  * ```
  */
 const Popover = forwardRef<"div", PopoverProps>((props, forwardedRef) => {
+	useInit();
+
 	const { children, content, open, setOpen, placement, ...rest } = props;
 
 	return (

@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.4.1
+
+- Updated internal code for `@stratakit/bricks@0.5.1` and `@stratakit/structures@0.5.1`.
+
 ## 0.4.0
 
 ### Breaking changes

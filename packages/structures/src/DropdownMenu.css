@@ -78,12 +78,16 @@
 		height: 3px;
 		background-color: var(--🥝Icon-color);
 		clip-path: polygon(100% 0, 100% 100%, 0 100%); /* Triangle pointing to bottom right */
-		forced-color-adjust: none;
 	}
 }
 
 @media (forced-colors: active) {
 	.🥝DropdownMenu {
 		border: 1px solid;
+	}
+
+	.🥝DropdownMenuItemTriangle:is(.🥝ListItemDecoration) {
+		--🥝Icon-color: currentColor;
+		forced-color-adjust: none;
 	}
 }

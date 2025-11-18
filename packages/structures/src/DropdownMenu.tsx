@@ -286,6 +286,9 @@ const DropdownMenuItem = forwardRef<"button", DropdownMenuItemProps>(
 							render={<ChevronRight />}
 						/>
 					) : null}
+					{hasDialog ? (
+						<ListItem.Decoration className="🥝DropdownMenuItemTriangle" />
+					) : null}
 				</MenuItem>
 				<DropdownMenuSubmenuContext.Provider
 					value={React.useMemo(() => ({ setStore: setSubmenuStore }), [])}

@@ -68,6 +68,20 @@
 	}
 }
 
+.🥝DropdownMenuItemTriangle:is(.🥝ListItemDecoration) {
+	@layer base {
+		align-self: flex-end;
+		margin-block-end: var(--stratakit-space-x05);
+
+		content: "";
+		width: 3px;
+		height: 3px;
+		background-color: var(--🥝Icon-color);
+		clip-path: polygon(100% 0, 100% 100%, 0 100%); /* Triangle pointing to bottom right */
+		forced-color-adjust: none;
+	}
+}
+
 @media (forced-colors: active) {
 	.🥝DropdownMenu {
 		border: 1px solid;

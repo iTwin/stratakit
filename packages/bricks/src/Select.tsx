@@ -5,8 +5,6 @@
 
 import * as React from "react";
 import { Role } from "@ariakit/react/role";
-import { Text } from "@stratakit/bricks";
-import { Icon } from "@stratakit/foundations";
 import { forwardRef, isBrowser } from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
 import { CaretsUpDown } from "./~utils.icons.js";
@@ -43,9 +41,9 @@ const HtmlSelectContext = React.createContext<
  *     render={(controlProps) => (
  *       <Select.Root>
  *         <Select.HtmlSelect name="fruit" {...controlProps}>
- *           <Select.Option value="kiwi" label="Kiwi" />
- *           <Select.Option value="mango" label="Mango" />
- *           <Select.Option value="papaya" label="Papaya" />
+ *           <option value="kiwi">Kiwi</option>
+ *           <option value="mango">Mango</option>
+ *           <option value="papaya">Papaya</option>
  *         </Select.HtmlSelect>
  *       </Select.Root>
  *     )}
@@ -60,9 +58,9 @@ const HtmlSelectContext = React.createContext<
  * <Description id="fruit-description">Something to include in a fruit salad.</Description>
  * <Select.Root>
  *   <Select.HtmlSelect id="fruit" aria-describedby="fruit-description">
- *     <Select.Option value="kiwi" label="Kiwi" />
- *     <Select.Option value="mango" label="Mango" />
- *     <Select.Option value="papaya" label="Papaya" />
+ *     <option value="kiwi">Kiwi</option>
+ *     <option value="mango">Mango</option>
+ *     <option value="papaya">Papaya</option>
  *   </Select.HtmlSelect>
  * </Select.Root>
  * ```
@@ -112,9 +110,9 @@ interface HtmlSelectProps extends HtmlSelectBaseProps {
  * Example usage:
  * ```tsx
  * <Select.HtmlSelect>
- *   <Select.Option value="1" label="Option 1" />
- *   <Select.Option value="2" label="Option 2" />
- *   <Select.Option value="3" label="Option 3" />
+ *   <option value="1">Option 1</option>
+ *   <option value="2">Option 2</option>
+ *   <option value="3">Option 3</option>
  * </Select.HtmlSelect>
  * ```
  *
@@ -136,8 +134,6 @@ const HtmlSelect = forwardRef<"select", HtmlSelectProps>(
 			[setIsHtmlSelect],
 		);
 
-		const content = children;
-
 		return (
 			<>
 				<Role.select
@@ -150,7 +146,19 @@ const HtmlSelect = forwardRef<"select", HtmlSelectProps>(
 					<button>
 						<selectedcontent className="🥝SelectSelectedContent" />
 					</button>
-					{content}
+					{React.Children.map(children, (element) => {
+						if (React.isValidElement(element)) {
+							return (
+								<Role
+									className={cx({
+										"🥝SelectOption": element.type === "option",
+									})}
+									render={element}
+								/>
+							);
+						}
+						return element;
+					})}
 				</Role.select>
 
 				{!supportsBaseSelect && <CaretsUpDown className="🥝SelectArrow" />}
@@ -161,75 +169,4 @@ const HtmlSelect = forwardRef<"select", HtmlSelectProps>(
 
 // ----------------------------------------------------------------------------
 
-interface OptionProps
-	extends Omit<React.OptionHTMLAttributes<HTMLOptionElement>, "label"> {
-	/**
-	 * The content to display for this option.
-	 * If `label` is provided, this becomes optional for backward compatibility.
-	 */
-	children?: React.ReactNode;
-
-	/**
-	 * The primary text label for the option. If provided, `children` becomes optional.
-	 */
-	label?: React.ReactNode;
-
-	/**
-	 * An optional icon displayed before the option label.
-	 * Can be a URL of an SVG from the `@stratakit/icons` package,
-	 * or a custom JSX icon.
-	 */
-	icon?: string | React.JSX.Element;
-}
-
-/**
- * An option component to be used inside `Select.HtmlSelect`. This is a wrapper around the
- * HTML `<option>` element that accepts children for the option content, or `label` and `icon` props.
- *
- * Example usage:
- * ```tsx
- * <Select.HtmlSelect>
- *   <Select.Option value="1" label="Option 1" />
- *   <Select.Option value="2" label="Option 2" />
- *   <Select.Option value="3" label="Option 3" icon="path/to/icon.svg" />
- * </Select.HtmlSelect>
- * ```
- *
- * The usage of this component largely mirrors how the `<option>` element would be used in React.
- * You can use the same familiar props, including `value`, `disabled`, `selected`, etc.
- *
- * @see https://react.dev/reference/react-dom/components/option
- */
-const Option = forwardRef<"option", OptionProps>((props, forwardedRef) => {
-	const { children, label, icon, ...rest } = props;
-
-	// Determine the content to display
-	const content = label ?? children;
-
-	return (
-		<option
-			{...rest}
-			className={cx(supportsBaseSelect && "🥝SelectOption", props.className)}
-			ref={forwardedRef}
-		>
-			{supportsBaseSelect ? (
-				<>
-					{typeof icon === "string" ? <Icon href={icon} /> : icon}
-					<Text
-						render={<span />}
-						className="🥝SelectOptionLabel"
-						variant="body-sm"
-					>
-						{content}
-					</Text>
-				</>
-			) : (
-				content
-			)}
-		</option>
-	);
-});
-
-// ----------------------------------------------------------------------------
-
-export { SelectRoot as Root, HtmlSelect, Option };
+export { SelectRoot as Root, HtmlSelect };

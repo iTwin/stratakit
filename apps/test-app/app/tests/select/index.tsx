@@ -4,6 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 
 import { Field, Select } from "@stratakit/bricks";
+import { Icon } from "@stratakit/foundations";
 import { definePage } from "~/~utils.tsx";
 
 import placeholderIconHref from "@stratakit/icons/placeholder.svg";
@@ -19,9 +20,9 @@ export default definePage(
 					render={(controlProps) => (
 						<Select.Root>
 							<Select.HtmlSelect {...controlProps}>
-								<Select.Option value="apple" label="Apple" />
-								<Select.Option value="orange" label="Orange" />
-								<Select.Option value="kiwi" label="Kiwi" />
+								<option value="apple">Apple</option>
+								<option value="orange">Orange</option>
+								<option value="kiwi">Kiwi</option>
 							</Select.HtmlSelect>
 						</Select.Root>
 					)}
@@ -43,29 +44,21 @@ function VisualTest() {
 							render={(controlProps) => (
 								<Select.Root>
 									<Select.HtmlSelect variant={variant} {...controlProps}>
-										<Select.Option
-											value=""
-											label="Select an option"
-											disabled
-											selected
-											hidden
-										/>
-										<Select.Option
-											value="apple"
-											label="Apple"
-											icon={placeholderIconHref}
-										/>
-										<Select.Option
-											value="orange"
-											label="Orange"
-											icon={placeholderIconHref}
-										/>
-										<Select.Option
-											value="kiwi"
-											label="Kiwi"
-											icon={placeholderIconHref}
-											disabled
-										/>
+										<option value="" disabled selected hidden>
+											Select an option
+										</option>
+										<option value="apple">
+											<Icon href={placeholderIconHref} />
+											Apple
+										</option>
+										<option value="orange" disabled>
+											<Icon href={placeholderIconHref} />
+											Orange
+										</option>
+										<option value="kiwi">
+											<Icon href={placeholderIconHref} />
+											Kiwi
+										</option>
 									</Select.HtmlSelect>
 								</Select.Root>
 							)}
@@ -78,18 +71,18 @@ function VisualTest() {
 							render={(controlProps) => (
 								<Select.Root>
 									<Select.HtmlSelect variant={variant} {...controlProps}>
-										<Select.Option
-											value="apple"
-											label="Apple"
-											icon={placeholderIconHref}
-										/>
-										<Select.Option value="orange" label="Orange" />
-										<Select.Option
-											value="kiwi"
-											label="Kiwi"
-											icon={placeholderIconHref}
-											disabled
-										/>
+										<option value="apple">
+											<Icon href={placeholderIconHref} />
+											Apple
+										</option>
+										<option value="orange" disabled>
+											<Icon href={placeholderIconHref} />
+											Orange
+										</option>
+										<option value="kiwi">
+											<Icon href={placeholderIconHref} />
+											Kiwi
+										</option>
 									</Select.HtmlSelect>
 								</Select.Root>
 							)}
@@ -106,22 +99,18 @@ function VisualTest() {
 										disabled
 										{...controlProps}
 									>
-										<Select.Option
-											value="apple"
-											label="Apple"
-											icon={placeholderIconHref}
-										/>
-										<Select.Option
-											value="orange"
-											label="Orange"
-											icon={placeholderIconHref}
-										/>
-										<Select.Option
-											value="kiwi"
-											label="Kiwi"
-											icon={placeholderIconHref}
-											disabled
-										/>
+										<option value="apple">
+											<Icon href={placeholderIconHref} />
+											Apple
+										</option>
+										<option value="orange" disabled>
+											<Icon href={placeholderIconHref} />
+											Orange
+										</option>
+										<option value="kiwi">
+											<Icon href={placeholderIconHref} />
+											Kiwi
+										</option>
 									</Select.HtmlSelect>
 								</Select.Root>
 							)}

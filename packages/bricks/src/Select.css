@@ -374,14 +374,6 @@
 	}
 }
 
-.🥝SelectOptionLabel {
-	@layer base {
-		white-space: nowrap;
-		overflow: hidden;
-		text-overflow: ellipsis;
-	}
-}
-
 @media (forced-colors: active) {
 	.🥝Select {
 		background-color: ButtonFace;

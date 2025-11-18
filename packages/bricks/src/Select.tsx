@@ -7,7 +7,8 @@ import * as React from "react";
 import { Role } from "@ariakit/react/role";
 import { forwardRef, isBrowser } from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
-import { DisclosureArrow } from "./~utils.icons.js";
+import { CaretsUpDown } from "./~utils.icons.js";
+import { useInit } from "./~utils.useInit.js";
 import { useFieldControlType } from "./Field.internal.js";
 
 import type {
@@ -60,6 +61,7 @@ const HtmlSelectContext = React.createContext<
  * ```
  */
 const SelectRoot = forwardRef<"div", BaseProps>((props, forwardedRef) => {
+	useInit();
 	useFieldControlType("textlike");
 	const [isHtmlSelect, setIsHtmlSelect] = React.useState(false);
 
@@ -123,12 +125,13 @@ const HtmlSelect = forwardRef<"select", HtmlSelectProps>(
 			<>
 				<Role.select
 					{...rest}
-					className={cx("🥝Button", "🥝Select", props.className)}
+					className={cx("🥝Select", props.className)}
 					data-_sk-tone="neutral"
 					data-_sk-variant={variant}
 					ref={forwardedRef}
 				/>
-				<DisclosureArrow className="🥝SelectArrow" />
+
+				<CaretsUpDown className="🥝SelectArrow" />
 			</>
 		);
 	},

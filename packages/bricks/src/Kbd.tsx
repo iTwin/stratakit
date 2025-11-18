@@ -6,6 +6,7 @@
 import { Role } from "@ariakit/react/role";
 import { forwardRef } from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
+import { useInit } from "./~utils.useInit.js";
 import { predefinedSymbols } from "./Kbd.internal.js";
 import VisuallyHidden from "./VisuallyHidden.js";
 
@@ -42,6 +43,8 @@ interface KbdProps extends BaseProps<"kbd"> {
  * ```
  */
 const Kbd = forwardRef<"kbd", KbdProps>((props, forwardedRef) => {
+	useInit();
+
 	const { variant = "solid", symbol, children, ...rest } = props;
 
 	DEV: {

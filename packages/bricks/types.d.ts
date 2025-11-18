@@ -6,3 +6,5 @@ declare module "*.css?inline" {
 	const content: string;
 	export default content;
 }
+
+declare const __VERSION__: string;

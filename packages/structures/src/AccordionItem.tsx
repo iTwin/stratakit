@@ -20,6 +20,7 @@ import {
 } from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
 import { ChevronDown } from "./~utils.icons.js";
+import { useInit } from "./~utils.useInit.js";
 
 import type { BaseProps } from "@stratakit/foundations/secret-internals";
 
@@ -97,6 +98,8 @@ interface AccordionItemProps extends BaseProps {
  */
 const AccordionItemRoot = forwardRef<"div", AccordionItemProps>(
 	(props, forwardedRef) => {
+		useInit();
+
 		const {
 			defaultOpen,
 			open: openProp,
@@ -358,7 +361,7 @@ const AccordionItemContent = forwardRef<"div", BaseProps>(
 );
 DEV: AccordionItemContent.displayName = "AccordionItem.Content";
 
-interface AccordionItemHeadingProps extends BaseProps {
+interface AccordionItemHeadingProps extends Omit<BaseProps, "render"> {
 	render: NonNullable<BaseProps["render"]>;
 }
 

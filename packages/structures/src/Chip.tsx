@@ -14,6 +14,7 @@ import cx from "classnames";
 import { createStore, useStore } from "zustand";
 import { combine } from "zustand/middleware";
 import { Dismiss } from "./~utils.icons.js";
+import { useInit } from "./~utils.useInit.js";
 
 import type { BaseProps } from "@stratakit/foundations/secret-internals";
 import type { ExtractState } from "zustand";
@@ -76,6 +77,8 @@ interface ChipRootProps extends BaseProps<"div"> {
  * ```
  */
 const ChipRoot = forwardRef<"div", ChipRootProps>((props, forwardedRef) => {
+	useInit();
+
 	const { variant = "solid", ...rest } = props;
 
 	return (
@@ -188,6 +191,8 @@ interface ChipProps
  * ```
  */
 const Chip = forwardRef<"div", ChipProps>((props, forwardedRef) => {
+	useInit();
+
 	const { onDismiss, label, ...rest } = props;
 
 	return (

@@ -10,6 +10,7 @@ import {
 	defaultServerConditions,
 	defineConfig,
 } from "vite";
+import babel from "vite-plugin-babel";
 import devtoolsJson from "vite-plugin-devtools-json";
 import tsconfigPaths from "vite-tsconfig-paths";
 import {
@@ -40,7 +41,19 @@ export const reactRouterConfig = {
 
 // https://vite.dev/config/
 export default defineConfig({
-	plugins: [reactRouter(), tsconfigPaths(), bundleCssPlugin(), devtoolsJson()],
+	plugins: [
+		reactRouter(),
+		babel({
+			filter: /\.[jt]sx?$/,
+			babelConfig: {
+				presets: ["@babel/preset-typescript"],
+				plugins: [["babel-plugin-react-compiler", {}]],
+			},
+		}),
+		tsconfigPaths(),
+		bundleCssPlugin(),
+		devtoolsJson(),
+	],
 	build: {
 		assetsInlineLimit: (filePath) => {
 			if (filePath.endsWith(".svg")) return false;
@@ -64,6 +77,9 @@ export default defineConfig({
 		resolve: {
 			conditions: [customConditions, defaultServerConditions].flat(),
 		},
+	},
+	define: {
+		__VERSION__: `"development"`,
 	},
 });
 

@@ -1,7 +1,7 @@
 {
 	"name": "@stratakit/structures",
 	"type": "module",
-	"version": "0.4.5",
+	"version": "0.5.1",
 	"license": "MIT",
 	"sideEffects": false,
 	"types": "./dist/index.d.ts",
@@ -49,11 +49,23 @@
 			"development": "./dist/DEV/ErrorRegion.js",
 			"default": "./dist/ErrorRegion.js"
 		},
+		"./unstable_NavigationList": {
+			"@stratakit/source": "./src/NavigationList.tsx",
+			"types": "./dist/NavigationList.d.ts",
+			"development": "./dist/DEV/NavigationList.js",
+			"default": "./dist/NavigationList.js"
+		},
 		"./unstable_NavigationRail": {
 			"@stratakit/source": "./src/NavigationRail.tsx",
 			"types": "./dist/NavigationRail.d.ts",
 			"development": "./dist/DEV/NavigationRail.js",
 			"default": "./dist/NavigationRail.js"
+		},
+		"./unstable_Popover": {
+			"@stratakit/source": "./src/Popover.tsx",
+			"types": "./dist/Popover.d.ts",
+			"development": "./dist/DEV/Popover.js",
+			"default": "./dist/Popover.js"
 		},
 		"./Table": {
 			"@stratakit/source": "./src/Table.tsx",
@@ -78,12 +90,6 @@
 			"types": "./dist/Tree.d.ts",
 			"development": "./dist/DEV/Tree.js",
 			"default": "./dist/Tree.js"
-		},
-		"./TreeItem": {
-			"@stratakit/source": "./src/TreeItem.tsx",
-			"types": "./dist/TreeItem.d.ts",
-			"development": "./dist/DEV/TreeItem.js",
-			"default": "./dist/TreeItem.js"
 		}
 	},
 	"files": [
@@ -118,8 +124,9 @@
 	},
 	"dependencies": {
 		"@ariakit/react": "^0.4.19",
-		"@stratakit/bricks": "^0.4.5",
+		"@stratakit/bricks": "^0.5.1",
 		"classnames": "^2.5.1",
+		"react-compiler-runtime": "^1.0.0",
 		"zustand": "^5.0.8"
 	},
 	"devDependencies": {
@@ -133,7 +140,7 @@
 		"typescript": "catalog:"
 	},
 	"peerDependencies": {
-		"@stratakit/foundations": "^0.3.5",
+		"@stratakit/foundations": "^0.4.1",
 		"react": ">=18.0.0",
 		"react-dom": ">=18.0.0"
 	},

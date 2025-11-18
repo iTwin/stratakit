@@ -24,23 +24,18 @@ import {
 } from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
 import { ChevronDown, StatusIcon } from "./~utils.icons.js";
+import { useInit } from "./~utils.useInit.js";
 
 import type { BaseProps } from "@stratakit/foundations/secret-internals";
 
 // ----------------------------------------------------------------------------
 
-interface ErrorRegionRootProps extends Omit<BaseProps, "children"> {
+interface ErrorRegionRootBaseProps extends Omit<BaseProps, "children"> {
 	/**
 	 * Label for the error header, usually indicating the number of errors displayed.
 	 *
 	 * Changes to the `label` prop will be communicated
 	 * using a [live region](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Guides/Live_regions).
-	 *
-	 * (deprecated behavior) By default this is used as a name of the region navigational landmark.
-	 * `aria-label` or `aria-labelledby` prop should be provided to explicitly label the region instead.
-	 *
-	 * (deprecated behavior) Use `undefined` if you don't want to display errors rather than conditionally rendering the component.
-	 * Use `items` prop instead.
 	 */
 	label?: React.ReactNode;
 	/**
@@ -48,7 +43,7 @@ interface ErrorRegionRootProps extends Omit<BaseProps, "children"> {
 	 *
 	 * Set to `undefined` or empty array if you don't want to display errors rather than conditionally rendering the component.
 	 */
-	items?: React.ReactNode;
+	items?: React.ReactNode[];
 	/**
 	 * The controlled open state of the region.
 	 */
@@ -60,6 +55,27 @@ interface ErrorRegionRootProps extends Omit<BaseProps, "children"> {
 	 */
 	setOpen?: (open: boolean) => void;
 }
+
+type ErrorRegionRootExtraProps =
+	| {
+			/**
+			 * Name of the region navigational landmark.
+			 *
+			 * This label should remain stable throughout the lifetime of the region.
+			 */
+			"aria-label": string | undefined;
+	  }
+	| {
+			/**
+			 * Identifies the element that labels the region navigational landmark.
+			 *
+			 * This label should remain stable throughout the lifetime of the region.
+			 */
+			"aria-labelledby": string | undefined;
+	  };
+
+type ErrorRegionRootProps = ErrorRegionRootBaseProps &
+	ErrorRegionRootExtraProps;
 
 /**
  * A collapsible region that displays a list of error messages, which might originate from another
@@ -84,9 +100,11 @@ interface ErrorRegionRootProps extends Omit<BaseProps, "children"> {
  */
 const ErrorRegionRoot = forwardRef<"div", ErrorRegionRootProps>(
 	(props, forwardedRef) => {
+		useInit();
+
 		const {
 			label,
-			items: itemsProp = [],
+			items = [],
 			open: openProp,
 			setOpen: setOpenProp,
 			...rest
@@ -97,18 +115,7 @@ const ErrorRegionRoot = forwardRef<"div", ErrorRegionRootProps>(
 			: label
 				? labelId
 				: undefined;
-
-		DEV: if (!Array.isArray(itemsProp))
-			console.warn(
-				"`items` prop of `ErrorRegion.Root` expects an array of React nodes. `ReactNode` support is deprecated and will be removed in a future release.",
-			);
-
-		DEV: if (!props["aria-label"] && !props["aria-labelledby"])
-			console.warn(
-				"`aria-label` or `aria-labelledby` prop is required for `ErrorRegion.Root` to set an accessible name of a region.",
-			);
-
-		const visible = Array.isArray(itemsProp) ? itemsProp.length > 0 : !!label;
+		const visible = items.length > 0;
 
 		const [open, setOpen] = useControlledState(
 			false,
@@ -211,7 +218,7 @@ const ErrorRegionRoot = forwardRef<"div", ErrorRegionRootProps>(
 									className="🥝ErrorRegionItems"
 									role="list"
 								>
-									{itemsProp}
+									{items}
 								</Collection>
 							</Dialog>
 						</div>

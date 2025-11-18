@@ -3,10 +3,12 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 .🥝Divider {
+	--✨color: var(--stratakit-color-border-page-base);
+
 	@layer base {
 		flex: 0 0 auto;
 		align-self: stretch;
-		background-color: var(--stratakit-color-border-page-base);
+		color: var(--✨color);
 
 		&:where(hr) {
 			border: none;
@@ -16,22 +18,37 @@
 
 	@layer modifiers {
 		&:where(:not([aria-orientation="vertical"], [data-_sk-orientation="vertical"])) {
+			--🥝Divider-border-image-outset: 0 100cqi;
+
 			block-size: 1px;
 			margin-inline: var(--🥝Divider-main-axis-margin);
 			margin-block: var(--🥝Divider-cross-axis-margin);
 		}
 
 		&:where([aria-orientation="vertical"], [data-_sk-orientation="vertical"]) {
+			--🥝Divider-border-image-outset: 100cqb 0;
+
 			inline-size: 1px;
 			min-block-size: 100%;
 			margin-inline: var(--🥝Divider-cross-axis-margin);
 			margin-block: var(--🥝Divider-main-axis-margin);
+		}
+
+		&:where(:not([data-_sk-bleed="true"])) {
+			background-color: currentColor;
+		}
+
+		&:where([data-_sk-bleed="true"]) {
+			border-image-source: linear-gradient(currentColor 0 0);
+			border-image-slice: 0 fill;
+			border-image-outset: var(--🥝Divider-border-image-outset);
 		}
 	}
 }
 
 @media (forced-colors: active) {
 	.🥝Divider {
-		background-color: CanvasText;
+		color: CanvasText;
+		forced-color-adjust: none;
 	}
 }

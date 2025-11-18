@@ -12,6 +12,7 @@ import { Role } from "@ariakit/react/role";
 import { useStoreState } from "@ariakit/react/store";
 import { forwardRef } from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
+import { useInit } from "./~utils.useInit.js";
 import Description from "./Description.js";
 import { FieldCollection, FieldControlTypeContext } from "./Field.internal.js";
 import Label from "./Label.js";
@@ -57,6 +58,7 @@ interface FieldRootProps extends BaseProps {
  * - `Switch`
  */
 const FieldRoot = forwardRef<"div", FieldRootProps>((props, forwardedRef) => {
+	useInit();
 	const { layout, ...rest } = props;
 	return (
 		<FieldCollection
@@ -71,7 +73,7 @@ const FieldRoot = forwardRef<"div", FieldRootProps>((props, forwardedRef) => {
 		/>
 	);
 });
-DEV: FieldRoot.displayName = "Field";
+DEV: FieldRoot.displayName = "Field.Root";
 
 // ----------------------------------------------------------------------------
 
@@ -142,7 +144,17 @@ DEV: FieldDescription.displayName = "Field.Description";
 // ----------------------------------------------------------------------------
 
 interface FieldCollectionItemControlProps
-	extends Pick<CollectionItemProps, "render" | "id"> {}
+	extends Pick<CollectionItemProps, "render" | "id"> {
+	render:
+		| React.JSX.Element
+		| ((
+				props: Omit<
+					// biome-ignore lint/suspicious/noExplicitAny: we don't know the element type here
+					React.HTMLAttributes<any> & { ref?: React.Ref<any> },
+					"children" // omit children to avoid errors with `<input>` elements
+				>,
+		  ) => React.ReactNode);
+}
 
 /**
  * The control component for the field.

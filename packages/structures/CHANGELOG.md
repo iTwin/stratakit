@@ -1,5 +1,79 @@
 # Changelog
 
+## 0.5.1
+
+- [#1075](https://github.com/iTwin/design-system/pull/1075): Added a new `unstable_NavigationList` component that displays a vertical list of links for secondary navigation.
+
+  Includes the following subcomponents:
+  - `<NavigationList.Root>`
+  - `<NavigationList.Anchor>`
+  - `<NavigationList.Subgroup>`
+
+  Example:
+
+  ```tsx
+  <NavigationList.Root
+  	items={[
+  		<NavigationList.Anchor key={1} href="/page1" label="Page 1" />,
+  		<NavigationList.Anchor key={2} href="/page2" label="Page 2" />,
+  		<NavigationList.Subgroup
+  			key={3}
+  			label="Group of pages"
+  			items={[
+  				<NavigationList.Anchor key={1} href="/page3-1" label="Sub-page 1" active />,
+  				<NavigationList.Anchor key={2} href="/page3-2" label="Sub-page 2" />,
+  			]}
+  		/>,
+  	]}
+  />
+  ```
+
+- [#1079](https://github.com/iTwin/design-system/pull/1079): Increased the click target area of non-selectable `Tree.Item`s.
+  - If `selected` is undefined, the `Tree.Item` will expand/collapse when clicked.
+  - If `selected` is defined, the `Tree.Item` will continue to toggle selection when clicked.
+
+- [#1064](https://github.com/iTwin/design-system/pull/1064): Added new `unstable_Popover` component that displays custom content in a non-modal window overlay that is placed relative to a trigger element.
+
+  ```tsx
+  <Popover content={<>Popover content</>}>
+  	<Button>Open popover</Button>
+  </Popover>
+  ```
+
+- Updated dependencies:
+  - @stratakit/bricks@0.5.1
+  - @stratakit/foundations@0.4.1
+
+## 0.5.0
+
+### Breaking changes
+
+- [#1036](https://github.com/iTwin/design-system/pull/1036): Changed `items` prop type of `ErrorRegion.Root` component from `ReactNode` to `ReactNode[]`.
+
+  `items` prop is used to determine error region visibility.
+
+- [#1038](https://github.com/iTwin/design-system/pull/1038): Removed unintentionally exposed `TreeItem` [subpath export](https://nodejs.org/api/packages.html#subpath-exports). Tree item components are available under the `Tree` subpath or the main entry point of the package.
+
+  ```diff
+  - import * as TreeItem from "@stratakit/structures/TreeItem";
+  + import * as Tree from "@stratakit/structures/Tree";
+
+  - <TreeItem.Root />
+  + <Tree.Item />
+
+  - <TreeItem.Action />
+  + <Tree.ItemAction />
+  ```
+
+- [#1037](https://github.com/iTwin/design-system/pull/1037): Require `aria-label` or `aria-labelledby` prop in `ErrorRegion.Root` component.
+
+### Non-breaking changes
+
+- [#1003](https://github.com/iTwin/design-system/pull/1003): Enabled React Compiler for production build. In React 18 apps, `react-compiler-runtime` dependency will be used.
+- Updated dependencies:
+  - @stratakit/bricks@0.5.0
+  - @stratakit/foundations@0.4.0
+
 ## 0.4.5
 
 - `unstable_NavigationRail` changes:

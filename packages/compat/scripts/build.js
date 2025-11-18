@@ -5,6 +5,9 @@
 
 import * as esbuild from "esbuild";
 import fg from "fast-glob";
+import { reactCompilerPlugin } from "internal/esbuild-plugins.js";
+
+import meta from "../package.json" with { type: "json" };
 
 const isDev = process.env.NODE_ENV === "development";
 
@@ -22,5 +25,26 @@ await esbuild.build({
 	format: "esm",
 	jsx: "automatic",
 	target: "es2021",
+	define: {
+		__VERSION__: `"${meta.version}"`,
+	},
 	...(!isDev && { dropLabels: ["DEV"] }),
 });
+
+// For production builds, run esbuild again with React Compiler.
+if (!isDev) {
+	await esbuild.build({
+		entryPoints: await fg("dist/**/*.js", {
+			onlyFiles: true,
+			ignore: ["dist/DEV"],
+		}),
+		entryNames: "[dir]/[name]",
+		outdir: "dist",
+		bundle: false,
+		format: "esm",
+		jsx: "automatic",
+		target: "es2021",
+		plugins: [reactCompilerPlugin()],
+		allowOverwrite: true,
+	});
+}

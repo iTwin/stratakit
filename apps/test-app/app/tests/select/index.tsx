@@ -19,7 +19,6 @@ export default definePage(
 					render={(controlProps) => (
 						<Select.Root>
 							<Select.HtmlSelect {...controlProps}>
-								<Select.SelectedContent />
 								<Select.Option value="apple" label="Apple" />
 								<Select.Option value="orange" label="Orange" />
 								<Select.Option value="kiwi" label="Kiwi" />
@@ -44,7 +43,6 @@ function VisualTest() {
 							render={(controlProps) => (
 								<Select.Root>
 									<Select.HtmlSelect variant={variant} {...controlProps}>
-										<Select.SelectedContent />
 										<Select.Option
 											value=""
 											label="Select an option"
@@ -80,7 +78,6 @@ function VisualTest() {
 							render={(controlProps) => (
 								<Select.Root>
 									<Select.HtmlSelect variant={variant} {...controlProps}>
-										<Select.SelectedContent />
 										<Select.Option
 											value="apple"
 											label="Apple"
@@ -109,7 +106,6 @@ function VisualTest() {
 										disabled
 										{...controlProps}
 									>
-										<Select.SelectedContent />
 										<Select.Option
 											value="apple"
 											label="Apple"

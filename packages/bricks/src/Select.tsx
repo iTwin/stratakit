@@ -43,7 +43,6 @@ const HtmlSelectContext = React.createContext<
  *     render={(controlProps) => (
  *       <Select.Root>
  *         <Select.HtmlSelect name="fruit" {...controlProps}>
- *           <Select.SelectedContent />
  *           <Select.Option value="kiwi" label="Kiwi" />
  *           <Select.Option value="mango" label="Mango" />
  *           <Select.Option value="papaya" label="Papaya" />
@@ -61,7 +60,6 @@ const HtmlSelectContext = React.createContext<
  * <Description id="fruit-description">Something to include in a fruit salad.</Description>
  * <Select.Root>
  *   <Select.HtmlSelect id="fruit" aria-describedby="fruit-description">
- *     <Select.SelectedContent />
  *     <Select.Option value="kiwi" label="Kiwi" />
  *     <Select.Option value="mango" label="Mango" />
  *     <Select.Option value="papaya" label="Papaya" />
@@ -114,7 +112,6 @@ interface HtmlSelectProps extends HtmlSelectBaseProps {
  * Example usage:
  * ```tsx
  * <Select.HtmlSelect>
- *   <Select.SelectedContent />
  *   <Select.Option value="1" label="Option 1" />
  *   <Select.Option value="2" label="Option 2" />
  *   <Select.Option value="3" label="Option 3" />
@@ -128,7 +125,7 @@ interface HtmlSelectProps extends HtmlSelectBaseProps {
  */
 const HtmlSelect = forwardRef<"select", HtmlSelectProps>(
 	(props, forwardedRef) => {
-		const { variant = "solid", ...rest } = props;
+		const { variant = "solid", children, ...rest } = props;
 
 		const setIsHtmlSelect = React.useContext(HtmlSelectContext);
 
@@ -139,6 +136,8 @@ const HtmlSelect = forwardRef<"select", HtmlSelectProps>(
 			[setIsHtmlSelect],
 		);
 
+		const content = children;
+
 		return (
 			<>
 				<Role.select
@@ -147,7 +146,12 @@ const HtmlSelect = forwardRef<"select", HtmlSelectProps>(
 					data-_sk-tone="neutral"
 					data-_sk-variant={variant}
 					ref={forwardedRef}
-				/>
+				>
+					<button>
+						<selectedcontent className="🥝SelectSelectedContent" />
+					</button>
+					{content}
+				</Role.select>
 
 				{!supportsBaseSelect && <CaretsUpDown className="🥝SelectArrow" />}
 			</>
@@ -185,7 +189,6 @@ interface OptionProps
  * Example usage:
  * ```tsx
  * <Select.HtmlSelect>
- *   <Select.SelectedContent />
  *   <Select.Option value="1" label="Option 1" />
  *   <Select.Option value="2" label="Option 2" />
  *   <Select.Option value="3" label="Option 3" icon="path/to/icon.svg" />
@@ -229,40 +232,4 @@ const Option = forwardRef<"option", OptionProps>((props, forwardedRef) => {
 
 // ----------------------------------------------------------------------------
 
-interface SelectedContentProps
-	extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-	/**
-	 * The content to display in the selected content button.
-	 */
-	children: React.ReactNode;
-}
-
-/**
- * The location that displays the currently selected option's content.
- *
- * Example usage:
- * ```tsx
- * <Select.Root>
- *   <Select.SelectedContent />
- * </Select.Root>
- * ```
- */
-const SelectedContent = forwardRef<"button", SelectedContentProps>(
-	(props, forwardedRef) => {
-		const { ...rest } = props;
-
-		return (
-			<button>
-				<selectedcontent
-					{...rest}
-					className={cx("🥝SelectSelectedContent", props.className)}
-					ref={forwardedRef}
-				/>
-			</button>
-		);
-	},
-);
-
-// ----------------------------------------------------------------------------
-
-export { SelectRoot as Root, HtmlSelect, Option, SelectedContent };
+export { SelectRoot as Root, HtmlSelect, Option };

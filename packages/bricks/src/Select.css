@@ -147,6 +147,7 @@
 			}
 
 			&::picker-icon {
+				content: "";
 				background-color: var(--🥝Select-picker-icon-color);
 				mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M10.354 9.647a.5.5 0 0 1 0 .707l-2 2a.5.5 0 0 1-.707 0l-2-2a.5.5 0 1 1 .707-.707L8 11.293l1.647-1.646a.5.5 0 0 1 .707 0Zm-4-3.293L8 4.707l1.646 1.647a.5.5 0 0 0 .707-.707l-2-2a.5.5 0 0 0-.707 0l-2 2a.5.5 0 0 0 .707.707Z'/%3E%3C/svg%3E");
 				mask-repeat: no-repeat;
@@ -308,12 +309,12 @@
 		align-items: center;
 		align-content: center;
 		column-gap: var(--🥝Select-gap);
-			/* biome-ignore format: improve readability */
-			grid-template-columns:
+		/* biome-ignore format: improve readability */
+		grid-template-columns:
 				[checkmark-before-start] calc(1rem + var(--stratakit-space-x05)) [checkmark-before-end
 				decoration-before-start] auto [decoration-before-end
 				content-start] minmax(0, 1fr) [content-end];
-		
+
 		border-radius: 4px;
 		padding-inline: var(--stratakit-space-x2);
 		block-size: 1.75rem;
@@ -401,8 +402,18 @@
 	}
 
 	@supports (appearance: base-select) {
-		.🥝Select::picker(select) {
-			border: 1px solid;
+		.🥝Select {
+			&::picker(select) {
+				border: 1px solid;
+			}
+
+			&::picker-icon {
+				background-color: ButtonText;
+			}
+
+			&:where(:disabled, [aria-disabled="true"])::picker-icon {
+				background-color: GrayText;
+			}
 		}
 
 		.🥝SelectOption {

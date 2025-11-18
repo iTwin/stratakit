@@ -70,35 +70,31 @@
 }
 
 .🥝DropdownMenuGroup {
-	--✨divider-size: 1px;
-	--✨divider-color: var(--stratakit-color-border-page-base);
+	--✨divider-thickness: 1px;
 	--✨divider-spacing: var(--stratakit-space-x1);
+	--✨divider-color: var(--stratakit-color-border-page-base);
+	--✨divider-border-image: linear-gradient(currentColor 0 0) fill 0 / / 0 100cqi;
 
 	@layer base {
 		display: flex;
 		flex-direction: column;
 
-		--🥝DropdownMenuGroup-divider-color: var(--✨divider-color);
-		border-width: var(--✨divider-size);
-		border-image-source: linear-gradient(var(--🥝DropdownMenuGroup-divider-color) 0 0);
-		border-image-slice: 1;
-		border-image-outset: 0 100cqi;
-
-		/* Selects all groups except if it's first one in the menu. */
-		&:nth-child(n + 2 of :is(.🥝DropdownMenuGroup, .🥝DropdownMenuItem)) {
-			border-block-start-style: solid;
-			padding-block-start: var(--✨divider-spacing);
-			margin-block-start: var(--✨divider-spacing);
+		/* Full-bleed dividers before and after each group */
+		&::before,
+		&::after {
+			content: "";
+			color: var(--✨divider-color);
+			block-size: var(--✨divider-thickness);
+			border-image: var(--✨divider-border-image);
 		}
 
-		/* Selects all groups except if it's last one in the menu. */
-		&:has(~ :is(.🥝DropdownMenuGroup, .🥝DropdownMenuItem)) {
-			/* Skip those immediately followed by another group to avoid double divider. */
-			&:not(:has(+ :where(.🥝DropdownMenuGroup))) {
-				border-block-end-style: solid;
-				padding-block-end: var(--✨divider-spacing);
-				margin-block-end: var(--✨divider-spacing);
-			}
+		/* Removes redundant dividers from the very first/last group and between adjacent groups */
+		&:where(:nth-child(1 of :is(.🥝DropdownMenuGroup, .🥝DropdownMenuItem)))::before,
+		&:where(:not(:has(+ .🥝DropdownMenuItem)))::after {
+			content: unset;
+			margin-block: var(
+				--✨divider-spacing
+			); /* Add spacing around dividers now that they don't overlap. */
 		}
 	}
 }

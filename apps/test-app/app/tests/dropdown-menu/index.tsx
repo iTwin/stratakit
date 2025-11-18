@@ -150,9 +150,9 @@ function SubmenuTest() {
 	);
 }
 
-function GroupTest({ before, after, between }: VariantProps) {
+function GroupTest({ defaultOpen, before, after, between }: VariantProps) {
 	return (
-		<DropdownMenu.Provider>
+		<DropdownMenu.Provider defaultOpen={defaultOpen ? true : undefined}>
 			<DropdownMenu.Button>Actions</DropdownMenu.Button>
 			<DropdownMenu.Content>
 				{before && <DropdownMenu.Item label="Item A" />}

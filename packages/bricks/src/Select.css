@@ -332,6 +332,7 @@
 		--🥝Select-option-checkmark-color: var(--stratakit-color-icon-neutral-primary);
 
 		&::checkmark {
+			content: "";
 			grid-column: checkmark-before;
 			background-color: var(--stratakit-color-icon-neutral-primary);
 			background-color: var(--🥝Select-option-checkmark-color);

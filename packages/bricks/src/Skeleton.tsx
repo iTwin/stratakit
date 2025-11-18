@@ -6,6 +6,7 @@
 import { Role } from "@ariakit/react/role";
 import { forwardRef } from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
+import { useInit } from "./~utils.useInit.js";
 
 import type { BaseProps } from "@stratakit/foundations/secret-internals";
 
@@ -36,6 +37,8 @@ type SkeletonProps = SkeletonPropsBase & {
  * ```
  */
 const Skeleton = forwardRef<"div", SkeletonProps>((props, forwardedRef) => {
+	useInit();
+
 	const { variant = "text", size = "medium", ...rest } = props;
 
 	return (

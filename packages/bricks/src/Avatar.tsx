@@ -6,6 +6,7 @@
 import { Role } from "@ariakit/react/role";
 import { forwardRef } from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
+import { useInit } from "./~utils.useInit.js";
 
 import type { BaseProps } from "@stratakit/foundations/secret-internals";
 
@@ -58,6 +59,8 @@ interface AvatarProps extends Omit<BaseProps<"span">, "children"> {
  * ```
  */
 const Avatar = forwardRef<"span", AvatarProps>((props, forwardedRef) => {
+	useInit();
+
 	const { size = "medium", initials, alt, image, ...rest } = props;
 
 	const isDecorative = !alt;

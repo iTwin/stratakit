@@ -12,6 +12,7 @@
 @import "./Dialog.css" layer(itwinui.components);
 @import "./DropdownMenu.css" layer(itwinui.components);
 @import "./ErrorRegion.css" layer(itwinui.components);
+@import "./NavigationList.css" layer(itwinui.components);
 @import "./NavigationRail.css" layer(itwinui.components);
 @import "./Popover.css" layer(itwinui.components);
 @import "./Table.css" layer(itwinui.components);

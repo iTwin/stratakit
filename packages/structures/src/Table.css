@@ -51,27 +51,24 @@
 }
 
 .🥝TableCell {
-	--✨glow--bg-hover: var(--stratakit-color-glow-hue) var(--stratakit-color-bg-glow-base-hover-\%);
-	--✨glow--bg-active-hover: var(--stratakit-color-glow-hue)
-		var(--stratakit-color-bg-glow-strong-hover-\%);
 	--✨cell-bg--default: var(--stratakit-color-bg-page-base);
-	--✨cell-bg--hover: color-mix(in oklch, var(--✨cell-bg--default) 100%, var(--✨glow--bg-hover));
+	--✨cell-bg--hover: var(--stratakit-color-bg-glow-on-surface-neutral-hover);
 	--✨cell-bg--active: var(--stratakit-color-bg-glow-on-surface-accent-pressed);
-	--✨cell-bg--active-hover: color-mix(
-		in oklch,
-		var(--✨cell-bg--active) 100%,
-		var(--✨glow--bg-active-hover)
-	);
+	--✨cell-bg--active-hover: var(--stratakit-color-bg-glow-on-surface-accent-active-hover);
 	--✨cell-border-width: 1px;
 	--✨cell-border--default: var(--stratakit-color-border-neutral-muted);
 	--✨cell-border--active: var(--stratakit-color-border-accent-strong);
 
 	@layer base {
 		min-inline-size: 4rem;
-		background-color: var(--🌀TableCell-state--default, var(--✨cell-bg--default))
-			var(--🌀TableCell-state--hover, var(--✨cell-bg--hover))
-			var(--🌀TableCell-state--active, var(--✨cell-bg--active))
-			var(--🌀TableCell-state--active-hover, var(--✨cell-bg--active-hover));
+		background-color: var(--✨cell-bg--default);
+
+		background-image: linear-gradient(
+			var(--🌀TableCell-state--default, transparent)
+				var(--🌀TableCell-state--hover, var(--✨cell-bg--hover))
+				var(--🌀TableCell-state--active, var(--✨cell-bg--active))
+				var(--🌀TableCell-state--active-hover, var(--✨cell-bg--active-hover))
+		);
 
 		--🥝TableCell-border-color--active: var(--✨cell-border--active);
 		border-block-end: var(--✨cell-border-width) solid

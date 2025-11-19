@@ -88,7 +88,7 @@
 			translate: 50%;
 		}
 
-		&:where([aria-expanded="true"]) {
+		&:where([aria-pressed="true"]) {
 			rotate: 180deg;
 		}
 	}

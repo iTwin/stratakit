@@ -11,11 +11,7 @@
 	--✨bg--hover: var(--stratakit-color-bg-glow-on-surface-neutral-hover);
 	--✨bg--pressed: var(--stratakit-color-bg-glow-on-surface-neutral-pressed);
 	--✨bg--active: var(--stratakit-color-bg-glow-on-surface-accent-pressed);
-	--✨bg--active-hover: color-mix(
-		in oklch,
-		var(--✨bg--active) 100%,
-		var(--stratakit-color-glow-hue) var(--stratakit-color-bg-glow-strong-hover-\%)
-	);
+	--✨bg--active-hover: var(--stratakit-color-bg-glow-on-surface-accent-active-hover);
 	--✨bg--disabled: var(--stratakit-color-text-neutral-disabled);
 
 	--✨color--default: var(--stratakit-color-text-neutral-primary);

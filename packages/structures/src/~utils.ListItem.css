@@ -107,7 +107,7 @@
 }
 
 .🥝ListItemDecoration {
-	--✨gap: var(--stratakit-space-x15, calc(var(--stratakit-space-x05) + var(--stratakit-space-x1)));
+	--✨gap: calc(var(--stratakit-space-x05) + var(--stratakit-space-x1));
 
 	@layer base {
 		grid-column: decoration-before;

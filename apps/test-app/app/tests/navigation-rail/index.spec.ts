@@ -34,17 +34,17 @@ test.describe("expansion", () => {
 				name: "Expand navigation",
 				exact: true,
 			});
-			await expect(toggleButton).toHaveAttribute("aria-expanded", "false");
+			await expect(toggleButton).toHaveAttribute("aria-pressed", "false");
 
 			// Expand
 			await toggleButton.click();
-			await expect(toggleButton).toHaveAttribute("aria-expanded", "true");
+			await expect(toggleButton).toHaveAttribute("aria-pressed", "true");
 			if (type === "controlled")
 				expect(consoleText).toContain("setExpanded: true");
 
 			// Collapse
 			await toggleButton.click();
-			await expect(toggleButton).toHaveAttribute("aria-expanded", "false");
+			await expect(toggleButton).toHaveAttribute("aria-pressed", "false");
 			if (type === "controlled")
 				expect(consoleText).toContain("setExpanded: false");
 		});
@@ -58,7 +58,7 @@ test.describe("expansion", () => {
 				name: "Expand navigation",
 				exact: true,
 			});
-			await expect(toggleButton).toHaveAttribute("aria-expanded", "true");
+			await expect(toggleButton).toHaveAttribute("aria-pressed", "true");
 		});
 	}
 });

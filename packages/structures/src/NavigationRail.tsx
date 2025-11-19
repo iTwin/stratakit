@@ -258,7 +258,7 @@ const NavigationRailToggleButton = forwardRef<
 
 	return (
 		<Button
-			aria-expanded={expanded ? "true" : "false"}
+			aria-pressed={expanded ? "true" : "false"}
 			{...rest}
 			className={cx("🥝NavigationRailToggleButton", props.className)}
 			ref={forwardedRef}

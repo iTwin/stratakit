@@ -8,6 +8,7 @@
 
 	@layer base {
 		background-color: var(--✨bg);
+		overflow: auto;
 
 		display: flex;
 		flex-direction: column;
@@ -68,8 +69,69 @@
 	}
 }
 
+.🥝DropdownMenuGroup {
+	--✨divider-thickness: 1px;
+	--✨divider-spacing: var(--stratakit-space-x1);
+	--✨divider-color: var(--stratakit-color-border-page-base);
+	--✨divider-border-image: linear-gradient(currentColor 0 0) fill 0 / / 0 100cqi;
+
+	@layer base {
+		display: flex;
+		flex-direction: column;
+
+		/* Full-bleed dividers before and after each group */
+		&::before,
+		&::after {
+			content: "";
+			color: var(--✨divider-color);
+			block-size: var(--✨divider-thickness);
+			border-image: var(--✨divider-border-image);
+			margin-block: var(--✨divider-spacing);
+		}
+
+		/* Removes redundant dividers from the very first/last group and between adjacent groups */
+		&:where(:nth-child(1 of :is(.🥝DropdownMenuGroup, .🥝DropdownMenuItem)))::before,
+		&:where(:not(:has(+ .🥝DropdownMenuItem)))::after {
+			content: unset;
+		}
+
+		@supports not selector(:has(+ *)) {
+			/* Remove dividers between adjacent groups for browsers that do not support :has() */
+			&:where(& + .🥝DropdownMenuGroup) {
+				&::before {
+					content: unset;
+				}
+			}
+		}
+	}
+}
+
+.🥝DropdownMenuGroupLabel {
+	--✨padding-inline: var(--stratakit-space-x2);
+	--✨color: var(--stratakit-color-text-neutral-secondary);
+	--✨height: 1.75rem;
+
+	@layer base {
+		padding-inline: var(--✨padding-inline);
+		color: var(--✨color);
+		font-weight: 500;
+
+		min-block-size: var(--✨height);
+		display: flex;
+		align-items: center;
+	}
+}
+
 @media (forced-colors: active) {
 	.🥝DropdownMenu {
 		border: 1px solid;
+	}
+
+	.🥝DropdownMenuGroup {
+		&::before,
+		&::after {
+			color: CanvasText;
+			forced-color-adjust: none;
+		}
 	}
 }

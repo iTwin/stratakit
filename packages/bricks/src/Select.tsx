@@ -8,6 +8,7 @@ import { Role } from "@ariakit/react/role";
 import { forwardRef, isBrowser } from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
 import { CaretsUpDown } from "./~utils.icons.js";
+import { useInit } from "./~utils.useInit.js";
 import { useFieldControlType } from "./Field.internal.js";
 
 import type {
@@ -60,6 +61,7 @@ const HtmlSelectContext = React.createContext<
  * ```
  */
 const SelectRoot = forwardRef<"div", BaseProps>((props, forwardedRef) => {
+	useInit();
 	useFieldControlType("textlike");
 	const [isHtmlSelect, setIsHtmlSelect] = React.useState(false);
 

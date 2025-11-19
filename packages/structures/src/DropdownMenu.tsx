@@ -32,6 +32,7 @@ import {
 import cx from "classnames";
 import { Checkmark, ChevronRight } from "./~utils.icons.js";
 import * as ListItem from "./~utils.ListItem.js";
+import { useInit } from "./~utils.useInit.js";
 
 import type {
 	MenuItemCheckboxProps,
@@ -74,6 +75,8 @@ interface DropdownMenuProps
  * **Note**: `DropdownMenu` should not be used for navigation; it is only intended for actions.
  */
 function DropdownMenuProvider(props: DropdownMenuProps) {
+	useInit();
+
 	const { children, placement, open, setOpen, defaultOpen } = props;
 
 	return (

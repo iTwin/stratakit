@@ -8,6 +8,19 @@ import { useIsClient } from "./~hooks.js";
 
 // ----------------------------------------------------------------------------
 
+/** @private */
+export const RootContext = React.createContext<RootContextValue | undefined>(
+	undefined,
+);
+DEV: RootContext.displayName = "RootContext";
+
+interface RootContextValue {
+	/** A map of all StrataKit packages and their versions. */
+	versions?: Map<string, string>;
+}
+
+// ----------------------------------------------------------------------------
+
 export const RootNodeContext = React.createContext<
 	Document | ShadowRoot | undefined
 >(undefined);

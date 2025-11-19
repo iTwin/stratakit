@@ -6,6 +6,7 @@
 import { Role } from "@ariakit/react/role";
 import { forwardRef } from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
+import { useInit } from "./~utils.useInit.js";
 import VisuallyHidden from "./VisuallyHidden.js";
 
 import type { BaseProps } from "@stratakit/foundations/secret-internals";
@@ -42,6 +43,8 @@ interface SpinnerProps extends BaseProps {
  * Supports a `size` prop to change the size of the spinner.
  */
 const Spinner = forwardRef<"div", SpinnerProps>((props, forwardedRef) => {
+	useInit();
+
 	const {
 		alt = "Loading…",
 		size = "medium",

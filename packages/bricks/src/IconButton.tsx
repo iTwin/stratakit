@@ -10,6 +10,7 @@ import {
 	useMergedRefs,
 } from "@stratakit/foundations/secret-internals";
 import { Dot } from "./~utils.Dot.js";
+import { useInit } from "./~utils.useInit.js";
 import Button from "./Button.js";
 import {
 	IconButtonContext,
@@ -109,6 +110,8 @@ interface IconButtonProps
  */
 const IconButton = forwardRef<"button", IconButtonProps>(
 	(props, forwardedRef) => {
+		useInit();
+
 		const { label, icon, active, labelVariant, dot, ...rest } = props;
 
 		const baseId = React.useId();

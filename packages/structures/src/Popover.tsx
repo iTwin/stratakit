@@ -13,6 +13,7 @@ import {
 	usePopoverApi,
 } from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
+import { useInit } from "./~utils.useInit.js";
 
 import type {
 	BaseProps,
@@ -142,6 +143,8 @@ interface PopoverProps
  * ```
  */
 const Popover = forwardRef<"div", PopoverProps>((props, forwardedRef) => {
+	useInit();
+
 	const { children, content, open, setOpen, placement, ...rest } = props;
 
 	return (

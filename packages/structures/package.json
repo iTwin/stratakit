@@ -1,7 +1,7 @@
 {
 	"name": "@stratakit/structures",
 	"type": "module",
-	"version": "0.5.0",
+	"version": "0.5.1",
 	"license": "MIT",
 	"sideEffects": false,
 	"types": "./dist/index.d.ts",
@@ -48,6 +48,12 @@
 			"types": "./dist/ErrorRegion.d.ts",
 			"development": "./dist/DEV/ErrorRegion.js",
 			"default": "./dist/ErrorRegion.js"
+		},
+		"./unstable_NavigationList": {
+			"@stratakit/source": "./src/NavigationList.tsx",
+			"types": "./dist/NavigationList.d.ts",
+			"development": "./dist/DEV/NavigationList.js",
+			"default": "./dist/NavigationList.js"
 		},
 		"./unstable_NavigationRail": {
 			"@stratakit/source": "./src/NavigationRail.tsx",
@@ -118,7 +124,7 @@
 	},
 	"dependencies": {
 		"@ariakit/react": "^0.4.19",
-		"@stratakit/bricks": "^0.5.0",
+		"@stratakit/bricks": "^0.5.1",
 		"classnames": "^2.5.1",
 		"react-compiler-runtime": "^1.0.0",
 		"zustand": "^5.0.8"
@@ -134,7 +140,7 @@
 		"typescript": "catalog:"
 	},
 	"peerDependencies": {
-		"@stratakit/foundations": "^0.4.0",
+		"@stratakit/foundations": "^0.4.1",
 		"react": ">=18.0.0",
 		"react-dom": ">=18.0.0"
 	},

@@ -17,6 +17,7 @@ import {
 import cx from "classnames";
 import { createStore, useStore } from "zustand";
 import { combine } from "zustand/middleware";
+import { useInit } from "./~utils.useInit.js";
 
 import type {
 	BaseProps,
@@ -168,6 +169,8 @@ interface NavigationRailRootProps extends NavigationRailRootInnerProps {
  */
 const NavigationRailRoot = forwardRef<"nav", NavigationRailRootProps>(
 	(props, forwardedRef) => {
+		useInit();
+
 		const { defaultExpanded = false, expanded, setExpanded, ...rest } = props;
 
 		return (

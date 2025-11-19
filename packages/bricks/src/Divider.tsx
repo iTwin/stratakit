@@ -7,6 +7,7 @@ import { Role } from "@ariakit/react/role";
 import { Separator } from "@ariakit/react/separator";
 import { forwardRef } from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
+import { useInit } from "./~utils.useInit.js";
 
 import type { SeparatorProps } from "@ariakit/react/separator";
 import type { BaseProps } from "@stratakit/foundations/secret-internals";
@@ -35,6 +36,8 @@ interface DividerProps
  * and can be a semantic divider or a purely presentational one (using the `presentational` prop).
  */
 const Divider = forwardRef<"hr", DividerProps>((props, forwardedRef) => {
+	useInit();
+
 	const { presentational, bleed, ...rest } = props;
 
 	const Comp = presentational ? Role : Separator;

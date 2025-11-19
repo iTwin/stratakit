@@ -2,4 +2,4 @@
 "@stratakit/structures": patch
 ---
 
-Visual updates to `DropdownMenu` to match Figma.
+Visual updates to `DropdownMenu` and `TreeItem` to match latest Figma designs.

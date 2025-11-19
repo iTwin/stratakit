@@ -23,8 +23,6 @@
 	--✨color--disabled: var(--✨bg--disabled);
 
 	@layer base {
-		--🥝ListItemDecoration-gap: var(--stratakit-space-x1);
-
 		cursor: pointer;
 		line-height: 1.2;
 		font-size: var(--stratakit-font-size-12);
@@ -108,6 +106,8 @@
 }
 
 .🥝ListItemDecoration {
+	--✨gap: var(--stratakit-space-x15, calc(var(--stratakit-space-x05) + var(--stratakit-space-x1)));
+
 	@layer base {
 		grid-column: decoration-before;
 		grid-row: 1 / -1;
@@ -115,11 +115,11 @@
 
 		display: flex;
 		align-items: center;
-		margin-inline-end: var(--🥝ListItemDecoration-gap);
+		margin-inline-end: var(--✨gap);
 
 		:where(.🥝ListItemContent) ~ & {
 			grid-column: decoration-after;
-			margin-inline: var(--🥝ListItemDecoration-gap) 0;
+			margin-inline: var(--✨gap) 0;
 		}
 	}
 }

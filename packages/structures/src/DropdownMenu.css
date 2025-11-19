@@ -30,10 +30,6 @@
 .🥝DropdownMenuItem:is(.🥝ListItem) {
 	@layer base {
 		border-radius: 4px;
-		--🥝ListItemDecoration-gap: var(
-			--stratakit-space-x15,
-			calc(var(--stratakit-space-x05) + var(--stratakit-space-x1))
-		);
 	}
 
 	@layer states {

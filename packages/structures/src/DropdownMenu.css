@@ -49,7 +49,7 @@
 				height: 1rem;
 				margin-inline-end: var(--stratakit-space-x2);
 				visibility: var(--🥝DropdownMenuCheckmark-visibility);
-				grid-column: checkmark-before;
+				grid-column: checkmark;
 				grid-row: 1 / -1;
 				align-self: start;
 			}

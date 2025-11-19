@@ -114,6 +114,7 @@
 	@layer base {
 		padding-inline: var(--✨padding-inline);
 		color: var(--✨color);
+		font-weight: 500;
 
 		min-block-size: var(--✨height);
 		display: flex;

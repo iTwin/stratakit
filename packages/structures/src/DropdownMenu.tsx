@@ -30,7 +30,7 @@ import {
 	useSafeContext,
 } from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
-import { Checkmark, ChevronRight } from "./~utils.icons.js";
+import { ChevronRight } from "./~utils.icons.js";
 import * as ListItem from "./~utils.ListItem.js";
 import { useInit } from "./~utils.useInit.js";
 
@@ -440,20 +440,7 @@ const DropdownMenuCheckboxItem = forwardRef<
 				/>
 			}
 		>
-			{icon ? (
-				<ListItem.Decoration className="🥝DropdownMenuDecorations">
-					<Checkmark className="🥝DropdownMenuCheckmark" />
-					<Icon
-						href={typeof icon === "string" ? icon : undefined}
-						render={React.isValidElement(icon) ? icon : undefined}
-					/>
-				</ListItem.Decoration>
-			) : (
-				<ListItem.Decoration
-					render={<Checkmark className="🥝DropdownMenuCheckmark" />}
-				/>
-			)}
-
+			{icon ? <DropdownMenuIcon icon={icon} /> : null}
 			<ListItem.Content render={<span />}>{label}</ListItem.Content>
 		</MenuItemCheckbox>
 	);

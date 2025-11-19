@@ -34,8 +34,25 @@
 	}
 
 	@layer states {
-		&:where([role="menuitemcheckbox"]:not([aria-checked="true"])) {
-			--🥝DropdownMenuCheckmark-visibility: hidden;
+		&:where([role="menuitemcheckbox"]) {
+			&:not([aria-checked="true"]) {
+				--🥝DropdownMenuCheckmark-visibility: hidden;
+			}
+
+			&::before {
+				content: "";
+				background-color: var(--stratakit-color-icon-neutral-primary);
+				mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M11.606 4.191a.5.5 0 0 1 .787.617l-5.5 7a.502.502 0 0 1-.777.012l-2.5-3a.5.5 0 0 1 .768-.64l2.104 2.525 5.118-6.514Z'/%3E%3C/svg%3E");
+				mask-repeat: no-repeat;
+				mask-position: center;
+				width: 1rem;
+				height: 1rem;
+				margin-inline-end: var(--stratakit-space-x2);
+				visibility: var(--🥝DropdownMenuCheckmark-visibility);
+				grid-column: checkmark-before;
+				grid-row: 1 / -1;
+				align-self: start;
+			}
 		}
 
 		&:where([data-has-popover-open]:not(:active)) {
@@ -50,17 +67,6 @@
 	}
 }
 
-.🥝DropdownMenuCheckmark {
-	@layer base {
-		visibility: var(--🥝DropdownMenuCheckmark-visibility);
-		--🥝Icon-color: var(--stratakit-color-icon-neutral-primary);
-
-		&:where(.🥝ListItemDecoration) {
-			margin-inline-end: var(--stratakit-space-x2);
-		}
-	}
-}
-
 .🥝DropdownMenuItemShortcuts {
 	@layer base {
 		margin-inline-start: var(--stratakit-space-x2);
@@ -71,12 +77,6 @@
 	@layer base {
 		margin-inline-end: -4px;
 		min-inline-size: var(--🥝Icon-size, 1rem);
-	}
-}
-
-.🥝DropdownMenuDecorations {
-	@layer base {
-		column-gap: var(--stratakit-space-x2);
 	}
 }
 
@@ -136,6 +136,17 @@
 @media (forced-colors: active) {
 	.🥝DropdownMenu {
 		border: 1px solid;
+	}
+
+	.🥝DropdownMenuItem:where([role="menuitemcheckbox"][aria-checked="true"]) {
+		background-color: SelectedItem;
+		color: SelectedItemText;
+		forced-color-adjust: none;
+
+		&::before {
+			background-color: currentColor;
+			color: inherit;
+		}
 	}
 
 	.🥝DropdownMenuGroup {

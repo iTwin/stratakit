@@ -235,7 +235,7 @@ interface NavigationRailToggleButtonProps
 	/**
 	 * Customize the accessible label of the toggle button.
 	 *
-	 * @default "Show navigation labels".
+	 * @default "Expand navigation".
 	 */
 	label?: string;
 }
@@ -251,18 +251,18 @@ const NavigationRailToggleButton = forwardRef<
 	"button",
 	NavigationRailToggleButtonProps
 >((props, forwardedRef) => {
-	const { label = "Show navigation labels", ...rest } = props;
+	const { label = "Expand navigation", ...rest } = props;
 
-	const pressed = useNavigationRailState((state) => state.expanded);
+	const expanded = useNavigationRailState((state) => state.expanded);
 	const setExpanded = useNavigationRailState((state) => state.setExpanded);
 
 	return (
 		<Button
-			aria-pressed={pressed ? "true" : "false"}
+			aria-pressed={expanded ? "true" : "false"}
 			{...rest}
 			className={cx("🥝NavigationRailToggleButton", props.className)}
 			ref={forwardedRef}
-			onClick={useEventHandlers(props.onClick, () => setExpanded(!pressed))}
+			onClick={useEventHandlers(props.onClick, () => setExpanded(!expanded))}
 		>
 			<svg width="12" height="12" fill="none" aria-hidden="true">
 				<path

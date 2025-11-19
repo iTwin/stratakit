@@ -8,6 +8,8 @@ import { Button as ButtonAk } from "@ariakit/react/button";
 import {
 	Menu,
 	MenuButton,
+	MenuGroup,
+	MenuGroupLabel,
 	MenuItem,
 	MenuItemCheckbox,
 	MenuProvider,
@@ -15,7 +17,7 @@ import {
 	useMenuStore,
 } from "@ariakit/react/menu";
 import { useStoreState } from "@ariakit/react/store";
-import { Button, Kbd } from "@stratakit/bricks";
+import { Button, Kbd, Text } from "@stratakit/bricks";
 import {
 	DisclosureArrow,
 	Dot,
@@ -99,7 +101,7 @@ interface DropdownMenuContentProps extends FocusableProps {}
  *
  * Should be used as a child of `DropdownMenu.Provider`.
  *
- * Should include one or more of `DropdownMenu.Item`, `DropdownMenu.CheckboxItem` as direct descendants.
+ * Should include one or more of `DropdownMenu.Item`, `DropdownMenu.CheckboxItem` and `DropdownMenu.Group` as direct descendants.
  */
 const DropdownMenuContent = forwardRef<"div", DropdownMenuContentProps>(
 	(props, forwardedRef) => {
@@ -193,7 +195,7 @@ interface DropdownMenuItemProps
 }
 
 /**
- * A single menu item within the dropdown menu. Should be used as a child of `DropdownMenu.Content`.
+ * A single menu item within the dropdown menu. Should be used as a child of `DropdownMenu.Content` and `DropdownMenu.Submenu`.
  *
  * Example:
  * ```tsx
@@ -394,7 +396,7 @@ interface DropdownMenuCheckboxItemProps
 		Pick<DropdownMenuItemProps, "label" | "icon"> {}
 
 /**
- * A single checkbox menu item within the dropdown menu. Should be used as a child of `DropdownMenu.Content`.
+ * A single checkbox menu item within the dropdown menu. Should be used as a child of `DropdownMenu.Content` and `DropdownMenu.Submenu`.
  *
  * Example:
  * ```tsx
@@ -474,7 +476,7 @@ interface DropdownMenuSubmenuProps extends FocusableProps {}
  *
  * Should be passed into the `submenu` prop of `DropdownMenu.Item`.
  *
- * Should include one or more of `DropdownMenu.Item`, `DropdownMenu.CheckboxItem` as direct descendants.
+ * Should include one or more of `DropdownMenu.Item`, `DropdownMenu.CheckboxItem` and `DropdownMenu.Group` as direct descendants.
  */
 const DropdownMenuSubmenu = forwardRef<"div", DropdownMenuSubmenuProps>(
 	(props, forwardedRef) => {
@@ -511,6 +513,55 @@ DEV: DropdownMenuSubmenu.displayName = "DropdownMenu.Submenu";
 
 // ----------------------------------------------------------------------------
 
+interface DropdownMenuGroupProps extends Omit<BaseProps, "children"> {
+	/** The text label for the menu-group. */
+	label: string;
+	/**
+	 * The menu items within the group.
+	 *
+	 * Should be an array of `DropdownMenu.Item` and/or `DropdownMenu.CheckboxItem` elements.
+	 */
+	items: React.JSX.Element[];
+}
+
+/**
+ * A group of menu items within the dropdown menu. Should be used as a child of `DropdownMenu.Content` and `DropdownMenu.Submenu`.
+ *
+ * Example:
+ * ```tsx
+ * <DropdownMenu.Group
+ * 	label="Manage"
+ * 	items={[
+ *   <DropdownMenu.Item key="add" label="Add" />,
+ *   <DropdownMenu.Item key="edit" label="Edit" />
+ * 	]}
+ * />
+ * ```
+ */
+const DropdownMenuGroup = forwardRef<"div", DropdownMenuGroupProps>(
+	(props, forwardedRef) => {
+		const { label, items, ...rest } = props;
+		return (
+			<MenuGroup
+				{...rest}
+				className={cx("🥝DropdownMenuGroup", props.className)}
+				ref={forwardedRef}
+			>
+				<MenuGroupLabel
+					className="🥝DropdownMenuGroupLabel"
+					render={<Text variant="body-sm" />}
+				>
+					{label}
+				</MenuGroupLabel>
+				{items}
+			</MenuGroup>
+		);
+	},
+);
+DEV: DropdownMenuGroup.displayName = "DropdownMenu.Group";
+
+// ----------------------------------------------------------------------------
+
 export {
 	DropdownMenuProvider as Provider,
 	DropdownMenuButton as Button,
@@ -518,4 +569,5 @@ export {
 	DropdownMenuItem as Item,
 	DropdownMenuCheckboxItem as CheckboxItem,
 	DropdownMenuSubmenu as Submenu,
+	DropdownMenuGroup as Group,
 };

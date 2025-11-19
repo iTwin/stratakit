@@ -10,7 +10,6 @@
 		--🥝Tab-padding-inline: var(--stratakit-space-x1);
 
 		display: flex;
-		gap: var(--stratakit-space-x2);
 		position: relative;
 
 		@supports (position-anchor: --foo) {
@@ -29,6 +28,10 @@
 	}
 
 	@layer modifiers {
+		&:where([data-_sk-variant="fit"]) {
+			gap: var(--stratakit-space-x2);
+		}
+
 		&[aria-orientation="horizontal"] {
 			padding-block-end: var(--🥝Tab-active-stripe-gap);
 		}
@@ -90,6 +93,11 @@
 	}
 
 	@layer modifiers {
+		:where(.🥝TabList[data-_sk-variant="equal"]) & {
+			flex: 1;
+			justify-content: center;
+		}
+
 		:where(.🥝TabList[data-_sk-tone="neutral"]) & {
 			--🥝Tab-background-color: var(--🌀Tab-state--default, var(--✨bg--default))
 				var(--🌀Tab-state--hover, var(--✨bg--hover-neutral))

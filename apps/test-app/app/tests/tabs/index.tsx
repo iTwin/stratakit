@@ -33,40 +33,45 @@ export default definePage(
 );
 
 function VisualTest() {
+	const variants = ["fit", "equal"] as const;
 	const tones = ["neutral", "accent"] as const;
 
 	return (
 		<div style={{ display: "grid", gap: 4 }}>
-			{tones.map((tone) => (
-				<Tabs.Provider key={tone}>
-					<Tabs.TabList tone={tone}>
-						<Tabs.Tab id="tab1">Tab 1</Tabs.Tab>
-						<Tabs.Tab id="tab2">
-							<Icon href={placeholderIcon} />
-							Tab 2
-						</Tabs.Tab>
-						<Tabs.Tab id="tab3">
-							Tab 3
-							<Icon href={placeholderIcon} />
-						</Tabs.Tab>
-						<Tabs.Tab id="tab4">
-							<Icon href={placeholderIcon} />
-							Tab 4
-							<Icon href={placeholderIcon} />
-						</Tabs.Tab>
-						<Tabs.Tab id="tab5" disabled>
-							Tab 5
-						</Tabs.Tab>
-						<Tabs.Tab id="tab6">Tab 6</Tabs.Tab>
-					</Tabs.TabList>
+			{variants.map((variant) => (
+				<div style={{ display: "grid", gap: 4 }} key={variant}>
+					{tones.map((tone) => (
+						<Tabs.Provider key={tone}>
+							<Tabs.TabList tone={tone} variant={variant}>
+								<Tabs.Tab id="tab1">Tab 1</Tabs.Tab>
+								<Tabs.Tab id="tab2">
+									<Icon href={placeholderIcon} />
+									Tab 2
+								</Tabs.Tab>
+								<Tabs.Tab id="tab3">
+									Tab 3
+									<Icon href={placeholderIcon} />
+								</Tabs.Tab>
+								<Tabs.Tab id="tab4">
+									<Icon href={placeholderIcon} />
+									Tab 4
+									<Icon href={placeholderIcon} />
+								</Tabs.Tab>
+								<Tabs.Tab id="tab5" disabled>
+									Tab 5
+								</Tabs.Tab>
+								<Tabs.Tab id="tab6">Tab 6</Tabs.Tab>
+							</Tabs.TabList>
 
-					<Tabs.TabPanel tabId="tab1">Tab 1 content</Tabs.TabPanel>
-					<Tabs.TabPanel tabId="tab2">Tab 2 content</Tabs.TabPanel>
-					<Tabs.TabPanel tabId="tab3">Tab 3 content</Tabs.TabPanel>
-					<Tabs.TabPanel tabId="tab4">Tab 4 content</Tabs.TabPanel>
-					<Tabs.TabPanel tabId="tab5">Tab 5 content</Tabs.TabPanel>
-					<Tabs.TabPanel tabId="tab6">Tab 6 content</Tabs.TabPanel>
-				</Tabs.Provider>
+							<Tabs.TabPanel tabId="tab1">Tab 1 content</Tabs.TabPanel>
+							<Tabs.TabPanel tabId="tab2">Tab 2 content</Tabs.TabPanel>
+							<Tabs.TabPanel tabId="tab3">Tab 3 content</Tabs.TabPanel>
+							<Tabs.TabPanel tabId="tab4">Tab 4 content</Tabs.TabPanel>
+							<Tabs.TabPanel tabId="tab5">Tab 5 content</Tabs.TabPanel>
+							<Tabs.TabPanel tabId="tab6">Tab 6 content</Tabs.TabPanel>
+						</Tabs.Provider>
+					))}
+				</div>
 			))}
 		</div>
 	);

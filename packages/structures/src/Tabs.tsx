@@ -140,6 +140,9 @@ DEV: TabsProvider.displayName = "Tabs.Provider";
 // ----------------------------------------------------------------------------
 
 interface TabListProps extends BaseProps {
+	/** @default "fit" */
+	variant?: "fit" | "equal";
+
 	/** @default "neutral" */
 	tone?: "neutral" | "accent";
 }
@@ -158,11 +161,12 @@ interface TabListProps extends BaseProps {
  * ```
  */
 const TabList = forwardRef<"div", TabListProps>((props, forwardedRef) => {
-	const { tone = "neutral", ...rest } = props;
+	const { variant = "fit", tone = "neutral", ...rest } = props;
 
 	return (
 		<AkTab.TabList
 			{...rest}
+			data-_sk-variant={variant}
 			data-_sk-tone={tone}
 			className={cx("🥝TabList", props.className)}
 			ref={forwardedRef}

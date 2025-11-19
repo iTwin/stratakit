@@ -67,7 +67,7 @@
 			var(--🌀TableCell-state--default, transparent)
 				var(--🌀TableCell-state--hover, var(--✨cell-bg--hover))
 				var(--🌀TableCell-state--active, var(--✨cell-bg--active))
-				var(--🌀TableCell-state--active-hover, var(--✨cell-bg--active-hover) 0 0)
+				var(--🌀TableCell-state--active-hover, var(--✨cell-bg--active-hover)) 0 0
 		);
 
 		--🥝TableCell-border-color--active: var(--✨cell-border--active);

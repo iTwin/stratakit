@@ -4,6 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 
 import * as React from "react";
+import { useMenuContext } from "@ariakit/react/menu";
 import * as AkPopover from "@ariakit/react/popover";
 import { PortalContext } from "@ariakit/react/portal";
 import { useStoreState } from "@ariakit/react/store";
@@ -74,6 +75,7 @@ interface PopoverRootProps
 const PopoverRoot = forwardRef<"div", PopoverRootProps>(
 	(props, forwardedRef) => {
 		const { children, unmountOnHide, ...rest } = props;
+		const menuStore = useMenuContext();
 		const store = AkPopover.usePopoverContext();
 		const popoverElement = useStoreState(store, "popoverElement");
 		const open = useStoreState(store, "open");
@@ -99,6 +101,18 @@ const PopoverRoot = forwardRef<"div", PopoverRootProps>(
 				wrapperProps={{ popover: popoverProps.popover }}
 				className={cx("🥝Popover", props.className)}
 				ref={forwardedRef}
+				hideOnInteractOutside={
+					menuStore
+						? (e) => {
+								const state = menuStore.getState();
+								const contentElement = state.contentElement;
+								// Keep open if the menu is focused due to https://ariakit.org/reference/menu-item#bluronhoverend
+								if (e.type === "focusin" && contentElement === e.target)
+									return false;
+								return true;
+							}
+						: undefined
+				}
 			>
 				<PortalContext.Provider value={contentElement ?? null}>
 					{children}

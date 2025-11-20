@@ -3,7 +3,9 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
+import * as React from "react";
 import { DropdownMenu } from "@stratakit/structures";
+import Popover from "@stratakit/structures/unstable_Popover";
 import { definePage } from "~/~utils.tsx";
 
 import type { VariantProps } from "~/~utils.tsx";
@@ -50,6 +52,7 @@ export default definePage(
 		checkbox: CheckboxTest,
 		submenu: SubmenuTest,
 		group: GroupTest,
+		_popover: PopoverTest,
 	},
 );
 
@@ -187,6 +190,39 @@ function GroupTest({ defaultOpen, before, after, between }: VariantProps) {
 					]}
 				/>
 				{after && <DropdownMenu.Item label="Item C" />}
+			</DropdownMenu.Content>
+		</DropdownMenu.Provider>
+	);
+}
+
+function PopoverTest() {
+	const [popoverOpen, setPopoverOpen] = React.useState(false);
+	return (
+		<DropdownMenu.Provider
+			setOpen={() => {
+				// Close the popover when the menu closes
+				setPopoverOpen(false);
+			}}
+		>
+			<DropdownMenu.Button>Actions</DropdownMenu.Button>
+
+			<DropdownMenu.Content>
+				<DropdownMenu.Item label="Item 1" />
+				<DropdownMenu.Item label="Item 2" />
+				<Popover
+					content="Popover content"
+					placement="right"
+					open={popoverOpen}
+					setOpen={setPopoverOpen}
+				>
+					<DropdownMenu.Item
+						label="Item 3"
+						onClick={(e) => {
+							e.preventDefault(); // Avoid closing the menu due to https://ariakit.org/reference/menu-item#hideonclick
+							setPopoverOpen((open) => !open);
+						}}
+					/>
+				</Popover>
 			</DropdownMenu.Content>
 		</DropdownMenu.Provider>
 	);

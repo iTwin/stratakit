@@ -45,6 +45,17 @@ test.describe("default", () => {
 		await expect(tooltip).toBeVisible();
 		await expect(button).toHaveAttribute("data-has-popover-open");
 	});
+
+	test("contextmenu should display the tooltip", async ({ page }) => {
+		const button = page.getByRole("button");
+		const tooltip = page.getByRole("tooltip", { includeHidden: true });
+
+		// Contextmenu event simulates a long press on Android browsers
+		await page.dispatchEvent("button", "contextmenu");
+
+		await expect(tooltip).toBeVisible();
+		await expect(button).toHaveAttribute("data-has-popover-open");
+	});
 });
 
 test.describe("hover", () => {

@@ -17,11 +17,6 @@ function getBarrelImport(component: (typeof api)["composition"][number]) {
 	const barrelNameParts = fullBarrelName?.split(".") ?? [];
 	if (barrelNameParts.length === 0) return undefined;
 
-	// import { Anchor } from "@stratakit/bricks";
-	if (barrelNameParts.length === 1) {
-		return `import { ${fullBarrelName} } from "@stratakit/${pkg.data.name}";`;
-	}
-
 	// import { unstable_Dialog as Dialog } from "@stratakit/structures";
 	if (barrelNameParts[0].startsWith("unstable_")) {
 		const localName = barrelNameParts[0].replace("unstable_", "");
@@ -32,17 +27,25 @@ function getBarrelImport(component: (typeof api)["composition"][number]) {
 	return `import { ${barrelNameParts[0]} } from "@stratakit/${pkg.data.name}";`;
 }
 
+function getModuleImport() {
+	if (!api.exportName) return undefined;
+
+	// import Divider from "@stratakit/bricks/Divider";
+	if (api.composition.length === 0) {
+		return `import ${api.name} from "@stratakit/${pkg.data.name}/${api.exportName}";`;
+	}
+
+	// import * as Anchor from "@stratakit/bricks/Anchor";
+	return `import * as ${api.name} from "@stratakit/${pkg.data.name}/${api.exportName}";`;
+}
+
 const barrelImport = components
 	.map((component) => getBarrelImport(component))
 	.find((importStr) => !!importStr);
 
-// import * as Anchor from "@stratakit/bricks/Anchor";
-const moduleImport = api.exportName
-	? `import * as ${api.name} from "@stratakit/${pkg.data.name}/${api.exportName}";`
-	: undefined;
+const moduleImport = getModuleImport();
 
 // import { Anchor } from "@stratakit/bricks";
-//
 // OR
 // import * as Anchor from "@stratakit/bricks/Anchor";
 const importCode = [barrelImport, moduleImport].filter(Boolean).join("\n// OR\n");

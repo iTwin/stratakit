@@ -2518,6 +2518,7 @@
 								"jsdoc": "Decoration(s) to be displayed inside the tree item.\n\nThis is an alternative to the `icon` prop, and can be used to\ndisplay multiple icons or other decorations before the label.\n\nNote: This should _not_ be used together with the `icon` prop."
 							}
 						],
+						"baseElement": "div",
 						"jsdoc": "A treeitem is a node in a tree structure that may be expanded or collapsed to reveal or hide its descendants.\n\n`Tree.Item`s can be rendered inside a `Tree.Root`. Additional properties are specified to the `Tree.Item`s to create a hierarchical tree structure.\n\nExample:\n```tsx\n<Tree.Root>\n  <Tree.Item label=\"Parent\" aria-level={1} aria-posinset={1} aria-setsize={1} />\n  <Tree.Item label=\"Child 1\" aria-level={2} aria-posinset={1} aria-setsize={2} />\n  <Tree.Item label=\"Child 2\" aria-level={2} aria-posinset={2} aria-setsize={2}  />\n</Tree.Root>\n```\n\nThe `label` and `icon` props can be used to specify the treeitem's own content.\n\nThe `aria-level` prop is used to specify the nesting level of the treeitem. Nesting levels start at 1.\n\nThe `aria-posinset` and `aria-setsize` props are used to define the treeitem's position in the current level of tree items.\n\nThe `expanded` and `onExpandedChange` props can be used to control the expansion state of a treeitem.\n\nThe `selected` and `onSelectedChange` props can be used to control the selection state of a treeitem.\n\nSecondary actions can be passed into the `actions` prop.",
 						"barrelName": "Tree.Item"
 					},
@@ -2556,6 +2557,7 @@
 								"jsdoc": "Controls the visibility of the action (only when the action is displayed as icon-button).\n\nIf `true`, the action is always visible.\nIf `false`, the action is hidden and becomes inaccessible, but still occupies space.\n\nBy default, the action is shown only when the treeitem receives hover/focus. When the\ntreeitem has an `error`, the action will become always visible (i.e. it will default\nto `true` when `error` is set)."
 							}
 						],
+						"baseElement": "button",
 						"jsdoc": "A secondary action for `<Tree.Item>`, to be passed into the `actions` prop. The action is typically\ndisplayed as an icon-button or a menu-item (e.g. when overflowing).\n\nBy default, the action appears only when the treeitem has hover/focus or an error. This behavior can\nbe overridden using the `visible` prop.",
 						"barrelName": "Tree.ItemAction"
 					}

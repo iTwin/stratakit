@@ -284,9 +284,18 @@ function getBaseElement({ symbol }: { symbol: TSMorphSymbol }) {
 	);
 	if (!componentStatement) return undefined;
 
-	const forwardRef = componentStatement.getFirstDescendantByKindOrThrow(
-		SyntaxKind.CallExpression,
+	// Handle `React.memo(forwardRef<"div", BaseProps>)`
+	const forwardRef = componentStatement.getFirstDescendant(
+		(node): node is CallExpression => {
+			return (
+				node.getKind() === SyntaxKind.CallExpression &&
+				node.getFirstChildByKind(SyntaxKind.Identifier)?.getText() ===
+					"forwardRef"
+			);
+		},
 	);
+	if (!forwardRef) return undefined;
+
 	const baseElementType = forwardRef.getTypeArguments().at(0);
 	const baseElementLiteral = baseElementType?.getFirstDescendantByKind(
 		SyntaxKind.StringLiteral,

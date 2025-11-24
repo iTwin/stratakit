@@ -269,6 +269,12 @@
 							"jsdoc": "The label displayed inside the badge."
 						},
 						{
+							"name": "icon",
+							"type": "string | Element | undefined",
+							"optional": true,
+							"jsdoc": "Icon to be displayed at the start of the badge.\n\nCan be a URL of an SVG from the `@stratakit/icons` package,\nor a custom JSX icon."
+						},
+						{
 							"name": "tone",
 							"type": "\"neutral\" | \"accent\" | \"info\" | \"positive\" | \"attention\" | \"critical\" | undefined",
 							"optional": true,
@@ -284,7 +290,7 @@
 						}
 					],
 					"baseElement": "span",
-					"jsdoc": "A badge component, typically used to designate the status of an item.\n\nExample:\n```tsx\n<Badge label=\"Value\" />\n<Badge label=\"Value\" tone=\"info\" variant=\"outline\" />\n```",
+					"jsdoc": "A badge component, typically used to designate the status of an item.\n\nExample:\n```tsx\n<Badge label=\"Value\" />\n<Badge label=\"Value\" tone=\"info\" variant=\"outline\" icon={…} />\n```",
 					"barrelName": "Badge"
 				},
 				"composition": [],
@@ -415,6 +421,13 @@
 					"baseProps": ["BaseProps.render"],
 					"props": [
 						{
+							"name": "bleed",
+							"type": "boolean | undefined",
+							"optional": true,
+							"jsdoc": "If true, the divider will extend to the edges of the nearest scrollable container.",
+							"defaultValue": "false"
+						},
+						{
 							"name": "orientation",
 							"type": "\"horizontal\" | \"vertical\" | undefined",
 							"optional": true,
@@ -459,16 +472,15 @@
 						"baseProps": [],
 						"props": [
 							{
+								"name": "render",
+								"type": "Element | ((props: Omit<HTMLAttributes<any> & { ref?: Ref<any> | undefined; }, \"children\">) => ReactNode)",
+								"optional": false
+							},
+							{
 								"name": "id",
 								"type": "string | undefined",
 								"optional": true,
 								"jsdoc": "The unique ID of the item. This will be used to register the item in the\nstore and for the element's `id` attribute. If not provided, a unique ID\nwill be automatically generated."
-							},
-							{
-								"name": "render",
-								"type": "(props: P) => React.ReactNode | React.ReactElement | undefined",
-								"optional": true,
-								"jsdoc": "Allows the component to be rendered as a different HTML element or React\ncomponent. The value can be a React element or a function that takes in the\noriginal component props and gives back a React element with the props\nmerged.\n\nCheck out the [Composition](https://ariakit.org/guide/composition) guide\nfor more details."
 							}
 						],
 						"baseElement": "div",
@@ -1684,7 +1696,7 @@
 						],
 						"props": [],
 						"baseElement": "div",
-						"jsdoc": "The actual \"menu\" portion containing the items shown within the dropdown.\n\nShould be used as a child of `DropdownMenu.Provider`.\n\nShould include one or more of `DropdownMenu.Item`, `DropdownMenu.CheckboxItem` as direct descendants.",
+						"jsdoc": "The actual \"menu\" portion containing the items shown within the dropdown.\n\nShould be used as a child of `DropdownMenu.Provider`.\n\nShould include one or more of `DropdownMenu.Item`, `DropdownMenu.CheckboxItem` and `DropdownMenu.Group` as direct descendants.",
 						"barrelName": "DropdownMenu.Content"
 					},
 					{
@@ -1728,7 +1740,7 @@
 							}
 						],
 						"baseElement": "button",
-						"jsdoc": "A single menu item within the dropdown menu. Should be used as a child of `DropdownMenu.Content`.\n\nExample:\n```tsx\n<DropdownMenu.Item label=\"Add\" />\n<DropdownMenu.Item label=\"Edit\" />\n```\n\nUse the `submenu` prop to display a submenu.\n\nExample:\n```tsx\n<DropdownMenu.Item\n  label=\"More\"\n  submenu={\n    <DropdownMenu.Submenu>\n      <DropdownMenu.Item label=\"Add\" />\n      <DropdownMenu.Item label=\"Edit\" />\n    </DropdownMenu.Submenu>\n  }\n/>\n```",
+						"jsdoc": "A single menu item within the dropdown menu. Should be used as a child of `DropdownMenu.Content` and `DropdownMenu.Submenu`.\n\nExample:\n```tsx\n<DropdownMenu.Item label=\"Add\" />\n<DropdownMenu.Item label=\"Edit\" />\n```\n\nUse the `submenu` prop to display a submenu.\n\nExample:\n```tsx\n<DropdownMenu.Item\n  label=\"More\"\n  submenu={\n    <DropdownMenu.Submenu>\n      <DropdownMenu.Item label=\"Add\" />\n      <DropdownMenu.Item label=\"Edit\" />\n    </DropdownMenu.Submenu>\n  }\n/>\n```",
 						"barrelName": "DropdownMenu.Item"
 					},
 					{
@@ -1784,7 +1796,7 @@
 							}
 						],
 						"baseElement": "button",
-						"jsdoc": "A single checkbox menu item within the dropdown menu. Should be used as a child of `DropdownMenu.Content`.\n\nExample:\n```tsx\n<DropdownMenu.CheckboxItem name=\"add\" label=\"Add\" />\n<DropdownMenu.CheckboxItem name=\"edit\" label=\"Edit\" />\n```",
+						"jsdoc": "A single checkbox menu item within the dropdown menu. Should be used as a child of `DropdownMenu.Content` and `DropdownMenu.Submenu`.\n\nExample:\n```tsx\n<DropdownMenu.CheckboxItem name=\"add\" label=\"Add\" />\n<DropdownMenu.CheckboxItem name=\"edit\" label=\"Edit\" />\n```",
 						"barrelName": "DropdownMenu.CheckboxItem"
 					},
 					{
@@ -1797,8 +1809,29 @@
 						],
 						"props": [],
 						"baseElement": "div",
-						"jsdoc": "The submenu portion containing the nested submenu items.\n\nShould be passed into the `submenu` prop of `DropdownMenu.Item`.\n\nShould include one or more of `DropdownMenu.Item`, `DropdownMenu.CheckboxItem` as direct descendants.",
+						"jsdoc": "The submenu portion containing the nested submenu items.\n\nShould be passed into the `submenu` prop of `DropdownMenu.Item`.\n\nShould include one or more of `DropdownMenu.Item`, `DropdownMenu.CheckboxItem` and `DropdownMenu.Group` as direct descendants.",
 						"barrelName": "DropdownMenu.Submenu"
+					},
+					{
+						"name": "Group",
+						"baseProps": ["BaseProps.render"],
+						"props": [
+							{
+								"name": "items",
+								"type": "Element[]",
+								"optional": false,
+								"jsdoc": "The menu items within the group.\n\nShould be an array of `DropdownMenu.Item` and/or `DropdownMenu.CheckboxItem` elements."
+							},
+							{
+								"name": "label",
+								"type": "string",
+								"optional": false,
+								"jsdoc": "The text label for the menu-group."
+							}
+						],
+						"baseElement": "div",
+						"jsdoc": "A group of menu items within the dropdown menu. Should be used as a child of `DropdownMenu.Content` and `DropdownMenu.Submenu`.\n\nExample:\n```tsx\n<DropdownMenu.Group\n\tlabel=\"Manage\"\n\titems={[\n  <DropdownMenu.Item key=\"add\" label=\"Add\" />,\n  <DropdownMenu.Item key=\"edit\" label=\"Edit\" />\n\t]}\n/>\n```",
+						"barrelName": "DropdownMenu.Group"
 					}
 				],
 				"exportName": "DropdownMenu"
@@ -1874,6 +1907,92 @@
 					}
 				],
 				"exportName": "unstable_ErrorRegion"
+			},
+			{
+				"name": "NavigationList",
+				"composition": [
+					{
+						"name": "Root",
+						"baseProps": ["BaseProps.render"],
+						"props": [
+							{
+								"name": "items",
+								"type": "Element[]",
+								"optional": false,
+								"jsdoc": "The navigation items to render within the list.\nShould be an array of `NavigationList.Anchor` elements."
+							}
+						],
+						"baseElement": "div",
+						"jsdoc": "A navigation list displays a collection of navigation links, one of which can be \"active\".\n\nBasic example:\n```tsx\n<NavigationList.Root\n  items={[\n    <NavigationList.Anchor key={1} href=\"/page1\" label=\"Item 1\" />,\n    <NavigationList.Anchor key={2} href=\"/page2\" label=\"Item 2\" active />,\n  ]}\n/>\n```\n\nExample with subgroups:\n```tsx\n<NavigationList.Root\n  items={[\n    <NavigationList.Anchor key={1} href=\"/page1\" label=\"Item 1\" />,\n    <NavigationList.Anchor key={2} href=\"/page2\" label=\"Item 2\" />,\n    <NavigationList.Subgroup\n      key={3}\n      label=\"Subgroup\"\n      items={[\n        <NavigationList.Anchor key={1} href=\"/page3-1\" label=\"Item 3.1\" />,\n        <NavigationList.Anchor key={2} href=\"/page3-2\" label=\"Item 3.2\" />,\n      ]}\n    />,\n  ]}\n/>\n```",
+						"barrelName": "unstable_NavigationList.Root"
+					},
+					{
+						"name": "Anchor",
+						"baseProps": [
+							"FocusableProps.render",
+							"FocusableProps.autoFocus",
+							"FocusableProps.disabled",
+							"FocusableProps.accessibleWhenDisabled"
+						],
+						"props": [
+							{
+								"name": "label",
+								"type": "string",
+								"optional": false,
+								"jsdoc": "The label of the navigation anchor."
+							},
+							{
+								"name": "active",
+								"type": "boolean | undefined",
+								"optional": true,
+								"jsdoc": "Whether the anchor is active.\n\nThis will automatically set `aria-current=\"true\"` on the anchor."
+							},
+							{
+								"name": "icon",
+								"type": "string | Element | undefined",
+								"optional": true,
+								"jsdoc": "The icon shown before the label of the navigation anchor.\n\nCan be a URL of an SVG from the `@stratakit/icons` package,\nor a custom JSX icon."
+							}
+						],
+						"baseElement": "a",
+						"jsdoc": "An individual anchor within the navigation list. This should perform a navigation\nto a different view, page or section. (Make sure to use proper routing/navigation)\n\nShould be used as an element within the `items` array of `NavigationList.Root`.\n\nExample:\n```tsx\n<NavigationList.Anchor href=\"/profile\"> label=\"Profile\" />\n```",
+						"barrelName": "unstable_NavigationList.Anchor"
+					},
+					{
+						"name": "Subgroup",
+						"baseProps": ["BaseProps.render"],
+						"props": [
+							{
+								"name": "items",
+								"type": "Element[]",
+								"optional": false,
+								"jsdoc": "The navigation items within the subgroup.\nShould be an array of `NavigationList.Anchor` elements."
+							},
+							{
+								"name": "label",
+								"type": "string",
+								"optional": false,
+								"jsdoc": "The label for the subgroup."
+							},
+							{
+								"name": "defaultOpen",
+								"type": "boolean | undefined",
+								"optional": true,
+								"jsdoc": "Whether the subgroup is expanded by default."
+							},
+							{
+								"name": "icon",
+								"type": "string | Element | undefined",
+								"optional": true,
+								"jsdoc": "The icon shown before the label of the subgroup.\n\nCan be a URL of an SVG from the `@stratakit/icons` package,\nor a custom JSX icon."
+							}
+						],
+						"baseElement": "div",
+						"jsdoc": "A subgroup within the navigation list, used to group related navigation items.\n\nShould be used as an element within the `items` array of `NavigationList.Root`.\n\nExample:\n```tsx\n<NavigationList.Subgroup label=\"Management\" items={[ … ]} />\n```",
+						"barrelName": "unstable_NavigationList.Subgroup"
+					}
+				],
+				"exportName": "unstable_NavigationList"
 			},
 			{
 				"name": "NavigationRail",
@@ -2019,6 +2138,59 @@
 					}
 				],
 				"exportName": "unstable_NavigationRail"
+			},
+			{
+				"name": "Popover",
+				"convenience": {
+					"name": "Popover",
+					"baseProps": ["BaseProps.render"],
+					"props": [
+						{
+							"name": "children",
+							"type": "ReactElement<unknown, string | JSXElementConstructor<any>>",
+							"optional": false,
+							"jsdoc": "The element that will trigger the popover when clicked.\nCommon examples include buttons, links, or form controls.\n\n**Note**: The trigger must be a single interactive element. Do not add a\npopover to a non-interactive static element (such as a `<div>` or `<svg>`). Also,\nthe trigger element must forward its ref and spread its props."
+						},
+						{
+							"name": "content",
+							"type": "ReactNode",
+							"optional": false,
+							"jsdoc": "The content to be displayed inside the popover when the trigger element is hovered or focused."
+						},
+						{
+							"name": "open",
+							"type": "boolean | undefined",
+							"optional": true,
+							"jsdoc": "Whether the content is visible.",
+							"defaultValue": "false"
+						},
+						{
+							"name": "placement",
+							"type": "Placement | undefined",
+							"optional": true,
+							"jsdoc": "The placement of the popover.",
+							"defaultValue": "\"bottom\""
+						},
+						{
+							"name": "setOpen",
+							"type": "((open: boolean) => void) | undefined",
+							"optional": true,
+							"jsdoc": "A callback that gets called when the\n[`open`](https://ariakit.org/reference/disclosure-provider#open) state\nchanges."
+						},
+						{
+							"name": "unmountOnHide",
+							"type": "boolean | undefined",
+							"optional": true,
+							"jsdoc": "When set to `true`, the content element will be unmounted and removed from\nthe DOM when it's hidden.",
+							"defaultValue": "false"
+						}
+					],
+					"baseElement": "div",
+					"jsdoc": "A component used to display content in a non-modal window overlay that is placed relative to a trigger element.\n\nExample:\n```tsx\n<Popover\n  content={<>Content</>}\n>\n  <Button>Open</Button>\n</Popover>\n```",
+					"barrelName": "unstable_Popover"
+				},
+				"composition": [],
+				"exportName": "unstable_Popover"
 			},
 			{
 				"name": "Table",

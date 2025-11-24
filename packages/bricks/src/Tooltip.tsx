@@ -10,6 +10,7 @@ import {
 	forwardRef,
 	useEventHandlers,
 	usePopoverApi,
+	useUnreactiveCallback,
 } from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
 import { useInit } from "./~utils.useInit.js";
@@ -97,7 +98,13 @@ const Tooltip = forwardRef<"div", TooltipProps>((props, forwardedRef) => {
 	const store = AkTooltip.useTooltipStore();
 	const open = useStoreState(store, "open");
 	const popoverElement = useStoreState(store, "popoverElement");
-	const popoverProps = usePopoverApi({ element: popoverElement, open });
+	const setOpen = useUnreactiveCallback(store.setOpen);
+
+	const popoverProps = usePopoverApi({
+		element: popoverElement,
+		open,
+		setOpen,
+	});
 
 	return (
 		<AkTooltip.TooltipProvider

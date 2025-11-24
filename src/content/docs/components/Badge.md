@@ -20,7 +20,7 @@ Make sure the **Badge** is suitable for your use case. There may be other, more 
 
 ::example{src="Badge.default"}
 
-The [`label`](</reference/bricks/Badge#Badge%20(default).label>) prop is required. Choose a concise `label` that describes the status clearly.
+The [`label`](/reference/bricks/Badge#Badge.label) prop is required. Choose a concise `label` that describes the status clearly.
 
 ```jsx
 <Badge label="Pending" />
@@ -28,7 +28,7 @@ The [`label`](</reference/bricks/Badge#Badge%20(default).label>) prop is require
 
 ### Icons
 
-All [tones](#tones) except **neutral** and **accent** convey a specific type of status. Supplement those tones with an [`icon`](</reference/bricks/Badge#Badge%20(default).icon>) so that color is not the only means of communication. See [WCAG’s Use Of Color](https://www.w3.org/WAI/WCAG22/Understanding/use-of-color.html).
+All [tones](#tones) except **neutral** and **accent** convey a specific type of status. Supplement those tones with an [`icon`](/reference/bricks/Badge#Badge.icon) so that color is not the only means of communication. See [WCAG’s Use Of Color](https://www.w3.org/WAI/WCAG22/Understanding/use-of-color.html).
 
 For example, include the `status-warning` icon when applying the ‘critical’ tone.
 
@@ -47,7 +47,7 @@ export default () => {
 
 ### Tone
 
-Set a tone using the [`tone`](</reference/bricks/Badge#Badge%20(default).tone>) prop.
+Set a tone using the [`tone`](/reference/bricks/Badge#Badge.tone) prop.
 
 ::example{src="Badge.tones"}
 
@@ -64,7 +64,7 @@ Tones only determine color. In most cases, you should supplement the `tone` with
 
 ### Variants
 
-Set a variant using the [`variant`](</reference/bricks/Badge#Badge%20(default).variant>) prop.
+Set a variant using the [`variant`](/reference/bricks/Badge#Badge.variant) prop.
 
 ::example{src="Badge.variants"}
 
@@ -76,7 +76,7 @@ Set a variant using the [`variant`](</reference/bricks/Badge#Badge%20(default).v
 
 - Use **Badge** for indicating state or status.
 - Include a concise and descriptive label.
-- Use an [`icon`](</reference/bricks/Badge#Badge%20(default).icon>) to communicate `tone` in a color-independent fashion.
+- Use an [`icon`](/reference/bricks/Badge#Badge.icon) to communicate `tone` in a color-independent fashion.
 
 ## ❌ Don’t
 

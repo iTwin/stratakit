@@ -55,7 +55,7 @@ properties:</p>
 
 ### Separating lists of options
 
-Your navigation may be subdivided into multiple lists. You can use the **Divider**, with the [`presentational`](</reference/bricks/Divider/#Divider%20(default).presentational>) prop, to visually mark where one list ends and the next begins.
+Your navigation may be subdivided into multiple lists. You can use the **Divider**, with the [`presentational`](/reference/bricks/Divider/#Divider.presentational) prop, to visually mark where one list ends and the next begins.
 
 ```jsx 'presentational'
 <ul>
@@ -83,7 +83,7 @@ Your navigation may be subdivided into multiple lists. You can use the **Divider
 
 ### Orientation
 
-By default, the **Divider** appears in a horizontal orientation. Reorientate it using [`orientation="vertical"`](</reference/bricks/Divider#Divider%20(default).orientation>).
+By default, the **Divider** appears in a horizontal orientation. Reorientate it using [`orientation="vertical"`](/reference/bricks/Divider#Divider.orientation).
 
 ::example{src="Divider.vertical"}
 
@@ -101,7 +101,7 @@ A [**Toolbar**](/components/toolbar) with a horizontal orientation (default), mu
 
 :::caution[Orientation semantics]
 
-**Divider** uses `aria-orientation` to communicate the orientation programmatically. Where the [`presentational`](</reference/bricks/Divider/#Divider%20(default).presentational>) prop is also applied, neither the **Divider** nor its orientation are made available.
+**Divider** uses `aria-orientation` to communicate the orientation programmatically. Where the [`presentational`](/reference/bricks/Divider/#Divider.presentational) prop is also applied, neither the **Divider** nor its orientation are made available.
 
 :::
 
@@ -114,4 +114,4 @@ A [**Toolbar**](/components/toolbar) with a horizontal orientation (default), mu
 ## 🚫 Don’t
 
 - Don’t use a **Divider** where a heading would better introduce a section of content.
-- Don’t omit [`presentational`](</reference/bricks/Divider/#Divider%20(default).presentational>) in cases where the semantics are superfluous, such as at the intersection between two unordered lists.
+- Don’t omit [`presentational`](/reference/bricks/Divider/#Divider.presentational) in cases where the semantics are superfluous, such as at the intersection between two unordered lists.

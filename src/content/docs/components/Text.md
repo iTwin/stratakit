@@ -9,7 +9,7 @@ links:
 
 ## Usage
 
-Use **Text’s** [`variant`](</reference/bricks/Text#Text%20(default).variant>) prop to affect the size of the encapsulated text node. By default, **Text** renders a `<div>` element.
+Use **Text’s** [`variant`](/reference/bricks/Text#Text.variant) prop to affect the size of the encapsulated text node. By default, **Text** renders a `<div>` element.
 
 ::example{src="Text.default"}
 
@@ -43,13 +43,13 @@ In these cases, use a larger `variant` but do not render the text as a heading e
 
 ### Variants
 
-The variant determines font size. Set it using the [`variant`](</reference/bricks/Text#Text%20(default).variant>) prop.
+The variant determines font size. Set it using the [`variant`](/reference/bricks/Text#Text.variant) prop.
 
 ::example{src="Text.variants"}
 
 ## ✅ Do
 
-- Use **Text** to affect font size using the [`variant`](</reference/bricks/Text#Text%20(default).variant>) prop.
+- Use **Text** to affect font size using the [`variant`](/reference/bricks/Text#Text.variant) prop.
 - Use the `render` prop to apply a suitable HTML element for the font size.
 
 ## ❌ Don’t

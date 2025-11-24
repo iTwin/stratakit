@@ -49,7 +49,7 @@ Accurately representing the shape and structure of a loading interface is a case
 
 ### Variants
 
-Set the variant with the [`variant`](</reference/bricks/Skeleton#Skeleton%20(default).variant>) prop.
+Set the variant with the [`variant`](/reference/bricks/Skeleton#Skeleton.variant) prop.
 
 - **Text:** The standard **Skeleton** component, representing blocks of text.
 - **Object:** The **Skeleton** component representing images, icons, and other non-text artifacts.
@@ -60,7 +60,7 @@ Combine variants to approximate the layout of the interface being loaded.
 
 ### Sizes
 
-Set the size with the [`size`](</reference/bricks/Skeleton#Skeleton%20(default).size>) prop. One of:
+Set the size with the [`size`](/reference/bricks/Skeleton#Skeleton.size) prop. One of:
 
 - `xsmall`
 - `small`

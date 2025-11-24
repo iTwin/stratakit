@@ -28,10 +28,13 @@ function isConvenience(name: string) {
 }
 
 function getComponentHeading(component: (typeof components)[number]) {
-	const text = isConvenience(component.name)
-		? `${component.name} (default)`
-		: `${api.name}.${component.name}`;
-	return getHeading(text);
+	if (isConvenience(component.name)) {
+		if (api.composition.length > 0) {
+			return getHeading(`${component.name} (default)`, api.name);
+		}
+		return getHeading(api.name);
+	}
+	return getHeading(`${api.name}.${component.name}`);
 }
 
 function getAdditionalPropsHeading(slugPrefix: string) {
@@ -47,10 +50,10 @@ function getPropHeading(slugPrefix: string, propName: string) {
 	};
 }
 
-function getHeading(text: string) {
+function getHeading(text: string, slug?: string) {
 	return {
 		depth: 2 as const,
-		slug: text,
+		slug: slug ?? text,
 		text,
 	};
 }

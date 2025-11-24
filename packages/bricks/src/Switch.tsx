@@ -57,9 +57,9 @@ const Switch = forwardRef<"input", SwitchProps>((props, forwardedRef) => {
 	return (
 		<AkCheckbox
 			accessibleWhenDisabled
+			role="switch"
 			{...props}
 			className={cx("🥝Switch", props.className)}
-			role="switch"
 			ref={forwardedRef}
 		/>
 	);

@@ -488,7 +488,6 @@ const DropdownMenuSubmenu = forwardRef<"div", DropdownMenuSubmenuProps>(
 					portal
 					portalElement={popoverElement}
 					preserveTabOrder={false}
-					unmountOnHide
 					{...props}
 					gutter={2}
 					shift={-4}

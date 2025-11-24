@@ -51,7 +51,7 @@ jobs:
     if: github.event_name == 'pull_request' && (github.event.action == 'opened' || github.event.action == 'synchronize')
 
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
 
       - name: Auto-assign milestones using github-script
         uses: actions/github-script@v8
@@ -67,7 +67,7 @@ jobs:
     if: github.event_name == 'pull_request' && (github.event.action == 'opened' || github.event.action == 'synchronize')
 
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
 
       - name: Auto-assign labels using github-script
         uses: actions/github-script@v8
@@ -83,7 +83,7 @@ jobs:
     if: contains(github.ref_name, 'dependabot/')
 
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
         with:
           ref: ${{ github.head_ref || github.ref_name }}
 

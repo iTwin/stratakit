@@ -1,0 +1,1 @@
+import{a as o}from"./chunk-4WY6JWTD-DfzC-dkV.js";import{R as s}from"./sun-C61qHoaG.js";const e="@stratakit/structures";function n(){const t=o.useContext(s);t&&t.versions?.set(e,"0.5.1")}export{n as u};

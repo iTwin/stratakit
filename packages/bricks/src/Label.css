@@ -4,9 +4,10 @@
  *--------------------------------------------------------------------------------------------*/
 .🥝Label {
 	@layer base {
+		@apply --typography("body-sm");
+
 		color: var(--stratakit-color-text-neutral-secondary);
 		cursor: default;
-		font-size: var(--stratakit-font-size-12);
 
 		&:is(label) {
 			cursor: pointer;

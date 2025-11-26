@@ -269,10 +269,10 @@ test.describe("submenu", () => {
 
 test.describe("@visual", () => {
 	test("default", async ({ page }) => {
-		await page.goto("/tests/dropdown-menu?visual=true");
+		await page.goto("/tests/dropdown-menu?visual");
 
-		const item3 = page.getByRole("menuitem", { name: "Item 3" });
-		await item3.click();
+		const settings = page.getByRole("menuitem", { name: "Settings" });
+		await settings.click();
 
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
@@ -282,11 +282,12 @@ test.describe("@visual", () => {
 			browserName === "webkit",
 			"forced-colors does not appear correctly in Webkit",
 		);
-		await page.goto("/tests/dropdown-menu?visual=true");
+		await page.goto("/tests/dropdown-menu?visual");
 		await page.emulateMedia({ forcedColors: "active" });
 
-		const item3 = page.getByRole("menuitem", { name: "Item 3" });
-		await item3.click();
+		const settings = page.getByRole("menuitem", { name: "Settings" });
+		await settings.click();
+
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
 });
@@ -352,15 +353,6 @@ test.describe("DropdownMenu.CheckboxItem", () => {
 		await expect(item3).toHaveAttribute("aria-checked", "false");
 	});
 
-	test("@visual", async ({ page }) => {
-		await page.goto("/tests/dropdown-menu?checkbox&defaultChecked");
-
-		const button = page.getByRole("button", { name: "Settings" });
-		await button.click();
-
-		await expect(page.locator("body")).toHaveScreenshot();
-	});
-
 	test.describe("@a11y", () => {
 		test("Axe Page Scan", async ({ page }) => {
 			await page.goto("/tests/dropdown-menu?checkbox&defaultChecked");
@@ -370,6 +362,38 @@ test.describe("DropdownMenu.CheckboxItem", () => {
 
 			const item3 = page.getByRole("menuitemcheckbox", { name: "Item 3" });
 			await expect(item3).toHaveAttribute("aria-checked", "true");
+
+			const axe = new AxeBuilder({ page });
+			const accessibilityScan = await axe
+				.disableRules(["region"])
+				.exclude("[data-focus-trap]")
+				.analyze();
+			expect(accessibilityScan.violations).toEqual([]);
+		});
+	});
+});
+
+test.describe("DropdownMenu.Group", () => {
+	test("default", async ({ page }) => {
+		await page.goto("/tests/dropdown-menu?group");
+
+		const button = page.getByRole("button", { name: "Actions" });
+		const group1 = page.getByRole("group", { name: "Group 1" });
+		const group1Items = group1.getByRole("menuitem");
+		const item1 = group1.getByRole("menuitem", { name: "Item 1" });
+
+		await button.click();
+		await expect(group1).toBeVisible();
+		await expect(group1Items).toHaveCount(2);
+		await expect(item1).toBeVisible();
+	});
+
+	test.describe("@a11y", () => {
+		test("Axe Page Scan", async ({ page }) => {
+			await page.goto("/tests/dropdown-menu?group");
+
+			const button = page.getByRole("button", { name: "Actions" });
+			await button.click();
 
 			const axe = new AxeBuilder({ page });
 			const accessibilityScan = await axe

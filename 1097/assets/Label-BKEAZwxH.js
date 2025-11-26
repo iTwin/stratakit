@@ -1,1 +1,0 @@
-import{a as o,p as t}from"./chunk-UIGDSWPH-C0dFpbf8.js";import{u as a}from"./~utils-FBOuAKaf.js";import{F as p}from"./Field-BadYZqvn.js";const x=o.forwardRef((r,s)=>{const{displayStyle:i,disabled:m,required:d,...e}=a(r);return t.jsx(p,{...e,ref:s})});export{x as L};

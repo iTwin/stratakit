@@ -11,7 +11,7 @@ test("default", async ({ page }) => {
 
 	const button = page.getByRole("button", { name: "Actions" });
 	const add = page.getByRole("menuitem", { name: "Add" });
-	const menu = page.getByRole("menu", { includeHidden: true });
+	const menu = page.getByRole("menu", { includeHidden: true }).first();
 
 	await expect(button).not.toHaveAttribute("data-has-popover-open");
 	await expect(menu).toHaveCount(0);
@@ -134,20 +134,21 @@ test.describe("submenu", () => {
 		await page.goto("/tests/dropdown-menu?submenu");
 
 		const button = page.getByRole("button", { name: "Actions" });
-		const menu = page.getByRole("menu", { includeHidden: true });
+		const allMenus = page.getByRole("menu", { includeHidden: true });
+		const visibleMenus = page.getByRole("menu", { includeHidden: false });
 		const item1 = page.getByRole("menuitem", { name: "Item 1" });
 		const item3 = page.getByRole("menuitem", { name: "Item 3", exact: true });
 		const item3_1 = page.getByRole("menuitem", { name: "Item 3_1" });
 
-		await expect(menu).toHaveCount(0);
+		await expect(allMenus).toHaveCount(0);
 
 		await button.click();
-		await expect(menu).toHaveCount(1);
+		await expect(visibleMenus).toHaveCount(1);
 		await expect(button).toHaveAttribute("data-has-popover-open");
 		await expect(item1).toBeVisible();
 
 		await item3.hover();
-		await expect(menu).toHaveCount(2);
+		await expect(visibleMenus).toHaveCount(2);
 		await expect(item3).toHaveAttribute("data-has-popover-open");
 		await expect(item3_1).toBeVisible();
 
@@ -164,7 +165,7 @@ test.describe("submenu", () => {
 		await page.goto("/tests/dropdown-menu?submenu");
 
 		const button = page.getByRole("button", { name: "Actions" });
-		const menu = page.getByRole("menu", { includeHidden: true });
+		const menu = page.getByRole("menu");
 		const item3 = page.getByRole("menuitem", { name: "Item 3", exact: true });
 
 		await button.click();
@@ -181,7 +182,7 @@ test.describe("submenu", () => {
 		await page.goto("/tests/dropdown-menu?submenu");
 
 		const button = page.getByRole("button", { name: "Actions" });
-		const menu = page.getByRole("menu", { includeHidden: true });
+		const menu = page.getByRole("menu");
 		const item1 = page.getByRole("menuitem", { name: "Item 1" });
 		const item3 = page.getByRole("menuitem", { name: "Item 3", exact: true });
 		const item3_1 = page.getByRole("menuitem", { name: "Item 3_1" });
@@ -207,7 +208,7 @@ test.describe("submenu", () => {
 		await page.goto("/tests/dropdown-menu?submenu");
 
 		const button = page.getByRole("button", { name: "Actions" });
-		const menu = page.getByRole("menu", { includeHidden: true });
+		const menu = page.getByRole("menu");
 		const item1 = page.getByRole("menuitem", { name: "Item 1" });
 		const item2 = page.getByRole("menuitem", { name: "Item 2" });
 		const item3 = page.getByRole("menuitem", { name: "Item 3", exact: true });

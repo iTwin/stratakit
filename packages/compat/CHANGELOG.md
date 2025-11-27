@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.0.10
+
+- Updated dependencies:
+  - @stratakit/bricks@0.5.2
+  - @stratakit/structures@0.5.2
+  - @stratakit/foundations@0.4.2
+
 ## 0.0.9
 
 - [#1003](https://github.com/iTwin/design-system/pull/1003): Enabled React Compiler for production build. In React 18 apps, `react-compiler-runtime` dependency will be used.

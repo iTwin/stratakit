@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.4.2
+
+- Updated internal code for `@stratakit/bricks@0.5.2` and `@stratakit/structures@0.5.2`.
+
 ## 0.4.1
 
 - Updated internal code for `@stratakit/bricks@0.5.1` and `@stratakit/structures@0.5.1`.
@@ -44,7 +48,7 @@
   - `--stratakit-color-bg-on-surface-neutral-active-hover`
   - `--stratakit-color-border-control-navrail-item`
   - `--stratakit-color-text-control-placeholder`
-  - `--stratakit-color-bg-brand-logo-stroke`
+  - `--stratakit-color-brand-logo-stroke`
   - `--stratakit-shadow-brand-logo-base`
 - [#1027](https://github.com/iTwin/design-system/pull/1027): Updated the fallback logic of `Icon` component to correctly handle relative non-HTTP URLs.
 - [#1003](https://github.com/iTwin/design-system/pull/1003): Enabled React Compiler for production build. In React 18 apps, `react-compiler-runtime` dependency will be used.

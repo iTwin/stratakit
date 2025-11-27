@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.2.2
+
+- [#1104](https://github.com/iTwin/design-system/pull/1104): Added new icons:
+  - `microscope.svg`
+  - `scene.svg`
+  - `thumbs-down.svg`
+  - `thumbs-up.svg`
+
 ## 0.2.1
 
 - [#1084](https://github.com/iTwin/design-system/pull/1084): Renamed `license-remove.svg` to `license-minus.svg`.

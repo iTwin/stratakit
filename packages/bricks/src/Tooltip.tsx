@@ -8,7 +8,9 @@ import { useStoreState } from "@ariakit/react/store";
 import * as AkTooltip from "@ariakit/react/tooltip";
 import {
 	forwardRef,
+	useEventHandlers,
 	usePopoverApi,
+	useUnreactiveCallback,
 } from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
 import { useInit } from "./~utils.useInit.js";
@@ -96,7 +98,13 @@ const Tooltip = forwardRef<"div", TooltipProps>((props, forwardedRef) => {
 	const store = AkTooltip.useTooltipStore();
 	const open = useStoreState(store, "open");
 	const popoverElement = useStoreState(store, "popoverElement");
-	const popoverProps = usePopoverApi({ element: popoverElement, open });
+	const setOpen = useUnreactiveCallback(store.setOpen);
+
+	const popoverProps = usePopoverApi({
+		element: popoverElement,
+		open,
+		setOpen,
+	});
 
 	return (
 		<AkTooltip.TooltipProvider
@@ -108,6 +116,19 @@ const Tooltip = forwardRef<"div", TooltipProps>((props, forwardedRef) => {
 		>
 			<AkTooltip.TooltipAnchor
 				render={children}
+				onContextMenu={useEventHandlers(
+					(children.props as React.ComponentProps<"div">)?.onContextMenu,
+					(event) => {
+						// Show tooltip on long press for buttons
+						const isButton =
+							event.currentTarget.localName === "button" ||
+							event.currentTarget.role === "button";
+						if (!isButton) return;
+
+						event.preventDefault();
+						store.setOpen(true);
+					},
+				)}
 				data-has-popover-open={open || undefined}
 				{...(type === "description" && { "aria-describedby": id })}
 				{...(type === "label" && { "aria-labelledby": id })}

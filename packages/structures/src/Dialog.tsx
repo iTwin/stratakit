@@ -13,6 +13,7 @@ import { GhostAligner } from "@stratakit/bricks/secret-internals";
 import {
 	forwardRef,
 	usePopoverApi,
+	useUnreactiveCallback,
 } from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
 import { Dismiss } from "./~utils.icons.js";
@@ -120,10 +121,12 @@ function DialogWrapper(props: DialogWrapperProps) {
 	const open = useStoreState(store, (state) => {
 		return props.open ?? state?.open;
 	});
+	const setOpen = useUnreactiveCallback(store?.setOpen);
 
 	const popoverProps = usePopoverApi({
 		element: wrapper,
 		open,
+		setOpen,
 	});
 
 	const mounted = useStoreState(store, "mounted");

@@ -127,7 +127,9 @@ export function useMergedRefs<T>(
  *
  * @private
  */
-export function useUnreactiveCallback<T extends AnyFunction>(callback: T) {
+export function useUnreactiveCallback<T extends AnyFunction>(
+	callback: T | undefined,
+) {
 	const latestCallback = useLatestRef(callback);
 
 	return React.useCallback<AnyFunction>(
@@ -184,7 +186,8 @@ export function useSafeContext<C>(context: React.Context<C>) {
 /**
  * Hook that makes it easy to use the [Popover API](https://developer.mozilla.org/en-US/docs/Web/API/Popover_API) consistently.
  *
- * Internally, this hook will sync the `open` state with the `element`'s "popover-open" state.
+ * Internally, this hook will sync the `open` state with the `element`'s "popover-open" state. It will also create a `CloseWatcher`
+ * to automatically handle "light dismiss" behavior when the popover is open.
  *
  * Returns a set of DOM props that should be passed back to the element.
  *
@@ -193,17 +196,28 @@ export function useSafeContext<C>(context: React.Context<C>) {
 export function usePopoverApi({
 	element,
 	open,
+	setOpen,
 }: {
 	element: HTMLElement | null | undefined;
 	open: boolean | undefined;
+	setOpen: (open: boolean) => void;
 }) {
 	React.useEffect(
 		function syncPopoverWithOpenState() {
 			if (element?.popover && element?.isConnected && open !== undefined) {
 				element?.togglePopover?.(open);
+
+				// https://developer.mozilla.org/en-US/docs/Web/API/CloseWatcher
+				if (open && "CloseWatcher" in window) {
+					// @ts-expect-error -- new API, types missing
+					const closeWatcher = new CloseWatcher();
+					closeWatcher.onclose = () => {
+						if (open) setOpen(false);
+					};
+				}
 			}
 		},
-		[open, element],
+		[open, element, setOpen],
 	);
 
 	return React.useMemo(

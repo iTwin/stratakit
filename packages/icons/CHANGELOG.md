@@ -2,8 +2,6 @@
 
 ## 0.2.2
 
-### Patch Changes
-
 - [#1104](https://github.com/iTwin/design-system/pull/1104): Added new icons:
   - `microscope.svg`
   - `scene.svg`

@@ -2,13 +2,11 @@
 
 ## 0.5.2
 
-### Patch Changes
-
 - [#1094](https://github.com/iTwin/design-system/pull/1094): `Label` component will now set an explicit `line-height`.
 - [#1102](https://github.com/iTwin/design-system/pull/1102): "Popups" will now respect device-specific close actions (such as back gesture on Android). Affected components include: `Tooltip`.
 - [#1090](https://github.com/iTwin/design-system/pull/1090): `Tooltip` will now be triggered when long pressing buttons on touch devices (except in Safari).
 - Updated dependencies:
-  - @stratakit/foundations@0.4.1
+  - @stratakit/foundations@0.4.2
 
 ## 0.5.1
 

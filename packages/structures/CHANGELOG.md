@@ -1,5 +1,37 @@
 # Changelog
 
+## 0.5.2
+
+### Patch Changes
+
+- [#1074](https://github.com/iTwin/design-system/pull/1074): Visual updates to `Table` and `Tree` active + hover states.
+- [#1103](https://github.com/iTwin/design-system/pull/1103): `DropdownMenu.Submenu` will now remain mounted in the DOM as long as the parent DropdownMenu is open.
+- [#1089](https://github.com/iTwin/design-system/pull/1089): Updated the `NavigationRail.ToggleButton` component to use `aria-pressed` instead of `aria-expanded`, to better reflect how it affects the NavigationRail's appearance.
+- [#1092](https://github.com/iTwin/design-system/pull/1092): Increased the tartget size of `NavigationRail.ToggleButton` component.
+- [#1102](https://github.com/iTwin/design-system/pull/1102): "Popups" will now respect device-specific close actions (such as back gesture on Android). Affected components include: `DropdownMenu`, `Dialog` and `Popover`.
+- [#1078](https://github.com/iTwin/design-system/pull/1078): Added `DropdownMenu.Group` component used to group menu items within a dropdown menu.
+
+  ```tsx
+  <DropdownMenu.Provider>
+  	<DropdownMenu.Button>Actions</DropdownMenu.Button>
+
+  	<DropdownMenu.Content>
+  		<DropdownMenu.Item label="View" />
+  		<DropdownMenu.Group
+  			label="Manage"
+  			items={[
+  				<DropdownMenu.Item key="add" label="Add" />,
+  				<DropdownMenu.Item key="edit" label="Edit" />,
+  			]}
+  		/>
+  	</DropdownMenu.Content>
+  </DropdownMenu.Provider>
+  ```
+
+- Updated dependencies:
+  - @stratakit/bricks@0.5.2
+  - @stratakit/foundations@0.4.1
+
 ## 0.5.1
 
 - [#1075](https://github.com/iTwin/design-system/pull/1075): Added a new `unstable_NavigationList` component that displays a vertical list of links for secondary navigation.

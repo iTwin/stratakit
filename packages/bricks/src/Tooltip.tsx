@@ -8,6 +8,7 @@ import { useStoreState } from "@ariakit/react/store";
 import * as AkTooltip from "@ariakit/react/tooltip";
 import {
 	forwardRef,
+	useEventHandlers,
 	usePopoverApi,
 } from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
@@ -108,6 +109,19 @@ const Tooltip = forwardRef<"div", TooltipProps>((props, forwardedRef) => {
 		>
 			<AkTooltip.TooltipAnchor
 				render={children}
+				onContextMenu={useEventHandlers(
+					(children.props as React.ComponentProps<"div">)?.onContextMenu,
+					(event) => {
+						// Show tooltip on long press for buttons
+						const isButton =
+							event.currentTarget.localName === "button" ||
+							event.currentTarget.role === "button";
+						if (!isButton) return;
+
+						event.preventDefault();
+						store.setOpen(true);
+					},
+				)}
 				data-has-popover-open={open || undefined}
 				{...(type === "description" && { "aria-describedby": id })}
 				{...(type === "label" && { "aria-labelledby": id })}

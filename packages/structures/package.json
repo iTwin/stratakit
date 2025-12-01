@@ -123,11 +123,11 @@
 		"dev": "wireit"
 	},
 	"dependencies": {
-		"@ariakit/react": "^0.4.19",
+		"@ariakit/react": "^0.4.20",
 		"@stratakit/bricks": "^0.5.2",
 		"classnames": "^2.5.1",
 		"react-compiler-runtime": "^1.0.0",
-		"zustand": "^5.0.8"
+		"zustand": "^5.0.9"
 	},
 	"devDependencies": {
 		"@stratakit/foundations": "workspace:*",

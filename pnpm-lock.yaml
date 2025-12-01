@@ -3027,10 +3027,10 @@ packages:
       }
     hasBin: true
 
-  valibot@1.1.0:
+  valibot@1.2.0:
     resolution:
       {
-        integrity: sha512-Nk8lX30Qhu+9txPYTwM0cFlWLdPFsFr6LblzqIySfbZph9+BFsAHsNvHOymEviUepeIW6KFHzpX8TKhbptBXXw==,
+        integrity: sha512-mm1rxUsmOxzrwnX5arGS+U4T25RdvpPjPN4yR0u9pUBov9+zGVtO84tif1eY4r6zWxVxu3KzIyknJy3rxfRZZg==,
       }
     peerDependencies:
       typescript: ">=5"
@@ -3853,7 +3853,7 @@ snapshots:
       react-router: 7.9.6(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       semver: 7.7.3
       tinyglobby: 0.2.15
-      valibot: 1.1.0(typescript@5.9.3)
+      valibot: 1.2.0(typescript@5.9.3)
       vite: 7.2.4(@types/node@22.19.1)(lightningcss@1.30.1)(tsx@4.21.0)(yaml@2.6.1)
       vite-node: 3.2.4(@types/node@22.19.1)(lightningcss@1.30.1)(tsx@4.21.0)(yaml@2.6.1)
     optionalDependencies:
@@ -4694,7 +4694,7 @@ snapshots:
 
   uuid@11.1.0: {}
 
-  valibot@1.1.0(typescript@5.9.3):
+  valibot@1.2.0(typescript@5.9.3):
     optionalDependencies:
       typescript: 5.9.3
 

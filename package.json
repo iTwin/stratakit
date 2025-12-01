@@ -33,12 +33,5 @@
 	"engines": {
 		"node": ">=22.19.0"
 	},
-	"packageManager": "pnpm@10.17.0",
-	"pnpm": {
-		"overrides": {},
-		"onlyBuiltDependencies": [
-			"esbuild",
-			"lefthook"
-		]
-	}
+	"packageManager": "pnpm@10.17.0"
 }

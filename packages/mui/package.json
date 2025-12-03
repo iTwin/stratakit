@@ -19,7 +19,7 @@
 		"CHANGELOG.md",
 		"LICENSE.md"
 	],
-	"description": "Material UI theme of StrataKit",
+	"description": "StrataKit theme for Material UI",
 	"author": "Bentley Systems",
 	"homepage": "https://github.com/iTwin/design-system",
 	"repository": {

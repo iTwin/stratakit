@@ -1,26 +1,24 @@
-# @stratakit/bricks
+# @stratakit/mui
 
-Small, modular components for StrataKit.
-
-Bricks can be assembled to create larger, more functional experiences.
+StrataKit theme for Material UI.
 
 ## Installation
 
-Using your package manager of choice, install the latest version of [`@stratakit/bricks`](https://www.npmjs.com/package/@stratakit/bricks?activeTab=versions).
+Using your package manager of choice, install the latest version of [`@stratakit/mui`](https://www.npmjs.com/package/@stratakit/mui?activeTab=versions).
 
 ```console
-npm add @stratakit/bricks
+npm add @stratakit/mui
 ```
 
 ## Usage
 
-Assuming that the [`@stratakit/foundations` package](https://www.npmjs.com/package/@stratakit/foundations) has been set up correctly, you can import and use any components from `@stratakit/bricks`.
+To use the StrataKit theme in your app, you’ll need to wrap your application's entrypoint with StrataKit's `<Root>` component.
 
 ```jsx
-import { Button } from "@stratakit/bricks";
+import { Root } from "@stratakit/mui";
 
-function App() {
-	return <Button>Hello</Button>;
+export function App() {
+	return <Root>{/* Use Material UI components here */}</Root>;
 }
 ```
 

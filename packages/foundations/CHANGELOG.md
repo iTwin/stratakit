@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.4.3
+
+### Patch Changes
+
+- [#1108](https://github.com/iTwin/design-system/pull/1108): Decoupled the styles for `@stratakit/bricks` and `@stratakit/structures` from `@stratakit/foundations` so that the latter does not indirectly depend on the former two. This change also reduces the need for these packages to remain in lockstep.
+
 ## 0.4.2
 
 - Updated internal code for `@stratakit/bricks@0.5.2` and `@stratakit/structures@0.5.2`.

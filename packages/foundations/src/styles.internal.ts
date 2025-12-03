@@ -52,10 +52,11 @@ export function loadStyles(
 
 		const styleSheet =
 			styleSheets.get(key)?.get(_window) || new _window.CSSStyleSheet();
+		if (!styleSheets.has(key)) styleSheets.set(key, new WeakMap());
 		if (!styleSheets.get(key)?.has(_window)) {
 			styleSheets.get(key)?.set(_window, styleSheet);
+			styleSheet.replaceSync(css);
 		}
-		styleSheet.replaceSync(css);
 
 		if (!rootNode.adoptedStyleSheets.includes(styleSheet)) {
 			rootNode.adoptedStyleSheets.push(styleSheet);

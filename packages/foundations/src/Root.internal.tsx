@@ -17,6 +17,15 @@ DEV: RootContext.displayName = "RootContext";
 interface RootContextValue {
 	/** A map of all StrataKit packages and their versions. */
 	versions?: Map<string, string>;
+
+	/** Value of the `rootNode` prop passed to the `Root`. */
+	rootNode?: Document | ShadowRoot;
+
+	/** Function to load styles into the rootNode. */
+	loadStyles?: (
+		rootNode: Document | ShadowRoot,
+		options: { css: string; key: string },
+	) => { cleanup: () => void };
 }
 
 // ----------------------------------------------------------------------------

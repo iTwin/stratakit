@@ -38,7 +38,7 @@
 		"react-component",
 		"mui",
 		"material-ui",
-		"material design"
+		"design system"
 	],
 	"scripts": {
 		"build": "wireit",

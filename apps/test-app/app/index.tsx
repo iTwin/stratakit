@@ -66,6 +66,16 @@ export default function Index() {
 			</ul>
 
 			<Text variant="headline-md" render={<h2 />} className={styles.h2}>
+				Material UI
+			</Text>
+
+			<ul className={styles.list}>
+				<li>
+					<Anchor href={useHref("/mui")}>StrataKit theme</Anchor>
+				</li>
+			</ul>
+
+			<Text variant="headline-md" render={<h2 />} className={styles.h2}>
 				Bricks
 			</Text>
 

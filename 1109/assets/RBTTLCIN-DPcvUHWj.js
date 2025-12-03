@@ -1,0 +1,1 @@
+import{f as t,c as n,a as r}from"./ILRXHV7V-BKRdrkPw.js";var d="span",l=n(function(e){return e={...e,style:{border:0,clip:"rect(0 0 0 0)",height:"1px",margin:"-1px",overflow:"hidden",padding:0,position:"absolute",whiteSpace:"nowrap",width:"1px",...e.style}},e}),o=t(function(e){const i=l(e);return r(d,i)});export{o as V,l as u};

@@ -2,7 +2,7 @@
 	"name": "@stratakit/mui",
 	"private": true,
 	"type": "module",
-	"version": "0.0.1",
+	"version": "0.1.0",
 	"license": "MIT",
 	"sideEffects": false,
 	"types": "./dist/index.d.ts",

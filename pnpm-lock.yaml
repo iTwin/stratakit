@@ -22,11 +22,11 @@ catalogs:
       specifier: ^0.27.0
       version: 0.27.0
     react:
-      specifier: ^19.2.0
-      version: 19.2.0
+      specifier: ^19.2.1
+      version: 19.2.1
     react-dom:
-      specifier: ^19.2.0
-      version: 19.2.0
+      specifier: ^19.2.1
+      version: 19.2.1
     typescript:
       specifier: ~5.9.3
       version: 5.9.3
@@ -78,10 +78,10 @@ importers:
     dependencies:
       "@ariakit/react":
         specifier: ^0.4.20
-        version: 0.4.20(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+        version: 0.4.20(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
       "@react-router/node":
         specifier: ^7.9.6
-        version: 7.9.6(react-router@7.9.6(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(typescript@5.9.3)
+        version: 7.9.6(react-router@7.9.6(react-dom@19.2.1(react@19.2.1))(react@19.2.1))(typescript@5.9.3)
       "@stratakit/bricks":
         specifier: workspace:*
         version: link:../../packages/bricks
@@ -99,7 +99,7 @@ importers:
         version: link:../../packages/structures
       "@tanstack/react-query":
         specifier: ^5.90.11
-        version: 5.90.11(react@19.2.0)
+        version: 5.90.11(react@19.2.1)
       classnames:
         specifier: ^2.5.1
         version: 2.5.1
@@ -111,16 +111,16 @@ importers:
         version: 5.1.32
       react:
         specifier: "catalog:"
-        version: 19.2.0
+        version: 19.2.1
       react-dom:
         specifier: "catalog:"
-        version: 19.2.0(react@19.2.0)
+        version: 19.2.1(react@19.2.1)
       react-resizable-panels:
         specifier: ^3.0.6
-        version: 3.0.6(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+        version: 3.0.6(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
       react-router:
         specifier: ^7.9.6
-        version: 7.9.6(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+        version: 7.9.6(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
     devDependencies:
       "@axe-core/playwright":
         specifier: ^4.11.0
@@ -130,7 +130,7 @@ importers:
         version: 1.56.1
       "@react-router/dev":
         specifier: ^7.9.6
-        version: 7.9.6(@types/node@22.19.1)(@vitejs/plugin-rsc@0.4.11(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(vite@7.2.4(@types/node@22.19.1)(lightningcss@1.30.1)(tsx@4.21.0)(yaml@2.6.1)))(lightningcss@1.30.1)(react-router@7.9.6(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(tsx@4.21.0)(typescript@5.9.3)(vite@7.2.4(@types/node@22.19.1)(lightningcss@1.30.1)(tsx@4.21.0)(yaml@2.6.1))(yaml@2.6.1)
+        version: 7.9.6(@types/node@22.19.1)(lightningcss@1.30.1)(react-router@7.9.6(react-dom@19.2.1(react@19.2.1))(react@19.2.1))(tsx@4.21.0)(typescript@5.9.3)(vite@7.2.4(@types/node@22.19.1)(lightningcss@1.30.1)(tsx@4.21.0)(yaml@2.6.1))(yaml@2.6.1)
       "@types/node":
         specifier: "catalog:"
         version: 22.19.1
@@ -190,13 +190,13 @@ importers:
     dependencies:
       "@ariakit/react":
         specifier: ^0.4.20
-        version: 0.4.20(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+        version: 0.4.20(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
       classnames:
         specifier: ^2.5.1
         version: 2.5.1
       react-compiler-runtime:
         specifier: ^1.0.0
-        version: 1.0.0(react@19.2.0)
+        version: 1.0.0(react@19.2.1)
     devDependencies:
       "@stratakit/foundations":
         specifier: workspace:*
@@ -215,10 +215,10 @@ importers:
         version: 0.27.0
       react:
         specifier: "catalog:"
-        version: 19.2.0
+        version: 19.2.1
       react-dom:
         specifier: "catalog:"
-        version: 19.2.0(react@19.2.0)
+        version: 19.2.1(react@19.2.1)
       typescript:
         specifier: "catalog:"
         version: 5.9.3
@@ -227,7 +227,7 @@ importers:
     dependencies:
       "@itwin/itwinui-react":
         specifier: ^3.19.6
-        version: 3.19.6(@stratakit/foundations@packages+foundations)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+        version: 3.19.6(@stratakit/foundations@packages+foundations)(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
       "@stratakit/bricks":
         specifier: ^0.5.2
         version: link:../bricks
@@ -239,7 +239,7 @@ importers:
         version: 2.5.1
       react-compiler-runtime:
         specifier: ^1.0.0
-        version: 1.0.0(react@19.2.0)
+        version: 1.0.0(react@19.2.1)
     devDependencies:
       "@stratakit/foundations":
         specifier: workspace:*
@@ -258,10 +258,10 @@ importers:
         version: 0.27.0
       react:
         specifier: "catalog:"
-        version: 19.2.0
+        version: 19.2.1
       react-dom:
         specifier: "catalog:"
-        version: 19.2.0(react@19.2.0)
+        version: 19.2.1(react@19.2.1)
       typescript:
         specifier: "catalog:"
         version: 5.9.3
@@ -270,13 +270,13 @@ importers:
     dependencies:
       "@ariakit/react":
         specifier: ^0.4.20
-        version: 0.4.20(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+        version: 0.4.20(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
       classnames:
         specifier: ^2.5.1
         version: 2.5.1
       react-compiler-runtime:
         specifier: ^1.0.0
-        version: 1.0.0(react@19.2.0)
+        version: 1.0.0(react@19.2.1)
     devDependencies:
       "@stratakit/bricks":
         specifier: workspace:*
@@ -298,10 +298,10 @@ importers:
         version: 1.30.1
       react:
         specifier: "catalog:"
-        version: 19.2.0
+        version: 19.2.1
       react-dom:
         specifier: "catalog:"
-        version: 19.2.0(react@19.2.0)
+        version: 19.2.1(react@19.2.1)
       typescript:
         specifier: "catalog:"
         version: 5.9.3
@@ -312,7 +312,7 @@ importers:
     dependencies:
       "@ariakit/react":
         specifier: ^0.4.20
-        version: 0.4.20(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+        version: 0.4.20(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
       "@stratakit/bricks":
         specifier: ^0.5.2
         version: link:../bricks
@@ -321,10 +321,10 @@ importers:
         version: 2.5.1
       react-compiler-runtime:
         specifier: ^1.0.0
-        version: 1.0.0(react@19.2.0)
+        version: 1.0.0(react@19.2.1)
       zustand:
         specifier: ^5.0.9
-        version: 5.0.9(@types/react@19.2.7)(immer@11.0.1)(react@19.2.0)(use-sync-external-store@1.6.0(react@19.2.0))
+        version: 5.0.9(@types/react@19.2.7)(immer@11.0.1)(react@19.2.1)(use-sync-external-store@1.6.0(react@19.2.1))
     devDependencies:
       "@stratakit/foundations":
         specifier: workspace:*
@@ -343,10 +343,10 @@ importers:
         version: 0.27.0
       react:
         specifier: "catalog:"
-        version: 19.2.0
+        version: 19.2.1
       react-dom:
         specifier: "catalog:"
-        version: 19.2.0(react@19.2.0)
+        version: 19.2.1(react@19.2.1)
       typescript:
         specifier: "catalog:"
         version: 5.9.3
@@ -1270,12 +1270,6 @@ packages:
         integrity: sha512-EMlH1e30yzmTpGLQjlFmaDAjyOeZhng1/XCd7DExR8PNAnG/G1tyruZxEoUe11ClnwGhGrtsdnyyUx1frSzjng==,
       }
 
-  "@mjackson/node-fetch-server@0.7.0":
-    resolution:
-      {
-        integrity: sha512-un8diyEBKU3BTVj3GzlTPA1kIjCkGdD+AMYQy31Gf9JCkfoZzwgJ79GUtHrF2BN3XPNMLpubbzPcxys+a3uZEw==,
-      }
-
   "@nodelib/fs.scandir@2.1.5":
     resolution:
       {
@@ -1708,16 +1702,6 @@ packages:
         integrity: sha512-MWtvHrGZLFttgeEj28VXHxpmwYbor/ATPYbBfSFZEIRK0ecCFLl2Qo55z52Hss+UV9CRN7trSeq1zbgx7YDWWg==,
       }
 
-  "@vitejs/plugin-rsc@0.4.11":
-    resolution:
-      {
-        integrity: sha512-+4H4wLi+Y9yF58znBfKgGfX8zcqUGt8ngnmNgzrdGdF1SVz7EO0sg7WnhK5fFVHt6fUxsVEjmEabsCWHKPL1Tw==,
-      }
-    peerDependencies:
-      react: "*"
-      react-dom: "*"
-      vite: "*"
-
   ansi-regex@5.0.1:
     resolution:
       {
@@ -2012,12 +1996,6 @@ packages:
       }
     engines: { node: ">=6" }
 
-  estree-walker@3.0.3:
-    resolution:
-      {
-        integrity: sha512-7RUKfXgSMMkzt6ZuXmqapOurLGPPfgj6l9uRZ7lRGolvk0y2yocc35LdcxKC5PQZdn2DMqioAQ2NoWcrTKmm6g==,
-      }
-
   exit-hook@2.2.1:
     resolution:
       {
@@ -2186,12 +2164,6 @@ packages:
         integrity: sha512-41Cifkg6e8TylSpdtTpeLVMqvSBEVzTttHvERD741+pnZ8ANv0004MRL43QKPDlK9cGvNp6NZWZUBlbGXYxxng==,
       }
     engines: { node: ">=0.12.0" }
-
-  is-reference@3.0.3:
-    resolution:
-      {
-        integrity: sha512-ixkJoqQvAP88E6wLydLGGqCJsrFUnqoH6HnaczB8XmDH1oaWU+xxdptvikTgaEhtZ53Ky6YXiBuUI2WXLMCwjw==,
-      }
 
   isbot@5.1.32:
     resolution:
@@ -2460,12 +2432,6 @@ packages:
       }
     engines: { node: ">=12" }
 
-  magic-string@0.30.21:
-    resolution:
-      {
-        integrity: sha512-vd2F4YUyEXKGcLHoq+TEyCjxueSeHnFxyyjNp80yg0XV4vUhnDer/lvvlqM/arB5bXQN5K2/3oinyCRyx8T2CQ==,
-      }
-
   merge2@1.4.1:
     resolution:
       {
@@ -2601,12 +2567,6 @@ packages:
         integrity: sha512-WUjGcAqP1gQacoQe+OBJsFA7Ld4DyXuUIjZ5cc75cLHvJ7dtNsTugphxIADwspS+AraAUePCKrSVtPLFj/F88w==,
       }
 
-  periscopic@4.0.2:
-    resolution:
-      {
-        integrity: sha512-sqpQDUy8vgB7ycLkendSKS6HnVz1Rneoc3Rc+ZBUCe2pbqlVuCC5vF52l0NJ1aiMg/r1qfYF9/myz8CZeI2rjA==,
-      }
-
   picocolors@1.1.1:
     resolution:
       {
@@ -2703,13 +2663,13 @@ packages:
     peerDependencies:
       react: ^17.0.0 || ^18.0.0 || ^19.0.0 || ^0.0.0-experimental
 
-  react-dom@19.2.0:
+  react-dom@19.2.1:
     resolution:
       {
-        integrity: sha512-UlbRu4cAiGaIewkPyiRGJk0imDN2T3JjieT6spoL2UeSf5od4n5LB/mQ4ejmxhCFT1tYe8IvaFulzynWovsEFQ==,
+        integrity: sha512-ibrK8llX2a4eOskq1mXKu/TGZj9qzomO+sNfO98M6d9zIPOEhlBkMkBUBLd1vgS0gQsLDBzA+8jJBVXDnfHmJg==,
       }
     peerDependencies:
-      react: ^19.2.0
+      react: ^19.2.1
 
   react-refresh@0.14.2:
     resolution:
@@ -2748,10 +2708,10 @@ packages:
     peerDependencies:
       react: ^16.8.3 || ^17.0.0-0 || ^18.0.0
 
-  react@19.2.0:
+  react@19.2.1:
     resolution:
       {
-        integrity: sha512-tmbWg6W31tQLeB5cdIBOicJDJRR2KzXsV7uSK9iNfLWQ5bIZfxuPEHp7M8wiHyHnn0DD1i7w3Zmin0FtkrwoCQ==,
+        integrity: sha512-DGrYcCWK7tvYMnWh79yrPHt+vdx9tY+1gPZa7nJQtO/p8bLTDaHp4dzwEhQB7pZ4Xe3ok4XKuEPrVuc+wlpkmw==,
       }
     engines: { node: ">=0.10.0" }
 
@@ -2970,12 +2930,6 @@ packages:
       }
     engines: { node: ">=0.6.11 <=0.7.0 || >=0.7.3" }
 
-  turbo-stream@3.1.0:
-    resolution:
-      {
-        integrity: sha512-tVI25WEXl4fckNEmrq70xU1XumxUwEx/FZD5AgEcV8ri7Wvrg2o7GEq8U7htrNx3CajciGm+kDyhRf5JB6t7/A==,
-      }
-
   typescript@5.9.3:
     resolution:
       {
@@ -3130,17 +3084,6 @@ packages:
       yaml:
         optional: true
 
-  vitefu@1.1.1:
-    resolution:
-      {
-        integrity: sha512-B/Fegf3i8zh0yFbpzZ21amWzHmuNlLlmJT6n7bu5e+pCHUKQIfXSYokrqOBGEMMe9UG2sostKQF9mml/vYaWJQ==,
-      }
-    peerDependencies:
-      vite: ^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0-beta.0
-    peerDependenciesMeta:
-      vite:
-        optional: true
-
   which@2.0.2:
     resolution:
       {
@@ -3199,12 +3142,6 @@ packages:
     engines: { node: ">= 14" }
     hasBin: true
 
-  zimmerframe@1.1.4:
-    resolution:
-      {
-        integrity: sha512-B58NGBEoc8Y9MWWCQGl/gq9xBCe4IiKM0a2x7GZdQKOW5Exr8S1W24J6OgM1njK8xCRGvAJIL/MxXHf6SkmQKQ==,
-      }
-
   zustand@5.0.9:
     resolution:
       {
@@ -3244,19 +3181,19 @@ snapshots:
 
   "@ariakit/core@0.4.17": {}
 
-  "@ariakit/react-core@0.4.20(react-dom@19.2.0(react@19.2.0))(react@19.2.0)":
+  "@ariakit/react-core@0.4.20(react-dom@19.2.1(react@19.2.1))(react@19.2.1)":
     dependencies:
       "@ariakit/core": 0.4.17
       "@floating-ui/dom": 1.7.4
-      react: 19.2.0
-      react-dom: 19.2.0(react@19.2.0)
-      use-sync-external-store: 1.6.0(react@19.2.0)
+      react: 19.2.1
+      react-dom: 19.2.1(react@19.2.1)
+      use-sync-external-store: 1.6.0(react@19.2.1)
 
-  "@ariakit/react@0.4.20(react-dom@19.2.0(react@19.2.0))(react@19.2.0)":
+  "@ariakit/react@0.4.20(react-dom@19.2.1(react@19.2.1))(react@19.2.1)":
     dependencies:
-      "@ariakit/react-core": 0.4.20(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
-      react: 19.2.0
-      react-dom: 19.2.0(react@19.2.0)
+      "@ariakit/react-core": 0.4.20(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
+      react: 19.2.1
+      react-dom: 19.2.1(react@19.2.1)
 
   "@axe-core/playwright@4.11.0(playwright-core@1.56.1)":
     dependencies:
@@ -3651,18 +3588,18 @@ snapshots:
       "@floating-ui/core": 1.7.3
       "@floating-ui/utils": 0.2.10
 
-  "@floating-ui/react-dom@2.1.6(react-dom@19.2.0(react@19.2.0))(react@19.2.0)":
+  "@floating-ui/react-dom@2.1.6(react-dom@19.2.1(react@19.2.1))(react@19.2.1)":
     dependencies:
       "@floating-ui/dom": 1.7.4
-      react: 19.2.0
-      react-dom: 19.2.0(react@19.2.0)
+      react: 19.2.1
+      react-dom: 19.2.1(react@19.2.1)
 
-  "@floating-ui/react@0.27.16(react-dom@19.2.0(react@19.2.0))(react@19.2.0)":
+  "@floating-ui/react@0.27.16(react-dom@19.2.1(react@19.2.1))(react@19.2.1)":
     dependencies:
-      "@floating-ui/react-dom": 2.1.6(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+      "@floating-ui/react-dom": 2.1.6(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
       "@floating-ui/utils": 0.2.10
-      react: 19.2.0
-      react-dom: 19.2.0(react@19.2.0)
+      react: 19.2.1
+      react-dom: 19.2.1(react@19.2.1)
       tabbable: 6.2.0
 
   "@floating-ui/utils@0.2.10": {}
@@ -3676,21 +3613,21 @@ snapshots:
       wrap-ansi: 8.1.0
       wrap-ansi-cjs: wrap-ansi@7.0.0
 
-  "@itwin/itwinui-illustrations-react@2.1.0(react-dom@19.2.0(react@19.2.0))(react@19.2.0)":
+  "@itwin/itwinui-illustrations-react@2.1.0(react-dom@19.2.1(react@19.2.1))(react@19.2.1)":
     dependencies:
-      react: 19.2.0
-      react-dom: 19.2.0(react@19.2.0)
+      react: 19.2.1
+      react-dom: 19.2.1(react@19.2.1)
 
-  "@itwin/itwinui-react@3.19.6(@stratakit/foundations@packages+foundations)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)":
+  "@itwin/itwinui-react@3.19.6(@stratakit/foundations@packages+foundations)(react-dom@19.2.1(react@19.2.1))(react@19.2.1)":
     dependencies:
-      "@floating-ui/react": 0.27.16(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
-      "@itwin/itwinui-illustrations-react": 2.1.0(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+      "@floating-ui/react": 0.27.16(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
+      "@itwin/itwinui-illustrations-react": 2.1.0(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
       "@swc/helpers": 0.5.17
-      "@tanstack/react-virtual": 3.13.12(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+      "@tanstack/react-virtual": 3.13.12(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
       classnames: 2.5.1
-      react: 19.2.0
-      react-dom: 19.2.0(react@19.2.0)
-      react-table: 7.8.0(react@19.2.0)
+      react: 19.2.1
+      react-dom: 19.2.1(react@19.2.1)
+      react-table: 7.8.0(react@19.2.1)
     optionalDependencies:
       "@stratakit/foundations": link:packages/foundations
 
@@ -3714,9 +3651,6 @@ snapshots:
       "@jridgewell/sourcemap-codec": 1.5.5
 
   "@mjackson/node-fetch-server@0.2.0": {}
-
-  "@mjackson/node-fetch-server@0.7.0":
-    optional: true
 
   "@nodelib/fs.scandir@2.1.5":
     dependencies:
@@ -3824,7 +3758,7 @@ snapshots:
     dependencies:
       playwright: 1.56.1
 
-  "@react-router/dev@7.9.6(@types/node@22.19.1)(@vitejs/plugin-rsc@0.4.11(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(vite@7.2.4(@types/node@22.19.1)(lightningcss@1.30.1)(tsx@4.21.0)(yaml@2.6.1)))(lightningcss@1.30.1)(react-router@7.9.6(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(tsx@4.21.0)(typescript@5.9.3)(vite@7.2.4(@types/node@22.19.1)(lightningcss@1.30.1)(tsx@4.21.0)(yaml@2.6.1))(yaml@2.6.1)":
+  "@react-router/dev@7.9.6(@types/node@22.19.1)(lightningcss@1.30.1)(react-router@7.9.6(react-dom@19.2.1(react@19.2.1))(react@19.2.1))(tsx@4.21.0)(typescript@5.9.3)(vite@7.2.4(@types/node@22.19.1)(lightningcss@1.30.1)(tsx@4.21.0)(yaml@2.6.1))(yaml@2.6.1)":
     dependencies:
       "@babel/core": 7.28.5
       "@babel/generator": 7.28.5
@@ -3834,7 +3768,7 @@ snapshots:
       "@babel/traverse": 7.28.5
       "@babel/types": 7.28.5
       "@npmcli/package-json": 4.0.1
-      "@react-router/node": 7.9.6(react-router@7.9.6(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(typescript@5.9.3)
+      "@react-router/node": 7.9.6(react-router@7.9.6(react-dom@19.2.1(react@19.2.1))(react@19.2.1))(typescript@5.9.3)
       "@remix-run/node-fetch-server": 0.9.0
       arg: 5.0.2
       babel-dead-code-elimination: 1.0.10
@@ -3850,14 +3784,13 @@ snapshots:
       picocolors: 1.1.1
       prettier: 3.7.3
       react-refresh: 0.14.2
-      react-router: 7.9.6(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+      react-router: 7.9.6(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
       semver: 7.7.3
       tinyglobby: 0.2.15
       valibot: 1.2.0(typescript@5.9.3)
       vite: 7.2.4(@types/node@22.19.1)(lightningcss@1.30.1)(tsx@4.21.0)(yaml@2.6.1)
       vite-node: 3.2.4(@types/node@22.19.1)(lightningcss@1.30.1)(tsx@4.21.0)(yaml@2.6.1)
     optionalDependencies:
-      "@vitejs/plugin-rsc": 0.4.11(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(vite@7.2.4(@types/node@22.19.1)(lightningcss@1.30.1)(tsx@4.21.0)(yaml@2.6.1))
       typescript: 5.9.3
     transitivePeerDependencies:
       - "@types/node"
@@ -3875,10 +3808,10 @@ snapshots:
       - tsx
       - yaml
 
-  "@react-router/node@7.9.6(react-router@7.9.6(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(typescript@5.9.3)":
+  "@react-router/node@7.9.6(react-router@7.9.6(react-dom@19.2.1(react@19.2.1))(react@19.2.1))(typescript@5.9.3)":
     dependencies:
       "@mjackson/node-fetch-server": 0.2.0
-      react-router: 7.9.6(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+      react-router: 7.9.6(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
     optionalDependencies:
       typescript: 5.9.3
 
@@ -3956,16 +3889,16 @@ snapshots:
 
   "@tanstack/query-core@5.90.11": {}
 
-  "@tanstack/react-query@5.90.11(react@19.2.0)":
+  "@tanstack/react-query@5.90.11(react@19.2.1)":
     dependencies:
       "@tanstack/query-core": 5.90.11
-      react: 19.2.0
+      react: 19.2.1
 
-  "@tanstack/react-virtual@3.13.12(react-dom@19.2.0(react@19.2.0))(react@19.2.0)":
+  "@tanstack/react-virtual@3.13.12(react-dom@19.2.1(react@19.2.1))(react@19.2.1)":
     dependencies:
       "@tanstack/virtual-core": 3.13.12
-      react: 19.2.0
-      react-dom: 19.2.0(react@19.2.0)
+      react: 19.2.1
+      react-dom: 19.2.1(react@19.2.1)
 
   "@tanstack/virtual-core@3.13.12": {}
 
@@ -3982,20 +3915,6 @@ snapshots:
   "@types/react@19.2.7":
     dependencies:
       csstype: 3.2.3
-
-  "@vitejs/plugin-rsc@0.4.11(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(vite@7.2.4(@types/node@22.19.1)(lightningcss@1.30.1)(tsx@4.21.0)(yaml@2.6.1))":
-    dependencies:
-      "@mjackson/node-fetch-server": 0.7.0
-      es-module-lexer: 1.7.0
-      estree-walker: 3.0.3
-      magic-string: 0.30.21
-      periscopic: 4.0.2
-      react: 19.2.0
-      react-dom: 19.2.0(react@19.2.0)
-      turbo-stream: 3.1.0
-      vite: 7.2.4(@types/node@22.19.1)(lightningcss@1.30.1)(tsx@4.21.0)(yaml@2.6.1)
-      vitefu: 1.1.1(vite@7.2.4(@types/node@22.19.1)(lightningcss@1.30.1)(tsx@4.21.0)(yaml@2.6.1))
-    optional: true
 
   ansi-regex@5.0.1: {}
 
@@ -4183,11 +4102,6 @@ snapshots:
 
   escalade@3.2.0: {}
 
-  estree-walker@3.0.3:
-    dependencies:
-      "@types/estree": 1.0.8
-    optional: true
-
   exit-hook@2.2.1: {}
 
   fast-glob@3.3.3:
@@ -4273,11 +4187,6 @@ snapshots:
       is-extglob: 2.1.1
 
   is-number@7.0.0: {}
-
-  is-reference@3.0.3:
-    dependencies:
-      "@types/estree": 1.0.8
-    optional: true
 
   isbot@5.1.32: {}
 
@@ -4397,11 +4306,6 @@ snapshots:
 
   lru-cache@7.18.3: {}
 
-  magic-string@0.30.21:
-    dependencies:
-      "@jridgewell/sourcemap-codec": 1.5.5
-    optional: true
-
   merge2@1.4.1: {}
 
   micromatch@4.0.8:
@@ -4469,13 +4373,6 @@ snapshots:
 
   pathe@2.0.3: {}
 
-  periscopic@4.0.2:
-    dependencies:
-      "@types/estree": 1.0.8
-      is-reference: 3.0.3
-      zimmerframe: 1.1.4
-    optional: true
-
   picocolors@1.1.1: {}
 
   picomatch@2.3.1: {}
@@ -4515,35 +4412,35 @@ snapshots:
 
   queue-microtask@1.2.3: {}
 
-  react-compiler-runtime@1.0.0(react@19.2.0):
+  react-compiler-runtime@1.0.0(react@19.2.1):
     dependencies:
-      react: 19.2.0
+      react: 19.2.1
 
-  react-dom@19.2.0(react@19.2.0):
+  react-dom@19.2.1(react@19.2.1):
     dependencies:
-      react: 19.2.0
+      react: 19.2.1
       scheduler: 0.27.0
 
   react-refresh@0.14.2: {}
 
-  react-resizable-panels@3.0.6(react-dom@19.2.0(react@19.2.0))(react@19.2.0):
+  react-resizable-panels@3.0.6(react-dom@19.2.1(react@19.2.1))(react@19.2.1):
     dependencies:
-      react: 19.2.0
-      react-dom: 19.2.0(react@19.2.0)
+      react: 19.2.1
+      react-dom: 19.2.1(react@19.2.1)
 
-  react-router@7.9.6(react-dom@19.2.0(react@19.2.0))(react@19.2.0):
+  react-router@7.9.6(react-dom@19.2.1(react@19.2.1))(react@19.2.1):
     dependencies:
       cookie: 1.0.2
-      react: 19.2.0
+      react: 19.2.1
       set-cookie-parser: 2.7.2
     optionalDependencies:
-      react-dom: 19.2.0(react@19.2.0)
+      react-dom: 19.2.1(react@19.2.1)
 
-  react-table@7.8.0(react@19.2.0):
+  react-table@7.8.0(react@19.2.1):
     dependencies:
-      react: 19.2.0
+      react: 19.2.1
 
-  react@19.2.0: {}
+  react@19.2.1: {}
 
   readdirp@3.6.0:
     dependencies:
@@ -4669,9 +4566,6 @@ snapshots:
 
   tunnel@0.0.6: {}
 
-  turbo-stream@3.1.0:
-    optional: true
-
   typescript@5.9.3: {}
 
   undici-types@6.21.0: {}
@@ -4688,9 +4582,9 @@ snapshots:
       escalade: 3.2.0
       picocolors: 1.1.1
 
-  use-sync-external-store@1.6.0(react@19.2.0):
+  use-sync-external-store@1.6.0(react@19.2.1):
     dependencies:
-      react: 19.2.0
+      react: 19.2.1
 
   uuid@11.1.0: {}
 
@@ -4762,11 +4656,6 @@ snapshots:
       tsx: 4.21.0
       yaml: 2.6.1
 
-  vitefu@1.1.1(vite@7.2.4(@types/node@22.19.1)(lightningcss@1.30.1)(tsx@4.21.0)(yaml@2.6.1)):
-    optionalDependencies:
-      vite: 7.2.4(@types/node@22.19.1)(lightningcss@1.30.1)(tsx@4.21.0)(yaml@2.6.1)
-    optional: true
-
   which@2.0.2:
     dependencies:
       isexe: 2.0.0
@@ -4802,12 +4691,9 @@ snapshots:
   yaml@2.6.1:
     optional: true
 
-  zimmerframe@1.1.4:
-    optional: true
-
-  zustand@5.0.9(@types/react@19.2.7)(immer@11.0.1)(react@19.2.0)(use-sync-external-store@1.6.0(react@19.2.0)):
+  zustand@5.0.9(@types/react@19.2.7)(immer@11.0.1)(react@19.2.1)(use-sync-external-store@1.6.0(react@19.2.1)):
     optionalDependencies:
       "@types/react": 19.2.7
       immer: 11.0.1
-      react: 19.2.0
-      use-sync-external-store: 1.6.0(react@19.2.0)
+      react: 19.2.1
+      use-sync-external-store: 1.6.0(react@19.2.1)

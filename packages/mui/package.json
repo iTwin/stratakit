@@ -19,7 +19,7 @@
 		"CHANGELOG.md",
 		"LICENSE.md"
 	],
-	"description": "Small, modular components for StrataKit",
+	"description": "Material UI theme of StrataKit",
 	"author": "Bentley Systems",
 	"homepage": "https://github.com/iTwin/design-system",
 	"repository": {
@@ -28,17 +28,16 @@
 		"directory": "packages/mui"
 	},
 	"keywords": [
-		"component",
-		"components",
-		"design-system",
-		"design",
 		"frontend",
 		"itwin",
 		"itwinui",
 		"strata",
 		"stratakit",
 		"react",
-		"ui"
+		"react-component",
+		"mui",
+		"material-ui",
+		"material design"
 	],
 	"scripts": {
 		"build": "wireit",

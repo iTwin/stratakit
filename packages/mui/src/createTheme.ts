@@ -11,7 +11,6 @@ function createTheme() {
 			nativeColor: true,
 			colorSchemeSelector: "data",
 		},
-		defaultColorScheme: "dark",
 		colorSchemes: {
 			light: {
 				palette: {
@@ -34,8 +33,6 @@ function createTheme() {
 					primary: {
 						main: "oklch(54% .1 170.26)",
 						contrastText: "oklch(100% none none)",
-						// text: 'oklch(87.59% .175 168.9)',
-						// border: 'oklch(60.98% .092 173.18)',
 					},
 					text: {
 						primary: "oklch(99.06% .002 247.84)",
@@ -54,7 +51,7 @@ function createTheme() {
 			fontSize: 12,
 		},
 		transitions: {
-			create: () => "none", // Globally disable the "cheap"-feeling transitions
+			create: () => "none", // https://mui.com/material-ui/getting-started/faq/#how-can-i-disable-transitions-globally
 		},
 		components: {
 			MuiCssBaseline: {
@@ -62,7 +59,7 @@ function createTheme() {
 			},
 			MuiButtonBase: {
 				defaultProps: {
-					disableRipple: true, // This should disable ripple everywhere
+					disableRipple: true, // https://mui.com/material-ui/getting-started/faq/#how-can-i-disable-the-ripple-effect-globally
 				},
 			},
 			MuiCheckbox: {

@@ -17,8 +17,8 @@ import {
 	Link,
 	Menu,
 	MenuItem,
+	Stack,
 	Switch,
-	styled,
 	Tab,
 	Tabs,
 	TextField,
@@ -33,61 +33,53 @@ export const meta: MetaFunction = () => {
 	return [{ title: "StrataKit theme" }];
 };
 
-const FlexBox = styled(Box)({
-	display: "flex",
-	gap: 8,
-	marginBlockEnd: 8,
-});
-
 export default function Page() {
 	return (
 		<ThemeProvider theme={createTheme()}>
-			<Box sx={{ display: "flex", height: "100vh" }}>
-				<Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-					<Container maxWidth="lg">
-						<Typography variant="h4" component="h1" gutterBottom sx={{ mb: 4 }}>
-							StrataKit theme for Material UI
-						</Typography>
+			<Container maxWidth="lg" sx={{ p: 4 }}>
+				<Typography variant="h4" component="h1" gutterBottom sx={{ mb: 4 }}>
+					StrataKit theme for Material UI
+				</Typography>
 
-						<FlexBox>
-							<Link color="inherit" href="#">
-								Default
-							</Link>
-							<Link href="#">Accent</Link>
-						</FlexBox>
+				<Stack spacing={2}>
+					<Stack spacing={1} direction="row">
+						<Link color="inherit" href="#">
+							Default
+						</Link>
+						<Link href="#">Accent</Link>
+					</Stack>
 
-						<FlexBox>
-							<Button variant="contained">Solid</Button>
-							<Button variant="outlined">Outline</Button>
-							<Button>Ghost</Button>
-						</FlexBox>
+					<Stack spacing={1} direction="row">
+						<Button variant="contained">Solid</Button>
+						<Button variant="outlined">Outline</Button>
+						<Button>Ghost</Button>
+					</Stack>
 
-						<FlexBox>
-							<Checkbox />
-							<Checkbox defaultChecked />
-							<Checkbox indeterminate />
-							<Switch defaultChecked />
-						</FlexBox>
+					<Stack spacing={1} direction="row">
+						<Checkbox />
+						<Checkbox defaultChecked />
+						<Checkbox indeterminate />
+						<Switch defaultChecked />
+					</Stack>
 
-						<FlexBox>
-							<TextField label="Input" variant="outlined" />
-							<TextField label="Textarea" variant="outlined" multiline />
-						</FlexBox>
+					<div>
+						<TextField label="Input" variant="outlined" />
+						<TextField label="Textarea" variant="outlined" multiline />
+					</div>
 
-						<FlexBox>
-							<MenuExample />
-						</FlexBox>
+					<Stack spacing={1} direction="row">
+						<MenuExample />
+					</Stack>
 
-						<FlexBox>
-							<DialogExample />
-						</FlexBox>
+					<Stack spacing={1} direction="row">
+						<DialogExample />
+					</Stack>
 
-						<FlexBox>
-							<TabsExample />
-						</FlexBox>
-					</Container>
-				</Box>
-			</Box>
+					<Stack spacing={1} direction="row">
+						<TabsExample />
+					</Stack>
+				</Stack>
+			</Container>
 		</ThemeProvider>
 	);
 }

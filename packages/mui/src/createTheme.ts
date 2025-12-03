@@ -15,15 +15,22 @@ function createTheme() {
 			light: {
 				palette: {
 					contrastThreshold: 4.5,
-					primary: { main: "oklch(54% .1 170.26)" },
-					text: {
-						primary: "oklch(29.76% .011 268.32)",
-						secondary: "oklch(41.45% .013 256.75)",
+					primary: {
+						main: "var(--stratakit-color-bg-accent-base, oklch(54% .1 170.26))",
 					},
-					divider: "oklch(91.52% .005 258.33)",
+					text: {
+						primary:
+							"var(--stratakit-color-text-neutral-primary, oklch(29.76% .011 268.32))",
+						secondary:
+							"var(--stratakit-color-text-neutral-secondary, oklch(41.45% .013 256.75))",
+					},
+					divider:
+						"var(--stratakit-color-border-neutral-muted, oklch(91.52% .005 258.33))",
 					background: {
-						default: "oklch(99.06% .002 247.84)",
-						paper: "oklch(100% none none)",
+						default:
+							"var(--stratakit-color-bg-page-base, oklch(99.06% .002 247.84))",
+						paper:
+							"var(--stratakit-color-bg-elevation-base, oklch(100% none none))",
 					},
 				},
 			},
@@ -31,17 +38,23 @@ function createTheme() {
 				palette: {
 					contrastThreshold: 4.5,
 					primary: {
-						main: "oklch(54% .1 170.26)",
-						contrastText: "oklch(100% none none)",
+						main: "var(--stratakit-color-bg-accent-base, oklch(54% .1 170.26))",
+						contrastText:
+							"var(--stratakit-color-icon-neutral-emphasis, oklch(100% none none))",
 					},
 					text: {
-						primary: "oklch(99.06% .002 247.84)",
-						secondary: "oklch(79.56% .008 241.69)",
+						primary:
+							"var(--stratakit-color-text-neutral-primary, oklch(99.06% .002 247.84))",
+						secondary:
+							"var(--stratakit-color-text-neutral-secondary, oklch(79.56% .008 241.69))",
 					},
-					divider: "oklch(32.63% .014 268.32)",
+					divider:
+						"var(--stratakit-color-border-neutral-muted, oklch(32.63% .014 268.32))",
 					background: {
-						default: "oklch(24.37% .006 268.32)",
-						paper: "oklch(26.92% .008 268.32)",
+						default:
+							"var(--stratakit-color-bg-page-base, oklch(24.37% .006 268.32))",
+						paper:
+							"var(--stratakit-color-bg-elevation-base, oklch(26.92% .008 268.32))",
 					},
 				},
 			},

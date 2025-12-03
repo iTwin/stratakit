@@ -5,10 +5,7 @@
 
 import * as esbuild from "esbuild";
 import fg from "fast-glob";
-import {
-	inlineCssPlugin,
-	reactCompilerPlugin,
-} from "internal/esbuild-plugins.js";
+import { reactCompilerPlugin } from "internal/esbuild-plugins.js";
 
 import meta from "../package.json" with { type: "json" };
 
@@ -51,16 +48,3 @@ if (!isDev) {
 		allowOverwrite: true,
 	});
 }
-
-// Run esbuild again, only to inline bundled CSS inside `.css.ts` files
-await esbuild.build({
-	entryPoints: await fg("src/**/*.css.ts", { onlyFiles: true }),
-	entryNames: "[dir]/[name]",
-	outbase: "src",
-	outdir: isDev ? "dist/DEV" : "dist",
-	bundle: true,
-	format: "esm",
-	jsx: "automatic",
-	target: "es2021",
-	plugins: [inlineCssPlugin()],
-});

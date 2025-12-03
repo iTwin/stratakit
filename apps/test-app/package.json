@@ -57,7 +57,8 @@
 				"../../packages/bricks:build",
 				"../../packages/structures:build",
 				"../../packages/icons:build",
-				"../../packages/compat:build"
+				"../../packages/compat:build",
+				"../../packages/mui:build"
 			],
 			"files": [
 				"app",
@@ -79,7 +80,8 @@
 				"../../packages/foundations:dev",
 				"../../packages/bricks:dev",
 				"../../packages/structures:dev",
-				"../../packages/compat:dev"
+				"../../packages/compat:dev",
+				"../../packages/mui:dev"
 			],
 			"service": true
 		},

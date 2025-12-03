@@ -10,7 +10,7 @@
 	],
 	"extends": "internal/tsconfig.json",
 	"compilerOptions": {
-		"types": ["@react-router/node", "vite/client"],
+		"types": ["@react-router/node", "vite/client", "./app/types.d.ts"],
 
 		"baseUrl": ".",
 		"paths": {

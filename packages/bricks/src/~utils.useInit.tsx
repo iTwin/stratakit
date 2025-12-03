@@ -4,9 +4,14 @@
  *--------------------------------------------------------------------------------------------*/
 
 import * as React from "react";
-import { RootContext } from "@stratakit/foundations/secret-internals";
+import {
+	RootContext,
+	useSafeContext,
+} from "@stratakit/foundations/secret-internals";
+import css from "./styles.css.js";
 
 const packageName = "@stratakit/bricks";
+const key = `${packageName}@${__VERSION__}`;
 
 /**
  * Internal hook that should be called by all bricks.
@@ -16,12 +21,15 @@ const packageName = "@stratakit/bricks";
  * @private
  */
 export function useInit() {
-	const rootContext = React.useContext(RootContext);
-	if (!rootContext) {
-		DEV: console.error(
-			`All ${packageName} components must be used within a <Root> component from @stratakit/foundations.`,
-		);
-	} else {
+	const rootContext = useSafeContext(RootContext);
+	if (!rootContext.versions?.has(packageName))
 		rootContext.versions?.set(packageName, __VERSION__);
-	}
+
+	const { rootNode, loadStyles } = rootContext;
+
+	React.useInsertionEffect(() => {
+		if (!rootNode || !loadStyles) return;
+		const { cleanup } = loadStyles(rootNode, { css, key });
+		return cleanup;
+	}, [rootNode, loadStyles]);
 }

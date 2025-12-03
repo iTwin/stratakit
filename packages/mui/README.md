@@ -1,6 +1,6 @@
 # @stratakit/mui
 
-StrataKit theme for Material UI.
+StrataKit theme for [MUI](https://mui.com/).
 
 ## Installation
 

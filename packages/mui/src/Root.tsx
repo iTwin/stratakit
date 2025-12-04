@@ -13,6 +13,16 @@ interface RootProps {
 	children?: React.ReactNode;
 }
 
+/**
+ * Component to be used at the root of your application. It ensures that StrataKit theme for MUI is applied correctly.
+ *
+ * Example:
+ * ```tsx
+ * <Root>
+ *   <App />
+ * </Root>
+ * ```
+ */
 function Root(props: RootProps) {
 	return (
 		<StyledEngineProvider enableCssLayer>

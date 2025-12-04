@@ -24,41 +24,6 @@ function createTheme() {
 		cssVariables: {
 			nativeColor: true,
 		},
-		colorSchemes: {
-			light: {
-				palette: {
-					primary: {
-						main: "var(--stratakit-color-bg-accent-base)",
-					},
-					text: {
-						primary: "var(--stratakit-color-text-neutral-primary)",
-						secondary: "var(--stratakit-color-text-neutral-secondary)",
-					},
-					divider: "var(--stratakit-color-border-neutral-muted)",
-					background: {
-						default: "var(--stratakit-color-bg-page-base)",
-						paper: "var(--stratakit-color-bg-elevation-base)",
-					},
-				},
-			},
-			dark: {
-				palette: {
-					primary: {
-						main: "var(--stratakit-color-bg-accent-base)",
-						contrastText: "var(--stratakit-color-icon-neutral-emphasis)",
-					},
-					text: {
-						primary: "var(--stratakit-color-text-neutral-primary)",
-						secondary: "var(--stratakit-color-text-neutral-secondary)",
-					},
-					divider: "var(--stratakit-color-border-neutral-muted)",
-					background: {
-						default: "var(--stratakit-color-bg-page-base)",
-						paper: "var(--stratakit-color-bg-elevation-base)",
-					},
-				},
-			},
-		},
 		components: {
 			MuiButtonBase: {
 				defaultProps: {

@@ -8,8 +8,7 @@ import * as ReactDOM from "react-dom";
 import { PortalContext } from "@ariakit/react/portal";
 import { Role } from "@ariakit/react/role";
 import cx from "classnames";
-import componentsCss from "./~components.css.js"; // TODO: remove this implicit dependency on bricks and structures
-import foundationsCss from "./~styles.css.js";
+import css from "./~styles.css.js";
 import {
 	forwardRef,
 	getOwnerDocument,
@@ -29,13 +28,14 @@ import { loadStyles } from "./styles.internal.js";
 
 import type { BaseProps } from "./~utils.js";
 
-const css = foundationsCss + componentsCss;
+const packageName = "@stratakit/foundations";
+const key = `${packageName}@${__VERSION__}`;
 
 /** This helps pinpoint the location where this module is imported from. */
 const stack = new Error()?.stack?.split("Error")?.at(-1)?.trim() || "";
 
 /** A map of all StrataKit packages and their versions. Will be expanded later (via Context). */
-const versions = new Map([["@stratakit/foundations", __VERSION__]]);
+const versions = new Map([[packageName, __VERSION__]]);
 
 // ----------------------------------------------------------------------------
 
@@ -114,8 +114,8 @@ export const Root = forwardRef<"div", RootProps>((props, forwardedRef) => {
 	} = props;
 
 	return (
-		<RootContext.Provider value={{ versions }}>
-			<RootInternal {...rest} ref={forwardedRef}>
+		<RootInternal {...rest} ref={forwardedRef}>
+			<RootProvider>
 				<Styles />
 				<Fonts />
 				<InlineSpriteSheet />
@@ -133,11 +133,21 @@ export const Root = forwardRef<"div", RootProps>((props, forwardedRef) => {
 						{children}
 					</PortalProvider>
 				</HtmlSanitizerContext.Provider>
-			</RootInternal>
-		</RootContext.Provider>
+			</RootProvider>
+		</RootInternal>
 	);
 });
 DEV: Root.displayName = "Root";
+
+const RootProvider = (props: React.PropsWithChildren) => {
+	const rootNode = useRootNode();
+
+	return (
+		<RootContext.Provider value={{ versions, rootNode, loadStyles }}>
+			{props.children}
+		</RootContext.Provider>
+	);
+};
 
 // ----------------------------------------------------------------------------
 
@@ -271,7 +281,7 @@ function Styles() {
 
 	React.useInsertionEffect(() => {
 		if (!rootNode) return;
-		const { cleanup } = loadStyles(rootNode, { css });
+		const { cleanup } = loadStyles(rootNode, { css, key });
 		return cleanup;
 	}, [rootNode]);
 

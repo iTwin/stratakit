@@ -3,5 +3,4 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-@import "../../bricks/src/styles.css";
-@import "../../structures/src/styles.css";
+declare const __VERSION__: string;

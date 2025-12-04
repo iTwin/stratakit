@@ -7,6 +7,7 @@ import { Role } from "@ariakit/react/role";
 import { Text } from "@stratakit/bricks";
 import { forwardRef } from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
+import { useInit } from "./~utils.useInit.js";
 
 import type { RoleProps } from "@ariakit/react/role";
 
@@ -16,6 +17,8 @@ interface ListItemProps extends RoleProps<"div"> {}
 
 /** @private */
 const ListItem = forwardRef<"div", ListItemProps>((props, forwardedRef) => {
+	useInit();
+
 	return (
 		<Role.div
 			role="listitem"

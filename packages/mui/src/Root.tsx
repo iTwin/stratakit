@@ -3,13 +3,14 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
+import * as React from "react";
 import { CssBaseline } from "@mui/material";
 import { StyledEngineProvider, ThemeProvider } from "@mui/material/styles";
 import { createTheme } from "./createTheme.js";
 
 const theme = createTheme();
 
-interface RootProps {
+interface RootProps extends React.ComponentPropsWithoutRef<"div"> {
 	children?: React.ReactNode;
 }
 
@@ -23,16 +24,22 @@ interface RootProps {
  * </Root>
  * ```
  */
-function Root(props: RootProps) {
-	return (
-		<StyledEngineProvider enableCssLayer>
-			<ThemeProvider theme={theme}>
-				<CssBaseline />
-				{props.children}
-			</ThemeProvider>
-		</StyledEngineProvider>
-	);
-}
+const Root = React.forwardRef<HTMLDivElement, RootProps>(
+	(props, forwardedRef) => {
+		const { children, ...rest } = props;
+
+		return (
+			<div {...rest} ref={forwardedRef}>
+				<StyledEngineProvider enableCssLayer>
+					<ThemeProvider theme={theme}>
+						<CssBaseline />
+						{children}
+					</ThemeProvider>
+				</StyledEngineProvider>
+			</div>
+		);
+	},
+);
 
 // ----------------------------------------------------------------------------
 

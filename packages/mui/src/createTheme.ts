@@ -5,6 +5,20 @@
 
 import { createTheme as createMuiTheme } from "@mui/material/styles";
 
+/**
+ * Creates a StrataKit theme for MUI. Should be used with MUI's `ThemeProvider`.
+ *
+ * Example:
+ * ```tsx
+ * import { ThemeProvider } from "@mui/material/styles";
+ * import { createTheme } from "@stratakit/mui";
+ *
+ * const theme = createTheme();
+ * <ThemeProvider theme={theme}>
+ *   <App />
+ * </ThemeProvider>
+ * ```
+ */
 function createTheme() {
 	return createMuiTheme({
 		cssVariables: {

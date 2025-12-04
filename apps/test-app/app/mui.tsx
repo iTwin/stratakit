@@ -9,7 +9,6 @@ import {
 	Button,
 	Checkbox,
 	Container,
-	CssBaseline,
 	Dialog,
 	DialogActions,
 	DialogContent,
@@ -19,15 +18,13 @@ import {
 	Menu,
 	MenuItem,
 	Stack,
-	StyledEngineProvider,
 	Switch,
 	Tab,
 	Tabs,
 	TextField,
-	ThemeProvider,
 	Typography,
 } from "@mui/material";
-import { createTheme } from "@stratakit/mui";
+import { Root } from "@stratakit/mui";
 
 import type { MetaFunction } from "react-router";
 
@@ -37,55 +34,52 @@ export const meta: MetaFunction = () => {
 
 export default function Page() {
 	return (
-		<StyledEngineProvider enableCssLayer>
-			<ThemeProvider theme={createTheme()}>
-				<CssBaseline />
-				<Container maxWidth="lg" sx={{ p: 4 }}>
-					<Typography variant="h4" component="h1" gutterBottom sx={{ mb: 4 }}>
-						StrataKit theme for Material UI
-					</Typography>
+		<Root>
+			<Container maxWidth="lg" sx={{ p: 4 }}>
+				<Typography variant="h4" component="h1" gutterBottom sx={{ mb: 4 }}>
+					StrataKit theme for Material UI
+				</Typography>
 
-					<Stack spacing={2}>
-						<Stack spacing={1} direction="row">
-							<Link color="inherit" href="#">
-								Default
-							</Link>
-							<Link href="#">Accent</Link>
-						</Stack>
-
-						<Stack spacing={1} direction="row">
-							<Button variant="contained">Solid</Button>
-							<Button variant="outlined">Outline</Button>
-							<Button>Ghost</Button>
-						</Stack>
-
-						<Stack spacing={1} direction="row">
-							<Checkbox />
-							<Checkbox defaultChecked />
-							<Checkbox indeterminate />
-							<Switch defaultChecked />
-						</Stack>
-
-						<div>
-							<TextField label="Input" variant="outlined" />
-							<TextField label="Textarea" variant="outlined" multiline />
-						</div>
-
-						<Stack spacing={1} direction="row">
-							<MenuExample />
-						</Stack>
-
-						<Stack spacing={1} direction="row">
-							<DialogExample />
-						</Stack>
-
-						<Stack spacing={1} direction="row">
-							<TabsExample />
-						</Stack>
+				<Stack spacing={2}>
+					<Stack spacing={1} direction="row">
+						<Link color="inherit" href="#">
+							Default
+						</Link>
+						<Link href="#">Accent</Link>
 					</Stack>
-				</Container>
-			</ThemeProvider>
-		</StyledEngineProvider>
+
+					<Stack spacing={1} direction="row">
+						<Button variant="contained">Solid</Button>
+						<Button variant="outlined">Outline</Button>
+						<Button>Ghost</Button>
+					</Stack>
+
+					<Stack spacing={1} direction="row">
+						<Checkbox />
+						<Checkbox defaultChecked />
+						<Checkbox indeterminate />
+						<Switch defaultChecked />
+					</Stack>
+
+					<div>
+						<TextField label="Input" variant="outlined" />
+						<TextField label="Textarea" variant="outlined" multiline />
+					</div>
+
+					<Stack spacing={1} direction="row">
+						<MenuExample />
+					</Stack>
+
+					<Stack spacing={1} direction="row">
+						<DialogExample />
+					</Stack>
+
+					<Stack spacing={1} direction="row">
+						<TabsExample />
+					</Stack>
+				</Stack>
+			</Container>
+		</Root>
 	);
 }
 

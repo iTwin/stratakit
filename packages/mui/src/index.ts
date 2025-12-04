@@ -5,3 +5,4 @@
 "use client";
 
 export { createTheme } from "./createTheme.js";
+export { Root } from "./Root.js";

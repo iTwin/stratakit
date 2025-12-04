@@ -9,12 +9,10 @@ function createTheme() {
 	return createMuiTheme({
 		cssVariables: {
 			nativeColor: true,
-			colorSchemeSelector: "data",
 		},
 		colorSchemes: {
 			light: {
 				palette: {
-					contrastThreshold: 4.5,
 					primary: {
 						main: "var(--stratakit-color-bg-accent-base)",
 					},
@@ -31,7 +29,6 @@ function createTheme() {
 			},
 			dark: {
 				palette: {
-					contrastThreshold: 4.5,
 					primary: {
 						main: "var(--stratakit-color-bg-accent-base)",
 						contrastText: "var(--stratakit-color-icon-neutral-emphasis)",
@@ -47,13 +44,6 @@ function createTheme() {
 					},
 				},
 			},
-		},
-		typography: {
-			fontFamily: "InterVariable, system-ui",
-			fontSize: 12,
-		},
-		transitions: {
-			create: () => "none", // https://mui.com/material-ui/getting-started/faq/#how-can-i-disable-transitions-globally
 		},
 		components: {
 			MuiButtonBase: {

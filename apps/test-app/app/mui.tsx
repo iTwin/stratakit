@@ -25,6 +25,7 @@ import {
 	Typography,
 } from "@mui/material";
 import { Root } from "@stratakit/mui";
+import { useColorScheme } from "./~utils.tsx";
 
 import type { MetaFunction } from "react-router";
 
@@ -33,8 +34,9 @@ export const meta: MetaFunction = () => {
 };
 
 export default function Page() {
+	const colorScheme = useColorScheme();
 	return (
-		<Root>
+		<Root colorScheme={colorScheme}>
 			<Container maxWidth="lg" sx={{ p: 4 }}>
 				<Typography variant="h4" component="h1" gutterBottom sx={{ mb: 4 }}>
 					StrataKit theme for Material UI

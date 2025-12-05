@@ -23,6 +23,11 @@ function createTheme() {
 	return createMuiTheme({
 		cssVariables: {
 			nativeColor: true,
+			colorSchemeSelector: "data",
+		},
+		colorSchemes: {
+			light: true,
+			dark: true,
 		},
 		components: {
 			MuiButtonBase: {

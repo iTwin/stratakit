@@ -2,6 +2,9 @@
 
 StrataKit theme for [MUI](https://mui.com/).
 
+> [!CAUTION]
+> 🚧 This package is not published yet.
+
 ## Installation
 
 Using your package manager of choice, install the latest version of [`@stratakit/mui`](https://www.npmjs.com/package/@stratakit/mui?activeTab=versions).

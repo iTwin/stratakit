@@ -29,14 +29,14 @@ const Root = React.forwardRef<HTMLDivElement, RootProps>(
 		const { children, ...rest } = props;
 
 		return (
-			<div {...rest} ref={forwardedRef}>
-				<StyledEngineProvider enableCssLayer>
-					<ThemeProvider theme={theme}>
+			<StyledEngineProvider enableCssLayer>
+				<ThemeProvider theme={theme}>
+					<div {...rest} ref={forwardedRef}>
 						<CssBaseline />
 						{children}
-					</ThemeProvider>
-				</StyledEngineProvider>
-			</div>
+					</div>
+				</ThemeProvider>
+			</StyledEngineProvider>
 		);
 	},
 );

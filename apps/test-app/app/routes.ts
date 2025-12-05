@@ -13,6 +13,7 @@ export default [
 	route("sandbox", "./sandbox/index.tsx"),
 	route("tokens", "./tokens.tsx"),
 	route("icons", "./icons.tsx"),
+	route("mui", "./mui.tsx"),
 
 	route(
 		"tests",

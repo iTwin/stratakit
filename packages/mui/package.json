@@ -1,0 +1,118 @@
+{
+	"name": "@stratakit/mui",
+	"private": true,
+	"type": "module",
+	"version": "0.1.0",
+	"license": "MIT",
+	"sideEffects": false,
+	"types": "./dist/index.d.ts",
+	"exports": {
+		".": {
+			"@stratakit/source": "./src/index.ts",
+			"types": "./dist/index.d.ts",
+			"development": "./dist/DEV/index.js",
+			"default": "./dist/index.js"
+		},
+		"./package.json": "./package.json"
+	},
+	"files": [
+		"dist",
+		"CHANGELOG.md",
+		"LICENSE.md"
+	],
+	"description": "StrataKit theme for Material UI",
+	"author": "Bentley Systems",
+	"homepage": "https://github.com/iTwin/design-system",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/iTwin/design-system.git",
+		"directory": "packages/mui"
+	},
+	"keywords": [
+		"frontend",
+		"itwin",
+		"itwinui",
+		"strata",
+		"stratakit",
+		"react",
+		"react-component",
+		"mui",
+		"material-ui",
+		"design system"
+	],
+	"scripts": {
+		"build": "wireit",
+		"dev": "wireit"
+	},
+	"dependencies": {
+		"react-compiler-runtime": "^1.0.0"
+	},
+	"devDependencies": {
+		"@types/react": "catalog:",
+		"@types/react-dom": "catalog:",
+		"esbuild": "catalog:",
+		"react": "catalog:",
+		"react-dom": "catalog:",
+		"typescript": "catalog:"
+	},
+	"peerDependencies": {
+		"@mui/material": "^7.3.5",
+		"react": ">=18.0.0",
+		"react-dom": ">=18.0.0"
+	},
+	"wireit": {
+		"build": {
+			"dependencies": [
+				"build:js",
+				"build:DEV",
+				"build:types",
+				"../foundations:build"
+			]
+		},
+		"build:js": {
+			"command": "node scripts/build.js",
+			"files": [
+				"src",
+				"scripts",
+				"../../internal"
+			],
+			"output": [
+				"dist/**/*.js",
+				"!dist/DEV"
+			]
+		},
+		"build:DEV": {
+			"command": "node scripts/build.js",
+			"files": [
+				"src",
+				"scripts",
+				"../../internal"
+			],
+			"output": [
+				"dist/DEV/**/*.js"
+			],
+			"env": {
+				"NODE_ENV": "development"
+			}
+		},
+		"build:types": {
+			"command": "tsc --outDir dist",
+			"files": [
+				"src"
+			],
+			"output": [
+				"dist/**/*.d.ts"
+			],
+			"dependencies": [
+				"../foundations:build:types"
+			]
+		},
+		"dev": {
+			"command": "tsc --watch --outDir dist",
+			"files": [
+				"src"
+			],
+			"service": true
+		}
+	}
+}

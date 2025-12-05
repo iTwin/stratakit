@@ -328,6 +328,9 @@ importers:
       "@mui/material":
         specifier: ^7.3.5
         version: 7.3.6(@emotion/react@11.14.0(@types/react@19.2.7)(react@19.2.1))(@emotion/styled@11.14.1(@emotion/react@11.14.0(@types/react@19.2.7)(react@19.2.1))(@types/react@19.2.7)(react@19.2.1))(@types/react@19.2.7)(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
+      "@stratakit/foundations":
+        specifier: ^0.4.2
+        version: link:../foundations
       react-compiler-runtime:
         specifier: ^1.0.0
         version: 1.0.0(react@19.2.1)

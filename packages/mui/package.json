@@ -45,6 +45,7 @@
 		"dev": "wireit"
 	},
 	"dependencies": {
+		"@stratakit/foundations": "^0.4.2",
 		"react-compiler-runtime": "^1.0.0"
 	},
 	"devDependencies": {

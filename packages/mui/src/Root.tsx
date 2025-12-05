@@ -10,6 +10,7 @@ import {
 	ThemeProvider,
 	useColorScheme,
 } from "@mui/material/styles";
+import { Root as StrataKitRoot } from "@stratakit/foundations";
 import { createTheme } from "./createTheme.js";
 
 const theme = createTheme();
@@ -41,15 +42,41 @@ const Root = React.forwardRef<HTMLDivElement, RootProps>(
 				<ThemeProvider theme={theme} defaultMode={colorScheme}>
 					<CssBaseline />
 					<ColorScheme colorScheme={colorScheme} />
-					<div {...rest} ref={forwardedRef}>
+					<RootInner {...rest} colorScheme={colorScheme} ref={forwardedRef}>
 						{children}
-					</div>
+					</RootInner>
 				</ThemeProvider>
 			</StyledEngineProvider>
 		);
 	},
 );
 DEV: Root.displayName = "Root";
+
+// ----------------------------------------------------------------------------
+
+interface RootInnerProps
+	extends React.ComponentPropsWithoutRef<"div">,
+		Pick<RootProps, "colorScheme"> {}
+
+/** @private */
+const RootInner = React.forwardRef<HTMLDivElement, RootInnerProps>(
+	(props, forwardedRef) => {
+		const { children, colorScheme, ...rest } = props;
+
+		return (
+			<StrataKitRoot
+				{...rest}
+				colorScheme={colorScheme}
+				synchronizeColorScheme
+				density="dense"
+				ref={forwardedRef}
+			>
+				{children}
+			</StrataKitRoot>
+		);
+	},
+);
+DEV: RootInner.displayName = "RootInner";
 
 // ----------------------------------------------------------------------------
 

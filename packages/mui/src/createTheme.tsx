@@ -43,6 +43,13 @@ function createTheme() {
 			light: true,
 			dark: true,
 		},
+		typography: {
+			fontFamily: `"InterVariable", "Noto Sans", "Open Sans", sans-serif`,
+			fontSize: 14,
+			button: {
+				textTransform: "none", // Disable all-caps on buttons and tabs
+			},
+		},
 		components: {
 			MuiAccordionSummary: {
 				defaultProps: {

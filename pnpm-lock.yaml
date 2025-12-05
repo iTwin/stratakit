@@ -244,10 +244,10 @@ importers:
         specifier: ^3.19.6
         version: 3.19.6(@stratakit/foundations@packages+foundations)(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
       "@stratakit/bricks":
-        specifier: ^0.5.2
+        specifier: ^0.5.3
         version: link:../bricks
       "@stratakit/structures":
-        specifier: ^0.5.2
+        specifier: ^0.5.3
         version: link:../structures
       classnames:
         specifier: ^2.5.1
@@ -357,7 +357,7 @@ importers:
         specifier: ^0.4.20
         version: 0.4.20(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
       "@stratakit/bricks":
-        specifier: ^0.5.2
+        specifier: ^0.5.3
         version: link:../bricks
       classnames:
         specifier: ^2.5.1

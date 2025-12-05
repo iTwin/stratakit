@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.5.3
+
+- [#1108](https://github.com/iTwin/design-system/pull/1108): Decoupled the styles for `@stratakit/bricks` and `@stratakit/structures` from `@stratakit/foundations` so that the latter does not indirectly depend on the former two. This change also reduces the need for these packages to remain in lockstep.
+- Updated dependencies:
+  - @stratakit/foundations@0.4.3
+  - @stratakit/bricks@0.5.3
+
 ## 0.5.2
 
 - [#1078](https://github.com/iTwin/design-system/pull/1078): Added `DropdownMenu.Group` component used to group menu items within a dropdown menu.

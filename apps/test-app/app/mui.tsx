@@ -14,6 +14,7 @@ import {
 	DialogContent,
 	DialogContentText,
 	DialogTitle,
+	IconButton,
 	Link,
 	Menu,
 	MenuItem,
@@ -22,12 +23,16 @@ import {
 	Tab,
 	Tabs,
 	TextField,
+	Tooltip,
 	Typography,
 } from "@mui/material";
+import { Icon } from "@stratakit/foundations";
 import { Root } from "@stratakit/mui";
 import { useColorScheme } from "./~utils.tsx";
 
 import type { MetaFunction } from "react-router";
+
+import svgPlaceholder from "@stratakit/icons/placeholder.svg";
 
 export const meta: MetaFunction = () => {
 	return [{ title: "StrataKit theme" }];
@@ -50,10 +55,23 @@ export default function Page() {
 						<Link href="#">Accent</Link>
 					</Stack>
 
-					<Stack spacing={1} direction="row">
-						<Button variant="contained">Solid</Button>
-						<Button variant="outlined">Outline</Button>
+					<Stack spacing={1} direction="row" alignItems="center">
+						<Button
+							variant="contained"
+							startIcon={<Icon href={svgPlaceholder} />}
+						>
+							Solid
+						</Button>
+						<Button variant="outlined" endIcon={<Icon href={svgPlaceholder} />}>
+							Outline
+						</Button>
 						<Button>Ghost</Button>
+
+						<Tooltip title="Default">
+							<IconButton>
+								<Icon href={svgPlaceholder} />
+							</IconButton>
+						</Tooltip>
 					</Stack>
 
 					<Stack spacing={1} direction="row">

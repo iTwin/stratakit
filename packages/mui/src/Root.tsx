@@ -28,7 +28,7 @@ interface RootProps extends React.ComponentPropsWithoutRef<"div"> {
  *
  * Example:
  * ```tsx
- * <Root>
+ * <Root colorScheme="dark">
  *   <App />
  * </Root>
  * ```

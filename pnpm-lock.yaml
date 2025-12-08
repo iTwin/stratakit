@@ -331,6 +331,9 @@ importers:
       "@stratakit/foundations":
         specifier: ^0.4.2
         version: link:../foundations
+      "@stratakit/icons":
+        specifier: ^0.2.2
+        version: link:../icons
       react-compiler-runtime:
         specifier: ^1.0.0
         version: 1.0.0(react@19.2.1)

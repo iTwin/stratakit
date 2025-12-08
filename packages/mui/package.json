@@ -46,6 +46,7 @@
 	},
 	"dependencies": {
 		"@stratakit/foundations": "^0.4.2",
+		"@stratakit/icons": "^0.2.2",
 		"react-compiler-runtime": "^1.0.0"
 	},
 	"devDependencies": {

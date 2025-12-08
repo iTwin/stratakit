@@ -20,8 +20,6 @@ import css from "./styles.css.js";
 
 // ----------------------------------------------------------------------------
 
-const theme = createTheme();
-
 const packageName = "@stratakit/mui";
 const key = `${packageName}@${__VERSION__}`;
 
@@ -33,6 +31,13 @@ interface RootProps extends React.ComponentPropsWithoutRef<"div"> {
 	 * The color scheme to use for all components on the page.
 	 */
 	colorScheme: "light" | "dark";
+
+	/**
+	 * The density to use for all descendants of the `Root`.
+	 *
+	 * Set to `"dense"` for a more compact UI.
+	 */
+	density?: "dense" | undefined;
 }
 
 /**
@@ -47,13 +52,20 @@ interface RootProps extends React.ComponentPropsWithoutRef<"div"> {
  */
 const Root = React.forwardRef<HTMLDivElement, RootProps>(
 	(props, forwardedRef) => {
-		const { children, colorScheme, ...rest } = props;
+		const { children, colorScheme, density, ...rest } = props;
+
+		const theme = React.useMemo(() => createTheme({ density }), [density]);
 
 		return (
 			<StyledEngineProvider enableCssLayer>
 				<ThemeProvider theme={theme} defaultMode={colorScheme}>
 					<ColorScheme colorScheme={colorScheme} />
-					<RootInner {...rest} colorScheme={colorScheme} ref={forwardedRef}>
+					<RootInner
+						{...rest}
+						colorScheme={colorScheme}
+						density={density}
+						ref={forwardedRef}
+					>
 						<Styles />
 						{children}
 					</RootInner>
@@ -68,12 +80,12 @@ DEV: Root.displayName = "Root";
 
 interface RootInnerProps
 	extends React.ComponentPropsWithoutRef<"div">,
-		Pick<RootProps, "colorScheme"> {}
+		Pick<RootProps, "colorScheme" | "density"> {}
 
 /** @private */
 const RootInner = React.forwardRef<HTMLDivElement, RootInnerProps>(
 	(props, forwardedRef) => {
-		const { children, colorScheme, ...rest } = props;
+		const { children, colorScheme, density, ...rest } = props;
 
 		return (
 			<StrataKitRoot
@@ -81,7 +93,7 @@ const RootInner = React.forwardRef<HTMLDivElement, RootInnerProps>(
 				className={cx("🥝MuiRoot", props.className)}
 				colorScheme={colorScheme}
 				synchronizeColorScheme
-				density="dense"
+				density={density}
 				ref={forwardedRef}
 			>
 				{children}

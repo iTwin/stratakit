@@ -33,7 +33,7 @@ import {
  * </ThemeProvider>
  * ```
  */
-function createTheme() {
+function createTheme({ density }: { density?: "dense" | undefined } = {}) {
 	return createMuiTheme({
 		cssVariables: {
 			nativeColor: true,
@@ -44,9 +44,10 @@ function createTheme() {
 			light: true,
 			dark: true,
 		},
+		spacing: density === "dense" ? 4 : 8,
 		typography: {
 			fontFamily: "var(--stratakit-font-family-sans)",
-			fontSize: 14,
+			fontSize: density === "dense" ? 12 : 14,
 			button: {
 				textTransform: "none", // Disable all-caps on buttons and tabs
 			},
@@ -100,11 +101,22 @@ function createTheme() {
 			MuiButton: {
 				defaultProps: {
 					color: "secondary",
+					size: density === "dense" ? "small" : undefined,
+				},
+				styleOverrides: {
+					root: {
+						fontSize: "inherit", // Button text becomes too small otherwise in dense mode
+					},
 				},
 			},
 			MuiChip: {
 				defaultProps: {
 					deleteIcon: <DismissIcon />,
+				},
+				styleOverrides: {
+					root: {
+						fontSize: "inherit", // Chip text becomes too small otherwise in dense mode
+					},
 				},
 			},
 			MuiCheckbox: {
@@ -112,9 +124,56 @@ function createTheme() {
 					disableRipple: true, // Checkbox doesn't inherit from ButtonBase
 				},
 			},
+			MuiFab: {
+				defaultProps: {
+					size: density === "dense" ? "small" : undefined,
+				},
+			},
+			MuiFilledInput: {
+				defaultProps: {
+					margin: density === "dense" ? "dense" : undefined,
+				},
+			},
+			MuiFormControl: {
+				defaultProps: {
+					margin: density === "dense" ? "dense" : undefined,
+				},
+			},
+			MuiFormHelperText: {
+				defaultProps: {
+					margin: density === "dense" ? "dense" : undefined,
+				},
+			},
+			MuiIconButton: {
+				defaultProps: {
+					size: density === "dense" ? "small" : undefined,
+				},
+			},
+			MuiInputBase: {
+				defaultProps: {
+					margin: density === "dense" ? "dense" : undefined,
+					size: density === "dense" ? "small" : undefined,
+				},
+			},
+			MuiInputLabel: {
+				defaultProps: {
+					margin: density === "dense" ? "dense" : undefined,
+				},
+			},
 			MuiLink: {
 				defaultProps: {
 					color: "textPrimary",
+				},
+			},
+			MuiListItem: {
+				defaultProps: {
+					dense: density === "dense" ? true : undefined,
+				},
+			},
+			MuiOutlinedInput: {
+				defaultProps: {
+					margin: density === "dense" ? "dense" : undefined,
+					size: density === "dense" ? "small" : undefined,
 				},
 			},
 			MuiPaginationItem: {
@@ -132,6 +191,12 @@ function createTheme() {
 					IconComponent: CaretsUpDownIcon,
 				},
 			},
+			MuiTable: {
+				defaultProps: {
+					// TODO: Unsure about this one
+					// size: density === "dense" ? "small" : undefined,
+				},
+			},
 			MuiTablePaginationActions: {
 				defaultProps: {
 					slots: {
@@ -146,6 +211,17 @@ function createTheme() {
 				defaultProps: {
 					// TODO: This should use sort-ascending and sort-descending icons, but that requires disabling MUI's built-in icon rotation.
 					IconComponent: ArrowDownIcon,
+				},
+			},
+			MuiTextField: {
+				defaultProps: {
+					margin: density === "dense" ? "dense" : undefined,
+					size: density === "dense" ? "small" : undefined,
+				},
+			},
+			MuiToolbar: {
+				defaultProps: {
+					variant: density === "dense" ? "dense" : undefined,
 				},
 			},
 		},

@@ -72,16 +72,21 @@ function LayoutInner({ children }: { children: React.ReactNode }) {
 
 export default function App() {
 	const colorScheme = useColorScheme();
+	const isMuiRoute = useIsMuiRoute();
 
 	React.useEffect(function signalPageLoad() {
 		document.body.dataset.loaded = "true";
 	}, []);
 
+	const MaybeRoot = !isMuiRoute ? Root : React.Fragment;
+
+	console.log({ isMuiRoute, MaybeRoot });
+
 	return (
 		<QueryClientProvider client={queryClient}>
-			<Root colorScheme={colorScheme} density="dense">
+			<MaybeRoot colorScheme={colorScheme} density="dense">
 				<Outlet />
-			</Root>
+			</MaybeRoot>
 		</QueryClientProvider>
 	);
 }
@@ -100,6 +105,11 @@ export function HydrateFallback() {
 			<noscript>Please enable JavaScript.</noscript>
 		</>
 	);
+}
+
+function useIsMuiRoute() {
+	type MuiRouteHandle = typeof import("~/mui.tsx").handle;
+	return !!(useMatches()?.at(-1)?.handle as MuiRouteHandle)?.mui;
 }
 
 function useIsRootTest() {

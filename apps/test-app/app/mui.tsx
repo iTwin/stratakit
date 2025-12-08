@@ -23,6 +23,7 @@ import {
 	DialogTitle,
 	Divider,
 	FormControl,
+	FormControlLabel,
 	IconButton,
 	InputLabel,
 	Link,
@@ -59,16 +60,33 @@ export const meta: MetaFunction = () => {
 	return [{ title: "StrataKit MUI theme" }];
 };
 
+export const handle = { title: "StrataKit MUI Theme", mui: true };
+
 // ----------------------------------------------------------------------------
 
 export default function Page() {
 	const colorScheme = useColorScheme();
+
+	const [density, setDensity] = React.useState<"dense" | undefined>(undefined);
+
 	return (
-		<Root colorScheme={colorScheme}>
+		<Root colorScheme={colorScheme} density={density}>
 			<Container maxWidth="lg" sx={{ p: 4, minBlockSize: "100dvb" }}>
 				<Typography variant="h4" component="h1">
 					StrataKit MUI theme
 				</Typography>
+
+				<FormControlLabel
+					control={
+						<Switch
+							onChange={(event) => {
+								const isDense = event.currentTarget.checked;
+								setDensity(isDense ? "dense" : undefined);
+							}}
+						/>
+					}
+					label="Dense"
+				/>
 
 				<Divider sx={{ mt: 2, mb: 2 }} />
 

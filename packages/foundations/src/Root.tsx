@@ -59,7 +59,7 @@ interface RootProps extends BaseProps {
 	/**
 	 * The density to use for all components under the Root.
 	 */
-	density: "dense";
+	density?: "dense" | undefined;
 
 	/**
 	 * An HTML sanitizer function that will be used across all components wherever DOM elements

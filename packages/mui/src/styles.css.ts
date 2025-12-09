@@ -3,14 +3,5 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-declare module "*.svg" {
-	const url: string;
-	export default url;
-}
-
-declare module "*.css?inline" {
-	const content: string;
-	export default content;
-}
-
-declare const __VERSION__: string;
+import rawStyles from "./styles.css?inline";
+export default rawStyles;

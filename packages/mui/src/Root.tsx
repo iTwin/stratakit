@@ -11,9 +11,21 @@ import {
 	useColorScheme,
 } from "@mui/material/styles";
 import { Root as StrataKitRoot } from "@stratakit/foundations";
+import {
+	RootContext,
+	useSafeContext,
+} from "@stratakit/foundations/secret-internals";
 import { createTheme } from "./createTheme.js";
+import css from "./styles.css.js";
+
+// ----------------------------------------------------------------------------
 
 const theme = createTheme();
+
+const packageName = "@stratakit/mui";
+const key = `${packageName}@${__VERSION__}`;
+
+// ----------------------------------------------------------------------------
 
 interface RootProps extends React.ComponentPropsWithoutRef<"div"> {
 	children?: React.ReactNode;
@@ -43,6 +55,7 @@ const Root = React.forwardRef<HTMLDivElement, RootProps>(
 					<CssBaseline />
 					<ColorScheme colorScheme={colorScheme} />
 					<RootInner {...rest} colorScheme={colorScheme} ref={forwardedRef}>
+						<Styles />
 						{children}
 					</RootInner>
 				</ThemeProvider>
@@ -88,6 +101,24 @@ function ColorScheme({ colorScheme }: Pick<RootProps, "colorScheme">) {
 	return null;
 }
 DEV: ColorScheme.displayName = "ColorScheme";
+
+// ----------------------------------------------------------------------------
+
+function Styles() {
+	const rootContext = useSafeContext(RootContext);
+
+	if (!rootContext.versions?.has(packageName))
+		rootContext.versions?.set(packageName, __VERSION__);
+
+	const { rootNode, loadStyles } = rootContext;
+
+	React.useInsertionEffect(() => {
+		if (!rootNode || !loadStyles) return;
+		const { cleanup } = loadStyles(rootNode, { css, key });
+		return cleanup;
+	}, [rootNode, loadStyles]);
+	return null;
+}
 
 // ----------------------------------------------------------------------------
 

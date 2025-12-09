@@ -65,11 +65,6 @@ function createTheme() {
 						warning: <WarningIcon />,
 					},
 				},
-				styleOverrides: {
-					icon: {
-						alignItems: "center", // Fix vertical alignment of differently sized icons
-					},
-				},
 			},
 			MuiAutocomplete: {
 				defaultProps: {

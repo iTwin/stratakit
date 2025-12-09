@@ -53,11 +53,7 @@ test.describe("@visual", () => {
 		});
 	}
 
-	test("forced-colors", async ({ page, browserName }) => {
-		test.skip(
-			browserName === "webkit",
-			"Webkit does not support forced-colors",
-		);
+	test("forced-colors", async ({ page }) => {
 		await page.goto("/tests/text-box?visual");
 		await page.emulateMedia({ forcedColors: "active" });
 		await expect(page.locator("body")).toHaveScreenshot();

@@ -45,22 +45,6 @@ jobs:
               console.error(error);
             }
 
-  assign-milestones:
-    name: Assign PR milestones
-    runs-on: ubuntu-latest
-    if: github.event_name == 'pull_request' && (github.event.action == 'opened' || github.event.action == 'synchronize')
-
-    steps:
-      - uses: actions/checkout@v6
-
-      - name: Auto-assign milestones using github-script
-        uses: actions/github-script@v8
-        with:
-          script: |
-            const { default: prMilestone } = await import('${{ github.workspace }}/.github/workflows/pr-milestone.js');
-
-            await prMilestone({context, github});
-
   assign-labels:
     name: Assign PR labels
     runs-on: ubuntu-latest

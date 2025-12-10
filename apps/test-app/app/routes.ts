@@ -3,7 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import { index, layout, prefix, route } from "@react-router/dev/routes";
+import { index, route } from "@react-router/dev/routes";
 import { components } from "./~meta.ts";
 
 import type { RouteConfig } from "@react-router/dev/routes";
@@ -30,15 +30,6 @@ export default [
 			),
 		),
 	),
-
-	...prefix("compat", [
-		layout(
-			"./compat/compat.tsx",
-			components.compat.map((component) =>
-				route(toKebabCase(component), `./compat/${toKebabCase(component)}.tsx`),
-			),
-		),
-	]),
 ] satisfies RouteConfig;
 
 // ----------------------------------------------------------------------------

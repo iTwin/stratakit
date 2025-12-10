@@ -23,7 +23,6 @@
 		"@stratakit/foundations": "workspace:*",
 		"@stratakit/icons": "workspace:*",
 		"@stratakit/mui": "workspace:*",
-		"@stratakit/react": "workspace:*",
 		"@stratakit/structures": "workspace:*",
 		"@tanstack/react-query": "^5.90.11",
 		"classnames": "^2.5.1",
@@ -57,7 +56,6 @@
 				"../../packages/bricks:build",
 				"../../packages/structures:build",
 				"../../packages/icons:build",
-				"../../packages/compat:build",
 				"../../packages/mui:build"
 			],
 			"files": [
@@ -80,7 +78,6 @@
 				"../../packages/foundations:dev",
 				"../../packages/bricks:dev",
 				"../../packages/structures:dev",
-				"../../packages/compat:dev",
 				"../../packages/mui:dev"
 			],
 			"service": true

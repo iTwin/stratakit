@@ -93,11 +93,7 @@ test.describe("@visual", () => {
 		await expect(page).toHaveScreenshot();
 	});
 
-	test("forced-colors", async ({ page, browserName }) => {
-		test.skip(
-			browserName === "webkit",
-			"Webkit does not support forced-colors",
-		);
+	test("forced-colors", async ({ page }) => {
 		await page.goto("/tests/popover?visual");
 		await page.emulateMedia({ forcedColors: "active" });
 

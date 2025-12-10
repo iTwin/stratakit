@@ -38,11 +38,7 @@ test.describe("@visual", () => {
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
 
-	test("forced-colors", async ({ page, browserName }) => {
-		test.skip(
-			browserName === "webkit",
-			"Webkit does not support forced-colors",
-		);
+	test("forced-colors", async ({ page }) => {
 		await page.goto("/tests/divider?visual=true");
 		await page.emulateMedia({ forcedColors: "active" });
 		await expect(page.locator("body")).toHaveScreenshot();

@@ -19,15 +19,7 @@ test.describe("default", () => {
 		await expect(button).not.toHaveAttribute("data-has-popover-open");
 	});
 
-	test("Mouse in / Hover should display the tooltip", async ({
-		page,
-		browserName,
-	}) => {
-		test.skip(
-			browserName === "webkit",
-			"Tooltip does not appear on hover in Webkit inside Docker :(",
-		);
-
+	test("Mouse in / Hover should display the tooltip", async ({ page }) => {
 		const button = page.getByRole("button");
 		const tooltip = page.getByRole("tooltip", { includeHidden: true });
 
@@ -59,11 +51,6 @@ test.describe("default", () => {
 });
 
 test.describe("hover", () => {
-	test.skip(
-		({ browserName }) => browserName === "webkit",
-		"Tooltip does not appear on hover in Webkit inside Docker :(",
-	);
-
 	test.beforeEach(async ({ page }) => {
 		await page.goto("/tests/tooltip");
 

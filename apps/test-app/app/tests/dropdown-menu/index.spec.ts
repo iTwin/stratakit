@@ -125,12 +125,7 @@ test("dot", async ({ page }) => {
 });
 
 test.describe("submenu", () => {
-	test("open on hover", async ({ page, browserName }) => {
-		test.skip(
-			browserName === "webkit",
-			"hover does not open a menu in Webkit tests",
-		);
-
+	test("open on hover", async ({ page }) => {
 		await page.goto("/tests/dropdown-menu?submenu");
 
 		const button = page.getByRole("button", { name: "Actions" });
@@ -156,12 +151,7 @@ test.describe("submenu", () => {
 		await expect(item3_1).toBeVisible();
 	});
 
-	test("close on hover away", async ({ page, browserName }) => {
-		test.skip(
-			browserName === "webkit",
-			"hover does not open a menu in Webkit tests",
-		);
-
+	test("close on hover away", async ({ page }) => {
 		await page.goto("/tests/dropdown-menu?submenu");
 
 		const button = page.getByRole("button", { name: "Actions" });
@@ -278,11 +268,7 @@ test.describe("@visual", () => {
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
 
-	test("forced-colors", async ({ page, browserName }) => {
-		test.skip(
-			browserName === "webkit",
-			"forced-colors does not appear correctly in Webkit",
-		);
+	test("forced-colors", async ({ page }) => {
 		await page.goto("/tests/dropdown-menu?visual");
 		await page.emulateMedia({ forcedColors: "active" });
 

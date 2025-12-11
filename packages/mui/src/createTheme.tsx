@@ -37,19 +37,29 @@ function createTheme() {
 	return createMuiTheme({
 		cssVariables: {
 			nativeColor: true,
-			colorSchemeSelector: "data",
+			colorSchemeSelector: "[data-color-scheme='%s']",
+			cssVarPrefix: "stratakit-mui",
 		},
 		colorSchemes: {
 			light: true,
 			dark: true,
 		},
 		typography: {
-			fontFamily: `"InterVariable", "Noto Sans", "Open Sans", sans-serif`,
+			fontFamily: "var(--stratakit-font-family-sans)",
 			fontSize: 14,
 			button: {
 				textTransform: "none", // Disable all-caps on buttons and tabs
 			},
 		},
+		shadows: [
+			"none", // 0
+			"none", // 1
+			"var(--stratakit-shadow-surface-xs)", // 2
+			"var(--stratakit-shadow-surface-sm)", // 3
+			...new Array(4).fill("var(--stratakit-shadow-surface-md)"), // 4-7
+			...new Array(17).fill("var(--stratakit-shadow-surface-lg)"), // 8-24
+			// biome-ignore lint/suspicious/noExplicitAny: MUI expects 25 items in the shadows array
+		] as any,
 		components: {
 			MuiAccordionSummary: {
 				defaultProps: {
@@ -70,6 +80,11 @@ function createTheme() {
 				defaultProps: {
 					popupIcon: <ChevronDownIcon />,
 					clearIcon: <DismissIcon />,
+					slotProps: {
+						paper: {
+							elevation: 8, // match Menu elevation
+						},
+					},
 				},
 			},
 			MuiBreadcrumbs: {
@@ -82,6 +97,11 @@ function createTheme() {
 					disableRipple: true, // https://mui.com/material-ui/getting-started/faq/#how-can-i-disable-the-ripple-effect-globally
 				},
 			},
+			MuiButton: {
+				defaultProps: {
+					color: "secondary",
+				},
+			},
 			MuiChip: {
 				defaultProps: {
 					deleteIcon: <DismissIcon />,
@@ -90,6 +110,11 @@ function createTheme() {
 			MuiCheckbox: {
 				defaultProps: {
 					disableRipple: true, // Checkbox doesn't inherit from ButtonBase
+				},
+			},
+			MuiLink: {
+				defaultProps: {
+					color: "textPrimary",
 				},
 			},
 			MuiPaginationItem: {

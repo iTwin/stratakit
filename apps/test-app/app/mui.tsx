@@ -21,6 +21,7 @@ import {
 	DialogContent,
 	DialogContentText,
 	DialogTitle,
+	Divider,
 	FormControl,
 	IconButton,
 	InputLabel,
@@ -52,36 +53,47 @@ import type { MetaFunction } from "react-router";
 
 import svgPlaceholder from "@stratakit/icons/placeholder.svg";
 
+// ----------------------------------------------------------------------------
+
 export const meta: MetaFunction = () => {
-	return [{ title: "StrataKit theme" }];
+	return [{ title: "StrataKit MUI theme" }];
 };
+
+// ----------------------------------------------------------------------------
 
 export default function Page() {
 	const colorScheme = useColorScheme();
 	return (
 		<Root colorScheme={colorScheme}>
 			<Container maxWidth="lg" sx={{ p: 4, minBlockSize: "100dvb" }}>
-				<Typography variant="h4" component="h1" gutterBottom sx={{ mb: 4 }}>
-					StrataKit theme for Material UI
+				<Typography variant="h4" component="h1">
+					StrataKit MUI theme
 				</Typography>
+
+				<Divider sx={{ mt: 2, mb: 2 }} />
 
 				<Stack spacing={2}>
 					<Stack spacing={1} direction="row">
-						<Link color="inherit" href="#">
-							Default
+						<Link href="#">Default</Link>
+						<Link href="#" sx={{ color: "primary.dark" }}>
+							Accent
 						</Link>
-						<Link href="#">Accent</Link>
 					</Stack>
 
 					<Stack spacing={1} direction="row" alignItems="center">
+						<Button variant="contained">Contained</Button>
 						<Button
 							variant="contained"
+							color="primary"
 							startIcon={<Icon href={svgPlaceholder} />}
 						>
-							Solid
+							Contained
 						</Button>
 						<Button variant="outlined" endIcon={<Icon href={svgPlaceholder} />}>
-							Outline
+							Outlined
+						</Button>
+						<Button variant="outlined" color="primary">
+							Outlined
 						</Button>
 						<Button>Ghost</Button>
 
@@ -171,7 +183,7 @@ function MenuExample() {
 	return (
 		<div>
 			<Button
-				variant="outlined"
+				variant="contained"
 				id={buttonId}
 				aria-controls={open ? menuId : undefined}
 				aria-haspopup="true"
@@ -208,7 +220,7 @@ function DialogExample() {
 
 	return (
 		<React.Fragment>
-			<Button variant="outlined" onClick={() => setOpen(true)}>
+			<Button variant="contained" onClick={() => setOpen(true)}>
 				Open dialog
 			</Button>
 			<Dialog open={open} onClose={handleClose}>
@@ -324,12 +336,8 @@ function AutocompleteExample() {
 function BreadcrumbsExample() {
 	return (
 		<Breadcrumbs aria-label="breadcrumb">
-			<Link color="inherit" href="/">
-				Home
-			</Link>
-			<Link color="inherit" href="/material-ui/getting-started/installation/">
-				Packages
-			</Link>
+			<Link href="/">Home</Link>
+			<Link href="#">Packages</Link>
 			<Typography sx={{ color: "text.primary" }}>@stratakit/mui</Typography>
 		</Breadcrumbs>
 	);

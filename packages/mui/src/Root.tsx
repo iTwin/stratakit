@@ -15,6 +15,7 @@ import {
 	RootContext,
 	useSafeContext,
 } from "@stratakit/foundations/secret-internals";
+import cx from "classnames";
 import { createTheme } from "./createTheme.js";
 import css from "./styles.css.js";
 
@@ -79,6 +80,7 @@ const RootInner = React.forwardRef<HTMLDivElement, RootInnerProps>(
 		return (
 			<StrataKitRoot
 				{...rest}
+				className={cx("🥝MuiRoot", props.className)}
 				colorScheme={colorScheme}
 				synchronizeColorScheme
 				density="dense"
@@ -117,6 +119,7 @@ function Styles() {
 		const { cleanup } = loadStyles(rootNode, { css, key });
 		return cleanup;
 	}, [rootNode, loadStyles]);
+
 	return null;
 }
 

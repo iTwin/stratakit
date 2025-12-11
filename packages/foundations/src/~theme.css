@@ -11,10 +11,6 @@ html:where([data-color-scheme="light"]),
 	/* TODO: Replace with tokens from Figma when available */
 	--stratakit-color-border-shadow-base: var(--stratakit-color-border-neutral-base);
 	--stratakit-color-border-shadow-strong: --primitive("color.black.12");
-
-	@supports not (color: oklch(0% 0 0)) {
-		@apply --theme-fallback("light");
-	}
 }
 
 html:where([data-color-scheme="dark"]),
@@ -26,8 +22,4 @@ html:where([data-color-scheme="dark"]),
 	/* TODO: Replace with tokens from Figma when available */
 	--stratakit-color-border-shadow-base: --primitive("color.white.8");
 	--stratakit-color-border-shadow-strong: --primitive("color.white.16");
-
-	@supports not (color: oklch(0% 0 0)) {
-		@apply --theme-fallback("dark");
-	}
 }

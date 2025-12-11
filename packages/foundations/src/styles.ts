@@ -6,6 +6,8 @@
 import foundationsCss from "./~styles.css.js";
 import { loadStyles } from "./styles.internal.js";
 
+const packageName = "@stratakit/foundations";
+
 /**
  * Loads all the foundations CSS into the specified root node or document. This includes:
  * - A basic CSS reset.
@@ -22,7 +24,7 @@ function loadFoundationsStyles(rootNode?: Document | ShadowRoot) {
 
 	const { cleanup } = loadStyles(rootNode, {
 		css: foundationsCss,
-		key: "foundations",
+		key: `${packageName}@${__VERSION__}`,
 	});
 
 	return cleanup;

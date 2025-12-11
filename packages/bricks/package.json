@@ -178,6 +178,7 @@
 	},
 	"dependencies": {
 		"@ariakit/react": "^0.4.20",
+		"@stratakit/foundations": "^0.4.3",
 		"classnames": "^2.5.1",
 		"react-compiler-runtime": "^1.0.0"
 	},
@@ -192,7 +193,6 @@
 		"typescript": "catalog:"
 	},
 	"peerDependencies": {
-		"@stratakit/foundations": "^0.4.3",
 		"react": ">=18.0.0",
 		"react-dom": ">=18.0.0"
 	},

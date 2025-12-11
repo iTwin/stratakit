@@ -5,12 +5,12 @@
 
 @import "./~reset.css" layer(reset);
 
-@import "./~space.css" layer(itwinui.foundations);
-@import "./~theme.css" layer(itwinui.foundations);
-@import "./~typography.css" layer(itwinui.foundations);
-@import "./~global.css" layer(itwinui.foundations);
+@import "./~space.css" layer(stratakit.foundations);
+@import "./~theme.css" layer(stratakit.foundations);
+@import "./~typography.css" layer(stratakit.foundations);
+@import "./~global.css" layer(stratakit.foundations);
 
-@import "./~sublayers.css" layer(itwinui.components);
-@import "./Icon.css" layer(itwinui.components);
+@import "./~sublayers.css" layer(stratakit.components);
+@import "./Icon.css" layer(stratakit.components);
 
 @import "./~unlayered.css";

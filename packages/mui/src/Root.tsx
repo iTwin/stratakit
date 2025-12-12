@@ -4,7 +4,6 @@
  *--------------------------------------------------------------------------------------------*/
 
 import * as React from "react";
-import { CssBaseline } from "@mui/material";
 import {
 	StyledEngineProvider,
 	ThemeProvider,
@@ -52,7 +51,6 @@ const Root = React.forwardRef<HTMLDivElement, RootProps>(
 		return (
 			<StyledEngineProvider enableCssLayer>
 				<ThemeProvider theme={theme} defaultMode={colorScheme}>
-					<CssBaseline />
 					<ColorScheme colorScheme={colorScheme} />
 					<RootInner {...rest} colorScheme={colorScheme} ref={forwardedRef}>
 						<Styles />

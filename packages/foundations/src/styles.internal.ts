@@ -31,24 +31,12 @@ export function loadStyles(
 
 	const loaded = (() => {
 		if (!isBrowser) return false;
+		if (!supportsAdoptedStylesheets) return false;
 
 		const ownerDocument = getOwnerDocument(rootNode);
 		const _window = getWindow(rootNode);
 
 		if (!ownerDocument || !_window) return false;
-
-		// Inject <style> elements if `adoptedStyleSheets` is not supported.
-		if (
-			!supportsAdoptedStylesheets &&
-			!rootNode.querySelector(`style[data-_sk="${key}"]`)
-		) {
-			const styleElement = ownerDocument.createElement("style");
-			styleElement.dataset._sk = key;
-			styleElement.textContent = css;
-			((rootNode as Document).head || rootNode).appendChild(styleElement);
-			cleanup = () => styleElement.remove();
-			return true;
-		}
 
 		const styleSheet =
 			styleSheets.get(key)?.get(_window) || new _window.CSSStyleSheet();

@@ -203,6 +203,9 @@ importers:
       "@ariakit/react":
         specifier: ^0.4.20
         version: 0.4.20(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
+      "@stratakit/foundations":
+        specifier: ^0.4.3
+        version: link:../foundations
       classnames:
         specifier: ^2.5.1
         version: 2.5.1
@@ -210,9 +213,6 @@ importers:
         specifier: ^1.0.0
         version: 1.0.0(react@19.2.1)
     devDependencies:
-      "@stratakit/foundations":
-        specifier: workspace:*
-        version: link:../foundations
       "@types/node":
         specifier: "catalog:"
         version: 22.19.1
@@ -322,6 +322,9 @@ importers:
       "@stratakit/bricks":
         specifier: ^0.5.3
         version: link:../bricks
+      "@stratakit/foundations":
+        specifier: ^0.4.3
+        version: link:../foundations
       classnames:
         specifier: ^2.5.1
         version: 2.5.1
@@ -332,9 +335,6 @@ importers:
         specifier: ^5.0.9
         version: 5.0.9(@types/react@19.2.7)(immer@11.0.1)(react@19.2.1)(use-sync-external-store@1.6.0(react@19.2.1))
     devDependencies:
-      "@stratakit/foundations":
-        specifier: workspace:*
-        version: link:../foundations
       "@types/node":
         specifier: "catalog:"
         version: 22.19.1

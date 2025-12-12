@@ -16,6 +16,7 @@
 
 :where(html) {
 	-webkit-text-size-adjust: none;
+	-webkit-font-smoothing: antialiased;
 	interpolate-size: allow-keywords;
 }
 

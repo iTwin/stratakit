@@ -2,10 +2,8 @@
 
 ## 0.5.4
 
-### Patch Changes
-
 - [#1122](https://github.com/iTwin/design-system/pull/1122): Moved `@stratakit/foundations` from `peerDependencies` to direct `dependencies`.
-- [#1123](https://github.com/iTwin/design-system/pull/1123): `@layer itwinui` has been renamed to `@layer stratakit`.
+- [#1123](https://github.com/iTwin/design-system/pull/1123): Renamed `@layer itwinui` to `@layer stratakit`.
 - Updated dependencies:
   - @stratakit/foundations@0.4.4
 

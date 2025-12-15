@@ -2,10 +2,8 @@
 
 ## 0.4.4
 
-### Patch Changes
-
-- [#1124](https://github.com/iTwin/design-system/pull/1124): Added `-webkit-font-smoothing: antialiased` to CSS reset.
-- [#1123](https://github.com/iTwin/design-system/pull/1123): `@layer itwinui` has been renamed to `@layer stratakit`.
+- [#1124](https://github.com/iTwin/design-system/pull/1124): Added `-webkit-font-smoothing: antialiased` to the CSS reset.
+- [#1123](https://github.com/iTwin/design-system/pull/1123): Renamed `@layer itwinui` to `@layer stratakit`.
 - [#1121](https://github.com/iTwin/design-system/pull/1121): Removed `adoptedStyleSheets` fallback for older browsers.
 - [#1121](https://github.com/iTwin/design-system/pull/1121): Removed `oklch` fallbacks for older browsers.
 - [#1126](https://github.com/iTwin/design-system/pull/1126): `Root` component no longer requires `density` prop. When `density` is not specified, `font-size: 0.75rem` will _not_ be used globally.

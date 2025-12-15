@@ -1,6 +1,5 @@
 {
 	"name": "@stratakit/mui",
-	"private": true,
 	"type": "module",
 	"version": "0.1.0",
 	"license": "MIT",
@@ -59,7 +58,7 @@
 		"typescript": "catalog:"
 	},
 	"peerDependencies": {
-		"@mui/material": "^7.3.5",
+		"@mui/material": "^7.3.6",
 		"react": ">=18.0.0",
 		"react-dom": ">=18.0.0"
 	},

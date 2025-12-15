@@ -60,8 +60,9 @@ This repo uses [Pnpm workspaces](https://pnpm.io/workspaces) to allow multiple p
 
 Packages:
 
-- [`@stratakit/foundations`](./packages/foundations/): Foundational pieces of StrataKit.
+- [`@stratakit/mui`](./packages/mui/): A StrataKit theme for [MUI](https://mui.com/material-ui/).
 - [`@stratakit/icons`](./packages/icons/): A standalone SVG icon library.
+- [`@stratakit/foundations`](./packages/foundations/): Foundational pieces of StrataKit.
 - [`@stratakit/bricks`](./packages/bricks/): Small, modular components that can be assembled to create larger, more functional experiences.
 - [`@stratakit/structures`](./packages/structures): Medium-sized component structures built on top of `@stratakit/bricks`.
 

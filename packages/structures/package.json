@@ -124,6 +124,7 @@
 	},
 	"dependencies": {
 		"@ariakit/react": "^0.4.20",
+		"@mui/material": "catalog:",
 		"@stratakit/bricks": "^0.5.3",
 		"@stratakit/foundations": "^0.4.3",
 		"classnames": "^2.5.1",

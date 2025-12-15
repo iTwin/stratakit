@@ -319,6 +319,9 @@ importers:
       "@ariakit/react":
         specifier: ^0.4.20
         version: 0.4.20(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
+      "@mui/material":
+        specifier: "catalog:"
+        version: 7.3.6(@emotion/react@11.14.0(@types/react@19.2.7)(react@19.2.1))(@emotion/styled@11.14.1(@emotion/react@11.14.0(@types/react@19.2.7)(react@19.2.1))(@types/react@19.2.7)(react@19.2.1))(@types/react@19.2.7)(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
       "@stratakit/bricks":
         specifier: ^0.5.3
         version: link:../bricks

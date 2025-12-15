@@ -4,7 +4,197 @@
  *--------------------------------------------------------------------------------------------*/
 
 @layer stratakit {
+	[data-color-scheme],
+	.🥝MuiRoot {
+		--stratakit-mui-palette-background-default: var(--stratakit-color-bg-page-depth);
+		--stratakit-mui-palette-background-paper: var(--stratakit-color-bg-page-depth);
+
+		--stratakit-mui-palette-divider: var(--stratakit-color-border-page-base);
+
+		--stratakit-mui-palette-text-primary: var(--stratakit-color-text-neutral-primary);
+		--stratakit-mui-palette-text-secondary: var(--stratakit-color-text-neutral-secondary);
+		--stratakit-mui-palette-text-disabled: var(--stratakit-color-text-neutral-disabled);
+
+		--stratakit-mui-palette-primary-main: var(--stratakit-color-bg-accent-base);
+		--stratakit-mui-palette-primary-dark: var(--stratakit-color-bg-accent-faded);
+		--stratakit-mui-palette-primary-light: var(--stratakit-color-bg-accent-muted);
+		--stratakit-mui-palette-primary-contrastText: var(--stratakit-color-text-neutral-emphasis);
+
+		--stratakit-mui-palette-secondary-main: var(--stratakit-color-bg-mono-base);
+		--stratakit-mui-palette-secondary-dark: var(--stratakit-color-bg-mono-faded);
+		--stratakit-mui-palette-secondary-light: var(--stratakit-color-bg-mono-muted);
+		--stratakit-mui-palette-secondary-contrastText: var(--stratakit-color-text-neutral-emphasis);
+
+		--stratakit-mui-palette-action-active: var(--stratakit-color-icon-neutral-primary);
+		--stratakit-mui-palette-action-disabled: var(--stratakit-color-icon-neutral-disabled);
+		--stratakit-mui-palette-action-disabledBackground: var(
+			--stratakit-color-bg-glow-on-surface-disabled
+		);
+
+		--stratakit-mui-palette-error-main: var(--stratakit-color-bg-critical-base);
+		--stratakit-mui-palette-error-dark: var(--stratakit-color-bg-critical-faded);
+		--stratakit-mui-palette-error-light: var(--stratakit-color-bg-critical-muted);
+		--stratakit-mui-palette-error-contrastText: var(--stratakit-color-text-neutral-emphasis);
+
+		--stratakit-mui-palette-warning-main: var(--stratakit-color-bg-severe-base);
+		--stratakit-mui-palette-warning-dark: var(--stratakit-color-bg-severe-faded);
+		--stratakit-mui-palette-warning-light: var(--stratakit-color-bg-severe-muted);
+		--stratakit-mui-palette-warning-contrastText: var(--stratakit-color-text-neutral-emphasis);
+
+		--stratakit-mui-palette-success-main: var(--stratakit-color-bg-positive-base);
+		--stratakit-mui-palette-success-dark: var(--stratakit-color-bg-positive-faded);
+		--stratakit-mui-palette-success-light: var(--stratakit-color-bg-positive-muted);
+		--stratakit-mui-palette-success-contrastText: var(--stratakit-color-text-neutral-emphasis);
+
+		--stratakit-mui-palette-info-main: var(--stratakit-color-bg-info-base);
+		--stratakit-mui-palette-info-dark: var(--stratakit-color-bg-info-faded);
+		--stratakit-mui-palette-info-light: var(--stratakit-color-bg-info-muted);
+		--stratakit-mui-palette-info-contrastText: var(--stratakit-color-text-neutral-emphasis);
+
+		--stratakit-mui-palette-grey-50: oklch(85.95% 0.006 255.48);
+		--stratakit-mui-palette-grey-100: oklch(79.56% 0.008 241.69);
+		--stratakit-mui-palette-grey-200: oklch(75.82% 0.01 252.83);
+		--stratakit-mui-palette-grey-300: oklch(69.04% 0.014 255.53);
+		--stratakit-mui-palette-grey-400: oklch(62.09% 0.017 257.22);
+		--stratakit-mui-palette-grey-500: oklch(55.22% 0.018 253.99);
+		--stratakit-mui-palette-grey-600: oklch(48.26% 0.017 254.7);
+		--stratakit-mui-palette-grey-700: oklch(41.45% 0.013 256.75);
+		--stratakit-mui-palette-grey-800: oklch(34.4% 0.011 264.42);
+		--stratakit-mui-palette-grey-900: oklch(26.92% 0.008 268.32);
+		--stratakit-mui-palette-grey-A100: oklch(79.56% 0.008 241.69);
+		--stratakit-mui-palette-grey-A200: oklch(75.82% 0.01 252.83);
+		--stratakit-mui-palette-grey-A400: oklch(62.09% 0.017 257.22);
+		--stratakit-mui-palette-grey-A700: oklch(48.26% 0.017 254.7);
+	}
+
 	.MuiAlert-icon {
 		align-items: center; /* Fix vertical alignment of differently sized icons */
+	}
+
+	.MuiButton-root {
+		&:where(.MuiButton-colorSecondary) {
+			--variant-containedBg: var(--stratakit-color-bg-neutral-base);
+			--variant-containedColor: var(--stratakit-color-text-neutral-primary);
+			--variant-outlinedColor: var(--stratakit-color-text-neutral-primary);
+			--variant-textColor: var(--stratakit-color-text-neutral-primary);
+
+			&:where(:hover) {
+				--variant-containedBg: color-mix(
+					in oklch,
+					var(--stratakit-color-bg-neutral-base) 100%,
+					var(--stratakit-color-glow-hue) var(--stratakit-color-bg-glow-base-hover-\%)
+				);
+			}
+		}
+
+		&:where(.MuiButton-colorPrimary) {
+			--variant-outlinedColor: var(--stratakit-color-text-accent-strong);
+			--variant-textColor: var(--stratakit-color-text-accent-strong);
+		}
+	}
+
+	.MuiCheckbox-root {
+		&:where(.MuiCheckbox-colorPrimary) {
+			&:where(.Mui-checked, .MuiCheckbox-indeterminate):where(:not(.Mui-disabled)) {
+				color: var(--stratakit-mui-palette-primary-dark);
+			}
+		}
+
+		&:where(.Mui-focusVisible) {
+			outline: 2px solid var(--stratakit-color-border-accent-strong);
+		}
+	}
+
+	.MuiFormLabel-colorPrimary {
+		&.Mui-focused {
+			color: var(--stratakit-mui-palette-primary-dark);
+		}
+	}
+
+	.MuiLink-root {
+		font-weight: 500;
+		text-decoration-color: currentColor;
+		text-underline-offset: var(--stratakit-space-x05);
+		transition: text-underline-offset 150ms ease-out;
+
+		&:where(:hover, :focus-visible) {
+			text-underline-offset: var(--stratakit-space-x1);
+		}
+	}
+
+	.MuiMenuItem-root {
+		&:where(.Mui-focusVisible) {
+			outline-offset: -2px;
+		}
+	}
+
+	.MuiPaper-root {
+		--Paper-overlay: unset !important; /* Remove background-image overlay that MUI adds in dark mode */
+
+		&:where(.MuiPaper-elevation1) {
+			--stratakit-mui-palette-background-paper: var(--stratakit-color-bg-page-base);
+		}
+
+		&:where(
+				.MuiPaper-elevation2,
+				.MuiPaper-elevation3,
+				.MuiPaper-elevation4,
+				.MuiPaper-elevation5,
+				.MuiPaper-elevation6,
+				.MuiPaper-elevation7
+			) {
+			--stratakit-mui-palette-background-paper: var(--stratakit-color-bg-elevation-base);
+		}
+
+		&:where(
+				.MuiPaper-elevation8,
+				.MuiPaper-elevation9,
+				.MuiPaper-elevation10,
+				.MuiPaper-elevation11,
+				.MuiPaper-elevation12,
+				.MuiPaper-elevation13,
+				.MuiPaper-elevation14,
+				.MuiPaper-elevation15,
+				.MuiPaper-elevation16,
+				.MuiPaper-elevation17,
+				.MuiPaper-elevation18,
+				.MuiPaper-elevation19,
+				.MuiPaper-elevation20,
+				.MuiPaper-elevation21,
+				.MuiPaper-elevation22,
+				.MuiPaper-elevation23,
+				.MuiPaper-elevation24
+			) {
+			--stratakit-mui-palette-background-paper: var(--stratakit-color-bg-elevation-level-1);
+		}
+	}
+
+	.MuiTab-root {
+		&:where(.Mui-selected) {
+			color: var(--stratakit-color-text-accent-strong);
+		}
+		&:where(:focus-visible) {
+			outline-offset: -4px;
+		}
+	}
+	.MuiTabs-indicator {
+		background-color: var(--stratakit-color-border-accent-strong);
+	}
+
+	.MuiTooltip-tooltip {
+		--stratakit-mui-palette-Tooltip-bg: var(--stratakit-color-bg-elevation-emphasis);
+		box-shadow: var(--stratakit-shadow-control-tooltip-base);
+	}
+
+	.MuiSwitch-root {
+		.MuiSwitch-switchBase:where(.MuiSwitch-colorPrimary) {
+			&:where(.Mui-checked):where(:not(.Mui-disabled)) {
+				color: var(--stratakit-mui-palette-primary-dark);
+			}
+		}
+
+		&:where(:has(.MuiSwitch-switchBase.Mui-focusVisible)) {
+			outline: 2px solid var(--stratakit-color-border-accent-strong);
+		}
 	}
 }

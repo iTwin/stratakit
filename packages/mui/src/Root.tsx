@@ -81,7 +81,6 @@ const RootInner = React.forwardRef<HTMLDivElement, RootInnerProps>(
 				className={cx("🥝MuiRoot", props.className)}
 				colorScheme={colorScheme}
 				synchronizeColorScheme
-				density="dense"
 				ref={forwardedRef}
 			>
 				{children}

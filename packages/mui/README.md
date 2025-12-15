@@ -1,9 +1,6 @@
 # @stratakit/mui
 
-StrataKit theme for [MUI](https://mui.com/).
-
-> [!CAUTION]
-> 🚧 This package is not published yet.
+StrataKit theme for [MUI](https://mui.com/material-ui/).
 
 ## Installation and setup
 
@@ -13,9 +10,11 @@ Using your package manager of choice, install the latest version of [`@stratakit
 npm add @stratakit/mui
 ```
 
-`@stratakit/mui` has a direct dependency on [`@stratakit/foundations`](https://www.npmjs.com/package/@stratakit/foundations) and [`@stratakit/icons`](https://www.npmjs.com/package/@stratakit/icons), the latter of which requires [bundler configuration](https://github.com/iTwin/design-system/tree/main/packages/icons#bundler-configuration) to ensure that `.svg` files are not inlined.
+Additional setup/considerations:
 
-Additionally, you should ensure that [StrataKit fonts](#fonts) are loaded in your application.
+- `@stratakit/mui` has a direct dependency on [`@stratakit/foundations`](https://www.npmjs.com/package/@stratakit/foundations) and [`@stratakit/icons`](https://www.npmjs.com/package/@stratakit/icons), the latter of which requires [bundler configuration](https://github.com/iTwin/design-system/tree/main/packages/icons#bundler-configuration) to ensure that `.svg` files are not inlined.
+- You should ensure that [StrataKit fonts](#fonts) are loaded in your application.
+- If you are trying to use this package alongside iTwinUI, you will also need to set up the [theme bridge](https://github.com/iTwin/iTwinUI/wiki/StrataKit-theme-bridge).
 
 ## Usage
 
@@ -29,6 +28,13 @@ export function App() {
 }
 ```
 
+Now you can use any components directly from `@mui/material`, and they will be automatically themed to use StrataKit's visual language.
+
+> [!CAUTION]
+> Do not use MUI's `ThemeProvider`, `StyledEngineProvider`, or `CssBaseline` components directly. The `Root` component will handle all global configuration for you.
+
+### Icon component
+
 `@stratakit/mui` also exports an `Icon` component that makes it easy to use `.svg` icons from [`@stratakit/icons`](https://www.npmjs.com/package/@stratakit/icons).
 
 ```jsx
@@ -38,7 +44,8 @@ import svgPlaceholder from "@stratakit/icons/placeholder.svg";
 <Icon href={svgPlaceholder} />;
 ```
 
-For more details on using specific features, refer to the inline documentation available on every component and prop.
+> [!NOTE]
+> `@stratakit/icons` requires [bundler configuration](https://github.com/iTwin/design-system/tree/main/packages/icons#bundler-configuration) to ensure that `.svg` files are not inlined.
 
 ## Fonts
 

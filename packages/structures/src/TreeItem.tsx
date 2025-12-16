@@ -8,7 +8,15 @@ import { CompositeItem } from "@ariakit/react/composite";
 import { Role } from "@ariakit/react/role";
 import { Toolbar, ToolbarItem } from "@ariakit/react/toolbar";
 import { VisuallyHidden } from "@ariakit/react/visually-hidden";
-import { Badge, IconButton, Menu, MenuItem, Tooltip } from "@mui/material";
+import {
+	Badge,
+	IconButton,
+	ListItemIcon,
+	ListItemText,
+	Menu,
+	MenuItem,
+	Tooltip,
+} from "@mui/material";
 import {
 	GhostAligner,
 	IconButtonPresentation,
@@ -576,7 +584,12 @@ DEV: TreeItemInlineActionsRenderer.displayName =
 
 // ----------------------------------------------------------------------------
 
-const TreeItemActionsMenuContext = React.createContext(false);
+const TreeItemActionsMenuContext = React.createContext<
+	| {
+			setOpen: (open: boolean) => void;
+	  }
+	| undefined
+>(undefined);
 const TreeItemDisplayActionsMenuContext = React.createContext(false);
 
 interface TreeItemActionMenuProps
@@ -611,7 +624,7 @@ const TreeItemActionMenu = React.memo(
 					data-has-popover-open={open}
 					ref={ref}
 				/>
-				<TreeItemActionsMenuContext.Provider value={true}>
+				<TreeItemActionsMenuContext.Provider value={{ setOpen }}>
 					<Menu
 						open={open}
 						anchorEl={anchorEl}
@@ -621,7 +634,6 @@ const TreeItemActionMenu = React.memo(
 							horizontal: "right",
 						}}
 					>
-						{/* TODO: MenuItem can not be wrapped? Keyboard nav is not working. */}
 						{actions}
 					</Menu>
 				</TreeItemActionsMenuContext.Provider>
@@ -630,17 +642,6 @@ const TreeItemActionMenu = React.memo(
 	}),
 );
 DEV: TreeItemActionMenu.displayName = "TreeItemActionMenu";
-
-// ----------------------------------------------------------------------------
-
-function TreeItemMenuActionsContent() {
-	return (
-		<TreeItemActionsMenuContext.Provider value={true}>
-			<TreeItemActionsRenderer />
-		</TreeItemActionsMenuContext.Provider>
-	);
-}
-DEV: TreeItemMenuActionsContent.displayName = "TreeItemMenuActionsContent";
 
 // ----------------------------------------------------------------------------
 
@@ -708,21 +709,41 @@ interface TreeItemActionProps extends Omit<BaseProps<"button">, "children"> {
  */
 const TreeItemAction = React.memo(
 	forwardRef<"button", TreeItemActionProps>((props, forwardedRef) => {
-		const { label, icon: _icon, dot: _dot, ...rest } = props;
+		const { label, icon, dot, ...rest } = props;
+		const dotId = React.useId();
 
 		const actionsMenuContext = React.useContext(TreeItemActionsMenuContext);
+		const onClick = useEventHandlers(props.onClick, () => {
+			actionsMenuContext?.setOpen(false);
+		});
 
 		// return a MenuItem if inside a Menu
 		if (actionsMenuContext) {
 			return (
 				<MenuItem
+					aria-describedby={dot ? dotId : undefined}
 					// biome-ignore lint/suspicious/noExplicitAny: MenuItem renders a <li> element
 					{...(rest as any)}
-					// icon={icon} // TODO:
-					// unstable_dot={dot} // TODO:
+					onClick={onClick}
 					ref={forwardedRef}
 				>
-					{label}
+					{icon && (
+						<ListItemIcon>
+							{typeof icon === "string" ? (
+								<Icon href={icon} size="regular" />
+							) : (
+								icon
+							)}
+						</ListItemIcon>
+					)}
+					<ListItemText>{label}</ListItemText>
+					<Badge
+						variant="dot"
+						invisible={!dot}
+						color="primary"
+						style={{ marginInlineStart: "var(--stratakit-space-x6)" }}
+					/>
+					<VisuallyHidden id={dotId}>{dot}</VisuallyHidden>
 				</MenuItem>
 			);
 		}

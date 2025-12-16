@@ -8,7 +8,7 @@ import { CompositeItem } from "@ariakit/react/composite";
 import { Role } from "@ariakit/react/role";
 import { Toolbar, ToolbarItem } from "@ariakit/react/toolbar";
 import { VisuallyHidden } from "@ariakit/react/visually-hidden";
-import { Badge, IconButton, Tooltip } from "@mui/material";
+import { Badge, IconButton, Menu, MenuItem, Tooltip } from "@mui/material";
 import {
 	GhostAligner,
 	IconButtonPresentation,
@@ -17,11 +17,11 @@ import { Icon } from "@stratakit/foundations";
 import {
 	forwardRef,
 	useEventHandlers,
+	useMergedRefs,
 } from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
 import { ChevronDown, MoreHorizontal, StatusIcon } from "./~utils.icons.js";
 import * as ListItem from "./~utils.ListItem.js";
-import * as DropdownMenu from "./DropdownMenu.js";
 
 import type { BaseProps } from "@stratakit/foundations/secret-internals";
 
@@ -576,8 +576,6 @@ DEV: TreeItemInlineActionsRenderer.displayName =
 
 // ----------------------------------------------------------------------------
 
-const arrowKeys = ["ArrowDown", "ArrowUp", "ArrowLeft", "ArrowRight"];
-
 const TreeItemActionsMenuContext = React.createContext(false);
 const TreeItemDisplayActionsMenuContext = React.createContext(false);
 
@@ -586,6 +584,7 @@ interface TreeItemActionMenuProps
 
 const TreeItemActionMenu = React.memo(
 	forwardRef<"button", TreeItemActionMenuProps>((props, forwardedRef) => {
+		const [anchorEl, setAnchorEl] = React.useState<HTMLElement | null>(null);
 		const [open, _setOpen] = React.useState(false);
 		const isArrowKeyPressed = React.useRef(false);
 		const displayMenu = React.useContext(TreeItemDisplayActionsMenuContext);
@@ -598,31 +597,35 @@ const TreeItemActionMenu = React.memo(
 				_setOpen(false);
 			}
 		}, []);
+		const ref = useMergedRefs(forwardedRef, setAnchorEl);
+		const actions = React.useContext(TreeItemActionsContext) ?? [];
 
 		if (!displayMenu) return null;
 		return (
-			<DropdownMenu.Provider
-				open={open}
-				setOpen={setOpen}
-				placement="right-start"
-			>
-				<DropdownMenu.Button
+			<>
+				<TreeItemInlineAction
 					{...props}
-					onKeyDown={(e) => {
-						if (arrowKeys.includes(e.key)) {
-							isArrowKeyPressed.current = true;
-						}
-						queueMicrotask(() => {
-							isArrowKeyPressed.current = false;
-						});
-					}}
-					render={
-						<TreeItemInlineAction label="More" icon={<MoreHorizontal />} />
-					}
-					ref={forwardedRef}
+					label="More"
+					icon={<MoreHorizontal />}
+					onClick={() => setOpen(true)}
+					data-has-popover-open={open}
+					ref={ref}
 				/>
-				<TreeItemMenuActionsContent />
-			</DropdownMenu.Provider>
+				<TreeItemActionsMenuContext.Provider value={true}>
+					<Menu
+						open={open}
+						anchorEl={anchorEl}
+						onClose={() => setOpen(false)}
+						anchorOrigin={{
+							vertical: "top",
+							horizontal: "right",
+						}}
+					>
+						{/* TODO: MenuItem can not be wrapped? Keyboard nav is not working. */}
+						{actions}
+					</Menu>
+				</TreeItemActionsMenuContext.Provider>
+			</>
 		);
 	}),
 );
@@ -633,9 +636,7 @@ DEV: TreeItemActionMenu.displayName = "TreeItemActionMenu";
 function TreeItemMenuActionsContent() {
 	return (
 		<TreeItemActionsMenuContext.Provider value={true}>
-			<DropdownMenu.Content>
-				<TreeItemActionsRenderer />
-			</DropdownMenu.Content>
+			<TreeItemActionsRenderer />
 		</TreeItemActionsMenuContext.Provider>
 	);
 }
@@ -707,20 +708,22 @@ interface TreeItemActionProps extends Omit<BaseProps<"button">, "children"> {
  */
 const TreeItemAction = React.memo(
 	forwardRef<"button", TreeItemActionProps>((props, forwardedRef) => {
-		const { label, icon, dot, ...rest } = props;
+		const { label, icon: _icon, dot: _dot, ...rest } = props;
 
 		const actionsMenuContext = React.useContext(TreeItemActionsMenuContext);
 
 		// return a MenuItem if inside a Menu
 		if (actionsMenuContext) {
 			return (
-				<DropdownMenu.Item
-					{...rest}
-					label={label}
-					icon={icon}
-					unstable_dot={dot}
+				<MenuItem
+					// biome-ignore lint/suspicious/noExplicitAny: MenuItem renders a <li> element
+					{...(rest as any)}
+					// icon={icon} // TODO:
+					// unstable_dot={dot} // TODO:
 					ref={forwardedRef}
-				/>
+				>
+					{label}
+				</MenuItem>
 			);
 		}
 

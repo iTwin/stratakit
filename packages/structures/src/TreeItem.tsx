@@ -7,6 +7,7 @@ import * as React from "react";
 import { CompositeItem } from "@ariakit/react/composite";
 import { Role } from "@ariakit/react/role";
 import { Toolbar, ToolbarItem } from "@ariakit/react/toolbar";
+import { VisuallyHidden } from "@ariakit/react/visually-hidden";
 import { Badge, IconButton, Tooltip } from "@mui/material";
 import {
 	GhostAligner,
@@ -760,13 +761,13 @@ const TreeItemInlineAction = React.memo(
 							size="small"
 							// @ts-expect-error: Using string value as a workaround for React 18
 							inert={visible === false ? "true" : undefined}
+							aria-describedby={dot ? `${id}-dot` : undefined}
 							{...rest}
 							// render={props.render} // TODO:
 							className={cx("🥝TreeItemAction", props.className)}
 							data-_sk-visible={visible}
 							ref={forwardedRef}
 						>
-							{/* TODO: dot message */}
 							<Badge variant="dot" invisible={!dot} color="primary">
 								{typeof icon === "string" ? (
 									<Icon href={icon} size="regular" />
@@ -774,6 +775,7 @@ const TreeItemInlineAction = React.memo(
 									icon
 								)}
 							</Badge>
+							<VisuallyHidden id={`${id}-dot`}>{dot}</VisuallyHidden>
 						</IconButton>
 					}
 				/>

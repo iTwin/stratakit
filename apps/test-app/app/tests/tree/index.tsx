@@ -5,9 +5,10 @@
 
 import * as React from "react";
 import { Icon } from "@stratakit/foundations";
+import { Root } from "@stratakit/mui";
 import { Tree } from "@stratakit/structures";
 import { produce } from "immer";
-import { definePage } from "~/~utils.tsx";
+import { definePage, useColorScheme } from "~/~utils.tsx";
 
 import type { VariantProps } from "~/~utils.tsx";
 
@@ -103,111 +104,115 @@ export default definePage(
 		const handleRetry = React.useCallback(() => {
 			setRenderError(false);
 		}, []);
+		const colorScheme = useColorScheme();
 		return (
-			<Tree.Root style={{ maxInlineSize: overflow ? 300 : undefined }}>
-				{flatData.map((item) => {
-					const { index, childIndex } = item;
+			<Root colorScheme={colorScheme}>
+				<Tree.Root style={{ maxInlineSize: overflow ? 300 : undefined }}>
+					{flatData.map((item) => {
+						const { index, childIndex } = item;
 
-					const error = renderError && index === 0 && childIndex === undefined;
-					const hasDescription =
-						(index === 0 && childIndex === undefined) || childIndex === 0;
-					return (
-						<Tree.Item
-							key={item.label}
-							aria-level={item.level}
-							aria-posinset={
-								childIndex !== undefined ? childIndex + 1 : index + 1
-							}
-							aria-setsize={item.setSize}
-							label={item.label}
-							description={hasDescription ? description : undefined}
-							expanded={item.expanded}
-							selected={item.selected}
-							error={error}
-							onSelectedChange={() => {
-								setData(
-									produce((prev) => {
-										const itemToUpdate =
-											childIndex === undefined
-												? prev[index]
-												: prev[index].children?.[childIndex];
-										if (!itemToUpdate) return;
-										itemToUpdate.selected = !itemToUpdate.selected;
-									}),
-								);
-							}}
-							onExpandedChange={() => {
-								startTransition(() => {
+						const error =
+							renderError && index === 0 && childIndex === undefined;
+						const hasDescription =
+							(index === 0 && childIndex === undefined) || childIndex === 0;
+						return (
+							<Tree.Item
+								key={item.label}
+								aria-level={item.level}
+								aria-posinset={
+									childIndex !== undefined ? childIndex + 1 : index + 1
+								}
+								aria-setsize={item.setSize}
+								label={item.label}
+								description={hasDescription ? description : undefined}
+								expanded={item.expanded}
+								selected={item.selected}
+								error={error}
+								onSelectedChange={() => {
 									setData(
 										produce((prev) => {
-											const itemToUpdate = prev[index];
-											if (itemToUpdate.expanded === undefined) return;
-
-											itemToUpdate.expanded = !itemToUpdate.expanded;
+											const itemToUpdate =
+												childIndex === undefined
+													? prev[index]
+													: prev[index].children?.[childIndex];
+											if (!itemToUpdate) return;
+											itemToUpdate.selected = !itemToUpdate.selected;
 										}),
 									);
-								});
-							}}
-							icon={
-								childIndex === undefined ? (
-									<Icon href={placeholderIcon} alt="decoration" />
-								) : undefined
-							}
-							unstable_decorations={
-								childIndex === 0 ? (
-									<>
+								}}
+								onExpandedChange={() => {
+									startTransition(() => {
+										setData(
+											produce((prev) => {
+												const itemToUpdate = prev[index];
+												if (itemToUpdate.expanded === undefined) return;
+
+												itemToUpdate.expanded = !itemToUpdate.expanded;
+											}),
+										);
+									});
+								}}
+								icon={
+									childIndex === undefined ? (
+										<Icon href={placeholderIcon} alt="decoration" />
+									) : undefined
+								}
+								unstable_decorations={
+									childIndex === 0 ? (
+										<>
+											<Icon href={placeholderIcon} />
+											<Icon href={placeholderIcon} />
+										</>
+									) : (
 										<Icon href={placeholderIcon} />
-										<Icon href={placeholderIcon} />
-									</>
-								) : (
-									<Icon href={placeholderIcon} />
-								)
-							}
-							inlineActions={
-								error
-									? [
-											<Tree.ItemAction
-												key="retry"
-												icon={refreshIcon}
-												label="Retry"
-												onClick={handleRetry}
-											/>,
-										]
-									: [
-											<Tree.ItemAction
-												key="unlock"
-												icon={unlockIcon}
-												label="Unlock"
-												visible={visible}
-											/>,
-											<Tree.ItemAction
-												key="show"
-												icon={showIcon}
-												label="Show"
-												visible={visible}
-											/>,
-										]
-							}
-							actions={
-								error
-									? [
-											<Tree.ItemAction
-												key="unlock"
-												icon={unlockIcon}
-												label="Unlock"
-											/>,
-											<Tree.ItemAction
-												key="show"
-												icon={showIcon}
-												label="Show"
-											/>,
-										]
-									: undefined
-							}
-						/>
-					);
-				})}
-			</Tree.Root>
+									)
+								}
+								inlineActions={
+									error
+										? [
+												<Tree.ItemAction
+													key="retry"
+													icon={refreshIcon}
+													label="Retry"
+													onClick={handleRetry}
+												/>,
+											]
+										: [
+												<Tree.ItemAction
+													key="unlock"
+													icon={unlockIcon}
+													label="Unlock"
+													visible={visible}
+												/>,
+												<Tree.ItemAction
+													key="show"
+													icon={showIcon}
+													label="Show"
+													visible={visible}
+												/>,
+											]
+								}
+								actions={
+									error
+										? [
+												<Tree.ItemAction
+													key="unlock"
+													icon={unlockIcon}
+													label="Unlock"
+												/>,
+												<Tree.ItemAction
+													key="show"
+													icon={showIcon}
+													label="Show"
+												/>,
+											]
+										: undefined
+								}
+							/>
+						);
+					})}
+				</Tree.Root>
+			</Root>
 		);
 	},
 	{
@@ -252,18 +257,22 @@ function ActionsTest({
 	});
 	const inlineActions = allActions.slice(0, inline);
 	const actions = allActions.slice(inline);
+
+	const colorScheme = useColorScheme();
 	return (
-		<Tree.Root>
-			<Tree.Item
-				label="Item 1"
-				aria-level={1}
-				aria-posinset={1}
-				aria-setsize={1}
-				inlineActions={inlineActions}
-				actions={actions}
-				error={error}
-			/>
-		</Tree.Root>
+		<Root colorScheme={colorScheme}>
+			<Tree.Root>
+				<Tree.Item
+					label="Item 1"
+					aria-level={1}
+					aria-posinset={1}
+					aria-setsize={1}
+					inlineActions={inlineActions}
+					actions={actions}
+					error={error}
+				/>
+			</Tree.Root>
+		</Root>
 	);
 }
 
@@ -271,34 +280,36 @@ function ActionsTest({
 
 function ExpansionTest({ selectable }: VariantProps) {
 	const [expanded, setExpanded] = React.useState(false);
-
+	const colorScheme = useColorScheme();
 	return (
-		<Tree.Root>
-			<Tree.Item
-				label="Parent Item"
-				aria-level={1}
-				aria-posinset={1}
-				aria-setsize={1}
-				expanded={expanded}
-				onExpandedChange={setExpanded}
-				selected={selectable ? false : undefined}
-			/>
-			{expanded && (
-				<>
-					<Tree.Item
-						label="Child Item 1"
-						aria-level={2}
-						aria-posinset={1}
-						aria-setsize={2}
-					/>
-					<Tree.Item
-						label="Child Item 2"
-						aria-level={2}
-						aria-posinset={2}
-						aria-setsize={2}
-					/>
-				</>
-			)}
-		</Tree.Root>
+		<Root colorScheme={colorScheme}>
+			<Tree.Root>
+				<Tree.Item
+					label="Parent Item"
+					aria-level={1}
+					aria-posinset={1}
+					aria-setsize={1}
+					expanded={expanded}
+					onExpandedChange={setExpanded}
+					selected={selectable ? false : undefined}
+				/>
+				{expanded && (
+					<>
+						<Tree.Item
+							label="Child Item 1"
+							aria-level={2}
+							aria-posinset={1}
+							aria-setsize={2}
+						/>
+						<Tree.Item
+							label="Child Item 2"
+							aria-level={2}
+							aria-posinset={2}
+							aria-setsize={2}
+						/>
+					</>
+				)}
+			</Tree.Root>
+		</Root>
 	);
 }

@@ -127,7 +127,7 @@
 	}
 }
 
-.🥝TreeItemAction:is(.🥝IconButton) {
+.🥝TreeItemAction:is(.MuiIconButton-root) {
 	@layer base {
 		visibility: var(--🥝TreeItem-action-visibility);
 		transition: visibility 16ms; /* This allows some time focus to "settle" before determining final visibility. */

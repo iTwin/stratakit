@@ -38,7 +38,7 @@
 	}
 }
 
-.🥝TreeItemNode:is(.🥝ListItem) {
+.🥝TreeItemNode {
 	--✨first-level-indent: var(--stratakit-space-x2);
 	--✨subsequent-level-indent: calc(var(--stratakit-space-x1) + var(--stratakit-space-x05));
 
@@ -84,13 +84,13 @@
 	}
 }
 
-.🥝TreeItemContent:is(.🥝ListItemContent) {
+.🥝TreeItemContent {
 	@layer base {
 		white-space: nowrap;
 	}
 }
 
-.🥝TreeItemDescription:is(.🥝ListItemContent) {
+.🥝TreeItemDescription {
 	@layer base {
 		color: var(
 			--🥝TreeItem-color,
@@ -99,7 +99,7 @@
 	}
 }
 
-.🥝TreeItemActionsContainer:is(.🥝ListItemDecoration) {
+.🥝TreeItemActionsContainer {
 	@layer base {
 		align-self: stretch;
 		position: sticky;
@@ -127,7 +127,7 @@
 	}
 }
 
-.🥝TreeItemAction:is(.MuiIconButton-root) {
+.🥝TreeItemAction {
 	@layer base {
 		visibility: var(--🥝TreeItem-action-visibility);
 		transition: visibility 16ms; /* This allows some time focus to "settle" before determining final visibility. */
@@ -144,7 +144,7 @@
 	}
 }
 
-.🥝TreeItemExpander:is(.🥝IconButton) {
+.🥝TreeItemExpander {
 	@layer base {
 		visibility: var(--🥝TreeItem-expander-visibility);
 		z-index: 1; /* Ensure the expander is above the invisible content button */
@@ -160,7 +160,7 @@
 }
 
 @media (forced-colors: active) {
-	.🥝TreeItemNode:is(.🥝ListItem) {
+	.🥝TreeItemNode {
 		--🥝ListItem-background-color: Canvas;
 		--🥝TreeItem-color: CanvasText;
 

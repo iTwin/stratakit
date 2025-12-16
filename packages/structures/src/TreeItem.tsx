@@ -11,6 +11,7 @@ import { VisuallyHidden } from "@ariakit/react/visually-hidden";
 import {
 	Badge,
 	IconButton,
+	ListItem,
 	ListItemIcon,
 	ListItemText,
 	Menu,
@@ -29,7 +30,6 @@ import {
 } from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
 import { ChevronDown, MoreHorizontal, StatusIcon } from "./~utils.icons.js";
-import * as ListItem from "./~utils.ListItem.js";
 
 import type { BaseProps } from "@stratakit/foundations/secret-internals";
 
@@ -441,21 +441,23 @@ const TreeItemNode = React.memo((props: TreeItemNodeProps) => {
 
 	const [ref, renderActions] = useRenderActions();
 	return (
-		<ListItem.Root
+		<ListItem
+			component="div"
 			data-_sk-expanded={expanded}
 			data-_sk-selected={selected}
 			data-_sk-error={error ? true : undefined}
 			className="🥝TreeItemNode"
 			role={undefined}
-			ref={ref}
+			// biome-ignore lint/suspicious/noExplicitAny: TODO:
+			ref={ref as any}
+			dense
+			alignItems="flex-start"
+			secondaryAction={renderActions ? <TreeItemActions /> : undefined}
 		>
 			<TreeItemDecorations onExpanderClick={onExpanderClick} />
 
 			<TreeItemContent />
-			<TreeItemDescription />
-
-			{renderActions && <TreeItemActions />}
-		</ListItem.Root>
+		</ListItem>
 	);
 });
 DEV: TreeItemNode.displayName = "TreeItemNode";
@@ -472,10 +474,10 @@ interface TreeItemDecorationsProps {
  */
 const TreeItemDecorations = React.memo((props: TreeItemDecorationsProps) => {
 	return (
-		<ListItem.Decoration>
+		<ListItemIcon>
 			<TreeItemExpander onClick={props.onExpanderClick} />
 			<TreeItemDecoration />
-		</ListItem.Decoration>
+		</ListItemIcon>
 	);
 });
 DEV: TreeItemDecorations.displayName = "TreeItemDecorations";
@@ -517,30 +519,23 @@ DEV: TreeItemDecoration.displayName = "TreeItemDecoration";
 const TreeItemContent = React.memo(() => {
 	const labelId = React.useContext(TreeItemLabelIdContext);
 	const label = React.useContext(TreeItemLabelContext);
+	const description = React.useContext(TreeItemDescriptionContext);
+	const descriptionId = React.useContext(TreeItemDescriptionIdContext);
 	return (
-		<ListItem.Content id={labelId} className="🥝TreeItemContent">
-			{label}
-		</ListItem.Content>
+		<ListItemText
+			id={labelId}
+			className="🥝TreeItemContent"
+			primary={label}
+			secondary={description}
+			slotProps={{
+				secondary: {
+					id: descriptionId,
+				},
+			}}
+		/>
 	);
 });
 DEV: TreeItemContent.displayName = "TreeItemContent";
-
-// ----------------------------------------------------------------------------
-
-/**
- * Displays the description of a `<Tree.Item>`.
- * @private
- */
-const TreeItemDescription = React.memo(() => {
-	const description = React.useContext(TreeItemDescriptionContext);
-	const descriptionId = React.useContext(TreeItemDescriptionIdContext);
-	return description ? (
-		<ListItem.Content id={descriptionId} className="🥝TreeItemDescription">
-			{description}
-		</ListItem.Content>
-	) : undefined;
-});
-DEV: TreeItemDescription.displayName = "TreeItemDescription";
 
 // ----------------------------------------------------------------------------
 
@@ -554,7 +549,8 @@ DEV: TreeItemDescription.displayName = "TreeItemDescription";
 const TreeItemActions = React.memo(
 	forwardRef<"div", Omit<BaseProps, "children">>((props, forwardedRef) => {
 		return (
-			<ListItem.Decoration
+			<Toolbar
+				focusLoop={false}
 				{...props}
 				onClick={useEventHandlers(props.onClick, (e) => e.stopPropagation())}
 				onKeyDown={useEventHandlers(props.onKeyDown, (e) =>
@@ -562,11 +558,10 @@ const TreeItemActions = React.memo(
 				)}
 				className={cx("🥝TreeItemActionsContainer", props.className)}
 				ref={forwardedRef}
-				render={<Toolbar focusLoop={false} />}
 			>
 				<TreeItemInlineActionsRenderer />
 				<TreeItemActionMenu />
-			</ListItem.Decoration>
+			</Toolbar>
 		);
 	}),
 );

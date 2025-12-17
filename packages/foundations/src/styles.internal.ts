@@ -16,8 +16,7 @@ const styleSheets = new Map<string, WeakMap<Window, CSSStyleSheet>>(
 );
 
 /**
- * Adds css to the root node using `adoptedStyleSheets` in modern browsers
- * and falls back to using a `<style>` element in older browsers.
+ * Adds css to the root node using `adoptedStyleSheets` in modern browsers.
  *
  * Pass an optional key to distinguish multiple stylesheets from each other.
  *

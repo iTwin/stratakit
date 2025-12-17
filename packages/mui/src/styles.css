@@ -36,9 +36,9 @@
 		--stratakit-mui-palette-error-light: var(--stratakit-color-bg-critical-muted);
 		--stratakit-mui-palette-error-contrastText: var(--stratakit-color-text-neutral-emphasis);
 
-		--stratakit-mui-palette-warning-main: var(--stratakit-color-bg-severe-base);
-		--stratakit-mui-palette-warning-dark: var(--stratakit-color-bg-severe-faded);
-		--stratakit-mui-palette-warning-light: var(--stratakit-color-bg-severe-muted);
+		--stratakit-mui-palette-warning-main: var(--stratakit-color-bg-attention-base);
+		--stratakit-mui-palette-warning-dark: var(--stratakit-color-bg-attention-faded);
+		--stratakit-mui-palette-warning-light: var(--stratakit-color-bg-attention-muted);
 		--stratakit-mui-palette-warning-contrastText: var(--stratakit-color-text-neutral-emphasis);
 
 		--stratakit-mui-palette-success-main: var(--stratakit-color-bg-positive-base);

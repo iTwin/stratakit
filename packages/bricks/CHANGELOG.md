@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.5.4
+
+- [#1122](https://github.com/iTwin/design-system/pull/1122): Moved `@stratakit/foundations` from `peerDependencies` to direct `dependencies`.
+- [#1123](https://github.com/iTwin/design-system/pull/1123): Renamed `@layer itwinui` to `@layer stratakit`.
+- Updated dependencies:
+  - @stratakit/foundations@0.4.4
+
 ## 0.5.3
 
 - [#1108](https://github.com/iTwin/design-system/pull/1108): Decoupled the styles for `@stratakit/bricks` and `@stratakit/structures` from `@stratakit/foundations` so that the latter does not indirectly depend on the former two. This change also reduces the need for these packages to remain in lockstep.

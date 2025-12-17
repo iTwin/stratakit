@@ -8,12 +8,12 @@ This monorepo is a [pnpm workspace](https://pnpm.io/workspaces) which can be con
 
 ### Packages
 
-These are the packages of StrataKit:
+These are the main packages of StrataKit:
 
-- [`@stratakit/foundations`](./packages/foundations/): Foundational pieces of StrataKit.
+- [`@stratakit/mui`](./packages/mui/): A StrataKit theme for [MUI](https://mui.com/material-ui/).
 - [`@stratakit/icons`](./packages/icons/): A standalone SVG icon library.
-- [`@stratakit/bricks`](./packages/bricks/): Small, modular components that can be assembled to create larger, more functional experiences.
-- [`@stratakit/structures`](./packages/structures): Medium-sized component structures built on top of `@stratakit/bricks`.
+
+Additional packages: [`@stratakit/foundations`](./packages/foundations/), [`@stratakit/bricks`](./packages/bricks/), [`@stratakit/structures`](./packages/structures).
 
 > [!NOTE]
 > StrataKit packages are currently published as `0.X` versions. StrataKit follows [semantic versioning](https://semver.org/), and breaking changes will only be published in _minor_ version bumps. It is therefore safe to use the `^` syntax to specify version ranges in your `package.json`.

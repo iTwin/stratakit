@@ -108,6 +108,7 @@
 		);
 		--xyz-checkbox-bg--disabled: var(--stratakit-color-bg-glow-on-surface-disabled);
 		--xyz-checkbox-color--default: var(--stratakit-color-icon-neutral-emphasis);
+		--xyz-checkbox-color--error: var(--stratakit-color-icon-neutral-primary);
 		--xyz-checkbox-color--disabled: var(--stratakit-color-icon-neutral-disabled);
 		--xyz-checkbox-border-color--default: var(--stratakit-color-border-shadow-base);
 		--xyz-checkbox-border-color--hover: color-mix(
@@ -121,6 +122,7 @@
 			var(--xyz-checkbox-border-color--checked) 100%,
 			var(--stratakit-color-glow-hue) var(--stratakit-color-border-glow-strong-hover-\%)
 		);
+		--xyz-checkbox-border-color--invalid: var(--stratakit-color-border-critical-base);
 		--xyz-checkbox-mask-image--unchecked: url('data:image/svg+xml;utf8,<svg viewBox="0 0 16 16"></svg>');
 		--xyz-checkbox-mask-image--checked: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 16"><path fill="currentColor" d="M11.73 5.47a.75.75 0 0 1 0 1.06l-4.4 4.4a.75.75 0 0 1-1.06 0l-2-2a.75.75 0 0 1 1.06-1.06L6.8 9.34l3.87-3.87a.75.75 0 0 1 1.06 0Z"/></svg>');
 		--xyz-checkbox-mask-image--indeterminate: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 16"><path fill="currentColor" d="M4.25 8A.75.75 0 0 1 5 7.25h6.5a.75.75 0 0 1 0 1.5H5A.75.75 0 0 1 4.25 8Z"/></svg>');
@@ -134,9 +136,23 @@
 		--xyz-checkbox-box-shadow: var(--xyz-checkbox-box-shadow--default);
 		--xyz-checkbox-mask-image: var(--xyz-checkbox-mask-image--unchecked);
 
-		&:where(.Mui-checked, .MuiCheckbox-indeterminate) {
+		@media (any-hover: hover) {
+			&:where(:hover) {
+				--xyz-checkbox-bg: var(--xyz-checkbox-bg--hover);
+				--xyz-checkbox-border-color: var(--xyz-checkbox-border-color--hover);
+			}
+		}
+
+		&:where(.Mui-checked, .MuiCheckbox-indeterminate):where(:not(.MuiCheckbox-colorError)) {
 			--xyz-checkbox-bg: var(--xyz-checkbox-bg--checked);
 			--xyz-checkbox-border-color: var(--xyz-checkbox-border-color--checked);
+
+			@media (any-hover: hover) {
+				&:where(:hover) {
+					--xyz-checkbox-bg: var(--xyz-checkbox-bg--checked-hover);
+					--xyz-checkbox-border-color: var(--xyz-checkbox-border-color--checked-hover);
+				}
+			}
 		}
 
 		&:where(.Mui-checked) {
@@ -147,16 +163,9 @@
 			--xyz-checkbox-mask-image: var(--xyz-checkbox-mask-image--indeterminate);
 		}
 
-		@media (any-hover: hover) {
-			&:where(:hover) {
-				--xyz-checkbox-bg: var(--xyz-checkbox-bg--hover);
-				--xyz-checkbox-border-color: var(--xyz-checkbox-border-color--hover);
-
-				&:where(.Mui-checked, .MuiCheckbox-indeterminate) {
-					--xyz-checkbox-bg: var(--xyz-checkbox-bg--checked-hover);
-					--xyz-checkbox-border-color: var(--xyz-checkbox-border-color--checked-hover);
-				}
-			}
+		&:where(.MuiCheckbox-colorError) {
+			--xyz-checkbox-color: var(--xyz-checkbox-color--error);
+			--xyz-checkbox-border-color: var(--xyz-checkbox-border-color--invalid);
 		}
 
 		&:where(.Mui-disabled) {
@@ -172,12 +181,17 @@
 		@media (forced-colors: active) {
 			--xyz-checkbox-border: 1px solid CanvasText;
 
-			&:where(.Mui-checked, .MuiCheckbox-indeterminate) {
+			&:where(.Mui-checked, .MuiCheckbox-indeterminate):where(:not(.MuiCheckbox-colorError)) {
 				&,
 				&:hover {
 					--xyz-checkbox-bg: SelectedItem;
 					--xyz-checkbox-color: SelectedItemText;
 				}
+			}
+
+			&:where(.MuiCheckbox-colorError) {
+				--xyz-checkbox-bg: Mark;
+				--xyz-checkbox-color: MarkText;
 			}
 
 			&:where(.Mui-disabled) {

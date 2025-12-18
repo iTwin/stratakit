@@ -108,6 +108,9 @@ export default function Page() {
 						<Checkbox />
 						<Checkbox defaultChecked />
 						<Checkbox indeterminate />
+						<Checkbox color="error" />
+						<Checkbox color="error" defaultChecked />
+						<Checkbox color="error" indeterminate />
 						<Checkbox disabled />
 						<Checkbox disabled defaultChecked />
 						<Checkbox disabled indeterminate />

@@ -79,7 +79,11 @@ export default function App() {
 
 	return (
 		<QueryClientProvider client={queryClient}>
-			<Root colorScheme={colorScheme} density="dense">
+			<Root
+				colorScheme={colorScheme}
+				density="dense"
+				synchronizeColorScheme={false}
+			>
 				<Outlet />
 			</Root>
 		</QueryClientProvider>

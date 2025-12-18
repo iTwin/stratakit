@@ -30,8 +30,3 @@ body {
 	background-color: var(--🥝selection-color-bg);
 	color: var(--🥝selection-color-text);
 }
-
-*:focus-visible {
-	outline: var(--🥝focus-outline);
-	outline-offset: var(--🥝focus-outline-offset);
-}

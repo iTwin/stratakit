@@ -79,3 +79,8 @@
 :where(dialog:not([open], [popover]), [popover]:not(:popover-open)) {
 	display: none !important;
 }
+
+*:focus-visible {
+	outline: var(--🥝focus-outline);
+	outline-offset: var(--🥝focus-outline-offset);
+}

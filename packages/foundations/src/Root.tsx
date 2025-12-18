@@ -107,7 +107,7 @@ export const Root = forwardRef<"div", RootProps>((props, forwardedRef) => {
 
 	const {
 		children,
-		synchronizeColorScheme = false,
+		synchronizeColorScheme = true,
 		unstable_htmlSanitizer = identity,
 		portalContainer: portalContainerProp,
 		...rest

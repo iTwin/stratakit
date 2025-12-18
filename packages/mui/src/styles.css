@@ -129,13 +129,15 @@
 		--xyz-checkbox-border-color: var(--xyz-checkbox-border-color--default);
 		--xyz-checkbox-mask-image: var(--xyz-checkbox-mask-image--unchecked);
 
-		&:hover {
-			--xyz-checkbox-bg: var(--xyz-checkbox-bg--hover);
-			--xyz-checkbox-border-color: var(--xyz-checkbox-border-color--hover);
+		@media (any-hover: hover) {
+			&:where(:hover) {
+				--xyz-checkbox-bg: var(--xyz-checkbox-bg--hover);
+				--xyz-checkbox-border-color: var(--xyz-checkbox-border-color--hover);
 
-			&:where(.Mui-checked, .MuiCheckbox-indeterminate) {
-				--xyz-checkbox-bg: var(--xyz-checkbox-bg--checked-hover);
-				--xyz-checkbox-border-color: var(--xyz-checkbox-border-color--checked-hover);
+				&:where(.Mui-checked, .MuiCheckbox-indeterminate) {
+					--xyz-checkbox-bg: var(--xyz-checkbox-bg--checked-hover);
+					--xyz-checkbox-border-color: var(--xyz-checkbox-border-color--checked-hover);
+				}
 			}
 		}
 

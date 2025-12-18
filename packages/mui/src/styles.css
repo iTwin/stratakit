@@ -36,9 +36,9 @@
 		--stratakit-mui-palette-error-light: var(--stratakit-color-bg-critical-muted);
 		--stratakit-mui-palette-error-contrastText: var(--stratakit-color-text-neutral-emphasis);
 
-		--stratakit-mui-palette-warning-main: var(--stratakit-color-bg-severe-base);
-		--stratakit-mui-palette-warning-dark: var(--stratakit-color-bg-severe-faded);
-		--stratakit-mui-palette-warning-light: var(--stratakit-color-bg-severe-muted);
+		--stratakit-mui-palette-warning-main: var(--stratakit-color-bg-attention-base);
+		--stratakit-mui-palette-warning-dark: var(--stratakit-color-bg-attention-faded);
+		--stratakit-mui-palette-warning-light: var(--stratakit-color-bg-attention-muted);
 		--stratakit-mui-palette-warning-contrastText: var(--stratakit-color-text-neutral-emphasis);
 
 		--stratakit-mui-palette-success-main: var(--stratakit-color-bg-positive-base);
@@ -51,20 +51,20 @@
 		--stratakit-mui-palette-info-light: var(--stratakit-color-bg-info-muted);
 		--stratakit-mui-palette-info-contrastText: var(--stratakit-color-text-neutral-emphasis);
 
-		--stratakit-mui-palette-grey-50: oklch(85.95% 0.006 255.48);
-		--stratakit-mui-palette-grey-100: oklch(79.56% 0.008 241.69);
-		--stratakit-mui-palette-grey-200: oklch(75.82% 0.01 252.83);
-		--stratakit-mui-palette-grey-300: oklch(69.04% 0.014 255.53);
-		--stratakit-mui-palette-grey-400: oklch(62.09% 0.017 257.22);
-		--stratakit-mui-palette-grey-500: oklch(55.22% 0.018 253.99);
-		--stratakit-mui-palette-grey-600: oklch(48.26% 0.017 254.7);
-		--stratakit-mui-palette-grey-700: oklch(41.45% 0.013 256.75);
-		--stratakit-mui-palette-grey-800: oklch(34.4% 0.011 264.42);
-		--stratakit-mui-palette-grey-900: oklch(26.92% 0.008 268.32);
-		--stratakit-mui-palette-grey-A100: oklch(79.56% 0.008 241.69);
-		--stratakit-mui-palette-grey-A200: oklch(75.82% 0.01 252.83);
-		--stratakit-mui-palette-grey-A400: oklch(62.09% 0.017 257.22);
-		--stratakit-mui-palette-grey-A700: oklch(48.26% 0.017 254.7);
+		--stratakit-mui-palette-grey-50: --primitive("color.gray.50");
+		--stratakit-mui-palette-grey-100: --primitive("color.gray.100");
+		--stratakit-mui-palette-grey-200: --primitive("color.gray.200");
+		--stratakit-mui-palette-grey-300: --primitive("color.gray.300");
+		--stratakit-mui-palette-grey-400: --primitive("color.gray.400");
+		--stratakit-mui-palette-grey-500: --primitive("color.gray.500");
+		--stratakit-mui-palette-grey-600: --primitive("color.gray.600");
+		--stratakit-mui-palette-grey-700: --primitive("color.gray.700");
+		--stratakit-mui-palette-grey-800: --primitive("color.gray.800");
+		--stratakit-mui-palette-grey-900: --primitive("color.gray.900");
+		--stratakit-mui-palette-grey-A100: --primitive("color.gray.100");
+		--stratakit-mui-palette-grey-A200: --primitive("color.gray.200");
+		--stratakit-mui-palette-grey-A400: --primitive("color.gray.400");
+		--stratakit-mui-palette-grey-A700: --primitive("color.gray.700");
 	}
 
 	.MuiAlert-icon {

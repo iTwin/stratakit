@@ -106,7 +106,9 @@
 			var(--xyz-checkbox-bg--checked) 100%,
 			var(--stratakit-color-glow-hue) var(--stratakit-color-bg-glow-strong-hover-\%)
 		);
+		--xyz-checkbox-bg--disabled: var(--stratakit-color-bg-glow-on-surface-disabled);
 		--xyz-checkbox-color--default: var(--stratakit-color-icon-neutral-emphasis);
+		--xyz-checkbox-color--disabled: var(--stratakit-color-icon-neutral-disabled);
 		--xyz-checkbox-border-color--default: var(--stratakit-color-border-shadow-base);
 		--xyz-checkbox-border-color--hover: color-mix(
 			in oklch,
@@ -122,11 +124,14 @@
 		--xyz-checkbox-mask-image--unchecked: url('data:image/svg+xml;utf8,<svg viewBox="0 0 16 16"></svg>');
 		--xyz-checkbox-mask-image--checked: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 16"><path fill="currentColor" d="M11.73 5.47a.75.75 0 0 1 0 1.06l-4.4 4.4a.75.75 0 0 1-1.06 0l-2-2a.75.75 0 0 1 1.06-1.06L6.8 9.34l3.87-3.87a.75.75 0 0 1 1.06 0Z"/></svg>');
 		--xyz-checkbox-mask-image--indeterminate: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 16"><path fill="currentColor" d="M4.25 8A.75.75 0 0 1 5 7.25h6.5a.75.75 0 0 1 0 1.5H5A.75.75 0 0 1 4.25 8Z"/></svg>');
-		--xyz-checkbox-box-shadow: 0px 0px 0px 1px var(--xyz-checkbox-border-color) inset;
+		--xyz-checkbox-box-shadow--default:
+			var(--stratakit-shadow-control-button-base-inset), 0px 0px 0px 1px
+			var(--xyz-checkbox-border-color) inset, var(--stratakit-shadow-control-button-base-drop);
 
 		--xyz-checkbox-bg: var(--xyz-checkbox-bg--default);
 		--xyz-checkbox-color: var(--xyz-checkbox-color--default);
 		--xyz-checkbox-border-color: var(--xyz-checkbox-border-color--default);
+		--xyz-checkbox-box-shadow: var(--xyz-checkbox-box-shadow--default);
 		--xyz-checkbox-mask-image: var(--xyz-checkbox-mask-image--unchecked);
 
 		&:where(.Mui-checked, .MuiCheckbox-indeterminate) {
@@ -154,17 +159,31 @@
 			}
 		}
 
+		&:where(.Mui-disabled) {
+			--xyz-checkbox-bg: var(--xyz-checkbox-bg--disabled);
+			--xyz-checkbox-color: var(--xyz-checkbox-color--disabled);
+			--xyz-checkbox-box-shadow: none;
+		}
+
 		&:where(.Mui-focusVisible) {
 			outline: 2px solid var(--stratakit-color-border-accent-strong);
 		}
 
 		@media (forced-colors: active) {
+			--xyz-checkbox-border: 1px solid CanvasText;
+
 			&:where(.Mui-checked, .MuiCheckbox-indeterminate) {
 				&,
 				&:hover {
 					--xyz-checkbox-bg: SelectedItem;
-					--xyz-checkbox-color: GrayText;
+					--xyz-checkbox-color: SelectedItemText;
 				}
+			}
+
+			&:where(.Mui-disabled) {
+				--xyz-checkbox-bg: Canvas;
+				--xyz-checkbox-color: GrayText;
+				--xyz-checkbox-border: 1px solid GrayText;
 			}
 		}
 	}
@@ -179,9 +198,8 @@
 		transition: all 150ms ease-out;
 		transition-property: background-color, border-color, box-shadow, --🥝Checkbox-border-color;
 		position: relative;
-		box-shadow:
-			var(--stratakit-shadow-control-button-base-inset), var(--xyz-checkbox-box-shadow),
-			var(--stratakit-shadow-control-button-base-drop);
+		box-shadow: var(--xyz-checkbox-box-shadow);
+		border: var(--xyz-checkbox-border);
 
 		&::after {
 			content: "";
@@ -191,10 +209,10 @@
 			mask-image: var(--xyz-checkbox-mask-image, initial);
 			mask-repeat: no-repeat;
 			mask-position: center;
-		}
 
-		@media (forced-colors: active) {
-			border: 1px solid CanvasText;
+			@media (forced-colors: active) {
+				background-color: var(--xyz-checkbox-color);
+			}
 		}
 	}
 

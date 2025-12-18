@@ -108,7 +108,16 @@ export default function Page() {
 						<Checkbox />
 						<Checkbox defaultChecked />
 						<Checkbox indeterminate />
+						<Checkbox disabled />
+						<Checkbox disabled defaultChecked />
+						<Checkbox disabled indeterminate />
+					</Stack>
+
+					<Stack spacing={1} direction="row">
+						<Switch />
 						<Switch defaultChecked />
+						<Switch disabled />
+						<Switch disabled defaultChecked />
 					</Stack>
 
 					<Stack spacing={1} direction="row">

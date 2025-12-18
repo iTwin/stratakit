@@ -19,6 +19,9 @@ import {
 	WarningIcon,
 } from "./Icon.js";
 
+// Simple span elements for checkbox icons (no styling)
+const CheckboxSymbol = () => <span className="MuiCheckbox-symbol" />;
+
 /**
  * Creates a StrataKit theme for MUI. Should be used with MUI's `ThemeProvider`.
  *
@@ -110,6 +113,9 @@ function createTheme() {
 			MuiCheckbox: {
 				defaultProps: {
 					disableRipple: true, // Checkbox doesn't inherit from ButtonBase
+					icon: <CheckboxSymbol />,
+					checkedIcon: <CheckboxSymbol />,
+					indeterminateIcon: <CheckboxSymbol />,
 				},
 			},
 			MuiLink: {

@@ -1,7 +1,7 @@
 {
 	"name": "@stratakit/mui",
 	"type": "module",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"license": "MIT",
 	"sideEffects": false,
 	"types": "./dist/index.d.ts",
@@ -44,7 +44,7 @@
 		"dev": "wireit"
 	},
 	"dependencies": {
-		"@stratakit/foundations": "^0.4.4",
+		"@stratakit/foundations": "^0.4.5",
 		"@stratakit/icons": "^0.2.2",
 		"classnames": "^2.5.1",
 		"react-compiler-runtime": "^1.0.0"

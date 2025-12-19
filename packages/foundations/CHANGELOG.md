@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.4.5
+
+### Patch Changes
+
+- [#1134](https://github.com/iTwin/design-system/pull/1134): Fixed the default value of `Root`'s `synchronizeColorScheme` prop to actually be `true`, as mentioned in the docs.
+- [#1135](https://github.com/iTwin/design-system/pull/1135): Global focus styles have been moved from `@layer stratakit` to `@layer reset`.
+
 ## 0.4.4
 
 - [#1124](https://github.com/iTwin/design-system/pull/1124): Added `-webkit-font-smoothing: antialiased` to the CSS reset.

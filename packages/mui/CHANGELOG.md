@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.2
+
+### Patch Changes
+
+- [#1137](https://github.com/iTwin/design-system/pull/1137): Updated `border-radius` of `IconButton` component.
+
 ## 0.1.1
 
 - [#1131](https://github.com/iTwin/design-system/pull/1131): Fixed the values for **warning** palette.

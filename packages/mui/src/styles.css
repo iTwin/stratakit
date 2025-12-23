@@ -111,6 +111,10 @@
 		}
 	}
 
+	.MuiIconButton-root {
+		border-radius: 4px;
+	}
+
 	.MuiLink-root {
 		font-weight: 500;
 		text-decoration-color: currentColor;

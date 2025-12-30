@@ -4,18 +4,16 @@
  *--------------------------------------------------------------------------------------------*/
 
 import { Button } from "@mui/material";
-import { Icon } from "@stratakit/mui";
-
-import svgPlaceholder from "@stratakit/icons/placeholder.svg";
 
 export default () => {
 	return (
-		<Button
-			variant="contained"
-			color="primary"
-			startIcon={<Icon href={svgPlaceholder} />}
-		>
-			Contained
-		</Button>
+		<>
+			<Button color="primary">Primary</Button>
+			<Button color="secondary">Secondary</Button>
+			<Button color="info">Info</Button>
+			<Button color="success">Success</Button>
+			<Button color="warning">Warning</Button>
+			<Button color="error">Error</Button>
+		</>
 	);
 };

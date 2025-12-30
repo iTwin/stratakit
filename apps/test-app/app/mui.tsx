@@ -47,9 +47,11 @@ import {
 	Typography,
 } from "@mui/material";
 import { Icon, Root } from "@stratakit/mui";
-import ButtonContainedPrimaryStartIcon from "examples/mui/Button.contained.primary.startIcon.tsx";
-import ButtonContained from "examples/mui/Button.contained.tsx";
+import ButtonColors from "examples/mui/Button.colors.tsx";
 import ButtonDefault from "examples/mui/Button.default.tsx";
+import ButtonIcons from "examples/mui/Button.icons.tsx";
+import ButtonPermutations from "examples/mui/Button.permutations.tsx";
+import ButtonVariants from "examples/mui/Button.variants.tsx";
 import { useColorScheme } from "./~utils.tsx";
 
 import type { MetaFunction } from "react-router";
@@ -83,18 +85,27 @@ export default function Page() {
 						</Link>
 					</Stack>
 
-					<Stack spacing={1} direction="row" alignItems="center">
+					<Stack spacing={1} direction="row">
 						<ButtonDefault />
-						<ButtonContained />
-						<ButtonContainedPrimaryStartIcon />
-						<Button variant="outlined" endIcon={<Icon href={svgPlaceholder} />}>
-							Outlined
-						</Button>
-						<Button variant="outlined" color="primary">
-							Outlined
-						</Button>
-						<Button>Ghost</Button>
+					</Stack>
 
+					<Stack spacing={1} direction="row">
+						<ButtonVariants />
+					</Stack>
+
+					<Stack spacing={1} direction="row">
+						<ButtonColors />
+					</Stack>
+
+					<Stack spacing={1} direction="row">
+						<ButtonIcons />
+					</Stack>
+
+					<Stack spacing={1}>
+						<ButtonPermutations />
+					</Stack>
+
+					<Stack spacing={1} direction="row">
 						<Tooltip title="Default">
 							<IconButton>
 								<Icon href={svgPlaceholder} />

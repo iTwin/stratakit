@@ -52,6 +52,8 @@ import ButtonPermutations from "examples/mui/Button.permutations.tsx";
 import ButtonVariants from "examples/mui/Button.variants.tsx";
 import IconButtonColors from "examples/mui/IconButton.colors.tsx";
 import IconButtonDefault from "examples/mui/IconButton.default.tsx";
+import LinkColors from "examples/mui/Link.colors.tsx";
+import LinkDefault from "examples/mui/Link.default.tsx";
 import { useColorScheme } from "./~utils.tsx";
 
 import type { MetaFunction } from "react-router";
@@ -77,10 +79,11 @@ export default function Page() {
 
 				<Stack spacing={2}>
 					<Stack spacing={1} direction="row">
-						<Link href="#">Default</Link>
-						<Link href="#" sx={{ color: "primary.dark" }}>
-							Accent
-						</Link>
+						<LinkDefault />
+					</Stack>
+
+					<Stack spacing={1} direction="row">
+						<LinkColors />
 					</Stack>
 
 					<Stack spacing={1} direction="row">

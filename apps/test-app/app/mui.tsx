@@ -13,7 +13,6 @@ import {
 	Box,
 	Breadcrumbs,
 	Button,
-	Checkbox,
 	Chip,
 	Container,
 	Dialog,
@@ -50,6 +49,9 @@ import ButtonDefault from "examples/mui/Button.default.tsx";
 import ButtonIcons from "examples/mui/Button.icons.tsx";
 import ButtonPermutations from "examples/mui/Button.permutations.tsx";
 import ButtonVariants from "examples/mui/Button.variants.tsx";
+import CheckboxChecked from "examples/mui/Checkbox.checked.tsx";
+import CheckboxDefault from "examples/mui/Checkbox.default.tsx";
+import CheckboxIndeterminate from "examples/mui/Checkbox.indeterminate.tsx";
 import IconButtonColors from "examples/mui/IconButton.colors.tsx";
 import IconButtonDefault from "examples/mui/IconButton.default.tsx";
 import LinkColors from "examples/mui/Link.colors.tsx";
@@ -114,13 +116,13 @@ export default function Page() {
 						<IconButtonColors />
 					</Stack>
 
-					<Stack spacing={1} direction="row">
-						<Checkbox />
-						<Checkbox defaultChecked />
-						<Checkbox indeterminate />
-						<Switch defaultChecked />
+					<Stack spacing={1}>
+						<CheckboxDefault />
+						<CheckboxChecked />
+						<CheckboxIndeterminate />
 					</Stack>
 
+					<Switch defaultChecked />
 					<Stack spacing={1} direction="row">
 						<TextField label="Input" variant="outlined" />
 						<TextField label="Textarea" variant="outlined" multiline />

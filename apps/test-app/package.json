@@ -26,6 +26,7 @@
 		"@stratakit/structures": "workspace:*",
 		"@tanstack/react-query": "^5.90.11",
 		"classnames": "^2.5.1",
+		"examples": "workspace:*",
 		"immer": "^11.0.1",
 		"isbot": "^5.1.32",
 		"react": "catalog:",

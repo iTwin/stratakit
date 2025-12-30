@@ -7,7 +7,12 @@
 		"./*": "./*"
 	},
 	"dependencies": {
+		"@mui/material": "catalog:",
+		"@stratakit/bricks": "workspace:*",
 		"@stratakit/icons": "workspace:*",
-		"@stratakit/bricks": "workspace:*"
+		"@stratakit/mui": "workspace:*"
+	},
+	"devDependencies": {
+		"@types/react": "catalog:"
 	}
 }

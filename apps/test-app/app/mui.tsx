@@ -47,6 +47,7 @@ import {
 	Typography,
 } from "@mui/material";
 import { Icon, Root } from "@stratakit/mui";
+import ButtonDefault from "examples/mui/Button.default.tsx";
 import { useColorScheme } from "./~utils.tsx";
 
 import type { MetaFunction } from "react-router";
@@ -81,14 +82,7 @@ export default function Page() {
 					</Stack>
 
 					<Stack spacing={1} direction="row" alignItems="center">
-						<Button variant="contained">Contained</Button>
-						<Button
-							variant="contained"
-							color="primary"
-							startIcon={<Icon href={svgPlaceholder} />}
-						>
-							Contained
-						</Button>
+						<ButtonDefault />
 						<Button variant="outlined" endIcon={<Icon href={svgPlaceholder} />}>
 							Outlined
 						</Button>

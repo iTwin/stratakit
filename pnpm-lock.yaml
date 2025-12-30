@@ -115,6 +115,9 @@ importers:
       classnames:
         specifier: ^2.5.1
         version: 2.5.1
+      examples:
+        specifier: workspace:*
+        version: link:../../examples
       immer:
         specifier: ^11.0.1
         version: 11.0.1
@@ -176,12 +179,22 @@ importers:
 
   examples:
     dependencies:
+      "@mui/material":
+        specifier: "catalog:"
+        version: 7.3.6(@emotion/react@11.14.0(@types/react@19.2.7)(react@19.2.1))(@emotion/styled@11.14.1(@emotion/react@11.14.0(@types/react@19.2.7)(react@19.2.1))(@types/react@19.2.7)(react@19.2.1))(@types/react@19.2.7)(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
       "@stratakit/bricks":
         specifier: workspace:*
         version: link:../packages/bricks
       "@stratakit/icons":
         specifier: workspace:*
         version: link:../packages/icons
+      "@stratakit/mui":
+        specifier: workspace:*
+        version: link:../packages/mui
+    devDependencies:
+      "@types/react":
+        specifier: "catalog:"
+        version: 19.2.7
 
   internal:
     dependencies:

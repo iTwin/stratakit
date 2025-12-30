@@ -8,7 +8,7 @@ import { Icon } from "@stratakit/mui";
 
 import type React from "react";
 
-import svgPlaceholder from "@stratakit/icons/placeholder.svg";
+import placeholderIcon from "@stratakit/icons/placeholder.svg";
 
 type ButtonProps = React.ComponentProps<typeof Button>;
 
@@ -42,7 +42,7 @@ export default () => {
 										color={color}
 										endIcon={
 											icon === "end" ? (
-												<Icon href={svgPlaceholder} />
+												<Icon href={placeholderIcon} />
 											) : undefined
 										}
 									>

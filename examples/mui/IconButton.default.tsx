@@ -3,22 +3,17 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import { Button } from "@mui/material";
+import { IconButton, Tooltip } from "@mui/material";
 import { Icon } from "@stratakit/mui";
 
-import placeholderIcon from "@stratakit/icons/placeholder.svg";
+import downloadIcon from "@stratakit/icons/download.svg";
 
 export default () => {
 	return (
-		<>
-			<Button startIcon={<Icon href={placeholderIcon} />}>Start icon</Button>
-			<Button endIcon={<Icon href={placeholderIcon} />}>End icon</Button>
-			<Button
-				startIcon={<Icon href={placeholderIcon} />}
-				endIcon={<Icon href={placeholderIcon} />}
-			>
-				Both icons
-			</Button>
-		</>
+		<Tooltip title="Download">
+			<IconButton>
+				<Icon href={downloadIcon} />
+			</IconButton>
+		</Tooltip>
 	);
 };

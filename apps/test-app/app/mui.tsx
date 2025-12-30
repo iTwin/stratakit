@@ -23,7 +23,6 @@ import {
 	DialogTitle,
 	Divider,
 	FormControl,
-	IconButton,
 	InputLabel,
 	Link,
 	Menu,
@@ -43,20 +42,19 @@ import {
 	TableSortLabel,
 	Tabs,
 	TextField,
-	Tooltip,
 	Typography,
 } from "@mui/material";
-import { Icon, Root } from "@stratakit/mui";
+import { Root } from "@stratakit/mui";
 import ButtonColors from "examples/mui/Button.colors.tsx";
 import ButtonDefault from "examples/mui/Button.default.tsx";
 import ButtonIcons from "examples/mui/Button.icons.tsx";
 import ButtonPermutations from "examples/mui/Button.permutations.tsx";
 import ButtonVariants from "examples/mui/Button.variants.tsx";
+import IconButtonColors from "examples/mui/IconButton.colors.tsx";
+import IconButtonDefault from "examples/mui/IconButton.default.tsx";
 import { useColorScheme } from "./~utils.tsx";
 
 import type { MetaFunction } from "react-router";
-
-import svgPlaceholder from "@stratakit/icons/placeholder.svg";
 
 // ----------------------------------------------------------------------------
 
@@ -106,11 +104,11 @@ export default function Page() {
 					</Stack>
 
 					<Stack spacing={1} direction="row">
-						<Tooltip title="Default">
-							<IconButton>
-								<Icon href={svgPlaceholder} />
-							</IconButton>
-						</Tooltip>
+						<IconButtonDefault />
+					</Stack>
+
+					<Stack spacing={1} direction="row">
+						<IconButtonColors />
 					</Stack>
 
 					<Stack spacing={1} direction="row">

@@ -57,6 +57,9 @@ import LinkColors from "examples/mui/Link.colors.tsx";
 import LinkDefault from "examples/mui/Link.default.tsx";
 import SwitchChecked from "examples/mui/Switch.checked.tsx";
 import SwitchDefault from "examples/mui/Switch.default.tsx";
+import TextFieldDefault from "examples/mui/TextField.default.tsx";
+import TextFieldMultiline from "examples/mui/TextField.multiline.tsx";
+import TextFieldVariants from "examples/mui/TextField.variants.tsx";
 import { useColorScheme } from "./~utils.tsx";
 
 import type { MetaFunction } from "react-router";
@@ -129,8 +132,12 @@ export default function Page() {
 					</Stack>
 
 					<Stack spacing={1} direction="row">
-						<TextField label="Input" variant="outlined" />
-						<TextField label="Textarea" variant="outlined" multiline />
+						<TextFieldDefault />
+						<TextFieldMultiline />
+					</Stack>
+
+					<Stack spacing={1} direction="row">
+						<TextFieldVariants />
 					</Stack>
 
 					<Stack spacing={1} direction="row">

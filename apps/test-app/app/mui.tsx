@@ -9,7 +9,6 @@ import {
 	AccordionDetails,
 	AccordionSummary,
 	Alert,
-	Autocomplete,
 	Box,
 	Breadcrumbs,
 	Button,
@@ -43,6 +42,7 @@ import {
 	Typography,
 } from "@mui/material";
 import { Root } from "@stratakit/mui";
+import AutocompleteDefault from "examples/mui/Autocomplete.default.tsx";
 import ButtonColors from "examples/mui/Button.colors.tsx";
 import ButtonDefault from "examples/mui/Button.default.tsx";
 import ButtonIcons from "examples/mui/Button.icons.tsx";
@@ -55,6 +55,7 @@ import IconButtonColors from "examples/mui/IconButton.colors.tsx";
 import IconButtonDefault from "examples/mui/IconButton.default.tsx";
 import LinkColors from "examples/mui/Link.colors.tsx";
 import LinkDefault from "examples/mui/Link.default.tsx";
+import SelectDefault from "examples/mui/Select.default.tsx";
 import SwitchChecked from "examples/mui/Switch.checked.tsx";
 import SwitchDefault from "examples/mui/Switch.default.tsx";
 import TextFieldDefault from "examples/mui/TextField.default.tsx";
@@ -141,8 +142,11 @@ export default function Page() {
 					</Stack>
 
 					<Stack spacing={1} direction="row">
-						<AutocompleteExample />
-						<SelectExample />
+						<AutocompleteDefault />
+					</Stack>
+
+					<Stack spacing={1} direction="row">
+						<SelectDefault />
 					</Stack>
 
 					<Stack spacing={1} direction="row">
@@ -323,37 +327,6 @@ function TabsExample() {
 				</div>
 			)}
 		</Box>
-	);
-}
-
-function SelectExample() {
-	return (
-		<FormControl>
-			<InputLabel id="demo-simple-select-label">Age</InputLabel>
-			<Select
-				labelId="demo-simple-select-label"
-				id="demo-simple-select"
-				label="Age"
-				defaultValue={10}
-			>
-				<MenuItem value={10}>Ten</MenuItem>
-				<MenuItem value={20}>Twenty</MenuItem>
-				<MenuItem value={30}>Thirty</MenuItem>
-			</Select>
-		</FormControl>
-	);
-}
-
-function AutocompleteExample() {
-	const options = ["Option 1", "Option 2"];
-
-	return (
-		<Autocomplete
-			id="controllable-states-demo"
-			options={options}
-			sx={{ width: 300 }}
-			renderInput={(params) => <TextField {...params} label="Autocomplete" />}
-		/>
 	);
 }
 

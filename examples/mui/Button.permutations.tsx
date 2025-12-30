@@ -4,6 +4,11 @@
  *--------------------------------------------------------------------------------------------*/
 
 import { Button, Stack } from "@mui/material";
+import { Icon } from "@stratakit/mui";
+
+import type React from "react";
+
+import svgPlaceholder from "@stratakit/icons/placeholder.svg";
 
 type ButtonProps = React.ComponentProps<typeof Button>;
 
@@ -18,17 +23,32 @@ const colors = [
 	"warning",
 	"error",
 ] satisfies Array<ButtonProps["color"]>;
+const icons = ["", "end"] as const;
 
 export default () => {
-	return variants.map((variant) => {
+	return icons.map((icon) => {
 		return (
-			<Stack spacing={1} direction="row">
-				{colors.map((color) => {
+			<Stack spacing={1}>
+				{variants.map((variant) => {
 					const variantName = `${variant.charAt(0).toUpperCase()}${variant.slice(1)}`;
 					return (
-						<Button variant={variant} color={color} key={`${variant}-${color}`}>
-							{`${variantName} ${color}`}
-						</Button>
+						<Stack spacing={1} direction="row">
+							{colors.map((color) => {
+								return (
+									<Button
+										variant={variant}
+										color={color}
+										endIcon={
+											icon === "end" ? (
+												<Icon href={svgPlaceholder} />
+											) : undefined
+										}
+									>
+										{variantName} {color}
+									</Button>
+								);
+							})}
+						</Stack>
 					);
 				})}
 			</Stack>

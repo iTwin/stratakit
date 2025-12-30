@@ -18,7 +18,7 @@ const colors = [
 
 export default () => {
 	return colors.map((color) => (
-		<Link color={color}>
+		<Link key={color} color={color}>
 			{color.charAt(0).toUpperCase()}
 			{color.slice(1)}
 		</Link>

@@ -30,14 +30,15 @@ const icons = ["", "end"] as const;
 export default () => {
 	return icons.map((icon) => {
 		return (
-			<Stack spacing={1}>
+			<Stack key={icon} spacing={1}>
 				{variants.map((variant) => {
 					const variantName = `${variant.charAt(0).toUpperCase()}${variant.slice(1)}`;
 					return (
-						<Stack spacing={1} direction="row">
+						<Stack key={variant} spacing={1} direction="row">
 							{colors.map((color) => {
 								return (
 									<Button
+										key={color}
 										variant={variant}
 										color={color}
 										endIcon={

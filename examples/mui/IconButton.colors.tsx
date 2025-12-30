@@ -22,8 +22,8 @@ const colors = [
 export default () => {
 	return colors.map((color) => (
 		<Tooltip
-			title={`${color.charAt(0).toUpperCase()}${color.slice(1)}`}
 			key={color}
+			title={`${color.charAt(0).toUpperCase()}${color.slice(1)}`}
 		>
 			<IconButton color={color}>
 				<Icon href={placeholderIcon} />

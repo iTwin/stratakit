@@ -12,9 +12,11 @@ import svgPlaceholder from "@stratakit/icons/placeholder.svg";
 
 type ButtonProps = React.ComponentProps<typeof Button>;
 
-const variants = ["contained", "outlined", "text"] satisfies Array<
-	ButtonProps["variant"]
->;
+const variants = [
+	"contained",
+	"outlined",
+	"text",
+] as const satisfies ButtonProps["variant"][];
 const colors = [
 	"primary",
 	"secondary",
@@ -22,7 +24,7 @@ const colors = [
 	"success",
 	"warning",
 	"error",
-] satisfies Array<ButtonProps["color"]>;
+] as const satisfies ButtonProps["color"][];
 const icons = ["", "end"] as const;
 
 export default () => {

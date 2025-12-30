@@ -1,3 +1,6 @@
 {
-	"extends": "internal/tsconfig.json"
+	"extends": "internal/tsconfig.json",
+	"compilerOptions": {
+		"types": ["./types.d.ts"]
+	}
 }

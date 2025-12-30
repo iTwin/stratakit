@@ -47,6 +47,8 @@ import {
 	Typography,
 } from "@mui/material";
 import { Icon, Root } from "@stratakit/mui";
+import ButtonContainedPrimaryStartIcon from "examples/mui/Button.contained.primary.startIcon.tsx";
+import ButtonContained from "examples/mui/Button.contained.tsx";
 import ButtonDefault from "examples/mui/Button.default.tsx";
 import { useColorScheme } from "./~utils.tsx";
 
@@ -83,6 +85,8 @@ export default function Page() {
 
 					<Stack spacing={1} direction="row" alignItems="center">
 						<ButtonDefault />
+						<ButtonContained />
+						<ButtonContainedPrimaryStartIcon />
 						<Button variant="outlined" endIcon={<Icon href={svgPlaceholder} />}>
 							Outlined
 						</Button>

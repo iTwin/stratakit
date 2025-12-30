@@ -30,7 +30,6 @@ import {
 	Paper,
 	Select,
 	Stack,
-	Switch,
 	Tab,
 	Table,
 	TableBody,
@@ -56,6 +55,8 @@ import IconButtonColors from "examples/mui/IconButton.colors.tsx";
 import IconButtonDefault from "examples/mui/IconButton.default.tsx";
 import LinkColors from "examples/mui/Link.colors.tsx";
 import LinkDefault from "examples/mui/Link.default.tsx";
+import SwitchChecked from "examples/mui/Switch.checked.tsx";
+import SwitchDefault from "examples/mui/Switch.default.tsx";
 import { useColorScheme } from "./~utils.tsx";
 
 import type { MetaFunction } from "react-router";
@@ -122,7 +123,11 @@ export default function Page() {
 						<CheckboxIndeterminate />
 					</Stack>
 
-					<Switch defaultChecked />
+					<Stack spacing={1}>
+						<SwitchDefault />
+						<SwitchChecked />
+					</Stack>
+
 					<Stack spacing={1} direction="row">
 						<TextField label="Input" variant="outlined" />
 						<TextField label="Textarea" variant="outlined" multiline />

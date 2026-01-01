@@ -62,6 +62,7 @@ import SwitchDefault from "examples/mui/Switch.default.tsx";
 import TextFieldDefault from "examples/mui/TextField.default.tsx";
 import TextFieldMultiline from "examples/mui/TextField.multiline.tsx";
 import TextFieldVariants from "examples/mui/TextField.variants.tsx";
+import ToggleButtonDefault from "examples/mui/ToggleButton.default.tsx";
 import { useColorScheme } from "./~utils.tsx";
 
 import type { MetaFunction } from "react-router";
@@ -148,14 +149,6 @@ export default function Page() {
 						<SliderDefault />
 					</Stack>
 
-					<Stack spacing={1} direction="row">
-						<LinkDefault />
-					</Stack>
-
-					<Stack spacing={1} direction="row">
-						<LinkColors />
-					</Stack>
-
 					<Stack spacing={1}>
 						<SwitchDefault />
 						<SwitchChecked />
@@ -168,6 +161,18 @@ export default function Page() {
 
 					<Stack spacing={1} direction="row">
 						<TextFieldVariants />
+					</Stack>
+
+					<Stack spacing={1} direction="row">
+						<ToggleButtonDefault />
+					</Stack>
+
+					<Stack spacing={1} direction="row">
+						<LinkDefault />
+					</Stack>
+
+					<Stack spacing={1} direction="row">
+						<LinkColors />
 					</Stack>
 
 					<Stack spacing={1} direction="row">

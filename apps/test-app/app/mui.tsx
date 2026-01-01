@@ -20,14 +20,11 @@ import {
 	DialogContentText,
 	DialogTitle,
 	Divider,
-	FormControl,
-	InputLabel,
 	Link,
 	Menu,
 	MenuItem,
 	Pagination,
 	Paper,
-	Select,
 	Stack,
 	Tab,
 	Table,
@@ -38,7 +35,6 @@ import {
 	TableRow,
 	TableSortLabel,
 	Tabs,
-	TextField,
 	Typography,
 } from "@mui/material";
 import { Root } from "@stratakit/mui";
@@ -48,6 +44,7 @@ import ButtonDefault from "examples/mui/Button.default.tsx";
 import ButtonIcons from "examples/mui/Button.icons.tsx";
 import ButtonPermutations from "examples/mui/Button.permutations.tsx";
 import ButtonVariants from "examples/mui/Button.variants.tsx";
+import ButtonGroupDefault from "examples/mui/ButtonGroup.default.tsx";
 import CheckboxChecked from "examples/mui/Checkbox.checked.tsx";
 import CheckboxDefault from "examples/mui/Checkbox.default.tsx";
 import CheckboxIndeterminate from "examples/mui/Checkbox.indeterminate.tsx";
@@ -86,11 +83,7 @@ export default function Page() {
 
 				<Stack spacing={2}>
 					<Stack spacing={1} direction="row">
-						<LinkDefault />
-					</Stack>
-
-					<Stack spacing={1} direction="row">
-						<LinkColors />
+						<AutocompleteDefault />
 					</Stack>
 
 					<Stack spacing={1} direction="row">
@@ -109,7 +102,7 @@ export default function Page() {
 						<ButtonIcons />
 					</Stack>
 
-					<Stack spacing={1}>
+					<Stack spacing={1} direction="row">
 						<ButtonPermutations />
 					</Stack>
 
@@ -119,6 +112,18 @@ export default function Page() {
 
 					<Stack spacing={1} direction="row">
 						<IconButtonColors />
+					</Stack>
+
+					<Stack spacing={1}>
+						<ButtonGroupDefault />
+					</Stack>
+
+					<Stack spacing={1} direction="row">
+						<LinkDefault />
+					</Stack>
+
+					<Stack spacing={1} direction="row">
+						<LinkColors />
 					</Stack>
 
 					<Stack spacing={1}>
@@ -139,10 +144,6 @@ export default function Page() {
 
 					<Stack spacing={1} direction="row">
 						<TextFieldVariants />
-					</Stack>
-
-					<Stack spacing={1} direction="row">
-						<AutocompleteDefault />
 					</Stack>
 
 					<Stack spacing={1} direction="row">

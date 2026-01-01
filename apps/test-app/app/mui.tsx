@@ -48,6 +48,7 @@ import ButtonGroupDefault from "examples/mui/ButtonGroup.default.tsx";
 import CheckboxChecked from "examples/mui/Checkbox.checked.tsx";
 import CheckboxDefault from "examples/mui/Checkbox.default.tsx";
 import CheckboxIndeterminate from "examples/mui/Checkbox.indeterminate.tsx";
+import FloatingActionButtonDefault from "examples/mui/FloatingActionButton.default.tsx";
 import IconButtonColors from "examples/mui/IconButton.colors.tsx";
 import IconButtonDefault from "examples/mui/IconButton.default.tsx";
 import LinkColors from "examples/mui/Link.colors.tsx";
@@ -118,18 +119,22 @@ export default function Page() {
 						<ButtonGroupDefault />
 					</Stack>
 
+					<Stack spacing={1}>
+						<CheckboxDefault />
+						<CheckboxChecked />
+						<CheckboxIndeterminate />
+					</Stack>
+
+					<Stack>
+						<FloatingActionButtonDefault />
+					</Stack>
+
 					<Stack spacing={1} direction="row">
 						<LinkDefault />
 					</Stack>
 
 					<Stack spacing={1} direction="row">
 						<LinkColors />
-					</Stack>
-
-					<Stack spacing={1}>
-						<CheckboxDefault />
-						<CheckboxChecked />
-						<CheckboxIndeterminate />
 					</Stack>
 
 					<Stack spacing={1}>

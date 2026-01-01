@@ -54,6 +54,7 @@ import IconButtonDefault from "examples/mui/IconButton.default.tsx";
 import LinkColors from "examples/mui/Link.colors.tsx";
 import LinkDefault from "examples/mui/Link.default.tsx";
 import RadioGroupDefault from "examples/mui/RadioGroup.default.tsx";
+import RatingDefault from "examples/mui/Rating.default.tsx";
 import SelectDefault from "examples/mui/Select.default.tsx";
 import SwitchChecked from "examples/mui/Switch.checked.tsx";
 import SwitchDefault from "examples/mui/Switch.default.tsx";
@@ -132,6 +133,10 @@ export default function Page() {
 
 					<Stack>
 						<RadioGroupDefault />
+					</Stack>
+
+					<Stack spacing={1} direction="row">
+						<RatingDefault />
 					</Stack>
 
 					<Stack spacing={1} direction="row">

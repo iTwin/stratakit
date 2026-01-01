@@ -53,6 +53,7 @@ import IconButtonColors from "examples/mui/IconButton.colors.tsx";
 import IconButtonDefault from "examples/mui/IconButton.default.tsx";
 import LinkColors from "examples/mui/Link.colors.tsx";
 import LinkDefault from "examples/mui/Link.default.tsx";
+import RadioGroupDefault from "examples/mui/RadioGroup.default.tsx";
 import SelectDefault from "examples/mui/Select.default.tsx";
 import SwitchChecked from "examples/mui/Switch.checked.tsx";
 import SwitchDefault from "examples/mui/Switch.default.tsx";
@@ -127,6 +128,10 @@ export default function Page() {
 
 					<Stack>
 						<FloatingActionButtonDefault />
+					</Stack>
+
+					<Stack>
+						<RadioGroupDefault />
 					</Stack>
 
 					<Stack spacing={1} direction="row">

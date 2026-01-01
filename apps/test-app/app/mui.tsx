@@ -56,6 +56,7 @@ import LinkDefault from "examples/mui/Link.default.tsx";
 import RadioGroupDefault from "examples/mui/RadioGroup.default.tsx";
 import RatingDefault from "examples/mui/Rating.default.tsx";
 import SelectDefault from "examples/mui/Select.default.tsx";
+import SliderDefault from "examples/mui/Slider.default.tsx";
 import SwitchChecked from "examples/mui/Switch.checked.tsx";
 import SwitchDefault from "examples/mui/Switch.default.tsx";
 import TextFieldDefault from "examples/mui/TextField.default.tsx";
@@ -140,6 +141,14 @@ export default function Page() {
 					</Stack>
 
 					<Stack spacing={1} direction="row">
+						<SelectDefault />
+					</Stack>
+
+					<Stack spacing={1} direction="row">
+						<SliderDefault />
+					</Stack>
+
+					<Stack spacing={1} direction="row">
 						<LinkDefault />
 					</Stack>
 
@@ -159,10 +168,6 @@ export default function Page() {
 
 					<Stack spacing={1} direction="row">
 						<TextFieldVariants />
-					</Stack>
-
-					<Stack spacing={1} direction="row">
-						<SelectDefault />
 					</Stack>
 
 					<Stack spacing={1} direction="row">

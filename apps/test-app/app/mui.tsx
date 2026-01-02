@@ -12,7 +12,6 @@ import {
 	Box,
 	Breadcrumbs,
 	Button,
-	Chip,
 	Container,
 	Dialog,
 	DialogActions,
@@ -50,6 +49,9 @@ import ButtonGroupDefault from "examples/mui/ButtonGroup.default.tsx";
 import CheckboxChecked from "examples/mui/Checkbox.checked.tsx";
 import CheckboxDefault from "examples/mui/Checkbox.default.tsx";
 import CheckboxIndeterminate from "examples/mui/Checkbox.indeterminate.tsx";
+import ChipDefault from "examples/mui/Chip.default.tsx";
+import ChipDeletable from "examples/mui/Chip.deletable.tsx";
+import ChipOutlined from "examples/mui/Chip.outlined.tsx";
 import FloatingActionButtonDefault from "examples/mui/FloatingActionButton.default.tsx";
 import IconButtonColors from "examples/mui/IconButton.colors.tsx";
 import IconButtonDefault from "examples/mui/IconButton.default.tsx";
@@ -205,22 +207,20 @@ export default function Page() {
 						</Stack>
 					</ComponentExamples>
 
+					<ComponentExamples name="Chip">
+						<Stack spacing={1} direction="row">
+							<ChipDefault />
+							<ChipOutlined />
+							<ChipDeletable />
+						</Stack>
+					</ComponentExamples>
+
 					<Stack spacing={1} direction="row">
 						<LinkDefault />
 					</Stack>
 
 					<Stack spacing={1} direction="row">
 						<LinkColors />
-					</Stack>
-
-					<Stack spacing={1} direction="row">
-						<Chip label="Default Chip" />
-						<Chip label="Outlined Chip" variant="outlined" />
-						<Chip
-							label="Deletable Chip"
-							variant="outlined"
-							onDelete={() => {}}
-						/>
 					</Stack>
 
 					<Stack spacing={1} direction="row">

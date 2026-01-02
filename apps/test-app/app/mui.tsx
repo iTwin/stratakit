@@ -6,7 +6,6 @@
 import * as React from "react";
 import {
 	Box,
-	Breadcrumbs,
 	Button,
 	Container,
 	Divider,
@@ -28,6 +27,7 @@ import AvatarDefault from "examples/mui/Avatar.default.tsx";
 import BackdropDefault from "examples/mui/Backdrop.default.tsx";
 import BadgeDefault from "examples/mui/Badge.default.tsx";
 import BottomNavigationDefault from "examples/mui/BottomNavigation.default.tsx";
+import BreadcrumbsDefault from "examples/mui/Breadcrumbs.default.tsx";
 import ButtonColors from "examples/mui/Button.colors.tsx";
 import ButtonDefault from "examples/mui/Button.default.tsx";
 import ButtonIcons from "examples/mui/Button.icons.tsx";
@@ -310,16 +310,18 @@ export default function Page() {
 						</Stack>
 					</ComponentExamples>
 
+					<ComponentExamples name="Breadcrumbs">
+						<Stack spacing={1} direction="row">
+							<BreadcrumbsDefault />
+						</Stack>
+					</ComponentExamples>
+
 					<Stack spacing={1} direction="row">
 						<LinkDefault />
 					</Stack>
 
 					<Stack spacing={1} direction="row">
 						<LinkColors />
-					</Stack>
-
-					<Stack spacing={1} direction="row">
-						<BreadcrumbsExample />
 					</Stack>
 
 					<Stack spacing={1} direction="row">
@@ -464,15 +466,5 @@ function TabsExample() {
 				</div>
 			)}
 		</Box>
-	);
-}
-
-function BreadcrumbsExample() {
-	return (
-		<Breadcrumbs aria-label="breadcrumb">
-			<Link href="/">Home</Link>
-			<Link href="#">Packages</Link>
-			<Typography sx={{ color: "text.primary" }}>@stratakit/mui</Typography>
-		</Breadcrumbs>
 	);
 }

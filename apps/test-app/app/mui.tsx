@@ -52,6 +52,7 @@ import ProgressDefault from "examples/mui/Progress.default.tsx";
 import RadioGroupDefault from "examples/mui/RadioGroup.default.tsx";
 import RatingDefault from "examples/mui/Rating.default.tsx";
 import SelectDefault from "examples/mui/Select.default.tsx";
+import SkeletonDefault from "examples/mui/Skeleton.default.tsx";
 import SliderDefault from "examples/mui/Slider.default.tsx";
 import SwitchChecked from "examples/mui/Switch.checked.tsx";
 import SwitchDefault from "examples/mui/Switch.default.tsx";
@@ -261,6 +262,12 @@ export default function Page() {
 					<ComponentExamples name="Progress">
 						<Stack spacing={1}>
 							<ProgressDefault />
+						</Stack>
+					</ComponentExamples>
+
+					<ComponentExamples name="Skeleton">
+						<Stack spacing={1}>
+							<SkeletonDefault />
 						</Stack>
 					</ComponentExamples>
 

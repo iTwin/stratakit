@@ -6,12 +6,9 @@
 import * as React from "react";
 import {
 	Box,
-	Button,
 	Container,
 	Divider,
 	Link,
-	Menu,
-	MenuItem,
 	Pagination,
 	Stack,
 	Tab,
@@ -50,6 +47,7 @@ import IconButtonDefault from "examples/mui/IconButton.default.tsx";
 import LinkColors from "examples/mui/Link.colors.tsx";
 import LinkDefault from "examples/mui/Link.default.tsx";
 import ListDefault from "examples/mui/List.default.tsx";
+import MenuDefault from "examples/mui/Menu.default.tsx";
 import PaperDefault from "examples/mui/Paper.default.tsx";
 import ProgressDefault from "examples/mui/Progress.default.tsx";
 import RadioGroupDefault from "examples/mui/RadioGroup.default.tsx";
@@ -323,17 +321,21 @@ export default function Page() {
 						</Stack>
 					</ComponentExamples>
 
-					<Stack spacing={1} direction="row">
-						<LinkDefault />
-					</Stack>
+					<ComponentExamples name="Link">
+						<Stack spacing={1} direction="row">
+							<LinkDefault />
+						</Stack>
 
-					<Stack spacing={1} direction="row">
-						<LinkColors />
-					</Stack>
+						<Stack spacing={1} direction="row">
+							<LinkColors />
+						</Stack>
+					</ComponentExamples>
 
-					<Stack spacing={1} direction="row">
-						<MenuExample />
-					</Stack>
+					<ComponentExamples name="Menu">
+						<Stack spacing={1} direction="row">
+							<MenuDefault />
+						</Stack>
+					</ComponentExamples>
 
 					<Stack spacing={1} direction="row">
 						<TabsExample />
@@ -371,47 +373,6 @@ function ComponentExamples(props: ComponentExamplesProps) {
 
 			<Divider sx={{ mt: 2, mb: 2 }} />
 		</>
-	);
-}
-
-function MenuExample() {
-	const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-	const open = Boolean(anchorEl);
-	const handleClose = () => {
-		setAnchorEl(null);
-	};
-
-	const buttonId = React.useId();
-	const menuId = React.useId();
-
-	return (
-		<div>
-			<Button
-				variant="contained"
-				id={buttonId}
-				aria-controls={open ? menuId : undefined}
-				aria-haspopup="true"
-				aria-expanded={open ? "true" : undefined}
-				onClick={(event) => setAnchorEl(event.currentTarget)}
-			>
-				Open menu
-			</Button>
-			<Menu
-				id={menuId}
-				anchorEl={anchorEl}
-				open={open}
-				onClose={handleClose}
-				slotProps={{
-					list: {
-						"aria-labelledby": buttonId,
-					},
-				}}
-			>
-				<MenuItem onClick={handleClose}>Profile</MenuItem>
-				<MenuItem onClick={handleClose}>My account</MenuItem>
-				<MenuItem onClick={handleClose}>Logout</MenuItem>
-			</Menu>
-		</div>
 	);
 }
 

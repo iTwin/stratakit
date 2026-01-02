@@ -12,11 +12,6 @@ import {
 	Breadcrumbs,
 	Button,
 	Container,
-	Dialog,
-	DialogActions,
-	DialogContent,
-	DialogContentText,
-	DialogTitle,
 	Divider,
 	Link,
 	Menu,
@@ -45,6 +40,7 @@ import CheckboxIndeterminate from "examples/mui/Checkbox.indeterminate.tsx";
 import ChipDefault from "examples/mui/Chip.default.tsx";
 import ChipDeletable from "examples/mui/Chip.deletable.tsx";
 import ChipOutlined from "examples/mui/Chip.outlined.tsx";
+import DialogDefault from "examples/mui/Dialog.default.tsx";
 import DividerDefault from "examples/mui/Divider.default.tsx";
 import FloatingActionButtonDefault from "examples/mui/FloatingActionButton.default.tsx";
 import IconButtonColors from "examples/mui/IconButton.colors.tsx";
@@ -255,6 +251,12 @@ export default function Page() {
 						</Stack>
 					</ComponentExamples>
 
+					<ComponentExamples name="Dialog">
+						<Stack spacing={1} direction="row">
+							<DialogDefault />
+						</Stack>
+					</ComponentExamples>
+
 					<Stack spacing={1} direction="row">
 						<LinkDefault />
 					</Stack>
@@ -271,10 +273,6 @@ export default function Page() {
 
 					<Stack spacing={1} direction="row">
 						<MenuExample />
-					</Stack>
-
-					<Stack spacing={1} direction="row">
-						<DialogExample />
 					</Stack>
 
 					<Stack spacing={1} direction="row">
@@ -354,36 +352,6 @@ function MenuExample() {
 				<MenuItem onClick={handleClose}>Logout</MenuItem>
 			</Menu>
 		</div>
-	);
-}
-
-function DialogExample() {
-	const [open, setOpen] = React.useState(false);
-
-	const handleClose = () => {
-		setOpen(false);
-	};
-
-	return (
-		<React.Fragment>
-			<Button variant="contained" onClick={() => setOpen(true)}>
-				Open dialog
-			</Button>
-			<Dialog open={open} onClose={handleClose}>
-				<DialogTitle>Important decision</DialogTitle>
-				<DialogContent>
-					<DialogContentText>
-						{`Are you sure you want to use MUI? This decision cannot be undone.`}
-					</DialogContentText>
-				</DialogContent>
-				<DialogActions>
-					<Button onClick={handleClose}>No</Button>
-					<Button variant="contained" onClick={handleClose}>
-						Yes
-					</Button>
-				</DialogActions>
-			</Dialog>
-		</React.Fragment>
 	);
 }
 

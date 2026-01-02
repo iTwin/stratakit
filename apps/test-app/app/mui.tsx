@@ -33,6 +33,7 @@ import ButtonIcons from "examples/mui/Button.icons.tsx";
 import ButtonPermutations from "examples/mui/Button.permutations.tsx";
 import ButtonVariants from "examples/mui/Button.variants.tsx";
 import ButtonGroupDefault from "examples/mui/ButtonGroup.default.tsx";
+import CardDefault from "examples/mui/Card.default.tsx";
 import CheckboxChecked from "examples/mui/Checkbox.checked.tsx";
 import CheckboxDefault from "examples/mui/Checkbox.default.tsx";
 import CheckboxIndeterminate from "examples/mui/Checkbox.indeterminate.tsx";
@@ -286,6 +287,12 @@ export default function Page() {
 					<ComponentExamples name="App Bar">
 						<Stack spacing={1}>
 							<AppBarDefault />
+						</Stack>
+					</ComponentExamples>
+
+					<ComponentExamples name="Card">
+						<Stack spacing={1}>
+							<CardDefault />
 						</Stack>
 					</ComponentExamples>
 

@@ -54,6 +54,7 @@ import RatingDefault from "examples/mui/Rating.default.tsx";
 import SelectDefault from "examples/mui/Select.default.tsx";
 import SkeletonDefault from "examples/mui/Skeleton.default.tsx";
 import SliderDefault from "examples/mui/Slider.default.tsx";
+import SnackbarDefault from "examples/mui/Snackbar.default.tsx";
 import SwitchChecked from "examples/mui/Switch.checked.tsx";
 import SwitchDefault from "examples/mui/Switch.default.tsx";
 import TableDefault from "examples/mui/Table.default.tsx";
@@ -268,6 +269,12 @@ export default function Page() {
 					<ComponentExamples name="Skeleton">
 						<Stack spacing={1}>
 							<SkeletonDefault />
+						</Stack>
+					</ComponentExamples>
+
+					<ComponentExamples name="Snackbar">
+						<Stack spacing={1} direction="row">
+							<SnackbarDefault />
 						</Stack>
 					</ComponentExamples>
 

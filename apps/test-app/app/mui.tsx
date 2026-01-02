@@ -87,85 +87,109 @@ export default function Page() {
 				<Divider sx={{ mt: 2, mb: 2 }} />
 
 				<Stack spacing={2}>
-					<Stack spacing={1} direction="row">
-						<AutocompleteDefault />
-					</Stack>
+					<ComponentExamples name="Autocomplete">
+						<Stack spacing={1} direction="row">
+							<AutocompleteDefault />
+						</Stack>
+					</ComponentExamples>
 
-					<Stack spacing={1} direction="row">
-						<ButtonDefault />
-					</Stack>
+					<ComponentExamples name="Button">
+						<Stack spacing={1} direction="row">
+							<ButtonDefault />
+						</Stack>
 
-					<Stack spacing={1} direction="row">
-						<ButtonVariants />
-					</Stack>
+						<Stack spacing={1} direction="row">
+							<ButtonVariants />
+						</Stack>
 
-					<Stack spacing={1} direction="row">
-						<ButtonColors />
-					</Stack>
+						<Stack spacing={1} direction="row">
+							<ButtonColors />
+						</Stack>
 
-					<Stack spacing={1} direction="row">
-						<ButtonIcons />
-					</Stack>
+						<Stack spacing={1} direction="row">
+							<ButtonIcons />
+						</Stack>
 
-					<Stack spacing={1} direction="row">
-						<ButtonPermutations />
-					</Stack>
+						<Stack spacing={1} direction="row">
+							<ButtonPermutations />
+						</Stack>
 
-					<Stack spacing={1} direction="row">
-						<IconButtonDefault />
-					</Stack>
+						<Stack spacing={1} direction="row">
+							<IconButtonDefault />
+						</Stack>
 
-					<Stack spacing={1} direction="row">
-						<IconButtonColors />
-					</Stack>
+						<Stack spacing={1} direction="row">
+							<IconButtonColors />
+						</Stack>
+					</ComponentExamples>
 
-					<Stack spacing={1}>
-						<ButtonGroupDefault />
-					</Stack>
+					<ComponentExamples name="Button Group">
+						<Stack spacing={1}>
+							<ButtonGroupDefault />
+						</Stack>
+					</ComponentExamples>
 
-					<Stack spacing={1}>
-						<CheckboxDefault />
-						<CheckboxChecked />
-						<CheckboxIndeterminate />
-					</Stack>
+					<ComponentExamples name="Checkbox">
+						<Stack spacing={1}>
+							<CheckboxDefault />
+							<CheckboxChecked />
+							<CheckboxIndeterminate />
+						</Stack>
+					</ComponentExamples>
 
-					<Stack>
-						<FloatingActionButtonDefault />
-					</Stack>
+					<ComponentExamples name="Floating Action Button">
+						<Stack>
+							<FloatingActionButtonDefault />
+						</Stack>
+					</ComponentExamples>
 
-					<Stack>
-						<RadioGroupDefault />
-					</Stack>
+					<ComponentExamples name="Radio Group">
+						<Stack>
+							<RadioGroupDefault />
+						</Stack>
+					</ComponentExamples>
 
-					<Stack spacing={1} direction="row">
-						<RatingDefault />
-					</Stack>
+					<ComponentExamples name="Rating">
+						<Stack spacing={1} direction="row">
+							<RatingDefault />
+						</Stack>
+					</ComponentExamples>
 
-					<Stack spacing={1} direction="row">
-						<SelectDefault />
-					</Stack>
+					<ComponentExamples name="Select">
+						<Stack spacing={1} direction="row">
+							<SelectDefault />
+						</Stack>
+					</ComponentExamples>
 
-					<Stack spacing={1} direction="row">
-						<SliderDefault />
-					</Stack>
+					<ComponentExamples name="Slider">
+						<Stack spacing={1} direction="row">
+							<SliderDefault />
+						</Stack>
+					</ComponentExamples>
 
-					<Stack spacing={1}>
-						<SwitchDefault />
-						<SwitchChecked />
-					</Stack>
+					<ComponentExamples name="Switch">
+						<Stack spacing={1}>
+							<SwitchDefault />
+							<SwitchChecked />
+						</Stack>
+					</ComponentExamples>
 
-					<Stack spacing={1} direction="row">
-						<TextFieldDefault />
-						<TextFieldMultiline />
-					</Stack>
+					<ComponentExamples name="Text Field">
+						<Stack spacing={1} direction="row">
+							<TextFieldDefault />
+							<TextFieldMultiline />
+						</Stack>
 
-					<Stack spacing={1} direction="row">
-						<TextFieldVariants />
-					</Stack>
+						<Stack spacing={1} direction="row">
+							<TextFieldVariants />
+						</Stack>
+					</ComponentExamples>
 
-					<Stack spacing={1} direction="row">
-						<ToggleButtonDefault />
-					</Stack>
+					<ComponentExamples name="Toggle Button">
+						<Stack spacing={1} direction="row">
+							<ToggleButtonDefault />
+						</Stack>
+					</ComponentExamples>
 
 					<Stack spacing={1} direction="row">
 						<LinkDefault />
@@ -221,6 +245,27 @@ export default function Page() {
 				</Stack>
 			</Container>
 		</Root>
+	);
+}
+
+interface ComponentExamplesProps {
+	name: string;
+	children?: React.ReactNode;
+}
+
+function ComponentExamples(props: ComponentExamplesProps) {
+	const { name } = props;
+	const id = name.toLowerCase().replace(" ", "-");
+	return (
+		<>
+			<Typography variant="h5" component="h2" id={id}>
+				<Link href={`#${id}`}>{name}</Link>
+			</Typography>
+
+			{props.children}
+
+			<Divider sx={{ mt: 2, mb: 2 }} />
+		</>
 	);
 }
 

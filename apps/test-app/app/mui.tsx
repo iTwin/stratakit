@@ -57,6 +57,7 @@ import SkeletonDefault from "examples/mui/Skeleton.default.tsx";
 import SliderDefault from "examples/mui/Slider.default.tsx";
 import SnackbarDefault from "examples/mui/Snackbar.default.tsx";
 import SpeedDialDefault from "examples/mui/SpeedDial.default.tsx";
+import StepperDefault from "examples/mui/Stepper.default.tsx";
 import SwitchChecked from "examples/mui/Switch.checked.tsx";
 import SwitchDefault from "examples/mui/Switch.default.tsx";
 import TableDefault from "examples/mui/Table.default.tsx";
@@ -347,6 +348,12 @@ export default function Page() {
 					<ComponentExamples name="Speed Dial">
 						<Stack spacing={1} direction="row">
 							<SpeedDialDefault />
+						</Stack>
+					</ComponentExamples>
+
+					<ComponentExamples name="Stepper">
+						<Stack spacing={1}>
+							<StepperDefault />
 						</Stack>
 					</ComponentExamples>
 

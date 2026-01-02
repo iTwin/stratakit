@@ -58,6 +58,7 @@ import IconButtonColors from "examples/mui/IconButton.colors.tsx";
 import IconButtonDefault from "examples/mui/IconButton.default.tsx";
 import LinkColors from "examples/mui/Link.colors.tsx";
 import LinkDefault from "examples/mui/Link.default.tsx";
+import ListDefault from "examples/mui/List.default.tsx";
 import RadioGroupDefault from "examples/mui/RadioGroup.default.tsx";
 import RatingDefault from "examples/mui/Rating.default.tsx";
 import SelectDefault from "examples/mui/Select.default.tsx";
@@ -219,6 +220,12 @@ export default function Page() {
 					<ComponentExamples name="Divider">
 						<Stack spacing={1}>
 							<DividerDefault />
+						</Stack>
+					</ComponentExamples>
+
+					<ComponentExamples name="List">
+						<Stack spacing={1}>
+							<ListDefault />
 						</Stack>
 					</ComponentExamples>
 

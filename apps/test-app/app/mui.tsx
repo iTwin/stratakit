@@ -48,6 +48,7 @@ import IconButtonDefault from "examples/mui/IconButton.default.tsx";
 import LinkColors from "examples/mui/Link.colors.tsx";
 import LinkDefault from "examples/mui/Link.default.tsx";
 import ListDefault from "examples/mui/List.default.tsx";
+import ProgressDefault from "examples/mui/Progress.default.tsx";
 import RadioGroupDefault from "examples/mui/RadioGroup.default.tsx";
 import RatingDefault from "examples/mui/Rating.default.tsx";
 import SelectDefault from "examples/mui/Select.default.tsx";
@@ -254,6 +255,12 @@ export default function Page() {
 					<ComponentExamples name="Dialog">
 						<Stack spacing={1} direction="row">
 							<DialogDefault />
+						</Stack>
+					</ComponentExamples>
+
+					<ComponentExamples name="Progress">
+						<Stack spacing={1}>
+							<ProgressDefault />
 						</Stack>
 					</ComponentExamples>
 

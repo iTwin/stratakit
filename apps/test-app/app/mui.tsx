@@ -31,6 +31,7 @@ import { Root } from "@stratakit/mui";
 import AlertDefault from "examples/mui/Alert.default.tsx";
 import AutocompleteDefault from "examples/mui/Autocomplete.default.tsx";
 import AvatarDefault from "examples/mui/Avatar.default.tsx";
+import BackdropDefault from "examples/mui/Backdrop.default.tsx";
 import BadgeDefault from "examples/mui/Badge.default.tsx";
 import ButtonColors from "examples/mui/Button.colors.tsx";
 import ButtonDefault from "examples/mui/Button.default.tsx";
@@ -245,6 +246,12 @@ export default function Page() {
 					<ComponentExamples name="Alert">
 						<Stack spacing={1}>
 							<AlertDefault />
+						</Stack>
+					</ComponentExamples>
+
+					<ComponentExamples name="Backdrop">
+						<Stack spacing={1} direction="row">
+							<BackdropDefault />
 						</Stack>
 					</ComponentExamples>
 

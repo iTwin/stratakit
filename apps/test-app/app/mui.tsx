@@ -27,6 +27,7 @@ import AutocompleteDefault from "examples/mui/Autocomplete.default.tsx";
 import AvatarDefault from "examples/mui/Avatar.default.tsx";
 import BackdropDefault from "examples/mui/Backdrop.default.tsx";
 import BadgeDefault from "examples/mui/Badge.default.tsx";
+import BottomNavigationDefault from "examples/mui/BottomNavigation.default.tsx";
 import ButtonColors from "examples/mui/Button.colors.tsx";
 import ButtonDefault from "examples/mui/Button.default.tsx";
 import ButtonIcons from "examples/mui/Button.icons.tsx";
@@ -300,6 +301,12 @@ export default function Page() {
 					<ComponentExamples name="Paper">
 						<Stack spacing={1} direction="row">
 							<PaperDefault />
+						</Stack>
+					</ComponentExamples>
+
+					<ComponentExamples name="Bottom Navigation">
+						<Stack spacing={1}>
+							<BottomNavigationDefault />
 						</Stack>
 					</ComponentExamples>
 

@@ -22,6 +22,7 @@ import {
 import { Root } from "@stratakit/mui";
 import AccordionDefault from "examples/mui/Accordion.default.tsx";
 import AlertDefault from "examples/mui/Alert.default.tsx";
+import AppBarDefault from "examples/mui/AppBar.default.tsx";
 import AutocompleteDefault from "examples/mui/Autocomplete.default.tsx";
 import AvatarDefault from "examples/mui/Avatar.default.tsx";
 import BackdropDefault from "examples/mui/Backdrop.default.tsx";
@@ -279,6 +280,12 @@ export default function Page() {
 					<ComponentExamples name="Accordion">
 						<Stack spacing={1}>
 							<AccordionDefault />
+						</Stack>
+					</ComponentExamples>
+
+					<ComponentExamples name="App Bar">
+						<Stack spacing={1}>
+							<AppBarDefault />
 						</Stack>
 					</ComponentExamples>
 

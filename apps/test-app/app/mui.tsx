@@ -43,6 +43,7 @@ import ChipDeletable from "examples/mui/Chip.deletable.tsx";
 import ChipOutlined from "examples/mui/Chip.outlined.tsx";
 import DialogDefault from "examples/mui/Dialog.default.tsx";
 import DividerDefault from "examples/mui/Divider.default.tsx";
+import DrawerDefault from "examples/mui/Drawer.default.tsx";
 import FloatingActionButtonDefault from "examples/mui/FloatingActionButton.default.tsx";
 import IconButtonColors from "examples/mui/IconButton.colors.tsx";
 import IconButtonDefault from "examples/mui/IconButton.default.tsx";
@@ -313,6 +314,12 @@ export default function Page() {
 					<ComponentExamples name="Breadcrumbs">
 						<Stack spacing={1} direction="row">
 							<BreadcrumbsDefault />
+						</Stack>
+					</ComponentExamples>
+
+					<ComponentExamples name="Drawer">
+						<Stack spacing={1} direction="row">
+							<DrawerDefault />
 						</Stack>
 					</ComponentExamples>
 

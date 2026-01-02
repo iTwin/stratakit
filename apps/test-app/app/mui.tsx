@@ -48,6 +48,7 @@ import IconButtonDefault from "examples/mui/IconButton.default.tsx";
 import LinkColors from "examples/mui/Link.colors.tsx";
 import LinkDefault from "examples/mui/Link.default.tsx";
 import ListDefault from "examples/mui/List.default.tsx";
+import PaperDefault from "examples/mui/Paper.default.tsx";
 import ProgressDefault from "examples/mui/Progress.default.tsx";
 import RadioGroupDefault from "examples/mui/RadioGroup.default.tsx";
 import RatingDefault from "examples/mui/Rating.default.tsx";
@@ -293,6 +294,12 @@ export default function Page() {
 					<ComponentExamples name="Card">
 						<Stack spacing={1}>
 							<CardDefault />
+						</Stack>
+					</ComponentExamples>
+
+					<ComponentExamples name="Paper">
+						<Stack spacing={1} direction="row">
+							<PaperDefault />
 						</Stack>
 					</ComponentExamples>
 

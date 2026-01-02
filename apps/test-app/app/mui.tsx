@@ -5,9 +5,6 @@
 
 import * as React from "react";
 import {
-	Accordion,
-	AccordionDetails,
-	AccordionSummary,
 	Box,
 	Breadcrumbs,
 	Button,
@@ -23,6 +20,7 @@ import {
 	Typography,
 } from "@mui/material";
 import { Root } from "@stratakit/mui";
+import AccordionDefault from "examples/mui/Accordion.default.tsx";
 import AlertDefault from "examples/mui/Alert.default.tsx";
 import AutocompleteDefault from "examples/mui/Autocomplete.default.tsx";
 import AvatarDefault from "examples/mui/Avatar.default.tsx";
@@ -278,6 +276,12 @@ export default function Page() {
 						</Stack>
 					</ComponentExamples>
 
+					<ComponentExamples name="Accordion">
+						<Stack spacing={1}>
+							<AccordionDefault />
+						</Stack>
+					</ComponentExamples>
+
 					<Stack spacing={1} direction="row">
 						<LinkDefault />
 					</Stack>
@@ -289,8 +293,6 @@ export default function Page() {
 					<Stack spacing={1} direction="row">
 						<BreadcrumbsExample />
 					</Stack>
-
-					<AccordionExample />
 
 					<Stack spacing={1} direction="row">
 						<MenuExample />
@@ -444,19 +446,5 @@ function BreadcrumbsExample() {
 			<Link href="#">Packages</Link>
 			<Typography sx={{ color: "text.primary" }}>@stratakit/mui</Typography>
 		</Breadcrumbs>
-	);
-}
-
-function AccordionExample() {
-	return (
-		<Accordion>
-			<AccordionSummary aria-controls="panel1-content" id="panel1-header">
-				<Typography component="span">Accordion</Typography>
-			</AccordionSummary>
-			<AccordionDetails>
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-				malesuada lacus ex, sit amet blandit leo lobortis eget.
-			</AccordionDetails>
-		</Accordion>
 	);
 }

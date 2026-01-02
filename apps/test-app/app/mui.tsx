@@ -9,7 +9,6 @@ import {
 	Container,
 	Divider,
 	Link,
-	Pagination,
 	Stack,
 	Tab,
 	Tabs,
@@ -48,6 +47,7 @@ import LinkColors from "examples/mui/Link.colors.tsx";
 import LinkDefault from "examples/mui/Link.default.tsx";
 import ListDefault from "examples/mui/List.default.tsx";
 import MenuDefault from "examples/mui/Menu.default.tsx";
+import PaginationDefault from "examples/mui/Pagination.default.tsx";
 import PaperDefault from "examples/mui/Paper.default.tsx";
 import ProgressDefault from "examples/mui/Progress.default.tsx";
 import RadioGroupDefault from "examples/mui/RadioGroup.default.tsx";
@@ -337,17 +337,14 @@ export default function Page() {
 						</Stack>
 					</ComponentExamples>
 
+					<ComponentExamples name="Pagination">
+						<Stack spacing={1}>
+							<PaginationDefault />
+						</Stack>
+					</ComponentExamples>
+
 					<Stack spacing={1} direction="row">
 						<TabsExample />
-					</Stack>
-
-					<Stack spacing={1}>
-						<Pagination
-							count={10}
-							showFirstButton
-							showLastButton
-							sx={{ alignSelf: "center" }}
-						/>
 					</Stack>
 				</Stack>
 			</Container>

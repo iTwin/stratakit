@@ -52,6 +52,7 @@ import CheckboxIndeterminate from "examples/mui/Checkbox.indeterminate.tsx";
 import ChipDefault from "examples/mui/Chip.default.tsx";
 import ChipDeletable from "examples/mui/Chip.deletable.tsx";
 import ChipOutlined from "examples/mui/Chip.outlined.tsx";
+import DividerDefault from "examples/mui/Divider.default.tsx";
 import FloatingActionButtonDefault from "examples/mui/FloatingActionButton.default.tsx";
 import IconButtonColors from "examples/mui/IconButton.colors.tsx";
 import IconButtonDefault from "examples/mui/IconButton.default.tsx";
@@ -212,6 +213,12 @@ export default function Page() {
 							<ChipDefault />
 							<ChipOutlined />
 							<ChipDeletable />
+						</Stack>
+					</ComponentExamples>
+
+					<ComponentExamples name="Divider">
+						<Stack spacing={1}>
+							<DividerDefault />
 						</Stack>
 					</ComponentExamples>
 

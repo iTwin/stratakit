@@ -62,6 +62,7 @@ import TextFieldDefault from "examples/mui/TextField.default.tsx";
 import TextFieldMultiline from "examples/mui/TextField.multiline.tsx";
 import TextFieldVariants from "examples/mui/TextField.variants.tsx";
 import ToggleButtonDefault from "examples/mui/ToggleButton.default.tsx";
+import TooltipDefault from "examples/mui/Tooltip.default.tsx";
 import { useColorScheme } from "./~utils.tsx";
 
 import type { MetaFunction } from "react-router";
@@ -225,6 +226,12 @@ export default function Page() {
 					<ComponentExamples name="Table">
 						<Stack spacing={1}>
 							<TableDefault />
+						</Stack>
+					</ComponentExamples>
+
+					<ComponentExamples name="Tooltip">
+						<Stack spacing={1} direction="row">
+							<TooltipDefault />
 						</Stack>
 					</ComponentExamples>
 

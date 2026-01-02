@@ -3,17 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import * as React from "react";
-import {
-	Box,
-	Container,
-	Divider,
-	Link,
-	Stack,
-	Tab,
-	Tabs,
-	Typography,
-} from "@mui/material";
+import { Container, Divider, Link, Stack, Typography } from "@mui/material";
 import { Root } from "@stratakit/mui";
 import AccordionDefault from "examples/mui/Accordion.default.tsx";
 import AlertDefault from "examples/mui/Alert.default.tsx";
@@ -61,6 +51,7 @@ import StepperDefault from "examples/mui/Stepper.default.tsx";
 import SwitchChecked from "examples/mui/Switch.checked.tsx";
 import SwitchDefault from "examples/mui/Switch.default.tsx";
 import TableDefault from "examples/mui/Table.default.tsx";
+import TabsDefault from "examples/mui/Tabs.default.tsx";
 import TextFieldDefault from "examples/mui/TextField.default.tsx";
 import TextFieldMultiline from "examples/mui/TextField.multiline.tsx";
 import TextFieldVariants from "examples/mui/TextField.variants.tsx";
@@ -69,6 +60,7 @@ import TooltipDefault from "examples/mui/Tooltip.default.tsx";
 import TypographyDefault from "examples/mui/Typography.default.tsx";
 import { useColorScheme } from "./~utils.tsx";
 
+import type * as React from "react";
 import type { MetaFunction } from "react-router";
 
 // ----------------------------------------------------------------------------
@@ -357,9 +349,11 @@ export default function Page() {
 						</Stack>
 					</ComponentExamples>
 
-					<Stack spacing={1} direction="row">
-						<TabsExample />
-					</Stack>
+					<ComponentExamples name="Tabs">
+						<Stack spacing={1}>
+							<TabsDefault />
+						</Stack>
+					</ComponentExamples>
 				</Stack>
 			</Container>
 		</Root>
@@ -384,66 +378,5 @@ function ComponentExamples(props: ComponentExamplesProps) {
 
 			<Divider sx={{ mt: 2, mb: 2 }} />
 		</>
-	);
-}
-
-function TabsExample() {
-	const [value, setValue] = React.useState(0);
-
-	const baseId = React.useId();
-
-	return (
-		<Box sx={{ width: "100%" }}>
-			<Box sx={{ borderBottom: 1, borderColor: "divider" }}>
-				<Tabs
-					value={value}
-					onChange={(_, value) => setValue(value)}
-					aria-label="basic tabs example"
-				>
-					<Tab
-						label="Item One"
-						id={`${baseId}-tab0`}
-						aria-controls={`${baseId}-panel0`}
-					/>
-					<Tab
-						label="Item Two"
-						id={`${baseId}-tab1`}
-						aria-controls={`${baseId}-panel1`}
-					/>
-					<Tab
-						label="Item Three"
-						id={`${baseId}-tab2`}
-						aria-controls={`${baseId}-panel2`}
-					/>
-				</Tabs>
-			</Box>
-			{value === 0 && (
-				<div
-					role="tabpanel"
-					id={`${baseId}-panel0`}
-					aria-labelledby={`${baseId}-tab0`}
-				>
-					Item One
-				</div>
-			)}
-			{value === 1 && (
-				<div
-					role="tabpanel"
-					id={`${baseId}-panel1`}
-					aria-labelledby={`${baseId}-tab1`}
-				>
-					Item Two
-				</div>
-			)}
-			{value === 2 && (
-				<div
-					role="tabpanel"
-					id={`${baseId}-panel2`}
-					aria-labelledby={`${baseId}-tab2`}
-				>
-					Item Three
-				</div>
-			)}
-		</Box>
 	);
 }

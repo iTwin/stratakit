@@ -39,6 +39,7 @@ import {
 } from "@mui/material";
 import { Root } from "@stratakit/mui";
 import AutocompleteDefault from "examples/mui/Autocomplete.default.tsx";
+import AvatarDefault from "examples/mui/Avatar.default.tsx";
 import ButtonColors from "examples/mui/Button.colors.tsx";
 import ButtonDefault from "examples/mui/Button.default.tsx";
 import ButtonIcons from "examples/mui/Button.icons.tsx";
@@ -188,6 +189,12 @@ export default function Page() {
 					<ComponentExamples name="Toggle Button">
 						<Stack spacing={1} direction="row">
 							<ToggleButtonDefault />
+						</Stack>
+					</ComponentExamples>
+
+					<ComponentExamples name="Avatar">
+						<Stack spacing={1} direction="row">
+							<AvatarDefault />
 						</Stack>
 					</ComponentExamples>
 

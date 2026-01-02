@@ -8,7 +8,6 @@ import {
 	Accordion,
 	AccordionDetails,
 	AccordionSummary,
-	Alert,
 	Box,
 	Breadcrumbs,
 	Button,
@@ -29,6 +28,7 @@ import {
 	Typography,
 } from "@mui/material";
 import { Root } from "@stratakit/mui";
+import AlertDefault from "examples/mui/Alert.default.tsx";
 import AutocompleteDefault from "examples/mui/Autocomplete.default.tsx";
 import AvatarDefault from "examples/mui/Avatar.default.tsx";
 import BadgeDefault from "examples/mui/Badge.default.tsx";
@@ -242,6 +242,12 @@ export default function Page() {
 						</Stack>
 					</ComponentExamples>
 
+					<ComponentExamples name="Alert">
+						<Stack spacing={1}>
+							<AlertDefault />
+						</Stack>
+					</ComponentExamples>
+
 					<Stack spacing={1} direction="row">
 						<LinkDefault />
 					</Stack>
@@ -266,12 +272,6 @@ export default function Page() {
 
 					<Stack spacing={1} direction="row">
 						<TabsExample />
-					</Stack>
-
-					<Stack spacing={1}>
-						<Alert severity="success">
-							Here is a gentle confirmation that your action was successful.
-						</Alert>
 					</Stack>
 
 					<Stack spacing={1}>

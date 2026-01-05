@@ -3,8 +3,15 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import { Slider } from "@mui/material";
+import { useId } from "react";
+import { FormControl, FormLabel, Slider } from "@mui/material";
 
 export default () => {
-	return <Slider defaultValue={70} />;
+	const id = useId();
+	return (
+		<FormControl fullWidth>
+			<FormLabel htmlFor={id}>Volume</FormLabel>
+			<Slider defaultValue={70} slotProps={{ input: { id } }} />
+		</FormControl>
+	);
 };

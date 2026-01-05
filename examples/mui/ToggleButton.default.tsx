@@ -3,7 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import { ToggleButton, ToggleButtonGroup } from "@mui/material";
+import { ToggleButton, ToggleButtonGroup, Tooltip } from "@mui/material";
 import { Icon } from "@stratakit/mui";
 
 import textAlignCenterIcon from "@stratakit/icons/text-align-center.svg";
@@ -14,18 +14,26 @@ import textAlignRightIcon from "@stratakit/icons/text-align-right.svg";
 export default () => {
 	return (
 		<ToggleButtonGroup value="center" aria-label="text alignment">
-			<ToggleButton value="left" aria-label="left aligned">
-				<Icon href={textAlignLeftIcon} />
-			</ToggleButton>
-			<ToggleButton value="center" aria-label="centered">
-				<Icon href={textAlignCenterIcon} />
-			</ToggleButton>
-			<ToggleButton value="right" aria-label="right aligned">
-				<Icon href={textAlignRightIcon} />
-			</ToggleButton>
-			<ToggleButton value="justify" aria-label="justified" disabled>
-				<Icon href={textAlignJustifyIcon} />
-			</ToggleButton>
+			<Tooltip title="Left aligned">
+				<ToggleButton value="left">
+					<Icon href={textAlignLeftIcon} />
+				</ToggleButton>
+			</Tooltip>
+			<Tooltip title="Centered">
+				<ToggleButton value="center">
+					<Icon href={textAlignCenterIcon} />
+				</ToggleButton>
+			</Tooltip>
+			<Tooltip title="Right aligned">
+				<ToggleButton value="right">
+					<Icon href={textAlignRightIcon} />
+				</ToggleButton>
+			</Tooltip>
+			<Tooltip title="Justified">
+				<ToggleButton value="justify" disabled>
+					<Icon href={textAlignJustifyIcon} />
+				</ToggleButton>
+			</Tooltip>
 		</ToggleButtonGroup>
 	);
 };

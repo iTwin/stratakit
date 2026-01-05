@@ -3,8 +3,16 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import { LinearProgress } from "@mui/material";
+import { useId } from "react";
+import { LinearProgress, Typography } from "@mui/material";
 
 export default () => {
-	return <LinearProgress />;
+	const labelId = useId();
+
+	return (
+		<>
+			<LinearProgress aria-labelledby={labelId} />
+			<Typography id={labelId}>Analyzing results…</Typography>
+		</>
+	);
 };

@@ -75,7 +75,11 @@ export default function Page() {
 	const colorScheme = useColorScheme();
 	return (
 		<Root colorScheme={colorScheme}>
-			<Container maxWidth="lg" sx={{ p: 4, minBlockSize: "100dvb" }}>
+			<Container
+				maxWidth="lg"
+				sx={{ p: 4, minBlockSize: "100dvb" }}
+				component="main"
+			>
 				<Typography variant="h4" component="h1">
 					StrataKit MUI theme
 				</Typography>

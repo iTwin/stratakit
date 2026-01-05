@@ -110,7 +110,7 @@ export default function Page() {
 							<ButtonIcons />
 						</Stack>
 
-						<Stack spacing={1} direction="row">
+						<Stack spacing={1}>
 							<ButtonPermutations />
 						</Stack>
 

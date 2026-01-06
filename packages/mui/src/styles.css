@@ -105,6 +105,19 @@
 		}
 	}
 
+	.MuiFormControl-root {
+		row-gap: var(--stratakit-space-x1);
+	}
+
+	.MuiFormLabel-root {
+		position: relative;
+		transform: none;
+	}
+
+	.MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline legend {
+		display: none;
+	}
+
 	.MuiFormLabel-colorPrimary {
 		&.Mui-focused {
 			color: var(--stratakit-mui-palette-primary-dark);

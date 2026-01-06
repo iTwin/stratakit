@@ -150,7 +150,17 @@ function createTheme() {
 			},
 			MuiTextField: {
 				defaultProps: {
-					slotProps: { inputLabel: { shrink: true } },
+					slotProps: {
+						inputLabel: { shrink: true },
+					},
+					InputProps: {
+						notched: false,
+					},
+				},
+			},
+			MuiOutlinedInput: {
+				defaultProps: {
+					notched: false,
 				},
 			},
 		},

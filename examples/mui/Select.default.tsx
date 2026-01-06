@@ -10,7 +10,7 @@ export default () => {
 	const labelId = useId();
 	const label = "Choose a design system:";
 	return (
-		<FormControl sx={{ minInlineSize: 250 }}>
+		<FormControl style={{ minInlineSize: 250 }}>
 			<InputLabel id={labelId}>{label}</InputLabel>
 			<Select labelId={labelId} label={label} defaultValue={2}>
 				<MenuItem value={1}>iTwinUI</MenuItem>

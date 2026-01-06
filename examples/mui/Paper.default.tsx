@@ -6,5 +6,7 @@
 import { Paper } from "@mui/material";
 
 export default () => {
-	return <Paper elevation={4} sx={{ minBlockSize: 128, minInlineSize: 128 }} />;
+	return (
+		<Paper elevation={4} style={{ minBlockSize: 128, minInlineSize: 128 }} />
+	);
 };

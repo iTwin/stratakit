@@ -20,10 +20,10 @@ export default () => {
 				"Switch",
 				"TextField",
 			]}
-			sx={{ minInlineSize: 300 }}
 			renderInput={(params) => (
 				<TextField {...params} label="Choose a favorite component:" />
 			)}
+			style={{ minInlineSize: 300 }}
 		/>
 	);
 };

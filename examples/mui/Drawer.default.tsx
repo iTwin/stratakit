@@ -26,7 +26,7 @@ export default () => {
 		<>
 			<Button onClick={() => setOpen(true)}>Open drawer</Button>
 			<Drawer open={open} onClose={() => setOpen(false)}>
-				<List sx={{ minInlineSize: 250 }}>
+				<List style={{ minInlineSize: 250 }}>
 					<ListItem disablePadding>
 						<ListItemButton>
 							<ListItemIcon>

@@ -13,9 +13,9 @@ export default () => {
 		<div>
 			<Button onClick={() => setOpen(true)}>Show backdrop</Button>
 			<Backdrop
-				sx={(theme) => ({ zIndex: theme.zIndex.drawer + 1 })}
 				open={open}
 				onClick={() => setOpen(false)}
+				style={{ zIndex: "var(--stratakit-mui-zIndex-modal)" }}
 			/>
 		</div>
 	);

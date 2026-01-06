@@ -6,5 +6,9 @@
 import { Avatar } from "@mui/material";
 
 export default () => {
-	return <Avatar>WW</Avatar>;
+	return (
+		<Avatar aria-label="Willow Winters" role="img">
+			<abbr aria-hidden="true">WW</abbr>
+		</Avatar>
+	);
 };

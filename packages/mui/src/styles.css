@@ -114,10 +114,6 @@
 		transform: none;
 	}
 
-	.MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline legend {
-		display: none;
-	}
-
 	.MuiFormLabel-colorPrimary {
 		&.Mui-focused {
 			color: var(--stratakit-mui-palette-primary-dark);

@@ -14,26 +14,26 @@ import BackdropDefault from "examples/mui/Backdrop.default.tsx";
 import BadgeDefault from "examples/mui/Badge.default.tsx";
 import BottomNavigationDefault from "examples/mui/BottomNavigation.default.tsx";
 import BreadcrumbsDefault from "examples/mui/Breadcrumbs.default.tsx";
+import ButtonPermutations_ from "examples/mui/Button._permutations.js";
 import ButtonColors from "examples/mui/Button.colors.tsx";
 import ButtonDefault from "examples/mui/Button.default.tsx";
 import ButtonIcons from "examples/mui/Button.icons.tsx";
-import ButtonPermutations from "examples/mui/Button.permutations.tsx";
 import ButtonVariants from "examples/mui/Button.variants.tsx";
 import ButtonGroupDefault from "examples/mui/ButtonGroup.default.tsx";
 import CardDefault from "examples/mui/Card.default.tsx";
 import CheckboxChecked from "examples/mui/Checkbox.checked.tsx";
 import CheckboxDefault from "examples/mui/Checkbox.default.tsx";
 import CheckboxIndeterminate from "examples/mui/Checkbox.indeterminate.tsx";
+import ChipDeletable_ from "examples/mui/Chip._deletable.tsx";
 import ChipDefault from "examples/mui/Chip.default.tsx";
-import ChipDeletable from "examples/mui/Chip.deletable.tsx";
 import ChipOutlined from "examples/mui/Chip.outlined.tsx";
 import DialogDefault from "examples/mui/Dialog.default.tsx";
 import DividerDefault from "examples/mui/Divider.default.tsx";
 import DrawerDefault from "examples/mui/Drawer.default.tsx";
 import FloatingActionButtonDefault from "examples/mui/FloatingActionButton.default.tsx";
-import IconButtonColors from "examples/mui/IconButton.colors.tsx";
+import IconButtonColors_ from "examples/mui/IconButton._colors.tsx";
 import IconButtonDefault from "examples/mui/IconButton.default.tsx";
-import LinkColors from "examples/mui/Link.colors.tsx";
+import LinkColors_ from "examples/mui/Link._colors.tsx";
 import LinkDefault from "examples/mui/Link.default.tsx";
 import ListDefault from "examples/mui/List.default.tsx";
 import MenuDefault from "examples/mui/Menu.default.tsx";
@@ -58,7 +58,7 @@ import TextFieldVariants from "examples/mui/TextField.variants.tsx";
 import ToggleButtonDefault from "examples/mui/ToggleButton.default.tsx";
 import TooltipDefault from "examples/mui/Tooltip.default.tsx";
 import TypographyDefault from "examples/mui/Typography.default.tsx";
-import { useColorScheme } from "./~utils.tsx";
+import { isProduction, useColorScheme } from "./~utils.tsx";
 
 import type * as React from "react";
 import type { MetaFunction } from "react-router";
@@ -110,17 +110,21 @@ export default function Page() {
 							<ButtonIcons />
 						</Stack>
 
-						<Stack spacing={1}>
-							<ButtonPermutations />
-						</Stack>
+						{!isProduction && (
+							<Stack spacing={1}>
+								<ButtonPermutations_ />
+							</Stack>
+						)}
 
 						<Stack spacing={1} direction="row">
 							<IconButtonDefault />
 						</Stack>
 
-						<Stack spacing={1} direction="row">
-							<IconButtonColors />
-						</Stack>
+						{!isProduction && (
+							<Stack spacing={1} direction="row">
+								<IconButtonColors_ />
+							</Stack>
+						)}
 					</ComponentExamples>
 
 					<ComponentExamples name="Button Group">
@@ -207,7 +211,7 @@ export default function Page() {
 						<Stack spacing={1} direction="row">
 							<ChipDefault />
 							<ChipOutlined />
-							<ChipDeletable />
+							{!isProduction && <ChipDeletable_ />}
 						</Stack>
 					</ComponentExamples>
 
@@ -325,7 +329,7 @@ export default function Page() {
 						</Stack>
 
 						<Stack spacing={1} direction="row">
-							<LinkColors />
+							{!isProduction && <LinkColors_ />}
 						</Stack>
 					</ComponentExamples>
 

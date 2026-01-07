@@ -3,16 +3,17 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import { Button, Tooltip } from "@mui/material";
+import { IconButton, Tooltip } from "@mui/material";
+import { Icon } from "@stratakit/mui";
+
+import downloadIcon from "@stratakit/icons/download.svg";
 
 export default () => {
 	return (
-		<Tooltip title="Save is disabled until you finish reading the documentation.">
-			<span>
-				<Button aria-disabled="true" className="Mui-disabled">
-					Save
-				</Button>
-			</span>
+		<Tooltip title="Download">
+			<IconButton>
+				<Icon href={downloadIcon} />
+			</IconButton>
 		</Tooltip>
 	);
 };

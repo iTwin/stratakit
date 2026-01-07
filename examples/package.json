@@ -8,6 +8,7 @@
 	},
 	"dependencies": {
 		"@mui/material": "catalog:",
+		"@mui/utils": "catalog:",
 		"@stratakit/bricks": "workspace:*",
 		"@stratakit/icons": "workspace:*",
 		"@stratakit/mui": "workspace:*"

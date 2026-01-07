@@ -4,7 +4,13 @@
  *--------------------------------------------------------------------------------------------*/
 
 import { Skeleton } from "@mui/material";
+import { visuallyHidden } from "@mui/utils";
 
 export default () => {
-	return <Skeleton />;
+	return (
+		<>
+			<Skeleton />
+			<div style={visuallyHidden}>Loading...</div>
+		</>
+	);
 };

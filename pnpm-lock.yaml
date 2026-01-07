@@ -9,6 +9,9 @@ catalogs:
     "@mui/material":
       specifier: ^7.3.5
       version: 7.3.6
+    "@mui/utils":
+      specifier: ^7.3.5
+      version: 7.3.6
     "@playwright/test":
       specifier: ~1.56.1
       version: 1.56.1
@@ -182,6 +185,9 @@ importers:
       "@mui/material":
         specifier: "catalog:"
         version: 7.3.6(@emotion/react@11.14.0(@types/react@19.2.7)(react@19.2.1))(@emotion/styled@11.14.1(@emotion/react@11.14.0(@types/react@19.2.7)(react@19.2.1))(@types/react@19.2.7)(react@19.2.1))(@types/react@19.2.7)(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
+      "@mui/utils":
+        specifier: "catalog:"
+        version: 7.3.6(@types/react@19.2.7)(react@19.2.1)
       "@stratakit/bricks":
         specifier: workspace:*
         version: link:../packages/bricks

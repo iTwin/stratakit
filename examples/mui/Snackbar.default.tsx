@@ -18,12 +18,7 @@ export default () => {
 			<Button variant="contained" onClick={() => setOpen(true)}>
 				Archive
 			</Button>
-			<Snackbar
-				open={open}
-				autoHideDuration={6000}
-				onClose={handleClose}
-				message="Note archived"
-			/>
+			<Snackbar open={open} onClose={handleClose} message="Note archived" />
 		</>
 	);
 };

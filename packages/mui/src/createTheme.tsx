@@ -112,9 +112,19 @@ function createTheme() {
 					disableRipple: true, // Checkbox doesn't inherit from ButtonBase
 				},
 			},
+			MuiInputLabel: {
+				defaultProps: {
+					shrink: true,
+				},
+			},
 			MuiLink: {
 				defaultProps: {
 					color: "textPrimary",
+				},
+			},
+			MuiOutlinedInput: {
+				defaultProps: {
+					notched: false,
 				},
 			},
 			MuiPaginationItem: {
@@ -146,16 +156,6 @@ function createTheme() {
 				defaultProps: {
 					// TODO: This should use sort-ascending and sort-descending icons, but that requires disabling MUI's built-in icon rotation.
 					IconComponent: ArrowDownIcon,
-				},
-			},
-			MuiInputLabel: {
-				defaultProps: {
-					shrink: true,
-				},
-			},
-			MuiOutlinedInput: {
-				defaultProps: {
-					notched: false,
 				},
 			},
 		},

@@ -4,6 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 
 import { Step, StepLabel, Stepper, Typography } from "@mui/material";
+import { visuallyHidden } from "@mui/utils";
 
 export default () => {
 	return (
@@ -13,9 +14,14 @@ export default () => {
 			</Step>
 			<Step role="listitem" completed={false}>
 				<StepLabel
-					optional={<Typography variant="caption">Optional</Typography>}
+					optional={
+						<Typography variant="caption" aria-hidden="true">
+							Optional
+						</Typography>
+					}
 				>
 					Create an ad group
+					<span style={visuallyHidden}>, optional</span>
 				</StepLabel>
 			</Step>
 			<Step role="listitem" aria-current="true">

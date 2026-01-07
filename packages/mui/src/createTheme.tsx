@@ -148,9 +148,9 @@ function createTheme() {
 					IconComponent: ArrowDownIcon,
 				},
 			},
-			MuiTextField: {
+			MuiInputLabel: {
 				defaultProps: {
-					slotProps: { inputLabel: { shrink: true } },
+					shrink: true,
 				},
 			},
 		},

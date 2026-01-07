@@ -120,6 +120,7 @@ function createTheme() {
 			MuiButton: {
 				defaultProps: {
 					color: "secondary",
+					variant: "contained",
 				},
 			},
 			MuiChip: {

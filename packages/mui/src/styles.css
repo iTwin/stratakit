@@ -105,6 +105,15 @@
 		}
 	}
 
+	.MuiFormControl-root {
+		row-gap: var(--stratakit-space-x1);
+	}
+
+	.MuiFormLabel-root {
+		position: relative;
+		transform: none;
+	}
+
 	.MuiFormLabel-colorPrimary {
 		&.Mui-focused {
 			color: var(--stratakit-mui-palette-primary-dark);

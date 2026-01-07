@@ -153,6 +153,11 @@ function createTheme() {
 					shrink: true,
 				},
 			},
+			MuiOutlinedInput: {
+				defaultProps: {
+					notched: false,
+				},
+			},
 		},
 	});
 }

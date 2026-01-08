@@ -5,7 +5,12 @@
 
 import * as React from "react";
 import Button from "@mui/material/Button";
+import IconButton from "@mui/material/IconButton";
 import Snackbar from "@mui/material/Snackbar";
+import Tooltip from "@mui/material/Tooltip";
+import { Icon } from "@stratakit/mui";
+
+import closeIcon from "@stratakit/icons/dismiss.svg";
 
 export default () => {
 	const [open, setOpen] = React.useState(false);
@@ -19,7 +24,18 @@ export default () => {
 			<Button variant="contained" onClick={() => setOpen(true)}>
 				Archive
 			</Button>
-			<Snackbar open={open} onClose={handleClose} message="Note archived" />
+			<Snackbar
+				open={open}
+				onClose={handleClose}
+				message="Note archived"
+				action={
+					<Tooltip title="Close">
+						<IconButton color="inherit" onClick={handleClose}>
+							<Icon href={closeIcon} />
+						</IconButton>
+					</Tooltip>
+				}
+			/>
 		</>
 	);
 };

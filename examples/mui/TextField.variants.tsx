@@ -3,7 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import { TextField } from "@mui/material";
+import TextField from "@mui/material/TextField";
 
 export default () => {
 	return (

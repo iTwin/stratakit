@@ -4,7 +4,8 @@
  *--------------------------------------------------------------------------------------------*/
 
 import * as React from "react";
-import { Button, Snackbar } from "@mui/material";
+import Button from "@mui/material/Button";
+import Snackbar from "@mui/material/Snackbar";
 
 export default () => {
 	const [open, setOpen] = React.useState(false);

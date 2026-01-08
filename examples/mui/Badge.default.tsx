@@ -4,7 +4,9 @@
  *--------------------------------------------------------------------------------------------*/
 
 import * as React from "react";
-import { Badge, IconButton, Tooltip } from "@mui/material";
+import Badge from "@mui/material/Badge";
+import IconButton from "@mui/material/IconButton";
+import Tooltip from "@mui/material/Tooltip";
 import { Icon } from "@stratakit/mui";
 
 import emailIcon from "@stratakit/icons/email.svg";

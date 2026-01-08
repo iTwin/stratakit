@@ -3,7 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import { Paper } from "@mui/material";
+import Paper from "@mui/material/Paper";
 
 export default () => {
 	return (

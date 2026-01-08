@@ -3,7 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import { Alert } from "@mui/material";
+import Alert from "@mui/material/Alert";
 
 export default () => {
 	return (

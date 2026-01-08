@@ -4,7 +4,9 @@
  *--------------------------------------------------------------------------------------------*/
 
 import * as React from "react";
-import { Box, Tab, Tabs } from "@mui/material";
+import Box from "@mui/material/Box";
+import Tab from "@mui/material/Tab";
+import Tabs from "@mui/material/Tabs";
 
 export default () => {
 	const [value, setValue] = React.useState(0);

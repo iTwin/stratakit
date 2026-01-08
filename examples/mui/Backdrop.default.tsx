@@ -4,7 +4,8 @@
  *--------------------------------------------------------------------------------------------*/
 
 import * as React from "react";
-import { Backdrop, Button } from "@mui/material";
+import Backdrop from "@mui/material/Backdrop";
+import Button from "@mui/material/Button";
 
 export default () => {
 	const [open, setOpen] = React.useState(false);

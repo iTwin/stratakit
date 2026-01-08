@@ -4,7 +4,9 @@
  *--------------------------------------------------------------------------------------------*/
 
 import * as React from "react";
-import { Button, Menu, MenuItem } from "@mui/material";
+import Button from "@mui/material/Button";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
 
 export default () => {
 	const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);

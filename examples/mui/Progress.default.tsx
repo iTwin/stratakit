@@ -4,7 +4,8 @@
  *--------------------------------------------------------------------------------------------*/
 
 import * as React from "react";
-import { LinearProgress, Typography } from "@mui/material";
+import LinearProgress from "@mui/material/LinearProgress";
+import Typography from "@mui/material/Typography";
 
 export default () => {
 	const labelId = React.useId();

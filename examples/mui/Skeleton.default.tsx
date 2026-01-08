@@ -3,7 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import { Skeleton } from "@mui/material";
+import Skeleton from "@mui/material/Skeleton";
 import { visuallyHidden } from "@mui/utils";
 
 export default () => {

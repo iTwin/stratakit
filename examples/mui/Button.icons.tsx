@@ -3,7 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import { Button } from "@mui/material";
+import Button from "@mui/material/Button";
 import { Icon } from "@stratakit/mui";
 
 import placeholderIcon from "@stratakit/icons/placeholder.svg";

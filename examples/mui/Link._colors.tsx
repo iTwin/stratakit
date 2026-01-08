@@ -3,7 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import { Link } from "@mui/material";
+import Link from "@mui/material/Link";
 
 type LinkProps = React.ComponentProps<typeof Link>;
 const colors = [

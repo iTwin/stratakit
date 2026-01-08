@@ -3,7 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import { Pagination } from "@mui/material";
+import Pagination from "@mui/material/Pagination";
 
 export default () => {
 	return <Pagination count={10} />;

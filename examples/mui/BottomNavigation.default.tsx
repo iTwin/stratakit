@@ -4,7 +4,8 @@
  *--------------------------------------------------------------------------------------------*/
 
 import * as React from "react";
-import { BottomNavigation, BottomNavigationAction } from "@mui/material";
+import BottomNavigation from "@mui/material/BottomNavigation";
+import BottomNavigationAction from "@mui/material/BottomNavigationAction";
 import { Icon } from "@stratakit/mui";
 
 import clockIcon from "@stratakit/icons/clock.svg";

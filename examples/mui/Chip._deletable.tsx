@@ -3,7 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import { Chip } from "@mui/material";
+import Chip from "@mui/material/Chip";
 
 export default () => {
 	return <Chip label="Deletable Chip" onDelete={() => {}} />;

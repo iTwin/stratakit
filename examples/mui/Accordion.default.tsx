@@ -4,12 +4,10 @@
  *--------------------------------------------------------------------------------------------*/
 
 import * as React from "react";
-import {
-	Accordion,
-	AccordionDetails,
-	AccordionSummary,
-	Typography,
-} from "@mui/material";
+import Accordion from "@mui/material/Accordion";
+import AccordionDetails from "@mui/material/AccordionDetails";
+import AccordionSummary from "@mui/material/AccordionSummary";
+import Typography from "@mui/material/Typography";
 
 export default () => {
 	const id = React.useId();

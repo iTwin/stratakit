@@ -3,7 +3,9 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import { ToggleButton, ToggleButtonGroup, Tooltip } from "@mui/material";
+import ToggleButton from "@mui/material/ToggleButton";
+import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
+import Tooltip from "@mui/material/Tooltip";
 import { Icon } from "@stratakit/mui";
 
 import textAlignCenterIcon from "@stratakit/icons/text-align-center.svg";

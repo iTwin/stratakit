@@ -114,6 +114,7 @@
 	}
 
 	.MuiFormLabel-root {
+		font-size: var(--stratakit-font-size-12);
 		position: relative; /* Disable floating label */
 		transform: none; /* Undo inset positioning */
 	}

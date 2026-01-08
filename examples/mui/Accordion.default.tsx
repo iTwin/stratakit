@@ -12,7 +12,7 @@ import Typography from "@mui/material/Typography";
 export default () => {
 	const id = React.useId();
 	return (
-		<Accordion>
+		<Accordion variant="outlined">
 			<AccordionSummary aria-controls={`${id}-content`} id={`${id}-header`}>
 				<Typography component="span">What is StrataKit?</Typography>
 			</AccordionSummary>

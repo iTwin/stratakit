@@ -10,6 +10,7 @@ import {
 	Outlet,
 	Scripts,
 	ScrollRestoration,
+	useLocation,
 	useMatches,
 } from "react-router";
 import { Root } from "@stratakit/foundations";
@@ -32,7 +33,7 @@ export const links: LinksFunction = () => {
 			href: "data:image/svg+xml,<svg viewBox='0 -16 20 20' xmlns='http://www.w3.org/2000/svg'><text>🥝</text></svg>",
 			type: "image/svg+xml",
 		},
-		{ rel: "manifest", href: "/manifest.json", crossorigin: "use-credentials" },
+		{ rel: "manifest", href: "/manifest.json", crossOrigin: "use-credentials" },
 	];
 };
 
@@ -72,6 +73,7 @@ function LayoutInner({ children }: { children: React.ReactNode }) {
 
 export default function App() {
 	const colorScheme = useColorScheme();
+	const location = useLocation();
 
 	React.useEffect(function signalPageLoad() {
 		document.body.dataset.loaded = "true";
@@ -79,13 +81,23 @@ export default function App() {
 
 	return (
 		<QueryClientProvider client={queryClient}>
-			<Root
-				colorScheme={colorScheme}
-				density="dense"
-				synchronizeColorScheme={false}
-			>
-				<Outlet />
-			</Root>
+			{(() => {
+				// `Root` from `@stratakit/foundations` only supports `density="dense"` at the moment,
+				// and should therefore not be used around MUI components (which use a looser density).
+				if (location.pathname.startsWith("/mui")) {
+					return <Outlet />;
+				}
+
+				return (
+					<Root
+						colorScheme={colorScheme}
+						density="dense"
+						synchronizeColorScheme={false}
+					>
+						<Outlet />
+					</Root>
+				);
+			})()}
 		</QueryClientProvider>
 	);
 }

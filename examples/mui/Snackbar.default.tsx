@@ -3,11 +3,11 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import { useState } from "react";
+import * as React from "react";
 import { Button, Snackbar } from "@mui/material";
 
 export default () => {
-	const [open, setOpen] = useState(false);
+	const [open, setOpen] = React.useState(false);
 
 	const handleClose = () => {
 		setOpen(false);

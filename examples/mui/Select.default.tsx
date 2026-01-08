@@ -3,11 +3,11 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import { useId } from "react";
+import * as React from "react";
 import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
 
 export default () => {
-	const labelId = useId();
+	const labelId = React.useId();
 	const label = "Choose a design system:";
 	return (
 		<FormControl style={{ minInlineSize: 250 }}>

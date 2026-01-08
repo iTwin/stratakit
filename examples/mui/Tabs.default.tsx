@@ -3,13 +3,13 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import { useId, useState } from "react";
+import * as React from "react";
 import { Box, Tab, Tabs } from "@mui/material";
 
 export default () => {
-	const [value, setValue] = useState(0);
+	const [value, setValue] = React.useState(0);
 
-	const baseId = useId();
+	const baseId = React.useId();
 
 	return (
 		<Box>

@@ -3,7 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import { useState } from "react";
+import * as React from "react";
 import {
 	Button,
 	Drawer,
@@ -20,7 +20,7 @@ import starIcon from "@stratakit/icons/star.svg";
 import statusDraftIcon from "@stratakit/icons/status-draft.svg";
 
 export default () => {
-	const [open, setOpen] = useState(false);
+	const [open, setOpen] = React.useState(false);
 
 	return (
 		<>

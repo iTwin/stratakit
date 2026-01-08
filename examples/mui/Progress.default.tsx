@@ -3,11 +3,11 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import { useId } from "react";
+import * as React from "react";
 import { LinearProgress, Typography } from "@mui/material";
 
 export default () => {
-	const labelId = useId();
+	const labelId = React.useId();
 
 	return (
 		<>

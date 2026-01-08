@@ -3,7 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import { useState } from "react";
+import * as React from "react";
 import { BottomNavigation, BottomNavigationAction } from "@mui/material";
 import { Icon } from "@stratakit/mui";
 
@@ -12,7 +12,7 @@ import heartIcon from "@stratakit/icons/heart.svg";
 import locationIcon from "@stratakit/icons/location.svg";
 
 export default () => {
-	const [value, setValue] = useState(0);
+	const [value, setValue] = React.useState(0);
 	return (
 		<BottomNavigation
 			showLabels

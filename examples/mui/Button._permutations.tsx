@@ -6,7 +6,7 @@
 import { Button, Stack } from "@mui/material";
 import { Icon } from "@stratakit/mui";
 
-import type React from "react";
+import type * as React from "react";
 
 import placeholderIcon from "@stratakit/icons/placeholder.svg";
 

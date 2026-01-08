@@ -3,7 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import { useId } from "react";
+import * as React from "react";
 import {
 	Accordion,
 	AccordionDetails,
@@ -12,7 +12,7 @@ import {
 } from "@mui/material";
 
 export default () => {
-	const id = useId();
+	const id = React.useId();
 	return (
 		<Accordion>
 			<AccordionSummary aria-controls={`${id}-content`} id={`${id}-header`}>

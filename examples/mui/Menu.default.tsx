@@ -3,18 +3,18 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import { useId, useState } from "react";
+import * as React from "react";
 import { Button, Menu, MenuItem } from "@mui/material";
 
 export default () => {
-	const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+	const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
 	const open = Boolean(anchorEl);
 	const handleClose = () => {
 		setAnchorEl(null);
 	};
 
-	const buttonId = useId();
-	const menuId = useId();
+	const buttonId = React.useId();
+	const menuId = React.useId();
 
 	return (
 		<>

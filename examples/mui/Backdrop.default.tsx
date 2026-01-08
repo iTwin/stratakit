@@ -12,7 +12,9 @@ export default () => {
 
 	return (
 		<div>
-			<Button onClick={() => setOpen(true)}>Show backdrop</Button>
+			<Button onClick={() => setOpen(true)} variant="contained">
+				Show backdrop
+			</Button>
 			<Backdrop
 				open={open}
 				onClick={() => setOpen(false)}

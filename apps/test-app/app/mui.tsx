@@ -294,7 +294,7 @@ export default function Page() {
 					</ComponentExamples>
 
 					<ComponentExamples name="Card">
-						<Stack spacing={1}>
+						<Stack spacing={1} direction="row">
 							<CardDefault />
 						</Stack>
 					</ComponentExamples>

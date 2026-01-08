@@ -4,35 +4,39 @@
  *--------------------------------------------------------------------------------------------*/
 
 import {
-	Button,
 	Card,
-	CardActions,
+	CardActionArea,
 	CardContent,
+	CardMedia,
 	Typography,
 } from "@mui/material";
+import { Icon } from "@stratakit/mui";
+
+import imageIcon from "@stratakit/icons/image.svg";
 
 export default () => {
 	return (
-		<Card variant="outlined">
-			<CardContent>
-				<Typography gutterBottom color="secondary" fontSize={14}>
-					Word of the Day
-				</Typography>
-				<Typography variant="h5" component="div">
-					be • nev • o • lent
-				</Typography>
-				<Typography color="secondary" marginBottom={1.5}>
-					adjective
-				</Typography>
-				<Typography variant="body2">
-					well meaning and kindly.
-					<br />
-					"a benevolent smile"
-				</Typography>
-			</CardContent>
-			<CardActions>
-				<Button size="small">Learn More</Button>
-			</CardActions>
+		<Card variant="outlined" style={{ maxWidth: 345 }}>
+			<CardActionArea
+				component="a"
+				href="https://github.com/iTwin/design-system/"
+			>
+				<CardMedia>
+					<Icon
+						href={`${imageIcon}#icon-large`}
+						size="large"
+						style={{ width: "100%", height: "unset" }}
+					/>
+				</CardMedia>
+				<CardContent>
+					<Typography gutterBottom variant="h3" component="div">
+						StrataKit
+					</Typography>
+					<Typography variant="body2" sx={{ color: "text.secondary" }}>
+						StrataKit is a set of libraries for the new Strata Design System.
+					</Typography>
+				</CardContent>
+			</CardActionArea>
 		</Card>
 	);
 };

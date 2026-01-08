@@ -12,6 +12,11 @@
 			"development": "./dist/DEV/index.js",
 			"default": "./dist/index.js"
 		},
+		"./types.d.ts": {
+			"@stratakit/source": "./src/types.d.ts",
+			"types": "./dist/types.d.ts",
+			"default": "./dist/types.d.ts"
+		},
 		"./package.json": "./package.json"
 	},
 	"files": [

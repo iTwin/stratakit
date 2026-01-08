@@ -134,7 +134,7 @@ function createTheme() {
 			},
 			MuiInputLabel: {
 				defaultProps: {
-					shrink: true, // Removes floating label from TextField
+					shrink: true, // Removes label animation and masked border from TextField
 				},
 			},
 			MuiLink: {
@@ -144,7 +144,7 @@ function createTheme() {
 			},
 			MuiOutlinedInput: {
 				defaultProps: {
-					notched: false, // Removes floating label from Select
+					notched: false, // Removes masked border from Select
 				},
 			},
 			MuiPaginationItem: {

@@ -71,6 +71,10 @@
 		align-items: center; /* Fix vertical alignment of differently sized icons */
 	}
 
+	.MuiAutocomplete-inputRoot {
+		padding-block: 0;
+	}
+
 	.MuiButton-root {
 		&:where(.MuiButton-colorSecondary) {
 			--variant-containedBg: var(--stratakit-color-bg-neutral-base);
@@ -132,13 +136,8 @@
 		}
 	}
 
-	.MuiInputBase-multiline,
-	.MuiSelect-select {
+	.MuiInputBase-multiline {
 		padding-block: 6.75px;
-	}
-
-	.MuiAutocomplete-inputRoot {
-		padding-block: 0;
 	}
 
 	.MuiLink-root {
@@ -197,6 +196,10 @@
 			) {
 			--stratakit-mui-palette-background-paper: var(--stratakit-color-bg-elevation-level-1);
 		}
+	}
+
+	.MuiSelect-select {
+		padding-block: 6.75px;
 	}
 
 	.MuiTab-root {

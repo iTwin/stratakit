@@ -124,6 +124,16 @@
 		border-radius: 4px;
 	}
 
+	input.MuiInputBase-input,
+	.MuiInputBase-multiline,
+	.MuiSelect-select {
+		padding-block: 6.75px;
+	}
+
+	.MuiAutocomplete-inputRoot {
+		padding-block: 0;
+	}
+
 	.MuiLink-root {
 		font-weight: 500;
 		text-decoration-color: currentColor;

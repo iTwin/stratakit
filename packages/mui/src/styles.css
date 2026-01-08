@@ -124,7 +124,7 @@
 		border-radius: 4px;
 	}
 
-	input.MuiInputBase-input,
+	.MuiInputBase-input:where(input),
 	.MuiInputBase-multiline,
 	.MuiSelect-select {
 		padding-block: 6.75px;

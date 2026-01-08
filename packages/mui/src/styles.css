@@ -114,8 +114,8 @@
 	}
 
 	.MuiFormLabel-root {
-		position: relative;
-		transform: none;
+		position: relative; /* Disable floating label */
+		transform: none; /* Undo inset positioning */
 	}
 
 	.MuiFormLabel-colorPrimary {

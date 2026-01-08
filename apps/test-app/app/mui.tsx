@@ -86,17 +86,13 @@ export default function Page() {
 
 				<Divider sx={{ mt: 2, mb: 2 }} />
 
-				<Stack spacing={2}>
+				<Stack spacing={2} alignItems="start">
 					<ComponentExamples name="Autocomplete">
-						<Stack spacing={1} direction="row">
-							<AutocompleteDefault />
-						</Stack>
+						<AutocompleteDefault />
 					</ComponentExamples>
 
 					<ComponentExamples name="Button">
-						<Stack spacing={1} direction="row">
-							<ButtonDefault />
-						</Stack>
+						<ButtonDefault />
 
 						<Stack spacing={1} direction="row">
 							<ButtonVariants />
@@ -116,9 +112,7 @@ export default function Page() {
 							</Stack>
 						)}
 
-						<Stack spacing={1} direction="row">
-							<IconButtonDefault />
-						</Stack>
+						<IconButtonDefault />
 
 						{!isProduction && (
 							<Stack spacing={1} direction="row">
@@ -128,54 +122,38 @@ export default function Page() {
 					</ComponentExamples>
 
 					<ComponentExamples name="Button Group">
-						<Stack spacing={1}>
-							<ButtonGroupDefault />
-						</Stack>
+						<ButtonGroupDefault />
 					</ComponentExamples>
 
 					<ComponentExamples name="Checkbox">
-						<Stack spacing={1}>
-							<CheckboxDefault />
-							<CheckboxChecked />
-							<CheckboxIndeterminate />
-						</Stack>
+						<CheckboxDefault />
+						<CheckboxChecked />
+						<CheckboxIndeterminate />
 					</ComponentExamples>
 
 					<ComponentExamples name="Floating Action Button">
-						<Stack>
-							<FloatingActionButtonDefault />
-						</Stack>
+						<FloatingActionButtonDefault />
 					</ComponentExamples>
 
 					<ComponentExamples name="Radio Group">
-						<Stack>
-							<RadioGroupDefault />
-						</Stack>
+						<RadioGroupDefault />
 					</ComponentExamples>
 
 					<ComponentExamples name="Rating">
-						<Stack spacing={1} direction="row">
-							<RatingDefault />
-						</Stack>
+						<RatingDefault />
 					</ComponentExamples>
 
 					<ComponentExamples name="Select">
-						<Stack spacing={1} direction="row">
-							<SelectDefault />
-						</Stack>
+						<SelectDefault />
 					</ComponentExamples>
 
 					<ComponentExamples name="Slider">
-						<Stack spacing={1} direction="row">
-							<SliderDefault />
-						</Stack>
+						<SliderDefault />
 					</ComponentExamples>
 
 					<ComponentExamples name="Switch">
-						<Stack spacing={1}>
-							<SwitchDefault />
-							<SwitchChecked />
-						</Stack>
+						<SwitchDefault />
+						<SwitchChecked />
 					</ComponentExamples>
 
 					<ComponentExamples name="Text Field">
@@ -190,21 +168,15 @@ export default function Page() {
 					</ComponentExamples>
 
 					<ComponentExamples name="Toggle Button">
-						<Stack spacing={1} direction="row">
-							<ToggleButtonDefault />
-						</Stack>
+						<ToggleButtonDefault />
 					</ComponentExamples>
 
 					<ComponentExamples name="Avatar">
-						<Stack spacing={1} direction="row">
-							<AvatarDefault />
-						</Stack>
+						<AvatarDefault />
 					</ComponentExamples>
 
 					<ComponentExamples name="Badge">
-						<Stack spacing={1} direction="row">
-							<BadgeDefault />
-						</Stack>
+						<BadgeDefault />
 					</ComponentExamples>
 
 					<ComponentExamples name="Chip">
@@ -216,117 +188,93 @@ export default function Page() {
 					</ComponentExamples>
 
 					<ComponentExamples name="Divider">
-						<Stack spacing={1}>
+						<Stack spacing={1} alignSelf="stretch">
 							<DividerDefault />
 						</Stack>
 					</ComponentExamples>
 
 					<ComponentExamples name="List">
-						<Stack spacing={1}>
-							<ListDefault />
-						</Stack>
+						<ListDefault />
 					</ComponentExamples>
 
 					<ComponentExamples name="Table">
-						<Stack spacing={1}>
-							<TableDefault />
-						</Stack>
+						<TableDefault />
 					</ComponentExamples>
 
 					<ComponentExamples name="Tooltip">
-						<Stack spacing={1} direction="row">
-							<TooltipDefault />
-						</Stack>
+						<TooltipDefault />
 					</ComponentExamples>
 
 					<ComponentExamples name="Typography">
-						<Stack spacing={1} direction="row">
-							<TypographyDefault />
-						</Stack>
+						<TypographyDefault />
 					</ComponentExamples>
 
 					<ComponentExamples name="Alert">
-						<Stack spacing={1}>
+						<Stack spacing={1} alignSelf="stretch">
 							<AlertDefault />
 						</Stack>
 					</ComponentExamples>
 
 					<ComponentExamples name="Backdrop">
-						<Stack spacing={1} direction="row">
-							<BackdropDefault />
-						</Stack>
+						<BackdropDefault />
 					</ComponentExamples>
 
 					<ComponentExamples name="Dialog">
-						<Stack spacing={1} direction="row">
-							<DialogDefault />
-						</Stack>
+						<DialogDefault />
 					</ComponentExamples>
 
 					<ComponentExamples name="Progress">
-						<Stack spacing={1}>
+						<Stack spacing={1} alignSelf="stretch">
 							<ProgressDefault />
 						</Stack>
 					</ComponentExamples>
 
 					<ComponentExamples name="Skeleton">
-						<Stack spacing={1}>
+						<Stack spacing={1} alignSelf="stretch">
 							<SkeletonDefault />
 						</Stack>
 					</ComponentExamples>
 
 					<ComponentExamples name="Snackbar">
-						<Stack spacing={1} direction="row">
-							<SnackbarDefault />
-						</Stack>
+						<SnackbarDefault />
 					</ComponentExamples>
 
 					<ComponentExamples name="Accordion">
-						<Stack spacing={1}>
+						<Stack spacing={1} alignSelf="stretch">
 							<AccordionDefault />
 						</Stack>
 					</ComponentExamples>
 
 					<ComponentExamples name="App Bar">
-						<Stack spacing={1}>
+						<Stack spacing={1} alignSelf="stretch">
 							<AppBarDefault />
 						</Stack>
 					</ComponentExamples>
 
 					<ComponentExamples name="Card">
-						<Stack spacing={1} direction="row">
-							<CardDefault />
-						</Stack>
+						<CardDefault />
 					</ComponentExamples>
 
 					<ComponentExamples name="Paper">
-						<Stack spacing={1} direction="row">
-							<PaperDefault />
-						</Stack>
+						<PaperDefault />
 					</ComponentExamples>
 
 					<ComponentExamples name="Bottom Navigation">
-						<Stack spacing={1}>
+						<Stack spacing={1} alignSelf="stretch">
 							<BottomNavigationDefault />
 						</Stack>
 					</ComponentExamples>
 
 					<ComponentExamples name="Breadcrumbs">
-						<Stack spacing={1} direction="row">
-							<BreadcrumbsDefault />
-						</Stack>
+						<BreadcrumbsDefault />
 					</ComponentExamples>
 
 					<ComponentExamples name="Drawer">
-						<Stack spacing={1} direction="row">
-							<DrawerDefault />
-						</Stack>
+						<DrawerDefault />
 					</ComponentExamples>
 
 					<ComponentExamples name="Link">
-						<Stack spacing={1} direction="row">
-							<LinkDefault />
-						</Stack>
+						<LinkDefault />
 
 						<Stack spacing={1} direction="row">
 							{!isProduction && <LinkColors_ />}
@@ -334,33 +282,25 @@ export default function Page() {
 					</ComponentExamples>
 
 					<ComponentExamples name="Menu">
-						<Stack spacing={1} direction="row">
-							<MenuDefault />
-						</Stack>
+						<MenuDefault />
 					</ComponentExamples>
 
 					<ComponentExamples name="Pagination">
-						<Stack spacing={1}>
-							<PaginationDefault />
-						</Stack>
+						<PaginationDefault />
 					</ComponentExamples>
 
 					<ComponentExamples name="Speed Dial">
-						<Stack spacing={1} direction="row">
-							<SpeedDialDefault />
-						</Stack>
+						<SpeedDialDefault />
 					</ComponentExamples>
 
 					<ComponentExamples name="Stepper">
-						<Stack spacing={1}>
+						<Stack spacing={1} alignSelf="stretch">
 							<StepperDefault />
 						</Stack>
 					</ComponentExamples>
 
 					<ComponentExamples name="Tabs">
-						<Stack spacing={1}>
-							<TabsDefault />
-						</Stack>
+						<TabsDefault />
 					</ComponentExamples>
 				</Stack>
 			</Container>

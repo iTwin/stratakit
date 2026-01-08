@@ -124,7 +124,14 @@
 		border-radius: 4px;
 	}
 
-	.MuiInputBase-input:where(input),
+	.MuiInputBase-input {
+		font-size: var(--stratakit-font-size-14);
+
+		&:where(input) {
+			padding-block: 8.185px;
+		}
+	}
+
 	.MuiInputBase-multiline,
 	.MuiSelect-select {
 		padding-block: 6.75px;

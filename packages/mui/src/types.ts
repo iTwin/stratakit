@@ -7,9 +7,15 @@
 // See: https://mui.com/material-ui/customization/theming/#typescript
 // See: https://www.typescriptlang.org/docs/handbook/declaration-merging.html#module-augmentation
 
-import "@mui/material/Button";
-
 declare module "@mui/material/Button" {
+	interface ButtonPropsColorOverrides {
+		inherit: false;
+
+		info: false;
+		success: false;
+		warning: false;
+	}
+
 	interface ButtonOwnProps {
 		/**
 		 * The default variant with `@stratakit/mui` is `"contained"`.

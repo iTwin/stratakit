@@ -5,8 +5,8 @@ packages:
   - examples
 
 catalog:
-  react: ^19.2.1
-  react-dom: ^19.2.1
+  react: ^19.2.3
+  react-dom: ^19.2.3
   typescript: ~5.9.3
   esbuild: ^0.27.0
   lightningcss: ^1.30.1

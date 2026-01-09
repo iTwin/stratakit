@@ -19,6 +19,8 @@ import {
 	WarningIcon,
 } from "./Icon.js";
 
+import type { ColorSystemOptions } from "@mui/material/styles";
+
 /**
  * Creates a StrataKit theme for MUI. Should be used with MUI's `ThemeProvider`.
  *
@@ -34,6 +36,24 @@ import {
  * ```
  */
 function createTheme() {
+	// Map the JS palette back to MUI's own CSS variables, which will then be mapped to the correct StrataKit tokens in CSS.
+	// (This is a fallback for any code that uses MUI's theme.palette values directly instead of CSS variables)
+	const palette = {
+		primary: { main: "var(--stratakit-mui-palette-primary-main)" },
+		secondary: { main: "var(--stratakit-mui-palette-secondary-main)" },
+
+		error: { main: "var(--stratakit-mui-palette-error-main)" },
+		warning: { main: "var(--stratakit-mui-palette-warning-main)" },
+		info: { main: "var(--stratakit-mui-palette-info-main)" },
+		success: { main: "var(--stratakit-mui-palette-success-main)" },
+
+		grey: Object.fromEntries(
+			["50", "100", "200", "300", "400", "500", "600", "700", "800", "900"].map(
+				(shade) => [shade, `var(--stratakit-mui-palette-grey-${shade})`],
+			),
+		),
+	} satisfies ColorSystemOptions["palette"];
+
 	return createMuiTheme({
 		cssVariables: {
 			nativeColor: true,
@@ -41,8 +61,8 @@ function createTheme() {
 			cssVarPrefix: "stratakit-mui",
 		},
 		colorSchemes: {
-			light: true,
-			dark: true,
+			light: { palette },
+			dark: { palette },
 		},
 		typography: {
 			fontFamily: "var(--stratakit-font-family-sans)",
@@ -100,6 +120,7 @@ function createTheme() {
 			MuiButton: {
 				defaultProps: {
 					color: "secondary",
+					variant: "contained",
 				},
 			},
 			MuiChip: {

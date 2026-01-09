@@ -8,9 +8,7 @@ import CardActionArea from "@mui/material/CardActionArea";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
-import { Icon } from "@stratakit/mui";
 
-import imageIcon from "@stratakit/icons/image.svg";
 import styles from "./Card.default.module.css";
 
 export default () => {
@@ -20,13 +18,13 @@ export default () => {
 				component="a"
 				href="https://github.com/iTwin/design-system/"
 			>
-				<CardMedia>
-					<Icon
-						className={styles.icon}
-						href={`${imageIcon}#icon-large`}
-						size="large"
-					/>
-				</CardMedia>
+				<CardMedia
+					className={styles.media}
+					component="img"
+					height="140"
+					image="https://images.unsplash.com/photo-1675898618370-f3ec72ff623d"
+					alt="layers of a mountain side rock"
+				/>
 				<CardContent>
 					<Typography gutterBottom variant="h3" component="div">
 						StrataKit

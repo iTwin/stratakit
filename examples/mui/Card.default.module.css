@@ -7,7 +7,6 @@
 	max-width: 345px;
 }
 
-.icon {
-	width: 100%;
-	height: unset;
+.media {
+	max-block-size: 140px;
 }

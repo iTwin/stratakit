@@ -16,11 +16,12 @@ export default () => {
 			variant="outlined"
 			slotProps={{
 				region: {
-					role: "group",
+					role: undefined,
+					"aria-labelledby": undefined,
 				},
 			}}
 		>
-			<AccordionSummary id={`${id}-header`} aria-controls={`${id}-content`}>
+			<AccordionSummary aria-controls={`${id}-content`}>
 				<Typography component="span">What is StrataKit?</Typography>
 			</AccordionSummary>
 			<AccordionDetails>

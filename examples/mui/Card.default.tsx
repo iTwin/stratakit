@@ -11,26 +11,27 @@ import Typography from "@mui/material/Typography";
 import { Icon } from "@stratakit/mui";
 
 import imageIcon from "@stratakit/icons/image.svg";
+import styles from "./Card.default.module.css";
 
 export default () => {
 	return (
-		<Card variant="outlined" style={{ maxWidth: 345 }}>
+		<Card className={styles.card} variant="outlined">
 			<CardActionArea
 				component="a"
 				href="https://github.com/iTwin/design-system/"
 			>
 				<CardMedia>
 					<Icon
+						className={styles.icon}
 						href={`${imageIcon}#icon-large`}
 						size="large"
-						style={{ width: "100%", height: "unset" }}
 					/>
 				</CardMedia>
 				<CardContent>
 					<Typography gutterBottom variant="h3" component="div">
 						StrataKit
 					</Typography>
-					<Typography variant="body2" sx={{ color: "text.secondary" }}>
+					<Typography variant="body2" color="text.secondary">
 						StrataKit is a set of libraries for the new Strata Design System.
 					</Typography>
 				</CardContent>

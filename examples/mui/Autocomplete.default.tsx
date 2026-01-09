@@ -6,9 +6,12 @@
 import Autocomplete from "@mui/material/Autocomplete";
 import TextField from "@mui/material/TextField";
 
+import styles from "./Autocomplete.default.module.css";
+
 export default () => {
 	return (
 		<Autocomplete
+			className={styles.autocomplete}
 			options={[
 				"Badge",
 				"Button",
@@ -24,7 +27,6 @@ export default () => {
 			renderInput={(params) => (
 				<TextField {...params} label="Choose a favorite component:" />
 			)}
-			style={{ minInlineSize: 300 }}
 		/>
 	);
 };

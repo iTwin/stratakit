@@ -7,6 +7,8 @@ import * as React from "react";
 import Backdrop from "@mui/material/Backdrop";
 import Button from "@mui/material/Button";
 
+import styles from "./Backdrop.default.module.css";
+
 export default () => {
 	const [open, setOpen] = React.useState(false);
 
@@ -16,9 +18,9 @@ export default () => {
 				Show backdrop
 			</Button>
 			<Backdrop
+				className={styles.backdrop}
 				open={open}
 				onClick={() => setOpen(false)}
-				style={{ zIndex: "var(--stratakit-mui-zIndex-modal)" }}
 			/>
 		</div>
 	);

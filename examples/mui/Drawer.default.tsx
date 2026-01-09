@@ -16,6 +16,7 @@ import { Icon } from "@stratakit/mui";
 import emailIcon from "@stratakit/icons/email.svg";
 import starIcon from "@stratakit/icons/star.svg";
 import statusDraftIcon from "@stratakit/icons/status-draft.svg";
+import styles from "./Drawer.default.module.css";
 
 export default () => {
 	const [open, setOpen] = React.useState(false);
@@ -26,7 +27,7 @@ export default () => {
 				Open drawer
 			</Button>
 			<Drawer open={open} onClose={() => setOpen(false)}>
-				<List style={{ minInlineSize: 250 }}>
+				<List className={styles.list}>
 					<ListItem disablePadding>
 						<ListItemButton>
 							<ListItemIcon>

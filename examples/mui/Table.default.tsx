@@ -12,6 +12,8 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import TableSortLabel from "@mui/material/TableSortLabel";
 
+import styles from "./Table.default.module.css";
+
 export default () => {
 	const rows = [
 		{ name: "Cupcake", calories: 305, fat: 3.7, carbs: 67, protein: 4.3 },
@@ -35,7 +37,7 @@ export default () => {
 
 	return (
 		<TableContainer component={Paper}>
-			<Table style={{ minInlineSize: 650 }} aria-label="simple table">
+			<Table className={styles.table} aria-label="simple table">
 				<TableHead>
 					<TableRow>
 						<TableCell sortDirection="asc">

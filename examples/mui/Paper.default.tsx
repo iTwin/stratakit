@@ -5,8 +5,8 @@
 
 import Paper from "@mui/material/Paper";
 
+import styles from "./Paper.default.module.css";
+
 export default () => {
-	return (
-		<Paper elevation={4} style={{ minBlockSize: 128, minInlineSize: 128 }} />
-	);
+	return <Paper className={styles.paper} elevation={4} />;
 };

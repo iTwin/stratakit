@@ -23,9 +23,7 @@ export default () => {
 
 	return (
 		<>
-			<Button onClick={() => setOpen(true)} variant="contained">
-				Open drawer
-			</Button>
+			<Button onClick={() => setOpen(true)}>Open drawer</Button>
 			<Drawer open={open} onClose={() => setOpen(false)}>
 				<List className={styles.list}>
 					<ListItem disablePadding>

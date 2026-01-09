@@ -21,9 +21,7 @@ export default () => {
 
 	return (
 		<>
-			<Button variant="contained" onClick={() => setOpen(true)}>
-				Archive
-			</Button>
+			<Button onClick={() => setOpen(true)}>Archive</Button>
 			<Snackbar
 				open={open}
 				onClose={handleClose}

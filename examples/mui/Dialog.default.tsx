@@ -20,9 +20,7 @@ export default () => {
 
 	return (
 		<>
-			<Button variant="contained" onClick={() => setOpen(true)}>
-				Open dialog
-			</Button>
+			<Button onClick={() => setOpen(true)}>Open dialog</Button>
 			<Dialog open={open} onClose={handleClose}>
 				<DialogTitle>Important decision</DialogTitle>
 				<DialogContent>
@@ -32,9 +30,7 @@ export default () => {
 				</DialogContent>
 				<DialogActions>
 					<Button onClick={handleClose}>No</Button>
-					<Button variant="contained" onClick={handleClose}>
-						Yes
-					</Button>
+					<Button onClick={handleClose}>Yes</Button>
 				</DialogActions>
 			</Dialog>
 		</>

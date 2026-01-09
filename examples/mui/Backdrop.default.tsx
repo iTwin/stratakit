@@ -14,9 +14,7 @@ export default () => {
 
 	return (
 		<div>
-			<Button onClick={() => setOpen(true)} variant="contained">
-				Show backdrop
-			</Button>
+			<Button onClick={() => setOpen(true)}>Show backdrop</Button>
 			<Backdrop
 				className={styles.backdrop}
 				open={open}

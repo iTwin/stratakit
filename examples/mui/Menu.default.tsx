@@ -21,7 +21,6 @@ export default () => {
 	return (
 		<>
 			<Button
-				variant="contained"
 				id={buttonId}
 				aria-controls={open ? menuId : undefined}
 				aria-haspopup="true"

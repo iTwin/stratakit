@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.1.3
+
+### Patch Changes
+
+- [#1146](https://github.com/iTwin/design-system/pull/1146): Updated `Button` to use `variant="contained"` by default.
+- [#1150](https://github.com/iTwin/design-system/pull/1150): Added a new `/types.d.ts` file for augmenting the types from MUI. This file should be included in all projects that rely on `@stratakit/mui`.
+
 ## 0.1.2
 
 - [#1137](https://github.com/iTwin/design-system/pull/1137): Updated `border-radius` of `IconButton` component.

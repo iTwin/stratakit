@@ -329,7 +329,7 @@ function ComponentExamples(props: ComponentExamplesProps) {
 
 			{props.children}
 
-			<Divider sx={{ mt: 2, mb: 2 }} />
+			<Divider sx={{ mt: 2, mb: 2, alignSelf: "stretch" }} />
 		</>
 	);
 }

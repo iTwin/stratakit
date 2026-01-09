@@ -14,6 +14,7 @@ Additional setup/considerations:
 
 - `@stratakit/mui` has a direct dependency on [`@stratakit/foundations`](https://www.npmjs.com/package/@stratakit/foundations) and [`@stratakit/icons`](https://www.npmjs.com/package/@stratakit/icons), the latter of which requires [bundler configuration](https://github.com/iTwin/design-system/tree/main/packages/icons#bundler-configuration) to ensure that `.svg` files are not inlined.
 - You should ensure that [StrataKit fonts](#fonts) are loaded in your application.
+- [`/types.d.ts`](#typescript) must be included in your project to ensure that the module augmentation for MUI components is picked up by TypeScript.
 - If you are trying to use this package alongside iTwinUI, you will also need to set up the [theme bridge](https://github.com/iTwin/iTwinUI/wiki/StrataKit-theme-bridge).
 
 ## Usage
@@ -77,6 +78,26 @@ Build tools such as [Vite](https://vite.dev/guide/assets.html#importing-asset-as
 
 > [!NOTE]
 > If the `<Root>` component cannot find `InterVariable` as a font in the document, it will automatically add a fallback which uses [Inter’s CDN](https://rsms.me/inter/#faq-cdn). In all cases, we recommend self-hosting to avoid any potential security and reliability issues that may arise from the use of a third-party CDN.
+
+## TypeScript
+
+`@stratakit/mui` uses [module augmentation](https://www.typescriptlang.org/docs/handbook/declaration-merging.html#module-augmentation) to modify the props of certain MUI components (for example, to change default prop values). To ensure that these changes are picked up by TypeScript, you must include the `@stratakit/mui/types.d.ts` file in your project.
+
+The preferred way to include `types.d.ts` is to add it to the [`types` array](https://www.typescriptlang.org/tsconfig/#types) in your project's `tsconfig.json`:
+
+```json
+{
+	"compilerOptions": {
+		"types": ["@stratakit/mui/types.d.ts"]
+	}
+}
+```
+
+Alternatively, if your project relies on the implicit inclusion of visible `@types` packages, then you can instead add a reference to `types.d.ts` using a [triple-slash directive](https://www.typescriptlang.org/docs/handbook/triple-slash-directives.html) in a global declaration file in your project (e.g. in `src/env.d.ts`):
+
+```ts
+/// <reference types="@stratakit/mui/types.d.ts" />
+```
 
 ## Contributing
 

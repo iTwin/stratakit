@@ -219,7 +219,9 @@ export default function Page() {
 					</ComponentExamples>
 
 					<ComponentExamples name="List">
-						<ListDefault />
+						<Stack spacing={1} alignSelf="stretch">
+							<ListDefault />
+						</Stack>
 					</ComponentExamples>
 
 					<ComponentExamples name="Menu">

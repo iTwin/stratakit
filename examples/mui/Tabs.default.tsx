@@ -15,11 +15,7 @@ export default () => {
 
 	return (
 		<Box>
-			<Tabs
-				value={value}
-				onChange={(_, value) => setValue(value)}
-				aria-label="basic tabs example"
-			>
+			<Tabs value={value} onChange={(_, value) => setValue(value)}>
 				<Tab
 					label="Item One"
 					id={`${baseId}-tab0`}

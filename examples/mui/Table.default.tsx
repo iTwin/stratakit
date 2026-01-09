@@ -10,7 +10,6 @@ import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
-import TableSortLabel from "@mui/material/TableSortLabel";
 
 import styles from "./Table.default.module.css";
 
@@ -40,11 +39,7 @@ export default () => {
 			<Table className={styles.table} aria-label="simple table">
 				<TableHead>
 					<TableRow>
-						<TableCell sortDirection="asc">
-							<TableSortLabel active direction="asc">
-								Dessert (100g serving)
-							</TableSortLabel>
-						</TableCell>
+						<TableCell>Dessert (100g serving)</TableCell>
 						<TableCell align="right">Calories</TableCell>
 						<TableCell align="right">Fat&nbsp;(g)</TableCell>
 						<TableCell align="right">Carbs&nbsp;(g)</TableCell>

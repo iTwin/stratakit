@@ -27,17 +27,19 @@ npm add @stratakit/icons
 
 1. Import the icon you want to use.
 
-   Using the [`import.meta`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/import.meta) feature to get the URL of the icon (does not work with SSR):
+   Using a static import to get the URL of the icon:
+
+   ```tsx
+   import placeholderIcon from "@stratakit/icons/placeholder.svg";
+   ```
+
+   Or using the [`import.meta`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/import.meta) feature to get the URL of the icon:
 
    ```tsx
    const placeholderIcon = new URL("@stratakit/icons/placeholder.svg", import.meta.url).href;
    ```
 
-   Or a static import:
-
-   ```tsx
-   import placeholderIcon from "@stratakit/icons/placeholder.svg";
-   ```
+   The static import method is good for use with build tools that support it, while the `import.meta` works better in browsers (but may not work reliably in all build tools).
 
 2. Pass it to the `Icon` component from [`@stratakit/mui`](https://www.npmjs.com/package/@stratakit/mui) or [`@stratakit/foundations`](https://www.npmjs.com/package/@stratakit/foundations).
 

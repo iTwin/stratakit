@@ -25,8 +25,6 @@ npm add @stratakit/icons
 
 ## Usage
 
-Preferred usage is with the `Icon` component from `@stratakit/foundations`:
-
 1. Import the icon you want to use.
 
    Using the [`import.meta`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/import.meta) feature to get the URL of the icon (does not work with SSR):
@@ -41,10 +39,10 @@ Preferred usage is with the `Icon` component from `@stratakit/foundations`:
    import placeholderIcon from "@stratakit/icons/placeholder.svg";
    ```
 
-2. Render the `Icon` component from [`@stratakit/foundations`](https://www.npmjs.com/package/@stratakit/foundations).
+2. Pass it to the `Icon` component from [`@stratakit/mui`](https://www.npmjs.com/package/@stratakit/mui) or [`@stratakit/foundations`](https://www.npmjs.com/package/@stratakit/foundations).
 
    ```tsx
-   import { Icon } from "@stratakit/foundations";
+   import { Icon } from "@stratakit/mui";
 
    <Icon href={placeholderIcon} />;
    ```
@@ -56,7 +54,7 @@ Preferred usage is with the `Icon` component from `@stratakit/foundations`:
    <Icon href={`${placeholderIcon}#icon-large`} size="large" />
    ```
 
-   Alternatively, you can `<use>` the SVG sprite directly (without `Icon`):
+   Alternatively, you can `<use>` the SVG sprite directly (without the `Icon` component):
 
    ```tsx
    <svg>

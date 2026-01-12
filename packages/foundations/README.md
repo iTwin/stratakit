@@ -18,8 +18,7 @@ npm add @stratakit/foundations
 ```
 
 > [!NOTE]
->
-> `@stratakit/foundations` is a peer dependency of all `@stratakit` packages, and should only be installed once by the final applications. Any packages built on top of `@stratakit` should _not_ specify `@stratakit/foundations` as a direct dependency.
+> This package is a dependency of `@stratakit/mui` and does not need to be installed explicitly if you're already using `@stratakit/mui`.
 
 ## Usage
 

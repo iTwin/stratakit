@@ -4,6 +4,9 @@ Small, modular components for StrataKit.
 
 Bricks can be assembled to create larger, more functional experiences.
 
+> [!CAUTION]
+> `@stratakit/bricks` is currently in **maintenance mode**. See [#1116](https://github.com/iTwin/design-system/discussions/1116) for details.
+
 ## Installation
 
 Using your package manager of choice, install the latest version of [`@stratakit/bricks`](https://www.npmjs.com/package/@stratakit/bricks?activeTab=versions).

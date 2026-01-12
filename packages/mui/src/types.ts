@@ -12,8 +12,6 @@ import type * as React from "react";
 
 declare module "@mui/material/Button" {
 	interface ButtonPropsColorOverrides {
-		inherit: false;
-
 		info: false;
 		success: false;
 		warning: false;

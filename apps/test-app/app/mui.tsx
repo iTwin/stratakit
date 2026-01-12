@@ -55,7 +55,6 @@ import TableDefault from "examples/mui/Table.default.tsx";
 import TabsDefault from "examples/mui/Tabs.default.tsx";
 import TextFieldDefault from "examples/mui/TextField.default.tsx";
 import TextFieldMultiline from "examples/mui/TextField.multiline.tsx";
-import TextFieldVariants from "examples/mui/TextField.variants.tsx";
 import ToggleButtonDefault from "examples/mui/ToggleButton.default.tsx";
 import TooltipDefault from "examples/mui/Tooltip.default.tsx";
 import TypographyDefault from "examples/mui/Typography.default.tsx";
@@ -291,10 +290,6 @@ export default function Page() {
 						<Stack spacing={1} direction="row">
 							<TextFieldDefault />
 							<TextFieldMultiline />
-						</Stack>
-
-						<Stack spacing={1} direction="row">
-							<TextFieldVariants />
 						</Stack>
 					</ComponentExamples>
 

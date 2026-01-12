@@ -1,0 +1,57 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+
+import * as React from "react";
+import Button from "@mui/material/Button";
+import Drawer from "@mui/material/Drawer";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import ListItemButton from "@mui/material/ListItemButton";
+import ListItemIcon from "@mui/material/ListItemIcon";
+import ListItemText from "@mui/material/ListItemText";
+import { Icon } from "@stratakit/mui";
+
+import emailIcon from "@stratakit/icons/email.svg";
+import starIcon from "@stratakit/icons/star.svg";
+import statusDraftIcon from "@stratakit/icons/status-draft.svg";
+import styles from "./Drawer.default.module.css";
+
+export default () => {
+	const [open, setOpen] = React.useState(false);
+
+	return (
+		<>
+			<Button onClick={() => setOpen(true)}>Open drawer</Button>
+			<Drawer open={open} onClose={() => setOpen(false)}>
+				<List className={styles.list}>
+					<ListItem disablePadding>
+						<ListItemButton>
+							<ListItemIcon>
+								<Icon href={`${emailIcon}#icon-large`} size="large" />
+							</ListItemIcon>
+							<ListItemText primary="Inbox" />
+						</ListItemButton>
+					</ListItem>
+					<ListItem disablePadding>
+						<ListItemButton>
+							<ListItemIcon>
+								<Icon href={`${starIcon}#icon-large`} size="large" />
+							</ListItemIcon>
+							<ListItemText primary="Starred" />
+						</ListItemButton>
+					</ListItem>
+					<ListItem disablePadding>
+						<ListItemButton>
+							<ListItemIcon>
+								<Icon href={`${statusDraftIcon}#icon-large`} size="large" />
+							</ListItemIcon>
+							<ListItemText primary="Drafts" />
+						</ListItemButton>
+					</ListItem>
+				</List>
+			</Drawer>
+		</>
+	);
+};

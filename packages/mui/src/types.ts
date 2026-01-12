@@ -7,6 +7,9 @@
 // See: https://mui.com/material-ui/customization/theming/#typescript
 // See: https://www.typescriptlang.org/docs/handbook/declaration-merging.html#module-augmentation
 
+import type { TextFieldProps, TextFieldVariants } from "@mui/material";
+import type * as React from "react";
+
 declare module "@mui/material/Button" {
 	interface ButtonPropsColorOverrides {
 		inherit: false;
@@ -24,4 +27,12 @@ declare module "@mui/material/Button" {
 		 */
 		variant?: "contained" | "outlined" | "text";
 	}
+}
+
+declare module "@mui/material/TextField" {
+	export default function TextField(
+		props: {
+			/** @deprecated DO NOT USE */ variant?: TextFieldVariants;
+		} & Omit<TextFieldProps, "variant">,
+	): React.JSX.Element;
 }

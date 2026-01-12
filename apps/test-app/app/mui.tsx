@@ -3,55 +3,65 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import * as React from "react";
-import {
-	Accordion,
-	AccordionDetails,
-	AccordionSummary,
-	Alert,
-	Autocomplete,
-	Box,
-	Breadcrumbs,
-	Button,
-	Checkbox,
-	Chip,
-	Container,
-	Dialog,
-	DialogActions,
-	DialogContent,
-	DialogContentText,
-	DialogTitle,
-	Divider,
-	FormControl,
-	IconButton,
-	InputLabel,
-	Link,
-	Menu,
-	MenuItem,
-	Pagination,
-	Paper,
-	Select,
-	Stack,
-	Switch,
-	Tab,
-	Table,
-	TableBody,
-	TableCell,
-	TableContainer,
-	TableHead,
-	TableRow,
-	TableSortLabel,
-	Tabs,
-	TextField,
-	Tooltip,
-	Typography,
-} from "@mui/material";
-import { Icon, Root } from "@stratakit/mui";
-import { useColorScheme } from "./~utils.tsx";
+import { Container, Divider, Link, Stack, Typography } from "@mui/material";
+import { Root } from "@stratakit/mui";
+import AccordionDefault from "examples/mui/Accordion.default.tsx";
+import AlertDefault from "examples/mui/Alert.default.tsx";
+import AppBarDefault from "examples/mui/AppBar.default.tsx";
+import AutocompleteDefault from "examples/mui/Autocomplete.default.tsx";
+import AvatarDefault from "examples/mui/Avatar.default.tsx";
+import BackdropDefault from "examples/mui/Backdrop.default.tsx";
+import BadgeDefault from "examples/mui/Badge.default.tsx";
+import BottomNavigationDefault from "examples/mui/BottomNavigation.default.tsx";
+import BreadcrumbsDefault from "examples/mui/Breadcrumbs.default.tsx";
+import ButtonPermutations_ from "examples/mui/Button._permutations.js";
+import ButtonColors from "examples/mui/Button.colors.tsx";
+import ButtonDefault from "examples/mui/Button.default.tsx";
+import ButtonIcons from "examples/mui/Button.icons.tsx";
+import ButtonVariants from "examples/mui/Button.variants.tsx";
+import ButtonGroupDefault from "examples/mui/ButtonGroup.default.tsx";
+import CardDefault from "examples/mui/Card.default.tsx";
+import CheckboxChecked from "examples/mui/Checkbox.checked.tsx";
+import CheckboxDefault from "examples/mui/Checkbox.default.tsx";
+import CheckboxIndeterminate from "examples/mui/Checkbox.indeterminate.tsx";
+import ChipDeletable_ from "examples/mui/Chip._deletable.tsx";
+import ChipDefault from "examples/mui/Chip.default.tsx";
+import ChipOutlined from "examples/mui/Chip.outlined.tsx";
+import DialogDefault from "examples/mui/Dialog.default.tsx";
+import DividerDefault from "examples/mui/Divider.default.tsx";
+import DrawerDefault from "examples/mui/Drawer.default.tsx";
+import FabDefault from "examples/mui/Fab.default.tsx";
+import IconButtonColors_ from "examples/mui/IconButton._colors.tsx";
+import IconButtonDefault from "examples/mui/IconButton.default.tsx";
+import LinearProgressDefault from "examples/mui/LinearProgress.default.tsx";
+import LinkColors_ from "examples/mui/Link._colors.tsx";
+import LinkDefault from "examples/mui/Link.default.tsx";
+import ListDefault from "examples/mui/List.default.tsx";
+import MenuDefault from "examples/mui/Menu.default.tsx";
+import PaginationDefault from "examples/mui/Pagination.default.tsx";
+import PaperDefault from "examples/mui/Paper.default.tsx";
+import RadioGroupDefault from "examples/mui/RadioGroup.default.tsx";
+import RatingDefault from "examples/mui/Rating.default.tsx";
+import SelectDefault from "examples/mui/Select.default.tsx";
+import SkeletonDefault from "examples/mui/Skeleton.default.tsx";
+import SliderDefault from "examples/mui/Slider.default.tsx";
+import SnackbarDefault from "examples/mui/Snackbar.default.tsx";
+import SpeedDialDefault from "examples/mui/SpeedDial.default.tsx";
+import StepperDefault from "examples/mui/Stepper.default.tsx";
+import StepperOptional from "examples/mui/Stepper.optional.tsx";
+import SwitchChecked from "examples/mui/Switch.checked.tsx";
+import SwitchDefault from "examples/mui/Switch.default.tsx";
+import TableDefault from "examples/mui/Table.default.tsx";
+import TabsDefault from "examples/mui/Tabs.default.tsx";
+import TextFieldDefault from "examples/mui/TextField.default.tsx";
+import TextFieldMultiline from "examples/mui/TextField.multiline.tsx";
+import ToggleButtonDefault from "examples/mui/ToggleButton.default.tsx";
+import TooltipDefault from "examples/mui/Tooltip.default.tsx";
+import TypographyDefault from "examples/mui/Typography.default.tsx";
+import { isProduction, useColorScheme } from "./~utils.tsx";
 
+import type * as React from "react";
 import type { MetaFunction } from "react-router";
-
-import svgPlaceholder from "@stratakit/icons/placeholder.svg";
 
 // ----------------------------------------------------------------------------
 
@@ -65,352 +75,258 @@ export default function Page() {
 	const colorScheme = useColorScheme();
 	return (
 		<Root colorScheme={colorScheme}>
-			<Container maxWidth="lg" sx={{ p: 4, minBlockSize: "100dvb" }}>
+			<Container
+				maxWidth="lg"
+				sx={{ p: 4, minBlockSize: "100dvb" }}
+				component="main"
+			>
 				<Typography variant="h4" component="h1">
 					StrataKit MUI theme
 				</Typography>
 
 				<Divider sx={{ mt: 2, mb: 2 }} />
 
-				<Stack spacing={2}>
-					<Stack spacing={1} direction="row">
-						<Link href="#">Default</Link>
-						<Link href="#" sx={{ color: "primary.dark" }}>
-							Accent
-						</Link>
-					</Stack>
+				<Stack spacing={2} alignItems="start">
+					<ComponentExamples name="Accordion">
+						<Stack spacing={1} alignSelf="stretch">
+							<AccordionDefault />
+						</Stack>
+					</ComponentExamples>
 
-					<Stack spacing={1} direction="row" alignItems="center">
-						<Button variant="contained">Contained</Button>
-						<Button
-							variant="contained"
-							color="primary"
-							startIcon={<Icon href={svgPlaceholder} />}
-						>
-							Contained
-						</Button>
-						<Button variant="outlined" endIcon={<Icon href={svgPlaceholder} />}>
-							Outlined
-						</Button>
-						<Button variant="outlined" color="primary">
-							Outlined
-						</Button>
-						<Button>Ghost</Button>
+					<ComponentExamples name="Alert">
+						<Stack spacing={1} alignSelf="stretch">
+							<AlertDefault />
+						</Stack>
+					</ComponentExamples>
 
-						<Tooltip title="Default">
-							<IconButton>
-								<Icon href={svgPlaceholder} />
-							</IconButton>
-						</Tooltip>
-					</Stack>
+					<ComponentExamples name="AppBar">
+						<Stack spacing={1} alignSelf="stretch">
+							<AppBarDefault />
+						</Stack>
+					</ComponentExamples>
 
-					<Stack spacing={1} direction="row">
-						<Checkbox />
-						<Checkbox defaultChecked />
-						<Checkbox indeterminate />
-						<Switch defaultChecked />
-					</Stack>
+					<ComponentExamples name="Autocomplete">
+						<AutocompleteDefault />
+					</ComponentExamples>
 
-					<Stack spacing={1} direction="row">
-						<TextField label="Input" variant="outlined" />
-						<TextField label="Textarea" variant="outlined" multiline />
-					</Stack>
+					<ComponentExamples name="Avatar">
+						<AvatarDefault />
+					</ComponentExamples>
 
-					<Stack spacing={1} direction="row">
-						<AutocompleteExample />
-						<SelectExample />
-					</Stack>
+					<ComponentExamples name="Backdrop">
+						<BackdropDefault />
+					</ComponentExamples>
 
-					<Stack spacing={1} direction="row">
-						<Chip label="Default Chip" />
-						<Chip label="Outlined Chip" variant="outlined" />
-						<Chip
-							label="Deletable Chip"
-							variant="outlined"
-							onDelete={() => {}}
-						/>
-					</Stack>
+					<ComponentExamples name="Badge">
+						<BadgeDefault />
+					</ComponentExamples>
 
-					<Stack spacing={1} direction="row">
-						<BreadcrumbsExample />
-					</Stack>
+					<ComponentExamples name="BottomNavigation">
+						<Stack spacing={1} alignSelf="stretch">
+							<BottomNavigationDefault />
+						</Stack>
+					</ComponentExamples>
 
-					<AccordionExample />
+					<ComponentExamples name="Breadcrumbs">
+						<BreadcrumbsDefault />
+					</ComponentExamples>
 
-					<Stack spacing={1} direction="row">
-						<MenuExample />
-					</Stack>
+					<ComponentExamples name="Button">
+						<ButtonDefault />
 
-					<Stack spacing={1} direction="row">
-						<DialogExample />
-					</Stack>
+						<Stack spacing={1} direction="row">
+							<ButtonVariants />
+						</Stack>
 
-					<Stack spacing={1} direction="row">
-						<TabsExample />
-					</Stack>
+						<Stack spacing={1} direction="row">
+							<ButtonColors />
+						</Stack>
 
-					<Stack spacing={1}>
-						<Alert severity="success">
-							Here is a gentle confirmation that your action was successful.
-						</Alert>
-					</Stack>
+						<Stack spacing={1} direction="row">
+							<ButtonIcons />
+						</Stack>
 
-					<Stack spacing={1}>
-						<TableExample />
-						<Pagination
-							count={10}
-							showFirstButton
-							showLastButton
-							sx={{ alignSelf: "center" }}
-						/>
-					</Stack>
+						{!isProduction && (
+							<Stack spacing={1}>
+								<ButtonPermutations_ />
+							</Stack>
+						)}
+					</ComponentExamples>
+
+					<ComponentExamples name="ButtonGroup">
+						<ButtonGroupDefault />
+					</ComponentExamples>
+
+					<ComponentExamples name="Card">
+						<CardDefault />
+					</ComponentExamples>
+
+					<ComponentExamples name="Checkbox">
+						<CheckboxDefault />
+						<CheckboxChecked />
+						<CheckboxIndeterminate />
+					</ComponentExamples>
+
+					<ComponentExamples name="Chip">
+						<Stack spacing={1} direction="row">
+							<ChipDefault />
+							<ChipOutlined />
+							{!isProduction && <ChipDeletable_ />}
+						</Stack>
+					</ComponentExamples>
+
+					<ComponentExamples name="Dialog">
+						<DialogDefault />
+					</ComponentExamples>
+
+					<ComponentExamples name="Divider">
+						<Stack spacing={1} alignSelf="stretch">
+							<DividerDefault />
+						</Stack>
+					</ComponentExamples>
+
+					<ComponentExamples name="Drawer">
+						<DrawerDefault />
+					</ComponentExamples>
+
+					<ComponentExamples name="Fab">
+						<FabDefault />
+					</ComponentExamples>
+
+					<ComponentExamples name="IconButton">
+						<IconButtonDefault />
+
+						{!isProduction && (
+							<Stack spacing={1} direction="row">
+								<IconButtonColors_ />
+							</Stack>
+						)}
+					</ComponentExamples>
+
+					<ComponentExamples name="LinearProgress">
+						<Stack spacing={1} alignSelf="stretch">
+							<LinearProgressDefault />
+						</Stack>
+					</ComponentExamples>
+
+					<ComponentExamples name="Link">
+						<LinkDefault />
+
+						<Stack spacing={1} direction="row">
+							{!isProduction && <LinkColors_ />}
+						</Stack>
+					</ComponentExamples>
+
+					<ComponentExamples name="List">
+						<Stack spacing={1} alignSelf="stretch">
+							<ListDefault />
+						</Stack>
+					</ComponentExamples>
+
+					<ComponentExamples name="Menu">
+						<MenuDefault />
+					</ComponentExamples>
+
+					<ComponentExamples name="Pagination">
+						<PaginationDefault />
+					</ComponentExamples>
+
+					<ComponentExamples name="Paper">
+						<PaperDefault />
+					</ComponentExamples>
+
+					<ComponentExamples name="RadioGroup">
+						<RadioGroupDefault />
+					</ComponentExamples>
+
+					<ComponentExamples name="Rating">
+						<RatingDefault />
+					</ComponentExamples>
+
+					<ComponentExamples name="Select">
+						<SelectDefault />
+					</ComponentExamples>
+
+					<ComponentExamples name="Skeleton">
+						<Stack spacing={1} alignSelf="stretch">
+							<SkeletonDefault />
+						</Stack>
+					</ComponentExamples>
+
+					<ComponentExamples name="Slider">
+						<SliderDefault />
+					</ComponentExamples>
+
+					<ComponentExamples name="Snackbar">
+						<SnackbarDefault />
+					</ComponentExamples>
+
+					<ComponentExamples name="SpeedDial">
+						<SpeedDialDefault />
+					</ComponentExamples>
+
+					<ComponentExamples name="Stepper">
+						<Stack spacing={2} alignSelf="stretch">
+							<StepperDefault />
+
+							<StepperOptional />
+						</Stack>
+					</ComponentExamples>
+
+					<ComponentExamples name="Switch">
+						<SwitchDefault />
+						<SwitchChecked />
+					</ComponentExamples>
+
+					<ComponentExamples name="Table">
+						<TableDefault />
+					</ComponentExamples>
+
+					<ComponentExamples name="Tabs">
+						<TabsDefault />
+					</ComponentExamples>
+
+					<ComponentExamples name="TextField">
+						<Stack spacing={1} direction="row">
+							<TextFieldDefault />
+							<TextFieldMultiline />
+						</Stack>
+					</ComponentExamples>
+
+					<ComponentExamples name="ToggleButton">
+						<ToggleButtonDefault />
+					</ComponentExamples>
+
+					<ComponentExamples name="Tooltip">
+						<TooltipDefault />
+					</ComponentExamples>
+
+					<ComponentExamples name="Typography">
+						<TypographyDefault />
+					</ComponentExamples>
 				</Stack>
 			</Container>
 		</Root>
 	);
 }
 
-function MenuExample() {
-	const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-	const open = Boolean(anchorEl);
-	const handleClose = () => {
-		setAnchorEl(null);
-	};
-
-	const buttonId = React.useId();
-	const menuId = React.useId();
-
-	return (
-		<div>
-			<Button
-				variant="contained"
-				id={buttonId}
-				aria-controls={open ? menuId : undefined}
-				aria-haspopup="true"
-				aria-expanded={open ? "true" : undefined}
-				onClick={(event) => setAnchorEl(event.currentTarget)}
-			>
-				Open menu
-			</Button>
-			<Menu
-				id={menuId}
-				anchorEl={anchorEl}
-				open={open}
-				onClose={handleClose}
-				slotProps={{
-					list: {
-						"aria-labelledby": buttonId,
-					},
-				}}
-			>
-				<MenuItem onClick={handleClose}>Profile</MenuItem>
-				<MenuItem onClick={handleClose}>My account</MenuItem>
-				<MenuItem onClick={handleClose}>Logout</MenuItem>
-			</Menu>
-		</div>
-	);
+interface ComponentExamplesProps {
+	name: string;
+	children?: React.ReactNode;
 }
 
-function DialogExample() {
-	const [open, setOpen] = React.useState(false);
-
-	const handleClose = () => {
-		setOpen(false);
-	};
-
+function ComponentExamples(props: ComponentExamplesProps) {
+	const { name } = props;
+	const id = name.toLowerCase().replace(" ", "-");
 	return (
-		<React.Fragment>
-			<Button variant="contained" onClick={() => setOpen(true)}>
-				Open dialog
-			</Button>
-			<Dialog open={open} onClose={handleClose}>
-				<DialogTitle>Important decision</DialogTitle>
-				<DialogContent>
-					<DialogContentText>
-						{`Are you sure you want to use MUI? This decision cannot be undone.`}
-					</DialogContentText>
-				</DialogContent>
-				<DialogActions>
-					<Button onClick={handleClose}>No</Button>
-					<Button variant="contained" onClick={handleClose}>
-						Yes
-					</Button>
-				</DialogActions>
-			</Dialog>
-		</React.Fragment>
-	);
-}
+		<>
+			<Typography variant="h5" component="h2" id={id}>
+				<Link href={`#${id}`}>{name}</Link>
+			</Typography>
 
-function TabsExample() {
-	const [value, setValue] = React.useState(0);
+			{props.children}
 
-	const baseId = React.useId();
-
-	return (
-		<Box sx={{ width: "100%" }}>
-			<Box sx={{ borderBottom: 1, borderColor: "divider" }}>
-				<Tabs
-					value={value}
-					onChange={(_, value) => setValue(value)}
-					aria-label="basic tabs example"
-				>
-					<Tab
-						label="Item One"
-						id={`${baseId}-tab0`}
-						aria-controls={`${baseId}-panel0`}
-					/>
-					<Tab
-						label="Item Two"
-						id={`${baseId}-tab1`}
-						aria-controls={`${baseId}-panel1`}
-					/>
-					<Tab
-						label="Item Three"
-						id={`${baseId}-tab2`}
-						aria-controls={`${baseId}-panel2`}
-					/>
-				</Tabs>
-			</Box>
-			{value === 0 && (
-				<div
-					role="tabpanel"
-					id={`${baseId}-panel0`}
-					aria-labelledby={`${baseId}-tab0`}
-				>
-					Item One
-				</div>
-			)}
-			{value === 1 && (
-				<div
-					role="tabpanel"
-					id={`${baseId}-panel1`}
-					aria-labelledby={`${baseId}-tab1`}
-				>
-					Item Two
-				</div>
-			)}
-			{value === 2 && (
-				<div
-					role="tabpanel"
-					id={`${baseId}-panel2`}
-					aria-labelledby={`${baseId}-tab2`}
-				>
-					Item Three
-				</div>
-			)}
-		</Box>
-	);
-}
-
-function SelectExample() {
-	return (
-		<FormControl>
-			<InputLabel id="demo-simple-select-label">Age</InputLabel>
-			<Select
-				labelId="demo-simple-select-label"
-				id="demo-simple-select"
-				label="Age"
-				defaultValue={10}
-			>
-				<MenuItem value={10}>Ten</MenuItem>
-				<MenuItem value={20}>Twenty</MenuItem>
-				<MenuItem value={30}>Thirty</MenuItem>
-			</Select>
-		</FormControl>
-	);
-}
-
-function AutocompleteExample() {
-	const options = ["Option 1", "Option 2"];
-
-	return (
-		<Autocomplete
-			id="controllable-states-demo"
-			options={options}
-			sx={{ width: 300 }}
-			renderInput={(params) => <TextField {...params} label="Autocomplete" />}
-		/>
-	);
-}
-
-function BreadcrumbsExample() {
-	return (
-		<Breadcrumbs aria-label="breadcrumb">
-			<Link href="/">Home</Link>
-			<Link href="#">Packages</Link>
-			<Typography sx={{ color: "text.primary" }}>@stratakit/mui</Typography>
-		</Breadcrumbs>
-	);
-}
-
-function AccordionExample() {
-	return (
-		<Accordion>
-			<AccordionSummary aria-controls="panel1-content" id="panel1-header">
-				<Typography component="span">Accordion</Typography>
-			</AccordionSummary>
-			<AccordionDetails>
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-				malesuada lacus ex, sit amet blandit leo lobortis eget.
-			</AccordionDetails>
-		</Accordion>
-	);
-}
-
-function TableExample() {
-	const rows = [
-		{ name: "Cupcake", calories: 305, fat: 3.7, carbs: 67, protein: 4.3 },
-		{ name: "Eclair", calories: 262, fat: 16.0, carbs: 24, protein: 6.0 },
-		{
-			name: "Frozen yoghurt",
-			calories: 159,
-			fat: 6.0,
-			carbs: 24,
-			protein: 4.0,
-		},
-		{ name: "Gingerbread", calories: 356, fat: 16.0, carbs: 49, protein: 3.9 },
-		{
-			name: "Ice cream sandwich",
-			calories: 237,
-			fat: 9.0,
-			carbs: 37,
-			protein: 4.3,
-		},
-	];
-
-	return (
-		<TableContainer component={Paper}>
-			<Table sx={{ minWidth: 650 }} aria-label="simple table">
-				<TableHead>
-					<TableRow>
-						<TableCell sortDirection="asc">
-							<TableSortLabel active direction="asc">
-								Dessert (100g serving)
-							</TableSortLabel>
-						</TableCell>
-						<TableCell align="right">Calories</TableCell>
-						<TableCell align="right">Fat&nbsp;(g)</TableCell>
-						<TableCell align="right">Carbs&nbsp;(g)</TableCell>
-						<TableCell align="right">Protein&nbsp;(g)</TableCell>
-					</TableRow>
-				</TableHead>
-				<TableBody>
-					{rows.map((row) => (
-						<TableRow
-							key={row.name}
-							sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-						>
-							<TableCell component="th" scope="row">
-								{row.name}
-							</TableCell>
-							<TableCell align="right">{row.calories}</TableCell>
-							<TableCell align="right">{row.fat}</TableCell>
-							<TableCell align="right">{row.carbs}</TableCell>
-							<TableCell align="right">{row.protein}</TableCell>
-						</TableRow>
-					))}
-				</TableBody>
-			</Table>
-		</TableContainer>
+			<Divider sx={{ mt: 2, mb: 2, alignSelf: "stretch" }} />
+		</>
 	);
 }

@@ -14,23 +14,21 @@ import styles from "./Card.default.module.css";
 export default () => {
 	return (
 		<Card className={styles.card} variant="outlined">
-			<CardActionArea
-				component="a"
-				href="https://github.com/iTwin/design-system/"
-			>
+			<CardActionArea component="a" href="#">
 				<CardMedia
 					className={styles.media}
 					component="img"
 					height="140"
-					image="https://images.unsplash.com/photo-1675898618370-f3ec72ff623d"
-					alt="layers of a mountain side rock"
+					image="https://images.unsplash.com/photo-1489944440615-453fc2b6a9a9"
+					alt=""
 				/>
 				<CardContent>
 					<Typography gutterBottom variant="h3" component="div">
-						StrataKit
+						Stadium
 					</Typography>
 					<Typography variant="body2" color="text.secondary">
-						StrataKit is a set of libraries for the new Strata Design System.
+						Stadium is a place for outdoor sports, concerts, or other events and
+						activities.
 					</Typography>
 				</CardContent>
 			</CardActionArea>

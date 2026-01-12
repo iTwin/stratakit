@@ -21,9 +21,6 @@ const variants = [
 const colors = [
 	"primary",
 	"secondary",
-	"info",
-	"success",
-	"warning",
 	"error",
 ] as const satisfies ButtonProps["color"][];
 const icons = ["", "end"] as const;

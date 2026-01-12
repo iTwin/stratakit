@@ -11,6 +11,12 @@ import type { TextFieldProps, TextFieldVariants } from "@mui/material";
 import type * as React from "react";
 
 declare module "@mui/material/Button" {
+	interface ButtonPropsColorOverrides {
+		info: false;
+		success: false;
+		warning: false;
+	}
+
 	interface ButtonOwnProps {
 		/**
 		 * The default variant with `@stratakit/mui` is `"contained"`.

@@ -27,6 +27,14 @@ declare module "@mui/material/Button" {
 	}
 }
 
+declare module "@mui/material/IconButton" {
+	interface IconButtonPropsColorOverrides {
+		info: false;
+		success: false;
+		warning: false;
+	}
+}
+
 declare module "@mui/material/TextField" {
 	export default function TextField(
 		props: {

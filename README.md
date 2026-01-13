@@ -1,6 +1,6 @@
 # StrataKit
 
-Monorepo for the [next evolution of the iTwinUI design system](https://github.com/iTwin/design-system/discussions/481), aka **StrataKit**.
+Monorepo for **StrataKit**, Bentley's new flagship design system.
 
 ## Monorepo structure
 

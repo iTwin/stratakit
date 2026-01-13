@@ -169,6 +169,11 @@ function createTheme() {
 					IconComponent: ArrowDownIcon,
 				},
 			},
+			MuiTooltip: {
+				defaultProps: {
+					describeChild: true,
+				},
+			},
 		},
 	});
 }

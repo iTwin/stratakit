@@ -27,7 +27,7 @@ export default () => {
 				onClose={handleClose}
 				message="Note archived"
 				action={
-					<Tooltip title="Close">
+					<Tooltip title="Close" describeChild={false}>
 						<IconButton color="inherit" onClick={handleClose}>
 							<Icon href={closeIcon} />
 						</IconButton>

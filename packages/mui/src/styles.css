@@ -134,7 +134,9 @@
 		min-block-size: unset;
 
 		&:where(input) {
-			padding-block: 8.19px;
+			padding-block: 0;
+			min-block-size: 36.5px;
+			line-height: 36.5px;
 		}
 	}
 
@@ -201,8 +203,9 @@
 	}
 
 	.MuiSelect-select {
-		padding-block-start: 8.245px;
-		padding-block-end: 8.245px;
+		padding-block: 0;
+		min-block-size: 36.5px;
+		line-height: 36.5px;
 	}
 
 	.MuiTab-root {

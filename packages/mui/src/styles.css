@@ -130,15 +130,16 @@
 	}
 
 	.MuiInputBase-input {
-		font-size: var(--stratakit-font-size-14);
+		font: var(--stratakit-mui-font-body2);
+		min-block-size: unset;
 
 		&:where(input) {
-			padding-block: 8.185px;
+			padding-block: 8.19px;
 		}
 	}
 
 	.MuiInputBase-multiline {
-		padding-block: 6.75px;
+		padding-block: 8.25px;
 	}
 
 	.MuiLink-root {
@@ -200,7 +201,7 @@
 	}
 
 	.MuiSelect-select {
-		padding-block: 6.75px;
+		padding-block: 8.245px;
 	}
 
 	.MuiTab-root {

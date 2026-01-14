@@ -15,9 +15,6 @@ const colors = [
 	"primary",
 	"secondary",
 	"error",
-	"info",
-	"success",
-	"warning",
 ] as const satisfies IconButtonProps["color"][];
 
 export default () => {

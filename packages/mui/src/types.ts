@@ -27,6 +27,26 @@ declare module "@mui/material/Button" {
 	}
 }
 
+declare module "@mui/material/Fab" {
+	interface FabPropsColorOverrides {
+		info: false;
+		success: false;
+		warning: false;
+		error: false;
+		default: false;
+		inherit: false;
+	}
+
+	interface FabOwnProps {
+		/**
+		 * The default color with `@stratakit/mui` is `"primary"`.
+		 *
+		 * @default 'primary'
+		 */
+		color?: "primary" | "secondary";
+	}
+}
+
 declare module "@mui/material/IconButton" {
 	interface IconButtonPropsColorOverrides {
 		info: false;

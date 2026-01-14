@@ -133,6 +133,11 @@ function createTheme() {
 					disableRipple: true, // Checkbox doesn't inherit from ButtonBase
 				},
 			},
+			MuiFab: {
+				defaultProps: {
+					color: "primary",
+				},
+			},
 			MuiLink: {
 				defaultProps: {
 					color: "textPrimary",

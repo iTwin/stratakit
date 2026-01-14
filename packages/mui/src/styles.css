@@ -73,6 +73,14 @@
 
 	.MuiAutocomplete-inputRoot {
 		padding-block: 0;
+  }
+  
+	.MuiButtonBase-root {
+		&:where(.Mui-disabled) {
+			cursor: not-allowed;
+			pointer-events: auto; /* Revert MUI's disabled pointer-events */
+			background-color: transparent; /* To prevent hover styles from leaking through */
+		}
 	}
 
 	.MuiButton-root {
@@ -94,6 +102,12 @@
 		&:where(.MuiButton-colorPrimary) {
 			--variant-outlinedColor: var(--stratakit-color-text-accent-strong);
 			--variant-textColor: var(--stratakit-color-text-accent-strong);
+		}
+
+		&:where(.MuiButton-contained) {
+			&:where(.Mui-disabled) {
+				background-color: var(--stratakit-color-bg-glow-on-surface-disabled);
+			}
 		}
 	}
 

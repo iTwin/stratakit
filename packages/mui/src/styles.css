@@ -133,6 +133,10 @@
 		font: var(--stratakit-mui-font-body2);
 		min-block-size: unset;
 
+		&:focus-visible:not(#a#b) {
+			outline: none !important;
+		}
+
 		&:where(input) {
 			padding-block: 0;
 			min-block-size: 36.5px;
@@ -142,6 +146,26 @@
 
 	.MuiInputBase-multiline {
 		padding-block: 8.25px;
+	}
+
+	.MuiInputBase-root {
+		&:focus-within {
+			outline: var(--🥝focus-outline);
+			outline-offset: var(--🥝focus-outline-offset);
+		}
+
+		&.Mui-focused {
+			fieldset {
+				border-color: var(--stratakit-color-border-accent-strong);
+				border-width: 1px;
+			}
+		}
+	}
+
+	.MuiInputLabel-root {
+		&.Mui-focused {
+			color: var(--stratakit-color-text-neutral-secondary);
+		}
 	}
 
 	.MuiLink-root {

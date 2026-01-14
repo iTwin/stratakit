@@ -73,8 +73,8 @@
 
 	.MuiAutocomplete-inputRoot {
 		padding-block: 0;
-  }
-  
+	}
+
 	.MuiButtonBase-root {
 		&:where(.Mui-disabled) {
 			cursor: not-allowed;

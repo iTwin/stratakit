@@ -16,23 +16,23 @@ import textAlignRightIcon from "@stratakit/icons/text-align-right.svg";
 export default () => {
 	return (
 		<ToggleButtonGroup value="center" aria-label="text alignment">
-			<Tooltip title="Left aligned">
+			<Tooltip title="Left aligned" describeChild={false}>
 				<ToggleButton value="left">
 					<Icon href={textAlignLeftIcon} />
 				</ToggleButton>
 			</Tooltip>
-			<Tooltip title="Centered">
+			<Tooltip title="Centered" describeChild={false}>
 				<ToggleButton value="center">
 					<Icon href={textAlignCenterIcon} />
 				</ToggleButton>
 			</Tooltip>
-			<Tooltip title="Right aligned">
+			<Tooltip title="Right aligned" describeChild={false}>
 				<ToggleButton value="right">
 					<Icon href={textAlignRightIcon} />
 				</ToggleButton>
 			</Tooltip>
-			<Tooltip title="Justified">
-				<ToggleButton value="justify" disabled>
+			<Tooltip title="Justified" describeChild={false}>
+				<ToggleButton value="justify">
 					<Icon href={textAlignJustifyIcon} />
 				</ToggleButton>
 			</Tooltip>

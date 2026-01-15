@@ -22,6 +22,7 @@ export default () => {
 		<Tooltip
 			key={color}
 			title={`${color.charAt(0).toUpperCase()}${color.slice(1)}`}
+			describeChild={false}
 		>
 			<IconButton color={color}>
 				<Icon href={placeholderIcon} />

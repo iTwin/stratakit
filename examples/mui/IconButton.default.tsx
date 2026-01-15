@@ -11,7 +11,7 @@ import downloadIcon from "@stratakit/icons/download.svg";
 
 export default () => {
 	return (
-		<Tooltip title="Download">
+		<Tooltip title="Download" describeChild={false}>
 			<IconButton>
 				<Icon href={downloadIcon} />
 			</IconButton>

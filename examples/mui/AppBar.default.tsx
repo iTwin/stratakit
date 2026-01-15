@@ -22,9 +22,7 @@ export default () => {
 				<Typography variant="h6" component="div" flexGrow={1}>
 					News
 				</Typography>
-				<Button color="inherit" variant="text">
-					Login
-				</Button>
+				<Button variant="text">Login</Button>
 			</Toolbar>
 		</AppBar>
 	);

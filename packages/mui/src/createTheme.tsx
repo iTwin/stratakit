@@ -136,7 +136,7 @@ function createTheme() {
 			MuiInputLabel: {
 				defaultProps: {
 					shrink: true, // Removes label animation and masked border from TextField
-      	},
+				},
 			},
 			MuiFab: {
 				defaultProps: {

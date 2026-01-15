@@ -30,7 +30,9 @@ export default () => {
 				</DialogContent>
 				<DialogActions>
 					<Button onClick={handleClose}>No</Button>
-					<Button onClick={handleClose}>Yes</Button>
+					<Button onClick={handleClose} color="primary">
+						Yes
+					</Button>
 				</DialogActions>
 			</Dialog>
 		</>

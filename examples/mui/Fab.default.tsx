@@ -11,7 +11,7 @@ import addIcon from "@stratakit/icons/add.svg";
 
 export default () => {
 	return (
-		<Tooltip title="Add documents">
+		<Tooltip title="Add documents" describeChild={false}>
 			<Fab>
 				<Icon href={addIcon} />
 			</Fab>

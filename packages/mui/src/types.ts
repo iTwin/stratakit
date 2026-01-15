@@ -27,6 +27,26 @@ declare module "@mui/material/Button" {
 	}
 }
 
+declare module "@mui/material/Fab" {
+	interface FabPropsColorOverrides {
+		info: false;
+		success: false;
+		warning: false;
+		error: false;
+		default: false;
+		inherit: false;
+	}
+
+	interface FabOwnProps {
+		/**
+		 * The default color with `@stratakit/mui` is `"primary"`.
+		 *
+		 * @default 'primary'
+		 */
+		color?: "primary" | "secondary";
+	}
+}
+
 declare module "@mui/material/IconButton" {
 	interface IconButtonPropsColorOverrides {
 		info: false;
@@ -41,4 +61,14 @@ declare module "@mui/material/TextField" {
 			/** @deprecated DO NOT USE */ variant?: TextFieldVariants;
 		} & Omit<TextFieldProps, "variant">,
 	): React.JSX.Element;
+}
+
+declare module "@mui/material/Tooltip" {
+	interface TooltipOwnProps {
+		/**
+		 * The default value with `@stratakit/mui` is `true`.
+		 * Use `describeChild={false}` if you want to label the child element.
+		 */
+		describeChild?: boolean;
+	}
 }

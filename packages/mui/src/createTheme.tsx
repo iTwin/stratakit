@@ -138,6 +138,11 @@ function createTheme() {
 					shrink: true, // Removes label animation and masked border from TextField
 				},
 			},
+			MuiFab: {
+				defaultProps: {
+					color: "primary",
+				},
+			},
 			MuiLink: {
 				defaultProps: {
 					color: "textPrimary",
@@ -177,6 +182,11 @@ function createTheme() {
 				defaultProps: {
 					// TODO: This should use sort-ascending and sort-descending icons, but that requires disabling MUI's built-in icon rotation.
 					IconComponent: ArrowDownIcon,
+				},
+			},
+			MuiTooltip: {
+				defaultProps: {
+					describeChild: true,
 				},
 			},
 		},

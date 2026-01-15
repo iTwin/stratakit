@@ -14,7 +14,7 @@ import emailIcon from "@stratakit/icons/email.svg";
 export default () => {
 	const descriptionId = React.useId();
 	return (
-		<Tooltip title="Inbox">
+		<Tooltip title="Inbox" describeChild={false}>
 			<IconButton aria-describedby={descriptionId}>
 				<Badge badgeContent={4} color="primary">
 					<Icon href={`${emailIcon}#icon-large`} size="large" />

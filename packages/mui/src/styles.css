@@ -67,12 +67,23 @@
 		--stratakit-mui-palette-grey-A700: --primitive("color.gray.700");
 	}
 
+	.MuiAccordion-root {
+		background-color: transparent;
+	}
+
 	.MuiAlert-icon {
 		align-items: center; /* Fix vertical alignment of differently sized icons */
 	}
 
 	.MuiAutocomplete-inputRoot {
 		padding-block: 0;
+	}
+
+	.MuiAppBar-root {
+		background-color: var(--stratakit-color-bg-page-base);
+		box-shadow: none;
+		border-block-end: 1px solid var(--stratakit-color-border-page-base);
+		color: var(--stratakit-color-text-neutral-primary);
 	}
 
 	.MuiButtonBase-root {
@@ -90,12 +101,14 @@
 			--variant-outlinedColor: var(--stratakit-color-text-neutral-primary);
 			--variant-textColor: var(--stratakit-color-text-neutral-primary);
 
-			&:where(:hover) {
-				--variant-containedBg: color-mix(
-					in oklch,
-					var(--stratakit-color-bg-neutral-base) 100%,
-					var(--stratakit-color-glow-hue) var(--stratakit-color-bg-glow-base-hover-\%)
-				);
+			@media (any-hover: hover) {
+				&:where(:hover) {
+					--variant-containedBg: color-mix(
+						in oklch,
+						var(--stratakit-color-bg-neutral-base) 100%,
+						var(--stratakit-color-glow-hue) var(--stratakit-color-bg-glow-base-hover-\%)
+					);
+				}
 			}
 		}
 
@@ -109,6 +122,10 @@
 				background-color: var(--stratakit-color-bg-glow-on-surface-disabled);
 			}
 		}
+	}
+
+	.MuiCard-root {
+		background-color: var(--stratakit-color-bg-elevation-base);
 	}
 
 	.MuiCheckbox-root {
@@ -133,8 +150,22 @@
 		transform: none; /* Undo inset positioning */
 	}
 
+	.MuiChip-root {
+		&:where(.MuiChip-filledDefault.MuiChip-colorDefault) {
+			background-color: var(--stratakit-color-bg-neutral-base);
+			border: 1px solid var(--stratakit-color-border-neutral-base);
+		}
+	}
+
+	.MuiDialogActions-root {
+		&:where(.MuiDialogActions-spacing) {
+			padding-block: var(--stratakit-space-x4);
+			padding-inline: var(--stratakit-space-x5);
+		}
+	}
+
 	.MuiFormLabel-colorPrimary {
-		&.Mui-focused {
+		&:where(.Mui-focused) {
 			color: var(--stratakit-mui-palette-primary-dark);
 		}
 	}

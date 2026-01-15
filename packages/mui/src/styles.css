@@ -183,10 +183,16 @@
 			min-block-size: 36.5px;
 			align-content: center;
 		}
+
+		&:where(textarea) {
+			padding-block: 8.25px;
+			padding-inline: 14px;
+			min-block-size: 19.5px;
+		}
 	}
 
-	.MuiInputBase-multiline {
-		padding-block: 8.25px;
+	.MuiInputBase-root {
+		padding: 0;
 	}
 
 	.MuiLink-root {

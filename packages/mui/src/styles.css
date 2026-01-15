@@ -119,6 +119,13 @@
 		}
 	}
 
+	.MuiDialogActions-root {
+		&:where(.MuiDialogActions-spacing) {
+			padding-block: var(--stratakit-space-x4);
+			padding-inline: var(--stratakit-space-x5);
+		}
+	}
+
 	.MuiFormLabel-colorPrimary {
 		&.Mui-focused {
 			color: var(--stratakit-mui-palette-primary-dark);

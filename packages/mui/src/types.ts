@@ -62,3 +62,13 @@ declare module "@mui/material/TextField" {
 		} & Omit<TextFieldProps, "variant">,
 	): React.JSX.Element;
 }
+
+declare module "@mui/material/Tooltip" {
+	interface TooltipOwnProps {
+		/**
+		 * The default value with `@stratakit/mui` is `true`.
+		 * Use `describeChild={false}` if you want to label the child element.
+		 */
+		describeChild?: boolean;
+	}
+}

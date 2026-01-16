@@ -37,6 +37,7 @@ import DialogDefault from "examples/mui/Dialog.default.tsx";
 import DividerDefault from "examples/mui/Divider.default.tsx";
 import DrawerDefault from "examples/mui/Drawer.default.tsx";
 import FabDefault from "examples/mui/Fab.default.tsx";
+import FormControlGroup from "examples/mui/FormControl.group.tsx";
 import IconButtonColors_ from "examples/mui/IconButton._colors.tsx";
 import IconButtonDefault from "examples/mui/IconButton.default.tsx";
 import LinearProgressDefault from "examples/mui/LinearProgress.default.tsx";
@@ -209,6 +210,10 @@ export default function Page() {
 
 					<ComponentExamples name="Fab">
 						<FabDefault />
+					</ComponentExamples>
+
+					<ComponentExamples name="FormControl">
+						<FormControlGroup />
 					</ComponentExamples>
 
 					<ComponentExamples name="IconButton">

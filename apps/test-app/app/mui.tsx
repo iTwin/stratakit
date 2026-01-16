@@ -47,6 +47,7 @@ import ListAvatar from "examples/mui/List.avatar.tsx";
 import ListDefault from "examples/mui/List.default.tsx";
 import ListSubheader from "examples/mui/List.subheader.tsx";
 import MenuDefault from "examples/mui/Menu.default.tsx";
+import MenuListDefault from "examples/mui/MenuList.default.tsx";
 import PaginationDefault from "examples/mui/Pagination.default.tsx";
 import PaperDefault from "examples/mui/Paper.default.tsx";
 import RadioGroupDefault from "examples/mui/RadioGroup.default.tsx";
@@ -252,6 +253,10 @@ export default function Page() {
 
 					<ComponentExamples name="Menu">
 						<MenuDefault />
+					</ComponentExamples>
+
+					<ComponentExamples name="MenuList">
+						<MenuListDefault />
 					</ComponentExamples>
 
 					<ComponentExamples name="Pagination">

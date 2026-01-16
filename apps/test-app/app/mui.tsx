@@ -5,6 +5,7 @@
 
 import { Container, Divider, Link, Stack, Typography } from "@mui/material";
 import { Root } from "@stratakit/mui";
+import AccordionActions from "examples/mui/Accordion.actions.tsx";
 import AccordionDefault from "examples/mui/Accordion.default.tsx";
 import AlertDefault from "examples/mui/Alert.default.tsx";
 import AppBarDefault from "examples/mui/AppBar.default.tsx";
@@ -90,6 +91,7 @@ export default function Page() {
 					<ComponentExamples name="Accordion">
 						<Stack spacing={1} alignSelf="stretch">
 							<AccordionDefault />
+							<AccordionActions />
 						</Stack>
 					</ComponentExamples>
 

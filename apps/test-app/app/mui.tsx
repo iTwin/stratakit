@@ -32,6 +32,7 @@ import CheckboxIndeterminate from "examples/mui/Checkbox.indeterminate.tsx";
 import ChipDeletable_ from "examples/mui/Chip._deletable.tsx";
 import ChipDefault from "examples/mui/Chip.default.tsx";
 import ChipOutlined from "examples/mui/Chip.outlined.tsx";
+import CircularProgressDefault from "examples/mui/CircularProgress.default.tsx";
 import DialogDefault from "examples/mui/Dialog.default.tsx";
 import DividerDefault from "examples/mui/Divider.default.tsx";
 import DrawerDefault from "examples/mui/Drawer.default.tsx";
@@ -186,6 +187,10 @@ export default function Page() {
 							<ChipOutlined />
 							{!isProduction && <ChipDeletable_ />}
 						</Stack>
+					</ComponentExamples>
+
+					<ComponentExamples name="CircularProgress">
+						<CircularProgressDefault />
 					</ComponentExamples>
 
 					<ComponentExamples name="Dialog">

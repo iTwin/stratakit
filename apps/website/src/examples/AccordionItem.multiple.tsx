@@ -2,8 +2,8 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-import { unstable_AccordionItem as AccordionItem } from "@stratakit/structures";
 import { Anchor } from "@stratakit/bricks";
+import { unstable_AccordionItem as AccordionItem } from "@stratakit/structures";
 
 export default () => {
 	return (

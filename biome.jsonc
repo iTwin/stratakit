@@ -1,7 +1,8 @@
 {
 	"$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
 	"files": {
-		"ignoreUnknown": true
+		"ignoreUnknown": true,
+		"includes": ["**", "!**/*.astro"]
 	},
 	"vcs": {
 		"enabled": true,
@@ -86,15 +87,33 @@
 					"level": "warn",
 					"options": {
 						"paths": {
-							"@ariakit/react": "Use of Ariakit's barrel is discouraged. Import Ariakit components from their individual entrypoints instead.",
-							"@playwright/test": {
-								"importNames": ["expect", "test"],
-								"message": "Import `expect` and `test` from `#playwright` instead."
+							"@ariakit/react": "Use of Ariakit's barrel is discouraged. Import Ariakit components from their individual entrypoints instead."
+						}
+					}
+				}
+			}
+		}
+	},
+	"overrides": [
+		{
+			"includes": ["apps/test-app/**"],
+			"linter": {
+				"rules": {
+					"style": {
+						"noRestrictedImports": {
+							"level": "warn",
+							"options": {
+								"paths": {
+									"@playwright/test": {
+										"importNames": ["expect", "test"],
+										"message": "Import `expect` and `test` from `#playwright` instead."
+									}
+								}
 							}
 						}
 					}
 				}
 			}
 		}
-	}
+	]
 }

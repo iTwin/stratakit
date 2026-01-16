@@ -3,6 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 import * as fs from "node:fs";
+
 import {
 	type CallExpression,
 	type JSDoc,
@@ -16,7 +17,7 @@ import {
 	type TypeNode,
 } from "ts-morph";
 
-const repoPath = process.env.REPO_PATH || "../design-system";
+const repoPath = process.env.REPO_PATH || "../..";
 const packageNames = ["foundations", "bricks", "structures"];
 
 const baseTypeNames = ["BaseProps", "FocusableProps"];

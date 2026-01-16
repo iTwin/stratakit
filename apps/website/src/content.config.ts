@@ -5,10 +5,12 @@
 import { defineCollection, reference, z } from "astro:content";
 import * as fs from "node:fs/promises";
 import * as process from "node:process";
+
 import { docsLoader } from "@astrojs/starlight/loaders";
 import { docsSchema } from "@astrojs/starlight/schema";
-import type { DataStore, Loader } from "astro/loaders";
 import { file } from "astro/loaders";
+
+import type { DataStore, Loader } from "astro/loaders";
 import type { Api } from "../api.ts";
 
 export const collections = {
@@ -178,7 +180,7 @@ function jsdocLoader(): Loader {
 								id: getPropId({
 									packageName: pkg.name,
 									apiName: api.name,
-									componentName: api.convenience!.name,
+									componentName: api.convenience?.name,
 									propName: prop.name,
 								}),
 								data: {

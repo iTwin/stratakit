@@ -2,8 +2,8 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-import { Root } from "@stratakit/foundations";
 import * as React from "react";
+import { Root } from "@stratakit/foundations";
 
 export default function ExamplePreview({ exampleId }: { exampleId: string }) {
 	const ExampleComponent = React.useMemo(

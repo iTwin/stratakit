@@ -2,8 +2,8 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-import { Tree } from "@stratakit/structures";
 import * as React from "react";
+import { Tree } from "@stratakit/structures";
 
 export default () => {
 	const [expandedItems, setExpandedItems] = React.useState<

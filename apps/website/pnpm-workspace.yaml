@@ -1,7 +1,0 @@
-onlyBuiltDependencies:
-  - esbuild
-  - rollup
-  - sharp
-
-overrides:
-  rollup: ~4.52.5 # https://github.com/rollup/rollup/issues/6168

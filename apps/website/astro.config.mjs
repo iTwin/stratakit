@@ -44,7 +44,8 @@ export default defineConfig({
 				{ label: "Contributing", slug: "contributing" },
 			],
 			editLink: {
-				baseUrl: "https://github.com/iTwin/stratakit-docs/edit/main/",
+				baseUrl:
+					"https://github.com/iTwin/design-system/edit/main/apps/website/",
 			},
 			lastUpdated: true,
 			customCss: ["./src/styles/index.css"],

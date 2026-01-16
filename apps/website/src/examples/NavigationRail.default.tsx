@@ -4,9 +4,10 @@
  *--------------------------------------------------------------------------------------------*/
 import { Divider } from "@stratakit/bricks";
 import { Icon } from "@stratakit/foundations";
+import { unstable_NavigationRail as NavigationRail } from "@stratakit/structures";
+
 import bentleyIcon from "@stratakit/icons/bentley-systems.svg";
 import placeholderIcon from "@stratakit/icons/placeholder.svg";
-import { unstable_NavigationRail as NavigationRail } from "@stratakit/structures";
 
 export default () => {
 	return (

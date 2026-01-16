@@ -3,9 +3,10 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 import { IconButton } from "@stratakit/bricks";
+import { unstable_Toolbar as Toolbar } from "@stratakit/structures";
+
 import boldIcon from "@stratakit/icons/font-bold.svg";
 import italicIcon from "@stratakit/icons/font-italic.svg";
-import { unstable_Toolbar as Toolbar } from "@stratakit/structures";
 
 export default () => {
 	return (

@@ -17,6 +17,8 @@
 
 <script>
 	import { unstable_loadStyles } from "@stratakit/foundations";
-	unstable_loadStyles();
+	try {
+		unstable_loadStyles();
+	} catch {}
 	delete document.documentElement.dataset.loading;
 </script>

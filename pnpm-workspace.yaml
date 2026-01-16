@@ -30,3 +30,4 @@ minimumReleaseAgeExclude:
 onlyBuiltDependencies:
   - esbuild
   - lefthook
+  - sharp

@@ -3,6 +3,7 @@
 	"include": [".astro/types.d.ts", "**/*"],
 	"exclude": ["dist"],
 	"compilerOptions": {
+		"types": ["@stratakit/mui/types.d.ts"],
 		"jsx": "react-jsx",
 		"jsxImportSource": "react"
 	}

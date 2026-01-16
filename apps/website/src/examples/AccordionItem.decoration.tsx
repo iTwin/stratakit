@@ -2,8 +2,9 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-import { unstable_AccordionItem as AccordionItem } from "@stratakit/structures";
 import { Icon } from "@stratakit/foundations";
+import { unstable_AccordionItem as AccordionItem } from "@stratakit/structures";
+
 import infoIcon from "@stratakit/icons/info.svg";
 
 export default () => {

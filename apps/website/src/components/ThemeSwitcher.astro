@@ -1,0 +1,107 @@
+---
+// See https://starlight.astro.build/reference/overrides/#themeselect
+
+import { Icon } from "@astrojs/starlight/components";
+---
+
+<template id="theme-icons">
+	<Icon name="sun" class="light" />
+	<Icon name="moon" class="dark" />
+</template>
+
+<theme-switcher>
+	<button aria-label="Toggle theme">
+		<Icon name="moon" class="dark" />
+	</button>
+</theme-switcher>
+
+<style>
+	@layer overrides {
+		theme-switcher:not(:defined) {
+			opacity: 0;
+		}
+
+		button {
+			display: inline-flex;
+			color: var(--stratakit-color-icon-neutral-base);
+			border: 1px solid var(--stratakit-color-border-neutral-base);
+			padding: var(--stratakit-space-x2);
+			border-radius: 4px;
+			transition: all 0.15s;
+			transition-property: border-color, color;
+
+			&:hover {
+				color: var(--stratakit-color-icon-neutral-primary);
+				border-color: color-mix(
+					in oklch,
+					var(--stratakit-color-border-neutral-base) 100%,
+					var(--stratakit-color-glow-hue) var(--stratakit-color-border-glow-base-hover-\%)
+				);
+			}
+		}
+	}
+</style>
+
+<script>
+	type Theme = "dark" | "light";
+
+	/** Key in `localStorage` to store color theme preference at. */
+	const storageKey = "color-scheme";
+
+	/** Load the user’s preference from `localStorage`. */
+	const loadTheme = (): Theme | undefined => {
+		const theme = localStorage.getItem(storageKey);
+		if (theme === "light" || theme === "dark") {
+			return theme;
+		}
+		return undefined;
+	};
+
+	/** Store the user’s preference in `localStorage`. */
+	function storeTheme(theme: Theme): void {
+		localStorage.setItem(storageKey, theme === "light" || theme === "dark" ? theme : "");
+	}
+
+	/** Get the preferred system color scheme. */
+	const getPreferredColorScheme = (): Theme =>
+		matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+
+	/** Update select menu UI, document theme, and local storage state. */
+	function onThemeChange(theme: Theme): void {
+		updateIcon(theme);
+		document.documentElement.dataset.theme = theme;
+		document.documentElement.dataset.colorScheme = theme;
+		storeTheme(theme);
+	}
+
+	/** Updates the icon shown inside the theme switcher. */
+	function updateIcon(theme: Theme): void {
+		const button = document.querySelector("theme-switcher button");
+		const iconTemplate = document.getElementById("theme-icons") as HTMLTemplateElement;
+		if (!button || !iconTemplate) return;
+		const icon = iconTemplate.content.querySelector(`.${theme}`);
+		if (!icon) return;
+		button.replaceChildren(icon.cloneNode(true));
+	}
+
+	// React to changes in system color scheme.
+	matchMedia(`(prefers-color-scheme: light)`).addEventListener("change", () => {
+		if (loadTheme() === undefined) onThemeChange(getPreferredColorScheme());
+	});
+
+	class ThemeSwitcher extends HTMLElement {
+		constructor() {
+			super();
+			updateIcon(loadTheme() || getPreferredColorScheme());
+
+			const button = this.querySelector("button");
+			button?.addEventListener("click", (e) => {
+				const currentTheme = loadTheme() || getPreferredColorScheme();
+				const nextTheme = currentTheme === "dark" ? "light" : "dark";
+				onThemeChange(nextTheme);
+				window.dispatchEvent(new Event("color-scheme:change"));
+			});
+		}
+	}
+	customElements.define("theme-switcher", ThemeSwitcher);
+</script>

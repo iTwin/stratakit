@@ -1,0 +1,30 @@
+{
+	"$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
+	"files": {
+		"ignoreUnknown": true,
+		"includes": ["**", "!**/*.astro", "!**/*.json"]
+	},
+	"vcs": {
+		"enabled": true,
+		"clientKind": "git",
+		"useIgnoreFile": true
+	},
+	"css": {
+		"formatter": {
+			"lineWidth": 100
+		},
+		"linter": {
+			"enabled": true
+		}
+	},
+	"linter": {
+		"rules": {
+			"suspicious": {
+				"noDuplicateCustomProperties": "off",
+				"noDuplicateProperties": "off",
+				"noConfusingLabels": "off",
+				"noUnknownAtRules": "off"
+			}
+		}
+	}
+}

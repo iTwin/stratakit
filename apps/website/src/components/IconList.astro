@@ -1,0 +1,91 @@
+---
+import iconsList from "@stratakit/icons/icons-list.json";
+
+const allIcons = import.meta.glob("/node_modules/@stratakit/icons/icons/*.svg", {
+	query: "?url",
+	eager: true,
+});
+
+function getIconHref(iconName: string) {
+	const module = allIcons[`/node_modules/@stratakit/icons/icons/${iconName}`];
+	return (module as { default: string })?.default;
+}
+---
+
+<div role="list" class="icons-grid not-content">
+	{
+		iconsList.map((iconName) => {
+			return (
+				<div role="listitem" class="icon">
+					<svg width="24" height="24">
+						<use href={`${getIconHref(iconName)}#icon-large`} />
+					</svg>
+					{iconName}
+				</div>
+			);
+		})
+	}
+	{/* These elements fill the empty space in the last row, to cover up the "gap decoration". */}
+	<div class="cover-it" role="none"></div>
+	<div class="cover-it" role="none"></div>
+	<div class="cover-it" role="none"></div>
+	<div class="cover-it" role="none"></div>
+</div>
+
+<style>
+	@layer page {
+		.icons-grid {
+			--_grid-bg: var(--stratakit-color-bg-page-depth);
+			--_grid-line: var(--stratakit-color-border-neutral-muted);
+
+			background-color: var(--_grid-bg);
+
+			display: grid;
+			grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+			gap: 1px;
+
+			isolation: isolate;
+			position: relative;
+
+			/** This simulates a gap decoration (i.e. dividing lines). */
+			&::before {
+				content: "";
+				position: absolute;
+				inset: 1px;
+				pointer-events: none;
+				z-index: -1;
+
+				background-color: var(--_grid-line);
+			}
+
+			.cover-it {
+				background-color: var(--_grid-bg);
+			}
+		}
+
+		.icon {
+			margin: 0;
+			padding: var(--stratakit-space-x4);
+
+			text-align: center;
+			font-size: var(--stratakit-font-size-12);
+			overflow-wrap: anywhere;
+			hyphens: auto;
+
+			display: grid;
+			justify-items: center;
+			justify-content: center;
+			align-content: start;
+			gap: var(--stratakit-space-x2);
+
+			background-color: var(--_grid-bg);
+		}
+
+		svg {
+			display: block;
+			inline-size: 1.5rem;
+			aspect-ratio: 1;
+			color: var(--stratakit-color-icon-neutral-primary);
+		}
+	}
+</style>

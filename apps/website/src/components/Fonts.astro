@@ -1,0 +1,25 @@
+---
+import InterVariable from "../assets/InterVariable.woff2?url";
+import InterVariableItalic from "../assets/InterVariable-Italic.woff2?url";
+
+const fonts = /* css */ `
+@font-face {
+  font-family: InterVariable;
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url(${InterVariable}) format("woff2");
+}
+
+@font-face {
+  font-family: InterVariable;
+  font-style: italic;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url(${InterVariableItalic}) format("woff2");
+}
+`;
+---
+
+<link rel="preload" as="font" type="font/woff2" href={InterVariable} crossorigin />
+<style is:inline set:html={fonts}></style>

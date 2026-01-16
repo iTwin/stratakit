@@ -8,6 +8,7 @@ import { Root } from "@stratakit/mui";
 import AccordionActions from "examples/mui/Accordion.actions.tsx";
 import AccordionDefault from "examples/mui/Accordion.default.tsx";
 import AlertDefault from "examples/mui/Alert.default.tsx";
+import AlertTitle from "examples/mui/Alert.title.tsx";
 import AppBarDefault from "examples/mui/AppBar.default.tsx";
 import AutocompleteDefault from "examples/mui/Autocomplete.default.tsx";
 import AvatarDefault from "examples/mui/Avatar.default.tsx";
@@ -98,6 +99,7 @@ export default function Page() {
 					<ComponentExamples name="Alert">
 						<Stack spacing={1} alignSelf="stretch">
 							<AlertDefault />
+							<AlertTitle />
 						</Stack>
 					</ComponentExamples>
 

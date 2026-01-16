@@ -45,6 +45,7 @@ import LinkColors_ from "examples/mui/Link._colors.tsx";
 import LinkDefault from "examples/mui/Link.default.tsx";
 import ListAvatar from "examples/mui/List.avatar.tsx";
 import ListDefault from "examples/mui/List.default.tsx";
+import ListSubheader from "examples/mui/List.subheader.tsx";
 import MenuDefault from "examples/mui/Menu.default.tsx";
 import PaginationDefault from "examples/mui/Pagination.default.tsx";
 import PaperDefault from "examples/mui/Paper.default.tsx";
@@ -245,6 +246,7 @@ export default function Page() {
 						<Stack spacing={1} alignSelf="stretch">
 							<ListDefault />
 							<ListAvatar />
+							<ListSubheader />
 						</Stack>
 					</ComponentExamples>
 

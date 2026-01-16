@@ -23,6 +23,7 @@ import ButtonDefault from "examples/mui/Button.default.tsx";
 import ButtonIcons from "examples/mui/Button.icons.tsx";
 import ButtonVariants from "examples/mui/Button.variants.tsx";
 import ButtonGroupDefault from "examples/mui/ButtonGroup.default.tsx";
+import CardActions from "examples/mui/Card.actions.tsx";
 import CardDefault from "examples/mui/Card.default.tsx";
 import CheckboxChecked from "examples/mui/Checkbox.checked.tsx";
 import CheckboxDefault from "examples/mui/Checkbox.default.tsx";
@@ -168,6 +169,7 @@ export default function Page() {
 
 					<ComponentExamples name="Card">
 						<CardDefault />
+						<CardActions />
 					</ComponentExamples>
 
 					<ComponentExamples name="Checkbox">

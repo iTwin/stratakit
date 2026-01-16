@@ -15,7 +15,7 @@ import Typography from "@mui/material/Typography";
 import { Icon } from "@stratakit/mui";
 
 import moreIcon from "@stratakit/icons/more-vertical.svg";
-import styles from "./Card.default.module.css";
+import styles from "./Card.header.module.css";
 
 export default () => {
 	return (

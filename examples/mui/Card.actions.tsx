@@ -11,7 +11,7 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 
-import styles from "./Card.default.module.css";
+import styles from "./Card.actions.module.css";
 
 export default () => {
 	return (

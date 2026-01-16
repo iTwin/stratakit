@@ -12,6 +12,7 @@ import AlertTitle from "examples/mui/Alert.title.tsx";
 import AppBarDefault from "examples/mui/AppBar.default.tsx";
 import AutocompleteDefault from "examples/mui/Autocomplete.default.tsx";
 import AvatarDefault from "examples/mui/Avatar.default.tsx";
+import AvatarGroupDefault from "examples/mui/AvatarGroup.default.tsx";
 import BackdropDefault from "examples/mui/Backdrop.default.tsx";
 import BadgeDefault from "examples/mui/Badge.default.tsx";
 import BottomNavigationDefault from "examples/mui/BottomNavigation.default.tsx";
@@ -115,6 +116,10 @@ export default function Page() {
 
 					<ComponentExamples name="Avatar">
 						<AvatarDefault />
+					</ComponentExamples>
+
+					<ComponentExamples name="AvatarGroup">
+						<AvatarGroupDefault />
 					</ComponentExamples>
 
 					<ComponentExamples name="Backdrop">

@@ -5,6 +5,7 @@
 
 import SpeedDial from "@mui/material/SpeedDial";
 import SpeedDialAction from "@mui/material/SpeedDialAction";
+import SpeedDialIcon from "@mui/material/SpeedDialIcon";
 import { Icon } from "@stratakit/mui";
 
 import addIcon from "@stratakit/icons/add.svg";
@@ -15,7 +16,11 @@ export default () => {
 	return (
 		<SpeedDial
 			ariaLabel="Speed dial actions"
-			icon={<Icon href={`${addIcon}#icon-large`} size="large" />}
+			icon={
+				<SpeedDialIcon
+					icon={<Icon href={`${addIcon}#icon-large`} size="large" />}
+				/>
+			}
 		>
 			<SpeedDialAction
 				icon={<Icon href={`${copyIcon}#icon-large`} size="large" />}

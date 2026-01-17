@@ -8,7 +8,7 @@ import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
 import NativeSelect from "@mui/material/NativeSelect";
 
-import styles from "./Select.default.module.css";
+import styles from "./NativeSelect.default.module.css";
 
 export default () => {
 	const inputId = React.useId();

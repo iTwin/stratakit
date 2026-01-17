@@ -52,6 +52,7 @@ import MobileStepperDefault from "examples/mui/MobileStepper.default.tsx";
 import NativeSelectDefault from "examples/mui/NativeSelect.default.tsx";
 import PaginationDefault from "examples/mui/Pagination.default.tsx";
 import PaperDefault from "examples/mui/Paper.default.tsx";
+import PopoverDefault from "examples/mui/Popover.default.tsx";
 import RadioGroupDefault from "examples/mui/RadioGroup.default.tsx";
 import RatingDefault from "examples/mui/Rating.default.tsx";
 import SelectDefault from "examples/mui/Select.default.tsx";
@@ -277,6 +278,10 @@ export default function Page() {
 
 					<ComponentExamples name="Paper">
 						<PaperDefault />
+					</ComponentExamples>
+
+					<ComponentExamples name="Popover">
+						<PopoverDefault />
 					</ComponentExamples>
 
 					<ComponentExamples name="RadioGroup">

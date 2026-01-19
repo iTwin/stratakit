@@ -67,6 +67,7 @@ import SwipeableDrawerDefault from "examples/mui/SwipeableDrawer.default.tsx";
 import SwitchChecked from "examples/mui/Switch.checked.tsx";
 import SwitchDefault from "examples/mui/Switch.default.tsx";
 import TableDefault from "examples/mui/Table.default.tsx";
+import TableFooter from "examples/mui/Table.footer.tsx";
 import TabsDefault from "examples/mui/Tabs.default.tsx";
 import TextFieldDefault from "examples/mui/TextField.default.tsx";
 import TextFieldMultiline from "examples/mui/TextField.multiline.tsx";
@@ -335,6 +336,7 @@ export default function Page() {
 
 					<ComponentExamples name="Table">
 						<TableDefault />
+						<TableFooter />
 					</ComponentExamples>
 
 					<ComponentExamples name="Tabs">

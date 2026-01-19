@@ -63,6 +63,7 @@ import SpeedDialDefault from "examples/mui/SpeedDial.default.tsx";
 import StepperClickable from "examples/mui/Stepper.clickable.tsx";
 import StepperDefault from "examples/mui/Stepper.default.tsx";
 import StepperOptional from "examples/mui/Stepper.optional.tsx";
+import SwipeableDrawerDefault from "examples/mui/SwipeableDrawer.default.tsx";
 import SwitchChecked from "examples/mui/Switch.checked.tsx";
 import SwitchDefault from "examples/mui/Switch.default.tsx";
 import TableDefault from "examples/mui/Table.default.tsx";
@@ -321,6 +322,10 @@ export default function Page() {
 							<StepperOptional />
 							<StepperClickable />
 						</Stack>
+					</ComponentExamples>
+
+					<ComponentExamples name="SwipeableDrawer">
+						<SwipeableDrawerDefault />
 					</ComponentExamples>
 
 					<ComponentExamples name="Switch">

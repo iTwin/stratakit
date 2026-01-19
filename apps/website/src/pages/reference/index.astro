@@ -30,7 +30,9 @@ const headings = packages.map((pkg) => ({
 							}
 							return (
 								<li>
-									<a href={`/reference/${pkg.id}/${api.name}`}>{api.exportName ?? api.name}</a>
+									<a href={`${import.meta.env.BASE_URL}/reference/${pkg.id}/${api.name}`}>
+										{api.exportName ?? api.name}
+									</a>
 								</li>
 							);
 						})}

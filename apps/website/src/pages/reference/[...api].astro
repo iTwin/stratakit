@@ -161,7 +161,7 @@ function getBaseElementLink(baseElement: string) {
 									return (
 										<li>
 											<a
-												href={`/reference/foundations/Utils#${getPropHeading(typeName, propName).slug}`}
+												href={`${import.meta.env.BASE_URL}/reference/foundations/Utils#${getPropHeading(typeName, propName).slug}`}
 											>
 												{propName}
 											</a>
@@ -214,8 +214,7 @@ function getBaseElementLink(baseElement: string) {
 
 <style>
 	@layer page {
-		a:where([href^="https://"])::after
-		{
+		a:where([href^="https://"])::after {
 			content: "↗";
 			content: "↗" / "External";
 			position: absolute;

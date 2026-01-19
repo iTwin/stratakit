@@ -54,6 +54,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
 
       - uses: pnpm/action-setup@v4
         with:
@@ -67,15 +69,25 @@ jobs:
 
       - run: pnpm install
 
-      - name: Build test-app
+      - name: Build all packages and apps
         run: pnpm run build
 
-      - name: Deploy build output to gh-pages branch
+      - name: Deploy test-app build output to gh-pages branch
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages
           folder: ${{ github.workspace }}/apps/test-app/build/client/${{ env.BASE_FOLDER }}
           target-folder: ${{ env.BASE_FOLDER }}
+          clean-exclude: ${{ env.CLEAN_EXCLUDE }}
+          git-config-name: github-actions[bot]
+          git-config-email: github-actions[bot]@users.noreply.github.com
+
+      - name: Deploy docs website build output to gh-pages branch
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages
+          folder: ${{ github.workspace }}/apps/website/dist
+          target-folder: ${{ env.BASE_FOLDER }}/docs
           clean-exclude: ${{ env.CLEAN_EXCLUDE }}
           git-config-name: github-actions[bot]
           git-config-email: github-actions[bot]@users.noreply.github.com

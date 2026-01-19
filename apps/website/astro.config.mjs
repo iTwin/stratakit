@@ -6,9 +6,14 @@ import { defineConfig } from "astro/config";
 import remarkDirective from "remark-directive";
 import { visit } from "unist-util-visit";
 
+const BASE_URL = process.env.BASE_FOLDER
+	? `/${process.env.BASE_FOLDER}/docs`
+	: "/docs";
+
 // https://astro.build/config
 export default defineConfig({
-	site: "https://super-adventure-prvgo4m.pages.github.io",
+	site: "https://supreme-barnacle-pl8jn8m.pages.github.io/",
+	base: BASE_URL,
 	integrations: [
 		starlight({
 			title: "StrataKit Docs",
@@ -52,7 +57,11 @@ export default defineConfig({
 			expressiveCode: {
 				themes: ["github-dark", "github-light"],
 			},
-			plugins: [starlightResponsiveTables(), starlightLiveExamples()],
+			plugins: [
+				starlightResponsiveTables(),
+				starlightLiveExamples(),
+				starlightPrefixLinks(),
+			],
 		}),
 		react(),
 	],
@@ -133,7 +142,7 @@ function starlightLiveExamples() {
 					node.children = [
 						{
 							type: "html",
-							value: `<iframe src="/examples/${src}?preview" title="${src} example" height="150"></iframe>`,
+							value: `<iframe src=${`${BASE_URL}/examples/${src}?preview`} title="${src} example" height="150"></iframe>`,
 						},
 					];
 				}
@@ -174,6 +183,57 @@ function vitePluginFixAstroSvg() {
 			if (!importer?.endsWith(".jsx") && !importer?.endsWith(".tsx")) return;
 			const resolved = await this.resolve(`${source}?url`, importer, options);
 			return resolved?.id;
+		},
+	};
+}
+
+/**
+ * Starlight plugin that prefixes all markdown links with the base URL.
+ * @returns {import("@astrojs/starlight/types").StarlightPlugin}
+ */
+function starlightPrefixLinks() {
+	// Make sure the base path has a trailing slash.
+	let base = BASE_URL;
+	if (!base.endsWith("/")) base = `${base}/`;
+
+	// From https://github.com/withastro/starlight/discussions/1763#discussioncomment-9146662.
+	function remarkPrefixLinks() {
+		return function transform(/** @type {any} */ tree) {
+			function visitor(/** @type {any} */ node) {
+				// Ignore links that aren’t relative to the root `/`
+				if (!node.url.startsWith("/")) return;
+				// Sanitize URL by removing leading `/`
+				const relativeUrl = node.url.replace(/^.?\//, "");
+				// Prefix with base path
+				node.url = base + relativeUrl;
+			}
+			// Apply our visitor to Markdown links, including definition links
+			visit(tree, "link", visitor);
+			visit(tree, "definition", visitor);
+			// Also prefix base to links written with HTML syntax (<a>)
+			visit(tree, "html", function htmlVisitor(node) {
+				node.value = node.value.replace(
+					/(?<=href=")(?!https?:\/\/)\/?(.+)(?=")/g,
+					`${base}$1`,
+				);
+			});
+		};
+	}
+
+	return {
+		name: "starlight-prefix-links",
+		hooks: {
+			"config:setup": ({ addIntegration }) => {
+				addIntegration({
+					name: "starlight-live-examples-integration",
+					hooks: {
+						"astro:config:setup": ({ command, config }) => {
+							if (command !== "dev" && command !== "build") return;
+							config.markdown.remarkPlugins.push(remarkPrefixLinks);
+						},
+					},
+				});
+			},
 		},
 	};
 }

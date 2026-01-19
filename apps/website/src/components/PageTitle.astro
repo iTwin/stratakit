@@ -31,7 +31,10 @@ const associated = entry.data.associated?.map(({ id }) => id) || [];
 		status && (
 			<div class="inline-item">
 				<dt>
-					<a href="/guides/composition/#component-status">Component status</a>:
+					<a href={`${import.meta.env.BASE_URL}/guides/composition/#component-status`}>
+						Component status
+					</a>
+					:
 				</dt>
 				<dd>
 					<status-badge>{status}</status-badge>
@@ -69,13 +72,18 @@ const associated = entry.data.associated?.map(({ id }) => id) || [];
 		associated.length > 0 && (
 			<div>
 				<dt>
-					<a href="/guides/composition/#associated-components">Associated components</a>:
+					<a href={`${import.meta.env.BASE_URL}/guides/composition/#associated-components`}>
+						Associated components
+					</a>
+					:
 				</dt>
 				<dd>
 					<ul role="list">
 						{associated.map((component) => (
 							<li>
-								<a href={`/components/${component.toLowerCase()}`}>{component}</a>
+								<a href={`${import.meta.env.BASE_URL}/components/${component.toLowerCase()}`}>
+									{component}
+								</a>
 							</li>
 						))}
 					</ul>
@@ -106,8 +114,7 @@ const associated = entry.data.associated?.map(({ id }) => id) || [];
 			gap: var(--stratakit-space-x1);
 		}
 
-		a:where([href^="https://"])::after
-		{
+		a:where([href^="https://"])::after {
 			content: "↗";
 			content: "↗" / "External";
 			position: absolute;

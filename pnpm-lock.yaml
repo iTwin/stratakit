@@ -40,6 +40,11 @@ catalogs:
 overrides:
   lightningcss: 1.30.1
 
+patchedDependencies:
+  "@astrojs/starlight":
+    hash: cce03283f8912eeef991c11480ae73c3a2f9dbfb7030bf4755ff04615d310cee
+    path: patches/@astrojs__starlight.patch
+
 importers:
   .:
     devDependencies:
@@ -187,7 +192,7 @@ importers:
         version: 4.4.2(@types/node@22.19.7)(@types/react-dom@19.2.3(@types/react@19.2.8))(@types/react@19.2.8)(lightningcss@1.30.1)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(tsx@4.21.0)(yaml@2.6.1)
       "@astrojs/starlight":
         specifier: ^0.37.3
-        version: 0.37.3(astro@5.16.11(@types/node@22.19.7)(lightningcss@1.30.1)(rollup@4.55.1)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.6.1))
+        version: 0.37.3(patch_hash=cce03283f8912eeef991c11480ae73c3a2f9dbfb7030bf4755ff04615d310cee)(astro@5.16.11(@types/node@22.19.7)(lightningcss@1.30.1)(rollup@4.55.1)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.6.1))
       "@mui/material":
         specifier: "catalog:"
         version: 7.3.7(@emotion/react@11.14.0(@types/react@19.2.8)(react@19.2.3))(@emotion/styled@11.14.1(@emotion/react@11.14.0(@types/react@19.2.8)(react@19.2.3))(@types/react@19.2.8)(react@19.2.3))(@types/react@19.2.8)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
@@ -6006,7 +6011,7 @@ snapshots:
       stream-replace-string: 2.0.0
       zod: 3.25.76
 
-  "@astrojs/starlight@0.37.3(astro@5.16.11(@types/node@22.19.7)(lightningcss@1.30.1)(rollup@4.55.1)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.6.1))":
+  "@astrojs/starlight@0.37.3(patch_hash=cce03283f8912eeef991c11480ae73c3a2f9dbfb7030bf4755ff04615d310cee)(astro@5.16.11(@types/node@22.19.7)(lightningcss@1.30.1)(rollup@4.55.1)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.6.1))":
     dependencies:
       "@astrojs/markdown-remark": 6.3.10
       "@astrojs/mdx": 4.3.13(astro@5.16.11(@types/node@22.19.7)(lightningcss@1.30.1)(rollup@4.55.1)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.6.1))

@@ -69,6 +69,7 @@ import SwitchDefault from "examples/mui/Switch.default.tsx";
 import TableDefault from "examples/mui/Table.default.tsx";
 import TableFooter from "examples/mui/Table.footer.tsx";
 import TabsDefault from "examples/mui/Tabs.default.tsx";
+import TabsScrollable from "examples/mui/Tabs.scrollable.tsx";
 import TextFieldDefault from "examples/mui/TextField.default.tsx";
 import TextFieldMultiline from "examples/mui/TextField.multiline.tsx";
 import ToggleButtonDefault from "examples/mui/ToggleButton.default.tsx";
@@ -341,6 +342,7 @@ export default function Page() {
 
 					<ComponentExamples name="Tabs">
 						<TabsDefault />
+						<TabsScrollable />
 					</ComponentExamples>
 
 					<ComponentExamples name="TextField">

@@ -1,0 +1,56 @@
+---
+title: Switch
+description: Switches are toggles for Boolean values.
+status: stable
+associated:
+  - Field
+  - Label
+links:
+  demo: tests/switch
+  github: packages/bricks/src/Switch.tsx
+  figma: https://www.figma.com/design/VcGw3L2IIlboxNlOdsKdai/%F0%9F%A5%9D-Kiwi-Component-Library?node-id=1436-51325&t=FX2fZYZ93vfliX17-4
+---
+
+## Use cases
+
+Make sure the **Switch** is suitable for your use case. There may be other, more appropriate components available.
+
+| Use case                                                          | [Button](/components/button) | [IconButton](/components/iconbutton) | [Switch](/components/switch) | [Checkbox](/components/checkbox) | [Anchor](/components/anchor) |
+| ----------------------------------------------------------------- | :--------------------------: | :----------------------------------: | :--------------------------: | :------------------------------: | :--------------------------: |
+| Submit forms, confirm or cancel dialogs, create or delete content |              ✅              |                  ❌                  |              ❌              |                ❌                |              ❌              |
+| Select an option within a Toolbar                                 |              ❌              |                  ✅                  |              ❌              |                ❌                |              ❌              |
+| Make an instantaneous, binary choice (switch a setting on or off) |              ❌              |                  ❌                  |              ✅              |                ❌                |              ❌              |
+| Confirm an input for a form submission                            |              ❌              |                  ❌                  |              ❌              |                ✅                |              ❌              |
+| Navigate between interface screens or sections                    |              ❌              |                  ❌                  |              ❌              |                ❌                |              ✅              |
+
+## Usage
+
+::example{src="Switch.default"}
+
+```jsx
+<Field.Root>
+	<Field.Control render={<Switch checked={checkedState} />} />
+	<Field.Label>Dark mode</Field.Label>
+</Field.Root>
+```
+
+The **Switch** must have an accessible label. Use the [**Field**](/components/field) components to automatically associate the label to the **Switch**. Otherwise, you’ll have to make the association manually, using `htmlFor`:
+
+```jsx
+const switchId = React.useId();
+
+<Switch id={switchId} />
+<Label htmlFor={switchId}>Dark mode</Label>
+```
+
+## ✅ Do
+
+- Use a clear, descriptive label for each **Switch**.
+- Group related switches (settings) into a `<fieldset>`, using a `<legend>` as a label for the group.
+- Use a **Switch** when the effect is instantaneous (no confirmation or submission is required).
+
+## 🚫 Don’t
+
+- Don't use switches for mandatory actions. The checked state of a switch can never be _invalid_.
+- Don't use one switch to change multiple settings simultaneously.
+- Don't use switches inside a form that needs submission. Use [**Checkbox**](/components/checkbox) instead.

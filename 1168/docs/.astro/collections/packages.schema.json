@@ -1,0 +1,249 @@
+{
+  "$ref": "#/definitions/packages",
+  "definitions": {
+    "packages": {
+      "type": "object",
+      "properties": {
+        "$schema": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "apis": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "exportName": {
+                  "type": "string"
+                },
+                "convenience": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    },
+                    "baseElement": {
+                      "type": "string"
+                    },
+                    "jsdoc": {
+                      "anyOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "string"
+                            },
+                            "collection": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "id",
+                            "collection"
+                          ],
+                          "additionalProperties": false
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "slug": {
+                              "type": "string"
+                            },
+                            "collection": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "slug",
+                            "collection"
+                          ],
+                          "additionalProperties": false
+                        }
+                      ]
+                    },
+                    "baseProps": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "props": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "name": {
+                            "type": "string"
+                          },
+                          "type": {
+                            "type": "string"
+                          },
+                          "optional": {
+                            "type": "boolean"
+                          },
+                          "jsdoc": {
+                            "anyOf": [
+                              {
+                                "type": "string"
+                              },
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "id": {
+                                    "type": "string"
+                                  },
+                                  "collection": {
+                                    "type": "string"
+                                  }
+                                },
+                                "required": [
+                                  "id",
+                                  "collection"
+                                ],
+                                "additionalProperties": false
+                              },
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "slug": {
+                                    "type": "string"
+                                  },
+                                  "collection": {
+                                    "type": "string"
+                                  }
+                                },
+                                "required": [
+                                  "slug",
+                                  "collection"
+                                ],
+                                "additionalProperties": false
+                              }
+                            ]
+                          },
+                          "defaultValue": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "name",
+                          "type"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "barrelName": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "name",
+                    "baseProps",
+                    "props"
+                  ],
+                  "additionalProperties": false
+                },
+                "composition": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/packages/additionalProperties/properties/apis/items/properties/convenience"
+                  }
+                },
+                "status": {
+                  "type": "string",
+                  "enum": [
+                    "unstable",
+                    "stable"
+                  ]
+                },
+                "types": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string"
+                      },
+                      "props": {
+                        "$ref": "#/definitions/packages/additionalProperties/properties/apis/items/properties/convenience/properties/props"
+                      },
+                      "jsdoc": {
+                        "anyOf": [
+                          {
+                            "type": "string"
+                          },
+                          {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string"
+                              },
+                              "collection": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "id",
+                              "collection"
+                            ],
+                            "additionalProperties": false
+                          },
+                          {
+                            "type": "object",
+                            "properties": {
+                              "slug": {
+                                "type": "string"
+                              },
+                              "collection": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "slug",
+                              "collection"
+                            ],
+                            "additionalProperties": false
+                          }
+                        ]
+                      }
+                    },
+                    "required": [
+                      "name",
+                      "props"
+                    ],
+                    "additionalProperties": false
+                  }
+                }
+              },
+              "required": [
+                "name",
+                "composition"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        "required": [
+          "name",
+          "apis"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

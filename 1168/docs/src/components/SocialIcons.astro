@@ -1,0 +1,55 @@
+---
+// See https://starlight.astro.build/reference/overrides/#socialicons
+
+import config from "virtual:starlight/user-config";
+import { Icon } from "@astrojs/starlight/components";
+
+const links = config.social || [];
+---
+
+{
+	links.length > 0 && (
+		<>
+			{links.map(({ label, href, icon }) => (
+				<a {href} rel="me" class="sl-flex">
+					<span class="sr-only">{label}</span>
+					<Icon name={icon} />
+				</a>
+			))}
+		</>
+	)
+}
+
+<style>
+	@layer overrides {
+		a {
+			color: var(--stratakit-color-icon-neutral-base);
+			border: 1px solid var(--stratakit-color-border-neutral-base);
+			padding: var(--stratakit-space-x2);
+			border-radius: 4px;
+			transition: all 0.15s;
+			transition-property: border-color, color;
+
+			&:hover {
+				color: var(--stratakit-color-icon-neutral-primary);
+				border-color: color-mix(
+					in oklch,
+					var(--stratakit-color-border-neutral-base) 100%,
+					var(--stratakit-color-glow-hue) var(--stratakit-color-border-glow-base-hover-\%)
+				);
+			}
+		}
+
+		:global(.social-icons) {
+			padding-block: unset;
+
+			html[data-has-hero] & {
+				margin-inline-start: auto;
+			}
+
+			&::after {
+				content: none;
+			}
+		}
+	}
+</style>

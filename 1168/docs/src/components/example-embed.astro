@@ -1,0 +1,32 @@
+---
+// This simply registers the `<example-embed>` element.
+---
+
+<script>
+	customElements.define(
+		"example-embed",
+		class extends HTMLElement {
+			constructor() {
+				super();
+				const shadow = this.attachShadow({ mode: "open" });
+				shadow.innerHTML = `<div role="group" aria-label="Example"><slot></slot></div>`;
+			}
+		}
+	);
+</script>
+
+<style is:global>
+	@layer page {
+		example-embed {
+			display: block;
+			border-radius: 8px;
+			border: 1px solid var(--stratakit-color-border-neutral-muted);
+			overflow: hidden;
+
+			iframe {
+				background-color: var(--stratakit-color-bg-page-base);
+				border-radius: 8px;
+			}
+		}
+	}
+</style>

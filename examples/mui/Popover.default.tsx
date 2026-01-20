@@ -14,13 +14,24 @@ export default () => {
 		null,
 	);
 	const [open, setOpen] = React.useState(false);
-
+	const buttonId = React.useId();
+	const dialogId = React.useId();
 	return (
 		<>
-			<Button onClick={() => setOpen(true)} ref={setAnchorEl}>
+			<Button
+				id={buttonId}
+				aria-haspopup="dialog"
+				aria-controls={dialogId}
+				aria-expanded={open}
+				onClick={() => setOpen(true)}
+				ref={setAnchorEl}
+			>
 				Open popover
 			</Button>
 			<Popover
+				id={dialogId}
+				role="dialog"
+				aria-labelledby={buttonId}
 				open={open}
 				anchorEl={anchorEl}
 				onClose={() => setOpen(false)}

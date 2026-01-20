@@ -14,7 +14,7 @@ import Tooltip from "@mui/material/Tooltip";
 import Typography from "@mui/material/Typography";
 import { Icon } from "@stratakit/mui";
 
-import moreIcon from "@stratakit/icons/more-vertical.svg";
+import svgMore from "@stratakit/icons/more-vertical.svg";
 import styles from "./Card.header.module.css";
 
 export default () => {
@@ -26,7 +26,7 @@ export default () => {
 				action={
 					<Tooltip title="More actions" describeChild={false}>
 						<IconButton>
-							<Icon href={moreIcon} />
+							<Icon href={svgMore} />
 						</IconButton>
 					</Tooltip>
 				}

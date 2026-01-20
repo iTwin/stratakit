@@ -8,8 +8,8 @@ import Button from "@mui/material/Button";
 import MobileStepper from "@mui/material/MobileStepper";
 import { Icon } from "@stratakit/mui";
 
-import backIcon from "@stratakit/icons/caret-left.svg";
-import nextIcon from "@stratakit/icons/caret-right.svg";
+import svgBack from "@stratakit/icons/caret-left.svg";
+import svgNext from "@stratakit/icons/caret-right.svg";
 
 export default () => {
 	const [activeStep, setActiveStep] = React.useState(0);
@@ -28,7 +28,7 @@ export default () => {
 					disabled={activeStep === steps - 1}
 				>
 					Next
-					<Icon href={`${nextIcon}#icon-large`} size="large" />
+					<Icon href={`${svgNext}#icon-large`} size="large" />
 				</Button>
 			}
 			backButton={
@@ -38,7 +38,7 @@ export default () => {
 					onClick={() => setActiveStep((prev) => prev - 1)}
 					disabled={activeStep === 0}
 				>
-					<Icon href={`${backIcon}#icon-large`} size="large" />
+					<Icon href={`${svgBack}#icon-large`} size="large" />
 					Back
 				</Button>
 			}

@@ -13,8 +13,8 @@ import ListItemText from "@mui/material/ListItemText";
 import Tooltip from "@mui/material/Tooltip";
 import { Icon } from "@stratakit/mui";
 
-import folderIcon from "@stratakit/icons/folder.svg";
-import renameIcon from "@stratakit/icons/rename.svg";
+import svgFolder from "@stratakit/icons/folder.svg";
+import svgRename from "@stratakit/icons/rename.svg";
 
 export default () => {
 	return (
@@ -24,7 +24,7 @@ export default () => {
 				secondaryAction={
 					<Tooltip title="Rename" describeChild={false}>
 						<IconButton>
-							<Icon href={`${renameIcon}#icon-large`} size="large" />
+							<Icon href={`${svgRename}#icon-large`} size="large" />
 						</IconButton>
 					</Tooltip>
 				}
@@ -32,7 +32,7 @@ export default () => {
 				<ListItemButton>
 					<ListItemAvatar>
 						<Avatar>
-							<Icon href={folderIcon} />
+							<Icon href={svgFolder} />
 						</Avatar>
 					</ListItemAvatar>
 					<ListItemText primary="Folder 1" secondary="Contains 5 items" />
@@ -43,7 +43,7 @@ export default () => {
 				secondaryAction={
 					<Tooltip title="Rename" describeChild={false}>
 						<IconButton>
-							<Icon href={`${renameIcon}#icon-large`} size="large" />
+							<Icon href={`${svgRename}#icon-large`} size="large" />
 						</IconButton>
 					</Tooltip>
 				}
@@ -51,7 +51,7 @@ export default () => {
 				<ListItemButton>
 					<ListItemAvatar>
 						<Avatar>
-							<Icon href={folderIcon} />
+							<Icon href={svgFolder} />
 						</Avatar>
 					</ListItemAvatar>
 					<ListItemText primary="Folder 2" secondary="Contains 3 items" />

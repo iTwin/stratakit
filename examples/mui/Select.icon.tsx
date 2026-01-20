@@ -12,9 +12,9 @@ import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
 import { Icon } from "@stratakit/mui";
 
-import circleIcon from "@stratakit/icons/circle.svg";
-import rectangleIcon from "@stratakit/icons/rectangle.svg";
-import starIcon from "@stratakit/icons/star.svg";
+import svgCircle from "@stratakit/icons/circle.svg";
+import svgRectangle from "@stratakit/icons/rectangle.svg";
+import svgStar from "@stratakit/icons/star.svg";
 import styles from "./Select.icon.module.css";
 
 export default () => {
@@ -35,19 +35,19 @@ export default () => {
 			>
 				<MenuItem value={1}>
 					<ListItemIcon>
-						<Icon href={rectangleIcon} />
+						<Icon href={svgRectangle} />
 					</ListItemIcon>
 					<ListItemText>Rectangle</ListItemText>
 				</MenuItem>
 				<MenuItem value={2}>
 					<ListItemIcon>
-						<Icon href={circleIcon} />
+						<Icon href={svgCircle} />
 					</ListItemIcon>
 					<ListItemText>Circle</ListItemText>
 				</MenuItem>
 				<MenuItem value={3}>
 					<ListItemIcon>
-						<Icon href={starIcon} />
+						<Icon href={svgStar} />
 					</ListItemIcon>
 					<ListItemText>Star</ListItemText>
 				</MenuItem>

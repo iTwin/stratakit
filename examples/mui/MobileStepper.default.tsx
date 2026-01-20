@@ -23,6 +23,7 @@ export default () => {
 			nextButton={
 				<Button
 					size="small"
+					variant="text"
 					onClick={() => setActiveStep((prev) => prev + 1)}
 					disabled={activeStep === steps - 1}
 				>
@@ -33,6 +34,7 @@ export default () => {
 			backButton={
 				<Button
 					size="small"
+					variant="text"
 					onClick={() => setActiveStep((prev) => prev - 1)}
 					disabled={activeStep === 0}
 				>

@@ -26,7 +26,7 @@ export default () => {
 				action={
 					<Tooltip title="More actions" describeChild={false}>
 						<IconButton>
-							<Icon href={`${moreIcon}#icon-large`} size="large" />
+							<Icon href={moreIcon} />
 						</IconButton>
 					</Tooltip>
 				}

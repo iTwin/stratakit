@@ -1,0 +1,81 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+@layer reset, starlight, itwinui, page, overrides;
+
+@layer page {
+	html {
+		background-color: var(--stratakit-color-bg-page-depth);
+		scrollbar-gutter: stable;
+	}
+
+	main {
+		container: main / inline-size;
+	}
+
+	main a:where(:not(.not-content, .not-content *)) {
+		color: var(--stratakit-color-text-neutral-primary);
+		font-weight: 500;
+		text-decoration-line: underline;
+		text-underline-offset: 2px;
+
+		&:not(:hover) {
+			text-decoration-color: var(--stratakit-color-text-neutral-tertiary);
+		}
+	}
+
+	responsive-table {
+		display: block;
+		overflow: auto;
+		position: relative;
+		animation: --_scroll-shadow linear;
+		animation-timeline: scroll(self inline);
+
+		&::after {
+			content: "";
+			position: absolute;
+			inset: 0;
+			pointer-events: none;
+			background: linear-gradient(
+				to left,
+				var(--stratakit-color-bg-page-depth) 0%,
+				transparent 20%
+			);
+			opacity: var(--_overlay-bg-opacity, 0);
+		}
+	}
+
+	table {
+		display: table;
+		inline-size: 100%;
+	}
+
+	dl {
+		display: grid;
+		gap: var(--stratakit-space-x4);
+	}
+
+	dt {
+		font-weight: 600;
+	}
+
+	dd {
+		margin-inline-start: var(--stratakit-space-x4);
+	}
+
+	iframe {
+		inline-size: 100%;
+		border: none;
+	}
+}
+
+@keyframes --_scroll-shadow {
+	0% {
+		--_overlay-bg-opacity: 1;
+	}
+	20%,
+	100% {
+		--_overlay-bg-opacity: 0;
+	}
+}

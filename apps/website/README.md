@@ -1,4 +1,4 @@
-# website
+# @stratakit/website
 
 Documentation website for StrataKit.
 

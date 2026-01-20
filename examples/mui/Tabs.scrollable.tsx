@@ -19,12 +19,14 @@ export default () => {
 	return (
 		<Box className={styles.container}>
 			<Tabs
+				className={styles.tabs}
 				variant="scrollable"
 				value={value}
 				onChange={(_, value) => setValue(value)}
 			>
 				{tabs.map((_, index) => (
 					<Tab
+						key={index}
 						label={`Item ${index}`}
 						id={`${baseId}-tab${index}`}
 						aria-controls={`${baseId}-panel${index}`}

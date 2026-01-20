@@ -1,0 +1,18 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+
+.formControl {
+	min-inline-size: 250px;
+}
+
+.input {
+	display: flex;
+	align-items: center;
+	gap: var(--stratakit-space-x2);
+
+	> :global(.MuiListItemIcon-root) {
+		min-inline-size: initial;
+	}
+}

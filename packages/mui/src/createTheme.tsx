@@ -123,6 +123,12 @@ function createTheme() {
 					variant: "contained",
 				},
 			},
+			MuiButtonGroup: {
+				defaultProps: {
+					color: "secondary",
+					disableRipple: true, // ButtonGroup overrides Button's disableRipple so we need to set it here as well
+				},
+			},
 			MuiChip: {
 				defaultProps: {
 					deleteIcon: <DismissIcon />,

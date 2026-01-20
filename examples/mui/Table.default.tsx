@@ -38,7 +38,7 @@ export default () => {
 	return (
 		<TableContainer component={Paper}>
 			<Table className={styles.table}>
-				<caption style={visuallyHidden}>Simple table</caption>
+				<caption style={visuallyHidden}>Dessert nutrition</caption>
 				<TableHead>
 					<TableRow>
 						<TableCell>Dessert (100g serving)</TableCell>

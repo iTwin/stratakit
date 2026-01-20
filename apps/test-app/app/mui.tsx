@@ -47,7 +47,7 @@ import ListAvatar from "examples/mui/List.avatar.tsx";
 import ListDefault from "examples/mui/List.default.tsx";
 import ListSubheader from "examples/mui/List.subheader.tsx";
 import MenuDefault from "examples/mui/Menu.default.tsx";
-import MenuListDefault from "examples/mui/MenuList.default.tsx";
+import MenuListDefault_ from "examples/mui/MenuList._default.tsx";
 import MobileStepperDefault from "examples/mui/MobileStepper.default.tsx";
 import NativeSelectDefault from "examples/mui/NativeSelect.default.tsx";
 import PaginationDefault from "examples/mui/Pagination.default.tsx";
@@ -245,9 +245,11 @@ export default function Page() {
 					<ComponentExamples name="Link">
 						<LinkDefault />
 
-						<Stack spacing={1} direction="row">
-							{!isProduction && <LinkColors_ />}
-						</Stack>
+						{!isProduction && (
+							<Stack spacing={1} direction="row">
+								<LinkColors_ />
+							</Stack>
+						)}
 					</ComponentExamples>
 
 					<ComponentExamples name="List">
@@ -262,9 +264,11 @@ export default function Page() {
 						<MenuDefault />
 					</ComponentExamples>
 
-					<ComponentExamples name="MenuList">
-						<MenuListDefault />
-					</ComponentExamples>
+					{!isProduction && (
+						<ComponentExamples name="MenuList">
+							<MenuListDefault_ />
+						</ComponentExamples>
+					)}
 
 					<ComponentExamples name="MobileStepper">
 						<Stack spacing={1} alignSelf="stretch">

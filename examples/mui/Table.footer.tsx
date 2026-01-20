@@ -14,12 +14,13 @@ import TablePagination from "@mui/material/TablePagination";
 import TablePaginationActions from "@mui/material/TablePaginationActions";
 import TableRow from "@mui/material/TableRow";
 
-import styles from "./Table.default.module.css";
+import styles from "./Table.footer.module.css";
 
 export default () => {
 	return (
 		<TableContainer component={Paper}>
-			<Table className={styles.table} aria-label="simple table">
+			<Table className={styles.table}>
+				<caption className={styles.caption}>Table with a footer</caption>
 				<TableHead>
 					<TableRow>
 						<TableCell>Id</TableCell>

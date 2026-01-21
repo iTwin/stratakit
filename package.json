@@ -7,6 +7,7 @@
 	"scripts": {
 		"build": "WIREIT_LOGGER=metrics pnpm --filter=\"./apps/**\" build",
 		"dev": "WIREIT_LOGGER=simple pnpm --filter=@stratakit/test-app dev",
+		"docs": "WIREIT_LOGGER=simple pnpm --filter=@stratakit/website dev",
 		"format": "biome format .",
 		"lint": "biome check --error-on-warnings --formatter-enabled=false --linter-enabled=true .",
 		"lint:copyright": "tsx internal/copyright-linter.ts",

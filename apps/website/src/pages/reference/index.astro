@@ -1,0 +1,44 @@
+---
+import { getCollection, getEntries } from "astro:content";
+import StarlightPage from "@astrojs/starlight/components/StarlightPage.astro";
+import AnchorHeading from "@astrojs/starlight/components/AnchorHeading.astro";
+
+const packagesCollection = await getCollection("packages");
+
+const packages = await getEntries(packagesCollection);
+
+const headings = packages.map((pkg) => ({
+	depth: 2 as const,
+	slug: pkg.data.name,
+	text: `@stratakit/${pkg.data.name}`,
+}));
+---
+
+<StarlightPage frontmatter={{ title: "API Reference" }} headings={headings}>
+	{
+		packages.map((pkg, index) => {
+			const heading = headings[index];
+			return (
+				<>
+					<AnchorHeading level={heading.depth} id={heading.slug}>
+						{heading.text}
+					</AnchorHeading>
+					<ul>
+						{pkg.data.apis.map((api) => {
+							if (!api.convenience && api.composition.length === 0) {
+								return null;
+							}
+							return (
+								<li>
+									<a href={`${import.meta.env.BASE_URL}/reference/${pkg.id}/${api.name}`}>
+										{api.exportName ?? api.name}
+									</a>
+								</li>
+							);
+						})}
+					</ul>
+				</>
+			);
+		})
+	}
+</StarlightPage>

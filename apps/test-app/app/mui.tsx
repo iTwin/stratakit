@@ -11,6 +11,7 @@ import AlertDefault from "examples/mui/Alert.default.tsx";
 import AlertTitle from "examples/mui/Alert.title.tsx";
 import AppBarDefault from "examples/mui/AppBar.default.tsx";
 import AutocompleteDefault from "examples/mui/Autocomplete.default.tsx";
+import AutocompleteMultiple from "examples/mui/Autocomplete.multiple.tsx";
 import AvatarDefault from "examples/mui/Avatar.default.tsx";
 import AvatarGroupDefault from "examples/mui/AvatarGroup.default.tsx";
 import BackdropDefault from "examples/mui/Backdrop.default.tsx";
@@ -128,6 +129,7 @@ export default function Page() {
 
 					<ComponentExamples name="Autocomplete">
 						<AutocompleteDefault />
+						<AutocompleteMultiple />
 					</ComponentExamples>
 
 					<ComponentExamples name="Avatar">

@@ -191,6 +191,16 @@
 		}
 	}
 
+	.MuiInputAdornment-positionStart {
+		margin-inline-start: var(--stratakit-space-x2);
+		margin-inline-end: var(--stratakit-space-x1);
+	}
+
+	.MuiInputAdornment-positionEnd {
+		margin-inline-start: var(--stratakit-space-x1);
+		margin-inline-end: var(--stratakit-space-x2);
+	}
+
 	.MuiInputBase-root {
 		padding: 0;
 	}

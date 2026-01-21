@@ -9,6 +9,7 @@ node_modules
 dist
 build
 .react-router
+.astro
 
 packages/icons/icons-list.json
 

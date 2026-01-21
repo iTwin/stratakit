@@ -1,0 +1,224 @@
+---
+import { getCollection, getEntries, getEntry } from "astro:content";
+import StarlightPage from "@astrojs/starlight/components/StarlightPage.astro";
+import AnchorHeading from "@astrojs/starlight/components/AnchorHeading.astro";
+import type { Fragment } from "react";
+import ImportSnippet from "../../components/ImportSnippet.astro";
+import Jsdoc from "../../components/Jsdoc.astro";
+
+export async function getStaticPaths() {
+	const packagesCollection = await getCollection("packages");
+	const packages = await getEntries(packagesCollection);
+	return packages.flatMap((pkg) =>
+		pkg.data.apis.map((api) => {
+			return {
+				params: { api: `${pkg.id}/${api.name}` },
+				props: { pkg, api },
+			};
+		})
+	);
+}
+
+const { pkg, api } = Astro.props;
+
+const components = [...(api.convenience ? [api.convenience] : []), ...api.composition];
+
+function isConvenience(name: string) {
+	return api.convenience?.name === name;
+}
+
+function getComponentHeading(component: (typeof components)[number]) {
+	if (isConvenience(component.name)) {
+		if (api.composition.length > 0) {
+			return getHeading(`${component.name} (default)`, api.name);
+		}
+		return getHeading(api.name);
+	}
+	return getHeading(`${api.name}.${component.name}`);
+}
+
+function getAdditionalPropsHeading(slugPrefix: string) {
+	return getPropHeading(slugPrefix, "Additional props");
+}
+
+function getPropHeading(slugPrefix: string, propName: string) {
+	const propSlug = `${slugPrefix}.${propName}`;
+	return {
+		depth: 3 as const,
+		slug: propSlug,
+		text: propName,
+	};
+}
+
+function getHeading(text: string, slug?: string) {
+	return {
+		depth: 2 as const,
+		slug: slug ?? text,
+		text,
+	};
+}
+
+const importHeading = components.length > 0 ? getHeading("Import") : undefined;
+const headings = [
+	...(importHeading ? [importHeading] : []),
+	...components.flatMap((component) => {
+		const heading = getComponentHeading(component);
+		return [
+			heading,
+			...component.props.map((prop) => {
+				return getPropHeading(heading.slug, prop.name);
+			}),
+			...(component.baseProps.length > 0 ? [getAdditionalPropsHeading(heading.slug)] : []),
+		];
+	}),
+	...(api.types ?? []).flatMap((type) => {
+		const heading = getHeading(type.name);
+		return [
+			heading,
+			...type.props.map((prop) => {
+				return getPropHeading(heading.slug, prop.name);
+			}),
+		];
+	}),
+];
+
+function getBaseElementLink(baseElement: string) {
+	if (baseElement === "svg") {
+		return `https://developer.mozilla.org/en-US/docs/Web/SVG/Reference/Element/${baseElement}`;
+	}
+
+	return `https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/${baseElement}`;
+}
+---
+
+<StarlightPage
+	frontmatter={{
+		title: `${api.exportName ?? api.name} API`,
+		description: api.description,
+		status: api.status,
+	}}
+	headings={headings}
+>
+	{
+		importHeading && (
+			<>
+				<AnchorHeading level={importHeading.depth} id={importHeading.slug}>
+					{importHeading.text}
+				</AnchorHeading>
+				<ImportSnippet package={pkg} api={api} />
+			</>
+		)
+	}
+	{
+		components.map((component) => {
+			const heading = getComponentHeading(component);
+			const baseElement = component.baseElement;
+			const additionalPropsHeading = getAdditionalPropsHeading(heading.slug);
+			return (
+				<>
+					<AnchorHeading level={heading.depth} id={heading.slug}>
+						{heading.text}
+					</AnchorHeading>
+					{baseElement && (
+						<div>
+							Base element:
+							<a href={getBaseElementLink(baseElement)}>{`<${component.baseElement}>`}</a>
+						</div>
+					)}
+					{component.jsdoc?.id && <Jsdoc id={component.jsdoc?.id} />}
+					{component.props.map((prop) => {
+						const propHeading = getPropHeading(heading.slug, prop.name);
+						return (
+							<>
+								<AnchorHeading level={propHeading.depth} id={propHeading.slug}>
+									{propHeading.text}
+								</AnchorHeading>
+								<div>
+									<strong>Type:</strong>
+									<code>{prop.type}</code>
+									{prop.optional ? "(optional)" : <strong>(required)</strong>}
+								</div>
+								{prop.defaultValue && (
+									<div>
+										<strong>Default:</strong>
+										<code>{prop.defaultValue}</code>
+									</div>
+								)}
+								{prop.jsdoc?.id && <Jsdoc id={prop.jsdoc?.id} />}
+							</>
+						);
+					})}
+					{component.baseProps.length > 0 && (
+						<>
+							<AnchorHeading level={additionalPropsHeading.depth} id={additionalPropsHeading.slug}>
+								{additionalPropsHeading.text}
+							</AnchorHeading>
+							<ul>
+								{component.baseProps.map((baseProp) => {
+									const basePropParts = baseProp.split(".");
+									const typeName = basePropParts[0];
+									const propName = basePropParts[1];
+									return (
+										<li>
+											<a
+												href={`${import.meta.env.BASE_URL}/reference/foundations/Utils#${getPropHeading(typeName, propName).slug}`}
+											>
+												{propName}
+											</a>
+										</li>
+									);
+								})}
+							</ul>
+						</>
+					)}
+				</>
+			);
+		})
+	}
+	{
+		api.types?.map((type) => {
+			const heading = getHeading(type.name);
+			return (
+				<>
+					<AnchorHeading level={heading.depth} id={heading.slug}>
+						{heading.text}
+					</AnchorHeading>
+					{type.jsdoc?.id && <Jsdoc id={type.jsdoc?.id} />}
+					{type.props.map((prop) => {
+						const propHeading = getPropHeading(heading.slug, prop.name);
+						return (
+							<>
+								<AnchorHeading level={propHeading.depth} id={propHeading.slug}>
+									{propHeading.text}
+								</AnchorHeading>
+								<div>
+									<strong>Type:</strong>
+									<code>{prop.type}</code>
+									{prop.optional ? "(optional)" : <strong>(required)</strong>}
+								</div>
+								{prop.defaultValue && (
+									<div>
+										<strong>Default:</strong>
+										<code>{prop.defaultValue}</code>
+									</div>
+								)}
+								{prop.jsdoc?.id && <Jsdoc id={prop.jsdoc?.id} />}
+							</>
+						);
+					})}
+				</>
+			);
+		})
+	}
+</StarlightPage>
+
+<style>
+	@layer page {
+		a:where([href^="https://"])::after {
+			content: "↗";
+			content: "↗" / "External";
+			position: absolute;
+			margin-inline-start: 2px;
+		}
+	}
+</style>

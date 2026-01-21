@@ -2,7 +2,8 @@
 	"recommendations": [
 		"biomejs.biome",
 		"esbenp.prettier-vscode",
-		"ms-playwright.playwright"
+		"ms-playwright.playwright",
+		"astro-build.astro-vscode"
 	],
 	"unwantedRecommendations": []
 }

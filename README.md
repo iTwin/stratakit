@@ -20,7 +20,10 @@ Additional packages: [`@stratakit/foundations`](./packages/foundations/), [`@str
 
 ### Apps
 
-Currently, this repo has one [test app](./apps/test-app/) which is used for testing purposes and for demonstrating the design system in action.
+This monorepo has the following "apps":
+
+- [test app](./apps/test-app/) which is used for testing purposes and demonstration purposes.
+- [docs website](./apps/website/) which contains the source for the StrataKit website and documentation.
 
 ## Contributing
 

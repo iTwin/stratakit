@@ -143,6 +143,26 @@ jobs:
         env:
           HOME: /root
 
+  docs-tests:
+    name: Run e2e tests (website)
+    needs: install
+    runs-on: ubuntu-latest
+    container:
+      image: mcr.microsoft.com/playwright:v1.56.1-noble
+
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10.17.0
+
+      - run: pnpm install
+      - run: pnpm run build
+
+      - name: Run playwright tests (website)
+        run: pnpm --filter=@stratakit/website exec playwright test
+
   deploy-gh-pages:
     name: Deploy test app
     if: ${{ github.event_name == 'pull_request' || github.event_name == 'push' }}

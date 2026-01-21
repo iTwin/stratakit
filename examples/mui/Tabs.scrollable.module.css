@@ -3,14 +3,10 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import Skeleton from "@mui/material/Skeleton";
-import visuallyHidden from "@mui/utils/visuallyHidden";
+.container {
+	max-inline-size: 400px;
+}
 
-export default () => {
-	return (
-		<>
-			<Skeleton />
-			<div style={visuallyHidden}>Loading...</div>
-		</>
-	);
-};
+.scrollButton:where(.disabled) {
+	opacity: 0.3;
+}

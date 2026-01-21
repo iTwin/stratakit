@@ -5,11 +5,15 @@
 
 import { Container, Divider, Link, Stack, Typography } from "@mui/material";
 import { Root } from "@stratakit/mui";
+import AccordionActions from "examples/mui/Accordion.actions.tsx";
 import AccordionDefault from "examples/mui/Accordion.default.tsx";
 import AlertDefault from "examples/mui/Alert.default.tsx";
+import AlertTitle from "examples/mui/Alert.title.tsx";
 import AppBarDefault from "examples/mui/AppBar.default.tsx";
 import AutocompleteDefault from "examples/mui/Autocomplete.default.tsx";
+import AutocompleteMultiple from "examples/mui/Autocomplete.multiple.tsx";
 import AvatarDefault from "examples/mui/Avatar.default.tsx";
+import AvatarGroupDefault from "examples/mui/AvatarGroup.default.tsx";
 import BackdropDefault from "examples/mui/Backdrop.default.tsx";
 import BadgeDefault from "examples/mui/Badge.default.tsx";
 import BottomNavigationDefault from "examples/mui/BottomNavigation.default.tsx";
@@ -20,40 +24,57 @@ import ButtonDefault from "examples/mui/Button.default.tsx";
 import ButtonIcons from "examples/mui/Button.icons.tsx";
 import ButtonVariants from "examples/mui/Button.variants.tsx";
 import ButtonGroupDefault from "examples/mui/ButtonGroup.default.tsx";
+import CardActions from "examples/mui/Card.actions.tsx";
 import CardDefault from "examples/mui/Card.default.tsx";
+import CardHeader from "examples/mui/Card.header.tsx";
 import CheckboxChecked from "examples/mui/Checkbox.checked.tsx";
 import CheckboxDefault from "examples/mui/Checkbox.default.tsx";
 import CheckboxIndeterminate from "examples/mui/Checkbox.indeterminate.tsx";
 import ChipDeletable_ from "examples/mui/Chip._deletable.tsx";
 import ChipDefault from "examples/mui/Chip.default.tsx";
 import ChipOutlined from "examples/mui/Chip.outlined.tsx";
+import CircularProgressDefault from "examples/mui/CircularProgress.default.tsx";
 import DialogDefault from "examples/mui/Dialog.default.tsx";
 import DividerDefault from "examples/mui/Divider.default.tsx";
 import DrawerDefault from "examples/mui/Drawer.default.tsx";
 import FabDefault from "examples/mui/Fab.default.tsx";
+import FormControlGroup from "examples/mui/FormControl.group.tsx";
 import IconButtonColors_ from "examples/mui/IconButton._colors.tsx";
 import IconButtonDefault from "examples/mui/IconButton.default.tsx";
 import LinearProgressDefault from "examples/mui/LinearProgress.default.tsx";
 import LinkColors_ from "examples/mui/Link._colors.tsx";
 import LinkDefault from "examples/mui/Link.default.tsx";
+import ListAvatar from "examples/mui/List.avatar.tsx";
 import ListDefault from "examples/mui/List.default.tsx";
+import ListSubheader from "examples/mui/List.subheader.tsx";
 import MenuDefault from "examples/mui/Menu.default.tsx";
+import MenuListDefault_ from "examples/mui/MenuList._default.tsx";
+import MobileStepperDefault from "examples/mui/MobileStepper.default.tsx";
+import NativeSelectDefault from "examples/mui/NativeSelect.default.tsx";
 import PaginationDefault from "examples/mui/Pagination.default.tsx";
 import PaperDefault from "examples/mui/Paper.default.tsx";
+import PopoverDefault from "examples/mui/Popover.default.tsx";
 import RadioGroupDefault from "examples/mui/RadioGroup.default.tsx";
 import RatingDefault from "examples/mui/Rating.default.tsx";
 import SelectDefault from "examples/mui/Select.default.tsx";
+import SelectIcon from "examples/mui/Select.icon.tsx";
+import SelectMultiple from "examples/mui/Select.multiple.tsx";
 import SkeletonDefault from "examples/mui/Skeleton.default.tsx";
 import SliderDefault from "examples/mui/Slider.default.tsx";
 import SnackbarDefault from "examples/mui/Snackbar.default.tsx";
 import SpeedDialDefault from "examples/mui/SpeedDial.default.tsx";
+import StepperClickable from "examples/mui/Stepper.clickable.tsx";
 import StepperDefault from "examples/mui/Stepper.default.tsx";
 import StepperOptional from "examples/mui/Stepper.optional.tsx";
+import SwipeableDrawerDefault from "examples/mui/SwipeableDrawer.default.tsx";
 import SwitchChecked from "examples/mui/Switch.checked.tsx";
 import SwitchDefault from "examples/mui/Switch.default.tsx";
 import TableDefault from "examples/mui/Table.default.tsx";
+import TableFooter from "examples/mui/Table.footer.tsx";
 import TabsDefault from "examples/mui/Tabs.default.tsx";
+import TabsScrollable from "examples/mui/Tabs.scrollable.tsx";
 import TextFieldDefault from "examples/mui/TextField.default.tsx";
+import TextFieldIcon from "examples/mui/TextField.icon.tsx";
 import TextFieldMultiline from "examples/mui/TextField.multiline.tsx";
 import ToggleButtonDefault from "examples/mui/ToggleButton.default.tsx";
 import TooltipDefault from "examples/mui/Tooltip.default.tsx";
@@ -90,12 +111,14 @@ export default function Page() {
 					<ComponentExamples name="Accordion">
 						<Stack spacing={1} alignSelf="stretch">
 							<AccordionDefault />
+							<AccordionActions />
 						</Stack>
 					</ComponentExamples>
 
 					<ComponentExamples name="Alert">
 						<Stack spacing={1} alignSelf="stretch">
 							<AlertDefault />
+							<AlertTitle />
 						</Stack>
 					</ComponentExamples>
 
@@ -107,10 +130,15 @@ export default function Page() {
 
 					<ComponentExamples name="Autocomplete">
 						<AutocompleteDefault />
+						<AutocompleteMultiple />
 					</ComponentExamples>
 
 					<ComponentExamples name="Avatar">
 						<AvatarDefault />
+					</ComponentExamples>
+
+					<ComponentExamples name="AvatarGroup">
+						<AvatarGroupDefault />
 					</ComponentExamples>
 
 					<ComponentExamples name="Backdrop">
@@ -159,6 +187,8 @@ export default function Page() {
 
 					<ComponentExamples name="Card">
 						<CardDefault />
+						<CardActions />
+						<CardHeader />
 					</ComponentExamples>
 
 					<ComponentExamples name="Checkbox">
@@ -173,6 +203,10 @@ export default function Page() {
 							<ChipOutlined />
 							{!isProduction && <ChipDeletable_ />}
 						</Stack>
+					</ComponentExamples>
+
+					<ComponentExamples name="CircularProgress">
+						<CircularProgressDefault />
 					</ComponentExamples>
 
 					<ComponentExamples name="Dialog">
@@ -191,6 +225,10 @@ export default function Page() {
 
 					<ComponentExamples name="Fab">
 						<FabDefault />
+					</ComponentExamples>
+
+					<ComponentExamples name="FormControl">
+						<FormControlGroup />
 					</ComponentExamples>
 
 					<ComponentExamples name="IconButton">
@@ -212,19 +250,39 @@ export default function Page() {
 					<ComponentExamples name="Link">
 						<LinkDefault />
 
-						<Stack spacing={1} direction="row">
-							{!isProduction && <LinkColors_ />}
-						</Stack>
+						{!isProduction && (
+							<Stack spacing={1} direction="row">
+								<LinkColors_ />
+							</Stack>
+						)}
 					</ComponentExamples>
 
 					<ComponentExamples name="List">
 						<Stack spacing={1} alignSelf="stretch">
 							<ListDefault />
+							<ListAvatar />
+							<ListSubheader />
 						</Stack>
 					</ComponentExamples>
 
 					<ComponentExamples name="Menu">
 						<MenuDefault />
+					</ComponentExamples>
+
+					{!isProduction && (
+						<ComponentExamples name="MenuList">
+							<MenuListDefault_ />
+						</ComponentExamples>
+					)}
+
+					<ComponentExamples name="MobileStepper">
+						<Stack spacing={1} alignSelf="stretch">
+							<MobileStepperDefault />
+						</Stack>
+					</ComponentExamples>
+
+					<ComponentExamples name="NativeSelect">
+						<NativeSelectDefault />
 					</ComponentExamples>
 
 					<ComponentExamples name="Pagination">
@@ -233,6 +291,10 @@ export default function Page() {
 
 					<ComponentExamples name="Paper">
 						<PaperDefault />
+					</ComponentExamples>
+
+					<ComponentExamples name="Popover">
+						<PopoverDefault />
 					</ComponentExamples>
 
 					<ComponentExamples name="RadioGroup">
@@ -245,6 +307,8 @@ export default function Page() {
 
 					<ComponentExamples name="Select">
 						<SelectDefault />
+						<SelectIcon />
+						<SelectMultiple />
 					</ComponentExamples>
 
 					<ComponentExamples name="Skeleton">
@@ -266,11 +330,15 @@ export default function Page() {
 					</ComponentExamples>
 
 					<ComponentExamples name="Stepper">
-						<Stack spacing={2} alignSelf="stretch">
+						<Stack spacing={4} alignSelf="stretch">
 							<StepperDefault />
-
 							<StepperOptional />
+							<StepperClickable />
 						</Stack>
+					</ComponentExamples>
+
+					<ComponentExamples name="SwipeableDrawer">
+						<SwipeableDrawerDefault />
 					</ComponentExamples>
 
 					<ComponentExamples name="Switch">
@@ -280,16 +348,19 @@ export default function Page() {
 
 					<ComponentExamples name="Table">
 						<TableDefault />
+						<TableFooter />
 					</ComponentExamples>
 
 					<ComponentExamples name="Tabs">
 						<TabsDefault />
+						<TabsScrollable />
 					</ComponentExamples>
 
 					<ComponentExamples name="TextField">
 						<Stack spacing={1} direction="row">
 							<TextFieldDefault />
 							<TextFieldMultiline />
+							<TextFieldIcon />
 						</Stack>
 					</ComponentExamples>
 

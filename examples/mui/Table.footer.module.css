@@ -3,14 +3,10 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import Skeleton from "@mui/material/Skeleton";
-import visuallyHidden from "@mui/utils/visuallyHidden";
+.table {
+	min-inline-size: 650px;
+}
 
-export default () => {
-	return (
-		<>
-			<Skeleton />
-			<div style={visuallyHidden}>Loading...</div>
-		</>
-	);
-};
+.caption {
+	caption-side: top;
+}

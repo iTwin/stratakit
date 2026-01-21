@@ -3,18 +3,25 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import IconButton from "@mui/material/IconButton";
-import Tooltip from "@mui/material/Tooltip";
+import { InputAdornment } from "@mui/material";
+import TextField from "@mui/material/TextField";
 import { Icon } from "@stratakit/mui";
 
-import svgDownload from "@stratakit/icons/download.svg";
+import svgPlaceholder from "@stratakit/icons/placeholder.svg";
 
 export default () => {
 	return (
-		<Tooltip title="Download" describeChild={false}>
-			<IconButton>
-				<Icon href={svgDownload} />
-			</IconButton>
-		</Tooltip>
+		<TextField
+			label="Name"
+			slotProps={{
+				input: {
+					startAdornment: (
+						<InputAdornment position="start">
+							<Icon href={svgPlaceholder} />
+						</InputAdornment>
+					),
+				},
+			}}
+		/>
 	);
 };

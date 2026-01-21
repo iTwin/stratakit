@@ -4,31 +4,24 @@
  *--------------------------------------------------------------------------------------------*/
 
 import Step from "@mui/material/Step";
-import StepLabel from "@mui/material/StepLabel";
+import StepButton from "@mui/material/StepButton";
 import Stepper from "@mui/material/Stepper";
-import Typography from "@mui/material/Typography";
 import visuallyHidden from "@mui/utils/visuallyHidden";
 
 export default () => {
 	return (
-		<Stepper activeStep={2} role="list">
+		<Stepper activeStep={1} role="list">
 			<Step role="listitem">
-				<StepLabel>Select campaign settings</StepLabel>
-			</Step>
-			<Step role="listitem" completed={false}>
-				<StepLabel
-					optional={
-						<Typography variant="caption" aria-hidden="true">
-							Optional
-						</Typography>
-					}
-				>
-					Create an ad group
-					<span style={visuallyHidden}>, optional</span>
-				</StepLabel>
+				<StepButton>
+					Select campaign settings
+					<span style={visuallyHidden}> (completed)</span>
+				</StepButton>
 			</Step>
 			<Step role="listitem" aria-current="true">
-				<StepLabel>Create an ad</StepLabel>
+				<StepButton>Create an ad group</StepButton>
+			</Step>
+			<Step role="listitem">
+				<StepButton>Create an ad</StepButton>
 			</Step>
 		</Stepper>
 	);

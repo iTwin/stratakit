@@ -7,13 +7,13 @@ import Fab from "@mui/material/Fab";
 import Tooltip from "@mui/material/Tooltip";
 import { Icon } from "@stratakit/mui";
 
-import addIcon from "@stratakit/icons/add.svg";
+import svgAdd from "@stratakit/icons/add.svg";
 
 export default () => {
 	return (
 		<Tooltip title="Add documents" describeChild={false}>
 			<Fab>
-				<Icon href={addIcon} />
+				<Icon href={svgAdd} />
 			</Fab>
 		</Tooltip>
 	);

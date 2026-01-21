@@ -3,14 +3,15 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import Skeleton from "@mui/material/Skeleton";
-import visuallyHidden from "@mui/utils/visuallyHidden";
+import MenuItem from "@mui/material/MenuItem";
+import MenuList from "@mui/material/MenuList";
 
 export default () => {
 	return (
-		<>
-			<Skeleton />
-			<div style={visuallyHidden}>Loading...</div>
-		</>
+		<MenuList>
+			<MenuItem>Profile</MenuItem>
+			<MenuItem>My account</MenuItem>
+			<MenuItem>Logout</MenuItem>
+		</MenuList>
 	);
 };

@@ -5,18 +5,17 @@
 
 import * as React from "react";
 import Button from "@mui/material/Button";
-import Drawer from "@mui/material/Drawer";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
+import SwipeableDrawer from "@mui/material/SwipeableDrawer";
 import { Icon } from "@stratakit/mui";
 
 import svgEmail from "@stratakit/icons/email.svg";
 import svgStar from "@stratakit/icons/star.svg";
 import svgStatusDraft from "@stratakit/icons/status-draft.svg";
-import styles from "./Drawer.default.module.css";
 
 export default () => {
 	const [open, setOpen] = React.useState(false);
@@ -24,8 +23,13 @@ export default () => {
 	return (
 		<>
 			<Button onClick={() => setOpen(true)}>Open drawer</Button>
-			<Drawer open={open} onClose={() => setOpen(false)}>
-				<List className={styles.list}>
+			<SwipeableDrawer
+				anchor="left"
+				open={open}
+				onOpen={() => setOpen(true)}
+				onClose={() => setOpen(false)}
+			>
+				<List>
 					<ListItem disablePadding>
 						<ListItemButton>
 							<ListItemIcon>
@@ -51,7 +55,7 @@ export default () => {
 						</ListItemButton>
 					</ListItem>
 				</List>
-			</Drawer>
+			</SwipeableDrawer>
 		</>
 	);
 };

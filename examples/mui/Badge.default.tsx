@@ -9,7 +9,7 @@ import IconButton from "@mui/material/IconButton";
 import Tooltip from "@mui/material/Tooltip";
 import { Icon } from "@stratakit/mui";
 
-import emailIcon from "@stratakit/icons/email.svg";
+import svgEmail from "@stratakit/icons/email.svg";
 
 export default () => {
 	const descriptionId = React.useId();
@@ -17,7 +17,7 @@ export default () => {
 		<Tooltip title="Inbox" describeChild={false}>
 			<IconButton aria-describedby={descriptionId}>
 				<Badge badgeContent={4} color="primary">
-					<Icon href={`${emailIcon}#icon-large`} size="large" />
+					<Icon href={`${svgEmail}#icon-large`} size="large" />
 					<span id={descriptionId} hidden>
 						You have 4 new messages
 					</span>

@@ -3,14 +3,16 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import Skeleton from "@mui/material/Skeleton";
-import visuallyHidden from "@mui/utils/visuallyHidden";
+.formControl {
+	min-inline-size: 250px;
+}
 
-export default () => {
-	return (
-		<>
-			<Skeleton />
-			<div style={visuallyHidden}>Loading...</div>
-		</>
-	);
-};
+.input {
+	display: flex;
+	align-items: center;
+	gap: var(--stratakit-space-x2);
+
+	> .icon {
+		min-inline-size: initial;
+	}
+}

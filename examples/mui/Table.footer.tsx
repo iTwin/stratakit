@@ -8,11 +8,13 @@ import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
+import TableFooter from "@mui/material/TableFooter";
 import TableHead from "@mui/material/TableHead";
+import TablePagination from "@mui/material/TablePagination";
+import TablePaginationActions from "@mui/material/TablePaginationActions";
 import TableRow from "@mui/material/TableRow";
-import visuallyHidden from "@mui/utils/visuallyHidden";
 
-import styles from "./Table.default.module.css";
+import styles from "./Table.footer.module.css";
 
 export default () => {
 	const rows = [
@@ -38,7 +40,7 @@ export default () => {
 	return (
 		<TableContainer component={Paper}>
 			<Table className={styles.table}>
-				<caption style={visuallyHidden}>Dessert nutrition</caption>
+				<caption className={styles.caption}>Dessert nutrition</caption>
 				<TableHead>
 					<TableRow>
 						<TableCell>Dessert (100g serving)</TableCell>
@@ -61,6 +63,27 @@ export default () => {
 						</TableRow>
 					))}
 				</TableBody>
+				<TableFooter>
+					<TableRow>
+						<TablePagination
+							rowsPerPageOptions={[5, 10, 25, { label: "All", value: -1 }]}
+							colSpan={5}
+							count={100}
+							rowsPerPage={10}
+							page={2}
+							slotProps={{
+								select: {
+									inputProps: {
+										"aria-label": "rows per page",
+									},
+									native: true,
+								},
+							}}
+							onPageChange={() => {}}
+							ActionsComponent={TablePaginationActions}
+						/>
+					</TableRow>
+				</TableFooter>
 			</Table>
 		</TableContainer>
 	);

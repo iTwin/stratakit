@@ -189,18 +189,16 @@
 
 	.MuiInputBase-input {
 		font: var(--stratakit-mui-font-body2);
-		min-block-size: unset;
+		min-block-size: 36.5px;
 
 		&:where(input) {
 			padding-block: 0;
-			min-block-size: 36.5px;
 			align-content: center;
 		}
 
 		&:where(textarea) {
 			padding-block: 8.25px;
 			padding-inline: 14px;
-			min-block-size: 36.5px;
 		}
 	}
 

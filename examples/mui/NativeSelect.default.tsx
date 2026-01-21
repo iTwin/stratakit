@@ -18,7 +18,7 @@ export default () => {
 				Choose a design system:
 			</InputLabel>
 			<NativeSelect
-				defaultValue={30}
+				defaultValue={2}
 				inputProps={{
 					name: "design-system",
 					id: inputId,

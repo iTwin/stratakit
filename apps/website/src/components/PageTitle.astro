@@ -1,0 +1,152 @@
+---
+// See https://starlight.astro.build/reference/overrides/#pagetitle
+
+const { entry } = Astro.locals.starlightRoute;
+
+const status = entry.data.status;
+const links = entry.data.links || {};
+
+const demoBase = "https://itwin.github.io/design-system/";
+const demoUrl = links.demo ? demoBase + links.demo : null;
+
+const githubBase = "https://github.com/iTwin/design-system/blob/main/";
+const githubUrl = links.github?.startsWith("https://")
+	? links.github
+	: links.github
+		? githubBase + links.github
+		: null;
+
+const figmaUrl = links.figma;
+
+const associated = entry.data.associated?.map(({ id }) => id) || [];
+---
+
+<hgroup>
+	<h1 id="_top">{entry.data.title}</h1>
+	{entry.data.description && <p>{entry.data.description}</p>}
+</hgroup>
+
+<dl>
+	{
+		status && (
+			<div class="inline-item">
+				<dt>
+					<a href={`${import.meta.env.BASE_URL}/guides/composition/#component-status`}>
+						Component status
+					</a>
+					:
+				</dt>
+				<dd>
+					<status-badge>{status}</status-badge>
+				</dd>
+			</div>
+		)
+	}
+	{
+		Object.keys(links).length > 0 && (
+			<div class="external-links">
+				<dt>Useful links:</dt>
+				<dd>
+					<ul role="list">
+						{demoUrl && (
+							<li>
+								<a href={demoUrl}>Demo page</a>
+							</li>
+						)}
+						{githubUrl && (
+							<li>
+								<a href={githubUrl}>GitHub source</a>
+							</li>
+						)}
+						{figmaUrl && (
+							<li>
+								<a href={figmaUrl}>Figma component</a>
+							</li>
+						)}
+					</ul>
+				</dd>
+			</div>
+		)
+	}
+	{
+		associated.length > 0 && (
+			<div>
+				<dt>
+					<a href={`${import.meta.env.BASE_URL}/guides/composition/#associated-components`}>
+						Associated components
+					</a>
+					:
+				</dt>
+				<dd>
+					<ul role="list">
+						{associated.map((component) => (
+							<li>
+								<a href={`${import.meta.env.BASE_URL}/components/${component.toLowerCase()}`}>
+									{component}
+								</a>
+							</li>
+						))}
+					</ul>
+				</dd>
+			</div>
+		)
+	}
+</dl>
+
+<style>
+	@layer overrides {
+		h1 {
+			font-size: var(--sl-text-h1);
+			line-height: var(--sl-line-height-headings);
+			font-weight: 600;
+			color: var(--sl-color-white);
+			text-box: cap alphabetic;
+		}
+
+		h1 + p {
+			margin-top: var(--stratakit-space-x4);
+			color: var(--stratakit-color-text-neutral-secondary);
+		}
+
+		ul {
+			list-style-type: none;
+			display: grid;
+			gap: var(--stratakit-space-x1);
+		}
+
+		a:where([href^="https://"])::after {
+			content: "↗";
+			content: "↗" / "External";
+			position: absolute;
+			margin-inline-start: 2px;
+		}
+
+		.inline-item {
+			display: flex;
+			gap: var(--stratakit-space-x1);
+
+			dt,
+			dd {
+				margin: 0;
+			}
+		}
+
+		dl {
+			&:not(:has(> *)) {
+				display: none;
+			}
+		}
+
+		dt {
+			margin-block-end: var(--stratakit-space-x1);
+		}
+
+		dt a {
+			font-weight: 600;
+		}
+
+		dd a {
+			font-weight: 400;
+		}
+	}
+</style>

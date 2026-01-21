@@ -7,13 +7,13 @@ import IconButton from "@mui/material/IconButton";
 import Tooltip from "@mui/material/Tooltip";
 import { Icon } from "@stratakit/mui";
 
-import downloadIcon from "@stratakit/icons/download.svg";
+import svgDownload from "@stratakit/icons/download.svg";
 
 export default () => {
 	return (
 		<Tooltip title="Download" describeChild={false}>
 			<IconButton>
-				<Icon href={downloadIcon} />
+				<Icon href={svgDownload} />
 			</IconButton>
 		</Tooltip>
 	);

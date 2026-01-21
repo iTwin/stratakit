@@ -6,16 +6,16 @@
 import Button from "@mui/material/Button";
 import { Icon } from "@stratakit/mui";
 
-import placeholderIcon from "@stratakit/icons/placeholder.svg";
+import svgPlaceholder from "@stratakit/icons/placeholder.svg";
 
 export default () => {
 	return (
 		<>
-			<Button startIcon={<Icon href={placeholderIcon} />}>Start icon</Button>
-			<Button endIcon={<Icon href={placeholderIcon} />}>End icon</Button>
+			<Button startIcon={<Icon href={svgPlaceholder} />}>Start icon</Button>
+			<Button endIcon={<Icon href={svgPlaceholder} />}>End icon</Button>
 			<Button
-				startIcon={<Icon href={placeholderIcon} />}
-				endIcon={<Icon href={placeholderIcon} />}
+				startIcon={<Icon href={svgPlaceholder} />}
+				endIcon={<Icon href={svgPlaceholder} />}
 			>
 				Both icons
 			</Button>

@@ -10,6 +10,7 @@ import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
+import visuallyHidden from "@mui/utils/visuallyHidden";
 
 import styles from "./Table.default.module.css";
 
@@ -36,7 +37,8 @@ export default () => {
 
 	return (
 		<TableContainer component={Paper}>
-			<Table className={styles.table} aria-label="simple table">
+			<Table className={styles.table}>
+				<caption style={visuallyHidden}>Dessert nutrition</caption>
 				<TableHead>
 					<TableRow>
 						<TableCell>Dessert (100g serving)</TableCell>

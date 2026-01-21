@@ -8,32 +8,32 @@ import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import Tooltip from "@mui/material/Tooltip";
 import { Icon } from "@stratakit/mui";
 
-import textAlignCenterIcon from "@stratakit/icons/text-align-center.svg";
-import textAlignJustifyIcon from "@stratakit/icons/text-align-justify.svg";
-import textAlignLeftIcon from "@stratakit/icons/text-align-left.svg";
-import textAlignRightIcon from "@stratakit/icons/text-align-right.svg";
+import svgTextAlignCenter from "@stratakit/icons/text-align-center.svg";
+import svgTextAlignJustify from "@stratakit/icons/text-align-justify.svg";
+import svgTextAlignLeft from "@stratakit/icons/text-align-left.svg";
+import svgTextAlignRight from "@stratakit/icons/text-align-right.svg";
 
 export default () => {
 	return (
 		<ToggleButtonGroup value="center" aria-label="text alignment">
 			<Tooltip title="Left aligned" describeChild={false}>
 				<ToggleButton value="left">
-					<Icon href={textAlignLeftIcon} />
+					<Icon href={svgTextAlignLeft} />
 				</ToggleButton>
 			</Tooltip>
 			<Tooltip title="Centered" describeChild={false}>
 				<ToggleButton value="center">
-					<Icon href={textAlignCenterIcon} />
+					<Icon href={svgTextAlignCenter} />
 				</ToggleButton>
 			</Tooltip>
 			<Tooltip title="Right aligned" describeChild={false}>
 				<ToggleButton value="right">
-					<Icon href={textAlignRightIcon} />
+					<Icon href={svgTextAlignRight} />
 				</ToggleButton>
 			</Tooltip>
 			<Tooltip title="Justified" describeChild={false}>
 				<ToggleButton value="justify">
-					<Icon href={textAlignJustifyIcon} />
+					<Icon href={svgTextAlignJustify} />
 				</ToggleButton>
 			</Tooltip>
 		</ToggleButtonGroup>

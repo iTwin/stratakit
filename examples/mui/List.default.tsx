@@ -10,8 +10,8 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import { Icon } from "@stratakit/mui";
 
-import inboxIcon from "@stratakit/icons/inbox.svg";
-import statusDraftIcon from "@stratakit/icons/status-draft.svg";
+import svgInbox from "@stratakit/icons/inbox.svg";
+import svgStatusDraft from "@stratakit/icons/status-draft.svg";
 
 export default () => {
 	return (
@@ -19,7 +19,7 @@ export default () => {
 			<ListItem disablePadding>
 				<ListItemButton>
 					<ListItemIcon>
-						<Icon href={inboxIcon} />
+						<Icon href={svgInbox} />
 					</ListItemIcon>
 					<ListItemText primary="Inbox" />
 				</ListItemButton>
@@ -27,7 +27,7 @@ export default () => {
 			<ListItem disablePadding>
 				<ListItemButton>
 					<ListItemIcon>
-						<Icon href={statusDraftIcon} />
+						<Icon href={svgStatusDraft} />
 					</ListItemIcon>
 					<ListItemText primary="Drafts" />
 				</ListItemButton>

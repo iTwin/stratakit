@@ -23,7 +23,8 @@
 		".gitignore": ".gitattributes",
 		"Dockerfile": ".dockerignore",
 		"lefthook.yml": "biome.jsonc, .prettierrc",
-		"vite.config.ts": "react-router.config.ts"
+		"vite.config.ts": "react-router.config.ts",
+		"api.ts": "api.json"
 	},
 	"javascript.preferences.importModuleSpecifierEnding": "js",
 	"typescript.preferences.importModuleSpecifierEnding": "js",
@@ -48,6 +49,9 @@
 	},
 	"[jsonc]": {
 		"editor.defaultFormatter": "biomejs.biome"
+	},
+	"[astro]": {
+		"editor.defaultFormatter": "astro-build.astro-vscode"
 	},
 	"explorer.sortOrderLexicographicOptions": "unicode",
 	"typescript.tsdk": "./node_modules/typescript/lib"

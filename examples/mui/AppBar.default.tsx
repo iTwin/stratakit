@@ -10,14 +10,14 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import { Icon } from "@stratakit/mui";
 
-import menuIcon from "@stratakit/icons/menu.svg";
+import svgMenu from "@stratakit/icons/menu.svg";
 
 export default () => {
 	return (
 		<AppBar position="static">
 			<Toolbar>
 				<IconButton size="large" edge="start" color="inherit" aria-label="menu">
-					<Icon href={`${menuIcon}#icon-large`} size="large" />
+					<Icon href={`${svgMenu}#icon-large`} size="large" />
 				</IconButton>
 				<Typography variant="h6" component="div" flexGrow={1}>
 					News

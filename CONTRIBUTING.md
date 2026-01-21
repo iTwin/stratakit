@@ -32,7 +32,7 @@ To clone and build the repo locally, you'll need [Git](https://git-scm.com), [No
 
 `pnpm run build`
 
-### To open development servers
+### To start the dev server for test-app
 
 `pnpm run dev`
 
@@ -49,6 +49,12 @@ _Before running this command, make sure [Docker](https://www.docker.com/) is run
 ### To lint and fix autofixable errors
 
 `pnpm run lint`
+
+### To run the docs website
+
+`pnpm run docs` (or `pnpm --filter=@stratakit/website run dev`)
+
+_Note: This does not hot reload when changes are made to packages. To see changes, you will need to rerun the command._
 
 ---
 
@@ -69,6 +75,7 @@ Packages:
 Apps:
 
 - [`test-app`](./apps/test-app): A [React Router](https://reactrouter.com/) app for automated and manual testing.
+- [`website`](./apps/website): The StrataKit documentation website built with [Starlight](https://starlight.astro.build/).
 
 Examples:
 

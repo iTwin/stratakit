@@ -6,7 +6,7 @@
 import Step from "@mui/material/Step";
 import StepLabel from "@mui/material/StepLabel";
 import Stepper from "@mui/material/Stepper";
-import { visuallyHidden } from "@mui/utils";
+import visuallyHidden from "@mui/utils/visuallyHidden";
 
 export default () => {
 	return (

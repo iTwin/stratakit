@@ -187,7 +187,7 @@
 		&:where(textarea) {
 			padding-block: 8.25px;
 			padding-inline: 14px;
-			min-block-size: 20px;
+			min-block-size: 36.5px;
 		}
 	}
 

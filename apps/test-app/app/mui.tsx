@@ -57,6 +57,7 @@ import RadioGroupDefault from "examples/mui/RadioGroup.default.tsx";
 import RatingDefault from "examples/mui/Rating.default.tsx";
 import SelectDefault from "examples/mui/Select.default.tsx";
 import SelectIcon from "examples/mui/Select.icon.tsx";
+import SelectMultiple from "examples/mui/Select.multiple.tsx";
 import SkeletonDefault from "examples/mui/Skeleton.default.tsx";
 import SliderDefault from "examples/mui/Slider.default.tsx";
 import SnackbarDefault from "examples/mui/Snackbar.default.tsx";
@@ -304,6 +305,7 @@ export default function Page() {
 					<ComponentExamples name="Select">
 						<SelectDefault />
 						<SelectIcon />
+						<SelectMultiple />
 					</ComponentExamples>
 
 					<ComponentExamples name="Skeleton">

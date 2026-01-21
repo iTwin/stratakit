@@ -188,17 +188,15 @@
 	}
 
 	.MuiInputBase-input {
-		font: var(--stratakit-mui-font-body2);
 		min-block-size: 36.5px;
+		padding-block: 0;
+		padding-inline: 14px;
 
 		&:where(input) {
-			padding-block: 0;
 			align-content: center;
 		}
-
 		&:where(textarea) {
 			padding-block: 8.25px;
-			padding-inline: 14px;
 		}
 	}
 
@@ -214,6 +212,7 @@
 
 	.MuiInputBase-root {
 		padding: 0;
+		font: var(--stratakit-mui-font-body2);
 	}
 
 	.MuiLink-root {

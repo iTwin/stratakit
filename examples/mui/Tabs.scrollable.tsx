@@ -19,10 +19,17 @@ export default () => {
 	return (
 		<Box className={styles.container}>
 			<Tabs
-				className={styles.tabs}
 				variant="scrollable"
 				value={value}
 				onChange={(_, value) => setValue(value)}
+				slotProps={{
+					scrollButtons: {
+						className: styles.scrollButton,
+						classes: {
+							disabled: styles.disabled,
+						},
+					},
+				}}
 			>
 				{tabs.map((_, index) => (
 					<Tab

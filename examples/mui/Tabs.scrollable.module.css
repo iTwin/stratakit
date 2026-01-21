@@ -7,8 +7,6 @@
 	max-inline-size: 400px;
 }
 
-.tabs {
-	:global(.MuiTabs-scrollButtons.Mui-disabled) {
-		opacity: 0.3;
-	}
+.scrollButton:where(.disabled) {
+	opacity: 0.3;
 }

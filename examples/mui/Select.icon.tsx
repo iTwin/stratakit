@@ -34,19 +34,19 @@ export default () => {
 				}}
 			>
 				<MenuItem value={1}>
-					<ListItemIcon>
+					<ListItemIcon className={styles.icon}>
 						<Icon href={svgRectangle} />
 					</ListItemIcon>
 					<ListItemText>Rectangle</ListItemText>
 				</MenuItem>
 				<MenuItem value={2}>
-					<ListItemIcon>
+					<ListItemIcon className={styles.icon}>
 						<Icon href={svgCircle} />
 					</ListItemIcon>
 					<ListItemText>Circle</ListItemText>
 				</MenuItem>
 				<MenuItem value={3}>
-					<ListItemIcon>
+					<ListItemIcon className={styles.icon}>
 						<Icon href={svgStar} />
 					</ListItemIcon>
 					<ListItemText>Star</ListItemText>

@@ -12,7 +12,7 @@
 	align-items: center;
 	gap: var(--stratakit-space-x2);
 
-	> :global(.MuiListItemIcon-root) {
+	> .icon {
 		min-inline-size: initial;
 	}
 }

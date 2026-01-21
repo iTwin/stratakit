@@ -1,6 +1,6 @@
 # StrataKit
 
-Monorepo for **StrataKit**, Bentley's new flagship design system.
+Monorepo for **StrataKit** — Bentley's new flagship design system, and the successor to [iTwinUI](https://github.com/iTwin/iTwinUI).
 
 ## Monorepo structure
 
@@ -24,6 +24,16 @@ This monorepo has the following "apps":
 
 - [test app](./apps/test-app/) which is used for testing purposes and demonstration purposes.
 - [docs website](./apps/website/) which contains the source for the StrataKit website and documentation.
+
+## Core team
+
+StrataKit is maintained by:
+
+- [@mayank99](https://github.com/mayank99)
+- [@GerardasB](https://github.com/GerardasB)
+- [@FlyersPh9](https://github.com/FlyersPh9)
+
+With special thanks to [@msllrs](https://github.com/msllrs), [@ahilhorst](https://github.com/ahilhorst), [@Heydon](https://github.com/Heydon), [@knowler](https://github.com/knowler), [@r100-stack](https://github.com/r100-stack), [@VeroniqueVezina](https://github.com/VeroniqueVezina), [@mglancybentley](https://github.com/mglancybentley), and all other [contributors](https://github.com/iTwin/design-system/graphs/contributors).
 
 ## Contributing
 

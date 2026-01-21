@@ -192,9 +192,10 @@
 		padding-block: 0;
 		padding-inline: 14px;
 
-		&:where(input) {
+		&:where(:not(textarea)) {
 			align-content: center;
 		}
+
 		&:where(textarea) {
 			padding-block: 8.25px;
 		}
@@ -271,12 +272,6 @@
 			) {
 			--stratakit-mui-palette-background-paper: var(--stratakit-color-bg-elevation-level-1);
 		}
-	}
-
-	.MuiSelect-select {
-		padding-block: 0;
-		min-block-size: 36.5px;
-		align-content: center;
 	}
 
 	.MuiTab-root {

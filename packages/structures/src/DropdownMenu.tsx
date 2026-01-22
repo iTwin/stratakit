@@ -488,12 +488,17 @@ const DropdownMenuSubmenu = forwardRef<"div", DropdownMenuSubmenuProps>(
 
 		const parent = useMenuContext();
 		const popoverElement = useStoreState(parent, "popoverElement");
+		const portalElement = React.useCallback(() => {
+			if (!popoverElement?.isConnected) return null;
+			return popoverElement;
+		}, [popoverElement]);
+
 		return (
 			<MenuProvider store={store}>
 				<Menu
 					store={store}
 					portal
-					portalElement={popoverElement}
+					portalElement={portalElement}
 					preserveTabOrder={false}
 					{...props}
 					gutter={2}

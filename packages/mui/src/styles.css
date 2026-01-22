@@ -187,17 +187,20 @@
 		border-radius: 4px;
 	}
 
+	.MuiInputBase-root {
+		padding: 0;
+		font: var(--stratakit-mui-font-body2);
+	}
+
 	.MuiInputBase-input {
 		min-block-size: 36.5px;
 		padding-block: 0;
 		padding-inline: 14px;
+		align-content: center;
 
-		&:where(:not(textarea)) {
-			align-content: center;
-		}
-
-		&:where(textarea) {
+		&:where(.MuiInputBase-inputMultiline) {
 			padding-block: 8.25px;
+			align-content: baseline;
 		}
 	}
 
@@ -209,11 +212,6 @@
 	.MuiInputAdornment-positionEnd {
 		margin-inline-start: var(--stratakit-space-x1);
 		margin-inline-end: var(--stratakit-space-x2);
-	}
-
-	.MuiInputBase-root {
-		padding: 0;
-		font: var(--stratakit-mui-font-body2);
 	}
 
 	.MuiLink-root {

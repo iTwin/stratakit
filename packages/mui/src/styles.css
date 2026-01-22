@@ -87,7 +87,7 @@
 		margin-inline-start: var(--stratakit-space-x1);
 		margin-inline-end: 0;
 
-		&:first-of-type {
+		&:where(:nth-child(1 of &) {
 			margin-inline-start: var(--stratakit-space-x2);
 		}
 	}

@@ -75,6 +75,33 @@
 		align-items: center; /* Fix vertical alignment of differently sized icons */
 	}
 
+	.MuiAutocomplete-input {
+		:where(.MuiAutocomplete-hasPopupIcon) & {
+			padding-inline-end: calc(9px + 20px); /* 9px gap + 20px dropdown button width */
+		}
+
+		:where(.MuiAutocomplete-hasClearIcon) & {
+			padding-inline-end: calc(
+				9px +
+				20px +
+				24px
+			); /* 9px gap + 20px dropdown button width + 24px clear button width */
+		}
+	}
+
+	.MuiAutocomplete-tag {
+		margin-inline-start: var(--stratakit-space-x1);
+		margin-inline-end: 0;
+
+		&:where(:nth-child(1 of &)) {
+			margin-inline-start: var(--stratakit-space-x2);
+		}
+
+		&:where(:nth-last-child(1 of &)) {
+			margin-inline-end: var(--stratakit-space-x2);
+		}
+	}
+
 	.MuiAppBar-root {
 		background-color: var(--stratakit-color-bg-page-base);
 		box-shadow: none;
@@ -146,6 +173,16 @@
 		}
 	}
 
+	.MuiFormControl-root {
+		row-gap: var(--stratakit-space-x1);
+	}
+
+	.MuiFormLabel-root {
+		font-size: var(--stratakit-font-size-14);
+		position: relative; /* Disable floating label */
+		transform: none; /* Undo inset positioning */
+	}
+
 	.MuiChip-root {
 		&:where(.MuiChip-filledDefault.MuiChip-colorDefault) {
 			background-color: var(--stratakit-color-bg-neutral-base);
@@ -177,6 +214,43 @@
 		}
 		&:where(.MuiIconButton-colorError) {
 			color: var(--stratakit-color-icon-critical-base);
+		}
+	}
+
+	.MuiInputBase-root {
+		padding: 0;
+		font: var(--stratakit-mui-font-body2);
+	}
+
+	.MuiInputBase-input {
+		min-block-size: 36.5px;
+		padding-block: 0;
+		padding-inline: 14px;
+		align-content: center;
+
+		&:where(.MuiInputBase-inputMultiline) {
+			padding-block: 8.25px;
+			align-content: baseline;
+		}
+
+		&:where(.MuiInputBase-inputAdornedStart) {
+			padding-inline-start: 0;
+		}
+
+		&:where(.MuiInputBase-inputAdornedEnd) {
+			padding-inline-end: 0;
+		}
+	}
+
+	.MuiInputAdornment-root {
+		&:where(.MuiInputAdornment-positionStart) {
+			margin-inline-start: var(--stratakit-space-x2);
+			margin-inline-end: var(--stratakit-space-x1);
+		}
+
+		&:where(.MuiInputAdornment-positionEnd) {
+			margin-inline-start: var(--stratakit-space-x1);
+			margin-inline-end: var(--stratakit-space-x2);
 		}
 	}
 

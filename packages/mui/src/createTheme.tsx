@@ -140,6 +140,11 @@ function createTheme() {
 					disableRipple: true, // Checkbox doesn't inherit from ButtonBase
 				},
 			},
+			MuiInputLabel: {
+				defaultProps: {
+					shrink: true, // Removes label animation and masked border from TextField
+				},
+			},
 			MuiFab: {
 				defaultProps: {
 					color: "primary",
@@ -148,6 +153,11 @@ function createTheme() {
 			MuiLink: {
 				defaultProps: {
 					color: "textPrimary",
+				},
+			},
+			MuiOutlinedInput: {
+				defaultProps: {
+					notched: false, // Removes masked border from Select
 				},
 			},
 			MuiPaginationItem: {

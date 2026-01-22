@@ -212,6 +212,14 @@
 		}
 	}
 
+	.MuiInputBase-inputAdornedStart {
+		padding-inline-start: 0;
+	}
+
+	.MuiInputBase-inputAdornedEnd {
+		padding-inline-end: 0;
+	}
+
 	.MuiInputAdornment-positionStart {
 		margin-inline-start: var(--stratakit-space-x2);
 		margin-inline-end: var(--stratakit-space-x1);

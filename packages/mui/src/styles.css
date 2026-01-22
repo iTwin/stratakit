@@ -75,13 +75,6 @@
 		align-items: center; /* Fix vertical alignment of differently sized icons */
 	}
 
-	.MuiAutocomplete-input {
-		padding-inline: 14px;
-	}
-
-	.MuiAutocomplete-inputRoot {
-		padding-block: 0;
-	}
 
 	.MuiAutocomplete-tag {
 		margin-inline-start: var(--stratakit-space-x1);

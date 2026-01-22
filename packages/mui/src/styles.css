@@ -96,6 +96,10 @@
 		&:where(:nth-child(1 of &)) {
 			margin-inline-start: var(--stratakit-space-x2);
 		}
+
+		&:where(:nth-last-child(1 of &)) {
+			margin-inline-end: var(--stratakit-space-x2);
+		}
 	}
 
 	.MuiAppBar-root {

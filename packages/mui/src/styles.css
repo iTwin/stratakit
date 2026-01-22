@@ -75,12 +75,11 @@
 		align-items: center; /* Fix vertical alignment of differently sized icons */
 	}
 
-
 	.MuiAutocomplete-tag {
 		margin-inline-start: var(--stratakit-space-x1);
 		margin-inline-end: 0;
 
-		&:where(:nth-child(1 of &) {
+		&:where(:nth-child(1 of &)) {
 			margin-inline-start: var(--stratakit-space-x2);
 		}
 	}

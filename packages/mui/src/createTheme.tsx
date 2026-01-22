@@ -88,6 +88,7 @@ function createTheme() {
 			},
 			MuiAlert: {
 				defaultProps: {
+					variant: "outlined",
 					iconMapping: {
 						error: <ErrorIcon />,
 						info: <InfoIcon />,

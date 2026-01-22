@@ -54,36 +54,6 @@ The semantic structure of your page or screen, defined in HTML, is paramount. It
 
 If landmarks represent continents, then sections are countries: subdivisions of landmarks. While HTML offers the `<section>` element, headings more commonly define the implicit sections and subsections of the document. The provided heading elements, from `<h1>` to `<h6>`, are numbered according to section depth. For example, an `<h3>` following an `<h2>` introduces a subsection to the `<h2>`’s section.
 
-<!--
-
-Managing these levels manually can be cumbersome. Fortunately, **Stratakit** provides the `<Heading>` and `<HeadingLevel>` components. Wrap a `<HeadingLevel>` element around your entire screen/page’s contents. This initializes the first level, for the screen’s principle heading. All other headings must belong to a nested `<HeadingLevel>` to automate levels correctly.
-
-```jsx
-<HeadingLevel>
-	<Heading>Page heading (h1)</Heading>
-	...
-	<HeadingLevel>
-		<Heading>Subsection (h2)</Heading>
-		...
-	</HeadingLevel>
-	<HeadingLevel>
-		<Heading>Another subsection (h2)</Heading>
-		...
-		<HeadingLevel>
-			<Heading>A deeper subsection (h3)</Heading>
-		</HeadingLevel>
-	</HeadingLevel>
-</HeadingLevel>
-```
-
-The render prop’ enables you to `render` any element as a different element type. Using `render`, you can transform any element into a heading of the correct level—and without affecting the component’s styling.
-
-```jsx
-<Component.Title render={<Heading />}>My component heading</Component.Title>
-```
-
--->
-
 Not just anything should be a heading; not all large or bold text should use heading semantics. A heading must introduce a section (or subsection) of thematically distinct content.
 
 ### Skip link

@@ -168,6 +168,16 @@
 
 	.MuiIconButton-root {
 		border-radius: 4px;
+
+		&:where(.MuiIconButton-colorPrimary) {
+			color: var(--stratakit-color-icon-accent-strong);
+		}
+		&:where(.MuiIconButton-colorSecondary) {
+			color: var(--stratakit-color-icon-neutral-primary);
+		}
+		&:where(.MuiIconButton-colorError) {
+			color: var(--stratakit-color-icon-critical-base);
+		}
 	}
 
 	.MuiLink-root {

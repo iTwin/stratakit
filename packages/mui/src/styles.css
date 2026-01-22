@@ -75,14 +75,12 @@
 		align-items: center; /* Fix vertical alignment of differently sized icons */
 	}
 
-	.MuiAutocomplete-hasPopupIcon {
-		.MuiInputBase-input {
+	.MuiAutocomplete-input {
+		:where(.MuiAutocomplete-hasPopupIcon) & {
 			padding-inline-end: calc(9px + 20px); /* 9px gap + 20px dropdown button width */
 		}
-	}
 
-	.MuiAutocomplete-hasClearIcon {
-		&:where(:hover, :focus-within) .MuiInputBase-input {
+		:where(.MuiAutocomplete-hasClearIcon) & {
 			padding-inline-end: calc(
 				9px +
 				20px +

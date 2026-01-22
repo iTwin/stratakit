@@ -1,1 +1,0 @@
-import{j as n}from"./ExamplePreview.D8G_D7z6.js";import{r as e}from"./index.CtNveh2g.js";const r=e.createContext(void 0);function s(t){return n.jsx(r.Provider,{value:t.align,children:t.children})}function u(){return e.useContext(r)}export{s as G,u};

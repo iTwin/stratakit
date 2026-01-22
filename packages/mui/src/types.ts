@@ -30,6 +30,7 @@ declare module "@mui/material/Button" {
 		info: false;
 		success: false;
 		warning: false;
+		inherit: false;
 	}
 
 	interface ButtonOwnProps {
@@ -67,6 +68,7 @@ declare module "@mui/material/IconButton" {
 		info: false;
 		success: false;
 		warning: false;
+		inherit: false;
 	}
 }
 

@@ -208,24 +208,26 @@
 			padding-block: 8.25px;
 			align-content: baseline;
 		}
+
+		&:where(.MuiInputBase-inputAdornedStart) {
+			padding-inline-start: 0;
+		}
+
+		&:where(.MuiInputBase-inputAdornedEnd) {
+			padding-inline-end: 0;
+		}
 	}
 
-	.MuiInputBase-inputAdornedStart {
-		padding-inline-start: 0;
-	}
+	.MuiInputAdornment-root {
+		&:where(.MuiInputAdornment-positionStart) {
+			margin-inline-start: var(--stratakit-space-x2);
+			margin-inline-end: var(--stratakit-space-x1);
+		}
 
-	.MuiInputBase-inputAdornedEnd {
-		padding-inline-end: 0;
-	}
-
-	.MuiInputAdornment-positionStart {
-		margin-inline-start: var(--stratakit-space-x2);
-		margin-inline-end: var(--stratakit-space-x1);
-	}
-
-	.MuiInputAdornment-positionEnd {
-		margin-inline-start: var(--stratakit-space-x1);
-		margin-inline-end: var(--stratakit-space-x2);
+		&:where(.MuiInputAdornment-positionEnd) {
+			margin-inline-start: var(--stratakit-space-x1);
+			margin-inline-end: var(--stratakit-space-x2);
+		}
 	}
 
 	.MuiLink-root {

@@ -151,6 +151,16 @@
 		background-color: var(--stratakit-color-bg-elevation-base);
 	}
 
+	.MuiCardContent-root {
+		&:where(:has(+ .MuiCardActions-root)) {
+			padding-block-end: 0;
+		}
+	}
+
+	.MuiCardActions-root {
+		padding: var(--stratakit-space-x4);
+	}
+
 	.MuiCheckbox-root {
 		&:where(.MuiCheckbox-colorPrimary) {
 			&:where(.Mui-checked, .MuiCheckbox-indeterminate):where(:not(.Mui-disabled)) {

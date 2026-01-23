@@ -253,7 +253,7 @@
 			padding-inline-end: 0;
 		}
 
-		&:focus-visible:not(#a#b) {
+		&:focus-visible {
 			outline: none !important;
 		}
 	}

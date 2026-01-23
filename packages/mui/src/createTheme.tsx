@@ -154,6 +154,32 @@ function createTheme() {
 				defaultProps: {
 					color: "textPrimary",
 				},
+				variants: [
+					{
+						props: { color: "primary" },
+						style: { color: "var(--stratakit-color-text-accent-strong)" },
+					},
+					{
+						props: { color: "secondary" },
+						style: { color: "var(--stratakit-color-text-neutral-primary)" },
+					},
+					{
+						props: { color: "error" },
+						style: { color: "var(--stratakit-color-text-critical-base)" },
+					},
+					{
+						props: { color: "info" },
+						style: { color: "var(--stratakit-color-text-info-base)" },
+					},
+					{
+						props: { color: "success" },
+						style: { color: "var(--stratakit-color-text-positive-base)" },
+					},
+					{
+						props: { color: "warning" },
+						style: { color: "var(--stratakit-color-text-attention-base)" },
+					},
+				],
 			},
 			MuiOutlinedInput: {
 				defaultProps: {

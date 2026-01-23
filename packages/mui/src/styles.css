@@ -75,21 +75,17 @@
 		align-items: center; /* Fix vertical alignment of differently sized icons */
 	}
 
-	.MuiAutocomplete-inputRoot {
-		padding-block: 0;
+	.MuiAutocomplete-input {
+		:where(.MuiAutocomplete-hasPopupIcon) & {
+			padding-inline-end: calc(9px + 20px); /* 9px gap + 20px dropdown button width */
+		}
 
-		.MuiAutocomplete-input {
-			:where(.MuiAutocomplete-hasPopupIcon) & {
-				padding-inline-end: calc(9px + 20px); /* 9px gap + 20px dropdown button width */
-			}
-
-			:where(.MuiAutocomplete-hasClearIcon) & {
-				padding-inline-end: calc(
-					9px +
-					20px +
-					24px
-				); /* 9px gap + 20px dropdown button width + 24px clear button width */
-			}
+		:where(.MuiAutocomplete-hasClearIcon) & {
+			padding-inline-end: calc(
+				9px +
+				20px +
+				24px
+			); /* 9px gap + 20px dropdown button width + 24px clear button width */
 		}
 	}
 
@@ -224,6 +220,18 @@
 	.MuiInputBase-root {
 		padding: 0;
 		font: var(--stratakit-mui-font-body2);
+
+		&:focus-within {
+			outline: var(--🥝focus-outline);
+			outline-offset: var(--🥝focus-outline-offset);
+		}
+
+		&.Mui-focused {
+			fieldset {
+				border-color: var(--stratakit-color-border-accent-strong);
+				border-width: 1px;
+			}
+		}
 	}
 
 	.MuiInputBase-input {
@@ -244,6 +252,10 @@
 		&:where(.MuiInputBase-inputAdornedEnd) {
 			padding-inline-end: 0;
 		}
+
+		&:focus-visible:not(#a#b) {
+			outline: none !important;
+		}
 	}
 
 	.MuiInputAdornment-root {
@@ -255,39 +267,6 @@
 		&:where(.MuiInputAdornment-positionEnd) {
 			margin-inline-start: var(--stratakit-space-x1);
 			margin-inline-end: var(--stratakit-space-x2);
-		}
-	}
-
-	.MuiInputBase-input {
-		font: var(--stratakit-mui-font-body2);
-		min-block-size: unset;
-
-		&:focus-visible:not(#a#b) {
-			outline: none !important;
-		}
-
-		&:where(input) {
-			padding-block: 0;
-			min-block-size: 36.5px;
-			align-content: center;
-		}
-	}
-
-	.MuiInputBase-multiline {
-		padding-block: 8.25px;
-	}
-
-	.MuiInputBase-root {
-		&:focus-within {
-			outline: var(--🥝focus-outline);
-			outline-offset: var(--🥝focus-outline-offset);
-		}
-
-		&.Mui-focused {
-			fieldset {
-				border-color: var(--stratakit-color-border-accent-strong);
-				border-width: 1px;
-			}
 		}
 	}
 
@@ -353,12 +332,6 @@
 			) {
 			--stratakit-mui-palette-background-paper: var(--stratakit-color-bg-elevation-level-1);
 		}
-	}
-
-	.MuiSelect-select {
-		padding-block: 0;
-		min-block-size: 36.5px;
-		align-content: center;
 	}
 
 	.MuiTab-root {

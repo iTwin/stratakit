@@ -186,11 +186,6 @@ function createTheme() {
 					notched: false, // Removes masked border from Select
 				},
 			},
-			MuiOutlinedInput: {
-				defaultProps: {
-					notched: false, // Removes masked border from Select
-				},
-			},
 			MuiPaginationItem: {
 				defaultProps: {
 					slots: {

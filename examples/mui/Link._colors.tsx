@@ -7,7 +7,6 @@ import Link from "@mui/material/Link";
 
 type LinkProps = React.ComponentProps<typeof Link>;
 const colors = [
-	"default",
 	"primary",
 	"secondary",
 	"error",

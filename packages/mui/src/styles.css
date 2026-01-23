@@ -78,20 +78,20 @@
 	.MuiAutocomplete-inputRoot {
 		padding-block: 0;
 
-	  .MuiAutocomplete-input {
-		  :where(.MuiAutocomplete-hasPopupIcon) & {
-			  padding-inline-end: calc(9px + 20px); /* 9px gap + 20px dropdown button width */
-		  }
+		.MuiAutocomplete-input {
+			:where(.MuiAutocomplete-hasPopupIcon) & {
+				padding-inline-end: calc(9px + 20px); /* 9px gap + 20px dropdown button width */
+			}
 
-		  :where(.MuiAutocomplete-hasClearIcon) & {
-			  padding-inline-end: calc(
-				  9px +
-				  20px +
-				  24px
-			  ); /* 9px gap + 20px dropdown button width + 24px clear button width */
-		  }
-	  }
-  }
+			:where(.MuiAutocomplete-hasClearIcon) & {
+				padding-inline-end: calc(
+					9px +
+					20px +
+					24px
+				); /* 9px gap + 20px dropdown button width + 24px clear button width */
+			}
+		}
+	}
 
 	.MuiAutocomplete-tag {
 		margin-inline-start: var(--stratakit-space-x1);

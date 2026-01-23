@@ -10,7 +10,7 @@ import Snackbar from "@mui/material/Snackbar";
 import Tooltip from "@mui/material/Tooltip";
 import { Icon } from "@stratakit/mui";
 
-import closeIcon from "@stratakit/icons/dismiss.svg";
+import svgDismiss from "@stratakit/icons/dismiss.svg";
 
 export default () => {
 	const [open, setOpen] = React.useState(false);
@@ -29,7 +29,7 @@ export default () => {
 				action={
 					<Tooltip title="Close" describeChild={false}>
 						<IconButton color="inherit" onClick={handleClose}>
-							<Icon href={closeIcon} />
+							<Icon href={svgDismiss} />
 						</IconButton>
 					</Tooltip>
 				}

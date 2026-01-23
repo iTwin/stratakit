@@ -44,6 +44,7 @@ const LABELS = {
 	TREE: "component: Tree",
 	API_BRIDGE: "API bridge",
 	GITHUB_ACTIONS: "github_actions",
+	MUI: "MUI",
 };
 
 const LABEL_MAP = {
@@ -90,6 +91,7 @@ const LABEL_MAP = {
 		"packages/structures/src/TreeItem",
 	],
 	[LABELS.GITHUB_ACTIONS]: [".github/workflows"],
+	[LABELS.MUI]: ["packages/mui"],
 };
 
 /**

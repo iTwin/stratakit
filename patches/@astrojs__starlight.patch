@@ -1,0 +1,21 @@
+diff --git a/components/Hero.astro b/components/Hero.astro
+index e537a5927770e556756c27ff15ef1b129a9fbfd8..390d1d54ab55df53e36befa12bf537733c9813b2 100644
+--- a/components/Hero.astro
++++ b/components/Hero.astro
+@@ -2,6 +2,7 @@
+ import { Image } from 'astro:assets';
+ import { PAGE_TITLE_ID } from '../constants';
+ import LinkButton from '../user-components/LinkButton.astro';
++import { pathWithBase } from '../utils/base';
+ 
+ const { data } = Astro.locals.starlightRoute.entry;
+ const { title = data.title, tagline, image, actions = [] } = data.hero || {};
+@@ -51,7 +52,7 @@ if (image) {
+ 				<div class="sl-flex actions">
+ 					{actions.map(
+ 						({ attrs: { class: className, ...attrs } = {}, icon, link: href, text, variant }) => (
+-							<LinkButton {href} {variant} icon={icon?.name} class:list={[className]} {...attrs}>
++							<LinkButton href={pathWithBase(href)} {variant} icon={icon?.name} class:list={[className]} {...attrs}>
+ 								{text}
+ 								{icon?.html && <Fragment set:html={icon.html} />}
+ 							</LinkButton>

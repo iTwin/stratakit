@@ -13,9 +13,9 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import { Icon } from "@stratakit/mui";
 
-import emailIcon from "@stratakit/icons/email.svg";
-import starIcon from "@stratakit/icons/star.svg";
-import statusDraftIcon from "@stratakit/icons/status-draft.svg";
+import svgEmail from "@stratakit/icons/email.svg";
+import svgStar from "@stratakit/icons/star.svg";
+import svgStatusDraft from "@stratakit/icons/status-draft.svg";
 import styles from "./Drawer.default.module.css";
 
 export default () => {
@@ -29,7 +29,7 @@ export default () => {
 					<ListItem disablePadding>
 						<ListItemButton>
 							<ListItemIcon>
-								<Icon href={`${emailIcon}#icon-large`} size="large" />
+								<Icon href={`${svgEmail}#icon-large`} size="large" />
 							</ListItemIcon>
 							<ListItemText primary="Inbox" />
 						</ListItemButton>
@@ -37,7 +37,7 @@ export default () => {
 					<ListItem disablePadding>
 						<ListItemButton>
 							<ListItemIcon>
-								<Icon href={`${starIcon}#icon-large`} size="large" />
+								<Icon href={`${svgStar}#icon-large`} size="large" />
 							</ListItemIcon>
 							<ListItemText primary="Starred" />
 						</ListItemButton>
@@ -45,7 +45,7 @@ export default () => {
 					<ListItem disablePadding>
 						<ListItemButton>
 							<ListItemIcon>
-								<Icon href={`${statusDraftIcon}#icon-large`} size="large" />
+								<Icon href={`${svgStatusDraft}#icon-large`} size="large" />
 							</ListItemIcon>
 							<ListItemText primary="Drafts" />
 						</ListItemButton>

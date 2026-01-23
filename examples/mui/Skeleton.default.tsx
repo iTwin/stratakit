@@ -4,7 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 
 import Skeleton from "@mui/material/Skeleton";
-import { visuallyHidden } from "@mui/utils";
+import visuallyHidden from "@mui/utils/visuallyHidden";
 
 export default () => {
 	return (

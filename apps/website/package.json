@@ -1,0 +1,83 @@
+{
+	"name": "@stratakit/website",
+	"type": "module",
+	"version": "0.0.1",
+	"private": true,
+	"scripts": {
+		"dev": "wireit",
+		"start": "astro dev",
+		"build": "wireit",
+		"test": "wireit",
+		"preview": "astro preview",
+		"format": "prettier --write . && biome format . --fix",
+		"astro": "astro",
+		"extract-api": "node --env-file-if-exists=.env api.ts"
+	},
+	"wireit": {
+		"build": {
+			"command": "astro build",
+			"files": [
+				"src/**/*",
+				"public",
+				"astro.config.mjs",
+				"tsconfig.json",
+				"api.json"
+			],
+			"output": [
+				"dist"
+			]
+		},
+		"dev": {
+			"command": "astro dev",
+			"service": true,
+			"dependencies": [
+				"../../packages/mui:build",
+				"../../packages/icons:build",
+				"../../packages/foundations:build",
+				"../../packages/bricks:build",
+				"../../packages/structures:build"
+			]
+		},
+		"test": {
+			"command": "pnpm exec playwright test",
+			"files": [
+				"tests/*.spec.js",
+				"playwright.config.js"
+			],
+			"dependencies": [
+				"build"
+			],
+			"output": [
+				"tests/test-results"
+			]
+		}
+	},
+	"dependencies": {
+		"@astrojs/react": "^4.4.2",
+		"@astrojs/starlight": "^0.37.3",
+		"@mui/material": "catalog:",
+		"@stratakit/bricks": "workspace:*",
+		"@stratakit/foundations": "workspace:*",
+		"@stratakit/icons": "workspace:*",
+		"@stratakit/mui": "workspace:*",
+		"@stratakit/structures": "workspace:*",
+		"astro": "^5.16.11",
+		"react": "catalog:",
+		"react-dom": "catalog:",
+		"sharp": "^0.34.5"
+	},
+	"devDependencies": {
+		"@axe-core/playwright": "^4.11.0",
+		"@playwright/test": "catalog:",
+		"@types/node": "catalog:",
+		"@types/react": "catalog:",
+		"@types/react-dom": "catalog:",
+		"@types/xml2js": "^0.4.14",
+		"axe-core": "^4.11.0",
+		"remark-directive": "^4.0.0",
+		"ts-morph": "^27.0.2",
+		"unist-util-visit": "^5.0.0",
+		"wireit": "^0.14.12",
+		"xml2js": "^0.6.2"
+	}
+}

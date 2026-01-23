@@ -77,6 +77,33 @@
 
 	.MuiAutocomplete-inputRoot {
 		padding-block: 0;
+
+	  .MuiAutocomplete-input {
+		  :where(.MuiAutocomplete-hasPopupIcon) & {
+			  padding-inline-end: calc(9px + 20px); /* 9px gap + 20px dropdown button width */
+		  }
+
+		  :where(.MuiAutocomplete-hasClearIcon) & {
+			  padding-inline-end: calc(
+				  9px +
+				  20px +
+				  24px
+			  ); /* 9px gap + 20px dropdown button width + 24px clear button width */
+		  }
+	  }
+  }
+
+	.MuiAutocomplete-tag {
+		margin-inline-start: var(--stratakit-space-x1);
+		margin-inline-end: 0;
+
+		&:where(:nth-child(1 of &)) {
+			margin-inline-start: var(--stratakit-space-x2);
+		}
+
+		&:where(:nth-last-child(1 of &)) {
+			margin-inline-end: var(--stratakit-space-x2);
+		}
 	}
 
 	.MuiAppBar-root {
@@ -128,6 +155,16 @@
 		background-color: var(--stratakit-color-bg-elevation-base);
 	}
 
+	.MuiCardContent-root {
+		&:where(:has(+ .MuiCardActions-root)) {
+			padding-block-end: 0;
+		}
+	}
+
+	.MuiCardActions-root {
+		padding: var(--stratakit-space-x4);
+	}
+
 	.MuiCheckbox-root {
 		&:where(.MuiCheckbox-colorPrimary) {
 			&:where(.Mui-checked, .MuiCheckbox-indeterminate):where(:not(.Mui-disabled)) {
@@ -172,6 +209,53 @@
 
 	.MuiIconButton-root {
 		border-radius: 4px;
+
+		&:where(.MuiIconButton-colorPrimary) {
+			color: var(--stratakit-color-icon-accent-strong);
+		}
+		&:where(.MuiIconButton-colorSecondary) {
+			color: var(--stratakit-color-icon-neutral-primary);
+		}
+		&:where(.MuiIconButton-colorError) {
+			color: var(--stratakit-color-icon-critical-base);
+		}
+	}
+
+	.MuiInputBase-root {
+		padding: 0;
+		font: var(--stratakit-mui-font-body2);
+	}
+
+	.MuiInputBase-input {
+		min-block-size: 36.5px;
+		padding-block: 0;
+		padding-inline: 14px;
+		align-content: center;
+
+		&:where(.MuiInputBase-inputMultiline) {
+			padding-block: 8.25px;
+			align-content: baseline;
+		}
+
+		&:where(.MuiInputBase-inputAdornedStart) {
+			padding-inline-start: 0;
+		}
+
+		&:where(.MuiInputBase-inputAdornedEnd) {
+			padding-inline-end: 0;
+		}
+	}
+
+	.MuiInputAdornment-root {
+		&:where(.MuiInputAdornment-positionStart) {
+			margin-inline-start: var(--stratakit-space-x2);
+			margin-inline-end: var(--stratakit-space-x1);
+		}
+
+		&:where(.MuiInputAdornment-positionEnd) {
+			margin-inline-start: var(--stratakit-space-x1);
+			margin-inline-end: var(--stratakit-space-x2);
+		}
 	}
 
 	.MuiInputBase-input {

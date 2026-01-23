@@ -7,7 +7,7 @@ import IconButton from "@mui/material/IconButton";
 import Tooltip from "@mui/material/Tooltip";
 import { Icon } from "@stratakit/mui";
 
-import placeholderIcon from "@stratakit/icons/placeholder.svg";
+import svgPlaceholder from "@stratakit/icons/placeholder.svg";
 
 type IconButtonProps = React.ComponentProps<typeof IconButton>;
 const colors = [
@@ -25,7 +25,7 @@ export default () => {
 			describeChild={false}
 		>
 			<IconButton color={color}>
-				<Icon href={placeholderIcon} />
+				<Icon href={svgPlaceholder} />
 			</IconButton>
 		</Tooltip>
 	));

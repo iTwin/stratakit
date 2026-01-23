@@ -10,6 +10,21 @@
 import type { TextFieldProps, TextFieldVariants } from "@mui/material";
 import type * as React from "react";
 
+declare module "@mui/material/Alert" {
+	interface AlertPropsVariantOverrides {
+		standard: false;
+	}
+
+	interface AlertOwnProps {
+		/**
+		 * The default variant with `@stratakit/mui` is `"outlined"`.
+		 *
+		 * @default 'outlined'
+		 */
+		variant?: "filled" | "outlined";
+	}
+}
+
 declare module "@mui/material/Button" {
 	interface ButtonPropsColorOverrides {
 		info: false;
@@ -52,6 +67,16 @@ declare module "@mui/material/IconButton" {
 		info: false;
 		success: false;
 		warning: false;
+	}
+}
+
+declare module "@mui/material/Slider" {
+	interface SliderPropsColorOverrides {
+		secondary: false;
+		info: false;
+		success: false;
+		warning: false;
+		error: false;
 	}
 }
 

@@ -221,13 +221,13 @@
 		padding: 0;
 		font: var(--stratakit-mui-font-body2);
 
-		&:focus-within {
+		&:where(:focus-within) {
 			outline: var(--🥝focus-outline);
 			outline-offset: var(--🥝focus-outline-offset);
 		}
 
-		&.Mui-focused {
-			fieldset {
+		&:where(.Mui-focused) {
+			:where(fieldset) {
 				border-color: var(--stratakit-color-border-accent-strong);
 				border-width: 1px;
 			}
@@ -253,7 +253,7 @@
 			padding-inline-end: 0;
 		}
 
-		&:focus-visible {
+		&:where(:focus-visible) {
 			outline: none !important;
 		}
 	}
@@ -271,7 +271,7 @@
 	}
 
 	.MuiInputLabel-root {
-		&.Mui-focused {
+		&:where(.Mui-focused) {
 			color: var(--stratakit-color-text-neutral-secondary);
 		}
 	}

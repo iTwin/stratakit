@@ -222,16 +222,6 @@
 		font: var(--stratakit-mui-font-body2);
 		border: 1px solid var(--stratakit-color-border-neutral-base);
 
-		@media (any-hover: hover) {
-			&:where(:hover) {
-				border-color: color-mix(
-					in oklch,
-					var(--stratakit-color-border-neutral-base) 100%,
-					var(--stratakit-color-glow-hue) var(--stratakit-color-border-glow-base-hover-\%)
-				);
-			}
-		}
-
 		&:where(:focus-within) {
 			border-color: var(--stratakit-color-border-accent-strong);
 			outline: var(--🥝focus-outline);

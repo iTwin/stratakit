@@ -1,0 +1,1 @@
+import{j as r,R as o,c as i}from"./ExamplePreview.We0-YOdb.js";import{V as m}from"./VisuallyHidden.r2H7NtYH.js";import{f as n}from"./styles.internal.oMsq5KxP.js";const l=n((s,a)=>{const{children:e,...t}=s;return r.jsx(o.span,{"aria-hidden":"true",...t,className:i("🥝Dot",s.className),ref:a,children:r.jsx(m,{children:e})})});export{l as D};

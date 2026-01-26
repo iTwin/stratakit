@@ -16,7 +16,7 @@ export default () => {
 	return (
 		<AppBar position="static">
 			<Toolbar>
-				<IconButton size="large" edge="start" color="inherit" aria-label="menu">
+				<IconButton size="large" edge="start" aria-label="menu">
 					<Icon href={`${svgMenu}#icon-large`} size="large" />
 				</IconButton>
 				<Typography variant="h6" component="div" flexGrow={1}>

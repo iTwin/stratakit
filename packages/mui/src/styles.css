@@ -3,5 +3,20 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-@import "./tokens.css";
-@import "./components.css";
+@layer stratakit {
+	@import "./tokens.css";
+	@import "./components.css";
+}
+
+@layer mui {
+	/**
+	 * MUI components set `outline: 0`, overriding StrataKit's global focus outline.
+	 * This ruleset reverts the MUI override, allowing `@layer reset` focus outline to apply.
+	 */
+	*:focus-visible {
+		/* artificially increasing specificity */
+		&:not(#a#b) {
+			outline: revert-layer;
+		}
+	}
+}

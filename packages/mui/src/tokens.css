@@ -3,117 +3,115 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-@layer stratakit {
-	[data-color-scheme],
-	.🥝MuiRoot {
-		--stratakit-mui-palette-background-default: var(--stratakit-color-bg-page-depth);
-		--stratakit-mui-palette-background-paper: var(--stratakit-color-bg-page-depth);
+[data-color-scheme],
+.🥝MuiRoot {
+	--stratakit-mui-palette-background-default: var(--stratakit-color-bg-page-depth);
+	--stratakit-mui-palette-background-paper: var(--stratakit-color-bg-page-depth);
 
-		--stratakit-mui-palette-divider: var(--stratakit-color-border-page-base);
+	--stratakit-mui-palette-divider: var(--stratakit-color-border-page-base);
 
-		--stratakit-mui-palette-text-primary: var(--stratakit-color-text-neutral-primary);
-		--stratakit-mui-palette-text-secondary: var(--stratakit-color-text-neutral-secondary);
-		--stratakit-mui-palette-text-disabled: var(--stratakit-color-text-neutral-disabled);
-		--stratakit-mui-palette-text-icon: var(--stratakit-color-icon-neutral-primary);
+	--stratakit-mui-palette-text-primary: var(--stratakit-color-text-neutral-primary);
+	--stratakit-mui-palette-text-secondary: var(--stratakit-color-text-neutral-secondary);
+	--stratakit-mui-palette-text-disabled: var(--stratakit-color-text-neutral-disabled);
+	--stratakit-mui-palette-text-icon: var(--stratakit-color-icon-neutral-primary);
 
-		--stratakit-mui-palette-primary-main: var(--stratakit-color-bg-accent-base);
-		--stratakit-mui-palette-primary-dark: var(--stratakit-color-bg-accent-faded);
-		--stratakit-mui-palette-primary-light: var(--stratakit-color-bg-accent-muted);
-		--stratakit-mui-palette-primary-contrastText: var(--stratakit-color-text-neutral-emphasis);
+	--stratakit-mui-palette-primary-main: var(--stratakit-color-bg-accent-base);
+	--stratakit-mui-palette-primary-dark: var(--stratakit-color-bg-accent-faded);
+	--stratakit-mui-palette-primary-light: var(--stratakit-color-bg-accent-muted);
+	--stratakit-mui-palette-primary-contrastText: var(--stratakit-color-text-neutral-emphasis);
 
-		--stratakit-mui-palette-secondary-main: var(--stratakit-color-bg-mono-base);
-		--stratakit-mui-palette-secondary-dark: var(--stratakit-color-bg-mono-faded);
-		--stratakit-mui-palette-secondary-light: var(--stratakit-color-bg-mono-muted);
-		--stratakit-mui-palette-secondary-contrastText: var(--stratakit-color-text-neutral-emphasis);
+	--stratakit-mui-palette-secondary-main: var(--stratakit-color-bg-mono-base);
+	--stratakit-mui-palette-secondary-dark: var(--stratakit-color-bg-mono-faded);
+	--stratakit-mui-palette-secondary-light: var(--stratakit-color-bg-mono-muted);
+	--stratakit-mui-palette-secondary-contrastText: var(--stratakit-color-text-neutral-emphasis);
 
-		--stratakit-mui-palette-action-active: var(--stratakit-color-icon-neutral-primary);
-		--stratakit-mui-palette-action-disabled: var(--stratakit-color-icon-neutral-disabled);
-		--stratakit-mui-palette-action-disabledBackground: var(
-			--stratakit-color-bg-glow-on-surface-disabled
-		);
+	--stratakit-mui-palette-action-active: var(--stratakit-color-icon-neutral-primary);
+	--stratakit-mui-palette-action-disabled: var(--stratakit-color-icon-neutral-disabled);
+	--stratakit-mui-palette-action-disabledBackground: var(
+		--stratakit-color-bg-glow-on-surface-disabled
+	);
 
-		--stratakit-mui-palette-error-main: var(--stratakit-color-bg-critical-base);
-		--stratakit-mui-palette-error-dark: var(--stratakit-color-bg-critical-faded);
-		--stratakit-mui-palette-error-light: var(--stratakit-color-bg-critical-muted);
-		--stratakit-mui-palette-error-contrastText: var(--stratakit-color-text-neutral-emphasis);
+	--stratakit-mui-palette-error-main: var(--stratakit-color-bg-critical-base);
+	--stratakit-mui-palette-error-dark: var(--stratakit-color-bg-critical-faded);
+	--stratakit-mui-palette-error-light: var(--stratakit-color-bg-critical-muted);
+	--stratakit-mui-palette-error-contrastText: var(--stratakit-color-text-neutral-emphasis);
 
-		--stratakit-mui-palette-warning-main: var(--stratakit-color-bg-attention-base);
-		--stratakit-mui-palette-warning-dark: var(--stratakit-color-bg-attention-faded);
-		--stratakit-mui-palette-warning-light: var(--stratakit-color-bg-attention-muted);
-		--stratakit-mui-palette-warning-contrastText: var(--stratakit-color-text-neutral-emphasis);
+	--stratakit-mui-palette-warning-main: var(--stratakit-color-bg-attention-base);
+	--stratakit-mui-palette-warning-dark: var(--stratakit-color-bg-attention-faded);
+	--stratakit-mui-palette-warning-light: var(--stratakit-color-bg-attention-muted);
+	--stratakit-mui-palette-warning-contrastText: var(--stratakit-color-text-neutral-emphasis);
 
-		--stratakit-mui-palette-success-main: var(--stratakit-color-bg-positive-base);
-		--stratakit-mui-palette-success-dark: var(--stratakit-color-bg-positive-faded);
-		--stratakit-mui-palette-success-light: var(--stratakit-color-bg-positive-muted);
-		--stratakit-mui-palette-success-contrastText: var(--stratakit-color-text-neutral-emphasis);
+	--stratakit-mui-palette-success-main: var(--stratakit-color-bg-positive-base);
+	--stratakit-mui-palette-success-dark: var(--stratakit-color-bg-positive-faded);
+	--stratakit-mui-palette-success-light: var(--stratakit-color-bg-positive-muted);
+	--stratakit-mui-palette-success-contrastText: var(--stratakit-color-text-neutral-emphasis);
 
-		--stratakit-mui-palette-info-main: var(--stratakit-color-bg-info-base);
-		--stratakit-mui-palette-info-dark: var(--stratakit-color-bg-info-faded);
-		--stratakit-mui-palette-info-light: var(--stratakit-color-bg-info-muted);
-		--stratakit-mui-palette-info-contrastText: var(--stratakit-color-text-neutral-emphasis);
+	--stratakit-mui-palette-info-main: var(--stratakit-color-bg-info-base);
+	--stratakit-mui-palette-info-dark: var(--stratakit-color-bg-info-faded);
+	--stratakit-mui-palette-info-light: var(--stratakit-color-bg-info-muted);
+	--stratakit-mui-palette-info-contrastText: var(--stratakit-color-text-neutral-emphasis);
 
-		--stratakit-mui-palette-grey-50: --primitive("color.gray.50");
-		--stratakit-mui-palette-grey-100: --primitive("color.gray.100");
-		--stratakit-mui-palette-grey-200: --primitive("color.gray.200");
-		--stratakit-mui-palette-grey-300: --primitive("color.gray.300");
-		--stratakit-mui-palette-grey-400: --primitive("color.gray.400");
-		--stratakit-mui-palette-grey-500: --primitive("color.gray.500");
-		--stratakit-mui-palette-grey-600: --primitive("color.gray.600");
-		--stratakit-mui-palette-grey-700: --primitive("color.gray.700");
-		--stratakit-mui-palette-grey-800: --primitive("color.gray.800");
-		--stratakit-mui-palette-grey-900: --primitive("color.gray.900");
-		--stratakit-mui-palette-grey-A100: --primitive("color.gray.100");
-		--stratakit-mui-palette-grey-A200: --primitive("color.gray.200");
-		--stratakit-mui-palette-grey-A400: --primitive("color.gray.400");
-		--stratakit-mui-palette-grey-A700: --primitive("color.gray.700");
+	--stratakit-mui-palette-grey-50: --primitive("color.gray.50");
+	--stratakit-mui-palette-grey-100: --primitive("color.gray.100");
+	--stratakit-mui-palette-grey-200: --primitive("color.gray.200");
+	--stratakit-mui-palette-grey-300: --primitive("color.gray.300");
+	--stratakit-mui-palette-grey-400: --primitive("color.gray.400");
+	--stratakit-mui-palette-grey-500: --primitive("color.gray.500");
+	--stratakit-mui-palette-grey-600: --primitive("color.gray.600");
+	--stratakit-mui-palette-grey-700: --primitive("color.gray.700");
+	--stratakit-mui-palette-grey-800: --primitive("color.gray.800");
+	--stratakit-mui-palette-grey-900: --primitive("color.gray.900");
+	--stratakit-mui-palette-grey-A100: --primitive("color.gray.100");
+	--stratakit-mui-palette-grey-A200: --primitive("color.gray.200");
+	--stratakit-mui-palette-grey-A400: --primitive("color.gray.400");
+	--stratakit-mui-palette-grey-A700: --primitive("color.gray.700");
 
-		--stratakit-mui-palette-Alert-errorColor: var(--stratakit-color-text-neutral-primary);
-		--stratakit-mui-palette-Alert-infoColor: var(--stratakit-color-text-neutral-primary);
-		--stratakit-mui-palette-Alert-successColor: var(--stratakit-color-text-neutral-primary);
-		--stratakit-mui-palette-Alert-warningColor: var(--stratakit-color-text-neutral-primary);
-		--stratakit-mui-palette-Alert-errorFilledBg: var(--stratakit-color-bg-critical-transparent);
-		--stratakit-mui-palette-Alert-infoFilledBg: var(--stratakit-color-bg-info-transparent);
-		--stratakit-mui-palette-Alert-successFilledBg: var(--stratakit-color-bg-positive-transparent);
-		--stratakit-mui-palette-Alert-warningFilledBg: var(--stratakit-color-bg-attention-transparent);
-		--stratakit-mui-palette-Alert-errorFilledColor: var(--stratakit-color-text-neutral-primary);
-		--stratakit-mui-palette-Alert-infoFilledColor: var(--stratakit-color-text-neutral-primary);
-		--stratakit-mui-palette-Alert-successFilledColor: var(--stratakit-color-text-neutral-primary);
-		--stratakit-mui-palette-Alert-warningFilledColor: var(--stratakit-color-text-neutral-primary);
-		--stratakit-mui-palette-Alert-errorIconColor: var(--stratakit-color-icon-critical-base);
-		--stratakit-mui-palette-Alert-infoIconColor: var(--stratakit-color-icon-info-base);
-		--stratakit-mui-palette-Alert-successIconColor: var(--stratakit-color-icon-positive-base);
-		--stratakit-mui-palette-Alert-warningIconColor: var(--stratakit-color-icon-attention-base);
+	--stratakit-mui-palette-Alert-errorColor: var(--stratakit-color-text-neutral-primary);
+	--stratakit-mui-palette-Alert-infoColor: var(--stratakit-color-text-neutral-primary);
+	--stratakit-mui-palette-Alert-successColor: var(--stratakit-color-text-neutral-primary);
+	--stratakit-mui-palette-Alert-warningColor: var(--stratakit-color-text-neutral-primary);
+	--stratakit-mui-palette-Alert-errorFilledBg: var(--stratakit-color-bg-critical-transparent);
+	--stratakit-mui-palette-Alert-infoFilledBg: var(--stratakit-color-bg-info-transparent);
+	--stratakit-mui-palette-Alert-successFilledBg: var(--stratakit-color-bg-positive-transparent);
+	--stratakit-mui-palette-Alert-warningFilledBg: var(--stratakit-color-bg-attention-transparent);
+	--stratakit-mui-palette-Alert-errorFilledColor: var(--stratakit-color-text-neutral-primary);
+	--stratakit-mui-palette-Alert-infoFilledColor: var(--stratakit-color-text-neutral-primary);
+	--stratakit-mui-palette-Alert-successFilledColor: var(--stratakit-color-text-neutral-primary);
+	--stratakit-mui-palette-Alert-warningFilledColor: var(--stratakit-color-text-neutral-primary);
+	--stratakit-mui-palette-Alert-errorIconColor: var(--stratakit-color-icon-critical-base);
+	--stratakit-mui-palette-Alert-infoIconColor: var(--stratakit-color-icon-info-base);
+	--stratakit-mui-palette-Alert-successIconColor: var(--stratakit-color-icon-positive-base);
+	--stratakit-mui-palette-Alert-warningIconColor: var(--stratakit-color-icon-attention-base);
 
-		--stratakit-mui-palette-AppBar-defaultBg: var(--stratakit-color-bg-page-base);
-		--stratakit-mui-palette-AppBar-darkBg: var(--stratakit-color-bg-page-base);
-		--stratakit-mui-palette-AppBar-darkColor: var(--stratakit-color-text-neutral-primary);
+	--stratakit-mui-palette-AppBar-defaultBg: var(--stratakit-color-bg-page-base);
+	--stratakit-mui-palette-AppBar-darkBg: var(--stratakit-color-bg-page-base);
+	--stratakit-mui-palette-AppBar-darkColor: var(--stratakit-color-text-neutral-primary);
 
-		--stratakit-mui-palette-Avatar-defaultBg: var(--stratakit-color-bg-mono-base);
+	--stratakit-mui-palette-Avatar-defaultBg: var(--stratakit-color-bg-mono-base);
 
-		--stratakit-mui-palette-Button-inheritContainedBg: var(--stratakit-color-bg-neutral-base);
-		--stratakit-mui-palette-Button-inheritContainedHoverBg: var(--stratakit-color-bg-neutral-base);
+	--stratakit-mui-palette-Button-inheritContainedBg: var(--stratakit-color-bg-neutral-base);
+	--stratakit-mui-palette-Button-inheritContainedHoverBg: var(--stratakit-color-bg-neutral-base);
 
-		--stratakit-mui-palette-Chip-defaultBorder: var(--stratakit-color-border-neutral-base);
-		--stratakit-mui-palette-Chip-defaultAvatarColor: var(--stratakit-color-text-neutral-emphasis);
-		--stratakit-mui-palette-Chip-defaultIconColor: var(--stratakit-color-icon-neutral-primary);
+	--stratakit-mui-palette-Chip-defaultBorder: var(--stratakit-color-border-neutral-base);
+	--stratakit-mui-palette-Chip-defaultAvatarColor: var(--stratakit-color-text-neutral-emphasis);
+	--stratakit-mui-palette-Chip-defaultIconColor: var(--stratakit-color-icon-neutral-primary);
 
-		--stratakit-mui-palette-LinearProgress-primaryBg: var(--stratakit-color-bg-accent-muted);
-		--stratakit-mui-palette-LinearProgress-secondaryBg: var(--stratakit-color-border-page-base);
-		--stratakit-mui-palette-LinearProgress-infoBg: var(--stratakit-color-bg-info-muted);
-		--stratakit-mui-palette-LinearProgress-successBg: var(--stratakit-color-bg-positive-muted);
-		--stratakit-mui-palette-LinearProgress-warningBg: var(--stratakit-color-bg-attention-muted);
-		--stratakit-mui-palette-LinearProgress-errorBg: var(--stratakit-color-bg-critical-muted);
+	--stratakit-mui-palette-LinearProgress-primaryBg: var(--stratakit-color-bg-accent-muted);
+	--stratakit-mui-palette-LinearProgress-secondaryBg: var(--stratakit-color-border-page-base);
+	--stratakit-mui-palette-LinearProgress-infoBg: var(--stratakit-color-bg-info-muted);
+	--stratakit-mui-palette-LinearProgress-successBg: var(--stratakit-color-bg-positive-muted);
+	--stratakit-mui-palette-LinearProgress-warningBg: var(--stratakit-color-bg-attention-muted);
+	--stratakit-mui-palette-LinearProgress-errorBg: var(--stratakit-color-bg-critical-muted);
 
-		--stratakit-mui-palette-Skeleton-bg: var(--stratakit-color-bg-glow-on-surface-disabled);
+	--stratakit-mui-palette-Skeleton-bg: var(--stratakit-color-bg-glow-on-surface-disabled);
 
-		--stratakit-mui-palette-SnackbarContent-bg: var(--stratakit-color-bg-elevation-emphasis);
-		--stratakit-mui-palette-SnackbarContent-color: var(--stratakit-color-text-neutral-emphasis);
+	--stratakit-mui-palette-SnackbarContent-bg: var(--stratakit-color-bg-elevation-emphasis);
+	--stratakit-mui-palette-SnackbarContent-color: var(--stratakit-color-text-neutral-emphasis);
 
-		--stratakit-mui-palette-StepConnector-border: var(--stratakit-color-border-neutral-muted);
-		--stratakit-mui-palette-StepContent-border: var(--stratakit-color-border-neutral-muted);
+	--stratakit-mui-palette-StepConnector-border: var(--stratakit-color-border-neutral-muted);
+	--stratakit-mui-palette-StepContent-border: var(--stratakit-color-border-neutral-muted);
 
-		--stratakit-mui-palette-TableCell-border: var(--stratakit-color-border-neutral-muted);
+	--stratakit-mui-palette-TableCell-border: var(--stratakit-color-border-neutral-muted);
 
-		--stratakit-mui-palette-Tooltip-bg: var(--stratakit-color-bg-elevation-emphasis);
-	}
+	--stratakit-mui-palette-Tooltip-bg: var(--stratakit-color-bg-elevation-emphasis);
 }

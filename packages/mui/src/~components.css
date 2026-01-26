@@ -1,0 +1,287 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+
+.MuiAccordion-root {
+	background-color: transparent;
+}
+
+.MuiAlert-icon {
+	align-items: center; /* Fix vertical alignment of differently sized icons */
+}
+
+.MuiAutocomplete-input {
+	:where(.MuiAutocomplete-hasPopupIcon) & {
+		padding-inline-end: calc(9px + 20px); /* 9px gap + 20px dropdown button width */
+	}
+
+	:where(.MuiAutocomplete-hasClearIcon) & {
+		padding-inline-end: calc(
+			9px +
+			20px +
+			24px
+		); /* 9px gap + 20px dropdown button width + 24px clear button width */
+	}
+}
+
+.MuiAutocomplete-tag {
+	margin-inline-start: var(--stratakit-space-x1);
+	margin-inline-end: 0;
+
+	&:where(:nth-child(1 of &)) {
+		margin-inline-start: var(--stratakit-space-x2);
+	}
+
+	&:where(:nth-last-child(1 of &)) {
+		margin-inline-end: var(--stratakit-space-x2);
+	}
+}
+
+.MuiAppBar-root {
+	background-color: var(--stratakit-color-bg-page-base);
+	box-shadow: none;
+	border-block-end: 1px solid var(--stratakit-color-border-page-base);
+	color: var(--stratakit-color-text-neutral-primary);
+}
+
+.MuiButtonBase-root {
+	&:where(.Mui-disabled) {
+		cursor: not-allowed;
+		pointer-events: auto; /* Revert MUI's disabled pointer-events */
+		background-color: transparent; /* To prevent hover styles from leaking through */
+	}
+}
+
+.MuiButton-root {
+	&:where(.MuiButton-colorSecondary) {
+		--variant-containedBg: var(--stratakit-color-bg-neutral-base);
+		--variant-containedColor: var(--stratakit-color-text-neutral-primary);
+		--variant-outlinedColor: var(--stratakit-color-text-neutral-primary);
+		--variant-textColor: var(--stratakit-color-text-neutral-primary);
+
+		@media (any-hover: hover) {
+			&:where(:hover) {
+				--variant-containedBg: color-mix(
+					in oklch,
+					var(--stratakit-color-bg-neutral-base) 100%,
+					var(--stratakit-color-glow-hue) var(--stratakit-color-bg-glow-base-hover-\%)
+				);
+			}
+		}
+	}
+
+	&:where(.MuiButton-colorPrimary) {
+		--variant-outlinedColor: var(--stratakit-color-text-accent-strong);
+		--variant-textColor: var(--stratakit-color-text-accent-strong);
+	}
+
+	&:where(.MuiButton-contained) {
+		&:where(.Mui-disabled) {
+			background-color: var(--stratakit-color-bg-glow-on-surface-disabled);
+		}
+	}
+}
+
+.MuiCard-root {
+	background-color: var(--stratakit-color-bg-elevation-base);
+}
+
+.MuiCardContent-root {
+	&:where(:has(+ .MuiCardActions-root)) {
+		padding-block-end: 0;
+	}
+}
+
+.MuiCardActions-root {
+	padding: var(--stratakit-space-x4);
+}
+
+.MuiCheckbox-root {
+	&:where(.MuiCheckbox-colorPrimary) {
+		&:where(.Mui-checked, .MuiCheckbox-indeterminate):where(:not(.Mui-disabled)) {
+			color: var(--stratakit-mui-palette-primary-dark);
+		}
+	}
+
+	&:where(.Mui-focusVisible) {
+		outline: 2px solid var(--stratakit-color-border-accent-strong);
+	}
+}
+
+.MuiFormControl-root {
+	row-gap: var(--stratakit-space-x1);
+}
+
+.MuiFormLabel-root {
+	font-size: var(--stratakit-font-size-14);
+	color: var(--stratakit-color-text-neutral-secondary);
+	position: relative; /* Disable floating label */
+	transform: none; /* Undo inset positioning */
+}
+
+.MuiChip-root {
+	&:where(.MuiChip-filledDefault.MuiChip-colorDefault) {
+		background-color: var(--stratakit-color-bg-neutral-base);
+		border: 1px solid var(--stratakit-color-border-neutral-base);
+	}
+}
+
+.MuiDialogActions-root {
+	&:where(.MuiDialogActions-spacing) {
+		padding-block: var(--stratakit-space-x4);
+		padding-inline: var(--stratakit-space-x5);
+	}
+}
+
+.MuiIconButton-root {
+	border-radius: 4px;
+
+	&:where(.MuiIconButton-colorPrimary) {
+		color: var(--stratakit-color-icon-accent-strong);
+	}
+	&:where(.MuiIconButton-colorSecondary) {
+		color: var(--stratakit-color-icon-neutral-primary);
+	}
+	&:where(.MuiIconButton-colorError) {
+		color: var(--stratakit-color-icon-critical-base);
+	}
+}
+
+.MuiInputBase-root {
+	padding: 0;
+	font: var(--stratakit-mui-font-body2);
+	border: 1px solid var(--stratakit-color-border-neutral-base);
+
+	&:where(:focus-within) {
+		border-color: var(--stratakit-color-border-accent-strong);
+		outline: var(--🥝focus-outline);
+		outline-offset: var(--🥝focus-outline-offset);
+	}
+
+	:where(fieldset) {
+		display: none;
+	}
+}
+
+.MuiInputBase-input {
+	min-block-size: 36.5px;
+	padding-block: 0;
+	padding-inline: 14px;
+	align-content: center;
+
+	&:where(.MuiInputBase-inputMultiline) {
+		padding-block: 8.25px;
+		align-content: baseline;
+	}
+
+	&:where(.MuiInputBase-inputAdornedStart) {
+		padding-inline-start: 0;
+	}
+
+	&:where(.MuiInputBase-inputAdornedEnd) {
+		padding-inline-end: 0;
+	}
+
+	&:where(:focus-visible) {
+		outline: none !important;
+	}
+}
+
+.MuiInputAdornment-root {
+	&:where(.MuiInputAdornment-positionStart) {
+		margin-inline-start: var(--stratakit-space-x2);
+		margin-inline-end: var(--stratakit-space-x1);
+	}
+
+	&:where(.MuiInputAdornment-positionEnd) {
+		margin-inline-start: var(--stratakit-space-x1);
+		margin-inline-end: var(--stratakit-space-x2);
+	}
+}
+
+.MuiLink-root {
+	font-weight: 500;
+	text-decoration-color: currentColor;
+	text-underline-offset: var(--stratakit-space-x05);
+	transition: text-underline-offset 150ms ease-out;
+
+	&:where(:hover, :focus-visible) {
+		text-underline-offset: var(--stratakit-space-x1);
+	}
+}
+
+.MuiMenuItem-root {
+	&:where(.Mui-focusVisible) {
+		outline-offset: -2px;
+	}
+}
+
+.MuiPaper-root {
+	--Paper-overlay: unset !important; /* Remove background-image overlay that MUI adds in dark mode */
+
+	&:where(.MuiPaper-elevation1) {
+		--stratakit-mui-palette-background-paper: var(--stratakit-color-bg-page-base);
+	}
+
+	&:where(
+			.MuiPaper-elevation2,
+			.MuiPaper-elevation3,
+			.MuiPaper-elevation4,
+			.MuiPaper-elevation5,
+			.MuiPaper-elevation6,
+			.MuiPaper-elevation7
+		) {
+		--stratakit-mui-palette-background-paper: var(--stratakit-color-bg-elevation-base);
+	}
+
+	&:where(
+			.MuiPaper-elevation8,
+			.MuiPaper-elevation9,
+			.MuiPaper-elevation10,
+			.MuiPaper-elevation11,
+			.MuiPaper-elevation12,
+			.MuiPaper-elevation13,
+			.MuiPaper-elevation14,
+			.MuiPaper-elevation15,
+			.MuiPaper-elevation16,
+			.MuiPaper-elevation17,
+			.MuiPaper-elevation18,
+			.MuiPaper-elevation19,
+			.MuiPaper-elevation20,
+			.MuiPaper-elevation21,
+			.MuiPaper-elevation22,
+			.MuiPaper-elevation23,
+			.MuiPaper-elevation24
+		) {
+		--stratakit-mui-palette-background-paper: var(--stratakit-color-bg-elevation-level-1);
+	}
+}
+
+.MuiTab-root {
+	&:where(.Mui-selected) {
+		color: var(--stratakit-color-text-accent-strong);
+	}
+	&:where(:focus-visible) {
+		outline-offset: -4px;
+	}
+}
+.MuiTabs-indicator {
+	background-color: var(--stratakit-color-border-accent-strong);
+}
+
+.MuiTooltip-tooltip {
+	box-shadow: var(--stratakit-shadow-control-tooltip-base);
+}
+
+.MuiSwitch-root {
+	.MuiSwitch-switchBase:where(.MuiSwitch-colorPrimary) {
+		&:where(.Mui-checked):where(:not(.Mui-disabled)) {
+			color: var(--stratakit-mui-palette-primary-dark);
+		}
+	}
+
+	&:where(:has(.MuiSwitch-switchBase.Mui-focusVisible)) {
+		outline: 2px solid var(--stratakit-color-border-accent-strong);
+	}
+}

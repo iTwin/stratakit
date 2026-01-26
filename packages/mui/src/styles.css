@@ -229,6 +229,7 @@
 
 	.MuiFormLabel-root {
 		font-size: var(--stratakit-font-size-14);
+		color: var(--stratakit-color-text-neutral-secondary);
 		position: relative; /* Disable floating label */
 		transform: none; /* Undo inset positioning */
 	}
@@ -244,12 +245,6 @@
 		&:where(.MuiDialogActions-spacing) {
 			padding-block: var(--stratakit-space-x4);
 			padding-inline: var(--stratakit-space-x5);
-		}
-	}
-
-	.MuiFormLabel-colorPrimary {
-		&:where(.Mui-focused) {
-			color: var(--stratakit-mui-palette-primary-dark);
 		}
 	}
 
@@ -270,6 +265,17 @@
 	.MuiInputBase-root {
 		padding: 0;
 		font: var(--stratakit-mui-font-body2);
+		border: 1px solid var(--stratakit-color-border-neutral-base);
+
+		&:where(:focus-within) {
+			border-color: var(--stratakit-color-border-accent-strong);
+			outline: var(--🥝focus-outline);
+			outline-offset: var(--🥝focus-outline-offset);
+		}
+
+		:where(fieldset) {
+			display: none;
+		}
 	}
 
 	.MuiInputBase-input {
@@ -289,6 +295,10 @@
 
 		&:where(.MuiInputBase-inputAdornedEnd) {
 			padding-inline-end: 0;
+		}
+
+		&:where(:focus-visible) {
+			outline: none !important;
 		}
 	}
 

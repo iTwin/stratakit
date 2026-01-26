@@ -361,12 +361,6 @@
 		}
 	}
 
-	.MuiInputLabel-root {
-		&:where(.Mui-focused) {
-			color: var(--stratakit-color-text-neutral-secondary);
-		}
-	}
-
 	.MuiLink-root {
 		font-weight: 500;
 		text-decoration-color: currentColor;

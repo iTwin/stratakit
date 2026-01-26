@@ -3,10 +3,8 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-@layer stratakit {
-	@import "./~tokens.css";
-	@import "./~components.css";
-}
+@import "./~tokens.css" layer(stratakit);
+@import "./~components.css" layer(stratakit);
 
 @layer mui {
 	/**

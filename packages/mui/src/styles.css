@@ -4,8 +4,8 @@
  *--------------------------------------------------------------------------------------------*/
 
 @layer stratakit {
-	@import "./tokens.css";
-	@import "./components.css";
+	@import "./~tokens.css";
+	@import "./~components.css";
 }
 
 @layer mui {

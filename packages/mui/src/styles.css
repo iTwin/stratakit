@@ -274,10 +274,6 @@
 		color: var(--stratakit-color-text-neutral-secondary);
 		position: relative; /* Disable floating label */
 		transform: none; /* Undo inset positioning */
-
-		&:where(.Mui-error, .Mui-focused) {
-			color: var(--stratakit-mui-palette-primary-dark);
-		}
 	}
 
 	.MuiChip-root {

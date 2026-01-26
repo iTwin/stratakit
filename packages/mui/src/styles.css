@@ -179,6 +179,7 @@
 
 	.MuiFormLabel-root {
 		font-size: var(--stratakit-font-size-14);
+		color: var(--stratakit-color-text-neutral-secondary);
 		position: relative; /* Disable floating label */
 		transform: none; /* Undo inset positioning */
 	}
@@ -194,12 +195,6 @@
 		&:where(.MuiDialogActions-spacing) {
 			padding-block: var(--stratakit-space-x4);
 			padding-inline: var(--stratakit-space-x5);
-		}
-	}
-
-	.MuiFormLabel-colorPrimary {
-		&:where(.Mui-focused) {
-			color: var(--stratakit-mui-palette-primary-dark);
 		}
 	}
 
@@ -266,12 +261,6 @@
 		&:where(.MuiInputAdornment-positionEnd) {
 			margin-inline-start: var(--stratakit-space-x1);
 			margin-inline-end: var(--stratakit-space-x2);
-		}
-	}
-
-	.MuiInputLabel-root {
-		&:where(.Mui-focused) {
-			color: var(--stratakit-color-text-neutral-secondary);
 		}
 	}
 

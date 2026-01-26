@@ -274,6 +274,10 @@
 		color: var(--stratakit-color-text-neutral-secondary);
 		position: relative; /* Disable floating label */
 		transform: none; /* Undo inset positioning */
+
+		&:where(.Mui-disabled) {
+			color: var(--stratakit-color-text-neutral-disabled);
+		}
 	}
 
 	.MuiChip-root {
@@ -318,6 +322,11 @@
 		&:where(.Mui-error) {
 			border-color: var(--stratakit-color-border-critical-base);
 			--🥝Icon-color: var(--stratakit-color-icon-critical-base);
+		}
+
+		&:where(.Mui-disabled) {
+			border-color: var(--stratakit-color-border-glow-on-surface-disabled);
+			--🥝Icon-color: var(--stratakit-color-icon-neutral-disabled);
 		}
 
 		:where(fieldset) {

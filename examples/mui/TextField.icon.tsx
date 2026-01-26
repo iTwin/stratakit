@@ -12,6 +12,8 @@ import svgPlaceholder from "@stratakit/icons/placeholder.svg";
 export default () => {
 	return (
 		<TextField
+			helperText="Description"
+			error
 			label="Name"
 			slotProps={{
 				input: {

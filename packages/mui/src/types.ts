@@ -43,6 +43,17 @@ declare module "@mui/material/Button" {
 	}
 }
 
+declare module "@mui/material/Checkbox" {
+	interface CheckboxPropsColorOverrides {
+		secondary: false;
+		default: false;
+		info: false;
+		success: false;
+		warning: false;
+		error: false;
+	}
+}
+
 declare module "@mui/material/Fab" {
 	interface FabPropsColorOverrides {
 		info: false;
@@ -63,12 +74,43 @@ declare module "@mui/material/Fab" {
 	}
 }
 
+declare module "@mui/material/FormLabel" {
+	interface FormLabelPropsColorOverrides {
+		secondary: false;
+		info: false;
+		success: false;
+		warning: false;
+		error: false;
+	}
+}
+
 declare module "@mui/material/IconButton" {
 	interface IconButtonPropsColorOverrides {
 		info: false;
 		success: false;
 		warning: false;
 		inherit: false;
+	}
+}
+
+declare module "@mui/material/InputBase" {
+	interface InputBasePropsColorOverrides {
+		secondary: false;
+		info: false;
+		success: false;
+		warning: false;
+		error: false;
+	}
+}
+
+declare module "@mui/material/Radio" {
+	interface RadioPropsColorOverrides {
+		secondary: false;
+		default: false;
+		info: false;
+		success: false;
+		warning: false;
+		error: false;
 	}
 }
 
@@ -82,7 +124,26 @@ declare module "@mui/material/Slider" {
 	}
 }
 
+declare module "@mui/material/Switch" {
+	interface SwitchPropsColorOverrides {
+		secondary: false;
+		default: false;
+		info: false;
+		success: false;
+		warning: false;
+		error: false;
+	}
+}
+
 declare module "@mui/material/TextField" {
+	interface TextFieldPropsColorOverrides {
+		secondary: false;
+		info: false;
+		success: false;
+		warning: false;
+		error: false;
+	}
+
 	export default function TextField(
 		props: {
 			/** @deprecated DO NOT USE */ variant?: TextFieldVariants;

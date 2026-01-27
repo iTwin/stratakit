@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.5.5
+
+- [#1174](https://github.com/iTwin/design-system/pull/1174): Fixed `DropdownMenu.Submenu` component to avoid removal of parent portal popover when unmounting.
+
 ## 0.5.4
 
 - [#1122](https://github.com/iTwin/design-system/pull/1122): Moved `@stratakit/foundations` from `peerDependencies` to direct `dependencies`.

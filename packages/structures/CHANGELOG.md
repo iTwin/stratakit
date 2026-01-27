@@ -2,8 +2,6 @@
 
 ## 0.5.5
 
-### Patch Changes
-
 - [#1174](https://github.com/iTwin/design-system/pull/1174): Fixed `DropdownMenu.Submenu` component to avoid removal of parent portal popover when unmounting.
 
 ## 0.5.4

@@ -18,6 +18,10 @@ export default defineConfig({
 		starlight({
 			title: "StrataKit Docs",
 			titleDelimiter: " – ",
+			logo: {
+				light: "./src/assets/stratakit-logo.svg",
+				dark: "./src/assets/stratakit-logo-dark.svg",
+			},
 			pagination: false,
 			components: {
 				PageTitle: "./src/components/PageTitle.astro",

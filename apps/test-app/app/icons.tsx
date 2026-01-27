@@ -3,14 +3,17 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
+import * as React from "react";
+import Container from "@mui/material/Container";
 import { Divider, Text } from "@stratakit/bricks";
 import { Icon } from "@stratakit/foundations";
 import { Table } from "@stratakit/structures";
+import { SkipLinkContext } from "./~navigation.tsx";
 
-import type { LinksFunction, MetaFunction } from "react-router";
+import type { MetaFunction } from "react-router";
 
 import iconsListJson from "@stratakit/icons/icons-list.json";
-import globalStyles from "./icons.css?url";
+import styles from "./icons.module.css";
 
 const allIcons = import.meta.glob(
 	"../node_modules/@stratakit/icons/icons/*.svg",
@@ -26,14 +29,16 @@ export const meta: MetaFunction = () => {
 	return [{ title: "StrataKit icons" }];
 };
 
-export const links: LinksFunction = () => [
-	{ rel: "stylesheet", href: globalStyles },
-];
-
 export default function Page() {
 	return (
-		<>
-			<Text variant="headline-md" render={<h1 />}>
+		<Container
+			maxWidth="md"
+			component="main"
+			className={styles.main}
+			tabIndex={-1}
+			id={React.use(SkipLinkContext)?.id}
+		>
+			<Text variant="headline-md" render={<h1 />} className={styles.h1}>
 				Icons
 			</Text>
 			<Divider />
@@ -62,6 +67,6 @@ export default function Page() {
 					})}
 				</Table.Body>
 			</Table.HtmlTable>
-		</>
+		</Container>
 	);
 }

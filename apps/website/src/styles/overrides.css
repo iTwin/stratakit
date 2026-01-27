@@ -95,6 +95,11 @@ header > .header {
 	}
 }
 
+.site-title {
+	gap: var(--stratakit-space-x2);
+	line-height: 1;
+}
+
 site-search button[data-open-modal] {
 	@media (min-width: 50rem) {
 		background-color: var(--stratakit-color-bg-page-base);

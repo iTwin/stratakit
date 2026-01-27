@@ -30,7 +30,7 @@ export const links: LinksFunction = () => {
 	return [
 		{
 			rel: "icon",
-			href: "data:image/svg+xml,<svg viewBox='0 -16 20 20' xmlns='http://www.w3.org/2000/svg'><text>🥝</text></svg>",
+			href: "/favicon.svg",
 			type: "image/svg+xml",
 		},
 		{ rel: "manifest", href: "/manifest.json", crossOrigin: "use-credentials" },

@@ -1,3 +1,8 @@
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="./internal/stratakit-logo-dark.svg?raw=true" />
+  <img src="./internal/stratakit-logo.svg?raw=true" alt="" width="100"/>
+</picture>
+
 # StrataKit
 
 Monorepo for **StrataKit** — Bentley's new flagship design system, and the successor to [iTwinUI](https://github.com/iTwin/iTwinUI).

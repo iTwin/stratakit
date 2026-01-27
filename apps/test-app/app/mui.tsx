@@ -74,6 +74,7 @@ import TableFooter from "examples/mui/Table.footer.tsx";
 import TabsDefault from "examples/mui/Tabs.default.tsx";
 import TabsScrollable from "examples/mui/Tabs.scrollable.tsx";
 import TextFieldDefault from "examples/mui/TextField.default.tsx";
+import TextFieldError from "examples/mui/TextField.error.tsx";
 import TextFieldIcon from "examples/mui/TextField.icon.tsx";
 import TextFieldMultiline from "examples/mui/TextField.multiline.tsx";
 import ToggleButtonDefault from "examples/mui/ToggleButton.default.tsx";
@@ -361,6 +362,7 @@ export default function Page() {
 							<TextFieldDefault />
 							<TextFieldMultiline />
 							<TextFieldIcon />
+							<TextFieldError />
 						</Stack>
 					</ComponentExamples>
 

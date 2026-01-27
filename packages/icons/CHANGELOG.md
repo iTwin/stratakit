@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.3.0
+
+### Breaking changes
+
+- [#1163](https://github.com/iTwin/design-system/pull/1163): Removed `license-remove.svg` which was previously deprecated and aliased to `license-minus.svg`.
+
 ## 0.2.2
 
 - [#1104](https://github.com/iTwin/design-system/pull/1104): Added new icons:

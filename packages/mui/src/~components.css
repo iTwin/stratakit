@@ -115,6 +115,7 @@
 
 .MuiFormHelperText-root {
 	margin: 0;
+	@apply --typography("body-sm");
 
 	&:where(.Mui-error) {
 		color: var(--stratakit-color-text-critical-base);

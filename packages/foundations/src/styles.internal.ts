@@ -16,6 +16,14 @@ const styleSheets = new Map<string, WeakMap<Window, CSSStyleSheet>>(
 );
 
 /**
+ * Maintains counts for stylesheet references (differentiated by key) per root node.
+ * Ensures stylesheets are only removed when the _last_ consumer cleans up.
+ */
+const styleSheetRefs = new Map<string, WeakMap<Document | ShadowRoot, number>>(
+	Object.entries({ default: new WeakMap() }),
+);
+
+/**
  * Adds css to the root node using `adoptedStyleSheets` in modern browsers.
  *
  * Pass an optional key to distinguish multiple stylesheets from each other.
@@ -45,15 +53,30 @@ export function loadStyles(
 			styleSheet.replaceSync(css);
 		}
 
+		// Track reference count for this stylesheet in this root node
+		const refs = styleSheetRefs.get(key) || new WeakMap();
+		if (!styleSheetRefs.has(key)) styleSheetRefs.set(key, refs);
+
+		const currentCount = refs.get(rootNode) || 0;
+		refs.set(rootNode, currentCount + 1);
+
 		if (!rootNode.adoptedStyleSheets.includes(styleSheet)) {
 			rootNode.adoptedStyleSheets.push(styleSheet);
+		}
 
-			cleanup = () => {
+		// Only remove the stylesheet when the last reference is cleaned up,
+		// otherwise simply decrement the reference count.
+		cleanup = () => {
+			const count = refs.get(rootNode) || 0;
+			if (count <= 1) {
+				refs.delete(rootNode);
 				rootNode.adoptedStyleSheets = rootNode.adoptedStyleSheets.filter(
 					(sheet) => sheet !== styleSheet,
 				);
-			};
-		}
+			} else {
+				refs.set(rootNode, count - 1);
+			}
+		};
 
 		return true;
 	})();

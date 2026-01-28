@@ -148,6 +148,20 @@
 		}
 	}
 
+	:where(.Mui-error) & {
+		background-color: var(--stratakit-color-bg-neutral-base);
+		border-color: var(--stratakit-color-border-critical-base);
+		color: var(--stratakit-color-icon-neutral-primary);
+
+		@media (forced-colors: active) {
+			background-color: Mark;
+
+			&::after {
+				background-color: MarkText;
+			}
+		}
+	}
+
 	:where(.Mui-disabled) & {
 		background-color: var(--stratakit-color-bg-glow-on-surface-disabled);
 		border-color: var(--stratakit-color-border-glow-on-surface-disabled);

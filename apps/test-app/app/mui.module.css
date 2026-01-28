@@ -78,6 +78,7 @@
 			inset: calc(-1 * var(--stratakit-space-x4));
 			outline: 1px dashed var(--stratakit-color-border-neutral-base);
 			border-radius: 4px;
+			pointer-events: none;
 		}
 	}
 }

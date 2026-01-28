@@ -3,8 +3,15 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import { Container, Divider, Link, Stack, Typography } from "@mui/material";
-import { Root } from "@stratakit/mui";
+import * as React from "react";
+import { type MetaFunction, useLocation } from "react-router";
+import { IconButton } from "@mui/material";
+import Container from "@mui/material/Container";
+import Stack from "@mui/material/Stack";
+import Typography from "@mui/material/Typography";
+import visuallyHidden from "@mui/utils/visuallyHidden";
+import { Icon, Root } from "@stratakit/mui";
+import * as NavigationList from "@stratakit/structures/unstable_NavigationList";
 import AccordionActions from "examples/mui/Accordion.actions.tsx";
 import AccordionDefault from "examples/mui/Accordion.default.tsx";
 import AlertDefault from "examples/mui/Alert.default.tsx";
@@ -81,10 +88,11 @@ import TextFieldMultiline from "examples/mui/TextField.multiline.tsx";
 import ToggleButtonDefault from "examples/mui/ToggleButton.default.tsx";
 import TooltipDefault from "examples/mui/Tooltip.default.tsx";
 import TypographyDefault from "examples/mui/Typography.default.tsx";
-import { isProduction, useColorScheme } from "./~utils.tsx";
+import { SkipLinkContext } from "./~navigation.tsx";
+import { isProduction, useColorScheme, useIsWideScreen } from "./~utils.tsx";
 
-import type * as React from "react";
-import type { MetaFunction } from "react-router";
+import svgLink from "@stratakit/icons/link.svg";
+import styles from "./mui.module.css";
 
 // ----------------------------------------------------------------------------
 
@@ -94,296 +102,262 @@ export const meta: MetaFunction = () => {
 
 // ----------------------------------------------------------------------------
 
+/**
+ * Map of all MUI component examples displayed on this page.
+ * Used to generate both the content and the navigation sidebar.
+ */
+const components: Record<string, React.ReactNode> = {
+	Accordion: (
+		<Stack spacing={1} alignSelf="stretch">
+			<AccordionDefault />
+			<AccordionActions />
+		</Stack>
+	),
+	Alert: (
+		<Stack spacing={1} alignSelf="stretch">
+			<AlertDefault />
+			<AlertTitle />
+		</Stack>
+	),
+	AppBar: (
+		<Stack spacing={1} alignSelf="stretch">
+			<AppBarDefault />
+		</Stack>
+	),
+	Autocomplete: (
+		<>
+			<AutocompleteDefault />
+			<AutocompleteMultiple />
+		</>
+	),
+	Avatar: <AvatarDefault />,
+	AvatarGroup: <AvatarGroupDefault />,
+	Backdrop: <BackdropDefault />,
+	Badge: <BadgeDefault />,
+	BottomNavigation: (
+		<Stack spacing={1} alignSelf="stretch">
+			<BottomNavigationDefault />
+		</Stack>
+	),
+	Breadcrumbs: <BreadcrumbsDefault />,
+	Button: (
+		<>
+			<ButtonDefault />
+			<Stack spacing={1} direction="row">
+				<ButtonVariants />
+			</Stack>
+			<Stack spacing={1} direction="row">
+				<ButtonColors />
+			</Stack>
+			<Stack spacing={1} direction="row">
+				<ButtonIcons />
+			</Stack>
+			{!isProduction && (
+				<Stack spacing={1}>
+					<ButtonPermutations_ />
+				</Stack>
+			)}
+		</>
+	),
+	ButtonGroup: <ButtonGroupDefault />,
+	Card: (
+		<>
+			<CardDefault />
+			<CardActions />
+			<CardHeader />
+		</>
+	),
+	Checkbox: (
+		<>
+			<CheckboxDefault />
+			<CheckboxChecked />
+			<CheckboxIndeterminate />
+		</>
+	),
+	Chip: (
+		<Stack spacing={1} direction="row">
+			<ChipDefault />
+			<ChipOutlined />
+			{!isProduction && <ChipDeletable_ />}
+		</Stack>
+	),
+	CircularProgress: <CircularProgressDefault />,
+	Dialog: <DialogDefault />,
+	Divider: (
+		<Stack spacing={1} alignSelf="stretch">
+			<DividerDefault />
+		</Stack>
+	),
+	Drawer: <DrawerDefault />,
+	Fab: <FabDefault />,
+	FormControl: <FormControlGroup />,
+	IconButton: (
+		<>
+			<IconButtonDefault />
+			{!isProduction && (
+				<Stack spacing={1} direction="row">
+					<IconButtonColors_ />
+				</Stack>
+			)}
+		</>
+	),
+	LinearProgress: (
+		<Stack spacing={1} alignSelf="stretch">
+			<LinearProgressDefault />
+		</Stack>
+	),
+	Link: (
+		<>
+			<LinkDefault />
+			{!isProduction && (
+				<Stack spacing={1} direction="row">
+					<LinkColors_ />
+				</Stack>
+			)}
+		</>
+	),
+	List: (
+		<Stack spacing={1} alignSelf="stretch">
+			<ListDefault />
+			<ListAvatar />
+			<ListSubheader />
+		</Stack>
+	),
+	Menu: <MenuDefault />,
+	...(isProduction ? {} : { MenuList: <MenuListDefault_ /> }),
+	MobileStepper: (
+		<Stack spacing={1} alignSelf="stretch">
+			<MobileStepperDefault />
+		</Stack>
+	),
+	NativeSelect: <NativeSelectDefault />,
+	Pagination: <PaginationDefault />,
+	Paper: <PaperDefault />,
+	Popover: <PopoverDefault />,
+	RadioGroup: <RadioGroupDefault />,
+	Rating: <RatingDefault />,
+	Select: (
+		<>
+			<SelectDefault />
+			<SelectIcon />
+			<SelectMultiple />
+		</>
+	),
+	Skeleton: (
+		<Stack spacing={1} alignSelf="stretch">
+			<SkeletonDefault />
+		</Stack>
+	),
+	Slider: <SliderDefault />,
+	Snackbar: <SnackbarDefault />,
+	SpeedDial: <SpeedDialDefault />,
+	Stepper: (
+		<Stack spacing={4} alignSelf="stretch">
+			<StepperDefault />
+			<StepperOptional />
+			<StepperClickable />
+		</Stack>
+	),
+	SwipeableDrawer: <SwipeableDrawerDefault />,
+	Switch: (
+		<>
+			<SwitchDefault />
+			<SwitchChecked />
+		</>
+	),
+	Table: (
+		<>
+			<TableDefault />
+			<TableFooter />
+		</>
+	),
+	Tabs: (
+		<>
+			<TabsDefault />
+			<TabsScrollable />
+		</>
+	),
+	TextField: (
+		<Stack spacing={1} direction="row">
+			<TextFieldDefault />
+			<TextFieldMultiline />
+			<TextFieldIcon />
+			<TextFieldError />
+			<TextFieldDisabled />
+		</Stack>
+	),
+	ToggleButton: <ToggleButtonDefault />,
+	Tooltip: <TooltipDefault />,
+	Typography: <TypographyDefault />,
+};
+
+// ----------------------------------------------------------------------------
+
 export default function Page() {
 	const colorScheme = useColorScheme();
+	const location = useLocation();
+	const isWideScreen = useIsWideScreen();
+
+	// Scroll to heading on page load only.
+	React.useEffect(function scrollToHash() {
+		if (window.location.hash) {
+			const id = window.location.hash.slice(1);
+			const element = document.getElementById(id);
+			element?.scrollIntoView({ block: "start" });
+		}
+	}, []);
+
+	const navigationItems = Object.keys(components).map((name) => {
+		const id = name.toLowerCase().replace(" ", "-");
+		return (
+			<NavigationList.Anchor
+				key={id}
+				label={name}
+				href={`#${id}`}
+				active={location.hash === `#${id}`}
+			/>
+		);
+	});
+
 	return (
-		<Root colorScheme={colorScheme}>
-			<Container
-				maxWidth="lg"
-				sx={{ p: 4, minBlockSize: "100dvb" }}
-				component="main"
-			>
-				<Typography variant="h4" component="h1">
-					StrataKit MUI theme
-				</Typography>
+		<Root colorScheme={colorScheme} style={{ display: "contents" }}>
+			<div className={styles.page}>
+				{isWideScreen && (
+					<aside className={styles.sidebar}>
+						<Typography
+							variant="body1"
+							component="h2"
+							sx={{ ml: 1, mb: 2, fontWeight: 500 }}
+						>
+							MUI components
+						</Typography>
+						<NavigationList.Root items={navigationItems} />
+					</aside>
+				)}
 
-				<Divider sx={{ mt: 2, mb: 2 }} />
+				<Container
+					maxWidth="lg"
+					component="main"
+					className={styles.main}
+					tabIndex={-1}
+					id={React.use(SkipLinkContext)?.id}
+				>
+					<Typography variant="h4" component="h1" className={styles.h1}>
+						StrataKit MUI theme
+					</Typography>
 
-				<Stack spacing={2} alignItems="start">
-					<ComponentExamples name="Accordion">
-						<Stack spacing={1} alignSelf="stretch">
-							<AccordionDefault />
-							<AccordionActions />
-						</Stack>
-					</ComponentExamples>
-
-					<ComponentExamples name="Alert">
-						<Stack spacing={1} alignSelf="stretch">
-							<AlertDefault />
-							<AlertTitle />
-						</Stack>
-					</ComponentExamples>
-
-					<ComponentExamples name="AppBar">
-						<Stack spacing={1} alignSelf="stretch">
-							<AppBarDefault />
-						</Stack>
-					</ComponentExamples>
-
-					<ComponentExamples name="Autocomplete">
-						<AutocompleteDefault />
-						<AutocompleteMultiple />
-					</ComponentExamples>
-
-					<ComponentExamples name="Avatar">
-						<AvatarDefault />
-					</ComponentExamples>
-
-					<ComponentExamples name="AvatarGroup">
-						<AvatarGroupDefault />
-					</ComponentExamples>
-
-					<ComponentExamples name="Backdrop">
-						<BackdropDefault />
-					</ComponentExamples>
-
-					<ComponentExamples name="Badge">
-						<BadgeDefault />
-					</ComponentExamples>
-
-					<ComponentExamples name="BottomNavigation">
-						<Stack spacing={1} alignSelf="stretch">
-							<BottomNavigationDefault />
-						</Stack>
-					</ComponentExamples>
-
-					<ComponentExamples name="Breadcrumbs">
-						<BreadcrumbsDefault />
-					</ComponentExamples>
-
-					<ComponentExamples name="Button">
-						<ButtonDefault />
-
-						<Stack spacing={1} direction="row">
-							<ButtonVariants />
-						</Stack>
-
-						<Stack spacing={1} direction="row">
-							<ButtonColors />
-						</Stack>
-
-						<Stack spacing={1} direction="row">
-							<ButtonIcons />
-						</Stack>
-
-						{!isProduction && (
-							<Stack spacing={1}>
-								<ButtonPermutations_ />
-							</Stack>
-						)}
-					</ComponentExamples>
-
-					<ComponentExamples name="ButtonGroup">
-						<ButtonGroupDefault />
-					</ComponentExamples>
-
-					<ComponentExamples name="Card">
-						<CardDefault />
-						<CardActions />
-						<CardHeader />
-					</ComponentExamples>
-
-					<ComponentExamples name="Checkbox">
-						<CheckboxDefault />
-						<CheckboxChecked />
-						<CheckboxIndeterminate />
-					</ComponentExamples>
-
-					<ComponentExamples name="Chip">
-						<Stack spacing={1} direction="row">
-							<ChipDefault />
-							<ChipOutlined />
-							{!isProduction && <ChipDeletable_ />}
-						</Stack>
-					</ComponentExamples>
-
-					<ComponentExamples name="CircularProgress">
-						<CircularProgressDefault />
-					</ComponentExamples>
-
-					<ComponentExamples name="Dialog">
-						<DialogDefault />
-					</ComponentExamples>
-
-					<ComponentExamples name="Divider">
-						<Stack spacing={1} alignSelf="stretch">
-							<DividerDefault />
-						</Stack>
-					</ComponentExamples>
-
-					<ComponentExamples name="Drawer">
-						<DrawerDefault />
-					</ComponentExamples>
-
-					<ComponentExamples name="Fab">
-						<FabDefault />
-					</ComponentExamples>
-
-					<ComponentExamples name="FormControl">
-						<FormControlGroup />
-					</ComponentExamples>
-
-					<ComponentExamples name="IconButton">
-						<IconButtonDefault />
-
-						{!isProduction && (
-							<Stack spacing={1} direction="row">
-								<IconButtonColors_ />
-							</Stack>
-						)}
-					</ComponentExamples>
-
-					<ComponentExamples name="LinearProgress">
-						<Stack spacing={1} alignSelf="stretch">
-							<LinearProgressDefault />
-						</Stack>
-					</ComponentExamples>
-
-					<ComponentExamples name="Link">
-						<LinkDefault />
-
-						{!isProduction && (
-							<Stack spacing={1} direction="row">
-								<LinkColors_ />
-							</Stack>
-						)}
-					</ComponentExamples>
-
-					<ComponentExamples name="List">
-						<Stack spacing={1} alignSelf="stretch">
-							<ListDefault />
-							<ListAvatar />
-							<ListSubheader />
-						</Stack>
-					</ComponentExamples>
-
-					<ComponentExamples name="Menu">
-						<MenuDefault />
-					</ComponentExamples>
-
-					{!isProduction && (
-						<ComponentExamples name="MenuList">
-							<MenuListDefault_ />
+					{Object.entries(components).map(([name, content]) => (
+						<ComponentExamples key={name} name={name}>
+							{content}
 						</ComponentExamples>
-					)}
-
-					<ComponentExamples name="MobileStepper">
-						<Stack spacing={1} alignSelf="stretch">
-							<MobileStepperDefault />
-						</Stack>
-					</ComponentExamples>
-
-					<ComponentExamples name="NativeSelect">
-						<NativeSelectDefault />
-					</ComponentExamples>
-
-					<ComponentExamples name="Pagination">
-						<PaginationDefault />
-					</ComponentExamples>
-
-					<ComponentExamples name="Paper">
-						<PaperDefault />
-					</ComponentExamples>
-
-					<ComponentExamples name="Popover">
-						<PopoverDefault />
-					</ComponentExamples>
-
-					<ComponentExamples name="RadioGroup">
-						<RadioGroupDefault />
-					</ComponentExamples>
-
-					<ComponentExamples name="Rating">
-						<RatingDefault />
-					</ComponentExamples>
-
-					<ComponentExamples name="Select">
-						<SelectDefault />
-						<SelectIcon />
-						<SelectMultiple />
-					</ComponentExamples>
-
-					<ComponentExamples name="Skeleton">
-						<Stack spacing={1} alignSelf="stretch">
-							<SkeletonDefault />
-						</Stack>
-					</ComponentExamples>
-
-					<ComponentExamples name="Slider">
-						<SliderDefault />
-					</ComponentExamples>
-
-					<ComponentExamples name="Snackbar">
-						<SnackbarDefault />
-					</ComponentExamples>
-
-					<ComponentExamples name="SpeedDial">
-						<SpeedDialDefault />
-					</ComponentExamples>
-
-					<ComponentExamples name="Stepper">
-						<Stack spacing={4} alignSelf="stretch">
-							<StepperDefault />
-							<StepperOptional />
-							<StepperClickable />
-						</Stack>
-					</ComponentExamples>
-
-					<ComponentExamples name="SwipeableDrawer">
-						<SwipeableDrawerDefault />
-					</ComponentExamples>
-
-					<ComponentExamples name="Switch">
-						<SwitchDefault />
-						<SwitchChecked />
-					</ComponentExamples>
-
-					<ComponentExamples name="Table">
-						<TableDefault />
-						<TableFooter />
-					</ComponentExamples>
-
-					<ComponentExamples name="Tabs">
-						<TabsDefault />
-						<TabsScrollable />
-					</ComponentExamples>
-
-					<ComponentExamples name="TextField">
-						<Stack spacing={1} direction="row">
-							<TextFieldDefault />
-							<TextFieldMultiline />
-							<TextFieldIcon />
-							<TextFieldError />
-							<TextFieldDisabled />
-						</Stack>
-					</ComponentExamples>
-
-					<ComponentExamples name="ToggleButton">
-						<ToggleButtonDefault />
-					</ComponentExamples>
-
-					<ComponentExamples name="Tooltip">
-						<TooltipDefault />
-					</ComponentExamples>
-
-					<ComponentExamples name="Typography">
-						<TypographyDefault />
-					</ComponentExamples>
-				</Stack>
-			</Container>
+					))}
+				</Container>
+			</div>
 		</Root>
 	);
 }
+
+// ----------------------------------------------------------------------------
 
 interface ComponentExamplesProps {
 	name: string;
@@ -393,15 +367,37 @@ interface ComponentExamplesProps {
 function ComponentExamples(props: ComponentExamplesProps) {
 	const { name } = props;
 	const id = name.toLowerCase().replace(" ", "-");
+	const isTarget = useLocation().hash === `#${id}`;
+
 	return (
-		<>
-			<Typography variant="h5" component="h2" id={id}>
-				<Link href={`#${id}`}>{name}</Link>
-			</Typography>
+		<div
+			className={styles.exampleContainer}
+			data-target={isTarget ? "true" : undefined}
+		>
+			<hgroup className={styles.exampleHeader}>
+				<Typography
+					variant="h5"
+					component="h2"
+					id={id}
+					className={styles.exampleTitle}
+					tabIndex={-1}
+				>
+					{name}
+				</Typography>
+				<IconButton
+					id={`${id}-permalink`}
+					aria-labelledby={`${id}-permalink ${id}`}
+					className={styles.examplePermalink}
+					href={`#${id}`}
+				>
+					<Icon href={svgLink} />
+					<span style={visuallyHidden}>Permalink</span>
+				</IconButton>
+			</hgroup>
 
-			{props.children}
-
-			<Divider sx={{ mt: 2, mb: 2, alignSelf: "stretch" }} />
-		</>
+			<Stack spacing={2} alignItems="start" className={styles.exampleContent}>
+				{props.children}
+			</Stack>
+		</div>
 	);
 }

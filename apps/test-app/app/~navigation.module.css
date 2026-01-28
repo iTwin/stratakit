@@ -1,0 +1,45 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+
+.layout {
+	display: flex;
+	block-size: 100%;
+}
+
+.skipLink {
+	position: fixed;
+	z-index: 1;
+
+	&:where(:not(:focus-within, :active)) {
+		clip-path: inset(50%) !important;
+		overflow: hidden !important;
+		white-space: nowrap !important;
+		block-size: 1px !important;
+		inline-size: 1px !important;
+	}
+}
+
+.homeLink {
+	margin-inline: calc(-1 * var(--stratakit-space-x1)); /* to counteract the ghost padding */
+}
+
+.appNav {
+	flex-shrink: 0;
+
+	position: sticky;
+	inset-block-start: 0;
+	block-size: 100dvb;
+	z-index: 1; /* To allow the toggle/expander to float above other content */
+}
+
+.muiLogo {
+	inline-size: 1.25rem; /* MUI logo does not have enough whitespace around it */
+	margin-inline: var(--stratakit-space-x05);
+	aspect-ratio: 1;
+}
+
+.mainContent {
+	flex: 1;
+}

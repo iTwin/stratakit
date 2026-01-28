@@ -80,7 +80,9 @@ import TableDefault from "examples/mui/Table.default.tsx";
 import TableFooter from "examples/mui/Table.footer.tsx";
 import TabsDefault from "examples/mui/Tabs.default.tsx";
 import TabsScrollable from "examples/mui/Tabs.scrollable.tsx";
+import TextFieldDisabled from "examples/mui/TextField._disabled.tsx";
 import TextFieldDefault from "examples/mui/TextField.default.tsx";
+import TextFieldError from "examples/mui/TextField.error.tsx";
 import TextFieldIcon from "examples/mui/TextField.icon.tsx";
 import TextFieldMultiline from "examples/mui/TextField.multiline.tsx";
 import ToggleButtonDefault from "examples/mui/ToggleButton.default.tsx";
@@ -280,6 +282,8 @@ const components: Record<string, React.ReactNode> = {
 			<TextFieldDefault />
 			<TextFieldMultiline />
 			<TextFieldIcon />
+			<TextFieldError />
+			<TextFieldDisabled />
 		</Stack>
 	),
 	ToggleButton: <ToggleButtonDefault />,

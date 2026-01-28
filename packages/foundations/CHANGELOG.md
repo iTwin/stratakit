@@ -2,8 +2,6 @@
 
 ## 0.4.6
 
-### Patch Changes
-
 - [#1188](https://github.com/iTwin/design-system/pull/1188): Fixed a race condition where stylesheets could be prematurely removed in cases where multiple components that use the same styles were conditionally rendered.
 
 ## 0.4.5

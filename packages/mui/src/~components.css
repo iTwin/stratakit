@@ -112,64 +112,70 @@
 		outline: 2px solid var(--stratakit-color-border-accent-strong);
 		outline-offset: -2px;
 	}
+
+	> input {
+		appearance: none;
+		opacity: 1;
+		aspect-ratio: 1;
+		inline-size: 1rem;
+		block-size: 1rem;
+		background-color: var(--stratakit-color-bg-neutral-base);
+		border: 1px solid var(--stratakit-color-border-shadow-base);
+		color: var(--stratakit-color-icon-neutral-emphasis);
+		position: relative;
+		--_check-symbol-mask-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 16 16"></svg>');
+
+		&:focus {
+			outline: none !important;
+		}
+
+		&::after {
+			content: "";
+			position: absolute;
+			inset: 0px;
+			background-color: currentColor;
+			mask-repeat: no-repeat;
+			mask-position: center;
+			mask-image: var(--_check-symbol-mask-image);
+		}
+
+		:where(.Mui-checked, .MuiCheckbox-indeterminate) & {
+			background-color: var(--stratakit-color-bg-accent-base);
+			border-color: var(--stratakit-color-border-shadow-strong);
+			color: var(--stratakit-color-icon-neutral-emphasis);
+		}
+
+		:where(.Mui-error) & {
+			background-color: var(--stratakit-color-bg-neutral-base);
+			border-color: var(--stratakit-color-border-critical-base);
+			color: var(--stratakit-color-icon-neutral-primary);
+		}
+
+		:where(.Mui-disabled) & {
+			background-color: var(--stratakit-color-bg-glow-on-surface-disabled);
+			border-color: var(--stratakit-color-border-glow-on-surface-disabled);
+			color: var(--stratakit-color-icon-neutral-disabled);
+		}
+	}
 }
 
-.MuiCheck-symbol {
-	aspect-ratio: 1 / 1;
-	inline-size: 1rem;
-	block-size: 1rem;
-	background-color: var(--stratakit-color-bg-neutral-base);
-	border: 1px solid var(--stratakit-color-border-shadow-base);
-	color: var(--stratakit-color-icon-neutral-emphasis);
-	position: relative;
-	--_check-symbol-mask-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 16 16"></svg>');
+.MuiCheckbox-root > input {
+	border-radius: var(--stratakit-mui-shape-borderRadius);
 
-	&::after {
-		content: "";
-		position: absolute;
-		inset: 0px;
-		background-color: currentColor;
-		mask-repeat: no-repeat;
-		mask-position: center;
-		mask-image: var(--_check-symbol-mask-image);
+	:where(.Mui-checked) & {
+		--_check-symbol-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 16"><path fill="currentColor" d="M11.73 5.47a.75.75 0 0 1 0 1.06l-4.4 4.4a.75.75 0 0 1-1.06 0l-2-2a.75.75 0 0 1 1.06-1.06L6.8 9.34l3.87-3.87a.75.75 0 0 1 1.06 0Z"/></svg>');
 	}
 
-	:where(.Mui-checked, .MuiCheckbox-indeterminate) & {
-		background-color: var(--stratakit-color-bg-accent-base);
-		border-color: var(--stratakit-color-border-shadow-strong);
-		color: var(--stratakit-color-icon-neutral-emphasis);
+	:where(.MuiCheckbox-indeterminate) & {
+		--_check-symbol-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 16"><path fill="currentColor" d="M4.25 8A.75.75 0 0 1 5 7.25h6.5a.75.75 0 0 1 0 1.5H5A.75.75 0 0 1 4.25 8Z"/></svg>');
 	}
+}
 
-	:where(.Mui-error) & {
-		background-color: var(--stratakit-color-bg-neutral-base);
-		border-color: var(--stratakit-color-border-critical-base);
-		color: var(--stratakit-color-icon-neutral-primary);
-	}
+.MuiRadio-root > input {
+	border-radius: 50%;
 
-	:where(.Mui-disabled) & {
-		background-color: var(--stratakit-color-bg-glow-on-surface-disabled);
-		border-color: var(--stratakit-color-border-glow-on-surface-disabled);
-		color: var(--stratakit-color-icon-neutral-disabled);
-	}
-
-	:where(.MuiCheckbox-root) & {
-		border-radius: var(--stratakit-mui-shape-borderRadius);
-
-		:where(.Mui-checked) & {
-			--_check-symbol-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 16"><path fill="currentColor" d="M11.73 5.47a.75.75 0 0 1 0 1.06l-4.4 4.4a.75.75 0 0 1-1.06 0l-2-2a.75.75 0 0 1 1.06-1.06L6.8 9.34l3.87-3.87a.75.75 0 0 1 1.06 0Z"/></svg>');
-		}
-
-		:where(.MuiCheckbox-indeterminate) & {
-			--_check-symbol-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 16"><path fill="currentColor" d="M4.25 8A.75.75 0 0 1 5 7.25h6.5a.75.75 0 0 1 0 1.5H5A.75.75 0 0 1 4.25 8Z"/></svg>');
-		}
-	}
-
-	:where(.MuiRadio-root) & {
-		border-radius: 50%;
-
-		:where(.Mui-checked) & {
-			--_check-symbol-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" ><circle cx="8" cy="8" r="4" /></svg>');
-		}
+	:where(.Mui-checked) & {
+		--_check-symbol-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" ><circle cx="8" cy="8" r="4" /></svg>');
 	}
 }
 

@@ -21,9 +21,6 @@ import {
 
 import type { ColorSystemOptions } from "@mui/material/styles";
 
-// Simple span element for checkbox & radio icons
-const CheckSymbol = () => <span className="MuiCheck-symbol" />;
-
 /**
  * Creates a StrataKit theme for MUI. Should be used with MUI's `ThemeProvider`.
  *
@@ -141,16 +138,16 @@ function createTheme() {
 			MuiCheckbox: {
 				defaultProps: {
 					disableRipple: true, // Checkbox doesn't inherit from ButtonBase
-					icon: <CheckSymbol />,
-					checkedIcon: <CheckSymbol />,
-					indeterminateIcon: <CheckSymbol />,
+					icon: <></>,
+					checkedIcon: <></>,
+					indeterminateIcon: <></>,
 				},
 			},
 			MuiRadio: {
 				defaultProps: {
 					disableRipple: true, // Radio doesn't inherit from ButtonBase
-					icon: <CheckSymbol />,
-					checkedIcon: <CheckSymbol />,
+					icon: <></>,
+					checkedIcon: <></>,
 				},
 			},
 			MuiInputLabel: {

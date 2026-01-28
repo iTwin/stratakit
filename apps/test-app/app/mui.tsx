@@ -73,6 +73,7 @@ import TableDefault from "examples/mui/Table.default.tsx";
 import TableFooter from "examples/mui/Table.footer.tsx";
 import TabsDefault from "examples/mui/Tabs.default.tsx";
 import TabsScrollable from "examples/mui/Tabs.scrollable.tsx";
+import TextFieldDisabled from "examples/mui/TextField._disabled.tsx";
 import TextFieldDefault from "examples/mui/TextField.default.tsx";
 import TextFieldError from "examples/mui/TextField.error.tsx";
 import TextFieldIcon from "examples/mui/TextField.icon.tsx";
@@ -363,6 +364,7 @@ export default function Page() {
 							<TextFieldMultiline />
 							<TextFieldIcon />
 							<TextFieldError />
+							<TextFieldDisabled />
 						</Stack>
 					</ComponentExamples>
 

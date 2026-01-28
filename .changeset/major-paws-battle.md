@@ -2,4 +2,4 @@
 "@stratakit/mui": patch
 ---
 
-Added disabled and error styling to input, label, and description.
+Added disabled and error styling to `TextField`, `InputLabel`, & `FormHelperText`.

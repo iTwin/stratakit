@@ -1,1 +1,0 @@
-import{j as e,R as r,c as i}from"./ExamplePreview.DZm5CQK7.js";import{u as l}from"./~utils.useInit.BxU5fp9r.js";import{f as o}from"./styles.internal.oMsq5KxP.js";const t=o((s,a)=>(l(),e.jsx(r.span,{...s,className:i("🥝VisuallyHidden",s.className),ref:a})));var f=t;export{f as V};

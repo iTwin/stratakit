@@ -78,7 +78,6 @@ export function AppNavigationRail(props: AppNavigationRailProps) {
 	const showNavigation =
 		useLocalStorage("🥝:show-navigation") !== "false" && isWideScreen;
 
-	const [expanded, setExpanded] = React.useState(false);
 	const mainContentId = React.useId();
 	const deferredMainContent = React.useDeferredValue(mainContent, null); // Defer rendering main content
 
@@ -89,11 +88,7 @@ export function AppNavigationRail(props: AppNavigationRailProps) {
 
 	return (
 		<div className={styles.layout}>
-			<NavigationRail.Root
-				className={styles.appNav}
-				expanded={expanded}
-				setExpanded={setExpanded}
-			>
+			<NavigationRail.Root className={styles.appNav}>
 				<NavigationRail.Header>
 					<Button
 						className={styles.skipLink}
@@ -128,8 +123,6 @@ export function AppNavigationRail(props: AppNavigationRailProps) {
 													render={
 														<RegularLink to={item.startingPath || item.path} />
 													}
-													className={styles.appNavLink}
-													data-expanded={expanded}
 												/>
 											</NavigationRail.ListItem>
 										);

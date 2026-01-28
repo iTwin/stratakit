@@ -33,7 +33,7 @@ export default defineConfig({
 		/* https://playwright.dev/docs/emulation#color-scheme-and-media */
 		colorScheme: "dark",
 
-		/* Set localStorage.🥝:right-sidebar to false to hide the right sidebar during tests. See https://playwright.dev/docs/api/class-testoptions#test-options-storage-state */
+		/* Set localStorage.🥝:show-navigation to false to hide the sidebar during tests. See https://playwright.dev/docs/api/class-testoptions#test-options-storage-state */
 		storageState: {
 			cookies: [],
 			origins: [
@@ -41,7 +41,7 @@ export default defineConfig({
 					origin: "http://localhost:1800",
 					localStorage: [
 						{
-							name: "🥝:right-sidebar",
+							name: "🥝:show-navigation",
 							value: "false",
 						},
 					],

@@ -15,6 +15,7 @@ import {
 } from "react-router";
 import { Root } from "@stratakit/foundations";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { AppNavigationRail } from "./~navigation.tsx";
 import { ColorSchemeProvider, useColorScheme } from "./~utils.tsx";
 
 import type { LinksFunction } from "react-router";
@@ -82,19 +83,19 @@ export default function App() {
 	return (
 		<QueryClientProvider client={queryClient}>
 			{(() => {
-				// `Root` from `@stratakit/foundations` only supports `density="dense"` at the moment,
-				// and should therefore not be used around MUI components (which use a looser density).
-				if (location.pathname.startsWith("/mui")) {
-					return <Outlet />;
-				}
+				// MUI theme uses a looser density.
+				const density = location.pathname.startsWith("/mui")
+					? undefined
+					: "dense";
 
 				return (
 					<Root
 						colorScheme={colorScheme}
-						density="dense"
+						density={density}
 						synchronizeColorScheme={false}
+						style={{ display: "contents" }}
 					>
-						<Outlet />
+						<AppNavigationRail mainContent={<Outlet />} />
 					</Root>
 				);
 			})()}

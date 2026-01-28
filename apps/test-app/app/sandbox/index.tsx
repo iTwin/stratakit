@@ -9,7 +9,6 @@ import { useSearchParams } from "react-router";
 import {
 	Anchor,
 	Button,
-	Divider,
 	Field,
 	IconButton,
 	Select,
@@ -22,7 +21,6 @@ import { Icon } from "@stratakit/foundations";
 import {
 	DropdownMenu,
 	unstable_ErrorRegion as ErrorRegion,
-	unstable_NavigationRail as NavigationRail,
 	Tabs,
 	unstable_Toolbar as Toolbar,
 	Tree,
@@ -41,7 +39,6 @@ import { toUpperCamelCase } from "~/~utils.tsx";
 import type { UseQueryResult } from "@tanstack/react-query";
 import type { MetaFunction } from "react-router";
 
-import bentleyIcon from "@stratakit/icons/bentley-systems.svg";
 import cursorIcon from "@stratakit/icons/cursor.svg";
 import cursorSelectIcon from "@stratakit/icons/cursor-select.svg";
 import dismissIcon from "@stratakit/icons/dismiss.svg";
@@ -98,7 +95,6 @@ export const meta: MetaFunction = () => {
 export default function Page() {
 	return (
 		<div className={styles.appLayout}>
-			<PlatformBar />
 			<Header />
 			<PanelGroup
 				direction="horizontal"
@@ -133,40 +129,6 @@ function Header() {
 				{title}
 			</Text>
 		</header>
-	);
-}
-
-function PlatformBar() {
-	return (
-		<NavigationRail.Root className={styles.platformBar}>
-			<NavigationRail.Header>
-				<Icon href={`${bentleyIcon}#icon-large`} size="large" />
-				<NavigationRail.ToggleButton />
-			</NavigationRail.Header>
-
-			<NavigationRail.Content>
-				<NavigationRail.List>
-					<NavigationRail.ListItem>
-						<NavigationRail.Button icon={placeholderIcon} label="Item #1" />
-					</NavigationRail.ListItem>
-					<NavigationRail.ListItem>
-						<NavigationRail.Button icon={placeholderIcon} label="Item #2" />
-					</NavigationRail.ListItem>
-					<NavigationRail.ListItem>
-						<NavigationRail.Button icon={placeholderIcon} label="Item #3" />
-					</NavigationRail.ListItem>
-				</NavigationRail.List>
-
-				<NavigationRail.Footer>
-					<Divider />
-					<NavigationRail.List>
-						<NavigationRail.ListItem>
-							<NavigationRail.Button icon={placeholderIcon} label="Item #4" />
-						</NavigationRail.ListItem>
-					</NavigationRail.List>
-				</NavigationRail.Footer>
-			</NavigationRail.Content>
-		</NavigationRail.Root>
 	);
 }
 

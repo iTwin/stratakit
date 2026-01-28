@@ -9,29 +9,57 @@
 	container-type: inline-size;
 }
 
+.secondaryNavHeader {
+	min-block-size: 2.5rem;
+	display: flex;
+	align-items: center;
+}
+
 .main {
 	padding: var(--stratakit-space-x4);
 	flex: 999;
 	min-inline-size: 50%; /* never less than half the screen */
 }
 
-.sidebar {
-	flex-grow: 1;
-	position: sticky;
-	inset-block-start: -1px; /* hide the border off screen */
-	inset-inline-end: 0;
+.h2,
+.h3 {
+	padding-inline-start: var(--stratakit-space-x2);
+	font-weight: 500;
+}
+
+.h3 {
+	text-transform: capitalize;
+}
+
+.secondaryNav {
 	align-self: flex-start;
+	min-inline-size: min(100vi, 256px);
+	max-inline-size: 100%;
+	padding: var(--stratakit-space-x2);
+
+	overflow: auto;
+	overflow-inline: clip;
+	scrollbar-gutter: stable;
+
+	background-color: var(--stratakit-color-bg-page-depth);
+	border-block-start: 1px solid var(--stratakit-color-border-neutral-muted);
+
+	display: flex;
+	flex-direction: column;
+	row-gap: var(--stratakit-space-x2);
+	flex-grow: 1;
 
 	@container (inline-size >= 542px) {
+		order: 0;
 		block-size: 100dvb; /* TODO: move this to page and update visual test selectors. */
+		border-inline-end: 1px solid var(--stratakit-color-border-neutral-muted);
+
+		position: sticky;
+		inset-block-start: -1px; /* hide the border off screen */
+		inset-inline-start: 0;
 	}
 }
 
-.pushRight {
-	margin-inline-start: auto;
-}
-
-.actions {
-	display: flex;
-	gap: var(--stratakit-space-x1);
+.navList {
+	margin-block-end: var(--stratakit-space-x4);
 }

@@ -5,6 +5,7 @@
 
 @import "./~tokens.css" layer(stratakit);
 @import "./~components.css" layer(stratakit);
+@import "./~forced-colors.css" layer(stratakit);
 
 @layer mui {
 	/**

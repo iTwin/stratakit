@@ -4,7 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 
 import * as React from "react";
-import { Link, useLocation } from "react-router";
+import { useHref, useLocation } from "react-router";
 import { Button, Divider, IconButton } from "@stratakit/bricks";
 import { Icon } from "@stratakit/foundations";
 import { unstable_NavigationRail as NavigationRail } from "@stratakit/structures";
@@ -47,7 +47,6 @@ const navItems = [
 			path: "/docs",
 			label: "Documentation",
 			icon: `${svgDocumentation}#icon-large`,
-			external: true,
 		},
 	].filter(Boolean),
 ] as {
@@ -55,7 +54,6 @@ const navItems = [
 	label: string;
 	icon: React.JSX.Element | string;
 	startingPath?: string;
-	external?: boolean;
 }[][];
 
 // ----------------------------------------------------------------------------
@@ -82,10 +80,11 @@ export function AppNavigationRail(props: AppNavigationRailProps) {
 
 	const [expanded, setExpanded] = React.useState(false);
 	const mainContentId = React.useId();
+	const deferredMainContent = React.useDeferredValue(mainContent, null); // Defer rendering main content
 
 	// Hide navigation rail if localStorage flag is set
 	if (!showNavigation) {
-		return <>{mainContent}</>;
+		return <>{deferredMainContent}</>;
 	}
 
 	return (
@@ -105,7 +104,7 @@ export function AppNavigationRail(props: AppNavigationRailProps) {
 					<IconButton
 						label="Home"
 						icon={<Icon href={`${strataKitLogo}#icon`} size="large" />}
-						render={<Link to="/" />}
+						render={<RegularLink to="/" />}
 						variant="ghost"
 						className={styles.homeLink}
 					/>
@@ -120,19 +119,15 @@ export function AppNavigationRail(props: AppNavigationRailProps) {
 									{group.map((item) => {
 										const isActive = location.pathname.startsWith(item.path);
 
-										const anchor = item.external ? (
-											<a href={item.path} />
-										) : (
-											<Link to={item.startingPath || item.path} />
-										);
-
 										return (
 											<NavigationRail.ListItem key={item.path}>
 												<NavigationRail.Anchor
 													icon={item.icon}
 													label={item.label}
 													active={isActive}
-													render={anchor}
+													render={
+														<RegularLink to={item.startingPath || item.path} />
+													}
 													className={styles.appNavLink}
 													data-expanded={expanded}
 												/>
@@ -161,7 +156,7 @@ export function AppNavigationRail(props: AppNavigationRailProps) {
 				<SkipLinkContext value={{ id: mainContentId }}>
 					{/* Prevent focus outline from getting clipped */}
 					<style>{`[id=${mainContentId}] { outline-offset: -4px; }`}</style>{" "}
-					{mainContent}
+					{deferredMainContent}
 				</SkipLinkContext>
 			</div>
 		</div>
@@ -185,4 +180,16 @@ function MuiLogo() {
 			}
 		/>
 	);
+}
+
+// ----------------------------------------------------------------------------
+
+interface RegularLinkProps
+	extends Omit<React.ComponentPropsWithoutRef<"a">, "href"> {
+	to: string;
+}
+
+/** Wrapper over `<a>` that resolves URLs using react-router.  */
+function RegularLink({ to, ...props }: RegularLinkProps) {
+	return <a href={useHref(to)} {...props} />;
 }

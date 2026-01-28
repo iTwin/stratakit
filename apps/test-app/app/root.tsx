@@ -15,13 +15,14 @@ import {
 } from "react-router";
 import { Root } from "@stratakit/foundations";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { AppNavigationRail } from "./~navigation.tsx";
+import { AppNavigationRail, appNavId } from "./~navigation.tsx";
 import { ColorSchemeProvider, useColorScheme } from "./~utils.tsx";
 
 import type { LinksFunction } from "react-router";
 
 import interVariable from "./fonts/InterVariable.woff2?url";
 import interVariableItalic from "./fonts/InterVariable-Italic.woff2?url";
+import globalStyles from "./root.css?url";
 
 const queryClient = new QueryClient({
 	defaultOptions: { queries: { experimental_prefetchInRender: true } }, // https://tanstack.com/query/latest/docs/framework/react/guides/suspense#using-usequerypromise-and-reactuse-experimental
@@ -35,6 +36,8 @@ export const links: LinksFunction = () => {
 			type: "image/svg+xml",
 		},
 		{ rel: "manifest", href: "/manifest.json", crossOrigin: "use-credentials" },
+		{ rel: "stylesheet", href: globalStyles },
+		{ rel: "expect", href: `#${appNavId}`, blocking: "render" }, // Block rendering until nav is ready. Helps avoid flicker when navigating.
 	];
 };
 

@@ -1,0 +1,11 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+
+/* This file contains global styles shared across the test app. */
+
+/* Enable cross-document view transitions for hard navigations. */
+@view-transition {
+	navigation: auto;
+}

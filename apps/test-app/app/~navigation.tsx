@@ -60,6 +60,9 @@ const navItems = [
 
 export const SkipLinkContext = React.createContext<{ id: string } | null>(null);
 
+/** ID for the nav element, useful for cross-document view transitions. */
+export const appNavId = "app-navigation-rail";
+
 // ----------------------------------------------------------------------------
 
 interface AppNavigationRailProps {
@@ -88,7 +91,7 @@ export function AppNavigationRail(props: AppNavigationRailProps) {
 
 	return (
 		<div className={styles.layout}>
-			<NavigationRail.Root className={styles.appNav}>
+			<NavigationRail.Root className={styles.appNav} id={appNavId}>
 				<NavigationRail.Header>
 					<Button
 						className={styles.skipLink}

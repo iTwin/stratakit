@@ -32,6 +32,8 @@
 	inset-block-start: 0;
 	block-size: 100dvb;
 	z-index: 1; /* To allow the toggle/expander to float above other content */
+
+	view-transition-name: app-nav;
 }
 
 .muiLogo {

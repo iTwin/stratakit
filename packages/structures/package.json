@@ -125,7 +125,7 @@
 	"dependencies": {
 		"@ariakit/react": "^0.4.20",
 		"@stratakit/bricks": "^0.5.4",
-		"@stratakit/foundations": "^0.4.5",
+		"@stratakit/foundations": "^0.4.6",
 		"classnames": "^2.5.1",
 		"react-compiler-runtime": "^1.0.0",
 		"zustand": "^5.0.9"

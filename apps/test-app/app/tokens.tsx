@@ -3,22 +3,25 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import { Divider, Text } from "@stratakit/bricks";
+import * as React from "react";
+import Container from "@mui/material/Container";
+import { Text } from "@stratakit/bricks";
 import {
 	unstable_AccordionItem as AccordionItem,
 	Table,
 } from "@stratakit/structures";
 import { parseTokens } from "internal/lightningcss-visitors.js";
 import { useColorScheme } from "~/~utils.tsx";
+import { SkipLinkContext } from "./~navigation.tsx";
 
-import type * as React from "react";
-import type { LinksFunction, MetaFunction } from "react-router";
+import type { MetaFunction } from "react-router";
 
 import rawDarkTokens from "internal/theme-dark.json";
 import rawLightTokens from "internal/theme-light.json";
 import rawTypographyTokens from "internal/typography.json";
-import globalStyles from "./tokens.css?url";
 import styles from "./tokens.module.css";
+
+// ----------------------------------------------------------------------------
 
 const lightColorTokens = parseTokens(rawLightTokens.color);
 const lightShadowTokens = parseTokens(rawLightTokens.shadow);
@@ -42,9 +45,7 @@ export const meta: MetaFunction = () => {
 	return [{ title: "StrataKit tokens" }];
 };
 
-export const links: LinksFunction = () => [
-	{ rel: "stylesheet", href: globalStyles },
-];
+// ----------------------------------------------------------------------------
 
 export default function Page() {
 	const colorScheme = useColorScheme();
@@ -55,14 +56,18 @@ export default function Page() {
 		colorScheme === "dark" ? darkShadowTokens : lightShadowTokens;
 
 	return (
-		<>
-			<Text variant="headline-md" render={<h1 />}>
+		<Container
+			maxWidth="md"
+			component="main"
+			className={styles.main}
+			tabIndex={-1}
+			id={React.use(SkipLinkContext)?.id}
+		>
+			<Text variant="headline-md" render={<h1 />} className={styles.h1}>
 				Tokens
 			</Text>
 
-			<Divider />
-
-			<Text variant="body-lg" render={<h2 />}>
+			<Text variant="body-lg" render={<h2 />} className={styles.h2}>
 				Colors
 			</Text>
 
@@ -93,7 +98,7 @@ export default function Page() {
 				);
 			})}
 
-			<Text variant="body-lg" render={<h2 />}>
+			<Text variant="body-lg" render={<h2 />} className={styles.h2}>
 				Shadows
 			</Text>
 
@@ -110,7 +115,7 @@ export default function Page() {
 				</AccordionItem.Content>
 			</AccordionItem.Root>
 
-			<Text variant="body-lg" render={<h2 />}>
+			<Text variant="body-lg" render={<h2 />} className={styles.h2}>
 				Typography
 			</Text>
 
@@ -126,7 +131,7 @@ export default function Page() {
 					<TypographyVariants variants={typographyVariants} />
 				</AccordionItem.Content>
 			</AccordionItem.Root>
-		</>
+		</Container>
 	);
 }
 

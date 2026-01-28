@@ -8,10 +8,10 @@
 	block-size: 100dvb;
 	display: grid;
 	grid-template-areas:
-		"platformBar header"
-		"platformBar content";
+		"header"
+		"content";
 	grid-template-rows: auto 1fr;
-	grid-template-columns: auto 1fr;
+	grid-template-columns: 1fr;
 }
 
 .header {
@@ -25,10 +25,6 @@
 	align-items: center;
 	gap: var(--stratakit-space-x3);
 	padding-inline: var(--stratakit-space-x3);
-}
-
-.platformBar {
-	grid-area: platformBar;
 }
 
 .content {

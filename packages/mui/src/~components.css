@@ -153,6 +153,20 @@
 			mask: var(--_octagon-outline) no-repeat center;
 			background-color: var(--stratakit-color-border-glow-strong-default);
 		}
+
+		@media (forced-colors: active) {
+			forced-color-adjust: none;
+			background-color: Mark;
+			color: MarkText;
+		}
+	}
+
+	&:where(.Mui-disabled) {
+		color: var(--stratakit-color-text-neutral-disabled);
+
+		@media (forced-colors: active) {
+			color: GrayText;
+		}
 	}
 }
 
@@ -164,6 +178,10 @@
 
 	&:where(.Mui-disabled) {
 		color: var(--stratakit-color-text-neutral-disabled);
+
+		@media (forced-colors: active) {
+			color: GrayText;
+		}
 	}
 }
 
@@ -214,6 +232,10 @@
 	&:where(.Mui-disabled) {
 		border-color: var(--stratakit-color-border-glow-on-surface-disabled);
 		--🥝Icon-color: var(--stratakit-color-icon-neutral-disabled);
+
+		@media (forced-colors: active) {
+			border-color: GrayText;
+		}
 	}
 
 	:where(fieldset) {
@@ -254,6 +276,12 @@
 	&:where(.MuiInputAdornment-positionEnd) {
 		margin-inline-start: var(--stratakit-space-x1);
 		margin-inline-end: var(--stratakit-space-x2);
+	}
+
+	:where(.Mui-disabled) & {
+		@media (forced-colors: active) {
+			color: GrayText;
+		}
 	}
 }
 

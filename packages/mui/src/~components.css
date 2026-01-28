@@ -122,7 +122,7 @@
 	border: 1px solid var(--stratakit-color-border-shadow-base);
 	color: var(--stratakit-color-icon-neutral-emphasis);
 	position: relative;
-	--check-symbol-mask-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 16 16"></svg>');
+	--_check-symbol-mask-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 16 16"></svg>');
 
 	&::after {
 		content: "";
@@ -131,7 +131,7 @@
 		background-color: currentColor;
 		mask-repeat: no-repeat;
 		mask-position: center;
-		mask-image: var(--check-symbol-mask-image);
+		mask-image: var(--_check-symbol-mask-image);
 	}
 
 	:where(.Mui-checked, .MuiCheckbox-indeterminate) & {
@@ -156,11 +156,11 @@
 		border-radius: var(--stratakit-mui-shape-borderRadius);
 
 		:where(.Mui-checked) & {
-			--check-symbol-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 16"><path fill="currentColor" d="M11.73 5.47a.75.75 0 0 1 0 1.06l-4.4 4.4a.75.75 0 0 1-1.06 0l-2-2a.75.75 0 0 1 1.06-1.06L6.8 9.34l3.87-3.87a.75.75 0 0 1 1.06 0Z"/></svg>');
+			--_check-symbol-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 16"><path fill="currentColor" d="M11.73 5.47a.75.75 0 0 1 0 1.06l-4.4 4.4a.75.75 0 0 1-1.06 0l-2-2a.75.75 0 0 1 1.06-1.06L6.8 9.34l3.87-3.87a.75.75 0 0 1 1.06 0Z"/></svg>');
 		}
 
 		:where(.MuiCheckbox-indeterminate) & {
-			--check-symbol-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 16"><path fill="currentColor" d="M4.25 8A.75.75 0 0 1 5 7.25h6.5a.75.75 0 0 1 0 1.5H5A.75.75 0 0 1 4.25 8Z"/></svg>');
+			--_check-symbol-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 16"><path fill="currentColor" d="M4.25 8A.75.75 0 0 1 5 7.25h6.5a.75.75 0 0 1 0 1.5H5A.75.75 0 0 1 4.25 8Z"/></svg>');
 		}
 	}
 
@@ -168,7 +168,7 @@
 		border-radius: 50%;
 
 		:where(.Mui-checked) & {
-			--check-symbol-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" ><circle cx="8" cy="8" r="4" /></svg>');
+			--_check-symbol-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" ><circle cx="8" cy="8" r="4" /></svg>');
 		}
 	}
 }

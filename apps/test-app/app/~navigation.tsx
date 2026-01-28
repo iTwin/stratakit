@@ -83,6 +83,7 @@ export function AppNavigationRail(props: AppNavigationRailProps) {
 
 	const mainContentId = React.useId();
 	const deferredMainContent = React.useDeferredValue(mainContent, null); // Defer rendering main content
+	const [activePath, setActivePath] = React.useState(location.pathname); // For optimistic updates
 
 	// Hide navigation rail if localStorage flag is set
 	if (!showNavigation) {
@@ -115,17 +116,21 @@ export function AppNavigationRail(props: AppNavigationRailProps) {
 							<React.Fragment key={groupIndex}>
 								<NavigationRail.List>
 									{group.map((item) => {
-										const isActive = location.pathname.startsWith(item.path);
-
 										return (
 											<NavigationRail.ListItem key={item.path}>
 												<NavigationRail.Anchor
 													icon={item.icon}
 													label={item.label}
-													active={isActive}
+													active={activePath.startsWith(item.path)}
 													render={
 														<RegularLink to={item.startingPath || item.path} />
 													}
+													onClick={() => {
+														React.startTransition(() => {
+															// Optimistically update active item for instant feedback before navigation completes.
+															setActivePath(item.path);
+														});
+													}}
 												/>
 											</NavigationRail.ListItem>
 										);

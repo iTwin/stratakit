@@ -97,8 +97,7 @@
 	padding: var(--stratakit-space-x4);
 }
 
-.MuiCheckbox-root,
-.MuiRadio-root {
+:is(.MuiCheckbox-root, .MuiRadio-root) {
 	--_hover-background-color: var(--stratakit-mui-palette-primary-main);
 
 	:where(.Mui-error) & {
@@ -120,8 +119,7 @@
 	}
 }
 
-.🥝MuiCheckbox-input,
-.🥝MuiRadio-input {
+:is(.🥝MuiCheckbox-input, .🥝MuiRadio-input) {
 	appearance: none;
 	opacity: 1;
 	aspect-ratio: 1;

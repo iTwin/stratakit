@@ -98,14 +98,14 @@
 }
 
 :is(.MuiCheckbox-root, .MuiRadio-root) {
-	--_hover-background-color: var(--stratakit-color-bg-mono-transparent);
+	--_hover-background-color: var(--stratakit-color-bg-glow-on-surface-neutral-hover);
 
 	&:where(.Mui-checked, .MuiCheckbox-indeterminate) {
-		--_hover-background-color: var(--stratakit-color-bg-accent-transparent);
+		--_hover-background-color: var(--stratakit-color-bg-glow-on-surface-accent-hover);
 	}
 
 	:where(.Mui-error) & {
-		--_hover-background-color: var(--stratakit-color-bg-critical-transparent);
+		--_hover-background-color: var(--stratakit-color-bg-glow-on-surface-critical-hover);
 	}
 
 	@media (any-hover: hover) {

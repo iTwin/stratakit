@@ -99,10 +99,16 @@
 
 .MuiCheckbox-root,
 .MuiRadio-root {
+	--_hover-background-color: var(--stratakit-mui-palette-primary-main);
+
+	:where(.Mui-error) & {
+		--_hover-background-color: var(--stratakit-mui-palette-error-main);
+	}
+
 	@media (any-hover: hover) {
 		&:where(:not(.Mui-disabled)):hover {
 			background-color: oklch(
-				from var(--stratakit-mui-palette-primary-main) l c h /
+				from var(--_hover-background-color) l c h /
 				calc(var(--stratakit-mui-palette-action-hoverOpacity))
 			);
 		}

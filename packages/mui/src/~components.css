@@ -113,11 +113,6 @@
 			background-color: var(--_hover-background-color);
 		}
 	}
-
-	&:where(.Mui-focusVisible) {
-		outline: 2px solid var(--stratakit-color-border-accent-strong);
-		outline-offset: -2px;
-	}
 }
 
 :is(.🥝MuiCheckbox-input, .🥝MuiRadio-input) {
@@ -133,10 +128,6 @@
 	color: var(--stratakit-color-icon-neutral-emphasis);
 	position: relative;
 	--_check-symbol-mask-image: var(--✨unchecked-svg);
-
-	&:focus {
-		outline: none !important;
-	}
 
 	&::after {
 		content: "";

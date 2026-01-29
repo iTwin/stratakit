@@ -98,18 +98,19 @@
 }
 
 :is(.MuiCheckbox-root, .MuiRadio-root) {
-	--_hover-background-color: var(--stratakit-mui-palette-primary-main);
+	--_hover-background-color: var(--stratakit-color-bg-mono-transparent);
+
+	&:where(.Mui-checked, .MuiCheckbox-indeterminate) {
+		--_hover-background-color: var(--stratakit-color-bg-accent-transparent);
+	}
 
 	:where(.Mui-error) & {
-		--_hover-background-color: var(--stratakit-mui-palette-error-main);
+		--_hover-background-color: var(--stratakit-color-bg-critical-transparent);
 	}
 
 	@media (any-hover: hover) {
 		&:where(:not(.Mui-disabled)):hover {
-			background-color: oklch(
-				from var(--_hover-background-color) l c h /
-				calc(var(--stratakit-mui-palette-action-hoverOpacity))
-			);
+			background-color: var(--_hover-background-color);
 		}
 	}
 

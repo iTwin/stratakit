@@ -3,7 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-:is(.🥝MuiCheckbox-input, .🥝MuiRadio-input) {
+:is(.MuiCheckbox-root, .MuiRadio-root) > input {
 	border-color: CanvasText;
 
 	:where(.Mui-checked, .MuiCheckbox-indeterminate) & {

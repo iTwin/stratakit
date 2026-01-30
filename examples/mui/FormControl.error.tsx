@@ -12,7 +12,7 @@ import FormLabel from "@mui/material/FormLabel";
 
 export default () => {
 	return (
-		<FormControl component="fieldset" variant="standard" error>
+		<FormControl component="fieldset" error>
 			<FormLabel component="legend">Privacy preferences</FormLabel>
 			<FormGroup>
 				<FormControlLabel control={<Checkbox />} label="Allow cookies" />

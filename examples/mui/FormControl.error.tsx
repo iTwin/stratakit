@@ -3,16 +3,19 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
+import * as React from "react";
 import Checkbox from "@mui/material/Checkbox";
 import FormControl from "@mui/material/FormControl";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormGroup from "@mui/material/FormGroup";
 import FormHelperText from "@mui/material/FormHelperText";
 import FormLabel from "@mui/material/FormLabel";
+import visuallyHidden from "@mui/utils/visuallyHidden";
 
 export default () => {
+	const errorId = React.useId();
 	return (
-		<FormControl component="fieldset" error>
+		<FormControl component="fieldset" error aria-describedby={errorId}>
 			<FormLabel component="legend">Privacy preferences</FormLabel>
 			<FormGroup>
 				<FormControlLabel control={<Checkbox />} label="Allow cookies" />
@@ -25,7 +28,8 @@ export default () => {
 					label="Allow location access"
 				/>
 			</FormGroup>
-			<FormHelperText>
+			<FormHelperText id={errorId}>
+				<span style={visuallyHidden}>Error:</span>
 				You must accept these settings to continue.
 			</FormHelperText>
 		</FormControl>

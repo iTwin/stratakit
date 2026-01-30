@@ -113,73 +113,73 @@
 			background-color: var(--_hover-background-color);
 		}
 	}
+
+	> input {
+		--✨unchecked-svg: url('data:image/svg+xml;utf8,<svg viewBox="0 0 16 16"></svg>');
+
+		appearance: none;
+		opacity: 1;
+		aspect-ratio: 1;
+		inline-size: 1rem;
+		block-size: 1rem;
+		background-color: var(--stratakit-color-bg-neutral-base);
+		border: 1px solid var(--stratakit-color-border-shadow-base);
+		color: var(--stratakit-color-icon-neutral-emphasis);
+		position: relative;
+		--_check-symbol-mask-image: var(--✨unchecked-svg);
+
+		&::after {
+			content: "";
+			position: absolute;
+			inset: 0px;
+			background-color: currentColor;
+			mask-repeat: no-repeat;
+			mask-position: center;
+			mask-image: var(--_check-symbol-mask-image);
+		}
+
+		:where(.Mui-checked, .MuiCheckbox-indeterminate) & {
+			background-color: var(--stratakit-color-bg-accent-base);
+			border-color: var(--stratakit-color-border-shadow-strong);
+			color: var(--stratakit-color-icon-neutral-emphasis);
+		}
+
+		:where(.Mui-error) & {
+			background-color: var(--stratakit-color-bg-neutral-base);
+			border-color: var(--stratakit-color-border-critical-base);
+			color: var(--stratakit-color-icon-neutral-primary);
+		}
+
+		:where(.Mui-disabled) & {
+			background-color: var(--stratakit-color-bg-glow-on-surface-disabled);
+			border-color: var(--stratakit-color-border-glow-on-surface-disabled);
+			color: var(--stratakit-color-icon-neutral-disabled);
+		}
+	}
 }
 
-:is(.🥝MuiCheckbox-input, .🥝MuiRadio-input) {
-	--✨unchecked-svg: url('data:image/svg+xml;utf8,<svg viewBox="0 0 16 16"></svg>');
+.MuiCheckbox-root > input {
+	--✨checked-svg: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 16"><path fill="currentColor" d="M11.73 5.47a.75.75 0 0 1 0 1.06l-4.4 4.4a.75.75 0 0 1-1.06 0l-2-2a.75.75 0 0 1 1.06-1.06L6.8 9.34l3.87-3.87a.75.75 0 0 1 1.06 0Z"/></svg>');
+	--✨indeterminate-svg: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 16"><path fill="currentColor" d="M4.25 8A.75.75 0 0 1 5 7.25h6.5a.75.75 0 0 1 0 1.5H5A.75.75 0 0 1 4.25 8Z"/></svg>');
 
-	appearance: none;
-	opacity: 1;
-	aspect-ratio: 1;
-	inline-size: 1rem;
-	block-size: 1rem;
-	background-color: var(--stratakit-color-bg-neutral-base);
-	border: 1px solid var(--stratakit-color-border-shadow-base);
-	color: var(--stratakit-color-icon-neutral-emphasis);
-	position: relative;
-	--_check-symbol-mask-image: var(--✨unchecked-svg);
+	border-radius: var(--stratakit-mui-shape-borderRadius);
 
-	&::after {
-		content: "";
-		position: absolute;
-		inset: 0px;
-		background-color: currentColor;
-		mask-repeat: no-repeat;
-		mask-position: center;
-		mask-image: var(--_check-symbol-mask-image);
+	:where(.Mui-checked) & {
+		--_check-symbol-mask-image: var(--✨checked-svg);
 	}
 
-	:where(.Mui-checked, .MuiCheckbox-indeterminate) & {
-		background-color: var(--stratakit-color-bg-accent-base);
-		border-color: var(--stratakit-color-border-shadow-strong);
-		color: var(--stratakit-color-icon-neutral-emphasis);
+	:where(.MuiCheckbox-indeterminate) & {
+		--_check-symbol-mask-image: var(--✨indeterminate-svg);
 	}
+}
 
-	:where(.Mui-error) & {
-		background-color: var(--stratakit-color-bg-neutral-base);
-		border-color: var(--stratakit-color-border-critical-base);
-		color: var(--stratakit-color-icon-neutral-primary);
-	}
+.MuiRadio-root > input {
+	--✨checked-svg: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" ><circle cx="8" cy="8" r="4" /></svg>');
 
-	:where(.Mui-disabled) & {
-		background-color: var(--stratakit-color-bg-glow-on-surface-disabled);
-		border-color: var(--stratakit-color-border-glow-on-surface-disabled);
-		color: var(--stratakit-color-icon-neutral-disabled);
-	}
+	border-radius: 50%;
 
-	&:where(.🥝MuiCheckbox-input) {
-		--✨checked-svg: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 16"><path fill="currentColor" d="M11.73 5.47a.75.75 0 0 1 0 1.06l-4.4 4.4a.75.75 0 0 1-1.06 0l-2-2a.75.75 0 0 1 1.06-1.06L6.8 9.34l3.87-3.87a.75.75 0 0 1 1.06 0Z"/></svg>');
-		--✨indeterminate-svg: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 16"><path fill="currentColor" d="M4.25 8A.75.75 0 0 1 5 7.25h6.5a.75.75 0 0 1 0 1.5H5A.75.75 0 0 1 4.25 8Z"/></svg>');
-
-		border-radius: var(--stratakit-mui-shape-borderRadius);
-
-		:where(.Mui-checked) & {
-			--_check-symbol-mask-image: var(--✨checked-svg);
-		}
-
-		:where(.MuiCheckbox-indeterminate) & {
-			--_check-symbol-mask-image: var(--✨indeterminate-svg);
-		}
-	}
-
-	&:where(.🥝MuiRadio-input) {
-		--✨checked-svg: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" ><circle cx="8" cy="8" r="4" /></svg>');
-
-		border-radius: 50%;
-
-		:where(.Mui-checked) & {
-			--_check-symbol-mask-image: var(--✨checked-svg);
-		}
+	:where(.Mui-checked) & {
+		--_check-symbol-mask-image: var(--✨checked-svg);
 	}
 }
 

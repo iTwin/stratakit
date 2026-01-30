@@ -141,11 +141,6 @@ function createTheme() {
 					icon: <></>,
 					checkedIcon: <></>,
 					indeterminateIcon: <></>,
-					slotProps: {
-						input: {
-							className: "🥝MuiCheckbox-input",
-						},
-					},
 				},
 			},
 			MuiRadio: {
@@ -153,11 +148,6 @@ function createTheme() {
 					disableRipple: true, // Radio doesn't inherit from ButtonBase
 					icon: <></>,
 					checkedIcon: <></>,
-					slotProps: {
-						input: {
-							className: "🥝MuiRadio-input",
-						},
-					},
 				},
 			},
 			MuiInputLabel: {

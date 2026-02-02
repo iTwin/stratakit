@@ -1,5 +1,5 @@
 ---
-title: Introduction To StrataKit
+title: Introduction to StrataKit
 description: An overview of our design system
 ---
 
@@ -10,16 +10,16 @@ Drawing its name from _strata_ (the vertical layers in rock), **StrataKit** is o
 
 ## Tokens
 
-**StrataKit’s** design tokens (aka "variables") were built from the ground up, with accessibility in mind. Colors are defined using the [Oklab color space](https://en.wikipedia.org/wiki/Oklab_color_space) for its wide gamut and programmatic composability in CSS. The typographic scale is optimized for readability in dense and complex interfaces. [Inter](https://rsms.me/inter/) is our principle font, chosen for its configurability via multiple OpenType features.
+**StrataKit’s** design tokens (aka "variables") were built from the ground up, with accessibility in mind. Colors are defined using the [Oklab color space](https://en.wikipedia.org/wiki/Oklab_color_space) for its wide gamut and programmatic composability in CSS. The typographic scale is optimized for readability in dense and complex interfaces. [Inter](https://rsms.me/inter/) is **StrataKit’s** principle font, chosen for its configurability via multiple OpenType features.
 
 ## Icons
 
-We have an extensive collection of meticulously crafted icons, available as a [standalone package](https://www.npmjs.com/package/@stratakit/icons). Each icon is available as two designs, optimized for different sizes, making **over 1000 icons** in total. For consistency, every icon is formed from just four key shapes and strictly adheres to a common stroke, grid, and directionality. 
+**StrataKit** has an extensive collection of meticulously crafted icons, available as a [standalone package](https://www.npmjs.com/package/@stratakit/icons). Each icon is available as two designs, optimized for different sizes, making **over 1000 icons** in total. For consistency, every icon is formed from just four key shapes and strictly adheres to a common stroke, grid, and directionality. 
 
 ## Components
 
-Elemental **StrataKit** components come from the open source **Material UI** (MUI) library and our custom MUI theme is optimized for accessibility. More complex and specialized components are custom made, incorporating the same **Tokens** API for consistency. This site exemplifies how to correctly implement the entire component catalogue.
+Elemental **StrataKit** components come from the open source **Material UI** (MUI) library and **StrataKit’s** custom MUI theme is optimized for accessibility. More complex and specialized components are custom made, incorporating the same **Tokens** API for consistency. This site exemplifies how to correctly implement the entire component catalogue.
 
 ## Patterns
 
-When making interfaces used in construction and infrastructure design, some specific—and sometimes highly complex—patterns emerge. We document these patterns so that multiple teams can implement them according to their individual use cases. This site details how to calibrate the pattern using the **Token**, **Icon**, and **Component** libraries offered.
+When making interfaces used in construction and infrastructure design, some specific—and sometimes highly complex—patterns emerge. **StrataKit** documents these patterns so that multiple teams can implement them according to their individual use cases. This site details how to calibrate the pattern using the **Token**, **Icon**, and **Component** libraries offered.

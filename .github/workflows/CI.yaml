@@ -118,7 +118,7 @@ jobs:
     needs: install
     runs-on: ubuntu-latest
     container:
-      image: mcr.microsoft.com/playwright:v1.56.1-noble
+      image: mcr.microsoft.com/playwright:v1.58.1-noble
     strategy:
       fail-fast: false
       matrix:
@@ -148,7 +148,7 @@ jobs:
     needs: install
     runs-on: ubuntu-latest
     container:
-      image: mcr.microsoft.com/playwright:v1.56.1-noble
+      image: mcr.microsoft.com/playwright:v1.58.1-noble
 
     steps:
       - uses: actions/checkout@v6

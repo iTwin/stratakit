@@ -62,6 +62,7 @@
 		"@stratakit/mui": "workspace:*",
 		"@stratakit/structures": "workspace:*",
 		"astro": "^5.17.1",
+		"examples": "workspace:*",
 		"react": "catalog:",
 		"react-dom": "catalog:",
 		"sharp": "^0.34.5"

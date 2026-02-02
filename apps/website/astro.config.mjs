@@ -184,7 +184,7 @@ function vitePluginFixAstroSvg() {
 		enforce: "pre",
 		async resolveId(source, importer, options) {
 			if (!source.endsWith(".svg")) return;
-			if (!importer?.endsWith(".jsx") && !importer?.endsWith(".tsx")) return;
+			if (!/\.[jt]sx?$/.test(importer ?? "")) return;
 			const resolved = await this.resolve(`${source}?url`, importer, options);
 			return resolved?.id;
 		},

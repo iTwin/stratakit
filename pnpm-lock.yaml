@@ -350,9 +350,6 @@ importers:
         specifier: ^1.0.0
         version: 1.0.0(react@19.2.4)
     devDependencies:
-      "@stratakit/bricks":
-        specifier: workspace:*
-        version: link:../bricks
       "@types/node":
         specifier: "catalog:"
         version: 22.19.7

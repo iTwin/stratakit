@@ -12,7 +12,7 @@ To clone and build the repo locally, you'll need [Git](https://git-scm.com), [No
 
 1. [Clone the repository](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository). You can do this from the command line or using the Github Desktop app.
 
-2. Go to the directory where you cloned the repo. e.g. `cd design-system`.
+2. Go to the directory where you cloned the repo. e.g. `cd stratakit`.
 
 3. Run `pnpm install` from that directory.
 
@@ -22,7 +22,7 @@ To clone and build the repo locally, you'll need [Git](https://git-scm.com), [No
 
 This repo includes a [devcontainer](https://containers.dev/) configuration that compatible IDEs can use to automatically set up your development environment. To use this locally, you'll need Docker or an equivalent container runtime installed on your machine.
 
-Alternatively, you can get started without installing anything locally by creating a [GitHub Codespace](https://docs.github.com/en/codespaces/overview), which uses the same devcontainer configuration but runs entirely in the cloud: [Open repository in Codespace](https://codespaces.new/iTwin/design-system).
+Alternatively, you can get started without installing anything locally by creating a [GitHub Codespace](https://docs.github.com/en/codespaces/overview), which uses the same devcontainer configuration but runs entirely in the cloud: [Open repository in Codespace](https://codespaces.new/iTwin/stratakit).
 
 ---
 

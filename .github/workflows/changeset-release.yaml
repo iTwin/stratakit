@@ -10,7 +10,7 @@ concurrency: ${{ github.workflow }}-${{ github.ref }}
 jobs:
   release:
     name: Release
-    if: github.repository == 'iTwin/design-system'
+    if: github.repository == 'iTwin/stratakit'
     runs-on: ubuntu-latest
 
     steps:

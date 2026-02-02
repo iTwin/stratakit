@@ -229,7 +229,7 @@ const TableBody = forwardRef<"div", TableBodyProps>((props, forwardedRef) => {
 	return (
 		<Role.div
 			render={render}
-			role={undefined} // Intentionally not using "rowgroup" https://github.com/iTwin/design-system/pull/243#discussion_r1947045668
+			role={undefined} // Intentionally not using "rowgroup" https://github.com/iTwin/stratakit/pull/243#discussion_r1947045668
 			{...props}
 			ref={forwardedRef}
 			className={cx("🥝TableBody", props.className)}

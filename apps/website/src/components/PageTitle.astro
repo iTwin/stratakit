@@ -6,10 +6,10 @@ const { entry } = Astro.locals.starlightRoute;
 const status = entry.data.status;
 const links = entry.data.links || {};
 
-const demoBase = "https://itwin.github.io/design-system/";
+const demoBase = "https://itwin.github.io/stratakit/";
 const demoUrl = links.demo ? demoBase + links.demo : null;
 
-const githubBase = "https://github.com/iTwin/design-system/blob/main/";
+const githubBase = "https://github.com/iTwin/stratakit/blob/main/";
 const githubUrl = links.github?.startsWith("https://")
 	? links.github
 	: links.github

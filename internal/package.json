@@ -7,9 +7,9 @@
 		"./*": "./*"
 	},
 	"dependencies": {
-		"@babel/core": "^7.28.5",
+		"@babel/core": "^7.29.0",
 		"babel-plugin-react-compiler": "~1.0.0",
-		"colorjs.io": "^0.6.0",
+		"colorjs.io": "^0.6.1",
 		"lightningcss": "catalog:"
 	}
 }

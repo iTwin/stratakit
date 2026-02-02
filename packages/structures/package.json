@@ -128,7 +128,7 @@
 		"@stratakit/foundations": "^0.4.6",
 		"classnames": "^2.5.1",
 		"react-compiler-runtime": "^1.0.0",
-		"zustand": "^5.0.9"
+		"zustand": "^5.0.11"
 	},
 	"devDependencies": {
 		"@stratakit/foundations": "workspace:*",

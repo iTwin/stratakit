@@ -5,8 +5,7 @@ description: An overview of our design system
 
 **StrataKit** is a unique design system. It supports interfaces for completing complex tasks and solving big problems. A collaboration between researchers, interaction designers, engineers, and accessibility experts, **StrataKit** is developed at **Bentley Systems** to serve the master builders of its diverse construction and infrastructure product range.
 
-From _strata_, the vertical layers formed in rock, **StrataKit** is organized into independent but related categories. 
-**Tokens** and **Icons** are foundational, used in defining individual components which, in turn, combine to make larger **Patterns**. This documentation site is considered part of **StrataKit** itself, since it exemplifies the proper use of the assets made available.
+Drawing its name from _strata_ (the vertical layers in rock), **StrataKit** is organized into independent but related categories. **Tokens** and **Icons** are foundational, used in defining individual **Components** which, in turn, combine to make larger **Patterns**. This documentation site is considered part of **StrataKit** itself, since it exemplifies the proper use of the assets made available.
 
 
 ## Tokens

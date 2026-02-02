@@ -11,7 +11,7 @@ From _strata_, the vertical layers formed in rock, **StrataKit** is organized in
 
 ## Tokens
 
-**StrataKit’s** tokens were built from the ground up, with accessibility in mind. Colors are defined using the [Oklab color space](https://en.wikipedia.org/wiki/Oklab_color_space) for its wide gamut and programmatic composability in CSS. The typographic scale is optimized for readability in dense and complex interfaces. [Inter](https://rsms.me/inter/) is our principle font, chosen for its configurability via multiple OpenType features.
+**StrataKit’s** design tokens (aka "variables") were built from the ground up, with accessibility in mind. Colors are defined using the [Oklab color space](https://en.wikipedia.org/wiki/Oklab_color_space) for its wide gamut and programmatic composability in CSS. The typographic scale is optimized for readability in dense and complex interfaces. [Inter](https://rsms.me/inter/) is our principle font, chosen for its configurability via multiple OpenType features.
 
 ## Icons
 

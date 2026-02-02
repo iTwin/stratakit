@@ -95,15 +95,20 @@ const LABEL_MAP = {
 };
 
 /**
- * @import {Context} from "@actions/github/lib/context"
+ * @import {context} from "@actions/github"
  * @import {GitHub} from "@actions/github/lib/utils"
- * @param {{ context: Context, github: InstanceType<GitHub> }} args
+ * @param {{ context: typeof context, github: InstanceType<GitHub> }} args
  */
 export default async function prLabels({ context, github }) {
 	const repo = context.repo.repo;
 	const owner = context.repo.owner;
 	const pr = context.payload.pull_request;
-	const prNumber = pr.number;
+	const prNumber = pr?.number;
+
+	if (!prNumber) {
+		console.log("No pull request found in the context.");
+		return;
+	}
 
 	const labelsToAdd = new Set();
 

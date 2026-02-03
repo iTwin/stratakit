@@ -1,8 +1,5 @@
 ---
 import StarlightPage from "@astrojs/starlight/components/StarlightPage.astro";
-
-const baseParts = import.meta.env.BASE_URL.replace("/", "").split("/");
-const baseFolder = baseParts.length === 2 ? baseParts[0] : "";
 ---
 
 <StarlightPage
@@ -25,9 +22,7 @@ const baseFolder = baseParts.length === 2 ? baseParts[0] : "";
 				},
 				{
 					text: "See demos",
-					link: import.meta.env.DEV
-						? "http://localhost:1800"
-						: `https://itwin.github.io/design-system/${baseFolder}`,
+					link: import.meta.env.DEV ? "http://localhost:1800" : `../`,
 					icon: "external",
 					variant: "minimal",
 				},

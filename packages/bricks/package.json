@@ -183,7 +183,6 @@
 		"react-compiler-runtime": "^1.0.0"
 	},
 	"devDependencies": {
-		"@stratakit/foundations": "workspace:*",
 		"@types/node": "catalog:",
 		"@types/react": "catalog:",
 		"@types/react-dom": "catalog:",

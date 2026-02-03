@@ -1,20 +1,52 @@
 ---
 import { getCollection } from "astro:content";
 import StarlightPage from "@astrojs/starlight/components/StarlightPage.astro";
+import AnchorHeading from "@astrojs/starlight/components/AnchorHeading.astro";
+import { Badge } from "@astrojs/starlight/components";
 
 const examples = await getCollection("examples");
+
+// Group examples by package name
+const examplesByPackage: Record<string, typeof examples> = {};
+for (const example of examples) {
+	if (example.id.includes("_")) continue; // skip examples with underscores (convention for "private" examples)
+
+	const packageName = example.data.packageName;
+	examplesByPackage[packageName] ??= [];
+	examplesByPackage[packageName].push(example);
+}
+
+const packageNames = Object.keys(examplesByPackage).toSorted((a, b) => {
+	// mui comes first
+	if (a === "mui") return -1;
+	if (b === "mui") return 1;
+
+	// bricks comes last
+	if (a === "bricks") return 1;
+	if (b === "bricks") return -1;
+
+	return a.localeCompare(b);
+});
 ---
 
 <StarlightPage frontmatter={{ title: "Examples" }}>
-	<ul>
-		{
-			examples.map((example) => (
-				<li>
-					<a href={`${import.meta.env.BASE_URL}/examples/${example.id}`}>
-						{example.data.displayName}
-					</a>
-				</li>
-			))
-		}
-	</ul>
+	{
+		packageNames.map((packageName) => (
+			<>
+				<AnchorHeading level="2" id={`stratakit-${packageName}`}>
+					@stratakit/{packageName}{" "}
+					{packageName === "bricks" && <Badge variant="danger" text="Maintenance mode" />}
+				</AnchorHeading>
+				<ul>
+					{examplesByPackage[packageName].map((example) => (
+						<li>
+							<a href={`${import.meta.env.BASE_URL}/examples/${example.id}`}>
+								{example.data.displayName}
+							</a>
+						</li>
+					))}
+				</ul>
+			</>
+		))
+	}
 </StarlightPage>

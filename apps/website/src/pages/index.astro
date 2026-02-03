@@ -1,0 +1,35 @@
+---
+import StarlightPage from "@astrojs/starlight/components/StarlightPage.astro";
+
+const baseParts = import.meta.env.BASE_URL.replace("/", "").split("/");
+const baseFolder = baseParts.length === 2 ? baseParts[0] : "";
+---
+
+<StarlightPage
+	frontmatter={{
+		title: "StrataKit",
+		description: "Docs for the StrataKit design system.",
+		template: "splash",
+		editUrl: false,
+		lastUpdated: false,
+		head: [{ tag: "title", content: "StrataKit Docs" }],
+		hero: {
+			tagline: "The design system for building complex interfaces.",
+			actions: [
+				{
+					text: "Getting started",
+					link: import.meta.env.DEV ? "docs/getting-started" : "getting-started",
+					icon: "right-arrow",
+				},
+				{
+					text: "See demos",
+					link: import.meta.env.DEV
+						? "http://localhost:1800"
+						: `https://itwin.github.io/design-system/${baseFolder}`,
+					icon: "external",
+					variant: "minimal",
+				},
+			],
+		},
+	}}
+/>

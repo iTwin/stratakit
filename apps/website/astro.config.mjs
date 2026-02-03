@@ -66,7 +66,6 @@ export default defineConfig({
 				starlightLiveExamples(),
 				starlightPrefixLinks(),
 			],
-			routeMiddleware: "./src/route-middleware.ts",
 		}),
 		react(),
 	],

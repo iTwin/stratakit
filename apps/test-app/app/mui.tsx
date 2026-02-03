@@ -143,20 +143,10 @@ const components: Record<string, React.ReactNode> = {
 	Button: (
 		<>
 			<ButtonDefault />
-			<Stack spacing={1} direction="row">
-				<ButtonVariants />
-			</Stack>
-			<Stack spacing={1} direction="row">
-				<ButtonColors />
-			</Stack>
-			<Stack spacing={1} direction="row">
-				<ButtonIcons />
-			</Stack>
-			{!isProduction && (
-				<Stack spacing={1}>
-					<ButtonPermutations_ />
-				</Stack>
-			)}
+			<ButtonVariants />
+			<ButtonColors />
+			<ButtonIcons />
+			{!isProduction && <ButtonPermutations_ />}
 		</>
 	),
 	ButtonGroup: <ButtonGroupDefault />,

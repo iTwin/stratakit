@@ -14,7 +14,7 @@ function rewriteAbsoluteLink(link: string) {
 
 	const baseUrl = import.meta.env.DEV
 		? new URL("http://localhost:1800")
-		: new URL(baseFolder, appHref);
+		: new URL(baseFolder, `${appHref}/`);
 
 	const pathName = link.replace(appHref, "");
 	return new URL(pathName, baseUrl).href;

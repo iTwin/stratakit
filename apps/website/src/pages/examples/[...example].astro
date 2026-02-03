@@ -11,6 +11,9 @@ export async function getStaticPaths() {
 }
 
 const { example } = Astro.props;
+
+const { packageName } = example.data;
+const exampleName = example.id.split(`${packageName}/`).at(-1);
 ---
 
 <html lang="en">
@@ -26,7 +29,11 @@ const { example } = Astro.props;
 		</script>
 	</head>
 	<body>
-		<ExamplePreview exampleId={example.id} client:only="react" />
+		<ExamplePreview
+			exampleName={exampleName}
+			packageName={example.data.packageName}
+			client:only="react"
+		/>
 	</body>
 </html>
 

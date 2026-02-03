@@ -10,8 +10,10 @@
 		"@mui/material": "catalog:",
 		"@mui/utils": "catalog:",
 		"@stratakit/bricks": "workspace:*",
+		"@stratakit/foundations": "workspace:*",
 		"@stratakit/icons": "workspace:*",
-		"@stratakit/mui": "workspace:*"
+		"@stratakit/mui": "workspace:*",
+		"@stratakit/structures": "workspace:*"
 	},
 	"devDependencies": {
 		"@types/react": "catalog:"

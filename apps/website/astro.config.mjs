@@ -36,7 +36,7 @@ export default defineConfig({
 				{
 					icon: "github",
 					label: "GitHub",
-					href: "https://github.com/iTwin/design-system",
+					href: "https://github.com/iTwin/stratakit",
 				},
 			],
 			sidebar: [
@@ -53,8 +53,7 @@ export default defineConfig({
 				{ label: "Contributing", slug: "contributing" },
 			],
 			editLink: {
-				baseUrl:
-					"https://github.com/iTwin/design-system/edit/main/apps/website/",
+				baseUrl: "https://github.com/iTwin/stratakit/edit/main/apps/website/",
 			},
 			lastUpdated: true,
 			customCss: ["./src/styles/index.css"],

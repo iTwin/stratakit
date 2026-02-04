@@ -108,6 +108,9 @@ function createTheme() {
 						clearIndicator: {
 							tabIndex: 0, // make clear indicator focusable
 						},
+						chip: {
+							tabIndex: 0, // make chip focusable
+						},
 					},
 				},
 			},

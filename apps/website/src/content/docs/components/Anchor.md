@@ -1,11 +1,6 @@
 ---
 title: Anchor
 description: The Anchor creates a styled hyperlink between pages and sections within pages.
-status: stable
-links:
-  demo: tests/anchor
-  github: packages/bricks/src/Anchor.tsx
-  figma: https://www.figma.com/design/VcGw3L2IIlboxNlOdsKdai/%F0%9F%A5%9D-Kiwi-Component-Library?node-id=12080-1966&t=FX2fZYZ93vfliX17-4
 ---
 
 ## Use cases

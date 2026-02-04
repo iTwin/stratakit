@@ -7,12 +7,12 @@ description: Icon buttons are compact buttons used for toolbar and supplementary
 
 Make sure the **IconButton** is suitable for your use case. There may be other, more appropriate components available.
 
-| Use case                                    | [Button](/components/button) | [IconButton](/components/iconbutton) |
-| ------------------------------------------- | ---------------------------- | ------------------------------------ |
-| Call-to-action                              | ✅                           | ❌                                   |
-| Commit/submit (modal, workflow, form)       | ✅                           | ❌                                   |
-| Inside a [**Toolbar**](/components/toolbar) | ❌                           | ✅                                   |
-| Table cell (inline action)                  | ❌                           | ✅                                   |
+| Use case                                                                                                         | [Button](/components/button) | [IconButton](/components/iconbutton) |
+| ---------------------------------------------------------------------------------------------------------------- | ---------------------------- | ------------------------------------ |
+| Call-to-action                                                                                                   | ✅                           | ❌                                   |
+| Commit/submit (modal, workflow, form)                                                                            | ✅                           | ❌                                   |
+| Inside a [toolbar](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/toolbar_role) | ❌                           | ✅                                   |
+| Table cell (inline action)                                                                                       | ❌                           | ✅                                   |
 
 ## Usage
 
@@ -30,7 +30,7 @@ Make sure to provide an accessible description in the form of a visually hidden 
 
 ## ✅ Do
 
-- Use in [**Toolbars**](/components/toolbar).
+- Use in [toolbars](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/toolbar_role).
 - Use it only when a stand-alone icon effectively communicates the action.
 
 ## 🚫 Don’t

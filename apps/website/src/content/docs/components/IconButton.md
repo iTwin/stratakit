@@ -26,21 +26,6 @@ Use a **Badge** component to indicate the functionality behind the **IconButton*
 
 Make sure to provide an accessible description in the form of a visually hidden text explaining the significance of the badge’s presence. In this case, the value is _“You have 4 unread notifications”_.
 
-## Configurations
-
-### Variants
-
-- **Solid:** Default button styling. If you’re not sure what tone to use, use this one.
-- **Outline:** Reduce the visual weight. Use for secondary actions or to unclutter the UI.
-- **Ghost:** Minimal visual weight. Useful in tight spaces where other variants would create excess boxes. Commonly used for actionable icons such as in table cells.
-
-::example{src="IconButton.variants"}
-
-| Use case                                | Solid | Outline | Ghost |
-| --------------------------------------- | ----- | ------- | ----- |
-| Table cell (inline action)              | ❌    | ❌      | ✅    |
-| Inside a [Toolbar](/components/toolbar) | ✅    | ✅      | ✅    |
-
 ## ✅ Do
 
 - Use in [**Toolbars**](/components/toolbar).

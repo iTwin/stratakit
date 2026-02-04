@@ -138,6 +138,16 @@ function createTheme() {
 			MuiCheckbox: {
 				defaultProps: {
 					disableRipple: true, // Checkbox doesn't inherit from ButtonBase
+					icon: <></>,
+					checkedIcon: <></>,
+					indeterminateIcon: <></>,
+				},
+			},
+			MuiRadio: {
+				defaultProps: {
+					disableRipple: true, // Radio doesn't inherit from ButtonBase
+					icon: <></>,
+					checkedIcon: <></>,
 				},
 			},
 			MuiInputLabel: {

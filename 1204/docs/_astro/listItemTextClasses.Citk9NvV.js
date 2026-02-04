@@ -1,0 +1,1 @@
+import{g as e,a as s}from"./DefaultPropsProvider.DUZoGs1n.js";function a(t){return e("MuiListItemText",t)}const l=s("MuiListItemText",["root","multiline","dense","inset","primary","secondary"]);export{a as g,l};

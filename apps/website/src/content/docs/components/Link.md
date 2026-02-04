@@ -18,15 +18,6 @@ Make sure the **Link** is suitable for your use case. There may be other, more a
 
 The **Link** inherits the standard HTML `<a>` element’s API and supports all the same attributes. As with a standard `<a>`, omitting the `href` will make the element a [placeholder link](https://www.scottohara.me/note/2019/07/17/placeholder-link.html).
 
-## Configurations
-
-### Tones
-
-- **Neutral:** The default tone. If unsure, use this.
-- **Accent:** Reserved for calls-to-action and other links of unusual significance
-
-::example{src="Link.tones"}
-
 ## ✅ Do
 
 - Use **Link** to link between pages and page sections (fragments).

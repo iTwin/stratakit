@@ -1,0 +1,32 @@
+---
+import StarlightPage from "@astrojs/starlight/components/StarlightPage.astro";
+---
+
+<StarlightPage
+	frontmatter={{
+		title: "StrataKit",
+		description: "Docs for the StrataKit design system.",
+		template: "splash",
+		editUrl: false,
+		lastUpdated: false,
+		head: [{ tag: "title", content: "StrataKit Docs" }],
+		hero: {
+			tagline: "The design system for complex interfaces.",
+			actions: [
+				{
+					text: "Getting started",
+					link: import.meta.env.DEV
+						? `${import.meta.env.BASE_URL}/getting-started`
+						: "getting-started",
+					icon: "right-arrow",
+				},
+				{
+					text: "See demos",
+					link: import.meta.env.DEV ? "http://localhost:1800" : `../`,
+					icon: "external",
+					variant: "minimal",
+				},
+			],
+		},
+	}}
+/>

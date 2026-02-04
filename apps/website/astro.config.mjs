@@ -40,6 +40,7 @@ export default defineConfig({
 				},
 			],
 			sidebar: [
+				{ label: "Introduction", slug: "introduction" },
 				{ label: "Getting started", slug: "getting-started" },
 				{ label: "Guides", autogenerate: { directory: "guides" } },
 				{

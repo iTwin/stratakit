@@ -17,23 +17,9 @@ Make sure the **Switch** is suitable for your use case. There may be other, more
 
 ## Usage
 
-::example{src="Switch.default"}
+::example{src="mui/Switch.default"}
 
-```jsx
-<Field.Root>
-	<Field.Control render={<Switch checked={checkedState} />} />
-	<Field.Label>Dark mode</Field.Label>
-</Field.Root>
-```
-
-The **Switch** must have an accessible label. Use the [**Field**](/components/field) components to automatically associate the label to the **Switch**. Otherwise, you’ll have to make the association manually, using `htmlFor`:
-
-```jsx
-const switchId = React.useId();
-
-<Switch id={switchId} />
-<Label htmlFor={switchId}>Dark mode</Label>
-```
+The **Switch** must have an accessible label. Use the [**FormControlLabel**](https://mui.com/material-ui/api/form-control-label/) component to automatically associate the label to the **Switch**.
 
 ## ✅ Do
 

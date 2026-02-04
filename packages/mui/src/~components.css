@@ -187,7 +187,12 @@
 	row-gap: var(--stratakit-space-x1);
 }
 
+.MuiFormControlLabel-label {
+	@apply --typography("body-md");
+}
+
 .MuiFormHelperText-root {
+	inline-size: fit-content;
 	margin: 0;
 	@apply --typography("body-sm");
 

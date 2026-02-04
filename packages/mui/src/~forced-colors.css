@@ -31,3 +31,9 @@
 		}
 	}
 }
+
+.MuiFormHelperText-root:where(.Mui-error) {
+	forced-color-adjust: none;
+	background-color: Mark;
+	color: MarkText;
+}

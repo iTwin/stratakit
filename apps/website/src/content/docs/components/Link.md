@@ -28,4 +28,3 @@ The **Link** inherits the standard HTML `<a>` element’s API and supports all t
 
 - Don't use **Link** for non-navigational (linking) actions. Use a component like [**Button**](/components/button), [**IconButton**](/components/iconbutton), or [**Switch**](/components/switch) (depending on your use case).
 - Don't include **Links** with the same label but pointing to different locations. For “read more” links, you can include clarifying text with the [**VisuallyHidden**](/components/visuallyhidden) component. That is, two links appearing as “read more” can become “read more about x” and "read more about y" in screen reader output.
-- Don't use the `disabled` property. This is not supported on `<a>`. To “disable” a Link, you can remove the `href` or replace the component with plain text.

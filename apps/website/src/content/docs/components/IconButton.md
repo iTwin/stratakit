@@ -16,26 +16,7 @@ Make sure the **IconButton** is suitable for your use case. There may be other, 
 
 ## Usage
 
-### Toolbar
-
-Organize **IconButtons** into [**Toolbars**](/components/toolbar). This grouping mechanism is both screen reader and keyboard accessible.
-
-::example{src="IconButton.toolbar"}
-
-```jsx
-<Toolbar.Group variant="solid">
-	<Toolbar.Item
-		render={<IconButton label="Bold" icon={`${boldIcon}#icon-large`} variant="ghost" active />}
-	/>
-	<Toolbar.Item
-		render={<IconButton label="Italic" icon={`${italicIcon}#icon-large`} variant="ghost" />}
-	/>
-</Toolbar.Group>
-```
-
-:::note[The `active` prop]
-In this case, the bold button is considered _active_. Indicate active **IconButtons** by applying the `active` prop’ (Boolean). This automatically applies the `aria-pressed="true"` attribution for screen reader accessibility.
-:::
+::example{src="mui/IconButton.default"}
 
 ### The dot
 

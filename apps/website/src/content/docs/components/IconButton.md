@@ -18,17 +18,13 @@ Make sure the **IconButton** is suitable for your use case. There may be other, 
 
 ::example{src="mui/IconButton.default"}
 
-### The dot
+### Badge
 
-Include the `dot` prop’ to indicate the functionality behind the **IconButton** is in need of attention. For example, an **IconButton** for notifications can indicate _unread_ notifications.
+Use a **Badge** component to indicate the functionality behind the **IconButton** is in need of attention. For example, an **IconButton** for notifications can indicate _unread_ notifications.
 
-::example{src="IconButton.dot"}
+::example{src="mui/Badge.default"}
 
-```jsx
-<IconButton label="Notifications" dot="You have unread notifications" icon={notificationsIcon} />
-```
-
-Word the `dot` value carefully, since it supplies an accessible description explaining the significance of the dot’s presence. In this case, the value is _“You have unread notifications”_.
+Make sure to provide an accessible description in the form of a visually hidden text explaining the significance of the badge’s presence. In this case, the value is _“You have 4 unread notifications”_.
 
 ## Configurations
 

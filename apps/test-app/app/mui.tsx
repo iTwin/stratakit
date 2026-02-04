@@ -25,10 +25,10 @@ import BackdropDefault from "examples/mui/Backdrop.default.tsx";
 import BadgeDefault from "examples/mui/Badge.default.tsx";
 import BottomNavigationDefault from "examples/mui/BottomNavigation.default.tsx";
 import BreadcrumbsDefault from "examples/mui/Breadcrumbs.default.tsx";
+import ButtonIcons_ from "examples/mui/Button._icons.tsx";
 import ButtonPermutations_ from "examples/mui/Button._permutations.js";
 import ButtonColors from "examples/mui/Button.colors.tsx";
 import ButtonDefault from "examples/mui/Button.default.tsx";
-import ButtonIcons from "examples/mui/Button.icons.tsx";
 import ButtonVariants from "examples/mui/Button.variants.tsx";
 import ButtonGroupDefault from "examples/mui/ButtonGroup.default.tsx";
 import CardActions from "examples/mui/Card.actions.tsx";
@@ -145,7 +145,7 @@ const components: Record<string, React.ReactNode> = {
 			<ButtonDefault />
 			<ButtonVariants />
 			<ButtonColors />
-			<ButtonIcons />
+			{!isProduction && <ButtonIcons_ />}
 			{!isProduction && <ButtonPermutations_ />}
 		</>
 	),

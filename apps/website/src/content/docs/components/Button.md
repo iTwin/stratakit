@@ -24,7 +24,7 @@ The **Button** component renders as an HTML [`<button>` element](https://develop
 
 An [**Icon**](/components/icon) can be prepended or appended to the **Button’s** text label. It’s important the **Icon’s** `alt` is omitted, since the text already provides the accessible label. In the following example, a “+” icon is appended to the text “Add new”.
 
-::example{src="mui/Button.icons"}
+::example{src="mui/Button.icon"}
 
 ## Configurations
 

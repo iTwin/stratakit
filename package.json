@@ -1,5 +1,5 @@
 {
-	"name": "design-system",
+	"name": "stratakit",
 	"private": true,
 	"type": "module",
 	"version": "0.0.0",
@@ -13,20 +13,20 @@
 		"lint:copyright": "tsx internal/copyright-linter.ts",
 		"prettier": "prettier . '!**/*.{js,jsx,ts,tsx,cjs,cts,mjs,mts,css,json,jsonc}' --check",
 		"test": "pnpm --filter=@stratakit/test-app test",
-		"changeset": "pnpx @changesets/cli@2.29.6",
+		"changeset": "pnpx @changesets/cli@2.29.7",
 		"changeset:version": "pnpm run changeset version && pnpm format --write",
 		"changeset:publish": "pnpm run build && pnpm run changeset publish"
 	},
 	"devDependencies": {
-		"@actions/github": "^6.0.1",
-		"@biomejs/biome": "2.3.10",
+		"@actions/github": "^9.0.0",
+		"@biomejs/biome": "2.3.13",
 		"@playwright/test": "catalog:",
 		"@types/node": "catalog:",
-		"colorjs.io": "^0.6.0",
+		"colorjs.io": "^0.6.1",
 		"fast-glob": "^3.3.3",
 		"internal": "workspace:*",
-		"lefthook": "^2.0.13",
-		"prettier": "3.7.4",
+		"lefthook": "^2.0.16",
+		"prettier": "3.8.1",
 		"tsx": "^4.21.0",
 		"typescript": "catalog:",
 		"wireit": "^0.14.12"

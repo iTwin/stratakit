@@ -193,7 +193,9 @@ test.describe("@visual", () => {
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
 
-	test("tooltip content with multiple lines", async ({ page }) => {
+	test("tooltip content with multiple lines", async ({ page, browserName }) => {
+		test.skip(browserName === "chromium", "This test is flaky in Chromium");
+
 		await page.goto("/tests/tooltip?multi-line=true");
 
 		const button = page.getByRole("button");

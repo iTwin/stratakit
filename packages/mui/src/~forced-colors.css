@@ -1,0 +1,33 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+
+:is(.MuiCheckbox-root, .MuiRadio-root) > input {
+	border-color: CanvasText;
+
+	:where(.Mui-checked, .MuiCheckbox-indeterminate) & {
+		background-color: SelectedItem;
+
+		&::after {
+			background-color: SelectedItemText;
+		}
+	}
+
+	:where(.Mui-error) & {
+		background-color: Mark;
+
+		&::after {
+			background-color: MarkText;
+		}
+	}
+
+	:where(.Mui-disabled) & {
+		background-color: Canvas;
+		border-color: GrayText;
+
+		&::after {
+			background-color: GrayText;
+		}
+	}
+}

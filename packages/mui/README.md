@@ -12,7 +12,7 @@ npm add @stratakit/mui
 
 Additional setup/considerations:
 
-- `@stratakit/mui` has a direct dependency on [`@stratakit/foundations`](https://www.npmjs.com/package/@stratakit/foundations) and [`@stratakit/icons`](https://www.npmjs.com/package/@stratakit/icons), the latter of which requires [bundler configuration](https://github.com/iTwin/design-system/tree/main/packages/icons#bundler-configuration) to ensure that `.svg` files are not inlined.
+- `@stratakit/mui` has a direct dependency on [`@stratakit/foundations`](https://www.npmjs.com/package/@stratakit/foundations) and [`@stratakit/icons`](https://www.npmjs.com/package/@stratakit/icons), the latter of which requires [bundler configuration](https://github.com/iTwin/stratakit/tree/main/packages/icons#bundler-configuration) to ensure that `.svg` files are not inlined.
 - You should ensure that [StrataKit fonts](#fonts) are loaded in your application.
 - [`/types.d.ts`](#typescript) must be included in your project to ensure that the module augmentation for MUI components is picked up by TypeScript.
 - If you are trying to use this package alongside iTwinUI, you will also need to set up the [theme bridge](https://github.com/iTwin/iTwinUI/wiki/StrataKit-theme-bridge).
@@ -46,7 +46,7 @@ import svgPlaceholder from "@stratakit/icons/placeholder.svg";
 ```
 
 > [!NOTE]
-> `@stratakit/icons` requires [bundler configuration](https://github.com/iTwin/design-system/tree/main/packages/icons#bundler-configuration) to ensure that `.svg` files are not inlined.
+> `@stratakit/icons` requires [bundler configuration](https://github.com/iTwin/stratakit/tree/main/packages/icons#bundler-configuration) to ensure that `.svg` files are not inlined.
 
 ## Fonts
 
@@ -101,6 +101,6 @@ Alternatively, if your project relies on the implicit inclusion of visible `@typ
 
 ## Contributing
 
-Are you interested in helping StrataKit grow? You can submit feature requests or bugs by creating [issues](https://github.com/iTwin/design-system/issues).
+Are you interested in helping StrataKit grow? You can submit feature requests or bugs by creating [issues](https://github.com/iTwin/stratakit/issues).
 
-If you're interested in contributing code, please read [`CONTRIBUTING.md`](https://github.com/iTwin/design-system/blob/main/CONTRIBUTING.md) for more information.
+If you're interested in contributing code, please read [`CONTRIBUTING.md`](https://github.com/iTwin/stratakit/blob/main/CONTRIBUTING.md) for more information.

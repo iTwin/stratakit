@@ -36,7 +36,7 @@ export default function Index() {
 
 			<ul className={styles.list}>
 				<li>
-					<Anchor href="https://github.com/iTwin/design-system">
+					<Anchor href="https://github.com/iTwin/stratakit">
 						GitHub source
 					</Anchor>
 				</li>

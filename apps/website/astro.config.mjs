@@ -36,7 +36,7 @@ export default defineConfig({
 				{
 					icon: "github",
 					label: "GitHub",
-					href: "https://github.com/iTwin/design-system",
+					href: "https://github.com/iTwin/stratakit",
 				},
 			],
 			sidebar: [
@@ -54,8 +54,7 @@ export default defineConfig({
 				{ label: "Contributing", slug: "contributing" },
 			],
 			editLink: {
-				baseUrl:
-					"https://github.com/iTwin/design-system/edit/main/apps/website/",
+				baseUrl: "https://github.com/iTwin/stratakit/edit/main/apps/website/",
 			},
 			lastUpdated: true,
 			customCss: ["./src/styles/index.css"],
@@ -185,7 +184,7 @@ function vitePluginFixAstroSvg() {
 		enforce: "pre",
 		async resolveId(source, importer, options) {
 			if (!source.endsWith(".svg")) return;
-			if (!importer?.endsWith(".jsx") && !importer?.endsWith(".tsx")) return;
+			if (!/\.[jt]sx?$/.test(importer ?? "")) return;
 			const resolved = await this.resolve(`${source}?url`, importer, options);
 			return resolved?.id;
 		},

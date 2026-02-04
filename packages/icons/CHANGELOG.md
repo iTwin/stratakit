@@ -4,11 +4,11 @@
 
 ### Breaking changes
 
-- [#1163](https://github.com/iTwin/design-system/pull/1163): Removed `license-remove.svg` which was previously deprecated and aliased to `license-minus.svg`.
+- [#1163](https://github.com/iTwin/stratakit/pull/1163): Removed `license-remove.svg` which was previously deprecated and aliased to `license-minus.svg`.
 
 ## 0.2.2
 
-- [#1104](https://github.com/iTwin/design-system/pull/1104): Added new icons:
+- [#1104](https://github.com/iTwin/stratakit/pull/1104): Added new icons:
   - `microscope.svg`
   - `scene.svg`
   - `thumbs-down.svg`
@@ -16,7 +16,7 @@
 
 ## 0.2.1
 
-- [#1084](https://github.com/iTwin/design-system/pull/1084): Renamed `license-remove.svg` to `license-minus.svg`.
+- [#1084](https://github.com/iTwin/stratakit/pull/1084): Renamed `license-remove.svg` to `license-minus.svg`.
 
   `license-remove.svg` is now considered deprecated and will be removed in a future release.
 
@@ -24,7 +24,7 @@
 
 ### Breaking changes
 
-- [#1015](https://github.com/iTwin/design-system/pull/1015): Some icons have been renamed for better clarity and consistency.
+- [#1015](https://github.com/iTwin/stratakit/pull/1015): Some icons have been renamed for better clarity and consistency.
 
   | Old name                       | New name                     |
   | ------------------------------ | ---------------------------- |
@@ -46,7 +46,7 @@
 
 ### Non-breaking changes
 
-- [#1042](https://github.com/iTwin/design-system/pull/1042): Added new icons:
+- [#1042](https://github.com/iTwin/stratakit/pull/1042): Added new icons:
   - `ai-chat-add.svg`
   - `ai-chat.svg`
   - `area-island-traffic.svg`
@@ -76,7 +76,7 @@
 
 ## 0.1.5
 
-- [#911](https://github.com/iTwin/design-system/pull/911): Added new icons:
+- [#911](https://github.com/iTwin/stratakit/pull/911): Added new icons:
   - `dimension-angle.svg`
   - `dimension-linear.svg`
   - `dimension-ordinate.svg`
@@ -89,7 +89,7 @@
 
 ## 0.1.4
 
-- [#896](https://github.com/iTwin/design-system/pull/896): Added icons:
+- [#896](https://github.com/iTwin/stratakit/pull/896): Added icons:
   - `area-parking.svg`
   - `boundary-property.svg`
   - `equals.svg`
@@ -108,7 +108,7 @@
 
 ## 0.1.3
 
-- [#850](https://github.com/iTwin/design-system/pull/850): Added icons:
+- [#850](https://github.com/iTwin/stratakit/pull/850): Added icons:
   - `drone.svg`
   - `error.svg`
   - `regenerate.svg`
@@ -122,7 +122,7 @@
 
 ## 0.1.2
 
-- [#754](https://github.com/iTwin/design-system/pull/754): Added icons:
+- [#754](https://github.com/iTwin/stratakit/pull/754): Added icons:
   - `inspection.svg`
   - `power-bi.svg`
   - `document-pdf.svg`
@@ -182,14 +182,14 @@
   - `document.svg`
   - `retry.svg`
 
-- [#755](https://github.com/iTwin/design-system/pull/755): All icons have been updated.
+- [#755](https://github.com/iTwin/stratakit/pull/755): All icons have been updated.
   - Small adjustments to size and negative space for better visual alignment.
   - Some icons redrawn using new shapes.
   - Simplified attributes on the `<path>` elements.
 
 ## 0.1.1
 
-- [#733](https://github.com/iTwin/design-system/pull/733): Added snapping related icons:
+- [#733](https://github.com/iTwin/stratakit/pull/733): Added snapping related icons:
   - `snap-bisector.svg`
   - `snap-endpoint.svg`
   - `snap-center.svg`
@@ -207,9 +207,9 @@
 ## @stratakit/icons@0.1.0
 
 - **breaking**: Package name changed to `@stratakit/icons`.
-- [#649](https://github.com/iTwin/design-system/pull/649): **breaking**: Fixed typo in `visibility-invert.svg`.
+- [#649](https://github.com/iTwin/stratakit/pull/649): **breaking**: Fixed typo in `visibility-invert.svg`.
 
 ## @itwin/itwinui-icons@5.0.0-alpha.7
 
-- **breaking**: Removed `dismiss.svg` and `panel-left.svg`. See [#539](https://github.com/iTwin/design-system/pull/539).
+- **breaking**: Removed `dismiss.svg` and `panel-left.svg`. See [#539](https://github.com/iTwin/stratakit/pull/539).
 - Added 19 new icons.

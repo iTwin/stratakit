@@ -156,6 +156,8 @@ function SyncVariants({ variants }: { variants: Variant[] }) {
 /** undefined == system preference */
 type ColorScheme = "light" | "dark" | undefined;
 
+const COLOR_SCHEME_STORAGE_KEY = "🥝:color-scheme";
+
 const ColorSchemeContext = React.createContext<{
 	colorScheme: ColorScheme;
 	setColorScheme: React.Dispatch<React.SetStateAction<ColorScheme>>;
@@ -181,18 +183,41 @@ export function ColorSchemeProvider({
 	);
 }
 
-/** Returns the current color-scheme (provided by `ColorSchemeProvider`) or the system preference. */
+/** Returns the current color-scheme in the following order: React Context, localStorage, user preference. */
 export function useColorScheme() {
 	const { colorScheme } = React.use(ColorSchemeContext);
 	const prefersDark = useMediaQuery("(prefers-color-scheme: dark)");
 	const preferredColorScheme = prefersDark === false ? "light" : "dark"; // dark by default (e.g. during SSR)
 
-	return colorScheme || preferredColorScheme;
+	const storedValue = useLocalStorage(COLOR_SCHEME_STORAGE_KEY);
+	const storedColorScheme =
+		storedValue === "light" || storedValue === "dark" ? storedValue : undefined;
+
+	return colorScheme ?? storedColorScheme ?? preferredColorScheme;
 }
 
-/** Allows changing the color-scheme returned by `useColorScheme`. */
+/** Allows changing the color-scheme returned by `useColorScheme`. Synchronizes with localStorage. */
 export function useSetColorScheme() {
-	return React.use(ColorSchemeContext).setColorScheme;
+	const { setColorScheme } = React.use(ColorSchemeContext);
+
+	return React.useCallback(
+		(value: React.SetStateAction<ColorScheme>) => {
+			setColorScheme((prev) => {
+				const newValue = typeof value === "function" ? value(prev) : value;
+
+				if (typeof localStorage !== "undefined") {
+					if (newValue === undefined) {
+						localStorage.removeItem(COLOR_SCHEME_STORAGE_KEY);
+					} else {
+						localStorage.setItem(COLOR_SCHEME_STORAGE_KEY, newValue);
+					}
+				}
+
+				return newValue;
+			});
+		},
+		[setColorScheme],
+	);
 }
 
 // ----------------------------------------------------------------------------

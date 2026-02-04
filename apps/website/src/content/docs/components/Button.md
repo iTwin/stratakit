@@ -70,5 +70,5 @@ An [**Icon**](/components/icon) can be prepended or appended to the **Button’s
 - Don't use **Button** for navigation. Use an [**Anchor**](/components/anchor) or simple text link instead.
 - Don't include multiple **Buttons** with the same label.
 - Don't use unclear or superfluous icons. The text label is paramount.
-- Don't include **Buttons** in a [**Toolbar**](/components/toolbar). Use [**IconButtons**](/components/iconbutton) instead.
+- Don't include **Buttons** in a [toolbar](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/toolbar_role). Use [**IconButtons**](/components/iconbutton) instead.
 - Don't use a tone that creates an insufficient [contrast](https://developer.mozilla.org/en-US/docs/Web/Accessibility/Guides/Understanding_WCAG/Perceivable/Color_contrast) between the **Button** and the background color of the interface.

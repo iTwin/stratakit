@@ -1,13 +1,6 @@
 ---
 title: IconButton
 description: Icon buttons are compact buttons used for toolbar and supplementary actions.
-status: stable
-associated:
-  - Toolbar
-links:
-  demo: tests/icon-button
-  github: packages/bricks/src/IconButton.tsx
-  figma: https://www.figma.com/design/VcGw3L2IIlboxNlOdsKdai/%F0%9F%A5%9D-Kiwi-Component-Library?m=auto&node-id=1436-51507&t=n6KvX8mvOruoHUGo-1
 ---
 
 ## Use cases

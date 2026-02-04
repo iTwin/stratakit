@@ -18,6 +18,8 @@ Make sure the **IconButton** is suitable for your use case. There may be other, 
 
 ::example{src="mui/IconButton.default"}
 
+The **IconButton** component renders as an HTML [`<button>` element](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/button). It supports the `<button>` element’s API, including all of its attributes.
+
 ### Badge
 
 Use a **Badge** component to indicate the functionality behind the **IconButton** is in need of attention. For example, an **IconButton** for notifications can indicate _unread_ notifications.

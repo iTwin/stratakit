@@ -1,12 +1,11 @@
 ---
-title: Introduction to StrataKit
-description: An overview of the **StrataKit** design system
+title: Introduction
+description: An overview of the StrataKit design system
 ---
 
 **StrataKit** is a unique design system. It supports interfaces for completing complex tasks and solving big problems. A collaboration between researchers, designers, engineers, and accessibility experts, **StrataKit** is developed at **Bentley Systems** to serve a diverse construction and infrastructure product range.
 
 Drawing its name from _strata_ (the vertical layers in rock), **StrataKit** is organized into independent but related categories. **Tokens** and **Icons** are foundational, used in defining individual **Components** which, in turn, combine to make larger **Patterns**. This documentation site is considered part of **StrataKit** itself, since it exemplifies proper use of the system.
-
 
 ## Tokens
 
@@ -14,7 +13,7 @@ Drawing its name from _strata_ (the vertical layers in rock), **StrataKit** is o
 
 ## Icons
 
-**StrataKit** has an extensive collection of meticulously crafted icons, available as a [standalone package](https://www.npmjs.com/package/@stratakit/icons). Each icon is available as two designs, optimized for different sizes, making **over 1000 icons** in total. For consistency, every icon is formed from just four key shapes and strictly adheres to a common stroke, grid, and directionality. 
+**StrataKit** has an extensive collection of meticulously crafted icons, available as a [standalone package](https://www.npmjs.com/package/@stratakit/icons). Each icon is available as two designs, optimized for different sizes, making **over 1000 icons** in total. For consistency, every icon is formed from just four key shapes and strictly adheres to a common stroke, grid, and directionality.
 
 ## Components
 

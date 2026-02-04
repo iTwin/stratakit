@@ -18,12 +18,6 @@ Make sure the **Link** is suitable for your use case. There may be other, more a
 
 The **Link** inherits the standard HTML `<a>` element’s API and supports all the same attributes. As with a standard `<a>`, omitting the `href` will make the element a [placeholder link](https://www.scottohara.me/note/2019/07/17/placeholder-link.html).
 
-### External marker
-
-::example{src="Link.external"}
-
-The **Link** supports [decomposition](/guides/composition/#decomposition). For external links, you can recompose **Link** to include an external marker. In this case, the marker comes with an `alt` describing the `target="_blank"` behavior:
-
 ## Configurations
 
 ### Tones

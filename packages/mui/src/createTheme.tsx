@@ -105,6 +105,9 @@ function createTheme() {
 						paper: {
 							elevation: 8, // match Menu elevation
 						},
+						clearIndicator: {
+							tabIndex: 0, // make clear indicator focusable
+						},
 					},
 				},
 			},

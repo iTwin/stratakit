@@ -5,7 +5,7 @@ Small, modular components for StrataKit.
 Bricks can be assembled to create larger, more functional experiences.
 
 > [!CAUTION]
-> `@stratakit/bricks` is currently in **maintenance mode**. See [#1116](https://github.com/iTwin/design-system/discussions/1116) for details.
+> `@stratakit/bricks` is currently in **maintenance mode**. See [#1116](https://github.com/iTwin/stratakit/discussions/1116) for details.
 
 ## Installation
 
@@ -31,6 +31,6 @@ For more details on using specific features, refer to the inline documentation a
 
 ## Contributing
 
-Are you interested in helping StrataKit grow? You can submit feature requests or bugs by creating [issues](https://github.com/iTwin/design-system/issues).
+Are you interested in helping StrataKit grow? You can submit feature requests or bugs by creating [issues](https://github.com/iTwin/stratakit/issues).
 
-If you're interested in contributing code, please read [`CONTRIBUTING.md`](https://github.com/iTwin/design-system/blob/main/CONTRIBUTING.md) for more information.
+If you're interested in contributing code, please read [`CONTRIBUTING.md`](https://github.com/iTwin/stratakit/blob/main/CONTRIBUTING.md) for more information.

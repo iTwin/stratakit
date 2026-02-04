@@ -1,9 +1,9 @@
 ---
 title: Introduction to StrataKit
-description: An overview of our design system
+description: An overview of the **StrataKit** design system
 ---
 
-**StrataKit** is a unique design system. It supports interfaces for completing complex tasks and solving big problems. A collaboration between researchers, interaction designers, engineers, and accessibility experts, **StrataKit** is developed at **Bentley Systems** to serve the master builders of its diverse construction and infrastructure product range.
+**StrataKit** is a unique design system. It supports interfaces for completing complex tasks and solving big problems. A collaboration between researchers, designers, engineers, and accessibility experts, **StrataKit** is developed at **Bentley Systems** to serve the master builders of its diverse construction and infrastructure product range.
 
 Drawing its name from _strata_ (the vertical layers in rock), **StrataKit** is organized into independent but related categories. **Tokens** and **Icons** are foundational, used in defining individual **Components** which, in turn, combine to make larger **Patterns**. This documentation site is considered part of **StrataKit** itself, since it exemplifies the proper use of the assets made available.
 
@@ -18,7 +18,7 @@ Drawing its name from _strata_ (the vertical layers in rock), **StrataKit** is o
 
 ## Components
 
-Elemental **StrataKit** components come from the open source **Material UI** (MUI) library and **StrataKit’s** custom MUI theme is optimized for accessibility. More complex and specialized components are custom made, incorporating the same **Tokens** API for consistency. This site exemplifies how to correctly implement the entire component catalogue.
+Elemental **StrataKit** components are taken from the open source **Material UI** (MUI) library and **StrataKit’s** custom MUI theme is optimized for accessibility. More complex and specialized components are custom made, incorporating the same **Tokens** for consistency. This site exemplifies how to correctly implement the entire component catalogue.
 
 ## Patterns
 

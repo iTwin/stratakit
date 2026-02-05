@@ -51,6 +51,7 @@ jobs:
     env:
       BASE_FOLDER: ${{ needs.paths.outputs.BASE_FOLDER }}
       CLEAN_EXCLUDE: ${{ needs.paths.outputs.PRESERVE_FOLDERS }}
+      GH_PAGES_URL: ${{ vars.GH_PAGES_URL }}
 
     steps:
       - uses: actions/checkout@v6

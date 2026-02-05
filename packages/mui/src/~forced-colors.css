@@ -32,6 +32,10 @@
 	}
 }
 
+.MuiFormControlLabel-label:where(.Mui-disabled) {
+	color: GrayText;
+}
+
 .MuiFormHelperText-root:where(.Mui-error) {
 	forced-color-adjust: none;
 	background-color: Mark;

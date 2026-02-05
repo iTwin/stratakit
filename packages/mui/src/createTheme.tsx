@@ -4,6 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 
 import { createTheme as createMuiTheme } from "@mui/material/styles";
+import { FormControl, FormLabel, TextFieldInput } from "./~components.js";
 import {
 	ArrowDownIcon,
 	CaretsUpDownIcon,
@@ -156,6 +157,16 @@ function createTheme() {
 					color: "primary",
 				},
 			},
+			MuiFormControl: {
+				defaultProps: {
+					component: FormControl,
+				},
+			},
+			MuiFormLabel: {
+				defaultProps: {
+					component: FormLabel,
+				},
+			},
 			MuiLink: {
 				defaultProps: {
 					color: "textPrimary",
@@ -221,6 +232,13 @@ function createTheme() {
 				defaultProps: {
 					// TODO: This should use sort-ascending and sort-descending icons, but that requires disabling MUI's built-in icon rotation.
 					IconComponent: ArrowDownIcon,
+				},
+			},
+			MuiTextField: {
+				defaultProps: {
+					slots: {
+						input: TextFieldInput,
+					},
 				},
 			},
 			MuiTooltip: {

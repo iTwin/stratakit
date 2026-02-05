@@ -187,6 +187,10 @@
 	row-gap: var(--stratakit-space-x1);
 }
 
+.MuiFormControlLabel-root:where(.Mui-disabled) {
+	cursor: not-allowed;
+}
+
 .MuiFormControlLabel-label {
 	@apply --typography("body-md");
 }

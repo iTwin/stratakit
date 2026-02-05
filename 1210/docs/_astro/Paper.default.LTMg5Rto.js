@@ -1,0 +1,1 @@
+import{j as p}from"./ExamplePreview.C7oHIBbQ.js";import{P as r}from"./Paper.BWbR_lAC.js";import"./preload-helper.Q-jOG6Gl.js";import"./index.DIfZGIpv.js";import"./index.XeJbqeyU.js";import"./styles.internal.BwFdDu8v.js";import"./useTheme.Ba0tKg-B.js";const t="_paper_1mq3b_6",e={paper:t},c=()=>p.jsx(r,{className:e.paper,elevation:4});export{c as default};

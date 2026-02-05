@@ -4,7 +4,14 @@
  *--------------------------------------------------------------------------------------------*/
 
 import { createTheme as createMuiTheme } from "@mui/material/styles";
-import { FormControl, FormLabel, TextFieldInput } from "./~components.js";
+import {
+	Chip,
+	ChipDeleteIcon,
+	ChipLabel,
+	FormControl,
+	FormLabel,
+	TextFieldInput,
+} from "./~components.js";
 import {
 	ArrowDownIcon,
 	CaretsUpDownIcon,
@@ -110,7 +117,15 @@ function createTheme() {
 							tabIndex: 0, // make clear indicator focusable
 						},
 						chip: {
-							tabIndex: 0, // make chip focusable
+							// Use Chip in Autocomplete only, since some chips might be interactive
+							component: Chip,
+							deleteIcon: <ChipDeleteIcon />,
+							role: undefined,
+							slotProps: {
+								label: {
+									component: ChipLabel,
+								},
+							},
 						},
 					},
 				},

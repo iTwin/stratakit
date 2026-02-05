@@ -178,6 +178,10 @@
 	}
 }
 
+.MuiChip-deleteIcon {
+	padding: 0;
+}
+
 .MuiDialogActions-root {
 	&:where(.MuiDialogActions-spacing) {
 		padding-block: var(--stratakit-space-x4);

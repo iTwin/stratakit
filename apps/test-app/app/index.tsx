@@ -41,7 +41,7 @@ export default function Index() {
 					</Anchor>
 				</li>
 				<li>
-					<Anchor href="/docs">Documentation</Anchor>
+					<Anchor href={useHref("/docs")}>Documentation</Anchor>
 				</li>
 			</ul>
 

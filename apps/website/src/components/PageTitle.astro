@@ -3,7 +3,6 @@
 
 const { entry } = Astro.locals.starlightRoute;
 
-const status = entry.data.status;
 const links = entry.data.links || {};
 
 const docsUrl = links.docs;
@@ -16,21 +15,6 @@ const apiReferenceUrl = links.apiReference;
 </hgroup>
 
 <dl>
-	{
-		status && (
-			<div class="inline-item">
-				<dt>
-					<a href={`${import.meta.env.BASE_URL}/guides/composition/#component-status`}>
-						Component status
-					</a>
-					:
-				</dt>
-				<dd>
-					<status-badge>{status}</status-badge>
-				</dd>
-			</div>
-		)
-	}
 	{
 		Object.keys(links).length > 0 && (
 			<div class="external-links">

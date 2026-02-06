@@ -23,9 +23,6 @@ export const collections = {
 		loader: docsLoader(),
 		schema: docsSchema({
 			extend: z.object({
-				status: z
-					.enum(["draft", "unstable", "stable", "deprecated", "unknown"])
-					.optional(),
 				links: z
 					.object({
 						docs: z.string().optional(),

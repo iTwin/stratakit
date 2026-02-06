@@ -309,13 +309,17 @@
 }
 
 .MuiInputBase-input {
-	min-block-size: 36.5px;
+	min-block-size: 32px;
 	padding-block: 0;
-	padding-inline: 14px;
+	padding-inline: 8px;
 	align-content: center;
 
+	&:where(.MuiInputBase-inputSizeSmall) {
+		min-block-size: 24px;
+	}
+
 	&:where(.MuiInputBase-inputMultiline) {
-		padding-block: 8.25px;
+		padding-block: 4px;
 		align-content: baseline;
 	}
 

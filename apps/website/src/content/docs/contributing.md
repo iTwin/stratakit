@@ -107,13 +107,9 @@ For reference, here is what the [**Button**](/components/button) frontmatter loo
 ---
 title: Button
 description: Buttons are used to initiate actions.
-status: stable
-associated:
-  - Icon
 links:
-  demo: tests/button
-  github: packages/bricks/src/Button.tsx
-  figma: https://www.figma.com/design/VcGw3L2IIlboxNlOdsKdai/%F0%9F%A5%9D-Kiwi-Component-Library?node-id=1436-51507&t=FX2fZYZ93vfliX17-4
+  documentation: https://mui.com/material-ui/react-button/
+  apiReference: https://mui.com/material-ui/api/button/
 ---
 ```
 

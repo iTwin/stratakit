@@ -38,6 +38,10 @@
 	}
 }
 
+.MuiAutocomplete-clearIndicator {
+	visibility: visible;
+}
+
 .MuiAppBar-root {
 	background-color: var(--stratakit-color-bg-page-base);
 	box-shadow: none;

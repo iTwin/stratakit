@@ -20,17 +20,17 @@ Make sure the **Button** is suitable for your use case. There may be other, more
 
 ### Icons
 
-An [**Icon**](/components/icon) can be prepended or appended to the **Button’s** text label. It’s important the **Icon’s** `alt` is omitted, since the text already provides the accessible label. In the following example, a “+” icon is appended to the text “Add new”.
-
 ::example{src="mui/Button.icon"}
 
+An [**Icon**](/components/icon) can be prepended or appended to the **Button’s** text label. It’s important the **Icon’s** `alt` is omitted, since the text already provides the accessible label. In the following example, a “+” icon is appended to the text “Add new”.
+
 ### Variants
+
+::example{src="mui/Button.variants"}
 
 - **Contained:** Default button styling. If you're not sure what tone to use, use this one.
 - **Outlined:** Reduce the visual weight. Use for secondary actions or to unclutter the UI.
 - **Text:** Minimal visual weight. Useful in tight spaces where other variants would create superfluous boxes. Commonly used for actionable icons, such as in table rows.
-
-::example{src="mui/Button.variants"}
 
 | Use case               | Contained | Outlined | Text                           |
 | ---------------------- | --------- | -------- | ------------------------------ |
@@ -41,11 +41,11 @@ An [**Icon**](/components/icon) can be prepended or appended to the **Button’s
 
 ### Tones
 
+::example{src="mui/Button.colors"}
+
 - **Secondary:** The default tone. If unsure, use this.
 - **Primary:** Reserved for key actions, tools, and call-to-actions like form submissions or dialog confirmations. Use sparingly—one per page or section. Multiple accent-toned buttons dilute impact and create visual noise.
 - **Error:** Reserved for destructive or potentially harmful actions, such as deleting content or cancelling subscriptions. Use sparingly to avoid desensitizing users to its significance.
-
-::example{src="mui/Button.colors"}
 
 | Use case                              | Secondary | Primary | Error |
 | ------------------------------------- | --------- | ------- | ----- |

@@ -1,6 +1,8 @@
 ---
 title: Introduction
 description: An overview of the StrataKit design system
+sidebar:
+  order: 1
 ---
 
 **StrataKit** is a unique design system. It supports interfaces for completing complex tasks and solving big problems. A collaboration between researchers, designers, engineers, and accessibility experts, **StrataKit** is developed at **Bentley Systems** to serve a diverse construction and infrastructure product range.

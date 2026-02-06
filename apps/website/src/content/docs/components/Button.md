@@ -3,6 +3,8 @@ title: Button
 description: Buttons are used to initiate actions.
 ---
 
+::example{src="mui/Button.default"}
+
 ## Use cases
 
 Make sure the **Button** is suitable for your use case. There may be other, more appropriate components available.
@@ -14,19 +16,13 @@ Make sure the **Button** is suitable for your use case. There may be other, more
 | Make a binary choice (switching a setting on or off)              |              ❌              |                  ❌                  |              ✅              |            ❌            |
 | Navigate between interface screens or sections                    |              ❌              |                  ❌                  |              ❌              |            ✅            |
 
-## Usage
-
-::example{src="mui/Button.default"}
-
-The **Button** component renders as an HTML [`<button>` element](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/button). It supports the `<button>` element’s API, including all of its attributes.
+## Examples
 
 ### Icons
 
 An [**Icon**](/components/icon) can be prepended or appended to the **Button’s** text label. It’s important the **Icon’s** `alt` is omitted, since the text already provides the accessible label. In the following example, a “+” icon is appended to the text “Add new”.
 
 ::example{src="mui/Button.icon"}
-
-## Configurations
 
 ### Variants
 
@@ -56,6 +52,8 @@ An [**Icon**](/components/icon) can be prepended or appended to the **Button’s
 | Primary call-to-action                | ✅        | ✅      | ❌    |
 | Modal confirmation or form submission | ❌        | ✅      | ❌    |
 | Destructive call-to-action            | ❌        | ❌      | ✅    |
+
+## UX guidelines
 
 ### ✅ Do
 

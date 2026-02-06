@@ -7,7 +7,6 @@ import { defineCollection, reference, z } from "astro:content";
 import * as fs from "node:fs/promises";
 import { createRequire } from "node:module";
 import * as path from "node:path";
-import * as process from "node:process";
 
 import { docsLoader } from "@astrojs/starlight/loaders";
 import { docsSchema } from "@astrojs/starlight/schema";

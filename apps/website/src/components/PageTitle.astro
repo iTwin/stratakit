@@ -17,6 +17,8 @@ const githubUrl = links.github?.startsWith("https://")
 		: null;
 
 const figmaUrl = links.figma;
+const docsUrl = links.docs;
+const apiReferenceUrl = links.apiReference;
 
 const associated = entry.data.associated?.map(({ id }) => id) || [];
 ---
@@ -48,6 +50,16 @@ const associated = entry.data.associated?.map(({ id }) => id) || [];
 				<dt>Useful links:</dt>
 				<dd>
 					<ul role="list">
+						{docsUrl && (
+							<li>
+								<a href={docsUrl}>Documentation</a>
+							</li>
+						)}
+						{apiReferenceUrl && (
+							<li>
+								<a href={apiReferenceUrl}>API reference</a>
+							</li>
+						)}
 						{demoUrl && (
 							<li>
 								<a href={demoUrl}>Demo page</a>

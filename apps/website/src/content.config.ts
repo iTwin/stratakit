@@ -31,6 +31,8 @@ export const collections = {
 						demo: z.string().optional(),
 						github: z.string().optional(),
 						figma: z.string().optional(),
+						docs: z.string().optional(),
+						apiReference: z.string().optional(),
 					})
 					.optional(),
 				associated: z.array(reference("docs")).optional(),

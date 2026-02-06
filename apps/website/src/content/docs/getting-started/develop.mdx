@@ -1,0 +1,148 @@
+---
+title: Develop with StrataKit
+description: Learn how to set up StrataKit in your React project.
+sidebar:
+  label: Develop
+---
+
+import { Steps, Tabs, TabItem } from "@astrojs/starlight/components";
+
+## Quick start
+
+{/* TODO: Add link to starter sandbox. */}
+
+This guide is intended for **application** developers. If you're building a package on top of StrataKit, you can usually skip most of these steps, since the host application will already have StrataKit set up for you.
+
+<Steps>
+
+1. **Install the StrataKit packages**
+
+   ```console
+   npm add @stratakit/mui @stratakit/icons
+   ```
+
+   You will also need to install `@mui/material` and its peer dependencies (`@emotion/styled` and `@emotion/react`).
+
+2. **Configure your bundler**
+
+   StrataKit icons should be served as external SVG files, so your bundler needs to be configured to not inline them. See [Bundler configuration](#bundler-configuration) below.
+
+3. **Set up TypeScript types**
+
+   StrataKit augments some MUI component types. Add `@stratakit/mui/types.d.ts` to the existing [`types`](https://www.typescriptlang.org/tsconfig/#types) field in your **tsconfig** file:
+
+   ```json title="tsconfig.json"
+   {
+   	"compilerOptions": {
+   		"types": ["@stratakit/mui/types.d.ts"]
+   	}
+   }
+   ```
+
+   If your **tsconfig** file does not already have a `types` field, you can alternatively add `@stratakit/mui/types.d.ts` using a [triple-slash directive](https://www.typescriptlang.org/docs/handbook/triple-slash-directives.html) in any declaration file.
+
+4. **Set up `Root` component**
+
+   Wrap your app's entrypoint with the `<Root>` component from `@stratakit/mui`:
+
+   ```tsx title="src/App.tsx"
+   import { Root } from "@stratakit/mui";
+
+   export function App() {
+   	return <Root colorScheme="light">{/* Your app goes here */}</Root>;
+   }
+   ```
+
+   That's it! You can now use any component from `@mui/material`, and it will automatically be styled with StrataKit's visual language.
+
+   :::caution
+   Don't use MUI's `ThemeProvider`, `StyledEngineProvider`, or `CssBaseline` directly. The `Root` component handles all of that for you.
+   :::
+
+5. **Use icons** (optional)
+
+   To use StrataKit icons, import the `.svg` files from `@stratakit/icons` and pass them to the `<Icon>` component from `@stratakit/mui`:
+
+   ```tsx
+   import { Icon } from "@stratakit/mui";
+   import settingsIcon from "@stratakit/icons/settings.svg";
+
+   <Icon href={settingsIcon} />;
+   ```
+
+   :::caution
+   Do not use any icons from `@mui/icons-material` as they are not compatible with StrataKit.
+   :::
+
+</Steps>
+
+## Bundler configuration
+
+You will need to ensure that your bundler does not inline `.svg` files, so that StrataKit icons can be used as external HTTP resources.
+
+<Tabs>
+<TabItem label="Vite">
+Configure [`build.assetsInlineLimit`](https://vite.dev/config/build-options.html#build-assetsinlinelimit).
+
+```ts title="vite.config.ts"
+export default defineConfig({
+	build: {
+		assetsInlineLimit: (filePath) => !filePath.endsWith(".svg"),
+	},
+});
+```
+
+</TabItem>
+<TabItem label="Rsbuild">
+Configure [`output.dataUriLimit`](https://rsbuild.dev/config/output/data-uri-limit).
+
+```ts title="rsbuild.config.ts"
+export default {
+	output: {
+		dataUriLimit: { svg: 0 },
+	},
+};
+```
+
+</TabItem>
+<TabItem label="esbuild">
+Enable the [`file` loader](https://esbuild.github.io/content-types/#external-file) for `.svg` files.
+```ts
+esbuild.build({
+	loader: { ".svg": "file" },
+});
+```
+</TabItem>
+</Tabs>
+
+## Self-hosting the fonts
+
+StrataKit uses [InterVariable](https://rsms.me/inter/) as its interface font. While a CDN fallback is provided automatically, we recommend self-hosting for better performance and reliability.
+
+To self-host `InterVariable`, download the [`InterVariable.woff2`](https://rsms.me/inter/font-files/InterVariable.woff2) and [`InterVariable-Italic.woff2`](https://rsms.me/inter/font-files/InterVariable-Italic.woff2) font files from the official website, and serve them alongside your other assets. Then include the following CSS in the `<head>` of your document, replacing the placeholder paths with the correct path to where the fonts are located:
+
+```html
+<style>
+	@font-face {
+		font-family: InterVariable;
+		font-style: normal;
+		font-weight: 100 900;
+		font-display: swap;
+		src: url("/path/to/InterVariable.woff2") format("woff2");
+	}
+
+	@font-face {
+		font-family: InterVariable;
+		font-style: italic;
+		font-weight: 100 900;
+		font-display: swap;
+		src: url("/path/to/InterVariable-Italic.woff2") format("woff2");
+	}
+</style>
+```
+
+Build tools such as [Vite](https://vite.dev/guide/assets.html#importing-asset-as-url) can handle `url()` references and automatically copy these files into your output directory with hashed file names. These files can then be safely served with [HTTP caching](https://developer.chrome.com/docs/lighthouse/performance/uses-long-cache-ttl/#how_to_cache_static_resources_using_http_caching) without blocking upgrades to newer versions of the fonts.
+
+## Migrating from iTwinUI
+
+If you're using StrataKit alongside the current stable version of iTwinUI, you'll need to set up the [theme bridge](https://github.com/iTwin/iTwinUI/wiki/StrataKit-theme-bridge) to ensure both libraries work together seamlessly.

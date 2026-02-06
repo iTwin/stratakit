@@ -56,8 +56,10 @@ export default defineConfig({
 				},
 			],
 			sidebar: [
-				{ label: "Introduction", slug: "introduction" },
-				{ label: "Getting started", slug: "getting-started" },
+				{
+					label: "Getting started",
+					autogenerate: { directory: "getting-started" },
+				},
 				{ label: "Guides", autogenerate: { directory: "guides" } },
 				{
 					label: "Components",

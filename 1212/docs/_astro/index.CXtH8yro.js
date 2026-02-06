@@ -1,0 +1,1 @@
+import{j as e,O as n,T as a}from"./ExamplePreview.BLFNIcdo.js";import{e as s}from"./extendSxProp.86ORiYlX.js";import{d as l}from"./DefaultPropsProvider.CNfMDX94.js";function i(t){return e.jsx(n,{...t,defaultTheme:l,themeId:a})}function x(t){return function(r){return e.jsx(i,{styles:typeof t=="function"?o=>t({theme:o,...r}):t})}}function c(){return s}export{x as g,c as i};

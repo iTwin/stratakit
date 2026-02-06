@@ -40,4 +40,9 @@
 	forced-color-adjust: none;
 	background-color: Mark;
 	color: MarkText;
+
+	&::before,
+	&::after {
+		background-color: MarkText;
+	}
 }

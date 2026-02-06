@@ -8,8 +8,6 @@ const links = entry.data.links || {};
 
 const docsUrl = links.docs;
 const apiReferenceUrl = links.apiReference;
-
-const associated = entry.data.associated?.map(({ id }) => id) || [];
 ---
 
 <hgroup>
@@ -49,29 +47,6 @@ const associated = entry.data.associated?.map(({ id }) => id) || [];
 								<a href={apiReferenceUrl}>API reference</a>
 							</li>
 						)}
-					</ul>
-				</dd>
-			</div>
-		)
-	}
-	{
-		associated.length > 0 && (
-			<div>
-				<dt>
-					<a href={`${import.meta.env.BASE_URL}/guides/composition/#associated-components`}>
-						Associated components
-					</a>
-					:
-				</dt>
-				<dd>
-					<ul role="list">
-						{associated.map((component) => (
-							<li>
-								<a href={`${import.meta.env.BASE_URL}/components/${component.toLowerCase()}`}>
-									{component}
-								</a>
-							</li>
-						))}
 					</ul>
 				</dd>
 			</div>

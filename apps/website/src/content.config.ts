@@ -32,7 +32,6 @@ export const collections = {
 						apiReference: z.string().optional(),
 					})
 					.optional(),
-				associated: z.array(reference("docs")).optional(),
 			}),
 		}),
 	}),

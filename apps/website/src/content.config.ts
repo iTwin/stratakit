@@ -28,9 +28,6 @@ export const collections = {
 					.optional(),
 				links: z
 					.object({
-						demo: z.string().optional(),
-						github: z.string().optional(),
-						figma: z.string().optional(),
 						docs: z.string().optional(),
 						apiReference: z.string().optional(),
 					})

@@ -6,17 +6,6 @@ const { entry } = Astro.locals.starlightRoute;
 const status = entry.data.status;
 const links = entry.data.links || {};
 
-const demoBase = "https://itwin.github.io/stratakit/";
-const demoUrl = links.demo ? demoBase + links.demo : null;
-
-const githubBase = "https://github.com/iTwin/stratakit/blob/main/";
-const githubUrl = links.github?.startsWith("https://")
-	? links.github
-	: links.github
-		? githubBase + links.github
-		: null;
-
-const figmaUrl = links.figma;
 const docsUrl = links.docs;
 const apiReferenceUrl = links.apiReference;
 
@@ -58,21 +47,6 @@ const associated = entry.data.associated?.map(({ id }) => id) || [];
 						{apiReferenceUrl && (
 							<li>
 								<a href={apiReferenceUrl}>API reference</a>
-							</li>
-						)}
-						{demoUrl && (
-							<li>
-								<a href={demoUrl}>Demo page</a>
-							</li>
-						)}
-						{githubUrl && (
-							<li>
-								<a href={githubUrl}>GitHub source</a>
-							</li>
-						)}
-						{figmaUrl && (
-							<li>
-								<a href={figmaUrl}>Figma component</a>
 							</li>
 						)}
 					</ul>

@@ -206,6 +206,14 @@
 .MuiFormControlLabel-root {
 	column-gap: 0.25rem; /* Accounts for the increased tap target of the checkbox/radio */
 	margin-inline: 0;
+
+	&:where(.Mui-disabled) {
+		cursor: not-allowed;
+	}
+}
+
+.MuiFormControlLabel-label {
+	@apply --typography("body-md");
 }
 
 .MuiFormGroup-root {
@@ -213,6 +221,7 @@
 }
 
 .MuiFormHelperText-root {
+	inline-size: fit-content;
 	margin: 0;
 	@apply --typography("body-sm");
 

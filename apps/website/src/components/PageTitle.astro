@@ -5,7 +5,7 @@ const { entry } = Astro.locals.starlightRoute;
 
 const links = entry.data.links || {};
 
-const docsUrl = links.docs;
+const documentationUrl = links.documentation;
 const apiReferenceUrl = links.apiReference;
 ---
 
@@ -21,9 +21,9 @@ const apiReferenceUrl = links.apiReference;
 				<dt>Useful links:</dt>
 				<dd>
 					<ul role="list">
-						{docsUrl && (
+						{documentationUrl && (
 							<li>
-								<a href={docsUrl}>Documentation</a>
+								<a href={documentationUrl}>Documentation</a>
 							</li>
 						)}
 						{apiReferenceUrl && (

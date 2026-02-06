@@ -24,7 +24,7 @@ export const collections = {
 			extend: z.object({
 				links: z
 					.object({
-						documentation: z.string().optional(),
+						muiDocs: z.string().optional(),
 						apiReference: z.string().optional(),
 					})
 					.optional(),

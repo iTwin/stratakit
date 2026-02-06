@@ -108,7 +108,7 @@ For reference, here is what the [**Button**](/components/button) frontmatter loo
 title: Button
 description: Buttons are used to initiate actions.
 links:
-  documentation: https://mui.com/material-ui/react-button/
+  muiDocs: https://mui.com/material-ui/react-button/
   apiReference: https://mui.com/material-ui/api/button/
 ---
 ```

@@ -309,17 +309,19 @@
 }
 
 .MuiInputBase-input {
-	min-block-size: 32px;
+	--_textarea-padding-block: calc(var(--stratakit-space-x05) + var(--stratakit-space-x1));
+	min-block-size: var(--stratakit-space-x8);
 	padding-block: 0;
-	padding-inline: 8px;
+	padding-inline: var(--stratakit-space-x2);
 	align-content: center;
 
 	&:where(.MuiInputBase-inputSizeSmall) {
-		min-block-size: 24px;
+		--_textarea-padding-block: var(--stratakit-space-x05);
+		min-block-size: var(--stratakit-space-x6);
 	}
 
 	&:where(.MuiInputBase-inputMultiline) {
-		padding-block: 4px;
+		padding-block: var(--_textarea-padding-block);
 		align-content: baseline;
 	}
 

@@ -9,6 +9,8 @@ import visuallyHidden from "@mui/utils/visuallyHidden";
 import { useSafeContext } from "@stratakit/foundations/secret-internals";
 import { DismissIcon } from "./Icon.js";
 
+import type MuiChip from "@mui/material/Chip";
+
 // ----------------------------------------------------------------------------
 
 const ChipContext = React.createContext<
@@ -17,28 +19,39 @@ const ChipContext = React.createContext<
 			setLabelId: (id: string | undefined) => void;
 			dismissId?: string;
 			dataTagIndex?: number;
+			dismissLabel: string;
 	  }
 	| undefined
 >(undefined);
 
-const Chip = React.forwardRef<
-	HTMLDivElement,
-	React.ComponentProps<"div"> & {
-		// Used by `Autocomplete`.
-		"data-tag-index"?: number;
-	}
->((props, forwardedRef) => {
-	const dismissId = React.useId();
-	const [labelId, setLabelId] = React.useState<string | undefined>(undefined);
-	const { tabIndex, "data-tag-index": dataTagIndex, ...rest } = props;
-	return (
-		<ChipContext.Provider
-			value={{ labelId, setLabelId, dismissId, dataTagIndex }}
-		>
-			<div {...rest} ref={forwardedRef} />
-		</ChipContext.Provider>
-	);
-});
+type MuiChipProps = React.ComponentProps<typeof MuiChip>;
+
+interface ChipProps
+	extends React.ComponentProps<"div">,
+		Pick<MuiChipProps, "dismissLabel"> {
+	// Used by `Autocomplete`.
+	"data-tag-index"?: number;
+}
+
+const Chip = React.forwardRef<HTMLDivElement, ChipProps>(
+	(props, forwardedRef) => {
+		const dismissId = React.useId();
+		const [labelId, setLabelId] = React.useState<string | undefined>(undefined);
+		const {
+			dismissLabel = "Dismiss",
+			tabIndex,
+			"data-tag-index": dataTagIndex,
+			...rest
+		} = props;
+		return (
+			<ChipContext.Provider
+				value={{ labelId, setLabelId, dismissId, dataTagIndex, dismissLabel }}
+			>
+				<div {...rest} ref={forwardedRef} />
+			</ChipContext.Provider>
+		);
+	},
+);
 
 // ----------------------------------------------------------------------------
 
@@ -64,7 +77,8 @@ const ChipDeleteIcon = React.forwardRef<
 	HTMLButtonElement,
 	React.ComponentProps<typeof MuiIconButton>
 >((props, forwardedRef) => {
-	const { dismissId, labelId, dataTagIndex } = useSafeContext(ChipContext);
+	const { dismissId, dismissLabel, labelId, dataTagIndex } =
+		useSafeContext(ChipContext);
 	return (
 		<MuiIconButton
 			aria-labelledby={`${dismissId} ${labelId}`}
@@ -82,7 +96,7 @@ const ChipDeleteIcon = React.forwardRef<
 			ref={forwardedRef}
 		>
 			<span id={dismissId} style={visuallyHidden}>
-				Dismiss
+				{dismissLabel}
 			</span>
 			<DismissIcon />
 		</MuiIconButton>

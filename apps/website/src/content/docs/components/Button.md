@@ -31,7 +31,7 @@ An [**Icon**](/components/icon) can be prepended or appended to the **Button’s
 
 - **Contained:** Default button styling. If you're not sure what variant to use, use this one.
 - **Outlined:** Reduce the visual weight. Use for secondary actions or to unclutter the UI.
-- **Text:** Minimal visual weight. Useful in tight spaces where other variants would create superfluous boxes. Commonly used for actionable icons, such as in table rows.
+- **Text:** Minimal visual weight. Also known as a ghost variant. Useful in tight spaces where other variants would create superfluous boxes. Commonly used for actionable icons, such as in table rows.
 
 ::example{src="mui/Button.variants"}
 

@@ -26,7 +26,7 @@ An [**Icon**](/components/icon) can be prepended or appended to the **Button’s
 
 ### Variants
 
-- **Contained:** Default button styling. If you're not sure what tone to use, use this one.
+- **Contained:** Default button styling. If you're not sure what variant to use, use this one.
 - **Outlined:** Reduce the visual weight. Use for secondary actions or to unclutter the UI.
 - **Text:** Minimal visual weight. Useful in tight spaces where other variants would create superfluous boxes. Commonly used for actionable icons, such as in table rows.
 
@@ -39,10 +39,10 @@ An [**Icon**](/components/icon) can be prepended or appended to the **Button’s
 | Modal cancel           | ✅        | ✅       | ✅                             |
 | Table cell             | ❌        | ❌       | ✅ (with an accompanying icon) |
 
-### Tones
+### Colors
 
-- **Secondary:** The default, neutral tone. If unsure, use this.
-- **Primary:** Reserved for key actions, tools, and call-to-actions like form submissions or dialog confirmations. Use sparingly—one per page or section. Multiple accent-toned buttons dilute impact and create visual noise.
+- **Secondary:** The default, neutral color. If unsure, use this.
+- **Primary:** Reserved for key actions, tools, and call-to-actions like form submissions or dialog confirmations. Use sparingly—one per page or section. Multiple accent-colored buttons dilute impact and create visual noise.
 - **Error:** Reserved for destructive or potentially harmful actions, such as deleting content or cancelling subscriptions. Use sparingly to avoid desensitizing users to its significance.
 
 ::example{src="mui/Button.colors"}
@@ -69,4 +69,4 @@ An [**Icon**](/components/icon) can be prepended or appended to the **Button’s
 - Don't include multiple **Buttons** with the same label.
 - Don't use unclear or superfluous icons. The text label is paramount.
 - Don't include **Buttons** in a [toolbar](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/toolbar_role). Use [**IconButtons**](/components/iconbutton) instead.
-- Don't use a tone that creates an insufficient [contrast](https://developer.mozilla.org/en-US/docs/Web/Accessibility/Guides/Understanding_WCAG/Perceivable/Color_contrast) between the **Button** and the background color of the interface.
+- Don't use a color that creates an insufficient [contrast](https://developer.mozilla.org/en-US/docs/Web/Accessibility/Guides/Understanding_WCAG/Perceivable/Color_contrast) between the **Button** and the background color of the interface.

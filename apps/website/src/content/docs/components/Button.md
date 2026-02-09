@@ -13,11 +13,11 @@ links:
 Make sure the **Button** is suitable for your use case. There may be other, more appropriate components available.
 
 | Use case                                                          | [Button](/components/button) | [IconButton](/components/iconbutton) | [Switch](/components/switch) | [Link](/components/link) |
-| ----------------------------------------------------------------- | :--------------------------: | :----------------------------------: | :--------------------------: | :----------------------: |
-| Submit forms, confirm or cancel dialogs, create or delete content |              ✅              |                  ❌                  |              ❌              |            ❌            |
-| Select an option within a toolbar                                 |              ❌              |                  ✅                  |              ❌              |            ❌            |
-| Make a binary choice (switching a setting on or off)              |              ❌              |                  ❌                  |              ✅              |            ❌            |
-| Navigate between interface screens or sections                    |              ❌              |                  ❌                  |              ❌              |            ✅            |
+| ----------------------------------------------------------------- | ---------------------------- | ------------------------------------ | ---------------------------- | ------------------------ |
+| Submit forms, confirm or cancel dialogs, create or delete content | ✅                           | ❌                                   | ❌                           | ❌                       |
+| Select an option within a toolbar                                 | ❌                           | ✅                                   | ❌                           | ❌                       |
+| Make a binary choice (switching a setting on or off)              | ❌                           | ❌                                   | ✅                           | ❌                       |
+| Navigate between interface screens or sections                    | ❌                           | ❌                                   | ❌                           | ✅                       |
 
 ## Examples
 

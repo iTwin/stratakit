@@ -108,6 +108,10 @@ function createTheme() {
 						},
 						clearIndicator: {
 							tabIndex: 0, // make clear indicator focusable
+							onKeyDown: (e: React.KeyboardEvent<HTMLButtonElement>) => {
+								// Stop Autocomplete from handling the event
+								e.stopPropagation();
+							},
 						},
 						chip: {
 							// Use Chip in Autocomplete only, since some chips might be interactive

@@ -85,12 +85,8 @@ const ChipDeleteIcon = React.forwardRef<
 			// Let Autocomplete focus the dismiss button, instead of the tag
 			data-tag-index={dataTagIndex}
 			onKeyDown={(e) => {
-				switch (e.key) {
-					case "Enter": {
-						// Stop Autocomplete from focusing the input, preventing the click
-						e.stopPropagation();
-					}
-				}
+				// Stop Autocomplete from handling the event: focusing the input prevents the click
+				e.stopPropagation();
 			}}
 			{...props}
 			ref={forwardedRef}

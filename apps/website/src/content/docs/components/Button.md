@@ -43,7 +43,7 @@ An [**Icon**](/components/icon) can be prepended or appended to the **Button’s
 
 ::example{src="mui/Button.colors"}
 
-- **Secondary:** The default tone. If unsure, use this.
+- **Secondary:** The default, neutral tone. If unsure, use this.
 - **Primary:** Reserved for key actions, tools, and call-to-actions like form submissions or dialog confirmations. Use sparingly—one per page or section. Multiple accent-toned buttons dilute impact and create visual noise.
 - **Error:** Reserved for destructive or potentially harmful actions, such as deleting content or cancelling subscriptions. Use sparingly to avoid desensitizing users to its significance.
 

@@ -56,9 +56,7 @@ An [**Icon**](/components/icon) can be prepended or appended to the **Button’s
 | Modal confirmation or form submission | ❌        | ✅      | ❌    |
 | Destructive call-to-action            | ❌        | ❌      | ✅    |
 
-## UX guidelines
-
-### ✅ Do
+## ✅ Do
 
 - Use **Button** for form submissions, modal confirmations, and other non-navigational calls-to-action.
 - Include a clear and concise label, describing the action the Button will take.
@@ -66,7 +64,7 @@ An [**Icon**](/components/icon) can be prepended or appended to the **Button’s
 - Use two buttons together, defining alternative or opposing actions, such as “Confirm” and “Cancel”.
 - Accompany text variants with icons, to increase affordance. Otherwise, they are less likely to be perceived as interactive.
 
-### 🚫 Don’t
+## 🚫 Don’t
 
 - Don't use **Button** for navigation. Use an [**Link**](/components/link) or simple text link instead.
 - Don't include multiple **Buttons** with the same label.

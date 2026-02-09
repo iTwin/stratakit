@@ -3,22 +3,10 @@
 
 const { entry } = Astro.locals.starlightRoute;
 
-const status = entry.data.status;
 const links = entry.data.links || {};
 
-const demoBase = "https://itwin.github.io/stratakit/";
-const demoUrl = links.demo ? demoBase + links.demo : null;
-
-const githubBase = "https://github.com/iTwin/stratakit/blob/main/";
-const githubUrl = links.github?.startsWith("https://")
-	? links.github
-	: links.github
-		? githubBase + links.github
-		: null;
-
-const figmaUrl = links.figma;
-
-const associated = entry.data.associated?.map(({ id }) => id) || [];
+const muiDocsUrl = links.muiDocs;
+const apiReferenceUrl = links.apiReference;
 ---
 
 <hgroup>
@@ -28,64 +16,21 @@ const associated = entry.data.associated?.map(({ id }) => id) || [];
 
 <dl>
 	{
-		status && (
-			<div class="inline-item">
-				<dt>
-					<a href={`${import.meta.env.BASE_URL}/guides/composition/#component-status`}>
-						Component status
-					</a>
-					:
-				</dt>
-				<dd>
-					<status-badge>{status}</status-badge>
-				</dd>
-			</div>
-		)
-	}
-	{
 		Object.keys(links).length > 0 && (
 			<div class="external-links">
 				<dt>Useful links:</dt>
 				<dd>
 					<ul role="list">
-						{demoUrl && (
+						{muiDocsUrl && (
 							<li>
-								<a href={demoUrl}>Demo page</a>
+								<a href={muiDocsUrl}>MUI docs</a>
 							</li>
 						)}
-						{githubUrl && (
+						{apiReferenceUrl && (
 							<li>
-								<a href={githubUrl}>GitHub source</a>
+								<a href={apiReferenceUrl}>API reference</a>
 							</li>
 						)}
-						{figmaUrl && (
-							<li>
-								<a href={figmaUrl}>Figma component</a>
-							</li>
-						)}
-					</ul>
-				</dd>
-			</div>
-		)
-	}
-	{
-		associated.length > 0 && (
-			<div>
-				<dt>
-					<a href={`${import.meta.env.BASE_URL}/guides/composition/#associated-components`}>
-						Associated components
-					</a>
-					:
-				</dt>
-				<dd>
-					<ul role="list">
-						{associated.map((component) => (
-							<li>
-								<a href={`${import.meta.env.BASE_URL}/components/${component.toLowerCase()}`}>
-									{component}
-								</a>
-							</li>
-						))}
 					</ul>
 				</dd>
 			</div>

@@ -102,6 +102,11 @@ function createTheme() {
 				defaultProps: {
 					popupIcon: <ChevronDownIcon />,
 					clearIcon: <DismissIcon />,
+					onKeyDown: (e) => {
+						if (e.key === "ArrowLeft" || e.key === "ArrowRight") {
+							e.defaultMuiPrevented = true; // Prevent MUI from handling left/right arrow keys to focus the tags
+						}
+					},
 					slotProps: {
 						paper: {
 							elevation: 8, // match Menu elevation

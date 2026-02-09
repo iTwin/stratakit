@@ -24,6 +24,7 @@ const ChipContext = React.createContext<
 const Chip = React.forwardRef<
 	HTMLDivElement,
 	React.ComponentProps<"div"> & {
+		// Used by `Autocomplete`.
 		"data-tag-index"?: number;
 	}
 >((props, forwardedRef) => {

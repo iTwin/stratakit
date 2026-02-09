@@ -5,12 +5,29 @@ import StrataKit from "./StrataKit.astro";
 import Fonts from "./Fonts.astro";
 import CustomElements from "./CustomElements.astro";
 
-const { head } = Astro.locals.starlightRoute;
+const { head: originalHead } = Astro.locals.starlightRoute;
+
+// Strip BASE_FOLDER from canonical URLs to ensure they always point to the main URL.
+// This is to prevent search engines from indexing temporary preview deployments.
+const BASE_FOLDER = process.env.BASE_FOLDER;
+const fixedHead = originalHead.map((item) => {
+	if (
+		BASE_FOLDER &&
+		item.tag === "link" &&
+		item.attrs?.rel === "canonical" &&
+		typeof item.attrs?.href === "string"
+	) {
+		const url = new URL(item.attrs.href);
+		url.pathname = url.pathname.replace(`/${BASE_FOLDER}`, "");
+		return { ...item, attrs: { ...item.attrs, href: url.toString() } };
+	}
+	return item;
+});
 ---
 
 <StrataKit />
 <Fonts />
 
-{head.map(({ tag: Tag, attrs, content }) => <Tag {...attrs} set:html={content} />)}
+{fixedHead.map(({ tag: Tag, attrs, content }) => <Tag {...attrs} set:html={content} />)}
 
 <CustomElements />

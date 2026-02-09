@@ -10,10 +10,26 @@ const BASE_URL = process.env.BASE_FOLDER
 	? `/${process.env.BASE_FOLDER}/docs`
 	: "/docs";
 
+const PROD_SITE_URL = process.env.GH_PAGES_URL;
+const DEV_PORT = 4321;
+
+/** `site` URL must only include the origin. */
+const site = PROD_SITE_URL
+	? new URL(PROD_SITE_URL).origin
+	: `http://localhost:${DEV_PORT}`;
+
+/** Combines the pathname from PROD_SITE_URL with BASE_URL. */
+const base = (() => {
+	const sitePathname = PROD_SITE_URL
+		? new URL(PROD_SITE_URL).pathname.replace(/\/$/, "")
+		: "";
+	return `${sitePathname}${BASE_URL}`;
+})();
+
 // https://astro.build/config
 export default defineConfig({
-	site: "https://supreme-barnacle-pl8jn8m.pages.github.io/",
-	base: BASE_URL,
+	site,
+	base,
 	integrations: [
 		starlight({
 			title: "StrataKit Docs",
@@ -36,11 +52,14 @@ export default defineConfig({
 				{
 					icon: "github",
 					label: "GitHub",
-					href: "https://github.com/iTwin/design-system",
+					href: "https://github.com/iTwin/stratakit",
 				},
 			],
 			sidebar: [
-				{ label: "Getting started", slug: "getting-started" },
+				{
+					label: "Getting started",
+					autogenerate: { directory: "getting-started" },
+				},
 				{ label: "Guides", autogenerate: { directory: "guides" } },
 				{
 					label: "Components",
@@ -53,8 +72,7 @@ export default defineConfig({
 				{ label: "Contributing", slug: "contributing" },
 			],
 			editLink: {
-				baseUrl:
-					"https://github.com/iTwin/design-system/edit/main/apps/website/",
+				baseUrl: "https://github.com/iTwin/stratakit/edit/main/apps/website/",
 			},
 			lastUpdated: true,
 			customCss: ["./src/styles/index.css"],
@@ -78,6 +96,9 @@ export default defineConfig({
 			},
 		},
 		plugins: [vitePluginFixAstroSvg()],
+	},
+	server: {
+		port: DEV_PORT,
 	},
 });
 

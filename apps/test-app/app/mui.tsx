@@ -45,6 +45,7 @@ import DialogDefault from "examples/mui/Dialog.default.tsx";
 import DividerDefault from "examples/mui/Divider.default.tsx";
 import DrawerDefault from "examples/mui/Drawer.default.tsx";
 import FabDefault from "examples/mui/Fab.default.tsx";
+import FormControlError from "examples/mui/FormControl.error.tsx";
 import FormControlGroup from "examples/mui/FormControl.group.tsx";
 import IconButtonColors_ from "examples/mui/IconButton._colors.tsx";
 import IconButtonDefault from "examples/mui/IconButton.default.tsx";
@@ -62,6 +63,7 @@ import PaginationDefault from "examples/mui/Pagination.default.tsx";
 import PaperDefault from "examples/mui/Paper.default.tsx";
 import PopoverDefault from "examples/mui/Popover.default.tsx";
 import RadioGroupDefault from "examples/mui/RadioGroup.default.tsx";
+import RadioGroupError from "examples/mui/RadioGroup.error.tsx";
 import RatingDefault from "examples/mui/Rating.default.tsx";
 import SelectDefault from "examples/mui/Select.default.tsx";
 import SelectIcon from "examples/mui/Select.icon.tsx";
@@ -180,7 +182,12 @@ const components: Record<string, React.ReactNode> = {
 	),
 	Drawer: <DrawerDefault />,
 	Fab: <FabDefault />,
-	FormControl: <FormControlGroup />,
+	FormControl: (
+		<>
+			<FormControlGroup />
+			<FormControlError />
+		</>
+	),
 	IconButton: (
 		<>
 			<IconButtonDefault />
@@ -224,7 +231,12 @@ const components: Record<string, React.ReactNode> = {
 	Pagination: <PaginationDefault />,
 	Paper: <PaperDefault />,
 	Popover: <PopoverDefault />,
-	RadioGroup: <RadioGroupDefault />,
+	RadioGroup: (
+		<>
+			<RadioGroupDefault />
+			<RadioGroupError />
+		</>
+	),
 	Rating: <RatingDefault />,
 	Select: (
 		<>

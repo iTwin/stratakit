@@ -1,7 +1,12 @@
 ---
 title: Link
-description: The Link creates a styled hyperlink between pages and sections within pages.
+description: Links are styled hyperlinks between pages and sections within pages.
+links:
+  muiDocs: https://mui.com/material-ui/react-link/
+  apiReference: https://mui.com/material-ui/api/link/
 ---
+
+::example{src="mui/Link.default"}
 
 ## Use cases
 
@@ -11,12 +16,6 @@ Make sure the **Link** is suitable for your use case. There may be other, more a
 | -------------------------------------------------------------------------------- | ------------------------ | ---------------------------- |
 | Navigating between interface screens or sections                                 | ✅                       | ❌                           |
 | Submitting forms, confirming or cancelling dialogs, creating or deleting content | ❌                       | ✅                           |
-
-## Usage
-
-::example{src="mui/Link.default"}
-
-The **Link** inherits the standard HTML `<a>` element’s API and supports all the same attributes. As with a standard `<a>`, omitting the `href` will make the element a [placeholder link](https://www.scottohara.me/note/2019/07/17/placeholder-link.html).
 
 ## ✅ Do
 

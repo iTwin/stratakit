@@ -7,3 +7,9 @@ links:
 ---
 
 ::example{src="mui/Autocomplete.default"}
+
+## Examples
+
+### Multiple values
+
+::example{src="mui/Autocomplete.multiple"}

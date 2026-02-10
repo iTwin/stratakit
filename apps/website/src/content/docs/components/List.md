@@ -7,3 +7,13 @@ links:
 ---
 
 ::example{src="mui/List.default"}
+
+## Examples
+
+### ListItemAvatar
+
+::example{src="mui/List.avatar"}
+
+### ListSubheader
+
+::example{src="mui/List.subheader"}

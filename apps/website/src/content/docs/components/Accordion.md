@@ -7,3 +7,9 @@ links:
 ---
 
 ::example{src="mui/Accordion.default"}
+
+## Examples
+
+### AccordionActions
+
+::example{src="mui/Accordion.actions"}

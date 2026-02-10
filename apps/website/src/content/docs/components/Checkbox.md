@@ -7,3 +7,21 @@ links:
 ---
 
 ::example{src="mui/Checkbox.default"}
+
+## Examples
+
+### Checked
+
+::example{src="mui/Checkbox.checked"}
+
+### Indeterminate
+
+::example{src="mui/Checkbox.indeterminate"}
+
+### Group
+
+::example{src="mui/FormControl.group"}
+
+### Error
+
+::example{src="mui/FormControl.error"}

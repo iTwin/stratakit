@@ -7,3 +7,9 @@ links:
 ---
 
 ::example{src="mui/RadioGroup.default"}
+
+## Examples
+
+### Error
+
+::example{src="mui/RadioGroup.error"}

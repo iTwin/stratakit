@@ -7,3 +7,9 @@ links:
 ---
 
 ::example{src="mui/Switch.default"}
+
+## Examples
+
+### Checked
+
+::example{src="mui/Switch.checked"}

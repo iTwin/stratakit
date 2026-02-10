@@ -7,3 +7,9 @@ links:
 ---
 
 ::example{src="mui/Table.default"}
+
+## Examples
+
+### Footer
+
+::example{src="mui/Table.footer"}

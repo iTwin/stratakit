@@ -10,6 +10,14 @@ links:
 
 ## Examples
 
+### Optional
+
+::example{src="mui/Stepper.optional"}
+
+### StepButton
+
+::example{src="mui/Stepper.clickable"}
+
 ### MobileStepper
 
 ::example{src="mui/MobileStepper.default"}

@@ -7,3 +7,9 @@ links:
 ---
 
 ::example{src="mui/Chip.default"}
+
+## Examples
+
+### Outlined
+
+::example{src="mui/Chip.outlined"}

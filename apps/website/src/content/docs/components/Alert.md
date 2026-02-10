@@ -7,3 +7,9 @@ links:
 ---
 
 ::example{src="mui/Alert.default"}
+
+## Examples
+
+### AlertTitle
+
+::example{src="mui/Alert.title"}

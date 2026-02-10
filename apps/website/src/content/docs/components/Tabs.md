@@ -7,3 +7,9 @@ links:
 ---
 
 ::example{src="mui/Tabs.default"}
+
+## Examples
+
+### Scrollable
+
+::example{src="mui/Tabs.scrollable"}

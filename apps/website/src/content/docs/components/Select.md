@@ -10,6 +10,14 @@ links:
 
 ## Examples
 
+### Icon
+
+::example{src="mui/Select.icon"}
+
+### Multiple values
+
+::example{src="mui/Select.multiple"}
+
 ### Native
 
 ::example{src="mui/NativeSelect.default"}

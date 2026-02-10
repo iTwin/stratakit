@@ -4,13 +4,14 @@
  *--------------------------------------------------------------------------------------------*/
 
 import Button from "@mui/material/Button";
+import Stack from "@mui/material/Stack";
 import { Icon } from "@stratakit/mui";
 
 import svgPlaceholder from "@stratakit/icons/placeholder.svg";
 
 export default () => {
 	return (
-		<>
+		<Stack spacing={1} direction="row">
 			<Button startIcon={<Icon href={svgPlaceholder} />}>Start icon</Button>
 			<Button endIcon={<Icon href={svgPlaceholder} />}>End icon</Button>
 			<Button
@@ -19,6 +20,6 @@ export default () => {
 			>
 				Both icons
 			</Button>
-		</>
+		</Stack>
 	);
 };

@@ -1,6 +1,6 @@
 ---
 import { getCollection } from "astro:content";
-import ExamplePreview from "../../components/ExamplePreview";
+import ExamplePreview from "../../components/ExamplePreview.tsx";
 
 export async function getStaticPaths() {
 	const examples = await getCollection("examples");
@@ -13,7 +13,7 @@ export async function getStaticPaths() {
 const { example } = Astro.props;
 
 const { packageName } = example.data;
-const exampleName = example.id.split(`${packageName}/`).at(-1);
+const exampleName = example.id.split(`${packageName}/`).at(-1)!;
 ---
 
 <html lang="en">

@@ -1,17 +1,30 @@
 ---
-// This simply registers the `<example-embed>` element.
+// This simply registers the `<example-embed>` element, which renders a React component.
 ---
 
 <script>
+	import { createElement } from "react";
+	import { createRoot } from "react-dom/client";
+	import ExampleEmbed from "./ExampleEmbed.tsx";
+
 	customElements.define(
 		"example-embed",
 		class extends HTMLElement {
-			constructor() {
-				super();
-				const shadow = this.attachShadow({ mode: "open" });
-				shadow.innerHTML = `<div role="group" aria-label="Example"><slot></slot></div>`;
+			#root: ReturnType<typeof createRoot> | null = null;
+
+			connectedCallback() {
+				const src = this.dataset.src;
+				if (!src) return;
+
+				const root = createRoot(this);
+				root.render(createElement(ExampleEmbed, { src }));
+				this.#root = root;
 			}
-		}
+
+			disconnectedCallback() {
+				this.#root?.unmount();
+			}
+		},
 	);
 </script>
 

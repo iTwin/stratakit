@@ -23,7 +23,7 @@ Make sure the **Button** is suitable for your use case. There may be other, more
 
 ### Icons
 
-An [**Icon**](/components/icon) can be prepended or appended to the **Button’s** text label. It’s important the **Icon’s** `alt` is omitted, since the text already provides the accessible label. In the following example, a “+” icon is appended to the text “Add new”.
+An [**Icon**](/components/icon) can be displayed before or after the **Button’s** text label using the `startIcon` or `endIcon` props. It’s important the **Icon’s** `alt` is omitted, since the text already provides the accessible label. In the following example, a “+” icon is appended to the text “Add new”.
 
 ::example{src="mui/Button.icon"}
 

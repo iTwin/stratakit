@@ -22,6 +22,14 @@
 	margin-inline-start: var(--stratakit-space-x1);
 	margin-inline-end: 0;
 
+	&:where(.MuiAutocomplete-tagSizeSmall) {
+		block-size: var(--stratakit-space-x5);
+	}
+
+	&:where(.MuiAutocomplete-tagSizeMedium) {
+		block-size: var(--stratakit-space-x6);
+	}
+
 	&:where(:nth-child(1 of &)) {
 		margin-inline-start: var(--stratakit-space-x2);
 	}

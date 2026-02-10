@@ -6,6 +6,8 @@ links:
   apiReference: https://mui.com/material-ui/api/icon-button/
 ---
 
+::example{src="mui/IconButton.default"}
+
 ## Use cases
 
 Make sure the **IconButton** is suitable for your use case. There may be other, more appropriate components available.
@@ -17,11 +19,7 @@ Make sure the **IconButton** is suitable for your use case. There may be other, 
 | Inside a [toolbar](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/toolbar_role) | ❌                           | ✅                                   |
 | Table cell (inline action)                                                                                       | ❌                           | ✅                                   |
 
-## Usage
-
-::example{src="mui/IconButton.default"}
-
-The **IconButton** component renders as an HTML [`<button>` element](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/button). It supports the `<button>` element’s API, including all of its attributes.
+## Examples
 
 ### Badge
 

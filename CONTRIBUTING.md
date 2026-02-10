@@ -6,23 +6,23 @@ Welcome to the contribution guide for StrataKit! In here you will find all the i
 
 ## How to setup
 
-### Using GitHub Codespaces (cloud IDE)
-
-To get started without having to install anything locally, you can create a [Codespace](https://docs.github.com/en/codespaces/overview) for this repository by clicking this link:
-
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/iTwin/design-system)
-
 ### Local setup
 
 To clone and build the repo locally, you'll need [Git](https://git-scm.com), [Node 22+](https://nodejs.org/en/download/), and [Pnpm 9](https://pnpm.io/installation) installed on your computer.
 
 1. [Clone the repository](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository). You can do this from the command line or using the Github Desktop app.
 
-2. Go to the directory where you cloned the repo. e.g. `cd design-system`.
+2. Go to the directory where you cloned the repo. e.g. `cd stratakit`.
 
 3. Run `pnpm install` from that directory.
 
 **VSCode Users:** Install the recommended [extensions](./.vscode/extensions.json) for linter warnings in editor.
+
+### Using devcontainers
+
+This repo includes a [devcontainer](https://containers.dev/) configuration that compatible IDEs can use to automatically set up your development environment. To use this locally, you'll need Docker or an equivalent container runtime installed on your machine.
+
+Alternatively, you can get started without installing anything locally by creating a [GitHub Codespace](https://docs.github.com/en/codespaces/overview), which uses the same devcontainer configuration but runs entirely in the cloud: [Open repository in Codespace](https://codespaces.new/iTwin/stratakit).
 
 ---
 

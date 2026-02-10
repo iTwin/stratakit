@@ -148,7 +148,7 @@ aside .right-sidebar {
 	}
 }
 
-.sl-markdown-content :is(ul, ol):where(:not(.not-content)) {
+.sl-markdown-content :is(ul, ol):where(:not(.not-content, [role="tablist"], .sl-steps)) {
 	margin-inline-start: var(--stratakit-space-x4);
 
 	ul,
@@ -194,13 +194,44 @@ aside.starlight-aside {
 	box-shadow: none;
 }
 
+.expressive-code figcaption.header {
+	background: transparent;
+	border-start-start-radius: 4px;
+	border-start-end-radius: 4px;
+	border: 1px solid var(--stratakit-color-border-neutral-base);
+
+	&::before,
+	&::after {
+		border: none;
+	}
+
+	.title:not(:empty) {
+		background-color: transparent;
+		border-inline-end: 1px solid var(--stratakit-color-border-neutral-base);
+
+		&::after {
+			border-block-start-color: var(--stratakit-color-border-neutral-faded);
+		}
+	}
+}
+
 .expressive-code pre {
 	border-color: var(--stratakit-color-border-neutral-base);
 	background-color: transparent;
 	border-radius: 4px;
+
+	:is(figcaption.header:not(:empty)) ~ & {
+		border-start-start-radius: 0;
+		border-start-end-radius: 0;
+	}
 }
 
 starlight-menu-button button {
 	justify-content: center;
 	align-items: center;
+}
+
+.sl-steps > li::before {
+	text-indent: 0;
+	font-variant: tabular-nums;
 }

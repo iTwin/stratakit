@@ -2,10 +2,16 @@
 import { getCollection, getEntries } from "astro:content";
 import StarlightPage from "@astrojs/starlight/components/StarlightPage.astro";
 import AnchorHeading from "@astrojs/starlight/components/AnchorHeading.astro";
+import { Badge } from "@astrojs/starlight/components";
 
 const packagesCollection = await getCollection("packages");
 
 const packages = await getEntries(packagesCollection);
+packages.sort((a, b) => {
+	if (a.id === "structures") return -1;
+	if (b.id === "structures") return 1;
+	return 0;
+});
 
 const headings = packages.map((pkg) => ({
 	depth: 2 as const,
@@ -21,7 +27,8 @@ const headings = packages.map((pkg) => ({
 			return (
 				<>
 					<AnchorHeading level={heading.depth} id={heading.slug}>
-						{heading.text}
+						{heading.text}{" "}
+						{pkg.id !== "structures" && <Badge variant="danger" text="Maintenance mode" />}
 					</AnchorHeading>
 					<ul>
 						{pkg.data.apis.map((api) => {

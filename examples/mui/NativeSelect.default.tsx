@@ -15,7 +15,9 @@ export default () => {
 	const inputId = React.useId();
 	return (
 		<FormControl className={styles.formControl}>
-			<InputLabel htmlFor={inputId}>Choose a design system:</InputLabel>
+			<InputLabel variant="standard" htmlFor={inputId}>
+				Choose a design system:
+			</InputLabel>
 			<NativeSelect
 				defaultValue={2}
 				input={<OutlinedInput />}

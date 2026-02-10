@@ -103,6 +103,11 @@ declare module "@mui/material/FormLabel" {
 		warning: false;
 		error: false;
 	}
+
+	interface FormLabelOwnProps {
+		/** @deprecated */
+		component?: never; // `@deprecated` marker is not showing up, so using `never` to prevent usage of this prop.
+	}
 }
 
 declare module "@mui/material/IconButton" {

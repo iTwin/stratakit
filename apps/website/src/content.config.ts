@@ -7,7 +7,6 @@ import { defineCollection, reference, z } from "astro:content";
 import * as fs from "node:fs/promises";
 import { createRequire } from "node:module";
 import * as path from "node:path";
-import * as process from "node:process";
 
 import { docsLoader } from "@astrojs/starlight/loaders";
 import { docsSchema } from "@astrojs/starlight/schema";
@@ -23,17 +22,12 @@ export const collections = {
 		loader: docsLoader(),
 		schema: docsSchema({
 			extend: z.object({
-				status: z
-					.enum(["draft", "unstable", "stable", "deprecated", "unknown"])
-					.optional(),
 				links: z
 					.object({
-						demo: z.string().optional(),
-						github: z.string().optional(),
-						figma: z.string().optional(),
+						muiDocs: z.string().optional(),
+						apiReference: z.string().optional(),
 					})
 					.optional(),
-				associated: z.array(reference("docs")).optional(),
 			}),
 		}),
 	}),

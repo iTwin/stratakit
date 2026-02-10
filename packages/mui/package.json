@@ -26,10 +26,10 @@
 	],
 	"description": "StrataKit theme for Material UI",
 	"author": "Bentley Systems",
-	"homepage": "https://github.com/iTwin/design-system",
+	"homepage": "https://github.com/iTwin/stratakit",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/iTwin/design-system.git",
+		"url": "https://github.com/iTwin/stratakit.git",
 		"directory": "packages/mui"
 	},
 	"keywords": [
@@ -49,6 +49,7 @@
 		"dev": "wireit"
 	},
 	"dependencies": {
+		"@ariakit/react": "^0.4.21",
 		"@stratakit/foundations": "^0.4.6",
 		"@stratakit/icons": "^0.3.0",
 		"classnames": "^2.5.1",

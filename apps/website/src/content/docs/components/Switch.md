@@ -20,6 +20,12 @@ Make sure the **Switch** is suitable for your use case. There may be other, more
 | Confirm an input for a form submission                            | ❌                           | ❌                                   | ❌                           | ✅                               | ❌                       |
 | Navigate between interface screens or sections                    | ❌                           | ❌                                   | ❌                           | ❌                               | ✅                       |
 
+## Examples
+
+### Checked
+
+::example{src="mui/Switch.checked"}
+
 ## ✅ Do
 
 - Use a clear, descriptive label for each **Switch**.

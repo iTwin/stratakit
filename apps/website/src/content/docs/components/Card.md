@@ -7,3 +7,13 @@ links:
 ---
 
 ::example{src="mui/Card.default"}
+
+## Examples
+
+### CardActions
+
+::example{src="mui/Card.actions"}
+
+### CardHeader
+
+::example{src="mui/Card.header"}

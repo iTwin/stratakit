@@ -66,7 +66,7 @@ An [**Icon**](/components/icon) can be prepended or appended to the **Button’s
 
 ## 🚫 Don’t
 
-- Don't use **Button** for navigation. Use an [**Link**](/components/link) or simple text link instead.
+- Don't use **Button** for navigation. Use a [**Link**](/components/link) or simple text link instead.
 - Don't include multiple **Buttons** with the same label.
 - Don't use unclear or superfluous icons. The text label is paramount.
 - Don't include **Buttons** in a [toolbar](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/toolbar_role). Use [**IconButtons**](/components/iconbutton) instead.

@@ -6,6 +6,8 @@ links:
   apiReference: https://mui.com/material-ui/api/switch/
 ---
 
+::example{src="mui/Switch.default"}
+
 ## Use cases
 
 Make sure the **Switch** is suitable for your use case. There may be other, more appropriate components available.
@@ -17,12 +19,6 @@ Make sure the **Switch** is suitable for your use case. There may be other, more
 | Make an instantaneous, binary choice (switch a setting on or off) | ❌                           | ❌                                   | ✅                           | ❌                               | ❌                       |
 | Confirm an input for a form submission                            | ❌                           | ❌                                   | ❌                           | ✅                               | ❌                       |
 | Navigate between interface screens or sections                    | ❌                           | ❌                                   | ❌                           | ❌                               | ✅                       |
-
-## Usage
-
-::example{src="mui/Switch.default"}
-
-The **Switch** must have an accessible label. Use the [**FormControlLabel**](https://mui.com/material-ui/api/form-control-label/) component to automatically associate the label to the **Switch**.
 
 ## ✅ Do
 

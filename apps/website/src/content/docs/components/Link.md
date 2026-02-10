@@ -8,9 +8,9 @@ description: The Link creates a styled hyperlink between pages and sections with
 Make sure the **Link** is suitable for your use case. There may be other, more appropriate components available.
 
 | Use case                                                                         | [Link](/components/link) | [Button](/components/button) |
-| -------------------------------------------------------------------------------- | :----------------------: | :--------------------------: |
-| Navigating between interface screens or sections                                 |            ✅            |              ❌              |
-| Submitting forms, confirming or cancelling dialogs, creating or deleting content |            ❌            |              ✅              |
+| -------------------------------------------------------------------------------- | ------------------------ | ---------------------------- |
+| Navigating between interface screens or sections                                 | ✅                       | ❌                           |
+| Submitting forms, confirming or cancelling dialogs, creating or deleting content | ❌                       | ✅                           |
 
 ## Usage
 

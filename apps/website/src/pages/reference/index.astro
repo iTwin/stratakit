@@ -28,7 +28,7 @@ const headings = packages.map((pkg) => ({
 				<>
 					<AnchorHeading level={heading.depth} id={heading.slug}>
 						{heading.text}{" "}
-						{pkg.id !== "structures" && <Badge variant="danger" text="Maintenance mode" />}
+						{pkg.id === "bricks" && <Badge variant="danger" text="Maintenance mode" />}
 					</AnchorHeading>
 					<ul>
 						{pkg.data.apis.map((api) => {

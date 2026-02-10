@@ -10,6 +10,6 @@ links:
 
 ## Examples
 
-### Mobile
+### MobileStepper
 
 ::example{src="mui/MobileStepper.default"}

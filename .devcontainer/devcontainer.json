@@ -1,8 +1,8 @@
 {
-	"image": "mcr.microsoft.com/devcontainers/universal:2",
+	"image": "mcr.microsoft.com/devcontainers/universal",
 	"customizations": {
 		"codespaces": {
-			"openFiles": ["apps/test-app/app/sandbox.tsx"]
+			"openFiles": ["apps/test-app/app/index.tsx"]
 		},
 		"vscode": {
 			"extensions": [

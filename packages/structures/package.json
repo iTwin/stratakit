@@ -99,10 +99,10 @@
 	],
 	"description": "Medium-sized component structures for the Strata design system",
 	"author": "Bentley Systems",
-	"homepage": "https://github.com/iTwin/design-system",
+	"homepage": "https://github.com/iTwin/stratakit",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/iTwin/design-system.git",
+		"url": "https://github.com/iTwin/stratakit.git",
 		"directory": "packages/structures"
 	},
 	"keywords": [

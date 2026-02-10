@@ -1,0 +1,1 @@
+import{r as t}from"./index.DIfZGIpv.js";import{D as c}from"./ExamplePreview.yXN-AmSz.js";function o(r){const e=t.useRef(r);return c(()=>{e.current=r}),t.useRef((...u)=>(0,e.current)(...u)).current}export{o as u};

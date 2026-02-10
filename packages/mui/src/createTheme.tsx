@@ -3,6 +3,8 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
+import * as React from "react";
+import { Role } from "@ariakit/react/role";
 import { createTheme as createMuiTheme } from "@mui/material/styles";
 import {
 	ArrowDownIcon,
@@ -19,6 +21,7 @@ import {
 	WarningIcon,
 } from "./Icon.js";
 
+import type { RoleProps } from "@ariakit/react/role";
 import type { ColorSystemOptions } from "@mui/material/styles";
 
 /**
@@ -81,13 +84,17 @@ function createTheme() {
 			// biome-ignore lint/suspicious/noExplicitAny: MUI expects 25 items in the shadows array
 		] as any,
 		components: {
+			MuiAppBar: { defaultProps: { component: Role.header } },
+			MuiAccordion: { defaultProps: { component: Role.div } },
 			MuiAccordionSummary: {
 				defaultProps: {
+					component: Role.div,
 					expandIcon: <ChevronDownIcon />,
 				},
 			},
 			MuiAlert: {
 				defaultProps: {
+					component: Role.div,
 					variant: "outlined",
 					iconMapping: {
 						error: <ErrorIcon />,
@@ -97,6 +104,7 @@ function createTheme() {
 					},
 				},
 			},
+			MuiAlertTitle: { defaultProps: { component: Role.div } },
 			MuiAutocomplete: {
 				defaultProps: {
 					popupIcon: <ChevronDownIcon />,
@@ -111,62 +119,91 @@ function createTheme() {
 					},
 				},
 			},
+			MuiAvatar: { defaultProps: { component: Role.div } },
+			MuiAvatarGroup: { defaultProps: { component: Role.div } },
+			MuiBackdrop: { defaultProps: { component: Role.div } },
+			MuiBadge: { defaultProps: { component: Role.span } },
+			MuiBottomNavigation: { defaultProps: { component: Role.div } },
+			MuiBottomNavigationAction: {
+				defaultProps: { component: Role.button },
+			},
 			MuiBreadcrumbs: {
 				defaultProps: {
+					component: Role.nav,
 					separator: <ChevronRightIcon />,
 				},
 			},
 			MuiButtonBase: {
 				defaultProps: {
+					component: Role.button,
 					disableRipple: true, // https://mui.com/material-ui/getting-started/faq/#how-can-i-disable-the-ripple-effect-globally
 				},
 			},
 			MuiButton: {
 				defaultProps: {
+					component: Role.button,
 					color: "secondary",
 					variant: "contained",
 				},
 			},
 			MuiButtonGroup: {
 				defaultProps: {
+					component: Role.div,
 					color: "secondary",
 					disableRipple: true, // ButtonGroup overrides Button's disableRipple so we need to set it here as well
 				},
 			},
-			MuiChip: {
-				defaultProps: {
-					deleteIcon: <DismissIcon />,
-				},
+			MuiCard: { defaultProps: { component: Role.div } },
+			MuiCardActionArea: {
+				defaultProps: { component: Role.button },
 			},
+			MuiCardContent: { defaultProps: { component: Role.div } },
+			MuiCardMedia: { defaultProps: { component: Role.div } },
 			MuiCheckbox: {
 				defaultProps: {
+					component: Role.span,
 					disableRipple: true, // Checkbox doesn't inherit from ButtonBase
 					icon: <></>,
 					checkedIcon: <></>,
 					indeterminateIcon: <></>,
 				},
 			},
-			MuiRadio: {
+			MuiChip: {
 				defaultProps: {
-					disableRipple: true, // Radio doesn't inherit from ButtonBase
-					icon: <></>,
-					checkedIcon: <></>,
+					component: Role.div,
+					deleteIcon: <DismissIcon />,
 				},
 			},
-			MuiInputLabel: {
-				defaultProps: {
-					shrink: true, // Removes label animation and masked border from TextField
-				},
-			},
+			MuiContainer: { defaultProps: { component: Role.div } },
+			MuiDialog: { defaultProps: { component: Role.div } },
+			MuiDialogContentText: { defaultProps: { component: Role.p } },
+			MuiDialogTitle: { defaultProps: { component: Role.h2 } },
+			MuiDivider: { defaultProps: { component: withRenderProp(Role, "hr") } },
+			MuiDrawer: { defaultProps: { component: Role.div } },
 			MuiFab: {
 				defaultProps: {
+					component: Role.button,
 					color: "primary",
 				},
 			},
-			MuiLink: {
+			MuiFormControl: { defaultProps: { component: Role.div } },
+			MuiFormHelperText: { defaultProps: { component: Role.p } },
+			MuiFormLabel: { defaultProps: { component: Role.label } },
+			MuiGrid: { defaultProps: { component: Role.div } },
+			MuiGridLegacy: { defaultProps: { component: Role.div } },
+			MuiIcon: { defaultProps: { component: Role.span } },
+			MuiIconButton: { defaultProps: { component: Role.button } },
+			MuiImageList: { defaultProps: { component: Role.ul } },
+			MuiImageListItem: { defaultProps: { component: Role.li } },
+			MuiInputAdornment: { defaultProps: { component: Role.div } },
+			MuiInputLabel: {
 				defaultProps: {
-					color: "textPrimary",
+					component: Role.label,
+					shrink: true, // Removes label animation and masked border from TextField
 				},
+			},
+			MuiLink: {
+				defaultProps: { component: Role.a, color: "textPrimary" },
 				variants: [
 					{
 						props: { color: "primary" },
@@ -194,6 +231,17 @@ function createTheme() {
 					},
 				],
 			},
+			MuiList: { defaultProps: { component: Role.ul } },
+			MuiListItem: { defaultProps: { component: Role.li } },
+			MuiListItemButton: {
+				defaultProps: { component: Role.button },
+			},
+			MuiListSubheader: { defaultProps: { component: Role.li } },
+			MuiMenu: { defaultProps: { component: Role.div } },
+			MuiMenuItem: { defaultProps: { component: Role.li } },
+			MuiMenuList: { defaultProps: { component: Role.ul } },
+			MuiMobileStepper: { defaultProps: { component: Role.div } },
+			MuiModal: { defaultProps: { component: Role.div } },
 			MuiOutlinedInput: {
 				defaultProps: {
 					notched: false, // Removes masked border from Select
@@ -201,6 +249,7 @@ function createTheme() {
 			},
 			MuiPaginationItem: {
 				defaultProps: {
+					component: Role.button,
 					slots: {
 						previous: ChevronLeftIcon,
 						next: ChevronRightIcon,
@@ -209,9 +258,57 @@ function createTheme() {
 					},
 				},
 			},
+			MuiPaper: { defaultProps: { component: Role.div } },
+			MuiPopover: { defaultProps: { component: Role.div } },
+			MuiRadio: {
+				defaultProps: {
+					component: Role.span,
+					disableRipple: true, // Radio doesn't inherit from ButtonBase
+					icon: <></>,
+					checkedIcon: <></>,
+				},
+			},
+			MuiRating: { defaultProps: { component: Role.span } },
 			MuiSelect: {
 				defaultProps: {
 					IconComponent: CaretsUpDownIcon,
+				},
+			},
+			MuiSkeleton: { defaultProps: { component: Role.span } },
+			MuiSlider: { defaultProps: { component: Role.span } },
+			MuiSnackbarContent: { defaultProps: { component: Role.div } },
+			MuiStack: { defaultProps: { component: Role.div } },
+			MuiStep: { defaultProps: { component: Role.div } },
+			MuiStepButton: { defaultProps: { component: Role.button } },
+			MuiSwitch: { defaultProps: { component: Role.span } },
+			MuiStepper: { defaultProps: { component: Role.div } },
+			MuiSvgIcon: { defaultProps: { component: Role.svg } },
+			MuiSwipeableDrawer: { defaultProps: { component: Role.div } },
+			MuiTab: { defaultProps: { component: Role.button } },
+			MuiTabs: { defaultProps: { component: Role.div } },
+			MuiTable: { defaultProps: { component: withRenderProp(Role, "table") } },
+			MuiTableBody: {
+				defaultProps: { component: withRenderProp(Role, "tbody") },
+			},
+			// MuiTableCell: { defaultProps: { component: withRenderProp(Role, "td") } }, // This dynamically renders as `th` when inside TableHeader
+			MuiTableContainer: {
+				defaultProps: { component: withRenderProp(Role, "div") },
+			},
+			MuiTableFooter: {
+				defaultProps: { component: withRenderProp(Role, "tfoot") },
+			},
+			MuiTableHead: {
+				defaultProps: { component: withRenderProp(Role, "thead") },
+			},
+			MuiTablePagination: {
+				defaultProps: { component: withRenderProp(Role, "td") },
+			},
+			MuiTableRow: { defaultProps: { component: withRenderProp(Role, "tr") } },
+			MuiTableSortLabel: {
+				defaultProps: {
+					component: Role.span,
+					// TODO: This should use sort-ascending and sort-descending icons, but that requires disabling MUI's built-in icon rotation.
+					IconComponent: ArrowDownIcon,
 				},
 			},
 			MuiTablePaginationActions: {
@@ -224,18 +321,28 @@ function createTheme() {
 					},
 				},
 			},
-			MuiTableSortLabel: {
-				defaultProps: {
-					// TODO: This should use sort-ascending and sort-descending icons, but that requires disabling MUI's built-in icon rotation.
-					IconComponent: ArrowDownIcon,
-				},
-			},
+			// MuiTextField: { defaultProps: { component: Role.input } }, // This dynamically renders as `textarea` when multiline is true
+			MuiToggleButton: { defaultProps: { component: Role.button } },
+			MuiToolbar: { defaultProps: { component: Role.div } },
 			MuiTooltip: {
 				defaultProps: {
 					describeChild: true,
 				},
 			},
+			MuiTypography: { defaultProps: { component: Role.p } },
 		},
+	});
+}
+
+// ----------------------------------------------------------------------------
+
+/** HOC that sets a default value for the `render` prop. */
+function withRenderProp(
+	Role: React.ComponentType<RoleProps>,
+	DefaultTagName: React.ElementType,
+) {
+	return React.forwardRef<HTMLDivElement, RoleProps>((props, forwardedRef) => {
+		return <Role render={<DefaultTagName />} {...props} ref={forwardedRef} />;
 	});
 }
 

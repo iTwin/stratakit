@@ -10,6 +10,6 @@ links:
 
 ## Examples
 
-### Swipeable
+### SwipeableDrawer
 
 ::example{src="mui/SwipeableDrawer.default"}

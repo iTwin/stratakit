@@ -1,0 +1,1 @@
+import{p as o}from"./chunk-JZWAC4HX-ROAaBwzV.js";import{o as i,R as m,a as n}from"./~utils-CKswT0zA.js";import{u as d}from"./~utils.useInit-CaQTUpRg.js";const u=i((a,e)=>{d();const{variant:t="text",size:s="medium",...r}=a;return o.jsx(m.div,{...r,ref:e,className:n("🥝Skeleton",a.className),"data-_sk-variant":t,"data-_sk-size":s,"aria-hidden":!0})});var c=u;export{c as S};

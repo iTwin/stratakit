@@ -7,9 +7,3 @@ links:
 ---
 
 ::example{src="mui/IconButton.default"}
-
-## Examples
-
-### Toggle
-
-::example{src="mui/ToggleButton.default"}

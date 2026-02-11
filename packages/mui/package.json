@@ -49,6 +49,7 @@
 		"dev": "wireit"
 	},
 	"dependencies": {
+		"@ariakit/react": "^0.4.21",
 		"@mui/utils": "catalog:",
 		"@stratakit/foundations": "^0.4.6",
 		"@stratakit/icons": "^0.3.0",

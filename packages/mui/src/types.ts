@@ -7,8 +7,29 @@
 // See: https://mui.com/material-ui/customization/theming/#typescript
 // See: https://www.typescriptlang.org/docs/handbook/declaration-merging.html#module-augmentation
 
+import type { RoleProps } from "@ariakit/react/role";
 import type { TextFieldProps, TextFieldVariants } from "@mui/material";
 import type * as React from "react";
+
+declare module "@mui/material/OverridableComponent" {
+	interface CommonProps {
+		/**
+		 * Customize the `root` element by passing a React element.
+		 *
+		 * @example
+		 * ```tsx
+		 * render={<a href="/example" />}>
+		 * ```
+		 *
+		 * **Note**: When using the `render` prop with a custom component, you must ensure the component is open for extension.
+		 * This means it should pass the incoming props, including event listeners and the forwarded `ref` prop, to the underlying element.
+		 */
+		render?: RoleProps["render"];
+
+		/** @deprecated Use `render` prop instead. */
+		component?: React.ElementType;
+	}
+}
 
 declare module "@mui/material/Alert" {
 	interface AlertPropsVariantOverrides {

@@ -383,6 +383,9 @@ importers:
 
   packages/mui:
     dependencies:
+      "@ariakit/react":
+        specifier: ^0.4.21
+        version: 0.4.21(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
       "@mui/material":
         specifier: ^7.3.6
         version: 7.3.7(@emotion/react@11.14.0(@types/react@19.2.10)(react@19.2.4))(@emotion/styled@11.14.1(@emotion/react@11.14.0(@types/react@19.2.10)(react@19.2.4))(@types/react@19.2.10)(react@19.2.4))(@types/react@19.2.10)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)

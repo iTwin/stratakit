@@ -308,7 +308,10 @@ function createTheme() {
 				defaultProps: { component: withRenderProp(Role, "thead") },
 			},
 			MuiTablePagination: {
-				defaultProps: { component: withRenderProp(Role, "td") },
+				defaultProps: {
+					component: withRenderProp(Role, "td"),
+					slotProps: { root: { colSpan: 999 } },
+				},
 			},
 			MuiTableRow: { defaultProps: { component: withRenderProp(Role, "tr") } },
 			MuiTableSortLabel: {

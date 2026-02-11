@@ -4,8 +4,8 @@
  *--------------------------------------------------------------------------------------------*/
 
 import * as React from "react";
+import { VisuallyHidden } from "@ariakit/react/visually-hidden";
 import MuiIconButton from "@mui/material/IconButton";
-import visuallyHidden from "@mui/utils/visuallyHidden";
 import { useSafeContext } from "@stratakit/foundations/secret-internals";
 import { DismissIcon } from "./Icon.js";
 
@@ -91,9 +91,7 @@ const ChipDeleteIcon = React.forwardRef<
 			{...props}
 			ref={forwardedRef}
 		>
-			<span id={dismissId} style={visuallyHidden}>
-				{dismissLabel}
-			</span>
+			<VisuallyHidden id={dismissId}>{dismissLabel}</VisuallyHidden>
 			<DismissIcon />
 		</MuiIconButton>
 	);

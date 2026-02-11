@@ -1,1 +1,0 @@
-import{N as f,O as S,Q as i,S as c}from"./ExamplePreview.DAvJoFtz.js";function u(o){const{elementType:s,externalSlotProps:t,ownerState:e,skipResolvingSlotProps:n=!1,...p}=o,r=n?{}:f(t,e),{props:l,internalRef:a}=S({...p,externalSlotProps:r}),P=i(a,r?.ref,o.additionalProps?.ref);return c(s,{...l,ref:P},e)}export{u};

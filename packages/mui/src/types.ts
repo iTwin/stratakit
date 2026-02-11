@@ -75,17 +75,6 @@ declare module "@mui/material/Checkbox" {
 	}
 }
 
-declare module "@mui/material/Chip" {
-	interface ChipOwnProps {
-		/**
-		 * The label of the dismiss button.
-		 *
-		 * @default 'Dismiss'
-		 */
-		dismissLabel?: string;
-	}
-}
-
 declare module "@mui/material/Fab" {
 	interface FabPropsColorOverrides {
 		info: false;

@@ -6,10 +6,9 @@
 import * as React from "react";
 import { VisuallyHidden } from "@ariakit/react/visually-hidden";
 import MuiIconButton from "@mui/material/IconButton";
+import { useTheme } from "@mui/material/styles";
 import { useSafeContext } from "@stratakit/foundations/secret-internals";
 import { DismissIcon } from "./Icon.js";
-
-import type MuiChip from "@mui/material/Chip";
 
 // ----------------------------------------------------------------------------
 
@@ -17,35 +16,25 @@ const ChipContext = React.createContext<
 	| {
 			labelId?: string;
 			setLabelId: (id: string | undefined) => void;
-			dismissId?: string;
+			clearId?: string;
 			dataTagIndex?: number;
-			dismissLabel: string;
 	  }
 	| undefined
 >(undefined);
 
-type MuiChipProps = React.ComponentProps<typeof MuiChip>;
-
-interface ChipProps
-	extends React.ComponentProps<"div">,
-		Pick<MuiChipProps, "dismissLabel"> {
+interface ChipProps extends React.ComponentProps<"div"> {
 	// Used by `Autocomplete`.
 	"data-tag-index"?: number;
 }
 
 const Chip = React.forwardRef<HTMLDivElement, ChipProps>(
 	(props, forwardedRef) => {
-		const dismissId = React.useId();
+		const clearId = React.useId();
 		const [labelId, setLabelId] = React.useState<string | undefined>(undefined);
-		const {
-			dismissLabel = "Dismiss",
-			tabIndex,
-			"data-tag-index": dataTagIndex,
-			...rest
-		} = props;
+		const { tabIndex, "data-tag-index": dataTagIndex, ...rest } = props;
 		return (
 			<ChipContext.Provider
-				value={{ labelId, setLabelId, dismissId, dataTagIndex, dismissLabel }}
+				value={{ labelId, setLabelId, clearId, dataTagIndex }}
 			>
 				<div {...rest} ref={forwardedRef} />
 			</ChipContext.Provider>
@@ -77,11 +66,13 @@ const ChipDeleteIcon = React.forwardRef<
 	HTMLButtonElement,
 	React.ComponentProps<typeof MuiIconButton>
 >((props, forwardedRef) => {
-	const { dismissId, dismissLabel, labelId, dataTagIndex } =
-		useSafeContext(ChipContext);
+	const { clearId, labelId, dataTagIndex } = useSafeContext(ChipContext);
+	const theme = useTheme();
+	const label =
+		theme.components?.MuiAutocomplete?.defaultProps?.clearText ?? "Clear";
 	return (
 		<MuiIconButton
-			aria-labelledby={`${dismissId} ${labelId}`}
+			aria-labelledby={`${clearId} ${labelId}`}
 			// Let Autocomplete focus the dismiss button, instead of the tag
 			data-tag-index={dataTagIndex}
 			onKeyDown={(e) => {
@@ -91,7 +82,7 @@ const ChipDeleteIcon = React.forwardRef<
 			{...props}
 			ref={forwardedRef}
 		>
-			<VisuallyHidden id={dismissId}>{dismissLabel}</VisuallyHidden>
+			<VisuallyHidden id={clearId}>{label}</VisuallyHidden>
 			<DismissIcon />
 		</MuiIconButton>
 	);

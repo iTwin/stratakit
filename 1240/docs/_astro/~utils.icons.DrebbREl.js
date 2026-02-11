@@ -1,0 +1,1 @@
+import{j as r}from"./jsx-runtime.D_zvdyIk.js";import{I as n,R as i}from"./ExamplePreview.CTvTvUIj.js";import{f as s}from"./styles.internal.BwFdDu8v.js";function c(o){return s((e,t)=>r.jsx(n,{render:r.jsx(i.svg,{width:"16",height:"16",fill:"none",viewBox:"0 0 16 16",...e,ref:t,children:r.jsx("path",{fill:"currentColor",d:o})})}))}export{c};

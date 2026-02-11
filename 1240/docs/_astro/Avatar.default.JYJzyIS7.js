@@ -1,0 +1,1 @@
+import{j as t}from"./jsx-runtime.D_zvdyIk.js";import{A as r}from"./Avatar.DNsbq-z6.js";import"./ExamplePreview.CTvTvUIj.js";import"./preload-helper.CWPvEUvb.js";import"./index.DIfZGIpv.js";import"./index.XeJbqeyU.js";import"./styles.internal.BwFdDu8v.js";import"./~utils.useInit.CeU4EFM-.js";const f=()=>t.jsx(r,{initials:"WW",alt:"Willow Winters"});export{f as default};

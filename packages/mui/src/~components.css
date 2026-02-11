@@ -418,14 +418,77 @@
 	box-shadow: var(--stratakit-shadow-control-tooltip-base);
 }
 
+/* #region Switch */
 .MuiSwitch-root {
-	.MuiSwitch-switchBase:where(.MuiSwitch-colorPrimary) {
-		&:where(.Mui-checked):where(:not(.Mui-disabled)) {
-			color: var(--stratakit-mui-palette-primary-dark);
-		}
+	padding: 0;
+	block-size: auto;
+	inline-size: auto;
+	align-items: center;
+	overflow: visible;
+
+	&:where(.MuiSwitch-sizeSmall) {
+		--_switch-thumb-size: 0.75rem;
 	}
 
-	&:where(:has(.MuiSwitch-switchBase.Mui-focusVisible)) {
-		outline: 2px solid var(--stratakit-color-border-accent-strong);
+	&:where(.MuiSwitch-sizeMedium) {
+		--_switch-thumb-size: 1rem;
 	}
 }
+
+.MuiSwitch-switchBase {
+	aspect-ratio: 1 / 1;
+	block-size: var(--_switch-thumb-size);
+	inline-size: var(--_switch-thumb-size);
+	inset: unset;
+	inset-inline-end: calc(var(--_switch-thumb-size) + var(--stratakit-space-x05)); /* 18px */
+	padding: 0;
+
+	@media (prefers-reduced-motion: no-preference) {
+		transition: inset 150ms ease-out;
+	}
+
+	&:where(.Mui-checked) {
+		inset: unset;
+		inset-inline-end: var(--stratakit-space-x05); /* 2px */
+		transform: none;
+	}
+}
+
+.MuiSwitch-thumb {
+	aspect-ratio: 1 / 1;
+	block-size: var(--_switch-thumb-size);
+	inline-size: var(--_switch-thumb-size);
+	background-color: var(--stratakit-color-bg-neutral-inverse);
+	border: 1px solid var(--stratakit-color-border-shadow-base);
+	border-radius: 50%;
+
+	:where(.Mui-disabled) & {
+		background-color: var(--stratakit-color-icon-neutral-disabled);
+		border-color: var(--stratakit-color-icon-neutral-disabled);
+	}
+}
+
+.MuiSwitch-track {
+	inline-size: calc((var(--_switch-thumb-size) * 2) + (var(--stratakit-space-x05) * 2));
+	block-size: calc(var(--_switch-thumb-size) + (var(--stratakit-space-x05) * 2));
+	background-color: var(--stratakit-color-bg-page-base);
+	border: 1px solid var(--stratakit-color-border-neutral-base);
+	border-radius: 9999px;
+	opacity: 1;
+
+	:where(.Mui-checked) + & {
+		background-color: var(--stratakit-color-bg-accent-base);
+		border-color: var(--stratakit-color-border-shadow-strong);
+	}
+
+	:where(.Mui-disabled) + & {
+		background-color: var(--stratakit-color-bg-page-base);
+		border-color: var(--stratakit-color-icon-neutral-disabled);
+	}
+
+	:where(.Mui-focusVisible) + & {
+		outline: 2px solid var(--stratakit-color-border-accent-strong);
+		outline-offset: 2px;
+	}
+}
+/* #endregion Switch */

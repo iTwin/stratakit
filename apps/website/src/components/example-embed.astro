@@ -5,7 +5,7 @@
 <script>
 	import { createElement } from "react";
 	import { createRoot } from "react-dom/client";
-	import ExampleEmbed from "./ExampleEmbed.tsx";
+	import { ExampleEmbed } from "./ExamplePreview.tsx";
 
 	customElements.define(
 		"example-embed",
@@ -32,14 +32,15 @@
 	@layer page {
 		example-embed {
 			display: block;
-			border-radius: 8px;
-			border: 1px solid var(--stratakit-color-border-neutral-muted);
-			overflow: hidden;
 
-			iframe {
-				background-color: var(--stratakit-color-bg-page-base);
-				border-radius: 8px;
+			&,
+			> * {
+				min-block-size: 125px; /* Reduce layout shift */
 			}
+
+			border-radius: 8px;
+			outline: 1px solid var(--stratakit-color-border-neutral-muted);
+			background-color: var(--stratakit-color-bg-page-base);
 		}
 	}
 </style>

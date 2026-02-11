@@ -3,30 +3,75 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 import * as React from "react";
+import { IconButton } from "@stratakit/bricks";
 import { Root } from "@stratakit/mui";
+import { useColorScheme } from "./~utils.ts";
+
+import svgWindowPopout from "@stratakit/icons/window-popout.svg";
+import styles from "./ExamplePreview.module.css";
 
 // ----------------------------------------------------------------------------
 
 // Pre-calculate all example modules so Vite can statically analyze them for bundling.
 // This requires that the path to examples dir is hardcoded (i.e. no dynamic expressions).
 const exampleModules = {
-	bricks: import.meta.glob("../../../../examples/bricks/*.tsx"),
-	structures: import.meta.glob("../../../../examples/structures/*.tsx"),
-	mui: import.meta.glob("../../../../examples/mui/*.tsx"),
+	bricks: import.meta.glob("/node_modules/examples/bricks/*.tsx"),
+	structures: import.meta.glob("/node_modules/examples/structures/*.tsx"),
+	mui: import.meta.glob("/node_modules/examples/mui/*.tsx"),
 } as const;
 
 // ----------------------------------------------------------------------------
 
-export default function ExamplePreview({
+export function ExampleEmbed({ src }: { src: string }) {
+	const { exampleName, packageName } = parseSrc(src);
+	const labelId = React.useId();
+
+	return (
+		<Root
+			colorScheme={useColorScheme()}
+			className={styles.exampleEmbedRoot}
+			role="group"
+			aria-labelledby={labelId}
+		>
+			<span id={labelId} hidden>
+				Live example ({src})
+			</span>
+
+			<div className={styles.examplePreviewWrapper}>
+				<ExamplePreview exampleName={exampleName} packageName={packageName} />
+			</div>
+
+			<div className={styles.toolbar}>
+				<IconButton
+					icon={svgWindowPopout}
+					label="Open in new tab"
+					variant="ghost"
+					render={
+						<a
+							href={`${import.meta.env.BASE_URL}/examples/${src}`}
+							target="_blank"
+						/>
+					}
+				/>
+			</div>
+		</Root>
+	);
+}
+
+// ----------------------------------------------------------------------------
+
+export function ExamplePreview({
 	exampleName,
 	packageName,
+	withRoot,
 }: {
 	exampleName: string;
 	packageName: string;
+	withRoot?: boolean;
 }) {
 	const ExampleComponent = React.useMemo(() => {
 		const modules = exampleModules[packageName as keyof typeof exampleModules];
-		const modulePath = `../../../../examples/${packageName}/${exampleName}.tsx`;
+		const modulePath = `/node_modules/examples/${packageName}/${exampleName}.tsx`;
 		const lazyImport = modules[modulePath] as () => Promise<{
 			default: React.ComponentType;
 		}>;
@@ -35,41 +80,28 @@ export default function ExamplePreview({
 
 	const colorScheme = useColorScheme();
 
+	const content = (
+		<React.Suspense>
+			<ExampleComponent />
+		</React.Suspense>
+	);
+
+	if (!withRoot) return content;
+
 	return (
-		<Root colorScheme={colorScheme}>
-			<React.Suspense>
-				<ExampleComponent />
-			</React.Suspense>
+		<Root colorScheme={colorScheme} style={{ display: "contents" }}>
+			{content}
 		</Root>
 	);
 }
 
-function useColorScheme(): "light" | "dark" {
-	const prefersDarkQuery = React.useMemo(
-		() => window.matchMedia("(prefers-color-scheme: dark)"),
-		[],
-	);
+// ----------------------------------------------------------------------------
 
-	return React.useSyncExternalStore(
-		React.useCallback(
-			(notify) => {
-				prefersDarkQuery?.addEventListener("change", notify);
-				window.addEventListener("color-scheme:change", notify);
-
-				return () => {
-					prefersDarkQuery?.removeEventListener("change", notify);
-					window.removeEventListener("color-scheme:change", notify);
-				};
-			},
-			[prefersDarkQuery],
-		),
-		() => {
-			const localSetting = localStorage.getItem("color-scheme");
-			if (localSetting === "light" || localSetting === "dark") {
-				return localSetting;
-			}
-			return prefersDarkQuery.matches ? "dark" : "light";
-		},
-		() => "dark",
-	);
+/** `"mui/Button.default"` → `{ packageName: "mui", exampleName: "Button.default" }` */
+function parseSrc(src: string) {
+	const [packageName, exampleName] = src.split("/", 2);
+	if (!packageName || !exampleName) {
+		throw new Error(`Invalid example src: ${src}`);
+	}
+	return { packageName, exampleName };
 }

@@ -25,6 +25,12 @@ const fixedHead = originalHead.map((item) => {
 });
 ---
 
+{/* Ensure these layers are applied before MUI-injected styles */}
+<style is:inline>
+	@layer reset, starlight;
+</style>
+<meta name="emotion-insertion-point" />
+
 <StrataKit />
 <Fonts />
 

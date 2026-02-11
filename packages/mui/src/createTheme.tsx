@@ -5,6 +5,7 @@
 
 import * as React from "react";
 import { Role } from "@ariakit/react/role";
+import OutlinedInput from "@mui/material/OutlinedInput";
 import { createTheme as createMuiTheme } from "@mui/material/styles";
 import {
 	ArrowDownIcon,
@@ -276,6 +277,7 @@ function createTheme() {
 			},
 			MuiNativeSelect: {
 				defaultProps: {
+					input: <OutlinedInput />,
 					IconComponent: CaretsUpDownIcon,
 				},
 			},

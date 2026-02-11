@@ -7,7 +7,6 @@ import * as React from "react";
 import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
 import NativeSelect from "@mui/material/NativeSelect";
-import OutlinedInput from "@mui/material/OutlinedInput";
 
 import styles from "./NativeSelect.default.module.css";
 
@@ -20,7 +19,6 @@ export default () => {
 			</InputLabel>
 			<NativeSelect
 				defaultValue={2}
-				input={<OutlinedInput />}
 				inputProps={{
 					name: "design-system",
 					id: inputId,

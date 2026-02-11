@@ -21,14 +21,7 @@
 .MuiAutocomplete-tag {
 	margin-inline-start: var(--stratakit-space-x1);
 	margin-inline-end: 0;
-
-	&:where(.MuiAutocomplete-tagSizeSmall) {
-		block-size: var(--stratakit-space-x5);
-	}
-
-	&:where(.MuiAutocomplete-tagSizeMedium) {
-		block-size: var(--stratakit-space-x6);
-	}
+	block-size: 100%;
 
 	&:where(:nth-child(1 of &)) {
 		margin-inline-start: var(--stratakit-space-x2);
@@ -310,19 +303,19 @@
 }
 
 .MuiInputBase-input {
-	--_textarea-padding-block: calc(var(--stratakit-space-x05) + var(--stratakit-space-x1));
-	min-block-size: var(--stratakit-space-x8);
+	--_padding-block: calc(var(--stratakit-space-x05) + var(--stratakit-space-x1));
+	min-block-size: calc(1lh + (var(--_padding-block) * 2));
 	padding-block: 0;
 	padding-inline: var(--stratakit-space-x2);
 	align-content: center;
 
 	&:where(.MuiInputBase-inputSizeSmall) {
-		--_textarea-padding-block: var(--stratakit-space-x05);
-		min-block-size: var(--stratakit-space-x6);
+		--_padding-block: var(--stratakit-space-x05);
 	}
 
 	&:where(.MuiInputBase-inputMultiline) {
-		padding-block: var(--_textarea-padding-block);
+		min-block-size: 1lh;
+		padding-block: var(--_padding-block);
 		align-content: baseline;
 	}
 

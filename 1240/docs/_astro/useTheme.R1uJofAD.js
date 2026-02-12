@@ -1,1 +1,0 @@
-import"./index.DIfZGIpv.js";import{K as t,L as m,M as s}from"./ExamplePreview._fRr7SXG.js";function u(){const e=t(s);return e[m]||e}export{u};

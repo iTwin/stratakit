@@ -30,7 +30,7 @@
 }
 
 .MuiInputBase-input {
-	min-block-size: 36.5px;
+	min-block-size: calc(36.5px - 2px); /* Accommodate for border width */
 	padding-block: 0;
 	padding-inline: 14px;
 	align-content: center;

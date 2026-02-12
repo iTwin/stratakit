@@ -4,19 +4,32 @@
  *--------------------------------------------------------------------------------------------*/
 
 :is(.MuiCheckbox-root, .MuiRadio-root) {
-	--_hover-background-color: var(--stratakit-color-bg-glow-on-surface-neutral-hover);
+	--✨size: 1rem;
 
-	&:where(.Mui-checked, .MuiCheckbox-indeterminate) {
-		--_hover-background-color: var(--stratakit-color-bg-glow-on-surface-accent-hover);
-	}
+	padding: 0;
+	position: relative;
 
-	:where(.Mui-error) & {
-		--_hover-background-color: var(--stratakit-color-bg-glow-on-surface-critical-hover);
+	/* This pseudo-element increases tap target size to 24x24 */
+	&::before {
+		content: "";
+		position: absolute;
+		inset: calc(((24px - var(--✨size)) / 2) * -1); /* Makes touch target area 24px */
+		border-radius: 50%;
+		background-color: var(--_hover-background-color);
 	}
 
 	@media (any-hover: hover) {
-		&:where(:not(.Mui-disabled)):hover {
-			background-color: var(--_hover-background-color);
+		&:where(:not(.Mui-disabled)):hover,
+		:where(.MuiFormControlLabel-root:where(:not(.Mui-disabled))):hover & {
+			--_hover-background-color: var(--stratakit-color-bg-glow-on-surface-neutral-hover);
+
+			&:where(.Mui-checked, .MuiCheckbox-indeterminate) {
+				--_hover-background-color: var(--stratakit-color-bg-glow-on-surface-accent-hover);
+			}
+
+			:where(.Mui-error) & {
+				--_hover-background-color: var(--stratakit-color-bg-glow-on-surface-critical-hover);
+			}
 		}
 	}
 
@@ -26,8 +39,8 @@
 		appearance: none;
 		opacity: 1;
 		aspect-ratio: 1;
-		inline-size: 1rem;
-		block-size: 1rem;
+		inline-size: var(--✨size);
+		block-size: var(--✨size);
 		background-color: var(--stratakit-color-bg-neutral-base);
 		border: 1px solid var(--stratakit-color-border-shadow-base);
 		color: var(--stratakit-color-icon-neutral-emphasis);

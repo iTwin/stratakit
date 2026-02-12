@@ -7,12 +7,23 @@
 	row-gap: var(--stratakit-space-x1);
 }
 
-.MuiFormControlLabel-root:where(.Mui-disabled) {
-	cursor: not-allowed;
+.MuiFormControlLabel-root {
+	/* Accounts for the increased tap target of the checkbox/radio */
+	column-gap: var(--stratakit-space-x1);
+	margin-inline: 0;
+
+	&:where(.Mui-disabled) {
+		cursor: not-allowed;
+	}
 }
 
 .MuiFormControlLabel-label {
 	@apply --typography("body-md");
+}
+
+.MuiFormGroup-root {
+	/* Accounts for the increased tap target of the checkbox/radio */
+	row-gap: var(--stratakit-space-x1);
 }
 
 .MuiFormHelperText-root {

@@ -205,9 +205,8 @@
 }
 
 .MuiFormControlLabel-root {
-	column-gap: var(
-		--stratakit-space-x1
-	); /* Accounts for the increased tap target of the checkbox/radio */
+	/* Accounts for the increased tap target of the checkbox/radio */
+	column-gap: var(--stratakit-space-x1);
 	margin-inline: 0;
 
 	&:where(.Mui-disabled) {
@@ -220,9 +219,8 @@
 }
 
 .MuiFormGroup-root {
-	row-gap: var(
-		--stratakit-space-x1
-	); /* Accounts for the increased tap target of the checkbox/radio */
+	/* Accounts for the increased tap target of the checkbox/radio */
+	row-gap: var(--stratakit-space-x1);
 }
 
 .MuiFormHelperText-root {

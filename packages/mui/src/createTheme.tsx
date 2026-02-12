@@ -189,7 +189,7 @@ function createTheme() {
 			},
 			MuiFormControl: { defaultProps: { component: Role.div } },
 			MuiFormHelperText: { defaultProps: { component: Role.p } },
-			MuiFormLabel: { defaultProps: { component: Role.label } },
+			MuiFormLabel: { defaultProps: { component: Role.label as never } },
 			MuiGrid: { defaultProps: { component: Role.div } },
 			MuiGridLegacy: { defaultProps: { component: Role.div } },
 			MuiIcon: { defaultProps: { component: Role.span } },
@@ -308,7 +308,10 @@ function createTheme() {
 				defaultProps: { component: withRenderProp(Role, "thead") },
 			},
 			MuiTablePagination: {
-				defaultProps: { component: withRenderProp(Role, "td") },
+				defaultProps: {
+					component: withRenderProp(Role, "td"),
+					slotProps: { root: { colSpan: 999 } },
+				},
 			},
 			MuiTableRow: { defaultProps: { component: withRenderProp(Role, "tr") } },
 			MuiTableSortLabel: {

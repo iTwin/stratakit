@@ -1,0 +1,71 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+
+.MuiFormControl-root {
+	row-gap: var(--stratakit-space-x1);
+}
+
+.MuiFormControlLabel-root:where(.Mui-disabled) {
+	cursor: not-allowed;
+}
+
+.MuiFormControlLabel-label {
+	@apply --typography("body-md");
+}
+
+.MuiFormHelperText-root {
+	inline-size: fit-content;
+	margin: 0;
+	@apply --typography("body-sm");
+
+	&:where(.Mui-error) {
+		color: var(--stratakit-color-text-critical-base);
+		position: relative;
+
+		&::before,
+		&::after {
+			content: "";
+			display: inline-block;
+			block-size: 1lh;
+			aspect-ratio: 1;
+			vertical-align: top;
+		}
+
+		&::before {
+			--_octagon-filled: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path fill="currentColor" d="M10.086 2H5.914a1 1 0 0 0-.707.293L2.293 5.207A1 1 0 0 0 2 5.914v4.237a1 1 0 0 0 .3.715l2.908 2.848a1 1 0 0 0 .7.286h4.178a1 1 0 0 0 .707-.293l2.914-2.914a1 1 0 0 0 .293-.707V5.914a1 1 0 0 0-.293-.707l-2.914-2.914A1 1 0 0 0 10.086 2Z" /></svg>');
+			--_❗: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 16"><path fill="black" fill-opacity=".48" d="M8.875 10.625a.875.875 0 1 0-1.75 0 .875.875 0 0 0 1.75 0ZM8 4a1.581 1.581 0 0 1 1.5 2.081l-.789 2.365c-.228.684-1.195.684-1.423 0L6.5 6.081A1.581 1.581 0 0 1 8 4Zm0 .5a1.08 1.08 0 0 0-1.025 1.423l.788 2.365a.25.25 0 0 0 .436.075l.039-.075.788-2.365a1.082 1.082 0 0 0-.89-1.415L8 4.5Zm1.375 6.125a1.375 1.375 0 1 1-2.75 0 1.375 1.375 0 0 1 2.75 0Z" /><path fill="white" d="M8.875 10.625a.875.875 0 1 1-1.75 0 .875.875 0 0 1 1.75 0ZM6.974 5.923l.789 2.366a.25.25 0 0 0 .474 0l.789-2.366a1.081 1.081 0 1 0-2.052 0Z" /></svg>');
+
+			mask: var(--_octagon-filled) no-repeat center;
+			background-color: var(--stratakit-color-bg-critical-base);
+
+			background-image: var(--_❗);
+			background-repeat: no-repeat;
+
+			margin-inline-end: var(--stratakit-space-x1);
+		}
+
+		&::after {
+			--_octagon-outline: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path fill="currentColor" d="M10.086 2a1 1 0 0 1 .707.293l2.914 2.914a1 1 0 0 1 .293.707v4.172l-.005.099a1 1 0 0 1-.288.608l-2.914 2.914-.073.066a1 1 0 0 1-.634.227H5.908l-.097-.005a1 1 0 0 1-.53-.216l-.073-.064-2.908-2.85a1 1 0 0 1-.295-.614l-.005-.1V5.914a1 1 0 0 1 .227-.634l.066-.073 2.914-2.914A1 1 0 0 1 5.914 2h4.172ZM5.914 3 3 5.914v4.237L5.908 13h4.178L13 10.086V5.914L10.086 3H5.914Z" /></svg>');
+
+			position: absolute;
+			inset-inline-start: 0;
+			inset-block-start: 0;
+
+			mask: var(--_octagon-outline) no-repeat center;
+			background-color: var(--stratakit-color-border-glow-strong-default);
+		}
+	}
+}
+
+.MuiFormLabel-root {
+	font-size: var(--stratakit-font-size-14);
+	color: var(--stratakit-color-text-neutral-secondary);
+	position: relative; /* Disable floating label */
+	transform: none; /* Undo inset positioning */
+
+	&:where(.Mui-disabled) {
+		color: var(--stratakit-color-text-neutral-disabled);
+	}
+}

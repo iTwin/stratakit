@@ -7,6 +7,7 @@ import * as React from "react";
 import { Role } from "@ariakit/react/role";
 import OutlinedInput from "@mui/material/OutlinedInput";
 import { createTheme as createMuiTheme } from "@mui/material/styles";
+import { Chip, ChipDeleteIcon, ChipLabel } from "./~components.js";
 import {
 	ArrowDownIcon,
 	CaretsUpDownIcon,
@@ -110,12 +111,32 @@ function createTheme() {
 				defaultProps: {
 					popupIcon: <ChevronDownIcon />,
 					clearIcon: <DismissIcon />,
+					onKeyDown: (e) => {
+						if (e.key === "ArrowLeft" || e.key === "ArrowRight") {
+							e.defaultMuiPrevented = true; // Prevent MUI from handling left/right arrow keys to focus the tags
+						}
+					},
 					slotProps: {
 						paper: {
 							elevation: 8, // match Menu elevation
 						},
 						clearIndicator: {
 							tabIndex: 0, // make clear indicator focusable
+							onKeyDown: (e: React.KeyboardEvent<HTMLButtonElement>) => {
+								// Stop Autocomplete from handling the event
+								e.stopPropagation();
+							},
+						},
+						chip: {
+							// Use Chip in Autocomplete only, since some chips might be interactive
+							component: Chip,
+							deleteIcon: <ChipDeleteIcon />,
+							role: undefined,
+							slotProps: {
+								label: {
+									component: ChipLabel,
+								},
+							},
 						},
 					},
 				},

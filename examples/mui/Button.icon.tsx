@@ -4,14 +4,10 @@
  *--------------------------------------------------------------------------------------------*/
 
 import Button from "@mui/material/Button";
-import Stack from "@mui/material/Stack";
+import { Icon } from "@stratakit/mui";
+
+import svgAdd from "@stratakit/icons/add.svg";
 
 export default () => {
-	return (
-		<Stack spacing={1} direction="row">
-			<Button variant="contained">Contained</Button>
-			<Button variant="outlined">Outlined</Button>
-			<Button variant="text">Text</Button>
-		</Stack>
-	);
+	return <Button endIcon={<Icon href={svgAdd} />}>Create new</Button>;
 };

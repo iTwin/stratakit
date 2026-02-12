@@ -4,22 +4,16 @@
  *--------------------------------------------------------------------------------------------*/
 
 .MuiAutocomplete-input {
-	:where(.MuiAutocomplete-hasPopupIcon) & {
-		padding-inline-end: calc(9px + 20px); /* 9px gap + 20px dropdown button width */
-	}
-
-	:where(.MuiAutocomplete-hasClearIcon) & {
-		padding-inline-end: calc(
-			9px +
-			20px +
-			24px
-		); /* 9px gap + 20px dropdown button width + 24px clear button width */
-	}
+	position: static;
+	transform: none;
+	margin-inline-start: var(--stratakit-space-x1);
+	margin-inline-end: var(--stratakit-space-x2);
 }
 
 .MuiAutocomplete-tag {
 	margin-inline-start: var(--stratakit-space-x1);
 	margin-inline-end: 0;
+	block-size: 100%;
 
 	&:where(:nth-child(1 of &)) {
 		margin-inline-start: var(--stratakit-space-x2);

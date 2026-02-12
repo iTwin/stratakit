@@ -30,13 +30,19 @@
 }
 
 .MuiInputBase-input {
-	min-block-size: 36.5px;
+	--_padding-block: calc(var(--stratakit-space-x05) + var(--stratakit-space-x1));
+	min-block-size: calc(1lh + (var(--_padding-block) * 2));
 	padding-block: 0;
-	padding-inline: 14px;
+	padding-inline: var(--stratakit-space-x2);
 	align-content: center;
 
+	&:where(.MuiInputBase-inputSizeSmall) {
+		--_padding-block: var(--stratakit-space-x05);
+	}
+
 	&:where(.MuiInputBase-inputMultiline) {
-		padding-block: 8.25px;
+		min-block-size: 1lh;
+		padding-block: var(--_padding-block);
 		align-content: baseline;
 	}
 

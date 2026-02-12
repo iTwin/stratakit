@@ -13,7 +13,8 @@ import {
 	useLocation,
 	useMatches,
 } from "react-router";
-import { Root } from "@stratakit/foundations";
+import { Root as StrataKitRoot } from "@stratakit/foundations";
+import { Root as StrataKitMuiRoot } from "@stratakit/mui";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { AppNavigationRail } from "./~navigation.tsx";
 import { ColorSchemeProvider, useColorScheme } from "./~utils.tsx";
@@ -75,6 +76,7 @@ function LayoutInner({ children }: { children: React.ReactNode }) {
 export default function App() {
 	const colorScheme = useColorScheme();
 	const location = useLocation();
+	const isRootTest = useIsRootTest();
 
 	React.useEffect(function signalPageLoad() {
 		document.body.dataset.loaded = "true";
@@ -83,13 +85,18 @@ export default function App() {
 	return (
 		<QueryClientProvider client={queryClient}>
 			{(() => {
-				// MUI theme uses a looser density.
+				// MUI theme uses a looser density, whereas StrataKit components need the `"dense"` density to preserve the original look and feel.
 				const density = location.pathname.startsWith("/mui")
 					? undefined
 					: "dense";
 
+				// Use the `@stratakit/foundations` Root when testing the Root itself.
+				// Use `@stratakit/mui` for everything else.
+				const Root = isRootTest ? StrataKitRoot : StrataKitMuiRoot;
+
 				return (
 					<Root
+						key={isRootTest ? "foundations" : "mui"}
 						colorScheme={colorScheme}
 						density={density}
 						synchronizeColorScheme={false}

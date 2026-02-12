@@ -1,0 +1,66 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+
+.MuiInputBase-root {
+	padding: 0;
+	font: var(--stratakit-mui-font-body2);
+	border: 1px solid var(--stratakit-color-border-neutral-base);
+
+	&:where(:focus-within) {
+		border-color: var(--stratakit-color-border-accent-strong);
+		outline: var(--🥝focus-outline);
+		outline-offset: var(--🥝focus-outline-offset);
+	}
+
+	&:where(.Mui-error) {
+		border-color: var(--stratakit-color-border-critical-base);
+		--🥝Icon-color: var(--stratakit-color-icon-critical-base);
+	}
+
+	&:where(.Mui-disabled) {
+		border-color: var(--stratakit-color-border-glow-on-surface-disabled);
+		--🥝Icon-color: var(--stratakit-color-icon-neutral-disabled);
+	}
+
+	:where(fieldset) {
+		display: none;
+	}
+}
+
+.MuiInputBase-input {
+	min-block-size: calc(36.5px - 2px); /* Accommodate for border width */
+	padding-block: 0;
+	padding-inline: 14px;
+	align-content: center;
+
+	&:where(.MuiInputBase-inputMultiline) {
+		padding-block: 8.25px;
+		align-content: baseline;
+	}
+
+	&:where(.MuiInputBase-inputAdornedStart) {
+		padding-inline-start: 0;
+	}
+
+	&:where(.MuiInputBase-inputAdornedEnd) {
+		padding-inline-end: 0;
+	}
+
+	&:where(:focus-visible) {
+		outline: none !important;
+	}
+}
+
+.MuiInputAdornment-root {
+	&:where(.MuiInputAdornment-positionStart) {
+		margin-inline-start: var(--stratakit-space-x2);
+		margin-inline-end: var(--stratakit-space-x1);
+	}
+
+	&:where(.MuiInputAdornment-positionEnd) {
+		margin-inline-start: var(--stratakit-space-x1);
+		margin-inline-end: var(--stratakit-space-x2);
+	}
+}

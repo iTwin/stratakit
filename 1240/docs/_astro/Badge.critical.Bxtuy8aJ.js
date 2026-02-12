@@ -1,1 +1,0 @@
-import{j as t}from"./ExamplePreview.ZI2kZSYj.js";import{B as o}from"./Badge.Bw51b2-T.js";import"./preload-helper.CWPvEUvb.js";import"./index.DIfZGIpv.js";import"./styles.internal.BwFdDu8v.js";import"./index.XeJbqeyU.js";import"./Text.C6H1sVPm.js";const r="/1240/docs/_astro/status-warning.D97TCUkI.svg",p=()=>t.jsx(o,{label:"Unstable",tone:"critical",icon:r});export{p as default};

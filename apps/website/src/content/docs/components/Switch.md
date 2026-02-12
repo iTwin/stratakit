@@ -29,7 +29,6 @@ Make sure the **Switch** is suitable for your use case. There may be other, more
 ## ✅ Do
 
 - Use a clear, descriptive label for each **Switch**.
-- Group related switches (settings) into a `<fieldset>`, using a `<legend>` as a label for the group.
 - Use a **Switch** when the effect is instantaneous (no confirmation or submission is required).
 
 ## 🚫 Don’t

@@ -59,12 +59,12 @@
 }
 
 .MuiSwitch-thumb {
-	aspect-ratio: 1 / 1;
-	block-size: var(--_switch-thumb-size);
-	inline-size: var(--_switch-thumb-size);
+	aspect-ratio: inherit;
+	block-size: inherit;
+	inline-size: inherit;
+	border-radius: inherit;
 	background-color: var(--stratakit-color-bg-neutral-inverse);
 	border: 1px solid var(--stratakit-color-border-shadow-base);
-	border-radius: 50%;
 	position: relative;
 
 	:where(.Mui-disabled) & {

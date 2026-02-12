@@ -1,1 +1,0 @@
-import{j as t,I as r}from"./ExamplePreview.ROT6mk1O.js";import{A as o}from"./Avatar.DgZR2gAW.js";import"./preload-helper.CWPvEUvb.js";import"./index.DIfZGIpv.js";import"./styles.internal.BwFdDu8v.js";import"./index.XeJbqeyU.js";const s="/1240/docs/_astro/user.Wbw_BW94.svg",c=()=>t.jsx(o,{initials:"WW",alt:"Willow Winters",image:t.jsx(r,{href:s})});export{c as default};

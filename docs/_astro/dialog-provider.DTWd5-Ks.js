@@ -1,1 +1,0 @@
-import{u as t}from"./Z32PU2LQ.B-V2A3F1.js";import{a as e}from"./WLZ6H5FH.I6vyZ5Ow.js";import{j as i}from"./ExamplePreview.DaIGpRwX.js";function m(o={}){const r=t(o);return i.jsx(e,{value:r,children:o.children})}export{m as D};

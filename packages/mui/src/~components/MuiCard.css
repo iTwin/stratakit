@@ -1,0 +1,18 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+
+.MuiCard-root {
+	background-color: var(--stratakit-color-bg-elevation-base);
+}
+
+.MuiCardContent-root {
+	&:where(:has(+ .MuiCardActions-root)) {
+		padding-block-end: 0;
+	}
+}
+
+.MuiCardActions-root {
+	padding: var(--stratakit-space-x4);
+}

@@ -5,12 +5,12 @@
 
 import * as React from "react";
 import { type MetaFunction, useLocation } from "react-router";
-import { IconButton } from "@mui/material";
 import Container from "@mui/material/Container";
+import IconButton from "@mui/material/IconButton";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import visuallyHidden from "@mui/utils/visuallyHidden";
-import { Icon, Root } from "@stratakit/mui";
+import { Icon } from "@stratakit/mui";
 import * as NavigationList from "@stratakit/structures/unstable_NavigationList";
 import AccordionActions from "examples/mui/Accordion.actions.tsx";
 import AccordionDefault from "examples/mui/Accordion.default.tsx";
@@ -91,7 +91,7 @@ import ToggleButtonDefault from "examples/mui/ToggleButton.default.tsx";
 import TooltipDefault from "examples/mui/Tooltip.default.tsx";
 import TypographyDefault from "examples/mui/Typography.default.tsx";
 import { SkipLinkContext } from "./~navigation.tsx";
-import { isProduction, useColorScheme, useIsWideScreen } from "./~utils.tsx";
+import { isProduction, useIsWideScreen } from "./~utils.tsx";
 
 import svgLink from "@stratakit/icons/link.svg";
 import styles from "./mui.module.css";
@@ -296,7 +296,6 @@ const components: Record<string, React.ReactNode> = {
 // ----------------------------------------------------------------------------
 
 export default function Page() {
-	const colorScheme = useColorScheme();
 	const location = useLocation();
 	const isWideScreen = useIsWideScreen();
 
@@ -322,40 +321,38 @@ export default function Page() {
 	});
 
 	return (
-		<Root colorScheme={colorScheme} style={{ display: "contents" }}>
-			<div className={styles.page}>
-				{isWideScreen && (
-					<aside className={styles.sidebar}>
-						<Typography
-							variant="body1"
-							component="h2"
-							sx={{ ml: 1, mb: 2, fontWeight: 500 }}
-						>
-							MUI components
-						</Typography>
-						<NavigationList.Root items={navigationItems} />
-					</aside>
-				)}
-
-				<Container
-					maxWidth="lg"
-					component="main"
-					className={styles.main}
-					tabIndex={-1}
-					id={React.use(SkipLinkContext)?.id}
-				>
-					<Typography variant="h4" component="h1" className={styles.h1}>
-						StrataKit MUI theme
+		<div className={styles.page}>
+			{isWideScreen && (
+				<aside className={styles.sidebar}>
+					<Typography
+						variant="body1"
+						render={<h2 />}
+						sx={{ ml: 1, mb: 2, fontWeight: 500 }}
+					>
+						MUI components
 					</Typography>
+					<NavigationList.Root items={navigationItems} />
+				</aside>
+			)}
 
-					{Object.entries(components).map(([name, content]) => (
-						<ComponentExamples key={name} name={name}>
-							{content}
-						</ComponentExamples>
-					))}
-				</Container>
-			</div>
-		</Root>
+			<Container
+				maxWidth="lg"
+				render={<main />}
+				className={styles.main}
+				tabIndex={-1}
+				id={React.use(SkipLinkContext)?.id}
+			>
+				<Typography variant="h4" render={<h1 />} className={styles.h1}>
+					StrataKit MUI theme
+				</Typography>
+
+				{Object.entries(components).map(([name, content]) => (
+					<ComponentExamples key={name} name={name}>
+						{content}
+					</ComponentExamples>
+				))}
+			</Container>
+		</div>
 	);
 }
 
@@ -379,7 +376,7 @@ function ComponentExamples(props: ComponentExamplesProps) {
 			<hgroup className={styles.exampleHeader}>
 				<Typography
 					variant="h5"
-					component="h2"
+					render={<h2 />}
 					id={id}
 					className={styles.exampleTitle}
 					tabIndex={-1}

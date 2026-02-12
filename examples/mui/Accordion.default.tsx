@@ -22,7 +22,7 @@ export default () => {
 			}}
 		>
 			<AccordionSummary aria-controls={`${id}-content`}>
-				<Typography component="span">What is StrataKit?</Typography>
+				<Typography render={<span />}>What is StrataKit?</Typography>
 			</AccordionSummary>
 			<AccordionDetails>
 				StrataKit is Bentley Systems' open source design system and the

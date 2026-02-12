@@ -24,7 +24,7 @@ export default () => {
 			}}
 		>
 			<AccordionSummary aria-controls={`${id}-content`}>
-				<Typography component="span">What is a design system?</Typography>
+				<Typography render={<span />}>What is a design system?</Typography>
 			</AccordionSummary>
 			<AccordionDetails>
 				A design system is a comprehensive framework of standards, reusable

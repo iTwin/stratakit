@@ -14,16 +14,16 @@ import styles from "./Card.default.module.css";
 export default () => {
 	return (
 		<Card className={styles.card} variant="outlined">
-			<CardActionArea component="a" href="#">
+			<CardActionArea render={<a href="#" />}>
 				<CardMedia
 					className={styles.media}
-					component="img"
+					component="img" // This does not work with `render` prop.
 					height="140"
 					image="https://images.unsplash.com/photo-1489944440615-453fc2b6a9a9"
 					alt=""
 				/>
 				<CardContent>
-					<Typography gutterBottom variant="h6" component="div">
+					<Typography gutterBottom variant="h6" render={<div />}>
 						Stadium
 					</Typography>
 					<Typography variant="body2" color="text.secondary">

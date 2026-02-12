@@ -15,8 +15,8 @@ import visuallyHidden from "@mui/utils/visuallyHidden";
 export default () => {
 	const errorId = React.useId();
 	return (
-		<FormControl component="fieldset" error aria-describedby={errorId}>
-			<FormLabel component="legend">Privacy preferences</FormLabel>
+		<FormControl render={<fieldset />} error aria-describedby={errorId}>
+			<FormLabel render={<legend />}>Privacy preferences</FormLabel>
 			<FormGroup>
 				<FormControlLabel control={<Checkbox />} label="Allow cookies" />
 				<FormControlLabel

@@ -1,0 +1,42 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+
+.MuiButtonBase-root {
+	&:where(.Mui-disabled) {
+		cursor: not-allowed;
+		pointer-events: auto; /* Revert MUI's disabled pointer-events */
+		background-color: transparent; /* To prevent hover styles from leaking through */
+	}
+}
+
+.MuiButton-root {
+	&:where(.MuiButton-colorSecondary) {
+		--variant-containedBg: var(--stratakit-color-bg-neutral-base);
+		--variant-containedColor: var(--stratakit-color-text-neutral-primary);
+		--variant-outlinedColor: var(--stratakit-color-text-neutral-primary);
+		--variant-textColor: var(--stratakit-color-text-neutral-primary);
+
+		@media (any-hover: hover) {
+			&:where(:hover) {
+				--variant-containedBg: color-mix(
+					in oklch,
+					var(--stratakit-color-bg-neutral-base) 100%,
+					var(--stratakit-color-glow-hue) var(--stratakit-color-bg-glow-base-hover-\%)
+				);
+			}
+		}
+	}
+
+	&:where(.MuiButton-colorPrimary) {
+		--variant-outlinedColor: var(--stratakit-color-text-accent-strong);
+		--variant-textColor: var(--stratakit-color-text-accent-strong);
+	}
+
+	&:where(.MuiButton-contained) {
+		&:where(.Mui-disabled) {
+			background-color: var(--stratakit-color-bg-glow-on-surface-disabled);
+		}
+	}
+}

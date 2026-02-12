@@ -14,8 +14,8 @@ import FormLabel from "@mui/material/FormLabel";
 export default () => {
 	const descriptionId = React.useId();
 	return (
-		<FormControl component="fieldset" aria-describedby={descriptionId}>
-			<FormLabel component="legend">Privacy preferences</FormLabel>
+		<FormControl render={<fieldset />} aria-describedby={descriptionId}>
+			<FormLabel render={<legend />}>Privacy preferences</FormLabel>
 			<FormGroup>
 				<FormControlLabel control={<Checkbox />} label="Allow cookies" />
 				<FormControlLabel

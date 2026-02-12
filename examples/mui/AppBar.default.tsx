@@ -19,7 +19,7 @@ export default () => {
 				<IconButton size="large" edge="start" aria-label="menu">
 					<Icon href={`${svgMenu}#icon-large`} size="large" />
 				</IconButton>
-				<Typography variant="h6" component="div" flexGrow={1}>
+				<Typography variant="h6" render={<div />} flexGrow={1}>
 					News
 				</Typography>
 				<Button variant="text">Login</Button>

@@ -126,17 +126,6 @@ function createTheme() {
 								e.stopPropagation();
 							},
 						},
-						chip: {
-							// Use Chip in Autocomplete only, since some chips might be interactive
-							component: Chip,
-							deleteIcon: <ChipDeleteIcon />,
-							role: undefined,
-							slotProps: {
-								label: {
-									component: ChipLabel,
-								},
-							},
-						},
 					},
 				},
 			},
@@ -191,8 +180,13 @@ function createTheme() {
 			},
 			MuiChip: {
 				defaultProps: {
-					component: Role.div,
-					deleteIcon: <DismissIcon />,
+					component: Chip,
+					deleteIcon: <ChipDeleteIcon />,
+					slotProps: {
+						label: {
+							component: ChipLabel,
+						},
+					},
 				},
 			},
 			MuiContainer: { defaultProps: { component: Role.div } },

@@ -4,10 +4,10 @@
  *--------------------------------------------------------------------------------------------*/
 
 import * as React from "react";
+import { Role } from "@ariakit/react/role";
 import { VisuallyHidden } from "@ariakit/react/visually-hidden";
 import MuiIconButton from "@mui/material/IconButton";
 import { useTheme } from "@mui/material/styles";
-import { useSafeContext } from "@stratakit/foundations/secret-internals";
 import { DismissIcon } from "./Icon.js";
 
 // ----------------------------------------------------------------------------
@@ -31,12 +31,23 @@ const Chip = React.forwardRef<HTMLDivElement, ChipProps>(
 	(props, forwardedRef) => {
 		const clearId = React.useId();
 		const [labelId, setLabelId] = React.useState<string | undefined>(undefined);
-		const { tabIndex, "data-tag-index": dataTagIndex, ...rest } = props;
+		const {
+			tabIndex: tabIndexProp,
+			role: roleProp,
+			"data-tag-index": dataTagIndex,
+			...rest
+		} = props;
+		const isClickable = props.className?.includes("MuiChip-clickable");
 		return (
 			<ChipContext.Provider
 				value={{ labelId, setLabelId, clearId, dataTagIndex }}
 			>
-				<div {...rest} ref={forwardedRef} />
+				<Role.div
+					tabIndex={isClickable ? tabIndexProp : undefined}
+					role={isClickable ? roleProp : undefined}
+					{...rest}
+					ref={forwardedRef}
+				/>
 			</ChipContext.Provider>
 		);
 	},
@@ -50,8 +61,9 @@ const ChipLabel = React.forwardRef<
 >((props, forwardedRef) => {
 	const defaultId = React.useId();
 	const { id = defaultId, ...rest } = props;
-	const { setLabelId } = useSafeContext(ChipContext);
+	const { setLabelId } = React.useContext(ChipContext) ?? {};
 	React.useEffect(() => {
+		if (!setLabelId) return;
 		setLabelId(id);
 		return () => {
 			setLabelId(undefined);
@@ -66,7 +78,8 @@ const ChipDeleteIcon = React.forwardRef<
 	HTMLButtonElement,
 	React.ComponentProps<typeof MuiIconButton>
 >((props, forwardedRef) => {
-	const { clearId, labelId, dataTagIndex } = useSafeContext(ChipContext);
+	const { clearId, labelId, dataTagIndex } =
+		React.useContext(ChipContext) ?? {};
 	const theme = useTheme();
 	const label =
 		theme.components?.MuiAutocomplete?.defaultProps?.clearText ?? "Clear";

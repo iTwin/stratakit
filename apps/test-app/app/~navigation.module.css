@@ -22,7 +22,19 @@
 }
 
 .homeLink {
-	margin-inline: calc(-1 * var(--stratakit-space-x1)); /* to counteract the ghost padding */
+	margin-inline: -3.5px; /* for optical alignment */
+}
+
+.strataLogo {
+	--_shadow: drop-shadow(0px 0.5px 0px oklch(0% none none / 0.56))
+		drop-shadow(0px 1px 2px oklch(0% none none / 0.4));
+
+	[data-color-scheme="light"] & {
+		--_shadow: drop-shadow(0px 2px 4px oklch(0% none none / 0.04))
+			drop-shadow(0px 1px 2px oklch(0% none none / 0.24));
+	}
+
+	filter: var(--_shadow);
 }
 
 .appNav {

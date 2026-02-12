@@ -73,4 +73,8 @@
 			border-color: GrayText;
 		}
 	}
+
+	&::before {
+		background-color: transparent;
+	}
 }

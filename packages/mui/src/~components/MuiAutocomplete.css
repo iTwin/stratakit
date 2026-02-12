@@ -1,0 +1,35 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+
+.MuiAutocomplete-input {
+	:where(.MuiAutocomplete-hasPopupIcon) & {
+		padding-inline-end: calc(9px + 20px); /* 9px gap + 20px dropdown button width */
+	}
+
+	:where(.MuiAutocomplete-hasClearIcon) & {
+		padding-inline-end: calc(
+			9px +
+			20px +
+			24px
+		); /* 9px gap + 20px dropdown button width + 24px clear button width */
+	}
+}
+
+.MuiAutocomplete-tag {
+	margin-inline-start: var(--stratakit-space-x1);
+	margin-inline-end: 0;
+
+	&:where(:nth-child(1 of &)) {
+		margin-inline-start: var(--stratakit-space-x2);
+	}
+
+	&:where(:nth-last-child(1 of &)) {
+		margin-inline-end: var(--stratakit-space-x2);
+	}
+}
+
+.MuiAutocomplete-clearIndicator {
+	visibility: visible;
+}

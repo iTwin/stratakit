@@ -5,6 +5,7 @@
 
 import * as React from "react";
 import { Role } from "@ariakit/react/role";
+import OutlinedInput from "@mui/material/OutlinedInput";
 import { createTheme as createMuiTheme } from "@mui/material/styles";
 import {
 	ArrowDownIcon,
@@ -274,6 +275,12 @@ function createTheme() {
 					IconComponent: CaretsUpDownIcon,
 				},
 			},
+			MuiNativeSelect: {
+				defaultProps: {
+					input: <OutlinedInput />,
+					IconComponent: CaretsUpDownIcon,
+				},
+			},
 			MuiSkeleton: { defaultProps: { component: Role.span } },
 			MuiSlider: { defaultProps: { component: Role.span } },
 			MuiSnackbarContent: { defaultProps: { component: Role.div } },
@@ -301,7 +308,10 @@ function createTheme() {
 				defaultProps: { component: withRenderProp(Role, "thead") },
 			},
 			MuiTablePagination: {
-				defaultProps: { component: withRenderProp(Role, "td") },
+				defaultProps: {
+					component: withRenderProp(Role, "td"),
+					slotProps: { root: { colSpan: 999 } },
+				},
 			},
 			MuiTableRow: { defaultProps: { component: withRenderProp(Role, "tr") } },
 			MuiTableSortLabel: {

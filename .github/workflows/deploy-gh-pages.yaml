@@ -23,6 +23,7 @@ jobs:
     outputs:
       BASE_FOLDER: ${{ steps.base_path.outputs.base_path || '' }}
       PRESERVE_FOLDERS: ${{ steps.preserve_folders.outputs.result }}
+      BASE_PREFIX: ${{ steps.base_prefix.outputs.result || '' }}
 
     steps:
       - name: Print base path # (<inputs.base> or commit/<short_sha>)
@@ -30,6 +31,13 @@ jobs:
         id: base_path
         run: |
           echo "base_path=${{ inputs.base || 'commit/${GITHUB_SHA::7}' }}" >> "$GITHUB_OUTPUT"
+
+      - name: Calculate base pathname (repo name with trailing slash)
+        uses: actions/github-script@v8
+        id: base_prefix
+        with:
+          result-encoding: string
+          script: return new URL("${{ vars.GH_PAGES_URL }}").pathname.replace(/^\/|\/$/g, "") + "/";
 
       - name: Print folders to preserve # (open PRs and "commit/" folder)
         id: preserve_folders
@@ -51,6 +59,7 @@ jobs:
     env:
       BASE_FOLDER: ${{ needs.paths.outputs.BASE_FOLDER }}
       CLEAN_EXCLUDE: ${{ needs.paths.outputs.PRESERVE_FOLDERS }}
+      BASE_PREFIX: ${{ needs.paths.outputs.BASE_PREFIX }}
       GH_PAGES_URL: ${{ vars.GH_PAGES_URL }}
 
     steps:
@@ -77,7 +86,7 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages
-          folder: ${{ github.workspace }}/apps/test-app/build/client/${{ env.BASE_FOLDER }}
+          folder: ${{ github.workspace }}/apps/test-app/build/client/${{ env.BASE_PREFIX }}${{ env.BASE_FOLDER }}
           target-folder: ${{ env.BASE_FOLDER }}
           clean-exclude: ${{ env.CLEAN_EXCLUDE }}
           git-config-name: github-actions[bot]

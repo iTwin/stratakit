@@ -33,13 +33,13 @@ const basename = (() => {
 	if (!GH_PAGES_URL) return undefined;
 
 	const sitePathname = GH_PAGES_URL
-		? new URL(GH_PAGES_URL).pathname.replace(/\/$/, "")
+		? new URL(GH_PAGES_URL).pathname.replace(/^\/|\/$/g, "")
 		: undefined;
 
 	if (!sitePathname && !BASE_FOLDER) return undefined;
 
 	// basename must start with "/" AND end with "/".
-	return `${[sitePathname, BASE_FOLDER].join("/")}/`;
+	return `/${[sitePathname, BASE_FOLDER].filter(Boolean).join("/")}/`;
 })();
 
 const customConditions = isDev ? ["@stratakit/source"] : [];

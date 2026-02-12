@@ -23,7 +23,7 @@ Make sure the **IconButton** is suitable for your use case. There may be other, 
 
 ### Badge
 
-Use a **Badge** component to indicate the functionality behind the **IconButton** is in need of attention. For example, an **IconButton** for notifications can indicate _unread_ notifications.
+Use a [**Badge**](/components/badge) component to indicate the functionality behind the **IconButton** is in need of attention. For example, an **IconButton** for notifications can indicate _unread_ notifications.
 
 ::example{src="mui/Badge.default"}
 

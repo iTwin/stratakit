@@ -8,8 +8,31 @@ links:
 
 ::example{src="mui/Switch.default"}
 
+## Use cases
+
+Make sure the **Switch** is suitable for your use case. There may be other, more appropriate components available.
+
+| Use case                                                          | [Button](/components/button) | [IconButton](/components/iconbutton) | [Switch](/components/switch) | [Checkbox](/components/checkbox) | [Link](/components/link) |
+| ----------------------------------------------------------------- | ---------------------------- | ------------------------------------ | ---------------------------- | -------------------------------- | ------------------------ |
+| Submit forms, confirm or cancel dialogs, create or delete content | ✅                           | ❌                                   | ❌                           | ❌                               | ❌                       |
+| Select an option within a toolbar                                 | ❌                           | ✅                                   | ❌                           | ❌                               | ❌                       |
+| Make an instantaneous, binary choice (switch a setting on or off) | ❌                           | ❌                                   | ✅                           | ❌                               | ❌                       |
+| Confirm an input for a form submission                            | ❌                           | ❌                                   | ❌                           | ✅                               | ❌                       |
+| Navigate between interface screens or sections                    | ❌                           | ❌                                   | ❌                           | ❌                               | ✅                       |
+
 ## Examples
 
 ### Checked
 
 ::example{src="mui/Switch.checked"}
+
+## ✅ Do
+
+- Use a clear, descriptive label for each **Switch**.
+- Use a **Switch** when the effect is instantaneous (no confirmation or submission is required).
+
+## 🚫 Don’t
+
+- Don't use switches for mandatory actions. The checked state of a switch can never be _invalid_.
+- Don't use one switch to change multiple settings simultaneously.
+- Don't use switches inside a form that needs submission. Use [**Checkbox**](/components/checkbox) instead.

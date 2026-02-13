@@ -4,25 +4,30 @@
 
 <script>
 	import { createElement } from "react";
-	import { createRoot } from "react-dom/client";
 	import { ExampleEmbed } from "./ExamplePreview.tsx";
+	import { mountPortal } from "./StrataKitRoot.tsx";
 
 	customElements.define(
 		"example-embed",
 		class extends HTMLElement {
-			#root: ReturnType<typeof createRoot> | null = null;
+			#controller: AbortController | undefined;
 
 			connectedCallback() {
+				this.#controller = new AbortController();
+
 				const src = this.dataset.src;
 				if (!src) return;
 
-				const root = createRoot(this);
-				root.render(createElement(ExampleEmbed, { src }));
-				this.#root = root;
+				const unmount = mountPortal({
+					element: createElement(ExampleEmbed, { src }),
+					target: this,
+				});
+
+				this.#controller.signal.onabort = () => unmount?.();
 			}
 
 			disconnectedCallback() {
-				this.#root?.unmount();
+				this.#controller?.abort();
 			}
 		},
 	);

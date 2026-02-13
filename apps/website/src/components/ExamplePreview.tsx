@@ -27,8 +27,7 @@ export function ExampleEmbed({ src }: { src: string }) {
 	const labelId = React.useId();
 
 	return (
-		<Root
-			colorScheme={useColorScheme()}
+		<div
 			className={styles.exampleEmbedRoot}
 			role="group"
 			aria-labelledby={labelId}
@@ -54,7 +53,7 @@ export function ExampleEmbed({ src }: { src: string }) {
 					}
 				/>
 			</div>
-		</Root>
+		</div>
 	);
 }
 

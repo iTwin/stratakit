@@ -4,19 +4,13 @@
  *--------------------------------------------------------------------------------------------*/
 
 .MuiSwitch-root {
+	--_switch-thumb-size: 1rem;
+
 	padding: 0;
 	block-size: auto;
 	inline-size: auto;
 	align-items: center;
 	overflow: visible;
-
-	&:where(.MuiSwitch-sizeSmall) {
-		--_switch-thumb-size: 0.75rem;
-	}
-
-	&:where(.MuiSwitch-sizeMedium) {
-		--_switch-thumb-size: 1rem;
-	}
 }
 
 .MuiSwitch-switchBase {

@@ -52,6 +52,20 @@
 	}
 }
 
+.MuiSwitch-input {
+	inset: calc(var(--stratakit-space-x05) * -1);
+	inline-size: calc((var(--_switch-thumb-size) * 2) + (var(--stratakit-space-x05) * 2));
+	block-size: calc(var(--_switch-thumb-size) + (var(--stratakit-space-x05) * 2));
+
+	:where(.MuiSwitch-switchBase.Mui-checked) & {
+		left: calc((var(--_switch-thumb-size) + var(--stratakit-space-x05)) * -1);
+	}
+
+	@media (prefers-reduced-motion: no-preference) {
+		transition: left 150ms ease-out;
+	}
+}
+
 .MuiSwitch-thumb {
 	aspect-ratio: inherit;
 	block-size: inherit;

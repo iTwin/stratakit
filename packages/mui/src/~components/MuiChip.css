@@ -1,0 +1,11 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+
+.MuiChip-root {
+	&:where(.MuiChip-filledDefault.MuiChip-colorDefault) {
+		background-color: var(--stratakit-color-bg-neutral-base);
+		border: 1px solid var(--stratakit-color-border-neutral-base);
+	}
+}

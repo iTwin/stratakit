@@ -7,6 +7,7 @@
 @import "./~components/MuiButton.css";
 @import "./~components/MuiCard.css";
 @import "./~components/MuiCheckbox.css";
+@import "./~components/MuiChip.css";
 @import "./~components/MuiForm.css";
 @import "./~components/MuiInput.css";
 @import "./~components/MuiTabs.css";
@@ -24,13 +25,6 @@
 	box-shadow: none;
 	border-block-end: 1px solid var(--stratakit-color-border-page-base);
 	color: var(--stratakit-color-text-neutral-primary);
-}
-
-.MuiChip-root {
-	&:where(.MuiChip-filledDefault.MuiChip-colorDefault) {
-		background-color: var(--stratakit-color-bg-neutral-base);
-		border: 1px solid var(--stratakit-color-border-neutral-base);
-	}
 }
 
 .MuiDialogActions-root {

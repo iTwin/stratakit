@@ -1,0 +1,1 @@
+import{j as r,I as n,R as s}from"./ExamplePreview.3hH6HVqp.js";import{f as i}from"./styles.internal.BwFdDu8v.js";function c(e){return i((o,t)=>r.jsx(n,{render:r.jsx(s.svg,{width:"16",height:"16",fill:"none",viewBox:"0 0 16 16",...o,ref:t,children:r.jsx("path",{fill:"currentColor",d:e})})}))}export{c};

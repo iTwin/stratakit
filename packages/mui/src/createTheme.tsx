@@ -4,8 +4,11 @@
  *--------------------------------------------------------------------------------------------*/
 
 import * as React from "react";
+import * as ReactDOM from "react-dom";
 import { Role } from "@ariakit/react/role";
+import { OutlinedInput } from "@mui/material";
 import { createTheme as createMuiTheme } from "@mui/material/styles";
+import { useMergedRefs } from "@stratakit/foundations/secret-internals";
 import { Chip, ChipDeleteIcon, ChipLabel } from "./~components.js";
 import {
 	ArrowDownIcon,
@@ -119,7 +122,11 @@ function createTheme() {
 						paper: {
 							elevation: 8, // match Menu elevation
 						},
+						chip: {
+							component: AutocompleteChip,
+						},
 						clearIndicator: {
+							component: AutocompleteClearIndicator,
 							tabIndex: 0, // make clear indicator focusable
 							onKeyDown: (e: React.KeyboardEvent<HTMLButtonElement>) => {
 								// Stop Autocomplete from handling the event
@@ -336,7 +343,14 @@ function createTheme() {
 					},
 				},
 			},
-			// MuiTextField: { defaultProps: { component: Role.input } }, // This dynamically renders as `textarea` when multiline is true
+			MuiTextField: {
+				defaultProps: {
+					// component: Role.input, // This dynamically renders as `textarea` when multiline is true
+					slots: {
+						input: TextFieldInput,
+					},
+				},
+			},
 			MuiToggleButton: { defaultProps: { component: Role.button } },
 			MuiToolbar: { defaultProps: { component: Role.div } },
 			MuiTooltip: {
@@ -362,5 +376,51 @@ function withRenderProp(
 }
 
 // ----------------------------------------------------------------------------
+
+function TextFieldInput(props: React.ComponentProps<typeof OutlinedInput>) {
+	const [host, setHost] = React.useState<HTMLElement | null>(null);
+	const [shadow, setShadow] = React.useState<ShadowRoot | null>(null);
+	React.useEffect(() => {
+		if (!host) return;
+		if (!host.shadowRoot) {
+			host.attachShadow({ mode: "open", slotAssignment: "named" });
+		}
+		setShadow(host.shadowRoot);
+	}, [host]);
+	const ref = useMergedRefs(setHost, props.ref);
+	return (
+		<>
+			<OutlinedInput {...props} ref={ref} />
+			{shadow &&
+				ReactDOM.createPortal(
+					<>
+						<slot />
+						<div role="list">
+							<slot name="chips" />
+						</div>
+						<slot name="end" />
+					</>,
+					shadow,
+				)}
+		</>
+	);
+}
+
+function AutocompleteClearIndicator(props: React.ComponentProps<"button">) {
+	const [el, setEl] = React.useState<HTMLButtonElement | null>(null);
+	React.useEffect(() => {
+		const parentElement = el?.parentElement;
+		if (!parentElement) return;
+		parentElement.slot = "end";
+		return () => {
+			parentElement.slot = "";
+		};
+	}, [el]);
+	return <button {...props} ref={setEl} />;
+}
+
+function AutocompleteChip(props: React.ComponentProps<typeof Chip>) {
+	return <Chip {...props} role="listitem" />;
+}
 
 export { createTheme };

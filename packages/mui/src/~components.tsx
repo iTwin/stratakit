@@ -44,9 +44,10 @@ const Chip = React.forwardRef<HTMLDivElement, ChipProps>(
 			>
 				<Role.div
 					tabIndex={isClickable ? tabIndexProp : undefined}
-					role={isClickable ? roleProp : undefined}
+					role={roleProp === "button" && !isClickable ? undefined : roleProp}
 					{...rest}
 					ref={forwardedRef}
+					slot="chips"
 				/>
 			</ChipContext.Provider>
 		);
@@ -56,7 +57,7 @@ const Chip = React.forwardRef<HTMLDivElement, ChipProps>(
 // ----------------------------------------------------------------------------
 
 const ChipLabel = React.forwardRef<
-	HTMLDivElement,
+	HTMLSpanElement,
 	React.ComponentProps<"span">
 >((props, forwardedRef) => {
 	const defaultId = React.useId();

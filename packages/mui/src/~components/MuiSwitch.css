@@ -61,7 +61,7 @@
 	border: 1px solid var(--stratakit-color-border-shadow-base);
 	position: relative;
 
-	:where(.Mui-disabled) & {
+	:where(.MuiSwitch-switchBase.Mui-disabled) & {
 		background-color: var(--stratakit-color-icon-neutral-disabled);
 		border-color: var(--stratakit-color-icon-neutral-disabled);
 	}
@@ -75,17 +75,17 @@
 	border-radius: 9999px;
 	opacity: 1;
 
-	:where(.Mui-checked) + & {
+	:where(.MuiSwitch-switchBase.Mui-checked) + & {
 		background-color: var(--stratakit-color-bg-accent-base);
 		border-color: var(--stratakit-color-border-shadow-strong);
 	}
 
-	:where(.Mui-disabled) + & {
+	:where(.MuiSwitch-switchBase.Mui-disabled) + & {
 		background-color: var(--stratakit-color-bg-page-base);
 		border-color: var(--stratakit-color-icon-neutral-disabled);
 	}
 
-	:where(.Mui-focusVisible) + & {
+	:where(.MuiSwitch-switchBase.Mui-focusVisible) + & {
 		outline: 2px solid var(--stratakit-color-border-accent-strong);
 		outline-offset: 2px;
 	}

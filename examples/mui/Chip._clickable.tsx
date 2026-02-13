@@ -8,9 +8,9 @@ import Chip from "@mui/material/Chip";
 export default () => {
 	return (
 		<Chip
-			label="Deletable Chip"
-			onDelete={() => {
-				console.log("Deleted");
+			label="Clickable Chip"
+			onClick={() => {
+				console.log("Clicked");
 			}}
 		/>
 	);

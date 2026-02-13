@@ -7,6 +7,7 @@ import * as React from "react";
 import { Role } from "@ariakit/react/role";
 import OutlinedInput from "@mui/material/OutlinedInput";
 import { createTheme as createMuiTheme } from "@mui/material/styles";
+import { Chip, ChipDeleteIcon, ChipLabel } from "./~components/MuiChip.js";
 import {
 	ArrowDownIcon,
 	CaretsUpDownIcon,
@@ -171,8 +172,13 @@ function createTheme() {
 			},
 			MuiChip: {
 				defaultProps: {
-					component: Role.div,
-					deleteIcon: <DismissIcon />,
+					component: Chip,
+					deleteIcon: <ChipDeleteIcon />,
+					slotProps: {
+						label: {
+							component: ChipLabel,
+						},
+					},
 				},
 			},
 			MuiContainer: { defaultProps: { component: Role.div } },

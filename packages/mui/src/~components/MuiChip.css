@@ -22,3 +22,7 @@
 		border-radius: inherit;
 	}
 }
+
+.MuiChip-deleteIcon {
+	margin-inline-start: calc(-1 * var(--stratakit-mui-spacing));
+}

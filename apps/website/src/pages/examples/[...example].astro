@@ -1,6 +1,6 @@
 ---
 import { getCollection } from "astro:content";
-import ExamplePreview from "../../components/ExamplePreview";
+import { ExamplePreview } from "../../components/ExamplePreview.tsx";
 
 export async function getStaticPaths() {
 	const examples = await getCollection("examples");
@@ -13,7 +13,7 @@ export async function getStaticPaths() {
 const { example } = Astro.props;
 
 const { packageName } = example.data;
-const exampleName = example.id.split(`${packageName}/`).at(-1);
+const exampleName = example.id.split(`${packageName}/`).at(-1)!;
 ---
 
 <html lang="en">
@@ -22,16 +22,12 @@ const exampleName = example.id.split(`${packageName}/`).at(-1);
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta name="color-scheme" content="dark light" />
 		<title>{example.data.displayName} – StrataKit examples</title>
-
-		<script is:inline>
-			const params = new URLSearchParams(location.search);
-			if (params.has("preview")) document.documentElement.dataset.centered = "true";
-		</script>
 	</head>
 	<body>
 		<ExamplePreview
 			exampleName={exampleName}
 			packageName={example.data.packageName}
+			withRoot
 			client:only="react"
 		/>
 	</body>
@@ -43,11 +39,6 @@ const exampleName = example.id.split(`${packageName}/`).at(-1);
 	}
 	body {
 		padding: 16px;
-	}
-	html[data-centered="true"] body {
-		min-block-size: 100dvb;
-		display: grid;
-		place-content: center;
 	}
 	:global(.flex) {
 		display: flex;

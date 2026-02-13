@@ -64,9 +64,8 @@
 		margin-inline-start: var(--stratakit-space-x4);
 	}
 
-	iframe {
-		inline-size: 100%;
-		border: none;
+	example-embed:not(:first-child) {
+		margin-block-start: var(--stratakit-space-x4);
 	}
 }
 

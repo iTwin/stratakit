@@ -59,6 +59,7 @@ export default function Page() {
 		<Container
 			maxWidth="md"
 			component="main"
+			// render={<main />} // TODO: This is not working 🤬
 			className={styles.main}
 			tabIndex={-1}
 			id={React.use(SkipLinkContext)?.id}

@@ -9,6 +9,7 @@
 @import "./~components/MuiCheckbox.css";
 @import "./~components/MuiForm.css";
 @import "./~components/MuiInput.css";
+@import "./~components/MuiSlider.css";
 @import "./~components/MuiTabs.css";
 
 .MuiAccordion-root {

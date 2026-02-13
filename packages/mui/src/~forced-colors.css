@@ -46,3 +46,18 @@
 		background-color: MarkText;
 	}
 }
+
+.MuiPaper-root {
+	border: 1px solid;
+}
+
+.MuiMenuItem-root:where(.Mui-selected) {
+	forced-color-adjust: none;
+	background-color: SelectedItem;
+	color: SelectedItemText;
+	--🥝Icon-color: SelectedItemText;
+
+	.MuiListItemIcon-root {
+		color: SelectedItemText;
+	}
+}

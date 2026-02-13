@@ -1,0 +1,1 @@
+import{D as f,E as i,F as S,G as c}from"./ExamplePreview.B1D9q5sx.js";function u(o){const{elementType:s,externalSlotProps:t,ownerState:e,skipResolvingSlotProps:n=!1,...p}=o,r=n?{}:f(t,e),{props:l,internalRef:a}=i({...p,externalSlotProps:r}),P=S(a,r?.ref,o.additionalProps?.ref);return c(s,{...l,ref:P},e)}export{u};

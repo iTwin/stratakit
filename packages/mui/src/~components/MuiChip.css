@@ -12,14 +12,15 @@
 	&:where(.MuiButtonBase-root) {
 		user-select: auto;
 	}
+
+	&:where(:has(.MuiChip-label:focus-visible)) {
+		outline: var(--🥝focus-outline);
+	}
 }
 
 .MuiChip-label {
 	&:where(button) {
-		block-size: 100%;
-		display: flex;
-		align-items: center;
-		border-radius: inherit;
+		outline: unset !important;
 	}
 }
 

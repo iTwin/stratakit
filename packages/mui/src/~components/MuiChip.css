@@ -8,4 +8,8 @@
 		background-color: var(--stratakit-color-bg-neutral-base);
 		border: 1px solid var(--stratakit-color-border-neutral-base);
 	}
+
+	&:where(.MuiButtonBase-root) {
+		user-select: auto;
+	}
 }

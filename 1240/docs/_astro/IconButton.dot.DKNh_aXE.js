@@ -1,0 +1,1 @@
+import{j as t,m as o}from"./ExamplePreview.CVwaxrEy.js";import"./preload-helper.t0z4e62b.js";import"./index.DIfZGIpv.js";import"./styles.internal.BwFdDu8v.js";import"./index.XeJbqeyU.js";const i="/stratakit/1240/docs/_astro/notifications.DrPjL4ho.svg",e=()=>t.jsx(o,{label:"Notifications",dot:"You have unread notifications",icon:i});export{e as default};

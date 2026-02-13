@@ -1,0 +1,115 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+
+.MuiSlider-root {
+	--_slider-thumb-size: 0.875rem;
+
+	padding: 0;
+
+	&:where(.MuiSlider-sizeSmall) {
+		--_slider-rail-track-size: 2px;
+	}
+
+	&:where(.MuiSlider-sizeMedium) {
+		--_slider-rail-track-size: 8px;
+	}
+
+	&:where(:not(.MuiSlider-vertical)) {
+		block-size: var(--_slider-thumb-size);
+	}
+
+	&:where(.MuiSlider-vertical) {
+		inline-size: var(--_slider-thumb-size);
+	}
+
+	&:where(.Mui-disabled) {
+		cursor: not-allowed;
+		pointer-events: initial;
+	}
+}
+
+:is(.MuiSlider-rail, .MuiSlider-track) {
+	:where(.MuiSlider-root:not(.MuiSlider-vertical)) & {
+		block-size: var(--_slider-rail-track-size);
+	}
+
+	:where(.MuiSlider-vertical) & {
+		inline-size: var(--_slider-rail-track-size);
+	}
+}
+
+.MuiSlider-rail {
+	opacity: 1;
+	background-color: var(--stratakit-color-bg-control-slider-track);
+
+	:where(.Mui-disabled) & {
+		background-color: var(--stratakit-color-bg-control-switch);
+		border: 1px solid var(--stratakit-color-border-glow-on-surface-disabled);
+	}
+}
+
+.MuiSlider-track {
+	background-color: var(--stratakit-color-bg-accent-base);
+
+	:where(.Mui-disabled) & {
+		background-color: var(--stratakit-color-border-glow-on-surface-disabled);
+		border: 1px solid var(--stratakit-color-border-glow-on-surface-disabled);
+	}
+}
+
+.MuiSlider-thumb {
+	aspect-ratio: 1;
+	block-size: var(--_slider-thumb-size);
+	inline-size: var(--_slider-thumb-size);
+	background-color: var(--stratakit-color-bg-neutral-inverse);
+	border: 1px solid var(--stratakit-color-border-shadow-base);
+
+	:where(.MuiSlider-root:not(.MuiSlider-vertical)) & {
+		cursor: ew-resize;
+
+		&[style*="left: 0%"] {
+			cursor: e-resize;
+		}
+
+		&[style*="left: 100%"] {
+			cursor: w-resize;
+		}
+	}
+
+	:where(.MuiSlider-vertical) & {
+		cursor: ns-resize;
+
+		&[style*="bottom: 0%"] {
+			cursor: n-resize;
+		}
+
+		&[style*="bottom: 100%"] {
+			cursor: s-resize;
+		}
+	}
+
+	&:where(.Mui-disabled) {
+		background-color: var(--stratakit-color-icon-neutral-disabled);
+		border-color: var(--stratakit-color-icon-neutral-disabled);
+		cursor: not-allowed;
+	}
+
+	&:where(.Mui-focusVisible) {
+		outline: 2px solid var(--stratakit-color-border-accent-strong);
+		outline-offset: 2px;
+	}
+
+	/* This pseudo-element increases tap target size to 24x24 */
+	&::after {
+		block-size: 24px;
+		inline-size: 24px;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	:is(.MuiSlider-track, .MuiSlider-thumb) {
+		transition: none;
+	}
+}

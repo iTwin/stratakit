@@ -46,3 +46,30 @@
 		background-color: MarkText;
 	}
 }
+
+.MuiSlider-rail {
+	border: 1px solid;
+
+	:where(.Mui-disabled) & {
+		border-color: GrayText;
+	}
+}
+
+.MuiSlider-track {
+	background-color: SelectedItem;
+
+	:where(.Mui-disabled) & {
+		background-color: GrayText;
+		border-color: GrayText;
+	}
+}
+
+.MuiSlider-thumb {
+	&:where(.Mui-disabled) {
+		border-color: GrayText;
+	}
+
+	&:where(.Mui-focusVisible) {
+		outline-color: Highlight;
+	}
+}

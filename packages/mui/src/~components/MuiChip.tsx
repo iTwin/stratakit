@@ -17,6 +17,7 @@ const ChipContext = React.createContext<
 			labelId?: string;
 			setLabelId: (id: string | undefined) => void;
 			clearId?: string;
+			isClickable: boolean;
 	  }
 	| undefined
 >(undefined);
@@ -26,8 +27,11 @@ const Chip = React.forwardRef<HTMLDivElement, React.ComponentProps<"div">>(
 		const clearId = React.useId();
 		const [labelId, setLabelId] = React.useState<string | undefined>(undefined);
 		const { role, ...rest } = props;
+		const isClickable = props.className?.includes("MuiChip-clickable") ?? false;
 		return (
-			<ChipContext.Provider value={{ labelId, setLabelId, clearId }}>
+			<ChipContext.Provider
+				value={{ labelId, setLabelId, clearId, isClickable }}
+			>
 				<Role.div
 					{...rest}
 					role={role === "button" ? undefined : role} // Chip is not interactive
@@ -47,7 +51,7 @@ const ChipLabel = React.forwardRef<
 >((props, forwardedRef) => {
 	const defaultId = React.useId();
 	const { id = defaultId, ...rest } = props;
-	const { setLabelId } = React.useContext(ChipContext) ?? {};
+	const { setLabelId, isClickable } = React.useContext(ChipContext) ?? {};
 	React.useEffect(() => {
 		if (!setLabelId) return;
 		setLabelId(id);
@@ -55,7 +59,14 @@ const ChipLabel = React.forwardRef<
 			setLabelId(undefined);
 		};
 	}, [id, setLabelId]);
-	return <span id={id} {...rest} ref={forwardedRef} />;
+	const Component = isClickable ? Role.button : Role.span;
+	return (
+		<Component
+			id={id}
+			{...rest}
+			ref={forwardedRef as React.Ref<HTMLButtonElement>}
+		/>
+	);
 });
 
 // ----------------------------------------------------------------------------

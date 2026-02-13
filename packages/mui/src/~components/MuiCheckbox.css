@@ -4,16 +4,24 @@
  *--------------------------------------------------------------------------------------------*/
 
 :is(.MuiCheckbox-root, .MuiRadio-root) {
-	--✨size: 1rem;
+	--_checkbox-size: 1rem;
 
 	padding: 0;
 	position: relative;
+
+	&:where(.MuiCheckbox-sizeSmall, .MuiRadio-sizeSmall) {
+		--_checkbox-size: 0.75rem;
+	}
+
+	&:where(.MuiCheckbox-sizeLarge) {
+		--_checkbox-size: 1.5rem;
+	}
 
 	/* This pseudo-element increases tap target size to 24x24 */
 	&::before {
 		content: "";
 		position: absolute;
-		inset: calc(((24px - var(--✨size)) / 2) * -1); /* Makes touch target area 24px */
+		inset: calc(((24px - var(--_checkbox-size)) / 2) * -1); /* Makes touch target area 24px */
 		border-radius: 50%;
 		background-color: var(--_hover-background-color);
 	}
@@ -39,8 +47,8 @@
 		appearance: none;
 		opacity: 1;
 		aspect-ratio: 1;
-		inline-size: var(--✨size);
-		block-size: var(--✨size);
+		inline-size: var(--_checkbox-size);
+		block-size: var(--_checkbox-size);
 		background-color: var(--stratakit-color-bg-neutral-base);
 		border: 1px solid var(--stratakit-color-border-shadow-base);
 		color: var(--stratakit-color-icon-neutral-emphasis);

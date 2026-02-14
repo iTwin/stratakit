@@ -17,6 +17,10 @@ Additional setup/considerations:
 - [`/types.d.ts`](#typescript) must be included in your project to ensure that the module augmentation for MUI components is picked up by TypeScript.
 - If you are trying to use this package alongside iTwinUI, you will also need to set up the [theme bridge](https://github.com/iTwin/iTwinUI/wiki/StrataKit-theme-bridge).
 
+Check out the minimal starter template on StackBlitz for a quick working example:
+
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/iTwin/stratakit/tree/main/internal/minimal-template?file=src%2FApp.tsx)
+
 ## Usage
 
 To use the StrataKit MUI theme, you’ll need to wrap your application's entrypoint with the `<Root>` component and set its `colorScheme` (to `"light"` or `"dark"`). This component will automatically configure MUI's `ThemeProvider` with the StrataKit theme.

@@ -53,6 +53,7 @@
 }
 
 .MuiSwitch-input {
+	appearance: none;
 	inset: calc(var(--stratakit-space-x05) * -1);
 	inline-size: calc((var(--_switch-thumb-size) * 2) + (var(--stratakit-space-x05) * 2));
 	block-size: calc(var(--_switch-thumb-size) + (var(--stratakit-space-x05) * 2));

@@ -167,7 +167,7 @@ function starlightLiveExamples() {
 					node.children = [
 						{
 							type: "html",
-							value: `<iframe src=${`${BASE_URL}/examples/${src}?preview`} title="${src} example" height="150"></iframe>`,
+							value: `<iframe src=${`${base}/examples/${src}?preview`} title="${src} example" height="150"></iframe>`,
 						},
 					];
 				}

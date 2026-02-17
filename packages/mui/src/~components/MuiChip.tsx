@@ -24,9 +24,11 @@ const MuiChipContext = React.createContext<
 
 const MuiChip = React.forwardRef<HTMLDivElement, React.ComponentProps<"div">>(
 	(props, forwardedRef) => {
+		const { role, ...rest } = props;
+
 		const clearId = React.useId();
 		const [labelId, setLabelId] = React.useState<string | undefined>(undefined);
-		const { role, ...rest } = props;
+
 		const isClickable = props.className?.includes("MuiChip-clickable") ?? false;
 		return (
 			<MuiChipContext.Provider
@@ -51,7 +53,9 @@ const MuiChipLabel = React.forwardRef<
 >((props, forwardedRef) => {
 	const defaultId = React.useId();
 	const { id = defaultId, ...rest } = props;
+
 	const { setLabelId, isClickable } = React.useContext(MuiChipContext) ?? {};
+
 	React.useEffect(() => {
 		if (!setLabelId) return;
 		setLabelId(id);
@@ -59,6 +63,7 @@ const MuiChipLabel = React.forwardRef<
 			setLabelId(undefined);
 		};
 	}, [id, setLabelId]);
+
 	const Component = isClickable ? Role.button : Role.span;
 	return (
 		<Component
@@ -76,6 +81,7 @@ const MuiChipDeleteIcon = React.forwardRef<
 	React.ComponentProps<typeof MuiIconButton>
 >((props, forwardedRef) => {
 	const { clearId, labelId } = React.useContext(MuiChipContext) ?? {};
+
 	const theme = useTheme();
 	const label =
 		theme.components?.MuiAutocomplete?.defaultProps?.clearText ?? "Clear";

@@ -75,6 +75,17 @@ declare module "@mui/material/Checkbox" {
 	}
 }
 
+declare module "@mui/material/Chip" {
+	interface ChipOwnProps {
+		/**
+		 * The label of the delete button.
+		 *
+		 * @default 'Delete'
+		 */
+		deleteLabel?: string;
+	}
+}
+
 declare module "@mui/material/Fab" {
 	interface FabPropsColorOverrides {
 		info: false;

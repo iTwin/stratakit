@@ -18,3 +18,11 @@ links:
 ### Outlined
 
 ::example{src="mui/Chip.outlined"}
+
+### Clickable
+
+::example{src="mui/Chip.clickable"}
+
+### Deletable
+
+::example{src="mui/Chip.deletable"}

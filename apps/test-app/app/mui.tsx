@@ -37,10 +37,10 @@ import CardHeader from "examples/mui/Card.header.tsx";
 import CheckboxChecked from "examples/mui/Checkbox.checked.tsx";
 import CheckboxDefault from "examples/mui/Checkbox.default.tsx";
 import CheckboxIndeterminate from "examples/mui/Checkbox.indeterminate.tsx";
-import ChipClickable_ from "examples/mui/Chip._clickable.tsx";
-import ChipDeletable_ from "examples/mui/Chip._deletable.tsx";
 import ChipInteractive_ from "examples/mui/Chip._interactive.tsx";
+import ChipClickable from "examples/mui/Chip.clickable.tsx";
 import ChipDefault from "examples/mui/Chip.default.tsx";
+import ChipDeletable from "examples/mui/Chip.deletable.tsx";
 import ChipOutlined from "examples/mui/Chip.outlined.tsx";
 import CircularProgressDefault from "examples/mui/CircularProgress.default.tsx";
 import DialogDefault from "examples/mui/Dialog.default.tsx";
@@ -172,8 +172,8 @@ const components: Record<string, React.ReactNode> = {
 		<Stack spacing={1} direction="row" useFlexGap flexWrap="wrap">
 			<ChipDefault />
 			<ChipOutlined />
-			{!isProduction && <ChipClickable_ />}
-			{!isProduction && <ChipDeletable_ />}
+			<ChipClickable />
+			<ChipDeletable />
 			{!isProduction && <ChipInteractive_ />}
 		</Stack>
 	),

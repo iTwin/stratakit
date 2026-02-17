@@ -52,6 +52,7 @@ const MuiChip = React.forwardRef<HTMLDivElement, MuiChipProps>(
 		);
 	},
 );
+DEV: MuiChip.displayName = "MuiChip";
 
 // ----------------------------------------------------------------------------
 
@@ -81,6 +82,7 @@ const MuiChipLabel = React.forwardRef<
 		/>
 	);
 });
+DEV: MuiChipLabel.displayName = "MuiChipLabel";
 
 // ----------------------------------------------------------------------------
 
@@ -102,6 +104,7 @@ const MuiChipDeleteIcon = React.forwardRef<
 		</IconButton>
 	);
 });
+DEV: MuiChipDeleteIcon.displayName = "MuiChipDeleteIcon";
 
 // ----------------------------------------------------------------------------
 

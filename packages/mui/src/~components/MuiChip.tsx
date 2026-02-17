@@ -12,7 +12,7 @@ import { DismissIcon } from "../Icon.js";
 
 // ----------------------------------------------------------------------------
 
-const ChipContext = React.createContext<
+const MuiChipContext = React.createContext<
 	| {
 			labelId?: string;
 			setLabelId: (id: string | undefined) => void;
@@ -22,14 +22,14 @@ const ChipContext = React.createContext<
 	| undefined
 >(undefined);
 
-const Chip = React.forwardRef<HTMLDivElement, React.ComponentProps<"div">>(
+const MuiChip = React.forwardRef<HTMLDivElement, React.ComponentProps<"div">>(
 	(props, forwardedRef) => {
 		const clearId = React.useId();
 		const [labelId, setLabelId] = React.useState<string | undefined>(undefined);
 		const { role, ...rest } = props;
 		const isClickable = props.className?.includes("MuiChip-clickable") ?? false;
 		return (
-			<ChipContext.Provider
+			<MuiChipContext.Provider
 				value={{ labelId, setLabelId, clearId, isClickable }}
 			>
 				<Role.div
@@ -38,20 +38,20 @@ const Chip = React.forwardRef<HTMLDivElement, React.ComponentProps<"div">>(
 					tabIndex={undefined} // Chip is not interactive
 					ref={forwardedRef}
 				/>
-			</ChipContext.Provider>
+			</MuiChipContext.Provider>
 		);
 	},
 );
 
 // ----------------------------------------------------------------------------
 
-const ChipLabel = React.forwardRef<
+const MuiChipLabel = React.forwardRef<
 	HTMLSpanElement,
 	React.ComponentProps<"span">
 >((props, forwardedRef) => {
 	const defaultId = React.useId();
 	const { id = defaultId, ...rest } = props;
-	const { setLabelId, isClickable } = React.useContext(ChipContext) ?? {};
+	const { setLabelId, isClickable } = React.useContext(MuiChipContext) ?? {};
 	React.useEffect(() => {
 		if (!setLabelId) return;
 		setLabelId(id);
@@ -71,11 +71,11 @@ const ChipLabel = React.forwardRef<
 
 // ----------------------------------------------------------------------------
 
-const ChipDeleteIcon = React.forwardRef<
+const MuiChipDeleteIcon = React.forwardRef<
 	HTMLButtonElement,
 	React.ComponentProps<typeof MuiIconButton>
 >((props, forwardedRef) => {
-	const { clearId, labelId } = React.useContext(ChipContext) ?? {};
+	const { clearId, labelId } = React.useContext(MuiChipContext) ?? {};
 	const theme = useTheme();
 	const label =
 		theme.components?.MuiAutocomplete?.defaultProps?.clearText ?? "Clear";
@@ -93,4 +93,4 @@ const ChipDeleteIcon = React.forwardRef<
 
 // ----------------------------------------------------------------------------
 
-export { Chip, ChipLabel, ChipDeleteIcon };
+export { MuiChip, MuiChipLabel, MuiChipDeleteIcon };

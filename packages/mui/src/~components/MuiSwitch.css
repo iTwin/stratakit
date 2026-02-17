@@ -101,7 +101,7 @@
 	}
 
 	:where(.MuiSwitch-switchBase.Mui-focusVisible) + & {
-		outline: 2px solid var(--stratakit-color-border-accent-strong);
+		outline: var(--🥝focus-outline);
 		outline-offset: 2px;
 	}
 }

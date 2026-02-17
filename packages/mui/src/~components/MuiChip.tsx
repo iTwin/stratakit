@@ -7,6 +7,7 @@ import * as React from "react";
 import { Role } from "@ariakit/react/role";
 import { VisuallyHidden } from "@ariakit/react/visually-hidden";
 import IconButton from "@mui/material/IconButton";
+import { useTheme } from "@mui/material/styles";
 import { DismissIcon } from "../Icon.js";
 
 import type Chip from "@mui/material/Chip";
@@ -19,7 +20,7 @@ const MuiChipContext = React.createContext<
 			setLabelId: (id: string | undefined) => void;
 			clearId?: string;
 			isClickable: boolean;
-			deleteLabel: string;
+			deleteLabel?: string;
 	  }
 	| undefined
 >(undefined);
@@ -32,7 +33,7 @@ interface MuiChipProps
 
 const MuiChip = React.forwardRef<HTMLDivElement, MuiChipProps>(
 	(props, forwardedRef) => {
-		const { role, deleteLabel = "Delete", ...rest } = props;
+		const { role, deleteLabel, ...rest } = props;
 
 		const clearId = React.useId();
 		const [labelId, setLabelId] = React.useState<string | undefined>(undefined);
@@ -90,8 +91,15 @@ const MuiChipDeleteIcon = React.forwardRef<
 	HTMLButtonElement,
 	React.ComponentProps<typeof IconButton>
 >((props, forwardedRef) => {
-	const { clearId, labelId, deleteLabel } =
-		React.useContext(MuiChipContext) ?? {};
+	const theme = useTheme();
+	const defaultLabel =
+		theme.components?.MuiAutocomplete?.defaultProps?.clearText ?? "Delete";
+
+	const {
+		clearId,
+		labelId,
+		deleteLabel = defaultLabel,
+	} = React.useContext(MuiChipContext) ?? {};
 
 	return (
 		<IconButton

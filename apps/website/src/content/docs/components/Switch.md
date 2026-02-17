@@ -24,6 +24,8 @@ Make sure the **Switch** is suitable for your use case. There may be other, more
 
 ### Checked
 
+Use a `defaultChecked` prop to set the initial checked state. Alternatively, use `checked` and `onChange` props to control the checked state.
+
 ::example{src="mui/Switch.checked"}
 
 ## ✅ Do

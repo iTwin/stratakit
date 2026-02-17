@@ -7,6 +7,8 @@
 
 Monorepo for **StrataKit** — Bentley's new flagship design system, and the successor to [iTwinUI](https://github.com/iTwin/iTwinUI).
 
+[Read the documentation](https://itwin.github.io/stratakit/docs/getting-started/introduction/) to get started.
+
 ## Monorepo structure
 
 This monorepo is a [pnpm workspace](https://pnpm.io/workspaces) which can be configured in the [`./pnpm-workspace.yaml`](./pnpm-workspace.yaml) file.

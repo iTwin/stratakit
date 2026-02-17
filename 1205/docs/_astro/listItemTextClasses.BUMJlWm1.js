@@ -1,1 +1,0 @@
-import{O as e,P as s}from"./ExamplePreview.C_Y5FJiM.js";function a(t){return e("MuiListItemText",t)}const l=s("MuiListItemText",["root","multiline","dense","inset","primary","secondary"]);export{a as g,l};

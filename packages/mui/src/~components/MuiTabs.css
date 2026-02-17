@@ -3,15 +3,15 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import Button from "@mui/material/Button";
-import Stack from "@mui/material/Stack";
+.MuiTab-root {
+	&:where(.Mui-selected) {
+		color: var(--stratakit-color-text-accent-strong);
+	}
+	&:where(:focus-visible) {
+		outline-offset: -4px;
+	}
+}
 
-export default () => {
-	return (
-		<Stack spacing={1} direction="row">
-			<Button variant="contained">Contained</Button>
-			<Button variant="outlined">Outlined</Button>
-			<Button variant="text">Text</Button>
-		</Stack>
-	);
-};
+.MuiTabs-indicator {
+	background-color: var(--stratakit-color-border-accent-strong);
+}

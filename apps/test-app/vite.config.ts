@@ -26,9 +26,21 @@ import type { Plugin } from "vite";
 
 const isDev = process.env.NODE_ENV === "development";
 
-const basename = process.env.BASE_FOLDER
-	? `/${process.env.BASE_FOLDER}/`
-	: undefined;
+const { GH_PAGES_URL, BASE_FOLDER } = process.env;
+
+/** Combines the pathname from GH_PAGES_URL with BASE_FOLDER. */
+const basename = (() => {
+	if (!GH_PAGES_URL) return undefined;
+
+	const sitePathname = GH_PAGES_URL
+		? new URL(GH_PAGES_URL).pathname.replace(/^\/|\/$/g, "")
+		: undefined;
+
+	if (!sitePathname && !BASE_FOLDER) return undefined;
+
+	// basename must start with "/" AND end with "/".
+	return `/${[sitePathname, BASE_FOLDER].filter(Boolean).join("/")}/`;
+})();
 
 const customConditions = isDev ? ["@stratakit/source"] : [];
 
@@ -59,9 +71,8 @@ export default defineConfig({
 			if (filePath.endsWith(".svg")) return false;
 			return undefined;
 		},
-		assetsDir: process.env.BASE_FOLDER
-			? `${process.env.BASE_FOLDER}/assets`
-			: "assets",
+		// assetsDir must not start with "/".
+		assetsDir: basename ? `${basename.replace(/^\//, "")}/assets` : "assets",
 	},
 	server: {
 		port: 1800, // dev server port

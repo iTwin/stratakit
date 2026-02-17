@@ -3,15 +3,16 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import Button from "@mui/material/Button";
-import Stack from "@mui/material/Stack";
+.MuiCard-root {
+	background-color: var(--stratakit-color-bg-elevation-base);
+}
 
-export default () => {
-	return (
-		<Stack spacing={1} direction="row">
-			<Button variant="contained">Contained</Button>
-			<Button variant="outlined">Outlined</Button>
-			<Button variant="text">Text</Button>
-		</Stack>
-	);
-};
+.MuiCardContent-root {
+	&:where(:has(+ .MuiCardActions-root)) {
+		padding-block-end: 0;
+	}
+}
+
+.MuiCardActions-root {
+	padding: var(--stratakit-space-x4);
+}

@@ -7,10 +7,14 @@ import { IconButton } from "@stratakit/bricks";
 import { Root } from "@stratakit/mui";
 import { useColorScheme } from "./~utils.ts";
 
+import svgScript from "@stratakit/icons/script.svg";
 import svgWindowPopout from "@stratakit/icons/window-popout.svg";
 import styles from "./ExamplePreview.module.css";
 
 // ----------------------------------------------------------------------------
+
+/** Base URL for the `examples` workspace package on github */
+const examplesSrcUrl = "https://github.com/iTwin/stratakit/tree/main/examples/";
 
 // Pre-calculate all example modules so Vite can statically analyze them for bundling.
 // This requires that the path to examples dir is hardcoded (i.e. no dynamic expressions).
@@ -51,6 +55,12 @@ export function ExampleEmbed({ src }: { src: string }) {
 							target="_blank"
 						/>
 					}
+				/>
+				<IconButton
+					icon={svgScript}
+					label="View source on GitHub"
+					variant="ghost"
+					render={<a href={`${examplesSrcUrl}${src}.tsx`} target="_blank" />}
 				/>
 			</div>
 		</div>

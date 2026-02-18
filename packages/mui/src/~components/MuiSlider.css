@@ -4,16 +4,36 @@
  *--------------------------------------------------------------------------------------------*/
 
 .MuiSlider-root {
-	--_slider-thumb-size: 0.875rem;
+	--✨color-rail-bg--default: var(--stratakit-color-bg-control-slider-track);
+	--✨color-rail-bg--disabled: var(--stratakit-color-bg-control-switch);
+	--✨color-rail-border--default: var(--stratakit-color-bg-control-slider-track);
+	--✨color-rail-border--disabled: var(--stratakit-color-border-glow-on-surface-disabled);
+	--✨color-track-bg--default: var(--stratakit-color-bg-accent-base);
+	--✨color-track-bg--disabled: var(--stratakit-color-border-glow-on-surface-disabled);
+	--✨color-track-border--default: var(--stratakit-color-bg-accent-base);
+	--✨color-track-border--disabled: var(--stratakit-color-border-glow-on-surface-disabled);
+	--✨size-thumb: 0.875rem;
+	--✨size-track--small: 2px;
+	--✨size-track--medium: 4px;
+	--✨size-track--active: 8px;
 
 	padding: 0;
+	--_slider-rail-color-bg: var(--✨color-rail-bg--default);
+	--_slider-rail-color-border: var(--✨color-rail-border--default);
+	--_slider-track-color-bg: var(--✨color-track-bg--default);
+	--_slider-track-color-border: var(--✨color-track-border--default);
+	--_slider-thumb-size: var(--✨size-thumb);
 
 	&:where(.MuiSlider-sizeSmall) {
-		--_slider-rail-track-size: 2px;
+		--_slider-rail-track-size: var(--✨size-track--small);
 	}
 
 	&:where(.MuiSlider-sizeMedium) {
-		--_slider-rail-track-size: 8px;
+		--_slider-rail-track-size: var(--✨size-track--medium);
+	}
+
+	&:has(.Mui-active) {
+		--_slider-rail-track-size: var(--✨size-track--active);
 	}
 
 	&:where(:not(.MuiSlider-vertical)) {
@@ -27,36 +47,40 @@
 	&:where(.Mui-disabled) {
 		cursor: not-allowed;
 		pointer-events: initial;
+		--_slider-rail-color-bg: var(--✨color-rail-bg--disabled);
+		--_slider-rail-color-border: var(--✨color-rail-border--disabled);
+		--_slider-track-color-bg: var(--✨color-track-bg--disabled);
+		--_slider-track-color-border: var(--✨color-track-border--disabled);
 	}
 }
 
 :is(.MuiSlider-rail, .MuiSlider-track) {
 	:where(.MuiSlider-root:not(.MuiSlider-vertical)) & {
 		block-size: var(--_slider-rail-track-size);
+
+		@media (prefers-reduced-motion: no-preference) {
+			transition: block-size 150ms ease-in-out;
+		}
 	}
 
 	:where(.MuiSlider-vertical) & {
 		inline-size: var(--_slider-rail-track-size);
+
+		@media (prefers-reduced-motion: no-preference) {
+			transition: inline-size 150ms ease-in-out;
+		}
 	}
 }
 
 .MuiSlider-rail {
+	background-color: var(--_slider-rail-color-bg);
+	border: 1px solid var(--_slider-rail-color-border);
 	opacity: 1;
-	background-color: var(--stratakit-color-bg-control-slider-track);
-
-	:where(.Mui-disabled) & {
-		background-color: var(--stratakit-color-bg-control-switch);
-		border: 1px solid var(--stratakit-color-border-glow-on-surface-disabled);
-	}
 }
 
 .MuiSlider-track {
-	background-color: var(--stratakit-color-bg-accent-base);
-
-	:where(.Mui-disabled) & {
-		background-color: var(--stratakit-color-border-glow-on-surface-disabled);
-		border: 1px solid var(--stratakit-color-border-glow-on-surface-disabled);
-	}
+	background-color: var(--_slider-track-color-bg);
+	border: 1px solid var(--_slider-track-color-border);
 }
 
 .MuiSlider-thumb {
@@ -78,7 +102,7 @@
 		}
 	}
 
-	:where(.MuiSlider-vertical) & {
+	:where(.MuiSlider-root.MuiSlider-vertical) & {
 		cursor: ns-resize;
 
 		&[style*="bottom: 0%"] {
@@ -99,12 +123,6 @@
 	&:where(.Mui-focusVisible) {
 		outline: var(--🥝focus-outline);
 		outline-offset: 2px;
-	}
-
-	/* This pseudo-element increases tap target size to 24x24 */
-	&::after {
-		block-size: 24px;
-		inline-size: 24px;
 	}
 }
 

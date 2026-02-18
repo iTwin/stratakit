@@ -47,29 +47,16 @@
 	}
 }
 
-.MuiSlider-rail {
-	border: 1px solid;
+.MuiSlider-root {
+	--_slider-color-track-bg: SelectedItem;
 
-	:where(.Mui-disabled) & {
-		border-color: GrayText;
-	}
-}
-
-.MuiSlider-track {
-	background-color: SelectedItem;
-
-	:where(.Mui-disabled) & {
-		background-color: GrayText;
-		border-color: GrayText;
-	}
-}
-
-.MuiSlider-thumb {
 	&:where(.Mui-disabled) {
-		border-color: GrayText;
+		--_slider-color-rail-border: GrayText;
+		--_slider-color-track-bg: GrayText;
+		--_slider-color-track-border: GrayText;
 	}
+}
 
-	&:where(.Mui-focusVisible) {
-		outline-color: Highlight;
-	}
+.MuiSlider-thumb:where(.Mui-disabled) {
+	border-color: GrayText;
 }

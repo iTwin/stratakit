@@ -125,14 +125,18 @@
 }
 
 .MuiSlider-mark {
-	background-color: var(--stratakit-color-icon-neutral-tertiary);
+	background-color: var(--stratakit-color-icon-neutral-base);
 
 	&:where(.MuiSlider-markActive) {
-		background-color: var(--stratakit-color-icon-accent-faded);
+		background-color: var(--stratakit-color-icon-accent-emphasis);
 	}
 
 	:where(.MuiSlider-root.Mui-disabled) & {
 		background-color: var(--stratakit-color-icon-neutral-disabled);
+	}
+
+	&:where(:not(:nth-child(1 of &), :nth-last-child(1 of &))) {
+		background-color: transparent;
 	}
 }
 

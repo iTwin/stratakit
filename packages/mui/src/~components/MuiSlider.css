@@ -34,7 +34,7 @@
 		--_MuiSlider-thumb-size: var(--✨size-thumb--medium);
 	}
 
-	&:has(.Mui-active) {
+	&:has(.Mui-active, .Mui-focusVisible) {
 		--_MuiSlider-rail-track-size: var(--✨size-track--active);
 	}
 

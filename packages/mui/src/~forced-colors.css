@@ -48,12 +48,12 @@
 }
 
 .MuiSlider-root {
-	--_slider-color-track-bg: SelectedItem;
+	--_MuiSlider-track-background-color: SelectedItem;
 
 	&:where(.Mui-disabled) {
-		--_slider-color-rail-border: GrayText;
-		--_slider-color-track-bg: GrayText;
-		--_slider-color-track-border: GrayText;
+		--_MuiSlider-rail-border-color: GrayText;
+		--_MuiSlider-track-background-color: GrayText;
+		--_MuiSlider-track-border-color: GrayText;
 	}
 }
 

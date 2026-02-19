@@ -38,7 +38,7 @@
 		position: absolute;
 		inset: calc(((24px - var(--✨size)) / 2) * -1); /* Makes touch target area 24px */
 		border-radius: 50%;
-		background-color: var(--_hover-background-color);
+		background-color: var(--_MuiCheckbox-touch-target-background-color);
 	}
 
 	> input {
@@ -47,10 +47,10 @@
 		aspect-ratio: 1;
 		inline-size: var(--✨size);
 		block-size: var(--✨size);
-		background-color: var(--_checkbox-color-bg);
-		border: 1px solid var(--_checkbox-color-border);
-		border-radius: var(--_checkbox-border-radius);
-		color: var(--_checkbox-color-checkmark);
+		background-color: var(--_MuiCheckbox-background-color);
+		border: 1px solid var(--_MuiCheckbox-border-color);
+		border-radius: var(--_MuiCheckbox-border-radius);
+		color: var(--_MuiCheckbox-color);
 		position: relative;
 
 		&::after {
@@ -60,69 +60,75 @@
 			background-color: currentColor;
 			mask-repeat: no-repeat;
 			mask-position: center;
-			mask-image: var(--_check-symbol-mask-image);
+			mask-image: var(--_MuiCheckbox-mask-image);
 		}
 	}
 	/* #endregion */
 
 	/* #region Visual styles */
-	--_check-symbol-mask-image: var(--✨svg-unchecked);
-	--_checkbox-color-bg: var(--✨color-bg--default);
-	--_checkbox-color-border: var(--✨color-border--default);
-	--_checkbox-color-checkmark: var(--✨color-checkmark--checked);
+	--_MuiCheckbox-mask-image: var(--✨svg-unchecked);
+	--_MuiCheckbox-background-color: var(--✨color-bg--default);
+	--_MuiCheckbox-border-color: var(--✨color-border--default);
+	--_MuiCheckbox-color: var(--✨color-checkmark--checked);
 
 	&:where(.Mui-checked, .MuiCheckbox-indeterminate) {
-		--_checkbox-color-bg: var(--✨color-bg--checked);
-		--_checkbox-color-border: var(--✨color-border--checked);
+		--_MuiCheckbox-background-color: var(--✨color-bg--checked);
+		--_MuiCheckbox-border-color: var(--✨color-border--checked);
 	}
 
 	:where(.MuiFormControlLabel-root.Mui-error) & {
-		--_checkbox-color-bg: var(--✨color-bg--error);
-		--_checkbox-color-border: var(--✨color-border--error);
-		--_checkbox-color-checkmark: var(--✨color-checkmark--error);
+		--_MuiCheckbox-background-color: var(--✨color-bg--error);
+		--_MuiCheckbox-border-color: var(--✨color-border--error);
+		--_MuiCheckbox-color: var(--✨color-checkmark--error);
 	}
 
 	&:where(.Mui-disabled) {
-		--_checkbox-color-bg: var(--✨color-bg--disabled);
-		--_checkbox-color-border: var(--✨color-border--disabled);
-		--_checkbox-color-checkmark: var(--✨color-checkmark--disabled);
+		--_MuiCheckbox-background-color: var(--✨color-bg--disabled);
+		--_MuiCheckbox-border-color: var(--✨color-border--disabled);
+		--_MuiCheckbox-color: var(--✨color-checkmark--disabled);
 	}
 
 	&:where(.MuiCheckbox-root) {
-		--_checkbox-border-radius: var(--✨border-radius-checkbox);
+		--_MuiCheckbox-border-radius: var(--✨border-radius-checkbox);
 
 		&:where(.Mui-checked) {
-			--_check-symbol-mask-image: var(--✨svg-checkbox-checked);
+			--_MuiCheckbox-mask-image: var(--✨svg-checkbox-checked);
 		}
 
 		&:where(.MuiCheckbox-indeterminate) {
-			--_check-symbol-mask-image: var(--✨svg-checkbox-indeterminate);
+			--_MuiCheckbox-mask-image: var(--✨svg-checkbox-indeterminate);
 		}
 	}
 
 	&:where(.MuiRadio-root) {
-		--_checkbox-border-radius: var(--✨border-radius-radio);
+		--_MuiCheckbox-border-radius: var(--✨border-radius-radio);
 
 		&:where(.Mui-checked) {
-			--_check-symbol-mask-image: var(--✨svg-radio-checked);
+			--_MuiCheckbox-mask-image: var(--✨svg-radio-checked);
 		}
 	}
 
 	@media (any-hover: hover) {
 		&:where(:hover),
 		:where(.MuiFormControlLabel-root:hover) & {
-			--_hover-background-color: var(--stratakit-color-bg-glow-on-surface-neutral-hover);
+			--_MuiCheckbox-touch-target-background-color: var(
+				--stratakit-color-bg-glow-on-surface-neutral-hover
+			);
 
 			&:where(.Mui-checked, .MuiCheckbox-indeterminate) {
-				--_hover-background-color: var(--stratakit-color-bg-glow-on-surface-accent-hover);
+				--_MuiCheckbox-touch-target-background-color: var(
+					--stratakit-color-bg-glow-on-surface-accent-hover
+				);
 			}
 
 			:where(.MuiFormControlLabel-root.Mui-error:hover) & {
-				--_hover-background-color: var(--stratakit-color-bg-glow-on-surface-critical-hover);
+				--_MuiCheckbox-touch-target-background-color: var(
+					--stratakit-color-bg-glow-on-surface-critical-hover
+				);
 			}
 
 			&:where(.Mui-disabled) {
-				--_hover-background-color: transparent;
+				--_MuiCheckbox-touch-target-background-color: transparent;
 			}
 		}
 	}

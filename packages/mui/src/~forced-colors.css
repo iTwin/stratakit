@@ -4,23 +4,23 @@
  *--------------------------------------------------------------------------------------------*/
 
 :is(.MuiCheckbox-root, .MuiRadio-root) {
-	--_checkbox-color-border: CanvasText;
-	--_checkbox-color-checkmark: CanvasText;
+	--_MuiCheckbox-border-color: CanvasText;
+	--_MuiCheckbox-color: CanvasText;
 
 	&:where(.Mui-checked, .MuiCheckbox-indeterminate) {
-		--_checkbox-color-bg: SelectedItem;
-		--_checkbox-color-checkmark: SelectedItemText;
+		--_MuiCheckbox-background-color: SelectedItem;
+		--_MuiCheckbox-color: SelectedItemText;
 	}
 
 	:where(.MuiFormControlLabel-root.Mui-error) & {
-		--_checkbox-color-bg: Mark;
-		--_checkbox-color-checkmark: MarkText;
+		--_MuiCheckbox-background-color: Mark;
+		--_MuiCheckbox-color: MarkText;
 	}
 
 	&:where(.Mui-disabled) {
-		--_checkbox-color-bg: Canvas;
-		--_checkbox-color-border: GrayText;
-		--_checkbox-color-checkmark: GrayText;
+		--_MuiCheckbox-background-color: Canvas;
+		--_MuiCheckbox-border-color: GrayText;
+		--_MuiCheckbox-color: GrayText;
 	}
 }
 

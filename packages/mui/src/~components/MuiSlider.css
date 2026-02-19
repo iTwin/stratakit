@@ -69,7 +69,7 @@
 		}
 	}
 
-	:where(.MuiSlider-vertical) & {
+	:where(.MuiSlider-root.MuiSlider-vertical) & {
 		inline-size: var(--_slider-rail-track-size);
 
 		@media (prefers-reduced-motion: no-preference) {

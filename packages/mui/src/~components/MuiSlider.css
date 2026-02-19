@@ -12,7 +12,8 @@
 	--✨color-track-bg--disabled: var(--stratakit-color-border-glow-on-surface-disabled);
 	--✨color-track-border--default: var(--stratakit-color-bg-accent-base);
 	--✨color-track-border--disabled: var(--stratakit-color-border-glow-on-surface-disabled);
-	--✨size-thumb: 0.875rem;
+	--✨size-thumb--small: 0.875rem;
+	--✨size-thumb--medium: 1rem;
 	--✨size-track--small: 2px;
 	--✨size-track--medium: 4px;
 	--✨size-track--active: 8px;
@@ -22,14 +23,15 @@
 	--_slider-rail-color-border: var(--✨color-rail-border--default);
 	--_slider-track-color-bg: var(--✨color-track-bg--default);
 	--_slider-track-color-border: var(--✨color-track-border--default);
-	--_slider-thumb-size: var(--✨size-thumb);
 
 	&:where(.MuiSlider-sizeSmall) {
 		--_slider-rail-track-size: var(--✨size-track--small);
+		--_slider-thumb-size: var(--✨size-thumb--small);
 	}
 
 	&:where(.MuiSlider-sizeMedium) {
 		--_slider-rail-track-size: var(--✨size-track--medium);
+		--_slider-thumb-size: var(--✨size-thumb--medium);
 	}
 
 	&:has(.Mui-active) {

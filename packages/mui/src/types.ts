@@ -80,7 +80,7 @@ declare module "@mui/material/Chip" {
 		/**
 		 * The label of the delete button.
 		 *
-		 * @default 'Delete'
+		 * @default 'Clear'
 		 */
 		deleteLabel?: string;
 	}

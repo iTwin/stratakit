@@ -93,7 +93,7 @@ const MuiChipDeleteIcon = React.forwardRef<
 >((props, forwardedRef) => {
 	const theme = useTheme();
 	const defaultLabel =
-		theme.components?.MuiAutocomplete?.defaultProps?.clearText ?? "Delete";
+		theme.components?.MuiAutocomplete?.defaultProps?.clearText ?? "Clear";
 
 	const {
 		clearId,

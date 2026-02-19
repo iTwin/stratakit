@@ -303,9 +303,7 @@ function createTheme() {
 			MuiSwipeableDrawer: { defaultProps: { component: Role.div } },
 			MuiTab: { defaultProps: { component: Role.button } },
 			MuiTabs: { defaultProps: { component: Role.div } },
-			MuiTable: {
-				defaultProps: { component: withRenderProp(Role, "table") },
-			},
+			MuiTable: { defaultProps: { component: withRenderProp(Role, "table") } },
 			MuiTableBody: {
 				defaultProps: { component: withRenderProp(Role, "tbody") },
 			},
@@ -325,9 +323,7 @@ function createTheme() {
 					slotProps: { root: { colSpan: 999 } },
 				},
 			},
-			MuiTableRow: {
-				defaultProps: { component: withRenderProp(Role, "tr") },
-			},
+			MuiTableRow: { defaultProps: { component: withRenderProp(Role, "tr") } },
 			MuiTableSortLabel: {
 				defaultProps: {
 					component: Role.span,

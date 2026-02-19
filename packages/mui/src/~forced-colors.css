@@ -60,3 +60,19 @@
 .MuiSlider-thumb:where(.Mui-disabled) {
 	border-color: GrayText;
 }
+
+.MuiSlider-mark {
+	background-color: CanvasText;
+
+	&:where(.MuiSlider-markActive) {
+		background-color: SelectedItemText;
+	}
+
+	:where(.MuiSlider-root.Mui-disabled) & {
+		background-color: GrayText;
+
+		&:where(.MuiSlider-markActive) {
+			background-color: Canvas;
+		}
+	}
+}

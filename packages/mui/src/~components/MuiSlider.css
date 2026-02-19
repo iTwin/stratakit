@@ -122,6 +122,18 @@
 	}
 }
 
+.MuiSlider-mark {
+	background-color: var(--stratakit-color-icon-neutral-tertiary);
+
+	&:where(.MuiSlider-markActive) {
+		background-color: var(--stratakit-color-icon-accent-faded);
+	}
+
+	:where(.MuiSlider-root.Mui-disabled) & {
+		background-color: var(--stratakit-color-icon-neutral-disabled);
+	}
+}
+
 @media (prefers-reduced-motion: reduce) {
 	:is(.MuiSlider-track, .MuiSlider-thumb) {
 		transition: none;

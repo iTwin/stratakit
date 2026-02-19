@@ -72,6 +72,9 @@ import SelectIcon from "examples/mui/Select.icon.tsx";
 import SelectMultiple from "examples/mui/Select.multiple.tsx";
 import SkeletonDefault from "examples/mui/Skeleton.default.tsx";
 import SliderDefault from "examples/mui/Slider.default.tsx";
+import SliderMarks from "examples/mui/Slider.marks.tsx";
+import SliderRange from "examples/mui/Slider.range.tsx";
+import SliderVertical from "examples/mui/Slider.vertical.tsx";
 import SnackbarDefault from "examples/mui/Snackbar.default.tsx";
 import SpeedDialDefault from "examples/mui/SpeedDial.default.tsx";
 import StepperClickable from "examples/mui/Stepper.clickable.tsx";
@@ -254,7 +257,14 @@ const components: Record<string, React.ReactNode> = {
 			<SkeletonDefault />
 		</Stack>
 	),
-	Slider: <SliderDefault />,
+	Slider: (
+		<>
+			<SliderDefault />
+			<SliderMarks />
+			<SliderRange />
+			<SliderVertical />
+		</>
+	),
 	Snackbar: <SnackbarDefault />,
 	SpeedDial: <SpeedDialDefault />,
 	Stepper: (

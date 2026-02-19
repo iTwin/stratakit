@@ -9,6 +9,7 @@
 @import "./~components/MuiCheckbox.css";
 @import "./~components/MuiForm.css";
 @import "./~components/MuiInput.css";
+@import "./~components/MuiMenu.css";
 @import "./~components/MuiTabs.css";
 
 .MuiAccordion-root {
@@ -65,10 +66,8 @@
 	}
 }
 
-.MuiMenuItem-root {
-	&:where(.Mui-focusVisible) {
-		outline-offset: -2px;
-	}
+.MuiListItemIcon-root {
+	min-inline-size: calc(var(--🥝Icon-size, 1rem) + var(--stratakit-space-x2));
 }
 
 .MuiPaper-root {

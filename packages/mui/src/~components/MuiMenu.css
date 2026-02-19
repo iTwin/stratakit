@@ -1,0 +1,37 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+
+.MuiMenu-list {
+	padding: 4px;
+}
+
+.MuiMenuItem-root {
+	font: var(--stratakit-mui-font-body2);
+	min-height: 36.5px;
+	border-radius: 4px;
+	padding-inline: 10px;
+
+	&:where(.Mui-selected) {
+		--🥝Icon-color: var(--stratakit-color-icon-accent-base);
+
+		color: var(--stratakit-color-text-accent-base);
+
+		&::after {
+			content: "";
+			aspect-ratio: 1;
+			block-size: var(--🥝Icon-size, 1rem);
+			inline-size: var(--🥝Icon-size, 1rem);
+			background-color: var(--🥝Icon-color);
+			margin-inline-start: auto;
+			mask-repeat: no-repeat;
+			mask-position: center;
+			mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 16"><path fill="currentColor" d="M11.607 4.191a.5.5 0 0 1 .787.617l-5.5 7a.503.503 0 0 1-.777.012l-2.5-3-.057-.084a.5.5 0 0 1 .752-.627l.072.07 2.105 2.526 5.118-6.514Z"/></svg>');
+		}
+	}
+
+	&:where(.Mui-focusVisible) {
+		outline-offset: -2px;
+	}
+}

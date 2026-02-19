@@ -11,6 +11,7 @@
 @import "./~components/MuiForm.css";
 @import "./~components/MuiInput.css";
 @import "./~components/MuiSlider.css";
+@import "./~components/MuiSwitch.css";
 @import "./~components/MuiTabs.css";
 
 .MuiAccordion-root {
@@ -104,18 +105,6 @@
 			.MuiPaper-elevation24
 		) {
 		--stratakit-mui-palette-background-paper: var(--stratakit-color-bg-elevation-level-1);
-	}
-}
-
-.MuiSwitch-root {
-	.MuiSwitch-switchBase:where(.MuiSwitch-colorPrimary) {
-		&:where(.Mui-checked):where(:not(.Mui-disabled)) {
-			color: var(--stratakit-mui-palette-primary-dark);
-		}
-	}
-
-	&:where(:has(.MuiSwitch-switchBase.Mui-focusVisible)) {
-		outline: 2px solid var(--stratakit-color-border-accent-strong);
 	}
 }
 

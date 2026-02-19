@@ -1,0 +1,107 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+
+.MuiSwitch-root {
+	--_switch-thumb-size: 1rem;
+
+	padding: 0;
+	block-size: auto;
+	inline-size: auto;
+	align-items: center;
+	overflow: visible;
+}
+
+.MuiSwitch-switchBase {
+	aspect-ratio: 1;
+	block-size: var(--_switch-thumb-size);
+	inline-size: var(--_switch-thumb-size);
+	inset: unset;
+	inset-inline-end: calc(var(--_switch-thumb-size) + var(--stratakit-space-x05)); /* 18px */
+	padding: 0;
+
+	@media (prefers-reduced-motion: no-preference) {
+		transition: inset 150ms ease-out;
+	}
+
+	@media (any-hover: hover) {
+		&:where(:not(.Mui-disabled)):hover,
+		:where(.MuiFormControlLabel-root:where(:not(.Mui-disabled))):hover & {
+			--_hover-background-color: var(--stratakit-color-bg-glow-on-surface-neutral-hover);
+
+			&:where(.Mui-checked) {
+				--_hover-background-color: var(--stratakit-color-bg-glow-on-surface-accent-hover);
+			}
+		}
+	}
+
+	&:where(.Mui-checked) {
+		inset: unset;
+		inset-inline-end: var(--stratakit-space-x05); /* 2px */
+		transform: none;
+	}
+
+	/* This pseudo-element increases tap target size to 24x24 */
+	&::before {
+		content: "";
+		position: absolute;
+		inset: calc(((24px - var(--_switch-thumb-size)) / 2) * -1); /* Makes touch target area 24px */
+		border-radius: 50%;
+		background-color: var(--_hover-background-color);
+	}
+}
+
+.MuiSwitch-input {
+	appearance: none;
+	inset: calc(var(--stratakit-space-x05) * -1);
+	inline-size: calc((var(--_switch-thumb-size) * 2) + (var(--stratakit-space-x05) * 2));
+	block-size: calc(var(--_switch-thumb-size) + (var(--stratakit-space-x05) * 2));
+
+	:where(.MuiSwitch-switchBase.Mui-checked) & {
+		left: calc((var(--_switch-thumb-size) + var(--stratakit-space-x05)) * -1);
+	}
+
+	@media (prefers-reduced-motion: no-preference) {
+		transition: left 150ms ease-out;
+	}
+}
+
+.MuiSwitch-thumb {
+	aspect-ratio: inherit;
+	block-size: inherit;
+	inline-size: inherit;
+	border-radius: inherit;
+	background-color: var(--stratakit-color-bg-neutral-inverse);
+	border: 1px solid var(--stratakit-color-border-shadow-base);
+	position: relative;
+
+	:where(.MuiSwitch-switchBase.Mui-disabled) & {
+		background-color: var(--stratakit-color-icon-neutral-disabled);
+		border-color: var(--stratakit-color-icon-neutral-disabled);
+	}
+}
+
+.MuiSwitch-track {
+	inline-size: calc((var(--_switch-thumb-size) * 2) + (var(--stratakit-space-x05) * 2));
+	block-size: calc(var(--_switch-thumb-size) + (var(--stratakit-space-x05) * 2));
+	background-color: var(--stratakit-color-bg-page-base);
+	border: 1px solid var(--stratakit-color-border-neutral-base);
+	border-radius: 9999px;
+	opacity: 1;
+
+	:where(.MuiSwitch-switchBase.Mui-checked) + & {
+		background-color: var(--stratakit-color-bg-accent-base);
+		border-color: var(--stratakit-color-border-shadow-strong);
+	}
+
+	:where(.MuiSwitch-switchBase.Mui-disabled) + & {
+		background-color: var(--stratakit-color-bg-page-base);
+		border-color: var(--stratakit-color-icon-neutral-disabled);
+	}
+
+	:where(.MuiSwitch-switchBase.Mui-focusVisible) + & {
+		outline: var(--🥝focus-outline);
+		outline-offset: 2px;
+	}
+}

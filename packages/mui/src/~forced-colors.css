@@ -80,3 +80,35 @@
 		background-color: transparent;
 	}
 }
+
+.MuiSwitch-switchBase {
+	.MuiSwitch-thumb {
+		background-color: CanvasText;
+		border: none;
+	}
+
+	&:where(.Mui-checked) {
+		.MuiSwitch-thumb {
+			background-color: SelectedItemText;
+		}
+
+		+ .MuiSwitch-track {
+			background-color: SelectedItem;
+		}
+	}
+
+	&:where(.Mui-disabled) {
+		.MuiSwitch-thumb {
+			background-color: GrayText;
+		}
+
+		+ .MuiSwitch-track {
+			background-color: Canvas;
+			border-color: GrayText;
+		}
+	}
+
+	&::before {
+		background-color: transparent;
+	}
+}

@@ -89,29 +89,10 @@
 	inline-size: var(--_slider-thumb-size);
 	background-color: var(--stratakit-color-bg-neutral-inverse);
 	border: 1px solid var(--stratakit-color-border-shadow-base);
+	cursor: grab;
 
-	:where(.MuiSlider-root:not(.MuiSlider-vertical)) & {
-		cursor: ew-resize;
-
-		&[style*="left: 0%"] {
-			cursor: e-resize;
-		}
-
-		&[style*="left: 100%"] {
-			cursor: w-resize;
-		}
-	}
-
-	:where(.MuiSlider-root.MuiSlider-vertical) & {
-		cursor: ns-resize;
-
-		&[style*="bottom: 0%"] {
-			cursor: n-resize;
-		}
-
-		&[style*="bottom: 100%"] {
-			cursor: s-resize;
-		}
+	&:where(.Mui-active) {
+		cursor: grabbing;
 	}
 
 	&:where(.Mui-disabled) {

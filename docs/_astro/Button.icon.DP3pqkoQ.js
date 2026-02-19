@@ -1,1 +1,0 @@
-import{j as t,I as o}from"./~utils.ifdckLLP.js";import{B as r}from"./ExamplePreview.B5crQbn2.js";import"./index.DIfZGIpv.js";import"./index.XeJbqeyU.js";import"./styles.internal.BwFdDu8v.js";import"./preload-helper.Cze6g7ya.js";const s="/stratakit/docs/_astro/arrow-right.C7UMuQt3.svg",p=()=>t.jsxs(r,{onClick:()=>{},children:["Create new",t.jsx(o,{href:s})]});export{p as default};

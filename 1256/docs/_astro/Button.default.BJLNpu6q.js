@@ -1,0 +1,1 @@
+import{j as t}from"./~utils.DiBOpC7O.js";import{B as o}from"./ExamplePreview.DxmJ0vHj.js";import"./index.DIfZGIpv.js";import"./index.XeJbqeyU.js";import"./styles.internal.BwFdDu8v.js";import"./preload-helper.CxLu1sOF.js";const a=()=>t.jsx(o,{onClick:()=>{},children:"Create new"});export{a as default};

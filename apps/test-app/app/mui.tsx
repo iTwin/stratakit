@@ -37,8 +37,10 @@ import CardHeader from "examples/mui/Card.header.tsx";
 import CheckboxChecked from "examples/mui/Checkbox.checked.tsx";
 import CheckboxDefault from "examples/mui/Checkbox.default.tsx";
 import CheckboxIndeterminate from "examples/mui/Checkbox.indeterminate.tsx";
-import ChipDeletable_ from "examples/mui/Chip._deletable.tsx";
+import ChipInteractive_ from "examples/mui/Chip._interactive.tsx";
+import ChipClickable from "examples/mui/Chip.clickable.tsx";
 import ChipDefault from "examples/mui/Chip.default.tsx";
+import ChipDeletable from "examples/mui/Chip.deletable.tsx";
 import ChipOutlined from "examples/mui/Chip.outlined.tsx";
 import CircularProgressDefault from "examples/mui/CircularProgress.default.tsx";
 import DialogDefault from "examples/mui/Dialog.default.tsx";
@@ -70,6 +72,9 @@ import SelectIcon from "examples/mui/Select.icon.tsx";
 import SelectMultiple from "examples/mui/Select.multiple.tsx";
 import SkeletonDefault from "examples/mui/Skeleton.default.tsx";
 import SliderDefault from "examples/mui/Slider.default.tsx";
+import SliderMarks from "examples/mui/Slider.marks.tsx";
+import SliderRange from "examples/mui/Slider.range.tsx";
+import SliderVertical from "examples/mui/Slider.vertical.tsx";
 import SnackbarDefault from "examples/mui/Snackbar.default.tsx";
 import SpeedDialDefault from "examples/mui/SpeedDial.default.tsx";
 import StepperClickable from "examples/mui/Stepper.clickable.tsx";
@@ -167,10 +172,12 @@ const components: Record<string, React.ReactNode> = {
 		</>
 	),
 	Chip: (
-		<Stack spacing={1} direction="row">
+		<Stack spacing={1} direction="row" useFlexGap flexWrap="wrap">
 			<ChipDefault />
 			<ChipOutlined />
-			{!isProduction && <ChipDeletable_ />}
+			<ChipClickable />
+			<ChipDeletable />
+			{!isProduction && <ChipInteractive_ />}
 		</Stack>
 	),
 	CircularProgress: <CircularProgressDefault />,
@@ -250,7 +257,14 @@ const components: Record<string, React.ReactNode> = {
 			<SkeletonDefault />
 		</Stack>
 	),
-	Slider: <SliderDefault />,
+	Slider: (
+		<>
+			<SliderDefault />
+			<SliderMarks />
+			<SliderRange />
+			<SliderVertical />
+		</>
+	),
 	Snackbar: <SnackbarDefault />,
 	SpeedDial: <SpeedDialDefault />,
 	Stepper: (

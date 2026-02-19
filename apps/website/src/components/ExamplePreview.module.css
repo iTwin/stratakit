@@ -1,0 +1,58 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+
+@layer {
+	.exampleEmbedRoot {
+		display: grid;
+		align-items: center;
+
+		> * {
+			grid-area: 1 / 1 / -1 / -1;
+		}
+	}
+
+	.examplePreviewWrapper {
+		display: flex;
+		justify-content: center;
+		padding: 2rem;
+	}
+
+	.toolbar {
+		place-self: end;
+		display: flex;
+		padding: 4px;
+	}
+}
+
+/* Prevent leakage of global styles into examples */
+.exampleEmbedRoot *:not(#a#b) {
+	@layer starlight.base {
+		all: revert-layer;
+	}
+	@layer starlight.reset {
+		all: revert-layer;
+	}
+	@layer starlight.core {
+		all: revert-layer;
+	}
+	@layer starlight.content {
+		all: revert-layer;
+	}
+	@layer starlight.components {
+		all: revert-layer;
+	}
+	@layer starlight.utils {
+		all: revert-layer;
+	}
+	@layer starlight {
+		all: revert-layer;
+	}
+	@layer page {
+		all: revert-layer;
+	}
+	@layer overrides {
+		all: revert-layer;
+	}
+}

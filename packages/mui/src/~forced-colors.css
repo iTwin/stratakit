@@ -38,3 +38,37 @@
 		background-color: MarkText;
 	}
 }
+
+.MuiSlider-root {
+	--_MuiSlider-track-background-color: SelectedItem;
+
+	&:where(.Mui-disabled) {
+		--_MuiSlider-rail-border-color: GrayText;
+		--_MuiSlider-track-background-color: GrayText;
+		--_MuiSlider-track-border-color: GrayText;
+	}
+}
+
+.MuiSlider-thumb:where(.Mui-disabled) {
+	border-color: GrayText;
+}
+
+.MuiSlider-mark {
+	background-color: CanvasText;
+
+	&:where(.MuiSlider-markActive) {
+		background-color: SelectedItemText;
+	}
+
+	:where(.MuiSlider-root.Mui-disabled) & {
+		background-color: GrayText;
+
+		&:where(.MuiSlider-markActive) {
+			background-color: Canvas;
+		}
+	}
+
+	&:where(:nth-child(1 of &), :nth-last-child(1 of &)) {
+		background-color: transparent;
+	}
+}

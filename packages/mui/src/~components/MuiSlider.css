@@ -65,18 +65,10 @@
 :is(.MuiSlider-rail, .MuiSlider-track) {
 	:where(.MuiSlider-root:not(.MuiSlider-vertical)) & {
 		block-size: var(--_MuiSlider-rail-track-size);
-
-		@media (prefers-reduced-motion: no-preference) {
-			transition: block-size 150ms ease-in-out;
-		}
 	}
 
 	:where(.MuiSlider-root.MuiSlider-vertical) & {
 		inline-size: var(--_MuiSlider-rail-track-size);
-
-		@media (prefers-reduced-motion: no-preference) {
-			transition: inline-size 150ms ease-in-out;
-		}
 	}
 }
 
@@ -84,6 +76,16 @@
 	background-color: var(--_MuiSlider-rail-background-color);
 	border: 1px solid var(--_MuiSlider-rail-border-color);
 	opacity: 1;
+
+	@media (prefers-reduced-motion: no-preference) {
+		:where(.MuiSlider-root:not(.MuiSlider-vertical)) & {
+			transition: block-size 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+		}
+
+		:where(.MuiSlider-root.MuiSlider-vertical) & {
+			transition: inline-size 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+		}
+	}
 }
 
 .MuiSlider-track {

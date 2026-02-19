@@ -104,6 +104,7 @@ const MuiChipDeleteIcon = React.forwardRef<
 	return (
 		<IconButton
 			aria-labelledby={`${clearId} ${labelId}`}
+			size="small"
 			{...props}
 			ref={forwardedRef}
 		>

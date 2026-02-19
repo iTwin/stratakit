@@ -23,7 +23,3 @@
 		outline: unset !important;
 	}
 }
-
-.MuiChip-deleteIcon {
-	margin-inline-start: calc(-1 * var(--stratakit-mui-spacing));
-}

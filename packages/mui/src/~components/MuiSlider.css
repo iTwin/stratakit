@@ -128,14 +128,14 @@
 	background-color: var(--stratakit-color-icon-neutral-base);
 
 	&:where(.MuiSlider-markActive) {
-		background-color: var(--stratakit-color-icon-accent-emphasis);
+		background-color: var(--stratakit-color-icon-neutral-emphasis);
 	}
 
 	:where(.MuiSlider-root.Mui-disabled) & {
 		background-color: var(--stratakit-color-icon-neutral-disabled);
 	}
 
-	&:where(:not(:nth-child(1 of &), :nth-last-child(1 of &))) {
+	&:where(:nth-child(1 of &), :nth-last-child(1 of &)) {
 		background-color: transparent;
 	}
 }

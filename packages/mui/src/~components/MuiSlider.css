@@ -36,6 +36,12 @@
 		--_slider-rail-track-size: var(--✨size-track--active);
 	}
 
+	@media (any-hover: hover) {
+		&:where(:not(.Mui-disabled):hover) {
+			--_slider-rail-track-size: var(--✨size-track--active);
+		}
+	}
+
 	&:where(:not(.MuiSlider-vertical)) {
 		block-size: var(--_slider-thumb-size);
 	}
@@ -89,6 +95,7 @@
 	inline-size: var(--_slider-thumb-size);
 	background-color: var(--stratakit-color-bg-neutral-inverse);
 	border: 1px solid var(--stratakit-color-border-shadow-base);
+	box-shadow: none;
 	cursor: grab;
 
 	&:where(.Mui-active) {
@@ -104,6 +111,12 @@
 	&:where(.Mui-focusVisible) {
 		outline: var(--🥝focus-outline);
 		outline-offset: 2px;
+	}
+
+	/* This pseudo-element increases tap target size to 24x24 */
+	&::after {
+		block-size: 24px;
+		inline-size: 24px;
 	}
 }
 

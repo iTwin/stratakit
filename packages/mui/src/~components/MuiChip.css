@@ -20,6 +20,7 @@
 
 .MuiChip-label {
 	&:where(button) {
+		/* Move the outline from the interactive label to the root element. */
 		outline: unset !important;
 	}
 }

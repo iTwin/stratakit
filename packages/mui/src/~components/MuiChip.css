@@ -23,9 +23,3 @@
 		outline: unset !important;
 	}
 }
-
-.MuiChip-deleteIcon {
-	&:where(.MuiIconButton-root) {
-		color: var(--stratakit-mui-palette-action-active);
-	}
-}

@@ -14,9 +14,9 @@
 	--✨color-track-border--disabled: var(--stratakit-color-border-glow-on-surface-disabled);
 	--✨size-thumb--small: 0.875rem;
 	--✨size-thumb--medium: 1rem;
-	--✨size-track--small: 2px;
-	--✨size-track--medium: 4px;
-	--✨size-track--active: 8px;
+	--✨size-track--small: 0.125rem;
+	--✨size-track--medium: 0.25rem;
+	--✨size-track--active-increase: var(--stratakit-space-x1);
 
 	padding: 0;
 	--_MuiSlider-rail-background-color: var(--✨color-rail-bg--default);
@@ -26,21 +26,29 @@
 
 	&:where(.MuiSlider-sizeSmall) {
 		--_MuiSlider-rail-track-size: var(--✨size-track--small);
+		--_MuiSlider-rail-track-size-increase: calc(
+			var(--✨size-track--small) +
+			var(--✨size-track--active-increase)
+		);
 		--_MuiSlider-thumb-size: var(--✨size-thumb--small);
 	}
 
 	&:where(.MuiSlider-sizeMedium) {
 		--_MuiSlider-rail-track-size: var(--✨size-track--medium);
+		--_MuiSlider-rail-track-size-increase: calc(
+			var(--✨size-track--medium) +
+			var(--✨size-track--active-increase)
+		);
 		--_MuiSlider-thumb-size: var(--✨size-thumb--medium);
 	}
 
 	&:has(.Mui-active, .Mui-focusVisible) {
-		--_MuiSlider-rail-track-size: var(--✨size-track--active);
+		--_MuiSlider-rail-track-size: var(--_MuiSlider-rail-track-size-increase);
 	}
 
 	@media (any-hover: hover) {
 		&:where(:not(.Mui-disabled):hover) {
-			--_MuiSlider-rail-track-size: var(--✨size-track--active);
+			--_MuiSlider-rail-track-size: var(--_MuiSlider-rail-track-size-increase);
 		}
 	}
 

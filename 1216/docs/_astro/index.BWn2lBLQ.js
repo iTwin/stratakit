@@ -1,1 +1,0 @@
-import{j as e,a0 as a,a1 as o,a2 as s}from"./ExamplePreview.ByRRjLdv.js";import{e as l}from"./extendSxProp.B3-Xqpli.js";function u(t){return e.jsx(a,{...t,defaultTheme:s,themeId:o})}function x(t){return function(r){return e.jsx(u,{styles:typeof t=="function"?n=>t({theme:n,...r}):t})}}function m(){return l}export{x as g,m as i};

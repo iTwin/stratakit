@@ -8,7 +8,7 @@ Welcome to the contribution guide for StrataKit! In here you will find all the i
 
 ### Local setup
 
-To clone and build the repo locally, you'll need [Git](https://git-scm.com), [Node 22+](https://nodejs.org/en/download/), and [Pnpm 9](https://pnpm.io/installation) installed on your computer.
+To clone and build the repo locally, you'll need [Git](https://git-scm.com), [Node 22+](https://nodejs.org/en/download/), and [Pnpm 10](https://pnpm.io/installation) installed on your computer.
 
 1. [Clone the repository](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository). You can do this from the command line or using the Github Desktop app.
 

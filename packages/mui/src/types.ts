@@ -73,6 +73,11 @@ declare module "@mui/material/Checkbox" {
 		warning: false;
 		error: false;
 	}
+
+	interface CheckboxPropsSizeOverrides {
+		small: false;
+		large: false;
+	}
 }
 
 declare module "@mui/material/Chip" {
@@ -149,6 +154,10 @@ declare module "@mui/material/Radio" {
 		warning: false;
 		error: false;
 	}
+
+	interface RadioPropsSizeOverrides {
+		small: false;
+	}
 }
 
 declare module "@mui/material/Slider" {
@@ -169,6 +178,10 @@ declare module "@mui/material/Switch" {
 		success: false;
 		warning: false;
 		error: false;
+	}
+
+	interface SwitchPropsSizeOverrides {
+		small: false;
 	}
 }
 

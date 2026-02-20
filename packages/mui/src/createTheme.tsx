@@ -10,6 +10,11 @@ import OutlinedInput from "@mui/material/OutlinedInput";
 import { createTheme as createMuiTheme } from "@mui/material/styles";
 import { useMergedRefs } from "@stratakit/foundations/secret-internals";
 import {
+	MuiAutocompleteChip,
+	MuiAutocompleteChipDeleteIcon,
+	MuiAutocompleteClearIndicator,
+} from "./~components/MuiAutocomplete.js";
+import {
 	MuiChip,
 	MuiChipDeleteIcon,
 	MuiChipLabel,
@@ -118,6 +123,7 @@ function createTheme() {
 					popupIcon: <ChevronDownIcon />,
 					clearIcon: <DismissIcon />,
 					onKeyDown: (e) => {
+						// TODO: this needs to be merged with props after https://github.com/mui/material-ui/issues/47755
 						if (e.key === "ArrowLeft" || e.key === "ArrowRight") {
 							e.defaultMuiPrevented = true; // Prevent MUI from handling left/right arrow keys to focus the tags
 						}
@@ -127,15 +133,11 @@ function createTheme() {
 							elevation: 8, // match Menu elevation
 						},
 						chip: {
-							component: AutocompleteChip,
+							component: MuiAutocompleteChip,
+							deleteIcon: <MuiAutocompleteChipDeleteIcon />,
 						},
 						clearIndicator: {
-							component: AutocompleteClearIndicator,
-							tabIndex: 0, // make clear indicator focusable
-							onKeyDown: (e: React.KeyboardEvent<HTMLButtonElement>) => {
-								// Stop Autocomplete from handling the event
-								e.stopPropagation();
-							},
+							component: MuiAutocompleteClearIndicator,
 						},
 					},
 				},
@@ -417,23 +419,6 @@ function TextFieldInput(props: React.ComponentProps<typeof OutlinedInput>) {
 				)}
 		</>
 	);
-}
-
-function AutocompleteClearIndicator(props: React.ComponentProps<"button">) {
-	const [el, setEl] = React.useState<HTMLButtonElement | null>(null);
-	React.useEffect(() => {
-		const parentElement = el?.parentElement;
-		if (!parentElement) return;
-		parentElement.slot = "end";
-		return () => {
-			parentElement.slot = "";
-		};
-	}, [el]);
-	return <button {...props} ref={setEl} />;
-}
-
-function AutocompleteChip(props: React.ComponentProps<typeof MuiChip>) {
-	return <MuiChip {...props} role="listitem" />;
 }
 
 export { createTheme };

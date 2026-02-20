@@ -75,6 +75,17 @@ declare module "@mui/material/Checkbox" {
 	}
 }
 
+declare module "@mui/material/Chip" {
+	interface ChipOwnProps {
+		/**
+		 * The label of the delete button.
+		 *
+		 * @default 'Clear'
+		 */
+		deleteLabel?: string;
+	}
+}
+
 declare module "@mui/material/Fab" {
 	interface FabPropsColorOverrides {
 		info: false;
@@ -102,6 +113,11 @@ declare module "@mui/material/FormLabel" {
 		success: false;
 		warning: false;
 		error: false;
+	}
+
+	interface FormLabelOwnProps {
+		/** @deprecated */
+		component?: never; // `@deprecated` marker is not showing up, so using `never` to prevent usage of this prop.
 	}
 }
 

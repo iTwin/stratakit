@@ -1,0 +1,155 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+
+.MuiSlider-root {
+	--✨color-rail-bg--default: var(--stratakit-color-bg-control-slider-track);
+	--✨color-rail-bg--disabled: var(--stratakit-color-bg-control-switch);
+	--✨color-rail-border--default: var(--stratakit-color-bg-control-slider-track);
+	--✨color-rail-border--disabled: var(--stratakit-color-border-glow-on-surface-disabled);
+	--✨color-track-bg--default: var(--stratakit-color-bg-accent-base);
+	--✨color-track-bg--disabled: var(--stratakit-color-border-glow-on-surface-disabled);
+	--✨color-track-border--default: var(--stratakit-color-bg-accent-base);
+	--✨color-track-border--disabled: var(--stratakit-color-border-glow-on-surface-disabled);
+	--✨size-thumb--small: 0.875rem;
+	--✨size-thumb--medium: 1rem;
+	--✨size-track--small: 0.125rem;
+	--✨size-track--medium: 0.25rem;
+	--✨size-track--active-increase: var(--stratakit-space-x1);
+
+	padding: 0;
+	--_MuiSlider-rail-background-color: var(--✨color-rail-bg--default);
+	--_MuiSlider-rail-border-color: var(--✨color-rail-border--default);
+	--_MuiSlider-track-background-color: var(--✨color-track-bg--default);
+	--_MuiSlider-track-border-color: var(--✨color-track-border--default);
+
+	&:where(.MuiSlider-sizeSmall) {
+		--_MuiSlider-rail-track-size: var(--✨size-track--small);
+		--_MuiSlider-rail-track-size-increase: calc(
+			var(--✨size-track--small) +
+			var(--✨size-track--active-increase)
+		);
+		--_MuiSlider-thumb-size: var(--✨size-thumb--small);
+	}
+
+	&:where(.MuiSlider-sizeMedium) {
+		--_MuiSlider-rail-track-size: var(--✨size-track--medium);
+		--_MuiSlider-rail-track-size-increase: calc(
+			var(--✨size-track--medium) +
+			var(--✨size-track--active-increase)
+		);
+		--_MuiSlider-thumb-size: var(--✨size-thumb--medium);
+	}
+
+	&:has(.Mui-active, .Mui-focusVisible) {
+		--_MuiSlider-rail-track-size: var(--_MuiSlider-rail-track-size-increase);
+	}
+
+	@media (any-hover: hover) {
+		&:where(:not(.Mui-disabled):hover) {
+			--_MuiSlider-rail-track-size: var(--_MuiSlider-rail-track-size-increase);
+		}
+	}
+
+	&:where(:not(.MuiSlider-vertical)) {
+		block-size: var(--_MuiSlider-thumb-size);
+	}
+
+	&:where(.MuiSlider-vertical) {
+		inline-size: var(--_MuiSlider-thumb-size);
+	}
+
+	&:where(.Mui-disabled) {
+		cursor: not-allowed;
+		pointer-events: initial;
+		--_MuiSlider-rail-background-color: var(--✨color-rail-bg--disabled);
+		--_MuiSlider-rail-border-color: var(--✨color-rail-border--disabled);
+		--_MuiSlider-track-background-color: var(--✨color-track-bg--disabled);
+		--_MuiSlider-track-border-color: var(--✨color-track-border--disabled);
+	}
+}
+
+:is(.MuiSlider-rail, .MuiSlider-track) {
+	:where(.MuiSlider-root:not(.MuiSlider-vertical)) & {
+		block-size: var(--_MuiSlider-rail-track-size);
+	}
+
+	:where(.MuiSlider-root.MuiSlider-vertical) & {
+		inline-size: var(--_MuiSlider-rail-track-size);
+	}
+}
+
+.MuiSlider-rail {
+	background-color: var(--_MuiSlider-rail-background-color);
+	border: 1px solid var(--_MuiSlider-rail-border-color);
+	opacity: 1;
+
+	@media (prefers-reduced-motion: no-preference) {
+		:where(.MuiSlider-root:not(.MuiSlider-vertical)) & {
+			transition: block-size 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+		}
+
+		:where(.MuiSlider-root.MuiSlider-vertical) & {
+			transition: inline-size 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+		}
+	}
+}
+
+.MuiSlider-track {
+	background-color: var(--_MuiSlider-track-background-color);
+	border: 1px solid var(--_MuiSlider-track-border-color);
+}
+
+.MuiSlider-thumb {
+	aspect-ratio: 1;
+	block-size: var(--_MuiSlider-thumb-size);
+	inline-size: var(--_MuiSlider-thumb-size);
+	background-color: var(--stratakit-color-bg-neutral-inverse);
+	border: 1px solid var(--stratakit-color-border-shadow-base);
+	box-shadow: none;
+	cursor: grab;
+
+	&:where(.Mui-active) {
+		cursor: grabbing;
+	}
+
+	&:where(.Mui-disabled) {
+		background-color: var(--stratakit-color-icon-neutral-disabled);
+		border-color: var(--stratakit-color-icon-neutral-disabled);
+		cursor: not-allowed;
+	}
+
+	&:where(.Mui-focusVisible) {
+		outline: var(--🥝focus-outline);
+		outline-offset: 2px;
+	}
+
+	/* This pseudo-element increases tap target size to 24x24 */
+	&::after {
+		block-size: 24px;
+		inline-size: 24px;
+	}
+}
+
+.MuiSlider-mark {
+	background-color: var(--stratakit-color-icon-neutral-base);
+
+	&:where(.MuiSlider-markActive) {
+		background-color: var(--stratakit-color-icon-neutral-emphasis);
+	}
+
+	:where(.MuiSlider-root.Mui-disabled) & {
+		background-color: var(--stratakit-color-icon-neutral-disabled);
+	}
+
+	&:where(:nth-child(1 of &), :nth-last-child(1 of &)) {
+		background-color: transparent;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	:is(.MuiSlider-track, .MuiSlider-thumb) {
+		transition: none;
+	}
+}

@@ -25,9 +25,20 @@ const fixedHead = originalHead.map((item) => {
 });
 ---
 
+{/* Ensure these layers are applied before MUI-injected styles */}
+<style is:inline>
+	@layer reset, starlight;
+</style>
+<meta name="emotion-insertion-point" />
+
 <StrataKit />
 <Fonts />
 
 {fixedHead.map(({ tag: Tag, attrs, content }) => <Tag {...attrs} set:html={content} />)}
 
 <CustomElements />
+
+<script>
+	import { initializeStrataKitRoot } from "./StrataKitRoot.tsx";
+	initializeStrataKitRoot();
+</script>

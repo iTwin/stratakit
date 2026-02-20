@@ -6,10 +6,14 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { Role } from "@ariakit/react/role";
-import { OutlinedInput } from "@mui/material";
+import OutlinedInput from "@mui/material/OutlinedInput";
 import { createTheme as createMuiTheme } from "@mui/material/styles";
 import { useMergedRefs } from "@stratakit/foundations/secret-internals";
-import { Chip, ChipDeleteIcon, ChipLabel } from "./~components.js";
+import {
+	MuiChip,
+	MuiChipDeleteIcon,
+	MuiChipLabel,
+} from "./~components/MuiChip.js";
 import {
 	ArrowDownIcon,
 	CaretsUpDownIcon,
@@ -187,11 +191,11 @@ function createTheme() {
 			},
 			MuiChip: {
 				defaultProps: {
-					component: Chip,
-					deleteIcon: <ChipDeleteIcon />,
+					component: MuiChip,
+					deleteIcon: <MuiChipDeleteIcon />,
 					slotProps: {
 						label: {
-							component: ChipLabel,
+							component: MuiChipLabel,
 						},
 					},
 				},
@@ -210,7 +214,7 @@ function createTheme() {
 			},
 			MuiFormControl: { defaultProps: { component: Role.div } },
 			MuiFormHelperText: { defaultProps: { component: Role.p } },
-			MuiFormLabel: { defaultProps: { component: Role.label } },
+			MuiFormLabel: { defaultProps: { component: Role.label as never } },
 			MuiGrid: { defaultProps: { component: Role.div } },
 			MuiGridLegacy: { defaultProps: { component: Role.div } },
 			MuiIcon: { defaultProps: { component: Role.span } },
@@ -296,6 +300,12 @@ function createTheme() {
 					IconComponent: CaretsUpDownIcon,
 				},
 			},
+			MuiNativeSelect: {
+				defaultProps: {
+					input: <OutlinedInput />,
+					IconComponent: CaretsUpDownIcon,
+				},
+			},
 			MuiSkeleton: { defaultProps: { component: Role.span } },
 			MuiSlider: { defaultProps: { component: Role.span } },
 			MuiSnackbarContent: { defaultProps: { component: Role.div } },
@@ -323,7 +333,10 @@ function createTheme() {
 				defaultProps: { component: withRenderProp(Role, "thead") },
 			},
 			MuiTablePagination: {
-				defaultProps: { component: withRenderProp(Role, "td") },
+				defaultProps: {
+					component: withRenderProp(Role, "td"),
+					slotProps: { root: { colSpan: 999 } },
+				},
 			},
 			MuiTableRow: { defaultProps: { component: withRenderProp(Role, "tr") } },
 			MuiTableSortLabel: {
@@ -419,8 +432,8 @@ function AutocompleteClearIndicator(props: React.ComponentProps<"button">) {
 	return <button {...props} ref={setEl} />;
 }
 
-function AutocompleteChip(props: React.ComponentProps<typeof Chip>) {
-	return <Chip {...props} role="listitem" />;
+function AutocompleteChip(props: React.ComponentProps<typeof MuiChip>) {
+	return <MuiChip {...props} role="listitem" />;
 }
 
 export { createTheme };

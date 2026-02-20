@@ -5,14 +5,21 @@
 
 .MuiIconButton-root {
 	border-radius: 4px;
+	color: var(--stratakit-color-icon-neutral-base);
 
 	&:where(.MuiIconButton-colorPrimary) {
 		color: var(--stratakit-color-icon-accent-strong);
 	}
+
 	&:where(.MuiIconButton-colorSecondary) {
 		color: var(--stratakit-color-icon-neutral-primary);
 	}
+
 	&:where(.MuiIconButton-colorError) {
 		color: var(--stratakit-color-icon-critical-base);
+	}
+
+	&:where(.Mui-disabled) {
+		color: var(--stratakit-color-icon-neutral-disabled);
 	}
 }

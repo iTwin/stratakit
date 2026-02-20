@@ -8,9 +8,10 @@ import * as ReactDOM from "react-dom";
 import { Role } from "@ariakit/react/role";
 import OutlinedInput from "@mui/material/OutlinedInput";
 import {
-	loadStyles,
+	RootContext,
 	useEventHandlers,
 	useMergedRefs,
+	useSafeContext,
 } from "@stratakit/foundations/secret-internals";
 import { MuiChip, MuiChipDeleteIcon } from "./MuiChip.js";
 
@@ -79,12 +80,13 @@ DEV: MuiAutocompleteChipDeleteIcon.displayName =
 
 // ----------------------------------------------------------------------------
 
-const css = `.🥝MuiAutocompleteChipsList { display: contents; }`;
+const css = `.🥝MuiChipList { display: contents; }`;
 
 const MuiAutocompleteTextFieldInput = React.forwardRef<
 	HTMLDivElement,
 	React.ComponentProps<typeof OutlinedInput>
 >((props, forwardedRef) => {
+	const { loadStyles } = useSafeContext(RootContext);
 	const [host, setHost] = React.useState<HTMLElement | null>(null);
 	const [shadow, setShadow] = React.useState<ShadowRoot | null>(null);
 	React.useEffect(() => {
@@ -95,10 +97,10 @@ const MuiAutocompleteTextFieldInput = React.forwardRef<
 		setShadow(host.shadowRoot);
 	}, [host]);
 	React.useInsertionEffect(() => {
-		if (!shadow) return;
-		const { cleanup } = loadStyles(shadow, { css });
+		if (!shadow || !loadStyles) return;
+		const { cleanup } = loadStyles(shadow, { css, key: "default" });
 		return cleanup;
-	}, [shadow]);
+	}, [shadow, loadStyles]);
 	return (
 		<>
 			<OutlinedInput {...props} ref={useMergedRefs(setHost, forwardedRef)} />
@@ -106,7 +108,7 @@ const MuiAutocompleteTextFieldInput = React.forwardRef<
 				ReactDOM.createPortal(
 					<>
 						<slot /> {/* Default slot is used for the input */}
-						<div className="🥝MuiAutocompleteChipsList" role="list">
+						<div className="🥝MuiChipList" role="list">
 							<slot name="chips" />
 						</div>
 						<slot name="end" />

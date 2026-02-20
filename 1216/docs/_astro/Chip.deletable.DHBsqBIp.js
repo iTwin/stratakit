@@ -1,1 +1,0 @@
-import{j as e}from"./~utils.Chb9FQy4.js";import{C as t}from"./Chip.DdLRSUPE.js";import"./index.DIfZGIpv.js";import"./index.XeJbqeyU.js";import"./styles.internal.BwFdDu8v.js";import"./createSvgIcon.tsRWyLLK.js";const s=()=>e.jsx(t,{label:"Deletable Chip",onDelete:()=>{console.log("Deleted")}});export{s as default};

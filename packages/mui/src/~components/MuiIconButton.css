@@ -22,4 +22,8 @@
 	&:where(.Mui-disabled) {
 		color: var(--stratakit-color-icon-neutral-disabled);
 	}
+
+	&:where(.MuiIconButton-sizeSmall) {
+		padding: var(--stratakit-space-x1);
+	}
 }

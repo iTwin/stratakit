@@ -8,10 +8,16 @@ import { Role } from "@ariakit/react/role";
 import OutlinedInput from "@mui/material/OutlinedInput";
 import { createTheme as createMuiTheme } from "@mui/material/styles";
 import {
+	MuiAutocompleteChip,
+	MuiAutocompleteChipDeleteIcon,
+	MuiAutocompleteClearIndicator,
+} from "./~components/MuiAutocomplete.js";
+import {
 	MuiChip,
 	MuiChipDeleteIcon,
 	MuiChipLabel,
 } from "./~components/MuiChip.js";
+import { MuiTextFieldInput } from "./~components/MuiTextField.js";
 import {
 	ArrowDownIcon,
 	CaretsUpDownIcon,
@@ -115,12 +121,22 @@ function createTheme() {
 				defaultProps: {
 					popupIcon: <ChevronDownIcon />,
 					clearIcon: <DismissIcon />,
+					onKeyDown: (e) => {
+						// TODO: this needs to be merged with props after https://github.com/mui/material-ui/issues/47755
+						if (e.key === "ArrowLeft" || e.key === "ArrowRight") {
+							e.defaultMuiPrevented = true; // Prevent MUI from handling left/right arrow keys to focus the tags
+						}
+					},
 					slotProps: {
 						paper: {
 							elevation: 8, // match Menu elevation
 						},
+						chip: {
+							component: MuiAutocompleteChip,
+							deleteIcon: <MuiAutocompleteChipDeleteIcon />,
+						},
 						clearIndicator: {
-							tabIndex: 0, // make clear indicator focusable
+							component: MuiAutocompleteClearIndicator,
 						},
 					},
 				},
@@ -341,7 +357,14 @@ function createTheme() {
 					},
 				},
 			},
-			// MuiTextField: { defaultProps: { component: Role.input } }, // This dynamically renders as `textarea` when multiline is true
+			MuiTextField: {
+				defaultProps: {
+					// component: Role.input, // This dynamically renders as `textarea` when multiline is true
+					slots: {
+						input: MuiTextFieldInput,
+					},
+				},
+			},
 			MuiToggleButton: { defaultProps: { component: Role.button } },
 			MuiToolbar: { defaultProps: { component: Role.div } },
 			MuiTooltip: {

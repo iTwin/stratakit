@@ -3,7 +3,13 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
+.MuiAutocomplete-inputRoot:is(.MuiInputBase-root) {
+	padding-right: revert-layer;
+}
+
 .MuiAutocomplete-input {
+	order: 1;
+
 	:where(.MuiAutocomplete-hasPopupIcon) & {
 		padding-inline-end: calc(9px + 20px); /* 9px gap + 20px dropdown button width */
 	}

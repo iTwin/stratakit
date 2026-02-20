@@ -3,6 +3,10 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
+.MuiAutocomplete-inputRoot:is(.MuiInputBase-root) {
+	padding-right: revert-layer;
+}
+
 .MuiAutocomplete-input {
 	order: 1;
 

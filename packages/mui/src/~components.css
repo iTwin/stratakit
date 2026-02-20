@@ -9,6 +9,7 @@
 @import "./~components/MuiCheckbox.css";
 @import "./~components/MuiChip.css";
 @import "./~components/MuiForm.css";
+@import "./~components/MuiIconButton.css";
 @import "./~components/MuiInput.css";
 @import "./~components/MuiSlider.css";
 @import "./~components/MuiTabs.css";
@@ -32,20 +33,6 @@
 	&:where(.MuiDialogActions-spacing) {
 		padding-block: var(--stratakit-space-x4);
 		padding-inline: var(--stratakit-space-x5);
-	}
-}
-
-.MuiIconButton-root {
-	border-radius: 4px;
-
-	&:where(.MuiIconButton-colorPrimary) {
-		color: var(--stratakit-color-icon-accent-strong);
-	}
-	&:where(.MuiIconButton-colorSecondary) {
-		color: var(--stratakit-color-icon-neutral-primary);
-	}
-	&:where(.MuiIconButton-colorError) {
-		color: var(--stratakit-color-icon-critical-base);
 	}
 }
 

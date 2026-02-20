@@ -1,5 +1,36 @@
 # Changelog
 
+## 0.3.0
+
+### Minor Changes
+
+- [#1259](https://github.com/iTwin/stratakit/pull/1259): Removed all values for the `size` prop from `Checkbox` and `Radio`.
+
+### Patch Changes
+
+- [#1212](https://github.com/iTwin/stratakit/pull/1212): Introduced a new `render` prop for all overrideable MUI components, replacing the previous `component` prop. The `render` prop is more flexible and aligns better with modern React patterns, while also allowing the StrataKit MUI theme to apply more powerful customizations.
+
+  If you were previously using the `component` prop to override MUI components, you should now use the `render` prop instead. The `component` prop has been marked deprecated.
+
+  ```diff
+  - <Typography component="h2">
+  + <Typography render={<h2 />} />
+  ```
+
+  Note: Components that did not have a `component` prop previously will not have a `render` prop now.
+
+- [#1252](https://github.com/iTwin/stratakit/pull/1252): Added `deleteLabel` prop to the `Chip` component.
+- [#1218](https://github.com/iTwin/stratakit/pull/1218): `Checkbox` & `Radio` touch target area no longer consume space.
+- [#1252](https://github.com/iTwin/stratakit/pull/1252): Updated `Chip` component so the `root` element is no longer interactive. Deletable `Chip` now renders an interactive delete button, and clickable `Chip` renders its label as an interactive button.
+- [#1208](https://github.com/iTwin/stratakit/pull/1208): `InputLabel` and `FormHelperText` styling improvements.
+- [#1181](https://github.com/iTwin/stratakit/pull/1181): Added disabled and error styling to `TextField`, `InputLabel`, & `FormHelperText`.
+- [#1254](https://github.com/iTwin/stratakit/pull/1254): Styled `Slider` to match the Strata visual design language.
+- [#1239](https://github.com/iTwin/stratakit/pull/1239): `NativeSelect` visually styled to match `Select`.
+- [#1212](https://github.com/iTwin/stratakit/pull/1212): Added dependency on `@base-ui/react`.
+- [#1186](https://github.com/iTwin/stratakit/pull/1186): Styled checkbox & radio to match the Strata visual design language.
+- [#1214](https://github.com/iTwin/stratakit/pull/1214): Updated `Autocomplete` to make the clear indicator visible without requiring user interaction.
+- [#1213](https://github.com/iTwin/stratakit/pull/1213): Changed `Autocomplete` to make the clear indicator focusable.
+
 ## 0.2.1
 
 - [#1188](https://github.com/iTwin/stratakit/pull/1188): Fixed a race condition where stylesheets could be prematurely removed in cases where multiple components that use the same styles were conditionally rendered.

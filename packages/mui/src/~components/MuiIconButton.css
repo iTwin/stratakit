@@ -1,0 +1,29 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+
+.MuiIconButton-root {
+	border-radius: 4px;
+	color: var(--stratakit-color-icon-neutral-base);
+
+	&:where(.MuiIconButton-colorPrimary) {
+		color: var(--stratakit-color-icon-accent-strong);
+	}
+
+	&:where(.MuiIconButton-colorSecondary) {
+		color: var(--stratakit-color-icon-neutral-primary);
+	}
+
+	&:where(.MuiIconButton-colorError) {
+		color: var(--stratakit-color-icon-critical-base);
+	}
+
+	&:where(.Mui-disabled) {
+		color: var(--stratakit-color-icon-neutral-disabled);
+	}
+
+	&:where(.MuiIconButton-sizeSmall) {
+		padding: var(--stratakit-space-x1);
+	}
+}

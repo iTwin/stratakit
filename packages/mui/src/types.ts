@@ -179,10 +179,6 @@ declare module "@mui/material/Switch" {
 		warning: false;
 		error: false;
 	}
-
-	interface SwitchPropsSizeOverrides {
-		small: false;
-	}
 }
 
 declare module "@mui/material/TextField" {

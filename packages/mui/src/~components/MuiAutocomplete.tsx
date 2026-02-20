@@ -4,7 +4,9 @@
  *--------------------------------------------------------------------------------------------*/
 
 import * as React from "react";
+import * as ReactDOM from "react-dom";
 import { Role } from "@ariakit/react/role";
+import OutlinedInput from "@mui/material/OutlinedInput";
 import {
 	useEventHandlers,
 	useMergedRefs,
@@ -50,7 +52,7 @@ const MuiAutocompleteChip = React.forwardRef<
 	HTMLDivElement,
 	MuiAutocompleteChipProps
 >((props, forwardedRef) => {
-	return <MuiChip role="listitem" {...props} ref={forwardedRef} />;
+	return <MuiChip slot="chips" {...props} role="listitem" ref={forwardedRef} />;
 });
 DEV: MuiAutocompleteChip.displayName = "MuiAutocompleteChip";
 
@@ -76,8 +78,42 @@ DEV: MuiAutocompleteChipDeleteIcon.displayName =
 
 // ----------------------------------------------------------------------------
 
+const MuiAutocompleteTextFieldInput = React.forwardRef<
+	HTMLDivElement,
+	React.ComponentProps<typeof OutlinedInput>
+>((props, forwardedRef) => {
+	const [host, setHost] = React.useState<HTMLElement | null>(null);
+	const [shadow, setShadow] = React.useState<ShadowRoot | null>(null);
+	React.useEffect(() => {
+		if (!host) return;
+		if (!host.shadowRoot) {
+			host.attachShadow({ mode: "open" });
+		}
+		setShadow(host.shadowRoot);
+	}, [host]);
+	return (
+		<>
+			<OutlinedInput {...props} ref={useMergedRefs(setHost, forwardedRef)} />
+			{shadow &&
+				ReactDOM.createPortal(
+					<>
+						<slot /> {/* Default slot is used for the input */}
+						<div role="list">
+							<slot name="chips" />
+						</div>
+						<slot name="end" />
+					</>,
+					shadow,
+				)}
+		</>
+	);
+});
+
+// ----------------------------------------------------------------------------
+
 export {
 	MuiAutocompleteClearIndicator,
 	MuiAutocompleteChip,
 	MuiAutocompleteChipDeleteIcon,
+	MuiAutocompleteTextFieldInput,
 };

@@ -4,11 +4,9 @@
  *--------------------------------------------------------------------------------------------*/
 
 import * as React from "react";
-import * as ReactDOM from "react-dom";
 import { Role } from "@ariakit/react/role";
 import OutlinedInput from "@mui/material/OutlinedInput";
 import { createTheme as createMuiTheme } from "@mui/material/styles";
-import { useMergedRefs } from "@stratakit/foundations/secret-internals";
 import {
 	MuiAutocompleteChip,
 	MuiAutocompleteChipDeleteIcon,
@@ -19,6 +17,7 @@ import {
 	MuiChipDeleteIcon,
 	MuiChipLabel,
 } from "./~components/MuiChip.js";
+import { MuiTextFieldInput } from "./~components/MuiTextField.js";
 import {
 	ArrowDownIcon,
 	CaretsUpDownIcon,
@@ -362,7 +361,7 @@ function createTheme() {
 				defaultProps: {
 					// component: Role.input, // This dynamically renders as `textarea` when multiline is true
 					slots: {
-						input: TextFieldInput,
+						input: MuiTextFieldInput,
 					},
 				},
 			},
@@ -391,34 +390,5 @@ function withRenderProp(
 }
 
 // ----------------------------------------------------------------------------
-
-function TextFieldInput(props: React.ComponentProps<typeof OutlinedInput>) {
-	const [host, setHost] = React.useState<HTMLElement | null>(null);
-	const [shadow, setShadow] = React.useState<ShadowRoot | null>(null);
-	React.useEffect(() => {
-		if (!host) return;
-		if (!host.shadowRoot) {
-			host.attachShadow({ mode: "open", slotAssignment: "named" });
-		}
-		setShadow(host.shadowRoot);
-	}, [host]);
-	const ref = useMergedRefs(setHost, props.ref);
-	return (
-		<>
-			<OutlinedInput {...props} ref={ref} />
-			{shadow &&
-				ReactDOM.createPortal(
-					<>
-						<slot />
-						<div role="list">
-							<slot name="chips" />
-						</div>
-						<slot name="end" />
-					</>,
-					shadow,
-				)}
-		</>
-	);
-}
 
 export { createTheme };

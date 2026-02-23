@@ -8,6 +8,11 @@
 	border: 1px solid ButtonBorder;
 	color: ButtonText;
 
+	&:where(.MuiButton-colorError) {
+		forced-color-adjust: none;
+		box-shadow: none;
+	}
+
 	&:where(.MuiIconButton-colorError, .MuiButton-colorError) {
 		background-color: Mark;
 		color: MarkText;

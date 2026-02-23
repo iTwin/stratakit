@@ -4,7 +4,6 @@
  *--------------------------------------------------------------------------------------------*/
 
 :is(.MuiButton-root, .MuiIconButton-root) {
-	forced-color-adjust: none;
 	background-color: ButtonFace;
 	border: 1px solid ButtonBorder;
 	color: ButtonText;

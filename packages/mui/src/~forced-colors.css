@@ -9,7 +9,7 @@
 	border: 1px solid ButtonBorder;
 	color: ButtonText;
 
-	&:where(.MuiIconButton-colorError) {
+	&:where(.MuiIconButton-colorError, .MuiButton-colorError) {
 		background-color: Mark;
 		color: MarkText;
 	}

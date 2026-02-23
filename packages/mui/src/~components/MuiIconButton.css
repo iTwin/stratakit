@@ -4,15 +4,23 @@
  *--------------------------------------------------------------------------------------------*/
 
 .MuiIconButton-root {
+	--✨color--default: var(--stratakit-color-icon-neutral-base);
+
 	border-radius: 4px;
-	color: var(--stratakit-color-icon-neutral-base);
+	color: var(--✨color--default);
+
+	&:where(.MuiIconButton-colorSecondary) {
+		color: var(--✨color--default);
+	}
+
+	@media (any-hover: hover) {
+		&:where(:hover) {
+			color: var(--stratakit-color-icon-neutral-primary);
+		}
+	}
 
 	&:where(.MuiIconButton-colorPrimary) {
 		color: var(--stratakit-color-icon-accent-strong);
-	}
-
-	&:where(.MuiIconButton-colorSecondary) {
-		color: var(--stratakit-color-icon-neutral-base);
 	}
 
 	&:where(.MuiIconButton-colorError) {

@@ -12,7 +12,7 @@
 	}
 
 	&:where(.MuiIconButton-colorSecondary) {
-		color: var(--stratakit-color-icon-neutral-primary);
+		color: var(--stratakit-color-icon-neutral-base);
 	}
 
 	&:where(.MuiIconButton-colorError) {

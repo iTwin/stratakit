@@ -8,6 +8,13 @@ links:
 
 ::example{src="mui/RadioGroup.default"}
 
+## StrataKit modifications
+
+- The `color` prop is not supported. Color is determined automatically based on state (e.g., checked, disabled, error).
+- The `size` prop does not support `small` and defaults to `medium`.
+- The radio implementation differs from the default `svg` approach and uses custom pseudo-elements.
+- Includes full `forced-colors` support.
+
 ## Examples
 
 ### Error

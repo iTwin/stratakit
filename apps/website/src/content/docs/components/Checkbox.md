@@ -8,6 +8,14 @@ links:
 
 ::example{src="mui/Checkbox.default"}
 
+## StrataKit modifications
+
+- The `color` prop is not supported. Color is determined automatically based on state (e.g., checked, disabled, error).
+- The `icon` prop is not supported.
+- The `size` prop does not support `small` or `large` and defaults to `medium`.
+- The checkbox implementation differs from the default `svg` approach and uses custom pseudo-elements.
+- Includes full `forced-colors` support.
+
 ## Examples
 
 ### Checked

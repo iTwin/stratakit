@@ -14,6 +14,7 @@ links:
 - The `icon` prop is not supported.
 - The `size` prop does not support `small` or `large` and defaults to `medium`.
 - The checkbox implementation differs from the default `svg` approach and uses custom pseudo-elements.
+- The touch target does not consume layout space. Be mindful when placing the checkbox next to adjacent elements or container boundaries.
 - Includes full `forced-colors` support.
 
 ## Examples

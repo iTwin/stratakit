@@ -12,7 +12,7 @@ links:
 
 - The `color` prop is not supported. Color is determined automatically based on state (e.g., checked, disabled, error).
 - The `icon` prop is not supported.
-- The `size` prop does not support `small` or `large` and defaults to `medium`.
+- The `size` prop defaults to `"medium"`, and does not support `"small"` or `"large"`.
 - The checkbox implementation differs from the default `svg` approach and uses custom pseudo-elements.
 - The touch target does not consume layout space. Be mindful when placing the checkbox next to adjacent elements or container boundaries.
 - Includes full `forced-colors` support.

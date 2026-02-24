@@ -11,7 +11,7 @@ links:
 ## StrataKit MUI modifications
 
 - The `color` prop is not supported. Color is determined automatically based on state (e.g., checked, disabled, error).
-- The `size` prop does not support `small` and defaults to `medium`.
+- The `size` prop defaults to `"medium"` and does not support `"small"`.
 - The radio implementation differs from the default `svg` approach and uses custom pseudo-elements.
 - The touch target does not consume layout space. Be mindful when placing the checkbox next to adjacent elements or container boundaries.
 - Includes full `forced-colors` support.

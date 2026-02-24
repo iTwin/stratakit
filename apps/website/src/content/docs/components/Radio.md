@@ -8,7 +8,7 @@ links:
 
 ::example{src="mui/RadioGroup.default"}
 
-## StrataKit modifications
+## StrataKit MUI modifications
 
 - The `color` prop is not supported. Color is determined automatically based on state (e.g., checked, disabled, error).
 - The `size` prop does not support `small` and defaults to `medium`.

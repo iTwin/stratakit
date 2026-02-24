@@ -8,7 +8,7 @@ links:
 
 ::example{src="mui/Checkbox.default"}
 
-## StrataKit modifications
+## StrataKit MUI modifications
 
 - The `color` prop is not supported. Color is determined automatically based on state (e.g., checked, disabled, error).
 - The `icon` prop is not supported.

@@ -12,6 +12,7 @@ links:
 
 - `Card` is rendered as an `<article>` element by default.
 - `CardHeader`'s `title` is rendered as `<h2>` by default.
+- `CardActionArea` will not have an unnecessary `role="button"` to avoid conflicting semantics when rendered as a link.
 
 ## Examples
 

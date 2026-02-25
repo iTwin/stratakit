@@ -161,7 +161,10 @@ function createTheme() {
 			},
 			MuiCard: { defaultProps: { component: withRenderProp(Role, "article") } },
 			MuiCardActionArea: {
-				defaultProps: { component: Role.button },
+				defaultProps: {
+					component: Role.button,
+					role: undefined, // Remove redundant role which conflicts when CardActionArea is rendered as Link
+				},
 			},
 			MuiCardContent: { defaultProps: { component: Role.div } },
 			MuiCardHeader: {

@@ -341,7 +341,7 @@ function createTheme() {
 					},
 				},
 			},
-			// MuiTextField: { defaultProps: { component: Role.input } }, // This dynamically renders as `textarea` when multiline is true
+			MuiTextField: { defaultProps: { component: Role.div } },
 			MuiToggleButton: { defaultProps: { component: Role.button } },
 			MuiToolbar: { defaultProps: { component: Role.div } },
 			MuiTooltip: {

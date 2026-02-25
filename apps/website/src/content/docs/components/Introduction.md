@@ -37,8 +37,8 @@ All components are accompanied by implementation guidance. This adheres to the f
 
 * **Demo**: What does a typical implementation look like, using common settings?
 * **Use cases**: Is this, or another, component right for my use case? (compares similar components in a table)
-* **StrataKit MUI modifications**: _(where applicable)_: What has been done to bring the MUI component in line with **StrataKit** standards and conventions?
-* **Examples**: What variants are there and to which contexts are they suited?
+* **StrataKit MUI modifications**: _(where applicable)_: What has been done to bring the MUI component in line with **StrataKit**?
+* **Examples**: What variants are there, and to which contexts are they suited?
 * **🚫 Do**: What’s needed for an efficient and accessible implementation? What opportunities are there to improve user experience?
 * **🚫 Don’t**: What are some common pitfalls? What are the bad practices to avoid?
 

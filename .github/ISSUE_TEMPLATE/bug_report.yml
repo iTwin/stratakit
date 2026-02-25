@@ -1,0 +1,52 @@
+name: Bug report 🐛
+description: Create a bug report to help us improve
+type: bug
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for contributing to StrataKit by creating an issue!
+        Make sure you first do a search for existing issues so that this is is not a duplicate.
+  - type: textarea
+    attributes:
+      label: Describe the bug (current behavior)
+      description: A concise description of what you're experiencing.
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Expected Behavior
+      description: A concise description of what you expected to happen.
+    validations:
+      required: false
+  - type: input
+    attributes:
+      label: Link to minimal repro
+      description: "Create a minimal reproduction by forking [this sandbox](https://stackblitz.com/github/iTwin/stratakit/tree/main/internal/minimal-template)."
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Steps To Reproduce
+      placeholder: |
+        1. Fill 
+        2. this
+        3. out
+    validations:
+      required: false
+  - type: checkboxes
+    attributes:
+      label: Package Version
+      description: Please confirm that you are using the [latest version](https://www.npmjs.com/package/@stratakit/mui?activeTab=versions) of StrataKit.
+      options:
+        - label: I'm using the latest version of StrataKit.
+          required: false
+    validations:
+      required: false
+  - type: textarea
+    attributes:
+      label: Anything else?
+      description: Add anything else you want to mention (package version, environment info, possible solution, etc.)
+    validations:
+      required: false

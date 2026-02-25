@@ -48,13 +48,12 @@ The entirety of the [**MUI** component docs](https://mui.com/material-ui/all-com
 
 :::
 
+## Component status
 
+Check the status before choosing to use a component in your product. You may be unwilling to undertake certain risks and uncertainties. You can find the status in the metadata at the top of each component’s guidance page. It will have one of the following values:
 
-
-
-
-
-
-
-
-
+- **Draft**: The component is still being designed. Consider the documentation a specification for what is to come.
+- **Unstable**: The component is available for consumption but is not comprehensively tested and may undergo breaking changes. As an early adopter, please provide feedback.
+- **Stable**: The component is established and meets our compatibility and accessibility standards.
+- **Deprecated**: The component is no longer supported or recommended. Remove or replace it at your earliest convenience.
+- **Unknown**: The status is currently unsettled. You may be able to help settle it.

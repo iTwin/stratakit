@@ -21,7 +21,7 @@ By making an established open-source library responsible for generic components,
 
 The theme includes the following modifications:
 
-1. **Style**: The CSS has been aligned with **StrataKit’s** visual language.
+1. **CSS**: The style has been aligned with **StrataKit’s** visual language.
 2. **API**: Some components have been extended to support additional props.
 3. **Structure and behavior**: The markup structure and interaction behavior of certain components have been modified to meet **StrataKit** UX and accessibility requirements.
 
@@ -31,6 +31,22 @@ Accompanying specialized components are available in a [separate package named _
 
 These components are developed independently, to meet the interface requirements of construction and infrastructure design software. 
 
+## Component guidance
+
+All components are accompanied by implementation guidance. This adheres to the following structure:
+
+* **Demo**: What does a typical implementation look like, using common settings?
+* **Use cases**: Is this, or another, component right for my use case? (compares similar components in a table)
+* **StrataKit MUI modifications**: _(where applicable)_: What has been done to bring the MUI component in line with **StrataKit** standards and conventions?
+* **Examples**: What variants are there and to which contexts are they suited?
+* **🚫 Do**: What’s needed for an efficient and accessible implementation? What opportunities are there to improve user experience?
+* **🚫 Don’t**: What are some common pitfalls? What are the bad practices to avoid?
+
+:::caution[MUI documentation]
+
+The entirety of the [**MUI** component docs](https://mui.com/material-ui/all-components/) are not reproduced here. The **StrataKit** docs exemplify how to _implement_ **MUI** components according to **StrataKit’s** standards. Consider this additional guidance a necessary companion to **MUI’s** documentation.
+
+:::
 
 
 

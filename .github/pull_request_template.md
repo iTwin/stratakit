@@ -1,6 +1,8 @@
 <!--
-Thank you for your contribution to StrataKit.
+Thank you for contributing to StrataKit.
 
+Before submitting, please review our contributing guidelines:
+https://github.com/iTwin/stratakit/blob/main/CONTRIBUTING.md#pull-requests
 If you are only making changes to the documentation site using the "Edit page" link, you can ignore most of this template.
 -->
 
@@ -10,9 +12,8 @@ If you are only making changes to the documentation site using the "Edit page" l
 What changes does this pull request include?
 
 Reference the related issue (e.g., "Fixes #123").
-Mention anything that would be helpful for reviewers and include screenshots or recordings for visual changes.
-
-If artificial intelligence is used to generate any portion of the code, tests, or documentation in your pull request, you are still fully responsible for reviewing the output for correctness, security, and adherence to project standards prior to submission. Please apply the "AI GitHub label" to the pull request.
+Include any context that would help reviewers understand your approach.
+For visual changes, include screenshots or recordings.
 -->
 
 ## Testing
@@ -21,6 +22,5 @@ If artificial intelligence is used to generate any portion of the code, tests, o
 How did you test your changes?
 
 Include relevant details such as manual testing, unit tests, accessibility checks, or visual verification.
-
-If not applicable, you can write "N/A".
+If testing is not applicable, briefly explain why.
 -->

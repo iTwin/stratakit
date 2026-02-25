@@ -98,9 +98,7 @@ const MuiAutocompleteTextFieldInput = React.forwardRef<
 				ReactDOM.createPortal(
 					<>
 						<slot /> {/* Default slot is used for the input */}
-						<div role="list">
-							<slot name="chips" />
-						</div>
+						<slot role="list" name="chips" />
 						<slot name="end" />
 					</>,
 					shadow,

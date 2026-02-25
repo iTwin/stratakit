@@ -11,7 +11,7 @@ The **StrataKit** component catalog comes in two tiers:
 1. Generic components are taken from the third-party [Material UI (**MUI**)](https://mui.com/material-ui/) library.
 2. Specialized components are developed in-house, at Bentley, and called _structures_.
 
-See [**Develop with StrataKit**](http://localhost:4321/docs/getting-started/develop/) for detailed installation instructions.
+See [**Develop with StrataKit**](/docs/getting-started/develop/) for detailed installation instructions.
 
 ## MUI components
 

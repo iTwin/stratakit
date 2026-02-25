@@ -159,11 +159,17 @@ function createTheme() {
 					disableRipple: true, // ButtonGroup overrides Button's disableRipple so we need to set it here as well
 				},
 			},
-			MuiCard: { defaultProps: { component: Role.div } },
+			MuiCard: { defaultProps: { component: withRenderProp(Role, "article") } },
 			MuiCardActionArea: {
 				defaultProps: { component: Role.button },
 			},
 			MuiCardContent: { defaultProps: { component: Role.div } },
+			MuiCardHeader: {
+				defaultProps: {
+					component: Role.div,
+					slotProps: { title: { component: Role.h2 } },
+				},
+			},
 			MuiCardMedia: { defaultProps: { component: Role.div } },
 			MuiCheckbox: {
 				defaultProps: {

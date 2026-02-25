@@ -8,6 +8,11 @@ links:
 
 ::example{src="mui/Card.default"}
 
+## StrataKit MUI modifications
+
+- `Card` is rendered as an `<article>` element by default.
+- `CardHeader`'s `title` is rendered as `<h2>` by default.
+
 ## Examples
 
 ### CardActions
@@ -17,3 +22,11 @@ links:
 ### CardHeader
 
 ::example{src="mui/Card.header"}
+
+## ✅ Do
+
+- Use a heading element to provide a clear title for the card's content.
+
+## 🚫 Don't
+
+- Don't use a **Card** to group unrelated content or actions.

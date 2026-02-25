@@ -19,11 +19,19 @@ By making an established open-source library responsible for generic components,
 
 **StrataKit**’s [**MUI** theme](https://www.npmjs.com/package/@stratakit/mui) ensures consistency across all components, incorporating **StrataKit’s** design tokens and [iconography](/docs/icons/).
 
-The 
+The theme includes the following modifications:
+
+1. **Style**: The CSS has been aligned with **StrataKit’s** visual language.
+2. **API**: Some components have been extended to support additional props.
+3. **Structure and behavior**: The markup structure and interaction behavior of certain components have been modified to meet **StrataKit** UX and accessibility requirements.
 
 ## StrataKit components
 
 Accompanying specialized components are available in a [separate package named _structures_](https://www.npmjs.com/package/@stratakit/structures).
+
+These components are developed independently, to meet the interface requirements of construction and infrastructure design software. 
+
+
 
 
 

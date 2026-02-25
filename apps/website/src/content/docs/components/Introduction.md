@@ -4,8 +4,6 @@ description: How StrataKit components are organized
 sidebar: 
   label: Introduction
   order: 1
-  attrs:
-    style: 'font-style: italic'
 ---
 
 The **StrataKit** component catalog comes in two tiers:

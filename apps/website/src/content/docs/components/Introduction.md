@@ -9,7 +9,7 @@ sidebar:
 The **StrataKit** component catalog comes in two tiers:
 
 1. Generic components are taken from the third-party [Material UI (**MUI**)](https://mui.com/material-ui/) library.
-2. Specialized components are developed in-house, at Bentley, and called _structures_.
+2. Specialized components are developed separately and called _structures_.
 
 See [**Develop with StrataKit**](/docs/getting-started/develop/) for detailed installation instructions.
 
@@ -17,7 +17,9 @@ See [**Develop with StrataKit**](/docs/getting-started/develop/) for detailed in
 
 By making an established open-source library responsible for generic components, we are free to focus efforts on developing components that solve more complex and specific tasks.
 
-**StrataKit**’s [**MUI** theme](https://www.npmjs.com/package/@stratakit/mui) ensures consistency across all components, incorporating **StrataKit’s** design tokens and iconography. 
+**StrataKit**’s [**MUI** theme](https://www.npmjs.com/package/@stratakit/mui) ensures consistency across all components, incorporating **StrataKit’s** design tokens and [iconography](/docs/icons/).
+
+The 
 
 ## StrataKit components
 

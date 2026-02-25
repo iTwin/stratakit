@@ -18,6 +18,8 @@ import cx from "classnames";
 import { createTheme } from "./createTheme.js";
 import css from "./styles.css.js";
 
+import type { BaseProps } from "@stratakit/foundations/secret-internals";
+
 // ----------------------------------------------------------------------------
 
 const theme = createTheme();
@@ -27,7 +29,7 @@ const key = `${packageName}@${__VERSION__}`;
 
 // ----------------------------------------------------------------------------
 
-interface RootProps extends React.ComponentPropsWithoutRef<"div"> {
+interface RootProps extends BaseProps<"div"> {
 	children?: React.ReactNode;
 	/**
 	 * The color scheme to use for all components on the page.

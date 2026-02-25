@@ -106,6 +106,8 @@ const MuiAutocompleteTextFieldInput = React.forwardRef<
 		</>
 	);
 });
+DEV: MuiAutocompleteTextFieldInput.displayName =
+	"MuiAutocompleteTextFieldInput";
 
 // ----------------------------------------------------------------------------
 

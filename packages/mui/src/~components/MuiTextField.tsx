@@ -20,6 +20,7 @@ const MuiTextFieldInput = React.forwardRef<
 		: OutlinedInput;
 	return <Component {...props} ref={forwardedRef} />;
 });
+DEV: MuiTextFieldInput.displayName = "MuiTextFieldInput";
 
 // ----------------------------------------------------------------------------
 

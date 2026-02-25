@@ -17,7 +17,7 @@ See [**Develop with StrataKit**](http://localhost:4321/docs/getting-started/deve
 
 By making an established open-source library responsible for generic components, we are free to focus efforts on developing components that solve more complex and specific tasks.
 
-Bentley’s **MUI** theme ensures consistency across all components, incorporating Bentley’s design tokens and iconography. 
+StrataKit’s [**MUI** theme](https://www.npmjs.com/package/@stratakit/mui) ensures consistency across all components, incorporating Bentley’s design tokens and iconography. 
 
 ## StrataKit components
 

@@ -7,46 +7,62 @@ body:
     attributes:
       value: |
         Thank you for contributing to StrataKit by creating an issue!
-        Make sure you first do a search for existing issues so that this is is not a duplicate.
+        Make sure you first do a search for existing issues so that this is not a duplicate.
   - type: textarea
     attributes:
-      label: Describe the bug (current behavior)
-      description: A concise description of what you're experiencing.
+      label: Describe the bug
+      description: |
+        A clear description of what the bug is. Include which component(s) are affected
+        and what specifically is not working as expected.
+      placeholder: "When using the Button component with…"
     validations:
       required: true
   - type: textarea
     attributes:
-      label: Expected Behavior
-      description: A concise description of what you expected to happen.
+      label: Steps to reproduce
+      description: Detailed steps to reproduce the behavior
+      placeholder: |
+        1. Import the component: `import Button from "@mui/material/Button";`
+        2. Use it with these props: `<Button variant="outlined">Click me</Button>`
+        3. Observe the issue when…
     validations:
-      required: false
+      required: true
+  - type: textarea
+    attributes:
+      label: Expected behavior
+      description: A clear description of what you expected to happen
+      placeholder: "The Button should…"
+    validations:
+      required: true
   - type: input
     attributes:
-      label: Link to minimal repro
-      description: "Create a minimal reproduction by forking [this sandbox](https://stackblitz.com/github/iTwin/stratakit/tree/main/internal/minimal-template)."
+      label: Link to minimal reproduction
+      description: |
+        Create a minimal reproduction using our template.
+        Fork [this StackBlitz template](https://stackblitz.com/github/iTwin/stratakit/tree/main/internal/minimal-template) and reproduce the issue.
+      placeholder: "https://stackblitz.com/edit/your-reproduction"
     validations:
       required: true
   - type: textarea
     attributes:
-      label: Steps To Reproduce
+      label: Environment and versions
+      description: |
+        Please provide version information and environment details.
+        This helps us reproduce the issue.
       placeholder: |
-        1. Fill 
-        2. this
-        3. out
-    validations:
-      required: false
-  - type: checkboxes
-    attributes:
-      label: Package Version
-      description: Please confirm that you are using the [latest version](https://www.npmjs.com/package/@stratakit/mui?activeTab=versions) of StrataKit.
-      options:
-        - label: I'm using the latest version of StrataKit.
-          required: false
+        - StrataKit MUI version: (e.g., 0.2.1)
+        - MUI version: (e.g., 7.3.8)
+        - React version: (e.g., 19.2.0)
+        - Browser: (e.g., Chrome 147, Safari 26)
+        - OS: (e.g., macOS 26, Windows 11)
+        - Node.js version: (e.g., 22.19.0)
     validations:
       required: false
   - type: textarea
     attributes:
-      label: Anything else?
-      description: Add anything else you want to mention (package version, environment info, possible solution, etc.)
+      label: Additional context
+      description: |
+        Add any other context about the problem here.
+        Include screenshots, error messages, or potential solutions if you have any.
     validations:
       required: false

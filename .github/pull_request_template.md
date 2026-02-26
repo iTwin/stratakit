@@ -8,13 +8,6 @@ If you are only making changes to the documentation site using the "Edit page" l
 
 ## Changes
 
-<!--
-What changes does this pull request include?
-
-Include any context that would help reviewers understand your approach.
-For visual changes, include screenshots or recordings.
--->
-
 ## Testing
 
 <!--

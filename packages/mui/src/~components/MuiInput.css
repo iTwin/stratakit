@@ -28,6 +28,7 @@
 
 	&:where(.Mui-disabled) {
 		border-color: var(--stratakit-color-border-glow-on-surface-disabled);
+		cursor: not-allowed;
 		--🥝Icon-color: var(--stratakit-color-icon-neutral-disabled);
 	}
 
@@ -65,6 +66,11 @@
 
 	&:where(:focus-visible) {
 		outline: none !important;
+	}
+
+	&:where(.Mui-disabled) {
+		cursor: not-allowed;
+		pointer-events: initial;
 	}
 }
 

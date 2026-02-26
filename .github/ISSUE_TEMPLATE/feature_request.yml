@@ -17,24 +17,12 @@ body:
       description: |
         Describe your ideal solution. What should this feature look like and how should it behave?
         Include any specific requirements or constraints.
+
+        Please also include:
+        - Visual examples, mockups, or references to similar implementations.
+        - Any alternative approaches or workarounds you've considered.
     validations:
       required: true
-  - type: textarea
-    attributes:
-      label: Examples and mockups
-      description: |
-        Provide visual examples, mockups, or references to similar implementations.
-        You can attach images by dragging & dropping, selecting, or pasting them.
-    validations:
-      required: false
-  - type: textarea
-    attributes:
-      label: Alternative solutions
-      description: |
-        Have you considered any alternative approaches or workarounds?
-        What other solutions have you explored?
-    validations:
-      required: false
   - type: textarea
     attributes:
       label: Additional context

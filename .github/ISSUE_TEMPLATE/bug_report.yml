@@ -47,10 +47,10 @@ body:
         Please provide version information and environment details.
         This helps us reproduce the issue.
       placeholder: |
-        - StrataKit MUI version: (e.g., 0.2.1)
-        - MUI version: (e.g., 7.3.8)
-        - React version: (e.g., 19.2.0)
-        - Browser: (e.g., Chrome 147, Safari 26)
+        - @stratakit/mui 0.2.1
+        - @mui/material 7.3.8
+        - react 19.2.0
+        - Browsers: Chrome 147, Safari 26.2
     validations:
       required: false
   - type: textarea

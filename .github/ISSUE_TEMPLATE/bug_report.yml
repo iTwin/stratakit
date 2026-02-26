@@ -21,9 +21,9 @@ body:
       label: Steps to reproduce
       description: Detailed steps to reproduce the behavior
       placeholder: |
-        1. Import the component: `import Button from "@mui/material/Button";`
-        2. Use it with these props: `<Button variant="outlined">Click me</Button>`
-        3. Observe the issue when…
+        1. …
+        2. …
+        3. …
     validations:
       required: true
   - type: textarea
@@ -37,7 +37,7 @@ body:
       label: Link to minimal reproduction
       description: |
         Create a minimal reproduction using our template.
-        Fork [this StackBlitz template](https://stackblitz.com/github/iTwin/stratakit/tree/main/internal/minimal-template) and reproduce the issue.
+        Fork [this StackBlitz template](https://stackblitz.com/github/iTwin/stratakit/tree/main/internal/minimal-template?file=src%2FApp.tsx) and reproduce the issue.
     validations:
       required: true
   - type: textarea

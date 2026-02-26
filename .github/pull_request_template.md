@@ -11,7 +11,6 @@ If you are only making changes to the documentation site using the "Edit page" l
 <!--
 What changes does this pull request include?
 
-Reference the related issue (e.g., "Fixes #123").
 Include any context that would help reviewers understand your approach.
 For visual changes, include screenshots or recordings.
 -->

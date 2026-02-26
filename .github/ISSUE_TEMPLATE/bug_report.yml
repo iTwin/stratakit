@@ -54,8 +54,6 @@ body:
         - MUI version: (e.g., 7.3.8)
         - React version: (e.g., 19.2.0)
         - Browser: (e.g., Chrome 147, Safari 26)
-        - OS: (e.g., macOS 26, Windows 11)
-        - Node.js version: (e.g., 22.19.0)
     validations:
       required: false
   - type: textarea

@@ -1,7 +1,6 @@
 name: Manual accessibility component test ♿️
 description: A form for testing individual component accessibility
 title: "[Component Name] Manual A11y Test"
-type: bug
 labels: ["a11y", "manual test"]
 body:
   - type: input

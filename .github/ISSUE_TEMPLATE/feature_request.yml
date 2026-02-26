@@ -9,7 +9,6 @@ body:
       description: |
         What problem does this feature solve? What use case does it address? 
         Help us understand the context and need for this feature.
-      placeholder: "As a developer/designer, I need…"
     validations:
       required: false
   - type: textarea
@@ -18,7 +17,6 @@ body:
       description: |
         Describe your ideal solution. What should this feature look like and how should it behave?
         Include any specific requirements or constraints.
-      placeholder: "I would like to see…"
     validations:
       required: true
   - type: textarea
@@ -27,7 +25,6 @@ body:
       description: |
         Provide visual examples, mockups, or references to similar implementations.
         You can attach images by dragging & dropping, selecting, or pasting them.
-      placeholder: "Here are some examples of what I'm looking for…"
     validations:
       required: false
   - type: textarea
@@ -36,7 +33,6 @@ body:
       description: |
         Have you considered any alternative approaches or workarounds?
         What other solutions have you explored?
-      placeholder: "I've also considered…"
     validations:
       required: false
   - type: textarea

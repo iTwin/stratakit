@@ -14,7 +14,6 @@ body:
       description: |
         A clear description of what the bug is. Include which component(s) are affected
         and what specifically is not working as expected.
-      placeholder: "When using the Button component with…"
     validations:
       required: true
   - type: textarea
@@ -31,7 +30,6 @@ body:
     attributes:
       label: Expected behavior
       description: A clear description of what you expected to happen
-      placeholder: "The Button should…"
     validations:
       required: true
   - type: input
@@ -40,7 +38,6 @@ body:
       description: |
         Create a minimal reproduction using our template.
         Fork [this StackBlitz template](https://stackblitz.com/github/iTwin/stratakit/tree/main/internal/minimal-template) and reproduce the issue.
-      placeholder: "https://stackblitz.com/edit/your-reproduction"
     validations:
       required: true
   - type: textarea

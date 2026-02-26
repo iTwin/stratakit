@@ -42,6 +42,14 @@
 	padding-inline: 14px;
 	align-content: center;
 
+	&:where(input, textarea) {
+		&::placeholder {
+			color: var(--stratakit-color-text-neutral-secondary);
+			opacity: 1;
+			user-select: none;
+		}
+	}
+
 	&:where(.MuiInputBase-inputMultiline) {
 		padding-block: 8.25px;
 		align-content: baseline;

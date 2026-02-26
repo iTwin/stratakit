@@ -159,11 +159,20 @@ function createTheme() {
 					disableRipple: true, // ButtonGroup overrides Button's disableRipple so we need to set it here as well
 				},
 			},
-			MuiCard: { defaultProps: { component: Role.div } },
+			MuiCard: { defaultProps: { component: withRenderProp(Role, "article") } },
 			MuiCardActionArea: {
-				defaultProps: { component: Role.button },
+				defaultProps: {
+					component: Role.button,
+					role: undefined, // Remove redundant role which conflicts when CardActionArea is rendered as Link
+				},
 			},
 			MuiCardContent: { defaultProps: { component: Role.div } },
+			MuiCardHeader: {
+				defaultProps: {
+					component: Role.div,
+					slotProps: { title: { component: Role.h2 } },
+				},
+			},
 			MuiCardMedia: { defaultProps: { component: Role.div } },
 			MuiCheckbox: {
 				defaultProps: {
@@ -341,7 +350,7 @@ function createTheme() {
 					},
 				},
 			},
-			// MuiTextField: { defaultProps: { component: Role.input } }, // This dynamically renders as `textarea` when multiline is true
+			MuiTextField: { defaultProps: { component: Role.div } },
 			MuiToggleButton: { defaultProps: { component: Role.button } },
 			MuiToolbar: { defaultProps: { component: Role.div } },
 			MuiTooltip: {

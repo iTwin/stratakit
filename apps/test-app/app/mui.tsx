@@ -53,6 +53,7 @@ import FormControlError from "examples/mui/FormControl.error.tsx";
 import FormControlGroup from "examples/mui/FormControl.group.tsx";
 import IconButtonColors_ from "examples/mui/IconButton._colors.tsx";
 import IconButtonDefault from "examples/mui/IconButton.default.tsx";
+import LinearProgressColors_ from "examples/mui/LinearProgress._colors.tsx";
 import LinearProgressDefault from "examples/mui/LinearProgress.default.tsx";
 import LinkColors_ from "examples/mui/Link._colors.tsx";
 import LinkDefault from "examples/mui/Link.default.tsx";
@@ -217,6 +218,7 @@ const components: Record<string, React.ReactNode> = {
 	LinearProgress: (
 		<Stack spacing={1} alignSelf="stretch">
 			<LinearProgressDefault />
+			{!isProduction && <LinearProgressColors_ />}
 		</Stack>
 	),
 	Link: (

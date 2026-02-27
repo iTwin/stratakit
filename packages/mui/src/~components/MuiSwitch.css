@@ -33,11 +33,13 @@
 .MuiSwitch-switchBase {
 	--✨color-bg--default: var(--stratakit-color-bg-neutral-inverse);
 	--✨color-bg--disabled: var(--stratakit-color-icon-neutral-disabled);
+	--✨border-radius: 50%;
 	--✨box-shadow--default:
 		var(--stratakit-shadow-control-button-base-inset),
 		0px 0px 0px 1px var(--stratakit-color-border-shadow-base) inset,
 		var(--stratakit-shadow-control-button-base-drop);
 	--✨box-shadow--disabled: none;
+	--✨transform-scale-x: 1.75;
 
 	aspect-ratio: 1;
 	block-size: var(--_MuiSwitch-height);
@@ -46,16 +48,24 @@
 	transform-origin: left;
 
 	--_MuiSwitch-thumb-background-color: var(--✨color-bg--default);
+	--_MuiSwitch-thumb-border-radius: var(--✨border-radius);
 	--_MuiSwitch-thumb-box-shadow: var(--✨box-shadow--default);
 
 	@media (prefers-reduced-motion: no-preference) {
 		transition: transform 150ms ease-out;
+		will-change: transform;
 	}
 
 	@media (any-hover: hover) {
 		&:hover {
 			background-color: transparent;
 		}
+	}
+
+	&:has(.MuiSwitch-input:active) {
+		transform: scaleX(var(--✨transform-scale-x));
+		--_MuiSwitch-thumb-border-radius:
+			calc(var(--✨border-radius) / var(--✨transform-scale-x)) / var(--✨border-radius);
 	}
 
 	&:where(.Mui-checked) {
@@ -73,9 +83,14 @@
 	aspect-ratio: inherit;
 	background-color: var(--_MuiSwitch-thumb-background-color);
 	box-shadow: var(--_MuiSwitch-thumb-box-shadow);
-	border-radius: 50%;
+	border-radius: var(--_MuiSwitch-thumb-border-radius);
 	block-size: 100%;
 	inline-size: 100%;
+
+	@media (prefers-reduced-motion: no-preference) {
+		transition: border-radius 150ms ease-out;
+		will-change: border-radius;
+	}
 }
 
 .MuiSwitch-track {

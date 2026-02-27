@@ -1,0 +1,42 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+
+.MuiAlert-root {
+	border: 1px solid var(--stratakit-color-border-neutral-base);
+
+	&:where(.MuiAlert-outlined) {
+		background-color: var(--stratakit-color-bg-elevation-base);
+	}
+
+	&:where(.MuiAlert-colorSuccess) {
+		border-color: var(--stratakit-color-border-positive-base);
+	}
+	&:where(.MuiAlert-colorInfo) {
+		border-color: var(--stratakit-color-border-info-base);
+	}
+	&:where(.MuiAlert-colorWarning) {
+		border-color: var(--stratakit-color-border-attention-base);
+	}
+	&:where(.MuiAlert-colorError) {
+		border-color: var(--stratakit-color-border-critical-base);
+	}
+}
+
+.MuiAlert-icon {
+	align-items: center; /* Fix vertical alignment of differently sized icons */
+
+	:where(.MuiAlert-root.MuiAlert-colorSuccess) & {
+		color: var(--stratakit-color-icon-positive-base);
+	}
+	:where(.MuiAlert-root.MuiAlert-colorInfo) & {
+		color: var(--stratakit-color-icon-info-base);
+	}
+	:where(.MuiAlert-root.MuiAlert-colorWarning) & {
+		color: var(--stratakit-color-icon-attention-base);
+	}
+	:where(.MuiAlert-root.MuiAlert-colorError) & {
+		color: var(--stratakit-color-icon-critical-base);
+	}
+}

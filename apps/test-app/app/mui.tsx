@@ -14,6 +14,7 @@ import { Icon } from "@stratakit/mui";
 import * as NavigationList from "@stratakit/structures/unstable_NavigationList";
 import AccordionActions from "examples/mui/Accordion.actions.tsx";
 import AccordionDefault from "examples/mui/Accordion.default.tsx";
+import AlertPermutations_ from "examples/mui/Alert._permutations.tsx";
 import AlertDefault from "examples/mui/Alert.default.tsx";
 import AlertTitle from "examples/mui/Alert.title.tsx";
 import AppBarDefault from "examples/mui/AppBar.default.tsx";
@@ -124,6 +125,7 @@ const components: Record<string, React.ReactNode> = {
 		<Stack spacing={1} alignSelf="stretch">
 			<AlertDefault />
 			<AlertTitle />
+			{!isProduction && <AlertPermutations_ />}
 		</Stack>
 	),
 	AppBar: (

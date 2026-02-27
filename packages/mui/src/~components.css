@@ -3,6 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
+@import "./~components/MuiAlert.css";
 @import "./~components/MuiAutocomplete.css";
 @import "./~components/MuiButton.css";
 @import "./~components/MuiCard.css";
@@ -16,10 +17,6 @@
 
 .MuiAccordion-root {
 	background-color: transparent;
-}
-
-.MuiAlert-icon {
-	align-items: center; /* Fix vertical alignment of differently sized icons */
 }
 
 .MuiAppBar-root {

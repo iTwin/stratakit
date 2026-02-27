@@ -8,6 +8,11 @@ links:
 
 ::example{src="mui/Alert.default"}
 
+## StrataKit MUI modifications
+
+- Restyled using StrataKit's visual language.
+- The `"standard"` variant has been removed. The default variant is now `"outlined"`.
+
 ## Examples
 
 ### AlertTitle

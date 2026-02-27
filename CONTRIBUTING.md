@@ -155,3 +155,11 @@ export const Button = forwardRef<"button", ButtonProps>((props, forwardedRef) =>
 Before creating a pull request, make sure your changes address a specific issue. Do a search to see if there are any existing issues that are still open. If you don't find one, you can create one. For user-facing changes, add a [changeset](https://github.com/changesets/changesets/blob/main/docs/adding-a-changeset.md) by running the `pnpm changeset` command.
 
 To enable us to quickly review and accept your pull requests, always create one pull request per issue. Never merge multiple requests in one unless they have the same root cause. Be sure to follow best practices and keep code changes as small as possible. Avoid pure formatting changes or random "fixes" that are unrelated to the linked issue.
+
+### AI use
+
+If artificial intelligence is used to generate any portion of the code, tests, or documentation in your pull request, you are still fully responsible for reviewing the output for correctness and adherence to project standards prior to submission.
+
+AI may not be used to write pull request descriptions, comments, or responses to code reviews. All code review communication must be written directly by the contributor.
+
+If AI was used, clearly disclose where and how it was used in the pull request description.

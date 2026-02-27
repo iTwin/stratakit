@@ -3,6 +3,28 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
+:is(.MuiButton-root, .MuiIconButton-root) {
+	background-color: ButtonFace;
+	border: 1px solid ButtonBorder;
+	color: ButtonText;
+
+	&:where(.MuiButton-colorError) {
+		forced-color-adjust: none;
+		box-shadow: none;
+	}
+
+	&:where(.MuiIconButton-colorError, .MuiButton-colorError) {
+		background-color: Mark;
+		color: MarkText;
+	}
+
+	&:where(.Mui-disabled) {
+		background-color: Canvas;
+		border-color: GrayText;
+		color: GrayText;
+	}
+}
+
 :is(.MuiCheckbox-root, .MuiRadio-root) > input {
 	border-color: CanvasText;
 

@@ -38,6 +38,7 @@ import CardHeader from "examples/mui/Card.header.tsx";
 import CheckboxChecked from "examples/mui/Checkbox.checked.tsx";
 import CheckboxDefault from "examples/mui/Checkbox.default.tsx";
 import CheckboxIndeterminate from "examples/mui/Checkbox.indeterminate.tsx";
+import ChipColors_ from "examples/mui/Chip._colors.tsx";
 import ChipInteractive_ from "examples/mui/Chip._interactive.tsx";
 import ChipClickable from "examples/mui/Chip.clickable.tsx";
 import ChipDefault from "examples/mui/Chip.default.tsx";
@@ -180,6 +181,12 @@ const components: Record<string, React.ReactNode> = {
 			<ChipClickable />
 			<ChipDeletable />
 			{!isProduction && <ChipInteractive_ />}
+
+			{!isProduction && (
+				<Stack spacing={1} direction="row">
+					<ChipColors_ />{" "}
+				</Stack>
+			)}
 		</Stack>
 	),
 	CircularProgress: <CircularProgressDefault />,

@@ -163,13 +163,8 @@ function starlightLiveExamples() {
 
 					node.data ||= {};
 					node.data.hName = "example-embed"; // see example-embed.astro
-
-					node.children = [
-						{
-							type: "html",
-							value: `<iframe src=${`${base}/examples/${src}?preview`} title="${src} example" height="150"></iframe>`,
-						},
-					];
+					node.data.hProperties = { "data-src": src };
+					node.children = [];
 				}
 			});
 		};

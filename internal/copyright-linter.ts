@@ -18,7 +18,12 @@ if (pattern.length === 0) {
 
 const filePaths = fg.sync(pattern, {
 	dot: true,
-	ignore: ["**/node_modules/**/*", "**/build/**/*", "**/dist/**/*"],
+	ignore: [
+		"**/node_modules/**/*",
+		"**/build/**/*",
+		"**/dist/**/*",
+		"**/minimal-template/**/*",
+	],
 });
 
 const copyrightLine1 =

@@ -1,17 +1,35 @@
 ---
-// This simply registers the `<example-embed>` element.
+// This simply registers the `<example-embed>` element, which renders a React component.
 ---
 
 <script>
+	import { createElement } from "react";
+	import { ExampleEmbed } from "./ExamplePreview.tsx";
+	import { mountPortal } from "./StrataKitRoot.tsx";
+
 	customElements.define(
 		"example-embed",
 		class extends HTMLElement {
-			constructor() {
-				super();
-				const shadow = this.attachShadow({ mode: "open" });
-				shadow.innerHTML = `<div role="group" aria-label="Example"><slot></slot></div>`;
+			#controller: AbortController | undefined;
+
+			connectedCallback() {
+				this.#controller = new AbortController();
+
+				const src = this.dataset.src;
+				if (!src) return;
+
+				const unmount = mountPortal({
+					element: createElement(ExampleEmbed, { src }),
+					target: this,
+				});
+
+				this.#controller.signal.onabort = () => unmount?.();
 			}
-		}
+
+			disconnectedCallback() {
+				this.#controller?.abort();
+			}
+		},
 	);
 </script>
 
@@ -19,14 +37,15 @@
 	@layer page {
 		example-embed {
 			display: block;
-			border-radius: 8px;
-			border: 1px solid var(--stratakit-color-border-neutral-muted);
-			overflow: hidden;
 
-			iframe {
-				background-color: var(--stratakit-color-bg-page-base);
-				border-radius: 8px;
+			&,
+			> * {
+				min-block-size: 125px; /* Reduce layout shift */
 			}
+
+			border-radius: 8px;
+			outline: 1px solid var(--stratakit-color-border-neutral-muted);
+			background-color: var(--stratakit-color-bg-page-base);
 		}
 	}
 </style>

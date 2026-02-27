@@ -7,6 +7,12 @@ import * as React from "react";
 import { Role } from "@ariakit/react/role";
 import OutlinedInput from "@mui/material/OutlinedInput";
 import { createTheme as createMuiTheme } from "@mui/material/styles";
+import { MuiCard, MuiCardActionArea } from "./~components/MuiCard.js";
+import {
+	MuiChip,
+	MuiChipDeleteIcon,
+	MuiChipLabel,
+} from "./~components/MuiChip.js";
 import {
 	ArrowDownIcon,
 	CaretsUpDownIcon,
@@ -154,11 +160,20 @@ function createTheme() {
 					disableRipple: true, // ButtonGroup overrides Button's disableRipple so we need to set it here as well
 				},
 			},
-			MuiCard: { defaultProps: { component: Role.div } },
+			MuiCard: { defaultProps: { component: MuiCard } },
 			MuiCardActionArea: {
-				defaultProps: { component: Role.button },
+				defaultProps: {
+					component: MuiCardActionArea,
+					role: undefined, // Remove redundant role which conflicts when CardActionArea is rendered as Link
+				},
 			},
 			MuiCardContent: { defaultProps: { component: Role.div } },
+			MuiCardHeader: {
+				defaultProps: {
+					component: Role.div,
+					slotProps: { title: { component: Role.h2 } },
+				},
+			},
 			MuiCardMedia: { defaultProps: { component: Role.div } },
 			MuiCheckbox: {
 				defaultProps: {
@@ -171,8 +186,13 @@ function createTheme() {
 			},
 			MuiChip: {
 				defaultProps: {
-					component: Role.div,
-					deleteIcon: <DismissIcon />,
+					component: MuiChip,
+					deleteIcon: <MuiChipDeleteIcon />,
+					slotProps: {
+						label: {
+							component: MuiChipLabel,
+						},
+					},
 				},
 			},
 			MuiContainer: { defaultProps: { component: Role.div } },
@@ -331,7 +351,7 @@ function createTheme() {
 					},
 				},
 			},
-			// MuiTextField: { defaultProps: { component: Role.input } }, // This dynamically renders as `textarea` when multiline is true
+			MuiTextField: { defaultProps: { component: Role.div } },
 			MuiToggleButton: { defaultProps: { component: Role.button } },
 			MuiToolbar: { defaultProps: { component: Role.div } },
 			MuiTooltip: {

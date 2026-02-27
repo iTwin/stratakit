@@ -73,6 +73,22 @@ declare module "@mui/material/Checkbox" {
 		warning: false;
 		error: false;
 	}
+
+	interface CheckboxPropsSizeOverrides {
+		small: false;
+		large: false;
+	}
+}
+
+declare module "@mui/material/Chip" {
+	interface ChipOwnProps {
+		/**
+		 * The label of the delete button.
+		 *
+		 * @default 'Clear'
+		 */
+		deleteLabel?: string;
+	}
 }
 
 declare module "@mui/material/Fab" {
@@ -137,6 +153,10 @@ declare module "@mui/material/Radio" {
 		success: false;
 		warning: false;
 		error: false;
+	}
+
+	interface RadioPropsSizeOverrides {
+		small: false;
 	}
 }
 

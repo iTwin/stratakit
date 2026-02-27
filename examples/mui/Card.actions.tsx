@@ -23,7 +23,7 @@ export default () => {
 				alt=""
 			/>
 			<CardContent>
-				<Typography gutterBottom variant="h6" render={<div />}>
+				<Typography gutterBottom variant="h6" render={<h2 />}>
 					Stadium
 				</Typography>
 				<Typography variant="body2" color="text.secondary">

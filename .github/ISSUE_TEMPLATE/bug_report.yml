@@ -1,0 +1,63 @@
+name: Bug report 🐛
+description: Create a bug report to help us improve
+type: bug
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for contributing to StrataKit by creating an issue!
+        Make sure you first do a search for existing issues so that this is not a duplicate.
+  - type: textarea
+    attributes:
+      label: Describe the bug
+      description: |
+        A clear description of what the bug is. Include which component(s) are affected
+        and what specifically is not working as expected.
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Steps to reproduce
+      description: Detailed steps to reproduce the behavior
+      placeholder: |
+        1. …
+        2. …
+        3. …
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Expected behavior
+      description: A clear description of what you expected to happen
+    validations:
+      required: true
+  - type: input
+    attributes:
+      label: Link to minimal reproduction
+      description: |
+        Create a minimal reproduction using our template.
+        Fork [this StackBlitz template](https://stackblitz.com/github/iTwin/stratakit/tree/main/internal/minimal-template?file=src%2FApp.tsx) and reproduce the issue.
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Environment and versions
+      description: |
+        Please provide version information and environment details.
+        This helps us reproduce the issue.
+      placeholder: |
+        - @stratakit/mui 0.2.1
+        - @mui/material 7.3.8
+        - react 19.2.0
+        - Browsers: Chrome 147, Safari 26.2
+    validations:
+      required: false
+  - type: textarea
+    attributes:
+      label: Additional context
+      description: |
+        Add any other context about the problem here.
+        Include screenshots, error messages, or potential solutions if you have any.
+    validations:
+      required: false

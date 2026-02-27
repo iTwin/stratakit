@@ -19,7 +19,7 @@ import styles from "./Card.header.module.css";
 
 export default () => {
 	return (
-		<Card className={styles.card} variant="outlined" role="group">
+		<Card className={styles.card} variant="outlined">
 			<CardHeader
 				title="Stadium"
 				subheader="January 16, 2026"

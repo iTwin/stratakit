@@ -7,6 +7,7 @@ import * as React from "react";
 import { Role } from "@ariakit/react/role";
 import OutlinedInput from "@mui/material/OutlinedInput";
 import { createTheme as createMuiTheme } from "@mui/material/styles";
+import { MuiCard, MuiCardActionArea } from "./~components/MuiCard.js";
 import {
 	MuiChip,
 	MuiChipDeleteIcon,
@@ -159,10 +160,10 @@ function createTheme() {
 					disableRipple: true, // ButtonGroup overrides Button's disableRipple so we need to set it here as well
 				},
 			},
-			MuiCard: { defaultProps: { component: withRenderProp(Role, "article") } },
+			MuiCard: { defaultProps: { component: MuiCard } },
 			MuiCardActionArea: {
 				defaultProps: {
-					component: Role.button,
+					component: MuiCardActionArea,
 					role: undefined, // Remove redundant role which conflicts when CardActionArea is rendered as Link
 				},
 			},

@@ -11,7 +11,7 @@ links:
 ## StrataKit MUI modifications
 
 - The `color` prop is not supported.
-- Fully restyled to match the StrataKit visual design language.
+- Restyled using StrataKit's visual language.
 - Includes full `forced-colors` support.
 
 ## Examples

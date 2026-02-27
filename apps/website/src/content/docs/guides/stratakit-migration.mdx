@@ -1,0 +1,240 @@
+---
+title: Migrating to StrataKit MUI
+description: Learn how to migrate from StrataKit to StrataKit MUI
+---
+
+import { Steps } from "@astrojs/starlight/components";
+
+This guide provides the necessary steps for migrating from initial StrataKit packages (`@stratakit/foundations`, `@stratakit/bricks`, and `@stratakit/structures`) to [Material UI](https://mui.com/material-ui/getting-started/) based StrataKit implementation.
+
+:::note
+Migration to StrataKit MUI can be done gradually, since both libraries can coexist in the same project.
+:::
+
+## Migration steps
+
+<Steps>
+
+1. **Set up StrataKit MUI**
+
+   Follow the [set up StrataKit MUI guide](../../getting-started/develop/) to install the necessary dependencies and set up your project.
+
+2. **Replace the `Root` component**
+
+   Replace the [`Root`](../../reference/foundations/Root) component from `@stratakit/foundations` with the `Root` component from `@stratakit/mui`.
+
+   ```diff
+   - import { Root } from "@stratakit/foundations";
+   + import { Root } from "@stratakit/mui";
+   ```
+
+   This unlocks the ability to use [MUI components](https://mui.com/material-ui/all-components/) within the `Root`. Existing StrataKit components nested within the `Root` are expected to work without any changes, enabling gradual migration.
+
+3. **Replace `Icon` component**
+
+   Replace usage of [`Icon`](../../reference/foundations/Icon) component from `@stratakit/foundations` with the `Icon` component from `@stratakit/mui`.
+
+   ```diff
+   - import { Icon } from "@stratakit/foundations";
+   + import { Icon } from "@stratakit/mui";
+   ```
+
+   Continue using icons from the `@stratakit/icons` package.
+
+4. **Uninstall `@stratakit/foundations`**
+
+   Once all direct and indirect usage of `@stratakit/foundations` has been replaced it is safe to remove the dependency.
+
+   ```console
+   npm uninstall @stratakit/foundations
+   ```
+
+5. **Replace `@stratakit/bricks` components**
+
+   Replace the usage of components from `@stratakit/bricks` with their MUI counterparts.
+
+   ```diff
+   - import { Button } from "@stratakit/bricks";
+   + import { Button } from "@stratakit/mui";
+   ```
+
+   Refer to the [use MUI components](#use-mui-components) below for the component mapping and additional guidance.
+
+6. **Uninstall `@stratakit/bricks`**
+
+   Once all usage of `@stratakit/bricks` has been replaced it is safe to remove the dependency.
+
+   ```console
+   npm uninstall @stratakit/bricks
+   ```
+
+7. **Continue using `@stratakit/structures`**
+
+   Continue using components from [`@stratakit/structures`](../../reference#structures) package, as they are not affected by the migration to StrataKit MUI.
+
+</Steps>
+
+## Use MUI components
+
+Replace [`@stratakit/bricks`](../../reference#bricks) component usage with their [MUI counterparts](https://mui.com/material-ui/all-components/).
+
+| StrataKit component                                                 | MUI component                                                          |
+| ------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| [Anchor](../../reference/bricks/Anchor)                             | [Link](https://mui.com/material-ui/api/link/)                          |
+| [Avatar](../../reference/bricks/Avatar)                             | [Avatar](https://mui.com/material-ui/api/avatar/)                      |
+| [Badge](../../reference/bricks/Badge)                               | [Chip](https://mui.com/material-ui/api/chip/)                          |
+| [Button](../../reference/bricks/Button)                             | [Button](https://mui.com/material-ui/api/button/)                      |
+| [Checkbox](../../reference/bricks/Checkbox)                         | [Checkbox](https://mui.com/material-ui/api/checkbox/)                  |
+| [Description](../../reference/bricks/Description)                   | [FormHelperText](https://mui.com/material-ui/api/form-helper-text/)    |
+| [Divider](../../reference/bricks/Divider)                           | [Divider](https://mui.com/material-ui/api/divider/)                    |
+| [Field](../../reference/bricks/Field)                               | [FormControl](https://mui.com/material-ui/api/form-control/)           |
+| [IconButton](../../reference/bricks/IconButton)                     | [IconButton](https://mui.com/material-ui/api/icon-button/)             |
+| [Kbd](../../reference/bricks/Kbd)                                   | -                                                                      |
+| [Label](../../reference/bricks/Label)                               | [FormLabel](https://mui.com/material-ui/api/form-label/)               |
+| [ProgressBar](../../reference/bricks/Progress#Progress.ProgressBar) | [LinearProgress](https://mui.com/material-ui/api/linear-progress/)     |
+| [Radio](../../reference/bricks/Radio)                               | [Radio](https://mui.com/material-ui/api/radio/)                        |
+| [Select](../../reference/bricks/Select)                             | [Select](https://mui.com/material-ui/api/select/)                      |
+| [Skeleton](../../reference/bricks/Skeleton)                         | [Skeleton](https://mui.com/material-ui/api/skeleton/)                  |
+| [Spinner](../../reference/bricks/Spinner)                           | [CircularProgress](https://mui.com/material-ui/api/circular-progress/) |
+| [Switch](../../reference/bricks/Switch)                             | [Switch](https://mui.com/material-ui/api/switch/)                      |
+| [Text](../../reference/bricks/Text)                                 | [Typography](https://mui.com/material-ui/api/typography/)              |
+| [TextBox](../../reference/bricks/TextBox)                           | [TextField](https://mui.com/material-ui/api/text-field/)               |
+| [Tooltip](../../reference/bricks/Tooltip)                           | [Tooltip](https://mui.com/material-ui/api/tooltip/)                    |
+| [VisuallyHidden](../../reference/bricks/VisuallyHidden)             | -                                                                      |
+
+:::tip
+Read additional [StrataKit MUI component documentation](../../components/) for more details on usage and customization.
+:::
+
+### Anchor
+
+- Change [`tone`](../../reference/bricks/Anchor#Anchor.tone) prop to [`color`](https://mui.com/material-ui/api/link/#link-prop-color) prop.
+
+  | `tone` value | `color` value |
+  | ------------ | ------------- |
+  | `"neutral"`  | `"secondary"` |
+  | `"accent"`   | `"primary"`   |
+
+- Usage of compositional API is not available. [External marker](../../reference/bricks/Anchor#Anchor.ExternalMarker) is not supported.
+
+### Avatar
+
+- Change [`image`](../../reference/bricks/Avatar#Avatar.image) prop to:
+  - [`children`](https://mui.com/material-ui/api/avatar/#avatar-prop-children) prop for [icon avatars](https://mui.com/material-ui/react-avatar/#icon-avatars).
+  - [`src`](https://mui.com/material-ui/api/avatar/#avatar-prop-src) prop for [image avatars](https://mui.com/material-ui/react-avatar/#image-avatars).
+- Change [`initials`](../../reference/bricks/Avatar#Avatar.initials) prop to [`children`](https://mui.com/material-ui/api/avatar/#avatar-prop-children) prop.
+- Change [`size`](../../reference/bricks/Avatar#Avatar.size) prop to explicit `height` and `width` CSS properties.
+
+### Badge
+
+- Replace [`Badge`](../../reference/bricks/Badge) component with the [`Chip`](https://mui.com/material-ui/api/chip/) component.
+- Change [`tone`](../../reference/bricks/Badge#Badge.tone) prop to [`color`](https://mui.com/material-ui/api/chip/#chip-prop-color) prop.
+
+  | `tone` value  | `color` value |
+  | ------------- | ------------- |
+  | `"neutral"`   | `"default"`   |
+  | `"accent"`    | `"primary"`   |
+  | `"info"`      | `"info"`      |
+  | `"positive"`  | `"success"`   |
+  | `"attention"` | `"warning"`   |
+  | `"critical"`  | `"error"`     |
+
+- Update value of [`variant`](../../reference/bricks/Badge#Badge.variant) prop.
+
+  | Before      | After        |
+  | ----------- | ------------ |
+  | `"solid"`   | `"filled"`   |
+  | `"muted"`   | `"filled"`   |
+  | `"outline"` | `"outlined"` |
+
+### Button
+
+- Change [`tone`](../../reference/bricks/Button#Button.tone) prop to [`color`](https://mui.com/material-ui/api/button/#button-prop-color) prop.
+
+  | `tone` value | `color` value |
+  | ------------ | ------------- |
+  | `"neutral"`  | `"secondary"` |
+  | `"accent"`   | `"primary"`   |
+
+- Update value of [`variant`](../../reference/bricks/Button#Button.variant) prop.
+
+  | Before      | After         |
+  | ----------- | ------------- |
+  | `"solid"`   | `"contained"` |
+  | `"outline"` | `"outlined"`  |
+  | `"ghost"`   | `"text"`      |
+
+- Use [`startIcon`](https://mui.com/material-ui/api/button/#button-prop-startIcon) and [`endIcon`](https://mui.com/material-ui/api/button/#button-prop-endIcon) props to [display icons](../../components/button/#icons).
+
+### Checkbox
+
+- Use [`FormControlLabel`](https://mui.com/material-ui/api/form-control-label/) component to label the checkbox.
+
+### Description
+
+- Remove [`tone`](../../reference/bricks/Description#Description.tone) prop. Instead use [`error`](https://mui.com/material-ui/api/form-helper-text/#form-helper-text-prop-error) prop to display the message in an error state.
+
+### Divider
+
+- Remove unsupported [`bleed`](../../reference/bricks/Divider#Divider.bleed) prop.
+- Replace unsupported [`presentational`](../../reference/bricks/Divider#Divider.presentational) prop with a `render` prop that overrides the element type and role: `render={<div role={undefined} />}`.
+
+### Field
+
+- Change `Field.Root`, `Field.Label` and `Field.Control` components with `FormControlLabel`.
+- Use `FormControl`, `FormLabel` and `FormGroup` components to [group multiple fields](../../components/checkbox/#group).
+- Change `Field.Description` component with `FormHelperText` component to [display a description](../../components/checkbox/#group).
+- Change `Field.ErrorMessage` component with `FormHelperText` component to [display an error message](../../components/checkbox/#error).
+
+### IconButton
+
+- Change `icon` prop to `children` prop.
+- Change `label` prop to a `title` prop that is set on a wrapper `Tooltip` element.
+- `active` prop.
+- `dot `prop.
+- `labelVariant` prop.
+- `variant` prop.
+
+### ProgressBar
+
+- Remove unsupported [`size`](../../reference/bricks/Progress#Progress.ProgressBar.size) prop.
+- Change [`tone`](../../reference/bricks/Progress#Progress.ProgressBar.tone) prop to [`color`](https://mui.com/material-ui/api/linear-progress/#linear-progress-prop-color) prop.
+
+  | `tone` value | `color` value |
+  | ------------ | ------------- |
+  | `"neutral"`  | `"secondary"` |
+  | `"accent"`   | `"primary"`   |
+
+### Radio
+
+- Use [`FormControlLabel`](https://mui.com/material-ui/api/form-control-label/) component to label the radio control.
+- Use `RadioGroup` component to group multiple radio buttons.
+
+### Select
+
+- Use [`NativeSelect`](https://mui.com/material-ui/api/native-select/) to replace the [`Select.HtmlSelect`](../../reference/bricks/Select#Select.HtmlSelect) component.
+- Remove the [`variant`](../../reference/bricks/Select#Select.HtmlSelect.variant) prop. Only `"outlined"` variant is supported by MUI component.
+
+### Skeleton
+
+- `size` prop.
+- `variant` prop.
+
+### Spinner
+
+- `size` prop.
+- `tone` prop.
+
+### Switch
+
+- Use [`FormControlLabel`](https://mui.com/material-ui/api/form-control-label/) component to label the switch control.
+
+### Text
+
+- `variant` prop.
+
+### TextBox
+
+### Tooltip
+
+### `accessibleWhenDisabled` prop

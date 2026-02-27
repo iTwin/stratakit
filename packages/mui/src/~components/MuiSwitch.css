@@ -4,104 +4,130 @@
  *--------------------------------------------------------------------------------------------*/
 
 .MuiSwitch-root {
-	--_switch-thumb-size: 1rem;
+	--✨size: 1rem;
+	--✨padding: var(--stratakit-space-x05);
 
-	padding: 0;
+	align-items: center;
 	block-size: auto;
 	inline-size: auto;
-	align-items: center;
-	overflow: visible;
+	outline-offset: var(--🥝focus-outline-offset);
+	padding: 0;
+	border-radius: calc(infinity * 1px);
+
+	&:where(.MuiSwitch-sizeMedium) {
+		--_MuiSwitch-height: var(--✨size);
+		--_MuiSwitch-padding: var(--✨padding);
+	}
+
+	&:has(.Mui-focusVisible) {
+		outline: var(--🥝focus-outline);
+	}
+
+	@supports not selector(:has(+ *)) {
+		&:where(:focus-within) {
+			outline: var(--🥝focus-outline);
+		}
+	}
 }
 
 .MuiSwitch-switchBase {
+	--✨color-bg--default: var(--stratakit-color-bg-neutral-inverse);
+	--✨color-bg--disabled: var(--stratakit-color-icon-neutral-disabled);
+	--✨box-shadow--default:
+		var(--stratakit-shadow-control-button-base-inset),
+		0px 0px 0px 1px var(--stratakit-color-border-shadow-base) inset,
+		var(--stratakit-shadow-control-button-base-drop);
+	--✨box-shadow--disabled: none;
+
 	aspect-ratio: 1;
-	block-size: var(--_switch-thumb-size);
-	inline-size: var(--_switch-thumb-size);
+	block-size: var(--_MuiSwitch-height);
 	inset: unset;
-	inset-inline-end: calc(var(--_switch-thumb-size) + var(--stratakit-space-x05)); /* 18px */
-	padding: 0;
+	padding: var(--_MuiSwitch-padding);
+	transform-origin: left;
+
+	--_MuiSwitch-thumb-background-color: var(--✨color-bg--default);
+	--_MuiSwitch-thumb-box-shadow: var(--✨box-shadow--default);
 
 	@media (prefers-reduced-motion: no-preference) {
-		transition: inset 150ms ease-out;
+		transition: transform 150ms ease-out;
 	}
 
 	@media (any-hover: hover) {
-		&:where(:not(.Mui-disabled)):hover,
-		:where(.MuiFormControlLabel-root:where(:not(.Mui-disabled))):hover & {
-			--_hover-background-color: var(--stratakit-color-bg-glow-on-surface-neutral-hover);
-
-			&:where(.Mui-checked) {
-				--_hover-background-color: var(--stratakit-color-bg-glow-on-surface-accent-hover);
-			}
+		&:hover {
+			background-color: transparent;
 		}
 	}
 
 	&:where(.Mui-checked) {
 		inset: unset;
-		inset-inline-end: var(--stratakit-space-x05); /* 2px */
-		transform: none;
+		transform: translateX(calc(var(--_MuiSwitch-height) - var(--_MuiSwitch-padding) * 2));
 	}
 
-	/* This pseudo-element increases tap target size to 24x24 */
-	&::before {
-		content: "";
-		position: absolute;
-		inset: calc(((24px - var(--_switch-thumb-size)) / 2) * -1); /* Makes touch target area 24px */
-		border-radius: 50%;
-		background-color: var(--_hover-background-color);
-	}
-}
-
-.MuiSwitch-input {
-	appearance: none;
-	inset: calc(var(--stratakit-space-x05) * -1);
-	inline-size: calc((var(--_switch-thumb-size) * 2) + (var(--stratakit-space-x05) * 2));
-	block-size: calc(var(--_switch-thumb-size) + (var(--stratakit-space-x05) * 2));
-
-	:where(.MuiSwitch-switchBase.Mui-checked) & {
-		left: calc((var(--_switch-thumb-size) + var(--stratakit-space-x05)) * -1);
-	}
-
-	@media (prefers-reduced-motion: no-preference) {
-		transition: left 150ms ease-out;
+	&:where(.Mui-disabled) {
+		--_MuiSwitch-thumb-background-color: var(--✨color-bg--disabled);
+		--_MuiSwitch-thumb-box-shadow: var(--✨box-shadow--disabled);
 	}
 }
 
 .MuiSwitch-thumb {
 	aspect-ratio: inherit;
-	block-size: inherit;
-	inline-size: inherit;
-	border-radius: inherit;
-	background-color: var(--stratakit-color-bg-neutral-inverse);
-	border: 1px solid var(--stratakit-color-border-shadow-base);
-	position: relative;
-
-	:where(.MuiSwitch-switchBase.Mui-disabled) & {
-		background-color: var(--stratakit-color-icon-neutral-disabled);
-		border-color: var(--stratakit-color-icon-neutral-disabled);
-	}
+	background-color: var(--_MuiSwitch-thumb-background-color);
+	box-shadow: var(--_MuiSwitch-thumb-box-shadow);
+	border-radius: 50%;
+	block-size: 100%;
+	inline-size: 100%;
 }
 
 .MuiSwitch-track {
-	inline-size: calc((var(--_switch-thumb-size) * 2) + (var(--stratakit-space-x05) * 2));
-	block-size: calc(var(--_switch-thumb-size) + (var(--stratakit-space-x05) * 2));
-	background-color: var(--stratakit-color-bg-page-base);
-	border: 1px solid var(--stratakit-color-border-neutral-base);
-	border-radius: 9999px;
+	--✨color-bg--default: var(--stratakit-color-bg-control-switch);
+	--✨color-bg--checked: var(--stratakit-color-bg-accent-base);
+	--✨color-bg--disabled: var(--stratakit-color-bg-control-switch);
+	--✨color-border--default: var(--stratakit-color-border-control-switch);
+	--✨color-border--checked: var(--stratakit-color-border-accent-base);
+	--✨color-border--disabled: var(--stratakit-color-border-glow-on-surface-disabled);
+
+	block-size: var(--_MuiSwitch-height);
+	inline-size: calc(var(--_MuiSwitch-height) * 2 - var(--_MuiSwitch-padding) * 2);
+	background-color: var(--_MuiSwitch-track-background-color);
+	border: 1px solid var(--_MuiSwitch-track-border-color);
+	border-radius: inherit;
 	opacity: 1;
+	transition: all 150ms ease-out;
+	transition-property: background-color, border-color;
+
+	--_MuiSwitch-track-background-color: var(--✨color-bg--default);
+	--_MuiSwitch-track-background-hover-effect: var(--stratakit-color-glow-hue)
+		var(--stratakit-color-bg-glow-base-hover-\%);
+	--_MuiSwitch-track-border-color: var(--✨color-border--default);
+	--_MuiSwitch-track-border-hover-effect: var(--stratakit-color-glow-hue)
+		var(--stratakit-color-border-glow-base-hover-\%);
+
+	@media (any-hover: hover) {
+		:where(.MuiSwitch-switchBase:not(.Mui-disabled):hover) + & {
+			background-color: color-mix(
+				in oklch,
+				var(--_MuiSwitch-track-background-color) 100%,
+				var(--_MuiSwitch-track-background-hover-effect)
+			);
+			border-color: color-mix(
+				in oklch,
+				var(--_MuiSwitch-track-border-color) 100%,
+				var(--_MuiSwitch-track-border-hover-effect)
+			);
+		}
+	}
 
 	:where(.MuiSwitch-switchBase.Mui-checked) + & {
-		background-color: var(--stratakit-color-bg-accent-base);
-		border-color: var(--stratakit-color-border-shadow-strong);
+		--_MuiSwitch-track-background-color: var(--✨color-bg--checked);
+		--_MuiSwitch-track-background-hover-effect: var(--stratakit-color-glow-hue)
+			var(--stratakit-color-bg-glow-strong-hover-\%);
+		--_MuiSwitch-track-border-color: var(--✨color-border--checked);
+		--_MuiSwitch-track-border-hover-effect: var(--stratakit-color-glow-hue)
+			var(--stratakit-color-bg-glow-base-hover-\%);
 	}
 
 	:where(.MuiSwitch-switchBase.Mui-disabled) + & {
-		background-color: var(--stratakit-color-bg-page-base);
-		border-color: var(--stratakit-color-icon-neutral-disabled);
-	}
-
-	:where(.MuiSwitch-switchBase.Mui-focusVisible) + & {
-		outline: var(--🥝focus-outline);
-		outline-offset: 2px;
+		--_MuiSwitch-track-background-color: var(--✨color-bg--disabled);
+		--_MuiSwitch-track-border-color: var(--✨color-border--disabled);
 	}
 }

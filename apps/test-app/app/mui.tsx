@@ -44,6 +44,7 @@ import ChipClickable from "examples/mui/Chip.clickable.tsx";
 import ChipDefault from "examples/mui/Chip.default.tsx";
 import ChipDeletable from "examples/mui/Chip.deletable.tsx";
 import ChipOutlined from "examples/mui/Chip.outlined.tsx";
+import CircularProgressColors_ from "examples/mui/CircularProgress._colors.tsx";
 import CircularProgressDefault from "examples/mui/CircularProgress.default.tsx";
 import DialogDefault from "examples/mui/Dialog.default.tsx";
 import DividerDefault from "examples/mui/Divider.default.tsx";
@@ -190,7 +191,16 @@ const components: Record<string, React.ReactNode> = {
 			)}
 		</Stack>
 	),
-	CircularProgress: <CircularProgressDefault />,
+	CircularProgress: (
+		<>
+			<CircularProgressDefault />
+			{!isProduction && (
+				<Stack spacing={1} direction="row">
+					<CircularProgressColors_ />
+				</Stack>
+			)}
+		</>
+	),
 	Dialog: <DialogDefault />,
 	Divider: (
 		<Stack spacing={1} alignSelf="stretch">

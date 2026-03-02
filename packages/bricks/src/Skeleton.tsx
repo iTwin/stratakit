@@ -32,7 +32,7 @@ type SkeletonProps = SkeletonPropsBase & {
  *
  * Example:
  * ```tsx
- * <Skeleton variant="object" size="small" shape="square" />
+ * <Skeleton variant="object" size="small" />
  * <Skeleton variant="text" size="medium" />
  * ```
  */

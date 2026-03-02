@@ -17,11 +17,11 @@ Migration to StrataKit MUI can be done gradually, since both libraries can coexi
 
 1. **Set up StrataKit MUI**
 
-   Follow the [set up StrataKit MUI guide](../../getting-started/develop/) to install the necessary dependencies and set up your project.
+   Follow the [set up StrataKit MUI guide](/getting-started/develop/) to install the necessary dependencies and set up your project.
 
 2. **Replace the `Root` component**
 
-   Replace the [`Root`](../../reference/foundations/Root) component from `@stratakit/foundations` with the `Root` component from `@stratakit/mui`.
+   Replace the [`Root`](/reference/foundations/Root) component from `@stratakit/foundations` with the `Root` component from `@stratakit/mui`.
 
    ```diff
    - import { Root } from "@stratakit/foundations";
@@ -32,7 +32,7 @@ Migration to StrataKit MUI can be done gradually, since both libraries can coexi
 
 3. **Replace `Icon` component**
 
-   Replace usage of [`Icon`](../../reference/foundations/Icon) component from `@stratakit/foundations` with the `Icon` component from `@stratakit/mui`.
+   Replace usage of [`Icon`](/reference/foundations/Icon) component from `@stratakit/foundations` with the `Icon` component from `@stratakit/mui`.
 
    ```diff
    - import { Icon } from "@stratakit/foundations";
@@ -70,65 +70,65 @@ Migration to StrataKit MUI can be done gradually, since both libraries can coexi
 
 7. **Continue using `@stratakit/structures`**
 
-   Continue using components from [`@stratakit/structures`](../../reference#structures) package, as they are not affected by the migration to StrataKit MUI.
+   Continue using components from [`@stratakit/structures`](/reference#structures) package, as they are not affected by the migration to StrataKit MUI.
 
 </Steps>
 
 ## Use MUI components
 
-Replace [`@stratakit/bricks`](../../reference#bricks) component usage with their [MUI counterparts](https://mui.com/material-ui/all-components/).
+Replace [`@stratakit/bricks`](/reference#bricks) component usage with their [MUI counterparts](https://mui.com/material-ui/all-components/).
 
-| StrataKit component                                                 | MUI component                                                          |
-| ------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| [Anchor](../../reference/bricks/Anchor)                             | [Link](https://mui.com/material-ui/api/link/)                          |
-| [Avatar](../../reference/bricks/Avatar)                             | [Avatar](https://mui.com/material-ui/api/avatar/)                      |
-| [Badge](../../reference/bricks/Badge)                               | [Chip](https://mui.com/material-ui/api/chip/)                          |
-| [Button](../../reference/bricks/Button)                             | [Button](https://mui.com/material-ui/api/button/)                      |
-| [Checkbox](../../reference/bricks/Checkbox)                         | [Checkbox](https://mui.com/material-ui/api/checkbox/)                  |
-| [Description](../../reference/bricks/Description)                   | [FormHelperText](https://mui.com/material-ui/api/form-helper-text/)    |
-| [Divider](../../reference/bricks/Divider)                           | [Divider](https://mui.com/material-ui/api/divider/)                    |
-| [Field](../../reference/bricks/Field)                               | [FormControl](https://mui.com/material-ui/api/form-control/)           |
-| [IconButton](../../reference/bricks/IconButton)                     | [IconButton](https://mui.com/material-ui/api/icon-button/)             |
-| [Kbd](../../reference/bricks/Kbd)                                   | -                                                                      |
-| [Label](../../reference/bricks/Label)                               | [FormLabel](https://mui.com/material-ui/api/form-label/)               |
-| [ProgressBar](../../reference/bricks/Progress#Progress.ProgressBar) | [LinearProgress](https://mui.com/material-ui/api/linear-progress/)     |
-| [Radio](../../reference/bricks/Radio)                               | [Radio](https://mui.com/material-ui/api/radio/)                        |
-| [Select](../../reference/bricks/Select)                             | [Select](https://mui.com/material-ui/api/select/)                      |
-| [Skeleton](../../reference/bricks/Skeleton)                         | [Skeleton](https://mui.com/material-ui/api/skeleton/)                  |
-| [Spinner](../../reference/bricks/Spinner)                           | [CircularProgress](https://mui.com/material-ui/api/circular-progress/) |
-| [Switch](../../reference/bricks/Switch)                             | [Switch](https://mui.com/material-ui/api/switch/)                      |
-| [Text](../../reference/bricks/Text)                                 | [Typography](https://mui.com/material-ui/api/typography/)              |
-| [TextBox](../../reference/bricks/TextBox)                           | [TextField](https://mui.com/material-ui/api/text-field/)               |
-| [Tooltip](../../reference/bricks/Tooltip)                           | [Tooltip](https://mui.com/material-ui/api/tooltip/)                    |
-| [VisuallyHidden](../../reference/bricks/VisuallyHidden)             | -                                                                      |
+| StrataKit component                                            | MUI component                                                          |
+| -------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| [Anchor](/reference/bricks/Anchor)                             | [Link](https://mui.com/material-ui/api/link/)                          |
+| [Avatar](/reference/bricks/Avatar)                             | [Avatar](https://mui.com/material-ui/api/avatar/)                      |
+| [Badge](/reference/bricks/Badge)                               | [Chip](https://mui.com/material-ui/api/chip/)                          |
+| [Button](/reference/bricks/Button)                             | [Button](https://mui.com/material-ui/api/button/)                      |
+| [Checkbox](/reference/bricks/Checkbox)                         | [Checkbox](https://mui.com/material-ui/api/checkbox/)                  |
+| [Description](/reference/bricks/Description)                   | [FormHelperText](https://mui.com/material-ui/api/form-helper-text/)    |
+| [Divider](/reference/bricks/Divider)                           | [Divider](https://mui.com/material-ui/api/divider/)                    |
+| [Field](/reference/bricks/Field)                               | [FormControl](https://mui.com/material-ui/api/form-control/)           |
+| [IconButton](/reference/bricks/IconButton)                     | [IconButton](https://mui.com/material-ui/api/icon-button/)             |
+| [Kbd](/reference/bricks/Kbd)                                   | -                                                                      |
+| [Label](/reference/bricks/Label)                               | [FormLabel](https://mui.com/material-ui/api/form-label/)               |
+| [ProgressBar](/reference/bricks/Progress#Progress.ProgressBar) | [LinearProgress](https://mui.com/material-ui/api/linear-progress/)     |
+| [Radio](/reference/bricks/Radio)                               | [Radio](https://mui.com/material-ui/api/radio/)                        |
+| [Select](/reference/bricks/Select)                             | [Select](https://mui.com/material-ui/api/select/)                      |
+| [Skeleton](/reference/bricks/Skeleton)                         | [Skeleton](https://mui.com/material-ui/api/skeleton/)                  |
+| [Spinner](/reference/bricks/Spinner)                           | [CircularProgress](https://mui.com/material-ui/api/circular-progress/) |
+| [Switch](/reference/bricks/Switch)                             | [Switch](https://mui.com/material-ui/api/switch/)                      |
+| [Text](/reference/bricks/Text)                                 | [Typography](https://mui.com/material-ui/api/typography/)              |
+| [TextBox](/reference/bricks/TextBox)                           | [TextField](https://mui.com/material-ui/api/text-field/)               |
+| [Tooltip](/reference/bricks/Tooltip)                           | [Tooltip](https://mui.com/material-ui/api/tooltip/)                    |
+| [VisuallyHidden](/reference/bricks/VisuallyHidden)             | -                                                                      |
 
 :::tip
-Read additional [StrataKit MUI component documentation](../../components/introduction/) for more details on usage and customization.
+Read additional [StrataKit MUI component documentation](/components/introduction/) for more details on usage and customization.
 :::
 
 ### Anchor
 
-- Change [`tone`](../../reference/bricks/Anchor#Anchor.tone) prop to [`color`](https://mui.com/material-ui/api/link/#link-prop-color) prop.
+- Change [`tone`](/reference/bricks/Anchor#Anchor.tone) prop to [`color`](https://mui.com/material-ui/api/link/#link-prop-color) prop.
 
   | `tone` value | `color` value |
   | ------------ | ------------- |
   | `"neutral"`  | `"secondary"` |
   | `"accent"`   | `"primary"`   |
 
-- Usage of compositional API is not available. [External marker](../../reference/bricks/Anchor#Anchor.ExternalMarker) is not supported.
+- Usage of compositional API is not available. [External marker](/reference/bricks/Anchor#Anchor.ExternalMarker) is not supported.
 
 ### Avatar
 
-- Change [`image`](../../reference/bricks/Avatar#Avatar.image) prop to:
+- Change [`image`](/reference/bricks/Avatar#Avatar.image) prop to:
   - [`children`](https://mui.com/material-ui/api/avatar/#avatar-prop-children) prop for [icon avatars](https://mui.com/material-ui/react-avatar/#icon-avatars).
   - [`src`](https://mui.com/material-ui/api/avatar/#avatar-prop-src) prop for [image avatars](https://mui.com/material-ui/react-avatar/#image-avatars).
-- Change [`initials`](../../reference/bricks/Avatar#Avatar.initials) prop to [`children`](https://mui.com/material-ui/api/avatar/#avatar-prop-children) prop.
-- Change [`size`](../../reference/bricks/Avatar#Avatar.size) prop to explicit `height` and `width` CSS properties.
+- Change [`initials`](/reference/bricks/Avatar#Avatar.initials) prop to [`children`](https://mui.com/material-ui/api/avatar/#avatar-prop-children) prop.
+- Change [`size`](/reference/bricks/Avatar#Avatar.size) prop to explicit `height` and `width` CSS properties.
 
 ### Badge
 
-- Replace [`Badge`](../../reference/bricks/Badge) component with the [`Chip`](https://mui.com/material-ui/api/chip/) component.
-- Change [`tone`](../../reference/bricks/Badge#Badge.tone) prop to [`color`](https://mui.com/material-ui/api/chip/#chip-prop-color) prop.
+- Replace [`Badge`](/reference/bricks/Badge) component with the [`Chip`](https://mui.com/material-ui/api/chip/) component.
+- Change [`tone`](/reference/bricks/Badge#Badge.tone) prop to [`color`](https://mui.com/material-ui/api/chip/#chip-prop-color) prop.
 
   | `tone` value  | `color` value |
   | ------------- | ------------- |
@@ -139,7 +139,7 @@ Read additional [StrataKit MUI component documentation](../../components/introdu
   | `"attention"` | `"warning"`   |
   | `"critical"`  | `"error"`     |
 
-- Update value of [`variant`](../../reference/bricks/Badge#Badge.variant) prop.
+- Update value of [`variant`](/reference/bricks/Badge#Badge.variant) prop.
 
   | Before      | After        |
   | ----------- | ------------ |
@@ -149,14 +149,14 @@ Read additional [StrataKit MUI component documentation](../../components/introdu
 
 ### Button
 
-- Change [`tone`](../../reference/bricks/Button#Button.tone) prop to [`color`](https://mui.com/material-ui/api/button/#button-prop-color) prop.
+- Change [`tone`](/reference/bricks/Button#Button.tone) prop to [`color`](https://mui.com/material-ui/api/button/#button-prop-color) prop.
 
   | `tone` value | `color` value |
   | ------------ | ------------- |
   | `"neutral"`  | `"secondary"` |
   | `"accent"`   | `"primary"`   |
 
-- Update value of [`variant`](../../reference/bricks/Button#Button.variant) prop.
+- Update value of [`variant`](/reference/bricks/Button#Button.variant) prop.
 
   | Before      | After         |
   | ----------- | ------------- |
@@ -164,7 +164,7 @@ Read additional [StrataKit MUI component documentation](../../components/introdu
   | `"outline"` | `"outlined"`  |
   | `"ghost"`   | `"text"`      |
 
-- Use [`startIcon`](https://mui.com/material-ui/api/button/#button-prop-startIcon) and [`endIcon`](https://mui.com/material-ui/api/button/#button-prop-endIcon) props to [display icons](../../components/button/#icons).
+- Use [`startIcon`](https://mui.com/material-ui/api/button/#button-prop-startIcon) and [`endIcon`](https://mui.com/material-ui/api/button/#button-prop-endIcon) props to [display icons](/components/button/#icons).
 
 ### Checkbox
 
@@ -172,19 +172,19 @@ Read additional [StrataKit MUI component documentation](../../components/introdu
 
 ### Description
 
-- Remove [`tone`](../../reference/bricks/Description#Description.tone) prop. Instead use [`error`](https://mui.com/material-ui/api/form-helper-text/#form-helper-text-prop-error) prop to display the message in an error state.
+- Remove [`tone`](/reference/bricks/Description#Description.tone) prop. Instead use [`error`](https://mui.com/material-ui/api/form-helper-text/#form-helper-text-prop-error) prop to display the message in an error state.
 
 ### Divider
 
-- Remove unsupported [`bleed`](../../reference/bricks/Divider#Divider.bleed) prop.
-- Replace unsupported [`presentational`](../../reference/bricks/Divider#Divider.presentational) prop with a `render` prop that overrides the element type and role: `render={<div role={undefined} />}`.
+- Remove unsupported [`bleed`](/reference/bricks/Divider#Divider.bleed) prop.
+- Replace unsupported [`presentational`](/reference/bricks/Divider#Divider.presentational) prop with a `render` prop that overrides the element type and role: `render={<div role={undefined} />}`.
 
 ### Field
 
-- Change [`Field.Root`](../../reference/bricks/Field#Field.Root), [`Field.Label`](../../reference/bricks/Field#Field.Label) and [`Field.Control`](../../reference/bricks/Field#Field.Control) components with [`FormControlLabel`](https://mui.com/material-ui/api/form-control-label/).
-- Use [`FormControl`](https://mui.com/material-ui/api/form-control/), [`FormLabel`](https://mui.com/material-ui/api/form-label/) and [`FormGroup`](https://mui.com/material-ui/api/form-group/) components to [group multiple fields](../../components/checkbox/#group).
-- Change [`Field.Description`](../../reference/bricks/Field#Field.Description) component with [`FormHelperText`](https://mui.com/material-ui/api/form-helper-text/) component to [display a description](../../components/checkbox/#group).
-- Change [`Field.ErrorMessage`](../../reference/bricks/Field#Field.ErrorMessage) component with [`FormHelperText`](https://mui.com/material-ui/api/form-helper-text/) component to [display an error message](../../components/checkbox/#error).
+- Change [`Field.Root`](/reference/bricks/Field#Field.Root), [`Field.Label`](/reference/bricks/Field#Field.Label) and [`Field.Control`](/reference/bricks/Field#Field.Control) components with [`FormControlLabel`](https://mui.com/material-ui/api/form-control-label/).
+- Use [`FormControl`](https://mui.com/material-ui/api/form-control/), [`FormLabel`](https://mui.com/material-ui/api/form-label/) and [`FormGroup`](https://mui.com/material-ui/api/form-group/) components to [group multiple fields](/components/checkbox/#group).
+- Change [`Field.Description`](/reference/bricks/Field#Field.Description) component with [`FormHelperText`](https://mui.com/material-ui/api/form-helper-text/) component to [display a description](/components/checkbox/#group).
+- Change [`Field.ErrorMessage`](/reference/bricks/Field#Field.ErrorMessage) component with [`FormHelperText`](https://mui.com/material-ui/api/form-helper-text/) component to [display an error message](/components/checkbox/#error).
 
 ### Kbd
 
@@ -192,17 +192,17 @@ Read additional [StrataKit MUI component documentation](../../components/introdu
 
 ### IconButton
 
-- Change [`icon`](../../reference/bricks/IconButton#IconButton.icon) prop to [`children`](https://mui.com/material-ui/api/icon-button/#icon-button-prop-children) prop.
-- Change [`label`](../../reference/bricks/IconButton#IconButton.label) prop to a [`title`](https://mui.com/material-ui/api/tooltip/#tooltip-prop-title) prop that is set on a wrapper [`Tooltip`](https://mui.com/material-ui/api/tooltip/) component.
-- Remove [`active`](../../reference/bricks/IconButton#IconButton.active) prop. Use [`ToggleButton`](https://mui.com/material-ui/api/toggle-button/) component to display a toggle button.
-- Remove [`dot`](../../reference/bricks/IconButton#IconButton.dot) prop. Wrap the icon in a [`Badge`](https://mui.com/material-ui/api/badge/) component to [display a badge](../../components/iconbutton/#badge).
-- Remove [`labelVariant`](../../reference/bricks/IconButton#IconButton.labelVariant) prop. Use a visually hidden label, without a wrapper [`Tooltip`](https://mui.com/material-ui/api/tooltip/).
-- Remove [`variant`](../../reference/bricks/IconButton#IconButton.variant) prop. Only `"ghost"` variant is supported by MUI component.
+- Change [`icon`](/reference/bricks/IconButton#IconButton.icon) prop to [`children`](https://mui.com/material-ui/api/icon-button/#icon-button-prop-children) prop.
+- Change [`label`](/reference/bricks/IconButton#IconButton.label) prop to a [`title`](https://mui.com/material-ui/api/tooltip/#tooltip-prop-title) prop that is set on a wrapper [`Tooltip`](https://mui.com/material-ui/api/tooltip/) component.
+- Remove [`active`](/reference/bricks/IconButton#IconButton.active) prop. Use [`ToggleButton`](https://mui.com/material-ui/api/toggle-button/) component to display a toggle button.
+- Remove [`dot`](/reference/bricks/IconButton#IconButton.dot) prop. Wrap the icon in a [`Badge`](https://mui.com/material-ui/api/badge/) component to [display a badge](/components/iconbutton/#badge).
+- Remove [`labelVariant`](/reference/bricks/IconButton#IconButton.labelVariant) prop. Use a visually hidden label, without a wrapper [`Tooltip`](https://mui.com/material-ui/api/tooltip/).
+- Remove [`variant`](/reference/bricks/IconButton#IconButton.variant) prop. Only `"ghost"` variant is supported by MUI component.
 
 ### ProgressBar
 
-- Remove unsupported [`size`](../../reference/bricks/Progress#Progress.ProgressBar.size) prop.
-- Change [`tone`](../../reference/bricks/Progress#Progress.ProgressBar.tone) prop to [`color`](https://mui.com/material-ui/api/linear-progress/#linear-progress-prop-color) prop.
+- Remove unsupported [`size`](/reference/bricks/Progress#Progress.ProgressBar.size) prop.
+- Change [`tone`](/reference/bricks/Progress#Progress.ProgressBar.tone) prop to [`color`](https://mui.com/material-ui/api/linear-progress/#linear-progress-prop-color) prop.
 
   | `tone` value | `color` value |
   | ------------ | ------------- |
@@ -216,13 +216,13 @@ Read additional [StrataKit MUI component documentation](../../components/introdu
 
 ### Select
 
-- Use [`NativeSelect`](https://mui.com/material-ui/api/native-select/) to replace the [`Select.HtmlSelect`](../../reference/bricks/Select#Select.HtmlSelect) component.
-- Remove [`variant`](../../reference/bricks/Select#Select.HtmlSelect.variant) prop. Only `"outlined"` variant is supported by MUI component.
+- Use [`NativeSelect`](https://mui.com/material-ui/api/native-select/) to replace the [`Select.HtmlSelect`](/reference/bricks/Select#Select.HtmlSelect) component.
+- Remove [`variant`](/reference/bricks/Select#Select.HtmlSelect.variant) prop. Only `"outlined"` variant is supported by MUI component.
 
 ### Skeleton
 
-- Remove [`size`](../../reference/bricks/Skeleton#Skeleton.size) prop. Use `font-size` CSS property or `width` and `height` properties based on the [skeleton variant](https://mui.com/material-ui/react-skeleton/#variants).
-- Update value of [`variant`](../../reference/bricks/Skeleton#Skeleton.variant) prop.
+- Remove [`size`](/reference/bricks/Skeleton#Skeleton.size) prop. Use `font-size` CSS property or `width` and `height` properties based on the [skeleton variant](https://mui.com/material-ui/react-skeleton/#variants).
+- Update value of [`variant`](/reference/bricks/Skeleton#Skeleton.variant) prop.
 
   | Before     | After       |
   | ---------- | ----------- |
@@ -231,8 +231,8 @@ Read additional [StrataKit MUI component documentation](../../components/introdu
 
 ### Spinner
 
-- Change the value of [`size`](../../reference/bricks/Spinner#Spinner.size) prop. MUI [`size`](https://mui.com/material-ui/api/circular-progress/#circular-progress-prop-size) prop uses pixel values or custom units when a string is provided.
-- Change [`tone`](../../reference/bricks/Spinner#Spinner.tone) prop to [`color`](https://mui.com/material-ui/api/circular-progress/#circular-progress-prop-color) prop.
+- Change the value of [`size`](/reference/bricks/Spinner#Spinner.size) prop. MUI [`size`](https://mui.com/material-ui/api/circular-progress/#circular-progress-prop-size) prop uses pixel values or custom units when a string is provided.
+- Change [`tone`](/reference/bricks/Spinner#Spinner.tone) prop to [`color`](https://mui.com/material-ui/api/circular-progress/#circular-progress-prop-color) prop.
 
   | `tone` value | `color` value |
   | ------------ | ------------- |
@@ -245,7 +245,7 @@ Read additional [StrataKit MUI component documentation](../../components/introdu
 
 ### Text
 
-- Update value of [`variant`](../../reference/bricks/Text#Text.variant) prop.
+- Update value of [`variant`](/reference/bricks/Text#Text.variant) prop.
 
   | Before          | After                                                                          |
   | --------------- | ------------------------------------------------------------------------------ |
@@ -265,16 +265,16 @@ Read additional [StrataKit MUI component documentation](../../components/introdu
 
 ### TextBox
 
-- Set [`label`](https://mui.com/material-ui/api/text-field/#text-field-prop-label) prop instead of the [`Field.Label`](../../reference/bricks/Field#Field.Label) component to display a label.
-- Set `startAdornment` or `endAdornment` properties of `slotProps.input` instead of the [`TextBox.Icon`](../../reference/bricks/TextBox#TextBox.Icon) component to [display an icon](../../components/textfield/).
-- Set [`multiline`](https://mui.com/material-ui/api/text-field/#text-field-prop-multiline) prop to display [a multi-line text area](../../components/textfield/#multiline), instead of using the [`TextBox.TextArea`](../../reference/bricks/TextBox#TextBox.Textarea) component.
-- Use [`helperText`](https://mui.com/material-ui/api/text-field/#text-field-prop-helperText) prop to display a description, instead of using the [`Field.Description`](../../reference/bricks/Field#Field.Description) component. Additionally, set [`error`](https://mui.com/material-ui/api/text-field/#text-field-prop-error) prop to display [an error](../../components/textfield/#error), instead of using the [`Field.ErrorMessage`](../../reference/bricks/Field#Field.ErrorMessage) component.
+- Set [`label`](https://mui.com/material-ui/api/text-field/#text-field-prop-label) prop instead of the [`Field.Label`](/reference/bricks/Field#Field.Label) component to display a label.
+- Set `startAdornment` or `endAdornment` properties of `slotProps.input` instead of the [`TextBox.Icon`](/reference/bricks/TextBox#TextBox.Icon) component to [display an icon](/components/textfield/).
+- Set [`multiline`](https://mui.com/material-ui/api/text-field/#text-field-prop-multiline) prop to display [a multi-line text area](/components/textfield/#multiline), instead of using the [`TextBox.TextArea`](/reference/bricks/TextBox#TextBox.Textarea) component.
+- Use [`helperText`](https://mui.com/material-ui/api/text-field/#text-field-prop-helperText) prop to display a description, instead of using the [`Field.Description`](/reference/bricks/Field#Field.Description) component. Additionally, set [`error`](https://mui.com/material-ui/api/text-field/#text-field-prop-error) prop to display [an error](/components/textfield/#error), instead of using the [`Field.ErrorMessage`](/reference/bricks/Field#Field.ErrorMessage) component.
 
 ### Tooltip
 
-- Change [`content`](../../reference/bricks/Tooltip#Tooltip.content) prop to [`title`](https://mui.com/material-ui/api/tooltip/#tooltip-prop-title) prop.
-- Change [`type`](../../reference/bricks/Tooltip#Tooltip.type) prop with a `"label"` value to [`describeChild`](https://mui.com/material-ui/api/tooltip/#tooltip-prop-describeChild) prop with a `false` value: `type="label"` -> `describeChild={false}`.
-- `"none"` value of [`type`](../../reference/bricks/Tooltip#Tooltip.type) is not supported. Manually override `aria-` attributes instead.
+- Change [`content`](/reference/bricks/Tooltip#Tooltip.content) prop to [`title`](https://mui.com/material-ui/api/tooltip/#tooltip-prop-title) prop.
+- Change [`type`](/reference/bricks/Tooltip#Tooltip.type) prop with a `"label"` value to [`describeChild`](https://mui.com/material-ui/api/tooltip/#tooltip-prop-describeChild) prop with a `false` value: `type="label"` -> `describeChild={false}`.
+- `"none"` value of [`type`](/reference/bricks/Tooltip#Tooltip.type) is not supported. Manually override `aria-` attributes instead.
 
 ### VisuallyHidden
 
@@ -282,8 +282,8 @@ Read additional [StrataKit MUI component documentation](../../components/introdu
 
 ### `accessibleWhenDisabled` prop
 
-- [`accessibleWhenDisabled`](../../reference/foundations/Utils#FocusableProps.accessibleWhenDisabled) prop is not supported.
+- [`accessibleWhenDisabled`](/reference/foundations/Utils#FocusableProps.accessibleWhenDisabled) prop is not supported.
 
 ### `render` prop
 
-- Continue using [`render`](../../reference/foundations/Utils#BaseProps.render) prop to customize the rendering of the components. `render` props is preferred over the [`component`](https://mui.com/material-ui/guides/composition/#component-prop) prop where available.
+- Continue using [`render`](/reference/foundations/Utils#BaseProps.render) prop to customize the rendering of the components. `render` props is preferred over the [`component`](https://mui.com/material-ui/guides/composition/#component-prop) prop where available.

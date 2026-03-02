@@ -118,20 +118,14 @@
 	@media (any-hover: hover) {
 		&:where(:hover),
 		:where(.MuiFormControlLabel-root:hover) & {
-			--_MuiCheckbox-touch-target-background-color: var(
-				--stratakit-color-bg-glow-on-surface-neutral-hover
-			);
+			--_MuiCheckbox-touch-target-background-color: var(--✨touch-target-hover--default);
 
 			&:where(.Mui-checked, .MuiCheckbox-indeterminate) {
-				--_MuiCheckbox-touch-target-background-color: var(
-					--stratakit-color-bg-glow-on-surface-accent-hover
-				);
+				--_MuiCheckbox-touch-target-background-color: var(--✨touch-target-hover--checked);
 			}
 
 			:where(.MuiFormControlLabel-root.Mui-error:hover) & {
-				--_MuiCheckbox-touch-target-background-color: var(
-					--stratakit-color-bg-glow-on-surface-critical-hover
-				);
+				--_MuiCheckbox-touch-target-background-color: var(--✨touch-target-hover--error);
 			}
 
 			&:where(.Mui-disabled) {

@@ -39,6 +39,18 @@
 	padding: 8px;
 }
 
+/* Remove extra visual nesting from multi-level nested lists in sidebar */
+#starlight__sidebar ul ul {
+	ul li {
+		border-inline-start: none;
+		padding-inline-start: 0;
+	}
+
+	.group-label > * {
+		font-size: var(--sl-text-sm);
+	}
+}
+
 .sl-markdown-content {
 	color: var(--stratakit-color-text-neutral-secondary);
 }

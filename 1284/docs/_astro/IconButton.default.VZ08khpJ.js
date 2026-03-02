@@ -1,1 +1,0 @@
-import{j as o}from"./~utils.BMpWxC4D.js";import{I as t}from"./ExamplePreview.BC4pdmVS.js";import{s as r}from"./download.BpHz0PAG.js";import"./index.DIfZGIpv.js";import"./index.XeJbqeyU.js";import"./styles.internal.BwFdDu8v.js";import"./preload-helper.BWn75rZE.js";const l=()=>o.jsx(t,{label:"Download",icon:r});export{l as default};

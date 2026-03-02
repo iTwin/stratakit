@@ -75,6 +75,7 @@
 		"@types/react-dom": "catalog:",
 		"@types/xml2js": "^0.4.14",
 		"axe-core": "^4.11.0",
+		"github-slugger": "^2.0.0",
 		"remark-directive": "^4.0.0",
 		"ts-morph": "^27.0.2",
 		"unist-util-visit": "^5.1.0",

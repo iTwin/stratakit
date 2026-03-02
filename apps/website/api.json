@@ -826,7 +826,7 @@
 						}
 					],
 					"baseElement": "div",
-					"jsdoc": "Represents the loaded content before it finishes loading.\n\nExample:\n```tsx\n<Skeleton variant=\"object\" size=\"small\" shape=\"square\" />\n<Skeleton variant=\"text\" size=\"medium\" />\n```",
+					"jsdoc": "Represents the loaded content before it finishes loading.\n\nExample:\n```tsx\n<Skeleton variant=\"object\" size=\"small\" />\n<Skeleton variant=\"text\" size=\"medium\" />\n```",
 					"barrelName": "Skeleton"
 				},
 				"composition": [],

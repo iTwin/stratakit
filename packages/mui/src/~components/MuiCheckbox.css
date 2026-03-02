@@ -59,6 +59,7 @@
 		color: var(--_MuiCheckbox-color);
 		position: relative;
 
+		/* This pseudo-element adds the actual checkmark SVG via `--_MuiCheckbox-mask-image` */
 		&::after {
 			content: "";
 			position: absolute;

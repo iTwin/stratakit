@@ -37,13 +37,11 @@ import CardHeader from "examples/mui/Card.header.tsx";
 import CheckboxChecked from "examples/mui/Checkbox.checked.tsx";
 import CheckboxDefault from "examples/mui/Checkbox.default.tsx";
 import CheckboxIndeterminate from "examples/mui/Checkbox.indeterminate.tsx";
-import ChipColors_ from "examples/mui/Chip._colors.tsx";
 import ChipInteractive_ from "examples/mui/Chip._interactive.tsx";
 import ChipClickable from "examples/mui/Chip.clickable.tsx";
 import ChipDefault from "examples/mui/Chip.default.tsx";
 import ChipDeletable from "examples/mui/Chip.deletable.tsx";
 import ChipOutlined from "examples/mui/Chip.outlined.tsx";
-import CircularProgressColors_ from "examples/mui/CircularProgress._colors.tsx";
 import CircularProgressDefault from "examples/mui/CircularProgress.default.tsx";
 import DialogDefault from "examples/mui/Dialog.default.tsx";
 import DividerDefault from "examples/mui/Divider.default.tsx";
@@ -53,7 +51,6 @@ import FormControlError from "examples/mui/FormControl.error.tsx";
 import FormControlGroup from "examples/mui/FormControl.group.tsx";
 import IconButtonColors_ from "examples/mui/IconButton._colors.tsx";
 import IconButtonDefault from "examples/mui/IconButton.default.tsx";
-import LinearProgressColors_ from "examples/mui/LinearProgress._colors.tsx";
 import LinearProgressDefault from "examples/mui/LinearProgress.default.tsx";
 import LinkColors_ from "examples/mui/Link._colors.tsx";
 import LinkDefault from "examples/mui/Link.default.tsx";
@@ -97,7 +94,6 @@ import TextFieldIcon from "examples/mui/TextField.icon.tsx";
 import TextFieldMultiline from "examples/mui/TextField.multiline.tsx";
 import ToggleButtonDefault from "examples/mui/ToggleButton.default.tsx";
 import TooltipDefault from "examples/mui/Tooltip.default.tsx";
-import TypographyVariants_ from "examples/mui/Typography._variants.tsx";
 import TypographyDefault from "examples/mui/Typography.default.tsx";
 import { SkipLinkContext } from "./~navigation.tsx";
 import { isProduction, useIsWideScreen } from "./~utils.tsx";
@@ -182,24 +178,9 @@ const components: Record<string, React.ReactNode> = {
 			<ChipClickable />
 			<ChipDeletable />
 			{!isProduction && <ChipInteractive_ />}
-
-			{!isProduction && (
-				<Stack spacing={1} direction="row">
-					<ChipColors_ />{" "}
-				</Stack>
-			)}
 		</Stack>
 	),
-	CircularProgress: (
-		<>
-			<CircularProgressDefault />
-			{!isProduction && (
-				<Stack spacing={1} direction="row">
-					<CircularProgressColors_ />
-				</Stack>
-			)}
-		</>
-	),
+	CircularProgress: <CircularProgressDefault />,
 	Dialog: <DialogDefault />,
 	Divider: (
 		<Stack spacing={1} alignSelf="stretch">
@@ -227,7 +208,6 @@ const components: Record<string, React.ReactNode> = {
 	LinearProgress: (
 		<Stack spacing={1} alignSelf="stretch">
 			<LinearProgressDefault />
-			{!isProduction && <LinearProgressColors_ />}
 		</Stack>
 	),
 	Link: (
@@ -324,12 +304,7 @@ const components: Record<string, React.ReactNode> = {
 	),
 	ToggleButton: <ToggleButtonDefault />,
 	Tooltip: <TooltipDefault />,
-	Typography: (
-		<>
-			<TypographyDefault />
-			<TypographyVariants_ />
-		</>
-	),
+	Typography: <TypographyDefault />,
 };
 
 // ----------------------------------------------------------------------------

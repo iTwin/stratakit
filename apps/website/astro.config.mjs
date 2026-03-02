@@ -63,7 +63,18 @@ export default defineConfig({
 				{ label: "Guides", autogenerate: { directory: "guides" } },
 				{
 					label: "Components",
-					autogenerate: { directory: "components" },
+					items: [
+						{
+							label: "MUI components",
+							autogenerate: { directory: "components/mui" },
+							collapsed: true,
+						},
+						{
+							label: "StrataKit components",
+							autogenerate: { directory: "components/stratakit" },
+							collapsed: true,
+						},
+					],
 				},
 				{ label: "Icons", slug: "icons" },
 				{ label: "Examples", link: "/examples" },

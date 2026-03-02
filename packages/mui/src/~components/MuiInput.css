@@ -4,17 +4,17 @@
  *--------------------------------------------------------------------------------------------*/
 
 .MuiInputBase-root {
-	--✨color-border--default: var(--stratakit-color-border-control-textbox);
-	--✨color-border--focus: var(--stratakit-color-border-accent-strong);
-	--✨color-border--error: var(--stratakit-color-border-critical-base);
-	--✨color-border--disabled: var(--stratakit-color-border-glow-on-surface-disabled);
+	--✨border--default: var(--stratakit-color-border-control-textbox);
+	--✨border--focus: var(--stratakit-color-border-accent-strong);
+	--✨border--error: var(--stratakit-color-border-critical-base);
+	--✨border--disabled: var(--stratakit-color-border-glow-on-surface-disabled);
 
 	padding: 0;
 	font: var(--stratakit-mui-font-body2);
 	border: 1px solid var(--_MuiInput-border-color);
 	transition: border-color 150ms ease-out;
 
-	--_MuiInput-border-color: var(--✨color-border--default);
+	--_MuiInput-border-color: var(--✨border--default);
 
 	@media (any-hover: hover) {
 		&:where(:not(.Mui-disabled)):hover {
@@ -27,18 +27,18 @@
 	}
 
 	&:where(:focus-within) {
-		--_MuiInput-border-color: var(--✨color-border--focus);
+		--_MuiInput-border-color: var(--✨border--focus);
 		outline: var(--🥝focus-outline);
 		outline-offset: var(--🥝focus-outline-offset);
 	}
 
 	&:where(.Mui-error) {
-		--_MuiInput-border-color: var(--✨color-border--error);
+		--_MuiInput-border-color: var(--✨border--error);
 		--🥝Icon-color: var(--stratakit-color-icon-critical-base);
 	}
 
 	&:where(.Mui-disabled) {
-		--_MuiInput-border-color: var(--✨color-border--disabled);
+		--_MuiInput-border-color: var(--✨border--disabled);
 		cursor: not-allowed;
 		--🥝Icon-color: var(--stratakit-color-icon-neutral-disabled);
 	}

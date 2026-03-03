@@ -23,6 +23,7 @@ import AutocompleteMultiple from "examples/mui/Autocomplete.multiple.tsx";
 import AvatarDefault from "examples/mui/Avatar.default.tsx";
 import AvatarGroupDefault from "examples/mui/AvatarGroup.default.tsx";
 import BackdropDefault from "examples/mui/Backdrop.default.tsx";
+import BadgeColors from "examples/mui/Badge.colors.tsx";
 import BadgeDefault from "examples/mui/Badge.default.tsx";
 import BottomNavigationDefault from "examples/mui/BottomNavigation.default.tsx";
 import BreadcrumbsDefault from "examples/mui/Breadcrumbs.default.tsx";
@@ -145,7 +146,12 @@ const components: Record<string, React.ReactNode> = {
 	Avatar: <AvatarDefault />,
 	AvatarGroup: <AvatarGroupDefault />,
 	Backdrop: <BackdropDefault />,
-	Badge: <BadgeDefault />,
+	Badge: (
+		<>
+			<BadgeDefault />
+			<BadgeColors />
+		</>
+	),
 	BottomNavigation: (
 		<Stack spacing={1} alignSelf="stretch">
 			<BottomNavigationDefault />

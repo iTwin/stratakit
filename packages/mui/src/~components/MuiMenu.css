@@ -4,14 +4,14 @@
  *--------------------------------------------------------------------------------------------*/
 
 .MuiMenu-list {
-	padding: 4px;
+	padding: var(--stratakit-space-x1);
 }
 
 .MuiMenuItem-root {
 	font: var(--stratakit-mui-font-body2);
 	min-height: 36.5px;
 	border-radius: 4px;
-	padding-inline: 10px;
+	padding-inline: var(--stratakit-space-x2);
 
 	&:where(.Mui-selected) {
 		--🥝Icon-color: var(--stratakit-color-icon-accent-base);
@@ -32,6 +32,6 @@
 	}
 
 	&:where(.Mui-focusVisible) {
-		outline-offset: -2px;
+		outline-offset: calc(var(--🥝focus-outline-offset) * -1);
 	}
 }

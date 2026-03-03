@@ -47,6 +47,10 @@ declare module "@mui/material/Alert" {
 }
 
 declare module "@mui/material/Badge" {
+	interface BadgePropsColorOverrides {
+		default: false;
+	}
+
 	interface BadgeOwnProps {
 		/**
 		 * When `true`, the badge is rendered in normal document flow,

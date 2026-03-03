@@ -10,7 +10,6 @@ import type * as React from "react";
 
 type BadgeProps = React.ComponentProps<typeof Badge>;
 const colors = [
-	"default",
 	"error",
 	"info",
 	"primary",

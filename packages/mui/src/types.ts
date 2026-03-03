@@ -55,6 +55,12 @@ declare module "@mui/material/Badge" {
 		 * @default false
 		 */
 		inline?: boolean;
+		/**
+		 * The default variant with `@stratakit/mui` is `"secondary"`.
+		 *
+		 * @default 'secondary'
+		 */
+		color?: BadgeOwnProps["color"];
 	}
 }
 

@@ -130,7 +130,12 @@ function createTheme() {
 			MuiAvatar: { defaultProps: { component: Role.div } },
 			MuiAvatarGroup: { defaultProps: { component: Role.div } },
 			MuiBackdrop: { defaultProps: { component: Role.div } },
-			MuiBadge: { defaultProps: { component: MuiBadge } },
+			MuiBadge: {
+				defaultProps: {
+					component: MuiBadge,
+					color: "secondary",
+				},
+			},
 			MuiBottomNavigation: { defaultProps: { component: Role.div } },
 			MuiBottomNavigationAction: {
 				defaultProps: { component: Role.button },

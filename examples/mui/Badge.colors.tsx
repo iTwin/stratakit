@@ -6,29 +6,15 @@
 import Badge from "@mui/material/Badge";
 import Stack from "@mui/material/Stack";
 
-import type * as React from "react";
-
-type BadgeProps = React.ComponentProps<typeof Badge>;
-const colors = [
-	"error",
-	"info",
-	"primary",
-	"secondary",
-	"success",
-	"warning",
-] as const satisfies BadgeProps["color"][];
-
 export default () => {
 	return (
 		<Stack spacing={1} direction="row">
-			{colors.map((color) => (
-				<Badge
-					key={color}
-					badgeContent={`${color.charAt(0).toUpperCase()}${color.slice(1)}`}
-					color={color}
-					inline
-				/>
-			))}
+			<Badge badgeContent="Error" color="error" inline />
+			<Badge badgeContent="Info" color="info" inline />
+			<Badge badgeContent="Primary" color="primary" inline />
+			<Badge badgeContent="Secondary" color="secondary" inline />
+			<Badge badgeContent="Success" color="success" inline />
+			<Badge badgeContent="Warning" color="warning" inline />
 		</Stack>
 	);
 };

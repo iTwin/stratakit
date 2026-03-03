@@ -45,6 +45,5 @@ Make sure the **Card** is suitable for your use case. There may be other, more a
 ## 🚫 Don't
 
 - Don’t use a **Card** to group unrelated content or actions.
-- Don’t wrap the entire contents of the card in a `CardActionArea`.
 - Don’t use **Card** just to highlight some content belonging to a larger subject. 
-- Don’t hide **Cards** inside **Accordions** or **Tabs**.
+- Don’t wrap the entire contents of the card in a `CardActionArea`.

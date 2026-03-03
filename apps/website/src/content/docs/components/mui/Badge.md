@@ -7,3 +7,14 @@ links:
 ---
 
 ::example{src="mui/Badge.default"}
+
+## StrataKit MUI modifications
+
+- Added `inline` prop to display the badge in normal document flow instead of positioned relative to its child.
+- The `"default"` variant has been removed. The default variant is now `"secondary"`.
+
+## Examples
+
+### Colors
+
+::example{src="mui/Badge.colors"}

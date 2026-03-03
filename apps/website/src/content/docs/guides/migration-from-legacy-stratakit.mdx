@@ -70,7 +70,18 @@ Migration to StrataKit MUI can be done gradually, since both libraries can coexi
 
 7. **Continue using `@stratakit/structures`**
 
-   Continue using components from [`@stratakit/structures`](/reference#structures) package, as they are not affected by the migration to StrataKit MUI.
+   Replace the usage of [`AccordionItem`](/reference/structures/AccordionItem/), [`Banner`](/reference/structures/Banner/) and [`Chip`](/reference/structures/Chip/) components from `@stratakit/structures` package with their MUI counterparts.
+
+   ```diff
+   - import { Chip } from "@stratakit/structures";
+   + import { Chip } from "@mui/material";
+   ```
+
+   Continue using other components from [`@stratakit/structures`](/reference#structures) package, as they are not affected by the migration to StrataKit MUI.
+
+   :::note
+   It is safe to remove the `@stratakit/structures` dependency if all usage has been replaced.
+   :::
 
 </Steps>
 
@@ -80,11 +91,14 @@ Replace [`@stratakit/bricks`](/reference#bricks) component usage with their [MUI
 
 | StrataKit component                                            | MUI component                                                          |
 | -------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| [AccordionItem](/reference/structures/AccordionItem/)          | [Accordion](https://mui.com/material-ui/api/accordion/)                |
 | [Anchor](/reference/bricks/Anchor)                             | [Link](https://mui.com/material-ui/api/link/)                          |
 | [Avatar](/reference/bricks/Avatar)                             | [Avatar](https://mui.com/material-ui/api/avatar/)                      |
 | [Badge](/reference/bricks/Badge)                               | [Badge](https://mui.com/material-ui/api/badge/)                        |
+| [Banner](/reference/structures/Banner)                         | [Alert](https://mui.com/material-ui/api/alert/)                        |
 | [Button](/reference/bricks/Button)                             | [Button](https://mui.com/material-ui/api/button/)                      |
 | [Checkbox](/reference/bricks/Checkbox)                         | [Checkbox](https://mui.com/material-ui/api/checkbox/)                  |
+| [Chip](/reference/structures/Chip)                             | [Chip](https://mui.com/material-ui/api/chip/)                          |
 | [Description](/reference/bricks/Description)                   | [FormHelperText](https://mui.com/material-ui/api/form-helper-text/)    |
 | [Divider](/reference/bricks/Divider)                           | [Divider](https://mui.com/material-ui/api/divider/)                    |
 | [Field](/reference/bricks/Field)                               | [FormControl](https://mui.com/material-ui/api/form-control/)           |
@@ -105,6 +119,17 @@ Replace [`@stratakit/bricks`](/reference#bricks) component usage with their [MUI
 :::tip
 Read additional [StrataKit MUI component documentation](/components/introduction/) for more details on usage and customization.
 :::
+
+### AccordionItem
+
+- Change [`AccordionItem.Root`](/reference/structures/AccordionItem/#AccordionItem.Root) component to [`Accordion`](https://mui.com/material-ui/api/accordion/) component.
+- Change [`AccordionItem.Header`](/reference/structures/AccordionItem/#AccordionItem.Header) component to [`AccordionSummary`](https://mui.com/material-ui/api/accordion-summary/) component.
+- Change [`AccordionItem.Content`](/reference/structures/AccordionItem/#AccordionItem.Content) component to [`AccordionDetails`](https://mui.com/material-ui/api/accordion-details/) component.
+- Change [`AccordionItem.Label`](/reference/structures/AccordionItem/#AccordionItem.Label) component to [`Typography`](https://mui.com/material-ui/api/typography/) component.
+- Remove usage of [`AccordionItem.Button`](/reference/structures/AccordionItem/#AccordionItem.Button) component. Button is configured via [`AccordionSummary`](https://mui.com/material-ui/api/accordion-summary/) component instead.
+- Remove usage of [`AccordionItem.Decoration`](/reference/structures/AccordionItem/#AccordionItem.Decoration) component. Provide custom content to [`AccordionSummary`](https://mui.com/material-ui/api/accordion-summary/) component instead.
+- Use [`expandIconWrapper`](https://mui.com/material-ui/api/accordion-summary/#AccordionSummary-css-MuiAccordionSummary-expandIconWrapper) slot to replace usage of [`AccordionItem.Marker`](/reference/structures/AccordionItem/#AccordionItem.Marker) component.
+- Use [`heading`](https://mui.com/material-ui/api/accordion/#Accordion-css-MuiAccordion-heading) slot to replace usage of [`AccordionItem.Heading`](/reference/structures/AccordionItem/#AccordionItem.Heading) component.
 
 ### Anchor
 
@@ -147,6 +172,33 @@ Read additional [StrataKit MUI component documentation](/components/introduction
   | `"muted"`   | `"filled"`   |
   | `"outline"` | `"outlined"` |
 
+### Banner
+
+- Change [`Banner`](/reference/structures/Banner#Banner), [`Banner.Root`](/reference/structures/Banner#Banner.Root) components to [`Alert`](https://mui.com/material-ui/api/alert/) component.
+- Change usage of [`label`](/reference/structures/Banner#Banner.label) prop and [`Banner.Label`](/reference/structures/Banner#Banner.Label) component to [`AlertTitle`](https://mui.com/material-ui/api/alert-title/) component.
+- Change usage of [`message`](/reference/structures/Banner#Banner.message) prop and [`Banner.Message`](/reference/structures/Banner#Banner.Message) component to [`children`](https://mui.com/material-ui/api/alert/#alert-prop-children) prop.
+- Change usage of [`actions`](/reference/structures/Banner#Banner.actions) prop and [`Banner.Actions`](/reference/structures/Banner#Banner.Actions) component to [`action`](https://mui.com/material-ui/api/alert/#alert-prop-action) prop. Customize action container via [`action`](https://mui.com/material-ui/api/alert/#Alert-css-MuiAlert-action) slot.
+- Change usage of [`icon`](/reference/structures/Banner#Banner.icon) prop and [`Banner.Icon`](/reference/structures/Banner#Banner.Icon) component to [`icon`](https://mui.com/material-ui/api/alert/#alert-prop-icon) prop. Customize icon container via [`icon`](https://mui.com/material-ui/api/alert/#Alert-css-MuiAlert-icon) slot.
+- Change [`onDismiss`](/reference/structures/Banner#Banner.onDismiss) prop to [`onClose`](https://mui.com/material-ui/api/alert/#alert-prop-onClose) prop.
+- Change usage of [`Banner.DismissButton`](/reference/structures/Banner#Banner.DismissButton) component to [`onClose`](https://mui.com/material-ui/api/alert/#alert-prop-onClose), [`closeText`](https://mui.com/material-ui/api/alert/#alert-prop-closeText) props and [`closeButton`](https://mui.com/material-ui/api/alert/#Alert-css-closeButton), [`closeIcon`](https://mui.com/material-ui/api/alert/#Alert-css-closeIcon) slots.
+- Change [`tone`](/reference/structures/Banner#Banner.tone) prop to [`severity`](https://mui.com/material-ui/api/alert/#alert-prop-severity) prop.
+
+  | `tone` value  | `severity` value |
+  | ------------- | ---------------- |
+  | `"neutral"`   | `"success"`      |
+  | `"info"`      | `"info"`         |
+  | `"positive"`  | `"success"`      |
+  | `"attention"` | `"warning"`      |
+  | `"critical"`  | `"error"`        |
+
+- Update value of [`variant`](/reference/structures/Banner#Banner.variant) prop.
+
+  | Before      | After         |
+  | ----------- | ------------- |
+  | `"solid"`   | `"contained"` |
+  | `"outline"` | `"outlined"`  |
+  | `"ghost"`   | `"text"`      |
+
 ### Button
 
 - Change [`tone`](/reference/bricks/Button#Button.tone) prop to [`color`](https://mui.com/material-ui/api/button/#button-prop-color) prop.
@@ -158,17 +210,28 @@ Read additional [StrataKit MUI component documentation](/components/introduction
 
 - Update value of [`variant`](/reference/bricks/Button#Button.variant) prop.
 
-  | Before      | After         |
-  | ----------- | ------------- |
-  | `"solid"`   | `"contained"` |
-  | `"outline"` | `"outlined"`  |
-  | `"ghost"`   | `"text"`      |
+  | Before      | After        |
+  | ----------- | ------------ |
+  | `"outline"` | `"outlined"` |
 
 - Use [`startIcon`](https://mui.com/material-ui/api/button/#button-prop-startIcon) and [`endIcon`](https://mui.com/material-ui/api/button/#button-prop-endIcon) props to [display icons](/components/button/#icons).
 
 ### Checkbox
 
 - Use [`FormControlLabel`](https://mui.com/material-ui/api/form-control-label/) component to label the checkbox.
+
+### Chip
+
+- Change [`Chip`](/reference/structures/Chip#Chip), [`Chip.Root`](/reference/structures/Chip#Chip.Root) components to [`Chip`](https://mui.com/material-ui/api/chip/) component.
+- Change usage of [`label`](/reference/structures/Chip#Chip.label) prop and [`Chip.Label`](/reference/structures/Chip#Chip.Label) component to [`label`](https://mui.com/material-ui/api/chip/#chip-prop-label) prop. Customize label container via [`label`](https://mui.com/material-ui/api/chip/#Chip-css-MuiChip-label) slot.
+- Change [`onDismiss`](/reference/structures/Chip#Chip.onDismiss) prop to [`onDelete`](https://mui.com/material-ui/api/chip/#chip-prop-onDelete) prop.
+- Change usage of [`Chip.DismissButton`](/reference/structures/Chip#Chip.DismissButton) component to [`onDelete`](https://mui.com/material-ui/api/chip/#chip-prop-onDelete), [`deleteIcon`](https://mui.com/material-ui/api/chip/#chip-prop-deleteIcon) props.
+- Update value of [`variant`](/reference/structures/Chip#Chip.variant) prop.
+
+  | Before      | After        |
+  | ----------- | ------------ |
+  | `"outline"` | `"outlined"` |
+  | `"solid"`   | `"filled"`   |
 
 ### Description
 

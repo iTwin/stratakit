@@ -16,12 +16,12 @@ Make sure the **Card** is suitable for your use case. There may be other, more a
 | --------------------------------------------------------------------------------- | -------------------------- | ---------------------------- | --------------------------------- |
 | Introduce a single subject, as one of a set displayed as a list or grid           |             ✅             |              ❌              |                ❌                 |
 | Divide a single subject into subsections to be switched between                   |             ❌             |              ✅              |                ❌                 |
-| Present additional actions for a subject that require immediate attention         |             ❌            |               ❌              |                ✅                 |
+| Present additional actions for a subject that require immediate attention         |             ❌             |               ❌             |                ✅                 |
 
 ## StrataKit MUI modifications
 
-- `Card` is rendered as an `<article>` element by default.
-- `CardHeader`'s `title` is rendered as `<h2>` by default.
+- `Card` is rendered as an `<article>` element by default. This programmatically indicates the bounds of the **Card** contents.
+- `CardHeader`'s `title` is rendered as `<h2>` by default. 
 - `CardActionArea` will not have an unnecessary `role="button"` to avoid conflicting semantics when rendered as a link.
 - `CardActionArea` has been redesigned to not wrap the entire card content. Instead, it should be used in the card's heading or title area.
 
@@ -37,7 +37,7 @@ Make sure the **Card** is suitable for your use case. There may be other, more a
 
 ## ✅ Do
 
-- Use a heading element to provide a clear title for the card’s content.
+- Use a heading element to provide a clear title for the card’s content. Choose [an appropriate heading level](https://www.a11yproject.com/posts/how-to-accessible-heading-structure/).
 - Organize multiple **Cards** into an unordered list, where each `<li>` contains a single **Card**.
 - Use `CardActionArea` inside the heading if the entire card should be clickable.
 - Use `CardActions` when the card has multiple actions.

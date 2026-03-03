@@ -1,9 +1,6 @@
 ---
 title: Introduction to StrataKit components
 description: How StrataKit components are organized
-sidebar: 
-  label: Components introduction
-  order: 1
 ---
 
 The **StrataKit** component catalog comes in two tiers:
@@ -21,9 +18,11 @@ By making an established open-source library responsible for generic components,
 
 The theme includes the following modifications:
 
-1. **CSS**: The style has been aligned with **StrataKit’s** visual language.
-2. **API**: Some components have been extended to support additional props.
-3. **Structure and behavior**: The markup structure and interaction behavior of certain components have been modified to meet **StrataKit** UX and accessibility requirements.
+1. **Branding**: The style has been aligned with **StrataKit’s** visual language.
+2. **Typography**: **StrataKit’s** principle font is [Inter](https://rsms.me/inter/).
+3. **Icons**: **StrataKit** has its own extensive icon collection.
+3. **API**: Some props and the support of some prop values have been removed.
+4. **Structure and behavior**: The markup structure and interaction behavior of certain components have been modified to meet **StrataKit** UX and accessibility requirements.
 
 ## StrataKit components
 
@@ -37,7 +36,7 @@ All components are accompanied by implementation guidance. This adheres to the f
 
 * **Demo**: What does a typical implementation look like, using common settings?
 * **Use cases**: Is this, or another, component right for my use case? (compares similar components in a table)
-* **StrataKit MUI modifications**: _(where applicable)_: What has been done to bring the MUI component in line with **StrataKit**?
+* **StrataKit MUI modifications**: _(where applicable)_: What has been done to bring the **MUI** component in line with **StrataKit**?
 * **Examples**: What variants are there, and to which contexts are they suited?
 * **🚫 Do**: What’s needed for an efficient and accessible implementation? What opportunities are there to improve user experience?
 * **🚫 Don’t**: What are some common pitfalls? What are the bad practices to avoid?
@@ -55,5 +54,3 @@ Check the status before choosing to use a component in your product. You may be 
 - **Draft**: The component is still being designed. Consider the documentation a specification for what is to come.
 - **Unstable**: The component is available for consumption but is not comprehensively tested and may undergo breaking changes. As an early adopter, please provide feedback.
 - **Stable**: The component is established and meets our compatibility and accessibility standards.
-- **Deprecated**: The component is no longer supported or recommended. Remove or replace it at your earliest convenience.
-- **Unknown**: The status is currently unsettled. You may be able to help settle it.

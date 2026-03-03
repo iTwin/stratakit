@@ -44,6 +44,16 @@
 
 	&:where(.MuiButton-containedPrimary, .MuiButton-containedError) {
 		--_MuiButton-icon-color: var(--stratakit-color-icon-neutral-emphasis);
+
+		@media (any-hover: hover) {
+			&:where(:hover) {
+				--_MuiButton-icon-color: color-mix(
+					in oklch,
+					var(--stratakit-color-icon-neutral-emphasis) 100%,
+					var(--stratakit-color-glow-hue) var(--stratakit-color-icon-glow-strong-hover-\%)
+				);
+			}
+		}
 	}
 
 	&:where(.MuiButton-outlinedPrimary, .MuiButton-textPrimary) {
@@ -62,6 +72,16 @@
 
 	&:where(.MuiButton-outlinedError, .MuiButton-textError) {
 		--_MuiButton-icon-color: var(--stratakit-color-icon-critical-base);
+
+		@media (any-hover: hover) {
+			&:where(:hover) {
+				--_MuiButton-icon-color: color-mix(
+					in oklch,
+					var(--stratakit-color-icon-critical-base) 100%,
+					var(--stratakit-color-glow-hue) var(--stratakit-color-icon-glow-strong-hover-\%)
+				);
+			}
+		}
 	}
 
 	&:where(.Mui-disabled) {

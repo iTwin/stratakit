@@ -31,25 +31,26 @@
 }
 
 .MuiSwitch-switchBase {
-	--✨color-bg--default: var(--stratakit-color-bg-neutral-inverse);
-	--✨color-bg--disabled: var(--stratakit-color-icon-neutral-disabled);
-	--✨border-radius: 50%;
-	--✨box-shadow--default:
+	--✨bg--default: var(--stratakit-color-bg-neutral-inverse);
+	--✨bg--disabled: var(--stratakit-color-icon-neutral-disabled);
+	--✨radius: 50%;
+	--✨shadow--default:
 		var(--stratakit-shadow-control-button-base-inset),
 		0px 0px 0px 1px var(--stratakit-color-border-shadow-base) inset,
 		var(--stratakit-shadow-control-button-base-drop);
-	--✨box-shadow--disabled: none;
-	--✨transform-scale-x: 1.75;
+	--✨shadow--disabled: none;
+	--✨transform-scaleX: 1.75;
 
 	aspect-ratio: 1;
 	block-size: var(--_MuiSwitch-height);
 	inset: unset;
 	padding: var(--_MuiSwitch-padding);
+	transform: var(--_MuiSwitch-thumb-transform);
 	transform-origin: left;
 
-	--_MuiSwitch-thumb-background-color: var(--✨color-bg--default);
-	--_MuiSwitch-thumb-border-radius: var(--✨border-radius);
-	--_MuiSwitch-thumb-box-shadow: var(--✨box-shadow--default);
+	--_MuiSwitch-thumb-background-color: var(--✨bg--default);
+	--_MuiSwitch-thumb-border-radius: var(--✨radius);
+	--_MuiSwitch-thumb-box-shadow: var(--✨shadow--default);
 
 	@media (prefers-reduced-motion: no-preference) {
 		transition: transform 150ms ease-out;
@@ -63,19 +64,21 @@
 	}
 
 	&:has(.MuiSwitch-input:active) {
-		transform: scaleX(var(--✨transform-scale-x));
+		--_MuiSwitch-thumb-transform: scaleX(var(--✨transform-scaleX));
 		--_MuiSwitch-thumb-border-radius:
-			calc(var(--✨border-radius) / var(--✨transform-scale-x)) / var(--✨border-radius);
+			calc(var(--✨radius) / var(--✨transform-scaleX)) / var(--✨radius);
 	}
 
 	&:where(.Mui-checked) {
 		inset: unset;
-		transform: translateX(calc(var(--_MuiSwitch-height) - var(--_MuiSwitch-padding) * 2));
+		--_MuiSwitch-thumb-transform: translateX(
+			calc(var(--_MuiSwitch-height) - var(--_MuiSwitch-padding) * 2)
+		);
 	}
 
 	&:where(.Mui-disabled) {
-		--_MuiSwitch-thumb-background-color: var(--✨color-bg--disabled);
-		--_MuiSwitch-thumb-box-shadow: var(--✨box-shadow--disabled);
+		--_MuiSwitch-thumb-background-color: var(--✨bg--disabled);
+		--_MuiSwitch-thumb-box-shadow: var(--✨shadow--disabled);
 	}
 }
 
@@ -94,12 +97,12 @@
 }
 
 .MuiSwitch-track {
-	--✨color-bg--default: var(--stratakit-color-bg-control-switch);
-	--✨color-bg--checked: var(--stratakit-color-bg-accent-base);
-	--✨color-bg--disabled: var(--stratakit-color-bg-control-switch);
-	--✨color-border--default: var(--stratakit-color-border-control-switch);
-	--✨color-border--checked: var(--stratakit-color-border-accent-base);
-	--✨color-border--disabled: var(--stratakit-color-border-glow-on-surface-disabled);
+	--✨bg--default: var(--stratakit-color-bg-control-switch);
+	--✨bg--checked: var(--stratakit-color-bg-accent-base);
+	--✨bg--disabled: var(--stratakit-color-bg-control-switch);
+	--✨border--default: var(--stratakit-color-border-control-switch);
+	--✨border--checked: var(--stratakit-color-border-accent-base);
+	--✨border--disabled: var(--stratakit-color-border-glow-on-surface-disabled);
 
 	block-size: var(--_MuiSwitch-height);
 	inline-size: calc(var(--_MuiSwitch-height) * 2 - var(--_MuiSwitch-padding) * 2);
@@ -110,10 +113,10 @@
 	transition: all 150ms ease-out;
 	transition-property: background-color, border-color;
 
-	--_MuiSwitch-track-background-color: var(--✨color-bg--default);
+	--_MuiSwitch-track-background-color: var(--✨bg--default);
 	--_MuiSwitch-track-background-hover-effect: var(--stratakit-color-glow-hue)
 		var(--stratakit-color-bg-glow-base-hover-\%);
-	--_MuiSwitch-track-border-color: var(--✨color-border--default);
+	--_MuiSwitch-track-border-color: var(--✨border--default);
 	--_MuiSwitch-track-border-hover-effect: var(--stratakit-color-glow-hue)
 		var(--stratakit-color-border-glow-base-hover-\%);
 
@@ -133,16 +136,16 @@
 	}
 
 	:where(.MuiSwitch-switchBase.Mui-checked) + & {
-		--_MuiSwitch-track-background-color: var(--✨color-bg--checked);
+		--_MuiSwitch-track-background-color: var(--✨bg--checked);
 		--_MuiSwitch-track-background-hover-effect: var(--stratakit-color-glow-hue)
 			var(--stratakit-color-bg-glow-strong-hover-\%);
-		--_MuiSwitch-track-border-color: var(--✨color-border--checked);
+		--_MuiSwitch-track-border-color: var(--✨border--checked);
 		--_MuiSwitch-track-border-hover-effect: var(--stratakit-color-glow-hue)
 			var(--stratakit-color-bg-glow-base-hover-\%);
 	}
 
 	:where(.MuiSwitch-switchBase.Mui-disabled) + & {
-		--_MuiSwitch-track-background-color: var(--✨color-bg--disabled);
-		--_MuiSwitch-track-border-color: var(--✨color-border--disabled);
+		--_MuiSwitch-track-background-color: var(--✨bg--disabled);
+		--_MuiSwitch-track-border-color: var(--✨border--disabled);
 	}
 }

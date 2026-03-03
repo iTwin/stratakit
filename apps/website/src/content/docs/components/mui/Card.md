@@ -1,12 +1,22 @@
 ---
 title: Card
-description: Cards are used to display content and actions about a single subject.
+description: A Card concisely introduces a topic and its related actions.
 links:
   muiDocs: https://mui.com/material-ui/react-card/
   apiReference: https://mui.com/material-ui/api/card/
 ---
 
 ::example{src="mui/Card.default"}
+
+## Use cases
+
+Make sure the **Card** is suitable for your use case. There may be other, more appropriate components available.
+
+| Use case                                                                          | **Card**                   | [**Tabs**](/components/tabs) | [**Dialog**](/components/dialog)  |
+| --------------------------------------------------------------------------------- | -------------------------- | ---------------------------- | --------------------------------- |
+| Briefly introduce each of a set of related subjects, displayed in a list or grid  |             ✅             |            ❌                |                                   |
+| Divide a single subject into subsections to be switched between                   |             ✅             |                              |                                   |
+| Insert actions for a subject that require immediate attention                     |             ✅             |                              |                                   |
 
 ## StrataKit MUI modifications
 
@@ -27,11 +37,11 @@ links:
 
 ## ✅ Do
 
-- Use a heading element to provide a clear title for the card's content.
+- Use a heading element to provide a clear title for the card’s content.
 - Use `CardActionArea` inside the heading if the entire card should be clickable.
 - Use `CardActions` when the card has multiple actions.
 
 ## 🚫 Don't
 
-- Don't use a **Card** to group unrelated content or actions.
-- Don't wrap the entire contents of the card in a `CardActionArea`.
+- Don’t use a **Card** to group unrelated content or actions.
+- Don’t wrap the entire contents of the card in a `CardActionArea`.

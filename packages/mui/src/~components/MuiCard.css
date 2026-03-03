@@ -5,12 +5,45 @@
 
 .MuiCard-root {
 	background-color: var(--stratakit-color-bg-elevation-base);
+
+	&:where([data-_sk-actionable]) {
+		cursor: pointer;
+		transition: background-color 150ms ease-out;
+
+		@media (any-hover: hover) {
+			&:where(:hover) {
+				background-color: color-mix(
+					in oklch,
+					var(--stratakit-color-bg-elevation-base) 100%,
+					var(--stratakit-color-glow-hue) var(--stratakit-color-bg-glow-base-hover-\%)
+				);
+			}
+		}
+
+		&:where(:has(.MuiCardActionArea-root.Mui-focusVisible)) {
+			outline: var(--🥝focus-outline);
+			outline-offset: var(--🥝focus-outline-offset);
+		}
+	}
 }
 
 .MuiCardContent-root {
 	&:where(:has(+ .MuiCardActions-root)) {
 		padding-block-end: 0;
 	}
+}
+
+.MuiCardActionArea-root {
+	background-color: unset; /* Background will be set on the Card instead */
+	user-select: auto; /* Allow text selection */
+
+	&:where(.Mui-focusVisible) {
+		outline: none !important; /* Focus outline will be shown around the Card instead */
+	}
+}
+
+.MuiCardActionArea-focusHighlight {
+	display: none;
 }
 
 .MuiCardActions-root {

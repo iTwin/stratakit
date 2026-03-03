@@ -1,0 +1,33 @@
+name: Feature request 💄
+description: Suggest a new component, pattern, or enhancement for the design system
+type: enhancement
+assignees: []
+body:
+  - type: textarea
+    attributes:
+      label: Problem or use case
+      description: |
+        What problem does this feature solve? What use case does it address? 
+        Help us understand the context and need for this feature.
+    validations:
+      required: false
+  - type: textarea
+    attributes:
+      label: Proposed solution
+      description: |
+        Describe your ideal solution. What should this feature look like and how should it behave?
+        Include any specific requirements or constraints.
+
+        Please also include:
+        - Visual examples, mockups, or references to similar implementations.
+        - Any alternative approaches or workarounds you've considered.
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Additional context
+      description: |
+        Add any other context, screenshots, or details that might be helpful.
+        Include information about target platforms, accessibility considerations, etc.
+    validations:
+      required: false

@@ -46,6 +46,18 @@ declare module "@mui/material/Alert" {
 	}
 }
 
+declare module "@mui/material/Badge" {
+	interface BadgeOwnProps {
+		/**
+		 * When `true`, the badge is rendered in normal document flow,
+		 * instead of being positioned relative to its child based on `anchorOrigin` and `overlap` props.
+		 *
+		 * @default false
+		 */
+		inline?: boolean;
+	}
+}
+
 declare module "@mui/material/Button" {
 	interface ButtonPropsColorOverrides {
 		info: false;

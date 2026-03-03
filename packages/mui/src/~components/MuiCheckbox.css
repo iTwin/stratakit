@@ -44,7 +44,6 @@
 		position: absolute;
 		inset: calc(((24px - var(--✨size)) / 2) * -1); /* Makes touch target area 24px */
 		border-radius: 50%;
-		background-color: var(--_MuiCheckbox-touch-target-background-color);
 	}
 
 	> input {
@@ -77,22 +76,26 @@
 	--_MuiCheckbox-background-color: var(--✨bg--default);
 	--_MuiCheckbox-border-color: var(--✨border--default);
 	--_MuiCheckbox-color: var(--✨checkmark--checked);
+	--_MuiCheckbox-hover-overlay-color: var(--✨touch-target-hover--default);
 
 	&:where(.Mui-checked, .MuiCheckbox-indeterminate) {
 		--_MuiCheckbox-background-color: var(--✨bg--checked);
 		--_MuiCheckbox-border-color: var(--✨border--checked);
+		--_MuiCheckbox-hover-overlay-color: var(--✨touch-target-hover--checked);
 	}
 
 	:where(.MuiFormControlLabel-root.Mui-error) & {
 		--_MuiCheckbox-background-color: var(--✨bg--error);
 		--_MuiCheckbox-border-color: var(--✨border--error);
 		--_MuiCheckbox-color: var(--✨checkmark--error);
+		--_MuiCheckbox-hover-overlay-color: var(--✨touch-target-hover--error);
 	}
 
 	&:where(.Mui-disabled) {
 		--_MuiCheckbox-background-color: var(--✨bg--disabled);
 		--_MuiCheckbox-border-color: var(--✨border--disabled);
 		--_MuiCheckbox-color: var(--✨checkmark--disabled);
+		--_MuiCheckbox-hover-overlay-color: transparent;
 	}
 
 	&:where(.MuiCheckbox-root) {
@@ -116,21 +119,9 @@
 	}
 
 	@media (any-hover: hover) {
-		&:where(:hover),
-		:where(.MuiFormControlLabel-root:hover) & {
-			--_MuiCheckbox-touch-target-background-color: var(--✨touch-target-hover--default);
-
-			&:where(.Mui-checked, .MuiCheckbox-indeterminate) {
-				--_MuiCheckbox-touch-target-background-color: var(--✨touch-target-hover--checked);
-			}
-
-			:where(.MuiFormControlLabel-root.Mui-error:hover) & {
-				--_MuiCheckbox-touch-target-background-color: var(--✨touch-target-hover--error);
-			}
-
-			&:where(.Mui-disabled) {
-				--_MuiCheckbox-touch-target-background-color: transparent;
-			}
+		&:where(:hover)::before,
+		:where(.MuiFormControlLabel-root:hover) &::before {
+			background-color: var(--_MuiCheckbox-hover-overlay-color);
 		}
 	}
 	/* #endregion */

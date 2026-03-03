@@ -17,7 +17,7 @@
 		--variant-containedColor: var(--stratakit-color-text-neutral-primary);
 		--variant-outlinedColor: var(--stratakit-color-text-neutral-primary);
 		--variant-textColor: var(--stratakit-color-text-neutral-primary);
-		--_MuiButton-icon-color: var(--stratakit-color-icon-neutral-base);
+		--🥝Icon-color: var(--stratakit-color-icon-neutral-base);
 
 		@media (any-hover: hover) {
 			&:where(:hover) {
@@ -26,7 +26,7 @@
 					var(--stratakit-color-bg-neutral-base) 100%,
 					var(--stratakit-color-glow-hue) var(--stratakit-color-bg-glow-base-hover-\%)
 				);
-				--_MuiButton-icon-color: var(--stratakit-color-icon-neutral-primary);
+				--🥝Icon-color: var(--stratakit-color-icon-neutral-primary);
 			}
 		}
 	}
@@ -43,11 +43,11 @@
 	}
 
 	&:where(.MuiButton-containedPrimary, .MuiButton-containedError) {
-		--_MuiButton-icon-color: var(--stratakit-color-icon-neutral-emphasis);
+		--🥝Icon-color: var(--stratakit-color-icon-neutral-emphasis);
 
 		@media (any-hover: hover) {
 			&:where(:hover) {
-				--_MuiButton-icon-color: color-mix(
+				--🥝Icon-color: color-mix(
 					in oklch,
 					var(--stratakit-color-icon-neutral-emphasis) 100%,
 					var(--stratakit-color-glow-hue) var(--stratakit-color-icon-glow-strong-hover-\%)
@@ -57,11 +57,11 @@
 	}
 
 	&:where(.MuiButton-outlinedPrimary, .MuiButton-textPrimary) {
-		--_MuiButton-icon-color: var(--stratakit-color-icon-accent-strong);
+		--🥝Icon-color: var(--stratakit-color-icon-accent-strong);
 
 		@media (any-hover: hover) {
 			&:where(:hover) {
-				--_MuiButton-icon-color: color-mix(
+				--🥝Icon-color: color-mix(
 					in oklch,
 					var(--stratakit-color-icon-accent-strong) 100%,
 					var(--stratakit-color-glow-hue) var(--stratakit-color-icon-glow-strong-hover-\%)
@@ -71,11 +71,11 @@
 	}
 
 	&:where(.MuiButton-outlinedError, .MuiButton-textError) {
-		--_MuiButton-icon-color: var(--stratakit-color-icon-critical-base);
+		--🥝Icon-color: var(--stratakit-color-icon-critical-base);
 
 		@media (any-hover: hover) {
 			&:where(:hover) {
-				--_MuiButton-icon-color: color-mix(
+				--🥝Icon-color: color-mix(
 					in oklch,
 					var(--stratakit-color-icon-critical-base) 100%,
 					var(--stratakit-color-glow-hue) var(--stratakit-color-icon-glow-strong-hover-\%)
@@ -85,10 +85,10 @@
 	}
 
 	&:where(.Mui-disabled) {
-		--_MuiButton-icon-color: var(--stratakit-color-icon-neutral-disabled);
+		--🥝Icon-color: var(--stratakit-color-icon-neutral-disabled);
 	}
 }
 
 .MuiButton-icon {
-	color: var(--_MuiButton-icon-color);
+	color: var(--🥝Icon-color);
 }

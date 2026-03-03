@@ -15,6 +15,10 @@ links:
 
 ## Examples
 
+### Inline
+
+::example{src="mui/Badge.inline"}
+
 ### Colors
 
 ::example{src="mui/Badge.colors"}

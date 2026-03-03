@@ -63,17 +63,17 @@
 		}
 	}
 
-	&:has(.MuiSwitch-input:active) {
-		--_MuiSwitch-thumb-transform: scaleX(var(--✨transform-scaleX));
-		--_MuiSwitch-thumb-border-radius:
-			calc(var(--✨radius) / var(--✨transform-scaleX)) / var(--✨radius);
-	}
-
 	&:where(.Mui-checked) {
 		inset: unset;
 		--_MuiSwitch-thumb-transform: translateX(
 			calc(var(--_MuiSwitch-height) - var(--_MuiSwitch-padding) * 2)
 		);
+	}
+
+	&:where(:has(.MuiSwitch-input:active):not(.Mui-disabled)) {
+		--_MuiSwitch-thumb-transform: scaleX(var(--✨transform-scaleX));
+		--_MuiSwitch-thumb-border-radius:
+			calc(var(--✨radius) / var(--✨transform-scaleX)) / var(--✨radius);
 	}
 
 	&:where(.Mui-disabled) {

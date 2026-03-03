@@ -82,7 +82,7 @@ Replace [`@stratakit/bricks`](/reference#bricks) component usage with their [MUI
 | -------------------------------------------------------------- | ---------------------------------------------------------------------- |
 | [Anchor](/reference/bricks/Anchor)                             | [Link](https://mui.com/material-ui/api/link/)                          |
 | [Avatar](/reference/bricks/Avatar)                             | [Avatar](https://mui.com/material-ui/api/avatar/)                      |
-| [Badge](/reference/bricks/Badge)                               | [Chip](https://mui.com/material-ui/api/chip/)                          |
+| [Badge](/reference/bricks/Badge)                               | [Badge](https://mui.com/material-ui/api/badge/)                        |
 | [Button](/reference/bricks/Button)                             | [Button](https://mui.com/material-ui/api/button/)                      |
 | [Checkbox](/reference/bricks/Checkbox)                         | [Checkbox](https://mui.com/material-ui/api/checkbox/)                  |
 | [Description](/reference/bricks/Description)                   | [FormHelperText](https://mui.com/material-ui/api/form-helper-text/)    |
@@ -127,12 +127,12 @@ Read additional [StrataKit MUI component documentation](/components/introduction
 
 ### Badge
 
-- Replace [`Badge`](/reference/bricks/Badge) component with the [`Chip`](https://mui.com/material-ui/api/chip/) component.
+- Use `inline` prop to display the badge in normal document flow.
 - Change [`tone`](/reference/bricks/Badge#Badge.tone) prop to [`color`](https://mui.com/material-ui/api/chip/#chip-prop-color) prop.
 
   | `tone` value  | `color` value |
   | ------------- | ------------- |
-  | `"neutral"`   | `"default"`   |
+  | `"neutral"`   | `"secondary"` |
   | `"accent"`    | `"primary"`   |
   | `"info"`      | `"info"`      |
   | `"positive"`  | `"success"`   |

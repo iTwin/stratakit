@@ -5,30 +5,31 @@
 
 .MuiIconButton-root {
 	--✨color--default: var(--stratakit-color-icon-neutral-base);
+	--🥝Icon-color: var(--✨color--default);
 
 	border-radius: 4px;
-	color: var(--✨color--default);
+	color: var(--🥝Icon-color);
 
 	&:where(.MuiIconButton-colorSecondary) {
-		color: var(--✨color--default);
+		--🥝Icon-color: var(--✨color--default);
 	}
 
 	@media (any-hover: hover) {
 		&:where(:hover) {
-			color: var(--stratakit-color-icon-neutral-primary);
+			--🥝Icon-color: var(--stratakit-color-icon-neutral-primary);
 		}
 	}
 
 	&:where(.MuiIconButton-colorPrimary) {
-		color: var(--stratakit-color-icon-accent-strong);
+		--🥝Icon-color: var(--stratakit-color-icon-accent-strong);
 	}
 
 	&:where(.MuiIconButton-colorError) {
-		color: var(--stratakit-color-icon-critical-base);
+		--🥝Icon-color: var(--stratakit-color-icon-critical-base);
 	}
 
 	&:where(.Mui-disabled) {
-		color: var(--stratakit-color-icon-neutral-disabled);
+		--🥝Icon-color: var(--stratakit-color-icon-neutral-disabled);
 	}
 
 	&:where(.MuiIconButton-sizeSmall) {

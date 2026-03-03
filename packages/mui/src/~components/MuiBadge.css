@@ -3,11 +3,9 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-.MuiBadge-root {
-	&:where([data-_sk-inline]) {
-		:where(.MuiBadge-badge) {
-			position: static;
-			transform: none;
-		}
+.MuiBadge-badge {
+	:where(.MuiBadge-root[data-_sk-inline]) & {
+		position: static;
+		transform: none;
 	}
 }

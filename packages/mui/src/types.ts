@@ -89,6 +89,16 @@ declare module "@mui/material/Chip" {
 		 */
 		deleteLabel?: string;
 	}
+
+	interface ChipPropsColorOverrides {
+		primary: false;
+		secondary: false;
+		error: false;
+		info: false;
+		success: false;
+		warning: false;
+		inherit: false;
+	}
 }
 
 declare module "@mui/material/Fab" {

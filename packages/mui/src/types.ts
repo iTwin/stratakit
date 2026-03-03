@@ -97,7 +97,6 @@ declare module "@mui/material/Chip" {
 		info: false;
 		success: false;
 		warning: false;
-		inherit: false;
 	}
 }
 

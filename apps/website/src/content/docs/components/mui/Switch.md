@@ -20,6 +20,13 @@ Make sure the **Switch** is suitable for your use case. There may be other, more
 | Confirm an input for a form submission                            | ❌                           | ❌                                   | ❌                           | ✅                               | ❌                       |
 | Navigate between interface screens or sections                    | ❌                           | ❌                                   | ❌                           | ❌                               | ✅                       |
 
+## StrataKit MUI modifications
+
+- The `color` prop is not supported. Color is determined automatically based on state (e.g., checked, disabled).
+- The `size` prop defaults to `"medium"` and does not support `"small"`.
+- Restyled using StrataKit's visual language.
+- Includes full `forced-colors` support.
+
 ## Examples
 
 ### Checked

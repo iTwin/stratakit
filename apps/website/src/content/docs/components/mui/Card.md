@@ -20,10 +20,10 @@ Make sure the **Card** is suitable for your use case. There may be other, more a
 
 ## StrataKit MUI modifications
 
-- `Card` is rendered as an `<article>` element by default. This programmatically indicates the bounds of the **Card** contents.
-- `CardHeader`'s `title` is rendered as `<h2>` by default. 
-- `CardActionArea` will not have an unnecessary `role="button"` to avoid conflicting semantics when rendered as a link.
-- `CardActionArea` has been redesigned to not wrap the entire card content. Instead, it should be used in the card's heading or title area.
+- `Card` is rendered as an `<article>` element by default. This programmatically indicates the bounds of the **Card’s** contents.
+- `CardHeader`'s `title` is rendered as an `<h2>` by default. 
+- `CardActionArea` has `role="button"` removed to avoid conflicting semantics when rendered as a link.
+- `CardActionArea` has been redesigned to no longer wrap the entire card content. Instead, it should be used in the **Card's** heading or title area.
 
 ## Examples
 
@@ -40,10 +40,10 @@ Make sure the **Card** is suitable for your use case. There may be other, more a
 - Use a heading element to provide a clear title for the card’s content. Choose [an appropriate heading level](https://www.a11yproject.com/posts/how-to-accessible-heading-structure/).
 - Organize multiple **Cards** into an unordered list, where each `<li>` contains a single **Card**.
 - Use `CardActionArea` inside the heading if the entire card should be clickable.
-- Use `CardActions` when the card has multiple actions.
+- Use `CardActions` when the card has supplementary actions.
 
 ## 🚫 Don't
 
 - Don’t use a **Card** to group unrelated content or actions.
 - Don’t use **Card** just to highlight some content belonging to a larger subject. 
-- Don’t wrap the entire contents of the card in a `CardActionArea`.
+- Don’t wrap the entire contents of the **Card** in a `CardActionArea`.

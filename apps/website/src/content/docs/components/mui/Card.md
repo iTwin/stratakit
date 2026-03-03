@@ -1,6 +1,6 @@
 ---
 title: Card
-description: A Card concisely introduces a topic and its related actions.
+description: A Card concisely introduces a subject and its related actions.
 links:
   muiDocs: https://mui.com/material-ui/react-card/
   apiReference: https://mui.com/material-ui/api/card/
@@ -14,9 +14,9 @@ Make sure the **Card** is suitable for your use case. There may be other, more a
 
 | Use case                                                                          | **Card**                   | [**Tabs**](/components/tabs) | [**Dialog**](/components/dialog)  |
 | --------------------------------------------------------------------------------- | -------------------------- | ---------------------------- | --------------------------------- |
-| Briefly introduce a set of related subjects, displayed in a list or grid          |             ✅             |            ❌                |                                   |
-| Divide a single subject into subsections to be switched between                   |             ✅             |                              |                                   |
-| Present actions for a subject that require immediate attention                    |             ✅             |                              |                                   |
+| Introduce a single subject, as one of a set displayed as a list or grid           |             ✅             |              ❌              |                ❌                 |
+| Divide a single subject into subsections to be switched between                   |             ❌             |              ✅              |                ❌                 |
+| Present additional actions for a subject that require immediate attention         |             ❌            |               ❌              |                ✅                 |
 
 ## StrataKit MUI modifications
 
@@ -38,6 +38,7 @@ Make sure the **Card** is suitable for your use case. There may be other, more a
 ## ✅ Do
 
 - Use a heading element to provide a clear title for the card’s content.
+- Organize multiple **Cards** into an unordered list, where each `<li>` contains a single **Card**.
 - Use `CardActionArea` inside the heading if the entire card should be clickable.
 - Use `CardActions` when the card has multiple actions.
 
@@ -45,4 +46,5 @@ Make sure the **Card** is suitable for your use case. There may be other, more a
 
 - Don’t use a **Card** to group unrelated content or actions.
 - Don’t wrap the entire contents of the card in a `CardActionArea`.
-- Don’t use **Card** to highlight content belonging to a larger subject. 
+- Don’t use **Card** just to highlight some content belonging to a larger subject. 
+- Don’t hide **Cards** inside **Accordions** or **Tabs**.

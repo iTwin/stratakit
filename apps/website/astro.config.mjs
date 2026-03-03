@@ -65,6 +65,10 @@ export default defineConfig({
 					label: "Components",
 					items: [
 						{
+							label: "Introduction",
+							slug: "components/introduction",
+						},
+						{
 							label: "MUI components",
 							autogenerate: { directory: "components/mui" },
 							collapsed: true,

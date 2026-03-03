@@ -4,8 +4,37 @@
  *--------------------------------------------------------------------------------------------*/
 
 :is(.MuiCheckbox-root, .MuiRadio-root) {
+	/* #region Variables */
+	--✨border-radius-checkbox: var(--stratakit-mui-shape-borderRadius);
+	--✨border-radius-radio: 50%;
+
+	--✨bg--default: var(--stratakit-color-bg-neutral-base);
+	--✨bg--checked: var(--stratakit-color-bg-accent-base);
+	--✨bg--error: var(--stratakit-color-bg-neutral-base);
+	--✨bg--disabled: var(--stratakit-color-bg-glow-on-surface-disabled);
+
+	--✨border--default: var(--stratakit-color-border-shadow-base);
+	--✨border--checked: var(--stratakit-color-border-shadow-strong);
+	--✨border--error: var(--stratakit-color-border-critical-base);
+	--✨border--disabled: var(--stratakit-color-border-glow-on-surface-disabled);
+
+	--✨checkmark--checked: var(--stratakit-color-icon-neutral-emphasis);
+	--✨checkmark--error: var(--stratakit-color-icon-neutral-primary);
+	--✨checkmark--disabled: var(--stratakit-color-icon-neutral-disabled);
+
+	--✨touch-target-hover--default: var(--stratakit-color-bg-glow-on-surface-neutral-hover);
+	--✨touch-target-hover--checked: var(--stratakit-color-bg-glow-on-surface-accent-hover);
+	--✨touch-target-hover--error: var(--stratakit-color-bg-glow-on-surface-critical-hover);
+
 	--✨size: 1rem;
 
+	--✨svg-unchecked: url('data:image/svg+xml;utf8,<svg viewBox="0 0 16 16"></svg>');
+	--✨svg-checkbox-checked: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 16"><path fill="currentColor" d="M11.73 5.47a.75.75 0 0 1 0 1.06l-4.4 4.4a.75.75 0 0 1-1.06 0l-2-2a.75.75 0 0 1 1.06-1.06L6.8 9.34l3.87-3.87a.75.75 0 0 1 1.06 0Z"/></svg>');
+	--✨svg-checkbox-indeterminate: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 16"><path fill="currentColor" d="M4.25 8A.75.75 0 0 1 5 7.25h6.5a.75.75 0 0 1 0 1.5H5A.75.75 0 0 1 4.25 8Z"/></svg>');
+	--✨svg-radio-checked: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" ><circle cx="8" cy="8" r="4" /></svg>');
+	/* #endregion */
+
+	/* #region Structural */
 	padding: 0;
 	position: relative;
 
@@ -15,38 +44,21 @@
 		position: absolute;
 		inset: calc(((24px - var(--✨size)) / 2) * -1); /* Makes touch target area 24px */
 		border-radius: 50%;
-		background-color: var(--_hover-background-color);
-	}
-
-	@media (any-hover: hover) {
-		&:where(:not(.Mui-disabled)):hover,
-		:where(.MuiFormControlLabel-root:where(:not(.Mui-disabled))):hover & {
-			--_hover-background-color: var(--stratakit-color-bg-glow-on-surface-neutral-hover);
-
-			&:where(.Mui-checked, .MuiCheckbox-indeterminate) {
-				--_hover-background-color: var(--stratakit-color-bg-glow-on-surface-accent-hover);
-			}
-
-			:where(.Mui-error) & {
-				--_hover-background-color: var(--stratakit-color-bg-glow-on-surface-critical-hover);
-			}
-		}
 	}
 
 	> input {
-		--✨unchecked-svg: url('data:image/svg+xml;utf8,<svg viewBox="0 0 16 16"></svg>');
-
 		appearance: none;
 		opacity: 1;
 		aspect-ratio: 1;
 		inline-size: var(--✨size);
 		block-size: var(--✨size);
-		background-color: var(--stratakit-color-bg-neutral-base);
-		border: 1px solid var(--stratakit-color-border-shadow-base);
-		color: var(--stratakit-color-icon-neutral-emphasis);
+		background-color: var(--_MuiCheckbox-background-color);
+		border: 1px solid var(--_MuiCheckbox-border-color);
+		border-radius: var(--_MuiCheckbox-border-radius);
+		color: var(--_MuiCheckbox-color);
 		position: relative;
-		--_check-symbol-mask-image: var(--✨unchecked-svg);
 
+		/* This pseudo-element adds the actual checkmark SVG via `--_MuiCheckbox-mask-image` */
 		&::after {
 			content: "";
 			position: absolute;
@@ -54,50 +66,63 @@
 			background-color: currentColor;
 			mask-repeat: no-repeat;
 			mask-position: center;
-			mask-image: var(--_check-symbol-mask-image);
+			mask-image: var(--_MuiCheckbox-mask-image);
+		}
+	}
+	/* #endregion */
+
+	/* #region Visual styles */
+	--_MuiCheckbox-mask-image: var(--✨svg-unchecked);
+	--_MuiCheckbox-background-color: var(--✨bg--default);
+	--_MuiCheckbox-border-color: var(--✨border--default);
+	--_MuiCheckbox-color: var(--✨checkmark--checked);
+	--_MuiCheckbox-hover-overlay-color: var(--✨touch-target-hover--default);
+
+	&:where(.Mui-checked, .MuiCheckbox-indeterminate) {
+		--_MuiCheckbox-background-color: var(--✨bg--checked);
+		--_MuiCheckbox-border-color: var(--✨border--checked);
+		--_MuiCheckbox-hover-overlay-color: var(--✨touch-target-hover--checked);
+	}
+
+	:where(.MuiFormControlLabel-root.Mui-error) & {
+		--_MuiCheckbox-background-color: var(--✨bg--error);
+		--_MuiCheckbox-border-color: var(--✨border--error);
+		--_MuiCheckbox-color: var(--✨checkmark--error);
+		--_MuiCheckbox-hover-overlay-color: var(--✨touch-target-hover--error);
+	}
+
+	&:where(.Mui-disabled) {
+		--_MuiCheckbox-background-color: var(--✨bg--disabled);
+		--_MuiCheckbox-border-color: var(--✨border--disabled);
+		--_MuiCheckbox-color: var(--✨checkmark--disabled);
+		--_MuiCheckbox-hover-overlay-color: transparent;
+	}
+
+	&:where(.MuiCheckbox-root) {
+		--_MuiCheckbox-border-radius: var(--✨border-radius-checkbox);
+
+		&:where(.Mui-checked) {
+			--_MuiCheckbox-mask-image: var(--✨svg-checkbox-checked);
 		}
 
-		:where(.Mui-checked, .MuiCheckbox-indeterminate) & {
-			background-color: var(--stratakit-color-bg-accent-base);
-			border-color: var(--stratakit-color-border-shadow-strong);
-			color: var(--stratakit-color-icon-neutral-emphasis);
-		}
-
-		:where(.Mui-error) & {
-			background-color: var(--stratakit-color-bg-neutral-base);
-			border-color: var(--stratakit-color-border-critical-base);
-			color: var(--stratakit-color-icon-neutral-primary);
-		}
-
-		:where(.Mui-disabled) & {
-			background-color: var(--stratakit-color-bg-glow-on-surface-disabled);
-			border-color: var(--stratakit-color-border-glow-on-surface-disabled);
-			color: var(--stratakit-color-icon-neutral-disabled);
+		&:where(.MuiCheckbox-indeterminate) {
+			--_MuiCheckbox-mask-image: var(--✨svg-checkbox-indeterminate);
 		}
 	}
 
-	&:where(.MuiCheckbox-root) > input {
-		--✨checked-svg: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 16"><path fill="currentColor" d="M11.73 5.47a.75.75 0 0 1 0 1.06l-4.4 4.4a.75.75 0 0 1-1.06 0l-2-2a.75.75 0 0 1 1.06-1.06L6.8 9.34l3.87-3.87a.75.75 0 0 1 1.06 0Z"/></svg>');
-		--✨indeterminate-svg: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 16"><path fill="currentColor" d="M4.25 8A.75.75 0 0 1 5 7.25h6.5a.75.75 0 0 1 0 1.5H5A.75.75 0 0 1 4.25 8Z"/></svg>');
+	&:where(.MuiRadio-root) {
+		--_MuiCheckbox-border-radius: var(--✨border-radius-radio);
 
-		border-radius: var(--stratakit-mui-shape-borderRadius);
-
-		:where(.Mui-checked) & {
-			--_check-symbol-mask-image: var(--✨checked-svg);
-		}
-
-		:where(.MuiCheckbox-indeterminate) & {
-			--_check-symbol-mask-image: var(--✨indeterminate-svg);
+		&:where(.Mui-checked) {
+			--_MuiCheckbox-mask-image: var(--✨svg-radio-checked);
 		}
 	}
 
-	&:where(.MuiRadio-root) > input {
-		--✨checked-svg: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" ><circle cx="8" cy="8" r="4" /></svg>');
-
-		border-radius: 50%;
-
-		:where(.Mui-checked) & {
-			--_check-symbol-mask-image: var(--✨checked-svg);
+	@media (any-hover: hover) {
+		&:where(:hover)::before,
+		:where(.MuiFormControlLabel-root:hover) &::before {
+			background-color: var(--_MuiCheckbox-hover-overlay-color);
 		}
 	}
+	/* #endregion */
 }

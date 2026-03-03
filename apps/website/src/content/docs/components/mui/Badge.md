@@ -11,7 +11,7 @@ links:
 ## StrataKit MUI modifications
 
 - Added `inline` prop to display the badge in normal document flow instead of positioned relative to its child.
-- The `"default"` variant has been removed. The default variant is now `"secondary"`.
+- The `"default"` color has been removed. The default color is now `"secondary"`.
 
 ## Examples
 

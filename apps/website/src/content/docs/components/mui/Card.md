@@ -14,9 +14,9 @@ Make sure the **Card** is suitable for your use case. There may be other, more a
 
 | Use case                                                                          | **Card**                   | [**Tabs**](/components/tabs) | [**Dialog**](/components/dialog)  |
 | --------------------------------------------------------------------------------- | -------------------------- | ---------------------------- | --------------------------------- |
-| Briefly introduce each of a set of related subjects, displayed in a list or grid  |             ✅             |            ❌                |                                   |
+| Briefly introduce a set of related subjects, displayed in a list or grid          |             ✅             |            ❌                |                                   |
 | Divide a single subject into subsections to be switched between                   |             ✅             |                              |                                   |
-| Insert actions for a subject that require immediate attention                     |             ✅             |                              |                                   |
+| Present actions for a subject that require immediate attention                    |             ✅             |                              |                                   |
 
 ## StrataKit MUI modifications
 
@@ -45,3 +45,4 @@ Make sure the **Card** is suitable for your use case. There may be other, more a
 
 - Don’t use a **Card** to group unrelated content or actions.
 - Don’t wrap the entire contents of the card in a `CardActionArea`.
+- Don’t use **Card** to highlight content belonging to a larger subject. 

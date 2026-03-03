@@ -8,7 +8,11 @@
 // See: https://www.typescriptlang.org/docs/handbook/declaration-merging.html#module-augmentation
 
 import type { RoleProps } from "@ariakit/react/role";
-import type { TextFieldProps, TextFieldVariants } from "@mui/material";
+import type { BadgeProps } from "@mui/material/Badge";
+import type {
+	TextFieldProps,
+	TextFieldVariants,
+} from "@mui/material/TextField";
 import type * as React from "react";
 
 declare module "@mui/material/OverridableComponent" {
@@ -64,7 +68,7 @@ declare module "@mui/material/Badge" {
 		 *
 		 * @default 'secondary'
 		 */
-		color?: BadgeOwnProps["color"];
+		color?: BadgeProps["color"];
 	}
 }
 

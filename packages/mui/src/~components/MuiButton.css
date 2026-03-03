@@ -60,6 +60,10 @@
 		}
 	}
 
+	&:where(.MuiButton-outlinedError, .MuiButton-textError) {
+		--_MuiButton-icon-color: var(--stratakit-color-icon-critical-base);
+	}
+
 	&:where(.Mui-disabled) {
 		--_MuiButton-icon-color: var(--stratakit-color-icon-neutral-disabled);
 	}

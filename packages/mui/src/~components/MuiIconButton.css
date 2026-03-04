@@ -4,49 +4,37 @@
  *--------------------------------------------------------------------------------------------*/
 
 .MuiIconButton-root {
-	--✨color--default: var(--stratakit-color-icon-neutral-base);
+	--✨icon-color--hover-mix: color-mix(
+		in oklch,
+		var(--_MuiIconButton-icon-color) 100%,
+		var(--stratakit-color-glow-hue) var(--stratakit-color-icon-glow-strong-hover-\%)
+	);
+
+	--_MuiIconButton-icon-color: var(--stratakit-color-icon-neutral-base);
+	--_MuiIconButton-icon-color--hover: var(--stratakit-color-icon-neutral-primary);
 
 	border-radius: 4px;
-	color: var(--🥝Icon-color);
-
-	--🥝Icon-color: var(--✨color--default);
+	color: var(--_MuiIconButton-icon-color);
 
 	@media (any-hover: hover) {
 		&:where(:hover) {
-			--🥝Icon-color: var(--stratakit-color-icon-neutral-primary);
+			color: var(--_MuiIconButton-icon-color--hover);
 		}
 	}
 
 	&:where(.MuiIconButton-colorPrimary) {
-		--🥝Icon-color: var(--stratakit-color-icon-accent-strong);
-
-		@media (any-hover: hover) {
-			&:where(:hover) {
-				--🥝Icon-color: color-mix(
-					in oklch,
-					var(--stratakit-color-icon-accent-strong) 100%,
-					var(--stratakit-color-glow-hue) var(--stratakit-color-icon-glow-strong-hover-\%)
-				);
-			}
-		}
+		--_MuiIconButton-icon-color: var(--stratakit-color-icon-accent-strong);
+		--_MuiIconButton-icon-color--hover: var(--✨icon-color--hover-mix);
 	}
 
 	&:where(.MuiIconButton-colorError) {
-		--🥝Icon-color: var(--stratakit-color-icon-critical-base);
-
-		@media (any-hover: hover) {
-			&:where(:hover) {
-				--🥝Icon-color: color-mix(
-					in oklch,
-					var(--stratakit-color-icon-critical-base) 100%,
-					var(--stratakit-color-glow-hue) var(--stratakit-color-icon-glow-strong-hover-\%)
-				);
-			}
-		}
+		--_MuiIconButton-icon-color: var(--stratakit-color-icon-critical-base);
+		--_MuiIconButton-icon-color--hover: var(--✨icon-color--hover-mix);
 	}
 
 	&:where(.Mui-disabled) {
-		--🥝Icon-color: var(--stratakit-color-icon-neutral-disabled);
+		--_MuiIconButton-icon-color: var(--stratakit-color-icon-neutral-disabled);
+		--_MuiIconButton-icon-color--hover: var(--_MuiIconButton-icon-color);
 	}
 
 	&:where(.MuiIconButton-sizeSmall) {

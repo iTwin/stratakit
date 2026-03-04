@@ -114,6 +114,19 @@ declare module "@mui/material/Chip" {
 		 * @default 'Clear'
 		 */
 		deleteLabel?: string;
+
+		/** @deprecated DO NOT USE */
+		color?: never;
+	}
+
+	interface ChipPropsColorOverrides {
+		default: false;
+		primary: false;
+		secondary: false;
+		error: false;
+		info: false;
+		success: false;
+		warning: false;
 	}
 }
 

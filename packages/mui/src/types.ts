@@ -9,6 +9,7 @@
 
 import type { RoleProps } from "@ariakit/react/role";
 import type { BadgeProps } from "@mui/material/Badge";
+import type { IconButtonProps } from "@mui/material/IconButton";
 import type {
 	TextFieldProps,
 	TextFieldVariants,
@@ -172,6 +173,15 @@ declare module "@mui/material/IconButton" {
 		success: false;
 		warning: false;
 		inherit: false;
+	}
+
+	interface IconButtonOwnProps {
+		/**
+		 * The default color with `@stratakit/mui` is `"secondary"`.
+		 *
+		 * @default 'secondary'
+		 */
+		color?: IconButtonProps["color"];
 	}
 }
 

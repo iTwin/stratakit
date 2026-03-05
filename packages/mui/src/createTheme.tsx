@@ -219,7 +219,9 @@ function createTheme() {
 			MuiGrid: { defaultProps: { component: Role.div } },
 			MuiGridLegacy: { defaultProps: { component: Role.div } },
 			MuiIcon: { defaultProps: { component: Role.span } },
-			MuiIconButton: { defaultProps: { component: Role.button } },
+			MuiIconButton: {
+				defaultProps: { component: Role.button, color: "secondary" },
+			},
 			MuiImageList: { defaultProps: { component: Role.ul } },
 			MuiImageListItem: { defaultProps: { component: Role.li } },
 			MuiInputAdornment: { defaultProps: { component: Role.div } },

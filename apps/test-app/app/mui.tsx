@@ -424,6 +424,7 @@ function ComponentExamples(props: ComponentExamplesProps) {
 					{name}
 				</Typography>
 				<IconButton
+					render={<a />}
 					id={`${id}-permalink`}
 					aria-labelledby={`${id}-permalink ${id}`}
 					className={styles.examplePermalink}

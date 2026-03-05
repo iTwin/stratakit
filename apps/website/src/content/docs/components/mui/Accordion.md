@@ -37,16 +37,6 @@ Disclose any **Accordion’s** content by default using the `defaultExpanded` pr
 
 ::example{src="mui/Accordion.expanded"}
 
-<!--## Configurations
-
-### Variants
-
-| Use case                                                                         | Outline                      | Ghost                        |
-| -------------------------------------------------------------------------------- | :--------------------------: | :--------------------------: |
-| General                                                                          |              ✅              |              ❌               |
-| Tight spaces, such as table cells, where the context provides an outline already |              ❌              |              ✅               |
--->
-
 ## Do
 
 - Use **AccordionItems** to tidy away long sections of content, to be later disclosed.

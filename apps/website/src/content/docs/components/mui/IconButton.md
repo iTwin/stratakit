@@ -19,6 +19,10 @@ Make sure the **IconButton** is suitable for your use case. There may be other, 
 | Inside a [toolbar](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/toolbar_role) | ❌                           | ✅                                   |
 | Table cell (inline action)                                                                                       | ❌                           | ✅                                   |
 
+## StrataKit MUI modifications
+
+- The `"default"`, `"info"`, `"success"`, `"warning"`, `"inherit"` colors have been removed. The default color is now `"secondary"`.
+
 ## Examples
 
 ### Badge

@@ -82,6 +82,18 @@ function createTheme() {
 			button: {
 				textTransform: "none", // Disable all-caps on buttons and tabs
 			},
+			// These are only hardcoded here as fallback. The CSS will take precedence.
+			body1: { fontSize: 16 },
+			body2: { fontSize: 14 },
+			h1: { fontSize: 48 },
+			h2: { fontSize: 40 },
+			h3: { fontSize: 32 },
+			h4: { fontSize: 28 },
+			h5: { fontSize: 24 },
+			h6: { fontSize: 20 },
+			caption: { fontSize: 12 },
+			subtitle1: { fontSize: 12 },
+			subtitle2: { fontSize: 11 },
 		},
 		shadows: [
 			"none", // 0
@@ -377,7 +389,7 @@ function createTheme() {
 					describeChild: true,
 				},
 			},
-			MuiTypography: { defaultProps: { component: Role.p } },
+			MuiTypography: { defaultProps: { component: Role.p, variant: "body2" } },
 		},
 	});
 }

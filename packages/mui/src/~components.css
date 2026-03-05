@@ -15,6 +15,7 @@
 @import "./~components/MuiInput.css";
 @import "./~components/MuiSlider.css";
 @import "./~components/MuiTabs.css";
+@import "./~components/MuiTypography.css";
 
 .MuiAccordion-root {
 	background-color: transparent;

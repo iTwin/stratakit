@@ -37,25 +37,6 @@ Disclose any **Accordion’s** content by default using the `defaultExpanded` pr
 
 ::example{src="mui/Accordion.expanded"}
 
-### Decorations
-
-::example{src="AccordionItem.decoration"}
-
-Decorate the `AccordionItem.Header` with an [**Icon**](/components/icon) using `AccordionItem.Decoration`.
-
-```jsx
-<AccordionItem.Decoration render={<Icon href={…} />} />
-```
-
-Add multiple icon decorations as child elements:
-
-```jsx
-<AccordionItem.Decoration>
-	<Icon href={firstIcon} />
-	<Icon href={secondIcon} />
-</AccordionItem.Decoration>
-```
-
 <!--## Configurations
 
 ### Variants

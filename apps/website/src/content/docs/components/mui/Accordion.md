@@ -37,12 +37,6 @@ Disclose any **Accordion’s** content by default using the `defaultExpanded` pr
 
 ::example{src="mui/Accordion.expanded"}
 
-### Marker positioning
-
-Place `AccordionItem.Marker` after the other `AccordionItem.Header` content to align it with the right-hand side of the `AccordionItem.Header`.
-
-::example{src="AccordionItem.marker-right"}
-
 ### Multiple AccordionItems
 
 Multiple **AccordionItems** make an Accordion.

@@ -167,6 +167,7 @@ declare module "@mui/material/FormLabel" {
 
 declare module "@mui/material/IconButton" {
 	interface IconButtonPropsColorOverrides {
+		default: false;
 		info: false;
 		success: false;
 		warning: false;

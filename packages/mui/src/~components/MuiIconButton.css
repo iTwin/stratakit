@@ -4,12 +4,6 @@
  *--------------------------------------------------------------------------------------------*/
 
 .MuiIconButton-root {
-	--✨icon-color--hover-mix: color-mix(
-		in oklch,
-		var(--_MuiIconButton-icon-color) 100%,
-		var(--stratakit-color-glow-hue) var(--stratakit-color-icon-glow-strong-hover-\%)
-	);
-
 	--_MuiIconButton-icon-color: var(--stratakit-color-icon-neutral-base);
 
 	border-radius: 4px;

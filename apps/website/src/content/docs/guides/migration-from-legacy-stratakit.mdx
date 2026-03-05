@@ -5,7 +5,7 @@ description: Learn how to migrate from legacy StrataKit components to StrataKit 
 
 import { Steps } from "@astrojs/starlight/components";
 
-This guide provides the necessary steps for migrating from initial StrataKit packages (`@stratakit/foundations`, `@stratakit/bricks`, and `@stratakit/structures`) to [Material UI](https://mui.com/material-ui/getting-started/) based StrataKit implementation.
+This guide provides the necessary steps for migrating from legacy StrataKit packages (`@stratakit/foundations`, `@stratakit/bricks`, and `@stratakit/structures`) to [Material UI](https://mui.com/material-ui/getting-started/) based StrataKit implementation.
 
 :::note
 Migration to StrataKit MUI can be done gradually, since both libraries can coexist in the same project.
@@ -19,29 +19,23 @@ Migration to StrataKit MUI can be done gradually, since both libraries can coexi
 
    Follow the [set up StrataKit MUI guide](/getting-started/develop/) to install the necessary dependencies and set up your project.
 
-2. **Replace the `Root` component**
+2. **Replace `@stratakit/foundations` with `@stratakit/mui`**
 
    Replace the [`Root`](/reference/foundations/Root) component from `@stratakit/foundations` with the `Root` component from `@stratakit/mui`.
+   This unlocks the ability to use [MUI components](https://mui.com/material-ui/all-components/) within the `Root`. Legacy StrataKit components nested within the `Root` will continue to work, enabling gradual migration.
 
    ```diff
    - import { Root } from "@stratakit/foundations";
    + import { Root } from "@stratakit/mui";
    ```
 
-   This unlocks the ability to use [MUI components](https://mui.com/material-ui/all-components/) within the `Root`. Existing StrataKit components nested within the `Root` are expected to work without any changes, enabling gradual migration.
-
-3. **Replace `Icon` component**
-
    Replace usage of [`Icon`](/reference/foundations/Icon) component from `@stratakit/foundations` with the `Icon` component from `@stratakit/mui`.
+   Continue using icons from the `@stratakit/icons` package.
 
    ```diff
    - import { Icon } from "@stratakit/foundations";
    + import { Icon } from "@stratakit/mui";
    ```
-
-   Continue using icons from the `@stratakit/icons` package.
-
-4. **Uninstall `@stratakit/foundations`**
 
    Once all direct and indirect usage of `@stratakit/foundations` has been replaced it is safe to remove the dependency.
 
@@ -49,18 +43,14 @@ Migration to StrataKit MUI can be done gradually, since both libraries can coexi
    npm uninstall @stratakit/foundations
    ```
 
-5. **Replace `@stratakit/bricks` components**
+3. **Replace `@stratakit/bricks` with `@stratakit/mui`**
 
-   Replace the usage of components from `@stratakit/bricks` with their MUI counterparts.
+   Replace the usage of components from `@stratakit/bricks` with their MUI counterparts. Refer to the [use MUI components](#use-mui-components) below for the component mapping and additional guidance.
 
    ```diff
    - import { Button } from "@stratakit/bricks";
    + import { Button } from "@stratakit/mui";
    ```
-
-   Refer to the [use MUI components](#use-mui-components) below for the component mapping and additional guidance.
-
-6. **Uninstall `@stratakit/bricks`**
 
    Once all usage of `@stratakit/bricks` has been replaced it is safe to remove the dependency.
 
@@ -68,7 +58,7 @@ Migration to StrataKit MUI can be done gradually, since both libraries can coexi
    npm uninstall @stratakit/bricks
    ```
 
-7. **Continue using `@stratakit/structures`**
+4. **Continue using `@stratakit/structures`**
 
    Replace the usage of [`AccordionItem`](/reference/structures/AccordionItem/), [`Banner`](/reference/structures/Banner/) and [`Chip`](/reference/structures/Chip/) components from `@stratakit/structures` package with their MUI counterparts.
 

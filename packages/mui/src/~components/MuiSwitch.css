@@ -4,7 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 
 .MuiSwitch-root {
-	--✨size: 1rem;
+	--✨size: 1.25rem;
 	--✨padding: var(--stratakit-space-x05);
 
 	align-items: center;

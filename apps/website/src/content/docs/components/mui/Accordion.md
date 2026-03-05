@@ -31,32 +31,6 @@ Make sure the **AccordionItem** is suitable for your use case. There may be othe
 
 ::example{src="mui/Accordion.actions"}
 
-## Usage
-
-::example{src="AccordionItem.default"}
-
-The **AccordionItem** is highly [composable](/guides/composition/#decomposition). It comprises multiple sub-components which can be configured in different ways. The main sub-components create the following, expected structure:
-
-- [`AccordionItem.Root`](/reference/structures/AccordionItem/#AccordionItem.Root): The required wrapper.
-  - [`AccordionItem.Header`](/reference/structures/AccordionItem/#AccordionItem.Header): The always-visible “handle”, labeling the content and used to disclose it.
-  - [`AccordionItem.Content`](/reference/structures/AccordionItem/#AccordionItem.Content): The content to be disclosed.
-
-Build the preceding, fairly typical, example using this code:
-
-```jsx
-<AccordionItem.Root>
-	<AccordionItem.Header>
-		<AccordionItem.Marker />
-		<AccordionItem.Button>
-			<AccordionItem.Label>What is StrataKit?</AccordionItem.Label>
-		</AccordionItem.Button>
-	</AccordionItem.Header>
-	<AccordionItem.Content>
-		StrataKit is Bentley Systems' open source design system and the successor to iTwinUI.
-	</AccordionItem.Content>
-</AccordionItem.Root>
-```
-
 ### Open by default
 
 ::example{src="AccordionItem.default-open"}

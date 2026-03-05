@@ -5,6 +5,7 @@
 
 @import "./~components/MuiAlert.css";
 @import "./~components/MuiAutocomplete.css";
+@import "./~components/MuiBadge.css";
 @import "./~components/MuiButton.css";
 @import "./~components/MuiCard.css";
 @import "./~components/MuiCheckbox.css";
@@ -15,6 +16,7 @@
 @import "./~components/MuiSlider.css";
 @import "./~components/MuiSwitch.css";
 @import "./~components/MuiTabs.css";
+@import "./~components/MuiTypography.css";
 
 .MuiAccordion-root {
 	background-color: transparent;

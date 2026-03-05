@@ -16,7 +16,7 @@ export default () => {
 		<Card className={styles.card} variant="outlined">
 			<CardMedia
 				className={styles.media}
-				component="img" // This does not work with `render` prop.
+				component="img"
 				height="140"
 				image="https://images.unsplash.com/photo-1489944440615-453fc2b6a9a9"
 				alt=""

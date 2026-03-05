@@ -7,12 +7,14 @@ import * as React from "react";
 import { Role } from "@ariakit/react/role";
 import OutlinedInput from "@mui/material/OutlinedInput";
 import { createTheme as createMuiTheme } from "@mui/material/styles";
+import { MuiBadge } from "./~components/MuiBadge.js";
 import { MuiCard, MuiCardActionArea } from "./~components/MuiCard.js";
 import {
 	MuiChip,
 	MuiChipDeleteIcon,
 	MuiChipLabel,
 } from "./~components/MuiChip.js";
+import { MuiSnackbar } from "./~components/MuiSnackbar.js";
 import {
 	ArrowDownIcon,
 	CaretsUpDownIcon,
@@ -80,6 +82,18 @@ function createTheme() {
 			button: {
 				textTransform: "none", // Disable all-caps on buttons and tabs
 			},
+			// These are only hardcoded here as fallback. The CSS will take precedence.
+			body1: { fontSize: 16 },
+			body2: { fontSize: 14 },
+			h1: { fontSize: 48 },
+			h2: { fontSize: 40 },
+			h3: { fontSize: 32 },
+			h4: { fontSize: 28 },
+			h5: { fontSize: 24 },
+			h6: { fontSize: 20 },
+			caption: { fontSize: 12 },
+			subtitle1: { fontSize: 12 },
+			subtitle2: { fontSize: 11 },
 		},
 		shadows: [
 			"none", // 0
@@ -129,7 +143,12 @@ function createTheme() {
 			MuiAvatar: { defaultProps: { component: Role.div } },
 			MuiAvatarGroup: { defaultProps: { component: Role.div } },
 			MuiBackdrop: { defaultProps: { component: Role.div } },
-			MuiBadge: { defaultProps: { component: Role.span } },
+			MuiBadge: {
+				defaultProps: {
+					component: MuiBadge,
+					color: "secondary",
+				},
+			},
 			MuiBottomNavigation: { defaultProps: { component: Role.div } },
 			MuiBottomNavigationAction: {
 				defaultProps: { component: Role.button },
@@ -213,7 +232,9 @@ function createTheme() {
 			MuiGrid: { defaultProps: { component: Role.div } },
 			MuiGridLegacy: { defaultProps: { component: Role.div } },
 			MuiIcon: { defaultProps: { component: Role.span } },
-			MuiIconButton: { defaultProps: { component: Role.button } },
+			MuiIconButton: {
+				defaultProps: { component: Role.button, color: "secondary" },
+			},
 			MuiImageList: { defaultProps: { component: Role.ul } },
 			MuiImageListItem: { defaultProps: { component: Role.li } },
 			MuiInputAdornment: { defaultProps: { component: Role.div } },
@@ -303,6 +324,15 @@ function createTheme() {
 			},
 			MuiSkeleton: { defaultProps: { component: Role.span } },
 			MuiSlider: { defaultProps: { component: Role.span } },
+			MuiSnackbar: {
+				defaultProps: {
+					slotProps: {
+						root: {
+							component: MuiSnackbar,
+						},
+					},
+				},
+			},
 			MuiSnackbarContent: { defaultProps: { component: Role.div } },
 			MuiStack: { defaultProps: { component: Role.div } },
 			MuiStep: { defaultProps: { component: Role.div } },
@@ -359,7 +389,7 @@ function createTheme() {
 					describeChild: true,
 				},
 			},
-			MuiTypography: { defaultProps: { component: Role.p } },
+			MuiTypography: { defaultProps: { component: Role.p, variant: "body2" } },
 		},
 	});
 }

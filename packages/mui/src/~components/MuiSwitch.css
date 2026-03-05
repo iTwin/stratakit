@@ -39,13 +39,12 @@
 		0px 0px 0px 1px var(--stratakit-color-border-shadow-base) inset,
 		var(--stratakit-shadow-control-button-base-drop);
 	--✨shadow--disabled: none;
-	--✨transform-scaleX: 1.75;
 
 	aspect-ratio: 1;
 	block-size: var(--_MuiSwitch-height);
 	inset: unset;
 	padding: var(--_MuiSwitch-padding);
-	transform: var(--_MuiSwitch-thumb-transform);
+	transform: var(--_MuiSwitch-thumb-position-transform);
 	transform-origin: left;
 
 	--_MuiSwitch-thumb-background-color: var(--✨bg--default);
@@ -65,15 +64,17 @@
 
 	&:where(.Mui-checked) {
 		inset: unset;
-		--_MuiSwitch-thumb-transform: translateX(
+		--_MuiSwitch-thumb-position-transform: translateX(
 			calc(var(--_MuiSwitch-height) - var(--_MuiSwitch-padding) * 2)
 		);
 	}
 
 	&:where(:has(.MuiSwitch-input:active):not(.Mui-disabled)) {
-		--_MuiSwitch-thumb-transform: scaleX(var(--✨transform-scaleX));
-		--_MuiSwitch-thumb-border-radius:
-			calc(var(--✨radius) / var(--✨transform-scaleX)) / var(--✨radius);
+		--_MuiSwitch-thumb-position-transform: translateX(
+			calc((var(--_MuiSwitch-height) - (var(--_MuiSwitch-padding) * 2)) / 2)
+		);
+		--_MuiSwitch-thumb-stretch-transform: scaleX(2);
+		--_MuiSwitch-thumb-border-radius: calc(var(--✨radius) / 2) / var(--✨radius);
 	}
 
 	&:where(.Mui-disabled) {
@@ -89,10 +90,12 @@
 	border-radius: var(--_MuiSwitch-thumb-border-radius);
 	block-size: 100%;
 	inline-size: 100%;
+	transform: var(--_MuiSwitch-thumb-stretch-transform);
 
 	@media (prefers-reduced-motion: no-preference) {
-		transition: border-radius 150ms ease-out;
-		will-change: border-radius;
+		transition: all 150ms ease-out;
+		transition-property: border-radius, transform;
+		will-change: border-radius, transform;
 	}
 }
 

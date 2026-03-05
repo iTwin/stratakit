@@ -7,6 +7,7 @@ import * as React from "react";
 import { Role } from "@ariakit/react/role";
 import OutlinedInput from "@mui/material/OutlinedInput";
 import { createTheme as createMuiTheme } from "@mui/material/styles";
+import { MuiBadge } from "./~components/MuiBadge.js";
 import { MuiCard, MuiCardActionArea } from "./~components/MuiCard.js";
 import {
 	MuiChip,
@@ -129,7 +130,12 @@ function createTheme() {
 			MuiAvatar: { defaultProps: { component: Role.div } },
 			MuiAvatarGroup: { defaultProps: { component: Role.div } },
 			MuiBackdrop: { defaultProps: { component: Role.div } },
-			MuiBadge: { defaultProps: { component: Role.span } },
+			MuiBadge: {
+				defaultProps: {
+					component: MuiBadge,
+					color: "secondary",
+				},
+			},
 			MuiBottomNavigation: { defaultProps: { component: Role.div } },
 			MuiBottomNavigationAction: {
 				defaultProps: { component: Role.button },

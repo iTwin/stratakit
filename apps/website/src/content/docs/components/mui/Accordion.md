@@ -33,41 +33,9 @@ Make sure the **AccordionItem** is suitable for your use case. There may be othe
 
 ### Expanded
 
-Disclose any **Accordion’s** content by default using the `defaultExpanded` prop. Alternatively, use `expanded` and `onChange` prop to control the expanded state.
+Disclose any **Accordion’s** content by default using the `defaultExpanded` prop. Alternatively, use `expanded` and `onChange` props to control the expanded state.
 
 ::example{src="mui/Accordion.expanded"}
-
-### Multiple AccordionItems
-
-Multiple **AccordionItems** make an Accordion.
-
-::example{src="AccordionItem.multiple"}
-
-**AccordionItems** commonly represent major sections in a page and must be introduced with native heading elements. Render a heading element using the `AccordionItem.Heading` element:
-
-```jsx
-<AccordionItem.Header>
-  <AccordionItem.Heading render={<h2 />}>
-    <AccordionItem.Button>
-      <AccordionItem.Label>Label</AccordionItem.Label>
-    </AccordionItem.Button>
-  </AccordionItem.Heading>
-<AccordionItem.Header>
-```
-
-`AccordionItem.Heading` must wrap `AccordionItem.Button`. This ensures the semantics of both underlying elements (`<h2>` and `<button>` respectively) are available during interaction.
-
-:::caution[Heading levels]
-
-It’s important you use an [appropriate heading level](https://www.a11yproject.com/posts/how-to-accessible-heading-structure/) for each **AccordionItem**. Since **AccordionItems** can only represent one level of data (see [**Use cases**](#use-cases)), each **AcccordionItem** in a set must take the _same_ heading level.
-
-- Title of page (`h1` heading)
-  - **AccordionItem** 1 (`h2` heading)
-  - **AccordionItem** 2 (`h2` heading)
-  - **AccordionItem** 3 (`h2` heading)
-  - **AccordionItem** 4 (`h2` heading)
-
-:::
 
 ### Decorations
 

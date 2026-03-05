@@ -14,6 +14,7 @@ import { Icon } from "@stratakit/mui";
 import * as NavigationList from "@stratakit/structures/unstable_NavigationList";
 import AccordionActions from "examples/mui/Accordion.actions.tsx";
 import AccordionDefault from "examples/mui/Accordion.default.tsx";
+import AccordionExpanded from "examples/mui/Accordion.expanded.tsx";
 import AlertPermutations_ from "examples/mui/Alert._permutations.tsx";
 import AlertDefault from "examples/mui/Alert.default.tsx";
 import AlertTitle from "examples/mui/Alert.title.tsx";
@@ -122,6 +123,7 @@ const components: Record<string, React.ReactNode> = {
 	Accordion: (
 		<Stack spacing={1} alignSelf="stretch">
 			<AccordionDefault />
+			<AccordionExpanded />
 			<AccordionActions />
 		</Stack>
 	),

@@ -31,11 +31,11 @@ Make sure the **AccordionItem** is suitable for your use case. There may be othe
 
 ::example{src="mui/Accordion.actions"}
 
-### Open by default
+### Expanded
 
-::example{src="AccordionItem.default-open"}
+Disclose any **Accordion’s** content by default using the `defaultExpanded` prop. Alternatively, use `expanded` and `onChange` prop to control the expanded state.
 
-Disclose any **AccordionItem’s** content by default using the [`defaultOpen`](/reference/structures/AccordionItem/#AccordionItem.Root.defaultOpen) (Boolean) prop.
+::example{src="mui/Accordion.expanded"}
 
 ### Marker positioning
 

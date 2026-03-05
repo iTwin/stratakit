@@ -11,30 +11,26 @@
 	);
 
 	--_MuiIconButton-icon-color: var(--stratakit-color-icon-neutral-base);
-	--_MuiIconButton-icon-color--hover: var(--stratakit-color-icon-neutral-primary);
 
 	border-radius: 4px;
 	color: var(--_MuiIconButton-icon-color);
 
 	@media (any-hover: hover) {
 		&:where(:hover) {
-			color: var(--_MuiIconButton-icon-color--hover);
+			--_MuiIconButton-icon-color: var(--stratakit-color-icon-neutral-primary);
 		}
 	}
 
 	&:where(.MuiIconButton-colorPrimary) {
 		--_MuiIconButton-icon-color: var(--stratakit-color-icon-accent-strong);
-		--_MuiIconButton-icon-color--hover: var(--✨icon-color--hover-mix);
 	}
 
 	&:where(.MuiIconButton-colorError) {
 		--_MuiIconButton-icon-color: var(--stratakit-color-icon-critical-base);
-		--_MuiIconButton-icon-color--hover: var(--✨icon-color--hover-mix);
 	}
 
 	&:where(.Mui-disabled) {
 		--_MuiIconButton-icon-color: var(--stratakit-color-icon-neutral-disabled);
-		--_MuiIconButton-icon-color--hover: var(--_MuiIconButton-icon-color);
 	}
 
 	&:where(.MuiIconButton-sizeSmall) {

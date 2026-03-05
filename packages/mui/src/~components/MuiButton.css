@@ -12,20 +12,12 @@
 }
 
 .MuiButton-root {
-	--✨icon-color--hover-mix: color-mix(
-		in oklch,
-		var(--_MuiButton-icon-color) 100%,
-		var(--stratakit-color-glow-hue) var(--stratakit-color-icon-glow-strong-hover-\%)
-	);
-
-	--_MuiButton-icon-color: var(--stratakit-color-icon-neutral-base);
-	--_MuiButton-icon-color--hover: var(--stratakit-color-icon-neutral-primary);
-
 	&:where(.MuiButton-colorSecondary) {
 		--variant-containedBg: var(--stratakit-color-bg-neutral-base);
 		--variant-containedColor: var(--stratakit-color-text-neutral-primary);
 		--variant-outlinedColor: var(--stratakit-color-text-neutral-primary);
 		--variant-textColor: var(--stratakit-color-text-neutral-primary);
+		--_MuiButton-icon-color: var(--stratakit-color-icon-neutral-base);
 
 		@media (any-hover: hover) {
 			&:where(:hover) {
@@ -34,6 +26,7 @@
 					var(--stratakit-color-bg-neutral-base) 100%,
 					var(--stratakit-color-glow-hue) var(--stratakit-color-bg-glow-base-hover-\%)
 				);
+				--_MuiButton-icon-color: var(--stratakit-color-icon-neutral-primary);
 			}
 		}
 	}
@@ -51,31 +44,21 @@
 
 	&:where(.MuiButton-containedPrimary, .MuiButton-containedError) {
 		--_MuiButton-icon-color: var(--stratakit-color-icon-neutral-emphasis);
-		--_MuiButton-icon-color--hover: var(--✨icon-color--hover-mix);
 	}
 
 	&:where(.MuiButton-outlinedPrimary, .MuiButton-textPrimary) {
 		--_MuiButton-icon-color: var(--stratakit-color-icon-accent-strong);
-		--_MuiButton-icon-color--hover: var(--✨icon-color--hover-mix);
 	}
 
 	&:where(.MuiButton-outlinedError, .MuiButton-textError) {
 		--_MuiButton-icon-color: var(--stratakit-color-icon-critical-base);
-		--_MuiButton-icon-color--hover: var(--✨icon-color--hover-mix);
 	}
 
 	&:where(.Mui-disabled) {
 		--_MuiButton-icon-color: var(--stratakit-color-icon-neutral-disabled);
-		--_MuiButton-icon-color--hover: var(--_MuiButton-icon-color);
 	}
 }
 
 .MuiButton-icon {
 	color: var(--_MuiButton-icon-color);
-
-	@media (any-hover: hover) {
-		:where(.MuiButton-root:hover) & {
-			color: var(--_MuiButton-icon-color--hover);
-		}
-	}
 }

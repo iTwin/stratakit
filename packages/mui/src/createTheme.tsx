@@ -14,6 +14,7 @@ import {
 	MuiChipDeleteIcon,
 	MuiChipLabel,
 } from "./~components/MuiChip.js";
+import { MuiSnackbar } from "./~components/MuiSnackbar.js";
 import {
 	ArrowDownIcon,
 	CaretsUpDownIcon,
@@ -309,6 +310,15 @@ function createTheme() {
 			},
 			MuiSkeleton: { defaultProps: { component: Role.span } },
 			MuiSlider: { defaultProps: { component: Role.span } },
+			MuiSnackbar: {
+				defaultProps: {
+					slotProps: {
+						root: {
+							component: MuiSnackbar,
+						},
+					},
+				},
+			},
 			MuiSnackbarContent: { defaultProps: { component: Role.div } },
 			MuiStack: { defaultProps: { component: Role.div } },
 			MuiStep: { defaultProps: { component: Role.div } },

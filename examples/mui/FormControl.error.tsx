@@ -10,7 +10,6 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import FormGroup from "@mui/material/FormGroup";
 import FormHelperText from "@mui/material/FormHelperText";
 import FormLabel from "@mui/material/FormLabel";
-import visuallyHidden from "@mui/utils/visuallyHidden";
 
 export default () => {
 	const errorId = React.useId();
@@ -29,7 +28,6 @@ export default () => {
 				/>
 			</FormGroup>
 			<FormHelperText id={errorId}>
-				<span style={visuallyHidden}>Error:</span>
 				You must accept these settings to continue.
 			</FormHelperText>
 		</FormControl>

@@ -44,12 +44,13 @@
 		0px 0px 0px 1px var(--stratakit-color-border-shadow-base) inset,
 		var(--stratakit-shadow-control-button-base-drop);
 	--✨shadow--disabled: none;
+	--✨translateX: translateX(calc(var(--_MuiSwitch-height) - var(--_MuiSwitch-padding) * 2));
 
 	aspect-ratio: 1;
 	block-size: var(--_MuiSwitch-height);
 	inset: unset;
 	padding: var(--_MuiSwitch-padding);
-	transform: var(--_MuiSwitch-thumb-translateX);
+	transform: var(--_MuiSwitch-thumb-position-off);
 	transform-origin: left;
 
 	--_MuiSwitch-thumb-background-color: var(--✨bg--default);
@@ -68,14 +69,22 @@
 
 	&:where(.Mui-checked) {
 		inset: unset;
-		--_MuiSwitch-thumb-translateX: translateX(
-			calc(var(--_MuiSwitch-height) - var(--_MuiSwitch-padding) * 2)
-		);
+		transform: var(--_MuiSwitch-thumb-position-on);
 	}
 
 	&:where(.Mui-disabled) {
 		--_MuiSwitch-thumb-background-color: var(--✨bg--disabled);
 		--_MuiSwitch-thumb-box-shadow: var(--✨shadow--disabled);
+	}
+
+	&:where(:dir(ltr)) {
+		--_MuiSwitch-thumb-position-off: none;
+		--_MuiSwitch-thumb-position-on: var(--✨translateX);
+	}
+
+	&:where(:dir(rtl)) {
+		--_MuiSwitch-thumb-position-off: var(--✨translateX);
+		--_MuiSwitch-thumb-position-on: none;
 	}
 }
 

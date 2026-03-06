@@ -21,8 +21,8 @@ import { ColorSchemeProvider, useColorScheme } from "./~utils.tsx";
 
 import type { LinksFunction } from "react-router";
 
-import interVariable from "./fonts/InterVariable.woff2?url";
-import interVariableItalic from "./fonts/InterVariable-Italic.woff2?url";
+import interVariable from "./assets/InterVariable.woff2?url";
+import interVariableItalic from "./assets/InterVariable-Italic.woff2?url";
 
 const queryClient = new QueryClient({
 	defaultOptions: { queries: { experimental_prefetchInRender: true } }, // https://tanstack.com/query/latest/docs/framework/react/guides/suspense#using-usequerypromise-and-reactuse-experimental

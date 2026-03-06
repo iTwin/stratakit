@@ -44,3 +44,7 @@ Use a `defaultChecked` prop to set the initial checked state. Alternatively, use
 - Don't use switches for mandatory actions. The checked state of a switch can never be _invalid_.
 - Don't use one switch to change multiple settings simultaneously.
 - Don't use switches inside a form that needs submission. Use [**Checkbox**](/components/checkbox) instead.
+
+### Sizes
+
+::example{src="mui/Switch.sizes"}

@@ -79,7 +79,7 @@
 }
 
 .MuiSwitch-thumb {
-	aspect-ratio: inherit;
+	aspect-ratio: inherit; /* Inherited from `.MuiSwitch-switchBase` */
 	background-color: var(--_MuiSwitch-thumb-background-color);
 	box-shadow: var(--_MuiSwitch-thumb-box-shadow);
 	border-radius: 50%;
@@ -99,7 +99,7 @@
 	inline-size: calc(var(--_MuiSwitch-height) * 2 - var(--_MuiSwitch-padding) * 2);
 	background-color: var(--_MuiSwitch-track-background-color);
 	border: 1px solid var(--_MuiSwitch-track-border-color);
-	border-radius: inherit;
+	border-radius: inherit; /* Inherited from `.MuiSwitch-root` */
 	opacity: 1;
 	transition: all 150ms ease-out;
 	transition-property: background-color, border-color;

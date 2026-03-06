@@ -98,7 +98,7 @@
 .MuiSwitch-switchBase {
 	--_MuiSwitch-thumb-background-color: CanvasText;
 
-	&:where(.Mui-checked) {
+	&:where(.Mui-checked:not(.Mui-disabled)) {
 		--_MuiSwitch-thumb-background-color: SelectedItemText;
 
 		+ .MuiSwitch-track {
@@ -110,7 +110,6 @@
 		--_MuiSwitch-thumb-background-color: GrayText;
 
 		+ .MuiSwitch-track {
-			background-color: Canvas;
 			--_MuiSwitch-track-border-color: GrayText;
 		}
 	}

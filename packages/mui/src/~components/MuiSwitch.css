@@ -49,7 +49,7 @@
 	block-size: var(--_MuiSwitch-height);
 	inset: unset;
 	padding: var(--_MuiSwitch-padding);
-	transform: var(--_MuiSwitch-thumb-position-transform);
+	transform: var(--_MuiSwitch-thumb-translateX);
 	transform-origin: left;
 
 	--_MuiSwitch-thumb-background-color: var(--✨bg--default);
@@ -68,7 +68,7 @@
 
 	&:where(.Mui-checked) {
 		inset: unset;
-		--_MuiSwitch-thumb-position-transform: translateX(
+		--_MuiSwitch-thumb-translateX: translateX(
 			calc(var(--_MuiSwitch-height) - var(--_MuiSwitch-padding) * 2)
 		);
 	}

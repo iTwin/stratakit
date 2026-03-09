@@ -65,7 +65,7 @@ export default defineConfig({
 					label: "Components",
 					items: [
 						{
-							label: "Introduction",
+							label: "Overview",
 							slug: "components/introduction",
 						},
 						{

@@ -26,7 +26,7 @@ export default () => {
 					},
 				}}
 			>
-				<AccordionSummary aria-controls={`${id}-content`}>
+				<AccordionSummary aria-controls={`${id}-sk-content`}>
 					<Typography render={<span />}>What is StrataKit?</Typography>
 				</AccordionSummary>
 				<AccordionDetails>
@@ -47,7 +47,7 @@ export default () => {
 					},
 				}}
 			>
-				<AccordionSummary aria-controls={`${id}-content`}>
+				<AccordionSummary aria-controls={`${id}-ds-content`}>
 					<Typography render={<span />}>What is a design system?</Typography>
 				</AccordionSummary>
 				<AccordionDetails>
@@ -69,7 +69,7 @@ export default () => {
 					},
 				}}
 			>
-				<AccordionSummary aria-controls={`${id}-content`}>
+				<AccordionSummary aria-controls={`${id}-d-content`}>
 					<Typography render={<span />}>What is design?</Typography>
 				</AccordionSummary>
 				<AccordionDetails>

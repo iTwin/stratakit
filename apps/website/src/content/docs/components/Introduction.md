@@ -20,13 +20,13 @@ The theme includes the following modifications:
 
 1. **Styling**: The style has been aligned with **StrataKit’s** visual language.
 2. **Typography**: **StrataKit’s** principle font is [Inter](https://rsms.me/inter/).
-3. **Icons**: **StrataKit** has its own extensive icon collection.
+3. **Icons**: Component icons are taken exclusively from **StrataKit’s** own icon collection.
 3. **API**: Some props have been adjusted or removed, and some new props have been added.
 4. **Structure and behavior**: The markup structure and interaction behavior of certain components have been modified to meet **StrataKit** UX and accessibility requirements.
 
 ## StrataKit components
 
-Accompanying specialized components are available in a [separate package named _structures_](https://www.npmjs.com/package/@stratakit/structures).
+Accompanying specialized components are available in separate packages, such as [@stratakit/structures](https://www.npmjs.com/package/@stratakit/structures).
 
 These components are developed independently, to meet the interface requirements of construction and infrastructure design software. 
 

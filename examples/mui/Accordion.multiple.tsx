@@ -22,7 +22,7 @@ export default () => {
 						"aria-labelledby": undefined,
 					},
 					heading: {
-						component: "div",
+						component: "h2",
 					},
 				}}
 			>
@@ -43,7 +43,7 @@ export default () => {
 						"aria-labelledby": undefined,
 					},
 					heading: {
-						component: "div",
+						component: "h2",
 					},
 				}}
 			>
@@ -65,7 +65,7 @@ export default () => {
 						"aria-labelledby": undefined,
 					},
 					heading: {
-						component: "div",
+						component: "h2",
 					},
 				}}
 			>

@@ -44,7 +44,8 @@
 		0px 0px 0px 1px var(--stratakit-color-border-shadow-base) inset,
 		var(--stratakit-shadow-control-button-base-drop);
 	--✨shadow--disabled: none;
-	--✨translateX: translateX(calc(var(--_MuiSwitch-height) - var(--_MuiSwitch-padding) * 2));
+	--✨translate-distance: calc(var(--_MuiSwitch-height) - var(--_MuiSwitch-padding) * 2);
+	--✨translateX: translateX(var(--✨translate-distance));
 
 	aspect-ratio: 1;
 	block-size: var(--_MuiSwitch-height);
@@ -79,8 +80,8 @@
 		--_MuiSwitch-thumb-box-shadow: var(--✨shadow--disabled);
 	}
 
-	&:where(:dir(rtl)) {
-		--_MuiSwitch-thumb-position-off: var(--✨translateX);
+	:root[dir="rtl"] & {
+		--_MuiSwitch-thumb-position-off: translateX(calc(var(--✨translate-distance) * -1));
 		--_MuiSwitch-thumb-position-on: none;
 	}
 }

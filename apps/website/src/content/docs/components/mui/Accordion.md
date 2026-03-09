@@ -33,6 +33,19 @@ Disclose any **Accordion’s** content by default using the `defaultExpanded` pr
 
 ::example{src="mui/Accordion.expanded"}
 
+### Variants
+
+- **Elevation:** Default accordion styling. Use in tight spaces, such as table cells, where the context provides an outline already.
+- **Outlined:** Adds a border around the accordion. Use in open layouts where you want to define the accordion's boundaries.
+
+::example{src="mui/Accordion.variants"}
+
+| Use case      | Elevation | Outlined |
+| ------------- | --------- | -------- |
+| Settings page | ❌        | ✅       |
+| Table cell    | ✅        | ❌       |
+| Widget        | ✅        | ❌       |
+
 ### Marker positioning
 
 Use custom CSS to position the marker.

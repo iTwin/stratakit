@@ -68,6 +68,8 @@ Use `AccordionActions` component to display actions related to the content of th
 ## Do
 
 - Use **Accordion** to tidy away long sections of content, to be later disclosed.
+- Adopt the correct heading level for the **Accordion’s** position in the document structure. The heading component can be [changed in the `slotProps`](https://mui.com/material-ui/react-accordion/#changing-heading-level).
+
 
 ## Don’t
 

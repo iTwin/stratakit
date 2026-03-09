@@ -38,7 +38,7 @@ Make sure the **Card** is suitable for your use case. There may be other, more a
 ## ✅ Do
 
 - Use a heading element to provide a clear title for the card’s content. Choose [an appropriate heading level](https://www.a11yproject.com/posts/how-to-accessible-heading-structure/).
-- Organize multiple **Cards** into an unordered list, where each `<li>` contains a single **Card**.
+- Organize multiple **Cards** into an unordered list, where each list item contains a single **Card**.
 - Use `CardActionArea` inside the heading if the entire card should be clickable.
 - Use `CardActions` when the card has supplementary actions.
 

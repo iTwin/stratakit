@@ -18,7 +18,7 @@ By making an established open-source library responsible for generic components,
 
 The theme includes the following modifications:
 
-1. **Branding**: The style has been aligned with **StrataKit’s** visual language.
+1. **Styling**: The style has been aligned with **StrataKit’s** visual language.
 2. **Typography**: **StrataKit’s** principle font is [Inter](https://rsms.me/inter/).
 3. **Icons**: **StrataKit** has its own extensive icon collection.
 3. **API**: Some props and the support of some prop values have been removed.

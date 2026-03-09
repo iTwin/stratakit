@@ -1,5 +1,5 @@
 ---
-title: Introduction to StrataKit components
+title: Components
 description: How StrataKit components are organized
 ---
 

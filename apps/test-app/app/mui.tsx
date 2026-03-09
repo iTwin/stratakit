@@ -16,6 +16,7 @@ import AccordionActions from "examples/mui/Accordion.actions.tsx";
 import AccordionDefault from "examples/mui/Accordion.default.tsx";
 import AccordionExpanded from "examples/mui/Accordion.expanded.tsx";
 import AccordionMarkerLeft from "examples/mui/Accordion.marker-left.tsx";
+import AccordionMultiple from "examples/mui/Accordion.multiple.tsx";
 import AlertPermutations_ from "examples/mui/Alert._permutations.tsx";
 import AlertDefault from "examples/mui/Alert.default.tsx";
 import AlertTitle from "examples/mui/Alert.title.tsx";
@@ -130,10 +131,11 @@ const components: Record<string, React.ReactNode> = {
 				<AccordionExpanded />
 			</div>
 			<div>
-				<AccordionActions />
-			</div>
-			<div>
 				<AccordionMarkerLeft />
+			</div>
+			<AccordionMultiple />
+			<div>
+				<AccordionActions />
 			</div>
 		</Stack>
 	),

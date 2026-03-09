@@ -25,6 +25,11 @@ export default () => {
 			<AccordionSummary
 				className={styles.summary}
 				aria-controls={`${id}-content`}
+				slotProps={{
+					expandIconWrapper: {
+						className: styles.expander,
+					},
+				}}
 			>
 				<Typography render={<span />}>What is StrataKit?</Typography>
 			</AccordionSummary>

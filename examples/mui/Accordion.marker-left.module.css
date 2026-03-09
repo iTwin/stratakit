@@ -4,6 +4,9 @@
  *--------------------------------------------------------------------------------------------*/
 
 .summary {
-	flex-direction: row-reverse;
 	gap: var(--stratakit-space-x3);
+}
+
+.expander {
+	order: -1;
 }

@@ -1,6 +1,6 @@
 ---
 title: Components
-description: How StrataKit components are organized
+description: How components are organized in StrataKit
 ---
 
 The **StrataKit** component catalog comes in two tiers:

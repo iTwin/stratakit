@@ -122,9 +122,15 @@ export const meta: MetaFunction = () => {
 const components: Record<string, React.ReactNode> = {
 	Accordion: (
 		<Stack spacing={1} alignSelf="stretch">
-			<AccordionDefault />
-			<AccordionExpanded />
-			<AccordionActions />
+			<div>
+				<AccordionDefault />
+			</div>
+			<div>
+				<AccordionExpanded />
+			</div>
+			<div>
+				<AccordionActions />
+			</div>
 		</Stack>
 	),
 	Alert: (

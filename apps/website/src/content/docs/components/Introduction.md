@@ -1,6 +1,6 @@
 ---
-title: Introduction to StrataKit components
-description: How StrataKit components are organized
+title: Components
+description: How components are organized in StrataKit
 ---
 
 The **StrataKit** component catalog comes in two tiers:
@@ -18,10 +18,10 @@ By making an established open-source library responsible for generic components,
 
 The theme includes the following modifications:
 
-1. **Branding**: The style has been aligned with **StrataKit’s** visual language.
+1. **Styling**: The style has been aligned with **StrataKit’s** visual language.
 2. **Typography**: **StrataKit’s** principle font is [Inter](https://rsms.me/inter/).
 3. **Icons**: **StrataKit** has its own extensive icon collection.
-3. **API**: Some props and the support of some prop values have been removed.
+3. **API**: Some props have been adjusted or removed, and some new props have been added.
 4. **Structure and behavior**: The markup structure and interaction behavior of certain components have been modified to meet **StrataKit** UX and accessibility requirements.
 
 ## StrataKit components

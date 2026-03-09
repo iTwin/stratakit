@@ -27,17 +27,23 @@ Make sure the **Accordion** is suitable for your use case. There may be other, m
 
 ## Examples
 
-### AccordionActions
-
-Use `AccordionActions` component to display actions related to the content of the **Accordion**.
-
-::example{src="mui/Accordion.actions"}
-
 ### Expanded
 
 Disclose any **Accordion’s** content by default using the `defaultExpanded` prop. Alternatively, use `expanded` and `onChange` props to control the expanded state.
 
 ::example{src="mui/Accordion.expanded"}
+
+### Marker positioning
+
+Use custom CSS to position the marker.
+
+::example{src="mui/Accordion.marker-left"}
+
+### AccordionActions
+
+Use `AccordionActions` component to display actions related to the content of the **Accordion**.
+
+::example{src="mui/Accordion.actions"}
 
 ## Do
 

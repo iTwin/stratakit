@@ -17,7 +17,6 @@ export default () => {
 	const id = React.useId();
 	return (
 		<Accordion
-			variant="outlined"
 			slotProps={{
 				region: {
 					role: undefined,

@@ -15,7 +15,6 @@ export default () => {
 	return (
 		<div>
 			<Accordion
-				variant="outlined"
 				slotProps={{
 					region: {
 						role: undefined,
@@ -36,7 +35,6 @@ export default () => {
 			</Accordion>
 
 			<Accordion
-				variant="outlined"
 				slotProps={{
 					region: {
 						role: undefined,
@@ -58,7 +56,6 @@ export default () => {
 			</Accordion>
 
 			<Accordion
-				variant="outlined"
 				slotProps={{
 					region: {
 						role: undefined,

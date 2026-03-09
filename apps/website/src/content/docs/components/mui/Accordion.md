@@ -61,7 +61,7 @@ It’s important you use an [appropriate heading level](https://www.a11yproject.
 
 ### AccordionActions
 
-Use `AccordionActions` component to display actions related to the content of the **Accordion**.
+Use the `AccordionActions` component to display actions related to the content of the **Accordion**.
 
 ::example{src="mui/Accordion.actions"}
 
@@ -69,7 +69,6 @@ Use `AccordionActions` component to display actions related to the content of th
 
 - Use **Accordion** to tidy away long sections of content, to be later disclosed.
 - Adopt the correct heading level for the **Accordion’s** position in the document structure. The heading component can be [changed in the `slotProps`](https://mui.com/material-ui/react-accordion/#changing-heading-level).
-
 
 ## Don’t
 

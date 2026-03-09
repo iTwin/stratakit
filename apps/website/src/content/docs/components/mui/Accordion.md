@@ -45,7 +45,7 @@ Multiple **Accordions** make a set of accordions.
 
 ::example{src="mui/Accordion.multiple"}
 
-**Accordions** commonly represent major sections of a page and are rendered with an [`<h3>` heading element](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/Heading_Elements) by default. Use `component` prop of a [`heading` slot](https://mui.com/material-ui/api/accordion/#Accordion-css-MuiAccordion-heading) to change the heading level or remove the heading entirely.
+**Accordions** commonly represent major sections of a page and are rendered with an [`<h3>` heading element](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/Heading_Elements) by default. Use `component` prop of a [`heading` slot props](https://mui.com/material-ui/api/accordion/#Accordion-css-MuiAccordion-heading) to change the heading level or remove the heading entirely.
 
 :::caution[Heading levels]
 

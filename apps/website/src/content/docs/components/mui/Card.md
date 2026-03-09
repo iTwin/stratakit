@@ -22,7 +22,7 @@ Make sure the **Card** is suitable for your use case. There may be other, more a
 
 - `Card` is rendered as an [`<article>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/article) element by default. This programmatically indicates the bounds of the **Card’s** contents.
 - `CardHeader`'s `title` is rendered as an `<h2>` by default. 
-- `CardActionArea` has `role="button"` removed to avoid conflicting semantics when rendered as a link.
+- `CardActionArea` has had `role="button"` removed to avoid conflicting semantics when rendered as a link.
 - `CardActionArea` has been redesigned to no longer wrap the entire card content. Instead, it should be used in the **Card's** heading or title area.
 
 ## Examples

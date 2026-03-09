@@ -13,6 +13,7 @@ import visuallyHidden from "@mui/utils/visuallyHidden";
 import { Icon } from "@stratakit/mui";
 import * as NavigationList from "@stratakit/structures/unstable_NavigationList";
 import AccordionActions from "examples/mui/Accordion.actions.tsx";
+import AccordionDecoration from "examples/mui/Accordion.decoration.tsx";
 import AccordionDefault from "examples/mui/Accordion.default.tsx";
 import AccordionExpanded from "examples/mui/Accordion.expanded.tsx";
 import AccordionMarkerLeft from "examples/mui/Accordion.marker-left.tsx";
@@ -134,6 +135,9 @@ const components: Record<string, React.ReactNode> = {
 				<AccordionMarkerLeft />
 			</div>
 			<AccordionMultiple />
+			<div>
+				<AccordionDecoration />
+			</div>
 			<div>
 				<AccordionActions />
 			</div>

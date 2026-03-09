@@ -41,11 +41,9 @@ Use custom CSS to position the marker.
 
 ### Multiple Accordions
 
-Multiple **Accordions** make a set of accordions.
+Multiple **Accordions** make a set of accordions. **Accordions** commonly represent major sections of a page and are rendered with an [`<h3>` heading element](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/Heading_Elements) by default. Use `component` prop of a [`heading` slot props](https://mui.com/material-ui/api/accordion/#Accordion-css-MuiAccordion-heading) to change the heading level or remove the heading entirely.
 
 ::example{src="mui/Accordion.multiple"}
-
-**Accordions** commonly represent major sections of a page and are rendered with an [`<h3>` heading element](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/Heading_Elements) by default. Use `component` prop of a [`heading` slot props](https://mui.com/material-ui/api/accordion/#Accordion-css-MuiAccordion-heading) to change the heading level or remove the heading entirely.
 
 :::caution[Heading levels]
 
@@ -58,6 +56,12 @@ It’s important you use an [appropriate heading level](https://www.a11yproject.
   - **Accordion** 4 (`h2` heading)
 
 :::
+
+### Decorations
+
+Decorate the `AccordionSummary` with an [**Icon**](/components/icon).
+
+::example{src="mui/Accordion.decoration"}
 
 ### AccordionActions
 

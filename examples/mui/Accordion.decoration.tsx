@@ -8,8 +8,10 @@ import Accordion from "@mui/material/Accordion";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import Typography from "@mui/material/Typography";
+import { Icon } from "@stratakit/mui";
 
-import styles from "./Accordion.marker-left.module.css";
+import infoIcon from "@stratakit/icons/info.svg";
+import styles from "./Accordion.decoration.module.css";
 
 export default () => {
 	const id = React.useId();
@@ -24,9 +26,14 @@ export default () => {
 			}}
 		>
 			<AccordionSummary
-				className={styles.summary}
 				aria-controls={`${id}-content`}
+				slotProps={{
+					content: {
+						className: styles.summaryContent,
+					},
+				}}
 			>
+				<Icon href={infoIcon} />
 				<Typography render={<span />}>What is StrataKit?</Typography>
 			</AccordionSummary>
 			<AccordionDetails>

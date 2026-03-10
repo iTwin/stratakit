@@ -142,8 +142,8 @@ Read additional [StrataKit MUI component documentation](/components/introduction
 ### Badge
 
 - Replace the `Badge` component from `@stratakit/bricks` with the `Badge` component from `@mui/material`. See [Badge examples](/components/badge/) for reference.
-- Use `inline` prop to display the badge in normal document flow.
-- Change [`tone`](/reference/bricks/Badge#Badge.tone) prop to [`color`](https://mui.com/material-ui/api/chip/#chip-prop-color) prop.
+- Use `inline` prop to display the badge in [normal document flow](/components/badge/#inline).
+- Change [`tone`](/reference/bricks/Badge#Badge.tone) prop to [`color`](https://mui.com/material-ui/api/badge/#badge-prop-color) prop.
 
   | `tone` value  | `color` value |
   | ------------- | ------------- |
@@ -154,13 +154,7 @@ Read additional [StrataKit MUI component documentation](/components/introduction
   | `"attention"` | `"warning"`   |
   | `"critical"`  | `"error"`     |
 
-- Update value of [`variant`](/reference/bricks/Badge#Badge.variant) prop.
-
-  | Before      | After        |
-  | ----------- | ------------ |
-  | `"solid"`   | `"filled"`   |
-  | `"muted"`   | `"filled"`   |
-  | `"outline"` | `"outlined"` |
+- Remove [`variant`](/reference/bricks/Badge#Badge.variant) prop. Only `"standard"` variant is supported by MUI component.
 
 ### Banner
 

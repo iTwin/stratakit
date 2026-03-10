@@ -236,7 +236,7 @@ declare module "@mui/material/Switch" {
 
 declare module "@mui/material/TableCell" {
 	interface TableCellProps extends Pick<CommonProps, "render"> {
-		/** @deprecated DO NOT USE */
+		/** @deprecated Use `render` prop instead. */
 		component?: MuiTableCellProps["component"];
 	}
 }

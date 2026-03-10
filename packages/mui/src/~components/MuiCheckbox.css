@@ -43,7 +43,7 @@
 		content: "";
 		position: absolute;
 		inset: calc(
-			((var(--touch-target-size) - var(--✨size)) / 2) *
+			((var(--stratakit-mui-touch-target-size) - var(--✨size)) / 2) *
 			-1
 		); /* Makes touch target area 24px */
 		border-radius: 50%;

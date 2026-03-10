@@ -4,10 +4,10 @@
  *--------------------------------------------------------------------------------------------*/
 
 .🥝MuiRoot {
-	--touch-target-size: 24px;
-	--component-size-small: 1.5rem;
-	--component-size-medium: 2rem;
-	--component-size-large: 2.5rem;
+	--stratakit-mui-touch-target-size: 24px;
+	--stratakit-mui-component-size-small: 1.5rem;
+	--stratakit-mui-component-size-medium: 2rem;
+	--stratakit-mui-component-size-large: 2.5rem;
 }
 
 [data-color-scheme],

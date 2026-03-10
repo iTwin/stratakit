@@ -43,7 +43,6 @@ Disclose any **Accordion’s** content by default using the `defaultExpanded` pr
 | Use case      | Elevation | Outlined |
 | ------------- | --------- | -------- |
 | Settings page | ❌        | ✅       |
-| Table cell    | ✅        | ❌       |
 | Widget        | ✅        | ❌       |
 
 ### Marker positioning

@@ -25,6 +25,10 @@ Make sure the **Accordion** is suitable for your use case. There may be other, m
 | Temporary, interruptive content (e.g. confirmation, form)                                                             | ❌                                 | ❌                                                                                                | ❌                       | ✅                           |
 | Reordering sections                                                                                                   | ✅                                 | ❌                                                                                                | ❌                       | ❌                           |
 
+## StrataKit MUI modifications
+
+- Removed [`role="region"`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/region_role) semantics. The **Accordion** no longer creates a regional navigational landmark.
+
 ## Examples
 
 ### Expanded

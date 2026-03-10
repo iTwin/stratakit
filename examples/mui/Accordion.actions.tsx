@@ -14,14 +14,7 @@ import Typography from "@mui/material/Typography";
 export default () => {
 	const id = React.useId();
 	return (
-		<Accordion
-			slotProps={{
-				region: {
-					role: undefined,
-					"aria-labelledby": undefined,
-				},
-			}}
-		>
+		<Accordion>
 			<AccordionSummary aria-controls={`${id}-content`}>
 				<Typography render={<span />}>What is a design system?</Typography>
 			</AccordionSummary>

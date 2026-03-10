@@ -16,10 +16,6 @@ export default () => {
 		<div>
 			<Accordion
 				slotProps={{
-					region: {
-						role: undefined,
-						"aria-labelledby": undefined,
-					},
 					heading: {
 						component: "h2",
 					},
@@ -36,10 +32,6 @@ export default () => {
 
 			<Accordion
 				slotProps={{
-					region: {
-						role: undefined,
-						"aria-labelledby": undefined,
-					},
 					heading: {
 						component: "h2",
 					},
@@ -57,10 +49,6 @@ export default () => {
 
 			<Accordion
 				slotProps={{
-					region: {
-						role: undefined,
-						"aria-labelledby": undefined,
-					},
 					heading: {
 						component: "h2",
 					},

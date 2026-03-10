@@ -14,14 +14,7 @@ import styles from "./Accordion.marker-left.module.css";
 export default () => {
 	const id = React.useId();
 	return (
-		<Accordion
-			slotProps={{
-				region: {
-					role: undefined,
-					"aria-labelledby": undefined,
-				},
-			}}
-		>
+		<Accordion>
 			<AccordionSummary
 				className={styles.summary}
 				aria-controls={`${id}-content`}

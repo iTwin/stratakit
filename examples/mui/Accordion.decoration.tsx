@@ -16,14 +16,7 @@ import styles from "./Accordion.decoration.module.css";
 export default () => {
 	const id = React.useId();
 	return (
-		<Accordion
-			slotProps={{
-				region: {
-					role: undefined,
-					"aria-labelledby": undefined,
-				},
-			}}
-		>
+		<Accordion>
 			<AccordionSummary
 				aria-controls={`${id}-content`}
 				slotProps={{

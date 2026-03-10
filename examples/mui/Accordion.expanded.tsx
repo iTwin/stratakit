@@ -12,15 +12,7 @@ import Typography from "@mui/material/Typography";
 export default () => {
 	const id = React.useId();
 	return (
-		<Accordion
-			slotProps={{
-				region: {
-					role: undefined,
-					"aria-labelledby": undefined,
-				},
-			}}
-			defaultExpanded
-		>
+		<Accordion defaultExpanded>
 			<AccordionSummary aria-controls={`${id}-content`}>
 				<Typography render={<span />}>What is StrataKit?</Typography>
 			</AccordionSummary>

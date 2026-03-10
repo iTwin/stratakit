@@ -51,7 +51,7 @@ export default () => {
 				<TableBody>
 					{rows.map((row) => (
 						<TableRow key={row.name}>
-							<TableCell component="th" scope="row">
+							<TableCell render={<th />} scope="row">
 								{row.name}
 							</TableCell>
 							<TableCell align="right">{row.calories}</TableCell>

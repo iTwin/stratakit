@@ -3,7 +3,6 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import * as React from "react";
 import Accordion from "@mui/material/Accordion";
 import AccordionActions from "@mui/material/AccordionActions";
 import AccordionDetails from "@mui/material/AccordionDetails";
@@ -12,17 +11,9 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 
 export default () => {
-	const id = React.useId();
 	return (
-		<Accordion
-			slotProps={{
-				region: {
-					role: undefined,
-					"aria-labelledby": undefined,
-				},
-			}}
-		>
-			<AccordionSummary aria-controls={`${id}-content`}>
+		<Accordion>
+			<AccordionSummary>
 				<Typography render={<span />}>What is a design system?</Typography>
 			</AccordionSummary>
 			<AccordionDetails>

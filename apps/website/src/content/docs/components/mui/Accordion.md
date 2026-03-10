@@ -35,7 +35,7 @@ Disclose any **Accordion’s** content by default using the `defaultExpanded` pr
 
 ### Variants
 
-- **Elevation:** Default accordion styling. Use in tight spaces, such as table cells, where the context provides an outline already.
+- **Elevation:** Default accordion styling. Use in tight spaces, such as side panels or widgets, where the context provides an outline already.
 - **Outlined:** Adds a border around the accordion. Use in open layouts where you want to define the accordion's boundaries.
 
 ::example{src="mui/Accordion.variants"}

@@ -27,7 +27,10 @@ Make sure the **Accordion** is suitable for your use case. There may be other, m
 
 ## StrataKit MUI modifications
 
-- Unlike in the 
+- You are not required to attribute `<AccordionSummary>` with `aria-controls`.
+- The `slotProps` `region` properties `role` and `aria-labelledby` must both be _undefined_.
+- You must supply a heading element for `slotProps.heading.component`.
+- Multiple adjacent `<Accordion>` elements must be grouped together using the `list` and `listitem` ARIA roles. See the [multiple **Accordions**](#multiple-accordions) example.
 
 ## Examples
 

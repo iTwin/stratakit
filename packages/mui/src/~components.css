@@ -28,6 +28,12 @@
 	color: var(--stratakit-color-text-neutral-primary);
 }
 
+.MuiBottomNavigationAction-root {
+	&:where(.Mui-selected) {
+		color: var(--stratakit-color-text-accent-strong);
+	}
+}
+
 .MuiDialogActions-root {
 	&:where(.MuiDialogActions-spacing) {
 		padding-block: var(--stratakit-space-x4);

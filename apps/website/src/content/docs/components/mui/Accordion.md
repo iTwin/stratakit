@@ -88,6 +88,6 @@ Use the `AccordionActions` component to display actions related to the content o
 
 ## Don’t
 
-- Don’t nest **Accordions** inside one another. For multi-level data, use [tree](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/tree_role).
+- Don’t nest **Accordions** inside one another.
 - Don’t use different heading levels for **Accordion** items in the same set. Since **Accordions** cannot be nested, they are at the same level in the document hierarchy.
 - Don’t close an **Accordion** when another **Accordion** is opened. Exclusive **Accordions** create [accessibility and usability issues](https://yatil.net/blog/exclusive-accordions).

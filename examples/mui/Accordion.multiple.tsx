@@ -13,8 +13,9 @@ import Typography from "@mui/material/Typography";
 export default () => {
 	const id = React.useId();
 	return (
-		<div>
+		<div role="list">
 			<Accordion
+				role="listitem"
 				slotProps={{
 					region: {
 						role: undefined,
@@ -35,6 +36,7 @@ export default () => {
 			</Accordion>
 
 			<Accordion
+				role="listitem"
 				slotProps={{
 					region: {
 						role: undefined,
@@ -56,6 +58,7 @@ export default () => {
 			</Accordion>
 
 			<Accordion
+				role="listitem"
 				slotProps={{
 					region: {
 						role: undefined,

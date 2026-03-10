@@ -107,7 +107,17 @@ function createTheme() {
 		] as any,
 		components: {
 			MuiAppBar: { defaultProps: { component: Role.header } },
-			MuiAccordion: { defaultProps: { component: Role.div } },
+			MuiAccordion: {
+				defaultProps: {
+					component: Role.div,
+					slotProps: {
+						region: {
+							role: undefined,
+							"aria-labelledby": undefined,
+						},
+					},
+				},
+			},
 			MuiAccordionSummary: {
 				defaultProps: {
 					component: Role.div,

@@ -42,7 +42,10 @@
 	&::before {
 		content: "";
 		position: absolute;
-		inset: calc(((24px - var(--✨size)) / 2) * -1); /* Makes touch target area 24px */
+		inset: calc(
+			((var(--touch-target-size) - var(--✨size)) / 2) *
+			-1
+		); /* Makes touch target area 24px */
 		border-radius: 50%;
 	}
 

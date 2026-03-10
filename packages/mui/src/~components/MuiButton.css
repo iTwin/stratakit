@@ -17,6 +17,7 @@
 		--variant-containedColor: var(--stratakit-color-text-neutral-primary);
 		--variant-outlinedColor: var(--stratakit-color-text-neutral-primary);
 		--variant-textColor: var(--stratakit-color-text-neutral-primary);
+		--_MuiButton-icon-color: var(--stratakit-color-icon-neutral-base);
 
 		@media (any-hover: hover) {
 			&:where(:hover) {
@@ -25,6 +26,7 @@
 					var(--stratakit-color-bg-neutral-base) 100%,
 					var(--stratakit-color-glow-hue) var(--stratakit-color-bg-glow-base-hover-\%)
 				);
+				--_MuiButton-icon-color: var(--stratakit-color-icon-neutral-primary);
 			}
 		}
 	}
@@ -39,4 +41,24 @@
 			background-color: var(--stratakit-color-bg-glow-on-surface-disabled);
 		}
 	}
+
+	&:where(.MuiButton-containedPrimary, .MuiButton-containedError) {
+		--_MuiButton-icon-color: var(--stratakit-color-icon-neutral-emphasis);
+	}
+
+	&:where(.MuiButton-outlinedPrimary, .MuiButton-textPrimary) {
+		--_MuiButton-icon-color: var(--stratakit-color-icon-accent-strong);
+	}
+
+	&:where(.MuiButton-outlinedError, .MuiButton-textError) {
+		--_MuiButton-icon-color: var(--stratakit-color-icon-critical-base);
+	}
+
+	&:where(.Mui-disabled) {
+		--_MuiButton-icon-color: var(--stratakit-color-icon-neutral-disabled);
+	}
+}
+
+.MuiButton-icon {
+	color: var(--_MuiButton-icon-color);
 }

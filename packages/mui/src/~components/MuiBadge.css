@@ -1,0 +1,11 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+
+.MuiBadge-badge {
+	:where(.MuiBadge-root[data-_sk-inline]) & {
+		position: static;
+		transform: none;
+	}
+}

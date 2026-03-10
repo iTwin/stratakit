@@ -48,10 +48,14 @@
 
 	&:where(.MuiButton-outlinedPrimary, .MuiButton-textPrimary) {
 		--_MuiButton-icon-color: var(--stratakit-color-icon-accent-strong);
+		--variant-outlinedBorder: var(--stratakit-color-border-accent-base);
 	}
 
 	&:where(.MuiButton-outlinedError, .MuiButton-textError) {
 		--_MuiButton-icon-color: var(--stratakit-color-icon-critical-base);
+		--variant-textColor: var(--stratakit-color-text-critical-base);
+		--variant-outlinedColor: var(--stratakit-color-text-critical-base);
+		--variant-outlinedBorder: var(--stratakit-color-border-critical-base);
 	}
 
 	&:where(.Mui-disabled) {

@@ -127,8 +127,8 @@
 
 	/* This pseudo-element increases tap target size to 24x24 */
 	&::after {
-		block-size: 24px;
-		inline-size: 24px;
+		block-size: var(--touch-target-size);
+		inline-size: var(--touch-target-size);
 	}
 }
 

@@ -15,6 +15,7 @@ import {
 	MuiChipLabel,
 } from "./~components/MuiChip.js";
 import { MuiSnackbar } from "./~components/MuiSnackbar.js";
+import { MuiTableCell, MuiTableHead } from "./~components/MuiTable.js";
 import {
 	ArrowDownIcon,
 	CaretsUpDownIcon,
@@ -106,7 +107,17 @@ function createTheme() {
 		] as any,
 		components: {
 			MuiAppBar: { defaultProps: { component: Role.header } },
-			MuiAccordion: { defaultProps: { component: Role.div } },
+			MuiAccordion: {
+				defaultProps: {
+					component: Role.div,
+					slotProps: {
+						region: {
+							role: undefined,
+							"aria-labelledby": undefined,
+						},
+					},
+				},
+			},
 			MuiAccordionSummary: {
 				defaultProps: {
 					component: Role.div,
@@ -347,7 +358,7 @@ function createTheme() {
 			MuiTableBody: {
 				defaultProps: { component: withRenderProp(Role, "tbody") },
 			},
-			// MuiTableCell: { defaultProps: { component: withRenderProp(Role, "td") } }, // This dynamically renders as `th` when inside TableHeader
+			MuiTableCell: { defaultProps: { component: MuiTableCell } },
 			MuiTableContainer: {
 				defaultProps: { component: withRenderProp(Role, "div") },
 			},
@@ -355,7 +366,7 @@ function createTheme() {
 				defaultProps: { component: withRenderProp(Role, "tfoot") },
 			},
 			MuiTableHead: {
-				defaultProps: { component: withRenderProp(Role, "thead") },
+				defaultProps: { component: MuiTableHead },
 			},
 			MuiTablePagination: {
 				defaultProps: {

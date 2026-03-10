@@ -60,7 +60,7 @@ Use custom CSS to position the marker.
 
 Multiple adjacent **Accordions** make a set. To make this set programmatically determinable and enumerable, use ARIA list semantics. Each individual `<Accordion>` must take `role="listitem"` and the set must belong to an element with `role="list"`.
 
-**Accordions** commonly represent major sections of a page and are rendered with an [`<h3>` heading element](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/Heading_Elements) by default. Use the `component` prop of the [`heading` slot props](https://mui.com/material-ui/api/accordion/#Accordion-css-MuiAccordion-heading) to change the heading level.
+**Accordions** commonly represent major sections of a page and are rendered with an [`<h3>` heading element](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/Heading_Elements) by default. Use the `component` prop of the [`heading` slot props](https://mui.com/material-ui/api/accordion/#slots) to change the heading level.
 
 ::example{src="mui/Accordion.multiple"}
 

@@ -27,14 +27,10 @@ Make sure the **Accordion** is suitable for your use case. There may be other, m
 
 ## StrataKit MUI modifications
 
-<<<<<<< HEAD
 - You are not required to attribute `<AccordionSummary>` with `aria-controls`.
-- The `slotProps` `region` properties `role` and `aria-labelledby` must both be _undefined_.
 - You must supply a heading element for `slotProps.heading.component`.
 - Multiple adjacent `<Accordion>` elements must be grouped together using the `list` and `listitem` ARIA roles. See the [multiple **Accordions**](#multiple-accordions) example.
-=======
-- Removed [`role="region"`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/region_role) semantics. The **Accordion** no longer creates a regional navigational landmark.
->>>>>>> 2d95a28642a53e7efcef80e73de1be779ae09649
+- Removed [`role="region"`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/region_role) semantics. The **Accordion** no longer creates a region landmark.
 
 ## Examples
 

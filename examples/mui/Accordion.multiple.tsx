@@ -3,7 +3,6 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import * as React from "react";
 import Accordion from "@mui/material/Accordion";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import AccordionSummary from "@mui/material/AccordionSummary";
@@ -11,7 +10,6 @@ import Link from "@mui/material/Link";
 import Typography from "@mui/material/Typography";
 
 export default () => {
-	const id = React.useId();
 	return (
 		<div>
 			<Accordion
@@ -21,7 +19,7 @@ export default () => {
 					},
 				}}
 			>
-				<AccordionSummary aria-controls={`${id}-sk-content`}>
+				<AccordionSummary>
 					<Typography render={<span />}>What is StrataKit?</Typography>
 				</AccordionSummary>
 				<AccordionDetails>
@@ -37,7 +35,7 @@ export default () => {
 					},
 				}}
 			>
-				<AccordionSummary aria-controls={`${id}-ds-content`}>
+				<AccordionSummary>
 					<Typography render={<span />}>What is a design system?</Typography>
 				</AccordionSummary>
 				<AccordionDetails>
@@ -54,7 +52,7 @@ export default () => {
 					},
 				}}
 			>
-				<AccordionSummary aria-controls={`${id}-d-content`}>
+				<AccordionSummary>
 					<Typography render={<span />}>What is design?</Typography>
 				</AccordionSummary>
 				<AccordionDetails>

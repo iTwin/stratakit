@@ -3,17 +3,15 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import * as React from "react";
 import Accordion from "@mui/material/Accordion";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import Typography from "@mui/material/Typography";
 
 export default () => {
-	const id = React.useId();
 	return (
 		<Accordion>
-			<AccordionSummary aria-controls={`${id}-content`}>
+			<AccordionSummary>
 				<Typography render={<span />}>What is StrataKit?</Typography>
 			</AccordionSummary>
 			<AccordionDetails>

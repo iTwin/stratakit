@@ -3,7 +3,6 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import * as React from "react";
 import Accordion from "@mui/material/Accordion";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import AccordionSummary from "@mui/material/AccordionSummary";
@@ -12,12 +11,10 @@ import Typography from "@mui/material/Typography";
 import styles from "./Accordion.marker-left.module.css";
 
 export default () => {
-	const id = React.useId();
 	return (
 		<Accordion>
 			<AccordionSummary
 				className={styles.summary}
-				aria-controls={`${id}-content`}
 				slotProps={{
 					expandIconWrapper: {
 						className: styles.expander,

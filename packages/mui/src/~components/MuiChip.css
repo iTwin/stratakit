@@ -4,6 +4,16 @@
  *--------------------------------------------------------------------------------------------*/
 
 .MuiChip-root {
+	block-size: var(--_MuiChip-block-size);
+
+	&:where(.MuiChip-sizeSmall) {
+		--_MuiChip-block-size: var(--stratakit-size-field-small);
+	}
+
+	&:where(.MuiChip-sizeMedium) {
+		--_MuiChip-block-size: var(--stratakit-size-field-medium);
+	}
+
 	&:where(.MuiChip-filledDefault.MuiChip-colorDefault) {
 		background-color: var(--stratakit-color-bg-neutral-base);
 		border: 1px solid var(--stratakit-color-border-neutral-base);

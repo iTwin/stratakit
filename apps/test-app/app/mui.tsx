@@ -183,7 +183,6 @@ const components: Record<string, React.ReactNode> = {
 	Button: (
 		<>
 			<ButtonDefault />
-			<ButtonSizes />
 			<ButtonVariants />
 			<ButtonColors />
 			{!isProduction && <ButtonIcons_ />}
@@ -242,7 +241,6 @@ const components: Record<string, React.ReactNode> = {
 	IconButton: (
 		<>
 			<IconButtonDefault />
-			<IconButtonSizes />
 			{!isProduction && (
 				<Stack spacing={1} direction="row">
 					<IconButtonColors_ />

@@ -80,6 +80,7 @@
 		--_MuiSwitch-thumb-box-shadow: var(--✨shadow--disabled);
 	}
 
+	/* TODO: Investigate using `:dir(rtl)` */
 	:root[dir="rtl"] & {
 		--_MuiSwitch-thumb-position-off: translateX(calc(var(--✨translate-distance) * -1));
 		--_MuiSwitch-thumb-position-on: none;

@@ -10,6 +10,8 @@
 import type { RoleProps } from "@ariakit/react/role";
 import type { BadgeProps } from "@mui/material/Badge";
 import type { IconButtonProps } from "@mui/material/IconButton";
+import type { CommonProps } from "@mui/material/OverridableComponent";
+import type { TableCellProps as MuiTableCellProps } from "@mui/material/TableCell";
 import type {
 	TextFieldProps,
 	TextFieldVariants,
@@ -229,6 +231,13 @@ declare module "@mui/material/Switch" {
 		success: false;
 		warning: false;
 		error: false;
+	}
+}
+
+declare module "@mui/material/TableCell" {
+	interface TableCellProps extends Pick<CommonProps, "render"> {
+		/** @deprecated Use `render` prop instead. */
+		component?: MuiTableCellProps["component"];
 	}
 }
 

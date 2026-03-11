@@ -13,7 +13,12 @@ import visuallyHidden from "@mui/utils/visuallyHidden";
 import { Icon } from "@stratakit/mui";
 import * as NavigationList from "@stratakit/structures/unstable_NavigationList";
 import AccordionActions from "examples/mui/Accordion.actions.tsx";
+import AccordionDecoration from "examples/mui/Accordion.decoration.tsx";
 import AccordionDefault from "examples/mui/Accordion.default.tsx";
+import AccordionExpanded from "examples/mui/Accordion.expanded.tsx";
+import AccordionMarkerLeft from "examples/mui/Accordion.marker-left.tsx";
+import AccordionMultiple from "examples/mui/Accordion.multiple.tsx";
+import AccordionVariants from "examples/mui/Accordion.variants.tsx";
 import AlertPermutations_ from "examples/mui/Alert._permutations.tsx";
 import AlertDefault from "examples/mui/Alert.default.tsx";
 import AlertTitle from "examples/mui/Alert.title.tsx";
@@ -121,8 +126,23 @@ export const meta: MetaFunction = () => {
 const components: Record<string, React.ReactNode> = {
 	Accordion: (
 		<Stack spacing={1} alignSelf="stretch">
-			<AccordionDefault />
-			<AccordionActions />
+			<div>
+				<AccordionDefault />
+			</div>
+			<div>
+				<AccordionExpanded />
+			</div>
+			<div>
+				<AccordionMarkerLeft />
+			</div>
+			<div>
+				<AccordionDecoration />
+			</div>
+			<div>
+				<AccordionActions />
+			</div>
+			<AccordionMultiple />
+			<AccordionVariants />
 		</Stack>
 	),
 	Alert: (

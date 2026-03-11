@@ -13,7 +13,7 @@ import svgPlaceholder from "@stratakit/icons/placeholder.svg";
 export default () => {
 	return (
 		<Stack spacing={1} direction="row" alignItems="center">
-			<Tooltip title="Large" describeChild={false}>
+			<Tooltip title="Small" describeChild={false}>
 				<IconButton size="small">
 					<Icon href={svgPlaceholder} />
 				</IconButton>

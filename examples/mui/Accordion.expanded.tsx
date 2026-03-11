@@ -4,27 +4,20 @@
  *--------------------------------------------------------------------------------------------*/
 
 import Accordion from "@mui/material/Accordion";
-import AccordionActions from "@mui/material/AccordionActions";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import AccordionSummary from "@mui/material/AccordionSummary";
-import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 
 export default () => {
 	return (
-		<Accordion>
+		<Accordion defaultExpanded>
 			<AccordionSummary>
-				<Typography render={<span />}>What is a design system?</Typography>
+				<Typography render={<span />}>What is StrataKit?</Typography>
 			</AccordionSummary>
 			<AccordionDetails>
-				A design system is a comprehensive framework of standards, reusable
-				components, and documentation that guides the consistent development of
-				digital products.
+				StrataKit is Bentley Systems' open source design system and the
+				successor to iTwinUI.
 			</AccordionDetails>
-			<AccordionActions>
-				<Button>Cancel</Button>
-				<Button>Agree</Button>
-			</AccordionActions>
 		</Accordion>
 	);
 };

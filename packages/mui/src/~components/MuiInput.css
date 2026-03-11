@@ -14,6 +14,7 @@
 	border: 1px solid var(--_MuiInput-border-color);
 	transition: border-color 150ms ease-out;
 
+	--_MuiInput-block-size: var(--stratakit-size-field-medium);
 	--_MuiInput-border-color: var(--✨border--default);
 
 	@media (any-hover: hover) {
@@ -24,6 +25,10 @@
 				var(--stratakit-color-glow-hue) var(--stratakit-color-border-glow-base-hover-\%)
 			);
 		}
+	}
+
+	&:where(.MuiInputBase-sizeSmall) {
+		--_MuiInput-block-size: var(--stratakit-size-field-small);
 	}
 
 	&:where(:focus-within) {
@@ -49,7 +54,7 @@
 }
 
 .MuiInputBase-input {
-	min-block-size: calc(36.5px - 2px); /* Accommodate for border width */
+	min-block-size: calc(var(--_MuiInput-block-size) - 2px); /* Accommodate for border width */
 	padding-block: 0;
 	padding-inline: 14px;
 	align-content: center;

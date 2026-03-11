@@ -4,34 +4,11 @@
  *--------------------------------------------------------------------------------------------*/
 
 .MuiBadge-badge {
-	--🥝selection-color-text: var(--stratakit-color-text-neutral-primary);
+	--🥝selection-color-bg: var(--stratakit-color-static-white);
+	--🥝selection-color-text: var(--stratakit-color-static-black);
 
 	:where(.MuiBadge-root[data-_sk-inline]) & {
 		position: static;
 		transform: none;
-	}
-
-	&:where(.MuiBadge-colorPrimary) {
-		--🥝selection-color-bg: var(--stratakit-color-bg-accent-muted);
-	}
-
-	&:where(.MuiBadge-colorSecondary) {
-		--🥝selection-color-bg: var(--stratakit-color-bg-mono-muted);
-	}
-
-	&:where(.MuiBadge-colorInfo) {
-		--🥝selection-color-bg: var(--stratakit-color-bg-info-muted);
-	}
-
-	&:where(.MuiBadge-colorSuccess) {
-		--🥝selection-color-bg: var(--stratakit-color-bg-positive-muted);
-	}
-
-	&:where(.MuiBadge-colorWarning) {
-		--🥝selection-color-bg: var(--stratakit-color-bg-attention-muted);
-	}
-
-	&:where(.MuiBadge-colorError) {
-		--🥝selection-color-bg: var(--stratakit-color-bg-critical-muted);
 	}
 }

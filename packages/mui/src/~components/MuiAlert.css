@@ -11,19 +11,15 @@
 	}
 
 	&:where(.MuiAlert-colorSuccess) {
-		--🥝selection-color-bg: var(--stratakit-color-bg-positive-base);
 		border-color: var(--stratakit-color-border-positive-base);
 	}
 	&:where(.MuiAlert-colorInfo) {
-		--🥝selection-color-bg: var(--stratakit-color-bg-info-base);
 		border-color: var(--stratakit-color-border-info-base);
 	}
 	&:where(.MuiAlert-colorWarning) {
-		--🥝selection-color-bg: var(--stratakit-color-bg-attention-base);
 		border-color: var(--stratakit-color-border-attention-base);
 	}
 	&:where(.MuiAlert-colorError) {
-		--🥝selection-color-bg: var(--stratakit-color-bg-critical-base);
 		border-color: var(--stratakit-color-border-critical-base);
 	}
 }

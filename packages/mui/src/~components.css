@@ -15,6 +15,7 @@
 @import "./~components/MuiInput.css";
 @import "./~components/MuiSlider.css";
 @import "./~components/MuiTabs.css";
+@import "./~components/MuiTypography.css";
 
 .MuiAccordion-root {
 	background-color: transparent;
@@ -25,6 +26,12 @@
 	box-shadow: none;
 	border-block-end: 1px solid var(--stratakit-color-border-page-base);
 	color: var(--stratakit-color-text-neutral-primary);
+}
+
+.MuiBottomNavigationAction-root {
+	&:where(.Mui-selected) {
+		color: var(--stratakit-color-text-accent-strong);
+	}
 }
 
 .MuiDialogActions-root {

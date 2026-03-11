@@ -11,7 +11,6 @@ import svgPlaceholder from "@stratakit/icons/placeholder.svg";
 
 type IconButtonProps = React.ComponentProps<typeof IconButton>;
 const colors = [
-	"default",
 	"primary",
 	"secondary",
 	"error",

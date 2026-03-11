@@ -24,7 +24,7 @@ export default () => {
 				id={buttonId}
 				aria-controls={open ? menuId : undefined}
 				aria-haspopup="true"
-				aria-expanded={open ? "true" : undefined}
+				aria-expanded={open ? "true" : "false"}
 				onClick={(event) => setAnchorEl(event.currentTarget)}
 			>
 				Open menu

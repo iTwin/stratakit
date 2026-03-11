@@ -49,6 +49,7 @@ import ChipClickable from "examples/mui/Chip.clickable.tsx";
 import ChipDefault from "examples/mui/Chip.default.tsx";
 import ChipDeletable from "examples/mui/Chip.deletable.tsx";
 import ChipOutlined from "examples/mui/Chip.outlined.tsx";
+import ChipSizes from "examples/mui/Chip.sizes.tsx";
 import CircularProgressColors_ from "examples/mui/CircularProgress._colors.tsx";
 import CircularProgressDefault from "examples/mui/CircularProgress.default.tsx";
 import DialogDefault from "examples/mui/Dialog.default.tsx";
@@ -101,6 +102,7 @@ import TextFieldDefault from "examples/mui/TextField.default.tsx";
 import TextFieldError from "examples/mui/TextField.error.tsx";
 import TextFieldIcon from "examples/mui/TextField.icon.tsx";
 import TextFieldMultiline from "examples/mui/TextField.multiline.tsx";
+import TextFieldSizes from "examples/mui/TextField.sizes.tsx";
 import ToggleButtonDefault from "examples/mui/ToggleButton.default.tsx";
 import TooltipDefault from "examples/mui/Tooltip.default.tsx";
 import TypographyVariants_ from "examples/mui/Typography._variants.tsx";
@@ -181,6 +183,7 @@ const components: Record<string, React.ReactNode> = {
 	Button: (
 		<>
 			<ButtonDefault />
+			<ButtonSizes />
 			<ButtonVariants />
 			<ButtonColors />
 			{!isProduction && <ButtonIcons_ />}
@@ -209,6 +212,7 @@ const components: Record<string, React.ReactNode> = {
 			<ChipClickable />
 			<ChipDeletable />
 			{!isProduction && <ChipInteractive_ />}
+			<ChipSizes />
 		</Stack>
 	),
 	CircularProgress: (
@@ -238,6 +242,7 @@ const components: Record<string, React.ReactNode> = {
 	IconButton: (
 		<>
 			<IconButtonDefault />
+			<IconButtonSizes />
 			{!isProduction && (
 				<Stack spacing={1} direction="row">
 					<IconButtonColors_ />
@@ -335,12 +340,13 @@ const components: Record<string, React.ReactNode> = {
 		</>
 	),
 	TextField: (
-		<Stack spacing={1} direction="row">
+		<Stack spacing={1}>
 			<TextFieldDefault />
 			<TextFieldMultiline />
 			<TextFieldIcon />
 			<TextFieldError />
 			<TextFieldDisabled />
+			<TextFieldSizes />
 		</Stack>
 	),
 	ToggleButton: <ToggleButtonDefault />,

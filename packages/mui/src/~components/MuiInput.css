@@ -14,7 +14,7 @@
 	border: 1px solid var(--_MuiInput-border-color);
 	transition: border-color 150ms ease-out;
 
-	--_MuiInput-block-size: var(--stratakit-size-field-medium);
+	--_MuiInput-block-size: var(--stratakit-size-control-field-height-medium);
 	--_MuiInput-border-color: var(--✨border--default);
 
 	@media (any-hover: hover) {
@@ -28,7 +28,7 @@
 	}
 
 	&:where(.MuiInputBase-sizeSmall) {
-		--_MuiInput-block-size: var(--stratakit-size-field-small);
+		--_MuiInput-block-size: var(--stratakit-size-control-field-height-small);
 	}
 
 	&:where(:focus-within) {

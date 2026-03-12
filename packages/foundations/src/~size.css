@@ -5,7 +5,7 @@
 html,
 :host,
 .🥝Root {
-	--stratakit-size-field-small: 1.5rem;
-	--stratakit-size-field-medium: 2rem;
-	--stratakit-size-field-large: 2.5rem;
+	--stratakit-size-control-field-height-small: 1.5rem;
+	--stratakit-size-control-field-height-medium: 2rem;
+	--stratakit-size-control-field-height-large: 2.5rem;
 }

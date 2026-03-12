@@ -3,14 +3,6 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-:root,
-.🥝MuiRoot {
-	--stratakit-size-touch-target: 24px;
-	--stratakit-size-field-small: 1.5rem;
-	--stratakit-size-field-medium: 2rem;
-	--stratakit-size-field-large: 2.5rem;
-}
-
 [data-color-scheme],
 .🥝MuiRoot {
 	--stratakit-mui-palette-background-default: var(--stratakit-color-bg-page-depth);

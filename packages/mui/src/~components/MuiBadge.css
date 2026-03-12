@@ -4,6 +4,9 @@
  *--------------------------------------------------------------------------------------------*/
 
 .MuiBadge-badge {
+	--🥝selection-color-bg: var(--stratakit-color-static-white);
+	--🥝selection-color-text: var(--stratakit-color-static-black);
+
 	:where(.MuiBadge-root[data-_sk-inline]) & {
 		position: static;
 		transform: none;

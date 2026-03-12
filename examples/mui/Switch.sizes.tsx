@@ -3,12 +3,14 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-.MuiBadge-badge {
-	--🥝selection-color-bg: var(--stratakit-color-static-white);
-	--🥝selection-color-text: var(--stratakit-color-static-black);
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Switch from "@mui/material/Switch";
 
-	:where(.MuiBadge-root[data-_sk-inline]) & {
-		position: static;
-		transform: none;
-	}
-}
+export default () => {
+	return (
+		<>
+			<FormControlLabel control={<Switch size="small" />} label="Small" />
+			<FormControlLabel control={<Switch />} label="Medium" />
+		</>
+	);
+};

@@ -94,3 +94,23 @@
 		background-color: transparent;
 	}
 }
+
+.MuiSwitch-switchBase {
+	--_MuiSwitch-thumb-background-color: CanvasText;
+
+	&:where(.Mui-checked:not(.Mui-disabled)) {
+		--_MuiSwitch-thumb-background-color: SelectedItemText;
+
+		+ .MuiSwitch-track {
+			background-color: SelectedItem;
+		}
+	}
+
+	&:where(.Mui-disabled) {
+		--_MuiSwitch-thumb-background-color: GrayText;
+
+		+ .MuiSwitch-track {
+			--_MuiSwitch-track-border-color: GrayText;
+		}
+	}
+}

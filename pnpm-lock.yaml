@@ -5097,10 +5097,10 @@ packages:
         integrity: sha512-5l4VyZR86LZ/lDxZTR6jqL8AFE2S0IFLMP26AbjsLVADxHdhB/c0GUsH+y39UfCi3dzz8OlQuPmnaJOMoDHQBA==,
       }
 
-  sax@1.4.4:
+  sax@1.5.0:
     resolution:
       {
-        integrity: sha512-1n3r/tGXO6b6VXMdFT54SHzT9ytu9yr7TaELowdYpMqY/Ao7EnlQGmAQ1+RatX7Tkkdm6hONI2owqNx2aZj5Sw==,
+        integrity: sha512-21IYA3Q5cQf089Z6tgaUTr7lDAyzoTPx5HRtbhsME8Udispad8dC/+sziTNugOEx54ilvatQ9YCzl4KQLPcRHA==,
       }
     engines: { node: ">=11.0.0" }
 
@@ -5263,10 +5263,10 @@ packages:
       }
     engines: { node: ">= 0.4" }
 
-  svgo@4.0.0:
+  svgo@4.0.1:
     resolution:
       {
-        integrity: sha512-VvrHQ+9uniE+Mvx3+C9IEe/lWasXCU0nXMY2kZeLrHNICuRiC8uMPyM14UEaMOFA5mhyQqEkB02VoQ16n3DLaw==,
+        integrity: sha512-XDpWUOPC6FEibaLzjfe0ucaV0YrOjYotGJO1WpF0Zd+n6ZGEQUsSugaoLq9QkEZtAfQIxT42UChcssDVPP3+/w==,
       }
     engines: { node: ">=16" }
     hasBin: true
@@ -7253,7 +7253,7 @@ snapshots:
       semver: 7.7.4
       shiki: 3.23.0
       smol-toml: 1.6.0
-      svgo: 4.0.0
+      svgo: 4.0.1
       tinyexec: 1.0.2
       tinyglobby: 0.2.15
       tsconfck: 3.1.6(typescript@5.9.3)
@@ -9106,7 +9106,7 @@ snapshots:
     dependencies:
       queue-microtask: 1.2.3
 
-  sax@1.4.4: {}
+  sax@1.5.0: {}
 
   scheduler@0.27.0: {}
 
@@ -9167,7 +9167,7 @@ snapshots:
       "@types/node": 17.0.45
       "@types/sax": 1.2.7
       arg: 5.0.2
-      sax: 1.4.4
+      sax: 1.5.0
 
   smol-toml@1.6.0: {}
 
@@ -9218,7 +9218,7 @@ snapshots:
 
   supports-preserve-symlinks-flag@1.0.0: {}
 
-  svgo@4.0.0:
+  svgo@4.0.1:
     dependencies:
       commander: 11.1.0
       css-select: 5.2.2
@@ -9226,7 +9226,7 @@ snapshots:
       css-what: 6.2.2
       csso: 5.0.5
       picocolors: 1.1.1
-      sax: 1.4.4
+      sax: 1.5.0
 
   tiny-inflate@1.0.3: {}
 
@@ -9487,7 +9487,7 @@ snapshots:
 
   xml2js@0.6.2:
     dependencies:
-      sax: 1.4.4
+      sax: 1.5.0
       xmlbuilder: 11.0.1
 
   xmlbuilder@11.0.1: {}

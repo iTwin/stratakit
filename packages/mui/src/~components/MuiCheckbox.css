@@ -42,10 +42,7 @@
 	&::before {
 		content: "";
 		position: absolute;
-		inset: calc(
-			((var(--stratakit-size-touch-target) - var(--✨size)) / 2) *
-			-1
-		); /* Makes touch target area 24px */
+		inset: calc(((24px - var(--✨size)) / 2) * -1); /* Makes touch target area 24px */
 		border-radius: 50%;
 	}
 

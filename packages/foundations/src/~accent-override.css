@@ -1,0 +1,156 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+
+[data-_sk-accent="blue"] {
+	--stratakit-color-accent-hue: 244.92;
+
+	/* #region Light theme */
+	--stratakit-color-light-accent-chroma-strong: 0.139;
+	--stratakit-color-light-accent-chroma-base: 0.124;
+	--stratakit-color-light-accent-chroma-faded: 0.104;
+	--stratakit-color-light-accent-chroma-muted: 0.067;
+	--stratakit-color-light-accent-chroma-subtle: 0.04;
+	/* #endregion */
+
+	/* #region Dark theme */
+	--stratakit-color-dark-accent-chroma-strongest: 0.14;
+	--stratakit-color-dark-accent-chroma-strong: 0.139;
+	--stratakit-color-dark-accent-chroma-base: 0.118;
+	--stratakit-color-dark-accent-chroma-medium: 0.118;
+	--stratakit-color-dark-accent-chroma-faded: 0.093;
+	--stratakit-color-dark-accent-chroma-muted: 0.067;
+	--stratakit-color-dark-accent-chroma-soft: 0.104;
+	/* #endregion */
+}
+
+:is(html, :host):where([data-color-scheme="light"]),
+.🥝Root:where([data-_sk-theme="light"]) {
+	--stratakit-color-bg-accent-base: oklch(
+		54% var(--stratakit-color-light-accent-chroma-strong) var(--stratakit-color-accent-hue)
+	);
+	--stratakit-color-bg-accent-muted: oklch(
+		89.34% var(--stratakit-color-light-accent-chroma-subtle) var(--stratakit-color-accent-hue)
+	);
+	--stratakit-color-bg-accent-faded: oklch(
+		33.76% var(--stratakit-color-light-accent-chroma-faded) var(--stratakit-color-accent-hue)
+	);
+	--stratakit-color-bg-accent-transparent: oklch(
+		54% var(--stratakit-color-light-accent-chroma-strong) var(--stratakit-color-accent-hue) /
+		0.16
+	);
+	--stratakit-color-bg-glow-on-surface-accent-hover: oklch(
+		54% var(--stratakit-color-light-accent-chroma-strong) var(--stratakit-color-accent-hue) /
+		0.12
+	);
+	--stratakit-color-bg-glow-on-surface-accent-pressed: oklch(
+		54% var(--stratakit-color-light-accent-chroma-strong) var(--stratakit-color-accent-hue) /
+		0.16
+	);
+	--stratakit-color-bg-glow-on-surface-accent-active-hover: oklch(
+		54% var(--stratakit-color-light-accent-chroma-strong) var(--stratakit-color-accent-hue) /
+		0.24
+	);
+	--stratakit-color-icon-accent-base: oklch(
+		47.28% var(--stratakit-color-light-accent-chroma-base) var(--stratakit-color-accent-hue)
+	);
+	--stratakit-color-icon-accent-strong: oklch(
+		47.28% var(--stratakit-color-light-accent-chroma-base) var(--stratakit-color-accent-hue)
+	);
+	--stratakit-color-icon-accent-faded: oklch(
+		40.38% var(--stratakit-color-light-accent-chroma-faded) var(--stratakit-color-accent-hue)
+	);
+	--stratakit-color-border-accent-base: oklch(
+		54% var(--stratakit-color-light-accent-chroma-strong) var(--stratakit-color-accent-hue)
+	);
+	--stratakit-color-border-accent-faded: oklch(
+		40.38% var(--stratakit-color-light-accent-chroma-faded) var(--stratakit-color-accent-hue)
+	);
+	--stratakit-color-border-accent-muted: oklch(
+		82.26% var(--stratakit-color-light-accent-chroma-muted) var(--stratakit-color-accent-hue)
+	);
+	--stratakit-color-border-accent-strong: oklch(
+		47.28% var(--stratakit-color-light-accent-chroma-base) var(--stratakit-color-accent-hue)
+	);
+	--stratakit-color-text-accent-base: oklch(
+		47.28% var(--stratakit-color-light-accent-chroma-base) var(--stratakit-color-accent-hue)
+	);
+	--stratakit-color-text-accent-faded: oklch(
+		40.38% var(--stratakit-color-light-accent-chroma-faded) var(--stratakit-color-accent-hue)
+	);
+	--stratakit-color-text-accent-strong: oklch(
+		47.28% var(--stratakit-color-light-accent-chroma-base) var(--stratakit-color-accent-hue)
+	);
+	--stratakit-color-static-accent: oklch(
+		54% var(--stratakit-color-light-accent-chroma-strong) var(--stratakit-color-accent-hue)
+	);
+	--stratakit-shadow-control-table-strong: 0px -1px 0px 0px
+		oklch(54% var(--stratakit-color-light-accent-chroma-strong) var(--stratakit-color-accent-hue));
+}
+
+:is(html, :host):where([data-color-scheme="dark"]),
+.🥝Root:where([data-_sk-theme="dark"]) {
+	--stratakit-color-bg-accent-base: oklch(
+		54% var(--stratakit-color-dark-accent-chroma-strong) var(--stratakit-color-accent-hue)
+	);
+	--stratakit-color-bg-accent-muted: oklch(
+		33.76% var(--stratakit-color-dark-accent-chroma-soft) var(--stratakit-color-accent-hue)
+	);
+	--stratakit-color-bg-accent-faded: oklch(
+		67.95% var(--stratakit-color-dark-accent-chroma-medium) var(--stratakit-color-accent-hue)
+	);
+	--stratakit-color-bg-accent-transparent: oklch(
+		54% var(--stratakit-color-dark-accent-chroma-strong) var(--stratakit-color-accent-hue) /
+		0.16
+	);
+	--stratakit-color-bg-glow-on-surface-accent-hover: oklch(
+		54% var(--stratakit-color-dark-accent-chroma-strong) var(--stratakit-color-accent-hue) /
+		0.12
+	);
+	--stratakit-color-bg-glow-on-surface-accent-pressed: oklch(
+		54% var(--stratakit-color-dark-accent-chroma-strong) var(--stratakit-color-accent-hue) /
+		0.16
+	);
+	--stratakit-color-bg-glow-on-surface-accent-active-hover: oklch(
+		54% var(--stratakit-color-dark-accent-chroma-strong) var(--stratakit-color-accent-hue) /
+		0.24
+	);
+	--stratakit-color-icon-accent-base: oklch(
+		67.95% var(--stratakit-color-dark-accent-chroma-medium) var(--stratakit-color-accent-hue)
+	);
+	--stratakit-color-icon-accent-strong: oklch(
+		87.59% var(--stratakit-color-dark-accent-chroma-strongest) var(--stratakit-color-accent-hue)
+	);
+	--stratakit-color-icon-accent-faded: oklch(
+		75.2% var(--stratakit-color-dark-accent-chroma-faded) var(--stratakit-color-accent-hue)
+	);
+	--stratakit-color-border-accent-base: oklch(
+		60.98% var(--stratakit-color-dark-accent-chroma-base) var(--stratakit-color-accent-hue)
+	);
+	--stratakit-color-border-accent-faded: oklch(
+		82.26% var(--stratakit-color-dark-accent-chroma-muted) var(--stratakit-color-accent-hue)
+	);
+	--stratakit-color-border-accent-muted: oklch(
+		40.38% var(--stratakit-color-dark-accent-chroma-soft) var(--stratakit-color-accent-hue)
+	);
+	--stratakit-color-border-accent-strong: oklch(
+		87.59% var(--stratakit-color-dark-accent-chroma-strongest) var(--stratakit-color-accent-hue)
+	);
+	--stratakit-color-text-accent-base: oklch(
+		67.95% var(--stratakit-color-dark-accent-chroma-medium) var(--stratakit-color-accent-hue)
+	);
+	--stratakit-color-text-accent-faded: oklch(
+		75.2% var(--stratakit-color-dark-accent-chroma-faded) var(--stratakit-color-accent-hue)
+	);
+	--stratakit-color-text-accent-strong: oklch(
+		87.59% var(--stratakit-color-dark-accent-chroma-strongest) var(--stratakit-color-accent-hue)
+	);
+	--stratakit-color-static-accent: oklch(
+		54% var(--stratakit-color-dark-accent-chroma-strong) var(--stratakit-color-accent-hue)
+	);
+	--stratakit-shadow-control-table-strong: 0px -1px 0px 0px
+		oklch(
+			87.59% var(--stratakit-color-dark-accent-chroma-strongest) var(--stratakit-color-accent-hue)
+		);
+}

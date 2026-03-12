@@ -8,6 +8,7 @@ import * as ReactDOM from "react-dom";
 import { PortalContext } from "@ariakit/react/portal";
 import { Role } from "@ariakit/react/role";
 import cx from "classnames";
+import accentOverrideCss from "./~accent-override.css.js";
 import css from "./~styles.css.js";
 import {
 	forwardRef,
@@ -60,6 +61,14 @@ interface RootProps extends BaseProps {
 	 * The density to use for all components under the Root.
 	 */
 	density?: "dense";
+
+	/**
+	 * The accent color to use for all components under the Root.
+	 *
+	 * When set, accent override styles will be loaded and the specific accent color styles
+	 * will be applied based on the value provided.
+	 */
+	accentColor?: "blue";
 
 	/**
 	 * An HTML sanitizer function that will be used across all components wherever DOM elements
@@ -119,6 +128,7 @@ export const Root = forwardRef<"div", RootProps>((props, forwardedRef) => {
 				<Styles />
 				<Fonts />
 				<InlineSpriteSheet />
+				<AccentStyles accentColor={props.accentColor} />
 
 				{synchronizeColorScheme ? (
 					<SynchronizeColorScheme colorScheme={props.colorScheme} />
@@ -153,13 +163,14 @@ const RootProvider = (props: React.PropsWithChildren) => {
 
 interface RootInternalProps
 	extends BaseProps,
-		Pick<RootProps, "colorScheme" | "density" | "rootNode"> {}
+		Pick<RootProps, "colorScheme" | "accentColor" | "density" | "rootNode"> {}
 
 const RootInternal = forwardRef<"div", RootInternalProps>(
 	(props, forwardedRef) => {
 		const {
 			children,
 			colorScheme,
+			accentColor,
 			density,
 			rootNode = isBrowser ? document : undefined,
 			...rest
@@ -170,6 +181,7 @@ const RootInternal = forwardRef<"div", RootInternalProps>(
 				{...rest}
 				className={cx("🥝Root", props.className)}
 				data-_sk-theme={colorScheme}
+				data-_sk-accent={accentColor}
 				data-_sk-density={density}
 				ref={forwardedRef}
 			>
@@ -407,6 +419,25 @@ function throwIfNotSingleton() {
 			`Multiple instances of @stratakit/foundations detected. This can lead to unexpected behavior.`,
 		);
 	}
+}
+
+// ----------------------------------------------------------------------------
+
+function AccentStyles({ accentColor }: { accentColor?: "blue" }) {
+	const rootNode = useRootNode();
+
+	React.useInsertionEffect(() => {
+		if (!rootNode || !accentColor) return;
+
+		const accentOverridesKey = `${packageName}-accent-override@${__VERSION__}`;
+		const { cleanup } = loadStyles(rootNode, {
+			css: accentOverrideCss,
+			key: accentOverridesKey,
+		});
+		return cleanup;
+	}, [rootNode, accentColor]);
+
+	return null;
 }
 
 // ----------------------------------------------------------------------------

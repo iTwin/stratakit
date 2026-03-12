@@ -6,6 +6,7 @@
 @import "./~reset.css" layer(reset);
 
 @import "./~space.css" layer(stratakit.foundations);
+@import "./~size.css" layer(stratakit.foundations);
 @import "./~theme.css" layer(stratakit.foundations);
 @import "./~typography.css" layer(stratakit.foundations);
 @import "./~global.css" layer(stratakit.foundations);

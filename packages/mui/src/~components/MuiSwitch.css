@@ -1,0 +1,153 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+
+.MuiSwitch-root {
+	--✨size--small: 1.25rem;
+	--✨size--medium: 1.5rem;
+	--✨padding: var(--stratakit-space-x05);
+
+	align-items: center;
+	block-size: auto;
+	inline-size: auto;
+	outline-offset: var(--🥝focus-outline-offset);
+	padding: 0;
+	border-radius: calc(infinity * 1px);
+	--_MuiSwitch-padding: var(--✨padding);
+
+	&:where(.MuiSwitch-sizeSmall) {
+		--_MuiSwitch-height: var(--✨size--small);
+	}
+
+	&:where(.MuiSwitch-sizeMedium) {
+		--_MuiSwitch-height: var(--✨size--medium);
+	}
+
+	&:has(.Mui-focusVisible) {
+		outline: var(--🥝focus-outline);
+	}
+
+	@supports not selector(:has(+ *)) {
+		&:where(:focus-within) {
+			outline: var(--🥝focus-outline);
+		}
+	}
+}
+
+/* Wrapper around `<input>` and `.MuiSwitch-thumb`, handles on / off positioning */
+.MuiSwitch-switchBase {
+	--✨bg--default: var(--stratakit-color-bg-neutral-inverse);
+	--✨bg--disabled: var(--stratakit-color-icon-neutral-disabled);
+	--✨shadow--default:
+		var(--stratakit-shadow-control-button-base-inset),
+		0px 0px 0px 1px var(--stratakit-color-border-shadow-base) inset,
+		var(--stratakit-shadow-control-button-base-drop);
+	--✨shadow--disabled: none;
+	--✨translate-distance: calc(var(--_MuiSwitch-height) - var(--_MuiSwitch-padding) * 2);
+	--✨translateX: translateX(var(--✨translate-distance));
+
+	aspect-ratio: 1;
+	block-size: var(--_MuiSwitch-height);
+	inset: unset;
+	padding: var(--_MuiSwitch-padding);
+	transform: var(--_MuiSwitch-thumb-position-off);
+	transform-origin: left;
+
+	--_MuiSwitch-thumb-background-color: var(--✨bg--default);
+	--_MuiSwitch-thumb-box-shadow: var(--✨shadow--default);
+	--_MuiSwitch-thumb-position-off: none;
+	--_MuiSwitch-thumb-position-on: var(--✨translateX);
+
+	@media (prefers-reduced-motion: no-preference) {
+		transition: transform 150ms ease-out;
+		will-change: transform;
+	}
+
+	@media (any-hover: hover) {
+		&:hover {
+			background-color: transparent;
+		}
+	}
+
+	&:where(.Mui-checked) {
+		inset: unset;
+		transform: var(--_MuiSwitch-thumb-position-on);
+	}
+
+	&:where(.Mui-disabled) {
+		--_MuiSwitch-thumb-background-color: var(--✨bg--disabled);
+		--_MuiSwitch-thumb-box-shadow: var(--✨shadow--disabled);
+	}
+
+	/* TODO: Investigate using `:dir(rtl)` */
+	:root[dir="rtl"] & {
+		--_MuiSwitch-thumb-position-off: translateX(calc(var(--✨translate-distance) * -1));
+		--_MuiSwitch-thumb-position-on: none;
+	}
+}
+
+/* Thumb styling */
+.MuiSwitch-thumb {
+	aspect-ratio: inherit; /* Inherited from `.MuiSwitch-switchBase` */
+	background-color: var(--_MuiSwitch-thumb-background-color);
+	box-shadow: var(--_MuiSwitch-thumb-box-shadow);
+	border-radius: 50%;
+	block-size: 100%;
+	inline-size: 100%;
+}
+
+/* Track styling */
+.MuiSwitch-track {
+	--✨bg--default: var(--stratakit-color-bg-control-switch);
+	--✨bg--checked: var(--stratakit-color-bg-accent-base);
+	--✨bg--disabled: var(--stratakit-color-bg-control-switch);
+	--✨border--default: var(--stratakit-color-border-control-switch);
+	--✨border--checked: var(--stratakit-color-border-accent-base);
+	--✨border--disabled: var(--stratakit-color-border-glow-on-surface-disabled);
+
+	block-size: var(--_MuiSwitch-height);
+	inline-size: calc(var(--_MuiSwitch-height) * 2 - var(--_MuiSwitch-padding) * 2);
+	background-color: var(--_MuiSwitch-track-background-color);
+	border: 1px solid var(--_MuiSwitch-track-border-color);
+	border-radius: inherit; /* Inherited from `.MuiSwitch-root` */
+	opacity: 1;
+	transition: all 150ms ease-out;
+	transition-property: background-color, border-color;
+
+	--_MuiSwitch-track-background-color: var(--✨bg--default);
+	--_MuiSwitch-track-background-hover-effect: var(--stratakit-color-glow-hue)
+		var(--stratakit-color-bg-glow-base-hover-\%);
+	--_MuiSwitch-track-border-color: var(--✨border--default);
+	--_MuiSwitch-track-border-hover-effect: var(--stratakit-color-glow-hue)
+		var(--stratakit-color-border-glow-base-hover-\%);
+
+	@media (any-hover: hover) {
+		:where(.MuiSwitch-switchBase:not(.Mui-disabled):hover) + & {
+			background-color: color-mix(
+				in oklch,
+				var(--_MuiSwitch-track-background-color) 100%,
+				var(--_MuiSwitch-track-background-hover-effect)
+			);
+			border-color: color-mix(
+				in oklch,
+				var(--_MuiSwitch-track-border-color) 100%,
+				var(--_MuiSwitch-track-border-hover-effect)
+			);
+		}
+	}
+
+	:where(.MuiSwitch-switchBase.Mui-checked) + & {
+		--_MuiSwitch-track-background-color: var(--✨bg--checked);
+		--_MuiSwitch-track-background-hover-effect: var(--stratakit-color-glow-hue)
+			var(--stratakit-color-bg-glow-strong-hover-\%);
+		--_MuiSwitch-track-border-color: var(--✨border--checked);
+		--_MuiSwitch-track-border-hover-effect: var(--stratakit-color-glow-hue)
+			var(--stratakit-color-bg-glow-base-hover-\%);
+	}
+
+	:where(.MuiSwitch-switchBase.Mui-disabled) + & {
+		--_MuiSwitch-track-background-color: var(--✨bg--disabled);
+		--_MuiSwitch-track-border-color: var(--✨border--disabled);
+	}
+}

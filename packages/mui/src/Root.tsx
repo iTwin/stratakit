@@ -4,11 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 
 import * as React from "react";
-import {
-	StyledEngineProvider,
-	ThemeProvider,
-	useColorScheme,
-} from "@mui/material/styles";
+import { ThemeProvider, useColorScheme } from "@mui/material/styles";
 import { Root as StrataKitRoot } from "@stratakit/foundations";
 import {
 	RootContext,
@@ -16,6 +12,7 @@ import {
 } from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
 import { createTheme } from "./createTheme.js";
+import { StyledEngineProvider } from "./Root.internal.js";
 import css from "./styles.css.js";
 
 import type { BaseProps } from "@stratakit/foundations/secret-internals";
@@ -52,7 +49,7 @@ const Root = React.forwardRef<HTMLDivElement, RootProps>(
 		const { children, colorScheme, ...rest } = props;
 
 		return (
-			<StyledEngineProvider enableCssLayer>
+			<StyledEngineProvider>
 				<ThemeProvider theme={theme} defaultMode={colorScheme}>
 					<ColorScheme colorScheme={colorScheme} />
 					<RootInner {...rest} colorScheme={colorScheme} ref={forwardedRef}>

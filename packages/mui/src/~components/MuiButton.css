@@ -15,15 +15,15 @@
 	padding-block: 0;
 
 	&:where(.MuiButton-sizeSmall) {
-		min-block-size: var(--stratakit-size-field-small);
+		min-block-size: var(--stratakit-size-control-field-height-small);
 	}
 
 	&:where(.MuiButton-sizeMedium) {
-		min-block-size: var(--stratakit-size-field-medium);
+		min-block-size: var(--stratakit-size-control-field-height-medium);
 	}
 
 	&:where(.MuiButton-sizeLarge) {
-		min-block-size: var(--stratakit-size-field-large);
+		min-block-size: var(--stratakit-size-control-field-height-large);
 	}
 
 	&:where(.MuiButton-colorSecondary) {

@@ -18,15 +18,15 @@
 	}
 
 	&:where(.MuiIconButton-sizeSmall) {
-		min-block-size: var(--stratakit-size-field-small);
+		min-block-size: var(--stratakit-size-control-field-height-small);
 	}
 
 	&:where(.MuiIconButton-sizeMedium) {
-		min-block-size: var(--stratakit-size-field-medium);
+		min-block-size: var(--stratakit-size-control-field-height-medium);
 	}
 
 	&:where(.MuiIconButton-sizeLarge) {
-		min-block-size: var(--stratakit-size-field-large);
+		min-block-size: var(--stratakit-size-control-field-height-large);
 	}
 
 	&:where(.MuiIconButton-colorPrimary) {

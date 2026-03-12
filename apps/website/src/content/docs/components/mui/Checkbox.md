@@ -33,4 +33,6 @@ links:
 
 ### Error
 
+Use the `error` prop on `FormControl` to display the `FormHelperText` in an error state. Consider adding a visually hidden "Error:" prefix to the `FormHelperText` if the error message is not clear on its own.
+
 ::example{src="mui/FormControl.error"}

@@ -10,6 +10,7 @@
 @import "./~components/MuiCard.css";
 @import "./~components/MuiCheckbox.css";
 @import "./~components/MuiChip.css";
+@import "./~components/MuiDialog.css";
 @import "./~components/MuiForm.css";
 @import "./~components/MuiIconButton.css";
 @import "./~components/MuiInput.css";
@@ -29,16 +30,13 @@
 	color: var(--stratakit-color-text-neutral-primary);
 }
 
+.MuiBackdrop-root {
+	background-color: oklch(from var(--stratakit-color-bg-elevation-overlay) l c h / 0.8);
+}
+
 .MuiBottomNavigationAction-root {
 	&:where(.Mui-selected) {
 		color: var(--stratakit-color-text-accent-strong);
-	}
-}
-
-.MuiDialogActions-root {
-	&:where(.MuiDialogActions-spacing) {
-		padding-block: var(--stratakit-space-x4);
-		padding-inline: var(--stratakit-space-x5);
 	}
 }
 

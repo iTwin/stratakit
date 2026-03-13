@@ -21,25 +21,25 @@ The theme includes the following modifications:
 1. **Styling**: The style has been aligned with **StrataKit’s** visual language.
 2. **Typography**: **StrataKit’s** principle font is [Inter](https://rsms.me/inter/), which needs to be [self-hosted](/getting-started/develop/#self-hosting-the-fonts).
 3. **Icons**: Component icons are taken exclusively from **StrataKit’s** own icon collection.
-3. **API**: Some props have been adjusted or removed, and some new props have been added.
-4. **Structure and behavior**: The markup structure and interaction behavior of certain components have been modified to meet **StrataKit** UX and accessibility requirements.
+4. **API**: Some props have been adjusted or removed, and some new props have been added.
+5. **Structure and behavior**: The markup structure and interaction behavior of certain components have been modified to meet **StrataKit** UX and accessibility requirements.
 
 ## StrataKit components
 
 Accompanying specialized components are available in separate packages, such as [@stratakit/structures](https://www.npmjs.com/package/@stratakit/structures).
 
-These components are developed independently, to meet the interface requirements of construction and infrastructure design software. 
+These components are developed independently, to meet the interface requirements of construction and infrastructure design software.
 
 ## Component guidance
 
 All components are accompanied by implementation guidance. This adheres to the following structure:
 
-* **Demo**: What does a typical implementation look like, using common settings?
-* **Use cases**: Is this, or another, component right for my use case? (compares similar components in a table)
-* **StrataKit MUI modifications**: _(where applicable)_: What has been done to bring the **MUI** component in line with **StrataKit**?
-* **Examples**: What variants are there, and to which contexts are they suited?
-* **✅ Do**: What’s needed for an efficient and accessible implementation? What opportunities are there to improve user experience?
-* **🚫 Don’t**: What are some common pitfalls? What are the bad practices to avoid?
+- **Demo**: What does a typical implementation look like, using common settings?
+- **Use cases**: Is this, or another, component right for my use case? (compares similar components in a table)
+- **StrataKit MUI modifications**: _(where applicable)_: What has been done to bring the **MUI** component in line with **StrataKit**?
+- **Examples**: What variants are there, and to which contexts are they suited?
+- **✅ Do**: What’s needed for an efficient and accessible implementation? What opportunities are there to improve user experience?
+- **🚫 Don’t**: What are some common pitfalls? What are the bad practices to avoid?
 
 :::caution[MUI documentation]
 

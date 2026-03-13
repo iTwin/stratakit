@@ -66,7 +66,7 @@ export default defineConfig({
 					items: [
 						{
 							label: "Overview",
-							slug: "components/introduction",
+							slug: "components/overview",
 						},
 						{
 							label: "MUI components",

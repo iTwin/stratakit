@@ -7,6 +7,8 @@
 	--🥝selection-color-bg: var(--stratakit-color-static-white);
 	--🥝selection-color-text: var(--stratakit-color-static-black);
 
+	box-shadow: 0px 0px 0px 1px var(--stratakit-color-border-glow-strong-default) inset;
+
 	:where(.MuiBadge-root[data-_sk-inline]) & {
 		position: static;
 		transform: none;

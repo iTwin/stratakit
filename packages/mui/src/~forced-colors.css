@@ -3,6 +3,10 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
+.MuiBadge-badge {
+	border: 1px solid CanvasText;
+}
+
 :is(.MuiButton-root, .MuiIconButton-root) {
 	background-color: ButtonFace;
 	border: 1px solid ButtonBorder;

@@ -290,6 +290,13 @@ function createTheme() {
 			MuiListItemButton: {
 				defaultProps: { component: Role.button },
 			},
+			MuiListItemText: {
+				defaultProps: {
+					slotProps: {
+						primary: { variant: "inherit" },
+					},
+				},
+			},
 			MuiListSubheader: { defaultProps: { component: Role.li } },
 			MuiMenu: { defaultProps: { component: Role.div } },
 			MuiMenuItem: { defaultProps: { component: Role.li } },

@@ -5,6 +5,7 @@
 
 @import "./~components/MuiAlert.css";
 @import "./~components/MuiAutocomplete.css";
+@import "./~components/MuiBadge.css";
 @import "./~components/MuiButton.css";
 @import "./~components/MuiCard.css";
 @import "./~components/MuiCheckbox.css";
@@ -13,7 +14,9 @@
 @import "./~components/MuiIconButton.css";
 @import "./~components/MuiInput.css";
 @import "./~components/MuiSlider.css";
+@import "./~components/MuiSwitch.css";
 @import "./~components/MuiTabs.css";
+@import "./~components/MuiTypography.css";
 
 .MuiAccordion-root {
 	background-color: transparent;
@@ -24,6 +27,12 @@
 	box-shadow: none;
 	border-block-end: 1px solid var(--stratakit-color-border-page-base);
 	color: var(--stratakit-color-text-neutral-primary);
+}
+
+.MuiBottomNavigationAction-root {
+	&:where(.Mui-selected) {
+		color: var(--stratakit-color-text-accent-strong);
+	}
 }
 
 .MuiDialogActions-root {
@@ -88,18 +97,6 @@
 			.MuiPaper-elevation24
 		) {
 		--stratakit-mui-palette-background-paper: var(--stratakit-color-bg-elevation-level-1);
-	}
-}
-
-.MuiSwitch-root {
-	.MuiSwitch-switchBase:where(.MuiSwitch-colorPrimary) {
-		&:where(.Mui-checked):where(:not(.Mui-disabled)) {
-			color: var(--stratakit-mui-palette-primary-dark);
-		}
-	}
-
-	&:where(:has(.MuiSwitch-switchBase.Mui-focusVisible)) {
-		outline: 2px solid var(--stratakit-color-border-accent-strong);
 	}
 }
 

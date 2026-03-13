@@ -4,7 +4,18 @@
  *--------------------------------------------------------------------------------------------*/
 
 import TextField from "@mui/material/TextField";
+import { visuallyHidden } from "@mui/utils";
 
 export default () => {
-	return <TextField label="Email" helperText="Invalid email address" error />;
+	return (
+		<TextField
+			label="Email"
+			error
+			helperText={
+				<>
+					<span style={visuallyHidden}>Error:</span> Invalid email address
+				</>
+			}
+		/>
+	);
 };

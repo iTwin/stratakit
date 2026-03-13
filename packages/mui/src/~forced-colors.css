@@ -3,6 +3,10 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
+.MuiBadge-badge {
+	border: 1px solid CanvasText;
+}
+
 :is(.MuiButton-root, .MuiIconButton-root) {
 	background-color: ButtonFace;
 	border: 1px solid ButtonBorder;
@@ -92,5 +96,25 @@
 
 	&:where(:nth-child(1 of &), :nth-last-child(1 of &)) {
 		background-color: transparent;
+	}
+}
+
+.MuiSwitch-switchBase {
+	--_MuiSwitch-thumb-background-color: CanvasText;
+
+	&:where(.Mui-checked:not(.Mui-disabled)) {
+		--_MuiSwitch-thumb-background-color: SelectedItemText;
+
+		+ .MuiSwitch-track {
+			background-color: SelectedItem;
+		}
+	}
+
+	&:where(.Mui-disabled) {
+		--_MuiSwitch-thumb-background-color: GrayText;
+
+		+ .MuiSwitch-track {
+			--_MuiSwitch-track-border-color: GrayText;
+		}
 	}
 }

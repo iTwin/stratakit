@@ -18,21 +18,21 @@
 		@apply --typography("body-sm");
 		min-block-size: var(--stratakit-size-control-field-height-small);
 		padding-block: var(--stratakit-space-x05);
-		padding-inline: var(--stratakit-space-x1);
+		padding-inline: var(--stratakit-space-x2);
 	}
 
 	&:where(.MuiButton-sizeMedium) {
 		@apply --typography("body-md");
 		min-block-size: var(--stratakit-size-control-field-height-medium);
 		padding-block: var(--stratakit-space-x1);
-		padding-inline: var(--stratakit-space-x2);
+		padding-inline: var(--stratakit-space-x3);
 	}
 
 	&:where(.MuiButton-sizeLarge) {
 		@apply --typography("body-lg");
 		min-block-size: var(--stratakit-size-control-field-height-large);
 		padding-block: var(--stratakit-space-x2);
-		padding-inline: var(--stratakit-space-x3);
+		padding-inline: var(--stratakit-space-x4);
 	}
 
 	&:where(.MuiButton-colorSecondary) {

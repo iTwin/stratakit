@@ -1,0 +1,1 @@
+import{j as t}from"./~utils.D0-UwIE9.js";import{B as r}from"./Button.IoDGDAWZ.js";import"./index.DIfZGIpv.js";import"./index.XeJbqeyU.js";import"./styles.internal.yYhHm1ef.js";const p=()=>t.jsx(r,{children:"Create new"});export{p as default};

@@ -9,7 +9,6 @@
 	aspect-ratio: 1;
 	border-radius: 4px;
 	color: var(--_MuiIconButton-icon-color);
-	padding: 0;
 
 	@media (any-hover: hover) {
 		&:where(:hover) {
@@ -19,14 +18,17 @@
 
 	&:where(.MuiIconButton-sizeSmall) {
 		min-block-size: var(--stratakit-size-control-field-height-small);
+		padding: var(--stratakit-space-x1);
 	}
 
 	&:where(.MuiIconButton-sizeMedium) {
 		min-block-size: var(--stratakit-size-control-field-height-medium);
+		padding: var(--stratakit-space-x2);
 	}
 
 	&:where(.MuiIconButton-sizeLarge) {
 		min-block-size: var(--stratakit-size-control-field-height-large);
+		padding: var(--stratakit-space-x3);
 	}
 
 	&:where(.MuiIconButton-colorPrimary) {
@@ -39,9 +41,5 @@
 
 	&:where(.Mui-disabled) {
 		--_MuiIconButton-icon-color: var(--stratakit-color-icon-neutral-disabled);
-	}
-
-	&:where(.MuiIconButton-sizeSmall) {
-		padding: var(--stratakit-space-x1);
 	}
 }

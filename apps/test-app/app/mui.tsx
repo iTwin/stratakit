@@ -26,6 +26,8 @@ import AppBarDefault from "examples/mui/AppBar.default.tsx";
 import AutocompleteDefault from "examples/mui/Autocomplete.default.tsx";
 import AutocompleteMultiple from "examples/mui/Autocomplete.multiple.tsx";
 import AvatarDefault from "examples/mui/Avatar.default.tsx";
+import AvatarIcon from "examples/mui/Avatar.icon.tsx";
+import AvatarImage from "examples/mui/Avatar.image.tsx";
 import AvatarGroupDefault from "examples/mui/AvatarGroup.default.tsx";
 import BackdropDefault from "examples/mui/Backdrop.default.tsx";
 import BadgeColors from "examples/mui/Badge.colors.tsx";
@@ -164,7 +166,13 @@ const components: Record<string, React.ReactNode> = {
 			<AutocompleteMultiple />
 		</>
 	),
-	Avatar: <AvatarDefault />,
+	Avatar: (
+		<Stack spacing={1} direction="row">
+			<AvatarDefault />
+			<AvatarIcon />
+			<AvatarImage />
+		</Stack>
+	),
 	AvatarGroup: <AvatarGroupDefault />,
 	Backdrop: <BackdropDefault />,
 	Badge: (

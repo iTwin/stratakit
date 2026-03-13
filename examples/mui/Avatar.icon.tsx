@@ -4,11 +4,14 @@
  *--------------------------------------------------------------------------------------------*/
 
 import Avatar from "@mui/material/Avatar";
+import { Icon } from "@stratakit/mui";
+
+import svgUser from "@stratakit/icons/user.svg";
 
 export default () => {
 	return (
-		<Avatar aria-label="Greg Bentley" role="img" sx={{ width: 16, height: 16 }}>
-			<abbr aria-hidden="true">gb</abbr>
+		<Avatar aria-label="User" role="img">
+			<Icon href={svgUser} />
 		</Avatar>
 	);
 };

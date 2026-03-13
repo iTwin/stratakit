@@ -7,3 +7,13 @@ links:
 ---
 
 ::example{src="mui/Avatar.default"}
+
+## Examples
+
+### Icon
+
+::example{src="mui/Avatar.icon"}
+
+### Image
+
+::example{src="mui/Avatar.image"}

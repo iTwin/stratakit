@@ -13,6 +13,7 @@
 
 .MuiButton-root {
 	@apply --typography("body-sm");
+	min-inline-size: unset;
 
 	&:where(.MuiButton-sizeSmall) {
 		min-block-size: var(--stratakit-size-control-field-height-small);

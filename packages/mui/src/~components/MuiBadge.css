@@ -1,0 +1,14 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+
+.MuiBadge-badge {
+	--🥝selection-color-bg: var(--stratakit-color-static-white);
+	--🥝selection-color-text: var(--stratakit-color-static-black);
+
+	:where(.MuiBadge-root[data-_sk-inline]) & {
+		position: static;
+		transform: none;
+	}
+}

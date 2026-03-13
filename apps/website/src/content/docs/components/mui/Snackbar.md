@@ -7,3 +7,7 @@ links:
 ---
 
 ::example{src="mui/Snackbar.default"}
+
+## StrataKit MUI modifications
+
+- `Snackbar` is rendered using a [portal](https://react.dev/reference/react-dom/createPortal).

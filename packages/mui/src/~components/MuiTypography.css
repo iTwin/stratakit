@@ -1,0 +1,42 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+
+.MuiTypography-root {
+	&:where(.MuiTypography-body1) {
+		@apply --typography("body-lg");
+	}
+	&:where(.MuiTypography-body2) {
+		@apply --typography("body-md");
+	}
+
+	&:where(.MuiTypography-h1) {
+		@apply --typography("display-lg");
+	}
+	&:where(.MuiTypography-h2) {
+		@apply --typography("display-md");
+	}
+	&:where(.MuiTypography-h3) {
+		@apply --typography("display-sm");
+	}
+	&:where(.MuiTypography-h4) {
+		@apply --typography("headline-lg");
+	}
+	&:where(.MuiTypography-h5) {
+		@apply --typography("headline-md");
+	}
+	&:where(.MuiTypography-h6) {
+		@apply --typography("headline-sm");
+	}
+
+	&:where(.MuiTypography-caption) {
+		@apply --typography("body-sm");
+	}
+	&:where(.MuiTypography-subtitle1) {
+		@apply --typography("body-sm");
+	}
+	&:where(.MuiTypography-subtitle2) {
+		@apply --typography("caption-lg");
+	}
+}

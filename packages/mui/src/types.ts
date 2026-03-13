@@ -8,7 +8,15 @@
 // See: https://www.typescriptlang.org/docs/handbook/declaration-merging.html#module-augmentation
 
 import type { RoleProps } from "@ariakit/react/role";
-import type { TextFieldProps, TextFieldVariants } from "@mui/material";
+import type { BadgeProps } from "@mui/material/Badge";
+import type { IconButtonProps } from "@mui/material/IconButton";
+import type { CommonProps } from "@mui/material/OverridableComponent";
+import type { TableCellProps as MuiTableCellProps } from "@mui/material/TableCell";
+import type {
+	TextFieldProps,
+	TextFieldVariants,
+} from "@mui/material/TextField";
+import type { TypographyProps } from "@mui/material/Typography";
 import type * as React from "react";
 
 declare module "@mui/material/OverridableComponent" {
@@ -43,6 +51,28 @@ declare module "@mui/material/Alert" {
 		 * @default 'outlined'
 		 */
 		variant?: "filled" | "outlined";
+	}
+}
+
+declare module "@mui/material/Badge" {
+	interface BadgePropsColorOverrides {
+		default: false;
+	}
+
+	interface BadgeOwnProps {
+		/**
+		 * When `true`, the badge is rendered in normal document flow,
+		 * instead of being positioned relative to its child based on `anchorOrigin` and `overlap` props.
+		 *
+		 * @default false
+		 */
+		inline?: boolean;
+		/**
+		 * The default color with `@stratakit/mui` is `"secondary"`.
+		 *
+		 * @default 'secondary'
+		 */
+		color?: BadgeProps["color"];
 	}
 }
 
@@ -88,6 +118,19 @@ declare module "@mui/material/Chip" {
 		 * @default 'Clear'
 		 */
 		deleteLabel?: string;
+
+		/** @deprecated DO NOT USE */
+		color?: never;
+	}
+
+	interface ChipPropsColorOverrides {
+		default: false;
+		primary: false;
+		secondary: false;
+		error: false;
+		info: false;
+		success: false;
+		warning: false;
 	}
 }
 
@@ -128,10 +171,20 @@ declare module "@mui/material/FormLabel" {
 
 declare module "@mui/material/IconButton" {
 	interface IconButtonPropsColorOverrides {
+		default: false;
 		info: false;
 		success: false;
 		warning: false;
 		inherit: false;
+	}
+
+	interface IconButtonOwnProps {
+		/**
+		 * The default color with `@stratakit/mui` is `"secondary"`.
+		 *
+		 * @default 'secondary'
+		 */
+		color?: IconButtonProps["color"];
 	}
 }
 
@@ -181,6 +234,13 @@ declare module "@mui/material/Switch" {
 	}
 }
 
+declare module "@mui/material/TableCell" {
+	interface TableCellProps extends Pick<CommonProps, "render"> {
+		/** @deprecated Use `render` prop instead. */
+		component?: MuiTableCellProps["component"];
+	}
+}
+
 declare module "@mui/material/TextField" {
 	interface TextFieldPropsColorOverrides {
 		secondary: false;
@@ -204,5 +264,16 @@ declare module "@mui/material/Tooltip" {
 		 * Use `describeChild={false}` if you want to label the child element.
 		 */
 		describeChild?: boolean;
+	}
+}
+
+declare module "@mui/material/Typography" {
+	interface TypographyOwnProps {
+		/**
+		 * The default variant with `@stratakit/mui` is `"body2"`.
+		 *
+		 * @default "body2"
+		 */
+		variant?: TypographyProps["variant"];
 	}
 }

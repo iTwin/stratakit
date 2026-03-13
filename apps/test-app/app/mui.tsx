@@ -13,7 +13,12 @@ import visuallyHidden from "@mui/utils/visuallyHidden";
 import { Icon } from "@stratakit/mui";
 import * as NavigationList from "@stratakit/structures/unstable_NavigationList";
 import AccordionActions from "examples/mui/Accordion.actions.tsx";
+import AccordionDecoration from "examples/mui/Accordion.decoration.tsx";
 import AccordionDefault from "examples/mui/Accordion.default.tsx";
+import AccordionExpanded from "examples/mui/Accordion.expanded.tsx";
+import AccordionMarkerLeft from "examples/mui/Accordion.marker-left.tsx";
+import AccordionMultiple from "examples/mui/Accordion.multiple.tsx";
+import AccordionVariants from "examples/mui/Accordion.variants.tsx";
 import AlertPermutations_ from "examples/mui/Alert._permutations.tsx";
 import AlertDefault from "examples/mui/Alert.default.tsx";
 import AlertTitle from "examples/mui/Alert.title.tsx";
@@ -23,6 +28,7 @@ import AutocompleteMultiple from "examples/mui/Autocomplete.multiple.tsx";
 import AvatarDefault from "examples/mui/Avatar.default.tsx";
 import AvatarGroupDefault from "examples/mui/AvatarGroup.default.tsx";
 import BackdropDefault from "examples/mui/Backdrop.default.tsx";
+import BadgeColors from "examples/mui/Badge.colors.tsx";
 import BadgeDefault from "examples/mui/Badge.default.tsx";
 import BottomNavigationDefault from "examples/mui/BottomNavigation.default.tsx";
 import BreadcrumbsDefault from "examples/mui/Breadcrumbs.default.tsx";
@@ -86,6 +92,7 @@ import StepperOptional from "examples/mui/Stepper.optional.tsx";
 import SwipeableDrawerDefault from "examples/mui/SwipeableDrawer.default.tsx";
 import SwitchChecked from "examples/mui/Switch.checked.tsx";
 import SwitchDefault from "examples/mui/Switch.default.tsx";
+import SwitchSizes from "examples/mui/Switch.sizes.tsx";
 import TableDefault from "examples/mui/Table.default.tsx";
 import TableFooter from "examples/mui/Table.footer.tsx";
 import TabsDefault from "examples/mui/Tabs.default.tsx";
@@ -120,8 +127,23 @@ export const meta: MetaFunction = () => {
 const components: Record<string, React.ReactNode> = {
 	Accordion: (
 		<Stack spacing={1} alignSelf="stretch">
-			<AccordionDefault />
-			<AccordionActions />
+			<div>
+				<AccordionDefault />
+			</div>
+			<div>
+				<AccordionExpanded />
+			</div>
+			<div>
+				<AccordionMarkerLeft />
+			</div>
+			<div>
+				<AccordionDecoration />
+			</div>
+			<div>
+				<AccordionActions />
+			</div>
+			<AccordionMultiple />
+			<AccordionVariants />
 		</Stack>
 	),
 	Alert: (
@@ -145,7 +167,12 @@ const components: Record<string, React.ReactNode> = {
 	Avatar: <AvatarDefault />,
 	AvatarGroup: <AvatarGroupDefault />,
 	Backdrop: <BackdropDefault />,
-	Badge: <BadgeDefault />,
+	Badge: (
+		<>
+			<BadgeDefault />
+			<BadgeColors />
+		</>
+	),
 	BottomNavigation: (
 		<Stack spacing={1} alignSelf="stretch">
 			<BottomNavigationDefault />
@@ -294,6 +321,7 @@ const components: Record<string, React.ReactNode> = {
 		<>
 			<SwitchDefault />
 			<SwitchChecked />
+			<SwitchSizes />
 		</>
 	),
 	Table: (
@@ -418,6 +446,7 @@ function ComponentExamples(props: ComponentExamplesProps) {
 					{name}
 				</Typography>
 				<IconButton
+					render={<a />}
 					id={`${id}-permalink`}
 					aria-labelledby={`${id}-permalink ${id}`}
 					className={styles.examplePermalink}

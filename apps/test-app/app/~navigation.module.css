@@ -46,12 +46,6 @@
 	z-index: 1; /* To allow the toggle/expander to float above other content */
 }
 
-.muiLogo {
-	inline-size: 1.25rem; /* MUI logo does not have enough whitespace around it */
-	margin-inline: var(--stratakit-space-x05);
-	aspect-ratio: 1;
-}
-
 .mainContent {
 	flex: 1;
 }

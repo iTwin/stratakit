@@ -1,0 +1,38 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+
+.MuiList-root {
+	&:where(.MuiList-padding) {
+		padding-block: var(--stratakit-space-x1);
+	}
+}
+
+:is(
+		.MuiListItemButton-root,
+		.MuiListSubheader-root,
+		.MuiListItem-root:where(.MuiListItem-padding)
+	) {
+	line-height: unset;
+	min-block-size: var(--stratakit-size-control-listitem-height-large);
+	align-content: center;
+
+	padding-block: var(--stratakit-space-x1);
+	padding-inline: var(--stratakit-space-x3);
+	gap: var(--stratakit-space-x2);
+
+	:where(.MuiList-root.MuiList-dense) & {
+		min-block-size: var(--stratakit-size-control-listitem-height-small);
+		@apply --typography("body-sm");
+	}
+}
+
+:is(.MuiListItemIcon-root, .MuiListItemAvatar-root) {
+	min-width: unset;
+}
+
+.MuiListItemText-root {
+	margin: 0;
+	gap: var(--stratakit-space-x1);
+}

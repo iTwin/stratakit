@@ -12,18 +12,21 @@
 }
 
 .MuiButton-root {
-	padding-block: 0;
+	@apply --typography("body-sm");
 
 	&:where(.MuiButton-sizeSmall) {
 		min-block-size: var(--stratakit-size-control-field-height-small);
+		padding-block: var(--stratakit-space-x1);
 	}
 
 	&:where(.MuiButton-sizeMedium) {
 		min-block-size: var(--stratakit-size-control-field-height-medium);
+		padding-block: var(--stratakit-space-x2);
 	}
 
 	&:where(.MuiButton-sizeLarge) {
 		min-block-size: var(--stratakit-size-control-field-height-large);
+		padding-block: var(--stratakit-space-x3);
 	}
 
 	&:where(.MuiButton-colorSecondary) {

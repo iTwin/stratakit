@@ -14,6 +14,6 @@ links:
 
 ::example{src="mui/Avatar.icon"}
 
-### Image
+### Initials
 
-::example{src="mui/Avatar.image"}
+::example{src="mui/Avatar.initials"}

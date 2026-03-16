@@ -27,7 +27,7 @@ import AutocompleteDefault from "examples/mui/Autocomplete.default.tsx";
 import AutocompleteMultiple from "examples/mui/Autocomplete.multiple.tsx";
 import AvatarDefault from "examples/mui/Avatar.default.tsx";
 import AvatarIcon from "examples/mui/Avatar.icon.tsx";
-import AvatarImage from "examples/mui/Avatar.image.tsx";
+import AvatarInitials from "examples/mui/Avatar.initials.tsx";
 import AvatarGroupDefault from "examples/mui/AvatarGroup.default.tsx";
 import BackdropDefault from "examples/mui/Backdrop.default.tsx";
 import BadgeColors from "examples/mui/Badge.colors.tsx";
@@ -170,7 +170,7 @@ const components: Record<string, React.ReactNode> = {
 		<Stack spacing={1} direction="row">
 			<AvatarDefault />
 			<AvatarIcon />
-			<AvatarImage />
+			<AvatarInitials />
 		</Stack>
 	),
 	AvatarGroup: <AvatarGroupDefault />,

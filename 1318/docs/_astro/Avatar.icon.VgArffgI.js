@@ -1,0 +1,1 @@
+import{j as r,I as o}from"./~utils.Xmuf1jNj.js";import{s as t}from"./user.BHS6kHeR.js";import{A as i}from"./Avatar.D06GCmbE.js";import"./index.DIfZGIpv.js";import"./index.XeJbqeyU.js";import"./styles.internal.yYhHm1ef.js";import"./createSvgIcon.BNiAtjbT.js";const f=()=>r.jsx(i,{"aria-label":"Willow Winters",role:"img",children:r.jsx(o,{href:t})});export{f as default};

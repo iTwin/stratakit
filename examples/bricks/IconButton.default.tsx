@@ -4,8 +4,8 @@
  *--------------------------------------------------------------------------------------------*/
 import { IconButton } from "@stratakit/bricks";
 
-import downloadIcon from "@stratakit/icons/download.svg";
+import svgDownload from "@stratakit/icons/download.svg";
 
 export default () => {
-	return <IconButton label="Download" icon={downloadIcon} />;
+	return <IconButton label="Download" icon={svgDownload} />;
 };

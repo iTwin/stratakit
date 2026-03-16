@@ -7,7 +7,7 @@ import { Icon } from "@stratakit/foundations";
 import { unstable_AccordionItem as AccordionItem } from "@stratakit/structures";
 import { definePage } from "~/~utils.tsx";
 
-import placeholderIcon from "@stratakit/icons/placeholder.svg";
+import svgPlaceholder from "@stratakit/icons/placeholder.svg";
 
 export default definePage(
 	function Page({
@@ -22,9 +22,7 @@ export default definePage(
 				<AccordionItem.Header>
 					<AccordionItem.Marker />
 					{withDecoration ? (
-						<AccordionItem.Decoration
-							render={<Icon href={placeholderIcon} />}
-						/>
+						<AccordionItem.Decoration render={<Icon href={svgPlaceholder} />} />
 					) : null}
 					<AccordionItem.Button data-testid="button">
 						<AccordionItem.Label>{label}</AccordionItem.Label>
@@ -104,7 +102,7 @@ export function VisualTest() {
 			<AccordionItem.Root>
 				<AccordionItem.Header>
 					<AccordionItem.Marker />
-					<AccordionItem.Decoration render={<Icon href={placeholderIcon} />} />
+					<AccordionItem.Decoration render={<Icon href={svgPlaceholder} />} />
 					<AccordionItem.Button>
 						<AccordionItem.Label>Label</AccordionItem.Label>
 					</AccordionItem.Button>
@@ -115,7 +113,7 @@ export function VisualTest() {
 			<AccordionItem.Root defaultOpen>
 				<AccordionItem.Header>
 					<AccordionItem.Marker />
-					<AccordionItem.Decoration render={<Icon href={placeholderIcon} />} />
+					<AccordionItem.Decoration render={<Icon href={svgPlaceholder} />} />
 					<AccordionItem.Button>
 						<AccordionItem.Label>Label</AccordionItem.Label>
 					</AccordionItem.Button>
@@ -125,7 +123,7 @@ export function VisualTest() {
 
 			<AccordionItem.Root>
 				<AccordionItem.Header>
-					<AccordionItem.Decoration render={<Icon href={placeholderIcon} />} />
+					<AccordionItem.Decoration render={<Icon href={svgPlaceholder} />} />
 					<AccordionItem.Button>
 						<AccordionItem.Label>Label</AccordionItem.Label>
 					</AccordionItem.Button>
@@ -136,7 +134,7 @@ export function VisualTest() {
 
 			<AccordionItem.Root defaultOpen>
 				<AccordionItem.Header>
-					<AccordionItem.Decoration render={<Icon href={placeholderIcon} />} />
+					<AccordionItem.Decoration render={<Icon href={svgPlaceholder} />} />
 					<AccordionItem.Button>
 						<AccordionItem.Label>Label</AccordionItem.Label>
 					</AccordionItem.Button>
@@ -151,7 +149,7 @@ export function VisualTest() {
 					<AccordionItem.Button>
 						<AccordionItem.Label>Label</AccordionItem.Label>
 					</AccordionItem.Button>
-					<AccordionItem.Decoration render={<Icon href={placeholderIcon} />} />
+					<AccordionItem.Decoration render={<Icon href={svgPlaceholder} />} />
 				</AccordionItem.Header>
 				<AccordionItem.Content>Body</AccordionItem.Content>
 			</AccordionItem.Root>
@@ -162,7 +160,7 @@ export function VisualTest() {
 					<AccordionItem.Button>
 						<AccordionItem.Label>Label</AccordionItem.Label>
 					</AccordionItem.Button>
-					<AccordionItem.Decoration render={<Icon href={placeholderIcon} />} />
+					<AccordionItem.Decoration render={<Icon href={svgPlaceholder} />} />
 				</AccordionItem.Header>
 				<AccordionItem.Content>Body</AccordionItem.Content>
 			</AccordionItem.Root>
@@ -172,7 +170,7 @@ export function VisualTest() {
 					<AccordionItem.Button>
 						<AccordionItem.Label>Label</AccordionItem.Label>
 					</AccordionItem.Button>
-					<AccordionItem.Decoration render={<Icon href={placeholderIcon} />} />
+					<AccordionItem.Decoration render={<Icon href={svgPlaceholder} />} />
 					<AccordionItem.Marker />
 				</AccordionItem.Header>
 				<AccordionItem.Content>Body</AccordionItem.Content>
@@ -183,7 +181,7 @@ export function VisualTest() {
 					<AccordionItem.Button>
 						<AccordionItem.Label>Label</AccordionItem.Label>
 					</AccordionItem.Button>
-					<AccordionItem.Decoration render={<Icon href={placeholderIcon} />} />
+					<AccordionItem.Decoration render={<Icon href={svgPlaceholder} />} />
 					<AccordionItem.Marker />
 				</AccordionItem.Header>
 				<AccordionItem.Content>Body</AccordionItem.Content>
@@ -193,15 +191,15 @@ export function VisualTest() {
 				<AccordionItem.Header>
 					<AccordionItem.Marker />
 					<AccordionItem.Decoration>
-						<Icon href={placeholderIcon} />
-						<Icon href={placeholderIcon} />
+						<Icon href={svgPlaceholder} />
+						<Icon href={svgPlaceholder} />
 					</AccordionItem.Decoration>
 					<AccordionItem.Button>
 						<AccordionItem.Label>Label</AccordionItem.Label>
 					</AccordionItem.Button>
 					<AccordionItem.Decoration>
-						<Icon href={placeholderIcon} />
-						<Icon href={placeholderIcon} />
+						<Icon href={svgPlaceholder} />
+						<Icon href={svgPlaceholder} />
 					</AccordionItem.Decoration>
 				</AccordionItem.Header>
 				<AccordionItem.Content>Body</AccordionItem.Content>
@@ -211,15 +209,15 @@ export function VisualTest() {
 				<AccordionItem.Header>
 					<AccordionItem.Marker />
 					<AccordionItem.Decoration>
-						<Icon href={placeholderIcon} />
-						<Icon href={placeholderIcon} />
+						<Icon href={svgPlaceholder} />
+						<Icon href={svgPlaceholder} />
 					</AccordionItem.Decoration>
 					<AccordionItem.Button>
 						<AccordionItem.Label>Label</AccordionItem.Label>
 					</AccordionItem.Button>
 					<AccordionItem.Decoration>
-						<Icon href={placeholderIcon} />
-						<Icon href={placeholderIcon} />
+						<Icon href={svgPlaceholder} />
+						<Icon href={svgPlaceholder} />
 					</AccordionItem.Decoration>
 				</AccordionItem.Header>
 				<AccordionItem.Content>Body</AccordionItem.Content>
@@ -228,15 +226,15 @@ export function VisualTest() {
 			<AccordionItem.Root>
 				<AccordionItem.Header>
 					<AccordionItem.Decoration>
-						<Icon href={placeholderIcon} />
-						<Icon href={placeholderIcon} />
+						<Icon href={svgPlaceholder} />
+						<Icon href={svgPlaceholder} />
 					</AccordionItem.Decoration>
 					<AccordionItem.Button>
 						<AccordionItem.Label>Label</AccordionItem.Label>
 					</AccordionItem.Button>
 					<AccordionItem.Decoration>
-						<Icon href={placeholderIcon} />
-						<Icon href={placeholderIcon} />
+						<Icon href={svgPlaceholder} />
+						<Icon href={svgPlaceholder} />
 					</AccordionItem.Decoration>
 					<AccordionItem.Marker />
 				</AccordionItem.Header>
@@ -246,15 +244,15 @@ export function VisualTest() {
 			<AccordionItem.Root defaultOpen>
 				<AccordionItem.Header>
 					<AccordionItem.Decoration>
-						<Icon href={placeholderIcon} />
-						<Icon href={placeholderIcon} />
+						<Icon href={svgPlaceholder} />
+						<Icon href={svgPlaceholder} />
 					</AccordionItem.Decoration>
 					<AccordionItem.Button>
 						<AccordionItem.Label>Label</AccordionItem.Label>
 					</AccordionItem.Button>
 					<AccordionItem.Decoration>
-						<Icon href={placeholderIcon} />
-						<Icon href={placeholderIcon} />
+						<Icon href={svgPlaceholder} />
+						<Icon href={svgPlaceholder} />
 					</AccordionItem.Decoration>
 					<AccordionItem.Marker />
 				</AccordionItem.Header>

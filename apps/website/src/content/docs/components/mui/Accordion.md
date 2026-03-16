@@ -88,12 +88,12 @@ Use the `AccordionActions` component to display actions related to the content o
 
 ::example{src="mui/Accordion.actions"}
 
-## Do
+## ✅ Do
 
 - Use **Accordion** to tidy away long sections of content, to be later disclosed.
 - Adopt the correct heading level for the **Accordion’s** position in the document structure. The heading component can be [changed in the `slotProps`](https://mui.com/material-ui/react-accordion/#changing-heading-level).
 
-## Don’t
+## 🚫 Don’t
 
 - Don’t nest **Accordions** inside one another.
 - Don’t use different heading levels for **Accordion** items in the same set. Since **Accordions** cannot be nested, they are at the same level in the document hierarchy.

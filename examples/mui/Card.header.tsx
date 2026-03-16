@@ -13,7 +13,6 @@ import CardMedia from "@mui/material/CardMedia";
 import IconButton from "@mui/material/IconButton";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
-import Tooltip from "@mui/material/Tooltip";
 import Typography from "@mui/material/Typography";
 import { Icon } from "@stratakit/mui";
 
@@ -59,17 +58,16 @@ function ActionsMenu() {
 
 	return (
 		<>
-			<Tooltip title="More actions" describeChild={false}>
-				<IconButton
-					id={buttonId}
-					aria-controls={open ? menuId : undefined}
-					aria-haspopup="true"
-					aria-expanded={open ? "true" : "false"}
-					onClick={(event) => setAnchorEl(event.currentTarget)}
-				>
-					<Icon href={svgMore} />
-				</IconButton>
-			</Tooltip>
+			<IconButton
+				label="More actions"
+				id={buttonId}
+				aria-controls={open ? menuId : undefined}
+				aria-haspopup="true"
+				aria-expanded={open ? "true" : "false"}
+				onClick={(event) => setAnchorEl(event.currentTarget)}
+			>
+				<Icon href={svgMore} />
+			</IconButton>
 			<Menu
 				id={menuId}
 				anchorEl={anchorEl}

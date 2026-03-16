@@ -10,7 +10,6 @@ import ListItem from "@mui/material/ListItem";
 import ListItemAvatar from "@mui/material/ListItemAvatar";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
-import Tooltip from "@mui/material/Tooltip";
 import { Icon } from "@stratakit/mui";
 
 import svgFolder from "@stratakit/icons/folder.svg";
@@ -22,11 +21,9 @@ export default () => {
 			<ListItem
 				disablePadding
 				secondaryAction={
-					<Tooltip title="Rename" describeChild={false}>
-						<IconButton>
-							<Icon href={`${svgRename}#icon-large`} size="large" />
-						</IconButton>
-					</Tooltip>
+					<IconButton label="Rename">
+						<Icon href={`${svgRename}#icon`} />
+					</IconButton>
 				}
 			>
 				<ListItemButton>
@@ -41,11 +38,9 @@ export default () => {
 			<ListItem
 				disablePadding
 				secondaryAction={
-					<Tooltip title="Rename" describeChild={false}>
-						<IconButton>
-							<Icon href={`${svgRename}#icon-large`} size="large" />
-						</IconButton>
-					</Tooltip>
+					<IconButton label="Rename">
+						<Icon href={`${svgRename}#icon`} />
+					</IconButton>
 				}
 			>
 				<ListItemButton>

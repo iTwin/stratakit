@@ -10,7 +10,7 @@ import svgUser from "@stratakit/icons/user.svg";
 
 export default () => {
 	return (
-		<Avatar aria-label="User" role="img">
+		<Avatar aria-label="Anonymous user" role="img">
 			<Icon href={svgUser} />
 		</Avatar>
 	);

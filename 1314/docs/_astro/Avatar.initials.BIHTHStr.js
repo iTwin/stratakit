@@ -1,1 +1,0 @@
-import{j as r}from"./~utils.Cgi9FOPJ.js";import{A as t}from"./Avatar.CBa4WLR4.js";import"./index.DIfZGIpv.js";import"./index.XeJbqeyU.js";import"./styles.internal.yYhHm1ef.js";import"./createSvgIcon.DDD49ekG.js";const l=()=>r.jsx(t,{"aria-label":"Greg Bentley",role:"img",children:r.jsx("abbr",{"aria-hidden":"true",children:"GB"})});export{l as default};

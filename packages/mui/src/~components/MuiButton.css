@@ -13,7 +13,7 @@
 
 .MuiButton-root {
 	min-block-size: var(--_MuiButton-height);
-	min-inline-size: unset;
+	min-inline-size: var(--_MuiButton-height);
 	padding-block: var(--_MuiButton-padding-block);
 	padding-inline: var(--_MuiButton-padding-inline);
 

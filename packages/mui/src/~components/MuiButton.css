@@ -12,27 +12,30 @@
 }
 
 .MuiButton-root {
+	min-block-size: var(--_MuiButton-height);
 	min-inline-size: unset;
+	padding-block: var(--_MuiButton-padding-block);
+	padding-inline: var(--_MuiButton-padding-inline);
 
 	&:where(.MuiButton-sizeSmall) {
 		@apply --typography("body-sm");
-		min-block-size: var(--stratakit-size-control-field-height-small);
-		padding-block: var(--stratakit-space-x05);
-		padding-inline: var(--stratakit-space-x2);
+		--_MuiButton-height: var(--stratakit-size-control-field-height-small);
+		--_MuiButton-padding-block: var(--stratakit-space-x05);
+		--_MuiButton-padding-inline: var(--stratakit-space-x2);
 	}
 
 	&:where(.MuiButton-sizeMedium) {
 		@apply --typography("body-md");
-		min-block-size: var(--stratakit-size-control-field-height-medium);
-		padding-block: var(--stratakit-space-x1);
-		padding-inline: var(--stratakit-space-x3);
+		--_MuiButton-height: var(--stratakit-size-control-field-height-medium);
+		--_MuiButton-padding-block: var(--stratakit-space-x1);
+		--_MuiButton-padding-inline: var(--stratakit-space-x3);
 	}
 
 	&:where(.MuiButton-sizeLarge) {
 		@apply --typography("body-lg");
-		min-block-size: var(--stratakit-size-control-field-height-large);
-		padding-block: var(--stratakit-space-x2);
-		padding-inline: var(--stratakit-space-x4);
+		--_MuiButton-height: var(--stratakit-size-control-field-height-large);
+		--_MuiButton-padding-block: var(--stratakit-space-x2);
+		--_MuiButton-padding-inline: var(--stratakit-space-x4);
 	}
 
 	&:where(.MuiButton-colorSecondary) {

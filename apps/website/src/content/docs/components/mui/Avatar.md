@@ -34,7 +34,7 @@ In some cases, the **Avatar** may be considered presentational, since text ident
 
 - Supply an image for the **Avatar** if available.
 - Use a correctly sized image in a high performance format like `avif` or `webp`.
-- If an accessible name is not provided by other means, supply a name using `alt` for [`<img>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/img) **Avatars** and `aria-label` for non-image **Avatars**.
+- If an accessible name is not provided by other means, supply a name using `alt` for [`<img>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/img) **Avatars** and `aria-label` for [`role="img"`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/img_role) **Avatars**.
 
 ## 🚫 Don’t
 

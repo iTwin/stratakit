@@ -19,12 +19,14 @@ Make sure the **Badge** is suitable for your use case. There may be other, more 
 
 ## StrataKit MUI modifications
 
-- Added `inline` prop to display the badge in normal document flow instead of positioned relative to its child.
+- Added [`inline`](#inline) prop.
 - The `"default"` color has been removed. The default color is now `"secondary"`.
 
 ## Examples
 
 ### Inline
+
+Set `inline` prop to display the badge in normal document flow instead of positioned relative to its child.
 
 ::example{src="mui/Badge.inline"}
 

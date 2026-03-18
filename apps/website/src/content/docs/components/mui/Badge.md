@@ -26,7 +26,7 @@ Make sure the **Badge** is suitable for your use case. There may be other, more 
 
 ### Inline
 
-Set `inline` prop to display the badge in normal document flow instead of positioned relative to its child.
+Set the `inline` prop to display the badge in normal document flow instead of positioned relative to its child.
 
 ::example{src="mui/Badge.inline"}
 

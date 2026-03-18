@@ -16,7 +16,7 @@ export default () => {
 			<Avatar>
 				<Icon href={svgUser} />
 			</Avatar>
-			Willow Winters
+			Kit Stratan
 		</Link>
 	);
 };

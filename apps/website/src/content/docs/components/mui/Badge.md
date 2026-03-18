@@ -30,7 +30,18 @@ Make sure the **Badge** is suitable for your use case. There may be other, more 
 
 ### Colors
 
+- **Secondary:** The default.
+- **Primary:** Use accent when high emphasis is required.
+- **Info:** Use to call out an object or action as having an important attribute.
+- **Success:** Use to indicate a successful or completed state when it’s important to provide positive reinforcement.
+- **Warning:** Use for warnings and time-sensitive issues that require attention and potential action.
+- **Error:** Use for critical and irreversible issues that requires attention and potential action. Apply sparingly.
+
 ::example{src="mui/Badge.colors"}
+
+:::caution[Using icons]
+In most cases, you should supplement the `color` with [iconography](#icons).
+:::
 
 ### Icons
 
@@ -48,23 +59,6 @@ export default () => {
 	return <Badge label="Unstable" tone="critical" icon={warningIcon} />;
 };
 ```
-
-### Tone
-
-Set a tone using the [`tone`](/reference/bricks/Badge#Badge.tone) prop.
-
-::example{src="Badge.tones"}
-
-- **Neutral:** The default.
-- **Accent:** Use accent when high emphasis is required.
-- **Info:** Use to call out an object or action as having an important attribute.
-- **Positive:** Use to indicate a successful or completed state when it’s important to provide positive reinforcement.
-- **Attention:** Use for warnings and time-sensitive issues that require attention and potential action.
-- **Critical:** Use for critical and irreversible issues that requires attention and potential action. Apply sparingly.
-
-:::caution[Using icons]
-Tones only determine color. In most cases, you should supplement the `tone` with [iconography](#icons).
-:::
 
 ### Variants
 

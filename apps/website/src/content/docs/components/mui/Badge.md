@@ -45,20 +45,11 @@ In most cases, you should supplement the `color` with [iconography](#icons).
 
 ### Icons
 
-All [tones](#tones) except **neutral** and **accent** convey a specific type of status. Supplement those tones with an [`icon`](/reference/bricks/Badge#Badge.icon) so that color is not the only means of communication. See [WCAG’s Use Of Color](https://www.w3.org/WAI/WCAG22/Understanding/use-of-color.html).
+All [colors](#colors) except **secondary** and **primary** convey a specific type of status. Supplement those colors with an icon so that color is not the only means of communication. See [WCAG’s Use Of Color](https://www.w3.org/WAI/WCAG22/Understanding/use-of-color.html).
 
-For example, include the `status-warning` icon when applying the ‘critical’ tone.
+For example, include the `status-warning` icon when applying the ‘error’ color.
 
-::example{src="Badge.critical"}
-
-```jsx
-import { Badge } from "@stratakit/bricks";
-import warningIcon from "@stratakit/icons/status-warning.svg";
-
-export default () => {
-	return <Badge label="Unstable" tone="critical" icon={warningIcon} />;
-};
-```
+::example{src="mui/Badge.error"}
 
 ### Variants
 
@@ -74,9 +65,9 @@ Set a variant using the [`variant`](/reference/bricks/Badge#Badge.variant) prop.
 
 - Use **Badge** for indicating state or status.
 - Include a concise and descriptive label.
-- Use an [`icon`](/reference/bricks/Badge#Badge.icon) to communicate `tone` in a color-independent fashion.
+- Use an [`icon`](#icons) to communicate `color` in a color-independent fashion.
 
 ## ❌ Don’t
 
 - Don’t make **Badge** interactive. It is for indicating status, not controlling it.
-- Don’t override colors set using `tone`. These have been chosen carefully for their [contrast](https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html).
+- Don’t override colors set using `color` prop. These have been chosen carefully for their [contrast](https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html).

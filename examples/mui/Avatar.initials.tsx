@@ -7,8 +7,8 @@ import Avatar from "@mui/material/Avatar";
 
 export default () => {
 	return (
-		<Avatar aria-label="Greg Bentley" role="img">
-			<abbr aria-hidden="true">GB</abbr>
+		<Avatar aria-label="Willow Winters" role="img">
+			<abbr aria-hidden="true">WW</abbr>
 		</Avatar>
 	);
 };

@@ -22,13 +22,11 @@ Icon **Avatars** are useful in cases where an image is not available or when a m
 
 ::example{src="mui/Avatar.icon"}
 
-:::note[Omitting the label]
+### Decorative
 
 In some cases, the **Avatar** may be considered presentational, since text identifying the individual or organization is available separately. In these cases, just omit the `alt` and `aria-label` props and the **Avatar** will not be identified programmatically.
 
 ::example{src="mui/Avatar.decorative"}
-
-:::
 
 ## ✅ Do
 

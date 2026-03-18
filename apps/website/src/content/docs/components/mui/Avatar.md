@@ -12,7 +12,9 @@ links:
 
 ### Initials
 
-If an image isn’t available, display an individual’s initials in an [`<abbr>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/abbr) element with an `aria-hidden="true"`. Apply [`role="img"`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/img_role) to the **Avatar** and set [`aria-label`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-label) to the individual’s full name so assistive technologies announce the name instead of the initials.
+If an image isn’t available, display an individual’s initials in an [`<abbr>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/abbr) element with an `aria-hidden="true"`.
+
+If an accessible name is not provided by other means, apply [`role="img"`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/img_role) to the **Avatar** and set [`aria-label`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-label) to the individual’s full name so assistive technologies announce the name instead of the initials.
 
 ::example{src="mui/Avatar.initials"}
 

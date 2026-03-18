@@ -6,11 +6,17 @@
 .MuiAvatar-root {
 	--🥝Icon-color: var(--stratakit-color-icon-neutral-emphasis);
 	--🥝Icon-size: 75%;
+	--_MuiAvatar-size: 2rem;
+	--_MuiAvatar-font-size: 50cqw;
+
+	aspect-ratio: 1;
+	block-size: var(--_MuiAvatar-size);
+	inline-size: var(--_MuiAvatar-size);
 	container-type: inline-size;
 
 	> abbr {
 		color: var(--stratakit-color-text-neutral-emphasis);
-		font-size: 50cqw;
+		font-size: var(--_MuiAvatar-font-size);
 		font-weight: 600;
 		text-transform: uppercase;
 	}

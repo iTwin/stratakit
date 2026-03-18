@@ -5,7 +5,6 @@
 
 import IconButton from "@mui/material/IconButton";
 import Stack from "@mui/material/Stack";
-import Tooltip from "@mui/material/Tooltip";
 import { Icon } from "@stratakit/mui";
 
 import svgPlaceholder from "@stratakit/icons/placeholder.svg";
@@ -13,23 +12,17 @@ import svgPlaceholder from "@stratakit/icons/placeholder.svg";
 export default () => {
 	return (
 		<Stack spacing={1} direction="row" alignItems="center">
-			<Tooltip title="Small" describeChild={false}>
-				<IconButton size="small">
-					<Icon href={svgPlaceholder} />
-				</IconButton>
-			</Tooltip>
+			<IconButton size="small" label="Small">
+				<Icon href={svgPlaceholder} />
+			</IconButton>
 
-			<Tooltip title="Medium" describeChild={false}>
-				<IconButton>
-					<Icon href={svgPlaceholder} />
-				</IconButton>
-			</Tooltip>
+			<IconButton label="Medium">
+				<Icon href={svgPlaceholder} />
+			</IconButton>
 
-			<Tooltip title="Large" describeChild={false}>
-				<IconButton size="large">
-					<Icon href={svgPlaceholder} />
-				</IconButton>
-			</Tooltip>
+			<IconButton size="large" label="Large">
+				<Icon href={svgPlaceholder} />
+			</IconButton>
 		</Stack>
 	);
 };

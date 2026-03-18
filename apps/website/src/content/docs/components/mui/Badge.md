@@ -13,9 +13,9 @@ links:
 Make sure the **Badge** is suitable for your use case. There may be other, more appropriate components available.
 
 | Use case                                             | [Badge](/components/badge) | [Chip](/components/chip) |
-| ---------------------------------------------------- | :------------------------: | :----------------------: |
-| Showing notifications, counts, or status information |             ✅             |            ❌            |
-| Filtering content and triggering actions             |             ❌             |            ✅            |
+| ---------------------------------------------------- | -------------------------- | ------------------------ |
+| Showing notifications, counts, or status information | ✅                         | ❌                       |
+| Filtering content and triggering actions             | ❌                         | ✅                       |
 
 ## StrataKit MUI modifications
 

@@ -7,10 +7,10 @@ import { Link, useLocation } from "react-router";
 import { unstable_NavigationList as NavigationList } from "@stratakit/structures";
 import { definePage, type VariantProps } from "~/~utils.tsx";
 
-import homeIcon from "@stratakit/icons/home.svg";
-import placeholderIcon from "@stratakit/icons/placeholder.svg";
-import settingsIcon from "@stratakit/icons/settings.svg";
-import userIcon from "@stratakit/icons/user.svg";
+import svgHome from "@stratakit/icons/home.svg";
+import svgPlaceholder from "@stratakit/icons/placeholder.svg";
+import svgSettings from "@stratakit/icons/settings.svg";
+import svgUser from "@stratakit/icons/user.svg";
 
 export const handle = { title: "NavigationList" };
 
@@ -24,21 +24,21 @@ export default definePage(
 					<NavigationList.Anchor
 						key="home"
 						label="Home"
-						icon={homeIcon}
+						icon={svgHome}
 						active={currentHash === "#home"}
 						render={<Link to={{ hash: "#home" }} replace />}
 					/>,
 					<NavigationList.Anchor
 						key="profile"
 						label="Profile"
-						icon={userIcon}
+						icon={svgUser}
 						active={currentHash === "#profile"}
 						render={<Link to={{ hash: "#profile" }} replace />}
 					/>,
 					<NavigationList.Anchor
 						key="settings"
 						label="Settings"
-						icon={settingsIcon}
+						icon={svgSettings}
 						active={currentHash === "#settings"}
 						render={<Link to={{ hash: "#settings" }} replace />}
 					/>,
@@ -60,20 +60,20 @@ function VisualTest() {
 					<NavigationList.Anchor
 						key="item1"
 						href="#"
-						icon={placeholderIcon}
+						icon={svgPlaceholder}
 						label="Item 1"
 					/>,
 					<NavigationList.Anchor
 						key="item2"
 						href="#"
 						active
-						icon={placeholderIcon}
+						icon={svgPlaceholder}
 						label="Item 2"
 					/>,
 					<NavigationList.Anchor
 						key="item3"
 						href="#"
-						icon={placeholderIcon}
+						icon={svgPlaceholder}
 						label="Item 3"
 						disabled
 					/>,
@@ -87,32 +87,32 @@ function VisualTest() {
 					<NavigationList.Anchor
 						key="item1"
 						href="#"
-						icon={placeholderIcon}
+						icon={svgPlaceholder}
 						label="Item 1"
 					/>,
 					<NavigationList.Anchor
 						key="item2"
 						href="#"
-						icon={placeholderIcon}
+						icon={svgPlaceholder}
 						label="Item 2"
 					/>,
 					<NavigationList.Subgroup
 						key="item3"
-						icon={placeholderIcon}
+						icon={svgPlaceholder}
 						label="Item 3"
 						defaultOpen
 						items={[
 							<NavigationList.Anchor
 								key="item1"
 								href="#"
-								icon={placeholderIcon}
+								icon={svgPlaceholder}
 								label="Item 3.1"
 							/>,
 							<NavigationList.Anchor
 								key="item2"
 								href="#"
 								active
-								icon={placeholderIcon}
+								icon={svgPlaceholder}
 								label="Item 3.2"
 							/>,
 						]}
@@ -132,13 +132,13 @@ function SubgroupExample({ defaultOpen }: VariantProps) {
 				<NavigationList.Anchor
 					key="dashboard"
 					href="#dashboard"
-					icon={placeholderIcon}
+					icon={svgPlaceholder}
 					label="Dashboard"
 					active={currentHash === "#dashboard"}
 				/>,
 				<NavigationList.Subgroup
 					key="management"
-					icon={placeholderIcon}
+					icon={svgPlaceholder}
 					label="Management"
 					items={[
 						<NavigationList.Anchor
@@ -159,7 +159,7 @@ function SubgroupExample({ defaultOpen }: VariantProps) {
 				<NavigationList.Anchor
 					key="reports"
 					href="#reports"
-					icon={placeholderIcon}
+					icon={svgPlaceholder}
 					label="Reports"
 					active={currentHash === "#reports"}
 				/>,

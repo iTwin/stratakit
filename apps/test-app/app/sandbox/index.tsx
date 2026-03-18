@@ -39,19 +39,19 @@ import { toUpperCamelCase } from "~/~utils.tsx";
 import type { UseQueryResult } from "@tanstack/react-query";
 import type { MetaFunction } from "react-router";
 
-import cursorIcon from "@stratakit/icons/cursor.svg";
-import cursorSelectIcon from "@stratakit/icons/cursor-select.svg";
-import dismissIcon from "@stratakit/icons/dismiss.svg";
-import drawIcon from "@stratakit/icons/draw.svg";
-import filterIcon from "@stratakit/icons/filter.svg";
-import lockIcon from "@stratakit/icons/lock.svg";
-import measureIcon from "@stratakit/icons/measure.svg";
-import panelCollapseLeftIcon from "@stratakit/icons/panel-collapse-left.svg";
-import placeholderIcon from "@stratakit/icons/placeholder.svg";
-import retryIcon from "@stratakit/icons/retry.svg";
-import searchIcon from "@stratakit/icons/search.svg";
-import hideIcon from "@stratakit/icons/visibility-hide.svg";
-import showIcon from "@stratakit/icons/visibility-show.svg";
+import svgCursor from "@stratakit/icons/cursor.svg";
+import svgCursorSelect from "@stratakit/icons/cursor-select.svg";
+import svgDismiss from "@stratakit/icons/dismiss.svg";
+import svgDraw from "@stratakit/icons/draw.svg";
+import svgFilter from "@stratakit/icons/filter.svg";
+import svgLock from "@stratakit/icons/lock.svg";
+import svgMeasure from "@stratakit/icons/measure.svg";
+import svgPanelCollapseLeft from "@stratakit/icons/panel-collapse-left.svg";
+import svgPlaceholder from "@stratakit/icons/placeholder.svg";
+import svgRetry from "@stratakit/icons/retry.svg";
+import svgSearch from "@stratakit/icons/search.svg";
+import svgHide from "@stratakit/icons/visibility-hide.svg";
+import svgShow from "@stratakit/icons/visibility-show.svg";
 import model1Url from "./_data/sandbox.model1.json?url";
 import model2Url from "./_data/sandbox.model2.json?url";
 import model3Url from "./_data/sandbox.model3.json?url";
@@ -140,7 +140,7 @@ function Canvas() {
 					render={
 						<IconButton
 							label="Select"
-							icon={`${cursorIcon}#icon-large`}
+							icon={`${svgCursor}#icon-large`}
 							variant="ghost"
 						/>
 					}
@@ -149,7 +149,7 @@ function Canvas() {
 					render={
 						<IconButton
 							label="Move"
-							icon={`${cursorSelectIcon}#icon-large`}
+							icon={`${svgCursorSelect}#icon-large`}
 							variant="ghost"
 						/>
 					}
@@ -158,7 +158,7 @@ function Canvas() {
 					render={
 						<IconButton
 							label="Draw"
-							icon={`${drawIcon}#icon-large`}
+							icon={`${svgDraw}#icon-large`}
 							variant="ghost"
 						/>
 					}
@@ -167,7 +167,7 @@ function Canvas() {
 					render={
 						<IconButton
 							label="Measure"
-							icon={`${measureIcon}#icon-large`}
+							icon={`${svgMeasure}#icon-large`}
 							variant="ghost"
 						/>
 					}
@@ -236,7 +236,7 @@ function LeftPanel() {
 				<div>
 					<IconButton
 						className={styles.shiftIconRight}
-						icon={panelCollapseLeftIcon}
+						icon={svgPanelCollapseLeft}
 						label="Dock panel"
 						variant="ghost"
 						disabled
@@ -734,7 +734,7 @@ function SandboxTree({ data: treeData }: { data: TreeItemData[] }) {
 									{item.color ? (
 										<ColorSwatch color={item.color} alt={item.color} />
 									) : null}
-									<Icon href={placeholderIcon} />
+									<Icon href={svgPlaceholder} />
 								</>
 							}
 							inlineActions={
@@ -742,7 +742,7 @@ function SandboxTree({ data: treeData }: { data: TreeItemData[] }) {
 									? [
 											<Tree.ItemAction
 												key="retry"
-												icon={retryIcon}
+												icon={svgRetry}
 												label="Retry"
 												onClick={() => {
 													setFailingIds((prev) => {
@@ -754,7 +754,7 @@ function SandboxTree({ data: treeData }: { data: TreeItemData[] }) {
 									: [
 											<Tree.ItemAction
 												key="lock"
-												icon={lockIcon}
+												icon={svgLock}
 												label="Lock"
 											/>,
 											<VisibilityAction
@@ -796,7 +796,7 @@ function VisibilityAction({ item, onClick }: VisibilityActionProps) {
 	return (
 		<Tree.ItemAction
 			key="visibility"
-			icon={item.hidden ? hideIcon : showIcon}
+			icon={item.hidden ? svgHide : svgShow}
 			label={item.hidden ? "Show" : "Hide"}
 			visible={item.hidden ? true : undefined}
 			onClick={React.useCallback(() => {
@@ -825,7 +825,7 @@ function Subheader({ tabs }: { tabs?: React.ReactNode }) {
 			{tabs ? (
 				<IconButton
 					className={styles.shiftIconRight}
-					icon={dismissIcon}
+					icon={svgDismiss}
 					label="Close"
 					variant="ghost"
 					onClick={() => {
@@ -838,7 +838,7 @@ function Subheader({ tabs }: { tabs?: React.ReactNode }) {
 	) : (
 		<IconButton
 			className={styles.shiftIconRight}
-			icon={searchIcon}
+			icon={svgSearch}
 			label="Search"
 			dot={filterOrSearchActive ? "Some filters or search applied" : undefined}
 			variant="ghost"
@@ -869,7 +869,7 @@ function Subheader({ tabs }: { tabs?: React.ReactNode }) {
 
 			{isSearchboxVisible ? (
 				<TextBox.Root className={styles.searchInput}>
-					<TextBox.Icon href={searchIcon} />
+					<TextBox.Icon href={svgSearch} />
 					<TextBox.Input
 						placeholder="Search"
 						ref={searchInputRef}
@@ -893,7 +893,7 @@ function FiltersMenu() {
 			<DropdownMenu.Button
 				render={
 					<IconButton
-						icon={filterIcon}
+						icon={svgFilter}
 						label="Filter"
 						dot={filtersApplied ? "Some filters applied" : undefined}
 						variant="ghost"

@@ -6,8 +6,8 @@ import { Divider } from "@stratakit/bricks";
 import { Icon } from "@stratakit/foundations";
 import { unstable_NavigationRail as NavigationRail } from "@stratakit/structures";
 
-import bentleyIcon from "@stratakit/icons/bentley-systems.svg";
-import placeholderIcon from "@stratakit/icons/placeholder.svg";
+import svgBentley from "@stratakit/icons/bentley-systems.svg";
+import svgPlaceholder from "@stratakit/icons/placeholder.svg";
 
 export default () => {
 	return (
@@ -18,11 +18,7 @@ export default () => {
 		>
 			<NavigationRail.Root>
 				<NavigationRail.Header>
-					<Icon
-						alt="Acme app"
-						href={`${bentleyIcon}#icon-large`}
-						size="large"
-					/>
+					<Icon alt="Acme app" href={`${svgBentley}#icon-large`} size="large" />
 					<NavigationRail.ToggleButton />
 				</NavigationRail.Header>
 
@@ -31,7 +27,7 @@ export default () => {
 						<NavigationRail.ListItem>
 							<NavigationRail.Anchor
 								href="#"
-								icon={placeholderIcon}
+								icon={svgPlaceholder}
 								label="Item #1"
 								active
 							/>
@@ -39,7 +35,7 @@ export default () => {
 						<NavigationRail.ListItem>
 							<NavigationRail.Anchor
 								href="#"
-								icon={placeholderIcon}
+								icon={svgPlaceholder}
 								label="Item #2"
 							/>
 						</NavigationRail.ListItem>
@@ -47,7 +43,7 @@ export default () => {
 						<NavigationRail.ListItem>
 							<NavigationRail.Anchor
 								href="#"
-								icon={placeholderIcon}
+								icon={svgPlaceholder}
 								label="Item #3"
 							/>
 						</NavigationRail.ListItem>
@@ -56,11 +52,11 @@ export default () => {
 					<NavigationRail.Footer>
 						<NavigationRail.List>
 							<NavigationRail.ListItem>
-								<NavigationRail.Button icon={placeholderIcon} label="Item #4" />
+								<NavigationRail.Button icon={svgPlaceholder} label="Item #4" />
 							</NavigationRail.ListItem>
 							<Divider presentational />
 							<NavigationRail.ListItem>
-								<NavigationRail.Button icon={placeholderIcon} label="Item #5" />
+								<NavigationRail.Button icon={svgPlaceholder} label="Item #5" />
 							</NavigationRail.ListItem>
 						</NavigationRail.List>
 					</NavigationRail.Footer>

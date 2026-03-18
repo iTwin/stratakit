@@ -15,7 +15,7 @@ import {
 } from "@stratakit/structures/unstable_Banner";
 import { definePage } from "~/~utils.tsx";
 
-import placeholderIcon from "@stratakit/icons/placeholder.svg";
+import svgPlaceholder from "@stratakit/icons/placeholder.svg";
 
 export const handle = { title: "Banner" };
 
@@ -35,7 +35,7 @@ export default definePage(
 				icon={
 					icon ? (
 						<svg className="my-banner-custom-icon">
-							<use href={placeholderIcon} />
+							<use href={svgPlaceholder} />
 						</svg>
 					) : undefined
 				}
@@ -61,7 +61,7 @@ function VisualTest({ customIcons = false }: { customIcons?: boolean }) {
 				return (
 					<Banner
 						data-testid={`banner-${tone}`}
-						icon={customIcons ? placeholderIcon : undefined}
+						icon={customIcons ? svgPlaceholder : undefined}
 						label={sentenceCaseTone}
 						message={loremIpsum}
 						key={tone}
@@ -160,7 +160,7 @@ function AllStyleCases() {
 						return (
 							<Banner
 								key={`${labelPermutation}-${actionPermutation}-${dismissPermutation}`}
-								icon={placeholderIcon}
+								icon={svgPlaceholder}
 								variant="outline"
 								tone="info"
 								label={
@@ -218,7 +218,7 @@ function CompositionTestPermutations() {
 				variant="outline"
 				data-testid="banner-info-custom-icon"
 			>
-				<BannerIcon href={placeholderIcon} />
+				<BannerIcon href={svgPlaceholder} />
 				<BannerLabel id="my-label">Label</BannerLabel>
 				<BannerMessage>
 					This is a message that can be very long and will wrap to the next

@@ -138,10 +138,10 @@ interface BannerIconProps extends React.ComponentProps<typeof Icon> {}
  *
  * Example with custom icon:
  * ```tsx
- * import placeholderIcon from "@stratakit/icons/placeholder.svg";
+ * import svgPlaceholder from "@stratakit/icons/placeholder.svg";
  *
  * <Banner.Root>
- *   <Banner.Icon href={placeholderIcon} />
+ *   <Banner.Icon href={svgPlaceholder} />
  * </Banner.Root>
  * ```
  */

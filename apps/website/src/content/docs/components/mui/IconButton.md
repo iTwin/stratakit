@@ -23,6 +23,7 @@ Make sure the **IconButton** is suitable for your use case. There may be other, 
 
 - The `"default"`, `"info"`, `"success"`, `"warning"`, `"inherit"` colors have been removed. The default color is now `"secondary"`.
 - The `size` options (`small`, `medium`, `large`) have all been decreased in height.
+- A `label` prop has been added. When specified, it is used as the **IconButton’s** accessible name and is also shown in a tooltip on hover and focus.
 
 ## Examples
 
@@ -40,6 +41,7 @@ Make sure to provide an accessible description in the form of a visually hidden 
 
 ## ✅ Do
 
+- Use the `label` prop to provide an accessible name and tooltip for the **IconButton**.
 - Use in [toolbars](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/toolbar_role).
 - Use it only when a stand-alone icon effectively communicates the action.
 

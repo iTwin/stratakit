@@ -51,16 +51,6 @@ For example, include the `status-warning` icon when applying the ‘error’ col
 
 ::example{src="mui/Badge.error"}
 
-### Variants
-
-Set a variant using the [`variant`](/reference/bricks/Badge#Badge.variant) prop.
-
-::example{src="Badge.variants"}
-
-- **Solid:** The standard badge style for general interfaces.
-- **Muted:** Used to lower emphasis in a busy interface.Outline: Another level of lower emphasis.
-- **Outline:** Another level of lower emphasis
-
 ## ✅ Do
 
 - Use **Badge** for indicating state or status.

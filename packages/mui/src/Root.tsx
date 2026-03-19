@@ -35,6 +35,16 @@ interface RootProps extends BaseProps<"div"> {
 	 * The color scheme to use for all components on the page.
 	 */
 	colorScheme: "light" | "dark";
+
+	/**
+	 * The theme to use for all components under the Root:
+	 *
+	 * - `undefined`: Default theme with green aurora accent color.
+	 * - `"blue"`: Legacy theme with blue accent color.
+	 *
+	 * @default undefined
+	 */
+	theme?: "blue";
 }
 
 /**

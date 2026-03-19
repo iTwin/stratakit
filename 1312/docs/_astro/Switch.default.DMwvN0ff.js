@@ -1,1 +1,0 @@
-import{j as o}from"./~utils.BWFuG1DN.js";import{F as r}from"./FormControlLabel.DAELZKU_.js";import{S as t}from"./Switch.BPWRWEYy.js";import"./index.DIfZGIpv.js";import"./index.XeJbqeyU.js";import"./styles.internal.yYhHm1ef.js";import"./Typography.Bsm0sX7d.js";const f=()=>o.jsx(r,{control:o.jsx(t,{}),label:"Dark mode"});export{f as default};

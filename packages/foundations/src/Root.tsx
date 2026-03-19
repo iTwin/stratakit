@@ -169,7 +169,7 @@ const RootInternal = forwardRef<"div", RootInternalProps>(
 			<Role
 				{...rest}
 				className={cx("🥝Root", props.className)}
-				data-_sk-theme={colorScheme}
+				data-_sk-color-scheme={colorScheme}
 				data-_sk-density={density}
 				ref={forwardedRef}
 			>
@@ -253,7 +253,7 @@ const PortalContainer = forwardRef<"div", PortalContainerProps>(
 			<Role
 				render={props.render}
 				className="🥝Root"
-				data-_sk-theme={props.colorScheme}
+				data-_sk-color-scheme={props.colorScheme}
 				data-_sk-density={props.density}
 				style={{ display: "contents" }}
 				ref={forwardedRef}

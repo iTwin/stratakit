@@ -30,6 +30,7 @@ import AvatarGroupDefault from "examples/mui/AvatarGroup.default.tsx";
 import BackdropDefault from "examples/mui/Backdrop.default.tsx";
 import BadgeColors from "examples/mui/Badge.colors.tsx";
 import BadgeDefault from "examples/mui/Badge.default.tsx";
+import BadgeError from "examples/mui/Badge.error.tsx";
 import BottomNavigationDefault from "examples/mui/BottomNavigation.default.tsx";
 import BreadcrumbsDefault from "examples/mui/Breadcrumbs.default.tsx";
 import ButtonIcons_ from "examples/mui/Button._icons.tsx";
@@ -173,6 +174,7 @@ const components: Record<string, React.ReactNode> = {
 		<>
 			<BadgeDefault />
 			<BadgeColors />
+			<BadgeError />
 		</>
 	),
 	BottomNavigation: (

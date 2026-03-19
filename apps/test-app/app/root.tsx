@@ -106,7 +106,7 @@ export default function App() {
 					<Root
 						key={isRootTest ? "foundations" : "mui"}
 						colorScheme={colorScheme}
-						theme={theme}
+						theme={theme === "blue" ? "blue" : undefined}
 						density={density}
 						synchronizeColorScheme={false}
 						style={{ display: "contents" }}

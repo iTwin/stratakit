@@ -222,19 +222,18 @@ export function useSetColorScheme() {
 
 // ----------------------------------------------------------------------------
 
-/** undefined == system preference */
-type Theme = "blue" | undefined;
+type Theme = "aurora" | "blue";
 
 const THEME_STORAGE_KEY = "🥝:theme";
 
 const ThemeContext = React.createContext<{
 	theme: Theme;
 	setTheme: React.Dispatch<React.SetStateAction<Theme>>;
-}>({ theme: undefined, setTheme: () => {} });
+}>({ theme: "aurora", setTheme: () => {} });
 
 /** Makes the theme available to descendants (via `useTheme` and `useSetTheme`). */
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-	const [theme, setTheme] = React.useState<Theme>(undefined);
+	const [theme, setTheme] = React.useState<Theme>("aurora");
 
 	return (
 		<ThemeContext value={React.useMemo(() => ({ theme, setTheme }), [theme])}>

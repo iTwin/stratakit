@@ -147,7 +147,7 @@ export function AppNavigationRail(props: AppNavigationRailProps) {
 									label="Toggle theme"
 									icon={svgPalette}
 									onClick={() => {
-										setTheme(theme === undefined ? "blue" : undefined);
+										setTheme(theme === "aurora" ? "blue" : "aurora");
 									}}
 									data-theme={theme}
 								/>

@@ -20,22 +20,6 @@ The **Divider** comes in two forms: _semantic_ and _presentational_. By default,
 
 ## Examples
 
-### In a toolbar
-
-A **Divider** is commonly used to separate groups of related options in a [**Toolbar**](/components/toolbar).
-
-::example{src="Toolbar.divider"}
-
-```jsx
-<Toolbar.Group variant="solid" orientation="vertical">
-  <Toolbar.Item render={…} />
-  <Toolbar.Item render={…} />
-  <Divider />
-  <Toolbar.Item render={…} />
-  <Toolbar.Item render={…} />
-</Toolbar.Group>
-```
-
 ### Separating flow content
 
 In the following example, [from the HTML5 specification](https://html.spec.whatwg.org/multipage/grouping-content.html#the-hr-element), the **Divider** separates topics within a section.

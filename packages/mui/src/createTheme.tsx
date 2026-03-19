@@ -190,12 +190,7 @@ function createTheme() {
 				},
 			},
 			MuiCard: { defaultProps: { component: MuiCard } },
-			MuiCardActionArea: {
-				defaultProps: {
-					component: MuiCardActionArea,
-					role: undefined, // Remove redundant role which conflicts when CardActionArea is rendered as Link
-				},
-			},
+			MuiCardActionArea: { defaultProps: { component: MuiCardActionArea } },
 			MuiCardContent: { defaultProps: { component: Role.div } },
 			MuiCardHeader: {
 				defaultProps: {

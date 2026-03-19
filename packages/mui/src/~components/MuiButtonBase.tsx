@@ -10,15 +10,18 @@ import {
 	useMergedRefs,
 } from "@stratakit/foundations/secret-internals";
 
+import type { ButtonOwnProps } from "@mui/material/Button";
 import type { BaseProps } from "@stratakit/foundations/secret-internals";
 
 // ----------------------------------------------------------------------------
 
-interface MuiButtonBaseProps extends BaseProps<"button"> {}
+interface MuiButtonBaseProps
+	extends BaseProps<"button">,
+		Pick<ButtonOwnProps, "href"> {}
 
 const MuiButtonBase = forwardRef<"button", MuiButtonBaseProps>(
 	(props, forwardedRef) => {
-		const { "aria-disabled": ariaDisabled, ...rest } = props;
+		const { href, "aria-disabled": ariaDisabled, ...rest } = props;
 
 		// MUI's ButtonBase treats this wrapper as a non-button, so it always sets `aria-disabled`.
 		// We need to infer the `disabled` prop from `aria-disabled` for native `<button>` elements.
@@ -32,7 +35,9 @@ const MuiButtonBase = forwardRef<"button", MuiButtonBaseProps>(
 			},
 			[],
 		);
-		const isNativeButton = !props.render || tagName === "BUTTON";
+
+		const isNativeButton = (!props.render && !href) || tagName === "BUTTON";
+		const isLink = (!props.render && href) || tagName === "A";
 
 		const type = (() => {
 			if (!isNativeButton || props.type) return props.type;
@@ -40,13 +45,22 @@ const MuiButtonBase = forwardRef<"button", MuiButtonBaseProps>(
 			return "button";
 		})();
 
-		// Remove redundant `role="button"` for native `<button>`.
-		const role =
-			isNativeButton && props.role === "button" ? undefined : props.role;
+		// Remove redundant `role="button"` for native `<button>` and `<a>`.
+		const role = (() => {
+			if (isLink && props.role === "button") return undefined;
+			if (isNativeButton && props.role === "button") return undefined;
+			return props.role;
+		})();
+
+		const render = (() => {
+			if (href) return <Role.a href={href} render={props.render} />;
+			return props.render;
+		})();
 
 		return (
 			<Role.button
 				{...rest}
+				render={render}
 				type={type}
 				role={role}
 				ref={useMergedRefs(determineTagName, forwardedRef)}

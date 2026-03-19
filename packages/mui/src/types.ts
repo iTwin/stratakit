@@ -76,6 +76,13 @@ declare module "@mui/material/Badge" {
 	}
 }
 
+declare module "@mui/material/ButtonBase" {
+	interface ButtonBaseOwnProps {
+		/** @deprecated Use the `render` prop instead. */
+		LinkComponent?: React.ElementType;
+	}
+}
+
 declare module "@mui/material/Button" {
 	interface ButtonPropsColorOverrides {
 		info: false;

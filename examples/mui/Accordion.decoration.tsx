@@ -9,7 +9,7 @@ import AccordionSummary from "@mui/material/AccordionSummary";
 import Typography from "@mui/material/Typography";
 import { Icon } from "@stratakit/mui";
 
-import infoIcon from "@stratakit/icons/info.svg";
+import svgInfo from "@stratakit/icons/info.svg";
 import styles from "./Accordion.decoration.module.css";
 
 export default () => {
@@ -22,7 +22,7 @@ export default () => {
 					},
 				}}
 			>
-				<Icon href={infoIcon} />
+				<Icon href={svgInfo} />
 				<Typography render={<span />}>What is StrataKit?</Typography>
 			</AccordionSummary>
 			<AccordionDetails>

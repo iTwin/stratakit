@@ -3,13 +3,15 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-html,
-:host,
-.🥝Root {
-	--stratakit-size-control-field-height-small: 1.5rem;
-	--stratakit-size-control-field-height-medium: 2rem;
-	--stratakit-size-control-field-height-large: 2.5rem;
+import Button from "@mui/material/Button";
+import Stack from "@mui/material/Stack";
 
-	--stratakit-size-control-listitem-height-small: 1.75rem;
-	--stratakit-size-control-listitem-height-large: 2.5rem;
-}
+export default () => {
+	return (
+		<Stack spacing={1} direction="row" alignItems="center">
+			<Button size="small">Small</Button>
+			<Button size="medium">Medium</Button>
+			<Button size="large">Large</Button>
+		</Stack>
+	);
+};

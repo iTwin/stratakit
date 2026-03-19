@@ -4,25 +4,25 @@
  *--------------------------------------------------------------------------------------------*/
 
 import IconButton from "@mui/material/IconButton";
+import Stack from "@mui/material/Stack";
 import { Icon } from "@stratakit/mui";
 
 import svgPlaceholder from "@stratakit/icons/placeholder.svg";
 
-type IconButtonProps = React.ComponentProps<typeof IconButton>;
-const colors = [
-	"primary",
-	"secondary",
-	"error",
-] as const satisfies IconButtonProps["color"][];
-
 export default () => {
-	return colors.map((color) => (
-		<IconButton
-			key={color}
-			color={color}
-			label={`${color.charAt(0).toUpperCase()}${color.slice(1)}`}
-		>
-			<Icon href={svgPlaceholder} />
-		</IconButton>
-	));
+	return (
+		<Stack spacing={1} direction="row" alignItems="center">
+			<IconButton size="small" label="Small">
+				<Icon href={svgPlaceholder} />
+			</IconButton>
+
+			<IconButton label="Medium">
+				<Icon href={svgPlaceholder} />
+			</IconButton>
+
+			<IconButton size="large" label="Large">
+				<Icon href={svgPlaceholder} />
+			</IconButton>
+		</Stack>
+	);
 };

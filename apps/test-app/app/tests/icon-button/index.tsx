@@ -7,8 +7,8 @@ import { IconButton } from "@stratakit/bricks";
 import { Icon } from "@stratakit/foundations";
 import { definePage } from "~/~utils.tsx";
 
-import notificationsIcon from "@stratakit/icons/notifications.svg";
-import placeholderIcon from "@stratakit/icons/placeholder.svg";
+import svgNotifications from "@stratakit/icons/notifications.svg";
+import svgPlaceholder from "@stratakit/icons/placeholder.svg";
 
 export const handle = { title: "IconButton" };
 
@@ -17,7 +17,7 @@ export default definePage(
 		return (
 			<IconButton
 				label="Click me"
-				icon={placeholderIcon}
+				icon={svgPlaceholder}
 				labelVariant={labelVariant as "tooltip" | "visually-hidden"}
 			/>
 		);
@@ -34,7 +34,7 @@ function VisualTest({ tooltip: showTooltip = false }) {
 	if (showTooltip) {
 		return (
 			<div style={{ minHeight: 50 }}>
-				<IconButton label="Click me" icon={placeholderIcon} />
+				<IconButton label="Click me" icon={svgPlaceholder} />
 			</div>
 		);
 	}
@@ -48,25 +48,25 @@ function VisualTest({ tooltip: showTooltip = false }) {
 					<IconButton
 						variant={variant}
 						label="Click me"
-						icon={placeholderIcon}
+						icon={svgPlaceholder}
 					/>
 					<IconButton
 						variant={variant}
 						disabled
 						label="Click me not"
-						icon={placeholderIcon}
+						icon={svgPlaceholder}
 					/>
 					<IconButton
 						variant={variant}
 						label="Click me"
-						icon={placeholderIcon}
+						icon={svgPlaceholder}
 						active
 					/>
 					<IconButton
 						variant={variant}
 						label="Notifications"
 						dot="You have unread notifications"
-						icon={placeholderIcon}
+						icon={svgPlaceholder}
 					/>
 				</div>
 			))}
@@ -98,7 +98,7 @@ function DotTest() {
 			variant="ghost"
 			label="Notifications"
 			dot="You have unread notifications"
-			icon={notificationsIcon}
+			icon={svgNotifications}
 		/>
 	);
 }
@@ -106,7 +106,7 @@ function DotTest() {
 function ActiveLinkTest() {
 	return (
 		<IconButton
-			icon={placeholderIcon}
+			icon={svgPlaceholder}
 			label="Click me"
 			render={<a href="#" />}
 			active

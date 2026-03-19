@@ -185,6 +185,13 @@ declare module "@mui/material/IconButton" {
 		 * @default 'secondary'
 		 */
 		color?: IconButtonProps["color"];
+
+		/**
+		 * The accessible name of the button, which is also shown as a tooltip on hover/focus.
+		 *
+		 * If not specified, the accessible name and tooltip must be wired up manually.
+		 */
+		label?: string;
 	}
 }
 
@@ -255,6 +262,12 @@ declare module "@mui/material/TextField" {
 			/** @deprecated DO NOT USE */ variant?: TextFieldVariants;
 		} & Omit<TextFieldProps, "variant">,
 	): React.JSX.Element;
+}
+
+declare module "@mui/material/ToggleButton" {
+	interface ToggleButtonOwnProps {
+		label?: IconButtonProps["label"];
+	}
 }
 
 declare module "@mui/material/Tooltip" {

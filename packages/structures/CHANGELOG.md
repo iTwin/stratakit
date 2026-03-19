@@ -261,8 +261,8 @@
 
   ```diff
     <Toolbar.Item
-  -   render={<IconButton icon={placeholderIcon} />}
-  +   render={<IconButton icon={`${placeholderIcon}#icon-large`} />}
+  -   render={<IconButton icon={svgPlaceholder} />}
+  +   render={<IconButton icon={`${svgPlaceholder}#icon-large`} />}
     />
   ```
 
@@ -375,7 +375,7 @@
   import * as Banner from "@stratakit/structures/unstable_Banner";
 
   <Banner.Root>
-  	<Banner.Icon href={placeholderIcon} />
+  	<Banner.Icon href={svgPlaceholder} />
   	<Banner.Label>Label</Banner.Label>
   	<Banner.Message>Message</Banner.Message>
   	<Banner.Actions>
@@ -404,8 +404,8 @@
   <AccordionItem.Header>
   	<AccordionItem.Marker />
   	<AccordionItem.Decoration>
-  		<Icon href={placeholder} />
-  		<Icon href={placeholder} />
+  		<Icon href={svgPlaceholder} />
+  		<Icon href={svgPlaceholder} />
   	</AccordionItem.Decoration>
   	<AccordionItem.Button>
   		<AccordionItem.Label>Label</AccordionItem.Label>

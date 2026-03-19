@@ -172,7 +172,7 @@ interface FieldCollectionItemControlProps
  * <Field.Control
  *   render={(controlProps) => (
  *     <TextBox.Root>
- *       <TextBox.Icon href={placeholder} />
+ *       <TextBox.Icon href={svgPlaceholder} />
  *       <TextBox.Input {...controlProps} />
  *     </TextBox.Root>
  *   )}

@@ -30,13 +30,13 @@ npm add @stratakit/icons
    Using a static import to get the URL of the icon:
 
    ```tsx
-   import placeholderIcon from "@stratakit/icons/placeholder.svg";
+   import svgPlaceholder from "@stratakit/icons/placeholder.svg";
    ```
 
    Or using the [`import.meta`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/import.meta) feature to get the URL of the icon:
 
    ```tsx
-   const placeholderIcon = new URL("@stratakit/icons/placeholder.svg", import.meta.url).href;
+   const svgPlaceholder = new URL("@stratakit/icons/placeholder.svg", import.meta.url).href;
    ```
 
    The static import method is good for use with build tools that support it, while the `import.meta` works better in browsers (but may not work reliably in all build tools).
@@ -46,25 +46,25 @@ npm add @stratakit/icons
    ```tsx
    import { Icon } from "@stratakit/mui";
 
-   <Icon href={placeholderIcon} />;
+   <Icon href={svgPlaceholder} />;
    ```
 
    An optional hash can be specified to select a specific symbol from the `.svg`:
 
    ```tsx
-   <Icon href={`${placeholderIcon}#icon`} />
-   <Icon href={`${placeholderIcon}#icon-large`} size="large" />
+   <Icon href={`${svgPlaceholder}#icon`} />
+   <Icon href={`${svgPlaceholder}#icon-large`} size="large" />
    ```
 
    Alternatively, you can `<use>` the SVG sprite directly (without the `Icon` component):
 
    ```tsx
    <svg>
-   	 <use href={`${placeholderIcon}#icon`} />
+   	 <use href={`${svgPlaceholder}#icon`} />
    </svg>
 
    <svg>
-   	 <use href={`${placeholderIcon}#icon-large`} />
+   	 <use href={`${svgPlaceholder}#icon-large`} />
    </svg>
    ```
 

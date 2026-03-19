@@ -54,10 +54,17 @@
 }
 
 .MuiInputBase-input {
+	--✨padding-inline--small: var(--stratakit-space-x2);
+	--✨padding-inline--medium: var(--stratakit-space-x3);
+
 	min-block-size: calc(var(--_MuiInput-block-size) - 2px); /* Accommodate for border width */
 	padding-block: 0;
-	padding-inline: 14px;
+	padding-inline: var(--_MuiInput-padding-inline, var(--✨padding-inline--medium));
 	align-content: center;
+
+	:where(.MuiInputBase-root.MuiInputBase-sizeSmall) & {
+		--_MuiInput-padding-inline: var(--✨padding-inline--small);
+	}
 
 	&:where(input, textarea) {
 		&::placeholder {
@@ -68,8 +75,9 @@
 	}
 
 	&:where(.MuiInputBase-inputMultiline) {
-		padding-block: 8.25px;
+		padding-block: calc((var(--_MuiInput-block-size) - 22px) * 0.5);
 		align-content: baseline;
+		min-block-size: unset;
 	}
 
 	&:where(.MuiInputBase-inputAdornedStart) {

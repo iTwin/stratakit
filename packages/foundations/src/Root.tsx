@@ -57,6 +57,16 @@ interface RootProps extends BaseProps {
 	synchronizeColorScheme?: boolean;
 
 	/**
+	 * The theme to use for all components under the Root:
+	 *
+	 * - `undefined`: Default theme with green aurora accent color.
+	 * - `"blue"`: Legacy theme with blue accent color.
+	 *
+	 * @default undefined
+	 */
+	theme?: "blue";
+
+	/**
 	 * The density to use for all components under the Root.
 	 */
 	density?: "dense";
@@ -153,13 +163,14 @@ const RootProvider = (props: React.PropsWithChildren) => {
 
 interface RootInternalProps
 	extends BaseProps,
-		Pick<RootProps, "colorScheme" | "density" | "rootNode"> {}
+		Pick<RootProps, "colorScheme" | "theme" | "density" | "rootNode"> {}
 
 const RootInternal = forwardRef<"div", RootInternalProps>(
 	(props, forwardedRef) => {
 		const {
 			children,
 			colorScheme,
+			theme,
 			density,
 			rootNode = isBrowser ? document : undefined,
 			...rest
@@ -170,6 +181,7 @@ const RootInternal = forwardRef<"div", RootInternalProps>(
 				{...rest}
 				className={cx("🥝Root", props.className)}
 				data-_sk-color-scheme={colorScheme}
+				data-_sk-theme={theme}
 				data-_sk-density={density}
 				ref={forwardedRef}
 			>
@@ -214,7 +226,7 @@ function SynchronizeColorScheme({
 // ----------------------------------------------------------------------------
 
 interface PortalProviderProps
-	extends Pick<RootProps, "colorScheme" | "density"> {
+	extends Pick<RootProps, "colorScheme" | "theme" | "density"> {
 	portalContainerProp?: RootProps["portalContainer"];
 }
 
@@ -227,6 +239,7 @@ function PortalProvider(props: React.PropsWithChildren<PortalProviderProps>) {
 			{props.children}
 			<PortalContainer
 				colorScheme={props.colorScheme}
+				theme={props.theme}
 				density={props.density}
 				ref={setPortalContainer}
 				render={props.portalContainerProp}
@@ -238,7 +251,7 @@ function PortalProvider(props: React.PropsWithChildren<PortalProviderProps>) {
 // ----------------------------------------------------------------------------
 
 interface PortalContainerProps
-	extends Pick<RootProps, "colorScheme" | "density" | "render"> {}
+	extends Pick<RootProps, "colorScheme" | "theme" | "density" | "render"> {}
 
 /** A separate root rendered at the end of root node, to be used as the container for all portals. */
 const PortalContainer = forwardRef<"div", PortalContainerProps>(
@@ -254,6 +267,7 @@ const PortalContainer = forwardRef<"div", PortalContainerProps>(
 				render={props.render}
 				className="🥝Root"
 				data-_sk-color-scheme={props.colorScheme}
+				data-_sk-theme={props.theme}
 				data-_sk-density={props.density}
 				style={{ display: "contents" }}
 				ref={forwardedRef}

@@ -114,8 +114,25 @@ export function themeTransform() {
 
 				const declarations = [];
 
+				const accentTokens = parseTokens(themes.get(theme)?.accent);
 				const colorTokens = parseTokens(themes.get(theme)?.color);
 				const shadowTokens = parseTokens(themes.get(theme)?.shadow);
+
+				for (let [name, { $value }] of accentTokens.entries()) {
+					// Values wrapped in {…} are references to other tokens.
+					// The "p-" prefix indicates a primitive token (by convention).
+					if (typeof $value === "string" && $value.startsWith("{p-")) {
+						// Convert {p.color.gray.200} into --primitive("color.gray.200") for further processing.
+						$value = cssFunction(
+							isFallback ? "--primitive-fallback" : "--primitive",
+							$value.replace("{p-", "").replace("}", ""),
+						);
+					}
+
+					declarations.push(
+						cssCustomProperty(name, $value, { prefix: "_stratakit-accent" }),
+					);
+				}
 
 				for (let [name, { $value }] of colorTokens.entries()) {
 					// Tokens that should be skipped are marked using "🫥" (by convention).

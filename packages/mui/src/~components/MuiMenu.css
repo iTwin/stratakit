@@ -16,13 +16,14 @@
 	--✨size--small: var(--stratakit-size-control-field-height-small);
 	--✨size--medium: var(--stratakit-size-control-field-height-medium);
 
+	@apply --typography("body-md");
 	border-radius: 4px;
-	font: var(--stratakit-mui-font-body2);
 	min-block-size: var(--_MuiMenu-item-height, var(--✨size--medium));
 	padding-block: 0;
 	padding-inline: var(--stratakit-space-x2);
 
 	:where(.MuiMenu-list.MuiList-dense) & {
+		@apply --typography("body-sm");
 		--_MuiMenu-item-height: var(--✨size--small);
 	}
 

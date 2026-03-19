@@ -8,6 +8,7 @@ import { Role } from "@ariakit/react/role";
 import OutlinedInput from "@mui/material/OutlinedInput";
 import { createTheme as createMuiTheme } from "@mui/material/styles";
 import { MuiBadge } from "./~components/MuiBadge.js";
+import { MuiButtonBase } from "./~components/MuiButtonBase.js";
 import { MuiCard, MuiCardActionArea } from "./~components/MuiCard.js";
 import {
 	MuiChip,
@@ -162,9 +163,6 @@ function createTheme() {
 				},
 			},
 			MuiBottomNavigation: { defaultProps: { component: Role.div } },
-			MuiBottomNavigationAction: {
-				defaultProps: { component: Role.button },
-			},
 			MuiBreadcrumbs: {
 				defaultProps: {
 					component: Role.nav,
@@ -173,13 +171,13 @@ function createTheme() {
 			},
 			MuiButtonBase: {
 				defaultProps: {
-					component: Role.button,
+					component: MuiButtonBase,
 					disableRipple: true, // https://mui.com/material-ui/getting-started/faq/#how-can-i-disable-the-ripple-effect-globally
 				},
 			},
 			MuiButton: {
 				defaultProps: {
-					component: Role.button,
+					component: MuiButtonBase,
 					color: "secondary",
 					variant: "contained",
 				},
@@ -234,7 +232,7 @@ function createTheme() {
 			MuiDrawer: { defaultProps: { component: Role.div } },
 			MuiFab: {
 				defaultProps: {
-					component: Role.button,
+					component: MuiButtonBase,
 					color: "primary",
 				},
 			},
@@ -288,7 +286,7 @@ function createTheme() {
 			MuiList: { defaultProps: { component: Role.ul } },
 			MuiListItem: { defaultProps: { component: Role.li } },
 			MuiListItemButton: {
-				defaultProps: { component: Role.button },
+				defaultProps: { component: MuiButtonBase },
 			},
 			MuiListItemText: {
 				defaultProps: {
@@ -310,7 +308,7 @@ function createTheme() {
 			},
 			MuiPaginationItem: {
 				defaultProps: {
-					component: Role.button,
+					component: MuiButtonBase,
 					slots: {
 						previous: ChevronLeftIcon,
 						next: ChevronRightIcon,
@@ -355,12 +353,10 @@ function createTheme() {
 			MuiSnackbarContent: { defaultProps: { component: Role.div } },
 			MuiStack: { defaultProps: { component: Role.div } },
 			MuiStep: { defaultProps: { component: Role.div } },
-			MuiStepButton: { defaultProps: { component: Role.button } },
 			MuiSwitch: { defaultProps: { component: Role.span } },
 			MuiStepper: { defaultProps: { component: Role.div } },
 			MuiSvgIcon: { defaultProps: { component: Role.svg } },
 			MuiSwipeableDrawer: { defaultProps: { component: Role.div } },
-			MuiTab: { defaultProps: { component: Role.button } },
 			MuiTabs: { defaultProps: { component: Role.div } },
 			MuiTable: { defaultProps: { component: withRenderProp(Role, "table") } },
 			MuiTableBody: {

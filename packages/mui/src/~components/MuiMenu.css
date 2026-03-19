@@ -24,8 +24,8 @@
 	--✨padding--small: calc(var(--stratakit-space-x1) + var(--stratakit-space-x05));
 	--✨padding--medium: var(--stratakit-space-x2);
 	--✨radius: calc(var(--_MuiMenu-paper-radius) - var(--_MuiMenu-list-padding));
-	--✨size--small: var(--stratakit-size-control-field-height-small);
-	--✨size--medium: var(--stratakit-size-control-field-height-medium);
+	--✨size--small: var(--stratakit-size-control-listitem-height-small);
+	--✨size--medium: var(--stratakit-size-control-listitem-height-large);
 
 	@apply --typography("body-md");
 	border-radius: var(--✨radius);

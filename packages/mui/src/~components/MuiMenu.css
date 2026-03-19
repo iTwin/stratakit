@@ -13,11 +13,18 @@
 }
 
 .MuiMenuItem-root {
+	--✨size--small: var(--stratakit-size-control-field-height-small);
+	--✨size--medium: var(--stratakit-size-control-field-height-medium);
+
 	border-radius: 4px;
 	font: var(--stratakit-mui-font-body2);
-	min-height: 36.5px;
+	min-block-size: var(--_MuiMenu-item-height, var(--✨size--medium));
 	padding-block: 0;
 	padding-inline: var(--stratakit-space-x2);
+
+	:where(.MuiMenu-list.MuiList-dense) & {
+		--_MuiMenu-item-height: var(--✨size--small);
+	}
 
 	&:where(.Mui-focusVisible) {
 		outline-offset: calc(var(--🥝focus-outline-offset) * -1);

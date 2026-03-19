@@ -19,6 +19,10 @@ Make sure the **Button** is suitable for your use case. There may be other, more
 | Make a binary choice (switching a setting on or off)              | ❌                           | ❌                                   | ✅                           | ❌                       |
 | Navigate between interface screens or sections                    | ❌                           | ❌                                   | ❌                           | ✅                       |
 
+## StrataKit MUI modifications
+
+- The `size` options (`small`, `medium`, `large`) have all been decreased in height.
+
 ## Examples
 
 ### Icons
@@ -55,6 +59,10 @@ An [**Icon**](/components/icon) can be displayed before or after the **Button’
 | Primary call-to-action                | ✅        | ✅      | ❌    |
 | Modal confirmation or form submission | ❌        | ✅      | ❌    |
 | Destructive call-to-action            | ❌        | ❌      | ✅    |
+
+### Sizes
+
+::example{src="mui/Button.sizes"}
 
 ## ✅ Do
 

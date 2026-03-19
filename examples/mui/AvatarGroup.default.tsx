@@ -17,19 +17,19 @@ export default () => {
 			)}
 		>
 			<Avatar aria-label="John Doe" role="img">
-				<abbr aria-hidden="true">JD</abbr>
+				<abbr aria-hidden="true">J</abbr>
 			</Avatar>
 			<Avatar aria-label="Kit Stratan" role="img">
-				<abbr aria-hidden="true">KS</abbr>
+				<abbr aria-hidden="true">K</abbr>
 			</Avatar>
 			<Avatar aria-label="Ava Groupie" role="img">
-				<abbr aria-hidden="true">AG</abbr>
+				<abbr aria-hidden="true">A</abbr>
 			</Avatar>
 			<Avatar aria-label="Des Systemer" role="img">
-				<abbr aria-hidden="true">DS</abbr>
+				<abbr aria-hidden="true">D</abbr>
 			</Avatar>
 			<Avatar aria-label="Libby Compone" role="img">
-				<abbr aria-hidden="true">LB</abbr>
+				<abbr aria-hidden="true">L</abbr>
 			</Avatar>
 		</AvatarGroup>
 	);

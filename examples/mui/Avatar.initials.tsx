@@ -8,7 +8,7 @@ import Avatar from "@mui/material/Avatar";
 export default () => {
 	return (
 		<Avatar aria-label="Kit Stratan" role="img">
-			<abbr aria-hidden="true">KS</abbr>
+			<abbr aria-hidden="true">K</abbr>
 		</Avatar>
 	);
 };

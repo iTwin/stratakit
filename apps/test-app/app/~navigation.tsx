@@ -14,10 +14,13 @@ import {
 	useIsWideScreen,
 	useLocalStorage,
 	useSetColorScheme,
+	useSetTheme,
+	useTheme,
 } from "./~utils.tsx";
 
 import svgDocumentation from "@stratakit/icons/documentation.svg";
 import svgMoon from "@stratakit/icons/moon.svg";
+import svgPalette from "@stratakit/icons/palette.svg";
 import svgSun from "@stratakit/icons/sun.svg";
 import styles from "./~navigation.module.css";
 import svgComponents from "./assets/components.svg";
@@ -74,6 +77,9 @@ export function AppNavigationRail(props: AppNavigationRailProps) {
 
 	const colorScheme = useColorScheme();
 	const setColorScheme = useSetColorScheme();
+
+	const theme = useTheme();
+	const setTheme = useSetTheme();
 
 	const showNavigation =
 		useLocalStorage("🥝:show-navigation") !== "false" && isWideScreen;
@@ -134,13 +140,28 @@ export function AppNavigationRail(props: AppNavigationRailProps) {
 
 					<NavigationRail.Footer>
 						<Divider />
-						<NavigationRail.Button
-							label="Toggle color scheme"
-							icon={colorScheme === "dark" ? svgSun : svgMoon}
-							onClick={() => {
-								setColorScheme(colorScheme === "dark" ? "light" : "dark");
-							}}
-						/>
+						<NavigationRail.List>
+							<NavigationRail.ListItem>
+								<NavigationRail.Button
+									className={styles.themeToggle}
+									label="Toggle theme"
+									icon={svgPalette}
+									onClick={() => {
+										setTheme(theme === undefined ? "blue" : undefined);
+									}}
+									data-theme={theme}
+								/>
+							</NavigationRail.ListItem>
+							<NavigationRail.ListItem>
+								<NavigationRail.Button
+									label="Toggle color scheme"
+									icon={colorScheme === "dark" ? svgSun : svgMoon}
+									onClick={() => {
+										setColorScheme(colorScheme === "dark" ? "light" : "dark");
+									}}
+								/>
+							</NavigationRail.ListItem>
+						</NavigationRail.List>
 					</NavigationRail.Footer>
 				</NavigationRail.Content>
 			</NavigationRail.Root>

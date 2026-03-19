@@ -49,3 +49,9 @@
 .mainContent {
 	flex: 1;
 }
+
+.themeToggle {
+	&:where([data-theme="blue"]) svg {
+		color: var(--stratakit-color-icon-accent-strong);
+	}
+}

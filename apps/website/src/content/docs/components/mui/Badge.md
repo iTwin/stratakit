@@ -57,7 +57,7 @@ For example, include the `status-warning` icon when applying the ‘error’ col
 
 - Use **Badge** for indicating state or status.
 - Include a concise and descriptive label.
-- Use an [`icon`](#icons) to communicate `color` in a color-independent fashion.
+- Use an [`icon`](#icons) to communicate a status `color` in a color-independent fashion.
 
 ## ❌ Don’t
 

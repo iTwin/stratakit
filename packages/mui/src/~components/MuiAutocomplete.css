@@ -3,13 +3,10 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-.MuiAutocomplete-inputRoot {
-	&.MuiAutocomplete-inputRoot {
-		/* TODO: Losing in specificity to `.MuiInputBase-root` */
-		padding-inline-end: calc(var(--_MuiAutocomplete-icon-button-width) * 2 - 1px);
-	}
-
+.MuiAutocomplete-inputRoot:is(.MuiInputBase-root) {
 	--_MuiAutocomplete-icon-button-width: var(--stratakit-size-control-field-height-medium);
+
+	padding-inline-end: calc(var(--_MuiAutocomplete-icon-button-width) * 2 - 1px);
 
 	&:where(.MuiInputBase-sizeSmall) {
 		--_MuiAutocomplete-icon-button-width: var(--stratakit-size-control-field-height-small);

@@ -1,0 +1,1 @@
+import{j as t}from"./~utils.CvKfeJWR.js";import{S as r}from"./Spinner.BPWQW_he.js";import"./index.DIfZGIpv.js";import"./index.XeJbqeyU.js";import"./styles.internal.yYhHm1ef.js";import"./ExamplePreview.BkK99Kqb.js";import"./preload-helper.hRxyT8km.js";const a=()=>t.jsxs("div",{className:"flex",children:[t.jsx(r,{tone:"neutral"}),t.jsx(r,{tone:"accent"})]});export{a as default};

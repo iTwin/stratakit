@@ -12,7 +12,7 @@ links:
 
 ### Initials
 
-If an image isn’t available, display an individual’s initials in an [`<abbr>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/abbr) element with an `aria-hidden="true"`.
+If an image isn’t available, display an individual’s initials as a single character in an [`<abbr>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/abbr) element with an `aria-hidden="true"`.
 
 If an accessible name is not provided by other means, apply [`role="img"`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/img_role) to the **Avatar** and set [`aria-label`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-label) to the individual’s full name so assistive technologies announce the name instead of the initials.
 
@@ -35,6 +35,7 @@ In some cases, the **Avatar** may be considered presentational, since text ident
 - Supply an image for the **Avatar** if available.
 - Use a correctly sized image in a high performance format like `avif` or `webp`.
 - If an accessible name is not provided by other means, supply a name using `alt` for [`<img>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/img) **Avatars** and `aria-label` for [`role="img"`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/img_role) **Avatars**.
+- Display a single character in [initials](#initials).
 
 ## 🚫 Don’t
 

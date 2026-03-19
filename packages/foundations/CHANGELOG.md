@@ -105,8 +105,8 @@
   `#icon-large` must now be explicitly added to the URL to select the large icons from `@stratakit/icons`. For example:
 
   ```diff
-  - <Icon href={placeholderIcon} size="large" />
-  + <Icon href={`${placeholderIcon}#icon-large`} size="large" />
+  - <Icon href={svgPlaceholder} size="large" />
+  + <Icon href={`${svgPlaceholder}#icon-large`} size="large" />
   ```
 
 ### Non-breaking changes
@@ -114,9 +114,9 @@
 - [#888](https://github.com/iTwin/stratakit/pull/888): `Icon` component now supports URLs containing an explicit hash.
 
   ```tsx
-  import placeholderIcon from "@stratakit/icons/placeholder.svg";
+  import svgPlaceholder from "@stratakit/icons/placeholder.svg";
 
-  <Icon href={`${placeholderIcon}#icon-large`} size="large" />;
+  <Icon href={`${svgPlaceholder}#icon-large`} size="large" />;
   ```
 
 - [#913](https://github.com/iTwin/stratakit/pull/913): Updated internal CSS selectors in every component.

@@ -8,7 +8,7 @@ import { definePage } from "~/~utils.tsx";
 
 import type { VariantProps } from "~/~utils.tsx";
 
-import placeholderIcon from "@stratakit/icons/placeholder.svg";
+import svgPlaceholder from "@stratakit/icons/placeholder.svg";
 
 export const handle = { title: "DropdownMenu" };
 
@@ -61,8 +61,8 @@ function VisualTest() {
 
 				<DropdownMenu.Content>
 					<DropdownMenu.Item label="Add" />
-					<DropdownMenu.Item label="Edit" icon={placeholderIcon} />
-					<DropdownMenu.Item disabled label="Delete" icon={placeholderIcon} />
+					<DropdownMenu.Item label="Edit" icon={svgPlaceholder} />
+					<DropdownMenu.Item disabled label="Delete" icon={svgPlaceholder} />
 					<DropdownMenu.Group
 						label="Decorations"
 						items={[

@@ -50,6 +50,10 @@
 	}
 }
 
+.MuiDialog-paper {
+	border: 1px solid;
+}
+
 .MuiFormControlLabel-label:where(.Mui-disabled) {
 	color: GrayText;
 }

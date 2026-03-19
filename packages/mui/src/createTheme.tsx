@@ -14,6 +14,7 @@ import {
 	MuiChipDeleteIcon,
 	MuiChipLabel,
 } from "./~components/MuiChip.js";
+import { MuiIconButton } from "./~components/MuiIconButton.js";
 import { MuiSnackbar } from "./~components/MuiSnackbar.js";
 import { MuiTableCell, MuiTableHead } from "./~components/MuiTable.js";
 import {
@@ -244,7 +245,7 @@ function createTheme() {
 			MuiGridLegacy: { defaultProps: { component: Role.div } },
 			MuiIcon: { defaultProps: { component: Role.span } },
 			MuiIconButton: {
-				defaultProps: { component: Role.button, color: "secondary" },
+				defaultProps: { component: MuiIconButton, color: "secondary" },
 			},
 			MuiImageList: { defaultProps: { component: Role.ul } },
 			MuiImageListItem: { defaultProps: { component: Role.li } },
@@ -393,7 +394,7 @@ function createTheme() {
 				},
 			},
 			MuiTextField: { defaultProps: { component: Role.div } },
-			MuiToggleButton: { defaultProps: { component: Role.button } },
+			MuiToggleButton: { defaultProps: { component: MuiIconButton } },
 			MuiToolbar: { defaultProps: { component: Role.div } },
 			MuiTooltip: {
 				defaultProps: {

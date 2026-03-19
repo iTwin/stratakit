@@ -12,6 +12,32 @@
 }
 
 .MuiButton-root {
+	min-block-size: var(--_MuiButton-height);
+	min-inline-size: var(--_MuiButton-height);
+	padding-block: var(--_MuiButton-padding-block);
+	padding-inline: var(--_MuiButton-padding-inline);
+
+	&:where(.MuiButton-sizeSmall) {
+		@apply --typography("body-sm");
+		--_MuiButton-height: var(--stratakit-size-control-field-height-small);
+		--_MuiButton-padding-block: var(--stratakit-space-x05);
+		--_MuiButton-padding-inline: var(--stratakit-space-x2);
+	}
+
+	&:where(.MuiButton-sizeMedium) {
+		@apply --typography("body-md");
+		--_MuiButton-height: var(--stratakit-size-control-field-height-medium);
+		--_MuiButton-padding-block: var(--stratakit-space-x1);
+		--_MuiButton-padding-inline: var(--stratakit-space-x3);
+	}
+
+	&:where(.MuiButton-sizeLarge) {
+		@apply --typography("body-lg");
+		--_MuiButton-height: var(--stratakit-size-control-field-height-large);
+		--_MuiButton-padding-block: var(--stratakit-space-x2);
+		--_MuiButton-padding-inline: var(--stratakit-space-x4);
+	}
+
 	&:where(.MuiButton-colorSecondary) {
 		--variant-containedBg: var(--stratakit-color-bg-neutral-base);
 		--variant-containedColor: var(--stratakit-color-text-neutral-primary);

@@ -11,10 +11,10 @@ import { definePage } from "~/~utils.tsx";
 
 import type { VariantProps } from "~/~utils.tsx";
 
-import unlockIcon from "@stratakit/icons/lock-unlocked.svg";
-import placeholderIcon from "@stratakit/icons/placeholder.svg";
-import refreshIcon from "@stratakit/icons/refresh.svg";
-import showIcon from "@stratakit/icons/visibility-show.svg";
+import svgUnlock from "@stratakit/icons/lock-unlocked.svg";
+import svgPlaceholder from "@stratakit/icons/placeholder.svg";
+import svgRefresh from "@stratakit/icons/refresh.svg";
+import svgShow from "@stratakit/icons/visibility-show.svg";
 
 export const handle = { title: "Tree" };
 
@@ -150,17 +150,17 @@ export default definePage(
 							}}
 							icon={
 								childIndex === undefined ? (
-									<Icon href={placeholderIcon} alt="decoration" />
+									<Icon href={svgPlaceholder} alt="decoration" />
 								) : undefined
 							}
 							unstable_decorations={
 								childIndex === 0 ? (
 									<>
-										<Icon href={placeholderIcon} />
-										<Icon href={placeholderIcon} />
+										<Icon href={svgPlaceholder} />
+										<Icon href={svgPlaceholder} />
 									</>
 								) : (
-									<Icon href={placeholderIcon} />
+									<Icon href={svgPlaceholder} />
 								)
 							}
 							inlineActions={
@@ -168,7 +168,7 @@ export default definePage(
 									? [
 											<Tree.ItemAction
 												key="retry"
-												icon={refreshIcon}
+												icon={svgRefresh}
 												label="Retry"
 												onClick={handleRetry}
 											/>,
@@ -176,13 +176,13 @@ export default definePage(
 									: [
 											<Tree.ItemAction
 												key="unlock"
-												icon={unlockIcon}
+												icon={svgUnlock}
 												label="Unlock"
 												visible={visible}
 											/>,
 											<Tree.ItemAction
 												key="show"
-												icon={showIcon}
+												icon={svgShow}
 												label="Show"
 												visible={visible}
 											/>,
@@ -193,12 +193,12 @@ export default definePage(
 									? [
 											<Tree.ItemAction
 												key="unlock"
-												icon={unlockIcon}
+												icon={svgUnlock}
 												label="Unlock"
 											/>,
 											<Tree.ItemAction
 												key="show"
-												icon={showIcon}
+												icon={svgShow}
 												label="Show"
 											/>,
 										]
@@ -222,7 +222,7 @@ interface ItemActionProps extends React.ComponentProps<typeof Tree.ItemAction> {
 function ItemAction(props: ItemActionProps) {
 	const { hidden, ...rest } = props;
 	if (hidden) return null;
-	return <Tree.ItemAction icon={placeholderIcon} {...rest} />;
+	return <Tree.ItemAction icon={svgPlaceholder} {...rest} />;
 }
 
 function ActionsTest({

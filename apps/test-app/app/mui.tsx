@@ -33,12 +33,14 @@ import AvatarGroupDefault from "examples/mui/AvatarGroup.default.tsx";
 import BackdropDefault from "examples/mui/Backdrop.default.tsx";
 import BadgeColors from "examples/mui/Badge.colors.tsx";
 import BadgeDefault from "examples/mui/Badge.default.tsx";
+import BadgeError from "examples/mui/Badge.error.tsx";
 import BottomNavigationDefault from "examples/mui/BottomNavigation.default.tsx";
 import BreadcrumbsDefault from "examples/mui/Breadcrumbs.default.tsx";
 import ButtonIcons_ from "examples/mui/Button._icons.tsx";
 import ButtonPermutations_ from "examples/mui/Button._permutations.js";
 import ButtonColors from "examples/mui/Button.colors.tsx";
 import ButtonDefault from "examples/mui/Button.default.tsx";
+import ButtonSizes from "examples/mui/Button.sizes.tsx";
 import ButtonVariants from "examples/mui/Button.variants.tsx";
 import ButtonGroupDefault from "examples/mui/ButtonGroup.default.tsx";
 import CardActions from "examples/mui/Card.actions.tsx";
@@ -62,6 +64,7 @@ import FormControlError from "examples/mui/FormControl.error.tsx";
 import FormControlGroup from "examples/mui/FormControl.group.tsx";
 import IconButtonColors_ from "examples/mui/IconButton._colors.tsx";
 import IconButtonDefault from "examples/mui/IconButton.default.tsx";
+import IconButtonSizes from "examples/mui/IconButton.sizes.tsx";
 import LinearProgressColors_ from "examples/mui/LinearProgress._colors.tsx";
 import LinearProgressDefault from "examples/mui/LinearProgress.default.tsx";
 import LinkColors_ from "examples/mui/Link._colors.tsx";
@@ -181,6 +184,7 @@ const components: Record<string, React.ReactNode> = {
 		<>
 			<BadgeDefault />
 			<BadgeColors />
+			<BadgeError />
 		</>
 	),
 	BottomNavigation: (
@@ -192,6 +196,7 @@ const components: Record<string, React.ReactNode> = {
 	Button: (
 		<>
 			<ButtonDefault />
+			<ButtonSizes />
 			<ButtonVariants />
 			<ButtonColors />
 			{!isProduction && <ButtonIcons_ />}
@@ -249,6 +254,7 @@ const components: Record<string, React.ReactNode> = {
 	IconButton: (
 		<>
 			<IconButtonDefault />
+			<IconButtonSizes />
 			{!isProduction && (
 				<Stack spacing={1} direction="row">
 					<IconButtonColors_ />

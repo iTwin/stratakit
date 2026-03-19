@@ -10,9 +10,15 @@
 
 .MuiMenu-list {
 	padding: var(--stratakit-space-x1);
+
+	&:where(.MuiList-dense) {
+		padding: var(--stratakit-space-x05);
+	}
 }
 
 .MuiMenuItem-root {
+	--✨padding--small: calc(var(--stratakit-space-x1) + var(--stratakit-space-x05));
+	--✨padding--medium: var(--stratakit-space-x2);
 	--✨size--small: var(--stratakit-size-control-field-height-small);
 	--✨size--medium: var(--stratakit-size-control-field-height-medium);
 
@@ -20,11 +26,12 @@
 	border-radius: 4px;
 	min-block-size: var(--_MuiMenu-item-height, var(--✨size--medium));
 	padding-block: 0;
-	padding-inline: var(--stratakit-space-x2);
+	padding-inline: var(--_MuiMenu-item-padding-inline, var(--✨padding--medium));
 
 	:where(.MuiMenu-list.MuiList-dense) & {
 		@apply --typography("body-sm");
 		--_MuiMenu-item-height: var(--✨size--small);
+		--_MuiMenu-item-padding-inline: var(--✨padding--small);
 	}
 
 	&:where(.Mui-focusVisible) {

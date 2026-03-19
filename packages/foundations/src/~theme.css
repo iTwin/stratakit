@@ -3,7 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 html:where([data-color-scheme="light"]),
-:host([data-color-scheme="light"]),
+:host:where([data-color-scheme="light"]),
 .🥝Root:where([data-_sk-color-scheme="light"]) {
 	@apply --theme("light");
 	color-scheme: light;
@@ -14,7 +14,7 @@ html:where([data-color-scheme="light"]),
 }
 
 html:where([data-color-scheme="dark"]),
-:host([data-color-scheme="dark"]),
+:host:where([data-color-scheme="dark"]),
 .🥝Root:where([data-_sk-color-scheme="dark"]) {
 	@apply --theme("dark");
 	color-scheme: dark;

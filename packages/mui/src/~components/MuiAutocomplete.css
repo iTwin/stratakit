@@ -37,3 +37,7 @@
 .MuiAutocomplete-clearIndicator {
 	visibility: visible;
 }
+
+.MuiAutocomplete-endAdornment {
+	inset-inline-end: -1px; /* Account for 1px border on input. */
+}

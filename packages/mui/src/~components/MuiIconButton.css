@@ -6,13 +6,31 @@
 .MuiIconButton-root {
 	--_MuiIconButton-icon-color: var(--stratakit-color-icon-neutral-base);
 
+	aspect-ratio: 1;
 	border-radius: 4px;
 	color: var(--_MuiIconButton-icon-color);
+	min-block-size: var(--_MuiIconButton-size);
+	padding: var(--_MuiIconButton-padding);
 
 	@media (any-hover: hover) {
 		&:where(:hover) {
 			--_MuiIconButton-icon-color: var(--stratakit-color-icon-neutral-primary);
 		}
+	}
+
+	&:where(.MuiIconButton-sizeSmall) {
+		--_MuiIconButton-size: var(--stratakit-size-control-field-height-small);
+		--_MuiIconButton-padding: var(--stratakit-space-x1);
+	}
+
+	&:where(.MuiIconButton-sizeMedium) {
+		--_MuiIconButton-size: var(--stratakit-size-control-field-height-medium);
+		--_MuiIconButton-padding: var(--stratakit-space-x2);
+	}
+
+	&:where(.MuiIconButton-sizeLarge) {
+		--_MuiIconButton-size: var(--stratakit-size-control-field-height-large);
+		--_MuiIconButton-padding: var(--stratakit-space-x3);
 	}
 
 	&:where(.MuiIconButton-colorPrimary) {
@@ -25,9 +43,5 @@
 
 	&:where(.Mui-disabled) {
 		--_MuiIconButton-icon-color: var(--stratakit-color-icon-neutral-disabled);
-	}
-
-	&:where(.MuiIconButton-sizeSmall) {
-		padding: var(--stratakit-space-x1);
 	}
 }

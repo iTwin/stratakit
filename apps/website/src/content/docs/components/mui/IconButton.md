@@ -22,6 +22,7 @@ Make sure the **IconButton** is suitable for your use case. There may be other, 
 ## StrataKit MUI modifications
 
 - The `"default"`, `"info"`, `"success"`, `"warning"`, `"inherit"` colors have been removed. The default color is now `"secondary"`.
+- The `size` options (`small`, `medium`, `large`) have all been decreased in height.
 - A `label` prop has been added. When specified, it is used as the **IconButton’s** accessible name and is also shown in a tooltip on hover and focus.
 
 ## Examples
@@ -33,6 +34,10 @@ Use a [**Badge**](/components/badge) component to indicate the functionality beh
 ::example{src="mui/Badge.default"}
 
 Make sure to provide an accessible description in the form of a visually hidden text explaining the significance of the badge’s presence. In this case, the value is _“You have 4 unread notifications”_.
+
+### Sizes
+
+::example{src="mui/IconButton.sizes"}
 
 ## ✅ Do
 

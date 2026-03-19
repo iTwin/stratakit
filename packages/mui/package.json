@@ -50,6 +50,9 @@
 	},
 	"dependencies": {
 		"@ariakit/react": "^0.4.21",
+		"@emotion/cache": "^11.14.0",
+		"@emotion/react": "^11.14.0",
+		"@emotion/styled": "^11.14.1",
 		"@stratakit/foundations": "^0.4.6",
 		"@stratakit/icons": "^0.3.0",
 		"classnames": "^2.5.1",

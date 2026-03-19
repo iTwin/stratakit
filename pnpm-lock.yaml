@@ -389,6 +389,15 @@ importers:
       "@ariakit/react":
         specifier: ^0.4.21
         version: 0.4.21(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
+      "@emotion/cache":
+        specifier: ^11.14.0
+        version: 11.14.0
+      "@emotion/react":
+        specifier: ^11.14.0
+        version: 11.14.0(@types/react@19.2.14)(react@19.2.4)
+      "@emotion/styled":
+        specifier: ^11.14.1
+        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.4))(@types/react@19.2.14)(react@19.2.4)
       "@mui/material":
         specifier: ^7.3.6
         version: 7.3.8(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.4))(@emotion/styled@11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.4))(@types/react@19.2.14)(react@19.2.4))(@types/react@19.2.14)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)

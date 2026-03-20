@@ -33,43 +33,6 @@ Make sure the **Select** is suitable for your use case. There may be other, more
 
 ::example{src="mui/NativeSelect.default"}
 
-### Usage
-
-::example{src="Select.default"}
-
-Create an accessible **Select** field with the associated [**Field**](/components/field) components. The [**Field**](/components/field) automatically associates its label to the select element for screen reader accessibility.
-
-```jsx
-<Field.Root>
-	<Field.Label>Design system:</Field.Label>
-	<Field.Control
-		render={
-			<Select.Root>
-				<Select.HtmlSelect>
-					<option value="stratakit">StrataKit</option>
-					<option value="itwinui">iTwinUI</option>
-					<option value="other">Other</option>
-				</Select.HtmlSelect>
-			</Select.Root>
-		}
-	/>
-</Field.Root>
-```
-
-If you do not use [**Field**](/components/field), you will have to manually associate labels, descriptions, and other accessible information.
-
-```jsx
-<Label htmlFor="system">Choose a design system:</Label>
-<Description id="system-description">Other design systems may include third-party offerings</Description>
-<Select.Root>
-  <Select.HtmlSelect id="system" aria-describedby="system-description">
-    <option value="stratakit">StrataKit</option>
-    <option value="itwinui">iTwinUI</option>
-    <option value="other">Other</option>
-  </Select.HtmlSelect>
-</Select.Root>
-```
-
 ### Variants
 
 Set the variant using the `Select.HtmlSelect` element’s `variant` prop’. The default value is ‘solid’.

@@ -24,16 +24,7 @@ The **Divider** comes in two forms: _semantic_ and _presentational_. By default,
 
 In the following example, [from the HTML5 specification](https://html.spec.whatwg.org/multipage/grouping-content.html#the-hr-element), the **Divider** separates topics within a section.
 
-```jsx
-<p>There are various methods of communication. This section
-covers a few of the important ones used by the project.</p>
-
-<Divider />
-
-<p>Communication stones seem to come in pairs and have mysterious
-properties:</p>
-<ul>…</ul>
-```
+::example{src="mui/Divider.semantic"}
 
 ### Separating lists of options
 

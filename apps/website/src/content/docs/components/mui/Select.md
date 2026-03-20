@@ -33,18 +33,6 @@ Make sure the **Select** is suitable for your use case. There may be other, more
 
 ::example{src="mui/NativeSelect.default"}
 
-### Variants
-
-Set the variant using the `Select.HtmlSelect` element’s `variant` prop’. The default value is ‘solid’.
-
-::example{src="Select.variants"}
-
-| Use case                     | solid | outline | ghost |
-| ---------------------------- | ----- | ------- | ----- |
-| Primary form fields          | ✅    | ❌      | ❌    |
-| Secondary, optional fields   | ❌    | ✅      | ❌    |
-| Filters or toolbar dropdowns | ✅    | ❌      | ✅    |
-
 ## ✅ Do
 
 - Use **Selects** for form fields. A **Select’s** `<option>`s represent a choice of predefined input values.

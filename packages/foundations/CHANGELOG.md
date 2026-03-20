@@ -4,7 +4,7 @@
 
 ### Patch Changes
 
-- [#1308](https://github.com/iTwin/stratakit/pull/1308): Added global component size variables.
+- [#1308](https://github.com/iTwin/stratakit/pull/1308), [#1315](https://github.com/iTwin/stratakit/pull/1315): Added global component size variables.
 
 ## 0.4.6
 

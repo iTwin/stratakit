@@ -22,7 +22,7 @@ export default () => {
 				disablePadding
 				secondaryAction={
 					<IconButton label="Rename">
-						<Icon href={`${svgRename}#icon`} />
+						<Icon href={svgRename} />
 					</IconButton>
 				}
 			>
@@ -39,7 +39,7 @@ export default () => {
 				disablePadding
 				secondaryAction={
 					<IconButton label="Rename">
-						<Icon href={`${svgRename}#icon`} />
+						<Icon href={svgRename} />
 					</IconButton>
 				}
 			>

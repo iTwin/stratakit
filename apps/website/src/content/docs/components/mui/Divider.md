@@ -63,9 +63,9 @@ Your navigation may be subdivided into multiple lists. You can use the **Divider
 
 ### Orientation
 
-By default, the **Divider** appears in a horizontal orientation. Reorientate it using [`orientation="vertical"`](/reference/bricks/Divider#Divider.orientation).
+By default, the **Divider** appears in a horizontal orientation. Reorientate it using `orientation="vertical"`.
 
-::example{src="Divider.vertical"}
+::example{src="mui/Divider.vertical"}
 
 A [**Toolbar**](/components/toolbar) with a horizontal orientation (default), must use vertical **Dividers**.
 

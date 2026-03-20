@@ -47,13 +47,13 @@ Use the `indeterminate` prop to display the **Checkbox** in [indeterminate state
 
 Group related **Checkboxes** using the `FormGroup` component. Render `FormControl` as a [`<fieldset>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/fieldset) and `FormLabel` as a [`<legend>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/legend) to label the group.
 
-::example{src="mui/FormControl.group"}
+::example{src="mui/Checkbox.group"}
 
 ### Error
 
 Use the `error` prop on `FormControl` to display the `FormHelperText` in an error state. Consider adding a visually hidden "Error:" prefix to the `FormHelperText` if the error message is not clear on its own.
 
-::example{src="mui/FormControl.error"}
+::example{src="mui/Checkbox.error"}
 
 ## ✅ Do
 

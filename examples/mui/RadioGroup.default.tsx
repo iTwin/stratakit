@@ -14,15 +14,18 @@ export default () => {
 	const labelId = React.useId();
 	return (
 		<FormControl>
-			<FormLabel id={labelId}>Gender</FormLabel>
+			<FormLabel id={labelId}>Choose a design system:</FormLabel>
 			<RadioGroup
 				aria-labelledby={labelId}
-				defaultValue="female"
-				name="radio-buttons-group"
+				defaultValue="StrataKit"
+				name="design-system"
 			>
-				<FormControlLabel value="female" control={<Radio />} label="Female" />
-				<FormControlLabel value="male" control={<Radio />} label="Male" />
-				<FormControlLabel value="other" control={<Radio />} label="Other" />
+				<FormControlLabel
+					value="StrataKit"
+					control={<Radio />}
+					label="StrataKit"
+				/>
+				<FormControlLabel value="iTwinUI" control={<Radio />} label="iTwinUI" />
 			</RadioGroup>
 		</FormControl>
 	);

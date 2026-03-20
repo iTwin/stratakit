@@ -23,24 +23,30 @@ Make sure the **Select** is suitable for your use case. There may be other, more
 
 ### Icon
 
+An [**Icon**](/components/icon) can be displayed before or after the option’s text label using the `ListItemIcon` component. It’s important the **Icon’s** `alt` is omitted, since the text already provides the accessible label.
+
 ::example{src="mui/Select.icon"}
 
 ### Multiple values
+
+Use the `multiple` prop to allow users to select more than one option from the list.
 
 ::example{src="mui/Select.multiple"}
 
 ### Native
 
+Use a [**NativeSelect**](/components/badge) component to render a native [`<select>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/select) element. The native select has fewer customization options, however, it is more accessible and works much better on mobile devices. The native select also has the benefit of participating in the browser’s built-in form validation and autofill.
+
 ::example{src="mui/NativeSelect.default"}
 
 ## ✅ Do
 
-- Use **Selects** for form fields. A **Select’s** `<option>`s represent a choice of predefined input values.
-- Programmatically associate labels and descriptions to the **Select** for screen reader compatibility. This is made easier using the [**Field**](/components/field) component.
+- Use **Selects** for form fields. A **Select’s** options represent a choice of predefined input values.
+- Programmatically associate labels and descriptions to the **Select** for screen reader compatibility.
 - Write helpful labels, descriptions, and error messages, so users can avoid errors.
 
 ## 🚫 Don’t
 
-- Don’t steal keyboard focus and move it away from the **Select** when an `<option>` is chosen.
+- Don’t steal keyboard focus and move it away from the **Select** when an option is chosen.
 - Don’t change application state without employing a [live region](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Guides/Live_regions) to alert screen reader users of that change.
-- Don’t make **Select** `<option>`s behave like buttons/commands. Use the [**DropdownMenu**](/components/dropdownmenu) component instead.
+- Don’t make **Select** options behave like buttons/commands. Use the [**DropdownMenu**](/components/dropdownmenu) component instead.

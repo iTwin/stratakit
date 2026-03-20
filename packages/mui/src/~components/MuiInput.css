@@ -82,10 +82,6 @@
 		align-content: baseline;
 	}
 
-	&:where(:not(.MuiInputBase-inputMultiline)) {
-		text-box: cap alphabetic;
-	}
-
 	&:where(.MuiInputBase-inputAdornedStart) {
 		padding-inline-start: 0;
 	}

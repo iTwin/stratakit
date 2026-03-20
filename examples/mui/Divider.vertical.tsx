@@ -5,9 +5,11 @@
 
 import Divider from "@mui/material/Divider";
 
+import styles from "./Divider.vertical.module.css";
+
 export default () => {
 	return (
-		<div style={{ height: 50 }}>
+		<div className={styles.wrapper}>
 			<Divider orientation="vertical" />
 		</div>
 	);

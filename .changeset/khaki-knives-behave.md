@@ -2,4 +2,4 @@
 "@stratakit/mui": patch
 ---
 
-Use global component size variables in `Chip` and inputs.
+Use global component size variables in inputs.

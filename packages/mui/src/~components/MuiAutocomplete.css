@@ -14,10 +14,7 @@
 }
 
 .MuiAutocomplete-tag:is(.MuiChip-root) {
-	--✨margin-block: var(--stratakit-space-x05);
-
-	block-size: calc(var(--_MuiChip-block-size) - var(--✨margin-block) * 2 - 2px);
-	margin-block: var(--✨margin-block);
+	margin-block: var(--stratakit-space-x05);
 	margin-inline-start: var(--stratakit-space-x1);
 	margin-inline-end: 0;
 

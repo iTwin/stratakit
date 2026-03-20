@@ -29,22 +29,16 @@ const key = `${packageName}@${__VERSION__}`;
 
 // ----------------------------------------------------------------------------
 
-interface RootProps extends BaseProps<"div"> {
+type StrataKitRootProps = React.ComponentPropsWithoutRef<typeof StrataKitRoot>;
+
+interface RootProps
+	extends BaseProps<"div">,
+		Pick<StrataKitRootProps, "accentColor"> {
 	children?: React.ReactNode;
 	/**
 	 * The color scheme to use for all components on the page.
 	 */
 	colorScheme: "light" | "dark";
-
-	/**
-	 * The theme to use for all components under the Root:
-	 *
-	 * - `undefined`: Default theme with green aurora accent color.
-	 * - `"blue"`: Legacy theme with blue accent color.
-	 *
-	 * @default undefined
-	 */
-	theme?: "blue";
 }
 
 /**
@@ -59,13 +53,18 @@ interface RootProps extends BaseProps<"div"> {
  */
 const Root = React.forwardRef<HTMLDivElement, RootProps>(
 	(props, forwardedRef) => {
-		const { children, colorScheme, ...rest } = props;
+		const { children, colorScheme, accentColor, ...rest } = props;
 
 		return (
 			<StyledEngineProvider enableCssLayer>
 				<ThemeProvider theme={theme} defaultMode={colorScheme}>
 					<ColorScheme colorScheme={colorScheme} />
-					<RootInner {...rest} colorScheme={colorScheme} ref={forwardedRef}>
+					<RootInner
+						{...rest}
+						colorScheme={colorScheme}
+						accentColor={accentColor}
+						ref={forwardedRef}
+					>
 						<Styles />
 						{children}
 					</RootInner>
@@ -80,18 +79,19 @@ DEV: Root.displayName = "Root";
 
 interface RootInnerProps
 	extends React.ComponentPropsWithoutRef<"div">,
-		Pick<RootProps, "colorScheme"> {}
+		Pick<RootProps, "colorScheme" | "accentColor"> {}
 
 /** @private */
 const RootInner = React.forwardRef<HTMLDivElement, RootInnerProps>(
 	(props, forwardedRef) => {
-		const { children, colorScheme, ...rest } = props;
+		const { children, colorScheme, accentColor, ...rest } = props;
 
 		return (
 			<StrataKitRoot
 				{...rest}
 				className={cx("🥝MuiRoot", props.className)}
 				colorScheme={colorScheme}
+				accentColor={accentColor}
 				synchronizeColorScheme
 				ref={forwardedRef}
 			>

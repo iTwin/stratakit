@@ -18,10 +18,10 @@ import { Root as StrataKitMuiRoot } from "@stratakit/mui";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { AppNavigationRail } from "./~navigation.tsx";
 import {
+	AccentColorProvider,
 	ColorSchemeProvider,
-	ThemeProvider,
+	useAccentColor,
 	useColorScheme,
-	useTheme,
 } from "./~utils.tsx";
 
 import type { LinksFunction } from "react-router";
@@ -47,9 +47,9 @@ export const links: LinksFunction = () => {
 export function Layout({ children }: { children: React.ReactNode }) {
 	return (
 		<ColorSchemeProvider>
-			<ThemeProvider>
+			<AccentColorProvider>
 				<LayoutInner>{children}</LayoutInner>
-			</ThemeProvider>
+			</AccentColorProvider>
 		</ColorSchemeProvider>
 	);
 }
@@ -82,7 +82,7 @@ function LayoutInner({ children }: { children: React.ReactNode }) {
 
 export default function App() {
 	const colorScheme = useColorScheme();
-	const theme = useTheme();
+	const accentColor = useAccentColor();
 	const location = useLocation();
 	const isRootTest = useIsRootTest();
 
@@ -106,7 +106,7 @@ export default function App() {
 					<Root
 						key={isRootTest ? "foundations" : "mui"}
 						colorScheme={colorScheme}
-						theme={theme === "blue" ? "blue" : undefined}
+						accentColor={accentColor === "blue" ? "blue" : undefined}
 						density={density}
 						synchronizeColorScheme={false}
 						style={{ display: "contents" }}

@@ -24,7 +24,7 @@ html:where([data-color-scheme="dark"]),
 	--stratakit-color-border-shadow-strong: --primitive("color.white.16");
 }
 
-.🥝Root:where([data-_sk-theme="blue"]) {
+.🥝Root:where([data-_sk-accent="blue"]) {
 	--_stratakit-accent-0: --primitive("color.accentBlue.0");
 	--_stratakit-accent-50: --primitive("color.accentBlue.50");
 	--_stratakit-accent-100: --primitive("color.accentBlue.100");

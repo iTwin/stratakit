@@ -10,12 +10,12 @@ import { Icon } from "@stratakit/foundations";
 import { unstable_NavigationRail as NavigationRail } from "@stratakit/structures";
 import {
 	isProduction,
+	useAccentColor,
 	useColorScheme,
 	useIsWideScreen,
 	useLocalStorage,
+	useSetAccentColor,
 	useSetColorScheme,
-	useSetTheme,
-	useTheme,
 } from "./~utils.tsx";
 
 import svgDocumentation from "@stratakit/icons/documentation.svg";
@@ -78,8 +78,8 @@ export function AppNavigationRail(props: AppNavigationRailProps) {
 	const colorScheme = useColorScheme();
 	const setColorScheme = useSetColorScheme();
 
-	const theme = useTheme();
-	const setTheme = useSetTheme();
+	const accentColor = useAccentColor();
+	const setAccentColor = useSetAccentColor();
 
 	const showNavigation =
 		useLocalStorage("🥝:show-navigation") !== "false" && isWideScreen;
@@ -143,13 +143,13 @@ export function AppNavigationRail(props: AppNavigationRailProps) {
 						<NavigationRail.List>
 							<NavigationRail.ListItem>
 								<NavigationRail.Button
-									className={styles.themeToggle}
-									label="Toggle theme"
+									className={styles.accentToggle}
+									label="Toggle accent color"
 									icon={svgPalette}
 									onClick={() => {
-										setTheme(theme === "aurora" ? "blue" : "aurora");
+										setAccentColor(accentColor === "blue" ? "aurora" : "blue");
 									}}
-									data-theme={theme}
+									data-accent={accentColor}
 								/>
 							</NavigationRail.ListItem>
 							<NavigationRail.ListItem>

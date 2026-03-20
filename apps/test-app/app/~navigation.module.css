@@ -50,8 +50,8 @@
 	flex: 1;
 }
 
-.themeToggle {
-	&:where([data-theme="blue"]) svg {
+.accentToggle {
+	&:where([data-accent="blue"]) svg {
 		color: var(--stratakit-color-icon-accent-strong);
 	}
 }

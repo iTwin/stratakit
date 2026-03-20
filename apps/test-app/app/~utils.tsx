@@ -222,60 +222,69 @@ export function useSetColorScheme() {
 
 // ----------------------------------------------------------------------------
 
-type Theme = "aurora" | "blue" | undefined;
+type AccentColor = "aurora" | "blue" | undefined;
 
-const THEME_STORAGE_KEY = "🥝:theme";
+const ACCENT_COLOR_STORAGE_KEY = "🥝:accent-color";
 
-const ThemeContext = React.createContext<{
-	theme: Theme;
-	setTheme: React.Dispatch<React.SetStateAction<Theme>>;
-}>({ theme: undefined, setTheme: () => {} });
+const AccentColorContext = React.createContext<{
+	accentColor: AccentColor;
+	setAccentColor: React.Dispatch<React.SetStateAction<AccentColor>>;
+}>({ accentColor: undefined, setAccentColor: () => {} });
 
-/** Makes the theme available to descendants (via `useTheme` and `useSetTheme`). */
-export function ThemeProvider({ children }: { children: React.ReactNode }) {
-	const [theme, setTheme] = React.useState<Theme>(undefined);
+/** Makes the accent color available to descendants (via `useAccentColor` and `useSetAccentColor`). */
+export function AccentColorProvider({
+	children,
+}: {
+	children: React.ReactNode;
+}) {
+	const [accentColor, setAccentColor] = React.useState<AccentColor>(undefined);
 
 	return (
-		<ThemeContext value={React.useMemo(() => ({ theme, setTheme }), [theme])}>
+		<AccentColorContext
+			value={React.useMemo(
+				() => ({ accentColor, setAccentColor }),
+				[accentColor],
+			)}
+		>
 			{children}
-		</ThemeContext>
+		</AccentColorContext>
 	);
 }
 
-/** Returns the current theme in the following order: React Context, localStorage. */
-export function useTheme() {
-	const { theme } = React.use(ThemeContext);
+/** Returns the current accent color in the following order: React Context, localStorage. */
+export function useAccentColor() {
+	const { accentColor } = React.use(AccentColorContext);
 
-	const storedValue = useLocalStorage(THEME_STORAGE_KEY);
-	const storedTheme =
+	const storedValue = useLocalStorage(ACCENT_COLOR_STORAGE_KEY);
+	const storedAccentColor =
 		storedValue === "aurora" || storedValue === "blue"
 			? storedValue
 			: undefined;
 
-	return theme ?? storedTheme;
+	return accentColor ?? storedAccentColor;
 }
 
-/** Allows changing the theme returned by `useTheme`. Synchronizes with localStorage. */
-export function useSetTheme() {
-	const { setTheme } = React.use(ThemeContext);
+/** Allows changing the accent color returned by `useAccentColor`. Synchronizes with localStorage. */
+export function useSetAccentColor() {
+	const { setAccentColor } = React.use(AccentColorContext);
 
 	return React.useCallback(
-		(value: React.SetStateAction<Theme>) => {
-			setTheme((prev) => {
+		(value: React.SetStateAction<AccentColor>) => {
+			setAccentColor((prev) => {
 				const newValue = typeof value === "function" ? value(prev) : value;
 
 				if (typeof localStorage !== "undefined") {
 					if (newValue === undefined) {
-						localStorage.removeItem(THEME_STORAGE_KEY);
+						localStorage.removeItem(ACCENT_COLOR_STORAGE_KEY);
 					} else {
-						localStorage.setItem(THEME_STORAGE_KEY, newValue);
+						localStorage.setItem(ACCENT_COLOR_STORAGE_KEY, newValue);
 					}
 				}
 
 				return newValue;
 			});
 		},
-		[setTheme],
+		[setAccentColor],
 	);
 }
 

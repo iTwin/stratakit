@@ -67,18 +67,6 @@ By default, the **Divider** appears in a horizontal orientation. Reorientate it 
 
 ::example{src="mui/Divider.vertical"}
 
-A [**Toolbar**](/components/toolbar) with a horizontal orientation (default), must use vertical **Dividers**.
-
-```jsx 'orientation="vertical"'
-<Toolbar.Group variant="solid">
-  <Toolbar.Item render={…} />
-  <Toolbar.Item render={…} />
-  <Divider orientation="vertical" />
-  <Toolbar.Item render={…} />
-  <Toolbar.Item render={…} />
-</Toolbar.Group>
-```
-
 :::caution[Orientation semantics]
 
 **Divider** uses `aria-orientation` to communicate the orientation programmatically. Where the _presentational_ **Divider** is used, neither it nor its orientation is made available.

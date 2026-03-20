@@ -37,29 +37,9 @@ properties:</p>
 
 ### Separating lists of options
 
-Your navigation may be subdivided into multiple lists. You can use the **Divider**, with the [`presentational`](/reference/bricks/Divider/#Divider.presentational) prop, to visually mark where one list ends and the next begins.
+Your navigation may be subdivided into multiple lists. You can use the _presentational_ **Divider**, to visually mark where one list ends and the next begins.
 
-```jsx 'presentational'
-<ul>
-  ...
-  <li>
-    <a href="/dashboard">Dashboard</a>
-  </li>
-  <li>
-    <a href="/create">Create</a>
-  </li>
-<ul>
-<Divider presentational />
-<ul>
-  <li>
-    <a href="/account">Account</a>
-  </li>
-  <li>
-    <a href="/notifications">Notifications</a>
-  </li>
-  ...
-<ul>
-```
+::example{src="mui/Divider.presentational"}
 
 ### Orientation
 

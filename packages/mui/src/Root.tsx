@@ -26,7 +26,9 @@ const key = `${packageName}@${__VERSION__}`;
 
 // ----------------------------------------------------------------------------
 
-interface RootProps extends BaseProps<"div"> {
+interface RootProps
+	extends BaseProps<"div">,
+		Pick<React.ComponentProps<typeof StrataKitRoot>, "rootNode"> {
 	children?: React.ReactNode;
 	/**
 	 * The color scheme to use for all components on the page.
@@ -67,18 +69,19 @@ DEV: Root.displayName = "Root";
 
 interface RootInnerProps
 	extends React.ComponentPropsWithoutRef<"div">,
-		Pick<RootProps, "colorScheme"> {}
+		Pick<RootProps, "colorScheme" | "rootNode"> {}
 
 /** @private */
 const RootInner = React.forwardRef<HTMLDivElement, RootInnerProps>(
 	(props, forwardedRef) => {
-		const { children, colorScheme, ...rest } = props;
+		const { children, colorScheme, rootNode, ...rest } = props;
 
 		return (
 			<StrataKitRoot
 				{...rest}
 				className={cx("🥝MuiRoot", props.className)}
 				colorScheme={colorScheme}
+				rootNode={rootNode}
 				synchronizeColorScheme
 				ref={forwardedRef}
 			>

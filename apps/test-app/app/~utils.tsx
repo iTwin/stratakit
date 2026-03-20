@@ -222,18 +222,18 @@ export function useSetColorScheme() {
 
 // ----------------------------------------------------------------------------
 
-type Theme = "aurora" | "blue";
+type Theme = "aurora" | "blue" | undefined;
 
 const THEME_STORAGE_KEY = "🥝:theme";
 
 const ThemeContext = React.createContext<{
 	theme: Theme;
 	setTheme: React.Dispatch<React.SetStateAction<Theme>>;
-}>({ theme: "aurora", setTheme: () => {} });
+}>({ theme: undefined, setTheme: () => {} });
 
 /** Makes the theme available to descendants (via `useTheme` and `useSetTheme`). */
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-	const [theme, setTheme] = React.useState<Theme>("aurora");
+	const [theme, setTheme] = React.useState<Theme>(undefined);
 
 	return (
 		<ThemeContext value={React.useMemo(() => ({ theme, setTheme }), [theme])}>
@@ -247,7 +247,10 @@ export function useTheme() {
 	const { theme } = React.use(ThemeContext);
 
 	const storedValue = useLocalStorage(THEME_STORAGE_KEY);
-	const storedTheme = storedValue === "blue" ? storedValue : undefined;
+	const storedTheme =
+		storedValue === "aurora" || storedValue === "blue"
+			? storedValue
+			: undefined;
 
 	return theme ?? storedTheme;
 }

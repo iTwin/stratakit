@@ -65,8 +65,9 @@
 
 	min-block-size: calc(var(--_MuiInput-block-size) - 2px); /* Accommodate for border width */
 	padding-block: 0;
-	padding-inline: var(--_MuiInput-padding-inline, var(--✨padding-inline--medium));
+	padding-inline: var(--_MuiInput-padding-inline);
 	align-content: center;
+	--_MuiInput-padding-inline: var(--✨padding-inline--medium);
 
 	:where(.MuiInputBase-root.MuiInputBase-sizeSmall) & {
 		--_MuiInput-padding-inline: var(--✨padding-inline--small);

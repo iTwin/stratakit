@@ -13,16 +13,15 @@ import RadioGroup from "@mui/material/RadioGroup";
 import visuallyHidden from "@mui/utils/visuallyHidden";
 
 export default () => {
-	const labelId = React.useId();
 	const errorId = React.useId();
 	return (
-		<FormControl error>
-			<FormLabel id={labelId}>Gender</FormLabel>
+		<FormControl render={<fieldset />} role="radiogroup" error>
+			<FormLabel render={<legend />}>Gender</FormLabel>
 			<RadioGroup
-				aria-labelledby={labelId}
 				aria-describedby={errorId}
 				defaultValue="female"
 				name="radio-buttons-group"
+				role={undefined}
 			>
 				<FormControlLabel value="female" control={<Radio />} label="Female" />
 				<FormControlLabel value="male" control={<Radio />} label="Male" />

@@ -4,7 +4,9 @@
  *--------------------------------------------------------------------------------------------*/
 
 .MuiList-root {
-	padding-block: var(--stratakit-space-x1);
+	&:where(.MuiList-padding) {
+		padding-block: var(--stratakit-space-x1);
+	}
 }
 
 :is(

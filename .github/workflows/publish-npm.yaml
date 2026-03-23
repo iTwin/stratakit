@@ -41,6 +41,9 @@ jobs:
   publish:
     name: Build and publish output to npm
     runs-on: ubuntu-latest
+    permissions:
+      contents: read # for checking out repo
+      id-token: write # for npm provenance
 
     steps:
       - uses: actions/checkout@v6
@@ -60,7 +63,7 @@ jobs:
 
       - run: pnpm --filter="./packages/**" run build
 
-      - run: npm publish --access public --tag ${{ inputs.tag }}
+      - run: npm publish --provenance --access public --tag ${{ inputs.tag }}
         working-directory: "./packages/${{ inputs.package }}/"
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPMJS_PUBLISH_ITWIN }}

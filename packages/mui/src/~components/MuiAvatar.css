@@ -7,7 +7,7 @@
 	--🥝Icon-color: var(--stratakit-color-icon-neutral-emphasis);
 	--🥝Icon-size: 75%;
 	--_MuiAvatar-size: 2rem;
-	--_MuiAvatar-font-size: 50cqw;
+	--_MuiAvatar-font-size: calc(50cqw - 4px);
 
 	aspect-ratio: 1;
 	block-size: var(--_MuiAvatar-size);

@@ -4,13 +4,14 @@
  *--------------------------------------------------------------------------------------------*/
 
 import FormControlLabel from "@mui/material/FormControlLabel";
+import Stack from "@mui/material/Stack";
 import Switch from "@mui/material/Switch";
 
 export default () => {
 	return (
-		<>
+		<Stack spacing={1}>
 			<FormControlLabel control={<Switch size="small" />} label="Small" />
 			<FormControlLabel control={<Switch />} label="Medium" />
-		</>
+		</Stack>
 	);
 };

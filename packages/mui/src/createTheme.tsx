@@ -159,6 +159,12 @@ function createTheme() {
 					component: Role.div,
 					imgProps: { draggable: false },
 				},
+				styleOverrides: {
+					root: {
+						width: "2rem",
+						height: "2rem",
+					},
+				},
 			},
 			MuiAvatarGroup: { defaultProps: { component: Role.div } },
 			MuiBackdrop: { defaultProps: { component: Role.div } },

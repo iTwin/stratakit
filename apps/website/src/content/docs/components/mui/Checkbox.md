@@ -39,7 +39,7 @@ Use the `defaultChecked` prop to set the initial checked state. Alternatively, u
 
 ### Indeterminate
 
-Use the `indeterminate` prop to display the **Checkbox** in [indeterminate state](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input/checkbox#indeterminate_state_checkboxes).
+Use the `indeterminate` prop to display the **Checkbox** in an [indeterminate state](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input/checkbox#indeterminate_state_checkboxes).
 
 ::example{src="mui/Checkbox.indeterminate"}
 

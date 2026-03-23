@@ -1,1 +1,0 @@
-import{j as r,I as o}from"./~utils.BGUtmbhX.js";import{s}from"./user.C0EEv71r.js";import{A as t}from"./Avatar.BajQSB15.js";import"./index.DIfZGIpv.js";import"./index.XeJbqeyU.js";import"./styles.internal.yYhHm1ef.js";import"./createSvgIcon.DItykOKM.js";const l=()=>r.jsx(t,{"aria-label":"Anonymous user",role:"img",children:r.jsx(o,{href:s})});export{l as default};

@@ -12,13 +12,13 @@ links:
 
 Make sure the **Checkbox** is suitable for your use case. There may be other, more appropriate components available.
 
-| Use case                                                          | [Button](/components/button) | [IconButton](/components/iconbutton) | [Switch](/components/switch) | [Checkbox](/components/checkbox) | [Anchor](/components/anchor) |
-| ----------------------------------------------------------------- | ---------------------------- | ------------------------------------ | ---------------------------- | -------------------------------- | ---------------------------- |
-| Submit forms, confirm or cancel dialogs, create or delete content | ✅                           | ❌                                   | ❌                           | ❌                               | ❌                           |
-| Select an option within a Toolbar                                 | ❌                           | ✅                                   | ❌                           | ❌                               | ❌                           |
-| Make an instantaneous, binary choice (switch a setting on or off) | ❌                           | ❌                                   | ✅                           | ❌                               | ❌                           |
-| Confirm an input for a form submission                            | ❌                           | ❌                                   | ❌                           | ✅                               | ❌                           |
-| Navigate between interface screens or sections                    | ❌                           | ❌                                   | ❌                           | ❌                               | ✅                           |
+| Use case                                                          | [Button](/components/button) | [IconButton](/components/iconbutton) | [Switch](/components/switch) | [Checkbox](/components/checkbox) | [Link](/components/link) |
+| ----------------------------------------------------------------- | ---------------------------- | ------------------------------------ | ---------------------------- | -------------------------------- | ------------------------ |
+| Submit forms, confirm or cancel dialogs, create or delete content | ✅                           | ❌                                   | ❌                           | ❌                               | ❌                       |
+| Select an option within a Toolbar                                 | ❌                           | ✅                                   | ❌                           | ❌                               | ❌                       |
+| Make an instantaneous, binary choice (switch a setting on or off) | ❌                           | ❌                                   | ✅                           | ❌                               | ❌                       |
+| Confirm an input for a form submission                            | ❌                           | ❌                                   | ❌                           | ✅                               | ❌                       |
+| Navigate between interface screens or sections                    | ❌                           | ❌                                   | ❌                           | ❌                               | ✅                       |
 
 ## StrataKit MUI modifications
 

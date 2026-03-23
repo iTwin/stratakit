@@ -18,15 +18,9 @@ links:
 
 ### Heading
 
-With **Typography** and the [`render`](/reference/foundations/Utils#BaseProps.render) prop, you can affect font size and [HTML semantics](https://developer.mozilla.org/en-US/docs/Glossary/Semantics#semantics_in_html) independently. This means you can adjust font size without misappropriating semantic elements.
+With **Typography** and the `render` prop, you can affect font size and [HTML semantics](https://developer.mozilla.org/en-US/docs/Glossary/Semantics#semantics_in_html) independently. This means you can adjust font size without misappropriating semantic elements.
 
-```jsx
-<Text render={<h2 />} variant="headline-md">
-	Heading text
-</Text>
-```
-
-Note the use of the larger `headline-md` variant. While **Typography** gives you the flexibility to adjust font size, headings that appear as body text (`body-sm`) would place the document structure and visual hierarchy at odds. One of the `headline-` prefixed values are typical for headings.
+::example{src="mui/Typography.heading"}
 
 :::caution[Grabbing attention]
 
@@ -35,7 +29,7 @@ You may want a statement to _stand out_. This statement might regard a special o
 In these cases, use a larger `variant` but do not render the text as a heading element:
 
 ```jsx
-<Text variant="headline-md">This change cannot be undone.</Text>
+<Typography variant="h5">This change cannot be undone.</Typography>
 ```
 
 :::

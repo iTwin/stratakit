@@ -12,13 +12,14 @@
 	aspect-ratio: 1;
 	block-size: var(--_MuiAvatar-size);
 	inline-size: var(--_MuiAvatar-size);
+	color: var(--stratakit-color-text-neutral-emphasis);
 	container-type: inline-size;
+	font-size: 86%;
+	font-weight: 600;
+	text-transform: uppercase;
 
 	> abbr {
-		color: var(--stratakit-color-text-neutral-emphasis);
 		font-size: var(--_MuiAvatar-font-size);
-		font-weight: 600;
-		text-transform: uppercase;
 	}
 
 	&::after {

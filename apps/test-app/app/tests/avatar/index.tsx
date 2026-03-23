@@ -7,7 +7,7 @@ import { Avatar } from "@stratakit/bricks";
 import { Icon } from "@stratakit/foundations";
 import { definePage } from "~/~utils.tsx";
 
-import userIconHref from "@stratakit/icons/user.svg";
+import svgUser from "@stratakit/icons/user.svg";
 
 export const handle = { title: "Avatar" };
 
@@ -35,7 +35,7 @@ function VisualTest() {
 				<div key={size} style={{ display: "flex", gap: 4 }}>
 					<Avatar {...props} size={size} />
 
-					<Avatar {...props} size={size} image={<Icon href={userIconHref} />} />
+					<Avatar {...props} size={size} image={<Icon href={svgUser} />} />
 
 					<Avatar {...props} size={size} image={<img src={imgSrc} alt="" />} />
 				</div>

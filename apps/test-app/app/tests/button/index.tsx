@@ -7,7 +7,7 @@ import { Button } from "@stratakit/bricks";
 import { Icon } from "@stratakit/foundations";
 import { definePage } from "~/~utils.tsx";
 
-import placeholderIconHref from "@stratakit/icons/placeholder.svg";
+import svgPlaceholder from "@stratakit/icons/placeholder.svg";
 
 export const handle = { title: "Button" };
 
@@ -47,25 +47,25 @@ function VisualTest() {
 						<Button {...props}>Click me</Button>
 
 						<Button {...props}>
-							<Icon href={placeholderIconHref} />
+							<Icon href={svgPlaceholder} />
 							Click me
 						</Button>
 
 						<Button {...props}>
 							Click me
-							<Icon href={placeholderIconHref} />
+							<Icon href={svgPlaceholder} />
 						</Button>
 
 						<Button {...props}>
-							<Icon href={placeholderIconHref} />
+							<Icon href={svgPlaceholder} />
 							Click me
-							<Icon href={placeholderIconHref} />
+							<Icon href={svgPlaceholder} />
 						</Button>
 
 						<Button {...props} disabled>
-							<Icon href={placeholderIconHref} />
+							<Icon href={svgPlaceholder} />
 							Click me
-							<Icon href={placeholderIconHref} />
+							<Icon href={svgPlaceholder} />
 						</Button>
 
 						<Button {...props} render={<a href="#" />}>

@@ -4,8 +4,8 @@
  *--------------------------------------------------------------------------------------------*/
 import { Badge } from "@stratakit/bricks";
 
-import warningIcon from "@stratakit/icons/status-warning.svg";
+import svgWarning from "@stratakit/icons/status-warning.svg";
 
 export default () => {
-	return <Badge label="Unstable" tone="critical" icon={warningIcon} />;
+	return <Badge label="Unstable" tone="critical" icon={svgWarning} />;
 };

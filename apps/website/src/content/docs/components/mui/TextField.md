@@ -10,6 +10,10 @@ links:
 
 ## Examples
 
+### Sizes
+
+::example{src="mui/TextField.sizes"}
+
 ### Icon
 
 ::example{src="mui/TextField.icon"}

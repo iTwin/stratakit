@@ -1,0 +1,28 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+
+.MuiToggleButton-root {
+	min-block-size: var(--_MuiToggleButton-height);
+	min-inline-size: var(--_MuiToggleButton-height);
+	padding: calc(var(--_MuiToggleButton-padding) - 1px); /* Account for 1px border */
+
+	&:where(.MuiToggleButton-sizeSmall) {
+		@apply --typography("body-sm");
+		--_MuiToggleButton-height: var(--stratakit-size-control-field-height-small);
+		--_MuiToggleButton-padding: var(--stratakit-space-x1);
+	}
+
+	&:where(.MuiToggleButton-sizeMedium) {
+		@apply --typography("body-md");
+		--_MuiToggleButton-height: var(--stratakit-size-control-field-height-medium);
+		--_MuiToggleButton-padding: var(--stratakit-space-x2);
+	}
+
+	&:where(.MuiToggleButton-sizeLarge) {
+		@apply --typography("body-lg");
+		--_MuiToggleButton-height: var(--stratakit-size-control-field-height-large);
+		--_MuiToggleButton-padding: var(--stratakit-space-x3);
+	}
+}

@@ -87,7 +87,7 @@ interface AccordionItemProps extends BaseProps {
  * <AccordionItem.Root>
  *   <AccordionItem.Header>
  *     <AccordionItem.Marker />
- *     <AccordionItem.Decoration render={<Icon href={placeholder} />} />
+ *     <AccordionItem.Decoration render={<Icon href={svgPlaceholder} />} />
  *     <AccordionItem.Button>
  *       <AccordionItem.Label>Label</AccordionItem.Label>
  *     </AccordionItem.Button>
@@ -226,7 +226,7 @@ DEV: AccordionItemLabel.displayName = "AccordionItem.Label";
  * ```tsx
  * <AccordionItem.Header>
  *   <AccordionItem.Marker />
- *   <AccordionItem.Decoration render={<Icon href={placeholder} />} />
+ *   <AccordionItem.Decoration render={<Icon href={svgPlaceholder} />} />
  *   <AccordionItem.Button>
  *     <AccordionItem.Label>Label</AccordionItem.Label>
  *   </AccordionItem.Button>
@@ -243,7 +243,7 @@ DEV: AccordionItemLabel.displayName = "AccordionItem.Label";
  *   <AccordionItem.Button>
  *     <AccordionItem.Label>Label</AccordionItem.Label>
  *   </AccordionItem.Button>
- *   <AccordionItem.Decoration render={<Icon href={placeholder} />} />
+ *   <AccordionItem.Decoration render={<Icon href={svgPlaceholder} />} />
  * </AccordionItem.Header>
  * ```
  *
@@ -255,8 +255,8 @@ DEV: AccordionItemLabel.displayName = "AccordionItem.Label";
  * <AccordionItem.Header>
  *   <AccordionItem.Marker />
  *   <AccordionItem.Decoration>
- *     <Icon href={placeholder} />
- *     <Icon href={placeholder} />
+ *     <Icon href={svgPlaceholder} />
+ *     <Icon href={svgPlaceholder} />
  *   </AccordionItem.Decoration>
  *   <AccordionItem.Button>
  *     <AccordionItem.Label>Label</AccordionItem.Label>
@@ -307,7 +307,7 @@ DEV: AccordionItemDecoration.displayName = "AccordionItem.Decoration";
  * ```tsx
  * <AccordionItem.Header>
  *   <AccordionItem.Marker>
- *     <Icon href={placeholder} />
+ *     <Icon href={svgPlaceholder} />
  *   </AccordionItem.Marker>
  *   <AccordionItem.Button>
  *     <AccordionItem.Label>Label</AccordionItem.Label>

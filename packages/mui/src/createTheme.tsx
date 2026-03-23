@@ -8,12 +8,14 @@ import { Role } from "@ariakit/react/role";
 import OutlinedInput from "@mui/material/OutlinedInput";
 import { createTheme as createMuiTheme } from "@mui/material/styles";
 import { MuiBadge } from "./~components/MuiBadge.js";
+import { MuiButtonBase } from "./~components/MuiButtonBase.js";
 import { MuiCard, MuiCardActionArea } from "./~components/MuiCard.js";
 import {
 	MuiChip,
 	MuiChipDeleteIcon,
 	MuiChipLabel,
 } from "./~components/MuiChip.js";
+import { MuiIconButton } from "./~components/MuiIconButton.js";
 import { MuiSnackbar } from "./~components/MuiSnackbar.js";
 import { MuiTableCell, MuiTableHead } from "./~components/MuiTable.js";
 import {
@@ -33,6 +35,7 @@ import {
 
 import type { RoleProps } from "@ariakit/react/role";
 import type { ColorSystemOptions } from "@mui/material/styles";
+import type { TypographyOwnProps } from "@mui/material/Typography";
 
 /**
  * Creates a StrataKit theme for MUI. Should be used with MUI's `ThemeProvider`.
@@ -161,9 +164,6 @@ function createTheme() {
 				},
 			},
 			MuiBottomNavigation: { defaultProps: { component: Role.div } },
-			MuiBottomNavigationAction: {
-				defaultProps: { component: Role.button },
-			},
 			MuiBreadcrumbs: {
 				defaultProps: {
 					component: Role.nav,
@@ -172,13 +172,13 @@ function createTheme() {
 			},
 			MuiButtonBase: {
 				defaultProps: {
-					component: Role.button,
+					component: MuiButtonBase,
 					disableRipple: true, // https://mui.com/material-ui/getting-started/faq/#how-can-i-disable-the-ripple-effect-globally
 				},
 			},
 			MuiButton: {
 				defaultProps: {
-					component: Role.button,
+					component: MuiButtonBase,
 					color: "secondary",
 					variant: "contained",
 				},
@@ -191,12 +191,7 @@ function createTheme() {
 				},
 			},
 			MuiCard: { defaultProps: { component: MuiCard } },
-			MuiCardActionArea: {
-				defaultProps: {
-					component: MuiCardActionArea,
-					role: undefined, // Remove redundant role which conflicts when CardActionArea is rendered as Link
-				},
-			},
+			MuiCardActionArea: { defaultProps: { component: MuiCardActionArea } },
 			MuiCardContent: { defaultProps: { component: Role.div } },
 			MuiCardHeader: {
 				defaultProps: {
@@ -233,7 +228,7 @@ function createTheme() {
 			MuiDrawer: { defaultProps: { component: Role.div } },
 			MuiFab: {
 				defaultProps: {
-					component: Role.button,
+					component: MuiButtonBase,
 					color: "primary",
 				},
 			},
@@ -244,7 +239,7 @@ function createTheme() {
 			MuiGridLegacy: { defaultProps: { component: Role.div } },
 			MuiIcon: { defaultProps: { component: Role.span } },
 			MuiIconButton: {
-				defaultProps: { component: Role.button, color: "secondary" },
+				defaultProps: { component: MuiIconButton, color: "secondary" },
 			},
 			MuiImageList: { defaultProps: { component: Role.ul } },
 			MuiImageListItem: { defaultProps: { component: Role.li } },
@@ -287,7 +282,14 @@ function createTheme() {
 			MuiList: { defaultProps: { component: Role.ul } },
 			MuiListItem: { defaultProps: { component: Role.li } },
 			MuiListItemButton: {
-				defaultProps: { component: Role.button },
+				defaultProps: { component: MuiButtonBase },
+			},
+			MuiListItemText: {
+				defaultProps: {
+					slotProps: {
+						primary: { variant: "inherit" },
+					},
+				},
 			},
 			MuiListSubheader: { defaultProps: { component: Role.li } },
 			MuiMenu: { defaultProps: { component: Role.div } },
@@ -302,7 +304,7 @@ function createTheme() {
 			},
 			MuiPaginationItem: {
 				defaultProps: {
-					component: Role.button,
+					component: MuiButtonBase,
 					slots: {
 						previous: ChevronLeftIcon,
 						next: ChevronRightIcon,
@@ -347,12 +349,10 @@ function createTheme() {
 			MuiSnackbarContent: { defaultProps: { component: Role.div } },
 			MuiStack: { defaultProps: { component: Role.div } },
 			MuiStep: { defaultProps: { component: Role.div } },
-			MuiStepButton: { defaultProps: { component: Role.button } },
 			MuiSwitch: { defaultProps: { component: Role.span } },
 			MuiStepper: { defaultProps: { component: Role.div } },
 			MuiSvgIcon: { defaultProps: { component: Role.svg } },
 			MuiSwipeableDrawer: { defaultProps: { component: Role.div } },
-			MuiTab: { defaultProps: { component: Role.button } },
 			MuiTabs: { defaultProps: { component: Role.div } },
 			MuiTable: { defaultProps: { component: withRenderProp(Role, "table") } },
 			MuiTableBody: {
@@ -393,14 +393,34 @@ function createTheme() {
 				},
 			},
 			MuiTextField: { defaultProps: { component: Role.div } },
-			MuiToggleButton: { defaultProps: { component: Role.button } },
+			MuiToggleButton: { defaultProps: { component: MuiIconButton } },
 			MuiToolbar: { defaultProps: { component: Role.div } },
 			MuiTooltip: {
 				defaultProps: {
 					describeChild: true,
 				},
 			},
-			MuiTypography: { defaultProps: { component: Role.p, variant: "body2" } },
+			MuiTypography: {
+				defaultProps: {
+					variant: "body2",
+					variantMapping: {
+						h1: Role.h1,
+						h2: Role.h2,
+						h3: Role.h3,
+						h4: Role.h4,
+						h5: Role.h5,
+						h6: Role.h6,
+						subtitle1: Role.h6,
+						subtitle2: Role.h6,
+						body1: Role.p,
+						body2: Role.p,
+						inherit: Role.p,
+						button: Role.span,
+						caption: Role.span,
+						overline: Role.span,
+					} as unknown as TypographyOwnProps["variantMapping"],
+				},
+			},
 		},
 	});
 }

@@ -7,7 +7,6 @@ import * as React from "react";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import Snackbar from "@mui/material/Snackbar";
-import Tooltip from "@mui/material/Tooltip";
 import { Icon } from "@stratakit/mui";
 
 import svgDismiss from "@stratakit/icons/dismiss.svg";
@@ -27,11 +26,9 @@ export default () => {
 				onClose={handleClose}
 				message="Note archived"
 				action={
-					<Tooltip title="Close" describeChild={false}>
-						<IconButton onClick={handleClose}>
-							<Icon href={svgDismiss} />
-						</IconButton>
-					</Tooltip>
+					<IconButton label="Close" onClick={handleClose}>
+						<Icon href={svgDismiss} />
+					</IconButton>
 				}
 			/>
 		</>

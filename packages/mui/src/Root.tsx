@@ -4,11 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 
 import * as React from "react";
-import {
-	StyledEngineProvider,
-	ThemeProvider,
-	useColorScheme,
-} from "@mui/material/styles";
+import { ThemeProvider, useColorScheme } from "@mui/material/styles";
 import { Root as StrataKitRoot } from "@stratakit/foundations";
 import {
 	RootContext,
@@ -16,6 +12,7 @@ import {
 } from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
 import { createTheme } from "./createTheme.js";
+import { StyledEngineProvider } from "./Root.internal.js";
 import css from "./styles.css.js";
 
 import type { BaseProps } from "@stratakit/foundations/secret-internals";
@@ -29,7 +26,9 @@ const key = `${packageName}@${__VERSION__}`;
 
 // ----------------------------------------------------------------------------
 
-interface RootProps extends BaseProps<"div"> {
+interface RootProps
+	extends BaseProps<"div">,
+		Pick<React.ComponentProps<typeof StrataKitRoot>, "rootNode"> {
 	children?: React.ReactNode;
 	/**
 	 * The color scheme to use for all components on the page.
@@ -52,7 +51,7 @@ const Root = React.forwardRef<HTMLDivElement, RootProps>(
 		const { children, colorScheme, ...rest } = props;
 
 		return (
-			<StyledEngineProvider enableCssLayer>
+			<StyledEngineProvider>
 				<ThemeProvider theme={theme} defaultMode={colorScheme}>
 					<ColorScheme colorScheme={colorScheme} />
 					<RootInner {...rest} colorScheme={colorScheme} ref={forwardedRef}>
@@ -70,18 +69,19 @@ DEV: Root.displayName = "Root";
 
 interface RootInnerProps
 	extends React.ComponentPropsWithoutRef<"div">,
-		Pick<RootProps, "colorScheme"> {}
+		Pick<RootProps, "colorScheme" | "rootNode"> {}
 
 /** @private */
 const RootInner = React.forwardRef<HTMLDivElement, RootInnerProps>(
 	(props, forwardedRef) => {
-		const { children, colorScheme, ...rest } = props;
+		const { children, colorScheme, rootNode, ...rest } = props;
 
 		return (
 			<StrataKitRoot
 				{...rest}
 				className={cx("🥝MuiRoot", props.className)}
 				colorScheme={colorScheme}
+				rootNode={rootNode}
 				synchronizeColorScheme
 				ref={forwardedRef}
 			>

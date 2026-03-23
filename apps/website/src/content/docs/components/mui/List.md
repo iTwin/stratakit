@@ -8,6 +8,10 @@ links:
 
 ::example{src="mui/List.default"}
 
+## StrataKit MUI modifications
+
+- Spacing and sizing has been adjusted to better align with StrataKit's more compact visual design language.
+
 ## Examples
 
 ### ListItemAvatar

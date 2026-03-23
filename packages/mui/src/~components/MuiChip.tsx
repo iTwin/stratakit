@@ -9,6 +9,7 @@ import { VisuallyHidden } from "@ariakit/react/visually-hidden";
 import IconButton from "@mui/material/IconButton";
 import { useTheme } from "@mui/material/styles";
 import { DismissIcon } from "../Icon.js";
+import { MuiButtonBase } from "./MuiButtonBase.js";
 
 import type Chip from "@mui/material/Chip";
 
@@ -74,7 +75,7 @@ const MuiChipLabel = React.forwardRef<
 		};
 	}, [id, setLabelId]);
 
-	const Component = isClickable ? Role.button : Role.span;
+	const Component = isClickable ? MuiButtonBase : Role.span;
 	return (
 		<Component
 			id={id}

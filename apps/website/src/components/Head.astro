@@ -1,9 +1,7 @@
 ---
 // See https://starlight.astro.build/reference/overrides/#head-1
 
-import StrataKit from "./StrataKit.astro";
 import Fonts from "./Fonts.astro";
-import CustomElements from "./CustomElements.astro";
 
 const { head: originalHead } = Astro.locals.starlightRoute;
 
@@ -29,16 +27,20 @@ const fixedHead = originalHead.map((item) => {
 <style is:inline>
 	@layer reset, starlight;
 </style>
-<meta name="emotion-insertion-point" />
 
-<StrataKit />
+{/* Prevent FOUC while StrataKit styles are loading. */}
+<script type="module" blocking="render">
+	document.documentElement.dataset.loading = "true";
+	setTimeout(() => {
+		delete document.documentElement.dataset.loading;
+	}, 2000);
+</script>
+<style is:inline>
+	html[data-loading] {
+		opacity: 0;
+	}
+</style>
+
 <Fonts />
 
 {fixedHead.map(({ tag: Tag, attrs, content }) => <Tag {...attrs} set:html={content} />)}
-
-<CustomElements />
-
-<script>
-	import { initializeStrataKitRoot } from "./StrataKitRoot.tsx";
-	initializeStrataKitRoot();
-</script>

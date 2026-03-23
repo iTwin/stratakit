@@ -1,0 +1,22 @@
+---
+// See https://starlight.astro.build/reference/overrides/#footer
+
+import StarlightFooter from "@astrojs/starlight/components/Footer.astro";
+import CustomElements from "./CustomElements.astro";
+---
+
+<StarlightFooter />
+<CustomElements />
+
+<script>
+	import { unstable_loadStyles } from "@stratakit/foundations";
+	try {
+		unstable_loadStyles();
+	} catch {}
+	delete document.documentElement.dataset.loading;
+</script>
+
+<script>
+	import { initializeStrataKitRoot } from "./StrataKitRoot.tsx";
+	initializeStrataKitRoot();
+</script>

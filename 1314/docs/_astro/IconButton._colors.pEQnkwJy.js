@@ -1,0 +1,1 @@
+import{j as o,D as s,I as t}from"./~utils.Dpukwl1d.js";import{s as e}from"./placeholder.CN7Sg2LG.js";import"./index.DIfZGIpv.js";import"./index.XeJbqeyU.js";import"./styles.internal.BBB1iF_3.js";const a=["primary","secondary","error"],l=()=>a.map(r=>o.jsx(s,{color:r,label:`${r.charAt(0).toUpperCase()}${r.slice(1)}`,children:o.jsx(t,{href:e})},r));export{l as default};

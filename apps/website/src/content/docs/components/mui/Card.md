@@ -6,7 +6,7 @@ links:
   apiReference: https://mui.com/material-ui/api/card/
 ---
 
-::example{src="mui/Card.default"}
+::example{src="mui/Card.default" min-height="325px"}
 
 ## StrataKit MUI modifications
 
@@ -18,7 +18,7 @@ links:
 
 ### CardActions
 
-::example{src="mui/Card.actions"}
+::example{src="mui/Card.actions" min-height="325px"}
 
 ### CardHeader
 

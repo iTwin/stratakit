@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.4.7
+
+### Patch Changes
+
+- [#1308](https://github.com/iTwin/stratakit/pull/1308), [#1315](https://github.com/iTwin/stratakit/pull/1315): Added global component size variables.
+
 ## 0.4.6
 
 - [#1188](https://github.com/iTwin/stratakit/pull/1188): Fixed a race condition where stylesheets could be prematurely removed in cases where multiple components that use the same styles were conditionally rendered.

@@ -402,10 +402,10 @@ importers:
         specifier: ^7.3.6
         version: 7.3.8(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.4))(@emotion/styled@11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.4))(@types/react@19.2.14)(react@19.2.4))(@types/react@19.2.14)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
       "@stratakit/foundations":
-        specifier: ^0.4.6
+        specifier: ^0.4.7
         version: link:../foundations
       "@stratakit/icons":
-        specifier: ^0.3.0
+        specifier: ^0.3.1
         version: link:../icons
       classnames:
         specifier: ^2.5.1
@@ -442,7 +442,7 @@ importers:
         specifier: ^0.5.4
         version: link:../bricks
       "@stratakit/foundations":
-        specifier: ^0.4.6
+        specifier: ^0.4.7
         version: link:../foundations
       classnames:
         specifier: ^2.5.1

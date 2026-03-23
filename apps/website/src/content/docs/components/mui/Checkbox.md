@@ -33,7 +33,7 @@ Make sure the **Checkbox** is suitable for your use case. There may be other, mo
 
 ### Checked
 
-Use the `defaultChecked` prop to set the initial checked state. Alternatively, use `checked` and `onChange` props to control the checked state.
+Use the `defaultChecked` prop to set the initial checked state. Alternatively, use the `checked` and `onChange` props to control the checked state.
 
 ::example{src="mui/Checkbox.checked"}
 

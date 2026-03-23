@@ -3,19 +3,20 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import TextField from "@mui/material/TextField";
-import { visuallyHidden } from "@mui/utils";
+import Avatar from "@mui/material/Avatar";
+import Link from "@mui/material/Link";
+import { Icon } from "@stratakit/mui";
+
+import svgUser from "@stratakit/icons/user.svg";
+import styles from "./Avatar.decorative.module.css";
 
 export default () => {
 	return (
-		<TextField
-			label="Email"
-			error
-			helperText={
-				<>
-					<span style={visuallyHidden}>Error: </span>Invalid email address
-				</>
-			}
-		/>
+		<Link className={styles.link} href="#profile">
+			<Avatar>
+				<Icon href={svgUser} />
+			</Avatar>
+			Kit Stratan
+		</Link>
 	);
 };

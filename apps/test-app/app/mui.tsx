@@ -25,7 +25,10 @@ import AlertTitle from "examples/mui/Alert.title.tsx";
 import AppBarDefault from "examples/mui/AppBar.default.tsx";
 import AutocompleteDefault from "examples/mui/Autocomplete.default.tsx";
 import AutocompleteMultiple from "examples/mui/Autocomplete.multiple.tsx";
+import AvatarDecorative from "examples/mui/Avatar.decorative.tsx";
 import AvatarDefault from "examples/mui/Avatar.default.tsx";
+import AvatarIcon from "examples/mui/Avatar.icon.tsx";
+import AvatarInitials from "examples/mui/Avatar.initials.tsx";
 import AvatarGroupDefault from "examples/mui/AvatarGroup.default.tsx";
 import BackdropDefault from "examples/mui/Backdrop.default.tsx";
 import BadgeColors from "examples/mui/Badge.colors.tsx";
@@ -105,6 +108,7 @@ import TextFieldDefault from "examples/mui/TextField.default.tsx";
 import TextFieldError from "examples/mui/TextField.error.tsx";
 import TextFieldIcon from "examples/mui/TextField.icon.tsx";
 import TextFieldMultiline from "examples/mui/TextField.multiline.tsx";
+import TextFieldSizes from "examples/mui/TextField.sizes.tsx";
 import ToggleButtonDefault from "examples/mui/ToggleButton.default.tsx";
 import TooltipDefault from "examples/mui/Tooltip.default.tsx";
 import TypographyVariants_ from "examples/mui/Typography._variants.tsx";
@@ -167,7 +171,14 @@ const components: Record<string, React.ReactNode> = {
 			<AutocompleteMultiple />
 		</>
 	),
-	Avatar: <AvatarDefault />,
+	Avatar: (
+		<>
+			<AvatarDefault />
+			<AvatarInitials />
+			<AvatarIcon />
+			<AvatarDecorative />
+		</>
+	),
 	AvatarGroup: <AvatarGroupDefault />,
 	Backdrop: <BackdropDefault />,
 	Badge: (
@@ -343,12 +354,13 @@ const components: Record<string, React.ReactNode> = {
 		</>
 	),
 	TextField: (
-		<Stack spacing={1} direction="row">
+		<Stack spacing={1}>
 			<TextFieldDefault />
 			<TextFieldMultiline />
 			<TextFieldIcon />
 			<TextFieldError />
 			<TextFieldDisabled />
+			<TextFieldSizes />
 		</Stack>
 	),
 	ToggleButton: <ToggleButtonDefault />,

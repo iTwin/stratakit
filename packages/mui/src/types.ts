@@ -76,6 +76,13 @@ declare module "@mui/material/Badge" {
 	}
 }
 
+declare module "@mui/material/ButtonBase" {
+	interface ButtonBaseOwnProps {
+		/** @deprecated Use the `render` prop instead. */
+		LinkComponent?: React.ElementType;
+	}
+}
+
 declare module "@mui/material/Button" {
 	interface ButtonPropsColorOverrides {
 		info: false;
@@ -85,12 +92,26 @@ declare module "@mui/material/Button" {
 	}
 
 	interface ButtonOwnProps {
+		LinkComponent?: never;
+
 		/**
 		 * The default variant with `@stratakit/mui` is `"contained"`.
 		 *
 		 * @default 'contained'
 		 */
 		variant?: "contained" | "outlined" | "text";
+	}
+}
+
+declare module "@mui/material/BottomNavigationAction" {
+	interface BottomNavigationActionOwnProps {
+		LinkComponent?: never;
+	}
+}
+
+declare module "@mui/material/CardActionArea" {
+	interface CardActionAreaOwnProps {
+		LinkComponent?: never;
 	}
 }
 
@@ -145,6 +166,8 @@ declare module "@mui/material/Fab" {
 	}
 
 	interface FabOwnProps {
+		LinkComponent?: never;
+
 		/**
 		 * The default color with `@stratakit/mui` is `"primary"`.
 		 *
@@ -179,6 +202,8 @@ declare module "@mui/material/IconButton" {
 	}
 
 	interface IconButtonOwnProps {
+		LinkComponent?: never;
+
 		/**
 		 * The default color with `@stratakit/mui` is `"secondary"`.
 		 *
@@ -202,6 +227,24 @@ declare module "@mui/material/InputBase" {
 		success: false;
 		warning: false;
 		error: false;
+	}
+}
+
+declare module "@mui/material/ListItemButton" {
+	interface ListItemButtonOwnProps {
+		LinkComponent?: never;
+	}
+}
+
+declare module "@mui/material/MenuItem" {
+	interface MenuItemOwnProps {
+		LinkComponent?: never;
+	}
+}
+
+declare module "@mui/material/PaginationItem" {
+	interface PaginationItemOwnProps {
+		LinkComponent?: never;
 	}
 }
 
@@ -241,6 +284,18 @@ declare module "@mui/material/Switch" {
 	}
 }
 
+declare module "@mui/material/StepButton" {
+	interface StepButtonOwnProps {
+		LinkComponent?: never;
+	}
+}
+
+declare module "@mui/material/Tab" {
+	interface TabOwnProps {
+		LinkComponent?: never;
+	}
+}
+
 declare module "@mui/material/TableCell" {
 	interface TableCellProps extends Pick<CommonProps, "render"> {
 		/** @deprecated Use `render` prop instead. */
@@ -266,6 +321,8 @@ declare module "@mui/material/TextField" {
 
 declare module "@mui/material/ToggleButton" {
 	interface ToggleButtonOwnProps {
+		LinkComponent?: never;
+
 		label?: IconButtonProps["label"];
 	}
 }

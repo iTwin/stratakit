@@ -4,11 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 
 import * as React from "react";
-import {
-	StyledEngineProvider,
-	ThemeProvider,
-	useColorScheme,
-} from "@mui/material/styles";
+import { ThemeProvider, useColorScheme } from "@mui/material/styles";
 import { Root as StrataKitRoot } from "@stratakit/foundations";
 import {
 	RootContext,
@@ -16,6 +12,7 @@ import {
 } from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
 import { createTheme } from "./createTheme.js";
+import { StyledEngineProvider } from "./Root.internal.js";
 import css from "./styles.css.js";
 
 import type { BaseProps } from "@stratakit/foundations/secret-internals";
@@ -33,7 +30,7 @@ type StrataKitRootProps = React.ComponentPropsWithoutRef<typeof StrataKitRoot>;
 
 interface RootProps
 	extends BaseProps<"div">,
-		Pick<StrataKitRootProps, "accentColor"> {
+		Pick<StrataKitRootProps, "accentColor" | "rootNode"> {
 	children?: React.ReactNode;
 	/**
 	 * The color scheme to use for all components on the page.
@@ -56,7 +53,7 @@ const Root = React.forwardRef<HTMLDivElement, RootProps>(
 		const { children, colorScheme, accentColor, ...rest } = props;
 
 		return (
-			<StyledEngineProvider enableCssLayer>
+			<StyledEngineProvider>
 				<ThemeProvider theme={theme} defaultMode={colorScheme}>
 					<ColorScheme colorScheme={colorScheme} />
 					<RootInner
@@ -79,12 +76,12 @@ DEV: Root.displayName = "Root";
 
 interface RootInnerProps
 	extends React.ComponentPropsWithoutRef<"div">,
-		Pick<RootProps, "colorScheme" | "accentColor"> {}
+		Pick<RootProps, "colorScheme" | "accentColor" | "rootNode"> {}
 
 /** @private */
 const RootInner = React.forwardRef<HTMLDivElement, RootInnerProps>(
 	(props, forwardedRef) => {
-		const { children, colorScheme, accentColor, ...rest } = props;
+		const { children, colorScheme, accentColor, rootNode, ...rest } = props;
 
 		return (
 			<StrataKitRoot
@@ -92,6 +89,7 @@ const RootInner = React.forwardRef<HTMLDivElement, RootInnerProps>(
 				className={cx("🥝MuiRoot", props.className)}
 				colorScheme={colorScheme}
 				accentColor={accentColor}
+				rootNode={rootNode}
 				synchronizeColorScheme
 				ref={forwardedRef}
 			>

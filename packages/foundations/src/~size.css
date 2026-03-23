@@ -9,4 +9,7 @@ html,
 	--stratakit-size-control-field-height-small: 1.5rem;
 	--stratakit-size-control-field-height-medium: 2rem;
 	--stratakit-size-control-field-height-large: 2.5rem;
+
+	--stratakit-size-control-listitem-height-small: 1.75rem;
+	--stratakit-size-control-listitem-height-large: 2.5rem;
 }

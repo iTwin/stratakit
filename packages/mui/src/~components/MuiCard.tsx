@@ -11,6 +11,7 @@ import {
 	useEventHandlers,
 	useMergedRefs,
 } from "@stratakit/foundations/secret-internals";
+import { MuiButtonBase } from "./MuiButtonBase.js";
 
 // ----------------------------------------------------------------------------
 
@@ -72,7 +73,7 @@ const MuiCardActionArea = forwardRef<"button", BaseProps<"button">>(
 		const context = React.useContext(MuiCardContext);
 
 		return (
-			<Role.button
+			<MuiButtonBase
 				{...rest}
 				ref={useMergedRefs(context?.setActionAreaElement, forwardedRef)}
 			/>

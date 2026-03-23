@@ -3,35 +3,26 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
+import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 
-import type * as React from "react";
-
-type TypographyProps = React.ComponentProps<typeof Typography>;
-const variants = [
-	"body1",
-	"body2",
-	"button",
-	"caption",
-	"h1",
-	"h2",
-	"h3",
-	"h4",
-	"h5",
-	"h6",
-	"inherit",
-	"overline",
-	"subtitle1",
-	"subtitle2",
-] as const satisfies TypographyProps["variant"][];
-
 export default () => {
-	return variants.map((variant) => {
-		return (
-			<Typography key={variant} variant={variant}>
-				{variant.charAt(0).toUpperCase()}
-				{variant.slice(1)}
-			</Typography>
-		);
-	});
+	return (
+		<Stack spacing={1}>
+			<Typography variant="body1">Body1</Typography>
+			<Typography variant="body2">Body2</Typography>
+			<Typography variant="button">Button</Typography>
+			<Typography variant="caption">Caption</Typography>
+			<Typography variant="h1">H1</Typography>
+			<Typography variant="h2">H2</Typography>
+			<Typography variant="h3">H3</Typography>
+			<Typography variant="h4">H4</Typography>
+			<Typography variant="h5">H5</Typography>
+			<Typography variant="h6">H6</Typography>
+			<Typography variant="inherit">inherit</Typography>
+			<Typography variant="overline">overline</Typography>
+			<Typography variant="subtitle1">subtitle1</Typography>
+			<Typography variant="subtitle2">subtitle2</Typography>
+		</Stack>
+	);
 };

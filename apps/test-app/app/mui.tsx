@@ -111,8 +111,8 @@ import TextFieldMultiline from "examples/mui/TextField.multiline.tsx";
 import TextFieldSizes from "examples/mui/TextField.sizes.tsx";
 import ToggleButtonDefault from "examples/mui/ToggleButton.default.tsx";
 import TooltipDefault from "examples/mui/Tooltip.default.tsx";
-import TypographyVariants_ from "examples/mui/Typography._variants.tsx";
 import TypographyDefault from "examples/mui/Typography.default.tsx";
+import TypographyVariants from "examples/mui/Typography.variants.tsx";
 import { SkipLinkContext } from "./~navigation.tsx";
 import { isProduction, useIsWideScreen } from "./~utils.tsx";
 
@@ -368,7 +368,7 @@ const components: Record<string, React.ReactNode> = {
 	Typography: (
 		<>
 			<TypographyDefault />
-			<TypographyVariants_ />
+			<TypographyVariants />
 		</>
 	),
 };

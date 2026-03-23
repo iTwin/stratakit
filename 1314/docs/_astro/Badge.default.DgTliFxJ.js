@@ -1,1 +1,0 @@
-import{j as t}from"./~utils.Dpukwl1d.js";import{B as r}from"./Badge.Bn70BCiN.js";import"./index.DIfZGIpv.js";import"./index.XeJbqeyU.js";import"./styles.internal.BBB1iF_3.js";import"./Text.BwzHSoMJ.js";import"./ExamplePreview.151XG8SO.js";import"./preload-helper.BPUxWq0I.js";const f=()=>t.jsx(r,{label:"Pending"});export{f as default};

@@ -9,9 +9,9 @@ import Switch from "@mui/material/Switch";
 
 export default () => {
 	return (
-		<Stack spacing={1}>
-			<FormControlLabel control={<Switch />} label="Medium" />
+		<Stack spacing={1} direction="row" useFlexGap>
 			<FormControlLabel control={<Switch size="small" />} label="Small" />
+			<FormControlLabel control={<Switch size="medium" />} label="Medium" />
 		</Stack>
 	);
 };

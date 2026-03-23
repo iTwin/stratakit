@@ -36,8 +36,8 @@ Use a `defaultChecked` prop to set the initial checked state. Alternatively, use
 
 ### Sizes
 
-- **Medium:** Default size, suitable for most use cases.
 - **Small:** Use in compact interfaces where space is limited.
+- **Medium:** Default size, suitable for most use cases.
 
 ::example{src="mui/Switch.sizes"}
 

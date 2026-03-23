@@ -1,6 +1,5 @@
 // @ts-check
 
-import react from "@astrojs/react";
 import starlight from "@astrojs/starlight";
 import { defineConfig } from "astro/config";
 import remarkDirective from "remark-directive";
@@ -100,7 +99,6 @@ export default defineConfig({
 				starlightPrefixLinks(),
 			],
 		}),
-		react(),
 	],
 	devToolbar: { enabled: false },
 	vite: {

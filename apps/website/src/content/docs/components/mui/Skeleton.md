@@ -20,10 +20,10 @@ Make sure the **Skeleton** is suitable for your use case. There may be other, mo
 
 ### Variants
 
-- **Text:** Default skeleton styling. Use to represent blocks of text.
 - **Circular:** Use to represent avatars and other circular elements.
 - **Rectangular:** Use to represent images and other rectangular elements.
 - **Rounded:** Use to represent icons and other rounded non-text artifacts.
+- **Text:** Default skeleton styling. Use to represent blocks of text.
 
 ::example{src="mui/Skeleton.variants"}
 

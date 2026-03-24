@@ -161,8 +161,8 @@ function createTheme() {
 				},
 				styleOverrides: {
 					root: {
-						width: "2rem",
-						height: "2rem",
+						width: "var(--_MuiAvatar-size, 2rem)",
+						height: "var(--_MuiAvatar-size, 2rem)",
 					},
 				},
 			},

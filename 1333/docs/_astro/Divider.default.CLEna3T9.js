@@ -1,1 +1,0 @@
-import{j as r}from"./client.DMgrNYVv.js";import{D as e}from"./Divider.BuBCAL0S.js";import"./styles.internal.CPbvgKR0.js";import"./dividerClasses.Wk_jMvUo.js";const p="_wrapper_z4dz1_6",s={wrapper:p},m=()=>r.jsx("div",{className:s.wrapper,children:r.jsx(e,{})});export{m as default};

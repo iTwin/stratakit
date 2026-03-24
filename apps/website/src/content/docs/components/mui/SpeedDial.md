@@ -6,4 +6,4 @@ links:
   apiReference: https://mui.com/material-ui/api/speed-dial/
 ---
 
-::example{src="mui/SpeedDial.default"}
+::example{src="mui/SpeedDial.default" min-height="250px"}

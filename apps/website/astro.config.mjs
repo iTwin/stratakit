@@ -1,6 +1,5 @@
 // @ts-check
 
-import react from "@astrojs/react";
 import starlight from "@astrojs/starlight";
 import { defineConfig } from "astro/config";
 import remarkDirective from "remark-directive";
@@ -100,7 +99,6 @@ export default defineConfig({
 				starlightPrefixLinks(),
 			],
 		}),
-		react(),
 	],
 	devToolbar: { enabled: false },
 	vite: {
@@ -108,6 +106,18 @@ export default defineConfig({
 			assetsInlineLimit: (filePath) => {
 				if (filePath.endsWith(".svg")) return false;
 				return undefined;
+			},
+			rollupOptions: {
+				onwarn(warning, warn) {
+					// Suppress warnings about "use client" directive.
+					if (
+						warning.code === "MODULE_LEVEL_DIRECTIVE" &&
+						warning.message.includes('"use client"')
+					) {
+						return;
+					}
+					warn(warning);
+				},
 			},
 		},
 		plugins: [vitePluginFixAstroSvg()],
@@ -160,6 +170,9 @@ function starlightResponsiveTables({ tagName = "responsive-table" } = {}) {
 
 /**
  * Starlight plugin that processes `::example{src="..."}` directives to embed live examples.
+ *
+ * Requires a `src` attribute. Optionally supports `min-width` and `min-height` attributes.
+ *
  * @returns {import("@astrojs/starlight/types").StarlightPlugin}
  */
 function starlightLiveExamples() {
@@ -169,7 +182,11 @@ function starlightLiveExamples() {
 
 			visit(tree, (node) => {
 				if (node.type === "leafDirective" && node.name === "example") {
-					const { src } = node.attributes || {};
+					const {
+						src,
+						"min-width": minWidth,
+						"min-height": minHeight,
+					} = node.attributes || {};
 
 					if (!src) {
 						file.fail("`::example` directive requires a `src` attribute", node);
@@ -177,8 +194,19 @@ function starlightLiveExamples() {
 					}
 
 					node.data ||= {};
+
+					const style = [
+						minWidth !== undefined && `--example-min-width: ${minWidth}`,
+						minHeight !== undefined && `--example-min-height: ${minHeight}`,
+					]
+						.filter(Boolean)
+						.join("; ");
+
 					node.data.hName = "example-embed"; // see example-embed.astro
-					node.data.hProperties = { "data-src": src };
+					node.data.hProperties = {
+						"data-src": src,
+						...(style ? { style } : {}),
+					};
 					node.children = [];
 				}
 			});

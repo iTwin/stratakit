@@ -1,1 +1,0 @@
-import{j as e,a as o,b as m}from"./client.zm0ivLtQ.js";import{u as x}from"./ExamplePreview.4-JsR2SQ.js";import{f}from"./styles.internal.CPbvgKR0.js";const i=f((a,t)=>{x();const{variant:s,...r}=a;return e.jsx(o,{...r,className:m("🥝Text",a.className),"data-_sk-text-variant":s,ref:t})});var l=i;export{l as T};

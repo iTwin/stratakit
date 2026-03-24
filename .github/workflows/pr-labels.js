@@ -44,7 +44,11 @@ const LABELS = {
 	TREE: "component: Tree",
 	API_BRIDGE: "API bridge",
 	GITHUB_ACTIONS: "github_actions",
-	MUI: "MUI",
+	PKG_FOUNDATIONS: "pkg: @stratakit/foundations",
+	PKG_ICONS: "pkg: @stratakit/icons",
+	PKG_MUI: "pkg: @stratakit/mui",
+	PKG_STRUCTURES: "pkg: @stratakit/structures",
+	DOCUMENTATION: "documentation",
 };
 
 const LABEL_MAP = {
@@ -91,7 +95,11 @@ const LABEL_MAP = {
 		"packages/structures/src/TreeItem",
 	],
 	[LABELS.GITHUB_ACTIONS]: [".github/workflows"],
-	[LABELS.MUI]: ["packages/mui"],
+	[LABELS.PKG_FOUNDATIONS]: ["packages/foundations"],
+	[LABELS.PKG_ICONS]: ["packages/icons"],
+	[LABELS.PKG_MUI]: ["packages/mui"],
+	[LABELS.PKG_STRUCTURES]: ["packages/structures"],
+	[LABELS.DOCUMENTATION]: ["apps/website/src/content/docs"],
 };
 
 /**

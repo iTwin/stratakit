@@ -38,7 +38,7 @@ In these cases, use a larger `variant` but do not render the text as a heading e
 
 Use **Typography’s** `variant` prop to affect the size of the encapsulated text node. By default, **Typography** renders a `<div>` element.
 
-::example{src="mui/Typography.variants"}
+::example{src="mui/Typography.variants" min-height="600px"}
 
 ## ✅ Do
 

@@ -45,7 +45,7 @@ Use **Typography’s** `variant` prop to affect the size of the encapsulated tex
 - Use **Typography** to affect font size using the `variant` prop.
 - Use the `render` prop to apply a suitable HTML element for the font size.
 
-## ❌ Don’t
+## 🚫 Don’t
 
 - Don’t use **Typography** elements as headings without rendering a heading (`<h1>` to `<h6>`) element.
 - Don’t use **Typography** to disrupt or flatten the visual hierarchy.

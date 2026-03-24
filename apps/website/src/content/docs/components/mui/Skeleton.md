@@ -6,7 +6,7 @@ links:
   apiReference: https://mui.com/material-ui/api/skeleton/
 ---
 
-::example{src="mui/Skeleton.default"}
+::example{src="mui/Skeleton.default" min-width="300px"}
 
 ## Use cases
 

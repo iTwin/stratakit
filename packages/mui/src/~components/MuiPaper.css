@@ -1,0 +1,45 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+
+:where(.MuiPaper-root) {
+	--Paper-overlay: unset !important; /* Remove background-image overlay that MUI adds in dark mode */
+
+	&:where(.MuiPaper-elevation1) {
+		--stratakit-mui-palette-background-paper: var(--stratakit-color-bg-page-base);
+	}
+
+	&:where(
+			.MuiPaper-elevation2,
+			.MuiPaper-elevation3,
+			.MuiPaper-elevation4,
+			.MuiPaper-elevation5,
+			.MuiPaper-elevation6,
+			.MuiPaper-elevation7
+		) {
+		--stratakit-mui-palette-background-paper: var(--stratakit-color-bg-elevation-base);
+	}
+
+	&:where(
+			.MuiPaper-elevation8,
+			.MuiPaper-elevation9,
+			.MuiPaper-elevation10,
+			.MuiPaper-elevation11,
+			.MuiPaper-elevation12,
+			.MuiPaper-elevation13,
+			.MuiPaper-elevation14,
+			.MuiPaper-elevation15,
+			.MuiPaper-elevation16,
+			.MuiPaper-elevation17,
+			.MuiPaper-elevation18,
+			.MuiPaper-elevation19,
+			.MuiPaper-elevation20,
+			.MuiPaper-elevation21,
+			.MuiPaper-elevation22,
+			.MuiPaper-elevation23,
+			.MuiPaper-elevation24
+		) {
+		--stratakit-mui-palette-background-paper: var(--stratakit-color-bg-elevation-level-1);
+	}
+}

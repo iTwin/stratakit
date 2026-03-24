@@ -18,7 +18,7 @@ links:
 
 ### Heading
 
-With **Typography** and the `render` prop, you can affect font size and [HTML semantics](https://developer.mozilla.org/en-US/docs/Glossary/Semantics#semantics_in_html) independently. This means you can adjust font size without misappropriating semantic elements.
+Heading `variant` of the **Typography** will render a respective [`<h1>` to `<h6>` heading element](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/Heading_Elements).
 
 ::example{src="mui/Typography.heading"}
 
@@ -26,26 +26,27 @@ With **Typography** and the `render` prop, you can affect font size and [HTML se
 
 You may want a statement to _stand out_. This statement might regard a special offer, or perhaps a warning. Standalone statements are _not_ headings, since they do not introduce a new section of content.
 
-In these cases, use a larger `variant` but do not render the text as a heading element:
+In these cases, combine a larger `variant` with the `render` prop:
 
 ```jsx
-<Typography variant="h5">This change cannot be undone.</Typography>
+<Typography variant="h5" render={<span />}>
+	This change cannot be undone.
+</Typography>
 ```
 
 :::
 
 ### Variants
 
-Use **Typography’s** `variant` prop to affect the size of the encapsulated text node. By default, **Typography** renders a `<div>` element.
+Use **Typography’s** `variant` prop to affect both the styling and the [HTML semantics](https://developer.mozilla.org/en-US/docs/Glossary/Semantics#semantics_in_html).
 
 ::example{src="mui/Typography.variants" min-height="600px"}
 
 ## ✅ Do
 
-- Use **Typography** to affect font size using the `variant` prop.
-- Use the `render` prop to apply a suitable HTML element for the font size.
+- Use the `variant` prop of the **Typography** component to affect the styling and the semantics.
+- Use the `render` prop to override the semantics when necessary.
 
 ## 🚫 Don’t
 
-- Don’t use **Typography** elements as headings without rendering a heading (`<h1>` to `<h6>`) element.
 - Don’t use **Typography** to disrupt or flatten the visual hierarchy.

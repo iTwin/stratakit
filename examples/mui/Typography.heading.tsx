@@ -6,9 +6,5 @@
 import Typography from "@mui/material/Typography";
 
 export default () => {
-	return (
-		<Typography render={<h4 />} variant="h4">
-			Heading text
-		</Typography>
-	);
+	return <Typography variant="h4">Heading text</Typography>;
 };

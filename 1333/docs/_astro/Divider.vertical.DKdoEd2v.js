@@ -1,0 +1,1 @@
+import{j as r}from"./~utils.CDJghjrc.js";import{D as t}from"./Divider.BteoR4lY.js";import"./index.DIfZGIpv.js";import"./index.XeJbqeyU.js";import"./styles.internal.BBB1iF_3.js";import"./dividerClasses.DWa_DZfY.js";const i="_wrapper_7oho6_6",o={wrapper:i},c=()=>r.jsx("div",{className:o.wrapper,children:r.jsx(t,{orientation:"vertical"})});export{c as default};

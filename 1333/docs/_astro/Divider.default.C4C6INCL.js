@@ -1,0 +1,1 @@
+import{j as r}from"./~utils.CDJghjrc.js";import{D as p}from"./Divider.BteoR4lY.js";import"./index.DIfZGIpv.js";import"./index.XeJbqeyU.js";import"./styles.internal.BBB1iF_3.js";import"./dividerClasses.DWa_DZfY.js";const t="_wrapper_z4dz1_6",e={wrapper:t},n=()=>r.jsx("div",{className:e.wrapper,children:r.jsx(p,{})});export{n as default};

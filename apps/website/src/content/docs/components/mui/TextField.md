@@ -39,13 +39,13 @@ An [**Icon**](/components/icon) can be displayed before or after the **TextField
 
 Use the `error` prop to display the `helperText` in an error state. Consider adding a visually hidden "Error:" prefix to the `helperText` if the error message is not clear on its own.
 
-::example{src="mui/TextField.error"}
+::example{src="mui/TextField.error" min-height="200px"}
 
 ### Multiline
 
 Set the `multiline` prop to render a standard HTML [`<textarea>` element](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/textarea).
 
-::example{src="mui/TextField.multiline"}
+::example{src="mui/TextField.multiline" min-height="200px"}
 
 ## ✅ Do
 

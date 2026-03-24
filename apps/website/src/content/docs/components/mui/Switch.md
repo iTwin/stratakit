@@ -34,6 +34,13 @@ Use the `defaultChecked` prop to set the initial checked state. Alternatively, u
 
 ::example{src="mui/Switch.checked"}
 
+### Sizes
+
+- **Small:** Use in compact interfaces where space is limited.
+- **Medium:** Default size, suitable for most use cases.
+
+::example{src="mui/Switch.sizes"}
+
 ## ✅ Do
 
 - Use a clear, descriptive label for each **Switch**.
@@ -44,7 +51,3 @@ Use the `defaultChecked` prop to set the initial checked state. Alternatively, u
 - Don't use switches for mandatory actions. The checked state of a switch can never be _invalid_.
 - Don't use one switch to change multiple settings simultaneously.
 - Don't use switches inside a form that needs submission. Use [**Checkbox**](/components/checkbox) instead.
-
-### Sizes
-
-::example{src="mui/Switch.sizes"}

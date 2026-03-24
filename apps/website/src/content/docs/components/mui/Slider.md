@@ -6,7 +6,7 @@ links:
   apiReference: https://mui.com/material-ui/api/slider/
 ---
 
-::example{src="mui/Slider.default"}
+::example{src="mui/Slider.default" min-width="300px"}
 
 ## StrataKit MUI modifications
 
@@ -18,12 +18,12 @@ links:
 
 ### Marks
 
-::example{src="mui/Slider.marks"}
+::example{src="mui/Slider.marks" min-width="300px"}
 
 ### Range
 
-::example{src="mui/Slider.range"}
+::example{src="mui/Slider.range" min-width="300px"}
 
 ### Vertical
 
-::example{src="mui/Slider.vertical"}
+::example{src="mui/Slider.vertical" min-width="300px"}

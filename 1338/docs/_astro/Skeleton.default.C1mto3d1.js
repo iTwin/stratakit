@@ -1,0 +1,1 @@
+import{j as t}from"./client.BViP_5HA.js";import{S as r}from"./Stack.wCrCGZff.js";import{S as e}from"./Skeleton.CRFsiYH6.js";import{v as o}from"./visuallyHidden.Dan1xhjv.js";import"./styles.internal.CPbvgKR0.js";const n=()=>t.jsxs(r,{flexGrow:1,alignSelf:"stretch",children:[t.jsx(e,{}),t.jsx("div",{style:o,children:"Loading..."})]});export{n as default};

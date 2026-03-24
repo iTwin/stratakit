@@ -1,0 +1,1 @@
+import{j as o}from"./client.CVPOx6_n.js";import{C as i}from"./Chip.CyuRSryY.js";import"./styles.internal.CPbvgKR0.js";import"./createSvgIcon.D8VNNhTw.js";const p=()=>o.jsx(i,{label:"Clickable Chip",onClick:()=>{console.log("Clicked")}});export{p as default};

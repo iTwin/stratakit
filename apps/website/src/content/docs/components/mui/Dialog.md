@@ -7,3 +7,7 @@ links:
 ---
 
 ::example{src="mui/Dialog.default"}
+
+## StrataKit MUI modifications
+
+- Restyled using StrataKit's visual language.

@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.4.7
+
+### Patch Changes
+
+- [#1308](https://github.com/iTwin/stratakit/pull/1308), [#1315](https://github.com/iTwin/stratakit/pull/1315): Added global component size variables.
+
 ## 0.4.6
 
 - [#1188](https://github.com/iTwin/stratakit/pull/1188): Fixed a race condition where stylesheets could be prematurely removed in cases where multiple components that use the same styles were conditionally rendered.
@@ -105,8 +111,8 @@
   `#icon-large` must now be explicitly added to the URL to select the large icons from `@stratakit/icons`. For example:
 
   ```diff
-  - <Icon href={placeholderIcon} size="large" />
-  + <Icon href={`${placeholderIcon}#icon-large`} size="large" />
+  - <Icon href={svgPlaceholder} size="large" />
+  + <Icon href={`${svgPlaceholder}#icon-large`} size="large" />
   ```
 
 ### Non-breaking changes
@@ -114,9 +120,9 @@
 - [#888](https://github.com/iTwin/stratakit/pull/888): `Icon` component now supports URLs containing an explicit hash.
 
   ```tsx
-  import placeholderIcon from "@stratakit/icons/placeholder.svg";
+  import svgPlaceholder from "@stratakit/icons/placeholder.svg";
 
-  <Icon href={`${placeholderIcon}#icon-large`} size="large" />;
+  <Icon href={`${svgPlaceholder}#icon-large`} size="large" />;
   ```
 
 - [#913](https://github.com/iTwin/stratakit/pull/913): Updated internal CSS selectors in every component.

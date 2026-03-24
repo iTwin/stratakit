@@ -11,7 +11,7 @@ import {
 } from "@stratakit/structures";
 import { definePage } from "~/~utils.tsx";
 
-import placeholderIcon from "@stratakit/icons/placeholder.svg";
+import svgPlaceholder from "@stratakit/icons/placeholder.svg";
 
 export default definePage(
 	function Page() {
@@ -24,7 +24,7 @@ export default definePage(
 				<Toolbar.Item
 					render={
 						<IconButton
-							icon={`${placeholderIcon}#icon-large`}
+							icon={`${svgPlaceholder}#icon-large`}
 							label="Click me"
 							variant="ghost"
 							active={active === "1"}
@@ -38,7 +38,7 @@ export default definePage(
 							<DropdownMenu.Button
 								render={
 									<IconButton
-										icon={`${placeholderIcon}#icon-large`}
+										icon={`${svgPlaceholder}#icon-large`}
 										label="Click me"
 										variant="ghost"
 										{...itemProps}
@@ -56,7 +56,7 @@ export default definePage(
 				<Toolbar.Item
 					render={
 						<IconButton
-							icon={`${placeholderIcon}#icon-large`}
+							icon={`${svgPlaceholder}#icon-large`}
 							label="Click me"
 							variant="ghost"
 							active={active === "3"}
@@ -84,7 +84,7 @@ function TestToolbar({ orientation, hasPopup }: TestToolbarProps) {
 			<Toolbar.Item
 				render={
 					<IconButton
-						icon={`${placeholderIcon}#icon-large`}
+						icon={`${svgPlaceholder}#icon-large`}
 						label="Click me"
 						variant="ghost"
 					/>
@@ -96,7 +96,7 @@ function TestToolbar({ orientation, hasPopup }: TestToolbarProps) {
 			<Toolbar.Item
 				render={
 					<IconButton
-						icon={`${placeholderIcon}#icon-large`}
+						icon={`${svgPlaceholder}#icon-large`}
 						label="Click me"
 						variant="ghost"
 						active
@@ -106,7 +106,7 @@ function TestToolbar({ orientation, hasPopup }: TestToolbarProps) {
 			<Toolbar.Item
 				render={
 					<IconButton
-						icon={`${placeholderIcon}#icon-large`}
+						icon={`${svgPlaceholder}#icon-large`}
 						label="Click me"
 						variant="ghost"
 						aria-haspopup={hasPopup ? "true" : undefined} // Just for visual test. Do not do this in real code.

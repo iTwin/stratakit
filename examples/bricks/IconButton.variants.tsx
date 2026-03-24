@@ -4,14 +4,14 @@
  *--------------------------------------------------------------------------------------------*/
 import { IconButton } from "@stratakit/bricks";
 
-import placeholderIcon from "@stratakit/icons/placeholder.svg";
+import svgPlaceholder from "@stratakit/icons/placeholder.svg";
 
 export default () => {
 	return (
 		<div className="flex">
-			<IconButton variant="solid" label="Solid" icon={placeholderIcon} />
-			<IconButton variant="outline" label="Outline" icon={placeholderIcon} />
-			<IconButton variant="ghost" label="Ghost" icon={placeholderIcon} />
+			<IconButton variant="solid" label="Solid" icon={svgPlaceholder} />
+			<IconButton variant="outline" label="Outline" icon={svgPlaceholder} />
+			<IconButton variant="ghost" label="Ghost" icon={svgPlaceholder} />
 		</div>
 	);
 };

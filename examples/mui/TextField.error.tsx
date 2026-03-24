@@ -13,7 +13,7 @@ export default () => {
 			error
 			helperText={
 				<>
-					<span style={visuallyHidden}>Error:</span> Invalid email address
+					<span style={visuallyHidden}>Error: </span>Invalid email address
 				</>
 			}
 		/>

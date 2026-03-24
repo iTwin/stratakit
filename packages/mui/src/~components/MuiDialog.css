@@ -1,0 +1,18 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+
+.MuiDialogActions-root {
+	background-color: var(--stratakit-color-bg-page-base);
+	background-clip: padding-box; /* Ensure background-color doesn't bleed into transparent border */
+	border: 1px solid transparent;
+	border-block-start-color: var(--stratakit-color-border-page-base);
+	border-end-end-radius: inherit;
+	border-end-start-radius: inherit;
+
+	&:where(.MuiDialogActions-spacing) {
+		padding-block: var(--stratakit-space-x4);
+		padding-inline: var(--stratakit-space-x5);
+	}
+}

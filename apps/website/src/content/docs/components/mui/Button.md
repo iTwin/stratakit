@@ -19,6 +19,19 @@ Make sure the **Button** is suitable for your use case. There may be other, more
 | Make a binary choice (switching a setting on or off)              | ❌                           | ❌                                   | ✅                           | ❌                       |
 | Navigate between interface screens or sections                    | ❌                           | ❌                                   | ❌                           | ✅                       |
 
+## StrataKit MUI modifications
+
+Modifications to `ButtonBase` (applies to all MUI components that extend `ButtonBase`):
+
+- The `LinkComponent` prop is not supported. Use the more flexible `render` prop instead.
+- Ripple effect removed.
+
+Modifications specific to `Button`:
+
+- Restyled using StrataKit's visual language.
+- The `"info"`, `"success"`, `"warning"`, `"inherit"` colors have been removed. The default color is now `"secondary"`.
+- The `size` options (`small`, `medium`, `large`) have all been decreased in height.
+
 ## Examples
 
 ### Icons
@@ -55,6 +68,14 @@ An [**Icon**](/components/icon) can be displayed before or after the **Button’
 | Primary call-to-action                | ✅        | ✅      | ❌    |
 | Modal confirmation or form submission | ❌        | ✅      | ❌    |
 | Destructive call-to-action            | ❌        | ❌      | ✅    |
+
+### Sizes
+
+- **Small:** Use in compact interfaces where space is limited.
+- **Medium:** Default size, suitable for most use cases.
+- **Large:** Use in spacious layouts where a more prominent button is needed.
+
+::example{src="mui/Button.sizes"}
 
 ## ✅ Do
 

@@ -5,8 +5,8 @@
 import { IconButton } from "@stratakit/bricks";
 import { unstable_Toolbar as Toolbar } from "@stratakit/structures";
 
-import boldIcon from "@stratakit/icons/font-bold.svg";
-import italicIcon from "@stratakit/icons/font-italic.svg";
+import svgBold from "@stratakit/icons/font-bold.svg";
+import svgItalic from "@stratakit/icons/font-italic.svg";
 
 export default () => {
 	return (
@@ -15,7 +15,7 @@ export default () => {
 				render={
 					<IconButton
 						label="Bold"
-						icon={`${boldIcon}#icon-large`}
+						icon={`${svgBold}#icon-large`}
 						variant="ghost"
 						active
 					/>
@@ -25,7 +25,7 @@ export default () => {
 				render={
 					<IconButton
 						label="Italic"
-						icon={`${italicIcon}#icon-large`}
+						icon={`${svgItalic}#icon-large`}
 						variant="ghost"
 					/>
 				}

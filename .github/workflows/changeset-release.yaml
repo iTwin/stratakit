@@ -7,11 +7,18 @@ on:
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
+env:
+  NPM_CONFIG_PROVENANCE: true
+
 jobs:
   release:
     name: Release
     if: github.repository == 'iTwin/stratakit'
     runs-on: ubuntu-latest
+    permissions:
+      contents: write # for pushing commits/tags
+      id-token: write # for npm provenance
+      pull-requests: write # for creating PRs
 
     steps:
       - name: Checkout Repo

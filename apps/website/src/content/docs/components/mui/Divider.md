@@ -24,19 +24,19 @@ The **Divider** comes in two forms: _semantic_ and _presentational_. By default,
 
 In the following example, [from the HTML5 specification](https://html.spec.whatwg.org/multipage/grouping-content.html#the-hr-element), the **Divider** separates topics within a section.
 
-::example{src="mui/Divider.semantic"}
+::example{src="mui/Divider.semantic" min-height="200px"}
 
 ### Separating lists of options
 
 Your navigation may be subdivided into multiple lists. You can use the _presentational_ **Divider**, to visually mark where one list ends and the next begins.
 
-::example{src="mui/Divider.presentational"}
+::example{src="mui/Divider.presentational" min-height="200px"}
 
 ### Orientation
 
 By default, the **Divider** appears in a horizontal orientation. Reorientate it using `orientation="vertical"`.
 
-::example{src="mui/Divider.vertical"}
+::example{src="mui/Divider.vertical" min-height="200px"}
 
 :::caution[Orientation semantics]
 

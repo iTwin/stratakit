@@ -20,4 +20,4 @@ links:
 
 ### MobileStepper
 
-::example{src="mui/MobileStepper.default"}
+::example{src="mui/MobileStepper.default" min-width="450px"}

@@ -8,10 +8,12 @@ import { Role } from "@ariakit/react/role";
 import { VisuallyHidden } from "@ariakit/react/visually-hidden";
 import IconButton from "@mui/material/IconButton";
 import { useTheme } from "@mui/material/styles";
+import { forwardRef } from "@stratakit/foundations/secret-internals";
 import { DismissIcon } from "../Icon.js";
 import { MuiButtonBase } from "./MuiButtonBase.js";
 
 import type Chip from "@mui/material/Chip";
+import type { BaseProps } from "@stratakit/foundations/secret-internals";
 
 // ----------------------------------------------------------------------------
 
@@ -29,67 +31,64 @@ const MuiChipContext = React.createContext<
 type ChipProps = React.ComponentProps<typeof Chip>;
 
 interface MuiChipProps
-	extends React.ComponentProps<"div">,
+	extends BaseProps<"div">,
 		Pick<ChipProps, "deleteLabel"> {}
 
-const MuiChip = React.forwardRef<HTMLDivElement, MuiChipProps>(
-	(props, forwardedRef) => {
-		const { role, deleteLabel, ...rest } = props;
+const MuiChip = forwardRef<"div", MuiChipProps>((props, forwardedRef) => {
+	const { role, deleteLabel, ...rest } = props;
 
-		const clearId = React.useId();
-		const [labelId, setLabelId] = React.useState<string | undefined>(undefined);
+	const clearId = React.useId();
+	const [labelId, setLabelId] = React.useState<string | undefined>(undefined);
 
-		const isClickable = props.className?.includes("MuiChip-clickable") ?? false;
-		return (
-			<MuiChipContext.Provider
-				value={{ labelId, setLabelId, clearId, isClickable, deleteLabel }}
-			>
-				<Role.div
-					{...rest}
-					role={role === "button" ? undefined : role} // Chip is not interactive
-					tabIndex={undefined} // Chip is not interactive
-					ref={forwardedRef}
-				/>
-			</MuiChipContext.Provider>
-		);
-	},
-);
+	const isClickable = props.className?.includes("MuiChip-clickable") ?? false;
+	return (
+		<MuiChipContext.Provider
+			value={{ labelId, setLabelId, clearId, isClickable, deleteLabel }}
+		>
+			<Role.div
+				{...rest}
+				role={role === "button" ? undefined : role} // Chip is not interactive
+				tabIndex={undefined} // Chip is not interactive
+				ref={forwardedRef}
+			/>
+		</MuiChipContext.Provider>
+	);
+});
 DEV: MuiChip.displayName = "MuiChip";
 
 // ----------------------------------------------------------------------------
 
-const MuiChipLabel = React.forwardRef<
-	HTMLSpanElement,
-	React.ComponentProps<"span">
->((props, forwardedRef) => {
-	const defaultId = React.useId();
-	const { id = defaultId, ...rest } = props;
+const MuiChipLabel = forwardRef<"span", React.ComponentProps<"span">>(
+	(props, forwardedRef) => {
+		const defaultId = React.useId();
+		const { id = defaultId, ...rest } = props;
 
-	const { setLabelId, isClickable } = React.useContext(MuiChipContext) ?? {};
+		const { setLabelId, isClickable } = React.useContext(MuiChipContext) ?? {};
 
-	React.useEffect(() => {
-		if (!setLabelId) return;
-		setLabelId(id);
-		return () => {
-			setLabelId(undefined);
-		};
-	}, [id, setLabelId]);
+		React.useEffect(() => {
+			if (!setLabelId) return;
+			setLabelId(id);
+			return () => {
+				setLabelId(undefined);
+			};
+		}, [id, setLabelId]);
 
-	const Component = isClickable ? MuiButtonBase : Role.span;
-	return (
-		<Component
-			id={id}
-			{...rest}
-			ref={forwardedRef as React.Ref<HTMLButtonElement>}
-		/>
-	);
-});
+		const Component = isClickable ? MuiButtonBase : Role.span;
+		return (
+			<Component
+				id={id}
+				{...rest}
+				ref={forwardedRef as React.Ref<HTMLButtonElement>}
+			/>
+		);
+	},
+);
 DEV: MuiChipLabel.displayName = "MuiChipLabel";
 
 // ----------------------------------------------------------------------------
 
-const MuiChipDeleteIcon = React.forwardRef<
-	HTMLButtonElement,
+const MuiChipDeleteIcon = forwardRef<
+	"button",
 	React.ComponentProps<typeof IconButton>
 >((props, forwardedRef) => {
 	const theme = useTheme();

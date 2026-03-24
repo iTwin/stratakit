@@ -6,7 +6,7 @@ links:
   apiReference: https://mui.com/material-ui/api/radio/
 ---
 
-::example{src="mui/RadioGroup.default"}
+::example{src="mui/RadioGroup.default" min-height="200px"}
 
 ## Use cases
 
@@ -32,7 +32,7 @@ Make sure the **Radio** is suitable for your use case. There may be other, more 
 
 Use the `error` prop on `FormControl` to display the `FormHelperText` in an error state. Consider adding a visually hidden "Error:" prefix to the `FormHelperText` if the error message is not clear on its own.
 
-::example{src="mui/RadioGroup.error"}
+::example{src="mui/RadioGroup.error" min-height="200px"}
 
 ## ✅ Do
 

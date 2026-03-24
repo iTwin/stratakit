@@ -11,7 +11,7 @@
 	aspect-ratio: 1;
 	color: var(--stratakit-color-text-neutral-emphasis);
 	container-type: inline-size;
-	font-size: 86%;
+	font-size: var(--stratakit-font-size-12);
 	font-weight: 600;
 	text-transform: uppercase;
 

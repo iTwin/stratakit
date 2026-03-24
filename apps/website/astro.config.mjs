@@ -107,6 +107,18 @@ export default defineConfig({
 				if (filePath.endsWith(".svg")) return false;
 				return undefined;
 			},
+			rollupOptions: {
+				onwarn(warning, warn) {
+					// Suppress warnings about "use client" directive.
+					if (
+						warning.code === "MODULE_LEVEL_DIRECTIVE" &&
+						warning.message.includes('"use client"')
+					) {
+						return;
+					}
+					warn(warning);
+				},
+			},
 		},
 		plugins: [vitePluginFixAstroSvg()],
 	},

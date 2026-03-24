@@ -6,7 +6,7 @@ links:
   apiReference: https://mui.com/material-ui/api/divider/
 ---
 
-::example{src="mui/Divider.default"}
+::example{src="mui/Divider.default" min-width="300px"}
 
 ## Use cases
 

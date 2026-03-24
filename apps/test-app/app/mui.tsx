@@ -313,10 +313,10 @@ const components: Record<string, React.ReactNode> = {
 		</>
 	),
 	Skeleton: (
-		<>
+		<Stack spacing={2} alignSelf="stretch">
 			<SkeletonDefault />
 			<SkeletonVariants />
-		</>
+		</Stack>
 	),
 	Slider: (
 		<>

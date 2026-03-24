@@ -25,7 +25,7 @@ Make sure the **Skeleton** is suitable for your use case. There may be other, mo
 - **Rounded:** Use to represent icons and other rounded non-text artifacts.
 - **Text:** Default skeleton styling. Use to represent blocks of text.
 
-::example{src="mui/Skeleton.variants"}
+::example{src="mui/Skeleton.variants" min-width="300px" min-height="200px"}
 
 :::tip
 Accurately representing the shape and structure of a loading interface is a case of combining multiple individual **Skeletons** of differing [variants](#variants) and sizes. Only include one visually hidden “Loading…” label. Multiple loading messages are repetitive and unhelpful. The **Skeleton** itself is not communicated nonvisually.

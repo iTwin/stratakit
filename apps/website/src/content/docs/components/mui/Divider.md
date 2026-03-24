@@ -40,7 +40,7 @@ By default, the **Divider** appears in a horizontal orientation. Reorientate it 
 
 :::caution[Orientation semantics]
 
-**Divider** uses `aria-orientation` to communicate the orientation programmatically. Where the _presentational_ **Divider** is used, neither it nor its orientation is made available.
+**Divider** uses `aria-orientation` to convey its orientation programmatically. When the _presentational_ **Divider** is used, neither the element nor its orientation is exposed to assistive technologies.
 
 :::
 

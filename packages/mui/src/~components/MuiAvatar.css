@@ -6,7 +6,6 @@
 .MuiAvatar-root {
 	--🥝Icon-color: var(--stratakit-color-icon-neutral-emphasis);
 	--🥝Icon-size: 50%;
-	--_MuiAvatar-font-size: calc(50cqw - 4px);
 
 	aspect-ratio: 1;
 	color: var(--stratakit-color-text-neutral-emphasis);
@@ -16,7 +15,7 @@
 	text-transform: uppercase;
 
 	> abbr {
-		font-size: var(--_MuiAvatar-font-size);
+		font-size: calc(50cqw - 4px);
 	}
 
 	&::after {

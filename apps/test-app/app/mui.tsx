@@ -243,7 +243,9 @@ const components: Record<string, React.ReactNode> = {
 	Dialog: <DialogDefault />,
 	Divider: (
 		<>
-			<DividerDefault />
+			<Stack alignSelf="stretch">
+				<DividerDefault />
+			</Stack>
 			<DividerVertical />
 			<DividerPresentational />
 		</>

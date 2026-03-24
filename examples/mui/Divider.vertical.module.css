@@ -3,6 +3,6 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-.wrapper {
-	block-size: 100px;
+.divider {
+	min-block-size: 100px;
 }

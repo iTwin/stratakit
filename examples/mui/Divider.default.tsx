@@ -5,12 +5,6 @@
 
 import Divider from "@mui/material/Divider";
 
-import styles from "./Divider.default.module.css";
-
 export default () => {
-	return (
-		<div className={styles.wrapper}>
-			<Divider />
-		</div>
-	);
+	return <Divider />;
 };

@@ -5,7 +5,7 @@
 
 .MuiAvatar-root {
 	--🥝Icon-color: var(--stratakit-color-icon-neutral-emphasis);
-	--🥝Icon-size: 75%;
+	--🥝Icon-size: 50%;
 	--_MuiAvatar-font-size: calc(50cqw - 4px);
 
 	aspect-ratio: 1;

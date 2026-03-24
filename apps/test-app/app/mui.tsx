@@ -56,6 +56,7 @@ import ChipClickable from "examples/mui/Chip.clickable.tsx";
 import ChipDefault from "examples/mui/Chip.default.tsx";
 import ChipDeletable from "examples/mui/Chip.deletable.tsx";
 import ChipOutlined from "examples/mui/Chip.outlined.tsx";
+import ChipSizes from "examples/mui/Chip.sizes.tsx";
 import CircularProgressColors_ from "examples/mui/CircularProgress._colors.tsx";
 import CircularProgressDefault from "examples/mui/CircularProgress.default.tsx";
 import DialogDefault from "examples/mui/Dialog.default.tsx";
@@ -228,6 +229,7 @@ const components: Record<string, React.ReactNode> = {
 			<ChipClickable />
 			<ChipDeletable />
 			{!isProduction && <ChipInteractive_ />}
+			<ChipSizes />
 		</Stack>
 	),
 	CircularProgress: (

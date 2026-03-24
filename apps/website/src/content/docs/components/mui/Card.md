@@ -6,20 +6,19 @@ links:
   apiReference: https://mui.com/material-ui/api/card/
 ---
 
-::example{src="mui/Card.default"}
+::example{src="mui/Card.default" min-height="325px"}
 
 ## StrataKit MUI modifications
 
 - `Card` is rendered as an `<article>` element by default.
 - `CardHeader`'s `title` is rendered as `<h2>` by default.
-- `CardActionArea` will not have an unnecessary `role="button"` to avoid conflicting semantics when rendered as a link.
 - `CardActionArea` has been redesigned to not wrap the entire card content. Instead, it should be used in the card's heading or title area.
 
 ## Examples
 
 ### CardActions
 
-::example{src="mui/Card.actions"}
+::example{src="mui/Card.actions" min-height="325px"}
 
 ### CardHeader
 

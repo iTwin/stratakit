@@ -12,14 +12,12 @@ links:
 
 Make sure the **Checkbox** is suitable for your use case. There may be other, more appropriate components available.
 
-| Use case                                                                                                                          | [Button](/components/button) | [IconButton](/components/iconbutton) | [ToggleButton](/components/togglebutton) | [Switch](/components/switch) | [Checkbox](/components/checkbox) | [Link](/components/link) |
-| --------------------------------------------------------------------------------------------------------------------------------- | ---------------------------- | ------------------------------------ | ---------------------------------------- | ---------------------------- | -------------------------------- | ------------------------ |
-| Submit forms, confirm or cancel dialogs, create or delete content                                                                 | ✅                           | ❌                                   | ❌                                       | ❌                           | ❌                               | ❌                       |
-| Select an action within a [toolbar](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/toolbar_role) | ❌                           | ✅                                   | ❌                                       | ❌                           | ❌                               | ❌                       |
-| Toggle an option within a [toolbar](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/toolbar_role) | ❌                           | ❌                                   | ✅                                       | ❌                           | ❌                               | ❌                       |
-| Make an instantaneous, binary choice (switch a setting on or off)                                                                 | ❌                           | ❌                                   | ❌                                       | ✅                           | ❌                               | ❌                       |
-| Confirm an input for a form submission                                                                                            | ❌                           | ❌                                   | ❌                                       | ❌                           | ✅                               | ❌                       |
-| Navigate between interface screens or sections                                                                                    | ❌                           | ❌                                   | ❌                                       | ❌                           | ❌                               | ✅                       |
+| Use case                                                                                                                          | [Checkbox](/components/checkbox) | [Radio](/components/radio) | [Switch](/components/switch) | [ToggleButton](/components/togglebutton) |
+| --------------------------------------------------------------------------------------------------------------------------------- | -------------------------------- | -------------------------- | ---------------------------- | ---------------------------------------- |
+| Confirm an input for a form submission                                                                                            | ✅                               | ❌                         | ❌                           | ❌                                       |
+| Select a single option from multiple choices for a form submission                                                                | ❌                               | ✅                         | ❌                           | ❌                                       |
+| Make an instantaneous, binary choice (switch a setting on or off)                                                                 | ❌                               | ❌                         | ✅                           | ❌                                       |
+| Toggle an option within a [toolbar](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/toolbar_role) | ❌                               | ❌                         | ❌                           | ✅                                       |
 
 ## StrataKit MUI modifications
 
@@ -48,13 +46,13 @@ Use the `indeterminate` prop to display the **Checkbox** in an [indeterminate st
 
 Group related **Checkboxes** using the `FormGroup` component. Render `FormControl` as a [`<fieldset>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/fieldset) and `FormLabel` as a [`<legend>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/legend) to label the group.
 
-::example{src="mui/Checkbox.group"}
+::example{src="mui/Checkbox.group" min-height="200px"}
 
 ### Error
 
 Use the `error` prop on `FormControl` to display the `FormHelperText` in an error state. Consider adding a visually hidden "Error:" prefix to the `FormHelperText` if the error message is not clear on its own.
 
-::example{src="mui/Checkbox.error"}
+::example{src="mui/Checkbox.error" min-height="200px"}
 
 ## ✅ Do
 

@@ -3,21 +3,18 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-.MuiAutocomplete-input {
-	:where(.MuiAutocomplete-hasPopupIcon) & {
-		padding-inline-end: calc(9px + 20px); /* 9px gap + 20px dropdown button width */
-	}
+.MuiAutocomplete-inputRoot:is(.MuiInputBase-root) {
+	--_MuiAutocomplete-icon-button-width: var(--stratakit-size-control-field-height-medium);
 
-	:where(.MuiAutocomplete-hasClearIcon) & {
-		padding-inline-end: calc(
-			9px +
-			20px +
-			24px
-		); /* 9px gap + 20px dropdown button width + 24px clear button width */
+	padding-inline-end: calc(var(--_MuiAutocomplete-icon-button-width) * 2 - 1px);
+
+	&:where(.MuiInputBase-sizeSmall) {
+		--_MuiAutocomplete-icon-button-width: var(--stratakit-size-control-field-height-small);
 	}
 }
 
-.MuiAutocomplete-tag {
+.MuiAutocomplete-tag:is(.MuiChip-root) {
+	margin-block: var(--stratakit-space-x05);
 	margin-inline-start: var(--stratakit-space-x1);
 	margin-inline-end: 0;
 
@@ -32,4 +29,12 @@
 
 .MuiAutocomplete-clearIndicator {
 	visibility: visible;
+}
+
+.MuiAutocomplete-endAdornment {
+	inset-inline-end: -1px; /* Account for 1px border on input. */
+
+	> * {
+		margin-inline-end: 0; /* MUI applies `-2px` */
+	}
 }

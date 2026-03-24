@@ -29,7 +29,7 @@ export default () => {
 				/>
 			</FormGroup>
 			<FormHelperText id={errorId}>
-				<span style={visuallyHidden}>Error:</span>
+				<span style={visuallyHidden}>Error: </span>
 				You must accept these settings to continue.
 			</FormHelperText>
 		</FormControl>

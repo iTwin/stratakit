@@ -1,0 +1,1 @@
+import{j as i}from"./client.DhY1YIfa.js";import{D as r}from"./Divider.Beop7rvH.js";import"./styles.internal.CPbvgKR0.js";import"./ExamplePreview.yHjX6d3A.js";import"./preload-helper.CJzEP7JJ.js";const l=()=>i.jsx("div",{style:{blockSize:"calc(100dvh - 16px * 2)"},children:i.jsx(r,{orientation:"vertical"})});export{l as default};

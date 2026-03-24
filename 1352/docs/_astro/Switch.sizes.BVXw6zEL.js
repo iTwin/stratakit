@@ -1,1 +1,0 @@
-import{j as o}from"./client.MUm-_149.js";import{F as r}from"./FormControlLabel.CHe-ed6X.js";import{S as s}from"./Switch.CiG2kEiM.js";import"./styles.internal.CPbvgKR0.js";import"./Typography.CZhX4o9w.js";const a=()=>o.jsxs(o.Fragment,{children:[o.jsx(r,{control:o.jsx(s,{size:"small"}),label:"Small"}),o.jsx(r,{control:o.jsx(s,{}),label:"Medium"})]});export{a as default};

@@ -37,6 +37,10 @@ Make sure to provide an accessible description in the form of a visually hidden 
 
 ### Sizes
 
+- **Small:** Use in compact interfaces where space is limited.
+- **Medium:** Default size, suitable for most use cases.
+- **Large:** Use in spacious layouts where a more prominent button is needed.
+
 ::example{src="mui/IconButton.sizes"}
 
 ## ✅ Do

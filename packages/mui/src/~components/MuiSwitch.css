@@ -62,6 +62,8 @@
 	--_MuiSwitch-thumb-position-on: translateX(var(--✨translate-distance));
 	--_MuiSwitch-thumb-position-transitional: translateX(var(--✨translate-stretch));
 
+	transition: none;
+
 	@media (prefers-reduced-motion: no-preference) {
 		transition: transform 150ms ease-out;
 		will-change: transform;

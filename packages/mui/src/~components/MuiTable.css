@@ -1,0 +1,67 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+
+.MuiTableRow-hover {
+	--✨row-bg--default: transparent;
+	--✨row-bg--hover: var(--stratakit-color-bg-glow-on-surface-neutral-hover);
+	--✨row-bg--active: var(--stratakit-color-bg-glow-on-surface-accent-pressed);
+	--✨row-bg--active-hover: var(--stratakit-color-bg-glow-on-surface-accent-active-hover);
+
+	background-color: var(--_MuiTable-row-bg, var(--✨row-bg--default));
+
+	@media (any-hover: hover) {
+		&:where(:hover) {
+			background-color: var(--_MuiTable-row-bg--hover, var(--✨row-bg--hover));
+		}
+	}
+
+	&:where(.Mui-selected) {
+		--_MuiTable-row-bg: var(--✨row-bg--active);
+		--_MuiTable-row-bg--hover: var(--✨row-bg--active-hover);
+	}
+}
+
+.MuiTableCell-root {
+	&:where(.MuiTableCell-sizeMedium) {
+		block-size: 3rem;
+		padding-block: var(--stratakit-space-x2);
+		padding-inline-start: var(--stratakit-space-x4);
+		padding-inline-end: var(--stratakit-space-x3);
+	}
+}
+
+.MuiTableCell-head {
+	color: var(--stratakit-color-text-neutral-secondary);
+	font-weight: unset;
+}
+
+.MuiTableCell-body {
+	--✨cell-border--default: var(--stratakit-color-border-neutral-muted);
+	--✨cell-border--active: var(--stratakit-color-border-accent-strong);
+
+	--_MuiTable-cell-border-color: var(--✨cell-border--default);
+
+	border-block: 1px solid var(--_MuiTable-cell-border-color);
+	border-block-start-color: var(
+		--_MuiTable-cell-border-top-color,
+		var(--_MuiTable-cell-border-color)
+	);
+	border-block-end-color: var(
+		--_MuiTable-cell-border-bottom-color,
+		var(--_MuiTable-cell-border-color)
+	);
+
+	:where(.MuiTableRow-root.Mui-selected) & {
+		--_MuiTable-cell-border-color: var(--✨cell-border--active);
+	}
+
+	:where(.MuiTableRow-root:has(+ .MuiTableRow-root.Mui-selected)) & {
+		--_MuiTable-cell-border-bottom-color: var(--✨cell-border--active);
+	}
+}
+
+.MuiTableCell-paddingCheckbox {
+	padding-inline: var(--stratakit-space-x4);
+}

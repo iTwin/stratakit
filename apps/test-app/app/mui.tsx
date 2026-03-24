@@ -101,6 +101,7 @@ import SwitchDefault from "examples/mui/Switch.default.tsx";
 import SwitchSizes from "examples/mui/Switch.sizes.tsx";
 import TableDefault from "examples/mui/Table.default.tsx";
 import TableFooter from "examples/mui/Table.footer.tsx";
+import TableSelect from "examples/mui/Table.Select.tsx";
 import TabsDefault from "examples/mui/Tabs.default.tsx";
 import TabsScrollable from "examples/mui/Tabs.scrollable.tsx";
 import TextFieldDisabled from "examples/mui/TextField._disabled.tsx";
@@ -340,6 +341,7 @@ const components: Record<string, React.ReactNode> = {
 	Table: (
 		<>
 			<TableDefault />
+			<TableSelect />
 			<TableFooter />
 		</>
 	),

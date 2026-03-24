@@ -1,1 +1,0 @@
-import{j as t,T as i}from"./client.CRss4b-V.js";import{B as e}from"./Button.-kVeJG9r.js";import"./styles.internal.CPbvgKR0.js";const a=()=>t.jsx(i,{title:"Save is disabled until you finish reading the documentation",children:t.jsx(e,{disabled:!0,children:"Save"})});export{a as default};

@@ -6,4 +6,4 @@ links:
   apiReference: https://mui.com/material-ui/api/app-bar/
 ---
 
-::example{src="mui/AppBar.default"}
+::example{src="mui/AppBar.default" min-width="450px"}

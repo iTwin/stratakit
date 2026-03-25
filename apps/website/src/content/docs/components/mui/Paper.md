@@ -6,4 +6,4 @@ links:
   apiReference: https://mui.com/material-ui/api/paper/
 ---
 
-::example{src="mui/Paper.default"}
+::example{src="mui/Paper.default" min-height="200px"}

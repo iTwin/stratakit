@@ -53,7 +53,6 @@
 		}
 	},
 	"dependencies": {
-		"@astrojs/react": "^4.4.2",
 		"@astrojs/starlight": "^0.37.6",
 		"@mui/material": "catalog:",
 		"@stratakit/bricks": "workspace:*",

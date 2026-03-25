@@ -154,7 +154,18 @@ function createTheme() {
 					},
 				},
 			},
-			MuiAvatar: { defaultProps: { component: Role.div } },
+			MuiAvatar: {
+				defaultProps: {
+					component: Role.div,
+					imgProps: { draggable: false },
+				},
+				styleOverrides: {
+					root: {
+						width: "var(--_MuiAvatar-size, 2rem)",
+						height: "var(--_MuiAvatar-size, 2rem)",
+					},
+				},
+			},
 			MuiAvatarGroup: { defaultProps: { component: Role.div } },
 			MuiBackdrop: { defaultProps: { component: Role.div } },
 			MuiBadge: {

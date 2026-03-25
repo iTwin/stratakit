@@ -26,9 +26,11 @@ In the following example, [from the HTML5 specification](https://html.spec.whatw
 
 ::example{src="mui/Divider.semantic" min-height="200px"}
 
-### Separating lists of options
+### Presentational dividers
 
-Your navigation may be subdivided into multiple lists. You can use the _presentational_ **Divider**, to visually mark where one list ends and the next begins.
+You may wish to make a **Divider** _presentational_ by removing its semantics, i.e. by passing `role="separator"` and rendering it as a `<div>` element.
+
+For example, your navigation may be subdivided into multiple lists which are already separated semantically. You can use a _presentational_ **Divider** to visually mark where one list ends and the next begins.
 
 ::example{src="mui/Divider.presentational" min-height="200px"}
 

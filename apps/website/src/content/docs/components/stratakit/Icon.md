@@ -43,5 +43,5 @@ Use the `render` prop to display a custom inline SVG icon.
 
 ## 🚫 Don’t
 
-- Don’t omit an accessible label if there is no other label in place.
+- Don’t use the `alt` prop if there is already an accessible label in place (as in `IconButton`).
 - Don’t use custom icons when a standard icon is available in `@stratakit/icons`.

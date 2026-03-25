@@ -60,6 +60,13 @@
 		margin-inline-start: calc(var(--_MuiChip-padding-inline) * -0.75);
 		margin-inline-end: calc(var(--_MuiChip-padding-inline) * 0.25);
 	}
+
+	/* Makes touch target area square & `24px` */
+	&::after {
+		content: "";
+		position: absolute;
+		inset: 0;
+	}
 }
 
 .MuiChip-avatar {

@@ -1,1 +1,0 @@
-import{j as s,I as t}from"./client.ClnM05oL.js";import"./styles.internal.CPbvgKR0.js";const r="/1356/docs/_astro/layers.C_Rs9pWi.svg",e=()=>s.jsx(t,{href:r,alt:"Simple representation of layers of a stratum"});export{e as default};

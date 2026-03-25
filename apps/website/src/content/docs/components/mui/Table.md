@@ -8,6 +8,10 @@ links:
 
 ::example{src="mui/Table.default"}
 
+## StrataKit MUI modifications
+
+- Removed `role="rowgroup"` semantics from `TableBody`, as it is not necessary and can cause issues with some assistive technologies.
+
 ## Examples
 
 ### Footer

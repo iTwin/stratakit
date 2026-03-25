@@ -368,7 +368,10 @@ function createTheme() {
 			MuiTabs: { defaultProps: { component: Role.div } },
 			MuiTable: { defaultProps: { component: withRenderProp(Role, "table") } },
 			MuiTableBody: {
-				defaultProps: { component: withRenderProp(Role, "tbody") },
+				defaultProps: {
+					component: withRenderProp(Role, "tbody"),
+					role: undefined, // Removing role="rowgroup". See https://github.com/iTwin/stratakit/pull/1361
+				},
 			},
 			MuiTableCell: { defaultProps: { component: MuiTableCell } },
 			MuiTableContainer: {

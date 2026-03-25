@@ -26,7 +26,7 @@ Make sure the **Tooltip** is suitable for your use case. In some cases, a static
 
 The **Tooltip** is integrated into the [**IconButton**](/components/iconbutton) component and available via the `label` prop. The **Tooltip** component is not needed.
 
-Since the **IconButton’s** tooltip represents its principle—and only—label, choose a `label` value that adequately explains the **IconButton’s** purpose.
+Since the **IconButton’s** tooltip represents its principle label, choose a `label` value that adequately explains the **IconButton’s** purpose.
 
 ::example{src="mui/IconButton.default"}
 

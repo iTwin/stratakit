@@ -49,15 +49,14 @@
 
 .MuiChip-deleteIcon:is(.MuiIconButton-root) {
 	border-radius: inherit;
+	margin-inline-start: calc(var(--stratakit-space-x2) * -1);
 
 	&:where(.MuiChip-deleteIconSmall) {
-		margin-inline-start: calc(var(--_MuiChip-padding-inline) * -1);
 		margin-inline-end: -1px; /* Accounts for `border-width` */
 	}
 
 	&:where(.MuiChip-deleteIconMedium) {
-		margin-inline-start: calc(var(--_MuiChip-padding-inline) * -0.75);
-		margin-inline-end: calc(var(--_MuiChip-padding-inline) * 0.25);
+		margin-inline-end: calc(var(--stratakit-space-x1) - 1px);
 	}
 
 	/* Makes touch target area square & `24px` */
@@ -69,5 +68,13 @@
 }
 
 .MuiChip-avatar {
-	margin-inline-start: calc(var(--_MuiChip-padding-inline) * 0.25);
+	margin-inline-start: calc(var(--stratakit-space-x1) - 1px);
+
+	&:where(.MuiChip-avatarSmall) {
+		margin-inline-end: calc(var(--stratakit-space-x1) * -1);
+	}
+
+	&:where(.MuiChip-avatarMedium) {
+		margin-inline-end: calc(var(--stratakit-space-x2) * -1);
+	}
 }

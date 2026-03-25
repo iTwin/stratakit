@@ -15,6 +15,7 @@ import {
 	MuiChipDeleteIcon,
 	MuiChipLabel,
 } from "./~components/MuiChip.js";
+import { MuiDivider } from "./~components/MuiDivider.js";
 import { MuiIconButton } from "./~components/MuiIconButton.js";
 import { MuiSnackbar } from "./~components/MuiSnackbar.js";
 import { MuiTableCell, MuiTableHead } from "./~components/MuiTable.js";
@@ -235,7 +236,7 @@ function createTheme() {
 			MuiDialog: { defaultProps: { component: Role.div } },
 			MuiDialogContentText: { defaultProps: { component: Role.p } },
 			MuiDialogTitle: { defaultProps: { component: Role.h2 } },
-			MuiDivider: { defaultProps: { component: withRenderProp(Role, "hr") } },
+			MuiDivider: { defaultProps: { component: MuiDivider } },
 			MuiDrawer: { defaultProps: { component: Role.div } },
 			MuiFab: {
 				defaultProps: {

@@ -9,7 +9,11 @@ import OutlinedInput from "@mui/material/OutlinedInput";
 import { createTheme as createMuiTheme } from "@mui/material/styles";
 import { MuiBadge } from "./~components/MuiBadge.js";
 import { MuiButtonBase } from "./~components/MuiButtonBase.js";
-import { MuiCard, MuiCardActionArea } from "./~components/MuiCard.js";
+import {
+	MuiCard,
+	MuiCardActionArea,
+	MuiCardMedia,
+} from "./~components/MuiCard.js";
 import {
 	MuiChip,
 	MuiChipDeleteIcon,
@@ -211,7 +215,7 @@ function createTheme() {
 					slotProps: { title: { component: Role.h2 } },
 				},
 			},
-			MuiCardMedia: { defaultProps: { component: Role.div } },
+			MuiCardMedia: { defaultProps: { component: MuiCardMedia } },
 			MuiCheckbox: {
 				defaultProps: {
 					component: Role.span,

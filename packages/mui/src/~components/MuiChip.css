@@ -49,8 +49,17 @@
 
 .MuiChip-deleteIcon:is(.MuiIconButton-root) {
 	border-radius: inherit;
-	margin-inline-start: calc(var(--_MuiChip-padding-inline) * -1);
-	margin-inline-end: -1px; /* Accounts for `border-width` */
+	background-color: pink;
+
+	&:where(.MuiChip-deleteIconSmall) {
+		margin-inline-start: calc(var(--_MuiChip-padding-inline) * -1);
+		margin-inline-end: -1px; /* Accounts for `border-width` */
+	}
+
+	&:where(.MuiChip-deleteIconMedium) {
+		margin-inline-start: calc(var(--_MuiChip-padding-inline) * -0.75);
+		margin-inline-end: calc(var(--_MuiChip-padding-inline) * 0.25);
+	}
 }
 
 .MuiChip-avatar {

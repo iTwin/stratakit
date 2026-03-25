@@ -24,7 +24,6 @@ const MuiChipContext = React.createContext<
 			clearId?: string;
 			isClickable: boolean;
 			deleteLabel?: string;
-			size?: "small" | "medium";
 	  }
 	| undefined
 >(undefined);
@@ -42,17 +41,9 @@ const MuiChip = forwardRef<"div", MuiChipProps>((props, forwardedRef) => {
 	const [labelId, setLabelId] = React.useState<string | undefined>(undefined);
 
 	const isClickable = props.className?.includes("MuiChip-clickable") ?? false;
-
-	// Extract size from className (MUI adds classes like "MuiChip-sizeSmall", "MuiChip-sizeMedium")
-	const size: "small" | "medium" = props.className?.includes(
-		"MuiChip-sizeSmall",
-	)
-		? "small"
-		: "medium"; // Default to medium if not explicitly small
-
 	return (
 		<MuiChipContext.Provider
-			value={{ labelId, setLabelId, clearId, isClickable, deleteLabel, size }}
+			value={{ labelId, setLabelId, clearId, isClickable, deleteLabel }}
 		>
 			<Role.div
 				{...rest}
@@ -108,13 +99,12 @@ const MuiChipDeleteIcon = forwardRef<
 		clearId,
 		labelId,
 		deleteLabel = defaultLabel,
-		size = "medium", // Default to medium if context doesn't provide size
 	} = React.useContext(MuiChipContext) ?? {};
 
 	return (
 		<IconButton
 			aria-labelledby={`${clearId} ${labelId}`}
-			size={size}
+			size="small"
 			{...props}
 			ref={forwardedRef}
 		>

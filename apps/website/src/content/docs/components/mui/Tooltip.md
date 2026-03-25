@@ -32,7 +32,7 @@ Since the **IconButton’s** tooltip represents its principle—and only—label
 
 ## ✅ Do
 
-- Use **Tooltips** as labels for **IconButton** components.
+- Use **IconButton** `label` prop to automatically apply **Tooltip**.
 - Use **Tooltips** as descriptions for **Button** elements, supplementing the **Button’s** existing label.
 - Keep tooltip content **brief**, **relevant**, and **helpful**.
 

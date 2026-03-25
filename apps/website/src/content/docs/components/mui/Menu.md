@@ -7,3 +7,14 @@ links:
 ---
 
 ::example{src="mui/Menu.default"}
+
+## StrataKit MUI modifications
+
+- Restyled using StrataKit's visual language.
+- Includes full `forced-colors` support.
+
+## Examples
+
+### Dense
+
+::example{src="mui/Menu.dense"}

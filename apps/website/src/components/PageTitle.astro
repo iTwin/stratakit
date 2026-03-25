@@ -7,6 +7,14 @@ const links = entry.data.links || {};
 
 const muiDocsUrl = links.muiDocs;
 const apiReferenceUrl = links.apiReference;
+
+function prefixUrl(url: string) {
+	if (url.startsWith("/")) {
+		return `${import.meta.env.BASE_URL}${url}`;
+	}
+
+	return url;
+}
 ---
 
 <hgroup>
@@ -28,7 +36,7 @@ const apiReferenceUrl = links.apiReference;
 						)}
 						{apiReferenceUrl && (
 							<li>
-								<a href={apiReferenceUrl}>API reference</a>
+								<a href={prefixUrl(apiReferenceUrl)}>API reference</a>
 							</li>
 						)}
 					</ul>

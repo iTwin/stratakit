@@ -49,7 +49,6 @@
 
 .MuiChip-deleteIcon:is(.MuiIconButton-root) {
 	border-radius: inherit;
-	background-color: pink;
 
 	&:where(.MuiChip-deleteIconSmall) {
 		margin-inline-start: calc(var(--_MuiChip-padding-inline) * -1);

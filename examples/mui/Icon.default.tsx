@@ -8,5 +8,5 @@ import { Icon } from "@stratakit/mui";
 import svgLayers from "@stratakit/icons/layers.svg";
 
 export default () => {
-	return <Icon href={svgLayers} alt="Abstract representation of strata" />;
+	return <Icon href={svgLayers} />;
 };

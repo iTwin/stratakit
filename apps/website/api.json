@@ -1,5 +1,50 @@
 [
 	{
+		"name": "mui",
+		"apis": [
+			{
+				"name": "Icon",
+				"composition": [],
+				"reexport": {
+					"packageName": "foundations",
+					"apiName": "Icon"
+				}
+			},
+			{
+				"name": "Root",
+				"composition": [
+					{
+						"name": "Root",
+						"baseProps": ["BaseProps.render"],
+						"props": [
+							{
+								"name": "colorScheme",
+								"type": "\"light\" | \"dark\"",
+								"optional": false,
+								"jsdoc": "The color scheme to use for all components on the page."
+							},
+							{
+								"name": "children",
+								"type": "ReactNode",
+								"optional": true
+							},
+							{
+								"name": "rootNode",
+								"type": "Document | ShadowRoot | undefined",
+								"optional": true,
+								"jsdoc": "The root node to which this `Root` component is attached.\n\nThis needs to be set when the `Root` is rendered within shadow DOM or a popout window.",
+								"defaultValue": "document"
+							}
+						],
+						"baseElement": "div",
+						"jsdoc": "Component to be used at the root of your application. It ensures that StrataKit theme for MUI is applied correctly.\n\nExample:\n```tsx\n<Root colorScheme=\"dark\">\n  <App />\n</Root>\n```",
+						"barrelName": "Root"
+					}
+				]
+			}
+		]
+	},
+	{
 		"name": "foundations",
 		"apis": [
 			{

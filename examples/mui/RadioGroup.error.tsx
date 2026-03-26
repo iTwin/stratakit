@@ -28,7 +28,7 @@ export default () => {
 				<FormControlLabel value="other" control={<Radio />} label="Other" />
 			</RadioGroup>
 			<FormHelperText id={errorId}>
-				<span style={visuallyHidden}>Error:</span>
+				<span style={visuallyHidden}>Error: </span>
 				You must select a gender.
 			</FormHelperText>
 		</FormControl>

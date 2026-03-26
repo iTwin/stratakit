@@ -18,7 +18,7 @@ links:
 
 ### Heading
 
-Heading `variant` of the **Typography** will render a respective [`<h1>` to `<h6>` heading element](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/Heading_Elements).
+Heading `variant` of the **Typography** will render a respective [`<h1>` to `<h6>` heading element](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/Heading_Elements). You can use the `render` prop to override the default semantics. This is useful when you want to maintain a consistent visual hierarchy without misappropriating semantic elements.
 
 ::example{src="mui/Typography.heading"}
 

@@ -12,11 +12,12 @@ links:
 
 Make sure the **Radio** is suitable for your use case. There may be other, more appropriate components available. The differences between [**Checkboxes**](/components/checkbox) and [**Radios**](/components/radio) are clear when used in groups:
 
-| Use case                        | [Checkboxes](/components/checkbox) | [Radios](/components/radio) | [Select](/component/select) |
-| ------------------------------- | ---------------------------------- | --------------------------- | --------------------------- |
-| Choose one or more inputs       | ✅                                 | ❌                          | ❌                          |
-| Choose just one of a few inputs | ❌                                 | ✅                          | ✅                          |
-| Choose just one of many inputs  | ❌                                 | ❌                          | ✅                          |
+| Use case                                                                                                                                    | [Checkboxes](/components/checkbox) | [Radios](/components/radio) | [Select](/component/select) | [ToggleButton](/components/togglebutton) |
+| ------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------- | --------------------------- | --------------------------- | ---------------------------------------- |
+| Choose one or more inputs                                                                                                                   | ✅                                 | ❌                          | ❌                          | ❌                                       |
+| Choose just one of a few inputs                                                                                                             | ❌                                 | ✅                          | ✅                          | ❌                                       |
+| Choose just one of many inputs                                                                                                              | ❌                                 | ❌                          | ✅                          | ❌                                       |
+| Toggle one or more options within a [toolbar](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/toolbar_role) | ❌                                 | ❌                          | ❌                          | ✅                                       |
 
 ## StrataKit MUI modifications
 

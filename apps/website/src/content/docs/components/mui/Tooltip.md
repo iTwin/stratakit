@@ -22,6 +22,8 @@ Make sure the **Tooltip** is suitable for your use case. In some cases, a static
 | Text longer than a short phrase or sentence                             | ❌                             | ✅              |
 | Mobile-first interfaces, where `hover` is not available                 | ❌                             | ✅              |
 
+## Examples
+
 ### IconButton
 
 The **Tooltip** is integrated into the [**IconButton**](/components/iconbutton) component and available via the `label` prop. The **Tooltip** component is not needed.

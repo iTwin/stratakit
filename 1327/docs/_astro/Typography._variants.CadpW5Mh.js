@@ -1,0 +1,1 @@
+import{j as o}from"./client.BrVQEv9B.js";import{T as r}from"./Typography._zLRm0fq.js";import"./styles.internal.BCa4SfLa.js";const s=["body1","body2","button","caption","h1","h2","h3","h4","h5","h6","inherit","overline","subtitle1","subtitle2"],i=()=>s.map(t=>o.jsxs(r,{variant:t,children:[t.charAt(0).toUpperCase(),t.slice(1)]},t));export{i as default};

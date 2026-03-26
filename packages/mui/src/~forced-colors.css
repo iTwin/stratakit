@@ -79,7 +79,7 @@
 
 .MuiMenuItem-root {
 	&:where(.Mui-selected:not(.Mui-disabled)) {
-		forced-color-adjust: none;
+		forced-color-adjust: none; /* removing the backplate */
 		background-color: SelectedItem;
 		color: SelectedItemText;
 		--🥝Icon-color: SelectedItemText;

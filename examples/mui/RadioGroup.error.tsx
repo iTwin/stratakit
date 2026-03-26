@@ -19,7 +19,6 @@ export default () => {
 			<FormLabel render={<legend />}>Gender</FormLabel>
 			<RadioGroup
 				aria-describedby={errorId}
-				defaultValue="female"
 				name="radio-buttons-group"
 				role={undefined}
 			>

@@ -1,0 +1,1 @@
+import{j as o,I as s}from"./client.Dt8IoJ72.js";import{s as r}from"./layers.BbD67NwK.js";import"./styles.internal.CPbvgKR0.js";const t="_icon_18p5z_6",c={icon:t},i=()=>o.jsx(s,{className:c.icon,href:r});export{i as default};

@@ -3,6 +3,15 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
+.MuiAutocomplete-option {
+	&:where([aria-selected="true"]:not([aria-disabled="true"])) {
+		background-color: SelectedItem;
+		border-color: SelectedItemText;
+		color: SelectedItemText;
+		forced-color-adjust: none; /* removing the backplate */
+	}
+}
+
 .MuiAvatar-root {
 	border: 1px solid;
 }
@@ -70,6 +79,15 @@
 	&::before,
 	&::after {
 		background-color: MarkText;
+	}
+}
+
+.MuiPaginationItem-root {
+	&:where(.Mui-selected) {
+		background-color: SelectedItem;
+		border-color: SelectedItemText;
+		color: SelectedItemText;
+		forced-color-adjust: none; /* removing the backplate */
 	}
 }
 
@@ -144,5 +162,12 @@
 		+ .MuiSwitch-track {
 			--_MuiSwitch-track-border-color: GrayText;
 		}
+	}
+}
+
+.MuiToggleButton-root {
+	&:where(.Mui-selected) {
+		background-color: SelectedItem;
+		color: SelectedItemText;
 	}
 }

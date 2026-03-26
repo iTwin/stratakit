@@ -25,4 +25,11 @@
 		--_MuiToggleButton-height: var(--stratakit-size-control-field-height-large);
 		--_MuiToggleButton-padding: var(--stratakit-space-x3);
 	}
+
+	&:where(.Mui-selected) {
+		border-color: var(--stratakit-color-border-accent-strong);
+		background-color: var(--stratakit-color-bg-glow-on-surface-accent-pressed);
+		color: var(--stratakit-color-text-accent-strong);
+		--🥝Icon-color: var(--stratakit-color-icon-accent-strong);
+	}
 }

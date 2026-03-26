@@ -1,1 +1,0 @@
-import{j as t}from"./client.BhaOGQRA.js";import{T as r}from"./Text.CvhlRt41.js";import"./styles.internal.CPbvgKR0.js";import"./ExamplePreview.CRhzo_MQ.js";import"./preload-helper.DSPre4Uo.js";const s=()=>t.jsx(r,{variant:"body-sm",children:"Basic text"});export{s as default};

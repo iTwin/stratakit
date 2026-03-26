@@ -111,16 +111,6 @@ function getBaseElementLink(baseElement: string) {
 	headings={headings}
 >
 	{
-		importHeading && (
-			<>
-				<AnchorHeading level={importHeading.depth} id={importHeading.slug}>
-					{importHeading.text}
-				</AnchorHeading>
-				<ImportSnippet package={pkg} api={api} />
-			</>
-		)
-	}
-	{
 		_api.reexport && (
 			<Aside>
 				This component is re-exported from
@@ -132,6 +122,16 @@ function getBaseElementLink(baseElement: string) {
 				</a>
 				.
 			</Aside>
+		)
+	}
+	{
+		importHeading && (
+			<>
+				<AnchorHeading level={importHeading.depth} id={importHeading.slug}>
+					{importHeading.text}
+				</AnchorHeading>
+				<ImportSnippet package={pkg} api={api} />
+			</>
 		)
 	}
 	{

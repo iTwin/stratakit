@@ -216,9 +216,9 @@ function createTheme() {
 				defaultProps: {
 					component: Role.span,
 					disableRipple: true, // Checkbox doesn't inherit from ButtonBase
-					icon: <></>,
-					checkedIcon: <></>,
-					indeterminateIcon: <></>,
+					icon: <Nothing />,
+					checkedIcon: <Nothing />,
+					indeterminateIcon: <Nothing />,
 				},
 			},
 			MuiChip: {
@@ -331,8 +331,8 @@ function createTheme() {
 				defaultProps: {
 					component: Role.span,
 					disableRipple: true, // Radio doesn't inherit from ButtonBase
-					icon: <></>,
-					checkedIcon: <></>,
+					icon: <Nothing />,
+					checkedIcon: <Nothing />,
 				},
 			},
 			MuiRating: { defaultProps: { component: Role.span } },
@@ -450,6 +450,13 @@ function withRenderProp(
 	return React.forwardRef<HTMLDivElement, RoleProps>((props, forwardedRef) => {
 		return <Role render={<DefaultTagName />} {...props} ref={forwardedRef} />;
 	});
+}
+
+// ----------------------------------------------------------------------------
+
+/** Ignores all passed in props and renders nothing. */
+function Nothing() {
+	return null;
 }
 
 // ----------------------------------------------------------------------------

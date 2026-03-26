@@ -26,6 +26,13 @@
 		min-block-size: var(--stratakit-size-control-listitem-height-small);
 		@apply --typography("body-sm");
 	}
+
+	&:where(:has(~ .MuiListItem-secondaryAction)) {
+		padding-inline-end: calc(
+			var(--stratakit-size-control-field-height-medium) +
+			var(--stratakit-space-x3)
+		);
+	}
 }
 
 :is(.MuiListItemIcon-root, .MuiListItemAvatar-root) {
@@ -35,4 +42,8 @@
 .MuiListItemText-root {
 	margin: 0;
 	gap: var(--stratakit-space-x1);
+}
+
+.MuiListItemSecondaryAction-root {
+	inset-inline-end: var(--stratakit-space-x3);
 }

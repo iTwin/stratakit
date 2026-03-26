@@ -14,6 +14,7 @@ import svgChevronLeftDouble from "@stratakit/icons/chevron-left-double.svg";
 import svgChevronRight from "@stratakit/icons/chevron-right.svg";
 import svgChevronRightDouble from "@stratakit/icons/chevron-right-double.svg";
 import svgDismiss from "@stratakit/icons/dismiss.svg";
+import svgDismissCircle from "@stratakit/icons/dismiss-circle.svg";
 import svgError from "@stratakit/icons/error.svg";
 import svgInfo from "@stratakit/icons/info.svg";
 import svgStatusSuccess from "@stratakit/icons/status-success.svg";
@@ -42,7 +43,7 @@ const ChevronRightIcon = createIconComponent(svgChevronRight);
 const ChevronRightDoubleIcon = createIconComponent(svgChevronRightDouble);
 
 const DismissIcon = createIconComponent(svgDismiss);
-
+const DismissCircleIcon = createIconComponent(svgDismissCircle);
 const ErrorIcon = createIconComponent(svgError);
 const InfoIcon = createIconComponent(svgInfo);
 const SuccessIcon = createIconComponent(svgStatusSuccess);
@@ -60,6 +61,7 @@ export {
 	ChevronRightIcon,
 	ChevronRightDoubleIcon,
 	DismissIcon,
+	DismissCircleIcon,
 	InfoIcon,
 	SuccessIcon,
 	WarningIcon,

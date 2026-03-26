@@ -4,6 +4,18 @@
  *--------------------------------------------------------------------------------------------*/
 
 .MuiChip-root {
+	block-size: var(--_MuiChip-block-size);
+
+	&:where(.MuiChip-sizeSmall) {
+		--_MuiChip-block-size: var(--stratakit-size-control-field-height-small);
+		--_MuiChip-padding-inline: var(--stratakit-space-x2);
+	}
+
+	&:where(.MuiChip-sizeMedium) {
+		--_MuiChip-block-size: var(--stratakit-size-control-field-height-medium);
+		--_MuiChip-padding-inline: var(--stratakit-space-x3);
+	}
+
 	&:where(.MuiChip-filledDefault.MuiChip-colorDefault) {
 		background-color: var(--stratakit-color-bg-neutral-base);
 		border: 1px solid var(--stratakit-color-border-neutral-base);
@@ -19,8 +31,50 @@
 }
 
 .MuiChip-label {
+	padding-inline: var(--_MuiChip-padding-inline);
+
+	&:where(.MuiChip-labelSmall) {
+		@apply --typography("body-sm");
+	}
+
+	&:where(.MuiChip-labelMedium) {
+		@apply --typography("body-md");
+	}
+
 	&:where(button) {
 		/* Move the outline from the interactive label to the root element. */
 		outline: unset !important;
+	}
+}
+
+.MuiChip-deleteIcon:is(.MuiIconButton-root) {
+	border-radius: inherit;
+	margin-inline-start: calc(var(--stratakit-space-x2) * -1);
+
+	&:where(.MuiChip-deleteIconSmall) {
+		margin-inline-end: -1px; /* Accounts for `border-width` */
+	}
+
+	&:where(.MuiChip-deleteIconMedium) {
+		margin-inline-end: calc(var(--stratakit-space-x1) - 1px);
+	}
+
+	/* Makes touch target area square & `24px` */
+	&::after {
+		content: "";
+		position: absolute;
+		inset: 0;
+	}
+}
+
+.MuiChip-avatar {
+	margin-inline-start: calc(var(--stratakit-space-x1) - 1px);
+
+	&:where(.MuiChip-avatarSmall) {
+		margin-inline-end: calc(var(--stratakit-space-x1) * -1);
+	}
+
+	&:where(.MuiChip-avatarMedium) {
+		margin-inline-end: calc(var(--stratakit-space-x2) * -1);
 	}
 }

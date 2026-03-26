@@ -6,4 +6,4 @@ links:
   apiReference: https://mui.com/material-ui/api/bottom-navigation/
 ---
 
-::example{src="mui/BottomNavigation.default"}
+::example{src="mui/BottomNavigation.default" min-width="450px"}

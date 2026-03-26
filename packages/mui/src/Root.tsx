@@ -7,6 +7,7 @@ import * as React from "react";
 import { ThemeProvider, useColorScheme } from "@mui/material/styles";
 import { Root as StrataKitRoot } from "@stratakit/foundations";
 import {
+	forwardRef,
 	RootContext,
 	useSafeContext,
 } from "@stratakit/foundations/secret-internals";
@@ -48,56 +49,52 @@ interface RootProps
  * </Root>
  * ```
  */
-const Root = React.forwardRef<HTMLDivElement, RootProps>(
-	(props, forwardedRef) => {
-		const { children, colorScheme, accentColor, ...rest } = props;
+const Root = forwardRef<"div", RootProps>((props, forwardedRef) => {
+	const { children, colorScheme, accentColor, ...rest } = props;
 
-		return (
-			<StyledEngineProvider>
-				<ThemeProvider theme={theme} defaultMode={colorScheme}>
-					<ColorScheme colorScheme={colorScheme} />
-					<RootInner
-						{...rest}
-						colorScheme={colorScheme}
-						accentColor={accentColor}
-						ref={forwardedRef}
-					>
-						<Styles />
-						{children}
-					</RootInner>
-				</ThemeProvider>
-			</StyledEngineProvider>
-		);
-	},
-);
+	return (
+		<StyledEngineProvider>
+			<ThemeProvider theme={theme} defaultMode={colorScheme}>
+				<ColorScheme colorScheme={colorScheme} />
+				<RootInner
+					{...rest}
+					colorScheme={colorScheme}
+					accentColor={accentColor}
+					ref={forwardedRef}
+				>
+					<Styles />
+					{children}
+				</RootInner>
+			</ThemeProvider>
+		</StyledEngineProvider>
+	);
+});
 DEV: Root.displayName = "Root";
 
 // ----------------------------------------------------------------------------
 
 interface RootInnerProps
-	extends React.ComponentPropsWithoutRef<"div">,
+	extends BaseProps<"div">,
 		Pick<RootProps, "colorScheme" | "accentColor" | "rootNode"> {}
 
 /** @private */
-const RootInner = React.forwardRef<HTMLDivElement, RootInnerProps>(
-	(props, forwardedRef) => {
-		const { children, colorScheme, accentColor, rootNode, ...rest } = props;
+const RootInner = forwardRef<"div", RootInnerProps>((props, forwardedRef) => {
+	const { children, colorScheme, accentColor, rootNode, ...rest } = props;
 
-		return (
-			<StrataKitRoot
-				{...rest}
-				className={cx("🥝MuiRoot", props.className)}
-				colorScheme={colorScheme}
-				accentColor={accentColor}
-				rootNode={rootNode}
-				synchronizeColorScheme
-				ref={forwardedRef}
-			>
-				{children}
-			</StrataKitRoot>
-		);
-	},
-);
+	return (
+		<StrataKitRoot
+			{...rest}
+			className={cx("🥝MuiRoot", props.className)}
+			colorScheme={colorScheme}
+			accentColor={accentColor}
+			rootNode={rootNode}
+			synchronizeColorScheme
+			ref={forwardedRef}
+		>
+			{children}
+		</StrataKitRoot>
+	);
+});
 DEV: RootInner.displayName = "RootInner";
 
 // ----------------------------------------------------------------------------

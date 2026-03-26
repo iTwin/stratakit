@@ -1,1 +1,0 @@
-import{j as t,I as r}from"./client.Dt8IoJ72.js";import{s}from"./layers.BbD67NwK.js";import"./styles.internal.CPbvgKR0.js";const n=()=>t.jsx(r,{href:s,alt:"Abstract representation of strata"});export{n as default};

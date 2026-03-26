@@ -28,6 +28,12 @@ Make sure the **Tooltip** is suitable for your use case. In some cases, a static
 
 ## Examples
 
+### Label
+
+Use the `describeChild` prop to provide an accessible label via [`aria-label`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-label), instead of the default behavior, which supplies a description via [`aria-describedby`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-describedby).
+
+::example{src="mui/Tooltip.label"}
+
 ### IconButton
 
 The **Tooltip** is integrated into the [**IconButton**](/components/iconbutton) component and available via the `label` prop. The **Tooltip** component is not needed.

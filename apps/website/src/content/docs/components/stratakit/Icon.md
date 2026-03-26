@@ -14,7 +14,7 @@ links:
 Use the `size` prop to adjust the **Icon’s** physical dimensions.
 
 - **Regular:** Default size, suitable for most use cases.
-- **Large:** Increased size, use for emphasis.
+- **Large:** Increased size, use in larger spaces.
 
 ::example{src="mui/Icon.sizes"}
 

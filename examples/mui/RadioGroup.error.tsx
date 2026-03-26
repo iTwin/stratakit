@@ -17,11 +17,7 @@ export default () => {
 	return (
 		<FormControl render={<fieldset />} role="radiogroup" error>
 			<FormLabel render={<legend />}>Gender</FormLabel>
-			<RadioGroup
-				aria-describedby={errorId}
-				name="radio-buttons-group"
-				role={undefined}
-			>
+			<RadioGroup aria-describedby={errorId} name="gender" role={undefined}>
 				<FormControlLabel value="female" control={<Radio />} label="Female" />
 				<FormControlLabel value="male" control={<Radio />} label="Male" />
 				<FormControlLabel value="other" control={<Radio />} label="Other" />

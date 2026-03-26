@@ -30,6 +30,12 @@ Omit the `alt` prop if the **Icon** is purely decorative. This will hide the **I
 
 ::example{src="mui/Button.icon"}
 
+### Color
+
+Use the [`color` CSS property](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/color) to adjust the **Icon’s** color.
+
+::example{src="mui/Icon.color"}
+
 ### Custom
 
 Use the `render` prop to display a custom SVG icon.

@@ -22,6 +22,7 @@ import {
 import { MuiDivider } from "./~components/MuiDivider.js";
 import { MuiIconButton } from "./~components/MuiIconButton.js";
 import { MuiSnackbar } from "./~components/MuiSnackbar.js";
+import { MuiStepIcon } from "./~components/MuiStepper.js";
 import { MuiTableCell, MuiTableHead } from "./~components/MuiTable.js";
 import {
 	ArrowDownIcon,
@@ -369,6 +370,14 @@ function createTheme() {
 			MuiStep: { defaultProps: { component: Role.div } },
 			MuiSwitch: { defaultProps: { component: Role.span } },
 			MuiStepper: { defaultProps: { component: Role.div } },
+			MuiStepLabel: {
+				defaultProps: {
+					slotProps: {
+						root: { component: Role.div },
+						stepIcon: { component: MuiStepIcon },
+					},
+				},
+			},
 			MuiSvgIcon: { defaultProps: { component: Role.svg } },
 			MuiSwipeableDrawer: { defaultProps: { component: Role.div } },
 			MuiTabs: { defaultProps: { component: Role.div } },

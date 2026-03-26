@@ -107,6 +107,26 @@
 	}
 }
 
+.MuiStepLabel-label {
+	&:where(.Mui-error) {
+		background-color: Mark;
+		color: MarkText;
+		forced-color-adjust: none; /* removing the backplate */
+	}
+}
+
+.MuiStepIcon-root {
+	&:where(.Mui-active) {
+		border-color: SelectedItemText;
+		background-color: SelectedItem;
+		color: SelectedItemText;
+
+		&::before {
+			forced-color-adjust: none; /* removing the backplate */
+		}
+	}
+}
+
 .MuiSwitch-switchBase {
 	--_MuiSwitch-thumb-background-color: CanvasText;
 

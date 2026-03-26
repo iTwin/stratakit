@@ -4,6 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 
 import Divider from "@mui/material/Divider";
+import Link from "@mui/material/Link";
 
 import styles from "./Divider.presentational.module.css";
 
@@ -12,19 +13,19 @@ export default () => {
 		<div className={styles.wrapper}>
 			<ul className={styles.list}>
 				<li>
-					<a href="/dashboard">Dashboard</a>
+					<Link href="/dashboard">Dashboard</Link>
 				</li>
 				<li>
-					<a href="/create">Create</a>
+					<Link href="/create">Create</Link>
 				</li>
 			</ul>
 			<Divider render={<div />} role="presentation" />
 			<ul className={styles.list}>
 				<li>
-					<a href="/account">Account</a>
+					<Link href="/account">Account</Link>
 				</li>
 				<li>
-					<a href="/notifications">Notifications</a>
+					<Link href="/notifications">Notifications</Link>
 				</li>
 			</ul>
 		</div>

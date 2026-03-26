@@ -9,16 +9,16 @@ import styles from "./Divider.semantic.module.css";
 
 export default () => {
 	return (
-		<div className={styles.wrapper}>
+		<>
 			<p>
 				There are various methods of communication. This section covers a few of
 				the important ones used by the project.
 			</p>
-			<Divider />
+			<Divider className={styles.divider} />
 			<p>
 				Communication stones seem to come in pairs and have mysterious
 				properties:
 			</p>
-		</div>
+		</>
 	);
 };

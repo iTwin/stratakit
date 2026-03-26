@@ -10,7 +10,7 @@ import styles from "./Divider.presentational.module.css";
 
 export default () => {
 	return (
-		<div className={styles.wrapper}>
+		<>
 			<ul className={styles.list}>
 				<li>
 					<Link href="/dashboard">Dashboard</Link>
@@ -19,7 +19,11 @@ export default () => {
 					<Link href="/create">Create</Link>
 				</li>
 			</ul>
-			<Divider render={<div />} role="presentation" />
+			<Divider
+				className={styles.divider}
+				render={<div />}
+				role="presentation"
+			/>
 			<ul className={styles.list}>
 				<li>
 					<Link href="/account">Account</Link>
@@ -28,6 +32,6 @@ export default () => {
 					<Link href="/notifications">Notifications</Link>
 				</li>
 			</ul>
-		</div>
+		</>
 	);
 };

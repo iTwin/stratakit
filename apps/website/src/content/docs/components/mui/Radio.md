@@ -45,4 +45,4 @@ Use the `error` prop on `FormControl` to display the `FormHelperText` in an erro
 
 - Don’t use one **Radio** in isolation. For a single option, use [**Checkbox**](/components/checkbox).
 - Don’t add `tabindex="0"` to **Radios**. Only the checked/selected **Radio** should be focusable using the <kbd>Tab</kbd> key.
-- Don’t use **Radios** where there are many options, such as choosing a country. Use [**Select**](/components/select) instead.
+- Don’t use **Radios** where there are many options, such as choosing a country. Use [**Select**](/components/select) or [**Autocomplete**](/components/autocomplete) instead.

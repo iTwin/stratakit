@@ -15,7 +15,7 @@ export async function getStaticPaths() {
 				params: { api: `${pkg.id}/${api.name}` },
 				props: { pkg, api },
 			};
-		})
+		}),
 	);
 }
 
@@ -95,7 +95,6 @@ function getBaseElementLink(baseElement: string) {
 	frontmatter={{
 		title: `${api.exportName ?? api.name} API`,
 		description: api.description,
-		status: api.status,
 	}}
 	headings={headings}
 >

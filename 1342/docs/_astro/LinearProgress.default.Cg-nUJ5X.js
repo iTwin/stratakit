@@ -1,0 +1,1 @@
+import{j as r}from"./client.DAX01nRx.js";import{r as e}from"./styles.internal.CPbvgKR0.js";import{L as a}from"./LinearProgress.DAcO-frW.js";import{T as o}from"./Typography.ByGpL27-.js";const m=()=>{const s=e.useId();return r.jsxs(r.Fragment,{children:[r.jsx(a,{"aria-labelledby":s}),r.jsx(o,{id:s,children:"Analyzing results…"})]})};export{m as default};

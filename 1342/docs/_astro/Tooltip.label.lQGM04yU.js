@@ -1,0 +1,1 @@
+import{j as s,T as r,I as t}from"./client.DAX01nRx.js";import{s as o}from"./user.Cg99vmur.js";import{A as e}from"./Avatar.DFZH-RK-.js";import"./styles.internal.CPbvgKR0.js";import"./createSvgIcon.C4V1l62u.js";const p=()=>s.jsx(r,{title:"User settings",describeChild:!1,children:s.jsx("button",{children:s.jsx(e,{children:s.jsx(t,{href:o})})})});export{p as default};

@@ -1,1 +1,0 @@
-import{j as t}from"./client.CKCfhHNO.js";import{C as r}from"./Chip.CiZOE2tr.js";import"./styles.internal.CPbvgKR0.js";import"./createSvgIcon.Cgom8HXf.js";const e=()=>t.jsx(r,{label:"Default Chip"});export{e as default};

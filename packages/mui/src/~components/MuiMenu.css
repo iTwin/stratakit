@@ -29,26 +29,23 @@
 
 	--✨padding--small: var(--stratakit-space-x2);
 	--✨padding--medium: var(--stratakit-space-x3);
-	--✨size--small: var(--stratakit-size-control-listitem-height-small);
-	--✨size--medium: var(--stratakit-size-control-listitem-height-large);
+	--✨size: var(--stratakit-size-control-listitem-height-small);
 
 	@apply --typography("body-md");
 	background-color: var(--_MuiMenu-item-background-color);
 	border-radius: 4px;
 	color: var(--_MuiMenu-item-color);
-	min-block-size: var(--_MuiMenu-item-height);
+	min-block-size: var(--✨size);
 	padding-block: 0;
 	padding-inline: var(--_MuiMenu-item-padding-inline);
 
 	--🥝Icon-color: var(--✨color-icon--default);
 	--_MuiMenu-item-background-color: var(--✨color-bg--default);
 	--_MuiMenu-item-color: var(--✨color-text--default);
-	--_MuiMenu-item-height: var(--✨size--medium);
 	--_MuiMenu-item-padding-inline: var(--✨padding--medium);
 
 	:where(.MuiMenu-list.MuiList-dense) & {
 		@apply --typography("body-sm");
-		--_MuiMenu-item-height: var(--✨size--small);
 		--_MuiMenu-item-padding-inline: var(--✨padding--small);
 	}
 

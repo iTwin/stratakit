@@ -1,1 +1,0 @@
-import{j as s,I as t}from"./client.DSJwXR_x.js";import"./styles.internal.CPbvgKR0.js";const r="/1356/docs/_astro/layers.C_Rs9pWi.svg",e=()=>s.jsx(t,{href:r,alt:"Abstract representation of strata"});export{e as default};

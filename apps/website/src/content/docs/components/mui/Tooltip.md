@@ -22,6 +22,10 @@ Make sure the **Tooltip** is suitable for your use case. In some cases, a static
 | Text longer than a short phrase or sentence                             | ❌                             | ✅              |
 | Mobile-first interfaces, where `hover` is not available                 | ❌                             | ✅              |
 
+## StrataKit MUI modifications
+
+- The `describeChild` prop defaults to `true`.
+
 ## Examples
 
 ### IconButton

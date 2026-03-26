@@ -18,7 +18,7 @@ export default () => {
 					<a href="/create">Create</a>
 				</li>
 			</ul>
-			<Divider render={<div role={undefined} />} role="presentation" />
+			<Divider render={<div />} role="presentation" />
 			<ul className={styles.list}>
 				<li>
 					<a href="/account">Account</a>

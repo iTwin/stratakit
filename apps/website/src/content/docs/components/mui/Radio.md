@@ -29,6 +29,12 @@ Make sure the **Radio** is suitable for your use case. There may be other, more 
 
 ## Examples
 
+### Default value
+
+Use the `defaultValue` prop to define which radio button is selected initially. Alternatively, use the `value` and `onChange` props to control the value state.
+
+::example{src="mui/RadioGroup.defaultValue" min-height="200px"}
+
 ### Error
 
 Use the `error` prop on `FormControl` to display the `FormHelperText` in an error state. Consider adding a visually hidden "Error:" prefix to the `FormHelperText` if the error message is not clear on its own.

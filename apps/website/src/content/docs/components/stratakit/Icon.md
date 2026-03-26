@@ -30,11 +30,11 @@ Omit the `alt` prop if the **Icon** is purely decorative. This will hide the **I
 
 ::example{src="mui/Button.icon"}
 
-### Inline
+### Custom
 
-Use the `render` prop to display a custom inline SVG icon.
+Use the `render` prop to display a custom SVG icon.
 
-::example{src="mui/Icon.inline"}
+::example{src="mui/Icon.custom"}
 
 ## ✅ Do
 

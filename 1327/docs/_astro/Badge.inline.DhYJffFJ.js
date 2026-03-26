@@ -1,1 +1,0 @@
-import{j as t}from"./~utils.jhxCZhmu.js";import{B as r}from"./Badge.DG1YJXb4.js";import"./index.DIfZGIpv.js";import"./index.XeJbqeyU.js";import"./styles.internal.BMgQUzYF.js";import"./usePreviousProps._DQh2wR-.js";const a=()=>t.jsx(r,{badgeContent:"Pending",inline:!0});export{a as default};

@@ -73,24 +73,21 @@
 	}
 }
 
+.MuiListItemIcon-root {
+	color: inherit;
+}
+
 .MuiMenuItem-root {
 	&:where(.Mui-selected:not(.Mui-disabled)) {
+		forced-color-adjust: none;
 		background-color: SelectedItem;
 		color: SelectedItemText;
 		--🥝Icon-color: SelectedItemText;
-
-		:where(.MuiListItemText-root) {
-			forced-color-adjust: none;
-		}
 	}
 
 	&:where(.Mui-disabled) {
 		color: GrayText;
 		--🥝Icon-color: GrayText;
-	}
-
-	:where(.MuiListItemIcon-root) {
-		color: inherit;
 	}
 }
 

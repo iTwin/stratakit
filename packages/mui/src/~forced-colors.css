@@ -3,6 +3,10 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
+.MuiAvatar-root {
+	border: 1px solid;
+}
+
 .MuiBadge-badge {
 	border: 1px solid CanvasText;
 }

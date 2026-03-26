@@ -1,1 +1,0 @@
-import{j as r}from"./client.CE54-DdO.js";import{L as t}from"./Link.D2qMAPGI.js";import"./styles.internal.CPbvgKR0.js";import"./Typography.BXwgH6Jh.js";const s=()=>r.jsx(t,{href:"/",children:"Home"});export{s as default};

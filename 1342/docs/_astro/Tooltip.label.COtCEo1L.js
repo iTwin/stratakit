@@ -1,1 +1,0 @@
-import{j as s,T as r,I as t}from"./client.BuFIFPn6.js";import{s as o}from"./user.Cg99vmur.js";import{A as e}from"./Avatar.GM5V1NEO.js";import"./styles.internal.CPbvgKR0.js";import"./createSvgIcon.IQdgVEvX.js";const p=()=>s.jsx(r,{title:"User settings",describeChild:!1,children:s.jsx("button",{children:s.jsx(e,{children:s.jsx(t,{href:o})})})});export{p as default};

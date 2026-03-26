@@ -15,6 +15,7 @@ import {
 	MuiChipDeleteIcon,
 	MuiChipLabel,
 } from "./~components/MuiChip.js";
+import { MuiDivider } from "./~components/MuiDivider.js";
 import { MuiIconButton } from "./~components/MuiIconButton.js";
 import { MuiSnackbar } from "./~components/MuiSnackbar.js";
 import { MuiTableCell, MuiTableHead } from "./~components/MuiTable.js";
@@ -154,7 +155,18 @@ function createTheme() {
 					},
 				},
 			},
-			MuiAvatar: { defaultProps: { component: Role.div } },
+			MuiAvatar: {
+				defaultProps: {
+					component: Role.div,
+					imgProps: { draggable: false },
+				},
+				styleOverrides: {
+					root: {
+						width: "var(--_MuiAvatar-size, 2rem)",
+						height: "var(--_MuiAvatar-size, 2rem)",
+					},
+				},
+			},
 			MuiAvatarGroup: { defaultProps: { component: Role.div } },
 			MuiBackdrop: { defaultProps: { component: Role.div } },
 			MuiBadge: {
@@ -224,7 +236,7 @@ function createTheme() {
 			MuiDialog: { defaultProps: { component: Role.div } },
 			MuiDialogContentText: { defaultProps: { component: Role.p } },
 			MuiDialogTitle: { defaultProps: { component: Role.h2 } },
-			MuiDivider: { defaultProps: { component: withRenderProp(Role, "hr") } },
+			MuiDivider: { defaultProps: { component: MuiDivider } },
 			MuiDrawer: { defaultProps: { component: Role.div } },
 			MuiFab: {
 				defaultProps: {
@@ -356,7 +368,10 @@ function createTheme() {
 			MuiTabs: { defaultProps: { component: Role.div } },
 			MuiTable: { defaultProps: { component: withRenderProp(Role, "table") } },
 			MuiTableBody: {
-				defaultProps: { component: withRenderProp(Role, "tbody") },
+				defaultProps: {
+					component: withRenderProp(Role, "tbody"),
+					role: undefined, // Removing role="rowgroup". See https://github.com/iTwin/stratakit/pull/1361
+				},
 			},
 			MuiTableCell: { defaultProps: { component: MuiTableCell } },
 			MuiTableContainer: {

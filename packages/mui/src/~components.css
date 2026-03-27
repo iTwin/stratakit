@@ -59,14 +59,6 @@
 	}
 }
 
-.MuiListItemIcon-root {
-	min-inline-size: calc(
-		var(--🥝Icon-size, 1rem) +
-		var(--stratakit-space-x1) +
-		var(--stratakit-space-x05)
-	);
-}
-
 .MuiTooltip-tooltip {
 	box-shadow: var(--stratakit-shadow-control-tooltip-base);
 }

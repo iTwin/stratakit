@@ -33,6 +33,7 @@
 	background-color: var(--_MuiMenu-item-background-color);
 	border-radius: 4px;
 	color: var(--_MuiMenu-item-color);
+	column-gap: calc(var(--stratakit-space-x1) + var(--stratakit-space-x05));
 	min-block-size: var(--✨size);
 	padding-block: 0;
 	padding-inline: var(--_MuiMenu-item-padding-inline);
@@ -71,7 +72,7 @@
 			block-size: var(--🥝Icon-size, 1rem);
 			inline-size: var(--🥝Icon-size, 1rem);
 			background-color: var(--🥝Icon-color);
-			margin-inline-end: var(--stratakit-space-x2);
+			margin-inline-end: var(--stratakit-space-x05);
 			mask-image: var(--_MuiMenuItem-root-mask-image);
 			mask-position: center;
 			mask-repeat: no-repeat;

@@ -328,10 +328,12 @@ declare module "@mui/material/ToggleButton" {
 }
 
 declare module "@mui/material/Tooltip" {
-	interface TooltipOwnProps {
+	interface TooltipProps {
 		/**
 		 * The default value with `@stratakit/mui` is `true`.
 		 * Use `describeChild={false}` if you want to label the child element.
+		 *
+		 * @default true
 		 */
 		describeChild?: boolean;
 	}

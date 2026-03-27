@@ -7,3 +7,7 @@ links:
 ---
 
 ::example{src="mui/Pagination.default"}
+
+## StrataKit MUI modifications
+
+- The `shape` prop now defaults to `"rounded"` instead of `"circular"`.

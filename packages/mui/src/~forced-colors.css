@@ -3,15 +3,32 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
+.MuiAutocomplete-popper {
+	border: 1px solid;
+}
+
 .MuiAvatar-root {
 	border: 1px solid;
 }
 
-.MuiBadge-badge {
-	border: 1px solid CanvasText;
+.MuiBadge-root {
+	&:where([data-_sk-inline]) .MuiBadge-badge {
+		border: 1px solid;
+	}
+
+	&:where(:not([data-_sk-inline])) .MuiBadge-badge {
+		forced-color-adjust: none;
+		background-color: Highlight;
+		color: HighlightText;
+	}
+}
+
+.MuiBottomNavigation-root {
+	border-block-start: 1px solid;
 }
 
 :is(.MuiButton-root, .MuiIconButton-root) {
+	--_MuiButton-icon-color: currentColor;
 	background-color: ButtonFace;
 	border: 1px solid ButtonBorder;
 	color: ButtonText;
@@ -58,6 +75,24 @@
 	border: 1px solid;
 }
 
+.MuiDrawer-paper {
+	&:where(.MuiDrawer-paperAnchorTop) {
+		border-block-end: 1px solid;
+	}
+
+	&:where(.MuiDrawer-paperAnchorRight) {
+		border-inline-start: 1px solid;
+	}
+
+	&:where(.MuiDrawer-paperAnchorBottom) {
+		border-block-start: 1px solid;
+	}
+
+	&:where(.MuiDrawer-paperAnchorLeft) {
+		border-inline-end: 1px solid;
+	}
+}
+
 .MuiFormControlLabel-label:where(.Mui-disabled) {
 	color: GrayText;
 }
@@ -71,6 +106,24 @@
 	&::after {
 		background-color: MarkText;
 	}
+}
+
+.MuiInputBase-root {
+	&:where(.Mui-disabled) {
+		border-color: GrayText;
+	}
+}
+
+.MuiLinearProgress-root {
+	border: 1px solid;
+}
+
+.MuiLinearProgress-bar {
+	background-color: CanvasText;
+}
+
+.MuiPopover-paper {
+	border: 1px solid;
 }
 
 .MuiSlider-root {
@@ -107,6 +160,10 @@
 	}
 }
 
+.MuiSnackbarContent-root {
+	border: 1px solid;
+}
+
 .MuiSwitch-switchBase {
 	--_MuiSwitch-thumb-background-color: CanvasText;
 
@@ -125,4 +182,12 @@
 			--_MuiSwitch-track-border-color: GrayText;
 		}
 	}
+}
+
+.MuiTabs-indicator {
+	background-color: SelectedItem;
+}
+
+.MuiTooltip-tooltip {
+	border: 1px solid;
 }

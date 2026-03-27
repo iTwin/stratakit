@@ -1,1 +1,0 @@
-import{j as t,I as o}from"./client.BLq4h64h.js";import{B as r}from"./ExamplePreview.BhY9Y5Y3.js";import"./styles.internal.CPbvgKR0.js";import"./preload-helper.CSyXZl4p.js";const s="/1369/docs/_astro/arrow-right.C7UMuQt3.svg",c=()=>t.jsxs(r,{onClick:()=>{},children:["Create new",t.jsx(o,{href:s})]});export{c as default};

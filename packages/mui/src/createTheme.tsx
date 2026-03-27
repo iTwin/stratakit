@@ -9,12 +9,17 @@ import OutlinedInput from "@mui/material/OutlinedInput";
 import { createTheme as createMuiTheme } from "@mui/material/styles";
 import { MuiBadge } from "./~components/MuiBadge.js";
 import { MuiButtonBase } from "./~components/MuiButtonBase.js";
-import { MuiCard, MuiCardActionArea } from "./~components/MuiCard.js";
+import {
+	MuiCard,
+	MuiCardActionArea,
+	MuiCardMedia,
+} from "./~components/MuiCard.js";
 import {
 	MuiChip,
 	MuiChipDeleteIcon,
 	MuiChipLabel,
 } from "./~components/MuiChip.js";
+import { MuiDivider } from "./~components/MuiDivider.js";
 import { MuiIconButton } from "./~components/MuiIconButton.js";
 import { MuiSnackbar } from "./~components/MuiSnackbar.js";
 import { MuiTableCell, MuiTableHead } from "./~components/MuiTable.js";
@@ -210,14 +215,14 @@ function createTheme() {
 					slotProps: { title: { component: Role.h2 } },
 				},
 			},
-			MuiCardMedia: { defaultProps: { component: Role.div } },
+			MuiCardMedia: { defaultProps: { component: MuiCardMedia } },
 			MuiCheckbox: {
 				defaultProps: {
 					component: Role.span,
 					disableRipple: true, // Checkbox doesn't inherit from ButtonBase
-					icon: <></>,
-					checkedIcon: <></>,
-					indeterminateIcon: <></>,
+					icon: <Nothing />,
+					checkedIcon: <Nothing />,
+					indeterminateIcon: <Nothing />,
 				},
 			},
 			MuiChip: {
@@ -235,7 +240,7 @@ function createTheme() {
 			MuiDialog: { defaultProps: { component: Role.div } },
 			MuiDialogContentText: { defaultProps: { component: Role.p } },
 			MuiDialogTitle: { defaultProps: { component: Role.h2 } },
-			MuiDivider: { defaultProps: { component: withRenderProp(Role, "hr") } },
+			MuiDivider: { defaultProps: { component: MuiDivider } },
 			MuiDrawer: { defaultProps: { component: Role.div } },
 			MuiFab: {
 				defaultProps: {
@@ -313,9 +318,11 @@ function createTheme() {
 					notched: false, // Removes masked border from Select
 				},
 			},
+			MuiPagination: { defaultProps: { shape: "rounded" } },
 			MuiPaginationItem: {
 				defaultProps: {
 					component: MuiButtonBase,
+					shape: "rounded",
 					slots: {
 						previous: ChevronLeftIcon,
 						next: ChevronRightIcon,
@@ -330,8 +337,8 @@ function createTheme() {
 				defaultProps: {
 					component: Role.span,
 					disableRipple: true, // Radio doesn't inherit from ButtonBase
-					icon: <></>,
-					checkedIcon: <></>,
+					icon: <Nothing />,
+					checkedIcon: <Nothing />,
 				},
 			},
 			MuiRating: { defaultProps: { component: Role.span } },
@@ -367,7 +374,10 @@ function createTheme() {
 			MuiTabs: { defaultProps: { component: Role.div } },
 			MuiTable: { defaultProps: { component: withRenderProp(Role, "table") } },
 			MuiTableBody: {
-				defaultProps: { component: withRenderProp(Role, "tbody") },
+				defaultProps: {
+					component: withRenderProp(Role, "tbody"),
+					role: undefined, // Removing role="rowgroup". See https://github.com/iTwin/stratakit/pull/1361
+				},
 			},
 			MuiTableCell: { defaultProps: { component: MuiTableCell } },
 			MuiTableContainer: {
@@ -446,6 +456,13 @@ function withRenderProp(
 	return React.forwardRef<HTMLDivElement, RoleProps>((props, forwardedRef) => {
 		return <Role render={<DefaultTagName />} {...props} ref={forwardedRef} />;
 	});
+}
+
+// ----------------------------------------------------------------------------
+
+/** Ignores all passed in props and renders nothing. */
+function Nothing() {
+	return null;
 }
 
 // ----------------------------------------------------------------------------

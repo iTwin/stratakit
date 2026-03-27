@@ -46,7 +46,7 @@ Since the **IconButton’s** tooltip represents its principle label, choose a `l
 
 - Use **IconButton** `label` prop to automatically apply **Tooltip**.
 - Use **Tooltips** as descriptions for **Button** elements, supplementing the **Button’s** existing label.
-- Keep tooltip content **brief**, **relevant**, and **helpful**.
+- Keep tooltip content _brief_, _relevant_, and _helpful_.
 
 ## 🚫 Don’t
 

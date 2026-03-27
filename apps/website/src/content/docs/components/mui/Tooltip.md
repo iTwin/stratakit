@@ -12,15 +12,16 @@ links:
 
 Make sure the **Tooltip** is suitable for your use case. In some cases, a static text label is preferred. In others, the **Tooltip** can supplement a static text label. For [**IconButton**](/components/iconbutton), **Tooltip** is the only labeling mechanism available, and it is invoked using the `label` prop’.
 
-| Use case                                                                | [Tooltip](/components/tooltip) | Static text     |
-| ----------------------------------------------------------------------- | ------------------------------ | --------------- |
-| [IconButton](/components/iconbutton) (**Tooltip** via the `label` prop) | ✅ (required)                  | ❌              |
-| [Button](/components/button) or [Link](/components/Link)            | ✅ (optional)                  | ✅ (required)   |
-| [TextBox](/components/textbox) _primary label_                          | ❌                             | ✅ (required)   |
-| [TextBox](/components/textbox) _validation hints_                       | ✅ (or static text)            | ✅ (or tooltip) |
-| [TextBox](/components/textbox) and other input _descriptions_           | ❌                             | ✅              |
-| Text longer than a short phrase or sentence                             | ❌                             | ✅              |
-| Mobile-first interfaces, where `hover` is not available                 | ❌                             | ✅              |
+| Use case                                                                | [Tooltip](/components/tooltip) | [Popover](/components/popover) | Static text   |
+| ----------------------------------------------------------------------- | ------------------------------ | ------------------------------ | ------------- |
+| [IconButton](/components/iconbutton) (**Tooltip** via the `label` prop) | ✅ (required)                  | ✅ (optional)                  | ❌            |
+| [Button](/components/button) or [Link](/components/Link)                | ✅ (optional)                  | ✅ (optional)                  | ✅ (required) |
+| [TextBox](/components/textbox) _primary label_                          | ❌                             | ❌                             | ✅ (required) |
+| [TextBox](/components/textbox) _validation hints_                       | ✅                             | ❌                             | ✅            |
+| [TextBox](/components/textbox) and other input _descriptions_           | ❌                             | ❌                             | ✅            |
+| Text longer than a short phrase or sentence                             | ❌                             | ✅                             | ✅            |
+| Mobile-first interfaces, where `hover` is not available                 | ❌                             | ❌                             | ✅            |
+| Rich, structured and interactive content                                | ❌                             | ✅                             | ❌            |
 
 ## StrataKit MUI modifications
 

@@ -24,7 +24,7 @@ Make sure the **Tooltip** is suitable for your use case. In some cases, a static
 
 ## StrataKit MUI modifications
 
-- The `describeChild` prop defaults to `true`.
+- The [`describeChild`](https://mui.com/material-ui/api/tooltip/#tooltip-prop-describeChild) prop defaults to `true`.
 
 ## Examples
 

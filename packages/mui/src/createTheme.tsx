@@ -9,7 +9,11 @@ import OutlinedInput from "@mui/material/OutlinedInput";
 import { createTheme as createMuiTheme } from "@mui/material/styles";
 import { MuiBadge } from "./~components/MuiBadge.js";
 import { MuiButtonBase } from "./~components/MuiButtonBase.js";
-import { MuiCard, MuiCardActionArea } from "./~components/MuiCard.js";
+import {
+	MuiCard,
+	MuiCardActionArea,
+	MuiCardMedia,
+} from "./~components/MuiCard.js";
 import {
 	MuiChip,
 	MuiChipDeleteIcon,
@@ -211,14 +215,14 @@ function createTheme() {
 					slotProps: { title: { component: Role.h2 } },
 				},
 			},
-			MuiCardMedia: { defaultProps: { component: Role.div } },
+			MuiCardMedia: { defaultProps: { component: MuiCardMedia } },
 			MuiCheckbox: {
 				defaultProps: {
 					component: Role.span,
 					disableRipple: true, // Checkbox doesn't inherit from ButtonBase
-					icon: <></>,
-					checkedIcon: <></>,
-					indeterminateIcon: <></>,
+					icon: <Nothing />,
+					checkedIcon: <Nothing />,
+					indeterminateIcon: <Nothing />,
 				},
 			},
 			MuiChip: {
@@ -314,9 +318,11 @@ function createTheme() {
 					notched: false, // Removes masked border from Select
 				},
 			},
+			MuiPagination: { defaultProps: { shape: "rounded" } },
 			MuiPaginationItem: {
 				defaultProps: {
 					component: MuiButtonBase,
+					shape: "rounded",
 					slots: {
 						previous: ChevronLeftIcon,
 						next: ChevronRightIcon,
@@ -331,8 +337,8 @@ function createTheme() {
 				defaultProps: {
 					component: Role.span,
 					disableRipple: true, // Radio doesn't inherit from ButtonBase
-					icon: <></>,
-					checkedIcon: <></>,
+					icon: <Nothing />,
+					checkedIcon: <Nothing />,
 				},
 			},
 			MuiRating: { defaultProps: { component: Role.span } },
@@ -450,6 +456,13 @@ function withRenderProp(
 	return React.forwardRef<HTMLDivElement, RoleProps>((props, forwardedRef) => {
 		return <Role render={<DefaultTagName />} {...props} ref={forwardedRef} />;
 	});
+}
+
+// ----------------------------------------------------------------------------
+
+/** Ignores all passed in props and renders nothing. */
+function Nothing() {
+	return null;
 }
 
 // ----------------------------------------------------------------------------

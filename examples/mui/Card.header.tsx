@@ -29,10 +29,13 @@ export default () => {
 			/>
 			<CardMedia
 				className={styles.media}
-				component="img"
-				height="140"
-				image="https://images.unsplash.com/photo-1489944440615-453fc2b6a9a9"
-				alt=""
+				render={
+					<img
+						height="140"
+						src="https://images.unsplash.com/photo-1489944440615-453fc2b6a9a9"
+						alt=""
+					/>
+				}
 			/>
 			<CardContent>
 				<Typography variant="body2" color="text.secondary">

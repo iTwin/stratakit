@@ -31,7 +31,7 @@ Make sure the **Radio** is suitable for your use case. There may be other, more 
 
 ### Default value
 
-Use the `defaultValue` prop to define which radio button is selected initially. Alternatively, use the `value` and `onChange` props to control the value state.
+Use the `defaultValue` prop of the `RadioGroup` component to define which radio button is selected initially. Alternatively, use the `value` and `onChange` props to control the value state.
 
 ::example{src="mui/RadioGroup.defaultValue" min-height="200px"}
 

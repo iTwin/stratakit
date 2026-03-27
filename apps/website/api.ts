@@ -22,7 +22,7 @@ const repoPath = process.env.REPO_PATH || "../..";
 const packageNames = ["mui", "foundations", "bricks", "structures"];
 
 const baseTypeNames = ["BaseProps", "FocusableProps"];
-const utilityFunctions = ["loadFoundationsStyles", "createTheme"];
+const utilityFunctions = ["loadFoundationsStyles"];
 
 type Api = Api.Package[];
 

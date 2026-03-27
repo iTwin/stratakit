@@ -15,10 +15,10 @@ Make sure the **Tooltip** is suitable for your use case. In some cases, a static
 | Use case                                                                | [Tooltip](/components/tooltip) | [Popover](/components/popover) | Static text   |
 | ----------------------------------------------------------------------- | ------------------------------ | ------------------------------ | ------------- |
 | [IconButton](/components/iconbutton) (**Tooltip** via the `label` prop) | ✅ (required)                  | ✅ (optional)                  | ❌            |
-| [Button](/components/button) or [Link](/components/Link)                | ✅ (optional)                  | ✅ (optional)                  | ✅ (required) |
-| [TextBox](/components/textbox) _primary label_                          | ❌                             | ❌                             | ✅ (required) |
-| [TextBox](/components/textbox) _validation hints_                       | ✅                             | ❌                             | ✅            |
-| [TextBox](/components/textbox) and other input _descriptions_           | ❌                             | ❌                             | ✅            |
+| [Button](/components/button) or [Link](/components/link)                | ✅ (optional)                  | ✅ (optional)                  | ✅ (required) |
+| [TextField](/components/textfield) _primary label_                          | ❌                             | ❌                             | ✅ (required) |
+| [TextField](/components/textfield) _validation hints_                       | ✅                             | ❌                             | ✅            |
+| [TextField](/components/textfield) and other input _descriptions_           | ❌                             | ❌                             | ✅            |
 | Text longer than a short phrase or sentence                             | ❌                             | ✅                             | ✅            |
 | Mobile-first interfaces, where `hover` is not available                 | ❌                             | ❌                             | ✅            |
 | Rich, structured and interactive content                                | ❌                             | ✅                             | ❌            |

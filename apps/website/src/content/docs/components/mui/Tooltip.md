@@ -53,6 +53,6 @@ Since the **IconButton’s** tooltip represents its principle label, choose a `l
 
 - Don’t use **Tooltips** around static elements (e.g. `<div>` or `<span>`).
 - Don’t place interactive elements _inside_ the **Tooltip** content. Use [**Popover**](/components/popover) instead.
-- Don’t use tooltips for the labels or descriptions of form inputs. Use inline text elements instead.
-- Don’t use tooltips for revealing truncated text.
+- Don’t use **Tooltips** for the labels or descriptions of form inputs. Use inline text elements instead.
+- Don’t use **Tooltips** for revealing truncated text.
 - Don’t omit a programmatically associated label or description unless an [accessible label/name](https://developer.mozilla.org/en-US/docs/Glossary/Accessible_name) is in place by other means.

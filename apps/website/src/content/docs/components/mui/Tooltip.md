@@ -15,7 +15,7 @@ Make sure the **Tooltip** is suitable for your use case. In some cases, a static
 | Use case                                                                | [Tooltip](/components/tooltip) | Static text     |
 | ----------------------------------------------------------------------- | ------------------------------ | --------------- |
 | [IconButton](/components/iconbutton) (**Tooltip** via the `label` prop) | ✅ (required)                  | ❌              |
-| [Button](/components/button) or [Anchor](/components/anchor)            | ✅ (optional)                  | ✅ (required)   |
+| [Button](/components/button) or [Link](/components/Link)            | ✅ (optional)                  | ✅ (required)   |
 | [TextBox](/components/textbox) _primary label_                          | ❌                             | ✅ (required)   |
 | [TextBox](/components/textbox) _validation hints_                       | ✅ (or static text)            | ✅ (or tooltip) |
 | [TextBox](/components/textbox) and other input _descriptions_           | ❌                             | ✅              |

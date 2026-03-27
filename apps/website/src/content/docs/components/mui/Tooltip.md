@@ -36,7 +36,7 @@ Use the `describeChild` prop to provide an accessible label via [`aria-label`](h
 
 ### IconButton
 
-The **Tooltip** is integrated into the [**IconButton**](/components/iconbutton) component and available via the `label` prop. The **Tooltip** component is not needed.
+The **Tooltip** is integrated into the [**IconButton**](/components/iconbutton) component and available via the `label` prop. The **Tooltip** component is _not_ needed.
 
 Since the **IconButton’s** tooltip represents its principle label, choose a `label` value that adequately explains the **IconButton’s** purpose.
 

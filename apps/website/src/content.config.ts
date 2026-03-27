@@ -38,6 +38,9 @@ export const collections = {
 		}),
 		schema: docsSchema({
 			extend: z.object({
+				status: z
+					.enum(["draft", "unstable", "stable", "deprecated", "unknown"])
+					.optional(),
 				links: z
 					.object({
 						muiDocs: z.string().optional(),

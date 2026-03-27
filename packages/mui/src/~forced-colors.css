@@ -20,6 +20,26 @@
 	border: 1px solid CanvasText;
 }
 
+.MuiBottomNavigationAction-root {
+	&:where(.Mui-selected) {
+		color: SelectedItemText;
+	}
+}
+
+.MuiBottomNavigationAction-content {
+	:where(.MuiBottomNavigationAction-root.Mui-selected) & {
+		&::before {
+			background-color: SelectedItem;
+			border-color: SelectedItemText;
+		}
+	}
+}
+.MuiBottomNavigationAction-label {
+	&:where(.Mui-selected) {
+		forced-color-adjust: none; /* removing the backplate */
+	}
+}
+
 :is(.MuiButton-root, .MuiIconButton-root) {
 	background-color: ButtonFace;
 	border: 1px solid ButtonBorder;

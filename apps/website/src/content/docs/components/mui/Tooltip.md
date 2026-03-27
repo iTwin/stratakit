@@ -20,7 +20,7 @@ Make sure the **Tooltip** is suitable for your use case. In some cases, a static
 | [TextField](/components/textfield) _validation hints_                       | ✅                             | ❌                             | ✅            |
 | [TextField](/components/textfield) and other input _descriptions_           | ❌                             | ❌                             | ✅            |
 | Text longer than a short phrase or sentence                             | ❌                             | ✅                             | ✅            |
-| Mobile-first interfaces, where `hover` is not available                 | ❌                             | ❌                             | ✅            |
+| Mobile-first interfaces, where `:hover` is not available                | ❌                             | ❌                             | ✅            |
 | Rich, structured and interactive content                                | ❌                             | ✅                             | ❌            |
 
 ## StrataKit MUI modifications

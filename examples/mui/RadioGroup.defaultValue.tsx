@@ -17,9 +17,6 @@ export default () => {
 				name="design-system"
 				role={undefined}
 				defaultValue="StrataKit"
-				onChange={(_, value) => {
-					console.log("onChange", value);
-				}}
 			>
 				<FormControlLabel
 					value="StrataKit"

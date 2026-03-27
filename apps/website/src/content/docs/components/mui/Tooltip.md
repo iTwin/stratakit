@@ -12,16 +12,16 @@ links:
 
 Make sure the **Tooltip** is suitable for your use case. In some cases, a static text label is preferred. In others, the **Tooltip** can supplement a static text label. For [**IconButton**](/components/iconbutton), **Tooltip** is the only labeling mechanism available, and it is invoked using the `label` prop.
 
-| Use case                                                                | [Tooltip](/components/tooltip) | [Popover](/components/popover) | Static text   |
-| ----------------------------------------------------------------------- | ------------------------------ | ------------------------------ | ------------- |
-| [IconButton](/components/iconbutton) (**Tooltip** via the `label` prop) | ✅ (required)                  | ✅ (optional)                  | ❌            |
-| [Button](/components/button) or [Link](/components/link)                | ✅ (optional)                  | ✅ (optional)                  | ✅ (required) |
-| [TextField](/components/textfield) _primary label_                          | ❌                             | ❌                             | ✅ (required) |
-| [TextField](/components/textfield) _validation hints_                       | ✅                             | ❌                             | ✅            |
-| [TextField](/components/textfield) and other input _descriptions_           | ❌                             | ❌                             | ✅            |
-| Text longer than a short phrase or sentence                             | ❌                             | ✅                             | ✅            |
-| Mobile-first interfaces, where `:hover` is not available                | ❌                             | ❌                             | ✅            |
-| Rich, structured and interactive content                                | ❌                             | ✅                             | ❌            |
+| Use case                                                          | [Tooltip](/components/tooltip)     | [Popover](/components/popover) | Static text   |
+| ----------------------------------------------------------------- | ---------------------------------- | ------------------------------ | ------------- |
+| [IconButton](/components/iconbutton) _primary label_              | ✅ (required via the `label` prop) | ❌                             | ❌            |
+| [Button](/components/button) or [Link](/components/link)          | ✅ (optional)                      | ✅ (optional)                  | ✅ (required) |
+| [TextField](/components/textfield) _primary label_                | ❌                                 | ❌                             | ✅ (required) |
+| [TextField](/components/textfield) _validation hints_             | ✅                                 | ❌                             | ✅            |
+| [TextField](/components/textfield) and other input _descriptions_ | ❌                                 | ❌                             | ✅            |
+| Text longer than a short phrase or sentence                       | ❌                                 | ✅                             | ✅            |
+| Mobile-first interfaces, where `:hover` is not available          | ❌                                 | ❌                             | ✅            |
+| Rich, structured and interactive content                          | ❌                                 | ✅                             | ❌            |
 
 ## StrataKit MUI modifications
 

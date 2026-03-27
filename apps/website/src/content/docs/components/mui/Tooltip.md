@@ -10,7 +10,7 @@ links:
 
 ## Use cases
 
-Make sure the **Tooltip** is suitable for your use case. In some cases, a static text label is preferred. In others, the **Tooltip** can supplement a static text label. For [**IconButton**](/components/iconbutton), **Tooltip** is the only labeling mechanism available, and it is invoked using the `label` prop’.
+Make sure the **Tooltip** is suitable for your use case. In some cases, a static text label is preferred. In others, the **Tooltip** can supplement a static text label. For [**IconButton**](/components/iconbutton), **Tooltip** is the only labeling mechanism available, and it is invoked using the `label` prop.
 
 | Use case                                                                | [Tooltip](/components/tooltip) | [Popover](/components/popover) | Static text   |
 | ----------------------------------------------------------------------- | ------------------------------ | ------------------------------ | ------------- |

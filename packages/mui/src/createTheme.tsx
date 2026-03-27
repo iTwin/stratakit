@@ -318,9 +318,11 @@ function createTheme() {
 					notched: false, // Removes masked border from Select
 				},
 			},
+			MuiPagination: { defaultProps: { shape: "rounded" } },
 			MuiPaginationItem: {
 				defaultProps: {
 					component: MuiButtonBase,
+					shape: "rounded",
 					slots: {
 						previous: ChevronLeftIcon,
 						next: ChevronRightIcon,

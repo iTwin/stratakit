@@ -11,7 +11,7 @@ import svgUser from "@stratakit/icons/user.svg";
 
 export default () => {
 	return (
-		<Tooltip title="User settings" describeChild={false}>
+		<Tooltip title="User profile" describeChild={false}>
 			<button>
 				<Avatar>
 					<Icon href={svgUser} />

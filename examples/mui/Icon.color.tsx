@@ -5,9 +5,9 @@
 
 import { Icon } from "@stratakit/mui";
 
-import svgLayers from "@stratakit/icons/layers.svg";
+import svgError from "@stratakit/icons/error.svg";
 import styles from "./Icon.color.module.css";
 
 export default () => {
-	return <Icon className={styles.icon} href={svgLayers} />;
+	return <Icon className={styles.icon} href={svgError} />;
 };

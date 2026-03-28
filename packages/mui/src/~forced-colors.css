@@ -11,12 +11,12 @@
 	border: 1px solid;
 }
 
-.MuiBadge-root {
-	&:where([data-_sk-inline]) .MuiBadge-badge {
+.MuiBadge-badge {
+	:where(.MuiBadge-root[data-_sk-inline]) & {
 		border: 1px solid;
 	}
 
-	&:where(:not([data-_sk-inline])) .MuiBadge-badge {
+	:where(.MuiBadge-root:not([data-_sk-inline])) & {
 		forced-color-adjust: none;
 		background-color: Highlight;
 		color: HighlightText;

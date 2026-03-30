@@ -6,7 +6,6 @@
 import * as React from "react";
 import { Icon } from "@stratakit/foundations";
 import { Tree } from "@stratakit/structures";
-import { useVirtualizer } from "@tanstack/react-virtual";
 import { produce } from "immer";
 import { definePage } from "~/~utils.tsx";
 
@@ -214,7 +213,6 @@ export default definePage(
 	{
 		actions: ActionsTest,
 		_expansion: ExpansionTest,
-		virtual: VirtualTest,
 	},
 );
 interface ItemActionProps extends React.ComponentProps<typeof Tree.ItemAction> {
@@ -302,85 +300,5 @@ function ExpansionTest({ selectable }: VariantProps) {
 				</>
 			)}
 		</Tree.Root>
-	);
-}
-
-interface VirtualTreeItem {
-	icon: string;
-	position: number;
-	label: string;
-	id: string;
-}
-
-const numOfNodes = 100;
-
-const items: VirtualTreeItem[] = Array.from({ length: numOfNodes }).map(
-	(_, idx) => {
-		const position = idx + 1;
-		return {
-			icon: svgShow,
-			label: `Node ${position}`,
-			id: `${position}`,
-			position,
-		};
-	},
-);
-
-function VirtualTest() {
-	const parentRef = React.useRef<HTMLDivElement>(null);
-	const virtualizer = useVirtualizer({
-		count: items.length,
-		getScrollElement: () => parentRef.current,
-		getItemKey: React.useCallback((index: number) => items[index].id, [items]),
-		estimateSize: () => 28,
-		overscan: 10,
-	});
-	return (
-		<div
-			style={{ height: "400px", width: "100%", overflowY: "auto" }}
-			ref={parentRef}
-		>
-			<Tree.Root
-				style={{
-					height: virtualizer.getTotalSize(),
-					minHeight: "100%",
-					width: "100%",
-					position: "relative",
-					overflow: "visible",
-				}}
-			>
-				{virtualizer.getVirtualItems().map((virtualizedItem) => {
-					const item = items[virtualizedItem.index];
-					return (
-						<Tree.Item
-							ref={virtualizer.measureElement}
-							key={item.id}
-							data-index={virtualizedItem.index}
-							style={{
-								position: "absolute",
-								top: 0,
-								left: 0,
-								width: "100%",
-								transform: `translateY(${virtualizedItem.start}px)`,
-								willChange: "transform",
-							}}
-							id={item.id}
-							label={item.label}
-							aria-level={1}
-							aria-posinset={item.position}
-							aria-setsize={numOfNodes}
-							inlineActions={[
-								<Tree.ItemAction
-									key={0}
-									label="Hide"
-									icon={item.icon}
-									visible={true}
-								/>,
-							]}
-						/>
-					);
-				})}
-			</Tree.Root>
-		</div>
 	);
 }

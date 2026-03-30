@@ -1,1 +1,0 @@
-import{j as t}from"./client.C6H3lIzF.js";import{A as r}from"./Alert.DOsoWknx.js";import"./styles.internal.CPbvgKR0.js";import"./createSvgIcon.LNGXy8Q0.js";import"./Close.DgBVFObz.js";import"./Paper.ZO1VdKPu.js";const n=()=>t.jsx(r,{children:"Here is a gentle confirmation that your action was successful."});export{n as default};

@@ -32,9 +32,14 @@
 }
 
 .MuiAutocomplete-endAdornment {
-	inset-inline-end: -1px; /* Account for 1px border on input. */
+	inset-inline-end: calc(-1px + var(--stratakit-space-x1)); /* Account for 1px border on input. */
 
 	> * {
 		margin-inline-end: 0; /* MUI applies `-2px` */
 	}
+}
+
+.MuiAutocomplete-option {
+	@apply --typography("body-md");
+	min-block-size: var(--stratakit-size-control-listitem-height-small);
 }

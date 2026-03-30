@@ -154,8 +154,15 @@ function createTheme() {
 						paper: {
 							elevation: 8, // match Menu elevation
 						},
+						chip: {
+							size: "small",
+						},
 						clearIndicator: {
 							tabIndex: 0, // make clear indicator focusable
+							size: "small",
+						},
+						popupIndicator: {
+							size: "small",
 						},
 					},
 				},

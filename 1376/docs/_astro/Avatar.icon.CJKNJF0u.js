@@ -1,1 +1,0 @@
-import{j as r,I as t}from"./client.R1v5E7By.js";import{s as a}from"./user.BFDqx1aG.js";import{A as o}from"./Avatar.CxBniH-v.js";import"./styles.internal.CPbvgKR0.js";import"./createSvgIcon.CR-bzBui.js";const p=()=>r.jsx(o,{"aria-label":"Kit Stratan",role:"img",children:r.jsx(t,{href:a})});export{p as default};

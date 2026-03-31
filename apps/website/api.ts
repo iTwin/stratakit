@@ -7,6 +7,7 @@ import * as fs from "node:fs";
 import {
 	type CallExpression,
 	type JSDoc,
+	type JSDocableNode,
 	Project,
 	type PropertySignature,
 	type SourceFile,
@@ -53,6 +54,7 @@ namespace Api {
 		 * Dot separated if star export: `unstable_ErrorRegion.Root`
 		 */
 		barrelName?: string;
+		deprecated?: boolean;
 	}
 
 	export interface Type {
@@ -311,12 +313,14 @@ function getComponent({ exportSymbol }: { exportSymbol: TSMorphSymbol }) {
 		declaration.getFirstAncestorByKind(SyntaxKind.VariableStatement) ??
 		declaration.asKind(SyntaxKind.FunctionDeclaration);
 	const jsdoc = statement?.getJsDocs().at(0);
+	const deprecated = statement ? getDeprecated(statement) : false;
 	return {
 		name,
 		baseProps,
 		props,
 		baseElement,
 		jsdoc: getJsdocComment(jsdoc),
+		...(deprecated ? { deprecated } : {}),
 	} satisfies Api.Component;
 }
 
@@ -585,6 +589,15 @@ function getBaseTypeName(type: TSMorphType) {
 		);
 		return text.startsWith(baseTypeName);
 	});
+}
+
+function getDeprecated(node: JSDocableNode) {
+	const jsdoc = node.getJsDocs().at(0);
+	if (!jsdoc) return false;
+	const deprecated = jsdoc
+		.getTags()
+		.find((tag) => tag.getTagName() === "deprecated");
+	return !!deprecated;
 }
 
 generateApi();

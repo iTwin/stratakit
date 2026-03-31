@@ -1,0 +1,8 @@
+---
+title: NavigationRail
+description: Navigation rails are used for primary navigation in an app.
+links:
+  apiReference: /reference/structures/NavigationRail
+---
+
+::example{src="structures/NavigationRail.default" min-height="200px" min-width="450px"}

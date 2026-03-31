@@ -21,16 +21,13 @@ const require = createRequire(import.meta.url);
 export const collections = {
 	docs: defineCollection({
 		loader: docsLoader({
-			generateId: (options) => {
-				if (typeof options.data.slug === "string") return options.data.slug;
-
-				const { entry } = options;
+			generateId: ({ entry }) => {
 				const parsed = path.posix.parse(entry);
 				const segments = parsed.dir.split("/").filter(Boolean);
 
-				// Drop (flatten) intermediate folders under components/*
+				// Drop (flatten) components/mui/* folder
 				// e.g. components/mui/Button -> components/Button
-				if (segments[0] === "components" && segments.length > 1) {
+				if (segments[0] === "components" && segments[1] === "mui") {
 					segments.splice(1);
 				}
 

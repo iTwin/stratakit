@@ -81,6 +81,7 @@
 	&:where(.Mui-selected:not(.Mui-disabled)) {
 		forced-color-adjust: none; /* removing the backplate */
 		background-color: SelectedItem;
+		border: 1px solid SelectedItemText;
 		color: SelectedItemText;
 		--🥝Icon-color: SelectedItemText;
 	}

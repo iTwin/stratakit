@@ -151,7 +151,7 @@ function packagesSchema() {
 				exportName: z.string().optional(),
 				convenience: component.optional(),
 				composition: z.array(component),
-				status: z.enum(["unstable", "stable"]).optional(),
+				status: z.enum(["unstable", "stable", "deprecated"]).optional(),
 				types: z
 					.array(
 						z.object({
@@ -374,6 +374,15 @@ function getPropId({
 
 function getApiStatus(api: Api.Api) {
 	if (api.types && api.types.length > 0) return undefined;
+	const components = [
+		...api.composition,
+		...(api.convenience ? [api.convenience] : []),
+	];
+	const deprecated =
+		components.length > 0
+			? !components.some((component) => !component.deprecated)
+			: false;
+	if (deprecated) return "deprecated";
 	return api.exportName?.startsWith("unstable_")
 		? ("unstable" as const)
 		: ("stable" as const);

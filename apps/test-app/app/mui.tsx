@@ -114,6 +114,7 @@ import ToggleButtonDefault from "examples/mui/ToggleButton.default.tsx";
 import TooltipDefault from "examples/mui/Tooltip.default.tsx";
 import TypographyVariants_ from "examples/mui/Typography._variants.tsx";
 import TypographyDefault from "examples/mui/Typography.default.tsx";
+import ToolbarDefault from "examples/structures/Toolbar.mui.tsx";
 import { SkipLinkContext } from "./~navigation.tsx";
 import { isProduction, useIsWideScreen } from "./~utils.tsx";
 
@@ -362,6 +363,7 @@ const components: Record<string, React.ReactNode> = {
 		</Stack>
 	),
 	ToggleButton: <ToggleButtonDefault />,
+	Toolbar: <ToolbarDefault />,
 	Tooltip: <TooltipDefault />,
 	Typography: (
 		<>

@@ -1,7 +1,7 @@
 ---
 title: Tabs
 description: Tabs are used to alternate between views.
-slug: components/stratakit-tabs
+slug: components/tabs-stratakit
 links:
   apiReference: /reference/structures/Tabs
 ---

@@ -1,6 +1,6 @@
 ---
 title: Table
-slug: components/stratakit-table
+slug: components/table-stratakit
 description: Tables are used to display information from a data set.
 links:
   apiReference: /reference/structures/Table

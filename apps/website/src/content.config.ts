@@ -21,7 +21,10 @@ const require = createRequire(import.meta.url);
 export const collections = {
 	docs: defineCollection({
 		loader: docsLoader({
-			generateId: ({ entry }) => {
+			generateId: (options) => {
+				if (typeof options.data.slug === "string") return options.data.slug;
+
+				const { entry } = options;
 				const parsed = path.posix.parse(entry);
 				const segments = parsed.dir.split("/").filter(Boolean);
 

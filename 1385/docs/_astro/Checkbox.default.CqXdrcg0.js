@@ -1,0 +1,1 @@
+import{j as o}from"./client.DAor-ro5.js";import{F as r}from"./FormControlLabel.BSqCWxC6.js";import{C as t}from"./Checkbox.BJO3xRte.js";import"./styles.internal.CPbvgKR0.js";import"./Typography.C9UMmCl5.js";import"./createSvgIcon.BVgqOwRd.js";import"./mergeSlotProps.QOiTtvS-.js";const n=()=>o.jsx(r,{control:o.jsx(t,{}),label:"Don't show again"});export{n as default};

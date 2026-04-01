@@ -141,6 +141,7 @@ function packagesSchema() {
 		baseProps: z.array(z.string()),
 		props,
 		barrelName: z.string().optional(),
+		deprecated: z.boolean().optional(),
 	});
 	return z.object({
 		name: z.string(),

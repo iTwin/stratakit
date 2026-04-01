@@ -17,14 +17,6 @@ packages.sort((a, b) => {
 	return 0;
 });
 
-for (const pkg of packages) {
-	pkg.data.apis = pkg.data.apis.sort((a, b) => {
-		if (a.status === "deprecated" && b.status !== "deprecated") return 1;
-		if (a.status !== "deprecated" && b.status === "deprecated") return -1;
-		return a.name.localeCompare(b.name);
-	});
-}
-
 const headings = packages.map((pkg) => ({
 	depth: 2 as const,
 	slug: pkg.data.name,

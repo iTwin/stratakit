@@ -20,6 +20,7 @@
 @import "./~components/MuiIconButton.css";
 @import "./~components/MuiInput.css";
 @import "./~components/MuiList.css";
+@import "./~components/MuiMenu.css";
 @import "./~components/MuiSlider.css";
 @import "./~components/MuiStepper.css";
 @import "./~components/MuiSwitch.css";
@@ -52,18 +53,6 @@
 
 	&:where(:hover, :focus-visible) {
 		text-underline-offset: var(--stratakit-space-x1);
-	}
-}
-
-.MuiMenuItem-root {
-	&:where(.Mui-selected) {
-		border-block: 1px solid var(--stratakit-color-border-accent-strong);
-		background-color: var(--stratakit-color-bg-glow-on-surface-accent-pressed);
-		color: var(--stratakit-color-text-accent-strong);
-	}
-
-	&:where(.Mui-focusVisible) {
-		outline-offset: -2px;
 	}
 }
 

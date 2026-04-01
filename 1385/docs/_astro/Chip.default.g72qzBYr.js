@@ -1,1 +1,0 @@
-import{j as t}from"./client.DAor-ro5.js";import{C as r}from"./Chip.CENu5kgi.js";import"./styles.internal.CPbvgKR0.js";import"./createSvgIcon.BVgqOwRd.js";const e=()=>t.jsx(r,{label:"Default Chip"});export{e as default};

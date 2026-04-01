@@ -1,0 +1,17 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+
+/* #region Standalone example styles. */
+
+:global(html:has(example-preview[example-name="NavigationRail.default"])) {
+	height: 100%;
+
+	body {
+		height: 100%;
+		padding: 0;
+	}
+}
+
+/* #endregion */

@@ -12,6 +12,7 @@ links:
 
 - Restyled using StrataKit's visual language.
 - The `"standard"` variant has been removed. The default variant is now `"outlined"`.
+- The [`role="alert"`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/alert_role) has been removed. The **Alert** will no longer create a [live region](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Guides/Live_regions) by default.
 
 ## Examples
 

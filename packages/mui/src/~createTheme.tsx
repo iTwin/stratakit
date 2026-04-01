@@ -137,6 +137,11 @@ function createTheme() {
 						success: <SuccessIcon />,
 						warning: <WarningIcon />,
 					},
+					slotProps: {
+						root: {
+							role: undefined, // Removing role="alert".
+						},
+					},
 				},
 			},
 			MuiAlertTitle: { defaultProps: { component: Role.div } },

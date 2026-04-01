@@ -5,4 +5,4 @@ links:
   apiReference: /reference/structures/NavigationList
 ---
 
-::example{src="structures/NavigationList.default"}
+::example{src="structures/NavigationList.default" min-height="200px"}

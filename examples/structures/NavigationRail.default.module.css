@@ -5,6 +5,7 @@
 
 /* #region Standalone example styles. */
 
+/* biome-ignore lint/correctness/noUnknownPseudoClass: switch to global scope */
 :global(html:has(example-preview[example-name="NavigationRail.default"])) {
 	height: 100%;
 

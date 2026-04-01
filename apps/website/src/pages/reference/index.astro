@@ -43,7 +43,7 @@ const headings = packages.map((pkg) => ({
 									<a href={`${import.meta.env.BASE_URL}/reference/${pkg.id}/${api.name}`}>
 										{api.exportName ?? api.name}
 									</a>{" "}
-									{api.status === "deprecated" && "(deprecated)"}
+									{api.status === "deprecated" && <Badge variant="danger" text="Deprecated" />}
 								</li>
 							);
 						})}

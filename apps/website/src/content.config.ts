@@ -374,15 +374,13 @@ function getPropId({
 
 function getApiStatus(api: Api.Api) {
 	if (api.types && api.types.length > 0) return undefined;
-	const components = [
-		...api.composition,
-		...(api.convenience ? [api.convenience] : []),
-	];
+
+	const components = [...api.composition, api.convenience].filter(Boolean);
 	const deprecated =
-		components.length > 0
-			? !components.some((component) => !component.deprecated)
-			: false;
+		components.length > 0 &&
+		components.every((component) => component?.deprecated);
 	if (deprecated) return "deprecated";
+
 	return api.exportName?.startsWith("unstable_")
 		? ("unstable" as const)
 		: ("stable" as const);

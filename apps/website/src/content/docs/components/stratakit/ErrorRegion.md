@@ -5,4 +5,4 @@ links:
   apiReference: /reference/structures/ErrorRegion
 ---
 
-::example{src="structures/ErrorRegion.default" min-height="250px" min-width="450px" align-items="stretch"}
+::example{src="structures/ErrorRegion.default" min-height="250px" min-width="450px"}

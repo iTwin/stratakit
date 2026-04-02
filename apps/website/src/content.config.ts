@@ -25,9 +25,9 @@ export const collections = {
 				const parsed = path.posix.parse(entry);
 				const segments = parsed.dir.split("/").filter(Boolean);
 
-				// Drop (flatten) components/mui/* folder
+				// Drop (flatten) intermediate folders under components/*
 				// e.g. components/mui/Button -> components/Button
-				if (segments[0] === "components" && segments[1] === "mui") {
+				if (segments[0] === "components" && segments.length > 1) {
 					segments.splice(1);
 				}
 

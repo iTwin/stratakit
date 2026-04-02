@@ -193,7 +193,6 @@ function starlightLiveExamples() {
 						src,
 						"min-width": minWidth,
 						"min-height": minHeight,
-						"align-items": alignItems,
 					} = node.attributes || {};
 
 					if (!src) {
@@ -206,7 +205,6 @@ function starlightLiveExamples() {
 					const style = [
 						minWidth !== undefined && `--example-min-width: ${minWidth}`,
 						minHeight !== undefined && `--example-min-height: ${minHeight}`,
-						alignItems !== undefined && `--example-align-items: ${alignItems}`,
 					]
 						.filter(Boolean)
 						.join("; ");

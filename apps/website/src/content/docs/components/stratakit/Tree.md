@@ -5,4 +5,4 @@ links:
   apiReference: /reference/structures/Tree
 ---
 
-::example{src="structures/Tree.default" min-width="300px" min-height="325px" align-items="stretch"}
+::example{src="structures/Tree.default" min-width="300px" min-height="325px"}

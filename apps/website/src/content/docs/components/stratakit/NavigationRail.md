@@ -5,4 +5,4 @@ links:
   apiReference: /reference/structures/NavigationRail
 ---
 
-::example{src="structures/NavigationRail.default" min-height="450px" min-width="450px" align-items="stretch"}
+::example{src="structures/NavigationRail.default" min-height="450px" min-width="450px"}

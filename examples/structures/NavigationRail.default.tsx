@@ -12,51 +12,53 @@ import styles from "./NavigationRail.default.module.css";
 
 export default () => {
 	return (
-		<NavigationRail.Root className={styles.root}>
-			<NavigationRail.Header>
-				<Icon alt="Acme app" href={`${svgBentley}#icon-large`} size="large" />
-				<NavigationRail.ToggleButton />
-			</NavigationRail.Header>
+		<div className={styles.container}>
+			<NavigationRail.Root className={styles.root}>
+				<NavigationRail.Header>
+					<Icon alt="Acme app" href={`${svgBentley}#icon-large`} size="large" />
+					<NavigationRail.ToggleButton />
+				</NavigationRail.Header>
 
-			<NavigationRail.Content>
-				<NavigationRail.List>
-					<NavigationRail.ListItem>
-						<NavigationRail.Anchor
-							href="#"
-							icon={svgPlaceholder}
-							label="Item #1"
-							active
-						/>
-					</NavigationRail.ListItem>
-					<NavigationRail.ListItem>
-						<NavigationRail.Anchor
-							href="#"
-							icon={svgPlaceholder}
-							label="Item #2"
-						/>
-					</NavigationRail.ListItem>
-					<Divider presentational />
-					<NavigationRail.ListItem>
-						<NavigationRail.Anchor
-							href="#"
-							icon={svgPlaceholder}
-							label="Item #3"
-						/>
-					</NavigationRail.ListItem>
-				</NavigationRail.List>
-
-				<NavigationRail.Footer>
+				<NavigationRail.Content>
 					<NavigationRail.List>
 						<NavigationRail.ListItem>
-							<NavigationRail.Button icon={svgPlaceholder} label="Item #4" />
+							<NavigationRail.Anchor
+								href="#"
+								icon={svgPlaceholder}
+								label="Item #1"
+								active
+							/>
+						</NavigationRail.ListItem>
+						<NavigationRail.ListItem>
+							<NavigationRail.Anchor
+								href="#"
+								icon={svgPlaceholder}
+								label="Item #2"
+							/>
 						</NavigationRail.ListItem>
 						<Divider presentational />
 						<NavigationRail.ListItem>
-							<NavigationRail.Button icon={svgPlaceholder} label="Item #5" />
+							<NavigationRail.Anchor
+								href="#"
+								icon={svgPlaceholder}
+								label="Item #3"
+							/>
 						</NavigationRail.ListItem>
 					</NavigationRail.List>
-				</NavigationRail.Footer>
-			</NavigationRail.Content>
-		</NavigationRail.Root>
+
+					<NavigationRail.Footer>
+						<NavigationRail.List>
+							<NavigationRail.ListItem>
+								<NavigationRail.Button icon={svgPlaceholder} label="Item #4" />
+							</NavigationRail.ListItem>
+							<Divider presentational />
+							<NavigationRail.ListItem>
+								<NavigationRail.Button icon={svgPlaceholder} label="Item #5" />
+							</NavigationRail.ListItem>
+						</NavigationRail.List>
+					</NavigationRail.Footer>
+				</NavigationRail.Content>
+			</NavigationRail.Root>
+		</div>
 	);
 };

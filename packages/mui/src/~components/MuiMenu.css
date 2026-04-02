@@ -99,9 +99,12 @@
 	&:where(.Mui-selected) {
 		--🥝Icon-color: var(--✨color-icon--selected);
 		--_MuiMenu-item-background-color: var(--✨color-bg--selected);
-		--_MuiMenu-item-border-color: var(--✨color-border--selected);
 		--_MuiMenu-item-color: var(--✨color-text--selected);
 		--_MuiMenuItem-root-mask-image: var(--✨svg-checked);
+
+		&:where(:not(.Mui-disabled)) {
+			--_MuiMenu-item-border-color: var(--✨color-border--selected);
+		}
 	}
 
 	&:where(.Mui-disabled) {

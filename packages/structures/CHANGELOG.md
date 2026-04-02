@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.5.6
+
+### Patch Changes
+
+- [#1375](https://github.com/iTwin/stratakit/pull/1375): Fixed `Tree.Item` component to correctly render actions when virtualized.
+
 ## 0.5.5
 
 - [#1174](https://github.com/iTwin/stratakit/pull/1174): Fixed `DropdownMenu.Submenu` component to avoid removal of parent portal popover when unmounting.

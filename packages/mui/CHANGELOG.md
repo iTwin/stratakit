@@ -1,5 +1,30 @@
 # Changelog
 
+## 0.3.1
+
+### Patch Changes
+
+- [#1365](https://github.com/iTwin/stratakit/pull/1365): Updated the border-radii of `Paper`-based components. Affects `Accordion`, `Alert`, `Autocomplete`, `Card`, `Dialog`, `Menu`, `Popover`, `Snackbar`, and `Tooltip`.
+- [#1369](https://github.com/iTwin/stratakit/pull/1369): Updated styling for selected states across various components: `Autocomplete`, `ListItemButton`, `Pagination`, `Select`, `TableRow`, `ToggleButton`.
+- [#1366](https://github.com/iTwin/stratakit/pull/1366): Fixed `React.Fragment can only have "key" and "children" props.` error.
+- [#1358](https://github.com/iTwin/stratakit/pull/1358): Replaced icon used by deletable `Chip`.
+- [#1363](https://github.com/iTwin/stratakit/pull/1363): Lightly styled `Stepper` using the Strata visual design language.
+- [#1373](https://github.com/iTwin/stratakit/pull/1373): Updated `BottomNavigationAction` markup to add a wrapper element around the icon and label.
+- [#1379](https://github.com/iTwin/stratakit/pull/1379): Reduced the size of various elements inside `Autocomplete`.
+- [#1345](https://github.com/iTwin/stratakit/pull/1345): Updated `Accordion` background-color.
+- [#1314](https://github.com/iTwin/stratakit/pull/1314): Styled `Avatar` to match the Strata visual design language.
+- [#1365](https://github.com/iTwin/stratakit/pull/1365): Updated `Pagination`'s `shape` to `"rounded"`.
+- [#1368](https://github.com/iTwin/stratakit/pull/1368): Updated the font sizes used in `CardHeader`.
+- [#1361](https://github.com/iTwin/stratakit/pull/1361): Removed unnecessary `role="rowgroup"` from `TableBody`.
+- [#1373](https://github.com/iTwin/stratakit/pull/1373): Updated the selected state styling and semantics for `BottomNavigation`.
+- [#1358](https://github.com/iTwin/stratakit/pull/1358): Use global component size variables in `Chip`.
+- [#1386](https://github.com/iTwin/stratakit/pull/1386): Reduced the font-size of `MenuItem` and `Select` options.
+- [#1359](https://github.com/iTwin/stratakit/pull/1359): Fixed `Divider` to render a `<div>` when `children` is passed.
+- [#1362](https://github.com/iTwin/stratakit/pull/1362): Fixed `CardMedia` to correctly handle `render` prop.
+- [#1357](https://github.com/iTwin/stratakit/pull/1357): Fixed `ListItem` padding when used with `secondaryAction`.
+- [#1367](https://github.com/iTwin/stratakit/pull/1367): Fixed type overrides to correctly display `describeChild` customization of `Tooltip` component.
+- [#1363](https://github.com/iTwin/stratakit/pull/1363): Customized Stepper icons and styles.
+
 ## 0.3.0
 
 ### API changes

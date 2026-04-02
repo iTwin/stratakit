@@ -4,9 +4,20 @@
  *--------------------------------------------------------------------------------------------*/
 
 .MuiToggleButton-root {
+	--_MuiToggleButton-color: var(--stratakit-color-text-neutral-primary);
+	--_MuiToggleButton-icon-color: var(--stratakit-color-icon-neutral-base);
+
 	min-block-size: var(--_MuiToggleButton-height);
 	min-inline-size: var(--_MuiToggleButton-height);
 	padding: calc(var(--_MuiToggleButton-padding) - 1px); /* Account for 1px border */
+	color: var(--_MuiToggleButton-color);
+	--🥝Icon-color: var(--_MuiToggleButton-icon-color);
+
+	@media (any-hover: hover) {
+		&:where(:hover) {
+			--_MuiToggleButton-icon-color: var(--stratakit-color-icon-neutral-primary);
+		}
+	}
 
 	&:where(.MuiToggleButton-sizeSmall) {
 		@apply --typography("body-sm");
@@ -29,11 +40,16 @@
 	&:where(.Mui-selected) {
 		border-color: var(--stratakit-color-border-accent-strong);
 		background-color: var(--stratakit-color-bg-glow-on-surface-accent-pressed);
-		color: var(--stratakit-color-text-accent-strong);
-		--🥝Icon-color: var(--stratakit-color-icon-accent-strong);
+		--_MuiToggleButton-color: var(--stratakit-color-text-accent-strong);
+		--_MuiToggleButton-icon-color: var(--stratakit-color-icon-accent-strong);
 	}
 
 	&:where(:not(.MuiToggleButtonGroup-grouped)) {
 		border: 0;
+	}
+
+	&:where(.Mui-disabled) {
+		--_MuiToggleButton-color: var(--stratakit-color-text-neutral-disabled);
+		--_MuiToggleButton-icon-color: var(--stratakit-color-icon-neutral-disabled);
 	}
 }

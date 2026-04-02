@@ -143,8 +143,12 @@ function getBaseElementLink(baseElement: string) {
 				<>
 					<AnchorHeading level={heading.depth} id={heading.slug}>
 						{heading.text}
-						{" " /**/}
-						{component.deprecated && <Badge variant="danger" text="Deprecated" />}
+						{component.deprecated && (
+							<>
+								{" "}
+								<Badge variant="danger" text="Deprecated" />
+							</>
+						)}
 					</AnchorHeading>
 					{baseElement && (
 						<div>

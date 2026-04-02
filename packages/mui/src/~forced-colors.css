@@ -3,12 +3,41 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
+.MuiAutocomplete-option {
+	&:where([aria-selected="true"]:not([aria-disabled="true"])) {
+		background-color: SelectedItem;
+		border-color: SelectedItemText;
+		color: SelectedItemText;
+		forced-color-adjust: none; /* removing the backplate */
+	}
+}
+
 .MuiAvatar-root {
 	border: 1px solid;
 }
 
 .MuiBadge-badge {
 	border: 1px solid CanvasText;
+}
+
+.MuiBottomNavigationAction-root {
+	&:where(.Mui-selected) {
+		color: SelectedItemText;
+	}
+}
+
+.MuiBottomNavigationAction-content {
+	:where(.MuiBottomNavigationAction-root.Mui-selected) & {
+		&::before {
+			background-color: SelectedItem;
+			border-color: SelectedItemText;
+		}
+	}
+}
+.MuiBottomNavigationAction-label {
+	&:where(.Mui-selected) {
+		forced-color-adjust: none; /* removing the backplate */
+	}
 }
 
 :is(.MuiButton-root, .MuiIconButton-root) {
@@ -73,6 +102,15 @@
 	}
 }
 
+.MuiPaginationItem-root {
+	&:where(.Mui-selected) {
+		background-color: SelectedItem;
+		border-color: SelectedItemText;
+		color: SelectedItemText;
+		forced-color-adjust: none; /* removing the backplate */
+	}
+}
+
 .MuiSlider-root {
 	--_MuiSlider-track-background-color: SelectedItem;
 
@@ -107,6 +145,26 @@
 	}
 }
 
+.MuiStepLabel-label {
+	&:where(.Mui-error) {
+		background-color: Mark;
+		color: MarkText;
+		forced-color-adjust: none; /* removing the backplate */
+	}
+}
+
+.MuiStepIcon-root {
+	&:where(.Mui-active) {
+		border-color: SelectedItemText;
+		background-color: SelectedItem;
+		color: SelectedItemText;
+
+		&::before {
+			forced-color-adjust: none; /* removing the backplate */
+		}
+	}
+}
+
 .MuiSwitch-switchBase {
 	--_MuiSwitch-thumb-background-color: CanvasText;
 
@@ -124,5 +182,12 @@
 		+ .MuiSwitch-track {
 			--_MuiSwitch-track-border-color: GrayText;
 		}
+	}
+}
+
+.MuiToggleButton-root {
+	&:where(.Mui-selected) {
+		background-color: SelectedItem;
+		color: SelectedItemText;
 	}
 }

@@ -102,7 +102,7 @@ interface BannerRootProps extends BaseProps<"div"> {
  * ```
  *
  * @deprecated Use MUI [`Alert`](https://mui.com/material-ui/api/alert/) component instead.
- * Read [migration documentation](https://stratakit.bentley.com/docs/getting-started/migration-from-legacy-stratakit/#banner) for additional details.
+ * See [migration guide](https://stratakit.bentley.com/docs/getting-started/migration-from-legacy-stratakit/#banner).
  */
 const BannerRoot = forwardRef<"div", BannerRootProps>((props, forwardedRef) => {
 	useInit();

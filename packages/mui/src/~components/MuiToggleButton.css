@@ -32,4 +32,8 @@
 		color: var(--stratakit-color-text-accent-strong);
 		--🥝Icon-color: var(--stratakit-color-icon-accent-strong);
 	}
+
+	&:where(:not(.MuiToggleButtonGroup-grouped)) {
+		border: 0;
+	}
 }

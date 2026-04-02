@@ -11,12 +11,13 @@ links:
 ## StrataKit MUI modifications
 
 - A `label` prop has been added. When specified, it is used as the **ToggleButton’s** accessible name and is also shown in a tooltip on hover and focus.
+- [Standalone](#standalone) **ToggleButtons** are styled to match the visual appearance of the [**IconButton**](/components/iconbutton) component.
 
 ## Examples
 
 ### Standalone
 
-Use the `selected` and `onChange` props to control the selected state of a standalone `ToggleButton` component when it is not nested within a `ToggleButtonGroup`.
+Use the `selected` and `onChange` props to control the selected state of a standalone **ToggleButton** when it is not nested within a `ToggleButtonGroup` component.
 
 ::example{src="mui/ToggleButton.standalone"}
 

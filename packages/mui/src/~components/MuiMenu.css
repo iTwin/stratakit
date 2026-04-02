@@ -36,7 +36,8 @@
 
 	--✨padding--small: var(--stratakit-space-x2);
 	--✨padding--medium: var(--stratakit-space-x3);
-	--✨size: var(--stratakit-size-control-listitem-height-small);
+	--✨size--small: var(--stratakit-size-control-listitem-height-small);
+	--✨size--medium: 2rem;
 
 	--✨svg-unchecked: url('data:image/svg+xml;utf8,<svg viewBox="0 0 16 16"></svg>');
 	--✨svg-checked: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 16"><path fill="currentColor" d="M11.607 4.191a.5.5 0 0 1 .787.617l-5.5 7a.503.503 0 0 1-.777.012l-2.5-3-.057-.084a.5.5 0 0 1 .752-.627l.072.07 2.105 2.526 5.118-6.514Z"/></svg>'); /* `checkmark.svg` default size */
@@ -46,17 +47,19 @@
 	border-radius: 4px;
 	color: var(--_MuiMenu-item-color);
 	column-gap: calc(var(--stratakit-space-x1) + var(--stratakit-space-x05));
-	min-block-size: var(--✨size);
+	min-block-size: var(--_MuiMenu-item-height);
 	padding-block: 0;
 	padding-inline: var(--_MuiMenu-item-padding-inline);
 
 	--🥝Icon-color: var(--✨color-icon--default);
 	--_MuiMenu-item-background-color: var(--✨color-bg--default);
 	--_MuiMenu-item-color: var(--✨color-text--default);
+	--_MuiMenu-item-height: var(--✨size--medium);
 	--_MuiMenu-item-padding-inline: var(--✨padding--medium);
 
 	:where(.MuiMenu-list.MuiList-dense) & {
 		@apply --typography("body-sm");
+		--_MuiMenu-item-height: var(--✨size--small);
 		--_MuiMenu-item-padding-inline: var(--✨padding--small);
 	}
 

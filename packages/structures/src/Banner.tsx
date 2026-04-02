@@ -149,7 +149,7 @@ interface BannerIconProps extends React.ComponentProps<typeof Icon> {}
  * ```
  *
  * @deprecated Use [`icon`](https://mui.com/material-ui/api/alert/#alert-prop-icon) prop of MUI [`Alert`](https://mui.com/material-ui/api/alert/) component instead.
- * Read [migration documentation](https://stratakit.bentley.com/docs/getting-started/migration-from-legacy-stratakit/#banner) for additional details.
+ * See [migration guide](https://stratakit.bentley.com/docs/getting-started/migration-from-legacy-stratakit/#banner).
  */
 const BannerIcon = forwardRef<"svg", BannerIconProps>((props, forwardedRef) => {
 	const tone = useBannerState((state) => state.tone);
@@ -195,7 +195,7 @@ interface BannerLabelProps extends BaseProps<"span"> {}
  * ```
  *
  * @deprecated Use MUI [`AlertTitle`](https://mui.com/material-ui/api/alert-title/) component instead.
- * Read [migration documentation](https://stratakit.bentley.com/docs/getting-started/migration-from-legacy-stratakit/#banner) for additional details.
+ * See [migration guide](https://stratakit.bentley.com/docs/getting-started/migration-from-legacy-stratakit/#banner).
  */
 const BannerLabel = forwardRef<"span", BannerLabelProps>(
 	(props, forwardedRef) => {
@@ -240,7 +240,7 @@ interface BannerMessageProps extends BaseProps<"div"> {}
  * ```
  *
  * @deprecated Use [`children`](https://mui.com/material-ui/api/alert/#alert-prop-children) prop of MUI [`Alert`](https://mui.com/material-ui/api/alert/) component instead.
- * Read [migration documentation](https://stratakit.bentley.com/docs/getting-started/migration-from-legacy-stratakit/#banner) for additional details.
+ * See [migration guide](https://stratakit.bentley.com/docs/getting-started/migration-from-legacy-stratakit/#banner).
  */
 const BannerMessage = forwardRef<"span", BannerMessageProps>(
 	(props, forwardedRef) => {
@@ -293,7 +293,7 @@ interface BannerActionsProps extends BaseProps<"div"> {}
  * ```
  *
  * @deprecated Use [`action`](https://mui.com/material-ui/api/alert/#alert-prop-action) prop of MUI [`Alert`](https://mui.com/material-ui/api/alert/) component instead.
- * Read [migration documentation](https://stratakit.bentley.com/docs/getting-started/migration-from-legacy-stratakit/#banner) for additional details.
+ * See [migration guide](https://stratakit.bentley.com/docs/getting-started/migration-from-legacy-stratakit/#banner).
  */
 const BannerActions = forwardRef<"div", BannerActionsProps>(
 	(props, forwardedRef) => {
@@ -334,7 +334,7 @@ interface BannerDismissButtonProps
  * ```
  *
  * @deprecated Use [`onClose`](https://mui.com/material-ui/api/alert/#alert-prop-onClose), [`closeText`](https://mui.com/material-ui/api/alert/#alert-prop-closeText) props of MUI [`Alert`](https://mui.com/material-ui/api/alert/) component instead.
- * Read [migration documentation](https://stratakit.bentley.com/docs/getting-started/migration-from-legacy-stratakit/#banner) for additional details.
+ * See [migration guide](https://stratakit.bentley.com/docs/getting-started/migration-from-legacy-stratakit/#banner).
  */
 const BannerDismissButton = forwardRef<"button", BannerDismissButtonProps>(
 	(props, forwardedRef) => {
@@ -434,7 +434,7 @@ type BannerProps = Omit<BaseProps, "children"> &
  * ```
  *
  * @deprecated Use MUI [`Alert`](https://mui.com/material-ui/api/alert/) component instead.
- * Read [migration documentation](https://stratakit.bentley.com/docs/getting-started/migration-from-legacy-stratakit/#banner) for additional details.
+ * See [migration guide](https://stratakit.bentley.com/docs/getting-started/migration-from-legacy-stratakit/#banner).
  */
 const Banner = forwardRef<"div", BannerProps>((props, forwardedRef) => {
 	useInit();

@@ -113,6 +113,7 @@ import TextFieldIcon from "examples/mui/TextField.icon.tsx";
 import TextFieldMultiline from "examples/mui/TextField.multiline.tsx";
 import TextFieldSizes from "examples/mui/TextField.sizes.tsx";
 import ToggleButtonDefault from "examples/mui/ToggleButton.default.tsx";
+import ToggleButtonStandalone from "examples/mui/ToggleButton.standalone.tsx";
 import TooltipDefault from "examples/mui/Tooltip.default.tsx";
 import TypographyVariants_ from "examples/mui/Typography._variants.tsx";
 import TypographyDefault from "examples/mui/Typography.default.tsx";
@@ -367,7 +368,12 @@ const components: Record<string, React.ReactNode> = {
 			<TextFieldSizes />
 		</Stack>
 	),
-	ToggleButton: <ToggleButtonDefault />,
+	ToggleButton: (
+		<>
+			<ToggleButtonDefault />
+			<ToggleButtonStandalone />
+		</>
+	),
 	Tooltip: <TooltipDefault />,
 	Typography: (
 		<>

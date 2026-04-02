@@ -1,0 +1,1 @@
+import{a as n}from"./chunk-LFPYN7LY-BGzAPq3t.js";import{T as s,l as o}from"./DefaultPropsProvider-D_N3pBYt.js";function r(e){return Object.keys(e).length===0}function m(e=null){const t=n.useContext(s);return!t||r(t)?e:t}const u=o();function h(e=u){return m(e)}export{h as a,m as u};

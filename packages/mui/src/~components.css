@@ -56,18 +56,6 @@
 	}
 }
 
-.MuiMenuItem-root {
-	&:where(.Mui-selected) {
-		border-block: 1px solid var(--stratakit-color-border-accent-strong);
-		background-color: var(--stratakit-color-bg-glow-on-surface-accent-pressed);
-		color: var(--stratakit-color-text-accent-strong);
-	}
-
-	&:where(.Mui-focusVisible) {
-		outline-offset: -2px;
-	}
-}
-
 .MuiPaginationItem-root {
 	&:where(.Mui-selected) {
 		background-color: var(--stratakit-color-bg-glow-on-surface-accent-pressed);

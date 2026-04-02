@@ -17,4 +17,6 @@ links:
 
 ### Dense
 
+Use when you want to display as many menu items as possible. Be cautious of visually overloading the user.
+
 ::example{src="mui/Menu.dense"}

@@ -19,3 +19,11 @@ links:
 Use the `selected` and `onChange` props to control the selected state of a standalone `ToggleButton` component when it is not nested within a `ToggleButtonGroup`.
 
 ::example{src="mui/ToggleButton.standalone"}
+
+### Sizes
+
+- **Small:** Use in compact interfaces where space is limited.
+- **Medium:** Default size, suitable for most use cases.
+- **Large:** Use in spacious layouts where a more prominent button is needed.
+
+::example{src="mui/ToggleButton.sizes"}

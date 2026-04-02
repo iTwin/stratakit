@@ -20,14 +20,14 @@ export default () => {
 		<Toolbar.Group variant="solid">
 			<Toolbar.Item
 				render={
-					<IconButton label="Add" size="small">
+					<IconButton label="Add">
 						<Icon href={`${svgAdd}#icon-large`} size="large" />
 					</IconButton>
 				}
 			/>
 			<Toolbar.Item
 				render={
-					<IconButton label="Edit" size="small">
+					<IconButton label="Edit">
 						<Icon href={`${svgEdit}#icon-large`} size="large" />
 					</IconButton>
 				}
@@ -38,7 +38,6 @@ export default () => {
 					<ToggleButton
 						value="settings"
 						label="Toggle Auto Save"
-						size="small"
 						selected={autoSave}
 						onChange={() => setAutoSave((prev) => !prev)}
 					>

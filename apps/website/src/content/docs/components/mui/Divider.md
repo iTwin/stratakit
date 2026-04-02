@@ -10,7 +10,7 @@ links:
 
 ## Use cases
 
-The **Divider** comes in two forms: _semantic_ and _presentational_. By default, the **Divider** is semantic; it programmatically communicates a separation of content or functionality. However, in some cases, the semantics may be superfluous. In these cases, you should turn it into a [_presentational_ **Divider**](#presentational-divider).
+The **Divider** comes in two forms: _semantic_ and _presentational_. By default, the **Divider** is semantic; it programmatically communicates a separation of content or functionality. However, in some cases, the semantics may be superfluous. In these cases, you should turn it into a [_presentational_ **Divider**](#presentational-dividers).
 
 | Use case                                                                                                                                                                 | _semantic_ | _presentational_ |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | ---------------- |

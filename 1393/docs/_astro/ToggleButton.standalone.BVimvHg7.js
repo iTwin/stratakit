@@ -1,0 +1,1 @@
+import{j as t,I as a}from"./client.CSP11EH5.js";import{r as n}from"./styles.internal.CPbvgKR0.js";import{T as r}from"./ToggleButton.D99RZT9I.js";const l="/1393/docs/_astro/settings.BSloW3Ma.svg",f=()=>{const[e,s]=n.useState(!1);return t.jsx(r,{value:"left",label:"Settings",selected:e,onChange:()=>{s(o=>!o)},children:t.jsx(a,{href:l})})};export{f as default};

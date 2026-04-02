@@ -49,11 +49,6 @@
 	min-width: unset;
 }
 
-.MuiListItemIcon-root:where(:has(+ .MuiListItemText-root)) {
-	margin-inline-start: calc(var(--stratakit-space-x1) * -1);
-	margin-inline-end: var(--stratakit-space-x1);
-}
-
 .MuiListItemText-root {
 	margin: 0;
 	gap: var(--stratakit-space-x1);

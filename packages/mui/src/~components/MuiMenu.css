@@ -84,8 +84,6 @@
 			block-size: var(--🥝Icon-size, 1rem);
 			inline-size: var(--🥝Icon-size, 1rem);
 			background-color: var(--🥝Icon-color);
-			margin-inline-start: calc(var(--stratakit-space-x1) * -1);
-			margin-inline-end: var(--stratakit-space-x05);
 			mask-image: var(--_MuiMenuItem-root-mask-image);
 			mask-position: center;
 			mask-repeat: no-repeat;

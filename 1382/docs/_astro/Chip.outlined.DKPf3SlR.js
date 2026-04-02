@@ -1,0 +1,1 @@
+import{j as t}from"./client.BSuoQtF5.js";import{C as i}from"./Chip.CoaSLqqZ.js";import"./styles.internal.CPbvgKR0.js";import"./createSvgIcon.47iCWKBp.js";const a=()=>t.jsx(i,{label:"Outlined Chip",variant:"outlined"});export{a as default};

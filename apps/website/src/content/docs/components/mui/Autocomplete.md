@@ -8,6 +8,11 @@ links:
 
 ::example{src="mui/Autocomplete.default"}
 
+## StrataKit MUI modifications
+
+- Spacing and sizing has been adjusted to better align with StrataKit's more compact visual design language.
+- The "clear" indicator is now keyboard focusable and remains visible to improve accessibility.
+
 ## Examples
 
 ### Multiple values

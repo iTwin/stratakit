@@ -402,11 +402,13 @@ function useRenderActions() {
 	React.useEffect(() => {
 		const el = ref.current;
 		if (!el || renderActions) return;
-		const observer = new IntersectionObserver(([entry]) => {
-			if (!entry.isIntersecting) return;
-			React.startTransition(() => {
-				setRenderActions(true);
-			});
+		const observer = new IntersectionObserver((entries) => {
+			for (const entry of entries) {
+				if (!entry.isIntersecting) continue;
+				React.startTransition(() => {
+					setRenderActions(true);
+				});
+			}
 		});
 		observer.observe(el);
 		return () => {

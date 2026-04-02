@@ -27,6 +27,15 @@
 	}
 }
 
+.MuiCardHeader-title {
+	@apply --typography("headline-sm");
+	font-weight: 500;
+}
+
+.MuiCardHeader-subheader {
+	@apply --typography("body-md");
+}
+
 .MuiCardMedia-root {
 	inline-size: 100%;
 

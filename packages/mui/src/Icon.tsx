@@ -8,6 +8,7 @@ import { Icon } from "@stratakit/foundations";
 
 import svgArrowDown from "@stratakit/icons/arrow-down.svg";
 import svgCaretsUpDown from "@stratakit/icons/carets-up-down.svg";
+import svgCheckmark from "@stratakit/icons/checkmark.svg";
 import svgChevronDown from "@stratakit/icons/chevron-down.svg";
 import svgChevronLeft from "@stratakit/icons/chevron-left.svg";
 import svgChevronLeftDouble from "@stratakit/icons/chevron-left-double.svg";
@@ -34,6 +35,8 @@ function createIconComponent(href: string) {
 
 const ArrowDownIcon = createIconComponent(svgArrowDown);
 
+const CheckmarkIcon = createIconComponent(svgCheckmark);
+
 const CaretsUpDownIcon = createIconComponent(svgCaretsUpDown);
 
 const ChevronDownIcon = createIconComponent(svgChevronDown);
@@ -44,6 +47,7 @@ const ChevronRightDoubleIcon = createIconComponent(svgChevronRightDouble);
 
 const DismissIcon = createIconComponent(svgDismiss);
 const DismissCircleIcon = createIconComponent(svgDismissCircle);
+
 const ErrorIcon = createIconComponent(svgError);
 const InfoIcon = createIconComponent(svgInfo);
 const SuccessIcon = createIconComponent(svgStatusSuccess);
@@ -54,6 +58,7 @@ const WarningIcon = createIconComponent(svgWarning);
 export {
 	Icon,
 	ArrowDownIcon,
+	CheckmarkIcon,
 	CaretsUpDownIcon,
 	ChevronDownIcon,
 	ChevronLeftIcon,

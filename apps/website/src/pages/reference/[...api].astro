@@ -1,10 +1,12 @@
 ---
-import { getCollection, getEntries, getEntry } from "astro:content";
+import { getCollection, getEntries } from "astro:content";
 import StarlightPage from "@astrojs/starlight/components/StarlightPage.astro";
 import AnchorHeading from "@astrojs/starlight/components/AnchorHeading.astro";
+import { Aside } from "@astrojs/starlight/components";
 import type { Fragment } from "react";
 import ImportSnippet from "../../components/ImportSnippet.astro";
 import Jsdoc from "../../components/Jsdoc.astro";
+import { getEntry } from "astro:content";
 
 export async function getStaticPaths() {
 	const packagesCollection = await getCollection("packages");
@@ -15,12 +17,22 @@ export async function getStaticPaths() {
 				params: { api: `${pkg.id}/${api.name}` },
 				props: { pkg, api },
 			};
-		})
+		}),
 	);
 }
 
-const { pkg, api } = Astro.props;
+const { pkg, api: _api } = Astro.props;
+const reexportedApi = await (async () => {
+	const reexport = _api.reexport;
+	if (!reexport) return undefined;
 
+	const entry = await getEntry("packages", reexport.packageName);
+	if (!entry) return undefined;
+
+	return entry.data.apis.find((api) => api.name === reexport.apiName);
+})();
+
+const api = reexportedApi ?? _api;
 const components = [...(api.convenience ? [api.convenience] : []), ...api.composition];
 
 function isConvenience(name: string) {
@@ -99,6 +111,19 @@ function getBaseElementLink(baseElement: string) {
 	}}
 	headings={headings}
 >
+	{
+		_api.reexport && (
+			<Aside>
+				This component is re-exported from the
+				<code>@stratakit/{_api.reexport.packageName}</code> package. See
+				<a
+					href={`${import.meta.env.BASE_URL}/reference/${_api.reexport.packageName}/${_api.reexport.apiName}`}
+				>
+					{_api.reexport.apiName} documentation.
+				</a>
+			</Aside>
+		)
+	}
 	{
 		importHeading && (
 			<>

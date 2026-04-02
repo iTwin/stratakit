@@ -57,7 +57,14 @@ export default defineConfig({
 			sidebar: [
 				{
 					label: "Getting started",
-					autogenerate: { directory: "getting-started" },
+					items: [
+						{ label: "Introduction", slug: "" },
+						{ label: "Developing", slug: "getting-started/develop" },
+						{
+							label: "Migrating from legacy StrataKit",
+							slug: "getting-started/migration-from-legacy-stratakit",
+						},
+					],
 				},
 				{ label: "Guides", autogenerate: { directory: "guides" } },
 				{

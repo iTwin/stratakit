@@ -1,0 +1,62 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+
+.MuiStepper-root {
+	counter-reset: stepper;
+}
+
+.MuiStep-root {
+	counter-increment: stepper;
+}
+
+.MuiStepButton-root {
+	padding: var(--stratakit-space-x3);
+	margin: calc(-1 * var(--stratakit-space-x3));
+}
+
+.MuiStepLabel-labelContainer {
+	display: grid;
+	align-content: start;
+	row-gap: var(--stratakit-space-x05);
+}
+
+.MuiStepLabel-label {
+	&:where(.Mui-error) {
+		color: var(--stratakit-color-text-critical-base);
+	}
+}
+
+.MuiStepIcon-root {
+	display: inline-grid;
+	place-items: center;
+
+	block-size: 1.5rem;
+	aspect-ratio: 1;
+	border-radius: 50%;
+
+	border: 1px solid var(--stratakit-color-border-neutral-base);
+	background-color: var(--stratakit-color-bg-neutral-base);
+	color: var(--stratakit-color-text-neutral-primary);
+	@apply --typography("body-sm");
+
+	&:where(:not(.Mui-completed):empty)::before {
+		content: counter(stepper);
+		content: counter(stepper) / "";
+		font-variant-numeric: tabular-nums;
+		margin-inline-end: -1px; /* optical centering */
+	}
+
+	&:where(:is(.Mui-active, .Mui-completed):not(.Mui-error)) {
+		border-color: transparent;
+		background-color: var(--stratakit-color-bg-accent-base);
+		color: var(--stratakit-color-text-neutral-emphasis);
+		--🥝Icon-color: var(--stratakit-color-icon-neutral-emphasis);
+	}
+
+	&:where(.Mui-error) {
+		color: var(--stratakit-color-text-critical-base);
+		--🥝Icon-color: var(--stratakit-color-icon-critical-base);
+	}
+}

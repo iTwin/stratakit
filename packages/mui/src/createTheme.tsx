@@ -8,6 +8,7 @@ import { Role } from "@ariakit/react/role";
 import OutlinedInput from "@mui/material/OutlinedInput";
 import { createTheme as createMuiTheme } from "@mui/material/styles";
 import { MuiBadge } from "./~components/MuiBadge.js";
+import { MuiBottomNavigationAction } from "./~components/MuiBottomNavigation.js";
 import { MuiButtonBase } from "./~components/MuiButtonBase.js";
 import {
 	MuiCard,
@@ -22,6 +23,7 @@ import {
 import { MuiDivider } from "./~components/MuiDivider.js";
 import { MuiIconButton } from "./~components/MuiIconButton.js";
 import { MuiSnackbar } from "./~components/MuiSnackbar.js";
+import { MuiStepIcon } from "./~components/MuiStepper.js";
 import { MuiTableCell, MuiTableHead } from "./~components/MuiTable.js";
 import {
 	ArrowDownIcon,
@@ -153,8 +155,15 @@ function createTheme() {
 						paper: {
 							elevation: 8, // match Menu elevation
 						},
+						chip: {
+							size: "small",
+						},
 						clearIndicator: {
 							tabIndex: 0, // make clear indicator focusable
+							size: "small",
+						},
+						popupIndicator: {
+							size: "small",
 						},
 					},
 				},
@@ -180,6 +189,11 @@ function createTheme() {
 				},
 			},
 			MuiBottomNavigation: { defaultProps: { component: Role.div } },
+			MuiBottomNavigationAction: {
+				defaultProps: {
+					component: MuiBottomNavigationAction,
+				},
+			},
 			MuiBreadcrumbs: {
 				defaultProps: {
 					component: Role.nav,
@@ -369,6 +383,14 @@ function createTheme() {
 			MuiStep: { defaultProps: { component: Role.div } },
 			MuiSwitch: { defaultProps: { component: Role.span } },
 			MuiStepper: { defaultProps: { component: Role.div } },
+			MuiStepLabel: {
+				defaultProps: {
+					slotProps: {
+						root: { component: Role.div },
+						stepIcon: { component: MuiStepIcon },
+					},
+				},
+			},
 			MuiSvgIcon: { defaultProps: { component: Role.svg } },
 			MuiSwipeableDrawer: { defaultProps: { component: Role.div } },
 			MuiTabs: { defaultProps: { component: Role.div } },

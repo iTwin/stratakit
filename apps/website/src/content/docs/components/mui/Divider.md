@@ -42,7 +42,7 @@ By default, the **Divider** appears in a horizontal orientation. Reorientate it 
 
 :::caution[Orientation semantics]
 
-**Divider** uses `aria-orientation` to convey its orientation programmatically. When the _presentational_ **Divider** is used, neither the element nor its orientation is exposed to assistive technologies.
+**Divider** uses [`aria-orientation`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-orientation) to convey its orientation programmatically. When the _presentational_ **Divider** is used, neither the element nor its orientation is exposed to assistive technologies.
 
 :::
 

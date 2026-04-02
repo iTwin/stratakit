@@ -1,0 +1,1 @@
+import{j as s}from"./client.BSuoQtF5.js";import{S as e}from"./Spinner.CV-xPMx_.js";import"./styles.internal.CPbvgKR0.js";import"./ExamplePreview.Bn9JDckV.js";import"./preload-helper.BCaCZZ8m.js";const o=()=>s.jsxs("div",{className:"flex",children:[s.jsx(e,{size:"small"}),s.jsx(e,{size:"medium"}),s.jsx(e,{size:"large"}),s.jsx(e,{size:"xlarge"})]});export{o as default};

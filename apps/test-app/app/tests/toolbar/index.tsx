@@ -9,6 +9,7 @@ import {
 	DropdownMenu,
 	unstable_Toolbar as Toolbar,
 } from "@stratakit/structures";
+import ToolbarMui from "examples/structures/Toolbar.mui.tsx";
 import { definePage } from "~/~utils.tsx";
 
 import svgPlaceholder from "@stratakit/icons/placeholder.svg";
@@ -70,6 +71,7 @@ export default definePage(
 	{
 		visual: VisualTest,
 		vertical: () => <TestToolbar orientation="vertical" />,
+		MUI: ToolbarMui,
 	},
 );
 

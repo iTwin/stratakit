@@ -44,6 +44,7 @@
 
 	@apply --typography("body-md");
 	background-color: var(--_MuiMenu-item-background-color);
+	border: 1px solid var(--_MuiMenu-item-border-color);
 	border-radius: 4px;
 	color: var(--_MuiMenu-item-color);
 	column-gap: calc(var(--stratakit-space-x1) + var(--stratakit-space-x05));
@@ -98,12 +99,9 @@
 	&:where(.Mui-selected) {
 		--🥝Icon-color: var(--✨color-icon--selected);
 		--_MuiMenu-item-background-color: var(--✨color-bg--selected);
+		--_MuiMenu-item-border-color: var(--✨color-border--selected);
 		--_MuiMenu-item-color: var(--✨color-text--selected);
 		--_MuiMenuItem-root-mask-image: var(--✨svg-checked);
-
-		&:where(:not(.Mui-disabled)) {
-			border: 1px solid var(--✨color-border--selected);
-		}
 	}
 
 	&:where(.Mui-disabled) {

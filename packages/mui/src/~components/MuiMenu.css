@@ -5,8 +5,6 @@
 
 .MuiMenu-paper {
 	box-shadow: var(--stratakit-shadow-control-dropdown-base);
-	margin-block: var(--stratakit-space-x1);
-	margin-inline: calc(var(--stratakit-space-x1) * -1);
 }
 
 .MuiMenu-list {

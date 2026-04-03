@@ -39,7 +39,7 @@
 
 	@apply --typography("body-md");
 	background-color: var(--_MuiMenu-item-background-color);
-	border: 1px solid var(--_MuiMenu-item-border-color);
+	border: 1px solid var(--_MuiMenu-item-border-color, transparent);
 	border-radius: 4px;
 	color: var(--_MuiMenu-item-color);
 	column-gap: calc(var(--stratakit-space-x1) + var(--stratakit-space-x05));

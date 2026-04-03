@@ -51,5 +51,5 @@ Use the `render` prop to display a custom SVG icon.
 
 - Don’t use the `alt` prop if there is already an accessible label in place (as in `IconButton`).
 - Don’t use custom icons when a standard icon is available in `@stratakit/icons`.
-- Don't use non-standard icons from `@mui/icons-material`.
-- Don't use the `SvgIcon` component from `@mui/material`.
+- Don’t use non-standard icons from `@mui/icons-material`.
+- Don’t use the `SvgIcon` component from `@mui/material`.

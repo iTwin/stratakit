@@ -25,12 +25,12 @@
 
 	&:where(.MuiIconButton-sizeMedium) {
 		--_MuiIconButton-size: var(--stratakit-size-control-field-height-medium);
-		--_MuiIconButton-padding: var(--stratakit-space-x2);
+		--_MuiIconButton-padding: var(--stratakit-space-x1);
 	}
 
 	&:where(.MuiIconButton-sizeLarge) {
 		--_MuiIconButton-size: var(--stratakit-size-control-field-height-large);
-		--_MuiIconButton-padding: var(--stratakit-space-x3);
+		--_MuiIconButton-padding: var(--stratakit-space-x2);
 	}
 
 	&:where(.MuiIconButton-colorPrimary) {

@@ -7,7 +7,7 @@
 
 Monorepo for **StrataKit** — Bentley's new flagship design system, and the successor to [iTwinUI](https://github.com/iTwin/iTwinUI).
 
-[Read the documentation](https://itwin.github.io/stratakit/docs/getting-started/introduction/) to get started.
+[Read the documentation](https://stratakit.bentley.com/docs) to get started.
 
 ## Monorepo structure
 

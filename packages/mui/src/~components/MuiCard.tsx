@@ -84,4 +84,61 @@ DEV: MuiCardActionArea.displayName = "MuiCardActionArea";
 
 // ----------------------------------------------------------------------------
 
-export { MuiCard, MuiCardActionArea };
+const MEDIA_COMPONENTS = ["audio", "iframe", "img", "picture", "video"];
+
+/** Extracts the URL string inside `backgroundImage: url(…)`. */
+function extractBackgroundImageUrl(style: React.CSSProperties | undefined) {
+	const backgroundImage = style?.backgroundImage;
+	if (!backgroundImage?.startsWith("url(")) return undefined;
+	if (!['"', "'"].includes(backgroundImage[4])) return undefined;
+	return backgroundImage.slice(5, -2);
+}
+
+const MuiCardMedia = forwardRef<"div", BaseProps<"div">>(
+	(props, forwardedRef) => {
+		const [tagName, setTagName] = React.useState<string | undefined>(undefined);
+		const determineTagName = React.useCallback(
+			(element: HTMLElement | null) => {
+				if (!element) return;
+				setTagName(element.tagName.toLowerCase());
+			},
+			[],
+		);
+
+		const isMediaComponent = MEDIA_COMPONENTS.includes(tagName ?? "");
+
+		// Inferring `src` from `background-image` (if `image` prop is passed).
+		const src = isMediaComponent
+			? extractBackgroundImageUrl(props.style)
+			: undefined;
+
+		// Removing `background-image` from media elements. These should use `src` instead.
+		const style = (() => {
+			if (!isMediaComponent) return props.style;
+			const { backgroundImage, ...restStyle } = props.style ?? {};
+			return restStyle;
+		})();
+
+		// Removing redundant role.
+		const role = (() => {
+			if (!isMediaComponent) return props.role;
+			if (props.role === "img") return undefined;
+			return props.role;
+		})();
+
+		return (
+			<Role.div
+				{...props}
+				{...(src ? { src } : {})}
+				role={role}
+				style={style}
+				ref={useMergedRefs(determineTagName, forwardedRef)}
+			/>
+		);
+	},
+);
+DEV: MuiCardMedia.displayName = "MuiCardMedia";
+
+// ----------------------------------------------------------------------------
+
+export { MuiCard, MuiCardActionArea, MuiCardMedia };

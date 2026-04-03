@@ -61,6 +61,8 @@ import CircularProgressColors_ from "examples/mui/CircularProgress._colors.tsx";
 import CircularProgressDefault from "examples/mui/CircularProgress.default.tsx";
 import DialogDefault from "examples/mui/Dialog.default.tsx";
 import DividerDefault from "examples/mui/Divider.default.tsx";
+import DividerPresentational from "examples/mui/Divider.presentational.tsx";
+import DividerVertical from "examples/mui/Divider.vertical.tsx";
 import DrawerDefault from "examples/mui/Drawer.default.tsx";
 import FabDefault from "examples/mui/Fab.default.tsx";
 import IconButtonColors_ from "examples/mui/IconButton._colors.tsx";
@@ -244,9 +246,13 @@ const components: Record<string, React.ReactNode> = {
 	),
 	Dialog: <DialogDefault />,
 	Divider: (
-		<Stack spacing={1} alignSelf="stretch">
-			<DividerDefault />
-		</Stack>
+		<>
+			<Stack alignSelf="stretch">
+				<DividerDefault />
+			</Stack>
+			<DividerVertical />
+			<DividerPresentational />
+		</>
 	),
 	Drawer: <DrawerDefault />,
 	Fab: <FabDefault />,

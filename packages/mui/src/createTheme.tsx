@@ -8,6 +8,7 @@ import { Role } from "@ariakit/react/role";
 import OutlinedInput from "@mui/material/OutlinedInput";
 import { createTheme as createMuiTheme } from "@mui/material/styles";
 import { MuiBadge } from "./~components/MuiBadge.js";
+import { MuiBottomNavigationAction } from "./~components/MuiBottomNavigation.js";
 import { MuiButtonBase } from "./~components/MuiButtonBase.js";
 import {
 	MuiCard,
@@ -188,6 +189,11 @@ function createTheme() {
 				},
 			},
 			MuiBottomNavigation: { defaultProps: { component: Role.div } },
+			MuiBottomNavigationAction: {
+				defaultProps: {
+					component: MuiBottomNavigationAction,
+				},
+			},
 			MuiBreadcrumbs: {
 				defaultProps: {
 					component: Role.nav,

@@ -10,6 +10,7 @@
 @import "./~components/MuiAutocomplete.css";
 @import "./~components/MuiAvatar.css";
 @import "./~components/MuiBadge.css";
+@import "./~components/MuiBottomNavigation.css";
 @import "./~components/MuiButton.css";
 @import "./~components/MuiCard.css";
 @import "./~components/MuiCheckbox.css";
@@ -19,9 +20,11 @@
 @import "./~components/MuiIconButton.css";
 @import "./~components/MuiInput.css";
 @import "./~components/MuiList.css";
+@import "./~components/MuiMenu.css";
 @import "./~components/MuiSlider.css";
 @import "./~components/MuiStepper.css";
 @import "./~components/MuiSwitch.css";
+@import "./~components/MuiTable.css";
 @import "./~components/MuiTabs.css";
 @import "./~components/MuiToggleButton.css";
 
@@ -42,12 +45,6 @@
 	}
 }
 
-.MuiBottomNavigationAction-root {
-	&:where(.Mui-selected) {
-		color: var(--stratakit-color-text-accent-strong);
-	}
-}
-
 .MuiLink-root {
 	font-weight: 500;
 	text-decoration-color: currentColor;
@@ -59,9 +56,11 @@
 	}
 }
 
-.MuiMenuItem-root {
-	&:where(.Mui-focusVisible) {
-		outline-offset: -2px;
+.MuiPaginationItem-root {
+	&:where(.Mui-selected) {
+		background-color: var(--stratakit-color-bg-glow-on-surface-accent-pressed);
+		border: 1px solid var(--stratakit-color-border-accent-strong);
+		color: var(--stratakit-color-text-accent-strong);
 	}
 }
 

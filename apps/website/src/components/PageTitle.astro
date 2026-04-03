@@ -8,6 +8,8 @@ const links = entry.data.links || {};
 
 const muiDocsUrl = links.muiDocs;
 const apiReferenceUrl = links.apiReference;
+
+const componentStatusOverviewUrl = `${import.meta.env.BASE_URL}/components/overview/#component-status`;
 ---
 
 <hgroup>
@@ -20,10 +22,7 @@ const apiReferenceUrl = links.apiReference;
 		status && (
 			<div class="inline-item">
 				<dt>
-					<a href={`${import.meta.env.BASE_URL}/components/overview/#component-status`}>
-						Component status
-					</a>
-					:
+					<a href={componentStatusOverviewUrl}>Component status</a>:
 				</dt>
 				<dd>
 					<status-badge>{status}</status-badge>

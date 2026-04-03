@@ -5,6 +5,13 @@
 
 import * as React from "react";
 import { useHref, useLocation } from "react-router";
+import Dialog from "@mui/material/Dialog";
+import DialogContent from "@mui/material/DialogContent";
+import DialogTitle from "@mui/material/DialogTitle";
+import FormControl from "@mui/material/FormControl";
+import FormLabel from "@mui/material/FormLabel";
+import ToggleButton from "@mui/material/ToggleButton";
+import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import { Button, Divider, IconButton } from "@stratakit/bricks";
 import { Icon } from "@stratakit/foundations";
 import { unstable_NavigationRail as NavigationRail } from "@stratakit/structures";
@@ -18,6 +25,7 @@ import {
 
 import svgDocumentation from "@stratakit/icons/documentation.svg";
 import svgMoon from "@stratakit/icons/moon.svg";
+import svgSettings from "@stratakit/icons/settings.svg";
 import svgSun from "@stratakit/icons/sun.svg";
 import styles from "./~navigation.module.css";
 import svgComponents from "./assets/components.svg";
@@ -71,9 +79,6 @@ export function AppNavigationRail(props: AppNavigationRailProps) {
 
 	const location = useLocation();
 	const isWideScreen = useIsWideScreen();
-
-	const colorScheme = useColorScheme();
-	const setColorScheme = useSetColorScheme();
 
 	const showNavigation =
 		useLocalStorage("🥝:show-navigation") !== "false" && isWideScreen;
@@ -134,13 +139,7 @@ export function AppNavigationRail(props: AppNavigationRailProps) {
 
 					<NavigationRail.Footer>
 						<Divider />
-						<NavigationRail.Button
-							label="Toggle color scheme"
-							icon={colorScheme === "dark" ? svgSun : svgMoon}
-							onClick={() => {
-								setColorScheme(colorScheme === "dark" ? "light" : "dark");
-							}}
-						/>
+						<SettingsButton />
 					</NavigationRail.Footer>
 				</NavigationRail.Content>
 			</NavigationRail.Root>
@@ -215,4 +214,44 @@ interface RegularLinkProps
 /** Wrapper over `<a>` that resolves URLs using react-router.  */
 function RegularLink({ to, ...props }: RegularLinkProps) {
 	return <a href={useHref(to)} {...props} />;
+}
+
+// ----------------------------------------------------------------------------
+
+function SettingsButton() {
+	const id = React.useId();
+	const [open, setOpen] = React.useState(false);
+
+	const colorScheme = useColorScheme();
+	const setColorScheme = useSetColorScheme();
+	return (
+		<>
+			<NavigationRail.Button
+				label="Settings"
+				icon={svgSettings}
+				onClick={() => setOpen(true)}
+			/>
+			<Dialog open={open} onClose={() => setOpen(false)}>
+				<DialogTitle>Settings</DialogTitle>
+				<DialogContent>
+					<FormControl>
+						<FormLabel id={`${id}-color-scheme`}>Color scheme</FormLabel>
+						<ToggleButtonGroup
+							exclusive
+							value={colorScheme}
+							onChange={(_, value) => setColorScheme(value)}
+							aria-labelledby={`${id}-color-scheme`}
+						>
+							<ToggleButton value="light" label="Light">
+								<Icon href={svgSun} />
+							</ToggleButton>
+							<ToggleButton value="dark" label="Dark">
+								<Icon href={svgMoon} />
+							</ToggleButton>
+						</ToggleButtonGroup>
+					</FormControl>
+				</DialogContent>
+			</Dialog>
+		</>
+	);
 }

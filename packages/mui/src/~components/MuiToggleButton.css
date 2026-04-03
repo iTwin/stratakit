@@ -13,6 +13,11 @@
 	color: var(--_MuiToggleButton-color);
 	--🥝Icon-color: var(--_MuiToggleButton-icon-color);
 
+	/* Remove border of standalone toggle buttons to visually align with icon buttons. */
+	&:where(:not(.MuiToggleButtonGroup-grouped)) {
+		border: 0;
+	}
+
 	&:where(.MuiToggleButton-sizeSmall) {
 		@apply --typography("body-sm");
 		--_MuiToggleButton-height: var(--stratakit-size-control-field-height-small);
@@ -42,10 +47,6 @@
 		background-color: var(--stratakit-color-bg-glow-on-surface-accent-pressed);
 		--_MuiToggleButton-color: var(--stratakit-color-text-accent-strong);
 		--_MuiToggleButton-icon-color: var(--stratakit-color-icon-accent-strong);
-	}
-
-	&:where(:not(.MuiToggleButtonGroup-grouped)) {
-		border: 0;
 	}
 
 	&:where(.Mui-disabled) {

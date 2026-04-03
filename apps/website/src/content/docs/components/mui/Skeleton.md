@@ -28,7 +28,7 @@ Make sure the **Skeleton** is suitable for your use case. There may be other, mo
 ::example{src="mui/Skeleton.variants" min-width="300px" min-height="200px"}
 
 :::tip
-Accurately representing the shape and structure of a loading interface is a case of combining multiple individual **Skeletons** of differing [variants](#variants) and sizes. Only include one visually hidden “Loading…” label. Multiple loading messages are repetitive and unhelpful. The **Skeleton** itself is not communicated nonvisually.
+Accurately representing the shape and structure of a loading interface is a case of combining multiple individual **Skeletons** of differing [variants](#variants) and sizes. The **Skeleton** itself is a visual component and is not conveyed to assistive technologies. Include only one visually hidden “Loading…” label since multiple loading messages are repetitive and unhelpful.
 :::
 
 ## ✅ Do

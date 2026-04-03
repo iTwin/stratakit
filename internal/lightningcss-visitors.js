@@ -114,25 +114,8 @@ export function themeTransform() {
 
 				const declarations = [];
 
-				const accentTokens = parseTokens(themes.get(theme)?.accent);
 				const colorTokens = parseTokens(themes.get(theme)?.color);
 				const shadowTokens = parseTokens(themes.get(theme)?.shadow);
-
-				for (let [name, { $value }] of accentTokens.entries()) {
-					// Values wrapped in {…} are references to other tokens.
-					// The "p-" prefix indicates a primitive token (by convention).
-					if (typeof $value === "string" && $value.startsWith("{p-")) {
-						// Convert {p.color.gray.200} into --primitive("color.gray.200") for further processing.
-						$value = cssFunction(
-							isFallback ? "--primitive-fallback" : "--primitive",
-							$value.replace("{p-", "").replace("}", ""),
-						);
-					}
-
-					declarations.push(
-						cssCustomProperty(name, $value, { prefix: "_stratakit-accent" }),
-					);
-				}
 
 				for (let [name, { $value }] of colorTokens.entries()) {
 					// Tokens that should be skipped are marked using "🫥" (by convention).
@@ -463,6 +446,37 @@ function cssFunction(name, value) {
 		value: {
 			name,
 			arguments: [{ type: "token", value: { type: "string", value } }],
+		},
+	};
+}
+
+/** Replaces aurora primitives with internal accent variables.
+ * @returns {import("lightningcss").Visitor}
+ */
+export function accentsTransform() {
+	return {
+		Function: {
+			"--primitive"(fn) {
+				if (
+					fn.arguments.length === 1 &&
+					fn.arguments[0].type === "token" &&
+					fn.arguments[0].value.type === "string"
+				) {
+					const [, group, token] = fn.arguments[0].value.value.split(".");
+					if (group !== "aurora") return;
+
+					const primitive = primitives[group][token];
+					const tokenNumber = Number(token);
+					if (tokenNumber % 50 === 0)
+						return {
+							raw: `var(--_stratakit-accent-${token}, ${primitive})`,
+						};
+
+					return {
+						raw: `oklch(from --primitive("color.aurora.500") l c h / ${token}%);`,
+					};
+				}
+			},
 		},
 	};
 }

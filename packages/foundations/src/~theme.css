@@ -36,18 +36,4 @@ html:where([data-color-scheme="dark"]),
 	--_stratakit-accent-700: --primitive("color.accentBlue.700");
 	--_stratakit-accent-800: --primitive("color.accentBlue.800");
 	--_stratakit-accent-900: --primitive("color.accentBlue.900");
-	--_stratakit-accent-4: --primitive("color.accentBlue.4");
-	--_stratakit-accent-8: --primitive("color.accentBlue.8");
-	--_stratakit-accent-12: --primitive("color.accentBlue.12");
-	--_stratakit-accent-16: --primitive("color.accentBlue.16");
-	--_stratakit-accent-24: --primitive("color.accentBlue.24");
-	--_stratakit-accent-32: --primitive("color.accentBlue.32");
-	--_stratakit-accent-40: --primitive("color.accentBlue.40");
-	--_stratakit-accent-48: --primitive("color.accentBlue.48");
-	--_stratakit-accent-56: --primitive("color.accentBlue.56");
-	--_stratakit-accent-64: --primitive("color.accentBlue.64");
-	--_stratakit-accent-72: --primitive("color.accentBlue.72");
-	--_stratakit-accent-80: --primitive("color.accentBlue.80");
-	--_stratakit-accent-88: --primitive("color.accentBlue.88");
-	--_stratakit-accent-96: --primitive("color.accentBlue.96");
 }

@@ -9,7 +9,7 @@ import { VisuallyHidden } from "@ariakit/react/visually-hidden";
 import IconButton from "@mui/material/IconButton";
 import { useTheme } from "@mui/material/styles";
 import { forwardRef } from "@stratakit/foundations/secret-internals";
-import { DismissIcon } from "../Icon.js";
+import { DismissCircleIcon } from "../Icon.js";
 import { MuiButtonBase } from "./MuiButtonBase.js";
 
 import type Chip from "@mui/material/Chip";
@@ -109,7 +109,7 @@ const MuiChipDeleteIcon = forwardRef<
 			ref={forwardedRef}
 		>
 			<VisuallyHidden id={clearId}>{deleteLabel}</VisuallyHidden>
-			<DismissIcon />
+			<DismissCircleIcon />
 		</IconButton>
 	);
 });

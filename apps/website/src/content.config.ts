@@ -38,6 +38,7 @@ export const collections = {
 		}),
 		schema: docsSchema({
 			extend: z.object({
+				status: z.enum(["unstable", "stable", "deprecated"]).optional(),
 				links: z
 					.object({
 						muiDocs: z.string().optional(),
@@ -159,6 +160,12 @@ function packagesSchema() {
 							jsdoc: reference("jsdoc").optional(),
 						}),
 					)
+					.optional(),
+				reexport: z
+					.object({
+						packageName: z.string(),
+						apiName: z.string(),
+					})
 					.optional(),
 			}),
 		),

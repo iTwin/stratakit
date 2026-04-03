@@ -459,11 +459,12 @@ DEV: Banner.displayName = "Banner";
 // ----------------------------------------------------------------------------
 
 export default Banner;
+
 export {
-	BannerRoot as Root,
+	BannerActions as Actions,
+	BannerDismissButton as DismissButton,
 	BannerIcon as Icon,
 	BannerLabel as Label,
 	BannerMessage as Message,
-	BannerActions as Actions,
-	BannerDismissButton as DismissButton,
+	BannerRoot as Root,
 };

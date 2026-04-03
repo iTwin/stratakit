@@ -396,12 +396,12 @@ DEV: AccordionItemHeading.displayName = "AccordionItem.Heading";
 // ----------------------------------------------------------------------------
 
 export {
-	AccordionItemRoot as Root,
-	AccordionItemContent as Content,
-	AccordionItemHeader as Header,
 	AccordionItemButton as Button,
-	AccordionItemLabel as Label,
+	AccordionItemContent as Content,
 	AccordionItemDecoration as Decoration,
-	AccordionItemMarker as Marker,
+	AccordionItemHeader as Header,
 	AccordionItemHeading as Heading,
+	AccordionItemLabel as Label,
+	AccordionItemMarker as Marker,
+	AccordionItemRoot as Root,
 };

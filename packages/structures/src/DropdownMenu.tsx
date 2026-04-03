@@ -564,11 +564,11 @@ DEV: DropdownMenuGroup.displayName = "DropdownMenu.Group";
 // ----------------------------------------------------------------------------
 
 export {
-	DropdownMenuProvider as Provider,
 	DropdownMenuButton as Button,
-	DropdownMenuContent as Content,
-	DropdownMenuItem as Item,
 	DropdownMenuCheckboxItem as CheckboxItem,
-	DropdownMenuSubmenu as Submenu,
+	DropdownMenuContent as Content,
 	DropdownMenuGroup as Group,
+	DropdownMenuItem as Item,
+	DropdownMenuProvider as Provider,
+	DropdownMenuSubmenu as Submenu,
 };

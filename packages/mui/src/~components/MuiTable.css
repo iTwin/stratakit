@@ -1,0 +1,29 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+
+.MuiTableRow-root {
+	&:where(.Mui-selected) {
+		background-color: var(--stratakit-color-bg-glow-on-surface-accent-pressed);
+	}
+}
+
+.MuiTableCell-root {
+	&:where(.MuiTableCell-paddingCheckbox) {
+		text-align: center;
+	}
+
+	:where(.MuiTableRow-root.Mui-selected) & {
+		border-color: var(--stratakit-color-border-accent-strong);
+		position: relative;
+
+		&::before {
+			content: "";
+			position: absolute;
+			inset: 0;
+			pointer-events: none;
+			border-block-start: 1px solid var(--stratakit-color-border-accent-strong);
+		}
+	}
+}

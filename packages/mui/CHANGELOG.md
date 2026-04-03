@@ -1,5 +1,30 @@
 # Changelog
 
+## 0.3.1
+
+- Styling changes:
+  - [#1365](https://github.com/iTwin/stratakit/pull/1365): Updated the border-radii of `Paper`-based components. Affects `Accordion`, `Alert`, `Autocomplete`, `Card`, `Dialog`, `Menu`, `Popover`, `Snackbar`, and `Tooltip`.
+  - [#1369](https://github.com/iTwin/stratakit/pull/1369): Updated styling for selected states across various components: `Autocomplete`, `ListItemButton`, `Pagination`, `Select`, `TableRow`, `ToggleButton`.
+  - [#1363](https://github.com/iTwin/stratakit/pull/1363): Lightly styled `Stepper` using the Strata visual design language.
+  - [#1379](https://github.com/iTwin/stratakit/pull/1379): Reduced the size of various elements inside `Autocomplete`.
+  - [#1314](https://github.com/iTwin/stratakit/pull/1314): Styled `Avatar` to match the Strata visual design language.
+  - [#1345](https://github.com/iTwin/stratakit/pull/1345): Updated `Accordion` background-color.
+  - [#1365](https://github.com/iTwin/stratakit/pull/1365): Updated `Pagination`'s `shape` to `"rounded"`.
+  - [#1368](https://github.com/iTwin/stratakit/pull/1368): Updated the font sizes used in `CardHeader`.
+  - [#1358](https://github.com/iTwin/stratakit/pull/1358): Use global component size variables in `Chip`.
+  - [#1386](https://github.com/iTwin/stratakit/pull/1386): Reduced the font-size of `MenuItem` and `Select` options.
+  - [#1373](https://github.com/iTwin/stratakit/pull/1373): Updated the selected state styling and semantics for `BottomNavigation`.
+  - [#1357](https://github.com/iTwin/stratakit/pull/1357): Fixed `ListItem` padding when used with `secondaryAction`.
+- Markup changes:
+  - [#1358](https://github.com/iTwin/stratakit/pull/1358): Replaced the icon used by deletable `Chip`.
+  - [#1373](https://github.com/iTwin/stratakit/pull/1373): Updated `BottomNavigationAction` to add a wrapper element around the icon and label.
+  - [#1361](https://github.com/iTwin/stratakit/pull/1361): Removed unnecessary `role="rowgroup"` from `TableBody`.
+  - [#1359](https://github.com/iTwin/stratakit/pull/1359): Fixed `Divider` to render a `<div>` when `children` is passed.
+  - [#1363](https://github.com/iTwin/stratakit/pull/1363): Customized `StepIcon` icon and markup.
+- [#1366](https://github.com/iTwin/stratakit/pull/1366): Fixed `React.Fragment can only have "key" and "children" props.` error in `Checkbox` and `Radio`.
+- [#1362](https://github.com/iTwin/stratakit/pull/1362): Fixed `CardMedia` to correctly handle `render` prop.
+- [#1367](https://github.com/iTwin/stratakit/pull/1367): Fixed type overrides (JSDoc) to correctly display `describeChild` customization of `Tooltip` component.
+
 ## 0.3.0
 
 ### API changes
@@ -31,7 +56,7 @@ The following API changes apply to components exported from `@mui/material`. Mak
 - [#1332](https://github.com/iTwin/stratakit/pull/1332): ⚠️ Removed `LinkComponent` prop from `ButtonBase` (and therefore from all MUI components that extend it). Use the `render` prop instead.
 - [#1287](https://github.com/iTwin/stratakit/pull/1287): ⚠️ Removed `"default"` value from `color` prop of `Badge` component. The default color is now `"secondary"`.
 
-## Implementation changes
+### Implementation changes
 
 - [#1312](https://github.com/iTwin/stratakit/pull/1312): MUI styling engine changes:
   - Unnecessary vendor prefixes have been removed from the generated CSS using a custom Stylis plugin.

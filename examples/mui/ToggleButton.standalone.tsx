@@ -7,20 +7,20 @@ import * as React from "react";
 import ToggleButton from "@mui/material/ToggleButton";
 import { Icon } from "@stratakit/mui";
 
-import svgSettings from "@stratakit/icons/settings.svg";
+import svgFontUnderline from "@stratakit/icons/font-underline.svg";
 
 export default () => {
 	const [selected, setSelected] = React.useState(false);
 	return (
 		<ToggleButton
 			value="left"
-			label="Settings"
+			label="Underlined"
 			selected={selected}
 			onChange={() => {
 				setSelected((prev) => !prev);
 			}}
 		>
-			<Icon href={svgSettings} />
+			<Icon href={svgFontUnderline} />
 		</ToggleButton>
 	);
 };

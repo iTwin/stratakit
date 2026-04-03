@@ -8,6 +8,12 @@ links:
 
 ::example{src="mui/Select.default"}
 
+## StrataKit MUI modifications
+
+- Restyled using StrataKit's visual language.
+- The active menu item implementation and styling differ from the default approach and use a custom pseudo-element.
+- Includes full `forced-colors` support.
+
 ## Examples
 
 ### Icon

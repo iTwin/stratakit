@@ -17,13 +17,13 @@
 	&:where(.MuiToggleButton-sizeMedium) {
 		@apply --typography("body-md");
 		--_MuiToggleButton-height: var(--stratakit-size-control-field-height-medium);
-		--_MuiToggleButton-padding: var(--stratakit-space-x2);
+		--_MuiToggleButton-padding: var(--stratakit-space-x1);
 	}
 
 	&:where(.MuiToggleButton-sizeLarge) {
 		@apply --typography("body-lg");
 		--_MuiToggleButton-height: var(--stratakit-size-control-field-height-large);
-		--_MuiToggleButton-padding: var(--stratakit-space-x3);
+		--_MuiToggleButton-padding: var(--stratakit-space-x2);
 	}
 
 	&:where(.Mui-selected) {

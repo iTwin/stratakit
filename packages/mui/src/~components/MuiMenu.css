@@ -57,6 +57,22 @@
 		--_MuiMenu-item-height: var(--✨size--small);
 	}
 
+	&:where([role="option"]) {
+		--_MuiMenuItem-root-mask-image: var(--✨svg-unchecked);
+
+		/* This pseudo-element displays a checkmark for selected menu items */
+		&::before {
+			content: "";
+			aspect-ratio: 1;
+			block-size: var(--🥝Icon-size, 1rem);
+			inline-size: var(--🥝Icon-size, 1rem);
+			background-color: var(--🥝Icon-color);
+			mask-image: var(--_MuiMenuItem-root-mask-image);
+			mask-position: center;
+			mask-repeat: no-repeat;
+		}
+	}
+
 	@media (any-hover: hover) {
 		&:where(:hover) {
 			--🥝Icon-color: var(--✨color-icon--hover);
@@ -70,21 +86,6 @@
 
 	&:where(.Mui-focusVisible) {
 		outline-offset: calc(var(--🥝focus-outline-offset) * -1);
-	}
-
-	&:where([role="option"]) {
-		--_MuiMenuItem-root-mask-image: var(--✨svg-unchecked);
-
-		&::before {
-			content: "";
-			aspect-ratio: 1;
-			block-size: var(--🥝Icon-size, 1rem);
-			inline-size: var(--🥝Icon-size, 1rem);
-			background-color: var(--🥝Icon-color);
-			mask-image: var(--_MuiMenuItem-root-mask-image);
-			mask-position: center;
-			mask-repeat: no-repeat;
-		}
 	}
 
 	&:where(.Mui-selected) {

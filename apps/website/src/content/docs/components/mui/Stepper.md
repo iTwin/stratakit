@@ -8,6 +8,13 @@ links:
 
 ::example{src="mui/Stepper.default"}
 
+## StrataKit MUI modifications
+
+- Lightly styled using StrataKit's visual language.
+- The `StepIcon` has been fully replaced with new icons and a custom CSS implementation.
+- Reduced the hit target size of `StepButton`.
+- Includes `forced-colors` support.
+
 ## Examples
 
 ### Optional

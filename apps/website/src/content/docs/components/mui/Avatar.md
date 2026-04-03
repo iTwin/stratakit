@@ -8,6 +8,13 @@ links:
 
 ::example{src="mui/Avatar.default"}
 
+## StrataKit MUI modifications
+
+- Restyled using StrataKit's visual language.
+- The default size has been decreased.
+- Requires a nested `<abbr>` for initials.
+- Includes full `forced-colors` support.
+
 ## Examples
 
 ### Initials

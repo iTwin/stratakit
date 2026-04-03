@@ -48,20 +48,23 @@ import CardDefault from "examples/mui/Card.default.tsx";
 import CardHeader from "examples/mui/Card.header.tsx";
 import CheckboxChecked from "examples/mui/Checkbox.checked.tsx";
 import CheckboxDefault from "examples/mui/Checkbox.default.tsx";
+import CheckboxError from "examples/mui/Checkbox.error.tsx";
+import CheckboxGroup from "examples/mui/Checkbox.group.tsx";
 import CheckboxIndeterminate from "examples/mui/Checkbox.indeterminate.tsx";
 import ChipInteractive_ from "examples/mui/Chip._interactive.tsx";
 import ChipClickable from "examples/mui/Chip.clickable.tsx";
 import ChipDefault from "examples/mui/Chip.default.tsx";
 import ChipDeletable from "examples/mui/Chip.deletable.tsx";
 import ChipOutlined from "examples/mui/Chip.outlined.tsx";
+import ChipSizes from "examples/mui/Chip.sizes.tsx";
 import CircularProgressColors_ from "examples/mui/CircularProgress._colors.tsx";
 import CircularProgressDefault from "examples/mui/CircularProgress.default.tsx";
 import DialogDefault from "examples/mui/Dialog.default.tsx";
 import DividerDefault from "examples/mui/Divider.default.tsx";
+import DividerPresentational from "examples/mui/Divider.presentational.tsx";
+import DividerVertical from "examples/mui/Divider.vertical.tsx";
 import DrawerDefault from "examples/mui/Drawer.default.tsx";
 import FabDefault from "examples/mui/Fab.default.tsx";
-import FormControlError from "examples/mui/FormControl.error.tsx";
-import FormControlGroup from "examples/mui/FormControl.group.tsx";
 import IconButtonColors_ from "examples/mui/IconButton._colors.tsx";
 import IconButtonDefault from "examples/mui/IconButton.default.tsx";
 import IconButtonSizes from "examples/mui/IconButton.sizes.tsx";
@@ -172,12 +175,12 @@ const components: Record<string, React.ReactNode> = {
 		</>
 	),
 	Avatar: (
-		<>
+		<Stack spacing={1} direction="row">
 			<AvatarDefault />
 			<AvatarInitials />
 			<AvatarIcon />
 			<AvatarDecorative />
-		</>
+		</Stack>
 	),
 	AvatarGroup: <AvatarGroupDefault />,
 	Backdrop: <BackdropDefault />,
@@ -217,6 +220,8 @@ const components: Record<string, React.ReactNode> = {
 			<CheckboxDefault />
 			<CheckboxChecked />
 			<CheckboxIndeterminate />
+			<CheckboxGroup />
+			<CheckboxError />
 		</>
 	),
 	Chip: (
@@ -226,6 +231,7 @@ const components: Record<string, React.ReactNode> = {
 			<ChipClickable />
 			<ChipDeletable />
 			{!isProduction && <ChipInteractive_ />}
+			<ChipSizes />
 		</Stack>
 	),
 	CircularProgress: (
@@ -240,18 +246,16 @@ const components: Record<string, React.ReactNode> = {
 	),
 	Dialog: <DialogDefault />,
 	Divider: (
-		<Stack spacing={1} alignSelf="stretch">
-			<DividerDefault />
-		</Stack>
+		<>
+			<Stack alignSelf="stretch">
+				<DividerDefault />
+			</Stack>
+			<DividerVertical />
+			<DividerPresentational />
+		</>
 	),
 	Drawer: <DrawerDefault />,
 	Fab: <FabDefault />,
-	FormControl: (
-		<>
-			<FormControlGroup />
-			<FormControlError />
-		</>
-	),
 	IconButton: (
 		<>
 			<IconButtonDefault />

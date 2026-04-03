@@ -85,16 +85,16 @@ This site’s content is written in _markdown_: a minimal formatting syntax usin
 
 #### Tables
 
-| Use case                                                                         | [Anchor](/components/anchor) | [Button](/components/button) |
-| -------------------------------------------------------------------------------- | ---------------------------- | ---------------------------- |
-| Navigating between interface screens or sections                                 | ✅                           | ❌                           |
-| Submitting forms, confirming or cancelling dialogs, creating or deleting content | ❌                           | ✅                           |
+| Use case                                                                         | [Link](/components/link) | [Button](/components/button) |
+| -------------------------------------------------------------------------------- | ------------------------ | ---------------------------- |
+| Navigating between interface screens or sections                                 | ✅                       | ❌                           |
+| Submitting forms, confirming or cancelling dialogs, creating or deleting content | ❌                       | ✅                           |
 
 ```md
-| Use case                                                                         | [Anchor](/components/anchor) | [Button](/components/button) |
-| -------------------------------------------------------------------------------- | ---------------------------- | ---------------------------- |
-| Navigating between interface screens or sections                                 | ✅                           | ❌                           |
-| Submitting forms, confirming or cancelling dialogs, creating or deleting content | ❌                           | ✅                           |
+| Use case                                                                         | [Link](/components/link) | [Button](/components/button) |
+| -------------------------------------------------------------------------------- | ------------------------ | ---------------------------- |
+| Navigating between interface screens or sections                                 | ✅                       | ❌                           |
+| Submitting forms, confirming or cancelling dialogs, creating or deleting content | ❌                       | ✅                           |
 ```
 
 ### Frontmatter

@@ -31,7 +31,7 @@ type StrataKitRootProps = React.ComponentPropsWithoutRef<typeof StrataKitRoot>;
 
 interface RootProps
 	extends BaseProps<"div">,
-		Pick<StrataKitRootProps, "accentColor" | "rootNode"> {
+		Pick<StrataKitRootProps, "unstable_accentColor" | "rootNode"> {
 	children?: React.ReactNode;
 	/**
 	 * The color scheme to use for all components on the page.
@@ -50,7 +50,7 @@ interface RootProps
  * ```
  */
 const Root = forwardRef<"div", RootProps>((props, forwardedRef) => {
-	const { children, colorScheme, accentColor, ...rest } = props;
+	const { children, colorScheme, unstable_accentColor, ...rest } = props;
 
 	return (
 		<StyledEngineProvider>
@@ -59,7 +59,7 @@ const Root = forwardRef<"div", RootProps>((props, forwardedRef) => {
 				<RootInner
 					{...rest}
 					colorScheme={colorScheme}
-					accentColor={accentColor}
+					unstable_accentColor={unstable_accentColor}
 					ref={forwardedRef}
 				>
 					<Styles />
@@ -75,18 +75,19 @@ DEV: Root.displayName = "Root";
 
 interface RootInnerProps
 	extends BaseProps<"div">,
-		Pick<RootProps, "colorScheme" | "accentColor" | "rootNode"> {}
+		Pick<RootProps, "colorScheme" | "unstable_accentColor" | "rootNode"> {}
 
 /** @private */
 const RootInner = forwardRef<"div", RootInnerProps>((props, forwardedRef) => {
-	const { children, colorScheme, accentColor, rootNode, ...rest } = props;
+	const { children, colorScheme, unstable_accentColor, rootNode, ...rest } =
+		props;
 
 	return (
 		<StrataKitRoot
 			{...rest}
 			className={cx("🥝MuiRoot", props.className)}
 			colorScheme={colorScheme}
-			accentColor={accentColor}
+			unstable_accentColor={unstable_accentColor}
 			rootNode={rootNode}
 			synchronizeColorScheme
 			ref={forwardedRef}

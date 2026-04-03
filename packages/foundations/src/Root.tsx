@@ -64,7 +64,7 @@ interface RootProps extends BaseProps {
 	 *
 	 * @default "aurora"
 	 */
-	accentColor?: "aurora" | "cobalt";
+	unstable_accentColor?: "aurora" | "cobalt";
 
 	/**
 	 * The density to use for all components under the Root.
@@ -137,7 +137,7 @@ export const Root = forwardRef<"div", RootProps>((props, forwardedRef) => {
 				<HtmlSanitizerContext.Provider value={unstable_htmlSanitizer}>
 					<PortalProvider
 						colorScheme={props.colorScheme}
-						accentColor={props.accentColor}
+						unstable_accentColor={props.unstable_accentColor}
 						density={props.density}
 						portalContainerProp={portalContainerProp}
 					>
@@ -164,14 +164,17 @@ const RootProvider = (props: React.PropsWithChildren) => {
 
 interface RootInternalProps
 	extends BaseProps,
-		Pick<RootProps, "colorScheme" | "accentColor" | "density" | "rootNode"> {}
+		Pick<
+			RootProps,
+			"colorScheme" | "unstable_accentColor" | "density" | "rootNode"
+		> {}
 
 const RootInternal = forwardRef<"div", RootInternalProps>(
 	(props, forwardedRef) => {
 		const {
 			children,
 			colorScheme,
-			accentColor,
+			unstable_accentColor,
 			density,
 			rootNode = isBrowser ? document : undefined,
 			...rest
@@ -182,7 +185,7 @@ const RootInternal = forwardRef<"div", RootInternalProps>(
 				{...rest}
 				className={cx("🥝Root", props.className)}
 				data-_sk-color-scheme={colorScheme}
-				data-_sk-accent={accentColor}
+				data-_sk-accent={unstable_accentColor}
 				data-_sk-density={density}
 				ref={forwardedRef}
 			>
@@ -227,7 +230,7 @@ function SynchronizeColorScheme({
 // ----------------------------------------------------------------------------
 
 interface PortalProviderProps
-	extends Pick<RootProps, "colorScheme" | "accentColor" | "density"> {
+	extends Pick<RootProps, "colorScheme" | "unstable_accentColor" | "density"> {
 	portalContainerProp?: RootProps["portalContainer"];
 }
 
@@ -240,7 +243,7 @@ function PortalProvider(props: React.PropsWithChildren<PortalProviderProps>) {
 			{props.children}
 			<PortalContainer
 				colorScheme={props.colorScheme}
-				accentColor={props.accentColor}
+				unstable_accentColor={props.unstable_accentColor}
 				density={props.density}
 				ref={setPortalContainer}
 				render={props.portalContainerProp}
@@ -254,7 +257,7 @@ function PortalProvider(props: React.PropsWithChildren<PortalProviderProps>) {
 interface PortalContainerProps
 	extends Pick<
 		RootProps,
-		"colorScheme" | "accentColor" | "density" | "render"
+		"colorScheme" | "unstable_accentColor" | "density" | "render"
 	> {}
 
 /** A separate root rendered at the end of root node, to be used as the container for all portals. */
@@ -271,7 +274,7 @@ const PortalContainer = forwardRef<"div", PortalContainerProps>(
 				render={props.render}
 				className="🥝Root"
 				data-_sk-color-scheme={props.colorScheme}
-				data-_sk-accent={props.accentColor}
+				data-_sk-accent={props.unstable_accentColor}
 				data-_sk-density={props.density}
 				style={{ display: "contents" }}
 				ref={forwardedRef}

@@ -225,7 +225,7 @@ export function useSetColorScheme() {
 // ----------------------------------------------------------------------------
 
 type RootProps = React.ComponentProps<typeof Root>;
-type AccentColor = RootProps["accentColor"];
+type AccentColor = RootProps["unstable_accentColor"];
 
 const ACCENT_COLOR_STORAGE_KEY = "🥝:accent-color";
 

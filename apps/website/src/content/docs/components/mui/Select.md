@@ -12,12 +12,12 @@ links:
 
 Make sure the **Select** is suitable for your use case. There may be other, more appropriate components available.
 
-| Use case                                 | [Select](/components/select) | [DropdownMenu](/components/dropdownmenu) |
-| ---------------------------------------- | ---------------------------- | ---------------------------------------- |
-| Choosing an input value (e.g. a country) | ✅                           | ❌                                       |
-| Form input                               | ✅                           | ❌                                       |
-| Triggering an action or setting a state  | ❌                           | ✅                                       |
-| Grouping related command                 | ❌                           | ✅                                       |
+| Use case                                 | [Select](/components/select) | [Menu](/components/menu) |
+| ---------------------------------------- | ---------------------------- | ------------------------ |
+| Choosing an input value (e.g. a country) | ✅                           | ❌                       |
+| Form input                               | ✅                           | ❌                       |
+| Triggering an action or setting a state  | ❌                           | ✅                       |
+| Grouping related command                 | ❌                           | ✅                       |
 
 ## Examples
 
@@ -49,4 +49,4 @@ Use a [**NativeSelect**](/components/badge) component to render a native [`<sele
 
 - Don’t steal keyboard focus and move it away from the **Select** when an option is chosen.
 - Don’t change application state without employing a [live region](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Guides/Live_regions) to alert screen reader users of that change.
-- Don’t make **Select** options behave like buttons/commands. Use the [**DropdownMenu**](/components/dropdownmenu) component instead.
+- Don’t make **Select** options behave like buttons/commands. Use the [**Menu**](/components/menu) component instead.

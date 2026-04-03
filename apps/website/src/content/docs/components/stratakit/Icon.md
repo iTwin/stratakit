@@ -32,8 +32,7 @@ Omit the `alt` prop if the **Icon** is purely decorative. This will hide the **I
 
 ### Color
 
-Use the [`color` CSS property](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/color) to adjust the **Icon’s** color. If you’re adjusting the **Icon’s** color, we recommend choosing from the icon color palette.
-
+Use the [`color` CSS property](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/color) to adjust the **Icon’s** color. Prefer usage of StrataKit color tokens when adjusting the **Icon’s** color.
 
 ::example{src="mui/Icon.color"}
 

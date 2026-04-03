@@ -14,7 +14,7 @@ export default () => {
 			<Skeleton variant="rectangular" />
 			<Skeleton variant="rounded" />
 			<Skeleton variant="text" />
-			<div style={visuallyHidden}>Loading...</div>
+			<div style={visuallyHidden}>Loading…</div>
 		</Stack>
 	);
 };

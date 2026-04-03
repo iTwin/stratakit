@@ -34,6 +34,7 @@ Accurately representing the shape and structure of a loading interface is a case
 ## ✅ Do
 
 - Combine different sizes and [variants](#variants) to best approximate the shape and size of the interface being loaded.
+- Use multiple **Skeletons** with the “text” variant to represent a multi-line text paragraph.
 - Include a _single_ visually hidden message per loading state.
 
 ## ❌ Don’t

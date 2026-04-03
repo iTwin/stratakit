@@ -106,7 +106,7 @@ export default function App() {
 					<Root
 						key={isRootTest ? "foundations" : "mui"}
 						colorScheme={colorScheme}
-						accentColor={accentColor === "blue" ? "blue" : undefined}
+						accentColor={accentColor === "cobalt" ? "cobalt" : undefined}
 						density={density}
 						synchronizeColorScheme={false}
 						style={{ display: "contents" }}

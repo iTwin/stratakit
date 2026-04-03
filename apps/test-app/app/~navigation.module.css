@@ -51,7 +51,7 @@
 }
 
 .accentToggle {
-	&:where([data-accent="blue"]) svg {
+	&:where([data-accent="cobalt"]) svg {
 		color: var(--stratakit-color-icon-accent-strong);
 	}
 }

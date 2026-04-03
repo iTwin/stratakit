@@ -147,7 +147,9 @@ export function AppNavigationRail(props: AppNavigationRailProps) {
 									label="Toggle accent color"
 									icon={svgPalette}
 									onClick={() => {
-										setAccentColor(accentColor === "blue" ? "aurora" : "blue");
+										setAccentColor(
+											accentColor === "cobalt" ? "aurora" : "cobalt",
+										);
 									}}
 									data-accent={accentColor}
 								/>

@@ -60,11 +60,11 @@ interface RootProps extends BaseProps {
 	 * The accent color to use for all components under the Root:
 	 *
 	 * - `undefined`: Default and preferred green aurora color.
-	 * - `"blue"`: Blue accent color to ensure compatibility with older applications.
+	 * - `"cobalt"`: Blue accent color to ensure compatibility with older applications.
 	 *
 	 * @default undefined
 	 */
-	accentColor?: "blue";
+	accentColor?: "cobalt";
 
 	/**
 	 * The density to use for all components under the Root.

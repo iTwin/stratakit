@@ -24,16 +24,16 @@ html:where([data-color-scheme="dark"]),
 	--stratakit-color-border-shadow-strong: --primitive("color.white.16");
 }
 
-.🥝Root:where([data-_sk-accent="blue"]) {
-	--_stratakit-accent-0: --primitive("color.accentBlue.0");
-	--_stratakit-accent-50: --primitive("color.accentBlue.50");
-	--_stratakit-accent-100: --primitive("color.accentBlue.100");
-	--_stratakit-accent-200: --primitive("color.accentBlue.200");
-	--_stratakit-accent-300: --primitive("color.accentBlue.300");
-	--_stratakit-accent-400: --primitive("color.accentBlue.400");
-	--_stratakit-accent-500: --primitive("color.accentBlue.500");
-	--_stratakit-accent-600: --primitive("color.accentBlue.600");
-	--_stratakit-accent-700: --primitive("color.accentBlue.700");
-	--_stratakit-accent-800: --primitive("color.accentBlue.800");
-	--_stratakit-accent-900: --primitive("color.accentBlue.900");
+.🥝Root:where([data-_sk-accent="cobalt"]) {
+	--_stratakit-accent-0: --primitive("color.cobalt.0");
+	--_stratakit-accent-50: --primitive("color.cobalt.50");
+	--_stratakit-accent-100: --primitive("color.cobalt.100");
+	--_stratakit-accent-200: --primitive("color.cobalt.200");
+	--_stratakit-accent-300: --primitive("color.cobalt.300");
+	--_stratakit-accent-400: --primitive("color.cobalt.400");
+	--_stratakit-accent-500: --primitive("color.cobalt.500");
+	--_stratakit-accent-600: --primitive("color.cobalt.600");
+	--_stratakit-accent-700: --primitive("color.cobalt.700");
+	--_stratakit-accent-800: --primitive("color.cobalt.800");
+	--_stratakit-accent-900: --primitive("color.cobalt.900");
 }

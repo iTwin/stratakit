@@ -6,6 +6,8 @@
 import * as React from "react";
 import { useSearchParams } from "react-router";
 
+import type { Root } from "@stratakit/mui";
+
 // ----------------------------------------------------------------------------
 
 export const isProduction = process.env.NODE_ENV === "production";
@@ -222,7 +224,8 @@ export function useSetColorScheme() {
 
 // ----------------------------------------------------------------------------
 
-type AccentColor = "aurora" | "blue" | undefined;
+type RootProps = React.ComponentProps<typeof Root>;
+type AccentColor = RootProps["accentColor"] | "aurora";
 
 const ACCENT_COLOR_STORAGE_KEY = "🥝:accent-color";
 
@@ -257,7 +260,7 @@ export function useAccentColor() {
 
 	const storedValue = useLocalStorage(ACCENT_COLOR_STORAGE_KEY);
 	const storedAccentColor =
-		storedValue === "aurora" || storedValue === "blue"
+		storedValue === "aurora" || storedValue === "cobalt"
 			? storedValue
 			: undefined;
 

@@ -343,6 +343,7 @@ const DropdownMenuItemShortcuts = forwardRef<
 					return (
 						<Kbd
 							variant="ghost"
+							// biome-ignore lint/suspicious/noArrayIndexKey: The is likely to remain stable.
 							key={`${key + index}`}
 							symbol={key as PredefinedSymbol}
 						/>
@@ -350,6 +351,7 @@ const DropdownMenuItemShortcuts = forwardRef<
 				}
 
 				return (
+					// biome-ignore lint/suspicious/noArrayIndexKey: The is likely to remain stable.
 					<Kbd variant="ghost" key={`${key + index}`}>
 						{key}
 					</Kbd>

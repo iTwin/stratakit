@@ -25,9 +25,17 @@ Make sure the **Tooltip** is suitable for your use case. In some cases, a static
 
 ## StrataKit MUI modifications
 
+- Restyled using StrataKit's visual language.
 - The [`describeChild`](https://mui.com/material-ui/api/tooltip/#tooltip-prop-describeChild) prop defaults to `true`.
+- Includes full `forced-colors` support.
 
 ## Examples
+
+### Direction
+
+The **Tooltip** supports 12 `placement` options. The example highlights 4 of the most common. See [the MUI Tooltip placement documentation](https://mui.com/material-ui/api/tooltip/#tooltip-prop-placement) for the full set.
+
+::example{src="mui/Tooltip.direction"}
 
 ### Label
 

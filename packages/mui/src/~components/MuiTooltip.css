@@ -1,0 +1,46 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+
+.MuiTooltip-tooltip {
+	--✨border-width: 1px;
+	--✨offset: var(--stratakit-space-x1);
+
+	@apply --typography("body-sm");
+	overflow-wrap: anywhere;
+	hyphens: auto;
+
+	background-color: var(--stratakit-color-bg-elevation-emphasis);
+	box-shadow: var(--stratakit-shadow-control-tooltip-base);
+	color: var(--stratakit-color-text-neutral-emphasis);
+
+	display: flex;
+	justify-content: center;
+	gap: var(--stratakit-space-x1);
+
+	border: var(--✨border-width) solid var(--stratakit-color-border-elevation-base);
+	border-radius: 4px;
+	padding-block: calc(var(--stratakit-space-x1) - var(--✨border-width));
+	padding-inline: calc(var(--stratakit-space-x2) - var(--✨border-width));
+	min-block-size: 1rem;
+	max-inline-size: 12.25rem;
+
+	margin: var(--stratakit-space-x05);
+
+	&:where(.MuiTooltip-tooltipPlacementBottom) {
+		margin-block-start: var(--✨offset);
+	}
+
+	&:where(.MuiTooltip-tooltipPlacementTop) {
+		margin-block-end: var(--✨offset);
+	}
+
+	&:where(.MuiTooltip-tooltipPlacementRight) {
+		margin-inline-start: var(--✨offset);
+	}
+
+	&:where(.MuiTooltip-tooltipPlacementLeft) {
+		margin-inline-end: var(--✨offset);
+	}
+}

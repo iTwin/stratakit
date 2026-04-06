@@ -24,6 +24,12 @@ links:
 
 ::example{src="mui/Slider.range" min-width="300px"}
 
+### Tooltip
+
+Use the `valueLabelDisplay` prop to show a tooltip near the **Slider** handle for more precise selection.
+
+::example{src="mui/Slider.tooltip" min-width="300px"}
+
 ### Vertical
 
 ::example{src="mui/Slider.vertical" min-width="300px"}

@@ -92,6 +92,7 @@ import SkeletonDefault from "examples/mui/Skeleton.default.tsx";
 import SliderDefault from "examples/mui/Slider.default.tsx";
 import SliderMarks from "examples/mui/Slider.marks.tsx";
 import SliderRange from "examples/mui/Slider.range.tsx";
+import SliderTooltip from "examples/mui/Slider.tooltip.tsx";
 import SliderVertical from "examples/mui/Slider.vertical.tsx";
 import SnackbarDefault from "examples/mui/Snackbar.default.tsx";
 import SpeedDialDefault from "examples/mui/SpeedDial.default.tsx";
@@ -324,6 +325,7 @@ const components: Record<string, React.ReactNode> = {
 	Slider: (
 		<>
 			<SliderDefault />
+			<SliderTooltip />
 			<SliderMarks />
 			<SliderRange />
 			<SliderVertical />

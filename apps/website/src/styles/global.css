@@ -20,8 +20,17 @@
 		text-decoration-line: underline;
 		text-underline-offset: 2px;
 
-		&:not(:hover) {
-			text-decoration-color: var(--stratakit-color-text-neutral-tertiary);
+		@media (any-hover: hover) {
+			transition: all 150ms;
+			transition-property: text-underline-offset;
+
+			&:where(:not(:hover)) {
+				text-decoration-color: var(--stratakit-color-text-neutral-secondary);
+			}
+
+			&:where(:hover) {
+				text-underline-offset: 4px;
+			}
 		}
 	}
 

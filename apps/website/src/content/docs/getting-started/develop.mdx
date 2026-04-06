@@ -1,8 +1,6 @@
 ---
 title: Develop with StrataKit
 description: Learn how to set up StrataKit in your React project.
-sidebar:
-  label: Develop
 ---
 
 import { Steps, Tabs, TabItem } from "@astrojs/starlight/components";
@@ -41,7 +39,7 @@ Open the [minimal starter template on StackBlitz](https://stackblitz.com/github/
 
    If your **tsconfig** file does not already have a `types` field, you can alternatively add `@stratakit/mui/types.d.ts` using a [triple-slash directive](https://www.typescriptlang.org/docs/handbook/triple-slash-directives.html) in any declaration file.
 
-4. **Set up `Root` component**
+4. **Set up the `Root` component**
 
    Wrap your app's entrypoint with the `<Root>` component from `@stratakit/mui`:
 
@@ -146,3 +144,7 @@ Build tools such as [Vite](https://vite.dev/guide/assets.html#importing-asset-as
 ## Migrating from iTwinUI
 
 If you're using StrataKit alongside the current stable version of iTwinUI, you'll need to set up the [theme bridge](https://github.com/iTwin/iTwinUI/wiki/StrataKit-theme-bridge) to ensure both libraries work together seamlessly.
+
+## Migrating from legacy StrataKit
+
+If you're using legacy StrataKit components (from before `@stratakit/mui` was introduced), see [Migrating from legacy StrataKit](/getting-started/migration-from-legacy-stratakit).

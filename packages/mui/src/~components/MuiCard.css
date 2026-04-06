@@ -27,6 +27,23 @@
 	}
 }
 
+.MuiCardHeader-title {
+	@apply --typography("headline-sm");
+	font-weight: 500;
+}
+
+.MuiCardHeader-subheader {
+	@apply --typography("body-md");
+}
+
+.MuiCardMedia-root {
+	inline-size: 100%;
+
+	&:where(img, picture) {
+		object-fit: cover;
+	}
+}
+
 .MuiCardContent-root {
 	&:where(:has(+ .MuiCardActions-root)) {
 		padding-block-end: 0;

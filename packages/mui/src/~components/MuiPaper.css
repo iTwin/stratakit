@@ -6,6 +6,10 @@
 :where(.MuiPaper-root) {
 	--Paper-overlay: unset !important; /* Remove background-image overlay that MUI adds in dark mode */
 
+	&:where(.MuiPaper-rounded) {
+		border-radius: 8px;
+	}
+
 	&:where(.MuiPaper-elevation1) {
 		--stratakit-mui-palette-background-paper: var(--stratakit-color-bg-page-base);
 	}

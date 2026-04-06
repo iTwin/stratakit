@@ -1,0 +1,18 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+
+.MuiMenuItem-root {
+	@apply --typography("body-md");
+
+	&:where(.Mui-selected) {
+		border-block: 1px solid var(--stratakit-color-border-accent-strong);
+		background-color: var(--stratakit-color-bg-glow-on-surface-accent-pressed);
+		color: var(--stratakit-color-text-accent-strong);
+	}
+
+	&:where(.Mui-focusVisible) {
+		outline-offset: -2px;
+	}
+}

@@ -1,5 +1,50 @@
 [
 	{
+		"name": "mui",
+		"apis": [
+			{
+				"name": "Icon",
+				"composition": [],
+				"reexport": {
+					"packageName": "foundations",
+					"apiName": "Icon"
+				}
+			},
+			{
+				"name": "Root",
+				"composition": [
+					{
+						"name": "Root",
+						"baseProps": ["BaseProps.render"],
+						"props": [
+							{
+								"name": "colorScheme",
+								"type": "\"light\" | \"dark\"",
+								"optional": false,
+								"jsdoc": "The color scheme to use for all components on the page."
+							},
+							{
+								"name": "children",
+								"type": "ReactNode",
+								"optional": true
+							},
+							{
+								"name": "rootNode",
+								"type": "Document | ShadowRoot | undefined",
+								"optional": true,
+								"jsdoc": "The root node to which this `Root` component is attached.\n\nThis needs to be set when the `Root` is rendered within shadow DOM or a popout window.",
+								"defaultValue": "document"
+							}
+						],
+						"baseElement": "div",
+						"jsdoc": "Component to be used at the root of your application. It ensures that StrataKit theme for MUI is applied correctly.\n\nExample:\n```tsx\n<Root colorScheme=\"dark\">\n  <App />\n</Root>\n```",
+						"barrelName": "Root"
+					}
+				]
+			}
+		]
+	},
+	{
 		"name": "foundations",
 		"apis": [
 			{
@@ -49,8 +94,8 @@
 							},
 							{
 								"name": "density",
-								"type": "\"dense\"",
-								"optional": false,
+								"type": "\"dense\" | undefined",
+								"optional": true,
 								"jsdoc": "The density to use for all components under the Root."
 							},
 							{
@@ -369,7 +414,7 @@
 						},
 						{
 							"name": "onChange",
-							"type": "ChangeEventHandler<HTMLInputElement> | undefined",
+							"type": "ChangeEventHandler<HTMLInputElement, HTMLInputElement> | undefined",
 							"optional": true,
 							"jsdoc": "A function that is called when the checkbox's checked state changes."
 						},
@@ -484,7 +529,7 @@
 							}
 						],
 						"baseElement": "div",
-						"jsdoc": "The control component for the field.\n\nUse the `render` prop to render the control component.\n\n```tsx\n<Field.Control render={<TextBox.Input />} />\n```\n\nIf the rendered component uses a compositional API, then use a function\nwithin `render` to apply the `controlProps` to the correct sub-component:\n\n```tsx\n<Field.Control\n  render={(controlProps) => (\n    <TextBox.Root>\n      <TextBox.Icon href={placeholder} />\n      <TextBox.Input {...controlProps} />\n    </TextBox.Root>\n  )}\n/>\n```\n\nIf you need a custom `id` set for the control, set it on this component\ninstead of the control component within `render`.\n\n```tsx\n<Field.Control id=\"custom\" render={<TextBox.Input />} />\n```",
+						"jsdoc": "The control component for the field.\n\nUse the `render` prop to render the control component.\n\n```tsx\n<Field.Control render={<TextBox.Input />} />\n```\n\nIf the rendered component uses a compositional API, then use a function\nwithin `render` to apply the `controlProps` to the correct sub-component:\n\n```tsx\n<Field.Control\n  render={(controlProps) => (\n    <TextBox.Root>\n      <TextBox.Icon href={svgPlaceholder} />\n      <TextBox.Input {...controlProps} />\n    </TextBox.Root>\n  )}\n/>\n```\n\nIf you need a custom `id` set for the control, set it on this component\ninstead of the control component within `render`.\n\n```tsx\n<Field.Control id=\"custom\" render={<TextBox.Input />} />\n```",
 						"barrelName": "Field.Control"
 					},
 					{
@@ -724,7 +769,7 @@
 						},
 						{
 							"name": "onChange",
-							"type": "BivariantCallback<(event: ChangeEvent<HTMLInputElement>) => void> | undefined",
+							"type": "BivariantCallback<(event: ChangeEvent<HTMLInputElement, Element>) => void> | undefined",
 							"optional": true,
 							"jsdoc": "Callback function that is called when the radio button state changes."
 						},
@@ -907,7 +952,7 @@
 						},
 						{
 							"name": "onChange",
-							"type": "ChangeEventHandler<HTMLInputElement> | undefined",
+							"type": "ChangeEventHandler<HTMLInputElement, HTMLInputElement> | undefined",
 							"optional": true,
 							"jsdoc": "A function that is called when the checkbox's checked state changes."
 						},
@@ -1195,7 +1240,7 @@
 							}
 						],
 						"baseElement": "div",
-						"jsdoc": "An item within an accordion. Disclosed content with a label.\n\nBare minimum example:\n```tsx\n<AccordionItem.Root>\n  <AccordionItem.Header>\n    <AccordionItem.Marker />\n    <AccordionItem.Button>\n      <AccordionItem.Label>Label</AccordionItem.Label>\n    </AccordionItem.Button>\n  </AccordionItem.Header>\n  <AccordionItem.Content>Body</AccordionItem.Content>\n</AccordionItem.Root>\n```\n\nIf the accordion item discloses a significant section of the page, it may be\ndesirable to markup its label as a heading for accessibility purposes (e.g.\nscreen reader users often navigate by heading). For those cases, you can wrap\nthe `AccordionItem.Button` component with an `AccordionItem.Heading`\ncomponent and use its `render` prop for rendering an HTML heading element.\n```tsx\n<AccordionItem.Root>\n  <AccordionItem.Header>\n    <AccordionItem.Marker />\n    <AccordionItem.Heading render={<h2 />}>\n      <AccordionItem.Button>\n        <AccordionItem.Label>Label</AccordionItem.Label>\n      </AccordionItem.Button>\n    </AccordionItem.Heading>\n  </AccordionItem.Header>\n  <AccordionItem.Content>Body</AccordionItem.Content>\n</AccordionItem.Root>\n```\n\nExample with a decoration:\n```tsx\n<AccordionItem.Root>\n  <AccordionItem.Header>\n    <AccordionItem.Marker />\n    <AccordionItem.Decoration render={<Icon href={placeholder} />} />\n    <AccordionItem.Button>\n      <AccordionItem.Label>Label</AccordionItem.Label>\n    </AccordionItem.Button>\n  </AccordionItem.Header>\n  <AccordionItem.Content>Body</AccordionItem.Content>\n</AccordionItem.Root>\n```",
+						"jsdoc": "An item within an accordion. Disclosed content with a label.\n\nBare minimum example:\n```tsx\n<AccordionItem.Root>\n  <AccordionItem.Header>\n    <AccordionItem.Marker />\n    <AccordionItem.Button>\n      <AccordionItem.Label>Label</AccordionItem.Label>\n    </AccordionItem.Button>\n  </AccordionItem.Header>\n  <AccordionItem.Content>Body</AccordionItem.Content>\n</AccordionItem.Root>\n```\n\nIf the accordion item discloses a significant section of the page, it may be\ndesirable to markup its label as a heading for accessibility purposes (e.g.\nscreen reader users often navigate by heading). For those cases, you can wrap\nthe `AccordionItem.Button` component with an `AccordionItem.Heading`\ncomponent and use its `render` prop for rendering an HTML heading element.\n```tsx\n<AccordionItem.Root>\n  <AccordionItem.Header>\n    <AccordionItem.Marker />\n    <AccordionItem.Heading render={<h2 />}>\n      <AccordionItem.Button>\n        <AccordionItem.Label>Label</AccordionItem.Label>\n      </AccordionItem.Button>\n    </AccordionItem.Heading>\n  </AccordionItem.Header>\n  <AccordionItem.Content>Body</AccordionItem.Content>\n</AccordionItem.Root>\n```\n\nExample with a decoration:\n```tsx\n<AccordionItem.Root>\n  <AccordionItem.Header>\n    <AccordionItem.Marker />\n    <AccordionItem.Decoration render={<Icon href={svgPlaceholder} />} />\n    <AccordionItem.Button>\n      <AccordionItem.Label>Label</AccordionItem.Label>\n    </AccordionItem.Button>\n  </AccordionItem.Header>\n  <AccordionItem.Content>Body</AccordionItem.Content>\n</AccordionItem.Root>\n```",
 						"barrelName": "unstable_AccordionItem.Root"
 					},
 					{
@@ -1235,7 +1280,7 @@
 						"baseProps": ["BaseProps.render"],
 						"props": [],
 						"baseElement": "div",
-						"jsdoc": "The always-visible, optional decoration of the `AccordionItem.Header` content.\nIt can be placed before or after the rest of the content in\n`AccordionItem.Header`. However, the `AccordionItem.Marker` must always be\nplaced at either edge (beginning or end) of the header.\n\nUse as a direct descendant of `AccordionItem.Header`. The decoration\ncan be placed before the rest of the header content.\n\nExample:\n```tsx\n<AccordionItem.Header>\n  <AccordionItem.Marker />\n  <AccordionItem.Decoration render={<Icon href={placeholder} />} />\n  <AccordionItem.Button>\n    <AccordionItem.Label>Label</AccordionItem.Label>\n  </AccordionItem.Button>\n</AccordionItem.Header>\n```\n\nAlternatively, the decoration can also be placed after the rest of the\nheader content.\n\nExample:\n```tsx\n<AccordionItem.Header>\n  <AccordionItem.Marker />\n  <AccordionItem.Button>\n    <AccordionItem.Label>Label</AccordionItem.Label>\n  </AccordionItem.Button>\n  <AccordionItem.Decoration render={<Icon href={placeholder} />} />\n</AccordionItem.Header>\n```\n\nThere can also be multiple decorations if passed as children under\n`AccordionItem.Decoration`.\n\nExample:\n```tsx\n<AccordionItem.Header>\n  <AccordionItem.Marker />\n  <AccordionItem.Decoration>\n    <Icon href={placeholder} />\n    <Icon href={placeholder} />\n  </AccordionItem.Decoration>\n  <AccordionItem.Button>\n    <AccordionItem.Label>Label</AccordionItem.Label>\n  </AccordionItem.Button>\n</AccordionItem.Header>\n```",
+						"jsdoc": "The always-visible, optional decoration of the `AccordionItem.Header` content.\nIt can be placed before or after the rest of the content in\n`AccordionItem.Header`. However, the `AccordionItem.Marker` must always be\nplaced at either edge (beginning or end) of the header.\n\nUse as a direct descendant of `AccordionItem.Header`. The decoration\ncan be placed before the rest of the header content.\n\nExample:\n```tsx\n<AccordionItem.Header>\n  <AccordionItem.Marker />\n  <AccordionItem.Decoration render={<Icon href={svgPlaceholder} />} />\n  <AccordionItem.Button>\n    <AccordionItem.Label>Label</AccordionItem.Label>\n  </AccordionItem.Button>\n</AccordionItem.Header>\n```\n\nAlternatively, the decoration can also be placed after the rest of the\nheader content.\n\nExample:\n```tsx\n<AccordionItem.Header>\n  <AccordionItem.Marker />\n  <AccordionItem.Button>\n    <AccordionItem.Label>Label</AccordionItem.Label>\n  </AccordionItem.Button>\n  <AccordionItem.Decoration render={<Icon href={svgPlaceholder} />} />\n</AccordionItem.Header>\n```\n\nThere can also be multiple decorations if passed as children under\n`AccordionItem.Decoration`.\n\nExample:\n```tsx\n<AccordionItem.Header>\n  <AccordionItem.Marker />\n  <AccordionItem.Decoration>\n    <Icon href={svgPlaceholder} />\n    <Icon href={svgPlaceholder} />\n  </AccordionItem.Decoration>\n  <AccordionItem.Button>\n    <AccordionItem.Label>Label</AccordionItem.Label>\n  </AccordionItem.Button>\n</AccordionItem.Header>\n```",
 						"barrelName": "unstable_AccordionItem.Decoration"
 					},
 					{
@@ -1243,7 +1288,7 @@
 						"baseProps": ["BaseProps.render"],
 						"props": [],
 						"baseElement": "div",
-						"jsdoc": "The visual marker of the `AccordionItem.Header` content. While it can be\nplaced before or after the rest of the content in `AccordionItem.Header`,\nit is recommended to place the marker before.\n\nExample:\n```tsx\n<AccordionItem.Header>\n  <AccordionItem.Marker />\n  <AccordionItem.Button>\n    <AccordionItem.Label>Label</AccordionItem.Label>\n  </AccordionItem.Button>\n</AccordionItem.Header>\n```\n\nAlternatively, the marker can also be placed after the rest of the header\ncontent.\n\nExample:\n```tsx\n<AccordionItem.Header>\n  <AccordionItem.Button>\n    <AccordionItem.Label>Label</AccordionItem.Label>\n  </AccordionItem.Button>\n  <AccordionItem.Marker />\n</AccordionItem.Header>\n```\n\nPass an icon as a child to override the default chevron icon:\n```tsx\n<AccordionItem.Header>\n  <AccordionItem.Marker>\n    <Icon href={placeholder} />\n  </AccordionItem.Marker>\n  <AccordionItem.Button>\n    <AccordionItem.Label>Label</AccordionItem.Label>\n  </AccordionItem.Button>\n</AccordionItem.Header>\n```",
+						"jsdoc": "The visual marker of the `AccordionItem.Header` content. While it can be\nplaced before or after the rest of the content in `AccordionItem.Header`,\nit is recommended to place the marker before.\n\nExample:\n```tsx\n<AccordionItem.Header>\n  <AccordionItem.Marker />\n  <AccordionItem.Button>\n    <AccordionItem.Label>Label</AccordionItem.Label>\n  </AccordionItem.Button>\n</AccordionItem.Header>\n```\n\nAlternatively, the marker can also be placed after the rest of the header\ncontent.\n\nExample:\n```tsx\n<AccordionItem.Header>\n  <AccordionItem.Button>\n    <AccordionItem.Label>Label</AccordionItem.Label>\n  </AccordionItem.Button>\n  <AccordionItem.Marker />\n</AccordionItem.Header>\n```\n\nPass an icon as a child to override the default chevron icon:\n```tsx\n<AccordionItem.Header>\n  <AccordionItem.Marker>\n    <Icon href={svgPlaceholder} />\n  </AccordionItem.Marker>\n  <AccordionItem.Button>\n    <AccordionItem.Label>Label</AccordionItem.Label>\n  </AccordionItem.Button>\n</AccordionItem.Header>\n```",
 						"barrelName": "unstable_AccordionItem.Marker"
 					},
 					{
@@ -1389,7 +1434,7 @@
 							}
 						],
 						"baseElement": "svg",
-						"jsdoc": "A static icon decoration for the banner.\n\n- If no `href` is passed and the `tone` is `\"neutral\"`, no icon is shown.\n- If no `href` is passed and the `tone` is not` \"neutral\"`, the status icon is shown.\n\nExample with default status icon:\n```tsx\n<Banner.Root tone=\"info\">\n  <Banner.Icon />\n</Banner.Root>\n\nExample with custom icon:\n```tsx\nimport placeholderIcon from \"@stratakit/icons/placeholder.svg\";\n\n<Banner.Root>\n  <Banner.Icon href={placeholderIcon} />\n</Banner.Root>\n```"
+						"jsdoc": "A static icon decoration for the banner.\n\n- If no `href` is passed and the `tone` is `\"neutral\"`, no icon is shown.\n- If no `href` is passed and the `tone` is not` \"neutral\"`, the status icon is shown.\n\nExample with default status icon:\n```tsx\n<Banner.Root tone=\"info\">\n  <Banner.Icon />\n</Banner.Root>\n\nExample with custom icon:\n```tsx\nimport svgPlaceholder from \"@stratakit/icons/placeholder.svg\";\n\n<Banner.Root>\n  <Banner.Icon href={svgPlaceholder} />\n</Banner.Root>\n```"
 					},
 					{
 						"name": "Label",
@@ -1784,7 +1829,7 @@
 							},
 							{
 								"name": "onChange",
-								"type": "ChangeEventHandler<HTMLInputElement> | undefined",
+								"type": "ChangeEventHandler<HTMLInputElement, HTMLInputElement> | undefined",
 								"optional": true,
 								"jsdoc": "A function that is called when the checkbox's checked state changes."
 							},

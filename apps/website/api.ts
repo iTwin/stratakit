@@ -18,9 +18,11 @@ import {
 } from "ts-morph";
 
 const repoPath = process.env.REPO_PATH || "../..";
-const packageNames = ["foundations", "bricks", "structures"];
+
+const packageNames = ["mui", "foundations", "bricks", "structures"];
 
 const baseTypeNames = ["BaseProps", "FocusableProps"];
+const utilityFunctions = ["loadFoundationsStyles"];
 
 type Api = Api.Package[];
 
@@ -37,6 +39,7 @@ namespace Api {
 		convenience?: Component;
 		composition: Component[];
 		types?: Type[];
+		reexport?: Reexport;
 	}
 
 	export interface Component {
@@ -64,6 +67,11 @@ namespace Api {
 		optional: boolean;
 		jsdoc?: string;
 		defaultValue?: string;
+	}
+
+	export interface Reexport {
+		packageName: string;
+		apiName: string;
 	}
 }
 
@@ -101,6 +109,7 @@ function generateApi() {
 			.filter(([key]) => {
 				if (key === ".") return false;
 				if (key === "./secret-internals") return false;
+				if (key === "./types.d.ts") return false;
 				if (key.endsWith(".json")) return false;
 				return true;
 			})
@@ -164,6 +173,21 @@ function generateApi() {
 				];
 				let component = components.find((comp) => comp.name === exportName);
 
+				function addApi() {
+					apis.push({
+						name: moduleName,
+						composition: [],
+					});
+					return apis[apis.length - 1];
+				}
+
+				const reexport = getReexport(barrelExport);
+				if (reexport) {
+					api = api ?? addApi();
+					api.reexport = reexport;
+					continue;
+				}
+
 				if (!component) {
 					// Handle components that are not exported by subpath exports
 					component = getComponent({
@@ -171,21 +195,13 @@ function generateApi() {
 					});
 					if (!component) continue;
 
-					if (!api) {
-						apis.push({
-							name: moduleName,
-							convenience: undefined,
-							composition: [],
-						});
-						api = apis[apis.length - 1];
-					}
+					api = api ?? addApi();
 					if (isDefaultExport(exportSymbol)) {
 						api.convenience = component;
 					} else {
 						api.composition.push(component);
 					}
 				}
-
 				component.barrelName = fullBarrelName;
 			}
 		}
@@ -211,6 +227,30 @@ function isDefaultExport(symbol: TSMorphSymbol) {
 	const sourceFile = declaration.getSourceFile();
 	const defaultExport = sourceFile.getDefaultExportSymbol();
 	return defaultExport === symbol;
+}
+
+function getReexport(symbol: TSMorphSymbol): Api.Reexport | undefined {
+	const alias = symbol.getAliasedSymbol();
+	if (!alias) return undefined;
+
+	const aliasDeclaration = alias.getDeclarations().at(0);
+	if (!aliasDeclaration) return undefined;
+
+	const packageName = getPackageNameFromFilePath(symbol);
+	const aliasPackageName = getPackageNameFromFilePath(alias);
+
+	if (!aliasPackageName) return undefined;
+	if (packageName === aliasPackageName) return undefined;
+	return {
+		packageName: aliasPackageName,
+		apiName: alias.getName(),
+	};
+}
+
+function getPackageNameFromFilePath(symbol: TSMorphSymbol) {
+	const name = symbol.getFullyQualifiedName();
+	const match = name.match(/\/packages\/([^/]+)\//);
+	return match ? match[1] : undefined;
 }
 
 function getConvenienceComponent({ sourceFile }: { sourceFile: SourceFile }) {
@@ -250,7 +290,7 @@ function getComponent({ exportSymbol }: { exportSymbol: TSMorphSymbol }) {
 
 	const localName = symbol.getName();
 	// TODO: handle utility functions
-	if (localName === "loadFoundationsStyles") return;
+	if (utilityFunctions.includes(localName)) return;
 
 	const name = isDefaultExport(exportSymbol)
 		? symbol.getName()

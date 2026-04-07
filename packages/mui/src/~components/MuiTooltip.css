@@ -5,7 +5,6 @@
 
 .MuiTooltip-tooltip {
 	--✨border-width: 1px;
-	--✨offset: var(--stratakit-space-x1);
 
 	@apply --typography("body-sm");
 	overflow-wrap: anywhere;
@@ -23,20 +22,4 @@
 	max-inline-size: 12.25rem;
 
 	margin: var(--stratakit-space-x05);
-
-	&:where(.MuiTooltip-tooltipPlacementBottom) {
-		margin-block-start: var(--✨offset);
-	}
-
-	&:where(.MuiTooltip-tooltipPlacementTop) {
-		margin-block-end: var(--✨offset);
-	}
-
-	&:where(.MuiTooltip-tooltipPlacementRight) {
-		margin-inline-start: var(--✨offset);
-	}
-
-	&:where(.MuiTooltip-tooltipPlacementLeft) {
-		margin-inline-end: var(--✨offset);
-	}
 }

@@ -2,4 +2,4 @@
 "@stratakit/mui": patch
 ---
 
-Styled `Menu` to match the Strata visual design language.
+Styled `Menu` and `MenuItem` to match the Strata visual design language.

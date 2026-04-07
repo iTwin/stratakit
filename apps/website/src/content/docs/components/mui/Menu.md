@@ -17,7 +17,7 @@ links:
 
 ### Dense
 
-Pass the [`dense`](https://mui.com/material-ui/api/list/#list-prop-dense) prop through [`slotProps.list`](https://mui.com/material-ui/api/menu/#menu-prop-slotProps) to make the **Menu** smaller. This is useful when space is limited, or when the **Menu** is triggered by small button.
+Pass the [`dense`](https://mui.com/material-ui/api/list/#list-prop-dense) prop through [`slotProps.list`](https://mui.com/material-ui/api/menu/#menu-prop-slotProps) to make the **Menu** smaller. This is useful when space is limited, or when the **Menu** is triggered by a small button.
 
 The `dense` prop is also available via [`MenuList`](https://mui.com/material-ui/api/menu-list/).
 

@@ -11,7 +11,7 @@ links:
 ## StrataKit MUI modifications
 
 - Restyled using StrataKit's visual language.
-- The active menu item implementation and styling differ from the default approach and use a custom pseudo-element.
+- The active option implementation and styling differ from the default approach. A checkmark icon has been added using a pseudo-element.
 - Includes full `forced-colors` support.
 
 ## Examples

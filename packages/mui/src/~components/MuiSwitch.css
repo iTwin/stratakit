@@ -60,7 +60,7 @@
 	--_MuiSwitch-thumb-box-shadow: var(--✨shadow--default);
 	--_MuiSwitch-thumb-position-off: none;
 	--_MuiSwitch-thumb-position-on: translateX(var(--✨translate-distance));
-	--_MuiSwitch-thumb-position-transitional: translateX(var(--✨translate-stretch));
+	--_MuiSwitch-thumb-position-pressed: translateX(var(--✨translate-stretch));
 
 	transition: none;
 
@@ -81,7 +81,7 @@
 	}
 
 	&:where(:has(.MuiSwitch-input:active):not(.Mui-disabled)) {
-		transform: var(--_MuiSwitch-thumb-position-transitional);
+		transform: var(--_MuiSwitch-thumb-position-pressed);
 		--_MuiSwitch-thumb-stretch-transform: scaleX(2);
 		--_MuiSwitch-thumb-border-radius: calc(var(--✨radius) / 2) / var(--✨radius);
 	}
@@ -95,7 +95,7 @@
 	:root[dir="rtl"] & {
 		--_MuiSwitch-thumb-position-off: translateX(calc(var(--✨translate-distance) * -1));
 		--_MuiSwitch-thumb-position-on: none;
-		--_MuiSwitch-thumb-position-transitional: translateX(calc(var(--✨translate-stretch) * -1));
+		--_MuiSwitch-thumb-position-pressed: translateX(calc(var(--✨translate-stretch) * -1));
 	}
 }
 

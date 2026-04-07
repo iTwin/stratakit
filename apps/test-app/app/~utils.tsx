@@ -157,11 +157,14 @@ function SyncVariants({ variants }: { variants: Variant[] }) {
 
 type RootProps = React.ComponentProps<typeof Root>;
 type ColorScheme = RootProps["colorScheme"];
+type ColorSchemeSetting = RootProps["colorScheme"] | "auto";
 type AccentColor = "aurora" | "cobalt";
 
 const SettingsContext = React.createContext<{
-	colorScheme: ColorScheme | undefined;
-	setColorScheme: React.Dispatch<React.SetStateAction<ColorScheme | undefined>>;
+	colorScheme: ColorSchemeSetting | undefined;
+	setColorScheme: React.Dispatch<
+		React.SetStateAction<ColorSchemeSetting | undefined>
+	>;
 	accentColor: AccentColor | undefined;
 	setAccentColor: React.Dispatch<React.SetStateAction<AccentColor | undefined>>;
 }>({
@@ -172,9 +175,9 @@ const SettingsContext = React.createContext<{
 });
 
 export function SettingsProvider({ children }: { children: React.ReactNode }) {
-	const [colorScheme, setColorScheme] = React.useState<ColorScheme | undefined>(
-		undefined,
-	);
+	const [colorScheme, setColorScheme] = React.useState<
+		ColorSchemeSetting | undefined
+	>(undefined);
 	const [accentColor, setAccentColor] = React.useState<AccentColor | undefined>(
 		undefined,
 	);
@@ -196,14 +199,14 @@ export function SettingsProvider({ children }: { children: React.ReactNode }) {
 const COLOR_SCHEME_STORAGE_KEY = "🥝:color-scheme";
 
 /** Returns the color-scheme setting as configured by the user. */
-export function useColorSchemeSetting(): ColorScheme | undefined {
+export function useColorSchemeSetting(): ColorSchemeSetting {
 	const { colorScheme } = React.use(SettingsContext);
 
 	const storedValue = useLocalStorage(COLOR_SCHEME_STORAGE_KEY);
 	const storedColorScheme =
 		storedValue === "light" || storedValue === "dark" ? storedValue : undefined;
 
-	return colorScheme ?? storedColorScheme;
+	return colorScheme ?? storedColorScheme ?? "auto";
 }
 
 /** Returns the current color-scheme. */
@@ -211,7 +214,7 @@ export function useColorScheme(): ColorScheme {
 	const setting = useColorSchemeSetting();
 	const prefersDark = useMediaQuery("(prefers-color-scheme: dark)");
 
-	if (setting === undefined) {
+	if (setting === "auto") {
 		return prefersDark ? "dark" : "light";
 	}
 
@@ -221,12 +224,12 @@ export function useColorScheme(): ColorScheme {
 /** Allows changing the color-scheme returned by `useColorScheme`. Synchronizes with localStorage. */
 export function useSetColorScheme() {
 	const { setColorScheme } = React.use(SettingsContext);
-	const setLocalStorage = useSetLocalStorage<ColorScheme>(
+	const setLocalStorage = useSetLocalStorage<ColorSchemeSetting>(
 		COLOR_SCHEME_STORAGE_KEY,
 	);
 
 	return React.useCallback(
-		(value: React.SetStateAction<ColorScheme | undefined>) => {
+		(value: React.SetStateAction<ColorSchemeSetting | undefined>) => {
 			setColorScheme((prev) => {
 				const newValue = typeof value === "function" ? value(prev) : value;
 				return setLocalStorage(newValue);

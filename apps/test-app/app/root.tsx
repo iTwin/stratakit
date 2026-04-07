@@ -17,11 +17,7 @@ import { Root as StrataKitRoot } from "@stratakit/foundations";
 import { Root as StrataKitMuiRoot } from "@stratakit/mui";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { AppNavigationRail } from "./~navigation.tsx";
-import {
-	AccentColorProvider,
-	ColorSchemeProvider,
-	useColorScheme,
-} from "./~utils.tsx";
+import { SettingsProvider, useColorScheme } from "./~utils.tsx";
 
 import type { LinksFunction } from "react-router";
 
@@ -45,11 +41,9 @@ export const links: LinksFunction = () => {
 
 export function Layout({ children }: { children: React.ReactNode }) {
 	return (
-		<ColorSchemeProvider>
-			<AccentColorProvider>
-				<LayoutInner>{children}</LayoutInner>
-			</AccentColorProvider>
-		</ColorSchemeProvider>
+		<SettingsProvider>
+			<LayoutInner>{children}</LayoutInner>
+		</SettingsProvider>
 	);
 }
 

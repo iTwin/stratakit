@@ -229,7 +229,7 @@ type AccentColor = ReturnType<typeof useAccentColor>;
 
 function SettingsButton() {
 	const id = React.useId();
-	const [open, setOpen] = React.useState(true);
+	const [open, setOpen] = React.useState(false);
 
 	const colorScheme = useColorSchemeSetting() ?? "auto";
 	const setColorScheme = useSetColorScheme();

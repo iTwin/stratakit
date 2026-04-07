@@ -23,7 +23,7 @@ Make sure the **Select** is suitable for your use case. There may be other, more
 
 ### Icon
 
-An [**Icon**](/components/icon) can be displayed before or after the option’s text label using the `ListItemIcon` component. It’s important the **Icon’s** `alt` is omitted, since the text already provides the accessible label.
+An [**Icon**](/components/icon) can be displayed before or after the option’s text label using the [`ListItemIcon`](https://mui.com/material-ui/api/list-item-icon/) component. It’s important the **Icon’s** `alt` is omitted, since the text already provides the accessible label.
 
 ::example{src="mui/Select.icon"}
 

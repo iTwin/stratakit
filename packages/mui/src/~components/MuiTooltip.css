@@ -5,7 +5,7 @@
 
 .MuiTooltip-tooltip {
 	--✨border-width: 1px;
-	--✨offset: var(--stratakit-space-x1);
+	--✨margin: var(--stratakit-space-x05);
 
 	@apply --typography("body-sm");
 	overflow-wrap: anywhere;
@@ -15,11 +15,7 @@
 	box-shadow: var(--stratakit-shadow-control-tooltip-base);
 	color: var(--stratakit-color-text-neutral-emphasis);
 
-	display: flex;
-	justify-content: center;
-	gap: var(--stratakit-space-x1);
-
-	border: var(--✨border-width) solid var(--stratakit-color-border-elevation-base);
+	border: var(--✨border-width) solid transparent;
 	border-radius: 4px;
 	padding-block: calc(var(--stratakit-space-x1) - var(--✨border-width));
 	padding-inline: calc(var(--stratakit-space-x2) - var(--✨border-width));
@@ -27,20 +23,12 @@
 	max-inline-size: 12.25rem;
 
 	margin: var(--stratakit-space-x05);
+	isolation: isolate;
 
-	&:where(.MuiTooltip-tooltipPlacementBottom) {
-		margin-block-start: var(--✨offset);
-	}
-
-	&:where(.MuiTooltip-tooltipPlacementTop) {
-		margin-block-end: var(--✨offset);
-	}
-
-	&:where(.MuiTooltip-tooltipPlacementRight) {
-		margin-inline-start: var(--✨offset);
-	}
-
-	&:where(.MuiTooltip-tooltipPlacementLeft) {
-		margin-inline-end: var(--✨offset);
+	&::before {
+		content: "";
+		position: absolute;
+		inset: calc(var(--✨margin) * -2);
+		z-index: -1;
 	}
 }

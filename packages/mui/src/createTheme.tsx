@@ -441,6 +441,18 @@ function createTheme() {
 			MuiTooltip: {
 				defaultProps: {
 					describeChild: true,
+					slotProps: {
+						popper: {
+							modifiers: [
+								{
+									name: "offset",
+									options: {
+										offset: [0, 2],
+									},
+								},
+							],
+						},
+					},
 				},
 			},
 			MuiTypography: {

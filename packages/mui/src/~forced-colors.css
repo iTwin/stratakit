@@ -151,6 +151,31 @@
 	background-color: CanvasText;
 }
 
+.MuiListItemIcon-root {
+	color: inherit;
+}
+
+.MuiMenuItem-root {
+	border-color: Canvas;
+
+	&:where(.Mui-selected:not(.Mui-disabled)) {
+		forced-color-adjust: none; /* removing the backplate */
+		background-color: SelectedItem;
+		border-color: SelectedItemText;
+		color: SelectedItemText;
+		--🥝Icon-color: SelectedItemText;
+	}
+
+	&:where(.Mui-disabled) {
+		color: GrayText;
+		--🥝Icon-color: GrayText;
+	}
+}
+
+.MuiMenu-paper {
+	border: 1px solid CanvasText;
+}
+
 .MuiPaginationItem-root {
 	&:where(.Mui-selected) {
 		background-color: SelectedItem;

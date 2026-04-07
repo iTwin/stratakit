@@ -10,7 +10,7 @@ import Tooltip from "@mui/material/Tooltip";
 export default () => {
 	return (
 		<Stack spacing={4} alignSelf="center">
-			<Tooltip placement="bottom" title="I am bellow the button">
+			<Tooltip placement="bottom" title="I am below the button">
 				<Button disabled>Bottom</Button>
 			</Tooltip>
 

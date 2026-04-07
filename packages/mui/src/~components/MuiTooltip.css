@@ -15,10 +15,6 @@
 	box-shadow: var(--stratakit-shadow-control-tooltip-base);
 	color: var(--stratakit-color-text-neutral-emphasis);
 
-	display: flex;
-	justify-content: center;
-	gap: var(--stratakit-space-x1);
-
 	border: var(--✨border-width) solid var(--stratakit-color-border-elevation-base);
 	border-radius: 4px;
 	padding-block: calc(var(--stratakit-space-x1) - var(--✨border-width));

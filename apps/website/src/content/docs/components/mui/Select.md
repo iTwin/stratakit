@@ -17,7 +17,7 @@ Make sure the **Select** is suitable for your use case. There may be other, more
 | Choosing an input value (e.g. a country) | ✅                           | ❌                       |
 | Form input                               | ✅                           | ❌                       |
 | Triggering an action or setting a state  | ❌                           | ✅                       |
-| Grouping related command                 | ❌                           | ✅                       |
+| Grouping related commands                | ❌                           | ✅                       |
 
 ## Examples
 

@@ -18,7 +18,6 @@ import { unstable_NavigationRail as NavigationRail } from "@stratakit/structures
 import {
 	isProduction,
 	useAccentColor,
-	type useColorScheme,
 	useColorSchemeSetting,
 	useIsWideScreen,
 	useLocalStorage,
@@ -223,8 +222,7 @@ function RegularLink({ to, ...props }: RegularLinkProps) {
 
 // ----------------------------------------------------------------------------
 
-type ColorScheme = ReturnType<typeof useColorScheme>;
-type ColorSchemeSetting = ColorScheme | "auto";
+type ColorSchemeSetting = ReturnType<typeof useColorSchemeSetting>;
 type AccentColor = ReturnType<typeof useAccentColor>;
 
 function SettingsButton() {
@@ -252,9 +250,7 @@ function SettingsButton() {
 							exclusive
 							value={colorScheme}
 							onChange={(_, value: ColorSchemeSetting | null) => {
-								setColorScheme(
-									value === null || value === "auto" ? undefined : value,
-								);
+								setColorScheme(value === null ? "auto" : value);
 							}}
 							aria-labelledby={`${id}-color-scheme`}
 						>
@@ -275,7 +271,7 @@ function SettingsButton() {
 							exclusive
 							value={accentColor}
 							onChange={(_, value: AccentColor | null) => {
-								setAccentColor(value === null ? undefined : value);
+								setAccentColor(value === null ? "aurora" : value);
 							}}
 							aria-labelledby={`${id}-accent-color`}
 						>

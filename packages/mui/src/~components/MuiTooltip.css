@@ -5,6 +5,7 @@
 
 .MuiTooltip-tooltip {
 	--✨border-width: 1px;
+	--✨margin: var(--stratakit-space-x05);
 
 	@apply --typography("body-sm");
 	overflow-wrap: anywhere;
@@ -22,4 +23,12 @@
 	max-inline-size: 12.25rem;
 
 	margin: var(--stratakit-space-x05);
+	isolation: isolate;
+
+	&::before {
+		content: "";
+		position: absolute;
+		inset: calc(var(--✨margin) * -2);
+		z-index: -1;
+	}
 }

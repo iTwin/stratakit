@@ -42,7 +42,7 @@ Use a [**NativeSelect**](/components/badge) component to render a native [`<sele
 ## ✅ Do
 
 - Use **Selects** for form fields. A **Select’s** options represent a choice of predefined input values.
-- Programmatically associate labels and descriptions to the **Select** for screen reader compatibility.
+- Programmatically associate labels and descriptions to the **Select** for compatibility with assistive technologies.
 - Write helpful labels, descriptions, and error messages, so users can avoid errors.
 
 ## 🚫 Don’t

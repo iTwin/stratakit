@@ -46,8 +46,11 @@
 		0px 0px 0px 1px var(--stratakit-color-border-shadow-base) inset,
 		var(--stratakit-shadow-control-button-base-drop);
 	--✨shadow--disabled: none;
-	--✨translate-distance: calc(var(--_MuiSwitch-height) - var(--_MuiSwitch-padding) * 2);
-	--✨translate-stretch: calc((var(--_MuiSwitch-height) - (var(--_MuiSwitch-padding) * 2)) / 2);
+	--✨translate-distance--full: calc(var(--_MuiSwitch-height) - var(--_MuiSwitch-padding) * 2);
+	--✨translate-distance--half: calc(
+		(var(--_MuiSwitch-height) - (var(--_MuiSwitch-padding) * 2)) /
+		2
+	);
 
 	aspect-ratio: 1;
 	block-size: var(--_MuiSwitch-height);
@@ -60,8 +63,8 @@
 	--_MuiSwitch-thumb-border-radius: var(--✨radius);
 	--_MuiSwitch-thumb-box-shadow: var(--✨shadow--default);
 	--_MuiSwitch-thumb-position-off: none;
-	--_MuiSwitch-thumb-position-on: translateX(var(--✨translate-distance));
-	--_MuiSwitch-thumb-position-pressed: translateX(var(--✨translate-stretch));
+	--_MuiSwitch-thumb-position-on: translateX(var(--✨translate-distance--full));
+	--_MuiSwitch-thumb-position-pressed: translateX(var(--✨translate-distance--half));
 
 	transition: none;
 
@@ -96,9 +99,9 @@
 
 	/* TODO: Investigate using `:dir(rtl)` */
 	:root[dir="rtl"] & {
-		--_MuiSwitch-thumb-position-off: translateX(calc(var(--✨translate-distance) * -1));
+		--_MuiSwitch-thumb-position-off: translateX(calc(var(--✨translate-distance--full) * -1));
 		--_MuiSwitch-thumb-position-on: none;
-		--_MuiSwitch-thumb-position-pressed: translateX(calc(var(--✨translate-stretch) * -1));
+		--_MuiSwitch-thumb-position-pressed: translateX(calc(var(--✨translate-distance--half) * -1));
 	}
 }
 

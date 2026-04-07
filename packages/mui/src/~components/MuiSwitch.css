@@ -47,10 +47,7 @@
 		var(--stratakit-shadow-control-button-base-drop);
 	--✨shadow--disabled: none;
 	--✨translate-distance--full: calc(var(--_MuiSwitch-height) - var(--_MuiSwitch-padding) * 2);
-	--✨translate-distance--half: calc(
-		(var(--_MuiSwitch-height) - (var(--_MuiSwitch-padding) * 2)) /
-		2
-	);
+	--✨translate-distance--half: calc(var(--✨translate-distance--full) * 0.5);
 
 	aspect-ratio: 1;
 	block-size: var(--_MuiSwitch-height);

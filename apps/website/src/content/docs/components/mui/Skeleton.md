@@ -20,6 +20,8 @@ Make sure the **Skeleton** is suitable for your use case. There may be other, mo
 
 ### Variants
 
+Use the [`variant`](https://mui.com/material-ui/api/skeleton/#skeleton-prop-variant) prop to choose the appropriate skeleton shape for the content being loaded.
+
 - **Circular:** Use to represent avatars and other circular elements.
 - **Rectangular:** Use to represent images and other rectangular elements.
 - **Rounded:** Use to represent icons and other rounded non-text artifacts.

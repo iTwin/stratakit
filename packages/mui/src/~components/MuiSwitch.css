@@ -81,6 +81,7 @@
 	}
 
 	&:where(:has(.MuiSwitch-input:active):not(.Mui-disabled)) {
+		/* https://css-tricks.com/various-methods-for-expanding-a-box-while-preserving-the-border-radius/#aa-changing-scale */
 		transform: var(--_MuiSwitch-thumb-position-pressed);
 		--_MuiSwitch-thumb-stretch-transform: scaleX(2);
 		--_MuiSwitch-thumb-border-radius: calc(var(--✨radius) / 2) / var(--✨radius);

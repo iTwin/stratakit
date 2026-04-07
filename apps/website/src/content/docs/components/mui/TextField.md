@@ -12,13 +12,12 @@ links:
 
 Make sure the **TextField** is suitable for your use case. There may be other, more appropriate components available.
 
-| Use case                                                     | [TextField](/components/textfield) | [TextField (multiline)](/components/textfield#multiline) | [Select](/components/select) | [Radios](/components/radio) | [Button](/components/button) |
-| ------------------------------------------------------------ | ---------------------------------- | -------------------------------------------------------- | ---------------------------- | --------------------------- | ---------------------------- |
-| Short text entry (name, email, phone, number, password, etc) | ✅                                 | ❌                                                       | ❌                           | ❌                          | ❌                           |
-| Longer text entry (description, comment, note)               | ❌                                 | ✅                                                       | ❌                           | ❌                          | ❌                           |
-| Predefined option selection (many options)                   | ❌                                 | ❌                                                       | ✅                           | ❌                          | ❌                           |
-| Predefined option selection (few options)                    | ❌                                 | ❌                                                       | ❌                           | ✅                          | ❌                           |
-| Changing application state                                   | ❌                                 | ❌                                                       | ❌                           | ❌                          | ✅                           |
+| Use case                                                     | [TextField](/components/textfield) | [TextField (multiline)](/components/textfield#multiline) | [Autocomplete](/components/autocomplete) |
+| ------------------------------------------------------------ | ---------------------------------- | -------------------------------------------------------- | ---------------------------------------- |
+| Short text entry (name, email, phone, number, password, etc) | ✅                                 | ❌                                                       | ❌                                       |
+| Longer text entry (description, comment, note)               | ❌                                 | ✅                                                       | ❌                                       |
+| Predefined option selection                                  | ❌                                 | ❌                                                       | ✅                                       |
+| Search input with suggestions                                | ❌                                 | ❌                                                       | ✅                                       |
 
 ## Examples
 

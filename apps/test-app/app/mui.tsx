@@ -76,6 +76,7 @@ import ListAvatar from "examples/mui/List.avatar.tsx";
 import ListDefault from "examples/mui/List.default.tsx";
 import ListSubheader from "examples/mui/List.subheader.tsx";
 import MenuDefault from "examples/mui/Menu.default.tsx";
+import MenuDense from "examples/mui/Menu.dense.tsx";
 import MenuListDefault_ from "examples/mui/MenuList._default.tsx";
 import MobileStepperDefault from "examples/mui/MobileStepper.default.tsx";
 import NativeSelectDefault from "examples/mui/NativeSelect.default.tsx";
@@ -290,7 +291,12 @@ const components: Record<string, React.ReactNode> = {
 			<ListSubheader />
 		</Stack>
 	),
-	Menu: <MenuDefault />,
+	Menu: (
+		<>
+			<MenuDefault />
+			<MenuDense />
+		</>
+	),
 	...(isProduction ? {} : { MenuList: <MenuListDefault_ /> }),
 	MobileStepper: (
 		<Stack spacing={1} alignSelf="stretch">

@@ -29,7 +29,7 @@ An [**Icon**](/components/icon) can be displayed before or after the option’s 
 
 ### Multiple values
 
-Use the `multiple` prop to allow users to select more than one option from the list.
+Use the [`multiple`](https://mui.com/material-ui/api/select/#select-prop-multiple) prop to allow users to select more than one option from the list.
 
 ::example{src="mui/Select.multiple"}
 

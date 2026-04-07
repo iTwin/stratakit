@@ -18,11 +18,12 @@ import { unstable_NavigationRail as NavigationRail } from "@stratakit/structures
 import {
 	isProduction,
 	useAccentColor,
+	type useColorScheme,
 	useColorSchemeSetting,
 	useIsWideScreen,
 	useLocalStorage,
 	useSetAccentColor,
-	useSetColorSchemeSetting,
+	useSetColorScheme,
 } from "./~utils.tsx";
 
 import svgComputer from "@stratakit/icons/computer.svg";
@@ -222,15 +223,16 @@ function RegularLink({ to, ...props }: RegularLinkProps) {
 
 // ----------------------------------------------------------------------------
 
-type ColorSchemeSetting = ReturnType<typeof useColorSchemeSetting>;
+type ColorScheme = ReturnType<typeof useColorScheme>;
+type ColorSchemeSetting = ColorScheme | "auto";
 type AccentColor = ReturnType<typeof useAccentColor>;
 
 function SettingsButton() {
 	const id = React.useId();
-	const [open, setOpen] = React.useState(false);
+	const [open, setOpen] = React.useState(true);
 
-	const colorScheme = useColorSchemeSetting();
-	const setColorScheme = useSetColorSchemeSetting();
+	const colorScheme = useColorSchemeSetting() ?? "auto";
+	const setColorScheme = useSetColorScheme();
 
 	const accentColor = useAccentColor();
 	const setAccentColor = useSetAccentColor();
@@ -250,7 +252,9 @@ function SettingsButton() {
 							exclusive
 							value={colorScheme}
 							onChange={(_, value: ColorSchemeSetting | null) => {
-								setColorScheme(value === null ? undefined : value);
+								setColorScheme(
+									value === null || value === "auto" ? undefined : value,
+								);
 							}}
 							aria-labelledby={`${id}-color-scheme`}
 						>

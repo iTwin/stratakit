@@ -14,7 +14,7 @@
 	box-shadow: var(--stratakit-shadow-control-tooltip-base);
 	color: var(--stratakit-color-text-neutral-emphasis);
 
-	border: var(--✨border-width) solid var(--stratakit-color-border-elevation-base);
+	border: var(--✨border-width) solid transparent;
 	border-radius: 4px;
 	padding-block: calc(var(--stratakit-space-x1) - var(--✨border-width));
 	padding-inline: calc(var(--stratakit-space-x2) - var(--✨border-width));

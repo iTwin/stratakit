@@ -116,6 +116,7 @@ import ToggleButtonDisabled_ from "examples/mui/ToggleButton._disabled.tsx";
 import ToggleButtonDefault from "examples/mui/ToggleButton.default.tsx";
 import ToggleButtonSizes from "examples/mui/ToggleButton.sizes.tsx";
 import ToggleButtonStandalone from "examples/mui/ToggleButton.standalone.tsx";
+import ToggleButtonText from "examples/mui/ToggleButton.text.tsx";
 import TooltipDefault from "examples/mui/Tooltip.default.tsx";
 import TypographyVariants_ from "examples/mui/Typography._variants.tsx";
 import TypographyDefault from "examples/mui/Typography.default.tsx";
@@ -376,6 +377,7 @@ const components: Record<string, React.ReactNode> = {
 			<ToggleButtonStandalone />
 			<ToggleButtonSizes />
 			<ToggleButtonDisabled_ />
+			<ToggleButtonText />
 		</>
 	),
 	Tooltip: <TooltipDefault />,

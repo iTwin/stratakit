@@ -28,3 +28,9 @@ Use the `selected` and `onChange` props to control the selected state of a stand
 - **Large:** Use in spacious layouts where a more prominent button is needed.
 
 ::example{src="mui/ToggleButton.sizes"}
+
+### Text
+
+When a **ToggleButton** includes visible text that already provides an accessible name, the `label` prop should be omitted.
+
+::example{src="mui/ToggleButton.text"}

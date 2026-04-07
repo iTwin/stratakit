@@ -12,12 +12,28 @@
 	}
 }
 
+.MuiAutocomplete-paper {
+	border: 1px solid;
+}
+
 .MuiAvatar-root {
 	border: 1px solid;
 }
 
 .MuiBadge-badge {
-	border: 1px solid CanvasText;
+	:where(.MuiBadge-root[data-_sk-inline]) & {
+		border: 1px solid;
+	}
+
+	:where(.MuiBadge-root:not([data-_sk-inline])) & {
+		forced-color-adjust: none;
+		background-color: Highlight;
+		color: HighlightText;
+	}
+}
+
+.MuiBottomNavigation-root {
+	border-block-start: 1px solid;
 }
 
 .MuiBottomNavigationAction-root {
@@ -41,6 +57,7 @@
 }
 
 :is(.MuiButton-root, .MuiIconButton-root) {
+	--_MuiButton-icon-color: currentColor;
 	background-color: ButtonFace;
 	border: 1px solid ButtonBorder;
 	color: ButtonText;
@@ -87,6 +104,24 @@
 	border: 1px solid;
 }
 
+.MuiDrawer-paper {
+	&:where(.MuiDrawer-paperAnchorTop) {
+		border-block-end: 1px solid;
+	}
+
+	&:where(.MuiDrawer-paperAnchorRight) {
+		border-inline-start: 1px solid;
+	}
+
+	&:where(.MuiDrawer-paperAnchorBottom) {
+		border-block-start: 1px solid;
+	}
+
+	&:where(.MuiDrawer-paperAnchorLeft) {
+		border-inline-end: 1px solid;
+	}
+}
+
 .MuiFormControlLabel-label:where(.Mui-disabled) {
 	color: GrayText;
 }
@@ -102,6 +137,20 @@
 	}
 }
 
+.MuiInputBase-root {
+	&:where(.Mui-disabled) {
+		border-color: GrayText;
+	}
+}
+
+.MuiLinearProgress-root {
+	border: 1px solid;
+}
+
+.MuiLinearProgress-bar {
+	background-color: CanvasText;
+}
+
 .MuiPaginationItem-root {
 	&:where(.Mui-selected) {
 		background-color: SelectedItem;
@@ -109,6 +158,10 @@
 		color: SelectedItemText;
 		forced-color-adjust: none; /* removing the backplate */
 	}
+}
+
+.MuiPopover-paper {
+	border: 1px solid;
 }
 
 .MuiSlider-root {
@@ -143,6 +196,10 @@
 	&:where(:nth-child(1 of &), :nth-last-child(1 of &)) {
 		background-color: transparent;
 	}
+}
+
+.MuiSnackbarContent-root {
+	border: 1px solid;
 }
 
 .MuiStepLabel-label {
@@ -185,9 +242,17 @@
 	}
 }
 
+.MuiTabs-indicator {
+	background-color: CanvasText;
+}
+
 .MuiToggleButton-root {
 	&:where(.Mui-selected) {
 		background-color: SelectedItem;
 		color: SelectedItemText;
 	}
+}
+
+.MuiTooltip-tooltip {
+	border: 1px solid;
 }

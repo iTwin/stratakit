@@ -1,0 +1,1 @@
+import{j as t}from"./client.BXr1S_CS.js";import{B as i}from"./ExamplePreview.CcEPxot3.js";import"./styles.internal.CPbvgKR0.js";import"./preload-helper.C_av1p2x.js";const n=()=>t.jsxs("div",{className:"flex",children:[t.jsx(i,{variant:"solid",children:"Solid"}),t.jsx(i,{variant:"outline",children:"Outline"}),t.jsx(i,{variant:"ghost",children:"Ghost"})]});export{n as default};

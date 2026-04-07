@@ -17,12 +17,13 @@ import { Icon } from "@stratakit/foundations";
 import { unstable_NavigationRail as NavigationRail } from "@stratakit/structures";
 import {
 	isProduction,
-	useColorScheme,
+	useColorSchemeSetting,
 	useIsWideScreen,
 	useLocalStorage,
-	useSetColorScheme,
+	useSetColorSchemeSetting,
 } from "./~utils.tsx";
 
+import svgComputer from "@stratakit/icons/computer.svg";
 import svgDocumentation from "@stratakit/icons/documentation.svg";
 import svgMoon from "@stratakit/icons/moon.svg";
 import svgSettings from "@stratakit/icons/settings.svg";
@@ -222,8 +223,8 @@ function SettingsButton() {
 	const id = React.useId();
 	const [open, setOpen] = React.useState(false);
 
-	const colorScheme = useColorScheme();
-	const setColorScheme = useSetColorScheme();
+	const colorScheme = useColorSchemeSetting();
+	const setColorScheme = useSetColorSchemeSetting();
 	return (
 		<>
 			<NavigationRail.Button
@@ -242,6 +243,9 @@ function SettingsButton() {
 							onChange={(_, value) => setColorScheme(value)}
 							aria-labelledby={`${id}-color-scheme`}
 						>
+							<ToggleButton value="auto" label="Auto">
+								<Icon href={svgComputer} />
+							</ToggleButton>
 							<ToggleButton value="light" label="Light">
 								<Icon href={svgSun} />
 							</ToggleButton>

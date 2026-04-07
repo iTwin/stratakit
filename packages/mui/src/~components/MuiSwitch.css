@@ -39,6 +39,7 @@
 .MuiSwitch-switchBase {
 	--✨bg--default: var(--stratakit-color-bg-neutral-inverse);
 	--✨bg--disabled: var(--stratakit-color-icon-neutral-disabled);
+	--✨pressed-scaleX: 2;
 	--✨radius: 50%;
 	--✨shadow--default:
 		var(--stratakit-shadow-control-button-base-inset),
@@ -83,8 +84,9 @@
 	&:where(:has(.MuiSwitch-input:active):not(.Mui-disabled)) {
 		/* https://css-tricks.com/various-methods-for-expanding-a-box-while-preserving-the-border-radius/#aa-changing-scale */
 		transform: var(--_MuiSwitch-thumb-position-pressed);
-		--_MuiSwitch-thumb-stretch-transform: scaleX(2);
-		--_MuiSwitch-thumb-border-radius: calc(var(--✨radius) / 2) / var(--✨radius);
+		--_MuiSwitch-thumb-stretch-transform: scaleX(var(--✨pressed-scaleX));
+		--_MuiSwitch-thumb-border-radius:
+			calc(var(--✨radius) / var(--✨pressed-scaleX)) / var(--✨radius);
 	}
 
 	&:where(.Mui-disabled) {

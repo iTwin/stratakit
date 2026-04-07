@@ -34,3 +34,14 @@ Use the `selected` and `onChange` props to control the selected state of a stand
 When a **ToggleButton** includes visible text that already provides an accessible name, the `label` prop should be omitted.
 
 ::example{src="mui/ToggleButton.text"}
+
+## ✅ Do
+
+- Use **ToggleButton** for actions that have an on/off state.
+- Use the `label` prop in icon only **ToggleButtons** to provide a descriptive, accessible name.
+- Use `ToggleButtonGroup` to group multiple related **ToggleButtons**.
+
+## 🚫 Don’t
+
+- Don’t use to replace buttons.
+- Don’t mix text and icon only **ToggleButtons** in the same group.

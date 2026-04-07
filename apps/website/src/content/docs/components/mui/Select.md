@@ -35,7 +35,7 @@ Use the `multiple` prop to allow users to select more than one option from the l
 
 ### Native
 
-Use a [**NativeSelect**](/components/badge) component to render a native [`<select>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/select) element. The native select has fewer customization options, however, it is more accessible and works much better on mobile devices. The native select also has the benefit of participating in the browser’s built-in form validation and autofill.
+Use the [`NativeSelect`](https://mui.com/material-ui/api/native-select/) component to render a native [`<select>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/select) element. The native select has fewer customization options, however, it is more accessible and works much better on mobile devices. The native select also has the benefit of participating in the browser’s built-in form validation and autofill.
 
 ::example{src="mui/NativeSelect.default"}
 

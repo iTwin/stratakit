@@ -239,6 +239,76 @@ export function useSetColorSchemeSetting() {
 
 // ----------------------------------------------------------------------------
 
+type AccentColor = "aurora" | "cobalt";
+
+const ACCENT_COLOR_STORAGE_KEY = "🥝:accent-color";
+
+const AccentColorContext = React.createContext<{
+	accentColor: AccentColor | undefined;
+	setAccentColor: React.Dispatch<React.SetStateAction<AccentColor | undefined>>;
+}>({ accentColor: undefined, setAccentColor: () => {} });
+
+/** Makes the accent color available to descendants (via `useAccentColor` and `useSetAccentColor`). */
+export function AccentColorProvider({
+	children,
+}: {
+	children: React.ReactNode;
+}) {
+	const [accentColor, setAccentColor] = React.useState<AccentColor | undefined>(
+		undefined,
+	);
+
+	return (
+		<AccentColorContext
+			value={React.useMemo(
+				() => ({ accentColor, setAccentColor }),
+				[accentColor],
+			)}
+		>
+			{children}
+		</AccentColorContext>
+	);
+}
+
+/** Returns the current accent color in the following order: React Context, localStorage. */
+export function useAccentColor(): AccentColor {
+	const { accentColor } = React.use(AccentColorContext);
+
+	const storedValue = useLocalStorage(ACCENT_COLOR_STORAGE_KEY);
+	const storedAccentColor =
+		storedValue === "aurora" || storedValue === "cobalt"
+			? storedValue
+			: undefined;
+
+	return accentColor ?? storedAccentColor ?? "aurora";
+}
+
+/** Allows changing the accent color returned by `useAccentColor`. Synchronizes with localStorage. */
+export function useSetAccentColor() {
+	const { setAccentColor } = React.use(AccentColorContext);
+
+	return React.useCallback(
+		(value: React.SetStateAction<AccentColor | undefined>) => {
+			setAccentColor((prev) => {
+				const newValue = typeof value === "function" ? value(prev) : value;
+
+				if (typeof localStorage !== "undefined") {
+					if (newValue === undefined) {
+						localStorage.removeItem(ACCENT_COLOR_STORAGE_KEY);
+					} else {
+						localStorage.setItem(ACCENT_COLOR_STORAGE_KEY, newValue);
+					}
+				}
+
+				return newValue;
+			});
+		},
+		[setAccentColor],
+	);
+}
+
+// ----------------------------------------------------------------------------
+
 /**
  * Returns whether the specified media query matches, watching for any changes.
  * Returns `undefined` when `window` is unavailable (e.g. during SSR/prerendering + hydration).

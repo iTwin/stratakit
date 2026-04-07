@@ -17,9 +17,11 @@ import { Icon } from "@stratakit/foundations";
 import { unstable_NavigationRail as NavigationRail } from "@stratakit/structures";
 import {
 	isProduction,
+	useAccentColor,
 	useColorSchemeSetting,
 	useIsWideScreen,
 	useLocalStorage,
+	useSetAccentColor,
 	useSetColorSchemeSetting,
 } from "./~utils.tsx";
 
@@ -28,6 +30,7 @@ import svgDocumentation from "@stratakit/icons/documentation.svg";
 import svgMoon from "@stratakit/icons/moon.svg";
 import svgSettings from "@stratakit/icons/settings.svg";
 import svgSun from "@stratakit/icons/sun.svg";
+import primitives from "internal/primitives.json" with { type: "json" };
 import styles from "./~navigation.module.css";
 import svgComponents from "./assets/components.svg";
 import svgIcons from "./assets/icons.svg";
@@ -219,12 +222,18 @@ function RegularLink({ to, ...props }: RegularLinkProps) {
 
 // ----------------------------------------------------------------------------
 
+type ColorSchemeSetting = ReturnType<typeof useColorSchemeSetting>;
+type AccentColor = ReturnType<typeof useAccentColor>;
+
 function SettingsButton() {
 	const id = React.useId();
 	const [open, setOpen] = React.useState(false);
 
 	const colorScheme = useColorSchemeSetting();
 	const setColorScheme = useSetColorSchemeSetting();
+
+	const accentColor = useAccentColor();
+	const setAccentColor = useSetAccentColor();
 	return (
 		<>
 			<NavigationRail.Button
@@ -234,13 +243,15 @@ function SettingsButton() {
 			/>
 			<Dialog open={open} onClose={() => setOpen(false)}>
 				<DialogTitle>Settings</DialogTitle>
-				<DialogContent>
+				<DialogContent className={styles.settingsDialogContent}>
 					<FormControl>
 						<FormLabel id={`${id}-color-scheme`}>Color scheme</FormLabel>
 						<ToggleButtonGroup
 							exclusive
 							value={colorScheme}
-							onChange={(_, value) => setColorScheme(value)}
+							onChange={(_, value: ColorSchemeSetting | null) => {
+								setColorScheme(value === null ? undefined : value);
+							}}
 							aria-labelledby={`${id}-color-scheme`}
 						>
 							<ToggleButton value="auto" label="Auto">
@@ -254,8 +265,44 @@ function SettingsButton() {
 							</ToggleButton>
 						</ToggleButtonGroup>
 					</FormControl>
+					<FormControl>
+						<FormLabel id={`${id}-accent-color`}>Accent color</FormLabel>
+						<ToggleButtonGroup
+							exclusive
+							value={accentColor}
+							onChange={(_, value: AccentColor | null) => {
+								setAccentColor(value === null ? undefined : value);
+							}}
+							aria-labelledby={`${id}-accent-color`}
+						>
+							<ToggleButton value="aurora" label="Aurora">
+								<Icon
+									render={<ColorIcon />}
+									style={{
+										color: primitives.aurora[500],
+									}}
+								/>
+							</ToggleButton>
+							<ToggleButton value="cobalt" label="Cobalt">
+								<Icon
+									render={<ColorIcon />}
+									style={{
+										color: "oklch(53.32% 0.139 246.77)",
+									}}
+								/>
+							</ToggleButton>
+						</ToggleButtonGroup>
+					</FormControl>
 				</DialogContent>
 			</Dialog>
 		</>
+	);
+}
+
+function ColorIcon(props: React.ComponentProps<"svg">) {
+	return (
+		<svg {...props} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+			<circle cx="8" cy="8" r="8" fill="currentColor" />
+		</svg>
 	);
 }

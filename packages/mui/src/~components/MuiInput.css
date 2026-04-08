@@ -78,16 +78,16 @@
 		}
 	}
 
-	&:where(.MuiInputBase-inputMultiline) {
+	:where(.MuiInputBase-root.MuiInputBase-multiline) > & {
 		padding-block: 8.25px;
 		align-content: baseline;
 	}
 
-	&:where(.MuiInputBase-inputAdornedStart) {
+	:where(.MuiInputBase-root.MuiInputBase-adornedStart) > & {
 		padding-inline-start: 0;
 	}
 
-	&:where(.MuiInputBase-inputAdornedEnd) {
+	:where(.MuiInputBase-root.MuiInputBase-adornedEnd) > & {
 		padding-inline-end: 0;
 	}
 

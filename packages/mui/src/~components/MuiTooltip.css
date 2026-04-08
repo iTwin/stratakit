@@ -22,7 +22,7 @@
 	min-block-size: 1rem;
 	max-inline-size: 12.25rem;
 
-	margin: var(--stratakit-space-x05);
+	margin: var(--✨margin);
 	isolation: isolate;
 
 	&::before {

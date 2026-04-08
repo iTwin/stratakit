@@ -20,7 +20,6 @@ import svgComputer from "@stratakit/icons/computer.svg";
 import svgMoon from "@stratakit/icons/moon.svg";
 import svgSettings from "@stratakit/icons/settings.svg";
 import svgSun from "@stratakit/icons/sun.svg";
-import primitives from "internal/primitives.json" with { type: "json" };
 import styles from "./~settings.module.css";
 
 // ----------------------------------------------------------------------------
@@ -60,8 +59,6 @@ export function SettingsButton() {
 	const colorScheme = useSettingsStore((state) => state.colorScheme);
 	const setColorScheme = useSettingsStore((state) => state.setColorScheme);
 
-	const accentColor = useSettingsStore((state) => state.accentColor);
-	const setAccentColor = useSettingsStore((state) => state.setAccentColor);
 	return (
 		<>
 			<NavigationRail.Button
@@ -98,46 +95,8 @@ export function SettingsButton() {
 							</ToggleButton>
 						</ToggleButtonGroup>
 					</FormControl>
-					<FormControl>
-						<FormLabel id={`${id}-accent-color`}>Accent color</FormLabel>
-						<ToggleButtonGroup
-							exclusive
-							value={accentColor}
-							onChange={(_, value: AccentColor | null) => {
-								setAccentColor(value === null ? "aurora" : value);
-							}}
-							aria-labelledby={`${id}-accent-color`}
-						>
-							<ToggleButton value="aurora" label="Aurora">
-								<Icon
-									render={<ColorIcon />}
-									style={{
-										color: primitives.aurora[500],
-									}}
-								/>
-							</ToggleButton>
-							<ToggleButton value="cobalt" label="Cobalt">
-								<Icon
-									render={<ColorIcon />}
-									style={{
-										color: "oklch(53.32% 0.139 246.77)",
-									}}
-								/>
-							</ToggleButton>
-						</ToggleButtonGroup>
-					</FormControl>
 				</DialogContent>
 			</Dialog>
 		</>
-	);
-}
-
-// ----------------------------------------------------------------------------
-
-function ColorIcon(props: React.ComponentProps<"svg">) {
-	return (
-		<svg {...props} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
-			<circle cx="8" cy="8" r="8" fill="currentColor" />
-		</svg>
 	);
 }

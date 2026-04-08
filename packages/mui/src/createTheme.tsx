@@ -6,6 +6,7 @@
 import * as React from "react";
 import { Role } from "@ariakit/react/role";
 import OutlinedInput from "@mui/material/OutlinedInput";
+import StepConnector from "@mui/material/StepConnector";
 import { createTheme as createMuiTheme } from "@mui/material/styles";
 import { MuiBadge } from "./~components/MuiBadge.js";
 import { MuiBottomNavigationAction } from "./~components/MuiBottomNavigation.js";
@@ -384,9 +385,14 @@ function createTheme() {
 			},
 			MuiSnackbarContent: { defaultProps: { component: Role.div } },
 			MuiStack: { defaultProps: { component: Role.div } },
-			MuiStep: { defaultProps: { component: Role.div } },
+			MuiStep: { defaultProps: { component: Role.li } },
 			MuiSwitch: { defaultProps: { component: Role.span } },
-			MuiStepper: { defaultProps: { component: Role.div } },
+			MuiStepper: {
+				defaultProps: {
+					component: Role.ol,
+					connector: <StepConnector aria-hidden="true" />, // hiding the connector to prevent invalid markup
+				},
+			},
 			MuiStepLabel: {
 				defaultProps: {
 					slotProps: {

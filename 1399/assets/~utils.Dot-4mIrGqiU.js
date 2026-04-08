@@ -1,1 +1,0 @@
-import{p as r}from"./chunk-LFPYN7LY-BGzAPq3t.js";import{f as o,R as i,b as m}from"./~utils-BL-jQWiG.js";import{V as n}from"./VisuallyHidden-DgAJ0iwz.js";const c=o((s,a)=>{const{children:e,...t}=s;return r.jsx(i.span,{"aria-hidden":"true",...t,className:m("🥝Dot",s.className),ref:a,children:r.jsx(n,{children:e})})});export{c as D};

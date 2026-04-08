@@ -1,1 +1,0 @@
-import{j as t}from"./client.Cil7itT_.js";import{K as r}from"./Kbd.Dg4PO-6o.js";import"./styles.internal.CPbvgKR0.js";import"./ExamplePreview.BQzeBfvx.js";import"./preload-helper.DlqPsdi1.js";const s=()=>t.jsx(r,{children:"A"});export{s as default};

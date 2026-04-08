@@ -5,8 +5,7 @@
 
 import * as React from "react";
 import { useSearchParams } from "react-router";
-import { create } from "zustand";
-import { persist } from "zustand/middleware";
+import { useSettingsStore } from "./~settings.tsx";
 
 import type { Root } from "@stratakit/mui";
 
@@ -159,31 +158,6 @@ function SyncVariants({ variants }: { variants: Variant[] }) {
 
 type RootProps = React.ComponentProps<typeof Root>;
 type ColorScheme = RootProps["colorScheme"];
-type ColorSchemeSetting = RootProps["colorScheme"] | "auto";
-type AccentColor = "aurora" | "cobalt";
-
-interface SettingsState {
-	colorScheme: ColorSchemeSetting;
-	accentColor: AccentColor;
-	setColorScheme: (scheme: ColorSchemeSetting) => void;
-	setAccentColor: (color: AccentColor) => void;
-}
-
-export const useSettingsStore = create<SettingsState>()(
-	persist(
-		(set) => ({
-			colorScheme: "auto",
-			accentColor: "aurora",
-			setColorScheme: (scheme) => set({ colorScheme: scheme }),
-			setAccentColor: (color) => set({ accentColor: color }),
-		}),
-		{
-			name: "🥝:settings",
-		},
-	),
-);
-
-// ----------------------------------------------------------------------------
 
 /** Returns the current color-scheme. */
 export function useColorScheme(): ColorScheme {

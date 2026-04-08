@@ -151,6 +151,17 @@ function createTheme() {
 				defaultProps: {
 					popupIcon: <ChevronDownIcon />,
 					clearIcon: <DismissIcon />,
+					ListboxProps: {
+						className: "MuiMenu-list",
+					},
+					renderOption: (props, option) => (
+						<li
+							{...props}
+							className={`${props.className || ""} MuiMenuItem-root`.trim()}
+						>
+							{option}
+						</li>
+					),
 					slotProps: {
 						paper: {
 							elevation: 8, // match Menu elevation

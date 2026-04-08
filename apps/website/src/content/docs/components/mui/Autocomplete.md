@@ -12,6 +12,7 @@ links:
 
 - Spacing and sizing has been adjusted to better align with StrataKit's more compact visual design language.
 - The "clear" indicator is now keyboard focusable and remains visible to improve accessibility.
+- The dropdown menu adopts the same visual styling as [`Menu`](menu) by reusing its class names.
 
 ## Examples
 

@@ -3,16 +3,106 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-.MuiMenuItem-root {
-	@apply --typography("body-md");
+.MuiMenu-paper {
+	box-shadow: var(--stratakit-shadow-control-dropdown-base);
+}
 
-	&:where(.Mui-selected) {
-		border-block: 1px solid var(--stratakit-color-border-accent-strong);
-		background-color: var(--stratakit-color-bg-glow-on-surface-accent-pressed);
-		color: var(--stratakit-color-text-accent-strong);
+.MuiMenu-list {
+	padding: var(--stratakit-space-x1);
+
+	&:where([role="menu"]) {
+		min-inline-size: min(95vi, 164px);
+	}
+}
+
+.MuiMenuItem-root {
+	--✨color-bg--default: transparent;
+	--✨color-bg--hover: var(--stratakit-color-bg-glow-on-surface-neutral-hover);
+	--✨color-bg--pressed: var(--stratakit-color-bg-glow-on-surface-neutral-pressed);
+	--✨color-bg--selected: var(--stratakit-color-bg-glow-on-surface-accent-pressed);
+	--✨color-bg--disabled: transparent;
+	--✨color-border--selected: var(--stratakit-color-border-accent-strong);
+	--✨color-icon--default: var(--stratakit-color-icon-neutral-base);
+	--✨color-icon--hover: var(--stratakit-color-icon-neutral-primary);
+	--✨color-icon--selected: var(--stratakit-color-icon-accent-strong);
+	--✨color-icon--disabled: var(--stratakit-color-icon-neutral-disabled);
+	--✨color-text--default: var(--stratakit-color-text-neutral-primary);
+	--✨color-text--selected: var(--stratakit-color-text-accent-strong);
+	--✨color-text--disabled: var(--stratakit-color-text-neutral-disabled);
+
+	--✨padding: var(--stratakit-space-x2);
+	--✨size--small: var(--stratakit-size-control-listitem-height-small);
+	--✨size--medium: 2rem;
+
+	--✨svg-unchecked: url('data:image/svg+xml;utf8,<svg viewBox="0 0 16 16"></svg>');
+	--✨svg-checked: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 16"><path fill="currentColor" d="M11.607 4.191a.5.5 0 0 1 .787.617l-5.5 7a.503.503 0 0 1-.777.012l-2.5-3-.057-.084a.5.5 0 0 1 .752-.627l.072.07 2.105 2.526 5.118-6.514Z"/></svg>'); /* `checkmark.svg` default size */
+
+	@apply --typography("body-md");
+	background-color: var(--_MuiMenuItem-background-color);
+	border: 1px solid var(--_MuiMenuItem-border-color, transparent);
+	border-radius: 4px;
+	color: var(--_MuiMenuItem-color);
+	column-gap: calc(var(--stratakit-space-x1) + var(--stratakit-space-x05));
+	min-block-size: var(--_MuiMenuItem-height);
+	padding-block: 0;
+	padding-inline: var(--✨padding);
+
+	--🥝Icon-color: var(--✨color-icon--default);
+	--_MuiMenuItem-background-color: var(--✨color-bg--default);
+	--_MuiMenuItem-color: var(--✨color-text--default);
+	--_MuiMenuItem-height: var(--✨size--medium);
+
+	:where(.MuiMenu-list.MuiList-dense) & {
+		@apply --typography("body-sm");
+		--_MuiMenuItem-height: var(--✨size--small);
+	}
+
+	&:where([role="option"]) {
+		--_MuiMenuItem-root-mask-image: var(--✨svg-unchecked);
+
+		/* This pseudo-element displays a checkmark for selected menu items */
+		&::before {
+			content: "";
+			aspect-ratio: 1;
+			block-size: var(--🥝Icon-size, 1rem);
+			inline-size: var(--🥝Icon-size, 1rem);
+			background-color: var(--🥝Icon-color);
+			mask-image: var(--_MuiMenuItem-root-mask-image);
+			mask-position: center;
+			mask-repeat: no-repeat;
+		}
+	}
+
+	@media (any-hover: hover) {
+		&:where(:hover) {
+			--🥝Icon-color: var(--✨color-icon--hover);
+			--_MuiMenuItem-background-color: var(--✨color-bg--hover);
+		}
+	}
+
+	&:where(:active) {
+		--_MuiMenuItem-background-color: var(--✨color-bg--pressed);
 	}
 
 	&:where(.Mui-focusVisible) {
-		outline-offset: -2px;
+		outline-offset: calc(var(--🥝focus-outline-offset) * -1);
+	}
+
+	&:where(.Mui-selected) {
+		--🥝Icon-color: var(--✨color-icon--selected);
+		--_MuiMenuItem-background-color: var(--✨color-bg--selected);
+		--_MuiMenuItem-color: var(--✨color-text--selected);
+		--_MuiMenuItem-root-mask-image: var(--✨svg-checked);
+
+		&:where(:not(.Mui-disabled)) {
+			--_MuiMenuItem-border-color: var(--✨color-border--selected);
+		}
+	}
+
+	&:where(.Mui-disabled) {
+		--🥝Icon-color: var(--✨color-icon--disabled);
+		--_MuiMenuItem-background-color: var(--✨color-bg--disabled);
+		--_MuiMenuItem-color: var(--✨color-text--disabled);
+		opacity: 1;
 	}
 }

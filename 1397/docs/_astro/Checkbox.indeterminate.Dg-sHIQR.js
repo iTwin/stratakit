@@ -1,0 +1,1 @@
+import{j as t}from"./client.DHpKesk-.js";import{F as r}from"./FormControlLabel.DYsFD_jD.js";import{C as o}from"./Checkbox.CZolXm2X.js";import"./styles.internal.CPbvgKR0.js";import"./Typography.62A_QiyG.js";import"./createSvgIcon.Bx9MUZbK.js";import"./mergeSlotProps.wMO_RQlN.js";const x=()=>t.jsx(r,{control:t.jsx(o,{indeterminate:!0}),label:"Indeterminate"});export{x as default};

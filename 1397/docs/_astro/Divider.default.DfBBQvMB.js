@@ -1,0 +1,1 @@
+import{j as r}from"./client.DHpKesk-.js";import{D as t}from"./Divider.Cfk0H8Wg.js";import"./styles.internal.CPbvgKR0.js";import"./dividerClasses.LuesmdLN.js";const s=()=>r.jsx(t,{});export{s as default};

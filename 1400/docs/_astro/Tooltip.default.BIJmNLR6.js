@@ -1,1 +1,0 @@
-import{j as t}from"./client.CvU5_doX.js";import{c as e,B as i}from"./ExamplePreview.CXk8QODH.js";import"./styles.internal.CPbvgKR0.js";import"./preload-helper.FFyXl2oO.js";const s=()=>t.jsx(e,{content:"Save is disabled until you finish reading the documentation.",type:"description",children:t.jsx(i,{disabled:!0,children:"Save"})});export{s as default};

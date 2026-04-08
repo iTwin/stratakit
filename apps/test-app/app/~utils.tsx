@@ -160,33 +160,37 @@ type ColorScheme = RootProps["colorScheme"];
 type ColorSchemeSetting = RootProps["colorScheme"] | "auto";
 type AccentColor = "aurora" | "cobalt";
 
+interface Settings {
+	colorScheme: ColorSchemeSetting;
+	accentColor: AccentColor;
+}
+
+const defaultSettings: Settings = {
+	colorScheme: "auto",
+	accentColor: "aurora",
+};
+
 const SettingsContext = React.createContext<{
-	colorScheme: ColorSchemeSetting | undefined;
-	setColorScheme: React.Dispatch<
-		React.SetStateAction<ColorSchemeSetting | undefined>
-	>;
-	accentColor: AccentColor | undefined;
-	setAccentColor: React.Dispatch<React.SetStateAction<AccentColor | undefined>>;
+	settings: Settings;
+	setSettings: React.Dispatch<React.SetStateAction<Settings>>;
 }>({
-	colorScheme: undefined,
-	setColorScheme: () => {},
-	accentColor: undefined,
-	setAccentColor: () => {},
+	settings: defaultSettings,
+	setSettings: () => {},
 });
 
 export function SettingsProvider({ children }: { children: React.ReactNode }) {
-	const [colorScheme, setColorScheme] = React.useState<
-		ColorSchemeSetting | undefined
-	>(undefined);
-	const [accentColor, setAccentColor] = React.useState<AccentColor | undefined>(
-		undefined,
+	const [settings, setSettings] = useLocalStorageState(
+		"🥝:settings",
+		defaultSettings,
 	);
-
 	return (
 		<SettingsContext.Provider
 			value={React.useMemo(
-				() => ({ colorScheme, setColorScheme, accentColor, setAccentColor }),
-				[colorScheme, accentColor],
+				() => ({
+					settings,
+					setSettings,
+				}),
+				[settings, setSettings],
 			)}
 		>
 			{children}
@@ -196,17 +200,10 @@ export function SettingsProvider({ children }: { children: React.ReactNode }) {
 
 // ----------------------------------------------------------------------------
 
-const COLOR_SCHEME_STORAGE_KEY = "🥝:color-scheme";
-
 /** Returns the color-scheme setting as configured by the user. */
 export function useColorSchemeSetting(): ColorSchemeSetting {
-	const { colorScheme } = React.use(SettingsContext);
-
-	const storedValue = useLocalStorage(COLOR_SCHEME_STORAGE_KEY);
-	const storedColorScheme =
-		storedValue === "light" || storedValue === "dark" ? storedValue : undefined;
-
-	return colorScheme ?? storedColorScheme ?? "auto";
+	const { settings } = React.use(SettingsContext);
+	return settings.colorScheme;
 }
 
 /** Returns the current color-scheme. */
@@ -221,55 +218,37 @@ export function useColorScheme(): ColorScheme {
 	return setting;
 }
 
-/** Allows changing the color-scheme returned by `useColorScheme`. Synchronizes with localStorage. */
 export function useSetColorScheme() {
-	const { setColorScheme } = React.use(SettingsContext);
-	const setLocalStorage = useSetLocalStorage<ColorSchemeSetting>(
-		COLOR_SCHEME_STORAGE_KEY,
-	);
-
+	const { setSettings } = React.use(SettingsContext);
 	return React.useCallback(
-		(value: React.SetStateAction<ColorSchemeSetting | undefined>) => {
-			setColorScheme((prev) => {
-				const newValue = typeof value === "function" ? value(prev) : value;
-				return setLocalStorage(newValue);
+		(colorScheme: ColorSchemeSetting) => {
+			setSettings((prev) => {
+				if (prev.colorScheme === colorScheme) return prev;
+				return { ...prev, colorScheme };
 			});
 		},
-		[setColorScheme, setLocalStorage],
+		[setSettings],
 	);
 }
 
 // ----------------------------------------------------------------------------
 
-const ACCENT_COLOR_STORAGE_KEY = "🥝:accent-color";
-
-/** Returns the current accent color in the following order: React Context, localStorage. */
+/** Returns the current accent color. */
 export function useAccentColor(): AccentColor {
-	const { accentColor } = React.use(SettingsContext);
-
-	const storedValue = useLocalStorage(ACCENT_COLOR_STORAGE_KEY);
-	const storedAccentColor =
-		storedValue === "aurora" || storedValue === "cobalt"
-			? storedValue
-			: undefined;
-
-	return accentColor ?? storedAccentColor ?? "aurora";
+	const { settings } = React.use(SettingsContext);
+	return settings.accentColor;
 }
 
-/** Allows changing the accent color returned by `useAccentColor`. Synchronizes with localStorage. */
 export function useSetAccentColor() {
-	const { setAccentColor } = React.use(SettingsContext);
-	const setLocalStorage = useSetLocalStorage<AccentColor>(
-		ACCENT_COLOR_STORAGE_KEY,
-	);
+	const { setSettings } = React.use(SettingsContext);
 	return React.useCallback(
-		(value: React.SetStateAction<AccentColor | undefined>) => {
-			setAccentColor((prev) => {
-				const newValue = typeof value === "function" ? value(prev) : value;
-				return setLocalStorage(newValue);
+		(accentColor: AccentColor) => {
+			setSettings((prev) => {
+				if (prev.accentColor === accentColor) return prev;
+				return { ...prev, accentColor };
 			});
 		},
-		[setAccentColor, setLocalStorage],
+		[setSettings],
 	);
 }
 
@@ -322,21 +301,26 @@ export const useLocalStorage = (key: string) => {
 
 // ----------------------------------------------------------------------------
 
-/** Returns local storage state setter associated with the passed key */
-export function useSetLocalStorage<T extends string>(key: string) {
-	return React.useCallback(
-		(newValue: T | undefined) => {
-			if (typeof localStorage !== "undefined") {
-				if (newValue === undefined) {
-					localStorage.removeItem(key);
-				} else {
-					localStorage.setItem(key, newValue);
-				}
-			}
-			return newValue;
+export function useLocalStorageState<T>(key: string, initialState: T) {
+	const [value, setValue_] = React.useState<T>(initialState);
+
+	const setValue = React.useCallback(
+		(action: React.SetStateAction<T>) => {
+			setValue_((prev) => {
+				const newValue = action instanceof Function ? action(prev) : action;
+				localStorage.setItem(key, JSON.stringify(newValue));
+				return newValue;
+			});
 		},
 		[key],
 	);
+	React.useEffect(() => {
+		const item = localStorage.getItem(key);
+		if (!item) return;
+		setValue_(JSON.parse(item));
+	}, [key]);
+
+	return [value, setValue] as const;
 }
 
 // ----------------------------------------------------------------------------

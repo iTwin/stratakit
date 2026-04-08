@@ -190,11 +190,13 @@ export function useColorScheme(): ColorScheme {
 	const setting = useSettingsStore((state) => state.colorScheme);
 	const prefersDark = useMediaQuery("(prefers-color-scheme: dark)");
 
-	if (setting === "auto") {
-		return prefersDark ? "dark" : "light";
+	if (setting !== "auto") return setting;
+
+	if (prefersDark === undefined) {
+		return "dark"; // dark by default (during SSR)
 	}
 
-	return setting;
+	return prefersDark ? "dark" : "light";
 }
 
 // ----------------------------------------------------------------------------

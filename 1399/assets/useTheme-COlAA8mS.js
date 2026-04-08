@@ -1,0 +1,1 @@
+import{b as n}from"./index-CG0vklBD.js";import{T as s,af as o}from"./~utils-aFBOLfUL.js";function r(e){return Object.keys(e).length===0}function m(e=null){const t=n.useContext(s);return!t||r(t)?e:t}const u=o();function f(e=u){return m(e)}export{f as a,m as u};

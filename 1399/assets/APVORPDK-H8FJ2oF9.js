@@ -1,0 +1,1 @@
+import{u as n}from"./NDVACHQI-Dfigjjto.js";import{bt as i,cX as r,b_ as u,cz as c,br as l,bs as D}from"./~utils-aFBOLfUL.js";var m="button",g=i(function({store:a,...e}){const o=r();a=a||o,u(a,!1);const s=a.useState("contentElement");return e={"aria-haspopup":c(s,"dialog"),...e},e=n({store:a,...e}),e}),v=l(function(a){const e=g(a);return D(m,e)});export{v as D,g as u};

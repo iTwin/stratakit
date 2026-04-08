@@ -1,1 +1,0 @@
-import{j as t}from"./client.DHpKesk-.js";import{A as r}from"./Anchor.BTLsZ8WO.js";import"./styles.internal.CPbvgKR0.js";import"./ExamplePreview.DnIKdVll.js";import"./preload-helper.AmADYLih.js";const m=()=>t.jsx(r,{href:"/getting-started",children:"Getting started"});export{m as default};

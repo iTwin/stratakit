@@ -1,1 +1,0 @@
-import{j as e}from"./client.DHpKesk-.js";import{C as t}from"./Chip.BxdqVWl3.js";import"./styles.internal.CPbvgKR0.js";import"./createSvgIcon.Bx9MUZbK.js";const i=()=>e.jsx(t,{label:"Deletable Chip",onDelete:()=>{console.log("Deleted")}});export{i as default};

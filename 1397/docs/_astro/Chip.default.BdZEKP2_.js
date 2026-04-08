@@ -1,1 +1,0 @@
-import{j as t}from"./client.DHpKesk-.js";import{C as r}from"./Chip.BxdqVWl3.js";import"./styles.internal.CPbvgKR0.js";import"./createSvgIcon.Bx9MUZbK.js";const e=()=>t.jsx(r,{label:"Default Chip"});export{e as default};

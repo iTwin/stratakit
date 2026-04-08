@@ -1,1 +1,0 @@
-import{j as t}from"./client.DHpKesk-.js";import{C as i}from"./Chip.BxdqVWl3.js";import"./styles.internal.CPbvgKR0.js";import"./createSvgIcon.Bx9MUZbK.js";const a=()=>t.jsx(i,{label:"Outlined Chip",variant:"outlined"});export{a as default};

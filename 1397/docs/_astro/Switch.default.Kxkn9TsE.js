@@ -1,1 +1,0 @@
-import{j as o}from"./client.DHpKesk-.js";import{F as r}from"./FormControlLabel.DYsFD_jD.js";import{S as t}from"./Switch.BTA-yM4t.js";import"./styles.internal.CPbvgKR0.js";import"./Typography.62A_QiyG.js";const l=()=>o.jsx(r,{control:o.jsx(t,{}),label:"Dark mode"});export{l as default};

@@ -132,6 +132,7 @@ function createTheme() {
 			MuiAccordionSummary: {
 				defaultProps: {
 					component: Role.div,
+					nativeButton: false,
 					expandIcon: <ChevronDownIcon />,
 				},
 			},
@@ -317,7 +318,10 @@ function createTheme() {
 			MuiList: { defaultProps: { component: Role.ul } },
 			MuiListItem: { defaultProps: { component: Role.li } },
 			MuiListItemButton: {
-				defaultProps: { component: MuiButtonBase },
+				defaultProps: {
+					component: MuiButtonBase,
+					nativeButton: true,
+				},
 			},
 			MuiListItemText: {
 				defaultProps: {

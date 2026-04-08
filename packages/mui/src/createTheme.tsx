@@ -152,9 +152,6 @@ function createTheme() {
 				defaultProps: {
 					popupIcon: <ChevronDownIcon />,
 					clearIcon: <DismissIcon />,
-					ListboxProps: {
-						className: "MuiMenu-list",
-					},
 					renderOption: ({ key, ...props }, option, _, ownerState) => (
 						<li
 							key={key}

@@ -139,7 +139,7 @@ export const meta: MetaFunction = () => {
  */
 const components: Record<string, React.ReactNode> = {
 	Accordion: (
-		<Stack spacing={1} alignSelf="stretch">
+		<Stack spacing={1} sx={{ alignSelf: "stretch" }}>
 			<div>
 				<AccordionDefault />
 			</div>
@@ -160,14 +160,14 @@ const components: Record<string, React.ReactNode> = {
 		</Stack>
 	),
 	Alert: (
-		<Stack spacing={1} alignSelf="stretch">
+		<Stack spacing={1} sx={{ alignSelf: "stretch" }}>
 			<AlertDefault />
 			<AlertTitle />
 			{!isProduction && <AlertPermutations_ />}
 		</Stack>
 	),
 	AppBar: (
-		<Stack spacing={1} alignSelf="stretch">
+		<Stack spacing={1} sx={{ alignSelf: "stretch" }}>
 			<AppBarDefault />
 		</Stack>
 	),
@@ -195,7 +195,7 @@ const components: Record<string, React.ReactNode> = {
 		</>
 	),
 	BottomNavigation: (
-		<Stack spacing={1} alignSelf="stretch">
+		<Stack spacing={1} sx={{ alignSelf: "stretch" }}>
 			<BottomNavigationDefault />
 		</Stack>
 	),
@@ -228,7 +228,7 @@ const components: Record<string, React.ReactNode> = {
 		</>
 	),
 	Chip: (
-		<Stack spacing={1} direction="row" useFlexGap flexWrap="wrap">
+		<Stack spacing={1} direction="row" useFlexGap sx={{ flexWrap: "wrap" }}>
 			<ChipDefault />
 			<ChipOutlined />
 			<ChipClickable />
@@ -250,7 +250,7 @@ const components: Record<string, React.ReactNode> = {
 	Dialog: <DialogDefault />,
 	Divider: (
 		<>
-			<Stack alignSelf="stretch">
+			<Stack sx={{ alignSelf: "stretch" }}>
 				<DividerDefault />
 			</Stack>
 			<DividerVertical />
@@ -271,7 +271,7 @@ const components: Record<string, React.ReactNode> = {
 		</>
 	),
 	LinearProgress: (
-		<Stack spacing={1} alignSelf="stretch">
+		<Stack spacing={1} sx={{ alignSelf: "stretch" }}>
 			<LinearProgressDefault />
 			{!isProduction && <LinearProgressColors_ />}
 		</Stack>
@@ -287,7 +287,7 @@ const components: Record<string, React.ReactNode> = {
 		</>
 	),
 	List: (
-		<Stack spacing={1} alignSelf="stretch">
+		<Stack spacing={1} sx={{ alignSelf: "stretch" }}>
 			<ListDefault />
 			<ListAvatar />
 			<ListSubheader />
@@ -301,7 +301,7 @@ const components: Record<string, React.ReactNode> = {
 	),
 	...(isProduction ? {} : { MenuList: <MenuListDefault_ /> }),
 	MobileStepper: (
-		<Stack spacing={1} alignSelf="stretch">
+		<Stack spacing={1} sx={{ alignSelf: "stretch" }}>
 			<MobileStepperDefault />
 		</Stack>
 	),
@@ -324,7 +324,7 @@ const components: Record<string, React.ReactNode> = {
 		</>
 	),
 	Skeleton: (
-		<Stack spacing={2} alignSelf="stretch">
+		<Stack spacing={2} sx={{ alignSelf: "stretch" }}>
 			<SkeletonDefault />
 			<SkeletonVariants />
 		</Stack>
@@ -340,7 +340,7 @@ const components: Record<string, React.ReactNode> = {
 	Snackbar: <SnackbarDefault />,
 	SpeedDial: <SpeedDialDefault />,
 	Stepper: (
-		<Stack spacing={4} alignSelf="stretch">
+		<Stack spacing={4} sx={{ alignSelf: "stretch" }}>
 			<StepperDefault />
 			<StepperOptional />
 			<StepperClickable />
@@ -493,7 +493,11 @@ function ComponentExamples(props: ComponentExamplesProps) {
 				</IconButton>
 			</hgroup>
 
-			<Stack spacing={2} alignItems="start" className={styles.exampleContent}>
+			<Stack
+				spacing={2}
+				sx={{ alignItems: "start" }}
+				className={styles.exampleContent}
+			>
 				{props.children}
 			</Stack>
 		</div>

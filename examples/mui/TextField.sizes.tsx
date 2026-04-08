@@ -8,7 +8,7 @@ import TextField from "@mui/material/TextField";
 
 export default () => {
 	return (
-		<Stack spacing={1} direction="row" alignItems="center">
+		<Stack spacing={1} direction="row" sx={{ alignItems: "center" }}>
 			<TextField size="small" label="Small" />
 			<TextField size="medium" label="Medium" />
 		</Stack>

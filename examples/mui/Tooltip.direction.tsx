@@ -9,7 +9,7 @@ import Tooltip from "@mui/material/Tooltip";
 
 export default () => {
 	return (
-		<Stack spacing={4} alignSelf="center">
+		<Stack spacing={4} sx={{ alignSelf: "center" }}>
 			<Tooltip placement="bottom" title="I am below the button">
 				<Button disabled>Bottom</Button>
 			</Tooltip>

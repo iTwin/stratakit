@@ -171,7 +171,7 @@ function createTheme() {
 			MuiAvatar: {
 				defaultProps: {
 					component: Role.div,
-					imgProps: { draggable: false },
+					slotProps: { img: { draggable: false } },
 				},
 				styleOverrides: {
 					root: {
@@ -226,7 +226,12 @@ function createTheme() {
 			MuiCardHeader: {
 				defaultProps: {
 					component: Role.div,
-					slotProps: { title: { component: Role.h2 } },
+					slotProps: {
+						title: {
+							// biome-ignore lint/suspicious/noExplicitAny: MUI's CardHeader.title.component is hardcoded to "span"
+							component: Role.h2 as any,
+						},
+					},
 				},
 			},
 			MuiCardMedia: { defaultProps: { component: MuiCardMedia } },
@@ -266,7 +271,6 @@ function createTheme() {
 			MuiFormHelperText: { defaultProps: { component: Role.p } },
 			MuiFormLabel: { defaultProps: { component: Role.label as never } },
 			MuiGrid: { defaultProps: { component: Role.div } },
-			MuiGridLegacy: { defaultProps: { component: Role.div } },
 			MuiIcon: { defaultProps: { component: Role.span } },
 			MuiIconButton: {
 				defaultProps: { component: MuiIconButton, color: "secondary" },

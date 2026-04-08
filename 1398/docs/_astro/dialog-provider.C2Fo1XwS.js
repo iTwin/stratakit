@@ -1,1 +1,0 @@
-import{f as e,D as t}from"./ExamplePreview.CtY2IPdo.js";import{j as i}from"./client.CMl_i3i1.js";function n(o={}){const r=e(o);return i.jsx(t,{value:r,children:o.children})}export{n as D};

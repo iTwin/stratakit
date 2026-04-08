@@ -368,7 +368,16 @@ function createTheme() {
 				},
 			},
 			MuiSkeleton: { defaultProps: { component: Role.span } },
-			MuiSlider: { defaultProps: { component: Role.span } },
+			MuiSlider: {
+				defaultProps: {
+					component: Role.span,
+					slotProps: {
+						valueLabel: {
+							className: "MuiTooltip-tooltip",
+						},
+					},
+				},
+			},
 			MuiSnackbar: {
 				defaultProps: {
 					slotProps: {

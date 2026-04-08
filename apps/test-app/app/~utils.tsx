@@ -5,6 +5,8 @@
 
 import * as React from "react";
 import { useSearchParams } from "react-router";
+import { create } from "zustand";
+import { persist } from "zustand/middleware";
 
 import type { Root } from "@stratakit/mui";
 
@@ -160,55 +162,32 @@ type ColorScheme = RootProps["colorScheme"];
 type ColorSchemeSetting = RootProps["colorScheme"] | "auto";
 type AccentColor = "aurora" | "cobalt";
 
-interface Settings {
+interface SettingsState {
 	colorScheme: ColorSchemeSetting;
 	accentColor: AccentColor;
+	setColorScheme: (scheme: ColorSchemeSetting) => void;
+	setAccentColor: (color: AccentColor) => void;
 }
 
-const defaultSettings: Settings = {
-	colorScheme: "auto",
-	accentColor: "aurora",
-};
-
-const SettingsContext = React.createContext<{
-	settings: Settings;
-	setSettings: React.Dispatch<React.SetStateAction<Settings>>;
-}>({
-	settings: defaultSettings,
-	setSettings: () => {},
-});
-
-export function SettingsProvider({ children }: { children: React.ReactNode }) {
-	const [settings, setSettings] = useLocalStorageState(
-		"🥝:settings",
-		defaultSettings,
-	);
-	return (
-		<SettingsContext.Provider
-			value={React.useMemo(
-				() => ({
-					settings,
-					setSettings,
-				}),
-				[settings, setSettings],
-			)}
-		>
-			{children}
-		</SettingsContext.Provider>
-	);
-}
+export const useSettingsStore = create<SettingsState>()(
+	persist(
+		(set) => ({
+			colorScheme: "auto",
+			accentColor: "aurora",
+			setColorScheme: (scheme) => set({ colorScheme: scheme }),
+			setAccentColor: (color) => set({ accentColor: color }),
+		}),
+		{
+			name: "🥝:settings",
+		},
+	),
+);
 
 // ----------------------------------------------------------------------------
 
-/** Returns the color-scheme setting as configured by the user. */
-export function useColorSchemeSetting(): ColorSchemeSetting {
-	const { settings } = React.use(SettingsContext);
-	return settings.colorScheme;
-}
-
 /** Returns the current color-scheme. */
 export function useColorScheme(): ColorScheme {
-	const setting = useColorSchemeSetting();
+	const setting = useSettingsStore((state) => state.colorScheme);
 	const prefersDark = useMediaQuery("(prefers-color-scheme: dark)");
 
 	if (setting === "auto") {
@@ -216,40 +195,6 @@ export function useColorScheme(): ColorScheme {
 	}
 
 	return setting;
-}
-
-export function useSetColorScheme() {
-	const { setSettings } = React.use(SettingsContext);
-	return React.useCallback(
-		(colorScheme: ColorSchemeSetting) => {
-			setSettings((prev) => {
-				if (prev.colorScheme === colorScheme) return prev;
-				return { ...prev, colorScheme };
-			});
-		},
-		[setSettings],
-	);
-}
-
-// ----------------------------------------------------------------------------
-
-/** Returns the current accent color. */
-export function useAccentColor(): AccentColor {
-	const { settings } = React.use(SettingsContext);
-	return settings.accentColor;
-}
-
-export function useSetAccentColor() {
-	const { setSettings } = React.use(SettingsContext);
-	return React.useCallback(
-		(accentColor: AccentColor) => {
-			setSettings((prev) => {
-				if (prev.accentColor === accentColor) return prev;
-				return { ...prev, accentColor };
-			});
-		},
-		[setSettings],
-	);
 }
 
 // ----------------------------------------------------------------------------
@@ -298,30 +243,6 @@ export const useLocalStorage = (key: string) => {
 
 	return value;
 };
-
-// ----------------------------------------------------------------------------
-
-export function useLocalStorageState<T>(key: string, initialState: T) {
-	const [value, setValue_] = React.useState<T>(initialState);
-
-	const setValue = React.useCallback(
-		(action: React.SetStateAction<T>) => {
-			setValue_((prev) => {
-				const newValue = action instanceof Function ? action(prev) : action;
-				localStorage.setItem(key, JSON.stringify(newValue));
-				return newValue;
-			});
-		},
-		[key],
-	);
-	React.useEffect(() => {
-		const item = localStorage.getItem(key);
-		if (!item) return;
-		setValue_(JSON.parse(item));
-	}, [key]);
-
-	return [value, setValue] as const;
-}
 
 // ----------------------------------------------------------------------------
 

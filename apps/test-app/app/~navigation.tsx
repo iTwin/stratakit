@@ -17,13 +17,12 @@ import { Icon } from "@stratakit/foundations";
 import { unstable_NavigationRail as NavigationRail } from "@stratakit/structures";
 import {
 	isProduction,
-	useAccentColor,
-	useColorSchemeSetting,
 	useIsWideScreen,
 	useLocalStorage,
-	useSetAccentColor,
-	useSetColorScheme,
+	useSettingsStore,
 } from "./~utils.tsx";
+
+import type { ExtractState } from "zustand";
 
 import svgComputer from "@stratakit/icons/computer.svg";
 import svgDocumentation from "@stratakit/icons/documentation.svg";
@@ -222,18 +221,19 @@ function RegularLink({ to, ...props }: RegularLinkProps) {
 
 // ----------------------------------------------------------------------------
 
-type ColorSchemeSetting = ReturnType<typeof useColorSchemeSetting>;
-type AccentColor = ReturnType<typeof useAccentColor>;
+type SettingsState = ExtractState<typeof useSettingsStore>;
+type ColorSchemeSetting = SettingsState["colorScheme"];
+type AccentColor = SettingsState["accentColor"];
 
 function SettingsButton() {
 	const id = React.useId();
 	const [open, setOpen] = React.useState(false);
 
-	const colorScheme = useColorSchemeSetting() ?? "auto";
-	const setColorScheme = useSetColorScheme();
+	const colorScheme = useSettingsStore((state) => state.colorScheme);
+	const setColorScheme = useSettingsStore((state) => state.setColorScheme);
 
-	const accentColor = useAccentColor();
-	const setAccentColor = useSetAccentColor();
+	const accentColor = useSettingsStore((state) => state.accentColor);
+	const setAccentColor = useSettingsStore((state) => state.setAccentColor);
 	return (
 		<>
 			<NavigationRail.Button

@@ -90,6 +90,7 @@ import SelectDefault from "examples/mui/Select.default.tsx";
 import SelectIcon from "examples/mui/Select.icon.tsx";
 import SelectMultiple from "examples/mui/Select.multiple.tsx";
 import SkeletonDefault from "examples/mui/Skeleton.default.tsx";
+import SkeletonVariants from "examples/mui/Skeleton.variants.tsx";
 import SliderDefault from "examples/mui/Slider.default.tsx";
 import SliderMarks from "examples/mui/Slider.marks.tsx";
 import SliderRange from "examples/mui/Slider.range.tsx";
@@ -323,8 +324,9 @@ const components: Record<string, React.ReactNode> = {
 		</>
 	),
 	Skeleton: (
-		<Stack spacing={1} alignSelf="stretch">
+		<Stack spacing={2} alignSelf="stretch">
 			<SkeletonDefault />
+			<SkeletonVariants />
 		</Stack>
 	),
 	Slider: (

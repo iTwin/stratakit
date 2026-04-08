@@ -10,9 +10,9 @@ links:
 
 ## StrataKit MUI modifications
 
-- Spacing and sizing has been adjusted to better align with StrataKit's more compact visual design language.
+- Restyled using StrataKit's visual language.
 - The "clear" indicator is now keyboard focusable and remains visible to improve accessibility.
-- The dropdown menu adopts the same visual styling as [`Menu`](menu) by reusing its class names.
+- Autocomplete menu matches the visual styling of [`Menu`](menu), with individual Autocomplete options using the `MuiMenuItem-root` class via `renderOption`.
 
 ## Examples
 

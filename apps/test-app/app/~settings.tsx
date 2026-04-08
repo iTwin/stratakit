@@ -3,22 +3,18 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 import * as React from "react";
-import { Portal } from "@ariakit/react/portal";
-import Dialog from "@mui/material/Dialog";
-import DialogContent from "@mui/material/DialogContent";
-import DialogTitle from "@mui/material/DialogTitle";
 import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
-import IconButton from "@mui/material/IconButton";
 import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
+import { Tooltip } from "@stratakit/bricks";
 import { Icon, type Root } from "@stratakit/mui";
 import { unstable_NavigationRail as NavigationRail } from "@stratakit/structures";
+import * as Dialog from "@stratakit/structures/unstable_Dialog";
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
 import svgComputer from "@stratakit/icons/computer.svg";
-import svgDismiss from "@stratakit/icons/dismiss.svg";
 import svgMoon from "@stratakit/icons/moon.svg";
 import svgSettings from "@stratakit/icons/settings.svg";
 import svgSun from "@stratakit/icons/sun.svg";
@@ -68,19 +64,12 @@ export function SettingsButton() {
 				icon={svgSettings}
 				onClick={() => setOpen(true)}
 			/>
-			<Dialog
-				open={open}
-				onClose={() => setOpen(false)}
-				disablePortal
-				component={Portal}
-			>
-				<div className={styles.dialogHeader}>
-					<DialogTitle className={styles.dialogTitle}>Settings</DialogTitle>
-					<IconButton edge="end" onClick={() => setOpen(false)}>
-						<Icon href={svgDismiss} />
-					</IconButton>
-				</div>
-				<DialogContent className={styles.dialogContent}>
+			<Dialog.Root open={open} onClose={() => setOpen(false)} modal>
+				<Dialog.Header>
+					<Dialog.Heading>Settings</Dialog.Heading>
+					<Dialog.CloseButton />
+				</Dialog.Header>
+				<Dialog.Content className={styles.dialogContent}>
 					<FormControl>
 						<FormLabel id={`${id}-color-scheme`}>Color scheme</FormLabel>
 						<ToggleButtonGroup
@@ -91,19 +80,25 @@ export function SettingsButton() {
 							}}
 							aria-labelledby={`${id}-color-scheme`}
 						>
-							<ToggleButton value="auto" label="Auto">
-								<Icon href={svgComputer} />
-							</ToggleButton>
-							<ToggleButton value="light" label="Light">
-								<Icon href={svgSun} />
-							</ToggleButton>
-							<ToggleButton value="dark" label="Dark">
-								<Icon href={svgMoon} />
-							</ToggleButton>
+							<Tooltip content="Auto" type="label">
+								<ToggleButton value="auto">
+									<Icon href={svgComputer} />
+								</ToggleButton>
+							</Tooltip>
+							<Tooltip content="Light" type="label">
+								<ToggleButton value="light">
+									<Icon href={svgSun} />
+								</ToggleButton>
+							</Tooltip>
+							<Tooltip content="Dark" type="label">
+								<ToggleButton value="dark">
+									<Icon href={svgMoon} />
+								</ToggleButton>
+							</Tooltip>
 						</ToggleButtonGroup>
 					</FormControl>
-				</DialogContent>
-			</Dialog>
+				</Dialog.Content>
+			</Dialog.Root>
 		</>
 	);
 }

@@ -3,6 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 import * as React from "react";
+import { Portal } from "@ariakit/react/portal";
 import Dialog from "@mui/material/Dialog";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
@@ -68,7 +69,12 @@ export function SettingsButton() {
 				icon={svgSettings}
 				onClick={() => setOpen(true)}
 			/>
-			<Dialog open={open} onClose={() => setOpen(false)}>
+			<Dialog
+				open={open}
+				onClose={() => setOpen(false)}
+				disablePortal
+				component={Portal}
+			>
 				<DialogTitle>Settings</DialogTitle>
 				<DialogContent className={styles.dialogContent}>
 					<FormControl>

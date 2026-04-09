@@ -39,13 +39,15 @@
 .MuiSwitch-switchBase {
 	--✨bg--default: var(--stratakit-color-bg-neutral-inverse);
 	--✨bg--disabled: var(--stratakit-color-icon-neutral-disabled);
+	--✨pressed-scaleX: 2;
+	--✨radius: 50%;
 	--✨shadow--default:
 		var(--stratakit-shadow-control-button-base-inset),
 		0px 0px 0px 1px var(--stratakit-color-border-shadow-base) inset,
 		var(--stratakit-shadow-control-button-base-drop);
 	--✨shadow--disabled: none;
-	--✨translate-distance: calc(var(--_MuiSwitch-height) - var(--_MuiSwitch-padding) * 2);
-	--✨translateX: translateX(var(--✨translate-distance));
+	--✨translate-distance--full: calc(var(--_MuiSwitch-height) - var(--_MuiSwitch-padding) * 2);
+	--✨translate-distance--half: calc(var(--✨translate-distance--full) * 0.5);
 
 	aspect-ratio: 1;
 	block-size: var(--_MuiSwitch-height);
@@ -55,9 +57,13 @@
 	transform-origin: left;
 
 	--_MuiSwitch-thumb-background-color: var(--✨bg--default);
+	--_MuiSwitch-thumb-border-radius: var(--✨radius);
 	--_MuiSwitch-thumb-box-shadow: var(--✨shadow--default);
 	--_MuiSwitch-thumb-position-off: none;
-	--_MuiSwitch-thumb-position-on: var(--✨translateX);
+	--_MuiSwitch-thumb-position-on: translateX(var(--✨translate-distance--full));
+	--_MuiSwitch-thumb-position-pressed: translateX(var(--✨translate-distance--half));
+
+	transition: none;
 
 	@media (prefers-reduced-motion: no-preference) {
 		transition: transform 150ms ease-out;
@@ -75,6 +81,14 @@
 		transform: var(--_MuiSwitch-thumb-position-on);
 	}
 
+	&:where(:has(.MuiSwitch-input:active):not(.Mui-disabled)) {
+		/* https://css-tricks.com/various-methods-for-expanding-a-box-while-preserving-the-border-radius/#aa-changing-scale */
+		transform: var(--_MuiSwitch-thumb-position-pressed);
+		--_MuiSwitch-thumb-stretch-transform: scaleX(var(--✨pressed-scaleX));
+		--_MuiSwitch-thumb-border-radius:
+			calc(var(--✨radius) / var(--✨pressed-scaleX)) / var(--✨radius);
+	}
+
 	&:where(.Mui-disabled) {
 		--_MuiSwitch-thumb-background-color: var(--✨bg--disabled);
 		--_MuiSwitch-thumb-box-shadow: var(--✨shadow--disabled);
@@ -82,8 +96,9 @@
 
 	/* TODO: Investigate using `:dir(rtl)` */
 	:root[dir="rtl"] & {
-		--_MuiSwitch-thumb-position-off: translateX(calc(var(--✨translate-distance) * -1));
+		--_MuiSwitch-thumb-position-off: translateX(calc(var(--✨translate-distance--full) * -1));
 		--_MuiSwitch-thumb-position-on: none;
+		--_MuiSwitch-thumb-position-pressed: translateX(calc(var(--✨translate-distance--half) * -1));
 	}
 }
 
@@ -92,9 +107,16 @@
 	aspect-ratio: inherit; /* Inherited from `.MuiSwitch-switchBase` */
 	background-color: var(--_MuiSwitch-thumb-background-color);
 	box-shadow: var(--_MuiSwitch-thumb-box-shadow);
-	border-radius: 50%;
+	border-radius: var(--_MuiSwitch-thumb-border-radius);
 	block-size: 100%;
 	inline-size: 100%;
+	transform: var(--_MuiSwitch-thumb-stretch-transform);
+
+	@media (prefers-reduced-motion: no-preference) {
+		transition: all 150ms ease-out;
+		transition-property: border-radius, transform;
+		will-change: border-radius, transform;
+	}
 }
 
 /* Track styling */

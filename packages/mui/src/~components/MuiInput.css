@@ -9,6 +9,9 @@
 	--✨border--error: var(--stratakit-color-border-critical-base);
 	--✨border--disabled: var(--stratakit-color-border-glow-on-surface-disabled);
 
+	--✨padding-inline--small: var(--stratakit-space-x2);
+	--✨padding-inline--medium: var(--stratakit-space-x3);
+
 	padding: 0;
 	border: 1px solid var(--_MuiInput-border-color);
 	border-radius: 4px;
@@ -17,6 +20,7 @@
 	@apply --typography("body-md");
 	--_MuiInput-block-size: var(--stratakit-size-control-field-height-medium);
 	--_MuiInput-border-color: var(--✨border--default);
+	--_MuiInput-padding-inline: var(--✨padding-inline--medium);
 
 	@media (any-hover: hover) {
 		&:where(:not(.Mui-disabled)):hover {
@@ -31,6 +35,7 @@
 	&:where(.MuiInputBase-sizeSmall) {
 		@apply --typography("body-sm");
 		--_MuiInput-block-size: var(--stratakit-size-control-field-height-small);
+		--_MuiInput-padding-inline: var(--✨padding-inline--small);
 	}
 
 	&:where(:focus-within) {
@@ -56,19 +61,11 @@
 }
 
 .MuiInputBase-input {
-	--✨padding-inline--small: var(--stratakit-space-x2);
-	--✨padding-inline--medium: var(--stratakit-space-x3);
-
 	height: unset;
 	min-block-size: calc(var(--_MuiInput-block-size) - 2px); /* Accommodate for border width */
 	padding-block: 0;
 	padding-inline: var(--_MuiInput-padding-inline);
 	align-content: center;
-	--_MuiInput-padding-inline: var(--✨padding-inline--medium);
-
-	:where(.MuiInputBase-root.MuiInputBase-sizeSmall) & {
-		--_MuiInput-padding-inline: var(--✨padding-inline--small);
-	}
 
 	&:where(input, textarea) {
 		&::placeholder {

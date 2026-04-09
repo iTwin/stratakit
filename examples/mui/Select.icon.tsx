@@ -15,13 +15,12 @@ import { Icon } from "@stratakit/mui";
 import svgCircle from "@stratakit/icons/circle.svg";
 import svgRectangle from "@stratakit/icons/rectangle.svg";
 import svgStar from "@stratakit/icons/star.svg";
-import styles from "./Select.icon.module.css";
 
 export default () => {
 	const labelId = React.useId();
 	const label = "Choose a shape:";
 	return (
-		<FormControl className={styles.formControl}>
+		<FormControl>
 			<InputLabel id={labelId}>{label}</InputLabel>
 			<Select labelId={labelId} label={label} defaultValue={2}>
 				<MenuItem value={1}>

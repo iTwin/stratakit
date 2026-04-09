@@ -6,13 +6,3 @@
 .formControl {
 	min-inline-size: 250px;
 }
-
-.input {
-	display: flex;
-	align-items: center;
-	gap: var(--stratakit-space-x2);
-
-	> .icon {
-		min-inline-size: initial;
-	}
-}

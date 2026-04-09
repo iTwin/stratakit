@@ -64,3 +64,9 @@
 		color: var(--stratakit-color-text-accent-strong);
 	}
 }
+
+.MuiSelect-select {
+	display: flex;
+	align-items: center;
+	gap: var(--stratakit-space-x2);
+}

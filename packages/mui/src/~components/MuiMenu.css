@@ -88,7 +88,7 @@
 		outline-offset: calc(var(--🥝focus-outline-offset) * -1);
 	}
 
-	&:where(.Mui-selected) {
+	&:where(.Mui-selected, [aria-selected="true"]) {
 		--🥝Icon-color: var(--✨color-icon--selected);
 		--_MuiMenuItem-background-color: var(--✨color-bg--selected);
 		--_MuiMenuItem-color: var(--✨color-text--selected);

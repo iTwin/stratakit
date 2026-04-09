@@ -8,6 +8,7 @@ import { Role } from "@ariakit/react/role";
 import OutlinedInput from "@mui/material/OutlinedInput";
 import StepConnector from "@mui/material/StepConnector";
 import { createTheme as createMuiTheme } from "@mui/material/styles";
+import cx from "classnames";
 import { MuiBadge } from "./~components/MuiBadge.js";
 import { MuiBottomNavigationAction } from "./~components/MuiBottomNavigation.js";
 import { MuiButtonBase } from "./~components/MuiButtonBase.js";
@@ -153,6 +154,15 @@ function createTheme() {
 				defaultProps: {
 					popupIcon: <ChevronDownIcon />,
 					clearIcon: <DismissIcon />,
+					renderOption: ({ key, ...props }, option, _, ownerState) => (
+						<li
+							key={key}
+							{...props}
+							className={cx("MuiMenuItem-root", props.className)}
+						>
+							{ownerState.getOptionLabel(option)}
+						</li>
+					),
 					slotProps: {
 						paper: {
 							elevation: 8, // match Menu elevation
@@ -454,6 +464,7 @@ function createTheme() {
 			MuiToolbar: { defaultProps: { component: Role.div } },
 			MuiTooltip: {
 				defaultProps: {
+					placement: "top",
 					describeChild: true,
 					slotProps: {
 						popper: {

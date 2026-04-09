@@ -19,9 +19,11 @@ export default () => {
 			</InputLabel>
 			<NativeSelect
 				defaultValue={2}
-				inputProps={{
-					name: "design-system",
-					id: inputId,
+				slotProps={{
+					input: {
+						name: "design-system",
+						id: inputId,
+					},
 				}}
 			>
 				<option value={1}>iTwinUI</option>

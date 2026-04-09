@@ -450,7 +450,32 @@ function cssFunction(name, value) {
 	};
 }
 
-/** Replaces aurora primitives with internal accent variables.
+/**
+ * LightningCSS visitor that replaces aurora primitives, with internal accent CSS variables.
+ *
+ * Input:
+ * ```css
+ * :root { --color: --primitive("color.aurora.800"); }
+ * ```
+ *
+ * Output:
+ * ```css
+ * :root { --color: var(--_stratakit-accent-800, oklch(33.76% 0.059 170.74)); }
+ * ```
+ *
+ * Aurora primitives that apply opacity to the base token do not generate separate token variables.
+ * Instead, they are defined using `oklch` functional notation using the base accent token.
+ *
+ * Input:
+ * ```css
+ * :root { --color: --primitive("color.aurora.12"); }
+ * ```
+ *
+ * Output:
+ * ```css
+ * :root { --color: oklch(from var(--_stratakit-accent-500, oklch(54% 0.1 170.26)) l c h / 12%); }
+ * ```
+ *
  * @returns {import("lightningcss").Visitor}
  */
 export function accentsTransform() {

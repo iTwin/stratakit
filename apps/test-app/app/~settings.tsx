@@ -72,9 +72,10 @@ export function SettingsDialog(props: SettingsDialogProps) {
 			>
 				<Dialog.Content className={styles.dialogContent}>
 					<FormControl className={styles.formControl} size="small">
-						<InputLabel htmlFor={`${id}-color-scheme`}>Color scheme</InputLabel>
+						<InputLabel className={styles.label} htmlFor={`${id}-color-scheme`}>
+							Color scheme
+						</InputLabel>
 						<NativeSelect
-							className={styles.select}
 							defaultValue={colorScheme}
 							inputProps={{
 								name: "color-scheme",

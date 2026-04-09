@@ -450,6 +450,7 @@ function createTheme() {
 			MuiToolbar: { defaultProps: { component: Role.div } },
 			MuiTooltip: {
 				defaultProps: {
+					placement: "top",
 					describeChild: true,
 					slotProps: {
 						popper: {

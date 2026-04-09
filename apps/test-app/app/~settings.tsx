@@ -3,21 +3,17 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 import * as React from "react";
+import { Button, NativeSelect } from "@mui/material";
 import FormControl from "@mui/material/FormControl";
-import FormLabel from "@mui/material/FormLabel";
-import ToggleButton from "@mui/material/ToggleButton";
-import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
-import { Tooltip } from "@stratakit/bricks";
-import { Icon, type Root } from "@stratakit/mui";
+import InputLabel from "@mui/material/InputLabel";
 import { unstable_NavigationRail as NavigationRail } from "@stratakit/structures";
 import * as Dialog from "@stratakit/structures/unstable_Dialog";
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
-import svgComputer from "@stratakit/icons/computer.svg";
-import svgMoon from "@stratakit/icons/moon.svg";
+import type { Root } from "@stratakit/mui";
+
 import svgSettings from "@stratakit/icons/settings.svg";
-import svgSun from "@stratakit/icons/sun.svg";
 import styles from "./~settings.module.css";
 
 // ----------------------------------------------------------------------------
@@ -69,35 +65,52 @@ export function SettingsButton() {
 					<Dialog.Heading>Settings</Dialog.Heading>
 					<Dialog.CloseButton />
 				</Dialog.Header>
-				<Dialog.Content className={styles.dialogContent}>
-					<FormControl>
-						<FormLabel id={`${id}-color-scheme`}>Color scheme</FormLabel>
-						<ToggleButtonGroup
-							exclusive
-							value={colorScheme}
-							onChange={(_, value: ColorSchemeSetting | null) => {
-								setColorScheme(value === null ? "auto" : value);
-							}}
-							aria-labelledby={`${id}-color-scheme`}
-						>
-							<Tooltip content="Auto" type="label">
-								<ToggleButton value="auto">
-									<Icon href={svgComputer} />
-								</ToggleButton>
-							</Tooltip>
-							<Tooltip content="Light" type="label">
-								<ToggleButton value="light">
-									<Icon href={svgSun} />
-								</ToggleButton>
-							</Tooltip>
-							<Tooltip content="Dark" type="label">
-								<ToggleButton value="dark">
-									<Icon href={svgMoon} />
-								</ToggleButton>
-							</Tooltip>
-						</ToggleButtonGroup>
-					</FormControl>
-				</Dialog.Content>
+				<form
+					action={(data) => {
+						const newColorScheme = data.get(
+							"color-scheme",
+						) as ColorSchemeSetting;
+
+						setColorScheme(newColorScheme);
+						setOpen(false);
+					}}
+				>
+					<Dialog.Content className={styles.dialogContent}>
+						<FormControl className={styles.formControl}>
+							<InputLabel htmlFor={`${id}-color-scheme`}>
+								Color scheme
+							</InputLabel>
+							<NativeSelect
+								className={styles.select}
+								defaultValue={colorScheme}
+								inputProps={{
+									name: "color-scheme",
+									id: `${id}-color-scheme`,
+								}}
+							>
+								<option value="auto">Auto</option>
+								<option value="light">Light</option>
+								<option value="dark">Dark</option>
+							</NativeSelect>
+						</FormControl>
+					</Dialog.Content>
+					<Dialog.Footer>
+						<Dialog.ActionList
+							actions={[
+								<Button
+									key="discard"
+									size="small"
+									onClick={() => setOpen(false)}
+								>
+									Discard
+								</Button>,
+								<Button key="apply" color="primary" size="small" type="submit">
+									Apply
+								</Button>,
+							]}
+						/>
+					</Dialog.Footer>
+				</form>
 			</Dialog.Root>
 		</>
 	);

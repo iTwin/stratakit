@@ -3,26 +3,18 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import Step from "@mui/material/Step";
-import StepLabel from "@mui/material/StepLabel";
-import Stepper from "@mui/material/Stepper";
+import Skeleton from "@mui/material/Skeleton";
+import Stack from "@mui/material/Stack";
 import visuallyHidden from "@mui/utils/visuallyHidden";
 
 export default () => {
 	return (
-		<Stepper activeStep={1}>
-			<Step>
-				<StepLabel>
-					Select campaign settings
-					<span style={visuallyHidden}> (completed)</span>
-				</StepLabel>
-			</Step>
-			<Step>
-				<StepLabel>Create an ad group</StepLabel>
-			</Step>
-			<Step>
-				<StepLabel>Create an ad</StepLabel>
-			</Step>
-		</Stepper>
+		<Stack spacing={1} direction="column">
+			<Skeleton variant="circular" width={40} height={40} />
+			<Skeleton variant="rectangular" />
+			<Skeleton variant="rounded" />
+			<Skeleton variant="text" />
+			<div style={visuallyHidden}>Loading…</div>
+		</Stack>
 	);
 };

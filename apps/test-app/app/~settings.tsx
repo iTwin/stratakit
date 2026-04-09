@@ -6,14 +6,12 @@ import * as React from "react";
 import { Button, NativeSelect } from "@mui/material";
 import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
-import { unstable_NavigationRail as NavigationRail } from "@stratakit/structures";
 import * as Dialog from "@stratakit/structures/unstable_Dialog";
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
 import type { Root } from "@stratakit/mui";
 
-import svgSettings from "@stratakit/icons/settings.svg";
 import styles from "./~settings.module.css";
 
 // ----------------------------------------------------------------------------
@@ -46,72 +44,62 @@ export const useSettingsStore = create<SettingsState>()(
 
 // ----------------------------------------------------------------------------
 
-export function SettingsButton() {
+interface SettingsDialogProps {
+	open: boolean;
+	onClose: () => void;
+}
+
+export function SettingsDialog(props: SettingsDialogProps) {
+	const { open, onClose } = props;
 	const id = React.useId();
-	const [open, setOpen] = React.useState(false);
 
 	const colorScheme = useSettingsStore((state) => state.colorScheme);
 	const setColorScheme = useSettingsStore((state) => state.setColorScheme);
 
 	return (
-		<>
-			<NavigationRail.Button
-				label="Settings"
-				icon={svgSettings}
-				onClick={() => setOpen(true)}
-			/>
-			<Dialog.Root open={open} onClose={() => setOpen(false)} modal>
-				<Dialog.Header>
-					<Dialog.Heading>Settings</Dialog.Heading>
-					<Dialog.CloseButton />
-				</Dialog.Header>
-				<form
-					action={(data) => {
-						const newColorScheme = data.get(
-							"color-scheme",
-						) as ColorSchemeSetting;
+		<Dialog.Root open={open} onClose={onClose} modal>
+			<Dialog.Header>
+				<Dialog.Heading>Settings</Dialog.Heading>
+				<Dialog.CloseButton />
+			</Dialog.Header>
+			<form
+				action={(data) => {
+					const newColorScheme = data.get("color-scheme") as ColorSchemeSetting;
 
-						setColorScheme(newColorScheme);
-						setOpen(false);
-					}}
-				>
-					<Dialog.Content className={styles.dialogContent}>
-						<FormControl className={styles.formControl}>
-							<InputLabel htmlFor={`${id}-color-scheme`}>
-								Color scheme
-							</InputLabel>
-							<NativeSelect
-								className={styles.select}
-								defaultValue={colorScheme}
-								inputProps={{
-									name: "color-scheme",
-									id: `${id}-color-scheme`,
-								}}
-							>
-								<option value="auto">Auto</option>
-								<option value="light">Light</option>
-								<option value="dark">Dark</option>
-							</NativeSelect>
-						</FormControl>
-					</Dialog.Content>
-					<Dialog.Footer>
-						<Dialog.ActionList
-							actions={[
-								<Button
-									key="discard"
-									size="small"
-									onClick={() => setOpen(false)}
-								>
-									Discard
-								</Button>,
-								<Button key="apply" color="primary" size="small" type="submit">
-									Apply
-								</Button>,
-							]}
-						/>
-					</Dialog.Footer>
-				</form>
-			</Dialog.Root>
-		</>
+					setColorScheme(newColorScheme);
+					onClose();
+				}}
+			>
+				<Dialog.Content className={styles.dialogContent}>
+					<FormControl className={styles.formControl}>
+						<InputLabel htmlFor={`${id}-color-scheme`}>Color scheme</InputLabel>
+						<NativeSelect
+							className={styles.select}
+							defaultValue={colorScheme}
+							inputProps={{
+								name: "color-scheme",
+								id: `${id}-color-scheme`,
+							}}
+						>
+							<option value="auto">Auto</option>
+							<option value="light">Light</option>
+							<option value="dark">Dark</option>
+						</NativeSelect>
+					</FormControl>
+				</Dialog.Content>
+				<Dialog.Footer>
+					<Dialog.ActionList
+						actions={[
+							<Button key="discard" size="small" onClick={() => onClose()}>
+								Discard
+							</Button>,
+							<Button key="apply" color="primary" size="small" type="submit">
+								Apply
+							</Button>,
+						]}
+					/>
+				</Dialog.Footer>
+			</form>
+		</Dialog.Root>
 	);
 }

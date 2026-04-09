@@ -76,6 +76,7 @@ import ListAvatar from "examples/mui/List.avatar.tsx";
 import ListDefault from "examples/mui/List.default.tsx";
 import ListSubheader from "examples/mui/List.subheader.tsx";
 import MenuDefault from "examples/mui/Menu.default.tsx";
+import MenuDense from "examples/mui/Menu.dense.tsx";
 import MenuListDefault_ from "examples/mui/MenuList._default.tsx";
 import MobileStepperDefault from "examples/mui/MobileStepper.default.tsx";
 import NativeSelectDefault from "examples/mui/NativeSelect.default.tsx";
@@ -89,6 +90,7 @@ import SelectDefault from "examples/mui/Select.default.tsx";
 import SelectIcon from "examples/mui/Select.icon.tsx";
 import SelectMultiple from "examples/mui/Select.multiple.tsx";
 import SkeletonDefault from "examples/mui/Skeleton.default.tsx";
+import SkeletonVariants from "examples/mui/Skeleton.variants.tsx";
 import SliderDefault from "examples/mui/Slider.default.tsx";
 import SliderMarks from "examples/mui/Slider.marks.tsx";
 import SliderRange from "examples/mui/Slider.range.tsx";
@@ -114,6 +116,7 @@ import TextFieldMultiline from "examples/mui/TextField.multiline.tsx";
 import TextFieldSizes from "examples/mui/TextField.sizes.tsx";
 import ToggleButtonDefault from "examples/mui/ToggleButton.default.tsx";
 import TooltipDefault from "examples/mui/Tooltip.default.tsx";
+import TooltipDirection from "examples/mui/Tooltip.direction.tsx";
 import TypographyVariants_ from "examples/mui/Typography._variants.tsx";
 import TypographyDefault from "examples/mui/Typography.default.tsx";
 import { SkipLinkContext } from "./~navigation.tsx";
@@ -290,7 +293,12 @@ const components: Record<string, React.ReactNode> = {
 			<ListSubheader />
 		</Stack>
 	),
-	Menu: <MenuDefault />,
+	Menu: (
+		<>
+			<MenuDefault />
+			<MenuDense />
+		</>
+	),
 	...(isProduction ? {} : { MenuList: <MenuListDefault_ /> }),
 	MobileStepper: (
 		<Stack spacing={1} alignSelf="stretch">
@@ -316,8 +324,9 @@ const components: Record<string, React.ReactNode> = {
 		</>
 	),
 	Skeleton: (
-		<Stack spacing={1} alignSelf="stretch">
+		<Stack spacing={2} alignSelf="stretch">
 			<SkeletonDefault />
+			<SkeletonVariants />
 		</Stack>
 	),
 	Slider: (
@@ -368,7 +377,12 @@ const components: Record<string, React.ReactNode> = {
 		</Stack>
 	),
 	ToggleButton: <ToggleButtonDefault />,
-	Tooltip: <TooltipDefault />,
+	Tooltip: (
+		<>
+			<TooltipDefault />
+			<TooltipDirection />
+		</>
+	),
 	Typography: (
 		<>
 			<TypographyDefault />

@@ -86,6 +86,7 @@ const RootInner = forwardRef<"div", RootInnerProps>((props, forwardedRef) => {
 		<StrataKitRoot
 			{...rest}
 			className={cx("🥝MuiRoot", props.className)}
+			portalContainer={<div className="🥝MuiRoot" />}
 			colorScheme={colorScheme}
 			unstable_accentColor={unstable_accentColor}
 			rootNode={rootNode}

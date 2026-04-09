@@ -1,1 +1,0 @@
-import{j as s}from"./client.D5xx-2gv.js";import{L as t}from"./Link.dOGITLPI.js";import"./styles.internal.CPbvgKR0.js";import"./Typography.B9SuMF0h.js";const e=["primary","secondary","error","info","success","warning"],p=()=>e.map(r=>s.jsxs(t,{color:r,href:`#${r}`,children:[r.charAt(0).toUpperCase(),r.slice(1)]},r));export{p as default};

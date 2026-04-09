@@ -3,24 +3,15 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 import * as React from "react";
-import { Portal } from "@ariakit/react/portal";
-import Dialog from "@mui/material/Dialog";
-import DialogContent from "@mui/material/DialogContent";
-import DialogTitle from "@mui/material/DialogTitle";
+import { Button, NativeSelect } from "@mui/material";
 import FormControl from "@mui/material/FormControl";
-import FormLabel from "@mui/material/FormLabel";
-import ToggleButton from "@mui/material/ToggleButton";
-import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
-import { Icon, type Root } from "@stratakit/mui";
-import { unstable_NavigationRail as NavigationRail } from "@stratakit/structures";
+import InputLabel from "@mui/material/InputLabel";
+import * as Dialog from "@stratakit/structures/unstable_Dialog";
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
-import svgComputer from "@stratakit/icons/computer.svg";
-import svgMoon from "@stratakit/icons/moon.svg";
-import svgSettings from "@stratakit/icons/settings.svg";
-import svgSun from "@stratakit/icons/sun.svg";
-import primitives from "internal/primitives.json" with { type: "json" };
+import type { Root } from "@stratakit/mui";
+
 import styles from "./~settings.module.css";
 
 // ----------------------------------------------------------------------------
@@ -53,9 +44,14 @@ export const useSettingsStore = create<SettingsState>()(
 
 // ----------------------------------------------------------------------------
 
-export function SettingsButton() {
+interface SettingsDialogProps {
+	open: boolean;
+	onClose: () => void;
+}
+
+export function SettingsDialog(props: SettingsDialogProps) {
+	const { open, onClose } = props;
 	const id = React.useId();
-	const [open, setOpen] = React.useState(false);
 
 	const colorScheme = useSettingsStore((state) => state.colorScheme);
 	const setColorScheme = useSettingsStore((state) => state.setColorScheme);
@@ -63,82 +59,65 @@ export function SettingsButton() {
 	const accentColor = useSettingsStore((state) => state.accentColor);
 	const setAccentColor = useSettingsStore((state) => state.setAccentColor);
 	return (
-		<>
-			<NavigationRail.Button
-				label="Settings"
-				icon={svgSettings}
-				onClick={() => setOpen(true)}
-			/>
-			<Dialog
-				open={open}
-				onClose={() => setOpen(false)}
-				disablePortal
-				component={Portal}
+		<Dialog.Root open={open} onClose={onClose} modal>
+			<Dialog.Header>
+				<Dialog.Heading>Settings</Dialog.Heading>
+				<Dialog.CloseButton />
+			</Dialog.Header>
+			<form
+				action={(data) => {
+					const newColorScheme = data.get("color-scheme") as ColorSchemeSetting;
+					const newAccentColor = data.get("accent-color") as AccentColor;
+
+					setColorScheme(newColorScheme);
+					setAccentColor(newAccentColor);
+					onClose();
+				}}
 			>
-				<DialogTitle>Settings</DialogTitle>
-				<DialogContent className={styles.dialogContent}>
-					<FormControl>
-						<FormLabel id={`${id}-color-scheme`}>Color scheme</FormLabel>
-						<ToggleButtonGroup
-							exclusive
-							value={colorScheme}
-							onChange={(_, value: ColorSchemeSetting | null) => {
-								setColorScheme(value === null ? "auto" : value);
+				<Dialog.Content className={styles.dialogContent}>
+					<FormControl className={styles.formControl}>
+						<InputLabel htmlFor={`${id}-color-scheme`}>Color scheme</InputLabel>
+						<NativeSelect
+							className={styles.select}
+							defaultValue={colorScheme}
+							inputProps={{
+								name: "color-scheme",
+								id: `${id}-color-scheme`,
 							}}
-							aria-labelledby={`${id}-color-scheme`}
 						>
-							<ToggleButton value="auto" label="Auto">
-								<Icon href={svgComputer} />
-							</ToggleButton>
-							<ToggleButton value="light" label="Light">
-								<Icon href={svgSun} />
-							</ToggleButton>
-							<ToggleButton value="dark" label="Dark">
-								<Icon href={svgMoon} />
-							</ToggleButton>
-						</ToggleButtonGroup>
+							<option value="auto">Auto</option>
+							<option value="light">Light</option>
+							<option value="dark">Dark</option>
+						</NativeSelect>
 					</FormControl>
-
-					<FormControl>
-						<FormLabel id={`${id}-accent-color`}>Accent color</FormLabel>
-						<ToggleButtonGroup
-							exclusive
-							value={accentColor}
-							onChange={(_, value: AccentColor | null) => {
-								setAccentColor(value === null ? "aurora" : value);
+					<FormControl className={styles.formControl}>
+						<InputLabel htmlFor={`${id}-accent-color`}>Accent color</InputLabel>
+						<NativeSelect
+							className={styles.select}
+							defaultValue={accentColor}
+							inputProps={{
+								name: "accent-color",
+								id: `${id}-accent-color`,
 							}}
-							aria-labelledby={`${id}-accent-color`}
 						>
-							<ToggleButton value="aurora" label="Aurora">
-								<Icon
-									render={<ColorIcon />}
-									style={{
-										color: primitives.aurora[500],
-									}}
-								/>
-							</ToggleButton>
-							<ToggleButton value="cobalt" label="Cobalt">
-								<Icon
-									render={<ColorIcon />}
-									style={{
-										color: "oklch(53.32% 0.139 246.77)",
-									}}
-								/>
-							</ToggleButton>
-						</ToggleButtonGroup>
+							<option value="aurora">Aurora</option>
+							<option value="cobalt">Cobalt</option>
+						</NativeSelect>
 					</FormControl>
-				</DialogContent>
-			</Dialog>
-		</>
-	);
-}
-
-// ----------------------------------------------------------------------------
-
-function ColorIcon(props: React.ComponentProps<"svg">) {
-	return (
-		<svg {...props} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
-			<circle cx="8" cy="8" r="8" fill="currentColor" />
-		</svg>
+				</Dialog.Content>
+				<Dialog.Footer>
+					<Dialog.ActionList
+						actions={[
+							<Button key="discard" size="small" onClick={() => onClose()}>
+								Discard
+							</Button>,
+							<Button key="apply" color="primary" size="small" type="submit">
+								Apply
+							</Button>,
+						]}
+					/>
+				</Dialog.Footer>
+			</form>
+		</Dialog.Root>
 	);
 }

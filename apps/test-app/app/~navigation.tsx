@@ -8,10 +8,11 @@ import { useHref, useLocation } from "react-router";
 import { Button, Divider, IconButton } from "@stratakit/bricks";
 import { Icon } from "@stratakit/foundations";
 import { unstable_NavigationRail as NavigationRail } from "@stratakit/structures";
-import { SettingsButton } from "./~settings.tsx";
+import { SettingsDialog } from "./~settings.tsx";
 import { isProduction, useIsWideScreen, useLocalStorage } from "./~utils.tsx";
 
 import svgDocumentation from "@stratakit/icons/documentation.svg";
+import svgSettings from "@stratakit/icons/settings.svg";
 import styles from "./~navigation.module.css";
 import svgComponents from "./assets/components.svg";
 import svgIcons from "./assets/icons.svg";
@@ -62,6 +63,7 @@ interface AppNavigationRailProps {
 export function AppNavigationRail(props: AppNavigationRailProps) {
 	const { mainContent } = props;
 
+	const [open, setOpen] = React.useState(false);
 	const location = useLocation();
 	const isWideScreen = useIsWideScreen();
 
@@ -124,7 +126,12 @@ export function AppNavigationRail(props: AppNavigationRailProps) {
 
 					<NavigationRail.Footer>
 						<Divider />
-						<SettingsButton />
+						<NavigationRail.Button
+							label="Settings"
+							icon={svgSettings}
+							onClick={() => setOpen(true)}
+						/>
+						<SettingsDialog open={open} onClose={() => setOpen(false)} />
 					</NavigationRail.Footer>
 				</NavigationRail.Content>
 			</NavigationRail.Root>

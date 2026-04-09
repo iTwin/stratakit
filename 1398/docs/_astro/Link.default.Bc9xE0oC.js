@@ -1,1 +1,0 @@
-import{j as r}from"./client.BfGQHvkY.js";import{L as t}from"./Link.rS3YeHTd.js";import"./styles.internal.CPbvgKR0.js";import"./Typography.Bjttc3i8.js";const s=()=>r.jsx(t,{href:"/",children:"Home"});export{s as default};

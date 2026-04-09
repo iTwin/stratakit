@@ -2,4 +2,4 @@
 "@stratakit/mui": patch
 ---
 
-`Autocomplete` menu and options inherits the same visual styling as `Menu`.
+`Autocomplete` listbox and options now match the visual styling of `Menu` and `MenuItem`. The `renderOption` prop is used to add a class.

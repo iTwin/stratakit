@@ -27,6 +27,7 @@
 @import "./~components/MuiTable.css";
 @import "./~components/MuiTabs.css";
 @import "./~components/MuiToggleButton.css";
+@import "./~components/MuiTooltip.css";
 
 .MuiAccordion-root {
 	background-color: transparent;
@@ -62,8 +63,4 @@
 		border: 1px solid var(--stratakit-color-border-accent-strong);
 		color: var(--stratakit-color-text-accent-strong);
 	}
-}
-
-.MuiTooltip-tooltip {
-	box-shadow: var(--stratakit-shadow-control-tooltip-base);
 }

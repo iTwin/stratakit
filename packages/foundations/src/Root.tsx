@@ -133,6 +133,7 @@ export const Root = forwardRef<"div", RootProps>((props, forwardedRef) => {
 				{synchronizeColorScheme ? (
 					<SynchronizeColorScheme colorScheme={props.colorScheme} />
 				) : null}
+				<SynchronizeAccentColor accentColor={props.unstable_accentColor} />
 
 				<HtmlSanitizerContext.Provider value={unstable_htmlSanitizer}>
 					<PortalProvider
@@ -185,7 +186,7 @@ const RootInternal = forwardRef<"div", RootInternalProps>(
 				{...rest}
 				className={cx("🥝Root", props.className)}
 				data-_sk-color-scheme={colorScheme}
-				data-_sk-accent={unstable_accentColor}
+				data-_sk-accent-color={unstable_accentColor}
 				data-_sk-density={density}
 				ref={forwardedRef}
 			>
@@ -223,6 +224,34 @@ function SynchronizeColorScheme({
 			(rootNode.host as HTMLElement).dataset.colorScheme = colorScheme;
 		}
 	}, [rootNode, colorScheme]);
+
+	return null;
+}
+
+// ----------------------------------------------------------------------------
+
+/**
+ * Synchronizes `accentColor` with the parent document (or shadow-root host).
+ *
+ * The host will have a `data-accent-color` attribute set to the current accent color.
+ */
+function SynchronizeAccentColor({
+	accentColor,
+}: {
+	accentColor: RootProps["unstable_accentColor"];
+}) {
+	const rootNode = useRootNode();
+
+	React.useInsertionEffect(() => {
+		if (!rootNode) return;
+		if (!accentColor) return;
+
+		if (isDocument(rootNode)) {
+			rootNode.documentElement.dataset.accentColor = accentColor;
+		} else if (isShadow(rootNode)) {
+			(rootNode.host as HTMLElement).dataset.accentColor = accentColor;
+		}
+	}, [rootNode, accentColor]);
 
 	return null;
 }
@@ -274,7 +303,7 @@ const PortalContainer = forwardRef<"div", PortalContainerProps>(
 				render={props.render}
 				className="🥝Root"
 				data-_sk-color-scheme={props.colorScheme}
-				data-_sk-accent={props.unstable_accentColor}
+				data-_sk-accent-color={props.unstable_accentColor}
 				data-_sk-density={props.density}
 				style={{ display: "contents" }}
 				ref={forwardedRef}

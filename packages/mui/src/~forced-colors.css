@@ -105,19 +105,19 @@
 }
 
 .MuiDrawer-paper {
-	&:where(.MuiDrawer-paperAnchorTop) {
+	:where(.MuiDrawer-anchorTop) > & {
 		border-block-end: 1px solid;
 	}
 
-	&:where(.MuiDrawer-paperAnchorRight) {
+	:where(.MuiDrawer-anchorRight) > & {
 		border-inline-start: 1px solid;
 	}
 
-	&:where(.MuiDrawer-paperAnchorBottom) {
+	:where(.MuiDrawer-anchorBottom) > & {
 		border-block-start: 1px solid;
 	}
 
-	&:where(.MuiDrawer-paperAnchorLeft) {
+	:where(.MuiDrawer-anchorLeft) > & {
 		border-inline-end: 1px solid;
 	}
 }

@@ -38,7 +38,7 @@ In these cases, combine a larger `variant` with the `render` prop:
 
 ### Variants
 
-Use **Typography’s** `variant` prop to affect both the styling and the [HTML semantics](https://developer.mozilla.org/en-US/docs/Glossary/Semantics#semantics_in_html).
+Use **Typography's** `variant` prop to affect both the styling and the [HTML semantics](https://developer.mozilla.org/en-US/docs/Glossary/Semantics#semantics_in_html).
 
 ::example{src="mui/Typography.variants" min-height="600px"}
 
@@ -47,6 +47,6 @@ Use **Typography’s** `variant` prop to affect both the styling and the [HTML s
 - Use the `variant` prop of the **Typography** component to affect the styling and the semantics.
 - Use the `render` prop to override the semantics when necessary.
 
-## 🚫 Don’t
+## 🚫 Don't
 
-- Don’t use **Typography** to disrupt or flatten the visual hierarchy.
+- Don't use **Typography** to disrupt or flatten the visual hierarchy.

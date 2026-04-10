@@ -1,1 +1,0 @@
-import{j as s}from"./client.OBpP_if-.js";import{S as r}from"./Stack.sIFc20nb.js";import{C as i}from"./Chip.Ds_Tll37.js";import"./styles.internal.CyE2up9L.js";import"./createSvgIcon.BnbO4-8K.js";const l=()=>s.jsxs(r,{spacing:1,direction:"row",sx:{alignItems:"center"},children:[s.jsx(i,{size:"small",label:"Small"}),s.jsx(i,{label:"Medium"})]});export{l as default};

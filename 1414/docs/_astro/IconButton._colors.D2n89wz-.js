@@ -1,1 +1,0 @@
-import{j as s,J as o,I as t}from"./client.OBpP_if-.js";import{s as e}from"./placeholder.C8o2ZZ6z.js";import"./styles.internal.CyE2up9L.js";const a=["primary","secondary","error"],m=()=>a.map(r=>s.jsx(o,{color:r,label:`${r.charAt(0).toUpperCase()}${r.slice(1)}`,children:s.jsx(t,{href:e})},r));export{m as default};

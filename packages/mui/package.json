@@ -1,7 +1,7 @@
 {
 	"name": "@stratakit/mui",
 	"type": "module",
-	"version": "0.3.1",
+	"version": "0.4.0",
 	"license": "MIT",
 	"sideEffects": false,
 	"types": "./dist/index.d.ts",
@@ -53,7 +53,7 @@
 		"@emotion/cache": "^11.14.0",
 		"@emotion/react": "^11.14.0",
 		"@emotion/styled": "^11.14.1",
-		"@stratakit/foundations": "^0.4.7",
+		"@stratakit/foundations": "^0.4.8",
 		"@stratakit/icons": "^0.3.1",
 		"classnames": "^2.5.1",
 		"react-compiler-runtime": "^1.0.0"

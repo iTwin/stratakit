@@ -26,7 +26,9 @@ export default () => {
 			/>
 			<CardContent>
 				<Typography gutterBottom variant="h6" render={<h2 />}>
-					<CardActionArea render={<a href="#" />}>Stadium</CardActionArea>
+					<CardActionArea render={<a href="#" />} nativeButton={false}>
+						Stadium
+					</CardActionArea>
 				</Typography>
 				<Typography variant="body2" color="text.secondary">
 					Stadium is a place for outdoor sports, concerts, or other events and

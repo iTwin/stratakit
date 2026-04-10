@@ -54,6 +54,6 @@
 	gap: var(--stratakit-space-x1);
 }
 
-.MuiListItemSecondaryAction-root {
+.MuiListItem-secondaryAction {
 	inset-inline-end: var(--stratakit-space-x3);
 }

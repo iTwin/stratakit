@@ -5,8 +5,8 @@ packages:
   - examples
 
 catalog:
-  "@mui/material": ^7.3.8
-  "@mui/utils": ^7.3.8
+  "@mui/material": ^9.0.0
+  "@mui/utils": ^9.0.0
   "@playwright/test": ~1.58.2
   "@types/node": ^22.19.13
   "@types/react": ^19.2.14
@@ -22,6 +22,7 @@ minimumReleaseAge: 1440
 minimumReleaseAgeExclude:
   - "@stratakit/*"
   - "@itwin/*"
+  - "@mui/*"
   - react
   - react-dom
 

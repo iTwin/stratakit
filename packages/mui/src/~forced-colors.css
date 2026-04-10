@@ -105,19 +105,19 @@
 }
 
 .MuiDrawer-paper {
-	&:where(.MuiDrawer-paperAnchorTop) {
+	:where(.MuiDrawer-anchorTop) > & {
 		border-block-end: 1px solid;
 	}
 
-	&:where(.MuiDrawer-paperAnchorRight) {
+	:where(.MuiDrawer-anchorRight) > & {
 		border-inline-start: 1px solid;
 	}
 
-	&:where(.MuiDrawer-paperAnchorBottom) {
+	:where(.MuiDrawer-anchorBottom) > & {
 		border-block-start: 1px solid;
 	}
 
-	&:where(.MuiDrawer-paperAnchorLeft) {
+	:where(.MuiDrawer-anchorLeft) > & {
 		border-inline-end: 1px solid;
 	}
 }
@@ -149,6 +149,31 @@
 
 .MuiLinearProgress-bar {
 	background-color: CanvasText;
+}
+
+.MuiListItemIcon-root {
+	color: inherit;
+}
+
+.MuiMenuItem-root {
+	border-color: Canvas;
+
+	&:where(.Mui-selected:not(.Mui-disabled)) {
+		forced-color-adjust: none; /* removing the backplate */
+		background-color: SelectedItem;
+		border-color: SelectedItemText;
+		color: SelectedItemText;
+		--🥝Icon-color: SelectedItemText;
+	}
+
+	&:where(.Mui-disabled) {
+		color: GrayText;
+		--🥝Icon-color: GrayText;
+	}
+}
+
+.MuiMenu-paper {
+	border: 1px solid CanvasText;
 }
 
 .MuiPaginationItem-root {
@@ -251,8 +276,4 @@
 		background-color: SelectedItem;
 		color: SelectedItemText;
 	}
-}
-
-.MuiTooltip-tooltip {
-	border: 1px solid;
 }

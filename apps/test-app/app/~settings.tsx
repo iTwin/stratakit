@@ -75,10 +75,11 @@ export function SettingsDialog(props: SettingsDialogProps) {
 				}}
 			>
 				<Dialog.Content className={styles.dialogContent}>
-					<FormControl className={styles.formControl}>
-						<InputLabel htmlFor={`${id}-color-scheme`}>Color scheme</InputLabel>
+					<FormControl className={styles.formControl} size="small">
+						<InputLabel className={styles.label} htmlFor={`${id}-color-scheme`}>
+							Color scheme
+						</InputLabel>
 						<NativeSelect
-							className={styles.select}
 							defaultValue={colorScheme}
 							inputProps={{
 								name: "color-scheme",
@@ -90,10 +91,11 @@ export function SettingsDialog(props: SettingsDialogProps) {
 							<option value="dark">Dark</option>
 						</NativeSelect>
 					</FormControl>
-					<FormControl className={styles.formControl}>
-						<InputLabel htmlFor={`${id}-accent-color`}>Accent color</InputLabel>
+					<FormControl className={styles.formControl} size="small">
+						<InputLabel className={styles.label} htmlFor={`${id}-accent-color`}>
+							Accent color
+						</InputLabel>
 						<NativeSelect
-							className={styles.select}
 							defaultValue={accentColor}
 							inputProps={{
 								name: "accent-color",

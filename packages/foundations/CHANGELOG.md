@@ -2,8 +2,6 @@
 
 ## 0.4.8
 
-### Patch Changes
-
 - [#1327](https://github.com/iTwin/stratakit/pull/1327): Added `unstable_accentColor` prop to `Root` component. When `"cobalt"` value is specified, the accent color is changed to blue.
 
 ## 0.4.7

@@ -27,6 +27,7 @@ Make sure the **Tooltip** is suitable for your use case. In some cases, a static
 
 - Restyled using StrataKit's visual language.
 - The [`describeChild`](https://mui.com/material-ui/api/tooltip/#tooltip-prop-describeChild) prop defaults to `true`.
+- Change default placement from `"bottom"` to `"top"`.
 - Includes full `forced-colors` support.
 
 ## Examples

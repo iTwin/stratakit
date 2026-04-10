@@ -42,3 +42,10 @@
 .MuiAutocomplete-listbox {
 	padding: var(--stratakit-space-x1);
 }
+
+.MuiAutocomplete-option {
+	&:where(.Mui-focusVisible) {
+		outline: var(--🥝focus-outline);
+		outline-offset: var(--🥝focus-outline-offset);
+	}
+}

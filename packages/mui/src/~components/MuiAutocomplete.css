@@ -5,10 +5,8 @@
 
 .MuiAutocomplete-inputRoot:is(.MuiInputBase-root) {
 	--✨button-width: var(--stratakit-size-control-field-height-small);
-	--_MuiAutocomplete-button-inset: calc(
-		-1px +
-		var(--stratakit-space-x1)
-	); /* Account for 1px border on input. */
+	/* Account for 1px border on input. */
+	--_MuiAutocomplete-button-inset: calc(-1px + var(--stratakit-space-x1));
 
 	padding-inline-start: var(--stratakit-space-x2);
 	padding-inline-end: calc(

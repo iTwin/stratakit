@@ -22,7 +22,7 @@
 
 .MuiAutocomplete-tag:is(.MuiChip-root) {
 	margin-block: var(--stratakit-space-x05);
-	margin-inline: 0;
+	margin-inline: 0; /* Now relying on `column-gap` */
 }
 
 .MuiAutocomplete-clearIndicator {

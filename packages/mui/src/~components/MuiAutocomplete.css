@@ -15,7 +15,7 @@
 	);
 	column-gap: var(--stratakit-space-x1);
 
-	&:has(.MuiAutocomplete-endAdornment > :nth-child(1):last-child) {
+	&:where(:not(:has(.MuiAutocomplete-clearIndicator))) {
 		padding-inline-end: calc(var(--✨button-width) + (var(--_MuiAutocomplete-button-inset) * 2));
 	}
 }

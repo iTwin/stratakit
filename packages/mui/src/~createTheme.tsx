@@ -6,8 +6,11 @@
 import * as React from "react";
 import { Role } from "@ariakit/react/role";
 import OutlinedInput from "@mui/material/OutlinedInput";
+import StepConnector from "@mui/material/StepConnector";
 import { createTheme as createMuiTheme } from "@mui/material/styles";
+import cx from "classnames";
 import { MuiBadge } from "./~components/MuiBadge.js";
+import { MuiBottomNavigationAction } from "./~components/MuiBottomNavigation.js";
 import { MuiButtonBase } from "./~components/MuiButtonBase.js";
 import {
 	MuiCard,
@@ -22,6 +25,7 @@ import {
 import { MuiDivider } from "./~components/MuiDivider.js";
 import { MuiIconButton } from "./~components/MuiIconButton.js";
 import { MuiSnackbar } from "./~components/MuiSnackbar.js";
+import { MuiStepIcon } from "./~components/MuiStepper.js";
 import { MuiTableCell, MuiTableHead } from "./~components/MuiTable.js";
 import {
 	ArrowDownIcon,
@@ -116,6 +120,7 @@ function createTheme() {
 			MuiAccordionSummary: {
 				defaultProps: {
 					component: Role.div,
+					nativeButton: false,
 					expandIcon: <ChevronDownIcon />,
 				},
 			},
@@ -136,12 +141,28 @@ function createTheme() {
 				defaultProps: {
 					popupIcon: <ChevronDownIcon />,
 					clearIcon: <DismissIcon />,
+					renderOption: ({ key, ...props }, option, _, ownerState) => (
+						<li
+							key={key}
+							{...props}
+							className={cx("MuiMenuItem-root", props.className)}
+						>
+							{ownerState.getOptionLabel(option)}
+						</li>
+					),
 					slotProps: {
 						paper: {
 							elevation: 8, // match Menu elevation
 						},
+						chip: {
+							size: "small",
+						},
 						clearIndicator: {
 							tabIndex: 0, // make clear indicator focusable
+							size: "small",
+						},
+						popupIndicator: {
+							size: "small",
 						},
 					},
 				},
@@ -149,7 +170,7 @@ function createTheme() {
 			MuiAvatar: {
 				defaultProps: {
 					component: Role.div,
-					imgProps: { draggable: false },
+					slotProps: { img: { draggable: false } },
 				},
 				styleOverrides: {
 					root: {
@@ -167,6 +188,11 @@ function createTheme() {
 				},
 			},
 			MuiBottomNavigation: { defaultProps: { component: Role.div } },
+			MuiBottomNavigationAction: {
+				defaultProps: {
+					component: MuiBottomNavigationAction,
+				},
+			},
 			MuiBreadcrumbs: {
 				defaultProps: {
 					component: Role.nav,
@@ -199,7 +225,12 @@ function createTheme() {
 			MuiCardHeader: {
 				defaultProps: {
 					component: Role.div,
-					slotProps: { title: { component: Role.h2 } },
+					slotProps: {
+						title: {
+							// biome-ignore lint/suspicious/noExplicitAny: MUI's CardHeader.title.component is hardcoded to "span"
+							component: Role.h2 as any,
+						},
+					},
 				},
 			},
 			MuiCardMedia: { defaultProps: { component: MuiCardMedia } },
@@ -239,7 +270,6 @@ function createTheme() {
 			MuiFormHelperText: { defaultProps: { component: Role.p } },
 			MuiFormLabel: { defaultProps: { component: Role.label as never } },
 			MuiGrid: { defaultProps: { component: Role.div } },
-			MuiGridLegacy: { defaultProps: { component: Role.div } },
 			MuiIcon: { defaultProps: { component: Role.span } },
 			MuiIconButton: {
 				defaultProps: { component: MuiIconButton, color: "secondary" },
@@ -285,7 +315,10 @@ function createTheme() {
 			MuiList: { defaultProps: { component: Role.ul } },
 			MuiListItem: { defaultProps: { component: Role.li } },
 			MuiListItemButton: {
-				defaultProps: { component: MuiButtonBase },
+				defaultProps: {
+					component: MuiButtonBase,
+					nativeButton: true,
+				},
 			},
 			MuiListItemText: {
 				defaultProps: {
@@ -353,9 +386,22 @@ function createTheme() {
 			},
 			MuiSnackbarContent: { defaultProps: { component: Role.div } },
 			MuiStack: { defaultProps: { component: Role.div } },
-			MuiStep: { defaultProps: { component: Role.div } },
+			MuiStep: { defaultProps: { component: Role.li } },
 			MuiSwitch: { defaultProps: { component: Role.span } },
-			MuiStepper: { defaultProps: { component: Role.div } },
+			MuiStepper: {
+				defaultProps: {
+					component: Role.ol,
+					connector: <StepConnector aria-hidden="true" />, // hiding the connector to prevent invalid markup
+				},
+			},
+			MuiStepLabel: {
+				defaultProps: {
+					slotProps: {
+						root: { component: Role.div },
+						stepIcon: { component: MuiStepIcon },
+					},
+				},
+			},
 			MuiSvgIcon: { defaultProps: { component: Role.svg } },
 			MuiSwipeableDrawer: { defaultProps: { component: Role.div } },
 			MuiTabs: { defaultProps: { component: Role.div } },
@@ -405,7 +451,20 @@ function createTheme() {
 			MuiToolbar: { defaultProps: { component: Role.div } },
 			MuiTooltip: {
 				defaultProps: {
+					placement: "top",
 					describeChild: true,
+					slotProps: {
+						popper: {
+							modifiers: [
+								{
+									name: "offset",
+									options: {
+										offset: [0, 2],
+									},
+								},
+							],
+						},
+					},
 				},
 			},
 			MuiTypography: {

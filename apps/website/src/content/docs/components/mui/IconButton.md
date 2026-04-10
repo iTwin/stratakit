@@ -12,12 +12,13 @@ links:
 
 Make sure the **IconButton** is suitable for your use case. There may be other, more appropriate components available.
 
-| Use case                                                                                                         | [Button](/components/button) | [IconButton](/components/iconbutton) |
-| ---------------------------------------------------------------------------------------------------------------- | ---------------------------- | ------------------------------------ |
-| Call-to-action                                                                                                   | ✅                           | ❌                                   |
-| Commit/submit (modal, workflow, form)                                                                            | ✅                           | ❌                                   |
-| Inside a [toolbar](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/toolbar_role) | ❌                           | ✅                                   |
-| Table cell (inline action)                                                                                       | ❌                           | ✅                                   |
+| Use case                                                                                                                               | [Button](/components/button) | [IconButton](/components/iconbutton) | [ToggleButton](/components/togglebutton) |
+| -------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------- | ------------------------------------ | ---------------------------------------- |
+| Call-to-action                                                                                                                         | ✅                           | ❌                                   | ❌                                       |
+| Commit/submit (modal, workflow, form)                                                                                                  | ✅                           | ❌                                   | ❌                                       |
+| Trigger an action within a [toolbar](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/toolbar_role)     | ❌                           | ✅                                   | ❌                                       |
+| Table cell (inline action)                                                                                                             | ❌                           | ✅                                   | ❌                                       |
+| Group related options within a [toolbar](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/toolbar_role) | ❌                           | ❌                                   | ✅                                       |
 
 ## StrataKit MUI modifications
 

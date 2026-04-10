@@ -27,7 +27,7 @@ export default () => {
 				aria-expanded={open ? "true" : "false"}
 				onClick={(event) => setAnchorEl(event.currentTarget)}
 			>
-				Open menu
+				User actions
 			</Button>
 			<Menu
 				id={menuId}

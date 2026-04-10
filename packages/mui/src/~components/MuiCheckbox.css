@@ -55,7 +55,6 @@
 		background-color: var(--_MuiCheckbox-background-color);
 		border: 1px solid var(--_MuiCheckbox-border-color);
 		border-radius: var(--_MuiCheckbox-border-radius);
-		color: var(--_MuiCheckbox-color);
 		position: relative;
 
 		/* This pseudo-element adds the actual checkmark SVG via `--_MuiCheckbox-mask-image` */
@@ -63,7 +62,7 @@
 			content: "";
 			position: absolute;
 			inset: 0px;
-			background-color: currentColor;
+			background-color: var(--_MuiCheckbox-color);
 			mask-repeat: no-repeat;
 			mask-position: center;
 			mask-image: var(--_MuiCheckbox-mask-image);

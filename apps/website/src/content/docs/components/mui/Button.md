@@ -12,12 +12,13 @@ links:
 
 Make sure the **Button** is suitable for your use case. There may be other, more appropriate components available.
 
-| Use case                                                          | [Button](/components/button) | [IconButton](/components/iconbutton) | [Switch](/components/switch) | [Link](/components/link) |
-| ----------------------------------------------------------------- | ---------------------------- | ------------------------------------ | ---------------------------- | ------------------------ |
-| Submit forms, confirm or cancel dialogs, create or delete content | ✅                           | ❌                                   | ❌                           | ❌                       |
-| Select an option within a toolbar                                 | ❌                           | ✅                                   | ❌                           | ❌                       |
-| Make a binary choice (switching a setting on or off)              | ❌                           | ❌                                   | ✅                           | ❌                       |
-| Navigate between interface screens or sections                    | ❌                           | ❌                                   | ❌                           | ✅                       |
+| Use case                                                                                                                           | [Button](/components/button) | [IconButton](/components/iconbutton) | [ToggleButton](/components/togglebutton) | [Switch](/components/switch) | [Link](/components/link) |
+| ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------- | ------------------------------------ | ---------------------------------------- | ---------------------------- | ------------------------ |
+| Submit forms, confirm or cancel dialogs, create or delete content                                                                  | ✅                           | ❌                                   | ❌                                       | ❌                           | ❌                       |
+| Trigger an action within a [toolbar](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/toolbar_role) | ❌                           | ✅                                   | ❌                                       | ❌                           | ❌                       |
+| Toggle an option within a [toolbar](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/toolbar_role)  | ❌                           | ❌                                   | ✅                                       | ❌                           | ❌                       |
+| Make an instantaneous, binary choice (switch a setting on or off)                                                                  | ❌                           | ❌                                   | ❌                                       | ✅                           | ❌                       |
+| Navigate between interface screens or sections                                                                                     | ❌                           | ❌                                   | ❌                                       | ❌                           | ✅                       |
 
 ## StrataKit MUI modifications
 

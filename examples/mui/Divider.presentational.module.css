@@ -3,6 +3,12 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-.formControl {
-	min-inline-size: 250px;
+.list {
+	display: flex;
+	flex-direction: column;
+	gap: var(--stratakit-space-x1);
+}
+
+.divider {
+	margin-block: var(--stratakit-space-x2);
 }

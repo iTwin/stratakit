@@ -1,0 +1,34 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+
+.MuiTooltip-tooltip {
+	--✨border-width: 1px;
+	--✨margin: var(--stratakit-space-x05);
+
+	@apply --typography("body-sm");
+	overflow-wrap: anywhere;
+	hyphens: auto;
+
+	background-color: var(--stratakit-color-bg-elevation-emphasis);
+	box-shadow: var(--stratakit-shadow-control-tooltip-base);
+	color: var(--stratakit-color-text-neutral-emphasis);
+
+	border: var(--✨border-width) solid transparent;
+	border-radius: 4px;
+	padding-block: calc(var(--stratakit-space-x1) - var(--✨border-width));
+	padding-inline: calc(var(--stratakit-space-x2) - var(--✨border-width));
+	min-block-size: 1rem;
+	max-inline-size: 12.25rem;
+
+	margin: var(--✨margin);
+	isolation: isolate;
+
+	&::before {
+		content: "";
+		position: absolute;
+		inset: calc(var(--✨margin) * -1);
+		z-index: -1;
+	}
+}

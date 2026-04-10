@@ -3,16 +3,10 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-.formControl {
-	min-inline-size: 250px;
-}
+import Divider from "@mui/material/Divider";
 
-.input {
-	display: flex;
-	align-items: center;
-	gap: var(--stratakit-space-x2);
+import styles from "./Divider.vertical.module.css";
 
-	> .icon {
-		min-inline-size: initial;
-	}
-}
+export default () => {
+	return <Divider className={styles.divider} orientation="vertical" />;
+};

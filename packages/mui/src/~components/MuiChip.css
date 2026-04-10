@@ -16,7 +16,7 @@
 		--_MuiChip-padding-inline: var(--stratakit-space-x3);
 	}
 
-	&:where(.MuiChip-filledDefault.MuiChip-colorDefault) {
+	&:where(.MuiChip-filled.MuiChip-colorDefault) {
 		background-color: var(--stratakit-color-bg-neutral-base);
 		border: 1px solid var(--stratakit-color-border-neutral-base);
 	}
@@ -33,11 +33,11 @@
 .MuiChip-label {
 	padding-inline: var(--_MuiChip-padding-inline);
 
-	&:where(.MuiChip-labelSmall) {
+	:where(.MuiChip-root.MuiChip-sizeSmall) & {
 		@apply --typography("body-sm");
 	}
 
-	&:where(.MuiChip-labelMedium) {
+	:where(.MuiChip-root.MuiChip-sizeMedium) & {
 		@apply --typography("body-md");
 	}
 
@@ -51,11 +51,11 @@
 	border-radius: inherit;
 	margin-inline-start: calc(var(--stratakit-space-x2) * -1);
 
-	&:where(.MuiChip-deleteIconSmall) {
+	:where(.MuiChip-root.MuiChip-sizeSmall) & {
 		margin-inline-end: -1px; /* Accounts for `border-width` */
 	}
 
-	&:where(.MuiChip-deleteIconMedium) {
+	:where(.MuiChip-root.MuiChip-sizeMedium) & {
 		margin-inline-end: calc(var(--stratakit-space-x1) - 1px);
 	}
 
@@ -70,11 +70,11 @@
 .MuiChip-avatar {
 	margin-inline-start: calc(var(--stratakit-space-x1) - 1px);
 
-	&:where(.MuiChip-avatarSmall) {
+	:where(.MuiChip-root.MuiChip-sizeSmall) & {
 		margin-inline-end: calc(var(--stratakit-space-x1) * -1);
 	}
 
-	&:where(.MuiChip-avatarMedium) {
+	:where(.MuiChip-root.MuiChip-sizeMedium) & {
 		margin-inline-end: calc(var(--stratakit-space-x2) * -1);
 	}
 }

@@ -231,9 +231,9 @@ function SynchronizeColorScheme({
 // ----------------------------------------------------------------------------
 
 /**
- * Synchronizes `accentColor` with the parent document (or shadow-root host).
+ * Synchronizes `accentColor` with the parent document.
  *
- * The host will have a `data-accent-color` attribute set to the current accent color.
+ * The document will have a `data-_sk-accent-color` attribute set to the current accent color.
  */
 function SynchronizeAccentColor({
 	accentColor,
@@ -243,14 +243,10 @@ function SynchronizeAccentColor({
 	const rootNode = useRootNode();
 
 	React.useInsertionEffect(() => {
-		if (!rootNode) return;
+		if (!rootNode || !isDocument(rootNode)) return;
 		if (!accentColor) return;
 
-		if (isDocument(rootNode)) {
-			rootNode.documentElement.dataset._skAccentColor = accentColor;
-		} else if (isShadow(rootNode)) {
-			(rootNode.host as HTMLElement).dataset._skAccentColor = accentColor;
-		}
+		rootNode.documentElement.dataset._skAccentColor = accentColor;
 	}, [rootNode, accentColor]);
 
 	return null;

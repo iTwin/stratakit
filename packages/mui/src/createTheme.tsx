@@ -27,6 +27,7 @@ import { MuiIconButton } from "./~components/MuiIconButton.js";
 import { MuiSnackbar } from "./~components/MuiSnackbar.js";
 import { MuiStepIcon } from "./~components/MuiStepper.js";
 import { MuiTableCell, MuiTableHead } from "./~components/MuiTable.js";
+import { MuiToggleButton } from "./~components/MuiToggleButton.js";
 import {
 	ArrowDownIcon,
 	CaretsUpDownIcon,
@@ -460,7 +461,7 @@ function createTheme() {
 				},
 			},
 			MuiTextField: { defaultProps: { component: Role.div } },
-			MuiToggleButton: { defaultProps: { component: MuiIconButton } },
+			MuiToggleButton: { defaultProps: { component: MuiToggleButton } },
 			MuiToolbar: { defaultProps: { component: Role.div } },
 			MuiTooltip: {
 				defaultProps: {

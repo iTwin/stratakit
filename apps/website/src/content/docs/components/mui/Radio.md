@@ -48,8 +48,8 @@ Use the `error` prop on `FormControl` to display the `FormHelperText` in an erro
 - Group the **Radio** options using a [`<fieldset>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/fieldset) and label the group using a [`<legend>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/legend). Make sure `role="radiogroup"` is set on the `<fieldset>` element rather than on the `RadioGroup` component.
 - Use a clear, descriptive label for each **Radio**.
 
-## 🚫 Don’t
+## 🚫 Don't
 
-- Don’t use one **Radio** in isolation. For a single option, use [**Checkbox**](/components/checkbox).
-- Don’t add `tabindex="0"` to **Radios**. Only the checked/selected **Radio** should be focusable using the <kbd>Tab</kbd> key.
-- Don’t use **Radios** where there are many options, such as choosing a country. Use [**Select**](/components/select) or [**Autocomplete**](/components/autocomplete) instead.
+- Don't use one **Radio** in isolation. For a single option, use [**Checkbox**](/components/checkbox).
+- Don't add `tabindex="0"` to **Radios**. Only the checked/selected **Radio** should be focusable using the <kbd>Tab</kbd> key.
+- Don't use **Radios** where there are many options, such as choosing a country. Use [**Select**](/components/select) or [**Autocomplete**](/components/autocomplete) instead.

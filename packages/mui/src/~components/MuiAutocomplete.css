@@ -4,27 +4,25 @@
  *--------------------------------------------------------------------------------------------*/
 
 .MuiAutocomplete-inputRoot:is(.MuiInputBase-root) {
-	--_MuiAutocomplete-icon-button-width: var(--stratakit-size-control-field-height-medium);
+	--✨button-width: var(--stratakit-size-control-field-height-small);
+	/* Account for 1px border on input. */
+	--_MuiAutocomplete-button-inset: calc(-1px + var(--stratakit-space-x1));
 
-	padding-inline-end: calc(var(--_MuiAutocomplete-icon-button-width) * 2 - 1px);
+	padding-inline-start: var(--_MuiInput-padding-inline);
+	padding-inline-end: calc(
+		(var(--✨button-width) * 2) +
+		(var(--_MuiAutocomplete-button-inset) * 2)
+	);
+	column-gap: var(--stratakit-space-x1);
+}
 
-	&:where(.MuiInputBase-sizeSmall) {
-		--_MuiAutocomplete-icon-button-width: var(--stratakit-size-control-field-height-small);
-	}
+.MuiAutocomplete-input:is(.MuiInputBase-input) {
+	padding-inline: 0; /* Padding moved to the parent */
 }
 
 .MuiAutocomplete-tag:is(.MuiChip-root) {
 	margin-block: var(--stratakit-space-x05);
-	margin-inline-start: var(--stratakit-space-x1);
-	margin-inline-end: 0;
-
-	&:where(:nth-child(1 of &)) {
-		margin-inline-start: var(--stratakit-space-x2);
-	}
-
-	&:where(:nth-last-child(1 of &)) {
-		margin-inline-end: var(--stratakit-space-x2);
-	}
+	margin-inline: 0; /* Now relying on `column-gap` */
 }
 
 .MuiAutocomplete-clearIndicator {
@@ -32,7 +30,7 @@
 }
 
 .MuiAutocomplete-endAdornment {
-	inset-inline-end: calc(-1px + var(--stratakit-space-x1)); /* Account for 1px border on input. */
+	inset-inline-end: var(--_MuiAutocomplete-button-inset);
 
 	> * {
 		margin-inline-end: 0; /* MUI applies `-2px` */

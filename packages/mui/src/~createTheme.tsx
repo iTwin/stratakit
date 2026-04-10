@@ -46,20 +46,7 @@ import type { RoleProps } from "@ariakit/react/role";
 import type { ColorSystemOptions } from "@mui/material/styles";
 import type { TypographyOwnProps } from "@mui/material/Typography";
 
-/**
- * Creates a StrataKit theme for MUI. Should be used with MUI's `ThemeProvider`.
- *
- * Example:
- * ```tsx
- * import { ThemeProvider } from "@mui/material/styles";
- * import { createTheme } from "@stratakit/mui";
- *
- * const theme = createTheme();
- * <ThemeProvider theme={theme}>
- *   <App />
- * </ThemeProvider>
- * ```
- */
+/** Creates a StrataKit theme for MUI. Should be used with MUI's `ThemeProvider`. */
 function createTheme() {
 	// Map the JS palette back to MUI's own CSS variables, which will then be mapped to the correct StrataKit tokens in CSS.
 	// (This is a fallback for any code that uses MUI's theme.palette values directly instead of CSS variables)

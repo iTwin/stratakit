@@ -8,7 +8,7 @@
 	/* Account for 1px border on input. */
 	--_MuiAutocomplete-button-inset: calc(-1px + var(--stratakit-space-x1));
 
-	padding-inline-start: var(--stratakit-space-x2);
+	padding-inline-start: var(--_MuiInput-padding-inline);
 	padding-inline-end: calc(
 		(var(--✨button-width) * 2) +
 		(var(--_MuiAutocomplete-button-inset) * 2)

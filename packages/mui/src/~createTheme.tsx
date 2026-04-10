@@ -6,7 +6,9 @@
 import * as React from "react";
 import { Role } from "@ariakit/react/role";
 import OutlinedInput from "@mui/material/OutlinedInput";
+import StepConnector from "@mui/material/StepConnector";
 import { createTheme as createMuiTheme } from "@mui/material/styles";
+import cx from "classnames";
 import { MuiBadge } from "./~components/MuiBadge.js";
 import { MuiBottomNavigationAction } from "./~components/MuiBottomNavigation.js";
 import { MuiButtonBase } from "./~components/MuiButtonBase.js";
@@ -44,20 +46,7 @@ import type { RoleProps } from "@ariakit/react/role";
 import type { ColorSystemOptions } from "@mui/material/styles";
 import type { TypographyOwnProps } from "@mui/material/Typography";
 
-/**
- * Creates a StrataKit theme for MUI. Should be used with MUI's `ThemeProvider`.
- *
- * Example:
- * ```tsx
- * import { ThemeProvider } from "@mui/material/styles";
- * import { createTheme } from "@stratakit/mui";
- *
- * const theme = createTheme();
- * <ThemeProvider theme={theme}>
- *   <App />
- * </ThemeProvider>
- * ```
- */
+/** Creates a StrataKit theme for MUI. Should be used with MUI's `ThemeProvider`. */
 function createTheme() {
 	// Map the JS palette back to MUI's own CSS variables, which will then be mapped to the correct StrataKit tokens in CSS.
 	// (This is a fallback for any code that uses MUI's theme.palette values directly instead of CSS variables)
@@ -131,6 +120,7 @@ function createTheme() {
 			MuiAccordionSummary: {
 				defaultProps: {
 					component: Role.div,
+					nativeButton: false,
 					expandIcon: <ChevronDownIcon />,
 				},
 			},
@@ -151,6 +141,15 @@ function createTheme() {
 				defaultProps: {
 					popupIcon: <ChevronDownIcon />,
 					clearIcon: <DismissIcon />,
+					renderOption: ({ key, ...props }, option, _, ownerState) => (
+						<li
+							key={key}
+							{...props}
+							className={cx("MuiMenuItem-root", props.className)}
+						>
+							{ownerState.getOptionLabel(option)}
+						</li>
+					),
 					slotProps: {
 						paper: {
 							elevation: 8, // match Menu elevation
@@ -171,7 +170,7 @@ function createTheme() {
 			MuiAvatar: {
 				defaultProps: {
 					component: Role.div,
-					imgProps: { draggable: false },
+					slotProps: { img: { draggable: false } },
 				},
 				styleOverrides: {
 					root: {
@@ -226,7 +225,12 @@ function createTheme() {
 			MuiCardHeader: {
 				defaultProps: {
 					component: Role.div,
-					slotProps: { title: { component: Role.h2 } },
+					slotProps: {
+						title: {
+							// biome-ignore lint/suspicious/noExplicitAny: MUI's CardHeader.title.component is hardcoded to "span"
+							component: Role.h2 as any,
+						},
+					},
 				},
 			},
 			MuiCardMedia: { defaultProps: { component: MuiCardMedia } },
@@ -266,7 +270,6 @@ function createTheme() {
 			MuiFormHelperText: { defaultProps: { component: Role.p } },
 			MuiFormLabel: { defaultProps: { component: Role.label as never } },
 			MuiGrid: { defaultProps: { component: Role.div } },
-			MuiGridLegacy: { defaultProps: { component: Role.div } },
 			MuiIcon: { defaultProps: { component: Role.span } },
 			MuiIconButton: {
 				defaultProps: { component: MuiIconButton, color: "secondary" },
@@ -312,7 +315,10 @@ function createTheme() {
 			MuiList: { defaultProps: { component: Role.ul } },
 			MuiListItem: { defaultProps: { component: Role.li } },
 			MuiListItemButton: {
-				defaultProps: { component: MuiButtonBase },
+				defaultProps: {
+					component: MuiButtonBase,
+					nativeButton: true,
+				},
 			},
 			MuiListItemText: {
 				defaultProps: {
@@ -380,9 +386,14 @@ function createTheme() {
 			},
 			MuiSnackbarContent: { defaultProps: { component: Role.div } },
 			MuiStack: { defaultProps: { component: Role.div } },
-			MuiStep: { defaultProps: { component: Role.div } },
+			MuiStep: { defaultProps: { component: Role.li } },
 			MuiSwitch: { defaultProps: { component: Role.span } },
-			MuiStepper: { defaultProps: { component: Role.div } },
+			MuiStepper: {
+				defaultProps: {
+					component: Role.ol,
+					connector: <StepConnector aria-hidden="true" />, // hiding the connector to prevent invalid markup
+				},
+			},
 			MuiStepLabel: {
 				defaultProps: {
 					slotProps: {
@@ -440,7 +451,20 @@ function createTheme() {
 			MuiToolbar: { defaultProps: { component: Role.div } },
 			MuiTooltip: {
 				defaultProps: {
+					placement: "top",
 					describeChild: true,
+					slotProps: {
+						popper: {
+							modifiers: [
+								{
+									name: "offset",
+									options: {
+										offset: [0, 2],
+									},
+								},
+							],
+						},
+					},
 				},
 			},
 			MuiTypography: {

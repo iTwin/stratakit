@@ -57,6 +57,16 @@ interface RootProps extends BaseProps {
 	synchronizeColorScheme?: boolean;
 
 	/**
+	 * The accent color to use for all components under the Root:
+	 *
+	 * - `"aurora"`: Default and preferred green accent color.
+	 * - `"cobalt"`: Blue accent color to ensure compatibility with older applications.
+	 *
+	 * @default "aurora"
+	 */
+	unstable_accentColor?: "aurora" | "cobalt";
+
+	/**
 	 * The density to use for all components under the Root.
 	 */
 	density?: "dense";
@@ -123,10 +133,12 @@ export const Root = forwardRef<"div", RootProps>((props, forwardedRef) => {
 				{synchronizeColorScheme ? (
 					<SynchronizeColorScheme colorScheme={props.colorScheme} />
 				) : null}
+				<SynchronizeAccentColor accentColor={props.unstable_accentColor} />
 
 				<HtmlSanitizerContext.Provider value={unstable_htmlSanitizer}>
 					<PortalProvider
 						colorScheme={props.colorScheme}
+						unstable_accentColor={props.unstable_accentColor}
 						density={props.density}
 						portalContainerProp={portalContainerProp}
 					>
@@ -153,13 +165,17 @@ const RootProvider = (props: React.PropsWithChildren) => {
 
 interface RootInternalProps
 	extends BaseProps,
-		Pick<RootProps, "colorScheme" | "density" | "rootNode"> {}
+		Pick<
+			RootProps,
+			"colorScheme" | "unstable_accentColor" | "density" | "rootNode"
+		> {}
 
 const RootInternal = forwardRef<"div", RootInternalProps>(
 	(props, forwardedRef) => {
 		const {
 			children,
 			colorScheme,
+			unstable_accentColor,
 			density,
 			rootNode = isBrowser ? document : undefined,
 			...rest
@@ -169,7 +185,8 @@ const RootInternal = forwardRef<"div", RootInternalProps>(
 			<Role
 				{...rest}
 				className={cx("🥝Root", props.className)}
-				data-_sk-theme={colorScheme}
+				data-_sk-color-scheme={colorScheme}
+				data-_sk-accent-color={unstable_accentColor}
 				data-_sk-density={density}
 				ref={forwardedRef}
 			>
@@ -213,8 +230,32 @@ function SynchronizeColorScheme({
 
 // ----------------------------------------------------------------------------
 
+/**
+ * Synchronizes `accentColor` with the parent document.
+ *
+ * The document will have a `data-_sk-accent-color` attribute set to the current accent color.
+ */
+function SynchronizeAccentColor({
+	accentColor,
+}: {
+	accentColor: RootProps["unstable_accentColor"];
+}) {
+	const rootNode = useRootNode();
+
+	React.useInsertionEffect(() => {
+		if (!rootNode || !isDocument(rootNode)) return;
+		if (!accentColor) return;
+
+		rootNode.documentElement.dataset._skAccentColor = accentColor;
+	}, [rootNode, accentColor]);
+
+	return null;
+}
+
+// ----------------------------------------------------------------------------
+
 interface PortalProviderProps
-	extends Pick<RootProps, "colorScheme" | "density"> {
+	extends Pick<RootProps, "colorScheme" | "unstable_accentColor" | "density"> {
 	portalContainerProp?: RootProps["portalContainer"];
 }
 
@@ -227,6 +268,7 @@ function PortalProvider(props: React.PropsWithChildren<PortalProviderProps>) {
 			{props.children}
 			<PortalContainer
 				colorScheme={props.colorScheme}
+				unstable_accentColor={props.unstable_accentColor}
 				density={props.density}
 				ref={setPortalContainer}
 				render={props.portalContainerProp}
@@ -238,7 +280,10 @@ function PortalProvider(props: React.PropsWithChildren<PortalProviderProps>) {
 // ----------------------------------------------------------------------------
 
 interface PortalContainerProps
-	extends Pick<RootProps, "colorScheme" | "density" | "render"> {}
+	extends Pick<
+		RootProps,
+		"colorScheme" | "unstable_accentColor" | "density" | "render"
+	> {}
 
 /** A separate root rendered at the end of root node, to be used as the container for all portals. */
 const PortalContainer = forwardRef<"div", PortalContainerProps>(
@@ -253,7 +298,8 @@ const PortalContainer = forwardRef<"div", PortalContainerProps>(
 			<Role
 				render={props.render}
 				className="🥝Root"
-				data-_sk-theme={props.colorScheme}
+				data-_sk-color-scheme={props.colorScheme}
+				data-_sk-accent-color={props.unstable_accentColor}
 				data-_sk-density={props.density}
 				style={{ display: "contents" }}
 				ref={forwardedRef}

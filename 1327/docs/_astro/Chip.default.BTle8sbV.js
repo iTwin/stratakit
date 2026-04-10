@@ -1,1 +1,0 @@
-import{j as t}from"./client.Ifn_tpMe.js";import{C as r}from"./Chip.2MWa9-Sb.js";import"./styles.internal.CyE2up9L.js";import"./createSvgIcon.OG2zMSho.js";const e=()=>t.jsx(r,{label:"Default Chip"});export{e as default};

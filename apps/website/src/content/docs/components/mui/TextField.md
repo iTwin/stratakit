@@ -49,10 +49,10 @@ Use the [`multiline`](https://mui.com/material-ui/api/input/#input-prop-multilin
 ## ✅ Do
 
 - Use descriptive labels and helpful error messages.
-- Use the `placeholder` attribute for examples or hints, not for essential instructions.
 
 ## 🚫 Don't
 
 - Don't omit a label.
 - Don't place the label below or to the right of the input.
 - Don't resort to generic error messages.
+- Don't use the `placeholder` attribute for essential instructions.

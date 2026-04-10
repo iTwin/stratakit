@@ -30,7 +30,7 @@ Make sure the **TextField** is suitable for your use case. There may be other, m
 
 ### Icon
 
-An [**Icon**](/components/icon) can be displayed before or after the **TextField’s** input using the `startAdornment` or `endAdornment` props.
+An [**Icon**](/components/icon) can be displayed before or after the **TextField's** input using the `startAdornment` or `endAdornment` props.
 
 ::example{src="mui/TextField.icon"}
 
@@ -51,8 +51,8 @@ Use the [`multiline`](https://mui.com/material-ui/api/input/#input-prop-multilin
 - Use descriptive labels and helpful error messages.
 - Use the `placeholder` attribute for examples or hints, not for essential instructions.
 
-## 🚫 Don’t
+## 🚫 Don't
 
-- Don’t omit a label.
-- Don’t place the label below or to the right of the input.
-- Don’t resort to generic error messages.
+- Don't omit a label.
+- Don't place the label below or to the right of the input.
+- Don't resort to generic error messages.

@@ -14,6 +14,10 @@
 		(var(--_MuiAutocomplete-button-inset) * 2)
 	);
 	column-gap: var(--stratakit-space-x1);
+
+	&:has(.MuiAutocomplete-endAdornment > :nth-child(1):last-child) {
+		padding-inline-end: calc(var(--✨button-width) + (var(--_MuiAutocomplete-button-inset) * 2));
+	}
 }
 
 .MuiAutocomplete-input:is(.MuiInputBase-input) {

@@ -1,0 +1,1 @@
+import{j as s}from"./client.OBpP_if-.js";import{L as t}from"./Link.65bUnQR2.js";import"./styles.internal.CyE2up9L.js";import"./Typography.OD8QCXzw.js";const e=["primary","secondary","error","info","success","warning"],p=()=>e.map(r=>s.jsxs(t,{color:r,href:`#${r}`,children:[r.charAt(0).toUpperCase(),r.slice(1)]},r));export{p as default};

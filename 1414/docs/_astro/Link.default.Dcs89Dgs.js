@@ -1,0 +1,1 @@
+import{j as r}from"./client.OBpP_if-.js";import{L as t}from"./Link.65bUnQR2.js";import"./styles.internal.CyE2up9L.js";import"./Typography.OD8QCXzw.js";const s=()=>r.jsx(t,{href:"/",children:"Home"});export{s as default};

@@ -1,0 +1,1 @@
+import{j as t}from"./client.OBpP_if-.js";import{B as e}from"./ExamplePreview.CKffjGK4.js";import"./styles.internal.CyE2up9L.js";import"./preload-helper.CnC9__di.js";const a=()=>t.jsxs("div",{className:"flex",children:[t.jsx(e,{tone:"accent",children:"Accent"}),t.jsx(e,{tone:"neutral",children:"Neutral"})]});export{a as default};

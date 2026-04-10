@@ -12,7 +12,7 @@ import {
 	useSafeContext,
 } from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
-import { createTheme } from "./createTheme.js";
+import { createTheme } from "./~createTheme.js";
 import { StyledEngineProvider } from "./Root.internal.js";
 import css from "./styles.css.js";
 

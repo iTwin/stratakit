@@ -78,15 +78,22 @@ It’s important you use an [appropriate heading level](https://www.a11yproject.
 
 ### Decorations
 
-Decorate the `AccordionSummary` with an [**Icon**](/components/icon).
+Decorate the [`AccordionSummary`](https://mui.com/material-ui/api/accordion-summary/) with an [**Icon**](/components/icon).
 
 ::example{src="mui/Accordion.decoration"}
 
 ### AccordionActions
 
-Use the `AccordionActions` component to display actions related to the content of the **Accordion**.
+Use the [`AccordionActions`](https://mui.com/material-ui/api/accordion-actions/) component to display actions related to the content of the **Accordion**.
 
 ::example{src="mui/Accordion.actions"}
+
+### Header actions
+
+Interactive elements should not be placed inside the [`AccordionSummary`](https://mui.com/material-ui/api/accordion-summary/) component to avoid nested interactive elements.
+To display actions inside the **Accordion** header, create a wrapper element for the summary and place the interactive elements there.
+
+::example{src="mui/Accordion.header-actions" min-width="450px"}
 
 ## ✅ Do
 
@@ -98,4 +105,4 @@ Use the `AccordionActions` component to display actions related to the content o
 - Don’t nest **Accordions** inside one another.
 - Don’t use different heading levels for **Accordion** items in the same set. Since **Accordions** cannot be nested, they are at the same level in the document hierarchy.
 - Don’t close an **Accordion** when another **Accordion** is opened. Exclusive **Accordions** create [accessibility and usability issues](https://yatil.net/blog/exclusive-accordions).
-- Don't place interactive elements inside an `AccordionSummary`.
+- Don't place interactive elements inside the [`AccordionSummary`](https://mui.com/material-ui/api/accordion-summary/).

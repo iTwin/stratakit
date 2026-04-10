@@ -17,7 +17,7 @@
 }
 
 .MuiAutocomplete-input:is(.MuiInputBase-input) {
-	padding-inline: 0;
+	padding-inline: 0; /* Padding moved to the parent */
 }
 
 .MuiAutocomplete-tag:is(.MuiChip-root) {

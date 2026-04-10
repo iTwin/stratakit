@@ -42,7 +42,7 @@ Use the `error` prop to display the `helperText` in an error state. Consider add
 
 ### Multiline
 
-Set the `multiline` prop to render a standard HTML [`<textarea>` element](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/textarea).
+Use the [`multiline`](https://mui.com/material-ui/api/input/#input-prop-multiline) prop to make it a [`<textarea>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/textarea). The underlying implementation uses MUI's [`TextareaAutosize`](https://mui.com/material-ui/api/textarea-autosize/) component, which automatically expands based on the number of lines entered by the user.
 
 ::example{src="mui/TextField.multiline" min-height="200px"}
 

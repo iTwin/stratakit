@@ -28,7 +28,7 @@ const MuiToggleButton = forwardRef<"button", MuiToggleButtonProps>(
 			);
 		}
 
-		return <MuiButtonBase data-_sk-type="text" {...rest} ref={forwardedRef} />;
+		return <MuiButtonBase {...rest} ref={forwardedRef} />;
 	},
 );
 DEV: MuiToggleButton.displayName = "MuiToggleButton";

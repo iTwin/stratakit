@@ -31,7 +31,7 @@ Use the `selected` and `onChange` props to control the selected state of a stand
 
 ### Text
 
-When a **ToggleButton** includes visible text that already provides an accessible name, the `label` prop should be omitted.
+To display text within a **ToggleButton**, use the `render` prop to render a [**Button**](/components/button) with a `"text"` variant. Additionally, the `label` prop should be omitted, as the visible text already provides an accessible name.
 
 ::example{src="mui/ToggleButton.text"}
 

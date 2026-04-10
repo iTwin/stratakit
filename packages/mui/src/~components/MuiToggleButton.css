@@ -25,7 +25,7 @@
 		--_MuiToggleButton-padding-block: var(--stratakit-space-x1);
 		--_MuiToggleButton-padding-inline: var(--stratakit-space-x1);
 
-		&:where([data-_sk-type="text"]) {
+		&:where(.MuiButton-root) {
 			--_MuiToggleButton-padding-block: var(--stratakit-space-x05);
 			--_MuiToggleButton-padding-inline: var(--stratakit-space-x2);
 		}
@@ -37,7 +37,7 @@
 		--_MuiToggleButton-padding-block: var(--stratakit-space-x1);
 		--_MuiToggleButton-padding-inline: var(--stratakit-space-x1);
 
-		&:where([data-_sk-type="text"]) {
+		&:where(.MuiButton-root) {
 			--_MuiToggleButton-padding-block: var(--stratakit-space-x1);
 			--_MuiToggleButton-padding-inline: var(--stratakit-space-x3);
 		}
@@ -49,7 +49,7 @@
 		--_MuiToggleButton-padding-block: var(--stratakit-space-x2);
 		--_MuiToggleButton-padding-inline: var(--stratakit-space-x2);
 
-		&:where([data-_sk-type="text"]) {
+		&:where(.MuiButton-root) {
 			--_MuiToggleButton-padding-block: var(--stratakit-space-x2);
 			--_MuiToggleButton-padding-inline: var(--stratakit-space-x4);
 		}

@@ -3,15 +3,22 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
+import Button from "@mui/material/Button";
 import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 
 export default () => {
 	return (
 		<ToggleButtonGroup value="auto" aria-label="color scheme">
-			<ToggleButton value="auto">Auto</ToggleButton>
-			<ToggleButton value="light">Light</ToggleButton>
-			<ToggleButton value="dark">Dark</ToggleButton>
+			<ToggleButton value="auto" render={<Button variant="text" />}>
+				Auto
+			</ToggleButton>
+			<ToggleButton value="light" render={<Button variant="text" />}>
+				Light
+			</ToggleButton>
+			<ToggleButton value="dark" render={<Button variant="text" />}>
+				Dark
+			</ToggleButton>
 		</ToggleButtonGroup>
 	);
 };

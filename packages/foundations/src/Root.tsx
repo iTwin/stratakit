@@ -247,9 +247,9 @@ function SynchronizeAccentColor({
 		if (!accentColor) return;
 
 		if (isDocument(rootNode)) {
-			rootNode.documentElement.dataset.accentColor = accentColor;
+			rootNode.documentElement.dataset._skAccentColor = accentColor;
 		} else if (isShadow(rootNode)) {
-			(rootNode.host as HTMLElement).dataset.accentColor = accentColor;
+			(rootNode.host as HTMLElement).dataset._skAccentColor = accentColor;
 		}
 	}, [rootNode, accentColor]);
 

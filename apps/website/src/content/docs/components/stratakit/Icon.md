@@ -11,7 +11,7 @@ links:
 
 ### Sizes
 
-Use the `size` prop to adjust the **Icon’s** physical dimensions.
+Use the `size` prop to adjust the **Icon's** physical dimensions.
 
 - **Regular:** Default size, suitable for most use cases.
 - **Large:** Increased size, use in larger spaces.
@@ -32,7 +32,7 @@ Omit the `alt` prop if the **Icon** is purely decorative. This will hide the **I
 
 ### Color
 
-Use the [`color` CSS property](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/color) to adjust the **Icon’s** color. Prefer usage of StrataKit color tokens when adjusting the **Icon’s** color.
+Use the [`color` CSS property](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/color) to adjust the **Icon's** color. Prefer usage of StrataKit color tokens when adjusting the **Icon's** color.
 
 ::example{src="mui/Icon.color"}
 
@@ -47,9 +47,9 @@ Use the `render` prop to display a custom SVG icon.
 - If an accessible name is not provided by other means, use the `alt` prop to provide a descriptive label.
 - Increase **Icon** detail when physical size increases.
 
-## 🚫 Don’t
+## 🚫 Don't
 
-- Don’t use the `alt` prop if there is already an accessible label in place (as in `IconButton`).
-- Don’t use custom icons when a standard icon is available in `@stratakit/icons`.
-- Don’t use non-standard icons from `@mui/icons-material`.
-- Don’t use the `SvgIcon` component from `@mui/material`.
+- Don't use the `alt` prop if there is already an accessible label in place (as in `IconButton`).
+- Don't use custom icons when a standard icon is available in `@stratakit/icons`.
+- Don't use non-standard icons from `@mui/icons-material`.
+- Don't use the `SvgIcon` component from `@mui/material`.

@@ -1,1 +1,0 @@
-import{j as t}from"./client.OBpP_if-.js";import{A as r}from"./Anchor.CDFziAb1.js";import"./styles.internal.CyE2up9L.js";import"./ExamplePreview.CKffjGK4.js";import"./preload-helper.CnC9__di.js";const m=()=>t.jsx(r,{href:"/getting-started",children:"Getting started"});export{m as default};

@@ -1,1 +1,0 @@
-import{j as t}from"./client.OBpP_if-.js";import{c as e,B as i}from"./ExamplePreview.CKffjGK4.js";import"./styles.internal.CyE2up9L.js";import"./preload-helper.CnC9__di.js";const s=()=>t.jsx(e,{content:"Save is disabled until you finish reading the documentation.",type:"description",children:t.jsx(i,{disabled:!0,children:"Save"})});export{s as default};

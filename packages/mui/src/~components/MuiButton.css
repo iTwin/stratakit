@@ -66,22 +66,24 @@
 		&:where(.Mui-disabled) {
 			background-color: var(--stratakit-color-bg-glow-on-surface-disabled);
 		}
+
+		&:where(.MuiButton-colorPrimary, .MuiButton-colorError) {
+			--_MuiButton-icon-color: var(--stratakit-color-icon-neutral-emphasis);
+		}
 	}
 
-	&:where(.MuiButton-containedPrimary, .MuiButton-containedError) {
-		--_MuiButton-icon-color: var(--stratakit-color-icon-neutral-emphasis);
-	}
+	&:where(.MuiButton-outlined, .MuiButton-text) {
+		&:where(.MuiButton-colorPrimary) {
+			--_MuiButton-icon-color: var(--stratakit-color-icon-accent-strong);
+			--variant-outlinedBorder: var(--stratakit-color-border-accent-base);
+		}
 
-	&:where(.MuiButton-outlinedPrimary, .MuiButton-textPrimary) {
-		--_MuiButton-icon-color: var(--stratakit-color-icon-accent-strong);
-		--variant-outlinedBorder: var(--stratakit-color-border-accent-base);
-	}
-
-	&:where(.MuiButton-outlinedError, .MuiButton-textError) {
-		--_MuiButton-icon-color: var(--stratakit-color-icon-critical-base);
-		--variant-textColor: var(--stratakit-color-text-critical-base);
-		--variant-outlinedColor: var(--stratakit-color-text-critical-base);
-		--variant-outlinedBorder: var(--stratakit-color-border-critical-base);
+		&:where(.MuiButton-colorError) {
+			--_MuiButton-icon-color: var(--stratakit-color-icon-critical-base);
+			--variant-textColor: var(--stratakit-color-text-critical-base);
+			--variant-outlinedColor: var(--stratakit-color-text-critical-base);
+			--variant-outlinedBorder: var(--stratakit-color-border-critical-base);
+		}
 	}
 
 	&:where(.Mui-disabled) {

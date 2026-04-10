@@ -9,13 +9,11 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
 
-import styles from "./Select.multiple.module.css";
-
 export default () => {
 	const labelId = React.useId();
 	const label = "Choose design systems:";
 	return (
-		<FormControl className={styles.formControl}>
+		<FormControl>
 			<InputLabel id={labelId}>{label}</InputLabel>
 			<Select labelId={labelId} label={label} defaultValue={[2]} multiple>
 				<MenuItem value={1}>iTwinUI</MenuItem>

@@ -25,7 +25,6 @@ html:where([data-color-scheme="dark"]),
 }
 
 html:where([data-_sk-accent-color="cobalt"]),
-:host(:where([data-_sk-accent-color="cobalt"])),
 .🥝Root:where([data-_sk-accent-color="cobalt"]) {
 	--_stratakit-accent-0: --primitive("color.cobalt.0");
 	--_stratakit-accent-50: --primitive("color.cobalt.50");

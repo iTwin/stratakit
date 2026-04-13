@@ -10,20 +10,9 @@ import type { BaseProps } from "@stratakit/foundations/secret-internals";
 
 // ----------------------------------------------------------------------------
 
-interface MuiAutocompleteProps extends BaseProps<"div"> {
-	multiple?: boolean;
-}
-
-const MuiAutocomplete = forwardRef<"div", MuiAutocompleteProps>(
+const MuiAutocomplete = forwardRef<"div", BaseProps<"div">>(
 	(props, forwardedRef) => {
-		const { multiple, ...rest } = props;
-		return (
-			<Role.div
-				role={multiple ? "group" : undefined}
-				{...rest}
-				ref={forwardedRef}
-			/>
-		);
+		return <Role.div role="group" {...props} ref={forwardedRef} />;
 	},
 );
 DEV: MuiAutocomplete.displayName = "MuiAutocomplete";

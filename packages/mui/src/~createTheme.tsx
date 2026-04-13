@@ -152,11 +152,8 @@ function createTheme() {
 						</li>
 					),
 					slotProps: {
-						root: (ownerState) => {
-							return {
-								component: MuiAutocomplete,
-								multiple: ownerState.multiple,
-							};
+						root: {
+							component: MuiAutocomplete,
 						},
 						paper: {
 							elevation: 8, // match Menu elevation

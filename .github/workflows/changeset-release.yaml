@@ -7,11 +7,18 @@ on:
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
+env:
+  NPM_CONFIG_PROVENANCE: true
+
 jobs:
   release:
     name: Release
     if: github.repository == 'iTwin/stratakit'
     runs-on: ubuntu-latest
+    permissions:
+      contents: write # for pushing commits/tags
+      id-token: write # for npm provenance
+      pull-requests: write # for creating PRs
 
     steps:
       - name: Checkout Repo
@@ -19,9 +26,9 @@ jobs:
         # with:
         #   token: ${{ secrets.IMJS_ADMIN_GH_TOKEN }}
 
-      - uses: pnpm/action-setup@v4
+      - uses: pnpm/action-setup@v5
         with:
-          version: 10.17.0
+          version: 10.30.1
 
       - name: Use Node 22.x
         uses: actions/setup-node@v6
@@ -32,7 +39,7 @@ jobs:
       - run: pnpm install
 
       - name: Create release PR or publish to npm
-        uses: changesets/action@c48e67d110a68bc90ccf1098e9646092baacaa87 # v1.6.0
+        uses: changesets/action@6a0a831ff30acef54f2c6aa1cbbc1096b066edaf # v1.7.0
         with:
           version: pnpm run changeset:version
           publish: pnpm run changeset:publish

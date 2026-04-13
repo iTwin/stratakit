@@ -7,7 +7,7 @@ import { Icon } from "@stratakit/foundations";
 import { definePage } from "~/~utils.tsx";
 import * as ListItem from "../../../node_modules/@stratakit/structures/src/~utils.ListItem.tsx";
 
-import placeholderIcon from "@stratakit/icons/placeholder.svg";
+import svgPlaceholder from "@stratakit/icons/placeholder.svg";
 
 export const handle = { title: "List" };
 
@@ -23,17 +23,17 @@ export default definePage(function Page() {
 			<ListItem.Root>
 				<ListItem.Content>Mango</ListItem.Content>
 				<ListItem.Content>A yellow fruit</ListItem.Content>
-				<ListItem.Decoration render={<Icon href={placeholderIcon} />} />
+				<ListItem.Decoration render={<Icon href={svgPlaceholder} />} />
 			</ListItem.Root>
 			<ListItem.Root>
-				<ListItem.Decoration render={<Icon href={placeholderIcon} />} />
+				<ListItem.Decoration render={<Icon href={svgPlaceholder} />} />
 				<ListItem.Content>Papaya</ListItem.Content>
 			</ListItem.Root>
 			<ListItem.Root>
-				<ListItem.Decoration render={<Icon href={placeholderIcon} />} />
+				<ListItem.Decoration render={<Icon href={svgPlaceholder} />} />
 				<ListItem.Content>Tomato</ListItem.Content>
 				<ListItem.Content>A red fruit</ListItem.Content>
-				<ListItem.Decoration render={<Icon href={placeholderIcon} />} />
+				<ListItem.Decoration render={<Icon href={svgPlaceholder} />} />
 			</ListItem.Root>
 		</div>
 	);

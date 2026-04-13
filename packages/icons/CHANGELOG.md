@@ -1,5 +1,75 @@
 # Changelog
 
+## 0.3.1
+
+### Patch Changes
+
+- [#1325](https://github.com/iTwin/stratakit/pull/1325): Added new icons:
+  - `asset-infrastructure.svg`
+  - `binoculars.svg`
+  - `checkbox-deselect.svg`
+  - `checkbox-select.svg`
+  - `folder-maximize.svg`
+  - `wall-retaining.svg`
+
+  Updated icons:
+  - `script-run.svg`
+  - `script-status.svg`
+  - `script.svg`
+
+- [#1261](https://github.com/iTwin/stratakit/pull/1261): Added new icons:
+  - `action-script.svg`
+  - `binder.svg`
+  - `branch.svg`
+  - `delete-columns.svg`
+  - `delete-rows.svg`
+  - `delete-table.svg`
+  - `drainage-tools.svg`
+  - `format.svg`
+  - `geospatial-connection.svg`
+  - `geospatial-features.svg`
+  - `git-branch.svg`
+  - `git-merge.svg`
+  - `mcp-server.svg`
+  - `measure-height.svg`
+  - `merge-cells.svg`
+  - `model.svg`
+  - `move-to-group.svg`
+  - `pipes.svg`
+  - `pond-layout.svg`
+  - `portable-water-pipes.svg`
+  - `reassign.svg`
+  - `sewage-pipes.svg`
+  - `split-cells.svg`
+  - `storm-water-pipes.svg`
+  - `supply-chain.svg`
+  - `text-rotate-right.svg`
+  - `ungroup.svg`
+  - `window-popover.svg`
+  - `workflow.svg`
+
+  Updated icons:
+  - `microphone.svg`
+  - `production-drawing.svg`
+  - `scene.svg`
+
+- [#1293](https://github.com/iTwin/stratakit/pull/1293): Added new icons:
+  - `distribute-left.svg`
+  - `distribute-right.svg`
+  - `distribute-top.svg`
+  - `folder-remove.svg`
+  - `graph-scatter-chart.svg`
+  - `hardhat.svg`
+  - `measure-slope.svg`
+  - `play-backward.svg`
+  - `selection-clear.svg`
+
+  Updated icons:
+  - `feedback.svg`
+  - `license-check-in.svg`
+  - `license-check-out.svg`
+  - `status-running.svg`
+
 ## 0.3.0
 
 ### Breaking changes

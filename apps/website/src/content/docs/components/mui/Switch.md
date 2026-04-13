@@ -1,0 +1,52 @@
+---
+title: Switch
+description: Switches are toggles for Boolean values.
+links:
+  muiDocs: https://mui.com/material-ui/react-switch/
+  apiReference: https://mui.com/material-ui/api/switch/
+---
+
+::example{src="mui/Switch.default"}
+
+## Use cases
+
+Make sure the **Switch** is suitable for your use case. There may be other, more appropriate components available.
+
+| Use case                                                                                                                          | [Checkbox](/components/checkbox) | [Radio](/components/radio) | [Switch](/components/switch) | [ToggleButton](/components/togglebutton) |
+| --------------------------------------------------------------------------------------------------------------------------------- | -------------------------------- | -------------------------- | ---------------------------- | ---------------------------------------- |
+| Confirm an input for a form submission                                                                                            | ✅                               | ❌                         | ❌                           | ❌                                       |
+| Select a single option from multiple choices for a form submission                                                                | ❌                               | ✅                         | ❌                           | ❌                                       |
+| Make an instantaneous, binary choice (switch a setting on or off)                                                                 | ❌                               | ❌                         | ✅                           | ❌                                       |
+| Toggle an option within a [toolbar](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/toolbar_role) | ❌                               | ❌                         | ❌                           | ✅                                       |
+
+## StrataKit MUI modifications
+
+- The `color` prop is not supported. Color is determined automatically based on state (e.g., checked, disabled).
+- Restyled using StrataKit's visual language.
+- Includes full `forced-colors` support.
+
+## Examples
+
+### Checked
+
+Use the `defaultChecked` prop to set the initial checked state. Alternatively, use the `checked` and `onChange` props to control the checked state.
+
+::example{src="mui/Switch.checked"}
+
+### Sizes
+
+- **Small:** Use in compact interfaces where space is limited.
+- **Medium:** Default size, suitable for most use cases.
+
+::example{src="mui/Switch.sizes"}
+
+## ✅ Do
+
+- Use a clear, descriptive label for each **Switch**.
+- Use a **Switch** when the effect is instantaneous (no confirmation or submission is required).
+
+## 🚫 Don’t
+
+- Don't use switches for mandatory actions. The checked state of a switch can never be _invalid_.
+- Don't use one switch to change multiple settings simultaneously.
+- Don't use switches inside a form that needs submission. Use [**Checkbox**](/components/checkbox) instead.

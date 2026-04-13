@@ -1,7 +1,7 @@
 {
 	"name": "@stratakit/structures",
 	"type": "module",
-	"version": "0.5.5",
+	"version": "0.5.6",
 	"license": "MIT",
 	"sideEffects": false,
 	"types": "./dist/index.d.ts",
@@ -125,10 +125,10 @@
 	"dependencies": {
 		"@ariakit/react": "^0.4.20",
 		"@stratakit/bricks": "^0.5.4",
-		"@stratakit/foundations": "^0.4.6",
+		"@stratakit/foundations": "^0.4.8",
 		"classnames": "^2.5.1",
 		"react-compiler-runtime": "^1.0.0",
-		"zustand": "^5.0.9"
+		"zustand": "^5.0.11"
 	},
 	"devDependencies": {
 		"@stratakit/foundations": "workspace:*",

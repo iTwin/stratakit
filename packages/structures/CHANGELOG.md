@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.5.6
+
+- [#1375](https://github.com/iTwin/stratakit/pull/1375): Fixed the `Tree.Item` component to correctly render actions when virtualized.
+
 ## 0.5.5
 
 - [#1174](https://github.com/iTwin/stratakit/pull/1174): Fixed `DropdownMenu.Submenu` component to avoid removal of parent portal popover when unmounting.
@@ -261,8 +265,8 @@
 
   ```diff
     <Toolbar.Item
-  -   render={<IconButton icon={placeholderIcon} />}
-  +   render={<IconButton icon={`${placeholderIcon}#icon-large`} />}
+  -   render={<IconButton icon={svgPlaceholder} />}
+  +   render={<IconButton icon={`${svgPlaceholder}#icon-large`} />}
     />
   ```
 
@@ -375,7 +379,7 @@
   import * as Banner from "@stratakit/structures/unstable_Banner";
 
   <Banner.Root>
-  	<Banner.Icon href={placeholderIcon} />
+  	<Banner.Icon href={svgPlaceholder} />
   	<Banner.Label>Label</Banner.Label>
   	<Banner.Message>Message</Banner.Message>
   	<Banner.Actions>
@@ -404,8 +408,8 @@
   <AccordionItem.Header>
   	<AccordionItem.Marker />
   	<AccordionItem.Decoration>
-  		<Icon href={placeholder} />
-  		<Icon href={placeholder} />
+  		<Icon href={svgPlaceholder} />
+  		<Icon href={svgPlaceholder} />
   	</AccordionItem.Decoration>
   	<AccordionItem.Button>
   		<AccordionItem.Label>Label</AccordionItem.Label>

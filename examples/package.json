@@ -17,5 +17,9 @@
 	},
 	"devDependencies": {
 		"@types/react": "catalog:"
+	},
+	"peerDependencies": {
+		"react": "catalog:",
+		"react-dom": "catalog:"
 	}
 }

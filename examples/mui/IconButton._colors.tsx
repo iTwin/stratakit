@@ -4,14 +4,12 @@
  *--------------------------------------------------------------------------------------------*/
 
 import IconButton from "@mui/material/IconButton";
-import Tooltip from "@mui/material/Tooltip";
 import { Icon } from "@stratakit/mui";
 
 import svgPlaceholder from "@stratakit/icons/placeholder.svg";
 
 type IconButtonProps = React.ComponentProps<typeof IconButton>;
 const colors = [
-	"default",
 	"primary",
 	"secondary",
 	"error",
@@ -19,14 +17,12 @@ const colors = [
 
 export default () => {
 	return colors.map((color) => (
-		<Tooltip
+		<IconButton
 			key={color}
-			title={`${color.charAt(0).toUpperCase()}${color.slice(1)}`}
-			describeChild={false}
+			color={color}
+			label={`${color.charAt(0).toUpperCase()}${color.slice(1)}`}
 		>
-			<IconButton color={color}>
-				<Icon href={svgPlaceholder} />
-			</IconButton>
-		</Tooltip>
+			<Icon href={svgPlaceholder} />
+		</IconButton>
 	));
 };

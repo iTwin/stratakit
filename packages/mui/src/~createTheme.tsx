@@ -1,0 +1,537 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+
+import * as React from "react";
+import { Role } from "@ariakit/react/role";
+import OutlinedInput from "@mui/material/OutlinedInput";
+import StepConnector from "@mui/material/StepConnector";
+import { createTheme as createMuiTheme } from "@mui/material/styles";
+import cx from "classnames";
+import {
+	MuiAutocompleteChip,
+	MuiAutocompleteChipDeleteIcon,
+	MuiAutocompleteClearIndicator,
+} from "./~components/MuiAutocomplete.js";
+import { MuiBadge } from "./~components/MuiBadge.js";
+import { MuiBottomNavigationAction } from "./~components/MuiBottomNavigation.js";
+import { MuiButtonBase } from "./~components/MuiButtonBase.js";
+import {
+	MuiCard,
+	MuiCardActionArea,
+	MuiCardMedia,
+} from "./~components/MuiCard.js";
+import {
+	MuiChip,
+	MuiChipDeleteIcon,
+	MuiChipLabel,
+} from "./~components/MuiChip.js";
+import { MuiDivider } from "./~components/MuiDivider.js";
+import { MuiIconButton } from "./~components/MuiIconButton.js";
+import { MuiSnackbar } from "./~components/MuiSnackbar.js";
+import { MuiStepIcon } from "./~components/MuiStepper.js";
+import { MuiTableCell, MuiTableHead } from "./~components/MuiTable.js";
+import { MuiTextFieldInput } from "./~components/MuiTextField.js";
+import {
+	ArrowDownIcon,
+	CaretsUpDownIcon,
+	ChevronDownIcon,
+	ChevronLeftDoubleIcon,
+	ChevronLeftIcon,
+	ChevronRightDoubleIcon,
+	ChevronRightIcon,
+	DismissIcon,
+	ErrorIcon,
+	InfoIcon,
+	SuccessIcon,
+	WarningIcon,
+} from "./Icon.js";
+
+import type { RoleProps } from "@ariakit/react/role";
+import type { ColorSystemOptions } from "@mui/material/styles";
+import type { TypographyOwnProps } from "@mui/material/Typography";
+
+/** Creates a StrataKit theme for MUI. Should be used with MUI's `ThemeProvider`. */
+function createTheme() {
+	// Map the JS palette back to MUI's own CSS variables, which will then be mapped to the correct StrataKit tokens in CSS.
+	// (This is a fallback for any code that uses MUI's theme.palette values directly instead of CSS variables)
+	const palette = {
+		primary: { main: "var(--stratakit-mui-palette-primary-main)" },
+		secondary: { main: "var(--stratakit-mui-palette-secondary-main)" },
+
+		error: { main: "var(--stratakit-mui-palette-error-main)" },
+		warning: { main: "var(--stratakit-mui-palette-warning-main)" },
+		info: { main: "var(--stratakit-mui-palette-info-main)" },
+		success: { main: "var(--stratakit-mui-palette-success-main)" },
+
+		grey: Object.fromEntries(
+			["50", "100", "200", "300", "400", "500", "600", "700", "800", "900"].map(
+				(shade) => [shade, `var(--stratakit-mui-palette-grey-${shade})`],
+			),
+		),
+	} satisfies ColorSystemOptions["palette"];
+
+	return createMuiTheme({
+		cssVariables: {
+			nativeColor: true,
+			colorSchemeSelector: "[data-color-scheme='%s']",
+			cssVarPrefix: "stratakit-mui",
+		},
+		colorSchemes: {
+			light: { palette },
+			dark: { palette },
+		},
+		typography: {
+			fontFamily: "var(--stratakit-font-family-sans)",
+			fontSize: 14,
+			button: {
+				textTransform: "none", // Disable all-caps on buttons and tabs
+			},
+			// These are only hardcoded here as fallback. The CSS will take precedence.
+			body1: { fontSize: 16 },
+			body2: { fontSize: 14 },
+			h1: { fontSize: 48 },
+			h2: { fontSize: 40 },
+			h3: { fontSize: 32 },
+			h4: { fontSize: 28 },
+			h5: { fontSize: 24 },
+			h6: { fontSize: 20 },
+			caption: { fontSize: 12 },
+			subtitle1: { fontSize: 12 },
+			subtitle2: { fontSize: 11 },
+		},
+		shadows: [
+			"none", // 0
+			"none", // 1
+			"var(--stratakit-shadow-surface-xs)", // 2
+			"var(--stratakit-shadow-surface-sm)", // 3
+			...new Array(4).fill("var(--stratakit-shadow-surface-md)"), // 4-7
+			...new Array(17).fill("var(--stratakit-shadow-surface-lg)"), // 8-24
+			// biome-ignore lint/suspicious/noExplicitAny: MUI expects 25 items in the shadows array
+		] as any,
+		components: {
+			MuiAppBar: { defaultProps: { component: Role.header } },
+			MuiAccordion: {
+				defaultProps: {
+					component: Role.div,
+					slotProps: {
+						region: {
+							role: undefined,
+							"aria-labelledby": undefined,
+						},
+					},
+				},
+			},
+			MuiAccordionSummary: {
+				defaultProps: {
+					component: Role.div,
+					nativeButton: false,
+					expandIcon: <ChevronDownIcon />,
+				},
+			},
+			MuiAlert: {
+				defaultProps: {
+					component: Role.div,
+					variant: "outlined",
+					iconMapping: {
+						error: <ErrorIcon />,
+						info: <InfoIcon />,
+						success: <SuccessIcon />,
+						warning: <WarningIcon />,
+					},
+				},
+			},
+			MuiAlertTitle: { defaultProps: { component: Role.div } },
+			MuiAutocomplete: {
+				defaultProps: {
+					popupIcon: <ChevronDownIcon />,
+					clearIcon: <DismissIcon />,
+					onKeyDown: (e) => {
+						// TODO: this needs to be merged with props after https://github.com/mui/material-ui/issues/47755
+						if (e.key === "ArrowLeft" || e.key === "ArrowRight") {
+							e.defaultMuiPrevented = true; // Prevent MUI from handling left/right arrow keys to focus the tags
+						}
+					},
+					renderOption: ({ key, ...props }, option, _, ownerState) => (
+						<li
+							key={key}
+							{...props}
+							className={cx("MuiMenuItem-root", props.className)}
+						>
+							{ownerState.getOptionLabel(option)}
+						</li>
+					),
+					slotProps: {
+						paper: {
+							elevation: 8, // match Menu elevation
+						},
+						chip: {
+							component: MuiAutocompleteChip,
+							deleteIcon: <MuiAutocompleteChipDeleteIcon />,
+						},
+						clearIndicator: {
+							component: MuiAutocompleteClearIndicator,
+							tabIndex: 0, // make clear indicator focusable
+							size: "small",
+						},
+						popupIndicator: {
+							size: "small",
+						},
+					},
+				},
+			},
+			MuiAvatar: {
+				defaultProps: {
+					component: Role.div,
+					slotProps: { img: { draggable: false } },
+				},
+				styleOverrides: {
+					root: {
+						width: "var(--_MuiAvatar-size, 2rem)",
+						height: "var(--_MuiAvatar-size, 2rem)",
+					},
+				},
+			},
+			MuiAvatarGroup: { defaultProps: { component: Role.div } },
+			MuiBackdrop: { defaultProps: { component: Role.div } },
+			MuiBadge: {
+				defaultProps: {
+					component: MuiBadge,
+					color: "secondary",
+				},
+			},
+			MuiBottomNavigation: { defaultProps: { component: Role.div } },
+			MuiBottomNavigationAction: {
+				defaultProps: {
+					component: MuiBottomNavigationAction,
+				},
+			},
+			MuiBreadcrumbs: {
+				defaultProps: {
+					component: Role.nav,
+					separator: <ChevronRightIcon />,
+				},
+			},
+			MuiButtonBase: {
+				defaultProps: {
+					component: MuiButtonBase,
+					disableRipple: true, // https://mui.com/material-ui/getting-started/faq/#how-can-i-disable-the-ripple-effect-globally
+				},
+			},
+			MuiButton: {
+				defaultProps: {
+					component: MuiButtonBase,
+					color: "secondary",
+					variant: "contained",
+				},
+			},
+			MuiButtonGroup: {
+				defaultProps: {
+					component: Role.div,
+					color: "secondary",
+					disableRipple: true, // ButtonGroup overrides Button's disableRipple so we need to set it here as well
+				},
+			},
+			MuiCard: { defaultProps: { component: MuiCard } },
+			MuiCardActionArea: { defaultProps: { component: MuiCardActionArea } },
+			MuiCardContent: { defaultProps: { component: Role.div } },
+			MuiCardHeader: {
+				defaultProps: {
+					component: Role.div,
+					slotProps: {
+						title: {
+							// biome-ignore lint/suspicious/noExplicitAny: MUI's CardHeader.title.component is hardcoded to "span"
+							component: Role.h2 as any,
+						},
+					},
+				},
+			},
+			MuiCardMedia: { defaultProps: { component: MuiCardMedia } },
+			MuiCheckbox: {
+				defaultProps: {
+					component: Role.span,
+					disableRipple: true, // Checkbox doesn't inherit from ButtonBase
+					icon: <Nothing />,
+					checkedIcon: <Nothing />,
+					indeterminateIcon: <Nothing />,
+				},
+			},
+			MuiChip: {
+				defaultProps: {
+					component: MuiChip,
+					deleteIcon: <MuiChipDeleteIcon />,
+					slotProps: {
+						label: {
+							component: MuiChipLabel,
+						},
+					},
+				},
+			},
+			MuiContainer: { defaultProps: { component: Role.div } },
+			MuiDialog: { defaultProps: { component: Role.div } },
+			MuiDialogContentText: { defaultProps: { component: Role.p } },
+			MuiDialogTitle: { defaultProps: { component: Role.h2 } },
+			MuiDivider: { defaultProps: { component: MuiDivider } },
+			MuiDrawer: { defaultProps: { component: Role.div } },
+			MuiFab: {
+				defaultProps: {
+					component: MuiButtonBase,
+					color: "primary",
+				},
+			},
+			MuiFormControl: { defaultProps: { component: Role.div } },
+			MuiFormHelperText: { defaultProps: { component: Role.p } },
+			MuiFormLabel: { defaultProps: { component: Role.label as never } },
+			MuiGrid: { defaultProps: { component: Role.div } },
+			MuiIcon: { defaultProps: { component: Role.span } },
+			MuiIconButton: {
+				defaultProps: { component: MuiIconButton, color: "secondary" },
+			},
+			MuiImageList: { defaultProps: { component: Role.ul } },
+			MuiImageListItem: { defaultProps: { component: Role.li } },
+			MuiInputAdornment: { defaultProps: { component: Role.div } },
+			MuiInputLabel: {
+				defaultProps: {
+					component: Role.label,
+					shrink: true, // Removes label animation and masked border from TextField
+				},
+			},
+			MuiLink: {
+				defaultProps: { component: Role.a, color: "textPrimary" },
+				variants: [
+					{
+						props: { color: "primary" },
+						style: { color: "var(--stratakit-color-text-accent-strong)" },
+					},
+					{
+						props: { color: "secondary" },
+						style: { color: "var(--stratakit-color-text-neutral-primary)" },
+					},
+					{
+						props: { color: "error" },
+						style: { color: "var(--stratakit-color-text-critical-base)" },
+					},
+					{
+						props: { color: "info" },
+						style: { color: "var(--stratakit-color-text-info-base)" },
+					},
+					{
+						props: { color: "success" },
+						style: { color: "var(--stratakit-color-text-positive-base)" },
+					},
+					{
+						props: { color: "warning" },
+						style: { color: "var(--stratakit-color-text-attention-base)" },
+					},
+				],
+			},
+			MuiList: { defaultProps: { component: Role.ul } },
+			MuiListItem: { defaultProps: { component: Role.li } },
+			MuiListItemButton: {
+				defaultProps: {
+					component: MuiButtonBase,
+					nativeButton: true,
+				},
+			},
+			MuiListItemText: {
+				defaultProps: {
+					slotProps: {
+						primary: { variant: "inherit" },
+					},
+				},
+			},
+			MuiListSubheader: { defaultProps: { component: Role.li } },
+			MuiMenu: { defaultProps: { component: Role.div } },
+			MuiMenuItem: { defaultProps: { component: Role.li } },
+			MuiMenuList: { defaultProps: { component: Role.ul } },
+			MuiMobileStepper: { defaultProps: { component: Role.div } },
+			MuiModal: { defaultProps: { component: Role.div } },
+			MuiOutlinedInput: {
+				defaultProps: {
+					notched: false, // Removes masked border from Select
+				},
+			},
+			MuiPagination: { defaultProps: { shape: "rounded" } },
+			MuiPaginationItem: {
+				defaultProps: {
+					component: MuiButtonBase,
+					shape: "rounded",
+					slots: {
+						previous: ChevronLeftIcon,
+						next: ChevronRightIcon,
+						first: ChevronLeftDoubleIcon,
+						last: ChevronRightDoubleIcon,
+					},
+				},
+			},
+			MuiPaper: { defaultProps: { component: Role.div } },
+			MuiPopover: { defaultProps: { component: Role.div } },
+			MuiRadio: {
+				defaultProps: {
+					component: Role.span,
+					disableRipple: true, // Radio doesn't inherit from ButtonBase
+					icon: <Nothing />,
+					checkedIcon: <Nothing />,
+				},
+			},
+			MuiRating: { defaultProps: { component: Role.span } },
+			MuiSelect: {
+				defaultProps: {
+					IconComponent: CaretsUpDownIcon,
+				},
+			},
+			MuiNativeSelect: {
+				defaultProps: {
+					input: <OutlinedInput />,
+					IconComponent: CaretsUpDownIcon,
+				},
+			},
+			MuiSkeleton: { defaultProps: { component: Role.span } },
+			MuiSlider: { defaultProps: { component: Role.span } },
+			MuiSnackbar: {
+				defaultProps: {
+					slotProps: {
+						root: {
+							component: MuiSnackbar,
+						},
+					},
+				},
+			},
+			MuiSnackbarContent: { defaultProps: { component: Role.div } },
+			MuiStack: { defaultProps: { component: Role.div } },
+			MuiStep: { defaultProps: { component: Role.li } },
+			MuiSwitch: { defaultProps: { component: Role.span } },
+			MuiStepper: {
+				defaultProps: {
+					component: Role.ol,
+					connector: <StepConnector aria-hidden="true" />, // hiding the connector to prevent invalid markup
+				},
+			},
+			MuiStepLabel: {
+				defaultProps: {
+					slotProps: {
+						root: { component: Role.div },
+						stepIcon: { component: MuiStepIcon },
+					},
+				},
+			},
+			MuiSvgIcon: { defaultProps: { component: Role.svg } },
+			MuiSwipeableDrawer: { defaultProps: { component: Role.div } },
+			MuiTabs: { defaultProps: { component: Role.div } },
+			MuiTable: { defaultProps: { component: withRenderProp(Role, "table") } },
+			MuiTableBody: {
+				defaultProps: {
+					component: withRenderProp(Role, "tbody"),
+					role: undefined, // Removing role="rowgroup". See https://github.com/iTwin/stratakit/pull/1361
+				},
+			},
+			MuiTableCell: { defaultProps: { component: MuiTableCell } },
+			MuiTableContainer: {
+				defaultProps: { component: withRenderProp(Role, "div") },
+			},
+			MuiTableFooter: {
+				defaultProps: { component: withRenderProp(Role, "tfoot") },
+			},
+			MuiTableHead: {
+				defaultProps: { component: MuiTableHead },
+			},
+			MuiTablePagination: {
+				defaultProps: {
+					component: withRenderProp(Role, "td"),
+					slotProps: { root: { colSpan: 999 } },
+				},
+			},
+			MuiTableRow: { defaultProps: { component: withRenderProp(Role, "tr") } },
+			MuiTableSortLabel: {
+				defaultProps: {
+					component: Role.span,
+					// TODO: This should use sort-ascending and sort-descending icons, but that requires disabling MUI's built-in icon rotation.
+					IconComponent: ArrowDownIcon,
+				},
+			},
+			MuiTablePaginationActions: {
+				defaultProps: {
+					slots: {
+						previousButtonIcon: ChevronLeftIcon,
+						nextButtonIcon: ChevronRightIcon,
+						firstButtonIcon: ChevronLeftDoubleIcon,
+						lastButtonIcon: ChevronRightDoubleIcon,
+					},
+				},
+			},
+			MuiTextField: {
+				defaultProps: {
+					// component: Role.input, // This dynamically renders as `textarea` when multiline is true
+					slots: {
+						input: MuiTextFieldInput,
+					},
+				},
+			},
+			MuiToggleButton: { defaultProps: { component: MuiIconButton } },
+			MuiToolbar: { defaultProps: { component: Role.div } },
+			MuiTooltip: {
+				defaultProps: {
+					placement: "top",
+					describeChild: true,
+					slotProps: {
+						popper: {
+							modifiers: [
+								{
+									name: "offset",
+									options: {
+										offset: [0, 2],
+									},
+								},
+							],
+						},
+					},
+				},
+			},
+			MuiTypography: {
+				defaultProps: {
+					variant: "body2",
+					variantMapping: {
+						h1: Role.h1,
+						h2: Role.h2,
+						h3: Role.h3,
+						h4: Role.h4,
+						h5: Role.h5,
+						h6: Role.h6,
+						subtitle1: Role.h6,
+						subtitle2: Role.h6,
+						body1: Role.p,
+						body2: Role.p,
+						inherit: Role.p,
+						button: Role.span,
+						caption: Role.span,
+						overline: Role.span,
+					} as unknown as TypographyOwnProps["variantMapping"],
+				},
+			},
+		},
+	});
+}
+
+// ----------------------------------------------------------------------------
+
+/** HOC that sets a default value for the `render` prop. */
+function withRenderProp(
+	Role: React.ComponentType<RoleProps>,
+	DefaultTagName: React.ElementType,
+) {
+	return React.forwardRef<HTMLDivElement, RoleProps>((props, forwardedRef) => {
+		return <Role render={<DefaultTagName />} {...props} ref={forwardedRef} />;
+	});
+}
+
+// ----------------------------------------------------------------------------
+
+/** Ignores all passed in props and renders nothing. */
+function Nothing() {
+	return null;
+}
+
+// ----------------------------------------------------------------------------
+
+export { createTheme };

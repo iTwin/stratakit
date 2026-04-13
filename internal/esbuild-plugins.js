@@ -9,6 +9,7 @@ import * as path from "node:path";
 import * as babel from "@babel/core";
 import * as lightningcss from "lightningcss";
 import {
+	accentsTransform,
 	primitivesTransform,
 	staticVariablesTransform,
 	themeTransform,
@@ -59,6 +60,7 @@ export function inlineCssPlugin() {
 
 			onLoad({ filter: /.*/, namespace: "inline-css" }, (args) => {
 				const visitor = lightningcss.composeVisitors([
+					accentsTransform(),
 					primitivesTransform(),
 					themeTransform(),
 					typographyTransform(),

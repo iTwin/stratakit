@@ -1,0 +1,48 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+
+.MuiBottomNavigationAction-root {
+	isolation: isolate;
+	color: var(--stratakit-color-text-neutral-primary);
+	--🥝Icon-color: var(--stratakit-color-icon-neutral-base);
+
+	@media (any-hover: hover) {
+		&:where(:hover) {
+			--🥝Icon-color: var(--stratakit-color-icon-neutral-primary);
+		}
+	}
+
+	&:where(.Mui-selected) {
+		color: var(--stratakit-color-text-accent-strong);
+		--🥝Icon-color: var(--stratakit-color-icon-accent-strong);
+	}
+}
+
+.MuiBottomNavigationAction-content {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	position: relative;
+
+	:where(.MuiBottomNavigationAction-root.Mui-selected) & {
+		&::before {
+			content: "";
+			pointer-events: none;
+			z-index: -1;
+
+			position: absolute;
+			inset-block: calc(-1 * var(--stratakit-space-x1));
+			inset-inline: calc(-1 * var(--stratakit-space-x2));
+
+			background-color: var(--stratakit-color-bg-glow-on-surface-accent-pressed);
+			border: 1px solid var(--stratakit-color-border-accent-strong);
+			border-radius: 4px;
+		}
+	}
+}
+
+.MuiBottomNavigationAction-label {
+	@apply --typography("body-sm");
+}

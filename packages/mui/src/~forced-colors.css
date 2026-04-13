@@ -3,32 +3,122 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-:is(.MuiCheckbox-root, .MuiRadio-root) > input {
-	border-color: CanvasText;
-
-	:where(.Mui-checked, .MuiCheckbox-indeterminate) & {
+.MuiAutocomplete-option {
+	&:where([aria-selected="true"]:not([aria-disabled="true"])) {
 		background-color: SelectedItem;
+		border-color: SelectedItemText;
+		color: SelectedItemText;
+		forced-color-adjust: none; /* removing the backplate */
+	}
+}
 
-		&::after {
-			background-color: SelectedItemText;
-		}
+.MuiAutocomplete-paper {
+	border: 1px solid;
+}
+
+.MuiAvatar-root {
+	border: 1px solid;
+}
+
+.MuiBadge-badge {
+	:where(.MuiBadge-root[data-_sk-inline]) & {
+		border: 1px solid;
 	}
 
-	:where(.Mui-error) & {
+	:where(.MuiBadge-root:not([data-_sk-inline])) & {
+		forced-color-adjust: none;
+		background-color: Highlight;
+		color: HighlightText;
+	}
+}
+
+.MuiBottomNavigation-root {
+	border-block-start: 1px solid;
+}
+
+.MuiBottomNavigationAction-root {
+	&:where(.Mui-selected) {
+		color: SelectedItemText;
+	}
+}
+
+.MuiBottomNavigationAction-content {
+	:where(.MuiBottomNavigationAction-root.Mui-selected) & {
+		&::before {
+			background-color: SelectedItem;
+			border-color: SelectedItemText;
+		}
+	}
+}
+.MuiBottomNavigationAction-label {
+	&:where(.Mui-selected) {
+		forced-color-adjust: none; /* removing the backplate */
+	}
+}
+
+:is(.MuiButton-root, .MuiIconButton-root) {
+	--_MuiButton-icon-color: currentColor;
+	background-color: ButtonFace;
+	border: 1px solid ButtonBorder;
+	color: ButtonText;
+
+	&:where(.MuiButton-colorError) {
+		forced-color-adjust: none;
+		box-shadow: none;
+	}
+
+	&:where(.MuiIconButton-colorError, .MuiButton-colorError) {
 		background-color: Mark;
-
-		&::after {
-			background-color: MarkText;
-		}
+		color: MarkText;
 	}
 
-	:where(.Mui-disabled) & {
+	&:where(.Mui-disabled) {
 		background-color: Canvas;
 		border-color: GrayText;
+		color: GrayText;
+	}
+}
 
-		&::after {
-			background-color: GrayText;
-		}
+:is(.MuiCheckbox-root, .MuiRadio-root) {
+	--_MuiCheckbox-border-color: CanvasText;
+	--_MuiCheckbox-color: CanvasText;
+
+	&:where(.Mui-checked, .MuiCheckbox-indeterminate) {
+		--_MuiCheckbox-background-color: SelectedItem;
+		--_MuiCheckbox-color: SelectedItemText;
+	}
+
+	:where(.MuiFormControlLabel-root.Mui-error) & {
+		--_MuiCheckbox-background-color: Mark;
+		--_MuiCheckbox-color: MarkText;
+	}
+
+	&:where(.Mui-disabled) {
+		--_MuiCheckbox-background-color: Canvas;
+		--_MuiCheckbox-border-color: GrayText;
+		--_MuiCheckbox-color: GrayText;
+	}
+}
+
+.MuiDialog-paper {
+	border: 1px solid;
+}
+
+.MuiDrawer-paper {
+	:where(.MuiDrawer-anchorTop) > & {
+		border-block-end: 1px solid;
+	}
+
+	:where(.MuiDrawer-anchorRight) > & {
+		border-inline-start: 1px solid;
+	}
+
+	:where(.MuiDrawer-anchorBottom) > & {
+		border-block-start: 1px solid;
+	}
+
+	:where(.MuiDrawer-anchorLeft) > & {
+		border-inline-end: 1px solid;
 	}
 }
 
@@ -45,6 +135,58 @@
 	&::after {
 		background-color: MarkText;
 	}
+}
+
+.MuiInputBase-root {
+	&:where(.Mui-disabled) {
+		border-color: GrayText;
+	}
+}
+
+.MuiLinearProgress-root {
+	border: 1px solid;
+}
+
+.MuiLinearProgress-bar {
+	background-color: CanvasText;
+}
+
+.MuiListItemIcon-root {
+	color: inherit;
+}
+
+.MuiMenuItem-root {
+	border-color: Canvas;
+
+	&:where(.Mui-selected:not(.Mui-disabled)) {
+		forced-color-adjust: none; /* removing the backplate */
+		background-color: SelectedItem;
+		border-color: SelectedItemText;
+		color: SelectedItemText;
+		--🥝Icon-color: SelectedItemText;
+	}
+
+	&:where(.Mui-disabled) {
+		color: GrayText;
+		--🥝Icon-color: GrayText;
+	}
+}
+
+.MuiMenu-paper {
+	border: 1px solid CanvasText;
+}
+
+.MuiPaginationItem-root {
+	&:where(.Mui-selected) {
+		background-color: SelectedItem;
+		border-color: SelectedItemText;
+		color: SelectedItemText;
+		forced-color-adjust: none; /* removing the backplate */
+	}
+}
+
+.MuiPopover-paper {
+	border: 1px solid;
 }
 
 .MuiSlider-root {
@@ -78,5 +220,60 @@
 
 	&:where(:nth-child(1 of &), :nth-last-child(1 of &)) {
 		background-color: transparent;
+	}
+}
+
+.MuiSnackbarContent-root {
+	border: 1px solid;
+}
+
+.MuiStepLabel-label {
+	&:where(.Mui-error) {
+		background-color: Mark;
+		color: MarkText;
+		forced-color-adjust: none; /* removing the backplate */
+	}
+}
+
+.MuiStepIcon-root {
+	&:where(.Mui-active) {
+		border-color: SelectedItemText;
+		background-color: SelectedItem;
+		color: SelectedItemText;
+
+		&::before {
+			forced-color-adjust: none; /* removing the backplate */
+		}
+	}
+}
+
+.MuiSwitch-switchBase {
+	--_MuiSwitch-thumb-background-color: CanvasText;
+
+	&:where(.Mui-checked:not(.Mui-disabled)) {
+		--_MuiSwitch-thumb-background-color: SelectedItemText;
+
+		+ .MuiSwitch-track {
+			background-color: SelectedItem;
+		}
+	}
+
+	&:where(.Mui-disabled) {
+		--_MuiSwitch-thumb-background-color: GrayText;
+
+		+ .MuiSwitch-track {
+			--_MuiSwitch-track-border-color: GrayText;
+		}
+	}
+}
+
+.MuiTabs-indicator {
+	background-color: CanvasText;
+}
+
+.MuiToggleButton-root {
+	&:where(.Mui-selected) {
+		background-color: SelectedItem;
+		color: SelectedItemText;
 	}
 }

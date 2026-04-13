@@ -8,6 +8,11 @@ links:
 
 ::example{src="mui/TextField.default"}
 
+## StrataKit MUI modifications
+
+- Only the `"outlined"` variant is supported. The `variant` prop is marked as deprecated.
+- The `color` prop is not supported.
+
 ## Examples
 
 ### Sizes

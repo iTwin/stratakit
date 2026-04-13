@@ -7,7 +7,7 @@ links:
 
 ::example{src="mui/Icon.default"}
 
-The **Icon** component ensures a consistent visual style for icons throughout the user interface. It is optimized for use with the [icons](/icons/) from the [`@stratakit/icons`](https://github.com/iTwin/stratakit/tree/main/packages/icons) package, but it also supports [custom icons](#custom).
+The **Icon** component ensures a consistent visual style for icons throughout the user interface. It is optimized for use with [StrataKit icons](/icons/), but it also supports [custom icons](#custom).
 
 Use the `href` prop to specify the URL of the icon you want to display. The [icons](/icons/) from the [`@stratakit/icons`](https://github.com/iTwin/stratakit/tree/main/packages/icons) package use [`<symbol>` elements](https://developer.mozilla.org/en-US/docs/Web/SVG/Reference/Element/symbol), which allow for different levels of icon detail. You can specify the desired detail level by including a [URI fragment](https://developer.mozilla.org/en-US/docs/Web/URI/Reference/Fragment) in the `href`. The available symbols are `#icon` (the default) and `#icon-large`.
 

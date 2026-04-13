@@ -1,0 +1,1 @@
+import{j as t}from"./client.BUf3Y1ok.js";import{A as r}from"./Anchor.DZeJs28S.js";import"./styles.internal.iAh-c3F9.js";import"./ExamplePreview.B7FkgH4T.js";import"./preload-helper.CUVBPk9B.js";const m=()=>t.jsx(r,{href:"/getting-started",children:"Getting started"});export{m as default};

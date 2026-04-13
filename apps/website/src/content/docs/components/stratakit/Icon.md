@@ -42,7 +42,7 @@ Use the [`color` CSS property](https://developer.mozilla.org/en-US/docs/Web/CSS/
 
 ### Custom
 
-Use the `render` prop to display a custom SVG icon.
+Use the `render` prop to display a custom inline SVG icon. Alternatively, you can use the `href` prop to reference a custom icon or a specific `<symbol>` element within an external SVG file.
 
 ::example{src="mui/Icon.custom"}
 

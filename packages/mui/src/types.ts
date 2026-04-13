@@ -7,8 +7,37 @@
 // See: https://mui.com/material-ui/customization/theming/#typescript
 // See: https://www.typescriptlang.org/docs/handbook/declaration-merging.html#module-augmentation
 
-import type { TextFieldProps, TextFieldVariants } from "@mui/material";
+import type { RoleProps } from "@ariakit/react/role";
+import type { BadgeProps } from "@mui/material/Badge";
+import type { IconButtonProps } from "@mui/material/IconButton";
+import type { CommonProps } from "@mui/material/OverridableComponent";
+import type { TableCellProps as MuiTableCellProps } from "@mui/material/TableCell";
+import type {
+	TextFieldProps,
+	TextFieldVariants,
+} from "@mui/material/TextField";
+import type { TypographyProps } from "@mui/material/Typography";
 import type * as React from "react";
+
+declare module "@mui/material/OverridableComponent" {
+	interface CommonProps {
+		/**
+		 * Customize the `root` element by passing a React element.
+		 *
+		 * @example
+		 * ```tsx
+		 * render={<a href="/example" />}>
+		 * ```
+		 *
+		 * **Note**: When using the `render` prop with a custom component, you must ensure the component is open for extension.
+		 * This means it should pass the incoming props, including event listeners and the forwarded `ref` prop, to the underlying element.
+		 */
+		render?: RoleProps["render"];
+
+		/** @deprecated Use `render` prop instead. */
+		component?: React.ElementType;
+	}
+}
 
 declare module "@mui/material/Alert" {
 	interface AlertPropsVariantOverrides {
@@ -25,6 +54,35 @@ declare module "@mui/material/Alert" {
 	}
 }
 
+declare module "@mui/material/Badge" {
+	interface BadgePropsColorOverrides {
+		default: false;
+	}
+
+	interface BadgeOwnProps {
+		/**
+		 * When `true`, the badge is rendered in normal document flow,
+		 * instead of being positioned relative to its child based on `anchorOrigin` and `overlap` props.
+		 *
+		 * @default false
+		 */
+		inline?: boolean;
+		/**
+		 * The default color with `@stratakit/mui` is `"secondary"`.
+		 *
+		 * @default 'secondary'
+		 */
+		color?: BadgeProps["color"];
+	}
+}
+
+declare module "@mui/material/ButtonBase" {
+	interface ButtonBaseOwnProps {
+		/** @deprecated Use the `render` prop instead. */
+		LinkComponent?: React.ElementType;
+	}
+}
+
 declare module "@mui/material/Button" {
 	interface ButtonPropsColorOverrides {
 		info: false;
@@ -34,12 +92,26 @@ declare module "@mui/material/Button" {
 	}
 
 	interface ButtonOwnProps {
+		LinkComponent?: never;
+
 		/**
 		 * The default variant with `@stratakit/mui` is `"contained"`.
 		 *
 		 * @default 'contained'
 		 */
 		variant?: "contained" | "outlined" | "text";
+	}
+}
+
+declare module "@mui/material/BottomNavigationAction" {
+	interface BottomNavigationActionOwnProps {
+		LinkComponent?: never;
+	}
+}
+
+declare module "@mui/material/CardActionArea" {
+	interface CardActionAreaOwnProps {
+		LinkComponent?: never;
 	}
 }
 
@@ -51,6 +123,42 @@ declare module "@mui/material/Checkbox" {
 		success: false;
 		warning: false;
 		error: false;
+	}
+
+	interface CheckboxPropsSizeOverrides {
+		small: false;
+		large: false;
+	}
+}
+
+declare module "@mui/material/Chip" {
+	interface ChipOwnProps {
+		/**
+		 * The label of the delete button.
+		 *
+		 * @default 'Clear'
+		 */
+		deleteLabel?: string;
+
+		/** @deprecated DO NOT USE */
+		color?: never;
+	}
+
+	interface ChipPropsColorOverrides {
+		default: false;
+		primary: false;
+		secondary: false;
+		error: false;
+		info: false;
+		success: false;
+		warning: false;
+	}
+}
+
+declare module "@mui/material/Dialog" {
+	interface DialogProps extends Pick<CommonProps, "render"> {
+		/** @deprecated Use `render` prop instead. */
+		component?: React.ElementType;
 	}
 }
 
@@ -65,6 +173,8 @@ declare module "@mui/material/Fab" {
 	}
 
 	interface FabOwnProps {
+		LinkComponent?: never;
+
 		/**
 		 * The default color with `@stratakit/mui` is `"primary"`.
 		 *
@@ -82,14 +192,38 @@ declare module "@mui/material/FormLabel" {
 		warning: false;
 		error: false;
 	}
+
+	interface FormLabelOwnProps {
+		/** @deprecated */
+		component?: never; // `@deprecated` marker is not showing up, so using `never` to prevent usage of this prop.
+	}
 }
 
 declare module "@mui/material/IconButton" {
 	interface IconButtonPropsColorOverrides {
+		default: false;
 		info: false;
 		success: false;
 		warning: false;
 		inherit: false;
+	}
+
+	interface IconButtonOwnProps {
+		LinkComponent?: never;
+
+		/**
+		 * The default color with `@stratakit/mui` is `"secondary"`.
+		 *
+		 * @default 'secondary'
+		 */
+		color?: IconButtonProps["color"];
+
+		/**
+		 * The accessible name of the button, which is also shown as a tooltip on hover/focus.
+		 *
+		 * If not specified, the accessible name and tooltip must be wired up manually.
+		 */
+		label?: string;
 	}
 }
 
@@ -103,6 +237,24 @@ declare module "@mui/material/InputBase" {
 	}
 }
 
+declare module "@mui/material/ListItemButton" {
+	interface ListItemButtonOwnProps {
+		LinkComponent?: never;
+	}
+}
+
+declare module "@mui/material/MenuItem" {
+	interface MenuItemOwnProps {
+		LinkComponent?: never;
+	}
+}
+
+declare module "@mui/material/PaginationItem" {
+	interface PaginationItemOwnProps {
+		LinkComponent?: never;
+	}
+}
+
 declare module "@mui/material/Radio" {
 	interface RadioPropsColorOverrides {
 		secondary: false;
@@ -111,6 +263,10 @@ declare module "@mui/material/Radio" {
 		success: false;
 		warning: false;
 		error: false;
+	}
+
+	interface RadioPropsSizeOverrides {
+		small: false;
 	}
 }
 
@@ -135,6 +291,25 @@ declare module "@mui/material/Switch" {
 	}
 }
 
+declare module "@mui/material/StepButton" {
+	interface StepButtonOwnProps {
+		LinkComponent?: never;
+	}
+}
+
+declare module "@mui/material/Tab" {
+	interface TabOwnProps {
+		LinkComponent?: never;
+	}
+}
+
+declare module "@mui/material/TableCell" {
+	interface TableCellProps extends Pick<CommonProps, "render"> {
+		/** @deprecated Use `render` prop instead. */
+		component?: MuiTableCellProps["component"];
+	}
+}
+
 declare module "@mui/material/TextField" {
 	interface TextFieldPropsColorOverrides {
 		secondary: false;
@@ -151,12 +326,33 @@ declare module "@mui/material/TextField" {
 	): React.JSX.Element;
 }
 
+declare module "@mui/material/ToggleButton" {
+	interface ToggleButtonOwnProps {
+		LinkComponent?: never;
+
+		label?: IconButtonProps["label"];
+	}
+}
+
 declare module "@mui/material/Tooltip" {
-	interface TooltipOwnProps {
+	interface TooltipProps {
 		/**
 		 * The default value with `@stratakit/mui` is `true`.
 		 * Use `describeChild={false}` if you want to label the child element.
+		 *
+		 * @default true
 		 */
 		describeChild?: boolean;
+	}
+}
+
+declare module "@mui/material/Typography" {
+	interface TypographyOwnProps {
+		/**
+		 * The default variant with `@stratakit/mui` is `"body2"`.
+		 *
+		 * @default "body2"
+		 */
+		variant?: TypographyProps["variant"];
 	}
 }

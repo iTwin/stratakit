@@ -4,13 +4,14 @@
  *--------------------------------------------------------------------------------------------*/
 
 import Button from "@mui/material/Button";
+import Stack from "@mui/material/Stack";
 
 export default () => {
 	return (
-		<>
+		<Stack spacing={1} direction="row">
 			<Button variant="contained">Contained</Button>
 			<Button variant="outlined">Outlined</Button>
 			<Button variant="text">Text</Button>
-		</>
+		</Stack>
 	);
 };

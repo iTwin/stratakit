@@ -7,11 +7,11 @@ import { defineCollection, reference, z } from "astro:content";
 import * as fs from "node:fs/promises";
 import { createRequire } from "node:module";
 import * as path from "node:path";
-import * as process from "node:process";
 
 import { docsLoader } from "@astrojs/starlight/loaders";
 import { docsSchema } from "@astrojs/starlight/schema";
 import { file } from "astro/loaders";
+import { slug as generateSlug } from "github-slugger";
 
 import type { DataStore, Loader } from "astro/loaders";
 import type { Api } from "../api.ts";
@@ -20,20 +20,31 @@ const require = createRequire(import.meta.url);
 
 export const collections = {
 	docs: defineCollection({
-		loader: docsLoader(),
+		loader: docsLoader({
+			generateId: ({ entry }) => {
+				const parsed = path.posix.parse(entry);
+				const segments = parsed.dir.split("/").filter(Boolean);
+
+				// Drop (flatten) intermediate folders under components/*
+				// e.g. components/mui/Button -> components/Button
+				if (segments[0] === "components" && segments.length > 1) {
+					segments.splice(1);
+				}
+
+				return [...segments, parsed.name]
+					.map((segment) => generateSlug(segment))
+					.join("/");
+			},
+		}),
 		schema: docsSchema({
 			extend: z.object({
-				status: z
-					.enum(["draft", "unstable", "stable", "deprecated", "unknown"])
-					.optional(),
+				status: z.enum(["unstable", "stable", "deprecated"]).optional(),
 				links: z
 					.object({
-						demo: z.string().optional(),
-						github: z.string().optional(),
-						figma: z.string().optional(),
+						muiDocs: z.string().optional(),
+						apiReference: z.string().optional(),
 					})
 					.optional(),
-				associated: z.array(reference("docs")).optional(),
 			}),
 		}),
 	}),
@@ -149,6 +160,12 @@ function packagesSchema() {
 							jsdoc: reference("jsdoc").optional(),
 						}),
 					)
+					.optional(),
+				reexport: z
+					.object({
+						packageName: z.string(),
+						apiName: z.string(),
+					})
 					.optional(),
 			}),
 		),

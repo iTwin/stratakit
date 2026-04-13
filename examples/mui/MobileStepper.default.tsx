@@ -28,7 +28,7 @@ export default () => {
 					disabled={activeStep === steps - 1}
 				>
 					Next
-					<Icon href={`${svgNext}#icon-large`} size="large" />
+					<Icon href={svgNext} />
 				</Button>
 			}
 			backButton={
@@ -38,7 +38,7 @@ export default () => {
 					onClick={() => setActiveStep((prev) => prev - 1)}
 					disabled={activeStep === 0}
 				>
-					<Icon href={`${svgBack}#icon-large`} size="large" />
+					<Icon href={svgBack} />
 					Back
 				</Button>
 			}

@@ -1,0 +1,25 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+
+:is(.MuiSelect-select, .MuiNativeSelect-select):is(.MuiInputBase-input) {
+	--✨gap: var(--stratakit-space-x2);
+	--✨icon-size: 1rem;
+
+	display: flex;
+	align-items: center;
+	gap: var(--✨gap);
+
+	/* reserve space for the absolute positioned icon */
+	padding-inline-end: calc(
+		(var(--_MuiInput-padding-inline) + var(--✨gap) - 1px) +
+		var(--✨icon-size)
+	);
+}
+
+:is(.MuiSelect-icon, .MuiNativeSelect-icon) {
+	inset-block-start: 50%;
+	translate: 0 -50%;
+	inset-inline-end: calc(var(--_MuiInput-padding-inline) - 1px);
+}

@@ -6,7 +6,7 @@
 import { Icon } from "@stratakit/foundations";
 import { definePage } from "~/~utils.tsx";
 
-import placeholderIcon from "@stratakit/icons/placeholder.svg";
+import svgPlaceholder from "@stratakit/icons/placeholder.svg";
 
 export const handle = { title: "Icon" };
 
@@ -16,7 +16,7 @@ export default definePage(
 			<Icon
 				alt={alt}
 				size={size as "regular" | "large"}
-				href={`${placeholderIcon}#${size === "large" ? "icon-large" : "icon"}`}
+				href={`${svgPlaceholder}#${size === "large" ? "icon-large" : "icon"}`}
 			/>
 		);
 	},

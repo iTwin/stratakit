@@ -1,0 +1,53 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+
+.MuiAutocomplete-inputRoot:is(.MuiInputBase-root) {
+	--✨button-width: var(--stratakit-size-control-field-height-small);
+	/* Account for 1px border on input. */
+	--_MuiAutocomplete-button-inset: calc(-1px + var(--stratakit-space-x1));
+
+	padding-inline-start: var(--_MuiInput-padding-inline);
+	padding-inline-end: calc(
+		(var(--✨button-width) * 2) +
+		(var(--_MuiAutocomplete-button-inset) * 2)
+	);
+	column-gap: var(--stratakit-space-x1);
+
+	&:where(:not(:has(.MuiAutocomplete-clearIndicator))) {
+		padding-inline-end: calc(var(--✨button-width) + (var(--_MuiAutocomplete-button-inset) * 2));
+	}
+}
+
+.MuiAutocomplete-input:is(.MuiInputBase-input) {
+	padding-inline: 0; /* Padding moved to the parent */
+}
+
+.MuiAutocomplete-tag:is(.MuiChip-root) {
+	margin-block: var(--stratakit-space-x05);
+	margin-inline: 0; /* Now relying on `column-gap` */
+}
+
+.MuiAutocomplete-clearIndicator {
+	visibility: visible;
+}
+
+.MuiAutocomplete-endAdornment {
+	inset-inline-end: var(--_MuiAutocomplete-button-inset);
+
+	> * {
+		margin-inline-end: 0; /* MUI applies `-2px` */
+	}
+}
+
+.MuiAutocomplete-listbox {
+	padding: var(--stratakit-space-x1);
+}
+
+.MuiAutocomplete-option {
+	&:where(.Mui-focusVisible) {
+		outline: var(--🥝focus-outline);
+		outline-offset: var(--🥝focus-outline-offset);
+	}
+}

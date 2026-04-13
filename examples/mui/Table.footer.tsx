@@ -38,7 +38,7 @@ export default () => {
 	];
 
 	return (
-		<TableContainer component={Paper}>
+		<TableContainer render={<Paper />}>
 			<Table className={styles.table}>
 				<caption className={styles.caption}>Dessert nutrition</caption>
 				<TableHead>
@@ -53,7 +53,7 @@ export default () => {
 				<TableBody>
 					{rows.map((row) => (
 						<TableRow key={row.name}>
-							<TableCell component="th" scope="row">
+							<TableCell render={<th />} scope="row">
 								{row.name}
 							</TableCell>
 							<TableCell align="right">{row.calories}</TableCell>

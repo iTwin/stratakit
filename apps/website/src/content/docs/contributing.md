@@ -85,16 +85,16 @@ This site’s content is written in _markdown_: a minimal formatting syntax usin
 
 #### Tables
 
-| Use case                                                                         | [Anchor](/components/anchor) | [Button](/components/button) |
-| -------------------------------------------------------------------------------- | ---------------------------- | ---------------------------- |
-| Navigating between interface screens or sections                                 | ✅                           | ❌                           |
-| Submitting forms, confirming or cancelling dialogs, creating or deleting content | ❌                           | ✅                           |
+| Use case                                                                         | [Link](/components/link) | [Button](/components/button) |
+| -------------------------------------------------------------------------------- | ------------------------ | ---------------------------- |
+| Navigating between interface screens or sections                                 | ✅                       | ❌                           |
+| Submitting forms, confirming or cancelling dialogs, creating or deleting content | ❌                       | ✅                           |
 
 ```md
-| Use case                                                                         | [Anchor](/components/anchor) | [Button](/components/button) |
-| -------------------------------------------------------------------------------- | ---------------------------- | ---------------------------- |
-| Navigating between interface screens or sections                                 | ✅                           | ❌                           |
-| Submitting forms, confirming or cancelling dialogs, creating or deleting content | ❌                           | ✅                           |
+| Use case                                                                         | [Link](/components/link) | [Button](/components/button) |
+| -------------------------------------------------------------------------------- | ------------------------ | ---------------------------- |
+| Navigating between interface screens or sections                                 | ✅                       | ❌                           |
+| Submitting forms, confirming or cancelling dialogs, creating or deleting content | ❌                       | ✅                           |
 ```
 
 ### Frontmatter
@@ -107,13 +107,9 @@ For reference, here is what the [**Button**](/components/button) frontmatter loo
 ---
 title: Button
 description: Buttons are used to initiate actions.
-status: stable
-associated:
-  - Icon
 links:
-  demo: tests/button
-  github: packages/bricks/src/Button.tsx
-  figma: https://www.figma.com/design/VcGw3L2IIlboxNlOdsKdai/%F0%9F%A5%9D-Kiwi-Component-Library?node-id=1436-51507&t=FX2fZYZ93vfliX17-4
+  muiDocs: https://mui.com/material-ui/react-button/
+  apiReference: https://mui.com/material-ui/api/button/
 ---
 ```
 

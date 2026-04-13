@@ -26,33 +26,37 @@ const colors = [
 const icons = ["", "end"] as const;
 
 export default () => {
-	return icons.map((icon) => {
-		return (
-			<Stack key={icon} spacing={1}>
-				{variants.map((variant) => {
-					const variantName = `${variant.charAt(0).toUpperCase()}${variant.slice(1)}`;
-					return (
-						<Stack key={variant} spacing={1} direction="row">
-							{colors.map((color) => {
-								return (
-									<Button
-										key={color}
-										variant={variant}
-										color={color}
-										endIcon={
-											icon === "end" ? (
-												<Icon href={svgPlaceholder} />
-											) : undefined
-										}
-									>
-										{variantName} {color}
-									</Button>
-								);
-							})}
-						</Stack>
-					);
-				})}
-			</Stack>
-		);
-	});
+	return (
+		<Stack spacing={1}>
+			{icons.map((icon) => {
+				return (
+					<Stack key={icon} spacing={1}>
+						{variants.map((variant) => {
+							const variantName = `${variant.charAt(0).toUpperCase()}${variant.slice(1)}`;
+							return (
+								<Stack key={variant} spacing={1} direction="row">
+									{colors.map((color) => {
+										return (
+											<Button
+												key={color}
+												variant={variant}
+												color={color}
+												endIcon={
+													icon === "end" ? (
+														<Icon href={svgPlaceholder} />
+													) : undefined
+												}
+											>
+												{variantName} {color}
+											</Button>
+										);
+									})}
+								</Stack>
+							);
+						})}
+					</Stack>
+				);
+			})}
+		</Stack>
+	);
 };

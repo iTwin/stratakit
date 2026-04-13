@@ -13,15 +13,17 @@ import {
 	useLocation,
 	useMatches,
 } from "react-router";
-import { Root } from "@stratakit/foundations";
+import { Root as StrataKitRoot } from "@stratakit/foundations";
+import { Root as StrataKitMuiRoot } from "@stratakit/mui";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { AppNavigationRail } from "./~navigation.tsx";
-import { ColorSchemeProvider, useColorScheme } from "./~utils.tsx";
+import { useSettingsStore } from "./~settings.tsx";
+import { useColorScheme } from "./~utils.tsx";
 
 import type { LinksFunction } from "react-router";
 
-import interVariable from "./fonts/InterVariable.woff2?url";
-import interVariableItalic from "./fonts/InterVariable-Italic.woff2?url";
+import interVariable from "./assets/InterVariable.woff2?url";
+import interVariableItalic from "./assets/InterVariable-Italic.woff2?url";
 
 const queryClient = new QueryClient({
 	defaultOptions: { queries: { experimental_prefetchInRender: true } }, // https://tanstack.com/query/latest/docs/framework/react/guides/suspense#using-usequerypromise-and-reactuse-experimental
@@ -39,11 +41,7 @@ export const links: LinksFunction = () => {
 };
 
 export function Layout({ children }: { children: React.ReactNode }) {
-	return (
-		<ColorSchemeProvider>
-			<LayoutInner>{children}</LayoutInner>
-		</ColorSchemeProvider>
-	);
+	return <LayoutInner>{children}</LayoutInner>;
 }
 
 function LayoutInner({ children }: { children: React.ReactNode }) {
@@ -74,7 +72,9 @@ function LayoutInner({ children }: { children: React.ReactNode }) {
 
 export default function App() {
 	const colorScheme = useColorScheme();
+	const accentColor = useSettingsStore((state) => state.accentColor);
 	const location = useLocation();
+	const isRootTest = useIsRootTest();
 
 	React.useEffect(function signalPageLoad() {
 		document.body.dataset.loaded = "true";
@@ -83,14 +83,20 @@ export default function App() {
 	return (
 		<QueryClientProvider client={queryClient}>
 			{(() => {
-				// MUI theme uses a looser density.
+				// MUI theme uses a looser density, whereas StrataKit components need the `"dense"` density to preserve the original look and feel.
 				const density = location.pathname.startsWith("/mui")
 					? undefined
 					: "dense";
 
+				// Use the `@stratakit/foundations` Root when testing the Root itself.
+				// Use `@stratakit/mui` for everything else.
+				const Root = isRootTest ? StrataKitRoot : StrataKitMuiRoot;
+
 				return (
 					<Root
+						key={isRootTest ? "foundations" : "mui"}
 						colorScheme={colorScheme}
+						unstable_accentColor={accentColor}
 						density={density}
 						synchronizeColorScheme={false}
 						style={{ display: "contents" }}

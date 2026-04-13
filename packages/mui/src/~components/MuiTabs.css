@@ -1,0 +1,17 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+
+.MuiTab-root {
+	&:where(.Mui-selected) {
+		color: var(--stratakit-color-text-accent-strong);
+	}
+	&:where(:focus-visible) {
+		outline-offset: -4px;
+	}
+}
+
+.MuiTabs-indicator {
+	background-color: var(--stratakit-color-border-accent-strong);
+}

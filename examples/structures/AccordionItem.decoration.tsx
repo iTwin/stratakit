@@ -5,14 +5,14 @@
 import { Icon } from "@stratakit/foundations";
 import { unstable_AccordionItem as AccordionItem } from "@stratakit/structures";
 
-import infoIcon from "@stratakit/icons/info.svg";
+import svgInfo from "@stratakit/icons/info.svg";
 
 export default () => {
 	return (
 		<AccordionItem.Root>
 			<AccordionItem.Header>
 				<AccordionItem.Marker />
-				<AccordionItem.Decoration render={<Icon href={infoIcon} />} />
+				<AccordionItem.Decoration render={<Icon href={svgInfo} />} />
 				<AccordionItem.Button>
 					<AccordionItem.Label>What is StrataKit?</AccordionItem.Label>
 				</AccordionItem.Button>

@@ -6,17 +6,9 @@
 import * as React from "react";
 import { Role } from "@ariakit/react/role";
 import { forwardRef } from "@stratakit/foundations/secret-internals";
+import { MuiInputLabelContext } from "./MuiInputLabel.js";
 
 import type { BaseProps } from "@stratakit/foundations/secret-internals";
-
-// ----------------------------------------------------------------------------
-
-const MuiAutocompleteContext = React.createContext<
-	| {
-			setLabelId: (id: string | undefined) => void;
-	  }
-	| undefined
->(undefined);
 
 // ----------------------------------------------------------------------------
 
@@ -24,14 +16,14 @@ const MuiAutocomplete = forwardRef<"div", BaseProps<"div">>(
 	(props, forwardedRef) => {
 		const [labelId, setLabelId] = React.useState<string | undefined>(undefined);
 		return (
-			<MuiAutocompleteContext.Provider value={{ setLabelId }}>
+			<MuiInputLabelContext.Provider value={{ setLabelId }}>
 				<Role.div
 					role="group"
 					aria-labelledby={labelId}
 					{...props}
 					ref={forwardedRef}
 				/>
-			</MuiAutocompleteContext.Provider>
+			</MuiInputLabelContext.Provider>
 		);
 	},
 );
@@ -39,4 +31,4 @@ DEV: MuiAutocomplete.displayName = "MuiAutocomplete";
 
 // ----------------------------------------------------------------------------
 
-export { MuiAutocomplete, MuiAutocompleteContext };
+export { MuiAutocomplete };

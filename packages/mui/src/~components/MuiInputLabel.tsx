@@ -4,33 +4,36 @@
  *--------------------------------------------------------------------------------------------*/
 
 import * as React from "react";
-import InputLabel from "@mui/material/InputLabel";
+import { Role } from "@ariakit/react/role";
 import { forwardRef } from "@stratakit/foundations/secret-internals";
-import { MuiAutocompleteContext } from "./MuiAutocomplete.js";
 
-import type { InputLabelProps } from "@mui/material/InputLabel";
 import type { BaseProps } from "@stratakit/foundations/secret-internals";
 
 // ----------------------------------------------------------------------------
 
-interface MuiTextFieldInputLabelProps
-	extends Omit<BaseProps<"label">, "color">,
-		InputLabelProps {}
+const MuiInputLabelContext = React.createContext<
+	| {
+			setLabelId: (id: string | undefined) => void;
+	  }
+	| undefined
+>(undefined);
 
-const MuiTextFieldInputLabel = forwardRef<"label", MuiTextFieldInputLabelProps>(
+// ----------------------------------------------------------------------------
+
+const MuiInputLabel = forwardRef<"label", BaseProps<"label">>(
 	(props, forwardedRef) => {
-		const { setLabelId } = React.useContext(MuiAutocompleteContext) ?? {};
+		const { setLabelId } = React.useContext(MuiInputLabelContext) ?? {};
 
 		React.useEffect(() => {
 			if (!setLabelId) return;
 			setLabelId(props.id);
 			return () => setLabelId(undefined);
 		}, [props.id, setLabelId]);
-		return <InputLabel {...props} ref={forwardedRef} />;
+		return <Role.label {...props} ref={forwardedRef} />;
 	},
 );
-DEV: MuiTextFieldInputLabel.displayName = "MuiTextFieldInputLabel";
+DEV: MuiInputLabel.displayName = "MuiInputLabel";
 
 // ----------------------------------------------------------------------------
 
-export { MuiTextFieldInputLabel };
+export { MuiInputLabel, MuiInputLabelContext };

@@ -25,10 +25,10 @@ import {
 } from "./~components/MuiChip.js";
 import { MuiDivider } from "./~components/MuiDivider.js";
 import { MuiIconButton } from "./~components/MuiIconButton.js";
+import { MuiInputLabel } from "./~components/MuiInputLabel.js";
 import { MuiSnackbar } from "./~components/MuiSnackbar.js";
 import { MuiStepIcon } from "./~components/MuiStepper.js";
 import { MuiTableCell, MuiTableHead } from "./~components/MuiTable.js";
-import { MuiTextFieldInputLabel } from "./~components/MuiTextField.js";
 import {
 	ArrowDownIcon,
 	CaretsUpDownIcon,
@@ -284,7 +284,7 @@ function createTheme() {
 			MuiInputAdornment: { defaultProps: { component: Role.div } },
 			MuiInputLabel: {
 				defaultProps: {
-					component: Role.label,
+					component: MuiInputLabel,
 					shrink: true, // Removes label animation and masked border from TextField
 				},
 			},
@@ -451,16 +451,7 @@ function createTheme() {
 					},
 				},
 			},
-			MuiTextField: {
-				defaultProps: {
-					component: Role.div,
-					slotProps: {
-						inputLabel: {
-							component: MuiTextFieldInputLabel,
-						},
-					},
-				},
-			},
+			MuiTextField: { defaultProps: { component: Role.div } },
 			MuiToggleButton: { defaultProps: { component: MuiIconButton } },
 			MuiToolbar: { defaultProps: { component: Role.div } },
 			MuiTooltip: {

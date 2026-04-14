@@ -9,7 +9,7 @@ links:
 
 The **Icon** component ensures a consistent visual style for icons throughout the user interface. It is optimized for use with [StrataKit icons](/icons/), but it also supports [custom icons](#custom).
 
-Use the `href` prop to specify the icon you want to display. This prop should be set to a URL to an `.svg` from the [`@stratakit/icons`](https://www.npmjs.com/package/@stratakit/icons?activeTab=versions) package, or a [URI fragment](https://developer.mozilla.org/en-US/docs/Web/URI/Reference/Fragment) pointing to a [`<symbol>` element](https://developer.mozilla.org/en-US/docs/Web/SVG/Reference/Element/symbol) inside an SVG. All StrataKit icons include two symbols with different levels of detail: `#icon` (the default) and `#icon-large`.
+Use the [`href`](/reference/mui/Icon/#Icon.Icon.href) prop to specify the icon you want to display. This prop should be set to a URL to an `.svg` from the [`@stratakit/icons`](https://www.npmjs.com/package/@stratakit/icons?activeTab=versions) package, or a [URI fragment](https://developer.mozilla.org/en-US/docs/Web/URI/Reference/Fragment) pointing to a [`<symbol>` element](https://developer.mozilla.org/en-US/docs/Web/SVG/Reference/Element/symbol) inside an SVG. All StrataKit icons include two symbols with different levels of detail: `#icon` (the default) and `#icon-large`.
 
 ## Examples
 

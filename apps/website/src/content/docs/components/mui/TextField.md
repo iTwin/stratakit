@@ -23,6 +23,7 @@ Make sure the **TextField** is suitable for your use case. There may be other, m
 
 - Only the `"outlined"` variant is supported. The `variant` prop is marked as deprecated.
 - The `color` prop is not supported.
+- Removed the [floating label](https://mui.com/material-ui/react-text-field/#floating-label) behavior. The label is always displayed above the input.
 
 ## Examples
 

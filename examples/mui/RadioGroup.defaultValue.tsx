@@ -13,7 +13,11 @@ export default () => {
 	return (
 		<FormControl render={<fieldset />} role="radiogroup">
 			<FormLabel render={<legend />}>Choose a design system:</FormLabel>
-			<RadioGroup name="design-system" role={undefined}>
+			<RadioGroup
+				name="design-system"
+				role={undefined}
+				defaultValue="StrataKit"
+			>
 				<FormControlLabel
 					value="StrataKit"
 					control={<Radio />}

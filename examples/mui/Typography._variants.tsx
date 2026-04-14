@@ -28,7 +28,7 @@ const variants = [
 export default () => {
 	return variants.map((variant) => {
 		return (
-			<Typography key={variant} variant={variant}>
+			<Typography key={variant} variant={variant} render={<div />}>
 				{variant.charAt(0).toUpperCase()}
 				{variant.slice(1)}
 			</Typography>

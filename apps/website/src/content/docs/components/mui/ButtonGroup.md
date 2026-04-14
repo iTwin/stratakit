@@ -7,3 +7,7 @@ links:
 ---
 
 ::example{src="mui/ButtonGroup.default"}
+
+## StrataKit MUI modifications
+
+- Grouped buttons default to `color="secondary"`.

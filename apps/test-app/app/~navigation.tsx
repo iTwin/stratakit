@@ -8,17 +8,11 @@ import { useHref, useLocation } from "react-router";
 import { Button, Divider, IconButton } from "@stratakit/bricks";
 import { Icon } from "@stratakit/foundations";
 import { unstable_NavigationRail as NavigationRail } from "@stratakit/structures";
-import {
-	isProduction,
-	useColorScheme,
-	useIsWideScreen,
-	useLocalStorage,
-	useSetColorScheme,
-} from "./~utils.tsx";
+import { SettingsDialog } from "./~settings.tsx";
+import { isProduction, useIsWideScreen, useLocalStorage } from "./~utils.tsx";
 
 import svgDocumentation from "@stratakit/icons/documentation.svg";
-import svgMoon from "@stratakit/icons/moon.svg";
-import svgSun from "@stratakit/icons/sun.svg";
+import svgSettings from "@stratakit/icons/settings.svg";
 import styles from "./~navigation.module.css";
 import svgComponents from "./assets/components.svg";
 import svgIcons from "./assets/icons.svg";
@@ -69,11 +63,9 @@ interface AppNavigationRailProps {
 export function AppNavigationRail(props: AppNavigationRailProps) {
 	const { mainContent } = props;
 
+	const [open, setOpen] = React.useState(false);
 	const location = useLocation();
 	const isWideScreen = useIsWideScreen();
-
-	const colorScheme = useColorScheme();
-	const setColorScheme = useSetColorScheme();
 
 	const showNavigation =
 		useLocalStorage("🥝:show-navigation") !== "false" && isWideScreen;
@@ -135,12 +127,11 @@ export function AppNavigationRail(props: AppNavigationRailProps) {
 					<NavigationRail.Footer>
 						<Divider />
 						<NavigationRail.Button
-							label="Toggle color scheme"
-							icon={colorScheme === "dark" ? svgSun : svgMoon}
-							onClick={() => {
-								setColorScheme(colorScheme === "dark" ? "light" : "dark");
-							}}
+							label="Settings"
+							icon={svgSettings}
+							onClick={() => setOpen(true)}
 						/>
+						<SettingsDialog open={open} onClose={() => setOpen(false)} />
 					</NavigationRail.Footer>
 				</NavigationRail.Content>
 			</NavigationRail.Root>

@@ -552,13 +552,13 @@ DEV: NavigationRailFooter.displayName = "NavigationRail.Footer";
 // ----------------------------------------------------------------------------
 
 export {
-	NavigationRailRoot as Root,
-	NavigationRailHeader as Header,
-	NavigationRailToggleButton as ToggleButton,
+	NavigationRailAnchor as Anchor,
+	NavigationRailButton as Button,
 	NavigationRailContent as Content,
+	NavigationRailFooter as Footer,
+	NavigationRailHeader as Header,
 	NavigationRailList as List,
 	NavigationRailListItem as ListItem,
-	NavigationRailButton as Button,
-	NavigationRailAnchor as Anchor,
-	NavigationRailFooter as Footer,
+	NavigationRailRoot as Root,
+	NavigationRailToggleButton as ToggleButton,
 };

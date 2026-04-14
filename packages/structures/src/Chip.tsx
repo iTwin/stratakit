@@ -219,8 +219,9 @@ DEV: Chip.displayName = "Chip";
 // ----------------------------------------------------------------------------
 
 export default Chip;
+
 export {
-	ChipRoot as Root,
-	ChipLabel as Label,
 	ChipDismissButton as DismissButton,
+	ChipLabel as Label,
+	ChipRoot as Root,
 };

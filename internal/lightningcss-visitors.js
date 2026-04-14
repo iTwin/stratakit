@@ -449,3 +449,59 @@ function cssFunction(name, value) {
 		},
 	};
 }
+
+/**
+ * LightningCSS visitor that replaces aurora primitives, with internal accent CSS variables.
+ *
+ * Input:
+ * ```css
+ * :root { --color: --primitive("color.aurora.800"); }
+ * ```
+ *
+ * Output:
+ * ```css
+ * :root { --color: var(--_stratakit-accent-800, oklch(33.76% 0.059 170.74)); }
+ * ```
+ *
+ * Aurora primitives that apply opacity to the base token do not generate separate token variables.
+ * Instead, they are defined using `oklch` functional notation using the base accent token.
+ *
+ * Input:
+ * ```css
+ * :root { --color: --primitive("color.aurora.12"); }
+ * ```
+ *
+ * Output:
+ * ```css
+ * :root { --color: oklch(from var(--_stratakit-accent-500, oklch(54% 0.1 170.26)) l c h / 12%); }
+ * ```
+ *
+ * @returns {import("lightningcss").Visitor}
+ */
+export function accentsTransform() {
+	return {
+		Function: {
+			"--primitive"(fn) {
+				if (
+					fn.arguments.length === 1 &&
+					fn.arguments[0].type === "token" &&
+					fn.arguments[0].value.type === "string"
+				) {
+					const [, group, token] = fn.arguments[0].value.value.split(".");
+					if (group !== "aurora") return;
+
+					const primitive = primitives[group][token];
+					const tokenNumber = Number(token);
+					if (tokenNumber % 50 === 0)
+						return {
+							raw: `var(--_stratakit-accent-${token}, ${primitive})`,
+						};
+
+					return {
+						raw: `oklch(from --primitive("color.aurora.500") l c h / ${token}%);`,
+					};
+				}
+			},
+		},
+	};
+}

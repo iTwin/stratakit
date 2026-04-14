@@ -3,6 +3,19 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-.autocomplete {
-	min-inline-size: 300px;
+.dialogContent {
+	display: flex;
+	flex-direction: column;
+	gap: var(--stratakit-space-x3);
+	padding-block-start: var(--stratakit-space-x1);
+}
+
+.formControl {
+	flex-direction: row;
+	align-items: center;
+	gap: var(--stratakit-space-x2);
+}
+
+.label {
+	flex: 1;
 }

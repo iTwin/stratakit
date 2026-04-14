@@ -26,6 +26,7 @@
 	--stratakit-mui-palette-secondary-contrastText: var(--stratakit-color-text-neutral-emphasis);
 
 	--stratakit-mui-palette-action-active: var(--stratakit-color-icon-neutral-primary);
+	--stratakit-mui-palette-action-selected: var(--stratakit-color-bg-glow-on-surface-accent-pressed);
 	--stratakit-mui-palette-action-disabled: var(--stratakit-color-icon-neutral-disabled);
 	--stratakit-mui-palette-action-disabledBackground: var(
 		--stratakit-color-bg-glow-on-surface-disabled

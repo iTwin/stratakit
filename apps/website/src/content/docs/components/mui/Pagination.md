@@ -11,3 +11,4 @@ links:
 ## StrataKit MUI modifications
 
 - The `shape` prop now defaults to `"rounded"` instead of `"circular"`.
+- Lightly styled using StrataKit's visual language.

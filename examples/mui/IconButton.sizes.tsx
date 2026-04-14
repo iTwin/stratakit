@@ -11,7 +11,7 @@ import svgPlaceholder from "@stratakit/icons/placeholder.svg";
 
 export default () => {
 	return (
-		<Stack spacing={1} direction="row" alignItems="center">
+		<Stack spacing={1} direction="row" sx={{ alignItems: "center" }}>
 			<IconButton size="small" label="Small">
 				<Icon href={svgPlaceholder} />
 			</IconButton>

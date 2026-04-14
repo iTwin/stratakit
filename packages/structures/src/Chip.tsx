@@ -77,7 +77,7 @@ interface ChipRootProps extends BaseProps<"div"> {
  * ```
  *
  * @deprecated Use MUI [`Chip`](https://mui.com/material-ui/api/chip/) component instead.
- * Read [migration documentation](https://stratakit.bentley.com/docs/getting-started/migration-from-legacy-stratakit/#chip) for additional details.
+ * See [migration guide](https://stratakit.bentley.com/docs/getting-started/migration-from-legacy-stratakit/#chip).
  */
 const ChipRoot = forwardRef<"div", ChipRootProps>((props, forwardedRef) => {
 	useInit();
@@ -105,7 +105,7 @@ interface ChipLabelProps extends BaseProps<"span"> {}
  * Label component that should be used with the compositional Chip component.
  *
  * @deprecated Use [`label`](https://mui.com/material-ui/api/chip/#chip-prop-label) prop of MUI [`Chip`](https://mui.com/material-ui/api/chip/) component instead.
- * Read [migration documentation](https://stratakit.bentley.com/docs/getting-started/migration-from-legacy-stratakit/#chip) for additional details.
+ * See [migration guide](https://stratakit.bentley.com/docs/getting-started/migration-from-legacy-stratakit/#chip).
  */
 const ChipLabel = forwardRef<"span", ChipLabelProps>((props, forwardedRef) => {
 	const labelId = useChipState((state) => state.labelId);
@@ -143,7 +143,7 @@ interface ChipDismissButtonProps extends Omit<BaseProps<"button">, "children"> {
  * Dismiss button component that should be used with the compositional Chip component.
  *
  * @deprecated Use [`onDelete`](https://mui.com/material-ui/api/chip/#chip-prop-onDelete), [`deleteIcon`](https://mui.com/material-ui/api/chip/#chip-prop-deleteIcon) props of MUI [`Chip`](https://mui.com/material-ui/api/chip/) component instead.
- * Read [migration documentation](https://stratakit.bentley.com/docs/getting-started/migration-from-legacy-stratakit/#chip) for additional details.
+ * See [migration guide](https://stratakit.bentley.com/docs/getting-started/migration-from-legacy-stratakit/#chip).
  */
 const ChipDismissButton = forwardRef<"button", ChipDismissButtonProps>(
 	(props, forwardedRef) => {
@@ -200,7 +200,7 @@ interface ChipProps
  * ```
  *
  * @deprecated Use MUI [`Chip`](https://mui.com/material-ui/api/chip/) component instead.
- * Read [migration documentation](https://stratakit.bentley.com/docs/getting-started/migration-from-legacy-stratakit/#chip) for additional details.
+ * See [migration guide](https://stratakit.bentley.com/docs/getting-started/migration-from-legacy-stratakit/#chip).
  */
 const Chip = forwardRef<"div", ChipProps>((props, forwardedRef) => {
 	useInit();
@@ -219,8 +219,9 @@ DEV: Chip.displayName = "Chip";
 // ----------------------------------------------------------------------------
 
 export default Chip;
+
 export {
-	ChipRoot as Root,
-	ChipLabel as Label,
 	ChipDismissButton as DismissButton,
+	ChipLabel as Label,
+	ChipRoot as Root,
 };

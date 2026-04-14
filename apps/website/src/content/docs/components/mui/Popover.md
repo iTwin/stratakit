@@ -7,3 +7,7 @@ links:
 ---
 
 ::example{src="mui/Popover.default"}
+
+## StrataKit MUI modifications
+
+- Added [role="dialog"](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/dialog_role) to the `paper` component.

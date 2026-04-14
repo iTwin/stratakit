@@ -30,7 +30,6 @@ export default () => {
 			</Button>
 			<Popover
 				id={dialogId}
-				role="dialog"
 				aria-labelledby={buttonId}
 				open={open}
 				anchorEl={anchorEl}

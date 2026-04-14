@@ -18,7 +18,7 @@ links:
 
 ### Heading
 
-Heading `variant` of the **Typography** will render a respective [`<h1>` to `<h6>` heading element](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/Heading_Elements). You can use the `render` prop to override the default semantics. This is useful when you want to maintain a consistent visual hierarchy without misappropriating semantic elements.
+Heading `variant`s of the **Typography** will render the respective [`<h1>` to `<h6>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/Heading_Elements) heading elements. You should use the `render` prop to override the rendered element and maintain proper [heading structure](https://www.a11yproject.com/posts/how-to-accessible-heading-structure/) in your application. When the `render` prop is not set, StrataKit will log a warning during development.
 
 ::example{src="mui/Typography.heading"}
 
@@ -26,10 +26,10 @@ Heading `variant` of the **Typography** will render a respective [`<h1>` to `<h6
 
 You may want a statement to _stand out_. This statement might regard a special offer, or perhaps a warning. Standalone statements are _not_ headings, since they do not introduce a new section of content.
 
-In these cases, combine a larger `variant` with the `render` prop:
+In these cases, combine a larger `variant` with the `render` prop to set a generic `<span>` or `<div>` element:
 
 ```jsx
-<Typography variant="h5" render={<span />}>
+<Typography variant="h6" render={<span />}>
 	This change cannot be undone.
 </Typography>
 ```
@@ -38,15 +38,16 @@ In these cases, combine a larger `variant` with the `render` prop:
 
 ### Variants
 
-Use **Typography's** `variant` prop to affect both the styling and the [HTML semantics](https://developer.mozilla.org/en-US/docs/Glossary/Semantics#semantics_in_html).
+All of the stock MUI **Typography** `variant`s are available, with sizing adjusted to fit StrataKit's more compact visual language.
 
 ::example{src="mui/Typography.variants" min-height="600px"}
 
 ## ✅ Do
 
-- Use the `variant` prop of the **Typography** component to affect the styling and the semantics.
-- Use the `render` prop to override the semantics when necessary.
+- Use the `variant` prop of the **Typography** component to affect the visual presentation of the text.
+- Use the `render` prop to set the most semantically appropriate element. This is especially important for heading variants.
 
 ## 🚫 Don't
 
 - Don't use **Typography** to disrupt or flatten the visual hierarchy.
+- Don't render a heading element when you simply want to grab attention.

@@ -24,7 +24,7 @@ Use the [`size`](/reference/mui/Icon/#Icon.Icon.size) prop to adjust the **Icon'
 
 :::note[Increase detail]
 
-In the example above, `#icon-large` symbol is applied to the large icon to display a more detailed icon.
+In the example above, the `#icon-large` symbol is applied to the large icon to display a more detailed icon.
 
 :::
 

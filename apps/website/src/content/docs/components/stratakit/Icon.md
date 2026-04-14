@@ -44,7 +44,9 @@ Use the [`color` CSS property](https://developer.mozilla.org/en-US/docs/Web/CSS/
 
 ### Custom
 
-Use the `render` prop to display a custom inline SVG icon. Alternatively, you can use the `href` prop to reference a custom icon or a specific `<symbol>` element within an external SVG file.
+The `href` prop can point to any valid `<symbol>` or `<svg>` that has an `id`. This is the recommended way to use custom icons.
+
+Alternatively, the `render` prop can be used to display an inlined SVG, as in the example below. This can be useful when you need to target the individual elements inside the SVG (e.g. for styling or animation purposes).
 
 ::example{src="mui/Icon.custom"}
 

@@ -75,6 +75,9 @@ interface ChipRootProps extends BaseProps<"div"> {
  *   <Chip.DismissButton onClick={onClick} />
  * </Chip.Root>
  * ```
+ *
+ * @deprecated Use MUI [`Chip`](https://mui.com/material-ui/api/chip/) component instead.
+ * See [migration guide](https://stratakit.bentley.com/docs/getting-started/migration-from-legacy-stratakit/#chip).
  */
 const ChipRoot = forwardRef<"div", ChipRootProps>((props, forwardedRef) => {
 	useInit();
@@ -100,6 +103,9 @@ interface ChipLabelProps extends BaseProps<"span"> {}
 
 /**
  * Label component that should be used with the compositional Chip component.
+ *
+ * @deprecated Use [`label`](https://mui.com/material-ui/api/chip/#chip-prop-label) prop of MUI [`Chip`](https://mui.com/material-ui/api/chip/) component instead.
+ * See [migration guide](https://stratakit.bentley.com/docs/getting-started/migration-from-legacy-stratakit/#chip).
  */
 const ChipLabel = forwardRef<"span", ChipLabelProps>((props, forwardedRef) => {
 	const labelId = useChipState((state) => state.labelId);
@@ -135,6 +141,9 @@ interface ChipDismissButtonProps extends Omit<BaseProps<"button">, "children"> {
 
 /**
  * Dismiss button component that should be used with the compositional Chip component.
+ *
+ * @deprecated Use [`onDelete`](https://mui.com/material-ui/api/chip/#chip-prop-onDelete), [`deleteIcon`](https://mui.com/material-ui/api/chip/#chip-prop-deleteIcon) props of MUI [`Chip`](https://mui.com/material-ui/api/chip/) component instead.
+ * See [migration guide](https://stratakit.bentley.com/docs/getting-started/migration-from-legacy-stratakit/#chip).
  */
 const ChipDismissButton = forwardRef<"button", ChipDismissButtonProps>(
 	(props, forwardedRef) => {
@@ -189,6 +198,9 @@ interface ChipProps
  * <Chip label="Value" />
  * <Chip label="Value" variant="outline" />
  * ```
+ *
+ * @deprecated Use MUI [`Chip`](https://mui.com/material-ui/api/chip/) component instead.
+ * See [migration guide](https://stratakit.bentley.com/docs/getting-started/migration-from-legacy-stratakit/#chip).
  */
 const Chip = forwardRef<"div", ChipProps>((props, forwardedRef) => {
 	useInit();

@@ -1,0 +1,1 @@
+import{j as o,J as t,I as s}from"./client.WuO8rh2h.js";import{s as n}from"./download.mnk6n2v3.js";import"./styles.internal.iAh-c3F9.js";const l=()=>o.jsx(t,{label:"Download",children:o.jsx(s,{href:n})});export{l as default};

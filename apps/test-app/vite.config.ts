@@ -14,6 +14,7 @@ import babel from "vite-plugin-babel";
 import devtoolsJson from "vite-plugin-devtools-json";
 import tsconfigPaths from "vite-tsconfig-paths";
 import {
+	accentsTransform,
 	primitivesTransform,
 	staticVariablesTransform,
 	themeTransform,
@@ -112,6 +113,7 @@ function bundleCssPlugin() {
 			const filename = id.replace(/\?inline$/, "");
 
 			const visitor = lightningcss.composeVisitors([
+				accentsTransform(),
 				primitivesTransform(),
 				themeTransform(),
 				typographyTransform(),

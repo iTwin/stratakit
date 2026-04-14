@@ -19,6 +19,11 @@ Make sure the **TextField** is suitable for your use case. There may be other, m
 | Predefined option selection                                  | ❌                                 | ❌                                                       | ✅                                       |
 | Search input with suggestions                                | ❌                                 | ❌                                                       | ✅                                       |
 
+## StrataKit MUI modifications
+
+- Only the `"outlined"` variant is supported. The `variant` prop is marked as deprecated.
+- The `color` prop is not supported.
+
 ## Examples
 
 ### Sizes

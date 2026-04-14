@@ -155,6 +155,13 @@ declare module "@mui/material/Chip" {
 	}
 }
 
+declare module "@mui/material/Dialog" {
+	interface DialogProps extends Pick<CommonProps, "render"> {
+		/** @deprecated Use `render` prop instead. */
+		component?: React.ElementType;
+	}
+}
+
 declare module "@mui/material/Fab" {
 	interface FabPropsColorOverrides {
 		info: false;

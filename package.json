@@ -18,14 +18,14 @@
 		"changeset:publish": "pnpm run build && pnpm run changeset publish"
 	},
 	"devDependencies": {
-		"@actions/github": "^9.0.0",
-		"@biomejs/biome": "2.4.4",
+		"@actions/github": "^9.1.0",
+		"@biomejs/biome": "2.4.10",
 		"@playwright/test": "catalog:",
 		"@types/node": "catalog:",
 		"colorjs.io": "^0.6.1",
 		"fast-glob": "^3.3.3",
 		"internal": "workspace:*",
-		"lefthook": "^2.1.1",
+		"lefthook": "^2.1.5",
 		"prettier": "3.8.1",
 		"tsx": "^4.21.0",
 		"typescript": "catalog:",

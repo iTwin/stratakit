@@ -15,7 +15,7 @@ Use the [`href`](/reference/mui/Icon/#Icon.Icon.href) prop to specify the icon y
 
 ### Sizes
 
-Use the `size` prop to adjust the **Icon's** physical dimensions.
+Use the [`size`](/reference/mui/Icon/#Icon.Icon.size) prop to adjust the **Icon's** physical dimensions.
 
 - **Regular:** Default size, suitable for most use cases.
 - **Large:** Increased size, use in larger spaces.

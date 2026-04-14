@@ -1,1 +1,0 @@
-import{j as r}from"./client.BhIPt_FT.js";import{S as t}from"./Spinner.BuTK7Hej.js";import"./styles.internal.CPbvgKR0.js";import"./ExamplePreview.DES_qF27.js";import"./preload-helper.DYUq1Uz9.js";const n=()=>r.jsx(t,{});export{n as default};

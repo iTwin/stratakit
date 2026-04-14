@@ -45,7 +45,7 @@ Use the `error` prop on `FormControl` to display the `FormHelperText` in an erro
 
 - Use **Radios** where there is only a handful of input options on offer.
 - Use **Radios** where there is only one correct answer, such as in a test.
-- Group the **Radio** options using a [`<fieldset>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/fieldset) and label the group using a [`<legend>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/legend). Make sure `role="radiogroup"` is set on the `<fieldset>` element rather than on the `RadioGroup` component.
+- Group the **Radio** options using a [`<fieldset>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/fieldset) and label the group using a [`<legend>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/legend). Make sure [`role="radiogroup"`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/radiogroup_role) is set on the `<fieldset>` element rather than on the `RadioGroup` component.
 - Use a clear, descriptive label for each **Radio**.
 
 ## 🚫 Don't

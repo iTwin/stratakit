@@ -165,7 +165,7 @@
 	}
 
 	&::before {
-		display: none;
+		display: none; /* Hides the MUI arrow */
 	}
 
 	:where(.MuiSlider-root:not(.MuiSlider-vertical)) &:is(.MuiTooltip-tooltip) {

@@ -30,7 +30,9 @@ In the example above, `#icon-large` symbol is applied to the large icon to displ
 
 ### Decorative
 
-Omit the `alt` prop if the **Icon** is purely decorative. This will hide the **Icon** from assistive technologies.
+Omit the [`alt`](/reference/mui/Icon/#Icon.Icon.alt) prop if the **Icon** is purely decorative. This will hide the **Icon** from assistive technologies.
+
+In the example below, the Button already has an accessible name, so the **Icon** is considered decorative.
 
 ::example{src="mui/Button.icon"}
 

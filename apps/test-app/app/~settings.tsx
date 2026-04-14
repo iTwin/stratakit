@@ -56,6 +56,8 @@ export function SettingsDialog(props: SettingsDialogProps) {
 	const colorScheme = useSettingsStore((state) => state.colorScheme);
 	const setColorScheme = useSettingsStore((state) => state.setColorScheme);
 
+	const accentColor = useSettingsStore((state) => state.accentColor);
+	const setAccentColor = useSettingsStore((state) => state.setAccentColor);
 	return (
 		<Dialog.Root open={open} onClose={onClose} modal>
 			<Dialog.Header>
@@ -65,8 +67,10 @@ export function SettingsDialog(props: SettingsDialogProps) {
 			<form
 				action={(data) => {
 					const newColorScheme = data.get("color-scheme") as ColorSchemeSetting;
+					const newAccentColor = data.get("accent-color") as AccentColor;
 
 					setColorScheme(newColorScheme);
+					setAccentColor(newAccentColor);
 					onClose();
 				}}
 			>
@@ -85,6 +89,21 @@ export function SettingsDialog(props: SettingsDialogProps) {
 							<option value="auto">Auto</option>
 							<option value="light">Light</option>
 							<option value="dark">Dark</option>
+						</NativeSelect>
+					</FormControl>
+					<FormControl className={styles.formControl} size="small">
+						<InputLabel className={styles.label} htmlFor={`${id}-accent-color`}>
+							Accent color
+						</InputLabel>
+						<NativeSelect
+							defaultValue={accentColor}
+							inputProps={{
+								name: "accent-color",
+								id: `${id}-accent-color`,
+							}}
+						>
+							<option value="aurora">Aurora</option>
+							<option value="cobalt">Cobalt</option>
 						</NativeSelect>
 					</FormControl>
 				</Dialog.Content>

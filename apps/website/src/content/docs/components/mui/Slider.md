@@ -11,7 +11,7 @@ links:
 ## StrataKit MUI modifications
 
 - The `color` prop is not supported.
-- The `valueLabel` adopts the same visual styling as [`Tooltip`](tooltip) by reusing its class names.
+- The `valueLabel` matches the visual styling of [`Tooltip`](/components/tooltip) by applying the `MuiTooltip-tooltip` class name.
 - Restyled using StrataKit's visual language.
 - Includes full `forced-colors` support.
 

@@ -1,0 +1,1 @@
+import{j as r,T as s,I as o}from"./client.DNFmGTuv.js";import{s as t}from"./user.sPw4OGeT.js";import{A as e}from"./Avatar.8hapBb46.js";import"./styles.internal.iAh-c3F9.js";import"./createSvgIcon.DdSy_WCP.js";const n=()=>r.jsx(s,{title:"User profile",describeChild:!1,children:r.jsx("button",{children:r.jsx(e,{children:r.jsx(o,{href:t})})})});export{n as default};

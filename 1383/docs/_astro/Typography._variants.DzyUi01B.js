@@ -1,0 +1,1 @@
+import{j as r}from"./client.DNFmGTuv.js";import{T as o}from"./Typography.CBRlN5_M.js";import"./styles.internal.iAh-c3F9.js";const e=["body1","body2","button","caption","h1","h2","h3","h4","h5","h6","inherit","overline","subtitle1","subtitle2"],h=()=>e.map(t=>r.jsxs(o,{variant:t,render:r.jsx("div",{}),children:[t.charAt(0).toUpperCase(),t.slice(1)]},t));export{h as default};

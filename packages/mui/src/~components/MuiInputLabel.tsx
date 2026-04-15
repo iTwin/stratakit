@@ -11,33 +11,30 @@ import type { BaseProps } from "@stratakit/foundations/secret-internals";
 
 // ----------------------------------------------------------------------------
 
-const MuiTableHeadContext = React.createContext(false);
+const MuiInputLabelContext = React.createContext<
+	| {
+			setLabelId: (id: string | undefined) => void;
+	  }
+	| undefined
+>(undefined);
 
 // ----------------------------------------------------------------------------
 
-const MuiTableHead = forwardRef<"thead", BaseProps<"thead">>(
+const MuiInputLabel = forwardRef<"label", BaseProps<"label">>(
 	(props, forwardedRef) => {
-		return (
-			<MuiTableHeadContext.Provider value={true}>
-				<Role render={<thead />} {...props} ref={forwardedRef} />
-			</MuiTableHeadContext.Provider>
-		);
+		const { setLabelId } = React.useContext(MuiInputLabelContext) ?? {};
+
+		React.useEffect(() => {
+			if (!setLabelId) return;
+			setLabelId(props.id);
+			return () => setLabelId(undefined);
+		}, [props.id, setLabelId]);
+
+		return <Role.label {...props} ref={forwardedRef} />;
 	},
 );
-DEV: MuiTableHead.displayName = "MuiTableHead";
+DEV: MuiInputLabel.displayName = "MuiInputLabel";
 
 // ----------------------------------------------------------------------------
 
-const MuiTableCell = forwardRef<"td", BaseProps<"td">>(
-	(props, forwardedRef) => {
-		const inHeader = React.useContext(MuiTableHeadContext);
-		const Component = inHeader ? "th" : "td";
-
-		return <Role render={<Component />} {...props} ref={forwardedRef} />;
-	},
-);
-DEV: MuiTableCell.displayName = "MuiTableCell";
-
-// ----------------------------------------------------------------------------
-
-export { MuiTableCell, MuiTableHead };
+export { MuiInputLabel, MuiInputLabelContext };

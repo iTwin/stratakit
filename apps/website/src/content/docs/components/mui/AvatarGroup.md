@@ -7,3 +7,7 @@ links:
 ---
 
 ::example{src="mui/AvatarGroup.default"}
+
+## StrataKit MUI modifications
+
+- The `variant` prop defaults to `"circular"`, and does not support `"rounded"` or `"square"`.

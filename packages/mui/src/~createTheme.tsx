@@ -9,6 +9,7 @@ import OutlinedInput from "@mui/material/OutlinedInput";
 import StepConnector from "@mui/material/StepConnector";
 import { createTheme as createMuiTheme } from "@mui/material/styles";
 import cx from "classnames";
+import { MuiAutocomplete } from "./~components/MuiAutocomplete.js";
 import { MuiBadge } from "./~components/MuiBadge.js";
 import { MuiBottomNavigationAction } from "./~components/MuiBottomNavigation.js";
 import { MuiButtonBase } from "./~components/MuiButtonBase.js";
@@ -24,6 +25,7 @@ import {
 } from "./~components/MuiChip.js";
 import { MuiDivider } from "./~components/MuiDivider.js";
 import { MuiIconButton } from "./~components/MuiIconButton.js";
+import { MuiInputLabel } from "./~components/MuiInputLabel.js";
 import { MuiSnackbar } from "./~components/MuiSnackbar.js";
 import { MuiStepIcon } from "./~components/MuiStepper.js";
 import { MuiTableCell, MuiTableHead } from "./~components/MuiTable.js";
@@ -151,6 +153,9 @@ function createTheme() {
 						</li>
 					),
 					slotProps: {
+						root: {
+							component: MuiAutocomplete,
+						},
 						paper: {
 							elevation: 8, // match Menu elevation
 						},
@@ -279,7 +284,7 @@ function createTheme() {
 			MuiInputAdornment: { defaultProps: { component: Role.div } },
 			MuiInputLabel: {
 				defaultProps: {
-					component: Role.label,
+					component: MuiInputLabel,
 					shrink: true, // Removes label animation and masked border from TextField
 				},
 			},

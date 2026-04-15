@@ -245,4 +245,4 @@ DEV: TabPanel.displayName = "Tabs.TabPanel";
 
 // ----------------------------------------------------------------------------
 
-export { TabsProvider as Provider, TabList, Tab, TabPanel };
+export { Tab, TabList, TabPanel, TabsProvider as Provider };

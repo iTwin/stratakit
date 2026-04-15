@@ -1,5 +1,35 @@
 # Changelog
 
+## 0.4.0
+
+### Breaking changes
+
+- [#1400](https://github.com/iTwin/stratakit/pull/1400): **MUI v9** support.
+  - Updated peer dependency range of `@mui/material` to `^9.0.0`. Make sure to update your project (see [migration guide](https://mui.com/material-ui/migration/upgrade-to-v9/)).
+  - Updated `ButtonBase` and derived components to use the new [`nativeButton`](https://mui.com/material-ui/api/button-base/#button-base-prop-nativeButton) prop. When rendering buttons as non-`<button>` elements (e.g. `<a>`), make sure to also set `nativeButton={false}`.
+  - Updated `Stepper` and `Step` to use `<ol>` and `<li>` elements respectively. Explicit `role`s do not need to be set anymore.
+- [#1371](https://github.com/iTwin/stratakit/pull/1371): Removed unintentionally exposed `createTheme` function. Use `Root` component to apply the StrataKit theme for MUI.
+
+### Non-breaking changes
+
+- [#1327](https://github.com/iTwin/stratakit/pull/1327): Added `unstable_accentColor` prop to `Root` component. When `"cobalt"` value is specified, the accent color is changed to blue.
+- [#1407](https://github.com/iTwin/stratakit/pull/1407): Change default `Tooltip` placement from `"bottom"` to `"top"`.
+- [#1404](https://github.com/iTwin/stratakit/pull/1404): Fixed `Dialog` types to add missing `render` prop.
+- Styling changes:
+  - [#1397](https://github.com/iTwin/stratakit/pull/1397): Styled `Tooltip` to match the Strata visual design language.
+  - [#1253](https://github.com/iTwin/stratakit/pull/1253): Styled `Menu` and `MenuItem` to match the Strata visual design language.
+  - [#1403](https://github.com/iTwin/stratakit/pull/1403): `Autocomplete` listbox and options now match the visual styling of `Menu` and `MenuItem`. The `renderOption` prop is used to add a class.
+  - [#1396](https://github.com/iTwin/stratakit/pull/1396): Adjusted positioning and spacing of `Select` and `NativeSelect`'s dropdown icon.
+  - [#1394](https://github.com/iTwin/stratakit/pull/1394): Fixed styling of `IconButton` and `ToggleButton` components when used with large size icons.
+  - [#1320](https://github.com/iTwin/stratakit/pull/1320): Added animation to `Switch` when actively pressed.
+  - [#1411](https://github.com/iTwin/stratakit/pull/1411): Corrected left alignment for the first chip in each row of multiselect `Autocomplete` and spacing around the expand and clear buttons.
+  - [#1414](https://github.com/iTwin/stratakit/pull/1414): The `Autocomplete` input width scales based on the number of buttons.
+  - [#1374](https://github.com/iTwin/stratakit/pull/1374): Improved `forced-colors` styling for `Autocomplete`, `Badge`, `BottomNavigation`, `Button`, `Checkbox`, `Drawer`, `IconButton`, `Radio`, `TextField`, `LinearProgress`, `Popover`, `Snackbar`, `Tabs`, and `Tooltip`.
+  - [#1412](https://github.com/iTwin/stratakit/pull/1412): Added `background-color` to `TextField`, `Autocomplete` and `Select`.
+- Updated dependencies:
+  - @stratakit/foundations@0.4.8
+  - @mui/material@9.0.0
+
 ## 0.3.1
 
 - Styling changes:

@@ -27,7 +27,7 @@ links:
 
 ### Tooltip
 
-Use the `valueLabelDisplay` prop to show a tooltip near the **Slider** handle for more precise selection.
+Use the `valueLabelDisplay` prop to show a tooltip near the **Slider** thumb for more precise selection.
 
 ::example{src="mui/Slider.tooltip" min-width="300px"}
 

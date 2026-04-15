@@ -8,9 +8,21 @@
 }
 
 .MuiAvatarGroup-avatar {
+	border: none;
 	margin-inline: 0;
 
 	&:where(:not(:nth-child(1 of &))) {
 		margin-inline-start: var(--AvatarGroup-spacing);
+	}
+
+	&:where(:not(:nth-last-child(1 of &))) {
+		mask: radial-gradient(
+			50% 50% at calc(150% + var(--AvatarGroup-spacing) - var(--stratakit-space-x1)),
+			#0000 98%,
+			#000 100%
+		);
+		mask-position: center;
+		mask-repeat: no-repeat;
+		mask-size: calc(100% + var(--stratakit-space-x1)) calc(100% + var(--stratakit-space-x1));
 	}
 }

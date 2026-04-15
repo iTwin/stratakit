@@ -129,6 +129,7 @@
 	&::after {
 		block-size: 24px;
 		inline-size: 24px;
+		border-radius: 0;
 	}
 }
 
@@ -165,25 +166,14 @@
 	}
 
 	&::before {
-		background-color: transparent;
-		block-size: auto;
-		inline-size: auto;
-		transform: none;
+		display: none; /* Hides the MUI arrow */
 	}
 
 	:where(.MuiSlider-root:not(.MuiSlider-vertical)) &:is(.MuiTooltip-tooltip) {
 		inset-block-start: calc((var(--✨gap) + 1px) * -1);
-
-		&::before {
-			inset-block-end: calc(var(--✨gap) * -1);
-		}
 	}
 
 	:where(.MuiSlider-root.MuiSlider-vertical) &:is(.MuiTooltip-tooltip) {
 		inset-inline-end: calc(var(--_MuiSlider-thumb-size) - 1px + var(--✨gap));
-
-		&::before {
-			inset-inline-end: calc(var(--✨gap) * -1);
-		}
 	}
 }

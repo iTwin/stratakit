@@ -35,10 +35,6 @@ const marks = [
 	},
 ];
 
-function valuetext(value: number) {
-	return `${value}°C`;
-}
-
 export default () => {
 	const id = React.useId();
 	return (
@@ -48,7 +44,7 @@ export default () => {
 				marks={marks}
 				step={20}
 				defaultValue={60}
-				getAriaValueText={valuetext}
+				getAriaValueText={(value) => `${value}°C`}
 				slotProps={{ input: { id } }}
 			/>
 		</FormControl>

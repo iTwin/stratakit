@@ -5,23 +5,19 @@
 import { Anchor } from "@stratakit/bricks";
 import { unstable_ErrorRegion as ErrorRegion } from "@stratakit/structures";
 
-import styles from "./ErrorRegion.default.module.css";
-
 export default () => {
 	const errors = [1, 2];
 	return (
-		<div className={styles.container}>
-			<ErrorRegion.Root
-				aria-label="Hierarchy issues"
-				label={`${errors.length} issues found`}
-				items={errors.map((errorItem) => (
-					<ErrorRegion.Item
-						key={errorItem}
-						message={<>Failed to create hierarchy for Item {errorItem}</>}
-						actions={<Anchor render={<button type="button" />}>Retry</Anchor>}
-					/>
-				))}
-			/>
-		</div>
+		<ErrorRegion.Root
+			aria-label="Hierarchy issues"
+			label={`${errors.length} issues found`}
+			items={errors.map((errorItem) => (
+				<ErrorRegion.Item
+					key={errorItem}
+					message={<>Failed to create hierarchy for Item {errorItem}</>}
+					actions={<Anchor render={<button type="button" />}>Retry</Anchor>}
+				/>
+			))}
+		/>
 	);
 };

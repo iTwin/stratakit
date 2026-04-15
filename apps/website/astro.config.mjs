@@ -178,7 +178,10 @@ function starlightResponsiveTables({ tagName = "responsive-table" } = {}) {
 /**
  * Starlight plugin that processes `::example{src="..."}` directives to embed live examples.
  *
- * Requires a `src` attribute. Optionally supports `min-width` and `min-height` attributes.
+ * Requires a `src` attribute. Optionally supported attributes:
+ * - `min-width`
+ * - `min-height`
+ * - `vertical-align` - allowed values: "stretch". By default the example is vertically centered.
  *
  * @returns {import("@astrojs/starlight/types").StarlightPlugin}
  */
@@ -193,10 +196,19 @@ function starlightLiveExamples() {
 						src,
 						"min-width": minWidth,
 						"min-height": minHeight,
+						"vertical-align": verticalAlign,
 					} = node.attributes || {};
 
 					if (!src) {
 						file.fail("`::example` directive requires a `src` attribute", node);
+						return;
+					}
+
+					if (verticalAlign && verticalAlign !== "stretch") {
+						file.fail(
+							"`vertical-align` attribute only supports `stretch` value",
+							node,
+						);
 						return;
 					}
 
@@ -205,6 +217,8 @@ function starlightLiveExamples() {
 					const style = [
 						minWidth !== undefined && `--example-min-width: ${minWidth}`,
 						minHeight !== undefined && `--example-min-height: ${minHeight}`,
+						verticalAlign !== undefined &&
+							`--example-vertical-align: ${verticalAlign}`,
 					]
 						.filter(Boolean)
 						.join("; ");

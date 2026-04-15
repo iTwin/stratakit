@@ -1,0 +1,1 @@
+import{j as t}from"./client.WhXIlUl_.js";import{F as r}from"./FormControlLabel.Bwo-AtKV.js";import{C as o}from"./Checkbox.Beu93v_H.js";import"./styles.internal.iAh-c3F9.js";import"./Typography.DEleSWv2.js";import"./createSvgIcon.Do_2neHv.js";import"./mergeSlotProps.CB-bNHaj.js";const x=()=>t.jsx(r,{control:t.jsx(o,{indeterminate:!0}),label:"Indeterminate"});export{x as default};

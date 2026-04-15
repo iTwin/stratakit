@@ -10,4 +10,6 @@ links:
 
 ## StrataKit MUI modifications
 
+- DOM order now matches the visual display order.
+- The visual stacking of the `Avatar`s is inverted.
 - The `variant` prop defaults to `"circular"`, and does not support `"rounded"` or `"square"`.

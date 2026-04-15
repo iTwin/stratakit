@@ -163,17 +163,17 @@
 
 	&:is(.MuiTooltip-tooltip) {
 		margin: 0;
+
+		:where(.MuiSlider-root:not(.MuiSlider-vertical)) & {
+			inset-block-start: calc((var(--✨gap) + 1px) * -1);
+		}
+
+		:where(.MuiSlider-root.MuiSlider-vertical) & {
+			inset-inline-end: calc(var(--_MuiSlider-thumb-size) - 1px + var(--✨gap));
+		}
 	}
 
 	&::before {
 		display: none; /* Hides the MUI arrow */
-	}
-
-	:where(.MuiSlider-root:not(.MuiSlider-vertical)) &:is(.MuiTooltip-tooltip) {
-		inset-block-start: calc((var(--✨gap) + 1px) * -1);
-	}
-
-	:where(.MuiSlider-root.MuiSlider-vertical) &:is(.MuiTooltip-tooltip) {
-		inset-inline-end: calc(var(--_MuiSlider-thumb-size) - 1px + var(--✨gap));
 	}
 }

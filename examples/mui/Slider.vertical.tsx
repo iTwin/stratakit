@@ -7,18 +7,27 @@ import * as React from "react";
 import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
 import Slider from "@mui/material/Slider";
+import Stack from "@mui/material/Stack";
+import { Icon } from "@stratakit/mui";
+
+import svgHappy from "@stratakit/icons/smiley-very-happy.svg";
+import svgSad from "@stratakit/icons/smiley-very-sad.svg";
 
 export default () => {
 	const id = React.useId();
 	return (
 		<FormControl fullWidth>
-			<FormLabel htmlFor={id}>Volume</FormLabel>
-			<Slider
-				orientation="vertical"
-				style={{ height: 100 }}
-				defaultValue={70}
-				slotProps={{ input: { id } }}
-			/>
+			<FormLabel htmlFor={id}>Mood</FormLabel>
+			<Stack spacing={1}>
+				<Icon href={svgHappy} />
+				<Slider
+					orientation="vertical"
+					style={{ height: 100 }}
+					defaultValue={50}
+					slotProps={{ input: { id } }}
+				/>
+				<Icon href={svgSad} />
+			</Stack>
 		</FormControl>
 	);
 };

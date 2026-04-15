@@ -29,6 +29,7 @@ const MuiInputLabel = forwardRef<"label", BaseProps<"label">>(
 			setLabelId(props.id);
 			return () => setLabelId(undefined);
 		}, [props.id, setLabelId]);
+
 		return <Role.label {...props} ref={forwardedRef} />;
 	},
 );

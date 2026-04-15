@@ -149,6 +149,30 @@
 	}
 }
 
+.MuiSlider-markLabel {
+	--✨gap: calc(var(--_MuiSlider-thumb-size) + var(--stratakit-space-x1));
+
+	@apply --typography("body-sm");
+	color: var(--stratakit-color-text-neutral-tertiary);
+	user-select: none; /* Disabled because mark label intercepts all pointer events */
+
+	&:where(.MuiSlider-markLabelActive) {
+		color: var(--stratakit-color-text-neutral-secondary);
+	}
+
+	:where(.MuiSlider-root:not(.MuiSlider-vertical)) & {
+		inset-block-start: var(--✨gap);
+	}
+
+	:where(.MuiSlider-root.MuiSlider-vertical) & {
+		inset-inline-start: var(--✨gap);
+	}
+
+	:where(.MuiSlider-root.Mui-disabled) & {
+		color: var(--stratakit-color-text-neutral-disabled);
+	}
+}
+
 @media (prefers-reduced-motion: reduce) {
 	:is(.MuiSlider-track, .MuiSlider-thumb) {
 		transition: none;

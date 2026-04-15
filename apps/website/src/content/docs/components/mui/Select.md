@@ -24,6 +24,7 @@ Make sure the **Select** is suitable for your use case. There may be other, more
 - Restyled using StrataKit's visual language.
 - The active option implementation and styling differ from the default approach. A checkmark icon has been added using a pseudo-element.
 - Includes full `forced-colors` support.
+- The `color` prop is not supported.
 
 ## Examples
 

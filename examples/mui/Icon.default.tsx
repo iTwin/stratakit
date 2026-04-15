@@ -3,6 +3,10 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-.autocomplete {
-	min-inline-size: 300px;
-}
+import { Icon } from "@stratakit/mui";
+
+import svgLayers from "@stratakit/icons/layers.svg";
+
+export default () => {
+	return <Icon href={svgLayers} alt="Layers" />;
+};

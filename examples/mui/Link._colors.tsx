@@ -4,6 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 
 import Link from "@mui/material/Link";
+import Stack from "@mui/material/Stack";
 
 type LinkProps = React.ComponentProps<typeof Link>;
 const colors = [
@@ -16,10 +17,14 @@ const colors = [
 ] as const satisfies LinkProps["color"][];
 
 export default () => {
-	return colors.map((color) => (
-		<Link key={color} color={color} href={`#${color}`}>
-			{color.charAt(0).toUpperCase()}
-			{color.slice(1)}
-		</Link>
-	));
+	return (
+		<Stack direction="row" spacing={1}>
+			{colors.map((color) => (
+				<Link key={color} color={color} href={`#${color}`}>
+					{color.charAt(0).toUpperCase()}
+					{color.slice(1)}
+				</Link>
+			))}
+		</Stack>
+	);
 };

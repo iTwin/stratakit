@@ -3,6 +3,11 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-.autocomplete {
-	min-inline-size: 300px;
-}
+import { Icon } from "@stratakit/mui";
+
+import svgError from "@stratakit/icons/error.svg";
+import styles from "./Icon.color.module.css";
+
+export default () => {
+	return <Icon className={styles.icon} href={svgError} />;
+};

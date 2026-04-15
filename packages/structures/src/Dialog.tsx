@@ -378,12 +378,12 @@ DEV: DialogBackdrop.displayName = "Dialog.Backdrop";
 // -------------------------------------------------------------------------
 
 export {
-	DialogRoot as Root,
-	DialogHeader as Header,
-	DialogHeading as Heading,
+	DialogActionList as ActionList,
+	DialogBackdrop as Backdrop,
 	DialogCloseButton as CloseButton,
 	DialogContent as Content,
 	DialogFooter as Footer,
-	DialogActionList as ActionList,
-	DialogBackdrop as Backdrop,
+	DialogHeader as Header,
+	DialogHeading as Heading,
+	DialogRoot as Root,
 };

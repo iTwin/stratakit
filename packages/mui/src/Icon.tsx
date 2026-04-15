@@ -56,19 +56,19 @@ const WarningIcon = createIconComponent(svgWarning);
 // ----------------------------------------------------------------------------
 
 export {
-	Icon,
 	ArrowDownIcon,
-	CheckmarkIcon,
 	CaretsUpDownIcon,
+	CheckmarkIcon,
 	ChevronDownIcon,
-	ChevronLeftIcon,
 	ChevronLeftDoubleIcon,
-	ChevronRightIcon,
+	ChevronLeftIcon,
 	ChevronRightDoubleIcon,
-	DismissIcon,
+	ChevronRightIcon,
 	DismissCircleIcon,
+	DismissIcon,
+	ErrorIcon,
+	Icon,
 	InfoIcon,
 	SuccessIcon,
 	WarningIcon,
-	ErrorIcon,
 };

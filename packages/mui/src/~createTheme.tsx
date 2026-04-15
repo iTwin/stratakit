@@ -9,6 +9,7 @@ import OutlinedInput from "@mui/material/OutlinedInput";
 import StepConnector from "@mui/material/StepConnector";
 import { createTheme as createMuiTheme } from "@mui/material/styles";
 import cx from "classnames";
+import { MuiAutocomplete } from "./~components/MuiAutocomplete.js";
 import { MuiBadge } from "./~components/MuiBadge.js";
 import { MuiBottomNavigationAction } from "./~components/MuiBottomNavigation.js";
 import { MuiButtonBase } from "./~components/MuiButtonBase.js";
@@ -24,9 +25,11 @@ import {
 } from "./~components/MuiChip.js";
 import { MuiDivider } from "./~components/MuiDivider.js";
 import { MuiIconButton } from "./~components/MuiIconButton.js";
+import { MuiInputLabel } from "./~components/MuiInputLabel.js";
 import { MuiSnackbar } from "./~components/MuiSnackbar.js";
 import { MuiStepIcon } from "./~components/MuiStepper.js";
 import { MuiTableCell, MuiTableHead } from "./~components/MuiTable.js";
+import { MuiTypography } from "./~components/MuiTypography.js";
 import {
 	ArrowDownIcon,
 	CaretsUpDownIcon,
@@ -44,22 +47,8 @@ import {
 
 import type { RoleProps } from "@ariakit/react/role";
 import type { ColorSystemOptions } from "@mui/material/styles";
-import type { TypographyOwnProps } from "@mui/material/Typography";
 
-/**
- * Creates a StrataKit theme for MUI. Should be used with MUI's `ThemeProvider`.
- *
- * Example:
- * ```tsx
- * import { ThemeProvider } from "@mui/material/styles";
- * import { createTheme } from "@stratakit/mui";
- *
- * const theme = createTheme();
- * <ThemeProvider theme={theme}>
- *   <App />
- * </ThemeProvider>
- * ```
- */
+/** Creates a StrataKit theme for MUI. Should be used with MUI's `ThemeProvider`. */
 function createTheme() {
 	// Map the JS palette back to MUI's own CSS variables, which will then be mapped to the correct StrataKit tokens in CSS.
 	// (This is a fallback for any code that uses MUI's theme.palette values directly instead of CSS variables)
@@ -164,6 +153,9 @@ function createTheme() {
 						</li>
 					),
 					slotProps: {
+						root: {
+							component: MuiAutocomplete,
+						},
 						paper: {
 							elevation: 8, // match Menu elevation
 						},
@@ -292,7 +284,7 @@ function createTheme() {
 			MuiInputAdornment: { defaultProps: { component: Role.div } },
 			MuiInputLabel: {
 				defaultProps: {
-					component: Role.label,
+					component: MuiInputLabel,
 					shrink: true, // Removes label animation and masked border from TextField
 				},
 			},
@@ -492,22 +484,7 @@ function createTheme() {
 			MuiTypography: {
 				defaultProps: {
 					variant: "body2",
-					variantMapping: {
-						h1: Role.h1,
-						h2: Role.h2,
-						h3: Role.h3,
-						h4: Role.h4,
-						h5: Role.h5,
-						h6: Role.h6,
-						subtitle1: Role.h6,
-						subtitle2: Role.h6,
-						body1: Role.p,
-						body2: Role.p,
-						inherit: Role.p,
-						button: Role.span,
-						caption: Role.span,
-						overline: Role.span,
-					} as unknown as TypographyOwnProps["variantMapping"],
+					component: MuiTypography,
 				},
 			},
 		},

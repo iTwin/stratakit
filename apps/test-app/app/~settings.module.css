@@ -3,16 +3,19 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-.formControl {
-	min-inline-size: 250px;
+.dialogContent {
+	display: flex;
+	flex-direction: column;
+	gap: var(--stratakit-space-x3);
+	padding-block-start: var(--stratakit-space-x1);
 }
 
-.input {
-	display: flex;
+.formControl {
+	flex-direction: row;
 	align-items: center;
 	gap: var(--stratakit-space-x2);
+}
 
-	> .icon {
-		min-inline-size: initial;
-	}
+.label {
+	flex: 1;
 }

@@ -3,6 +3,14 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-.autocomplete {
-	min-inline-size: 300px;
+.list {
+	list-style: none;
+	display: flex;
+	gap: var(--stratakit-space-x4);
+}
+
+.listItem {
+	display: flex;
+	align-items: center;
+	gap: var(--stratakit-space-x1);
 }

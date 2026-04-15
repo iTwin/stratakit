@@ -135,8 +135,9 @@ DEV: Anchor.displayName = "Anchor";
 // ----------------------------------------------------------------------------
 
 export default Anchor;
+
 export {
+	AnchorExternalMarker as ExternalMarker,
 	AnchorRoot as Root,
 	AnchorText as Text,
-	AnchorExternalMarker as ExternalMarker,
 };

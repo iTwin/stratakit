@@ -159,7 +159,7 @@
 	--✨gap: var(--stratakit-space-x1);
 
 	font-variant-numeric: tabular-nums;
-	user-select: none; /* Disabled because text selection only worked with select all */
+	user-select: none; /* Disabled because tooltip is inside the thumb which intercepts all pointer events */
 
 	&:is(.MuiTooltip-tooltip) {
 		margin: 0;

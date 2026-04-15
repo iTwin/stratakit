@@ -18,15 +18,15 @@ export default () => {
 	return (
 		<FormControl fullWidth>
 			<FormLabel htmlFor={id}>Mood</FormLabel>
-			<Stack spacing={1}>
-				<Icon href={svgHappy} />
+			<Stack spacing={1} direction="column-reverse">
+				<Icon href={svgSad} />
 				<Slider
 					orientation="vertical"
 					style={{ height: 100 }}
 					defaultValue={50}
 					slotProps={{ input: { id } }}
 				/>
-				<Icon href={svgSad} />
+				<Icon href={svgHappy} />
 			</Stack>
 		</FormControl>
 	);

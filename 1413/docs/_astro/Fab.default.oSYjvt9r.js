@@ -1,1 +1,0 @@
-import{j as s,T as r,I as t}from"./client.B1F0l8a1.js";import{s as o}from"./add.TpYXHxfU.js";import{F as e}from"./Fab.Cl4yzI4E.js";import"./styles.internal.CPbvgKR0.js";const l=()=>s.jsx(r,{title:"Add documents",describeChild:!1,children:s.jsx(e,{children:s.jsx(t,{href:o})})});export{l as default};

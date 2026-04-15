@@ -53,7 +53,7 @@
 		}
 	},
 	"dependencies": {
-		"@astrojs/starlight": "^0.37.6",
+		"@astrojs/starlight": "^0.37.7",
 		"@mui/material": "catalog:",
 		"@stratakit/bricks": "workspace:*",
 		"@stratakit/foundations": "workspace:*",
@@ -73,7 +73,7 @@
 		"@types/react": "catalog:",
 		"@types/react-dom": "catalog:",
 		"@types/xml2js": "^0.4.14",
-		"axe-core": "^4.11.0",
+		"axe-core": "^4.11.2",
 		"github-slugger": "^2.0.0",
 		"remark-directive": "^4.0.0",
 		"ts-morph": "^27.0.2",

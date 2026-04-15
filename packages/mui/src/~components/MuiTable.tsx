@@ -40,4 +40,4 @@ DEV: MuiTableCell.displayName = "MuiTableCell";
 
 // ----------------------------------------------------------------------------
 
-export { MuiTableHead, MuiTableCell };
+export { MuiTableCell, MuiTableHead };

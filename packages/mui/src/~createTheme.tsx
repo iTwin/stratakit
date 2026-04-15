@@ -29,6 +29,7 @@ import { MuiInputLabel } from "./~components/MuiInputLabel.js";
 import { MuiSnackbar } from "./~components/MuiSnackbar.js";
 import { MuiStepIcon } from "./~components/MuiStepper.js";
 import { MuiTableCell, MuiTableHead } from "./~components/MuiTable.js";
+import { MuiTypography } from "./~components/MuiTypography.js";
 import {
 	ArrowDownIcon,
 	CaretsUpDownIcon,
@@ -46,7 +47,6 @@ import {
 
 import type { RoleProps } from "@ariakit/react/role";
 import type { ColorSystemOptions } from "@mui/material/styles";
-import type { TypographyOwnProps } from "@mui/material/Typography";
 
 /** Creates a StrataKit theme for MUI. Should be used with MUI's `ThemeProvider`. */
 function createTheme() {
@@ -475,22 +475,7 @@ function createTheme() {
 			MuiTypography: {
 				defaultProps: {
 					variant: "body2",
-					variantMapping: {
-						h1: Role.h1,
-						h2: Role.h2,
-						h3: Role.h3,
-						h4: Role.h4,
-						h5: Role.h5,
-						h6: Role.h6,
-						subtitle1: Role.h6,
-						subtitle2: Role.h6,
-						body1: Role.p,
-						body2: Role.p,
-						inherit: Role.p,
-						button: Role.span,
-						caption: Role.span,
-						overline: Role.span,
-					} as unknown as TypographyOwnProps["variantMapping"],
+					component: MuiTypography,
 				},
 			},
 		},

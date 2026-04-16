@@ -297,4 +297,4 @@ DEV: ErrorRegionItem.displayName = "ErrorRegion.Item";
 
 // -------------------------------------------------------------------------
 
-export { ErrorRegionRoot as Root, ErrorRegionItem as Item };
+export { ErrorRegionItem as Item, ErrorRegionRoot as Root };

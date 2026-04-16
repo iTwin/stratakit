@@ -21,11 +21,10 @@ interface MuiButtonBaseProps
 
 const MuiButtonBase = forwardRef<"button", MuiButtonBaseProps>(
 	(props, forwardedRef) => {
-		const { href, "aria-disabled": ariaDisabled, ...rest } = props;
+		const { href, "aria-disabled": ariaDisabled, disabled, ...rest } = props;
 
-		// MUI's ButtonBase treats this wrapper as a non-button, so it always sets `aria-disabled`.
-		// We need to infer the `disabled` prop from `aria-disabled` for native `<button>` elements.
-		const isDisabled = ariaDisabled === true || ariaDisabled === "true";
+		const isDisabled =
+			disabled || ariaDisabled === true || ariaDisabled === "true";
 
 		const [tagName, setTagName] = React.useState<string | undefined>(undefined);
 		const determineTagName = React.useCallback(

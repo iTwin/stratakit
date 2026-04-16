@@ -117,4 +117,4 @@ DEV: MuiChipDeleteIcon.displayName = "MuiChipDeleteIcon";
 
 // ----------------------------------------------------------------------------
 
-export { MuiChip, MuiChipLabel, MuiChipDeleteIcon };
+export { MuiChip, MuiChipDeleteIcon, MuiChipLabel };

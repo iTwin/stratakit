@@ -196,7 +196,7 @@ function starlightLiveExamples() {
 						src,
 						"min-width": minWidth,
 						"min-height": minHeight,
-						"vertical-align": verticalAlign,
+						"vertical-stretch": verticalStretchAttr = false,
 					} = node.attributes || {};
 
 					if (!src) {
@@ -204,21 +204,14 @@ function starlightLiveExamples() {
 						return;
 					}
 
-					if (verticalAlign && verticalAlign !== "stretch") {
-						file.fail(
-							"`vertical-align` attribute only supports `stretch` value",
-							node,
-						);
-						return;
-					}
-
 					node.data ||= {};
 
+					const verticalStretch =
+						verticalStretchAttr === "" || verticalStretchAttr === "true";
 					const style = [
 						minWidth !== undefined && `--example-min-width: ${minWidth}`,
 						minHeight !== undefined && `--example-min-height: ${minHeight}`,
-						verticalAlign !== undefined &&
-							`--example-vertical-align: ${verticalAlign}`,
+						verticalStretch && "--example-align-items: stretch",
 					]
 						.filter(Boolean)
 						.join("; ");

@@ -8,7 +8,12 @@ import * as path from "node:path";
 
 import * as babel from "@babel/core";
 import * as lightningcss from "lightningcss";
-import { createVisitor, resolver, targets } from "./lightningcss.js";
+import {
+	createVisitor,
+	customAtRules,
+	resolver,
+	targets,
+} from "./lightningcss.js";
 
 /**
  * This plugin inlines the contents of a CSS file as a JavaScript string when the
@@ -56,6 +61,7 @@ export function inlineCssPlugin() {
 				const { code: intermediateCode } = await lightningcss.bundleAsync({
 					filename: args.path,
 					visitor: createVisitor(),
+					customAtRules,
 					resolver,
 					exclude: lightningcss.Features.Colors,
 				});
@@ -65,6 +71,7 @@ export function inlineCssPlugin() {
 					filename: args.path,
 					code: intermediateCode,
 					minify: true,
+					customAtRules,
 					targets,
 					visitor: createVisitor(),
 					exclude: lightningcss.Features.Colors,

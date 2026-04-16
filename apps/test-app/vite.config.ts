@@ -13,7 +13,12 @@ import {
 import babel from "vite-plugin-babel";
 import devtoolsJson from "vite-plugin-devtools-json";
 import tsconfigPaths from "vite-tsconfig-paths";
-import { createVisitor, resolver, targets } from "internal/lightningcss.js";
+import {
+	createVisitor,
+	customAtRules,
+	resolver,
+	targets,
+} from "internal/lightningcss.js";
 
 import type { Config as ReactRouterConfig } from "@react-router/dev/config";
 import type { Plugin } from "vite";
@@ -108,6 +113,7 @@ function bundleCssPlugin() {
 			const { code: intermediateCode } = await lightningcss.bundleAsync({
 				filename,
 				visitor: createVisitor(),
+				customAtRules,
 				resolver,
 				exclude: lightningcss.Features.Colors,
 			});
@@ -116,6 +122,7 @@ function bundleCssPlugin() {
 				filename,
 				code: intermediateCode,
 				minify: true,
+				customAtRules,
 				targets,
 				visitor: createVisitor(),
 				exclude: lightningcss.Features.Colors,

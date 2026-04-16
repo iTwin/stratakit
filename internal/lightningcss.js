@@ -7,6 +7,7 @@ import { createRequire } from "node:module";
 import * as path from "node:path";
 
 import * as lightningcss from "lightningcss";
+import { customAtRules, mixinsTransform } from "./lightningcss.mixins.js";
 import {
 	accentsTransform,
 	primitivesTransform,
@@ -27,6 +28,7 @@ const require = createRequire(import.meta.url);
  */
 export function createVisitor() {
 	return lightningcss.composeVisitors([
+		mixinsTransform(),
 		accentsTransform(),
 		primitivesTransform(),
 		themeTransform(),
@@ -59,3 +61,5 @@ export const targets = {
 	firefox: (110 << 16) | (0 << 8), // firefox 110.0
 	safari: (16 << 16) | (4 << 8), // safari 16.4
 };
+
+export { customAtRules };

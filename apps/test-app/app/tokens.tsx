@@ -18,7 +18,6 @@ import type { MetaFunction } from "react-router";
 
 import rawDarkTokens from "internal/theme-dark.json";
 import rawLightTokens from "internal/theme-light.json";
-import rawTypographyTokens from "internal/typography.json";
 import styles from "./tokens.module.css";
 
 // ----------------------------------------------------------------------------
@@ -29,9 +28,21 @@ const lightShadowTokens = parseTokens(rawLightTokens.shadow);
 const darkColorTokens = parseTokens(rawDarkTokens.color);
 const darkShadowTokens = parseTokens(rawDarkTokens.shadow);
 
-const typographyTokens = parseTokens(rawTypographyTokens.typography);
-
-const typographyVariants = [...typographyTokens.keys()] as const;
+const typographyVariants = [
+	"display-lg",
+	"display-md",
+	"display-sm",
+	"headline-lg",
+	"headline-md",
+	"headline-sm",
+	"body-lg",
+	"body-md",
+	"body-sm",
+	"caption-lg",
+	"caption-md",
+	"caption-sm",
+	"mono-sm",
+] as const;
 
 const categories = {
 	bg: "Background",

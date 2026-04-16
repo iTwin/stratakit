@@ -400,58 +400,7 @@ export function staticVariablesTransform() {
 }
 
 /**
- * Parses a deeply-nested JS object into a flattened Map of tokens with dash-separated names.
- *
- * Example:
- * ```js
- * parseTokens({
- *   color: {
- *     background: { $value: "#1a1a1a" },
- *     text: { $value: "#f0f0f0" },
- *   },
- * });
- * // Map { "color-background" → {…}, "color-text" → {…} }
- * ```
- */
-export function parseTokens(obj, prefix = "") {
-	const tokens = new Map();
-	for (const [key, value] of Object.entries(obj)) {
-		if (typeof value === "object" && value !== null && !("$value" in value)) {
-			const nestedTokens = parseTokens(value, `${prefix + key}-`);
-			for (const [nestedKey, nestedValue] of nestedTokens.entries()) {
-				tokens.set(nestedKey, nestedValue);
-			}
-		} else {
-			tokens.set(`${prefix + key}`, value);
-		}
-	}
-	return tokens;
-}
-
-/** AST representation of a CSS "variable" declaration, e.g. `--prefix-name: value;` */
-function cssCustomProperty(name, value, { prefix = "" } = {}) {
-	return {
-		property: "custom",
-		value: {
-			name: `--${prefix}-${name}`,
-			value: [value],
-		},
-	};
-}
-
-/** AST representation of a CSS function call, e.g. `--name(value)` */
-function cssFunction(name, value) {
-	return {
-		type: "function",
-		value: {
-			name,
-			arguments: [{ type: "token", value: { type: "string", value } }],
-		},
-	};
-}
-
-/**
- * LightningCSS visitor that replaces aurora primitives, with internal accent CSS variables.
+ * LightningCSS visitor that replaces aurora primitives with internal accent CSS variables.
  *
  * Input:
  * ```css
@@ -502,6 +451,57 @@ export function accentsTransform() {
 					};
 				}
 			},
+		},
+	};
+}
+
+/**
+ * Parses a deeply-nested JS object into a flattened Map of tokens with dash-separated names.
+ *
+ * Example:
+ * ```js
+ * parseTokens({
+ *   color: {
+ *     background: { $value: "#1a1a1a" },
+ *     text: { $value: "#f0f0f0" },
+ *   },
+ * });
+ * // Map { "color-background" → {…}, "color-text" → {…} }
+ * ```
+ */
+export function parseTokens(obj, prefix = "") {
+	const tokens = new Map();
+	for (const [key, value] of Object.entries(obj)) {
+		if (typeof value === "object" && value !== null && !("$value" in value)) {
+			const nestedTokens = parseTokens(value, `${prefix + key}-`);
+			for (const [nestedKey, nestedValue] of nestedTokens.entries()) {
+				tokens.set(nestedKey, nestedValue);
+			}
+		} else {
+			tokens.set(`${prefix + key}`, value);
+		}
+	}
+	return tokens;
+}
+
+/** AST representation of a CSS "variable" declaration, e.g. `--prefix-name: value;` */
+function cssCustomProperty(name, value, { prefix = "" } = {}) {
+	return {
+		property: "custom",
+		value: {
+			name: `--${prefix}-${name}`,
+			value: [value],
+		},
+	};
+}
+
+/** AST representation of a CSS function call, e.g. `--name(value)` */
+function cssFunction(name, value) {
+	return {
+		type: "function",
+		value: {
+			name,
+			arguments: [{ type: "token", value: { type: "string", value } }],
 		},
 	};
 }

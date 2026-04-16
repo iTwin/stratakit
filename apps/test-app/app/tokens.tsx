@@ -10,7 +10,7 @@ import {
 	unstable_AccordionItem as AccordionItem,
 	Table,
 } from "@stratakit/structures";
-import { parseTokens } from "internal/lightningcss-visitors.js";
+import { parseTokens } from "internal/lightningcss.tokens.js";
 import { useColorScheme } from "~/~utils.tsx";
 import { SkipLinkContext } from "./~navigation.tsx";
 

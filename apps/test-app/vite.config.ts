@@ -13,14 +13,7 @@ import {
 import babel from "vite-plugin-babel";
 import devtoolsJson from "vite-plugin-devtools-json";
 import tsconfigPaths from "vite-tsconfig-paths";
-import {
-	accentsTransform,
-	primitivesTransform,
-	staticVariablesTransform,
-	themeTransform,
-	typographyTokensTransform,
-	typographyTransform,
-} from "internal/lightningcss-visitors.js";
+import { createVisitor, resolver, targets } from "internal/lightningcss.js";
 
 import type { Config as ReactRouterConfig } from "@react-router/dev/config";
 import type { Plugin } from "vite";
@@ -112,25 +105,19 @@ function bundleCssPlugin() {
 
 			const filename = id.replace(/\?inline$/, "");
 
-			const visitor = lightningcss.composeVisitors([
-				accentsTransform(),
-				primitivesTransform(),
-				themeTransform(),
-				typographyTransform(),
-				typographyTokensTransform(),
-				staticVariablesTransform(),
-			]);
+			const { code: intermediateCode } = await lightningcss.bundleAsync({
+				filename,
+				visitor: createVisitor(),
+				resolver,
+				exclude: lightningcss.Features.Colors,
+			});
 
 			const { code: finalCode } = lightningcss.transform({
 				filename,
-				code: (await lightningcss.bundleAsync({ filename, visitor })).code,
+				code: intermediateCode,
 				minify: true,
-				targets: {
-					chrome: (110 << 16) | (0 << 8), // chrome 110.0
-					firefox: (110 << 16) | (0 << 8), // firefox 110.0
-					safari: (16 << 16) | (4 << 8), // safari 16.4
-				},
-				visitor,
+				targets,
+				visitor: createVisitor(),
 				exclude: lightningcss.Features.Colors,
 			});
 

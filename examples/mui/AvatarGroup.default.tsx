@@ -5,15 +5,17 @@
 
 import Avatar from "@mui/material/Avatar";
 import AvatarGroup from "@mui/material/AvatarGroup";
+import { visuallyHidden } from "@mui/utils";
 
 export default () => {
 	return (
 		<AvatarGroup
 			max={4}
 			renderSurplus={(surplus) => (
-				<Avatar aria-label={`${surplus} more users`} role="img">
-					<abbr aria-hidden="true">+{surplus}</abbr>
-				</Avatar>
+				<>
+					+{surplus}
+					<span style={visuallyHidden}> more users</span>
+				</>
 			)}
 		>
 			<Avatar aria-label="John Doe" role="img">

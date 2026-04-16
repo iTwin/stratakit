@@ -8,6 +8,7 @@ import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
 import Slider from "@mui/material/Slider";
 import Stack from "@mui/material/Stack";
+import { visuallyHidden } from "@mui/utils";
 import { Icon } from "@stratakit/mui";
 
 import svgHappy from "@stratakit/icons/smiley-very-happy.svg";
@@ -17,7 +18,9 @@ export default () => {
 	const id = React.useId();
 	return (
 		<FormControl fullWidth>
-			<FormLabel htmlFor={id}>Mood</FormLabel>
+			<FormLabel htmlFor={id}>
+				Mood<span style={visuallyHidden}> from 0 to 100</span>
+			</FormLabel>
 			<Stack spacing={1} direction="column-reverse">
 				<Icon href={svgSad} />
 				<Slider

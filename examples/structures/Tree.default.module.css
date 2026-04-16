@@ -3,6 +3,6 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-.formControl {
-	min-inline-size: 250px;
+.tree {
+	max-block-size: 180px;
 }

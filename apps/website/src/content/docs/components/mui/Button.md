@@ -30,8 +30,9 @@ Modifications to `ButtonBase` (applies to all MUI components that extend `Button
 Modifications specific to `Button`:
 
 - Restyled using StrataKit's visual language.
+- The default `variant` is now `"contained"`.
 - The `"info"`, `"success"`, `"warning"`, `"inherit"` colors have been removed. The default color is now `"secondary"`.
-- The `size` options (`small`, `medium`, `large`) have all been decreased in height.
+- The `size` options (`"small"`, `"medium"`, `"large"`) have all been decreased in height.
 
 ## Examples
 

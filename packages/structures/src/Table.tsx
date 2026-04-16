@@ -376,11 +376,11 @@ DEV: TableCell.displayName = "Table.Cell";
 // ----------------------------------------------------------------------------
 
 export {
-	HtmlTable,
 	CustomTable,
-	TableHeader as Header,
+	HtmlTable,
 	TableBody as Body,
-	TableRow as Row,
 	TableCaption as Caption,
 	TableCell as Cell,
+	TableHeader as Header,
+	TableRow as Row,
 };

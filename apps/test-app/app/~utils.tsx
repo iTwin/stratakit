@@ -5,6 +5,9 @@
 
 import * as React from "react";
 import { useSearchParams } from "react-router";
+import { useSettingsStore } from "./~settings.tsx";
+
+import type { Root } from "@stratakit/mui";
 
 // ----------------------------------------------------------------------------
 
@@ -153,71 +156,21 @@ function SyncVariants({ variants }: { variants: Variant[] }) {
 
 // ----------------------------------------------------------------------------
 
-/** undefined == system preference */
-type ColorScheme = "light" | "dark" | undefined;
+type RootProps = React.ComponentProps<typeof Root>;
+type ColorScheme = RootProps["colorScheme"];
 
-const COLOR_SCHEME_STORAGE_KEY = "🥝:color-scheme";
-
-const ColorSchemeContext = React.createContext<{
-	colorScheme: ColorScheme;
-	setColorScheme: React.Dispatch<React.SetStateAction<ColorScheme>>;
-}>({ colorScheme: undefined, setColorScheme: () => {} });
-
-/** Makes the color-scheme available to descendants (via `useColorScheme` and `useSetColorScheme`). */
-export function ColorSchemeProvider({
-	children,
-}: {
-	children: React.ReactNode;
-}) {
-	const [colorScheme, setColorScheme] = React.useState<ColorScheme>(undefined);
-
-	return (
-		<ColorSchemeContext
-			value={React.useMemo(
-				() => ({ colorScheme, setColorScheme }),
-				[colorScheme],
-			)}
-		>
-			{children}
-		</ColorSchemeContext>
-	);
-}
-
-/** Returns the current color-scheme in the following order: React Context, localStorage, user preference. */
-export function useColorScheme() {
-	const { colorScheme } = React.use(ColorSchemeContext);
+/** Returns the current color-scheme. */
+export function useColorScheme(): ColorScheme {
+	const setting = useSettingsStore((state) => state.colorScheme);
 	const prefersDark = useMediaQuery("(prefers-color-scheme: dark)");
-	const preferredColorScheme = prefersDark === false ? "light" : "dark"; // dark by default (e.g. during SSR)
 
-	const storedValue = useLocalStorage(COLOR_SCHEME_STORAGE_KEY);
-	const storedColorScheme =
-		storedValue === "light" || storedValue === "dark" ? storedValue : undefined;
+	if (setting !== "auto") return setting;
 
-	return colorScheme ?? storedColorScheme ?? preferredColorScheme;
-}
+	if (prefersDark === undefined) {
+		return "dark"; // dark by default (during SSR)
+	}
 
-/** Allows changing the color-scheme returned by `useColorScheme`. Synchronizes with localStorage. */
-export function useSetColorScheme() {
-	const { setColorScheme } = React.use(ColorSchemeContext);
-
-	return React.useCallback(
-		(value: React.SetStateAction<ColorScheme>) => {
-			setColorScheme((prev) => {
-				const newValue = typeof value === "function" ? value(prev) : value;
-
-				if (typeof localStorage !== "undefined") {
-					if (newValue === undefined) {
-						localStorage.removeItem(COLOR_SCHEME_STORAGE_KEY);
-					} else {
-						localStorage.setItem(COLOR_SCHEME_STORAGE_KEY, newValue);
-					}
-				}
-
-				return newValue;
-			});
-		},
-		[setColorScheme],
-	);
+	return prefersDark ? "dark" : "light";
 }
 
 // ----------------------------------------------------------------------------

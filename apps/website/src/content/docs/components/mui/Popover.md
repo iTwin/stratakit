@@ -12,6 +12,10 @@ links:
 
 - Added [`role="dialog"`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/dialog_role) to the `paper` slot.
 
-:::tip
-The `paper` slot needs to be labelled via [aria-labelledby](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/dialog_role#labeling) since it is now a `dialog`. This can either be a static label that describes the popover, or the `id` of the trigger element, which will label the popover with the trigger element's inner text.
-:::
+## ✅ Do
+
+- [Label](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/dialog_role#labeling) the **Popover's** `paper` slot using an `aria-labelledby` attribute pointing to a heading inside the popover or the trigger element's `id`.
+
+## 🚫 Don't
+
+- Don't forget to provide an accessable [label](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/dialog_role#labeling)

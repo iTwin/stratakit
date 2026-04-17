@@ -37,7 +37,8 @@ export default () => {
 				slotProps={{
 					paper: {
 						className: styles.popover,
-						// note that the paper slot gets the role="dialog" from the theme, so that is what the button is labelling
+						// note that the paper slot gets role="dialog" from the theme, so labelling by the button
+						// ensures that the dialog is labeled by the button text
 						"aria-labelledby": buttonId,
 					},
 				}}

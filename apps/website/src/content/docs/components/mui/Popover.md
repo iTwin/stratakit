@@ -11,3 +11,7 @@ links:
 ## StrataKit MUI modifications
 
 - Added [`role="dialog"`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/dialog_role) to the `paper` slot.
+
+:::tip
+The `paper` slot needs to be labelled via [aria-labelledby](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/dialog_role#labeling) since it is now a `dialog`. This can either be a static label that describes the popover, or the `id` of the trigger element, which will label the popover with the trigger element's inner text.
+:::

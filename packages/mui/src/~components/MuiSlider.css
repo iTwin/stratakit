@@ -154,7 +154,7 @@
 
 	@apply --typography("caption-lg");
 	color: var(--stratakit-color-text-neutral-tertiary);
-	user-select: none; /* Disabled because mark label intercepts all pointer events */
+	user-select: none; /* Disabled because slider intercepts all pointer events */
 
 	&:where(.MuiSlider-markLabelActive) {
 		color: var(--stratakit-color-text-neutral-secondary);

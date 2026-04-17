@@ -223,6 +223,12 @@
 	}
 }
 
+.MuiSlider-markLabel {
+	:where(.MuiSlider-root.Mui-disabled) & {
+		color: GrayText;
+	}
+}
+
 .MuiSnackbarContent-root {
 	border: 1px solid;
 }

@@ -1,1 +1,0 @@
-import{j as i}from"./client.Bp5R0Dsl.js";import{D as r}from"./Divider.CG-7z3da.js";import"./styles.internal.iAh-c3F9.js";import"./dividerClasses.CJBKCMy-.js";const t="_divider_etlms_6",e={divider:t},m=()=>i.jsx(r,{className:e.divider,orientation:"vertical"});export{m as default};

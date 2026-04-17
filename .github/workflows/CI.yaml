@@ -163,6 +163,29 @@ jobs:
       - name: Run playwright tests (website)
         run: pnpm --filter=@stratakit/website exec playwright test
 
+  internal-tests:
+    name: Run internal tests
+    needs: install
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: pnpm/action-setup@v5
+        with:
+          version: 10.30.1
+
+      - name: Use Node 22.x
+        uses: actions/setup-node@v6
+        with:
+          node-version: 22.x
+          cache: "pnpm"
+
+      - run: pnpm install
+
+      - name: Run internal tests
+        run: pnpm --filter=internal test
+
   deploy-gh-pages:
     name: Deploy test app
     if: ${{ github.event_name == 'pull_request' || github.event_name == 'push' }}

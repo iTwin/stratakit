@@ -1,0 +1,1 @@
+import{j as r}from"./client.D6s4GD1t.js";import{T as t}from"./Typography.BLyirSOY.js";import"./styles.internal.iAh-c3F9.js";const p=()=>r.jsx(t,{variant:"h4",render:r.jsx("h2",{}),children:"Heading text"});export{p as default};

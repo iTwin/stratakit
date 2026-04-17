@@ -119,9 +119,7 @@ export default () => {
 								indeterminate={numSelected > 0 && numSelected < rowCount}
 								checked={rowCount > 0 && numSelected === rowCount}
 								onChange={handleSelectAllClick}
-								inputProps={{
-									"aria-label": "select all desserts",
-								}}
+								aria-label="select all desserts"
 							/>
 						</TableCell>
 						<TableCell>Dessert (100g serving)</TableCell>
@@ -151,9 +149,7 @@ export default () => {
 									<Checkbox
 										color="primary"
 										checked={isItemSelected}
-										inputProps={{
-											"aria-labelledby": labelId,
-										}}
+										aria-labelledby={labelId}
 									/>
 								</TableCell>
 								<TableCell render={<th />} scope="row" id={labelId}>

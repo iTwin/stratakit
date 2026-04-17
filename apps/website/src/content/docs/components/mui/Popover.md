@@ -18,4 +18,4 @@ links:
 
 ## 🚫 Don't
 
-- Don't forget to provide an accessable [label](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/dialog_role#labeling)
+- Don't forget to provide an accessible [label](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/dialog_role#labeling)

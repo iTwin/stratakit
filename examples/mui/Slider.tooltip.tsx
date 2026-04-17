@@ -8,6 +8,7 @@ import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
 import Slider from "@mui/material/Slider";
 import Stack from "@mui/material/Stack";
+import { visuallyHidden } from "@mui/utils";
 import { Icon } from "@stratakit/mui";
 
 import svgSoundLoud from "@stratakit/icons/sound-loud.svg";
@@ -17,7 +18,10 @@ export default () => {
 	const id = React.useId();
 	return (
 		<FormControl fullWidth>
-			<FormLabel htmlFor={id}>Volume</FormLabel>
+			<FormLabel htmlFor={id}>
+				Volume
+				<span style={visuallyHidden}> from 0 (muted) to 100 (max volume)</span>
+			</FormLabel>
 			<Stack spacing={1} direction="row" sx={{ alignItems: "center", mb: 1 }}>
 				<Icon href={svgSoundQuiet} />
 				<Slider

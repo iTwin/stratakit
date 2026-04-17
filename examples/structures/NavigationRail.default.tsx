@@ -8,15 +8,12 @@ import { unstable_NavigationRail as NavigationRail } from "@stratakit/structures
 
 import svgBentley from "@stratakit/icons/bentley-systems.svg";
 import svgPlaceholder from "@stratakit/icons/placeholder.svg";
+import styles from "./NavigationRail.default.module.css";
 
 export default () => {
 	return (
-		<div
-			style={{
-				blockSize: "calc(100dvh - 16px * 2)",
-			}}
-		>
-			<NavigationRail.Root>
+		<div className={styles.container}>
+			<NavigationRail.Root className={styles.root}>
 				<NavigationRail.Header>
 					<Icon alt="Acme app" href={`${svgBentley}#icon-large`} size="large" />
 					<NavigationRail.ToggleButton />

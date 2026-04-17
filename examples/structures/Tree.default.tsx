@@ -5,6 +5,8 @@
 import * as React from "react";
 import { Tree } from "@stratakit/structures";
 
+import styles from "./Tree.default.module.css";
+
 export default () => {
 	const [expandedItems, setExpandedItems] = React.useState<
 		Record<string, boolean>
@@ -22,7 +24,7 @@ export default () => {
 	};
 
 	return (
-		<Tree.Root>
+		<Tree.Root className={styles.tree}>
 			<Tree.Item
 				label="Item 1"
 				aria-level={1}

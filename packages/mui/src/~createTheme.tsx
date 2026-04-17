@@ -262,7 +262,12 @@ function createTheme() {
 			},
 			MuiContainer: { defaultProps: { component: Role.div } },
 			MuiDialog: { defaultProps: { component: Role.div } },
-			MuiDialogContentText: { defaultProps: { component: Role.p } },
+			MuiDialogContentText: {
+				defaultProps: {
+					component: Role.p,
+					variant: "inherit",
+				},
+			},
 			MuiDialogTitle: { defaultProps: { component: Role.h2 } },
 			MuiDivider: { defaultProps: { component: MuiDivider } },
 			MuiDrawer: { defaultProps: { component: Role.div } },

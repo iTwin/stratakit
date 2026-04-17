@@ -19,7 +19,8 @@ export default () => {
 	return (
 		<FormControl fullWidth>
 			<FormLabel htmlFor={id}>
-				Volume<span style={visuallyHidden}> from 0 to 100</span>
+				Volume
+				<span style={visuallyHidden}> from 0 (muted) to 100 (max volume)</span>
 			</FormLabel>
 			<Stack spacing={1} direction="row" sx={{ alignItems: "center", mb: 1 }}>
 				<Icon href={svgSoundQuiet} />

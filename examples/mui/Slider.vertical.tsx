@@ -19,7 +19,11 @@ export default () => {
 	return (
 		<FormControl fullWidth>
 			<FormLabel htmlFor={id}>
-				Mood<span style={visuallyHidden}> from 0 to 100</span>
+				Mood
+				<span style={visuallyHidden}>
+					{" "}
+					from 0 (very sad) to 100 (very happy)
+				</span>
 			</FormLabel>
 			<Stack spacing={1} direction="column-reverse">
 				<Icon href={svgSad} />

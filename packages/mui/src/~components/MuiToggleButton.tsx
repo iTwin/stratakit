@@ -6,6 +6,7 @@
 import IconButton from "@mui/material/IconButton";
 import Tooltip from "@mui/material/Tooltip";
 import { forwardRef } from "@stratakit/foundations/secret-internals";
+import { MuiButtonBase } from "./MuiButtonBase.js";
 
 import type { ToggleButtonOwnProps } from "@mui/material/ToggleButton";
 import type { BaseProps } from "@stratakit/foundations/secret-internals";
@@ -31,12 +32,22 @@ const MuiToggleButton = forwardRef<"button", MuiToggleButtonProps>(
 		if (label) {
 			return (
 				<Tooltip title={label} describeChild={false}>
-					<IconButton size={size} {...rest} ref={forwardedRef} />
+					<MuiButtonBase
+						{...rest}
+						render={props.render ?? <IconButton size={size} />}
+						ref={forwardedRef}
+					/>
 				</Tooltip>
 			);
 		}
 
-		return <IconButton size={size} {...rest} ref={forwardedRef} />;
+		return (
+			<MuiButtonBase
+				{...rest}
+				render={props.render ?? <IconButton size={size} />}
+				ref={forwardedRef}
+			/>
+		);
 	},
 );
 DEV: MuiToggleButton.displayName = "MuiToggleButton";

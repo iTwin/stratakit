@@ -12,7 +12,6 @@
 	/** Rendered in a ToggleButtonGroup. */
 	&:where(.MuiToggleButtonGroup-grouped) {
 		border-radius: revert-layer; /** Let MUI handle borders. */
-		padding: calc(var(--_MuiIconButton-padding) - 1px); /* Account for 1px border */
 	}
 
 	&:where(.Mui-selected) {
@@ -28,14 +27,16 @@
 	}
 }
 
+/** Rendered as an IconButton (default). */
+.MuiToggleButton-root:is(.MuiIconButton-root) {
+	/** Rendered in a ToggleButtonGroup. */
+	&:where(.MuiToggleButtonGroup-grouped) {
+		padding: calc(var(--_MuiIconButton-padding) - 1px); /* Account for 1px border */
+	}
+}
+
 /** Rendered as a Button. */
 .MuiToggleButton-root:is(.MuiButton-root) {
-	padding-block: var(--_MuiButton-padding-block);
-	padding-inline: var(--_MuiButton-padding-inline);
-	aspect-ratio: auto;
-	/** TODO: need to keep selected/disabled color overrides here... */
-	color: revert-layer; /** Let MUI handle text color. */
-
 	/** Rendered in a ToggleButtonGroup. */
 	&:where(.MuiToggleButtonGroup-grouped) {
 		box-shadow: none;

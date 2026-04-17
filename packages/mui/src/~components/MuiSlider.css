@@ -129,6 +129,7 @@
 	&::after {
 		block-size: 24px;
 		inline-size: 24px;
+		border-radius: 0;
 	}
 }
 
@@ -151,5 +152,28 @@
 @media (prefers-reduced-motion: reduce) {
 	:is(.MuiSlider-track, .MuiSlider-thumb) {
 		transition: none;
+	}
+}
+
+.MuiSlider-valueLabel {
+	--✨gap: var(--stratakit-space-x1);
+
+	font-variant-numeric: tabular-nums;
+	user-select: none; /* Disabled because tooltip is inside the thumb which intercepts all pointer events */
+
+	&:is(.MuiTooltip-tooltip) {
+		margin: 0;
+
+		:where(.MuiSlider-root:not(.MuiSlider-vertical)) & {
+			inset-block-start: calc((var(--✨gap) + 1px) * -1);
+		}
+
+		:where(.MuiSlider-root.MuiSlider-vertical) & {
+			inset-inline-end: calc(var(--_MuiSlider-thumb-size) - 1px + var(--✨gap));
+		}
+	}
+
+	&::before {
+		display: none; /* Hides the MUI arrow */
 	}
 }

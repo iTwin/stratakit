@@ -4,70 +4,42 @@
  *--------------------------------------------------------------------------------------------*/
 
 .MuiToggleButton-root {
-	--_MuiToggleButton-color: var(--stratakit-color-text-neutral-primary);
-	--_MuiToggleButton-icon-color: var(--stratakit-color-icon-neutral-base);
-
-	min-block-size: var(--_MuiToggleButton-height);
-	min-inline-size: var(--_MuiToggleButton-height);
-	color: var(--_MuiToggleButton-color);
-	--🥝Icon-color: var(--_MuiToggleButton-icon-color);
-	padding-block: calc(var(--_MuiToggleButton-padding-block) - 1px); /* Account for 1px border */
-	padding-inline: calc(var(--_MuiToggleButton-padding-inline) - 1px); /* Account for 1px border */
-
-	/* Remove border of standalone toggle buttons to visually align with icon buttons. */
+	/** Standalone ToggleButton. */
 	&:where(:not(.MuiToggleButtonGroup-grouped)) {
-		border: 0;
+		border: 0; /** Standalone ToggleButtons have no border. */
 	}
 
-	&:where(.MuiToggleButton-sizeSmall) {
-		@apply --typography("body-sm");
-		--_MuiToggleButton-height: var(--stratakit-size-control-field-height-small);
-		--_MuiToggleButton-padding-block: var(--stratakit-space-x1);
-		--_MuiToggleButton-padding-inline: var(--stratakit-space-x1);
-
-		&:where(.MuiButton-root) {
-			--_MuiToggleButton-padding-block: var(--stratakit-space-x05);
-			--_MuiToggleButton-padding-inline: var(--stratakit-space-x2);
-		}
-	}
-
-	&:where(.MuiToggleButton-sizeMedium) {
-		@apply --typography("body-md");
-		--_MuiToggleButton-height: var(--stratakit-size-control-field-height-medium);
-		--_MuiToggleButton-padding-block: var(--stratakit-space-x1);
-		--_MuiToggleButton-padding-inline: var(--stratakit-space-x1);
-
-		&:where(.MuiButton-root) {
-			--_MuiToggleButton-padding-inline: var(--stratakit-space-x3);
-		}
-	}
-
-	&:where(.MuiToggleButton-sizeLarge) {
-		@apply --typography("body-lg");
-		--_MuiToggleButton-height: var(--stratakit-size-control-field-height-large);
-		--_MuiToggleButton-padding-block: var(--stratakit-space-x2);
-		--_MuiToggleButton-padding-inline: var(--stratakit-space-x2);
-
-		&:where(.MuiButton-root) {
-			--_MuiToggleButton-padding-inline: var(--stratakit-space-x4);
-		}
-	}
-
-	@media (any-hover: hover) {
-		&:where(:hover) {
-			--_MuiToggleButton-icon-color: var(--stratakit-color-icon-neutral-primary);
-		}
+	/** Rendered in a ToggleButtonGroup. */
+	&:where(.MuiToggleButtonGroup-grouped) {
+		border-radius: revert-layer; /** Let MUI handle borders. */
+		padding: calc(var(--_MuiIconButton-padding) - 1px); /* Account for 1px border */
 	}
 
 	&:where(.Mui-selected) {
 		border-color: var(--stratakit-color-border-accent-strong);
 		background-color: var(--stratakit-color-bg-glow-on-surface-accent-pressed);
-		--_MuiToggleButton-color: var(--stratakit-color-text-accent-strong);
-		--_MuiToggleButton-icon-color: var(--stratakit-color-icon-accent-strong);
+		color: var(--stratakit-color-text-accent-strong);
+		--🥝Icon-color: var(--stratakit-color-icon-accent-strong);
 	}
 
 	&:where(.Mui-disabled) {
-		--_MuiToggleButton-color: var(--stratakit-color-text-neutral-disabled);
-		--_MuiToggleButton-icon-color: var(--stratakit-color-icon-neutral-disabled);
+		color: var(--stratakit-color-text-neutral-disabled);
+		--🥝Icon-color: var(--stratakit-color-icon-neutral-disabled);
+	}
+}
+
+/** Rendered as a Button. */
+.MuiToggleButton-root:is(.MuiButton-root) {
+	padding-block: var(--_MuiButton-padding-block);
+	padding-inline: var(--_MuiButton-padding-inline);
+	aspect-ratio: auto;
+	/** TODO: need to keep selected/disabled color overrides here... */
+	color: revert-layer; /** Let MUI handle text color. */
+
+	/** Rendered in a ToggleButtonGroup. */
+	&:where(.MuiToggleButtonGroup-grouped) {
+		box-shadow: none;
+		padding-block: calc(var(--_MuiButton-padding-block) - 1px); /* Account for 1px border */
+		padding-inline: calc(var(--_MuiButton-padding-inline) - 1px); /* Account for 1px border */
 	}
 }

@@ -10,13 +10,13 @@ import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 export default () => {
 	return (
 		<ToggleButtonGroup value="auto" aria-label="color scheme">
-			<ToggleButton value="auto" render={<Button variant="text" />}>
+			<ToggleButton value="auto" render={<Button />}>
 				Auto
 			</ToggleButton>
-			<ToggleButton value="light" render={<Button variant="text" />}>
+			<ToggleButton value="light" render={<Button />}>
 				Light
 			</ToggleButton>
-			<ToggleButton value="dark" render={<Button variant="text" />}>
+			<ToggleButton value="dark" render={<Button />}>
 				Dark
 			</ToggleButton>
 		</ToggleButtonGroup>

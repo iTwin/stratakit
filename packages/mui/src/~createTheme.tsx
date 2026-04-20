@@ -9,6 +9,8 @@ import OutlinedInput from "@mui/material/OutlinedInput";
 import StepConnector from "@mui/material/StepConnector";
 import { createTheme as createMuiTheme } from "@mui/material/styles";
 import cx from "classnames";
+import { MuiAutocomplete } from "./~components/MuiAutocomplete.js";
+import { MuiAvatarGroup } from "./~components/MuiAvatarGroup.js";
 import { MuiBadge } from "./~components/MuiBadge.js";
 import { MuiBottomNavigationAction } from "./~components/MuiBottomNavigation.js";
 import { MuiButtonBase } from "./~components/MuiButtonBase.js";
@@ -24,6 +26,7 @@ import {
 } from "./~components/MuiChip.js";
 import { MuiDivider } from "./~components/MuiDivider.js";
 import { MuiIconButton } from "./~components/MuiIconButton.js";
+import { MuiInputLabel } from "./~components/MuiInputLabel.js";
 import { MuiSnackbar } from "./~components/MuiSnackbar.js";
 import { MuiStepIcon } from "./~components/MuiStepper.js";
 import { MuiTableCell, MuiTableHead } from "./~components/MuiTable.js";
@@ -151,6 +154,9 @@ function createTheme() {
 						</li>
 					),
 					slotProps: {
+						root: {
+							component: MuiAutocomplete,
+						},
 						paper: {
 							elevation: 8, // match Menu elevation
 						},
@@ -179,7 +185,7 @@ function createTheme() {
 					},
 				},
 			},
-			MuiAvatarGroup: { defaultProps: { component: Role.div } },
+			MuiAvatarGroup: { defaultProps: { component: MuiAvatarGroup } },
 			MuiBackdrop: { defaultProps: { component: Role.div } },
 			MuiBadge: {
 				defaultProps: {
@@ -256,7 +262,12 @@ function createTheme() {
 			},
 			MuiContainer: { defaultProps: { component: Role.div } },
 			MuiDialog: { defaultProps: { component: Role.div } },
-			MuiDialogContentText: { defaultProps: { component: Role.p } },
+			MuiDialogContentText: {
+				defaultProps: {
+					component: Role.p,
+					variant: "inherit",
+				},
+			},
 			MuiDialogTitle: { defaultProps: { component: Role.h2 } },
 			MuiDivider: { defaultProps: { component: MuiDivider } },
 			MuiDrawer: { defaultProps: { component: Role.div } },
@@ -279,7 +290,7 @@ function createTheme() {
 			MuiInputAdornment: { defaultProps: { component: Role.div } },
 			MuiInputLabel: {
 				defaultProps: {
-					component: Role.label,
+					component: MuiInputLabel,
 					shrink: true, // Removes label animation and masked border from TextField
 				},
 			},
@@ -379,7 +390,16 @@ function createTheme() {
 				},
 			},
 			MuiSkeleton: { defaultProps: { component: Role.span } },
-			MuiSlider: { defaultProps: { component: Role.span } },
+			MuiSlider: {
+				defaultProps: {
+					component: Role.span,
+					slotProps: {
+						valueLabel: {
+							className: "MuiTooltip-tooltip",
+						},
+					},
+				},
+			},
 			MuiSnackbar: {
 				defaultProps: {
 					slotProps: {

@@ -11,6 +11,7 @@ links:
 ## StrataKit MUI modifications
 
 - The `color` prop is not supported.
+- The [value label](#tooltip) matches the visual styling of [`Tooltip`](/components/tooltip) by applying the `MuiTooltip-tooltip` class name.
 - Restyled using StrataKit's visual language.
 - Includes full `forced-colors` support.
 
@@ -23,6 +24,12 @@ links:
 ### Range
 
 ::example{src="mui/Slider.range" min-width="300px"}
+
+### Tooltip
+
+Use the `valueLabelDisplay` prop to show a tooltip near the **Slider** thumb for more precise selection.
+
+::example{src="mui/Slider.tooltip" min-width="300px"}
 
 ### Vertical
 

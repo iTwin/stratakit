@@ -3,6 +3,8 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
+@import "internal/typography.mixins.css";
+
 @import "./~utils.ListItem.css" layer(stratakit.components);
 @import "./~utils.icons.css" layer(stratakit.components);
 

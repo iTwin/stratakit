@@ -26,7 +26,6 @@ export default () => {
 			label={`${color.charAt(0).toUpperCase()}${color.slice(1)}`}
 			selected={selected.includes(color)}
 			onChange={(_, value) => {
-				console.log({ value });
 				setSelected((prev) => {
 					if (prev.includes(value)) {
 						return prev.filter((v) => v !== value);

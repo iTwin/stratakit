@@ -35,6 +35,12 @@ To display text within a **ToggleButton**, use the `render` prop to render a [**
 
 ::example{src="mui/ToggleButton.text"}
 
+:::note[Exclusive selection]
+
+In the example above, the `exclusive` prop is set on the `ToggleButtonGroup`, which allows only one button to be selected at a time. Additionally, the handler used in the `onChange` prop enforces that at least one button is always selected.
+
+:::
+
 ## ✅ Do
 
 - Use **ToggleButton** for actions that have an on/off state.

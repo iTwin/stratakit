@@ -17,7 +17,7 @@ links:
 
 ### Standalone
 
-Use the `selected` and `onChange` props to control the selected state of a standalone **ToggleButton** when it is not nested within a [`ToggleButtonGroup`](https://mui.com/material-ui/api/toggle-button-group/) component.
+Use the [`selected`](https://mui.com/material-ui/api/toggle-button/#toggle-button-prop-selected) and [`onChange`](https://mui.com/material-ui/api/toggle-button/#toggle-button-prop-onChange) props to control the selected state of a standalone **ToggleButton** when it is not nested within a [`ToggleButtonGroup`](https://mui.com/material-ui/api/toggle-button-group/) component.
 
 ::example{src="mui/ToggleButton.standalone"}
 

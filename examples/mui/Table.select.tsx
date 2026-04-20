@@ -71,15 +71,6 @@ export default () => {
 
 	const [selected, setSelected] = useState<number[]>([]);
 
-	const handleSelectAllClick = (event: React.ChangeEvent<HTMLInputElement>) => {
-		if (event.target.checked) {
-			const newSelected = rows.map((row) => row.id);
-			setSelected(newSelected);
-			return;
-		}
-		setSelected([]);
-	};
-
 	const handleClick = (id: number) => {
 		const selectedIndex = selected.indexOf(id);
 		let newSelected: number[] = [];
@@ -113,15 +104,7 @@ export default () => {
 				</caption>
 				<TableHead>
 					<TableRow>
-						<TableCell padding="checkbox">
-							<Checkbox
-								color="primary"
-								indeterminate={numSelected > 0 && numSelected < rowCount}
-								checked={rowCount > 0 && numSelected === rowCount}
-								onChange={handleSelectAllClick}
-								slotProps={{ input: { "aria-label": "select all desserts" } }}
-							/>
-						</TableCell>
+						<TableCell padding="checkbox" />
 						<TableCell>Dessert (100g serving)</TableCell>
 						<TableCell align="right">Calories</TableCell>
 						<TableCell align="right">Fat&nbsp;(g)</TableCell>

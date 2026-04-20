@@ -11,9 +11,9 @@ export default () => {
 		<AvatarGroup
 			max={4}
 			renderSurplus={(surplus) => (
-				<Avatar aria-label={`${surplus} more users`} role="img">
-					<abbr aria-hidden="true">+{surplus}</abbr>
-				</Avatar>
+				<span role="img" aria-label={`+${surplus} more`}>
+					+{surplus}
+				</span>
 			)}
 		>
 			<Avatar aria-label="John Doe" role="img">

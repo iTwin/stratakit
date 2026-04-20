@@ -27,27 +27,46 @@ Make sure the **Card** is suitable for your use case. There may be other, more a
 
 ## Examples
 
-### CardActions
+### Basic
 
-Add supplementary actions to the `<CardActions>` component. This component must appear as the last child of `<Card>`. Do not include any non-interactive elements here.
+::example{src="mui/Card.default"}
 
-::example{src="mui/Card.actions"}
+Make simple **Cards**, with single actions, clickable using the `CardActionArea` component.
 
-### CardHeader
+Use `slotProps` to give the `CardHeader`’s `title` [an appropriate heading level](https://www.a11yproject.com/posts/how-to-accessible-heading-structure/). The second level (`h2`) is the default.
 
-Use the `<CardHeader>` component to place the `title` at the top of the **Card**, and optionally supply a `subheader`. In this example, the `action` prop gives access to a menu.
+```jsx
+<CardHeader
+  title="Stadium"
+  slotProps={{
+    title: {
+    render: <h3 />,
+    },
+  }}
+/>
+```
+
+### Menu and metadata
 
 ::example{src="mui/Card.header"}
 
+Add metadata and a menu to `CardHeader` using the `subheader` and `action` props. 
+
+### Actions
+
+::example{src="mui/Card.actions"}
+
+Add actions, at the foot of the **Card**, with the `CardActions` component. **Cards** with `CardActions` must not include `CardActionArea`. The **Card** itself cannot be actionable.
+
 ## ✅ Do
 
-- Use a heading element to provide a clear title for the card’s content. Choose [an appropriate heading level](https://www.a11yproject.com/posts/how-to-accessible-heading-structure/).
+- Choose [an appropriate heading level](https://www.a11yproject.com/posts/how-to-accessible-heading-structure/) for the `CardHeader` title.
 - Organize multiple **Cards** into an unordered list, where each list item contains a single **Card**.
-- Use `CardActionArea` inside the heading if the entire card should be clickable.
+- Use `CardActionArea` if the entire card should be clickable.
 - Use `CardActions` when the card has supplementary actions.
 
 ## 🚫 Don't
 
 - Don’t use a **Card** to group unrelated content or actions.
 - Don’t use **Card** just to highlight some content belonging to a larger subject. 
-- Don’t wrap the entire contents of the **Card** in a `CardActionArea`.
+- Don’t wrap the entire contents of the **Card** in a `CardActionArea`. Typically, it should only contain `CardHeader`.

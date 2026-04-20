@@ -10,6 +10,7 @@ import StepConnector from "@mui/material/StepConnector";
 import { createTheme as createMuiTheme } from "@mui/material/styles";
 import cx from "classnames";
 import { MuiAutocomplete } from "./~components/MuiAutocomplete.js";
+import { MuiAvatarGroup } from "./~components/MuiAvatarGroup.js";
 import { MuiBadge } from "./~components/MuiBadge.js";
 import { MuiBottomNavigationAction } from "./~components/MuiBottomNavigation.js";
 import { MuiButtonBase } from "./~components/MuiButtonBase.js";
@@ -185,7 +186,7 @@ function createTheme() {
 					},
 				},
 			},
-			MuiAvatarGroup: { defaultProps: { component: Role.div } },
+			MuiAvatarGroup: { defaultProps: { component: MuiAvatarGroup } },
 			MuiBackdrop: { defaultProps: { component: Role.div } },
 			MuiBadge: {
 				defaultProps: {
@@ -262,7 +263,12 @@ function createTheme() {
 			},
 			MuiContainer: { defaultProps: { component: Role.div } },
 			MuiDialog: { defaultProps: { component: Role.div } },
-			MuiDialogContentText: { defaultProps: { component: Role.p } },
+			MuiDialogContentText: {
+				defaultProps: {
+					component: Role.p,
+					variant: "inherit",
+				},
+			},
 			MuiDialogTitle: { defaultProps: { component: Role.h2 } },
 			MuiDivider: { defaultProps: { component: MuiDivider } },
 			MuiDrawer: { defaultProps: { component: Role.div } },
@@ -380,7 +386,16 @@ function createTheme() {
 				},
 			},
 			MuiSkeleton: { defaultProps: { component: Role.span } },
-			MuiSlider: { defaultProps: { component: Role.span } },
+			MuiSlider: {
+				defaultProps: {
+					component: Role.span,
+					slotProps: {
+						valueLabel: {
+							className: "MuiTooltip-tooltip",
+						},
+					},
+				},
+			},
 			MuiSnackbar: {
 				defaultProps: {
 					slotProps: {

@@ -7,3 +7,8 @@ links:
 ---
 
 ::example{src="mui/AvatarGroup.default"}
+
+## StrataKit MUI modifications
+
+- DOM order now matches the visual display order.
+- The visual stacking of the `Avatar`s is inverted.

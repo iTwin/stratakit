@@ -139,9 +139,6 @@ export default () => {
 								key={row.id}
 								hover
 								onClick={() => handleClick(row.id)}
-								role="checkbox"
-								aria-checked={isItemSelected}
-								tabIndex={-1}
 								selected={isItemSelected}
 								sx={{ cursor: "pointer" }}
 							>
@@ -149,7 +146,7 @@ export default () => {
 									<Checkbox
 										color="primary"
 										checked={isItemSelected}
-										aria-labelledby={labelId}
+										slotProps={{ input: { "aria-labelledby": labelId } }}
 									/>
 								</TableCell>
 								<TableCell render={<th />} scope="row" id={labelId}>

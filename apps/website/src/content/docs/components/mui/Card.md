@@ -48,7 +48,7 @@ Use `slotProps` to give the `CardHeader`’s `title` [an appropriate heading lev
 
 ### Menu and metadata
 
-::example{src="mui/Card.header" min-height="425px"}
+::example{src="mui/Card.menu" min-height="425px"}
 
 Add metadata and a menu to `CardHeader` using the `subheader` and `action` props. 
 

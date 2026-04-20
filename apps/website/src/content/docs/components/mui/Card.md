@@ -6,7 +6,7 @@ links:
   apiReference: https://mui.com/material-ui/api/card/
 ---
 
-::example{src="mui/Card.default" min-height="325px"}
+::example{src="mui/Card.default"}
 
 ## Use cases
 
@@ -29,9 +29,13 @@ Make sure the **Card** is suitable for your use case. There may be other, more a
 
 ### CardActions
 
-::example{src="mui/Card.actions" min-height="325px"}
+Add supplementary actions to the `<CardActions>` component. This component must appear as the last child of `<Card>`. Do not include any non-interactive elements here.
+
+::example{src="mui/Card.actions"}
 
 ### CardHeader
+
+Use the `<CardHeader>` component to place the `title` at the top of the **Card**, and optionally supply a `subheader`. In this example, the `action` prop gives access to a menu.
 
 ::example{src="mui/Card.header"}
 

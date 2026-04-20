@@ -27,6 +27,12 @@
 	}
 }
 
+.MuiCardHeader-root {
+	&:where(:has(+ .MuiCardContent-root, + .MuiCardActions-root)) {
+		padding-block-end: 0;
+	}
+}
+
 .MuiCardHeader-title {
 	@apply --typography("headline-sm");
 	font-weight: 500;

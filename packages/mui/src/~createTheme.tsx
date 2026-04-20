@@ -190,7 +190,7 @@ function createTheme() {
 					component: MuiAvatarGroup,
 					slotProps: {
 						surplus: {
-							className: "🥝MuiAvatarGroupSurplus",
+							["data-_sk-surplus" as keyof React.HTMLAttributes<HTMLDivElement>]: ``,
 						},
 					},
 				},

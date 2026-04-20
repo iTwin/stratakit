@@ -3,11 +3,6 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-<<<<<<< HEAD
-=======
-import * as React from "react";
-import Button from "@mui/material/Button";
->>>>>>> 19ac0780f75b557b0f6b6533507910745a371f42
 import Card from "@mui/material/Card";
 import CardActionArea from "@mui/material/CardActionArea";
 import CardContent from "@mui/material/CardContent";
@@ -18,21 +13,12 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import Typography from "@mui/material/Typography";
 import { Icon } from "@stratakit/mui";
-
 import svgMore from "@stratakit/icons/more-vertical.svg";
 import styles from "./Card.header.module.css";
 
 export default () => {
 	return (
 		<Card className={styles.card} variant="outlined">
-<<<<<<< HEAD
-=======
-			<CardHeader
-				title="Stadium"
-				subheader="January 16, 2026"
-				action={<ActionsMenu />}
-			/>
->>>>>>> 19ac0780f75b557b0f6b6533507910745a371f42
 			<CardMedia
 				className={styles.media}
 				render={

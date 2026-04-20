@@ -1,1 +1,0 @@
-import{j as t}from"./client.CZMW41wv.js";import{S as e}from"./Skeleton.B3FeJ31R.js";import{V as r}from"./ExamplePreview.Cke7I3VE.js";import"./styles.internal.iAh-c3F9.js";import"./preload-helper.QK6AP3ct.js";const l=()=>t.jsxs(t.Fragment,{children:[t.jsx(e,{variant:"text"}),t.jsx(r,{children:"Loading…"})]});export{l as default};

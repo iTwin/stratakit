@@ -6,22 +6,22 @@ links:
   apiReference: https://mui.com/material-ui/api/card/
 ---
 
-::example{src="mui/Card.default"}
+::example{src="mui/Card.default" min-height="325px"}
 
 ## Use cases
 
 Make sure the **Card** is suitable for your use case. There may be other, more appropriate components available.
 
-| Use case                                                                          | **Card**                   | [**Tabs**](/components/tabs) | [**Dialog**](/components/dialog)  |
-| --------------------------------------------------------------------------------- | -------------------------- | ---------------------------- | --------------------------------- |
-| Introduce a single subject, as one of a set displayed as a list or grid           |             ✅             |              ❌              |                ❌                 |
-| Divide a single subject into subsections to be switched between                   |             ❌             |              ✅              |                ❌                 |
-| Present additional actions for a subject that require immediate attention         |             ❌             |               ❌             |                ✅                 |
+| Use case                                                                  | **Card** | [**Tabs**](/components/tabs) | [**Dialog**](/components/dialog) |
+| ------------------------------------------------------------------------- | -------- | ---------------------------- | -------------------------------- |
+| Introduce a single subject, as one of a set displayed as a list or grid   | ✅       | ❌                           | ❌                               |
+| Divide a single subject into subsections to be switched between           | ❌       | ✅                           | ❌                               |
+| Present additional actions for a subject that require immediate attention | ❌       | ❌                           | ✅                               |
 
 ## StrataKit MUI modifications
 
 - `Card` is rendered as an [`<article>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/article) element by default. This programmatically indicates the bounds of the **Card’s** contents.
-- `CardHeader`'s `title` is rendered as an `<h2>` by default. 
+- `CardHeader`'s `title` is rendered as an `<h2>` by default.
 - `CardActionArea` has had `role="button"` removed to avoid conflicting semantics when rendered as a link.
 - `CardActionArea` has been redesigned to no longer wrap the entire card content. Instead, it should be used in the **Card's** heading or title area.
 
@@ -48,7 +48,7 @@ Use `slotProps` to give the `CardHeader`’s `title` [an appropriate heading lev
 
 ### Menu and metadata
 
-::example{src="mui/Card.header"}
+::example{src="mui/Card.header" min-height="425px"}
 
 Add metadata and a menu to `CardHeader` using the `subheader` and `action` props. 
 

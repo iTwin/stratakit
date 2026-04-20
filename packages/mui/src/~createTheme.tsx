@@ -185,7 +185,16 @@ function createTheme() {
 					},
 				},
 			},
-			MuiAvatarGroup: { defaultProps: { component: MuiAvatarGroup } },
+			MuiAvatarGroup: {
+				defaultProps: {
+					component: MuiAvatarGroup,
+					slotProps: {
+						surplus: {
+							className: "🥝MuiAvatarGroupSurplus",
+						},
+					},
+				},
+			},
 			MuiBackdrop: { defaultProps: { component: Role.div } },
 			MuiBadge: {
 				defaultProps: {

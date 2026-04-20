@@ -11,11 +11,7 @@ export default () => {
 		<AvatarGroup
 			max={4}
 			renderSurplus={(surplus) => (
-				<span
-					className="MuiAvatarGroup-surplus"
-					role="img"
-					aria-label={`+${surplus} more`}
-				>
+				<span role="img" aria-label={`+${surplus} more`}>
 					+{surplus}
 				</span>
 			)}

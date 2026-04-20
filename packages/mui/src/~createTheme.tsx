@@ -547,7 +547,7 @@ function createTheme(args: CreateThemeArgs) {
 			},
 			MuiTypography: {
 				defaultProps: {
-					variant: "body2",
+					variant: "body-md",
 					component: MuiTypography,
 				},
 				variants: [

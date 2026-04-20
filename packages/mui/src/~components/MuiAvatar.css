@@ -18,10 +18,6 @@
 		font-size: calc(50cqw - 4px);
 	}
 
-	> :where(span[role="img"]) {
-		text-transform: none;
-	}
-
 	&::after {
 		content: "";
 		pointer-events: none;

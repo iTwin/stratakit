@@ -14,3 +14,7 @@
 		margin-inline-start: var(--AvatarGroup-spacing);
 	}
 }
+
+.MuiAvatarGroup-surplus {
+	text-transform: none;
+}

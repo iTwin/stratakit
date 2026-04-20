@@ -8,7 +8,18 @@ import AvatarGroup from "@mui/material/AvatarGroup";
 
 export default () => {
 	return (
-		<AvatarGroup max={4}>
+		<AvatarGroup
+			max={4}
+			renderSurplus={(surplus) => (
+				<span
+					className="MuiAvatarGroup-surplus"
+					role="img"
+					aria-label={`+${surplus} more`}
+				>
+					+{surplus}
+				</span>
+			)}
+		>
 			<Avatar aria-label="John Doe" role="img">
 				<abbr aria-hidden="true">J</abbr>
 			</Avatar>

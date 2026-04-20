@@ -6,7 +6,7 @@
 @layer {
 	.exampleEmbedRoot {
 		display: grid;
-		align-items: center;
+		align-items: var(--example-align-items, center);
 
 		> * {
 			grid-area: 1 / 1 / -1 / -1;
@@ -14,9 +14,13 @@
 	}
 
 	.examplePreviewWrapper {
-		display: flex;
-		justify-content: center;
+		margin-inline: auto;
 		padding: 2rem;
+
+		min-inline-size: min(var(--example-min-width), 100%);
+		max-inline-size: 100%;
+
+		overflow: auto;
 	}
 
 	.toolbar {

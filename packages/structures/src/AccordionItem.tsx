@@ -87,7 +87,7 @@ interface AccordionItemProps extends BaseProps {
  * <AccordionItem.Root>
  *   <AccordionItem.Header>
  *     <AccordionItem.Marker />
- *     <AccordionItem.Decoration render={<Icon href={placeholder} />} />
+ *     <AccordionItem.Decoration render={<Icon href={svgPlaceholder} />} />
  *     <AccordionItem.Button>
  *       <AccordionItem.Label>Label</AccordionItem.Label>
  *     </AccordionItem.Button>
@@ -95,6 +95,9 @@ interface AccordionItemProps extends BaseProps {
  *   <AccordionItem.Content>Body</AccordionItem.Content>
  * </AccordionItem.Root>
  * ```
+ *
+ * @deprecated Use MUI [`Accordion`](https://mui.com/material-ui/api/accordion/) component instead.
+ * See [migration guide](https://stratakit.bentley.com/docs/getting-started/migration-from-legacy-stratakit/#accordionitem).
  */
 const AccordionItemRoot = forwardRef<"div", AccordionItemProps>(
 	(props, forwardedRef) => {
@@ -149,6 +152,9 @@ DEV: AccordionItemRoot.displayName = "AccordionItem.Root";
  *   <AccordionItem.Content>Body</AccordionItem.Content>
  * </AccordionItem.Root>
  * ```
+ *
+ * @deprecated Use MUI [`AccordionSummary`](https://mui.com/material-ui/api/accordion-summary/) component instead.
+ * See [migration guide](https://stratakit.bentley.com/docs/getting-started/migration-from-legacy-stratakit/#accordionitem).
  */
 const AccordionItemHeader = forwardRef<"div", BaseProps>(
 	(props, forwardedRef) => (
@@ -177,6 +183,9 @@ DEV: AccordionItemHeader.displayName = "AccordionItem.Header";
  *   </AccordionItem.Button>
  * </AccordionItem.Header>
  * ```
+ *
+ * @deprecated Use MUI [`AccordionSummary`](https://mui.com/material-ui/api/accordion-summary/) component to configure the button instead.
+ * See [migration guide](https://stratakit.bentley.com/docs/getting-started/migration-from-legacy-stratakit/#accordionitem).
  */
 const AccordionItemButton = forwardRef<"button", BaseProps<"button">>(
 	(props, forwardedRef) => (
@@ -200,6 +209,9 @@ DEV: AccordionItemButton.displayName = "AccordionItem.Button";
  *   <AccordionItem.Label>Label</AccordionItem.Label>
  * </AccordionItem.Button>
  * ```
+ *
+ * @deprecated Use MUI [`Typography`](https://mui.com/material-ui/api/typography/) component instead.
+ * See [migration guide](https://stratakit.bentley.com/docs/getting-started/migration-from-legacy-stratakit/#accordionitem).
  */
 const AccordionItemLabel = forwardRef<"div", BaseProps>(
 	(props, forwardedRef) => (
@@ -226,7 +238,7 @@ DEV: AccordionItemLabel.displayName = "AccordionItem.Label";
  * ```tsx
  * <AccordionItem.Header>
  *   <AccordionItem.Marker />
- *   <AccordionItem.Decoration render={<Icon href={placeholder} />} />
+ *   <AccordionItem.Decoration render={<Icon href={svgPlaceholder} />} />
  *   <AccordionItem.Button>
  *     <AccordionItem.Label>Label</AccordionItem.Label>
  *   </AccordionItem.Button>
@@ -243,7 +255,7 @@ DEV: AccordionItemLabel.displayName = "AccordionItem.Label";
  *   <AccordionItem.Button>
  *     <AccordionItem.Label>Label</AccordionItem.Label>
  *   </AccordionItem.Button>
- *   <AccordionItem.Decoration render={<Icon href={placeholder} />} />
+ *   <AccordionItem.Decoration render={<Icon href={svgPlaceholder} />} />
  * </AccordionItem.Header>
  * ```
  *
@@ -255,14 +267,17 @@ DEV: AccordionItemLabel.displayName = "AccordionItem.Label";
  * <AccordionItem.Header>
  *   <AccordionItem.Marker />
  *   <AccordionItem.Decoration>
- *     <Icon href={placeholder} />
- *     <Icon href={placeholder} />
+ *     <Icon href={svgPlaceholder} />
+ *     <Icon href={svgPlaceholder} />
  *   </AccordionItem.Decoration>
  *   <AccordionItem.Button>
  *     <AccordionItem.Label>Label</AccordionItem.Label>
  *   </AccordionItem.Button>
  * </AccordionItem.Header>
  * ```
+ *
+ * @deprecated Provide custom content to MUI [`AccordionSummary`](https://mui.com/material-ui/api/accordion-summary/) component instead.
+ * See [migration guide](https://stratakit.bentley.com/docs/getting-started/migration-from-legacy-stratakit/#accordionitem).
  */
 const AccordionItemDecoration = forwardRef<"div", BaseProps>(
 	(props, forwardedRef) => (
@@ -307,13 +322,16 @@ DEV: AccordionItemDecoration.displayName = "AccordionItem.Decoration";
  * ```tsx
  * <AccordionItem.Header>
  *   <AccordionItem.Marker>
- *     <Icon href={placeholder} />
+ *     <Icon href={svgPlaceholder} />
  *   </AccordionItem.Marker>
  *   <AccordionItem.Button>
  *     <AccordionItem.Label>Label</AccordionItem.Label>
  *   </AccordionItem.Button>
  * </AccordionItem.Header>
  * ```
+ *
+ * @deprecated Use [`expandIconWrapper`](https://mui.com/material-ui/api/accordion-summary/#AccordionSummary-css-MuiAccordionSummary-expandIconWrapper) slot of MUI [`AccordionSummary`](https://mui.com/material-ui/api/accordion-summary/) component instead.
+ * See [migration guide](https://stratakit.bentley.com/docs/getting-started/migration-from-legacy-stratakit/#accordionitem).
  */
 const AccordionItemMarker = forwardRef<"div", BaseProps>(
 	(props, forwardedRef) => (
@@ -349,6 +367,9 @@ DEV: AccordionItemMarker.displayName = "AccordionItem.Marker";
  *   <AccordionItem.Content>Body</AccordionItem.Content>
  * </AccordionItem.Root>
  * ```
+ *
+ * @deprecated Use MUI [`AccordionDetails`](https://mui.com/material-ui/api/accordion-details/) component instead.
+ * See [migration guide](https://stratakit.bentley.com/docs/getting-started/migration-from-legacy-stratakit/#accordionitem).
  */
 const AccordionItemContent = forwardRef<"div", BaseProps>(
 	(props, forwardedRef) => (
@@ -380,6 +401,10 @@ interface AccordionItemHeadingProps extends Omit<BaseProps, "render"> {
  *     </AccordionItem.Button>
  *   </AccordionItem.Heading>
  * </AccordionItem.Header>
+ * ```
+ *
+ * @deprecated Use [`heading`](https://mui.com/material-ui/api/accordion/#Accordion-css-MuiAccordion-heading) slot of MUI [`Accordion`](https://mui.com/material-ui/api/accordion/) component instead.
+ * See [migration guide](https://stratakit.bentley.com/docs/getting-started/migration-from-legacy-stratakit/#accordionitem).
  */
 const AccordionItemHeading = forwardRef<"div", AccordionItemHeadingProps>(
 	(props, forwardedRef) => (
@@ -396,12 +421,12 @@ DEV: AccordionItemHeading.displayName = "AccordionItem.Heading";
 // ----------------------------------------------------------------------------
 
 export {
-	AccordionItemRoot as Root,
-	AccordionItemContent as Content,
-	AccordionItemHeader as Header,
 	AccordionItemButton as Button,
-	AccordionItemLabel as Label,
+	AccordionItemContent as Content,
 	AccordionItemDecoration as Decoration,
-	AccordionItemMarker as Marker,
+	AccordionItemHeader as Header,
 	AccordionItemHeading as Heading,
+	AccordionItemLabel as Label,
+	AccordionItemMarker as Marker,
+	AccordionItemRoot as Root,
 };

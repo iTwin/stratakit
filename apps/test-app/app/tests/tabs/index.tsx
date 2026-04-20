@@ -7,7 +7,7 @@ import { Icon } from "@stratakit/foundations";
 import { Tabs } from "@stratakit/structures";
 import { definePage } from "~/~utils.tsx";
 
-import placeholderIcon from "@stratakit/icons/placeholder.svg";
+import svgPlaceholder from "@stratakit/icons/placeholder.svg";
 
 export const handle = { title: "Tabs" };
 
@@ -42,17 +42,17 @@ function VisualTest() {
 					<Tabs.TabList tone={tone}>
 						<Tabs.Tab id="tab1">Tab 1</Tabs.Tab>
 						<Tabs.Tab id="tab2">
-							<Icon href={placeholderIcon} />
+							<Icon href={svgPlaceholder} />
 							Tab 2
 						</Tabs.Tab>
 						<Tabs.Tab id="tab3">
 							Tab 3
-							<Icon href={placeholderIcon} />
+							<Icon href={svgPlaceholder} />
 						</Tabs.Tab>
 						<Tabs.Tab id="tab4">
-							<Icon href={placeholderIcon} />
+							<Icon href={svgPlaceholder} />
 							Tab 4
-							<Icon href={placeholderIcon} />
+							<Icon href={svgPlaceholder} />
 						</Tabs.Tab>
 						<Tabs.Tab id="tab5" disabled>
 							Tab 5

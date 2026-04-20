@@ -172,7 +172,7 @@ interface FieldCollectionItemControlProps
  * <Field.Control
  *   render={(controlProps) => (
  *     <TextBox.Root>
- *       <TextBox.Icon href={placeholder} />
+ *       <TextBox.Icon href={svgPlaceholder} />
  *       <TextBox.Input {...controlProps} />
  *     </TextBox.Root>
  *   )}
@@ -292,9 +292,9 @@ DEV: FieldErrorMessage.displayName = "Field.ErrorMessage";
 // ----------------------------------------------------------------------------
 
 export {
-	FieldRoot as Root,
 	FieldControl as Control,
-	FieldLabel as Label,
 	FieldDescription as Description,
 	FieldErrorMessage as ErrorMessage,
+	FieldLabel as Label,
+	FieldRoot as Root,
 };

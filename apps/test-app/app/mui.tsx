@@ -25,17 +25,22 @@ import AlertTitle from "examples/mui/Alert.title.tsx";
 import AppBarDefault from "examples/mui/AppBar.default.tsx";
 import AutocompleteDefault from "examples/mui/Autocomplete.default.tsx";
 import AutocompleteMultiple from "examples/mui/Autocomplete.multiple.tsx";
+import AvatarDecorative from "examples/mui/Avatar.decorative.tsx";
 import AvatarDefault from "examples/mui/Avatar.default.tsx";
+import AvatarIcon from "examples/mui/Avatar.icon.tsx";
+import AvatarInitials from "examples/mui/Avatar.initials.tsx";
 import AvatarGroupDefault from "examples/mui/AvatarGroup.default.tsx";
 import BackdropDefault from "examples/mui/Backdrop.default.tsx";
 import BadgeColors from "examples/mui/Badge.colors.tsx";
 import BadgeDefault from "examples/mui/Badge.default.tsx";
+import BadgeError from "examples/mui/Badge.error.tsx";
 import BottomNavigationDefault from "examples/mui/BottomNavigation.default.tsx";
 import BreadcrumbsDefault from "examples/mui/Breadcrumbs.default.tsx";
 import ButtonIcons_ from "examples/mui/Button._icons.tsx";
 import ButtonPermutations_ from "examples/mui/Button._permutations.js";
 import ButtonColors from "examples/mui/Button.colors.tsx";
 import ButtonDefault from "examples/mui/Button.default.tsx";
+import ButtonSizes from "examples/mui/Button.sizes.tsx";
 import ButtonVariants from "examples/mui/Button.variants.tsx";
 import ButtonGroupDefault from "examples/mui/ButtonGroup.default.tsx";
 import CardActions from "examples/mui/Card.actions.tsx";
@@ -43,22 +48,26 @@ import CardDefault from "examples/mui/Card.default.tsx";
 import CardHeader from "examples/mui/Card.header.tsx";
 import CheckboxChecked from "examples/mui/Checkbox.checked.tsx";
 import CheckboxDefault from "examples/mui/Checkbox.default.tsx";
+import CheckboxError from "examples/mui/Checkbox.error.tsx";
+import CheckboxGroup from "examples/mui/Checkbox.group.tsx";
 import CheckboxIndeterminate from "examples/mui/Checkbox.indeterminate.tsx";
 import ChipInteractive_ from "examples/mui/Chip._interactive.tsx";
 import ChipClickable from "examples/mui/Chip.clickable.tsx";
 import ChipDefault from "examples/mui/Chip.default.tsx";
 import ChipDeletable from "examples/mui/Chip.deletable.tsx";
 import ChipOutlined from "examples/mui/Chip.outlined.tsx";
+import ChipSizes from "examples/mui/Chip.sizes.tsx";
 import CircularProgressColors_ from "examples/mui/CircularProgress._colors.tsx";
 import CircularProgressDefault from "examples/mui/CircularProgress.default.tsx";
 import DialogDefault from "examples/mui/Dialog.default.tsx";
 import DividerDefault from "examples/mui/Divider.default.tsx";
+import DividerPresentational from "examples/mui/Divider.presentational.tsx";
+import DividerVertical from "examples/mui/Divider.vertical.tsx";
 import DrawerDefault from "examples/mui/Drawer.default.tsx";
 import FabDefault from "examples/mui/Fab.default.tsx";
-import FormControlError from "examples/mui/FormControl.error.tsx";
-import FormControlGroup from "examples/mui/FormControl.group.tsx";
 import IconButtonColors_ from "examples/mui/IconButton._colors.tsx";
 import IconButtonDefault from "examples/mui/IconButton.default.tsx";
+import IconButtonSizes from "examples/mui/IconButton.sizes.tsx";
 import LinearProgressColors_ from "examples/mui/LinearProgress._colors.tsx";
 import LinearProgressDefault from "examples/mui/LinearProgress.default.tsx";
 import LinkColors_ from "examples/mui/Link._colors.tsx";
@@ -67,6 +76,7 @@ import ListAvatar from "examples/mui/List.avatar.tsx";
 import ListDefault from "examples/mui/List.default.tsx";
 import ListSubheader from "examples/mui/List.subheader.tsx";
 import MenuDefault from "examples/mui/Menu.default.tsx";
+import MenuDense from "examples/mui/Menu.dense.tsx";
 import MenuListDefault_ from "examples/mui/MenuList._default.tsx";
 import MobileStepperDefault from "examples/mui/MobileStepper.default.tsx";
 import NativeSelectDefault from "examples/mui/NativeSelect.default.tsx";
@@ -80,9 +90,11 @@ import SelectDefault from "examples/mui/Select.default.tsx";
 import SelectIcon from "examples/mui/Select.icon.tsx";
 import SelectMultiple from "examples/mui/Select.multiple.tsx";
 import SkeletonDefault from "examples/mui/Skeleton.default.tsx";
+import SkeletonVariants from "examples/mui/Skeleton.variants.tsx";
 import SliderDefault from "examples/mui/Slider.default.tsx";
 import SliderMarks from "examples/mui/Slider.marks.tsx";
 import SliderRange from "examples/mui/Slider.range.tsx";
+import SliderTooltip from "examples/mui/Slider.tooltip.tsx";
 import SliderVertical from "examples/mui/Slider.vertical.tsx";
 import SnackbarDefault from "examples/mui/Snackbar.default.tsx";
 import SpeedDialDefault from "examples/mui/SpeedDial.default.tsx";
@@ -102,10 +114,13 @@ import TextFieldDefault from "examples/mui/TextField.default.tsx";
 import TextFieldError from "examples/mui/TextField.error.tsx";
 import TextFieldIcon from "examples/mui/TextField.icon.tsx";
 import TextFieldMultiline from "examples/mui/TextField.multiline.tsx";
+import TextFieldSizes from "examples/mui/TextField.sizes.tsx";
 import ToggleButtonDefault from "examples/mui/ToggleButton.default.tsx";
 import TooltipDefault from "examples/mui/Tooltip.default.tsx";
-import TypographyVariants_ from "examples/mui/Typography._variants.tsx";
+import TooltipDirection from "examples/mui/Tooltip.direction.tsx";
 import TypographyDefault from "examples/mui/Typography.default.tsx";
+import TypographyHeading from "examples/mui/Typography.heading.tsx";
+import TypographyVariants from "examples/mui/Typography.variants.tsx";
 import { SkipLinkContext } from "./~navigation.tsx";
 import { isProduction, useIsWideScreen } from "./~utils.tsx";
 
@@ -126,7 +141,7 @@ export const meta: MetaFunction = () => {
  */
 const components: Record<string, React.ReactNode> = {
 	Accordion: (
-		<Stack spacing={1} alignSelf="stretch">
+		<Stack spacing={1} sx={{ alignSelf: "stretch" }}>
 			<div>
 				<AccordionDefault />
 			</div>
@@ -147,14 +162,14 @@ const components: Record<string, React.ReactNode> = {
 		</Stack>
 	),
 	Alert: (
-		<Stack spacing={1} alignSelf="stretch">
+		<Stack spacing={1} sx={{ alignSelf: "stretch" }}>
 			<AlertDefault />
 			<AlertTitle />
 			{!isProduction && <AlertPermutations_ />}
 		</Stack>
 	),
 	AppBar: (
-		<Stack spacing={1} alignSelf="stretch">
+		<Stack spacing={1} sx={{ alignSelf: "stretch" }}>
 			<AppBarDefault />
 		</Stack>
 	),
@@ -164,17 +179,25 @@ const components: Record<string, React.ReactNode> = {
 			<AutocompleteMultiple />
 		</>
 	),
-	Avatar: <AvatarDefault />,
+	Avatar: (
+		<Stack spacing={1} direction="row">
+			<AvatarDefault />
+			<AvatarInitials />
+			<AvatarIcon />
+			<AvatarDecorative />
+		</Stack>
+	),
 	AvatarGroup: <AvatarGroupDefault />,
 	Backdrop: <BackdropDefault />,
 	Badge: (
 		<>
 			<BadgeDefault />
 			<BadgeColors />
+			<BadgeError />
 		</>
 	),
 	BottomNavigation: (
-		<Stack spacing={1} alignSelf="stretch">
+		<Stack spacing={1} sx={{ alignSelf: "stretch" }}>
 			<BottomNavigationDefault />
 		</Stack>
 	),
@@ -182,6 +205,7 @@ const components: Record<string, React.ReactNode> = {
 	Button: (
 		<>
 			<ButtonDefault />
+			<ButtonSizes />
 			<ButtonVariants />
 			<ButtonColors />
 			{!isProduction && <ButtonIcons_ />}
@@ -201,15 +225,18 @@ const components: Record<string, React.ReactNode> = {
 			<CheckboxDefault />
 			<CheckboxChecked />
 			<CheckboxIndeterminate />
+			<CheckboxGroup />
+			<CheckboxError />
 		</>
 	),
 	Chip: (
-		<Stack spacing={1} direction="row" useFlexGap flexWrap="wrap">
+		<Stack spacing={1} direction="row" useFlexGap sx={{ flexWrap: "wrap" }}>
 			<ChipDefault />
 			<ChipOutlined />
 			<ChipClickable />
 			<ChipDeletable />
 			{!isProduction && <ChipInteractive_ />}
+			<ChipSizes />
 		</Stack>
 	),
 	CircularProgress: (
@@ -224,21 +251,20 @@ const components: Record<string, React.ReactNode> = {
 	),
 	Dialog: <DialogDefault />,
 	Divider: (
-		<Stack spacing={1} alignSelf="stretch">
-			<DividerDefault />
-		</Stack>
+		<>
+			<Stack sx={{ alignSelf: "stretch" }}>
+				<DividerDefault />
+			</Stack>
+			<DividerVertical />
+			<DividerPresentational />
+		</>
 	),
 	Drawer: <DrawerDefault />,
 	Fab: <FabDefault />,
-	FormControl: (
-		<>
-			<FormControlGroup />
-			<FormControlError />
-		</>
-	),
 	IconButton: (
 		<>
 			<IconButtonDefault />
+			<IconButtonSizes />
 			{!isProduction && (
 				<Stack spacing={1} direction="row">
 					<IconButtonColors_ />
@@ -247,7 +273,7 @@ const components: Record<string, React.ReactNode> = {
 		</>
 	),
 	LinearProgress: (
-		<Stack spacing={1} alignSelf="stretch">
+		<Stack spacing={1} sx={{ alignSelf: "stretch" }}>
 			<LinearProgressDefault />
 			{!isProduction && <LinearProgressColors_ />}
 		</Stack>
@@ -263,16 +289,21 @@ const components: Record<string, React.ReactNode> = {
 		</>
 	),
 	List: (
-		<Stack spacing={1} alignSelf="stretch">
+		<Stack spacing={1} sx={{ alignSelf: "stretch" }}>
 			<ListDefault />
 			<ListAvatar />
 			<ListSubheader />
 		</Stack>
 	),
-	Menu: <MenuDefault />,
+	Menu: (
+		<>
+			<MenuDefault />
+			<MenuDense />
+		</>
+	),
 	...(isProduction ? {} : { MenuList: <MenuListDefault_ /> }),
 	MobileStepper: (
-		<Stack spacing={1} alignSelf="stretch">
+		<Stack spacing={1} sx={{ alignSelf: "stretch" }}>
 			<MobileStepperDefault />
 		</Stack>
 	),
@@ -295,13 +326,15 @@ const components: Record<string, React.ReactNode> = {
 		</>
 	),
 	Skeleton: (
-		<Stack spacing={1} alignSelf="stretch">
+		<Stack spacing={2} sx={{ alignSelf: "stretch" }}>
 			<SkeletonDefault />
+			<SkeletonVariants />
 		</Stack>
 	),
 	Slider: (
 		<>
 			<SliderDefault />
+			<SliderTooltip />
 			<SliderMarks />
 			<SliderRange />
 			<SliderVertical />
@@ -310,7 +343,7 @@ const components: Record<string, React.ReactNode> = {
 	Snackbar: <SnackbarDefault />,
 	SpeedDial: <SpeedDialDefault />,
 	Stepper: (
-		<Stack spacing={4} alignSelf="stretch">
+		<Stack spacing={4} sx={{ alignSelf: "stretch" }}>
 			<StepperDefault />
 			<StepperOptional />
 			<StepperClickable />
@@ -337,20 +370,27 @@ const components: Record<string, React.ReactNode> = {
 		</>
 	),
 	TextField: (
-		<Stack spacing={1} direction="row">
+		<Stack spacing={1}>
 			<TextFieldDefault />
 			<TextFieldMultiline />
 			<TextFieldIcon />
 			<TextFieldError />
 			<TextFieldDisabled />
+			<TextFieldSizes />
 		</Stack>
 	),
 	ToggleButton: <ToggleButtonDefault />,
-	Tooltip: <TooltipDefault />,
+	Tooltip: (
+		<>
+			<TooltipDefault />
+			<TooltipDirection />
+		</>
+	),
 	Typography: (
 		<>
 			<TypographyDefault />
-			<TypographyVariants_ />
+			<TypographyHeading />
+			<TypographyVariants />
 		</>
 	),
 };
@@ -457,7 +497,11 @@ function ComponentExamples(props: ComponentExamplesProps) {
 				</IconButton>
 			</hgroup>
 
-			<Stack spacing={2} alignItems="start" className={styles.exampleContent}>
+			<Stack
+				spacing={2}
+				sx={{ alignItems: "start" }}
+				className={styles.exampleContent}
+			>
 				{props.children}
 			</Stack>
 		</div>

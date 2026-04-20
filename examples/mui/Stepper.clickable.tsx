@@ -10,17 +10,17 @@ import visuallyHidden from "@mui/utils/visuallyHidden";
 
 export default () => {
 	return (
-		<Stepper activeStep={1} role="list">
-			<Step role="listitem">
+		<Stepper activeStep={1}>
+			<Step>
 				<StepButton>
 					Select campaign settings
 					<span style={visuallyHidden}> (completed)</span>
 				</StepButton>
 			</Step>
-			<Step role="listitem" aria-current="true">
+			<Step>
 				<StepButton>Create an ad group</StepButton>
 			</Step>
-			<Step role="listitem">
+			<Step>
 				<StepButton>Create an ad</StepButton>
 			</Step>
 		</Stepper>

@@ -5,10 +5,10 @@
 import { Divider, IconButton } from "@stratakit/bricks";
 import { unstable_Toolbar as Toolbar } from "@stratakit/structures";
 
-import addIcon from "@stratakit/icons/add.svg";
-import deleteIcon from "@stratakit/icons/delete.svg";
-import editIcon from "@stratakit/icons/edit.svg";
-import saveIcon from "@stratakit/icons/save.svg";
+import svgAdd from "@stratakit/icons/add.svg";
+import svgDelete from "@stratakit/icons/delete.svg";
+import svgEdit from "@stratakit/icons/edit.svg";
+import svgSave from "@stratakit/icons/save.svg";
 
 export default () => {
 	return (
@@ -16,7 +16,7 @@ export default () => {
 			<Toolbar.Item
 				render={
 					<IconButton
-						icon={`${addIcon}#icon-large`}
+						icon={`${svgAdd}#icon-large`}
 						label="Add"
 						variant="ghost"
 					/>
@@ -25,7 +25,7 @@ export default () => {
 			<Toolbar.Item
 				render={
 					<IconButton
-						icon={`${editIcon}#icon-large`}
+						icon={`${svgEdit}#icon-large`}
 						label="Edit"
 						variant="ghost"
 					/>
@@ -35,7 +35,7 @@ export default () => {
 			<Toolbar.Item
 				render={
 					<IconButton
-						icon={`${saveIcon}#icon-large`}
+						icon={`${svgSave}#icon-large`}
 						label="Save"
 						variant="ghost"
 					/>
@@ -44,7 +44,7 @@ export default () => {
 			<Toolbar.Item
 				render={
 					<IconButton
-						icon={`${deleteIcon}#icon-large`}
+						icon={`${svgDelete}#icon-large`}
 						label="Delete"
 						variant="ghost"
 					/>

@@ -12,12 +12,27 @@ links:
 
 Make sure the **Button** is suitable for your use case. There may be other, more appropriate components available.
 
-| Use case                                                          | [Button](/components/button) | [IconButton](/components/iconbutton) | [Switch](/components/switch) | [Link](/components/link) |
-| ----------------------------------------------------------------- | ---------------------------- | ------------------------------------ | ---------------------------- | ------------------------ |
-| Submit forms, confirm or cancel dialogs, create or delete content | ✅                           | ❌                                   | ❌                           | ❌                       |
-| Select an option within a toolbar                                 | ❌                           | ✅                                   | ❌                           | ❌                       |
-| Make a binary choice (switching a setting on or off)              | ❌                           | ❌                                   | ✅                           | ❌                       |
-| Navigate between interface screens or sections                    | ❌                           | ❌                                   | ❌                           | ✅                       |
+| Use case                                                                                                                           | [Button](/components/button) | [IconButton](/components/iconbutton) | [ToggleButton](/components/togglebutton) | [Switch](/components/switch) | [Link](/components/link) |
+| ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------- | ------------------------------------ | ---------------------------------------- | ---------------------------- | ------------------------ |
+| Submit forms, confirm or cancel dialogs, create or delete content                                                                  | ✅                           | ❌                                   | ❌                                       | ❌                           | ❌                       |
+| Trigger an action within a [toolbar](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/toolbar_role) | ❌                           | ✅                                   | ❌                                       | ❌                           | ❌                       |
+| Toggle an option within a [toolbar](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/toolbar_role)  | ❌                           | ❌                                   | ✅                                       | ❌                           | ❌                       |
+| Make an instantaneous, binary choice (switch a setting on or off)                                                                  | ❌                           | ❌                                   | ❌                                       | ✅                           | ❌                       |
+| Navigate between interface screens or sections                                                                                     | ❌                           | ❌                                   | ❌                                       | ❌                           | ✅                       |
+
+## StrataKit MUI modifications
+
+Modifications to `ButtonBase` (applies to all MUI components that extend `ButtonBase`):
+
+- The `LinkComponent` prop is not supported. Use the more flexible `render` prop instead.
+- Ripple effect removed.
+
+Modifications specific to `Button`:
+
+- Restyled using StrataKit's visual language.
+- The default `variant` is now `"contained"`.
+- The `"info"`, `"success"`, `"warning"`, `"inherit"` colors have been removed. The default color is now `"secondary"`.
+- The `size` options (`"small"`, `"medium"`, `"large"`) have all been decreased in height.
 
 ## Examples
 
@@ -55,6 +70,14 @@ An [**Icon**](/components/icon) can be displayed before or after the **Button’
 | Primary call-to-action                | ✅        | ✅      | ❌    |
 | Modal confirmation or form submission | ❌        | ✅      | ❌    |
 | Destructive call-to-action            | ❌        | ❌      | ✅    |
+
+### Sizes
+
+- **Small:** Use in compact interfaces where space is limited.
+- **Medium:** Default size, suitable for most use cases.
+- **Large:** Use in spacious layouts where a more prominent button is needed.
+
+::example{src="mui/Button.sizes"}
 
 ## ✅ Do
 

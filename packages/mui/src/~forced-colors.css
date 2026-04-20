@@ -3,11 +3,61 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
+.MuiAutocomplete-option {
+	&:where([aria-selected="true"]:not([aria-disabled="true"])) {
+		background-color: SelectedItem;
+		border-color: SelectedItemText;
+		color: SelectedItemText;
+		forced-color-adjust: none; /* removing the backplate */
+	}
+}
+
+.MuiAutocomplete-paper {
+	border: 1px solid;
+}
+
+.MuiAvatar-root {
+	border: 1px solid;
+}
+
 .MuiBadge-badge {
-	border: 1px solid CanvasText;
+	:where(.MuiBadge-root[data-_sk-inline]) & {
+		border: 1px solid;
+	}
+
+	:where(.MuiBadge-root:not([data-_sk-inline])) & {
+		forced-color-adjust: none;
+		background-color: Highlight;
+		color: HighlightText;
+	}
+}
+
+.MuiBottomNavigation-root {
+	border-block-start: 1px solid;
+}
+
+.MuiBottomNavigationAction-root {
+	&:where(.Mui-selected) {
+		color: SelectedItemText;
+	}
+}
+
+.MuiBottomNavigationAction-content {
+	:where(.MuiBottomNavigationAction-root.Mui-selected) & {
+		&::before {
+			background-color: SelectedItem;
+			border-color: SelectedItemText;
+		}
+	}
+}
+.MuiBottomNavigationAction-label {
+	&:where(.Mui-selected) {
+		forced-color-adjust: none; /* removing the backplate */
+	}
 }
 
 :is(.MuiButton-root, .MuiIconButton-root) {
+	--_MuiButton-icon-color: currentColor;
 	background-color: ButtonFace;
 	border: 1px solid ButtonBorder;
 	color: ButtonText;
@@ -50,6 +100,28 @@
 	}
 }
 
+.MuiDialog-paper {
+	border: 1px solid;
+}
+
+.MuiDrawer-paper {
+	:where(.MuiDrawer-anchorTop) > & {
+		border-block-end: 1px solid;
+	}
+
+	:where(.MuiDrawer-anchorRight) > & {
+		border-inline-start: 1px solid;
+	}
+
+	:where(.MuiDrawer-anchorBottom) > & {
+		border-block-start: 1px solid;
+	}
+
+	:where(.MuiDrawer-anchorLeft) > & {
+		border-inline-end: 1px solid;
+	}
+}
+
 .MuiFormControlLabel-label:where(.Mui-disabled) {
 	color: GrayText;
 }
@@ -63,6 +135,58 @@
 	&::after {
 		background-color: MarkText;
 	}
+}
+
+.MuiInputBase-root {
+	&:where(.Mui-disabled) {
+		border-color: GrayText;
+	}
+}
+
+.MuiLinearProgress-root {
+	border: 1px solid;
+}
+
+.MuiLinearProgress-bar {
+	background-color: CanvasText;
+}
+
+.MuiListItemIcon-root {
+	color: inherit;
+}
+
+.MuiMenuItem-root {
+	border-color: Canvas;
+
+	&:where(.Mui-selected:not(.Mui-disabled)) {
+		forced-color-adjust: none; /* removing the backplate */
+		background-color: SelectedItem;
+		border-color: SelectedItemText;
+		color: SelectedItemText;
+		--🥝Icon-color: SelectedItemText;
+	}
+
+	&:where(.Mui-disabled) {
+		color: GrayText;
+		--🥝Icon-color: GrayText;
+	}
+}
+
+.MuiMenu-paper {
+	border: 1px solid CanvasText;
+}
+
+.MuiPaginationItem-root {
+	&:where(.Mui-selected) {
+		background-color: SelectedItem;
+		border-color: SelectedItemText;
+		color: SelectedItemText;
+		forced-color-adjust: none; /* removing the backplate */
+	}
+}
+
+.MuiPopover-paper {
+	border: 1px solid;
 }
 
 .MuiSlider-root {
@@ -99,6 +223,36 @@
 	}
 }
 
+.MuiSlider-markLabel {
+	:where(.MuiSlider-root.Mui-disabled) & {
+		color: GrayText;
+	}
+}
+
+.MuiSnackbarContent-root {
+	border: 1px solid;
+}
+
+.MuiStepLabel-label {
+	&:where(.Mui-error) {
+		background-color: Mark;
+		color: MarkText;
+		forced-color-adjust: none; /* removing the backplate */
+	}
+}
+
+.MuiStepIcon-root {
+	&:where(.Mui-active) {
+		border-color: SelectedItemText;
+		background-color: SelectedItem;
+		color: SelectedItemText;
+
+		&::before {
+			forced-color-adjust: none; /* removing the backplate */
+		}
+	}
+}
+
 .MuiSwitch-switchBase {
 	--_MuiSwitch-thumb-background-color: CanvasText;
 
@@ -116,5 +270,16 @@
 		+ .MuiSwitch-track {
 			--_MuiSwitch-track-border-color: GrayText;
 		}
+	}
+}
+
+.MuiTabs-indicator {
+	background-color: CanvasText;
+}
+
+.MuiToggleButton-root {
+	&:where(.Mui-selected) {
+		background-color: SelectedItem;
+		color: SelectedItemText;
 	}
 }

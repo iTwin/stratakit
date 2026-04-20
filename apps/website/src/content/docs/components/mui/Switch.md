@@ -12,13 +12,12 @@ links:
 
 Make sure the **Switch** is suitable for your use case. There may be other, more appropriate components available.
 
-| Use case                                                          | [Button](/components/button) | [IconButton](/components/iconbutton) | [Switch](/components/switch) | [Checkbox](/components/checkbox) | [Link](/components/link) |
-| ----------------------------------------------------------------- | ---------------------------- | ------------------------------------ | ---------------------------- | -------------------------------- | ------------------------ |
-| Submit forms, confirm or cancel dialogs, create or delete content | ✅                           | ❌                                   | ❌                           | ❌                               | ❌                       |
-| Select an option within a toolbar                                 | ❌                           | ✅                                   | ❌                           | ❌                               | ❌                       |
-| Make an instantaneous, binary choice (switch a setting on or off) | ❌                           | ❌                                   | ✅                           | ❌                               | ❌                       |
-| Confirm an input for a form submission                            | ❌                           | ❌                                   | ❌                           | ✅                               | ❌                       |
-| Navigate between interface screens or sections                    | ❌                           | ❌                                   | ❌                           | ❌                               | ✅                       |
+| Use case                                                                                                                          | [Checkbox](/components/checkbox) | [Radio](/components/radio) | [Switch](/components/switch) | [ToggleButton](/components/togglebutton) |
+| --------------------------------------------------------------------------------------------------------------------------------- | -------------------------------- | -------------------------- | ---------------------------- | ---------------------------------------- |
+| Confirm an input for a form submission                                                                                            | ✅                               | ❌                         | ❌                           | ❌                                       |
+| Select a single option from multiple choices for a form submission                                                                | ❌                               | ✅                         | ❌                           | ❌                                       |
+| Make an instantaneous, binary choice (switch a setting on or off)                                                                 | ❌                               | ❌                         | ✅                           | ❌                                       |
+| Toggle an option within a [toolbar](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/toolbar_role) | ❌                               | ❌                         | ❌                           | ✅                                       |
 
 ## StrataKit MUI modifications
 
@@ -30,9 +29,16 @@ Make sure the **Switch** is suitable for your use case. There may be other, more
 
 ### Checked
 
-Use a `defaultChecked` prop to set the initial checked state. Alternatively, use `checked` and `onChange` props to control the checked state.
+Use the `defaultChecked` prop to set the initial checked state. Alternatively, use the `checked` and `onChange` props to control the checked state.
 
 ::example{src="mui/Switch.checked"}
+
+### Sizes
+
+- **Small:** Use in compact interfaces where space is limited.
+- **Medium:** Default size, suitable for most use cases.
+
+::example{src="mui/Switch.sizes"}
 
 ## ✅ Do
 
@@ -44,7 +50,3 @@ Use a `defaultChecked` prop to set the initial checked state. Alternatively, use
 - Don't use switches for mandatory actions. The checked state of a switch can never be _invalid_.
 - Don't use one switch to change multiple settings simultaneously.
 - Don't use switches inside a form that needs submission. Use [**Checkbox**](/components/checkbox) instead.
-
-### Sizes
-
-::example{src="mui/Switch.sizes"}

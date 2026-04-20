@@ -6,7 +6,7 @@ links:
   apiReference: https://mui.com/material-ui/api/card/
 ---
 
-::example{src="mui/Card.default"}
+::example{src="mui/Card.default" min-height="325px"}
 
 ## Use cases
 
@@ -29,7 +29,7 @@ Make sure the **Card** is suitable for your use case. There may be other, more a
 
 ### CardActions
 
-::example{src="mui/Card.actions"}
+::example{src="mui/Card.actions" min-height="325px"}
 
 ### CardHeader
 

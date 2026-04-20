@@ -6,10 +6,14 @@ import { Badge } from "@astrojs/starlight/components";
 
 const packagesCollection = await getCollection("packages");
 
+const order = ["mui", "structures"];
 const packages = await getEntries(packagesCollection);
 packages.sort((a, b) => {
-	if (a.id === "structures") return -1;
-	if (b.id === "structures") return 1;
+	const aIndex = order.indexOf(a.id);
+	const bIndex = order.indexOf(b.id);
+	if (aIndex !== -1 && bIndex !== -1) return aIndex - bIndex;
+	if (aIndex !== -1) return -1;
+	if (bIndex !== -1) return 1;
 	return 0;
 });
 
@@ -32,9 +36,8 @@ const headings = packages.map((pkg) => ({
 					</AnchorHeading>
 					<ul>
 						{pkg.data.apis.map((api) => {
-							if (!api.convenience && api.composition.length === 0) {
-								return null;
-							}
+							// Hide "Internal Utils"
+							if (api.types) return null;
 							return (
 								<li>
 									<a href={`${import.meta.env.BASE_URL}/reference/${pkg.id}/${api.name}`}>

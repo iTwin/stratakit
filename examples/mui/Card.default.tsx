@@ -16,14 +16,19 @@ export default () => {
 		<Card className={styles.card} variant="outlined">
 			<CardMedia
 				className={styles.media}
-				component="img"
-				height="140"
-				image="https://images.unsplash.com/photo-1489944440615-453fc2b6a9a9"
-				alt=""
+				render={
+					<img
+						height="140"
+						alt=""
+						src="https://images.unsplash.com/photo-1489944440615-453fc2b6a9a9"
+					/>
+				}
 			/>
 			<CardContent>
 				<Typography gutterBottom variant="h6" render={<h2 />}>
-					<CardActionArea render={<a href="#" />}>Stadium</CardActionArea>
+					<CardActionArea render={<a href="#" />} nativeButton={false}>
+						Stadium
+					</CardActionArea>
 				</Typography>
 				<Typography variant="body2" color="text.secondary">
 					Stadium is a place for outdoor sports, concerts, or other events and

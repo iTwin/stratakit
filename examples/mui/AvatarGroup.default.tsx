@@ -16,20 +16,20 @@ export default () => {
 				</Avatar>
 			)}
 		>
-			<Avatar aria-label="Keith Bentley" role="img">
-				<abbr aria-hidden="true">KB</abbr>
+			<Avatar aria-label="John Doe" role="img">
+				<abbr aria-hidden="true">J</abbr>
 			</Avatar>
-			<Avatar aria-label="Barry Bentley" role="img">
-				<abbr aria-hidden="true">BB</abbr>
+			<Avatar aria-label="Kit Stratan" role="img">
+				<abbr aria-hidden="true">K</abbr>
 			</Avatar>
-			<Avatar aria-label="Greg Bentley" role="img">
-				<abbr aria-hidden="true">GB</abbr>
+			<Avatar aria-label="Ava Groupie" role="img">
+				<abbr aria-hidden="true">A</abbr>
 			</Avatar>
-			<Avatar aria-label="Ray Bentley" role="img">
-				<abbr aria-hidden="true">RB</abbr>
+			<Avatar aria-label="Des Systemer" role="img">
+				<abbr aria-hidden="true">D</abbr>
 			</Avatar>
-			<Avatar aria-label="Scott Bentley" role="img">
-				<abbr aria-hidden="true">SB</abbr>
+			<Avatar aria-label="Libby Compone" role="img">
+				<abbr aria-hidden="true">L</abbr>
 			</Avatar>
 		</AvatarGroup>
 	);

@@ -15,38 +15,28 @@ import { Icon } from "@stratakit/mui";
 import svgCircle from "@stratakit/icons/circle.svg";
 import svgRectangle from "@stratakit/icons/rectangle.svg";
 import svgStar from "@stratakit/icons/star.svg";
-import styles from "./Select.icon.module.css";
 
 export default () => {
 	const labelId = React.useId();
 	const label = "Choose a shape:";
 	return (
-		<FormControl className={styles.formControl}>
+		<FormControl>
 			<InputLabel id={labelId}>{label}</InputLabel>
-			<Select
-				labelId={labelId}
-				label={label}
-				defaultValue={2}
-				slotProps={{
-					input: {
-						className: styles.input,
-					},
-				}}
-			>
+			<Select labelId={labelId} label={label} defaultValue={2}>
 				<MenuItem value={1}>
-					<ListItemIcon className={styles.icon}>
+					<ListItemIcon>
 						<Icon href={svgRectangle} />
 					</ListItemIcon>
 					<ListItemText>Rectangle</ListItemText>
 				</MenuItem>
 				<MenuItem value={2}>
-					<ListItemIcon className={styles.icon}>
+					<ListItemIcon>
 						<Icon href={svgCircle} />
 					</ListItemIcon>
 					<ListItemText>Circle</ListItemText>
 				</MenuItem>
 				<MenuItem value={3}>
-					<ListItemIcon className={styles.icon}>
+					<ListItemIcon>
 						<Icon href={svgStar} />
 					</ListItemIcon>
 					<ListItemText>Star</ListItemText>

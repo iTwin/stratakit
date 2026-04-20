@@ -9,7 +9,7 @@ import { definePage } from "~/~utils.tsx";
 
 import type { VariantProps } from "~/~utils.tsx";
 
-import placeholderIcon from "@stratakit/icons/placeholder.svg";
+import svgPlaceholder from "@stratakit/icons/placeholder.svg";
 
 export const handle = { title: "TextBox" };
 
@@ -66,7 +66,7 @@ function CompositionTest({ disabled, defaultValue }: VariantProps) {
 					disabled={!!disabled}
 					defaultValue={defaultValue}
 				/>
-				<TextBox.Icon href={placeholderIcon} />
+				<TextBox.Icon href={svgPlaceholder} />
 			</TextBox.Root>
 		</div>
 	);
@@ -86,40 +86,40 @@ function VisualTest() {
 				<TextBox.Input defaultValue="Value" />
 			</TextBox.Root>
 			<TextBox.Root>
-				<TextBox.Icon href={placeholderIcon} />
+				<TextBox.Icon href={svgPlaceholder} />
 				<TextBox.Input defaultValue="Value" />
 			</TextBox.Root>
 			<TextBox.Root>
 				<TextBox.Input defaultValue="Value" />
-				<TextBox.Icon href={placeholderIcon} />
+				<TextBox.Icon href={svgPlaceholder} />
 			</TextBox.Root>
 			<TextBox.Root>
-				<TextBox.Icon href={placeholderIcon} />
+				<TextBox.Icon href={svgPlaceholder} />
 				<TextBox.Input defaultValue="Value" />
-				<TextBox.Icon href={placeholderIcon} />
+				<TextBox.Icon href={svgPlaceholder} />
 			</TextBox.Root>
 			<TextBox.Root>
-				<TextBox.Icon href={placeholderIcon} />
+				<TextBox.Icon href={svgPlaceholder} />
 				<TextAffix>%</TextAffix>
 				<TextBox.Input defaultValue="Value" />
 				<TextAffix>%</TextAffix>
-				<TextBox.Icon href={placeholderIcon} />
+				<TextBox.Icon href={svgPlaceholder} />
 			</TextBox.Root>
 
 			<TextBox.Root>
-				<TextBox.Icon href={placeholderIcon} />
+				<TextBox.Icon href={svgPlaceholder} />
 				<TextAffix>%</TextAffix>
 				<TextBox.Input aria-invalid="true" defaultValue="Invalid value" />
 				<TextAffix>%</TextAffix>
-				<TextBox.Icon href={placeholderIcon} />
+				<TextBox.Icon href={svgPlaceholder} />
 			</TextBox.Root>
 
 			<TextBox.Root>
-				<TextBox.Icon href={placeholderIcon} />
+				<TextBox.Icon href={svgPlaceholder} />
 				<TextAffix>%</TextAffix>
 				<TextBox.Input disabled defaultValue="Disabled value" />
 				<TextAffix>%</TextAffix>
-				<TextBox.Icon href={placeholderIcon} />
+				<TextBox.Icon href={svgPlaceholder} />
 			</TextBox.Root>
 
 			{/* TextBox.Textarea */}
@@ -127,31 +127,31 @@ function VisualTest() {
 				<TextBox.Textarea defaultValue="Value" />
 			</TextBox.Root>
 			<TextBox.Root>
-				<TextBox.Icon href={placeholderIcon} />
+				<TextBox.Icon href={svgPlaceholder} />
 				<TextBox.Textarea defaultValue="Value" />
 			</TextBox.Root>
 			<TextBox.Root>
 				<TextBox.Textarea defaultValue="Value" />
-				<TextBox.Icon href={placeholderIcon} />
+				<TextBox.Icon href={svgPlaceholder} />
 			</TextBox.Root>
 			<TextBox.Root>
-				<TextBox.Icon href={placeholderIcon} />
+				<TextBox.Icon href={svgPlaceholder} />
 				<TextBox.Textarea defaultValue="Value" />
-				<TextBox.Icon href={placeholderIcon} />
+				<TextBox.Icon href={svgPlaceholder} />
 			</TextBox.Root>
 			<TextBox.Root>
-				<TextBox.Icon href={placeholderIcon} />
+				<TextBox.Icon href={svgPlaceholder} />
 				<TextAffix>%</TextAffix>
 				<TextBox.Textarea defaultValue="Value" />
 				<TextAffix>%</TextAffix>
-				<TextBox.Icon href={placeholderIcon} />
+				<TextBox.Icon href={svgPlaceholder} />
 			</TextBox.Root>
 			<TextBox.Root>
-				<TextBox.Icon href={placeholderIcon} />
+				<TextBox.Icon href={svgPlaceholder} />
 				<TextAffix>%</TextAffix>
 				<TextBox.Textarea disabled defaultValue="Disabled value" />
 				<TextAffix>%</TextAffix>
-				<TextBox.Icon href={placeholderIcon} />
+				<TextBox.Icon href={svgPlaceholder} />
 			</TextBox.Root>
 		</div>
 	);

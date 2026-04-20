@@ -9,13 +9,13 @@ import { Icon } from "@stratakit/foundations";
 import { unstable_NavigationRail as NavigationRail } from "@stratakit/structures";
 import { definePage, type VariantProps } from "~/~utils.tsx";
 
-import bentleyIcon from "@stratakit/icons/bentley-systems.svg";
-import helpIcon from "@stratakit/icons/help.svg";
-import notificationsIcon from "@stratakit/icons/notifications.svg";
-import placeholderIcon from "@stratakit/icons/placeholder.svg";
-import pluginsIcon from "@stratakit/icons/plugins.svg";
-import settingsIcon from "@stratakit/icons/settings.svg";
-import userIcon from "@stratakit/icons/user.svg";
+import svgBentley from "@stratakit/icons/bentley-systems.svg";
+import svgHelp from "@stratakit/icons/help.svg";
+import svgNotifications from "@stratakit/icons/notifications.svg";
+import svgPlaceholder from "@stratakit/icons/placeholder.svg";
+import svgPlugins from "@stratakit/icons/plugins.svg";
+import svgSettings from "@stratakit/icons/settings.svg";
+import svgUser from "@stratakit/icons/user.svg";
 
 export const handle = { title: "NavigationRail" };
 
@@ -53,11 +53,7 @@ export default definePage(
 		return (
 			<NavigationRail.Root defaultExpanded={!!defaultExpanded}>
 				<NavigationRail.Header>
-					<Icon
-						alt="Acme app"
-						href={`${bentleyIcon}#icon-large`}
-						size="large"
-					/>
+					<Icon alt="Acme app" href={`${svgBentley}#icon-large`} size="large" />
 					<NavigationRail.ToggleButton />
 				</NavigationRail.Header>
 
@@ -81,33 +77,33 @@ export default definePage(
 					<NavigationRail.Anchor
 						href="#"
 						label="Marketplace"
-						icon={pluginsIcon}
+						icon={svgPlugins}
 					/>
 
 					<NavigationRail.Footer>
 						<NavigationRail.List>
 							<NavigationRail.ListItem>
 								<NavigationRail.Button
-									icon={`${helpIcon}#icon-large`}
+									icon={`${svgHelp}#icon-large`}
 									label="Support"
 								/>
 							</NavigationRail.ListItem>
 							<Divider presentational />
 							<NavigationRail.ListItem>
 								<NavigationRail.Button
-									icon={`${notificationsIcon}#icon-large`}
+									icon={`${svgNotifications}#icon-large`}
 									label="Notifications"
 								/>
 							</NavigationRail.ListItem>
 							<NavigationRail.ListItem>
 								<NavigationRail.Button
-									icon={`${settingsIcon}#icon-large`}
+									icon={`${svgSettings}#icon-large`}
 									label="Settings"
 								/>
 							</NavigationRail.ListItem>
 							<NavigationRail.ListItem>
 								<NavigationRail.Button
-									icon={<Avatar image={<Icon href={userIcon} />} />}
+									icon={<Avatar image={<Icon href={svgUser} />} />}
 									label="Account"
 								/>
 							</NavigationRail.ListItem>
@@ -124,7 +120,7 @@ function VisualTest() {
 	return (
 		<NavigationRail.Root>
 			<NavigationRail.Header>
-				<Icon alt="Acme app" href={`${bentleyIcon}#icon-large`} size="large" />
+				<Icon alt="Acme app" href={`${svgBentley}#icon-large`} size="large" />
 				<NavigationRail.ToggleButton />
 			</NavigationRail.Header>
 
@@ -133,7 +129,7 @@ function VisualTest() {
 					<NavigationRail.ListItem>
 						<NavigationRail.Anchor
 							href="#"
-							icon={placeholderIcon}
+							icon={svgPlaceholder}
 							label="Item #1"
 							active
 						/>
@@ -141,14 +137,14 @@ function VisualTest() {
 					<NavigationRail.ListItem>
 						<NavigationRail.Anchor
 							href="#"
-							icon={placeholderIcon}
+							icon={svgPlaceholder}
 							label="Item #2"
 						/>
 					</NavigationRail.ListItem>
 					<NavigationRail.ListItem>
 						<NavigationRail.Anchor
 							href="#"
-							icon={placeholderIcon}
+							icon={svgPlaceholder}
 							label="Item #3"
 						/>
 					</NavigationRail.ListItem>
@@ -157,11 +153,11 @@ function VisualTest() {
 				<NavigationRail.Footer>
 					<NavigationRail.List>
 						<NavigationRail.ListItem>
-							<NavigationRail.Button icon={placeholderIcon} label="Item #4" />
+							<NavigationRail.Button icon={svgPlaceholder} label="Item #4" />
 						</NavigationRail.ListItem>
 						<Divider presentational />
 						<NavigationRail.ListItem>
-							<NavigationRail.Button icon={placeholderIcon} label="Item #5" />
+							<NavigationRail.Button icon={svgPlaceholder} label="Item #5" />
 						</NavigationRail.ListItem>
 					</NavigationRail.List>
 				</NavigationRail.Footer>
@@ -190,11 +186,7 @@ function ControlledState({ defaultExpanded }: VariantProps) {
 				}}
 			>
 				<NavigationRail.Header>
-					<Icon
-						alt="Acme app"
-						href={`${bentleyIcon}#icon-large`}
-						size="large"
-					/>
+					<Icon alt="Acme app" href={`${svgBentley}#icon-large`} size="large" />
 					<NavigationRail.ToggleButton />
 				</NavigationRail.Header>
 				<NavigationRail.Content>
@@ -202,7 +194,7 @@ function ControlledState({ defaultExpanded }: VariantProps) {
 						<NavigationRail.ListItem>
 							<NavigationRail.Anchor
 								href="#"
-								icon={placeholderIcon}
+								icon={svgPlaceholder}
 								label="Item #1"
 								active
 							/>
@@ -210,14 +202,14 @@ function ControlledState({ defaultExpanded }: VariantProps) {
 						<NavigationRail.ListItem>
 							<NavigationRail.Anchor
 								href="#"
-								icon={placeholderIcon}
+								icon={svgPlaceholder}
 								label="Item #2"
 							/>
 						</NavigationRail.ListItem>
 						<NavigationRail.ListItem>
 							<NavigationRail.Anchor
 								href="#"
-								icon={placeholderIcon}
+								icon={svgPlaceholder}
 								label="Item #3"
 							/>
 						</NavigationRail.ListItem>

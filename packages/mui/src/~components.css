@@ -3,20 +3,33 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
+@import "./~components/MuiPaper.css";
+@import "./~components/MuiTypography.css";
+
 @import "./~components/MuiAlert.css";
 @import "./~components/MuiAutocomplete.css";
+@import "./~components/MuiAvatar.css";
+@import "./~components/MuiAvatarGroup.css";
 @import "./~components/MuiBadge.css";
+@import "./~components/MuiBottomNavigation.css";
 @import "./~components/MuiButton.css";
 @import "./~components/MuiCard.css";
 @import "./~components/MuiCheckbox.css";
 @import "./~components/MuiChip.css";
+@import "./~components/MuiDialog.css";
 @import "./~components/MuiForm.css";
 @import "./~components/MuiIconButton.css";
 @import "./~components/MuiInput.css";
+@import "./~components/MuiList.css";
+@import "./~components/MuiMenu.css";
+@import "./~components/MuiSelect.css";
 @import "./~components/MuiSlider.css";
+@import "./~components/MuiStepper.css";
 @import "./~components/MuiSwitch.css";
+@import "./~components/MuiTable.css";
 @import "./~components/MuiTabs.css";
-@import "./~components/MuiTypography.css";
+@import "./~components/MuiToggleButton.css";
+@import "./~components/MuiTooltip.css";
 
 .MuiAccordion-root {
 	background-color: transparent;
@@ -29,16 +42,9 @@
 	color: var(--stratakit-color-text-neutral-primary);
 }
 
-.MuiBottomNavigationAction-root {
-	&:where(.Mui-selected) {
-		color: var(--stratakit-color-text-accent-strong);
-	}
-}
-
-.MuiDialogActions-root {
-	&:where(.MuiDialogActions-spacing) {
-		padding-block: var(--stratakit-space-x4);
-		padding-inline: var(--stratakit-space-x5);
+.MuiBackdrop-root {
+	&:where(:not(.MuiBackdrop-invisible)) {
+		background-color: oklch(from var(--stratakit-color-bg-elevation-overlay) l c h / 0.8);
 	}
 }
 
@@ -53,53 +59,10 @@
 	}
 }
 
-.MuiMenuItem-root {
-	&:where(.Mui-focusVisible) {
-		outline-offset: -2px;
+.MuiPaginationItem-root {
+	&:where(.Mui-selected) {
+		background-color: var(--stratakit-color-bg-glow-on-surface-accent-pressed);
+		border: 1px solid var(--stratakit-color-border-accent-strong);
+		color: var(--stratakit-color-text-accent-strong);
 	}
-}
-
-.MuiPaper-root {
-	--Paper-overlay: unset !important; /* Remove background-image overlay that MUI adds in dark mode */
-
-	&:where(.MuiPaper-elevation1) {
-		--stratakit-mui-palette-background-paper: var(--stratakit-color-bg-page-base);
-	}
-
-	&:where(
-			.MuiPaper-elevation2,
-			.MuiPaper-elevation3,
-			.MuiPaper-elevation4,
-			.MuiPaper-elevation5,
-			.MuiPaper-elevation6,
-			.MuiPaper-elevation7
-		) {
-		--stratakit-mui-palette-background-paper: var(--stratakit-color-bg-elevation-base);
-	}
-
-	&:where(
-			.MuiPaper-elevation8,
-			.MuiPaper-elevation9,
-			.MuiPaper-elevation10,
-			.MuiPaper-elevation11,
-			.MuiPaper-elevation12,
-			.MuiPaper-elevation13,
-			.MuiPaper-elevation14,
-			.MuiPaper-elevation15,
-			.MuiPaper-elevation16,
-			.MuiPaper-elevation17,
-			.MuiPaper-elevation18,
-			.MuiPaper-elevation19,
-			.MuiPaper-elevation20,
-			.MuiPaper-elevation21,
-			.MuiPaper-elevation22,
-			.MuiPaper-elevation23,
-			.MuiPaper-elevation24
-		) {
-		--stratakit-mui-palette-background-paper: var(--stratakit-color-bg-elevation-level-1);
-	}
-}
-
-.MuiTooltip-tooltip {
-	box-shadow: var(--stratakit-shadow-control-tooltip-base);
 }

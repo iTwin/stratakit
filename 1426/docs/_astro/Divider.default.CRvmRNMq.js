@@ -1,1 +1,0 @@
-import{j as r}from"./client.Cu9uMi7p.js";import{D as t}from"./Divider.Dt4ir2V0.js";import"./styles.internal.iAh-c3F9.js";import"./dividerClasses.B-oN7kxa.js";const s=()=>r.jsx(t,{});export{s as default};

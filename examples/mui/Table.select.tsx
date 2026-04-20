@@ -119,7 +119,7 @@ export default () => {
 								indeterminate={numSelected > 0 && numSelected < rowCount}
 								checked={rowCount > 0 && numSelected === rowCount}
 								onChange={handleSelectAllClick}
-								aria-label="select all desserts"
+								slotProps={{ input: { "aria-label": "select all desserts" } }}
 							/>
 						</TableCell>
 						<TableCell>Dessert (100g serving)</TableCell>

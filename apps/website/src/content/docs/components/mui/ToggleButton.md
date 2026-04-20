@@ -37,7 +37,7 @@ To display text within a **ToggleButton**, use the `render` prop to render a [**
 
 :::note[Exclusive selection]
 
-In the example above, the `exclusive` prop is set on the `ToggleButtonGroup`, which allows only one button to be selected at a time. Additionally, the handler used in the `onChange` prop enforces that at least one button is always selected.
+In the example above, the [`exclusive`](https://mui.com/material-ui/api/toggle-button-group/#toggle-button-group-prop-exclusive) prop is set on the [`ToggleButtonGroup`](https://mui.com/material-ui/api/toggle-button-group/), which allows only one button to be selected at a time. Additionally, the handler used in the [`onChange`](https://mui.com/material-ui/api/toggle-button-group/#toggle-button-group-prop-onChange) prop enforces that at least one button is always selected.
 
 :::
 

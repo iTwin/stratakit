@@ -27,14 +27,20 @@ const MuiToggleButton = forwardRef<"button", MuiToggleButtonProps>(
 			if (classList.includes("MuiToggleButton-sizeLarge")) return "large";
 			if (classList.includes("MuiToggleButton-sizeMedium")) return "medium";
 			return undefined;
-		})();
+		})() satisfies ToggleButtonOwnProps["size"];
+		const color = (() => {
+			if (classList.includes("MuiToggleButton-primary")) return "primary";
+			if (classList.includes("MuiToggleButton-secondary")) return "secondary";
+			if (classList.includes("Mui-error")) return "error";
+			return undefined;
+		})() satisfies ToggleButtonOwnProps["color"];
 
 		if (label) {
 			return (
 				<Tooltip title={label} describeChild={false}>
 					<MuiButtonBase
 						{...rest}
-						render={props.render ?? <IconButton size={size} />}
+						render={props.render ?? <IconButton size={size} color={color} />}
 						ref={forwardedRef}
 					/>
 				</Tooltip>

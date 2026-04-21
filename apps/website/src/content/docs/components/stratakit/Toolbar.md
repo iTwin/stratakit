@@ -10,7 +10,7 @@ links:
 
 ## Examples
 
-### Toolbar.Item
+### ToggleButton
 
 Use the [`render`](/reference/structures/Toolbar#Toolbar.Item.render) prop of the [`Toolbar.Item`](/reference/structures/Toolbar#Toolbar.Item) component to display individual items within the toolbar.
 

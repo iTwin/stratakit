@@ -3,7 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import React from 'react';
+import React from "react";
 import Card from "@mui/material/Card";
 import CardActionArea from "@mui/material/CardActionArea";
 import CardContent from "@mui/material/CardContent";
@@ -14,6 +14,7 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import Typography from "@mui/material/Typography";
 import { Icon } from "@stratakit/mui";
+
 import svgMore from "@stratakit/icons/more-vertical.svg";
 import styles from "./Card.menu.module.css";
 
@@ -31,9 +32,13 @@ export default () => {
 				}
 			/>
 			<CardHeader
-				title={<CardActionArea render={<a href="#" />} nativeButton={false}>Stadium</CardActionArea>}
+				title={
+					<CardActionArea render={<a href="#" />} nativeButton={false}>
+						Stadium
+					</CardActionArea>
+				}
 				subheader="January 16, 2026"
-				action={<ActionsMenu/>}
+				action={<ActionsMenu />}
 			/>
 			<CardContent>
 				<Typography variant="body2" color="text.secondary">

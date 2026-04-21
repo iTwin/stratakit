@@ -12,3 +12,4 @@ links:
 
 - DOM order now matches the visual display order.
 - The visual stacking of the `Avatar`s is inverted.
+- Added list semantics to `AvatarGroup` and nested `Avatar`s. This required adding a wrapping element on each `Avatar`.

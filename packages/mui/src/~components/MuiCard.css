@@ -31,10 +31,6 @@
 	&:where(:has(+ .MuiCardContent-root, + .MuiCardActions-root)) {
 		padding-block-end: 0;
 	}
-
-	&:where(:has(+ .MuiCardContent-root)) {
-		margin-block-end: calc(var(--stratakit-space-x2) * -1);
-	}
 }
 
 .MuiCardHeader-title {
@@ -57,6 +53,10 @@
 .MuiCardContent-root {
 	&:where(:has(+ .MuiCardActions-root)) {
 		padding-block-end: 0;
+	}
+
+	:where(.MuiCardHeader-root) + & {
+		padding-block-start: var(--stratakit-space-x2);
 	}
 }
 

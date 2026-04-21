@@ -1,0 +1,1 @@
+import{j as r}from"./client.DYSGqtkg.js";import{T as e}from"./Typography.CvZL_Bsx.js";import"./styles.internal.iAh-c3F9.js";const i=()=>r.jsx(e,{variant:"headline-lg",render:r.jsx("h2",{}),children:"Heading text"});export{i as default};

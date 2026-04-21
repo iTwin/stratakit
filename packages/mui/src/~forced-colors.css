@@ -199,10 +199,6 @@
 	}
 }
 
-.MuiSlider-thumb:where(.Mui-disabled) {
-	border-color: GrayText;
-}
-
 .MuiSlider-mark {
 	background-color: CanvasText;
 
@@ -220,6 +216,12 @@
 
 	&:where(:nth-child(1 of &), :nth-last-child(1 of &)) {
 		background-color: transparent;
+	}
+}
+
+.MuiSlider-markLabel {
+	:where(.MuiSlider-root.Mui-disabled) & {
+		color: GrayText;
 	}
 }
 

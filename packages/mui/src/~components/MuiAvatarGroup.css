@@ -10,7 +10,9 @@
 .MuiAvatarGroup-avatar {
 	border: none;
 	margin-inline: 0;
+}
 
+.🥝MuiAvatarGroupItem {
 	&:where(:not(:nth-child(1 of &))) {
 		margin-inline-start: var(--AvatarGroup-spacing);
 	}

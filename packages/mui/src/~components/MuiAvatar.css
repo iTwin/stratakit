@@ -12,7 +12,10 @@
 	container-type: inline-size;
 	font-size: var(--stratakit-font-size-12);
 	font-weight: 600;
-	text-transform: uppercase;
+
+	&:where(:not([data-_sk-surplus])) {
+		text-transform: uppercase;
+	}
 
 	> abbr {
 		font-size: calc(50cqw - 4px);

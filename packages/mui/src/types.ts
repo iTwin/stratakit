@@ -54,6 +54,20 @@ declare module "@mui/material/Alert" {
 	}
 }
 
+declare module "@mui/material/Avatar" {
+	interface AvatarPropsVariantOverrides {
+		rounded: false;
+		square: false;
+	}
+}
+
+declare module "@mui/material/AvatarGroup" {
+	interface AvatarGroupPropsVariantOverrides {
+		rounded: false;
+		square: false;
+	}
+}
+
 declare module "@mui/material/Badge" {
 	interface BadgePropsColorOverrides {
 		default: false;

@@ -13,6 +13,7 @@ links:
 - Restyled using StrataKit's visual language.
 - The default size has been decreased.
 - Requires a nested `<abbr>` for initials.
+- The `variant` prop defaults to `"circular"`, and does not support `"rounded"` or `"square"`.
 - Includes full `forced-colors` support.
 
 ## Examples

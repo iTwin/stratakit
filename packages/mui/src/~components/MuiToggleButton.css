@@ -39,6 +39,13 @@
 	/* Rendered in a ToggleButtonGroup. */
 	&:where(.MuiToggleButtonGroup-grouped) {
 		padding: calc(var(--_MuiIconButton-padding) - 1px); /* Account for 1px border */
+
+		/* Avoid content shift when toggled. */
+		&:where(.Mui-selected) {
+			+ & {
+				min-block-size: calc(var(--_MuiIconButton-size) - 1px);
+			}
+		}
 	}
 }
 

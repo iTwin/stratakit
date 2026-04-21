@@ -188,6 +188,7 @@ function createTheme() {
 			MuiAvatarGroup: {
 				defaultProps: {
 					component: MuiAvatarGroup,
+					role: "list",
 					slotProps: {
 						surplus: {
 							["data-_sk-surplus" as keyof React.HTMLAttributes<HTMLDivElement>]: ``,

@@ -22,7 +22,6 @@ Make sure the **Card** is suitable for your use case. There may be other, more a
 
 - `Card` is rendered as an [`<article>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/article) element by default. This programmatically indicates the bounds of the **Card’s** contents.
 - `CardHeader`'s `title` is rendered as an `<h2>` by default.
-- `CardActionArea` has had `role="button"` removed to avoid conflicting semantics when rendered as a link.
 - `CardActionArea` has been redesigned to no longer wrap the entire card content. Instead, it should be used in the **Card's** heading or title area.
 
 ## Examples
@@ -37,12 +36,12 @@ Use `slotProps` to give the `CardHeader`’s `title` [an appropriate heading lev
 
 ```jsx
 <CardHeader
-  title="Stadium"
-  slotProps={{
-    title: {
-    render: <h3 />,
-    },
-  }}
+	title="Stadium"
+	slotProps={{
+		title: {
+			render: <h3 />,
+		},
+	}}
 />
 ```
 
@@ -50,7 +49,7 @@ Use `slotProps` to give the `CardHeader`’s `title` [an appropriate heading lev
 
 ::example{src="mui/Card.menu" min-height="425px"}
 
-Add metadata and a menu to `CardHeader` using the `subheader` and `action` props. 
+Add metadata and a menu to `CardHeader` using the `subheader` and `action` props.
 
 ### Actions
 
@@ -68,5 +67,5 @@ Add actions, at the foot of the **Card**, with the `CardActions` component. **Ca
 ## 🚫 Don't
 
 - Don’t use a **Card** to group unrelated content or actions.
-- Don’t use **Card** just to highlight some content belonging to a larger subject. 
+- Don’t use **Card** just to highlight some content belonging to a larger subject.
 - Don’t wrap the entire contents of the **Card** in a `CardActionArea`. Typically, it should only contain `CardHeader`.

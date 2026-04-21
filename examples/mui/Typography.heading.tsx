@@ -3,16 +3,12 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-.MuiAvatarGroup-root {
-	flex-direction: row;
-}
+import Typography from "@mui/material/Typography";
 
-.MuiAvatarGroup-avatar {
-	margin-inline: 0;
-}
-
-.🥝MuiAvatarGroupItem {
-	&:where(:not(:nth-child(1 of &))) {
-		margin-inline-start: var(--AvatarGroup-spacing);
-	}
-}
+export default () => {
+	return (
+		<Typography variant="h4" render={<h2 />}>
+			Heading text
+		</Typography>
+	);
+};

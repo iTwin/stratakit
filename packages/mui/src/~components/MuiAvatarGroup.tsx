@@ -15,14 +15,19 @@ interface MuiAvatarGroupProps extends BaseProps<"div"> {}
 
 const MuiAvatarGroup = forwardRef<"div", MuiAvatarGroupProps>(
 	(props, forwardedRef) => {
-		const { children, ...rest } = props;
+		const { children: childrenProp, ...rest } = props;
 
-		// Reverse children to match source order in HTML output
-		const reversedChildren = React.Children.toArray(children).reverse();
+		const children = React.Children.map(childrenProp, (child) => {
+			return (
+				<div className="🥝MuiAvatarGroupItem" role="listitem">
+					{child}
+				</div>
+			);
+		})?.reverse(); // Reverse children to match source order in HTML output
 
 		return (
-			<Role.div {...rest} ref={forwardedRef}>
-				{reversedChildren}
+			<Role.div role="list" {...rest} ref={forwardedRef}>
+				{children}
 			</Role.div>
 		);
 	},

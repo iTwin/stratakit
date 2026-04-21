@@ -1,1 +1,0 @@
-import{j as r,I as o}from"./client.C7171Z8M.js";import"./styles.internal.iAh-c3F9.js";const e=()=>r.jsx(o,{render:r.jsx("svg",{xmlns:"http://www.w3.org/2000/svg",viewBox:"0 0 16 16",children:r.jsx("circle",{cx:"8",cy:"8",r:"7",strokeWidth:"2",fill:"none",stroke:"currentColor"})})});export{e as default};

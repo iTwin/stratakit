@@ -2,7 +2,10 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-import { Divider, IconButton } from "@stratakit/bricks";
+
+import Divider from "@mui/material/Divider";
+import IconButton from "@mui/material/IconButton";
+import { Icon } from "@stratakit/mui";
 import { unstable_Toolbar as Toolbar } from "@stratakit/structures";
 
 import svgAdd from "@stratakit/icons/add.svg";
@@ -15,39 +18,31 @@ export default () => {
 		<Toolbar.Group variant="solid" orientation="vertical">
 			<Toolbar.Item
 				render={
-					<IconButton
-						icon={`${svgAdd}#icon-large`}
-						label="Add"
-						variant="ghost"
-					/>
+					<IconButton label="Add">
+						<Icon href={`${svgAdd}#icon-large`} size="large" />
+					</IconButton>
 				}
 			/>
 			<Toolbar.Item
 				render={
-					<IconButton
-						icon={`${svgEdit}#icon-large`}
-						label="Edit"
-						variant="ghost"
-					/>
+					<IconButton label="Edit">
+						<Icon href={`${svgEdit}#icon-large`} size="large" />
+					</IconButton>
 				}
 			/>
-			<Divider />
+			<Divider flexItem />
 			<Toolbar.Item
 				render={
-					<IconButton
-						icon={`${svgSave}#icon-large`}
-						label="Save"
-						variant="ghost"
-					/>
+					<IconButton label="Save">
+						<Icon href={`${svgSave}#icon-large`} size="large" />
+					</IconButton>
 				}
 			/>
 			<Toolbar.Item
 				render={
-					<IconButton
-						icon={`${svgDelete}#icon-large`}
-						label="Delete"
-						variant="ghost"
-					/>
+					<IconButton label="Delete">
+						<Icon href={`${svgDelete}#icon-large`} size="large" />
+					</IconButton>
 				}
 			/>
 		</Toolbar.Group>

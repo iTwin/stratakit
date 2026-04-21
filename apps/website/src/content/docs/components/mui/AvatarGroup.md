@@ -12,8 +12,5 @@ links:
 
 - DOM order now matches the visual display order.
 - The visual stacking of the `Avatar`s is inverted.
-<<<<<<< jon/avatar-only-circular
 - The `variant` prop defaults to `"circular"`, and does not support `"rounded"` or `"square"`.
-=======
 - Added list semantics to `AvatarGroup`. Each child `Avatar` is wrapped in a list item element.
->>>>>>> main

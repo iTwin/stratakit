@@ -41,7 +41,7 @@ interface ToolbarGroupProps extends BaseProps {
  * </Toolbar.Group>
  * ```
  *
- * A divider can be displayed between items by rendering the `Divider` component.
+ * A divider can be displayed between items by rendering the [`Divider`](https://stratakit.bentley.com/docs/components/divider/) component.
  *
  * ```jsx
  * <Toolbar.Group variant="solid">
@@ -90,12 +90,19 @@ interface ToolbarItemProps
  * An item within the toolbar.
  * Should be used with the `render` prop.
  *
- * If rendering an `IconButton`, be sure to append `#icon-large` to the icon URL.
+ * Use the [`IconButton`](https://stratakit.bentley.com/docs/components/iconbutton/) component for actions.
+ * Use the [`ToggleButton`](https://stratakit.bentley.com/docs/components/togglebutton/) component to toggle between two state.
+ *
+ * If rendering an icon, be sure to append `#icon-large` to the icon URL.
  *
  * Example:
  * ```jsx
  * <Toolbar.Item
- *   render={<IconButton variant="ghost" icon={`${placeholderIcon}#icon-large`} />}
+ *   render={
+ *     <IconButton label="…">
+ *       <Icon href={`${placeholderIcon}#icon-large`} size="large" />
+ *     </IconButton>
+ *    }
  * />
  * ```
  */

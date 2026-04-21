@@ -15,13 +15,11 @@ export default () => {
 	);
 	const [open, setOpen] = React.useState(false);
 	const buttonId = React.useId();
-	const dialogId = React.useId();
 	return (
 		<>
 			<Button
 				id={buttonId}
 				aria-haspopup="dialog"
-				aria-controls={dialogId}
 				aria-expanded={open}
 				onClick={() => setOpen(true)}
 				ref={setAnchorEl}
@@ -29,9 +27,6 @@ export default () => {
 				Open popover
 			</Button>
 			<Popover
-				id={dialogId}
-				role="dialog"
-				aria-labelledby={buttonId}
 				open={open}
 				anchorEl={anchorEl}
 				onClose={() => setOpen(false)}
@@ -42,6 +37,9 @@ export default () => {
 				slotProps={{
 					paper: {
 						className: styles.popover,
+						// note that the paper slot gets role="dialog" from the theme, so labelling by the button
+						// ensures that the dialog is labeled by the button text
+						"aria-labelledby": buttonId,
 					},
 				}}
 			>

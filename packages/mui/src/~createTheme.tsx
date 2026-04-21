@@ -186,7 +186,16 @@ function createTheme() {
 					},
 				},
 			},
-			MuiAvatarGroup: { defaultProps: { component: MuiAvatarGroup } },
+			MuiAvatarGroup: {
+				defaultProps: {
+					component: MuiAvatarGroup,
+					slotProps: {
+						surplus: {
+							["data-_sk-surplus" as keyof React.HTMLAttributes<HTMLDivElement>]: ``,
+						},
+					},
+				},
+			},
 			MuiBackdrop: { defaultProps: { component: Role.div } },
 			MuiBadge: {
 				defaultProps: {
@@ -364,7 +373,12 @@ function createTheme() {
 				},
 			},
 			MuiPaper: { defaultProps: { component: Role.div } },
-			MuiPopover: { defaultProps: { component: Role.div } },
+			MuiPopover: {
+				defaultProps: {
+					component: Role.div,
+					slotProps: { paper: { role: "dialog" } },
+				},
+			},
 			MuiRadio: {
 				defaultProps: {
 					component: Role.span,

@@ -199,10 +199,6 @@
 	}
 }
 
-.MuiSlider-thumb:where(.Mui-disabled) {
-	border-color: GrayText;
-}
-
 .MuiSlider-mark {
 	background-color: CanvasText;
 

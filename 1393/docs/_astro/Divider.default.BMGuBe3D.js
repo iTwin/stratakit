@@ -1,0 +1,1 @@
+import{j as r}from"./client.MOXCORmr.js";import{D as t}from"./Divider.D-gvRs9F.js";import"./styles.internal.iAh-c3F9.js";import"./dividerClasses.BIjZ_ttJ.js";const s=()=>r.jsx(t,{});export{s as default};

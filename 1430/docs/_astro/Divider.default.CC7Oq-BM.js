@@ -1,0 +1,1 @@
+import{j as i}from"./client.Bk5ABNyp.js";import{D as r}from"./Divider.yqbkIj87.js";import"./styles.internal.iAh-c3F9.js";import"./ExamplePreview.XAfEH8iu.js";import"./preload-helper.DunVU5dI.js";const d=()=>i.jsx("div",{style:{minInlineSize:200},children:i.jsx(r,{})});export{d as default};

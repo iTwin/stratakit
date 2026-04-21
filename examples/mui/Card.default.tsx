@@ -25,9 +25,10 @@ export default () => {
 					/>
 				}
 			/>
-				<CardActionArea render={<a href="#" />} nativeButton={false}>
-					<CardHeader title="Stadium" />						
-				</CardActionArea>
+				
+				<CardHeader 
+					title={<CardActionArea render={<a href="#" />} nativeButton={false}>Stadium</CardActionArea>}
+				/>
 				<CardContent>
 					<Typography variant="body2" color="text.secondary">
 						Stadium is a place for outdoor sports, concerts, or other events and

@@ -45,7 +45,7 @@ import ButtonVariants from "examples/mui/Button.variants.tsx";
 import ButtonGroupDefault from "examples/mui/ButtonGroup.default.tsx";
 import CardActions from "examples/mui/Card.actions.tsx";
 import CardDefault from "examples/mui/Card.default.tsx";
-import CardHeader from "examples/mui/Card.header.tsx";
+import CardHeader from "examples/mui/Card.menu.tsx";
 import CheckboxChecked from "examples/mui/Checkbox.checked.tsx";
 import CheckboxDefault from "examples/mui/Checkbox.default.tsx";
 import CheckboxError from "examples/mui/Checkbox.error.tsx";

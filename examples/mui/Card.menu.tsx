@@ -3,6 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
+import React from 'react';
 import Card from "@mui/material/Card";
 import CardActionArea from "@mui/material/CardActionArea";
 import CardContent from "@mui/material/CardContent";
@@ -14,7 +15,7 @@ import MenuItem from "@mui/material/MenuItem";
 import Typography from "@mui/material/Typography";
 import { Icon } from "@stratakit/mui";
 import svgMore from "@stratakit/icons/more-vertical.svg";
-import styles from "./Card.header.module.css";
+import styles from "./Card.menu.module.css";
 
 export default () => {
 	return (
@@ -29,13 +30,11 @@ export default () => {
 					/>
 				}
 			/>
-			<CardActionArea render={<a href="#" />} nativeButton={false}>
-				<CardHeader
-					title="Stadium"
-					subheader="January 16, 2026"
-					action={<ActionsMenu/>}
-				/>
-			</CardActionArea>
+			<CardHeader
+				title={<CardActionArea render={<a href="#" />} nativeButton={false}>Stadium</CardActionArea>}
+				subheader="January 16, 2026"
+				action={<ActionsMenu/>}
+			/>
 			<CardContent>
 				<Typography variant="body2" color="text.secondary">
 					Stadium is a place for outdoor sports, concerts, or other events and

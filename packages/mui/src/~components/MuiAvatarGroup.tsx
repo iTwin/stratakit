@@ -22,7 +22,18 @@ const MuiAvatarGroup = forwardRef<"div", MuiAvatarGroupProps>(
 
 		return (
 			<Role.div {...rest} ref={forwardedRef}>
-				{reversedChildren}
+				{reversedChildren.map((child, index) => {
+					const key =
+						React.isValidElement(child) && child.key
+							? child.key
+							: `avatar-item-${index}`;
+
+					return (
+						<span className="🥝MuiAvatarGroupItem" key={key} role="listitem">
+							{child}
+						</span>
+					);
+				})}
 			</Role.div>
 		);
 	},

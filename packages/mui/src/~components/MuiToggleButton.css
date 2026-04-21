@@ -6,19 +6,19 @@
 .MuiToggleButton-root {
 	--✨border--selected: var(--stratakit-color-border-accent-strong);
 
-	/** Standalone ToggleButton. */
+	/* Standalone ToggleButton. */
 	&:where(:not(.MuiToggleButtonGroup-grouped)) {
-		border: 0; /** Standalone ToggleButtons have no border. */
+		border: 0; /* Standalone ToggleButtons have no border. */
 
 		&:where(.Mui-selected) {
-			/** Apply visual border when selected. */
+			/* Apply visual border when selected. */
 			box-shadow: 0px 0px 0px 1px var(--✨border--selected) inset;
 		}
 	}
 
-	/** Rendered in a ToggleButtonGroup. */
+	/* Rendered in a ToggleButtonGroup. */
 	&:where(.MuiToggleButtonGroup-grouped) {
-		border-radius: revert-layer; /** Let MUI handle borders. */
+		border-radius: revert-layer; /* Let MUI handle borders. */
 	}
 
 	&:where(.Mui-selected) {
@@ -34,17 +34,17 @@
 	}
 }
 
-/** Rendered as an IconButton (default). */
+/* Rendered as an IconButton (default). */
 .MuiToggleButton-root:is(.MuiIconButton-root) {
-	/** Rendered in a ToggleButtonGroup. */
+	/* Rendered in a ToggleButtonGroup. */
 	&:where(.MuiToggleButtonGroup-grouped) {
 		padding: calc(var(--_MuiIconButton-padding) - 1px); /* Account for 1px border */
 	}
 }
 
-/** Rendered as a Button. */
+/* Rendered as a Button. */
 .MuiToggleButton-root:is(.MuiButton-root) {
-	/** Rendered in a ToggleButtonGroup. */
+	/* Rendered in a ToggleButtonGroup. */
 	&:where(.MuiToggleButtonGroup-grouped) {
 		box-shadow: none;
 		padding-block: calc(var(--_MuiButton-padding-block) - 1px); /* Account for 1px border */

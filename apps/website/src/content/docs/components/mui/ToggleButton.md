@@ -50,4 +50,4 @@ In the example above, the [`exclusive`](https://mui.com/material-ui/api/toggle-b
 ## 🚫 Don’t
 
 - Don’t use to replace buttons.
-- Don’t mix text and icon only **ToggleButtons** in the same group.
+- Don’t mix text and icon-only **ToggleButtons** in the same group.

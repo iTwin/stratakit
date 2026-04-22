@@ -6,10 +6,10 @@
 .MuiIconButton-root {
 	--_MuiIconButton-icon-color: var(--stratakit-color-icon-neutral-base);
 
-	aspect-ratio: 1;
 	border-radius: 4px;
 	color: var(--_MuiIconButton-icon-color);
 	min-block-size: var(--_MuiIconButton-size);
+	min-inline-size: var(--_MuiIconButton-size);
 	padding: var(--_MuiIconButton-padding);
 
 	@media (any-hover: hover) {

@@ -31,14 +31,16 @@
 
 /* Rendered as an IconButton (default). */
 .MuiToggleButton-root:is(.MuiIconButton-root) {
+	--✨border--width: 1px;
+
 	/* Rendered in a ToggleButtonGroup. */
 	&:where(.MuiToggleButtonGroup-grouped) {
-		padding: calc(var(--_MuiIconButton-padding) - 1px); /* Account for 1px border */
+		padding: calc(var(--_MuiIconButton-padding) - var(--✨border--width)); /* Account for border */
 
 		/* Avoid content shift when toggled. */
 		&:where(.Mui-selected) {
 			+ & {
-				min-block-size: calc(var(--_MuiIconButton-size) - 1px);
+				min-inline-size: calc(var(--_MuiIconButton-size) - var(--✨border--width));
 			}
 		}
 	}

@@ -46,6 +46,13 @@ Use the [`NativeSelect`](https://mui.com/material-ui/api/native-select/) compone
 
 ::example{src="mui/NativeSelect.default"}
 
+### Sizes
+
+- **Small:** Use in compact interfaces where space is limited.
+- **Medium:** Default size, suitable for most use cases.
+
+::example{src="mui/Select.sizes"}
+
 ## ✅ Do
 
 - Use **Selects** for form fields. A **Select’s** options represent a choice of predefined input values.

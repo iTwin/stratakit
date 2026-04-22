@@ -3,7 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import { useState } from "react";
+import * as React from "react";
 import Checkbox from "@mui/material/Checkbox";
 import Paper from "@mui/material/Paper";
 import Table from "@mui/material/Table";
@@ -69,7 +69,7 @@ export default () => {
 		},
 	];
 
-	const [selected, setSelected] = useState<number[]>([]);
+	const [selected, setSelected] = React.useState<number[]>([]);
 
 	const handleClick = (id: number) => {
 		const selectedIndex = selected.indexOf(id);

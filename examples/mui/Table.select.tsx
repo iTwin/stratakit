@@ -124,7 +124,6 @@ export default () => {
 								hover
 								onClick={() => handleClick(row.id)}
 								selected={isItemSelected}
-								sx={{ cursor: "pointer" }}
 							>
 								<TableCell
 									padding="checkbox"

@@ -2,7 +2,7 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-import { Anchor } from "@stratakit/bricks";
+import Link from "@mui/material/Link";
 import { unstable_ErrorRegion as ErrorRegion } from "@stratakit/structures";
 
 export default () => {
@@ -15,7 +15,7 @@ export default () => {
 				<ErrorRegion.Item
 					key={errorItem}
 					message={<>Failed to create hierarchy for Item {errorItem}</>}
-					actions={<Anchor render={<button type="button" />}>Retry</Anchor>}
+					actions={<Link render={<button />}>Retry</Link>}
 				/>
 			))}
 		/>

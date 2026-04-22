@@ -12,6 +12,7 @@ links:
 
 - A `label` prop has been added. When specified, it is used as the **ToggleButton’s** accessible name and is also shown in a tooltip on hover and focus.
 - **ToggleButtons** are styled to match the visual appearance of the [**IconButton**](/components/iconbutton) component. Borders are displayed only when the buttons are wrapped in a `ToggleButtonGroup`. [Standalone](#standalone) **ToggleButtons** do not have borders.
+- **ToggleButtons** can now be rendered as regular [**Buttons**](/components/button) to [display text](#text).
 
 ## Examples
 

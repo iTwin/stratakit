@@ -1,0 +1,1 @@
+import{j as t}from"./client.BoB7gDDA.js";import{F as o}from"./FormControlLabel.tydeJS4X.js";import{S as r}from"./Switch.D3vqzhWu.js";import"./styles.internal.iAh-c3F9.js";import"./Typography.KMBKXnD7.js";import"./SwitchBase.JSsS46i8.js";const l=()=>t.jsx(o,{control:t.jsx(r,{defaultChecked:!0}),label:"Default checked"});export{l as default};

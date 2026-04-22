@@ -70,6 +70,7 @@ export default () => {
 	];
 
 	const [selected, setSelected] = React.useState<number[]>([]);
+	const idPrefix = React.useId();
 
 	const handleClick = (id: number) => {
 		const selectedIndex = selected.indexOf(id);
@@ -115,7 +116,7 @@ export default () => {
 				<TableBody>
 					{rows.map((row) => {
 						const isItemSelected = isSelected(row.id);
-						const labelId = `enhanced-table-checkbox-${row.id}`;
+						const labelId = `${idPrefix}-row-label-${row.id}`;
 
 						return (
 							<TableRow

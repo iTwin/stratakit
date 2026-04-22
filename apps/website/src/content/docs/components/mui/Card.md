@@ -36,12 +36,14 @@ Use `slotProps` to give the `CardHeader`’s `title` [an appropriate heading lev
 
 ```jsx
 <CardHeader
-	title="Stadium"
-	slotProps={{
-		title: {
-			render: <h3 />,
-		},
-	}}
+  title={
+    <CardActionArea render={<a href="#" />} nativeButton={false}>
+      Stadium
+    </CardActionArea>
+  }
+  slotProps={{
+    title: { render: <h3 /> },
+  }}
 />
 ```
 

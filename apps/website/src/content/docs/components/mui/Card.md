@@ -32,7 +32,7 @@ Make sure the **Card** is suitable for your use case. There may be other, more a
 
 Make simple **Cards**, with single actions, clickable using the `CardActionArea` component.
 
-Use `slotProps` to give the `CardHeader`’s `title` [an appropriate heading level](https://www.a11yproject.com/posts/how-to-accessible-heading-structure/). The second level (`h2`) is the default.
+Use `slotProps` to give the [`CardHeader`](https://mui.com/material-ui/api/card-header/)’s `title` [an appropriate heading level](https://www.a11yproject.com/posts/how-to-accessible-heading-structure/). The second level (`<h2>`) is the default.
 
 ```jsx
 <CardHeader

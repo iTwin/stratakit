@@ -57,7 +57,7 @@ Add metadata and a menu to `CardHeader` using the `subheader` and `action` props
 
 ::example{src="mui/Card.actions"}
 
-Add actions, at the foot of the **Card**, with the `CardActions` component. **Cards** with `CardActions` must not include `CardActionArea`. The **Card** itself cannot be actionable.
+Add actions, at the foot of the **Card**, with the [`CardActions`](https://mui.com/material-ui/api/card-actions/) component. **Cards** with `CardActions` must not include `CardActionArea`. The **Card** itself cannot be actionable.
 
 ## ✅ Do
 

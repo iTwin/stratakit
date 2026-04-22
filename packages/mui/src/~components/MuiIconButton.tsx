@@ -3,9 +3,11 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
+import * as React from "react";
 import Tooltip from "@mui/material/Tooltip";
 import { forwardRef } from "@stratakit/foundations/secret-internals";
 import { MuiButtonBase } from "./MuiButtonBase.js";
+import { TooltipContext } from "./MuiTooltip.internal.js";
 
 import type { IconButtonOwnProps } from "@mui/material/IconButton";
 import type { BaseProps } from "@stratakit/foundations/secret-internals";
@@ -18,11 +20,13 @@ interface MuiIconButtonProps
 
 const MuiIconButton = forwardRef<"button", MuiIconButtonProps>(
 	(props, forwardedRef) => {
+		const { placement } = React.useContext(TooltipContext);
+
 		const { label, ...rest } = props;
 
 		if (label) {
 			return (
-				<Tooltip title={label} describeChild={false}>
+				<Tooltip title={label} describeChild={false} placement={placement}>
 					<MuiButtonBase {...rest} ref={forwardedRef} />
 				</Tooltip>
 			);

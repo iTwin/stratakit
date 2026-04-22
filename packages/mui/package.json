@@ -17,7 +17,13 @@
 			"types": "./dist/types.d.ts",
 			"default": "./dist/types.d.ts"
 		},
-		"./package.json": "./package.json"
+		"./package.json": "./package.json",
+		"./secret-internals": {
+			"@stratakit/source": "./src/secret-internals.ts",
+			"types": "./dist/secret-internals.d.ts",
+			"development": "./dist/DEV/secret-internals.js",
+			"default": "./dist/secret-internals.js"
+		}
 	},
 	"files": [
 		"dist",

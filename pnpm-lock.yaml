@@ -459,6 +459,9 @@ importers:
       "@stratakit/foundations":
         specifier: ^0.4.8
         version: link:../foundations
+      "@stratakit/mui":
+        specifier: ^0.4.0
+        version: link:../mui
       classnames:
         specifier: ^2.5.1
         version: 2.5.1

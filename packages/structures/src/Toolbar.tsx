@@ -3,17 +3,39 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import * as React from "react";
 import * as Toolbar from "@ariakit/react/toolbar";
 import {
 	IconButtonContext,
 	TooltipContext,
 } from "@stratakit/bricks/secret-internals";
 import { forwardRef } from "@stratakit/foundations/secret-internals";
+import { TooltipContext as MuiTooltipContext } from "@stratakit/mui/secret-internals";
 import cx from "classnames";
 import { useInit } from "./~utils.useInit.js";
 
 import type { BaseProps } from "@stratakit/foundations/secret-internals";
+import type * as React from "react";
+
+// ----------------------------------------------------------------------------
+
+function ToolbarGroupProvider(
+	props: React.PropsWithChildren<{
+		orientation: ToolbarGroupProps["orientation"];
+	}>,
+) {
+	const { orientation } = props;
+
+	const placement = orientation === "vertical" ? "right" : "top";
+	return (
+		<IconButtonContext.Provider value={{ iconSize: "large" }}>
+			<TooltipContext.Provider value={{ placement }}>
+				<MuiTooltipContext.Provider value={{ placement }}>
+					{props.children}
+				</MuiTooltipContext.Provider>
+			</TooltipContext.Provider>
+		</IconButtonContext.Provider>
+	);
+}
 
 // ----------------------------------------------------------------------------
 
@@ -57,24 +79,13 @@ const ToolbarGroup = forwardRef<"div", ToolbarGroupProps>(
 		useInit();
 
 		return (
-			<IconButtonContext.Provider
-				value={React.useMemo(() => ({ iconSize: "large" }), [])}
-			>
-				<TooltipContext.Provider
-					value={React.useMemo(
-						() => ({
-							placement: props.orientation === "vertical" ? "right" : "top",
-						}),
-						[props.orientation],
-					)}
-				>
-					<Toolbar.Toolbar
-						{...props}
-						className={cx("🥝Toolbar", props.className)}
-						ref={forwardedRef}
-					/>
-				</TooltipContext.Provider>
-			</IconButtonContext.Provider>
+			<ToolbarGroupProvider orientation={props.orientation}>
+				<Toolbar.Toolbar
+					{...props}
+					className={cx("🥝Toolbar", props.className)}
+					ref={forwardedRef}
+				/>
+			</ToolbarGroupProvider>
 		);
 	},
 );

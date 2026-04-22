@@ -126,16 +126,19 @@ export default () => {
 								selected={isItemSelected}
 								sx={{ cursor: "pointer" }}
 							>
-								<TableCell padding="checkbox">
+								<TableCell
+									padding="checkbox"
+									render={<th />}
+									scope="row"
+									id={labelId}
+								>
 									<Checkbox
 										color="primary"
 										checked={isItemSelected}
 										slotProps={{ input: { "aria-labelledby": labelId } }}
 									/>
 								</TableCell>
-								<TableCell render={<th />} scope="row" id={labelId}>
-									{row.name}
-								</TableCell>
+								<TableCell>{row.name}</TableCell>
 								<TableCell align="right">{row.calories}</TableCell>
 								<TableCell align="right">{row.fat}</TableCell>
 								<TableCell align="right">{row.carbs}</TableCell>

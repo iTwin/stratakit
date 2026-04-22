@@ -23,13 +23,13 @@ export default () => {
 			exclusive
 			aria-label="color scheme"
 		>
-			<ToggleButton value="auto" render={<Button />}>
+			<ToggleButton value="auto" render={<Button variant="outlined" />}>
 				Auto
 			</ToggleButton>
-			<ToggleButton value="light" render={<Button />}>
+			<ToggleButton value="light" render={<Button variant="outlined" />}>
 				Light
 			</ToggleButton>
-			<ToggleButton value="dark" render={<Button />}>
+			<ToggleButton value="dark" render={<Button variant="outlined" />}>
 				Dark
 			</ToggleButton>
 		</ToggleButtonGroup>

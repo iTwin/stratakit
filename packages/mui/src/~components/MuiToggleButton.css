@@ -45,13 +45,3 @@
 		}
 	}
 }
-
-/* Rendered as a Button. */
-.MuiToggleButton-root:is(.MuiButton-root) {
-	/* Rendered in a ToggleButtonGroup. */
-	&:where(.MuiToggleButtonGroup-grouped) {
-		box-shadow: none;
-		padding-block: calc(var(--_MuiButton-padding-block) - 1px); /* Account for 1px border */
-		padding-inline: calc(var(--_MuiButton-padding-inline) - 1px); /* Account for 1px border */
-	}
-}

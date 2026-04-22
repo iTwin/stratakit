@@ -44,7 +44,7 @@ In the example above, the [`exclusive`](https://mui.com/material-ui/api/toggle-b
 ## ✅ Do
 
 - Use **ToggleButton** for actions that have an on/off state.
-- Use the `label` prop in icon only **ToggleButtons** to provide a descriptive, accessible name.
+- Use the `label` prop in icon-only **ToggleButtons** to provide a descriptive, accessible name.
 - Use `ToggleButtonGroup` to group multiple related **ToggleButtons**.
 
 ## 🚫 Don’t

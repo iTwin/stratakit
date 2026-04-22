@@ -33,15 +33,10 @@
 .MuiToggleButton-root:is(.MuiIconButton-root) {
 	--✨border--width: 1px;
 
-	/* Rendered in a ToggleButtonGroup. */
-	&:where(.MuiToggleButtonGroup-grouped) {
-		padding: calc(var(--_MuiIconButton-padding) - var(--✨border--width)); /* Account for border */
-
-		/* Avoid content shift when toggled. */
-		&:where(.Mui-selected) {
-			:where(&) + & {
-				min-inline-size: calc(var(--_MuiIconButton-size) - var(--✨border--width));
-			}
+	/* Avoid content shift when toggled in a ToggleButtonGroup. */
+	&:where(.MuiToggleButtonGroup-grouped.Mui-selected) {
+		:where(&) + & {
+			min-inline-size: calc(var(--_MuiIconButton-size) - var(--✨border--width));
 		}
 	}
 }

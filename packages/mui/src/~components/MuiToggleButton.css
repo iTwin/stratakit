@@ -39,7 +39,7 @@
 
 		/* Avoid content shift when toggled. */
 		&:where(.Mui-selected) {
-			+ & {
+			:where(&) + & {
 				min-inline-size: calc(var(--_MuiIconButton-size) - var(--✨border--width));
 			}
 		}

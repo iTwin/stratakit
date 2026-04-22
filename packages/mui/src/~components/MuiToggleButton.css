@@ -13,7 +13,7 @@
 
 	/* Rendered in a ToggleButtonGroup. */
 	&:where(.MuiToggleButtonGroup-grouped) {
-		border-radius: revert-layer; /* Let MUI handle borders. */
+		border-radius: revert-layer; /* Let MUI handle border-radius. */
 	}
 
 	&:where(.Mui-selected) {

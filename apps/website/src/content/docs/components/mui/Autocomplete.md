@@ -20,3 +20,10 @@ links:
 ### Multiple values
 
 ::example{src="mui/Autocomplete.multiple"}
+
+### Sizes
+
+- **Small:** Use in compact interfaces where space is limited.
+- **Medium:** Default size, suitable for most use cases.
+
+::example{src="mui/Autocomplete.sizes"}

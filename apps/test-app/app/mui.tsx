@@ -25,6 +25,7 @@ import AlertTitle from "examples/mui/Alert.title.tsx";
 import AppBarDefault from "examples/mui/AppBar.default.tsx";
 import AutocompleteDefault from "examples/mui/Autocomplete.default.tsx";
 import AutocompleteMultiple from "examples/mui/Autocomplete.multiple.tsx";
+import AutocompleteSizes from "examples/mui/Autocomplete.sizes.tsx";
 import AvatarDecorative from "examples/mui/Avatar.decorative.tsx";
 import AvatarDefault from "examples/mui/Avatar.default.tsx";
 import AvatarIcon from "examples/mui/Avatar.icon.tsx";
@@ -43,6 +44,7 @@ import ButtonDefault from "examples/mui/Button.default.tsx";
 import ButtonSizes from "examples/mui/Button.sizes.tsx";
 import ButtonVariants from "examples/mui/Button.variants.tsx";
 import ButtonGroupDefault from "examples/mui/ButtonGroup.default.tsx";
+import ButtonGroupSizes from "examples/mui/ButtonGroup.sizes.tsx";
 import CardActions from "examples/mui/Card.actions.tsx";
 import CardDefault from "examples/mui/Card.default.tsx";
 import CardHeader from "examples/mui/Card.header.tsx";
@@ -89,11 +91,13 @@ import RatingDefault from "examples/mui/Rating.default.tsx";
 import SelectDefault from "examples/mui/Select.default.tsx";
 import SelectIcon from "examples/mui/Select.icon.tsx";
 import SelectMultiple from "examples/mui/Select.multiple.tsx";
+import SelectSizes from "examples/mui/Select.sizes.tsx";
 import SkeletonDefault from "examples/mui/Skeleton.default.tsx";
 import SkeletonVariants from "examples/mui/Skeleton.variants.tsx";
 import SliderDefault from "examples/mui/Slider.default.tsx";
 import SliderMarks from "examples/mui/Slider.marks.tsx";
 import SliderRange from "examples/mui/Slider.range.tsx";
+import SliderSizes from "examples/mui/Slider.sizes.tsx";
 import SliderTooltip from "examples/mui/Slider.tooltip.tsx";
 import SliderVertical from "examples/mui/Slider.vertical.tsx";
 import SnackbarDefault from "examples/mui/Snackbar.default.tsx";
@@ -107,6 +111,7 @@ import SwitchDefault from "examples/mui/Switch.default.tsx";
 import SwitchSizes from "examples/mui/Switch.sizes.tsx";
 import TableDefault from "examples/mui/Table.default.tsx";
 import TableFooter from "examples/mui/Table.footer.tsx";
+import TableSizes from "examples/mui/Table.sizes.tsx";
 import TabsDefault from "examples/mui/Tabs.default.tsx";
 import TabsScrollable from "examples/mui/Tabs.scrollable.tsx";
 import TextFieldDisabled from "examples/mui/TextField._disabled.tsx";
@@ -116,6 +121,7 @@ import TextFieldIcon from "examples/mui/TextField.icon.tsx";
 import TextFieldMultiline from "examples/mui/TextField.multiline.tsx";
 import TextFieldSizes from "examples/mui/TextField.sizes.tsx";
 import ToggleButtonDefault from "examples/mui/ToggleButton.default.tsx";
+import ToggleButtonSizes from "examples/mui/ToggleButton.sizes.tsx";
 import TooltipDefault from "examples/mui/Tooltip.default.tsx";
 import TooltipDirection from "examples/mui/Tooltip.direction.tsx";
 import TypographyDefault from "examples/mui/Typography.default.tsx";
@@ -176,6 +182,7 @@ const components: Record<string, React.ReactNode> = {
 	Autocomplete: (
 		<>
 			<AutocompleteDefault />
+			<AutocompleteSizes />
 			<AutocompleteMultiple />
 		</>
 	),
@@ -212,7 +219,12 @@ const components: Record<string, React.ReactNode> = {
 			{!isProduction && <ButtonPermutations_ />}
 		</>
 	),
-	ButtonGroup: <ButtonGroupDefault />,
+	ButtonGroup: (
+		<>
+			<ButtonGroupDefault />
+			<ButtonGroupSizes />
+		</>
+	),
 	Card: (
 		<>
 			<CardDefault />
@@ -323,6 +335,7 @@ const components: Record<string, React.ReactNode> = {
 			<SelectDefault />
 			<SelectIcon />
 			<SelectMultiple />
+			<SelectSizes />
 		</>
 	),
 	Skeleton: (
@@ -334,6 +347,7 @@ const components: Record<string, React.ReactNode> = {
 	Slider: (
 		<>
 			<SliderDefault />
+			<SliderSizes />
 			<SliderTooltip />
 			<SliderMarks />
 			<SliderRange />
@@ -360,6 +374,7 @@ const components: Record<string, React.ReactNode> = {
 	Table: (
 		<>
 			<TableDefault />
+			<TableSizes />
 			<TableFooter />
 		</>
 	),
@@ -379,7 +394,12 @@ const components: Record<string, React.ReactNode> = {
 			<TextFieldSizes />
 		</Stack>
 	),
-	ToggleButton: <ToggleButtonDefault />,
+	ToggleButton: (
+		<>
+			<ToggleButtonDefault />
+			<ToggleButtonSizes />
+		</>
+	),
 	Tooltip: (
 		<>
 			<TooltipDefault />

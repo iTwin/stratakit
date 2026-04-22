@@ -17,6 +17,9 @@
 			style(--variant: "body-lg"): var(--stratakit-font-size-16);
 			style(--variant: "body-md"): var(--stratakit-font-size-14);
 			style(--variant: "body-sm"): var(--stratakit-font-size-12);
+			style(--variant: "subtitle-lg"): var(--stratakit-font-size-16);
+			style(--variant: "subtitle-md"): var(--stratakit-font-size-14);
+			style(--variant: "subtitle-sm"): var(--stratakit-font-size-12);
 			style(--variant: "caption-lg"): var(--stratakit-font-size-11);
 			style(--variant: "caption-md"): var(--stratakit-font-size-10);
 			style(--variant: "caption-sm"): var(--stratakit-font-size-8);
@@ -33,6 +36,9 @@
 			style(--variant: "body-lg"): 1.5;
 			style(--variant: "body-md"): 1.4286;
 			style(--variant: "body-sm"): 1.3333;
+			style(--variant: "subtitle-lg"): 1.5;
+			style(--variant: "subtitle-md"): 1.4286;
+			style(--variant: "subtitle-sm"): 1.3333;
 			style(--variant: "caption-lg"): 1.4545;
 			style(--variant: "caption-md"): 1.2;
 			style(--variant: "caption-sm"): 1.5;

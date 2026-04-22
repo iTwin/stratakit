@@ -11,3 +11,13 @@ links:
 ## StrataKit MUI modifications
 
 - A `label` prop has been added. When specified, it is used as the **ToggleButton’s** accessible name and is also shown in a tooltip on hover and focus.
+
+## Examples
+
+### Sizes
+
+- **Small:** Use in compact interfaces where space is limited.
+- **Medium:** Default size, suitable for most use cases.
+- **Large:** Use in spacious layouts where a more prominent button is needed.
+
+::example{src="mui/ToggleButton.sizes"}

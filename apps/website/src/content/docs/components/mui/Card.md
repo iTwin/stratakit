@@ -70,4 +70,4 @@ Add actions, at the foot of the **Card**, with the [`CardActions`](https://mui.c
 
 - Don’t use a **Card** to group unrelated content or actions.
 - Don’t use **Card** just to highlight some content belonging to a larger subject.
-- Don’t wrap the entire contents of the **Card** in a `CardActionArea`. Typically, it should only contain `CardHeader`.
+- Don’t wrap the entire contents of the **Card** in a `CardActionArea`. Typically, it should be passed into the `CardHeader`'s `title`.

@@ -28,3 +28,10 @@ links:
 ### Deletable
 
 ::example{src="mui/Chip.deletable"}
+
+### Sizes
+
+- **Small:** Use in compact interfaces where space is limited.
+- **Medium:** Default size, suitable for most use cases.
+
+::example{src="mui/Chip.sizes"}

@@ -17,3 +17,10 @@ links:
 ### Footer
 
 ::example{src="mui/Table.footer"}
+
+### Sizes
+
+- **Small:** Use in compact interfaces where space is limited.
+- **Medium:** Default size, suitable for most use cases.
+
+::example{src="mui/Table.sizes"}

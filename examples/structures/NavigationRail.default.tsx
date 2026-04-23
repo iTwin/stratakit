@@ -37,7 +37,11 @@ export default () => {
 								label="Item #2"
 							/>
 						</NavigationRail.ListItem>
-						<Divider render={<div />} role="presentation" />
+						<Divider
+							className={styles.divider}
+							render={<div />}
+							role="presentation"
+						/>
 						<NavigationRail.ListItem>
 							<NavigationRail.Anchor
 								href="#"
@@ -52,7 +56,11 @@ export default () => {
 							<NavigationRail.ListItem>
 								<NavigationRail.Button icon={svgPlaceholder} label="Item #4" />
 							</NavigationRail.ListItem>
-							<Divider render={<div />} role="presentation" />
+							<Divider
+								className={styles.divider}
+								render={<div />}
+								role="presentation"
+							/>
 							<NavigationRail.ListItem>
 								<NavigationRail.Button icon={svgPlaceholder} label="Item #5" />
 							</NavigationRail.ListItem>

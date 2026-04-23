@@ -1,0 +1,133 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+
+import * as React from "react";
+import Divider from "@mui/material/Divider";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
+import { Icon } from "@stratakit/mui";
+import { unstable_NavigationRail as NavigationRail } from "@stratakit/structures";
+
+import svgBentley from "@stratakit/icons/bentley-systems.svg";
+import svgDisconnect from "@stratakit/icons/disconnect.svg";
+import svgInspection from "@stratakit/icons/inspection.svg";
+import svgNotifications from "@stratakit/icons/notifications.svg";
+import svgReport from "@stratakit/icons/report.svg";
+import svgSettings from "@stratakit/icons/settings.svg";
+import svgUser from "@stratakit/icons/user.svg";
+import styles from "./NavigationRail.default.module.css";
+
+export default () => {
+	const accountId = React.useId();
+	const [accountEl, setAccountEl] = React.useState<HTMLElement | null>(null);
+	const [accountOpen, setAccountOpen] = React.useState(false);
+	return (
+		<div className={styles.container}>
+			<NavigationRail.Root>
+				<NavigationRail.Header>
+					<Icon alt="Acme app" href={`${svgBentley}#icon-large`} size="large" />
+					<NavigationRail.ToggleButton />
+				</NavigationRail.Header>
+
+				<NavigationRail.Content>
+					<NavigationRail.List>
+						<NavigationRail.ListItem>
+							<NavigationRail.Anchor
+								href="#"
+								icon={svgReport}
+								label="Reports"
+								active
+							/>
+						</NavigationRail.ListItem>
+						<NavigationRail.ListItem>
+							<NavigationRail.Anchor
+								href="#"
+								icon={svgInspection}
+								label="Logs"
+							/>
+						</NavigationRail.ListItem>
+						<Divider
+							className={styles.divider}
+							render={<div />}
+							role="presentation"
+						/>
+						<NavigationRail.ListItem>
+							<NavigationRail.Anchor
+								href="#"
+								icon={svgDisconnect}
+								label="Integrations"
+							/>
+						</NavigationRail.ListItem>
+					</NavigationRail.List>
+
+					<NavigationRail.Footer>
+						<NavigationRail.List>
+							<NavigationRail.ListItem>
+								<NavigationRail.Button
+									icon={svgNotifications}
+									label="Notifications"
+								/>
+							</NavigationRail.ListItem>
+							<NavigationRail.ListItem>
+								<NavigationRail.Button icon={svgSettings} label="Settings" />
+							</NavigationRail.ListItem>
+							<Divider
+								className={styles.divider}
+								render={<div />}
+								role="presentation"
+							/>
+							<NavigationRail.ListItem>
+								<NavigationRail.Button
+									id={accountId}
+									ref={setAccountEl}
+									icon={svgUser}
+									label="Account"
+									onClick={() => setAccountOpen(true)}
+								/>
+								<AccountMenu
+									anchorEl={accountEl}
+									open={accountOpen}
+									onClose={() => setAccountOpen(false)}
+									triggerId={accountId}
+								/>
+							</NavigationRail.ListItem>
+						</NavigationRail.List>
+					</NavigationRail.Footer>
+				</NavigationRail.Content>
+			</NavigationRail.Root>
+		</div>
+	);
+};
+
+interface AccountPopoverProps {
+	anchorEl: HTMLElement | null;
+	open: boolean;
+	onClose: () => void;
+	triggerId: string;
+}
+
+function AccountMenu(props: AccountPopoverProps) {
+	const { anchorEl, open, onClose, triggerId } = props;
+
+	return (
+		<Menu
+			anchorEl={anchorEl}
+			open={open}
+			onClose={onClose}
+			slotProps={{
+				list: {
+					"aria-labelledby": triggerId,
+				},
+			}}
+			anchorOrigin={{
+				horizontal: "right",
+				vertical: "bottom",
+			}}
+		>
+			<MenuItem onClick={onClose}>View profile</MenuItem>
+			<MenuItem onClick={onClose}>Sign out</MenuItem>
+		</Menu>
+	);
+}

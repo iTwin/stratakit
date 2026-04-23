@@ -2,4 +2,4 @@
 "@stratakit/mui": minor
 ---
 
-Removed `role="alert"` from the **Alert** component. The **Alert** will no longer be a live region by default. If you need to maintain the previous behavior, you can set `role="alert"` manually.
+Changed the `Alert` component's `role` from `"alert"` to [`"group"`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/group_role). The `Alert` will no longer be a live region by default. The `AlertTitle` subcomponent will now provide the accessible name for the `Alert`.

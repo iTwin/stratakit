@@ -13,7 +13,6 @@
 	--_MuiTableRow-bg--hover: var(--✨row-bg--hover);
 
 	background-color: var(--_MuiTableRow-bg);
-	cursor: pointer;
 
 	@media (any-hover: hover) {
 		&:where(:hover) {
@@ -24,6 +23,10 @@
 	&:where(.Mui-selected) {
 		--_MuiTableRow-bg: var(--✨row-bg--active);
 		--_MuiTableRow-bg--hover: var(--✨row-bg--active-hover);
+	}
+
+	&:where(:has(.MuiTableCell-paddingCheckbox)) {
+		cursor: pointer;
 	}
 }
 

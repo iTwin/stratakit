@@ -66,6 +66,7 @@ import DividerVertical from "examples/mui/Divider.vertical.tsx";
 import DrawerDefault from "examples/mui/Drawer.default.tsx";
 import FabDefault from "examples/mui/Fab.default.tsx";
 import IconButtonColors_ from "examples/mui/IconButton._colors.tsx";
+import IconButtonPlacements_ from "examples/mui/IconButton._placements.tsx";
 import IconButtonDefault from "examples/mui/IconButton.default.tsx";
 import IconButtonSizes from "examples/mui/IconButton.sizes.tsx";
 import LinearProgressColors_ from "examples/mui/LinearProgress._colors.tsx";
@@ -115,7 +116,12 @@ import TextFieldError from "examples/mui/TextField.error.tsx";
 import TextFieldIcon from "examples/mui/TextField.icon.tsx";
 import TextFieldMultiline from "examples/mui/TextField.multiline.tsx";
 import TextFieldSizes from "examples/mui/TextField.sizes.tsx";
+import ToggleButtonDisabled_ from "examples/mui/ToggleButton._disabled.tsx";
+import ToggleButtonPlacements_ from "examples/mui/ToggleButton._placements.tsx";
 import ToggleButtonDefault from "examples/mui/ToggleButton.default.tsx";
+import ToggleButtonSizes from "examples/mui/ToggleButton.sizes.tsx";
+import ToggleButtonStandalone from "examples/mui/ToggleButton.standalone.tsx";
+import ToggleButtonText from "examples/mui/ToggleButton.text.tsx";
 import TooltipDefault from "examples/mui/Tooltip.default.tsx";
 import TooltipDirection from "examples/mui/Tooltip.direction.tsx";
 import TypographyDefault from "examples/mui/Typography.default.tsx";
@@ -270,6 +276,11 @@ const components: Record<string, React.ReactNode> = {
 					<IconButtonColors_ />
 				</Stack>
 			)}
+			{!isProduction && (
+				<Stack spacing={1} direction="row">
+					<IconButtonPlacements_ />
+				</Stack>
+			)}
 		</>
 	),
 	LinearProgress: (
@@ -379,7 +390,20 @@ const components: Record<string, React.ReactNode> = {
 			<TextFieldSizes />
 		</Stack>
 	),
-	ToggleButton: <ToggleButtonDefault />,
+	ToggleButton: (
+		<>
+			<ToggleButtonDefault />
+			<ToggleButtonStandalone />
+			<ToggleButtonSizes />
+			<ToggleButtonDisabled_ />
+			<ToggleButtonText />
+			{!isProduction && (
+				<Stack spacing={1} direction="row">
+					<ToggleButtonPlacements_ />
+				</Stack>
+			)}
+		</>
+	),
 	Tooltip: (
 		<>
 			<TooltipDefault />

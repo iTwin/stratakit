@@ -24,31 +24,11 @@ interface RowData {
 
 export default () => {
 	const rows: RowData[] = [
-		{
-			id: 1,
-			name: "Cupcake",
-			calories: 305,
-		},
-		{
-			id: 2,
-			name: "Eclair",
-			calories: 262,
-		},
-		{
-			id: 3,
-			name: "Frozen yoghurt",
-			calories: 159,
-		},
-		{
-			id: 4,
-			name: "Gingerbread",
-			calories: 356,
-		},
-		{
-			id: 5,
-			name: "Ice cream sandwich",
-			calories: 237,
-		},
+		{ id: 1, name: "Cupcake", calories: 305 },
+		{ id: 2, name: "Eclair", calories: 262 },
+		{ id: 3, name: "Frozen yoghurt", calories: 159 },
+		{ id: 4, name: "Gingerbread", calories: 356 },
+		{ id: 5, name: "Ice cream sandwich", calories: 237 },
 	];
 
 	const [selected, setSelected] = React.useState<number[]>([]);

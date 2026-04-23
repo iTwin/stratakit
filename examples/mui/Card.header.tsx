@@ -22,11 +22,6 @@ import styles from "./Card.header.module.css";
 export default () => {
 	return (
 		<Card className={styles.card} variant="outlined">
-			<CardHeader
-				title="Stadium"
-				subheader="January 16, 2026"
-				action={<ActionsMenu />}
-			/>
 			<CardMedia
 				className={styles.media}
 				render={
@@ -36,6 +31,11 @@ export default () => {
 						alt=""
 					/>
 				}
+			/>
+			<CardHeader
+				title="Stadium"
+				subheader="January 16, 2026"
+				action={<ActionsMenu />}
 			/>
 			<CardContent>
 				<Typography variant="body2" color="text.secondary">

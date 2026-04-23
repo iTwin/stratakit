@@ -16,6 +16,7 @@ import type {
 	TextFieldProps,
 	TextFieldVariants,
 } from "@mui/material/TextField";
+import type { TooltipProps } from "@mui/material/Tooltip";
 import type { TypographyProps } from "@mui/material/Typography";
 import type * as React from "react";
 
@@ -224,6 +225,13 @@ declare module "@mui/material/IconButton" {
 		 * If not specified, the accessible name and tooltip must be wired up manually.
 		 */
 		label?: string;
+
+		/**
+		 * Placement of the tooltip that is shown when the `label` prop is specified.
+		 *
+		 * @default 'top'
+		 */
+		labelPlacement?: TooltipProps["placement"];
 	}
 }
 
@@ -336,6 +344,13 @@ declare module "@mui/material/ToggleButton" {
 		 * Should only be provided when the toggle button does not have visible text content that can serve as an accessible name.
 		 */
 		label?: IconButtonProps["label"];
+
+		/**
+		 * Placement of the tooltip that is shown when the `label` prop is specified.
+		 *
+		 * @default 'top'
+		 */
+		labelPlacement?: TooltipProps["placement"];
 	}
 }
 

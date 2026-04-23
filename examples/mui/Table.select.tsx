@@ -84,16 +84,14 @@ export default () => {
 								onClick={() => handleClick(row.id)}
 								selected={isItemSelected}
 							>
-								<TableCell padding="checkbox">
+								<TableCell render={<th />} scope="row" padding="checkbox">
 									<Checkbox
 										color="primary"
 										checked={isItemSelected}
 										slotProps={{ input: { "aria-labelledby": labelId } }}
 									/>
 								</TableCell>
-								<TableCell render={<th />} scope="row" id={labelId}>
-									{row.name}
-								</TableCell>
+								<TableCell id={labelId}>{row.name}</TableCell>
 								<TableCell align="right">{row.calories}</TableCell>
 							</TableRow>
 						);

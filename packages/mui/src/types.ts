@@ -330,6 +330,11 @@ declare module "@mui/material/ToggleButton" {
 	interface ToggleButtonOwnProps {
 		LinkComponent?: never;
 
+		/**
+		 * The accessible name of the button, which is also shown as a tooltip on hover/focus.
+		 *
+		 * Should only be provided when the toggle button does not have visible text content that can serve as an accessible name.
+		 */
 		label?: IconButtonProps["label"];
 	}
 }

@@ -275,6 +275,7 @@
 
 .MuiToggleButton-root {
 	&:where(.Mui-selected) {
+		forced-color-adjust: none; /* removing the backplate */
 		background-color: SelectedItem;
 		color: SelectedItemText;
 	}

@@ -3,16 +3,15 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-.MuiAvatarGroup-root {
-	flex-direction: row;
-}
+import ToggleButton from "@mui/material/ToggleButton";
+import { Icon } from "@stratakit/mui";
 
-.MuiAvatarGroup-avatar {
-	margin-inline: 0;
-}
+import svgPlaceholder from "@stratakit/icons/placeholder.svg";
 
-.🥝MuiAvatarGroupItem {
-	&:where(:not(:nth-child(1 of &))) {
-		margin-inline-start: var(--AvatarGroup-spacing);
-	}
-}
+export default () => {
+	return (
+		<ToggleButton value="disabled" label="Disabled" disabled>
+			<Icon href={svgPlaceholder} />
+		</ToggleButton>
+	);
+};

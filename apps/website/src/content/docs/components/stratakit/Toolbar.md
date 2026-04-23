@@ -14,7 +14,7 @@ links:
 
 Use the [`render`](/reference/structures/Toolbar#Toolbar.Item.render) prop of the [`Toolbar.Item`](/reference/structures/Toolbar#Toolbar.Item) component to display individual items within the toolbar.
 
-In the example below, the toolbar item is rendered as a [**ToggleButton**](/components/togglebutton/).
+In the example below, one of the toolbar items is rendered as a [**ToggleButton**](/components/togglebutton/).
 
 ::example{src="structures/Toolbar.toggle"}
 

@@ -1,0 +1,1 @@
+import{j as e}from"./client.Bfjikisj.js";import{P as p}from"./Paper.CHRa3q1U.js";import"./styles.internal.iAh-c3F9.js";const r="_paper_1mq3b_6",a={paper:r},m=()=>e.jsx(p,{className:a.paper,elevation:4});export{m as default};

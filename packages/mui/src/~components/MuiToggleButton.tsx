@@ -15,11 +15,11 @@ import type { BaseProps } from "@stratakit/foundations/secret-internals";
 
 interface MuiToggleButtonProps
 	extends BaseProps<"button">,
-		Pick<ToggleButtonOwnProps, "label"> {}
+		Pick<ToggleButtonOwnProps, "label" | "labelPlacement"> {}
 
 const MuiToggleButton = forwardRef<"button", MuiToggleButtonProps>(
 	(props, forwardedRef) => {
-		const { label, ...rest } = props;
+		const { label, labelPlacement, ...rest } = props;
 
 		const classList = props.className?.split(" ") ?? [];
 		const size = (() => {
@@ -31,7 +31,7 @@ const MuiToggleButton = forwardRef<"button", MuiToggleButtonProps>(
 
 		if (label) {
 			return (
-				<Tooltip title={label} describeChild={false}>
+				<Tooltip title={label} describeChild={false} placement={labelPlacement}>
 					<MuiButtonBase
 						{...rest}
 						render={props.render ?? <IconButton size={size} />}

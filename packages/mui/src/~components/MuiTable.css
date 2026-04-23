@@ -3,30 +3,33 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-.MuiTableRow-hover {
+.MuiTableRow-root {
 	--✨row-bg--default: transparent;
 	--✨row-bg--hover: var(--stratakit-color-bg-glow-on-surface-neutral-hover);
 	--✨row-bg--active: var(--stratakit-color-bg-glow-on-surface-accent-pressed);
 	--✨row-bg--active-hover: var(--stratakit-color-bg-glow-on-surface-accent-active-hover);
 
 	--_MuiTableRow-bg: var(--✨row-bg--default);
-	--_MuiTableRow-bg--hover: var(--✨row-bg--hover);
 
 	background-color: var(--_MuiTableRow-bg);
 
-	@media (any-hover: hover) {
-		&:where(:hover) {
-			background-color: var(--_MuiTableRow-bg--hover);
+	&:where(.MuiTableRow-hover) {
+		--_MuiTableRow-bg--hover: var(--✨row-bg--hover);
+
+		@media (any-hover: hover) {
+			&:where(:hover) {
+				background-color: var(--_MuiTableRow-bg--hover);
+			}
+		}
+
+		&:where(:has(.MuiTableCell-paddingCheckbox)) {
+			cursor: pointer;
 		}
 	}
 
 	&:where(.Mui-selected) {
 		--_MuiTableRow-bg: var(--✨row-bg--active);
 		--_MuiTableRow-bg--hover: var(--✨row-bg--active-hover);
-	}
-
-	&:where(:has(.MuiTableCell-paddingCheckbox)) {
-		cursor: pointer;
 	}
 }
 

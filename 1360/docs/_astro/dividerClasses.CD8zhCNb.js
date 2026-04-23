@@ -1,0 +1,1 @@
+import{E as i,F as t}from"./client.DjQrQXlh.js";function l(e){return i("MuiDivider",e)}const s=t("MuiDivider",["root","absolute","fullWidth","inset","middle","flexItem","vertical","withChildren","textAlignRight","textAlignLeft","wrapper","wrapperVertical"]);export{s as d,l as g};

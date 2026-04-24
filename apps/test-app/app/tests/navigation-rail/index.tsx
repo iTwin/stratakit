@@ -79,14 +79,7 @@ export default definePage(
 						href="#"
 						label="Marketplace"
 						icon={svgPlugins}
-						endIcon={
-							<Icon
-								alt="Opens in new tab"
-								href={svgWindowPopout}
-								aria-label="Opens in new tab" // TODO: handle <Icon render={<Icon />} />
-								aria-hidden={undefined} // TODO: handle <Icon render={<Icon />} />
-							/>
-						}
+						endIcon={<Icon alt="(opens in new tab)" href={svgWindowPopout} />}
 					/>
 
 					<NavigationRail.Footer>

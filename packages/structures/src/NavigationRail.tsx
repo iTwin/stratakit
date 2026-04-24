@@ -435,26 +435,22 @@ const NavigationRailItemAction = forwardRef<
 	const { label, icon, endIcon, ...rest } = props;
 	DEV: if (!label || !icon) throw new Error("label and icon are required");
 
-	const endIconElement = React.isValidElement(endIcon) ? endIcon : undefined;
+	const EndIconWrapper = expanded ? Role : VisuallyHidden;
 	const action = (
 		<Role
 			{...rest}
 			className={cx("🥝NavigationRailItemAction", props.className)}
 			ref={forwardedRef}
 		>
-			{typeof icon === "string" ? <Icon href={icon} /> : icon}
+			{typeof icon === "string" ? <Icon href={icon} size="large" /> : icon}
 			<Role.span
 				className="🥝NavigationRailItemActionLabel"
 				render={!expanded ? <VisuallyHidden /> : undefined}
 			>
 				{label}
 			</Role.span>
-			<Icon
-				className="🥝NavigationRailItemActionEndIcon"
-				href={typeof endIcon === "string" ? endIcon : undefined}
-				render={
-					expanded ? endIconElement : <VisuallyHidden render={endIconElement} />
-				}
+			<EndIconWrapper
+				render={typeof endIcon === "string" ? <Icon href={endIcon} /> : endIcon}
 			/>
 		</Role>
 	);

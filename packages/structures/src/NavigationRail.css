@@ -158,7 +158,6 @@
 		inline-size: stretch;
 		min-block-size: var(--✨height);
 		padding: var(--stratakit-space-x2);
-		--🥝Icon-size: 1.5rem;
 		border: 1px solid;
 
 		background-color: var(--🌀NavigationRailItemAction-state--default, var(--✨bg--default))
@@ -226,17 +225,11 @@
 
 .🥝NavigationRailItemActionLabel {
 	@layer base {
+		flex: 1;
 		/* TODO: Find a better solution than truncation. */
 		overflow: hidden;
 		white-space: nowrap;
 		text-overflow: ellipsis;
-	}
-}
-
-.🥝NavigationRailItemActionEndIcon {
-	@layer base {
-		--🥝Icon-size: 1rem;
-		margin-inline-start: auto;
 	}
 }
 

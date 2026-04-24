@@ -26,11 +26,19 @@ Make sure the **Card** is suitable for your use case. There may be other, more a
 
 ## Examples
 
-### Basic
+### Menu and metadata
 
-::example{src="mui/Card.default"}
+Add metadata and a menu to [`CardHeader`](https://mui.com/material-ui/api/card-header/) using the `subheader` and `action` props.
 
-Make simple **Cards**, with single actions, clickable using the `CardActionArea` component.
+::example{src="mui/Card.menu" min-height="425px"}
+
+### Actions
+
+Add actions, at the foot of the **Card**, with the [`CardActions`](https://mui.com/material-ui/api/card-actions/) component. **Cards** with `CardActions` must not include `CardActionArea`. The **Card** itself cannot be actionable.
+
+::example{src="mui/Card.actions"}
+
+### Heading levels
 
 Use `slotProps` to give the [`CardHeader`](https://mui.com/material-ui/api/card-header/)’s `title` [an appropriate heading level](https://www.a11yproject.com/posts/how-to-accessible-heading-structure/). The second level (`<h2>`) is the default.
 
@@ -47,24 +55,12 @@ Use `slotProps` to give the [`CardHeader`](https://mui.com/material-ui/api/card-
 />
 ```
 
-### Menu and metadata
-
-Add metadata and a menu to [`CardHeader`](https://mui.com/material-ui/api/card-header/) using the `subheader` and `action` props.
-
-::example{src="mui/Card.menu" min-height="425px"}
-
-### Actions
-
-::example{src="mui/Card.actions"}
-
-Add actions, at the foot of the **Card**, with the [`CardActions`](https://mui.com/material-ui/api/card-actions/) component. **Cards** with `CardActions` must not include `CardActionArea`. The **Card** itself cannot be actionable.
-
 ## ✅ Do
 
 - Choose [an appropriate heading level](https://www.a11yproject.com/posts/how-to-accessible-heading-structure/) for the `CardHeader` title.
 - Organize multiple **Cards** into an unordered list, where each list item contains a single **Card**.
-- Use `CardActionArea` if the entire card should be clickable.
-- Use `CardActions` when the card has supplementary actions.
+- Use [`CardActionArea`](https://mui.com/material-ui/api/card-action-area/) when there is only a single action and the entire card should be clickable.
+- Use [`CardActions`](https://mui.com/material-ui/api/card-actions/) when the **Card** has multiple actions.
 
 ## 🚫 Don't
 

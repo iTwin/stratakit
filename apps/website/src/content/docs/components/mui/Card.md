@@ -13,10 +13,10 @@ links:
 Make sure the **Card** is suitable for your use case. There may be other, more appropriate components available.
 
 | Use case                                                                  | [Card](/components/card) | [**Tabs**](/components/tabs) | [**Dialog**](/components/dialog) |
-| ------------------------------------------------------------------------- | -------- | ---------------------------- | -------------------------------- |
-| Introduce a single subject, as one of a set displayed as a list or grid   | ✅       | ❌                           | ❌                               |
-| Divide a single subject into subsections to be switched between           | ❌       | ✅                           | ❌                               |
-| Present additional actions for a subject that require immediate attention | ❌       | ❌                           | ✅                               |
+| ------------------------------------------------------------------------- | ------------------------ | ---------------------------- | -------------------------------- |
+| Introduce a single subject, as one of a set displayed as a list or grid   | ✅                       | ❌                           | ❌                               |
+| Divide a single subject into subsections to be switched between           | ❌                       | ✅                           | ❌                               |
+| Present additional actions for a subject that require immediate attention | ❌                       | ❌                           | ✅                               |
 
 ## StrataKit MUI modifications
 
@@ -36,22 +36,22 @@ Use `slotProps` to give the [`CardHeader`](https://mui.com/material-ui/api/card-
 
 ```jsx
 <CardHeader
-  title={
-    <CardActionArea render={<a href="#" />} nativeButton={false}>
-      Stadium
-    </CardActionArea>
-  }
-  slotProps={{
-    title: { render: <h3 /> },
-  }}
+	title={
+		<CardActionArea render={<a href="#" />} nativeButton={false}>
+			Stadium
+		</CardActionArea>
+	}
+	slotProps={{
+		title: { render: <h3 /> },
+	}}
 />
 ```
 
 ### Menu and metadata
 
-::example{src="mui/Card.menu" min-height="425px"}
+Add metadata and a menu to [`CardHeader`](https://mui.com/material-ui/api/card-header/) using the `subheader` and `action` props.
 
-Add metadata and a menu to `CardHeader` using the `subheader` and `action` props.
+::example{src="mui/Card.menu" min-height="425px"}
 
 ### Actions
 

@@ -54,6 +54,7 @@ import CheckboxDefault from "examples/mui/Checkbox.default.tsx";
 import CheckboxError from "examples/mui/Checkbox.error.tsx";
 import CheckboxGroup from "examples/mui/Checkbox.group.tsx";
 import CheckboxIndeterminate from "examples/mui/Checkbox.indeterminate.tsx";
+import ChipDisabled_ from "examples/mui/Chip._disabled.tsx";
 import ChipInteractive_ from "examples/mui/Chip._interactive.tsx";
 import ChipClickable from "examples/mui/Chip.clickable.tsx";
 import ChipDefault from "examples/mui/Chip.default.tsx";
@@ -249,6 +250,7 @@ const components: Record<string, React.ReactNode> = {
 			<ChipDeletable />
 			{!isProduction && <ChipInteractive_ />}
 			<ChipSizes />
+			{!isProduction && <ChipDisabled_ />}
 		</Stack>
 	),
 	CircularProgress: (

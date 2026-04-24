@@ -70,6 +70,7 @@ import DividerVertical from "examples/mui/Divider.vertical.tsx";
 import DrawerDefault from "examples/mui/Drawer.default.tsx";
 import FabDefault from "examples/mui/Fab.default.tsx";
 import IconButtonColors_ from "examples/mui/IconButton._colors.tsx";
+import IconButtonDisabled_ from "examples/mui/IconButton._disabled.tsx";
 import IconButtonPlacements_ from "examples/mui/IconButton._placements.tsx";
 import IconButtonDefault from "examples/mui/IconButton.default.tsx";
 import IconButtonSizes from "examples/mui/IconButton.sizes.tsx";
@@ -289,6 +290,7 @@ const components: Record<string, React.ReactNode> = {
 					<IconButtonPlacements_ />
 				</Stack>
 			)}
+			{!isProduction && <IconButtonDisabled_ />}
 		</>
 	),
 	LinearProgress: (

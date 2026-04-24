@@ -4,6 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 
 import * as React from "react";
+import Badge from "@mui/material/Badge";
 import Divider from "@mui/material/Divider";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
@@ -17,15 +18,18 @@ import svgNotifications from "@stratakit/icons/notifications.svg";
 import svgReport from "@stratakit/icons/report.svg";
 import svgSettings from "@stratakit/icons/settings.svg";
 import svgUser from "@stratakit/icons/user.svg";
-import styles from "./NavigationRail.default.module.css";
+import styles from "./NavigationRail.comprehensive.module.css";
 
 export default () => {
-	const accountId = React.useId();
+	const exampleId = React.useId();
+	const accountId = `${exampleId}-account`;
+	const notificationId = `${exampleId}-notification`;
 	const [accountEl, setAccountEl] = React.useState<HTMLElement | null>(null);
 	const [accountOpen, setAccountOpen] = React.useState(false);
+	const [expanded, setExpanded] = React.useState(false);
 	return (
 		<div className={styles.container}>
-			<NavigationRail.Root>
+			<NavigationRail.Root expanded={expanded} setExpanded={setExpanded}>
 				<NavigationRail.Header>
 					<Icon alt="Acme app" href={`${svgBentley}#icon-large`} size="large" />
 					<NavigationRail.ToggleButton />
@@ -36,7 +40,7 @@ export default () => {
 						<NavigationRail.ListItem>
 							<NavigationRail.Anchor
 								href="#"
-								icon={svgReport}
+								icon={`${svgReport}#icon-large`}
 								label="Reports"
 								active
 							/>
@@ -44,7 +48,7 @@ export default () => {
 						<NavigationRail.ListItem>
 							<NavigationRail.Anchor
 								href="#"
-								icon={svgInspection}
+								icon={`${svgInspection}#icon-large`}
 								label="Logs"
 							/>
 						</NavigationRail.ListItem>
@@ -56,7 +60,7 @@ export default () => {
 						<NavigationRail.ListItem>
 							<NavigationRail.Anchor
 								href="#"
-								icon={svgDisconnect}
+								icon={`${svgDisconnect}#icon-large`}
 								label="Integrations"
 							/>
 						</NavigationRail.ListItem>
@@ -66,12 +70,27 @@ export default () => {
 						<NavigationRail.List>
 							<NavigationRail.ListItem>
 								<NavigationRail.Button
-									icon={svgNotifications}
+									className={styles.notifications}
+									icon={
+										<NotificationsBadge
+											icon={
+												<Icon
+													href={`${svgNotifications}#icon-large`}
+													size="large"
+												/>
+											}
+											notificationId={notificationId}
+										/>
+									}
 									label="Notifications"
+									aria-describedby={notificationId}
 								/>
 							</NavigationRail.ListItem>
 							<NavigationRail.ListItem>
-								<NavigationRail.Button icon={svgSettings} label="Settings" />
+								<NavigationRail.Button
+									icon={`${svgSettings}#icon-large`}
+									label="Settings"
+								/>
 							</NavigationRail.ListItem>
 							<Divider
 								className={styles.divider}
@@ -82,7 +101,7 @@ export default () => {
 								<NavigationRail.Button
 									id={accountId}
 									ref={setAccountEl}
-									icon={svgUser}
+									icon={`${svgUser}#icon-large`}
 									label="Account"
 									onClick={() => setAccountOpen(true)}
 								/>
@@ -129,5 +148,23 @@ function AccountMenu(props: AccountPopoverProps) {
 			<MenuItem onClick={onClose}>View profile</MenuItem>
 			<MenuItem onClick={onClose}>Sign out</MenuItem>
 		</Menu>
+	);
+}
+
+interface NotificationsBadgeProps {
+	icon: React.ReactNode;
+	notificationId: string;
+}
+
+function NotificationsBadge(props: NotificationsBadgeProps) {
+	const { icon, notificationId } = props;
+
+	return (
+		<Badge variant="dot" color="error" inline>
+			{icon}
+			<span id={notificationId} hidden>
+				You have 3 unread notifications
+			</span>
+		</Badge>
 	);
 }

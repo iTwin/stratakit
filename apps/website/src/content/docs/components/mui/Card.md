@@ -28,9 +28,9 @@ Make sure the **Card** is suitable for your use case. There may be other, more a
 
 ### Menu and metadata
 
-Add metadata and a menu to [`CardHeader`](https://mui.com/material-ui/api/card-header/) using the `subheader` and `action` props.
+Add metadata and a [**Menu**](/components/menu) to [`CardHeader`](https://mui.com/material-ui/api/card-header/) using the `subheader` and `action` props.
 
-::example{src="mui/Card.menu" min-height="425px"}
+::example{src="mui/Card.menu" min-height="325px"}
 
 ### Actions
 

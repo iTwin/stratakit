@@ -18,6 +18,7 @@ import svgNotifications from "@stratakit/icons/notifications.svg";
 import svgReport from "@stratakit/icons/report.svg";
 import svgSettings from "@stratakit/icons/settings.svg";
 import svgUser from "@stratakit/icons/user.svg";
+import svgWindowPopout from "@stratakit/icons/window-popout.svg";
 import styles from "./NavigationRail.comprehensive.module.css";
 
 export default () => {
@@ -62,6 +63,9 @@ export default () => {
 								href="#"
 								icon={`${svgDisconnect}#icon-large`}
 								label="Integrations"
+								endIcon={
+									<Icon href={svgWindowPopout} alt="(opens in new tab)" />
+								}
 							/>
 						</NavigationRail.ListItem>
 					</NavigationRail.List>
@@ -70,7 +74,6 @@ export default () => {
 						<NavigationRail.List>
 							<NavigationRail.ListItem>
 								<NavigationRail.Button
-									className={styles.notifications}
 									icon={
 										<NotificationsBadge
 											icon={
@@ -79,11 +82,13 @@ export default () => {
 													size="large"
 												/>
 											}
+											invisible={expanded}
 											notificationId={notificationId}
 										/>
 									}
 									label="Notifications"
 									aria-describedby={notificationId}
+									endIcon={expanded ? <NotificationsIcon /> : undefined}
 								/>
 							</NavigationRail.ListItem>
 							<NavigationRail.ListItem>
@@ -153,18 +158,34 @@ function AccountMenu(props: AccountPopoverProps) {
 
 interface NotificationsBadgeProps {
 	icon: React.ReactNode;
+	invisible: boolean;
 	notificationId: string;
 }
 
 function NotificationsBadge(props: NotificationsBadgeProps) {
-	const { icon, notificationId } = props;
+	const { icon, invisible, notificationId } = props;
 
 	return (
-		<Badge variant="dot" color="error" inline>
+		<Badge variant="dot" color="error" invisible={invisible}>
 			{icon}
 			<span id={notificationId} hidden>
 				You have 3 unread notifications
 			</span>
 		</Badge>
+	);
+}
+
+function NotificationsIcon() {
+	return (
+		<Badge
+			badgeContent={3}
+			inline
+			color="error"
+			slotProps={{
+				badge: {
+					"aria-hidden": true,
+				},
+			}}
+		/>
 	);
 }

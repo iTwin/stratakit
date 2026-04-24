@@ -34,15 +34,19 @@ Add metadata and a menu to [`CardHeader`](https://mui.com/material-ui/api/card-h
 
 ### Actions
 
-Add actions, at the foot of the **Card**, with the [`CardActions`](https://mui.com/material-ui/api/card-actions/) component. **Cards** with `CardActions` must not include `CardActionArea`. The **Card** itself cannot be actionable.
+Add multiple actions, at the foot of the **Card**, with the [`CardActions`](https://mui.com/material-ui/api/card-actions/) component.
 
 ::example{src="mui/Card.actions"}
+
+:::caution
+**Cards** with `CardActions` must not include `CardActionArea`, which is better suited when the entire card is actionable.
+:::
 
 ### Heading levels
 
 Use `slotProps` to give the [`CardHeader`](https://mui.com/material-ui/api/card-header/)’s `title` [an appropriate heading level](https://www.a11yproject.com/posts/how-to-accessible-heading-structure/). The second level (`<h2>`) is the default.
 
-```jsx
+```jsx {8}
 <CardHeader
 	title={
 		<CardActionArea render={<a href="#" />} nativeButton={false}>

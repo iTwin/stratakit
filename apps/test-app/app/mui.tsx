@@ -23,6 +23,7 @@ import AlertPermutations_ from "examples/mui/Alert._permutations.tsx";
 import AlertDefault from "examples/mui/Alert.default.tsx";
 import AlertTitle from "examples/mui/Alert.title.tsx";
 import AppBarDefault from "examples/mui/AppBar.default.tsx";
+import AutocompleteDisabled_ from "examples/mui/Autocomplete._disabled.tsx";
 import AutocompleteDefault from "examples/mui/Autocomplete.default.tsx";
 import AutocompleteMultiple from "examples/mui/Autocomplete.multiple.tsx";
 import AvatarDecorative from "examples/mui/Avatar.decorative.tsx";
@@ -183,6 +184,7 @@ const components: Record<string, React.ReactNode> = {
 		<>
 			<AutocompleteDefault />
 			<AutocompleteMultiple />
+			{!isProduction && <AutocompleteDisabled_ />}
 		</>
 	),
 	Avatar: (

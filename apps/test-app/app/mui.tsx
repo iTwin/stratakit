@@ -48,6 +48,7 @@ import ButtonGroupDefault from "examples/mui/ButtonGroup.default.tsx";
 import CardActions from "examples/mui/Card.actions.tsx";
 import CardDefault from "examples/mui/Card.default.tsx";
 import CardHeader from "examples/mui/Card.header.tsx";
+import CheckboxDisabled_ from "examples/mui/Checkbox._disabled.tsx";
 import CheckboxChecked from "examples/mui/Checkbox.checked.tsx";
 import CheckboxDefault from "examples/mui/Checkbox.default.tsx";
 import CheckboxError from "examples/mui/Checkbox.error.tsx";
@@ -237,6 +238,7 @@ const components: Record<string, React.ReactNode> = {
 			<CheckboxIndeterminate />
 			<CheckboxGroup />
 			<CheckboxError />
+			{!isProduction && <CheckboxDisabled_ />}
 		</>
 	),
 	Chip: (

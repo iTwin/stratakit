@@ -16,6 +16,11 @@ test("default", async ({ page }) => {
 		name: "Administration",
 	});
 	await expect(activeItem).toHaveAttribute("aria-current");
+
+	const marketplaceItem = navigationRail.getByRole("link", {
+		name: "Marketplace Opens in new tab",
+	});
+	await expect(marketplaceItem).toBeVisible();
 });
 
 test.describe("expansion", () => {

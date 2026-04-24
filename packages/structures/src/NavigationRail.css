@@ -233,6 +233,13 @@
 	}
 }
 
+.🥝NavigationRailItemActionEndIcon {
+	@layer base {
+		--🥝Icon-size: 1rem;
+		margin-inline-start: auto;
+	}
+}
+
 .🥝NavigationRailFooter {
 	@layer base {
 		margin-block-start: auto;

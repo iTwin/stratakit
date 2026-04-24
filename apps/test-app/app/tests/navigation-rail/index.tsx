@@ -16,6 +16,7 @@ import svgPlaceholder from "@stratakit/icons/placeholder.svg";
 import svgPlugins from "@stratakit/icons/plugins.svg";
 import svgSettings from "@stratakit/icons/settings.svg";
 import svgUser from "@stratakit/icons/user.svg";
+import svgWindowPopout from "@stratakit/icons/window-popout.svg";
 
 export const handle = { title: "NavigationRail" };
 
@@ -78,6 +79,14 @@ export default definePage(
 						href="#"
 						label="Marketplace"
 						icon={svgPlugins}
+						endIcon={
+							<Icon
+								alt="Opens in new tab"
+								href={svgWindowPopout}
+								aria-label="Opens in new tab" // TODO: handle <Icon render={<Icon />} />
+								aria-hidden={undefined} // TODO: handle <Icon render={<Icon />} />
+							/>
+						}
 					/>
 
 					<NavigationRail.Footer>

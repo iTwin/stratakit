@@ -84,7 +84,7 @@ export default () => {
 								onClick={() => handleClick(row.id)}
 								selected={isItemSelected}
 							>
-								<TableCell render={<th />} scope="row" padding="checkbox">
+								<TableCell padding="checkbox">
 									<Checkbox
 										color="primary"
 										checked={isItemSelected}

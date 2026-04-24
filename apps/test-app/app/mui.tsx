@@ -37,6 +37,7 @@ import BadgeDefault from "examples/mui/Badge.default.tsx";
 import BadgeError from "examples/mui/Badge.error.tsx";
 import BottomNavigationDefault from "examples/mui/BottomNavigation.default.tsx";
 import BreadcrumbsDefault from "examples/mui/Breadcrumbs.default.tsx";
+import ButtonDisabled_ from "examples/mui/Button._disabled.js";
 import ButtonIcons_ from "examples/mui/Button._icons.tsx";
 import ButtonPermutations_ from "examples/mui/Button._permutations.js";
 import ButtonColors from "examples/mui/Button.colors.tsx";
@@ -218,6 +219,7 @@ const components: Record<string, React.ReactNode> = {
 			<ButtonColors />
 			{!isProduction && <ButtonIcons_ />}
 			{!isProduction && <ButtonPermutations_ />}
+			{!isProduction && <ButtonDisabled_ />}
 		</>
 	),
 	ButtonGroup: <ButtonGroupDefault />,

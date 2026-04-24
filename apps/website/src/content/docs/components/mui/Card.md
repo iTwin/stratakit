@@ -12,7 +12,7 @@ links:
 
 Make sure the **Card** is suitable for your use case. There may be other, more appropriate components available.
 
-| Use case                                                                  | **Card** | [**Tabs**](/components/tabs) | [**Dialog**](/components/dialog) |
+| Use case                                                                  | [Card](/components/card) | [**Tabs**](/components/tabs) | [**Dialog**](/components/dialog) |
 | ------------------------------------------------------------------------- | -------- | ---------------------------- | -------------------------------- |
 | Introduce a single subject, as one of a set displayed as a list or grid   | ✅       | ❌                           | ❌                               |
 | Divide a single subject into subsections to be switched between           | ❌       | ✅                           | ❌                               |

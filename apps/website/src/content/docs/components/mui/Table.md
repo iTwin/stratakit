@@ -18,9 +18,8 @@ links:
 
 ::example{src="mui/Table.footer"}
 
-### Sizes
+### Dense
 
-- **Small:** Use in compact interfaces where space is limited.
-- **Medium:** Default size, suitable for most use cases.
+Use `size="small"` for compact interfaces with limited screen real estate or when displaying large datasets.
 
-::example{src="mui/Table.sizes"}
+::example{src="mui/Table.small"}

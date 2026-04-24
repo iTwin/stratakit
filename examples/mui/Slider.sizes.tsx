@@ -11,6 +11,15 @@ import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import { visuallyHidden } from "@mui/utils";
 
+export default () => {
+	return (
+		<Stack spacing={1} sx={{ alignSelf: "stretch" }}>
+			<SmallSlider />
+			<MediumSlider />
+		</Stack>
+	);
+};
+
 const SmallSlider = () => {
 	const id = React.useId();
 	return (
@@ -46,14 +55,5 @@ const MediumSlider = () => {
 				</Typography>
 			</Stack>
 		</FormControl>
-	);
-};
-
-export default () => {
-	return (
-		<Stack spacing={1} sx={{ alignSelf: "stretch" }}>
-			<SmallSlider />
-			<MediumSlider />
-		</Stack>
 	);
 };

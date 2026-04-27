@@ -4,8 +4,9 @@
  *--------------------------------------------------------------------------------------------*/
 
 import * as React from "react";
+import Button from "@mui/material/Button";
 import Card from "@mui/material/Card";
-import CardActionArea from "@mui/material/CardActionArea";
+import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import CardHeader from "@mui/material/CardHeader";
 import CardMedia from "@mui/material/CardMedia";
@@ -32,11 +33,7 @@ export default () => {
 				}
 			/>
 			<CardHeader
-				title={
-					<CardActionArea render={<a href="#" />} nativeButton={false}>
-						Stadium
-					</CardActionArea>
-				}
+				title="Stadium"
 				subheader="January 16, 2026"
 				action={<ActionsMenu />}
 			/>
@@ -46,6 +43,11 @@ export default () => {
 					activities.
 				</Typography>
 			</CardContent>
+			<CardActions>
+				<Button render={<a href="#" />} nativeButton={false}>
+					View
+				</Button>
+			</CardActions>
 		</Card>
 	);
 };
@@ -81,7 +83,6 @@ function ActionsMenu() {
 					},
 				}}
 			>
-				<MenuItem onClick={handleClose}>View</MenuItem>
 				<MenuItem onClick={handleClose}>Favorite</MenuItem>
 				<MenuItem onClick={handleClose}>Delete</MenuItem>
 			</Menu>

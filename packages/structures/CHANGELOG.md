@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.5.7
+
+### Patch Changes
+
+- [#1380](https://github.com/iTwin/stratakit/pull/1380): Deprecated [`unstable_AccordionItem`](https://stratakit.bentley.com/docs/reference/structures/AccordionItem/) components in favor of MUI [`Accordion`](https://mui.com/material-ui/api/accordion/) component. Read [migration documentation](https://stratakit.bentley.com/docs/getting-started/migration-from-legacy-stratakit/#accordionitem) for additional details.
+- [#1380](https://github.com/iTwin/stratakit/pull/1380): Deprecated [`Chip`](https://stratakit.bentley.com/docs/reference/structures/Chip/) components in favor of MUI [`Chip`](https://mui.com/material-ui/api/chip/) component. Read [migration documentation](https://stratakit.bentley.com/docs/getting-started/migration-from-legacy-stratakit/#chip) for additional details.
+- 9c64f9d5cb73b1f7f12d015481084bc3255cb7b6: Deprecated [`unstable_Banner`](https://stratakit.bentley.com/docs/reference/structures/Banner/) components in favor of MUI [`Alert`](https://mui.com/material-ui/api/alert/) component. Read [migration documentation](https://stratakit.bentley.com/docs/getting-started/migration-from-legacy-stratakit/#banner) for additional details.
+
 ## 0.5.6
 
 - [#1375](https://github.com/iTwin/stratakit/pull/1375): Fixed the `Tree.Item` component to correctly render actions when virtualized.

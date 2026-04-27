@@ -449,9 +449,13 @@ const NavigationRailItemAction = forwardRef<
 			>
 				{label}
 			</Role.span>
-			<EndIconWrapper
-				render={typeof endIcon === "string" ? <Icon href={endIcon} /> : endIcon}
-			/>
+			{endIcon && (
+				<EndIconWrapper
+					render={
+						typeof endIcon === "string" ? <Icon href={endIcon} /> : endIcon
+					}
+				/>
+			)}
 		</Role>
 	);
 

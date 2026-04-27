@@ -80,7 +80,6 @@ export default () => {
 						return (
 							<TableRow
 								key={row.id}
-								hover
 								onClick={() => handleClick(row.id)}
 								selected={isItemSelected}
 							>

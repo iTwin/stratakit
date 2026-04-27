@@ -95,6 +95,7 @@ import RadioGroupDisabled_ from "examples/mui/RadioGroup._disabled.tsx";
 import RadioGroupDefault from "examples/mui/RadioGroup.default.tsx";
 import RadioGroupError from "examples/mui/RadioGroup.error.tsx";
 import RatingDefault from "examples/mui/Rating.default.tsx";
+import SelectDisabled_ from "examples/mui/Select._disabled.tsx";
 import SelectDefault from "examples/mui/Select.default.tsx";
 import SelectIcon from "examples/mui/Select.icon.tsx";
 import SelectMultiple from "examples/mui/Select.multiple.tsx";
@@ -358,6 +359,7 @@ const components: Record<string, React.ReactNode> = {
 			<SelectIcon />
 			<SelectMultiple />
 			<SelectSizes />
+			{!isProduction && <SelectDisabled_ />}
 		</>
 	),
 	Skeleton: (

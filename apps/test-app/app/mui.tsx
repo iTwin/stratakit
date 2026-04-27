@@ -382,8 +382,8 @@ const components: Record<string, React.ReactNode> = {
 			<SliderTooltip />
 			<SliderMarks />
 			<SliderRange />
-			<SliderVertical />
 			{!isProduction && <SliderDisabled_ />}
+			<SliderVertical />
 		</>
 	),
 	Snackbar: <SnackbarDefault />,

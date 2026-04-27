@@ -103,6 +103,7 @@ import SelectMultiple from "examples/mui/Select.multiple.tsx";
 import SelectSizes from "examples/mui/Select.sizes.tsx";
 import SkeletonDefault from "examples/mui/Skeleton.default.tsx";
 import SkeletonVariants from "examples/mui/Skeleton.variants.tsx";
+import SliderDisabled_ from "examples/mui/Slider._disabled.tsx";
 import SliderDefault from "examples/mui/Slider.default.tsx";
 import SliderMarks from "examples/mui/Slider.marks.tsx";
 import SliderRange from "examples/mui/Slider.range.tsx";
@@ -382,6 +383,7 @@ const components: Record<string, React.ReactNode> = {
 			<SliderMarks />
 			<SliderRange />
 			<SliderVertical />
+			{!isProduction && <SliderDisabled_ />}
 		</>
 	),
 	Snackbar: <SnackbarDefault />,

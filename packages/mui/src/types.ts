@@ -318,6 +318,13 @@ declare module "@mui/material/TableCell" {
 	}
 }
 
+declare module "@mui/material/TableRow" {
+	interface TableRowOwnProps {
+		/** The default with `@stratakit/mui` is `true`, except when used inside `TableHead`. */
+		hover?: boolean;
+	}
+}
+
 declare module "@mui/material/TextField" {
 	interface TextFieldPropsColorOverrides {
 		secondary: false;

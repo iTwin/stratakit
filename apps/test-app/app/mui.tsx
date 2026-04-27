@@ -45,6 +45,7 @@ import ButtonColors from "examples/mui/Button.colors.tsx";
 import ButtonDefault from "examples/mui/Button.default.tsx";
 import ButtonSizes from "examples/mui/Button.sizes.tsx";
 import ButtonVariants from "examples/mui/Button.variants.tsx";
+import ButtonGroupDisabled_ from "examples/mui/ButtonGroup._disabled.tsx";
 import ButtonGroupDefault from "examples/mui/ButtonGroup.default.tsx";
 import ButtonGroupSizes from "examples/mui/ButtonGroup.sizes.tsx";
 import CardActions from "examples/mui/Card.actions.tsx";
@@ -240,6 +241,7 @@ const components: Record<string, React.ReactNode> = {
 		<>
 			<ButtonGroupDefault />
 			<ButtonGroupSizes />
+			{!isProduction && <ButtonGroupDisabled_ />}
 		</>
 	),
 	Card: (

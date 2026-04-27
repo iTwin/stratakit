@@ -146,8 +146,12 @@ function AccountMenu(props: AccountPopoverProps) {
 				},
 			}}
 			anchorOrigin={{
-				horizontal: "right",
 				vertical: "bottom",
+				horizontal: "right",
+			}}
+			transformOrigin={{
+				vertical: "bottom",
+				horizontal: "left",
 			}}
 		>
 			<MenuItem onClick={onClose}>View profile</MenuItem>

@@ -1,0 +1,1 @@
+import{j as s}from"./client.SxA0fV-8.js";import{S as r}from"./Stack.BSzYasFD.js";import{C as i}from"./Chip.CVm1rOh3.js";import"./styles.internal.iAh-c3F9.js";import"./createSvgIcon.6J8xK8tK.js";const l=()=>s.jsxs(r,{spacing:1,direction:"row",sx:{alignItems:"center"},children:[s.jsx(i,{size:"small",label:"Small"}),s.jsx(i,{label:"Medium"})]});export{l as default};

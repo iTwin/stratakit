@@ -7,7 +7,7 @@ import { Field, Select } from "@stratakit/bricks";
 export default () => {
 	return (
 		<Field.Root>
-			<Field.Label>Choose a design system:</Field.Label>
+			<Field.Label>Design system:</Field.Label>
 			<Field.Control
 				render={(controlProps) => (
 					<Select.Root>

@@ -18,7 +18,7 @@ test("default", async ({ page }) => {
 	await expect(activeItem).toHaveAttribute("aria-current");
 
 	const marketplaceItem = navigationRail.getByRole("link", {
-		name: "Marketplace Opens in new tab",
+		name: "Marketplace (opens in new tab)",
 	});
 	await expect(marketplaceItem).toBeVisible();
 });

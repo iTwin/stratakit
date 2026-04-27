@@ -1,0 +1,1 @@
+const t="/1447/docs/_astro/text-align-center.CpYNDK_0.svg",s="/1447/docs/_astro/text-align-justify.BmZxd0KL.svg",g="/1447/docs/_astro/text-align-left.Dy4RDn_d.svg",e="/1447/docs/_astro/text-align-right.B8CjmHDY.svg";export{t as a,e as b,s as c,g as s};

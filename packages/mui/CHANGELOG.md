@@ -4,23 +4,23 @@
 
 ### Patch Changes
 
-- 5ea0f931964364e1177467d52ca773f2d9cd2e3a: Fix visual appearance of `Switch` thumb.
-- 6167466fcdd2ed8bfb198b24de1275974463ad71: Updated styling for `Table` row height & hover state.
-- cf1da42e53399c5da27a639fac46f7424be97b0c: Decreased the font-size of `DialogContentText`.
-- f0d46e588fc152f6b4b6b2b46a111bcb522cae51: Updated `Typography` styles for `"subtitle1"` and `"subtitle2"` variants.
-- af468b53a69b8ef811b6989f007a8fa97dbb86c8: `AvatarGroup` DOM order now matches the visual display order.
-- 1ca532f2657e75e33842bdc8cfca6c9bad69effa: Enabled `hover` prop for `TableRow` when inside `TableBody`.
+- [#1431](https://github.com/iTwin/stratakit/pull/1431): Fix visual appearance of `Switch` thumb.
+- [#1360](https://github.com/iTwin/stratakit/pull/1360): Updated styling for `Table` row height & hover state.
+- [#1428](https://github.com/iTwin/stratakit/pull/1428): Decreased the font-size of `DialogContentText`.
+- [#1432](https://github.com/iTwin/stratakit/pull/1432): Updated `Typography` styles for `"subtitle1"` and `"subtitle2"` variants.
+- [#1417](https://github.com/iTwin/stratakit/pull/1417): `AvatarGroup` DOM order now matches the visual display order.
+- [#1444](https://github.com/iTwin/stratakit/pull/1444): Enabled `hover` prop for `TableRow` when inside `TableBody`.
 - [#1393](https://github.com/iTwin/stratakit/pull/1393): Added ability to display text in the `ToggleButton` when rendered as a `Button`.
-- 243e1b0f6a7fe4ac4f8874b7299840a4a9ae04ab: Styled `Slider`'s mark labels to match the Strata visual design language.
-- 59f9289a0eff08fa7712c2204068e17d5e40a657: Adjust spacing between `CardHeader` and `CardContent` / `CardActions`.
-- 952a988d21c88a85efdf6485a5ca54f0367927f0: Added a new `labelPlacement` prop to `IconButton` and `ToggleButton` components to control the placement of a tooltip that is shown when the `label` prop is specified.
-- d1ca1f54c51c4cadd24909e0312f9c3eed56c26e: Styled `ToggleButton` to visually match the `IconButton` component.
+- [#1424](https://github.com/iTwin/stratakit/pull/1424): Styled `Slider`'s mark labels to match the Strata visual design language.
+- [#1430](https://github.com/iTwin/stratakit/pull/1430): Adjust spacing between `CardHeader` and `CardContent` / `CardActions`.
+- [#1442](https://github.com/iTwin/stratakit/pull/1442): Added a new `labelPlacement` prop to `IconButton` and `ToggleButton` components to control the placement of a tooltip that is shown when the `label` prop is specified.
+- [#1393](https://github.com/iTwin/stratakit/pull/1393): Styled `ToggleButton` to visually match the `IconButton` component.
 - [#1420](https://github.com/iTwin/stratakit/pull/1420): Add `role="dialog"` to `Popover`'s `paper` slot.
-- d94e8f9c043f1518139aabb1da32797b537b60de: The `AvatarGroup` surplus element no longer defaults to uppercase.
+- [#1426](https://github.com/iTwin/stratakit/pull/1426): The `AvatarGroup` surplus element no longer defaults to uppercase.
 - [#1437](https://github.com/iTwin/stratakit/pull/1437): Added list semantics to `AvatarGroup` and nested `Avatar`s.
-- 45eaede04efe18ace4f58b2a11a559f5dcc49c5f: Added a [`group` role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/group_role) to `Autocomplete`.
-- dee094419b5898022de17486abc06156fe7a4da8: Styled `Slider`'s tooltip to match the Strata visual design language.
-- 37034c7ca2a4361619abfeb136d8666928a01f1b: `Typography` will now log a warning during development if a heading variant is used without explicitly setting the `render` prop. This change is to help developers ensure correct heading structure.
+- [#1215](https://github.com/iTwin/stratakit/pull/1215): Added a [`group` role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/group_role) to `Autocomplete`.
+- [#1398](https://github.com/iTwin/stratakit/pull/1398): Styled `Slider`'s tooltip to match the Strata visual design language.
+- [#1416](https://github.com/iTwin/stratakit/pull/1416): `Typography` will now log a warning during development if a heading variant is used without explicitly setting the `render` prop. This change is to help developers ensure correct heading structure.
 
 ## 0.4.0
 

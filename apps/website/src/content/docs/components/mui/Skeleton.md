@@ -39,7 +39,7 @@ Accurately representing the shape and structure of a loading interface is a case
 - Use multiple **Skeletons** with the “text” variant to represent a multi-line text paragraph.
 - Include a _single_ visually hidden message per loading state.
 
-## ❌ Don’t
+## 🚫 Don’t
 
 - Don’t use **Skeleton** where the size and shape of the content and functionality being loaded is not known.
 - Don’t use **Skeleton** to indicate the progress of any process except loading. For indicating the progress of calculations and other processes within a loaded interface, use [**Progress**](/components/progress).

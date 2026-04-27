@@ -91,6 +91,7 @@ import NativeSelectDefault from "examples/mui/NativeSelect.default.tsx";
 import PaginationDefault from "examples/mui/Pagination.default.tsx";
 import PaperDefault from "examples/mui/Paper.default.tsx";
 import PopoverDefault from "examples/mui/Popover.default.tsx";
+import RadioGroupDisabled_ from "examples/mui/RadioGroup._disabled.tsx";
 import RadioGroupDefault from "examples/mui/RadioGroup.default.tsx";
 import RadioGroupError from "examples/mui/RadioGroup.error.tsx";
 import RatingDefault from "examples/mui/Rating.default.tsx";
@@ -347,6 +348,7 @@ const components: Record<string, React.ReactNode> = {
 		<>
 			<RadioGroupDefault />
 			<RadioGroupError />
+			{!isProduction && <RadioGroupDisabled_ />}
 		</>
 	),
 	Rating: <RatingDefault />,

@@ -16,6 +16,10 @@ The **NavigationRail** component provides a persistent and convenient way to nav
 
 Combine **NavigationRail** with other components to create a more complex navigation experience.
 
-In the example below, the [**Menu**](/components/menu/) component is used to expose multiple actions for the "Account" item.
+In the example below:
+
+- The `endIcon` prop on `NavigationRail.Anchor` is used to indicate that the "Integrations" link opens in a new tab.
+- The [**Badge**](/components/badge/) component is used to display a notification indicator on the "Notifications" item. When the rail is collapsed, a dot badge is shown on the icon. When expanded, the badge count is displayed inline next to the label using the `endIcon` prop.
+- The [**Menu**](/components/menu/) component is used to expose multiple actions for the "Account" item.
 
 ::example{src="structures/NavigationRail.comprehensive" min-height="450px" min-width="450px" vertical-stretch}

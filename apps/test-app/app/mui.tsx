@@ -116,6 +116,7 @@ import StepperClickable from "examples/mui/Stepper.clickable.tsx";
 import StepperDefault from "examples/mui/Stepper.default.tsx";
 import StepperOptional from "examples/mui/Stepper.optional.tsx";
 import SwipeableDrawerDefault from "examples/mui/SwipeableDrawer.default.tsx";
+import SwitchDisabled_ from "examples/mui/Switch._disabled.tsx";
 import SwitchChecked from "examples/mui/Switch.checked.tsx";
 import SwitchDefault from "examples/mui/Switch.default.tsx";
 import SwitchSizes from "examples/mui/Switch.sizes.tsx";
@@ -401,6 +402,7 @@ const components: Record<string, React.ReactNode> = {
 			<SwitchDefault />
 			<SwitchChecked />
 			<SwitchSizes />
+			{!isProduction && <SwitchDisabled_ />}
 		</>
 	),
 	Table: (

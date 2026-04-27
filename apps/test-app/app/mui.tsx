@@ -12,6 +12,7 @@ import Typography from "@mui/material/Typography";
 import visuallyHidden from "@mui/utils/visuallyHidden";
 import { Icon } from "@stratakit/mui";
 import * as NavigationList from "@stratakit/structures/unstable_NavigationList";
+import AccordionDisabled_ from "examples/mui/Accordion._disabled.tsx";
 import AccordionActions from "examples/mui/Accordion.actions.tsx";
 import AccordionDecoration from "examples/mui/Accordion.decoration.tsx";
 import AccordionDefault from "examples/mui/Accordion.default.tsx";
@@ -89,6 +90,7 @@ import MenuDense from "examples/mui/Menu.dense.tsx";
 import MenuListDefault_ from "examples/mui/MenuList._default.tsx";
 import MobileStepperDefault from "examples/mui/MobileStepper.default.tsx";
 import NativeSelectDefault from "examples/mui/NativeSelect.default.tsx";
+import PaginationDisabled_ from "examples/mui/Pagination._disabled.tsx";
 import PaginationDefault from "examples/mui/Pagination.default.tsx";
 import PaperDefault from "examples/mui/Paper.default.tsx";
 import PopoverDefault from "examples/mui/Popover.default.tsx";
@@ -181,6 +183,7 @@ const components: Record<string, React.ReactNode> = {
 			</div>
 			<AccordionMultiple />
 			<AccordionVariants />
+			{!isProduction && <AccordionDisabled_ />}
 		</Stack>
 	),
 	Alert: (
@@ -347,7 +350,12 @@ const components: Record<string, React.ReactNode> = {
 		</Stack>
 	),
 	NativeSelect: <NativeSelectDefault />,
-	Pagination: <PaginationDefault />,
+	Pagination: (
+		<>
+			<PaginationDefault />
+			{!isProduction && <PaginationDisabled_ />}
+		</>
+	),
 	Paper: <PaperDefault />,
 	Popover: <PopoverDefault />,
 	RadioGroup: (

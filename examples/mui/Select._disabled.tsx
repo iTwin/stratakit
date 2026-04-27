@@ -20,9 +20,9 @@ export default () => {
 	const labelId = React.useId();
 	const label = "Favorite shape:";
 	return (
-		<FormControl>
+		<FormControl disabled>
 			<InputLabel id={labelId}>{label}</InputLabel>
-			<Select labelId={labelId} label={label} defaultValue={2} disabled>
+			<Select labelId={labelId} label={label} defaultValue={2}>
 				<MenuItem value={1}>
 					<ListItemIcon>
 						<Icon href={svgRectangle} />

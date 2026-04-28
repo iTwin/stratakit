@@ -1,0 +1,1 @@
+import{j as t}from"./client.Dl47lQo_.js";import{R as r}from"./Rating.DknZvA1a.js";import"./styles.internal.iAh-c3F9.js";import"./createSvgIcon.4XnjHsdx.js";import"./visuallyHidden.Dan1xhjv.js";const m=()=>t.jsx(r,{defaultValue:2,disabled:!0});export{m as default};

@@ -25,15 +25,7 @@ At the foot of every page, you’ll find a link labeled **✎ Edit page**. Press
 
 ## Guidance structure
 
-Consistency supports both comprehension and navigation. Each component guide follows a common schema:
-
-- **Component name**
-  - **Overview:** Demonstrates common usage of the component, optionally followed by a component description.
-  - **Use cases:** Is this, or another, component right for my use case? (compares similar components in a table)
-  - **StrataKit MUI modifications:** What has StrataKit changed from the default MUI behavior? (documents differences in API, visuals, semantics, and accessibility)
-  - **Examples:** How should I implement this component? With which other components? Covers variants, configurations, and other cases.
-  - **✅ Do:** A summary of best practices and opportunities.
-  - **🚫 Don't:** Things to avoid for an error-free and accessible implementation.
+Consistency supports both comprehension and navigation. Each component guide follows a common schema, described in [**Component guidance**](/components/overview/#component-guidance).
 
 :::note[Headings]
 The major sections **Use cases** through to **🚫 Don't** must each use a level 2 heading (`<h2>`). See [**Headings**](#headings) for the markdown syntax. Use `<h3>` headings to organize individual examples under the **Examples** section.

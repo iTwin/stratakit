@@ -28,14 +28,15 @@ At the foot of every page, you’ll find a link labeled **✎ Edit page**. Press
 Consistency supports both comprehension and navigation. Each component guide follows a common schema:
 
 - **Component name**
+  - **Overview:** Demonstrates common usage of the component, optionally followed by a component description.
   - **Use cases:** Is this, or another, component right for my use case? (compares similar components in a table)
-  - **Usage:** How should I implement this component? With which other components? (a basic example is followed by some other cases)
-  - **Configurations:** What options are there for changing the appearance and behavior of the component? (variants, tones, and other customization options)
-  - **Do:** A summary of best practices and opportunities.
-  - **Don’t:** Things to avoid for an error-free and accessible implementation.
+  - **StrataKit MUI modifications:** What has StrataKit changed from the default MUI behavior? (documents differences in API, visuals, semantics, and accessibility)
+  - **Examples:** How should I implement this component? With which other components? Covers variants, configurations, and other cases.
+  - **✅ Do:** A summary of best practices and opportunities.
+  - **🚫 Don't:** Things to avoid for an error-free and accessible implementation.
 
 :::note[Headings]
-The major sections **Use cases** through to **Don’t** must each use a level 2 heading (`<h2>`). See [**Headings**](#headings) for the markdown syntax. Organize subsections under these headings using `<h3>` and `<h4>` as appropriate.
+The major sections **Use cases** through to **🚫 Don't** must each use a level 2 heading (`<h2>`). See [**Headings**](#headings) for the markdown syntax. Use `<h3>` headings to organize individual examples under the **Examples** section.
 :::
 
 ## Markdown help
@@ -115,9 +116,8 @@ links:
 
 - **title:** The main heading for the page ("Button" here)
 - **description:** The short description/strapline following the **title**
-- **status:** The current status of the component. See [component status](/guides/composition/#component-status) for the accepted values and their meanings.
-- **associated:** These are any components that can be combined with the current component to make more complex patterns. This list (indented, using a `-` prefix for each component) must name the component exactly. See [associated components](/guides/composition/#associated-components) for more information.
-- **links:** A list of key/value pairs. The **figma** URL must point to the Figma component in the [Figma component library](https://www.figma.com/design/VcGw3L2IIlboxNlOdsKdai/%F0%9F%A5%9D-Kiwi-Component-Library?node-id=237-4951&p=f&t=NJhfhknwflxKJJCJ-0)
+- **status:** The current status of the component. See [component status](/components/overview/#component-status) for the accepted values and their meanings.
+- **links:** A list of key/value pairs. Use **muiDocs** to link the MUI component docs and **apiReference** to link the MUI or StrataKit API reference.
 
 ### Asides
 

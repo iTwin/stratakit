@@ -274,9 +274,13 @@
 }
 
 .MuiToggleButton-root {
-	&:where(.Mui-selected) {
+	&:where(.Mui-selected:not(.Mui-disabled)) {
 		forced-color-adjust: none; /* removing the backplate */
 		background-color: SelectedItem;
 		color: SelectedItemText;
+	}
+
+	&:where(.Mui-selected.Mui-disabled) {
+		border-width: 2px;
 	}
 }

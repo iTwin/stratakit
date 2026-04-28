@@ -10,7 +10,7 @@ links:
 
 ## StrataKit MUI modifications
 
-- A `label` prop has been added. When specified, it is used as the **ToggleButton’s** accessible name and is also shown in a tooltip on hover and focus.
+- A `label` prop has been added. When specified, it is used as the **ToggleButton's** accessible name and is also shown in a tooltip on hover and focus.
 - A `labelPlacement` prop has been added to control the placement of a tooltip that is shown when the `label` prop is specified.
 - **ToggleButtons** are styled to match the visual appearance of the [**IconButton**](/components/iconbutton) component. Borders are displayed only when the buttons are wrapped in a `ToggleButtonGroup`. [Standalone](#standalone) **ToggleButtons** do not have borders.
 - **ToggleButtons** can now be rendered as regular [**Buttons**](/components/button) to [display text](#text).
@@ -49,7 +49,7 @@ In the example above, the [`exclusive`](https://mui.com/material-ui/api/toggle-b
 - Use the `label` prop in icon-only **ToggleButtons** to provide a descriptive, accessible name.
 - Use `ToggleButtonGroup` to group multiple related **ToggleButtons**.
 
-## 🚫 Don’t
+## 🚫 Don't
 
-- Don’t use to replace buttons.
-- Don’t mix text and icon-only **ToggleButtons** in the same group.
+- Don't use to replace buttons.
+- Don't mix text and icon-only **ToggleButtons** in the same group.

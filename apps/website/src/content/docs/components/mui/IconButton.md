@@ -24,7 +24,7 @@ Make sure the **IconButton** is suitable for your use case. There may be other, 
 
 - The `"default"`, `"info"`, `"success"`, `"warning"`, `"inherit"` colors have been removed. The default color is now `"secondary"`.
 - The `size` options (`"small"`, `"medium"`, `"large"`) have all been decreased in height.
-- A `label` prop has been added. When specified, it is used as the **IconButton’s** accessible name and is also shown in a tooltip on hover and focus.
+- A `label` prop has been added. When specified, it is used as the **IconButton's** accessible name and is also shown in a tooltip on hover and focus.
 - A `labelPlacement` prop has been added to control the placement of a tooltip that is shown when the `label` prop is specified.
 
 ## Examples
@@ -35,7 +35,7 @@ Use a [**Badge**](/components/badge) component to indicate the functionality beh
 
 ::example{src="mui/Badge.default"}
 
-Make sure to provide an accessible description in the form of a visually hidden text explaining the significance of the badge’s presence. In this case, the value is _“You have 4 unread notifications”_.
+Make sure to provide an accessible description in the form of a visually hidden text explaining the significance of the badge's presence. In this case, the value is _"You have 4 unread notifications"_.
 
 ### Sizes
 
@@ -51,7 +51,7 @@ Make sure to provide an accessible description in the form of a visually hidden 
 - Use in [toolbars](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/toolbar_role).
 - Use it only when a stand-alone icon effectively communicates the action.
 
-## 🚫 Don’t
+## 🚫 Don't
 
-- Don’t use to replace buttons.
-- Don’t use if an icon doesn’t clearly convey the action. Use a [**Button**](/components/button) with a text label or a more suitable icon.
+- Don't use to replace buttons.
+- Don't use if an icon doesn't clearly convey the action. Use a [**Button**](/components/button) with a text label or a more suitable icon.

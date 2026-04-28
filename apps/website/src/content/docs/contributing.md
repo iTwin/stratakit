@@ -3,13 +3,13 @@ title: Contributing
 description: Help us improve these docs
 ---
 
-This documentation site is a living entity, growing and improving alongside **StrataKit** itself. You may find some information missing, unclear, superfluous, or in the wrong place. That’s where you can help.
+This documentation site is a living entity, growing and improving alongside **StrataKit** itself. You may find some information missing, unclear, superfluous, or in the wrong place. That's where you can help.
 
 Please follow the contribution instructions below. If you try to contribute via other channels or using different software, we will not be able to properly track, review, and publish your work.
 
-## “Edit page”
+## "Edit page"
 
-At the foot of every page, you’ll find a link labeled **✎ Edit page**. Press this link to an editable version of the page’s content on Github. Follow these steps to make your contribution:
+At the foot of every page, you'll find a link labeled **✎ Edit page**. Press this link to an editable version of the page's content on Github. Follow these steps to make your contribution:
 
 1. Make your changes to the markdown source. See [**Markdown help**](#markdown-help), if you are unfamiliar with the syntax.
 2. Click the **Commit changes** button in the top right corner of the Github interface.
@@ -19,7 +19,7 @@ At the foot of every page, you’ll find a link labeled **✎ Edit page**. Press
    3. **Commit email**: Use your bentley.com email if it is an option.
    4. **New branch name** Please use the format `[your username]/edit/[page title]`. Example: `heydon/edit/getting-started/` (since the page title uses multiple words, these are joined by a hyphen).
 4. Click **Propose changes** at the foot of the dialog.
-5. On the **Open a pull request** page that appears, double check the information you’ve supplied and click **Create pull request** when you’re happy.
+5. On the **Open a pull request** page that appears, double check the information you've supplied and click **Create pull request** when you're happy.
 6. Your pull request will need to be approved by a member of the **StrataKit** team. You may be asked questions in the comment stream of the pull request. Remember to check your Github notifications.
 7. Thank you!
 
@@ -32,15 +32,15 @@ Consistency supports both comprehension and navigation. Each component guide fol
   - **Usage:** How should I implement this component? With which other components? (a basic example is followed by some other cases)
   - **Configurations:** What options are there for changing the appearance and behavior of the component? (variants, tones, and other customization options)
   - **Do:** A summary of best practices and opportunities.
-  - **Don’t:** Things to avoid for an error-free and accessible implementation.
+  - **Don't:** Things to avoid for an error-free and accessible implementation.
 
 :::note[Headings]
-The major sections **Use cases** through to **Don’t** must each use a level 2 heading (`<h2>`). See [**Headings**](#headings) for the markdown syntax. Organize subsections under these headings using `<h3>` and `<h4>` as appropriate.
+The major sections **Use cases** through to **Don't** must each use a level 2 heading (`<h2>`). See [**Headings**](#headings) for the markdown syntax. Organize subsections under these headings using `<h3>` and `<h4>` as appropriate.
 :::
 
 ## Markdown help
 
-This site’s content is written in _markdown_: a minimal formatting syntax using special characters. In fact, in this case it’s a special flavour of markdown with some additional options. Here is a brief guide:
+This site's content is written in _markdown_: a minimal formatting syntax using special characters. In fact, in this case it's a special flavour of markdown with some additional options. Here is a brief guide:
 
 ### Inline text styling
 
@@ -121,7 +121,7 @@ links:
 
 ### Asides
 
-Occasionally, something needs to be noted but it doesn’t fit within the main flow of the document. You can interject notes (or “asides”) using a special syntax. The **Starlight** framework, on which these docs are based, has a [guide on asides and their syntax](https://starlight.astro.build/guides/authoring-content/#asides).
+Occasionally, something needs to be noted but it doesn't fit within the main flow of the document. You can interject notes (or "asides") using a special syntax. The **Starlight** framework, on which these docs are based, has a [guide on asides and their syntax](https://starlight.astro.build/guides/authoring-content/#asides).
 
 Here is an example from the [**Switch**](/components/switch) page:
 
@@ -133,4 +133,4 @@ You must use the **Switch** in conjunction with a label. See [Usage](#usage).
 
 ### Exercise caution
 
-You may encounter some syntax that isn’t documented above. The rule is: **if it’s not documented here, don’t try to use or edit it**. If some unfamiliar syntax needs to be moved inside the document, make sure you move it _in its current form, and in its entirety_. Otherwise, you are liable to cause errors.
+You may encounter some syntax that isn't documented above. The rule is: **if it's not documented here, don't try to use or edit it**. If some unfamiliar syntax needs to be moved inside the document, make sure you move it _in its current form, and in its entirety_. Otherwise, you are liable to cause errors.

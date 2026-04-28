@@ -52,6 +52,6 @@ By default, the **Divider** appears in a horizontal orientation. Reorientate it 
 - Use the **Divider** to indicate divisions between grouped content such as lists.
 - Use _presentational_ **Divider** in cases where the semantics are superfluous, such as at the intersection between two unordered lists.
 
-## 🚫 Don’t
+## 🚫 Don't
 
-- Don’t use a **Divider** where a heading would better introduce a section of content.
+- Don't use a **Divider** where a heading would better introduce a section of content.

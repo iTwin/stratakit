@@ -1,0 +1,74 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+
+.MuiAccordion-root {
+	--_MuiAccordion-border-radius: 0;
+	--_MuiAccordion-padding: var(--stratakit-space-x2);
+
+	background-color: transparent;
+	border-color: var(--stratakit-color-border-neutral-muted);
+	border-radius: var(--_MuiAccordion-border-radius);
+
+	&:where(.MuiAccordion-rounded) {
+		--_MuiAccordion-border-radius: 8px;
+	}
+
+	&:where(.Mui-disabled) {
+		border-color: var(--stratakit-color-border-glow-on-surface-disabled);
+	}
+
+	&:where(.MuiPaper-outlined) {
+		&:where(:not(:nth-child(1 of &))) {
+			margin-block-start: -1px; /* Fixes double border */
+		}
+
+		&::before {
+			display: none; /* Divider is not needed since the border is already visible */
+		}
+	}
+}
+
+.MuiAccordionSummary-root {
+	--_MuiAccordion-expand-icon-color: var(--stratakit-color-icon-neutral-base);
+
+	background-color: transparent; /* Prevents `background-color` change on focus */
+	border-radius: var(--_MuiAccordion-border-radius);
+	column-gap: var(--stratakit-space-x3);
+	padding-inline: var(--_MuiAccordion-padding);
+	min-height: unset; /* Height is set by the `margin-block` on `.MuiAccordionSummary-content` */
+
+	&:where(.Mui-expanded) {
+		border-end-start-radius: 0;
+		border-end-end-radius: 0;
+	}
+
+	@media (any-hover: hover) {
+		&:where(:hover:not(.Mui-disabled)) {
+			background-color: var(--stratakit-color-bg-glow-on-surface-neutral-hover);
+			--_MuiAccordion-expand-icon-color: var(--stratakit-color-icon-neutral-hover);
+		}
+	}
+
+	&:where(.Mui-disabled) {
+		--🥝Icon-color: var(--stratakit-color-icon-neutral-disabled);
+		color: var(--stratakit-color-text-neutral-disabled);
+		opacity: 1;
+	}
+}
+
+.MuiAccordionSummary-content {
+	align-items: center;
+	column-gap: var(--stratakit-space-x2);
+	margin-block: var(--_MuiAccordion-padding);
+}
+
+.MuiAccordionSummary-expandIconWrapper {
+	color: var(--_MuiAccordion-expand-icon-color);
+	padding: var(--stratakit-space-x1);
+}
+
+.MuiAccordionDetails-root {
+	padding: var(--_MuiAccordion-padding);
+}

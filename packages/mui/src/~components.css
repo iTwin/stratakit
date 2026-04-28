@@ -6,6 +6,7 @@
 @import "./~components/MuiPaper.css";
 @import "./~components/MuiTypography.css";
 
+@import "./~components/MuiAccordion.css";
 @import "./~components/MuiAlert.css";
 @import "./~components/MuiAutocomplete.css";
 @import "./~components/MuiAvatar.css";
@@ -31,10 +32,6 @@
 @import "./~components/MuiTabs.css";
 @import "./~components/MuiToggleButton.css";
 @import "./~components/MuiTooltip.css";
-
-.MuiAccordion-root {
-	background-color: transparent;
-}
 
 .MuiAppBar-root {
 	background-color: var(--stratakit-color-bg-page-base);

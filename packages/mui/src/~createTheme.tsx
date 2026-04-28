@@ -117,6 +117,7 @@ function createTheme() {
 			MuiAccordion: {
 				defaultProps: {
 					component: Role.div,
+					disableGutters: true,
 					slotProps: {
 						region: {
 							role: undefined,

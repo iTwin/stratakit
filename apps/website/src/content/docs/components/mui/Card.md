@@ -43,12 +43,6 @@ Make sure the **Card** is suitable for your use case. There may be other, more a
 
 ## Examples
 
-### Menu and metadata
-
-::example{src="mui/Card.menu" min-height="325px"}
-
-Add metadata and a [**Menu**](/components/menu) to [`CardHeader`](https://mui.com/material-ui/api/card-header/) using the `subheader` and `action` props.
-
 ### Actions
 
 ::example{src="mui/Card.actions"}
@@ -58,6 +52,12 @@ Add multiple actions, at the foot of the **Card**, with the [`CardActions`](http
 :::caution
 **Cards** with `CardActions` must not include `CardActionArea`, which is better suited when the entire **Card** is actionable.
 :::
+
+### Menu and metadata
+
+::example{src="mui/Card.menu" min-height="325px"}
+
+Add metadata and a [**Menu**](/components/menu) to [`CardHeader`](https://mui.com/material-ui/api/card-header/) using the `subheader` and `action` props.
 
 ### Heading levels
 

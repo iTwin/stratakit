@@ -1,0 +1,1 @@
+import{j as t}from"./client.D_P6zBoq.js";import{R as r}from"./Rating.BzsLAVXr.js";import"./styles.internal.iAh-c3F9.js";import"./createSvgIcon.DXRJQxrJ.js";import"./visuallyHidden.Dan1xhjv.js";const p=()=>t.jsx(r,{defaultValue:2});export{p as default};

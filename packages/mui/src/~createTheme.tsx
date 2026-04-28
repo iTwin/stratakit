@@ -9,6 +9,8 @@ import OutlinedInput from "@mui/material/OutlinedInput";
 import StepConnector from "@mui/material/StepConnector";
 import { createTheme as createMuiTheme } from "@mui/material/styles";
 import cx from "classnames";
+import { MuiAutocomplete } from "./~components/MuiAutocomplete.js";
+import { MuiAvatarGroup } from "./~components/MuiAvatarGroup.js";
 import { MuiBadge } from "./~components/MuiBadge.js";
 import { MuiBottomNavigationAction } from "./~components/MuiBottomNavigation.js";
 import { MuiButtonBase } from "./~components/MuiButtonBase.js";
@@ -24,9 +26,16 @@ import {
 } from "./~components/MuiChip.js";
 import { MuiDivider } from "./~components/MuiDivider.js";
 import { MuiIconButton } from "./~components/MuiIconButton.js";
+import { MuiInputLabel } from "./~components/MuiInputLabel.js";
 import { MuiSnackbar } from "./~components/MuiSnackbar.js";
 import { MuiStepIcon } from "./~components/MuiStepper.js";
-import { MuiTableCell, MuiTableHead } from "./~components/MuiTable.js";
+import {
+	MuiTableBody,
+	MuiTableCell,
+	MuiTableHead,
+} from "./~components/MuiTable.js";
+import { MuiToggleButton } from "./~components/MuiToggleButton.js";
+import { MuiTypography } from "./~components/MuiTypography.js";
 import {
 	ArrowDownIcon,
 	CaretsUpDownIcon,
@@ -44,7 +53,6 @@ import {
 
 import type { RoleProps } from "@ariakit/react/role";
 import type { ColorSystemOptions } from "@mui/material/styles";
-import type { TypographyOwnProps } from "@mui/material/Typography";
 
 /** Creates a StrataKit theme for MUI. Should be used with MUI's `ThemeProvider`. */
 function createTheme() {
@@ -151,6 +159,9 @@ function createTheme() {
 						</li>
 					),
 					slotProps: {
+						root: {
+							component: MuiAutocomplete,
+						},
 						paper: {
 							elevation: 8, // match Menu elevation
 						},
@@ -179,7 +190,16 @@ function createTheme() {
 					},
 				},
 			},
-			MuiAvatarGroup: { defaultProps: { component: Role.div } },
+			MuiAvatarGroup: {
+				defaultProps: {
+					component: MuiAvatarGroup,
+					slotProps: {
+						surplus: {
+							["data-_sk-surplus" as keyof React.HTMLAttributes<HTMLDivElement>]: ``,
+						},
+					},
+				},
+			},
 			MuiBackdrop: { defaultProps: { component: Role.div } },
 			MuiBadge: {
 				defaultProps: {
@@ -256,7 +276,12 @@ function createTheme() {
 			},
 			MuiContainer: { defaultProps: { component: Role.div } },
 			MuiDialog: { defaultProps: { component: Role.div } },
-			MuiDialogContentText: { defaultProps: { component: Role.p } },
+			MuiDialogContentText: {
+				defaultProps: {
+					component: Role.p,
+					variant: "inherit",
+				},
+			},
 			MuiDialogTitle: { defaultProps: { component: Role.h2 } },
 			MuiDivider: { defaultProps: { component: MuiDivider } },
 			MuiDrawer: { defaultProps: { component: Role.div } },
@@ -279,7 +304,7 @@ function createTheme() {
 			MuiInputAdornment: { defaultProps: { component: Role.div } },
 			MuiInputLabel: {
 				defaultProps: {
-					component: Role.label,
+					component: MuiInputLabel,
 					shrink: true, // Removes label animation and masked border from TextField
 				},
 			},
@@ -352,7 +377,12 @@ function createTheme() {
 				},
 			},
 			MuiPaper: { defaultProps: { component: Role.div } },
-			MuiPopover: { defaultProps: { component: Role.div } },
+			MuiPopover: {
+				defaultProps: {
+					component: Role.div,
+					slotProps: { paper: { role: "dialog" } },
+				},
+			},
 			MuiRadio: {
 				defaultProps: {
 					component: Role.span,
@@ -374,7 +404,16 @@ function createTheme() {
 				},
 			},
 			MuiSkeleton: { defaultProps: { component: Role.span } },
-			MuiSlider: { defaultProps: { component: Role.span } },
+			MuiSlider: {
+				defaultProps: {
+					component: Role.span,
+					slotProps: {
+						valueLabel: {
+							className: "MuiTooltip-tooltip",
+						},
+					},
+				},
+			},
 			MuiSnackbar: {
 				defaultProps: {
 					slotProps: {
@@ -408,7 +447,7 @@ function createTheme() {
 			MuiTable: { defaultProps: { component: withRenderProp(Role, "table") } },
 			MuiTableBody: {
 				defaultProps: {
-					component: withRenderProp(Role, "tbody"),
+					component: MuiTableBody,
 					role: undefined, // Removing role="rowgroup". See https://github.com/iTwin/stratakit/pull/1361
 				},
 			},
@@ -447,7 +486,7 @@ function createTheme() {
 				},
 			},
 			MuiTextField: { defaultProps: { component: Role.div } },
-			MuiToggleButton: { defaultProps: { component: MuiIconButton } },
+			MuiToggleButton: { defaultProps: { component: MuiToggleButton } },
 			MuiToolbar: { defaultProps: { component: Role.div } },
 			MuiTooltip: {
 				defaultProps: {
@@ -470,22 +509,7 @@ function createTheme() {
 			MuiTypography: {
 				defaultProps: {
 					variant: "body2",
-					variantMapping: {
-						h1: Role.h1,
-						h2: Role.h2,
-						h3: Role.h3,
-						h4: Role.h4,
-						h5: Role.h5,
-						h6: Role.h6,
-						subtitle1: Role.h6,
-						subtitle2: Role.h6,
-						body1: Role.p,
-						body2: Role.p,
-						inherit: Role.p,
-						button: Role.span,
-						caption: Role.span,
-						overline: Role.span,
-					} as unknown as TypographyOwnProps["variantMapping"],
+					component: MuiTypography,
 				},
 			},
 		},

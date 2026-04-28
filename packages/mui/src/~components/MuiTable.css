@@ -4,26 +4,74 @@
  *--------------------------------------------------------------------------------------------*/
 
 .MuiTableRow-root {
+	--✨row-bg--default: transparent;
+	--✨row-bg--hover: var(--stratakit-color-bg-glow-on-surface-neutral-hover);
+	--✨row-bg--active: var(--stratakit-color-bg-glow-on-surface-accent-pressed);
+	--✨row-bg--active-hover: var(--stratakit-color-bg-glow-on-surface-accent-active-hover);
+
+	--_MuiTableRow-bg: var(--✨row-bg--default);
+
+	background-color: var(--_MuiTableRow-bg);
+
+	&:where(.MuiTableRow-hover) {
+		--_MuiTableRow-bg--hover: var(--✨row-bg--hover);
+
+		@media (any-hover: hover) {
+			&:where(:hover) {
+				background-color: var(--_MuiTableRow-bg--hover);
+			}
+		}
+
+		&:where(:has(.MuiTableCell-paddingCheckbox)) {
+			cursor: pointer;
+		}
+	}
+
 	&:where(.Mui-selected) {
-		background-color: var(--stratakit-color-bg-glow-on-surface-accent-pressed);
+		--_MuiTableRow-bg: var(--✨row-bg--active);
+		--_MuiTableRow-bg--hover: var(--✨row-bg--active-hover);
 	}
 }
 
 .MuiTableCell-root {
-	&:where(.MuiTableCell-paddingCheckbox) {
-		text-align: center;
+	&:where(.MuiTableCell-sizeMedium) {
+		block-size: 3rem;
+		padding-block: var(--stratakit-space-x2);
+		padding-inline-start: var(--stratakit-space-x4);
+		padding-inline-end: var(--stratakit-space-x3);
 	}
 
+	&:where(.MuiTableCell-paddingCheckbox) {
+		padding-inline: var(--stratakit-space-x4);
+		text-align: center;
+	}
+}
+
+.MuiTableCell-head {
+	color: var(--stratakit-color-text-neutral-secondary);
+	font-weight: unset;
+}
+
+.MuiTableCell-body {
+	--✨cell-border--default: var(--stratakit-color-border-neutral-muted);
+	--✨cell-border--active: var(--stratakit-color-border-accent-strong);
+
+	--_MuiTableCell-border-color: var(--✨cell-border--default);
+
+	border-color: var(--_MuiTableCell-border-color);
+
 	:where(.MuiTableRow-root.Mui-selected) & {
-		border-color: var(--stratakit-color-border-accent-strong);
+		--_MuiTableCell-border-color: var(--✨cell-border--active);
+
 		position: relative;
 
 		&::before {
 			content: "";
 			position: absolute;
 			inset: 0;
+			inset-block-start: -1px; /* Prevents double border when 2 adjacent rows are selected */
 			pointer-events: none;
-			border-block-start: 1px solid var(--stratakit-color-border-accent-strong);
+			border-block-start: 1px solid var(--_MuiTableCell-border-color);
 		}
 	}
 }

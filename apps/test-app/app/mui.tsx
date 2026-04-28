@@ -25,6 +25,7 @@ import AlertTitle from "examples/mui/Alert.title.tsx";
 import AppBarDefault from "examples/mui/AppBar.default.tsx";
 import AutocompleteDefault from "examples/mui/Autocomplete.default.tsx";
 import AutocompleteMultiple from "examples/mui/Autocomplete.multiple.tsx";
+import AutocompleteSizes from "examples/mui/Autocomplete.sizes.tsx";
 import AvatarDecorative from "examples/mui/Avatar.decorative.tsx";
 import AvatarDefault from "examples/mui/Avatar.default.tsx";
 import AvatarIcon from "examples/mui/Avatar.icon.tsx";
@@ -43,6 +44,7 @@ import ButtonDefault from "examples/mui/Button.default.tsx";
 import ButtonSizes from "examples/mui/Button.sizes.tsx";
 import ButtonVariants from "examples/mui/Button.variants.tsx";
 import ButtonGroupDefault from "examples/mui/ButtonGroup.default.tsx";
+import ButtonGroupSizes from "examples/mui/ButtonGroup.sizes.tsx";
 import CardActions from "examples/mui/Card.actions.tsx";
 import CardDefault from "examples/mui/Card.default.tsx";
 import CardHeader from "examples/mui/Card.header.tsx";
@@ -66,6 +68,7 @@ import DividerVertical from "examples/mui/Divider.vertical.tsx";
 import DrawerDefault from "examples/mui/Drawer.default.tsx";
 import FabDefault from "examples/mui/Fab.default.tsx";
 import IconButtonColors_ from "examples/mui/IconButton._colors.tsx";
+import IconButtonPlacements_ from "examples/mui/IconButton._placements.tsx";
 import IconButtonDefault from "examples/mui/IconButton.default.tsx";
 import IconButtonSizes from "examples/mui/IconButton.sizes.tsx";
 import LinearProgressColors_ from "examples/mui/LinearProgress._colors.tsx";
@@ -89,11 +92,14 @@ import RatingDefault from "examples/mui/Rating.default.tsx";
 import SelectDefault from "examples/mui/Select.default.tsx";
 import SelectIcon from "examples/mui/Select.icon.tsx";
 import SelectMultiple from "examples/mui/Select.multiple.tsx";
+import SelectSizes from "examples/mui/Select.sizes.tsx";
 import SkeletonDefault from "examples/mui/Skeleton.default.tsx";
 import SkeletonVariants from "examples/mui/Skeleton.variants.tsx";
 import SliderDefault from "examples/mui/Slider.default.tsx";
 import SliderMarks from "examples/mui/Slider.marks.tsx";
 import SliderRange from "examples/mui/Slider.range.tsx";
+import SliderSizes from "examples/mui/Slider.sizes.tsx";
+import SliderTooltip from "examples/mui/Slider.tooltip.tsx";
 import SliderVertical from "examples/mui/Slider.vertical.tsx";
 import SnackbarDefault from "examples/mui/Snackbar.default.tsx";
 import SpeedDialDefault from "examples/mui/SpeedDial.default.tsx";
@@ -106,6 +112,8 @@ import SwitchDefault from "examples/mui/Switch.default.tsx";
 import SwitchSizes from "examples/mui/Switch.sizes.tsx";
 import TableDefault from "examples/mui/Table.default.tsx";
 import TableFooter from "examples/mui/Table.footer.tsx";
+import TableSelect from "examples/mui/Table.select.tsx";
+import TableSmall from "examples/mui/Table.small.tsx";
 import TabsDefault from "examples/mui/Tabs.default.tsx";
 import TabsScrollable from "examples/mui/Tabs.scrollable.tsx";
 import TextFieldDisabled from "examples/mui/TextField._disabled.tsx";
@@ -114,11 +122,17 @@ import TextFieldError from "examples/mui/TextField.error.tsx";
 import TextFieldIcon from "examples/mui/TextField.icon.tsx";
 import TextFieldMultiline from "examples/mui/TextField.multiline.tsx";
 import TextFieldSizes from "examples/mui/TextField.sizes.tsx";
+import ToggleButtonDisabled_ from "examples/mui/ToggleButton._disabled.tsx";
+import ToggleButtonPlacements_ from "examples/mui/ToggleButton._placements.tsx";
 import ToggleButtonDefault from "examples/mui/ToggleButton.default.tsx";
+import ToggleButtonSizes from "examples/mui/ToggleButton.sizes.tsx";
+import ToggleButtonStandalone from "examples/mui/ToggleButton.standalone.tsx";
+import ToggleButtonText from "examples/mui/ToggleButton.text.tsx";
 import TooltipDefault from "examples/mui/Tooltip.default.tsx";
 import TooltipDirection from "examples/mui/Tooltip.direction.tsx";
-import TypographyVariants_ from "examples/mui/Typography._variants.tsx";
 import TypographyDefault from "examples/mui/Typography.default.tsx";
+import TypographyHeading from "examples/mui/Typography.heading.tsx";
+import TypographyVariants from "examples/mui/Typography.variants.tsx";
 import { SkipLinkContext } from "./~navigation.tsx";
 import { isProduction, useIsWideScreen } from "./~utils.tsx";
 
@@ -174,6 +188,7 @@ const components: Record<string, React.ReactNode> = {
 	Autocomplete: (
 		<>
 			<AutocompleteDefault />
+			<AutocompleteSizes />
 			<AutocompleteMultiple />
 		</>
 	),
@@ -210,7 +225,12 @@ const components: Record<string, React.ReactNode> = {
 			{!isProduction && <ButtonPermutations_ />}
 		</>
 	),
-	ButtonGroup: <ButtonGroupDefault />,
+	ButtonGroup: (
+		<>
+			<ButtonGroupDefault />
+			<ButtonGroupSizes />
+		</>
+	),
 	Card: (
 		<>
 			<CardDefault />
@@ -268,6 +288,11 @@ const components: Record<string, React.ReactNode> = {
 					<IconButtonColors_ />
 				</Stack>
 			)}
+			{!isProduction && (
+				<Stack spacing={1} direction="row">
+					<IconButtonPlacements_ />
+				</Stack>
+			)}
 		</>
 	),
 	LinearProgress: (
@@ -321,6 +346,7 @@ const components: Record<string, React.ReactNode> = {
 			<SelectDefault />
 			<SelectIcon />
 			<SelectMultiple />
+			<SelectSizes />
 		</>
 	),
 	Skeleton: (
@@ -332,6 +358,8 @@ const components: Record<string, React.ReactNode> = {
 	Slider: (
 		<>
 			<SliderDefault />
+			<SliderSizes />
+			<SliderTooltip />
 			<SliderMarks />
 			<SliderRange />
 			<SliderVertical />
@@ -357,6 +385,8 @@ const components: Record<string, React.ReactNode> = {
 	Table: (
 		<>
 			<TableDefault />
+			<TableSmall />
+			<TableSelect />
 			<TableFooter />
 		</>
 	),
@@ -376,7 +406,20 @@ const components: Record<string, React.ReactNode> = {
 			<TextFieldSizes />
 		</Stack>
 	),
-	ToggleButton: <ToggleButtonDefault />,
+	ToggleButton: (
+		<>
+			<ToggleButtonDefault />
+			<ToggleButtonStandalone />
+			<ToggleButtonSizes />
+			<ToggleButtonDisabled_ />
+			<ToggleButtonText />
+			{!isProduction && (
+				<Stack spacing={1} direction="row">
+					<ToggleButtonPlacements_ />
+				</Stack>
+			)}
+		</>
+	),
 	Tooltip: (
 		<>
 			<TooltipDefault />
@@ -386,7 +429,8 @@ const components: Record<string, React.ReactNode> = {
 	Typography: (
 		<>
 			<TypographyDefault />
-			<TypographyVariants_ />
+			<TypographyHeading />
+			<TypographyVariants />
 		</>
 	),
 };

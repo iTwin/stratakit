@@ -3,6 +3,8 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
+@import "internal/typography.mixins.css";
+
 @import "./~reset.css" layer(reset);
 
 @import "./~space.css" layer(stratakit.foundations);

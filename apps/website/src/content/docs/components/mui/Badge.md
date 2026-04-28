@@ -59,7 +59,7 @@ For example, include the `status-warning` icon when applying the ‘error’ col
 - Include a concise and descriptive label.
 - Use an [`icon`](#icons) to communicate a status `color` in a color-independent fashion.
 
-## ❌ Don’t
+## 🚫 Don’t
 
 - Don’t make **Badge** interactive. It is for indicating status, not controlling it.
 - Don’t override colors set using `color` prop. These have been chosen carefully for their [contrast](https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html).

@@ -7,9 +7,17 @@ const status = entry.data.status;
 const links = entry.data.links || {};
 
 const muiDocsUrl = links.muiDocs;
-const apiReferenceUrl = links.apiReference;
-
 const componentStatusOverviewUrl = `${import.meta.env.BASE_URL}/components/overview/#component-status`;
+const apiReferenceUrl = (() => {
+	const url = links.apiReference;
+	if (!url) return undefined;
+
+	if (url.startsWith("/")) {
+		return `${import.meta.env.BASE_URL}${url}`;
+	}
+
+	return url;
+})();
 ---
 
 <hgroup>

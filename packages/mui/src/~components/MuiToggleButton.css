@@ -4,32 +4,39 @@
  *--------------------------------------------------------------------------------------------*/
 
 .MuiToggleButton-root {
-	min-block-size: var(--_MuiToggleButton-height);
-	min-inline-size: var(--_MuiToggleButton-height);
-	padding: calc(var(--_MuiToggleButton-padding) - 1px); /* Account for 1px border */
+	--✨border--selected: var(--stratakit-color-border-accent-strong);
 
-	&:where(.MuiToggleButton-sizeSmall) {
-		@apply --typography("body-sm");
-		--_MuiToggleButton-height: var(--stratakit-size-control-field-height-small);
-		--_MuiToggleButton-padding: var(--stratakit-space-x1);
+	/* Standalone ToggleButton. */
+	&:where(:not(.MuiToggleButtonGroup-grouped)) {
+		border-color: transparent; /* Standalone ToggleButtons have no border. */
 	}
 
-	&:where(.MuiToggleButton-sizeMedium) {
-		@apply --typography("body-md");
-		--_MuiToggleButton-height: var(--stratakit-size-control-field-height-medium);
-		--_MuiToggleButton-padding: var(--stratakit-space-x1);
-	}
-
-	&:where(.MuiToggleButton-sizeLarge) {
-		@apply --typography("body-lg");
-		--_MuiToggleButton-height: var(--stratakit-size-control-field-height-large);
-		--_MuiToggleButton-padding: var(--stratakit-space-x2);
+	/* Rendered in a ToggleButtonGroup. */
+	&:where(.MuiToggleButtonGroup-grouped) {
+		border-radius: revert-layer; /* Let MUI handle border-radius. */
 	}
 
 	&:where(.Mui-selected) {
-		border-color: var(--stratakit-color-border-accent-strong);
+		border-color: var(--✨border--selected);
 		background-color: var(--stratakit-color-bg-glow-on-surface-accent-pressed);
 		color: var(--stratakit-color-text-accent-strong);
 		--🥝Icon-color: var(--stratakit-color-icon-accent-strong);
+	}
+
+	&:where(.Mui-disabled) {
+		color: var(--stratakit-color-text-neutral-disabled);
+		--🥝Icon-color: var(--stratakit-color-icon-neutral-disabled);
+	}
+}
+
+/* Rendered as an IconButton (default). */
+.MuiToggleButton-root:is(.MuiIconButton-root) {
+	--✨border--width: 1px;
+
+	/* Avoid content shift when toggled in a ToggleButtonGroup. */
+	&:where(.MuiToggleButtonGroup-grouped.Mui-selected) {
+		:where(&) + & {
+			min-inline-size: calc(var(--_MuiIconButton-size) - var(--✨border--width));
+		}
 	}
 }

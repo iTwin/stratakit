@@ -34,9 +34,9 @@
 		@apply --typography("body-sm");
 	}
 	&:where(.MuiTypography-subtitle1) {
-		@apply --typography("body-sm");
+		@apply --typography("subtitle-lg");
 	}
 	&:where(.MuiTypography-subtitle2) {
-		@apply --typography("caption-lg");
+		@apply --typography("subtitle-md");
 	}
 }

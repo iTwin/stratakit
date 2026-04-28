@@ -6,6 +6,7 @@
 import Card from "@mui/material/Card";
 import CardActionArea from "@mui/material/CardActionArea";
 import CardContent from "@mui/material/CardContent";
+import CardHeader from "@mui/material/CardHeader";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 
@@ -24,12 +25,15 @@ export default () => {
 					/>
 				}
 			/>
-			<CardContent>
-				<Typography gutterBottom variant="h6" render={<h2 />}>
+
+			<CardHeader
+				title={
 					<CardActionArea render={<a href="#" />} nativeButton={false}>
 						Stadium
 					</CardActionArea>
-				</Typography>
+				}
+			/>
+			<CardContent>
 				<Typography variant="body2" color="text.secondary">
 					Stadium is a place for outdoor sports, concerts, or other events and
 					activities.

@@ -19,9 +19,9 @@ links:
 
 ### Initials
 
-If an image isn’t available, display an individual’s initials as a single character in an [`<abbr>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/abbr) element with an `aria-hidden="true"`.
+If an image isn't available, display an individual's initials as a single character in an [`<abbr>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/abbr) element with an `aria-hidden="true"`.
 
-If an accessible name is not provided by other means, apply [`role="img"`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/img_role) to the **Avatar** and set [`aria-label`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-label) to the individual’s full name so assistive technologies announce the name instead of the initials.
+If an accessible name is not provided by other means, apply [`role="img"`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/img_role) to the **Avatar** and set [`aria-label`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-label) to the individual's full name so assistive technologies announce the name instead of the initials.
 
 ::example{src="mui/Avatar.initials"}
 
@@ -44,7 +44,7 @@ In some cases, the **Avatar** may be considered presentational, since text ident
 - If an accessible name is not provided by other means, supply a name using `alt` for [`<img>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/img) **Avatars** and `aria-label` for [`role="img"`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/img_role) **Avatars**.
 - Display a single character [initial](#initials) if an image is not available.
 
-## 🚫 Don’t
+## 🚫 Don't
 
 - Don‘t resort to displaying initials if an image is available.
-- Don’t omit an accessible label if there is no other label in place.
+- Don't omit an accessible label if there is no other label in place.

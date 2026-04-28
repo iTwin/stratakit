@@ -8,17 +8,7 @@ links:
 
 ::example{src="mui/Card.default" min-height="325px"}
 
-Make simple **Cards** with clickable by wrapping the `title` in `<CardActionArea>`:
-
-```jsx
-<CardHeader
-	title={
-		<CardActionArea render={<a href="/path/to/permalink" />} nativeButton={false}>
-			Stadium
-		</CardActionArea>
-	}
-/>
-```
+Make simple **Cards** clickable by wrapping the title in [`CardActionArea`](https://mui.com/material-ui/api/card-action-area/).
 
 For different configurations, see [**Examples**](#examples).
 

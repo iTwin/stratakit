@@ -65,4 +65,14 @@
 		border: 1px solid var(--stratakit-color-border-accent-strong);
 		color: var(--stratakit-color-text-accent-strong);
 	}
+
+	&:where(.Mui-disabled) {
+		color: var(--stratakit-color-text-neutral-disabled);
+		opacity: 1;
+
+		&:where(.Mui-selected) {
+			background-color: var(--stratakit-color-bg-glow-on-surface-disabled);
+			border-color: var(--stratakit-color-border-glow-on-surface-disabled);
+		}
+	}
 }

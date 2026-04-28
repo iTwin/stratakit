@@ -1,1 +1,0 @@
-import{j as t}from"./client.Dl47lQo_.js";import{P as o}from"./Pagination.DsvReHII.js";import"./styles.internal.iAh-c3F9.js";import"./LastPage.BS3jCuUJ.js";import"./createSvgIcon.4XnjHsdx.js";const n=()=>t.jsx(o,{disabled:!0,count:10});export{n as default};

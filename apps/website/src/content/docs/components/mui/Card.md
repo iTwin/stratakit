@@ -8,6 +8,23 @@ links:
 
 ::example{src="mui/Card.default" min-height="325px"}
 
+Make simple **Cards** with clickable by wrapping the `title` in `<CardActionArea>`:
+
+```jsx
+<CardHeader
+	title={
+		<CardActionArea 
+			render={<a href="/path/to/permalink" />} 
+			nativeButton={false}
+		>
+			Stadium
+		</CardActionArea>
+	}
+/>
+```
+
+For different configurations, see [**Examples**](#examples).
+
 ## Use cases
 
 Make sure the **Card** is suitable for your use case. There may be other, more appropriate components available.
@@ -28,15 +45,15 @@ Make sure the **Card** is suitable for your use case. There may be other, more a
 
 ### Menu and metadata
 
-Add metadata and a [**Menu**](/components/menu) to [`CardHeader`](https://mui.com/material-ui/api/card-header/) using the `subheader` and `action` props.
-
 ::example{src="mui/Card.menu" min-height="325px"}
+
+Add metadata and a [**Menu**](/components/menu) to [`CardHeader`](https://mui.com/material-ui/api/card-header/) using the `subheader` and `action` props.
 
 ### Actions
 
-Add multiple actions, at the foot of the **Card**, with the [`CardActions`](https://mui.com/material-ui/api/card-actions/) component.
-
 ::example{src="mui/Card.actions"}
+
+Add multiple actions, at the foot of the **Card**, with the [`CardActions`](https://mui.com/material-ui/api/card-actions/) component.
 
 :::caution
 **Cards** with `CardActions` must not include `CardActionArea`, which is better suited when the entire **Card** is actionable.

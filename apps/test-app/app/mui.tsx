@@ -21,7 +21,6 @@ import AccordionMultiple from "examples/mui/Accordion.multiple.tsx";
 import AccordionVariants from "examples/mui/Accordion.variants.tsx";
 import AlertPermutations_ from "examples/mui/Alert._permutations.tsx";
 import AlertDefault from "examples/mui/Alert.default.tsx";
-import AlertTitle from "examples/mui/Alert.title.tsx";
 import AppBarDefault from "examples/mui/AppBar.default.tsx";
 import AutocompleteDefault from "examples/mui/Autocomplete.default.tsx";
 import AutocompleteMultiple from "examples/mui/Autocomplete.multiple.tsx";
@@ -170,7 +169,6 @@ const components: Record<string, React.ReactNode> = {
 	Alert: (
 		<Stack spacing={1} sx={{ alignSelf: "stretch" }}>
 			<AlertDefault />
-			<AlertTitle />
 			{!isProduction && <AlertPermutations_ />}
 		</Stack>
 	),

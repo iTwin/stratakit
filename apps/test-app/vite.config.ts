@@ -4,15 +4,15 @@
  *--------------------------------------------------------------------------------------------*/
 
 import { reactRouter } from "@react-router/dev/vite";
+import babel from "@rolldown/plugin-babel";
+import { reactCompilerPreset } from "@vitejs/plugin-react";
 import * as lightningcss from "lightningcss";
 import {
 	defaultClientConditions,
 	defaultServerConditions,
 	defineConfig,
 } from "vite";
-import babel from "vite-plugin-babel";
 import devtoolsJson from "vite-plugin-devtools-json";
-import tsconfigPaths from "vite-tsconfig-paths";
 import {
 	createVisitor,
 	customAtRules,
@@ -54,14 +54,7 @@ export const reactRouterConfig = {
 export default defineConfig({
 	plugins: [
 		reactRouter(),
-		babel({
-			filter: /\.[jt]sx?$/,
-			babelConfig: {
-				presets: ["@babel/preset-typescript"],
-				plugins: [["babel-plugin-react-compiler", {}]],
-			},
-		}),
-		tsconfigPaths(),
+		babel({ presets: [reactCompilerPreset()] }),
 		bundleCssPlugin(),
 		devtoolsJson(),
 	],
@@ -82,6 +75,7 @@ export default defineConfig({
 	},
 	resolve: {
 		conditions: [customConditions, defaultClientConditions].flat(),
+		tsconfigPaths: true,
 	},
 	ssr: {
 		resolve: {

@@ -2,4 +2,4 @@
 "@stratakit/mui": patch
 ---
 
-Fixed `ToggleButton` disabled + active styling.
+Improved `ToggleButton` styling by fixing active + disabled state and added active + hover state.

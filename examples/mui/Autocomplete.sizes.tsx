@@ -4,26 +4,26 @@
  *--------------------------------------------------------------------------------------------*/
 
 import Autocomplete from "@mui/material/Autocomplete";
+import Stack from "@mui/material/Stack";
 import TextField from "@mui/material/TextField";
 
 export default () => {
 	return (
-		<Autocomplete
-			options={[
-				"Badge",
-				"Button",
-				"Checkbox",
-				"Dialog",
-				"Divider",
-				"Progress",
-				"Rating",
-				"Select",
-				"Switch",
-				"TextField",
-			]}
-			renderInput={(params) => (
-				<TextField {...params} label="Favorite component:" />
-			)}
-		/>
+		<Stack spacing={1}>
+			<Autocomplete
+				size="small"
+				options={["Mouse", "Worm"]}
+				renderInput={(params) => (
+					<TextField {...params} label="Favorite small animal:" />
+				)}
+			/>
+
+			<Autocomplete
+				options={["Cat", "Dog"]}
+				renderInput={(params) => (
+					<TextField {...params} label="Favorite medium animal:" />
+				)}
+			/>
+		</Stack>
 	);
 };

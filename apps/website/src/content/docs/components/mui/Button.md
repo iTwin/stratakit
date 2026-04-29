@@ -38,7 +38,7 @@ Modifications specific to `Button`:
 
 ### Icons
 
-An [**Icon**](/components/icon) can be displayed before or after the **Button’s** text label using the `startIcon` or `endIcon` props. It’s important the **Icon’s** `alt` is omitted, since the text already provides the accessible label. In the following example, a “+” icon is appended to the text “Create new”.
+An [**Icon**](/components/icon) can be displayed before or after the **Button's** text label using the `startIcon` or `endIcon` props. It's important the **Icon's** `alt` is omitted, since the text already provides the accessible label. In the following example, a "+" icon is appended to the text "Create new".
 
 ::example{src="mui/Button.icon"}
 
@@ -83,11 +83,11 @@ An [**Icon**](/components/icon) can be displayed before or after the **Button’
 
 - Use **Button** for form submissions, modal confirmations, and other non-navigational calls-to-action.
 - Include a clear and concise label, describing the action the Button will take.
-- Include supplementary Icons before and/or after the label to assist with apprehension. For example, a “+” icon after “Create new”.
-- Use two buttons together, defining alternative or opposing actions, such as “Confirm” and “Cancel”.
+- Include supplementary Icons before and/or after the label to assist with apprehension. For example, a "+" icon after "Create new".
+- Use two buttons together, defining alternative or opposing actions, such as "Confirm" and "Cancel".
 - Accompany text variants with icons, to increase affordance. Otherwise, they are less likely to be perceived as interactive.
 
-## 🚫 Don’t
+## 🚫 Don't
 
 - Don't use **Button** for navigation. Use a [**Link**](/components/link) or simple text link instead.
 - Don't include multiple **Buttons** with the same label.

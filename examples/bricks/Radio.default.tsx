@@ -7,7 +7,7 @@ import { Field, Radio } from "@stratakit/bricks";
 export default () => {
 	return (
 		<fieldset>
-			<legend>Choose a design system:</legend>
+			<legend>Design system:</legend>
 			<Field.Root style={{ marginBlock: 8 }}>
 				<Field.Control
 					render={<Radio name="design-system" value="StrataKit" />}

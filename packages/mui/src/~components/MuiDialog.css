@@ -3,6 +3,11 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
+.MuiDialog-paper {
+	min-block-size: min(100%, 94px);
+	min-inline-size: min(100%, 296px);
+}
+
 .MuiDialogActions-root {
 	background-color: var(--stratakit-color-bg-page-base);
 	background-clip: padding-box; /* Ensure background-color doesn't bleed into transparent border */

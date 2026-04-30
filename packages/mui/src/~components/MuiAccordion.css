@@ -51,6 +51,7 @@
 .MuiAccordionSummary-content {
 	align-items: center;
 	column-gap: var(--stratakit-space-x2);
+	font-weight: 500;
 	margin-block: var(--stratakit-space-x1);
 }
 

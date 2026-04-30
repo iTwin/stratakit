@@ -1,1 +1,0 @@
-import{j as s,L as o,I as t}from"./client.D_P6zBoq.js";import{s as e}from"./placeholder.8kLm8qb5.js";import"./styles.internal.iAh-c3F9.js";const n=()=>s.jsx(o,{label:"Disabled",disabled:!0,children:s.jsx(t,{href:e})});export{n as default};

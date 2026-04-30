@@ -1,0 +1,1 @@
+import{R as e,t}from"./jsx-runtime-Vz8StN2I.js";import{Ir as n,It as r,Lr as i,kr as a}from"./~utils-h2gQ2HhP.js";var o=t(),s=e(n(),1),c=a((e,t)=>{r();let{variant:n=`text`,size:a=`medium`,...c}=e;return(0,o.jsx)(i.div,{...c,ref:t,className:(0,s.default)(`🥝Skeleton`,e.className),"data-_sk-variant":n,"data-_sk-size":a,"aria-hidden":!0})});export{c as t};

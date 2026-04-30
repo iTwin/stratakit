@@ -177,7 +177,7 @@
 }
 
 .MuiPaginationItem-root {
-	&:where(.Mui-selected) {
+	&:where(.Mui-selected:not(.Mui-disabled)) {
 		background-color: SelectedItem;
 		border-color: SelectedItemText;
 		color: SelectedItemText;

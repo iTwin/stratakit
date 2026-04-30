@@ -41,7 +41,7 @@
 		--🥝Icon-color: var(--stratakit-color-icon-neutral-disabled);
 
 		&:where(.Mui-selected) {
-			background-color: var(--✨bg--selected-disabled);
+			--_MuiToggleButton-bg--active: var(--✨bg--selected-disabled);
 			border-color: var(--✨border--selected-disabled);
 		}
 	}

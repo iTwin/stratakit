@@ -24,7 +24,7 @@
 		"forceConsistentCasingInFileNames": true,
 
 		/* Output */
-		"lib": ["DOM", "DOM.Iterable", "ES2022"],
+		"lib": ["DOM", "ES2022"],
 		"target": "es2022",
 		"module": "preserve",
 		"jsx": "react-jsx",

@@ -1,1 +1,0 @@
-import{L as e}from"./jsx-runtime-Vz8StN2I.js";var t=e({default:()=>n}),n=`/1457/assets/placeholder-DKNetxeO.svg`;export{t as n,n as t};

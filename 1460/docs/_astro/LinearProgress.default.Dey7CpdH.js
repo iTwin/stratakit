@@ -1,1 +1,0 @@
-import{j as r}from"./_utils.Bv8su32P.js";import{r as e}from"./styles.internal.-5J_nK6S.js";import{L as a}from"./LinearProgress.DZzkLFV9.js";import{T as o}from"./Typography.BbKY8TV3.js";const m=()=>{const s=e.useId();return r.jsxs(r.Fragment,{children:[r.jsx(a,{"aria-labelledby":s}),r.jsx(o,{id:s,children:"Analyzing results…"})]})};export{m as default};

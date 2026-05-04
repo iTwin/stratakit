@@ -1,1 +1,0 @@
-import{R as e,t}from"./jsx-runtime-Vz8StN2I.js";import{Ir as n,It as r,kr as i}from"./~utils-h2gQ2HhP.js";import{t as a}from"./JQAYMPOA-B7Hq4VIF.js";import{r as o}from"./Field.internal-BB3xxWoS.js";var s=t(),c=e(n(),1),l=i((e,t)=>(r(),o(`checkable`),(0,s.jsx)(a,{accessibleWhenDisabled:!0,...e,className:(0,c.default)(`🥝Switch`,e.className),role:`switch`,ref:t})));export{l as t};

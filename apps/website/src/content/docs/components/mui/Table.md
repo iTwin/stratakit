@@ -24,3 +24,9 @@ links:
 Use `size="small"` for compact interfaces with limited screen real estate or when displaying large datasets.
 
 ::example{src="mui/Table.small"}
+
+### Row selection
+
+Use [**Checkbox**](/components/checkbox) within the table body first column to give the user a clear indicator that rows can be selected. Placing a select all checkbox within the column header is not recommended.
+
+::example{src="mui/Table.select"}

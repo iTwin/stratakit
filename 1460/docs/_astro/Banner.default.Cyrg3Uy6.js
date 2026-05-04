@@ -1,0 +1,1 @@
+import{j as e}from"./_utils.Bv8su32P.js";import{B as s}from"./Banner.CpprERLV.js";const r=()=>e.jsx(s,{label:"Update complete",message:"Your settings have been saved successfully."});export{r as default};

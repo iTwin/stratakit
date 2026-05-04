@@ -1,1 +1,0 @@
-import{j as t}from"./client.11PnI5b9.js";import{B as o}from"./ButtonGroup.43G7jFeL.js";import{B as r}from"./Button.Csozwqy6.js";import"./styles.internal.iAh-c3F9.js";import"./getValidReactChildren.B7hBcFbA.js";const l=()=>t.jsxs(o,{"aria-label":"File actions",children:[t.jsx(r,{children:"Edit"}),t.jsx(r,{children:"Move"}),t.jsx(r,{children:"Delete"})]});export{l as default};

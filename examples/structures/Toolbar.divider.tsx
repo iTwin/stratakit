@@ -15,32 +15,32 @@ import svgSave from "@stratakit/icons/save.svg";
 
 export default () => {
 	return (
-		<Toolbar.Group variant="solid" orientation="vertical">
+		<Toolbar.Group variant="solid">
 			<Toolbar.Item
 				render={
-					<IconButton label="Add" labelPlacement="right">
+					<IconButton label="Add">
 						<Icon href={`${svgAdd}#icon-large`} size="large" />
 					</IconButton>
 				}
 			/>
 			<Toolbar.Item
 				render={
-					<IconButton label="Edit" labelPlacement="right">
+					<IconButton label="Edit">
 						<Icon href={`${svgEdit}#icon-large`} size="large" />
 					</IconButton>
 				}
 			/>
-			<Divider flexItem />
+			<Divider orientation="vertical" flexItem />
 			<Toolbar.Item
 				render={
-					<IconButton label="Save" labelPlacement="right">
+					<IconButton label="Save">
 						<Icon href={`${svgSave}#icon-large`} size="large" />
 					</IconButton>
 				}
 			/>
 			<Toolbar.Item
 				render={
-					<IconButton label="Delete" labelPlacement="right">
+					<IconButton label="Delete">
 						<Icon href={`${svgDelete}#icon-large`} size="large" />
 					</IconButton>
 				}

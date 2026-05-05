@@ -14,14 +14,14 @@ Use the [`render`](/reference/structures/Toolbar#Toolbar.Item.render) prop of th
 
 ## Examples
 
-### ToggleButton
-
-In the example below, one of the toolbar items is rendered as a [**ToggleButton**](/components/togglebutton/).
-
-::example{src="structures/Toolbar.toggle"}
-
 ### Divider
 
 Use the [**Divider**](/components/divider/) component to visually and semantically separate groups of items within the toolbar.
 
 ::example{src="structures/Toolbar.divider"}
+
+### ToggleButton
+
+In the example below, one of the toolbar items is rendered as a [**ToggleButton**](/components/togglebutton/).
+
+::example{src="structures/Toolbar.toggle"}

@@ -9,6 +9,7 @@ import ToggleButton from "@mui/material/ToggleButton";
 import { Icon } from "@stratakit/mui";
 import { unstable_Toolbar as Toolbar } from "@stratakit/structures";
 
+import svgAdd from "@stratakit/icons/add.svg";
 import svgEdit from "@stratakit/icons/edit.svg";
 import svgSaveSettings from "@stratakit/icons/save-settings.svg";
 
@@ -16,6 +17,13 @@ export default () => {
 	const [autoSave, setAutoSave] = React.useState(true);
 	return (
 		<Toolbar.Group variant="solid">
+			<Toolbar.Item
+				render={
+					<IconButton label="Add">
+						<Icon href={`${svgAdd}#icon-large`} size="large" />
+					</IconButton>
+				}
+			/>
 			<Toolbar.Item
 				render={
 					<IconButton label="Edit">

@@ -27,6 +27,10 @@ Use `size="small"` for compact interfaces with limited screen real estate or whe
 
 ### Row selection
 
-Use [**Checkbox**](/components/checkbox) within the table body first column to give the user a clear indicator that rows can be selected. Placing a select all checkbox within the column header is not recommended.
+Use a [**Checkbox**](/components/checkbox) within the **Table**'s first column to give the user a clear indicator that rows can be selected. Combine it with the `TableRow`'s [`selected`](https://mui.com/material-ui/api/table-row/#table-row-prop-selected) prop to visually reinforce selected rows.
 
 ::example{src="mui/Table.select"}
+
+:::caution
+Placing a "select all" checkbox within the column header is not recommended.
+:::

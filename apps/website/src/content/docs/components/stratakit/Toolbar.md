@@ -20,6 +20,16 @@ Use the [**Divider**](/components/divider/) component to visually and semantical
 
 ::example{src="structures/Toolbar.divider"}
 
+### Orientation
+
+By default, the **Toolbar** appears in a horizontal orientation. Reorientate it using the [`orientation`](/reference/structures/Toolbar#Toolbar.Group.orientation) prop.
+
+When changing the orientation, adjust tooltip placement to avoid overlapping the **Toolbar**. Similarly, reorientate the [divider](#divider) to be perpendicular to the **Toolbar**.
+
+::example{src="structures/Toolbar.vertical" min-height="250px"}
+
+In the example above, `labelPlacement="right"` is set on [**IconButtons**](/components/iconbutton/) and the [**Divider**](/components/divider/) retains its default horizontal orientation.
+
 ### ToggleButton
 
 In the example below, one of the toolbar items is rendered as a [**ToggleButton**](/components/togglebutton/).

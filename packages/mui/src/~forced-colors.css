@@ -88,15 +88,13 @@
 		--_MuiCheckbox-color: SelectedItemText;
 	}
 
-	:where(.MuiFormControlLabel-root.Mui-error) & {
+	:where(.MuiFormControlLabel-root.Mui-error) &:where(:not(.Mui-disabled)) {
 		--_MuiCheckbox-background-color: Mark;
 		--_MuiCheckbox-color: MarkText;
 	}
 
 	&:where(.Mui-disabled) {
-		--_MuiCheckbox-background-color: Canvas;
 		--_MuiCheckbox-border-color: GrayText;
-		--_MuiCheckbox-color: GrayText;
 	}
 }
 
@@ -177,7 +175,7 @@
 }
 
 .MuiPaginationItem-root {
-	&:where(.Mui-selected:not(.Mui-disabled)) {
+	&:where(.Mui-selected) {
 		background-color: SelectedItem;
 		border-color: SelectedItemText;
 		color: SelectedItemText;
@@ -252,7 +250,7 @@
 .MuiSwitch-switchBase {
 	--_MuiSwitch-thumb-background-color: CanvasText;
 
-	&:where(.Mui-checked:not(.Mui-disabled)) {
+	&:where(.Mui-checked) {
 		--_MuiSwitch-thumb-background-color: SelectedItemText;
 
 		+ .MuiSwitch-track {
@@ -261,7 +259,9 @@
 	}
 
 	&:where(.Mui-disabled) {
-		--_MuiSwitch-thumb-background-color: GrayText;
+		&:where(:not(.Mui-checked)) {
+			--_MuiSwitch-thumb-background-color: GrayText;
+		}
 
 		+ .MuiSwitch-track {
 			--_MuiSwitch-track-border-color: GrayText;

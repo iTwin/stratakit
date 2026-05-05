@@ -5,6 +5,7 @@
 
 import * as React from "react";
 import { type MetaFunction, useLocation } from "react-router";
+import { Toolbar, ToolbarItem } from "@ariakit/react/toolbar";
 import Container from "@mui/material/Container";
 import IconButton from "@mui/material/IconButton";
 import Stack from "@mui/material/Stack";
@@ -16,6 +17,7 @@ import { SkipLinkContext } from "../~navigation.tsx";
 import { useIsWideScreen } from "../~utils.tsx";
 
 import svgLink from "@stratakit/icons/link.svg";
+import svgScript from "@stratakit/icons/script.svg";
 import styles from "./mui.module.css";
 
 // ----------------------------------------------------------------------------
@@ -23,6 +25,8 @@ import styles from "./mui.module.css";
 export const meta: MetaFunction = () => {
 	return [{ title: "StrataKit MUI theme" }];
 };
+
+const repoBaseUrl = "https://github.com/iTwin/stratakit";
 
 // ----------------------------------------------------------------------------
 
@@ -145,6 +149,7 @@ function ComponentExamples(props: ComponentExamplesProps) {
 	const id = name.toLowerCase().replace(" ", "-");
 
 	const isTarget = useLocation().hash === `#${id}`;
+	const sourceCodeUrl = `${repoBaseUrl}/blob/main/apps/test-app/app/mui/${name}.tsx`;
 
 	// Scroll to heading on page load only.
 	React.useEffect(
@@ -158,6 +163,23 @@ function ComponentExamples(props: ComponentExamplesProps) {
 			}
 		},
 		[id],
+	);
+
+	const toolbar = (
+		<Toolbar className={styles.exampleToolbar}>
+			<ToolbarItem
+				render={
+					<IconButton
+						render={<a />}
+						href={sourceCodeUrl}
+						label="View source"
+						size="small"
+					/>
+				}
+			>
+				<Icon href={svgScript} />
+			</ToolbarItem>
+		</Toolbar>
 	);
 
 	return (
@@ -189,6 +211,7 @@ function ComponentExamples(props: ComponentExamplesProps) {
 			</hgroup>
 
 			<div className={styles.exampleContent}>
+				{toolbar}
 				<Stack spacing={2} sx={{ alignItems: "start" }}>
 					{props.children}
 				</Stack>

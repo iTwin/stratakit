@@ -12,12 +12,12 @@ links:
 
 Make sure the **Switch** is suitable for your use case. There may be other, more appropriate components available.
 
-| Use case                                                                                                                          | [Checkbox](/components/checkbox) | [Radio](/components/radio) | [Switch](/components/switch) | [ToggleButton](/components/togglebutton) |
-| --------------------------------------------------------------------------------------------------------------------------------- | -------------------------------- | -------------------------- | ---------------------------- | ---------------------------------------- |
-| Confirm an input for a form submission                                                                                            | ✅                               | ❌                         | ❌                           | ❌                                       |
-| Select a single option from multiple choices for a form submission                                                                | ❌                               | ✅                         | ❌                           | ❌                                       |
-| Make an instantaneous, binary choice (switch a setting on or off)                                                                 | ❌                               | ❌                         | ✅                           | ❌                                       |
-| Toggle an option within a [toolbar](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/toolbar_role) | ❌                               | ❌                         | ❌                           | ✅                                       |
+| Use case                                                           | [Checkbox](/components/checkbox) | [Radio](/components/radio) | [Switch](/components/switch) | [ToggleButton](/components/togglebutton) |
+| ------------------------------------------------------------------ | -------------------------------- | -------------------------- | ---------------------------- | ---------------------------------------- |
+| Confirm an input for a form submission                             | ✅                               | ❌                         | ❌                           | ❌                                       |
+| Select a single option from multiple choices for a form submission | ❌                               | ✅                         | ❌                           | ❌                                       |
+| Make an instantaneous, binary choice (switch a setting on or off)  | ❌                               | ❌                         | ✅                           | ❌                                       |
+| Toggle an option within a [**Toolbar**](/components/toolbar)       | ❌                               | ❌                         | ❌                           | ✅                                       |
 
 ## StrataKit MUI modifications
 

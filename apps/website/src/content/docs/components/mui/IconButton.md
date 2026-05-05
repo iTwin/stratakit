@@ -12,13 +12,13 @@ links:
 
 Make sure the **IconButton** is suitable for your use case. There may be other, more appropriate components available.
 
-| Use case                                                                                                                               | [Button](/components/button) | [IconButton](/components/iconbutton) | [ToggleButton](/components/togglebutton) |
-| -------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------- | ------------------------------------ | ---------------------------------------- |
-| Call-to-action                                                                                                                         | ✅                           | ❌                                   | ❌                                       |
-| Commit/submit (modal, workflow, form)                                                                                                  | ✅                           | ❌                                   | ❌                                       |
-| Trigger an action within a [toolbar](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/toolbar_role)     | ❌                           | ✅                                   | ❌                                       |
-| Table cell (inline action)                                                                                                             | ❌                           | ✅                                   | ❌                                       |
-| Group related options within a [toolbar](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/toolbar_role) | ❌                           | ❌                                   | ✅                                       |
+| Use case                                                          | [Button](/components/button) | [IconButton](/components/iconbutton) | [ToggleButton](/components/togglebutton) |
+| ----------------------------------------------------------------- | ---------------------------- | ------------------------------------ | ---------------------------------------- |
+| Call-to-action                                                    | ✅                           | ❌                                   | ❌                                       |
+| Commit/submit (modal, workflow, form)                             | ✅                           | ❌                                   | ❌                                       |
+| Trigger an action within a [**Toolbar**](/components/toolbar)     | ❌                           | ✅                                   | ❌                                       |
+| Table cell (inline action)                                        | ❌                           | ✅                                   | ❌                                       |
+| Group related options within a [**Toolbar**](/components/toolbar) | ❌                           | ❌                                   | ✅                                       |
 
 ## StrataKit MUI modifications
 
@@ -48,7 +48,7 @@ Make sure to provide an accessible description in the form of a visually hidden 
 ## ✅ Do
 
 - Use the `label` prop to provide an accessible name and tooltip for the **IconButton**.
-- Use in [toolbars](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/toolbar_role).
+- Use in [**Toolbars**](/components/toolbar).
 - Use it only when a stand-alone icon effectively communicates the action.
 
 ## 🚫 Don't

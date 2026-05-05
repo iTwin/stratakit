@@ -12,11 +12,11 @@ links:
 
 The **Divider** comes in two forms: _semantic_ and _presentational_. By default, the **Divider** is semantic; it programmatically communicates a separation of content or functionality. However, in some cases, the semantics may be superfluous. In these cases, you should turn it into a [_presentational_ **Divider**](#presentational-dividers).
 
-| Use case                                                                                                                                                                 | _semantic_ | _presentational_ |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | ---------------- |
-| As a horizontal rule, separating paragraphs and other flow content                                                                                                       | ✅         | ❌               |
-| As a separator, marking a division between options, such as in a [toolbar](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/toolbar_role) | ✅         | ❌               |
-| As a visual indicator marking the separation of two lists                                                                                                                | ❌         | ✅               |
+| Use case                                                                                            | _semantic_ | _presentational_ |
+| --------------------------------------------------------------------------------------------------- | ---------- | ---------------- |
+| As a horizontal rule, separating paragraphs and other flow content                                  | ✅         | ❌               |
+| As a separator, marking a division between options, such as in a [**Toolbar**](/components/toolbar) | ✅         | ❌               |
+| As a visual indicator marking the separation of two lists                                           | ❌         | ✅               |
 
 ## Examples
 

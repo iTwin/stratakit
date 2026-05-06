@@ -1,0 +1,1 @@
+import{j as e,I as n}from"./_utils.c0M87sRO.js";import{r}from"./styles.internal.-5J_nK6S.js";import{T as a}from"./ToggleButton.CHoDL6Nh.js";const l="/1461/docs/_astro/font-underline.6QPVz7Z7.svg",i=()=>{const[t,o]=r.useState(!1);return e.jsx(a,{value:"left",label:"Underlined",selected:t,onChange:()=>{o(s=>!s)},children:e.jsx(n,{href:l})})};export{i as default};

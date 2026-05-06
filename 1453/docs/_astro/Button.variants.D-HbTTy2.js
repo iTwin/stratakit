@@ -1,1 +1,0 @@
-import{j as t}from"./_utils.Be6J-Q6o.js";import{S as r}from"./Stack.BMBeO-RM.js";import{B as n}from"./Button.B4mwUdBX.js";const e=()=>t.jsxs(r,{spacing:1,direction:"row",children:[t.jsx(n,{variant:"contained",children:"Contained"}),t.jsx(n,{variant:"outlined",children:"Outlined"}),t.jsx(n,{variant:"text",children:"Text"})]});export{e as default};

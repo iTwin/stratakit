@@ -11,7 +11,12 @@ import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import { Icon } from "@stratakit/mui";
 import * as NavigationList from "@stratakit/structures/unstable_NavigationList";
-import { ExamplesContainer } from "~/~examples.tsx";
+import {
+	ExamplesShowcase,
+	KnobControlEntrypoint,
+	KnobsProvider,
+	useKnobs,
+} from "~/~examples.tsx";
 import { SkipLinkContext } from "~/~navigation.tsx";
 import { useIsWideScreen } from "~/~utils.tsx";
 
@@ -29,52 +34,60 @@ const repoBaseUrl = "https://github.com/iTwin/stratakit";
 // ----------------------------------------------------------------------------
 
 const components = {
-	Accordion: React.lazy(() => import("./Accordion.showcase.tsx")),
-	Alert: React.lazy(() => import("./Alert.showcase.tsx")),
-	AppBar: React.lazy(() => import("./AppBar.showcase.tsx")),
-	Autocomplete: React.lazy(() => import("./Autocomplete.showcase.tsx")),
-	Avatar: React.lazy(() => import("./Avatar.showcase.tsx")),
-	AvatarGroup: React.lazy(() => import("./AvatarGroup.showcase.tsx")),
-	Backdrop: React.lazy(() => import("./Backdrop.showcase.tsx")),
-	Badge: React.lazy(() => import("./Badge.showcase.tsx")),
-	BottomNavigation: React.lazy(() => import("./BottomNavigation.showcase.tsx")),
-	Breadcrumbs: React.lazy(() => import("./Breadcrumbs.showcase.tsx")),
-	Button: React.lazy(() => import("./Button.showcase.tsx")),
-	ButtonGroup: React.lazy(() => import("./ButtonGroup.showcase.tsx")),
-	Card: React.lazy(() => import("./Card.showcase.tsx")),
-	Checkbox: React.lazy(() => import("./Checkbox.showcase.tsx")),
-	Chip: React.lazy(() => import("./Chip.showcase.tsx")),
-	CircularProgress: React.lazy(() => import("./CircularProgress.showcase.tsx")),
-	Dialog: React.lazy(() => import("./Dialog.showcase.tsx")),
-	Divider: React.lazy(() => import("./Divider.showcase.tsx")),
-	Drawer: React.lazy(() => import("./Drawer.showcase.tsx")),
-	Fab: React.lazy(() => import("./Fab.showcase.tsx")),
-	IconButton: React.lazy(() => import("./IconButton.showcase.tsx")),
-	LinearProgress: React.lazy(() => import("./LinearProgress.showcase.tsx")),
-	Link: React.lazy(() => import("./Link.showcase.tsx")),
-	List: React.lazy(() => import("./List.showcase.tsx")),
-	Menu: React.lazy(() => import("./Menu.showcase.tsx")),
-	MobileStepper: React.lazy(() => import("./MobileStepper.showcase.tsx")),
-	NativeSelect: React.lazy(() => import("./NativeSelect.showcase.tsx")),
-	Pagination: React.lazy(() => import("./Pagination.showcase.tsx")),
-	Paper: React.lazy(() => import("./Paper.showcase.tsx")),
-	Popover: React.lazy(() => import("./Popover.showcase.tsx")),
-	RadioGroup: React.lazy(() => import("./RadioGroup.showcase.tsx")),
-	Rating: React.lazy(() => import("./Rating.showcase.tsx")),
-	Select: React.lazy(() => import("./Select.showcase.tsx")),
-	Skeleton: React.lazy(() => import("./Skeleton.showcase.tsx")),
-	Slider: React.lazy(() => import("./Slider.showcase.tsx")),
-	Snackbar: React.lazy(() => import("./Snackbar.showcase.tsx")),
-	SpeedDial: React.lazy(() => import("./SpeedDial.showcase.tsx")),
-	Stepper: React.lazy(() => import("./Stepper.showcase.tsx")),
-	SwipeableDrawer: React.lazy(() => import("./SwipeableDrawer.showcase.tsx")),
-	Switch: React.lazy(() => import("./Switch.showcase.tsx")),
-	Table: React.lazy(() => import("./Table.showcase.tsx")),
-	Tabs: React.lazy(() => import("./Tabs.showcase.tsx")),
-	TextField: React.lazy(() => import("./TextField.showcase.tsx")),
-	ToggleButton: React.lazy(() => import("./ToggleButton.showcase.tsx")),
-	Tooltip: React.lazy(() => import("./Tooltip.showcase.tsx")),
-	Typography: React.lazy(() => import("./Typography.showcase.tsx")),
+	Accordion: processExamples(() => import("./Accordion.showcase.tsx")),
+	Alert: processExamples(() => import("./Alert.showcase.tsx")),
+	AppBar: processExamples(() => import("./AppBar.showcase.tsx")),
+	Autocomplete: processExamples(() => import("./Autocomplete.showcase.tsx")),
+	Avatar: processExamples(() => import("./Avatar.showcase.tsx")),
+	AvatarGroup: processExamples(() => import("./AvatarGroup.showcase.tsx")),
+	Backdrop: processExamples(() => import("./Backdrop.showcase.tsx")),
+	Badge: processExamples(() => import("./Badge.showcase.tsx")),
+	BottomNavigation: processExamples(
+		() => import("./BottomNavigation.showcase.tsx"),
+	),
+	Breadcrumbs: processExamples(() => import("./Breadcrumbs.showcase.tsx")),
+	Button: processExamples(() => import("./Button.showcase.tsx")),
+	ButtonGroup: processExamples(() => import("./ButtonGroup.showcase.tsx")),
+	Card: processExamples(() => import("./Card.showcase.tsx")),
+	Checkbox: processExamples(() => import("./Checkbox.showcase.tsx")),
+	Chip: processExamples(() => import("./Chip.showcase.tsx")),
+	CircularProgress: processExamples(
+		() => import("./CircularProgress.showcase.tsx"),
+	),
+	Dialog: processExamples(() => import("./Dialog.showcase.tsx")),
+	Divider: processExamples(() => import("./Divider.showcase.tsx")),
+	Drawer: processExamples(() => import("./Drawer.showcase.tsx")),
+	Fab: processExamples(() => import("./Fab.showcase.tsx")),
+	IconButton: processExamples(() => import("./IconButton.showcase.tsx")),
+	LinearProgress: processExamples(
+		() => import("./LinearProgress.showcase.tsx"),
+	),
+	Link: processExamples(() => import("./Link.showcase.tsx")),
+	List: processExamples(() => import("./List.showcase.tsx")),
+	Menu: processExamples(() => import("./Menu.showcase.tsx")),
+	MobileStepper: processExamples(() => import("./MobileStepper.showcase.tsx")),
+	NativeSelect: processExamples(() => import("./NativeSelect.showcase.tsx")),
+	Pagination: processExamples(() => import("./Pagination.showcase.tsx")),
+	Paper: processExamples(() => import("./Paper.showcase.tsx")),
+	Popover: processExamples(() => import("./Popover.showcase.tsx")),
+	RadioGroup: processExamples(() => import("./RadioGroup.showcase.tsx")),
+	Rating: processExamples(() => import("./Rating.showcase.tsx")),
+	Select: processExamples(() => import("./Select.showcase.tsx")),
+	Skeleton: processExamples(() => import("./Skeleton.showcase.tsx")),
+	Slider: processExamples(() => import("./Slider.showcase.tsx")),
+	Snackbar: processExamples(() => import("./Snackbar.showcase.tsx")),
+	SpeedDial: processExamples(() => import("./SpeedDial.showcase.tsx")),
+	Stepper: processExamples(() => import("./Stepper.showcase.tsx")),
+	SwipeableDrawer: processExamples(
+		() => import("./SwipeableDrawer.showcase.tsx"),
+	),
+	Switch: processExamples(() => import("./Switch.showcase.tsx")),
+	Table: processExamples(() => import("./Table.showcase.tsx")),
+	Tabs: processExamples(() => import("./Tabs.showcase.tsx")),
+	TextField: processExamples(() => import("./TextField.showcase.tsx")),
+	ToggleButton: processExamples(() => import("./ToggleButton.showcase.tsx")),
+	Tooltip: processExamples(() => import("./Tooltip.showcase.tsx")),
+	Typography: processExamples(() => import("./Typography.showcase.tsx")),
 };
 
 // ----------------------------------------------------------------------------
@@ -121,13 +134,17 @@ export default function Page() {
 					StrataKit MUI theme
 				</Typography>
 
-				{Object.entries(components).map(([name, Component]) => (
-					<React.Suspense key={name}>
-						<ComponentExamples name={name}>
-							<Component />
-						</ComponentExamples>
-					</React.Suspense>
-				))}
+				{Object.entries(components).map(
+					([name, { default: Component, knobs }]) => (
+						<React.Suspense key={name}>
+							<KnobsProvider knobs={knobs}>
+								<ComponentExamples name={name}>
+									<Component />
+								</ComponentExamples>
+							</KnobsProvider>
+						</React.Suspense>
+					),
+				)}
 			</Container>
 		</div>
 	);
@@ -141,11 +158,11 @@ interface ComponentExamplesProps {
 }
 
 function ComponentExamples(props: ComponentExamplesProps) {
-	const { name } = props;
+	const { children, name } = props;
 	const id = name.toLowerCase().replace(" ", "-");
 
 	const isTarget = useLocation().hash === `#${id}`;
-	const sourceCodeUrl = `${repoBaseUrl}/blob/main/apps/test-app/app/mui/${name}.tsx`;
+	const sourceCodeUrl = `${repoBaseUrl}/blob/main/apps/test-app/app/mui/${name}.showcase.tsx`;
 
 	// Scroll to heading on page load only.
 	React.useEffect(
@@ -161,25 +178,65 @@ function ComponentExamples(props: ComponentExamplesProps) {
 		[id],
 	);
 
+	const { knobs, enabled: enabledKnobs } = useKnobs();
+
+	/** Renders with the "wrapper" components returned by all the enabled knobs. */
+	const renderWithKnobs = (children: React.ReactNode) => {
+		return Object.entries(enabledKnobs).reduce(
+			(result, [knobName, enabled]) => {
+				if (!enabled) return result;
+				const KnobComponent = knobs.get(knobName);
+				return KnobComponent ? <KnobComponent>{result}</KnobComponent> : result;
+			},
+			children,
+		);
+	};
+
 	return (
-		<ExamplesContainer
+		<ExamplesShowcase
 			name={name}
 			id={id}
 			highlight={isTarget}
 			tools={
-				<IconButton
-					render={<a />}
-					href={sourceCodeUrl}
-					label="View source"
-					size="small"
-				>
-					<Icon href={svgScript} />
-				</IconButton>
+				<>
+					<IconButton
+						render={<a />}
+						href={sourceCodeUrl}
+						label="View source"
+						size="small"
+					>
+						<Icon href={svgScript} />
+					</IconButton>
+					<KnobControlEntrypoint />
+				</>
 			}
 		>
 			<Stack spacing={2} sx={{ alignItems: "start" }}>
-				{props.children}
+				{renderWithKnobs(children)}
 			</Stack>
-		</ExamplesContainer>
+		</ExamplesShowcase>
 	);
+}
+
+// ----------------------------------------------------------------------------
+
+type Knobs = Record<string, React.FC<{ children: React.ReactNode }>>;
+
+interface ExamplesModule {
+	default: React.FC;
+	knobs?: Knobs;
+}
+
+/** Wrapper over `React.lazy` that also extracts other imports from the file (e.g. `knobs`). */
+function processExamples(importFunc: () => Promise<ExamplesModule>) {
+	const modulePromise = importFunc();
+	const LazyComponent = React.lazy(async () => {
+		const { default: Component } = await modulePromise;
+		return { default: Component };
+	});
+
+	return {
+		default: LazyComponent,
+		knobs: modulePromise.then((module) => module.knobs ?? {}),
+	};
 }

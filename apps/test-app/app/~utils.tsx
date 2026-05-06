@@ -5,8 +5,11 @@
 
 import * as React from "react";
 import { useSearchParams } from "react-router";
+import { ThemeProvider } from "@mui/material/styles";
+import deepmerge from "@mui/utils/deepmerge";
 import { useSettingsStore } from "./~settings.tsx";
 
+import type { ComponentsProps, Theme } from "@mui/material/styles";
 import type { Root } from "@stratakit/mui";
 
 // ----------------------------------------------------------------------------
@@ -152,6 +155,56 @@ function SyncVariants({ variants }: { variants: Variant[] }) {
 	}, [variants, setVariants]);
 
 	return null;
+}
+
+// ---------------------------------------------------------------------------->;
+
+type KnobConfig = {
+	props?: ComponentsProps;
+};
+
+/**
+ * Helper for defining a "knob" that can be used for passing information (e.g. default props) to the examples showcase.
+ *
+ * Example usage:
+ *
+ * ```tsx
+ * export const knobs = {
+ *   disabled: createKnob({
+ *     props: {
+ *       MuiButton: { disabled: true }
+ *     },
+ *   }),
+ * };
+ * ```
+ *
+ * Returns a component that can be wrapped around the rendered example when the knob is enabled.
+ */
+export function createKnob(config: KnobConfig) {
+	return function Knob({ children }: { children: React.ReactNode }) {
+		const props = config.props;
+
+		if (!props || Object.keys(props).length === 0) {
+			return children;
+		}
+
+		return (
+			<ThemeProvider
+				theme={(outerTheme: Theme): Theme =>
+					deepmerge(outerTheme, {
+						components: Object.fromEntries(
+							Object.entries(props).map(([componentName, defaultProps]) => [
+								componentName,
+								{ defaultProps },
+							]),
+						),
+					})
+				}
+			>
+				{children}
+			</ThemeProvider>
+		);
+	};
 }
 
 // ----------------------------------------------------------------------------

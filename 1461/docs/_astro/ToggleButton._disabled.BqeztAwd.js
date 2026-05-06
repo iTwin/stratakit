@@ -1,1 +1,0 @@
-import{j as e,I as s}from"./_utils.DH8ojlfp.js";import{s as o}from"./placeholder.DEVurv6m.js";import{T as r}from"./ToggleButton.BZHHCUDr.js";const d=()=>e.jsx(r,{value:"disabled",label:"Disabled",disabled:!0,children:e.jsx(s,{href:o})});export{d as default};

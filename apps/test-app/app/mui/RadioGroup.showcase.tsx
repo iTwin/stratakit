@@ -4,6 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 import RadioGroupDefault from "examples/mui/RadioGroup.default.tsx";
 import RadioGroupError from "examples/mui/RadioGroup.error.tsx";
+import { createKnob } from "~/~utils.tsx";
 
 export default function RadioGroupExamples() {
 	return (
@@ -13,3 +14,13 @@ export default function RadioGroupExamples() {
 		</>
 	);
 }
+
+export const knobs = {
+	disabled: createKnob({
+		props: {
+			MuiFormControl: {
+				disabled: true,
+			},
+		},
+	}),
+};

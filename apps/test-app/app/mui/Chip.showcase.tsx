@@ -9,7 +9,7 @@ import ChipDefault from "examples/mui/Chip.default.tsx";
 import ChipDeletable from "examples/mui/Chip.deletable.tsx";
 import ChipOutlined from "examples/mui/Chip.outlined.tsx";
 import ChipSizes from "examples/mui/Chip.sizes.tsx";
-import { isProduction } from "../~utils.tsx";
+import { createKnob, isProduction } from "~/~utils.tsx";
 
 export default function ChipExamples() {
 	return (
@@ -23,3 +23,13 @@ export default function ChipExamples() {
 		</Stack>
 	);
 }
+
+export const knobs = {
+	disabled: createKnob({
+		props: {
+			MuiChip: {
+				disabled: true,
+			},
+		},
+	}),
+};

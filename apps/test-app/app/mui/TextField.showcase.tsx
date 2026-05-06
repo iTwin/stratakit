@@ -9,6 +9,7 @@ import TextFieldError from "examples/mui/TextField.error.tsx";
 import TextFieldIcon from "examples/mui/TextField.icon.tsx";
 import TextFieldMultiline from "examples/mui/TextField.multiline.tsx";
 import TextFieldSizes from "examples/mui/TextField.sizes.tsx";
+import { createKnob } from "~/~utils.tsx";
 
 export default function TextFieldExamples() {
 	return (
@@ -22,3 +23,13 @@ export default function TextFieldExamples() {
 		</Stack>
 	);
 }
+
+export const knobs = {
+	disabled: createKnob({
+		props: {
+			MuiTextField: {
+				disabled: true,
+			},
+		},
+	}),
+};

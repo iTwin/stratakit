@@ -5,6 +5,7 @@
 import AutocompleteDefault from "examples/mui/Autocomplete.default.tsx";
 import AutocompleteMultiple from "examples/mui/Autocomplete.multiple.tsx";
 import AutocompleteSizes from "examples/mui/Autocomplete.sizes.tsx";
+import { createKnob } from "~/~utils.tsx";
 
 export default function AutocompleteExamples() {
 	return (
@@ -15,3 +16,13 @@ export default function AutocompleteExamples() {
 		</>
 	);
 }
+
+export const knobs = {
+	disabled: createKnob({
+		props: {
+			MuiAutocomplete: {
+				disabled: true,
+			},
+		},
+	}),
+};

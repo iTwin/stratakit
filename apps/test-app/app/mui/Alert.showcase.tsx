@@ -6,7 +6,7 @@ import Stack from "@mui/material/Stack";
 import AlertPermutations_ from "examples/mui/Alert._permutations.tsx";
 import AlertDefault from "examples/mui/Alert.default.tsx";
 import AlertTitle from "examples/mui/Alert.title.tsx";
-import { isProduction } from "../~utils.tsx";
+import { isProduction } from "~/~utils.tsx";
 
 export default function AlertExamples() {
 	return (

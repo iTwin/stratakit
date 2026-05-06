@@ -5,7 +5,7 @@
 import Stack from "@mui/material/Stack";
 import CircularProgressColors_ from "examples/mui/CircularProgress._colors.tsx";
 import CircularProgressDefault from "examples/mui/CircularProgress.default.tsx";
-import { isProduction } from "../~utils.tsx";
+import { isProduction } from "~/~utils.tsx";
 
 export default function CircularProgressExamples() {
 	return (

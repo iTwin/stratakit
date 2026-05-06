@@ -4,6 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 import ButtonGroupDefault from "examples/mui/ButtonGroup.default.tsx";
 import ButtonGroupSizes from "examples/mui/ButtonGroup.sizes.tsx";
+import { createKnob } from "~/~utils.tsx";
 
 export default function ButtonGroupExamples() {
 	return (
@@ -13,3 +14,13 @@ export default function ButtonGroupExamples() {
 		</>
 	);
 }
+
+export const knobs = {
+	disabled: createKnob({
+		props: {
+			MuiButtonGroup: {
+				disabled: true,
+			},
+		},
+	}),
+};

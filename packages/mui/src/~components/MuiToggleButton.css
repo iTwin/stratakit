@@ -23,9 +23,10 @@
 
 	&:where(.Mui-selected) {
 		--_MuiToggleButton-bg--active: var(--✨bg--selected);
+		--_MuiToggleButton-border--active: var(--✨border--selected);
 
 		background-color: var(--_MuiToggleButton-bg--active);
-		border-color: var(--✨border--selected);
+		border-color: var(--_MuiToggleButton-border--active);
 		color: var(--stratakit-color-text-accent-strong);
 		--🥝Icon-color: var(--stratakit-color-icon-accent-strong);
 
@@ -39,11 +40,8 @@
 	&:where(.Mui-disabled) {
 		color: var(--stratakit-color-text-neutral-disabled);
 		--🥝Icon-color: var(--stratakit-color-icon-neutral-disabled);
-
-		&:where(.Mui-selected) {
-			--_MuiToggleButton-bg--active: var(--✨bg--selected-disabled);
-			border-color: var(--✨border--selected-disabled);
-		}
+		--_MuiToggleButton-bg--active: var(--✨bg--selected-disabled);
+		--_MuiToggleButton-border--active: var(--✨border--selected-disabled);
 	}
 }
 

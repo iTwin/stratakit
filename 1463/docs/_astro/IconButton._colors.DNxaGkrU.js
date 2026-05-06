@@ -1,0 +1,1 @@
+import{j as s,L as o,I as t}from"./_utils.DVmeya8E.js";import{s as e}from"./placeholder.CNODHSK7.js";const a=["primary","secondary","error"],p=()=>a.map(r=>s.jsx(o,{color:r,label:`${r.charAt(0).toUpperCase()}${r.slice(1)}`,children:s.jsx(t,{href:e})},r));export{p as default};

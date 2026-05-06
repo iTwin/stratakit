@@ -4,12 +4,12 @@
  *--------------------------------------------------------------------------------------------*/
 
 .MuiToggleButton-root {
-	--✨bg--selected: var(--stratakit-color-bg-glow-on-surface-accent-pressed);
-	--✨bg--selected-hover: var(--stratakit-color-bg-glow-on-surface-accent-active-hover);
-	--✨bg--selected-disabled: var(--stratakit-color-bg-glow-on-surface-disabled);
+	--✨bg--active: var(--stratakit-color-bg-glow-on-surface-accent-pressed);
+	--✨bg--active-hover: var(--stratakit-color-bg-glow-on-surface-accent-active-hover);
+	--✨bg--active-disabled: var(--stratakit-color-bg-glow-on-surface-disabled);
 
-	--✨border--selected: var(--stratakit-color-border-accent-strong);
-	--✨border--selected-disabled: var(--stratakit-color-border-glow-on-surface-disabled);
+	--✨border--active: var(--stratakit-color-border-accent-strong);
+	--✨border--active-disabled: var(--stratakit-color-border-glow-on-surface-disabled);
 
 	/* Standalone ToggleButton. */
 	&:where(:not(.MuiToggleButtonGroup-grouped)) {
@@ -22,8 +22,8 @@
 	}
 
 	&:where(.Mui-selected) {
-		--_MuiToggleButton-bg--active: var(--✨bg--selected);
-		--_MuiToggleButton-border--active: var(--✨border--selected);
+		--_MuiToggleButton-bg--active: var(--✨bg--active);
+		--_MuiToggleButton-border--active: var(--✨border--active);
 
 		background-color: var(--_MuiToggleButton-bg--active);
 		border-color: var(--_MuiToggleButton-border--active);
@@ -32,7 +32,7 @@
 
 		@media (any-hover: hover) {
 			&:where(:hover) {
-				--_MuiToggleButton-bg--active: var(--✨bg--selected-hover);
+				--_MuiToggleButton-bg--active: var(--✨bg--active-hover);
 			}
 		}
 	}
@@ -40,8 +40,8 @@
 	&:where(.Mui-disabled) {
 		color: var(--stratakit-color-text-neutral-disabled);
 		--🥝Icon-color: var(--stratakit-color-icon-neutral-disabled);
-		--_MuiToggleButton-bg--active: var(--✨bg--selected-disabled);
-		--_MuiToggleButton-border--active: var(--✨border--selected-disabled);
+		--_MuiToggleButton-bg--active: var(--✨bg--active-disabled);
+		--_MuiToggleButton-border--active: var(--✨border--active-disabled);
 	}
 }
 

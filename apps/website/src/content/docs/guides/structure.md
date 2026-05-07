@@ -59,7 +59,7 @@ Avoid _prioritizing_ the focus of certain elements by applying a positive `tabin
 <!-- ❌ -->
 <ButtonGroup aria-label="Button group">
   <Button>Focused second</Button>
-  <Button tabindex="1">Focused first</Button>
+  <Button tabIndex="1">Focused first</Button>
   <Button>Focused last</Button>
 </ButtonGroup>
 ```

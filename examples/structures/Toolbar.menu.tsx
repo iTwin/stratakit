@@ -1,0 +1,123 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+
+import * as React from "react";
+import Button from "@mui/material/Button";
+import IconButton from "@mui/material/IconButton";
+import ListItemIcon from "@mui/material/ListItemIcon";
+import ListItemText from "@mui/material/ListItemText";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
+import visuallyHidden from "@mui/utils/visuallyHidden";
+import { Icon } from "@stratakit/mui";
+import { unstable_Toolbar as Toolbar } from "@stratakit/structures";
+
+import svgCheckmark from "@stratakit/icons/checkmark.svg";
+import svgChevronDown from "@stratakit/icons/chevron-down.svg";
+import svgClipboard from "@stratakit/icons/clipboard.svg";
+import svgCopy from "@stratakit/icons/copy.svg";
+
+export default () => {
+	const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+	const open = Boolean(anchorEl);
+
+	const [fontFamily, setFontFamily] = React.useState("Sans-serif");
+
+	const fontFamilyLabelId = React.useId();
+
+	const closeMenu = () => {
+		setAnchorEl(null);
+	};
+
+	return (
+		<Toolbar.Group variant="solid">
+			<Toolbar.Item
+				render={
+					<IconButton label="Copy">
+						<Icon href={`${svgCopy}#icon-large`} size="large" />
+					</IconButton>
+				}
+			/>
+			<Toolbar.Item
+				render={
+					<IconButton label="Paste">
+						<Icon href={`${svgClipboard}#icon-large`} size="large" />
+					</IconButton>
+				}
+			/>
+			<Toolbar.Item
+				render={
+					<Button
+						aria-haspopup="true"
+						aria-expanded={open ? "true" : "false"}
+						onClick={(event) => setAnchorEl(event.currentTarget)}
+						endIcon={<Icon href={svgChevronDown} />}
+					>
+						<span id={fontFamilyLabelId} style={visuallyHidden}>
+							Font family:
+						</span>
+						{fontFamily}
+					</Button>
+				}
+			/>
+			<Menu
+				anchorEl={anchorEl}
+				open={open}
+				onClose={closeMenu}
+				slotProps={{
+					list: {
+						"aria-labelledby": fontFamilyLabelId,
+					},
+				}}
+			>
+				<MenuItem
+					role="menuitemradio"
+					aria-checked={fontFamily === "Sans-serif"}
+					onClick={() => {
+						setFontFamily("Sans-serif");
+						closeMenu();
+					}}
+				>
+					<ListItemText>Sans-serif</ListItemText>
+					{fontFamily === "Sans-serif" && (
+						<ListItemIcon>
+							<Icon href={svgCheckmark} />
+						</ListItemIcon>
+					)}
+				</MenuItem>
+				<MenuItem
+					role="menuitemradio"
+					aria-checked={fontFamily === "Serif"}
+					onClick={() => {
+						setFontFamily("Serif");
+						closeMenu();
+					}}
+				>
+					<ListItemText>Serif</ListItemText>
+					{fontFamily === "Serif" && (
+						<ListItemIcon>
+							<Icon href={svgCheckmark} />
+						</ListItemIcon>
+					)}
+				</MenuItem>
+				<MenuItem
+					role="menuitemradio"
+					aria-checked={fontFamily === "Monospace"}
+					onClick={() => {
+						setFontFamily("Monospace");
+						closeMenu();
+					}}
+				>
+					<ListItemText>Monospace</ListItemText>
+					{fontFamily === "Monospace" && (
+						<ListItemIcon>
+							<Icon href={svgCheckmark} />
+						</ListItemIcon>
+					)}
+				</MenuItem>
+			</Menu>
+		</Toolbar.Group>
+	);
+};

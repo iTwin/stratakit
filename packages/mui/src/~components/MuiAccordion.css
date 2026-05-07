@@ -61,5 +61,6 @@
 }
 
 .MuiAccordionDetails-root {
+	color: var(--stratakit-color-text-neutral-secondary);
 	padding: var(--_MuiAccordion-padding);
 }

@@ -52,14 +52,14 @@ Interactive elements must be focusable so that the interface can be operated by 
 Avoid _prioritizing_ the focus of certain elements by applying a positive `tabindex` value or the `autofocus` attribute.
 
 ```jsx
-<!-- ❌ -->
+/* ❌ */
 <Link href="/some/page">Focused last</Link>
-<TextField label="Focused first" autofocus />
+<TextField label="Focused first" autoFocus />
 
 <!-- ❌ -->
 <ButtonGroup aria-label="Button group">
   <Button>Focused second</Button>
-  <Button tabindex="1">Focused first</Button>
+  <Button tabIndex="1">Focused first</Button>
   <Button>Focused last</Button>
 </ButtonGroup>
 ```
@@ -156,7 +156,7 @@ The generic `group` role is not the only way to encode a relationship of belongi
   <tr>
     <td>Figure</td>
     <td>Providing captions for images and other media.</td>
-    <td><code>&lt;figure></code> and <code>&lt;figcaption></code>. The the <code>&lt;figcaption></code> must appear alongside the media, each inside the <code>&lt;figure></code></td>
+    <td><code>&lt;figure></code> and <code>&lt;figcaption></code>. The <code>&lt;figcaption></code> must appear alongside the media, each inside the <code>&lt;figure></code></td>
     <td>None currently provided</td>
   </tr>
 </table>
@@ -165,9 +165,9 @@ The generic `group` role is not the only way to encode a relationship of belongi
 
 [Landmarks](https://www.w3.org/WAI/ARIA/apg/practices/landmark-regions/) are the continents in the map of your interface. Landmarks are large and few in number. Everything (all components) must belong to one landmark or another. They have specific purposes:
 
-- `<main>`: Include just once per screen/page. This encapsulates the main, unique content of the screen.
+- [`<main>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/main): Include just once per screen/page. This encapsulates the main, unique content of the screen.
 - `<header>`: Include just one at the start of the document. This may contain a principle `<nav>` element.
-- `<nav>`: Multiple can be used for different purposes, such as site navigation, pagination, and tables of content. Give each `<nav>` a unique label, like `<nav aria-label="table of content">`. This differentiates the landmarks when aggregated in screen reader software.
+- `<nav>`: Multiple can be used for different purposes, such as site navigation, pagination, and tables of content. Give each `<nav>` a unique label, like `<nav aria-label="table of contents">`. This differentiates the landmarks when aggregated in screen reader software.
 - `role="search"`: Identifies the element containing the page’s principle search functionality. Apply the `role` attribution to an element containing the `<form>` element. Do not place `role="search"` on the `<form>` element itself.
 - `<aside>`: For complementary content and functionality. If your model is the content of `<main>`, then an `<aside>` might contain a tree component for calibrating your model’s layers. Alternatively, the tree may be considered part of the model and the `<aside>` part of the `<main>` content, alongside the model itself.
 - `<footer>`: Used once at the end of the document. Useful for including company and product identification, and related links.

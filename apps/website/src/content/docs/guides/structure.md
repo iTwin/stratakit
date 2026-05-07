@@ -52,7 +52,7 @@ Interactive elements must be focusable so that the interface can be operated by 
 Avoid _prioritizing_ the focus of certain elements by applying a positive `tabindex` value or the `autofocus` attribute.
 
 ```jsx
-<!-- ❌ -->
+/* ❌ */
 <Link href="/some/page">Focused last</Link>
 <TextField label="Focused first" autoFocus />
 

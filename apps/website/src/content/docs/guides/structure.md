@@ -82,8 +82,6 @@ If you are implementing your own skip link, point the skip link's `href` to the 
 <main id="main" tabindex="-1">...</main>
 ```
 
-For reference, **iTwinUI** has the [SkipToContentLink component](https://itwinui.bentley.com/docs/skiptocontentlink).
-
 ## Belonging
 
 The Gestalt principle of [common region](https://www.nngroup.com/articles/common-region/) states that _“items within a boundary are perceived as a group”_. From forms to dialogs, all sorts of elements take a border, background color, or both, to communicate their contents _belong together_. 

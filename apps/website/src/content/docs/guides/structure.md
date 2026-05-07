@@ -156,7 +156,7 @@ The generic `group` role is not the only way to encode a relationship of belongi
   <tr>
     <td>Figure</td>
     <td>Providing captions for images and other media.</td>
-    <td><code>&lt;figure></code> and <code>&lt;figcaption></code>. The the <code>&lt;figcaption></code> must appear alongside the media, each inside the <code>&lt;figure></code></td>
+    <td><code>&lt;figure></code> and <code>&lt;figcaption></code>. The <code>&lt;figcaption></code> must appear alongside the media, each inside the <code>&lt;figure></code></td>
     <td>None currently provided</td>
   </tr>
 </table>

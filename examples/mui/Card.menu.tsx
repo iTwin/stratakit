@@ -58,14 +58,12 @@ function ActionsMenu() {
 	const handleClose = () => setAnchorEl(null);
 
 	const buttonId = React.useId();
-	const menuId = React.useId();
 
 	return (
 		<>
 			<IconButton
 				label="More actions"
 				id={buttonId}
-				aria-controls={open ? menuId : undefined}
 				aria-haspopup="true"
 				aria-expanded={open ? "true" : "false"}
 				onClick={(event) => setAnchorEl(event.currentTarget)}
@@ -73,7 +71,6 @@ function ActionsMenu() {
 				<Icon href={svgMore} />
 			</IconButton>
 			<Menu
-				id={menuId}
 				anchorEl={anchorEl}
 				open={open}
 				onClose={handleClose}

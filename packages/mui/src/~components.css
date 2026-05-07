@@ -59,3 +59,7 @@
 		text-underline-offset: var(--stratakit-space-x1);
 	}
 }
+
+.MuiRating-root {
+	inline-size: fit-content;
+}

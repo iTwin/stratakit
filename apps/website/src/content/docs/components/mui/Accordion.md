@@ -34,7 +34,7 @@ Make sure the **Accordion** is suitable for your use case. There may be other, m
 
 ### Expanded
 
-Disclose any **Accordion’s** content by default using the `defaultExpanded` prop. Alternatively, use `expanded` and `onChange` props to control the expanded state.
+Disclose any **Accordion's** content by default using the `defaultExpanded` prop. Alternatively, use `expanded` and `onChange` props to control the expanded state.
 
 ::example{src="mui/Accordion.expanded"}
 
@@ -66,7 +66,7 @@ Multiple adjacent **Accordions** make a set. To make this set programmatically d
 
 :::caution[Heading levels]
 
-It’s important you use an [appropriate heading level](https://www.a11yproject.com/posts/how-to-accessible-heading-structure/) for each **Accordion**. Since **Accordions** can only represent one level of data (see [**Use cases**](#use-cases)), each **Accordion** in a set must take the _same_ heading level.
+It's important you use an [appropriate heading level](https://www.a11yproject.com/posts/how-to-accessible-heading-structure/) for each **Accordion**. Since **Accordions** can only represent one level of data (see [**Use cases**](#use-cases)), each **Accordion** in a set must take the _same_ heading level.
 
 - Title of page (`h1` heading)
   - **Accordion** 1 (`h2` heading)
@@ -91,11 +91,11 @@ Use the `AccordionActions` component to display actions related to the content o
 ## ✅ Do
 
 - Use **Accordion** to tidy away long sections of content, to be later disclosed.
-- Adopt the correct heading level for the **Accordion’s** position in the document structure. The heading component can be [changed in the `slotProps`](https://mui.com/material-ui/react-accordion/#changing-heading-level).
+- Adopt the correct heading level for the **Accordion's** position in the document structure. The heading component can be [changed in the `slotProps`](https://mui.com/material-ui/react-accordion/#changing-heading-level).
 
-## 🚫 Don’t
+## 🚫 Don't
 
-- Don’t nest **Accordions** inside one another.
-- Don’t use different heading levels for **Accordion** items in the same set. Since **Accordions** cannot be nested, they are at the same level in the document hierarchy.
-- Don’t close an **Accordion** when another **Accordion** is opened. Exclusive **Accordions** create [accessibility and usability issues](https://yatil.net/blog/exclusive-accordions).
+- Don't nest **Accordions** inside one another.
+- Don't use different heading levels for **Accordion** items in the same set. Since **Accordions** cannot be nested, they are at the same level in the document hierarchy.
+- Don't close an **Accordion** when another **Accordion** is opened. Exclusive **Accordions** create [accessibility and usability issues](https://yatil.net/blog/exclusive-accordions).
 - Don't place interactive elements inside an `AccordionSummary`.

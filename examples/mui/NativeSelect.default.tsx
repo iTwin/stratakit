@@ -13,7 +13,7 @@ export default () => {
 	return (
 		<FormControl>
 			<InputLabel variant="standard" htmlFor={inputId}>
-				Choose a design system:
+				Design system:
 			</InputLabel>
 			<NativeSelect
 				defaultValue={2}

@@ -25,6 +25,13 @@ links:
 
 ::example{src="mui/Slider.range" min-width="300px"}
 
+### Sizes
+
+- **Small:** Use in compact interfaces where space is limited.
+- **Medium:** Default size, suitable for most use cases.
+
+::example{src="mui/Slider.sizes" min-width="300px"}
+
 ### Tooltip
 
 Use the `valueLabelDisplay` prop to show a tooltip near the **Slider** thumb for more precise selection.

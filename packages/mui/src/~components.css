@@ -22,6 +22,7 @@
 @import "./~components/MuiInput.css";
 @import "./~components/MuiList.css";
 @import "./~components/MuiMenu.css";
+@import "./~components/MuiPagination.css";
 @import "./~components/MuiSelect.css";
 @import "./~components/MuiSlider.css";
 @import "./~components/MuiStepper.css";
@@ -56,13 +57,5 @@
 
 	&:where(:hover, :focus-visible) {
 		text-underline-offset: var(--stratakit-space-x1);
-	}
-}
-
-.MuiPaginationItem-root {
-	&:where(.Mui-selected) {
-		background-color: var(--stratakit-color-bg-glow-on-surface-accent-pressed);
-		border: 1px solid var(--stratakit-color-border-accent-strong);
-		color: var(--stratakit-color-text-accent-strong);
 	}
 }

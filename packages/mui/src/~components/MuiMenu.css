@@ -20,6 +20,7 @@
 	--✨color-bg--hover: var(--stratakit-color-bg-glow-on-surface-neutral-hover);
 	--✨color-bg--pressed: var(--stratakit-color-bg-glow-on-surface-neutral-pressed);
 	--✨color-bg--selected: var(--stratakit-color-bg-glow-on-surface-accent-pressed);
+	--✨color-bg--selected-hover: var(--stratakit-color-bg-glow-on-surface-accent-active-hover);
 	--✨color-bg--disabled: transparent;
 	--✨color-border--selected: var(--stratakit-color-border-accent-strong);
 	--✨color-icon--default: var(--stratakit-color-icon-neutral-base);
@@ -93,6 +94,12 @@
 		--_MuiMenuItem-background-color: var(--✨color-bg--selected);
 		--_MuiMenuItem-color: var(--✨color-text--selected);
 		--_MuiMenuItem-root-mask-image: var(--✨svg-checked);
+
+		@media (any-hover: hover) {
+			&:where(:hover) {
+				--_MuiMenuItem-background-color: var(--✨color-bg--selected-hover);
+			}
+		}
 
 		&:where(:not(.Mui-disabled)) {
 			--_MuiMenuItem-border-color: var(--✨color-border--selected);

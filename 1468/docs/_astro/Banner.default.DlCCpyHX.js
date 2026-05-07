@@ -1,0 +1,1 @@
+import{j as e}from"./_utils.B2zeEgcc.js";import{B as s}from"./Banner.CKNPoe-l.js";const r=()=>e.jsx(s,{label:"Update complete",message:"Your settings have been saved successfully."});export{r as default};

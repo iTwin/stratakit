@@ -177,13 +177,11 @@ The generic `group` role is not the only way to encode a relationship of belongi
 If landmarks represent continents, then sections are countries: subdivisions of landmarks. Headings _implicitly_ define a section by introducing—rather than wrapping—that section content.
 
 ```jsx
-<Typography variant="h2">
-  Introduction of subsection 1
-</Typography>
-<p>The content belonging to subsection 1.</p>
+<h2>Introduction of a subsection</h2>
+<p>The content belonging to the subsection.</p>
 ```
 
-The provided heading elements, from `<h1>` to `<h6>`, are numbered according to section depth. For example, an `<h3>` following an `<h2>` introduces a subsection to the `<h2>`’s section.
+The provided heading elements (`<h1>` to `<h6>`) are numbered according to section depth. 
 
 - `<h1>` (`variant="h1"`): introduces the page
   - `<h2>` (`variant="h2"`): introduces a subsection in the page
@@ -192,7 +190,7 @@ The provided heading elements, from `<h1>` to `<h6>`, are numbered according to 
 
 Headings, and a logical application of heading levels, are indispensable for describing the relationships of belonging that make up the document’s structure. Landmarks and headings together expose the information topology to different users, their assistive software, and agents.
 
-Just because some text appears large or **bold** does not make it a heading. A heading must introduce a section (or subsection) of thematically distinct content. For large (or otherwise attention grabbing) text, not intended as a heading, use a heading `variant` but change the underlying element using the `render` prop:
+Just because some text appears large or **bold** does not make it a heading. A heading must introduce a section (or subsection) of thematically distinct content. For large (or otherwise attention grabbing) text, not intended as a heading, use a [**Typography**](/docs/components/typography) heading `variant` but change the underlying element using the `render` prop:
 
 ```jsx
 <Typography variant="h4" render={<span />}>

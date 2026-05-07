@@ -1,5 +1,27 @@
 # Changelog
 
+## 0.4.1
+
+- [#1442](https://github.com/iTwin/stratakit/pull/1442): Added a new `labelPlacement` prop to `IconButton` and `ToggleButton` components to control the placement of a tooltip that is shown when the `label` prop is specified.
+- [#1393](https://github.com/iTwin/stratakit/pull/1393): Added ability to display text in the `ToggleButton` when rendered as a `Button`.
+- [#1444](https://github.com/iTwin/stratakit/pull/1444): Enabled `hover` prop for `TableRow` when inside `TableBody`.
+- [#1416](https://github.com/iTwin/stratakit/pull/1416): `Typography` will now log a warning during development if a heading variant is used without explicitly setting the `render` prop. This change is to help developers ensure correct heading structure.
+- Accessibility improvements:
+  - [#1417](https://github.com/iTwin/stratakit/pull/1417): `AvatarGroup` DOM order now matches the visual display order.
+  - [#1437](https://github.com/iTwin/stratakit/pull/1437): Added list semantics to `AvatarGroup` and nested `Avatar`s.
+  - [#1420](https://github.com/iTwin/stratakit/pull/1420): Add `role="dialog"` to `Popover`'s `paper` slot.
+  - [#1215](https://github.com/iTwin/stratakit/pull/1215): Added [`group` role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/group_role) to `Autocomplete`.
+- Styling changes:
+  - [#1360](https://github.com/iTwin/stratakit/pull/1360): Updated styling for `Table` row height & hover state.
+  - [#1431](https://github.com/iTwin/stratakit/pull/1431): Fixed visual appearance of `Switch` thumb.
+  - [#1428](https://github.com/iTwin/stratakit/pull/1428): Decreased the font-size of `DialogContentText`.
+  - [#1432](https://github.com/iTwin/stratakit/pull/1432): Updated `Typography` styles for `"subtitle1"` and `"subtitle2"` variants.
+  - [#1424](https://github.com/iTwin/stratakit/pull/1424): Styled `Slider`'s mark labels to match the Strata visual design language.
+  - [#1398](https://github.com/iTwin/stratakit/pull/1398): Styled `Slider`'s tooltip to match the Strata visual design language.
+  - [#1393](https://github.com/iTwin/stratakit/pull/1393): Styled `ToggleButton` to visually match the `IconButton` component.
+  - [#1430](https://github.com/iTwin/stratakit/pull/1430): Adjusted spacing between `CardHeader` and `CardContent` / `CardActions`.
+  - [#1426](https://github.com/iTwin/stratakit/pull/1426): The `AvatarGroup` surplus element no longer defaults to uppercase.
+
 ## 0.4.0
 
 ### Breaking changes

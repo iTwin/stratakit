@@ -17,7 +17,7 @@ import Typography from "@mui/material/Typography";
 import { Icon } from "@stratakit/mui";
 
 import svgMore from "@stratakit/icons/more-vertical.svg";
-import styles from "./Card.header.module.css";
+import styles from "./Card.menu.module.css";
 
 export default () => {
 	return (
@@ -44,8 +44,9 @@ export default () => {
 				</Typography>
 			</CardContent>
 			<CardActions>
-				<Button>View</Button>
-				<Button>Edit</Button>
+				<Button render={<a href="#" />} nativeButton={false}>
+					View
+				</Button>
 			</CardActions>
 		</Card>
 	);
@@ -82,7 +83,6 @@ function ActionsMenu() {
 					},
 				}}
 			>
-				<MenuItem onClick={handleClose}>View</MenuItem>
 				<MenuItem onClick={handleClose}>Favorite</MenuItem>
 				<MenuItem onClick={handleClose}>Delete</MenuItem>
 			</Menu>

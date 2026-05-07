@@ -3,7 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import { defineCollection, reference, z } from "astro:content";
+import { defineCollection, reference } from "astro:content";
 import * as fs from "node:fs/promises";
 import { createRequire } from "node:module";
 import * as path from "node:path";
@@ -11,6 +11,7 @@ import * as path from "node:path";
 import { docsLoader } from "@astrojs/starlight/loaders";
 import { docsSchema } from "@astrojs/starlight/schema";
 import { file } from "astro/loaders";
+import { z } from "astro/zod";
 import { slug as generateSlug } from "github-slugger";
 
 import type { DataStore, Loader } from "astro/loaders";
@@ -67,7 +68,7 @@ export const collections = {
 };
 
 /** Content Loader that loads package entries from `api.json`. */
-function packagesLoader(): Loader {
+function packagesLoader() {
 	return file("./api.json", {
 		parser: (content) => {
 			const packages = JSON.parse(content) as Api;
@@ -121,7 +122,7 @@ function packagesLoader(): Loader {
 				}),
 			}));
 		},
-	});
+	}) satisfies Loader;
 }
 
 function packagesSchema() {
@@ -141,6 +142,7 @@ function packagesSchema() {
 		baseProps: z.array(z.string()),
 		props,
 		barrelName: z.string().optional(),
+		deprecated: z.boolean().optional(),
 	});
 	return z.object({
 		name: z.string(),
@@ -151,7 +153,7 @@ function packagesSchema() {
 				exportName: z.string().optional(),
 				convenience: component.optional(),
 				composition: z.array(component),
-				status: z.enum(["unstable", "stable"]).optional(),
+				status: z.enum(["unstable", "stable", "deprecated"]).optional(),
 				types: z
 					.array(
 						z.object({
@@ -173,7 +175,7 @@ function packagesSchema() {
 }
 
 /** Content Loader that extracts JSDoc entries from `api.json`. */
-function jsdocLoader(): Loader {
+function jsdocLoader() {
 	return {
 		name: "jsdoc-loader",
 		load: async ({ store, watcher, renderMarkdown }) => {
@@ -282,23 +284,25 @@ function jsdocLoader(): Loader {
 			watcher?.on("change", handleDevelopmentChange);
 			watcher?.on("unlink", handleDevelopmentChange);
 		},
-	};
+	} satisfies Loader;
 }
 
 /** Content Loader that reads all `.tsx` and `.jsx` files from the `examples` package subdirectories. */
-function examplesLoader(): Loader {
+function examplesLoader() {
 	const populateExamples = async (store: DataStore) => {
 		store.clear();
 
 		const examplesPath = path.dirname(require.resolve("examples/package.json"));
 		const examplesDir = await fs.readdir(examplesPath);
-		const packages = examplesDir.filter((entry) => {
-			const entryPath = path.join(examplesPath, entry);
-			return fs
-				.stat(entryPath)
-				.then((stat) => stat.isDirectory()) // only include directories
-				.catch(() => false);
-		});
+		const packages = (
+			await Array.fromAsync(examplesDir, (entry) => {
+				const entryPath = path.join(examplesPath, entry);
+				return fs
+					.stat(entryPath)
+					.then((stat) => (stat.isDirectory() ? entry : null)) // only include directories
+					.catch(() => null);
+			})
+		).filter((value): value is string => value !== null);
 
 		for (const packageName of packages) {
 			const packagePath = path.join(examplesPath, packageName);
@@ -343,7 +347,7 @@ function examplesLoader(): Loader {
 			watcher?.on("change", handleDevelopmentChange);
 			watcher?.on("unlink", handleDevelopmentChange);
 		},
-	};
+	} satisfies Loader;
 }
 
 function getComponentId({
@@ -374,6 +378,13 @@ function getPropId({
 
 function getApiStatus(api: Api.Api) {
 	if (api.types && api.types.length > 0) return undefined;
+
+	const components = [...api.composition, api.convenience].filter(Boolean);
+	const deprecated =
+		components.length > 0 &&
+		components.every((component) => component?.deprecated);
+	if (deprecated) return "deprecated";
+
 	return api.exportName?.startsWith("unstable_")
 		? ("unstable" as const)
 		: ("stable" as const);

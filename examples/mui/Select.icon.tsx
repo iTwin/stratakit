@@ -18,7 +18,7 @@ import svgStar from "@stratakit/icons/star.svg";
 
 export default () => {
 	const labelId = React.useId();
-	const label = "Choose a shape:";
+	const label = "Favorite shape:";
 	return (
 		<FormControl>
 			<InputLabel id={labelId}>{label}</InputLabel>

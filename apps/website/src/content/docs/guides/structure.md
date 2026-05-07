@@ -64,7 +64,25 @@ Avoid _prioritizing_ the focus of certain elements by applying a positive `tabin
 </ButtonGroup>
 ```
 
-More complex interactive components like [**Menu**](/docs/components/menu) and [**Dialog**](/docs/components/dialog) manage focus automatically. Implement these components to avoid focus order issues that could trip up a user or agent trying to navigate and make sense of the interface.
+More complex interactive components like [**Menu**](/docs/components/menu) and [**Dialog**](/docs/components/dialog) manage focus automatically. Implement these components to avoid focus order issues that could trip up a user or agent.
+
+### Skip link
+
+In the order of major page [landmarks](#landmarks), the `<header>`—typically including a `<nav>`—is expected to come first. 
+
+A skip link is a mechanism for bypassing this header/navigation functionality to interact directly with the main content of the page. It is a provision for keyboard users and is considered an accessibility requirement according to [WCAG](https://www.w3.org/WAI/WCAG22/Understanding/bypass-blocks.html).
+
+Typically, skip links are hidden until focused by keyboard. They are not needed by or available to mouse users.
+
+If you are implementing your own skip link, point the skip link's `href` to the `<main>` element page fragment. To ensure keyboard focus follows the link, include `tabindex="-1"` on the target element.
+
+```html
+<a href="#main">skip to content</a>
+<!-- page preamble here -->
+<main id="main" tabindex="-1">...</main>
+```
+
+For reference, **iTwinUI** has the [SkipToContentLink component](https://itwinui.bentley.com/docs/skiptocontentlink).
 
 ## Belonging
 
@@ -82,9 +100,9 @@ Nesting HTML elements (placing them inside one another) is an everyday practice.
 </div>
 ```
 
-The intent to communicate belonging is clear from the nested structure and the “ButtonGroup” classname. It’s also expressed visually, via CSS, by making the buttons share a common border. However, neither a screen reader nor a crawler will acknowledge the `<div>`—and for good reason! We use `<div>`s to organize our HTML, not the information within it.
+The intent to communicate belonging is clear from the nested structure and the `ButtonGroup` classname. It’s also expressed visually, via CSS, by making the buttons share a common border. However, neither a screen reader nor a crawler will acknowledge the `<div>`—and for good reason! We use `<div>`s to organize our HTML, not the information within it.
 
-To communicate the presence of a group, we can encode with [`role="group"`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/group_role). Whatever you call this group should be the wording of its accompanying label.
+To communicate the presence of a group, we can encode it with [`role="group"`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/group_role). Whatever you call this group should be the wording of its accompanying label.
 
 ```jsx
 <div role="group" aria-label="Text formatting">
@@ -181,4 +199,3 @@ Just because some text appears large or **bold** does not make it a heading. A h
   This change cannot be undone.
 </Typography>
 ```
-

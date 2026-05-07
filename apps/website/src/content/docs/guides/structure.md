@@ -167,7 +167,7 @@ The generic `group` role is not the only way to encode a relationship of belongi
 
 - [`<main>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/main): Include just once per screen/page. This encapsulates the main, unique content of the screen.
 - `<header>`: Include just one at the start of the document. This may contain a principle `<nav>` element.
-- `<nav>`: Multiple can be used for different purposes, such as site navigation, pagination, and tables of content. Give each `<nav>` a unique label, like `<nav aria-label="table of content">`. This differentiates the landmarks when aggregated in screen reader software.
+- `<nav>`: Multiple can be used for different purposes, such as site navigation, pagination, and tables of content. Give each `<nav>` a unique label, like `<nav aria-label="table of contents">`. This differentiates the landmarks when aggregated in screen reader software.
 - `role="search"`: Identifies the element containing the page’s principle search functionality. Apply the `role` attribution to an element containing the `<form>` element. Do not place `role="search"` on the `<form>` element itself.
 - `<aside>`: For complementary content and functionality. If your model is the content of `<main>`, then an `<aside>` might contain a tree component for calibrating your model’s layers. Alternatively, the tree may be considered part of the model and the `<aside>` part of the `<main>` content, alongside the model itself.
 - `<footer>`: Used once at the end of the document. Useful for including company and product identification, and related links.

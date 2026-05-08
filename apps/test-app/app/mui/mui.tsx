@@ -5,18 +5,16 @@
 
 import * as React from "react";
 import { type MetaFunction, useLocation } from "react-router";
-import { Toolbar, ToolbarItem } from "@ariakit/react/toolbar";
 import Container from "@mui/material/Container";
 import IconButton from "@mui/material/IconButton";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
-import visuallyHidden from "@mui/utils/visuallyHidden";
 import { Icon } from "@stratakit/mui";
 import * as NavigationList from "@stratakit/structures/unstable_NavigationList";
-import { SkipLinkContext } from "../~navigation.tsx";
-import { useIsWideScreen } from "../~utils.tsx";
+import { ExamplesContainer } from "~/~examples.tsx";
+import { SkipLinkContext } from "~/~navigation.tsx";
+import { useIsWideScreen } from "~/~utils.tsx";
 
-import svgLink from "@stratakit/icons/link.svg";
 import svgScript from "@stratakit/icons/script.svg";
 import styles from "./mui.module.css";
 
@@ -123,15 +121,13 @@ export default function Page() {
 					StrataKit MUI theme
 				</Typography>
 
-				<React.Suspense>
-					{Object.entries(components).map(([name, Component]) => (
-						<React.Suspense key={name}>
-							<ComponentExamples name={name}>
-								<Component />
-							</ComponentExamples>
-						</React.Suspense>
-					))}
-				</React.Suspense>
+				{Object.entries(components).map(([name, Component]) => (
+					<React.Suspense key={name}>
+						<ComponentExamples name={name}>
+							<Component />
+						</ComponentExamples>
+					</React.Suspense>
+				))}
 			</Container>
 		</div>
 	);
@@ -165,57 +161,25 @@ function ComponentExamples(props: ComponentExamplesProps) {
 		[id],
 	);
 
-	const toolbar = (
-		<Toolbar className={styles.exampleToolbar}>
-			<ToolbarItem
-				render={
-					<IconButton
-						render={<a />}
-						href={sourceCodeUrl}
-						label="View source"
-						size="small"
-					/>
-				}
-			>
-				<Icon href={svgScript} />
-			</ToolbarItem>
-		</Toolbar>
-	);
-
 	return (
-		<section
-			className={styles.exampleContainer}
-			aria-labelledby={id}
-			data-target={isTarget ? "true" : undefined}
-		>
-			<hgroup className={styles.exampleHeader}>
-				<Typography
-					variant="h5"
-					render={<h2 />}
-					id={id}
-					className={styles.exampleTitle}
-					tabIndex={-1}
-				>
-					{name}
-				</Typography>
+		<ExamplesContainer
+			name={name}
+			id={id}
+			highlight={isTarget}
+			tools={
 				<IconButton
 					render={<a />}
-					id={`${id}-permalink`}
-					aria-labelledby={`${id}-permalink ${id}`}
-					className={styles.examplePermalink}
-					href={`#${id}`}
+					href={sourceCodeUrl}
+					label="View source"
+					size="small"
 				>
-					<Icon href={svgLink} />
-					<span style={visuallyHidden}>Permalink</span>
+					<Icon href={svgScript} />
 				</IconButton>
-			</hgroup>
-
-			<div className={styles.exampleContent}>
-				{toolbar}
-				<Stack spacing={2} sx={{ alignItems: "start" }}>
-					{props.children}
-				</Stack>
-			</div>
-		</section>
+			}
+		>
+			<Stack spacing={2} sx={{ alignItems: "start" }}>
+				{props.children}
+			</Stack>
+		</ExamplesContainer>
 	);
 }

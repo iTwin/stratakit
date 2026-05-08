@@ -30,6 +30,7 @@ Make sure the **Accordion** is suitable for your use case. There may be other, m
 - Restyled using StrataKit's visual language.
 - The overall size has been decreased.
 - The default `disableGutters` is now `"true"`.
+- The `square` prop defaults to true except when `variant="outlined"`.
 - You are not required to attribute `<AccordionSummary>` with `aria-controls`.
 - Removed [`role="region"`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/region_role) semantics. The **Accordion** no longer creates a region landmark.
 - Includes full `forced-colors` support.

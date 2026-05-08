@@ -54,6 +54,7 @@ export default () => {
 						aria-expanded={open ? "true" : "false"}
 						onClick={(event) => setAnchorEl(event.currentTarget)}
 						endIcon={<Icon href={svgChevronDown} />}
+						size="small"
 					>
 						<span id={fontFamilyLabelId} style={visuallyHidden}>
 							Font family:
@@ -74,6 +75,7 @@ export default () => {
 			>
 				<MenuItem
 					role="menuitemradio"
+					selected={fontFamily === "Sans-serif"}
 					aria-checked={fontFamily === "Sans-serif"}
 					onClick={() => {
 						setFontFamily("Sans-serif");
@@ -81,14 +83,10 @@ export default () => {
 					}}
 				>
 					<ListItemText>Sans-serif</ListItemText>
-					{fontFamily === "Sans-serif" && (
-						<ListItemIcon>
-							<Icon href={svgCheckmark} />
-						</ListItemIcon>
-					)}
 				</MenuItem>
 				<MenuItem
 					role="menuitemradio"
+					selected={fontFamily === "Serif"}
 					aria-checked={fontFamily === "Serif"}
 					onClick={() => {
 						setFontFamily("Serif");
@@ -96,14 +94,10 @@ export default () => {
 					}}
 				>
 					<ListItemText>Serif</ListItemText>
-					{fontFamily === "Serif" && (
-						<ListItemIcon>
-							<Icon href={svgCheckmark} />
-						</ListItemIcon>
-					)}
 				</MenuItem>
 				<MenuItem
 					role="menuitemradio"
+					selected={fontFamily === "Monospace"}
 					aria-checked={fontFamily === "Monospace"}
 					onClick={() => {
 						setFontFamily("Monospace");
@@ -111,11 +105,6 @@ export default () => {
 					}}
 				>
 					<ListItemText>Monospace</ListItemText>
-					{fontFamily === "Monospace" && (
-						<ListItemIcon>
-							<Icon href={svgCheckmark} />
-						</ListItemIcon>
-					)}
 				</MenuItem>
 			</Menu>
 		</Toolbar.Group>

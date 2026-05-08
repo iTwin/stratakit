@@ -61,6 +61,147 @@ jobs:
 
             await prLabels({context, github});
 
+  assign-quarter:
+    name: Assign PR to current quarter
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request' && github.event.action == 'opened'
+
+    steps:
+      - name: Add PR to project and set quarter
+        uses: actions/github-script@v8
+        with:
+          github-token: ${{ secrets.PROJECT_TOKEN }}
+          script: |
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+            const prNumber = context.payload.pull_request.number;
+            const prNodeId = context.payload.pull_request.node_id;
+
+            // Calculate current quarter
+            const now = new Date();
+            const year = now.getFullYear();
+            const month = now.getMonth() + 1; // getMonth() returns 0-11, so add 1
+
+            let quarter;
+            if (month >= 1 && month <= 3) {
+              quarter = `${year} Q1`;
+            } else if (month >= 4 && month <= 6) {
+              quarter = `${year} Q2`;
+            } else if (month >= 7 && month <= 9) {
+              quarter = `${year} Q3`;
+            } else {
+              quarter = `${year} Q4`;
+            }
+
+            console.log(`Calculated quarter: ${quarter}`);
+
+            try {
+              // First, get the project details using GraphQL
+              const projectQuery = `
+                query($owner: String!, $number: Int!) {
+                  organization(login: $owner) {
+                    projectV2(number: $number) {
+                      id
+                      fields(first: 100) {
+                        nodes {
+                          ... on ProjectV2Field {
+                            id
+                            name
+                          }
+                          ... on ProjectV2SingleSelectField {
+                            id
+                            name
+                            options {
+                              id
+                              name
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              `;
+              
+              const projectData = await github.graphql(projectQuery, {
+                owner: owner,
+                number: 52
+              });
+              
+              const project = projectData.organization.projectV2;
+              const quarterField = project.fields.nodes.find(field => field.name === 'Quarter');
+              
+              if (!quarterField) {
+                console.log('Quarter field not found in project');
+                return;
+              }
+              
+              console.log(`Found Quarter field with ID: ${quarterField.id}`);
+              
+              // Find the quarter option that matches our calculated quarter
+              const quarterOption = quarterField.options?.find(option => option.name === quarter);
+              
+              if (!quarterOption) {
+                console.log(`Quarter option "${quarter}" not found. Available options:`, quarterField.options?.map(o => o.name));
+                return;
+              }
+              
+              console.log(`Found quarter option: ${quarterOption.name} (ID: ${quarterOption.id})`);
+              
+              // Add the PR to the project
+              const addItemMutation = `
+                mutation($projectId: ID!, $contentId: ID!) {
+                  addProjectV2ItemByContentId(input: {
+                    projectId: $projectId
+                    contentId: $contentId
+                  }) {
+                    item {
+                      id
+                    }
+                  }
+                }
+              `;
+              
+              const addItemResult = await github.graphql(addItemMutation, {
+                projectId: project.id,
+                contentId: prNodeId
+              });
+              
+              const itemId = addItemResult.addProjectV2ItemByContentId.item.id;
+              console.log(`Added PR to project with item ID: ${itemId}`);
+              
+              // Update the Quarter field for this PR
+              const updateFieldMutation = `
+                mutation($projectId: ID!, $itemId: ID!, $fieldId: ID!, $value: ProjectV2FieldValue!) {
+                  updateProjectV2ItemFieldValue(input: {
+                    projectId: $projectId
+                    itemId: $itemId
+                    fieldId: $fieldId
+                    value: $value
+                  }) {
+                    projectV2Item {
+                      id
+                    }
+                  }
+                }
+              `;
+              
+              await github.graphql(updateFieldMutation, {
+                projectId: project.id,
+                itemId: itemId,
+                fieldId: quarterField.id,
+                value: {
+                  singleSelectOptionId: quarterOption.id
+                }
+              });
+              
+              console.log(`Successfully set Quarter to: ${quarter}`);
+              
+            } catch (error) {
+              console.error('Error updating project:', error);
+              // Don't fail the workflow if project update fails
+            }
+
   fix-formatting:
     name: Fix formatting
     runs-on: ubuntu-latest

@@ -11,7 +11,7 @@
 	border-color: var(--stratakit-color-border-neutral-muted);
 	border-radius: var(--_MuiAccordion-border-radius);
 
-	&:where(.MuiAccordion-rounded) {
+	&:where(.MuiPaper-rounded) {
 		--_MuiAccordion-border-radius: 8px;
 	}
 

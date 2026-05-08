@@ -11,6 +11,7 @@ links:
 ## StrataKit MUI modifications
 
 - Restyled using StrataKit's visual language.
+- Removed [`role="dialog"`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/dialog_role) semantics from the [`paper`](https://mui.com/material-ui/api/menu/#Menu-css-MuiMenu-paper) slot.
 - Includes full `forced-colors` support.
 
 ## Examples

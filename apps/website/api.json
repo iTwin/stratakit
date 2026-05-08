@@ -1241,6 +1241,7 @@
 						],
 						"baseElement": "div",
 						"jsdoc": "An item within an accordion. Disclosed content with a label.\n\nBare minimum example:\n```tsx\n<AccordionItem.Root>\n  <AccordionItem.Header>\n    <AccordionItem.Marker />\n    <AccordionItem.Button>\n      <AccordionItem.Label>Label</AccordionItem.Label>\n    </AccordionItem.Button>\n  </AccordionItem.Header>\n  <AccordionItem.Content>Body</AccordionItem.Content>\n</AccordionItem.Root>\n```\n\nIf the accordion item discloses a significant section of the page, it may be\ndesirable to markup its label as a heading for accessibility purposes (e.g.\nscreen reader users often navigate by heading). For those cases, you can wrap\nthe `AccordionItem.Button` component with an `AccordionItem.Heading`\ncomponent and use its `render` prop for rendering an HTML heading element.\n```tsx\n<AccordionItem.Root>\n  <AccordionItem.Header>\n    <AccordionItem.Marker />\n    <AccordionItem.Heading render={<h2 />}>\n      <AccordionItem.Button>\n        <AccordionItem.Label>Label</AccordionItem.Label>\n      </AccordionItem.Button>\n    </AccordionItem.Heading>\n  </AccordionItem.Header>\n  <AccordionItem.Content>Body</AccordionItem.Content>\n</AccordionItem.Root>\n```\n\nExample with a decoration:\n```tsx\n<AccordionItem.Root>\n  <AccordionItem.Header>\n    <AccordionItem.Marker />\n    <AccordionItem.Decoration render={<Icon href={svgPlaceholder} />} />\n    <AccordionItem.Button>\n      <AccordionItem.Label>Label</AccordionItem.Label>\n    </AccordionItem.Button>\n  </AccordionItem.Header>\n  <AccordionItem.Content>Body</AccordionItem.Content>\n</AccordionItem.Root>\n```",
+						"deprecated": true,
 						"barrelName": "unstable_AccordionItem.Root"
 					},
 					{
@@ -1249,6 +1250,7 @@
 						"props": [],
 						"baseElement": "div",
 						"jsdoc": "The disclosed content of the accordion item.\n\nExample:\n```tsx\n<AccordionItem.Root>\n  <AccordionItem.Header>\n    <AccordionItem.Marker />\n    <AccordionItem.Button>\n      <AccordionItem.Label>Label</AccordionItem.Label>\n    </AccordionItem.Button>\n  </AccordionItem.Header>\n  <AccordionItem.Content>Body</AccordionItem.Content>\n</AccordionItem.Root>\n```",
+						"deprecated": true,
 						"barrelName": "unstable_AccordionItem.Content"
 					},
 					{
@@ -1257,6 +1259,7 @@
 						"props": [],
 						"baseElement": "div",
 						"jsdoc": "The always visible header of an accordion item.\n\nMust include an `AccordionItem.Button` and `AccordionItem.Marker` as a direct\ndescendants.\n\nExample:\n```tsx\n<AccordionItem.Root>\n  <AccordionItem.Header>\n    <AccordionItem.Marker />\n    <AccordionItem.Button>\n      <AccordionItem.Label>Label</AccordionItem.Label>\n    </AccordionItem.Button>\n  </AccordionItem.Header>\n  <AccordionItem.Content>Body</AccordionItem.Content>\n</AccordionItem.Root>\n```",
+						"deprecated": true,
 						"barrelName": "unstable_AccordionItem.Header"
 					},
 					{
@@ -1265,6 +1268,7 @@
 						"props": [],
 						"baseElement": "button",
 						"jsdoc": "The accordion item button.\n\nMust be a direct descendant of `AccordionItem.Header`.\n\nExample:\n```tsx\n<AccordionItem.Header>\n  <AccordionItem.Marker />\n  <AccordionItem.Button>\n    <AccordionItem.Label>Label</AccordionItem.Label>\n  </AccordionItem.Button>\n</AccordionItem.Header>\n```",
+						"deprecated": true,
 						"barrelName": "unstable_AccordionItem.Button"
 					},
 					{
@@ -1273,6 +1277,7 @@
 						"props": [],
 						"baseElement": "div",
 						"jsdoc": "An accordion item’s label.\n\nMust be a descendant of `AccordionItem.Button`.\n\nExample:\n```tsx\n<AccordionItem.Button>\n  <AccordionItem.Label>Label</AccordionItem.Label>\n</AccordionItem.Button>\n```",
+						"deprecated": true,
 						"barrelName": "unstable_AccordionItem.Label"
 					},
 					{
@@ -1281,6 +1286,7 @@
 						"props": [],
 						"baseElement": "div",
 						"jsdoc": "The always-visible, optional decoration of the `AccordionItem.Header` content.\nIt can be placed before or after the rest of the content in\n`AccordionItem.Header`. However, the `AccordionItem.Marker` must always be\nplaced at either edge (beginning or end) of the header.\n\nUse as a direct descendant of `AccordionItem.Header`. The decoration\ncan be placed before the rest of the header content.\n\nExample:\n```tsx\n<AccordionItem.Header>\n  <AccordionItem.Marker />\n  <AccordionItem.Decoration render={<Icon href={svgPlaceholder} />} />\n  <AccordionItem.Button>\n    <AccordionItem.Label>Label</AccordionItem.Label>\n  </AccordionItem.Button>\n</AccordionItem.Header>\n```\n\nAlternatively, the decoration can also be placed after the rest of the\nheader content.\n\nExample:\n```tsx\n<AccordionItem.Header>\n  <AccordionItem.Marker />\n  <AccordionItem.Button>\n    <AccordionItem.Label>Label</AccordionItem.Label>\n  </AccordionItem.Button>\n  <AccordionItem.Decoration render={<Icon href={svgPlaceholder} />} />\n</AccordionItem.Header>\n```\n\nThere can also be multiple decorations if passed as children under\n`AccordionItem.Decoration`.\n\nExample:\n```tsx\n<AccordionItem.Header>\n  <AccordionItem.Marker />\n  <AccordionItem.Decoration>\n    <Icon href={svgPlaceholder} />\n    <Icon href={svgPlaceholder} />\n  </AccordionItem.Decoration>\n  <AccordionItem.Button>\n    <AccordionItem.Label>Label</AccordionItem.Label>\n  </AccordionItem.Button>\n</AccordionItem.Header>\n```",
+						"deprecated": true,
 						"barrelName": "unstable_AccordionItem.Decoration"
 					},
 					{
@@ -1289,6 +1295,7 @@
 						"props": [],
 						"baseElement": "div",
 						"jsdoc": "The visual marker of the `AccordionItem.Header` content. While it can be\nplaced before or after the rest of the content in `AccordionItem.Header`,\nit is recommended to place the marker before.\n\nExample:\n```tsx\n<AccordionItem.Header>\n  <AccordionItem.Marker />\n  <AccordionItem.Button>\n    <AccordionItem.Label>Label</AccordionItem.Label>\n  </AccordionItem.Button>\n</AccordionItem.Header>\n```\n\nAlternatively, the marker can also be placed after the rest of the header\ncontent.\n\nExample:\n```tsx\n<AccordionItem.Header>\n  <AccordionItem.Button>\n    <AccordionItem.Label>Label</AccordionItem.Label>\n  </AccordionItem.Button>\n  <AccordionItem.Marker />\n</AccordionItem.Header>\n```\n\nPass an icon as a child to override the default chevron icon:\n```tsx\n<AccordionItem.Header>\n  <AccordionItem.Marker>\n    <Icon href={svgPlaceholder} />\n  </AccordionItem.Marker>\n  <AccordionItem.Button>\n    <AccordionItem.Label>Label</AccordionItem.Label>\n  </AccordionItem.Button>\n</AccordionItem.Header>\n```",
+						"deprecated": true,
 						"barrelName": "unstable_AccordionItem.Marker"
 					},
 					{
@@ -1302,7 +1309,8 @@
 							}
 						],
 						"baseElement": "div",
-						"jsdoc": "A heading for wrapping `AccordionItem.Button`.\n\nThe `render` prop is required.\n\nExample:\n```tsx\n<AccordionItem.Header>\n  <AccordionItem.Marker />\n  <AccordionItem.Heading render={<h2 />}>\n    <AccordionItem.Button>\n      <AccordionItem.Label>Label</AccordionItem.Label>\n    </AccordionItem.Button>\n  </AccordionItem.Heading>\n</AccordionItem.Header>",
+						"jsdoc": "A heading for wrapping `AccordionItem.Button`.\n\nThe `render` prop is required.\n\nExample:\n```tsx\n<AccordionItem.Header>\n  <AccordionItem.Marker />\n  <AccordionItem.Heading render={<h2 />}>\n    <AccordionItem.Button>\n      <AccordionItem.Label>Label</AccordionItem.Label>\n    </AccordionItem.Button>\n  </AccordionItem.Heading>\n</AccordionItem.Header>\n```",
+						"deprecated": true,
 						"barrelName": "unstable_AccordionItem.Heading"
 					}
 				],
@@ -1368,6 +1376,7 @@
 					],
 					"baseElement": "div",
 					"jsdoc": "A banner to highlight information and also optionally provide actions.\nThe information could be very important (like a call to action) or reasonably import (like a status message).\n\nExample:\n```tsx\n<Banner label=\"Label\" message=\"Message\" icon={placeholderIcon} onDismiss={() => {}} />\n```",
+					"deprecated": true,
 					"barrelName": "unstable_Banner"
 				},
 				"composition": [
@@ -1391,7 +1400,8 @@
 							}
 						],
 						"baseElement": "div",
-						"jsdoc": "A banner to highlight information and also optionally provide actions.\nThe information could be very important (like a call to action) or reasonably import (like a status message).\n\nExample:\n```tsx\n<Banner.Root tone=\"info\" variant=\"outline\">\n  <Banner.Icon />\n  <Banner.Label>Label</Banner.Label>\n  <Banner.Message>Message</Banner.Message>\n  <Banner.DismissButton onClick={onDismiss} />\n</Banner.Root>\n```"
+						"jsdoc": "A banner to highlight information and also optionally provide actions.\nThe information could be very important (like a call to action) or reasonably import (like a status message).\n\nExample:\n```tsx\n<Banner.Root tone=\"info\" variant=\"outline\">\n  <Banner.Icon />\n  <Banner.Label>Label</Banner.Label>\n  <Banner.Message>Message</Banner.Message>\n  <Banner.DismissButton onClick={onDismiss} />\n</Banner.Root>\n```",
+						"deprecated": true
 					},
 					{
 						"name": "Icon",
@@ -1434,28 +1444,32 @@
 							}
 						],
 						"baseElement": "svg",
-						"jsdoc": "A static icon decoration for the banner.\n\n- If no `href` is passed and the `tone` is `\"neutral\"`, no icon is shown.\n- If no `href` is passed and the `tone` is not` \"neutral\"`, the status icon is shown.\n\nExample with default status icon:\n```tsx\n<Banner.Root tone=\"info\">\n  <Banner.Icon />\n</Banner.Root>\n\nExample with custom icon:\n```tsx\nimport svgPlaceholder from \"@stratakit/icons/placeholder.svg\";\n\n<Banner.Root>\n  <Banner.Icon href={svgPlaceholder} />\n</Banner.Root>\n```"
+						"jsdoc": "A static icon decoration for the banner.\n\n- If no `href` is passed and the `tone` is `\"neutral\"`, no icon is shown.\n- If no `href` is passed and the `tone` is not` \"neutral\"`, the status icon is shown.\n\nExample with default status icon:\n```tsx\n<Banner.Root tone=\"info\">\n  <Banner.Icon />\n</Banner.Root>\n\nExample with custom icon:\n```tsx\nimport svgPlaceholder from \"@stratakit/icons/placeholder.svg\";\n\n<Banner.Root>\n  <Banner.Icon href={svgPlaceholder} />\n</Banner.Root>\n```",
+						"deprecated": true
 					},
 					{
 						"name": "Label",
 						"baseProps": ["BaseProps.render"],
 						"props": [],
 						"baseElement": "span",
-						"jsdoc": "The label of the banner.\n\nPass `render={<VisuallyHidden />}` if you don't want the label to be visible.\n\nExample:\n```tsx\n<Banner.Root>\n  <Banner.Label>Label</Banner.Label>\n</Banner.Root>\n```\n\nExample with a visually hidden label:\n```tsx\n<Banner.Root>\n  <Banner.Label render={<VisuallyHidden />}>Label</Banner.Label>\n</Banner.Root>\n```"
+						"jsdoc": "The label of the banner.\n\nPass `render={<VisuallyHidden />}` if you don't want the label to be visible.\n\nExample:\n```tsx\n<Banner.Root>\n  <Banner.Label>Label</Banner.Label>\n</Banner.Root>\n```\n\nExample with a visually hidden label:\n```tsx\n<Banner.Root>\n  <Banner.Label render={<VisuallyHidden />}>Label</Banner.Label>\n</Banner.Root>\n```",
+						"deprecated": true
 					},
 					{
 						"name": "Message",
 						"baseProps": ["BaseProps.render"],
 						"props": [],
 						"baseElement": "span",
-						"jsdoc": "The message content of the banner.\n\nExample:\n```tsx\n<Banner.Root>\n  <Banner.Message>Message content goes here.</Banner.Message>\n</Banner.Root>\n```"
+						"jsdoc": "The message content of the banner.\n\nExample:\n```tsx\n<Banner.Root>\n  <Banner.Message>Message content goes here.</Banner.Message>\n</Banner.Root>\n```",
+						"deprecated": true
 					},
 					{
 						"name": "Actions",
 						"baseProps": ["BaseProps.render"],
 						"props": [],
 						"baseElement": "div",
-						"jsdoc": "The actions available for the banner.\n\nExample with one action:\n```tsx\n<Banner.Root>\n  <Banner.Actions>\n    <Button key={…} onClick={…}>Action</Button>\n  </Banner.Actions>\n</Banner.Root>\n```\n\nExample with two `Button`s:\n```tsx\n<Banner.Root>\n  <Banner.Actions>\n    <Button key={…} onClick={…}>Action 1</Button>\n    <Button key={…} onClick={…}>Action 2</Button>\n  </Banner.Actions>\n</Banner.Root>\n```\n\nExample with two `Anchor`s as `Button`:\n```tsx\n<Banner.Root>\n  <Banner.Actions>\n    <Anchor key={…} render={<button />} onClick={…}>Action 1</Anchor>,\n    <Anchor key={…} render={<button />} onClick={…}>Action 2</Anchor>,\n  </Banner.Actions>\n</Banner.Root>\n```"
+						"jsdoc": "The actions available for the banner.\n\nExample with one action:\n```tsx\n<Banner.Root>\n  <Banner.Actions>\n    <Button key={…} onClick={…}>Action</Button>\n  </Banner.Actions>\n</Banner.Root>\n```\n\nExample with two `Button`s:\n```tsx\n<Banner.Root>\n  <Banner.Actions>\n    <Button key={…} onClick={…}>Action 1</Button>\n    <Button key={…} onClick={…}>Action 2</Button>\n  </Banner.Actions>\n</Banner.Root>\n```\n\nExample with two `Anchor`s as `Button`:\n```tsx\n<Banner.Root>\n  <Banner.Actions>\n    <Anchor key={…} render={<button />} onClick={…}>Action 1</Anchor>,\n    <Anchor key={…} render={<button />} onClick={…}>Action 2</Anchor>,\n  </Banner.Actions>\n</Banner.Root>\n```",
+						"deprecated": true
 					},
 					{
 						"name": "DismissButton",
@@ -1470,7 +1484,8 @@
 							}
 						],
 						"baseElement": "button",
-						"jsdoc": "Dismiss (\"❌\") button for the banner.\nHandle the `onClick` callback to dismiss the banner.\n\nExample:\n```tsx\n<Banner.Root>\n  <Banner.DismissButton onClick={() => {}} />\n</Banner.Root>\n```"
+						"jsdoc": "Dismiss (\"❌\") button for the banner.\nHandle the `onClick` callback to dismiss the banner.\n\nExample:\n```tsx\n<Banner.Root>\n  <Banner.DismissButton onClick={() => {}} />\n</Banner.Root>\n```",
+						"deprecated": true
 					}
 				],
 				"exportName": "unstable_Banner"
@@ -1504,6 +1519,7 @@
 					],
 					"baseElement": "div",
 					"jsdoc": "Chip is a UI component used to represent an item, attribute, or action in a compact visual style.\nIt supports two visual variants: `solid` for primary emphasis and `outline` for less prominent states.\n\nExample:\n```tsx\n<Chip label=\"Value\" />\n<Chip label=\"Value\" variant=\"outline\" />\n```",
+					"deprecated": true,
 					"barrelName": "Chip"
 				},
 				"composition": [
@@ -1520,14 +1536,16 @@
 							}
 						],
 						"baseElement": "div",
-						"jsdoc": "Root component of the compositional Chip component.\n\nExample:\n```tsx\n<Chip.Root>\n  <Chip.Label>Label</Chip.Label>\n  <Chip.DismissButton onClick={onClick} />\n</Chip.Root>\n```"
+						"jsdoc": "Root component of the compositional Chip component.\n\nExample:\n```tsx\n<Chip.Root>\n  <Chip.Label>Label</Chip.Label>\n  <Chip.DismissButton onClick={onClick} />\n</Chip.Root>\n```",
+						"deprecated": true
 					},
 					{
 						"name": "Label",
 						"baseProps": ["BaseProps.render"],
 						"props": [],
 						"baseElement": "span",
-						"jsdoc": "Label component that should be used with the compositional Chip component."
+						"jsdoc": "Label component that should be used with the compositional Chip component.",
+						"deprecated": true
 					},
 					{
 						"name": "DismissButton",
@@ -1542,7 +1560,8 @@
 							}
 						],
 						"baseElement": "button",
-						"jsdoc": "Dismiss button component that should be used with the compositional Chip component."
+						"jsdoc": "Dismiss button component that should be used with the compositional Chip component.",
+						"deprecated": true
 					}
 				],
 				"exportName": "Chip"

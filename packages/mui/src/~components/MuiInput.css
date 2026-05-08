@@ -65,7 +65,8 @@
 	height: unset;
 	min-block-size: calc(var(--_MuiInput-block-size) - 2px); /* Accommodate for border width */
 	padding-block: 0;
-	padding-inline: var(--_MuiInput-padding-inline);
+	padding-inline-start: var(--_MuiInput-padding-inline);
+	padding-inline-end: var(--_MuiInput-padding-inline);
 	align-content: center;
 
 	&:where(input, textarea) {

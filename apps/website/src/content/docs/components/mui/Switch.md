@@ -45,7 +45,7 @@ Use the `defaultChecked` prop to set the initial checked state. Alternatively, u
 - Use a clear, descriptive label for each **Switch**.
 - Use a **Switch** when the effect is instantaneous (no confirmation or submission is required).
 
-## 🚫 Don’t
+## 🚫 Don't
 
 - Don't use switches for mandatory actions. The checked state of a switch can never be _invalid_.
 - Don't use one switch to change multiple settings simultaneously.

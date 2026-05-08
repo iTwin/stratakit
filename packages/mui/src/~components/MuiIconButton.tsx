@@ -14,15 +14,15 @@ import type { BaseProps } from "@stratakit/foundations/secret-internals";
 
 interface MuiIconButtonProps
 	extends BaseProps<"button">,
-		Pick<IconButtonOwnProps, "label"> {}
+		Pick<IconButtonOwnProps, "label" | "labelPlacement"> {}
 
 const MuiIconButton = forwardRef<"button", MuiIconButtonProps>(
 	(props, forwardedRef) => {
-		const { label, ...rest } = props;
+		const { label, labelPlacement, ...rest } = props;
 
 		if (label) {
 			return (
-				<Tooltip title={label} describeChild={false}>
+				<Tooltip title={label} describeChild={false} placement={labelPlacement}>
 					<MuiButtonBase {...rest} ref={forwardedRef} />
 				</Tooltip>
 			);

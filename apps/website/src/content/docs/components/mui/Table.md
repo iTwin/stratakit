@@ -11,9 +11,26 @@ links:
 ## StrataKit MUI modifications
 
 - Removed `role="rowgroup"` semantics from `TableBody`, as it is not necessary and can cause issues with some assistive technologies.
+- Enabled `TableRow`'s [`hover`](https://mui.com/material-ui/api/table-row/#table-row-prop-hover) prop by default, except when used inside `TableHead`.
 
 ## Examples
 
 ### Footer
 
 ::example{src="mui/Table.footer"}
+
+### Dense
+
+Use `size="small"` for compact interfaces with limited screen real estate or when displaying large datasets.
+
+::example{src="mui/Table.small"}
+
+### Row selection
+
+Use a [**Checkbox**](/components/checkbox) within the **Table**'s first column to give the user a clear indicator that rows can be selected. Combine it with the `TableRow`'s [`selected`](https://mui.com/material-ui/api/table-row/#table-row-prop-selected) prop to visually reinforce selected rows.
+
+::example{src="mui/Table.select"}
+
+:::caution
+Placing a "select all" checkbox within the column header is not recommended.
+:::

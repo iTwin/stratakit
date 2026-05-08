@@ -359,7 +359,16 @@ function createTheme() {
 				},
 			},
 			MuiListSubheader: { defaultProps: { component: Role.li } },
-			MuiMenu: { defaultProps: { component: Role.div } },
+			MuiMenu: {
+				defaultProps: {
+					component: Role.div,
+					slotProps: {
+						paper: {
+							role: "presentation", // Removes role="dialog"
+						},
+					},
+				},
+			},
 			MuiMenuItem: { defaultProps: { component: Role.li } },
 			MuiMenuList: { defaultProps: { component: Role.ul } },
 			MuiMobileStepper: { defaultProps: { component: Role.div } },

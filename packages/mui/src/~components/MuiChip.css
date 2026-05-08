@@ -31,7 +31,8 @@
 }
 
 .MuiChip-label {
-	padding-inline: var(--_MuiChip-padding-inline);
+	padding-inline-start: var(--_MuiChip-padding-inline);
+	padding-inline-end: var(--_MuiChip-padding-inline);
 
 	:where(.MuiChip-root.MuiChip-sizeSmall) & {
 		@apply --typography("body-sm");

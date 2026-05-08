@@ -14,8 +14,10 @@
 .MuiButton-root {
 	min-block-size: var(--_MuiButton-height);
 	min-inline-size: var(--_MuiButton-height);
-	padding-block: var(--_MuiButton-padding-block);
-	padding-inline: var(--_MuiButton-padding-inline);
+	padding-block-start: var(--_MuiButton-padding-block);
+	padding-block-end: var(--_MuiButton-padding-block);
+	padding-inline-start: var(--_MuiButton-padding-inline);
+	padding-inline-end: var(--_MuiButton-padding-inline);
 
 	&:where(.MuiButton-sizeSmall) {
 		@apply --typography("body-sm");

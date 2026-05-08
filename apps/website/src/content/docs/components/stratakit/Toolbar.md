@@ -28,9 +28,9 @@ The divider should be perpendicular to the **Toolbar**. [Reorientate](/component
 
 ### Orientation
 
-By default, the **Toolbar** appears in a horizontal orientation. Reorientate it using the [`orientation`](/reference/structures/Toolbar#Toolbar.Group.orientation) prop.
+By default, the **Toolbar** is horizontal. Use the [`orientation`](/reference/structures/Toolbar#Toolbar.Group.orientation) prop to change it to vertical.
 
-When changing the orientation, adjust tooltip placement to avoid overlapping the **Toolbar** and reorientate the [divider](#divider).
+Additionally, adjust tooltip placement to avoid overlapping the **Toolbar** and make the [divider perpendicular](#divider).
 
 ::example{src="structures/Toolbar.vertical" min-height="250px"}
 

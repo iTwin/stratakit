@@ -16,8 +16,6 @@
 			"./app/types.d.ts",
 			"@stratakit/mui/types.d.ts"
 		],
-
-		"baseUrl": ".",
 		"paths": {
 			"~/*": ["./app/*"]
 		},

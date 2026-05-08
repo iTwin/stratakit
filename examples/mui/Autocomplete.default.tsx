@@ -22,7 +22,7 @@ export default () => {
 				"TextField",
 			]}
 			renderInput={(params) => (
-				<TextField {...params} label="Choose a favorite component:" />
+				<TextField {...params} label="Favorite component:" />
 			)}
 		/>
 	);

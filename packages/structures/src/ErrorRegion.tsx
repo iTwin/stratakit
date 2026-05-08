@@ -234,7 +234,7 @@ DEV: ErrorRegionRoot.displayName = "ErrorRegion.Root";
 
 interface ErrorRegionItemProps extends Omit<BaseProps, "children"> {
 	/**
-	 * The error message. Consumers might consider using `Anchor` component to link to the associated element in the UI.
+	 * The error message. Consumers might consider using [`Link`](https://stratakit.bentley.com/docs/components/link/) component to link to the associated element in the UI.
 	 */
 	message?: React.ReactNode;
 	/**
@@ -242,7 +242,7 @@ interface ErrorRegionItemProps extends Omit<BaseProps, "children"> {
 	 */
 	messageId?: string;
 	/**
-	 * The actions available for this item. Must be a list of anchors, each rendered as a button using `<Anchor render={<button />} />`.
+	 * The actions available for this item. Must be a list of links, each rendered as a button using `<Link render={<button />} />`.
 	 */
 	actions?: React.ReactNode;
 }
@@ -255,9 +255,9 @@ interface ErrorRegionItemProps extends Omit<BaseProps, "children"> {
  * Example:
  * ```tsx
  * <ErrorRegion.Item
- *   message={<>Something went wrong with <Anchor href="item-10001">Item 10001</Anchor>.</>}
+ *   message={<>Something went wrong with <Link href="item-10001">Item 10001</Link>.</>}
  *   messageId="item-10001-error"
- *   actions={<Button>Retry</Button>}
+ *   actions={<Link render={<button />}>Retry</Link>}
  * />
  *
  * <Tree.Item

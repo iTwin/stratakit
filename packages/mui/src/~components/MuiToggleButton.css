@@ -4,7 +4,12 @@
  *--------------------------------------------------------------------------------------------*/
 
 .MuiToggleButton-root {
+	--✨bg--selected: var(--stratakit-color-bg-glow-on-surface-accent-pressed);
+	--✨bg--selected-hover: var(--stratakit-color-bg-glow-on-surface-accent-active-hover);
+	--✨bg--selected-disabled: var(--stratakit-color-bg-glow-on-surface-disabled);
+
 	--✨border--selected: var(--stratakit-color-border-accent-strong);
+	--✨border--selected-disabled: var(--stratakit-color-border-glow-on-surface-disabled);
 
 	/* Standalone ToggleButton. */
 	&:where(:not(.MuiToggleButtonGroup-grouped)) {
@@ -17,15 +22,26 @@
 	}
 
 	&:where(.Mui-selected) {
-		border-color: var(--✨border--selected);
-		background-color: var(--stratakit-color-bg-glow-on-surface-accent-pressed);
+		--_MuiToggleButton-bg--selected: var(--✨bg--selected);
+		--_MuiToggleButton-border--selected: var(--✨border--selected);
+
+		background-color: var(--_MuiToggleButton-bg--selected);
+		border-color: var(--_MuiToggleButton-border--selected);
 		color: var(--stratakit-color-text-accent-strong);
 		--🥝Icon-color: var(--stratakit-color-icon-accent-strong);
+
+		@media (any-hover: hover) {
+			&:where(:hover) {
+				--_MuiToggleButton-bg--selected: var(--✨bg--selected-hover);
+			}
+		}
 	}
 
 	&:where(.Mui-disabled) {
 		color: var(--stratakit-color-text-neutral-disabled);
 		--🥝Icon-color: var(--stratakit-color-icon-neutral-disabled);
+		--_MuiToggleButton-bg--selected: var(--✨bg--selected-disabled);
+		--_MuiToggleButton-border--selected: var(--✨border--selected-disabled);
 	}
 }
 

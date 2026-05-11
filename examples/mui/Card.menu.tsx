@@ -17,7 +17,7 @@ import Typography from "@mui/material/Typography";
 import { Icon } from "@stratakit/mui";
 
 import svgMore from "@stratakit/icons/more-vertical.svg";
-import styles from "./Card.header.module.css";
+import styles from "./Card.menu.module.css";
 
 export default () => {
 	return (
@@ -44,8 +44,9 @@ export default () => {
 				</Typography>
 			</CardContent>
 			<CardActions>
-				<Button>View</Button>
-				<Button>Edit</Button>
+				<Button render={<a href="#" />} nativeButton={false}>
+					View
+				</Button>
 			</CardActions>
 		</Card>
 	);
@@ -57,14 +58,12 @@ function ActionsMenu() {
 	const handleClose = () => setAnchorEl(null);
 
 	const buttonId = React.useId();
-	const menuId = React.useId();
 
 	return (
 		<>
 			<IconButton
 				label="More actions"
 				id={buttonId}
-				aria-controls={open ? menuId : undefined}
 				aria-haspopup="true"
 				aria-expanded={open ? "true" : "false"}
 				onClick={(event) => setAnchorEl(event.currentTarget)}
@@ -72,7 +71,6 @@ function ActionsMenu() {
 				<Icon href={svgMore} />
 			</IconButton>
 			<Menu
-				id={menuId}
 				anchorEl={anchorEl}
 				open={open}
 				onClose={handleClose}
@@ -82,7 +80,6 @@ function ActionsMenu() {
 					},
 				}}
 			>
-				<MenuItem onClick={handleClose}>View</MenuItem>
 				<MenuItem onClick={handleClose}>Favorite</MenuItem>
 				<MenuItem onClick={handleClose}>Delete</MenuItem>
 			</Menu>

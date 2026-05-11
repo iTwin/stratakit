@@ -63,7 +63,7 @@ export default () => {
 								href="#"
 								icon={`${svgDisconnect}#icon-large`}
 								label="Integrations"
-								endIcon={
+								suffix={
 									<Icon href={svgWindowPopout} alt="(opens in new tab)" />
 								}
 							/>
@@ -88,7 +88,7 @@ export default () => {
 									}
 									label="Notifications"
 									aria-describedby={notificationId}
-									endIcon={expanded ? <NotificationsIcon /> : undefined}
+									suffix={expanded ? <NotificationsIcon /> : undefined}
 								/>
 							</NavigationRail.ListItem>
 							<NavigationRail.ListItem>

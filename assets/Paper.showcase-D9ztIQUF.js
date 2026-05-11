@@ -1,0 +1,1 @@
+import{t as r}from"./index-DA-OOE2Q.js";import{h as o}from"./~utils-DxCvsJ9z.js";import{P as p}from"./Paper-BYQzwW5F.js";import"./useTheme-BXTxRvtv.js";const s="_paper_1mq3b_6",a={paper:s},m=()=>r.jsx(p,{className:a.paper,elevation:4});function f(){const t=o.c(1);let e;return t[0]===Symbol.for("react.memo_cache_sentinel")?(e=r.jsx(m,{}),t[0]=e):e=t[0],e}export{f as default};

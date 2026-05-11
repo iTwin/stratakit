@@ -7,7 +7,7 @@ import Divider from "@mui/material/Divider";
 import { Icon } from "@stratakit/mui";
 import { unstable_NavigationRail as NavigationRail } from "@stratakit/structures";
 
-import svgBentley from "@stratakit/icons/bentley-systems.svg";
+import svgBentley from "@stratakit/icons/brand-bentley-systems.svg";
 import svgPlaceholder from "@stratakit/icons/placeholder.svg";
 import styles from "./NavigationRail.default.module.css";
 

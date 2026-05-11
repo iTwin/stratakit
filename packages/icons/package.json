@@ -5,6 +5,10 @@
 	"license": "MIT",
 	"exports": {
 		"./*.svg": "./icons/*.svg",
+		"./apple.svg": "./icons/brand-apple.svg",
+		"./android-logo.svg": "./icons/brand-android.svg",
+		"./bentley-systems.svg": "./icons/brand-bentley-systems.svg",
+		"./windows.svg": "./icons/brand-windows.svg",
 		"./icons-list.json": "./icons-list.json"
 	},
 	"files": [

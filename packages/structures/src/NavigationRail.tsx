@@ -415,6 +415,8 @@ interface NavigationRailItemActionOwnProps {
 	 * Additional non-interactive content displayed at the end of the navigation item action.
 	 *
 	 * Displayed in a tooltip when the navigation rail is collapsed.
+	 *
+	 * The suffix is included in the accessible name of the item action.
 	 */
 	suffix?: React.ReactNode;
 }

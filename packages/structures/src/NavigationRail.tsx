@@ -412,14 +412,11 @@ interface NavigationRailItemActionOwnProps {
 	 */
 	icon: string | React.JSX.Element;
 	/**
-	 * Icon to be displayed at the end of the navigation item action.
+	 * Additional non-interactive content displayed at the end of the navigation item action.
 	 *
-	 * Exposed in a tooltip when the navigation rail is collapsed.
-	 *
-	 * Can be a URL of an SVG from the `@stratakit/icons` package,
-	 * or a custom JSX icon.
+	 * Displayed in a tooltip when the navigation rail is collapsed.
 	 */
-	endIcon?: string | React.JSX.Element;
+	suffix?: React.ReactNode;
 }
 
 /**
@@ -432,10 +429,9 @@ const NavigationRailItemAction = forwardRef<
 >((props, forwardedRef) => {
 	const expanded = useNavigationRailState((state) => state.expanded);
 
-	const { label, icon, endIcon, ...rest } = props;
+	const { label, icon, suffix, ...rest } = props;
 	DEV: if (!label || !icon) throw new Error("label and icon are required");
 
-	const EndIconWrapper = expanded ? Role : VisuallyHidden;
 	const action = (
 		<Role
 			{...rest}
@@ -449,12 +445,14 @@ const NavigationRailItemAction = forwardRef<
 			>
 				{label}
 			</Role.span>
-			{endIcon && (
-				<EndIconWrapper
-					render={
-						typeof endIcon === "string" ? <Icon href={endIcon} /> : endIcon
-					}
-				/>
+
+			{suffix && (
+				<Role
+					className="🥝NavigationRailItemActionSuffix"
+					render={expanded ? undefined : <VisuallyHidden />}
+				>
+					{suffix}
+				</Role>
 			)}
 		</Role>
 	);
@@ -465,7 +463,7 @@ const NavigationRailItemAction = forwardRef<
 				content={
 					<>
 						{label}
-						{typeof endIcon === "string" ? <Icon href={endIcon} /> : endIcon}
+						{suffix}
 					</>
 				}
 				placement="right"
@@ -506,13 +504,13 @@ interface NavigationRailAnchorProps
  */
 const NavigationRailAnchor = forwardRef<"a", NavigationRailAnchorProps>(
 	(props, forwardedRef) => {
-		const { label, icon, endIcon, active, ...rest } = props;
+		const { label, icon, suffix, active, ...rest } = props;
 
 		return (
 			<NavigationRailItemAction
 				label={label}
 				icon={icon}
-				endIcon={endIcon}
+				suffix={suffix}
 				aria-current={active ? "true" : undefined}
 				render={<Role.a {...rest} ref={forwardedRef} />}
 			/>
@@ -543,13 +541,13 @@ interface NavigationRailButtonProps
  */
 const NavigationRailButton = forwardRef<"button", NavigationRailButtonProps>(
 	(props, forwardedRef) => {
-		const { label, icon, endIcon, ...rest } = props;
+		const { label, icon, suffix, ...rest } = props;
 
 		return (
 			<NavigationRailItemAction
 				label={label}
 				icon={icon}
-				endIcon={endIcon}
+				suffix={suffix}
 				render={<Role.button {...rest} ref={forwardedRef} />}
 			/>
 		);

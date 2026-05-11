@@ -70,6 +70,7 @@ export default () => {
 				slotProps={{
 					list: {
 						"aria-labelledby": fontFamilyLabelId,
+						dense: true,
 					},
 				}}
 			>

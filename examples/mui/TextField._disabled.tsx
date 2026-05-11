@@ -6,5 +6,5 @@
 import TextField from "@mui/material/TextField";
 
 export default () => {
-	return <TextField label="Disabled" value="Value" disabled />;
+	return <TextField label="Disabled:" value="Value" disabled />;
 };

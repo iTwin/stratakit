@@ -438,21 +438,17 @@ const NavigationRailItemAction = forwardRef<
 			className={cx("🥝NavigationRailItemAction", props.className)}
 			ref={forwardedRef}
 		>
-			{typeof icon === "string" ? <Icon href={icon} size="large" /> : icon}
-			<Role.span
-				className="🥝NavigationRailItemActionLabel"
-				render={!expanded ? <VisuallyHidden /> : undefined}
-			>
-				{label}
-			</Role.span>
+			{typeof icon === "string" ? (
+				<NavigationRailItemActionIcon href={icon} />
+			) : (
+				icon
+			)}
+			<NavigationRailItemActionLabel>{label}</NavigationRailItemActionLabel>
 
 			{suffix && (
-				<Role
-					className="🥝NavigationRailItemActionSuffix"
-					render={expanded ? undefined : <VisuallyHidden />}
-				>
+				<NavigationRailItemActionSuffix>
 					{suffix}
-				</Role>
+				</NavigationRailItemActionSuffix>
 			)}
 		</Role>
 	);
@@ -477,6 +473,61 @@ const NavigationRailItemAction = forwardRef<
 	return action;
 });
 DEV: NavigationRailItemAction.displayName = "NavigationRailItemAction";
+
+// ----------------------------------------------------------------------------
+
+interface NavigationRailItemActionIconProps
+	extends React.ComponentProps<typeof Icon> {}
+
+/** @private */
+const NavigationRailItemActionIcon = forwardRef<
+	"svg",
+	NavigationRailItemActionIconProps
+>((props, forwardedRef) => {
+	return <Icon size="large" {...props} ref={forwardedRef} />;
+});
+
+// ----------------------------------------------------------------------------
+
+interface NavigationRailItemActionLabelProps extends BaseProps<"span"> {}
+
+/** @private */
+const NavigationRailItemActionLabel = forwardRef<
+	"span",
+	NavigationRailItemActionLabelProps
+>((props, forwardedRef) => {
+	const expanded = useNavigationRailState((state) => state.expanded);
+
+	return (
+		<Role.span
+			{...props}
+			className={cx("🥝NavigationRailItemActionLabel", props.className)}
+			render={expanded ? undefined : <VisuallyHidden />}
+			ref={forwardedRef}
+		/>
+	);
+});
+
+// ----------------------------------------------------------------------------
+
+interface NavigationRailItemActionSuffixProps extends BaseProps<"span"> {}
+
+/** @private */
+const NavigationRailItemActionSuffix = forwardRef<
+	"span",
+	NavigationRailItemActionSuffixProps
+>((props, forwardedRef) => {
+	const expanded = useNavigationRailState((state) => state.expanded);
+
+	return (
+		<Role.span
+			{...props}
+			className={cx("🥝NavigationRailItemActionSuffix", props.className)}
+			render={expanded ? undefined : <VisuallyHidden />}
+			ref={forwardedRef}
+		/>
+	);
+});
 
 // ----------------------------------------------------------------------------
 

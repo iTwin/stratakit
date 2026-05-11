@@ -181,10 +181,10 @@ If landmarks represent continents, then sections are countries: subdivisions of 
 
 The provided heading elements (`<h1>` to `<h6>`) are numbered according to section depth. 
 
-- `<h1>` (`variant="h1"`): introduces the page
-  - `<h2>` (`variant="h2"`): introduces a subsection in the page
+- `<h1>`: introduces the page
+  - `<h2>`: introduces a subsection in the page
   - `<h2>`: there may be multiple subsections of the same level
-    - `<h3>` (`variant="h3"`): introduces a subsection under the `<h2>` subsection
+    - `<h3>`: introduces a subsection under the `<h2>` subsection
 
 Headings, and a logical application of heading levels, are indispensable for describing the relationships of belonging that make up the document’s structure. Landmarks and headings together expose the information topology to different users, their assistive software, and agents.
 

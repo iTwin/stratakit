@@ -1,0 +1,1 @@
+import{j as t}from"./_utils.CiPIldke.js";import{a as r,b as e,c as s}from"./Anchor.Dte_T38C.js";const a=()=>t.jsxs(r,{href:"https://youtu.be/dQw4w9WgXcQ",target:"_blank",children:[t.jsx(e,{children:"Rick Astley’s biggest hit"}),t.jsx(s,{alt:"opens in new tab"})]});export{a as default};

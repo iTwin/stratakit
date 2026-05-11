@@ -64,7 +64,7 @@ Avoid _prioritizing_ the focus of certain elements by applying a positive `tabin
 </ButtonGroup>
 ```
 
-More complex interactive components like [**Menu**](/docs/components/menu) and [**Dialog**](/docs/components/dialog) manage focus automatically. Implement these components to avoid focus order issues that could trip up a user or agent.
+More complex interactive components like [**Menu**](/components/menu) and [**Dialog**](/components/dialog) manage focus automatically. Implement these components to avoid focus order issues that could trip up a user or agent.
 
 ### Skip link
 

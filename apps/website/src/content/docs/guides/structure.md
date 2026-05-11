@@ -163,10 +163,10 @@ The generic `group` role is not the only way to encode a relationship of belongi
 
 [Landmarks](https://www.w3.org/WAI/ARIA/apg/practices/landmark-regions/) are the continents in the map of your interface. Landmarks are large and few in number. Everything (all components) must belong to one landmark or another. They have specific purposes:
 
-- [`<main>`](https://developer.mozilla.org/en-US/Web/HTML/Reference/Elements/main): Include just once per screen/page. This encapsulates the main, unique content of the screen.
+- [`<main>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/main): Include just once per screen/page. This encapsulates the main, unique content of the screen.
 - [`<header>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/header): Include just one at the start of the document. This may contain a principle `<nav>` element.
 - [`<nav>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/nav): Multiple can be used for different purposes, such as site navigation, pagination, and tables of content. Give each `<nav>` a unique label, like `<nav aria-label="table of contents">`. This differentiates the landmarks when aggregated in screen reader software.
-- [`<search>`](https://developer.mozilla.org/en-US/Web/HTML/Reference/Elements/search): Identifies the element containing the page’s principle search functionality.
+- [`<search>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/search): Identifies the element containing the page’s principle search functionality.
 - [`<aside>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/aside): For complementary content and functionality. If your model is the content of `<main>`, then an `<aside>` might contain a tree component for calibrating your model’s layers. Alternatively, the tree may be considered part of the model and the `<aside>` part of the `<main>` content, alongside the model itself.
 - [`<footer>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/footer): Used once at the end of the document. Useful for including company and product identification, and related links.
 

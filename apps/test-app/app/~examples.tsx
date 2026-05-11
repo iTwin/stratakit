@@ -14,6 +14,8 @@ import visuallyHidden from "@mui/utils/visuallyHidden";
 import { Icon } from "@stratakit/mui";
 import { createStore, useStore } from "zustand";
 
+import type { Knob } from "./~utils.tsx";
+
 import svgConfiguration from "@stratakit/icons/configuration.svg";
 import svgLink from "@stratakit/icons/link.svg";
 import styles from "./~examples.module.css";
@@ -172,13 +174,13 @@ function createKnobsStore() {
 
 const KnobsContext = React.createContext<
 	| {
-			knobs: Map<string, React.FC<{ children: React.ReactNode }>>;
+			knobs: Map<string, Knob>;
 			store: ReturnType<typeof createKnobsStore>;
 	  }
 	| undefined
 >(undefined);
 
-type Knobs = Record<string, React.FC<{ children: React.ReactNode }>>;
+type Knobs = Record<string, Knob>;
 
 type KnobsProviderProps = React.PropsWithChildren<{
 	/** The original knobs export */ knobs: Promise<Knobs>;

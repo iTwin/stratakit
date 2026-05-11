@@ -5,11 +5,9 @@
 
 import * as React from "react";
 import { useSearchParams } from "react-router";
-import { ThemeProvider } from "@mui/material/styles";
-import deepmerge from "@mui/utils/deepmerge";
 import { useSettingsStore } from "./~settings.tsx";
 
-import type { ComponentsProps, Theme } from "@mui/material/styles";
+import type { ComponentsProps } from "@mui/material/styles";
 import type { Root } from "@stratakit/mui";
 
 // ----------------------------------------------------------------------------
@@ -159,7 +157,12 @@ function SyncVariants({ variants }: { variants: Variant[] }) {
 
 // ---------------------------------------------------------------------------->;
 
+export type Knob = {
+	props?: ComponentsProps;
+};
+
 type KnobConfig = {
+	type?: "default-props";
 	props?: ComponentsProps;
 };
 
@@ -178,33 +181,16 @@ type KnobConfig = {
  * };
  * ```
  *
- * Returns a component that can be wrapped around the rendered example when the knob is enabled.
+ * The returned object can be used to adjust the rendering of the examples.
  */
-export function createKnob(config: KnobConfig) {
-	return function Knob({ children }: { children: React.ReactNode }) {
-		const props = config.props;
+export function createKnob(config: KnobConfig): Knob {
+	const { type = "default-props", props } = config;
 
-		if (!props || Object.keys(props).length === 0) {
-			return children;
-		}
+	if (type === "default-props") {
+		return { props };
+	}
 
-		return (
-			<ThemeProvider
-				theme={(outerTheme: Theme): Theme =>
-					deepmerge(outerTheme, {
-						components: Object.fromEntries(
-							Object.entries(props).map(([componentName, defaultProps]) => [
-								componentName,
-								{ defaultProps },
-							]),
-						),
-					})
-				}
-			>
-				{children}
-			</ThemeProvider>
-		);
-	};
+	throw new Error(`Unsupported knob type: ${type}`);
 }
 
 // ----------------------------------------------------------------------------

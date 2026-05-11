@@ -8,7 +8,9 @@ import { type MetaFunction, useLocation } from "react-router";
 import Container from "@mui/material/Container";
 import IconButton from "@mui/material/IconButton";
 import Stack from "@mui/material/Stack";
+import { ThemeProvider } from "@mui/material/styles";
 import Typography from "@mui/material/Typography";
+import deepmerge from "@mui/utils/deepmerge";
 import { Icon } from "@stratakit/mui";
 import * as NavigationList from "@stratakit/structures/unstable_NavigationList";
 import {
@@ -19,6 +21,9 @@ import {
 } from "~/~examples.tsx";
 import { SkipLinkContext } from "~/~navigation.tsx";
 import { useIsWideScreen } from "~/~utils.tsx";
+
+import type { ComponentsProps, Theme } from "@mui/material/styles";
+import type { Knob } from "~/~utils.tsx";
 
 import svgScript from "@stratakit/icons/script.svg";
 import styles from "./mui.module.css";
@@ -180,17 +185,16 @@ function ComponentExamples(props: ComponentExamplesProps) {
 
 	const { knobs, enabled: enabledKnobs } = useKnobs();
 
-	/** Renders with the "wrapper" components returned by all the enabled knobs. */
-	const renderWithKnobs = (children: React.ReactNode) => {
-		return Object.entries(enabledKnobs).reduce(
-			(result, [knobName, enabled]) => {
-				if (!enabled) return result;
-				const KnobComponent = knobs.get(knobName);
-				return KnobComponent ? <KnobComponent>{result}</KnobComponent> : result;
-			},
-			children,
-		);
-	};
+	/** All enabled default props to be passed to the ThemeProvider */
+	const knobProps = Object.entries(enabledKnobs).reduce(
+		(result, [knobName, enabled]) => {
+			if (!enabled) return result;
+			const knob = knobs.get(knobName);
+			if (!knob?.props) return result;
+			return deepmerge(result, knob.props);
+		},
+		{} as ComponentsProps,
+	);
 
 	return (
 		<ExamplesShowcase
@@ -212,7 +216,22 @@ function ComponentExamples(props: ComponentExamplesProps) {
 			}
 		>
 			<Stack spacing={2} sx={{ alignItems: "start" }}>
-				{renderWithKnobs(children)}
+				<ThemeProvider
+					theme={(outerTheme: Theme): Theme =>
+						deepmerge(outerTheme, {
+							components: Object.fromEntries(
+								Object.entries(knobProps).map(
+									([componentName, defaultProps]) => [
+										componentName,
+										{ defaultProps },
+									],
+								),
+							),
+						})
+					}
+				>
+					{children}
+				</ThemeProvider>
 			</Stack>
 		</ExamplesShowcase>
 	);
@@ -220,7 +239,7 @@ function ComponentExamples(props: ComponentExamplesProps) {
 
 // ----------------------------------------------------------------------------
 
-type Knobs = Record<string, React.FC<{ children: React.ReactNode }>>;
+type Knobs = Record<string, Knob>;
 
 interface ExamplesModule {
 	default: React.FC;

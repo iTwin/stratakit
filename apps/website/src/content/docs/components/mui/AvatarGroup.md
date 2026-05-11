@@ -13,5 +13,5 @@ links:
 - DOM order now matches the visual display order.
 - The visual stacking of the `Avatar`s is inverted.
 - `Avatar`s use a mask rather than a border to achieve the overlapping cutout effect.
-- The `variant` prop defaults to `"circular"`, and does not support `"rounded"` or `"square"`.
+- The `"rounded"` and `"square"` variants have been removed. 
 - Added list semantics to `AvatarGroup`. Each child `Avatar` is wrapped in a list item element.

@@ -70,7 +70,7 @@ More complex interactive components like [**Menu**](/components/menu) and [**Dia
 
 In the order of major page [landmarks](#landmarks), the `<header>`—typically including a `<nav>`—is expected to come first. 
 
-A skip link is a mechanism for bypassing this header/navigation functionality to interact directly with the main content of the page. It is a provision for keyboard users and is considered an accessibility requirement according to [WCAG](https://www.w3.org/WAI/WCAG22/Understanding/bypass-blocks.html).
+A [skip link](https://www.w3.org/WAI/test-evaluate/easy-checks/skip-link/) is a mechanism for bypassing this header/navigation functionality to interact directly with the main content of the page. It is a provision for keyboard users and is considered an accessibility requirement according to [WCAG](https://www.w3.org/WAI/WCAG22/Understanding/bypass-blocks.html).
 
 Typically, skip links are hidden until focused by keyboard. They are not needed by or available to mouse users.
 

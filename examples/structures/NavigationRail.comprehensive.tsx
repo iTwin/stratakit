@@ -8,6 +8,7 @@ import Badge from "@mui/material/Badge";
 import Divider from "@mui/material/Divider";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
+import visuallyHidden from "@mui/utils/visuallyHidden";
 import { Icon } from "@stratakit/mui";
 import { unstable_NavigationRail as NavigationRail } from "@stratakit/structures";
 
@@ -22,9 +23,7 @@ import svgWindowPopout from "@stratakit/icons/window-popout.svg";
 import styles from "./NavigationRail.comprehensive.module.css";
 
 export default () => {
-	const exampleId = React.useId();
-	const accountId = `${exampleId}-account`;
-	const notificationId = `${exampleId}-notification`;
+	const accountId = React.useId();
 	const [accountEl, setAccountEl] = React.useState<HTMLElement | null>(null);
 	const [accountOpen, setAccountOpen] = React.useState(false);
 	const [expanded, setExpanded] = React.useState(false);
@@ -75,20 +74,33 @@ export default () => {
 							<NavigationRail.ListItem>
 								<NavigationRail.Button
 									icon={
-										<NotificationsBadge
-											icon={
-												<Icon
-													href={`${svgNotifications}#icon-large`}
-													size="large"
-												/>
-											}
-											invisible={expanded}
-											notificationId={notificationId}
-										/>
+										<Badge variant="dot" color="error" invisible={expanded}>
+											<Icon
+												href={`${svgNotifications}#icon-large`}
+												size="large"
+											/>
+										</Badge>
 									}
 									label="Notifications"
-									aria-describedby={notificationId}
-									suffix={expanded ? <NotificationsIcon /> : undefined}
+									suffix={
+										<>
+											{expanded && (
+												<Badge
+													badgeContent={3}
+													inline
+													color="error"
+													slotProps={{
+														badge: {
+															"aria-hidden": true,
+														},
+													}}
+												/>
+											)}
+											<span style={visuallyHidden}>
+												You have 3 unread notifications
+											</span>
+										</>
+									}
 								/>
 							</NavigationRail.ListItem>
 							<NavigationRail.ListItem>
@@ -157,39 +169,5 @@ function AccountMenu(props: AccountPopoverProps) {
 			<MenuItem onClick={onClose}>View profile</MenuItem>
 			<MenuItem onClick={onClose}>Sign out</MenuItem>
 		</Menu>
-	);
-}
-
-interface NotificationsBadgeProps {
-	icon: React.ReactNode;
-	invisible: boolean;
-	notificationId: string;
-}
-
-function NotificationsBadge(props: NotificationsBadgeProps) {
-	const { icon, invisible, notificationId } = props;
-
-	return (
-		<Badge variant="dot" color="error" invisible={invisible}>
-			{icon}
-			<span id={notificationId} hidden>
-				You have 3 unread notifications
-			</span>
-		</Badge>
-	);
-}
-
-function NotificationsIcon() {
-	return (
-		<Badge
-			badgeContent={3}
-			inline
-			color="error"
-			slotProps={{
-				badge: {
-					"aria-hidden": true,
-				},
-			}}
-		/>
 	);
 }

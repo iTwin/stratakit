@@ -5,7 +5,7 @@
 import Stack from "@mui/material/Stack";
 import LinearProgressColors_ from "examples/mui/LinearProgress._colors.tsx";
 import LinearProgressDefault from "examples/mui/LinearProgress.default.tsx";
-import { isProduction } from "../~utils.tsx";
+import { isProduction } from "~/~utils.tsx";
 
 export default function LinearProgressExamples() {
 	return (

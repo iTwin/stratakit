@@ -8,6 +8,7 @@ import SliderRange from "examples/mui/Slider.range.tsx";
 import SliderSizes from "examples/mui/Slider.sizes.tsx";
 import SliderTooltip from "examples/mui/Slider.tooltip.tsx";
 import SliderVertical from "examples/mui/Slider.vertical.tsx";
+import { createKnob } from "~/~utils.tsx";
 
 export default function SliderExamples() {
 	return (
@@ -21,3 +22,13 @@ export default function SliderExamples() {
 		</>
 	);
 }
+
+export const knobs = {
+	disabled: createKnob({
+		props: {
+			MuiFormControl: {
+				disabled: true,
+			},
+		},
+	}),
+};

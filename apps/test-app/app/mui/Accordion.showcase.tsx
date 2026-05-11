@@ -10,6 +10,7 @@ import AccordionExpanded from "examples/mui/Accordion.expanded.tsx";
 import AccordionMarkerLeft from "examples/mui/Accordion.marker-left.tsx";
 import AccordionMultiple from "examples/mui/Accordion.multiple.tsx";
 import AccordionVariants from "examples/mui/Accordion.variants.tsx";
+import { createKnob } from "~/~utils.tsx";
 
 export default function AccordionExamples() {
 	return (
@@ -34,3 +35,13 @@ export default function AccordionExamples() {
 		</Stack>
 	);
 }
+
+export const knobs = {
+	disabled: createKnob({
+		props: {
+			MuiAccordion: {
+				disabled: true,
+			},
+		},
+	}),
+};

@@ -8,7 +8,7 @@ import ButtonColors from "examples/mui/Button.colors.tsx";
 import ButtonDefault from "examples/mui/Button.default.tsx";
 import ButtonSizes from "examples/mui/Button.sizes.tsx";
 import ButtonVariants from "examples/mui/Button.variants.tsx";
-import { isProduction } from "../~utils.tsx";
+import { createKnob, isProduction } from "~/~utils.tsx";
 
 export default function ButtonExamples() {
 	return (
@@ -22,3 +22,13 @@ export default function ButtonExamples() {
 		</>
 	);
 }
+
+export const knobs = {
+	disabled: createKnob({
+		props: {
+			MuiButton: {
+				disabled: true,
+			},
+		},
+	}),
+};

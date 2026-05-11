@@ -2,16 +2,13 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
+import Stack from "@mui/material/Stack";
+import BottomNavigationDefault from "examples/mui/BottomNavigation.default.tsx";
 
-import ToggleButton from "@mui/material/ToggleButton";
-import { Icon } from "@stratakit/mui";
-
-import svgPlaceholder from "@stratakit/icons/placeholder.svg";
-
-export default () => {
+export default function BottomNavigationExamples() {
 	return (
-		<ToggleButton value="disabled" label="Disabled" disabled>
-			<Icon href={svgPlaceholder} />
-		</ToggleButton>
+		<Stack spacing={1} sx={{ alignSelf: "stretch" }}>
+			<BottomNavigationDefault />
+		</Stack>
 	);
-};
+}

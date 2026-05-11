@@ -12,13 +12,13 @@ links:
 
 Make sure the **Button** is suitable for your use case. There may be other, more appropriate components available.
 
-| Use case                                                          | [Button](/components/button) | [IconButton](/components/iconbutton) | [ToggleButton](/components/togglebutton) | [Switch](/components/switch) | [Link](/components/link) |
-| ----------------------------------------------------------------- | ---------------------------- | ------------------------------------ | ---------------------------------------- | ---------------------------- | ------------------------ |
-| Submit forms, confirm or cancel dialogs, create or delete content | ✅                           | ❌                                   | ❌                                       | ❌                           | ❌                       |
-| Trigger an action within a [**Toolbar**](/components/toolbar)     | ❌                           | ✅                                   | ❌                                       | ❌                           | ❌                       |
-| Toggle an option within a [**Toolbar**](/components/toolbar)      | ❌                           | ❌                                   | ✅                                       | ❌                           | ❌                       |
-| Make an instantaneous, binary choice (switch a setting on or off) | ❌                           | ❌                                   | ❌                                       | ✅                           | ❌                       |
-| Navigate between interface screens or sections                    | ❌                           | ❌                                   | ❌                                       | ❌                           | ✅                       |
+| Use case                                                                                                                           | [Button](/components/button) | [IconButton](/components/iconbutton) | [ToggleButton](/components/togglebutton) | [Switch](/components/switch) | [Link](/components/link) |
+| ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------- | ------------------------------------ | ---------------------------------------- | ---------------------------- | ------------------------ |
+| Submit forms, confirm or cancel dialogs, create or delete content                                                                  | ✅                           | ❌                                   | ❌                                       | ❌                           | ❌                       |
+| Trigger an action within a [toolbar](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/toolbar_role) | ❌                           | ✅                                   | ❌                                       | ❌                           | ❌                       |
+| Toggle an option within a [toolbar](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/toolbar_role)  | ❌                           | ❌                                   | ✅                                       | ❌                           | ❌                       |
+| Make an instantaneous, binary choice (switch a setting on or off)                                                                  | ❌                           | ❌                                   | ❌                                       | ✅                           | ❌                       |
+| Navigate between interface screens or sections                                                                                     | ❌                           | ❌                                   | ❌                                       | ❌                           | ✅                       |
 
 ## StrataKit MUI modifications
 
@@ -92,5 +92,5 @@ An [**Icon**](/components/icon) can be displayed before or after the **Button's*
 - Don't use **Button** for navigation. Use a [**Link**](/components/link) or simple text link instead.
 - Don't include multiple **Buttons** with the same label.
 - Don't use unclear or superfluous icons. The text label is paramount.
-- Don't include **Buttons** in a [**Toolbar**](/components/toolbar). Use [**IconButtons**](/components/iconbutton) instead.
+- Don't include **Buttons** in a [toolbar](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/toolbar_role). Use [**IconButtons**](/components/iconbutton) instead.
 - Don't use a color that creates an insufficient [contrast](https://developer.mozilla.org/en-US/docs/Web/Accessibility/Guides/Understanding_WCAG/Perceivable/Color_contrast) between the **Button** and the background color of the interface.

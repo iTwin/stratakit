@@ -179,7 +179,7 @@ If landmarks represent continents, then sections are countries: subdivisions of 
 <p>The content belonging to the subsection.</p>
 ```
 
-The provided heading elements (`<h1>` to `<h6>`) are numbered according to section depth. 
+The heading elements (`<h1>` to `<h6>`) are numbered according to section depth. 
 
 - `<h1>`: introduces the page
   - `<h2>`: introduces a subsection in the page
@@ -188,6 +188,16 @@ The provided heading elements (`<h1>` to `<h6>`) are numbered according to secti
 
 Headings, and a logical application of heading levels, are indispensable for describing the relationships of belonging that make up the document’s structure. Landmarks and headings together expose the information topology to different users, their assistive software, and agents.
 
+If you are applying a suitable heading level but need control over the element’s styling, use the [**Typography**](/components/typography) component and set the level using the `render` prop:
+
+```jsx
+<Typography variant="h4" render={<h2 />}>
+  This must render as an `h2`, but looks smaller, like an `h4`.
+</Typography>
+```
+
+:::caution[False headings]
+
 Just because some text appears large or **bold** does not make it a heading. A heading must introduce a section (or subsection) of thematically distinct content. For large (or otherwise attention grabbing) text, not intended as a heading, use a [**Typography**](/components/typography) heading `variant` but change the underlying element using the `render` prop:
 
 ```jsx
@@ -195,3 +205,5 @@ Just because some text appears large or **bold** does not make it a heading. A h
   This change cannot be undone.
 </Typography>
 ```
+
+:::

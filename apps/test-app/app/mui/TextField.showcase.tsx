@@ -3,7 +3,6 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 import Stack from "@mui/material/Stack";
-import TextFieldDisabled from "examples/mui/TextField._disabled.tsx";
 import TextFieldDefault from "examples/mui/TextField.default.tsx";
 import TextFieldError from "examples/mui/TextField.error.tsx";
 import TextFieldIcon from "examples/mui/TextField.icon.tsx";
@@ -18,7 +17,6 @@ export default function TextFieldExamples() {
 			<TextFieldMultiline />
 			<TextFieldIcon />
 			<TextFieldError />
-			<TextFieldDisabled />
 			<TextFieldSizes />
 		</Stack>
 	);

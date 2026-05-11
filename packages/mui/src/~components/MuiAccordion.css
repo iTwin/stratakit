@@ -15,6 +15,10 @@
 		--_MuiAccordion-border-radius: 8px;
 	}
 
+	&:where(.MuiPaper-outlined)::before {
+		display: none; /* Divider is not needed since the border is already visible */
+	}
+
 	&:where(.Mui-disabled) {
 		border-color: var(--stratakit-color-border-glow-on-surface-disabled);
 	}

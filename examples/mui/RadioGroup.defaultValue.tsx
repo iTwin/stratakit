@@ -12,7 +12,7 @@ import RadioGroup from "@mui/material/RadioGroup";
 export default () => {
 	return (
 		<FormControl render={<fieldset />} role="radiogroup">
-			<FormLabel render={<legend />}>Choose a design system:</FormLabel>
+			<FormLabel render={<legend />}>Design system:</FormLabel>
 			<RadioGroup
 				name="design-system"
 				role={undefined}

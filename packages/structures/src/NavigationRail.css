@@ -233,6 +233,12 @@
 	}
 }
 
+.🥝NavigationRailItemActionSuffix {
+	@layer base {
+		display: flex;
+	}
+}
+
 .🥝NavigationRailFooter {
 	@layer base {
 		margin-block-start: auto;

@@ -9,7 +9,7 @@ Each screen, or page, in your interface is likely to include **StrataKit** compo
 
 ### Page language
 
-Place a `lang` attribute on the `<html>` element to identify the predominant language of the page. For example, the value `en` designates English as the page’s language.
+Place a `lang` attribute on the `<html>` element to identify the predominant language of the page. For example, the value `en` designates English as the page's language.
 
 ```html
 <html lang="en"></html>
@@ -46,13 +46,13 @@ The semantic structure of your page or screen, defined in HTML, is paramount. It
 - `<main>`: Include just once per screen/page. This encapsulates the main, unique content of the screen.
 - `<header>`: Include just one at the start of the document. This may contain a principle `<nav>` element.
 - `<nav>`: Multiple can be used for different purposes, such as site navigation, pagination, and tables of content. Give each `<nav>` a unique label, like `<nav aria-label="table of content">`. This differentiates the landmarks when aggregated in screen reader software.
-- `role="search"`: Identifies the element containing the page’s principle search functionality. Apply the `role` attribution to an element containing the `<form>` element. Do not place `role="search"` on the `<form>` element itself.
-- `<aside>`: For complementary content and functionality. If your model is the content of `<main>`, then an `<aside>` might contain a tree component for calibrating your model’s layers. Alternatively, the tree may be considered part of the model and the `<aside>` part of the `<main>` content, alongside the model itself.
+- `role="search"`: Identifies the element containing the page's principle search functionality. Apply the `role` attribution to an element containing the `<form>` element. Do not place `role="search"` on the `<form>` element itself.
+- `<aside>`: For complementary content and functionality. If your model is the content of `<main>`, then an `<aside>` might contain a tree component for calibrating your model's layers. Alternatively, the tree may be considered part of the model and the `<aside>` part of the `<main>` content, alongside the model itself.
 - `<footer>`: Used once at the end of the document. Useful for including company and product identification, and related links.
 
 ### Headings
 
-If landmarks represent continents, then sections are countries: subdivisions of landmarks. While HTML offers the `<section>` element, headings more commonly define the implicit sections and subsections of the document. The provided heading elements, from `<h1>` to `<h6>`, are numbered according to section depth. For example, an `<h3>` following an `<h2>` introduces a subsection to the `<h2>`’s section.
+If landmarks represent continents, then sections are countries: subdivisions of landmarks. While HTML offers the `<section>` element, headings more commonly define the implicit sections and subsections of the document. The provided heading elements, from `<h1>` to `<h6>`, are numbered according to section depth. For example, an `<h3>` following an `<h2>` introduces a subsection to the `<h2>`'s section.
 
 Not just anything should be a heading; not all large or bold text should use heading semantics. A heading must introduce a section (or subsection) of thematically distinct content.
 
@@ -62,7 +62,7 @@ A skip link is a mechanism for bypassing header/navigation functionality to inte
 
 Typically, skip links are hidden until focused by keyboard. They are not needed by or available to mouse users.
 
-If you are implementing your own skip link, point the skip link’s `href` to the `<main>` element page fragment. To ensure keyboard focus follows the link, include `tabindex="-1"` on the target element.
+If you are implementing your own skip link, point the skip link's `href` to the `<main>` element page fragment. To ensure keyboard focus follows the link, include `tabindex="-1"` on the target element.
 
 ```html
 <a href="#main">skip to content</a>

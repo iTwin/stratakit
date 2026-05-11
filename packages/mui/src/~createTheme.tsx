@@ -29,7 +29,11 @@ import { MuiIconButton } from "./~components/MuiIconButton.js";
 import { MuiInputLabel } from "./~components/MuiInputLabel.js";
 import { MuiSnackbar } from "./~components/MuiSnackbar.js";
 import { MuiStepIcon } from "./~components/MuiStepper.js";
-import { MuiTableCell, MuiTableHead } from "./~components/MuiTable.js";
+import {
+	MuiTableBody,
+	MuiTableCell,
+	MuiTableHead,
+} from "./~components/MuiTable.js";
 import { MuiToggleButton } from "./~components/MuiToggleButton.js";
 import { MuiTypography } from "./~components/MuiTypography.js";
 import {
@@ -349,7 +353,16 @@ function createTheme() {
 				},
 			},
 			MuiListSubheader: { defaultProps: { component: Role.li } },
-			MuiMenu: { defaultProps: { component: Role.div } },
+			MuiMenu: {
+				defaultProps: {
+					component: Role.div,
+					slotProps: {
+						paper: {
+							role: "presentation", // Removes role="dialog"
+						},
+					},
+				},
+			},
 			MuiMenuItem: { defaultProps: { component: Role.li } },
 			MuiMenuList: { defaultProps: { component: Role.ul } },
 			MuiMobileStepper: { defaultProps: { component: Role.div } },
@@ -443,7 +456,7 @@ function createTheme() {
 			MuiTable: { defaultProps: { component: withRenderProp(Role, "table") } },
 			MuiTableBody: {
 				defaultProps: {
-					component: withRenderProp(Role, "tbody"),
+					component: MuiTableBody,
 					role: undefined, // Removing role="rowgroup". See https://github.com/iTwin/stratakit/pull/1361
 				},
 			},

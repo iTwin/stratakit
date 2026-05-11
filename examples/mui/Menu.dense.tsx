@@ -16,13 +16,11 @@ export default () => {
 	};
 
 	const buttonId = React.useId();
-	const menuId = React.useId();
 
 	return (
 		<>
 			<Button
 				id={buttonId}
-				aria-controls={open ? menuId : undefined}
 				aria-haspopup="true"
 				aria-expanded={open ? "true" : "false"}
 				onClick={(event) => setAnchorEl(event.currentTarget)}
@@ -31,7 +29,6 @@ export default () => {
 				Open dense menu
 			</Button>
 			<Menu
-				id={menuId}
 				anchorEl={anchorEl}
 				open={open}
 				onClose={handleClose}

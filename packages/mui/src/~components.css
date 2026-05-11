@@ -22,6 +22,7 @@
 @import "./~components/MuiInput.css";
 @import "./~components/MuiList.css";
 @import "./~components/MuiMenu.css";
+@import "./~components/MuiPagination.css";
 @import "./~components/MuiSelect.css";
 @import "./~components/MuiSlider.css";
 @import "./~components/MuiStepper.css";
@@ -38,7 +39,8 @@
 .MuiAppBar-root {
 	background-color: var(--stratakit-color-bg-page-base);
 	box-shadow: none;
-	border-block-end: 1px solid var(--stratakit-color-border-page-base);
+	border-block-end: 1px solid;
+	border-color: var(--stratakit-color-border-page-base);
 	color: var(--stratakit-color-text-neutral-primary);
 }
 
@@ -59,10 +61,6 @@
 	}
 }
 
-.MuiPaginationItem-root {
-	&:where(.Mui-selected) {
-		background-color: var(--stratakit-color-bg-glow-on-surface-accent-pressed);
-		border: 1px solid var(--stratakit-color-border-accent-strong);
-		color: var(--stratakit-color-text-accent-strong);
-	}
+.MuiRating-root {
+	inline-size: fit-content;
 }

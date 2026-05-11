@@ -79,7 +79,7 @@ export default definePage(
 						href="#"
 						label="Marketplace"
 						icon={svgPlugins}
-						endIcon={<Icon alt="(opens in new tab)" href={svgWindowPopout} />}
+						suffix={<Icon alt="(opens in new tab)" href={svgWindowPopout} />}
 					/>
 
 					<NavigationRail.Footer>

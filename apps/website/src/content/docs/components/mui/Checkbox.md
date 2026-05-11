@@ -60,8 +60,8 @@ Use the `error` prop on `FormControl` to display the `FormHelperText` in an erro
 - Group related **Checkboxes** into a `<fieldset>`, using a `<legend>` as a label for the group.
 - Use **Checkboxes** inside a form that needs submission.
 
-## 🚫 Don’t
+## 🚫 Don't
 
-- Don’t omit a programmatically associated label.
-- Don’t use the `checked` state of one **Checkbox** to alter the `checked` state of others (don't use **Checkboxes** as [**Radios**](/components/radio)).
-- Don’t use a **Checkbox** when the effect of checking it is instantaneous (no confirmation or submission is required). Use [**Switch**](/components/switch) instead.
+- Don't omit a programmatically associated label.
+- Don't use the `checked` state of one **Checkbox** to alter the `checked` state of others (don't use **Checkboxes** as [**Radios**](/components/radio)).
+- Don't use a **Checkbox** when the effect of checking it is instantaneous (no confirmation or submission is required). Use [**Switch**](/components/switch) instead.

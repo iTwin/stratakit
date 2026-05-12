@@ -440,11 +440,7 @@ const NavigationRailItemAction = forwardRef<
 			className={cx("🥝NavigationRailItemAction", props.className)}
 			ref={forwardedRef}
 		>
-			{typeof icon === "string" ? (
-				<NavigationRailItemActionIcon href={icon} />
-			) : (
-				icon
-			)}
+			<NavigationRailItemActionIcon icon={icon} />
 			<NavigationRailItemActionLabel>{label}</NavigationRailItemActionLabel>
 
 			{suffix && (
@@ -478,15 +474,26 @@ DEV: NavigationRailItemAction.displayName = "NavigationRailItemAction";
 
 // ----------------------------------------------------------------------------
 
-interface NavigationRailItemActionIconProps
-	extends React.ComponentProps<typeof Icon> {}
+interface NavigationRailItemActionIconProps extends BaseProps<"svg"> {
+	icon: string | React.JSX.Element;
+}
 
 /** @private */
 const NavigationRailItemActionIcon = forwardRef<
 	"svg",
 	NavigationRailItemActionIconProps
 >((props, forwardedRef) => {
-	return <Icon size="large" {...props} ref={forwardedRef} />;
+	const { icon, ...rest } = props;
+
+	return (
+		<Icon
+			size="large"
+			href={typeof icon === "string" ? icon : undefined}
+			render={React.isValidElement(icon) ? icon : undefined}
+			{...rest}
+			ref={forwardedRef}
+		/>
+	);
 });
 
 // ----------------------------------------------------------------------------

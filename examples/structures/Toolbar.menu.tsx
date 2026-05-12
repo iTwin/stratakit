@@ -6,7 +6,6 @@
 import * as React from "react";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
@@ -14,7 +13,6 @@ import visuallyHidden from "@mui/utils/visuallyHidden";
 import { Icon } from "@stratakit/mui";
 import { unstable_Toolbar as Toolbar } from "@stratakit/structures";
 
-import svgCheckmark from "@stratakit/icons/checkmark.svg";
 import svgChevronDown from "@stratakit/icons/chevron-down.svg";
 import svgClipboard from "@stratakit/icons/clipboard.svg";
 import svgCopy from "@stratakit/icons/copy.svg";

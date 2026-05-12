@@ -495,6 +495,7 @@ const NavigationRailItemActionIcon = forwardRef<
 		/>
 	);
 });
+DEV: NavigationRailItemActionIcon.displayName = "NavigationRailItemActionIcon";
 
 // ----------------------------------------------------------------------------
 
@@ -516,6 +517,8 @@ const NavigationRailItemActionLabel = forwardRef<
 		/>
 	);
 });
+DEV: NavigationRailItemActionLabel.displayName =
+	"NavigationRailItemActionLabel";
 
 // ----------------------------------------------------------------------------
 
@@ -537,6 +540,8 @@ const NavigationRailItemActionSuffix = forwardRef<
 		/>
 	);
 });
+DEV: NavigationRailItemActionSuffix.displayName =
+	"NavigationRailItemActionSuffix";
 
 // ----------------------------------------------------------------------------
 

@@ -9,6 +9,7 @@ import OutlinedInput from "@mui/material/OutlinedInput";
 import StepConnector from "@mui/material/StepConnector";
 import { createTheme as createMuiTheme } from "@mui/material/styles";
 import cx from "classnames";
+import { MuiAccordion } from "./~components/MuiAccordion.js";
 import { MuiAutocomplete } from "./~components/MuiAutocomplete.js";
 import { MuiAvatarGroup } from "./~components/MuiAvatarGroup.js";
 import { MuiBadge } from "./~components/MuiBadge.js";
@@ -116,7 +117,7 @@ function createTheme() {
 			MuiAppBar: { defaultProps: { component: Role.header } },
 			MuiAccordion: {
 				defaultProps: {
-					component: Role.div,
+					component: MuiAccordion,
 					disableGutters: true,
 					slotProps: {
 						root({ variant }) {

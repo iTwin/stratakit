@@ -57,9 +57,9 @@ Disclose any **Accordion's** content by default using the `defaultExpanded` prop
 
 ### Marker positioning
 
-Use custom CSS to position the marker.
+Use `markerPosition` to control the **Accordion** marker position. By default, the marker is right aligned, but moves to the left side when the accordion is below 500px. Set `markerPosition="start"` or `markerPosition="end"` to force a fixed position.
 
-::example{src="mui/Accordion.marker-left"}
+::example{src="mui/Accordion.marker-position"}
 
 ### Multiple Accordions
 

@@ -40,6 +40,21 @@ declare module "@mui/material/OverridableComponent" {
 	}
 }
 
+declare module "@mui/material/Accordion" {
+	interface AccordionOwnProps {
+		/**
+		 * The position of the expander icon.
+		 *
+		 * - `"auto"`: Position is determined by responsive styles.
+		 * - `"start"`: Forces expander icon to the start.
+		 * - `"end"`: Forces expander icon to the end.
+		 *
+		 * @default 'auto'
+		 */
+		markerPosition?: "auto" | "start" | "end";
+	}
+}
+
 declare module "@mui/material/Alert" {
 	interface AlertPropsVariantOverrides {
 		standard: false;

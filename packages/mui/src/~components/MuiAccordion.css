@@ -10,6 +10,7 @@
 	background-color: transparent;
 	border-color: var(--stratakit-color-border-neutral-muted);
 	border-radius: var(--_MuiAccordion-border-radius);
+	container-type: inline-size;
 
 	&:where(.MuiPaper-rounded) {
 		--_MuiAccordion-border-radius: 8px;
@@ -63,6 +64,17 @@
 
 .MuiAccordionSummary-expandIconWrapper {
 	color: var(--_MuiAccordion-expand-icon-color);
+	order: 0;
+
+	:where(.MuiAccordion-root:not([data-_sk-marker-position])) & {
+		@container (max-width: 499px) {
+			order: -1;
+		}
+	}
+
+	:where(.MuiAccordion-root[data-_sk-marker-position="start"]) & {
+		order: -1;
+	}
 }
 
 .MuiAccordionDetails-root {

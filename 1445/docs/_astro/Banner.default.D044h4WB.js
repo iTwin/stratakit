@@ -1,1 +1,0 @@
-import{j as e}from"./_utils.DPFcOYEz.js";import{B as s}from"./Banner.CJl7-ONP.js";const r=()=>e.jsx(s,{label:"Update complete",message:"Your settings have been saved successfully."});export{r as default};

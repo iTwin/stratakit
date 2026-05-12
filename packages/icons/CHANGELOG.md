@@ -2,8 +2,6 @@
 
 ## 0.3.2
 
-### Patch Changes
-
 - [#1474](https://github.com/iTwin/stratakit/pull/1474): ⚠️ Renamed the following icons:
 
   | Old name              | New name                    |

@@ -3,17 +3,18 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import Divider from "@mui/material/Divider";
+import * as React from "react";
 import IconButton from "@mui/material/IconButton";
+import ToggleButton from "@mui/material/ToggleButton";
 import { Icon } from "@stratakit/mui";
 import { unstable_Toolbar as Toolbar } from "@stratakit/structures";
 
 import svgAdd from "@stratakit/icons/add.svg";
-import svgDelete from "@stratakit/icons/delete.svg";
 import svgEdit from "@stratakit/icons/edit.svg";
-import svgSave from "@stratakit/icons/save.svg";
+import svgSaveSettings from "@stratakit/icons/save-settings.svg";
 
 export default () => {
+	const [autoSave, setAutoSave] = React.useState(true);
 	return (
 		<Toolbar.Group variant="solid">
 			<Toolbar.Item
@@ -30,19 +31,16 @@ export default () => {
 					</IconButton>
 				}
 			/>
-			<Divider orientation="vertical" flexItem />
 			<Toolbar.Item
 				render={
-					<IconButton label="Save">
-						<Icon href={`${svgSave}#icon-large`} size="large" />
-					</IconButton>
-				}
-			/>
-			<Toolbar.Item
-				render={
-					<IconButton label="Delete">
-						<Icon href={`${svgDelete}#icon-large`} size="large" />
-					</IconButton>
+					<ToggleButton
+						value="settings"
+						label="Toggle Auto Save"
+						selected={autoSave}
+						onChange={() => setAutoSave((prev) => !prev)}
+					>
+						<Icon href={`${svgSaveSettings}#icon-large`} size="large" />
+					</ToggleButton>
 				}
 			/>
 		</Toolbar.Group>

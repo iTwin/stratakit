@@ -11,8 +11,10 @@ import { Icon } from "@stratakit/foundations";
 import {
 	forwardRef,
 	useEventHandlers,
+	useMergedRefs,
 	useSafeContext,
 	useUnreactiveCallback,
+	useWarnOnInteractiveDescendants,
 } from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
 import { createStore, useStore } from "zustand";
@@ -597,6 +599,10 @@ const NavigationRailItemActionSuffix = forwardRef<
 >((props, forwardedRef) => {
 	const expanded = useNavigationRailState((state) => state.expanded);
 	const { setSuffix } = useSafeContext(NavigationRailItemActionRootContext);
+	let warnRef: React.Ref<HTMLElement> | undefined;
+	DEV: warnRef = useWarnOnInteractiveDescendants(
+		`NavigationRail: interactive elements (e.g. buttons or links) should not be used in the "suffix" prop of "NavigationRail.Anchor" and "NavigationRail.Button".`,
+	);
 
 	React.useEffect(() => {
 		setSuffix(props.children);
@@ -607,7 +613,7 @@ const NavigationRailItemActionSuffix = forwardRef<
 			{...props}
 			className={cx("🥝NavigationRailItemActionSuffix", props.className)}
 			render={expanded ? undefined : <VisuallyHidden />}
-			ref={forwardedRef}
+			ref={useMergedRefs(forwardedRef, warnRef)}
 		/>
 	);
 });

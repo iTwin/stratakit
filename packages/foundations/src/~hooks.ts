@@ -245,3 +245,47 @@ export function useIsClient() {
 		() => false,
 	);
 }
+
+// https://developer.mozilla.org/en-US/docs/Web/HTML/Guides/Content_categories#interactive_content
+const INTERACTIVE_CONTENT_SELECTOR = [
+	// Interactive content elements
+	"button",
+	"details",
+	"embed",
+	"iframe",
+	"label",
+	"select",
+	"textarea",
+	// Interactive content elements with specific conditions
+	"a[href]",
+	"audio[controls]",
+	"img[usemap]",
+	"input:not([type='hidden'])",
+	"object[usemap]",
+	"video[controls]",
+].join(",");
+
+/**
+ * Hook that logs a warning if any interactive content is found within the given element.
+ * Should only be used in development.
+ *
+ * @private
+ */
+export function useWarnOnInteractiveDescendants(message: string) {
+	const hasWarnedRef = React.useRef(false);
+	return ((container: HTMLElement | null) => {
+		if (hasWarnedRef.current) return;
+		if (!container) return;
+
+		const interactiveDescendant = container.querySelector(
+			INTERACTIVE_CONTENT_SELECTOR,
+		);
+		if (!interactiveDescendant) return;
+
+		hasWarnedRef.current = true;
+		console.warn(message, {
+			container,
+			interactiveDescendant,
+		});
+	}) satisfies React.Ref<HTMLElement>;
+}

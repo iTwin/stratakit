@@ -34,7 +34,7 @@ Additionally, adjust tooltip placement to avoid overlapping the **Toolbar** and 
 
 ::example{src="structures/Toolbar.vertical" min-height="250px"}
 
-In the example above, `labelPlacement="right"` is set on [**IconButtons**](/components/iconbutton/) and the [**Divider**](/components/divider/) retains its default horizontal orientation.
+In the example above, `labelPlacement="right"` is set on [**IconButtons**](/components/iconbutton/) and the **Divider** retains its default horizontal orientation.
 
 ### ToggleButton
 

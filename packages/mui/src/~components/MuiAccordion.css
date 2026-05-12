@@ -5,7 +5,7 @@
 
 .MuiAccordion-root {
 	--_MuiAccordion-border-radius: 0;
-	--_MuiAccordion-padding: var(--stratakit-space-x2);
+	--_MuiAccordion-padding: var(--stratakit-space-x3);
 
 	background-color: transparent;
 	border-color: var(--stratakit-color-border-neutral-muted);
@@ -61,7 +61,6 @@
 
 .MuiAccordionSummary-expandIconWrapper {
 	color: var(--_MuiAccordion-expand-icon-color);
-	padding: var(--stratakit-space-x1);
 }
 
 .MuiAccordionDetails-root {

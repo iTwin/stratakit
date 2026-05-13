@@ -119,9 +119,9 @@ function createTheme() {
 					component: Role.div,
 					disableGutters: true,
 					slotProps: {
-						root({ variant }) {
+						root({ variant, square }) {
 							return {
-								square: variant !== "outlined" ? true : undefined, // Disable rounded corners on non-outlined variants
+								square: square ?? (variant !== "outlined" ? true : undefined), // Disable rounded corners on non-outlined variants
 							};
 						},
 						region: {

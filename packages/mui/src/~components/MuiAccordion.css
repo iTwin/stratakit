@@ -64,16 +64,16 @@
 
 .MuiAccordionSummary-expandIconWrapper {
 	color: var(--_MuiAccordion-expand-icon-color);
-	order: 0;
+	order: -1;
 
-	:where(.MuiAccordion-root:not([data-_sk-marker-position])) & {
-		@container (max-width: 499px) {
-			order: -1;
+	@container (max-width: 499px) {
+		:where(.MuiAccordion-root:not([data-_sk-marker-position])) & {
+			order: 0;
 		}
 	}
 
-	:where(.MuiAccordion-root[data-_sk-marker-position="start"]) & {
-		order: -1;
+	:where(.MuiAccordion-root[data-_sk-marker-position="end"]) & {
+		order: 0;
 	}
 }
 

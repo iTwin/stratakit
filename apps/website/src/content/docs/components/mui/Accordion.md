@@ -12,23 +12,28 @@ links:
 
 Make sure the **Accordion** is suitable for your use case. There may be other, more appropriate components available.
 
-| Use case                                                                                                              | [Accordion](/components/accordion) | [Tree](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/tree_role) | [Tabs](/components/tabs) | [Dialog](/components/dialog) |
-| --------------------------------------------------------------------------------------------------------------------- | ---------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------ | ---------------------------- |
-| Progressive disclosure of content (single level of data)                                                              | ✅                                 | ❌                                                                                                | ❌                       | ❌                           |
-| One level of indentation possible at all times                                                                        | ✅                                 | ❌                                                                                                | ❌                       | ❌                           |
-| Expandable content varies from simple list items to more complex form components (such as text fields, buttons, etc.) | ✅                                 | ❌                                                                                                | ❌                       | ❌                           |
-| Progressive disclosure of content (several levels of data ). Folder drilling.                                         | ❌                                 | ✅                                                                                                | ❌                       | ❌                           |
-| Hierarchy can branch and isn't necessarily linear.                                                                    | ❌                                 | ✅                                                                                                | ❌                       | ❌                           |
-| Organizing long forms or sections.                                                                                    | ✅                                 | ❌                                                                                                | ❌                       | ❌                           |
-| Displaying metadata or form content                                                                                   | ✅                                 | ❌                                                                                                | ❌                       | ❌                           |
-| Switching between distinct views or content areas                                                                     | ❌                                 | ❌                                                                                                | ✅                       | ❌                           |
-| Temporary, interruptive content (e.g. confirmation, form)                                                             | ❌                                 | ❌                                                                                                | ❌                       | ✅                           |
-| Reordering sections                                                                                                   | ✅                                 | ❌                                                                                                | ❌                       | ❌                           |
+| Use case                                                                                                              | [Accordion](/components/accordion) | [Tree](/components/tree) | [Tabs](/components/tabs) | [Dialog](/components/dialog) |
+| --------------------------------------------------------------------------------------------------------------------- | ---------------------------------- | ------------------------ | ------------------------ | ---------------------------- |
+| Progressive disclosure of content (single level of data)                                                              | ✅                                 | ❌                       | ❌                       | ❌                           |
+| One level of indentation possible at all times                                                                        | ✅                                 | ❌                       | ❌                       | ❌                           |
+| Expandable content varies from simple list items to more complex form components (such as text fields, buttons, etc.) | ✅                                 | ❌                       | ❌                       | ❌                           |
+| Progressive disclosure of content (several levels of data ). Folder drilling.                                         | ❌                                 | ✅                       | ❌                       | ❌                           |
+| Hierarchy can branch and isn't necessarily linear.                                                                    | ❌                                 | ✅                       | ❌                       | ❌                           |
+| Organizing long forms or sections.                                                                                    | ✅                                 | ❌                       | ❌                       | ❌                           |
+| Displaying metadata or form content                                                                                   | ✅                                 | ❌                       | ❌                       | ❌                           |
+| Switching between distinct views or content areas                                                                     | ❌                                 | ❌                       | ✅                       | ❌                           |
+| Temporary, interruptive content (e.g. confirmation, form)                                                             | ❌                                 | ❌                       | ❌                       | ✅                           |
+| Reordering sections                                                                                                   | ✅                                 | ❌                       | ❌                       | ❌                           |
 
 ## StrataKit MUI modifications
 
+- Restyled using StrataKit's visual language.
+- The overall size has been decreased.
+- The default `disableGutters` is now `"true"`.
+- The `slotProps.root.square` prop defaults to true except when `variant="outlined"`.
 - You are not required to attribute `<AccordionSummary>` with `aria-controls`.
 - Removed [`role="region"`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/region_role) semantics. The **Accordion** no longer creates a region landmark.
+- Includes full `forced-colors` support.
 
 ## Examples
 
@@ -60,7 +65,7 @@ Use custom CSS to position the marker.
 
 Multiple adjacent **Accordions** make a set. To make this set programmatically determinable and enumerable, use ARIA list semantics. Each individual `<Accordion>` must take `role="listitem"` and the set must belong to an element with `role="list"`.
 
-**Accordions** commonly represent major sections of a page and are rendered with an [`<h3>` heading element](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/Heading_Elements) by default. Use the `component` prop of the [`heading` slot props](https://mui.com/material-ui/api/accordion/#slots) to change the heading level.
+**Accordions** commonly represent major sections of a page and are rendered with an [`<h3>` heading element](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/Heading_Elements) by default. Use the [`heading` slot](https://mui.com/material-ui/api/accordion/#slots) via the `slots` prop to change the heading level.
 
 ::example{src="mui/Accordion.multiple"}
 

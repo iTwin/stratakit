@@ -2,8 +2,13 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
+import Stack from "@mui/material/Stack";
+import BottomNavigationDefault from "examples/mui/BottomNavigation.default.tsx";
 
-.summaryContent {
-	gap: var(--stratakit-space-x3);
-	align-items: center;
+export default function BottomNavigationExamples() {
+	return (
+		<Stack spacing={1} sx={{ alignSelf: "stretch" }}>
+			<BottomNavigationDefault />
+		</Stack>
+	);
 }

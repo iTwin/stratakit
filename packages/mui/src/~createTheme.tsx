@@ -118,7 +118,13 @@ function createTheme() {
 			MuiAccordion: {
 				defaultProps: {
 					component: Role.div,
+					disableGutters: true,
 					slotProps: {
+						root({ variant, square }) {
+							return {
+								square: square ?? (variant !== "outlined" ? true : undefined), // Disable rounded corners on non-outlined variants
+							};
+						},
 						region: {
 							role: undefined,
 							"aria-labelledby": undefined,
@@ -359,7 +365,16 @@ function createTheme() {
 				},
 			},
 			MuiListSubheader: { defaultProps: { component: Role.li } },
-			MuiMenu: { defaultProps: { component: Role.div } },
+			MuiMenu: {
+				defaultProps: {
+					component: Role.div,
+					slotProps: {
+						paper: {
+							role: "presentation", // Removes role="dialog"
+						},
+					},
+				},
+			},
 			MuiMenuItem: { defaultProps: { component: Role.li } },
 			MuiMenuList: { defaultProps: { component: Role.ul } },
 			MuiMobileStepper: { defaultProps: { component: Role.div } },

@@ -6,5 +6,5 @@
 import TextField from "@mui/material/TextField";
 
 export default () => {
-	return <TextField label="Name" />;
+	return <TextField label="Name:" />;
 };

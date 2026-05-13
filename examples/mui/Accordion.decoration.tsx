@@ -10,18 +10,11 @@ import Typography from "@mui/material/Typography";
 import { Icon } from "@stratakit/mui";
 
 import svgInfo from "@stratakit/icons/info.svg";
-import styles from "./Accordion.decoration.module.css";
 
 export default () => {
 	return (
 		<Accordion>
-			<AccordionSummary
-				slotProps={{
-					content: {
-						className: styles.summaryContent,
-					},
-				}}
-			>
+			<AccordionSummary>
 				<Icon href={svgInfo} />
 				<Typography render={<span />}>What is StrataKit?</Typography>
 			</AccordionSummary>

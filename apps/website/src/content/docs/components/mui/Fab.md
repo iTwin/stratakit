@@ -7,3 +7,8 @@ links:
 ---
 
 ::example{src="mui/Fab.default"}
+
+## StrataKit MUI modifications
+
+- Only `"primary"` and `"secondary"` colors are supported.
+- The default `color` is now `"primary"`.

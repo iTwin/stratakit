@@ -1,5 +1,39 @@
 # Changelog
 
+## 0.4.2
+
+- [#1464](https://github.com/iTwin/stratakit/pull/1464): Removed `role="dialog"` from the `paper` slot of the `Menu` component.
+- [#1455](https://github.com/iTwin/stratakit/pull/1455): Added minimum size to the `Dialog` component.
+- [#1451](https://github.com/iTwin/stratakit/pull/1451): Fixed pagination disabled and disabled + active styling.
+- [#1456](https://github.com/iTwin/stratakit/pull/1456): Improved `MenuItem` styling by adding active + hover state styling.
+- [#1453](https://github.com/iTwin/stratakit/pull/1453): Improved `ToggleButton` styling by fixing active + disabled state and added active + hover state.
+- [#1465](https://github.com/iTwin/stratakit/pull/1465): Improved `Alert` styling by adjusting gap, alignment and icon colors.
+- [#1469](https://github.com/iTwin/stratakit/pull/1469): Fixed `Rating` component collapsing to zero width in Safari.
+- Updated dependencies:
+  - @stratakit/icons@0.3.2
+
+## 0.4.1
+
+- [#1442](https://github.com/iTwin/stratakit/pull/1442): Added a new `labelPlacement` prop to `IconButton` and `ToggleButton` components to control the placement of a tooltip that is shown when the `label` prop is specified.
+- [#1393](https://github.com/iTwin/stratakit/pull/1393): Added ability to display text in the `ToggleButton` when rendered as a `Button`.
+- [#1444](https://github.com/iTwin/stratakit/pull/1444): Enabled `hover` prop for `TableRow` when inside `TableBody`.
+- [#1416](https://github.com/iTwin/stratakit/pull/1416): `Typography` will now log a warning during development if a heading variant is used without explicitly setting the `render` prop. This change is to help developers ensure correct heading structure.
+- Accessibility improvements:
+  - [#1417](https://github.com/iTwin/stratakit/pull/1417): `AvatarGroup` DOM order now matches the visual display order.
+  - [#1437](https://github.com/iTwin/stratakit/pull/1437): Added list semantics to `AvatarGroup` and nested `Avatar`s.
+  - [#1420](https://github.com/iTwin/stratakit/pull/1420): Add `role="dialog"` to `Popover`'s `paper` slot.
+  - [#1215](https://github.com/iTwin/stratakit/pull/1215): Added [`group` role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/group_role) to `Autocomplete`.
+- Styling changes:
+  - [#1360](https://github.com/iTwin/stratakit/pull/1360): Updated styling for `Table` row height & hover state.
+  - [#1431](https://github.com/iTwin/stratakit/pull/1431): Fixed visual appearance of `Switch` thumb.
+  - [#1428](https://github.com/iTwin/stratakit/pull/1428): Decreased the font-size of `DialogContentText`.
+  - [#1432](https://github.com/iTwin/stratakit/pull/1432): Updated `Typography` styles for `"subtitle1"` and `"subtitle2"` variants.
+  - [#1424](https://github.com/iTwin/stratakit/pull/1424): Styled `Slider`'s mark labels to match the Strata visual design language.
+  - [#1398](https://github.com/iTwin/stratakit/pull/1398): Styled `Slider`'s tooltip to match the Strata visual design language.
+  - [#1393](https://github.com/iTwin/stratakit/pull/1393): Styled `ToggleButton` to visually match the `IconButton` component.
+  - [#1430](https://github.com/iTwin/stratakit/pull/1430): Adjusted spacing between `CardHeader` and `CardContent` / `CardActions`.
+  - [#1426](https://github.com/iTwin/stratakit/pull/1426): The `AvatarGroup` surplus element no longer defaults to uppercase.
+
 ## 0.4.0
 
 ### Breaking changes

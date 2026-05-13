@@ -9,13 +9,11 @@ import * as path from "node:path";
 import * as babel from "@babel/core";
 import * as lightningcss from "lightningcss";
 import {
-	accentsTransform,
-	primitivesTransform,
-	staticVariablesTransform,
-	themeTransform,
-	typographyTokensTransform,
-	typographyTransform,
-} from "./lightningcss-visitors.js";
+	createVisitor,
+	customAtRules,
+	resolver,
+	targets,
+} from "./lightningcss.js";
 
 /**
  * This plugin inlines the contents of a CSS file as a JavaScript string when the
@@ -58,21 +56,13 @@ export function inlineCssPlugin() {
 				return { path: args.path, external: true };
 			});
 
-			onLoad({ filter: /.*/, namespace: "inline-css" }, (args) => {
-				const visitor = lightningcss.composeVisitors([
-					accentsTransform(),
-					primitivesTransform(),
-					themeTransform(),
-					typographyTransform(),
-					typographyTokensTransform(),
-					staticVariablesTransform(),
-				]);
-
+			onLoad({ filter: /.*/, namespace: "inline-css" }, async (args) => {
 				// Process the CSS file using lightningcss for bundling and other transformations.
-				// bundleAsync sometimes fails on Windows machines with error 3221225477
-				const { code: intermediateCode } = lightningcss.bundle({
+				const { code: intermediateCode } = await lightningcss.bundleAsync({
 					filename: args.path,
-					visitor,
+					visitor: createVisitor(),
+					customAtRules,
+					resolver,
 					exclude: lightningcss.Features.Colors,
 				});
 
@@ -81,12 +71,9 @@ export function inlineCssPlugin() {
 					filename: args.path,
 					code: intermediateCode,
 					minify: true,
-					targets: {
-						chrome: (110 << 16) | (0 << 8), // chrome 110.0
-						firefox: (110 << 16) | (0 << 8), // firefox 110.0
-						safari: (16 << 16) | (4 << 8), // safari 16.4
-					},
-					visitor,
+					customAtRules,
+					targets,
+					visitor: createVisitor(),
 					exclude: lightningcss.Features.Colors,
 				});
 				const css = finalCode.toString().trim();

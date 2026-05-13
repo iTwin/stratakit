@@ -275,9 +275,9 @@ const TextBoxRootContext = React.createContext<
 // ----------------------------------------------------------------------------
 
 export {
-	TextBoxRoot as Root,
-	TextBoxInput as Input,
-	TextBoxTextarea as Textarea,
 	TextBoxIcon as Icon,
+	TextBoxInput as Input,
+	TextBoxRoot as Root,
 	TextBoxText as Text,
+	TextBoxTextarea as Textarea,
 };

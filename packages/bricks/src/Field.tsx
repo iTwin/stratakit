@@ -292,9 +292,9 @@ DEV: FieldErrorMessage.displayName = "Field.ErrorMessage";
 // ----------------------------------------------------------------------------
 
 export {
-	FieldRoot as Root,
 	FieldControl as Control,
-	FieldLabel as Label,
 	FieldDescription as Description,
 	FieldErrorMessage as ErrorMessage,
+	FieldLabel as Label,
+	FieldRoot as Root,
 };

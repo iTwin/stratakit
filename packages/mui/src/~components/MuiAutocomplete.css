@@ -3,17 +3,6 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-/* {
-	padding-right: revert-layer;
-}
-
-.MuiAutocomplete-input {
-	order: 1;
-
-	:where(.MuiAutocomplete-hasPopupIcon) & {
-		padding-inline-end: calc(9px + 20px); /* 9px gap + 20px dropdown button width */
-/*} */
-
 .MuiAutocomplete-inputRoot:is(.MuiInputBase-root) {
 	--✨button-width: var(--stratakit-size-control-field-height-small);
 	/* Account for 1px border on input. */
@@ -32,6 +21,7 @@
 }
 
 .MuiAutocomplete-input:is(.MuiInputBase-input) {
+	order: 1;
 	padding-inline: 0; /* Padding moved to the parent */
 }
 

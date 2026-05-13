@@ -24,12 +24,13 @@ Make sure the **Select** is suitable for your use case. There may be other, more
 - Restyled using StrataKit's visual language.
 - The active option implementation and styling differ from the default approach. A checkmark icon has been added using a pseudo-element.
 - Includes full `forced-colors` support.
+- The `color` prop is not supported.
 
 ## Examples
 
 ### Icon
 
-An [**Icon**](/components/icon) can be displayed before or after the option’s text label using the [`ListItemIcon`](https://mui.com/material-ui/api/list-item-icon/) component. It’s important the **Icon’s** `alt` is omitted, since the text already provides the accessible label.
+An [**Icon**](/components/icon) can be displayed before or after the option's text label using the [`ListItemIcon`](https://mui.com/material-ui/api/list-item-icon/) component. It's important the **Icon's** `alt` is omitted, since the text already provides the accessible label.
 
 ::example{src="mui/Select.icon"}
 
@@ -41,18 +42,25 @@ Use the [`multiple`](https://mui.com/material-ui/api/select/#select-prop-multipl
 
 ### Native
 
-Use the [`NativeSelect`](https://mui.com/material-ui/api/native-select/) component to render a native [`<select>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/select) element. The native select has fewer customization options, however, it is more accessible and works much better on mobile devices. The native select also has the benefit of participating in the browser’s built-in form validation and autofill.
+Use the [`NativeSelect`](https://mui.com/material-ui/api/native-select/) component to render a native [`<select>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/select) element. The native select has fewer customization options, however, it is more accessible and works much better on mobile devices. The native select also has the benefit of participating in the browser's built-in form validation and autofill.
 
 ::example{src="mui/NativeSelect.default"}
 
+### Sizes
+
+- **Small:** Use in compact interfaces where space is limited.
+- **Medium:** Default size, suitable for most use cases.
+
+::example{src="mui/Select.sizes"}
+
 ## ✅ Do
 
-- Use **Selects** for form fields. A **Select’s** options represent a choice of predefined input values.
+- Use **Selects** for form fields. A **Select's** options represent a choice of predefined input values.
 - Programmatically associate labels and descriptions to the **Select** for compatibility with assistive technologies.
 - Write helpful labels, descriptions, and error messages, so users can avoid errors.
 
-## 🚫 Don’t
+## 🚫 Don't
 
-- Don’t steal keyboard focus and move it away from the **Select** when an option is chosen.
-- Don’t change application state without employing a [live region](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Guides/Live_regions) to alert screen reader users of that change.
-- Don’t make **Select** options behave like buttons/commands. Use the [**Menu**](/components/menu) component instead.
+- Don't steal keyboard focus and move it away from the **Select** when an option is chosen.
+- Don't change application state without employing a [live region](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Guides/Live_regions) to alert screen reader users of that change.
+- Don't make **Select** options behave like buttons/commands. Use the [**Menu**](/components/menu) component instead.

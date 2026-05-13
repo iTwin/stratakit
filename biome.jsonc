@@ -91,6 +91,9 @@
 						}
 					}
 				}
+			},
+			"security": {
+				"noBlankTarget": "off"
 			}
 		}
 	},

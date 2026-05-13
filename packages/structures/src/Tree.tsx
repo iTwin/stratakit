@@ -53,4 +53,4 @@ DEV: Tree.displayName = "Tree.Root";
 
 // ----------------------------------------------------------------------------
 
-export { Tree as Root, TreeItemRoot as Item, TreeItemAction as ItemAction };
+export { Tree as Root, TreeItemAction as ItemAction, TreeItemRoot as Item };

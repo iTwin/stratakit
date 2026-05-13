@@ -3,6 +3,13 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
+.MuiDialog-paper {
+	--✨min-inset: var(--stratakit-space-x4);
+
+	min-block-size: min(calc(100% - var(--✨min-inset)), 100px);
+	min-inline-size: min(calc(100% - var(--✨min-inset)), 100%, 296px);
+}
+
 .MuiDialogActions-root {
 	background-color: var(--stratakit-color-bg-page-base);
 	background-clip: padding-box; /* Ensure background-color doesn't bleed into transparent border */

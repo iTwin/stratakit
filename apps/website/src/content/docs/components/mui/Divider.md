@@ -28,7 +28,7 @@ In the following example, [from the HTML5 specification](https://html.spec.whatw
 
 ### Presentational dividers
 
-You may wish to make a **Divider** _presentational_ by removing its semantics, i.e. by passing [`role="separator"`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/separator_role) and rendering it as a `<div>` element.
+You may wish to make a **Divider** _presentational_ by removing its semantics, i.e. by passing [`role="presentation"`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/presentation_role) and rendering it as a `<div>` element.
 
 For example, your navigation may be subdivided into multiple lists which are already separated semantically. You can use a _presentational_ **Divider** to visually mark where one list ends and the next begins.
 
@@ -52,6 +52,6 @@ By default, the **Divider** appears in a horizontal orientation. Reorientate it 
 - Use the **Divider** to indicate divisions between grouped content such as lists.
 - Use _presentational_ **Divider** in cases where the semantics are superfluous, such as at the intersection between two unordered lists.
 
-## 🚫 Don’t
+## 🚫 Don't
 
-- Don’t use a **Divider** where a heading would better introduce a section of content.
+- Don't use a **Divider** where a heading would better introduce a section of content.

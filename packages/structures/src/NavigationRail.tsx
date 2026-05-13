@@ -133,7 +133,9 @@ interface NavigationRailRootProps extends NavigationRailRootInnerProps {
  * ```tsx
  * <NavigationRail.Root>
  *   <NavigationRail.Header>
- *     <IconButton label="Home" icon={applicationIcon} href="/" />
+ *     <IconButton label="Home" render={<a href="/" />}>
+ *       <Icon href={applicationIcon} />
+ *     </IconButton>
  *     <NavigationRail.ToggleButton />
  *   </NavigationRail.Header>
  *
@@ -342,7 +344,7 @@ interface NavigationRailListProps extends BaseProps<"div"> {}
  * </NavigationRail.List>
  * ```
  *
- * Multiple `NavigationRail.List` elements can be used together and be separated by a `Divider`.
+ * Multiple `NavigationRail.List` elements can be used together and be separated by a [`Divider`](https://stratakit.bentley.com/docs/components/divider/).
  */
 const NavigationRailList = forwardRef<"div", NavigationRailListProps>(
 	(props, forwardedRef) => {
@@ -552,13 +554,13 @@ DEV: NavigationRailFooter.displayName = "NavigationRail.Footer";
 // ----------------------------------------------------------------------------
 
 export {
-	NavigationRailRoot as Root,
-	NavigationRailHeader as Header,
-	NavigationRailToggleButton as ToggleButton,
+	NavigationRailAnchor as Anchor,
+	NavigationRailButton as Button,
 	NavigationRailContent as Content,
+	NavigationRailFooter as Footer,
+	NavigationRailHeader as Header,
 	NavigationRailList as List,
 	NavigationRailListItem as ListItem,
-	NavigationRailButton as Button,
-	NavigationRailAnchor as Anchor,
-	NavigationRailFooter as Footer,
+	NavigationRailRoot as Root,
+	NavigationRailToggleButton as ToggleButton,
 };

@@ -2,7 +2,7 @@
 import { getCollection, getEntries } from "astro:content";
 import StarlightPage from "@astrojs/starlight/components/StarlightPage.astro";
 import AnchorHeading from "@astrojs/starlight/components/AnchorHeading.astro";
-import { Aside } from "@astrojs/starlight/components";
+import { Aside, Badge } from "@astrojs/starlight/components";
 import type { Fragment } from "react";
 import ImportSnippet from "../../components/ImportSnippet.astro";
 import Jsdoc from "../../components/Jsdoc.astro";
@@ -143,6 +143,12 @@ function getBaseElementLink(baseElement: string) {
 				<>
 					<AnchorHeading level={heading.depth} id={heading.slug}>
 						{heading.text}
+						{component.deprecated && (
+							<>
+								{" "}
+								<Badge variant="danger" text="Deprecated" />
+							</>
+						)}
 					</AnchorHeading>
 					{baseElement && (
 						<div>

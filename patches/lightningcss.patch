@@ -1,0 +1,13 @@
+diff --git a/node/composeVisitors.js b/node/composeVisitors.js
+index 9d5796e3b8c08011dcc195c5c1906e48d595a1ae..e76c0f708445ad59a51212b83fc77f60b2908714 100644
+--- a/node/composeVisitors.js
++++ b/node/composeVisitors.js
+@@ -366,7 +366,7 @@ function createArrayVisitor(visitors, apply) {
+       // For each value, call all visitors. If a visitor returns a new value,
+       // we start over, but skip the visitor that generated the value or saw
+       // it before (to avoid cycles). This way, visitors can be composed in any order. 
+-      for (let v = 0; v < visitors.length;) {
++      for (let v = 0; v < visitors.length && i < arr.length;) {
+         if (seen.get(v)) {
+           v++;
+           continue;

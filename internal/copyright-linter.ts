@@ -77,4 +77,4 @@ for (const filePath of filePaths) {
 	}
 }
 
-export { copyrightBannerScss, copyrightBannerHtml, copyrightBannerJs };
+export { copyrightBannerHtml, copyrightBannerJs, copyrightBannerScss };

@@ -139,4 +139,4 @@ const HtmlSelect = forwardRef<"select", HtmlSelectProps>(
 
 // ----------------------------------------------------------------------------
 
-export { SelectRoot as Root, HtmlSelect };
+export { HtmlSelect, SelectRoot as Root };

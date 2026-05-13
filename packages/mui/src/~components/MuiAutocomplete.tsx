@@ -8,10 +8,33 @@ import * as ReactDOM from "react-dom";
 import { Role } from "@ariakit/react/role";
 import OutlinedInput from "@mui/material/OutlinedInput";
 import {
+	forwardRef,
 	useEventHandlers,
 	useMergedRefs,
 } from "@stratakit/foundations/secret-internals";
 import { MuiChip, MuiChipDeleteIcon } from "./MuiChip.js";
+import { MuiInputLabelContext } from "./MuiInputLabel.js";
+
+import type { BaseProps } from "@stratakit/foundations/secret-internals";
+
+// ----------------------------------------------------------------------------
+
+const MuiAutocomplete = forwardRef<"div", BaseProps<"div">>(
+	(props, forwardedRef) => {
+		const [labelId, setLabelId] = React.useState<string | undefined>(undefined);
+		return (
+			<MuiInputLabelContext.Provider value={{ setLabelId }}>
+				<Role.div
+					role="group"
+					aria-labelledby={labelId}
+					{...props}
+					ref={forwardedRef}
+				/>
+			</MuiInputLabelContext.Provider>
+		);
+	},
+);
+DEV: MuiAutocomplete.displayName = "MuiAutocomplete";
 
 // ----------------------------------------------------------------------------
 
@@ -112,8 +135,9 @@ DEV: MuiAutocompleteTextFieldInput.displayName =
 // ----------------------------------------------------------------------------
 
 export {
-	MuiAutocompleteClearIndicator,
+	MuiAutocomplete,
 	MuiAutocompleteChip,
 	MuiAutocompleteChipDeleteIcon,
+	MuiAutocompleteClearIndicator,
 	MuiAutocompleteTextFieldInput,
 };

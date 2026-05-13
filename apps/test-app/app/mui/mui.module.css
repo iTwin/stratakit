@@ -8,7 +8,10 @@
 	display: flex;
 	block-size: 100%;
 
+	background-color: var(--stratakit-color-bg-page-depth);
+
 	:where(html:has(&)) {
+		scrollbar-gutter: stable;
 		scroll-padding-block: var(--stratakit-space-x7);
 
 		@media (prefers-reduced-motion: no-preference) {
@@ -45,40 +48,4 @@
 
 .h1 {
 	margin-block-end: var(--stratakit-space-x10);
-}
-
-.exampleHeader {
-	display: flex;
-	align-items: center;
-	gap: var(--stratakit-space-x1);
-}
-
-.examplePermalink {
-	:where(.exampleHeader:is(:not(:hover, :focus-within))) & {
-		opacity: 0;
-	}
-}
-
-.exampleContainer {
-	display: flex;
-	flex-direction: column;
-	gap: var(--stratakit-space-x4);
-	position: relative;
-
-	&:where(:not(:nth-last-child(1 of &))) {
-		margin-block-end: var(--stratakit-space-x10);
-	}
-
-	&:where([data-target]) {
-		scroll-margin-block: var(--stratakit-space-x7);
-
-		&::before {
-			content: "";
-			position: absolute;
-			inset: calc(-1 * var(--stratakit-space-x4));
-			outline: 1px dashed var(--stratakit-color-border-neutral-base);
-			border-radius: 4px;
-			pointer-events: none;
-		}
-	}
 }

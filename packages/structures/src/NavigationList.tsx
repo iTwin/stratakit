@@ -280,7 +280,7 @@ DEV: NavigationListSubgroupButton.displayName = "NavigationListSubgroupButton";
 // ----------------------------------------------------------------------------
 
 export {
-	NavigationListRoot as Root,
 	NavigationListAnchor as Anchor,
+	NavigationListRoot as Root,
 	NavigationListSubgroup as Subgroup,
 };

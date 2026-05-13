@@ -1,0 +1,34 @@
+diff --git a/lib/util/glob.js b/lib/util/glob.js
+index 71a9dca7fda4fe0706b76716df760fe8d58f5c4c..cca96d78437dad2094cd03d4a54b4fd8230f5945 100644
+--- a/lib/util/glob.js
++++ b/lib/util/glob.js
+@@ -4,7 +4,7 @@
+  * SPDX-License-Identifier: Apache-2.0
+  */
+ import fastGlob from 'fast-glob';
+-import braces from 'brace-expansion';
++import { expand as braces } from 'brace-expansion';
+ import * as pathlib from 'path';
+ /**
+  * The error raised when {@link glob} matches a path that is outside of
+diff --git a/package.json b/package.json
+index 7fe8aa4db44ed822be2fd514a6a6e43c27c4007a..da7d90af9395231df3ad1cb54f7ba825ccae6f2c 100644
+--- a/package.json
++++ b/package.json
+@@ -417,7 +417,6 @@
+   },
+   "devDependencies": {
+     "@eslint/js": "^9.10.0",
+-    "@types/brace-expansion": "^1.1.2",
+     "@types/node": "^22.5.4",
+     "@types/node-forge": "^1.3.0",
+     "@types/proper-lockfile": "^4.1.2",
+@@ -448,7 +447,7 @@
+     "bracketSpacing": false
+   },
+   "dependencies": {
+-    "brace-expansion": "^4.0.0",
++    "brace-expansion": "^5.0.5",
+     "chokidar": "^3.5.3",
+     "fast-glob": "^3.2.11",
+     "jsonc-parser": "^3.0.0",

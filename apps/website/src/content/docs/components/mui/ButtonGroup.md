@@ -7,3 +7,17 @@ links:
 ---
 
 ::example{src="mui/ButtonGroup.default"}
+
+## StrataKit MUI modifications
+
+- Grouped buttons default to `color="secondary"`.
+
+## Examples
+
+### Sizes
+
+- **Small:** Use in compact interfaces where space is limited.
+- **Medium:** Default size, suitable for most use cases.
+- **Large:** Use in spacious layouts where a more prominent button is needed.
+
+::example{src="mui/ButtonGroup.sizes"}

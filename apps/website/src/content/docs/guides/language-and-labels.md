@@ -17,7 +17,7 @@ In web applications, this just means applying a `lang` attribute, with a suitabl
 <html lang="fr">
 ```
 
-Now parsers know to expect French content. A screen reader will choose a French voice profile and the page will be read in a suitably French accent.
+Now parsers know to expect French content. A screen reader will choose a French voice profile and the page will be read in a suitably French accent. If your application supports multiple languages, change the `lang` value with translation.
 
 ## Multilingual pages
 

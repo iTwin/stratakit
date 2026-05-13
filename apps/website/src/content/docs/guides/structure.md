@@ -114,50 +114,14 @@ In the [**ButtonGroup**](/components/buttongroup) component, **StrataKit** appli
 
 The generic `group` role is not the only way to encode a relationship of belonging. If you are not using the following extensively, you are unlikely to be sufficiently communicating structure.
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Use case</th>
-    <th>HTML</th>
-    <th>Available components</th>
-  </tr>
-  <tr>
-    <td>Unordered list</td>
-    <td>Any quantity of items where the order isn’t important, such as checklist items and <a href="/components/Card"><strong>Cards</strong></a></td>
-    <td>The <code>&lt;ul></code> and <code>&lt;li></code> elements or the <code>role="list"</code> and <code>role="listitem"</code> attribution</td>
-    <td><a href="/components/list"><strong>List</strong></a></td>
-  </tr>
-  <tr>
-    <td>Ordered list</td>
-    <td>Any quantity of items where the order is important, such as steps in a process or a breadcrumb trail</td>
-    <td>The <code>&lt;ol></code> and <code>&lt;li></code> elements</td>
-    <td><a href="/components/breadcrumbs"><strong>Breadcrumbs</strong></a>, <a href="/components/stepper"><strong>Stepper</strong></a></td>
-  </tr>
-  <tr>
-    <td>Landmark</td>
-    <td>Any large region of the page, such as the header, footer, or main content area</td>
-    <td><code>&lt;header></code>, <code>&lt;footer></code>, <code>&lt;main></code>, <code>&lt;nav></code>, <code>&lt;aside></code>, <code>role="search"</code></td>
-    <td>You must implement landmarks as part of your overall page/screen structure. See the <a href="#landmarks">landmarks section</a></td>
-  </tr>
-  <tr>
-    <td>Heading</td>
-    <td>Labeling sections and subsections of the page. Heading elements are a special case because they both indicate a section in the document and act as that section’s label. See the <a href="#headings">headings</a> section for more.</td>
-    <td><code>&lt;h1></code> to <code>&lt;h6></code></td>
-    <td>The <a href="/components/typography"><strong>Typography</strong></a> component supports the <code>render</code> prop, which lets you render the component as a heading element, such as <code>&lt;h3></code>.</td>
-  </tr>
-  <tr>
-    <td>Fieldset</td>
-    <td>Similar to <code>role="group"</code> but for grouping form elements, using a <code>&lt;legend></code> for the group’s label</td>
-    <td><code>&lt;fieldset></code> and <code>&lt;legend></code></td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>Figure</td>
-    <td>Providing captions for images and other media.</td>
-    <td><code>&lt;figure></code> and <code>&lt;figcaption></code>. The <code>&lt;figcaption></code> must appear alongside the media, each inside the <code>&lt;figure></code></td>
-    <td>None currently provided</td>
-  </tr>
-</table>
+| Name           | Use case                                                                                                                                                                                                                 | HTML                                                                                                          | Available components                                                                                                                                     |
+| -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Unordered list | Any quantity of items where the order isn’t important, such as checklist items and [Cards](/components/Card)                                                                                                             | The `<ul>` and `<li>` elements or the `role="list"` and `role="listitem"` attribution                         | [List](/components/list)                                                                                                                                 |
+| Ordered list   | Any quantity of items where the order is important, such as steps in a process or a breadcrumb trail                                                                                                                     | The `<ol>` and `<li>` elements                                                                                | [Breadcrumbs](/components/breadcrumbs), [Stepper](/components/stepper)                                                                                   |
+| Landmark       | Any large region of the page, such as the header, footer, or main content area                                                                                                                                           | `<header>`, `<footer>`, `<main>`, `<nav>`, `<aside>`, `role="search"`                                         | You must implement landmarks as part of your overall page/screen structure. See the [landmarks section](#landmarks).                                     |
+| Heading        | Labeling sections and subsections of the page. Heading elements are a special case because they both indicate a section in the document and act as that section’s label. See the [headings](#headings) section for more. | `<h1>` to `<h6>`                                                                                              | The [Typography](/components/typography) component supports the `render` prop, which lets you render the component as a heading element, such as `<h3>`. |
+| Fieldset       | Similar to `role="group"` but for grouping form elements, using a `<legend>` for the group’s label                                                                                                                       | `<fieldset>` and `<legend>`                                                                                   |                                                                                                                                                          |
+| Figure         | Providing captions for images and other media.                                                                                                                                                                           | `<figure>` and `<figcaption>`. The `<figcaption>` must appear alongside the media, each inside the `<figure>` | None currently provided                                                                                                                                  |
 
 ### Landmarks
 

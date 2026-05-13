@@ -10,8 +10,6 @@
 	background-color: transparent;
 	border-color: var(--stratakit-color-border-neutral-muted);
 	border-radius: var(--_MuiAccordion-border-radius);
-	container-name: sk-accordion;
-	container-type: inline-size;
 
 	&:where(.MuiPaper-rounded) {
 		--_MuiAccordion-border-radius: 8px;
@@ -32,6 +30,7 @@
 	background-color: transparent; /* Prevents `background-color` change on focus */
 	border-radius: var(--_MuiAccordion-border-radius);
 	column-gap: var(--stratakit-space-x3);
+	container-type: inline-size;
 	min-block-size: var(--stratakit-size-control-listitem-height-large);
 	padding-inline-start: var(--_MuiAccordion-padding);
 	padding-inline-end: var(--_MuiAccordion-padding);
@@ -67,7 +66,7 @@
 	color: var(--_MuiAccordion-expand-icon-color);
 	order: -1;
 
-	@container sk-accordion (max-width: 499px) {
+	@container (max-width: 499px) {
 		:where(.MuiAccordion-root:not([data-_sk-marker-position])) & {
 			order: 0;
 		}

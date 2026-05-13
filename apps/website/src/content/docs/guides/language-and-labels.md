@@ -9,7 +9,7 @@ Even interfaces elements not display text need to be encoded with text. Text is 
 
 ## Page language
 
-If you know some French, you can probably identify it in someone’s speech. Not all parsers are as adept. It’s imperative you explicitly set a language for every screen of your interface.
+A French speaker can identify French when they hear it. Programmatic parsers are not so skilled. You need to explicitly set a language for every screen of your interface.
 
 In web applications, this just means applying a `lang` attribute to the `<html>` element:
 

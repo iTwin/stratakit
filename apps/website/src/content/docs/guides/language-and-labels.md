@@ -32,11 +32,11 @@ Occasionally, a French page might include a section of content in another langua
 
 ## The page title
 
-HTML offers one element called `<label>` but many others that _act_ as labels, helping to identify and explain different parts of the interface.
+HTML offers lots of ways to label elements, and not just with the `<label>` element.
 
 The `<title>` element labels the screen itself. It’s visible in the browser tab, but also parsed by crawlers and assistive software. In a search engine result, it’s the text linking to the page. To a screen reader user, it’s announced when arriving on the page.
 
-Give sufficient context by including both the page and application name in each `<title>`
+Give sufficient context by including both the page and application name in each `<title>`.
 
 ```jsx
 <title>[name of the page] | [name of the application]</title>
@@ -76,7 +76,7 @@ Buttons without visible labels, showing just icons, must be encoded with text-ba
 
 ### Links
 
-Since a link transports you to a new location, its label should tell you where you are being taken. If the destination is a new page, consider making the link’s label part of that page’s [`<title>`](#the-page-title):
+A link transports you to a new location. Its label should tell you where you are being taken. If the destination is a new page, consider making the link’s text part of that page’s [`<title>`](#the-page-title):
 
 ```
 <!-- the link -->

@@ -5,7 +5,7 @@ description: How to identify and describe elements of the interface
 
 Interfaces are exchanges of information. Any interface where one party is human must share information as human readable text.
 
-Even interfaces not displaying a great deal of text must be encoded _with_ text. Text is parsable by crawlers, agents, and assistive software like screen readers. Tacit forms of communication (symbols and icons, shapes and colors) are not. 
+Even interfaces elements not display text need to be encoded with text. Text is parsable by crawlers, agents, and assistive software like screen readers. Tacit forms of communication (symbols and icons, shapes and colors) are not. 
 
 ## Page language
 

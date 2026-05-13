@@ -1,1 +1,0 @@
-import{p as r,a as e}from"./chunk-JZWAC4HX-ROAaBwzV.js";const n=e.createContext(void 0);function s(t){return r.jsx(n.Provider,{value:t.align,children:t.children})}function i(){return e.useContext(n)}export{s as G,i as u};

@@ -27,8 +27,13 @@ Make sure the **Accordion** is suitable for your use case. There may be other, m
 
 ## StrataKit MUI modifications
 
+- Restyled using StrataKit's visual language.
+- The overall size has been decreased.
+- The default `disableGutters` is now `"true"`.
+- The `square` prop defaults to true except when `variant="outlined"`.
 - You are not required to attribute `<AccordionSummary>` with `aria-controls`.
 - Removed [`role="region"`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/region_role) semantics. The **Accordion** no longer creates a region landmark.
+- Includes full `forced-colors` support.
 
 ## Examples
 
@@ -60,7 +65,7 @@ Use custom CSS to position the marker.
 
 Multiple adjacent **Accordions** make a set. To make this set programmatically determinable and enumerable, use ARIA list semantics. Each individual `<Accordion>` must take `role="listitem"` and the set must belong to an element with `role="list"`.
 
-**Accordions** commonly represent major sections of a page and are rendered with an [`<h3>` heading element](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/Heading_Elements) by default. Use the `component` prop of the [`heading` slot props](https://mui.com/material-ui/api/accordion/#slots) to change the heading level.
+**Accordions** commonly represent major sections of a page and are rendered with an [`<h3>` heading element](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/Heading_Elements) by default. Use the [`heading` slot](https://mui.com/material-ui/api/accordion/#slots) via the `slots` prop to change the heading level.
 
 ::example{src="mui/Accordion.multiple"}
 

@@ -117,7 +117,13 @@ function createTheme() {
 			MuiAccordion: {
 				defaultProps: {
 					component: Role.div,
+					disableGutters: true,
 					slotProps: {
+						root({ variant }) {
+							return {
+								square: variant !== "outlined" ? true : undefined, // Disable rounded corners on non-outlined variants
+							};
+						},
 						region: {
 							role: undefined,
 							"aria-labelledby": undefined,

@@ -1,0 +1,1 @@
+import{j as o}from"./_utils.BZmy9DER.js";import{I as t}from"./ExamplePreview.A0_fkdgl.js";import{s as i}from"./notifications.CbvvCW8f.js";const r=()=>o.jsx(t,{label:"Notifications",dot:"You have unread notifications",icon:i});export{r as default};

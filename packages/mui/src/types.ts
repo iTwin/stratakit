@@ -8,8 +8,6 @@
 // See: https://www.typescriptlang.org/docs/handbook/declaration-merging.html#module-augmentation
 
 import type { RoleProps } from "@ariakit/react/role";
-import type { AvatarProps } from "@mui/material/Avatar";
-import type { AvatarGroupProps } from "@mui/material/AvatarGroup";
 import type { BadgeProps } from "@mui/material/Badge";
 import type { IconButtonProps } from "@mui/material/IconButton";
 import type { CommonProps } from "@mui/material/OverridableComponent";
@@ -64,8 +62,8 @@ declare module "@mui/material/Avatar" {
 	}
 
 	interface AvatarOwnProps {
-		/** @deprecated Supports `"circular"` only. */
-		variant?: AvatarProps["variant"];
+		/** @deprecated `variant` is unnecessary. Only `"circular"` is supported and already the default. */
+		variant?: "circular";
 	}
 }
 
@@ -76,8 +74,8 @@ declare module "@mui/material/AvatarGroup" {
 	}
 
 	interface AvatarGroupOwnProps {
-		/** @deprecated Supports `"circular"` only. */
-		variant?: AvatarGroupProps["variant"];
+		/** @deprecated `variant` is unnecessary. Only `"circular"` is supported and already the default. */
+		variant?: "circular";
 	}
 }
 

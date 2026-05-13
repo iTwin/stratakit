@@ -3,7 +3,7 @@ title: Language and labels
 description: How to identify and describe elements of the interface
 ---
 
-Interfaces are exchanges of information. This is not possible without a shared language. Since one side of a _user_ interface is typically human, we use natural language, transmitted as text.
+Interfaces are exchanges of information. Any interface where one party is human must share information as human readable text.
 
 Even interfaces not displaying a great deal of text must be encoded _with_ text. Text is parsable by crawlers, agents, and assistive software like screen readers. Tacit forms of communication (symbols and icons, shapes and colors) are not. 
 

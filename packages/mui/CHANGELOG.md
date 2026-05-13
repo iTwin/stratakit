@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.4.2
+
+- [#1464](https://github.com/iTwin/stratakit/pull/1464): Removed `role="dialog"` from the `paper` slot of the `Menu` component.
+- [#1455](https://github.com/iTwin/stratakit/pull/1455): Added minimum size to the `Dialog` component.
+- [#1451](https://github.com/iTwin/stratakit/pull/1451): Fixed pagination disabled and disabled + active styling.
+- [#1456](https://github.com/iTwin/stratakit/pull/1456): Improved `MenuItem` styling by adding active + hover state styling.
+- [#1453](https://github.com/iTwin/stratakit/pull/1453): Improved `ToggleButton` styling by fixing active + disabled state and added active + hover state.
+- [#1465](https://github.com/iTwin/stratakit/pull/1465): Improved `Alert` styling by adjusting gap, alignment and icon colors.
+- [#1469](https://github.com/iTwin/stratakit/pull/1469): Fixed `Rating` component collapsing to zero width in Safari.
+- Updated dependencies:
+  - @stratakit/icons@0.3.2
+
 ## 0.4.1
 
 - [#1442](https://github.com/iTwin/stratakit/pull/1442): Added a new `labelPlacement` prop to `IconButton` and `ToggleButton` components to control the placement of a tooltip that is shown when the `label` prop is specified.

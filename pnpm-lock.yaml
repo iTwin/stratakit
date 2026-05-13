@@ -423,7 +423,7 @@ importers:
         specifier: ^0.4.8
         version: link:../foundations
       "@stratakit/icons":
-        specifier: ^0.3.1
+        specifier: ^0.3.2
         version: link:../icons
       classnames:
         specifier: ^2.5.1

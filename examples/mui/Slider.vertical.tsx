@@ -24,6 +24,7 @@ export default () => {
 					{" "}
 					from 0 (very sad) to 100 (very happy)
 				</span>
+				:
 			</FormLabel>
 			<Stack spacing={1} direction="column-reverse">
 				<Icon href={svgSad} />

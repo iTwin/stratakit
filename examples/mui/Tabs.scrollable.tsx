@@ -36,15 +36,10 @@ export default () => {
 						key={index}
 						label={`Item ${index}`}
 						id={`${baseId}-tab${index}`}
-						aria-controls={`${baseId}-panel${index}`}
 					/>
 				))}
 			</Tabs>
-			<div
-				role="tabpanel"
-				id={`${baseId}-panel${value}`}
-				aria-labelledby={`${baseId}-tab${value}`}
-			>
+			<div role="tabpanel" aria-labelledby={`${baseId}-tab${value}`}>
 				Item {value}
 			</div>
 		</Box>

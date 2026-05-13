@@ -11,7 +11,7 @@ Even interfaces elements not display text need to be encoded with text. Text is 
 
 A French speaker can identify French when they hear it. Programmatic parsers are not so skilled. You need to explicitly set a language for every screen of your interface.
 
-In web applications, this just means applying a `lang` attribute to the `<html>` element:
+In web applications, this just means applying a `lang` attribute, with a suitable [ISO `lang` code](https://en.wikipedia.org/wiki/List_of_ISO_639_language_codes), to the `<html>` element:
 
 ```jsx
 <html lang="fr">
@@ -29,8 +29,6 @@ Occasionally, a French page might include a section of content in another langua
 	<p>I am English.</p>
 </div>
 ```
-
-If your interface provides content in different languages, make sure all content has a suitable [ISO `lang` code](https://en.wikipedia.org/wiki/List_of_ISO_639_language_codes) applied. 
 
 ## The page title
 

@@ -16,7 +16,7 @@ export default () => {
 	const errorId = React.useId();
 	return (
 		<FormControl render={<fieldset />} role="radiogroup" error>
-			<FormLabel render={<legend />}>Gender</FormLabel>
+			<FormLabel render={<legend />}>Gender:</FormLabel>
 			<RadioGroup aria-describedby={errorId} name="gender" role={undefined}>
 				<FormControlLabel value="female" control={<Radio />} label="Female" />
 				<FormControlLabel value="male" control={<Radio />} label="Male" />

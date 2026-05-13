@@ -23,7 +23,7 @@ export default () => {
 	return (
 		<FormControl fullWidth>
 			<FormLabel htmlFor={id}>
-				Temperature<span style={visuallyHidden}> from 0°C to 100°C</span>
+				Temperature<span style={visuallyHidden}> from 0°C to 100°C</span>:
 			</FormLabel>
 			<Slider
 				marks={marks}

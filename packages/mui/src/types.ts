@@ -40,8 +40,8 @@ declare module "@mui/material/OverridableComponent" {
 	}
 }
 
-declare module "@mui/material/Accordion" {
-	interface AccordionOwnProps {
+declare module "@mui/material/AccordionSummary" {
+	interface AccordionSummaryOwnProps {
 		/**
 		 * The position of the expander icon.
 		 *

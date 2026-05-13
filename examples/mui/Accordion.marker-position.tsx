@@ -12,8 +12,8 @@ export default () => {
 	return (
 		<>
 			<div>
-				<Accordion markerPosition="start">
-					<AccordionSummary>
+				<Accordion>
+					<AccordionSummary markerPosition="start">
 						<Typography render={<span />}>
 							Logical property <code>start</code>
 						</Typography>
@@ -27,8 +27,8 @@ export default () => {
 			</div>
 
 			<div>
-				<Accordion markerPosition="end">
-					<AccordionSummary>
+				<Accordion>
+					<AccordionSummary markerPosition="end">
 						<Typography render={<span />}>
 							Logical property <code>end</code>
 						</Typography>

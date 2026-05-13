@@ -13,26 +13,26 @@ import {
 
 type MarkerPosition = "auto" | "start" | "end";
 
-interface MuiAccordionProps extends BaseProps<"div"> {
+interface MuiAccordionSummaryProps extends BaseProps<"div"> {
 	markerPosition?: MarkerPosition;
 }
 
-const MuiAccordion = forwardRef<"div", MuiAccordionProps>(
+const MuiAccordionSummary = forwardRef<"div", MuiAccordionSummaryProps>(
 	(props, forwardedRef) => {
 		const { markerPosition = "auto", ...rest } = props;
 		return (
-			<Role.div {...rest} ref={forwardedRef}>
-				<Role.AccordionSummary
-					data-_sk-marker-position={
-						markerPosition === "auto" ? undefined : markerPosition
-					}
-				/>
-			</Role.div>
+			<Role.div
+				{...rest}
+				ref={forwardedRef}
+				data-_sk-marker-position={
+					markerPosition === "auto" ? undefined : markerPosition
+				}
+			/>
 		);
 	},
 );
-DEV: MuiAccordion.displayName = "MuiAccordion";
+DEV: MuiAccordionSummary.displayName = "MuiAccordionSummary";
 
 // ----------------------------------------------------------------------------
 
-export { MuiAccordion };
+export { MuiAccordionSummary };

@@ -10,6 +10,7 @@
 	background-color: transparent;
 	border-color: var(--stratakit-color-border-neutral-muted);
 	border-radius: var(--_MuiAccordion-border-radius);
+	container-name: sk-accordion;
 	container-type: inline-size;
 
 	&:where(.MuiPaper-rounded) {
@@ -66,7 +67,7 @@
 	color: var(--_MuiAccordion-expand-icon-color);
 	order: -1;
 
-	@container (max-width: 499px) {
+	@container sk-accordion (max-width: 499px) {
 		:where(.MuiAccordion-root:not([data-_sk-marker-position])) & {
 			order: 0;
 		}

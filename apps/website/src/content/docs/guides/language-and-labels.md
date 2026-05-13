@@ -74,6 +74,20 @@ Buttons without visible labels, showing just icons, must be encoded with text-ba
 </IconButton>
 ```
 
+For buttons _with_ visible labels, do not give the icon a label of its own. The text label should be sufficient.
+
+
+```jsx
+<!-- ❌ -->
+<Button endIcon={<Icon href={svgAdd} alt="plus symbol" />}>Create new</Button>
+
+<!-- ❌ -->
+<Button endIcon={<Icon href={svgAdd} alt="create new icon" />}>Create new</Button>
+
+<!-- ✅ -->
+<Button endIcon={<Icon href={svgAdd} />}>Create new</Button>
+```
+
 ### Links
 
 A link transports you to a new location. Its label should tell you where you are being taken. If the destination is a new page, consider making the link’s text part of that page’s [`<title>`](#the-page-title):

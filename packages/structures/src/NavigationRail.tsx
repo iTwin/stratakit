@@ -14,11 +14,11 @@ import {
 	useMergedRefs,
 	useSafeContext,
 	useUnreactiveCallback,
-	useWarnOnInteractiveDescendants,
 } from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
 import { createStore, useStore } from "zustand";
 import { combine } from "zustand/middleware";
+import { useWarnOnInteractiveDescendants } from "./~hooks.js";
 import { useInit } from "./~utils.useInit.js";
 
 import type {
@@ -599,8 +599,9 @@ const NavigationRailItemActionSuffix = forwardRef<
 >((props, forwardedRef) => {
 	const expanded = useNavigationRailState((state) => state.expanded);
 	const { setSuffix } = useSafeContext(NavigationRailItemActionRootContext);
-	let warnRef: React.Ref<HTMLElement> | undefined;
-	DEV: warnRef = useWarnOnInteractiveDescendants(
+	const warnRef = React.useRef<HTMLElement>(undefined);
+	DEV: useWarnOnInteractiveDescendants(
+		warnRef,
 		`NavigationRail: interactive elements (e.g. buttons or links) should not be used in the "suffix" prop of "NavigationRail.Anchor" and "NavigationRail.Button".`,
 	);
 

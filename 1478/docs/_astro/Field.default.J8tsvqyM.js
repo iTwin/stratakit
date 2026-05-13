@@ -1,0 +1,1 @@
+import{j as e}from"./_utils.DjPMgcVz.js";import{F as r,b as o,a as s}from"./Field.E58-FUk_.js";import{T as t}from"./TextBox.JGqaLuef.js";const d=()=>e.jsxs(r,{children:[e.jsx(o,{children:"Name"}),e.jsx(s,{render:e.jsx(t,{})})]});export{d as default};

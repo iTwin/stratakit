@@ -9,7 +9,7 @@ import * as React from "react";
 const INTERACTIVE_CONTENT_SELECTOR = [
 	"button",
 	":any-link",
-	"[tabIndex='0']",
+	"[tabindex='0']",
 ].join(",");
 
 /**

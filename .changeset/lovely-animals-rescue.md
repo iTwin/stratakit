@@ -2,4 +2,4 @@
 "@stratakit/mui": patch
 ---
 
-Updated `Autocomplete` tags to be non-interactive and introduced an interactive dismiss button.
+Changed tab order of `Autocomplete` component from `tags input clear` to `input tags clear`.

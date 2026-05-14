@@ -12,5 +12,5 @@ links:
 
 - DOM order now matches the visual display order.
 - The visual stacking of the `Avatar`s is inverted.
-- The `"rounded"` and `"square"` variants have been removed. 
+- The `variant` prop is not supported. The **AvatarGroup** will always be _circular_.
 - Added list semantics to `AvatarGroup`. Each child `Avatar` is wrapped in a list item element.

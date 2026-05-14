@@ -1,1 +1,0 @@
-import{j as e}from"./_utils.CJgFlFVm.js";import{B as s}from"./Banner.DeF5U_oS.js";const r=()=>e.jsx(s,{label:"Update complete",message:"Your settings have been saved successfully."});export{r as default};

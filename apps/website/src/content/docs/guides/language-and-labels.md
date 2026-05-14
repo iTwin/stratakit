@@ -46,7 +46,7 @@ This identifies the page among other open tabs.
 
 ## Headings
 
-The [**Structure**](/guides/structure) guide covers using [heading levels](https://www.youtube.com/watch?v=1dHf3BO94GE) to describe document structure. 
+The [**Structure**](/guides/structure) guide covers using [heading levels](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/Heading_Elements) to describe document structure. 
 
 Equally important is the wording used for each heading. Headings are labels for the content they introduce. You should not have to read the content to make sense of its heading. This is especially important given screen readers and other parsers extract headings from content to create lists of links.
 

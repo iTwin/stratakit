@@ -580,7 +580,9 @@ const NavigationRailItemActionLabel = forwardRef<
 		<Role.span
 			{...props}
 			className={cx("🥝NavigationRailItemActionLabel", props.className)}
-			render={expanded ? undefined : <VisuallyHidden />}
+			render={
+				expanded ? props.render : <VisuallyHidden render={props.render} />
+			}
 			ref={forwardedRef}
 		/>
 	);
@@ -614,7 +616,9 @@ const NavigationRailItemActionSuffix = forwardRef<
 		<Role.span
 			{...props}
 			className={cx("🥝NavigationRailItemActionSuffix", props.className)}
-			render={expanded ? undefined : <VisuallyHidden />}
+			render={
+				expanded ? props.render : <VisuallyHidden render={props.render} />
+			}
 			ref={useMergedRefs(forwardedRef, ref)}
 		/>
 	);

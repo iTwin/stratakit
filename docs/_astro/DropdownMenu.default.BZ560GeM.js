@@ -1,0 +1,1 @@
+import{j as o}from"./_utils.er239Oyr.js";import{D as s,a as e,b as r,c as n}from"./DropdownMenu.CyE_o1fm.js";const d=()=>o.jsxs(s,{children:[o.jsx(e,{children:"Actions"}),o.jsxs(r,{children:[o.jsx(n,{shortcuts:"Command+N",label:"New"}),o.jsx(n,{shortcuts:"Command+O",label:"Open"}),o.jsx(n,{shortcuts:"Command+S",label:"Save"})]})]});export{d as default};

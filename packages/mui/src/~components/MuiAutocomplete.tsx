@@ -32,6 +32,22 @@ type OnKeyDownEvent = Parameters<
 const MuiAutocomplete = forwardRef<"div", BaseProps>((props, forwardedRef) => {
 	const [labelId, setLabelId] = React.useState<string | undefined>(undefined);
 
+	const [element, setElement] = React.useState<HTMLDivElement | null>(null);
+	React.useEffect(() => {
+		// End adornment is not available as a slot in MUI. Assign it to <slot> manually.
+		if (!element) return;
+
+		const endAdornment = element
+			.getElementsByClassName("MuiAutocomplete-endAdornment")
+			.item(0);
+		if (!endAdornment || endAdornment.slot) return;
+
+		endAdornment.slot = "end";
+		return () => {
+			endAdornment.slot = "";
+		};
+	}, [element]);
+
 	return (
 		<MuiAutocompleteContext.Provider value={true}>
 			<MuiInputLabelContext.Provider value={{ setLabelId }}>
@@ -44,7 +60,7 @@ const MuiAutocomplete = forwardRef<"div", BaseProps>((props, forwardedRef) => {
 							e.defaultMuiPrevented = true; // Prevent MUI from closing the listbox while trying to focus the tags
 						}
 					}, props.onKeyDown)}
-					ref={forwardedRef}
+					ref={useMergedRefs(setElement, forwardedRef)}
 				/>
 			</MuiInputLabelContext.Provider>
 		</MuiAutocompleteContext.Provider>
@@ -56,18 +72,6 @@ DEV: MuiAutocomplete.displayName = "MuiAutocomplete";
 
 const MuiAutocompleteClearIndicator = forwardRef<"button", BaseProps<"button">>(
 	(props, forwardedRef) => {
-		const [element, setElement] = React.useState<HTMLButtonElement | null>(
-			null,
-		);
-		React.useEffect(() => {
-			const parentElement = element?.parentElement;
-			if (!parentElement || parentElement.slot) return;
-			parentElement.slot = "end";
-			return () => {
-				parentElement.slot = "";
-			};
-		}, [element]);
-
 		return (
 			<Role.button
 				{...props}
@@ -75,7 +79,7 @@ const MuiAutocompleteClearIndicator = forwardRef<"button", BaseProps<"button">>(
 					// Stop Autocomplete from opening the listbox
 					e.stopPropagation();
 				})}
-				ref={useMergedRefs(setElement, forwardedRef)}
+				ref={forwardedRef}
 			/>
 		);
 	},

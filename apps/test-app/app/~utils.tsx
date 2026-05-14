@@ -7,6 +7,7 @@ import * as React from "react";
 import { useSearchParams } from "react-router";
 import { useSettingsStore } from "./~settings.tsx";
 
+import type { ComponentsProps } from "@mui/material/styles";
 import type { Root } from "@stratakit/mui";
 
 // ----------------------------------------------------------------------------
@@ -152,6 +153,44 @@ function SyncVariants({ variants }: { variants: Variant[] }) {
 	}, [variants, setVariants]);
 
 	return null;
+}
+
+// ---------------------------------------------------------------------------->;
+
+export type Knob = {
+	props?: ComponentsProps;
+};
+
+type KnobConfig = {
+	type?: "default-props";
+	props?: ComponentsProps;
+};
+
+/**
+ * Helper for defining a "knob" that can be used for passing information (e.g. default props) to the examples showcase.
+ *
+ * Example usage:
+ *
+ * ```tsx
+ * export const knobs = {
+ *   disabled: createKnob({
+ *     props: {
+ *       MuiButton: { disabled: true }
+ *     },
+ *   }),
+ * };
+ * ```
+ *
+ * The returned object can be used to adjust the rendering of the examples.
+ */
+export function createKnob(config: KnobConfig): Knob {
+	const { type = "default-props", props } = config;
+
+	if (type === "default-props") {
+		return { props };
+	}
+
+	throw new Error(`Unsupported knob type: ${type}`);
 }
 
 // ----------------------------------------------------------------------------

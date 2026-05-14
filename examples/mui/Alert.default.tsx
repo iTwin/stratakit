@@ -4,11 +4,14 @@
  *--------------------------------------------------------------------------------------------*/
 
 import Alert from "@mui/material/Alert";
+import AlertTitle from "@mui/material/AlertTitle";
 
 export default () => {
 	return (
-		<Alert>
-			Here is a gentle confirmation that your action was successful.
+		<Alert severity="info">
+			<AlertTitle>Connect billing required</AlertTitle>
+			An organization administrator must connect a billing account if you want
+			to continue using this feature.
 		</Alert>
 	);
 };

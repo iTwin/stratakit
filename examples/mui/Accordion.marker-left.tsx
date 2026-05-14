@@ -14,7 +14,6 @@ export default () => {
 	return (
 		<Accordion>
 			<AccordionSummary
-				className={styles.summary}
 				slotProps={{
 					expandIconWrapper: {
 						className: styles.expander,

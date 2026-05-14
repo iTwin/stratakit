@@ -7,17 +7,17 @@ import { InputAdornment } from "@mui/material";
 import TextField from "@mui/material/TextField";
 import { Icon } from "@stratakit/mui";
 
-import svgPlaceholder from "@stratakit/icons/placeholder.svg";
+import svgEmailAt from "@stratakit/icons/email-at.svg";
 
 export default () => {
 	return (
 		<TextField
-			label="Name"
+			label="Username:"
 			slotProps={{
 				input: {
 					startAdornment: (
 						<InputAdornment position="start">
-							<Icon href={svgPlaceholder} />
+							<Icon href={svgEmailAt} />
 						</InputAdornment>
 					),
 				},

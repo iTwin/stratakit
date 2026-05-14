@@ -14,10 +14,8 @@ export default () => {
 		<div role="list">
 			<Accordion
 				role="listitem"
-				slotProps={{
-					heading: {
-						component: "h2",
-					},
+				slots={{
+					heading: "h2",
 				}}
 			>
 				<AccordionSummary>
@@ -31,10 +29,8 @@ export default () => {
 
 			<Accordion
 				role="listitem"
-				slotProps={{
-					heading: {
-						component: "h2",
-					},
+				slots={{
+					heading: "h2",
 				}}
 			>
 				<AccordionSummary>
@@ -49,10 +45,8 @@ export default () => {
 
 			<Accordion
 				role="listitem"
-				slotProps={{
-					heading: {
-						component: "h2",
-					},
+				slots={{
+					heading: "h2",
 				}}
 			>
 				<AccordionSummary>

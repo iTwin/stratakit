@@ -13,7 +13,7 @@ links:
 - Restyled using StrataKit's visual language.
 - The default size has been decreased.
 - Requires a nested `<abbr>` for initials.
-- The `"rounded"` and `"square"` variants have been removed. 
+- The `variant` prop is not supported. The **Avatar** will always be _circular_.
 - Includes full `forced-colors` support.
 
 ## Examples

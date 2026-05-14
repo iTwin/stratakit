@@ -35,6 +35,7 @@
 }
 
 .MuiAutocomplete-endAdornment {
+	display: flex;
 	inset-inline-end: var(--_MuiAutocomplete-button-inset);
 
 	> * {

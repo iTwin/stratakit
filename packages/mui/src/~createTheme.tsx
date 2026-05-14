@@ -155,12 +155,6 @@ function createTheme() {
 				defaultProps: {
 					popupIcon: <ChevronDownIcon />,
 					clearIcon: <DismissIcon />,
-					onKeyDown: (e) => {
-						// TODO: this needs to be merged with props after https://github.com/mui/material-ui/issues/47755
-						if (e.key === "ArrowLeft" || e.key === "ArrowRight") {
-							e.defaultMuiPrevented = true; // Prevent MUI from handling left/right arrow keys to focus the tags
-						}
-					},
 					renderOption: ({ key, ...props }, option, _, ownerState) => (
 						<li
 							key={key}

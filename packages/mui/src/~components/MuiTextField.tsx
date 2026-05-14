@@ -5,7 +5,10 @@
 
 import * as React from "react";
 import OutlinedInput from "@mui/material/OutlinedInput";
-import { MuiAutocompleteTextFieldInput } from "./MuiAutocomplete.js";
+import {
+	MuiAutocompleteContext,
+	MuiAutocompleteTextFieldInput,
+} from "./MuiAutocomplete.js";
 
 // ----------------------------------------------------------------------------
 
@@ -13,8 +16,7 @@ const MuiTextFieldInput = React.forwardRef<
 	HTMLDivElement,
 	React.ComponentProps<typeof OutlinedInput>
 >((props, forwardedRef) => {
-	// TODO: replace with Context after https://github.com/mui/material-ui/issues/47755
-	const isAutocomplete = props.className?.includes("MuiAutocomplete-inputRoot");
+	const isAutocomplete = React.useContext(MuiAutocompleteContext);
 	const Component = isAutocomplete
 		? MuiAutocompleteTextFieldInput
 		: OutlinedInput;

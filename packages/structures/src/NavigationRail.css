@@ -236,6 +236,7 @@
 .🥝NavigationRailItemActionSuffix {
 	@layer base {
 		display: flex;
+		align-items: center;
 	}
 }
 

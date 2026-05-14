@@ -602,7 +602,7 @@ const NavigationRailItemActionSuffix = forwardRef<
 	const warnRef = React.useRef<HTMLElement>(undefined);
 	DEV: useWarnOnInteractiveDescendants(
 		warnRef,
-		`NavigationRail: interactive elements (e.g. buttons or links) should not be used in the "suffix" prop of "NavigationRail.Anchor" and "NavigationRail.Button".`,
+		`NavigationRail: interactive elements (e.g. buttons or links) should not be used in the "suffix" prop of "NavigationRail.Anchor" and "NavigationRail.Button". If you have a use case for trailing actions, please open an issue: https://github.com/iTwin/stratakit/issues`,
 	);
 
 	React.useEffect(() => {

@@ -14,6 +14,7 @@
 
 .🥝MuiAvatarGroupItem {
 	--✨mask-gap: var(--stratakit-space-x1);
+	--✨mask-size: calc(100% + var(--✨mask-gap));
 
 	&:where(:not(:nth-child(1 of &))) {
 		margin-inline-start: var(--AvatarGroup-spacing);
@@ -27,6 +28,6 @@
 		);
 		mask-position: center;
 		mask-repeat: no-repeat;
-		mask-size: calc(100% + var(--✨mask-gap)) calc(100% + var(--✨mask-gap));
+		mask-size: var(--✨mask-size) var(--✨mask-size);
 	}
 }

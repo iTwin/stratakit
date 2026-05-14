@@ -598,23 +598,24 @@ const NavigationRailItemActionSuffix = forwardRef<
 	NavigationRailItemActionSuffixProps
 >((props, forwardedRef) => {
 	const expanded = useNavigationRailState((state) => state.expanded);
-	const { setSuffix } = useSafeContext(NavigationRailItemActionRootContext);
-	const warnRef = React.useRef<HTMLElement>(undefined);
-	DEV: useWarnOnInteractiveDescendants(
-		warnRef,
-		`NavigationRail: interactive elements (e.g. buttons or links) should not be used in the "suffix" prop of "NavigationRail.Anchor" and "NavigationRail.Button". If you have a use case for trailing actions, please open an issue: https://github.com/iTwin/stratakit/issues`,
-	);
 
+	const { setSuffix } = useSafeContext(NavigationRailItemActionRootContext);
 	React.useEffect(() => {
 		setSuffix(props.children);
 	}, [props.children, setSuffix]);
+
+	const ref = React.useRef<HTMLElement>(undefined);
+	DEV: useWarnOnInteractiveDescendants(
+		ref,
+		`NavigationRail: interactive elements (e.g. buttons or links) should not be used in the "suffix" prop of "NavigationRail.Anchor" and "NavigationRail.Button". If you have a use case for trailing actions, please open an issue: https://github.com/iTwin/stratakit/issues`,
+	);
 
 	return (
 		<Role.span
 			{...props}
 			className={cx("🥝NavigationRailItemActionSuffix", props.className)}
 			render={expanded ? undefined : <VisuallyHidden />}
-			ref={useMergedRefs(forwardedRef, warnRef)}
+			ref={useMergedRefs(forwardedRef, ref)}
 		/>
 	);
 });

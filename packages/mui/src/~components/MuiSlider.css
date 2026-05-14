@@ -46,7 +46,7 @@
 		cursor: grabbing;
 	}
 
-	&:where(:has(.Mui-active, .Mui-focusVisible)) {
+	&:where(:has(.MuiSlider-thumb.Mui-active, .MuiSlider-thumb.Mui-focusVisible)) {
 		--_MuiSlider-rail-track-size: var(--_MuiSlider-rail-track-size-increase);
 	}
 

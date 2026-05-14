@@ -82,6 +82,10 @@ test.describe("@visual", () => {
 		await page.goto("/tests/navigation-rail?visual");
 		await page.emulateMedia({ forcedColors: "active" });
 		await expect(page.locator("body")).toHaveScreenshot();
+
+		const toggleButton = page.getByRole("button", { name: "Expand" });
+		await toggleButton.click();
+		await expect(page.locator("body")).toHaveScreenshot();
 	});
 });
 

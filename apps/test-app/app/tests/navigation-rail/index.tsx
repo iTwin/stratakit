@@ -148,6 +148,7 @@ function VisualTest() {
 							href="#"
 							icon={svgPlaceholder}
 							label="Item #3"
+							suffix={<Icon alt="(opens in new tab)" href={svgWindowPopout} />}
 						/>
 					</NavigationRail.ListItem>
 				</NavigationRail.List>

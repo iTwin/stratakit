@@ -5,6 +5,7 @@
 
 import * as React from "react";
 import OutlinedInput from "@mui/material/OutlinedInput";
+import { forwardRef } from "@stratakit/foundations/secret-internals";
 import {
 	MuiAutocompleteContext,
 	MuiAutocompleteTextFieldInput,
@@ -12,8 +13,8 @@ import {
 
 // ----------------------------------------------------------------------------
 
-const MuiTextFieldInput = React.forwardRef<
-	HTMLDivElement,
+const MuiTextFieldInput = forwardRef<
+	"div",
 	React.ComponentProps<typeof OutlinedInput>
 >((props, forwardedRef) => {
 	const isAutocomplete = React.useContext(MuiAutocompleteContext);

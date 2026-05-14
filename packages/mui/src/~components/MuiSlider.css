@@ -42,7 +42,11 @@
 		--_MuiSlider-thumb-size: var(--✨size-thumb--medium);
 	}
 
-	&:has(.Mui-active, .Mui-focusVisible) {
+	&:where(:has(.MuiSlider-thumb.Mui-active)) {
+		cursor: grabbing;
+	}
+
+	&:where(:has(.MuiSlider-thumb:is(.Mui-active, .Mui-focusVisible))) {
 		--_MuiSlider-rail-track-size: var(--_MuiSlider-rail-track-size-increase);
 	}
 
@@ -109,10 +113,6 @@
 	border: 1px solid var(--stratakit-color-border-shadow-base);
 	box-shadow: none;
 	cursor: grab;
-
-	&:where(.Mui-active) {
-		cursor: grabbing;
-	}
 
 	&:where(.Mui-disabled) {
 		background-color: var(--stratakit-color-icon-neutral-disabled);

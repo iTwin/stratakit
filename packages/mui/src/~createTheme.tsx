@@ -9,6 +9,7 @@ import OutlinedInput from "@mui/material/OutlinedInput";
 import StepConnector from "@mui/material/StepConnector";
 import { createTheme as createMuiTheme } from "@mui/material/styles";
 import cx from "classnames";
+import { MuiAlert, MuiAlertTitle } from "./~components/MuiAlert.js";
 import {
 	MuiAutocomplete,
 	MuiAutocompleteChip,
@@ -123,7 +124,13 @@ function createTheme() {
 			MuiAccordion: {
 				defaultProps: {
 					component: Role.div,
+					disableGutters: true,
 					slotProps: {
+						root({ variant, square }) {
+							return {
+								square: square ?? (variant !== "outlined" ? true : undefined), // Disable rounded corners on non-outlined variants
+							};
+						},
 						region: {
 							role: undefined,
 							"aria-labelledby": undefined,
@@ -140,7 +147,7 @@ function createTheme() {
 			},
 			MuiAlert: {
 				defaultProps: {
-					component: Role.div,
+					component: MuiAlert,
 					variant: "outlined",
 					iconMapping: {
 						error: <ErrorIcon />,
@@ -148,9 +155,14 @@ function createTheme() {
 						success: <SuccessIcon />,
 						warning: <WarningIcon />,
 					},
+					slotProps: {
+						root: {
+							role: "group", // Overriding role="alert".
+						},
+					},
 				},
 			},
-			MuiAlertTitle: { defaultProps: { component: Role.div } },
+			MuiAlertTitle: { defaultProps: { component: MuiAlertTitle } },
 			MuiAutocomplete: {
 				defaultProps: {
 					popupIcon: <ChevronDownIcon />,

@@ -6,13 +6,13 @@
 import { Role } from "@ariakit/react/role";
 import { forwardRef } from "@stratakit/foundations/secret-internals";
 
+import type { AccordionSummaryOwnProps } from "@mui/material/AccordionSummary";
 import type { BaseProps } from "@stratakit/foundations/secret-internals";
+
 // ----------------------------------------------------------------------------
 
-type MarkerPosition = "auto" | "start" | "end";
-
 interface MuiAccordionSummaryProps extends BaseProps {
-	markerPosition?: MarkerPosition;
+	markerPosition?: AccordionSummaryOwnProps["markerPosition"];
 }
 
 const MuiAccordionSummary = forwardRef<"div", MuiAccordionSummaryProps>(

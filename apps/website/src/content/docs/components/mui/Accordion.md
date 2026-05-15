@@ -29,6 +29,7 @@ Make sure the **Accordion** is suitable for your use case. There may be other, m
 
 - Restyled using StrataKit's visual language.
 - The overall size has been decreased.
+- Added `markerPosition` prop to control the [marker positioning](#marker-positioning).
 - The default `disableGutters` is now `"true"`.
 - The `slotProps.root.square` prop defaults to true except when `variant="outlined"`.
 - You are not required to attribute `<AccordionSummary>` with `aria-controls`.

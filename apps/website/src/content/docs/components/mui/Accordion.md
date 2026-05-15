@@ -57,7 +57,7 @@ Disclose any **Accordion's** content by default using the `defaultExpanded` prop
 
 ### Marker positioning
 
-Use `markerPosition` to control the **AccordionSummary** marker position. By default, the marker is left aligned, but moves to the right side when the accordion is narrow. Set `markerPosition="start"` or `markerPosition="end"` to force a fixed position.
+Use the `markerPosition` prop to control the **AccordionSummary** marker position. By default, the marker is left aligned, but moves to the right side when the accordion is narrow. Set `markerPosition="start"` or `markerPosition="end"` to force a fixed position.
 
 ::example{src="mui/Accordion.marker-position"}
 

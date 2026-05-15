@@ -1,0 +1,1 @@
+import{j as t}from"./_utils.B5dU_Y0f.js";import{B as a}from"./Badge.D7qENntV.js";import{s as r}from"./status-warning.BmGAK20g.js";const i=()=>t.jsx(a,{label:"Unstable",tone:"critical",icon:r});export{i as default};

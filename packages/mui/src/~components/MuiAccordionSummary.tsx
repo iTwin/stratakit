@@ -4,16 +4,14 @@
  *--------------------------------------------------------------------------------------------*/
 
 import { Role } from "@ariakit/react/role";
-import {
-	type BaseProps,
-	forwardRef,
-} from "@stratakit/foundations/secret-internals";
+import { forwardRef } from "@stratakit/foundations/secret-internals";
 
+import type { BaseProps } from "@stratakit/foundations/secret-internals";
 // ----------------------------------------------------------------------------
 
 type MarkerPosition = "auto" | "start" | "end";
 
-interface MuiAccordionSummaryProps extends BaseProps<"div"> {
+interface MuiAccordionSummaryProps extends BaseProps {
 	markerPosition?: MarkerPosition;
 }
 
@@ -23,10 +21,10 @@ const MuiAccordionSummary = forwardRef<"div", MuiAccordionSummaryProps>(
 		return (
 			<Role.div
 				{...rest}
-				ref={forwardedRef}
 				data-_sk-marker-position={
 					markerPosition === "auto" ? undefined : markerPosition
 				}
+				ref={forwardedRef}
 			/>
 		);
 	},

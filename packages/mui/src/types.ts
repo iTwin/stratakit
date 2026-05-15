@@ -45,9 +45,9 @@ declare module "@mui/material/AccordionSummary" {
 		/**
 		 * The position of the expander icon.
 		 *
-		 * - `"auto"`: Position is determined by responsive styles.
-		 * - `"start"`: Forces expander icon to the start.
-		 * - `"end"`: Forces expander icon to the end.
+		 * - `"auto"`: Expander icon is placed to the left when wide, and to the right when narrow.
+		 * - `"start"`: Forces expander icon to the left.
+		 * - `"end"`: Forces expander icon to the right.
 		 *
 		 * @default 'auto'
 		 */

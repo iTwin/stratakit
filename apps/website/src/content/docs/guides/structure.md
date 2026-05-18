@@ -110,7 +110,7 @@ To communicate the presence of a group, we can encode it with [`role="group"`](h
 </div>
 ```
 
-In the [**ButtonGroup**](/components/buttongroup) component, **StrataKit** applies `role="group"` automatically. Since the label will be product-specific, you must apply this as the implementer.
+In the [**ButtonGroup**](/components/buttongroup) component, **StrataKit** applies `role="group"` automatically. Since the label will be product-specific, you must apply this as the consumer.
 
 The generic `group` role is not the only way to encode a relationship of belonging. If you are not using the following extensively, you are unlikely to be sufficiently communicating structure.
 

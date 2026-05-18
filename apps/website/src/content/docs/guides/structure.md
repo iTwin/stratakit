@@ -56,7 +56,7 @@ Avoid _prioritizing_ the focus of certain elements by applying a positive `tabin
 <Link href="/some/page">Focused last</Link>
 <TextField label="Focused first" autoFocus />
 
-<!-- ❌ -->
+/* ❌ */
 <ButtonGroup aria-label="Button group">
   <Button>Focused second</Button>
   <Button tabIndex="1">Focused first</Button>

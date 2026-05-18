@@ -19,11 +19,17 @@ In web applications, this just means applying a `lang` attribute, with a suitabl
 
 Now parsers know to expect French content. A screen reader will choose a French voice profile and the page will be read in a suitably French accent. If your application supports multiple languages, change the `lang` value with translation.
 
+If the language reads _right to left_, pair the `lang` attribute with the `dir` attribute and a value of `rtl`:
+
+```html
+<html lang="ar" dir="rtl"> <!-- Arabic -->
+```
+
 ## Multilingual pages
 
 Occasionally, a French page might include a section of content in another language. The parser must know when to [code-switch](https://en.wikipedia.org/wiki/Code-switching). Apply another `lang` attribute, but to the element containing the embedded language:
 
-```
+```html
 <p>Je suis français!</p>
 <div lang="en">
 	<p>I am English.</p>

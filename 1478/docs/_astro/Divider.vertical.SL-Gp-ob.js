@@ -1,1 +1,0 @@
-import{j as i}from"./_utils.DiKWOnk1.js";import{D as r}from"./Divider.B5Y_lFpm.js";const e="_divider_etlms_6",t={divider:e},o=()=>i.jsx(r,{className:t.divider,orientation:"vertical"});export{o as default};

@@ -3,10 +3,6 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-.summary {
-	gap: var(--stratakit-space-x3);
-}
-
 .expander {
 	order: -1;
 }

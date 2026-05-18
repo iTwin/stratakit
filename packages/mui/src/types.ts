@@ -55,6 +55,32 @@ declare module "@mui/material/Alert" {
 	}
 }
 
+declare module "@mui/material/Avatar" {
+	interface AvatarPropsVariantOverrides {
+		circular: false;
+		rounded: false;
+		square: false;
+	}
+
+	interface AvatarOwnProps {
+		/** @deprecated `variant` is unnecessary. Only `"circular"` is supported and already the default. */
+		variant?: never;
+	}
+}
+
+declare module "@mui/material/AvatarGroup" {
+	interface AvatarGroupPropsVariantOverrides {
+		circular: false;
+		rounded: false;
+		square: false;
+	}
+
+	interface AvatarGroupOwnProps {
+		/** @deprecated `variant` is unnecessary. Only `"circular"` is supported and already the default. */
+		variant?: never;
+	}
+}
+
 declare module "@mui/material/Badge" {
 	interface BadgePropsColorOverrides {
 		default: false;

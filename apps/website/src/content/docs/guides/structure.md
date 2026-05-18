@@ -13,7 +13,7 @@ An early design for an interface typically exists in a flat, graphical form. Any
 
 The perceived order of two objects is set by visually placing one after the other. This visual order may contradict the order of the objects in the accompanying layers panel. Since the output from the design software is a flattened graphic, this hardly matters.
 
-HTML is different. The code doesn’t _output_ the interface; it _is_ the interface. This means the structure of the code is paramount. If the visual placement of objects contradicts their order in the source, a sighted user experiences something different from a blind screen reader user, indexing crawler, or AI agent.
+HTML is different. The code doesn’t _output_ the interface; it _is_ the interface. This means the structure of the code is paramount. If the visual placement of objects contradicts their order in the source, a sighted user experiences something different from a blind screen reader user.
 
 In the visual interface, the order of any two objects can appear in three dimensions:
 
@@ -56,10 +56,10 @@ Avoid _prioritizing_ the focus of certain elements by applying a positive `tabin
 <Link href="/some/page">Focused last</Link>
 <TextField label="Focused first" autoFocus />
 
-<!-- ❌ -->
+/* ❌ */
 <ButtonGroup aria-label="Button group">
   <Button>Focused second</Button>
-  <Button tabIndex="1">Focused first</Button>
+  <Button tabIndex={1}>Focused first</Button>
   <Button>Focused last</Button>
 </ButtonGroup>
 ```
@@ -110,7 +110,7 @@ To communicate the presence of a group, we can encode it with [`role="group"`](h
 </div>
 ```
 
-In the [**ButtonGroup**](/components/buttongroup) component, **StrataKit** applies `role="group"` automatically. Since the label will be product-specific, you must apply this as the implementer.
+In the [**ButtonGroup**](/components/buttongroup) component, **StrataKit** applies `role="group"` automatically. Since the label will be product-specific, you must apply this as the consumer.
 
 The generic `group` role is not the only way to encode a relationship of belonging. If you are not using the following extensively, you are unlikely to be sufficiently communicating structure.
 

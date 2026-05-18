@@ -161,7 +161,7 @@ Like labels, supplementary descriptions must be _programmatically associated_ wi
 />
 ```
 
-Using the [**TextField’s**](/components/textfield) `helperText` prop, this error message is associated with the input using `aria-describedby`. When the input is focused, a screen reader will announce the error description after the field’s label (“Email”), role (“input”), and state (“invalid”).
+Using the [**TextField’s**](/components/textfield) `helperText` prop, this error message is associated with the input using `aria-describedby`. When the input is focused, a screen reader will announce the error description after the field’s label (“Email”), role (“textbox”), and state (“invalid”).
 
 Error messages must actively [help the user to resolve the error](https://www.w3.org/WAI/WCAG21/Understanding/error-suggestion.html). If your application includes messages like _“Error 41”_, _“Incorrect format”_, or _“Please try again”_, users will not know how to proceed.
 

@@ -40,7 +40,7 @@ Occasionally, a French page might include a section of content in another langua
 
 HTML offers lots of ways to label elements, and not just with the `<label>` element.
 
-The `<title>` element labels the screen itself. It’s visible in the browser tab, but also parsed by crawlers and assistive software. In a search engine result, it’s the text linking to the page. To a screen reader user, it’s announced when arriving on the page.
+The `<title>` element labels the screen itself. It's visible in the browser tab, but also parsed by crawlers and assistive software. In a search engine result, it's the text linking to the page. To a screen reader user, it's announced when arriving on the page.
 
 Give sufficient context by including both the page and application name in each `<title>`.
 
@@ -56,7 +56,7 @@ The [**Structure**](/guides/structure) guide covers using [heading levels](https
 
 Equally important is the wording used for each heading. Headings are labels for the content they introduce. You should not have to read the content to make sense of its heading. This is especially important given screen readers and other parsers extract headings from content to create lists of links.
 
-Here are good and bad examples for a company’s stated use of artificial intelligence:
+Here are good and bad examples for a company's stated use of artificial intelligence:
 
 ```
 <!-- ✅ Direct; uses relevant terminology -->
@@ -96,13 +96,13 @@ For buttons _with_ visible labels, do not give the icon a label of its own. The 
 
 ### Links
 
-A link transports you to a new location. Its label should tell you where you are being taken. If the destination is a new page, consider making the link’s text part of that page’s [`<title>`](#the-page-title):
+A link transports you to a new location. Its label should tell you where you are being taken. If the destination is a new page, consider making the link's text part of that page's [`<title>`](#the-page-title):
 
 ```
 <!-- the link -->
 <a href="https://en.wikipedia.org/wiki/Infrastructure">Infrastructure</a>
 
-<!-- the page’s title -->
+<!-- the page's title -->
 <title>Infrastructure - Wikipedia</title>
 ```
 
@@ -112,23 +112,21 @@ Since links, like [headings](#headings), are frequently aggregated into lists, a
 
 Individual form fields must each be associated with a label. Sets of related or interdependent form fields must be associated with a common _group label_.
 
-In the following example, each [**Radio**](/components/radio/) is encapsulated in a `FormControlLabel`, with a `label` applied. The outer `FormControl` is a `<fieldset>` enabling a group label via the `FormLabel`’s `<legend>`.
+In the following example, each [**Radio**](/components/radio/) is encapsulated in a `FormControlLabel`, with a `label` applied. The outer `FormControl` is a `<fieldset>` enabling a group label via the `FormLabel`'s `<legend>`.
 
 ```jsx
-<FormControl render={<fieldset />} role="radiogroup">
+<FormControl render={<fieldset />}>
 	<FormLabel render={<legend />}>Design system:</FormLabel>
-	<RadioGroup
-		name="design-system"
-		role={undefined}
-		defaultValue="StrataKit"
-	>
 		<FormControlLabel
 			value="StrataKit"
 			control={<Radio />}
 			label="StrataKit"
 		/>
-		<FormControlLabel value="iTwinUI" control={<Radio />} label="iTwinUI" />
-	</RadioGroup>
+		<FormControlLabel 
+      value="iTwinUI" 
+      control={<Radio />} 
+      label="iTwinUI" 
+    />
 </FormControl>
 ```
 
@@ -141,7 +139,7 @@ Programmatically, group and individual labels are combined:
 
 The outer `FormControl` takes the `radiogroup` role, facilitating the group label, meaning the encapsulated `RadioGroup` must have its `radiogroup` role removed.
 
-This **StrataKit** pattern supersedes MUI’s guidance, adding improved accessibility.
+This **StrataKit** pattern supersedes MUI's guidance, adding improved accessibility.
 
 :::
 
@@ -161,15 +159,15 @@ Like labels, supplementary descriptions must be _programmatically associated_ wi
 />
 ```
 
-Using the [**TextField’s**](/components/textfield) `helperText` prop, this error message is associated with the input using `aria-describedby`. When the input is focused, a screen reader will announce the error description after the field’s label (“Email”), role (“textbox”), and state (“invalid”).
+Using the [**TextField's**](/components/textfield) `helperText` prop, this error message is associated with the input using `aria-describedby`. When the input is focused, a screen reader will announce the error description after the field's label (“Email”), role (“textbox”), and state (“invalid”).
 
 Error messages must actively [help the user to resolve the error](https://www.w3.org/WAI/WCAG21/Understanding/error-suggestion.html). If your application includes messages like _“Error 41”_, _“Incorrect format”_, or _“Please try again”_, users will not know how to proceed.
 
 ## Alternative text
 
-Media that may not be seen must be described. Alternative text is primarily for blind and partially sighted users. But it also gives recourse to crawlers and agents, since it converts what’s seen in the image into a parsable text format.
+Media that may not be seen must be described. Alternative text is primarily for blind and partially sighted users. But it also gives recourse to crawlers and agents, since it converts what's seen in the image into a parsable text format.
 
-Writing good alternative text is difficult to automate and should be part of your design and editorial process. While agents can describe detail in an image, they struggle piecing the details together to convey the image’s intent.
+Writing good alternative text is difficult to automate and should be part of your design and editorial process. While agents can describe detail in an image, they struggle piecing the details together to convey the image's intent.
 
 ```jsx
 <!-- ❌ Verbose and missing relevant terminology -->
@@ -179,7 +177,7 @@ Writing good alternative text is difficult to automate and should be part of you
 <img src="/photos/worker.webp" alt="A construction worker, on site, surveying a large project.">
 ```
 
-The way the alternative text should be written depends on the role of the image in the interface. If an image is used as a [**Link**](/components/link), it must describe the link’s location. A common example is the logo-as-homepage link:
+The way the alternative text should be written depends on the role of the image in the interface. If an image is used as a [**Link**](/components/link), it must describe the link's location. A common example is the logo-as-homepage link:
 
 ```jsx
 <!-- ❌ The application is not a design case study -->

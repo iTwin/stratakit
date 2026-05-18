@@ -72,11 +72,11 @@ Here are good and bad examples for a company’s stated use of artificial intell
 
 Interactive controls use their label to state _what they do_.
 
-Buttons without visible labels, showing just icons, must be encoded with text-based labels. Apply a label to [**IconButton**](/components/IconButton) using `aria-label`:
+Buttons without visible labels, showing just icons, must be encoded with text-based labels. Apply a label to [**IconButton**](/components/IconButton) using the `label` prop:
 
 ```jsx
-<IconButton aria-label="delete" disabled color="primary">
-  <DeleteIcon />
+<IconButton label="Download">
+  <Icon href={svgDownload} />
 </IconButton>
 ```
 

@@ -49,13 +49,9 @@ Interactive elements must be focusable so that the interface can be operated by 
 | above and below    | first then last   |
 | back and front     | first then last   |
 
-Avoid _prioritizing_ the focus of certain elements by applying a positive `tabindex` value or the `autofocus` attribute.
+Avoid prioritizing the focus of certain elements by applying a positive `tabindex` value. This disrupts an otherwise logical order of focus.
 
 ```jsx
-/* ❌ */
-<Link href="/some/page">Focused last</Link>
-<TextField label="Focused first" autoFocus />
-
 /* ❌ */
 <ButtonGroup aria-label="Button group">
   <Button>Focused second</Button>
@@ -63,6 +59,12 @@ Avoid _prioritizing_ the focus of certain elements by applying a positive `tabin
   <Button>Focused last</Button>
 </ButtonGroup>
 ```
+
+:::caution[The `autofocus` attribute]
+
+The `autofocus` attribute focuses an element when an interface first renders. Automatically focusing a button inside a newly opened dialog or popover may be helpful. However, applying `autofocus` to an element on _page load_ should generally be avoided.
+
+:::
 
 More complex interactive components like [**Menu**](/components/menu) and [**Dialog**](/components/dialog) manage focus automatically. Implement these components to avoid focus order issues that could trip up a user or agent.
 

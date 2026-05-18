@@ -3,7 +3,7 @@ title: Structure
 description: How to successfully organize your content and functionality
 ---
 
-Information without structure is just data. High quality interfaces require logical organization. But structure is perceived and traversed in different ways. The interface one user sees on screen is also parsed by screen reader software, and analyzed by AI agents.
+Information without structure is just data. High quality interfaces require logical organization. But structure is perceived and traversed in different ways. The interface one user sees on screen is also parsed by assistive technologies, and analyzed by AI agents.
 
 It’s important everyone—and everything—experiences the same interface. Fortunately, standard HTML enshrines certain structural rules and cues that benefit all parties. This guide will help you communicate structural relationships in an equitable way.
 

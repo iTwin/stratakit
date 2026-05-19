@@ -11,9 +11,9 @@ import type { BaseProps } from "@stratakit/foundations/secret-internals";
 
 // ----------------------------------------------------------------------------
 
-interface MuiAccordionSummaryProps extends BaseProps {
-	markerPosition?: AccordionSummaryOwnProps["markerPosition"];
-}
+interface MuiAccordionSummaryProps
+	extends BaseProps,
+		Pick<AccordionSummaryOwnProps, "markerPosition"> {}
 
 const MuiAccordionSummary = forwardRef<"div", MuiAccordionSummaryProps>(
 	(props, forwardedRef) => {

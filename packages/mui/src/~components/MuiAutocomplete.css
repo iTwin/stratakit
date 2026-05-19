@@ -35,7 +35,7 @@
 }
 
 .MuiAutocomplete-endAdornment {
-	display: flex;
+	display: flex; /* Avoid announcing inline buttons with "use screen layout" option in NVDA */
 	inset-inline-end: var(--_MuiAutocomplete-button-inset);
 
 	> * {

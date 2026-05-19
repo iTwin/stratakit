@@ -23,6 +23,7 @@ export function useWarnOnInteractiveDescendants(
 	message: string,
 ) {
 	const hasWarnedRef = React.useRef(false);
+
 	React.useEffect(() => {
 		const container = ref.current;
 
@@ -39,5 +40,5 @@ export function useWarnOnInteractiveDescendants(
 			container,
 			interactiveDescendant,
 		});
-	}, [message, ref.current]);
+	}, [message, ref]);
 }

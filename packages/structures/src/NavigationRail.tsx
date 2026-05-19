@@ -401,26 +401,19 @@ DEV: NavigationRailListItem.displayName = "NavigationRail.ListItem";
 
 const NavigationRailItemActionRootContext = React.createContext<
 	| {
-			label: React.ReactNode;
 			setLabel: (label: React.ReactNode) => void;
-			suffix: React.ReactNode;
 			setSuffix: (suffix: React.ReactNode) => void;
-			action: React.ReactElement;
 	  }
 	| undefined
 >(undefined);
 
-interface NavigationRailItemActionRootProps extends FocusableProps {
-	tooltip?: React.ReactNode;
-}
+interface NavigationRailItemActionRootProps extends FocusableProps {}
 
 /** @private */
 const NavigationRailItemActionRoot = forwardRef<
 	"div",
 	NavigationRailItemActionRootProps
 >((props, forwardedRef) => {
-	const { tooltip, ...rest } = props;
-
 	const expanded = useNavigationRailState((state) => state.expanded);
 
 	const [label, setLabel] = React.useState<React.ReactNode>(undefined);
@@ -428,7 +421,7 @@ const NavigationRailItemActionRoot = forwardRef<
 
 	const action = (
 		<Role
-			{...rest}
+			{...props}
 			className={cx("🥝NavigationRailItemAction", props.className)}
 			ref={forwardedRef}
 		/>
@@ -436,9 +429,24 @@ const NavigationRailItemActionRoot = forwardRef<
 
 	return (
 		<NavigationRailItemActionRootContext.Provider
-			value={{ label, setLabel, suffix, setSuffix, action }}
+			value={{ setLabel, setSuffix }}
 		>
-			{expanded ? action : tooltip}
+			{expanded ? (
+				action
+			) : (
+				<Tooltip
+					content={
+						<>
+							{label}
+							{suffix}
+						</>
+					}
+					placement="right"
+					type="none"
+				>
+					{action}
+				</Tooltip>
+			)}
 		</NavigationRailItemActionRootContext.Provider>
 	);
 });
@@ -482,11 +490,7 @@ const NavigationRailItemAction = forwardRef<
 	DEV: if (!label || !icon) throw new Error("label and icon are required");
 
 	return (
-		<NavigationRailItemActionRoot
-			tooltip={<NavigationRailItemActionTooltip />}
-			{...rest}
-			ref={forwardedRef}
-		>
+		<NavigationRailItemActionRoot {...rest} ref={forwardedRef}>
 			<NavigationRailItemActionIcon icon={icon} />
 			<NavigationRailItemActionLabel>{label}</NavigationRailItemActionLabel>
 
@@ -499,41 +503,6 @@ const NavigationRailItemAction = forwardRef<
 	);
 });
 DEV: NavigationRailItemAction.displayName = "NavigationRailItemAction";
-
-// ----------------------------------------------------------------------------
-
-type TooltipProps = React.ComponentProps<typeof Tooltip>;
-
-interface NavigationRailItemActionTooltipProps extends Partial<TooltipProps> {}
-
-/** @private */
-const NavigationRailItemActionTooltip = forwardRef<
-	"div",
-	NavigationRailItemActionTooltipProps
->((props, forwardedRef) => {
-	const { action, label, suffix } = useSafeContext(
-		NavigationRailItemActionRootContext,
-	);
-
-	return (
-		<Tooltip
-			content={
-				<>
-					{label}
-					{suffix}
-				</>
-			}
-			placement="right"
-			type="none"
-			{...props}
-			ref={forwardedRef}
-		>
-			{action}
-		</Tooltip>
-	);
-});
-DEV: NavigationRailItemActionTooltip.displayName =
-	"NavigationRailItemActionTooltip";
 
 // ----------------------------------------------------------------------------
 

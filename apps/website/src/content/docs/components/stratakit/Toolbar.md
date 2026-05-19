@@ -44,6 +44,6 @@ In the example below, one of the toolbar items is rendered as a [**ToggleButton*
 
 ### Menu
 
-In the example below, the toolbar item for selecting the font family is using a [**Menu**](/components/menu/). Menu items use [`role="menuitemradio"`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/menuitemradio_role), since only one font family can be selected at a time.
+In the example below, the toolbar item for selecting the font family is using a [**Menu**](/components/menu/). The `MenuItem`s are [selectable](/components/menu/#selectable) and use [`role="menuitemradio"`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/menuitemradio_role), since only one font family can be selected at a time.
 
 ::example{src="structures/Toolbar.menu" min-width="300px"}

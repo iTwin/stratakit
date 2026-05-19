@@ -56,6 +56,12 @@ Disclose any **Accordion's** content by default using the `defaultExpanded` prop
 | Settings page | ❌        | ✅       |
 | Widget        | ✅        | ❌       |
 
+### Responsive design
+
+The marker position automatically adapts based on the container’s width. To enable this responsive behavior, set `container-type: inline-size;` on the container element.
+
+::example{src="mui/Accordion.responsive"}
+
 ### Marker positioning
 
 Use the `markerPosition` prop to control the **AccordionSummary** marker position. By default, the marker is left aligned, but moves to the right side when the accordion is narrow. Set `markerPosition="start"` or `markerPosition="end"` to force a fixed position.

@@ -30,7 +30,6 @@
 	background-color: transparent; /* Prevents `background-color` change on focus */
 	border-radius: var(--_MuiAccordion-border-radius);
 	column-gap: var(--stratakit-space-x3);
-	container-type: inline-size;
 	min-block-size: var(--stratakit-size-control-listitem-height-large);
 	padding-inline-start: var(--_MuiAccordion-padding);
 	padding-inline-end: var(--_MuiAccordion-padding);

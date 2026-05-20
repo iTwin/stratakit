@@ -15,13 +15,12 @@ export default () => {
 				<Accordion>
 					<AccordionSummary markerPosition="start">
 						<Typography render={<span />}>
-							Logical property <code>start</code>
+							Marker position <code>start</code>
 						</Typography>
 					</AccordionSummary>
 					<AccordionDetails>
-						<code>start</code> will display to the left when reading direction
-						is set to LTR, and to the right when reading direction is set to
-						RTL.
+						<code>start</code> aligns the marker with the inline-start edge:
+						left in LTR and right in RTL.
 					</AccordionDetails>
 				</Accordion>
 			</div>
@@ -30,12 +29,12 @@ export default () => {
 				<Accordion>
 					<AccordionSummary markerPosition="end">
 						<Typography render={<span />}>
-							Logical property <code>end</code>
+							Marker position <code>end</code>
 						</Typography>
 					</AccordionSummary>
 					<AccordionDetails>
-						<code>end</code> will display to the right when reading direction is
-						set to LTR, and to the left when reading direction is set to RTL.
+						<code>end</code> aligns the marker with the inline-end edge: right
+						in LTR and left in RTL.
 					</AccordionDetails>
 				</Accordion>
 			</div>

@@ -58,7 +58,7 @@ Disclose any **Accordion's** content by default using the `defaultExpanded` prop
 
 ### Responsive design
 
-The marker position automatically adapts based on the container’s width. To enable this responsive behavior, set `container-type: inline-size;` on the container element.
+The marker position automatically adapts based on the container’s width using a [container query](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Containment/Container_queries). To benefit from this automatic responsive behavior, make sure to create a containment context by setting `container-type: inline-size;` on an ancestor element.
 
 ::example{src="mui/Accordion.responsive"}
 

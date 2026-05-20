@@ -1,0 +1,1 @@
+import{j as e}from"./_utils.OWueI4Ps.js";import{B as s}from"./Banner.DPGc-S3q.js";const r=()=>e.jsx(s,{label:"Update complete",message:"Your settings have been saved successfully."});export{r as default};

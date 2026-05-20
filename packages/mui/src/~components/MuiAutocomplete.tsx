@@ -13,6 +13,7 @@ import {
 } from "@stratakit/foundations/secret-internals";
 import { MuiChip, MuiChipDeleteIcon } from "./MuiChip.js";
 import { MuiInputLabelContext } from "./MuiInputLabel.js";
+import { MuiTextFieldContext } from "./MuiTextField.js";
 
 import type { Autocomplete } from "@mui/material";
 import type { BaseProps } from "@stratakit/foundations/secret-internals";
@@ -31,36 +32,27 @@ type OnKeyDownEvent = Parameters<
 const MuiAutocomplete = forwardRef<"div", BaseProps>((props, forwardedRef) => {
 	const [labelId, setLabelId] = React.useState<string | undefined>(undefined);
 
-	const [element, setElement] = React.useState<HTMLDivElement | null>(null);
-	React.useEffect(() => {
-		// End adornment is not available as a slot in MUI. Assign it to <slot> manually.
-		if (!element) return;
-
-		const endAdornment = element
-			.getElementsByClassName("MuiAutocomplete-endAdornment")
-			.item(0);
-		if (!endAdornment || endAdornment.slot) return;
-
-		endAdornment.slot = "end";
-		return () => {
-			endAdornment.slot = "";
-		};
-	}, [element]);
+	const renderEndAdornment = (endAdornment: React.ReactNode) => {
+		if (!React.isValidElement(endAdornment)) return endAdornment;
+		return <Role slot="end" render={endAdornment} />;
+	};
 
 	return (
 		<MuiAutocompleteContext.Provider value={true}>
 			<MuiInputLabelContext.Provider value={{ setLabelId }}>
-				<Role.div
-					role="group"
-					aria-labelledby={labelId}
-					{...props}
-					onKeyDown={useEventHandlers<OnKeyDownEvent>((e) => {
-						if (e.key === "ArrowLeft" || e.key === "ArrowRight") {
-							e.defaultMuiPrevented = true; // Prevent MUI from closing the listbox while trying to focus the tags
-						}
-					}, props.onKeyDown)}
-					ref={useMergedRefs(setElement, forwardedRef)}
-				/>
+				<MuiTextFieldContext.Provider value={{ renderEndAdornment }}>
+					<Role.div
+						role="group"
+						aria-labelledby={labelId}
+						{...props}
+						onKeyDown={useEventHandlers<OnKeyDownEvent>((e) => {
+							if (e.key === "ArrowLeft" || e.key === "ArrowRight") {
+								e.defaultMuiPrevented = true; // Prevent MUI from closing the listbox while trying to focus the tags
+							}
+						}, props.onKeyDown)}
+						ref={forwardedRef}
+					/>
+				</MuiTextFieldContext.Provider>
 			</MuiInputLabelContext.Provider>
 		</MuiAutocompleteContext.Provider>
 	);

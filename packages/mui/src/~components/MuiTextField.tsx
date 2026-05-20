@@ -5,6 +5,7 @@
 
 import * as React from "react";
 import { Role } from "@ariakit/react/role";
+import OutlinedInput from "@mui/material/OutlinedInput";
 import { forwardRef } from "@stratakit/foundations/secret-internals";
 import {
 	MuiAutocompleteContext,
@@ -12,6 +13,37 @@ import {
 } from "./MuiAutocomplete.js";
 
 import type { BaseProps } from "@stratakit/foundations/secret-internals";
+
+// ----------------------------------------------------------------------------
+
+const MuiTextFieldContext = React.createContext<
+	| {
+			renderEndAdornment?: (endAdornment: React.ReactNode) => React.ReactNode;
+	  }
+	| undefined
+>(undefined);
+
+// ----------------------------------------------------------------------------
+
+const MuiTextFieldInputSlot = forwardRef<
+	"div",
+	React.ComponentProps<typeof OutlinedInput>
+>((props, forwardedRef) => {
+	const { renderEndAdornment } = React.useContext(MuiTextFieldContext) ?? {};
+
+	return (
+		<OutlinedInput
+			{...props}
+			endAdornment={
+				renderEndAdornment
+					? renderEndAdornment(props.endAdornment)
+					: props.endAdornment
+			}
+			ref={forwardedRef}
+		/>
+	);
+});
+DEV: MuiTextFieldInputSlot.displayName = "MuiTextFieldInputSlot";
 
 // ----------------------------------------------------------------------------
 
@@ -26,4 +58,4 @@ DEV: MuiTextFieldInput.displayName = "MuiTextFieldInput";
 
 // ----------------------------------------------------------------------------
 
-export { MuiTextFieldInput };
+export { MuiTextFieldContext, MuiTextFieldInput, MuiTextFieldInputSlot };

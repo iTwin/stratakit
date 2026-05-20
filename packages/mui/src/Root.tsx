@@ -54,7 +54,13 @@ const Root = forwardRef<"div", RootProps>((props, forwardedRef) => {
 
 	return (
 		<StyledEngineProvider>
-			<ThemeProvider theme={theme} defaultMode={colorScheme}>
+			<ThemeProvider
+				theme={theme}
+				defaultMode={colorScheme}
+				storageManager={null}
+				disableTransitionOnChange
+				noSsr
+			>
 				<ColorScheme colorScheme={colorScheme} />
 				<RootInner
 					{...rest}

@@ -15,7 +15,7 @@ export default () => {
 				<Accordion>
 					<AccordionSummary markerPlacement="start">
 						<Typography render={<span />}>
-							Marker position <code>start</code>
+							Marker placement <code>start</code>
 						</Typography>
 					</AccordionSummary>
 					<AccordionDetails>
@@ -29,7 +29,7 @@ export default () => {
 				<Accordion>
 					<AccordionSummary markerPlacement="end">
 						<Typography render={<span />}>
-							Marker position <code>end</code>
+							Marker placement <code>end</code>
 						</Typography>
 					</AccordionSummary>
 					<AccordionDetails>

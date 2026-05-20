@@ -29,7 +29,8 @@ Make sure the **Accordion** is suitable for your use case. There may be other, m
 
 - Restyled using StrataKit's visual language.
 - The overall size has been decreased.
-- Added `markerPlacement` prop to control the [marker placement](#marker-placement).
+- Added [responsive design](#responsive-design) that reorients the marker placement based on container width.
+- Added `markerPlacement` prop to override responsive design and force the [marker placement](#marker-placement).
 - The default `disableGutters` is now `"true"`.
 - The `slotProps.root.square` prop defaults to true except when `variant="outlined"`.
 - You are not required to attribute `<AccordionSummary>` with `aria-controls`.

@@ -17,7 +17,7 @@ In web applications, this just means applying a `lang` attribute, with a suitabl
 <html lang="fr">
 ```
 
-Now parsers know to expect French content. A screen reader will choose a French voice profile and the page will be read in a suitably French accent. If your application supports multiple languages, change the `lang` value with translation.
+Now parsers know to expect French content. A screen reader will choose a French voice profile and the page will be read in a suitably French accent. If your application supports multiple languages, change the `lang` value alongside translation.
 
 If the language reads _right to left_, pair the `lang` attribute with the `dir` attribute and a value of `rtl`:
 
@@ -98,7 +98,7 @@ For buttons _with_ visible labels, do not give the icon a label of its own. The 
 
 A link transports you to a new location. Its label should tell you where you are being taken. If the destination is a new page, consider making the link's text part of that page's [`<title>`](#the-page-title):
 
-```
+```html
 <!-- the link -->
 <a href="https://en.wikipedia.org/wiki/Infrastructure">Infrastructure</a>
 
@@ -110,38 +110,53 @@ Since links, like [headings](#headings), are frequently aggregated into lists, a
 
 ## Forms
 
-Individual form fields must each be associated with a label. Sets of related or interdependent form fields must be associated with a common _group label_.
+### Individual labels
 
-In the following example, each [**Radio**](/components/radio/) is encapsulated in a `FormControlLabel`, with a `label` applied. The outer `FormControl` is a `<fieldset>` enabling a group label via the `FormLabel`'s `<legend>`.
+Associate each form field (`<input>`, `<select>`, `<textarea>`) with a label, using the `<label>` element. Either the `for` and `id` attributes must have a matching value or the `<label>` must wrap the input. 
 
-```jsx
-<FormControl render={<fieldset />}>
-	<FormLabel render={<legend />}>Design system:</FormLabel>
-		<FormControlLabel
-			value="StrataKit"
-			control={<Radio />}
-			label="StrataKit"
-		/>
-		<FormControlLabel 
-      value="iTwinUI" 
-      control={<Radio />} 
-      label="iTwinUI" 
-    />
-</FormControl>
+```html
+<!-- ✅ -->
+<label for="email">Email</label>
+<input type="text" name="email" id="email">
+
+<!-- ✅ -->
+<label>
+  Email
+  <input type="text" name="email">
+</label>
 ```
 
-Programmatically, group and individual labels are combined:
+The `placeholder` attribute is not a substitute for a `<label>`. Since `placeholder` is rendered inside the input itself, it can be mistaken for a completed entry. It is also not _persistent_, disappearing when the input is focused.
 
-* Design system: StrataKit
-* Design system: iTwinUI
+:::caution[Links in labels]
 
-:::note[The undefined role]
-
-The outer `FormControl` takes the `radiogroup` role, facilitating the group label, meaning the encapsulated `RadioGroup` must have its `radiogroup` role removed.
-
-This **StrataKit** pattern supersedes MUI's guidance, adding improved accessibility.
+Do not place a link inside a `<label>`. Labels and links are both interactive and interactive elements cannot be nested. Furthermore, links inside labels are liable to be missed during screen reader operation.
 
 :::
+
+See [**TextField**](/components/textfield) for **StrataKit’s** implementation.
+
+### Group labels
+
+Sets of related or interdependent form fields must be associated with a common _group label_.
+
+Using radio buttons, the group label—provided with the `<fieldset>`'s `<legend>`—represents the choice to be made. Individual labels represent the _options_ for that choice. 
+
+```html
+<fieldset>
+  <legend>Design system:</legend>
+  <label>
+    iTwinUI
+    <input type="radio" name="system" value="iTwinUI">
+  </label>
+  <label>
+    StrataKit
+    <input type="radio" name="system" value="StrataKit">
+  </label>
+</fieldset>
+```
+
+**StrataKit’s** [**Radio**](/components/radio) guide exemplifies this pattern.
 
 ### Error messages
 

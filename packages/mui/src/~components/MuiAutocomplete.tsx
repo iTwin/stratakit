@@ -20,10 +20,6 @@ import type { BaseProps } from "@stratakit/foundations/secret-internals";
 
 // ----------------------------------------------------------------------------
 
-const MuiAutocompleteContext = React.createContext(false);
-
-// ----------------------------------------------------------------------------
-
 type AutocompleteProps = React.ComponentProps<typeof Autocomplete>;
 type OnKeyDownEvent = Parameters<
 	NonNullable<AutocompleteProps["onKeyDown"]>
@@ -38,23 +34,26 @@ const MuiAutocomplete = forwardRef<"div", BaseProps>((props, forwardedRef) => {
 	};
 
 	return (
-		<MuiAutocompleteContext.Provider value={true}>
-			<MuiInputLabelContext.Provider value={{ setLabelId }}>
-				<MuiTextFieldContext.Provider value={{ renderEndAdornment }}>
-					<Role.div
-						role="group"
-						aria-labelledby={labelId}
-						{...props}
-						onKeyDown={useEventHandlers<OnKeyDownEvent>((e) => {
-							if (e.key === "ArrowLeft" || e.key === "ArrowRight") {
-								e.defaultMuiPrevented = true; // Prevent MUI from closing the listbox while trying to focus the tags
-							}
-						}, props.onKeyDown)}
-						ref={forwardedRef}
-					/>
-				</MuiTextFieldContext.Provider>
-			</MuiInputLabelContext.Provider>
-		</MuiAutocompleteContext.Provider>
+		<MuiInputLabelContext.Provider value={{ setLabelId }}>
+			<MuiTextFieldContext.Provider
+				value={{
+					InputComponent: MuiAutocompleteTextFieldInput,
+					renderEndAdornment,
+				}}
+			>
+				<Role.div
+					role="group"
+					aria-labelledby={labelId}
+					{...props}
+					onKeyDown={useEventHandlers<OnKeyDownEvent>((e) => {
+						if (e.key === "ArrowLeft" || e.key === "ArrowRight") {
+							e.defaultMuiPrevented = true; // Prevent MUI from closing the listbox while trying to focus the tags
+						}
+					}, props.onKeyDown)}
+					ref={forwardedRef}
+				/>
+			</MuiTextFieldContext.Provider>
+		</MuiInputLabelContext.Provider>
 	);
 });
 DEV: MuiAutocomplete.displayName = "MuiAutocomplete";
@@ -148,6 +147,5 @@ export {
 	MuiAutocompleteChip,
 	MuiAutocompleteChipDeleteIcon,
 	MuiAutocompleteClearIndicator,
-	MuiAutocompleteContext,
 	MuiAutocompleteTextFieldInput,
 };

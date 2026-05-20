@@ -1,1 +1,0 @@
-import{j as r}from"./_utils.DKNzsXGi.js";import{M as e}from"./MenuList.3gnDzrdX.js";import{M as t}from"./MenuItem.B8Ud7czP.js";const n=()=>r.jsxs(e,{children:[r.jsx(t,{children:"Profile"}),r.jsx(t,{children:"My account"}),r.jsx(t,{children:"Logout"})]});export{n as default};

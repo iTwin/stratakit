@@ -4,25 +4,24 @@
  *--------------------------------------------------------------------------------------------*/
 
 import * as React from "react";
-import OutlinedInput from "@mui/material/OutlinedInput";
+import { Role } from "@ariakit/react/role";
 import { forwardRef } from "@stratakit/foundations/secret-internals";
 import {
 	MuiAutocompleteContext,
 	MuiAutocompleteTextFieldInput,
 } from "./MuiAutocomplete.js";
 
+import type { BaseProps } from "@stratakit/foundations/secret-internals";
+
 // ----------------------------------------------------------------------------
 
-const MuiTextFieldInput = forwardRef<
-	"div",
-	React.ComponentProps<typeof OutlinedInput>
->((props, forwardedRef) => {
-	const isAutocomplete = React.useContext(MuiAutocompleteContext);
-	const Component = isAutocomplete
-		? MuiAutocompleteTextFieldInput
-		: OutlinedInput;
-	return <Component {...props} ref={forwardedRef} />;
-});
+const MuiTextFieldInput = forwardRef<"div", BaseProps>(
+	(props, forwardedRef) => {
+		const isAutocomplete = React.useContext(MuiAutocompleteContext);
+		const Component = isAutocomplete ? MuiAutocompleteTextFieldInput : Role;
+		return <Component {...props} ref={forwardedRef} />;
+	},
+);
 DEV: MuiTextFieldInput.displayName = "MuiTextFieldInput";
 
 // ----------------------------------------------------------------------------

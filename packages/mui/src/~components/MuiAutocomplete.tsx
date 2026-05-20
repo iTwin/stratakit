@@ -6,7 +6,6 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { Role } from "@ariakit/react/role";
-import OutlinedInput from "@mui/material/OutlinedInput";
 import {
 	forwardRef,
 	useEventHandlers,
@@ -120,34 +119,33 @@ DEV: MuiAutocompleteChipDeleteIcon.displayName =
 
 // ----------------------------------------------------------------------------
 
-const MuiAutocompleteTextFieldInput = forwardRef<
-	"div",
-	React.ComponentProps<typeof OutlinedInput>
->((props, forwardedRef) => {
-	const [host, setHost] = React.useState<HTMLElement | null>(null);
-	const [shadow, setShadow] = React.useState<ShadowRoot | null>(null);
-	React.useEffect(() => {
-		if (!host) return;
-		if (!host.shadowRoot) {
-			host.attachShadow({ mode: "open" });
-		}
-		setShadow(host.shadowRoot);
-	}, [host]);
-	return (
-		<>
-			<OutlinedInput {...props} ref={useMergedRefs(setHost, forwardedRef)} />
-			{shadow &&
-				ReactDOM.createPortal(
-					<>
-						<slot /> {/* Default slot is used for the input */}
-						<slot role="list" name="chips" />
-						<slot name="end" />
-					</>,
-					shadow,
-				)}
-		</>
-	);
-});
+const MuiAutocompleteTextFieldInput = forwardRef<"div", BaseProps>(
+	(props, forwardedRef) => {
+		const [host, setHost] = React.useState<HTMLElement | null>(null);
+		const [shadow, setShadow] = React.useState<ShadowRoot | null>(null);
+		React.useEffect(() => {
+			if (!host) return;
+			if (!host.shadowRoot) {
+				host.attachShadow({ mode: "open" });
+			}
+			setShadow(host.shadowRoot);
+		}, [host]);
+		return (
+			<>
+				<Role {...props} ref={useMergedRefs(setHost, forwardedRef)} />
+				{shadow &&
+					ReactDOM.createPortal(
+						<>
+							<slot /> {/* Default slot is used for the input */}
+							<slot role="list" name="chips" />
+							<slot name="end" />
+						</>,
+						shadow,
+					)}
+			</>
+		);
+	},
+);
 DEV: MuiAutocompleteTextFieldInput.displayName =
 	"MuiAutocompleteTextFieldInput";
 

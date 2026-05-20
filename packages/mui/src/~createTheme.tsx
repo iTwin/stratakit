@@ -517,8 +517,11 @@ function createTheme() {
 			},
 			MuiTextField: {
 				defaultProps: {
-					slots: {
-						input: MuiTextFieldInput,
+					component: Role.div,
+					slotProps: {
+						input: {
+							component: MuiTextFieldInput,
+						},
 					},
 				},
 			},

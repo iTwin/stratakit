@@ -66,12 +66,12 @@
 	order: -1;
 
 	@container (inline-size < 500px) {
-		:where(.MuiAccordionSummary-root:not([data-_sk-marker-position])) & {
+		:where(.MuiAccordionSummary-root:not([data-_sk-marker-placement])) & {
 			order: 0;
 		}
 	}
 
-	:where(.MuiAccordionSummary-root[data-_sk-marker-position="end"]) & {
+	:where(.MuiAccordionSummary-root[data-_sk-marker-placement="end"]) & {
 		order: 0;
 	}
 }

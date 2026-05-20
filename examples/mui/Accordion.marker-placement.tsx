@@ -13,7 +13,7 @@ export default () => {
 		<>
 			<div>
 				<Accordion>
-					<AccordionSummary markerPosition="start">
+					<AccordionSummary markerPlacement="start">
 						<Typography render={<span />}>
 							Marker position <code>start</code>
 						</Typography>
@@ -27,7 +27,7 @@ export default () => {
 
 			<div>
 				<Accordion>
-					<AccordionSummary markerPosition="end">
+					<AccordionSummary markerPlacement="end">
 						<Typography render={<span />}>
 							Marker position <code>end</code>
 						</Typography>

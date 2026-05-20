@@ -29,7 +29,7 @@ Make sure the **Accordion** is suitable for your use case. There may be other, m
 
 - Restyled using StrataKit's visual language.
 - The overall size has been decreased.
-- Added `markerPosition` prop to control the [marker positioning](#marker-positioning).
+- Added `markerPlacement` prop to control the [marker placement](#marker-placement).
 - The default `disableGutters` is now `"true"`.
 - The `slotProps.root.square` prop defaults to true except when `variant="outlined"`.
 - You are not required to attribute `<AccordionSummary>` with `aria-controls`.
@@ -58,15 +58,15 @@ Disclose any **Accordion's** content by default using the `defaultExpanded` prop
 
 ### Responsive design
 
-The marker position automatically adapts based on the container’s width using a [container query](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Containment/Container_queries). To benefit from this automatic responsive behavior, make sure to create a containment context by setting `container-type: inline-size;` on an ancestor element.
+The marker placement automatically adapts based on the container's width using a [container query](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Containment/Container_queries). To benefit from this automatic responsive behavior, make sure to create a containment context by setting `container-type: inline-size;` on an ancestor element.
 
 ::example{src="mui/Accordion.responsive"}
 
-### Marker positioning
+### Marker placement
 
-Use the `markerPosition` prop to control the **AccordionSummary** marker position. By default, the marker is left aligned, but moves to the right side when the accordion is narrow. Set `markerPosition="start"` or `markerPosition="end"` to force a fixed position.
+Use the `markerPlacement` prop to control the **AccordionSummary** marker placement. By default, the marker is left aligned, but moves to the right side when the accordion is narrow. Set `markerPlacement="start"` or `markerPlacement="end"` to force a fixed placement.
 
-::example{src="mui/Accordion.marker-position"}
+::example{src="mui/Accordion.marker-placement"}
 
 ### Multiple Accordions
 

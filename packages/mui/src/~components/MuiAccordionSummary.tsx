@@ -13,16 +13,16 @@ import type { BaseProps } from "@stratakit/foundations/secret-internals";
 
 interface MuiAccordionSummaryProps
 	extends BaseProps,
-		Pick<AccordionSummaryOwnProps, "markerPosition"> {}
+		Pick<AccordionSummaryOwnProps, "markerPlacement"> {}
 
 const MuiAccordionSummary = forwardRef<"div", MuiAccordionSummaryProps>(
 	(props, forwardedRef) => {
-		const { markerPosition = "auto", ...rest } = props;
+		const { markerPlacement = "auto", ...rest } = props;
 		return (
 			<Role.div
 				{...rest}
-				data-_sk-marker-position={
-					markerPosition === "auto" ? undefined : markerPosition
+				data-_sk-marker-placement={
+					markerPlacement === "auto" ? undefined : markerPlacement
 				}
 				ref={forwardedRef}
 			/>

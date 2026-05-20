@@ -30,6 +30,9 @@ export const knobs = {
 			MuiChip: {
 				disabled: true,
 			},
+			MuiIconButton: {
+				disabled: true,
+			},
 		},
 	}),
 };

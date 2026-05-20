@@ -4,7 +4,23 @@
  *--------------------------------------------------------------------------------------------*/
 
 .MuiChip-root {
+	/* #region Variables */
+	--✨bg--filled-default: var(--stratakit-color-bg-neutral-base);
+	--✨bg--filled-disabled: var(--stratakit-color-bg-glow-on-surface-disabled);
+	--✨bg--outlined-default: transparent;
+	--✨border--default: var(--stratakit-color-border-neutral-base);
+	--✨border--disabled: var(--stratakit-color-border-glow-on-surface-disabled);
+	--✨text--default: var(--stratakit-color-text-neutral-primary);
+	--✨text--disabled: var(--stratakit-color-text-neutral-disabled);
+	/* #endregion */
+
+	background-color: var(--_MuiChip-background-color);
 	block-size: var(--_MuiChip-block-size);
+	border: 1px solid var(--_MuiChip-border-color);
+	color: var(--_MuiChip-text-color);
+
+	--_MuiChip-border-color: var(--✨border--default);
+	--_MuiChip-text-color: var(--✨text--default);
 
 	&:where(.MuiChip-sizeSmall) {
 		--_MuiChip-block-size: var(--stratakit-size-control-field-height-small);
@@ -16,9 +32,26 @@
 		--_MuiChip-padding-inline: var(--stratakit-space-x3);
 	}
 
-	&:where(.MuiChip-filled.MuiChip-colorDefault) {
-		background-color: var(--stratakit-color-bg-neutral-base);
-		border: 1px solid var(--stratakit-color-border-neutral-base);
+	&:where(.MuiChip-filled) {
+		--_MuiChip-background-color: var(--✨bg--filled-default);
+	}
+
+	&:where(.MuiChip-outlined) {
+		--_MuiChip-background-color: var(--✨bg--outlined-default);
+	}
+
+	&:where(.MuiChip-clickable) {
+		transition: background-color 150ms ease-out;
+
+		@media (any-hover: hover) {
+			&:where(:not(.Mui-disabled):hover) {
+				background-color: color-mix(
+					in oklch,
+					var(--_MuiChip-background-color) 100%,
+					var(--stratakit-color-glow-hue) var(--stratakit-color-bg-glow-base-hover-\%)
+				);
+			}
+		}
 	}
 
 	&:where(.MuiButtonBase-root) {
@@ -27,6 +60,19 @@
 
 	&:where(:has(.MuiChip-label:focus-visible)) {
 		outline: var(--🥝focus-outline);
+	}
+
+	&:where(.Mui-disabled) {
+		cursor: not-allowed;
+		opacity: 1;
+		pointer-events: initial;
+
+		--_MuiChip-border-color: var(--✨border--disabled);
+		--_MuiChip-text-color: var(--✨text--disabled);
+
+		&:where(.MuiChip-filled) {
+			--_MuiChip-background-color: var(--✨bg--filled-disabled);
+		}
 	}
 }
 
@@ -45,6 +91,7 @@
 	&:where(button) {
 		/* Move the outline from the interactive label to the root element. */
 		outline: unset !important;
+		cursor: inherit;
 	}
 }
 

@@ -84,7 +84,7 @@ jobs:
       - run: pnpm install
 
       - name: Format code
-        run: pnpm prettier --write && pnpm format --write
+        run: pnpm format
 
       - name: Commit changes
         run: |

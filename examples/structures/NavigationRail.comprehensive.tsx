@@ -96,9 +96,7 @@ export default () => {
 													}}
 												/>
 											)}
-											<span style={visuallyHidden}>
-												You have 3 unread notifications
-											</span>
+											<span style={visuallyHidden}>(3 unread)</span>
 										</>
 									}
 								/>

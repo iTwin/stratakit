@@ -6,6 +6,7 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { Role } from "@ariakit/react/role";
+import { ThemeProvider } from "@mui/material/styles";
 import {
 	forwardRef,
 	useEventHandlers,
@@ -13,9 +14,9 @@ import {
 } from "@stratakit/foundations/secret-internals";
 import { MuiChip, MuiChipDeleteIcon } from "./MuiChip.js";
 import { MuiInputLabelContext } from "./MuiInputLabel.js";
-import { MuiTextFieldContext } from "./MuiTextField.js";
 
-import type { Autocomplete } from "@mui/material";
+import type Autocomplete from "@mui/material/Autocomplete";
+import type { Theme } from "@mui/material/styles";
 import type { BaseProps } from "@stratakit/foundations/secret-internals";
 
 // ----------------------------------------------------------------------------
@@ -28,19 +29,28 @@ type OnKeyDownEvent = Parameters<
 const MuiAutocomplete = forwardRef<"div", BaseProps>((props, forwardedRef) => {
 	const [labelId, setLabelId] = React.useState<string | undefined>(undefined);
 
-	const renderEndAdornment = (endAdornment: React.ReactNode) => {
-		if (!React.isValidElement(endAdornment)) return endAdornment;
-		return <Role slot="end" render={endAdornment} />;
-	};
-
 	return (
-		<MuiInputLabelContext.Provider value={{ setLabelId }}>
-			<MuiTextFieldContext.Provider
-				value={{
-					InputComponent: MuiAutocompleteTextFieldInput,
-					renderEndAdornment,
-				}}
-			>
+		<ThemeProvider
+			theme={(outerTheme: Theme) => ({
+				...outerTheme,
+				components: {
+					...outerTheme.components,
+					MuiTextField: {
+						defaultProps: {
+							slotProps: {
+								input: {
+									component: MuiAutocompleteTextFieldInput,
+								},
+								htmlInput: {
+									slot: "input", // Assign input element to the slot named "input"
+								},
+							},
+						},
+					},
+				},
+			})}
+		>
+			<MuiInputLabelContext.Provider value={{ setLabelId }}>
 				<Role.div
 					role="group"
 					aria-labelledby={labelId}
@@ -52,8 +62,8 @@ const MuiAutocomplete = forwardRef<"div", BaseProps>((props, forwardedRef) => {
 					}, props.onKeyDown)}
 					ref={forwardedRef}
 				/>
-			</MuiTextFieldContext.Provider>
-		</MuiInputLabelContext.Provider>
+			</MuiInputLabelContext.Provider>
+		</ThemeProvider>
 	);
 });
 DEV: MuiAutocomplete.displayName = "MuiAutocomplete";
@@ -127,9 +137,9 @@ const MuiAutocompleteTextFieldInput = forwardRef<"div", BaseProps>(
 				{shadow &&
 					ReactDOM.createPortal(
 						<>
-							<slot /> {/* Default slot is used for the input */}
+							<slot name="input" />
 							<slot role="list" name="chips" />
-							<slot name="end" />
+							<slot /> {/* Default slot used for adornments */}
 						</>,
 						shadow,
 					)}
@@ -147,5 +157,4 @@ export {
 	MuiAutocompleteChip,
 	MuiAutocompleteChipDeleteIcon,
 	MuiAutocompleteClearIndicator,
-	MuiAutocompleteTextFieldInput,
 };

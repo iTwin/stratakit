@@ -40,10 +40,6 @@ import {
 	MuiTableCell,
 	MuiTableHead,
 } from "./~components/MuiTable.js";
-import {
-	MuiTextFieldInput,
-	MuiTextFieldInputSlot,
-} from "./~components/MuiTextField.js";
 import { MuiToggleButton } from "./~components/MuiToggleButton.js";
 import { MuiTypography } from "./~components/MuiTypography.js";
 import {
@@ -518,19 +514,7 @@ function createTheme() {
 					},
 				},
 			},
-			MuiTextField: {
-				defaultProps: {
-					component: Role.div,
-					slots: {
-						input: MuiTextFieldInputSlot,
-					},
-					slotProps: {
-						input: {
-							component: MuiTextFieldInput,
-						},
-					},
-				},
-			},
+			MuiTextField: { defaultProps: { component: Role.div } },
 			MuiToggleButton: { defaultProps: { component: MuiToggleButton } },
 			MuiToolbar: { defaultProps: { component: Role.div } },
 			MuiTooltip: {

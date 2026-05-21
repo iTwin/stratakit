@@ -14,6 +14,8 @@ links:
 - The root element is no longer interactive. Instead, a deletable **Chip** now renders an interactive delete button, and a clickable **Chip** renders its label as an interactive button.
 - Added a `deleteLabel` prop to provide an accessible label for the delete button.
 - Replaced the icon used by deletable `Chip`.
+- Restyled using StrataKit's visual language.
+- Includes full `forced-colors` support.
 
 ## Examples
 

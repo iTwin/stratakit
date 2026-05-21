@@ -59,6 +59,9 @@ const HtmlSelectContext = React.createContext<
  *   </Select.HtmlSelect>
  * </Select.Root>
  * ```
+ *
+ * @deprecated Use MUI [`Select`](https://mui.com/material-ui/api/select/) or [`NativeSelect`](https://mui.com/material-ui/api/native-select/) component instead.
+ * See [migration guide](https://stratakit.bentley.com/docs/getting-started/migration-from-legacy-stratakit/#select).
  */
 const SelectRoot = forwardRef<"div", BaseProps>((props, forwardedRef) => {
 	useInit();
@@ -107,6 +110,8 @@ interface HtmlSelectProps extends HtmlSelectBaseProps {
  * You can use the same familiar props, including `name`, `defaultValue`, `value`, `onChange`, etc.
  *
  * @see https://react.dev/reference/react-dom/components/select
+ * @deprecated Use MUI [`Select`](https://mui.com/material-ui/api/select/) or [`NativeSelect`](https://mui.com/material-ui/api/native-select/) component instead.
+ * See [migration guide](https://stratakit.bentley.com/docs/getting-started/migration-from-legacy-stratakit/#select).
  */
 const HtmlSelect = forwardRef<"select", HtmlSelectProps>(
 	(props, forwardedRef) => {

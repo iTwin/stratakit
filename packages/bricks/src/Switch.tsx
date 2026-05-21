@@ -50,6 +50,9 @@ interface SwitchProps extends InputBaseProps, CheckboxOwnProps {
  *
  * Underneath, it's an HTML checkbox, i.e. `<input type="checkbox">`, so it supports the same props,
  * including `value`, `defaultChecked`, `checked`, and `onChange`.
+ *
+ * @deprecated Use MUI [`Switch`](https://mui.com/material-ui/api/switch/) component instead.
+ * See [migration guide](https://stratakit.bentley.com/docs/getting-started/migration-from-legacy-stratakit/#switch).
  */
 const Switch = forwardRef<"input", SwitchProps>((props, forwardedRef) => {
 	useInit();

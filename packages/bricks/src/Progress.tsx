@@ -57,6 +57,8 @@ interface ProgressBarProps extends Omit<BaseProps, "aria-labelledby"> {
  * Supports a `tone` prop to change the tone (color) of the progress bar.
  * Supports a `size` prop to change the size of the progress bar.
  *
+ * @deprecated Use MUI [`LinearProgress`](https://mui.com/material-ui/api/linear-progress/) component instead.
+ * See [migration guide](https://stratakit.bentley.com/docs/getting-started/migration-from-legacy-stratakit/#progressbar).
  */
 const ProgressBar = forwardRef<"div", ProgressBarProps>(
 	(props, forwardedRef) => {

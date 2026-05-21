@@ -18,8 +18,8 @@ Combine **NavigationRail** with other components to create a more complex naviga
 
 In the example below:
 
-- The `suffix` prop on `NavigationRail.Anchor` is used to indicate that the "Integrations" link opens in a new tab.
-- The [**Badge**](/components/badge/) component is used to display a notification indicator on the "Notifications" item. When the rail is collapsed, a dot badge is shown on the icon. When expanded, the badge count is displayed inline next to the label using the `suffix` prop.
+- The `suffix` prop of `NavigationRail.Anchor` component is used to indicate that the "Integrations" link opens in a new tab.
+- The [**Badge**](/components/badge/) component is used to display a notification indicator for the "Notifications" item. When the rail is collapsed, a dot badge is shown near the icon. When expanded, the badge count is displayed inline next to the label using the `suffix` prop.
 - The [**Menu**](/components/menu/) component is used to expose multiple actions for the "Account" item.
 
 ::example{src="structures/NavigationRail.comprehensive" min-height="450px" min-width="450px" vertical-stretch}

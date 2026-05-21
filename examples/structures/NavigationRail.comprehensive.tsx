@@ -12,7 +12,7 @@ import visuallyHidden from "@mui/utils/visuallyHidden";
 import { Icon } from "@stratakit/mui";
 import { unstable_NavigationRail as NavigationRail } from "@stratakit/structures";
 
-import svgBentley from "@stratakit/icons/bentley-systems.svg";
+import svgBentley from "@stratakit/icons/brand-bentley-systems.svg";
 import svgDisconnect from "@stratakit/icons/disconnect.svg";
 import svgInspection from "@stratakit/icons/inspection.svg";
 import svgNotifications from "@stratakit/icons/notifications.svg";

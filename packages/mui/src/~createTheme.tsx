@@ -9,6 +9,8 @@ import OutlinedInput from "@mui/material/OutlinedInput";
 import StepConnector from "@mui/material/StepConnector";
 import { createTheme as createMuiTheme } from "@mui/material/styles";
 import cx from "classnames";
+import { MuiAccordionSummary } from "./~components/MuiAccordionSummary.js";
+import { MuiAlert, MuiAlertTitle } from "./~components/MuiAlert.js";
 import { MuiAutocomplete } from "./~components/MuiAutocomplete.js";
 import { MuiAvatarGroup } from "./~components/MuiAvatarGroup.js";
 import { MuiBadge } from "./~components/MuiBadge.js";
@@ -117,7 +119,13 @@ function createTheme() {
 			MuiAccordion: {
 				defaultProps: {
 					component: Role.div,
+					disableGutters: true,
 					slotProps: {
+						root({ variant, square }) {
+							return {
+								square: square ?? (variant !== "outlined" ? true : undefined), // Disable rounded corners on non-outlined variants
+							};
+						},
 						region: {
 							role: undefined,
 							"aria-labelledby": undefined,
@@ -127,14 +135,14 @@ function createTheme() {
 			},
 			MuiAccordionSummary: {
 				defaultProps: {
-					component: Role.div,
+					component: MuiAccordionSummary,
 					nativeButton: false,
 					expandIcon: <ChevronDownIcon />,
 				},
 			},
 			MuiAlert: {
 				defaultProps: {
-					component: Role.div,
+					component: MuiAlert,
 					variant: "outlined",
 					iconMapping: {
 						error: <ErrorIcon />,
@@ -142,9 +150,14 @@ function createTheme() {
 						success: <SuccessIcon />,
 						warning: <WarningIcon />,
 					},
+					slotProps: {
+						root: {
+							role: "group", // Overriding role="alert".
+						},
+					},
 				},
 			},
-			MuiAlertTitle: { defaultProps: { component: Role.div } },
+			MuiAlertTitle: { defaultProps: { component: MuiAlertTitle } },
 			MuiAutocomplete: {
 				defaultProps: {
 					popupIcon: <ChevronDownIcon />,

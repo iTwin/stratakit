@@ -9,7 +9,7 @@ import { Icon } from "@stratakit/foundations";
 import { unstable_NavigationRail as NavigationRail } from "@stratakit/structures";
 import { definePage, type VariantProps } from "~/~utils.tsx";
 
-import svgBentley from "@stratakit/icons/bentley-systems.svg";
+import svgBentley from "@stratakit/icons/brand-bentley-systems.svg";
 import svgHelp from "@stratakit/icons/help.svg";
 import svgNotifications from "@stratakit/icons/notifications.svg";
 import svgPlaceholder from "@stratakit/icons/placeholder.svg";
@@ -148,6 +148,7 @@ function VisualTest() {
 							href="#"
 							icon={svgPlaceholder}
 							label="Item #3"
+							suffix={<Icon alt="(opens in new tab)" href={svgWindowPopout} />}
 						/>
 					</NavigationRail.ListItem>
 				</NavigationRail.List>

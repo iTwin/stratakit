@@ -34,6 +34,13 @@
 								"optional": true,
 								"jsdoc": "The root node to which this `Root` component is attached.\n\nThis needs to be set when the `Root` is rendered within shadow DOM or a popout window.",
 								"defaultValue": "document"
+							},
+							{
+								"name": "unstable_accentColor",
+								"type": "\"aurora\" | \"cobalt\" | undefined",
+								"optional": true,
+								"jsdoc": "The accent color to use for all components under the Root:\n\n- `\"aurora\"`: Default and preferred green accent color.\n- `\"cobalt\"`: Blue accent color to ensure compatibility with older applications.",
+								"defaultValue": "\"aurora\""
 							}
 						],
 						"baseElement": "div",
@@ -119,6 +126,13 @@
 								"defaultValue": "true"
 							},
 							{
+								"name": "unstable_accentColor",
+								"type": "\"aurora\" | \"cobalt\" | undefined",
+								"optional": true,
+								"jsdoc": "The accent color to use for all components under the Root:\n\n- `\"aurora\"`: Default and preferred green accent color.\n- `\"cobalt\"`: Blue accent color to ensure compatibility with older applications.",
+								"defaultValue": "\"aurora\""
+							},
+							{
 								"name": "unstable_htmlSanitizer",
 								"type": "((html: string) => string) | undefined",
 								"optional": true,
@@ -144,7 +158,7 @@
 								"name": "render",
 								"type": "(props: P) => React.ReactNode | React.ReactElement | undefined",
 								"optional": true,
-								"jsdoc": "Allows the component to be rendered as a different HTML element or React\ncomponent. The value can be a React element or a function that takes in the\noriginal component props and gives back a React element with the props\nmerged.\n\nCheck out the [Composition](https://ariakit.org/guide/composition) guide\nfor more details."
+								"jsdoc": "Allows the component to be rendered as a different HTML element or React\ncomponent. The value can be a React element or a function that takes in the\noriginal component props and gives back a React element with the props\nmerged.\n\nCheck out the [Composition](https://ariakit.com/guide/composition) guide\nfor more details."
 							}
 						],
 						"jsdoc": "Base component props with custom props."
@@ -156,27 +170,27 @@
 								"name": "accessibleWhenDisabled",
 								"type": "boolean | undefined",
 								"optional": true,
-								"jsdoc": "Indicates whether the element should be focusable even when it is\n[`disabled`](https://ariakit.org/reference/focusable#disabled).\n\nThis is important when discoverability is a concern. For example:\n\n> A toolbar in an editor contains a set of special smart paste functions\nthat are disabled when the clipboard is empty or when the function is not\napplicable to the current content of the clipboard. It could be helpful to\nkeep the disabled buttons focusable if the ability to discover their\nfunctionality is primarily via their presence on the toolbar.\n\nLearn more on [Focusability of disabled\ncontrols](https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/#focusabilityofdisabledcontrols)."
+								"jsdoc": "Indicates whether the element should be focusable even when it is\n[`disabled`](https://ariakit.com/reference/focusable#disabled).\n\nThis is important when discoverability is a concern. For example:\n\n> A toolbar in an editor contains a set of special smart paste functions\nthat are disabled when the clipboard is empty or when the function is not\napplicable to the current content of the clipboard. It could be helpful to\nkeep the disabled buttons focusable if the ability to discover their\nfunctionality is primarily via their presence on the toolbar.\n\nLearn more on [Focusability of disabled\ncontrols](https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/#focusabilityofdisabledcontrols)."
 							},
 							{
 								"name": "autoFocus",
 								"type": "boolean | undefined",
 								"optional": true,
-								"jsdoc": "Automatically focuses the element upon mounting, similar to the native\n`autoFocus` prop. This addresses an issue where the element with the native\n`autoFocus` attribute might receive focus before React effects are\nexecuted.\n\nThe `autoFocus` prop can also be used with\n[Focusable](https://ariakit.org/components/focusable) elements within a\n[Dialog](https://ariakit.org/components/dialog) component, establishing the\ninitial focus as the dialog opens.\n\n**Note**: For this prop to work, the\n[`focusable`](https://ariakit.org/reference/command#focusable) prop must be\nset to `true`, if it's not set by default.",
+								"jsdoc": "Automatically focuses the element upon mounting, similar to the native\n`autoFocus` prop. This addresses an issue where the element with the native\n`autoFocus` attribute might receive focus before React effects are\nexecuted.\n\nThe `autoFocus` prop can also be used with\n[Focusable](https://ariakit.com/components/focusable) elements within a\n[Dialog](https://ariakit.com/components/dialog) component, establishing the\ninitial focus as the dialog opens.\n\n**Note**: For this prop to work, the\n[`focusable`](https://ariakit.com/reference/command#focusable) prop must be\nset to `true`, if it's not set by default.",
 								"defaultValue": "false"
 							},
 							{
 								"name": "disabled",
 								"type": "boolean | undefined",
 								"optional": true,
-								"jsdoc": "Determines if the element is disabled. This sets the `aria-disabled`\nattribute accordingly, enabling support for all elements, including those\nthat don't support the native `disabled` attribute.\n\nThis feature can be combined with the\n[`accessibleWhenDisabled`](https://ariakit.org/reference/focusable#accessiblewhendisabled)\nprop to make disabled elements still accessible via keyboard.\n\n**Note**: For this prop to work, the\n[`focusable`](https://ariakit.org/reference/command#focusable) prop must be\nset to `true`, if it's not set by default.",
+								"jsdoc": "Determines if the element is disabled. This sets the `aria-disabled`\nattribute accordingly, enabling support for all elements, including those\nthat don't support the native `disabled` attribute.\n\nThis feature can be combined with the\n[`accessibleWhenDisabled`](https://ariakit.com/reference/focusable#accessiblewhendisabled)\nprop to make disabled elements still accessible via keyboard.\n\n**Note**: For this prop to work, the\n[`focusable`](https://ariakit.com/reference/command#focusable) prop must be\nset to `true`, if it's not set by default.",
 								"defaultValue": "false"
 							},
 							{
 								"name": "render",
 								"type": "(props: P) => React.ReactNode | React.ReactElement | undefined",
 								"optional": true,
-								"jsdoc": "Allows the component to be rendered as a different HTML element or React\ncomponent. The value can be a React element or a function that takes in the\noriginal component props and gives back a React element with the props\nmerged.\n\nCheck out the [Composition](https://ariakit.org/guide/composition) guide\nfor more details."
+								"jsdoc": "Allows the component to be rendered as a different HTML element or React\ncomponent. The value can be a React element or a function that takes in the\noriginal component props and gives back a React element with the props\nmerged.\n\nCheck out the [Composition](https://ariakit.com/guide/composition) guide\nfor more details."
 							}
 						],
 						"jsdoc": "Focusable component props with custom props."
@@ -212,6 +226,21 @@
 				},
 				"composition": [
 					{
+						"name": "ExternalMarker",
+						"baseProps": ["BaseProps.render"],
+						"props": [
+							{
+								"name": "alt",
+								"type": "string | undefined",
+								"optional": true,
+								"jsdoc": "Visually hidden text for screen readers.",
+								"defaultValue": "\"external\""
+							}
+						],
+						"baseElement": "span",
+						"jsdoc": "Displays an external link marker, with visually hidden text for screen readers."
+					},
+					{
 						"name": "Root",
 						"baseProps": [
 							"FocusableProps.render",
@@ -243,21 +272,6 @@
 						],
 						"baseElement": "span",
 						"jsdoc": "Displays the anchor text."
-					},
-					{
-						"name": "ExternalMarker",
-						"baseProps": ["BaseProps.render"],
-						"props": [
-							{
-								"name": "alt",
-								"type": "string | undefined",
-								"optional": true,
-								"jsdoc": "Visually hidden text for screen readers.",
-								"defaultValue": "\"external\""
-							}
-						],
-						"baseElement": "span",
-						"jsdoc": "Displays an external link marker, with visually hidden text for screen readers."
 					}
 				],
 				"exportName": "Anchor"
@@ -384,32 +398,32 @@
 							"name": "accessibleWhenDisabled",
 							"type": "boolean | undefined",
 							"optional": true,
-							"jsdoc": "Indicates whether the element should be focusable even when it is\n[`disabled`](https://ariakit.org/reference/focusable#disabled).\n\nThis is important when discoverability is a concern. For example:\n\n> A toolbar in an editor contains a set of special smart paste functions\nthat are disabled when the clipboard is empty or when the function is not\napplicable to the current content of the clipboard. It could be helpful to\nkeep the disabled buttons focusable if the ability to discover their\nfunctionality is primarily via their presence on the toolbar.\n\nLearn more on [Focusability of disabled\ncontrols](https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/#focusabilityofdisabledcontrols)."
+							"jsdoc": "Indicates whether the element should be focusable even when it is\n[`disabled`](https://ariakit.com/reference/focusable#disabled).\n\nThis is important when discoverability is a concern. For example:\n\n> A toolbar in an editor contains a set of special smart paste functions\nthat are disabled when the clipboard is empty or when the function is not\napplicable to the current content of the clipboard. It could be helpful to\nkeep the disabled buttons focusable if the ability to discover their\nfunctionality is primarily via their presence on the toolbar.\n\nLearn more on [Focusability of disabled\ncontrols](https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/#focusabilityofdisabledcontrols)."
 						},
 						{
 							"name": "autoFocus",
 							"type": "boolean | undefined",
 							"optional": true,
-							"jsdoc": "Automatically focuses the element upon mounting, similar to the native\n`autoFocus` prop. This addresses an issue where the element with the native\n`autoFocus` attribute might receive focus before React effects are\nexecuted.\n\nThe `autoFocus` prop can also be used with\n[Focusable](https://ariakit.org/components/focusable) elements within a\n[Dialog](https://ariakit.org/components/dialog) component, establishing the\ninitial focus as the dialog opens.\n\n**Note**: For this prop to work, the\n[`focusable`](https://ariakit.org/reference/command#focusable) prop must be\nset to `true`, if it's not set by default.",
+							"jsdoc": "Automatically focuses the element upon mounting, similar to the native\n`autoFocus` prop. This addresses an issue where the element with the native\n`autoFocus` attribute might receive focus before React effects are\nexecuted.\n\nThe `autoFocus` prop can also be used with\n[Focusable](https://ariakit.com/components/focusable) elements within a\n[Dialog](https://ariakit.com/components/dialog) component, establishing the\ninitial focus as the dialog opens.\n\n**Note**: For this prop to work, the\n[`focusable`](https://ariakit.com/reference/command#focusable) prop must be\nset to `true`, if it's not set by default.",
 							"defaultValue": "false"
 						},
 						{
 							"name": "checked",
 							"type": "boolean | \"mixed\" | undefined",
 							"optional": true,
-							"jsdoc": "The checked state of the checkbox. This will override the value inferred\nfrom [`store`](https://ariakit.org/reference/checkbox#store) prop, if\nprovided. This can be `\"mixed\"` to indicate that the checkbox is partially\nchecked."
+							"jsdoc": "The checked state of the checkbox. This will override the value inferred\nfrom [`store`](https://ariakit.com/reference/checkbox#store) prop, if\nprovided. This can be `\"mixed\"` to indicate that the checkbox is partially\nchecked."
 						},
 						{
 							"name": "defaultChecked",
 							"type": "boolean | \"mixed\" | undefined",
 							"optional": true,
-							"jsdoc": "The default checked state of the checkbox. This prop is ignored if the\n[`checked`](https://ariakit.org/reference/checkbox#checked) or the\n[`store`](https://ariakit.org/reference/checkbox#store) props are provided."
+							"jsdoc": "The default checked state of the checkbox. This prop is ignored if the\n[`checked`](https://ariakit.com/reference/checkbox#checked) or the\n[`store`](https://ariakit.com/reference/checkbox#store) props are provided."
 						},
 						{
 							"name": "disabled",
 							"type": "boolean | undefined",
 							"optional": true,
-							"jsdoc": "Determines if the element is disabled. This sets the `aria-disabled`\nattribute accordingly, enabling support for all elements, including those\nthat don't support the native `disabled` attribute.\n\nThis feature can be combined with the\n[`accessibleWhenDisabled`](https://ariakit.org/reference/focusable#accessiblewhendisabled)\nprop to make disabled elements still accessible via keyboard.\n\n**Note**: For this prop to work, the\n[`focusable`](https://ariakit.org/reference/command#focusable) prop must be\nset to `true`, if it's not set by default.",
+							"jsdoc": "Determines if the element is disabled. This sets the `aria-disabled`\nattribute accordingly, enabling support for all elements, including those\nthat don't support the native `disabled` attribute.\n\nThis feature can be combined with the\n[`accessibleWhenDisabled`](https://ariakit.com/reference/focusable#accessiblewhendisabled)\nprop to make disabled elements still accessible via keyboard.\n\n**Note**: For this prop to work, the\n[`focusable`](https://ariakit.com/reference/command#focusable) prop must be\nset to `true`, if it's not set by default.",
 							"defaultValue": "false"
 						},
 						{
@@ -422,13 +436,13 @@
 							"name": "render",
 							"type": "(props: P) => React.ReactNode | React.ReactElement | undefined",
 							"optional": true,
-							"jsdoc": "Allows the component to be rendered as a different HTML element or React\ncomponent. The value can be a React element or a function that takes in the\noriginal component props and gives back a React element with the props\nmerged.\n\nCheck out the [Composition](https://ariakit.org/guide/composition) guide\nfor more details."
+							"jsdoc": "Allows the component to be rendered as a different HTML element or React\ncomponent. The value can be a React element or a function that takes in the\noriginal component props and gives back a React element with the props\nmerged.\n\nCheck out the [Composition](https://ariakit.com/guide/composition) guide\nfor more details."
 						},
 						{
 							"name": "value",
 							"type": "string | number | readonly string[] | undefined",
 							"optional": true,
-							"jsdoc": "The value of the checkbox. This is useful when the same checkbox store is\nused for multiple [`Checkbox`](https://ariakit.org/reference/checkbox)\nelements, in which case the value will be an array of checked values."
+							"jsdoc": "The value of the checkbox. This is useful when the same checkbox store is\nused for multiple [`Checkbox`](https://ariakit.com/reference/checkbox)\nelements, in which case the value will be an array of checked values."
 						}
 					],
 					"baseElement": "input",
@@ -498,21 +512,6 @@
 				"name": "Field",
 				"composition": [
 					{
-						"name": "Root",
-						"baseProps": ["BaseProps.render"],
-						"props": [
-							{
-								"name": "layout",
-								"type": "\"inline\" | undefined",
-								"optional": true,
-								"jsdoc": "Allows overriding the default block layout for text controls."
-							}
-						],
-						"baseElement": "div",
-						"jsdoc": "A container for form controls. It manages ID associations, and provides a\nconsistent layout and spacing.\n\nExample:\n```tsx\n<Field.Root>\n  <Field.Label>Label</Field.Label>\n  <Field.Control render={<TextBox.Input />} />\n</Field.Root>\n```\n\nSupports a `layout` prop, which can be set to `inline` to align the label and\ncontrol horizontally.\n\nShould contain a `Field.Label` component paired with a form control.\n\nSupported form controls include:\n- `TextBox.Input`\n- `TextBox.Textarea`\n- `Checkbox`\n- `Radio`\n- `Switch`",
-						"barrelName": "Field.Root"
-					},
-					{
 						"name": "Control",
 						"baseProps": [],
 						"props": [
@@ -533,14 +532,6 @@
 						"barrelName": "Field.Control"
 					},
 					{
-						"name": "Label",
-						"baseProps": ["BaseProps.render"],
-						"props": [],
-						"baseElement": "label",
-						"jsdoc": "A label for the field’s control element. This is automatically associated\nwith the control’s `id`.",
-						"barrelName": "Field.Label"
-					},
-					{
 						"name": "Description",
 						"baseProps": ["BaseProps.render"],
 						"props": [],
@@ -555,6 +546,29 @@
 						"baseElement": "div",
 						"jsdoc": "An associated error message for a field. When used within `<Field.Root>`, the\nassociated form control will be rendered with `aria-invalid=\"true\"`.\n\nExample:\n```tsx\n<Field.Root>\n  <Field.Label>Label</Field.Label>\n  <Field.Control render={<TextBox.Input />} />\n  <Field.ErrorMessage>Something is wrong!</Field.ErrorMessage>\n</Field.Root>\n```",
 						"barrelName": "Field.ErrorMessage"
+					},
+					{
+						"name": "Label",
+						"baseProps": ["BaseProps.render"],
+						"props": [],
+						"baseElement": "label",
+						"jsdoc": "A label for the field’s control element. This is automatically associated\nwith the control’s `id`.",
+						"barrelName": "Field.Label"
+					},
+					{
+						"name": "Root",
+						"baseProps": ["BaseProps.render"],
+						"props": [
+							{
+								"name": "layout",
+								"type": "\"inline\" | undefined",
+								"optional": true,
+								"jsdoc": "Allows overriding the default block layout for text controls."
+							}
+						],
+						"baseElement": "div",
+						"jsdoc": "A container for form controls. It manages ID associations, and provides a\nconsistent layout and spacing.\n\nExample:\n```tsx\n<Field.Root>\n  <Field.Label>Label</Field.Label>\n  <Field.Control render={<TextBox.Input />} />\n</Field.Root>\n```\n\nSupports a `layout` prop, which can be set to `inline` to align the label and\ncontrol horizontally.\n\nShould contain a `Field.Label` component paired with a form control.\n\nSupported form controls include:\n- `TextBox.Input`\n- `TextBox.Textarea`\n- `Checkbox`\n- `Radio`\n- `Switch`",
+						"barrelName": "Field.Root"
 					}
 				],
 				"exportName": "Field"
@@ -581,7 +595,7 @@
 							"name": "accessibleWhenDisabled",
 							"type": "boolean | undefined",
 							"optional": true,
-							"jsdoc": "Indicates whether the element should be focusable even when it is\n[`disabled`](https://ariakit.org/reference/focusable#disabled).\n\nThis is important when discoverability is a concern. For example:\n\n> A toolbar in an editor contains a set of special smart paste functions\nthat are disabled when the clipboard is empty or when the function is not\napplicable to the current content of the clipboard. It could be helpful to\nkeep the disabled buttons focusable if the ability to discover their\nfunctionality is primarily via their presence on the toolbar.\n\nLearn more on [Focusability of disabled\ncontrols](https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/#focusabilityofdisabledcontrols)."
+							"jsdoc": "Indicates whether the element should be focusable even when it is\n[`disabled`](https://ariakit.com/reference/focusable#disabled).\n\nThis is important when discoverability is a concern. For example:\n\n> A toolbar in an editor contains a set of special smart paste functions\nthat are disabled when the clipboard is empty or when the function is not\napplicable to the current content of the clipboard. It could be helpful to\nkeep the disabled buttons focusable if the ability to discover their\nfunctionality is primarily via their presence on the toolbar.\n\nLearn more on [Focusability of disabled\ncontrols](https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/#focusabilityofdisabledcontrols)."
 						},
 						{
 							"name": "active",
@@ -594,14 +608,14 @@
 							"name": "autoFocus",
 							"type": "boolean | undefined",
 							"optional": true,
-							"jsdoc": "Automatically focuses the element upon mounting, similar to the native\n`autoFocus` prop. This addresses an issue where the element with the native\n`autoFocus` attribute might receive focus before React effects are\nexecuted.\n\nThe `autoFocus` prop can also be used with\n[Focusable](https://ariakit.org/components/focusable) elements within a\n[Dialog](https://ariakit.org/components/dialog) component, establishing the\ninitial focus as the dialog opens.\n\n**Note**: For this prop to work, the\n[`focusable`](https://ariakit.org/reference/command#focusable) prop must be\nset to `true`, if it's not set by default.",
+							"jsdoc": "Automatically focuses the element upon mounting, similar to the native\n`autoFocus` prop. This addresses an issue where the element with the native\n`autoFocus` attribute might receive focus before React effects are\nexecuted.\n\nThe `autoFocus` prop can also be used with\n[Focusable](https://ariakit.com/components/focusable) elements within a\n[Dialog](https://ariakit.com/components/dialog) component, establishing the\ninitial focus as the dialog opens.\n\n**Note**: For this prop to work, the\n[`focusable`](https://ariakit.com/reference/command#focusable) prop must be\nset to `true`, if it's not set by default.",
 							"defaultValue": "false"
 						},
 						{
 							"name": "disabled",
 							"type": "boolean | undefined",
 							"optional": true,
-							"jsdoc": "Determines if the element is disabled. This sets the `aria-disabled`\nattribute accordingly, enabling support for all elements, including those\nthat don't support the native `disabled` attribute.\n\nThis feature can be combined with the\n[`accessibleWhenDisabled`](https://ariakit.org/reference/focusable#accessiblewhendisabled)\nprop to make disabled elements still accessible via keyboard.\n\n**Note**: For this prop to work, the\n[`focusable`](https://ariakit.org/reference/command#focusable) prop must be\nset to `true`, if it's not set by default.",
+							"jsdoc": "Determines if the element is disabled. This sets the `aria-disabled`\nattribute accordingly, enabling support for all elements, including those\nthat don't support the native `disabled` attribute.\n\nThis feature can be combined with the\n[`accessibleWhenDisabled`](https://ariakit.com/reference/focusable#accessiblewhendisabled)\nprop to make disabled elements still accessible via keyboard.\n\n**Note**: For this prop to work, the\n[`focusable`](https://ariakit.com/reference/command#focusable) prop must be\nset to `true`, if it's not set by default.",
 							"defaultValue": "false"
 						},
 						{
@@ -632,7 +646,7 @@
 							"name": "render",
 							"type": "(props: P) => React.ReactNode | React.ReactElement | undefined",
 							"optional": true,
-							"jsdoc": "Allows the component to be rendered as a different HTML element or React\ncomponent. The value can be a React element or a function that takes in the\noriginal component props and gives back a React element with the props\nmerged.\n\nCheck out the [Composition](https://ariakit.org/guide/composition) guide\nfor more details."
+							"jsdoc": "Allows the component to be rendered as a different HTML element or React\ncomponent. The value can be a React element or a function that takes in the\noriginal component props and gives back a React element with the props\nmerged.\n\nCheck out the [Composition](https://ariakit.com/guide/composition) guide\nfor more details."
 						},
 						{
 							"name": "variant",
@@ -745,26 +759,26 @@
 							"name": "accessibleWhenDisabled",
 							"type": "boolean | undefined",
 							"optional": true,
-							"jsdoc": "Indicates whether the element should be focusable even when it is\n[`disabled`](https://ariakit.org/reference/focusable#disabled).\n\nThis is important when discoverability is a concern. For example:\n\n> A toolbar in an editor contains a set of special smart paste functions\nthat are disabled when the clipboard is empty or when the function is not\napplicable to the current content of the clipboard. It could be helpful to\nkeep the disabled buttons focusable if the ability to discover their\nfunctionality is primarily via their presence on the toolbar.\n\nLearn more on [Focusability of disabled\ncontrols](https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/#focusabilityofdisabledcontrols)."
+							"jsdoc": "Indicates whether the element should be focusable even when it is\n[`disabled`](https://ariakit.com/reference/focusable#disabled).\n\nThis is important when discoverability is a concern. For example:\n\n> A toolbar in an editor contains a set of special smart paste functions\nthat are disabled when the clipboard is empty or when the function is not\napplicable to the current content of the clipboard. It could be helpful to\nkeep the disabled buttons focusable if the ability to discover their\nfunctionality is primarily via their presence on the toolbar.\n\nLearn more on [Focusability of disabled\ncontrols](https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/#focusabilityofdisabledcontrols)."
 						},
 						{
 							"name": "autoFocus",
 							"type": "boolean | undefined",
 							"optional": true,
-							"jsdoc": "Automatically focuses the element upon mounting, similar to the native\n`autoFocus` prop. This addresses an issue where the element with the native\n`autoFocus` attribute might receive focus before React effects are\nexecuted.\n\nThe `autoFocus` prop can also be used with\n[Focusable](https://ariakit.org/components/focusable) elements within a\n[Dialog](https://ariakit.org/components/dialog) component, establishing the\ninitial focus as the dialog opens.\n\n**Note**: For this prop to work, the\n[`focusable`](https://ariakit.org/reference/command#focusable) prop must be\nset to `true`, if it's not set by default.",
+							"jsdoc": "Automatically focuses the element upon mounting, similar to the native\n`autoFocus` prop. This addresses an issue where the element with the native\n`autoFocus` attribute might receive focus before React effects are\nexecuted.\n\nThe `autoFocus` prop can also be used with\n[Focusable](https://ariakit.com/components/focusable) elements within a\n[Dialog](https://ariakit.com/components/dialog) component, establishing the\ninitial focus as the dialog opens.\n\n**Note**: For this prop to work, the\n[`focusable`](https://ariakit.com/reference/command#focusable) prop must be\nset to `true`, if it's not set by default.",
 							"defaultValue": "false"
 						},
 						{
 							"name": "checked",
 							"type": "boolean | undefined",
 							"optional": true,
-							"jsdoc": "Determines if the radio button is checked. Using this prop will make the\nradio button controlled and override the\n[`value`](https://ariakit.org/reference/radio-provider#value) state."
+							"jsdoc": "Determines if the radio button is checked. Using this prop will make the\nradio button controlled and override the\n[`value`](https://ariakit.com/reference/radio-provider#value) state."
 						},
 						{
 							"name": "disabled",
 							"type": "boolean | undefined",
 							"optional": true,
-							"jsdoc": "Determines if the element is disabled. This sets the `aria-disabled`\nattribute accordingly, enabling support for all elements, including those\nthat don't support the native `disabled` attribute.\n\nThis feature can be combined with the\n[`accessibleWhenDisabled`](https://ariakit.org/reference/focusable#accessiblewhendisabled)\nprop to make disabled elements still accessible via keyboard.\n\n**Note**: For this prop to work, the\n[`focusable`](https://ariakit.org/reference/command#focusable) prop must be\nset to `true`, if it's not set by default.",
+							"jsdoc": "Determines if the element is disabled. This sets the `aria-disabled`\nattribute accordingly, enabling support for all elements, including those\nthat don't support the native `disabled` attribute.\n\nThis feature can be combined with the\n[`accessibleWhenDisabled`](https://ariakit.com/reference/focusable#accessiblewhendisabled)\nprop to make disabled elements still accessible via keyboard.\n\n**Note**: For this prop to work, the\n[`focusable`](https://ariakit.com/reference/command#focusable) prop must be\nset to `true`, if it's not set by default.",
 							"defaultValue": "false"
 						},
 						{
@@ -777,7 +791,7 @@
 							"name": "render",
 							"type": "(props: P) => React.ReactNode | React.ReactElement | undefined",
 							"optional": true,
-							"jsdoc": "Allows the component to be rendered as a different HTML element or React\ncomponent. The value can be a React element or a function that takes in the\noriginal component props and gives back a React element with the props\nmerged.\n\nCheck out the [Composition](https://ariakit.org/guide/composition) guide\nfor more details."
+							"jsdoc": "Allows the component to be rendered as a different HTML element or React\ncomponent. The value can be a React element or a function that takes in the\noriginal component props and gives back a React element with the props\nmerged.\n\nCheck out the [Composition](https://ariakit.com/guide/composition) guide\nfor more details."
 						}
 					],
 					"baseElement": "input",
@@ -791,14 +805,6 @@
 				"name": "Select",
 				"composition": [
 					{
-						"name": "Root",
-						"baseProps": ["BaseProps.render"],
-						"props": [],
-						"baseElement": "div",
-						"jsdoc": "Compound component for a select element, which allows the user to select a value from a list of options.\n\nUse with the `Field` components to automatically handle ID associations for\nlabels and descriptions:\n```tsx\n<Field.Root>\n  <Field.Label>Fruit</Field.Label>\n  <Field.Control\n    render={(controlProps) => (\n      <Select.Root>\n        <Select.HtmlSelect name=\"fruit\" {...controlProps}>\n          <option value=\"kiwi\">Kiwi</option>\n          <option value=\"mango\">Mango</option>\n          <option value=\"papaya\">Papaya</option>\n        </Select.HtmlSelect>\n      </Select.Root>\n    )}\n  />\n</Field.Root>\n```\n\nWithout the `Field` components you will need to manually associate labels,\ndescriptions, etc.:\n```tsx\n<Label htmlFor=\"fruit\">Fruit</Label>\n<Description id=\"fruit-description\">Something to include in a fruit salad.</Description>\n<Select.Root>\n  <Select.HtmlSelect id=\"fruit\" aria-describedby=\"fruit-description\">\n    <option value=\"kiwi\">Kiwi</option>\n    <option value=\"mango\">Mango</option>\n    <option value=\"papaya\">Papaya</option>\n  </Select.HtmlSelect>\n</Select.Root>\n```",
-						"barrelName": "Select.Root"
-					},
-					{
 						"name": "HtmlSelect",
 						"baseProps": [],
 						"props": [
@@ -806,27 +812,27 @@
 								"name": "accessibleWhenDisabled",
 								"type": "boolean | undefined",
 								"optional": true,
-								"jsdoc": "Indicates whether the element should be focusable even when it is\n[`disabled`](https://ariakit.org/reference/focusable#disabled).\n\nThis is important when discoverability is a concern. For example:\n\n> A toolbar in an editor contains a set of special smart paste functions\nthat are disabled when the clipboard is empty or when the function is not\napplicable to the current content of the clipboard. It could be helpful to\nkeep the disabled buttons focusable if the ability to discover their\nfunctionality is primarily via their presence on the toolbar.\n\nLearn more on [Focusability of disabled\ncontrols](https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/#focusabilityofdisabledcontrols)."
+								"jsdoc": "Indicates whether the element should be focusable even when it is\n[`disabled`](https://ariakit.com/reference/focusable#disabled).\n\nThis is important when discoverability is a concern. For example:\n\n> A toolbar in an editor contains a set of special smart paste functions\nthat are disabled when the clipboard is empty or when the function is not\napplicable to the current content of the clipboard. It could be helpful to\nkeep the disabled buttons focusable if the ability to discover their\nfunctionality is primarily via their presence on the toolbar.\n\nLearn more on [Focusability of disabled\ncontrols](https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/#focusabilityofdisabledcontrols)."
 							},
 							{
 								"name": "autoFocus",
 								"type": "boolean | undefined",
 								"optional": true,
-								"jsdoc": "Automatically focuses the element upon mounting, similar to the native\n`autoFocus` prop. This addresses an issue where the element with the native\n`autoFocus` attribute might receive focus before React effects are\nexecuted.\n\nThe `autoFocus` prop can also be used with\n[Focusable](https://ariakit.org/components/focusable) elements within a\n[Dialog](https://ariakit.org/components/dialog) component, establishing the\ninitial focus as the dialog opens.\n\n**Note**: For this prop to work, the\n[`focusable`](https://ariakit.org/reference/command#focusable) prop must be\nset to `true`, if it's not set by default.",
+								"jsdoc": "Automatically focuses the element upon mounting, similar to the native\n`autoFocus` prop. This addresses an issue where the element with the native\n`autoFocus` attribute might receive focus before React effects are\nexecuted.\n\nThe `autoFocus` prop can also be used with\n[Focusable](https://ariakit.com/components/focusable) elements within a\n[Dialog](https://ariakit.com/components/dialog) component, establishing the\ninitial focus as the dialog opens.\n\n**Note**: For this prop to work, the\n[`focusable`](https://ariakit.com/reference/command#focusable) prop must be\nset to `true`, if it's not set by default.",
 								"defaultValue": "false"
 							},
 							{
 								"name": "disabled",
 								"type": "boolean | undefined",
 								"optional": true,
-								"jsdoc": "Determines if the element is disabled. This sets the `aria-disabled`\nattribute accordingly, enabling support for all elements, including those\nthat don't support the native `disabled` attribute.\n\nThis feature can be combined with the\n[`accessibleWhenDisabled`](https://ariakit.org/reference/focusable#accessiblewhendisabled)\nprop to make disabled elements still accessible via keyboard.\n\n**Note**: For this prop to work, the\n[`focusable`](https://ariakit.org/reference/command#focusable) prop must be\nset to `true`, if it's not set by default.",
+								"jsdoc": "Determines if the element is disabled. This sets the `aria-disabled`\nattribute accordingly, enabling support for all elements, including those\nthat don't support the native `disabled` attribute.\n\nThis feature can be combined with the\n[`accessibleWhenDisabled`](https://ariakit.com/reference/focusable#accessiblewhendisabled)\nprop to make disabled elements still accessible via keyboard.\n\n**Note**: For this prop to work, the\n[`focusable`](https://ariakit.com/reference/command#focusable) prop must be\nset to `true`, if it's not set by default.",
 								"defaultValue": "false"
 							},
 							{
 								"name": "render",
 								"type": "(props: P) => React.ReactNode | React.ReactElement | undefined",
 								"optional": true,
-								"jsdoc": "Allows the component to be rendered as a different HTML element or React\ncomponent. The value can be a React element or a function that takes in the\noriginal component props and gives back a React element with the props\nmerged.\n\nCheck out the [Composition](https://ariakit.org/guide/composition) guide\nfor more details."
+								"jsdoc": "Allows the component to be rendered as a different HTML element or React\ncomponent. The value can be a React element or a function that takes in the\noriginal component props and gives back a React element with the props\nmerged.\n\nCheck out the [Composition](https://ariakit.com/guide/composition) guide\nfor more details."
 							},
 							{
 								"name": "variant",
@@ -839,6 +845,14 @@
 						"baseElement": "select",
 						"jsdoc": "The actual select element to be used inside `Select.Root`. This is a wrapper around the\nHTML `<select>` element and should render HTML `<option>` elements as children.\n\nExample usage:\n```tsx\n<Select.HtmlSelect>\n  <option value=\"1\">Option 1</option>\n  <option value=\"2\">Option 2</option>\n  <option value=\"3\">Option 3</option>\n</Select.HtmlSelect>\n```\n\nThe usage of this component largely mirrors how the `<select>` element would be used in React.\nYou can use the same familiar props, including `name`, `defaultValue`, `value`, `onChange`, etc.",
 						"barrelName": "Select.HtmlSelect"
+					},
+					{
+						"name": "Root",
+						"baseProps": ["BaseProps.render"],
+						"props": [],
+						"baseElement": "div",
+						"jsdoc": "Compound component for a select element, which allows the user to select a value from a list of options.\n\nUse with the `Field` components to automatically handle ID associations for\nlabels and descriptions:\n```tsx\n<Field.Root>\n  <Field.Label>Fruit</Field.Label>\n  <Field.Control\n    render={(controlProps) => (\n      <Select.Root>\n        <Select.HtmlSelect name=\"fruit\" {...controlProps}>\n          <option value=\"kiwi\">Kiwi</option>\n          <option value=\"mango\">Mango</option>\n          <option value=\"papaya\">Papaya</option>\n        </Select.HtmlSelect>\n      </Select.Root>\n    )}\n  />\n</Field.Root>\n```\n\nWithout the `Field` components you will need to manually associate labels,\ndescriptions, etc.:\n```tsx\n<Label htmlFor=\"fruit\">Fruit</Label>\n<Description id=\"fruit-description\">Something to include in a fruit salad.</Description>\n<Select.Root>\n  <Select.HtmlSelect id=\"fruit\" aria-describedby=\"fruit-description\">\n    <option value=\"kiwi\">Kiwi</option>\n    <option value=\"mango\">Mango</option>\n    <option value=\"papaya\">Papaya</option>\n  </Select.HtmlSelect>\n</Select.Root>\n```",
+						"barrelName": "Select.Root"
 					}
 				],
 				"exportName": "Select"
@@ -853,7 +867,7 @@
 							"name": "render",
 							"type": "(props: P) => React.ReactNode | React.ReactElement | undefined",
 							"optional": true,
-							"jsdoc": "Allows the component to be rendered as a different HTML element or React\ncomponent. The value can be a React element or a function that takes in the\noriginal component props and gives back a React element with the props\nmerged.\n\nCheck out the [Composition](https://ariakit.org/guide/composition) guide\nfor more details."
+							"jsdoc": "Allows the component to be rendered as a different HTML element or React\ncomponent. The value can be a React element or a function that takes in the\noriginal component props and gives back a React element with the props\nmerged.\n\nCheck out the [Composition](https://ariakit.com/guide/composition) guide\nfor more details."
 						},
 						{
 							"name": "size",
@@ -922,13 +936,13 @@
 							"name": "accessibleWhenDisabled",
 							"type": "boolean | undefined",
 							"optional": true,
-							"jsdoc": "Indicates whether the element should be focusable even when it is\n[`disabled`](https://ariakit.org/reference/focusable#disabled).\n\nThis is important when discoverability is a concern. For example:\n\n> A toolbar in an editor contains a set of special smart paste functions\nthat are disabled when the clipboard is empty or when the function is not\napplicable to the current content of the clipboard. It could be helpful to\nkeep the disabled buttons focusable if the ability to discover their\nfunctionality is primarily via their presence on the toolbar.\n\nLearn more on [Focusability of disabled\ncontrols](https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/#focusabilityofdisabledcontrols)."
+							"jsdoc": "Indicates whether the element should be focusable even when it is\n[`disabled`](https://ariakit.com/reference/focusable#disabled).\n\nThis is important when discoverability is a concern. For example:\n\n> A toolbar in an editor contains a set of special smart paste functions\nthat are disabled when the clipboard is empty or when the function is not\napplicable to the current content of the clipboard. It could be helpful to\nkeep the disabled buttons focusable if the ability to discover their\nfunctionality is primarily via their presence on the toolbar.\n\nLearn more on [Focusability of disabled\ncontrols](https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/#focusabilityofdisabledcontrols)."
 						},
 						{
 							"name": "autoFocus",
 							"type": "boolean | undefined",
 							"optional": true,
-							"jsdoc": "Automatically focuses the element upon mounting, similar to the native\n`autoFocus` prop. This addresses an issue where the element with the native\n`autoFocus` attribute might receive focus before React effects are\nexecuted.\n\nThe `autoFocus` prop can also be used with\n[Focusable](https://ariakit.org/components/focusable) elements within a\n[Dialog](https://ariakit.org/components/dialog) component, establishing the\ninitial focus as the dialog opens.\n\n**Note**: For this prop to work, the\n[`focusable`](https://ariakit.org/reference/command#focusable) prop must be\nset to `true`, if it's not set by default.",
+							"jsdoc": "Automatically focuses the element upon mounting, similar to the native\n`autoFocus` prop. This addresses an issue where the element with the native\n`autoFocus` attribute might receive focus before React effects are\nexecuted.\n\nThe `autoFocus` prop can also be used with\n[Focusable](https://ariakit.com/components/focusable) elements within a\n[Dialog](https://ariakit.com/components/dialog) component, establishing the\ninitial focus as the dialog opens.\n\n**Note**: For this prop to work, the\n[`focusable`](https://ariakit.com/reference/command#focusable) prop must be\nset to `true`, if it's not set by default.",
 							"defaultValue": "false"
 						},
 						{
@@ -947,7 +961,7 @@
 							"name": "disabled",
 							"type": "boolean | undefined",
 							"optional": true,
-							"jsdoc": "Determines if the element is disabled. This sets the `aria-disabled`\nattribute accordingly, enabling support for all elements, including those\nthat don't support the native `disabled` attribute.\n\nThis feature can be combined with the\n[`accessibleWhenDisabled`](https://ariakit.org/reference/focusable#accessiblewhendisabled)\nprop to make disabled elements still accessible via keyboard.\n\n**Note**: For this prop to work, the\n[`focusable`](https://ariakit.org/reference/command#focusable) prop must be\nset to `true`, if it's not set by default.",
+							"jsdoc": "Determines if the element is disabled. This sets the `aria-disabled`\nattribute accordingly, enabling support for all elements, including those\nthat don't support the native `disabled` attribute.\n\nThis feature can be combined with the\n[`accessibleWhenDisabled`](https://ariakit.com/reference/focusable#accessiblewhendisabled)\nprop to make disabled elements still accessible via keyboard.\n\n**Note**: For this prop to work, the\n[`focusable`](https://ariakit.com/reference/command#focusable) prop must be\nset to `true`, if it's not set by default.",
 							"defaultValue": "false"
 						},
 						{
@@ -960,13 +974,13 @@
 							"name": "render",
 							"type": "(props: P) => React.ReactNode | React.ReactElement | undefined",
 							"optional": true,
-							"jsdoc": "Allows the component to be rendered as a different HTML element or React\ncomponent. The value can be a React element or a function that takes in the\noriginal component props and gives back a React element with the props\nmerged.\n\nCheck out the [Composition](https://ariakit.org/guide/composition) guide\nfor more details."
+							"jsdoc": "Allows the component to be rendered as a different HTML element or React\ncomponent. The value can be a React element or a function that takes in the\noriginal component props and gives back a React element with the props\nmerged.\n\nCheck out the [Composition](https://ariakit.com/guide/composition) guide\nfor more details."
 						},
 						{
 							"name": "value",
 							"type": "string | number | readonly string[] | undefined",
 							"optional": true,
-							"jsdoc": "The value of the checkbox. This is useful when the same checkbox store is\nused for multiple [`Checkbox`](https://ariakit.org/reference/checkbox)\nelements, in which case the value will be an array of checked values."
+							"jsdoc": "The value of the checkbox. This is useful when the same checkbox store is\nused for multiple [`Checkbox`](https://ariakit.com/reference/checkbox)\nelements, in which case the value will be an array of checked values."
 						}
 					],
 					"baseElement": "input",
@@ -1000,75 +1014,6 @@
 				"name": "TextBox",
 				"composition": [
 					{
-						"name": "Root",
-						"baseProps": ["BaseProps.render"],
-						"props": [],
-						"baseElement": "div",
-						"jsdoc": "Compound component for a text input. Allows adding additional decorations.\n\nExample usage to add an end icon:\n```tsx\n<TextBox.Root>\n  <TextBox.Input defaultValue=\"Hello\" />\n  <TextBox.Icon href={...} />\n</TextBox.Root>\n```\n\nUse with the `Field` components to automatically handle ID associations for\nlabels and descriptions:\n```tsx\n<Field.Root>\n  <Field.Label>First name</Field.Label>\n  <Field.Control\n    render={(controlProps) => (\n      <TextBox.Root>\n        <TextBox.Input name=\"firstName\" {...controlProps} />\n        <TextBox.Icon href={…} />\n      </TextBox.Root>\n    )}\n  />\n</Field.Root>\n```",
-						"barrelName": "TextBox.Root"
-					},
-					{
-						"name": "Input",
-						"baseProps": [],
-						"props": [
-							{
-								"name": "accessibleWhenDisabled",
-								"type": "boolean | undefined",
-								"optional": true,
-								"jsdoc": "Indicates whether the element should be focusable even when it is\n[`disabled`](https://ariakit.org/reference/focusable#disabled).\n\nThis is important when discoverability is a concern. For example:\n\n> A toolbar in an editor contains a set of special smart paste functions\nthat are disabled when the clipboard is empty or when the function is not\napplicable to the current content of the clipboard. It could be helpful to\nkeep the disabled buttons focusable if the ability to discover their\nfunctionality is primarily via their presence on the toolbar.\n\nLearn more on [Focusability of disabled\ncontrols](https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/#focusabilityofdisabledcontrols)."
-							},
-							{
-								"name": "autoFocus",
-								"type": "boolean | undefined",
-								"optional": true,
-								"jsdoc": "Automatically focuses the element upon mounting, similar to the native\n`autoFocus` prop. This addresses an issue where the element with the native\n`autoFocus` attribute might receive focus before React effects are\nexecuted.\n\nThe `autoFocus` prop can also be used with\n[Focusable](https://ariakit.org/components/focusable) elements within a\n[Dialog](https://ariakit.org/components/dialog) component, establishing the\ninitial focus as the dialog opens.\n\n**Note**: For this prop to work, the\n[`focusable`](https://ariakit.org/reference/command#focusable) prop must be\nset to `true`, if it's not set by default.",
-								"defaultValue": "false"
-							},
-							{
-								"name": "children",
-								"type": "undefined",
-								"optional": true,
-								"jsdoc": "Input is a [void element](https://developer.mozilla.org/en-US/docs/Glossary/Void_element) and no content is permitted."
-							},
-							{
-								"name": "disabled",
-								"type": "boolean | undefined",
-								"optional": true,
-								"jsdoc": "Determines if the element is disabled. This sets the `aria-disabled`\nattribute accordingly, enabling support for all elements, including those\nthat don't support the native `disabled` attribute.\n\nThis feature can be combined with the\n[`accessibleWhenDisabled`](https://ariakit.org/reference/focusable#accessiblewhendisabled)\nprop to make disabled elements still accessible via keyboard.\n\n**Note**: For this prop to work, the\n[`focusable`](https://ariakit.org/reference/command#focusable) prop must be\nset to `true`, if it's not set by default.",
-								"defaultValue": "false"
-							},
-							{
-								"name": "render",
-								"type": "(props: P) => React.ReactNode | React.ReactElement | undefined",
-								"optional": true,
-								"jsdoc": "Allows the component to be rendered as a different HTML element or React\ncomponent. The value can be a React element or a function that takes in the\noriginal component props and gives back a React element with the props\nmerged.\n\nCheck out the [Composition](https://ariakit.org/guide/composition) guide\nfor more details."
-							},
-							{
-								"name": "type",
-								"type": "any",
-								"optional": true,
-								"jsdoc": "Describes a text based [input type](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#input_types)\nbased on the value type the user will enter.",
-								"defaultValue": "\"text\""
-							}
-						],
-						"baseElement": "input",
-						"jsdoc": "An input component that allows users to enter text based values.\n\nExample usage:\n```tsx\n<TextBox.Input name=\"greeting\" defaultValue=\"Hello\" />\n```\n\nTo add additional decorations, see `TextBox.Root` component.\n\nUse with the `Field` components to automatically handle ID associations for\nlabels and descriptions:\n```tsx\n<Field.Root>\n  <Field.Label>First name</Field.Label>\n  <Field.Control render={<TextBox.Input name=\"firstName\" />} />\n</Field.Root>\n```\n\nWithout the `Field` components you will need to manually associate labels,\ndescriptions, etc.:\n```tsx\n<Label htmlFor=\"fruit\">Fruit</Label>\n<TextBox.Input id=\"fruit\" aria-describedby=\"fruit-description\" />\n<Description id=\"fruit-description\">Something to include in a fruit salad.</Description>\n```\n\nUnderneath, it's an HTML input, i.e. `<input>`, so it supports the same props, including\n`value`, `defaultValue`, `onChange`, and `disabled`.\n\nFor a multiline text input, use the `TextBox.Textarea` component.",
-						"barrelName": "TextBox.Input"
-					},
-					{
-						"name": "Textarea",
-						"baseProps": [
-							"FocusableProps.render",
-							"FocusableProps.autoFocus",
-							"FocusableProps.disabled",
-							"FocusableProps.accessibleWhenDisabled"
-						],
-						"props": [],
-						"baseElement": "textarea",
-						"jsdoc": "A styled textarea element that allows users to enter multiline text values.\n\nExample usage:\n```tsx\n<TextBox.Textarea defaultValue=\"Hello\" />\n```\n\nUse with the `Field` components to automatically handle ID associations for\nlabels and descriptions:\n```tsx\n<Field.Root>\n  <Field.Label>Leave a comment, be kind</Field.Label>\n  <Field.Control render={<TextBox.Textarea name=\"comment\" />} />\n</Field.Root>\n```\n\nWithout the `Field` components you will need to manually associate labels,\ndescriptions, etc.:\n```tsx\n<Label htmlFor=\"fruit\">Fruit</Label>\n<TextBox.Input id=\"fruit\" aria-describedby=\"fruit-description\" />\n<Description id=\"fruit-description\">Something to include in a fruit salad.</Description>\n```\n\nUnderneath, it's an HTML textarea, i.e. `<textarea>`, so it supports the same props, including\n`value`, `defaultValue`, `onChange`, and `disabled`.",
-						"barrelName": "TextBox.Textarea"
-					},
-					{
 						"name": "Icon",
 						"baseProps": [],
 						"props": [
@@ -1099,7 +1044,7 @@
 								"name": "render",
 								"type": "(props: P) => React.ReactNode | React.ReactElement | undefined",
 								"optional": true,
-								"jsdoc": "Allows the component to be rendered as a different HTML element or React\ncomponent. The value can be a React element or a function that takes in the\noriginal component props and gives back a React element with the props\nmerged.\n\nCheck out the [Composition](https://ariakit.org/guide/composition) guide\nfor more details."
+								"jsdoc": "Allows the component to be rendered as a different HTML element or React\ncomponent. The value can be a React element or a function that takes in the\noriginal component props and gives back a React element with the props\nmerged.\n\nCheck out the [Composition](https://ariakit.com/guide/composition) guide\nfor more details."
 							},
 							{
 								"name": "size",
@@ -1113,12 +1058,81 @@
 						"barrelName": "TextBox.Icon"
 					},
 					{
+						"name": "Input",
+						"baseProps": [],
+						"props": [
+							{
+								"name": "accessibleWhenDisabled",
+								"type": "boolean | undefined",
+								"optional": true,
+								"jsdoc": "Indicates whether the element should be focusable even when it is\n[`disabled`](https://ariakit.com/reference/focusable#disabled).\n\nThis is important when discoverability is a concern. For example:\n\n> A toolbar in an editor contains a set of special smart paste functions\nthat are disabled when the clipboard is empty or when the function is not\napplicable to the current content of the clipboard. It could be helpful to\nkeep the disabled buttons focusable if the ability to discover their\nfunctionality is primarily via their presence on the toolbar.\n\nLearn more on [Focusability of disabled\ncontrols](https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/#focusabilityofdisabledcontrols)."
+							},
+							{
+								"name": "autoFocus",
+								"type": "boolean | undefined",
+								"optional": true,
+								"jsdoc": "Automatically focuses the element upon mounting, similar to the native\n`autoFocus` prop. This addresses an issue where the element with the native\n`autoFocus` attribute might receive focus before React effects are\nexecuted.\n\nThe `autoFocus` prop can also be used with\n[Focusable](https://ariakit.com/components/focusable) elements within a\n[Dialog](https://ariakit.com/components/dialog) component, establishing the\ninitial focus as the dialog opens.\n\n**Note**: For this prop to work, the\n[`focusable`](https://ariakit.com/reference/command#focusable) prop must be\nset to `true`, if it's not set by default.",
+								"defaultValue": "false"
+							},
+							{
+								"name": "children",
+								"type": "undefined",
+								"optional": true,
+								"jsdoc": "Input is a [void element](https://developer.mozilla.org/en-US/docs/Glossary/Void_element) and no content is permitted."
+							},
+							{
+								"name": "disabled",
+								"type": "boolean | undefined",
+								"optional": true,
+								"jsdoc": "Determines if the element is disabled. This sets the `aria-disabled`\nattribute accordingly, enabling support for all elements, including those\nthat don't support the native `disabled` attribute.\n\nThis feature can be combined with the\n[`accessibleWhenDisabled`](https://ariakit.com/reference/focusable#accessiblewhendisabled)\nprop to make disabled elements still accessible via keyboard.\n\n**Note**: For this prop to work, the\n[`focusable`](https://ariakit.com/reference/command#focusable) prop must be\nset to `true`, if it's not set by default.",
+								"defaultValue": "false"
+							},
+							{
+								"name": "render",
+								"type": "(props: P) => React.ReactNode | React.ReactElement | undefined",
+								"optional": true,
+								"jsdoc": "Allows the component to be rendered as a different HTML element or React\ncomponent. The value can be a React element or a function that takes in the\noriginal component props and gives back a React element with the props\nmerged.\n\nCheck out the [Composition](https://ariakit.com/guide/composition) guide\nfor more details."
+							},
+							{
+								"name": "type",
+								"type": "any",
+								"optional": true,
+								"jsdoc": "Describes a text based [input type](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#input_types)\nbased on the value type the user will enter.",
+								"defaultValue": "\"text\""
+							}
+						],
+						"baseElement": "input",
+						"jsdoc": "An input component that allows users to enter text based values.\n\nExample usage:\n```tsx\n<TextBox.Input name=\"greeting\" defaultValue=\"Hello\" />\n```\n\nTo add additional decorations, see `TextBox.Root` component.\n\nUse with the `Field` components to automatically handle ID associations for\nlabels and descriptions:\n```tsx\n<Field.Root>\n  <Field.Label>First name</Field.Label>\n  <Field.Control render={<TextBox.Input name=\"firstName\" />} />\n</Field.Root>\n```\n\nWithout the `Field` components you will need to manually associate labels,\ndescriptions, etc.:\n```tsx\n<Label htmlFor=\"fruit\">Fruit</Label>\n<TextBox.Input id=\"fruit\" aria-describedby=\"fruit-description\" />\n<Description id=\"fruit-description\">Something to include in a fruit salad.</Description>\n```\n\nUnderneath, it's an HTML input, i.e. `<input>`, so it supports the same props, including\n`value`, `defaultValue`, `onChange`, and `disabled`.\n\nFor a multiline text input, use the `TextBox.Textarea` component.",
+						"barrelName": "TextBox.Input"
+					},
+					{
+						"name": "Root",
+						"baseProps": ["BaseProps.render"],
+						"props": [],
+						"baseElement": "div",
+						"jsdoc": "Compound component for a text input. Allows adding additional decorations.\n\nExample usage to add an end icon:\n```tsx\n<TextBox.Root>\n  <TextBox.Input defaultValue=\"Hello\" />\n  <TextBox.Icon href={...} />\n</TextBox.Root>\n```\n\nUse with the `Field` components to automatically handle ID associations for\nlabels and descriptions:\n```tsx\n<Field.Root>\n  <Field.Label>First name</Field.Label>\n  <Field.Control\n    render={(controlProps) => (\n      <TextBox.Root>\n        <TextBox.Input name=\"firstName\" {...controlProps} />\n        <TextBox.Icon href={…} />\n      </TextBox.Root>\n    )}\n  />\n</Field.Root>\n```",
+						"barrelName": "TextBox.Root"
+					},
+					{
 						"name": "Text",
 						"baseProps": ["BaseProps.render"],
 						"props": [],
 						"baseElement": "span",
 						"jsdoc": "A static text decoration for the `TextBox.Root` component. Can be added before or after the `TextBox.Input`.",
 						"barrelName": "TextBox.Text"
+					},
+					{
+						"name": "Textarea",
+						"baseProps": [
+							"FocusableProps.render",
+							"FocusableProps.autoFocus",
+							"FocusableProps.disabled",
+							"FocusableProps.accessibleWhenDisabled"
+						],
+						"props": [],
+						"baseElement": "textarea",
+						"jsdoc": "A styled textarea element that allows users to enter multiline text values.\n\nExample usage:\n```tsx\n<TextBox.Textarea defaultValue=\"Hello\" />\n```\n\nUse with the `Field` components to automatically handle ID associations for\nlabels and descriptions:\n```tsx\n<Field.Root>\n  <Field.Label>Leave a comment, be kind</Field.Label>\n  <Field.Control render={<TextBox.Textarea name=\"comment\" />} />\n</Field.Root>\n```\n\nWithout the `Field` components you will need to manually associate labels,\ndescriptions, etc.:\n```tsx\n<Label htmlFor=\"fruit\">Fruit</Label>\n<TextBox.Input id=\"fruit\" aria-describedby=\"fruit-description\" />\n<Description id=\"fruit-description\">Something to include in a fruit salad.</Description>\n```\n\nUnderneath, it's an HTML textarea, i.e. `<textarea>`, so it supports the same props, including\n`value`, `defaultValue`, `onChange`, and `disabled`.",
+						"barrelName": "TextBox.Textarea"
 					}
 				],
 				"exportName": "TextBox"
@@ -1169,7 +1183,7 @@
 							"name": "setOpen",
 							"type": "((open: boolean) => void) | undefined",
 							"optional": true,
-							"jsdoc": "A callback that gets called when the\n[`open`](https://ariakit.org/reference/disclosure-provider#open) state\nchanges."
+							"jsdoc": "A callback that gets called when the\n[`open`](https://ariakit.com/reference/disclosure-provider#open) state\nchanges."
 						},
 						{
 							"name": "type",
@@ -1215,6 +1229,75 @@
 				"name": "AccordionItem",
 				"composition": [
 					{
+						"name": "Button",
+						"baseProps": ["BaseProps.render"],
+						"props": [],
+						"baseElement": "button",
+						"jsdoc": "The accordion item button.\n\nMust be a direct descendant of `AccordionItem.Header`.\n\nExample:\n```tsx\n<AccordionItem.Header>\n  <AccordionItem.Marker />\n  <AccordionItem.Button>\n    <AccordionItem.Label>Label</AccordionItem.Label>\n  </AccordionItem.Button>\n</AccordionItem.Header>\n```",
+						"deprecated": true,
+						"barrelName": "unstable_AccordionItem.Button"
+					},
+					{
+						"name": "Content",
+						"baseProps": ["BaseProps.render"],
+						"props": [],
+						"baseElement": "div",
+						"jsdoc": "The disclosed content of the accordion item.\n\nExample:\n```tsx\n<AccordionItem.Root>\n  <AccordionItem.Header>\n    <AccordionItem.Marker />\n    <AccordionItem.Button>\n      <AccordionItem.Label>Label</AccordionItem.Label>\n    </AccordionItem.Button>\n  </AccordionItem.Header>\n  <AccordionItem.Content>Body</AccordionItem.Content>\n</AccordionItem.Root>\n```",
+						"deprecated": true,
+						"barrelName": "unstable_AccordionItem.Content"
+					},
+					{
+						"name": "Decoration",
+						"baseProps": ["BaseProps.render"],
+						"props": [],
+						"baseElement": "div",
+						"jsdoc": "The always-visible, optional decoration of the `AccordionItem.Header` content.\nIt can be placed before or after the rest of the content in\n`AccordionItem.Header`. However, the `AccordionItem.Marker` must always be\nplaced at either edge (beginning or end) of the header.\n\nUse as a direct descendant of `AccordionItem.Header`. The decoration\ncan be placed before the rest of the header content.\n\nExample:\n```tsx\n<AccordionItem.Header>\n  <AccordionItem.Marker />\n  <AccordionItem.Decoration render={<Icon href={svgPlaceholder} />} />\n  <AccordionItem.Button>\n    <AccordionItem.Label>Label</AccordionItem.Label>\n  </AccordionItem.Button>\n</AccordionItem.Header>\n```\n\nAlternatively, the decoration can also be placed after the rest of the\nheader content.\n\nExample:\n```tsx\n<AccordionItem.Header>\n  <AccordionItem.Marker />\n  <AccordionItem.Button>\n    <AccordionItem.Label>Label</AccordionItem.Label>\n  </AccordionItem.Button>\n  <AccordionItem.Decoration render={<Icon href={svgPlaceholder} />} />\n</AccordionItem.Header>\n```\n\nThere can also be multiple decorations if passed as children under\n`AccordionItem.Decoration`.\n\nExample:\n```tsx\n<AccordionItem.Header>\n  <AccordionItem.Marker />\n  <AccordionItem.Decoration>\n    <Icon href={svgPlaceholder} />\n    <Icon href={svgPlaceholder} />\n  </AccordionItem.Decoration>\n  <AccordionItem.Button>\n    <AccordionItem.Label>Label</AccordionItem.Label>\n  </AccordionItem.Button>\n</AccordionItem.Header>\n```",
+						"deprecated": true,
+						"barrelName": "unstable_AccordionItem.Decoration"
+					},
+					{
+						"name": "Header",
+						"baseProps": ["BaseProps.render"],
+						"props": [],
+						"baseElement": "div",
+						"jsdoc": "The always visible header of an accordion item.\n\nMust include an `AccordionItem.Button` and `AccordionItem.Marker` as a direct\ndescendants.\n\nExample:\n```tsx\n<AccordionItem.Root>\n  <AccordionItem.Header>\n    <AccordionItem.Marker />\n    <AccordionItem.Button>\n      <AccordionItem.Label>Label</AccordionItem.Label>\n    </AccordionItem.Button>\n  </AccordionItem.Header>\n  <AccordionItem.Content>Body</AccordionItem.Content>\n</AccordionItem.Root>\n```",
+						"deprecated": true,
+						"barrelName": "unstable_AccordionItem.Header"
+					},
+					{
+						"name": "Heading",
+						"baseProps": [],
+						"props": [
+							{
+								"name": "render",
+								"type": "(props: P) => React.ReactNode | React.ReactElement",
+								"optional": false
+							}
+						],
+						"baseElement": "div",
+						"jsdoc": "A heading for wrapping `AccordionItem.Button`.\n\nThe `render` prop is required.\n\nExample:\n```tsx\n<AccordionItem.Header>\n  <AccordionItem.Marker />\n  <AccordionItem.Heading render={<h2 />}>\n    <AccordionItem.Button>\n      <AccordionItem.Label>Label</AccordionItem.Label>\n    </AccordionItem.Button>\n  </AccordionItem.Heading>\n</AccordionItem.Header>\n```",
+						"deprecated": true,
+						"barrelName": "unstable_AccordionItem.Heading"
+					},
+					{
+						"name": "Label",
+						"baseProps": ["BaseProps.render"],
+						"props": [],
+						"baseElement": "div",
+						"jsdoc": "An accordion item’s label.\n\nMust be a descendant of `AccordionItem.Button`.\n\nExample:\n```tsx\n<AccordionItem.Button>\n  <AccordionItem.Label>Label</AccordionItem.Label>\n</AccordionItem.Button>\n```",
+						"deprecated": true,
+						"barrelName": "unstable_AccordionItem.Label"
+					},
+					{
+						"name": "Marker",
+						"baseProps": ["BaseProps.render"],
+						"props": [],
+						"baseElement": "div",
+						"jsdoc": "The visual marker of the `AccordionItem.Header` content. While it can be\nplaced before or after the rest of the content in `AccordionItem.Header`,\nit is recommended to place the marker before.\n\nExample:\n```tsx\n<AccordionItem.Header>\n  <AccordionItem.Marker />\n  <AccordionItem.Button>\n    <AccordionItem.Label>Label</AccordionItem.Label>\n  </AccordionItem.Button>\n</AccordionItem.Header>\n```\n\nAlternatively, the marker can also be placed after the rest of the header\ncontent.\n\nExample:\n```tsx\n<AccordionItem.Header>\n  <AccordionItem.Button>\n    <AccordionItem.Label>Label</AccordionItem.Label>\n  </AccordionItem.Button>\n  <AccordionItem.Marker />\n</AccordionItem.Header>\n```\n\nPass an icon as a child to override the default chevron icon:\n```tsx\n<AccordionItem.Header>\n  <AccordionItem.Marker>\n    <Icon href={svgPlaceholder} />\n  </AccordionItem.Marker>\n  <AccordionItem.Button>\n    <AccordionItem.Label>Label</AccordionItem.Label>\n  </AccordionItem.Button>\n</AccordionItem.Header>\n```",
+						"deprecated": true,
+						"barrelName": "unstable_AccordionItem.Marker"
+					},
+					{
 						"name": "Root",
 						"baseProps": ["BaseProps.render"],
 						"props": [
@@ -1243,75 +1326,6 @@
 						"jsdoc": "An item within an accordion. Disclosed content with a label.\n\nBare minimum example:\n```tsx\n<AccordionItem.Root>\n  <AccordionItem.Header>\n    <AccordionItem.Marker />\n    <AccordionItem.Button>\n      <AccordionItem.Label>Label</AccordionItem.Label>\n    </AccordionItem.Button>\n  </AccordionItem.Header>\n  <AccordionItem.Content>Body</AccordionItem.Content>\n</AccordionItem.Root>\n```\n\nIf the accordion item discloses a significant section of the page, it may be\ndesirable to markup its label as a heading for accessibility purposes (e.g.\nscreen reader users often navigate by heading). For those cases, you can wrap\nthe `AccordionItem.Button` component with an `AccordionItem.Heading`\ncomponent and use its `render` prop for rendering an HTML heading element.\n```tsx\n<AccordionItem.Root>\n  <AccordionItem.Header>\n    <AccordionItem.Marker />\n    <AccordionItem.Heading render={<h2 />}>\n      <AccordionItem.Button>\n        <AccordionItem.Label>Label</AccordionItem.Label>\n      </AccordionItem.Button>\n    </AccordionItem.Heading>\n  </AccordionItem.Header>\n  <AccordionItem.Content>Body</AccordionItem.Content>\n</AccordionItem.Root>\n```\n\nExample with a decoration:\n```tsx\n<AccordionItem.Root>\n  <AccordionItem.Header>\n    <AccordionItem.Marker />\n    <AccordionItem.Decoration render={<Icon href={svgPlaceholder} />} />\n    <AccordionItem.Button>\n      <AccordionItem.Label>Label</AccordionItem.Label>\n    </AccordionItem.Button>\n  </AccordionItem.Header>\n  <AccordionItem.Content>Body</AccordionItem.Content>\n</AccordionItem.Root>\n```",
 						"deprecated": true,
 						"barrelName": "unstable_AccordionItem.Root"
-					},
-					{
-						"name": "Content",
-						"baseProps": ["BaseProps.render"],
-						"props": [],
-						"baseElement": "div",
-						"jsdoc": "The disclosed content of the accordion item.\n\nExample:\n```tsx\n<AccordionItem.Root>\n  <AccordionItem.Header>\n    <AccordionItem.Marker />\n    <AccordionItem.Button>\n      <AccordionItem.Label>Label</AccordionItem.Label>\n    </AccordionItem.Button>\n  </AccordionItem.Header>\n  <AccordionItem.Content>Body</AccordionItem.Content>\n</AccordionItem.Root>\n```",
-						"deprecated": true,
-						"barrelName": "unstable_AccordionItem.Content"
-					},
-					{
-						"name": "Header",
-						"baseProps": ["BaseProps.render"],
-						"props": [],
-						"baseElement": "div",
-						"jsdoc": "The always visible header of an accordion item.\n\nMust include an `AccordionItem.Button` and `AccordionItem.Marker` as a direct\ndescendants.\n\nExample:\n```tsx\n<AccordionItem.Root>\n  <AccordionItem.Header>\n    <AccordionItem.Marker />\n    <AccordionItem.Button>\n      <AccordionItem.Label>Label</AccordionItem.Label>\n    </AccordionItem.Button>\n  </AccordionItem.Header>\n  <AccordionItem.Content>Body</AccordionItem.Content>\n</AccordionItem.Root>\n```",
-						"deprecated": true,
-						"barrelName": "unstable_AccordionItem.Header"
-					},
-					{
-						"name": "Button",
-						"baseProps": ["BaseProps.render"],
-						"props": [],
-						"baseElement": "button",
-						"jsdoc": "The accordion item button.\n\nMust be a direct descendant of `AccordionItem.Header`.\n\nExample:\n```tsx\n<AccordionItem.Header>\n  <AccordionItem.Marker />\n  <AccordionItem.Button>\n    <AccordionItem.Label>Label</AccordionItem.Label>\n  </AccordionItem.Button>\n</AccordionItem.Header>\n```",
-						"deprecated": true,
-						"barrelName": "unstable_AccordionItem.Button"
-					},
-					{
-						"name": "Label",
-						"baseProps": ["BaseProps.render"],
-						"props": [],
-						"baseElement": "div",
-						"jsdoc": "An accordion item’s label.\n\nMust be a descendant of `AccordionItem.Button`.\n\nExample:\n```tsx\n<AccordionItem.Button>\n  <AccordionItem.Label>Label</AccordionItem.Label>\n</AccordionItem.Button>\n```",
-						"deprecated": true,
-						"barrelName": "unstable_AccordionItem.Label"
-					},
-					{
-						"name": "Decoration",
-						"baseProps": ["BaseProps.render"],
-						"props": [],
-						"baseElement": "div",
-						"jsdoc": "The always-visible, optional decoration of the `AccordionItem.Header` content.\nIt can be placed before or after the rest of the content in\n`AccordionItem.Header`. However, the `AccordionItem.Marker` must always be\nplaced at either edge (beginning or end) of the header.\n\nUse as a direct descendant of `AccordionItem.Header`. The decoration\ncan be placed before the rest of the header content.\n\nExample:\n```tsx\n<AccordionItem.Header>\n  <AccordionItem.Marker />\n  <AccordionItem.Decoration render={<Icon href={svgPlaceholder} />} />\n  <AccordionItem.Button>\n    <AccordionItem.Label>Label</AccordionItem.Label>\n  </AccordionItem.Button>\n</AccordionItem.Header>\n```\n\nAlternatively, the decoration can also be placed after the rest of the\nheader content.\n\nExample:\n```tsx\n<AccordionItem.Header>\n  <AccordionItem.Marker />\n  <AccordionItem.Button>\n    <AccordionItem.Label>Label</AccordionItem.Label>\n  </AccordionItem.Button>\n  <AccordionItem.Decoration render={<Icon href={svgPlaceholder} />} />\n</AccordionItem.Header>\n```\n\nThere can also be multiple decorations if passed as children under\n`AccordionItem.Decoration`.\n\nExample:\n```tsx\n<AccordionItem.Header>\n  <AccordionItem.Marker />\n  <AccordionItem.Decoration>\n    <Icon href={svgPlaceholder} />\n    <Icon href={svgPlaceholder} />\n  </AccordionItem.Decoration>\n  <AccordionItem.Button>\n    <AccordionItem.Label>Label</AccordionItem.Label>\n  </AccordionItem.Button>\n</AccordionItem.Header>\n```",
-						"deprecated": true,
-						"barrelName": "unstable_AccordionItem.Decoration"
-					},
-					{
-						"name": "Marker",
-						"baseProps": ["BaseProps.render"],
-						"props": [],
-						"baseElement": "div",
-						"jsdoc": "The visual marker of the `AccordionItem.Header` content. While it can be\nplaced before or after the rest of the content in `AccordionItem.Header`,\nit is recommended to place the marker before.\n\nExample:\n```tsx\n<AccordionItem.Header>\n  <AccordionItem.Marker />\n  <AccordionItem.Button>\n    <AccordionItem.Label>Label</AccordionItem.Label>\n  </AccordionItem.Button>\n</AccordionItem.Header>\n```\n\nAlternatively, the marker can also be placed after the rest of the header\ncontent.\n\nExample:\n```tsx\n<AccordionItem.Header>\n  <AccordionItem.Button>\n    <AccordionItem.Label>Label</AccordionItem.Label>\n  </AccordionItem.Button>\n  <AccordionItem.Marker />\n</AccordionItem.Header>\n```\n\nPass an icon as a child to override the default chevron icon:\n```tsx\n<AccordionItem.Header>\n  <AccordionItem.Marker>\n    <Icon href={svgPlaceholder} />\n  </AccordionItem.Marker>\n  <AccordionItem.Button>\n    <AccordionItem.Label>Label</AccordionItem.Label>\n  </AccordionItem.Button>\n</AccordionItem.Header>\n```",
-						"deprecated": true,
-						"barrelName": "unstable_AccordionItem.Marker"
-					},
-					{
-						"name": "Heading",
-						"baseProps": [],
-						"props": [
-							{
-								"name": "render",
-								"type": "(props: P) => React.ReactNode | React.ReactElement",
-								"optional": false
-							}
-						],
-						"baseElement": "div",
-						"jsdoc": "A heading for wrapping `AccordionItem.Button`.\n\nThe `render` prop is required.\n\nExample:\n```tsx\n<AccordionItem.Header>\n  <AccordionItem.Marker />\n  <AccordionItem.Heading render={<h2 />}>\n    <AccordionItem.Button>\n      <AccordionItem.Label>Label</AccordionItem.Label>\n    </AccordionItem.Button>\n  </AccordionItem.Heading>\n</AccordionItem.Header>\n```",
-						"deprecated": true,
-						"barrelName": "unstable_AccordionItem.Heading"
 					}
 				],
 				"exportName": "unstable_AccordionItem"
@@ -1357,7 +1371,7 @@
 							"name": "render",
 							"type": "(props: P) => React.ReactNode | React.ReactElement | undefined",
 							"optional": true,
-							"jsdoc": "Allows the component to be rendered as a different HTML element or React\ncomponent. The value can be a React element or a function that takes in the\noriginal component props and gives back a React element with the props\nmerged.\n\nCheck out the [Composition](https://ariakit.org/guide/composition) guide\nfor more details."
+							"jsdoc": "Allows the component to be rendered as a different HTML element or React\ncomponent. The value can be a React element or a function that takes in the\noriginal component props and gives back a React element with the props\nmerged.\n\nCheck out the [Composition](https://ariakit.com/guide/composition) guide\nfor more details."
 						},
 						{
 							"name": "tone",
@@ -1381,26 +1395,27 @@
 				},
 				"composition": [
 					{
-						"name": "Root",
+						"name": "Actions",
+						"baseProps": ["BaseProps.render"],
+						"props": [],
+						"baseElement": "div",
+						"jsdoc": "The actions available for the banner.\n\nExample with one action:\n```tsx\n<Banner.Root>\n  <Banner.Actions>\n    <Button key={…} onClick={…}>Action</Button>\n  </Banner.Actions>\n</Banner.Root>\n```\n\nExample with two `Button`s:\n```tsx\n<Banner.Root>\n  <Banner.Actions>\n    <Button key={…} onClick={…}>Action 1</Button>\n    <Button key={…} onClick={…}>Action 2</Button>\n  </Banner.Actions>\n</Banner.Root>\n```\n\nExample with two `Anchor`s as `Button`:\n```tsx\n<Banner.Root>\n  <Banner.Actions>\n    <Anchor key={…} render={<button />} onClick={…}>Action 1</Anchor>,\n    <Anchor key={…} render={<button />} onClick={…}>Action 2</Anchor>,\n  </Banner.Actions>\n</Banner.Root>\n```",
+						"deprecated": true
+					},
+					{
+						"name": "DismissButton",
 						"baseProps": ["BaseProps.render"],
 						"props": [
 							{
-								"name": "tone",
-								"type": "\"neutral\" | \"info\" | \"positive\" | \"attention\" | \"critical\" | undefined",
+								"name": "label",
+								"type": "string | undefined",
 								"optional": true,
-								"jsdoc": "The tone of the banner.",
-								"defaultValue": "\"neutral\""
-							},
-							{
-								"name": "variant",
-								"type": "\"outline\" | undefined",
-								"optional": true,
-								"jsdoc": "The variant of the banner.",
-								"defaultValue": "\"outline\""
+								"jsdoc": "Label for the dismiss button.\n\nThe final accessible name of the dismiss button is a combination of this `label` and the text content of `Banner.Label`.",
+								"defaultValue": "\"Dismiss\""
 							}
 						],
-						"baseElement": "div",
-						"jsdoc": "A banner to highlight information and also optionally provide actions.\nThe information could be very important (like a call to action) or reasonably import (like a status message).\n\nExample:\n```tsx\n<Banner.Root tone=\"info\" variant=\"outline\">\n  <Banner.Icon />\n  <Banner.Label>Label</Banner.Label>\n  <Banner.Message>Message</Banner.Message>\n  <Banner.DismissButton onClick={onDismiss} />\n</Banner.Root>\n```",
+						"baseElement": "button",
+						"jsdoc": "Dismiss (\"❌\") button for the banner.\nHandle the `onClick` callback to dismiss the banner.\n\nExample:\n```tsx\n<Banner.Root>\n  <Banner.DismissButton onClick={() => {}} />\n</Banner.Root>\n```",
 						"deprecated": true
 					},
 					{
@@ -1434,7 +1449,7 @@
 								"name": "render",
 								"type": "(props: P) => React.ReactNode | React.ReactElement | undefined",
 								"optional": true,
-								"jsdoc": "Allows the component to be rendered as a different HTML element or React\ncomponent. The value can be a React element or a function that takes in the\noriginal component props and gives back a React element with the props\nmerged.\n\nCheck out the [Composition](https://ariakit.org/guide/composition) guide\nfor more details."
+								"jsdoc": "Allows the component to be rendered as a different HTML element or React\ncomponent. The value can be a React element or a function that takes in the\noriginal component props and gives back a React element with the props\nmerged.\n\nCheck out the [Composition](https://ariakit.com/guide/composition) guide\nfor more details."
 							},
 							{
 								"name": "size",
@@ -1464,27 +1479,26 @@
 						"deprecated": true
 					},
 					{
-						"name": "Actions",
-						"baseProps": ["BaseProps.render"],
-						"props": [],
-						"baseElement": "div",
-						"jsdoc": "The actions available for the banner.\n\nExample with one action:\n```tsx\n<Banner.Root>\n  <Banner.Actions>\n    <Button key={…} onClick={…}>Action</Button>\n  </Banner.Actions>\n</Banner.Root>\n```\n\nExample with two `Button`s:\n```tsx\n<Banner.Root>\n  <Banner.Actions>\n    <Button key={…} onClick={…}>Action 1</Button>\n    <Button key={…} onClick={…}>Action 2</Button>\n  </Banner.Actions>\n</Banner.Root>\n```\n\nExample with two `Anchor`s as `Button`:\n```tsx\n<Banner.Root>\n  <Banner.Actions>\n    <Anchor key={…} render={<button />} onClick={…}>Action 1</Anchor>,\n    <Anchor key={…} render={<button />} onClick={…}>Action 2</Anchor>,\n  </Banner.Actions>\n</Banner.Root>\n```",
-						"deprecated": true
-					},
-					{
-						"name": "DismissButton",
+						"name": "Root",
 						"baseProps": ["BaseProps.render"],
 						"props": [
 							{
-								"name": "label",
-								"type": "string | undefined",
+								"name": "tone",
+								"type": "\"neutral\" | \"info\" | \"positive\" | \"attention\" | \"critical\" | undefined",
 								"optional": true,
-								"jsdoc": "Label for the dismiss button.\n\nThe final accessible name of the dismiss button is a combination of this `label` and the text content of `Banner.Label`.",
-								"defaultValue": "\"Dismiss\""
+								"jsdoc": "The tone of the banner.",
+								"defaultValue": "\"neutral\""
+							},
+							{
+								"name": "variant",
+								"type": "\"outline\" | undefined",
+								"optional": true,
+								"jsdoc": "The variant of the banner.",
+								"defaultValue": "\"outline\""
 							}
 						],
-						"baseElement": "button",
-						"jsdoc": "Dismiss (\"❌\") button for the banner.\nHandle the `onClick` callback to dismiss the banner.\n\nExample:\n```tsx\n<Banner.Root>\n  <Banner.DismissButton onClick={() => {}} />\n</Banner.Root>\n```",
+						"baseElement": "div",
+						"jsdoc": "A banner to highlight information and also optionally provide actions.\nThe information could be very important (like a call to action) or reasonably import (like a status message).\n\nExample:\n```tsx\n<Banner.Root tone=\"info\" variant=\"outline\">\n  <Banner.Icon />\n  <Banner.Label>Label</Banner.Label>\n  <Banner.Message>Message</Banner.Message>\n  <Banner.DismissButton onClick={onDismiss} />\n</Banner.Root>\n```",
 						"deprecated": true
 					}
 				],
@@ -1524,30 +1538,6 @@
 				},
 				"composition": [
 					{
-						"name": "Root",
-						"baseProps": ["BaseProps.render"],
-						"props": [
-							{
-								"name": "variant",
-								"type": "\"outline\" | \"solid\" | undefined",
-								"optional": true,
-								"jsdoc": "The variant style of the Chip.\nUse \"solid\" for primary states and \"outline\" for less prominent states.",
-								"defaultValue": "\"solid\""
-							}
-						],
-						"baseElement": "div",
-						"jsdoc": "Root component of the compositional Chip component.\n\nExample:\n```tsx\n<Chip.Root>\n  <Chip.Label>Label</Chip.Label>\n  <Chip.DismissButton onClick={onClick} />\n</Chip.Root>\n```",
-						"deprecated": true
-					},
-					{
-						"name": "Label",
-						"baseProps": ["BaseProps.render"],
-						"props": [],
-						"baseElement": "span",
-						"jsdoc": "Label component that should be used with the compositional Chip component.",
-						"deprecated": true
-					},
-					{
 						"name": "DismissButton",
 						"baseProps": ["BaseProps.render"],
 						"props": [
@@ -1562,6 +1552,30 @@
 						"baseElement": "button",
 						"jsdoc": "Dismiss button component that should be used with the compositional Chip component.",
 						"deprecated": true
+					},
+					{
+						"name": "Label",
+						"baseProps": ["BaseProps.render"],
+						"props": [],
+						"baseElement": "span",
+						"jsdoc": "Label component that should be used with the compositional Chip component.",
+						"deprecated": true
+					},
+					{
+						"name": "Root",
+						"baseProps": ["BaseProps.render"],
+						"props": [
+							{
+								"name": "variant",
+								"type": "\"outline\" | \"solid\" | undefined",
+								"optional": true,
+								"jsdoc": "The variant style of the Chip.\nUse \"solid\" for primary states and \"outline\" for less prominent states.",
+								"defaultValue": "\"solid\""
+							}
+						],
+						"baseElement": "div",
+						"jsdoc": "Root component of the compositional Chip component.\n\nExample:\n```tsx\n<Chip.Root>\n  <Chip.Label>Label</Chip.Label>\n  <Chip.DismissButton onClick={onClick} />\n</Chip.Root>\n```",
+						"deprecated": true
 					}
 				],
 				"exportName": "Chip"
@@ -1570,67 +1584,27 @@
 				"name": "Dialog",
 				"composition": [
 					{
-						"name": "Root",
+						"name": "ActionList",
 						"baseProps": ["BaseProps.render"],
 						"props": [
 							{
-								"name": "modal",
-								"type": "true",
-								"optional": false,
-								"jsdoc": "Determines whether the dialog is modal.\nCurrently, only modal dialogs are supported."
-							},
-							{
-								"name": "backdrop",
-								"type": "boolean | ReactElement<DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>, string | JSXElementConstructor<any>> | ElementType<...> | undefined",
+								"name": "actions",
+								"type": "ReactNode[] | undefined",
 								"optional": true,
-								"jsdoc": "Determines whether there will be a backdrop behind the dialog. On modal\ndialogs, this is `true` by default. Besides a `boolean`, this prop can also\nbe a React component or JSX element that will be rendered as the backdrop.\n\n**Note**: If a custom component is used, it must [accept ref and spread all\nprops to its underlying DOM\nelement](https://ariakit.org/guide/composition#custom-components-must-be-open-for-extension),\nthe same way a native element would."
-							},
-							{
-								"name": "hideOnInteractOutside",
-								"type": "BooleanOrCallback<Event | SyntheticEvent<Element, Event>> | undefined",
-								"optional": true,
-								"jsdoc": "Determines if the dialog should hide when the user clicks or focuses on an\nelement outside the dialog.\n\nThis prop can be either a boolean or a function that takes an event as an\nargument and returns a boolean. The event object represents the event that\ntriggered the action, which could be a native event or a React synthetic\nevent of various types.",
-								"defaultValue": "true"
-							},
-							{
-								"name": "onClose",
-								"type": "((event: Event) => void) | undefined",
-								"optional": true,
-								"jsdoc": "This is an event handler prop triggered when the dialog's `close` event is\ndispatched. The `close` event is similar to the native dialog\n[`close`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/close_event)\nevent. The only difference is that this event can be canceled with\n`event.preventDefault()`, which will prevent the dialog from hiding.\n\nIt's important to note that this event only fires when the dialog store's\n[`open`](https://ariakit.org/reference/use-dialog-store#open) state is set\nto `false`. If the controlled\n[`open`](https://ariakit.org/reference/dialog#open) prop value changes, or\nif the dialog's visibility is altered in any other way (such as unmounting\nthe dialog without adjusting the open state), this event won't be\ntriggered."
-							},
-							{
-								"name": "open",
-								"type": "boolean | undefined",
-								"optional": true,
-								"jsdoc": "Controls the open state of the dialog. This is similar to the\n[`open`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/open)\nattribute on native dialog elements."
-							},
-							{
-								"name": "unmountOnHide",
-								"type": "boolean | undefined",
-								"optional": true,
-								"jsdoc": "When set to `true`, the content element will be unmounted and removed from\nthe DOM when it's hidden.",
-								"defaultValue": "true"
+								"jsdoc": "The actions available for the dialog. Must be a list of `Button` components."
 							}
 						],
 						"baseElement": "div",
-						"jsdoc": "A modal dialog component used to display content in a window overlay. Must include `Dialog.Header` and `Dialog.Content` as direct\ndescendants. Additionally, `Dialog.Footer` can be optionally used as a direct descendant.\n\nExample:\n```tsx\nconst [open, setOpen] = useState(false);\n\n<Dialog.Root modal={true} open={open} onClose={() => setOpen(false)}>\n  <Dialog.Heading>Heading</Dialog.Heading>\n  <Dialog.Content>Content</Dialog.Content>\n  <Dialog.Footer>\n    <Dialog.ActionList\n      actions={[\n        <Button key=\"ok\" onClick={() => setOpen(false)}>Ok</Button>,\n      ]}\n    />\n\n  </Dialog.Footer>\n</Dialog.Root>\n```",
-						"barrelName": "unstable_Dialog.Root"
+						"jsdoc": "A container for action buttons in a dialog. Should be used as a child of `Dialog.Footer`.\n\nExample:\n```tsx\n<Dialog.ActionList\n  actions={[\n    <Button key=\"cancel\" onClick={() => setOpen(false)}>Cancel</Button>,\n    <Button key=\"ok\" tone=\"accent\" onClick={() => setOpen(false)}>Ok</Button>,\n  ]}\n/>\n```",
+						"barrelName": "unstable_Dialog.ActionList"
 					},
 					{
-						"name": "Header",
+						"name": "Backdrop",
 						"baseProps": ["BaseProps.render"],
 						"props": [],
 						"baseElement": "div",
-						"jsdoc": "The header of a dialog. Should be used as a child of `Dialog.Root`. Must include `Dialog.Heading` as a direct\ndescendant. Additionally, `Dialog.CloseButton` can be optionally used as a direct descendant.\n\nExample:\n```tsx\n<Dialog.Header>\n  <Dialog.Heading>Heading</Dialog.Heading>\n  <Dialog.CloseButton />\n</Dialog.Header>\n```\n\nUse `render` prop when only a heading is displayed in a header.\n\n```tsx\n<Dialog.Header render={<Dialog.Heading />}>Heading</Dialog.Header>\n```",
-						"barrelName": "unstable_Dialog.Header"
-					},
-					{
-						"name": "Heading",
-						"baseProps": ["BaseProps.render"],
-						"props": [],
-						"baseElement": "h1",
-						"jsdoc": "The heading of a dialog. Should be used as a child of `Dialog.DialogHeader`.\n\nExample:\n```tsx\n<Dialog.Heading>Heading</Dialog.Heading>\n```",
-						"barrelName": "unstable_Dialog.Heading"
+						"jsdoc": "The backdrop of a dialog. Should be passed into the `backdrop` prop of `Dialog.Root`.\n\nExample:\n```tsx\n<Dialog.Root modal={true} backdrop={<Dialog.Backdrop />} />\n```",
+						"barrelName": "unstable_Dialog.Backdrop"
 					},
 					{
 						"name": "CloseButton",
@@ -1670,27 +1644,67 @@
 						"barrelName": "unstable_Dialog.Footer"
 					},
 					{
-						"name": "ActionList",
-						"baseProps": ["BaseProps.render"],
-						"props": [
-							{
-								"name": "actions",
-								"type": "ReactNode[] | undefined",
-								"optional": true,
-								"jsdoc": "The actions available for the dialog. Must be a list of `Button` components."
-							}
-						],
-						"baseElement": "div",
-						"jsdoc": "A container for action buttons in a dialog. Should be used as a child of `Dialog.Footer`.\n\nExample:\n```tsx\n<Dialog.ActionList\n  actions={[\n    <Button key=\"cancel\" onClick={() => setOpen(false)}>Cancel</Button>,\n    <Button key=\"ok\" tone=\"accent\" onClick={() => setOpen(false)}>Ok</Button>,\n  ]}\n/>\n```",
-						"barrelName": "unstable_Dialog.ActionList"
-					},
-					{
-						"name": "Backdrop",
+						"name": "Header",
 						"baseProps": ["BaseProps.render"],
 						"props": [],
 						"baseElement": "div",
-						"jsdoc": "The backdrop of a dialog. Should be passed into the `backdrop` prop of `Dialog.Root`.\n\nExample:\n```tsx\n<Dialog.Root modal={true} backdrop={<Dialog.Backdrop />} />\n```",
-						"barrelName": "unstable_Dialog.Backdrop"
+						"jsdoc": "The header of a dialog. Should be used as a child of `Dialog.Root`. Must include `Dialog.Heading` as a direct\ndescendant. Additionally, `Dialog.CloseButton` can be optionally used as a direct descendant.\n\nExample:\n```tsx\n<Dialog.Header>\n  <Dialog.Heading>Heading</Dialog.Heading>\n  <Dialog.CloseButton />\n</Dialog.Header>\n```\n\nUse `render` prop when only a heading is displayed in a header.\n\n```tsx\n<Dialog.Header render={<Dialog.Heading />}>Heading</Dialog.Header>\n```",
+						"barrelName": "unstable_Dialog.Header"
+					},
+					{
+						"name": "Heading",
+						"baseProps": ["BaseProps.render"],
+						"props": [],
+						"baseElement": "h1",
+						"jsdoc": "The heading of a dialog. Should be used as a child of `Dialog.DialogHeader`.\n\nExample:\n```tsx\n<Dialog.Heading>Heading</Dialog.Heading>\n```",
+						"barrelName": "unstable_Dialog.Heading"
+					},
+					{
+						"name": "Root",
+						"baseProps": ["BaseProps.render"],
+						"props": [
+							{
+								"name": "modal",
+								"type": "true",
+								"optional": false,
+								"jsdoc": "Determines whether the dialog is modal.\nCurrently, only modal dialogs are supported."
+							},
+							{
+								"name": "backdrop",
+								"type": "boolean | ReactElement<DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>, string | JSXElementConstructor<any>> | ElementType<...> | undefined",
+								"optional": true,
+								"jsdoc": "Determines whether there will be a backdrop behind the dialog. On modal\ndialogs, this is `true` by default. Besides a `boolean`, this prop can also\nbe a React component or JSX element that will be rendered as the backdrop.\n\n**Note**: If a custom component is used, it must [accept ref and spread all\nprops to its underlying DOM\nelement](https://ariakit.com/guide/composition#custom-components-must-be-open-for-extension),\nthe same way a native element would."
+							},
+							{
+								"name": "hideOnInteractOutside",
+								"type": "BooleanOrCallback<Event | SyntheticEvent<Element, Event>> | undefined",
+								"optional": true,
+								"jsdoc": "Determines if the dialog should hide when the user clicks or focuses on an\nelement outside the dialog.\n\nThis prop can be either a boolean or a function that takes an event as an\nargument and returns a boolean. The event object represents the event that\ntriggered the action, which could be a native event or a React synthetic\nevent of various types.",
+								"defaultValue": "true"
+							},
+							{
+								"name": "onClose",
+								"type": "((event: Event) => void) | undefined",
+								"optional": true,
+								"jsdoc": "This is an event handler prop triggered when the dialog's `close` event is\ndispatched. The `close` event is similar to the native dialog\n[`close`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/close_event)\nevent. The only difference is that this event can be canceled with\n`event.preventDefault()`, which will prevent the dialog from hiding.\n\nIt's important to note that this event only fires when the dialog store's\n[`open`](https://ariakit.com/reference/use-dialog-store#open) state is set\nto `false`. If the controlled\n[`open`](https://ariakit.com/reference/dialog#open) prop value changes, or\nif the dialog's visibility is altered in any other way (such as unmounting\nthe dialog without adjusting the open state), this event won't be\ntriggered."
+							},
+							{
+								"name": "open",
+								"type": "boolean | undefined",
+								"optional": true,
+								"jsdoc": "Controls the open state of the dialog. This is similar to the\n[`open`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/open)\nattribute on native dialog elements."
+							},
+							{
+								"name": "unmountOnHide",
+								"type": "boolean | undefined",
+								"optional": true,
+								"jsdoc": "When set to `true`, the content element will be unmounted and removed from\nthe DOM when it's hidden.",
+								"defaultValue": "true"
+							}
+						],
+						"baseElement": "div",
+						"jsdoc": "A modal dialog component used to display content in a window overlay. Must include `Dialog.Header` and `Dialog.Content` as direct\ndescendants. Additionally, `Dialog.Footer` can be optionally used as a direct descendant.\n\nExample:\n```tsx\nconst [open, setOpen] = useState(false);\n\n<Dialog.Root modal={true} open={open} onClose={() => setOpen(false)}>\n  <Dialog.Heading>Heading</Dialog.Heading>\n  <Dialog.Content>Content</Dialog.Content>\n  <Dialog.Footer>\n    <Dialog.ActionList\n      actions={[\n        <Button key=\"ok\" onClick={() => setOpen(false)}>Ok</Button>,\n      ]}\n    />\n\n  </Dialog.Footer>\n</Dialog.Root>\n```",
+						"barrelName": "unstable_Dialog.Root"
 					}
 				],
 				"exportName": "unstable_Dialog"
@@ -1698,45 +1712,6 @@
 			{
 				"name": "DropdownMenu",
 				"composition": [
-					{
-						"name": "Provider",
-						"baseProps": [],
-						"props": [
-							{
-								"name": "children",
-								"type": "ReactNode",
-								"optional": true
-							},
-							{
-								"name": "defaultOpen",
-								"type": "boolean | undefined",
-								"optional": true,
-								"jsdoc": "Whether the content should be visible by default.",
-								"defaultValue": "false"
-							},
-							{
-								"name": "open",
-								"type": "boolean | undefined",
-								"optional": true,
-								"jsdoc": "Whether the content is visible.",
-								"defaultValue": "false"
-							},
-							{
-								"name": "placement",
-								"type": "Placement | undefined",
-								"optional": true,
-								"defaultValue": "\"bottom-start\""
-							},
-							{
-								"name": "setOpen",
-								"type": "((open: boolean) => void) | undefined",
-								"optional": true,
-								"jsdoc": "A callback that gets called when the\n[`open`](https://ariakit.org/reference/disclosure-provider#open) state\nchanges."
-							}
-						],
-						"jsdoc": "A dropdown menu displays a list of actions or commands when the menu button is clicked.\n\n`DropdownMenu` is a compound component with subcomponents exposed for different parts.\n\nExample:\n```tsx\n<DropdownMenu.Provider>\n  <DropdownMenu.Button>Actions</DropdownMenu.Button>\n\n  <DropdownMenu.Content>\n    <DropdownMenu.Item label=\"Add\" />\n    <DropdownMenu.Item label=\"Edit\" />\n    <DropdownMenu.Item label=\"Delete\" />\n  </DropdownMenu.Content>\n</DropdownMenu.Provider>\n```\n\n**Note**: `DropdownMenu` should not be used for navigation; it is only intended for actions.",
-						"barrelName": "DropdownMenu.Provider"
-					},
 					{
 						"name": "Button",
 						"baseProps": [
@@ -1751,6 +1726,62 @@
 						"barrelName": "DropdownMenu.Button"
 					},
 					{
+						"name": "CheckboxItem",
+						"baseProps": [
+							"FocusableProps.render",
+							"FocusableProps.autoFocus",
+							"FocusableProps.disabled",
+							"FocusableProps.accessibleWhenDisabled"
+						],
+						"props": [
+							{
+								"name": "label",
+								"type": "ReactNode",
+								"optional": false,
+								"jsdoc": "The primary text label for the menu-item."
+							},
+							{
+								"name": "name",
+								"type": "string",
+								"optional": false,
+								"jsdoc": "The name of the field in the\n[`values`](https://ariakit.com/reference/menu-provider#values) state."
+							},
+							{
+								"name": "checked",
+								"type": "boolean | undefined",
+								"optional": true,
+								"jsdoc": "The controlled checked state of the element. It will set the menu\n[`values`](https://ariakit.com/reference/menu-provider#values) state if\nprovided."
+							},
+							{
+								"name": "defaultChecked",
+								"type": "boolean | undefined",
+								"optional": true,
+								"jsdoc": "The default checked state of the element. It will set the default value in\nthe menu [`values`](https://ariakit.com/reference/menu-provider#values)\nstate if provided."
+							},
+							{
+								"name": "icon",
+								"type": "string | Element | undefined",
+								"optional": true,
+								"jsdoc": "An optional icon displayed before the menu-item label.\n\nCan be a URL of an SVG from the `@stratakit/icons` package,\nor a custom JSX icon."
+							},
+							{
+								"name": "onChange",
+								"type": "ChangeEventHandler<HTMLInputElement, HTMLInputElement> | undefined",
+								"optional": true,
+								"jsdoc": "A function that is called when the checkbox's checked state changes."
+							},
+							{
+								"name": "value",
+								"type": "string | number | readonly string[] | undefined",
+								"optional": true,
+								"jsdoc": "The value of the checkbox. This is useful when the same checkbox store is\nused for multiple [`Checkbox`](https://ariakit.com/reference/checkbox)\nelements, in which case the value will be an array of checked values."
+							}
+						],
+						"baseElement": "button",
+						"jsdoc": "A single checkbox menu item within the dropdown menu. Should be used as a child of `DropdownMenu.Content` and `DropdownMenu.Submenu`.\n\nExample:\n```tsx\n<DropdownMenu.CheckboxItem name=\"add\" label=\"Add\" />\n<DropdownMenu.CheckboxItem name=\"edit\" label=\"Edit\" />\n```",
+						"barrelName": "DropdownMenu.CheckboxItem"
+					},
+					{
 						"name": "Content",
 						"baseProps": [
 							"FocusableProps.render",
@@ -1762,6 +1793,27 @@
 						"baseElement": "div",
 						"jsdoc": "The actual \"menu\" portion containing the items shown within the dropdown.\n\nShould be used as a child of `DropdownMenu.Provider`.\n\nShould include one or more of `DropdownMenu.Item`, `DropdownMenu.CheckboxItem` and `DropdownMenu.Group` as direct descendants.",
 						"barrelName": "DropdownMenu.Content"
+					},
+					{
+						"name": "Group",
+						"baseProps": ["BaseProps.render"],
+						"props": [
+							{
+								"name": "items",
+								"type": "Element[]",
+								"optional": false,
+								"jsdoc": "The menu items within the group.\n\nShould be an array of `DropdownMenu.Item` and/or `DropdownMenu.CheckboxItem` elements."
+							},
+							{
+								"name": "label",
+								"type": "string",
+								"optional": false,
+								"jsdoc": "The text label for the menu-group."
+							}
+						],
+						"baseElement": "div",
+						"jsdoc": "A group of menu items within the dropdown menu. Should be used as a child of `DropdownMenu.Content` and `DropdownMenu.Submenu`.\n\nExample:\n```tsx\n<DropdownMenu.Group\n\tlabel=\"Manage\"\n\titems={[\n  <DropdownMenu.Item key=\"add\" label=\"Add\" />,\n  <DropdownMenu.Item key=\"edit\" label=\"Edit\" />\n\t]}\n/>\n```",
+						"barrelName": "DropdownMenu.Group"
 					},
 					{
 						"name": "Item",
@@ -1808,60 +1860,43 @@
 						"barrelName": "DropdownMenu.Item"
 					},
 					{
-						"name": "CheckboxItem",
-						"baseProps": [
-							"FocusableProps.render",
-							"FocusableProps.autoFocus",
-							"FocusableProps.disabled",
-							"FocusableProps.accessibleWhenDisabled"
-						],
+						"name": "Provider",
+						"baseProps": [],
 						"props": [
 							{
-								"name": "label",
+								"name": "children",
 								"type": "ReactNode",
-								"optional": false,
-								"jsdoc": "The primary text label for the menu-item."
+								"optional": true
 							},
 							{
-								"name": "name",
-								"type": "string",
-								"optional": false,
-								"jsdoc": "The name of the field in the\n[`values`](https://ariakit.org/reference/menu-provider#values) state."
-							},
-							{
-								"name": "checked",
+								"name": "defaultOpen",
 								"type": "boolean | undefined",
 								"optional": true,
-								"jsdoc": "The controlled checked state of the element. It will set the menu\n[`values`](https://ariakit.org/reference/menu-provider#values) state if\nprovided."
+								"jsdoc": "Whether the content should be visible by default.",
+								"defaultValue": "false"
 							},
 							{
-								"name": "defaultChecked",
+								"name": "open",
 								"type": "boolean | undefined",
 								"optional": true,
-								"jsdoc": "The default checked state of the element. It will set the default value in\nthe menu [`values`](https://ariakit.org/reference/menu-provider#values)\nstate if provided."
+								"jsdoc": "Whether the content is visible.",
+								"defaultValue": "false"
 							},
 							{
-								"name": "icon",
-								"type": "string | Element | undefined",
+								"name": "placement",
+								"type": "Placement | undefined",
 								"optional": true,
-								"jsdoc": "An optional icon displayed before the menu-item label.\n\nCan be a URL of an SVG from the `@stratakit/icons` package,\nor a custom JSX icon."
+								"defaultValue": "\"bottom-start\""
 							},
 							{
-								"name": "onChange",
-								"type": "ChangeEventHandler<HTMLInputElement, HTMLInputElement> | undefined",
+								"name": "setOpen",
+								"type": "((open: boolean) => void) | undefined",
 								"optional": true,
-								"jsdoc": "A function that is called when the checkbox's checked state changes."
-							},
-							{
-								"name": "value",
-								"type": "string | number | readonly string[] | undefined",
-								"optional": true,
-								"jsdoc": "The value of the checkbox. This is useful when the same checkbox store is\nused for multiple [`Checkbox`](https://ariakit.org/reference/checkbox)\nelements, in which case the value will be an array of checked values."
+								"jsdoc": "A callback that gets called when the\n[`open`](https://ariakit.com/reference/disclosure-provider#open) state\nchanges."
 							}
 						],
-						"baseElement": "button",
-						"jsdoc": "A single checkbox menu item within the dropdown menu. Should be used as a child of `DropdownMenu.Content` and `DropdownMenu.Submenu`.\n\nExample:\n```tsx\n<DropdownMenu.CheckboxItem name=\"add\" label=\"Add\" />\n<DropdownMenu.CheckboxItem name=\"edit\" label=\"Edit\" />\n```",
-						"barrelName": "DropdownMenu.CheckboxItem"
+						"jsdoc": "A dropdown menu displays a list of actions or commands when the menu button is clicked.\n\n`DropdownMenu` is a compound component with subcomponents exposed for different parts.\n\nExample:\n```tsx\n<DropdownMenu.Provider>\n  <DropdownMenu.Button>Actions</DropdownMenu.Button>\n\n  <DropdownMenu.Content>\n    <DropdownMenu.Item label=\"Add\" />\n    <DropdownMenu.Item label=\"Edit\" />\n    <DropdownMenu.Item label=\"Delete\" />\n  </DropdownMenu.Content>\n</DropdownMenu.Provider>\n```\n\n**Note**: `DropdownMenu` should not be used for navigation; it is only intended for actions.",
+						"barrelName": "DropdownMenu.Provider"
 					},
 					{
 						"name": "Submenu",
@@ -1875,27 +1910,6 @@
 						"baseElement": "div",
 						"jsdoc": "The submenu portion containing the nested submenu items.\n\nShould be passed into the `submenu` prop of `DropdownMenu.Item`.\n\nShould include one or more of `DropdownMenu.Item`, `DropdownMenu.CheckboxItem` and `DropdownMenu.Group` as direct descendants.",
 						"barrelName": "DropdownMenu.Submenu"
-					},
-					{
-						"name": "Group",
-						"baseProps": ["BaseProps.render"],
-						"props": [
-							{
-								"name": "items",
-								"type": "Element[]",
-								"optional": false,
-								"jsdoc": "The menu items within the group.\n\nShould be an array of `DropdownMenu.Item` and/or `DropdownMenu.CheckboxItem` elements."
-							},
-							{
-								"name": "label",
-								"type": "string",
-								"optional": false,
-								"jsdoc": "The text label for the menu-group."
-							}
-						],
-						"baseElement": "div",
-						"jsdoc": "A group of menu items within the dropdown menu. Should be used as a child of `DropdownMenu.Content` and `DropdownMenu.Submenu`.\n\nExample:\n```tsx\n<DropdownMenu.Group\n\tlabel=\"Manage\"\n\titems={[\n  <DropdownMenu.Item key=\"add\" label=\"Add\" />,\n  <DropdownMenu.Item key=\"edit\" label=\"Edit\" />\n\t]}\n/>\n```",
-						"barrelName": "DropdownMenu.Group"
 					}
 				],
 				"exportName": "DropdownMenu"
@@ -1903,6 +1917,33 @@
 			{
 				"name": "ErrorRegion",
 				"composition": [
+					{
+						"name": "Item",
+						"baseProps": ["BaseProps.render"],
+						"props": [
+							{
+								"name": "actions",
+								"type": "ReactNode",
+								"optional": true,
+								"jsdoc": "The actions available for this item. Must be a list of links, each rendered as a button using `<Link render={<button />} />`."
+							},
+							{
+								"name": "message",
+								"type": "ReactNode",
+								"optional": true,
+								"jsdoc": "The error message. Consumers might consider using [`Link`](https://stratakit.bentley.com/docs/components/link/) component to link to the associated element in the UI."
+							},
+							{
+								"name": "messageId",
+								"type": "string | undefined",
+								"optional": true,
+								"jsdoc": "The `id` of the message node which can be used to semantically associate the error item with the related UI item i.e. `Tree.Item`."
+							}
+						],
+						"baseElement": "div",
+						"jsdoc": "An individual error item within the `ErrorRegion` component. It displays an error message and optional actions.\n\nThe `messageId` prop can be used to semantically associate the error item with the related UI item, such as a `Tree.Item`.\n\nExample:\n```tsx\n<ErrorRegion.Item\n  message={<>Something went wrong with <Link href=\"item-10001\">Item 10001</Link>.</>}\n  messageId=\"item-10001-error\"\n  actions={<Link render={<button />}>Retry</Link>}\n/>\n\n<Tree.Item\n  id=\"item-10001\"\n  label=\"Item 10001\"\n  error=\"item-10001-error\"\n/>\n```",
+						"barrelName": "unstable_ErrorRegion.Item"
+					},
 					{
 						"name": "Root",
 						"baseProps": [],
@@ -1929,7 +1970,7 @@
 								"name": "render",
 								"type": "(props: P) => React.ReactNode | React.ReactElement | undefined",
 								"optional": true,
-								"jsdoc": "Allows the component to be rendered as a different HTML element or React\ncomponent. The value can be a React element or a function that takes in the\noriginal component props and gives back a React element with the props\nmerged.\n\nCheck out the [Composition](https://ariakit.org/guide/composition) guide\nfor more details."
+								"jsdoc": "Allows the component to be rendered as a different HTML element or React\ncomponent. The value can be a React element or a function that takes in the\noriginal component props and gives back a React element with the props\nmerged.\n\nCheck out the [Composition](https://ariakit.com/guide/composition) guide\nfor more details."
 							},
 							{
 								"name": "setOpen",
@@ -1941,33 +1982,6 @@
 						"baseElement": "div",
 						"jsdoc": "A collapsible region that displays a list of error messages, which might originate from another\ncomponent, such as `Tree`.\n\nThis component is rendered as a [region landmark](https://www.w3.org/WAI/ARIA/apg/patterns/landmarks/examples/region.html)\nand should be labelled using `aria-label` or `aria-labelledby`.\n\nThis component should not be rendered conditionally, instead use the `items` prop to control the visibility.\n\nExample:\n```tsx\n<ErrorRegion.Root\n  aria-label=\"Issues\"\n  label=\"3 issues found\"\n  items={[\n    <ErrorRegion.Item key={…} message=\"…\" />\n    <ErrorRegion.Item key={…} message=\"…\" />\n    <ErrorRegion.Item key={…} message=\"…\" />\n  ]}\n/>",
 						"barrelName": "unstable_ErrorRegion.Root"
-					},
-					{
-						"name": "Item",
-						"baseProps": ["BaseProps.render"],
-						"props": [
-							{
-								"name": "actions",
-								"type": "ReactNode",
-								"optional": true,
-								"jsdoc": "The actions available for this item. Must be a list of anchors, each rendered as a button using `<Anchor render={<button />} />`."
-							},
-							{
-								"name": "message",
-								"type": "ReactNode",
-								"optional": true,
-								"jsdoc": "The error message. Consumers might consider using `Anchor` component to link to the associated element in the UI."
-							},
-							{
-								"name": "messageId",
-								"type": "string | undefined",
-								"optional": true,
-								"jsdoc": "The `id` of the message node which can be used to semantically associate the error item with the related UI item i.e. `Tree.Item`."
-							}
-						],
-						"baseElement": "div",
-						"jsdoc": "An individual error item within the `ErrorRegion` component. It displays an error message and optional actions.\n\nThe `messageId` prop can be used to semantically associate the error item with the related UI item, such as a `Tree.Item`.\n\nExample:\n```tsx\n<ErrorRegion.Item\n  message={<>Something went wrong with <Anchor href=\"item-10001\">Item 10001</Anchor>.</>}\n  messageId=\"item-10001-error\"\n  actions={<Button>Retry</Button>}\n/>\n\n<Tree.Item\n  id=\"item-10001\"\n  label=\"Item 10001\"\n  error=\"item-10001-error\"\n/>\n```",
-						"barrelName": "unstable_ErrorRegion.Item"
 					}
 				],
 				"exportName": "unstable_ErrorRegion"
@@ -1975,21 +1989,6 @@
 			{
 				"name": "NavigationList",
 				"composition": [
-					{
-						"name": "Root",
-						"baseProps": ["BaseProps.render"],
-						"props": [
-							{
-								"name": "items",
-								"type": "Element[]",
-								"optional": false,
-								"jsdoc": "The navigation items to render within the list.\nShould be an array of `NavigationList.Anchor` elements."
-							}
-						],
-						"baseElement": "div",
-						"jsdoc": "A navigation list displays a collection of navigation links, one of which can be \"active\".\n\nBasic example:\n```tsx\n<NavigationList.Root\n  items={[\n    <NavigationList.Anchor key={1} href=\"/page1\" label=\"Item 1\" />,\n    <NavigationList.Anchor key={2} href=\"/page2\" label=\"Item 2\" active />,\n  ]}\n/>\n```\n\nExample with subgroups:\n```tsx\n<NavigationList.Root\n  items={[\n    <NavigationList.Anchor key={1} href=\"/page1\" label=\"Item 1\" />,\n    <NavigationList.Anchor key={2} href=\"/page2\" label=\"Item 2\" />,\n    <NavigationList.Subgroup\n      key={3}\n      label=\"Subgroup\"\n      items={[\n        <NavigationList.Anchor key={1} href=\"/page3-1\" label=\"Item 3.1\" />,\n        <NavigationList.Anchor key={2} href=\"/page3-2\" label=\"Item 3.2\" />,\n      ]}\n    />,\n  ]}\n/>\n```",
-						"barrelName": "unstable_NavigationList.Root"
-					},
 					{
 						"name": "Anchor",
 						"baseProps": [
@@ -2021,6 +2020,21 @@
 						"baseElement": "a",
 						"jsdoc": "An individual anchor within the navigation list. This should perform a navigation\nto a different view, page or section. (Make sure to use proper routing/navigation)\n\nShould be used as an element within the `items` array of `NavigationList.Root`.\n\nExample:\n```tsx\n<NavigationList.Anchor href=\"/profile\"> label=\"Profile\" />\n```",
 						"barrelName": "unstable_NavigationList.Anchor"
+					},
+					{
+						"name": "Root",
+						"baseProps": ["BaseProps.render"],
+						"props": [
+							{
+								"name": "items",
+								"type": "Element[]",
+								"optional": false,
+								"jsdoc": "The navigation items to render within the list.\nShould be an array of `NavigationList.Anchor` elements."
+							}
+						],
+						"baseElement": "div",
+						"jsdoc": "A navigation list displays a collection of navigation links, one of which can be \"active\".\n\nBasic example:\n```tsx\n<NavigationList.Root\n  items={[\n    <NavigationList.Anchor key={1} href=\"/page1\" label=\"Item 1\" />,\n    <NavigationList.Anchor key={2} href=\"/page2\" label=\"Item 2\" active />,\n  ]}\n/>\n```\n\nExample with subgroups:\n```tsx\n<NavigationList.Root\n  items={[\n    <NavigationList.Anchor key={1} href=\"/page1\" label=\"Item 1\" />,\n    <NavigationList.Anchor key={2} href=\"/page2\" label=\"Item 2\" />,\n    <NavigationList.Subgroup\n      key={3}\n      label=\"Subgroup\"\n      items={[\n        <NavigationList.Anchor key={1} href=\"/page3-1\" label=\"Item 3.1\" />,\n        <NavigationList.Anchor key={2} href=\"/page3-2\" label=\"Item 3.2\" />,\n      ]}\n    />,\n  ]}\n/>\n```",
+						"barrelName": "unstable_NavigationList.Root"
 					},
 					{
 						"name": "Subgroup",
@@ -2062,6 +2076,106 @@
 				"name": "NavigationRail",
 				"composition": [
 					{
+						"name": "Anchor",
+						"baseProps": ["BaseProps.render"],
+						"props": [
+							{
+								"name": "icon",
+								"type": "string | Element",
+								"optional": false,
+								"jsdoc": "Icon for the navigation item action.\n\nCan be a URL of an SVG from the `@stratakit/icons` package,\nor a custom JSX icon."
+							},
+							{
+								"name": "label",
+								"type": "string",
+								"optional": false,
+								"jsdoc": "Label for the navigation item action.\n\nExposed as a tooltip when the navigation rail is collapsed."
+							},
+							{
+								"name": "active",
+								"type": "boolean | undefined",
+								"optional": true,
+								"jsdoc": "Whether the anchor is currently active (i.e. represents the current page)."
+							},
+							{
+								"name": "suffix",
+								"type": "ReactNode",
+								"optional": true,
+								"jsdoc": "Additional non-interactive content displayed at the end of the navigation item action.\n\nDisplayed in a tooltip when the navigation rail is collapsed.\n\nThe suffix is included in the accessible name of the item action."
+							}
+						],
+						"baseElement": "a",
+						"jsdoc": "`NavigationRail.Anchor` is used for top-level navigation items that link to major pages.\n\nShould be used inside `NavigationRail.ListItem` and must have a short `label` and a recognizable `icon`.\nThe `label` will be shown as a tooltip when the `NavigationRail` is collapsed.\n\nExample:\n```tsx\n<NavigationRail.ListItem>\n  <NavigationRail.Anchor label=\"Home\" icon={homeIcon} href=\"/\" />\n</NavigationRail.ListItem>\n```",
+						"barrelName": "unstable_NavigationRail.Anchor"
+					},
+					{
+						"name": "Button",
+						"baseProps": ["BaseProps.render"],
+						"props": [
+							{
+								"name": "icon",
+								"type": "string | Element",
+								"optional": false,
+								"jsdoc": "Icon for the navigation item action.\n\nCan be a URL of an SVG from the `@stratakit/icons` package,\nor a custom JSX icon."
+							},
+							{
+								"name": "label",
+								"type": "string",
+								"optional": false,
+								"jsdoc": "Label for the navigation item action.\n\nExposed as a tooltip when the navigation rail is collapsed."
+							},
+							{
+								"name": "suffix",
+								"type": "ReactNode",
+								"optional": true,
+								"jsdoc": "Additional non-interactive content displayed at the end of the navigation item action.\n\nDisplayed in a tooltip when the navigation rail is collapsed.\n\nThe suffix is included in the accessible name of the item action."
+							}
+						],
+						"baseElement": "button",
+						"jsdoc": "`NavigationRail.Button` is used for actions that do not navigate to a new page, but rather perform\nan in-page action, such as opening a dialog or menu.\n\nShould be used inside `NavigationRail.ListItem` and must have a short `label` and a recognizable `icon`.\nThe `label` will be shown as a tooltip when the `NavigationRail` is collapsed.\n\nExample:\n```tsx\n<NavigationRail.ListItem>\n  <NavigationRail.Button label=\"Notifications\" icon={notificationsIcon} onClick={showNotificationsDialog} />\n</NavigationRail.ListItem>\n```",
+						"barrelName": "unstable_NavigationRail.Button"
+					},
+					{
+						"name": "Content",
+						"baseProps": ["BaseProps.render"],
+						"props": [],
+						"baseElement": "div",
+						"jsdoc": "`NavigationRail.Content` is a wraps the main content of the `NavigationRail`, including\nthe primary navigation list and an optional footer.\n\nExample:\n```tsx\n<NavigationRail.Content>\n  <NavigationRail.List>…</NavigationRail.List>\n\n  <NavigationRail.Footer>\n    <NavigationRail.List>…</NavigationRail.List>\n  </NavigationRail.Footer>\n</NavigationRail.Content>\n```",
+						"barrelName": "unstable_NavigationRail.Content"
+					},
+					{
+						"name": "Footer",
+						"baseProps": ["BaseProps.render"],
+						"props": [],
+						"baseElement": "footer",
+						"jsdoc": "`NavigationRail.Footer` is typically used for grouping secondary actions list near the bottom\nof the `NavigationRail`, away from the main navigation items.\n\nExample:\n```tsx\n<NavigationRail.Content>\n  <NavigationRail.List>…</NavigationRail.List>\n\n  <NavigationRail.Footer>\n    <NavigationRail.List>…</NavigationRail.List>\n  </NavigationRail.Footer>\n</NavigationRail.Content>\n```",
+						"barrelName": "unstable_NavigationRail.Footer"
+					},
+					{
+						"name": "Header",
+						"baseProps": ["BaseProps.render"],
+						"props": [],
+						"baseElement": "nav",
+						"jsdoc": "`NavigationRail.Header` represents the header (i.e. top) section of the `NavigationRail` and is\nvisually aligned with the page header next to it.\n\nCan contain a logo and a `NavigationRail.ToggleButton` to collapse/expand the `NavigationRail`.\n\n**Note**: This component is expected to hug the top edge of the page.",
+						"barrelName": "unstable_NavigationRail.Header"
+					},
+					{
+						"name": "List",
+						"baseProps": ["BaseProps.render"],
+						"props": [],
+						"baseElement": "div",
+						"jsdoc": "The `NavigationRail.List` represents a list of top-level navigation items.\n\nIt should be used within `NavigationRail.Content` and should contain `NavigationRail.ListItem` elements,\nwhich in turn can contain `NavigationRail.Anchor` or `NavigationRail.Button`.\n\nExample (with `NavigationRail.Anchor`):\n```tsx\n<NavigationRail.List>\n  <NavigationRail.ListItem>\n    <NavigationRail.Anchor label=\"Home\" icon={homeIcon} href=\"/\" />\n  </NavigationRail.ListItem>\n  <NavigationRail.ListItem>\n    <NavigationRail.Anchor label=\"Projects\" icon={projectsIcon} href=\"/projects\" />\n  </NavigationRail.ListItem>\n</NavigationRail.List>\n```\n\nExample (with `NavigationRail.Button`):\n```tsx\n<NavigationRail.List>\n  <NavigationRail.ListItem>\n    <NavigationRail.Button label=\"Help\" icon={helpIcon} onClick={…} />\n  </NavigationRail.ListItem>\n  <NavigationRail.ListItem>\n    <NavigationRail.Button label=\"Settings\" icon={settingsIcon} onClick={…}  />\n  </NavigationRail.ListItem>\n</NavigationRail.List>\n```\n\nMultiple `NavigationRail.List` elements can be used together and be separated by a [`Divider`](https://stratakit.bentley.com/docs/components/divider/).",
+						"barrelName": "unstable_NavigationRail.List"
+					},
+					{
+						"name": "ListItem",
+						"baseProps": ["BaseProps.render"],
+						"props": [],
+						"baseElement": "div",
+						"jsdoc": "The `NavigationRail.Item` represents a single navigation list item, which should contain\neither a `NavigationRail.Anchor` or a `NavigationRail.Button`.\n\nExample:\n```tsx\n<NavigationRail.ListItem>\n  <NavigationRail.Anchor label=\"Home\" icon={homeIcon} href=\"/\" />\n</NavigationRail.ListItem>\n// or\n<NavigationRail.ListItem>\n  <NavigationRail.Button label=\"Settings\" icon={settingsIcon} onClick={…} />\n</NavigationRail.ListItem>\n```\n\n**Note:** This is a non-interactive wrapper element and should not directly handle user interactions.",
+						"barrelName": "unstable_NavigationRail.ListItem"
+					},
+					{
 						"name": "Root",
 						"baseProps": [],
 						"props": [
@@ -2082,7 +2196,7 @@
 								"name": "render",
 								"type": "(props: P) => React.ReactNode | React.ReactElement | undefined",
 								"optional": true,
-								"jsdoc": "Allows the component to be rendered as a different HTML element or React\ncomponent. The value can be a React element or a function that takes in the\noriginal component props and gives back a React element with the props\nmerged.\n\nCheck out the [Composition](https://ariakit.org/guide/composition) guide\nfor more details."
+								"jsdoc": "Allows the component to be rendered as a different HTML element or React\ncomponent. The value can be a React element or a function that takes in the\noriginal component props and gives back a React element with the props\nmerged.\n\nCheck out the [Composition](https://ariakit.com/guide/composition) guide\nfor more details."
 							},
 							{
 								"name": "setExpanded",
@@ -2092,16 +2206,8 @@
 							}
 						],
 						"baseElement": "nav",
-						"jsdoc": "The `NavigationRail` presents top-level navigation items in a vertical orientation.\n\nExample:\n```tsx\n<NavigationRail.Root>\n  <NavigationRail.Header>\n    <IconButton label=\"Home\" icon={applicationIcon} href=\"/\" />\n    <NavigationRail.ToggleButton />\n  </NavigationRail.Header>\n\n  <NavigationRail.Content>\n    <NavigationRail.List>\n      <NavigationRail.ListItem>\n        <NavigationRail.Anchor label=\"Dashboard\" icon={dashboardIcon} href=\"/dashboard\" />\n      </NavigationRail.ListItem>\n      <NavigationRail.ListItem>\n        <NavigationRail.Anchor label=\"Projects\" icon={projectsIcon} href=\"/projects\" />\n      </NavigationRail.ListItem>\n      <NavigationRail.ListItem>\n        <NavigationRail.Anchor label=\"Reports\" icon={reportsIcon} href=\"/reports\" />\n      </NavigationRail.ListItem>\n    </NavigationRail.List>\n\n    <NavigationRail.Footer>\n      <NavigationRail.List>\n        <NavigationRail.ListItem>\n          <NavigationRail.Button label=\"Help\" icon={helpIcon} onClick={…} />\n        </NavigationRail.ListItem>\n        <NavigationRail.ListItem>\n          <NavigationRail.Button label=\"Settings\" icon={settingsIcon} onClick={…} />\n        </NavigationRail.ListItem>\n        <NavigationRail.ListItem>\n          <NavigationRail.Button label=\"Profile\" icon={userIcon} onClick={…} />\n        </NavigationRail.ListItem>\n      </NavigationRail.List>\n   </NavigationRail.Footer>\n  </NavigationRail.Content>\n</NavigationRail.Root>\n```",
+						"jsdoc": "The `NavigationRail` presents top-level navigation items in a vertical orientation.\n\nExample:\n```tsx\n<NavigationRail.Root>\n  <NavigationRail.Header>\n    <IconButton label=\"Home\" render={<a href=\"/\" />}>\n      <Icon href={applicationIcon} />\n    </IconButton>\n    <NavigationRail.ToggleButton />\n  </NavigationRail.Header>\n\n  <NavigationRail.Content>\n    <NavigationRail.List>\n      <NavigationRail.ListItem>\n        <NavigationRail.Anchor label=\"Dashboard\" icon={dashboardIcon} href=\"/dashboard\" />\n      </NavigationRail.ListItem>\n      <NavigationRail.ListItem>\n        <NavigationRail.Anchor label=\"Projects\" icon={projectsIcon} href=\"/projects\" />\n      </NavigationRail.ListItem>\n      <NavigationRail.ListItem>\n        <NavigationRail.Anchor label=\"Reports\" icon={reportsIcon} href=\"/reports\" />\n      </NavigationRail.ListItem>\n    </NavigationRail.List>\n\n    <NavigationRail.Footer>\n      <NavigationRail.List>\n        <NavigationRail.ListItem>\n          <NavigationRail.Button label=\"Help\" icon={helpIcon} onClick={…} />\n        </NavigationRail.ListItem>\n        <NavigationRail.ListItem>\n          <NavigationRail.Button label=\"Settings\" icon={settingsIcon} onClick={…} />\n        </NavigationRail.ListItem>\n        <NavigationRail.ListItem>\n          <NavigationRail.Button label=\"Profile\" icon={userIcon} onClick={…} />\n        </NavigationRail.ListItem>\n      </NavigationRail.List>\n   </NavigationRail.Footer>\n  </NavigationRail.Content>\n</NavigationRail.Root>\n```",
 						"barrelName": "unstable_NavigationRail.Root"
-					},
-					{
-						"name": "Header",
-						"baseProps": ["BaseProps.render"],
-						"props": [],
-						"baseElement": "nav",
-						"jsdoc": "`NavigationRail.Header` represents the header (i.e. top) section of the `NavigationRail` and is\nvisually aligned with the page header next to it.\n\nCan contain a logo and a `NavigationRail.ToggleButton` to collapse/expand the `NavigationRail`.\n\n**Note**: This component is expected to hug the top edge of the page.",
-						"barrelName": "unstable_NavigationRail.Header"
 					},
 					{
 						"name": "ToggleButton",
@@ -2123,82 +2229,6 @@
 						"baseElement": "button",
 						"jsdoc": "`NavigationRail.ToggleButton` toggles the expanded/collapsed state of the `NavigationRail`.\nIt is typically placed inside `NavigationRail.Header`, next to the logo.\n\nWhen this button is clicked, it toggles the internal expanded state of the `NavigationRail`,\nand also calls the `setExpanded` callback prop if provided, to allow syncing with external state.",
 						"barrelName": "unstable_NavigationRail.ToggleButton"
-					},
-					{
-						"name": "Content",
-						"baseProps": ["BaseProps.render"],
-						"props": [],
-						"baseElement": "div",
-						"jsdoc": "`NavigationRail.Content` is a wraps the main content of the `NavigationRail`, including\nthe primary navigation list and an optional footer.\n\nExample:\n```tsx\n<NavigationRail.Content>\n  <NavigationRail.List>…</NavigationRail.List>\n\n  <NavigationRail.Footer>\n    <NavigationRail.List>…</NavigationRail.List>\n  </NavigationRail.Footer>\n</NavigationRail.Content>\n```",
-						"barrelName": "unstable_NavigationRail.Content"
-					},
-					{
-						"name": "List",
-						"baseProps": ["BaseProps.render"],
-						"props": [],
-						"baseElement": "div",
-						"jsdoc": "The `NavigationRail.List` represents a list of top-level navigation items.\n\nIt should be used within `NavigationRail.Content` and should contain `NavigationRail.ListItem` elements,\nwhich in turn can contain `NavigationRail.Anchor` or `NavigationRail.Button`.\n\nExample (with `NavigationRail.Anchor`):\n```tsx\n<NavigationRail.List>\n  <NavigationRail.ListItem>\n    <NavigationRail.Anchor label=\"Home\" icon={homeIcon} href=\"/\" />\n  </NavigationRail.ListItem>\n  <NavigationRail.ListItem>\n    <NavigationRail.Anchor label=\"Projects\" icon={projectsIcon} href=\"/projects\" />\n  </NavigationRail.ListItem>\n</NavigationRail.List>\n```\n\nExample (with `NavigationRail.Button`):\n```tsx\n<NavigationRail.List>\n  <NavigationRail.ListItem>\n    <NavigationRail.Button label=\"Help\" icon={helpIcon} onClick={…} />\n  </NavigationRail.ListItem>\n  <NavigationRail.ListItem>\n    <NavigationRail.Button label=\"Settings\" icon={settingsIcon} onClick={…}  />\n  </NavigationRail.ListItem>\n</NavigationRail.List>\n```\n\nMultiple `NavigationRail.List` elements can be used together and be separated by a `Divider`.",
-						"barrelName": "unstable_NavigationRail.List"
-					},
-					{
-						"name": "ListItem",
-						"baseProps": ["BaseProps.render"],
-						"props": [],
-						"baseElement": "div",
-						"jsdoc": "The `NavigationRail.Item` represents a single navigation list item, which should contain\neither a `NavigationRail.Anchor` or a `NavigationRail.Button`.\n\nExample:\n```tsx\n<NavigationRail.ListItem>\n  <NavigationRail.Anchor label=\"Home\" icon={homeIcon} href=\"/\" />\n</NavigationRail.ListItem>\n// or\n<NavigationRail.ListItem>\n  <NavigationRail.Button label=\"Settings\" icon={settingsIcon} onClick={…} />\n</NavigationRail.ListItem>\n```\n\n**Note:** This is a non-interactive wrapper element and should not directly handle user interactions.",
-						"barrelName": "unstable_NavigationRail.ListItem"
-					},
-					{
-						"name": "Button",
-						"baseProps": ["BaseProps.render"],
-						"props": [
-							{
-								"name": "icon",
-								"type": "string | Element",
-								"optional": false
-							},
-							{
-								"name": "label",
-								"type": "string",
-								"optional": false
-							}
-						],
-						"baseElement": "button",
-						"jsdoc": "`NavigationRail.Button` is used for actions that do not navigate to a new page, but rather perform\nan in-page action, such as opening a dialog or menu.\n\nShould be used inside `NavigationRail.ListItem` and must have a short `label` and a recognizable `icon`.\nThe `label` will be shown as a tooltip when the `NavigationRail` is collapsed.\n\nExample:\n```tsx\n<NavigationRail.ListItem>\n  <NavigationRail.Button label=\"Notifications\" icon={notificationsIcon} onClick={showNotificationsDialog} />\n</NavigationRail.ListItem>\n```",
-						"barrelName": "unstable_NavigationRail.Button"
-					},
-					{
-						"name": "Anchor",
-						"baseProps": ["BaseProps.render"],
-						"props": [
-							{
-								"name": "icon",
-								"type": "string | Element",
-								"optional": false
-							},
-							{
-								"name": "label",
-								"type": "string",
-								"optional": false
-							},
-							{
-								"name": "active",
-								"type": "boolean | undefined",
-								"optional": true,
-								"jsdoc": "Whether the anchor is currently active (i.e. represents the current page)."
-							}
-						],
-						"baseElement": "a",
-						"jsdoc": "`NavigationRail.Anchor` is used for top-level navigation items that link to major pages.\n\nShould be used inside `NavigationRail.ListItem` and must have a short `label` and a recognizable `icon`.\nThe `label` will be shown as a tooltip when the `NavigationRail` is collapsed.\n\nExample:\n```tsx\n<NavigationRail.ListItem>\n  <NavigationRail.Anchor label=\"Home\" icon={homeIcon} href=\"/\" />\n</NavigationRail.ListItem>\n```",
-						"barrelName": "unstable_NavigationRail.Anchor"
-					},
-					{
-						"name": "Footer",
-						"baseProps": ["BaseProps.render"],
-						"props": [],
-						"baseElement": "footer",
-						"jsdoc": "`NavigationRail.Footer` is typically used for grouping secondary actions list near the bottom\nof the `NavigationRail`, away from the main navigation items.\n\nExample:\n```tsx\n<NavigationRail.Content>\n  <NavigationRail.List>…</NavigationRail.List>\n\n  <NavigationRail.Footer>\n    <NavigationRail.List>…</NavigationRail.List>\n  </NavigationRail.Footer>\n</NavigationRail.Content>\n```",
-						"barrelName": "unstable_NavigationRail.Footer"
 					}
 				],
 				"exportName": "unstable_NavigationRail"
@@ -2239,7 +2269,7 @@
 							"name": "setOpen",
 							"type": "((open: boolean) => void) | undefined",
 							"optional": true,
-							"jsdoc": "A callback that gets called when the\n[`open`](https://ariakit.org/reference/disclosure-provider#open) state\nchanges."
+							"jsdoc": "A callback that gets called when the\n[`open`](https://ariakit.com/reference/disclosure-provider#open) state\nchanges."
 						},
 						{
 							"name": "unmountOnHide",
@@ -2260,14 +2290,6 @@
 				"name": "Table",
 				"composition": [
 					{
-						"name": "HtmlTable",
-						"baseProps": ["BaseProps.render"],
-						"props": [],
-						"baseElement": "table",
-						"jsdoc": "A table is a grid of rows and columns that displays data in a structured format.\n\n`Table.HtmlTable` uses native HTML table elements for the table root *and its descendants*.\n\nE.g. `<table>`, `<thead>`, `<tbody>`, `<tr>`, `<th>`, and `<td>`.\n\nRelated: `Table.CustomTable`\n\nExample:\n```tsx\n<Table.HtmlTable> // <table>\n  <Table.Caption>Table Caption</Table.Caption> // <caption>\n\n  <Table.Header> // <thead>\n\t   <Table.Row> // <tr>\n\t     <Table.Cell>Header 1</Table.Cell> // <th>\n\t \t   <Table.Cell>Header 2</Table.Cell> // <th>\n\t   </Table.Row>\n  </Table.Header>\n\n  <Table.Body> // <tbody>\n\t   <Table.Row> // <tr>\n\t\t   <Table.Cell>Cell 1.1</Table.Cell> // <td>\n\t\t   <Table.Cell>Cell 1.2</Table.Cell> // <td>\n\t   </Table.Row>\n\t   <Table.Row> // <tr>\n\t\t   <Table.Cell>Cell 2.1</Table.Cell> // <td>\n\t\t   <Table.Cell>Cell 2.2</Table.Cell> // <td>\n\t   </Table.Row>\n  </Table.Body>\n</Table.HtmlTable>\n```",
-						"barrelName": "Table.HtmlTable"
-					},
-					{
 						"name": "CustomTable",
 						"baseProps": ["BaseProps.render"],
 						"props": [],
@@ -2276,12 +2298,12 @@
 						"barrelName": "Table.CustomTable"
 					},
 					{
-						"name": "Header",
+						"name": "HtmlTable",
 						"baseProps": ["BaseProps.render"],
 						"props": [],
-						"baseElement": "div",
-						"jsdoc": "`Table.Header` is a column component of cells that labels the columns of a table.\n`Table.Row` and `Table.Cell` can be nested inside a `Table.Header` to create a header row.\n\nIf within a `Table.HtmlTable`: it will render a `<thead>` element.\nIf within a `Table.CustomTable`: it will render a `<div role=\"rowgroup\">` element.\n\nExample:\n```tsx\n<Table.Header>\n\t<Table.Row>\n\t\t<Table.Cell>Header 1</Table.Cell>\n\t\t\t<Table.Cell>Header 2</Table.Cell>\n\t</Table.Row>\n</Table.Header>\n```",
-						"barrelName": "Table.Header"
+						"baseElement": "table",
+						"jsdoc": "A table is a grid of rows and columns that displays data in a structured format.\n\n`Table.HtmlTable` uses native HTML table elements for the table root *and its descendants*.\n\nE.g. `<table>`, `<thead>`, `<tbody>`, `<tr>`, `<th>`, and `<td>`.\n\nRelated: `Table.CustomTable`\n\nExample:\n```tsx\n<Table.HtmlTable> // <table>\n  <Table.Caption>Table Caption</Table.Caption> // <caption>\n\n  <Table.Header> // <thead>\n\t   <Table.Row> // <tr>\n\t     <Table.Cell>Header 1</Table.Cell> // <th>\n\t \t   <Table.Cell>Header 2</Table.Cell> // <th>\n\t   </Table.Row>\n  </Table.Header>\n\n  <Table.Body> // <tbody>\n\t   <Table.Row> // <tr>\n\t\t   <Table.Cell>Cell 1.1</Table.Cell> // <td>\n\t\t   <Table.Cell>Cell 1.2</Table.Cell> // <td>\n\t   </Table.Row>\n\t   <Table.Row> // <tr>\n\t\t   <Table.Cell>Cell 2.1</Table.Cell> // <td>\n\t\t   <Table.Cell>Cell 2.2</Table.Cell> // <td>\n\t   </Table.Row>\n  </Table.Body>\n</Table.HtmlTable>\n```",
+						"barrelName": "Table.HtmlTable"
 					},
 					{
 						"name": "Body",
@@ -2290,14 +2312,6 @@
 						"baseElement": "div",
 						"jsdoc": "`Table.Body` is a component that contains the rows of table data.\nMultiple `Table.Row`s and `Table.Cell`s can be nested inside a `Table.Body` to create a table body.\n\nIf within a `Table.HtmlTable`: it will render a `<tbody>` element.\nIf within a `Table.CustomTable`: it will render a `<div>` element.\n\nExample:\n```tsx\n<Table.Body>\n\t<Table.Row>\n\t\t<Table.Cell>Cell 1.1</Table.Cell>\n\t\t<Table.Cell>Cell 1.2</Table.Cell>\n\t</Table.Row>\n\t<Table.Row>\n\t\t<Table.Cell>Cell 2.1</Table.Cell>\n\t\t<Table.Cell>Cell 2.2</Table.Cell>\n\t</Table.Row>\n</Table.Body>\n```",
 						"barrelName": "Table.Body"
-					},
-					{
-						"name": "Row",
-						"baseProps": ["BaseProps.render"],
-						"props": [],
-						"baseElement": "div",
-						"jsdoc": "`Table.Row` is a component that contains the cells of a table row.\n\nIf within a `Table.HtmlTable`: it will render a `<tr>` element.\nIf within a `Table.CustomTable`: it will render a `<div role=\"row\">` element.\n\nExample:\n```tsx\n<Table.Row>\n\t<Table.Cell>Cell 1.1</Table.Cell>\n\t<Table.Cell>Cell 1.2</Table.Cell>\n</Table.Row>\n```\n\nRows that contain checked checkboxes are considered selected.\nThe `Checkbox` component can be rendered to add selection functionality for the table rows.\n\nExample:\n```tsx\n<Table.Row>\n  <Table.Cell><Checkbox /><Table.Cell>\n  <Table.Cell>Cell 1.1</Table.Cell>\n  <Table.Cell>Cell 1.2</Table.Cell>\n</Table.Row\n```",
-						"barrelName": "Table.Row"
 					},
 					{
 						"name": "Caption",
@@ -2314,6 +2328,22 @@
 						"baseElement": "div",
 						"jsdoc": "`Table.Cell` is a component that contains the data of a table cell.\n\n- If within a `Table.HtmlTable`: it will render a `<th>` element if also within a `Table.Header`, or a `<td>` element\nif also within a `Table.Body`.\n- If within a `Table.CustomTable`: it will render a `<div role=\"columnheader\">` element if also within a\n`Table.Header`, or a `<div role=\"cell\">` element if also within a `Table.Body`.\n\nExample:\n```tsx\n<Table.Cell>Cell 1.1</Table.Cell>\n```",
 						"barrelName": "Table.Cell"
+					},
+					{
+						"name": "Header",
+						"baseProps": ["BaseProps.render"],
+						"props": [],
+						"baseElement": "div",
+						"jsdoc": "`Table.Header` is a column component of cells that labels the columns of a table.\n`Table.Row` and `Table.Cell` can be nested inside a `Table.Header` to create a header row.\n\nIf within a `Table.HtmlTable`: it will render a `<thead>` element.\nIf within a `Table.CustomTable`: it will render a `<div role=\"rowgroup\">` element.\n\nExample:\n```tsx\n<Table.Header>\n\t<Table.Row>\n\t\t<Table.Cell>Header 1</Table.Cell>\n\t\t\t<Table.Cell>Header 2</Table.Cell>\n\t</Table.Row>\n</Table.Header>\n```",
+						"barrelName": "Table.Header"
+					},
+					{
+						"name": "Row",
+						"baseProps": ["BaseProps.render"],
+						"props": [],
+						"baseElement": "div",
+						"jsdoc": "`Table.Row` is a component that contains the cells of a table row.\n\nIf within a `Table.HtmlTable`: it will render a `<tr>` element.\nIf within a `Table.CustomTable`: it will render a `<div role=\"row\">` element.\n\nExample:\n```tsx\n<Table.Row>\n\t<Table.Cell>Cell 1.1</Table.Cell>\n\t<Table.Cell>Cell 1.2</Table.Cell>\n</Table.Row>\n```\n\nRows that contain checked checkboxes are considered selected.\nThe `Checkbox` component can be rendered to add selection functionality for the table rows.\n\nExample:\n```tsx\n<Table.Row>\n  <Table.Cell><Checkbox /><Table.Cell>\n  <Table.Cell>Cell 1.1</Table.Cell>\n  <Table.Cell>Cell 1.2</Table.Cell>\n</Table.Row\n```",
+						"barrelName": "Table.Row"
 					}
 				],
 				"exportName": "Table"
@@ -2321,6 +2351,75 @@
 			{
 				"name": "Tabs",
 				"composition": [
+					{
+						"name": "Tab",
+						"baseProps": [
+							"FocusableProps.render",
+							"FocusableProps.autoFocus",
+							"FocusableProps.disabled",
+							"FocusableProps.accessibleWhenDisabled"
+						],
+						"props": [
+							{
+								"name": "id",
+								"type": "string",
+								"optional": false,
+								"jsdoc": "The globally unique id of the tab. This will be used to identify the tab\nand connect it to the corresponding `Tabs.TabPanel` via the `tabId`.\n\nThe `selectedId` state of `Tabs.Provider` will also be based on this id."
+							}
+						],
+						"baseElement": "button",
+						"jsdoc": "An individual tab button that switches the selected tab panel when clicked.\n\nShould be used as a child of `Tabs.TabList` and be paired with a `Tabs.TabPanel`,\nconnected using an id.\n\nExample:\n```tsx\n<Tabs.Tab id=\"tab-1\">Tab 1</Tabs.Tab>\n```\n\nStart and end icons can be added by passing `Icon` as children.\n\n```tsx\n<Tabs.Tab id=\"tab-1\">\n  <Icon href={…} />\n  Tab 1\n  <Icon href={…} />\n</Tabs.Tab>\n```",
+						"barrelName": "Tabs.Tab"
+					},
+					{
+						"name": "TabList",
+						"baseProps": ["BaseProps.render"],
+						"props": [
+							{
+								"name": "tone",
+								"type": "\"neutral\" | \"accent\" | undefined",
+								"optional": true,
+								"defaultValue": "\"neutral\""
+							}
+						],
+						"baseElement": "div",
+						"jsdoc": "A simple container for the tab buttons.\nShould be used as a child of `Tabs.Provider` and consist of the individual `Tabs.Tab` components.\n\nExample:\n```tsx\n<Tabs.TabList>\n  <Tabs.Tab id=\"tab-1\">Tab 1</Tabs.Tab>\n  <Tabs.Tab id=\"tab-2\">Tab 2</Tabs.Tab>\n  <Tabs.Tab id=\"tab-3\">Tab 3</Tabs.Tab>\n</Tabs.TabList>\n```",
+						"barrelName": "Tabs.TabList"
+					},
+					{
+						"name": "TabPanel",
+						"baseProps": [
+							"FocusableProps.render",
+							"FocusableProps.autoFocus",
+							"FocusableProps.disabled",
+							"FocusableProps.accessibleWhenDisabled"
+						],
+						"props": [
+							{
+								"name": "tabId",
+								"type": "string | null",
+								"optional": false,
+								"jsdoc": "The [`id`](https://ariakit.com/reference/tab#id) of the tab controlling\nthis panel. This connection is used to assign the `aria-labelledby`\nattribute to the tab panel and to determine if the tab panel should be\nvisible.\n\nThis link is automatically established by matching the order of\n[`Tab`](https://ariakit.com/reference/tab) and\n[`TabPanel`](https://ariakit.com/reference/tab-panel) elements in the DOM.\nIf you're rendering a single tab panel, this can be set to a dynamic value\nthat refers to the selected tab."
+							},
+							{
+								"name": "focusable",
+								"type": "boolean | undefined",
+								"optional": true,
+								"jsdoc": "Determines if [Focusable](https://ariakit.com/components/focusable)\nfeatures should be active on non-native focusable elements.\n\n**Note**: This prop only turns off the additional features provided by the\n[`Focusable`](https://ariakit.com/reference/focusable) component.\nNon-native focusable elements will lose their focusability entirely.\nHowever, native focusable elements will retain their inherent focusability,\nbut without added features such as improved\n[`autoFocus`](https://ariakit.com/reference/focusable#autofocus),\n[`accessibleWhenDisabled`](https://ariakit.com/reference/focusable#accessiblewhendisabled),\n[`onFocusVisible`](https://ariakit.com/reference/focusable#onfocusvisible),\netc.",
+								"defaultValue": "true"
+							},
+							{
+								"name": "unmountOnHide",
+								"type": "boolean | undefined",
+								"optional": true,
+								"jsdoc": "When set to `true`, the content element will be unmounted and removed from\nthe DOM when it's hidden.",
+								"defaultValue": "false"
+							}
+						],
+						"baseElement": "div",
+						"jsdoc": "The actual content of a tab, shown when the tab is selected. Should be used as a child of `Tabs.Provider`.\nThe `tabId` prop should match the `id` prop of the corresponding `Tabs.Tab` component.\n\nExample:\n```tsx\n<Tabs.TabPanel tabId=\"tab-1\">Tab 1 content</Tabs.TabPanel>\n```",
+						"barrelName": "Tabs.TabPanel"
+					},
 					{
 						"name": "Provider",
 						"baseProps": [],
@@ -2352,80 +2451,11 @@
 								"name": "setSelectedId",
 								"type": "((selectedId: string | null | undefined) => void) | undefined",
 								"optional": true,
-								"jsdoc": "Function that will be called when the\n[`selectedId`](https://ariakit.org/reference/tab-provider#selectedid) state\nchanges."
+								"jsdoc": "Function that will be called when the\n[`selectedId`](https://ariakit.com/reference/tab-provider#selectedid) state\nchanges."
 							}
 						],
 						"jsdoc": "A set of tabs that can be used to switch between different views.\n\n`Tabs` is a compound component with subcomponents exposed for different parts.\n\nExample:\n```tsx\n<Tabs.Provider>\n  <Tabs.TabList>\n    <Tabs.Tab id=\"tab-1\">Tab 1</Tabs.Tab>\n    <Tabs.Tab id=\"tab-2\">Tab 2</Tabs.Tab>\n    <Tabs.Tab id=\"tab-3\">Tab 3</Tabs.Tab>\n  </Tabs.TabList>\n\n  <Tabs.TabPanel tabId=\"tab-1\">Tab 1 content</Tabs.TabPanel>\n  <Tabs.TabPanel tabId=\"tab-2\">Tab 2 content</Tabs.TabPanel>\n  <Tabs.TabPanel tabId=\"tab-3\">Tab 3 content</Tabs.TabPanel>\n</Tabs.Provider>\n```\n\nThe tabs and their panels are connected by matching the `id` prop on the `Tabs.Tab` component with\nthe `tabId` prop on the `Tabs.TabPanel` component.\n\nThe `Tabs` component automatically manages the selected tab state. The initially selected tab can be set using `defaultSelectedId`.\nTo take full control the selected tab state, use the `selectedId` and `setSelectedId` props together.\n\n**Note**: `Tabs` should _not_ be used for navigation; it is only intended for switching smaller views within an existing page.",
 						"barrelName": "Tabs.Provider"
-					},
-					{
-						"name": "TabList",
-						"baseProps": ["BaseProps.render"],
-						"props": [
-							{
-								"name": "tone",
-								"type": "\"neutral\" | \"accent\" | undefined",
-								"optional": true,
-								"defaultValue": "\"neutral\""
-							}
-						],
-						"baseElement": "div",
-						"jsdoc": "A simple container for the tab buttons.\nShould be used as a child of `Tabs.Provider` and consist of the individual `Tabs.Tab` components.\n\nExample:\n```tsx\n<Tabs.TabList>\n  <Tabs.Tab id=\"tab-1\">Tab 1</Tabs.Tab>\n  <Tabs.Tab id=\"tab-2\">Tab 2</Tabs.Tab>\n  <Tabs.Tab id=\"tab-3\">Tab 3</Tabs.Tab>\n</Tabs.TabList>\n```",
-						"barrelName": "Tabs.TabList"
-					},
-					{
-						"name": "Tab",
-						"baseProps": [
-							"FocusableProps.render",
-							"FocusableProps.autoFocus",
-							"FocusableProps.disabled",
-							"FocusableProps.accessibleWhenDisabled"
-						],
-						"props": [
-							{
-								"name": "id",
-								"type": "string",
-								"optional": false,
-								"jsdoc": "The globally unique id of the tab. This will be used to identify the tab\nand connect it to the corresponding `Tabs.TabPanel` via the `tabId`.\n\nThe `selectedId` state of `Tabs.Provider` will also be based on this id."
-							}
-						],
-						"baseElement": "button",
-						"jsdoc": "An individual tab button that switches the selected tab panel when clicked.\n\nShould be used as a child of `Tabs.TabList` and be paired with a `Tabs.TabPanel`,\nconnected using an id.\n\nExample:\n```tsx\n<Tabs.Tab id=\"tab-1\">Tab 1</Tabs.Tab>\n```\n\nStart and end icons can be added by passing `Icon` as children.\n\n```tsx\n<Tabs.Tab id=\"tab-1\">\n  <Icon href={…} />\n  Tab 1\n  <Icon href={…} />\n</Tabs.Tab>\n```",
-						"barrelName": "Tabs.Tab"
-					},
-					{
-						"name": "TabPanel",
-						"baseProps": [
-							"FocusableProps.render",
-							"FocusableProps.autoFocus",
-							"FocusableProps.disabled",
-							"FocusableProps.accessibleWhenDisabled"
-						],
-						"props": [
-							{
-								"name": "tabId",
-								"type": "string | null",
-								"optional": false,
-								"jsdoc": "The [`id`](https://ariakit.org/reference/tab#id) of the tab controlling\nthis panel. This connection is used to assign the `aria-labelledby`\nattribute to the tab panel and to determine if the tab panel should be\nvisible.\n\nThis link is automatically established by matching the order of\n[`Tab`](https://ariakit.org/reference/tab) and\n[`TabPanel`](https://ariakit.org/reference/tab-panel) elements in the DOM.\nIf you're rendering a single tab panel, this can be set to a dynamic value\nthat refers to the selected tab."
-							},
-							{
-								"name": "focusable",
-								"type": "boolean | undefined",
-								"optional": true,
-								"jsdoc": "Determines if [Focusable](https://ariakit.org/components/focusable)\nfeatures should be active on non-native focusable elements.\n\n**Note**: This prop only turns off the additional features provided by the\n[`Focusable`](https://ariakit.org/reference/focusable) component.\nNon-native focusable elements will lose their focusability entirely.\nHowever, native focusable elements will retain their inherent focusability,\nbut without added features such as improved\n[`autoFocus`](https://ariakit.org/reference/focusable#autofocus),\n[`accessibleWhenDisabled`](https://ariakit.org/reference/focusable#accessiblewhendisabled),\n[`onFocusVisible`](https://ariakit.org/reference/focusable#onfocusvisible),\netc.",
-								"defaultValue": "true"
-							},
-							{
-								"name": "unmountOnHide",
-								"type": "boolean | undefined",
-								"optional": true,
-								"jsdoc": "When set to `true`, the content element will be unmounted and removed from\nthe DOM when it's hidden.",
-								"defaultValue": "false"
-							}
-						],
-						"baseElement": "div",
-						"jsdoc": "The actual content of a tab, shown when the tab is selected. Should be used as a child of `Tabs.Provider`.\nThe `tabId` prop should match the `id` prop of the corresponding `Tabs.Tab` component.\n\nExample:\n```tsx\n<Tabs.TabPanel tabId=\"tab-1\">Tab 1 content</Tabs.TabPanel>\n```",
-						"barrelName": "Tabs.TabPanel"
 					}
 				],
 				"exportName": "Tabs"
@@ -2452,7 +2482,7 @@
 							}
 						],
 						"baseElement": "div",
-						"jsdoc": "A toolbar for grouping related interactive elements.\n\nFollows the [ARIA Toolbar pattern](https://www.w3.org/WAI/ARIA/apg/patterns/toolbar/) for reducing the number of tab stops.\n\nExample:\n```jsx\n<Toolbar.Group variant=\"solid\">\n  <Toolbar.Item render={…} />\n  <Toolbar.Item render={…} />\n  <Toolbar.Item render={…} />\n</Toolbar.Group>\n```\n\nA divider can be displayed between items by rendering the `Divider` component.\n\n```jsx\n<Toolbar.Group variant=\"solid\">\n  <Toolbar.Item render={…} />\n  <Divider orientation=\"vertical\" />\n  <Toolbar.Item render={…} />\n  <Toolbar.Item render={…} />\n</Toolbar.Group>\n```",
+						"jsdoc": "A toolbar for grouping related interactive elements.\n\nFollows the [ARIA Toolbar pattern](https://www.w3.org/WAI/ARIA/apg/patterns/toolbar/) for reducing the number of tab stops.\n\nExample:\n```jsx\n<Toolbar.Group variant=\"solid\">\n  <Toolbar.Item render={…} />\n  <Toolbar.Item render={…} />\n  <Toolbar.Item render={…} />\n</Toolbar.Group>\n```\n\nA divider can be displayed between items by rendering the [`Divider`](https://stratakit.bentley.com/docs/components/divider/) component.\n\n```jsx\n<Toolbar.Group variant=\"solid\">\n  <Toolbar.Item render={…} />\n  <Divider orientation=\"vertical\" />\n  <Toolbar.Item render={…} />\n  <Toolbar.Item render={…} />\n</Toolbar.Group>\n```",
 						"barrelName": "unstable_Toolbar.Group"
 					},
 					{
@@ -2463,11 +2493,11 @@
 								"name": "render",
 								"type": "(props: P) => React.ReactNode | React.ReactElement",
 								"optional": false,
-								"jsdoc": "Allows the component to be rendered as a different HTML element or React\ncomponent. The value can be a React element or a function that takes in the\noriginal component props and gives back a React element with the props\nmerged.\n\nCheck out the [Composition](https://ariakit.org/guide/composition) guide\nfor more details."
+								"jsdoc": "Allows the component to be rendered as a different HTML element or React\ncomponent. The value can be a React element or a function that takes in the\noriginal component props and gives back a React element with the props\nmerged.\n\nCheck out the [Composition](https://ariakit.com/guide/composition) guide\nfor more details."
 							}
 						],
 						"baseElement": "button",
-						"jsdoc": "An item within the toolbar.\nShould be used with the `render` prop.\n\nIf rendering an `IconButton`, be sure to append `#icon-large` to the icon URL.\n\nExample:\n```jsx\n<Toolbar.Item\n  render={<IconButton variant=\"ghost\" icon={`${placeholderIcon}#icon-large`} />}\n/>\n```",
+						"jsdoc": "An item within the toolbar.\nShould be used with the `render` prop.\n\nUse the [`IconButton`](https://stratakit.bentley.com/docs/components/iconbutton/) component for actions.\nUse the [`ToggleButton`](https://stratakit.bentley.com/docs/components/togglebutton/) component to toggle between two state.\n\nIf rendering an icon, be sure to append `#icon-large` to the icon URL.\n\nExample:\n```jsx\n<Toolbar.Item\n  render={\n    <IconButton label=\"…\">\n      <Icon href={`${placeholderIcon}#icon-large`} size=\"large\" />\n    </IconButton>\n   }\n/>\n```",
 						"barrelName": "unstable_Toolbar.Item"
 					}
 				],
@@ -2483,6 +2513,45 @@
 						"baseElement": "div",
 						"jsdoc": "A tree is a hierarchical list of items that can be expanded or collapsed, or optionally selected.\n\n`Tree.Root` is the root component for a tree. `Tree.Item`s are rendered as a flat list in the `Tree.Root` component to create a hierarchical tree structure.\n\nExample:\n```tsx\n<Tree.Root>\n  <Tree.Item label=\"Parent 1\" aria-level={1} aria-posinset={1} aria-setsize={2} />\n  <Tree.Item label=\"Child 1.1\" aria-level={2} aria-posinset={1} aria-setsize={2} />\n  <Tree.Item label=\"Child 1.2\" aria-level={2} aria-posinset={2} aria-setsize={2} />\n  <Tree.Item label=\"Parent 2\" aria-level={1} aria-posinset={2} aria-setsize={2} />\n  <Tree.Item label=\"Child 2.1\" aria-level={2} aria-posinset={1} aria-setsize={1} />\n</Tree.Root>\n```",
 						"barrelName": "Tree.Root"
+					},
+					{
+						"name": "ItemAction",
+						"baseProps": [],
+						"props": [
+							{
+								"name": "label",
+								"type": "string",
+								"optional": false,
+								"jsdoc": "Label for the action.\n\nWill be displayed as a tooltip when the action is an icon-button,\notherwise will be displayed as a label inside the menu-item."
+							},
+							{
+								"name": "dot",
+								"type": "string | undefined",
+								"optional": true,
+								"jsdoc": "A small dot displayed in the corner of the action.\n\nThe value of this prop gets used as the button's \"accessible description\".\n\nExample:\n```tsx\n<Tree.ItemAction\n  label=\"Filter\"\n  dot=\"Some filters applied\"\n  icon={…}\n/>\n```"
+							},
+							{
+								"name": "icon",
+								"type": "string | Element | undefined",
+								"optional": true,
+								"jsdoc": "Icon for the action.\n\nCan be a URL of an SVG from the `@stratakit/icons` package, or a JSX element.\n\nRequired when the action is displayed as an icon-button (i.e. not overflowing)."
+							},
+							{
+								"name": "render",
+								"type": "(props: P) => React.ReactNode | React.ReactElement | undefined",
+								"optional": true,
+								"jsdoc": "Allows the component to be rendered as a different HTML element or React\ncomponent. The value can be a React element or a function that takes in the\noriginal component props and gives back a React element with the props\nmerged.\n\nCheck out the [Composition](https://ariakit.com/guide/composition) guide\nfor more details."
+							},
+							{
+								"name": "visible",
+								"type": "boolean | undefined",
+								"optional": true,
+								"jsdoc": "Controls the visibility of the action (only when the action is displayed as icon-button).\n\nIf `true`, the action is always visible.\nIf `false`, the action is hidden and becomes inaccessible, but still occupies space.\n\nBy default, the action is shown only when the treeitem receives hover/focus. When the\ntreeitem has an `error`, the action will become always visible (i.e. it will default\nto `true` when `error` is set)."
+							}
+						],
+						"baseElement": "button",
+						"jsdoc": "A secondary action for `<Tree.Item>`, to be passed into the `actions` prop. The action is typically\ndisplayed as an icon-button or a menu-item (e.g. when overflowing).\n\nBy default, the action appears only when the treeitem has hover/focus or an error. This behavior can\nbe overridden using the `visible` prop.",
+						"barrelName": "Tree.ItemAction"
 					},
 					{
 						"name": "Item",
@@ -2566,7 +2635,7 @@
 								"name": "render",
 								"type": "(props: P) => React.ReactNode | React.ReactElement | undefined",
 								"optional": true,
-								"jsdoc": "Allows the component to be rendered as a different HTML element or React\ncomponent. The value can be a React element or a function that takes in the\noriginal component props and gives back a React element with the props\nmerged.\n\nCheck out the [Composition](https://ariakit.org/guide/composition) guide\nfor more details."
+								"jsdoc": "Allows the component to be rendered as a different HTML element or React\ncomponent. The value can be a React element or a function that takes in the\noriginal component props and gives back a React element with the props\nmerged.\n\nCheck out the [Composition](https://ariakit.com/guide/composition) guide\nfor more details."
 							},
 							{
 								"name": "selected",
@@ -2585,45 +2654,6 @@
 						"baseElement": "div",
 						"jsdoc": "A treeitem is a node in a tree structure that may be expanded or collapsed to reveal or hide its descendants.\n\n`Tree.Item`s can be rendered inside a `Tree.Root`. Additional properties are specified to the `Tree.Item`s to create a hierarchical tree structure.\n\nExample:\n```tsx\n<Tree.Root>\n  <Tree.Item label=\"Parent\" aria-level={1} aria-posinset={1} aria-setsize={1} />\n  <Tree.Item label=\"Child 1\" aria-level={2} aria-posinset={1} aria-setsize={2} />\n  <Tree.Item label=\"Child 2\" aria-level={2} aria-posinset={2} aria-setsize={2}  />\n</Tree.Root>\n```\n\nThe `label` and `icon` props can be used to specify the treeitem's own content.\n\nThe `aria-level` prop is used to specify the nesting level of the treeitem. Nesting levels start at 1.\n\nThe `aria-posinset` and `aria-setsize` props are used to define the treeitem's position in the current level of tree items.\n\nThe `expanded` and `onExpandedChange` props can be used to control the expansion state of a treeitem.\n\nThe `selected` and `onSelectedChange` props can be used to control the selection state of a treeitem.\n\nSecondary actions can be passed into the `actions` prop.",
 						"barrelName": "Tree.Item"
-					},
-					{
-						"name": "ItemAction",
-						"baseProps": [],
-						"props": [
-							{
-								"name": "label",
-								"type": "string",
-								"optional": false,
-								"jsdoc": "Label for the action.\n\nWill be displayed as a tooltip when the action is an icon-button,\notherwise will be displayed as a label inside the menu-item."
-							},
-							{
-								"name": "dot",
-								"type": "string | undefined",
-								"optional": true,
-								"jsdoc": "A small dot displayed in the corner of the action.\n\nThe value of this prop gets used as the button's \"accessible description\".\n\nExample:\n```tsx\n<Tree.ItemAction\n  label=\"Filter\"\n  dot=\"Some filters applied\"\n  icon={…}\n/>\n```"
-							},
-							{
-								"name": "icon",
-								"type": "string | Element | undefined",
-								"optional": true,
-								"jsdoc": "Icon for the action.\n\nCan be a URL of an SVG from the `@stratakit/icons` package, or a JSX element.\n\nRequired when the action is displayed as an icon-button (i.e. not overflowing)."
-							},
-							{
-								"name": "render",
-								"type": "(props: P) => React.ReactNode | React.ReactElement | undefined",
-								"optional": true,
-								"jsdoc": "Allows the component to be rendered as a different HTML element or React\ncomponent. The value can be a React element or a function that takes in the\noriginal component props and gives back a React element with the props\nmerged.\n\nCheck out the [Composition](https://ariakit.org/guide/composition) guide\nfor more details."
-							},
-							{
-								"name": "visible",
-								"type": "boolean | undefined",
-								"optional": true,
-								"jsdoc": "Controls the visibility of the action (only when the action is displayed as icon-button).\n\nIf `true`, the action is always visible.\nIf `false`, the action is hidden and becomes inaccessible, but still occupies space.\n\nBy default, the action is shown only when the treeitem receives hover/focus. When the\ntreeitem has an `error`, the action will become always visible (i.e. it will default\nto `true` when `error` is set)."
-							}
-						],
-						"baseElement": "button",
-						"jsdoc": "A secondary action for `<Tree.Item>`, to be passed into the `actions` prop. The action is typically\ndisplayed as an icon-button or a menu-item (e.g. when overflowing).\n\nBy default, the action appears only when the treeitem has hover/focus or an error. This behavior can\nbe overridden using the `visible` prop.",
-						"barrelName": "Tree.ItemAction"
 					}
 				],
 				"exportName": "Tree"

@@ -21,11 +21,12 @@
 }
 
 .MuiAutocomplete-input:is(.MuiInputBase-input) {
-	order: 1;
+	order: 2;
 	padding-inline: 0; /* Padding moved to the parent */
 }
 
 .MuiAutocomplete-tag:is(.MuiChip-root) {
+	order: 1;
 	margin-block: var(--stratakit-space-x05);
 	margin-inline: 0; /* Now relying on `column-gap` */
 }

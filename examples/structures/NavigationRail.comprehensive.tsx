@@ -123,7 +123,7 @@ function NotificationsButton({ expanded }: NotificationsButtonProps) {
 			label="Notifications"
 			suffix={
 				<>
-					{expanded && (
+					{expanded ? (
 						<Badge
 							badgeContent={3}
 							inline
@@ -134,6 +134,8 @@ function NotificationsButton({ expanded }: NotificationsButtonProps) {
 								},
 							}}
 						/>
+					) : (
+						<span aria-hidden>(3)</span>
 					)}
 					<span style={visuallyHidden}>(3 unread)</span>
 				</>

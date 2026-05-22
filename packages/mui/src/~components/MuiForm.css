@@ -8,9 +8,16 @@
 }
 
 .MuiFormControlLabel-root {
-	/* Accounts for the increased tap target of the checkbox/radio */
-	column-gap: var(--stratakit-space-x1);
 	margin-inline: 0;
+
+	&:where(.MuiFormControlLabel-labelPlacementTop, .MuiFormControlLabel-labelPlacementBottom) {
+		align-items: start;
+		row-gap: var(--stratakit-space-x1);
+	}
+
+	&:where(.MuiFormControlLabel-labelPlacementStart, .MuiFormControlLabel-labelPlacementEnd) {
+		column-gap: var(--stratakit-space-x1);
+	}
 
 	&:where(.Mui-disabled) {
 		cursor: not-allowed;
@@ -24,6 +31,7 @@
 .MuiFormGroup-root {
 	/* Accounts for the increased tap target of the checkbox/radio */
 	row-gap: var(--stratakit-space-x1);
+	align-self: start;
 }
 
 .MuiFormHelperText-root {

@@ -23,9 +23,6 @@ import svgWindowPopout from "@stratakit/icons/window-popout.svg";
 import styles from "./NavigationRail.comprehensive.module.css";
 
 export default () => {
-	const accountId = React.useId();
-	const [accountEl, setAccountEl] = React.useState<HTMLElement | null>(null);
-	const [accountOpen, setAccountOpen] = React.useState(false);
 	const [expanded, setExpanded] = React.useState(false);
 	return (
 		<div className={styles.container}>
@@ -86,19 +83,7 @@ export default () => {
 								role="presentation"
 							/>
 							<NavigationRail.ListItem>
-								<NavigationRail.Button
-									id={accountId}
-									ref={setAccountEl}
-									icon={`${svgUser}#icon-large`}
-									label="Account"
-									onClick={() => setAccountOpen(true)}
-								/>
-								<AccountMenu
-									anchorEl={accountEl}
-									open={accountOpen}
-									onClose={() => setAccountOpen(false)}
-									triggerId={accountId}
-								/>
+								<AccountButton />
 							</NavigationRail.ListItem>
 						</NavigationRail.List>
 					</NavigationRail.Footer>
@@ -144,37 +129,41 @@ function NotificationsButton({ expanded }: NotificationsButtonProps) {
 	);
 }
 
-interface AccountPopoverProps {
-	anchorEl: HTMLElement | null;
-	open: boolean;
-	onClose: () => void;
-	triggerId: string;
-}
-
-function AccountMenu(props: AccountPopoverProps) {
-	const { anchorEl, open, onClose, triggerId } = props;
-
+function AccountButton() {
+	const buttonId = React.useId();
+	const [anchorEl, setAnchorEl] = React.useState<HTMLElement | null>(null);
+	const [open, setOpen] = React.useState(false);
+	const close = () => setOpen(false);
 	return (
-		<Menu
-			anchorEl={anchorEl}
-			open={open}
-			onClose={onClose}
-			slotProps={{
-				list: {
-					"aria-labelledby": triggerId,
-				},
-			}}
-			anchorOrigin={{
-				vertical: "bottom",
-				horizontal: "right",
-			}}
-			transformOrigin={{
-				vertical: "bottom",
-				horizontal: "left",
-			}}
-		>
-			<MenuItem onClick={onClose}>View profile</MenuItem>
-			<MenuItem onClick={onClose}>Sign out</MenuItem>
-		</Menu>
+		<>
+			<NavigationRail.Button
+				id={buttonId}
+				ref={setAnchorEl}
+				icon={`${svgUser}#icon-large`}
+				label="Account"
+				onClick={() => setOpen(true)}
+			/>
+			<Menu
+				anchorEl={anchorEl}
+				open={open}
+				onClose={close}
+				slotProps={{
+					list: {
+						"aria-labelledby": buttonId,
+					},
+				}}
+				anchorOrigin={{
+					vertical: "bottom",
+					horizontal: "right",
+				}}
+				transformOrigin={{
+					vertical: "bottom",
+					horizontal: "left",
+				}}
+			>
+				<MenuItem onClick={close}>View profile</MenuItem>
+				<MenuItem onClick={close}>Sign out</MenuItem>
+			</Menu>
+		</>
 	);
 }

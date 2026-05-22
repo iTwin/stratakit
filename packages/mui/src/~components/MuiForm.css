@@ -31,7 +31,6 @@
 .MuiFormGroup-root {
 	/* Accounts for the increased tap target of the checkbox/radio */
 	row-gap: var(--stratakit-space-x1);
-	align-self: start;
 }
 
 .MuiFormHelperText-root {

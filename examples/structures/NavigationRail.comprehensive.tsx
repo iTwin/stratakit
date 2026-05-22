@@ -72,34 +72,7 @@ export default () => {
 					<NavigationRail.Footer>
 						<NavigationRail.List>
 							<NavigationRail.ListItem>
-								<NavigationRail.Button
-									icon={
-										<Badge variant="dot" color="error" invisible={expanded}>
-											<Icon
-												href={`${svgNotifications}#icon-large`}
-												size="large"
-											/>
-										</Badge>
-									}
-									label="Notifications"
-									suffix={
-										<>
-											{expanded && (
-												<Badge
-													badgeContent={3}
-													inline
-													color="error"
-													slotProps={{
-														badge: {
-															"aria-hidden": true,
-														},
-													}}
-												/>
-											)}
-											<span style={visuallyHidden}>(3 unread)</span>
-										</>
-									}
-								/>
+								<NotificationsButton expanded={expanded} />
 							</NavigationRail.ListItem>
 							<NavigationRail.ListItem>
 								<NavigationRail.Button
@@ -134,6 +107,40 @@ export default () => {
 		</div>
 	);
 };
+
+interface NotificationsButtonProps {
+	expanded: boolean;
+}
+
+function NotificationsButton({ expanded }: NotificationsButtonProps) {
+	return (
+		<NavigationRail.Button
+			icon={
+				<Badge variant="dot" color="error" invisible={expanded}>
+					<Icon href={`${svgNotifications}#icon-large`} size="large" />
+				</Badge>
+			}
+			label="Notifications"
+			suffix={
+				<>
+					{expanded && (
+						<Badge
+							badgeContent={3}
+							inline
+							color="error"
+							slotProps={{
+								badge: {
+									"aria-hidden": true,
+								},
+							}}
+						/>
+					)}
+					<span style={visuallyHidden}>(3 unread)</span>
+				</>
+			}
+		/>
+	);
+}
 
 interface AccountPopoverProps {
 	anchorEl: HTMLElement | null;

@@ -26,6 +26,7 @@
 .🥝NavigationListItemAction {
 	--✨height--default: 2rem;
 	--✨padding-inline: var(--stratakit-space-x2);
+	--✨padding-block: var(--stratakit-space-x1);
 
 	--✨bg--default: transparent;
 	--✨bg--hover: var(--stratakit-color-bg-glow-on-surface-neutral-hover);
@@ -50,9 +51,11 @@
 
 		inline-size: stretch;
 		min-block-size: var(--✨height--default);
-		padding-inline: var(--✨padding-inline);
 		border-radius: 4px;
-		padding-block: var(--stratakit-space-x1);
+		padding-inline-start: var(--✨padding-inline);
+		padding-inline-end: var(--✨padding-inline);
+		padding-block-start: var(--✨padding-block);
+		padding-block-end: var(--✨padding-block);
 
 		font-size: var(--stratakit-font-size-12);
 		line-height: 1.2;

@@ -37,8 +37,10 @@
 		display: flex;
 		align-items: center;
 
-		padding-block: var(--stratakit-space-x2);
-		padding-inline: var(--stratakit-space-x4);
+		padding-block-start: var(--stratakit-space-x2);
+		padding-block-end: var(--stratakit-space-x2);
+		padding-inline-start: var(--stratakit-space-x4);
+		padding-inline-end: var(--stratakit-space-x4);
 		min-block-size: var(--✨header-height);
 	}
 }
@@ -95,8 +97,10 @@
 
 .🥝NavigationRailContent {
 	@layer base {
-		padding-block: var(--stratakit-space-x1);
-		padding-inline: var(--stratakit-space-x2);
+		padding-block-start: var(--stratakit-space-x1);
+		padding-block-end: var(--stratakit-space-x1);
+		padding-inline-start: var(--stratakit-space-x2);
+		padding-inline-end: var(--stratakit-space-x2);
 
 		flex: 999;
 		overflow: auto;

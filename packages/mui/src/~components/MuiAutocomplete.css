@@ -25,7 +25,8 @@
 }
 
 .MuiAutocomplete-tag:is(.MuiChip-root) {
-	margin-block: var(--stratakit-space-x05);
+	margin-block-start: var(--stratakit-space-x05);
+	margin-block-end: var(--stratakit-space-x05);
 	margin-inline: 0; /* Now relying on `column-gap` */
 }
 

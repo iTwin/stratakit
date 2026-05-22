@@ -21,8 +21,10 @@
 			--🥝Divider-border-image-outset: 0 100cqi;
 
 			block-size: 1px;
-			margin-inline: var(--🥝Divider-main-axis-margin);
-			margin-block: var(--🥝Divider-cross-axis-margin);
+			margin-inline-start: var(--🥝Divider-main-axis-margin);
+			margin-inline-end: var(--🥝Divider-main-axis-margin);
+			margin-block-start: var(--🥝Divider-cross-axis-margin);
+			margin-block-end: var(--🥝Divider-cross-axis-margin);
 		}
 
 		&:where([aria-orientation="vertical"], [data-_sk-orientation="vertical"]) {
@@ -30,8 +32,10 @@
 
 			inline-size: 1px;
 			min-block-size: 100%;
-			margin-inline: var(--🥝Divider-cross-axis-margin);
-			margin-block: var(--🥝Divider-main-axis-margin);
+			margin-inline-start: var(--🥝Divider-cross-axis-margin);
+			margin-inline-end: var(--🥝Divider-cross-axis-margin);
+			margin-block-start: var(--🥝Divider-main-axis-margin);
+			margin-block-end: var(--🥝Divider-main-axis-margin);
 		}
 
 		&:where(:not([data-_sk-bleed="true"])) {

@@ -29,6 +29,7 @@ import {
 import { MuiDivider } from "./~components/MuiDivider.js";
 import { MuiIconButton } from "./~components/MuiIconButton.js";
 import { MuiInputLabel } from "./~components/MuiInputLabel.js";
+import { MuiMenuListSlot } from "./~components/MuiMenu.js";
 import { MuiSnackbar } from "./~components/MuiSnackbar.js";
 import { MuiStepIcon } from "./~components/MuiStepper.js";
 import {
@@ -374,6 +375,9 @@ function createTheme() {
 			MuiMenu: {
 				defaultProps: {
 					component: Role.div,
+					slots: {
+						list: MuiMenuListSlot,
+					},
 					slotProps: {
 						paper: {
 							role: "presentation", // Removes role="dialog"

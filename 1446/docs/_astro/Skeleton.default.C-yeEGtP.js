@@ -1,0 +1,1 @@
+import{j as t}from"./_utils.hulgI-Ig.js";import{S as e}from"./Skeleton.DLaeqic9.js";import{V as r}from"./ExamplePreview.CAr4VhXa.js";const n=()=>t.jsxs(t.Fragment,{children:[t.jsx(e,{variant:"text"}),t.jsx(r,{children:"Loading…"})]});export{n as default};

@@ -9,6 +9,10 @@
 	text-underline-offset: var(--stratakit-space-x05);
 	transition: text-underline-offset 150ms ease-out;
 
+	&:where(a:not(:any-link)) {
+		text-decoration-line: none; /* Remove underline from static anchors */
+	}
+
 	&:where(:hover, :focus-visible) {
 		text-underline-offset: var(--stratakit-space-x1);
 	}

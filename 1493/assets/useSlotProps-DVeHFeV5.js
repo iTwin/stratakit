@@ -1,0 +1,1 @@
+import{t as P,v as i,w as m}from"./Portal-Bw0-t7Y3.js";import{K as S}from"./~utils-D5nFGFUC.js";function v(o){const{elementType:s,externalSlotProps:t,ownerState:e,skipResolvingSlotProps:p=!1,...n}=o,r=p?{}:P(t,e),{props:l,internalRef:a}=i({...n,externalSlotProps:r}),f=S(a,r?.ref,o.additionalProps?.ref);return m(s,{...l,ref:f},e)}export{v as u};

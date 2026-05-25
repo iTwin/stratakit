@@ -56,8 +56,10 @@
 	--✨padding-inline: var(--stratakit-space-x5);
 
 	@layer base {
-		padding-block: var(--✨padding-block);
-		padding-inline: var(--✨padding-inline);
+		padding-block-start: var(--✨padding-block);
+		padding-block-end: var(--✨padding-block);
+		padding-inline-start: var(--✨padding-inline);
+		padding-inline-end: var(--✨padding-inline);
 
 		display: flex;
 		align-items: center;
@@ -79,7 +81,8 @@
 		color: var(--stratakit-color-text-neutral-primary);
 
 		padding-block-end: var(--✨padding);
-		padding-inline: var(--✨padding);
+		padding-inline-start: var(--✨padding);
+		padding-inline-end: var(--✨padding);
 	}
 
 	@layer modifiers {
@@ -100,8 +103,10 @@
 		border-end-end-radius: var(--✨border-radius);
 		background-color: var(--stratakit-color-bg-page-base);
 
-		padding-inline: var(--✨padding);
-		padding-block: var(--✨padding);
+		padding-inline-start: var(--✨padding);
+		padding-inline-end: var(--✨padding);
+		padding-block-start: var(--✨padding);
+		padding-block-end: var(--✨padding);
 
 		display: flex;
 		align-items: center;

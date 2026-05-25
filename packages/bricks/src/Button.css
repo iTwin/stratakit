@@ -177,8 +177,10 @@
 
 		min-block-size: var(--✨height);
 		border-radius: 4px;
-		padding-inline: var(--🥝Button-padding-inline, var(--✨padding-inline));
-		padding-block: var(--✨padding-block);
+		padding-inline-start: var(--🥝Button-padding-inline, var(--✨padding-inline));
+		padding-inline-end: var(--🥝Button-padding-inline, var(--✨padding-inline));
+		padding-block-start: var(--✨padding-block);
+		padding-block-end: var(--✨padding-block);
 		--🥝GhostAligner-inline-offset: var(--✨padding-inline);
 		--🥝GhostAligner-block-offset: var(--✨padding-block);
 

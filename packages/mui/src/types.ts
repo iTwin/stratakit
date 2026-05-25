@@ -286,6 +286,13 @@ declare module "@mui/material/InputBase" {
 	}
 }
 
+declare module "@mui/material/Link" {
+	interface LinkOwnProps {
+		/** @deprecated DO NOT USE */
+		underline?: "none" | "hover" | "always";
+	}
+}
+
 declare module "@mui/material/ListItemButton" {
 	interface ListItemButtonOwnProps {
 		LinkComponent?: never;

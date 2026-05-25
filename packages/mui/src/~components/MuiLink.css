@@ -6,6 +6,7 @@
 .MuiLink-root {
 	font-weight: 500;
 	text-decoration-color: currentColor;
+	text-decoration-line: underline;
 	text-underline-offset: var(--stratakit-space-x05);
 	transition: text-underline-offset 150ms ease-out;
 

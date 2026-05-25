@@ -5,7 +5,8 @@
 
 .MuiAlert-root {
 	border: 1px solid var(--stratakit-color-border-neutral-base);
-	padding-block: var(--stratakit-space-x3);
+	padding-block-start: var(--stratakit-space-x3);
+	padding-block-end: var(--stratakit-space-x3);
 
 	&:where(.MuiAlert-outlined) {
 		background-color: var(--stratakit-color-bg-elevation-base);

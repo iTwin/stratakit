@@ -44,6 +44,7 @@ export default () => {
 				<MenuItem
 					role="menuitemradio"
 					aria-checked={sortOrder === "Newest first" ? "true" : "false"}
+					selected={sortOrder === "Newest first"}
 					onClick={() => setSortOrder("Newest first")}
 				>
 					Newest first
@@ -51,6 +52,7 @@ export default () => {
 				<MenuItem
 					role="menuitemradio"
 					aria-checked={sortOrder === "Oldest first" ? "true" : "false"}
+					selected={sortOrder === "Oldest first"}
 					onClick={() => setSortOrder("Oldest first")}
 				>
 					Oldest first
@@ -58,6 +60,7 @@ export default () => {
 				<MenuItem
 					role="menuitemradio"
 					aria-checked={sortOrder === "Most comments" ? "true" : "false"}
+					selected={sortOrder === "Most comments"}
 					onClick={() => setSortOrder("Most comments")}
 				>
 					Most comments

@@ -33,7 +33,8 @@
 			decoration-after-start] auto [decoration-after-end];
 
 		min-block-size: var(--🥝ListItem-height, var(--✨height--default));
-		padding-inline: var(--✨padding-inline);
+		padding-inline-start: var(--✨padding-inline);
+		padding-inline-end: var(--✨padding-inline);
 		background-color: var(--🥝ListItem-background-color);
 
 		--🥝ListItem-background-color: var(--🌀ListItem-state--default, var(--✨bg--default))
@@ -115,7 +116,8 @@
 
 		:where(.🥝ListItemContent) ~ & {
 			grid-column: decoration-after;
-			margin-inline: var(--✨gap) 0;
+			margin-inline-start: var(--✨gap);
+			margin-inline-end: 0;
 		}
 	}
 }

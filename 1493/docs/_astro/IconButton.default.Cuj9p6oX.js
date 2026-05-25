@@ -1,0 +1,1 @@
+import{j as o}from"./_utils.Bthvd5Tk.js";import{I as t}from"./ExamplePreview.BY-IqsCW.js";import{s as a}from"./download.CDSmshb_.js";const e=()=>o.jsx(t,{label:"Download",icon:a});export{e as default};

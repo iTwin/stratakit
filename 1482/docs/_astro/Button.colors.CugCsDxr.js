@@ -1,1 +1,0 @@
-import{j as r}from"./_utils.B4fyiLld.js";import{S as s}from"./Stack.BiXlW9E8.js";import{B as o}from"./Button.C_ofQ0x0.js";const n=()=>r.jsxs(s,{spacing:1,direction:"row",children:[r.jsx(o,{color:"primary",children:"Primary"}),r.jsx(o,{color:"secondary",children:"Secondary"}),r.jsx(o,{color:"error",children:"Error"})]});export{n as default};

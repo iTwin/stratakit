@@ -1,1 +1,0 @@
-import{j as i}from"./_utils.hulgI-Ig.js";import{D as r}from"./Divider.BBOXuz1S.js";const e="_divider_etlms_6",t={divider:e},o=()=>i.jsx(r,{className:t.divider,orientation:"vertical"});export{o as default};

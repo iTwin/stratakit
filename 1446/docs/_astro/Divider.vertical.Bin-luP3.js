@@ -1,1 +1,0 @@
-import{j as i}from"./_utils.hulgI-Ig.js";import{D as r}from"./Divider.Bshpk2eM.js";const o=()=>i.jsx("div",{style:{blockSize:"calc(100dvh - 16px * 2)"},children:i.jsx(r,{orientation:"vertical"})});export{o as default};

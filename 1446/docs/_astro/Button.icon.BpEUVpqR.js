@@ -1,1 +1,0 @@
-import{j as o,I as t}from"./_utils.hulgI-Ig.js";import{s as r}from"./add.aeV9Qcly.js";import{B as s}from"./Button.sBf4DM2c.js";const m=()=>o.jsx(s,{endIcon:o.jsx(t,{href:r}),children:"Create new"});export{m as default};

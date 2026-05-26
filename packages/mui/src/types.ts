@@ -43,7 +43,7 @@ declare module "@mui/material/OverridableComponent" {
 declare module "@mui/material/AccordionDetails" {
 	interface AccordionDetailsProps {
 		/**
-		 * If `true`, adds the `data-_sk-start-indent` marker attribute.
+		 * If `true`, indents the details content to align with the summary title.
 		 *
 		 * @default false
 		 */

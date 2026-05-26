@@ -36,7 +36,7 @@
 	&:where(.MuiButton-sizeLarge) {
 		@apply --typography("body-lg");
 		--_MuiButton-height: var(--stratakit-size-control-field-height-large);
-		--_MuiButton-padding-block: var(--stratakit-space-x2);
+		--_MuiButton-padding-block: var(--stratakit-space-x1);
 		--_MuiButton-padding-inline: var(--stratakit-space-x4);
 	}
 
@@ -65,6 +65,13 @@
 	}
 
 	&:where(.MuiButton-contained) {
+		box-shadow: var(--stratakit-shadow-control-button-base-drop);
+
+		&:where(.MuiButton-colorSecondary:not(.Mui-disabled)) {
+			border: 1px solid;
+			border-color: var(--stratakit-color-border-neutral-base);
+		}
+
 		&:where(.Mui-disabled) {
 			background-color: var(--stratakit-color-bg-glow-on-surface-disabled);
 		}
@@ -75,6 +82,8 @@
 	}
 
 	&:where(.MuiButton-outlined, .MuiButton-text) {
+		--variant-outlinedBorder: var(--stratakit-color-border-neutral-base);
+
 		&:where(.MuiButton-colorPrimary) {
 			--_MuiButton-icon-color: var(--stratakit-color-icon-accent-strong);
 			--variant-outlinedBorder: var(--stratakit-color-border-accent-base);

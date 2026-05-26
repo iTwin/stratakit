@@ -21,22 +21,28 @@ interface MuiMenuListSlotProps extends MenuListProps {
 
 const MuiMenuListSlot = forwardRef<"ul", MuiMenuListSlotProps>(
 	(props, forwardedRef) => {
-		const { anchorEl } = props.ownerState || {};
+		const {
+			"aria-label": ariaLabel,
+			"aria-labelledby": ariaLabelledBy,
+			ownerState = {},
+		} = props;
 
 		const addFallbackLabel = React.useCallback(
 			(element?: HTMLElement) => {
-				if (!element || !(anchorEl instanceof HTMLElement)) return;
+				if (!element || !(ownerState.anchorEl instanceof HTMLElement)) return;
 				if (
-					element.getAttribute("aria-labelledby") != null ||
-					element.getAttribute("aria-label") != null
+					ariaLabel ||
+					ariaLabelledBy ||
+					element.ariaLabel ||
+					element.ariaLabelledByElements?.length
 				) {
 					return;
 				}
 
 				// Use the trigger button as the fallback accessible name for the menu.
-				element.ariaLabelledByElements = [anchorEl];
+				element.ariaLabelledByElements = [ownerState.anchorEl];
 			},
-			[anchorEl],
+			[ownerState.anchorEl, ariaLabel, ariaLabelledBy],
 		);
 
 		return (

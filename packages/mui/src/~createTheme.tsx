@@ -30,6 +30,7 @@ import { MuiDivider } from "./~components/MuiDivider.js";
 import { MuiIconButton } from "./~components/MuiIconButton.js";
 import { MuiInputLabel } from "./~components/MuiInputLabel.js";
 import { MuiMenuListSlot } from "./~components/MuiMenu.js";
+import { MuiPopoverPaperSlot } from "./~components/MuiPopover.js";
 import { MuiSnackbar } from "./~components/MuiSnackbar.js";
 import { MuiStepIcon } from "./~components/MuiStepper.js";
 import {
@@ -412,7 +413,12 @@ function createTheme() {
 				defaultProps: {
 					component: Role.div,
 					disableScrollLock: true,
-					slotProps: { paper: { role: "dialog" } },
+					slots: {
+						paper: MuiPopoverPaperSlot,
+					},
+					slotProps: {
+						paper: { role: "dialog" },
+					},
 				},
 			},
 			MuiRadio: {

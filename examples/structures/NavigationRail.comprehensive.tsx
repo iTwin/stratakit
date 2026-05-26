@@ -102,6 +102,7 @@ function NotificationsButton({ expanded }: NotificationsButtonProps) {
 	return (
 		<NavigationRail.Button
 			icon={
+				// The dot badge is shown when the rail is collapsed
 				<Badge variant="dot" color="error" invisible={expanded}>
 					<Icon href={`${svgNotifications}#icon-large`} size="large" />
 				</Badge>
@@ -110,19 +111,22 @@ function NotificationsButton({ expanded }: NotificationsButtonProps) {
 			suffix={
 				<>
 					{expanded ? (
+						// Inline badge is displayed when the rail is expanded
 						<Badge
 							badgeContent={notificationCount}
 							inline
 							color="error"
 							slotProps={{
 								badge: {
-									"aria-hidden": true,
+									"aria-hidden": true, // The badge is hidden from assistive technologies
 								},
 							}}
 						/>
 					) : (
+						// Decorative notification count is displayed in the tooltip when the rail is collapsed
 						<span aria-hidden>({notificationCount})</span>
 					)}
+					{/* Visually hidden message, that contributes to the accessible name of the button */}
 					<span style={visuallyHidden}>({notificationCount} unread)</span>
 				</>
 			}

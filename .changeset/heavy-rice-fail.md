@@ -2,4 +2,4 @@
 "@stratakit/mui": minor
 ---
 
-Removed support for `underline` line from `Link`.
+Removed support for `underline` prop from `Link`.

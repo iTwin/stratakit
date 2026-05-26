@@ -11,6 +11,7 @@ links:
 ## StrataKit MUI modifications
 
 - Added [`role="dialog"`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/dialog_role) to the `paper` slot.
+- `disableScrollLock` is used to prevent scroll locking when the popover is open.
 
 ## ✅ Do
 

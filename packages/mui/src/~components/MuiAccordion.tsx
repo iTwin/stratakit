@@ -6,8 +6,30 @@
 import { Role } from "@ariakit/react/role";
 import { forwardRef } from "@stratakit/foundations/secret-internals";
 
+import type { AccordionDetailsProps } from "@mui/material/AccordionDetails";
 import type { AccordionSummaryOwnProps } from "@mui/material/AccordionSummary";
 import type { BaseProps } from "@stratakit/foundations/secret-internals";
+
+// ----------------------------------------------------------------------------
+
+interface MuiAccordionDetailsProps
+	extends BaseProps,
+		Pick<AccordionDetailsProps, "startIndent"> {}
+
+const MuiAccordionDetails = forwardRef<"div", MuiAccordionDetailsProps>(
+	(props, forwardedRef) => {
+		const { startIndent = false, ...rest } = props;
+
+		return (
+			<Role.div
+				{...rest}
+				data-_sk-start-indent={startIndent ? "" : undefined}
+				ref={forwardedRef}
+			/>
+		);
+	},
+);
+DEV: MuiAccordionDetails.displayName = "MuiAccordionDetails";
 
 // ----------------------------------------------------------------------------
 
@@ -33,4 +55,4 @@ DEV: MuiAccordionSummary.displayName = "MuiAccordionSummary";
 
 // ----------------------------------------------------------------------------
 
-export { MuiAccordionSummary };
+export { MuiAccordionDetails, MuiAccordionSummary };

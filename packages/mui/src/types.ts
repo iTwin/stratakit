@@ -40,6 +40,17 @@ declare module "@mui/material/OverridableComponent" {
 	}
 }
 
+declare module "@mui/material/AccordionDetails" {
+	interface AccordionDetailsProps {
+		/**
+		 * If `true`, adds the `data-_sk-start-indent` marker attribute.
+		 *
+		 * @default false
+		 */
+		startIndent?: boolean;
+	}
+}
+
 declare module "@mui/material/AccordionSummary" {
 	interface AccordionSummaryOwnProps {
 		/**

@@ -7,6 +7,7 @@ import AccordionActions from "examples/mui/Accordion.actions.tsx";
 import AccordionDecoration from "examples/mui/Accordion.decoration.tsx";
 import AccordionDefault from "examples/mui/Accordion.default.tsx";
 import AccordionExpanded from "examples/mui/Accordion.expanded.tsx";
+import AccordionIndent from "examples/mui/Accordion.indent.tsx";
 import AccordionMarkerPlacement from "examples/mui/Accordion.marker-placement.tsx";
 import AccordionMultiple from "examples/mui/Accordion.multiple.tsx";
 import AccordionResponsive from "examples/mui/Accordion.responsive.tsx";
@@ -25,6 +26,9 @@ export default function AccordionExamples() {
 			<AccordionResponsive />
 			<div>
 				<AccordionMarkerPlacement />
+			</div>
+			<div>
+				<AccordionIndent />
 			</div>
 			<div>
 				<AccordionDecoration />

@@ -65,7 +65,7 @@
 	&:where(.Mui-disabled) {
 		cursor: not-allowed;
 		opacity: 1;
-		pointer-events: initial;
+		pointer-events: auto; /* Revert MUI's disabled pointer-events */
 
 		--_MuiChip-border-color: var(--✨border--disabled);
 		--_MuiChip-text-color: var(--✨text--disabled);

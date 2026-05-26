@@ -8,9 +8,12 @@
 }
 
 .MuiFormControlLabel-root {
-	/* Accounts for the increased tap target of the checkbox/radio */
-	column-gap: var(--stratakit-space-x1);
+	gap: var(--stratakit-space-x1);
 	margin-inline: 0;
+
+	&:where(.MuiFormControlLabel-labelPlacementTop, .MuiFormControlLabel-labelPlacementBottom) {
+		align-items: start;
+	}
 
 	&:where(.Mui-disabled) {
 		cursor: not-allowed;

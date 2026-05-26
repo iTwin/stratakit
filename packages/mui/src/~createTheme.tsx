@@ -402,6 +402,7 @@ function createTheme() {
 			MuiPopover: {
 				defaultProps: {
 					component: Role.div,
+					disableScrollLock: true,
 					slotProps: { paper: { role: "dialog" } },
 				},
 			},

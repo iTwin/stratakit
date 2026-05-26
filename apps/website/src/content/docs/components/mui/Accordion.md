@@ -31,7 +31,7 @@ Make sure the **Accordion** is suitable for your use case. There may be other, m
 - The overall size has been decreased.
 - Added [responsive design](#responsive-design) that reorients the marker placement based on container width.
 - Added `markerPlacement` prop to override responsive design and force the [marker placement](#marker-placement).
-- Added `startIndent` prop to aligning content with the summary title.
+- Added `startIndent` prop to align content with the summary title.
 - The default `disableGutters` is now `"true"`.
 - The `slotProps.root.square` prop defaults to true except when `variant="outlined"`.
 - You are not required to attribute `<AccordionSummary>` with `aria-controls`.
@@ -72,7 +72,7 @@ Use the `markerPlacement` prop to control the **AccordionSummary** marker placem
 
 ### Details indent
 
-Use the `startIndent` prop to control the **AccordionDetails** indentation. By default no indentation is applied. The indentation only takes place when the marker is left aligned.
+Use the `startIndent` prop to control the **AccordionDetails** indentation. By default no indentation is applied. The indentation only appears when the summary marker is left aligned.
 
 ::example{src="mui/Accordion.indent"}
 

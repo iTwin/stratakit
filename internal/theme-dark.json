@@ -674,11 +674,11 @@
 			"neutral": {
 				"base": {
 					"$type": "color",
-					"$value": "{p-color.gray.700}"
+					"$value": "{p-color.gray.500}"
 				},
 				"muted": {
 					"$type": "color",
-					"$value": "{p-color.gray.825}"
+					"$value": "{p-color.gray.700}"
 				},
 				"faded": {
 					"$type": "color",
@@ -690,7 +690,7 @@
 				},
 				"disabled": {
 					"$type": "color",
-					"$value": "{p-color.gray.600}"
+					"$value": "{p-color.gray.800}"
 				}
 			},
 			"elevation": {

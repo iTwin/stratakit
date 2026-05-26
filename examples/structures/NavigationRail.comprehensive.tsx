@@ -98,6 +98,7 @@ interface NotificationsButtonProps {
 }
 
 function NotificationsButton({ expanded }: NotificationsButtonProps) {
+	const notificationCount = 3;
 	return (
 		<NavigationRail.Button
 			icon={
@@ -110,7 +111,7 @@ function NotificationsButton({ expanded }: NotificationsButtonProps) {
 				<>
 					{expanded ? (
 						<Badge
-							badgeContent={3}
+							badgeContent={notificationCount}
 							inline
 							color="error"
 							slotProps={{
@@ -120,9 +121,9 @@ function NotificationsButton({ expanded }: NotificationsButtonProps) {
 							}}
 						/>
 					) : (
-						<span aria-hidden>(3)</span>
+						<span aria-hidden>({notificationCount})</span>
 					)}
-					<span style={visuallyHidden}>(3 unread)</span>
+					<span style={visuallyHidden}>({notificationCount} unread)</span>
 				</>
 			}
 		/>

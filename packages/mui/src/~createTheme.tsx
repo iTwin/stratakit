@@ -253,7 +253,12 @@ function createTheme() {
 				},
 			},
 			MuiCard: { defaultProps: { component: MuiCard } },
-			MuiCardActionArea: { defaultProps: { component: MuiCardActionArea } },
+			MuiCardActionArea: {
+				defaultProps: {
+					component: MuiCardActionArea,
+					slots: { focusHighlight: Nothing },
+				},
+			},
 			MuiCardContent: { defaultProps: { component: Role.div } },
 			MuiCardHeader: {
 				defaultProps: {

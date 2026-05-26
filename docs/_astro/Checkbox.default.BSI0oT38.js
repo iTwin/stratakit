@@ -1,0 +1,1 @@
+import{j as o}from"./_utils.DB2M-gbY.js";import{C as e}from"./Checkbox.DUWI-XvI.js";import{F as r,a as s,b as t}from"./Field.C8foiz7v.js";const d=()=>o.jsxs(r,{children:[o.jsx(s,{render:o.jsx(e,{})}),o.jsx(t,{children:"Don’t show again"})]});export{d as default};

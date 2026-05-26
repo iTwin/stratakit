@@ -9,7 +9,10 @@ import OutlinedInput from "@mui/material/OutlinedInput";
 import StepConnector from "@mui/material/StepConnector";
 import { createTheme as createMuiTheme } from "@mui/material/styles";
 import cx from "classnames";
-import { MuiAccordionSummary } from "./~components/MuiAccordionSummary.js";
+import {
+	MuiAccordionRootSlot,
+	MuiAccordionSummary,
+} from "./~components/MuiAccordion.js";
 import { MuiAlert, MuiAlertTitle } from "./~components/MuiAlert.js";
 import { MuiAutocomplete } from "./~components/MuiAutocomplete.js";
 import { MuiAvatarGroup } from "./~components/MuiAvatarGroup.js";
@@ -120,12 +123,10 @@ function createTheme() {
 				defaultProps: {
 					component: Role.div,
 					disableGutters: true,
+					slots: {
+						root: MuiAccordionRootSlot,
+					},
 					slotProps: {
-						root({ variant, square }) {
-							return {
-								square: square ?? (variant !== "outlined" ? true : undefined), // Disable rounded corners on non-outlined variants
-							};
-						},
 						region: {
 							role: undefined,
 							"aria-labelledby": undefined,

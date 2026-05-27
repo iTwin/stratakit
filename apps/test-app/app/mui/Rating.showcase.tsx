@@ -12,6 +12,9 @@ export default function RatingExamples() {
 export const knobs = {
 	disabled: createKnob({
 		props: {
+			MuiFormControl: {
+				disabled: true,
+			},
 			MuiRating: {
 				disabled: true,
 			},

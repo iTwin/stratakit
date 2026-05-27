@@ -1,1 +1,0 @@
-import{j as e}from"./_utils.DHNA_QLj.js";import{B as s}from"./Banner.yiy08lHg.js";const r=()=>e.jsx(s,{label:"Update complete",message:"Your settings have been saved successfully."});export{r as default};

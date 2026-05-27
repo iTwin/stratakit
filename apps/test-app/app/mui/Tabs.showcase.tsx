@@ -4,6 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 import TabsDefault from "examples/mui/Tabs.default.tsx";
 import TabsScrollable from "examples/mui/Tabs.scrollable.tsx";
+import { createKnob } from "~/~utils.tsx";
 
 export default function TabsExamples() {
 	return (
@@ -13,3 +14,13 @@ export default function TabsExamples() {
 		</>
 	);
 }
+
+export const knobs = {
+	disabled: createKnob({
+		props: {
+			MuiTab: {
+				disabled: true,
+			},
+		},
+	}),
+};

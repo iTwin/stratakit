@@ -24,7 +24,8 @@
 		&:where([data-_sk-variant="solid"], [data-_sk-variant="muted"]) {
 			border-radius: 4px;
 			background-color: var(--stratakit-color-bg-neutral-base);
-			padding-inline: var(--stratakit-space-x1);
+			padding-inline-start: var(--stratakit-space-x1);
+			padding-inline-end: var(--stratakit-space-x1);
 		}
 
 		&:where([data-_sk-variant="solid"]) {

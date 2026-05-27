@@ -19,7 +19,9 @@
 	border-end-start-radius: inherit;
 
 	&:where(.MuiDialogActions-spacing) {
-		padding-block: var(--stratakit-space-x4);
-		padding-inline: var(--stratakit-space-x5);
+		padding-block-start: var(--stratakit-space-x4);
+		padding-block-end: var(--stratakit-space-x4);
+		padding-inline-start: var(--stratakit-space-x5);
+		padding-inline-end: var(--stratakit-space-x5);
 	}
 }

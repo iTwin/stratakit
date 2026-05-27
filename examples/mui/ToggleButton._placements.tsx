@@ -7,15 +7,25 @@ import * as React from "react";
 import ToggleButton from "@mui/material/ToggleButton";
 import { Icon } from "@stratakit/mui";
 
-import svgPlaceholder from "@stratakit/icons/placeholder.svg";
+import svgArrowDown from "@stratakit/icons/arrow-down.svg";
+import svgArrowLeft from "@stratakit/icons/arrow-left.svg";
+import svgArrowRight from "@stratakit/icons/arrow-right.svg";
+import svgArrowUp from "@stratakit/icons/arrow-up.svg";
 
 type ToggleButtonProps = React.ComponentProps<typeof ToggleButton>;
 const placements = [
-	"top",
-	"right",
-	"bottom",
 	"left",
+	"top",
+	"bottom",
+	"right",
 ] as const satisfies ToggleButtonProps["labelPlacement"][];
+
+const iconByPlacement = {
+	left: svgArrowLeft,
+	top: svgArrowUp,
+	bottom: svgArrowDown,
+	right: svgArrowRight,
+} as const;
 
 export default () => {
 	const [selected, setSelected] = React.useState<string[]>([]);
@@ -34,7 +44,7 @@ export default () => {
 				)
 			}
 		>
-			<Icon href={svgPlaceholder} />
+			<Icon href={iconByPlacement[placement]} />
 		</ToggleButton>
 	));
 };

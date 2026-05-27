@@ -13,6 +13,7 @@ links:
 - Restyled using StrataKit's visual language.
 - Removed [`role="dialog"`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/dialog_role) semantics from the [`paper`](https://mui.com/material-ui/api/menu/#Menu-css-MuiMenu-paper) slot.
 - Includes full `forced-colors` support.
+- `disableScrollLock` is used to prevent scroll locking when the menu is open.
 
 ## Examples
 
@@ -23,3 +24,20 @@ Pass the [`dense`](https://mui.com/material-ui/api/list/#list-prop-dense) prop t
 The `dense` prop is also available via [`MenuList`](https://mui.com/material-ui/api/menu-list/).
 
 ::example{src="mui/Menu.dense"}
+
+## Selectable
+
+To make `MenuItem`s selectable, override the default `role` to either:
+
+- [`role="menuitemradio"`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/menuitemradio_role) when only one item within a group is selectable
+- [`role="menuitemcheckbox"`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/menuitemcheckbox_role) when the items are individually selectable.
+
+With the appropriate role in place, use [`aria-checked="true"`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-checked) and the [`selected`](https://mui.com/material-ui/api/menu-item/#menu-item-prop-selected) prop to mark the selected item(s).
+
+::example{src="mui/Menu.selectable"}
+
+:::caution[Labelling the menu button]
+
+Make sure the triggering button starts with a predictable label that stays consistent regardless of the selected item. In the example above, the text "Sort by:" remains stable, while the text following it changes based on the selected item. This allows assistive technology users to easily find and operate the menu button.
+
+:::

@@ -9,6 +9,7 @@ import OutlinedInput from "@mui/material/OutlinedInput";
 import StepConnector from "@mui/material/StepConnector";
 import { createTheme as createMuiTheme } from "@mui/material/styles";
 import cx from "classnames";
+import { MuiAccordionSummary } from "./~components/MuiAccordionSummary.js";
 import { MuiAlert, MuiAlertTitle } from "./~components/MuiAlert.js";
 import {
 	MuiAutocomplete,
@@ -139,7 +140,7 @@ function createTheme() {
 			},
 			MuiAccordionSummary: {
 				defaultProps: {
-					component: Role.div,
+					component: MuiAccordionSummary,
 					nativeButton: false,
 					expandIcon: <ChevronDownIcon />,
 				},
@@ -260,7 +261,12 @@ function createTheme() {
 				},
 			},
 			MuiCard: { defaultProps: { component: MuiCard } },
-			MuiCardActionArea: { defaultProps: { component: MuiCardActionArea } },
+			MuiCardActionArea: {
+				defaultProps: {
+					component: MuiCardActionArea,
+					slots: { focusHighlight: Nothing },
+				},
+			},
 			MuiCardContent: { defaultProps: { component: Role.div } },
 			MuiCardHeader: {
 				defaultProps: {
@@ -409,6 +415,7 @@ function createTheme() {
 			MuiPopover: {
 				defaultProps: {
 					component: Role.div,
+					disableScrollLock: true,
 					slotProps: { paper: { role: "dialog" } },
 				},
 			},

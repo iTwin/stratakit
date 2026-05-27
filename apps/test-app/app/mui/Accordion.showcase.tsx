@@ -7,8 +7,9 @@ import AccordionActions from "examples/mui/Accordion.actions.tsx";
 import AccordionDecoration from "examples/mui/Accordion.decoration.tsx";
 import AccordionDefault from "examples/mui/Accordion.default.tsx";
 import AccordionExpanded from "examples/mui/Accordion.expanded.tsx";
-import AccordionMarkerLeft from "examples/mui/Accordion.marker-left.tsx";
+import AccordionMarkerPlacement from "examples/mui/Accordion.marker-placement.tsx";
 import AccordionMultiple from "examples/mui/Accordion.multiple.tsx";
+import AccordionResponsive from "examples/mui/Accordion.responsive.tsx";
 import AccordionVariants from "examples/mui/Accordion.variants.tsx";
 import { createKnob } from "~/~utils.tsx";
 
@@ -21,8 +22,9 @@ export default function AccordionExamples() {
 			<div>
 				<AccordionExpanded />
 			</div>
+			<AccordionResponsive />
 			<div>
-				<AccordionMarkerLeft />
+				<AccordionMarkerPlacement />
 			</div>
 			<div>
 				<AccordionDecoration />

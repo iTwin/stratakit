@@ -63,6 +63,17 @@
 
 .MuiAccordionSummary-expandIconWrapper {
 	color: var(--_MuiAccordion-expand-icon-color);
+	order: -1;
+
+	@container (inline-size < 500px) {
+		:where(.MuiAccordionSummary-root:not([data-_sk-marker-placement])) & {
+			order: 0;
+		}
+	}
+
+	:where(.MuiAccordionSummary-root[data-_sk-marker-placement="end"]) & {
+		order: 0;
+	}
 }
 
 .MuiAccordionDetails-root {

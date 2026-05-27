@@ -3,6 +3,11 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-.expander {
-	order: -1;
+.container {
+	container-type: inline-size;
+	max-inline-size: 100%;
+	min-inline-size: 128px;
+	overflow: auto;
+	padding-block-end: var(--stratakit-space-x2);
+	resize: horizontal;
 }

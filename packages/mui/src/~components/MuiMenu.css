@@ -46,7 +46,8 @@
 	column-gap: calc(var(--stratakit-space-x1) + var(--stratakit-space-x05));
 	min-block-size: var(--_MuiMenuItem-height);
 	padding-block: 0;
-	padding-inline: var(--✨padding);
+	padding-inline-start: var(--✨padding);
+	padding-inline-end: var(--✨padding);
 
 	--🥝Icon-color: var(--✨color-icon--default);
 	--_MuiMenuItem-background-color: var(--✨color-bg--default);
@@ -58,7 +59,7 @@
 		--_MuiMenuItem-height: var(--✨size--small);
 	}
 
-	&:where([role="option"]) {
+	&:where([role="option"], [role="menuitemradio"], [role="menuitemcheckbox"]) {
 		--_MuiMenuItem-root-mask-image: var(--✨svg-unchecked);
 
 		/* This pseudo-element displays a checkmark for selected menu items */
@@ -89,7 +90,7 @@
 		outline-offset: calc(var(--🥝focus-outline-offset) * -1);
 	}
 
-	&:where(.Mui-selected, [aria-selected="true"]) {
+	&:where(.Mui-selected, [aria-selected="true"], [aria-checked="true"]) {
 		--🥝Icon-color: var(--✨color-icon--selected);
 		--_MuiMenuItem-background-color: var(--✨color-bg--selected);
 		--_MuiMenuItem-color: var(--✨color-text--selected);

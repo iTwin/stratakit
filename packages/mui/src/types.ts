@@ -40,6 +40,21 @@ declare module "@mui/material/OverridableComponent" {
 	}
 }
 
+declare module "@mui/material/AccordionSummary" {
+	interface AccordionSummaryOwnProps {
+		/**
+		 * The placement of the expander icon.
+		 *
+		 * - `"auto"`: Expander icon is placed to the left when wide, and to the right when narrow.
+		 * - `"start"`: Forces expander icon to the left.
+		 * - `"end"`: Forces expander icon to the right.
+		 *
+		 * @default 'auto'
+		 */
+		markerPlacement?: "auto" | "start" | "end";
+	}
+}
+
 declare module "@mui/material/Alert" {
 	interface AlertPropsVariantOverrides {
 		standard: false;
@@ -52,6 +67,32 @@ declare module "@mui/material/Alert" {
 		 * @default 'outlined'
 		 */
 		variant?: "filled" | "outlined";
+	}
+}
+
+declare module "@mui/material/Avatar" {
+	interface AvatarPropsVariantOverrides {
+		circular: false;
+		rounded: false;
+		square: false;
+	}
+
+	interface AvatarOwnProps {
+		/** @deprecated `variant` is unnecessary. Only `"circular"` is supported and already the default. */
+		variant?: never;
+	}
+}
+
+declare module "@mui/material/AvatarGroup" {
+	interface AvatarGroupPropsVariantOverrides {
+		circular: false;
+		rounded: false;
+		square: false;
+	}
+
+	interface AvatarGroupOwnProps {
+		/** @deprecated `variant` is unnecessary. Only `"circular"` is supported and already the default. */
+		variant?: never;
 	}
 }
 
@@ -242,6 +283,13 @@ declare module "@mui/material/InputBase" {
 		success: false;
 		warning: false;
 		error: false;
+	}
+}
+
+declare module "@mui/material/Link" {
+	interface LinkOwnProps {
+		/** @deprecated DO NOT USE */
+		underline?: "none" | "hover" | "always";
 	}
 }
 

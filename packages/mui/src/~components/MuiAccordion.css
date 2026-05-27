@@ -88,11 +88,12 @@
 	color: var(--stratakit-color-text-neutral-secondary);
 	padding: var(--_MuiAccordion-padding);
 
-	@container (inline-size >= 500px) {
+	:where(.MuiAccordion-root:has(.MuiAccordionSummary-root:not([data-_sk-marker-placement="end"])))
+		& {
 		padding-inline-start: var(--✨indent);
 	}
 
-	:where(.MuiAccordion-root:has(.MuiAccordionSummary-root[data-_sk-marker-placement="start"])) & {
-		padding-inline-start: var(--✨indent);
+	@container (inline-size < 500px) {
+		padding-inline-start: var(--_MuiAccordion-padding);
 	}
 }

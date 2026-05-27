@@ -15,7 +15,7 @@ links:
 - The listbox now matches the visual styling of [`Menu`](/components/menu), with individual options using the `MuiMenuItem-root` class via a theme-level [`renderOption`](https://mui.com/material-ui/api/autocomplete/#autocomplete-prop-renderOption) prop.
 - Added [`role="group"`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/group_role) to the root element.
 - Added [`role="list"`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/list_role) and [`role="listitem"`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/listitem_role) semantics to [**Chips**](/components/chip) ("tags") used in [multiple selection](#multiple-values).
-- Tags are now focusable. Tab order is: input → tags (in order) → clear button.
+- Tags are now focusable. Input is the first focusable element, followed by tags in the order they were added.
 
 ## Examples
 

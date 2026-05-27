@@ -21,9 +21,6 @@ const MuiCardContext = React.createContext<
 	| {
 			actionAreaElement?: HTMLElement | null;
 			setActionAreaElement: (element?: HTMLElement | null) => void;
-
-			titleElement?: HTMLElement | null;
-			setTitleElement: (element?: HTMLElement | null) => void;
 	  }
 	| undefined
 >(undefined);
@@ -33,9 +30,6 @@ const MuiCardContext = React.createContext<
 const MuiCard = forwardRef<"article", BaseProps<"article">>(
 	(props, forwardedRef) => {
 		const [actionAreaElement, setActionAreaElement] = React.useState<
-			HTMLElement | undefined | null
-		>(undefined);
-		const [titleElement, setTitleElement] = React.useState<
 			HTMLElement | undefined | null
 		>(undefined);
 
@@ -56,12 +50,7 @@ const MuiCard = forwardRef<"article", BaseProps<"article">>(
 
 		return (
 			<MuiCardContext.Provider
-				value={{
-					actionAreaElement,
-					setActionAreaElement,
-					titleElement,
-					setTitleElement,
-				}}
+				value={{ actionAreaElement, setActionAreaElement }}
 			>
 				<Role
 					render={<article />}
@@ -81,28 +70,24 @@ DEV: MuiCard.displayName = "MuiCard";
 const MuiCardHeaderTitle = forwardRef<"h2", BaseProps<"h2">>(
 	(props, forwardedRef) => {
 		const cardContext = React.useContext(MuiCardContext);
-		const { registerActionAreaTitle } =
-			React.useContext(MuiCardActionAreaContext) ?? {};
-		const isInsideActionArea = Boolean(registerActionAreaTitle);
+		const cardActionAreaContext = React.useContext(MuiCardActionAreaContext);
 
 		const { children, ...rest } = props;
-
-		React.useInsertionEffect(() => {
-			return registerActionAreaTitle?.();
-		}, [registerActionAreaTitle]);
 
 		return (
 			<Role.h2
 				{...rest}
-				ref={useMergedRefs(cardContext?.setTitleElement, forwardedRef)}
+				ref={useMergedRefs(
+					cardActionAreaContext?.setTitleElement,
+					forwardedRef,
+				)}
 			>
 				{(() => {
-					// If CardActionArea is an ancestor of the title, then we portal the title text into the CardActionArea's button element.
-					if (isInsideActionArea && cardContext?.actionAreaElement) {
-						return ReactDOM.createPortal(
-							children,
-							cardContext.actionAreaElement,
-						);
+					// If CardActionArea is an ancestor of the title, then we portal the title content into the CardActionArea's button element.
+					if (cardActionAreaContext) {
+						return cardContext?.actionAreaElement
+							? ReactDOM.createPortal(children, cardContext.actionAreaElement)
+							: null;
 					}
 					return children;
 				})()}
@@ -115,47 +100,31 @@ DEV: MuiCardHeaderTitle.displayName = "MuiCardHeaderTitle";
 // ----------------------------------------------------------------------------
 
 const MuiCardActionAreaContext = React.createContext<
-	{ registerActionAreaTitle: () => () => void } | undefined
+	{ setTitleElement: (element?: HTMLElement | null) => void } | undefined
 >(undefined);
 
 const MuiCardActionArea = forwardRef<"button", BaseProps<"button">>(
 	(props, forwardedRef) => {
-		const cardContext = React.useContext(MuiCardContext);
-
 		const { children, ...rest } = props;
 
-		const [containsTitle, setContainsTitle] = React.useState<
-			boolean | undefined
+		// This gets populated by a descendant CardHeaderTitle
+		const [titleElement, setTitleElement] = React.useState<
+			HTMLElement | undefined | null
 		>(undefined);
 
-		React.useInsertionEffect(() => {
-			// Set it to false if it isn't already set (by CardHeaderTitle)
-			setContainsTitle((containsTitle) => containsTitle ?? false);
-		}, []);
-
-		const registerActionAreaTitle = React.useCallback(() => {
-			setContainsTitle(true);
-			return () => setContainsTitle(false);
-		}, []);
-
 		return (
-			<MuiCardActionAreaContext.Provider value={{ registerActionAreaTitle }}>
+			<MuiCardActionAreaContext.Provider value={{ setTitleElement }}>
 				{(() => {
-					if (containsTitle === undefined) {
-						return children;
-					}
-
 					// If the CardActionArea is rendered as an ancestor of the title, then we portal the button element into the title element.
 					// This helps avoids potential accessibility issues (e.g. nested buttons, such as when using CardHeader's `action` prop).
-					if (containsTitle) {
+					if (titleElement) {
 						return (
 							<>
 								{children}
-								{cardContext?.titleElement &&
-									ReactDOM.createPortal(
-										<MuiCardActionAreaButton {...rest} ref={forwardedRef} />,
-										cardContext.titleElement,
-									)}
+								{ReactDOM.createPortal(
+									<MuiCardActionAreaButton {...rest} ref={forwardedRef} />,
+									titleElement,
+								)}
 							</>
 						);
 					}

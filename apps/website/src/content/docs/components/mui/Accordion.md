@@ -33,7 +33,7 @@ Make sure the **Accordion** is suitable for your use case. There may be other, m
 - Added `markerPlacement` prop to override responsive design and force the [marker placement](#marker-placement).
 - Added `startIndent` prop to align content with the summary title.
 - The default `disableGutters` is now `"true"`.
-- The `slotProps.root.square` prop defaults to true except when `variant="outlined"`.
+- The default value of the `root` slot's [`square`](https://mui.com/material-ui/api/paper/#paper-prop-square) prop defaults to true except when `variant="outlined"`.
 - You are not required to attribute `<AccordionSummary>` with `aria-controls`.
 - Removed [`role="region"`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/region_role) semantics. The **Accordion** no longer creates a region landmark.
 - Includes full `forced-colors` support.

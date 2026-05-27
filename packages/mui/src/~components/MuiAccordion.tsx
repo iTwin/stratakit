@@ -4,8 +4,10 @@
  *--------------------------------------------------------------------------------------------*/
 
 import { Role } from "@ariakit/react/role";
+import Paper from "@mui/material/Paper";
 import { forwardRef } from "@stratakit/foundations/secret-internals";
 
+import type { AccordionOwnerState } from "@mui/material/Accordion";
 import type { AccordionDetailsProps } from "@mui/material/AccordionDetails";
 import type { AccordionSummaryOwnProps } from "@mui/material/AccordionSummary";
 import type { BaseProps } from "@stratakit/foundations/secret-internals";
@@ -33,6 +35,27 @@ DEV: MuiAccordionDetails.displayName = "MuiAccordionDetails";
 
 // ----------------------------------------------------------------------------
 
+interface MuiAccordionRootSlotProps extends BaseProps {
+	ownerState?: AccordionOwnerState;
+}
+
+const MuiAccordionRootSlot = forwardRef<"div", MuiAccordionRootSlotProps>(
+	(props, forwardedRef) => {
+		const { square, variant } = props.ownerState || {};
+
+		return (
+			<Paper
+				{...props}
+				square={square ?? variant !== "outlined"} // Disable rounded corners on non-outlined variants
+				ref={forwardedRef}
+			/>
+		);
+	},
+);
+DEV: MuiAccordionRootSlot.displayName = "MuiAccordionRootSlot";
+
+// ----------------------------------------------------------------------------
+
 interface MuiAccordionSummaryProps
 	extends BaseProps,
 		Pick<AccordionSummaryOwnProps, "markerPlacement"> {}
@@ -55,4 +78,4 @@ DEV: MuiAccordionSummary.displayName = "MuiAccordionSummary";
 
 // ----------------------------------------------------------------------------
 
-export { MuiAccordionDetails, MuiAccordionSummary };
+export { MuiAccordionDetails, MuiAccordionRootSlot, MuiAccordionSummary };

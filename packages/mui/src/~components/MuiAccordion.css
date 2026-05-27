@@ -11,6 +11,7 @@
 	background-color: transparent;
 	border-color: var(--stratakit-color-border-neutral-muted);
 	border-radius: var(--_MuiAccordion-border-radius);
+	overflow-anchor: none; /* Prevent scroll jump with exclusive accordions */
 
 	&:where(.MuiPaper-rounded) {
 		--_MuiAccordion-border-radius: 8px;

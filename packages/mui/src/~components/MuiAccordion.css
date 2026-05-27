@@ -13,6 +13,11 @@
 	border-radius: var(--_MuiAccordion-border-radius);
 	overflow-anchor: none; /* Prevent scroll jump with exclusive accordions */
 
+	@container (inline-size < 500px) {
+		--_MuiAccordion-details-indent: var(--_MuiAccordion-padding);
+		--_MuiAccordion-expand-icon-order: 0;
+	}
+
 	&:where(.MuiPaper-rounded) {
 		--_MuiAccordion-border-radius: 8px;
 	}
@@ -65,13 +70,7 @@
 
 .MuiAccordionSummary-expandIconWrapper {
 	color: var(--_MuiAccordion-expand-icon-color);
-	order: -1;
-
-	@container (inline-size < 500px) {
-		:where(.MuiAccordionSummary-root:not([data-_sk-marker-placement])) & {
-			order: 0;
-		}
-	}
+	order: var(--_MuiAccordion-expand-icon-order, -1);
 
 	:where(.MuiAccordionSummary-root[data-_sk-marker-placement="end"]) & {
 		order: 0;
@@ -87,13 +86,7 @@
 
 	color: var(--stratakit-color-text-neutral-secondary);
 	padding: var(--_MuiAccordion-padding);
-	padding-inline-start: var(--✨indent);
-
-	@container (inline-size < 500px) {
-		:where(.MuiAccordion-root:has(.MuiAccordionSummary-root:not([data-_sk-marker-placement]))) & {
-			padding-inline-start: var(--_MuiAccordion-padding);
-		}
-	}
+	padding-inline-start: var(--_MuiAccordion-details-indent, var(--✨indent));
 
 	:where(.MuiAccordion-root:has(.MuiAccordionSummary-root[data-_sk-marker-placement="end"])) & {
 		padding-inline-start: var(--_MuiAccordion-padding);

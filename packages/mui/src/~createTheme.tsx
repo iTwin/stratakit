@@ -9,7 +9,10 @@ import OutlinedInput from "@mui/material/OutlinedInput";
 import StepConnector from "@mui/material/StepConnector";
 import { createTheme as createMuiTheme } from "@mui/material/styles";
 import cx from "classnames";
-import { MuiAccordionSummary } from "./~components/MuiAccordionSummary.js";
+import {
+	MuiAccordionRootSlot,
+	MuiAccordionSummary,
+} from "./~components/MuiAccordion.js";
 import { MuiAlert, MuiAlertTitle } from "./~components/MuiAlert.js";
 import { MuiAutocomplete } from "./~components/MuiAutocomplete.js";
 import { MuiAvatarGroup } from "./~components/MuiAvatarGroup.js";
@@ -29,6 +32,8 @@ import {
 import { MuiDivider } from "./~components/MuiDivider.js";
 import { MuiIconButton } from "./~components/MuiIconButton.js";
 import { MuiInputLabel } from "./~components/MuiInputLabel.js";
+import { MuiMenuListSlot } from "./~components/MuiMenu.js";
+import { MuiPopoverPaperSlot } from "./~components/MuiPopover.js";
 import { MuiSnackbar } from "./~components/MuiSnackbar.js";
 import { MuiStepIcon } from "./~components/MuiStepper.js";
 import {
@@ -120,12 +125,10 @@ function createTheme() {
 				defaultProps: {
 					component: Role.div,
 					disableGutters: true,
+					slots: {
+						root: MuiAccordionRootSlot,
+					},
 					slotProps: {
-						root({ variant, square }) {
-							return {
-								square: square ?? (variant !== "outlined" ? true : undefined), // Disable rounded corners on non-outlined variants
-							};
-						},
 						region: {
 							role: undefined,
 							"aria-labelledby": undefined,
@@ -253,7 +256,12 @@ function createTheme() {
 				},
 			},
 			MuiCard: { defaultProps: { component: MuiCard } },
-			MuiCardActionArea: { defaultProps: { component: MuiCardActionArea } },
+			MuiCardActionArea: {
+				defaultProps: {
+					component: MuiCardActionArea,
+					slots: { focusHighlight: Nothing },
+				},
+			},
 			MuiCardContent: { defaultProps: { component: Role.div } },
 			MuiCardHeader: {
 				defaultProps: {
@@ -369,6 +377,9 @@ function createTheme() {
 			MuiMenu: {
 				defaultProps: {
 					component: Role.div,
+					slots: {
+						list: MuiMenuListSlot,
+					},
 					slotProps: {
 						paper: {
 							role: "presentation", // Removes role="dialog"
@@ -403,7 +414,12 @@ function createTheme() {
 				defaultProps: {
 					component: Role.div,
 					disableScrollLock: true,
-					slotProps: { paper: { role: "dialog" } },
+					slots: {
+						paper: MuiPopoverPaperSlot,
+					},
+					slotProps: {
+						paper: { role: "dialog" },
+					},
 				},
 			},
 			MuiRadio: {

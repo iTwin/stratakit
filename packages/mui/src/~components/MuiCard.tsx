@@ -27,7 +27,6 @@ const MuiCardContext = React.createContext<
 
 const MuiCard = forwardRef<"article", BaseProps<"article">>(
 	(props, forwardedRef) => {
-		const { role, ...rest } = props;
 		const [actionAreaElement, setActionAreaElement] = React.useState<
 			HTMLElement | undefined | null
 		>(undefined);
@@ -53,7 +52,7 @@ const MuiCard = forwardRef<"article", BaseProps<"article">>(
 			>
 				<Role
 					render={<article />}
-					{...rest}
+					{...props}
 					data-_sk-actionable={actionAreaElement ? "" : undefined}
 					onClick={useEventHandlers(props.onClick, handleActionAreaClick)}
 					ref={forwardedRef as React.Ref<HTMLDivElement>}
@@ -68,13 +67,11 @@ DEV: MuiCard.displayName = "MuiCard";
 
 const MuiCardActionArea = forwardRef<"button", BaseProps<"button">>(
 	(props, forwardedRef) => {
-		const { role, ...rest } = props;
-
 		const context = React.useContext(MuiCardContext);
 
 		return (
 			<MuiButtonBase
-				{...rest}
+				{...props}
 				ref={useMergedRefs(context?.setActionAreaElement, forwardedRef)}
 			/>
 		);

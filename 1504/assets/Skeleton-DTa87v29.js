@@ -1,0 +1,1 @@
+import{t as i}from"./index-qbWDqXP-.js";import{f as o,az as n,R as m,h as d}from"./~utils-tQX_FoTy.js";const f=o((a,e)=>{n();const{variant:t="text",size:s="medium",...r}=a;return i.jsx(m.div,{...r,ref:e,className:d("🥝Skeleton",a.className),"data-_sk-variant":t,"data-_sk-size":s,"aria-hidden":!0})});var x=f;export{x as S};

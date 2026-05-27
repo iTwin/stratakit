@@ -40,17 +40,6 @@ declare module "@mui/material/OverridableComponent" {
 	}
 }
 
-declare module "@mui/material/AccordionDetails" {
-	interface AccordionDetailsProps {
-		/**
-		 * If `true`, indents the details content to align with the summary title.
-		 *
-		 * @default false
-		 */
-		startIndent?: boolean;
-	}
-}
-
 declare module "@mui/material/AccordionSummary" {
 	interface AccordionSummaryOwnProps {
 		/**

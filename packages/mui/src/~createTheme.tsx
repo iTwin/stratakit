@@ -10,7 +10,6 @@ import StepConnector from "@mui/material/StepConnector";
 import { createTheme as createMuiTheme } from "@mui/material/styles";
 import cx from "classnames";
 import {
-	MuiAccordionDetails,
 	MuiAccordionRootSlot,
 	MuiAccordionSummary,
 } from "./~components/MuiAccordion.js";
@@ -143,11 +142,6 @@ function createTheme() {
 					nativeButton: false,
 					expandIcon: <ChevronDownIcon />,
 				},
-			},
-			MuiAccordionDetails: {
-				defaultProps: {
-					as: MuiAccordionDetails,
-				} as never,
 			},
 			MuiAlert: {
 				defaultProps: {

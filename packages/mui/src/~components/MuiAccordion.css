@@ -88,14 +88,12 @@
 	color: var(--stratakit-color-text-neutral-secondary);
 	padding: var(--_MuiAccordion-padding);
 
-	:where(.MuiAccordion-root:has(.MuiAccordionSummary-root[data-_sk-marker-placement="start"]))
-		&:where([data-_sk-start-indent]) {
+	:where(.MuiAccordion-root:has(.MuiAccordionSummary-root[data-_sk-marker-placement="start"])) & {
 		padding-inline-start: var(--✨indent);
 	}
 
 	@container (inline-size > 499px) {
-		:where(.MuiAccordion-root:has(.MuiAccordionSummary-root:not([data-_sk-marker-placement])))
-			&:where([data-_sk-start-indent]) {
+		:where(.MuiAccordion-root:has(.MuiAccordionSummary-root:not([data-_sk-marker-placement]))) & {
 			padding-inline-start: var(--✨indent);
 		}
 	}

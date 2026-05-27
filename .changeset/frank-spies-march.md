@@ -2,4 +2,4 @@
 "@stratakit/mui": patch
 ---
 
-Added `startIndent` prop to `AccordionDetails` for aligning content with the summary title.
+Indent `AccordionDetails` when the summary marker is left-aligned.

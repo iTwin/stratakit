@@ -57,29 +57,17 @@ function ActionsMenu() {
 	const open = Boolean(anchorEl);
 	const handleClose = () => setAnchorEl(null);
 
-	const buttonId = React.useId();
-
 	return (
 		<>
 			<IconButton
 				label="More actions"
-				id={buttonId}
 				aria-haspopup="true"
 				aria-expanded={open ? "true" : "false"}
 				onClick={(event) => setAnchorEl(event.currentTarget)}
 			>
 				<Icon href={svgMore} />
 			</IconButton>
-			<Menu
-				anchorEl={anchorEl}
-				open={open}
-				onClose={handleClose}
-				slotProps={{
-					list: {
-						"aria-labelledby": buttonId,
-					},
-				}}
-			>
+			<Menu anchorEl={anchorEl} open={open} onClose={handleClose}>
 				<MenuItem onClick={handleClose}>Favorite</MenuItem>
 				<MenuItem onClick={handleClose}>Delete</MenuItem>
 			</Menu>

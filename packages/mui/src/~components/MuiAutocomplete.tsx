@@ -21,6 +21,16 @@ import type { BaseProps } from "@stratakit/foundations/secret-internals";
 
 // ----------------------------------------------------------------------------
 
+const MuiAutocompleteContext = React.createContext<
+	| {
+			inputRootRef: HTMLElement | null;
+			setInputRootRef: (ref: HTMLElement | null) => void;
+	  }
+	| undefined
+>(undefined);
+
+// ----------------------------------------------------------------------------
+
 type AutocompleteProps = React.ComponentProps<typeof Autocomplete>;
 type OnKeyDownEvent = Parameters<
 	NonNullable<AutocompleteProps["onKeyDown"]>
@@ -28,6 +38,9 @@ type OnKeyDownEvent = Parameters<
 
 const MuiAutocomplete = forwardRef<"div", BaseProps>((props, forwardedRef) => {
 	const [labelId, setLabelId] = React.useState<string | undefined>(undefined);
+	const [inputRootRef, setInputRootRef] = React.useState<HTMLElement | null>(
+		null,
+	);
 
 	return (
 		<ThemeProvider
@@ -50,19 +63,23 @@ const MuiAutocomplete = forwardRef<"div", BaseProps>((props, forwardedRef) => {
 				},
 			})}
 		>
-			<MuiInputLabelContext.Provider value={{ setLabelId }}>
-				<Role.div
-					role="group"
-					aria-labelledby={labelId}
-					{...props}
-					onKeyDown={useEventHandlers<OnKeyDownEvent>((e) => {
-						if (e.key === "ArrowLeft" || e.key === "ArrowRight") {
-							e.defaultMuiPrevented = true; // Prevent MUI from closing the listbox while trying to focus the tags
-						}
-					}, props.onKeyDown)}
-					ref={forwardedRef}
-				/>
-			</MuiInputLabelContext.Provider>
+			<MuiAutocompleteContext.Provider
+				value={{ inputRootRef, setInputRootRef }}
+			>
+				<MuiInputLabelContext.Provider value={{ setLabelId }}>
+					<Role.div
+						role="group"
+						aria-labelledby={labelId}
+						{...props}
+						onKeyDown={useEventHandlers<OnKeyDownEvent>((e) => {
+							if (e.key === "ArrowLeft" || e.key === "ArrowRight") {
+								e.defaultMuiPrevented = true; // Prevent MUI from closing the listbox while trying to focus the tags
+							}
+						}, props.onKeyDown)}
+						ref={forwardedRef}
+					/>
+				</MuiInputLabelContext.Provider>
+			</MuiAutocompleteContext.Provider>
 		</ThemeProvider>
 	);
 });
@@ -104,12 +121,24 @@ const MuiAutocompleteChipDeleteIcon = forwardRef<
 	"button",
 	React.ComponentProps<typeof MuiChipDeleteIcon>
 >((props, forwardedRef) => {
+	const { inputRootRef } = React.useContext(MuiAutocompleteContext) ?? {};
+
 	return (
 		<MuiChipDeleteIcon
 			{...props}
 			onKeyDown={useEventHandlers(props.onKeyDown, (e) => {
 				// Stop Autocomplete from opening the listbox
 				e.stopPropagation();
+			})}
+			onClick={useEventHandlers(props.onClick, () => {
+				if (!inputRootRef) return;
+
+				const htmlInput = inputRootRef.getElementsByClassName(
+					"MuiAutocomplete-input",
+				)[0] as HTMLInputElement | undefined;
+				if (!htmlInput) return;
+
+				htmlInput.focus();
 			})}
 			ref={forwardedRef}
 		/>
@@ -122,6 +151,8 @@ DEV: MuiAutocompleteChipDeleteIcon.displayName =
 
 const MuiAutocompleteTextFieldInput = forwardRef<"div", BaseProps>(
 	(props, forwardedRef) => {
+		const { setInputRootRef } = React.useContext(MuiAutocompleteContext) ?? {};
+
 		const [host, setHost] = React.useState<HTMLElement | null>(null);
 		const [shadow, setShadow] = React.useState<ShadowRoot | null>(null);
 		React.useEffect(() => {
@@ -131,9 +162,13 @@ const MuiAutocompleteTextFieldInput = forwardRef<"div", BaseProps>(
 			}
 			setShadow(host.shadowRoot);
 		}, [host]);
+
 		return (
 			<>
-				<Role {...props} ref={useMergedRefs(setHost, forwardedRef)} />
+				<Role
+					{...props}
+					ref={useMergedRefs(setHost, setInputRootRef, forwardedRef)}
+				/>
 				{shadow &&
 					ReactDOM.createPortal(
 						<>

@@ -27,6 +27,7 @@ import { MuiButtonBase } from "./~components/MuiButtonBase.js";
 import {
 	MuiCard,
 	MuiCardActionArea,
+	MuiCardHeaderTitle,
 	MuiCardMedia,
 } from "./~components/MuiCard.js";
 import {
@@ -277,7 +278,7 @@ function createTheme() {
 					slotProps: {
 						title: {
 							// biome-ignore lint/suspicious/noExplicitAny: MUI's CardHeader.title.component is hardcoded to "span"
-							component: Role.h2 as any,
+							component: MuiCardHeaderTitle as any,
 						},
 					},
 				},

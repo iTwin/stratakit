@@ -87,13 +87,15 @@
 
 	color: var(--stratakit-color-text-neutral-secondary);
 	padding: var(--_MuiAccordion-padding);
-
-	:where(.MuiAccordion-root:has(.MuiAccordionSummary-root:not([data-_sk-marker-placement="end"])))
-		& {
-		padding-inline-start: var(--✨indent);
-	}
+	padding-inline-start: var(--✨indent);
 
 	@container (inline-size < 500px) {
+		:where(.MuiAccordion-root:has(.MuiAccordionSummary-root:not([data-_sk-marker-placement]))) & {
+			padding-inline-start: var(--_MuiAccordion-padding);
+		}
+	}
+
+	:where(.MuiAccordion-root:has(.MuiAccordionSummary-root[data-_sk-marker-placement="end"])) & {
 		padding-inline-start: var(--_MuiAccordion-padding);
 	}
 }

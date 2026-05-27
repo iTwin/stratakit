@@ -3,12 +3,70 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
+.MuiTabs-root {
+	--_MuiTabs-active-stripe-gap: var(--stratakit-space-x2);
+	--_MuiTabs-height: var(--stratakit-size-control-field-height-medium);
+
+	min-block-size: calc(var(--_MuiTabs-height) + var(--_MuiTabs-active-stripe-gap));
+}
+
+.MuiTabs-list {
+	gap: var(--stratakit-space-x2);
+}
+
 .MuiTab-root {
-	&:where(.Mui-selected) {
-		color: var(--stratakit-color-text-accent-strong);
+	--✨bg--hover: var(--stratakit-color-bg-glow-on-surface-neutral-hover);
+	--✨bg--selected-hover: var(--stratakit-color-bg-glow-on-surface-accent-hover);
+
+	--✨color--default: var(--stratakit-color-text-neutral-tertiary);
+	--✨color--hover: var(--stratakit-color-text-neutral-primary);
+	--✨color--selected: var(--stratakit-color-text-accent-strong);
+	--✨color--disabled: var(--stratakit-color-text-neutral-disabled);
+
+	background-color: var(--_MuiTabs-background-color, transparent);
+	border-radius: 4px;
+	color: var(--_MuiTabs-color, var(--✨color--default));
+	min-block-size: var(--_MuiTabs-height);
+	min-inline-size: var(--_MuiTabs-height); /* Forces 1:1 aspect ratio when the tab is icon-only */
+	overflow: visible;
+	padding-block: 0;
+	padding-inline: var(--stratakit-space-x3);
+	position: relative;
+	transition:
+		background-color 150ms ease-out,
+		color 150ms ease-out;
+
+	/* This pseudo-element increases tap target size */
+	&::before {
+		content: "";
+		inset-block: 0 calc(var(--_MuiTabs-active-stripe-gap) * -1);
+		inset-inline: 0;
+		position: absolute;
 	}
+
+	@media (any-hover: hover) {
+		&:where(:not(.Mui-disabled)) {
+			&:where(:hover) {
+				--_MuiTabs-background-color: var(--✨bg--hover);
+				--_MuiTabs-color: var(--✨color--hover);
+			}
+
+			&:where(.Mui-selected:hover) {
+				--_MuiTabs-background-color: var(--✨bg--selected-hover);
+			}
+		}
+	}
+
+	&:where(.Mui-selected) {
+		--_MuiTabs-color: var(--✨color--selected);
+	}
+
+	&:where(.Mui-disabled) {
+		--_MuiTabs-color: var(--✨color--disabled);
+	}
+
 	&:where(:focus-visible) {
-		outline-offset: -4px;
+		outline-offset: -2px;
 	}
 }
 

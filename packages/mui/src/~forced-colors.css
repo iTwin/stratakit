@@ -282,6 +282,24 @@
 	}
 }
 
+.MuiTab-root {
+	background-color: ButtonFace;
+	border: 1px solid ButtonBorder;
+	color: ButtonText;
+
+	&:where(.Mui-selected) {
+		forced-color-adjust: none; /* removing the backplate */
+		background-color: SelectedItem;
+		color: SelectedItemText;
+	}
+
+	&:where(.Mui-disabled) {
+		background-color: Canvas;
+		border-color: GrayText;
+		color: GrayText;
+	}
+}
+
 .MuiTabs-indicator {
 	background-color: CanvasText;
 }

@@ -1,0 +1,1 @@
+import{j as s}from"./_utils.DVw5KApz.js";import{S as r}from"./Stack.c8d7OMrA.js";import{B as e}from"./Button.Rqq11B5b.js";const n=()=>s.jsxs(r,{spacing:1,direction:"row",sx:{alignItems:"center"},children:[s.jsx(e,{size:"small",children:"Small"}),s.jsx(e,{size:"medium",children:"Medium"}),s.jsx(e,{size:"large",children:"Large"})]});export{n as default};

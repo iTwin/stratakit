@@ -32,7 +32,7 @@ Make sure the **Accordion** is suitable for your use case. There may be other, m
 - Added [responsive design](#responsive-design) that reorients the marker placement based on container width.
 - Added `markerPlacement` prop to override responsive design and force the [marker placement](#marker-placement).
 - Added details indentation when the `markerPlacement` is set to `"start"`.
-- The default `disableGutters` is now `"true"`.
+- The default `disableGutters` is now `true`.
 - The default value of the `root` slot's [`square`](https://mui.com/material-ui/api/paper/#paper-prop-square) prop defaults to true except when `variant="outlined"`.
 - You are not required to attribute `<AccordionSummary>` with `aria-controls`.
 - Removed [`role="region"`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/region_role) semantics. The **Accordion** no longer creates a region landmark.

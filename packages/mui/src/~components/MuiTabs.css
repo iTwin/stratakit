@@ -9,7 +9,7 @@
 	--_MuiTab-padding-block: var(--stratakit-space-x1);
 	--_MuiTab-padding-inline: var(--stratakit-space-x3);
 
-	min-block-size: calc(var(--_MuiTab-height) + var(--_MuiTabs-indicator-gap));
+	min-block-size: unset; /* Allow `.MuiTab-root` to define height */
 }
 
 .MuiTabs-list {
@@ -29,6 +29,8 @@
 	background-color: var(--_MuiTab-background-color, transparent);
 	border-radius: 4px;
 	color: var(--_MuiTab-color, var(--✨color--default));
+	margin-block-start: var(--_MuiTabs-indicator-gap);
+	margin-block-end: var(--_MuiTabs-indicator-gap);
 	min-block-size: var(--_MuiTab-height);
 	min-inline-size: var(--_MuiTab-height); /* Forces 1:1 aspect ratio when the tab is icon-only */
 	overflow: visible;
@@ -44,7 +46,7 @@
 	/* This pseudo-element increases tap target size */
 	&::before {
 		content: "";
-		inset-block: 0 calc(var(--_MuiTabs-indicator-gap) * -1);
+		inset-block: calc(var(--_MuiTabs-indicator-gap) * -1);
 		inset-inline: 0;
 		position: absolute;
 	}

@@ -14,6 +14,13 @@
 	overflow-anchor: none; /* Prevent scroll jump with exclusive accordions */
 
 	@container (inline-size < 500px) {
+		&:where(:has(.MuiAccordionSummary-root:not([data-_sk-marker-placement="start"]))) {
+			--_MuiAccordion-details-indent: var(--_MuiAccordion-padding);
+			--_MuiAccordion-expand-icon-order: 0;
+		}
+	}
+
+	&:where(:has(.MuiAccordionSummary-root[data-_sk-marker-placement="end"])) {
 		--_MuiAccordion-details-indent: var(--_MuiAccordion-padding);
 		--_MuiAccordion-expand-icon-order: 0;
 	}
@@ -71,14 +78,6 @@
 .MuiAccordionSummary-expandIconWrapper {
 	color: var(--_MuiAccordion-expand-icon-color);
 	order: var(--_MuiAccordion-expand-icon-order, -1);
-
-	:where(.MuiAccordionSummary-root[data-_sk-marker-placement="start"]) & {
-		order: -1;
-	}
-
-	:where(.MuiAccordionSummary-root[data-_sk-marker-placement="end"]) & {
-		order: 0;
-	}
 }
 
 .MuiAccordionDetails-root {
@@ -91,12 +90,4 @@
 	color: var(--stratakit-color-text-neutral-secondary);
 	padding: var(--_MuiAccordion-padding);
 	padding-inline-start: var(--_MuiAccordion-details-indent, var(--✨indent));
-
-	:where(.MuiAccordion-root:has(.MuiAccordionSummary-root[data-_sk-marker-placement="start"])) & {
-		padding-inline-start: var(--✨indent);
-	}
-
-	:where(.MuiAccordion-root:has(.MuiAccordionSummary-root[data-_sk-marker-placement="end"])) & {
-		padding-inline-start: var(--_MuiAccordion-padding);
-	}
 }

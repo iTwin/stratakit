@@ -72,4 +72,8 @@
 
 .MuiTabs-indicator {
 	background-color: var(--stratakit-color-border-accent-strong);
+
+	@media (prefers-reduced-motion: reduce) {
+		transition: none;
+	}
 }

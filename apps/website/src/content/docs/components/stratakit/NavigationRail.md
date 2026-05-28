@@ -26,9 +26,9 @@ In the example below:
 
 - The [`NavigationRail.Root`](/reference/structures/NavigationRail/#NavigationRail.Root) state is controlled via the [`expanded`](/reference/structures/NavigationRail#NavigationRail.Root.expanded) and [`setExpanded`](/reference/structures/NavigationRail#NavigationRail.Root.setExpanded) props, enabling conditional rendering based on whether the rail is expanded or collapsed.
 - The [**Badge**](/components/badge/) component is used to display a notification indicator for the "Notifications" item.
-  - When the rail is collapsed, a dot badge is shown near the icon. The [`suffix`](/reference/structures/NavigationRail/#NavigationRail.Button.suffix) prop is used to expose the notification count via the tooltip, so that the resulting tooltip reads "Notifications (3)".
+  - When the rail is collapsed, a dot badge is shown next to the icon. The [`suffix`](/reference/structures/NavigationRail/#NavigationRail.Button.suffix) prop is used to display the notification count via the tooltip, so that the resulting tooltip reads "Notifications (3)".
   - When the rail is expanded, an [inline badge](/components/badge/#inline) with the notification count "3" is displayed next to the label via the `suffix` prop.
-  - For both collapsed and expanded states, the `suffix` prop adds a "(3 unread)" message, resulting in the final accessible name of the button being "Notifications (3 unread)".
+  - In both states, the `suffix` prop contributes to the accessible name by adding a "(3 unread)" message, resulting in the accessible name "Notifications (3 unread)".
 - The [**Menu**](/components/menu/) component is used to expose multiple related actions for the "Account" item.
 
 ::example{src="structures/NavigationRail.comprehensive" min-height="450px" min-width="450px" vertical-stretch}

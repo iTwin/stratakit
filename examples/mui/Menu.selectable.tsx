@@ -21,7 +21,6 @@ export default () => {
 	return (
 		<>
 			<Button
-				id={mainLabelId}
 				aria-haspopup="true"
 				aria-expanded={open ? "true" : "false"}
 				onClick={(event) => setAnchorEl(event.currentTarget)}

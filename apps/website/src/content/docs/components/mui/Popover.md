@@ -10,12 +10,14 @@ links:
 
 ## StrataKit MUI modifications
 
-- Added [`role="dialog"`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/dialog_role) to the `paper` slot.
+- Added [`role="dialog"`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/dialog_role) to the [`paper`](https://mui.com/material-ui/api/popover/#Popover-css-MuiPopover-paper) slot.
+- Added fallback mechanism for automatically labelling the `paper` slot using the trigger element (`anchorEl`).
+- `disableScrollLock` is used to prevent scroll locking when the popover is open.
 
 ## ✅ Do
 
-- [Label](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/dialog_role#labeling) the **Popover's** `paper` slot using an `aria-labelledby` attribute pointing to a heading inside the popover or the trigger element's `id`.
+- Consider [labelling](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/dialog_role#labeling) the **Popover's** `paper` slot using an `aria-labelledby` attribute pointing to a heading inside the popover.
 
 ## 🚫 Don't
 
-- Don't forget to provide an accessible [label](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/dialog_role#labeling)
+- Don't forget to validate that the **Popover** has an appropriate accessible [label](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/dialog_role#labeling).

@@ -110,24 +110,19 @@ function NotificationsButton({ expanded }: NotificationsButtonProps) {
 			label="Notifications"
 			suffix={
 				<>
-					{expanded ? (
-						// Inline badge is displayed when the rail is expanded
-						<Badge
+					{expanded && (
+						<Badge // Inline badge is displayed when the rail is expanded
 							badgeContent={notificationCount}
 							inline
 							color="error"
-							slotProps={{
-								badge: {
-									"aria-hidden": true, // The badge is hidden from assistive technologies
-								},
-							}}
+							aria-hidden="true" // The badge is hidden from assistive technologies
 						/>
-					) : (
-						// Decorative notification count is displayed in the tooltip when the rail is collapsed
-						<span aria-hidden>({notificationCount})</span>
 					)}
 					{/* Visually hidden message, that contributes to the accessible name of the button */}
-					<span style={visuallyHidden}>({notificationCount} unread)</span>
+					<span style={expanded ? visuallyHidden : undefined}>
+						({notificationCount}
+						<span style={visuallyHidden}> unread</span>)
+					</span>
 				</>
 			}
 		/>

@@ -118,7 +118,7 @@ function NotificationsButton({ expanded }: NotificationsButtonProps) {
 							aria-hidden="true" // The badge is hidden from assistive technologies
 						/>
 					)}
-					{/* Visually hidden message, that contributes to the accessible name of the button */}
+					{/* Displays "(3)" in the tooltip when the rail is collapsed and adds "(3 unread)" to the accessible name */}
 					<span style={expanded ? visuallyHidden : undefined}>
 						({notificationCount}
 						<span style={visuallyHidden}> unread</span>)

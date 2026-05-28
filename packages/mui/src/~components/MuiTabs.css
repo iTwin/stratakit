@@ -46,7 +46,7 @@
 	/* This pseudo-element increases tap target size */
 	&::before {
 		content: "";
-		inset-block: calc(var(--_MuiTabs-indicator-gap) * -1);
+		inset-block-end: calc(var(--_MuiTabs-indicator-gap) * -1);
 		inset-inline: 0;
 		position: absolute;
 	}

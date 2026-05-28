@@ -8,6 +8,11 @@ links:
 
 ::example{src="mui/Tabs.default"}
 
+## StrataKit MUI modifications
+
+- Restyled using StrataKit's visual language.
+- Includes full `forced-colors` support.
+
 ## Examples
 
 ### Scrollable

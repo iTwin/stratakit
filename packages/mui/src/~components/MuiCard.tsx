@@ -4,14 +4,16 @@
  *--------------------------------------------------------------------------------------------*/
 
 import * as React from "react";
+import * as ReactDOM from "react-dom";
 import { Role } from "@ariakit/react/role";
 import {
-	type BaseProps,
 	forwardRef,
 	useEventHandlers,
 	useMergedRefs,
 } from "@stratakit/foundations/secret-internals";
 import { MuiButtonBase } from "./MuiButtonBase.js";
+
+import type { BaseProps } from "@stratakit/foundations/secret-internals";
 
 // ----------------------------------------------------------------------------
 
@@ -65,19 +67,93 @@ DEV: MuiCard.displayName = "MuiCard";
 
 // ----------------------------------------------------------------------------
 
-const MuiCardActionArea = forwardRef<"button", BaseProps<"button">>(
+const MuiCardHeaderTitle = forwardRef<"h2", BaseProps<"h2">>(
 	(props, forwardedRef) => {
-		const context = React.useContext(MuiCardContext);
+		const cardContext = React.useContext(MuiCardContext);
+		const cardActionAreaContext = React.useContext(MuiCardActionAreaContext);
+
+		const { children, ...rest } = props;
 
 		return (
-			<MuiButtonBase
-				{...props}
-				ref={useMergedRefs(context?.setActionAreaElement, forwardedRef)}
-			/>
+			<Role.h2
+				{...rest}
+				ref={useMergedRefs(
+					cardActionAreaContext?.setTitleElement,
+					forwardedRef,
+				)}
+			>
+				{(() => {
+					// If CardActionArea is an ancestor of the title, then we portal the title content into the CardActionArea's button element.
+					if (cardActionAreaContext) {
+						return cardContext?.actionAreaElement
+							? ReactDOM.createPortal(children, cardContext.actionAreaElement)
+							: null;
+					}
+					return children;
+				})()}
+			</Role.h2>
+		);
+	},
+);
+DEV: MuiCardHeaderTitle.displayName = "MuiCardHeaderTitle";
+
+// ----------------------------------------------------------------------------
+
+const MuiCardActionAreaContext = React.createContext<
+	{ setTitleElement: (element?: HTMLElement | null) => void } | undefined
+>(undefined);
+
+const MuiCardActionArea = forwardRef<"button", BaseProps<"button">>(
+	(props, forwardedRef) => {
+		const { children, ...rest } = props;
+
+		// This gets populated by a descendant CardHeaderTitle
+		const [titleElement, setTitleElement] = React.useState<
+			HTMLElement | undefined | null
+		>(undefined);
+
+		return (
+			<MuiCardActionAreaContext.Provider value={{ setTitleElement }}>
+				{(() => {
+					// If the CardActionArea is rendered as an ancestor of the title, then we portal the button element into the title element.
+					// This helps avoids potential accessibility issues (e.g. nested buttons, such as when using CardHeader's `action` prop).
+					if (titleElement) {
+						return (
+							<>
+								{children}
+								{ReactDOM.createPortal(
+									<MuiCardActionAreaButton {...rest} ref={forwardedRef} />,
+									titleElement,
+								)}
+							</>
+						);
+					}
+
+					return (
+						<MuiCardActionAreaButton {...rest} ref={forwardedRef}>
+							{children}
+						</MuiCardActionAreaButton>
+					);
+				})()}
+			</MuiCardActionAreaContext.Provider>
 		);
 	},
 );
 DEV: MuiCardActionArea.displayName = "MuiCardActionArea";
+
+const MuiCardActionAreaButton = forwardRef<"button", BaseProps<"button">>(
+	(props, forwardedRef) => {
+		const cardContext = React.useContext(MuiCardContext);
+
+		return (
+			<MuiButtonBase
+				{...props}
+				ref={useMergedRefs(cardContext?.setActionAreaElement, forwardedRef)}
+			/>
+		);
+	},
+);
+DEV: MuiCardActionAreaButton.displayName = "MuiCardActionAreaButton";
 
 // ----------------------------------------------------------------------------
 
@@ -138,4 +214,4 @@ DEV: MuiCardMedia.displayName = "MuiCardMedia";
 
 // ----------------------------------------------------------------------------
 
-export { MuiCard, MuiCardActionArea, MuiCardMedia };
+export { MuiCard, MuiCardActionArea, MuiCardHeaderTitle, MuiCardMedia };

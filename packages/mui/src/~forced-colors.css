@@ -113,6 +113,13 @@
 	}
 }
 
+.MuiChip-root {
+	&:where(.Mui-disabled) {
+		border-color: GrayText;
+		color: GrayText;
+	}
+}
+
 .MuiDialog-paper {
 	border: 1px solid;
 }

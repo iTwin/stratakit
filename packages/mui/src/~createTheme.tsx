@@ -340,32 +340,6 @@ function createTheme() {
 			},
 			MuiLink: {
 				defaultProps: { component: Role.a, color: "textPrimary" },
-				variants: [
-					{
-						props: { color: "primary" },
-						style: { color: "var(--stratakit-color-text-accent-strong)" },
-					},
-					{
-						props: { color: "secondary" },
-						style: { color: "var(--stratakit-color-text-neutral-primary)" },
-					},
-					{
-						props: { color: "error" },
-						style: { color: "var(--stratakit-color-text-critical-base)" },
-					},
-					{
-						props: { color: "info" },
-						style: { color: "var(--stratakit-color-text-info-base)" },
-					},
-					{
-						props: { color: "success" },
-						style: { color: "var(--stratakit-color-text-positive-base)" },
-					},
-					{
-						props: { color: "warning" },
-						style: { color: "var(--stratakit-color-text-attention-base)" },
-					},
-				],
 			},
 			MuiList: { defaultProps: { component: Role.ul } },
 			MuiListItem: { defaultProps: { component: Role.li } },
@@ -559,6 +533,36 @@ function createTheme() {
 					variant: "body2",
 					component: MuiTypography,
 				},
+				variants: [
+					{
+						props: { color: "primary" },
+						style: { color: "var(--stratakit-color-text-accent-strong)" },
+					},
+					{
+						props: { color: "secondary" },
+						style: { color: "var(--stratakit-color-text-neutral-primary)" },
+					},
+					{
+						props: { color: "textTertiary" },
+						style: { color: "var(--stratakit-color-text-neutral-tertiary)" },
+					},
+					{
+						props: { color: "error" },
+						style: { color: "var(--stratakit-color-text-critical-base)" },
+					},
+					{
+						props: { color: "info" },
+						style: { color: "var(--stratakit-color-text-info-base)" },
+					},
+					{
+						props: { color: "success" },
+						style: { color: "var(--stratakit-color-text-positive-base)" },
+					},
+					{
+						props: { color: "warning" },
+						style: { color: "var(--stratakit-color-text-attention-base)" },
+					},
+				],
 			},
 		},
 	});

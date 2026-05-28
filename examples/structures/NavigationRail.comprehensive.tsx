@@ -130,28 +130,22 @@ function NotificationsButton({ expanded }: NotificationsButtonProps) {
 }
 
 function AccountButton() {
-	const buttonId = React.useId();
 	const [anchorEl, setAnchorEl] = React.useState<HTMLElement | null>(null);
-	const [open, setOpen] = React.useState(false);
-	const close = () => setOpen(false);
+	const handleClose = () => {
+		setAnchorEl(null);
+	};
+
 	return (
 		<>
 			<NavigationRail.Button
-				id={buttonId}
-				ref={setAnchorEl}
 				icon={`${svgUser}#icon-large`}
 				label="Account"
-				onClick={() => setOpen(true)}
+				onClick={(event) => setAnchorEl(event.currentTarget)}
 			/>
 			<Menu
 				anchorEl={anchorEl}
-				open={open}
-				onClose={close}
-				slotProps={{
-					list: {
-						"aria-labelledby": buttonId,
-					},
-				}}
+				open={Boolean(anchorEl)}
+				onClose={handleClose}
 				anchorOrigin={{
 					vertical: "bottom",
 					horizontal: "right",
@@ -161,8 +155,8 @@ function AccountButton() {
 					horizontal: "left",
 				}}
 			>
-				<MenuItem onClick={close}>View profile</MenuItem>
-				<MenuItem onClick={close}>Sign out</MenuItem>
+				<MenuItem onClick={handleClose}>View profile</MenuItem>
+				<MenuItem onClick={handleClose}>Sign out</MenuItem>
 			</Menu>
 		</>
 	);

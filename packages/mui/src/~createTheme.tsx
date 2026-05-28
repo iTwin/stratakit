@@ -14,7 +14,12 @@ import {
 	MuiAccordionSummary,
 } from "./~components/MuiAccordion.js";
 import { MuiAlert, MuiAlertTitle } from "./~components/MuiAlert.js";
-import { MuiAutocomplete } from "./~components/MuiAutocomplete.js";
+import {
+	MuiAutocomplete,
+	MuiAutocompleteChip,
+	MuiAutocompleteChipDeleteIcon,
+	MuiAutocompleteClearIndicator,
+} from "./~components/MuiAutocomplete.js";
 import { MuiAvatarGroup } from "./~components/MuiAvatarGroup.js";
 import { MuiBadge } from "./~components/MuiBadge.js";
 import { MuiBottomNavigationAction } from "./~components/MuiBottomNavigation.js";
@@ -22,6 +27,7 @@ import { MuiButtonBase } from "./~components/MuiButtonBase.js";
 import {
 	MuiCard,
 	MuiCardActionArea,
+	MuiCardHeaderTitle,
 	MuiCardMedia,
 } from "./~components/MuiCard.js";
 import {
@@ -183,8 +189,11 @@ function createTheme() {
 						},
 						chip: {
 							size: "small",
+							component: MuiAutocompleteChip,
+							deleteIcon: <MuiAutocompleteChipDeleteIcon />,
 						},
 						clearIndicator: {
+							component: MuiAutocompleteClearIndicator,
 							tabIndex: 0, // make clear indicator focusable
 							size: "small",
 						},
@@ -269,7 +278,7 @@ function createTheme() {
 					slotProps: {
 						title: {
 							// biome-ignore lint/suspicious/noExplicitAny: MUI's CardHeader.title.component is hardcoded to "span"
-							component: Role.h2 as any,
+							component: MuiCardHeaderTitle as any,
 						},
 					},
 				},

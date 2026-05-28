@@ -21,10 +21,12 @@
 }
 
 .MuiAutocomplete-input:is(.MuiInputBase-input) {
+	order: 2;
 	padding-inline: 0; /* Padding moved to the parent */
 }
 
 .MuiAutocomplete-tag:is(.MuiChip-root) {
+	order: 1;
 	margin-block-start: var(--stratakit-space-x05);
 	margin-block-end: var(--stratakit-space-x05);
 	margin-inline: 0; /* Now relying on `column-gap` */
@@ -35,6 +37,7 @@
 }
 
 .MuiAutocomplete-endAdornment {
+	display: flex; /* Avoid announcing inline buttons with "use screen layout" option in NVDA */
 	inset-inline-end: var(--_MuiAutocomplete-button-inset);
 
 	> * {

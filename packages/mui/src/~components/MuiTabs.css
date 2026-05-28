@@ -4,12 +4,12 @@
  *--------------------------------------------------------------------------------------------*/
 
 .MuiTabs-root {
-	--_MuiTabs-active-stripe-gap: var(--stratakit-space-x2);
-	--_MuiTabs-height: var(--stratakit-size-control-field-height-medium);
-	--_MuiTabs-padding-block: var(--stratakit-space-x1);
-	--_MuiTabs-padding-inline: var(--stratakit-space-x3);
+	--_MuiTabs-indicator-gap: var(--stratakit-space-x2);
+	--_MuiTab-height: var(--stratakit-size-control-field-height-medium);
+	--_MuiTab-padding-block: var(--stratakit-space-x1);
+	--_MuiTab-padding-inline: var(--stratakit-space-x3);
 
-	min-block-size: calc(var(--_MuiTabs-height) + var(--_MuiTabs-active-stripe-gap));
+	min-block-size: calc(var(--_MuiTab-height) + var(--_MuiTabs-indicator-gap));
 }
 
 .MuiTabs-list {
@@ -26,16 +26,16 @@
 	--✨color--disabled: var(--stratakit-color-text-neutral-disabled);
 
 	@apply --typography("body-md");
-	background-color: var(--_MuiTabs-background-color, transparent);
+	background-color: var(--_MuiTab-background-color, transparent);
 	border-radius: 4px;
-	color: var(--_MuiTabs-color, var(--✨color--default));
-	min-block-size: var(--_MuiTabs-height);
-	min-inline-size: var(--_MuiTabs-height); /* Forces 1:1 aspect ratio when the tab is icon-only */
+	color: var(--_MuiTab-color, var(--✨color--default));
+	min-block-size: var(--_MuiTab-height);
+	min-inline-size: var(--_MuiTab-height); /* Forces 1:1 aspect ratio when the tab is icon-only */
 	overflow: visible;
-	padding-block-start: var(--_MuiTabs-padding-block);
-	padding-block-end: var(--_MuiTabs-padding-block);
-	padding-inline-start: var(--_MuiTabs-padding-inline);
-	padding-inline-end: var(--_MuiTabs-padding-inline);
+	padding-block-start: var(--_MuiTab-padding-block);
+	padding-block-end: var(--_MuiTab-padding-block);
+	padding-inline-start: var(--_MuiTab-padding-inline);
+	padding-inline-end: var(--_MuiTab-padding-inline);
 	position: relative;
 	transition:
 		background-color 150ms ease-out,
@@ -44,7 +44,7 @@
 	/* This pseudo-element increases tap target size */
 	&::before {
 		content: "";
-		inset-block: 0 calc(var(--_MuiTabs-active-stripe-gap) * -1);
+		inset-block: 0 calc(var(--_MuiTabs-indicator-gap) * -1);
 		inset-inline: 0;
 		position: absolute;
 	}
@@ -52,22 +52,22 @@
 	@media (any-hover: hover) {
 		&:where(:not(.Mui-disabled)) {
 			&:where(:hover) {
-				--_MuiTabs-background-color: var(--✨bg--hover);
-				--_MuiTabs-color: var(--✨color--hover);
+				--_MuiTab-background-color: var(--✨bg--hover);
+				--_MuiTab-color: var(--✨color--hover);
 			}
 
 			&:where(.Mui-selected:hover) {
-				--_MuiTabs-background-color: var(--✨bg--selected-hover);
+				--_MuiTab-background-color: var(--✨bg--selected-hover);
 			}
 		}
 	}
 
 	&:where(.Mui-selected) {
-		--_MuiTabs-color: var(--✨color--selected);
+		--_MuiTab-color: var(--✨color--selected);
 	}
 
 	&:where(.Mui-disabled) {
-		--_MuiTabs-color: var(--✨color--disabled);
+		--_MuiTab-color: var(--✨color--disabled);
 	}
 
 	&:where(:focus-visible) {

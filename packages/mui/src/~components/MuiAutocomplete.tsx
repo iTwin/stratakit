@@ -138,6 +138,7 @@ const MuiAutocompleteChipDeleteIcon = forwardRef<
 				)[0] as HTMLInputElement | undefined;
 				if (!htmlInput) return;
 
+				// Focus the HTML input after the chip is deleted.
 				htmlInput.focus();
 			})}
 			ref={forwardedRef}

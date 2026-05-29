@@ -5,7 +5,6 @@
 
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import { PortalContext } from "@ariakit/react/portal";
 import { Role } from "@ariakit/react/role";
 import cx from "classnames";
 import css from "./~styles.css.js";
@@ -19,6 +18,7 @@ import {
 } from "./~utils.js";
 import {
 	HtmlSanitizerContext,
+	PortalProvider,
 	RootContext,
 	RootNodeContext,
 	spriteSheetId,
@@ -90,6 +90,11 @@ interface RootProps extends BaseProps {
 	portalContainer?: React.ReactElement;
 
 	/**
+	 * Allows wrapping every portal boundary.
+	 */
+	unstable_wrapPortal?: (portal: React.ReactNode) => React.ReactNode;
+
+	/**
 	 * The root node to which this `Root` component is attached.
 	 *
 	 * This needs to be set when the `Root` is rendered within shadow DOM or a popout window.
@@ -120,12 +125,13 @@ export const Root = forwardRef<"div", RootProps>((props, forwardedRef) => {
 		synchronizeColorScheme = true,
 		unstable_htmlSanitizer = identity,
 		portalContainer: portalContainerProp,
+		unstable_wrapPortal,
 		...rest
 	} = props;
 
 	return (
 		<RootInternal {...rest} ref={forwardedRef}>
-			<RootProvider>
+			<RootProvider wrapPortal={unstable_wrapPortal}>
 				<Styles />
 				<Fonts />
 				<InlineSpriteSheet />
@@ -136,14 +142,14 @@ export const Root = forwardRef<"div", RootProps>((props, forwardedRef) => {
 				<SynchronizeAccentColor accentColor={props.unstable_accentColor} />
 
 				<HtmlSanitizerContext.Provider value={unstable_htmlSanitizer}>
-					<PortalProvider
+					<RootPortalProvider
 						colorScheme={props.colorScheme}
 						unstable_accentColor={props.unstable_accentColor}
 						density={props.density}
 						portalContainerProp={portalContainerProp}
 					>
 						{children}
-					</PortalProvider>
+					</RootPortalProvider>
 				</HtmlSanitizerContext.Provider>
 			</RootProvider>
 		</RootInternal>
@@ -151,11 +157,20 @@ export const Root = forwardRef<"div", RootProps>((props, forwardedRef) => {
 });
 DEV: Root.displayName = "Root";
 
-const RootProvider = (props: React.PropsWithChildren) => {
+interface RootProviderProps {
+	children?: React.ReactNode;
+	wrapPortal?: RootProps["unstable_wrapPortal"];
+}
+
+const RootProvider = (props: RootProviderProps) => {
+	const { wrapPortal } = props;
+
 	const rootNode = useRootNode();
 
 	return (
-		<RootContext.Provider value={{ versions, rootNode, loadStyles }}>
+		<RootContext.Provider
+			value={{ versions, rootNode, loadStyles, wrapPortal }}
+		>
 			{props.children}
 		</RootContext.Provider>
 	);
@@ -254,17 +269,19 @@ function SynchronizeAccentColor({
 
 // ----------------------------------------------------------------------------
 
-interface PortalProviderProps
+interface RootPortalProviderProps
 	extends Pick<RootProps, "colorScheme" | "unstable_accentColor" | "density"> {
 	portalContainerProp?: RootProps["portalContainer"];
 }
 
-function PortalProvider(props: React.PropsWithChildren<PortalProviderProps>) {
+function RootPortalProvider(
+	props: React.PropsWithChildren<RootPortalProviderProps>,
+) {
 	const [portalContainer, setPortalContainer] =
 		React.useState<HTMLElement | null>(null);
 
 	return (
-		<PortalContext.Provider value={portalContainer}>
+		<PortalProvider container={portalContainer}>
 			<PortalContainer
 				colorScheme={props.colorScheme}
 				unstable_accentColor={props.unstable_accentColor}
@@ -273,7 +290,7 @@ function PortalProvider(props: React.PropsWithChildren<PortalProviderProps>) {
 				render={props.portalContainerProp}
 			/>
 			{props.children}
-		</PortalContext.Provider>
+		</PortalProvider>
 	);
 }
 

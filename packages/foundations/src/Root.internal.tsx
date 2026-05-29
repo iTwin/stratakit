@@ -4,7 +4,8 @@
  *--------------------------------------------------------------------------------------------*/
 
 import * as React from "react";
-import { useIsClient } from "./~hooks.js";
+import { PortalContext } from "@ariakit/react/portal";
+import { useIsClient, useSafeContext } from "./~hooks.js";
 
 // ----------------------------------------------------------------------------
 
@@ -26,6 +27,9 @@ interface RootContextValue {
 		rootNode: Document | ShadowRoot,
 		options: { css: string; key: string },
 	) => { cleanup: () => void };
+
+	/** Function to wrap the portal boundary. */
+	wrapPortal?: (portal: React.ReactNode) => React.ReactNode;
 }
 
 // ----------------------------------------------------------------------------
@@ -52,3 +56,27 @@ export const spriteSheetId = "🥝-inline-sprites";
 export const HtmlSanitizerContext = React.createContext<
 	((html: string) => string) | undefined
 >(undefined);
+
+// ----------------------------------------------------------------------------
+
+interface PortalProviderProps {
+	children?: React.ReactNode;
+	container: HTMLElement | null;
+}
+
+/**
+ * Provides the element that will contain the portal.
+ */
+export function PortalProvider(props: PortalProviderProps) {
+	const { children, container } = props;
+
+	const { wrapPortal } = useSafeContext(RootContext);
+	return (
+		<PortalContext.Provider value={container}>
+			{wrapPortal ? wrapPortal(children) : children}
+		</PortalContext.Provider>
+	);
+}
+DEV: PortalProvider.displayName = "PortalProvider";
+
+// ----------------------------------------------------------------------------

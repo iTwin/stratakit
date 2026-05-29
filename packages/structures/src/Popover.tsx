@@ -5,11 +5,11 @@
 
 import * as React from "react";
 import * as AkPopover from "@ariakit/react/popover";
-import { PortalContext } from "@ariakit/react/portal";
 import { useStoreState } from "@ariakit/react/store";
 import { Button } from "@stratakit/bricks";
 import {
 	forwardRef,
+	PortalProvider,
 	usePopoverApi,
 	useUnreactiveCallback,
 } from "@stratakit/foundations/secret-internals";
@@ -104,9 +104,9 @@ const PopoverRoot = forwardRef<"div", PopoverRootProps>(
 				className={cx("🥝Popover", props.className)}
 				ref={forwardedRef}
 			>
-				<PortalContext.Provider value={contentElement ?? null}>
+				<PortalProvider container={contentElement ?? null}>
 					{children}
-				</PortalContext.Provider>
+				</PortalProvider>
 			</AkPopover.Popover>
 		);
 	},

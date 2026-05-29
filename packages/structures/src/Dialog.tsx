@@ -5,13 +5,14 @@
 
 import * as React from "react";
 import * as AkDialog from "@ariakit/react/dialog";
-import { Portal, PortalContext } from "@ariakit/react/portal";
+import { Portal } from "@ariakit/react/portal";
 import { Role } from "@ariakit/react/role";
 import { useStoreState } from "@ariakit/react/store";
 import { IconButton, Text } from "@stratakit/bricks";
 import { GhostAligner } from "@stratakit/bricks/secret-internals";
 import {
 	forwardRef,
+	PortalProvider,
 	usePopoverApi,
 	useUnreactiveCallback,
 } from "@stratakit/foundations/secret-internals";
@@ -99,9 +100,9 @@ const DialogRoot = forwardRef<"div", DialogRootProps>((props, forwardedRef) => {
 				>
 					{/* Avoids rendering a visually hidden dismiss button for screen readers. */}
 					<AkDialog.DialogDismiss hidden />
-					<PortalContext.Provider value={contentElement}>
+					<PortalProvider container={contentElement}>
 						{props.children}
-					</PortalContext.Provider>
+					</PortalProvider>
 				</AkDialog.Dialog>
 			</DialogWrapper>
 		</AkDialog.DialogProvider>

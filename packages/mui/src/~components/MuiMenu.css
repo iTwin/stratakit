@@ -54,7 +54,8 @@
 	--_MuiMenuItem-color: var(--✨color-text--default);
 	--_MuiMenuItem-height: var(--✨size--medium);
 
-	:where(.MuiMenu-list.MuiList-dense) & {
+	:where(.MuiMenu-list.MuiList-dense) &,
+	&:where([data-_sk-dense]) {
 		@apply --typography("body-sm");
 		--_MuiMenuItem-height: var(--✨size--small);
 	}

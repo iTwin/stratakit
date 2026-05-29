@@ -309,6 +309,10 @@
 
 .MuiTabs-indicator {
 	background-color: CanvasText;
+
+	:where(.MuiTabs-root:has(.MuiTab-root.Mui-selected.Mui-disabled)) & {
+		background-color: GrayText;
+	}
 }
 
 .MuiToggleButton-root {

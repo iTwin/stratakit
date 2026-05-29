@@ -88,15 +88,15 @@
 
 	/* #region Visual styles */
 	&:where(.MuiTab-textColorPrimary) {
-		--_MuiTab-background-color-hover: var(--✨bg--hover-neutral);
-		--_MuiTab-color-hover: var(--✨color--hover-neutral);
-		--_MuiTab-color-selected: var(--✨color--selected-neutral);
-	}
-
-	&:where(.MuiTab-textColorSecondary) {
 		--_MuiTab-background-color-hover: var(--✨bg--hover-accent);
 		--_MuiTab-color-hover: var(--✨color--hover-accent);
 		--_MuiTab-color-selected: var(--✨color--selected-accent);
+	}
+
+	&:where(.MuiTab-textColorSecondary) {
+		--_MuiTab-background-color-hover: var(--✨bg--hover-neutral);
+		--_MuiTab-color-hover: var(--✨color--hover-neutral);
+		--_MuiTab-color-selected: var(--✨color--selected-neutral);
 	}
 
 	&:where(.Mui-disabled) {
@@ -107,11 +107,11 @@
 
 .MuiTabs-indicator {
 	:where(.MuiTabs-root:has(.MuiTab-root.MuiTab-textColorPrimary)) & {
-		background-color: var(--stratakit-color-border-neutral-inverse);
+		background-color: var(--stratakit-color-border-accent-strong);
 	}
 
 	:where(.MuiTabs-root:has(.MuiTab-root.MuiTab-textColorSecondary)) & {
-		background-color: var(--stratakit-color-border-accent-strong);
+		background-color: var(--stratakit-color-border-neutral-inverse);
 	}
 
 	:where(.MuiTabs-root:has(.MuiTab-root.Mui-selected.Mui-disabled)) & {

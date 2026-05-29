@@ -9,7 +9,8 @@ import Tab from "@mui/material/Tab";
 import Tabs from "@mui/material/Tabs";
 
 export default () => {
-	const [value, setValue] = React.useState(0);
+	const [primaryValue, setPrimaryValue] = React.useState(0);
+	const [secondaryValue, setSecondaryValue] = React.useState(0);
 
 	const primaryId = React.useId();
 	const secondaryId = React.useId();
@@ -19,24 +20,24 @@ export default () => {
 			<Box>
 				<Tabs
 					textColor="primary"
-					value={value}
-					onChange={(_, value) => setValue(value)}
+					value={primaryValue}
+					onChange={(_, value) => setPrimaryValue(value)}
 				>
 					<Tab label="Primary one" id={`${primaryId}-primary0`} />
 					<Tab label="Primary two" id={`${primaryId}-primary1`} />
 					<Tab label="Primary three" id={`${primaryId}-primary2`} />
 				</Tabs>
-				{value === 0 && (
+				{primaryValue === 0 && (
 					<div role="tabpanel" aria-labelledby={`${primaryId}-primary0`}>
 						Primary one
 					</div>
 				)}
-				{value === 1 && (
+				{primaryValue === 1 && (
 					<div role="tabpanel" aria-labelledby={`${primaryId}-primary1`}>
 						Primary two
 					</div>
 				)}
-				{value === 2 && (
+				{primaryValue === 2 && (
 					<div role="tabpanel" aria-labelledby={`${primaryId}-primary2`}>
 						Primary three
 					</div>
@@ -46,24 +47,24 @@ export default () => {
 			<Box>
 				<Tabs
 					textColor="secondary"
-					value={value}
-					onChange={(_, value) => setValue(value)}
+					value={secondaryValue}
+					onChange={(_, value) => setSecondaryValue(value)}
 				>
 					<Tab label="Secondary one" id={`${secondaryId}-secondary0`} />
 					<Tab label="Secondary two" id={`${secondaryId}-secondary1`} />
 					<Tab label="Secondary three" id={`${secondaryId}-secondary2`} />
 				</Tabs>
-				{value === 0 && (
+				{secondaryValue === 0 && (
 					<div role="tabpanel" aria-labelledby={`${secondaryId}-secondary0`}>
 						Secondary one
 					</div>
 				)}
-				{value === 1 && (
+				{secondaryValue === 1 && (
 					<div role="tabpanel" aria-labelledby={`${secondaryId}-secondary1`}>
 						Secondary two
 					</div>
 				)}
-				{value === 2 && (
+				{secondaryValue === 2 && (
 					<div role="tabpanel" aria-labelledby={`${secondaryId}-secondary2`}>
 						Secondary three
 					</div>

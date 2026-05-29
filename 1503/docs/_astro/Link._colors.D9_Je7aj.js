@@ -1,0 +1,1 @@
+import{j as s}from"./_utils.B4cH_AAT.js";import{S as i}from"./Stack.Df5mZ5b3.js";import{L as t}from"./Link.DDbUb1PJ.js";const e=["primary","error","info","success","warning"],p=()=>s.jsx(i,{direction:"row",spacing:1,children:e.map(r=>s.jsxs(t,{color:r,href:`#${r}`,children:[r.charAt(0).toUpperCase(),r.slice(1)]},r))});export{p as default};

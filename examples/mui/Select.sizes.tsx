@@ -24,7 +24,9 @@ const SmallSelect = () => {
 	const label = "Favorite small animal:";
 	return (
 		<FormControl>
-			<InputLabel id={id}>{label}</InputLabel>
+			<InputLabel id={id} size="small">
+				{label}
+			</InputLabel>
 			<Select labelId={id} label={label} defaultValue={1} size="small">
 				<MenuItem value={1}>Mouse</MenuItem>
 				<MenuItem value={2}>Worm</MenuItem>

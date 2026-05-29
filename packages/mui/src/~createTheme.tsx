@@ -36,6 +36,7 @@ import {
 	MuiChipDeleteIcon,
 	MuiChipLabel,
 } from "./~components/MuiChip.js";
+import { MuiDialogPaper, MuiDialogRootSlot } from "./~components/MuiDialog.js";
 import { MuiDivider } from "./~components/MuiDivider.js";
 import { MuiIconButton } from "./~components/MuiIconButton.js";
 import { MuiInputLabel } from "./~components/MuiInputLabel.js";
@@ -335,7 +336,18 @@ function createTheme(args: CreateThemeArgs) {
 				},
 			},
 			MuiContainer: { defaultProps: { component: Role.div } },
-			MuiDialog: { defaultProps: { component: Role.div } },
+			MuiDialog: {
+				defaultProps: {
+					slots: {
+						root: MuiDialogRootSlot,
+					},
+					slotProps: {
+						paper: {
+							component: MuiDialogPaper,
+						},
+					},
+				},
+			},
 			MuiDialogContentText: {
 				defaultProps: {
 					component: Role.p,

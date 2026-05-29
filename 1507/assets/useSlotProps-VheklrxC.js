@@ -1,1 +1,0 @@
-import{t as P,v as i,w as m}from"./Popover-lxiom9de.js";import{a4 as S}from"./~utils-DV9s9WML.js";function v(o){const{elementType:s,externalSlotProps:t,ownerState:e,skipResolvingSlotProps:p=!1,...n}=o,r=p?{}:P(t,e),{props:l,internalRef:a}=i({...n,externalSlotProps:r}),f=S(a,r?.ref,o.additionalProps?.ref);return m(s,{...l,ref:f},e)}export{v as u};

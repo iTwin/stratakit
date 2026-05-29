@@ -3,4 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-export { PortalContext, PortalProvider, RootContext } from "./Root.internal.js";
+.popover {
+	padding: var(--stratakit-space-x4);
+	max-inline-size: 20rem;
+}

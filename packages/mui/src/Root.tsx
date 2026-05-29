@@ -11,6 +11,7 @@ import { useSafeContext } from "@stratakit/internal-utils/hooks";
 import { forwardRef } from "@stratakit/internal-utils/react";
 import cx from "classnames";
 import { createTheme } from "./~createTheme.js";
+import { PortalTheme } from "./~PortalTheme.js";
 import { StyledEngineProvider } from "./Root.internal.js";
 import css from "./styles.css.js";
 
@@ -48,14 +49,9 @@ interface RootProps
 const Root = forwardRef<"div", RootProps>((props, forwardedRef) => {
 	const { children, colorScheme, unstable_accentColor, ...rest } = props;
 
-	const portalContainerRef = React.useRef<HTMLDivElement | null>(null);
-
 	// The container is passed as a function so that MUI resolves it lazily (inside `Portal`'s layout
 	// effect), by which point the ref is guaranteed to be attached.
-	const theme = React.useMemo(
-		() => createTheme({ portalContainer: () => portalContainerRef.current }),
-		[],
-	);
+	const theme = React.useMemo(() => createTheme(), []);
 	return (
 		<StyledEngineProvider>
 			<ThemeProvider
@@ -70,7 +66,6 @@ const Root = forwardRef<"div", RootProps>((props, forwardedRef) => {
 					{...rest}
 					colorScheme={colorScheme}
 					unstable_accentColor={unstable_accentColor}
-					portalContainerRef={portalContainerRef}
 					ref={forwardedRef}
 				>
 					<Styles />
@@ -84,32 +79,31 @@ DEV: Root.displayName = "Root";
 
 // ----------------------------------------------------------------------------
 
+function wrapPortal(portal: React.ReactNode) {
+	return <PortalTheme>{portal}</PortalTheme>;
+}
+
+// ----------------------------------------------------------------------------
+
 interface RootInnerProps
 	extends BaseProps<"div">,
-		Pick<RootProps, "colorScheme" | "unstable_accentColor" | "rootNode"> {
-	portalContainerRef: React.Ref<HTMLDivElement>;
-}
+		Pick<RootProps, "colorScheme" | "unstable_accentColor" | "rootNode"> {}
 
 /** @private */
 const RootInner = forwardRef<"div", RootInnerProps>((props, forwardedRef) => {
-	const {
-		children,
-		colorScheme,
-		unstable_accentColor,
-		rootNode,
-		portalContainerRef,
-		...rest
-	} = props;
+	const { children, colorScheme, unstable_accentColor, rootNode, ...rest } =
+		props;
 
 	return (
 		<StrataKitRoot
 			{...rest}
 			className={cx("🥝MuiRoot", props.className)}
-			portalContainer={<div className="🥝MuiRoot" ref={portalContainerRef} />}
+			portalContainer={<div className="🥝MuiRoot" />}
 			colorScheme={colorScheme}
 			unstable_accentColor={unstable_accentColor}
 			rootNode={rootNode}
 			synchronizeColorScheme
+			unstable_wrapPortal={wrapPortal}
 			ref={forwardedRef}
 		>
 			{children}

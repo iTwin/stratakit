@@ -5,6 +5,7 @@
 
 import * as React from "react";
 import { PopoverPaper } from "@mui/material/Popover";
+import { PortalProvider } from "@stratakit/foundations/secret-internals";
 import { useMergedRefs } from "@stratakit/internal-utils/hooks";
 import { forwardRef } from "@stratakit/internal-utils/react";
 
@@ -53,11 +54,26 @@ interface MuiPopoverPaperSlotProps extends BaseProps {
 
 const MuiPopoverPaperSlot = forwardRef<"div", MuiPopoverPaperSlotProps>(
 	(props, forwardedRef) => {
+		const containerRef = React.useRef<HTMLDivElement | null>(null);
+		const [container, setContainer] = React.useState<HTMLElement | null>(null);
+
+		// Re-create the callback whenever the ref changes, while still
+		// returning the latest `containerRef.current`.
+		// biome-ignore lint/correctness/useExhaustiveDependencies: intentional for https://github.com/mui/material-ui/issues/48882
+		const getContainer = React.useCallback(
+			() => containerRef.current,
+			[container],
+		);
 		return (
-			<PopoverPaper
-				{...props}
-				ref={useMergedRefs(forwardedRef, useFallbackLabel(props))}
-			/>
+			<PortalProvider container={getContainer}>
+				<PopoverPaper
+					{...props}
+					ref={useMergedRefs(forwardedRef, useFallbackLabel(props))}
+				>
+					{props.children}
+					<div ref={useMergedRefs(containerRef, setContainer)} />
+				</PopoverPaper>
+			</PortalProvider>
 		);
 	},
 );

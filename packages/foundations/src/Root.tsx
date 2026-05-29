@@ -5,7 +5,6 @@
 
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import { PortalContext } from "@ariakit/react/portal";
 import { Role } from "@ariakit/react/role";
 import { identity } from "@stratakit/internal-utils/common";
 import {
@@ -14,11 +13,13 @@ import {
 	isBrowser,
 	isDocument,
 } from "@stratakit/internal-utils/dom";
+import { useMergedRefs } from "@stratakit/internal-utils/hooks";
 import { forwardRef } from "@stratakit/internal-utils/react";
 import cx from "classnames";
 import css from "./~styles.css.js";
 import {
 	HtmlSanitizerContext,
+	PortalProvider,
 	RootContext,
 	RootNodeContext,
 	spriteSheetId,
@@ -90,6 +91,11 @@ interface RootProps extends BaseProps {
 	portalContainer?: React.ReactElement;
 
 	/**
+	 * Allows wrapping every portal boundary.
+	 */
+	unstable_wrapPortal?: (portal: React.ReactNode) => React.ReactNode;
+
+	/**
 	 * The root node to which this `Root` component is attached.
 	 *
 	 * This needs to be set when the `Root` is rendered within shadow DOM or a popout window.
@@ -120,12 +126,13 @@ export const Root = forwardRef<"div", RootProps>((props, forwardedRef) => {
 		synchronizeColorScheme = true,
 		unstable_htmlSanitizer = identity,
 		portalContainer: portalContainerProp,
+		unstable_wrapPortal,
 		...rest
 	} = props;
 
 	return (
 		<RootInternal {...rest} ref={forwardedRef}>
-			<RootProvider>
+			<RootProvider wrapPortal={unstable_wrapPortal}>
 				<Styles />
 				<Fonts />
 				<InlineSpriteSheet />
@@ -136,14 +143,14 @@ export const Root = forwardRef<"div", RootProps>((props, forwardedRef) => {
 				<SynchronizeAccentColor accentColor={props.unstable_accentColor} />
 
 				<HtmlSanitizerContext.Provider value={unstable_htmlSanitizer}>
-					<PortalProvider
+					<RootPortalProvider
 						colorScheme={props.colorScheme}
 						unstable_accentColor={props.unstable_accentColor}
 						density={props.density}
 						portalContainerProp={portalContainerProp}
 					>
 						{children}
-					</PortalProvider>
+					</RootPortalProvider>
 				</HtmlSanitizerContext.Provider>
 			</RootProvider>
 		</RootInternal>
@@ -151,11 +158,20 @@ export const Root = forwardRef<"div", RootProps>((props, forwardedRef) => {
 });
 DEV: Root.displayName = "Root";
 
-const RootProvider = (props: React.PropsWithChildren) => {
+interface RootProviderProps {
+	children?: React.ReactNode;
+	wrapPortal?: RootProps["unstable_wrapPortal"];
+}
+
+const RootProvider = (props: RootProviderProps) => {
+	const { wrapPortal } = props;
+
 	const rootNode = useRootNode();
 
 	return (
-		<RootContext.Provider value={{ versions, rootNode, loadStyles }}>
+		<RootContext.Provider
+			value={{ versions, rootNode, loadStyles, wrapPortal }}
+		>
 			{props.children}
 		</RootContext.Provider>
 	);
@@ -254,26 +270,35 @@ function SynchronizeAccentColor({
 
 // ----------------------------------------------------------------------------
 
-interface PortalProviderProps
+interface RootPortalProviderProps
 	extends Pick<RootProps, "colorScheme" | "unstable_accentColor" | "density"> {
 	portalContainerProp?: RootProps["portalContainer"];
 }
 
-function PortalProvider(props: React.PropsWithChildren<PortalProviderProps>) {
-	const [portalContainer, setPortalContainer] =
-		React.useState<HTMLElement | null>(null);
+function RootPortalProvider(
+	props: React.PropsWithChildren<RootPortalProviderProps>,
+) {
+	const containerRef = React.useRef<HTMLDivElement>(null);
+	const [container, setContainer] = React.useState<HTMLElement | null>(null);
 
+	// Re-create the callback whenever the ref changes, while still
+	// returning the latest `containerRef.current`.
+	// biome-ignore lint/correctness/useExhaustiveDependencies: intentional for https://github.com/mui/material-ui/issues/48882
+	const getContainer = React.useCallback(
+		() => containerRef.current,
+		[container],
+	);
 	return (
-		<PortalContext.Provider value={portalContainer}>
+		<PortalProvider container={getContainer}>
 			<PortalContainer
 				colorScheme={props.colorScheme}
 				unstable_accentColor={props.unstable_accentColor}
 				density={props.density}
-				ref={setPortalContainer}
+				ref={useMergedRefs(containerRef, setContainer)}
 				render={props.portalContainerProp}
 			/>
 			{props.children}
-		</PortalContext.Provider>
+		</PortalProvider>
 	);
 }
 

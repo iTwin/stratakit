@@ -5,9 +5,9 @@
 
 import * as React from "react";
 import * as AkPopover from "@ariakit/react/popover";
-import { PortalContext } from "@ariakit/react/portal";
 import { useStoreState } from "@ariakit/react/store";
 import { Button } from "@stratakit/bricks";
+import { PortalProvider } from "@stratakit/foundations/secret-internals";
 import {
 	useCloseWatcher,
 	usePopoverApi,
@@ -91,6 +91,13 @@ const PopoverRoot = forwardRef<"div", PopoverRootProps>(
 		});
 
 		const contentElement = useStoreState(store, "contentElement");
+		useStoreState(store, "contentElement");
+
+		const container = React.useCallback(
+			() => contentElement ?? null,
+			[contentElement],
+		);
+
 		const triggerId = useStoreState(
 			store,
 			(state) => state?.disclosureElement?.id,
@@ -108,9 +115,7 @@ const PopoverRoot = forwardRef<"div", PopoverRootProps>(
 				className={cx("🥝Popover", props.className)}
 				ref={forwardedRef}
 			>
-				<PortalContext.Provider value={contentElement ?? null}>
-					{children}
-				</PortalContext.Provider>
+				<PortalProvider container={container}>{children}</PortalProvider>
 			</AkPopover.Popover>
 		);
 	},

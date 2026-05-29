@@ -16,7 +16,7 @@ export default () => {
 	return (
 		<Box>
 			<Tabs
-				textColor="primary"
+				textColor="secondary"
 				value={value}
 				onChange={(_, value) => setValue(value)}
 			>

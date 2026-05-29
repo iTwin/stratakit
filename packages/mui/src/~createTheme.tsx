@@ -465,9 +465,7 @@ function createTheme() {
 			},
 			MuiSvgIcon: { defaultProps: { component: Role.svg } },
 			MuiSwipeableDrawer: { defaultProps: { component: Role.div } },
-			MuiTabs: {
-				defaultProps: { component: Role.div, textColor: "secondary" },
-			},
+			MuiTabs: { defaultProps: { component: Role.div } },
 			MuiTable: { defaultProps: { component: withRenderProp(Role, "table") } },
 			MuiTableBody: {
 				defaultProps: {

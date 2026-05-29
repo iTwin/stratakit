@@ -22,8 +22,8 @@
 	--✨bg--hover-accent: var(--stratakit-color-bg-glow-on-surface-accent-hover);
 
 	--✨color--default: var(--stratakit-color-text-neutral-tertiary);
-	--✨color--hover-neutral: var(--stratakit-color-text-neutral-primary);
-	--✨color--hover-accent: var(--stratakit-color-text-accent-strong);
+	--✨color--selected-neutral: var(--stratakit-color-text-neutral-primary);
+	--✨color--selected-accent: var(--stratakit-color-text-accent-strong);
 	--✨color--disabled: var(--stratakit-color-text-neutral-disabled);
 
 	--✨inset: calc(var(--_MuiTabs-indicator-gap) * -1);
@@ -87,12 +87,12 @@
 	/* #region Visual styles */
 	&:where(.MuiTab-textColorPrimary) {
 		--_MuiTab-background-color: var(--✨bg--hover-accent);
-		--_MuiTab-color: var(--✨color--hover-accent);
+		--_MuiTab-color: var(--✨color--selected-accent);
 	}
 
 	&:where(.MuiTab-textColorSecondary) {
 		--_MuiTab-background-color: var(--✨bg--hover-neutral);
-		--_MuiTab-color: var(--✨color--hover-neutral);
+		--_MuiTab-color: var(--✨color--selected-neutral);
 	}
 
 	&:where(.Mui-disabled) {

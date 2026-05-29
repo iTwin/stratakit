@@ -11,12 +11,16 @@ links:
 ## StrataKit MUI modifications
 
 - The `indicatorColor` prop is not supported.
+- The default `textColor` has been changed to `"secondary"`.
 - Restyled using StrataKit's visual language.
 - Includes full `forced-colors` support.
 
 ## Examples
 
 ### Colors
+
+- **Secondary:** The default.
+- **Primary:** Use accent when high emphasis is required.
 
 ::example{src="mui/Tabs.colors"}
 

@@ -15,6 +15,10 @@ links:
 
 ## Examples
 
+### Colors
+
+::example{src="mui/Tabs.colors"}
+
 ### Scrollable
 
 ::example{src="mui/Tabs.scrollable"}

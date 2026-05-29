@@ -17,16 +17,21 @@
 }
 
 .MuiTab-root {
-	--✨bg--hover: var(--stratakit-color-bg-glow-on-surface-neutral-hover);
-	--✨bg--selected-hover: var(--stratakit-color-bg-glow-on-surface-accent-hover);
+	/* #region Variables */
+	--✨bg--hover-neutral: var(--stratakit-color-bg-glow-on-surface-neutral-hover);
+	--✨bg--hover-accent: var(--stratakit-color-bg-glow-on-surface-accent-hover);
 
 	--✨color--default: var(--stratakit-color-text-neutral-tertiary);
-	--✨color--hover: var(--stratakit-color-text-neutral-primary);
-	--✨color--selected: var(--stratakit-color-text-accent-strong);
+	--✨color--hover-neutral: var(--stratakit-color-text-neutral-primary);
+	--✨color--hover-accent: var(--stratakit-color-text-accent-strong);
+	--✨color--selected-neutral: var(--stratakit-color-text-neutral-primary);
+	--✨color--selected-accent: var(--stratakit-color-text-accent-strong);
 	--✨color--disabled: var(--stratakit-color-text-neutral-disabled);
+	/* #endregion */
 
+	/* #region Structural */
 	@apply --typography("body-md");
-	background-color: var(--_MuiTab-background-color, transparent);
+	background-color: transparent;
 	border-radius: 4px;
 	color: var(--_MuiTab-color, var(--✨color--default));
 	margin-block-start: var(--_MuiTabs-indicator-gap);
@@ -53,33 +58,52 @@
 	}
 
 	@media (any-hover: hover) {
-		&:where(:not(.Mui-disabled)) {
-			&:where(:hover) {
-				--_MuiTab-background-color: var(--✨bg--hover);
-				--_MuiTab-color: var(--✨color--hover);
-			}
-
-			&:where(.Mui-selected:hover) {
-				--_MuiTab-background-color: var(--✨bg--selected-hover);
-			}
+		&:where(:not(.Mui-disabled):hover) {
+			background-color: var(--_MuiTab-background-color-hover);
+			color: var(--_MuiTab-color-hover);
 		}
 	}
 
 	&:where(.Mui-selected) {
-		--_MuiTab-color: var(--✨color--selected);
-	}
-
-	&:where(.Mui-disabled) {
-		--_MuiTab-color: var(--✨color--disabled);
+		color: var(--_MuiTab-color-selected);
 	}
 
 	&:where(:focus-visible) {
 		outline-offset: -2px;
 	}
+	/* #endregion */
+
+	/* #region Visual styles */
+	&:where(.MuiTab-textColorPrimary) {
+		--_MuiTab-background-color-hover: var(--✨bg--hover-neutral);
+		--_MuiTab-color-hover: var(--✨color--hover-neutral);
+		--_MuiTab-color-selected: var(--✨color--selected-neutral);
+	}
+
+	&:where(.MuiTab-textColorSecondary) {
+		--_MuiTab-background-color-hover: var(--✨bg--hover-accent);
+		--_MuiTab-color-hover: var(--✨color--hover-accent);
+		--_MuiTab-color-selected: var(--✨color--selected-accent);
+	}
+
+	&:where(.Mui-disabled) {
+		color: var(--✨color--disabled);
+	}
+	/* #endregion */
 }
 
 .MuiTabs-indicator {
-	background-color: var(--stratakit-color-border-accent-strong);
+	:where(.MuiTabs-root:has(.MuiTab-root.MuiTab-textColorPrimary)) & {
+		background-color: var(--stratakit-color-border-neutral-inverse);
+	}
+
+	:where(.MuiTabs-root:has(.MuiTab-root.MuiTab-textColorSecondary)) & {
+		background-color: var(--stratakit-color-border-accent-strong);
+	}
+
+	:where(.MuiTabs-root:has(.MuiTab-root.Mui-selected.Mui-disabled)) & {
+		background-color: var(--stratakit-color-border-neutral-disabled);
+	}
 
 	@media (prefers-reduced-motion: reduce) {
 		transition: none;

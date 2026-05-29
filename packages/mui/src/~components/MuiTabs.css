@@ -33,7 +33,7 @@
 	@apply --typography("body-md");
 	background-color: transparent;
 	border-radius: 4px;
-	color: var(--_MuiTab-color, var(--✨color--default));
+	color: var(--✨color--default);
 	min-block-size: var(--_MuiTab-height);
 	min-inline-size: var(--_MuiTab-height); /* Forces 1:1 aspect ratio when the tab is icon-only */
 	overflow: visible;
@@ -58,13 +58,13 @@
 
 	@media (any-hover: hover) {
 		&:where(:not(.Mui-disabled):hover) {
-			background-color: var(--_MuiTab-background-color-hover);
-			color: var(--_MuiTab-color-hover);
+			background-color: var(--_MuiTab-background-color);
+			color: var(--_MuiTab-color);
 		}
 	}
 
 	&:where(.Mui-selected) {
-		color: var(--_MuiTab-color-selected);
+		color: var(--_MuiTab-color);
 	}
 
 	:where(.MuiTabs-list:not(.MuiTabs-vertical)) & {
@@ -86,15 +86,13 @@
 
 	/* #region Visual styles */
 	&:where(.MuiTab-textColorPrimary) {
-		--_MuiTab-background-color-hover: var(--✨bg--hover-accent);
-		--_MuiTab-color-hover: var(--✨color--hover-accent);
-		--_MuiTab-color-selected: var(--✨color--hover-accent);
+		--_MuiTab-background-color: var(--✨bg--hover-accent);
+		--_MuiTab-color: var(--✨color--hover-accent);
 	}
 
 	&:where(.MuiTab-textColorSecondary) {
-		--_MuiTab-background-color-hover: var(--✨bg--hover-neutral);
-		--_MuiTab-color-hover: var(--✨color--hover-neutral);
-		--_MuiTab-color-selected: var(--✨color--hover-neutral);
+		--_MuiTab-background-color: var(--✨bg--hover-neutral);
+		--_MuiTab-color: var(--✨color--hover-neutral);
 	}
 
 	&:where(.Mui-disabled) {

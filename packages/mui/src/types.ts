@@ -430,6 +430,11 @@ declare module "@mui/material/Tooltip" {
 }
 
 declare module "@mui/material/Typography" {
+	interface TypographyPropsColorOverrides {
+		secondary: false;
+		textTertiary: true;
+	}
+
 	interface TypographyOwnProps {
 		/**
 		 * The default variant with `@stratakit/mui` is `"body2"`.

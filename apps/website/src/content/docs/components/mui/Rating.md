@@ -7,3 +7,13 @@ links:
 ---
 
 ::example{src="mui/Rating.default"}
+
+## Examples
+
+### Sizes
+
+- **Small:** Use in compact interfaces where space is limited.
+- **Medium:** Default size, suitable for most use cases.
+- **Large:** Use in spacious layouts where a more prominent rating is needed.
+
+::example{src="mui/Rating.sizes"}

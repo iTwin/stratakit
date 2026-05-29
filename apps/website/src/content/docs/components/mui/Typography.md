@@ -14,7 +14,7 @@ links:
 - The typography scale has been adjusted to better align with StrataKit's more compact visual language.
 - The default `variant` is now `"body2"` instead of `"body1"`.
 - A warning will be logged during development if a heading variant is used without explicitly setting the `render` prop.
-- The `"secondary"` color value has been removed. A new `"textTertiary"` color value has been added.
+- The `"secondary"` color value has been removed. A `"textTertiary"` color value has been added.
 
 ## Examples
 
@@ -52,7 +52,7 @@ The following color are available for the `color` prop:
 
 - `"textPrimary"`
 - `"textSecondary"`
-- `"textTertiary"` (new)
+- `"textTertiary"`
 - `"textDisabled"`
 - `"primary"`
 - `"error"`

@@ -12,6 +12,7 @@ import type { BadgeProps } from "@mui/material/Badge";
 import type { IconButtonProps } from "@mui/material/IconButton";
 import type { CommonProps } from "@mui/material/OverridableComponent";
 import type { TableCellProps as MuiTableCellProps } from "@mui/material/TableCell";
+import type { TabsProps } from "@mui/material/Tabs";
 import type {
 	TextFieldProps,
 	TextFieldVariants,
@@ -356,6 +357,13 @@ declare module "@mui/material/StepButton" {
 declare module "@mui/material/Tab" {
 	interface TabOwnProps {
 		LinkComponent?: never;
+	}
+}
+
+declare module "@mui/material/Tabs" {
+	interface TabsOwnProps {
+		/** @deprecated DO NOT USE */
+		indicatorColor?: TabsProps["indicatorColor"];
 	}
 }
 

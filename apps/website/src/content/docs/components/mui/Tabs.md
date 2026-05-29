@@ -10,6 +10,7 @@ links:
 
 ## StrataKit MUI modifications
 
+- The `indicatorColor` prop is not supported.
 - Restyled using StrataKit's visual language.
 - Includes full `forced-colors` support.
 

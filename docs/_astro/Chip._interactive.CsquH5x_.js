@@ -1,1 +1,0 @@
-import{j as e}from"./_utils.D4a8zn88.js";import{C as l}from"./Chip.BxYi01TF.js";const i=()=>e.jsx(l,{label:"Clickable and deletable Chip",onClick:()=>{console.log("Clicked")},onDelete:()=>{console.log("Deleted")}});export{i as default};

@@ -106,9 +106,9 @@ To communicate the presence of a group, we can encode it with [`role="group"`](h
 
 ```jsx
 <div role="group" aria-label="Text formatting">
-  <Button>Bold</Button>
-  <Button>Italic</Button>
-  <Button>Underline</Button>
+  <button>Bold</button>
+  <button>Italic</button>
+  <button>Underline</button>
 </div>
 ```
 

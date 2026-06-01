@@ -7,6 +7,7 @@ import * as React from "react";
 import Box from "@mui/material/Box";
 import Tab from "@mui/material/Tab";
 import Tabs from "@mui/material/Tabs";
+import Tooltip from "@mui/material/Tooltip";
 import { Icon } from "@stratakit/mui";
 
 import svgChat from "@stratakit/icons/chat.svg";
@@ -21,21 +22,27 @@ export default () => {
 	return (
 		<Box>
 			<Tabs value={value} onChange={(_, value) => setValue(value)}>
-				<Tab
-					aria-label="Recent"
-					icon={<Icon href={svgChat} />}
-					id={`${baseId}-recent`}
-				/>
-				<Tab
-					aria-label="Favorites"
-					icon={<Icon href={svgHeart} />}
-					id={`${baseId}-favorites`}
-				/>
-				<Tab
-					aria-label="Nearby"
-					icon={<Icon href={svgLocation} />}
-					id={`${baseId}-nearby`}
-				/>
+				<Tooltip title="Recent">
+					<Tab
+						aria-label="Recent"
+						icon={<Icon href={svgChat} />}
+						id={`${baseId}-recent`}
+					/>
+				</Tooltip>
+				<Tooltip title="Favorites">
+					<Tab
+						aria-label="Favorites"
+						icon={<Icon href={svgHeart} />}
+						id={`${baseId}-favorites`}
+					/>
+				</Tooltip>
+				<Tooltip title="Nearby">
+					<Tab
+						aria-label="Nearby"
+						icon={<Icon href={svgLocation} />}
+						id={`${baseId}-nearby`}
+					/>
+				</Tooltip>
 			</Tabs>
 			{value === 0 && (
 				<div role="tabpanel" aria-labelledby={`${baseId}-recent`}>

@@ -132,7 +132,22 @@ Associate each form field (`<input>`, `<select>`, `<textarea>`) with a label, us
 </label>
 ```
 
-Avoid using the `placeholder` attribute, either as a principle label or as a description. Since `placeholder` is rendered inside the input itself, it can be mistaken for a completed entry. It is also not _persistent_, disappearing when the input is focused. 
+Form fields implemented with non-native form elements may not be compatible with `<label>`. The `aria-labelledby` attribute is required to associate the `<label>` element to the input. The [**Select**](/components/select) component renders like this (some attribution removed for brevity):
+
+```jsx
+<label id="ds-label">Design system:</label>
+<div 
+	role="combobox"
+	aria-haspopup="listbox"
+	aria-labelledby="ds-label"
+>
+	/* list of options */
+</div>
+```
+
+### Descriptions
+
+Avoid using the `placeholder` attribute, either as a principle label or as a description for the field. Since `placeholder` is rendered inside the input itself, it can be mistaken for a completed entry. It is also not _persistent_, disappearing when the input is focused. 
 
 For field descriptions, use `helperText`. Unlike `placeholder`, `helperText` appears persistently, under the input, and while the user is typing.
 

@@ -48,7 +48,13 @@ Give sufficient context by including both the page and application name in each 
 <title>[name of the page] – [name of the application]</title>
 ```
 
-This identifies the page among other open tabs.
+This identifies the page among other open tabs. 
+
+:::caution[Single page applications]
+
+If yours is a single-page application, ensure the `<title>` is updated as the application route is changed. To ensure the new title in announced, supplement the title change with an [ARIA live region](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-live). [Some router libraries do this automatically](https://nextjs.org/docs/architecture/accessibility#route-announcements).
+
+:::
 
 ## Headings
 

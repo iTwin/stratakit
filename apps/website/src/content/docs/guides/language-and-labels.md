@@ -21,15 +21,15 @@ Now parsers know to expect French content. A screen reader will choose a French 
 
 If the language reads _right to left_, pair the `lang` attribute with the [`dir`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Global_attributes/dir) attribute and a value of `"rtl"`:
 
-```html
-<html lang="ar" dir="rtl"> <!-- Arabic -->
+```jsx
+<html lang="ar" dir="rtl"> /* Arabic */
 ```
 
 ## Multilingual pages
 
 Occasionally, a French page might include a section of content in another language. The parser must know when to [code-switch](https://en.wikipedia.org/wiki/Code-switching). Apply another `lang` attribute, but to the element containing the embedded language:
 
-```html
+```jsx
 <p>Je suis français!</p>
 <div lang="en">
 	<p>I am English.</p>
@@ -64,12 +64,12 @@ Equally important is the wording used for each heading. Headings are labels for 
 
 Here are good and bad examples for a company's stated use of artificial intelligence:
 
-```
-<!-- ✅ Direct; uses relevant terminology -->
+```jsx
+/* ✅ Direct; uses relevant terminology */
 <h2>Our policy on artificial intelligence</h2>
 ...
 
-<!-- ❌ Vague and abstract; could be referring to anything -->
+/* ❌ Vague and abstract; could be referring to anything */
 <h2>Cautiously embracing the future</h2>
 ...
 ```
@@ -90,13 +90,13 @@ For buttons _with_ visible labels, do not give the icon a label of its own. The 
 
 
 ```jsx
-<!-- ❌ -->
+/* ❌ */
 <Button endIcon={<Icon href={svgAdd} alt="plus symbol" />}>Create new</Button>
 
-<!-- ❌ -->
+/* ❌ */
 <Button endIcon={<Icon href={svgAdd} alt="create new icon" />}>Create new</Button>
 
-<!-- ✅ -->
+/* ✅ */
 <Button endIcon={<Icon href={svgAdd} />}>Create new</Button>
 ```
 
@@ -104,11 +104,11 @@ For buttons _with_ visible labels, do not give the icon a label of its own. The 
 
 A link transports you to a new location. Its label should tell you where you are being taken. If the destination is a new page, consider making the link's text part of that page's [`<title>`](#the-page-title):
 
-```html
-<!-- the link -->
+```jsx
+/* the link */
 <a href="https://en.wikipedia.org/wiki/Infrastructure">Infrastructure</a>
 
-<!-- the page's title -->
+/* the page's title */
 <title>Infrastructure - Wikipedia</title>
 ```
 
@@ -120,12 +120,12 @@ Since links, like [headings](#headings), are frequently aggregated into lists, a
 
 Associate each form field (`<input>`, `<select>`, `<textarea>`) with a label, using the `<label>` element. Either the `for` and `id` attributes must have a matching value or the `<label>` must wrap the input. 
 
-```html
-<!-- ✅ -->
+```jsx
+/* ✅ */
 <label for="email">Email</label>
 <input type="text" name="email" id="email">
 
-<!-- ✅ -->
+/* ✅ */
 <label>
   Email
   <input type="text" name="email">
@@ -148,7 +148,7 @@ Sets of related or interdependent form fields must be associated with a common _
 
 Using radio buttons, the group label—provided with the `<fieldset>`'s `<legend>`—represents the choice to be made. Individual labels represent the _options_ for that choice. 
 
-```html
+```jsx
 <fieldset>
   <legend>Design system:</legend>
   <label>
@@ -191,22 +191,22 @@ Media that may not be seen must be described. Alternative text is primarily for 
 Writing good alternative text is difficult to automate and should be part of your design and editorial process. While agents can describe detail in an image, they struggle piecing the details together to convey the image's intent.
 
 ```jsx
-<!-- ❌ Verbose and missing relevant terminology -->
+/* ❌ Verbose and missing relevant terminology */
 <img src="/photos/worker.webp" alt="A figure, in profile, wearing a yellow hat and holding a tablet device. The sky is pale blue and there are buildings along the horizon.">
 
-<!-- ✅ Concisely captures the scene -->
+/* ✅ Concisely captures the scene */
 <img src="/photos/worker.webp" alt="A construction worker, on site, surveying a large project.">
 ```
 
 The way the alternative text should be written depends on the role of the image in the interface. If an image is used as a [**Link**](/components/link), it must describe the link's location. A common example is the logo-as-homepage link:
 
 ```jsx
-<!-- ❌ The application is not a design case study -->
+/* ❌ The application is not a design case study */
 <Link href="/">
 	<img src="/images/logo.svg" alt="The company logo, using green, sans-serif lettering and featuring an icon of a citrus fruit exploded into independent segments.">
 </Link>
 
-<!-- ✅ Simply names the site -->
+/* ✅ Simply names the site */
 <Link href="/">
 	<img src="/images/logo.svg" alt="LimeWorld homepage">
 </Link>

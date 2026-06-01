@@ -118,7 +118,7 @@ Since links, like [headings](#headings), are frequently aggregated into lists, a
 
 ### Individual labels
 
-Associate each form field (`<input>`, `<select>`, `<textarea>`) with a label, using the `<label>` element. Either the `for` and `id` attributes must have a matching value or the `<label>` must wrap the input. 
+Associate each form field (`<input>`, `<select>`, `<textarea>`) with a label, using the `<label>` element. The `for` and `id` attributes must have a matching value. 
 
 ```jsx
 /* ✅ */
@@ -126,9 +126,9 @@ Associate each form field (`<input>`, `<select>`, `<textarea>`) with a label, us
 <input type="text" name="email" id="email">
 
 /* ✅ */
-<label>
+<label for="email">
   Email
-  <input type="text" name="email">
+  <input type="text" name="email" id="email">
 </label>
 ```
 

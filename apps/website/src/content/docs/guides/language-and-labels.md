@@ -45,7 +45,7 @@ The [`<title>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elem
 Give sufficient context by including both the page and application name in each `<title>`.
 
 ```jsx
-<title>[name of the page] | [name of the application]</title>
+<title>[name of the page] – [name of the application]</title>
 ```
 
 This identifies the page among other open tabs.

@@ -132,7 +132,24 @@ Associate each form field (`<input>`, `<select>`, `<textarea>`) with a label, us
 </label>
 ```
 
-The `placeholder` attribute is not a substitute for a `<label>`. Since `placeholder` is rendered inside the input itself, it can be mistaken for a completed entry. It is also not _persistent_, disappearing when the input is focused.
+Avoid using the `placeholder` attribute, either as a principle label or as a description. Since `placeholder` is rendered inside the input itself, it can be mistaken for a completed entry. It is also not _persistent_, disappearing when the input is focused. 
+
+For field descriptions, use `helperText`. Unlike `placeholder`, `helperText` appears persistently, under the input, and while the user is typing.
+
+```jsx
+export default () => {
+	return (
+		<TextField
+			label="Verification code:"
+			helperText={
+				<>
+					This was emailed to the address associated with your account.
+				</>
+			}
+		/>
+	);
+};
+```
 
 :::caution[Links in labels]
 

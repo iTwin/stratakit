@@ -94,9 +94,9 @@ Nesting HTML elements (placing them inside one another) is an everyday practice.
 
 ```jsx
 <div class="ButtonGroup">
-  <Button>Bold</Button>
-  <Button>Italic</Button>
-  <Button>Underline</Button>
+  <button>Bold</button>
+  <button>Italic</button>
+  <button>Underline</button>
 </div>
 ```
 

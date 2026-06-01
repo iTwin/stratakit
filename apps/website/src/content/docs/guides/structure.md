@@ -25,10 +25,10 @@ Whereas any two components in the source can only be _first and last_:
 
 ```jsx
 <div>
-  <Typography>First object</Typography>
-  <Typography>Another object</Typography>
+  <span>First object</span>
+  <span>Another object</span>
 </div>
-<Typography>Last object</Typography>
+<span>Last object</span>
 ```
 
 Avoid using **CSS** such that it creates a mismatch between visual placement and source order. Use this table to check:

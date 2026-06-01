@@ -6,6 +6,7 @@
 import TabsColors from "examples/mui/Tabs.colors.tsx";
 import TabsDefault from "examples/mui/Tabs.default.tsx";
 import TabsIcon from "examples/mui/Tabs.icon.tsx";
+import TabsIconOnly from "examples/mui/Tabs.icon-only.tsx";
 import TabsScrollable from "examples/mui/Tabs.scrollable.tsx";
 import { createKnob } from "~/~utils.tsx";
 
@@ -15,6 +16,7 @@ export default function TabsExamples() {
 			<TabsDefault />
 			<TabsColors />
 			<TabsIcon />
+			<TabsIconOnly />
 			<TabsScrollable />
 		</>
 	);

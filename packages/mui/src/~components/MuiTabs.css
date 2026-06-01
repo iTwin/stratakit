@@ -18,6 +18,7 @@
 
 .MuiTab-root {
 	/* #region Variables */
+	--✨bg--default: transparent;
 	--✨bg--hover-neutral: var(--stratakit-color-bg-glow-on-surface-neutral-hover);
 	--✨bg--hover-accent: var(--stratakit-color-bg-glow-on-surface-accent-hover);
 
@@ -31,9 +32,9 @@
 
 	/* #region Structural */
 	@apply --typography("body-md");
-	background-color: transparent;
+	background-color: var(--_MuiTab-background-color, var(--✨bg--default));
 	border-radius: 4px;
-	color: var(--✨color--default);
+	color: var(--_MuiTab-color, var(--✨color--default));
 	min-block-size: var(--_MuiTab-height);
 	min-inline-size: var(--_MuiTab-height); /* Forces 1:1 aspect ratio when the tab is icon-only */
 	overflow: visible;
@@ -56,17 +57,6 @@
 		position: absolute;
 	}
 
-	@media (any-hover: hover) {
-		&:where(:not(.Mui-disabled):hover) {
-			background-color: var(--_MuiTab-background-color);
-			color: var(--_MuiTab-color);
-		}
-	}
-
-	&:where(.Mui-selected) {
-		color: var(--_MuiTab-color);
-	}
-
 	:where(.MuiTabs-list:not(.MuiTabs-vertical)) & {
 		margin-block-start: var(--_MuiTabs-indicator-gap);
 		margin-block-end: var(--_MuiTabs-indicator-gap);
@@ -86,17 +76,33 @@
 
 	/* #region Visual styles */
 	&:where(.MuiTab-textColorPrimary) {
-		--_MuiTab-background-color: var(--✨bg--hover-accent);
-		--_MuiTab-color: var(--✨color--selected-accent);
+		@media (any-hover: hover) {
+			&:where(:not(.Mui-disabled):hover) {
+				--_MuiTab-background-color: var(--✨bg--hover-accent);
+				--_MuiTab-color: var(--✨color--selected-accent);
+			}
+		}
+
+		&:where(.Mui-selected) {
+			--_MuiTab-color: var(--✨color--selected-accent);
+		}
 	}
 
 	&:where(.MuiTab-textColorSecondary) {
-		--_MuiTab-background-color: var(--✨bg--hover-neutral);
-		--_MuiTab-color: var(--✨color--selected-neutral);
+		@media (any-hover: hover) {
+			&:where(:not(.Mui-disabled):hover) {
+				--_MuiTab-background-color: var(--✨bg--hover-neutral);
+				--_MuiTab-color: var(--✨color--selected-neutral);
+			}
+		}
+
+		&:where(.Mui-selected) {
+			--_MuiTab-color: var(--✨color--selected-neutral);
+		}
 	}
 
 	&:where(.Mui-disabled) {
-		color: var(--✨color--disabled);
+		--_MuiTab-color: var(--✨color--disabled);
 	}
 	/* #endregion */
 }

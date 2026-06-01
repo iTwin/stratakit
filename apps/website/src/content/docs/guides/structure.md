@@ -66,7 +66,7 @@ The `autofocus` attribute focuses an element when an interface first renders. Au
 
 :::
 
-More complex interactive components like [**Menu**](/components/menu) and [**Dialog**](/components/dialog) manage focus automatically. Implement these components to avoid focus order issues that could trip up a user or agent.
+More complex interactive components like [**Menu**](/components/menu) and [**Dialog**](/components/dialog) manage focus automatically. Use these components to avoid focus order issues that could trip up a user or agent.
 
 ### Skip link
 

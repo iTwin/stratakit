@@ -53,11 +53,11 @@ Avoid prioritizing the focus of certain elements by applying a positive `tabinde
 
 ```jsx
 /* ❌ */
-<ButtonGroup aria-label="Button group">
-  <Button>Focused second</Button>
-  <Button tabIndex={1}>Focused first</Button>
-  <Button>Focused last</Button>
-</ButtonGroup>
+<div role="group" aria-label="Button group">
+  <button>Focused second</button>
+  <button tabIndex={1}>Focused first</button>
+  <button>Focused last</button>
+</div>
 ```
 
 :::caution[The `autofocus` attribute]

@@ -40,7 +40,7 @@ Occasionally, a French page might include a section of content in another langua
 
 HTML offers lots of ways to label elements, and not just with the `<label>` element.
 
-The `<title>` element labels the screen itself. It's visible in the browser tab, but also parsed by crawlers and assistive software. In a search engine result, it's the text linking to the page. To a screen reader user, it's announced when arriving on the page.
+The [`<title>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/title) element labels the screen itself. It's visible in the browser tab, but also parsed by crawlers and assistive software. In a search engine result, it's the text linking to the page. To a screen reader user, it's announced when arriving on the page.
 
 Give sufficient context by including both the page and application name in each `<title>`.
 

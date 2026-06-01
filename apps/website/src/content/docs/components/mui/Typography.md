@@ -14,6 +14,7 @@ links:
 - The typography scale has been adjusted to better align with StrataKit's more compact visual language.
 - The default `variant` is now `"body2"` instead of `"body1"`.
 - A warning will be logged during development if a heading variant is used without explicitly setting the `render` prop.
+- The `"secondary"` color value has been removed. A `"textTertiary"` color value has been added.
 
 ## Examples
 
@@ -42,6 +43,24 @@ In these cases, combine a larger `variant` with the `render` prop to set a gener
 All of the stock MUI **Typography** `variant`s are available, with sizing adjusted to fit StrataKit's more compact visual language.
 
 ::example{src="mui/Typography.variants" min-height="600px"}
+
+### Colors
+
+By default, the **Typography** component inherits the ancestor's color. Use the [`color`](https://mui.com/material-ui/api/typography/#typography-prop-color) prop to explicitly set the text color.
+
+The following color are available for the `color` prop:
+
+- `"textPrimary"`
+- `"textSecondary"`
+- `"textTertiary"`
+- `"textDisabled"`
+- `"primary"`
+- `"error"`
+- `"info"`
+- `"success"`
+- `"warning"`
+
+::example{src="mui/Typography.colors"}
 
 ## ✅ Do
 

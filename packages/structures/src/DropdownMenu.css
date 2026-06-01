@@ -86,7 +86,8 @@
 			color: var(--✨divider-color);
 			block-size: var(--✨divider-thickness);
 			border-image: var(--✨divider-border-image);
-			margin-block: var(--✨divider-spacing);
+			margin-block-start: var(--✨divider-spacing);
+			margin-block-end: var(--✨divider-spacing);
 		}
 
 		/* Removes redundant dividers from the very first/last group and between adjacent groups */
@@ -112,7 +113,8 @@
 	--✨height: 1.75rem;
 
 	@layer base {
-		padding-inline: var(--✨padding-inline);
+		padding-inline-start: var(--✨padding-inline);
+		padding-inline-end: var(--✨padding-inline);
 		color: var(--✨color);
 		font-weight: 500;
 

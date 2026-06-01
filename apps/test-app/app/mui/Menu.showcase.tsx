@@ -4,6 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 import MenuDefault from "examples/mui/Menu.default.tsx";
 import MenuDense from "examples/mui/Menu.dense.tsx";
+import MenuSelectable from "examples/mui/Menu.selectable.tsx";
 import MenuListDefault_ from "examples/mui/MenuList._default.tsx";
 
 export default function MenuExamples() {
@@ -11,6 +12,7 @@ export default function MenuExamples() {
 		<>
 			<MenuDefault />
 			<MenuDense />
+			<MenuSelectable />
 			<MenuListDefault_ />
 		</>
 	);

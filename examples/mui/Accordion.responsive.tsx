@@ -8,25 +8,21 @@ import AccordionDetails from "@mui/material/AccordionDetails";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import Typography from "@mui/material/Typography";
 
-import styles from "./Accordion.marker-left.module.css";
+import styles from "./Accordion.responsive.module.css";
 
 export default () => {
 	return (
-		<Accordion>
-			<AccordionSummary
-				className={styles.summary}
-				slotProps={{
-					expandIconWrapper: {
-						className: styles.expander,
-					},
-				}}
-			>
-				<Typography render={<span />}>What is StrataKit?</Typography>
-			</AccordionSummary>
-			<AccordionDetails>
-				StrataKit is Bentley Systems' open source design system and the
-				successor to iTwinUI.
-			</AccordionDetails>
-		</Accordion>
+		<div className={styles.container}>
+			<Accordion variant="outlined">
+				<AccordionSummary>
+					<Typography render={<span />}>What is responsive design?</Typography>
+				</AccordionSummary>
+				<AccordionDetails>
+					Responsive design is a web development approach that ensures a
+					website's layout, images, and text automatically adjust and scale to
+					fit any screen size or device.
+				</AccordionDetails>
+			</Accordion>
+		</div>
 	);
 };

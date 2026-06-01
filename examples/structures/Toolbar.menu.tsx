@@ -20,14 +20,11 @@ import svgCopy from "@stratakit/icons/copy.svg";
 export default () => {
 	const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
 	const open = Boolean(anchorEl);
+	const closeMenu = () => setAnchorEl(null);
 
 	const [fontFamily, setFontFamily] = React.useState("Sans-serif");
 
 	const fontFamilyLabelId = React.useId();
-
-	const closeMenu = () => {
-		setAnchorEl(null);
-	};
 
 	return (
 		<Toolbar.Group variant="solid">
@@ -75,7 +72,7 @@ export default () => {
 				<MenuItem
 					role="menuitemradio"
 					selected={fontFamily === "Sans-serif"}
-					aria-checked={fontFamily === "Sans-serif"}
+					aria-checked={fontFamily === "Sans-serif" ? "true" : "false"}
 					onClick={() => {
 						setFontFamily("Sans-serif");
 						closeMenu();
@@ -86,7 +83,7 @@ export default () => {
 				<MenuItem
 					role="menuitemradio"
 					selected={fontFamily === "Serif"}
-					aria-checked={fontFamily === "Serif"}
+					aria-checked={fontFamily === "Serif" ? "true" : "false"}
 					onClick={() => {
 						setFontFamily("Serif");
 						closeMenu();
@@ -97,7 +94,7 @@ export default () => {
 				<MenuItem
 					role="menuitemradio"
 					selected={fontFamily === "Monospace"}
-					aria-checked={fontFamily === "Monospace"}
+					aria-checked={fontFamily === "Monospace" ? "true" : "false"}
 					onClick={() => {
 						setFontFamily("Monospace");
 						closeMenu();

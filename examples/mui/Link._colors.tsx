@@ -9,7 +9,6 @@ import Stack from "@mui/material/Stack";
 type LinkProps = React.ComponentProps<typeof Link>;
 const colors = [
 	"primary",
-	"secondary",
 	"error",
 	"info",
 	"success",

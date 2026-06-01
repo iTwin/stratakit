@@ -3,6 +3,19 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
+.MuiAccordion-root {
+	&:where(.Mui-disabled) {
+		border-color: GrayText;
+	}
+}
+
+.MuiAccordionSummary-root {
+	&:where(.Mui-disabled) {
+		--_MuiAccordion-expand-icon-color: GrayText;
+		color: GrayText;
+	}
+}
+
 .MuiAutocomplete-option {
 	&:where([aria-selected="true"]:not([aria-disabled="true"])) {
 		background-color: SelectedItem;
@@ -97,6 +110,13 @@
 		--_MuiCheckbox-background-color: Canvas;
 		--_MuiCheckbox-border-color: GrayText;
 		--_MuiCheckbox-color: GrayText;
+	}
+}
+
+.MuiChip-root {
+	&:where(.Mui-disabled) {
+		border-color: GrayText;
+		color: GrayText;
 	}
 }
 

@@ -22,26 +22,14 @@ export default () => {
 	return (
 		<Box>
 			<Tabs value={value} onChange={(_, value) => setValue(value)}>
-				<Tooltip title="Recent">
-					<Tab
-						aria-label="Recent"
-						icon={<Icon href={svgChat} />}
-						id={`${baseId}-recent`}
-					/>
+				<Tooltip title="Recent" describeChild={false}>
+					<Tab icon={<Icon href={svgChat} />} id={`${baseId}-recent`} />
 				</Tooltip>
-				<Tooltip title="Favorites">
-					<Tab
-						aria-label="Favorites"
-						icon={<Icon href={svgHeart} />}
-						id={`${baseId}-favorites`}
-					/>
+				<Tooltip title="Favorites" describeChild={false}>
+					<Tab icon={<Icon href={svgHeart} />} id={`${baseId}-favorites`} />
 				</Tooltip>
-				<Tooltip title="Nearby">
-					<Tab
-						aria-label="Nearby"
-						icon={<Icon href={svgLocation} />}
-						id={`${baseId}-nearby`}
-					/>
+				<Tooltip title="Nearby" describeChild={false}>
+					<Tab icon={<Icon href={svgLocation} />} id={`${baseId}-nearby`} />
 				</Tooltip>
 			</Tabs>
 			{value === 0 && (

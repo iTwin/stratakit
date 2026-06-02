@@ -74,10 +74,14 @@
 }
 
 .MuiFormLabel-root {
-	font-size: var(--stratakit-font-size-14);
+	@apply --typography("body-md");
 	color: var(--stratakit-color-text-neutral-secondary);
 	position: relative; /* Disable floating label */
 	transform: none; /* Undo inset positioning */
+
+	&:where(.MuiInputLabel-root.MuiInputLabel-sizeSmall) {
+		@apply --typography("body-sm");
+	}
 
 	&:where(.Mui-disabled) {
 		color: var(--stratakit-color-text-neutral-disabled);

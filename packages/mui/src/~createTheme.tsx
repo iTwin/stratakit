@@ -176,6 +176,7 @@ function createTheme() {
 							key={key}
 							{...props}
 							className={cx("MuiMenuItem-root", props.className)}
+							data-_sk-dense={ownerState.size === "small" ? "" : undefined}
 						>
 							{ownerState.getOptionLabel(option)}
 						</li>

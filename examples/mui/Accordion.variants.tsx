@@ -25,6 +25,12 @@ export default () => {
 					</AccordionSummary>
 					<AccordionDetails>Outlined 2 content</AccordionDetails>
 				</Accordion>
+				<Accordion variant="outlined">
+					<AccordionSummary>
+						<Typography render={<span />}>Outlined 3</Typography>
+					</AccordionSummary>
+					<AccordionDetails>Outlined 3 content</AccordionDetails>
+				</Accordion>
 			</div>
 			<div>
 				<Accordion variant="elevation">

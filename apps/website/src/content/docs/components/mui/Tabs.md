@@ -27,6 +27,16 @@ Use the `textColor` prop to set the tabs theme.
 
 ::example{src="mui/Tabs.colors"}
 
+### Icons
+
+An [**Icon**](/components/icon) can accompany a tab. The position of the icon be changed using the [`iconPosition` prop](https://mui.com/material-ui/api/tab/#tab-prop-iconPosition).
+
+::example{src="mui/Tabs.icon"}
+
+Use a [**Tooltip**](/components/tooltip) when a tab has an icon only and no label.
+
+::example{src="mui/Tabs.icon-only"}
+
 ### Scrollable
 
 ::example{src="mui/Tabs.scrollable"}

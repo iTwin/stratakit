@@ -115,7 +115,7 @@ Since links, like [headings](#headings), are frequently aggregated into lists, a
 
 ### Individual labels
 
-Associate each form field (`<input>`, `<select>`, `<textarea>`) with a label, using the `<label>` element. The `for` and `id` attributes must have a matching value.
+Make sure each form field (`<input>`, `<select>`, `<textarea>`) is associated with a label, using the `<label>` element. The `for` and `id` attributes must have a matching value.
 
 ```jsx
 /* ✅ */
@@ -138,11 +138,17 @@ Form fields implemented with non-native form elements may not be compatible with
 </div>
 ```
 
+:::caution[Links in labels]
+
+Do not place a link inside a `<label>`. Labels and links are both interactive and interactive elements cannot be nested. Furthermore, links inside labels are liable to be missed during screen reader operation.
+
+:::
+
 ### Descriptions
 
 Avoid using the `placeholder` attribute, either as a principle label or as a description for the field. Since `placeholder` is rendered inside the input itself, it can be mistaken for a completed entry. It is also not _persistent_, disappearing when the input is focused.
 
-For field descriptions, use `helperText`. Unlike `placeholder`, `helperText` appears persistently, under the input, and while the user is typing.
+For [**TextField**](/components/textfield) descriptions, use `helperText`. Unlike `placeholder`, `helperText` appears persistently, under the input, and while the user is typing.
 
 ```jsx
 <TextField
@@ -150,14 +156,6 @@ For field descriptions, use `helperText`. Unlike `placeholder`, `helperText` app
 	helperText="This was emailed to the address associated with your account."
 />
 ```
-
-:::caution[Links in labels]
-
-Do not place a link inside a `<label>`. Labels and links are both interactive and interactive elements cannot be nested. Furthermore, links inside labels are liable to be missed during screen reader operation.
-
-:::
-
-See [**TextField**](/components/textfield) for **StrataKit’s** implementation.
 
 ### Group labels
 

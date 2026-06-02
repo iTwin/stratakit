@@ -115,19 +115,36 @@ Since links, like [headings](#headings), are frequently aggregated into lists, a
 
 ### Individual labels
 
-Make sure each form field (`<input>`, `<select>`, `<textarea>`) is associated with a label, using the `<label>` element. The `for` and `id` attributes must have a matching value.
+Make sure each form field (`<input>`, `<select>`, `<textarea>`) is associated with a label, using the `<label>` element. The `for` and `id` attributes must have a matching value, even when nested.
 
-```jsx
-/* ✅ */
+```html "for" "id"
+<!-- ✅ -->
 <label for="email">Email</label>
 <input type="text" name="email" id="email" />
 
-/* ✅ */
+<!-- ✅ -->
 <label for="email">
 	Email
 	<input type="text" name="email" id="email" />
 </label>
 ```
+
+:::caution[HTML vs JSX]
+
+The code snippet above shows the expected _HTML output_. Some components have a built-in provision for associating labels automatically. For example, the [**TextField**](/components/textfield) component has a `label` prop that produces the above HTML structure.
+
+```jsx "label"
+<TextField label="Email" name="email" />
+```
+
+However, there will be cases where you are still responsible for manually associating the form field with its label. When authoring React code, the `for` attribute should be expressed using the [`htmlFor`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLLabelElement/htmlFor) prop:
+
+```jsx "htmlFor"
+<InputLabel htmlFor="email">Email</InputLabel>
+<TextField name="email" id="email" />
+```
+
+:::
 
 Form fields implemented with non-native form elements may not be compatible with `<label>`. The `aria-labelledby` attribute is required to associate the `<label>` element to the input. The [**Select**](/components/select) component renders like this (some attribution removed for brevity):
 

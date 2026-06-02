@@ -25,6 +25,7 @@ Make sure the **Select** is suitable for your use case. There may be other, more
 - The active option implementation and styling differ from the default approach. A checkmark icon has been added using a pseudo-element.
 - Includes full `forced-colors` support.
 - The `color` prop is not supported.
+- The default portal container is now the root portal container.
 
 ## Examples
 

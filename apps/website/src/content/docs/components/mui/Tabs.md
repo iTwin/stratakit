@@ -33,7 +33,7 @@ An [**Icon**](/components/icon) can accompany a tab. The position of the icon be
 
 ::example{src="mui/Tabs.icon"}
 
-Use a [**Tooltip**](/components/tooltip) when a tab has an icon only and no label.
+Use a [**Tooltip**](/components/tooltip) with `describeChild={false}` when a tab has an icon only and no label.
 
 ::example{src="mui/Tabs.icon-only"}
 

@@ -11,7 +11,7 @@ links:
 ## StrataKit MUI modifications
 
 - `<Tabs>` does not support the `indicatorColor` prop.
-- `<Tabs>` `textColor="inherit"` has been removed.
+- `<Tabs>` does not support `textColor="inherit"`.
 - `<Tab>` default value for `iconPosition` is now `"start"`.
 - Restyled using StrataKit's visual language.
 - Includes full `forced-colors` support.

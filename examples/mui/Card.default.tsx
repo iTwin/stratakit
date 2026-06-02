@@ -34,7 +34,7 @@ export default () => {
 				}
 			/>
 			<CardContent>
-				<Typography variant="body2" color="text.secondary">
+				<Typography variant="body2">
 					Stadium is a place for outdoor sports, concerts, or other events and
 					activities.
 				</Typography>

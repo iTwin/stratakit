@@ -15,12 +15,9 @@ export default () => {
 		setAnchorEl(null);
 	};
 
-	const buttonId = React.useId();
-
 	return (
 		<>
 			<Button
-				id={buttonId}
 				aria-haspopup="true"
 				aria-expanded={open ? "true" : "false"}
 				onClick={(event) => setAnchorEl(event.currentTarget)}
@@ -34,7 +31,6 @@ export default () => {
 				onClose={handleClose}
 				slotProps={{
 					list: {
-						"aria-labelledby": buttonId,
 						dense: true,
 					},
 				}}

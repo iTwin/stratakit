@@ -51,6 +51,8 @@
 }
 
 .MuiCardContent-root {
+	color: var(--stratakit-color-text-neutral-secondary);
+
 	&:where(:has(+ .MuiCardActions-root)) {
 		padding-block-end: 0;
 	}
@@ -67,10 +69,6 @@
 	&:where(.Mui-focusVisible) {
 		outline: none !important; /* Focus outline will be shown around the Card instead */
 	}
-}
-
-.MuiCardActionArea-focusHighlight {
-	display: none;
 }
 
 .MuiCardActions-root {

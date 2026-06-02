@@ -17,7 +17,8 @@
 		color: var(--🥝Badge-text-color);
 		font-weight: 500;
 		block-size: 1.25rem;
-		padding-inline: var(--stratakit-space-x1);
+		padding-inline-start: var(--stratakit-space-x1);
+		padding-inline-end: var(--stratakit-space-x1);
 	}
 
 	@layer modifiers {
@@ -139,7 +140,8 @@
 
 .🥝BadgeLabel {
 	@layer base {
-		margin-inline: var(--stratakit-space-x1);
+		margin-inline-start: var(--stratakit-space-x1);
+		margin-inline-end: var(--stratakit-space-x1);
 	}
 }
 

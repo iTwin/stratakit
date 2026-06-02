@@ -6,10 +6,24 @@
 .MuiAccordion-root {
 	--_MuiAccordion-border-radius: 0;
 	--_MuiAccordion-padding: var(--stratakit-space-x3);
+	--_MuiAccordion-column-gap: var(--stratakit-space-x3);
 
 	background-color: transparent;
 	border-color: var(--stratakit-color-border-neutral-muted);
 	border-radius: var(--_MuiAccordion-border-radius);
+	overflow-anchor: none; /* Prevent scroll jump with exclusive accordions */
+
+	@container (inline-size < 500px) {
+		&:where(:has(.MuiAccordionSummary-root:not([data-_sk-marker-placement="start"]))) {
+			--_MuiAccordion-details-indent: var(--_MuiAccordion-padding);
+			--_MuiAccordion-expand-icon-order: 0;
+		}
+	}
+
+	&:where(:has(.MuiAccordionSummary-root[data-_sk-marker-placement="end"])) {
+		--_MuiAccordion-details-indent: var(--_MuiAccordion-padding);
+		--_MuiAccordion-expand-icon-order: 0;
+	}
 
 	&:where(.MuiPaper-rounded) {
 		--_MuiAccordion-border-radius: 8px;
@@ -29,7 +43,7 @@
 
 	background-color: transparent; /* Prevents `background-color` change on focus */
 	border-radius: var(--_MuiAccordion-border-radius);
-	column-gap: var(--stratakit-space-x3);
+	column-gap: var(--_MuiAccordion-column-gap);
 	min-block-size: var(--stratakit-size-control-listitem-height-large);
 	padding-inline-start: var(--_MuiAccordion-padding);
 	padding-inline-end: var(--_MuiAccordion-padding);
@@ -63,9 +77,17 @@
 
 .MuiAccordionSummary-expandIconWrapper {
 	color: var(--_MuiAccordion-expand-icon-color);
+	order: var(--_MuiAccordion-expand-icon-order, -1);
 }
 
 .MuiAccordionDetails-root {
+	--✨indent: calc(
+		var(--_MuiAccordion-padding) +
+		var(--🥝Icon-size, 1rem) +
+		var(--_MuiAccordion-column-gap)
+	);
+
 	color: var(--stratakit-color-text-neutral-secondary);
 	padding: var(--_MuiAccordion-padding);
+	padding-inline-start: var(--_MuiAccordion-details-indent, var(--✨indent));
 }

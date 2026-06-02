@@ -1,0 +1,20 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+
+.MuiLink-root {
+	font-weight: 500;
+	text-decoration-color: currentColor;
+	text-decoration-line: underline;
+	text-underline-offset: var(--stratakit-space-x05);
+	transition: text-underline-offset 150ms ease-out;
+
+	&:where(a:not(:any-link)) {
+		text-decoration-line: none; /* Remove underline from static anchors */
+	}
+
+	&:where(:hover, :focus-visible) {
+		text-underline-offset: var(--stratakit-space-x1);
+	}
+}

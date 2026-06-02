@@ -13,6 +13,7 @@ import { Icon } from "@stratakit/mui";
 import svgChat from "@stratakit/icons/chat.svg";
 import svgHeart from "@stratakit/icons/heart.svg";
 import svgLocation from "@stratakit/icons/location.svg";
+import styles from "./Tabs.icon-only.module.css";
 
 export default () => {
 	const [value, setValue] = React.useState(0);
@@ -20,7 +21,7 @@ export default () => {
 	const baseId = React.useId();
 
 	return (
-		<Box>
+		<Box className={styles.container}>
 			<Tabs value={value} onChange={(_, value) => setValue(value)}>
 				<Tooltip title="Recent" describeChild={false}>
 					<Tab icon={<Icon href={svgChat} />} id={`${baseId}-recent`} />

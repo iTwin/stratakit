@@ -30,4 +30,11 @@ export const knobs = {
 			},
 		},
 	}),
+	fullWidth: createKnob({
+		props: {
+			MuiTabs: {
+				variant: "fullWidth",
+			},
+		},
+	}),
 };

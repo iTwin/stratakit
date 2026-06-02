@@ -8,13 +8,15 @@ import Box from "@mui/material/Box";
 import Tab from "@mui/material/Tab";
 import Tabs from "@mui/material/Tabs";
 
+import styles from "./Tabs.colors.module.css";
+
 export default () => {
 	const [value, setValue] = React.useState(0);
 
 	const baseId = React.useId();
 
 	return (
-		<Box>
+		<Box className={styles.container}>
 			<Tabs
 				textColor="secondary"
 				value={value}

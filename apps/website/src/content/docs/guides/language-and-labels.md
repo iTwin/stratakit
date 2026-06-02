@@ -13,27 +13,23 @@ A French speaker can identify French when they hear it. Programmatic parsers are
 
 In web applications, this just means applying a [`lang`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Global_attributes/lang) attribute, with a suitable [BCP 47 language tag](https://developer.mozilla.org/en-US/docs/Glossary/BCP_47_language_tag), to the `<html>` element:
 
-```html
+```jsx
 <html lang="fr">
-	...
-</html>
 ```
 
 Now parsers know to expect French content. A screen reader will choose a French voice profile and the page will be read in a suitably French accent. If your application supports multiple languages, change the `lang` value alongside translation.
 
 If the language reads _right to left_, pair the `lang` attribute with the [`dir`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Global_attributes/dir) attribute and a value of `"rtl"`:
 
-```html
+```jsx
 <html lang="ar" dir="rtl">
-	...
-</html>
 ```
 
 ## Multilingual pages
 
 Occasionally, a French page might include a section of content in another language. The parser must know when to [code-switch](https://en.wikipedia.org/wiki/Code-switching). Apply another `lang` attribute, but to the element containing the embedded language:
 
-```html
+```jsx
 <p>Je suis français!</p>
 <div lang="en">
 	<p>I am English.</p>
@@ -48,7 +44,7 @@ The [`<title>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elem
 
 Give sufficient context by including both the page and application name in each `<title>`.
 
-```html
+```jsx
 <title>[name of the page] – [name of the application]</title>
 ```
 
@@ -68,11 +64,11 @@ Equally important is the wording used for each heading. Headings are labels for 
 
 Here are good and bad examples for a company's stated use of artificial intelligence:
 
-```html
-<!-- ✅ Direct; uses relevant terminology -->
+```jsx
+/* ✅ Direct; uses relevant terminology */
 <h2>Our policy on artificial intelligence</h2>
 
-<!-- ❌ Vague and abstract; could be referring to anything -->
+/* ❌ Vague and abstract; could be referring to anything */
 <h2>Cautiously embracing the future</h2>
 ```
 
@@ -105,11 +101,11 @@ For buttons _with_ visible labels, do not give the icon a label of its own. The 
 
 A link transports you to a new location. Its label should tell you where you are being taken. If the destination is a new page, consider making the link's text part of that page's [`<title>`](#the-page-title):
 
-```html
-<!-- the link -->
+```jsx
+/* the link */
 <a href="https://en.wikipedia.org/wiki/Infrastructure">Infrastructure</a>
 
-<!-- the page's title -->
+/* the page's title */
 <title>Infrastructure - Wikipedia</title>
 ```
 
@@ -121,12 +117,12 @@ Since links, like [headings](#headings), are frequently aggregated into lists, a
 
 Associate each form field (`<input>`, `<select>`, `<textarea>`) with a label, using the `<label>` element. The `for` and `id` attributes must have a matching value.
 
-```html
-<!-- ✅ -->
+```jsx
+/* ✅ */
 <label for="email">Email</label>
 <input type="text" name="email" id="email" />
 
-<!-- ✅ -->
+/* ✅ */
 <label for="email">
 	Email
 	<input type="text" name="email" id="email" />
@@ -135,10 +131,10 @@ Associate each form field (`<input>`, `<select>`, `<textarea>`) with a label, us
 
 Form fields implemented with non-native form elements may not be compatible with `<label>`. The `aria-labelledby` attribute is required to associate the `<label>` element to the input. The [**Select**](/components/select) component renders like this (some attribution removed for brevity):
 
-```html
+```jsx
 <label id="ds-label">Design system:</label>
-<div role="combobox" aria-haspopup="listbox" aria-labelledby="ds-label">
-	<!-- list of options here -->
+<div role="combobox" aria-haspopup="listbox" aria-labelledby="ds-label" {...}>
+	{/* list of options here */}
 </div>
 ```
 
@@ -169,7 +165,7 @@ Sets of related or interdependent form fields must be associated with a common _
 
 Using radio buttons, the group label—provided with the `<fieldset>`'s `<legend>`—represents the choice to be made. Individual labels represent the _options_ for that choice.
 
-```html
+```jsx
 <fieldset>
 	<legend>Design system:</legend>
 	<label>
@@ -211,14 +207,14 @@ Media that may not be seen must be described. Alternative text is primarily for 
 
 Writing good alternative text is difficult to automate and should be part of your design and editorial process. While agents can describe detail in an image, they struggle piecing the details together to convey the image's intent.
 
-```html
-<!-- ❌ Verbose and missing relevant terminology -->
+```jsx
+/* ❌ Verbose and missing relevant terminology */
 <img
 	src="/photos/worker.webp"
 	alt="A figure, in profile, wearing a yellow hat and holding a tablet device. The sky is pale blue and there are buildings along the horizon."
 />
 
-<!-- ✅ Concisely captures the scene -->
+/* ✅ Concisely captures the scene */
 <img src="/photos/worker.webp" alt="A construction worker, on site, surveying a large project." />
 ```
 

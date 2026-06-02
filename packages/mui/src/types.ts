@@ -369,6 +369,10 @@ declare module "@mui/material/Tab" {
 }
 
 declare module "@mui/material/Tabs" {
+	interface TabsPropsTextColorOverrides {
+		inherit: false;
+	}
+
 	interface TabsOwnProps {
 		/** @deprecated DO NOT USE */
 		indicatorColor?: TabsProps["indicatorColor"];

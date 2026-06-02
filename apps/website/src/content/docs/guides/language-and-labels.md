@@ -5,7 +5,7 @@ description: How to identify and describe elements of the interface
 
 Interfaces are exchanges of information. Any interface where one party is human must share information as human readable text.
 
-Even interfaces not displaying text need to be encoded with text. Text is parsable by crawlers, agents, and assistive software like screen readers. Tacit forms of communication (symbols and icons, shapes and colors) are not. 
+Even interfaces not displaying text need to be encoded with text. Text is parsable by crawlers, agents, and assistive software like screen readers. Tacit forms of communication (symbols and icons, shapes and colors) are not.
 
 ## Page language
 
@@ -13,23 +13,27 @@ A French speaker can identify French when they hear it. Programmatic parsers are
 
 In web applications, this just means applying a [`lang`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Global_attributes/lang) attribute, with a suitable [ISO `lang` code](https://en.wikipedia.org/wiki/List_of_ISO_639_language_codes), to the `<html>` element:
 
-```jsx
+```html
 <html lang="fr">
+	...
+</html>
 ```
 
 Now parsers know to expect French content. A screen reader will choose a French voice profile and the page will be read in a suitably French accent. If your application supports multiple languages, change the `lang` value alongside translation.
 
 If the language reads _right to left_, pair the `lang` attribute with the [`dir`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Global_attributes/dir) attribute and a value of `"rtl"`:
 
-```jsx
-<html lang="ar" dir="rtl"> /* Arabic */
+```html
+<html lang="ar" dir="rtl">
+	...
+</html>
 ```
 
 ## Multilingual pages
 
 Occasionally, a French page might include a section of content in another language. The parser must know when to [code-switch](https://en.wikipedia.org/wiki/Code-switching). Apply another `lang` attribute, but to the element containing the embedded language:
 
-```jsx
+```html
 <p>Je suis français!</p>
 <div lang="en">
 	<p>I am English.</p>
@@ -44,11 +48,11 @@ The [`<title>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elem
 
 Give sufficient context by including both the page and application name in each `<title>`.
 
-```jsx
+```html
 <title>[name of the page] – [name of the application]</title>
 ```
 
-This identifies the page among other open tabs. 
+This identifies the page among other open tabs.
 
 :::caution[Single page applications]
 
@@ -58,20 +62,18 @@ If yours is a single-page application, ensure the `<title>` is updated as the ap
 
 ## Headings
 
-The [**Structure**](/guides/structure) guide covers using [heading levels](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/Heading_Elements) to describe document structure. 
+The [**Structure**](/guides/structure) guide covers using [heading levels](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/Heading_Elements) to describe document structure.
 
 Equally important is the wording used for each heading. Headings are labels for the content they introduce. You should not have to read the content to make sense of its heading. This is especially important given screen readers and other parsers extract headings from content to create lists of links.
 
 Here are good and bad examples for a company's stated use of artificial intelligence:
 
-```jsx
-/* ✅ Direct; uses relevant terminology */
+```html
+<!-- ✅ Direct; uses relevant terminology -->
 <h2>Our policy on artificial intelligence</h2>
-...
 
-/* ❌ Vague and abstract; could be referring to anything */
+<!-- ❌ Vague and abstract; could be referring to anything -->
 <h2>Cautiously embracing the future</h2>
-...
 ```
 
 ## Controls
@@ -82,12 +84,11 @@ Buttons without visible labels, showing just icons, must be encoded with text-ba
 
 ```jsx
 <IconButton label="Download">
-  <Icon href={svgDownload} />
+	<Icon href={svgDownload} />
 </IconButton>
 ```
 
 For buttons _with_ visible labels, do not give the icon a label of its own. The text label should be sufficient.
-
 
 ```jsx
 /* ❌ */
@@ -104,11 +105,11 @@ For buttons _with_ visible labels, do not give the icon a label of its own. The 
 
 A link transports you to a new location. Its label should tell you where you are being taken. If the destination is a new page, consider making the link's text part of that page's [`<title>`](#the-page-title):
 
-```jsx
-/* the link */
+```html
+<!-- the link -->
 <a href="https://en.wikipedia.org/wiki/Infrastructure">Infrastructure</a>
 
-/* the page's title */
+<!-- the page's title -->
 <title>Infrastructure - Wikipedia</title>
 ```
 
@@ -118,36 +119,32 @@ Since links, like [headings](#headings), are frequently aggregated into lists, a
 
 ### Individual labels
 
-Associate each form field (`<input>`, `<select>`, `<textarea>`) with a label, using the `<label>` element. The `for` and `id` attributes must have a matching value. 
+Associate each form field (`<input>`, `<select>`, `<textarea>`) with a label, using the `<label>` element. The `for` and `id` attributes must have a matching value.
 
-```jsx
-/* ✅ */
+```html
+<!-- ✅ -->
 <label for="email">Email</label>
-<input type="text" name="email" id="email">
+<input type="text" name="email" id="email" />
 
-/* ✅ */
+<!-- ✅ -->
 <label for="email">
-  Email
-  <input type="text" name="email" id="email">
+	Email
+	<input type="text" name="email" id="email" />
 </label>
 ```
 
 Form fields implemented with non-native form elements may not be compatible with `<label>`. The `aria-labelledby` attribute is required to associate the `<label>` element to the input. The [**Select**](/components/select) component renders like this (some attribution removed for brevity):
 
-```jsx
+```html
 <label id="ds-label">Design system:</label>
-<div 
-	role="combobox"
-	aria-haspopup="listbox"
-	aria-labelledby="ds-label"
->
-	/* list of options */
+<div role="combobox" aria-haspopup="listbox" aria-labelledby="ds-label">
+	<!-- list of options here -->
 </div>
 ```
 
 ### Descriptions
 
-Avoid using the `placeholder` attribute, either as a principle label or as a description for the field. Since `placeholder` is rendered inside the input itself, it can be mistaken for a completed entry. It is also not _persistent_, disappearing when the input is focused. 
+Avoid using the `placeholder` attribute, either as a principle label or as a description for the field. Since `placeholder` is rendered inside the input itself, it can be mistaken for a completed entry. It is also not _persistent_, disappearing when the input is focused.
 
 For field descriptions, use `helperText`. Unlike `placeholder`, `helperText` appears persistently, under the input, and while the user is typing.
 
@@ -156,11 +153,7 @@ export default () => {
 	return (
 		<TextField
 			label="Verification code:"
-			helperText={
-				<>
-					This was emailed to the address associated with your account.
-				</>
-			}
+			helperText={<>This was emailed to the address associated with your account.</>}
 		/>
 	);
 };
@@ -178,19 +171,19 @@ See [**TextField**](/components/textfield) for **StrataKit’s** implementation.
 
 Sets of related or interdependent form fields must be associated with a common _group label_.
 
-Using radio buttons, the group label—provided with the `<fieldset>`'s `<legend>`—represents the choice to be made. Individual labels represent the _options_ for that choice. 
+Using radio buttons, the group label—provided with the `<fieldset>`'s `<legend>`—represents the choice to be made. Individual labels represent the _options_ for that choice.
 
-```jsx
+```html
 <fieldset>
-  <legend>Design system:</legend>
-  <label>
-    iTwinUI
-    <input type="radio" name="system" value="iTwinUI">
-  </label>
-  <label>
-    StrataKit
-    <input type="radio" name="system" value="StrataKit">
-  </label>
+	<legend>Design system:</legend>
+	<label>
+		iTwinUI
+		<input type="radio" name="system" value="iTwinUI" />
+	</label>
+	<label>
+		StrataKit
+		<input type="radio" name="system" value="StrataKit" />
+	</label>
 </fieldset>
 ```
 
@@ -222,12 +215,15 @@ Media that may not be seen must be described. Alternative text is primarily for 
 
 Writing good alternative text is difficult to automate and should be part of your design and editorial process. While agents can describe detail in an image, they struggle piecing the details together to convey the image's intent.
 
-```jsx
-/* ❌ Verbose and missing relevant terminology */
-<img src="/photos/worker.webp" alt="A figure, in profile, wearing a yellow hat and holding a tablet device. The sky is pale blue and there are buildings along the horizon.">
+```html
+<!-- ❌ Verbose and missing relevant terminology -->
+<img
+	src="/photos/worker.webp"
+	alt="A figure, in profile, wearing a yellow hat and holding a tablet device. The sky is pale blue and there are buildings along the horizon."
+/>
 
-/* ✅ Concisely captures the scene */
-<img src="/photos/worker.webp" alt="A construction worker, on site, surveying a large project.">
+<!-- ✅ Concisely captures the scene -->
+<img src="/photos/worker.webp" alt="A construction worker, on site, surveying a large project." />
 ```
 
 The way the alternative text should be written depends on the role of the image in the interface. If an image is used as a [**Link**](/components/link), it must describe the link's location. A common example is the logo-as-homepage link:
@@ -235,12 +231,12 @@ The way the alternative text should be written depends on the role of the image 
 ```jsx
 /* ❌ The application is not a design case study */
 <Link href="/">
-	<img src="/images/logo.svg" alt="The company logo, using green, sans-serif lettering and featuring an icon of a citrus fruit exploded into independent segments.">
+	<img src="/images/logo.svg" alt="The company logo, using green, sans-serif lettering and featuring an icon of a citrus fruit exploded into independent segments." />
 </Link>
 
 /* ✅ Simply names the site */
 <Link href="/">
-	<img src="/images/logo.svg" alt="LimeWorld homepage">
+	<img src="/images/logo.svg" alt="LimeWorld homepage" />
 </Link>
 ```
 

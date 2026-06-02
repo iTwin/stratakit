@@ -11,7 +11,7 @@ Even interfaces not displaying text need to be encoded with text. Text is parsab
 
 A French speaker can identify French when they hear it. Programmatic parsers are not so skilled. You need to explicitly set a language for every screen of your interface.
 
-In web applications, this just means applying a [`lang`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Global_attributes/lang) attribute, with a suitable [ISO `lang` code](https://en.wikipedia.org/wiki/List_of_ISO_639_language_codes), to the `<html>` element:
+In web applications, this just means applying a [`lang`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Global_attributes/lang) attribute, with a suitable [BCP 47 language tag](https://developer.mozilla.org/en-US/docs/Glossary/BCP_47_language_tag), to the `<html>` element:
 
 ```html
 <html lang="fr">
@@ -149,6 +149,7 @@ Avoid using the `placeholder` attribute, either as a principle label or as a des
 For field descriptions, use `helperText`. Unlike `placeholder`, `helperText` appears persistently, under the input, and while the user is typing.
 
 ```jsx
+<<<<<<< HEAD
 export default () => {
 	return (
 		<TextField
@@ -157,6 +158,12 @@ export default () => {
 		/>
 	);
 };
+=======
+<TextField
+  label="Verification code:"
+  helperText="This was emailed to the address associated with your account."
+/>
+>>>>>>> c691a3c5960ae61630e7d854d892fa8e7a52f0f6
 ```
 
 :::caution[Links in labels]

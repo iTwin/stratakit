@@ -152,18 +152,10 @@ Avoid using the `placeholder` attribute, either as a principle label or as a des
 For field descriptions, use `helperText`. Unlike `placeholder`, `helperText` appears persistently, under the input, and while the user is typing.
 
 ```jsx
-export default () => {
-	return (
-		<TextField
-			label="Verification code:"
-			helperText={
-				<>
-					This was emailed to the address associated with your account.
-				</>
-			}
-		/>
-	);
-};
+<TextField
+  label="Verification code:"
+  helperText="This was emailed to the address associated with your account."
+/>
 ```
 
 :::caution[Links in labels]

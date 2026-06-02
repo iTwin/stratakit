@@ -1,0 +1,1 @@
+const e="/assets/heart-VJPzVpEV.svg",o=Object.freeze(Object.defineProperty({__proto__:null,default:e},Symbol.toStringTag,{value:"Module"})),t="/assets/location-C_VRgk7K.svg",_=Object.freeze(Object.defineProperty({__proto__:null,default:t},Symbol.toStringTag,{value:"Module"}));export{_,o as a,t as b,e as s};

@@ -40,6 +40,7 @@
 	background-color: var(--_MuiTab-background-color);
 	border-radius: 4px;
 	color: var(--_MuiTab-color);
+	gap: var(--stratakit-space-x1);
 	min-block-size: var(--_MuiTab-height);
 	min-inline-size: var(--_MuiTab-height); /* Forces 1:1 aspect ratio when the tab is icon-only */
 	overflow: visible;
@@ -119,6 +120,10 @@
 		--🥝Icon-color: var(--✨icon--disabled);
 	}
 	/* #endregion */
+}
+
+.MuiTab-icon {
+	margin: 0;
 }
 
 .MuiTabs-indicator {

@@ -10,6 +10,7 @@ links:
 
 ## StrataKit MUI modifications
 
+- Added [`size`](#sizes) prop.
 - `<Tabs>` does not support the `indicatorColor` prop.
 - `<Tabs>` does not support `textColor="inherit"`.
 - `<Tab>` default value for `iconPosition` is now `"start"`.
@@ -40,3 +41,11 @@ Use a [**Tooltip**](/components/tooltip) with `describeChild={false}` when a tab
 ### Scrollable
 
 ::example{src="mui/Tabs.scrollable"}
+
+### Sizes
+
+- **Small:** Use in compact interfaces where space is limited.
+- **Medium:** Default size, suitable for most use cases.
+- **Large:** Use in spacious layouts where more prominent tabs are needed.
+
+::example{src="mui/Tabs.sizes"}

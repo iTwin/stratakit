@@ -70,8 +70,12 @@
 	padding-inline-start: var(--_MuiAccordion-padding);
 	padding-inline-end: var(--_MuiAccordion-padding);
 
-	:where(.MuiAccordion-root:not(.MuiPaper-outlined)) &:where(.Mui-focusVisible) {
-		outline-offset: 0;
+	:where(.MuiAccordion-root.MuiPaper-elevation) & {
+		--🥝focus-outline-offset: -2px;
+	}
+
+	:where(.MuiAccordion-root.MuiPaper-outlined) & {
+		--🥝focus-outline-offset: -1px;
 	}
 
 	&:where(.Mui-expanded) {

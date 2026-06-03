@@ -3,7 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 import Stack from "@mui/material/Stack";
-import AccordionMultiple_ from "examples/mui/Accordion._multiple.tsx";
+import AccordionMultipleOutlined_ from "examples/mui/Accordion._multiple-outlined.tsx";
 import AccordionActions from "examples/mui/Accordion.actions.tsx";
 import AccordionDecoration from "examples/mui/Accordion.decoration.tsx";
 import AccordionDefault from "examples/mui/Accordion.default.tsx";
@@ -34,7 +34,7 @@ export default function AccordionExamples() {
 				<AccordionActions />
 			</div>
 			<AccordionMultiple />
-			{!isProduction && <AccordionMultiple_ />}
+			{!isProduction && <AccordionMultipleOutlined_ />}
 			<AccordionVariants />
 		</Stack>
 	);

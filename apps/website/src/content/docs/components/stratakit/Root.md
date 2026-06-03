@@ -29,7 +29,7 @@ StrataKit synchronizes the color scheme with the parent document or a shadow-roo
 Use the [`rootNode`](/reference/mui/Root#Root.Root.rootNode) prop to customize the [root node](https://developer.mozilla.org/en-US/docs/Web/API/Node/getRootNode) to which this **Root** component is attached. This needs to be set when the **Root** is rendered within [shadow DOM](https://developer.mozilla.org/en-US/docs/Web/API/Web_components/Using_shadow_DOM) or a [popup window](https://developer.mozilla.org/en-US/docs/Web/API/Window/open#description).
 
 ```tsx
-<Root rootNode={popup.document}>{/* Your app goes here */}</Root>
+<Root rootNode={popup.document}>
 ```
 
 ## Accent color (unstable)

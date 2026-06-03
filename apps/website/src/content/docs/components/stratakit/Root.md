@@ -59,4 +59,4 @@ StrataKit synchronizes the accent color with the parent document or a shadow-roo
 
 ## 🚫 Don't
 
-- Don't render multiple `<Root>` components in the same document.
+- Don't render multiple `<Root>` components in the same document or [shadow root](https://developer.mozilla.org/en-US/docs/Web/API/ShadowRoot).

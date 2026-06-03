@@ -14,7 +14,7 @@ Additionally, it allows you to configure the [color scheme](#color-scheme) and [
 
 ### Color scheme
 
-Set the required [`colorScheme`](/reference/mui/Root#Root.Root.colorScheme) prop to apply a color scheme to all StrataKit components on the page. Use the [`prefers-color-scheme`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/@media/prefers-color-scheme) CSS media feature to detect the user's preferred color scheme and set it as the default.
+Set the required [`colorScheme`](/reference/mui/Root#Root.Root.colorScheme) prop to apply a color scheme to all StrataKit components on the page.
 
 ```tsx
 <Root colorScheme="dark">{/* Your app goes here */}</Root>

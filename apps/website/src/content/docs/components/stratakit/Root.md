@@ -40,7 +40,7 @@ Use the [`unstable_accentColor`](/reference/mui/Root#Root.Root.unstable_accentCo
 - **Cobalt**: Blue accent color to ensure compatibility with older applications.
 
 ```tsx
-<Root unstable_accentColor="aurora">{/* Your app goes here */}</Root>
+<Root unstable_accentColor="cobalt">
 ```
 
 :::note

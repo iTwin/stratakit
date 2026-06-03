@@ -14,7 +14,7 @@
 		"lint:copyright": "tsx internal/copyright-linter.ts",
 		"prettier": "prettier . '!**/*.{js,jsx,ts,tsx,cjs,cts,mjs,mts,css,json,jsonc}' --check",
 		"test": "pnpm --filter=@stratakit/test-app --filter=internal test",
-		"changeset": "pnpx @changesets/cli@2.29.7",
+		"changeset": "pnpx @changesets/cli@2.31.0",
 		"changeset:version": "pnpm run changeset version && pnpm format",
 		"changeset:publish": "pnpm run build && pnpm run changeset publish"
 	},

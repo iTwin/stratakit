@@ -10,7 +10,7 @@ links:
 
 ## StrataKit MUI modifications
 
-- The default portal container is now the root portal container.
+- The default portal container is now the [root portal container](/components/root/#portal-container).
 
 ## Examples
 

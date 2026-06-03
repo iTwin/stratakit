@@ -46,6 +46,5 @@ Use a [**Tooltip**](/components/tooltip) with `describeChild={false}` when a tab
 
 - **Small:** Use in compact interfaces where space is limited.
 - **Medium:** Default size, suitable for most use cases.
-- **Large:** Use in spacious layouts where more prominent tabs are needed.
 
 ::example{src="mui/Tabs.sizes"}

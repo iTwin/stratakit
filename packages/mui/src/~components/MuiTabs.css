@@ -19,12 +19,6 @@
 		--_MuiTab-padding-block: var(--stratakit-space-x1);
 		--_MuiTab-padding-inline: var(--stratakit-space-x3);
 	}
-
-	&:where([data-_sk-size="large"]) {
-		--_MuiTab-height: var(--stratakit-size-control-field-height-large);
-		--_MuiTab-padding-block: var(--stratakit-space-x2);
-		--_MuiTab-padding-inline: var(--stratakit-space-x4);
-	}
 }
 
 .MuiTabs-list {
@@ -73,10 +67,6 @@
 
 	:where(.MuiTabs-root[data-_sk-size="medium"]) & {
 		@apply --typography("body-md");
-	}
-
-	:where(.MuiTabs-root[data-_sk-size="large"]) & {
-		@apply --typography("body-lg");
 	}
 
 	/* This pseudo-element increases tap target size */

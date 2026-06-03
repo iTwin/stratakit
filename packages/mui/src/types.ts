@@ -379,7 +379,7 @@ declare module "@mui/material/Tabs" {
 		 *
 		 * @default 'medium'
 		 */
-		size?: "small" | "medium" | "large";
+		size?: "small" | "medium";
 
 		/** @deprecated DO NOT USE */
 		indicatorColor?: TabsProps["indicatorColor"];

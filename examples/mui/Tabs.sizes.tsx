@@ -14,7 +14,6 @@ import styles from "./Tabs.sizes.module.css";
 export default () => {
 	const [smallValue, setSmallValue] = React.useState(0);
 	const [mediumValue, setMediumValue] = React.useState(0);
-	const [largeValue, setLargeValue] = React.useState(0);
 
 	const baseId = React.useId();
 
@@ -70,33 +69,6 @@ export default () => {
 				{mediumValue === 2 && (
 					<div role="tabpanel" aria-labelledby={`${baseId}-medium-tab2`}>
 						Medium three
-					</div>
-				)}
-			</Box>
-
-			<Box className={styles.container}>
-				<Tabs
-					size="large"
-					value={largeValue}
-					onChange={(_, value) => setLargeValue(value)}
-				>
-					<Tab label="Large one" id={`${baseId}-large-tab0`} />
-					<Tab label="Large two" id={`${baseId}-large-tab1`} />
-					<Tab label="Large three" id={`${baseId}-large-tab2`} />
-				</Tabs>
-				{largeValue === 0 && (
-					<div role="tabpanel" aria-labelledby={`${baseId}-large-tab0`}>
-						Large one
-					</div>
-				)}
-				{largeValue === 1 && (
-					<div role="tabpanel" aria-labelledby={`${baseId}-large-tab1`}>
-						Large two
-					</div>
-				)}
-				{largeValue === 2 && (
-					<div role="tabpanel" aria-labelledby={`${baseId}-large-tab2`}>
-						Large three
 					</div>
 				)}
 			</Box>

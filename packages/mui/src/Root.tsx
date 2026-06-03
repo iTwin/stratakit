@@ -53,9 +53,10 @@ const Root = forwardRef<"div", RootProps>((props, forwardedRef) => {
 	const [portalContainer, setPortalContainer] =
 		React.useState<HTMLDivElement | null>();
 
-	const theme = createTheme({
-		portalContainer: portalContainer ?? undefined,
-	});
+	const theme = React.useMemo(
+		() => createTheme({ portalContainer }),
+		[portalContainer],
+	);
 	return (
 		<StyledEngineProvider>
 			<ThemeProvider

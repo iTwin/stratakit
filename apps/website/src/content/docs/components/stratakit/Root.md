@@ -36,8 +36,8 @@ Use the [`rootNode`](/reference/mui/Root#Root.Root.rootNode) prop to customize t
 
 Use the [`unstable_accentColor`](/reference/mui/Root#Root.Root.unstable_accentColor) prop to set the accent color applied to all StrataKit components under the **Root**.
 
-- **Aurora**: Default and preferred green accent color.
-- **Cobalt**: Blue accent color to ensure compatibility with older applications.
+- **Aurora** (default): StrataKit's preferred green accent color.
+- **Cobalt**: Blue accent color for better compatibility with older, iTwinUI-based applications.
 
 ```tsx
 <Root unstable_accentColor="cobalt">

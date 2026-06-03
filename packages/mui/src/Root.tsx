@@ -51,7 +51,7 @@ const Root = forwardRef<"div", RootProps>((props, forwardedRef) => {
 	const { children, colorScheme, unstable_accentColor, ...rest } = props;
 
 	const [portalContainer, setPortalContainer] =
-		React.useState<HTMLDivElement | null>(null);
+		React.useState<HTMLDivElement | null>();
 
 	const theme = createTheme({
 		portalContainer: portalContainer ?? undefined,

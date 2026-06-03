@@ -11,39 +11,31 @@ import Typography from "@mui/material/Typography";
 
 export default () => {
 	return (
-		<Stack spacing={1} direction="column">
+		<Stack spacing={1} direction="column" sx={{ alignSelf: "stretch" }}>
 			<div>
-				<Accordion variant="outlined">
+				<Accordion variant="elevation">
 					<AccordionSummary>
-						<Typography render={<span />}>Outlined 1</Typography>
+						<Typography render={<span />}>
+							<code>elevation</code> variant
+						</Typography>
 					</AccordionSummary>
-					<AccordionDetails>Outlined 1 content</AccordionDetails>
-				</Accordion>
-				<Accordion variant="outlined">
-					<AccordionSummary>
-						<Typography render={<span />}>Outlined 2</Typography>
-					</AccordionSummary>
-					<AccordionDetails>Outlined 2 content</AccordionDetails>
-				</Accordion>
-				<Accordion variant="outlined">
-					<AccordionSummary>
-						<Typography render={<span />}>Outlined 3</Typography>
-					</AccordionSummary>
-					<AccordionDetails>Outlined 3 content</AccordionDetails>
+					<AccordionDetails>
+						An elevation accordion does not include a border around its content
+						with square corners.
+					</AccordionDetails>
 				</Accordion>
 			</div>
 			<div>
-				<Accordion variant="elevation">
+				<Accordion variant="outlined">
 					<AccordionSummary>
-						<Typography render={<span />}>Elevation 1</Typography>
+						<Typography render={<span />}>
+							<code>outlined</code> variant
+						</Typography>
 					</AccordionSummary>
-					<AccordionDetails>Elevation 1 content</AccordionDetails>
-				</Accordion>
-				<Accordion variant="elevation">
-					<AccordionSummary>
-						<Typography render={<span />}>Elevation 2</Typography>
-					</AccordionSummary>
-					<AccordionDetails>Elevation 2 content</AccordionDetails>
+					<AccordionDetails>
+						An outlined accordion includes a border around its content with
+						rounded corners.
+					</AccordionDetails>
 				</Accordion>
 			</div>
 		</Stack>

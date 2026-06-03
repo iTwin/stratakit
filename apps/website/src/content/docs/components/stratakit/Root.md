@@ -49,6 +49,12 @@ StrataKit synchronizes the accent color with the parent document or a shadow-roo
 
 :::
 
+:::caution[Unstable API]
+
+The prop is marked unstable, as we finalize its API. If you have feedback or use cases to share, please open a [StrataKit issue](https://github.com/iTwin/stratakit/issues).
+
+:::
+
 ## ✅ Do
 
 - Render `<Root>` at the top level of your application.

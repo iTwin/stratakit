@@ -67,13 +67,13 @@
 		"sharp": "^0.34.5"
 	},
 	"devDependencies": {
-		"@axe-core/playwright": "^4.11.1",
+		"@axe-core/playwright": "^4.11.3",
 		"@playwright/test": "catalog:",
 		"@types/node": "catalog:",
 		"@types/react": "catalog:",
 		"@types/react-dom": "catalog:",
 		"@types/xml2js": "^0.4.14",
-		"axe-core": "^4.11.2",
+		"axe-core": "^4.12.0",
 		"github-slugger": "^2.0.0",
 		"remark-directive": "^4.0.0",
 		"ts-morph": "^27.0.2",

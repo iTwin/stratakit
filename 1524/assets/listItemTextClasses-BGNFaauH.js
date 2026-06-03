@@ -1,0 +1,1 @@
+import{p as s,n as e}from"./~utils-DUPqDmaR.js";function n(t){return s("MuiListItemIcon",t)}const a=e("MuiListItemIcon",["root","alignItemsFlexStart"]);function l(t){return s("MuiListItemText",t)}const o=e("MuiListItemText",["root","multiline","dense","inset","primary","secondary"]);export{o as a,l as b,n as g,a as l};

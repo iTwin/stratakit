@@ -1,0 +1,1 @@
+import{b as r,C as c}from"./collection-store-CuOf-Gx3.js";import{aQ as i,aR as l,aS as s,bo as m,a_ as u}from"./~utils-DUPqDmaR.js";import{t as C}from"./index-BQ5LZ1Iq.js";const d="div",f=s(function({store:e,...o}){const n=r();return e=e||n,o=m(o,a=>C.jsx(c,{value:e,children:a}),[e]),u(o)}),E=i(function(e){return l(d,f(e))});export{E as C};

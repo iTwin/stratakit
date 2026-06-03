@@ -114,6 +114,10 @@
 	box-shadow: none;
 	cursor: grab;
 
+	&:where(.Mui-active) {
+		cursor: grabbing;
+	}
+
 	&:where(.Mui-disabled) {
 		background-color: var(--stratakit-color-icon-neutral-disabled);
 		border-color: var(--stratakit-color-icon-neutral-disabled);

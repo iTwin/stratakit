@@ -54,7 +54,7 @@ StrataKit synchronizes the accent color with the parent document or a shadow-roo
 ## ✅ Do
 
 - Render `<Root>` at the top level of your application.
-- Take user's preference into account when specifying the `colorScheme` prop.
+- Take [user's preference](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/@media/prefers-color-scheme) into account when specifying the `colorScheme` prop.
 - Provide `rootNode` prop when using shadow DOM or popup windows.
 
 ## 🚫 Don't

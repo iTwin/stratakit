@@ -41,13 +41,14 @@
 		}
 	}
 
-	&:where(.MuiPaper-outlined) {
-		&:where(:not(:nth-child(1 of &))) {
-			border-block-start-width: 0; /* Prevents double border when multiple accordions are stacked */
+	&:where(:not(:nth-child(1 of &))) {
+		&:where(.MuiPaper-elevation) {
+			border-block-start-width: 1px;
+			border-block-start-style: solid;
 		}
 
-		&::before {
-			display: none; /* Divider is not needed since the border is already visible */
+		&:where(.MuiPaper-outlined) {
+			border-block-start-width: 0; /* Prevents double border when multiple accordions are stacked */
 		}
 	}
 

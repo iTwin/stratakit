@@ -32,7 +32,7 @@ Use the [`rootNode`](/reference/mui/Root#Root.Root.rootNode) prop to customize t
 <Root rootNode={popup.document}>
 ```
 
-## Accent color (unstable)
+## Accent color
 
 Use the [`unstable_accentColor`](/reference/mui/Root#Root.Root.unstable_accentColor) prop to set the accent color applied to all StrataKit components under the **Root**.
 

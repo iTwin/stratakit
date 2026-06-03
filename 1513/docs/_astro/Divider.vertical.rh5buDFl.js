@@ -1,1 +1,0 @@
-import{j as i}from"./_utils.t1uVMlzs.js";import{D as r}from"./Divider.Bik8aLkz.js";const o=()=>i.jsx("div",{style:{blockSize:"calc(100dvh - 16px * 2)"},children:i.jsx(r,{orientation:"vertical"})});export{o as default};

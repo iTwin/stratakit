@@ -144,6 +144,15 @@ However, there will be cases where you are still responsible for manually associ
 <TextField name="email" id="email" />
 ```
 
+React's [`useId`](https://react.dev/reference/react/useId) can be used to generate a globally unique ID for the `htmlFor` and `id` values.
+
+```jsx
+const emailFieldId = useId();
+
+<InputLabel htmlFor={emailFieldId}>Email</InputLabel>
+<TextField name="email" id={emailFieldId} />
+```
+
 :::
 
 Form fields implemented with non-native form elements may not be compatible with `<label>`. The `aria-labelledby` attribute is required to associate the `<label>` element to the input. The [**Select**](/components/select) component renders like this (some attribution removed for brevity):

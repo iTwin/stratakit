@@ -1,1 +1,0 @@
-function r(e,o){if(!e||!o)return!1;if(e.contains(o))return!0;const n=o.getRootNode?.();if(n&&n instanceof ShadowRoot){let t=o;for(;t;){if(e===t)return!0;t=t.parentNode??t.host??null}}return!1}export{r as c};

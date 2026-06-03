@@ -1,1 +1,0 @@
-import{r}from"./styles.internal.CaJWceVp.js";import{Q as n}from"./_utils.C5jgFUCE.js";import{c as o}from"./DefaultPropsProvider.VwCbtsv0.js";function m(e){return Object.keys(e).length===0}function s(e=null){const t=r.useContext(n);return!t||m(t)?e:t}const u=o();function h(e=u){return s(e)}export{h as u};

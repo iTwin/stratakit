@@ -175,4 +175,8 @@
 		--🥝Icon-color: var(--stratakit-color-icon-neutral-disabled);
 		opacity: 1;
 	}
+
+	@media (pointer: coarse) {
+		display: none;
+	}
 }

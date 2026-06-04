@@ -470,6 +470,7 @@ function createTheme() {
 			MuiTabs: {
 				defaultProps: {
 					component: MuiTabs,
+					allowScrollButtonsMobile: true,
 					slotProps: {
 						startScrollButtonIcon: {
 							component: ChevronLeftIcon,

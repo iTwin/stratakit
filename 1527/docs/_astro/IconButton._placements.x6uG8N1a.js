@@ -1,0 +1,1 @@
+import{j as o,G as s,I as e}from"./_utils.CPN-YqLJ.js";import{s as r}from"./placeholder.C6gcWTfV.js";const a=["top","right","bottom","left"],c=()=>a.map(t=>o.jsx(s,{label:`${t.charAt(0).toUpperCase()}${t.slice(1)}`,labelPlacement:t,children:o.jsx(e,{href:r})},t));export{c as default};

@@ -1,0 +1,1 @@
+import{j as s}from"./_utils.PWmry-GM.js";import{C as e}from"./Chip.p87wp_54.js";const t=()=>s.jsxs("div",{className:"flex",children:[s.jsx(e,{label:"HTML"}),s.jsx(e,{label:"CSS"}),s.jsx(e,{label:"JS"})]});export{t as default};

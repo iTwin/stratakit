@@ -1,0 +1,1 @@
+import{j as t}from"./_utils.PWmry-GM.js";import{A as o}from"./Autocomplete.BIWvbs3R.js";import{T as r}from"./TextField.Cw4dbMtG.js";const m=()=>t.jsx(o,{options:["Badge","Button","Checkbox","Dialog","Divider","Progress","Rating","Select","Switch","TextField"],renderInput:e=>t.jsx(r,{...e,label:"Favorite components:"}),multiple:!0});export{m as default};

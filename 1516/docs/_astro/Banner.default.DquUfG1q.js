@@ -1,0 +1,1 @@
+import{j as e}from"./_utils.PWmry-GM.js";import{B as s}from"./Banner.CIn3gsbX.js";const r=()=>e.jsx(s,{label:"Update complete",message:"Your settings have been saved successfully."});export{r as default};

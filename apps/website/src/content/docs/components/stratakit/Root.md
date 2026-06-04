@@ -45,7 +45,7 @@ Use the [`unstable_accentColor`](/reference/mui/Root#Root.Root.unstable_accentCo
 
 :::note
 
-StrataKit synchronizes the accent color with the parent document or a shadow-root host.
+StrataKit synchronizes the accent color with the parent document.
 
 :::
 

@@ -1,1 +1,0 @@
-import{j as t}from"./_utils.CvzzIOOF.js";import{C as r}from"./Chip.afIYpf4q.js";const o=()=>t.jsx(r,{label:"Default Chip"});export{o as default};

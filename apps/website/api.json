@@ -129,7 +129,7 @@
 								"name": "unstable_accentColor",
 								"type": "\"aurora\" | \"cobalt\" | undefined",
 								"optional": true,
-								"jsdoc": "The accent color to use for all components under the Root:\n\n- `\"aurora\"`: Default and preferred green accent color.\n- `\"cobalt\"`: Blue accent color to ensure compatibility with older applications.",
+								"jsdoc": "The accent color to use for all components under the Root:\n\n- `\"aurora\"`: StrataKit's preferred green accent color.\n- `\"cobalt\"`: Blue accent color for better compatibility with older, iTwinUI-based applications.",
 								"defaultValue": "\"aurora\""
 							},
 							{

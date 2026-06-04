@@ -470,9 +470,13 @@ function createTheme() {
 			MuiTabs: {
 				defaultProps: {
 					component: MuiTabs,
-					slots: {
-						startScrollButtonIcon: ChevronLeftIcon,
-						endScrollButtonIcon: ChevronRightIcon,
+					slotProps: {
+						startScrollButtonIcon: {
+							component: ChevronLeftIcon,
+						},
+						endScrollButtonIcon: {
+							component: ChevronRightIcon,
+						},
 					},
 				},
 			},

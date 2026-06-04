@@ -467,12 +467,7 @@ function createTheme() {
 			},
 			MuiSvgIcon: { defaultProps: { component: Role.svg } },
 			MuiSwipeableDrawer: { defaultProps: { component: Role.div } },
-			MuiTabs: {
-				defaultProps: {
-					component: MuiTabs,
-					size: "medium",
-				},
-			},
+			MuiTabs: { defaultProps: { component: MuiTabs } },
 			MuiTab: { defaultProps: { iconPosition: "start" } },
 			MuiTable: { defaultProps: { component: withRenderProp(Role, "table") } },
 			MuiTableBody: {

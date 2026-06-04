@@ -5,6 +5,9 @@
 
 .MuiTabs-root {
 	--_MuiTabs-indicator-gap: var(--stratakit-space-x2);
+	--_MuiTab-height: var(--stratakit-size-control-field-height-medium);
+	--_MuiTab-padding-block: var(--stratakit-space-x1);
+	--_MuiTab-padding-inline: var(--stratakit-space-x3);
 
 	min-block-size: unset; /* Allow `.MuiTab-root` to define height */
 
@@ -12,12 +15,6 @@
 		--_MuiTab-height: var(--stratakit-size-control-field-height-small);
 		--_MuiTab-padding-block: var(--stratakit-space-x05);
 		--_MuiTab-padding-inline: var(--stratakit-space-x2);
-	}
-
-	&:where([data-_sk-size="medium"]) {
-		--_MuiTab-height: var(--stratakit-size-control-field-height-medium);
-		--_MuiTab-padding-block: var(--stratakit-space-x1);
-		--_MuiTab-padding-inline: var(--stratakit-space-x3);
 	}
 }
 
@@ -45,6 +42,7 @@
 	/* #endregion */
 
 	/* #region Structural */
+	@apply --typography("body-md");
 	background-color: var(--_MuiTab-background-color);
 	border-radius: 4px;
 	color: var(--_MuiTab-color);
@@ -63,10 +61,6 @@
 
 	:where(.MuiTabs-root[data-_sk-size="small"]) & {
 		@apply --typography("body-sm");
-	}
-
-	:where(.MuiTabs-root[data-_sk-size="medium"]) & {
-		@apply --typography("body-md");
 	}
 
 	/* This pseudo-element increases tap target size */

@@ -20,7 +20,13 @@ interface MuiTabsProps extends BaseProps<"div">, Pick<TabsProps, "size"> {}
 const MuiTabs = forwardRef<"div", MuiTabsProps>((props, forwardedRef) => {
 	const { size = "medium", ...rest } = props;
 
-	return <Role.div {...rest} data-_sk-size={size} ref={forwardedRef} />;
+	return (
+		<Role.div
+			{...rest}
+			data-_sk-size={size !== "medium" ? size : undefined}
+			ref={forwardedRef}
+		/>
+	);
 });
 DEV: MuiTabs.displayName = "MuiTabs";
 

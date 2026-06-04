@@ -1,5 +1,5 @@
 ---
-"@stratakit/mui": minor
+"@stratakit/mui": patch
 ---
 
 Added `size` prop to `Tabs`.

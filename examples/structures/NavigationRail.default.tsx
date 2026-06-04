@@ -41,23 +41,18 @@ export default () => {
 								label="Logs"
 							/>
 						</NavigationRail.ListItem>
-						<Divider
-							className={styles.divider}
-							render={<div />}
-							role="presentation"
-						/>
-						<NavigationRail.ListItem>
-							<NavigationRail.Anchor
-								href="#"
-								icon={`${svgDisconnect}#icon-large`}
-								label="Integrations"
-								suffix={
-									<Icon href={svgWindowPopout} alt="(opens in new tab)" />
-								}
-							/>
-						</NavigationRail.ListItem>
 					</NavigationRail.List>
-
+					<Divider
+						className={styles.divider}
+						render={<div />}
+						role="presentation"
+					/>
+					<NavigationRail.Anchor
+						href="#"
+						icon={`${svgDisconnect}#icon-large`}
+						label="Integrations"
+						suffix={<Icon href={svgWindowPopout} alt="(opens in new tab)" />}
+					/>
 					<NavigationRail.Footer>
 						<Divider className={styles.divider} />
 						<NavigationRail.Button

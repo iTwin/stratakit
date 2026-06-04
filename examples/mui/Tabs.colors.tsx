@@ -8,7 +8,7 @@ import Box from "@mui/material/Box";
 import Tab from "@mui/material/Tab";
 import Tabs from "@mui/material/Tabs";
 
-import styles from "./Tabs.default.module.css";
+import styles from "./Tabs.colors.module.css";
 
 export default () => {
 	const [value, setValue] = React.useState(0);
@@ -17,7 +17,11 @@ export default () => {
 
 	return (
 		<Box className={styles.container}>
-			<Tabs value={value} onChange={(_, value) => setValue(value)}>
+			<Tabs
+				textColor="secondary"
+				value={value}
+				onChange={(_, value) => setValue(value)}
+			>
 				<Tab label="Item One" id={`${baseId}-tab0`} />
 				<Tab label="Item Two" id={`${baseId}-tab1`} />
 				<Tab label="Item Three" id={`${baseId}-tab2`} />

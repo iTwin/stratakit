@@ -3,15 +3,143 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
+.MuiTabs-root {
+	--_MuiTabs-indicator-gap: var(--stratakit-space-x2);
+	--_MuiTab-height: var(--stratakit-size-control-field-height-medium);
+	--_MuiTab-padding-block: var(--stratakit-space-x1);
+	--_MuiTab-padding-inline: var(--stratakit-space-x3);
+
+	min-block-size: unset; /* Allow `.MuiTab-root` to define height */
+}
+
+.MuiTabs-list {
+	gap: var(--stratakit-space-x2);
+}
+
 .MuiTab-root {
-	&:where(.Mui-selected) {
-		color: var(--stratakit-color-text-accent-strong);
+	/* #region Variables */
+	--✨bg--default: transparent;
+	--✨bg--hover-neutral: var(--stratakit-color-bg-glow-on-surface-neutral-hover);
+	--✨bg--hover-accent: var(--stratakit-color-bg-glow-on-surface-accent-hover);
+
+	--✨color--default: var(--stratakit-color-text-neutral-tertiary);
+	--✨color--selected-neutral: var(--stratakit-color-text-neutral-primary);
+	--✨color--selected-accent: var(--stratakit-color-text-accent-strong);
+	--✨color--disabled: var(--stratakit-color-text-neutral-disabled);
+
+	--✨icon--default: var(--stratakit-color-icon-neutral-tertiary);
+	--✨icon--selected-neutral: var(--stratakit-color-icon-neutral-primary);
+	--✨icon--selected-accent: var(--stratakit-color-icon-accent-strong);
+	--✨icon--disabled: var(--stratakit-color-icon-neutral-disabled);
+
+	--✨inset: calc(var(--_MuiTabs-indicator-gap) * -1);
+	/* #endregion */
+
+	/* #region Structural */
+	@apply --typography("body-md");
+	background-color: var(--_MuiTab-background-color);
+	border-radius: 4px;
+	color: var(--_MuiTab-color);
+	gap: var(--stratakit-space-x1);
+	min-block-size: var(--_MuiTab-height);
+	min-inline-size: var(--_MuiTab-height); /* Forces 1:1 aspect ratio when the tab is icon-only */
+	overflow: visible;
+	padding-block-start: var(--_MuiTab-padding-block);
+	padding-block-end: var(--_MuiTab-padding-block);
+	padding-inline-start: var(--_MuiTab-padding-inline);
+	padding-inline-end: var(--_MuiTab-padding-inline);
+	position: relative;
+	transition:
+		background-color 150ms ease-out,
+		color 150ms ease-out;
+
+	/* This pseudo-element increases tap target size */
+	&::before {
+		content: "";
+		inset-block-start: var(--_MuiTab-tap-target-inset-block, 0);
+		inset-block-end: var(--_MuiTab-tap-target-inset-block, 0);
+		inset-inline-start: var(--_MuiTab-tap-target-inset-inline, 0);
+		inset-inline-end: var(--_MuiTab-tap-target-inset-inline, 0);
+		position: absolute;
 	}
+
+	:where(.MuiTabs-list:not(.MuiTabs-vertical)) & {
+		margin-block-start: var(--_MuiTabs-indicator-gap);
+		margin-block-end: var(--_MuiTabs-indicator-gap);
+		--_MuiTab-tap-target-inset-block: var(--✨inset);
+	}
+
+	:where(.MuiTabs-list.MuiTabs-vertical) & {
+		margin-inline-start: var(--_MuiTabs-indicator-gap);
+		margin-inline-end: var(--_MuiTabs-indicator-gap);
+		--_MuiTab-tap-target-inset-inline: var(--✨inset);
+	}
+
 	&:where(:focus-visible) {
-		outline-offset: -4px;
+		outline-offset: -2px;
 	}
+	/* #endregion */
+
+	/* #region Visual styles */
+	--_MuiTab-background-color: var(--✨bg--default);
+	--_MuiTab-color: var(--✨color--default);
+	--🥝Icon-color: var(--✨icon--default);
+
+	&:where(.MuiTab-textColorPrimary) {
+		@media (any-hover: hover) {
+			&:where(:not(.Mui-disabled):hover) {
+				--_MuiTab-background-color: var(--✨bg--hover-accent);
+				--_MuiTab-color: var(--✨color--selected-accent);
+				--🥝Icon-color: var(--✨icon--selected-accent);
+			}
+		}
+
+		&:where(.Mui-selected) {
+			--_MuiTab-color: var(--✨color--selected-accent);
+			--🥝Icon-color: var(--✨icon--selected-accent);
+		}
+	}
+
+	&:where(.MuiTab-textColorSecondary) {
+		@media (any-hover: hover) {
+			&:where(:not(.Mui-disabled):hover) {
+				--_MuiTab-background-color: var(--✨bg--hover-neutral);
+				--_MuiTab-color: var(--✨color--selected-neutral);
+				--🥝Icon-color: var(--✨icon--selected-neutral);
+			}
+		}
+
+		&:where(.Mui-selected) {
+			--_MuiTab-color: var(--✨color--selected-neutral);
+			--🥝Icon-color: var(--✨icon--selected-neutral);
+		}
+	}
+
+	&:where(.Mui-disabled) {
+		--_MuiTab-color: var(--✨color--disabled);
+		--🥝Icon-color: var(--✨icon--disabled);
+	}
+	/* #endregion */
+}
+
+.MuiTab-icon {
+	margin: 0;
 }
 
 .MuiTabs-indicator {
-	background-color: var(--stratakit-color-border-accent-strong);
+	:where(.MuiTabs-root:has(.MuiTab-root.MuiTab-textColorPrimary)) & {
+		background-color: var(--stratakit-color-border-accent-strong);
+	}
+
+	:where(.MuiTabs-root:has(.MuiTab-root.MuiTab-textColorSecondary)) & {
+		background-color: var(--stratakit-color-border-neutral-inverse);
+	}
+
+	:where(.MuiTabs-root:has(.MuiTab-root.Mui-selected.Mui-disabled)) & {
+		background-color: var(--stratakit-color-border-neutral-disabled);
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		transition: none;
+	}
 }

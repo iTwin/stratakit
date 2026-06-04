@@ -7,8 +7,12 @@ import * as React from "react";
 import Box from "@mui/material/Box";
 import Tab from "@mui/material/Tab";
 import Tabs from "@mui/material/Tabs";
+import { Icon } from "@stratakit/mui";
 
-import styles from "./Tabs.default.module.css";
+import svgChat from "@stratakit/icons/chat.svg";
+import svgHeart from "@stratakit/icons/heart.svg";
+import svgLocation from "@stratakit/icons/location.svg";
+import styles from "./Tabs.icon.module.css";
 
 export default () => {
 	const [value, setValue] = React.useState(0);
@@ -18,23 +22,35 @@ export default () => {
 	return (
 		<Box className={styles.container}>
 			<Tabs value={value} onChange={(_, value) => setValue(value)}>
-				<Tab label="Item One" id={`${baseId}-tab0`} />
-				<Tab label="Item Two" id={`${baseId}-tab1`} />
-				<Tab label="Item Three" id={`${baseId}-tab2`} />
+				<Tab
+					label="Recent"
+					icon={<Icon href={svgChat} />}
+					id={`${baseId}-recent`}
+				/>
+				<Tab
+					label="Favorites"
+					icon={<Icon href={svgHeart} />}
+					id={`${baseId}-favorites`}
+				/>
+				<Tab
+					label="Nearby"
+					icon={<Icon href={svgLocation} />}
+					id={`${baseId}-nearby`}
+				/>
 			</Tabs>
 			{value === 0 && (
-				<div role="tabpanel" aria-labelledby={`${baseId}-tab0`}>
-					Item One
+				<div role="tabpanel" aria-labelledby={`${baseId}-recent`}>
+					Recent
 				</div>
 			)}
 			{value === 1 && (
-				<div role="tabpanel" aria-labelledby={`${baseId}-tab1`}>
-					Item Two
+				<div role="tabpanel" aria-labelledby={`${baseId}-favorites`}>
+					Favorites
 				</div>
 			)}
 			{value === 2 && (
-				<div role="tabpanel" aria-labelledby={`${baseId}-tab2`}>
-					Item Three
+				<div role="tabpanel" aria-labelledby={`${baseId}-nearby`}>
+					Nearby
 				</div>
 			)}
 		</Box>

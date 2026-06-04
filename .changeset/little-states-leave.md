@@ -1,4 +1,5 @@
 ---
+"@stratakit/bricks": patch
 "@stratakit/structures": patch
 ---
 

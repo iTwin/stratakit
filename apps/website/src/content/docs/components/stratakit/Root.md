@@ -6,7 +6,7 @@ links:
   apiReference: /reference/mui/Root
 ---
 
-The **Root** component must wrap your application to load StrataKit styles and fonts. It enables the use of StrataKit components and applies the StrataKit theme for MUI, allowing you to use [MUI components](https://mui.com/material-ui/all-components/) with StrataKit's visual language.
+The **Root** component must wrap your application to load StrataKit styles and fonts. It sets up global contexts and applies the StrataKit theme for MUI, allowing you to use [components](/components/overview) from StrataKit and MUI with the same visual language.
 
 Additionally, it allows you to configure the [color scheme](#color-scheme) and [accent color](#accent-color) used by StrataKit.
 

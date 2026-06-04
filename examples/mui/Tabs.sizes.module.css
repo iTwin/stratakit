@@ -6,3 +6,7 @@
 .container {
 	inline-size: 100%;
 }
+
+.tabPanel {
+	font-size: var(--stratakit-font-size-12);
+}

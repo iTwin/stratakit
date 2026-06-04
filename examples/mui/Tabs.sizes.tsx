@@ -23,17 +23,29 @@ export default () => {
 				<Tab label="Item Three" id={`${baseId}-tab2`} />
 			</Tabs>
 			{value === 0 && (
-				<div role="tabpanel" aria-labelledby={`${baseId}-tab0`}>
+				<div
+					role="tabpanel"
+					aria-labelledby={`${baseId}-tab0`}
+					className={styles.tabPanel}
+				>
 					Item One
 				</div>
 			)}
 			{value === 1 && (
-				<div role="tabpanel" aria-labelledby={`${baseId}-tab1`}>
+				<div
+					role="tabpanel"
+					aria-labelledby={`${baseId}-tab1`}
+					className={styles.tabPanel}
+				>
 					Item Two
 				</div>
 			)}
 			{value === 2 && (
-				<div role="tabpanel" aria-labelledby={`${baseId}-tab2`}>
+				<div
+					role="tabpanel"
+					aria-labelledby={`${baseId}-tab2`}
+					className={styles.tabPanel}
+				>
 					Item Three
 				</div>
 			)}

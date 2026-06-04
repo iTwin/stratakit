@@ -61,7 +61,7 @@ Each [`NavigationRail.ListItem`](/reference/structures/NavigationRail#Navigation
 | [`NavigationRail.Anchor`](/reference/structures/NavigationRail#NavigationRail.Anchor) | Navigation between screens                           |
 | [`NavigationRail.Button`](/reference/structures/NavigationRail#NavigationRail.Button) | Action on the current screen (e.g. opening a dialog) |
 
-Mark the current link destination with the [`active`](/reference/structures/NavigationRail#NavigationRail.Anchor.active) prop. Use the [`suffix`](/reference/structures/NavigationRail#NavigationRail.Anchor.suffix) prop to display additional information — for example, for items that open in a new tab, render an icon with the alternate text "(opens in new tab)".
+Mark the current link destination with the [`active`](/reference/structures/NavigationRail#NavigationRail.Anchor.active) prop. Use the [`suffix`](/reference/structures/NavigationRail#NavigationRail.Anchor.suffix) prop to display additional information. For example, for items that open in a new tab, render an icon with the alternate text "(opens in new tab)".
 
 :::caution[Routing]
 

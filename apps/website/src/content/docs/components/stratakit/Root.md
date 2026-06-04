@@ -4,6 +4,8 @@ description: Root is the required wrapper for all StrataKit components.
 status: stable
 links:
   apiReference: /reference/mui/Root
+sidebar:
+  order: 1
 ---
 
 The **Root** component must wrap your application to load StrataKit styles and fonts. It sets up global contexts and applies the StrataKit theme for MUI, allowing you to use [components](/components/overview) from StrataKit and MUI with the same visual language.

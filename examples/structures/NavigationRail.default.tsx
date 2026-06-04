@@ -42,11 +42,7 @@ export default () => {
 							/>
 						</NavigationRail.ListItem>
 					</NavigationRail.List>
-					<Divider
-						className={styles.divider}
-						render={<div />}
-						role="presentation"
-					/>
+					<Divider className={styles.divider} role="presentation" />
 					<NavigationRail.Anchor
 						href="#"
 						icon={`${svgDisconnect}#icon-large`}

@@ -153,3 +153,26 @@
 		transition: none;
 	}
 }
+
+.MuiTabScrollButton-root {
+	--🥝Icon-color: var(--stratakit-color-icon-neutral-base);
+
+	&:where(.MuiTabScrollButton-horizontal) {
+		inline-size: var(--_MuiTab-height);
+	}
+
+	&:where(.MuiTabScrollButton-vertical) {
+		block-size: var(--_MuiTab-height);
+	}
+
+	@media (any-hover: hover) {
+		&:where(:hover) {
+			--🥝Icon-color: var(--stratakit-color-icon-neutral-primary);
+		}
+	}
+
+	&:where(.Mui-disabled) {
+		--🥝Icon-color: var(--stratakit-color-icon-neutral-disabled);
+		opacity: 1;
+	}
+}

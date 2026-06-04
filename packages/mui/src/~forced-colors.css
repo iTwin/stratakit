@@ -307,6 +307,12 @@
 	}
 }
 
+.MuiTabScrollButton-root {
+	&:where(.Mui-disabled) {
+		color: GrayText;
+	}
+}
+
 .MuiTabs-indicator {
 	background-color: CanvasText;
 

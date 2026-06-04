@@ -57,7 +57,7 @@ The prop is marked unstable, as we finalize its API. If you have feedback or use
 
 ## Portal container
 
-The **Root** component adds a separate [portal container](https://react.dev/reference/react-dom/createPortal#usage-notes) element for StrataKit components that need to render outside of the normal React tree. This includes `Autocomplete`, `Dialog`, `Drawer`, `Menu`, `Modal`, `Popover`, `Popper`, `Select`, `Snackbar`, `SwipeableDrawer`, and `Tooltip`.
+The **Root** component creates a separate [portal container](https://react.dev/reference/react-dom/createPortal#usage-notes) element for components that need to render outside of the normal React tree. This includes `Autocomplete`, `Dialog`, `Drawer`, `Menu`, `Modal`, `Popover`, `Popper`, `Select`, `Snackbar`, `SwipeableDrawer`, and `Tooltip`.
 
 ## ✅ Do
 

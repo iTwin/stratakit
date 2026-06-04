@@ -202,7 +202,7 @@ const ErrorRegionRoot = forwardRef<"div", ErrorRegionRootProps>(
 								>
 									{label}
 								</Text>
-								<IconButtonPresentation inert variant="ghost">
+								<IconButtonPresentation aria-hidden="true" variant="ghost">
 									<ChevronDown />
 								</IconButtonPresentation>
 							</DialogDisclosure>

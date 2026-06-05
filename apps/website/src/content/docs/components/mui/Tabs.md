@@ -41,6 +41,8 @@ Use a [**Tooltip**](/components/tooltip) with `describeChild={false}` when a tab
 
 ### Scrollable
 
+When there are too many tabs, the tab list becomes scrollable. A fade indicates additional content, and scroll buttons appear for mouse users.
+
 ::example{src="mui/Tabs.scrollable"}
 
 ### Sizes

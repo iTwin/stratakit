@@ -374,6 +374,13 @@ declare module "@mui/material/Tabs" {
 	}
 
 	interface TabsOwnProps {
+		/**
+		 * The size of the tab buttons.
+		 *
+		 * @default 'medium'
+		 */
+		size?: "small" | "medium";
+
 		/** @deprecated DO NOT USE */
 		indicatorColor?: TabsProps["indicatorColor"];
 	}

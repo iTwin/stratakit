@@ -107,6 +107,19 @@
 .MuiAccordionSummary-expandIconWrapper {
 	color: var(--_MuiAccordion-expand-icon-color);
 	order: var(--_MuiAccordion-expand-icon-order, -1);
+
+	@supports (rotate: if(else: -0.5turn)) {
+		transform: none;
+		transition: rotate 150ms ease-in-out;
+
+		:where(.MuiAccordion-root.Mui-expanded) & {
+			rotate: if(style(--_MuiAccordion-expand-icon-order: 0): 0.5turn; else: -0.5turn);
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		transition: none;
+	}
 }
 
 .MuiAccordionDetails-root {
@@ -119,4 +132,10 @@
 	color: var(--stratakit-color-text-neutral-secondary);
 	padding: var(--_MuiAccordion-padding);
 	padding-inline-start: var(--_MuiAccordion-details-indent, var(--✨indent));
+}
+
+.MuiCollapse-root {
+	@media (prefers-reduced-motion: reduce) {
+		transition: none;
+	}
 }

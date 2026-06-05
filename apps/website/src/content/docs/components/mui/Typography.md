@@ -12,7 +12,8 @@ links:
 
 - The `font-family` has been changed to `InterVariable`. See [self-hosting fonts](/getting-started/develop/#self-hosting-the-fonts).
 - The typography scale has been adjusted to better align with StrataKit's more compact visual language.
-- The default `variant` is now `"body2"` instead of `"body1"`.
+- Several new [`variant`s](#variants) have been added.
+- The default `variant` is now `"body-md"` instead of `"body1"`.
 - A warning will be logged during development if a heading variant is used without explicitly setting the `render` prop.
 - The `"secondary"` color value has been removed. A `"textTertiary"` color value has been added.
 
@@ -40,7 +41,14 @@ In these cases, combine a larger `variant` with the `render` prop to set a gener
 
 ### Variants
 
-All of the stock MUI **Typography** `variant`s are available, with sizing adjusted to fit StrataKit's more compact visual language.
+All of the stock MUI **Typography** `variant`s are available, with sizing adjusted to fit StrataKit's more compact visual language. Additionally, the following custom `variant`s are available:
+
+- `"display-lg"` / `"display-md"` / `"display-sm"`
+- `"headline-lg"` / `"headline-md"` / `"headline-sm"`
+- `"body-lg"` / `"body-md"` / `"body-sm"`
+- `"subtitle-lg"` / `"subtitle-md"` / `"subtitle-sm"`
+- `"caption-lg"` / `"caption-md"` / `"caption-sm"`
+- `"mono-sm"`
 
 ::example{src="mui/Typography.variants" min-height="600px"}
 

@@ -17,7 +17,7 @@ HTML is different. The code doesn’t _output_ the interface; it _is_ the interf
 
 In the visual interface, the order of any two objects can appear in three dimensions:
 
-1. Left and right 
+1. Left and right
 2. Above and below
 3. Back and front (depth)
 
@@ -33,30 +33,30 @@ Whereas any two components in the source can only be _first and last_:
 
 Avoid using **CSS** such that it creates a mismatch between visual placement and source order. Use this table to check:
 
-| Where objects are  | Components must be |
-| ------------------ | ------------------ |
-| left and right     | first and last     |
-| above and below    | first and last     |
-| back and front     | first and last     |
+| Where objects are | Components must be |
+| ----------------- | ------------------ |
+| left and right    | first and last     |
+| above and below   | first and last     |
+| back and front    | first and last     |
 
 ### Focus order
 
 Interactive elements must be focusable so that the interface can be operated by keyboard. The order in which these elements are encountered and focused must be logical:
 
-| Where buttons are  | Focus must occur  |
-| ------------------ | ----------------- |
-| left and right     | first then last   |
-| above and below    | first then last   |
-| back and front     | first then last   |
+| Where buttons are | Focus must occur |
+| ----------------- | ---------------- |
+| left and right    | first then last  |
+| above and below   | first then last  |
+| back and front    | first then last  |
 
 Avoid prioritizing the focus of certain elements by applying a positive `tabindex` value. This disrupts an otherwise logical order of focus.
 
 ```jsx
 /* ❌ */
 <div role="group" aria-label="Button group">
-  <button>Focused second</button>
-  <button tabIndex={1}>Focused first</button>
-  <button>Focused last</button>
+	<button>Focused second</button>
+	<button tabIndex={1}>Focused first</button>
+	<button>Focused last</button>
 </div>
 ```
 
@@ -70,7 +70,7 @@ More complex interactive components like [**Menu**](/components/menu) and [**Dia
 
 ### Skip link
 
-In the order of major page [landmarks](#landmarks), the `<header>`—typically including a `<nav>`—is expected to come first. 
+In the order of major page [landmarks](#landmarks), the `<header>`—typically including a `<nav>`—is expected to come first.
 
 A [skip link](https://www.w3.org/WAI/test-evaluate/easy-checks/skip-link/) is a mechanism for bypassing this header/navigation functionality to interact directly with the main content of the page. It is a provision for keyboard users and is considered an accessibility requirement according to [WCAG](https://www.w3.org/WAI/WCAG22/Understanding/bypass-blocks.html).
 
@@ -86,17 +86,17 @@ If you are implementing your own skip link, point the skip link's `href` to the 
 
 ## Belonging
 
-The Gestalt principle of [common region](https://www.nngroup.com/articles/common-region/) states that _“items within a boundary are perceived as a group”_. From forms to dialogs, all sorts of elements take a border, background color, or both, to communicate their contents _belong together_. 
+The Gestalt principle of [common region](https://www.nngroup.com/articles/common-region/) states that _“items within a boundary are perceived as a group”_. From forms to dialogs, all sorts of elements take a border, background color, or both, to communicate their contents _belong together_.
 
-As with order, a relationship of belonging needs to be programmatically determinable in the code, not just illustrated visually. 
+As with order, a relationship of belonging needs to be programmatically determinable in the code, not just illustrated visually.
 
 Nesting HTML elements (placing them inside one another) is an everyday practice. But not all HTML elements contribute to communicating a nested structure. Consider the following example:
 
 ```jsx
 <div class="ButtonGroup">
-  <button>Bold</button>
-  <button>Italic</button>
-  <button>Underline</button>
+	<button>Bold</button>
+	<button>Italic</button>
+	<button>Underline</button>
 </div>
 ```
 
@@ -106,9 +106,9 @@ To communicate the presence of a group, we can encode it with [`role="group"`](h
 
 ```jsx
 <div role="group" aria-label="Text formatting">
-  <button>Bold</button>
-  <button>Italic</button>
-  <button>Underline</button>
+	<button>Bold</button>
+	<button>Italic</button>
+	<button>Underline</button>
 </div>
 ```
 
@@ -145,7 +145,7 @@ If landmarks represent continents, then sections are countries: subdivisions of 
 <p>The content belonging to the subsection.</p>
 ```
 
-The heading elements (`<h1>` to `<h6>`) are numbered according to section depth. 
+The heading elements (`<h1>` to `<h6>`) are numbered according to section depth.
 
 - `<h1>`: introduces the page
   - `<h2>`: introduces a subsection in the page
@@ -158,7 +158,7 @@ If you are applying a suitable heading level but need control over the element�
 
 ```jsx
 <Typography variant="h4" render={<h2 />}>
-  This must render as an `h2`, but looks smaller, like an `h4`.
+	This must render as an `h2`, but looks smaller, like an `h4`.
 </Typography>
 ```
 
@@ -168,7 +168,7 @@ Just because some text appears large or **bold** does not make it a heading. A h
 
 ```jsx
 <Typography variant="h4" render={<span />}>
-  This change cannot be undone.
+	This change cannot be undone.
 </Typography>
 ```
 

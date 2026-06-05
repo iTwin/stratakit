@@ -206,6 +206,7 @@
 
 .MuiTabs-scroller {
 	--✨fade-size: var(--stratakit-space-x2);
+	--✨scroll-padding: calc(var(--✨fade-size) + var(--_MuiTab-height));
 
 	--_MuiTabs-scroller-fade-start: var(--✨fade-size);
 	--_MuiTabs-scroller-fade-end: var(--✨fade-size);
@@ -241,11 +242,13 @@
 		--_MuiTabs-scroller-axis: inline;
 		--_MuiTabs-scroller-direction: right;
 		overscroll-behavior-x: contain;
+		scroll-padding-inline: var(--✨scroll-padding);
 	}
 
 	&:where(.MuiTabs-scrollableY) {
 		--_MuiTabs-scroller-axis: block;
 		--_MuiTabs-scroller-direction: bottom;
 		overscroll-behavior-y: contain;
+		scroll-padding-block: var(--✨scroll-padding);
 	}
 }

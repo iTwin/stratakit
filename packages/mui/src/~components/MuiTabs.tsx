@@ -30,6 +30,25 @@ const MuiTabs = forwardRef<"div", MuiTabsProps>((props, forwardedRef) => {
 });
 DEV: MuiTabs.displayName = "MuiTabs";
 
+const MuiTab = forwardRef<"button", BaseProps<"button">>(
+	(props, forwardedRef) => {
+		const { onFocus, ...rest } = props;
+
+		const handleFocus: React.FocusEventHandler<HTMLButtonElement> = (event) => {
+			(onFocus as React.FocusEventHandler<HTMLButtonElement> | undefined)?.(
+				event,
+			);
+			event.currentTarget.scrollIntoView({
+				block: "nearest",
+				inline: "nearest",
+			});
+		};
+
+		return <Role.button {...rest} onFocus={handleFocus} ref={forwardedRef} />;
+	},
+);
+DEV: MuiTab.displayName = "MuiTab";
+
 // ----------------------------------------------------------------------------
 
-export { MuiTabs };
+export { MuiTab, MuiTabs };

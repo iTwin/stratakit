@@ -12,7 +12,7 @@ links:
 
 Make sure the **NavigationRail** is suitable for your use case. There may be other, more appropriate components available.
 
-| Use case                                                  | [NavigationRail](/components/navigationrail) | [AppBar](/components/AppBar) | [BottomNavigation](/components/BottomNavigation) | [Pagination](/components/pagination) |
+| Use case                                                  | [NavigationRail](/components/navigationrail) | [AppBar](/components/appbar) | [BottomNavigation](/components/bottomnavigation) | [Pagination](/components/pagination) |
 | --------------------------------------------------------- | -------------------------------------------- | ---------------------------- | ------------------------------------------------ | ------------------------------------ |
 | Persistent, application-wide navigation and functionality | ✅                                           | ❌                           | ❌                                               | ❌                                   |
 | Information and actions about the current screen only     | ❌                                           | ✅                           | ❌                                               | ❌                                   |

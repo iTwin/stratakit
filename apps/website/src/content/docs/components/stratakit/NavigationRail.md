@@ -8,6 +8,8 @@ links:
 
 ::example{src="structures/NavigationRail.default" min-height="450px" min-width="450px" vertical-stretch}
 
+The **NavigationRail** component provides a persistent and convenient way to navigate between primary destinations in an application. It is designed to present the top-level navigation in a vertical orientation that is always visible on the left side of the screen.
+
 ## Use cases
 
 Make sure the **NavigationRail** is suitable for your use case. There may be other, more appropriate components available.
@@ -18,8 +20,6 @@ Make sure the **NavigationRail** is suitable for your use case. There may be oth
 | Information and actions about the current screen only     | ❌                                           | ✅                           | ❌                                               | ❌                                   |
 | Navigating between primary application views              | ❌                                           | ❌                           | ✅                                               | ❌                                   |
 | Navigating queried data, such as the results of a search  | ❌                                           | ❌                           | ❌                                               | ✅                                   |
-
-The **NavigationRail** component provides a persistent and convenient way to navigate between primary destinations in an application. It is designed to present the top-level navigation in a vertical orientation that is always visible on the left side of the screen.
 
 ### Structure
 

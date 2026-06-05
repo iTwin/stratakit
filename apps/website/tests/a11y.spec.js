@@ -22,11 +22,21 @@ test.describe("Automated a11y scan", () => {
 		test(`${route} should have no violations`, async ({ page }, testInfo) => {
 			await page.goto(route);
 
+			const disableRules = Object.entries({
+				"scrollable-region-focusable": true, // This is the browser's responsibility
+
+				// aria-checked="mixed" is intentionally added to native checkbox. https://github.com/mui/material-ui/issues/20476
+				"aria-conditional-attr": [
+					"/docs/components/checkbox/",
+					"/docs/examples/mui/Checkbox.indeterminate/",
+				].includes(route),
+			})
+				.filter(([, disable]) => disable)
+				.map(([rule]) => rule);
+
 			const axe = new AxeBuilder({ page })
 				.withTags(["wcag2a", "wcag22aa"])
-				.disableRules([
-					"scrollable-region-focusable", // This is the browser's responsibility
-				]);
+				.disableRules(disableRules);
 
 			/** @type import("axe-core").AxeResults | undefined */ let accessibilityScanResults;
 			await test.step("light mode", async () => {

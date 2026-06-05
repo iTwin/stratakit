@@ -8,13 +8,15 @@ import Box from "@mui/material/Box";
 import Tab from "@mui/material/Tab";
 import Tabs from "@mui/material/Tabs";
 
+import styles from "./Tabs.default.module.css";
+
 export default () => {
 	const [value, setValue] = React.useState(0);
 
 	const baseId = React.useId();
 
 	return (
-		<Box>
+		<Box className={styles.container}>
 			<Tabs value={value} onChange={(_, value) => setValue(value)}>
 				<Tab label="Item One" id={`${baseId}-tab0`} />
 				<Tab label="Item Two" id={`${baseId}-tab1`} />

@@ -29,8 +29,11 @@ Make sure the **Accordion** is suitable for your use case. There may be other, m
 
 - Restyled using StrataKit's visual language.
 - The overall size has been decreased.
-- The default `disableGutters` is now `"true"`.
-- The `slotProps.root.square` prop defaults to true except when `variant="outlined"`.
+- Added [responsive design](#responsive-design) that reorients the marker placement based on container width.
+- Added [`markerPlacement`](#marker-placement) prop to `AccordionSummary` to override responsive design.
+- Added details indentation when the `markerPlacement` is set to `"start"`.
+- The default `disableGutters` is now `true`.
+- The default value of the `root` slot's [`square`](https://mui.com/material-ui/api/paper/#paper-prop-square) prop defaults to true except when `variant="outlined"`.
 - You are not required to attribute `<AccordionSummary>` with `aria-controls`.
 - Removed [`role="region"`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/region_role) semantics. The **Accordion** no longer creates a region landmark.
 - Includes full `forced-colors` support.
@@ -55,11 +58,17 @@ Disclose any **Accordion's** content by default using the `defaultExpanded` prop
 | Settings page | ❌        | ✅       |
 | Widget        | ✅        | ❌       |
 
-### Marker positioning
+### Responsive design
 
-Use custom CSS to position the marker.
+The marker placement automatically adapts based on the container's width using a [container query](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Containment/Container_queries). To benefit from this automatic responsive behavior, make sure to create a containment context by setting `container-type: inline-size;` on an ancestor element.
 
-::example{src="mui/Accordion.marker-left"}
+::example{src="mui/Accordion.responsive"}
+
+### Marker placement
+
+Use the `markerPlacement` prop to control the **AccordionSummary** marker placement. By default, the marker is left aligned, but moves to the right side when the accordion is narrow. Set `markerPlacement="start"` or `markerPlacement="end"` to force a fixed placement.
+
+::example{src="mui/Accordion.marker-placement"}
 
 ### Multiple Accordions
 

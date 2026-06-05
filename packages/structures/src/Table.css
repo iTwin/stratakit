@@ -37,7 +37,8 @@
 
 	@layer base {
 		min-block-size: var(--✨cell-height-min);
-		padding-block: var(--✨cell-padding-block);
+		padding-block-start: var(--✨cell-padding-block);
+		padding-block-end: var(--✨cell-padding-block);
 		padding-inline-start: var(--✨cell-padding-inline-start);
 		padding-inline-end: var(--✨cell-padding-inline-end);
 		overflow-wrap: anywhere;
@@ -129,9 +130,9 @@
 			&:where([role="cell"], td) {
 				:where(
 						.🥝TableRow:hover:has(
-								input[type="checkbox"]:checked,
-								[role="checkbox"][aria-checked="true"]
-							)
+							input[type="checkbox"]:checked,
+							[role="checkbox"][aria-checked="true"]
+						)
 					)
 					& {
 					--🌀TableCell-state: var(--🌀TableCell-state--active-hover);

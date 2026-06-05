@@ -8,30 +8,30 @@ import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import { Icon } from "@stratakit/mui";
 
-import svgTextAlignCenter from "@stratakit/icons/text-align-center.svg";
-import svgTextAlignJustify from "@stratakit/icons/text-align-justify.svg";
-import svgTextAlignLeft from "@stratakit/icons/text-align-left.svg";
-import svgTextAlignRight from "@stratakit/icons/text-align-right.svg";
+import svgBold from "@stratakit/icons/font-bold.svg";
+import svgItalic from "@stratakit/icons/font-italic.svg";
+import svgStrikethrough from "@stratakit/icons/font-strikethrough.svg";
+import svgUnderline from "@stratakit/icons/font-underline.svg";
 
 export default () => {
-	const [alignment, setAlignment] = React.useState(["center"]);
+	const [formats, setFormats] = React.useState(["bold"]);
 	return (
 		<ToggleButtonGroup
-			value={alignment}
-			onChange={(_, newAlignment) => setAlignment(newAlignment)}
-			aria-label="text alignment"
+			value={formats}
+			onChange={(_, newFormats) => setFormats(newFormats)}
+			aria-label="Text formatting"
 		>
-			<ToggleButton value="left" label="Left aligned">
-				<Icon href={svgTextAlignLeft} />
+			<ToggleButton value="bold" label="Bold">
+				<Icon href={svgBold} />
 			</ToggleButton>
-			<ToggleButton value="center" label="Centered">
-				<Icon href={svgTextAlignCenter} />
+			<ToggleButton value="italic" label="Italic">
+				<Icon href={svgItalic} />
 			</ToggleButton>
-			<ToggleButton value="right" label="Right aligned">
-				<Icon href={svgTextAlignRight} />
+			<ToggleButton value="underline" label="Underline">
+				<Icon href={svgUnderline} />
 			</ToggleButton>
-			<ToggleButton value="justify" label="Justified">
-				<Icon href={svgTextAlignJustify} />
+			<ToggleButton value="strikethrough" label="Strikethrough">
+				<Icon href={svgStrikethrough} />
 			</ToggleButton>
 		</ToggleButtonGroup>
 	);

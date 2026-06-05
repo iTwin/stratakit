@@ -8,6 +8,11 @@ links:
 
 ::example{src="mui/Link.default"}
 
+## StrataKit MUI modifications
+
+- Restyled using StrataKit's visual language.
+- The `underline` prop is not supported. Links are always underlined.
+
 ## Use cases
 
 Make sure the **Link** is suitable for your use case. There may be other, more appropriate components available.

@@ -11,7 +11,9 @@ import type { RoleProps } from "@ariakit/react/role";
 import type { BadgeProps } from "@mui/material/Badge";
 import type { IconButtonProps } from "@mui/material/IconButton";
 import type { CommonProps } from "@mui/material/OverridableComponent";
+import type { TabProps } from "@mui/material/Tab";
 import type { TableCellProps as MuiTableCellProps } from "@mui/material/TableCell";
+import type { TabsProps } from "@mui/material/Tabs";
 import type {
 	TextFieldProps,
 	TextFieldVariants,
@@ -37,6 +39,21 @@ declare module "@mui/material/OverridableComponent" {
 
 		/** @deprecated Use `render` prop instead. */
 		component?: React.ElementType;
+	}
+}
+
+declare module "@mui/material/AccordionSummary" {
+	interface AccordionSummaryOwnProps {
+		/**
+		 * The placement of the expander icon.
+		 *
+		 * - `"auto"`: Expander icon is placed to the left when wide, and to the right when narrow.
+		 * - `"start"`: Forces expander icon to the left.
+		 * - `"end"`: Forces expander icon to the right.
+		 *
+		 * @default 'auto'
+		 */
+		markerPlacement?: "auto" | "start" | "end";
 	}
 }
 
@@ -271,6 +288,13 @@ declare module "@mui/material/InputBase" {
 	}
 }
 
+declare module "@mui/material/Link" {
+	interface LinkOwnProps {
+		/** @deprecated DO NOT USE */
+		underline?: "none" | "hover" | "always";
+	}
+}
+
 declare module "@mui/material/ListItemButton" {
 	interface ListItemButtonOwnProps {
 		LinkComponent?: never;
@@ -334,6 +358,31 @@ declare module "@mui/material/StepButton" {
 declare module "@mui/material/Tab" {
 	interface TabOwnProps {
 		LinkComponent?: never;
+
+		/**
+		 * The default icon position with `@stratakit/mui` is `"start"`.
+		 *
+		 * @default 'start'
+		 */
+		iconPosition?: TabProps["iconPosition"];
+	}
+}
+
+declare module "@mui/material/Tabs" {
+	interface TabsPropsTextColorOverrides {
+		inherit: false;
+	}
+
+	interface TabsOwnProps {
+		/**
+		 * The size of the tab buttons.
+		 *
+		 * @default 'medium'
+		 */
+		size?: "small" | "medium";
+
+		/** @deprecated DO NOT USE */
+		indicatorColor?: TabsProps["indicatorColor"];
 	}
 }
 
@@ -400,6 +449,11 @@ declare module "@mui/material/Tooltip" {
 }
 
 declare module "@mui/material/Typography" {
+	interface TypographyPropsColorOverrides {
+		secondary: false;
+		textTertiary: true;
+	}
+
 	interface TypographyOwnProps {
 		/**
 		 * The default variant with `@stratakit/mui` is `"body2"`.

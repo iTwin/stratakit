@@ -34,7 +34,8 @@
 		min-inline-size: 0;
 
 		min-block-size: var(--✨height);
-		padding-inline: var(--✨padding-inline);
+		padding-inline-start: var(--✨padding-inline);
+		padding-inline-end: var(--✨padding-inline);
 		border-radius: 4px;
 
 		background-color: var(--🥝TextBox-background-color);
@@ -108,7 +109,8 @@
 			min-inline-size: 0;
 			border: 1px solid var(--🥝TextBox-border-color);
 			cursor: var(--🥝TextBox-cursor);
-			padding-block: var(--✨padding-block);
+			padding-block-start: var(--✨padding-block);
+			padding-block-end: var(--✨padding-block);
 
 			&::placeholder {
 				color: var(--✨color--placeholder);

@@ -5,15 +5,16 @@
 
 .MuiList-root {
 	&:where(.MuiList-padding) {
-		padding-block: var(--stratakit-space-x1);
+		padding-block-start: var(--stratakit-space-x1);
+		padding-block-end: var(--stratakit-space-x1);
 	}
 }
 
 :is(
-		.MuiListItemButton-root,
-		.MuiListSubheader-root,
-		.MuiListItem-root:where(.MuiListItem-padding)
-	) {
+	.MuiListItemButton-root,
+	.MuiListSubheader-root,
+	.MuiListItem-root:where(.MuiListItem-padding)
+) {
 	line-height: unset;
 	min-block-size: var(--stratakit-size-control-listitem-height-large);
 	align-content: center;
@@ -21,8 +22,10 @@
 	border-block: 1px solid transparent;
 	margin-block-end: -1px; /* prevent double border */
 
-	padding-block: var(--stratakit-space-x1);
-	padding-inline: var(--stratakit-space-x3);
+	padding-block-start: var(--stratakit-space-x1);
+	padding-block-end: var(--stratakit-space-x1);
+	padding-inline-start: var(--stratakit-space-x3);
+	padding-inline-end: var(--stratakit-space-x3);
 	gap: var(--stratakit-space-x2);
 
 	:where(.MuiList-root.MuiList-dense) & {

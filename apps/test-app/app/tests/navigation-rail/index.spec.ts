@@ -16,6 +16,11 @@ test("default", async ({ page }) => {
 		name: "Administration",
 	});
 	await expect(activeItem).toHaveAttribute("aria-current");
+
+	const marketplaceItem = navigationRail.getByRole("link", {
+		name: "Marketplace (opens in new tab)",
+	});
+	await expect(marketplaceItem).toBeVisible();
 });
 
 test.describe("expansion", () => {
@@ -76,6 +81,10 @@ test.describe("@visual", () => {
 	test("forced-colors", async ({ page }) => {
 		await page.goto("/tests/navigation-rail?visual");
 		await page.emulateMedia({ forcedColors: "active" });
+		await expect(page.locator("body")).toHaveScreenshot();
+
+		const toggleButton = page.getByRole("button", { name: "Expand" });
+		await toggleButton.click();
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
 });

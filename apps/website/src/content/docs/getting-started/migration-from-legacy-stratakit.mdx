@@ -230,7 +230,7 @@ Read additional [StrataKit MUI component documentation](/components/overview/) f
 
 - Replace the `Divider` component from `@stratakit/bricks` with the `Divider` component from `@mui/material`. See [Divider examples](/components/divider/) for reference.
 - Remove unsupported [`bleed`](/reference/bricks/Divider#Divider.bleed) prop.
-- Replace unsupported [`presentational`](/reference/bricks/Divider#Divider.presentational) prop with a `render` prop that overrides the element type and role: `render={<div role={undefined} />}`.
+- Replace unsupported [`presentational`](/reference/bricks/Divider#Divider.presentational) prop with a [presentational Divider](/components/divider/#presentational-dividers) that overrides the element type (`render={<div />}`) and role (`role="presentation"`).
 
 ### Field
 
@@ -272,7 +272,7 @@ Read additional [StrataKit MUI component documentation](/components/overview/) f
 
 ### Select
 
-- Replace the `Select` component from `@stratakit/bricks` with the `Select` component from `@mui/material`. See [Select examples](/components/select/) for reference.
+- Replace the `Select` component from `@stratakit/bricks` with the `Select` or `NativeSelect` component from `@mui/material`. See [Select examples](/components/select/) for reference.
 - Change [`Select.HtmlSelect`](/reference/bricks/Select#Select.HtmlSelect) component to [`NativeSelect`](https://mui.com/material-ui/api/native-select/) or [`Select`](https://mui.com/material-ui/api/select/) component.
 - Remove [`variant`](/reference/bricks/Select#Select.HtmlSelect.variant) prop. Only `"outlined"` variant is supported by MUI component.
 

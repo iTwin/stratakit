@@ -12,7 +12,7 @@ index 71a9dca7fda4fe0706b76716df760fe8d58f5c4c..cca96d78437dad2094cd03d4a54b4fd8
  /**
   * The error raised when {@link glob} matches a path that is outside of
 diff --git a/package.json b/package.json
-index 7fe8aa4db44ed822be2fd514a6a6e43c27c4007a..da7d90af9395231df3ad1cb54f7ba825ccae6f2c 100644
+index 7fe8aa4db44ed822be2fd514a6a6e43c27c4007a..a3ae0ede916a52c66e64c12751adb3392b276788 100644
 --- a/package.json
 +++ b/package.json
 @@ -417,7 +417,6 @@
@@ -28,7 +28,7 @@ index 7fe8aa4db44ed822be2fd514a6a6e43c27c4007a..da7d90af9395231df3ad1cb54f7ba825
    },
    "dependencies": {
 -    "brace-expansion": "^4.0.0",
-+    "brace-expansion": "^5.0.5",
++    "brace-expansion": "^5.0.6",
      "chokidar": "^3.5.3",
      "fast-glob": "^3.2.11",
      "jsonc-parser": "^3.0.0",

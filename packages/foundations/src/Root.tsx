@@ -59,8 +59,8 @@ interface RootProps extends BaseProps {
 	/**
 	 * The accent color to use for all components under the Root:
 	 *
-	 * - `"aurora"`: Default and preferred green accent color.
-	 * - `"cobalt"`: Blue accent color to ensure compatibility with older applications.
+	 * - `"aurora"`: StrataKit's preferred green accent color.
+	 * - `"cobalt"`: Blue accent color for better compatibility with older, iTwinUI-based applications.
 	 *
 	 * @default "aurora"
 	 */

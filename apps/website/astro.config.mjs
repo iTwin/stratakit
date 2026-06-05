@@ -59,14 +59,10 @@ export default defineConfig({
 					label: "Getting started",
 					items: [
 						{ label: "Introduction", slug: "" },
-						{ label: "Developing", slug: "getting-started/develop" },
-						{
-							label: "Migrating from legacy StrataKit",
-							slug: "getting-started/migration-from-legacy-stratakit",
-						},
+						{ autogenerate: { directory: "getting-started" } },
 					],
 				},
-				{ label: "Guides", autogenerate: { directory: "guides" } },
+				{ label: "Guides", items: [{ autogenerate: { directory: "guides" } }] },
 				{
 					label: "Components",
 					items: [
@@ -76,12 +72,12 @@ export default defineConfig({
 						},
 						{
 							label: "MUI components",
-							autogenerate: { directory: "components/mui" },
+							items: [{ autogenerate: { directory: "components/mui" } }],
 							collapsed: true,
 						},
 						{
 							label: "StrataKit components",
-							autogenerate: { directory: "components/stratakit" },
+							items: [{ autogenerate: { directory: "components/stratakit" } }],
 							collapsed: true,
 						},
 					],

@@ -138,7 +138,8 @@
 	@layer base {
 		grid-row: content;
 		grid-column: body-content;
-		padding-block: var(--🥝AccordionItem-padding);
+		padding-block-start: var(--🥝AccordionItem-padding);
+		padding-block-end: var(--🥝AccordionItem-padding);
 		text-box: cap alphabetic;
 		color: var(--stratakit-color-text-neutral-secondary);
 	}

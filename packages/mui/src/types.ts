@@ -383,6 +383,9 @@ declare module "@mui/material/Tabs" {
 
 		/** @deprecated DO NOT USE */
 		indicatorColor?: TabsProps["indicatorColor"];
+
+		/** @deprecated DO NOT USE. */
+		allowScrollButtonsMobile?: boolean;
 	}
 }
 

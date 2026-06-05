@@ -13,7 +13,7 @@ links:
 - Added [`size`](#sizes) prop.
 - `<Tabs>` does not support the `indicatorColor` prop.
 - `<Tabs>` does not support `textColor="inherit"`.
-- `<Tab>` default value for `allowScrollButtonsMobile` is now `true`. Scroll buttons are shown for mouse users and hidden for touch users.
+- `<Tabs>` does not support `allowScrollButtonsMobile`. Scroll buttons are automatically shown for mouse users and hidden for touch users.
 - `<Tab>` default value for `iconPosition` is now `"start"`.
 - Restyled using StrataKit's visual language.
 - Includes full `forced-colors` support.

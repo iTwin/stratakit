@@ -29,7 +29,7 @@ Make sure the **NavigationRail** is suitable for your use case. There may be oth
 - [`NavigationRail.Content`](/reference/structures/NavigationRail#NavigationRail.Content): For principle destinations; the main screens of the application.
 - [`NavigationRail.Footer`](/reference/structures/NavigationRail#NavigationRail.Footer): For secondary, supplementary destinations such as settings and account preferences.
 
-Group related destinations using the [`NavigationRail.List`](/reference/structures/NavigationRail#NavigationRail.List) and [`NavigationRail.ListItem`](/reference/structures/NavigationRail#NavigationRail.ListItem) components. Place a [**Divider**](/components/divider/) between instances of `Navigation.List` for clear visual demarcation.
+Group related destinations using the [`NavigationRail.List`](/reference/structures/NavigationRail#NavigationRail.List) and [`NavigationRail.ListItem`](/reference/structures/NavigationRail#NavigationRail.ListItem) components. Place a [**Divider**](/components/divider/) between instances of `NavigationRail.List` for clear visual demarcation.
 
 ```jsx
 <NavigationRail.List>

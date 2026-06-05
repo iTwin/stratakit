@@ -207,23 +207,24 @@
 .MuiTabs-scroller {
 	--✨fade-size: var(--stratakit-space-x2);
 
-	--_MuiTabs-scroller-fade-inset-start: var(--_MuiTab-height);
-	--_MuiTabs-scroller-fade-inset-end: var(--_MuiTab-height);
 	--_MuiTabs-scroller-fade-start: var(--✨fade-size);
 	--_MuiTabs-scroller-fade-end: var(--✨fade-size);
+	--_MuiTabs-scroller-fade-inset-start: 0px;
+	--_MuiTabs-scroller-fade-inset-end: 0px;
+
+	@media (pointer: fine) {
+		--_MuiTabs-scroller-fade-inset-start: var(--_MuiTab-height);
+		--_MuiTabs-scroller-fade-inset-end: var(--_MuiTab-height);
+	}
 
 	:where(.MuiTabs-root:has(> .MuiTabScrollButton-root.Mui-disabled:first-child)) & {
-		--_MuiTabs-scroller-fade-inset-start: 0px;
-		--_MuiTabs-scroller-fade-inset-end: var(--_MuiTab-height);
 		--_MuiTabs-scroller-fade-start: 0px;
-		--_MuiTabs-scroller-fade-end: var(--✨fade-size);
+		--_MuiTabs-scroller-fade-inset-start: 0px;
 	}
 
 	:where(.MuiTabs-root:has(> .MuiTabScrollButton-root.Mui-disabled:last-child)) & {
-		--_MuiTabs-scroller-fade-inset-start: var(--_MuiTab-height);
-		--_MuiTabs-scroller-fade-inset-end: 0px;
-		--_MuiTabs-scroller-fade-start: var(--✨fade-size);
 		--_MuiTabs-scroller-fade-end: 0px;
+		--_MuiTabs-scroller-fade-inset-end: 0px;
 	}
 
 	mask-image: linear-gradient(

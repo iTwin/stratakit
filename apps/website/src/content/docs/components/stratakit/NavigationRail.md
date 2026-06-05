@@ -21,7 +21,7 @@ Make sure the **NavigationRail** is suitable for your use case. There may be oth
 | Navigating between primary application views              | ❌                                           | ❌                           | ✅                                               | ❌                                   |
 | Navigating queried data, such as the results of a search  | ❌                                           | ❌                           | ❌                                               | ✅                                   |
 
-### Structure
+## Structure
 
 **NavigationRail** is divided into three sections:
 
@@ -52,7 +52,7 @@ See the [presentational dividers](https://stratakit.bentley.com/docs/components/
 
 :::
 
-### Interaction
+## Interaction
 
 Each [`NavigationRail.ListItem`](/reference/structures/NavigationRail#NavigationRail.ListItem) must take either a [`NavigationRail.Anchor`](/reference/structures/NavigationRail#NavigationRail.Anchor) or a [`NavigationRail.Button`](/reference/structures/NavigationRail#NavigationRail.Button), depending on the type of interaction.
 

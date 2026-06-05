@@ -65,7 +65,7 @@ Mark the current link destination with the [`active`](/reference/structures/Navi
 
 :::caution[Routing]
 
-Each [`NavigationRail.Anchor`](/reference/structures/NavigationRail#NavigationRail.Anchor) must take the user to a separate screen belonging to the application. Each screen/page must have a unique `<title>`. If you are using a single-page application architecture, the `<title>` will have to be updated dynamically. Your router component may do this for you already.
+Each [`NavigationRail.Anchor`](/reference/structures/NavigationRail#NavigationRail.Anchor) must take the user to a separate screen belonging to the application. Each screen/page must have a [unique title](/guides/language-and-labels/#the-page-title). If you are using a single-page application architecture, the `<title>` will have to be updated dynamically. Your router component may do this for you already.
 
 :::
 

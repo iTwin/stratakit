@@ -35,10 +35,7 @@ Group related destinations using the [`NavigationRail.List`](/reference/structur
 <NavigationRail.List>
   ...
 </NavigationRail.List>
-<Divider
-  className={styles.divider}
-  role="presentation"
-/>
+<Divider role="presentation" />
 <NavigationRail.List>
   ...
 </NavigationRail.List>

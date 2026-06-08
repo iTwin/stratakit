@@ -14,12 +14,13 @@ The **NavigationRail** component provides a persistent and convenient way to nav
 
 Make sure the **NavigationRail** is suitable for your use case. There may be other, more appropriate components available.
 
-| Use case                                                  | [NavigationRail](/components/navigationrail) | [AppBar](/components/appbar) | [BottomNavigation](/components/bottomnavigation) | [Pagination](/components/pagination) |
-| --------------------------------------------------------- | -------------------------------------------- | ---------------------------- | ------------------------------------------------ | ------------------------------------ |
-| Persistent, application-wide navigation and functionality | ✅                                           | ❌                           | ❌                                               | ❌                                   |
-| Information and actions about the current screen only     | ❌                                           | ✅                           | ❌                                               | ❌                                   |
-| Navigating between primary application views              | ❌                                           | ❌                           | ✅                                               | ❌                                   |
-| Navigating queried data, such as the results of a search  | ❌                                           | ❌                           | ❌                                               | ✅                                   |
+| Use case                                                     | [NavigationRail](/components/navigationrail) | [AppBar](/components/appbar) | [BottomNavigation](/components/bottomnavigation) | [Pagination](/components/pagination) | [List](/components/list) |
+| ------------------------------------------------------------ | -------------------------------------------- | ---------------------------- | ------------------------------------------------ | ------------------------------------ | ------------------------ |
+| Persistent, application-wide navigation and functionality    | ✅                                           | ❌                           | ❌                                               | ❌                                   | ❌                       |
+| Information and actions about the current screen only        | ❌                                           | ✅                           | ❌                                               | ❌                                   | ❌                       |
+| Navigating between primary application views                 | ❌                                           | ❌                           | ✅                                               | ❌                                   | ❌                       |
+| Navigating queried data, such as the results of a search     | ❌                                           | ❌                           | ❌                                               | ✅                                   | ❌                       |
+| Grouping generic items of content and making them enumerable | ❌                                           | ❌                           | ❌                                               | ❌                                   | ✅                       |
 
 ## Structure
 

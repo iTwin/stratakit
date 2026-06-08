@@ -28,19 +28,27 @@ Make sure the **NavigationRail** is suitable for your use case. There may be oth
 
 - [`NavigationRail.Header`](/reference/structures/NavigationRail#NavigationRail.Header): For the application branding and [`NavigationRail.ToggleButton`](/reference/structures/NavigationRail#NavigationRail.ToggleButton), for expanding the rail and revealing full text labels for the navigation options.
 - [`NavigationRail.Content`](/reference/structures/NavigationRail#NavigationRail.Content): For principle destinations; the main screens of the application.
+  - [`NavigationRail.List`](/reference/structures/NavigationRail#NavigationRail.List): For organizing related [`NavigationRail.ListItem`](/reference/structures/NavigationRail#NavigationRail.ListItem)s into groups.
 - [`NavigationRail.Footer`](/reference/structures/NavigationRail#NavigationRail.Footer): For secondary, supplementary destinations such as settings and account preferences.
 
 Group related destinations using the [`NavigationRail.List`](/reference/structures/NavigationRail#NavigationRail.List) and [`NavigationRail.ListItem`](/reference/structures/NavigationRail#NavigationRail.ListItem) components. Place a [**Divider**](/components/divider/) between instances of `NavigationRail.List` for clear visual demarcation.
 
 ```jsx
 <NavigationRail.List>
-  ...
+  <NavigationRail.ListItem>...</NavigationRail.ListItem>
+  <NavigationRail.ListItem>...</NavigationRail.ListItem>
+  <NavigationRail.ListItem>...</NavigationRail.ListItem>
 </NavigationRail.List>
 <Divider role="presentation" />
 <NavigationRail.List>
-  ...
+  <NavigationRail.ListItem>...</NavigationRail.ListItem>
+  <NavigationRail.ListItem>...</NavigationRail.ListItem>
 </NavigationRail.List>
+<Divider role="presentation" />
+<NavigationRail.Anchor>...</NavigationRail.Anchor>
 ```
+
+As with that final [`NavigationRail.Anchor`](/reference/structures/NavigationRail#NavigationRail.Anchor), some navigation options are standalone. The `List` and `ListItem` components are not needed.
 
 :::note[Presentational dividers]
 

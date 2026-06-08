@@ -94,4 +94,4 @@ Combine **NavigationRail** with other components to create a more complex naviga
 
 - Include interactive components other than [`NavigationRail.Anchor`](/reference/structures/NavigationRail#NavigationRail.Anchor) or [`NavigationRail.Button`](/reference/structures/NavigationRail#NavigationRail.Button) in [`NavigationRail.ListItem`](/reference/structures/NavigationRail#NavigationRail.ListItem).
 - Insert [**Dividers**](/components/divider/) between [`NavigationRail.ListItem`s](/reference/structures/NavigationRail#NavigationRail.ListItem).
-- Place important navigation links in [`NavigationRail.Footer`](/reference/structures/NavigationRail#NavigationRail.Footer)
+- Place important navigation items in [`NavigationRail.Footer`](/reference/structures/NavigationRail#NavigationRail.Footer)

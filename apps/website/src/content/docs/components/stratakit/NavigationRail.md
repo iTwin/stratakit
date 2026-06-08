@@ -85,10 +85,10 @@ Combine **NavigationRail** with other components to create a more complex naviga
 
 - Include a [`NavigationRail.Header`](/reference/structures/NavigationRail#NavigationRail.Header), [`NavigationRail.Content`](/reference/structures/NavigationRail#NavigationRail.Content), and [`NavigationRail.Footer`](/reference/structures/NavigationRail#NavigationRail.Footer), in that order.
 - Organize related items into [`NavigationRail.List`s](/reference/structures/NavigationRail#NavigationRail.List) separated by [**Dividers**](/components/divider/).
+- Use the [`NavigationRail.Anchor`](/reference/structures/NavigationRail#NavigationRail.Anchor) and [`NavigationRail.Button`](/reference/structures/NavigationRail#NavigationRail.Button) components for navigational items.
 - Use [`NavigationRail.Button`](/reference/structures/NavigationRail#NavigationRail.Button) for any items that do not navigate the user away from the current screen.
 
 ## 🚫 Don't
 
-- Don’t include interactive components other than [`NavigationRail.Anchor`](/reference/structures/NavigationRail#NavigationRail.Anchor) or [`NavigationRail.Button`](/reference/structures/NavigationRail#NavigationRail.Button) in [`NavigationRail.ListItem`](/reference/structures/NavigationRail#NavigationRail.ListItem).
 - Don’t insert [**Dividers**](/components/divider/) between [`NavigationRail.ListItem`s](/reference/structures/NavigationRail#NavigationRail.ListItem).
-- Don’t place important navigation links in [`NavigationRail.Footer`](/reference/structures/NavigationRail#NavigationRail.Footer)
+- Don’t place important navigation items in [`NavigationRail.Footer`](/reference/structures/NavigationRail#NavigationRail.Footer)

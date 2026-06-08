@@ -24,15 +24,21 @@
 	@apply --typography("body-md");
 }
 
+.MuiFormLabel-root {
+	&:where(legend) {
+		margin-block-end: var(--stratakit-space-x1); /* legend does not support gap */
+	}
+}
+
 .MuiFormGroup-root {
-	/* Accounts for the increased tap target of the checkbox/radio */
 	row-gap: var(--stratakit-space-x1);
+	column-gap: var(--stratakit-space-x2);
 }
 
 .MuiFormHelperText-root {
 	inline-size: fit-content;
 	margin: 0;
-	@apply --typography("body-sm");
+	@apply --typography("caption-lg");
 
 	&:where(.Mui-error) {
 		color: var(--stratakit-color-text-critical-base);

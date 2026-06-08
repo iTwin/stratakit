@@ -3,12 +3,6 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-.MuiAccordion-root {
-	&:where(.Mui-disabled) {
-		border-color: GrayText;
-	}
-}
-
 .MuiAccordionSummary-root {
 	&:where(.Mui-disabled) {
 		--_MuiAccordion-expand-icon-color: GrayText;
@@ -289,8 +283,30 @@
 	}
 }
 
+.MuiTab-root {
+	background-color: ButtonFace;
+	border: 1px solid ButtonBorder;
+	color: ButtonText;
+
+	&:where(.Mui-selected) {
+		forced-color-adjust: none; /* removing the backplate */
+		background-color: SelectedItem;
+		color: SelectedItemText;
+	}
+
+	&:where(.Mui-disabled) {
+		background-color: Canvas;
+		border-color: GrayText;
+		color: GrayText;
+	}
+}
+
 .MuiTabs-indicator {
 	background-color: CanvasText;
+
+	:where(.MuiTabs-root:has(.MuiTab-root.Mui-selected.Mui-disabled)) & {
+		background-color: GrayText;
+	}
 }
 
 .MuiToggleButton-root {

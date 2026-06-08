@@ -47,6 +47,7 @@ import {
 	MuiTableCell,
 	MuiTableHead,
 } from "./~components/MuiTable.js";
+import { MuiTabs } from "./~components/MuiTabs.js";
 import { MuiToggleButton } from "./~components/MuiToggleButton.js";
 import { MuiTypography } from "./~components/MuiTypography.js";
 import {
@@ -479,7 +480,8 @@ function createTheme(args: CreateThemeArgs) {
 			},
 			MuiSvgIcon: { defaultProps: { component: Role.svg } },
 			MuiSwipeableDrawer: { defaultProps: { component: Role.div } },
-			MuiTabs: { defaultProps: { component: Role.div } },
+			MuiTabs: { defaultProps: { component: MuiTabs } },
+			MuiTab: { defaultProps: { iconPosition: "start" } },
 			MuiTable: { defaultProps: { component: withRenderProp(Role, "table") } },
 			MuiTableBody: {
 				defaultProps: {

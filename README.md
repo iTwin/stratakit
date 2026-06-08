@@ -19,17 +19,22 @@ These are the main packages of StrataKit:
 
 - [`@stratakit/mui`](./packages/mui/): A StrataKit theme for [MUI](https://mui.com/material-ui/).
 - [`@stratakit/icons`](./packages/icons/): A standalone SVG icon library.
+- [`@stratakit/structures`](./packages/structures): Specialized custom-built components.
 
-Additional packages: [`@stratakit/foundations`](./packages/foundations/), [`@stratakit/bricks`](./packages/bricks/), [`@stratakit/structures`](./packages/structures).
+Additional packages: [`@stratakit/foundations`](./packages/foundations/), [`@stratakit/bricks`](./packages/bricks/).
 
 > [!NOTE]
 > StrataKit packages are currently published as `0.X` versions. StrataKit follows [semantic versioning](https://semver.org/), and breaking changes will only be published in _minor_ version bumps. It is therefore safe to use the `^` syntax to specify version ranges in your `package.json`.
+
+### Examples
+
+The [`examples`](./examples/) directory contains standalone examples for every component in StrataKit. These examples are embedded in the StrataKit documentation, and are also reused for testing.
 
 ### Apps
 
 This monorepo has the following "apps":
 
-- [test app](./apps/test-app/) which is used for testing purposes and demonstration purposes.
+- [test app](./apps/test-app/) which is used for testing and demonstration purposes.
 - [docs website](./apps/website/) which contains the source for the StrataKit website and documentation.
 
 ## Core team
@@ -39,8 +44,9 @@ StrataKit is maintained by:
 - [@mayank99](https://github.com/mayank99)
 - [@GerardasB](https://github.com/GerardasB)
 - [@FlyersPh9](https://github.com/FlyersPh9)
+- [@angrycat9000](https://github.com/angrycat9000)
 
-With special thanks to [@msllrs](https://github.com/msllrs), [@ahilhorst](https://github.com/ahilhorst), [@Heydon](https://github.com/Heydon), [@knowler](https://github.com/knowler), [@r100-stack](https://github.com/r100-stack), [@VeroniqueVezina](https://github.com/VeroniqueVezina), [@mglancybentley](https://github.com/mglancybentley), and all other [contributors](https://github.com/iTwin/stratakit/graphs/contributors).
+With special thanks to [@msllrs](https://github.com/msllrs), [@ahilhorst](https://github.com/ahilhorst), [@Heydon](https://github.com/Heydon), [@knowler](https://github.com/knowler), [@r100-stack](https://github.com/r100-stack), [@VeroniqueVezina](https://github.com/VeroniqueVezina), [@mglancybentley](https://github.com/mglancybentley), [@LadyMoonanBentley](https://github.com/LadyMoonanBentley), [@jasonjwichert](https://github.com/jasonjwichert), and all other [contributors](https://github.com/iTwin/stratakit/graphs/contributors).
 
 ## Contributing
 

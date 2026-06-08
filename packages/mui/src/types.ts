@@ -11,7 +11,9 @@ import type { RoleProps } from "@ariakit/react/role";
 import type { BadgeProps } from "@mui/material/Badge";
 import type { IconButtonProps } from "@mui/material/IconButton";
 import type { CommonProps } from "@mui/material/OverridableComponent";
+import type { TabProps } from "@mui/material/Tab";
 import type { TableCellProps as MuiTableCellProps } from "@mui/material/TableCell";
+import type { TabsProps } from "@mui/material/Tabs";
 import type {
 	TextFieldProps,
 	TextFieldVariants,
@@ -356,6 +358,31 @@ declare module "@mui/material/StepButton" {
 declare module "@mui/material/Tab" {
 	interface TabOwnProps {
 		LinkComponent?: never;
+
+		/**
+		 * The default icon position with `@stratakit/mui` is `"start"`.
+		 *
+		 * @default 'start'
+		 */
+		iconPosition?: TabProps["iconPosition"];
+	}
+}
+
+declare module "@mui/material/Tabs" {
+	interface TabsPropsTextColorOverrides {
+		inherit: false;
+	}
+
+	interface TabsOwnProps {
+		/**
+		 * The size of the tab buttons.
+		 *
+		 * @default 'medium'
+		 */
+		size?: "small" | "medium";
+
+		/** @deprecated DO NOT USE */
+		indicatorColor?: TabsProps["indicatorColor"];
 	}
 }
 

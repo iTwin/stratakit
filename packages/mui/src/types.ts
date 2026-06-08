@@ -8,6 +8,7 @@
 // See: https://www.typescriptlang.org/docs/handbook/declaration-merging.html#module-augmentation
 
 import type { RoleProps } from "@ariakit/react/role";
+import type { AlertProps } from "@mui/material/Alert";
 import type { BadgeProps } from "@mui/material/Badge";
 import type { IconButtonProps } from "@mui/material/IconButton";
 import type { CommonProps } from "@mui/material/OverridableComponent";
@@ -62,13 +63,24 @@ declare module "@mui/material/Alert" {
 		standard: false;
 	}
 
+	interface AlertPropsColorOverrides {
+		none: true;
+	}
+
 	interface AlertOwnProps {
 		/**
 		 * The default variant with `@stratakit/mui` is `"outlined"`.
 		 *
 		 * @default 'outlined'
 		 */
-		variant?: "filled" | "outlined";
+		variant?: AlertProps["variant"];
+
+		/**
+		 * The default severity with `@stratakit/mui` is `"none"`.
+		 *
+		 * @default 'none'
+		 */
+		severity?: AlertProps["severity"];
 	}
 }
 

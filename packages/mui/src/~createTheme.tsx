@@ -160,6 +160,7 @@ function createTheme(args: CreateThemeArgs) {
 				defaultProps: {
 					component: MuiAlert,
 					variant: "outlined",
+					severity: "none",
 					iconMapping: {
 						error: <ErrorIcon />,
 						info: <InfoIcon />,

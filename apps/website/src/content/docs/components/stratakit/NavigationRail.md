@@ -24,31 +24,59 @@ Make sure the **NavigationRail** is suitable for your use case. There may be oth
 
 ## Structure
 
-**NavigationRail** is divided into three sections:
+**NavigationRail** is divided into three main sections:
 
-- [`NavigationRail.Header`](/reference/structures/NavigationRail#NavigationRail.Header): For the application branding and [`NavigationRail.ToggleButton`](/reference/structures/NavigationRail#NavigationRail.ToggleButton), for expanding the rail and revealing full text labels for the navigation options.
-- [`NavigationRail.Content`](/reference/structures/NavigationRail#NavigationRail.Content): For principle destinations; the main screens of the application.
-  - [`NavigationRail.List`](/reference/structures/NavigationRail#NavigationRail.List): For organizing related [`NavigationRail.ListItem`](/reference/structures/NavigationRail#NavigationRail.ListItem)s into groups.
-- [`NavigationRail.Footer`](/reference/structures/NavigationRail#NavigationRail.Footer): For secondary, supplementary destinations such as settings and account preferences.
+- [`NavigationRail.Header`](/reference/structures/NavigationRail#NavigationRail.Header)
+- [`NavigationRail.Content`](/reference/structures/NavigationRail#NavigationRail.Content)
+- [`NavigationRail.Footer`](/reference/structures/NavigationRail#NavigationRail.Footer)
 
-Group related destinations using the [`NavigationRail.List`](/reference/structures/NavigationRail#NavigationRail.List) and [`NavigationRail.ListItem`](/reference/structures/NavigationRail#NavigationRail.ListItem) components. Place a [**Divider**](/components/divider/) between instances of `NavigationRail.List` for clear visual demarcation.
+These are used to create the following basic structure. Note that `NavigationRail.Footer` is nested inside `NavigationRail.Content`.
 
 ```jsx
-<NavigationRail.List>
-  <NavigationRail.ListItem>...</NavigationRail.ListItem>
-  <NavigationRail.ListItem>...</NavigationRail.ListItem>
-  <NavigationRail.ListItem>...</NavigationRail.ListItem>
-</NavigationRail.List>
-<Divider role="presentation" />
-<NavigationRail.List>
-  <NavigationRail.ListItem>...</NavigationRail.ListItem>
-  <NavigationRail.ListItem>...</NavigationRail.ListItem>
-</NavigationRail.List>
-<Divider role="presentation" />
-<NavigationRail.Anchor>...</NavigationRail.Anchor>
+<NavigationRail.Root>
+  <NavigationRail.Header>...</NavigationRail.Header>
+  <NavigationRail.Content>
+    ...
+    <NavigationRail.Footer>...</NavigationRail.Footer>
+</NavigationRail.Root>
 ```
 
-As with that final [`NavigationRail.Anchor`](/reference/structures/NavigationRail#NavigationRail.Anchor), some navigation options are standalone. The `List` and `ListItem` components are not needed.
+### [NavigationRail.Header](/reference/structures/NavigationRail#NavigationRail.Header)
+
+This is for the application branding and [`NavigationRail.ToggleButton`](/reference/structures/NavigationRail#NavigationRail.ToggleButton), for expanding the rail and revealing full text labels for the navigation options.
+
+```jsx
+<NavigationRail.Header>
+	<Icon alt="Acme app" href={`${svgBentley}#icon-large`} size="large" />
+	<NavigationRail.ToggleButton />
+</NavigationRail.Header>
+```
+
+### [NavigationRail.Content](/reference/structures/NavigationRail#NavigationRail.Content)
+
+The `NavigationRail.Content` component houses a number of [interactive navigation components](#interaction). These can each be one of [`NavigationRail.Anchor`](/reference/structures/NavigationRail#NavigationRail.Anchor) or [`NavigationRail.Button`](/reference/structures/NavigationRail#NavigationRail.Button).
+
+You can group related navigation components using the [`NavigationRail.List`](/reference/structures/NavigationRail#NavigationRail.List) and [`NavigationRail.ListItem`](/reference/structures/NavigationRail#NavigationRail.ListItem) components. Place a [**Divider**](/components/divider/) between groups for clear visual demarcation.
+
+```jsx
+<NavigationRail.Content>
+	<NavigationRail.List>
+		<NavigationRail.ListItem>...</NavigationRail.ListItem>
+		<NavigationRail.ListItem>...</NavigationRail.ListItem>
+		<NavigationRail.ListItem>...</NavigationRail.ListItem>
+	</NavigationRail.List>
+	<Divider role="presentation" />
+	<NavigationRail.List>
+		<NavigationRail.ListItem>...</NavigationRail.ListItem>
+		<NavigationRail.ListItem>...</NavigationRail.ListItem>
+	</NavigationRail.List>
+	<Divider role="presentation" />
+	<NavigationRail.Anchor>...</NavigationRail.Anchor>
+	<NavigationRail.Footer>...</NavigationRail.Footer>
+</NavigationRail.Content>
+```
+
+Note the _standalone_ [`NavigationRail.Anchor`](/reference/structures/NavigationRail#NavigationRail.Anchor). Not all items belong to groups.
 
 :::note[Presentational dividers]
 
@@ -57,6 +85,23 @@ Note that the [**Divider**](/components/divider/) takes `role="presentation"`. T
 See the [presentational dividers](https://stratakit.bentley.com/docs/components/divider/#presentational-dividers) section in the **Divider** guide.
 
 :::
+
+### [NavigationRail.Footer](/reference/structures/NavigationRail#NavigationRail.Footer)
+
+Any supplementary items, such as settings or account preferences, should be placed in the `Footer`. The same grouping rules apply.
+
+```jsx
+<NavigationRail.Footer>
+	<NavigationRail.List>
+		<NavigationRail.ListItem>
+			<NavigationRail.Button icon={`${svgSettings}#icon-large`} label="Settings" />
+		</NavigationRail.ListItem>
+		<NavigationRail.ListItem>
+			<NavigationRail.Anchor icon={`${svgAccount}#icon-large`} label="Account" />
+		</NavigationRail.ListItem>
+	</NavigationRail.List>
+</NavigationRail.Footer>
+```
 
 ## Interaction
 

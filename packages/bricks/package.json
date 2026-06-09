@@ -121,6 +121,12 @@
 			"development": "./dist/DEV/Switch.js",
 			"default": "./dist/Switch.js"
 		},
+		"./Table": {
+			"@stratakit/source": "./src/Table.tsx",
+			"types": "./dist/Table.d.ts",
+			"development": "./dist/DEV/Table.js",
+			"default": "./dist/Table.js"
+		},
 		"./Text": {
 			"@stratakit/source": "./src/Text.tsx",
 			"types": "./dist/Text.d.ts",

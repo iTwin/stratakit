@@ -485,6 +485,9 @@ function createTheme(args: CreateThemeArgs) {
 					component: MuiTabs,
 					allowScrollButtonsMobile: true,
 					slotProps: {
+						scrollButtons: {
+							"aria-hidden": true,
+						},
 						startScrollButtonIcon: {
 							component: ChevronLeftIcon,
 						},

@@ -18,6 +18,10 @@ The **Divider** comes in two forms: _semantic_ and _presentational_. By default,
 | As a separator, marking a division between options, such as in a [toolbar](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/toolbar_role) | ✅         | ❌               |
 | As a visual indicator marking the separation of two lists                                                                                                                | ❌         | ✅               |
 
+## StrataKit MUI modifications
+
+- Renders a semantic [`<hr>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/hr) by default, switching to a `<div>` when it has children, is [vertical](#orientation), or is [presentational](#presentational-dividers).
+
 ## Examples
 
 ### Separating flow content

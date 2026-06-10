@@ -5,12 +5,14 @@
 import BadgeColors from "examples/mui/Badge.colors.tsx";
 import BadgeDefault from "examples/mui/Badge.default.tsx";
 import BadgeError from "examples/mui/Badge.error.tsx";
+import BadgeVariants from "examples/mui/Badge.variants.tsx";
 
 export default function BadgeExamples() {
 	return (
 		<>
 			<BadgeDefault />
 			<BadgeColors />
+			<BadgeVariants />
 			<BadgeError />
 		</>
 	);

@@ -20,6 +20,7 @@ Make sure the **Badge** is suitable for your use case. There may be other, more 
 ## StrataKit MUI modifications
 
 - Added [`inline`](#inline) prop.
+- Added `"solid"`, `"muted"`, and `"outline"` to the [`variant`](#variants) prop while removing `"standard"` and `"dot"`.
 - The `"default"` color has been removed. The default color is now `"secondary"`.
 
 ## Examples
@@ -44,6 +45,14 @@ Set the `inline` prop to display the badge in normal document flow instead of po
 :::caution[Using icons]
 In most cases, you should supplement the `color` with [iconography](#icons).
 :::
+
+### Variants
+
+- **Solid:** The default, use when you need the strongest emphasis.
+- **Muted:** Use when you need subtle emphasis.
+- **Outline:** Use when you need the least emphasis.
+
+::example{src="mui/Badge.variants"}
 
 ### Icons
 

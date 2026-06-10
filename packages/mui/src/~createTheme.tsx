@@ -239,6 +239,10 @@ function createTheme(args: CreateThemeArgs) {
 				defaultProps: {
 					component: MuiBadge,
 					color: "secondary",
+					variant: "solid",
+					slotProps: {
+						root: ({ variant }) => ({ variant }),
+					},
 				},
 			},
 			MuiBottomNavigation: { defaultProps: { component: Role.div } },

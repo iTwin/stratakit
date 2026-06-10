@@ -3,6 +3,15 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-/// <reference types="@stratakit/mui/types.d.ts" />
+import Badge from "@mui/material/Badge";
+import Stack from "@mui/material/Stack";
 
-declare const __VERSION__: string;
+export default () => {
+	return (
+		<Stack spacing={1} direction="row">
+			<Badge badgeContent="Solid" variant="solid" inline />
+			<Badge badgeContent="Muted" variant="muted" inline />
+			<Badge badgeContent="Outline" variant="outline" inline />
+		</Stack>
+	);
+};

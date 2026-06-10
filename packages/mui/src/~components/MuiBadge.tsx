@@ -15,14 +15,24 @@ import type Badge from "@mui/material/Badge";
 
 type BadgeProps = React.ComponentProps<typeof Badge>;
 
-interface MuiBadgeProps extends BaseProps<"span">, Pick<BadgeProps, "inline"> {}
+interface MuiBadgeOwnerState {
+	variant?: BadgeProps["variant"];
+}
+
+interface MuiBadgeProps
+	extends BaseProps<"span">,
+		Pick<BadgeProps, "inline" | "variant"> {}
 
 const MuiBadge = forwardRef<"span", MuiBadgeProps>((props, forwardedRef) => {
-	const { inline, ...rest } = props;
+	const { inline, ownerState, variant, ...rest } = props as MuiBadgeProps & {
+		ownerState?: MuiBadgeOwnerState;
+	};
+	const resolvedVariant = variant ?? ownerState?.variant ?? "solid";
 	return (
 		<Role.span
 			{...rest}
 			data-_sk-inline={inline ? "" : undefined}
+			data-_sk-variant={resolvedVariant}
 			ref={forwardedRef}
 		/>
 	);

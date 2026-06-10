@@ -65,6 +65,9 @@ interface HtmlTableProps extends BaseProps {}
  *   </Table.Body>
  * </Table.HtmlTable>
  * ```
+ *
+ * @deprecated Use MUI [`Table`](https://mui.com/material-ui/api/table/) components instead.
+ * See [migration guide](https://stratakit.bentley.com/docs/getting-started/migration-from-legacy-stratakit/#table).
  */
 const HtmlTable = forwardRef<"table", HtmlTableProps>((props, forwardedRef) => {
 	useInit();
@@ -125,6 +128,9 @@ interface CustomTableProps extends BaseProps {}
  *   </Table.Body>
  * </Table.CustomTable>
  * ```
+ *
+ * @deprecated Use MUI [`Table`](https://mui.com/material-ui/api/table/) instead.
+ * See [migration guide](https://stratakit.bentley.com/docs/getting-started/migration-from-legacy-stratakit/#table).
  */
 const CustomTable = forwardRef<"div", CustomTableProps>(
 	(props, forwardedRef) => {
@@ -173,6 +179,9 @@ interface TableHeaderProps extends BaseProps<"div"> {}
  *		</Table.Row>
  *	</Table.Header>
  * ```
+ *
+ * @deprecated Use MUI [`TableHead`](https://mui.com/material-ui/api/table-head/) component instead.
+ * See [migration guide](https://stratakit.bentley.com/docs/getting-started/migration-from-legacy-stratakit/#table).
  */
 const TableHeader = forwardRef<"div", TableHeaderProps>(
 	(props, forwardedRef) => {
@@ -220,6 +229,9 @@ interface TableBodyProps extends BaseProps<"div"> {}
  *		</Table.Row>
  *	</Table.Body>
  * ```
+ *
+ * @deprecated Use MUI [`TableBody`](https://mui.com/material-ui/api/table-body/) component instead.
+ * See [migration guide](https://stratakit.bentley.com/docs/getting-started/migration-from-legacy-stratakit/#table).
  */
 const TableBody = forwardRef<"div", TableBodyProps>((props, forwardedRef) => {
 	const { mode } = useSafeContext(TableContext);
@@ -267,6 +279,9 @@ interface TableRowProps extends BaseProps<"div"> {}
  *   <Table.Cell>Cell 1.2</Table.Cell>
  * </Table.Row
  * ```
+ *
+ * @deprecated Use MUI [`TableRow`](https://mui.com/material-ui/api/table-row/) component instead.
+ * See [migration guide](https://stratakit.bentley.com/docs/getting-started/migration-from-legacy-stratakit/#table).
  */
 const TableRow = forwardRef<"div", TableRowProps>((props, forwardedRef) => {
 	const { mode } = useSafeContext(TableContext);
@@ -303,6 +318,9 @@ interface TableCaptionProps extends BaseProps<"div"> {}
  * 	 …
  * </Table.CustomTable> // Or </Table.HtmlTable>
  * ```
+ *
+ * @deprecated Use a native HTML [`<caption>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/caption) element instead.
+ * See [migration guide](https://stratakit.bentley.com/docs/getting-started/migration-from-legacy-stratakit/#table).
  */
 const TableCaption = forwardRef<"div", TableCaptionProps>(
 	(props, forwardedRef) => {
@@ -349,6 +367,9 @@ interface TableCellProps extends BaseProps<"div"> {}
  * ```tsx
  *	<Table.Cell>Cell 1.1</Table.Cell>
  * ```
+ *
+ * @deprecated Use MUI [`TableCell`](https://mui.com/material-ui/api/table-cell/) component instead.
+ * See [migration guide](https://stratakit.bentley.com/docs/getting-started/migration-from-legacy-stratakit/#table).
  */
 const TableCell = forwardRef<"div", TableCellProps>((props, forwardedRef) => {
 	const isWithinTableHeader = useSafeContext(TableHeaderContext);

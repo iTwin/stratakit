@@ -97,6 +97,7 @@ Replace legacy StrataKit component usage with their [MUI counterparts](https://m
 | [Skeleton](/reference/bricks/Skeleton)                         | [Skeleton](https://mui.com/material-ui/api/skeleton/)                  |
 | [Spinner](/reference/bricks/Spinner)                           | [CircularProgress](https://mui.com/material-ui/api/circular-progress/) |
 | [Switch](/reference/bricks/Switch)                             | [Switch](https://mui.com/material-ui/api/switch/)                      |
+| [Table](/reference/bricks/Table)                               | [Table](https://mui.com/material-ui/api/table/)                        |
 | [Text](/reference/bricks/Text)                                 | [Typography](https://mui.com/material-ui/api/typography/)              |
 | [TextBox](/reference/bricks/TextBox)                           | [TextField](https://mui.com/material-ui/api/text-field/)               |
 | [Tooltip](/reference/bricks/Tooltip)                           | [Tooltip](https://mui.com/material-ui/api/tooltip/)                    |
@@ -302,6 +303,16 @@ Read additional [StrataKit MUI component documentation](/components/overview/) f
 
 - Replace the `Switch` component from `@stratakit/bricks` with the `Switch` component from `@mui/material`. See [Switch examples](/components/switch/) for reference.
 - Use [`FormControlLabel`](https://mui.com/material-ui/api/form-control-label/) component to label the switch control.
+
+### Table
+
+- Replace the `Table` components from `@stratakit/bricks` with the `Table` components from `@mui/material`. See [Table examples](/components/table/) for reference.
+- Change [`Table.HtmlTable`](/reference/bricks/Table#Table.HtmlTable) and [`Table.CustomTable`](/reference/bricks/Table#Table.CustomTable) components to [`Table`](https://mui.com/material-ui/api/table/) component.
+- Change [`Table.Header`](/reference/bricks/Table#Table.Header) component to [`TableHead`](https://mui.com/material-ui/api/table-head/) component.
+- Change [`Table.Body`](/reference/bricks/Table#Table.Body) component to [`TableBody`](https://mui.com/material-ui/api/table-body/) component.
+- Change [`Table.Row`](/reference/bricks/Table#Table.Row) component to [`TableRow`](https://mui.com/material-ui/api/table-row/) component.
+- Change [`Table.Cell`](/reference/bricks/Table#Table.Cell) component to [`TableCell`](https://mui.com/material-ui/api/table-cell/) component.
+- Replace [`Table.Caption`](/reference/bricks/Table#Table.Caption) with a native HTML [`<caption>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/caption) element inside [`Table`](https://mui.com/material-ui/api/table/) component.
 
 ### Text
 
